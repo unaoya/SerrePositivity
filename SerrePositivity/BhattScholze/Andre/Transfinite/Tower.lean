@@ -1725,7 +1725,7 @@ end SerrePositivity.BhattScholze.Andre.Transfinite
 
 end DirectedCompletion
 
-/-! ## André E3：BS 著者版 Theorem 7.14 の超限反復と証明済み存在定理
+/-! ## André：BS 著者版 Theorem 7.14 の超限反復と証明済み存在定理
 
 ## 概要
 

@@ -71,15 +71,15 @@ namespace SerrePositivity.BhattScholze.Andre
 variable {A : Type u} [CommRing A] (p : ℕ) [Fact p.Prime]
 variable (D : DeltaStructure p A) (hD : D.IsPerfect)
 local notation "hp" => Nat.Prime.pos (Fact.out : p.Prime)
-local notation "P" => PowerRootPolynomial A p hp
-local notation "E" => powerRootPolynomialDelta p hD.p_mul_injective D
+local notation "P" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial A p hp
+local notation "E" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialDelta p hD.p_mul_injective D
 local notation "C" => powerRootCoefficientFrobeniusEquiv p D hD
 local notation "V" => powerRootVariableFrobeniusEquiv (A := A) p
 local notation "hC" => powerRootCoefficientFrobeniusEquiv_isDeltaHom p D hD
 local notation "hV" => powerRootVariableFrobeniusEquiv_isDeltaHom p D hD
 variable {σ : Type v}
-variable (d : PowerRootPolynomial A p (Nat.Prime.pos (Fact.out : p.Prime)))
-variable (a : σ → PowerRootPolynomial A p (Nat.Prime.pos (Fact.out : p.Prime)))
+variable (d : _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial A p (Nat.Prime.pos (Fact.out : p.Prime)))
+variable (a : σ → _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial A p (Nat.Prime.pos (Fact.out : p.Prime)))
 
 /-- 概要：係数 Frobenius のみを適用する raw 除算包の同型。
 方針：係数成分の δ 自己同型を一般の raw 比較に渡す。
@@ -131,7 +131,7 @@ BS 著者版 Remark 7.15（著者版 p.62）の元の A 作用を保つ無条件
 
 set_option backward.isDefEq.respectTransparency false
 namespace SerrePositivity.BhattScholze.Andre
-open CategoryTheory CategoryTheory.Limits HomologicalComplex
+open _root_.CategoryTheory _root_.CategoryTheory.Limits _root_.HomologicalComplex
 attribute [local instance] HasDerivedCategory.standard
 variable {A S : Type u} [CommRing A] [CommRing S] [Algebra A S] [Module.Free A S]
 local notation "L₀" => S
@@ -394,7 +394,7 @@ BS 著者版 Remark 7.15（著者版 p.62）の実源の右因子を係数局所
 @[expose] public noncomputable section LocalizedScalarModule
 
 namespace SerrePositivity.BhattScholze.Andre
-open CategoryTheory
+open _root_.CategoryTheory
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 variable {R S : Type u} [CommRing R] [CommRing S] [Algebra R S]
@@ -486,7 +486,7 @@ BS 著者版 Remark 7.15（著者版 p.62）の実源の左評価因子を係数
 @[expose] public noncomputable section LocalizedEvaluationModule
 
 namespace SerrePositivity.BhattScholze.Andre
-open CategoryTheory
+open _root_.CategoryTheory
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 variable {R S T U : Type u} [CommRing R] [CommRing S] [CommRing T] [CommRing U]
@@ -827,7 +827,7 @@ BS 著者版 Remark 7.15（著者版 p.62）の実源作用を、Frobenius 安�
 @[expose] public noncomputable section LocalizedDeltaSourceTarget
 
 namespace SerrePositivity.BhattScholze.Andre
-open CategoryTheory
+open _root_.CategoryTheory
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 variable {p : ℕ} [Fact p.Prime] {A σ : Type u} [CommRing A]
@@ -883,7 +883,7 @@ BS 著者版 Remark 7.15（著者版 p.62）の実評価作用を、Frobenius �
 @[expose] public noncomputable section LocalizedDeltaSourceEvaluation
 
 namespace SerrePositivity.BhattScholze.Andre
-open CategoryTheory
+open _root_.CategoryTheory
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 variable {p : ℕ} [Fact p.Prime] {A σ : Type u} [CommRing A]
@@ -964,7 +964,7 @@ Tor の対称性と元の標準 augmentation に沿って純性を得る。
 @[expose] public noncomputable section SourceUnitPurity
 
 namespace SerrePositivity.BhattScholze.Andre
-open CategoryTheory CategoryTheory.Limits
+open _root_.CategoryTheory _root_.CategoryTheory.Limits
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 attribute [local instance] HasDerivedCategory.standard
@@ -1089,7 +1089,7 @@ BS 著者版 Remark 7.15（著者版 p.62）の元の実導来源を、係数局
 @[expose] public noncomputable section LocalizedDeltaSourceTensor
 
 namespace SerrePositivity.BhattScholze.Andre
-open CategoryTheory CategoryTheory.Limits
+open _root_.CategoryTheory _root_.CategoryTheory.Limits
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 attribute [local instance] HasDerivedCategory.standard
@@ -1165,7 +1165,7 @@ BS 著者版 Remark 7.15（著者版 p.62）の分母可逆部分の実源を、
 @[expose] public noncomputable section SourceUnitSingle
 
 namespace SerrePositivity.BhattScholze.Andre
-open CategoryTheory CategoryTheory.Limits CategoryTheory.MonoidalCategory DerivedCompletion
+open _root_.CategoryTheory _root_.CategoryTheory.Limits _root_.CategoryTheory.MonoidalCategory _root_.SerrePositivity.DerivedCompletion
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 attribute [local instance] HasDerivedCategory.standard
@@ -1266,7 +1266,7 @@ BS 著者版 Remark 7.15（著者版 p.62）の元の実 p 錐は、安定係数
 @[expose] public noncomputable section LocalizedDeltaSourcePrimeCone
 
 namespace SerrePositivity.BhattScholze.Andre
-open CategoryTheory CategoryTheory.Limits DerivedCompletion
+open _root_.CategoryTheory _root_.CategoryTheory.Limits _root_.SerrePositivity.DerivedCompletion
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 attribute [local instance] HasDerivedCategory.standard
@@ -1330,7 +1330,7 @@ raw 源の局所化側で得られる冪ねじれ性と、既証明の完備化�
 @[expose] public noncomputable section CompletionTorsionDetection
 
 namespace SerrePositivity.BhattScholze.Andre
-open CategoryTheory CategoryTheory.Limits HomologicalComplex DerivedCompletion
+open _root_.CategoryTheory _root_.CategoryTheory.Limits _root_.HomologicalComplex _root_.SerrePositivity.DerivedCompletion
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 attribute [local instance] HasDerivedCategory.standard
@@ -1489,7 +1489,7 @@ mod p で安定分母の像は元の分母の冪集合に等しい。
 @[expose] public noncomputable section SaturatedLocalizationTorsion
 
 namespace SerrePositivity.BhattScholze.Andre
-open CategoryTheory CategoryTheory.Limits DerivedCompletion
+open _root_.CategoryTheory _root_.CategoryTheory.Limits _root_.SerrePositivity.DerivedCompletion
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 attribute [local instance] HasDerivedCategory.standard
@@ -1610,7 +1610,7 @@ BS 著者版 Remark 7.15（著者版 p.62）の元の実源の p 錐の非零次
 @[expose] public noncomputable section SourcePrimeConeTorsion
 
 namespace SerrePositivity.BhattScholze.Andre
-open CategoryTheory CategoryTheory.Limits DerivedCompletion
+open _root_.CategoryTheory _root_.CategoryTheory.Limits _root_.SerrePositivity.DerivedCompletion
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 attribute [local instance] HasDerivedCategory.standard
@@ -1667,7 +1667,7 @@ BS 著者版 Remark 7.15（著者版 p.62）の元の源の p 錐の冪ねじれ
 @[expose] public noncomputable section ScalarConeRestriction
 
 namespace SerrePositivity.BhattScholze.Andre
-open CategoryTheory CategoryTheory.Limits DerivedCompletion
+open _root_.CategoryTheory _root_.CategoryTheory.Limits _root_.SerrePositivity.DerivedCompletion
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 attribute [local instance] HasDerivedCategory.standard

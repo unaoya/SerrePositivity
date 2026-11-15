@@ -1,0 +1,53 @@
+{
+  "status": "proposal only; no B5 implementation",
+  "items": [
+    {
+      "id": "B5-01",
+      "deliverable": "入力と番号の対応表",
+      "acceptance": "旧表の手判断の列と機械生成の列を分ける。番号・略号・版・Tagの対応を既存レビューから固定。",
+      "estimated_lines": "100–180"
+    },
+    {
+      "id": "B5-02",
+      "deliverable": "環境からの抽出",
+      "acceptance": "既存#cite_tagsのJSONを所有モジュールごとに抽出し、原Lake設定・終了コード・ソース/oleanの署名を記録。",
+      "estimated_lines": "200–350"
+    },
+    {
+      "id": "B5-03",
+      "deliverable": "対応の照合と保留台帳",
+      "acceptance": "exact/partial4種/nativeを保存し、未対応・複数対応・旧187件・新規7モジュールを診断に残す。",
+      "estimated_lines": "180–300"
+    },
+    {
+      "id": "B5-04",
+      "deliverable": "地図の生成",
+      "acceptance": "5族の項目と宣言の両向きJSON/Markdown索引。MathlibとArchive、公開範囲、nullの行を区別。",
+      "estimated_lines": "180–300"
+    },
+    {
+      "id": "B5-05",
+      "deliverable": "検査と再現性",
+      "acceptance": "重複import、別名、nativeタグ、部分対応、失敗・古い成果物、曖昧な番号、改名後の場所を検査。",
+      "estimated_lines": "150–250"
+    },
+    {
+      "id": "B5-06",
+      "deliverable": "更新手順と配布",
+      "acceptance": "生成物と入力のハッシュ、差分の確認、各レーンの新規属性の扱い、再生成手順を文書化。",
+      "estimated_lines": "80–150"
+    }
+  ],
+  "estimate_lines": {
+    "lower": 890,
+    "upper": 1530,
+    "includes": "scripts, meaningful fixture tests, documentation; generated indices and temporary Lean wrappers excluded"
+  },
+  "estimate_elapsed_days": {
+    "lower": 0.5,
+    "upper": 1.5,
+    "note": "Unmeasured estimate. Measure a 50-owner-module export pilot first; shared-key waiting time excluded. Do not claim a night is sufficient from static CSV counts."
+  },
+  "scope": "read existing attributes; no file moves, namespace changes, new mathematical claims, or automatic attribute additions",
+  "stop": "B5 stage0; implementation not started"
+}

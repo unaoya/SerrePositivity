@@ -32,9 +32,9 @@ universe u
 
 namespace SerrePositivity.BhattScholze
 
-open scoped TensorProduct
+open scoped _root_.TensorProduct
 
-private theorem exists_primeDoubleQuotient_equiv (R : Type u) [CommRing R]
+private theorem Semiperfectoid.exists_primeDoubleQuotient_equiv (R : Type u) [CommRing R]
     (I : Ideal R) (p : ℕ) :
     ∃ e : ((R ⧸ I) ⧸ Ideal.span {(p : R ⧸ I)}) ≃+*
         R ⧸ (I ⊔ Ideal.span {(p : R)}),
@@ -56,47 +56,47 @@ variable {p : ℕ} [Fact p.Prime] {A S : Type u} [CommRing A]
 方針：初期関係の商と生成元商で p の正則性を確認し、二重商上の平坦性判定を使う。
 規約：BS 著者版 Example 7.9。係数環とその d 商の p 正則性を仮定する。
 使われ方：正則列の商の有界ねじれから、完備底変換の離散性を得る。 -/
-theorem exists_freeVariable_generatorResidue_completelyFlat
-    (D : DeltaStructure p A) (d : A)
+theorem Semiperfectoid.exists_freeVariable_generatorResidue_completelyFlat
+    (D : _root_.SerrePositivity.BhattScholze.DeltaStructure p A) (d : A)
     (hp : Function.Injective (fun x : A => (p : A) * x))
     (hpd : Function.Injective (fun x : A ⧸ Ideal.span {d} => (p : A ⧸ Ideal.span {d}) * x))
     (u : Aˣ) (hu : (u : A) = D.delta d) :
-    let U := RelativeFreeDeltaRing (R := A) S
+    let U := _root_.SerrePositivity.BhattScholze.RelativeFreeDeltaRing (R := A) S
     let K : Ideal U := Ideal.span {MvPolynomial.C d}
     let J : Ideal U := K ⊔ Ideal.span (Set.range fun s : S => MvPolynomial.X (s, 0))
     ∃ b : U ⧸ J →+* U ⧸ K,
       (∀ z : U, b (Ideal.Quotient.mk J z) =
-        Ideal.Quotient.mk K (deltaDivisionSourceMap D d z)) ∧
+        Ideal.Quotient.mk K (_root_.SerrePositivity.BhattScholze.deltaDivisionSourceMap D d z)) ∧
       letI := b.toAlgebra
-      IsCompletelyFlat (Ideal.span {(p : U ⧸ J)}) (U ⧸ K) := by
-  let U := RelativeFreeDeltaRing (R := A) S
+      _root_.SerrePositivity.IsCompletelyFlat (Ideal.span {(p : U ⧸ J)}) (U ⧸ K) := by
+  let U := _root_.SerrePositivity.BhattScholze.RelativeFreeDeltaRing (R := A) S
   let C : A →+* U := MvPolynomial.C
   let x : S → U := fun s => MvPolynomial.X (s, 0)
   let K : Ideal U := Ideal.span {C d}
   let J : Ideal U := K ⊔ Ideal.span (Set.range x)
   let IP : Ideal U := Ideal.span {(p : U), C d}
-  let JP := deltaDivisionFirstBaseIdeal (p := p) (C d) x
+  let JP := _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFirstBaseIdeal (p := p) (C d) x
   let T := U ⧸ J
   let E := U ⧸ K
-  let a : U →+* U := deltaDivisionSourceMap D d
+  let a : U →+* U := _root_.SerrePositivity.BhattScholze.deltaDivisionSourceMap D d
   have hJK : J ≤ K.comap a := by
     apply sup_le
     · apply (K.comap a).span_singleton_le_iff_mem.mpr
       change a (C d) ∈ K
-      rw [deltaDivisionSourceMap_C]
+      rw [_root_.SerrePositivity.BhattScholze.deltaDivisionSourceMap_C]
       exact Ideal.subset_span (Set.mem_singleton _)
     · apply Ideal.span_le.mpr
       rintro _ ⟨s, rfl⟩
       change a (x s) ∈ K
       have hx : a (x s) = C d * x s := by
-        simpa only [Function.iterate_zero_apply] using deltaDivisionSourceMap_X D d s 0
+        simpa only [Function.iterate_zero_apply] using _root_.SerrePositivity.BhattScholze.deltaDivisionSourceMap_X D d s 0
       rw [hx]
       exact K.mul_mem_right _ (Ideal.subset_span (Set.mem_singleton _))
   let b : T →+* E := Ideal.quotientMap K a hJK
   have hb (z : U) : b (Ideal.Quotient.mk J z) = Ideal.Quotient.mk K (a z) := rfl
   let := b.toAlgebra
   have hT : IsSMulRegular T (p : T) := by
-    have h := freeDelta_initialQuotient_scalar_regular (S := S) d (p : A)
+    have h := _root_.SerrePositivity.BhattScholze.Semiperfectoid.freeDelta_initialQuotient_scalar_regular (S := S) d (p : A)
       (by simpa only [map_natCast, IsSMulRegular, smul_eq_mul] using hpd)
     change Function.Injective (fun x : T => (p : T) * x)
     simpa only [map_natCast, IsLeftRegular] using h.left
@@ -129,8 +129,8 @@ theorem exists_freeVariable_generatorResidue_completelyFlat
     ac_rfl
   have hKP : K ⊔ Ideal.span {(p : U)} = IP := by
     rw [hIP, sup_comm]
-  obtain ⟨eT, heT⟩ := exists_primeDoubleQuotient_equiv U J p
-  obtain ⟨eE, heE⟩ := exists_primeDoubleQuotient_equiv U K p
+  obtain ⟨eT, heT⟩ := _root_.SerrePositivity.BhattScholze.Semiperfectoid.exists_primeDoubleQuotient_equiv U J p
+  obtain ⟨eE, heE⟩ := _root_.SerrePositivity.BhattScholze.Semiperfectoid.exists_primeDoubleQuotient_equiv U K p
   let eSrc := eT.trans (Ideal.quotEquivOfEq hJP)
   let eTgt := ((Ideal.quotEquivOfEq hIE).trans eE).trans (Ideal.quotEquivOfEq hKP)
   have heSrc (z : U) :
@@ -144,7 +144,7 @@ theorem exists_freeVariable_generatorResidue_completelyFlat
     rw [heE]
     rfl
   obtain ⟨b₀, hb₀, hflat₀⟩ :=
-    exists_deltaDivision_freeVariable_residue_faithfullyFlat (S := S) D d hp u hu
+    _root_.SerrePositivity.BhattScholze.Semiperfectoid.exists_deltaDivision_freeVariable_residue_faithfullyFlat (S := S) D d hp u hu
   let bbar : T ⧸ IT →+* E ⧸ IE := Ideal.quotientMap IE b Ideal.le_comap_map
   have hbar : eTgt.toRingHom.comp bbar = b₀.comp eSrc.toRingHom := by
     apply Ideal.Quotient.ringHom_ext
@@ -164,7 +164,7 @@ theorem exists_freeVariable_generatorResidue_completelyFlat
       exact (RingHom.Flat.of_bijective eSrc.bijective).comp hflat₀'
     exact (RingHom.Flat.comp_iff_of_bijective_left eTgt.bijective).mp hcomp
   refine ⟨b, hb, ?_⟩
-  let := adicQuotientAlgebra IT E
+  let := _root_.SerrePositivity.adicQuotientAlgebra IT E
   have hflat : Module.Flat (T ⧸ IT) (E ⧸ IE) := by
     apply RingHom.flat_algebraMap_iff.mp
     exact hflatbar
@@ -176,7 +176,7 @@ theorem exists_freeVariable_generatorResidue_completelyFlat
     have hbp : b (p : T) = (p : E) := map_natCast b p
     exact (congrArg (fun t : E => t * y) hbp.symm).trans
       (hyz.trans (congrArg (fun t : E => t * z) hbp))
-  apply isCompletelyFlat_principal_of_regular (p : T) hT E hM
+  apply _root_.SerrePositivity.isCompletelyFlat_principal_of_regular (p : T) hT E hM
   exact Module.Flat.of_linearEquiv
     (Algebra.TensorProduct.quotIdealMapEquivQuotTensor E IT).symm.toLinearEquiv
 

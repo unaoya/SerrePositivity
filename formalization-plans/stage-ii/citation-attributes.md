@@ -120,3 +120,9 @@ B4（各レーンの追従）の手順（`bulk-w1-b3/B4-README.md` を各レー�
 順序：⑥ を先に（最大の枝）。ほかは並行でよい。⑤d（`math/bs-m15`）も同じ手順で行う（影響一覧には入っていない）。
 
 **追記（11-14 午後、調整役）：B4 の open の保留の方針（全レーン共通）**。親の名前空間の一部が B3 でファイルごとに別の名前空間へ分かれたため（例：`…Project.DerivedCategories`、`…Project.HomotopyDiagramComparison`）、その子の名前空間の open が「explicit opens policy needed」で保留になる。方針：**open した名前空間が main に同じ名前で残り、その open で使っている宣言がすべて同じ完全名で main にあるなら、open はそのまま残す**（保留を恒等として解消し、取り込み後の対象ビルドで確認する）。使っている宣言のどれかが main で見つからない（改名・移動された）ときは止まって報告する。確認済みの例：⑤d の `…DerivedCategories.DiagramComparison`（`semifreePointEquivalence`・`complexClosedPresentation`・`complexDerivedEvaluation` などは main の DiagramComparison/ に同じ完全名で残る）、③-b の `…HomotopyDiagramComparison.CosimplicialHom`（main の HomotopyDiagramComparison/CosimplicialHom/ に同じ名前空間で残る）。
+
+## 15. 追記（2026-11-15、調整役）：B3′ の取り込みと B4′
+
+B3′（bulk/b3prime 60183b0f8、`bulk-b3prime.md` の 22 項目、70 本の移動・7 本の切り出し・71 の旧パスの削除、保存比較 v3b 未説明 0、一括枝で 106 監査と full verify PASS）を main に取り込んだ（`audit_bhatt_scholze_stage2.lean` の一覧は両側の和で解決）。main での root と四つの監査は取り込み直後に確認する。
+
+**B4′（各レーンの追従）**：手順は §14 と同じ。資料は `bulk-b3prime/B4/README.md`（module-map・public-owner-map・namespace-rewrite-map・一行の rewrite コマンド）。影響の候補（短名を含む）は ③-a 7、③-b 180、⑥ 7、⑤a・⑤d 0。drafts は collect の外（本文 28 本・50 箇所の影響表を資料に）。open の保留の方針は §14 の追記のまま。

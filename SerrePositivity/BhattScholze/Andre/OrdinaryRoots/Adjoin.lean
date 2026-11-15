@@ -25,7 +25,7 @@ public import SerrePositivity.HomologicalAlgebra.Tor
 独立変数ごとのモニック関係式 fᵢ(Xᵢ) と係数商での正則性、通常のモニック根添加 R[X]/(f) の自由性、任意元族の冪根添加環 R[X_s]/(X_sⁿ − c_s) の普遍性・商表示・自由性・完全忠実平坦性。
 
 ## 方針
-δ 構造を使わない可換環論として述べる。独立モニック関係の正則列（`Andre/MonicRelationRegularSequence`）は KST が import しているので別ファイルのまま残す。
+δ 構造を使わない可換環論として述べる。独立モニック関係の正則列（`CommutativeAlgebra/KoszulRegular/MonicRelation`）は KST が import しているので別ファイルのまま残す。
 
 ## 規約
 係数環・素数・正則性の仮定は各宣言で明示する。
@@ -36,7 +36,7 @@ public import SerrePositivity.HomologicalAlgebra.Tor
 
 universe u v w
 
-/-! ## André E1：独立変数のモニック関係式
+/-! ## André：独立変数のモニック関係式
 
 ## 概要
 
@@ -503,7 +503,7 @@ end SerrePositivity.BhattScholze
 
 end MonicPowerFamilyBaseQuotient
 
-/-! ## André E1：係数商後のモニック関係の正則性
+/-! ## André：係数商後のモニック関係の正則性
 
 ## 概要
 
@@ -587,7 +587,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end MonicRelationResidue
 
-/-! ## André E1：通常のモニック根添加の自由性
+/-! ## André：通常のモニック根添加の自由性
 
 ## 概要
 

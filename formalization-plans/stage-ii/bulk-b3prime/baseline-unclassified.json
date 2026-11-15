@@ -1,0 +1,2620 @@
+{
+  "baseline": "32d364b53",
+  "count": 305,
+  "status": "baseline checker fails before B3prime Lean changes; no classification or exceptions invented",
+  "rows": [
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.TransposeFunctorIsoRestriction",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/Equivalence/TransposeFunctorIsoRestriction.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.TransposeFunctorIsoComposition",
+        "SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.InternalHomSwapNaturality"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.InternalHomSwapEvaluationRight",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/Equivalence/InternalHomSwapEvaluationRight.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.InternalHomSwap"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.NormalizedFunctorIsoComponentRestriction",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/PresentableInfinityCategories/NormalizedFunctorIsoComponentRestriction.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.NormalizedHomNaturality",
+        "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.StraighteningBaseChangeRestriction",
+        "SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.FunctorIsoComponentPost"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.LeftKanHomMapPostcomposition",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/PresentableInfinityCategories/LeftKanHomMapPostcomposition.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.FunctorHomWhiskerInterchange",
+        "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.FunctorHomPrecompositionLaws",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.UniversalProperty"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.FunctorHomPrecompositionLaws",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/PresentableInfinityCategories/FunctorHomPrecompositionLaws.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.LeftClassificationBaseChangeHom",
+        "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.StraighteningBaseChangeRestriction"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.HomWeightJointClassificationHom",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/PresentableInfinityCategories/HomWeightJointClassificationHom.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.EndSectionsYonedaModel",
+        "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.HomComparison",
+        "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.TwistedArrowFunctorComparison"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ClassifiedSquareHomPasting",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/PresentableInfinityCategories/ClassifiedSquareHomPasting.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ClassifiedSquareLiftPasting",
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftStraighteningBaseChangePasting"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ClassifiedSquareLiftPasting",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/PresentableInfinityCategories/ClassifiedSquareLiftPasting.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ClassifiedSquareHomNaturality"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CurryHomPointEvaluation",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/PresentableInfinityCategories/CurryHomPointEvaluation.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.HomWeightUnitEvaluation",
+        "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CurryFirstPrecomposition"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.HomClassificationIsoLaws",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/PresentableInfinityCategories/HomClassificationIsoLaws.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.HomClassificationLaws"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.FunctorHomWhiskerInterchange",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/PresentableInfinityCategories/FunctorHomWhiskerInterchange.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CurryFirstPrecomposition"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.DiagramIsoNormalizationAlgebra",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/PresentableInfinityCategories/DiagramIsoNormalizationAlgebra.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.JointRealizationComposition"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ClassifiedPullbackSquareHom",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/PresentableInfinityCategories/ClassifiedPullbackSquareHom.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ClassifiedSquareHomNaturality",
+        "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.HomClassificationLaws"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Cocompletion.LeftKanUnitPostcompositionHom",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/Cocompletion/LeftKanUnitPostcompositionHom.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.LeftKanHomMapPostcomposition",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.LeftTransportPostcomp",
+        "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.IntervalFunctorHom"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Cocompletion.HomWeightYonedaSourcePullback",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/Cocompletion/HomWeightYonedaSourcePullback.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CosliceTwistedArrowNaturality",
+        "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.LeftClassificationBaseChangeHom",
+        "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.EndSectionsRelativeHom",
+        "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.TwistedArrowFunctorComparison",
+        "Mathlib.CategoryTheory.Limits.Shapes.Pullback.Pasting"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Cocompletion.HomWeightEvaluatedKanUnit",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/Cocompletion/HomWeightEvaluatedKanUnit.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Cocompletion.HomWeightComparisonEvaluationFac",
+        "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Cocompletion.LeftKanUnitPostcompositionHom",
+        "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Cocompletion.HomWeightLeftKanEvaluation",
+        "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.HomWeightYonedaLeftKan"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Cocompletion.HomWeightYonedaUnitNormalizedEvaluation",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/Cocompletion/HomWeightYonedaUnitNormalizedEvaluation.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CurryHomPointEvaluation",
+        "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.PresheafInfinity"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Cocompletion.HomWeightLeftKanEvaluation",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/Cocompletion/HomWeightLeftKanEvaluation.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Cocompletion.PresheafEvaluationReindexedColimit",
+        "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.UniverseLeftKanShape",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.LeftTransportPostcomp",
+        "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.YonedaInfinityConstruction"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Cocompletion.HomWeightComparisonEvaluationFac",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/Cocompletion/HomWeightComparisonEvaluationFac.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.LeftKanHomMapPostcomposition",
+        "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.HomWeightYonedaLeftKan"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Cocompletion.HomWeightComparisonEvaluationIso",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/Cocompletion/HomWeightComparisonEvaluationIso.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Cocompletion.HomWeightEvaluatedKanUnit",
+        "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Cocompletion.LeftKanUnitPostcompositionHom",
+        "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Cocompletion.HomWeightLeftKanEvaluation",
+        "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.HomWeightYonedaLeftKan"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Cocompletion.PresheafEvaluationReindexedColimit",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/Cocompletion/PresheafEvaluationReindexedColimit.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.PresheafPointwiseColimits",
+        "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.SliceComparison.ReindexSliceUnder",
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.CoconeValEquality"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.FunctorIsoTransposeEvaluation",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/FunctorIsoTransposeEvaluation.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.FunctorIsoTransposeValue"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.FunctorIsoTransposeValue",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/FunctorIsoTransposeValue.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.FunctorIsoWhiskerAlgebra",
+        "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.InternalHomSwapEvaluationRight",
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.FunctorIsoValueCurry",
+        "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.JointComparisonPrecomposition",
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.SimplexSectionBaseChange"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftStraighteningSimplexWhisker",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningSimplexWhisker.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftStraighteningSimplexPastingInputs",
+        "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.FunctorIsoWhiskerCancellation",
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.FunctorEqIsoTransport"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SimplexSectionCompValue",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SimplexSectionCompValue.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftClassificationSimplexRestriction",
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SimplexSectionComposite",
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SectionBaseChangeCompValueNormalization",
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.FunctorIsoTransposeEvaluation",
+        "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.VertexTransport.FunctorIsoTransportAlgebra"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SimplexSectionCompNormalizedValue",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SimplexSectionCompNormalizedValue.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SimplexSectionCompValue",
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftClassificationRestrictionPullbackValue"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftClassificationRestrictionFactorValues",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftClassificationRestrictionFactorValues.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.FunctorEqIsoTransport",
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftClassificationSimplexRestriction",
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftClassificationSimplexRestrictionValue",
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftClassificationJointEvaluation",
+        "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.FunctorIsoWhiskerComposition"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftClassificationBaseChangeRestrictionFactorization",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftClassificationBaseChangeRestrictionFactorization.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftClassificationBaseChangeRestrictionValue",
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.FunctorIsoTransposeValue",
+        "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.FunctorIsoWhiskerAlgebra"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SimplexSectionBaseChangeValuePasting",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SimplexSectionBaseChangeValuePasting.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftClassificationSimplexRestriction",
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SimplexSectionCompValue",
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.SimplexNerveColimit",
+        "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.FunctorIsoWhiskerAlgebra",
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SectionBaseChangeCompValueNormalization",
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.FunctorIsoTransposeEvaluation",
+        "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.VertexTransport.FunctorIsoTransportAlgebra"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftClassificationBaseChangeConjugation",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftClassificationBaseChangeConjugation.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.JointRealizationComposition",
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftClassificationSimplexRestriction",
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftClassificationBaseChangeRestrictionFactorization",
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftClassificationRestrictionFactorValues",
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftClassificationRestrictionPullbackValue",
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftClassificationJointEvaluation",
+        "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.FunctorIsoWhiskerComposition",
+        "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.VertexTransport.FunctorIsoChainTransport",
+        "SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHomEvaluationNaturality"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SectionDiagramBaseChangePasting",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SectionDiagramBaseChangePasting.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SectionBaseChangeRealizationComposition",
+        "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.TransposeFunctorIsoRestriction"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SectionBaseChangeCompValueHom",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SectionBaseChangeCompValueHom.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.RelativeSectionOrdinaryAction",
+        "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanEnrichedRealizationValueHom",
+        "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SectionBaseChangeRealizationComposition"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftStraighteningSimplexComposite",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningSimplexComposite.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftStraighteningSimplexWhisker",
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftClassificationPullbackSimplexIso",
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SimplexSectionCoefficientComposition"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SimplexSectionCoefficientComposition",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SimplexSectionCoefficientComposition.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SimplexSectionCoefficientValues",
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SimplexSectionCoefficientPasting",
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SimplexSectionBaseChangeFactorValues"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftClassificationJointEvaluation",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftClassificationJointEvaluation.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftClassificationSimplexRestriction",
+        "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.FunctorFamilyTranspose"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftStraighteningSimplexDirect",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningSimplexDirect.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SimplexSectionCoefficientComposition",
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftStraighteningSimplexPastingInputs",
+        "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.FunctorIsoWhiskerCancellation",
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.FunctorEqIsoTransport"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SimplexSectionCoefficientPasting",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SimplexSectionCoefficientPasting.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SimplexSectionBaseChangeValuePasting",
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftClassificationRestrictionPullbackValue",
+        "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.DiagramIsoNormalizationAlgebra"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftClassificationPullbackSimplexIso",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftClassificationPullbackSimplexIso.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftStraighteningSimplexPastingInputs",
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SectionBaseChangeCompClassifiedHom",
+        "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.FunctorHomPrecompositionLaws",
+        "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.FunctorIsoWhiskerAlgebra"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftClassificationRestrictionPullbackValue",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftClassificationRestrictionPullbackValue.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftClassificationSimplexRestriction",
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftClassificationSimplexRestrictionValue",
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftClassificationJointEvaluation",
+        "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.FunctorIsoWhiskerComposition",
+        "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.VertexTransport.FunctorIsoChainTransport",
+        "SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHomEvaluationNaturality"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftStraighteningSimplexPastingInputs",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningSimplexPastingInputs.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SimplexSectionCoefficientValues",
+        "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.HomClassificationIsoLaws"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SimplexSectionComposite",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SimplexSectionComposite.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SimplexSectionBaseChangePasting"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftStraighteningBaseChangePasting",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePasting.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftStraighteningSimplexComposite",
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftStraighteningSimplexDirect",
+        "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.FunctorHomPrecompositionLaws"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SimplexSectionBaseChangePasting",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SimplexSectionBaseChangePasting.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SectionDiagramBaseChangePasting",
+        "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.StraighteningBaseChangeRestriction",
+        "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.VertexTransport.FunctorIsoTransportAlgebra"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftClassificationSimplexRestrictionValue",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftClassificationSimplexRestrictionValue.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftClassificationSimplexRestriction",
+        "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.NormalizedFunctorIsoComponentRestriction",
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.FunctorIsoTransposeValue"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SectionBaseChangeCompValueNormalization",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SectionBaseChangeCompValueNormalization.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SectionBaseChangeCompValueHom"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftClassificationSimplexRestriction",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftClassificationSimplexRestriction.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftStraighteningUnderComparison",
+        "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.LeftClassificationBaseChangeHom"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftStraighteningBaseChangeRestrictionNormalization",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangeRestrictionNormalization.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.VertexTransport.FunctorIsoTransportAlgebra",
+        "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.StraighteningBaseChangeRestriction",
+        "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.TransposeFunctorIsoRestriction"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SimplexSectionBaseChangeFactorValues",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SimplexSectionBaseChangeFactorValues.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SimplexSectionComposite",
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftClassificationRestrictionPullbackValue",
+        "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.FunctorIsoWhiskerComposition",
+        "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.VertexTransport.FunctorIsoTransportAlgebra",
+        "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.VertexTransport.FunctorIsoChainTransport"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftClassificationBaseChangeRestrictionValue",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftClassificationBaseChangeRestrictionValue.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.FunctorIsoValueCurry",
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftStraighteningBaseChangeRestrictionNormalization",
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftClassificationSimplexRestriction",
+        "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.NormalizedFunctorIsoComponentRestriction"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SectionBaseChangeCompClassifiedHom",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SectionBaseChangeCompClassifiedHom.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftClassificationSimplexRestriction",
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SectionBaseChangeCompValueNormalization",
+        "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanEnrichedRealizationValueHom",
+        "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SectionBaseChangeRealizationComposition"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.RelativeSectionOrdinaryAction",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/RelativeSectionOrdinaryAction.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanEnrichedDiagramOrdinaryAction",
+        "SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.RelativeFunctorActionEvaluation",
+        "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.RelativeBaseChangeComposition",
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftFibrationInfinityEquivalence"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SimplexSectionCoefficientValues",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SimplexSectionCoefficientValues.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftClassificationBaseChangeConjugation",
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SimplexSectionCompNormalizedValue",
+        "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.DiagramIsoNormalizationAlgebra"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanEnrichedRealizationValueHom",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/KanEnrichedRealizationValueHom.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanEnrichedComparisonEvaluation"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanEnrichedDiagramOrdinaryAction",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/KanEnrichedDiagramOrdinaryAction.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.NerveHomEdgeNaturality",
+        "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.JointComparisonPrecomposition",
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.KanDiagramNaturalTransformation"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanEnrichedComparisonEvaluation",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/KanEnrichedComparisonEvaluation.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanEnrichedRealizationValue",
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.SimplexSectionBaseChange",
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.KanDiagramOrdinaryEdgePrism"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ConeLegPostcomposition",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/ConeLegPostcomposition.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ConeEdgeCompatibility",
+        "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.EquivalenceLimits"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.SpecifiedConeReindex",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/SpecifiedConeReindex.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.LimitConeExtension",
+        "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.SliceRestriction"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.ReflectedWeightedNativeCone",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/HomotopyLimitsAndColimits/ReflectedWeightedNativeCone.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.ReflectedHomHolimComparison"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.SmallBousfieldKanWeight",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/HomotopyLimitsAndColimits/SmallBousfieldKanWeight.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.BousfieldKan",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.StrictNerveMaps"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.WeightedRestrictionIso",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/HomotopyLimitsAndColimits/WeightedRestrictionIso.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.WeightedRestriction"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.ReflectedWeightedHomComparison",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/HomotopyLimitsAndColimits/ReflectedWeightedHomComparison.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.ReflectedWeightedNativeCone"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StandardConstantTopEvaluation",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/ExamplesOfInfinityCategories/DifferentialGradedCategories/StandardConstantTopEvaluation.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.CubeEvaluation",
+        "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.AWConstant",
+        "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplicialCategory"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictCubeEvaluation",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/ExamplesOfInfinityCategories/DifferentialGradedCategories/StrictCubeEvaluation.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StandardConstantTopEvaluation",
+        "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.PathEvaluation",
+        "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.OrderDiagrams"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Thick",
+      "path": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/Thick.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.StableVertexClosure",
+        "Mathlib.CategoryTheory.Retract"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ThickClosureLaws",
+      "path": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/ThickClosureLaws.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Thick"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.HomTotalParameters",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/HomTotalParameters.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.HomTotalComparison",
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.HomTotalNaturality",
+        "SerrePositivity.HomologicalAlgebra.ComplexHomPrecompose"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeTotConeSectionVertex",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/NativeTotConeSectionVertex.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeTotConePointSection",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.UliftPointEvaluation",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.WeightedSectionParameter"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ReflectedBKNormalizedSectionsUncurry",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/ReflectedBKNormalizedSectionsUncurry.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ReflectedBKFreeTensorAW",
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedWeightSectionInverseEvaluation",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductAWRawCriterion",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeAWStandardCutComparison",
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ReflectedBKFreeConeTopEvaluation",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StandardHomParameterNaturality",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedSimplexNativeParameterEvaluation",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.AWCutFaces"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.DiscreteNativeTotCone",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/DiscreteNativeTotCone.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.StrictDerivedTotCone",
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.DiscreteComplexComparison"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBKReversePrecomposition",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/NormalizedBKReversePrecomposition.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ReflectedNormalizedBKHom",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.WeightEndHomSourceNaturality"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ReflectedNormalizedBKSmallHom",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/ReflectedNormalizedBKSmallHom.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ReflectedNormalizedBKHom",
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBKSmallHom",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.LinearHomSourceIso",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.AsSmallLinearHom"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBKStandardWeight",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/NormalizedBKStandardWeight.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.BKWeightComparisonComponents"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBKConeRepresentativeNaturality",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/NormalizedBKConeRepresentativeNaturality.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBousfieldKanComparisonNaturality",
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBKConeComposition"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.GammaReflectedBKComparison",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/GammaReflectedBKComparison.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBKReflectedSections"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeTotConePointSection",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/NativeTotConePointSection.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeTotConeFamilyLift",
+        "SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SpecifiedCocones.CoherentConePointSection",
+        "SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.WeightedCones.CoherentConeSourceWeightedRestriction",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.ReflectedStrictConeEvaluation"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.GammaReflectedBKComparisonUncurry",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/GammaReflectedBKComparisonUncurry.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.GammaReflectedBKComparisonFactor",
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ReflectedBKNormalizedSectionsMapEvaluation",
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.SmallBKIndexSectionsEvaluation",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.WeightedSectionsReflectionEvaluation",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.SectionsDiagramNaturality",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.ReflectedWeightedHomComparison"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBousfieldKanComparisonNaturality",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/NormalizedBousfieldKanComparisonNaturality.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBousfieldKanConeRepresentative",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.WeightEndHomTargetNaturality"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.HomDiagramDegreePrecompose",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/HomDiagramDegreePrecompose.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.HomToNormalizedBKRows"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ReflectedPointwiseBousfieldKanCone",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/ReflectedPointwiseBousfieldKanCone.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.PointwiseBousfieldKanSetCone",
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ReflectedBousfieldKanSetCone"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ReflectedBKConeZeroRow",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/ReflectedBKConeZeroRow.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBKConeZeroRow",
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.BKStandardZeroGenerator",
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.StandardLeg",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.LinearWeightZeroGenerator",
+        "SerrePositivity.HomologicalAlgebra.NormalizedMooreReverseExtendZero",
+        "SerrePositivity.HomologicalAlgebra.FreeWeightEndInverseEvaluation"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.EnrichedBousfieldKanCone",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/EnrichedBousfieldKanCone.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ReflectedPointwiseBousfieldKanCone",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ComplexDoldKanHomDiagram"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeTotIndex",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/NativeTotIndex.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeDGCone",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.SmallDiagramShape"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBKSourceComposition",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/NormalizedBKSourceComposition.lean",
+      "imports": [
+        "SerrePositivity.HomologicalAlgebra.ExtendedChainHomSourceMap",
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBKTensorRow"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.GammaReflectedBKComparisonFactor",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/GammaReflectedBKComparisonFactor.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.GammaReflectedBKComparison",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedFreeHomProjectedEvaluation"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBKSmallHom",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/NormalizedBKSmallHom.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBKFreeWeight",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.LinearHomSourceIso",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.AsSmallLinearHom"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ReflectedBKFreeTensorComparison",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/ReflectedBKFreeTensorComparison.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ReflectedBKFreeTensorRow",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeTensorHomInverseEvaluation"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.StandardWeightTotalComparison",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/StandardWeightTotalComparison.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.StandardWeightEnd",
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ProductTotal",
+        "SerrePositivity.HomologicalAlgebra.LinearWeightEndTotalization",
+        "SerrePositivity.HomologicalAlgebra.AlternatingFaceOpposite",
+        "SerrePositivity.HomologicalAlgebra.Cosimplicial.MapComplex",
+        "all"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ReflectedBKFreeConeTopEvaluation",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/ReflectedBKFreeConeTopEvaluation.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ReflectedBKFreeConeAdjunction",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeNegativeStandardHomEvaluation",
+        "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplicialCategory"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ReflectedBKFreeTensorRow",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/ReflectedBKFreeTensorRow.lean",
+      "imports": [
+        "SerrePositivity.HomologicalAlgebra.CochainOfHomPointEvaluation",
+        "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.AWAssocTerms",
+        "SerrePositivity.HomologicalAlgebra.ExtendedChainHomIsoEvaluation",
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBKSourceComposition",
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ReflectedBKSourceEvaluation"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.PointwiseBousfieldKanSetCone",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/PointwiseBousfieldKanSetCone.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBousfieldKanSetCone",
+        "SerrePositivity.HomologicalAlgebra.PointwiseTruncationGamma"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBousfieldKanConeRepresentative",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/NormalizedBousfieldKanConeRepresentative.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBousfieldKanHomComparison",
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.HomTotalComparison"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBousfieldKanSetCone",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/NormalizedBousfieldKanSetCone.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBousfieldKanConeRepresentative",
+        "SerrePositivity.HomologicalAlgebra.NormalizedLinearWeightHom"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.HomDoubleComplexComparison",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/HomDoubleComplexComparison.lean",
+      "imports": [
+        "SerrePositivity.HomologicalAlgebra.ComplexHomAdditive",
+        "SerrePositivity.HomologicalAlgebra.MapExtendComponents",
+        "SerrePositivity.HomologicalAlgebra.Cosimplicial.MapComplex",
+        "all",
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ProductComponents"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.HomTotalZeroRow",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/HomTotalZeroRow.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.HomTotalNaturality",
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.StandardZeroLeg"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.BousfieldKanWeightEndComparison",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/BousfieldKanWeightEndComparison.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.BarWeightEndNaturality",
+        "SerrePositivity.HomologicalAlgebra.DoubleOppositeOverWeight"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeTotConeFamilyLift",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/NativeTotConeFamilyLift.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeDGCone",
+        "SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SpecifiedCocones.CoherentConeSourceApex"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.HomTotalComparison",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/HomTotalComparison.lean",
+      "imports": [
+        "SerrePositivity.HomologicalAlgebra.ProductTotalHomNaturality",
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.HomDoubleComplexComparison",
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.HomTotalComponents"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.BKStandardZeroGenerator",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/BKStandardZeroGenerator.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBKStandardWeight",
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBousfieldKanSetCone",
+        "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.NerveCone"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.HomTotalHomogeneousComposition",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/HomTotalHomogeneousComposition.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.HomTotalNaturality"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBKSmallSections",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/NormalizedBKSmallSections.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBKSmallHom",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedWeightSectionEquivalence"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.StandardLeg",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/StandardLeg.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.StandardZeroLeg"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.DiscreteComponents",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/DiscreteComponents.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.SingleComponent",
+        "Mathlib.Algebra.Homology.Single"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.StandardCofaceHomotopy",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/StandardCofaceHomotopy.lean",
+      "imports": [
+        "SerrePositivity.HomologicalAlgebra.ProductTotalFirstRow",
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.StandardZeroLeg",
+        "all"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.BarWeightEndNaturality",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/BarWeightEndNaturality.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.StandardWeightTotalNaturality",
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.BarWeightEndComparison"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeTotConeLegSimplex",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/NativeTotConeLegSimplex.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeTotConeLegEvaluation"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedWeightSectionInverseEvaluation",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/NormalizedWeightSectionInverseEvaluation.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedWeightSectionEvaluation",
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ReflectedBKFreeConeAdjunction"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBKOriginalSections",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/NormalizedBKOriginalSections.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.SmallBKIndexSections",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.SmallBousfieldKanWeightIso",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.WeightedRestrictionIso",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.BousfieldKanHomotopyInvariance",
+        "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.OppositeKanHomotopy"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ReflectedBKFreeTensorCut",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/ReflectedBKFreeTensorCut.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ReflectedBKFreeTensorComparison",
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ReflectedBKFreeConeTopEvaluation",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StandardHomParameterNaturality",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedSimplexNativeParameterEvaluation",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.AWCutFaces"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeDerivedTotCone",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/NativeDerivedTotCone.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeTotConeLimit",
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.SemifreeRingEvaluationEquivalence",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.DGModules.Resolutions.DGModuleResolvedLimitTransfer"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ReflectedNormalizedBKSmallSections",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/ReflectedNormalizedBKSmallSections.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ReflectedNormalizedBKSmallHom",
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBKSmallSections",
+        "SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.WeightedCones.WeightedSectionsOpposite",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedWeightSectionEquivalence"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.HomToNormalizedBKRows",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/HomToNormalizedBKRows.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.StandardWeightHomRows",
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBousfieldKanConeRepresentative",
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.HomTotalHomogeneousComposition"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.SmallBKIndexSectionsEvaluation",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/SmallBKIndexSectionsEvaluation.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.SmallBKIndexSections"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.StandardWeightHomRows",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/StandardWeightHomRows.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.StandardWeightTotalInverseEvaluation",
+        "SerrePositivity.HomologicalAlgebra.WeightEndHomEvaluation"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ReflectedBKNormalizedSectionsMapEvaluation",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/ReflectedBKNormalizedSectionsMapEvaluation.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ReflectedBKNormalizedSectionsUncurry",
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedWeightSectionInverseEvaluation",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductAWRawCriterion",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeAWStandardCutComparison",
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ReflectedBKFreeConeTopEvaluation",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StandardHomParameterNaturality",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedSimplexNativeParameterEvaluation",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.AWCutFaces"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ReflectedBousfieldKanSetCone",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/ReflectedBousfieldKanSetCone.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBousfieldKanSetCone",
+        "SerrePositivity.HomologicalAlgebra.NormalizedMooreReverse"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.HomToNormalizedBKComposition",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/HomToNormalizedBKComposition.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.HomDiagramDegreePrecompose"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBousfieldKanHomComparison",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/NormalizedBousfieldKanHomComparison.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.BousfieldKanWeightEndComparison",
+        "SerrePositivity.HomologicalAlgebra.LinearWeightEndNormalization",
+        "SerrePositivity.HomologicalAlgebra.WeightEndHomIso"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.BarWeightEndComparison",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/BarWeightEndComparison.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.StandardWeightTotalComparison",
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.BarWeightComparison",
+        "Mathlib.Algebra.Category.ModuleCat.Projective"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeTotConeLegEvaluation",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/NativeTotConeLegEvaluation.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeTotConeSectionVertex",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.JoinConeSectionLeg"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBKConeZeroRow",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/NormalizedBKConeZeroRow.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.HomTotalZeroRow",
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.HomToNormalizedBKRows",
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBKConeComposition"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.HomTotalComponents",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/HomTotalComponents.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ProductCone",
+        "SerrePositivity.DifferentialGraded.Complexes.HomComplex"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.SmallBKIndexSections",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/SmallBKIndexSections.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ReflectedNormalizedBKSmallSections"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.HomTotalHorizontal",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/HomTotalHorizontal.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.HomTotalDifferential",
+        "all"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.StandardWeightTotalInverseEvaluation",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/StandardWeightTotalInverseEvaluation.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBKStandardWeight",
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ProductComponents"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeDerivedDiagramEq",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/NativeDerivedDiagramEq.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeDerivedTotCone",
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeTotIndex",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ComplexStrictNerveComparison"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.HomTotalDifferential",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/HomTotalDifferential.lean",
+      "imports": [
+        "SerrePositivity.HomologicalAlgebra.ProductTotalHomDifferential",
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.HomTotalComponents"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeTotConeLimit",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/NativeTotConeLimit.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeTotConeRestriction",
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.GammaReflectedBKComparisonEquality",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.GeneralHomHolimComparison",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.CoherentConeFamilyHomotopy",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.EquivalenceAllLimits",
+        "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.UniverseHomotopy",
+        "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.ComparisonEquivalence"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeDerivedTotLeg",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/NativeDerivedTotLeg.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeDerivedTotCone",
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeTotConeStandardLeg",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ConeLegPostcomposition"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.DiscreteComplexComparison",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/DiscreteComplexComparison.lean",
+      "imports": [
+        "SerrePositivity.HomologicalAlgebra.ProductTotalSingleRow",
+        "SerrePositivity.HomologicalAlgebra.MapExtendComplex",
+        "SerrePositivity.HomologicalAlgebra.Cosimplicial.MapComplex",
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.DiscreteComponents"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ProductComponents",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/ProductComponents.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ProductTotal",
+        "all"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.StandardWeightEnd",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/StandardWeightEnd.lean",
+      "imports": [
+        "SerrePositivity.HomologicalAlgebra.FreeWeightEndEvaluation",
+        "SerrePositivity.HomologicalAlgebra.StandardSimplexWeight"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.SingleComponent",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/SingleComponent.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ProductCone"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBousfieldKanHomSpace",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/NormalizedBousfieldKanHomSpace.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBousfieldKanConeRepresentative",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.TruncatedDoldKanQuasiIso"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.HomTotalNaturality",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/HomTotalNaturality.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.HomTotalComponents"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBKTensorRow",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/NormalizedBKTensorRow.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBKConeComposition",
+        "SerrePositivity.DifferentialGraded.Category.Basic"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.StandardZeroLeg",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/StandardZeroLeg.lean",
+      "imports": [
+        "SerrePositivity.HomologicalAlgebra.ProductTotalZeroRow",
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ProductComponents"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.DiscreteComparisonComponents",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/DiscreteComparisonComponents.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.DiscreteComplexComparison",
+        "SerrePositivity.HomologicalAlgebra.MapExtendComponents",
+        "all"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ReflectedBKSourceEvaluation",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/ReflectedBKSourceEvaluation.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.HomSourceCochainEvaluation",
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ReflectedNormalizedBKSmallHom",
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBKReversePrecomposition"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBKReflectedSections",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/NormalizedBKReflectedSections.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBKOriginalSections",
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeCoherentCone"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.GammaReflectedBKComparisonEquality",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/GammaReflectedBKComparisonEquality.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.GammaReflectedBKComparisonUncurry"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeCoherentCone",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/NativeCoherentCone.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.EnrichedBousfieldKanCone",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.SmallBousfieldKanWeight",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.ReflectedWeightedNativeCone"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ProductCone",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/ProductCone.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ProductComponents"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBKConeComposition",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/NormalizedBKConeComposition.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.HomToNormalizedBKComposition"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeTotConeRestriction",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/NativeTotConeRestriction.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeTotConePointSection",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.WeightedSectionParameterNaturality",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.UliftPointTensorEvaluation"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ReflectedBKFreeConeAdjunction",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/ReflectedBKFreeConeAdjunction.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.LinearWeightFreeHomComparison",
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ReflectedPointwiseBousfieldKanCone",
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ReflectedBKSourceEvaluation"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.StandardWeightTotalNaturality",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/StandardWeightTotalNaturality.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.StandardWeightTotalComparison",
+        "SerrePositivity.HomologicalAlgebra.LinearWeightEndTotalParameters",
+        "all"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.DerivedTotFamilyBoundaries",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/DerivedTotFamilyBoundaries.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.StrictDerivedTotCone",
+        "Mathlib.CategoryTheory.Functor.Currying"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ProductTotal",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/ProductTotal.lean",
+      "imports": [
+        "SerrePositivity.HomologicalAlgebra.ProductTotal",
+        "SerrePositivity.DifferentialGraded.Derived.Basic",
+        "Mathlib.AlgebraicTopology.AlternatingFaceMapComplex",
+        "Mathlib.Algebra.Homology.Embedding.CochainComplex",
+        "Mathlib.Algebra.Category.ModuleCat.Limits",
+        "Mathlib.CategoryTheory.Limits.Preserves.Opposites"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeDGCone",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/NativeDGCone.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeCoherentCone",
+        "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.CoherentComparison",
+        "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.EquivalenceLimits"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ReflectedNormalizedBKHom",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/ReflectedNormalizedBKHom.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ReflectedBousfieldKanSetCone",
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBousfieldKanHomSpace"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeTotConeStandardLeg",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/NativeTotConeStandardLeg.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ReflectedBKConeZeroRow",
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeTotConeLegSimplex",
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.StandardLeg",
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ReflectedBKFreeConeTopEvaluation",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.HomSpaces.DGClosedEdges",
+        "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.CoherentLowComparison"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.StrictDerivedTotCone",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/StrictDerivedTotCone.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeDerivedDiagramEq",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.SpecifiedConeReindex"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBKFreeWeight",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/NormalizedBKFreeWeight.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.LinearWeightFreeDiagramIso",
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBousfieldKanSetCone"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ReflectedBKFreeTensorAW",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/ReflectedBKFreeTensorAW.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ReflectedBKFreeTensorCut",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductAWRawCriterion",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeAWStandardCutComparison",
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ReflectedBKFreeConeTopEvaluation",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StandardHomParameterNaturality",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedSimplexNativeParameterEvaluation",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.AWCutFaces"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.SemifreeRingEvaluationEquivalence",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/SemifreeRingEvaluationEquivalence.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.SemifreePointComparison",
+        "SerrePositivity.EInfinity.ComplexLimits.SemifreeRingEvaluation",
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.DGQuasiEquivalenceNerve"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.BKWeightComparisonComponents",
+      "path": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/BKWeightComparisonComponents.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBousfieldKanHomComparison"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.UliftPointTensorEvaluation",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/UliftPointTensorEvaluation.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.UniverseSSetMaps",
+        "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.JoinTensorPoint"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.JoinConeSectionLeg",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/JoinConeSectionLeg.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ConeEdgeCompatibility",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.CoherentConeSectionSpace"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductDiagramMaps",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/FreeProductDiagramMaps.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductDiagramEZ",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.DiagramExtendNaturality",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.CoefficientDiagramMaps"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductComparisonNaturality",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/FreeProductComparisonNaturality.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductEZ",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NegativeEZCoefficientNaturality"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedIntervalCochain",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/NormalizedIntervalCochain.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedIntervalRawChain",
+        "SerrePositivity.EInfinity.ComplexLimits.NormalizedChainsHom"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.WeightEndHomTargetNaturality",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/WeightEndHomTargetNaturality.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.WeightEndHomSourceNaturality",
+        "SerrePositivity.HomologicalAlgebra.LinearWeightEndTotalParameters",
+        "SerrePositivity.EInfinity.PowerOperation.LinearHomComplexFunctor"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.LinearWeightFreeHomComparison",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/LinearWeightFreeHomComparison.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.LinearWeightFreeDiagramEvaluation",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.CopowerNormalizedFreeHom"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NegativeAWRestriction",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/NegativeAWRestriction.lean",
+      "imports": [
+        "SerrePositivity.HomologicalAlgebra.MappedNormalizedAWRestriction",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NegativeEZCoefficient"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedIntervalHomEndpoints",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/NormalizedIntervalHomEndpoints.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedIntervalHom",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedIntervalEndpointValues",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.DiagramTensorUnit"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ShuffleCutValues",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/ShuffleCutValues.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ShuffleCutDiagonal"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedIntervalChainNaturality",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/NormalizedIntervalChainNaturality.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedIntervalRawChain"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedSimplexFreeAdjunction",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/NormalizedSimplexFreeAdjunction.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeChainsAdjunction",
+        "SerrePositivity.EInfinity.ComplexLimits.NormalizedSimplexTensorHom"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.IntegerCoefficientTensorValues",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/IntegerCoefficientTensorValues.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NegativeEZCoefficient",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.IntegerCoefficientFree",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.Tensor.DGIntegerCoefficientTensor",
+        "Mathlib.Algebra.Category.ModuleCat.Monoidal.Adjunction"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramCofibrantVertices",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramCofibrantVertices.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramLocalizedVertices"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StandardSimplexParameter",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StandardSimplexParameter.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductFrames",
+        "SerrePositivity.EInfinity.BarrattEccles.Normalized"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFunctorialFrames",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramFunctorialFrames.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramReedyMappingModel"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.DiagramTensorHomComponents",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/DiagramTensorHomComponents.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.DiagramHomFamilyEquiv"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FrameHomotopyUnderlyingMap",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/FrameHomotopyUnderlyingMap.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FrameParameterEvaluation",
+        "SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.ResolutionHom",
+        "Mathlib.AlgebraicTopology.SimplicialSet.Homotopy"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ProductParameterCoaction",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/ProductParameterCoaction.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductFrames",
+        "Mathlib.CategoryTheory.Monoidal.Cartesian.FunctorCategory"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductHomComparisonHomotopies",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/FreeProductHomComparisonHomotopies.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FrameHomHomotopy",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductFrameHomotopies",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FrameCoactionCounit",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductHomComparison"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeTensorCoefficientGeneratorValues",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/FreeTensorCoefficientGeneratorValues.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductAWLastCut"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedFreeHomProjectedEvaluation",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/NormalizedFreeHomProjectedEvaluation.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StandardDoldKanProjectedEvaluation",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeChainsAdjunction"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedIntervalLowDegrees",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/NormalizedIntervalLowDegrees.lean",
+      "imports": [
+        "Mathlib.AlgebraicTopology.SimplicialSet.StdSimplex",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedIntervalBoundary",
+        "SerrePositivity.EInfinity.BarrattEccles.Normalized"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductFrameHomotopies",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/FreeProductFrameHomotopies.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductDiagramHomotopies",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductFrameUncurry",
+        "SerrePositivity.HomologicalAlgebra.CurriedDiagramHomotopy"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.CoefficientUnitNaturality",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/CoefficientUnitNaturality.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.IntegerCoefficientTensorValues"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StandardHomNormalizedTop",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StandardHomNormalizedTop.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StandardHomTopProjection",
+        "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.NormalizedDifferential",
+        "Mathlib.AlgebraicTopology.DoldKan.Normalized"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.LiftedStandardSimplexHomEvaluation",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/LiftedStandardSimplexHomEvaluation.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ProductSectionsHom",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedSimplexFreeAdjunction"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StandardDoldKanProjectedEvaluation",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StandardDoldKanProjectedEvaluation.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StandardHomNormalizedTop",
+        "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.DoldKanIso",
+        "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.AWPreservation"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductDiagramNaturality",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/FreeProductDiagramNaturality.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductDiagramMaps"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.TensorFrameCoaction",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/TensorFrameCoaction.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ProductFrameCoaction"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NegativeEZTargetDiagram",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/NegativeEZTargetDiagram.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.DiagramCoefficientEZ",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.CoefficientTensorNaturality",
+        "SerrePositivity.HomologicalAlgebra.PointwiseExtendComplex"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedTensorHomTargetNaturality",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/NormalizedTensorHomTargetNaturality.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedWeightSectionMap",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.DiagramHomTargetMap",
+        "SerrePositivity.EInfinity.ComplexLimits.NormalizedHomTargetNaturality"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramMappingSpan",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramMappingSpan.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramCofibrantVertices",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramEvaluationFactorization",
+        "SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SliceTransport.CoherentPinchedTransport"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductSectionsHomEvaluation",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/FreeProductSectionsHomEvaluation.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.LiftedStandardSimplexHomEvaluation"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StandardHomParameterNaturality",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StandardHomParameterNaturality.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StandardTopBoundary"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedWeightSectionNaturality",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/NormalizedWeightSectionNaturality.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedTensorHomTargetNaturality",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ProductSectionsTargetNaturality"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.DiagramTensorHomNaturality",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/DiagramTensorHomNaturality.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.DiagramHomFamilyEquiv",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.HomotopyIntervalNaturality"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.LinearWeightFreeDiagramIso",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/LinearWeightFreeDiagramIso.lean",
+      "imports": [
+        "SerrePositivity.HomologicalAlgebra.PointwiseNormalizedMoore",
+        "SerrePositivity.HomologicalAlgebra.PointwiseExtendComplex",
+        "SerrePositivity.HomologicalAlgebra.NormalizedLinearWeightFree",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductFrames"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.DoldKanClosedPostcomposition",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/DoldKanClosedPostcomposition.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.ComplexLimits.DoldKanGammaChainNaturality",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.HomSpaces.DGStandardClosedPostcomposition"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FrameHomHomotopy",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/FrameHomHomotopy.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FrameIntervalHom",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FrameHomotopyUnderlyingMap",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FrameParameterEndpoints",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StandardParameterConstant"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.DiagramTensorUnit",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/DiagramTensorUnit.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.DiagramHomFamilyEquiv",
+        "SerrePositivity.DifferentialGraded.Complexes.HomLimits"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StandardHomTopProjection",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StandardHomTopProjection.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StandardTopBoundary",
+        "Mathlib.AlgebraicTopology.DoldKan.Degeneracies"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.DiagramCoefficientEZ",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/DiagramCoefficientEZ.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.DiagramIntegerEZ",
+        "SerrePositivity.HomologicalAlgebra.NormalizedMooreMap",
+        "Mathlib.CategoryTheory.Abelian.FunctorCategory",
+        "Mathlib.Algebra.Homology.Embedding.ExtendHomotopy"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StandardParameterConstant",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StandardParameterConstant.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedIntervalEndpoints",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StandardParameterAugmentation"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedWeightSectionEvaluation",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/NormalizedWeightSectionEvaluation.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductSectionsHomEvaluation",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedWeightSectionMap"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedSimplexInverseAdjunction",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/NormalizedSimplexInverseAdjunction.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.LiftedStandardSimplexHomEvaluation",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeNegativeStandardHomEvaluation"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.DiagramHomFamilyEquiv",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/DiagramHomFamilyEquiv.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.DiagramHomFamilyLift"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeChainsAdjunction",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/FreeChainsAdjunction.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductFrames",
+        "SerrePositivity.EInfinity.ComplexLimits.TruncatedDoldKanFunctor",
+        "SerrePositivity.HomologicalAlgebra.NegativeExtendTruncationAdjunction",
+        "Mathlib.CategoryTheory.Adjunction.Whiskering",
+        "Mathlib.Algebra.Category.ModuleCat.Adjunctions",
+        "Mathlib.AlgebraicTopology.DoldKan.Equivalence"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.IntegerCoefficientTensorDifferential",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/IntegerCoefficientTensorDifferential.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.IntegerCoefficientTensorDegrees",
+        "SerrePositivity.HomologicalAlgebra.NegativeTensorBaseChange"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.CoefficientEZEquivalence",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/CoefficientEZEquivalence.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ShuffleAWProjected",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductEZ"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.DiagramExtendNaturality",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/DiagramExtendNaturality.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NegativeEZTargetDiagram"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.CopowerNormalizedFreeHom",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/CopowerNormalizedFreeHom.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeChainsAdjunction",
+        "SerrePositivity.HomologicalAlgebra.CopowerUnitFree",
+        "SerrePositivity.HomologicalAlgebra.CopowerUnitHomDiagram",
+        "SerrePositivity.HomologicalAlgebra.PointwiseNormalizedWeightHom"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductDiagramEZ",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/FreeProductDiagramEZ.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NegativeEZTargetDiagram",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductComparisonNaturality"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.DiagramHomCochains",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/DiagramHomCochains.lean",
+      "imports": [
+        "SerrePositivity.HomologicalAlgebra.FunctorComplexExchangeEquivalence",
+        "SerrePositivity.DifferentialGraded.Complexes.HomComplex",
+        "Mathlib.CategoryTheory.Preadditive.FunctorCategory"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ShuffleCutNormalization",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/ShuffleCutNormalization.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.NormalizedShuffle",
+        "Mathlib.AlgebraicTopology.DoldKan.Degeneracies"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedWeightSectionSourceNaturality",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/NormalizedWeightSectionSourceNaturality.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedTensorHomSourceNaturality",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ProductSectionsSourceNaturality"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductEZ",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/FreeProductEZ.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NegativeEZCoefficient",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.IntegerCoefficientFree"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductAWLastCut",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/FreeProductAWLastCut.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StandardParameterRightUnit",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.IntegerCoefficientTensorValues",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StandardParameterAugmentationValues",
+        "SerrePositivity.EInfinity.BarrattEccles.Unitors",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeChainsCoefficientDegrees",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.IntegerNegativeTensorCoefficients",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedAWRightAugmentationCut",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ProductFrameCoaction",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StandardParameterAugmentation"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.SmallBousfieldKanWeightIso",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/SmallBousfieldKanWeightIso.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.SmallOverLift",
+        "Mathlib.CategoryTheory.Types.Basic"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.UliftPointEvaluation",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/UliftPointEvaluation.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.UliftPointTensorEvaluation"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.DiagramTensorDoldKan",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/DiagramTensorDoldKan.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.ComplexLimits.TruncatedDoldKanFunctor",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StandardSimplexParameter",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.DiagramHomFamilyEquiv",
+        "SerrePositivity.EInfinity.ComplexLimits.NormalizedSimplexTensorHom"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ShuffleCutSum",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/ShuffleCutSum.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ShuffleCutValues"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedWeightSectionEquivalence",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/NormalizedWeightSectionEquivalence.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedWeightSectionMap",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductHomComparisonHomotopies",
+        "SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.HomotopyWhiskering",
+        "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.SimplicialHomotopyEquivalence"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeNegativeStandardHomEvaluation",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/FreeNegativeStandardHomEvaluation.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeNegativeHomDecomposition",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedFreeHomZeroEvaluation",
+        "SerrePositivity.HomologicalAlgebra.ComplexLimits.TruncationInclusionComponents"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NegativeEZCoefficientNaturality",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/NegativeEZCoefficientNaturality.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.CoefficientTensorNaturality"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.IntegerCoefficientFree",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/IntegerCoefficientFree.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.Tensor.DGSimplicialRingCoefficientComplex",
+        "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.IntegerLinearizationDesc",
+        "Mathlib.Algebra.Category.ModuleCat.Adjunctions",
+        "Mathlib.CategoryTheory.Adjunction.Unique"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductAWCutValues",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/FreeProductAWCutValues.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeTensorCoefficientGeneratorValues"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.SmallOverLift",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/SmallOverLift.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.SmallBousfieldKanWeight"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductHomComparison",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/FreeProductHomComparison.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductFrames",
+        "SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.ResolutionHom"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramLocalizedVertices",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramLocalizedVertices.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramRightFrameComparison"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.HomotopyIntervalNaturality",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/HomotopyIntervalNaturality.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.HomotopyIntervalCochain",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedIntervalCochainNaturality"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedIntervalCochainNaturality",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/NormalizedIntervalCochainNaturality.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedIntervalChainNaturality",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedIntervalTruncationNaturality",
+        "SerrePositivity.EInfinity.ComplexLimits.NormalizedHomTargetNaturality"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.LinearWeightInverseSource",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/LinearWeightInverseSource.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.LinearWeightFreeDiagramIso",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.HomSourceCochainEvaluation"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ProductSectionsSourceNaturality",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/ProductSectionsSourceNaturality.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.WeightedAdjunctionSourceNaturality",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeFrameWeightMaps"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.DiagramIntegerEZ",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/DiagramIntegerEZ.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ShuffleAWHomotopyNaturality",
+        "SerrePositivity.HomologicalAlgebra.PointwiseChainHomotopy",
+        "SerrePositivity.HomologicalAlgebra.FunctorComplexExchange"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.WeightedSectionsReflectionEvaluation",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/WeightedSectionsReflectionEvaluation.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.WeightedCones.WeightedSectionsOpposite",
+        "SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.OppositeInternalHomEvaluation"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedFreeAWProjectedEvaluation",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/NormalizedFreeAWProjectedEvaluation.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedFreeHomProjectedEvaluation",
+        "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StandardComposition"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.DiagramHomTargetMap",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/DiagramHomTargetMap.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.DiagramTensorHomNaturality"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StandardParameterAugmentation",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StandardParameterAugmentation.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StandardSimplexParameter",
+        "SerrePositivity.EInfinity.ComplexLimits.NormalizedSimplexContractionNaturality"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeNegativeHomDecomposition",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/FreeNegativeHomDecomposition.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeTensorCoefficientGeneratorValues",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedFreeHomProjectedEvaluation",
+        "SerrePositivity.EInfinity.ComplexLimits.ExtendTruncationHomInclusion"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.AWRightAugmentationCut",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/AWRightAugmentationCut.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.AlexanderWhitney",
+        "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.IntegerTensorAdditivity"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedIntervalHomNaturality",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/NormalizedIntervalHomNaturality.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedIntervalHom",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.DiagramTensorHomNaturality"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedFreeHomZeroEvaluation",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/NormalizedFreeHomZeroEvaluation.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedFreeAWProjectedEvaluation",
+        "SerrePositivity.EInfinity.ComplexLimits.StandardDoldKanZeroRawEvaluation"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedIntervalTruncationNaturality",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/NormalizedIntervalTruncationNaturality.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedIntervalCycleData"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.LinearHomSourceIso",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/LinearHomSourceIso.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.HomotopyIntervalNaturality"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.IntegerCoefficientTensorDegrees",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/IntegerCoefficientTensorDegrees.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.Tensor.DGIntegerCoefficientTensor",
+        "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.ChainTensorVanishing",
+        "Mathlib.CategoryTheory.Limits.Preserves.Shapes.Products",
+        "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.AlexanderWhitney"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ShuffleCutDiagonal",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/ShuffleCutDiagonal.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ShuffleCutNormalization"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.LiftedStandardSimplexParameterEvaluation",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/LiftedStandardSimplexParameterEvaluation.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.LiftedStandardSimplexHomEvaluation"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedSimplexInverseNaturality",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/NormalizedSimplexInverseNaturality.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.ComplexLimits.TruncatedDoldKanFunctor",
+        "SerrePositivity.EInfinity.ComplexLimits.NormalizedHomTargetNaturality"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedIntervalCycleData",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/NormalizedIntervalCycleData.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedIntervalCochain"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.AsSmallLinearHom",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/AsSmallLinearHom.lean",
+      "imports": [
+        "SerrePositivity.DifferentialGraded.Complexes.HomComplex",
+        "Mathlib.CategoryTheory.Category.ULift",
+        "Mathlib.CategoryTheory.Linear.FunctorCategory"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.IntegerNegativeTensorCoefficients",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/IntegerNegativeTensorCoefficients.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NegativeEZCoefficient",
+        "SerrePositivity.HomologicalAlgebra.MapExtendComponents"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeAWStandardCutComparison",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/FreeAWStandardCutComparison.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.AWCutFaces",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductAWCutValues",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeNegativeStandardHomEvaluation"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.LinearWeightZeroGenerator",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/LinearWeightZeroGenerator.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.LinearWeightFreeDiagramIso",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeTensorCoefficientGeneratorValues",
+        "SerrePositivity.HomologicalAlgebra.NormalizedMooreInverseInclusion",
+        "SerrePositivity.HomologicalAlgebra.MapExtendComponents"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.CoefficientDiagramMaps",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/CoefficientDiagramMaps.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.DiagramCoefficientEZ",
+        "SerrePositivity.HomologicalAlgebra.NormalizedEZMap"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedIntervalHom",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/NormalizedIntervalHom.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.HomotopyIntervalCochain",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.DiagramHomFamilyEquiv",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedIntervalEndpoints"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedAWRightAugmentationCut",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/NormalizedAWRightAugmentationCut.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.AWRightAugmentationCut",
+        "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.NormalizedAlexanderWhitney"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductFrames",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/FreeProductFrames.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductDiagramNaturality"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramEvaluationFrames",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramEvaluationFrames.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramReedyMappingModel",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FramePreservation",
+        "SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.ResolutionHom"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.LinearWeightFreeDiagramEvaluation",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/LinearWeightFreeDiagramEvaluation.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.LinearWeightFreeDiagramIso"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ProductSectionsTargetNaturality",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/ProductSectionsTargetNaturality.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ProductSectionsHom"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FrameIntervalHom",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/FrameIntervalHom.lean",
+      "imports": [
+        "SerrePositivity.HomologicalAlgebra.UncurriedDiagramHomotopy",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedIntervalHomEndpoints"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedIntervalBoundary",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/NormalizedIntervalBoundary.lean",
+      "imports": [
+        "Mathlib.Data.Fin.Basic",
+        "Mathlib.Data.Fintype.Fin",
+        "Mathlib.Order.Hom.Basic",
+        "Mathlib.Algebra.Group.Hom.Defs",
+        "Mathlib.Tactic.FinCases"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeChainsCoefficientDegrees",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/FreeChainsCoefficientDegrees.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeChainsCoefficientProjection",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedAWRightAugmentationCut",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ProductFrameCoaction",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StandardParameterAugmentation"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ProductFrameCoaction",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/ProductFrameCoaction.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ProductParameterCoaction",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StandardSimplexParameter"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ComplexDerivedHammockSource",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/ComplexDerivedHammockSource.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ComplexDerivedEvaluation",
+        "SerrePositivity.EInfinity.PowerOperation.ComplexHammockSource"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeChainsCoefficientProjection",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/FreeChainsCoefficientProjection.lean",
+      "imports": [
+        "SerrePositivity.HomologicalAlgebra.NormalizedMooreMapProjection",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductEZ"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedWeightSectionMap",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/NormalizedWeightSectionMap.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.DiagramTensorDoldKan",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ProductSectionsHom",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductHomComparison"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StandardParameterAugmentationValues",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StandardParameterAugmentationValues.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StandardParameterAugmentation",
+        "SerrePositivity.EInfinity.ComplexLimits.NormalizedSimplexCochainAugmentationZero",
+        "SerrePositivity.EInfinity.ComplexLimits.NormalizedSimplexAugmentationZero"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedSimplexNativeParameterEvaluation",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/NormalizedSimplexNativeParameterEvaluation.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.LiftedStandardSimplexParameterEvaluation",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedSimplexInverseAdjunction"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductAWRawCriterion",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/FreeProductAWRawCriterion.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ProductChainsCoefficientProjection",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NegativeAWRestriction"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.DiagramHomSourceMap",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/DiagramHomSourceMap.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.DiagramTensorHomNaturality"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramReedyMappingModel",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramReedyMappingModel.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramLocalization",
+        "SerrePositivity.EInfinity.ProjectiveModel",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.HornTensor"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.TruncatedDoldKanQuasiIso",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/TruncatedDoldKanQuasiIso.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.ComplexLimits.DoldKanPinchedChainNaturality",
+        "SerrePositivity.EInfinity.ComplexLimits.TruncatedDoldKanFunctor",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.LocalizationAndRoofs.PinchedChainMapQuasiIso",
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.Reflection"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedIntervalEndpointAugmentation",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/NormalizedIntervalEndpointAugmentation.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedIntervalEndpoints"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFrameSections",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramFrameSections.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramRightFrameComparison"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.WeightedSectionParameterNaturality",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/WeightedSectionParameterNaturality.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.WeightedCones.WeightedConeEndPrecomposition",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.ReflectedWeightedHomComparison"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ShuffleAWHomotopyNaturality",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/ShuffleAWHomotopyNaturality.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ShuffleAWProjected",
+        "SerrePositivity.KST.ProExcision.NormalizedEZHomotopyNaturality"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NegativeEZCoefficient",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/NegativeEZCoefficient.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.IntegerCoefficientTensorDifferential",
+        "SerrePositivity.HomologicalAlgebra.NormalizedEZMap",
+        "Mathlib.Algebra.Homology.Embedding.ExtendHomotopy"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ComplexStrictNerveComparison",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/ComplexStrictNerveComparison.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.NerveInclusion",
+        "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.CoherentLowComparison",
+        "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictCubeEvaluation",
+        "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.OrderDiagrams"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ProductSectionsHom",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/ProductSectionsHom.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeChainsAdjunction",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StandardSimplexParameter",
+        "SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.AdjunctionHom",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.WeightedFunctor",
+        "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.UniverseJoinSimplexShapes",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.StandardSimplexCosimplicialHom"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FrameParameterEndpoints",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/FrameParameterEndpoints.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FrameParameterEvaluation"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedIntervalVertexValues",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/NormalizedIntervalVertexValues.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedIntervalCycleData",
+        "SerrePositivity.EInfinity.ComplexLimits.NormalizedHomZeroRawEvaluation",
+        "SerrePositivity.EInfinity.ComplexLimits.TruncationZeroCyclesInclusion"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedIntervalRawChain",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/NormalizedIntervalRawChain.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedIntervalLowDegrees",
+        "Mathlib.AlgebraicTopology.AlternatingFaceMapComplex"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeTensorHomInverseEvaluation",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/FreeTensorHomInverseEvaluation.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedSimplexInverseNaturality",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.DiagramTensorDoldKan",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.DiagramTensorHomComponents"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.AWCutFaces",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/AWCutFaces.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StandardTopBoundary",
+        "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.AWAssocTerms",
+        "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.AlexanderWhitney"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.WeightEndHomSourceNaturality",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/WeightEndHomSourceNaturality.lean",
+      "imports": [
+        "SerrePositivity.HomologicalAlgebra.WeightEndHomIso",
+        "SerrePositivity.HomologicalAlgebra.WeightEndHomEvaluation",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.HomotopyIntervalNaturality"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ProductChainsCoefficientProjection",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/ProductChainsCoefficientProjection.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeTensorCoefficientGeneratorValues",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.CoefficientUnitNaturality"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramRightFrameComparison",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramRightFrameComparison.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramModelLocalization",
+        "SerrePositivity.EInfinity.SimplicialLocalization.ModelRightFrameComparison"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ComplexDoldKanHomDiagram",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/ComplexDoldKanHomDiagram.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.DoldKanClosedPostcomposition",
+        "SerrePositivity.EInfinity.ComplexLimits.ComplexPinchedPostcomposition"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.CoefficientTensorNaturality",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/CoefficientTensorNaturality.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NegativeEZCoefficient",
+        "SerrePositivity.HomologicalAlgebra.NegativeTensorBaseChangeNaturality"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedIntervalEndpointValues",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/NormalizedIntervalEndpointValues.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedIntervalVertexValues",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedIntervalEndpoints",
+        "SerrePositivity.EInfinity.ComplexLimits.NormalizedSimplexCochainAugmentationZero"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.DiagramHomFamilyLift",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/DiagramHomFamilyLift.lean",
+      "imports": [
+        "Mathlib.CategoryTheory.Linear.FunctorCategory",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.DiagramHomCochains",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.DiagramTensorHom"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramPointFrameEnd",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramPointFrameEnd.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramEvaluationFrames",
+        "Mathlib.CategoryTheory.Limits.Shapes.End",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.KanLimits"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.HomotopyIntervalCochain",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/HomotopyIntervalCochain.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedIntervalCycleData",
+        "SerrePositivity.DifferentialGraded.Complexes.HomComplex"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeFrameWeightMaps",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/FreeFrameWeightMaps.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductHomComparison"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ShuffleAWProjected",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/ShuffleAWProjected.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ShuffleCutSum",
+        "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.NormalizedEZHomotopy"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedIntervalEndpoints",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/NormalizedIntervalEndpoints.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StandardParameterAugmentation",
+        "SerrePositivity.EInfinity.AlexanderWhitney.SimplexCounitContraction"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StandardParameterRightUnit",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StandardParameterRightUnit.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StandardParameterAugmentationValues",
+        "SerrePositivity.EInfinity.BarrattEccles.Unitors"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.DiagramTensorHom",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/DiagramTensorHom.lean",
+      "imports": [
+        "SerrePositivity.DifferentialGraded.Complexes.MaurerCartanCurrying",
+        "Mathlib.CategoryTheory.Monoidal.FunctorCategory"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FrameParameterEvaluation",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/FrameParameterEvaluation.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StandardSimplexParameter"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.WeightedAdjunctionSourceNaturality",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/WeightedAdjunctionSourceNaturality.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ProductSectionsTargetNaturality",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.WeightedRestriction"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FrameCoactionCounit",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/FrameCoactionCounit.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductAWRightAugmentation",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ProductFrameCoaction",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.TensorFrameCoaction",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StandardParameterAugmentation"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductFrameUncurry",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/FreeProductFrameUncurry.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductFrames",
+        "Mathlib.CategoryTheory.Functor.Currying"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramModelLocalization",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramModelLocalization.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFunctorialFrames",
+        "SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.ModelRelative",
+        "SerrePositivity.EInfinity.SimplicialLocalization.WeakNerveInverts",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.LocalizationSourceIso"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedTensorHomSourceNaturality",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/NormalizedTensorHomSourceNaturality.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedWeightSectionMap",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.DiagramHomSourceMap",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeFrameWeightMaps",
+        "SerrePositivity.EInfinity.ComplexLimits.NormalizedHomTargetNaturality"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductDiagramHomotopies",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/FreeProductDiagramHomotopies.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductDiagramMaps"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.HomSourceCochainEvaluation",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/HomSourceCochainEvaluation.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.LinearHomSourceIso"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductAWRightAugmentation",
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/FreeProductAWRightAugmentation.lean",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductAWLastCut",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.IntegerNegativeTensorCoefficients",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedAWRightAugmentationCut",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ProductFrameCoaction",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StandardParameterAugmentation"
+      ]
+    }
+  ]
+}

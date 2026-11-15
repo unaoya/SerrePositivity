@@ -1,6 +1,7 @@
--- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Derived.SheafOfSetsExcision（仮。原典 Cor 8.12 の証明の集合の層の部分）
--- 設計書：formalization-plans/bhatt-scholze/a6-design.md §3.2 の 1〜4、単位 A6-3。基準コミット 972bb7f53。ビルドしない。
+-- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Arc.SheafOfSetsExcision（仮。原典 Cor 8.12 の証明の集合の層の部分）
+-- 設計書：formalization-plans/bhatt-scholze/a6-design.md §3.2 の 1〜4、単位 A6-3。基準コミット efa846fe8。型検査対象（5∞-0）。
 module
+public import SerrePositivity.BhattScholze.Perfectoid.FiniteProduct
 
 public import SerrePositivity.EInfinity.Perfectoidization.TheoryInterface
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface
@@ -88,10 +89,10 @@ def arcDiagonalMap {S T : A_R R} (f : S ⟶ T) (I : Ideal S.right)
       T.right × completionRing p (pushout q q) := by
   let q := (quotientComparison R f I).right
   let t := (quotientProjection R T (I.map f.right.hom)).right
-  let μ := pushout.desc (𝟙 T.right) (𝟙 T.right) (by simp)
-  let red := pushout.desc (t ≫ pushout.inl q q) (t ≫ pushout.inr q q) (by
+  let μ : pushout f.right f.right ⟶ T.right := pushout.desc (f := f.right) (g := f.right) (𝟙 T.right) (𝟙 T.right) (by simp)
+  let red : pushout f.right f.right ⟶ pushout q q := pushout.desc (f := f.right) (g := f.right) (t ≫ pushout.inl q q) (t ≫ pushout.inr q q) (by
     sorry) -- 商の四角形の可換性と pushout.condition
-  exact (completionLift p μ hT).hom.prod (completionMap p red).hom
+  exact (_root_.SerrePositivity.BhattScholze.PerfectoidizationInterface.completionLift p μ hT).hom.prod (completionMap p red).hom
 
 theorem isArcCover_diagonal_of_arcOutside {S T : A_R R} (f : S ⟶ T) (I : Ideal S.right)
     (hT : IsModuleComplete T.right (p : T.right) (ModuleCat.of T.right T.right))
@@ -140,11 +141,11 @@ def excisionProdSnd (S T : A_R R) : excisionProduct R S T ⟶ T :=
 
 /-- 二つの環射影を脚とする錐を nerve で取る。 -/
 def ringProductCone (S T : A_R R) :
-    { c : JoinCone (binaryPointDiagram (nerveVertex S) (nerveVertex T)) //
-      c.vertex = nerveVertex (excisionProduct R S T) ∧
+    { c : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.binaryPointDiagram (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex S) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex T)) //
+      c.vertex = _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (excisionProduct R S T) ∧
       (∀ x : (Δ[0] : SSet.{u+1}) _⦋0⦌,
-        (F2.nativeConeLeg c ((coprod.inl : (Δ[0] : SSet.{u+1}) ⟶ Δ[0] ⨿ Δ[0]).app _ x)).edge = (nerve.edgeMk (excisionProdFst R S T)).edge ∧
-        (F2.nativeConeLeg c ((coprod.inr : (Δ[0] : SSet.{u+1}) ⟶ Δ[0] ⨿ Δ[0]).app _ x)).edge = (nerve.edgeMk (excisionProdSnd R S T)).edge) } := by
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.nativeConeLeg c ((coprod.inl : (Δ[0] : SSet.{u+1}) ⟶ Δ[0] ⨿ Δ[0]).app _ x)).edge = (nerve.edgeMk (excisionProdFst R S T)).edge ∧
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.nativeConeLeg c ((coprod.inr : (Δ[0] : SSet.{u+1}) ⟶ Δ[0] ⨿ Δ[0]).app _ x)).edge = (nerve.edgeMk (excisionProdSnd R S T)).edge) } := by
   sorry -- 二つの射影を二点の左 join に貼り合わせる
 
 /-- 概要：G-A6-2：(S′ × S″)_perfd ≃ S′_perfd × S″_perfd（CAlg_R、D(R)）。
@@ -153,8 +154,8 @@ def ringProductCone (S T : A_R R) :
 使われ方：Cor 8.12 で S′ を S′ × S/I に替えて戻す（D58）。 -/
 theorem perfectoidization_prod (S T : A_R R) :
     let c := (ringProductCone R S T).val
-    IsLimitCone (mapJoinCone (perfectoidizationFunctor (E := E) p R hR) c) ∧
-      IsLimitCone (mapJoinCone (e3Perfd (E := E) p R hR) c) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.mapJoinCone (perfectoidizationFunctor (E := E) p R hR) c) ∧
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.mapJoinCone (e3Perfd (E := E) p R hR) c) := by
   sorry -- Prop 8.5 の κ 版・Type u 版と perfdUnderProdEquiv。両添字圏は零環を終対象にもつ。
         -- 非完備な始域では π₀ の完備化を通す（D41・系4）。忘却はこの積錐を保つ
 
@@ -167,27 +168,27 @@ def excisionPair {A B C : A_R R} (g : A ⟶ B) (h : A ⟶ C) : A ⟶ excisionPro
     sorry) -- 両成分とも R 上
 
 abbrev excisionCospan {B C D : A_R R} (g : B ⟶ D) (h : C ⟶ D) (F : algebraNerve R ⟶ E.CAlg R) :=
-  edgeCospan (((nerve.edgeMk g).map F).toTruncated) (((nerve.edgeMk h).map F).toTruncated)
+  _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.edgeCospan (((nerve.edgeMk g).map F).toTruncated) (((nerve.edgeMk h).map F).toTruncated)
 
 def excisionCospanLeg {B C D : A_R R} {g : B ⟶ D} {h : C ⟶ D} {F : algebraNerve R ⟶ E.CAlg R}
-    (t : JoinCone (excisionCospan (E := E) R g h F)) (first : Bool) :
+    (t : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone (excisionCospan (E := E) R g h F)) (first : Bool) :
     (HomotopyCategory.mk t.vertex : hoFunctor.obj (E.CAlg R)) ⟶
-      HomotopyCategory.mk (F.app _ (nerveVertex (if first then B else C))) := by
+      HomotopyCategory.mk (F.app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (if first then B else C))) := by
   let j := if first then horn₂₂.ι₀₂ else horn₂₂.ι₁₂
   let k := j.app _ (stdSimplex.obj₀Equiv.symm (0 : Fin 2))
-  exact SSet.Truncated.HomotopyCategory₂.homMk (F2.nativeConeLeg t k) ≫ eqToHom (by
+  exact SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.nativeConeLeg t k) ≫ eqToHom (by
     sorry) -- cospan の第一頂点は B、第二頂点は C
 
 /-- 二つの cospan の極限を、第一・第二射影を保存して比較する。 -/
 theorem excisionProductPullback {B C D : A_R R} (g : B ⟶ D) (h : C ⟶ D)
     (F : algebraNerve R ⟶ E.CAlg R)
-    (hprod : ∀ U V : A_R R, IsLimitCone (mapJoinCone F (ringProductCone R U V).val)) :
+    (hprod : ∀ U V : A_R R, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.mapJoinCone F (ringProductCone R U V).val)) :
     let g' := excisionPair R (excisionProdFst R B C ≫ g) (excisionProdSnd R B C)
     let h' := excisionPair R h (𝟙 C)
-    ∀ (t : JoinCone (excisionCospan (E := E) R g' h' F)) (v : JoinCone (excisionCospan (E := E) R g h F)),
-      IsLimitCone t → IsLimitCone v → ∃ e : VertexIso t.vertex v.vertex,
+    ∀ (t : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone (excisionCospan (E := E) R g' h' F)) (v : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone (excisionCospan (E := E) R g h F)),
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone t → _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone v → ∃ e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso t.vertex v.vertex,
         e.hom ≫ excisionCospanLeg (E := E) R v true = excisionCospanLeg (E := E) R t true ≫
-          SSet.Truncated.HomotopyCategory₂.homMk (((nerve.edgeMk (excisionProdFst R B C)).map F).toTruncated) ∧
+          SSet.Truncated.HomotopyCategory.homMk (((nerve.edgeMk (excisionProdFst R B C)).map F).toTruncated) ∧
         e.hom ≫ excisionCospanLeg (E := E) R v false = excisionCospanLeg (E := E) R t false := by
   sorry -- 拡大した錐から B×C の脚を B へ射影する。逆は B と C の脚を対にする。
         -- D×C の第二成分の整合性で両構成は互いに逆
@@ -200,9 +201,9 @@ S″ の四角形の引き戻しは (B × C) ×_{D × C} C（B × C → D × C �
 使われ方：Cor 8.12 の帰着。 -/
 theorem excision_of_excision_prod {S T : A_R R} (f : S ⟶ T) (I : Ideal S.right)
     (F : algebraNerve R ⟶ E.CAlg R)
-    (hprod : ∀ B C : A_R R, IsLimitCone (mapJoinCone F (ringProductCone R B C).val))
-    (h : IsPullbackSquare (quotientExcisionSquare R (excisionProductMap R f I) I ≫ F)) :
-    IsPullbackSquare (quotientExcisionSquare R f I ≫ F) := by
+    (hprod : ∀ B C : A_R R, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.mapJoinCone F (ringProductCone R B C).val))
+    (h : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (quotientExcisionSquare R (excisionProductMap R f I) I ≫ F)) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (quotientExcisionSquare R f I ≫ F) := by
   sorry -- g=F(T→T/IT), h'=F(S/I→T/IT)。商の直積分解と hprod で右・下辺を
         -- (g,id_C) と (h',id_C) に移す。錐の普遍性で (B×C)×_{D×C}C ≃ B×_D C、射影も一致
 

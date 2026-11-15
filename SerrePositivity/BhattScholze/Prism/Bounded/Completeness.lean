@@ -233,7 +233,7 @@ end SerrePositivity.BhattScholze
 
 end BoundedPrismAdicComplete
 
-/-! ## André A1-a：有界 prism の台環の古典的 p 完備性
+/-! ## André 有界 prism の台環の古典的 p 完備性
 
 ## 概要
 

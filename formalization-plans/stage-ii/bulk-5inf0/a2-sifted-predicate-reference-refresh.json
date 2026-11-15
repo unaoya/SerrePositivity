@@ -1,0 +1,16 @@
+[
+  {
+    "start": 4724,
+    "end": 4746,
+    "old": "HasSmallSiftedColimits",
+    "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.HasSmallSiftedColimits",
+    "line": 88
+  },
+  {
+    "start": 14685,
+    "end": 14713,
+    "old": "PreservesSmallSiftedColimits",
+    "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.PreservesSmallSiftedColimits",
+    "line": 230
+  }
+]

@@ -17,7 +17,7 @@ lci 分類射の完備通常テンソル環で、基底生成元の正則性と�
 正則列の商の完全平坦な底変換へ導来源を移し、その零次を通常の完備テンソル環と比較する。
 
 ## 規約
-BS 著者版 Example 7.9 と D76。p 冪ねじれの有界性は関係の商に仮定する。
+BS 著者版 Example 7.9 。p 冪ねじれの有界性は関係の商に仮定する。
 
 ## 使われ方
 条件付きの包絡の普遍性を一般の正則列に適用する。
@@ -32,7 +32,7 @@ universe u
 
 namespace SerrePositivity.BhattScholze.Prismatic
 
-open CategoryTheory CategoryTheory.Limits DerivedCompletion
+open _root_.CategoryTheory _root_.CategoryTheory.Limits _root_.SerrePositivity.DerivedCompletion
 
 attribute [local instance] HasDerivedCategory.standard
 
@@ -55,7 +55,7 @@ local notation "T" => (U ⧸ I) ⧸ J
 local notation "qz" => Ideal.Quotient.mk J
 local notation "E" => completedFreeDelta P₀ S
 local notation "j" => pdCompletionUnit U p a
-local notation "α" => rawVariableEnvelopeMap P₀ S
+local notation "α" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.rawVariableEnvelopeMap P₀ S
 local notation "K" => (Ideal.span {a} : Ideal U) ⊔
   Ideal.span (Set.range fun s : S => MvPolynomial.X (s, 0))
 
@@ -64,37 +64,37 @@ set_option maxHeartbeats 800000 in
 方針：有界な関係商への完備平坦底変換の純性を、同じ通常環の H⁰ 比較で移す。
 規約：BS 著者版 Example 7.9。台環の p 正則性は仮定しない。
 使われ方：一般の正則列の prismatic envelope を作る。 -/
-theorem exists_lciRelation_regular_completedTensor
-    (hP₀ : IsBoundedPrism P₀)
+theorem _root_.SerrePositivity.BhattScholze.Semiperfectoid.exists_lciRelation_regular_completedTensor
+    (hP₀ : _root_.SerrePositivity.BhattScholze.Prismatic.IsBoundedPrism P₀)
     (hd : g.toRingHom P₀.generator = P.generator)
     (hp₀ : Function.Injective (fun x : A₀ => (p : A₀) * x))
     (hpd₀ : Function.Injective (fun x : A₀ ⧸ P₀.ideal => (p : A₀ ⧸ P₀.ideal) * x))
-    (hf : IsKoszulResolution (fun i => Ideal.Quotient.mk P.ideal (f i)))
+    (hf : _root_.SerrePositivity.IsKoszulResolution (fun i => Ideal.Quotient.mk P.ideal (f i)))
     (hR : ∃ N : ℕ, ∀ (n : ℕ) (x : A ⧸ (P.ideal ⊔ Ideal.span (Set.range f))),
       (p : A ⧸ (P.ideal ⊔ Ideal.span (Set.range f))) ^ n * x = 0 →
         (p : A ⧸ (P.ideal ⊔ Ideal.span (Set.range f))) ^ N * x = 0) :
-    ∃ Q : OrientedPrism p E, Q.generator = j a ∧
-      IsPrismaticEnvelope P₀ (relativeFreeDeltaStructure S P₀.deltaStructure) C
-        (relativeFreeDeltaStructure_C_isDeltaHom S P₀.deltaStructure) K
+    ∃ Q : _root_.SerrePositivity.BhattScholze.OrientedPrism p E, Q.generator = j a ∧
+      _root_.SerrePositivity.BhattScholze.Prismatic.IsPrismaticEnvelope P₀ (_root_.SerrePositivity.BhattScholze.relativeFreeDeltaStructure S P₀.deltaStructure) C
+        (_root_.SerrePositivity.BhattScholze.relativeFreeDeltaStructure_C_isDeltaHom S P₀.deltaStructure) K
         ((show Ideal.span {a} ≤ K from le_sup_left) (Ideal.subset_span (Set.mem_singleton _)))
         Q α ∧
       (letI := (α).toAlgebra
        letI := (c).toAlgebra
-       let H := PrismCompletedTensor (A := U) («C» := A) Q
-       let l : E →+* H := prismCompletedTensorLeft Q
+       let H := _root_.SerrePositivity.BhattScholze.PrismCompletedTensor (A := U) («C» := A) Q
+       let l : E →+* H := _root_.SerrePositivity.BhattScholze.prismCompletedTensorLeft Q
        IsRegular (l Q.generator) ∧
          ∃ N : ℕ, ∀ (n : ℕ) (x : H ⧸ Ideal.span {l Q.generator}),
            (p : H ⧸ Ideal.span {l Q.generator}) ^ n * x = 0 →
              (p : H ⧸ Ideal.span {l Q.generator}) ^ N * x = 0) := by
   let := pdCompletionCommRing U p a
-  obtain ⟨Q, hgen, hEnv⟩ := isPrismaticEnvelope_rawVariableMap P₀ S
-    (completedFreeDelta_generator_regular P₀ hP₀ S)
+  obtain ⟨Q, hgen, hEnv⟩ := _root_.SerrePositivity.BhattScholze.Semiperfectoid.isPrismaticEnvelope_rawVariableMap P₀ S
+    (_root_.SerrePositivity.BhattScholze.Prismatic.completedFreeDelta_generator_regular P₀ hP₀ S)
   change Q.generator = j a at hgen
-  have hdata := exists_lciRelation_generatorReduction P₀ P f index g hd hp₀ hpd₀ hf hR
+  have hdata := _root_.SerrePositivity.BhattScholze.Semiperfectoid.exists_lciRelation_generatorReduction P₀ P f index g hd hp₀ hpd₀ hf hR
   let ReductionData (d : E) : Prop := ∃ b : T →+* E ⧸ Ideal.span {d},
       (Ideal.Quotient.mk (Ideal.span {d})).comp α = ((b).comp qz).comp q ∧
-      IsCompletelyFlat (Ideal.span {(p : T)}) (baseChangeScalarModule b) ∧
-      IsKoszulResolution z ∧ IsKoszulResolution (c₀ ∘ z) ∧
+      _root_.SerrePositivity.IsCompletelyFlat (Ideal.span {(p : T)}) (_root_.SerrePositivity.baseChangeScalarModule b) ∧
+      _root_.SerrePositivity.IsKoszulResolution z ∧ _root_.SerrePositivity.IsKoszulResolution (c₀ ∘ z) ∧
       ∃ N : ℕ, ∀ (n : ℕ) (x : A₁ ⧸ Ideal.map c₀ J),
         (p : A₁ ⧸ Ideal.map c₀ J) ^ n * x = 0 →
           (p : A₁ ⧸ Ideal.map c₀ J) ^ N * x = 0
@@ -103,31 +103,31 @@ theorem exists_lciRelation_regular_completedTensor
   obtain ⟨b, hsq, hflat, hz, hf₀, hR₀⟩ := hdata'
   have ha : IsSMulRegular U a :=
     (show IsSMulRegular A₀ P₀.generator from P₀.generator_regular).of_flat (S := U)
-  have hca : c a = P.generator := by rw [relativeFreeDeltaEval_C, hd]
+  have hca : c a = P.generator := by rw [_root_.SerrePositivity.BhattScholze.relativeFreeDeltaEval_C, hd]
   have hc : IsSMulRegular A (c a) := by
     rw [hca]
     exact P.generator_regular
-  let X := boundedAboveDerivedSingleFunctor.obj (baseChangeScalarModule c)
+  let X := _root_.SerrePositivity.boundedAboveDerivedSingleFunctor.obj (_root_.SerrePositivity.baseChangeScalarModule c)
   let Z := (boundedAboveDerivedCompletionFunctor E Q.generator).obj
     ((boundedAboveDerivedCompletionFunctor E (p : E)).obj
-      ((boundedAboveDerivedBaseChange α).obj X))
-  have hpure := completedRegularRelationBaseChange_pure_regular α c a Q.generator z b
+      ((_root_.SerrePositivity.boundedAboveDerivedBaseChange α).obj X))
+  have hpure := _root_.SerrePositivity.completedRegularRelationBaseChange_pure_regular α c a Q.generator z b
     hsq ha hc hz hf₀ p Q.generator_regular hflat hR₀
-  have hred := completedRegularRelationReduction_pure_bounded α c a Q.generator z b
+  have hred := _root_.SerrePositivity.completedRegularRelationReduction_pure_bounded α c a Q.generator z b
     hsq ha hc hz hf₀ p Q.generator_regular hflat hR₀
   let := (α).toAlgebra
   let := (c).toAlgebra
-  let H := PrismCompletedTensor (A := U) («C» := A) Q
-  let l : E →+* H := prismCompletedTensorLeft Q
+  let H := _root_.SerrePositivity.BhattScholze.PrismCompletedTensor (A := U) («C» := A) Q
+  let l : E →+* H := _root_.SerrePositivity.BhattScholze.prismCompletedTensorLeft Q
   let := l.toAlgebra
-  let eM := baseChangeScalarAlgebraEquiv («R» := U) (B := A)
-  let F := boundedAboveDerivedBaseChange α ⋙ boundedAboveDerivedCompletionFunctor E (p : E) ⋙
+  let eM := _root_.SerrePositivity.baseChangeScalarAlgebraEquiv («R» := U) (B := A)
+  let F := _root_.SerrePositivity.boundedAboveDerivedBaseChange α ⋙ boundedAboveDerivedCompletionFunctor E (p : E) ⋙
     boundedAboveDerivedCompletionFunctor E Q.generator
-  let eZ := F.mapIso (boundedAboveDerivedSingleFunctor.mapIso eM.toModuleIso)
+  let eZ := F.mapIso (_root_.SerrePositivity.boundedAboveDerivedSingleFunctor.mapIso eM.toModuleIso)
   let eH : (DerivedCategory.homologyFunctor (ModuleCat E) 0).obj Z.obj ≃ₗ[E] H :=
     ((DerivedCategory.homologyFunctor (ModuleCat E) 0).mapIso
       (DerivedCategory.Minus.ι.mapIso eZ)).toLinearEquiv.trans
-      (pairCompletedBaseChangeH0LinearEquiv (A := U) («C» := A) Q)
+      (_root_.SerrePositivity.BhattScholze.Prismatic.pairCompletedBaseChangeH0LinearEquiv (A := U) («C» := A) Q)
   have hleft : Function.Injective (fun x : H => l Q.generator * x) := by
     intro x y hxy
     apply eH.symm.injective
@@ -152,4 +152,4 @@ end SerrePositivity.BhattScholze.Prismatic
 /-! Literature correspondences from the reviewed coverage tables. -/
 
 /-! Reviewed literature correspondences. -/
-attribute [cite BS19 "Ex 7.9" (partial := component) "BS-W15 K5（11-11）：envelope の側は本体（R の有界性を仮定する原典の形、D76。結論は有界な prism）。p 反転の議論 G-A3-7 の古典的な入力（余法加群、分冪の像の稠密性）も本体。Δ_R/A との同一視と HT 比較の適用は drafts の A3/LciAndQuasiregular"] _root_.SerrePositivity.BhattScholze.Prismatic.exists_lciRelation_regular_completedTensor
+attribute [cite BS19 "Ex 7.9" (partial := component) "BS-W15 K5（11-11）：envelope の側は本体（R の有界性を仮定する原典の形、D76。結論は有界な prism）。p 反転の議論 G-A3-7 の古典的な入力（余法加群、分冪の像の稠密性）も本体。Δ_R/A との同一視と HT 比較の適用は drafts の A3/LciAndQuasiregular"] _root_.SerrePositivity.BhattScholze.Semiperfectoid.exists_lciRelation_regular_completedTensor

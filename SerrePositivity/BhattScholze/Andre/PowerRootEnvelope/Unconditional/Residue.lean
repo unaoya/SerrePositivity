@@ -12,7 +12,7 @@ public import SerrePositivity.HomologicalAlgebra.TorSymmetry
 public import SerrePositivity.HomologicalAlgebra.DerivedBaseChangeDiscrete
 public import SerrePositivity.BhattScholze.Andre.Envelope.MonicCandidate
 public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.Unconditional.Localization
-public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.PowerRootPolynomial
+public import SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootFamilies.PowerRootPolynomial
 public import SerrePositivity.BhattScholze.Delta.Perfect.DistinguishedRegular
 public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.DeltaDivisionResidue
 public import Mathlib.Algebra.Polynomial.AlgebraMap
@@ -70,17 +70,17 @@ variable {A : Type u} [CommRing A] {p : ℕ} [Fact p.Prime]
 variable (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect) (f : Polynomial A)
 local notation "hp" => Nat.Prime.pos (Fact.out : p.Prime)
 local notation "R₀" => A ⧸ Ideal.span {(p : A)}
-local notation "N" => PowerRootPolynomial R₀ p hp
+local notation "N" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial R₀ p hp
 local notation "z" => powerRootCoefficientPDInput p f
 local notation "D" => PowerRootCoefficientPDEnvelope p f
 local notation "a" => Ideal.Quotient.mk (Ideal.span {(p : A)}) (perfectPrismVarpiLift W hW)
 local notation "K" => Ideal.span {algebraMap R₀ D a}
 local notation "Rv" => (A ⧸ W.ideal) ⧸ Ideal.span {perfectPrismVarpi W hW}
-local notation "Nv" => PowerRootPolynomial Rv p hp
+local notation "Nv" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial Rv p hp
 local notation "barr" => RingHom.comp
   (Ideal.Quotient.mk (Ideal.span {perfectPrismVarpi W hW}))
   (Ideal.Quotient.mk (OrientedPrism.ideal W))
-local notation "zv" => powerRootPolynomialBaseMap Rv p hp (f.map barr)
+local notation "zv" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialBaseMap Rv p hp (f.map barr)
 local notation "Dv" => PrincipalDPPresentation Nv zv
 
 /-- 概要：原典の係数環上のモニック入力の標準表示に実分冪構造を与える。
@@ -127,11 +127,11 @@ section Prime
 variable {A : Type u} [CommRing A] {p : ℕ} [Fact p.Prime]
 variable (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect)
 local notation "hp" => Nat.Prime.pos (Fact.out : p.Prime)
-local notation "G" => powerRootExponentMonoid p hp
+local notation "G" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootExponentMonoid p hp
 local notation "Rv" => (A ⧸ W.ideal) ⧸ Ideal.span {perfectPrismVarpi W hW}
 local notation "Rp" => (A ⧸ W.ideal) ⧸ Ideal.span {(p : A ⧸ W.ideal)}
-local notation "Nv" => PowerRootPolynomial Rv p hp
-local notation "Np" => PowerRootPolynomial Rp p hp
+local notation "Nv" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial Rv p hp
+local notation "Np" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial Rp p hp
 local notation "evp" => perfectPrismVarpiFrobeniusQuotientEquiv W hW
 local notation "bv" => RingHom.comp (Ideal.Quotient.mk (Ideal.span {perfectPrismVarpi W hW}))
   (Ideal.Quotient.mk (OrientedPrism.ideal W))
@@ -140,9 +140,9 @@ local notation "bp" => RingHom.comp (Ideal.Quotient.mk (Ideal.span {(p : A ⧸ W
 local notation "frob" => DeltaStructure.frobeniusEquiv W.deltaStructure hW
 
 variable (f : Polynomial A)
-local notation "zv" => powerRootPolynomialBaseMap Rv p hp
+local notation "zv" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialBaseMap Rv p hp
   (Polynomial.map bv (perfectPrismInverseFrobeniusPolynomial W hW f))
-local notation "zp" => powerRootPolynomialBaseMap Rp p hp (Polynomial.map bp f)
+local notation "zp" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialBaseMap Rp p hp (Polynomial.map bp f)
 local notation "Dv" => PrincipalDPPresentation Nv zv
 local notation "Dp" => PrincipalDPPresentation Np zp
 
@@ -238,7 +238,7 @@ theorem perfectPrismVarpiPowerRootDividedPowers_base_apply_of_unconditional
     (f : Polynomial A) (hf : f.Monic) (n : ℕ) :
     (perfectPrismVarpiPowerRootDividedPowers_of_unconditional W hW f hf).dpow n
       (Ideal.Quotient.mk _ (algebraMap
-        (PowerRootPolynomial R₀ p (Nat.Prime.pos (Fact.out : p.Prime))) (D f) (z f))) =
+        (_root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial R₀ p (Nat.Prime.pos (Fact.out : p.Prime))) (D f) (z f))) =
       Ideal.Quotient.mk _ (principalDPGenerator (z f) n) := by
   unfold perfectPrismVarpiPowerRootDividedPowers_of_unconditional
   exact powerRootCoefficientPDReductionOfMonic_base_apply p W hW f hf
@@ -285,13 +285,13 @@ mod p の d の正則性や raw 環の p 正則性を仮定しない。
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze.Andre
-open CategoryTheory CategoryTheory.Limits
+open _root_.CategoryTheory _root_.CategoryTheory.Limits
 variable {A : Type u} [CommRing A] {p : ℕ} [Fact p.Prime]
 variable (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect)
 variable (f : Polynomial A) (hf : f.Monic)
 local notation "hp" => Nat.Prime.pos (Fact.out : p.Prime)
-local notation "P" => PowerRootPolynomial A p hp
-local notation "E" => powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
+local notation "P" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial A p hp
+local notation "E" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
 local notation "dP" => algebraMap A P W.generator
 local notation "a" => powerRootPrismMonicUnaryFamily (p := p) f
 local notation "L₀" => PowerRootUnaryFreeDeltaRing A p hp
@@ -341,12 +341,12 @@ theorem powerRootPrismMonicFiniteResidue_isWeaklyRegular_of_unconditional (N : �
     RingTheory.Sequence.IsWeaklyRegular (L₀ ⧸ K)
       (List.ofFn fun i : Fin (N + 1) =>
         q (deltaDivisionIteratedRelation E dP a default i.val)) := by
-  have hpP := powerRootPolynomial_primeRegular p hW.p_mul_injective
+  have hpP := _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomial_primeRegular p hW.p_mul_injective
   have hpL : Function.Injective (fun x : L₀ => (p : L₀) * x) := by
     simpa only [map_natCast, IsSMulRegular, smul_eq_mul] using
       (show IsSMulRegular P (p : P) from hpP).of_flat (S := L₀)
   let hd := powerRootPrismGenerator_isDistinguished W hW
-  exact deltaDivisionFiniteResidueRelations_isWeaklyRegular E dP a hpP hpL
+  exact _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteResidueRelations_isWeaklyRegular E dP a hpP hpL
     (witt_ghostMap_injective_of_mul_prime_injective p L₀ hpL) hd.unit hd.unit_spec
     (powerRootPrismMonicFirst_mod_pair_regular_of_unconditional W hW f hf) N
 
@@ -370,7 +370,7 @@ theorem powerRootPrismMonicFiniteResidueEvaluation_isKoszulResolution_of_uncondi
     (N : ℕ) :
     SerrePositivity.IsKoszulResolution (fun i : Fin (N + 1) =>
       q (deltaDivisionEvaluationRelation E dP a default i.val)) :=
-  deltaDivisionMappedEvaluation_isKoszulResolution E dP a q
+  _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionMappedEvaluation_isKoszulResolution E dP a q
     (fun N => powerRootPrismMonicFiniteResidue_isWeaklyRegular_of_unconditional W hW f hf N) N
 
 local notation "ψ" => RingHom.comp q (deltaDivisionSourceMap E dP)
@@ -383,18 +383,18 @@ include hf in
 theorem powerRootPrismMonicFiniteResidueSource_tor_subsingleton_of_unconditional
     (N i : ℕ) :
     Subsingleton (SerrePositivity.TorAlg ψ (i + 1)
-      (DeltaDivisionEvaluationSourceFiniteQuotient E a N)) := by
+      (_root_.SerrePositivity.BhattScholze.Andre.DeltaDivisionEvaluationSourceFiniteQuotient E a N)) := by
   let cs : Fin (N + 1) → PUnit.{u + 1} × ℕ := fun j => (default, j.val)
   have hcs : Function.Injective cs := by
     intro x y hxy
     exact Fin.ext (congrArg Prod.snd hxy)
   have e := SerrePositivity.torAlgKoszulIso ψ
-    (fun j => deltaDivisionSourceGraphRelation E a (cs j))
-    (deltaDivisionSourceGraph_fin_isKoszulResolution E a cs hcs) (i + 1)
-  have he : ψ ∘ (fun j => deltaDivisionSourceGraphRelation E a (cs j)) =
+    (fun j => _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionSourceGraphRelation E a (cs j))
+    (_root_.SerrePositivity.BhattScholze.Andre.deltaDivisionSourceGraph_fin_isKoszulResolution E a cs hcs) (i + 1)
+  have he : ψ ∘ (fun j => _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionSourceGraphRelation E a (cs j)) =
       (fun j : Fin (N + 1) => q (deltaDivisionEvaluationRelation E dP a default j.val)) := by
     funext j
-    exact congrArg q (deltaDivisionSourceGraph_map E dP a (cs j))
+    exact congrArg q (_root_.SerrePositivity.BhattScholze.Andre.deltaDivisionSourceGraph_map E dP a (cs j))
   rw [he] at e
   have hr := powerRootPrismMonicFiniteResidueEvaluation_isKoszulResolution_of_unconditional
     W hW f hf N
@@ -411,7 +411,7 @@ theorem powerRootPrismMonicResidueSource_tor_subsingleton_of_unconditional (i : 
     Subsingleton (SerrePositivity.TorAlg ψ (i + 1) P) := by
   let := deltaDivisionSourceEvaluationAlgebra E a
   let := SerrePositivity.torAlg_preservesSequentialColimits ψ (i + 1)
-  exact deltaDivisionEvaluationSource_tor_subsingleton_of_preservesColimit E a ψ i
+  exact _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionEvaluationSource_tor_subsingleton_of_preservesColimit E a ψ i
     (fun N => powerRootPrismMonicFiniteResidueSource_tor_subsingleton_of_unconditional
       W hW f hf N i) inferInstance
 
@@ -441,15 +441,15 @@ hpR と正次数は不要であり、ねじれ除去商へ置き換えない。
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze.Andre
-open CategoryTheory CategoryTheory.Limits
-open scoped TensorProduct
+open _root_.CategoryTheory _root_.CategoryTheory.Limits
+open scoped _root_.TensorProduct
 attribute [local instance] HasDerivedCategory.standard
 variable {A : Type u} [CommRing A] {p : ℕ} [Fact p.Prime]
 variable (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect)
 variable (f : Polynomial A) (hf : f.Monic)
 local notation "hp" => Nat.Prime.pos (Fact.out : p.Prime)
-local notation "P₁" => PowerRootPolynomial A p hp
-local notation "E₁" => powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
+local notation "P₁" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial A p hp
+local notation "E₁" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
 local notation "d" => W.generator
 local notation "dP" => algebraMap A P₁ d
 local notation "c₁" => powerRootPrismMonicUnaryFamily (p := p) f
@@ -535,14 +535,14 @@ hpR なしの実導来評価比較と、商射の全射性による係数作用�
 
 set_option backward.isDefEq.respectTransparency false
 namespace SerrePositivity.BhattScholze.Andre
-open CategoryTheory CategoryTheory.Limits
+open _root_.CategoryTheory _root_.CategoryTheory.Limits
 attribute [local instance] HasDerivedCategory.standard
 variable {A : Type u} [CommRing A] {p : ℕ} [Fact p.Prime]
 variable (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect) (f : Polynomial A)
 local notation "hp" => Nat.Prime.pos (Fact.out : p.Prime)
-local notation "P₀" => PowerRootPolynomial A p hp
+local notation "P₀" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial A p hp
 local notation "L₀" => PowerRootUnaryFreeDeltaRing A p hp
-local notation "E₀" => powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
+local notation "E₀" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
 local notation "dP" => algebraMap A P₀ W.generator
 local notation "c₀" => powerRootPrismMonicUnaryFamily (p := p) f
 local notation "K₀" => Ideal.span {(p : L₀), MvPolynomial.C dP}
@@ -639,14 +639,14 @@ hpR なしの実導来評価比較と、商射の全射性による係数作用�
 
 set_option backward.isDefEq.respectTransparency false
 namespace SerrePositivity.BhattScholze.Andre
-open CategoryTheory CategoryTheory.Limits
+open _root_.CategoryTheory _root_.CategoryTheory.Limits
 attribute [local instance] HasDerivedCategory.standard
 variable {A : Type u} [CommRing A] {p : ℕ} [Fact p.Prime]
 variable (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect) (f : Polynomial A)
 local notation "hp" => Nat.Prime.pos (Fact.out : p.Prime)
-local notation "P₀" => PowerRootPolynomial A p hp
+local notation "P₀" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial A p hp
 local notation "L₀" => PowerRootUnaryFreeDeltaRing A p hp
-local notation "E₀" => powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
+local notation "E₀" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
 local notation "dP" => algebraMap A P₀ W.generator
 local notation "c₀" => powerRootPrismMonicUnaryFamily (p := p) f
 local notation "K₀" => Ideal.span {(p : L₀), MvPolynomial.C dP}
@@ -898,12 +898,12 @@ A/(p,d) に沿う実導来還元を、同じ raw 残余商の single 対象へ�
 
 set_option backward.isDefEq.respectTransparency false
 namespace SerrePositivity.BhattScholze.Andre
-open CategoryTheory CategoryTheory.Limits
+open _root_.CategoryTheory _root_.CategoryTheory.Limits
 attribute [local instance] HasDerivedCategory.standard
 variable {A : Type u} [CommRing A] {p : ℕ} [Fact p.Prime]
 variable (W : OrientedPrism p A)
 local notation "hp" => Nat.Prime.pos (Fact.out : p.Prime)
-local notation "P₀" => PowerRootPolynomial A p hp
+local notation "P₀" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial A p hp
 local notation "L₀" => PowerRootUnaryFreeDeltaRing A p hp
 local notation "C₀" => algebraMap A L₀
 local notation "dP" => algebraMap A P₀ W.generator
@@ -963,7 +963,7 @@ def powerRootSourcePDDerivedSquareIso_of_unconditional
   simpa only [hκ] using e'.2
 
 variable (hW : W.deltaStructure.IsPerfect) (f : Polynomial A)
-local notation "E₀" => powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
+local notation "E₀" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
 local notation "c₀" => powerRootPrismMonicUnaryFamily (p := p) f
 local notation "α₀" => deltaDivisionSourceMap E₀ dP
 local notation "β₀" => deltaDivisionSourceEval E₀ c₀
@@ -1053,7 +1053,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootAResidue
 
-/-! ## A1-d：無限根初期係数商と通常モニック商
+/-! ## 無限根初期係数商と通常モニック商
 
 ## 概要
 P/(p,dP,f(Y₀)) を A/(p,d) 上の通常モニック無限根商と比較する。
@@ -1077,25 +1077,25 @@ set_option backward.defeqAttrib.useBackward true
 variable {A : Type u} [CommRing A] {p : ℕ} [Fact p.Prime]
 variable (d : A) (f : Polynomial A)
 local notation "hp" => Nat.Prime.pos (Fact.out : p.Prime)
-local notation "P" => PowerRootPolynomial A p hp
+local notation "P" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial A p hp
 local notation "a" => powerRootPrismMonicUnaryFamily (p := p) f
 local notation "y" => powerRootMonicPDInput p f
 local notation "I" => Ideal.span {(p : A), d}
 local notation "R" => A ⧸ I
 local notation "q" => Ideal.Quotient.mk I
 local notation "IP" => Ideal.map (algebraMap A P) I
-local notation "J" => deltaDivisionFirstBaseIdeal (p := p) (algebraMap A P d) a
+local notation "J" => _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFirstBaseIdeal (p := p) (algebraMap A P d) a
 local notation "Q" => P ⧸ J
-local notation "Pbar" => PowerRootPolynomial R p hp
-local notation "ybar" => powerRootPolynomialBaseMap R p hp (f.map q)
-local notation "M" => PowerRootPolynomialQuotient R p hp (f.map q)
+local notation "Pbar" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial R p hp
+local notation "ybar" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialBaseMap R p hp (f.map q)
+local notation "M" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomialQuotient R p hp (f.map q)
 
 /-- 概要：初期係数イデアルは係数 (p,d) の拡張と f(Y₀) の関係の和。
 方針：一元分子族の像と二元係数イデアルの像を展開する。
 規約：モニック性や正則性は不要。
 使われ方：BS 著者版 Remark 7.15（著者版 p.62）の同じ通常商の比較。 -/
 theorem initialCoefficientIdeal_eq : J = IP ⊔ Ideal.span {y} := by
-  rw [deltaDivisionFirstBaseIdeal, Ideal.map_span, Set.image_pair, map_natCast]
+  rw [_root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFirstBaseIdeal, Ideal.map_span, Set.image_pair, map_natCast]
   congr 1
   apply congrArg Ideal.span
   ext z
@@ -1106,11 +1106,11 @@ theorem initialCoefficientIdeal_eq : J = IP ⊔ Ideal.span {y} := by
 規約：通常の元の商を保持する。
 使われ方：BS 著者版 Remark 7.15（著者版 p.62）の通常モニック商への係数比較。 -/
 def initialCoefficientPrincipalEquiv : Q ≃+* Pbar ⧸ Ideal.span {ybar} := by
-  let e := powerRootCoefficientIdealQuotientEquiv A p hp I
+  let e := _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootCoefficientIdealQuotientEquiv A p hp I
   have he : e (Ideal.Quotient.mk IP y) = ybar := by
-    rw [powerRootCoefficientIdealQuotientEquiv_mk]
+    rw [_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootCoefficientIdealQuotientEquiv_mk]
     unfold powerRootMonicPDInput
-    exact powerRootCoefficientIdealQuotientMap_baseMap A p hp I f
+    exact _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootCoefficientIdealQuotientMap_baseMap A p hp I f
   have hmap : (Ideal.span {y}).map (Ideal.Quotient.mk IP) =
       Ideal.span {Ideal.Quotient.mk IP y} := by
     simpa only [Set.image_singleton] using (Ideal.map_span (Ideal.Quotient.mk IP) {y})
@@ -1131,7 +1131,7 @@ def initialCoefficientPrincipalEquiv : Q ≃+* Pbar ⧸ Ideal.span {ybar} := by
 使われ方：BS 著者版 Remark 7.15（著者版 p.62）の自然な係数射の同定。 -/
 theorem initialCoefficientPrincipalEquiv_mk (x : P) :
     initialCoefficientPrincipalEquiv (p := p) d f (Ideal.Quotient.mk J x) =
-      Ideal.Quotient.mk _ (powerRootCoefficientIdealQuotientMap A p hp I x) := by
+      Ideal.Quotient.mk _ (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootCoefficientIdealQuotientMap A p hp I x) := by
   rfl
 
 /-- 概要：初期係数商を既存の PowerRootPolynomialQuotient そのものへ同定する。
@@ -1140,7 +1140,7 @@ theorem initialCoefficientPrincipalEquiv_mk (x : P) :
 使われ方：BS 著者版 Remark 7.15（著者版 p.62）の既存のモニック商基底 API への接続。 -/
 def initialCoefficientEquiv : Q ≃+* M :=
   (initialCoefficientPrincipalEquiv (p := p) d f).trans
-    (Ideal.quotEquivOfEq (powerRootPolynomialQuotient_ideal R p hp (f.map q)).symm)
+    (Ideal.quotEquivOfEq (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialQuotient_ideal R p hp (f.map q)).symm)
 
 /-- 概要：標準モニック商への同型は元の係数を同じ係数商の標準像へ送る。
 方針：主関係商の代表元公式と無限根係数還元の公式を使う。
@@ -1150,7 +1150,7 @@ theorem initialCoefficientEquiv_coeff (x : A) :
     initialCoefficientEquiv (p := p) d f (Ideal.Quotient.mk J (algebraMap A P x)) =
       algebraMap R M (q x) := by
   rw [initialCoefficientEquiv, RingEquiv.trans_apply, initialCoefficientPrincipalEquiv_mk,
-    powerRootCoefficientIdealQuotientMap_coeff, Ideal.quotEquivOfEq_mk]
+    _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootCoefficientIdealQuotientMap_coeff, Ideal.quotEquivOfEq_mk]
   rfl
 
 /-- 概要：A/(p,d) から元の初期係数商への係数射。
@@ -1196,7 +1196,7 @@ theorem initialCoefficient_free (hf : f.Monic) :
     let := initialCoefficientAlgebra (p := p) d f
     Module.Free R Q := by
   let := initialCoefficientAlgebra (p := p) d f
-  let := powerRootPolynomialQuotient_free R p hp (f.map q) (hf.map q)
+  let := _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialQuotient_free R p hp (f.map q) (hf.map q)
   exact Module.Free.of_equiv (initialCoefficientAlgEquiv (p := p) d f).symm.toLinearEquiv
 
 /-- 概要：正次数モニック初期係数商は A/(p,d) 上忠実平坦。
@@ -1216,7 +1216,7 @@ theorem initialCoefficient_faithfullyFlat (hf : f.Monic) (hdeg : 0 < f.natDegree
     exact Module.subsingleton R N
   · let := hn
     have hdeg' : 0 < (f.map q).natDegree := by simpa only [hf.natDegree_map] using hdeg
-    let := powerRootPolynomialQuotient_faithfullyFlat R p hp (f.map q) (hf.map q) hdeg'
+    let := _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialQuotient_faithfullyFlat R p hp (f.map q) (hf.map q) hdeg'
     exact Module.FaithfullyFlat.of_linearEquiv R M
       (initialCoefficientAlgEquiv (p := p) d f).toLinearEquiv
 
@@ -1224,14 +1224,14 @@ end SerrePositivity.BhattScholze.Andre.InitialCoefficient
 
 end Comparison
 
-/-! ## A1-d：元の係数商上の raw 残余商と実還元 H⁰ の忠実平坦性
+/-! ## 元の係数商上の raw 残余商と実還元 H⁰ の忠実平坦性
 
 ## 概要
 初期係数商の通常モニック比較を一般の raw 残余商の忠実平坦性へ合成する。
-BS 著者版 Remark 7.15（著者版 p.62）の A1-b の鎖の第一段を供給する。
+BS 著者版 Remark 7.15（著者版 p.62）の 分冪包 の鎖の第一段を供給する。
 
 ## 方針
-元の全係数で合成射を照合し、A1-b の自然な係数制限作用と既存 H⁰ 比較へ移す。
+元の全係数で合成射を照合し、分冪包 の自然な係数制限作用と既存 H⁰ 比較へ移す。
 
 ## 規約
 元の raw 包・実自由 δ 源・係数射を保ち、hpR は仮定しない。
@@ -1243,26 +1243,26 @@ BS 著者版 Remark 7.15（著者版 p.62）の A1-b の鎖の第一段を供給
 @[expose] public noncomputable section RawResidue
 
 namespace SerrePositivity.BhattScholze.Andre.InitialCoefficient
-open CategoryTheory
+open _root_.CategoryTheory
 attribute [local instance] HasDerivedCategory.standard
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 variable {A : Type u} [CommRing A] {p : ℕ} [Fact p.Prime]
 variable (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect) (f : Polynomial A)
 local notation "hp" => Nat.Prime.pos (Fact.out : p.Prime)
-local notation "P" => PowerRootPolynomial A p hp
-local notation "E" => powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
+local notation "P" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial A p hp
+local notation "E" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
 local notation "dP" => algebraMap A P W.generator
 local notation "a" => powerRootPrismMonicUnaryFamily (p := p) f
 local notation "L₀" => PowerRootUnaryFreeDeltaRing A p hp
-local notation "Qinit" => P ⧸ deltaDivisionFirstBaseIdeal (p := p) dP a
+local notation "Qinit" => P ⧸ _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFirstBaseIdeal (p := p) dP a
 local notation "R" => A ⧸ Ideal.span {(p : A), W.generator}
 local notation "Q₀" => L₀ ⧸ Ideal.span {(p : L₀), MvPolynomial.C dP}
 local notation "κ" => powerRootSourceQuotientCoefficientMap_of_unconditional W
 local notation "ψ" => powerRootPrismMonicSourceQuotientResidueMap_of_unconditional W hW f
 local notation "Res" => DeltaAdjoinDivisionResidue E dP a
 local notation "hd" => powerRootPrismGenerator_isDistinguished W hW
-local notation "hpP" => powerRootPolynomial_primeRegular p hW.p_mul_injective
+local notation "hpP" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomial_primeRegular p hW.p_mul_injective
 
 include hW in
 /-- 概要：元の無限根自由 δ 源でも p の乗算は単射。
@@ -1295,7 +1295,7 @@ theorem rawResidueBaseMap_mk (x : A) :
   rw [rawResidueBaseMap, RingHom.comp_apply, initialCoefficientBaseMap_mk,
     deltaAdjoinDivisionResidueBaseMap_mk]
 
-/-- 概要：初期商を経由した係数射は A1-b の実源商を経由する係数射と同じ。
+/-- 概要：初期商を経由した係数射は 分冪包 の実源商を経由する係数射と同じ。
 方針：A/(p,d) の全代表元で二つの合成を比較する。
 規約：初期商 Qinit と自由 δ 源商 Q₀ を同一視しない。
 使われ方：BS 著者版 Remark 7.15（著者版 p.62）の受渡し指定の自然な R 作用を保証する。 -/
@@ -1318,7 +1318,7 @@ theorem rawResidueBaseMap_eq_source : rawResidueBaseMap W hW f = (ψ).comp κ :=
 /-- 概要：元の raw 残余商は合成係数射によって A/(p,d) 上忠実平坦。
 方針：初期商の忠実平坦性と既存の初期商上の raw 残余商の忠実平坦性を合成する。
 規約：モニック性・正次数以外の追加仮定を置かない。
-使われ方：BS 著者版 Remark 7.15（著者版 p.62）の A1-b 指定作用への移送の入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の 分冪包 指定作用への移送の入力。 -/
 theorem rawResidueBase_faithfullyFlat (hf : f.Monic) (hdeg : 0 < f.natDegree) :
     let := rawResidueAlgebra W hW f
     Module.FaithfullyFlat R Res := by
@@ -1333,7 +1333,7 @@ theorem rawResidueBase_faithfullyFlat (hf : f.Monic) (hdeg : 0 < f.natDegree) :
 local notation "MRes" => (CategoryTheory.Functor.obj
   (ModuleCat.restrictScalars κ) (ModuleCat.of Q₀ Res) : ModuleCat R)
 
-/-- 概要：A1-b の指定係数制限作用と初期商経由の作用は同じ元を保つ線形同型で結ばれる。
+/-- 概要：分冪包 の指定係数制限作用と初期商経由の作用は同じ元を保つ線形同型で結ばれる。
 方針：全係数での合成射の一致をスカラー作用の一致へ移す。
 規約：元の Res の元を変更しない。
 使われ方：BS 著者版 Remark 7.15（著者版 p.62）の正確な受渡し型への忠実平坦性の移送。 -/
@@ -1358,7 +1358,7 @@ def rawResidueRestrictionLinearEquiv :
   rw [rawResidueBaseMap_eq_source]
   rfl
 
-/-- 概要：A1-b の指定した κ による係数制限のまま、raw 残余商は忠実平坦。
+/-- 概要：分冪包 の指定した κ による係数制限のまま、raw 残余商は忠実平坦。
 方針：初期商を経由した忠実平坦性を同じ元を保つ線形同型で移す。
 規約：受渡しの正確な型を保ち、hpR を置かない。
 使われ方：BS 著者版 Remark 7.15（著者版 p.62）の元の A 係数の実還元 H⁰ への入力。 -/
@@ -1374,9 +1374,9 @@ theorem rawResidue_faithfullyFlat (hf : f.Monic) (hdeg : 0 < f.natDegree) :
     (rawResidueRestrictionLinearEquiv W hW f)
 
 /-- 概要：元の A/(p,d) による実導来還元の H⁰ は忠実平坦。
-方針：既存の A1-b の実 H⁰ 比較へ指定作用での raw 残余商の忠実平坦性を渡す。
+方針：既存の 分冪包 の実 H⁰ 比較へ指定作用での raw 残余商の忠実平坦性を渡す。
 規約：モニック性・正次数だけを追加し、hpR・Tor 消滅・平坦性は追加しない。
-使われ方：BS 著者版 Remark 7.15（著者版 p.62）の A1-b の次の純性・正則性接続への受渡し。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の 分冪包 の次の純性・正則性接続への受渡し。 -/
 theorem sourceResidueH0_faithfullyFlat (hf : f.Monic) (hdeg : 0 < f.natDegree) :
     Module.FaithfullyFlat R
       ((DerivedCategory.homologyFunctor (ModuleCat R) 0).obj
@@ -1505,7 +1505,7 @@ variable (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect)
 local notation "R" => A ⧸ W.ideal
 local notation "Rv" => R ⧸ Ideal.span {perfectPrismVarpi W hW}
 local notation "hp" => Nat.Prime.pos (Fact.out : p.Prime)
-local notation "Nv" => PowerRootPolynomial Rv p hp
+local notation "Nv" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial Rv p hp
 local notation "bv" => RingHom.comp (Ideal.Quotient.mk (Ideal.span {perfectPrismVarpi W hW}))
   (Ideal.Quotient.mk W.ideal)
 
@@ -1532,7 +1532,7 @@ theorem perfectPrismVarpiQuotient_prime_eq_zero_of_unconditional : (p : Rv) = 0 
 theorem powerRootMonicDPPresentation_free_of_unconditional
     (f : Polynomial A) (hf : f.Monic) :
     Module.Free Rv (PrincipalDPPresentation Nv
-      (powerRootPolynomialBaseMap Rv p hp (f.map bv))) :=
+      (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialBaseMap Rv p hp (f.map bv))) :=
   powerRootMonicDPPresentation_free Rv p hp (Fact.out : p.Prime)
     (perfectPrismVarpiQuotient_prime_eq_zero_of_unconditional W hW) (f.map bv) (hf.map bv)
 
@@ -1543,7 +1543,7 @@ theorem powerRootMonicDPPresentation_free_of_unconditional
 theorem powerRootMonicDPPresentation_faithfullyFlat_of_unconditional
     (f : Polynomial A) (hf : f.Monic) (hdeg : 0 < f.natDegree) :
     Module.FaithfullyFlat Rv (PrincipalDPPresentation Nv
-      (powerRootPolynomialBaseMap Rv p hp (f.map bv))) :=
+      (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialBaseMap Rv p hp (f.map bv))) :=
   perfectPrismVarpiNativePDEnvelope_faithfullyFlat W hW f hf hdeg
 
 end SerrePositivity.BhattScholze.Andre
@@ -1651,8 +1651,8 @@ end Initial
 variable {A : Type u} [CommRing A] {p : ℕ} [Fact p.Prime]
 variable (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect) (f : Polynomial A)
 local notation "hp" => Nat.Prime.pos (Fact.out : p.Prime)
-local notation "P" => PowerRootPolynomial A p hp
-local notation "E" => powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
+local notation "P" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial A p hp
+local notation "E" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
 local notation "dP" => algebraMap A P W.generator
 local notation "a" => powerRootPrismMonicUnaryFamily (p := p) f
 local notation "L" => PowerRootUnaryFreeDeltaRing A p hp
@@ -1664,11 +1664,11 @@ local notation "I" => deltaDivisionFiniteRelationIdeal E dP a
 使われ方：BS 著者版 Remark 7.15（著者版 p.62）の raw p 正則性の有限段帰納法の初期値。 -/
 theorem powerRootPrismMonicFinite_prime_regular_zero_of_unconditional (hf : f.Monic) :
     IsSMulRegular (L ⧸ I 0) (p : L ⧸ I 0) := by
-  have hpP := powerRootPolynomial_primeRegular p hW.p_mul_injective
+  have hpP := _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomial_primeRegular p hW.p_mul_injective
   have ha : IsSMulRegular (P ⧸ Ideal.span {(p : P)})
       (Ideal.Quotient.mk (Ideal.span {(p : P)}) (a default)) := by
     simpa only [powerRootPrismMonicUnaryFamily, powerRootMonicPDInput] using
-      powerRootPolynomial_monic_mod_prime_regular A p hp f hf
+      _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomial_monic_mod_prime_regular A p hp f hf
   have h := unconditionalDeltaDivisionUnaryFirst_prime_regular E dP a hpP ha
   let e := Ideal.quotEquivOfEq (deltaDivisionUnaryFiniteIdeal_zero E dP a).symm
   have ht := (ringEquiv_isSMulRegular e (p : _)).mp h
@@ -1685,7 +1685,7 @@ theorem powerRootPrismFirstModPrimeRelation_regular_of_monic_unconditional
         MvPolynomial.C (Ideal.Quotient.mk (Ideal.span {(p : P)}) (powerRootMonicPDInput p f))) := by
   have ha : IsSMulRegular (P ⧸ Ideal.span {(p : P)})
       (-(Ideal.Quotient.mk (Ideal.span {(p : P)}) (powerRootMonicPDInput p f))) := by
-    have hr := powerRootPolynomial_monic_mod_prime_regular A p hp f hf
+    have hr := _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomial_monic_mod_prime_regular A p hp f hf
     intro x y hxy
     apply hr
     simpa only [powerRootMonicPDInput, neg_smul, neg_inj] using hxy

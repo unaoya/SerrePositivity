@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.BhattScholze.Delta.Division.AdjoinResidue
 
 public import SerrePositivity.BhattScholze.Andre.Envelope.Normalized
 public import SerrePositivity.BhattScholze.Delta.Division.Source
@@ -23,70 +24,6 @@ BS 著者版 Proposition 3.13 と Remark 7.15 の包の計算に使う、δ 除�
 
 universe u v
 
-/-! ## 既存δ除算添加環のraw (p,d)商の具体的表示 -/
-
-@[expose] public noncomputable section DeltaAdjoinDivisionResiduePresentation
-
-set_option backward.isDefEq.respectTransparency false
-namespace SerrePositivity.BhattScholze
-variable {p : ℕ} [Fact p.Prime] {A : Type u} [CommRing A] {σ : Type v}
-variable (D : DeltaStructure p A) (d : A) (a : σ → A)
-
-/-- raw δ除算添加環における(p,基底dの像)の通常イデアル。 -/
-def deltaAdjoinDivisionResidueIdeal : Ideal (DeltaAdjoinDivision D d a) :=
-  Ideal.span {(p : DeltaAdjoinDivision D d a), deltaAdjoinDivisionMap D d a d}
-
-/-- raw除算添加環の(p,d)商。ねじれ除去後のadic idealとは別の段階。 -/
-abbrev DeltaAdjoinDivisionResidue :=
-  DeltaAdjoinDivision D d a ⧸ deltaAdjoinDivisionResidueIdeal D d a
-
-/-- raw環の残余イデアルは、無限自由環の(p,Cd)の標準商射による像。 -/
-theorem deltaAdjoinDivisionResidueIdeal_eq_map :
-    deltaAdjoinDivisionResidueIdeal D d a =
-      Ideal.map (Ideal.Quotient.mk ((relativeFreeDeltaStructure σ D).deltaClosure
-        (deltaDivisionRelationIdeal d a)))
-        (Ideal.span {(p : RelativeFreeDeltaRing (R := A) σ), MvPolynomial.C d}) := by
-  rw [Ideal.map_span]
-  simp only [Set.image_pair, map_natCast]
-  rfl
-
-/-- raw添加環の(p,d)商は、無限自由環で(p,Cd)とδ閉包を同時に課した商。 -/
-def deltaAdjoinDivisionResidueSupEquiv :
-    DeltaAdjoinDivisionResidue D d a ≃+*
-      (RelativeFreeDeltaRing (R := A) σ ⧸
-        (Ideal.span {(p : RelativeFreeDeltaRing (R := A) σ), MvPolynomial.C d} ⊔
-          (relativeFreeDeltaStructure σ D).deltaClosure (deltaDivisionRelationIdeal d a))) :=
-  (Ideal.quotEquivOfEq (deltaAdjoinDivisionResidueIdeal_eq_map D d a)).trans
-    ((DoubleQuot.quotQuotEquivQuotSup
-      ((relativeFreeDeltaStructure σ D).deltaClosure (deltaDivisionRelationIdeal d a))
-      (Ideal.span {(p : RelativeFreeDeltaRing (R := A) σ), MvPolynomial.C d})).trans
-      (Ideal.quotEquivOfEq (sup_comm _ _)))
-
-/-- 二重商表示同型は元の無限自由環の標準像を同時商の標準像に送る。 -/
-theorem deltaAdjoinDivisionResidueSupEquiv_mk (f : RelativeFreeDeltaRing (R := A) σ) :
-    deltaAdjoinDivisionResidueSupEquiv D d a
-      (Ideal.Quotient.mk _ (Ideal.Quotient.mk _ f)) = Ideal.Quotient.mk _ f := by
-  rw [deltaAdjoinDivisionResidueSupEquiv, RingEquiv.trans_apply, Ideal.quotEquivOfEq_mk,
-    RingEquiv.trans_apply]
-  change (Ideal.quotEquivOfEq (sup_comm _ _))
-    (DoubleQuot.quotQuotEquivQuotSup
-      ((relativeFreeDeltaStructure σ D).deltaClosure (deltaDivisionRelationIdeal d a))
-      (Ideal.span {(p : RelativeFreeDeltaRing (R := A) σ), MvPolynomial.C d})
-      (DoubleQuot.quotQuotMk
-        ((relativeFreeDeltaStructure σ D).deltaClosure (deltaDivisionRelationIdeal d a))
-        (Ideal.span {(p : RelativeFreeDeltaRing (R := A) σ), MvPolynomial.C d}) f)) = _
-  rw [DoubleQuot.quotQuotEquivQuotSup_quotQuotMk, Ideal.quotEquivOfEq_mk]
-
-/-- 基底係数上での二重商比較の標準写像図式。 -/
-theorem deltaAdjoinDivisionResidueSupEquiv_coeff (b : A) :
-    deltaAdjoinDivisionResidueSupEquiv D d a
-      (Ideal.Quotient.mk _ (deltaAdjoinDivisionMap D d a b)) =
-      Ideal.Quotient.mk _ (MvPolynomial.C b) :=
-  deltaAdjoinDivisionResidueSupEquiv_mk D d a (MvPolynomial.C b)
-
-end SerrePositivity.BhattScholze
-
-end DeltaAdjoinDivisionResiduePresentation
 
 /-! ## 既存δ除算添加環のraw (p,d)商の標準係数射と忠実平坦性 -/
 
@@ -105,23 +42,23 @@ variable (d : A) (a : σ → A) (u : Aˣ) (hu : (u : A) = D.delta d)
 
 /-- 既存添加環のraw (p,d)商と具体的全段環の環同型。 -/
 def deltaAdjoinDivisionResidueDirectLimitEquiv :
-    DeltaAdjoinDivisionResidue D d a ≃+* DeltaDivisionFiniteNormalizedDirectLimit D d a u :=
+    DeltaAdjoinDivisionResidue D d a ≃+* _root_.SerrePositivity.BhattScholze.Andre.DeltaDivisionFiniteNormalizedDirectLimit D d a u :=
   (deltaAdjoinDivisionResidueSupEquiv D d a).trans
-    (deltaDivision_mod_pd_deltaClosure_directLimitEquiv D hpA hpL hg d a u hu)
+    (_root_.SerrePositivity.BhattScholze.Andre.deltaDivision_mod_pd_deltaClosure_directLimitEquiv D hpA hpL hg d a u hu)
 
 /-- raw残余商の全段表示は元の基底係数の標準商像に両立する。 -/
 theorem deltaAdjoinDivisionResidueDirectLimitEquiv_coeff (b : A) :
     deltaAdjoinDivisionResidueDirectLimitEquiv D hpA hpL hg d a u hu
       (Ideal.Quotient.mk _ (deltaAdjoinDivisionMap D d a b)) =
-      deltaDivisionFiniteNormalizedDirectLimitBaseMap D d a u (Ideal.Quotient.mk _ b) := by
+      _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteNormalizedDirectLimitBaseMap D d a u (Ideal.Quotient.mk _ b) := by
   rw [deltaAdjoinDivisionResidueDirectLimitEquiv, RingEquiv.trans_apply,
-    deltaAdjoinDivisionResidueSupEquiv_coeff, deltaDivision_mod_pd_deltaClosure_directLimitEquiv_C]
+    deltaAdjoinDivisionResidueSupEquiv_coeff, _root_.SerrePositivity.BhattScholze.Andre.deltaDivision_mod_pd_deltaClosure_directLimitEquiv_C]
 
 /-- 適切な共通係数商から既存添加環のraw残余商への具体的係数射。 -/
 def deltaAdjoinDivisionResidueBaseMap :
-    A ⧸ deltaDivisionFirstBaseIdeal (p := p) d a →+* DeltaAdjoinDivisionResidue D d a :=
+    A ⧸ _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFirstBaseIdeal (p := p) d a →+* DeltaAdjoinDivisionResidue D d a :=
   (deltaAdjoinDivisionResidueDirectLimitEquiv D hpA hpL hg d a u hu).symm.toRingHom.comp
-    (deltaDivisionFiniteNormalizedDirectLimitBaseMap D d a u)
+    (_root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteNormalizedDirectLimitBaseMap D d a u)
 
 /-- raw残余商への係数射は既存deltaAdjoinDivisionMapの標準商像に一致する。 -/
 theorem deltaAdjoinDivisionResidueBaseMap_mk (b : A) :
@@ -134,17 +71,17 @@ theorem deltaAdjoinDivisionResidueBaseMap_mk (b : A) :
 
 /-- 標準係数射による、適切な共通係数商上の既存raw残余商の代数構造。 -/
 @[instance_reducible] def deltaAdjoinDivisionResidueBaseAlgebra :
-    Algebra (A ⧸ deltaDivisionFirstBaseIdeal (p := p) d a) (DeltaAdjoinDivisionResidue D d a) :=
+    Algebra (A ⧸ _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFirstBaseIdeal (p := p) d a) (DeltaAdjoinDivisionResidue D d a) :=
   (deltaAdjoinDivisionResidueBaseMap D hpA hpL hg d a u hu).toAlgebra
 
 /-- 既存raw残余商の全段表示は標準係数射に関する代数同型。 -/
 def deltaAdjoinDivisionResidueDirectLimitAlgEquiv :
     letI := deltaAdjoinDivisionResidueBaseAlgebra D hpA hpL hg d a u hu
-    letI := deltaDivisionFiniteNormalizedDirectLimitBaseAlgebra D d a u
-    DeltaAdjoinDivisionResidue D d a ≃ₐ[A ⧸ deltaDivisionFirstBaseIdeal (p := p) d a]
-      DeltaDivisionFiniteNormalizedDirectLimit D d a u := by
+    letI := _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteNormalizedDirectLimitBaseAlgebra D d a u
+    DeltaAdjoinDivisionResidue D d a ≃ₐ[A ⧸ _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFirstBaseIdeal (p := p) d a]
+      _root_.SerrePositivity.BhattScholze.Andre.DeltaDivisionFiniteNormalizedDirectLimit D d a u := by
   letI := deltaAdjoinDivisionResidueBaseAlgebra D hpA hpL hg d a u hu
-  letI := deltaDivisionFiniteNormalizedDirectLimitBaseAlgebra D d a u
+  letI := _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteNormalizedDirectLimitBaseAlgebra D d a u
   apply AlgEquiv.ofRingEquiv
     (f := deltaAdjoinDivisionResidueDirectLimitEquiv D hpA hpL hg d a u hu)
   intro b
@@ -153,18 +90,18 @@ def deltaAdjoinDivisionResidueDirectLimitAlgEquiv :
 /-- 既存添加環のraw (p,d)商は標準係数射によってA/(p,d,a_s)上忠実平坦。 -/
 theorem deltaAdjoinDivisionResidue_moduleFaithfullyFlat :
     letI := deltaAdjoinDivisionResidueBaseAlgebra D hpA hpL hg d a u hu
-    Module.FaithfullyFlat (A ⧸ deltaDivisionFirstBaseIdeal (p := p) d a)
+    Module.FaithfullyFlat (A ⧸ _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFirstBaseIdeal (p := p) d a)
       (DeltaAdjoinDivisionResidue D d a) := by
   let := deltaAdjoinDivisionResidueBaseAlgebra D hpA hpL hg d a u hu
-  let := deltaDivisionFiniteNormalizedDirectLimitBaseAlgebra D d a u
-  let := deltaDivisionFiniteNormalizedDirectLimit_moduleFaithfullyFlat D d a u
+  let := _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteNormalizedDirectLimitBaseAlgebra D d a u
+  let := _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteNormalizedDirectLimit_moduleFaithfullyFlat D d a u
   exact Module.FaithfullyFlat.of_linearEquiv _ _
     (deltaAdjoinDivisionResidueDirectLimitAlgEquiv D hpA hpL hg d a u hu).toLinearEquiv
 
 /-- 既存添加環のraw (p,d)商は標準係数射によってA/(p,d,a_s)上平坦。 -/
 theorem deltaAdjoinDivisionResidue_moduleFlat :
     letI := deltaAdjoinDivisionResidueBaseAlgebra D hpA hpL hg d a u hu
-    Module.Flat (A ⧸ deltaDivisionFirstBaseIdeal (p := p) d a)
+    Module.Flat (A ⧸ _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFirstBaseIdeal (p := p) d a)
       (DeltaAdjoinDivisionResidue D d a) := by
   let := deltaAdjoinDivisionResidueBaseAlgebra D hpA hpL hg d a u hu
   let := deltaAdjoinDivisionResidue_moduleFaithfullyFlat D hpA hpL hg d a u hu
@@ -174,111 +111,6 @@ end SerrePositivity.BhattScholze
 
 end DeltaAdjoinDivisionResidueFlat
 
-/-! ## 実残余自由δ射の通常テンソルとraw(p,d)商
-
-既存の通常pushout比較と標準テンソル商比較を合成する。
-完備化・Tor消滅・対象残余商のδ構造は要求しない。
--/
-
-@[expose] public noncomputable section DeltaDivisionSourceResidueTensor
-
-set_option backward.isDefEq.respectTransparency false
-namespace SerrePositivity.BhattScholze
-open scoped TensorProduct
-variable {p : ℕ} [Fact p.Prime] {A : Type u} [CommRing A] {σ : Type v}
-variable (D : DeltaStructure p A) (d : A) (c : σ → A)
-local notation "P₀" => RelativeFreeDeltaRing (R := A) σ
-local notation "I₀" => Ideal.span {(p : P₀), MvPolynomial.C d}
-local notation "Q₀" => P₀ ⧸ I₀
-local notation "B₀" => DeltaAdjoinDivision D d c
-local notation "R₀" => DeltaAdjoinDivisionResidue D d c
-local notation "j₀" => deltaAdjoinDivisionMap D d c
-local notation "q₀" => Ideal.Quotient.mk
-  (DeltaStructure.deltaClosure (relativeFreeDeltaStructure σ D) (deltaDivisionRelationIdeal d c))
-
-/-- 実残余自由δ射による源作用。標準商代数構造を既存のα作用から誘導する。 -/
-@[instance_reducible] def deltaDivisionSourceResidueTargetAlgebra : Algebra P₀ Q₀ := by
-  letI := deltaDivisionSourceTargetAlgebra (σ := σ) D d
-  letI : Module P₀ P₀ := Algebra.toModule
-  infer_instance
-
-/-- 実残余源作用の係数射は、標準商射と自由δ射αの合成そのもの。 -/
-theorem deltaDivisionSourceResidueTargetAlgebra_algebraMap :
-    letI := deltaDivisionSourceResidueTargetAlgebra (σ := σ) D d
-    letI : Module P₀ Q₀ := Algebra.toModule
-    algebraMap P₀ Q₀ = (Ideal.Quotient.mk I₀).comp
-      (deltaDivisionSourceMap (σ := σ) D d) := rfl
-
-/-- 通常pushout比較の下で、右因子の(p,Cd)イデアルはraw包の実(p,d)イデアルとなる。 -/
-theorem deltaDivisionSourceTensor_residueIdeal_map :
-    letI := deltaDivisionSourceEvaluationAlgebra D c
-    letI := deltaDivisionSourceTargetAlgebra (σ := σ) D d
-    letI : Module P₀ P₀ := Algebra.toModule
-    ((I₀).map (Algebra.TensorProduct.includeRight (R := P₀) (A := A) (B := P₀)).toRingHom).map
-      (deltaDivisionSourceTensorEquiv D d c).toRingHom = deltaAdjoinDivisionResidueIdeal D d c := by
-  let := deltaDivisionSourceEvaluationAlgebra D c
-  let := deltaDivisionSourceTargetAlgebra (σ := σ) D d
-  let : Module P₀ P₀ := Algebra.toModule
-  rw [Ideal.map_map]
-  have he : (deltaDivisionSourceTensorEquiv D d c).toRingHom.comp
-      (Algebra.TensorProduct.includeRight (R := P₀) (A := A) (B := P₀)).toRingHom = q₀ := by
-    apply RingHom.ext
-    intro r
-    change deltaDivisionSourceTensorEquiv D d c (1 ⊗ₜ[P₀] r) = q₀ r
-    rw [deltaDivisionSourceTensorEquiv_tmul, map_one, one_mul]
-  rw [he]
-  exact (deltaAdjoinDivisionResidueIdeal_eq_map D d c).symm
-
-/-- 実残余通常テンソルは、既存rawδ包の実(p,d)商と標準的に環同型。 -/
-def deltaDivisionSourceResidueTensorEquiv :
-    letI := deltaDivisionSourceEvaluationAlgebra D c
-    letI := deltaDivisionSourceResidueTargetAlgebra (σ := σ) D d
-    letI : Module P₀ Q₀ := Algebra.toModule
-    A ⊗[P₀] Q₀ ≃+* R₀ := by
-  letI := deltaDivisionSourceEvaluationAlgebra D c
-  letI := deltaDivisionSourceTargetAlgebra (σ := σ) D d
-  letI : Module P₀ P₀ := Algebra.toModule
-  letI := deltaDivisionSourceResidueTargetAlgebra (σ := σ) D d
-  letI : Module P₀ Q₀ := Algebra.toModule
-  exact (Algebra.TensorProduct.tensorQuotientEquiv (R := P₀) A P₀ A I₀).toRingEquiv.trans
-    (Ideal.quotientEquiv _ _ (deltaDivisionSourceTensorEquiv D d c)
-      (deltaDivisionSourceTensor_residueIdeal_map D d c).symm)
-
-/-- 残余テンソル比較は、各純テンソルを標準基底像と標準商像の積へ送る。 -/
-theorem deltaDivisionSourceResidueTensorEquiv_tmul (a : A) (r : P₀) :
-    letI := deltaDivisionSourceEvaluationAlgebra D c
-    letI := deltaDivisionSourceResidueTargetAlgebra (σ := σ) D d
-    letI : Module P₀ Q₀ := Algebra.toModule
-    deltaDivisionSourceResidueTensorEquiv D d c (a ⊗ₜ[P₀] Ideal.Quotient.mk I₀ r) =
-      Ideal.Quotient.mk (deltaAdjoinDivisionResidueIdeal D d c) (j₀ a * q₀ r) := by
-  let := deltaDivisionSourceEvaluationAlgebra D c
-  let := deltaDivisionSourceTargetAlgebra (σ := σ) D d
-  let : Module P₀ P₀ := Algebra.toModule
-  let := deltaDivisionSourceResidueTargetAlgebra (σ := σ) D d
-  let : Module P₀ Q₀ := Algebra.toModule
-  change Ideal.Quotient.mk (deltaAdjoinDivisionResidueIdeal D d c)
-    (deltaDivisionSourceTensorEquiv D d c (a ⊗ₜ[P₀] r)) = _
-  rw [deltaDivisionSourceTensorEquiv_tmul]
-
-/-- 実残余テンソル比較は元の係数A作用を保つ。 -/
-def deltaDivisionSourceResidueTensorAlgEquiv :
-    letI := deltaDivisionSourceEvaluationAlgebra D c
-    letI := deltaDivisionSourceResidueTargetAlgebra (σ := σ) D d
-    letI : Module P₀ Q₀ := Algebra.toModule
-    A ⊗[P₀] Q₀ ≃ₐ[A] R₀ := by
-  letI := deltaDivisionSourceEvaluationAlgebra D c
-  letI := deltaDivisionSourceResidueTargetAlgebra (σ := σ) D d
-  letI : Module P₀ Q₀ := Algebra.toModule
-  apply AlgEquiv.ofRingEquiv (f := deltaDivisionSourceResidueTensorEquiv D d c)
-  intro a
-  change deltaDivisionSourceResidueTensorEquiv D d c (a ⊗ₜ[P₀] 1) =
-    Ideal.Quotient.mk (deltaAdjoinDivisionResidueIdeal D d c) (j₀ a)
-  have h := deltaDivisionSourceResidueTensorEquiv_tmul D d c a 1
-  simpa only [map_one, mul_one] using h
-
-end SerrePositivity.BhattScholze
-
-end DeltaDivisionSourceResidueTensor
 
 /-! ## raw除算包の残余商での次入力の正則性
 
@@ -298,8 +130,8 @@ theorem deltaAdjoinDivisionResidue_isSMulRegular
     (hg : Function.Injective (WittVector.ghostMap :
       WittVector p (RelativeFreeDeltaRing (R := A) σ) → ℕ → RelativeFreeDeltaRing (R := A) σ))
     (d : A) (a : σ → A) (w : Aˣ) (hw : (w : A) = D.delta d) (x : A)
-    (hx : IsSMulRegular (A ⧸ deltaDivisionFirstBaseIdeal (p := p) d a)
-      (Ideal.Quotient.mk (deltaDivisionFirstBaseIdeal (p := p) d a) x)) :
+    (hx : IsSMulRegular (A ⧸ _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFirstBaseIdeal (p := p) d a)
+      (Ideal.Quotient.mk (_root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFirstBaseIdeal (p := p) d a) x)) :
     IsSMulRegular (DeltaAdjoinDivisionResidue D d a)
       (Ideal.Quotient.mk (deltaAdjoinDivisionResidueIdeal D d a)
         (deltaAdjoinDivisionMap D d a x)) := by
@@ -345,8 +177,8 @@ theorem deltaAdjoinDivisionModP_next_isSMulRegular
     (hg : Function.Injective (WittVector.ghostMap :
       WittVector p (RelativeFreeDeltaRing (R := A) σ) → ℕ → RelativeFreeDeltaRing (R := A) σ))
     (a : σ → A) (w : Aˣ) (hw : (w : A) = D.delta (p : A)) (x : A)
-    (hx : IsSMulRegular (A ⧸ deltaDivisionFirstBaseIdeal (p := p) (p : A) a)
-      (Ideal.Quotient.mk (deltaDivisionFirstBaseIdeal (p := p) (p : A) a) x)) :
+    (hx : IsSMulRegular (A ⧸ _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFirstBaseIdeal (p := p) (p : A) a)
+      (Ideal.Quotient.mk (_root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFirstBaseIdeal (p := p) (p : A) a) x)) :
     IsSMulRegular (DeltaAdjoinDivision D (p : A) a ⧸
       Ideal.span {(p : DeltaAdjoinDivision D (p : A) a)})
       (Ideal.Quotient.mk (Ideal.span {(p : DeltaAdjoinDivision D (p : A) a)})

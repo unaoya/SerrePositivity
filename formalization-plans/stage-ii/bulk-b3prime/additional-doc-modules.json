@@ -1,0 +1,19 @@
+[
+  "SerrePositivity.BhattScholze.Andre.OrdinaryRoots.Adjoin",
+  "SerrePositivity.BhattScholze.Andre.OrdinaryRoots.Family",
+  "SerrePositivity.BhattScholze.Andre.Perfection.PerfectDeltaResidue",
+  "SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.Completion",
+  "SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.DividedPowerPrime",
+  "SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.InputCategory",
+  "SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.Varpi",
+  "SerrePositivity.BhattScholze.Delta.Division.Basic",
+  "SerrePositivity.BhattScholze.Delta.Division.Source",
+  "SerrePositivity.BhattScholze.Delta.Free.RelativeFreeWitt",
+  "SerrePositivity.BhattScholze.Perfectoidization.CompletedTensor",
+  "SerrePositivity.BhattScholze.Perfectoidization.CompletedTensorComparison",
+  "SerrePositivity.BhattScholze.Prism.Bounded.Completeness",
+  "SerrePositivity.BhattScholze.Prism.Bounded.Tilt",
+  "SerrePositivity.BhattScholze.Prism.Perfection.PCompletedPerfection",
+  "SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismHomLift",
+  "SerrePositivity.BhattScholze.Prismatic.CechAlexander.Complexes.CechAlexanderComplex"
+]

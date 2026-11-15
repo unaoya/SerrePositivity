@@ -304,7 +304,7 @@ end SerrePositivity.BhattScholze
 
 end BoundedPrismCompatibleRootsLift
 
-/-! ## André A1-a：有界 prism の台環と商の tilt 比較
+/-! ## André 有界 prism の台環と商の tilt 比較
 
 ## 概要
 

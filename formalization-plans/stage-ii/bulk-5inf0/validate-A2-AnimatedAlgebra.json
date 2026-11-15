@@ -1,0 +1,33 @@
+{
+  "draft": "formalization-plans/bhatt-scholze/drafts/A2/AnimatedAlgebra.lean",
+  "source_sha256": "e4b887fb4545ae0c94a652add74c4ce92a46770be1b39efa0feb8881cbe1bdb9",
+  "staged_source_sha256": "e4b887fb4545ae0c94a652add74c4ce92a46770be1b39efa0feb8881cbe1bdb9",
+  "extra_public_imports": [],
+  "options": {
+    "maxSynthPendingDepth": 3,
+    "pp.unicode.fun": true,
+    "relaxedAutoImplicit": false,
+    "weak.linter.mathlibStandardSet": true,
+    "weak.linter.style.header": false
+  },
+  "command": [
+    "lake",
+    "env",
+    "env",
+    "LEAN_PATH=/tmp/bulk-5inf0/validation:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/Cli/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/batteries/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/Qq/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/aesop/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/importGraph/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/plausible/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/mathlib/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/build/lib/lean:/Users/sugakubunka/.elan/toolchains/leanprover--lean4---v4.35.0-rc4/lib/lean",
+    "lean",
+    "-DmaxSynthPendingDepth=3",
+    "-Dpp.unicode.fun=true",
+    "-DrelaxedAutoImplicit=false",
+    "-Dweak.linter.mathlibStandardSet=true",
+    "-Dweak.linter.style.header=false",
+    "--root=/tmp/bulk-5inf0/validation",
+    "-o",
+    "/tmp/bulk-5inf0/validation/Bulk5InfDraft/A2/AnimatedAlgebra.olean",
+    "/tmp/bulk-5inf0/validation/Bulk5InfDraft/A2/AnimatedAlgebra.lean"
+  ],
+  "exit_code": 0,
+  "seconds": 22.088280709460378,
+  "status": "PASS",
+  "olean": "/tmp/bulk-5inf0/validation/Bulk5InfDraft/A2/AnimatedAlgebra.olean"
+}

@@ -1,25 +1,34 @@
 -- 将来の置き場所：SerrePositivity.BhattScholze.Prismatic.CrystallineInput（仮。原典 Thm 5.2・Lemma 5.4・Cor 5.5 の (Z_p,(p))・多項式・mod p の場合）
--- 設計書：formalization-plans/bhatt-scholze/a1-design.md §10（D68 改訂後の経路、11-07）・§9、単位 A1-2／A1-3／A1-5。基準コミット 972bb7f53。ビルドしない。
+-- 設計書：formalization-plans/bhatt-scholze/a1-design.md §10（D68 改訂後の経路、11-07）・§9、単位 A1-2／A1-3／A1-5。基準コミット efa846fe8。型検査対象（5∞-0）。
 module
+public import SerrePositivity.BhattScholze.Prismatic.CechAlexander.Comparison.PolynomialCategory
+public import SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.PDCechFrameHomotopy
+public import SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.PDCechNerve
+public import SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.PDSmallModelComparison
+public import SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.Comparison.PDPolynomialFunctor
+public import SerrePositivity.CommutativeAlgebra.DividedPowers.Envelopes.CompletedPDEnvelope
 
-public import SerrePositivity.BhattScholze.Prismatic.PDDeRhamCohomology
-public import SerrePositivity.BhattScholze.Prismatic.HodgeTateCartierAssembly
-public import SerrePositivity.BhattScholze.Prismatic.PDModelReduction
-public import SerrePositivity.BhattScholze.Prismatic.CartierCompletedForms
-public import SerrePositivity.BhattScholze.Prismatic.FinitePolynomialCartier
+public import SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamCohomology
+import all SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamBicomplex
+import all SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamColumn
+import all SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamColumnPoincare
+public import SerrePositivity.BhattScholze.Prismatic.HodgeTate.Affine.HodgeTateCartierAssembly
+public import SerrePositivity.BhattScholze.Prismatic.Crystalline.Envelopes.PDModelReduction
+public import SerrePositivity.BhattScholze.Prismatic.HodgeTate.Affine.CartierCompletedForms
+public import SerrePositivity.BhattScholze.Prismatic.HodgeTate.Affine.FinitePolynomialCartier
 
 public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismPerfectoid
-public import SerrePositivity.BhattScholze.Prismatic.FrobeniusCechComparison
-public import SerrePositivity.BhattScholze.Prismatic.CrystallineBase
-public import SerrePositivity.BhattScholze.Prismatic.CrystallineCoordinates
-public import SerrePositivity.BhattScholze.Prismatic.CrystallineBridgePushout
-import SerrePositivity.BhattScholze.Prismatic.CrystallinePDIntegral
-import SerrePositivity.BhattScholze.Prismatic.CrystallineExtraModel
-import SerrePositivity.BhattScholze.Prismatic.PDCompletedCech
-import SerrePositivity.BhattScholze.Prismatic.PDPolynomialCech
-import SerrePositivity.BhattScholze.Prismatic.CrystallineBridge
-import SerrePositivity.BhattScholze.Prismatic.CrystallinePDModel
-public import SerrePositivity.BhattScholze.Prismatic.HodgeTateAffineModel
+public import SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.FrobeniusCechComparison
+public import SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.CrystallineBase
+public import SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.CrystallineCoordinates
+public import SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.CrystallineBridgePushout
+import SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.CrystallinePDIntegral
+import SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.CrystallineExtraModel
+import SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.PDCompletedCech
+import SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.PDPolynomialCech
+import SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.CrystallineBridge
+import SerrePositivity.BhattScholze.Prismatic.Crystalline.Envelopes.CrystallinePDModel
+public import SerrePositivity.BhattScholze.Prismatic.HodgeTate.Affine.HodgeTateAffineModel
 public import SerrePositivity.EInfinity.BarrattEccles.CAlgAlgebraSource
 public import SerrePositivity.EInfinity.BarrattEccles.DiscreteAlgebra
 public import SerrePositivity.EInfinity.Operad.CommutativeAlgebraFunctor
@@ -30,8 +39,8 @@ public import Mathlib.Algebra.Category.Ring.Colimits
 public import Mathlib.RingTheory.DividedPowerAlgebra.Init
 public import Mathlib.RingTheory.DividedPowers.DPMorphism
 public import Mathlib.RingTheory.DividedPowers.Basic
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HomotopyPrecomposition
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.HomotopyPrecomposition
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.VertexTransport.FunctorIsoTransport
 -- 本ファイルは drafts/A1/HodgeTateMap.lean（小さい Čech 模型 `htRings`・`reducedModel`、η⁰・η¹、`HodgeTateIsoStatement`、`formVars`）、
 -- drafts/A0/PrismaticEnvelope.lean（`completedFreeDelta`）、drafts/Shared/{DeRhamPolynomial,CosimplicialCupProduct,CosimplicialEInfinity}.lean と本体の `HomologicalAlgebra/Cosimplicial/BocksteinClass` を使う
 -- （CosimplicialEInfinity は 11-07 の §10.5 の部品：`strictShapeNerve`・`strictNatTransFunctorIso`・`totCDGAFunctor`）。
@@ -68,6 +77,8 @@ A1-3：`hodgeTate_iso_polynomial_Zp`（A1/HodgeTateComparison）。A1-5：後半
 @[expose] public section
 noncomputable section
 universe u
+
+variable (E : SerrePositivity.EInfinity.EInfinityTheory.{u})
 open CategoryTheory CategoryTheory.Limits SSet MonoidalCategory
 open scoped Simplicial TensorProduct
 
@@ -83,12 +94,6 @@ variable (p : ℕ) [Fact p.Prime]
 def padicCoefficientMap {A : Type u} [CommRing A] (P : OrientedPrism p A) : crystallineBase.{u} p →+* A := by
   sorry -- ℤ の主元完備化の普遍性と P.complete_p。ULift を介して係数を読む
 
-/-- 多項式射を係数変換する。Poly の算術演算を変数の代入で送る。 -/
-def changePoly {k l : Type u} [CommRing k] [CommRing l] (f : k →+* l) : Poly k ⥤ Poly l where
-  obj Q := ⟨Q.n⟩
-  map g := MvPolynomial.aeval (fun i => MvPolynomial.map f (g (MvPolynomial.X i)))
-  map_id := by sorry -- 各変数で恒等
-  map_comp := by sorry -- 代入と係数変換が可換
 abbrev changePolyNerve {k l : Type u} [CommRing k] [CommRing l] (f : k →+* l) :=
   (SSet.uliftFunctor.{u+1,u}).map (nerveMap (changePoly f))
 
@@ -127,12 +132,13 @@ def formsNerve (k : Type u) [CommRing k] :
     (SSet.uliftFunctor.{u+1,u}).obj (polyNerve k) ⟶ nerve (operad k).Algebra where
   app n := ↾fun q => ((formsBEFunctor p k).mapComposableArrows _).obj q.down
   naturality := by sorry -- 射列の制限と後合成
-def formsCAlg (k : Type u) [CommRing k] := formsNerve p k ≫ algebraCAlgSource k
+def formsCAlg (k : Type u) [CommRing k] :=
+  Cosimplicial.strictShapeNerve (formsCDGAFunctor p k) ≫ Cosimplicial.cdgaCAlg (E := E) k
 abbrev formsVertex (k : Type u) [CommRing k] (n : ℕ) :=
-  (formsCAlg p k).app _ (ULift.up (nerveVertex (⟨n⟩ : Poly k)))
+  (formsCAlg (E := E) p k).app _ (ULift.up (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (⟨n⟩ : Poly k)))
 
 abbrev polyPoint (k : Type u) [CommRing k] (n : ℕ) :=
-  ULift.up (nerveVertex (⟨n⟩ : Poly k))
+  ULift.up (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (⟨n⟩ : Poly k))
 
 /-! ## 結晶の多項式模型（G-A1-14・16・17）。D68 改訂後の経路は `pdModel`・`pdRow`・`withExtraCoords`・`splitDeltaCoordinatesModP`・
 `insertPdFactor` を使う。 -/
@@ -163,7 +169,7 @@ def splitDeltaCoordinates (r : ℕ) :
 -- pd 因子の包含は本体の CrystallineExtraModel に置く。
 
 def pdComplex (k : Type u) [CommRing k] (D : Cosimplicial.CosimplicialAlgebra k) :=
-  (AlgebraicTopology.alternatingCofaceMapComplex _).obj (D ⋙ discreteAlgebraModule k)
+  (AlgebraicTopology.alternatingCofaceMapComplex _).obj (D ⋙ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.discreteAlgebraModule k)
 
 /-- 概要：G-A1-16 の整係数版：D_0^• → D^•（追加の δ 座標の Čech 因子の挿入）は交代余面複体の擬同型。
 方針：E^• = Q^{⊗(•+1)} の extra degeneracy（U_k ↦ 0）、D_0^• とのテンソル、各 mod p^a の収縮の Rlim。
@@ -172,12 +178,12 @@ def pdComplex (k : Type u) [CommRing k] (D : Cosimplicial.CosimplicialAlgebra k)
 theorem extraCech_comparison (r : ℕ) :
     let k := crystallineBase.{u} p
     QuasiIso ((AlgebraicTopology.alternatingCofaceMapComplex _).map
-      (Functor.whiskerRight (insertPdFactor p k r) (discreteAlgebraModule k))) := by
+      (Functor.whiskerRight (insertPdFactor p k r) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.discreteAlgebraModule k))) := by
   sorry -- G-A1-16。k→Q は正の δ 座標を 0 に送る切断をもち、E^• は増大付きで収縮する。
         -- D₀^• とテンソルし各 mod p^a の収縮を Rlim。j=0 の pd 行そのものは収縮させない
 
-/-- J をもつ基底の標準多項式持ち上げ。持ち上げの射を pd 代数の射に延長する。 -/
-def pdPolynomialFunctor (k : Type u) [CommRing k] : Poly k ⥤ Cosimplicial.CosimplicialAlgebra k where
+/-- 元の一般係数環上のpd模型の関手。追加の分冪・完備性の仮定を持つ本体版とは別に、未証明の構成を保持する。 -/
+def pdModelPolynomialFunctor (k : Type u) [CommRing k] : Poly k ⥤ Cosimplicial.CosimplicialAlgebra k where
   obj Q := pdModel p k Q.n
   map f := by sorry -- 各 copy で f を代入、差の divided powers を保つ延長
   map_id := by sorry -- pd 包の普遍性
@@ -193,136 +199,22 @@ J つき pd 包 D_S^• を置く（選択は対象だけ、射は普遍性の l
 `pdModel k r`（S = Fin r）はどちらもこの形。枠の取り替えは Tot の擬同型（表示によらない、`pdCechNerveMap_quasiIso`）。
 小さい模型は k 上の `Poly k` について厳密に関手的（係数の持ち上げが要らない）なので、de Rham 比較は k = C の上で関手として行う。 -/
 
-/-- 概要：基底 (k, J, γ) 上の、k 代数 B のイデアル K（J B ⊆ K）の p 完備な J つき pd 包 (D, K′, δ, η : B → D)：K ↦ K′、
-k → D は pd 射 (J,γ) → (K′,δ)、D は p 進完備で、同じ条件をもつ任意の p 進完備な (E, K″, ε) と k 代数の射 g : B → E（K ↦ K″、
-k → E は pd 射）について、g は pd 射 D → E を一意に経由する（BS 著者版 Theorem 5.2 の証明の D_J(P)、Berthelot の γ と両立する pd 包の p 完備化）。
-方針：A0 の `IsPrismaticEnvelope` と同じ形の普遍性。J B ⊆ K なので「γ と両立」は k → D が pd 射であることと同じ。
-規約：Mathlib の `DividedPowers`・`DividedPowers.IsDPMorphism`。p 完備は `IsAdicComplete (span {p})`。
-使われ方：`pdCechNerve`、`pdModel_iso_pdCechNerve`、DeRhamComparisonPoly の `wittBigPdModel`。 -/
-structure IsCompletedPDEnvelope {k : Type u} [CommRing k] {J : Ideal k} (γ : DividedPowers J)
-    {B : Type u} [CommRing B] [Algebra k B] (K : Ideal B)
-    {D : Type u} [CommRing D] [Algebra k D] {K' : Ideal D} (δ : DividedPowers K') (η : B →ₐ[k] D) : Prop where
-  /-- D は p 進完備。 -/
-  complete : IsAdicComplete (Ideal.span {(p : D)}) D
-  /-- K は K′ に入る。 -/
-  map_le : K.map η ≤ K'
-  /-- 基底の写像は pd 射。 -/
-  base_dp : DividedPowers.IsDPMorphism γ δ (algebraMap k D)
-  /-- 普遍性。 -/
-  lift : ∀ {E : Type u} [CommRing E] [Algebra k E] {K'' : Ideal E} (ε : DividedPowers K''),
-    IsAdicComplete (Ideal.span {(p : E)}) E → ∀ g : B →ₐ[k] E, K.map g ≤ K'' →
-      DividedPowers.IsDPMorphism γ ε (algebraMap k E) →
-      ∃! h : D →ₐ[k] E, DividedPowers.IsDPMorphism δ ε h.toRingHom ∧ h.comp η = g
-
-/-- 概要：J B ⊆ K なら p 完備な J つき pd 包は存在する。
-方針：Berthelot I.2.3.1 の構成（`DividedPowerAlgebra k K` を γ との両立と pd 関係で割る）の p 進完備化。p ∈ J なので完備化に pd が延びる
-（Berthelot–Ogus 3.20 の議論）。
-規約：宇宙 u の中に取れる（濃度は #B と ℵ₀ で抑える）。
-使われ方：`pdCechNerve` の各項の選択。 -/
-theorem exists_completedPDEnvelope {k : Type u} [CommRing k] {J : Ideal k} (γ : DividedPowers J) (hp : (p : k) ∈ J)
-    {B : Type u} [CommRing B] [Algebra k B] (K : Ideal B) (hK : J.map (algebraMap k B) ≤ K) :
-    ∃ (D : Type u) (rc : CommRing D), letI := rc; ∃ (ra : Algebra k D) (K' : Ideal D) (δ : DividedPowers K') (η : B →ₐ[k] D),
-      IsCompletedPDEnvelope p γ K δ η := by
-  sorry -- DividedPowerAlgebra の商（γ と両立させる関係）と p 進完備化。p ∈ J で完備化の pd を延ばす
-
-/-- 概要：枠の Čech 脈体の n 項目 k[S × [n]]（S の (n+1) 個の copy の変数）。
-方針：`MvPolynomial`。
-規約：copy の添字は `Fin (n+1)`。
-使われ方：`pdCechNerve`。 -/
-abbrev pdFrame (k : Type u) [CommRing k] (S : Type u) (n : ℕ) := MvPolynomial (S × Fin (n+1)) k
-
-/-- 枠の評価 k[S × [n]] → R̄（x_{(t,i)} ↦ s(t)）。 -/
-def pdFrameEval {k : Type u} [CommRing k] {R̄ : Type u} [CommRing R̄] [Algebra k R̄] {S : Type u}
-    (s : S → R̄) (n : ℕ) : pdFrame k S n →ₐ[k] R̄ :=
-  MvPolynomial.aeval (fun x => s x.1)
-
-/-- 概要：枠 s : S → R̄ の J つき pd Čech 脈体 D_S^•（D_S^n = ker(k[S × [n]] → R̄) の p 完備な J つき pd 包）。
-方針：各項は `exists_completedPDEnvelope` で選び、θ : [m] → [n] は copy の添字の写像 x_{(t,i)} ↦ x_{(t,θ i)} の普遍性による lift。
-**対象の選択は射の一意性を壊さない**：map_id・map_comp は lift の一意性から厳密に成り立つ。
-規約：J ≤ ker(k → R̄)（R̄ は k/J 代数）。
-使われ方：DeRhamComparisonPoly の `wittBigPdModel`（S = Q^∧）、`pdModel_iso_pdCechNerve`（S = Fin r）。 -/
-def pdCechNerve {k : Type u} [CommRing k] {J : Ideal k} (γ : DividedPowers J) (hp : (p : k) ∈ J)
-    {R̄ : Type u} [CommRing R̄] [Algebra k R̄] (hJ : J ≤ RingHom.ker (algebraMap k R̄)) {S : Type u} (s : S → R̄) :
-    Cosimplicial.CosimplicialAlgebra k where
-  obj n := by
-    classical
-    have h := exists_completedPDEnvelope p γ hp (RingHom.ker (pdFrameEval s n.len)) (by
-      sorry) -- J の像は R̄ で零（hJ）
-    let D := h.choose
-    letI : CommRing D := h.choose_spec.choose
-    letI : Algebra k D := h.choose_spec.choose_spec.choose
-    exact Under.mk (CommRingCat.ofHom (algebraMap k D))
-  map θ := by sorry -- rename (x ↦ (x.1, θ x.2)) を lift。核は核へ（評価と可換）
-  map_id := by sorry -- lift の一意性
-  map_comp := by sorry -- lift の一意性
-
-/-- 概要：第 0 項から R̄ への増大（D_S^0 / K′ ≅ k[S]/K ↪ R̄）。
-方針：普遍性を E = R̄、K″ = ⊥（`DividedPowers.dividedPowersBot`）で使う（R̄ では p = 0 なので p 進完備）。
-規約：—
-使われ方：`pdCechNerveMap` の条件。 -/
-def pdCechAugmentation {k : Type u} [CommRing k] {J : Ideal k} (γ : DividedPowers J) (hp : (p : k) ∈ J)
-    {R̄ : Type u} [CommRing R̄] [Algebra k R̄] (hJ : J ≤ RingHom.ker (algebraMap k R̄)) {S : Type u} (s : S → R̄) :
-    ((pdCechNerve p γ hp hJ s).obj ⦋0⦌).right →+* R̄ := by
-  sorry -- lift（E = R̄、ε = dividedPowersBot、g = pdFrameEval s 0）
-
-/-- 概要：枠の射：S の各元に D_{S′}^0 の元 φ(t) を割り当て、増大で s(t) に移るもの。copy i へ x_{(t,i)} ↦ (copy i)(φ(t)) で
-余単体的 k 代数の射 D_S^• → D_{S′}^• を誘導する。
-方針：各項で普遍性の lift。copy i の写像は D_{S′}^0 → D_{S′}^n（頂点 i の余面の合成）。余単体的構造との両立は lift の一意性。
-規約：φ が変数の写像（φ(t) = x_{σ(t)}）のときは添字の写像。小さい枠 Fin r → Q^∧ と、大きい枠 Q^∧ → C⟨X⟩ の両方がこの形。
-使われ方：`pdCechNerveMap_quasiIso`、DeRhamComparisonPoly の `wittSmallFrame`・`wittToSmall`。 -/
-def pdCechNerveMap {k : Type u} [CommRing k] {J : Ideal k} (γ : DividedPowers J) (hp : (p : k) ∈ J)
-    {R̄ : Type u} [CommRing R̄] [Algebra k R̄] (hJ : J ≤ RingHom.ker (algebraMap k R̄)) {S S' : Type u}
-    (s : S → R̄) (s' : S' → R̄) (φ : S → ((pdCechNerve p γ hp hJ s').obj ⦋0⦌).right)
-    (hφ : ∀ t, pdCechAugmentation p γ hp hJ s' (φ t) = s t) :
-    pdCechNerve p γ hp hJ s ⟶ pdCechNerve p γ hp hJ s' := by
-  sorry -- 各項で x_{(t,i)} ↦ (copy i)(φ t) を lift。自然性は lift の一意性
-
-/-- 概要：**表示によらない**（古典）：二つの枠がどちらも R̄ を覆う（k[S] → R̄、k[S′] → R̄ が全射）なら、枠の射が誘導する
-D_S^• → D_{S′}^• は交代余面複体の擬同型。
-方針：積の枠 S ⊔ S′ を通す。S ⊆ S ⊔ S′ の包含では、S′ の変数 y を y − ℓ（ℓ は k[S] での持ち上げ）に取り替えると
-D_{S⊔S′}^n ≅ D_S^n ⟨t^{(0)},…,t^{(n)}⟩_pd^∧（t = y − ℓ）、余単体的には D_S^• ⊗̂ E^•、E^• = Γ_k(t)^{⊗(•+1)} は k → Γ_k(t) の Čech 余脈体で
-増大つきの extra degeneracy（t ↦ 0）を持つ。各 mod p^a で収縮し Rlim（`extraCech_comparison` と同じ形）。φ : S → S′ は
-S → S ⊔ S′ →(φ, id) S′ と分解し、(φ, id) ∘ (S′ ⊆ S ⊔ S′) = id と 2-out-of-3。
-規約：k は p 進完備。無限の添字でよい（大きい模型で使う）。
-使われ方：DeRhamComparisonPoly の `wittBigBridge_isInvertible`・`wittToSmall_isInvertible`。 -/
-theorem pdCechNerveMap_quasiIso {k : Type u} [CommRing k] {J : Ideal k} (γ : DividedPowers J) (hp : (p : k) ∈ J)
-    {R̄ : Type u} [CommRing R̄] [Algebra k R̄] (hJ : J ≤ RingHom.ker (algebraMap k R̄)) {S S' : Type u}
-    (s : S → R̄) (s' : S' → R̄) (φ : S → ((pdCechNerve p γ hp hJ s').obj ⦋0⦌).right)
-    (hφ : ∀ t, pdCechAugmentation p γ hp hJ s' (φ t) = s t)
-    (hk : IsAdicComplete (Ideal.span {(p : k)}) k)
-    (hs : Function.Surjective (pdFrameEval (k := k) s 0)) (hs' : Function.Surjective (pdFrameEval (k := k) s' 0)) :
-    QuasiIso ((AlgebraicTopology.alternatingCofaceMapComplex _).map
-      (Functor.whiskerRight (pdCechNerveMap p γ hp hJ s s' φ hφ) (discreteAlgebraModule k))) := by
-  sorry -- 積の枠と pd 多項式の Čech 因子 E^• の extra degeneracy（mod p^a ごと、Rlim）。2-out-of-3
-
-/-- 概要：小さい模型 `pdModel k r` は枠 Fin r → (k/J)[X]（j ↦ X_j）の J つき pd Čech 脈体。
-方針：ker(k[X^{(0..n)}] → (k/J)[X]) = J + (X^{(i)} − X^{(0)})。J はすでに γ をもち D = k[X^{(0)}] ⊗ Γ_k(差) は k 上自由なので、
-γ は J D に延び、差の divided powers と合わせて pd 包の普遍性を満たす（p 完備化）。
-規約：k は p 進完備・p ねじれなし、γ は p 上で標準（n! γ_n(p) = p^n）。
-使われ方：DeRhamComparisonPoly の `wittSmallFrame`（k = W）、§10.5 の段 4・5（k = C、J = (p)）。 -/
-def pdModel_iso_pdCechNerve (k : Type u) [CommRing k] {J : Ideal k} (γ : DividedPowers J) (hp : (p : k) ∈ J)
-    (hγ : ∀ n : ℕ, (n.factorial : k) * γ.dpow n (p : k) = (p : k)^n)
-    (hk : IsAdicComplete (Ideal.span {(p : k)}) k) (hreg : Function.Injective (fun x : k => (p : k) * x)) (r : ℕ)
-    (hJ : J ≤ RingHom.ker (algebraMap k (MvPolynomial (Fin r) (k ⧸ J)))) :
-    pdModel p k r ≅ pdCechNerve p γ hp hJ (fun j : Fin r => (MvPolynomial.X j : MvPolynomial (Fin r) (k ⧸ J))) := by
-  sorry -- 各項で pdModel の項が pd 包の普遍性を満たす（D は k 上自由、γ は JD に延びる）。copy の写像は両方で同じ
-
 /-- 概要：余単体的 cdga K(Q)^n = Ω^•_pd(D_0^n)（D_0^• = `pdModel k Q.n`）を Q ∈ Poly k について厳密な関手に。
-方針：各項は `pdRow` の行（j 次）を `pdDeRhamDifferential` でつなぎ、外積で cdga に。Q → Q′ は `pdPolynomialFunctor` の射と
+方針：各項は `pdRow` の行（j 次）を `pdDeRhamDifferential` でつなぎ、外積で cdga に。Q → Q′ は `pdModelPolynomialFunctor` の射と
 dX ↦ d(f(X)) の外積への延長（pd 微分と可換）。係数は k のまま（持ち上げは要らない）なので厳密に関手的。
 規約：`Cosimplicial.CosimplicialCDGA k`（Shared/CosimplicialEInfinity）。
 使われ方：`pdDeRhamFunctorIso`。 -/
-def pdDeRhamCDGA (k : Type u) [CommRing k] : Poly k ⥤ Cosimplicial.CosimplicialCDGA k := by
-  sorry -- n ↦ (⊕_j pdRow p k Q.n j, pdDeRhamDifferential, 外積)。射は pdPolynomialFunctor と連鎖律
+def pdDeRhamCDGA (p : ℕ) (k : Type u) [CommRing k] : Poly k ⥤ Cosimplicial.CosimplicialCDGA k := by
+  sorry -- n ↦ (⊕_j pdRow p k Q.n j, pdDeRhamDifferential, 外積)。射は pdModelPolynomialFunctor と連鎖律
 
 /-- 概要：形式の次数 0 への射影 Ω^•_pd(D_0^n) → Ω^0 = D_0^n（Ω^{≥1} は dg イデアル、商は微分零の次数 0）を Q について自然に。
 方針：各項で商写像。鎖写像・乗法的・余単体的。
-規約：右辺は `pdPolynomialFunctor` を次数 0 の cdga（`Cosimplicial.discreteCDGA`）とみたもの。
+規約：右辺は `pdModelPolynomialFunctor` を次数 0 の cdga（`Cosimplicial.discreteCDGA`）とみたもの。
 使われ方：`pdDeRhamFunctorIso`（総複体 → 行 0 の擬同型）。 -/
 def pdDeRhamProjection (k : Type u) [CommRing k] :
-    pdDeRhamCDGA p k ⟶ pdPolynomialFunctor p k ⋙
+    pdDeRhamCDGA p k ⟶ pdModelPolynomialFunctor p k ⋙
       (Functor.whiskeringRight SimplexCategory _ _).obj (Cosimplicial.discreteCDGA k) := by
-  sorry -- 各 (Q, n) で Ω^•_pd → Ω^0。pdPolynomialFunctor の射と両立
+  sorry -- 各 (Q, n) で Ω^•_pd → Ω^0。pdModelPolynomialFunctor の射と両立
 
 /-- 概要：K(Q)^0 = Ω^•_pd(D_0^0) は連続 de Rham 複体 Ω̂^•_{k⟨X⟩/k}（D_0^0 = k⟨X⟩、差がないので pd 微分は通常の微分）。Q について自然な同型。
 方針：`pdTerm k r 0` = k[X] の p 完備化、`pdRow` の j 次 = Ω̂^j。
@@ -338,7 +230,7 @@ def pdDeRhamZeroIso (k : Type u) [CommRing k] :
 規約：**注意**（§10.5 の 6）：行 0 の**包含**は鎖写像ではない（縦の微分が消えない）。使うのは総複体 → 行 0 の**射影**。
 使われ方：`pdDeRhamFunctorIso`。 -/
 theorem pdDeRhamProjection_isInvertible (k : Type u) [CommRing k] (Q : Poly k) :
-    IsInvertibleEdge ((nerve.edgeMk ((pdDeRhamProjection p k).app Q)).map (Cosimplicial.totCDGAFunctor k)).toTruncated := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge ((nerve.edgeMk ((pdDeRhamProjection p k).app Q)).map (Cosimplicial.totCDGAFunctor (E := E) k)).toTruncated := by
   sorry -- 核 ⊕_{j≥1} の j-filtration と pdRow_contractible。totCDGA の下の複体は総複体
 
 /-- 概要：K(Q) はホモトピー的に定数：全ての余単体的構造射 Ω^•_pd(D_0^m) → Ω^•_pd(D_0^n) は擬同型。
@@ -347,16 +239,16 @@ theorem pdDeRhamProjection_isInvertible (k : Type u) [CommRing k] (Q : Poly k) :
 規約：k は一般（pd 多項式の de Rham 複体の収縮は係数によらない、p 完備化は mod p^a ごと）。
 使われ方：`pdDeRhamFunctorIso`（列 0 への射影の可逆性）。 -/
 theorem pdDeRham_homotopicallyConstant (k : Type u) [CommRing k] (Q : Poly k)
-    {m n : SimplexCategory} (θ : m ⟶ n) : QuasiIso (((pdDeRhamCDGA p k).obj Q).map θ).hom := by
+    {m n : SimplexCategory} (θ : m ⟶ n) : QuasiIso (((pdDeRhamCDGA p k).obj Q).map θ).hom.hom := by
   sorry -- G-A1-7：一変数 pd Poincaré の Künneth を copy ごとに。p 完備化は mod p^a で
 
 /-- 概要：`formsCAlg` は厳密な関手 `formsCDGAFunctor` の `strictShapeNerve` と `cdgaCAlg` の合成。
-方針：`formsNerve` の定義（射列を formsBEFunctor で写す）と `strictShapeNerve_comp`。
+方針：同じ厳密なcdga関手を、選んだTheoryのcdga実現で読む定義から。
 規約：等式。
 使われ方：`pdDeRhamFunctorIso`。 -/
 theorem formsCAlg_eq (k : Type u) [CommRing k] :
-    formsCAlg p k = Cosimplicial.strictShapeNerve (formsCDGAFunctor p k) ≫ Cosimplicial.cdgaCAlg k := by
-  sorry -- formsBEFunctor = formsCDGAFunctor ⋙ (commutativeAlgebraFunctor ⋙ restrictAlgebra) と strictShapeNerve_comp
+    formsCAlg (E := E) p k = Cosimplicial.strictShapeNerve (formsCDGAFunctor p k) ≫ Cosimplicial.cdgaCAlg (E := E) k := by
+  rfl
 
 /-- 概要：k 上の小さい模型の de Rham 比較を**関手 ∞ 圏の同型**として：Tot_{E∞} D_0(−)^• ≅ Ω̂^•_{(−)/k}（Fun(N(Poly k), CAlg_k)）。
 D69 の段 6（a1-design §10.5）。
@@ -364,32 +256,32 @@ D69 の段 6（a1-design §10.5）。
 (a) `totCDGA_discrete`（次数 0 の cdga の Tot は余単体的可換環の Tot）、(b) 行 0 への射影 `pdDeRhamProjection`（成分は
 `pdDeRhamProjection_isInvertible`）を `strictNatTransFunctorIso` で、(c) 列 0 への射影 `totCDGA_evalZero`（`stableHomotopyPrecomp` で
 前合成、成分は `pdDeRham_homotopicallyConstant` と `totCDGA_evalZero_isInvertible`）、(d) `pdDeRhamZeroIso`、(e) `formsCAlg_eq`。
-規約：k は任意（A1-5 では k = C = A₀/d₀）。`pdPolynomialFunctor k` は Poly k 上で厳密に関手的（射は k 係数のまま代入、pd 包の普遍性）。
+規約：k は任意（A1-5 では k = C = A₀/d₀）。`pdModelPolynomialFunctor k` は Poly k 上で厳密に関手的（射は k 係数のまま代入、pd 包の普遍性）。
 使われ方：DeRhamComparisonPoly の `bigZigzagIso`。旧 `pdPolynomialComparison`（1 単体までの自然性）に代わる。 -/
 def pdDeRhamFunctorIso (k : Type u) [CommRing k] :
-    FunctorIso (Cosimplicial.strictShapeNerve (pdPolynomialFunctor p k) ≫ Cosimplicial.totEInfinityFunctor k)
-      (formsCAlg p k) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (Cosimplicial.strictShapeNerve (pdModelPolynomialFunctor p k) ≫ Cosimplicial.totEInfinityFunctor (E := E) k)
+      (formsCAlg (E := E) p k) := by
   let disc := (Functor.whiskeringRight SimplexCategory _ _).obj (Cosimplicial.discreteCDGA k)
   let ev0 := (evaluation SimplexCategory (CommMon (Complex k))).obj ⦋0⦌
   -- (a) Tot(D_0 を次数 0 の cdga に) ≅ Tot_{E∞} D_0
-  let ea : FunctorIso (Cosimplicial.strictShapeNerve (pdPolynomialFunctor p k ⋙ disc) ≫ Cosimplicial.totCDGAFunctor k)
-      (Cosimplicial.strictShapeNerve (pdPolynomialFunctor p k) ≫ Cosimplicial.totEInfinityFunctor k) :=
-    functorIsoOfEq ((Cosimplicial.totCDGA_discrete k).precomp (Cosimplicial.strictShapeNerve (pdPolynomialFunctor p k)))
+  let ea : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (Cosimplicial.strictShapeNerve (pdModelPolynomialFunctor p k ⋙ disc) ≫ Cosimplicial.totCDGAFunctor (E := E) k)
+      (Cosimplicial.strictShapeNerve (pdModelPolynomialFunctor p k) ≫ Cosimplicial.totEInfinityFunctor (E := E) k) :=
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq ((Cosimplicial.totCDGA_discrete (E := E) k).precomp (Cosimplicial.strictShapeNerve (pdModelPolynomialFunctor p k)))
       (by rw [Cosimplicial.strictShapeNerve_comp]; rfl) rfl
   -- (b) Tot K → Tot(行 0)
-  let eb := Cosimplicial.strictNatTransFunctorIso (pdDeRhamProjection p k) (Cosimplicial.totCDGAFunctor k)
-    (pdDeRhamProjection_isInvertible p k)
+  let eb := Cosimplicial.strictNatTransFunctorIso (pdDeRhamProjection p k) (Cosimplicial.totCDGAFunctor (E := E) k)
+    (pdDeRhamProjection_isInvertible (E := E) p k)
   -- (c) Tot K → K^0
-  let ec : FunctorIso (Cosimplicial.strictShapeNerve (pdDeRhamCDGA p k) ≫ Cosimplicial.totCDGAFunctor k)
-      (Cosimplicial.strictShapeNerve (pdDeRhamCDGA p k ⋙ ev0) ≫ Cosimplicial.cdgaCAlg k) :=
-    functorIsoOfEq (functorIsoOfPointwiseInvertibleHomotopy
-      (stableHomotopyPrecomp (Cosimplicial.strictShapeNerve (pdDeRhamCDGA p k)) (Cosimplicial.totCDGA_evalZero k))
+  let ec : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (Cosimplicial.strictShapeNerve (pdDeRhamCDGA p k) ≫ Cosimplicial.totCDGAFunctor (E := E) k)
+      (Cosimplicial.strictShapeNerve (pdDeRhamCDGA p k ⋙ ev0) ≫ Cosimplicial.cdgaCAlg (E := E) k) :=
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.functorIsoOfPointwiseInvertibleHomotopy
+      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.stableHomotopyPrecomp (Cosimplicial.strictShapeNerve (pdDeRhamCDGA p k)) (Cosimplicial.totCDGA_evalZero (E := E) k))
       (by sorry)) -- 頂点 ULift.up (nerveVertex Q) で totCDGA_evalZero_isInvertible と pdDeRham_homotopicallyConstant
       rfl (by rw [Cosimplicial.strictShapeNerve_comp]; rfl)
   -- (d) K^0 ≅ Ω̂（厳密な同型）
-  let ed := Cosimplicial.strictNatTransFunctorIso (pdDeRhamZeroIso p k).hom (Cosimplicial.cdgaCAlg k) (by
+  let ed := Cosimplicial.strictNatTransFunctorIso (pdDeRhamZeroIso p k).hom (Cosimplicial.cdgaCAlg (E := E) k) (by
     sorry) -- 同型の成分の nerve 辺は可逆（逆の辺と二つの 2 単体）
-  exact ea.symm ≪≫ eb.symm ≪≫ ec ≪≫ functorIsoOfEq ed rfl (formsCAlg_eq p k).symm
+  exact ea.symm ≪≫ eb.symm ≪≫ ec ≪≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq ed rfl (formsCAlg_eq (E := E) p k).symm
 
 /-! ## D68 改訂後の経路：(Z_p,(p))・F_p[X_1,…,X_r] の HT 比較を mod p で直接（a1-design §10） -/
 
@@ -416,20 +308,34 @@ abbrev cartierComplex (n : ℕ) := DeRham.deRhamComplex (cartierBase.{u} p) (for
 
 -- pdDeRhamDifferential と pdDeRhamDoubleComplex は本体の PDDeRhamBicomplex に置く。
 
+@[no_expose] private def pdColumn_complex_eq (r n : ℕ) :
+    (pdDeRhamDoubleComplex p (cartierBase.{u} p) r).X n =
+      pdDeRhamColumn p (cartierBase.{u} p) r ⦋n⦌ := by
+  dsimp only [pdDeRhamDoubleComplex, HomologicalComplex₂.ofGradedObject, pdDeRhamColumn] <;> rfl
+
 /-- 概要：列 n への Ω^•_{F_p[X]} の包含（copy 0 の座標 X^{(0)} と dX^{(0)}）。
 方針：多項式 ↦ copy 0 の多項式、dX ↦ dX^{(0)}。
 規約：どの copy を使っても余単体的に同じクラス。
 使われ方：`pdPoincare_column`。 -/
-def pdColumnInclusion (r n : ℕ) :
+@[no_expose] def pdColumnInclusion (r n : ℕ) :
     cartierComplex.{u} p r ⟶ (pdDeRhamDoubleComplex p (cartierBase.{u} p) r).X n :=
-  pdDeRhamPolynomialInclusion p (cartierBase.{u} p) r (cartierBase_natCast p) ⦋n⦌
+  pdDeRhamPolynomialInclusion p (cartierBase.{u} p) r (cartierBase_natCast p) ⦋n⦌ ≫
+    eqToHom (pdColumn_complex_eq p r n).symm
+
+@[no_expose] private def pdPoincare_column_proof (r n : ℕ) :
+    QuasiIso (pdColumnInclusion.{u} p r n) := by
+  letI : QuasiIso (pdDeRhamPolynomialInclusion p (cartierBase.{u} p) r (cartierBase_natCast p) ⦋n⦌) :=
+    pdDeRhamPolynomialInclusion_quasiIso p (cartierBase.{u} p) r (cartierBase_natCast p) ⦋n⦌
+  change QuasiIso (pdDeRhamPolynomialInclusion p (cartierBase.{u} p) r (cartierBase_natCast p) ⦋n⦌ ≫
+    eqToHom (pdColumn_complex_eq p r n).symm)
+  infer_instance
 
 /-- 概要：G-A1-7：pd Poincaré 補題：列 n（Ω^•_pd(B_0⟨z_1,…⟩_pd)、B_0 = F_p[X^{(0)}]）は Ω^•_{F_p[X]} に擬同型。
 方針：一変数の Ω^•_pd(B⟨z⟩/B) ≃ B（dγ_m(z) = γ_{m−1}(z)dz で γ_m(z) の項が消える）をテンソルで。
 規約：標数 p でも成り立つのは pd 微分を使うから。
 使われ方：段 4。 -/
 theorem pdPoincare_column (r n : ℕ) : QuasiIso (pdColumnInclusion.{u} p r n) :=
-  pdDeRhamPolynomialInclusion_quasiIso p (cartierBase.{u} p) r (cartierBase_natCast p) ⦋n⦌
+  pdPoincare_column_proof p r n
 
 /-- 概要：段 4：H^i(D_0^•(F_p)) ≅ H^i(Ω^•_{F_p[X]/F_p})。
 方針：双複体 `pdDeRhamDoubleComplex` の総複体 T を経由する span（**11-07 訂正**：行 0・列の包含は鎖写像でないので射影を使う、a1-design §10.3）：

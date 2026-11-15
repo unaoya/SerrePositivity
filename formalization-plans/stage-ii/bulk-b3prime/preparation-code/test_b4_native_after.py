@@ -1,0 +1,10 @@
+from pathlib import Path
+import json,subprocess,hashlib,time
+W=Path('/tmp/bulk-b3prime');R=Path('/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout');base=W/'B4-tests-v4';proof=json.loads((base/'static-complete.json').read_text());assert proof['passed'];assert proof['script_sha256']==hashlib.sha256((W/'B4/rewrite.py').read_bytes()).hexdigest();assert proof['ownership_sha256']==hashlib.sha256((W/'B4/declaration-import-owners.json').read_bytes()).hexdigest();name='SerrePositivity.EInfinity.Perfectoidization.IsTheoryDiscrete';results=[]
+for label,path in [('without_owner_import',base/'aggregate-owner/root/SerrePositivity/B4AggregateFixture.lean'),('with_actual_owner_import',base/'aggregate-owner/preview/SerrePositivity/B4AggregateFixture.lean')]:
+ log=base/(label+'.log');start=time.monotonic()
+ with log.open('w') as f:p=subprocess.run(['gtimeout','--kill-after=3s','180','lake','env','lean',str(path)],cwd=R,stdout=f,stderr=subprocess.STDOUT)
+ text=log.read_text();results.append({'case':label,'rc':p.returncode,'seconds':time.monotonic()-start,'source_sha256':hashlib.sha256(path.read_bytes()).hexdigest(),'log':str(log)})
+ if label=='without_owner_import':assert p.returncode==1 and name in text and 'Unknown identifier' in text,(p.returncode,text[-1600:])
+ else:assert p.returncode==0 and name in text,(p.returncode,text[-1600:])
+summary={'passed':True,'cases':results,'static_cases':len(proof['cases']),'header_cases':proof['header_cases'],'script_sha256':proof['script_sha256'],'ownership_sha256':proof['ownership_sha256'],'fixture_provenance':'Synthetic source position fixture uses an actual native-validated unchanged public name whose old module moved. Original-source split/wrapper guards also tested against real earlier native captures. This is a tooling regression, not a native before/after preservation claim.'};(W/'B4-regression-complete.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2));print('B4 actual after Lean regression PASS',flush=True)

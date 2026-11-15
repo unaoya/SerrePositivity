@@ -1,0 +1,168 @@
+{
+  "status": "isolated comment-only proposal; no actual worktree drafts modified",
+  "files": 18,
+  "rows": [
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A4/AfterComparison.lean",
+      "line": 1,
+      "old": "-- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Derived.AfterComparison（仮。Prop 8.5 の後に置く A4 の補足：D41 の直接の式との一致、Example 8.3）",
+      "new": "-- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Construction.AfterComparison（仮。Prop 8.5 の後に置く A4 の補足：D41 の直接の式との一致、Example 8.3）",
+      "source_sha256": "e082ad42795fd516915925d9540852e5366c8545b3d66f2ce4fc7b2dbdb8ce11",
+      "preview_sha256": "b285804b39f1e86179abec89777ae64585e9c99e35fe07781570b91ce110f4a1",
+      "authority": "R8-8: future destination comment only; A4 P0 body/import/name/type/proof byte-identical; hypothetical destinations remain marked 仮"
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A4/InterfaceFields.lean",
+      "line": 1,
+      "old": "-- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Derived.InterfaceFields（仮。E3 の CAlg 版界面の欄 perfd・unit・h0）",
+      "new": "-- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Construction.InterfaceFields（仮。E3 の CAlg 版界面の欄 perfd・unit・h0）",
+      "source_sha256": "af42ae216c00c8210022caf4ff3eadc8300fa6354e035c9de092675aaacd91f8",
+      "preview_sha256": "871fabdfa699ef464136b3f5892afce60c4dfe6d2a7abac1d6c13a08d8d60d67",
+      "authority": "R8-8: future destination comment only; A4 P0 body/import/name/type/proof byte-identical; hypothetical destinations remain marked 仮"
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A4/Perfectoidization.lean",
+      "line": 1,
+      "old": "-- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Derived.Definition（仮。原典 Not 8.1、Def 8.2、Example 8.3、Lemma 8.4）",
+      "new": "-- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Construction.Definition（仮。原典 Not 8.1、Def 8.2、Example 8.3、Lemma 8.4）",
+      "source_sha256": "5a591d83f6c3209e7cd735679b5dd0c35eb6a653839e56683655c7d38f57ff07",
+      "preview_sha256": "291b21276a515551076c2687178dc9ffb39b5068cfa1b0eec399dcbc6234c688",
+      "authority": "R8-8: future destination comment only; A4 P0 body/import/name/type/proof byte-identical; hypothetical destinations remain marked 仮"
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A5/InterfaceLimitCone.lean",
+      "line": 1,
+      "old": "-- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Derived.InterfaceLimitCone（仮。E3 の CAlg 版界面の欄 limitCone・limit_isLimit）",
+      "new": "-- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Descent.InterfaceLimitCone（仮。E3 の CAlg 版界面の欄 limitCone・limit_isLimit）",
+      "source_sha256": "0e0be3d0dd1272b552e46e3ce2d9aeaf719bb20e32eb3e9283fd07612d654abd",
+      "preview_sha256": "9e154d144bc7eba8e16bfdf983e37ca05d2f98a5cd5e305565c724df6cacc2e9",
+      "authority": "R8-8: future destination comment only; A4 P0 body/import/name/type/proof byte-identical; hypothetical destinations remain marked 仮"
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A5/PerfectSite.lean",
+      "line": 1,
+      "old": "-- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Derived.PerfectSite（仮。原典 Rem 4.6、Lemma 4.8、比較写像）",
+      "new": "-- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Descent.PerfectSite（仮。原典 Rem 4.6、Lemma 4.8、比較写像）",
+      "source_sha256": "e5f09ab95373282ea266e66f799c91460c14d00a066f517fc9b6138f60a8871b",
+      "preview_sha256": "3aca81c6d2174c27d062c3c3c992728e4fd3a0376b4bdea5dc4207207c72d26d",
+      "authority": "R8-8: future destination comment only; A4 P0 body/import/name/type/proof byte-identical; hypothetical destinations remain marked 仮"
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A5/PerfectSiteComparison.lean",
+      "line": 1,
+      "old": "-- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Derived.PerfectSiteComparison（仮。原典 Prop 8.5 の主張と系。site・Lemma 4.8・比較写像は PerfectSite.lean、W9-III-09）",
+      "new": "-- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Descent.PerfectSiteComparison（仮。原典 Prop 8.5 の主張と系。site・Lemma 4.8・比較写像は PerfectSite.lean、W9-III-09）",
+      "source_sha256": "5aeb9ae7cf91ee49ce7ebf1e0a699b697c8d380a871aa95f158cf2f9a27a8b00",
+      "preview_sha256": "3b0b4bd473bb4488899ed5065500f5694c46b89a1ec40504cf7660195686d237",
+      "authority": "R8-8: future destination comment only; A4 P0 body/import/name/type/proof byte-identical; hypothetical destinations remain marked 仮"
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A5/SemiperfectoidCase.lean",
+      "line": 1,
+      "old": "-- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Derived.SemiperfectoidCase（仮。原典 Prop 8.5 の証明 (4)、系 3、G-A5-17）",
+      "new": "-- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Descent.SemiperfectoidCase（仮。原典 Prop 8.5 の証明 (4)、系 3、G-A5-17）",
+      "source_sha256": "11071cdd80a8108a6c463277713be9532fa80c547daf81526717c7bb3b6ad9d2",
+      "preview_sha256": "66fb51348e5ddd4a6a3570e0f7f97e5b34f920df166656453733b0553b659917",
+      "authority": "R8-8: future destination comment only; A4 P0 body/import/name/type/proof byte-identical; hypothetical destinations remain marked 仮"
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A5/StrongDescent.lean",
+      "line": 1,
+      "old": "-- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Derived.StrongDescent（仮。原典 Lemma 8.6）",
+      "new": "-- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Descent.StrongDescent（仮。原典 Lemma 8.6）",
+      "source_sha256": "e45afd99e86bd5a25d3160d4a29417d03ddfa195145fe8c3ae5a9870bb5f5e44",
+      "preview_sha256": "835bcf5730aa2ddb4a1b25d90edb8cfbecc722248bfdc18214fe554e6aa1492f",
+      "authority": "R8-8: future destination comment only; A4 P0 body/import/name/type/proof byte-identical; hypothetical destinations remain marked 仮"
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A5/WeaklyInitialAndDescent.lean",
+      "line": 1,
+      "old": "-- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Derived.WeaklyInitialAndDescent（仮。原典 Prop 8.5 の証明 (1)〜(3)）",
+      "new": "-- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Descent.WeaklyInitialAndDescent（仮。原典 Prop 8.5 の証明 (1)〜(3)）",
+      "source_sha256": "331f4712f31380ee8822c1c46aa58e53c0ea8b56e838e7667589e85f9f6cbe3d",
+      "preview_sha256": "707907a0a8d6598aa405e530ca92d51f221c985458d37a41a2d982e6a6b00ba1",
+      "authority": "R8-8: future destination comment only; A4 P0 body/import/name/type/proof byte-identical; hypothetical destinations remain marked 仮"
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A6/ArcSheafProperty.lean",
+      "line": 1,
+      "old": "-- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcSheafProperty（仮。原典 Prop 8.10 の affine 版と三つの引用）",
+      "new": "-- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Arc.ArcSheafProperty（仮。原典 Prop 8.10 の affine 版と三つの引用）",
+      "source_sha256": "a612f0cfb24bf516f01ecc665180a9b8f46afb8b5f92aa46dea277c8bd9d5013",
+      "preview_sha256": "dc03866d41359fc57080cf5e88672096eb382e0ff7fe581c86a424d6546740d9",
+      "authority": "R8-8: future destination comment only; A4 P0 body/import/name/type/proof byte-identical; hypothetical destinations remain marked 仮"
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A6/Excision.lean",
+      "line": 1,
+      "old": "-- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Derived.ExcisionDerived（仮。原典 Cor 8.12 と E3 の欄 excision）",
+      "new": "-- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Arc.ExcisionDerived（仮。原典 Cor 8.12 と E3 の欄 excision）",
+      "source_sha256": "5fe604db0ff25cdf1e5b11a37456856a20286cbece77ee0f9a2c9172bc447f45",
+      "preview_sha256": "397f67488686aed29a95a971b5e9cf48223d27dbbba6cc355dc50887a43b04c1",
+      "authority": "R8-8: future destination comment only; A4 P0 body/import/name/type/proof byte-identical; hypothetical destinations remain marked 仮"
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A6/SheafOfSetsExcision.lean",
+      "line": 1,
+      "old": "-- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Derived.SheafOfSetsExcision（仮。原典 Cor 8.12 の証明の集合の層の部分）",
+      "new": "-- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Arc.SheafOfSetsExcision（仮。原典 Cor 8.12 の証明の集合の層の部分）",
+      "source_sha256": "832e0ddac047f9821e2aa6b720af8f15ccfb26db0342984f2e8e3a53f23220b8",
+      "preview_sha256": "508f51ddbc843e528c3c5822e50ef6b16e0cfc03e9932284fbee9012b1e5e64b",
+      "authority": "R8-8: future destination comment only; A4 P0 body/import/name/type/proof byte-identical; hypothetical destinations remain marked 仮"
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A7/AnimatedDomain.lean",
+      "line": 1,
+      "old": "-- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Derived.AnimatedDomain（仮。原典 Def 8.2 の定義域「導来 p 完備な animated R 代数」）",
+      "new": "-- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Construction.AnimatedDomain（仮。原典 Def 8.2 の定義域「導来 p 完備な animated R 代数」）",
+      "source_sha256": "cdf118bde36070a314aeaa97fa0d1af7459da4d88d7c35a64e5a76b1cc78a348",
+      "preview_sha256": "f9fc5ede05e081b91c365464aa35346722385c8df387ac561151d73addf6bc1a",
+      "authority": "R8-8: future destination comment only; A4 P0 body/import/name/type/proof byte-identical; hypothetical destinations remain marked 仮"
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A7/AnimatedPerfectoidization.lean",
+      "line": 1,
+      "old": "-- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Derived.Animated（仮。原典 Def 8.2 の定義域どおりの版、Construction 7.6 (5) の相対版、Prop 8.13）",
+      "new": "-- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Construction.Animated（仮。原典 Def 8.2 の定義域どおりの版、Construction 7.6 (5) の相対版、Prop 8.13）",
+      "source_sha256": "ff388902edf467d10f52dce13a1c97efa12762cb60d98a6d1d301b086da385b4",
+      "preview_sha256": "3fd38564cbe7d3b67b8199f0d17848a91403b09cd1a5492ede085b56ddd4de30",
+      "authority": "R8-8: future destination comment only; A4 P0 body/import/name/type/proof byte-identical; hypothetical destinations remain marked 仮"
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A7/DiscreteCore.lean",
+      "line": 1,
+      "old": "-- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Derived.DiscreteCore（仮。原典 Cor 8.14 前半の芯）",
+      "new": "-- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Construction.DiscreteCore（仮。原典 Cor 8.14 前半の芯）",
+      "source_sha256": "121cdc8d6c694d637914bec165fdfa112f26891ca683a6252d7a2d971b2776fc",
+      "preview_sha256": "7f807329ced97f41b8c617deece70a4f8dc6a0fd06b13b4a08838759ac2d7186",
+      "authority": "R8-8: future destination comment only; A4 P0 body/import/name/type/proof byte-identical; hypothetical destinations remain marked 仮"
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A7/UniversalProperty.lean",
+      "line": 1,
+      "old": "-- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Derived.UniversalProperty（仮。原典 Cor 8.14 と E3 の欄 universal）",
+      "new": "-- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Construction.UniversalProperty（仮。原典 Cor 8.14 と E3 の欄 universal）",
+      "source_sha256": "69dae2708bc3328f4ffd490a3681d88cfea4b2acf1698174d9cf1141726a704b",
+      "preview_sha256": "f1cf4f5b70ffb99d1d6589459cf57ba9b7e0be482b352e5fd6cb134d880a0a17",
+      "authority": "R8-8: future destination comment only; A4 P0 body/import/name/type/proof byte-identical; hypothetical destinations remain marked 仮"
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A8/IntegralDiscreteness.lean",
+      "line": 1,
+      "old": "-- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Derived.IntegralDiscreteness（仮。原典 Thm 10.11 と E3 の欄 integral）",
+      "new": "-- 将来の置き場所：SerrePositivity.BhattScholze.Almost.IntegralDiscreteness（仮。原典 Thm 10.11 と E3 の欄 integral）",
+      "source_sha256": "d0703235aad089d283c0203ba8077406a1cf506c75541a9f75423bb2bbff2401",
+      "preview_sha256": "dda05a036beb7582733e4a407d57e204ce1b21b268339a96f4c10ecb76d980f3",
+      "authority": "R8-8: future destination comment only; A4 P0 body/import/name/type/proof byte-identical; hypothetical destinations remain marked 仮"
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A9/Assembly.lean",
+      "line": 1,
+      "old": "-- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Derived.Assembly（仮）と、Inputs/PerfectoidizationInterface.lean の定理の証明の置き換え",
+      "new": "-- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Interface.Assembly（仮）と、SerrePositivity/BhattScholze/Inputs/PerfectoidizationInterface.lean の定理の証明の置き換え",
+      "source_sha256": "bc1c642a73f40280774f93e47d4fd62577b7b50cb8d568a0ce549306fae7cac4",
+      "preview_sha256": "1b22b910972e2e8f72d408cd12fde4a86b12641cc3e756fce76107a2503972ad",
+      "authority": "R8-8: future destination comment only; A4 P0 body/import/name/type/proof byte-identical; hypothetical destinations remain marked 仮"
+    }
+  ]
+}

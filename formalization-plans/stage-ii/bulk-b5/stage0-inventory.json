@@ -1,0 +1,703 @@
+{
+  "status": "B5 stage0 read-only source inventory; no new Lean environment extraction",
+  "source_math_head": "16e125f58",
+  "canonical_catalog_rows": 8568,
+  "canonical_catalog_files": 5,
+  "additional_K_catalogs": 5,
+  "review_files": 28,
+  "registered_reference_keys": [
+    "AGH",
+    "BGT",
+    "BM18",
+    "BS17",
+    "BS19",
+    "BST13",
+    "BalmerSchlichting",
+    "Barwick",
+    "Drinfeld",
+    "Goodwillie",
+    "HA",
+    "HTT",
+    "KL",
+    "KST",
+    "Kerodon",
+    "LT",
+    "Neeman",
+    "Paper",
+    "Rydh",
+    "Schlichting",
+    "Stacks",
+    "TT",
+    "Tamme",
+    "Thomason",
+    "Waldhausen"
+  ],
+  "registered_reference_count": 25,
+  "files": [
+    {
+      "path": "research/htt-coverage/items.csv",
+      "role": "catalog",
+      "rows": 1730,
+      "fields": [
+        "number",
+        "kind",
+        "title",
+        "section",
+        "status",
+        "declarations",
+        "reason",
+        "confidence",
+        "lean_citations",
+        "plan_citations",
+        "kerodon",
+        "goal"
+      ],
+      "sha256": "cd085862de58c125f7f411ab06fb683dad913defc46c90735971f5a907a5f2db"
+    },
+    {
+      "path": "research/ha-coverage/items.csv",
+      "role": "catalog",
+      "rows": 2866,
+      "fields": [
+        "number",
+        "kind",
+        "title",
+        "section",
+        "status",
+        "declarations",
+        "reason",
+        "confidence",
+        "lean_citations",
+        "plan_citations",
+        "kerodon",
+        "goal"
+      ],
+      "sha256": "63aaa841619487d1454acffe7a1b7909959fc9f91e629f94a717f1ba9ae12072"
+    },
+    {
+      "path": "research/bs-coverage/items.csv",
+      "role": "catalog",
+      "rows": 211,
+      "fields": [
+        "number",
+        "kind",
+        "title",
+        "title_ja",
+        "status",
+        "goal",
+        "declarations",
+        "design",
+        "note",
+        "confidence"
+      ],
+      "sha256": "d9f2e2610d6658cc064dd9e38afbf70a06a63f9a888a8b116d8dc5cca148f961"
+    },
+    {
+      "path": "research/k-coverage/items.csv",
+      "role": "catalog",
+      "rows": 208,
+      "fields": [
+        "reference",
+        "item",
+        "kind",
+        "statement",
+        "status",
+        "goal",
+        "declarations",
+        "used_for",
+        "plan",
+        "note",
+        "confidence"
+      ],
+      "sha256": "6491adafaa4a11a3402a4c24f673811ae8c7a8030fc5e429f4a8f6247e3d4b0c"
+    },
+    {
+      "path": "research/kerodon-coverage/items.csv",
+      "role": "catalog",
+      "rows": 3553,
+      "fields": [
+        "number",
+        "kind",
+        "status",
+        "declarations",
+        "note",
+        "confidence",
+        "lean_citations",
+        "subsection_tag"
+      ],
+      "sha256": "2cfc90d4f272da35d039e06590191a50243137ac410207fa54af8645668787e1"
+    },
+    {
+      "path": "research/k-coverage/maps/bgt/items.csv",
+      "role": "crosswalk_or_K_catalog",
+      "rows": 247,
+      "fields": [
+        "number",
+        "kind",
+        "title",
+        "status",
+        "declarations",
+        "reason",
+        "confidence",
+        "lean_citations",
+        "route",
+        "frozen",
+        "partial_kind"
+      ],
+      "sha256": "ae9c771f5cb3f56258824d4c13fefc2ab6e9d88ebc72b327696a19a8e26eddfa"
+    },
+    {
+      "path": "research/k-coverage/maps/kst/items.csv",
+      "role": "crosswalk_or_K_catalog",
+      "rows": 150,
+      "fields": [
+        "number",
+        "kind",
+        "title",
+        "status",
+        "declarations",
+        "reason",
+        "confidence",
+        "lean_citations",
+        "route",
+        "frozen"
+      ],
+      "sha256": "87cf6377746af93ffb8654c318afdba17bd024680d4420f9afee72f3014fba4e"
+    },
+    {
+      "path": "research/k-coverage/maps/land-tamme/items.csv",
+      "role": "crosswalk_or_K_catalog",
+      "rows": 132,
+      "fields": [
+        "number",
+        "kind",
+        "title",
+        "status",
+        "declarations",
+        "reason",
+        "confidence",
+        "lean_citations",
+        "route",
+        "frozen"
+      ],
+      "sha256": "4e165f20e2ef9b62f1b3f9fa74854c4297ae6848011198c19c303694a31c4aad"
+    },
+    {
+      "path": "research/k-coverage/maps/paper/items.csv",
+      "role": "crosswalk_or_K_catalog",
+      "rows": 62,
+      "fields": [
+        "number",
+        "kind",
+        "title",
+        "status",
+        "declarations",
+        "reason",
+        "confidence",
+        "lean_citations",
+        "route",
+        "frozen",
+        "partial_kind"
+      ],
+      "sha256": "0c6738f55f432220cffc7f5bf7730968c06a2109b9f505fc02800b1149e8d565"
+    },
+    {
+      "path": "research/k-coverage/maps/tamme/items.csv",
+      "role": "crosswalk_or_K_catalog",
+      "rows": 50,
+      "fields": [
+        "number",
+        "kind",
+        "title",
+        "status",
+        "declarations",
+        "reason",
+        "confidence",
+        "lean_citations",
+        "route",
+        "frozen",
+        "partial_kind"
+      ],
+      "sha256": "1057698e99aeb7172a4cd106218f66a0ad85773b8d3906991ab6e82aa7298d13"
+    },
+    {
+      "path": "research/k-coverage/maps/others.csv",
+      "role": "crosswalk_or_K_catalog",
+      "rows": 47,
+      "fields": [
+        "reference",
+        "source_line",
+        "number",
+        "kind",
+        "title",
+        "edition",
+        "source_url",
+        "status",
+        "declarations",
+        "reason",
+        "confidence",
+        "lean_citations",
+        "route",
+        "frozen",
+        "partial_kind"
+      ],
+      "sha256": "67f7fe3b9eaebb361f3c0ad77493bbcf8a982036d9a6b5b85aef206fc30e7715"
+    },
+    {
+      "path": "research/kerodon-coverage/item-tags.csv",
+      "role": "crosswalk_or_K_catalog",
+      "rows": 6613,
+      "fields": [
+        "number",
+        "kind",
+        "tag"
+      ],
+      "sha256": "4df5702571b08c9d39ef7e5ce22ace983d7457ad343e77aea59704ffe266fbf2"
+    },
+    {
+      "path": "research/ha-coverage/review/ch0.csv",
+      "role": "review",
+      "rows": 3,
+      "fields": [
+        "number",
+        "status",
+        "declarations",
+        "reason",
+        "axioms",
+        "check",
+        "partial_kind"
+      ],
+      "sha256": "7bb948669571feb14dee97189cb89985927ecd0e5c0ccd8894c6ad29ded57743"
+    },
+    {
+      "path": "research/ha-coverage/review/ch1.csv",
+      "role": "review",
+      "rows": 300,
+      "fields": [
+        "number",
+        "status",
+        "declarations",
+        "reason",
+        "axioms",
+        "check",
+        "partial_kind"
+      ],
+      "sha256": "8c16a7d2b0e92d1ac732665b64f55a74d9ce8a5f97277afab07d815782cfaa30"
+    },
+    {
+      "path": "research/ha-coverage/review/ch2.csv",
+      "role": "review",
+      "rows": 281,
+      "fields": [
+        "number",
+        "status",
+        "declarations",
+        "reason",
+        "axioms",
+        "check",
+        "partial_kind"
+      ],
+      "sha256": "c1c81cb8ba5788d83580a463943a8c766027e3ee745b3841c25a8f5bfc4e87f2"
+    },
+    {
+      "path": "research/ha-coverage/review/ch3.csv",
+      "role": "review",
+      "rows": 166,
+      "fields": [
+        "number",
+        "status",
+        "declarations",
+        "reason",
+        "axioms",
+        "check",
+        "partial_kind"
+      ],
+      "sha256": "d383b210cb40950cc4b239c7397c54c28bceedbebb15e411a13040579f18f9b0"
+    },
+    {
+      "path": "research/ha-coverage/review/ch4.csv",
+      "role": "review",
+      "rows": 652,
+      "fields": [
+        "number",
+        "status",
+        "declarations",
+        "reason",
+        "axioms",
+        "check",
+        "partial_kind"
+      ],
+      "sha256": "41efe9052464b26d98e8aa053acc61cc70c01790ce11d9f23fa1c0c1171178a9"
+    },
+    {
+      "path": "research/ha-coverage/review/ch5.csv",
+      "role": "review",
+      "rows": 500,
+      "fields": [
+        "number",
+        "status",
+        "declarations",
+        "reason",
+        "axioms",
+        "check",
+        "partial_kind"
+      ],
+      "sha256": "44934e68a473ac5563aab69398dad2f638fa3e75cafbed9554485cf78f346faf"
+    },
+    {
+      "path": "research/ha-coverage/review/ch6.csv",
+      "role": "review",
+      "rows": 356,
+      "fields": [
+        "number",
+        "status",
+        "declarations",
+        "reason",
+        "axioms",
+        "check",
+        "partial_kind"
+      ],
+      "sha256": "fcf6eff964dfaa32f73f3e347718e8f0860cd660f2a12e38dc48219d06801a78"
+    },
+    {
+      "path": "research/ha-coverage/review/ch7.csv",
+      "role": "review",
+      "rows": 405,
+      "fields": [
+        "number",
+        "status",
+        "declarations",
+        "reason",
+        "axioms",
+        "check",
+        "partial_kind"
+      ],
+      "sha256": "5c62a2ef4318edcca797d19e57e964fba4b21785fe472e80c5707010b582b2c2"
+    },
+    {
+      "path": "research/ha-coverage/review/chA.csv",
+      "role": "review",
+      "rows": 135,
+      "fields": [
+        "number",
+        "status",
+        "declarations",
+        "reason",
+        "axioms",
+        "check",
+        "partial_kind"
+      ],
+      "sha256": "6b872af56ae526f2ada03f0bd24be424a3c7c0fdbc858c7c464703cef67df7e8"
+    },
+    {
+      "path": "research/ha-coverage/review/chB.csv",
+      "role": "review",
+      "rows": 68,
+      "fields": [
+        "number",
+        "status",
+        "declarations",
+        "reason",
+        "axioms",
+        "check",
+        "partial_kind"
+      ],
+      "sha256": "c72d1885f37d4094a7231719a4f4d414616ca889498e72a16029ed8e9b882ae0"
+    },
+    {
+      "path": "research/htt-coverage/review/ch1.csv",
+      "role": "review",
+      "rows": 110,
+      "fields": [
+        "number",
+        "status",
+        "declarations",
+        "reason",
+        "axioms",
+        "check",
+        "partial_kind"
+      ],
+      "sha256": "36fd82826c2c604f045c87bd81170ced73da9196f35f6761258c6fe01c19494a"
+    },
+    {
+      "path": "research/htt-coverage/review/ch2.csv",
+      "role": "review",
+      "rows": 177,
+      "fields": [
+        "number",
+        "status",
+        "declarations",
+        "reason",
+        "axioms",
+        "check",
+        "partial_kind"
+      ],
+      "sha256": "7750bb127ae1705b9e7288a1922c2475f245f046e0efe6ff8fb935d6ef2bf7b3"
+    },
+    {
+      "path": "research/htt-coverage/review/ch3.csv",
+      "role": "review",
+      "rows": 128,
+      "fields": [
+        "number",
+        "status",
+        "declarations",
+        "reason",
+        "axioms",
+        "check",
+        "partial_kind"
+      ],
+      "sha256": "181a5d1a8cb833b25c3d6ce10c03e1f3112c765f240bcd7f6ab92d8d6f47632b"
+    },
+    {
+      "path": "research/htt-coverage/review/ch4.csv",
+      "role": "review",
+      "rows": 162,
+      "fields": [
+        "number",
+        "status",
+        "declarations",
+        "reason",
+        "axioms",
+        "check",
+        "partial_kind"
+      ],
+      "sha256": "9d656e5d2955e8ab3f7205d7035559efa80d57fe67cce488f4480b4054d6d70f"
+    },
+    {
+      "path": "research/htt-coverage/review/ch5.csv",
+      "role": "review",
+      "rows": 427,
+      "fields": [
+        "number",
+        "status",
+        "declarations",
+        "reason",
+        "axioms",
+        "check",
+        "partial_kind"
+      ],
+      "sha256": "2c4598e927dedad5cc8550c92afb4c71f35bad4dd3ace357a2e90bfb955f1797"
+    },
+    {
+      "path": "research/htt-coverage/review/ch6.csv",
+      "role": "review",
+      "rows": 297,
+      "fields": [
+        "number",
+        "status",
+        "declarations",
+        "reason",
+        "axioms",
+        "check",
+        "partial_kind"
+      ],
+      "sha256": "ac984d2370df87192103c3589315b8529575e5d10128b4dc8a935fab4e5c99a8"
+    },
+    {
+      "path": "research/htt-coverage/review/ch7.csv",
+      "role": "review",
+      "rows": 203,
+      "fields": [
+        "number",
+        "status",
+        "declarations",
+        "reason",
+        "axioms",
+        "check",
+        "partial_kind"
+      ],
+      "sha256": "04947aefde20b90de550396528e0a7a0b37fe1ca7e476b7ee5d327977fdf1d66"
+    },
+    {
+      "path": "research/htt-coverage/review/chA.csv",
+      "role": "review",
+      "rows": 226,
+      "fields": [
+        "number",
+        "status",
+        "declarations",
+        "reason",
+        "axioms",
+        "check",
+        "partial_kind"
+      ],
+      "sha256": "71d71fa1655b109b0b31257699350b29b7127bb2b60c0c2c0a1da6206d4f8789"
+    },
+    {
+      "path": "research/kerodon-coverage/review/ch1.csv",
+      "role": "review",
+      "rows": 180,
+      "fields": [
+        "number",
+        "verdict",
+        "status_new",
+        "declarations_new",
+        "reason",
+        "axioms",
+        "check"
+      ],
+      "sha256": "d8cb6985dfecb0097bcf1dd5ddefbf4aa5d08aa72fc4fc445906c608fbca5ced"
+    },
+    {
+      "path": "research/kerodon-coverage/review/ch10.csv",
+      "role": "review",
+      "rows": 144,
+      "fields": [
+        "number",
+        "verdict",
+        "status_new",
+        "declarations_new",
+        "reason",
+        "axioms",
+        "check"
+      ],
+      "sha256": "40c6e45fd652a0cb8abd201274a4a0629d7d2121a7eec5967f54e85541b42141"
+    },
+    {
+      "path": "research/kerodon-coverage/review/ch2.csv",
+      "role": "review",
+      "rows": 213,
+      "fields": [
+        "number",
+        "verdict",
+        "status_new",
+        "declarations_new",
+        "reason",
+        "axioms",
+        "check"
+      ],
+      "sha256": "9da39bac00f001b20d529aed65887c11990dfde7c7f2de00caadaaf0b183ea7a"
+    },
+    {
+      "path": "research/kerodon-coverage/review/ch3.csv",
+      "role": "review",
+      "rows": 339,
+      "fields": [
+        "number",
+        "verdict",
+        "status_new",
+        "declarations_new",
+        "reason",
+        "axioms",
+        "check"
+      ],
+      "sha256": "eeb3e0fd3d23b3cc582265b7f02192fb9a233cc9f529adb5912b1bc8ac82087a"
+    },
+    {
+      "path": "research/kerodon-coverage/review/ch4.csv",
+      "role": "review",
+      "rows": 588,
+      "fields": [
+        "number",
+        "verdict",
+        "status_new",
+        "declarations_new",
+        "reason",
+        "axioms",
+        "check"
+      ],
+      "sha256": "322f9f3f07f6bdfb6853d5daedd7ba7635cfa4388b14aabff12597a2d7d9219d"
+    },
+    {
+      "path": "research/kerodon-coverage/review/ch5.csv",
+      "role": "review",
+      "rows": 345,
+      "fields": [
+        "number",
+        "verdict",
+        "status_new",
+        "declarations_new",
+        "reason",
+        "axioms",
+        "check"
+      ],
+      "sha256": "08cdf0277993b9bd577518c389ca88b69380b7c97ee84cbc0b9e1c122652feab"
+    },
+    {
+      "path": "research/kerodon-coverage/review/ch6.csv",
+      "role": "review",
+      "rows": 145,
+      "fields": [
+        "number",
+        "verdict",
+        "status_new",
+        "declarations_new",
+        "reason",
+        "axioms",
+        "check"
+      ],
+      "sha256": "55b86b2558235779da8366ca1b8ffc9fb536ada646d35254b37697c07859ac54"
+    },
+    {
+      "path": "research/kerodon-coverage/review/ch7.csv",
+      "role": "review",
+      "rows": 519,
+      "fields": [
+        "number",
+        "verdict",
+        "status_new",
+        "declarations_new",
+        "reason",
+        "axioms",
+        "check"
+      ],
+      "sha256": "5fc26a527423c412bff3aa9f97be801650cf5c85d812cd02c5e50861efc6e65a"
+    },
+    {
+      "path": "research/kerodon-coverage/review/ch8.csv",
+      "role": "review",
+      "rows": 483,
+      "fields": [
+        "number",
+        "verdict",
+        "status_new",
+        "declarations_new",
+        "reason",
+        "axioms",
+        "check"
+      ],
+      "sha256": "985b95f3f1d06c315ca1fb82d7eb516b9e3e230bae009d046b35257f2449154c"
+    },
+    {
+      "path": "research/kerodon-coverage/review/ch9.csv",
+      "role": "review",
+      "rows": 597,
+      "fields": [
+        "number",
+        "verdict",
+        "status_new",
+        "declarations_new",
+        "reason",
+        "axioms",
+        "check"
+      ],
+      "sha256": "22b1ae192de589fb8e95b7818e0ac6b151fd79abf2c906f06a090055c2c1e14b"
+    }
+  ],
+  "bibliography_sha256": "b72268de8a801dbfa5322b1577e2ad4936ac62b0c2b8d7bda0dad6cb9c4f3662",
+  "legacy_refresh_stats": {
+    "ok": 3905,
+    "skip": 1336,
+    "unresolved": 187
+  },
+  "legacy_refresh_note": "187 refers to the original 2026-11-12 unresolved ledger, not a claim about the current number of unresolved citations. Join the reviewed B3 decisions before recounting.",
+  "B3_attribute_snapshot": {
+    "expected": 1883,
+    "actual": 1883,
+    "missing": [],
+    "extra": [],
+    "different": [],
+    "metadata_errors": [],
+    "groups": 14,
+    "finished": 1794587768.783185
+  },
+  "B3_snapshot_note": "Historical expected/actual metadata comparison, not new B5 extraction counts.",
+  "core_5inf0_new_modules": {
+    "count": 7,
+    "owned_audit_declarations": 99,
+    "cite_attributes_in_these_modules": 0,
+    "note": "99 is the small-audit declaration count, not a proposed count of new citations. Classify only declarations with reviewed original-item correspondences; hold undecided ones."
+  },
+  "seconds": 0.09410312585532665
+}

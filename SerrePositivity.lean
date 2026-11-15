@@ -1,4 +1,7 @@
 module
+public import SerrePositivity.BhattScholze.Prism.Basic.PerfectBounded
+public import SerrePositivity.BhattScholze.Prismatic.Site.PerfectSite
+public import SerrePositivity.BhattScholze.Semiperfectoid.Basic
 public import SerrePositivity.Asymptotic.DGVerdier.OrderSquare
 public import SerrePositivity.InfinityCategories.Project.Entrypoints.ModelBridge
 public import Mathlib.Algebra.Module.Projective
@@ -224,7 +227,7 @@ public import SerrePositivity.CategoryTheory.TStructure.Localization
 public import SerrePositivity.CategoryTheory.TriangulatedK0
 public import SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosed.Basic
 public import SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosed.Etale
-public import SerrePositivity.BhattScholze.Semiperfectoid.AbsolutelyIntegrallyClosedQuotient
+public import SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.AbsolutelyIntegrallyClosedQuotient
 public import SerrePositivity.CommutativeAlgebra.Adic.BoundedTorsionQuotient
 public import SerrePositivity.CommutativeAlgebra.Adic.Complete
 public import SerrePositivity.CommutativeAlgebra.Adic.Completion.Algebra

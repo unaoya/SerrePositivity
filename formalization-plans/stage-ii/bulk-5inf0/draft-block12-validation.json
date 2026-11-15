@@ -1,0 +1,367 @@
+{
+  "status": "partial",
+  "results": [
+    {
+      "draft": "A0/FlatDescent",
+      "exit_code": 0,
+      "seconds": 33.401768831536174
+    },
+    {
+      "draft": "Sheaves/SheafGenerators",
+      "exit_code": 0,
+      "seconds": 14.59101508371532
+    },
+    {
+      "draft": "Sheaves/SpaceValued",
+      "exit_code": 1,
+      "seconds": 13.820722874253988
+    },
+    {
+      "draft": "Sheaves/CAlgValued",
+      "exit_code": 1,
+      "seconds": 17.87171712704003
+    },
+    {
+      "draft": "Shared/CosimplicialEInfinity",
+      "status": "NOT_RUN_DEPENDENCY"
+    },
+    {
+      "draft": "A0/CechAlexander",
+      "exit_code": 1,
+      "seconds": 17.577370166778564
+    },
+    {
+      "draft": "A0/BaseChange",
+      "status": "NOT_RUN_DEPENDENCY"
+    },
+    {
+      "draft": "A2/DerivedPrismaticCohomology",
+      "status": "NOT_RUN_DEPENDENCY"
+    }
+  ],
+  "receipts": [
+    {
+      "draft": "formalization-plans/bhatt-scholze/drafts/A0/FlatDescent.lean",
+      "source_sha256": "eccbcb1aae914ffc98788d037d4387fd76771bffb14ddd6412cf6f9e7b06a71b",
+      "staged_source_sha256": "13b256c7e673abaf7a12dfb29dd6033ec9a62e2fead10be3c79e76c586e40559",
+      "source_unchanged_during_check": true,
+      "dependencies_unchanged_during_check": true,
+      "dependency_signatures": [
+        {
+          "draft": "A0/PrismaticSite",
+          "source_sha256": "ad90bac869d37f37ec58293d7a4e18126e989c0fa9a379772f6b55abf53d4175",
+          "olean_sha256": "c91e6a84eda3baf43ffa10ec8d5f81f304a107df9236d1d02778221db1e955a6"
+        },
+        {
+          "draft": "DerivedGeneral/Truncation",
+          "source_sha256": "76a03cb176fbcd142ec857cc6b562afeddce1ba116e0d8353b395425725bd989",
+          "olean_sha256": "210cc8432c0b2268776bb79da9a98d52709d858277aa480c563e9711c05ec7b4"
+        },
+        {
+          "draft": "DerivedGeneral/CompletionFunctor",
+          "source_sha256": "006f26ddaa3e710b9e52d98aa1fbe9f541716da247b5e77a60637a1a587b1493",
+          "olean_sha256": "8d905f898a4446dc43b57187ad7bf4aaa730f87d60dacb8548718dd186059f72"
+        },
+        {
+          "draft": "Sheaves/SheafCondition",
+          "source_sha256": "7c9c027197af8311ca7cbea9628a66ecc92b4ec2d95eaf6259a2d55dfbcd61a0",
+          "olean_sha256": "01b556f3a699e1339c3515f143861a672f2a2f909b2cf301d01bc839c1b1d111"
+        },
+        {
+          "draft": "Sheaves/GlobalSections",
+          "source_sha256": "1eaa5edd01b2c21258a3a262bc6ff9eb77d42a9fffbe2f7e92b022df1c6c3267",
+          "olean_sha256": "93dfb9ab49d2b465e4296b241cb145dc23c2a7e5bb4d93bb7722fcfa6112d8f7"
+        }
+      ],
+      "extra_public_imports": [
+        "A0/PrismaticSite",
+        "DerivedGeneral/Truncation",
+        "DerivedGeneral/CompletionFunctor",
+        "Sheaves/SheafCondition",
+        "Sheaves/GlobalSections"
+      ],
+      "options": {
+        "maxSynthPendingDepth": 3,
+        "pp.unicode.fun": true,
+        "relaxedAutoImplicit": false,
+        "weak.linter.mathlibStandardSet": true,
+        "weak.linter.style.header": false
+      },
+      "command": [
+        "lake",
+        "env",
+        "env",
+        "LEAN_PATH=/private/tmp/bulk-5inf0/validation:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/Cli/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/batteries/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/Qq/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/aesop/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/importGraph/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/plausible/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/mathlib/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/build/lib/lean:/Users/sugakubunka/.elan/toolchains/leanprover--lean4---v4.35.0-rc4/lib/lean",
+        "lean",
+        "-DmaxSynthPendingDepth=3",
+        "-Dpp.unicode.fun=true",
+        "-DrelaxedAutoImplicit=false",
+        "-Dweak.linter.mathlibStandardSet=true",
+        "-Dweak.linter.style.header=false",
+        "--root=/private/tmp/bulk-5inf0/validation",
+        "-o",
+        "/private/tmp/bulk-5inf0/validation/Bulk5InfDraft/A0/FlatDescent.olean",
+        "/private/tmp/bulk-5inf0/validation/Bulk5InfDraft/A0/FlatDescent.lean"
+      ],
+      "lean_exit_code": 0,
+      "exit_code": 0,
+      "seconds": 29.903735164552927,
+      "status": "PASS",
+      "olean": "/private/tmp/bulk-5inf0/validation/Bulk5InfDraft/A0/FlatDescent.olean",
+      "olean_sha256": "6cef614661fd6988ca3ce39d03d789fdca3d49f4971a70296f8bbcc7d941a54b"
+    },
+    {
+      "draft": "formalization-plans/bhatt-scholze/drafts/Sheaves/SheafGenerators.lean",
+      "source_sha256": "6e415d196036cf7fce832ce9f4dc80748da0790369c5de5be9319e6e29a5c2bb",
+      "staged_source_sha256": "df05f4de224f0553dd4fe31359a02a1610be9cee73594dd7343c08bf7504ef3a",
+      "source_unchanged_during_check": true,
+      "dependencies_unchanged_during_check": true,
+      "dependency_signatures": [
+        {
+          "draft": "Sheaves/SheafCondition",
+          "source_sha256": "7c9c027197af8311ca7cbea9628a66ecc92b4ec2d95eaf6259a2d55dfbcd61a0",
+          "olean_sha256": "01b556f3a699e1339c3515f143861a672f2a2f909b2cf301d01bc839c1b1d111"
+        },
+        {
+          "draft": "Sheaves/SetSections",
+          "source_sha256": "3f1fde14e5bfec5256186e29da69e28afe5918f2af3999f06da183932f3dea90",
+          "olean_sha256": "9f80970f4f9394b50aaf4ba9312f22a63ef0dbefcd4a4c6b65f9e5e4fe2ba1f3"
+        },
+        {
+          "draft": "Sheaves/GlobalSections",
+          "source_sha256": "1eaa5edd01b2c21258a3a262bc6ff9eb77d42a9fffbe2f7e92b022df1c6c3267",
+          "olean_sha256": "93dfb9ab49d2b465e4296b241cb145dc23c2a7e5bb4d93bb7722fcfa6112d8f7"
+        }
+      ],
+      "extra_public_imports": [
+        "Sheaves/SheafCondition",
+        "Sheaves/SetSections",
+        "Sheaves/GlobalSections"
+      ],
+      "options": {
+        "maxSynthPendingDepth": 3,
+        "pp.unicode.fun": true,
+        "relaxedAutoImplicit": false,
+        "weak.linter.mathlibStandardSet": true,
+        "weak.linter.style.header": false
+      },
+      "command": [
+        "lake",
+        "env",
+        "env",
+        "LEAN_PATH=/private/tmp/bulk-5inf0/validation:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/Cli/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/batteries/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/Qq/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/aesop/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/importGraph/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/plausible/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/mathlib/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/build/lib/lean:/Users/sugakubunka/.elan/toolchains/leanprover--lean4---v4.35.0-rc4/lib/lean",
+        "lean",
+        "-DmaxSynthPendingDepth=3",
+        "-Dpp.unicode.fun=true",
+        "-DrelaxedAutoImplicit=false",
+        "-Dweak.linter.mathlibStandardSet=true",
+        "-Dweak.linter.style.header=false",
+        "--root=/private/tmp/bulk-5inf0/validation",
+        "-o",
+        "/private/tmp/bulk-5inf0/validation/Bulk5InfDraft/Sheaves/SheafGenerators.olean",
+        "/private/tmp/bulk-5inf0/validation/Bulk5InfDraft/Sheaves/SheafGenerators.lean"
+      ],
+      "lean_exit_code": 0,
+      "exit_code": 0,
+      "seconds": 11.102176999673247,
+      "status": "PASS",
+      "olean": "/private/tmp/bulk-5inf0/validation/Bulk5InfDraft/Sheaves/SheafGenerators.olean",
+      "olean_sha256": "6ba1968127e6b99a4ffbd5a0ee3b828e4b46cede3f0eb355c3027ba5487a33e3"
+    },
+    {
+      "draft": "formalization-plans/bhatt-scholze/drafts/Sheaves/SpaceValued.lean",
+      "source_sha256": "98c66330a161d92a553185952e9bab8cf1615e01f2f83bd52cd00e971a594111",
+      "staged_source_sha256": "261d7a408eb3664e7b17531aac1f1d2b4e64bf88f56756ac791de6b2789516a2",
+      "source_unchanged_during_check": true,
+      "dependencies_unchanged_during_check": true,
+      "dependency_signatures": [
+        {
+          "draft": "Sheaves/SheafCondition",
+          "source_sha256": "7c9c027197af8311ca7cbea9628a66ecc92b4ec2d95eaf6259a2d55dfbcd61a0",
+          "olean_sha256": "01b556f3a699e1339c3515f143861a672f2a2f909b2cf301d01bc839c1b1d111"
+        },
+        {
+          "draft": "Sheaves/SetSections",
+          "source_sha256": "3f1fde14e5bfec5256186e29da69e28afe5918f2af3999f06da183932f3dea90",
+          "olean_sha256": "9f80970f4f9394b50aaf4ba9312f22a63ef0dbefcd4a4c6b65f9e5e4fe2ba1f3"
+        },
+        {
+          "draft": "Sheaves/GlobalSections",
+          "source_sha256": "1eaa5edd01b2c21258a3a262bc6ff9eb77d42a9fffbe2f7e92b022df1c6c3267",
+          "olean_sha256": "93dfb9ab49d2b465e4296b241cb145dc23c2a7e5bb4d93bb7722fcfa6112d8f7"
+        }
+      ],
+      "extra_public_imports": [
+        "Sheaves/SheafCondition",
+        "Sheaves/SetSections",
+        "Sheaves/GlobalSections"
+      ],
+      "options": {
+        "maxSynthPendingDepth": 3,
+        "pp.unicode.fun": true,
+        "relaxedAutoImplicit": false,
+        "weak.linter.mathlibStandardSet": true,
+        "weak.linter.style.header": false
+      },
+      "command": [
+        "lake",
+        "env",
+        "env",
+        "LEAN_PATH=/private/tmp/bulk-5inf0/validation:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/Cli/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/batteries/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/Qq/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/aesop/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/importGraph/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/plausible/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/mathlib/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/build/lib/lean:/Users/sugakubunka/.elan/toolchains/leanprover--lean4---v4.35.0-rc4/lib/lean",
+        "lean",
+        "-DmaxSynthPendingDepth=3",
+        "-Dpp.unicode.fun=true",
+        "-DrelaxedAutoImplicit=false",
+        "-Dweak.linter.mathlibStandardSet=true",
+        "-Dweak.linter.style.header=false",
+        "--root=/private/tmp/bulk-5inf0/validation",
+        "-o",
+        "/private/tmp/bulk-5inf0/validation/Bulk5InfDraft/Sheaves/SpaceValued.olean",
+        "/private/tmp/bulk-5inf0/validation/Bulk5InfDraft/Sheaves/SpaceValued.lean"
+      ],
+      "lean_exit_code": 1,
+      "exit_code": 1,
+      "seconds": 10.499400043860078,
+      "status": "FAIL",
+      "olean": null,
+      "olean_sha256": null
+    },
+    {
+      "draft": "formalization-plans/bhatt-scholze/drafts/Sheaves/CAlgValued.lean",
+      "source_sha256": "ff6c32872395f645cf754917040e8f9cdb2ad9afba8d8d95e6a282c4b258b715",
+      "staged_source_sha256": "e5f75c51f89293ba493bf4be33a84cc3ea87f901e23e5cd28be81e945fea294e",
+      "source_unchanged_during_check": true,
+      "dependencies_unchanged_during_check": true,
+      "dependency_signatures": [
+        {
+          "draft": "Sheaves/SheafCondition",
+          "source_sha256": "7c9c027197af8311ca7cbea9628a66ecc92b4ec2d95eaf6259a2d55dfbcd61a0",
+          "olean_sha256": "01b556f3a699e1339c3515f143861a672f2a2f909b2cf301d01bc839c1b1d111"
+        },
+        {
+          "draft": "Sheaves/GlobalSections",
+          "source_sha256": "1eaa5edd01b2c21258a3a262bc6ff9eb77d42a9fffbe2f7e92b022df1c6c3267",
+          "olean_sha256": "93dfb9ab49d2b465e4296b241cb145dc23c2a7e5bb4d93bb7722fcfa6112d8f7"
+        },
+        {
+          "draft": "Sheaves/SheafGenerators",
+          "source_sha256": "6e415d196036cf7fce832ce9f4dc80748da0790369c5de5be9319e6e29a5c2bb",
+          "olean_sha256": "6ba1968127e6b99a4ffbd5a0ee3b828e4b46cede3f0eb355c3027ba5487a33e3"
+        },
+        {
+          "draft": "Sheaves/CechConerveLimit",
+          "source_sha256": "6f95f2f9f1c814b81aca26474d298e2f1e874c3713cd0266e49d16329d4131a0",
+          "olean_sha256": "697c0ec9d8723b2f043f253f274a7d42b5ae0d6e816cb51c4938caf0245f66bb"
+        }
+      ],
+      "extra_public_imports": [
+        "Sheaves/SheafCondition",
+        "Sheaves/GlobalSections",
+        "Sheaves/SheafGenerators",
+        "Sheaves/CechConerveLimit"
+      ],
+      "options": {
+        "maxSynthPendingDepth": 3,
+        "pp.unicode.fun": true,
+        "relaxedAutoImplicit": false,
+        "weak.linter.mathlibStandardSet": true,
+        "weak.linter.style.header": false
+      },
+      "command": [
+        "lake",
+        "env",
+        "env",
+        "LEAN_PATH=/private/tmp/bulk-5inf0/validation:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/Cli/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/batteries/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/Qq/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/aesop/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/importGraph/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/plausible/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/mathlib/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/build/lib/lean:/Users/sugakubunka/.elan/toolchains/leanprover--lean4---v4.35.0-rc4/lib/lean",
+        "lean",
+        "-DmaxSynthPendingDepth=3",
+        "-Dpp.unicode.fun=true",
+        "-DrelaxedAutoImplicit=false",
+        "-Dweak.linter.mathlibStandardSet=true",
+        "-Dweak.linter.style.header=false",
+        "--root=/private/tmp/bulk-5inf0/validation",
+        "-o",
+        "/private/tmp/bulk-5inf0/validation/Bulk5InfDraft/Sheaves/CAlgValued.olean",
+        "/private/tmp/bulk-5inf0/validation/Bulk5InfDraft/Sheaves/CAlgValued.lean"
+      ],
+      "lean_exit_code": 1,
+      "exit_code": 1,
+      "seconds": 14.535370375961065,
+      "status": "FAIL",
+      "olean": null,
+      "olean_sha256": null
+    },
+    {
+      "draft": "formalization-plans/bhatt-scholze/drafts/A0/CechAlexander.lean",
+      "source_sha256": "cfcad50e583bc358f091786a06c77e0862ed74467234da9916b98f700e08fbc3",
+      "staged_source_sha256": "a98145fe8c628be8981cd9e25c0124366c0760601b3f64077da866dc7a6f8cb6",
+      "source_unchanged_during_check": true,
+      "dependencies_unchanged_during_check": true,
+      "dependency_signatures": [
+        {
+          "draft": "A0/PrismaticSite",
+          "source_sha256": "ad90bac869d37f37ec58293d7a4e18126e989c0fa9a379772f6b55abf53d4175",
+          "olean_sha256": "c91e6a84eda3baf43ffa10ec8d5f81f304a107df9236d1d02778221db1e955a6"
+        },
+        {
+          "draft": "A0/PrismaticEnvelope",
+          "source_sha256": "4554fa839247f896d0708a7d610d188361c75dbecc2c22c95ddfa7e36d36457e",
+          "olean_sha256": "fb1f2d2e387ce37470135123182d1d5dfe574b992227031bf5829439168e0f77"
+        },
+        {
+          "draft": "A0/FlatDescent",
+          "source_sha256": "eccbcb1aae914ffc98788d037d4387fd76771bffb14ddd6412cf6f9e7b06a71b",
+          "olean_sha256": "6cef614661fd6988ca3ce39d03d789fdca3d49f4971a70296f8bbcc7d941a54b"
+        },
+        {
+          "draft": "Sheaves/CechConerveLimit",
+          "source_sha256": "6f95f2f9f1c814b81aca26474d298e2f1e874c3713cd0266e49d16329d4131a0",
+          "olean_sha256": "697c0ec9d8723b2f043f253f274a7d42b5ae0d6e816cb51c4938caf0245f66bb"
+        }
+      ],
+      "extra_public_imports": [
+        "A0/PrismaticSite",
+        "A0/PrismaticEnvelope",
+        "A0/FlatDescent",
+        "Sheaves/CechConerveLimit"
+      ],
+      "options": {
+        "maxSynthPendingDepth": 3,
+        "pp.unicode.fun": true,
+        "relaxedAutoImplicit": false,
+        "weak.linter.mathlibStandardSet": true,
+        "weak.linter.style.header": false
+      },
+      "command": [
+        "lake",
+        "env",
+        "env",
+        "LEAN_PATH=/private/tmp/bulk-5inf0/validation:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/Cli/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/batteries/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/Qq/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/aesop/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/importGraph/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/plausible/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/mathlib/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/build/lib/lean:/Users/sugakubunka/.elan/toolchains/leanprover--lean4---v4.35.0-rc4/lib/lean",
+        "lean",
+        "-DmaxSynthPendingDepth=3",
+        "-Dpp.unicode.fun=true",
+        "-DrelaxedAutoImplicit=false",
+        "-Dweak.linter.mathlibStandardSet=true",
+        "-Dweak.linter.style.header=false",
+        "--root=/private/tmp/bulk-5inf0/validation",
+        "-o",
+        "/private/tmp/bulk-5inf0/validation/Bulk5InfDraft/A0/CechAlexander.olean",
+        "/private/tmp/bulk-5inf0/validation/Bulk5InfDraft/A0/CechAlexander.lean"
+      ],
+      "lean_exit_code": 1,
+      "exit_code": 1,
+      "seconds": 14.266647333279252,
+      "status": "FAIL",
+      "olean": null,
+      "olean_sha256": null
+    }
+  ],
+  "raw_logs": [
+    "formalization-plans/stage-ii/bulk-5inf0/draft-block12-A0-FlatDescent.log.gz",
+    "formalization-plans/stage-ii/bulk-5inf0/draft-block12-Sheaves-SheafGenerators.log.gz"
+  ],
+  "individual_logs_replaced_by_later_attempts": [
+    "formalization-plans/bhatt-scholze/drafts/Sheaves/SpaceValued.lean",
+    "formalization-plans/bhatt-scholze/drafts/Sheaves/CAlgValued.lean",
+    "formalization-plans/bhatt-scholze/drafts/A0/CechAlexander.lean"
+  ]
+}

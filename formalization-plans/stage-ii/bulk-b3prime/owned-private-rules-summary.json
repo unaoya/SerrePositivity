@@ -1,0 +1,10 @@
+{
+  "ordinary_private_missing": [],
+  "notation_unpaired_for_native_companion": [],
+  "after_private_collisions": [],
+  "missing_after_ilean": [],
+  "before_source_private_bindings": 5231,
+  "after_source_private_bindings": 3858,
+  "raw_private_rules": 5845,
+  "policy": "Ordinary source private declarations require actual module+user binding. Verified notation compiler ordinals are not paired; existing source-verified native ParserDescr companion and raw inventories remain mandatory in v3b."
+}

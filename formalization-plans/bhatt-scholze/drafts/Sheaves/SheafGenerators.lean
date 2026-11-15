@@ -1,5 +1,5 @@
 -- 将来の置き場所：SerrePositivity.InfinityCategories.Sheaves.Sheafification（S4、M12a、BS）。
--- 設計書：formalization-plans/bhatt-scholze/infinity-sheaves-design.md §8 の S4、foundation-entry-points.md §1.9・§4。ビルドしない。
+-- 設計書：formalization-plans/bhatt-scholze/infinity-sheaves-design.md §8 の S4、foundation-entry-points.md §1.9・§4。型検査対象（5∞-0）。
 -- 11-05 新設：S4 の生成辺は切断 Γ(X, F)（Sheaves/SetSections の `sectionsOf`）を使うので、GlobalSections から
 -- `exists_sheafGeneratingEdges`・`sheafification_exists` を、SpaceValued から `sheafification_exists_spaces` をここへ移した。
 module
@@ -72,22 +72,22 @@ theorem sieveElementsEquiv_functor_π {U : 𝒞} (S : Sieve U) :
 規約：錐は呼び出し側が指定する。
 使われ方：`isLimit_restrictionCone_iff_sectionsMap`。 -/
 def sectionsOf_sieve (F : Presheaf 𝒞 E) {U : 𝒞} (S : Sieve U)
-    (h : HasLimit (sectionsOfDiagram S.functor F))
-    (c : JoinCone (restriction F S)) (hc : IsLimitCone c) :
-    VertexIso (sectionsOf S.functor F h) c.vertex := by
+    (h : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasLimit (sectionsOfDiagram S.functor F))
+    (c : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone (restriction F S)) (hc : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone c) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (sectionsOf S.functor F h) c.vertex := by
   let j := (SSet.uliftFunctor.{u + 1, u}).map (nerveMap (sieveCategoryToElements S))
-  have hj : IsQCatEquivalence j :=
-    (F1B.nerveQCatEquivalence (sieveElementsEquiv S)).isQCatEquivalence.ulift
-  let d := restrictJoinCone (sectionsOfCone S.functor F h) j
-  have hd : IsLimitCone d :=
-    (F2.Presentable.isLimitCone_iff_restrict_equivalentShape j hj _).mp
+  have hj : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence j :=
+    (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveQCatEquivalence (sieveElementsEquiv S)).isQCatEquivalence.ulift
+  let d := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.restrictJoinCone (sectionsOfCone S.functor F h) j
+  have hd : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone d :=
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.isLimitCone_iff_restrict_equivalentShape j hj _).mp
       (sectionsOfCone_isLimit S.functor F h)
-  let d' : JoinCone (restriction F S) :=
+  let d' : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone (restriction F S) :=
     ⟨d.val, d.property.trans (sieveSectionsDiagram_reindex S F)⟩
-  have hd' : IsLimitCone d' := (F2.isLimitCone_iff_of_cone_val_eq d d' rfl).mp hd
-  have e := limitVertexIso d' c hd' hc
-  change VertexIso d.vertex c.vertex at e
-  simpa only [d, restrictJoinCone_vertex, sectionsOf] using e
+  have hd' : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone d' := (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.isLimitCone_iff_of_cone_val_eq d d' rfl).mp hd
+  have e := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.limitVertexIso d' c hd' hc
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso d.vertex c.vertex at e
+  simpa only [d, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.restrictJoinCone_vertex, sectionsOf] using e
 
 /-- 概要：包含 S ↪ h_U が誘導する Γ(h_U, F) → Γ(S, F) が可逆 ⇔ `restrictionCone F S` が極限錐（S で降下する）。
 方針：Γ(h_U, F) ≃ F(U)（`sectionsOf_representable`）、Γ(S, F) ≃ lim（`sectionsOf_sieve`）。この二つの下で `sectionsOf_map` は
@@ -95,10 +95,10 @@ def sectionsOf_sieve (F : Presheaf 𝒞 E) {U : 𝒞} (S : Sieve U)
 規約：`HasLimit` は E の presentable 性から（`sectionsOfDiagram_hasLimit`）。
 使われ方：`isSheaf_iff_sectionsMap`、S4 の局所性。 -/
 theorem isLimit_restrictionCone_iff_sectionsMap (F : Presheaf 𝒞 E) {U : 𝒞} (S : Sieve U)
-    (hS : HasLimit (sectionsOfDiagram S.functor F))
-    (hU : HasLimit (sectionsOfDiagram (yoneda.obj U) F)) :
-    IsLimitCone (restrictionCone F S) ↔
-      IsInvertibleEdge (sectionsOf_map S.functorInclusion F hS hU) := by
+    (hS : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasLimit (sectionsOfDiagram S.functor F))
+    (hU : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasLimit (sectionsOfDiagram (yoneda.obj U) F)) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (restrictionCone F S) ↔
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (sectionsOf_map S.functorInclusion F hS hU) := by
   exact (sieveSectionsMap_isInvertible_iff S F
     (sectionsOfCone S.functor F hS) (sectionsOfCone_isLimit _ _ _)
     (sectionsOfCone (yoneda.obj U) F hU) (sectionsOfCone_isLimit _ _ _)).symm
@@ -107,9 +107,9 @@ theorem isLimit_restrictionCone_iff_sectionsMap (F : Presheaf 𝒞 E) {U : 𝒞}
 方針：`IsSheaf` の定義と `isLimit_restrictionCone_iff_sectionsMap`。
 規約：`hE` で極限の存在を供給する。
 使われ方：S4 の「W 局所 ⇔ 層」の右辺。 -/
-theorem isSheaf_iff_sectionsMap (J : GrothendieckTopology 𝒞) (hE : IsPresentable E) (F : Presheaf 𝒞 E) :
+theorem isSheaf_iff_sectionsMap (J : GrothendieckTopology 𝒞) (hE : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable E) (F : Presheaf 𝒞 E) :
     IsSheaf J F ↔ ∀ (U : 𝒞) (S : Sieve U), S ∈ J U →
-      IsInvertibleEdge (sectionsOf_map S.functorInclusion F
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (sectionsOf_map S.functorInclusion F
         (sectionsOfDiagram_hasLimit hE S.functor F) (sectionsOfDiagram_hasLimit hE (yoneda.obj U) F)) := by
   exact isSheaf_iff_sieveSectionsMap_isInvertible J hE F
 
@@ -122,14 +122,14 @@ theorem isSheaf_iff_sectionsMap (J : GrothendieckTopology 𝒞) (hE : IsPresenta
 使われ方：`isLocalObject_sheafGeneratingEdges_iff`。 -/
 def IsDetectingFamily {ι : Type u} (M : ι → E _⦋0⦌) : Prop :=
   ∀ {x y : E _⦋0⦌} (f : (HomotopyCategory.mk x : hoFunctor.obj E) ⟶ HomotopyCategory.mk y),
-    IsIso f ↔ ∀ i, IsQCatEquivalence (PinchedInterval.postcompose (M i) f)
+    IsIso f ↔ ∀ i, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.postcompose (M i) f)
 
 /-- 概要：presentable な E は小さい検出族をもつ。
 方針：`IsPresentable.exists_limitDetectingPresheafModel`（F2/Presentable/ReflectiveModelLimitDetection：小さい A と
 R : C ⟶ PresheafInfinity A があり、錐が極限 ⇔ 各 a での評価で極限）を一点の図式に当てて「辺が同値 ⇔ 各評価で同値」、
 評価を Map(g_a, −) と同一視する（IF-G2 の G14）。
 要確認（IF-G2 G14：供給予定）。 -/
-theorem exists_detectingFamily (hE : IsPresentable E) :
+theorem exists_detectingFamily (hE : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable E) :
     ∃ (ι : Type u) (M : ι → E _⦋0⦌), IsDetectingFamily M := by
   sorry -- IF-G2 G14
 
@@ -137,9 +137,9 @@ theorem exists_detectingFamily (hE : IsPresentable E) :
 方針：G2 の `SetWeight.sieveTensorEdge` をそのまま使い、自然性の四角形と同じ指定辺を選ぶ。
 規約：添字は (U, 被覆篩 S, i)。全体で Type u（𝒞 が小さいので）。
 使われ方：S4 の辺族 W。 -/
-def sheafGeneratingEdges (J : GrothendieckTopology 𝒞) (hE : IsPresentable E) {ι : Type u} (M : ι → E _⦋0⦌) :
+def sheafGeneratingEdges (J : GrothendieckTopology 𝒞) (hE : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable E) {ι : Type u} (M : ι → E _⦋0⦌) :
     (Σ U : 𝒞, {S : Sieve U // S ∈ J U} × ι) → (PresheafCat 𝒞 E) _⦋1⦌ :=
-  fun ⟨U, S, i⟩ => (SetWeight.sieveTensorEdge S.val hE (M i)).edge
+  fun ⟨U, S, i⟩ => (_root_.SerrePositivity.InfinityCategories.Project.SetWeightedTensors.SetWeight.sieveTensorEdge S.val hE (M i)).edge
 
 /-- 概要：W 局所 ⇔ 層。
 方針：辺 S ⊗ M_i → h_U ⊗ M_i についての局所性は、G8 の自然な別版（IF-G2）を包含 S ↪ h_U に当てて、
@@ -147,31 +147,31 @@ Map(M_i, −) が Γ(h_U, F) → Γ(S, F)（`sectionsOf_map S.functorInclusion`�
 すべての i で同値 ⇔ その辺が可逆。`isSheaf_iff_sectionsMap` で層条件に戻す。
 規約：G8 の同値と自然性は IF-G2 の別版の名前で使う（G1 の `tensorSpaceFunctor_setWeightHom` は自然性が言えないので使わない）。
 使われ方：`exists_sheafGeneratingEdges`。 -/
-theorem isLocalObject_sheafGeneratingEdges_iff (J : GrothendieckTopology 𝒞) (hE : IsPresentable E)
+theorem isLocalObject_sheafGeneratingEdges_iff (J : GrothendieckTopology 𝒞) (hE : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable E)
     {ι : Type u} (M : ι → E _⦋0⦌) (hM : IsDetectingFamily M) (F : (PresheafCat 𝒞 E) _⦋0⦌) :
-    HomotopyLimits.IsLocalObject (X := PresheafCat 𝒞 E) (Set.range (sheafGeneratingEdges J hE M)) F ↔
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsLocalObject (X := PresheafCat 𝒞 E) (Set.range (sheafGeneratingEdges J hE M)) F ↔
       sheafProperty J F := by
   sorry -- 要確認（IF-G2：G8 の自然な別版 `tensorSpaceFunctor_setWeightHomNatural` とその自然性、篩の包含への特殊化）
 
 /-! ## 4. 層化の存在（GlobalSections・SpaceValued から移した） -/
 
 /-- 被覆篩の生成辺で層を特徴づける辺族がある。 -/
-theorem exists_sheafGeneratingEdges (J : GrothendieckTopology 𝒞) (hE : IsPresentable E) :
+theorem exists_sheafGeneratingEdges (J : GrothendieckTopology 𝒞) (hE : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable E) :
     ∃ (I : Type u) (edges : I → (PresheafCat 𝒞 E) _⦋1⦌),
-      ∀ F, HomotopyLimits.IsLocalObject (X := PresheafCat 𝒞 E) (Set.range edges) F ↔ sheafProperty J F := by
+      ∀ F, _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsLocalObject (X := PresheafCat 𝒞 E) (Set.range edges) F ↔ sheafProperty J F := by
   obtain ⟨ι, M, hM⟩ := exists_detectingFamily hE
   exact ⟨_, sheafGeneratingEdges J hE M, isLocalObject_sheafGeneratingEdges_iff J hE M hM⟩
 
 /-- S4（HTT 5.5.4.15）。presentable な係数について、被覆篩の生成辺から層化を得る。
 `[IsStable E]` は従来の引数を保つために残す（証明では使わない）。 -/
-theorem sheafification_exists (J : GrothendieckTopology 𝒞) [IsStable E] (hE : IsPresentable E) :
+theorem sheafification_exists (J : GrothendieckTopology 𝒞) [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable E] (hE : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable E) :
     Sheafification J E := by
   obtain ⟨I, edges, hW⟩ := exists_sheafGeneratingEdges J hE
   exact sheafification_of_generatingEdges J hE edges hW
 
 /-- 概要：S8-1：空間値前層の J 層化 L（HTT 6.2.2.7）。h𝒮 は `F2.Presentable.space_isPresentable` で与えられる。 -/
-theorem sheafification_exists_spaces (J : GrothendieckTopology 𝒞) (h𝒮 : IsPresentable SpaceInfinity.{u}) :
-    Sheafification J SpaceInfinity.{u} := by
+theorem sheafification_exists_spaces (J : GrothendieckTopology 𝒞) (h𝒮 : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u}) :
+    Sheafification J _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u} := by
   obtain ⟨I, edges, hW⟩ := exists_sheafGeneratingEdges J h𝒮
   exact sheafification_of_generatingEdges J h𝒮 edges hW
 

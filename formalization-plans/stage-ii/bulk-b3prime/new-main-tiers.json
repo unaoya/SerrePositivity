@@ -1,0 +1,2221 @@
+{
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedIntervalBoundary": {
+    "tier": "Portable",
+    "dependency_tiers": [],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.WeightedRestrictionIso": {
+    "tier": "Portable",
+    "dependency_tiers": [
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.AsSmallLinearHom": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.DiagramHomCochains": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedIntervalLowDegrees": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers",
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedIntervalRawChain": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.StandardWeightEnd": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers",
+      "SharedFoundation"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedIntervalChainNaturality": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.DiagramTensorHom": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.DiagramHomFamilyLift": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedIntervalCochain": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.DiagramHomFamilyEquiv": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.AWRightAugmentationCut": {
+    "tier": "Portable",
+    "dependency_tiers": [
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedIntervalCycleData": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.DiagramTensorHomComponents": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.DiagramTensorUnit": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.HomotopyIntervalCochain": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedIntervalTruncationNaturality": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.UliftPointTensorEvaluation": {
+    "tier": "Portable",
+    "dependency_tiers": [
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.UliftPointEvaluation": {
+    "tier": "Portable",
+    "dependency_tiers": [
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedAWRightAugmentationCut": {
+    "tier": "Portable",
+    "dependency_tiers": [
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedIntervalCochainNaturality": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedSimplexInverseNaturality": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.HomotopyIntervalNaturality": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.DiagramTensorHomNaturality": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.LinearHomSourceIso": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ShuffleCutNormalization": {
+    "tier": "Portable",
+    "dependency_tiers": [
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.DiagramHomSourceMap": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.DiagramHomTargetMap": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.HomSourceCochainEvaluation": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ShuffleCutDiagonal": {
+    "tier": "Portable",
+    "dependency_tiers": [
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ProductTotal": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ShuffleCutValues": {
+    "tier": "Portable",
+    "dependency_tiers": [
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ProductComponents": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.StandardWeightTotalComparison": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ShuffleCutSum": {
+    "tier": "Portable",
+    "dependency_tiers": [
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.HomDoubleComplexComparison": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ProductCone": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.StandardZeroLeg": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.BarWeightEndComparison": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers",
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.StandardWeightTotalNaturality": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ShuffleAWProjected": {
+    "tier": "Portable",
+    "dependency_tiers": [
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.HomTotalComponents": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.SingleComponent": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.StandardCofaceHomotopy": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.StandardLeg": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.BarWeightEndNaturality": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ShuffleAWHomotopyNaturality": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers",
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.HomTotalComparison": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.HomTotalDifferential": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.HomTotalNaturality": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.DiscreteComponents": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.BousfieldKanWeightEndComparison": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.DiagramIntegerEZ": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.HomTotalHorizontal": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.HomTotalHomogeneousComposition": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.HomTotalParameters": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.HomTotalZeroRow": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.DiscreteComplexComparison": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.DiagramCoefficientEZ": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBousfieldKanHomComparison": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.WeightEndHomSourceNaturality": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.DiscreteComparisonComponents": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.CoefficientDiagramMaps": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.IntegerCoefficientFree": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison",
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.BKWeightComparisonComponents": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBousfieldKanConeRepresentative": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.WeightEndHomTargetNaturality": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.IntegerCoefficientTensorDegrees": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison",
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBKStandardWeight": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBousfieldKanSetCone": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBousfieldKanComparisonNaturality": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.IntegerCoefficientTensorDifferential": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Comparison",
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ConeLegPostcomposition": {
+    "tier": "Portable",
+    "dependency_tiers": [
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.StandardWeightTotalInverseEvaluation": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.BKStandardZeroGenerator": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers",
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.PointwiseBousfieldKanSetCone": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ReflectedBousfieldKanSetCone": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NegativeEZCoefficient": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.StandardWeightHomRows": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ReflectedPointwiseBousfieldKanCone": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.CoefficientTensorNaturality": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductEZ": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Comparison",
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.IntegerCoefficientTensorValues": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Comparison",
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.IntegerNegativeTensorCoefficients": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NegativeAWRestriction": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.WeightedSectionsReflectionEvaluation": {
+    "tier": "Portable",
+    "dependency_tiers": [
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.HomToNormalizedBKRows": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NegativeEZCoefficientNaturality": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NegativeEZTargetDiagram": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.CoefficientEZEquivalence": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers",
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeChainsCoefficientProjection": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.CoefficientUnitNaturality": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.HomDiagramDegreePrecompose": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductComparisonNaturality": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.DiagramExtendNaturality": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.HomToNormalizedBKComposition": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductDiagramEZ": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBKConeComposition": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductDiagramMaps": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBKConeRepresentativeNaturality": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBKConeZeroRow": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBKTensorRow": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductDiagramHomotopies": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductDiagramNaturality": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBKSourceComposition": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductFrames": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeChainsAdjunction": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductFrameUncurry": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductHomComparison": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers",
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.LinearWeightFreeDiagramIso": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ProductParameterCoaction": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StandardSimplexParameter": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.CopowerNormalizedFreeHom": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedSimplexFreeAdjunction": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductFrameHomotopies": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeFrameWeightMaps": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBKFreeWeight": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.LinearWeightFreeDiagramEvaluation": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.LinearWeightInverseSource": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.DiagramTensorDoldKan": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FrameParameterEvaluation": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ProductFrameCoaction": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ProductSectionsHom": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers",
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StandardParameterAugmentation": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBKSmallHom": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.LinearWeightFreeHomComparison": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeTensorHomInverseEvaluation": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FrameHomotopyUnderlyingMap": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers",
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FrameParameterEndpoints": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.TensorFrameCoaction": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.LiftedStandardSimplexHomEvaluation": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedWeightSectionMap": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ProductSectionsTargetNaturality": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeChainsCoefficientDegrees": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers",
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductSectionsHomEvaluation": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.LiftedStandardSimplexParameterEvaluation": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedTensorHomSourceNaturality": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedTensorHomTargetNaturality": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.WeightedAdjunctionSourceNaturality": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers",
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedWeightSectionEvaluation": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedWeightSectionNaturality": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ProductSectionsSourceNaturality": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedWeightSectionSourceNaturality": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.InternalHomSwapEvaluationRight": {
+    "tier": "Portable",
+    "dependency_tiers": [
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.SmallBousfieldKanWeight": {
+    "tier": "Portable",
+    "dependency_tiers": [
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.SmallOverLift": {
+    "tier": "Portable",
+    "dependency_tiers": [
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.SmallBousfieldKanWeightIso": {
+    "tier": "Portable",
+    "dependency_tiers": [
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedIntervalVertexValues": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedIntervalEndpoints": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StandardParameterAugmentationValues": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedIntervalEndpointAugmentation": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedIntervalEndpointValues": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedIntervalHom": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StandardParameterConstant": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StandardParameterRightUnit": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.JoinConeSectionLeg": {
+    "tier": "Portable",
+    "dependency_tiers": [
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedIntervalHomEndpoints": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedIntervalHomNaturality": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductAWLastCut": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers",
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FrameIntervalHom": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductAWRightAugmentation": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers",
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeTensorCoefficientGeneratorValues": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FrameHomHomotopy": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FrameCoactionCounit": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductAWCutValues": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.LinearWeightZeroGenerator": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ProductChainsCoefficientProjection": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductHomComparisonHomotopies": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ReflectedBKConeZeroRow": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductAWRawCriterion": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.SpecifiedConeReindex": {
+    "tier": "Portable",
+    "dependency_tiers": [
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramReedyMappingModel": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedWeightSectionEquivalence": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers",
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StandardConstantTopEvaluation": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramEvaluationFrames": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers",
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFunctorialFrames": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBKSmallSections": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictCubeEvaluation": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison",
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramPointFrameEnd": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers",
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.AWCutFaces": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison",
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StandardHomParameterNaturality": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StandardHomTopProjection": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StandardHomNormalizedTop": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StandardDoldKanProjectedEvaluation": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedFreeHomProjectedEvaluation": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Comparison",
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeNegativeHomDecomposition": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedFreeAWProjectedEvaluation": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Comparison",
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedFreeHomZeroEvaluation": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeNegativeStandardHomEvaluation": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeAWStandardCutComparison": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Comparison",
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedSimplexInverseAdjunction": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedSimplexNativeParameterEvaluation": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.TruncatedDoldKanQuasiIso": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Comparison",
+      "Consumers",
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBousfieldKanHomSpace": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ReflectedNormalizedBKHom": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBKReversePrecomposition": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ReflectedNormalizedBKSmallHom": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ReflectedBKSourceEvaluation": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ReflectedNormalizedBKSmallSections": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers",
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ReflectedBKFreeConeAdjunction": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ReflectedBKFreeTensorRow": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Comparison",
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.SmallBKIndexSections": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedWeightSectionInverseEvaluation": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ReflectedBKFreeConeTopEvaluation": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Comparison",
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ReflectedBKFreeTensorComparison": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.SmallBKIndexSectionsEvaluation": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ReflectedBKFreeTensorCut": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Comparison",
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ReflectedBKFreeTensorAW": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Comparison",
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ReflectedBKNormalizedSectionsUncurry": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Comparison",
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ComplexStrictNerveComparison": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison",
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ReflectedBKNormalizedSectionsMapEvaluation": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Comparison",
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Thick": {
+    "tier": "Portable",
+    "dependency_tiers": [
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ThickClosureLaws": {
+    "tier": "Portable",
+    "dependency_tiers": [
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.DoldKanClosedPostcomposition": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Comparison",
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.SemifreeRingEvaluationEquivalence": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Comparison",
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBKOriginalSections": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Comparison",
+      "Consumers",
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.ReflectedWeightedNativeCone": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.ReflectedWeightedHomComparison": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.WeightedSectionParameterNaturality": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanEnrichedComparisonEvaluation": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ComplexDoldKanHomDiagram": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanEnrichedRealizationValueHom": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.EnrichedBousfieldKanCone": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeCoherentCone": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Comparison",
+      "Consumers",
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeDGCone": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Comparison",
+      "Consumers",
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBKReflectedSections": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeTotConeFamilyLift": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Comparison",
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeTotIndex": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers",
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.GammaReflectedBKComparison": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeTotConePointSection": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Comparison",
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.GammaReflectedBKComparisonFactor": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeTotConeRestriction": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Comparison",
+      "Consumers",
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeTotConeSectionVertex": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers",
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.GammaReflectedBKComparisonUncurry": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Comparison",
+      "Consumers",
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeTotConeLegEvaluation": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers",
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.GammaReflectedBKComparisonEquality": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeTotConeLegSimplex": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeTotConeLimit": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Comparison",
+      "Consumers",
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeTotConeStandardLeg": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Comparison",
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramModelLocalization": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Comparison",
+      "Consumers",
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ComplexDerivedHammockSource": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramRightFrameComparison": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFrameSections": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramLocalizedVertices": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramCofibrantVertices": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramMappingSpan": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers",
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Cocompletion.PresheafEvaluationReindexedColimit": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison",
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Cocompletion.HomWeightLeftKanEvaluation": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison",
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeDerivedTotCone": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Comparison",
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeDerivedDiagramEq": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Comparison",
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NativeDerivedTotLeg": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers",
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.HomClassificationIsoLaws": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.StrictDerivedTotCone": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers",
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.DerivedTotFamilyBoundaries": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.DiscreteNativeTotCone": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.NormalizedFunctorIsoComponentRestriction": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftClassificationSimplexRestriction": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.FunctorHomPrecompositionLaws": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftClassificationJointEvaluation": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison",
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ClassifiedPullbackSquareHom": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ClassifiedSquareLiftPasting": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Cocompletion.HomWeightYonedaSourcePullback": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.HomWeightJointClassificationHom": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.DiagramIsoNormalizationAlgebra": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.FunctorIsoTransposeValue": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison",
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanEnrichedDiagramOrdinaryAction": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison",
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.FunctorIsoTransposeEvaluation": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftClassificationSimplexRestrictionValue": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.RelativeSectionOrdinaryAction": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison",
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftClassificationRestrictionFactorValues": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison",
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftClassificationRestrictionPullbackValue": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison",
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CurryHomPointEvaluation": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.FunctorHomWhiskerInterchange": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Cocompletion.HomWeightYonedaUnitNormalizedEvaluation": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison",
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.LeftKanHomMapPostcomposition": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison",
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Cocompletion.HomWeightComparisonEvaluationFac": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Cocompletion.LeftKanUnitPostcompositionHom": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison",
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Cocompletion.HomWeightEvaluatedKanUnit": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Cocompletion.HomWeightComparisonEvaluationIso": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.TransposeFunctorIsoRestriction": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison",
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftStraighteningBaseChangeRestrictionNormalization": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison",
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SectionBaseChangeCompValueHom": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SectionDiagramBaseChangePasting": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftClassificationBaseChangeRestrictionValue": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison",
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SectionBaseChangeCompValueNormalization": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SimplexSectionBaseChangePasting": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison",
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftClassificationBaseChangeRestrictionFactorization": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison",
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SectionBaseChangeCompClassifiedHom": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SimplexSectionComposite": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftClassificationBaseChangeConjugation": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison",
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SimplexSectionBaseChangeFactorValues": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison",
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SimplexSectionCompValue": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison",
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SimplexSectionBaseChangeValuePasting": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison",
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SimplexSectionCompNormalizedValue": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SimplexSectionCoefficientPasting": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SimplexSectionCoefficientValues": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftStraighteningSimplexPastingInputs": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SimplexSectionCoefficientComposition": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftClassificationPullbackSimplexIso": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison",
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftStraighteningSimplexWhisker": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison",
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftStraighteningSimplexDirect": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison",
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftStraighteningSimplexComposite": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftStraighteningBaseChangePasting": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ClassifiedSquareHomPasting": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  }
+}

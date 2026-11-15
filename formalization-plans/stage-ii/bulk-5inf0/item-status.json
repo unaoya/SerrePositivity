@@ -1,0 +1,70 @@
+{
+  "completed_or_authorized_deferred": 14,
+  "total": 14,
+  "additional": 0,
+  "items": [
+    {
+      "id": "A01",
+      "state": "PASS",
+      "evidence": "All A0 and A1 whole-file checks PASS; final DeRhamComparisonPoly block60, canonical classical owners used and distinct original pd functor contracts retained."
+    },
+    {
+      "id": "A02",
+      "state": "PASS",
+      "evidence": "A3/DiscreteCase block44 and A3/LciAndQuasiregular block50; moved universal lci theorem included; 53 to 27 source sorry tokens"
+    },
+    {
+      "id": "A03",
+      "state": "PASS"
+    },
+    {
+      "id": "A04",
+      "state": "PASS",
+      "evidence": "All A4-A7 and A9 whole-file checks PASS, final Assembly block75. Theory interfaces and original mathematical claims retained; protected P0 unchanged."
+    },
+    {
+      "id": "A05",
+      "state": "PASS",
+      "evidence": "All A8 whole-file checks PASS: W13AssemblyInputs initial batch; AlmostConnectivity block52; AlmostPurityConnectivity block73; IntegralDiscreteness block74. Canonical main owners used for the forty planned overlaps; distinct original statements retained."
+    },
+    {
+      "id": "A06",
+      "state": "PASS",
+      "evidence": "A0/BaseChange and A1/HodgeTateComparison use HasCochainCompleteTorAmplitude; A3 callers validated in block50"
+    },
+    {
+      "id": "A07",
+      "state": "PASS",
+      "evidence": "Obsolete baseline headers updated to efa846fe8; auxiliary files with no baseline header remain without one. Protected Shared file kept within mechanical import/name edits. All 57 staging checks PASS; README describes actual validation and historical layout."
+    },
+    {
+      "id": "B01",
+      "state": "PASS"
+    },
+    {
+      "id": "B02",
+      "state": "PASS"
+    },
+    {
+      "id": "B03",
+      "state": "PASS"
+    },
+    {
+      "id": "B04",
+      "state": "PASS"
+    },
+    {
+      "id": "B05",
+      "state": "PASS"
+    },
+    {
+      "id": "B06",
+      "state": "authorized_deferred_to_5inf-3a"
+    },
+    {
+      "id": "B07",
+      "state": "PASS"
+    }
+  ],
+  "B06_note": "The explicit allowance in §2B6 is used; general crystalline comparison is not claimed proved."
+}

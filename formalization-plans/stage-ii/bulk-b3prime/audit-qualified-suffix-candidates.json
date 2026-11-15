@@ -1,0 +1,57 @@
+[
+  {
+    "path": "scripts/audit_bhatt_scholze_b5.lean",
+    "hits": [
+      {
+        "token": "BhattScholze.perfectoidIdeal_isAlmostZero_extension",
+        "line": 114,
+        "targets": [
+          [
+            "SerrePositivity.BhattScholze.perfectoidIdeal_isAlmostZero_extension",
+            "SerrePositivity.BhattScholze.Almost.perfectoidIdeal_isAlmostZero_extension"
+          ]
+        ]
+      },
+      {
+        "token": "BhattScholze.perfectoidIdealMod",
+        "line": 119,
+        "targets": [
+          [
+            "SerrePositivity.BhattScholze.perfectoidIdealMod",
+            "SerrePositivity.BhattScholze.Almost.perfectoidIdealMod"
+          ]
+        ]
+      },
+      {
+        "token": "BhattScholze.perfectoidIdealMod",
+        "line": 119,
+        "targets": [
+          [
+            "SerrePositivity.BhattScholze.perfectoidIdealMod",
+            "SerrePositivity.BhattScholze.Almost.perfectoidIdealMod"
+          ]
+        ]
+      },
+      {
+        "token": "BhattScholze.perfectoidIdealMod",
+        "line": 120,
+        "targets": [
+          [
+            "SerrePositivity.BhattScholze.perfectoidIdealMod",
+            "SerrePositivity.BhattScholze.Almost.perfectoidIdealMod"
+          ]
+        ]
+      },
+      {
+        "token": "BhattScholze.perfectoidIdealMod_idempotent",
+        "line": 121,
+        "targets": [
+          [
+            "SerrePositivity.BhattScholze.perfectoidIdealMod_idempotent",
+            "SerrePositivity.BhattScholze.Almost.perfectoidIdealMod_idempotent"
+          ]
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,83 @@
+{
+  "phase": "B4 verified",
+  "source_manifest": "bs-impl-before.json",
+  "source_file_count": 106,
+  "source_lines": 6533,
+  "rewrite": {
+    "file_count": 106,
+    "pending": 0,
+    "changed_files": [],
+    "removed_lines": 0,
+    "added_lines": 0,
+    "original_sources_match": true,
+    "source_commit": "94c593fe000ed5111f89bb324a0dbe796f970af5"
+  },
+  "merge": {
+    "merge_commit": "923a15dd61143b03908e5dc3e1b7719301699b8d",
+    "main_parent": "efa846fe81f40ac663cff5af62f55b901763d676",
+    "reviewed_preview_matches": 106,
+    "header_graph_unchanged": true,
+    "source_patch_files": 0
+  },
+  "builds": [
+    {
+      "group": 0,
+      "targets": [
+        "SerrePositivity.EInfinity.SimplexCuts.GeneratorBoundary",
+        "SerrePositivity.EInfinity.SimplexCuts.TopTerm",
+        "SerrePositivity.EInfinity.SimplexCuts.StraightTraceFaces",
+        "SerrePositivity.EInfinity.SimplexCuts.TerminalSignData",
+        "SerrePositivity.EInfinity.SimplexCuts.Normalization"
+      ],
+      "jobs": 2376,
+      "log": "/tmp/bsw16/b4-20261114/build-00.log",
+      "sha256": "39747f00a5989a80afa8d6e719ef26fb5b95e27bc181426289d7b34d5024937d"
+    },
+    {
+      "group": 1,
+      "targets": [
+        "SerrePositivity.EInfinity.SimplexCuts.HorizontalDeletedFaces",
+        "SerrePositivity.EInfinity.SimplexCuts.HorizontalBoundarySigns"
+      ],
+      "jobs": 2257,
+      "log": "/tmp/bsw16/b4-20261114/build-01.log",
+      "sha256": "97490aa8337ebabcdba89f0f54f93cba329c0bcf228bfc59ecf09940ce5c879a"
+    },
+    {
+      "group": 2,
+      "targets": [
+        "SerrePositivity.EInfinity.SimplexCuts.MixedBoundaryValues"
+      ],
+      "jobs": 2289,
+      "log": "/tmp/bsw16/b4-20261114/build-02.log",
+      "sha256": "ea0307a02d4c40f0371a69dda5eb7c9327c0f163cc5b5e3f5d0c19e124b03347"
+    }
+  ],
+  "covered_own_modules": 106,
+  "dedicated_audit": {
+    "status": "passed",
+    "modules": 106,
+    "declarations": 967,
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "source": "bs-impl-audit-source.lean.txt",
+    "source_sha256": "94074d655f15bb3b317fad47c7bc45eba2e2feef2a58fa529a42599707243f58",
+    "log": "/tmp/bsw16/b4-20261114/audit.log",
+    "result": "BS stage II audit passed: 106 modules, 967 declarations, standard three axioms only."
+  },
+  "rewrite_exit_code": 0,
+  "M14_line_count_unchanged": 10661,
+  "L09a_L09_line_count_unchanged": 5595,
+  "collection": {
+    "files": 106,
+    "parts": 10,
+    "max_key_hold_seconds": 132.68,
+    "complete": true,
+    "index": "/tmp/bsw16/b4-20261114/before_index",
+    "original_sources": "/tmp/bsw16/b4-20261114/original",
+    "planned_regroup_transition": "/tmp/bsw16/b4-20261114/batch-transition.json"
+  }
+}

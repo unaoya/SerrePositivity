@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationProduct
-public import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcCechUltraproduct
-public import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcCechOverlap
+public import SerrePositivity.BhattScholze.Perfectoidization.Arc.Valuations.ArcValuationProduct
+public import SerrePositivity.BhattScholze.Perfectoidization.Arc.Descent.ArcCechUltraproduct
+public import SerrePositivity.BhattScholze.Perfectoidization.Arc.Descent.ArcCechOverlap
 public import SerrePositivity.CommutativeAlgebra.ValuationInterval.Endpoint
 public import SerrePositivity.CommutativeAlgebra.ValuationInterval.FinitePresentation
 public import SerrePositivity.CommutativeAlgebra.ValuationInterval.Zorn

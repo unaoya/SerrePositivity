@@ -1,0 +1,8 @@
+058d3ba5dda7b8bebb342c5da983dc37a62fdb47
+100644 ccc6bb9e1c9d499a54742662fc91afd18bfab1c5 1	scripts/audit_bhatt_scholze_stage2.lean
+100644 ad8feff3034eda2c426d5fa4928a3e32e6fb7ca0 2	scripts/audit_bhatt_scholze_stage2.lean
+100644 dfbf5016006d3cbd45c4b54135215a6c302fe99c 3	scripts/audit_bhatt_scholze_stage2.lean
+
+Auto-merging SerrePositivity/EInfinity.lean
+Auto-merging scripts/audit_bhatt_scholze_stage2.lean
+CONFLICT (content): Merge conflict in scripts/audit_bhatt_scholze_stage2.lean

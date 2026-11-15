@@ -1,0 +1,92 @@
+{
+  "status": "partial",
+  "results": [
+    {
+      "draft": "A2/HodgeTateFiltration",
+      "exit_code": 1,
+      "seconds": 25.95292841643095
+    }
+  ],
+  "receipts": [
+    {
+      "draft": "formalization-plans/bhatt-scholze/drafts/A2/HodgeTateFiltration.lean",
+      "source_sha256": "fd36fbf8a5a03a5863ad65890d336f532ffdebf1af2aa2f1ec52f6418c1e98c1",
+      "staged_source_sha256": "c89bde02526099871c39d794698a45b440cffd185e209f46e6ab54c5c12f7f79",
+      "source_unchanged_during_check": true,
+      "dependencies_unchanged_during_check": true,
+      "dependency_signatures": [
+        {
+          "draft": "A2/AnimatedAlgebra",
+          "source_sha256": "e4b887fb4545ae0c94a652add74c4ce92a46770be1b39efa0feb8881cbe1bdb9",
+          "olean_sha256": "a83887a540b6e7fdf5425422ca00afc891432e18a072aa9a1dd0479965f7d695"
+        },
+        {
+          "draft": "A2/DerivedPrismaticCohomology",
+          "source_sha256": "32bf21abf0d6f2b582913c58dad90f21dbd7d6b7097be32a6e340f85d079e262",
+          "olean_sha256": "60f82677fc4d2e2badb39bef4d8d5484d0b071741ae3ab6c48a741064bd0d77b"
+        },
+        {
+          "draft": "DerivedGeneral/Truncation",
+          "source_sha256": "76a03cb176fbcd142ec857cc6b562afeddce1ba116e0d8353b395425725bd989",
+          "olean_sha256": "210cc8432c0b2268776bb79da9a98d52709d858277aa480c563e9711c05ec7b4"
+        },
+        {
+          "draft": "A1/HodgeTateComparison",
+          "source_sha256": "4d0b61ca662b32ab85e5fa82a0cff793576cb2c1aa0213ee02470b40fbb47bad",
+          "olean_sha256": "5c113bbff741279026b86557b263f74e0709a70331caf6a028343d8154152090"
+        },
+        {
+          "draft": "Shared/DeRhamPolynomial",
+          "source_sha256": "3fe5ad6a0f914c40c6fdbf1d36cb8bcd324bee34ead925fae5e9503b4d70f5a0",
+          "olean_sha256": "5e67cb35414061cae444f14b7a486ad939a34c680ddc31ec2140ef9609dbfc63"
+        },
+        {
+          "draft": "A7/AnimatedDomain",
+          "source_sha256": "cdf118bde36070a314aeaa97fa0d1af7459da4d88d7c35a64e5a76b1cc78a348",
+          "olean_sha256": "b1ffae33c642b2347146ae72e257a3b4ea3e8a2fec2486474e21953fd9d61151"
+        }
+      ],
+      "extra_public_imports": [
+        "A2/AnimatedAlgebra",
+        "A2/DerivedPrismaticCohomology",
+        "DerivedGeneral/Truncation",
+        "A1/HodgeTateComparison",
+        "Shared/DeRhamPolynomial",
+        "A7/AnimatedDomain"
+      ],
+      "options": {
+        "maxSynthPendingDepth": 3,
+        "pp.unicode.fun": true,
+        "relaxedAutoImplicit": false,
+        "weak.linter.mathlibStandardSet": true,
+        "weak.linter.style.header": false
+      },
+      "command": [
+        "lake",
+        "env",
+        "env",
+        "LEAN_PATH=/private/tmp/bulk-5inf0/validation:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/Cli/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/batteries/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/Qq/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/aesop/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/importGraph/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/plausible/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/mathlib/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/build/lib/lean:/Users/sugakubunka/.elan/toolchains/leanprover--lean4---v4.35.0-rc4/lib/lean",
+        "lean",
+        "-DmaxSynthPendingDepth=3",
+        "-Dpp.unicode.fun=true",
+        "-DrelaxedAutoImplicit=false",
+        "-Dweak.linter.mathlibStandardSet=true",
+        "-Dweak.linter.style.header=false",
+        "--root=/private/tmp/bulk-5inf0/validation",
+        "-o",
+        "/private/tmp/bulk-5inf0/validation/Bulk5InfDraft/A2/HodgeTateFiltration.olean",
+        "/private/tmp/bulk-5inf0/validation/Bulk5InfDraft/A2/HodgeTateFiltration.lean"
+      ],
+      "lean_exit_code": 1,
+      "exit_code": 1,
+      "seconds": 22.567081082612276,
+      "status": "FAIL",
+      "olean": null,
+      "olean_sha256": null
+    }
+  ],
+  "raw_logs": [
+    "formalization-plans/stage-ii/bulk-5inf0/draft-block41-A2-HodgeTateFiltration.log.gz"
+  ],
+  "individual_logs_replaced_by_later_attempts": []
+}

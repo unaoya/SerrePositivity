@@ -1,0 +1,8 @@
+{
+  "baseline": "efa846fe8",
+  "existing_violations": 15,
+  "final_violations": 15,
+  "added": [],
+  "removed": [],
+  "note": "The same 15 pre-existing reverse-section edges remain; no exceptions were added."
+}

@@ -1,0 +1,16 @@
+[
+  {
+    "path": "formalization-plans/bhatt-scholze/drafts/A2/BaseChangeAndTensor.lean",
+    "old": "PreservesSmallSiftedColimits",
+    "new": "_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.PreservesSmallSiftedColimits",
+    "references": 1,
+    "status": "pending whole-draft validation"
+  },
+  {
+    "path": "formalization-plans/bhatt-scholze/drafts/A1/DeRhamComparisonPoly.lean",
+    "old": "functorIsoOfEq",
+    "new": "_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq",
+    "references": 4,
+    "status": "pending whole-draft validation"
+  }
+]

@@ -1,0 +1,49 @@
+[
+  {
+    "step": "not81-diagnostic-04",
+    "exit_code": 0,
+    "seconds": 19.51478895917535,
+    "final_gate": false
+  },
+  {
+    "step": "a2-animated-diagnostic-04",
+    "exit_code": 0,
+    "seconds": 16.619666874408722,
+    "final_gate": false
+  },
+  {
+    "step": "target-build",
+    "exit_code": 0,
+    "seconds": 6.388305209577084,
+    "targets": [
+      "SerrePositivity.CommutativeAlgebra.PowerTorsion.Bounded",
+      "SerrePositivity.BhattScholze.Semiperfectoid.Basic",
+      "SerrePositivity.BhattScholze.Prism.Basic.Category",
+      "SerrePositivity.BhattScholze.Prism.Basic.PerfectBounded",
+      "SerrePositivity.BhattScholze.Prismatic.Site.PrismOverSmall",
+      "SerrePositivity.BhattScholze.Prismatic.Site.PerfectSite",
+      "SerrePositivity.HomologicalAlgebra.DerivedInfinity.VertexPredicates",
+      "SerrePositivity.BhattScholze.Prismatic.Site.FlatCover",
+      "SerrePositivity.BhattScholze.Prismatic.CechAlexander.Comparison.CechAlexanderSmall",
+      "SerrePositivity.BhattScholze.Prismatic.CechAlexander.Comparison.AffineCechSiteNerve",
+      "SerrePositivity.BhattScholze.Almost.AlmostTensorForward",
+      "SerrePositivity.BhattScholze.Almost.AlmostGenerators",
+      "SerrePositivity.BhattScholze.Semiperfectoid.AinfClassicalMaps"
+    ]
+  },
+  {
+    "step": "not81-probe",
+    "exit_code": 0,
+    "seconds": 9.306242624297738
+  },
+  {
+    "step": "a2-animated-first",
+    "exit_code": 0,
+    "seconds": 12.146189168095589
+  },
+  {
+    "step": "small-audit",
+    "exit_code": 1,
+    "seconds": 10.000494876876473
+  }
+]

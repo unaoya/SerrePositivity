@@ -1,7 +1,7 @@
 -- 移行先：SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction。
 module
 
-public import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcCardinality
+public import SerrePositivity.BhattScholze.Perfectoidization.Arc.Site.ArcCardinality
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction
 public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.Basic
 

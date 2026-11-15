@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.RankLocus
-public import SerrePositivity.BhattScholze.Semiperfectoid.SurjectiveQuotientPerfectoidization
+public import SerrePositivity.BhattScholze.Semiperfectoid.Perfection.SurjectiveQuotientPerfectoidization
 public import SerrePositivity.CommutativeAlgebra.Perfectoid.Torsion
 public import SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosed.Basic
 
@@ -31,7 +31,7 @@ universe u
 section Prop247RankTargetsPart
 
 namespace SerrePositivity.CLMST
-open scoped TensorProduct
+open scoped _root_.TensorProduct
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 
@@ -50,7 +50,7 @@ theorem rankTarget_surjective_finite
   let I := openSectionImage R (rankOpen R S g hetale n)
   let q := (toOpenSectionImage R (rankOpen R S g hetale n)).toRingHom
   have hq : Function.Surjective q := toOpenSectionImage_surjective R _
-  have hf' := BhattScholze.surjective_perfectoidization_of_quotient p hR q hq (algebraMap I T) hf
+  have hf' := _root_.SerrePositivity.BhattScholze.Semiperfectoid.surjective_perfectoidization_of_quotient p hR q hq (algebraMap I T) hf
   have hs : Function.Surjective (algebraMap R T) := by
     rw [IsScalarTower.algebraMap_eq R I T]
     exact hf'.comp hq
@@ -73,7 +73,7 @@ theorem rankImage_exists_perfectoid_target
   let I := openSectionImage R (rankOpen R S g hetale n)
   let q := (toOpenSectionImage R (rankOpen R S g hetale n)).toRingHom
   obtain ⟨T, hT, f, hf⟩ :=
-    BhattScholze.exists_perfectoidization_of_perfectoid_surjective_quotient hR q
+    _root_.SerrePositivity.BhattScholze.Semiperfectoid.exists_perfectoidization_of_perfectoid_surjective_quotient hR q
       (toOpenSectionImage_surjective R _)
   letI := hT
   letI : Algebra I T := f.toAlgebra
@@ -108,7 +108,7 @@ theorem rankTarget_isAbsolutelyIntegrallyClosed
   hAIC.of_surjective (algebraMap R T)
     (rankTarget_surjective_finite R S p hR g hetale n T hf).1
 
-open scoped TensorProduct
+open scoped _root_.TensorProduct
 
 /-- 元の rank 像の perfectoid 化を絶対整閉性と実底変換の定 rank とともに供給する。
 原典の rank 0・空の rank 部分も含み、新しい存在引用を使わない。 -/

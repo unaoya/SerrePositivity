@@ -51,15 +51,15 @@ BS 著者版 Remark 7.15（著者版 p.62）の元の A 上の無限根源を p,
 hpR とモニック性は不要。元の prism 生成元の正則性だけを内部で使う。
 
 ## 使われ方
-A1-d の実残余 H⁰ の忠実平坦性を明示仮定として受け取り、純性へ進む。
+実剰余の比較 の実残余 H⁰ の忠実平坦性を明示仮定として受け取り、純性へ進む。
 -/
 
 @[expose] public noncomputable section PowerRootSourceComplete
 
 set_option backward.isDefEq.respectTransparency false
 namespace SerrePositivity.BhattScholze.Andre
-open CategoryTheory CategoryTheory.Limits
-open SerrePositivity.DerivedCompletion
+open _root_.CategoryTheory _root_.CategoryTheory.Limits
+open _root_.SerrePositivity.DerivedCompletion
 attribute [local instance] HasDerivedCategory.standard
 variable {A : Type u} [CommRing A] {p : ℕ} [Fact p.Prime]
 variable (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect) (f : Polynomial A)
@@ -188,7 +188,7 @@ local notation "XC" => PowerRootPrismMonicSourceIteratedPDCompletion_of_uncondit
 /-- 概要：実逐次完備化の (p,d) 導来還元は元の実源の還元と同型。
 方針：元の A での p と d の個別正則性を標準完備化単位の比較へ供給する。
 規約：d mod p の正則性も hpR も仮定しない。
-使われ方：BS 著者版 Remark 7.15（著者版 p.62）の A1-d の実剰余入力を完備化後へ渡す。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の 実剰余の比較 の実剰余入力を完備化後へ渡す。 -/
 def powerRootPrismMonicSourceIteratedPDReductionIso_of_unconditional :
     (boundedAboveDerivedBaseChange q).obj XC ≅ (boundedAboveDerivedBaseChange q).obj XB :=
   prismaticCoefficientIteratedCompletionPairIso (p : A) d hW.p_mul_injective
@@ -208,9 +208,9 @@ theorem powerRootPrismMonicSourceIteratedPDResidue_homology_isZero_of_unconditio
         (DerivedCategory.Minus.ι.mapIso
           (powerRootPrismMonicSourceIteratedPDReductionIso_of_unconditional W hW f)))
 
-/-- 概要：A1-d の元の H⁰ 忠実平坦性入力は、同じ元の作用で実逐次完備化後に移る。
+/-- 概要：実剰余の比較 の元の H⁰ 忠実平坦性入力は、同じ元の作用で実逐次完備化後に移る。
 方針：標準単位を保つ実剰余比較の H⁰ 線形同型で移送する。
-規約：入力は A1-d への受渡し型そのものを明示仮定にし、証明済みとは扱わない。
+規約：入力は 実剰余の比較 への受渡し型そのものを明示仮定にし、証明済みとは扱わない。
 使われ方：BS 著者版 Remark 7.15（著者版 p.62）の純性と分母正則性への条件付き接続。 -/
 theorem powerRootPrismMonicSourceIteratedPDResidueH0_faithfullyFlat_of_initialCoefficient
     (hFF : Module.FaithfullyFlat R
@@ -237,7 +237,7 @@ end PowerRootSourceComplete
 BS 著者版 Remark 7.15（著者版 p.62）の元の実逐次完備化は次数零に集中し、生成元はその H⁰ に正則。
 
 ## 方針
-A1-d の元の係数作用での忠実平坦性を受け取り、冪零還元、生成元冪商の有界 p ねじれ、
+実剰余の比較 の元の係数作用での忠実平坦性を受け取り、冪零還元、生成元冪商の有界 p ねじれ、
 導来完備 Nakayama を順に使う。原典の p 正則基底への帰着とは異なる経路。
 
 ## 規約
@@ -251,8 +251,8 @@ hpR は仮定せず、元の源とその実完備化を使う。
 
 set_option backward.isDefEq.respectTransparency false
 namespace SerrePositivity.BhattScholze.Andre
-open CategoryTheory CategoryTheory.Limits
-open SerrePositivity.DerivedCompletion
+open _root_.CategoryTheory _root_.CategoryTheory.Limits
+open _root_.SerrePositivity.DerivedCompletion
 attribute [local instance] HasDerivedCategory.standard
 variable {A : Type u} [CommRing A] {p : ℕ} [Fact p.Prime]
 variable (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect) (f : Polynomial A)
@@ -302,7 +302,7 @@ theorem powerRootPrismMonicSourceCanonicalPowerResidue_homology_isZero_of_uncond
 
 include hn in
 /-- 概要：標準冪零還元の H⁰ は忠実平坦。
-方針：A1-d の無条件入力を実完備化へ移し、商環同型による係数制限へ移す。
+方針：実剰余の比較 の無条件入力を実完備化へ移し、商環同型による係数制限へ移す。
 規約：モニック正次数のみ追加し、別の忠実平坦性仮定を置かない。
 使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実生成元冪商の平坦性。 -/
 theorem powerRootPrismMonicSourceCanonicalPowerResidueH0_faithfullyFlat_of_unconditional
@@ -448,8 +448,8 @@ BS 著者版 Remark 7.15（著者版 p.62）の raw PD 環との比較の準備�
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze.Andre
-open CategoryTheory CategoryTheory.Limits MonoidalCategory
-open scoped TensorProduct
+open _root_.CategoryTheory _root_.CategoryTheory.Limits _root_.CategoryTheory.MonoidalCategory
+open scoped _root_.TensorProduct
 attribute [local instance] HasDerivedCategory.standard
 /-- 概要：通常テンソルの指定同型を標準導来 augmentation へ合成する。
 方針：実テンソルの標準 H⁰ 比較を使う。
@@ -501,10 +501,10 @@ variable (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect) (f : Polynomi
 local notation "hpNat" => Nat.Prime.pos (Fact.out : p.Prime)
 local notation "D" => W.deltaStructure
 local notation "d" => W.generator
-local notation "dP" => algebraMap A (PowerRootPolynomial A p hpNat) d
-local notation "P" => PowerRootPolynomial A p hpNat
+local notation "dP" => algebraMap A (_root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial A p hpNat) d
+local notation "P" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial A p hpNat
 local notation "L" => PowerRootUnaryFreeDeltaRing A p hpNat
-local notation "E" => powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
+local notation "E" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
 local notation "r" => powerRootPrismMonicUnaryFamily (p := p) f
 local notation "α" =>
   deltaDivisionSourceMap (σ := PUnit) E dP
@@ -680,7 +680,7 @@ BS 著者版 Remark 7.15（著者版 p.62）の raw PD 環との比較の準備�
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze.Andre
-open CategoryTheory CategoryTheory.Limits
+open _root_.CategoryTheory _root_.CategoryTheory.Limits
 attribute [local instance] HasDerivedCategory.standard
 /-- 概要：二つの次数零加群の実導来テンソルは、係数制限後も非正次数にある。
 方針：非正射影モデルのテンソルと正確な係数制限で計算する。
@@ -723,10 +723,10 @@ variable (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect) (f : Polynomi
 local notation "hpNat" => Nat.Prime.pos (Fact.out : p.Prime)
 local notation "D" => W.deltaStructure
 local notation "d" => W.generator
-local notation "dP" => algebraMap A (PowerRootPolynomial A p hpNat) d
-local notation "P" => PowerRootPolynomial A p hpNat
+local notation "dP" => algebraMap A (_root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial A p hpNat) d
+local notation "P" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial A p hpNat
 local notation "L" => PowerRootUnaryFreeDeltaRing A p hpNat
-local notation "E" => powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
+local notation "E" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
 local notation "r" => powerRootPrismMonicUnaryFamily (p := p) f
 local notation "α" =>
   deltaDivisionSourceMap (σ := PUnit) E dP
@@ -819,14 +819,14 @@ BS 著者版 Remark 7.15（著者版 p.62）の raw PD 環との比較の準備�
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze.Andre
-open CategoryTheory CategoryTheory.Limits
+open _root_.CategoryTheory _root_.CategoryTheory.Limits
 attribute [local instance] HasDerivedCategory.standard
 variable {p : ℕ} [Fact p.Prime] {A : Type u} [CommRing A]
 variable (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect) (f : Polynomial A)
 local notation "hpNat" => Nat.Prime.pos (Fact.out : p.Prime)
 local notation "D" => W.deltaStructure
 local notation "d" => W.generator
-local notation "dP" => algebraMap A (PowerRootPolynomial A p hpNat) d
+local notation "dP" => algebraMap A (_root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial A p hpNat) d
 local notation "Cp" => DerivedCompletion.boundedAboveDerivedCompletionFunctor A (p : A)
 local notation "Cd" => DerivedCompletion.boundedAboveDerivedCompletionFunctor A d
 
@@ -921,17 +921,17 @@ BS 著者版 Remark 7.15（著者版 p.62）の raw PD 環との比較の準備�
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze.Andre
-open CategoryTheory CategoryTheory.Limits
+open _root_.CategoryTheory _root_.CategoryTheory.Limits
 attribute [local instance] HasDerivedCategory.standard
 variable {p : ℕ} [Fact p.Prime] {A : Type u} [CommRing A]
 variable (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect) (f : Polynomial A)
 local notation "hpNat" => Nat.Prime.pos (Fact.out : p.Prime)
 local notation "D" => W.deltaStructure
 local notation "d" => W.generator
-local notation "dP" => algebraMap A (PowerRootPolynomial A p hpNat) d
-local notation "P" => PowerRootPolynomial A p hpNat
+local notation "dP" => algebraMap A (_root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial A p hpNat) d
+local notation "P" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial A p hpNat
 local notation "L" => PowerRootUnaryFreeDeltaRing A p hpNat
-local notation "E" => powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
+local notation "E" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
 local notation "r" => powerRootPrismMonicUnaryFamily (p := p) f
 local notation "β" => deltaDivisionSourceEval E r
 local notation "Raw" => DeltaAdjoinDivision E dP r
@@ -1013,16 +1013,16 @@ BS 著者版 Remark 7.15（著者版 p.62）の raw PD 環との比較の準備�
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze.Andre
-open CategoryTheory CategoryTheory.Limits
-open SerrePositivity.DerivedCompletion
+open _root_.CategoryTheory _root_.CategoryTheory.Limits
+open _root_.SerrePositivity.DerivedCompletion
 attribute [local instance] HasDerivedCategory.standard
 variable {p : ℕ} [Fact p.Prime] {A : Type u} [CommRing A]
 variable (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect) (f : Polynomial A)
 local notation "hpNat" => Nat.Prime.pos (Fact.out : p.Prime)
 local notation "D" => W.deltaStructure
 local notation "d" => W.generator
-local notation "dP" => algebraMap A (PowerRootPolynomial A p hpNat) d
-local notation "E" => powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
+local notation "dP" => algebraMap A (_root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial A p hpNat) d
+local notation "E" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
 local notation "r" => powerRootPrismMonicUnaryFamily (p := p) f
 local notation "Raw" => DeltaAdjoinDivision E dP r
 local notation "c" => algebraMap A Raw
@@ -1049,7 +1049,7 @@ def powerRootPrismMonicRawCoefficientRestrictionIso_of_unconditional :
 使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実 H⁰ と raw PD 環の比較。 -/
 abbrev PowerRootPrismMonicRawInternalIteratedCompletion_of_unconditional := (Bd).obj ((Bp).obj M)
 
-/-- 概要：二度のG8を同じ係数射に適用した、元のraw実逐次対象との同型。
+/-- 概要：二度の係数制限と完備化の比較を同じ係数射に適用した、元のraw実逐次対象との同型。
 方針：一般の標準 augmentation と実係数制限・完備化比較を、同じ実対象へ適用する。
 規約：元の係数射と作用を保持し、モニック性・正次数・有限性を使わない。
 使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実 H⁰ と raw PD 環の比較。 -/
@@ -1137,7 +1137,7 @@ BS 著者版 Remark 7.15（著者版 p.62）の実源と環候補の比較。
 
 ## 方針
 
-源の標準 augmentation の H⁰ 比較、G8 の係数制限比較、既存の一般二座標 H⁰ 反射比較を合成する。
+源の標準 augmentation の H⁰ 比較、係数制限と完備化の比較 の係数制限比較、既存の一般二座標 H⁰ 反射比較を合成する。
 原典の BS 著者版 Proposition 7.11 を使う証明とは異なる具体的係数射を保つ計算。
 
 ## 規約
@@ -1154,16 +1154,16 @@ BS 著者版 Remark 7.15（著者版 p.62）の実源と環候補の比較。
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze.Andre
-open CategoryTheory CategoryTheory.Limits
-open SerrePositivity.DerivedCompletion
+open _root_.CategoryTheory _root_.CategoryTheory.Limits
+open _root_.SerrePositivity.DerivedCompletion
 attribute [local instance] HasDerivedCategory.standard
 variable {p : ℕ} [Fact p.Prime] {A : Type u} [CommRing A]
 variable (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect) (f : Polynomial A)
 local notation "hpNat" => Nat.Prime.pos (Fact.out : p.Prime)
 local notation "D" => W.deltaStructure
 local notation "d" => W.generator
-local notation "dP" => algebraMap A (PowerRootPolynomial A p hpNat) d
-local notation "E" => powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
+local notation "dP" => algebraMap A (_root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial A p hpNat) d
+local notation "E" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
 local notation "r" => powerRootPrismMonicUnaryFamily (p := p) f
 local notation "Raw" => DeltaAdjoinDivision E dP r
 local notation "c" => algebraMap A Raw
@@ -1177,19 +1177,19 @@ local notation "H" => CategoryTheory.Functor.obj (DerivedCategory.homologyFuncto
 規約：第一座標の像が自然数 p であることを明示する。
 使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実源から環候補への比較の最終段。 -/
 def powerRootPrismMonicRawInternalPDLinearEquiv_of_unconditional : H Z ≃ₗ[Raw] PDCompletionH0 Raw p z :=
-  iteratedPDH0LinearEquiv Raw a z p (map_natCast c p)
+  _root_.SerrePositivity.DerivedCompletion.iteratedPDH0LinearEquiv Raw a z p (map_natCast c p)
 
 /-- 概要：raw 自身の比較は、すべての raw 係数の元の標準完備化像を保つ。
 方針：一般 H⁰ 反射比較の標準単位公式を再利用する。
 規約：単位 1 だけでなく任意の raw 元で述べる。
 使われ方：BS 著者版 Remark 7.15（著者版 p.62）の候補係数射との後続比較。 -/
 theorem powerRootPrismMonicRawInternalPDLinearEquiv_unit_of_unconditional (x : Raw) :
-    powerRootPrismMonicRawInternalPDLinearEquiv_of_unconditional W hW f (iteratedPDH0Unit Raw a z x) =
+    powerRootPrismMonicRawInternalPDLinearEquiv_of_unconditional W hW f (_root_.SerrePositivity.DerivedCompletion.iteratedPDH0Unit Raw a z x) =
       pairCompletionH0Unit Raw (p : Raw) z x :=
-  iteratedPDH0LinearEquiv_unit Raw a z p (map_natCast c p) x
+  _root_.SerrePositivity.DerivedCompletion.iteratedPDH0LinearEquiv_unit Raw a z p (map_natCast c p) x
 
 /-- 概要：元の実モニック源の逐次完備化 H⁰ は、raw PD 環の同じ A 係数制限と同型。
-方針：標準 augmentation、二度の G8、Raw 線形 H⁰ 反射比較を順に合成する。
+方針：標準 augmentation、二度の 係数制限と完備化の比較、Raw 線形 H⁰ 反射比較を順に合成する。
 規約：元の A 作用を保つ加群同型を構成する。
 使われ方：BS 著者版 Remark 7.15（著者版 p.62）の環候補の完全忠実平坦性への移送。 -/
 def powerRootPrismMonicSourcePDH0Iso_of_unconditional :
@@ -1231,18 +1231,18 @@ end PowerRootRawPDComparison
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze.Andre
-open CategoryTheory CategoryTheory.Limits
-open SerrePositivity.DerivedCompletion
-open scoped TensorProduct
+open _root_.CategoryTheory _root_.CategoryTheory.Limits
+open _root_.SerrePositivity.DerivedCompletion
+open scoped _root_.TensorProduct
 attribute [local instance] HasDerivedCategory.standard
 variable {p : ℕ} [Fact p.Prime] {A : Type u} [CommRing A]
 variable (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect) (f : Polynomial A)
 variable (hf : f.Monic) (hdeg : 0 < f.natDegree)
 local notation "hp" => Nat.Prime.pos (Fact.out : p.Prime)
-local notation "P" => PowerRootPolynomial A p hp
+local notation "P" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial A p hp
 local notation "d" => W.generator
 local notation "dP" => algebraMap A P d
-local notation "E" => powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
+local notation "E" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
 local notation "r" => powerRootPrismMonicUnaryFamily (p := p) f
 local notation "Raw" => DeltaAdjoinDivision E dP r
 local notation "c" => algebraMap A Raw
@@ -1384,8 +1384,8 @@ hpR や d mod p の正則性は要求しない。raw 環の p 正則性は結論
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze.Andre
-open CategoryTheory CategoryTheory.Limits
-open SerrePositivity.DerivedCompletion
+open _root_.CategoryTheory _root_.CategoryTheory.Limits
+open _root_.SerrePositivity.DerivedCompletion
 attribute [local instance] HasDerivedCategory.standard
 
 /-- 概要：被約環の任意主元の冪ねじれは、その主元で零になる。
@@ -1587,8 +1587,8 @@ theorem powerRootPrismMonicSourceIteratedPDCompletion_prime_injective_of_uncondi
   · exact (DerivedCategory.isLE_iff _ _).mp hLE i hgt
 
 local notation "hp" => Nat.Prime.pos (Fact.out : p.Prime)
-local notation "P" => PowerRootPolynomial A p hp
-local notation "E" => powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
+local notation "P" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial A p hp
+local notation "E" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
 local notation "dP" => algebraMap A P d
 local notation "a" => powerRootPrismMonicUnaryFamily (p := p) f
 local notation "Raw" => DeltaAdjoinDivision E dP a
@@ -1709,7 +1709,7 @@ p 完備化単位の p 錐同値性と、d 完備化と p 錐の可換性を合�
 @[expose] public noncomputable section PowerRootRawPrimeConeCompletion
 
 namespace SerrePositivity.BhattScholze.Andre
-open CategoryTheory CategoryTheory.Limits DerivedCompletion
+open _root_.CategoryTheory _root_.CategoryTheory.Limits _root_.SerrePositivity.DerivedCompletion
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 attribute [local instance] HasDerivedCategory.standard

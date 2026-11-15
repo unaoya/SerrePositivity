@@ -28,7 +28,7 @@ BS 著者版 Corollary 2.39 と Proposition 3.13 の包に使う、自由 δ 射
 係数環・素数・正則性の仮定は各宣言で明示する。
 
 ## 使われ方
-`Andre/Envelope/DivisionResidue`、`Andre/Envelope/FamilyEvaluation`、`Andre/Envelope/MonicCandidate`、`Andre/Envelope/MonicSource`、`Andre/Envelope/PDivisionSource`、`Andre/Envelope/RootFamilyRaw`、`Andre/Envelope/RootFamilySource`、`Andre/Envelope/RootSource`、`Andre/Envelope/SourceEvaluation`、`Andre/PowerRootEnvelope/Unconditional/Localization`、`Andre/PowerRootEnvelope/Unconditional/Source`、`Andre/Variants/RootedExtension`、`Semiperfectoid/RootEnvelope/Source`。
+`Andre/Envelope/DivisionResidue`、`Andre/Envelope/FamilyEvaluation`、`Andre/Envelope/MonicCandidate`、`Andre/Envelope/MonicSource`、`Andre/Envelope/PDivisionSource`、`Andre/Envelope/RootFamilyRaw`、`Andre/Envelope/RootFamilySource`、`Andre/Envelope/RootSource`、`Andre/Envelope/SourceEvaluation`、`Andre/PowerRootEnvelope/Unconditional/Localization`、`Andre/PowerRootEnvelope/Unconditional/Source`、`Andre/Variants/RootedExtension`、`Semiperfectoid/Surjectivity/RootEnvelope/Source`。
 -/
 
 universe u v w
@@ -1058,7 +1058,7 @@ end RelativeFreeSubsetSplit
 /-! ## 自由δ射の両因子の係数商に沿うTor消滅
 
 係数射の平坦性と具体的な係数上の式を共通のTor基底変更へ供給する。
-係数イデアルの正則性・完備性やG7は要求しない。
+係数イデアルの正則性・完備性や余極限との比較は要求しない。
 -/
 
 @[expose] public noncomputable section DeltaDivisionSourceCoefficientTor

@@ -42,15 +42,15 @@ hpR と raw 包のねじれ除去を使わない。
 @[expose] public noncomputable section PowerRootRawPrimeRegular
 
 namespace SerrePositivity.BhattScholze.Andre
-open CategoryTheory CategoryTheory.Limits DerivedCompletion
+open _root_.CategoryTheory _root_.CategoryTheory.Limits _root_.SerrePositivity.DerivedCompletion
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 attribute [local instance] HasDerivedCategory.standard
 variable {A : Type u} [CommRing A] {p : ℕ} [Fact p.Prime]
 variable (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect) (f : Polynomial A)
 local notation "hpNat" => Nat.Prime.pos (Fact.out : p.Prime)
-local notation "P" => PowerRootPolynomial A p hpNat
-local notation "E" => powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
+local notation "P" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial A p hpNat
+local notation "E" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
 local notation "dP" => algebraMap A P W.generator
 local notation "a" => powerRootPrismMonicUnaryFamily (p := p) f
 local notation "L" => PowerRootUnaryFreeDeltaRing A p hpNat
@@ -75,7 +75,7 @@ theorem powerRootPrismMonicSourcePrimeCone_power_torsion_of_unconditional
       ((derivedScalarConeFunctor A (p : A)).obj (X).obj)) :
     ∃ n : ℕ, W.generator ^ n • x = 0 := by
   have hP : IsSMulRegular P (p : P) :=
-    powerRootPolynomial_primeRegular p hW.p_mul_injective
+    _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomial_primeRegular p hW.p_mul_injective
   have hT := unconditionalSourcePrimeCone_homology_power_torsion E dP a hP i hi
   have hT' : ∀ y : (DerivedCategory.homologyFunctor (ModuleCat L) i).obj
       ((derivedScalarConeFunctor L (φ (p : A))).obj (XL).obj),
@@ -145,8 +145,8 @@ set_option backward.defeqAttrib.useBackward true
 variable {A : Type u} [CommRing A] {p : ℕ} [Fact p.Prime]
 variable (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect) (f : Polynomial A)
 local notation "hpNat" => Nat.Prime.pos (Fact.out : p.Prime)
-local notation "P" => PowerRootPolynomial A p hpNat
-local notation "E" => powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
+local notation "P" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial A p hpNat
+local notation "E" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
 local notation "dP" => algebraMap A P W.generator
 local notation "a" => powerRootPrismMonicUnaryFamily (p := p) f
 local notation "Raw" => DeltaAdjoinDivision E dP a
@@ -163,7 +163,7 @@ theorem powerRootPrismMonicRaw_p_mul_injective_of_natDegree_zero_unconditional
     refine ⟨(PUnit.unit : PUnit.{u + 1}), ?_⟩
     simp only [powerRootPrismMonicUnaryFamily, powerRootMonicPDInput, hf1, map_one]
   exact unconditionalRaw_prime_regular_of_unit_numerator E dP a
-    (powerRootPolynomial_primeRegular p hW.p_mul_injective) ha
+    (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomial_primeRegular p hW.p_mul_injective) ha
 
 /-- 概要：任意のモニック入力の元の raw δ 包には p ねじれがない。
 方針：正次数の実源純性と次数零の実安定局所化計算を合流する。
@@ -208,7 +208,7 @@ d 完備化単位の実 d 錐同値性から、既証明の逐次完備化の分
 @[expose] public noncomputable section PrincipalSourceRegularity
 
 namespace SerrePositivity.BhattScholze.Andre
-open CategoryTheory CategoryTheory.Limits DerivedCompletion
+open _root_.CategoryTheory _root_.CategoryTheory.Limits _root_.SerrePositivity.DerivedCompletion
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 attribute [local instance] HasDerivedCategory.standard
@@ -280,15 +280,15 @@ BS 著者版 Remark 7.15（著者版 p.62）の元の実源の第一 p 完備化
 @[expose] public noncomputable section RawPrincipalH0Comparison
 
 namespace SerrePositivity.BhattScholze.Andre
-open CategoryTheory CategoryTheory.Limits DerivedCompletion
+open _root_.CategoryTheory _root_.CategoryTheory.Limits _root_.SerrePositivity.DerivedCompletion
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 attribute [local instance] HasDerivedCategory.standard
 variable {A : Type u} [CommRing A] {p : ℕ} [Fact p.Prime]
 variable (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect) (f : Polynomial A)
 local notation "hpNat" => Nat.Prime.pos (Fact.out : p.Prime)
-local notation "P" => PowerRootPolynomial A p hpNat
-local notation "E" => powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
+local notation "P" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial A p hpNat
+local notation "E" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
 local notation "dP" => algebraMap A P W.generator
 local notation "a" => powerRootPrismMonicUnaryFamily (p := p) f
 local notation "Raw" => DeltaAdjoinDivision E dP a
@@ -345,7 +345,7 @@ BS 著者版 Remark 7.15（著者版 p.62）の任意モニック入力につい
 @[expose] public noncomputable section RawPAdicPairRegular
 
 namespace SerrePositivity.BhattScholze.Andre
-open CategoryTheory CategoryTheory.Limits DerivedCompletion
+open _root_.CategoryTheory _root_.CategoryTheory.Limits _root_.SerrePositivity.DerivedCompletion
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 attribute [local instance] HasDerivedCategory.standard
@@ -371,8 +371,8 @@ theorem unconditionalRegularity_of_restricted_linearEquiv
 variable {A : Type u} [CommRing A] {p : ℕ} [Fact p.Prime]
 variable (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect) (f : Polynomial A)
 local notation "hpNat" => Nat.Prime.pos (Fact.out : p.Prime)
-local notation "P" => PowerRootPolynomial A p hpNat
-local notation "E" => powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
+local notation "P" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial A p hpNat
+local notation "E" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
 local notation "dP" => algebraMap A P W.generator
 local notation "a" => powerRootPrismMonicUnaryFamily (p := p) f
 local notation "Raw" => DeltaAdjoinDivision E dP a

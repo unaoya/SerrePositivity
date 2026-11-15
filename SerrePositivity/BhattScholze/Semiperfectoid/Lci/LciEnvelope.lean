@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.BhattScholze.Prismatic.Envelopes.Envelope
 public import SerrePositivity.BhattScholze.Prism.Bounded.CompletedTensor
-public import SerrePositivity.BhattScholze.Semiperfectoid.DiscretePrism
+public import SerrePositivity.BhattScholze.Semiperfectoid.Discrete.DiscretePrism
 import SerrePositivity.BhattScholze.Prism.Basic.Rigidity
 
 /-!
@@ -29,7 +29,7 @@ universe u
 
 namespace SerrePositivity.BhattScholze.Prismatic
 
-open DerivedCompletion
+open _root_.SerrePositivity.DerivedCompletion
 
 variable {p : ℕ} [Fact p.Prime]
 variable {A₀ A U E : Type u} [CommRing A₀] [CommRing A] [CommRing U] [CommRing E]
@@ -44,34 +44,34 @@ include hE hc in
 方針：標的への基底脚を元の包絡の普遍性に入れ、両脚を完備テンソル積から一意に延長する。
 規約：BS 著者版 Example 7.9 の古典的な普遍性。台環の正則性は別途検証する。
 使われ方：自由変数で得た包絡を有限の関係列へ特殊化する。 -/
-theorem exists_envelope_of_classified_ideal_of_regular (g : OrientedPrism.Hom P₀ P)
+theorem _root_.SerrePositivity.BhattScholze.Semiperfectoid.exists_envelope_of_classified_ideal_of_regular (g : _root_.SerrePositivity.BhattScholze.OrientedPrism.Hom P₀ P)
     (hg : c.comp ι = g.toRingHom)
     (hd : g.toRingHom P₀.generator = P.generator)
     (hreg : letI := c.toAlgebra; letI := η.toAlgebra
-      IsRegular ((prismCompletedTensorLeft (A := U) (C := E) P) P.generator)) :
+      IsRegular ((_root_.SerrePositivity.BhattScholze.prismCompletedTensorLeft (A := U) (C := E) P) P.generator)) :
     letI := c.toAlgebra; letI := η.toAlgebra
-    let H := PrismCompletedTensor (A := U) (C := E) P
-    let l : A →+* H := prismCompletedTensorLeft P
-    ∃ Q' : OrientedPrism p H, Q'.generator = l P.generator ∧
-      IsPrismaticEnvelope P P.deltaStructure (RingHom.id A) P.deltaStructure.isDeltaHom_id
+    let H := _root_.SerrePositivity.BhattScholze.PrismCompletedTensor (A := U) (C := E) P
+    let l : A →+* H := _root_.SerrePositivity.BhattScholze.prismCompletedTensorLeft P
+    ∃ Q' : _root_.SerrePositivity.BhattScholze.OrientedPrism p H, Q'.generator = l P.generator ∧
+      _root_.SerrePositivity.BhattScholze.Prismatic.IsPrismaticEnvelope P P.deltaStructure (RingHom.id A) P.deltaStructure.isDeltaHom_id
         (J.map c) (by
           change P.generator ∈ J.map c
           rw [← hd, ← show c (ι P₀.generator) = _ from RingHom.congr_fun hg P₀.generator]
           exact Ideal.mem_map_of_mem c hJ) Q' l := by
   let := c.toAlgebra
   let := η.toAlgebra
-  let H := PrismCompletedTensor (A := U) (C := E) P
-  let l : A →+* H := prismCompletedTensorLeft P
-  let r : E →+* H := prismCompletedTensorRight P
-  let D := prismCompletedTensorDelta P DU Q.deltaStructure hc hE.isDeltaHom
-  have hl := prismCompletedTensorLeft_isDeltaHom P DU Q.deltaStructure hc hE.isDeltaHom
-  have hr := prismCompletedTensorRight_isDeltaHom P DU Q.deltaStructure hc hE.isDeltaHom
-  have hw : l.comp c = r.comp η := prismCompletedTensor_square P
+  let H := _root_.SerrePositivity.BhattScholze.PrismCompletedTensor (A := U) (C := E) P
+  let l : A →+* H := _root_.SerrePositivity.BhattScholze.prismCompletedTensorLeft P
+  let r : E →+* H := _root_.SerrePositivity.BhattScholze.prismCompletedTensorRight P
+  let D := _root_.SerrePositivity.BhattScholze.prismCompletedTensorDelta P DU Q.deltaStructure hc hE.isDeltaHom
+  have hl := _root_.SerrePositivity.BhattScholze.prismCompletedTensorLeft_isDeltaHom P DU Q.deltaStructure hc hE.isDeltaHom
+  have hr := _root_.SerrePositivity.BhattScholze.prismCompletedTensorRight_isDeltaHom P DU Q.deltaStructure hc hE.isDeltaHom
+  have hw : l.comp c = r.comp η := _root_.SerrePositivity.BhattScholze.prismCompletedTensor_square P
   let Q' := P.ofDiscreteDelta D l hl hreg
-    (prismCompletedTensor_complete_p P) (prismCompletedTensor_complete_generator P)
+    (_root_.SerrePositivity.BhattScholze.prismCompletedTensor_complete_p P) (_root_.SerrePositivity.BhattScholze.prismCompletedTensor_complete_generator P)
   have hbase : P.ideal ≤ Q'.ideal.comap l :=
     (P.toDiscreteDelta D l hl hreg
-      (prismCompletedTensor_complete_p P) (prismCompletedTensor_complete_generator P)).ideal_le
+      (_root_.SerrePositivity.BhattScholze.prismCompletedTensor_complete_p P) (_root_.SerrePositivity.BhattScholze.prismCompletedTensor_complete_generator P)).ideal_le
   have hd' : c (ι P₀.generator) = P.generator := (RingHom.congr_fun hg _).trans hd
   have hmapE : Q.ideal.map r ≤ Q'.ideal := by
     rw [hE.ideal_eq, Ideal.map_span, Set.image_singleton, Ideal.span_le]
@@ -85,7 +85,7 @@ theorem exists_envelope_of_classified_ideal_of_regular (g : OrientedPrism.Hom P�
     exact (Ideal.map_mono hE.map_le).trans hmapE
   · intro T _ QT v hv hbaseT hJT
     have hvBase : P.ideal ≤ QT.ideal.comap v := by simpa using hbaseT
-    let vP : OrientedPrism.Hom P QT := ⟨v, hv, hvBase⟩
+    let vP : _root_.SerrePositivity.BhattScholze.OrientedPrism.Hom P QT := ⟨v, hv, hvBase⟩
     have hb₀ : P₀.ideal ≤ QT.ideal.comap ((v.comp c).comp ι) := by
       rw [RingHom.comp_assoc, hg]
       exact (vP.comp g).ideal_le
@@ -93,7 +93,7 @@ theorem exists_envelope_of_classified_ideal_of_regular (g : OrientedPrism.Hom P�
       rw [← Ideal.map_map]
       exact hJT
     obtain ⟨k, hk, hkuniq⟩ := hE.lift QT (v.comp c) (hv.comp hc) hb₀ hJ₀
-    obtain ⟨t, ht, htuniq⟩ := existsUnique_prismCompletedTensorHom
+    obtain ⟨t, ht, htuniq⟩ := _root_.SerrePositivity.BhattScholze.existsUnique_prismCompletedTensorHom
       P DU Q.deltaStructure hc hE.isDeltaHom QT.deltaStructure
       v k hv hk.1 hk.2.symm QT.complete_p vP.isModuleComplete_map_generator
     refine ⟨t, ⟨ht.1, ht.2.1⟩, fun s hs ↦ htuniq s ⟨hs.1, hs.2, ?_⟩⟩

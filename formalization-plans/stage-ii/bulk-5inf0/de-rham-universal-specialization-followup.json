@@ -1,0 +1,174 @@
+{
+  "status": "source preparation only, waiting for predecessor draft typechecks",
+  "path": "formalization-plans/bhatt-scholze/drafts/A1/DeRhamComparisonPoly.lean",
+  "route": "Use existing universal specializations rather than adding hypotheses to the old universal draft statements",
+  "edits": [
+    {
+      "start": 5408,
+      "end": 5434,
+      "old": "wittCrystallinePrism.{u} p",
+      "new": "universalWittCrystallinePrism.{u} p",
+      "line": 85
+    },
+    {
+      "start": 5490,
+      "end": 5516,
+      "old": "wittCrystallinePrism.{u} p",
+      "new": "universalWittCrystallinePrism.{u} p",
+      "line": 86
+    },
+    {
+      "start": 5965,
+      "end": 5987,
+      "old": "wittCrystallinePrism p",
+      "new": "universalWittCrystallinePrism p",
+      "line": 92
+    },
+    {
+      "start": 6011,
+      "end": 6021,
+      "old": "psiPrism p",
+      "new": "universalWittPrismMap p",
+      "line": 92
+    },
+    {
+      "start": 5788,
+      "end": 5797,
+      "old": "psiRing p",
+      "new": "(universalWittPrismMap p).toRingHom",
+      "line": 90
+    },
+    {
+      "start": 14602,
+      "end": 14611,
+      "old": "psiRing p",
+      "new": "(universalWittPrismMap p).toRingHom",
+      "line": 202
+    },
+    {
+      "start": 15548,
+      "end": 15557,
+      "old": "psiRing p",
+      "new": "(universalWittPrismMap p).toRingHom",
+      "line": 214
+    },
+    {
+      "start": 15987,
+      "end": 15996,
+      "old": "psiRing p",
+      "new": "(universalWittPrismMap p).toRingHom",
+      "line": 220
+    },
+    {
+      "start": 16611,
+      "end": 16620,
+      "old": "psiRing p",
+      "new": "(universalWittPrismMap p).toRingHom",
+      "line": 228
+    },
+    {
+      "start": 18847,
+      "end": 18860,
+      "old": "psiRing.{u} p",
+      "new": "(universalWittPrismMap.{u} p).toRingHom",
+      "line": 261
+    },
+    {
+      "start": 19584,
+      "end": 19593,
+      "old": "psiRing p",
+      "new": "(universalWittPrismMap p).toRingHom",
+      "line": 271
+    },
+    {
+      "start": 20328,
+      "end": 20337,
+      "old": "psiRing p",
+      "new": "(universalWittPrismMap p).toRingHom",
+      "line": 278
+    },
+    {
+      "start": 12670,
+      "end": 12686,
+      "old": "wittBigPdModel p",
+      "new": "universalWittBigPDModel p",
+      "line": 177
+    },
+    {
+      "start": 19024,
+      "end": 19044,
+      "old": "wittBigPdModel.{u} p",
+      "new": "universalWittBigPDModel.{u} p",
+      "line": 264
+    },
+    {
+      "start": 8075,
+      "end": 8093,
+      "old": "bigCechAlexander p",
+      "new": "bigCechAlexander (U p) (universalOrientedPrism_bounded (p := p))",
+      "line": 120
+    },
+    {
+      "start": 18957,
+      "end": 18979,
+      "old": "bigCechAlexander.{u} p",
+      "new": "bigCechAlexander (U.{u} p) (universalOrientedPrism_bounded (p := p))",
+      "line": 263
+    },
+    {
+      "start": 17107,
+      "end": 17114,
+      "old": "wZero p",
+      "new": "wZero p (residueU p)",
+      "line": 234
+    },
+    {
+      "start": 17768,
+      "end": 17775,
+      "old": "wZero p",
+      "new": "wZero p (residueU p)",
+      "line": 243
+    },
+    {
+      "start": 18901,
+      "end": 18912,
+      "old": "wZero.{u} p",
+      "new": "wZero.{u} p (residueU p)",
+      "line": 262
+    },
+    {
+      "start": 19596,
+      "end": 19603,
+      "old": "wZero p",
+      "new": "wZero p (residueU p)",
+      "line": 271
+    },
+    {
+      "start": 20981,
+      "end": 20988,
+      "old": "wZero p",
+      "new": "wZero p (residueU p)",
+      "line": 284
+    },
+    {
+      "start": 5473,
+      "end": 5488,
+      "old": "polynomialDelta",
+      "new": "polynomialDelta (E := E)",
+      "line": 86
+    },
+    {
+      "start": 5878,
+      "end": 5909,
+      "old": "prismaticCohomology_baseChange'",
+      "new": "prismaticCohomology_baseChange' (E := E)",
+      "line": 91
+    }
+  ],
+  "Theory_forwarding": {
+    "declaration": "wittPolynomial",
+    "caller": "psiBaseChange",
+    "edit": "wittPolynomial (E := E) p n",
+    "reason": "Forward the same Theory already used by polynomialDelta and psiBaseChange"
+  }
+}

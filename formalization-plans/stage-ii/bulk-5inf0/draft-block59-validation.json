@@ -1,0 +1,116 @@
+{
+  "status": "partial",
+  "results": [
+    {
+      "draft": "A1/DeRhamComparisonPoly",
+      "exit_code": 1,
+      "seconds": 42.15927520953119
+    }
+  ],
+  "receipts": [
+    {
+      "draft": "formalization-plans/bhatt-scholze/drafts/A1/DeRhamComparisonPoly.lean",
+      "source_sha256": "46e43de0dad5f42e1a775d4db4302887734fdac44492052fbf8c6465fa58e729",
+      "staged_source_sha256": "715dc97846691065b4add4497fdd4deabd96f0358a94666a81087e78f679b335",
+      "source_unchanged_during_check": true,
+      "dependencies_unchanged_during_check": true,
+      "dependency_signatures": [
+        {
+          "draft": "A1/CrystallineInput",
+          "source_sha256": "c33e046bd0735a82511dad7fe09ed9659f88fb47201d6f268ac230615ed4dd1c",
+          "olean_sha256": "cdb2f722aba86cb0f1de10362c36eae0ba1a59b1d5c5a77c069783cdad0b9556"
+        },
+        {
+          "draft": "A1/HodgeTateComparison",
+          "source_sha256": "4d0b61ca662b32ab85e5fa82a0cff793576cb2c1aa0213ee02470b40fbb47bad",
+          "olean_sha256": "5c113bbff741279026b86557b263f74e0709a70331caf6a028343d8154152090"
+        },
+        {
+          "draft": "A1/HodgeTateMap",
+          "source_sha256": "724853b5168a88a1f063cc2c8f90efa04acbaa33fa8a9d8a801146fbf62cceae",
+          "olean_sha256": "9d830bb2222dd34f8794151af3cf153bc8a9f53ddf04c2ed3c6bf586d04f2716"
+        },
+        {
+          "draft": "Shared/DeRhamPolynomial",
+          "source_sha256": "3fe5ad6a0f914c40c6fdbf1d36cb8bcd324bee34ead925fae5e9503b4d70f5a0",
+          "olean_sha256": "5e67cb35414061cae444f14b7a486ad939a34c680ddc31ec2140ef9609dbfc63"
+        },
+        {
+          "draft": "A2/BaseChangeAndTensor",
+          "source_sha256": "3bc180e803669c48f8a621068ac28e04389cefd9fd61c46238b16b093b6e8a5e",
+          "olean_sha256": "cf33665f38506d3f0f8284a55068183831cbee9528d6af9e9c9fcb00cd3e8fce"
+        },
+        {
+          "draft": "A3/LciAndQuasiregular",
+          "source_sha256": "e697baf86418be959092c5932427db9af2a0fa42cae0a067362c4969cbc194d3",
+          "olean_sha256": "63d34a0414eccf5de8eed3005d0991e72a66cc1cc6d4b5fef4fcd408a71f28d0"
+        },
+        {
+          "draft": "A5/RootAdjunction",
+          "source_sha256": "e606dc710ecc4c3f3de8d76f2877cfbf19f081ffc4d4e387263a6fd6c372e7da",
+          "olean_sha256": "a36515ea282bd79c98d9d4f1a21d412b9a8b6fb0bd3f33fc2d83e3fd678d05b1"
+        },
+        {
+          "draft": "A0/CechAlexander",
+          "source_sha256": "f622f37aec08f8a9a4d8a9afd339b140eeb297aa84f6a4f2a4ad11153b36a0c6",
+          "olean_sha256": "a40645c507a91be07412dddfeeedd2b8d7e4a3f2427e041bc40f3061a890adff"
+        },
+        {
+          "draft": "A2/DerivedPrismaticCohomology",
+          "source_sha256": "32bf21abf0d6f2b582913c58dad90f21dbd7d6b7097be32a6e340f85d079e262",
+          "olean_sha256": "60f82677fc4d2e2badb39bef4d8d5484d0b071741ae3ab6c48a741064bd0d77b"
+        },
+        {
+          "draft": "A1/CrystallineSite",
+          "source_sha256": "da4027ac1cb97672622cce110f266e2c1e30ace47d313b4adea8d1f724e54f78",
+          "olean_sha256": "2098fd46ca9486b74d9aabd5de3dde764848ceb82e7e919d46cfbdb05c9bdf5b"
+        }
+      ],
+      "extra_public_imports": [
+        "A1/CrystallineInput",
+        "A1/HodgeTateComparison",
+        "A1/HodgeTateMap",
+        "Shared/DeRhamPolynomial",
+        "A2/BaseChangeAndTensor",
+        "A3/LciAndQuasiregular",
+        "A5/RootAdjunction",
+        "A0/CechAlexander",
+        "A2/DerivedPrismaticCohomology",
+        "A1/CrystallineSite"
+      ],
+      "options": {
+        "maxSynthPendingDepth": 3,
+        "pp.unicode.fun": true,
+        "relaxedAutoImplicit": false,
+        "weak.linter.mathlibStandardSet": true,
+        "weak.linter.style.header": false
+      },
+      "command": [
+        "lake",
+        "env",
+        "env",
+        "LEAN_PATH=/private/tmp/bulk-5inf0/validation:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/Cli/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/batteries/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/Qq/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/aesop/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/importGraph/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/plausible/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/mathlib/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/build/lib/lean:/Users/sugakubunka/.elan/toolchains/leanprover--lean4---v4.35.0-rc4/lib/lean",
+        "lean",
+        "-DmaxSynthPendingDepth=3",
+        "-Dpp.unicode.fun=true",
+        "-DrelaxedAutoImplicit=false",
+        "-Dweak.linter.mathlibStandardSet=true",
+        "-Dweak.linter.style.header=false",
+        "--root=/private/tmp/bulk-5inf0/validation",
+        "-o",
+        "/private/tmp/bulk-5inf0/validation/Bulk5InfDraft/A1/DeRhamComparisonPoly.olean",
+        "/private/tmp/bulk-5inf0/validation/Bulk5InfDraft/A1/DeRhamComparisonPoly.lean"
+      ],
+      "lean_exit_code": 1,
+      "exit_code": 1,
+      "seconds": 38.64074970781803,
+      "status": "FAIL",
+      "olean": null,
+      "olean_sha256": null
+    }
+  ],
+  "raw_logs": [
+    "formalization-plans/stage-ii/bulk-5inf0/draft-block59-A1-DeRhamComparisonPoly.log.gz"
+  ],
+  "individual_logs_replaced_by_later_attempts": []
+}

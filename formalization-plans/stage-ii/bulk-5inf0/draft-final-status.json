@@ -1,0 +1,633 @@
+{
+  "status": "PASS",
+  "counts": {
+    "PASS": 57
+  },
+  "drafts": [
+    {
+      "draft": "A2/AnimatedAlgebra",
+      "status": "PASS",
+      "dependencies": [],
+      "protected_source": false
+    },
+    {
+      "draft": "DerivedGeneral/CompletionFunctor",
+      "status": "PASS",
+      "dependencies": [],
+      "protected_source": false
+    },
+    {
+      "draft": "Sheaves/SheafCondition",
+      "status": "PASS",
+      "dependencies": [],
+      "protected_source": false
+    },
+    {
+      "draft": "A5/RootAdjunction",
+      "status": "PASS",
+      "dependencies": [],
+      "protected_source": false
+    },
+    {
+      "draft": "Shared/CosimplicialCupProduct",
+      "status": "PASS",
+      "dependencies": [],
+      "protected_source": false
+    },
+    {
+      "draft": "Shared/BarrattEcclesTheory",
+      "status": "PASS",
+      "dependencies": [],
+      "protected_source": false
+    },
+    {
+      "draft": "A8/W13AssemblyInputs",
+      "status": "PASS",
+      "dependencies": [],
+      "protected_source": false
+    },
+    {
+      "draft": "A6/ArcRouteB",
+      "status": "PASS",
+      "dependencies": [],
+      "protected_source": false
+    },
+    {
+      "draft": "A0/W15K1/AuditK1",
+      "status": "PASS",
+      "dependencies": [],
+      "protected_source": false
+    },
+    {
+      "draft": "A7/AnimatedDomain",
+      "status": "PASS",
+      "dependencies": [
+        "A2/AnimatedAlgebra",
+        "DerivedGeneral/CompletionFunctor"
+      ],
+      "protected_source": false
+    },
+    {
+      "draft": "DerivedGeneral/ScalarRestriction",
+      "status": "PASS",
+      "dependencies": [
+        "DerivedGeneral/CompletionFunctor"
+      ],
+      "protected_source": false
+    },
+    {
+      "draft": "DerivedGeneral/Truncation",
+      "status": "PASS",
+      "dependencies": [
+        "DerivedGeneral/CompletionFunctor"
+      ],
+      "protected_source": false
+    },
+    {
+      "draft": "Sheaves/GlobalSections",
+      "status": "PASS",
+      "dependencies": [
+        "Sheaves/SheafCondition"
+      ],
+      "protected_source": false
+    },
+    {
+      "draft": "Sheaves/CechConerveLimit",
+      "status": "PASS",
+      "dependencies": [
+        "Sheaves/SheafCondition"
+      ],
+      "protected_source": false
+    },
+    {
+      "draft": "Sheaves/SetSections",
+      "status": "PASS",
+      "dependencies": [
+        "Sheaves/SheafCondition"
+      ],
+      "protected_source": false
+    },
+    {
+      "draft": "Shared/Descendable",
+      "status": "PASS",
+      "dependencies": [
+        "DerivedGeneral/ScalarRestriction",
+        "DerivedGeneral/CompletionFunctor"
+      ],
+      "protected_source": false
+    },
+    {
+      "draft": "Shared/DeRhamPolynomial",
+      "status": "PASS",
+      "dependencies": [
+        "DerivedGeneral/CompletionFunctor",
+        "DerivedGeneral/Truncation"
+      ],
+      "protected_source": false
+    },
+    {
+      "draft": "A0/PrismaticSite",
+      "status": "PASS",
+      "dependencies": [
+        "Sheaves/SheafCondition",
+        "Sheaves/GlobalSections",
+        "DerivedGeneral/ScalarRestriction"
+      ],
+      "protected_source": false
+    },
+    {
+      "draft": "Sheaves/SheafGenerators",
+      "status": "PASS",
+      "dependencies": [
+        "Sheaves/SheafCondition",
+        "Sheaves/SetSections",
+        "Sheaves/GlobalSections"
+      ],
+      "protected_source": false
+    },
+    {
+      "draft": "Sheaves/SpaceValued",
+      "status": "PASS",
+      "dependencies": [
+        "Sheaves/SheafCondition",
+        "Sheaves/SetSections",
+        "Sheaves/GlobalSections"
+      ],
+      "protected_source": false
+    },
+    {
+      "draft": "A0/PrismaticEnvelope",
+      "status": "PASS",
+      "dependencies": [
+        "A0/PrismaticSite"
+      ],
+      "protected_source": false
+    },
+    {
+      "draft": "A0/FlatDescent",
+      "status": "PASS",
+      "dependencies": [
+        "A0/PrismaticSite",
+        "DerivedGeneral/Truncation",
+        "DerivedGeneral/CompletionFunctor",
+        "Sheaves/SheafCondition",
+        "Sheaves/GlobalSections"
+      ],
+      "protected_source": false
+    },
+    {
+      "draft": "Sheaves/CAlgValued",
+      "status": "PASS",
+      "dependencies": [
+        "Sheaves/SheafCondition",
+        "Sheaves/GlobalSections",
+        "Sheaves/SheafGenerators",
+        "Sheaves/CechConerveLimit"
+      ],
+      "protected_source": false
+    },
+    {
+      "draft": "A0/CechAlexander",
+      "status": "PASS",
+      "dependencies": [
+        "A0/PrismaticSite",
+        "Sheaves/CechConerveLimit",
+        "A0/PrismaticEnvelope",
+        "A0/FlatDescent"
+      ],
+      "protected_source": false
+    },
+    {
+      "draft": "Shared/CosimplicialEInfinity",
+      "status": "PASS",
+      "dependencies": [
+        "Shared/CosimplicialCupProduct",
+        "Sheaves/CechConerveLimit",
+        "Sheaves/CAlgValued",
+        "DerivedGeneral/ScalarRestriction"
+      ],
+      "protected_source": false
+    },
+    {
+      "draft": "A0/BaseChange",
+      "status": "PASS",
+      "dependencies": [
+        "A0/PrismaticSite",
+        "A0/CechAlexander",
+        "DerivedGeneral/Truncation",
+        "DerivedGeneral/CompletionFunctor",
+        "Sheaves/GlobalSections"
+      ],
+      "protected_source": false
+    },
+    {
+      "draft": "A2/DerivedPrismaticCohomology",
+      "status": "PASS",
+      "dependencies": [
+        "A2/AnimatedAlgebra",
+        "A0/PrismaticSite",
+        "A0/CechAlexander",
+        "Sheaves/CAlgValued",
+        "Shared/CosimplicialEInfinity",
+        "DerivedGeneral/CompletionFunctor",
+        "DerivedGeneral/ScalarRestriction"
+      ],
+      "protected_source": false
+    },
+    {
+      "draft": "Shared/EInfinityPowerOperation",
+      "status": "PASS",
+      "dependencies": [
+        "DerivedGeneral/ScalarRestriction",
+        "Shared/CosimplicialEInfinity"
+      ],
+      "protected_source": true
+    },
+    {
+      "draft": "A1/HodgeTateMap",
+      "status": "PASS",
+      "dependencies": [
+        "A2/DerivedPrismaticCohomology",
+        "A0/CechAlexander",
+        "Shared/CosimplicialCupProduct",
+        "Shared/DeRhamPolynomial"
+      ],
+      "protected_source": false
+    },
+    {
+      "draft": "A1/CrystallineInput",
+      "status": "PASS",
+      "dependencies": [
+        "A1/HodgeTateMap",
+        "A0/PrismaticEnvelope",
+        "Shared/DeRhamPolynomial",
+        "Shared/CosimplicialCupProduct",
+        "Shared/CosimplicialEInfinity"
+      ],
+      "protected_source": false
+    },
+    {
+      "draft": "A1/HodgeTateComparison",
+      "status": "PASS",
+      "dependencies": [
+        "A0/PrismaticSite",
+        "A0/PrismaticEnvelope",
+        "A0/CechAlexander",
+        "A1/HodgeTateMap",
+        "A1/CrystallineInput",
+        "Shared/DeRhamPolynomial"
+      ],
+      "protected_source": false
+    },
+    {
+      "draft": "A1/CrystallineSite",
+      "status": "PASS",
+      "dependencies": [
+        "Sheaves/SheafCondition",
+        "Sheaves/GlobalSections",
+        "Sheaves/CechConerveLimit",
+        "Sheaves/CAlgValued",
+        "A0/PrismaticSite",
+        "Shared/CosimplicialEInfinity",
+        "DerivedGeneral/ScalarRestriction",
+        "A2/DerivedPrismaticCohomology",
+        "A1/CrystallineInput",
+        "A0/PrismaticEnvelope"
+      ],
+      "protected_source": false
+    },
+    {
+      "draft": "A2/HodgeTateFiltration",
+      "status": "PASS",
+      "dependencies": [
+        "A2/AnimatedAlgebra",
+        "A2/DerivedPrismaticCohomology",
+        "DerivedGeneral/Truncation",
+        "A1/HodgeTateComparison",
+        "Shared/DeRhamPolynomial",
+        "A7/AnimatedDomain"
+      ],
+      "protected_source": false
+    },
+    {
+      "draft": "A3/DiscreteCase",
+      "status": "PASS",
+      "dependencies": [
+        "A2/DerivedPrismaticCohomology",
+        "A2/HodgeTateFiltration",
+        "A0/PrismaticSite",
+        "A0/PrismaticEnvelope",
+        "DerivedGeneral/Truncation",
+        "Sheaves/GlobalSections"
+      ],
+      "protected_source": false
+    },
+    {
+      "draft": "A2/BaseChangeAndTensor",
+      "status": "PASS",
+      "dependencies": [
+        "A2/AnimatedAlgebra",
+        "A2/DerivedPrismaticCohomology",
+        "A2/HodgeTateFiltration",
+        "DerivedGeneral/CompletionFunctor",
+        "A1/HodgeTateComparison",
+        "A7/AnimatedDomain",
+        "DerivedGeneral/ScalarRestriction"
+      ],
+      "protected_source": false
+    },
+    {
+      "draft": "A4/Perfectoidization",
+      "status": "PASS",
+      "dependencies": [
+        "DerivedGeneral/ScalarRestriction",
+        "A2/DerivedPrismaticCohomology",
+        "A2/HodgeTateFiltration",
+        "A2/BaseChangeAndTensor",
+        "A3/DiscreteCase",
+        "DerivedGeneral/Truncation",
+        "DerivedGeneral/CompletionFunctor",
+        "Sheaves/CAlgValued",
+        "Shared/EInfinityPowerOperation"
+      ],
+      "protected_source": false
+    },
+    {
+      "draft": "A3/LciAndQuasiregular",
+      "status": "PASS",
+      "dependencies": [
+        "A3/DiscreteCase",
+        "A0/PrismaticEnvelope",
+        "A2/DerivedPrismaticCohomology",
+        "A2/HodgeTateFiltration",
+        "A2/BaseChangeAndTensor"
+      ],
+      "protected_source": false
+    },
+    {
+      "draft": "A4/InterfaceFields",
+      "status": "PASS",
+      "dependencies": [
+        "A4/Perfectoidization",
+        "A2/AnimatedAlgebra",
+        "A2/DerivedPrismaticCohomology",
+        "A2/HodgeTateFiltration",
+        "A2/BaseChangeAndTensor"
+      ],
+      "protected_source": false
+    },
+    {
+      "draft": "A7/AnimatedPerfectoidization",
+      "status": "PASS",
+      "dependencies": [
+        "A2/AnimatedAlgebra",
+        "A2/DerivedPrismaticCohomology",
+        "A2/BaseChangeAndTensor",
+        "A4/Perfectoidization",
+        "DerivedGeneral/CompletionFunctor",
+        "A7/AnimatedDomain",
+        "A4/InterfaceFields"
+      ],
+      "protected_source": false
+    },
+    {
+      "draft": "A7/DiscreteCore",
+      "status": "PASS",
+      "dependencies": [
+        "A4/Perfectoidization",
+        "DerivedGeneral/Truncation"
+      ],
+      "protected_source": false
+    },
+    {
+      "draft": "A1/DeRhamComparisonPoly",
+      "status": "PASS",
+      "dependencies": [
+        "A1/CrystallineInput",
+        "A1/HodgeTateComparison",
+        "A1/HodgeTateMap",
+        "Shared/DeRhamPolynomial",
+        "A2/BaseChangeAndTensor",
+        "A3/LciAndQuasiregular",
+        "A5/RootAdjunction",
+        "A0/CechAlexander",
+        "A2/DerivedPrismaticCohomology",
+        "A1/CrystallineSite"
+      ],
+      "protected_source": false
+    },
+    {
+      "draft": "A5/PerfectSite",
+      "status": "PASS",
+      "dependencies": [
+        "A0/PrismaticSite",
+        "Sheaves/SheafCondition",
+        "Sheaves/GlobalSections",
+        "Sheaves/CechConerveLimit",
+        "Sheaves/CAlgValued",
+        "A3/DiscreteCase",
+        "A4/Perfectoidization",
+        "A4/InterfaceFields",
+        "A7/AnimatedDomain"
+      ],
+      "protected_source": false
+    },
+    {
+      "draft": "A8/AlmostConnectivity",
+      "status": "PASS",
+      "dependencies": [
+        "A7/AnimatedPerfectoidization",
+        "DerivedGeneral/Truncation",
+        "DerivedGeneral/CompletionFunctor"
+      ],
+      "protected_source": false
+    },
+    {
+      "draft": "A5/SemiperfectoidCase",
+      "status": "PASS",
+      "dependencies": [
+        "A5/PerfectSite",
+        "A4/Perfectoidization",
+        "A4/InterfaceFields",
+        "A3/LciAndQuasiregular",
+        "A2/HodgeTateFiltration",
+        "A2/BaseChangeAndTensor",
+        "DerivedGeneral/Truncation",
+        "A7/AnimatedDomain",
+        "A7/DiscreteCore"
+      ],
+      "protected_source": false
+    },
+    {
+      "draft": "A5/StrongDescent",
+      "status": "PASS",
+      "dependencies": [
+        "Shared/Descendable",
+        "Shared/DeRhamPolynomial",
+        "A5/PerfectSite",
+        "A5/RootAdjunction",
+        "A2/BaseChangeAndTensor",
+        "DerivedGeneral/Truncation",
+        "A1/DeRhamComparisonPoly"
+      ],
+      "protected_source": false
+    },
+    {
+      "draft": "A5/WeaklyInitialAndDescent",
+      "status": "PASS",
+      "dependencies": [
+        "A5/RootAdjunction",
+        "A5/PerfectSite",
+        "A5/SemiperfectoidCase",
+        "A5/StrongDescent",
+        "Sheaves/CechConerveLimit",
+        "Shared/Descendable",
+        "A2/BaseChangeAndTensor"
+      ],
+      "protected_source": false
+    },
+    {
+      "draft": "A5/PerfectSiteComparison",
+      "status": "PASS",
+      "dependencies": [
+        "A5/PerfectSite",
+        "A5/SemiperfectoidCase",
+        "A5/WeaklyInitialAndDescent",
+        "A5/StrongDescent",
+        "Sheaves/GlobalSections",
+        "Sheaves/CechConerveLimit",
+        "A7/AnimatedDomain",
+        "A7/AnimatedPerfectoidization"
+      ],
+      "protected_source": false
+    },
+    {
+      "draft": "A6/ArcSite",
+      "status": "PASS",
+      "dependencies": [
+        "Sheaves/SheafCondition",
+        "Sheaves/CechConerveLimit",
+        "A5/RootAdjunction",
+        "A5/WeaklyInitialAndDescent",
+        "A5/SemiperfectoidCase",
+        "A0/PrismaticSite"
+      ],
+      "protected_source": false
+    },
+    {
+      "draft": "A4/AfterComparison",
+      "status": "PASS",
+      "dependencies": [
+        "A4/Perfectoidization",
+        "A4/InterfaceFields",
+        "A5/PerfectSiteComparison",
+        "A2/BaseChangeAndTensor"
+      ],
+      "protected_source": false
+    },
+    {
+      "draft": "A5/InterfaceLimitCone",
+      "status": "PASS",
+      "dependencies": [
+        "A4/InterfaceFields",
+        "A5/PerfectSiteComparison",
+        "Sheaves/CAlgValued"
+      ],
+      "protected_source": false
+    },
+    {
+      "draft": "A7/UniversalProperty",
+      "status": "PASS",
+      "dependencies": [
+        "A7/AnimatedDomain",
+        "A7/DiscreteCore",
+        "A7/AnimatedPerfectoidization",
+        "A4/Perfectoidization",
+        "A4/InterfaceFields",
+        "A5/PerfectSiteComparison",
+        "A5/SemiperfectoidCase"
+      ],
+      "protected_source": false
+    },
+    {
+      "draft": "A6/ArcSheafProperty",
+      "status": "PASS",
+      "dependencies": [
+        "A5/PerfectSiteComparison",
+        "A5/InterfaceLimitCone",
+        "Sheaves/GlobalSections",
+        "DerivedGeneral/Truncation",
+        "A6/ArcSite",
+        "Sheaves/SheafCondition",
+        "Sheaves/CAlgValued",
+        "A0/PrismaticSite",
+        "A4/AfterComparison"
+      ],
+      "protected_source": false
+    },
+    {
+      "draft": "A6/SheafOfSetsExcision",
+      "status": "PASS",
+      "dependencies": [
+        "A6/ArcSite",
+        "A6/ArcSheafProperty",
+        "A5/PerfectSiteComparison"
+      ],
+      "protected_source": false
+    },
+    {
+      "draft": "A6/Excision",
+      "status": "PASS",
+      "dependencies": [
+        "A6/SheafOfSetsExcision",
+        "A6/ArcSheafProperty",
+        "Sheaves/SpaceValued",
+        "A4/InterfaceFields",
+        "A5/PerfectSiteComparison"
+      ],
+      "protected_source": false
+    },
+    {
+      "draft": "A8/AlmostPurityConnectivity",
+      "status": "PASS",
+      "dependencies": [
+        "A8/AlmostConnectivity",
+        "A6/Excision",
+        "A6/SheafOfSetsExcision",
+        "A7/AnimatedPerfectoidization",
+        "A7/UniversalProperty",
+        "A8/W13AssemblyInputs"
+      ],
+      "protected_source": false
+    },
+    {
+      "draft": "A8/IntegralDiscreteness",
+      "status": "PASS",
+      "dependencies": [
+        "A8/AlmostConnectivity",
+        "A8/AlmostPurityConnectivity",
+        "A7/AnimatedPerfectoidization",
+        "A7/UniversalProperty",
+        "A5/PerfectSiteComparison",
+        "A5/WeaklyInitialAndDescent",
+        "A4/InterfaceFields",
+        "A4/AfterComparison",
+        "A8/W13AssemblyInputs"
+      ],
+      "protected_source": false
+    },
+    {
+      "draft": "A9/Assembly",
+      "status": "PASS",
+      "dependencies": [
+        "A4/InterfaceFields",
+        "A5/InterfaceLimitCone",
+        "A6/Excision",
+        "A7/UniversalProperty",
+        "A8/IntegralDiscreteness"
+      ],
+      "protected_source": false
+    }
+  ],
+  "note": "The plan includes unchanged auxiliary and protected inputs; scope is explicit per row."
+}

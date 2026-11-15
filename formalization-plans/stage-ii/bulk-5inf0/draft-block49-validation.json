@@ -1,0 +1,162 @@
+{
+  "status": "partial",
+  "results": [
+    {
+      "draft": "A3/LciAndQuasiregular",
+      "exit_code": 1,
+      "seconds": 49.89857962355018
+    },
+    {
+      "draft": "A4/InterfaceFields",
+      "exit_code": 1,
+      "seconds": 27.954247292131186
+    }
+  ],
+  "receipts": [
+    {
+      "draft": "formalization-plans/bhatt-scholze/drafts/A3/LciAndQuasiregular.lean",
+      "source_sha256": "1e72334bd7c11d51592356d93a0475511a723c6bbbf0fba52b603d25ecad947a",
+      "staged_source_sha256": "9d6bd80a20be372dfb20186e18e436b8c129aa4c7b320c621aea6159afa0f329",
+      "source_unchanged_during_check": true,
+      "dependencies_unchanged_during_check": true,
+      "dependency_signatures": [
+        {
+          "draft": "A3/DiscreteCase",
+          "source_sha256": "fff08a0a81dd4e49fe882bdec6ce10f8251291cdd1a167781dd15d4e2a138d09",
+          "olean_sha256": "82d03719b3b85c773018e6520dd4217de9952ceab506591397b2f875e6772e23"
+        },
+        {
+          "draft": "A0/PrismaticEnvelope",
+          "source_sha256": "4554fa839247f896d0708a7d610d188361c75dbecc2c22c95ddfa7e36d36457e",
+          "olean_sha256": "fb1f2d2e387ce37470135123182d1d5dfe574b992227031bf5829439168e0f77"
+        },
+        {
+          "draft": "A2/DerivedPrismaticCohomology",
+          "source_sha256": "32bf21abf0d6f2b582913c58dad90f21dbd7d6b7097be32a6e340f85d079e262",
+          "olean_sha256": "60f82677fc4d2e2badb39bef4d8d5484d0b071741ae3ab6c48a741064bd0d77b"
+        },
+        {
+          "draft": "A2/HodgeTateFiltration",
+          "source_sha256": "ccaaeb5002b18983c16d76880283246b61482b2831e6942f72eb0702707ea2ab",
+          "olean_sha256": "47539d6084a8946fe776d5232b1ca01e32b0aac6a3428128cfe3fe55c7357354"
+        },
+        {
+          "draft": "A2/BaseChangeAndTensor",
+          "source_sha256": "3bc180e803669c48f8a621068ac28e04389cefd9fd61c46238b16b093b6e8a5e",
+          "olean_sha256": "cf33665f38506d3f0f8284a55068183831cbee9528d6af9e9c9fcb00cd3e8fce"
+        }
+      ],
+      "extra_public_imports": [
+        "A3/DiscreteCase",
+        "A0/PrismaticEnvelope",
+        "A2/DerivedPrismaticCohomology",
+        "A2/HodgeTateFiltration",
+        "A2/BaseChangeAndTensor"
+      ],
+      "options": {
+        "maxSynthPendingDepth": 3,
+        "pp.unicode.fun": true,
+        "relaxedAutoImplicit": false,
+        "weak.linter.mathlibStandardSet": true,
+        "weak.linter.style.header": false
+      },
+      "command": [
+        "lake",
+        "env",
+        "env",
+        "LEAN_PATH=/private/tmp/bulk-5inf0/validation:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/Cli/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/batteries/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/Qq/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/aesop/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/importGraph/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/plausible/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/mathlib/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/build/lib/lean:/Users/sugakubunka/.elan/toolchains/leanprover--lean4---v4.35.0-rc4/lib/lean",
+        "lean",
+        "-DmaxSynthPendingDepth=3",
+        "-Dpp.unicode.fun=true",
+        "-DrelaxedAutoImplicit=false",
+        "-Dweak.linter.mathlibStandardSet=true",
+        "-Dweak.linter.style.header=false",
+        "--root=/private/tmp/bulk-5inf0/validation",
+        "-o",
+        "/private/tmp/bulk-5inf0/validation/Bulk5InfDraft/A3/LciAndQuasiregular.olean",
+        "/private/tmp/bulk-5inf0/validation/Bulk5InfDraft/A3/LciAndQuasiregular.lean"
+      ],
+      "lean_exit_code": 1,
+      "exit_code": 1,
+      "seconds": 46.39535241574049,
+      "status": "FAIL",
+      "olean": null,
+      "olean_sha256": null
+    },
+    {
+      "draft": "formalization-plans/bhatt-scholze/drafts/A4/InterfaceFields.lean",
+      "source_sha256": "fdc2f590d633a52fbb09e921e5b34f8325a234178cc22ff271292963ffa2316e",
+      "staged_source_sha256": "59f8b85aa521f53a50032d1aed6fb71308f3e324b024c8b4fa3e940f759aa6e3",
+      "source_unchanged_during_check": true,
+      "dependencies_unchanged_during_check": true,
+      "dependency_signatures": [
+        {
+          "draft": "A4/Perfectoidization",
+          "source_sha256": "5a591d83f6c3209e7cd735679b5dd0c35eb6a653839e56683655c7d38f57ff07",
+          "olean_sha256": "6a4c26a480a5c1ef44842a26776e86dc6126f07b3bdfcde529223ee71ed28095"
+        },
+        {
+          "draft": "A2/AnimatedAlgebra",
+          "source_sha256": "e4b887fb4545ae0c94a652add74c4ce92a46770be1b39efa0feb8881cbe1bdb9",
+          "olean_sha256": "a83887a540b6e7fdf5425422ca00afc891432e18a072aa9a1dd0479965f7d695"
+        },
+        {
+          "draft": "A2/DerivedPrismaticCohomology",
+          "source_sha256": "32bf21abf0d6f2b582913c58dad90f21dbd7d6b7097be32a6e340f85d079e262",
+          "olean_sha256": "60f82677fc4d2e2badb39bef4d8d5484d0b071741ae3ab6c48a741064bd0d77b"
+        },
+        {
+          "draft": "A2/HodgeTateFiltration",
+          "source_sha256": "ccaaeb5002b18983c16d76880283246b61482b2831e6942f72eb0702707ea2ab",
+          "olean_sha256": "47539d6084a8946fe776d5232b1ca01e32b0aac6a3428128cfe3fe55c7357354"
+        },
+        {
+          "draft": "A2/BaseChangeAndTensor",
+          "source_sha256": "3bc180e803669c48f8a621068ac28e04389cefd9fd61c46238b16b093b6e8a5e",
+          "olean_sha256": "cf33665f38506d3f0f8284a55068183831cbee9528d6af9e9c9fcb00cd3e8fce"
+        }
+      ],
+      "extra_public_imports": [
+        "A4/Perfectoidization",
+        "A2/AnimatedAlgebra",
+        "A2/DerivedPrismaticCohomology",
+        "A2/HodgeTateFiltration",
+        "A2/BaseChangeAndTensor"
+      ],
+      "options": {
+        "maxSynthPendingDepth": 3,
+        "pp.unicode.fun": true,
+        "relaxedAutoImplicit": false,
+        "weak.linter.mathlibStandardSet": true,
+        "weak.linter.style.header": false
+      },
+      "command": [
+        "lake",
+        "env",
+        "env",
+        "LEAN_PATH=/private/tmp/bulk-5inf0/validation:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/Cli/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/batteries/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/Qq/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/aesop/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/importGraph/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/plausible/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/mathlib/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/build/lib/lean:/Users/sugakubunka/.elan/toolchains/leanprover--lean4---v4.35.0-rc4/lib/lean",
+        "lean",
+        "-DmaxSynthPendingDepth=3",
+        "-Dpp.unicode.fun=true",
+        "-DrelaxedAutoImplicit=false",
+        "-Dweak.linter.mathlibStandardSet=true",
+        "-Dweak.linter.style.header=false",
+        "--root=/private/tmp/bulk-5inf0/validation",
+        "-o",
+        "/private/tmp/bulk-5inf0/validation/Bulk5InfDraft/A4/InterfaceFields.olean",
+        "/private/tmp/bulk-5inf0/validation/Bulk5InfDraft/A4/InterfaceFields.lean"
+      ],
+      "lean_exit_code": 1,
+      "exit_code": 1,
+      "seconds": 24.511381125077605,
+      "status": "FAIL",
+      "olean": null,
+      "olean_sha256": null
+    }
+  ],
+  "raw_logs": [
+    "formalization-plans/stage-ii/bulk-5inf0/draft-block49-A3-LciAndQuasiregular.log.gz",
+    "formalization-plans/stage-ii/bulk-5inf0/draft-block49-A4-InterfaceFields.log.gz"
+  ],
+  "individual_logs_replaced_by_later_attempts": []
+}

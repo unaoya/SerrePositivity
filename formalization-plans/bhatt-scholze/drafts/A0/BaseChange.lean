@@ -1,12 +1,13 @@
 -- 将来の置き場所：SerrePositivity.BhattScholze.Prismatic.BaseChange（仮。原典 §4.3 Lemma 4.20・4.22）
 -- Tor 振幅と Lemma 4.22（純代数）は SerrePositivity.InfinityCategories.Derived（M13 の隣）へ移す候補。
--- 設計書：formalization-plans/bhatt-scholze/a0-design.md §2.9、単位 A0-4。基準コミット b2ef94226。ビルドしない。
+-- 設計書：formalization-plans/bhatt-scholze/a0-design.md §2.9、単位 A0-4。基準コミット efa846fe8。型検査対象（5∞-0）。
 module
+public import SerrePositivity.HomologicalAlgebra.CochainCompleteTorAmplitude
 
 public import SerrePositivity.CommutativeAlgebra.Koszul.Basic
 public import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.EquivalenceLimits
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.BaseChange
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.HomotopyModels.BaseChange
 public import Mathlib.AlgebraicTopology.SimplexCategory.Basic
 -- 本ファイルは drafts/A0/{PrismaticSite,CechAlexander}.lean、drafts/DerivedGeneral/{Truncation,CompletionFunctor}.lean
 -- （`IsCoconnectiveAt`・`completedBaseChange`）、drafts/Sheaves/GlobalSections.lean を import する。
@@ -51,18 +52,9 @@ open scoped Simplicial
 
 namespace SerrePositivity.InfinityCategories.Derived
 
-/-- 概要：f : C → C′ が x = (x₁,…,x_r) について完全 Tor 振幅 ≤ c：任意の K ∈ D^{≥m}(C) について、底変換 K ⊗^L_C C′ に
-標的の Koszul 複体 Kos(C′; f(x)) を掛けたものの H^i が i < m − c で零（a0-design §2.9 の定義）。
-方針：底変換は `derivedInfinityBaseChange`、Koszul 複体は semifree 代表の上で `koszulComplexOn`（有限自由なので代表によらない）。
-規約：Koszul 版（D4-04）。平坦なら c = 0。A1 の `HodgeTateComparison` の同名の定義（prism の底 A に固定した版）と同じ式で、
-一般の可換環 C に置き直したもの。A1 の書き直しではこちらを参照する（要相談）。
-使われ方：`completedBaseChange_tot_comm`、`prismaticCohomology_baseChange`、Construction 6.1(2)（A1）。 -/
-def HasFiniteCompleteTorAmplitude {C C' : Type u} [CommRing C] [CommRing C'] (f : C →+* C')
-    {r : ℕ} (x : Fin r → C) (c : ℕ) : Prop :=
-  ∀ (m : ℤ) (K : (derivedInfinityCategory C) _⦋0⦌), IsCoconnectiveAt C m K →
-    let Y := (derivedInfinityBaseChange f).app _ K
-    let M := (dgNerve.vertexEquiv C' (Semifree C') Y).val
-    ∀ i : ℤ, i < m - c → Limits.IsZero ((koszulComplexOn (f ∘ x) M).homology i)
+/-! 完全Tor振幅の仮定は本体の `HasCochainCompleteTorAmplitude` を使う。
+全ての非有界入力の半自由分解に対するKoszulホモロジーの下界を検査する。
+導来∞圏の頂点への橋渡しは、以下のLemma 4.22の将来の証明の側に残す。 -/
 
 /-- 概要：Lemma 4.22：有限の J 完全 Tor 振幅（J = (x₁,…,x_r)）を持つ f : C → C′ について、J 完備な底変換 −⊗̂^L_C C′ は
 D^{≥0}(C) に値をとる余単体的対象の Tot と交換する：Tot の極限錐を `completedBaseChange` で写した錐は D(C′) の極限錐。
@@ -71,12 +63,12 @@ D^{≥n+1}、底変換後は Tor 振幅で D^{≥n+1−c}。各次数のコホ�
 規約：原典の一般形（C と f は任意、J は有限生成）。D^{≥0} は `IsCoconnectiveAt C 0`。Δ は `uliftFunctor` で SSet.{u+1} に持ち上げた nerve。
 使われ方：`prismaticCohomology_baseChange`、A1 の Prop 6.2、A5 の Prop 8.5。 -/
 theorem completedBaseChange_tot_comm {C C' : Type u} [CommRing C] [CommRing C'] [DecidableEq C]
-    (f : C →+* C') {r : ℕ} (x : Fin r → C) (c : ℕ) (hf : HasFiniteCompleteTorAmplitude f x c)
-    (M : (SSet.uliftFunctor.{u + 1, 0}).obj (nerve SimplexCategory) ⟶ derivedInfinityCategory C)
+    (f : C →+* C') {r : ℕ} (x : Fin r → C) (c : ℕ) (hf : HasCochainCompleteTorAmplitude f x c)
+    (M : (SSet.uliftFunctor.{u + 1, 0}).obj (nerve SimplexCategory) ⟶ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory C)
     (hM : ∀ n : ((SSet.uliftFunctor.{u + 1, 0}).obj (nerve SimplexCategory)) _⦋0⦌,
       IsCoconnectiveAt C 0 (M.app _ n))
-    (t : JoinCone M) (ht : IsLimitCone t) :
-    IsLimitCone (mapJoinCone (completedBaseChange f (Finset.univ.image x)) t) := by
+    (t : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone M) (ht : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone t) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.mapJoinCone (completedBaseChange f (Finset.univ.image x)) t) := by
   sorry -- A0-4。骨格の Tot は有限極限で completion_exact、fiber の coconnectivity を Tor 振幅と Koszul 塔の逆極限で
 
 end SerrePositivity.InfinityCategories.Derived
@@ -91,6 +83,7 @@ open SerrePositivity.DerivedCompletion SerrePositivity.InfinityCategories
 variable {p : ℕ} [Fact p.Prime] {A : Type u} [CommRing A] (P : OrientedPrism p A)
 variable {A' : Type u} [CommRing A'] (P' : OrientedPrism p A')
 
+open Classical in
 /-- 概要：Lemma 4.20（Δ）：有界 prism の射 f : (A,(d)) → (A′,(d′)) が有限の (p,d) 完全 Tor 振幅を持つとき、
 R = (A/d)⟨X₁,…,X_r⟩、R′ = (A′/d′)⟨X₁,…,X_r⟩ について Δ_{R/A} ⊗̂^L_A A′ ≃ Δ_{R′/A′}（D(A′) の可逆な辺）。
 方針：両側を Rem 4.19 の模型の Tot で表し（`cechAlexanderAffine_computes`）、項ごとの比較 `cechAlexanderAffine_baseChange` と
@@ -99,49 +92,48 @@ R = (A/d)⟨X₁,…,X_r⟩、R′ = (A′/d′)⟨X₁,…,X_r⟩ について 
 Prop 6.2、Thm 6.4 の Z_p への帰着はどれも多項式代数。étale 局所化 Lemma 4.21 は使わない、D24）。完備化は (p,d) の像で。
 自然な射の指定は含めない（§規約）。
 使われ方：A1 の `crystallineCoverMap_prismaticCohomology`、Prop 6.2、Thm 6.4 の Z_p への帰着（a1-design §9.2。`deRham_iso_polynomial_crystalline` は D68 の改訂で 11-07 に削除）。 -/
-open Classical in
 theorem prismaticCohomology_baseChange (hP : IsBoundedPrism P) (hP' : IsBoundedPrism P')
     (f : OrientedPrism.Hom P P') (c : ℕ)
-    (hf : Derived.HasFiniteCompleteTorAmplitude f.toRingHom ![(p : A), P.generator] c)
+    (hf : SerrePositivity.HasCochainCompleteTorAmplitude f.toRingHom ![(p : A), P.generator] c)
     (r : ℕ) (κ κ' : Cardinal.{u})
     [EssentiallySmall.{u} (PrismOver P (prismPolynomialCompletion P (Fin r)) κ)]
     [EssentiallySmall.{u} (PrismOver P' (prismPolynomialCompletion P' (Fin r)) κ')]
     (hk : IsAdmissibleCutoff P (prismPolynomialCompletion P (Fin r)) κ)
     (hk' : IsAdmissibleCutoff P' (prismPolynomialCompletion P' (Fin r)) κ')
-    (hJ : Sheafification (flatTopology P (prismPolynomialCompletion P (Fin r)) κ) (derivedInfinityCategory A))
-    (hJ' : Sheafification (flatTopology P' (prismPolynomialCompletion P' (Fin r)) κ') (derivedInfinityCategory A'))
-    (hE : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (derivedInfinityCategory A))
-    (hE' : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (derivedInfinityCategory A')) :
+    (hJ : _root_.SerrePositivity.InfinityCategories.Sheaves.Sheafification (flatTopology P (prismPolynomialCompletion P (Fin r)) κ) (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A))
+    (hJ' : _root_.SerrePositivity.InfinityCategories.Sheaves.Sheafification (flatTopology P' (prismPolynomialCompletion P' (Fin r)) κ') (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A'))
+    (hE : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A))
+    (hE' : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A')) :
     ∃ e : SSet.Edge
         ((Derived.completedBaseChange f.toRingHom {(p : A), P.generator}).app _
           (prismaticCohomology P (prismPolynomialCompletion P (Fin r)) κ hJ hE))
         (prismaticCohomology P' (prismPolynomialCompletion P' (Fin r)) κ' hJ' hE'),
-      IsInvertibleEdge e.toTruncated := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge e.toTruncated := by
   sorry -- A0-4。cechAlexanderAffine_computes を両側で、cechAlexanderAffine_baseChange の項ごとの同型を Tot に
         -- completedBaseChange_tot_comm で移す（各項は離散で D^{≥0}）
 
+open Classical in
 /-- 概要：Lemma 4.20（Δ̄）：同じ仮定で Δ̄_{R/A} ⊗̂^L_A A′ ≃ Δ̄_{R′/A′}。
 方針：原典どおり Δ の場合を mod d に落とす（Δ̄ = Δ ⊗^L_A A/d、`hodgeTateCohomology`。A/d ⊗^L_A A′ = A′/d′ は剛性）。
 規約：Δ と同じく多項式代数の場合。
 使われ方：A1 の HT 比較の底変換（Prop 6.2 (b)）。 -/
-open Classical in
 theorem hodgeTateCohomology_baseChange (hP : IsBoundedPrism P) (hP' : IsBoundedPrism P')
     (f : OrientedPrism.Hom P P') (c : ℕ)
-    (hf : Derived.HasFiniteCompleteTorAmplitude f.toRingHom ![(p : A), P.generator] c)
+    (hf : SerrePositivity.HasCochainCompleteTorAmplitude f.toRingHom ![(p : A), P.generator] c)
     (r : ℕ) (κ κ' : Cardinal.{u})
     [EssentiallySmall.{u} (PrismOver P (prismPolynomialCompletion P (Fin r)) κ)]
     [EssentiallySmall.{u} (PrismOver P' (prismPolynomialCompletion P' (Fin r)) κ')]
     (hk : IsAdmissibleCutoff P (prismPolynomialCompletion P (Fin r)) κ)
     (hk' : IsAdmissibleCutoff P' (prismPolynomialCompletion P' (Fin r)) κ')
-    (hJ : Sheafification (flatTopology P (prismPolynomialCompletion P (Fin r)) κ) (derivedInfinityCategory A))
-    (hJ' : Sheafification (flatTopology P' (prismPolynomialCompletion P' (Fin r)) κ') (derivedInfinityCategory A'))
-    (hE : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (derivedInfinityCategory A))
-    (hE' : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (derivedInfinityCategory A')) :
+    (hJ : _root_.SerrePositivity.InfinityCategories.Sheaves.Sheafification (flatTopology P (prismPolynomialCompletion P (Fin r)) κ) (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A))
+    (hJ' : _root_.SerrePositivity.InfinityCategories.Sheaves.Sheafification (flatTopology P' (prismPolynomialCompletion P' (Fin r)) κ') (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A'))
+    (hE : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A))
+    (hE' : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A')) :
     ∃ e : SSet.Edge
         ((Derived.completedBaseChange f.toRingHom {(p : A), P.generator}).app _
           (hodgeTateCohomology P (prismPolynomialCompletion P (Fin r)) κ hJ hE))
         (hodgeTateCohomology P' (prismPolynomialCompletion P' (Fin r)) κ' hJ' hE'),
-      IsInvertibleEdge e.toTruncated := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge e.toTruncated := by
   sorry -- prismaticCohomology_baseChange に A/d との ⊗^L を当て、完備底変換との交換（A/d は完全複体）と剛性 dA′ = (d′)
 
 end SerrePositivity.BhattScholze.Prismatic

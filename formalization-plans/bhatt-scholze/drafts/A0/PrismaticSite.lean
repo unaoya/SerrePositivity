@@ -1,12 +1,15 @@
 -- 将来の置き場所：SerrePositivity.BhattScholze.Prismatic.Site（仮。BhattScholze/ の下、原典 §4.1）
--- 設計書：formalization-plans/bhatt-scholze/a0-design.md §2.1〜2.4・2.7、単位 A0-1。基準コミット 972bb7f53。ビルドしない。
+-- 設計書：formalization-plans/bhatt-scholze/a0-design.md §2.1〜2.4・2.7、単位 A0-1。基準コミット efa846fe8。型検査対象（5∞-0）。
 module
+public import SerrePositivity.BhattScholze.Prismatic.Site.FlatSiteSheaf
+public import SerrePositivity.BhattScholze.Prismatic.Site.PrismOverSmall
+public import SerrePositivity.BhattScholze.Prismatic.Site.FlatCover
 
-public import SerrePositivity.BhattScholze.Prismatic.PrismOver
+public import SerrePositivity.BhattScholze.Prismatic.Site.PrismOver
 public import SerrePositivity.BhattScholze.Prism.Basic.Rigidity
 public import SerrePositivity.BhattScholze.Prism.Bounded.Completeness
 public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.Basic
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DiscreteEmbedding
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.HomotopyModels.DiscreteEmbedding
 public import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition
 public import Mathlib.CategoryTheory.Sites.Grothendieck
 public import Mathlib.CategoryTheory.EssentiallySmall
@@ -58,27 +61,14 @@ namespace PrismOver
 
 variable {P R} {κ : Cardinal.{u}}
 
-/-- 概要：射が忠実平坦：B → C が (p, d) 完全忠実平坦（原典の「(p, IB) 完全忠実平坦」）。
-方針：共通基盤の `IsCompletelyFaithfullyFlat`（イデアル (p, d)、C を B 加群として）。
-規約：Lemma 3.7(3) により、これが原典の「忠実平坦な prism の射」。
-使われ方：平坦位相の生成系、Cor 3.12。 -/
-def IsFaithfullyFlat {X Y : PrismOver P R κ} (f : X ⟶ Y) : Prop :=
-  letI : Algebra X.B Y.B := f.toHom.toRingHom.toAlgebra
-  IsCompletelyFaithfullyFlat (Ideal.span {(p : X.B), X.Q.generator}) Y.B
-
-/-- 概要：濃度 ≤ κ の prism の圏は本質的に小さい。
-方針：各対象は、濃度 κ の固定した型の部分型を台とする対象と同型（環・δ・prism・射の構造を全単射で移す）。
-規約：κ ≥ #A + #R が要る。
-使われ方：site を小さい圏（`SmallModel`）にする。 -/
-theorem essentiallySmall (hκ : Cardinal.mk A + Cardinal.mk R ≤ κ) :
-    EssentiallySmall.{u} (PrismOver P R κ) := by
-  sorry -- 構造の全単射による移送（a0-design §2.7）
+/-! 本質的小ささは本体の `PrismOver.essentiallySmall` とそのinstanceを使う。
+濃度上限の下限に関する余分な仮定は不要。 -/
 
 end PrismOver
 
 /-! ## site・位相・構造層（Def 4.1） -/
 
-variable (κ : Cardinal.{u}) [EssentiallySmall.{u} (PrismOver P R κ)]
+variable (κ : Cardinal.{u})
 
 /-- 概要：(R/A)_Δ の小さい模型（環の側）。
 方針：Mathlib の `SmallModel` と `equivSmallModel`。
@@ -114,7 +104,7 @@ def flatTopology : GrothendieckTopology (PrismaticSite P R κ) :=
 使われ方：層条件を生成系（忠実平坦な単一射）で確かめてよいこと（S1 の `isSheaf_toGrothendieck_iff`）。 -/
 theorem flatTopology_refine (hκ : IsAdmissibleCutoff P R κ) :
     ∃ K : Coverage (PrismaticSite P R κ), K.toGrothendieck = flatTopology P R κ ∧
-      ∀ {U : PrismaticSite P R κ} (Rp : Presieve U), Rp ∈ K.covering U →
+      ∀ {U : PrismaticSite P R κ} (Rp : Presieve U), Rp ∈ K.coverings U →
         ∃ (Y : PrismOverSmall P R κ) (f : U.unop ⟶ Y), PrismOverSmall.IsFaithfullyFlat P R κ f ∧
           Rp = Presieve.singleton f.op := by
   sorry -- A0-3d（Cor 3.12 (a)）。FlatDescent の PrismOver.exists_isPushout_isFaithfullyFlat・isFaithfullyFlat_of_isIso・
@@ -124,23 +114,15 @@ theorem flatTopology_refine (hκ : IsAdmissibleCutoff P R κ) :
 方針：小さい模型から `equivSmallModel.inverse` で大きい圏へ送り、台の環を取る。
 規約：A 代数の構造は `toHom` から（CommRingCat の値は環だけ）。
 使われ方：Δ_{R/A}。 -/
-def structurePresheaf : PrismOverSmall P R κ ⥤ CommRingCat.{u} :=
-  (equivSmallModel (PrismOver P R κ)).inverse ⋙
-    { obj := fun X => CommRingCat.of X.B
-      map := fun f => CommRingCat.ofHom f.toHom.toRingHom
-      map_id := by sorry
-      map_comp := by sorry }
+abbrev structurePresheaf : PrismOverSmall P R κ ⥤ CommRingCat.{u} :=
+  (equivSmallModel (PrismOver P R κ)).inverse ⋙ PrismOver.structureRing
 
 /-- 概要：被約構造層 Ō_Δ：B ↦ B/dB。
 方針：剛性により dB = Q.ideal。
 規約：A/d 代数の前層だが、ここでは環の前層として。
 使われ方：Ō_{R/A} との比較（Cor 3.12 の最後の文）。 -/
-def reducedStructurePresheaf : PrismOverSmall P R κ ⥤ CommRingCat.{u} :=
-  (equivSmallModel (PrismOver P R κ)).inverse ⋙
-    { obj := fun X => CommRingCat.of (X.B ⧸ X.Q.ideal)
-      map := fun f => CommRingCat.ofHom f.toHom.quotientMap
-      map_id := by sorry
-      map_comp := by sorry }
+abbrev reducedStructurePresheaf : PrismOverSmall P R κ ⥤ CommRingCat.{u} :=
+  (equivSmallModel (PrismOver P R κ)).inverse ⋙ PrismOver.quotientStructureRing
 
 /-- 概要：O_Δ の Frobenius：各 B の δ 構造の φ_B（環の自然変換。A 上は φ_A 半線形）。
 方針：δ 射は φ と可換するので自然。
@@ -148,7 +130,11 @@ def reducedStructurePresheaf : PrismOverSmall P R κ ⥤ CommRingCat.{u} :=
 使われ方：Δ_{R/A} の Frobenius、Construction 7.6、Def 8.2 の Frobenius 余極限。 -/
 def structurePresheafFrobenius : structurePresheaf P R κ ⟶ structurePresheaf P R κ where
   app X := CommRingCat.ofHom (((equivSmallModel (PrismOver P R κ)).inverse.obj X).Q.deltaStructure.frobeniusLift)
-  naturality := by sorry -- δ 射は Frobenius 持ち上げと可換（`isDeltaHom_frobeniusLift_general` の系）
+  naturality X Y f := by
+    apply CommRingCat.hom_ext
+    apply RingHom.ext
+    intro x
+    exact (((equivSmallModel (PrismOver P R κ)).inverse.map f).toHom.map_delta.map_frobeniusLift x).symm
 
 /-! ## 完全 prismatic site（Rem 4.6） -/
 
@@ -169,7 +155,7 @@ def PerfectPrismaticSite : Type u :=
 使われ方：Δ_{R/A} の RΓ の入力。
 小さい模型の比較は Core/SmallModelNerve の `smallModelNerveComparison`（IF-G1 Core、main 7bda72c3c）。 -/
 def structurePresheafDerived :
-    InfinityCategories.Sheaves.Presheaf (PrismaticSite P R κ) (InfinityCategories.derivedInfinityCategory A) :=
+    InfinityCategories.Sheaves.Presheaf (PrismaticSite P R κ) (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) :=
   sorry -- 小さい模型の持ち上げた nerve → nerve (PrismOver) → nerve (Under A) → D(A)
 
 /-- 概要：Not 4.16：Δ_{R/A} := RΓ((R/A)_Δ, O_Δ)。
@@ -177,9 +163,9 @@ def structurePresheafDerived :
 規約：値は選んだ極限錐の頂点。使う側は普遍性（`prismaticCohomologyCone`）で扱う。Čech 層の RΓ（D17）。
 使われ方：Constr 4.18、Lemma 4.20、A1 の Thm 4.11、A2 の Construction 7.6。 -/
 def prismaticCohomology
-    (hJ : InfinityCategories.Sheaves.Sheafification (flatTopology P R κ) (InfinityCategories.derivedInfinityCategory A))
-    (hE : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (InfinityCategories.derivedInfinityCategory A)) :
-    (InfinityCategories.derivedInfinityCategory A) _⦋0⦌ :=
+    (hJ : InfinityCategories.Sheaves.Sheafification (flatTopology P R κ) (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A))
+    (hE : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A)) :
+    (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) _⦋0⦌ :=
   InfinityCategories.Sheaves.derivedGlobalSections (flatTopology P R κ) hJ hE (structurePresheafDerived P R κ)
 
 /-- 概要：Not 4.16：Ō_{R/A} := Δ_{R/A} ⊗^L_A A/d。
@@ -188,20 +174,20 @@ def prismaticCohomology
 使われ方：A1 の HT 比較の対象。
 要確認：D(A) の A/d とのテンソルを与える基盤の名前。 -/
 def hodgeTateCohomology
-    (hJ : InfinityCategories.Sheaves.Sheafification (flatTopology P R κ) (InfinityCategories.derivedInfinityCategory A))
-    (hE : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (InfinityCategories.derivedInfinityCategory A)) :
-    (InfinityCategories.derivedInfinityCategory A) _⦋0⦌ :=
+    (hJ : InfinityCategories.Sheaves.Sheafification (flatTopology P R κ) (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A))
+    (hE : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A)) :
+    (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) _⦋0⦌ :=
   sorry -- prismaticCohomology ⊗^L_A A/d（`tensorWith`、FlatDescent の `reducedStructurePresheafDerived` と同じ A/d の頂点）
 
 /-- 概要：Δ_{R/A} の Frobenius：Δ → φ_{A*}Δ。
 方針：`structurePresheafFrobenius` を D(A) 値前層の射にし、`derivedGlobalSections_map`。半線形性は φ_A に沿うスカラー制限で。
 規約：D(A) の辺。
 使われ方：A2 の多項式上の Frobenius、A4 の正の反復（Def 8.2）。 -/
-def prismaticCohomologyFrobenius
-    (hJ : InfinityCategories.Sheaves.Sheafification (flatTopology P R κ) (InfinityCategories.derivedInfinityCategory A))
-    (hE : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (InfinityCategories.derivedInfinityCategory A)) :
+def prismaticCohomologyFrobenius (E : SerrePositivity.EInfinity.EInfinityTheory.{u})
+    (hJ : InfinityCategories.Sheaves.Sheafification (flatTopology P R κ) (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A))
+    (hE : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A)) :
     let Δ := prismaticCohomology P R κ hJ hE
-    let res := InfinityCategories.derivedInfinityRestrictScalars P.deltaStructure.frobeniusLift
+    let res := InfinityCategories.derivedInfinityRestrictScalars (E := E) P.deltaStructure.frobeniusLift
     SSet.Edge Δ (res.app (Opposite.op ⦋0⦌) Δ) := by
   sorry -- 各 B の Frobenius は B → Res_φ B として A 線形。S2 で誘導した辺の標的を極限保存で Res_φ Δ に移す
 
@@ -224,7 +210,7 @@ def cutoffSiteInclusion {κ κ' : Cardinal.{u}} [EssentiallySmall.{u} (PrismOver
 /-- 大きい cutoff の構造前層を包含の opposite に沿って制限する。 -/
 def restrictCutoffStructure {κ κ' : Cardinal.{u}} [EssentiallySmall.{u} (PrismOver P R κ)]
     [EssentiallySmall.{u} (PrismOver P R κ')] (hle : κ ≤ κ') :
-    InfinityCategories.Sheaves.Presheaf (PrismaticSite P R κ) (InfinityCategories.derivedInfinityCategory A) :=
+    InfinityCategories.Sheaves.Presheaf (PrismaticSite P R κ) (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) :=
   (SSet.uliftFunctor.{u + 1, u}).map (nerveMap (cutoffSiteInclusion P R hle).op) ≫
     structurePresheafDerived P R κ'
 

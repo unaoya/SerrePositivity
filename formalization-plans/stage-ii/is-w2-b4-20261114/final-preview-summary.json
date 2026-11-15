@@ -1,0 +1,48 @@
+{
+  "files": 278,
+  "pending": 0,
+  "changes": [
+    {
+      "old": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/DoldKanClosedPostcomposition.lean",
+      "new": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/DoldKanClosedPostcomposition.lean",
+      "added_lines": 1,
+      "removed_lines": 1
+    },
+    {
+      "old": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/ReflectedNormalizedBKSmallSections.lean",
+      "new": "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/ReflectedNormalizedBKSmallSections.lean",
+      "added_lines": 1,
+      "removed_lines": 1
+    },
+    {
+      "old": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/IntegerCoefficientFree.lean",
+      "new": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/IntegerCoefficientFree.lean",
+      "added_lines": 1,
+      "removed_lines": 1
+    },
+    {
+      "old": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/IntegerCoefficientTensorDegrees.lean",
+      "new": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/IntegerCoefficientTensorDegrees.lean",
+      "added_lines": 1,
+      "removed_lines": 1
+    },
+    {
+      "old": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/IntegerCoefficientTensorValues.lean",
+      "new": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/IntegerCoefficientTensorValues.lean",
+      "added_lines": 1,
+      "removed_lines": 1
+    },
+    {
+      "old": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/ProductSectionsHom.lean",
+      "new": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/ProductSectionsHom.lean",
+      "added_lines": 1,
+      "removed_lines": 1
+    },
+    {
+      "old": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/TruncatedDoldKanQuasiIso.lean",
+      "new": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/TruncatedDoldKanQuasiIso.lean",
+      "added_lines": 1,
+      "removed_lines": 1
+    }
+  ]
+}

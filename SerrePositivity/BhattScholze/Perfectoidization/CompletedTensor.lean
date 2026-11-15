@@ -19,11 +19,15 @@ public import Mathlib.RingTheory.Finiteness.Basic
 ## 概要
 perfectoid 代数の導来完備テンソル積 H⁰ は離散で perfectoid、普遍な perfectoid テンソル、商の完備積。
 
+§10 の共通部分：PerfectoidCompletedTensorDiscrete 節は、Lemma 10.3 で使う
+元の完備導来テンソル積の離散性と、その H⁰ の perfectoid 性を扱う。
+§8 のテンソルの普遍性と §10 の almost 比較が共有するため、このファイルに置く。
+
 ## 方針
 Fontaine 表示（完全 prism の完備テンソル積）から離散性を得る。
 
 ## 規約
-有限直積の perfectoid 性は `BhattScholze.Perfectoid.FiniteProduct` に置く。
+有限直積の perfectoid 性は `BhattScholze.Prism.Perfectoid.FiniteProduct` に置く。
 
 ## 使われ方
 BS 著者版 Lemma 10.3、BS 著者版 Proposition 8.13 の環版、CLMST。
@@ -452,7 +456,7 @@ end CompletedTensorPerfectoidization
 
 /-! ## Perfectoid tests of the original completed tensor H⁰
 
-Use the existing G2 principal-completion comparison and its universal property.
+Use the existing principal-completion comparison and its universal property.
 No discreteness of the original tensor, bounded torsion, or classical-completion
 comparison is assumed. This is the ring-valued part needed for BS 著者版 Proposition 8.13.
 -/

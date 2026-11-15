@@ -1,0 +1,5 @@
+{
+  "method": "All changed fully qualified names searched as fixed strings through every project Lean source; then inspect code outside the import reverse closure",
+  "raw_outside_closure": [],
+  "code_outside_closure": []
+}

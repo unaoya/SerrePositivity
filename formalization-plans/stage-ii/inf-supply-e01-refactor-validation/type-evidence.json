@@ -1,0 +1,287 @@
+{
+  "algorithm": "normalized Expr DAG mixHash proof-irrelevant v3b (term-level, proof marker)",
+  "before": [
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.curryFunctorHomCongr_evaluate_heq",
+      "type_hash": "15157865071476941992"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.functorHomBifunctorUnit._proof_1",
+      "type_hash": "5387297122537064693"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.homWeightYonedaLeftKan_valueIso._proof_3",
+      "type_hash": "14937314392244293809"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.homWeightYonedaLeftKanComparison_fac",
+      "type_hash": "2695153433792655573"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.kanFunctorHomCongr_heq",
+      "type_hash": "5657013046300144350"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.homWeightYonedaLeftKanComparison",
+      "type_hash": "10814109765379078568"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.functorSpaceCurryMap_evaluate_first",
+      "type_hash": "4332939618627652878"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.homWeightYonedaUnit_heq_curry",
+      "type_hash": "9987893931284698455"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorSpaceCurryMap.eq_1",
+      "type_hash": "8514397787911017485"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.homWeightYonedaLeftKan_valueIso._proof_5",
+      "type_hash": "5772173579133071829"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.curryFunctorHom",
+      "type_hash": "14833378357820619396"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.postcomposeFunctorHom_heq",
+      "type_hash": "18134704077713530779"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.homWeightLeftKanDiagramCocone",
+      "type_hash": "9568546475859104545"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.homWeightYonedaUnit._proof_1",
+      "type_hash": "11172579620170369465"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.normalizedVertexHomMap_heq",
+      "type_hash": "997089570547758943"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.homWeightYonedaLeftKan_valueIso",
+      "type_hash": "18267885113238221733"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.homWeightYonedaLeftKan_valueIso._proof_2",
+      "type_hash": "15044607832726420312"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.curryFunctorHom_evaluate_heq",
+      "type_hash": "12356404437740063486"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.curryFunctorHom_evaluate_first",
+      "type_hash": "419800477619969845"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.homWeightLeftKanDiagram_universe",
+      "type_hash": "6311633987473148969"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.homWeightYonedaLeftKanComparison._proof_1",
+      "type_hash": "12013030342666578941"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.supplyHomWeightYonedaUnit_productQuasicategory",
+      "type_hash": "5857534757987706373"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.curryFirstRestriction_vertex",
+      "type_hash": "7622606442153107595"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.functorHomBifunctorUnit",
+      "type_hash": "6097507014281985343"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.curryFunctorHom._proof_1",
+      "type_hash": "14101751801093597628"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.curryFunctorHom_heq_map",
+      "type_hash": "7615432463947560926"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.curryFunctorHom_eq_normalizedMap",
+      "type_hash": "5751824750911481994"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.homWeightYonedaUnit",
+      "type_hash": "18071026062325200461"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.homWeightLeftKanDiagramCocone_isColimit",
+      "type_hash": "6059852715887590376"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_homWeightYonedaLeftKan",
+      "type_hash": "13135844172650811757"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.homWeightLeftKanDiagramCocone_vertex",
+      "type_hash": "10672511978229229243"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.homWeightYonedaLeftKan_valueIso._proof_4",
+      "type_hash": "17145719840755821756"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.homWeightYonedaLeftKan_valueIso._proof_1",
+      "type_hash": "16638010261556084979"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.homWeightLeftKanDiagramCocone._proof_1",
+      "type_hash": "5247082384678441205"
+    }
+  ],
+  "after": [
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.curryFunctorHomCongr_evaluate_heq",
+      "type_hash": "15157865071476941992"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.functorHomBifunctorUnit._proof_1",
+      "type_hash": "5387297122537064693"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.homWeightYonedaLeftKan_valueIso._proof_3",
+      "type_hash": "14937314392244293809"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.homWeightYonedaLeftKanComparison_fac",
+      "type_hash": "2695153433792655573"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.kanFunctorHomCongr_heq",
+      "type_hash": "5657013046300144350"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.homWeightYonedaLeftKanComparison",
+      "type_hash": "10814109765379078568"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.functorSpaceCurryMap_evaluate_first",
+      "type_hash": "4332939618627652878"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.homWeightYonedaUnit_heq_curry",
+      "type_hash": "9987893931284698455"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorSpaceCurryMap.eq_1",
+      "type_hash": "8514397787911017485"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.homWeightYonedaLeftKan_valueIso._proof_5",
+      "type_hash": "5772173579133071829"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.curryFunctorHom",
+      "type_hash": "14833378357820619396"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.postcomposeFunctorHom_heq",
+      "type_hash": "18134704077713530779"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.homWeightLeftKanDiagramCocone",
+      "type_hash": "9568546475859104545"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.homWeightYonedaUnit._proof_1",
+      "type_hash": "11172579620170369465"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.normalizedVertexHomMap_heq",
+      "type_hash": "997089570547758943"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.homWeightYonedaLeftKan_valueIso",
+      "type_hash": "18267885113238221733"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.homWeightYonedaLeftKan_valueIso._proof_2",
+      "type_hash": "15044607832726420312"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.curryFunctorHom_evaluate_heq",
+      "type_hash": "12356404437740063486"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.curryFunctorHom_evaluate_first",
+      "type_hash": "419800477619969845"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.homWeightLeftKanDiagram_universe",
+      "type_hash": "6311633987473148969"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.homWeightYonedaLeftKanComparison._proof_1",
+      "type_hash": "12013030342666578941"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.supplyHomWeightYonedaUnit_productQuasicategory",
+      "type_hash": "5857534757987706373"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.curryFirstRestriction_vertex",
+      "type_hash": "7622606442153107595"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.functorHomBifunctorUnit",
+      "type_hash": "6097507014281985343"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.curryFunctorHom._proof_1",
+      "type_hash": "14101751801093597628"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.curryFunctorHom_heq_map",
+      "type_hash": "7615432463947560926"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.curryFunctorHom_eq_normalizedMap",
+      "type_hash": "5751824750911481994"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.homWeightYonedaUnit",
+      "type_hash": "18071026062325200461"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.homWeightLeftKanDiagramCocone_isColimit",
+      "type_hash": "6059852715887590376"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_homWeightYonedaLeftKan",
+      "type_hash": "13135844172650811757"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.homWeightLeftKanDiagramCocone_vertex",
+      "type_hash": "10672511978229229243"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.homWeightYonedaLeftKan_valueIso._proof_4",
+      "type_hash": "17145719840755821756"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.homWeightYonedaLeftKan_valueIso._proof_1",
+      "type_hash": "16638010261556084979"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.homWeightLeftKanDiagramCocone._proof_1",
+      "type_hash": "5247082384678441205"
+    }
+  ],
+  "source_sha256": {
+    "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/PresentableInfinityCategories/HomWeightJointClassificationHom.lean": "118ce7c934b85fd34fd4c8844786223da2608f622864a50d443288e842a916b7",
+    "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/PresentableInfinityCategories/HomWeightYonedaUnit.lean": "8bc355d6bbf89aafcce0fed159be65e78fbd01a3e9c92e4e316087aa45535c72",
+    "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/PresentableInfinityCategories/HomWeightUnitEvaluation.lean": "8d82043fff2a0c5a4c580d1bbd290f0386e900a46ce3f6e0e2f078614d66fa6a",
+    "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/PresentableInfinityCategories/HomWeightYonedaLeftKan.lean": "efd5546baeb4ca2596e7ec618f9e15e2e59aa38430631b001f760e638d8eba78"
+  },
+  "rfl_result": "kernel deterministic timeout at example, exit 1",
+  "logs": "/tmp/is-w1/unit-refactor-approved"
+}

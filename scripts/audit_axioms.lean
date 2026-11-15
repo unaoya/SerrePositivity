@@ -128,7 +128,7 @@ private partial def checkNoLegacySurjectivity (todo : List Name) (seen : NameSet
   | n :: rest =>
     if seen.contains n then return ← checkNoLegacySurjectivity rest seen
     if n == `SerrePositivity.BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_quotient ||
-        n == `SerrePositivity.BhattScholze.surjective_of_isPerfectoidization_of_complete_torsionFree_quotient then
+        n == `SerrePositivity.BhattScholze.Semiperfectoid.surjective_of_isPerfectoidization_of_complete_torsionFree_quotient then
       throwError "Main theorem reached the legacy B-S surjectivity citation: {n}"
     let seen := seen.insert n
     let some info := (← getEnv).find? n | return ← checkNoLegacySurjectivity rest seen

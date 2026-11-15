@@ -55,7 +55,7 @@ BS 著者版 Remark 7.15（著者版 p.62）の Frobenius 比較の剰余への�
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze.Andre
-open SerrePositivity.DerivedCompletion
+open _root_.SerrePositivity.DerivedCompletion
 variable {p : ℕ} [Fact p.Prime] {A : Type u} [CommRing A] {σ : Type v}
 variable (D : DeltaStructure p A) (hD : D.IsPerfect) (d : A) (a : σ → A)
 local notation "φ" => D.frobeniusLift
@@ -154,7 +154,7 @@ BS 著者版 Remark 7.15（著者版 p.62）の実完備化後の剰余計算の
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze.Andre
-open SerrePositivity.DerivedCompletion
+open _root_.SerrePositivity.DerivedCompletion
 variable {p : ℕ} [Fact p.Prime] {A : Type u} [CommRing A] {σ : Type v}
 variable (D : DeltaStructure p A) (hD : D.IsPerfect) (d : A) (a : σ → A)
 local notation "φ" => D.frobeniusLift
@@ -242,7 +242,7 @@ BS 著者版 Remark 7.15（著者版 p.62）の具体的 pd 包比較への接�
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze.Andre
-open SerrePositivity.DerivedCompletion
+open _root_.SerrePositivity.DerivedCompletion
 variable {p : ℕ} [Fact p.Prime] {A σ : Type u} [CommRing A]
 variable (D : DeltaStructure p A) (hpA : Function.Injective (fun x : A => (p : A) * x))
 variable (hgA : Function.Injective (WittVector.ghostMap : WittVector p A → ℕ → A))
@@ -313,7 +313,7 @@ BS 著者版 Remark 7.15（著者版 p.62）の具体的な pd 台環の比較�
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze.Andre
-open SerrePositivity.DerivedCompletion
+open _root_.SerrePositivity.DerivedCompletion
 variable {p : ℕ} [Fact p.Prime] {A σ : Type u} [CommRing A] [Unique σ]
 variable (hA : ∀ m : ℕ, ¬p ∣ m → IsUnit (m : A))
 variable (hpA : Function.Injective (fun r : A => (p : A) * r))
@@ -481,7 +481,7 @@ variable (D : DeltaStructure p A) (d : A) (a : σ → A) (N : ℕ)
 local notation "L₀" => RelativeFreeDeltaRing (R := A) σ
 local notation "I₀" => deltaDivisionFiniteRelationIdeal D d a N
 local notation "B₀" => MvPolynomial (σ × Fin (N + 1)) A
-local notation "J₀" => deltaDivisionFiniteStageInitialIdeal D d a N
+local notation "J₀" => _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteStageInitialIdeal D d a N
 local notation "Jp" => Ideal.span {(p : B₀)} ⊔ J₀
 local notation "Ip" => Ideal.span {(p : L₀)} ⊔ I₀
 local notation "e" => deltaDivisionFiniteModPrimeTailEquiv D d a N
@@ -765,12 +765,12 @@ theorem deltaDivisionUnaryFinite_next_mod_pair_regular :
       (Ideal.Quotient.mk (Ideal.span {qp dN}) (qp gN)) := by
   have hr : IsSMulRegular (L₀ ⧸ Ipd) (Ideal.Quotient.mk Ipd g) := by
     cases N with
-    | zero => exact deltaDivisionFirstJet_residue_isSMulRegular D d a v hv default
+    | zero => exact _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFirstJet_residue_isSMulRegular D d a v hv default
     | succ n =>
       have hpL : Function.Injective (fun r : L₀ => (p : L₀) * r) := by
         simpa only [map_natCast, IsSMulRegular, smul_eq_mul] using
           (show IsSMulRegular A (p : A) from hpA).of_flat (S := L₀)
-      exact deltaDivisionFiniteNextJet_quotient_isSMulRegular D hpA hpL hgL d a v hv n default
+      exact _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteNextJet_quotient_isSMulRegular D hpA hpL hgL d a v hv n default
   let e := deltaDivisionFiniteStagePairQuotientEquiv D d a N
   apply (ringEquiv_isSMulRegular e _).mpr
   rw [deltaDivisionFiniteStagePairQuotientEquiv_mk]

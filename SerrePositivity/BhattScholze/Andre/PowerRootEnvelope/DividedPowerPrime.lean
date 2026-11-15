@@ -1494,7 +1494,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end DividedPowerPrimeUniversal
 
-/-! ## André E1：分冪表示環の実 p 乗商上の自由性
+/-! ## André：分冪表示環の実 p 乗商上の自由性
 
 ## 概要
 

@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.CLMST.PerfectoidizationIsogeny.Rank.Diagram
 public import SerrePositivity.BhattScholze.Perfectoidization.FiniteComparisonExcision
-public import SerrePositivity.BhattScholze.Semiperfectoid.Product
-public import SerrePositivity.BhattScholze.Perfectoidization.Derived.IntegralExistence
+public import SerrePositivity.BhattScholze.Semiperfectoid.Perfection.Product
+public import SerrePositivity.BhattScholze.Perfectoidization.Interface.IntegralExistence
 
 /-! # 階数の終域の比較と直積の普遍性
 
@@ -13,7 +13,7 @@ public import SerrePositivity.BhattScholze.Perfectoidization.Derived.IntegralExi
 
 ## 方針
 
-全体の単位を一つ選び、前段の指定した全体単位による証明（BhattScholze/Semiperfectoid/Product）から直積の普遍性を得る。
+全体の単位を一つ選び、前段の指定した全体単位による証明（BhattScholze/Semiperfectoid/Perfection/Product）から直積の普遍性を得る。
 
 ## 規約
 
@@ -31,7 +31,7 @@ universe u
 section Prop247RankTargetComparisonPart
 
 namespace SerrePositivity.CLMST
-open scoped TensorProduct
+open scoped _root_.TensorProduct
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 
@@ -77,7 +77,7 @@ theorem rankPerfectoidComparison_ker_of_canonical_excision
   obtain ⟨hk, _hc⟩ := BhattScholze.perfectoidization_comparison_almost_of_canonical_excision hR hf hProduct
     (rankTensorUnit R S T) g hPB
   rw [rankPerfectoidComparison_eq_canonical R S T P β p C f hf hβ hProduct]
-  exact hk g (span_le_perfectoidIdeal R p hR g (Ideal.subset_span (Set.mem_singleton g)))
+  exact hk g (_root_.SerrePositivity.BhattScholze.Almost.span_le_perfectoidIdeal R p hR g (Ideal.subset_span (Set.mem_singleton g)))
 
 end SerrePositivity.CLMST
 
@@ -86,7 +86,7 @@ end Prop247RankTargetComparisonPart
 section Prop247RankProductUniversalityPart
 
 namespace SerrePositivity.CLMST
-open scoped TensorProduct
+open scoped _root_.TensorProduct
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 
@@ -105,9 +105,9 @@ theorem rankProductUnit_isPerfectoidization_of_finite_coefficients
   obtain ⟨C, hC, f, hf⟩ := BhattScholze.Inputs.exists_perfectoidization_of_integral R
     ((i : ι) → T i ⊗[R] S) p hR
   letI := hC
-  change IsPerfectoidization p (BhattScholze.productPerfectoidizationUnit
+  change IsPerfectoidization p (_root_.SerrePositivity.BhattScholze.Semiperfectoid.productPerfectoidizationUnit
     (fun i => T i ⊗[R] S) P (fun i => (β i).toRingHom))
-  exact BhattScholze.productUnit_isPerfectoidization_of_specified (fun i => T i ⊗[R] S) P
+  exact _root_.SerrePositivity.BhattScholze.Semiperfectoid.productUnit_isPerfectoidization_of_specified (fun i => T i ⊗[R] S) P
     (fun i => (β i).toRingHom) p hβ C f hf
 
 end SerrePositivity.CLMST

@@ -1,15 +1,16 @@
--- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Derived.StrongDescent（仮。原典 Lemma 8.6）
--- 設計書：formalization-plans/bhatt-scholze/a5-design.md §2.4・§3.5、単位 A5-3。基準コミット 972bb7f53。ビルドしない。
+-- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Descent.StrongDescent（仮。原典 Lemma 8.6）
+-- 設計書：formalization-plans/bhatt-scholze/a5-design.md §2.4・§3.5、単位 A5-3。基準コミット efa846fe8。型検査対象（5∞-0）。
 module
 
 public import SerrePositivity.EInfinity.Interface.Theory
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface
 public import Mathlib.Algebra.Homology.Double
 public import SerrePositivity.HomologicalAlgebra.CochainTensor.Basic
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.HeartFullyFaithful
-public import SerrePositivity.InfinityCategories.Project.DerivedCategories.BaseChange
+public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.ChainComplexes.HeartFullyFaithful
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.HomotopyModels.BaseChange
 public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.Varpi
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Pair.Koszul
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Koszul.Tower
 -- 本ファイルは drafts/Shared/Descendable.lean、drafts/Shared/DeRhamPolynomial.lean、drafts/A5/{PerfectSite,RootAdjunction}.lean（W9-III-09：PerfectSiteComparison・WeaklyInitialAndDescent は本ファイルより後）、
 -- drafts/A2/BaseChangeAndTensor.lean、drafts/DerivedGeneral/Truncation.lean、drafts/A1/（A1-5：Thm 6.4 の多項式・mod p）を import する。
 
@@ -95,11 +96,11 @@ abbrev rootTestCoefficients := perfectPrismRing p R ⧸ inversePair p R hR
 /-- M15 の Mod_D における内部 Hom の台。F=fib(f)、N=F⊗_D F として
 RHom_D(N,D⊗_A L) を D(A) に忘れる。L を後からテンソルする交換則は含めない。 -/
 def fiberSquareRHom {A : Type u} [CommRing A] {D B : (E.CAlg A) _⦋0⦌}
-    (f : SSet.Edge D B) (L : (derivedInfinityCategory A) _⦋0⦌) : (derivedInfinityCategory A) _⦋0⦌ := by
+    (f : SSet.Edge D B) (L : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) _⦋0⦌ := by
   sorry -- 要確認：M15 の Mod_D の fiber・相対テンソル・内部 Hom の忘却
 
 abbrev rootDual := fiberSquareRHom (E := E) (deltaRootEdge (E := E) p R hR 1)
-  (moduleHeartVertex (perfectPrismRing p R) (ModuleCat.of _ (perfectPrismRing p R)))
+  (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.ChainComplexes.moduleHeartVertex (perfectPrismRing p R) (ModuleCat.of _ (perfectPrismRing p R)))
 
 /-- 概要：F := fib(Δ_T → Δ_{T_∞}) ∈ D(Δ_T)。RHom_{Δ_T}(F^{⊗2}, Δ_T) ∈ D^{<0} なら index ≤ 2（(f)）。
 方針：Shared/Descendable の `hasDescentIndexLEOver_two_of_rhom`。
@@ -114,35 +115,36 @@ theorem rootMap_fiber_rhom_coconnective :
 方針：DerivedGeneral/Truncation の `derived_nakayama` の上界版。
 規約：—
 使われ方：底変換後に確かめる。 -/
-theorem coconnective_of_modBaseChange (M : (derivedInfinityCategory (perfectPrismRing p R)) _⦋0⦌)
+theorem coconnective_of_modBaseChange (M : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory (perfectPrismRing p R)) _⦋0⦌)
     (hp : IsComplete (perfectPrismRing p R) (p : perfectPrismRing p R)
-      ((derivedInfinityHomotopyEquivalence _).functor.obj ⟨M⟩))
+      ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomotopyEquivalence _).functor.obj ⟨M⟩))
     (hd : IsComplete (perfectPrismRing p R) (perfectPrism p R hR).generator
-      ((derivedInfinityHomotopyEquivalence _).functor.obj ⟨M⟩))
+      ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomotopyEquivalence _).functor.obj ⟨M⟩))
     (hC : Derived.IsConnectiveAt (rootTestCoefficients p R hR) (-1)
-      ((derivedInfinityBaseChange (Ideal.Quotient.mk (inversePair p R hR))).app _ M)) :
+      ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityBaseChange (Ideal.Quotient.mk (inversePair p R hR))).app _ M)) :
     Derived.IsConnectiveAt (perfectPrismRing p R) (-1) M := by
   sorry -- 商環上の離散加群にテンソルしても上界を保つ。Koszul の有限 filtration と完備性を使う
 
 /-- CAlg の係数拡大は係数制限の左随伴。D3-05 の一般形は `cAlgBaseChange`、
 忘却した底変換との比較は `cAlgBaseChange_forget`（DerivedGeneral/ScalarRestriction）。 -/
 def prismScalarExtension {A C : Type u} [CommRing A] [CommRing C] (q : A →+* C) : E.CAlg A ⟶ E.CAlg C :=
-  Classical.choose (show ∃ G, Nonempty (QCatAdjunction G (cAlgRestrictScalars (E := E) q)) from by
+  Classical.choose (show ∃ G, Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.QCatAdjunction G (cAlgRestrictScalars (E := E) q)) from by
     sorry) -- cAlgBaseChange と cAlgBaseChange_restrictScalars_adjunction（D3-05、M13）
 
 abbrev reducedRootEdge := (deltaRootEdge (E := E) p R hR 1).map
   (prismScalarExtension (E := E) (Ideal.Quotient.mk (inversePair p R hR)))
 
-abbrev testKoszulComplex := pairKoszulTower (perfectPrismRing p R) (p : perfectPrismRing p R)
-  (inverseGenerator p R hR) 1
+abbrev testKoszulComplex := SerrePositivity.DerivedCompletion.powerKoszulTower (perfectPrismRing p R)
+  (SerrePositivity.DerivedCompletion.pairKoszulCoordinates (perfectPrismRing p R)
+    (p : perfectPrismRing p R) (inverseGenerator p R hR)) 1
 
 def koszulVertex :=
-  ((derivedInfinityHomotopyEquivalence (perfectPrismRing p R)).inverse.obj
-    (DerivedCategory.Q.obj (testKoszulComplex p R hR))).pt
+  (((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomotopyEquivalence (perfectPrismRing p R)).inverse.obj
+    (DerivedCategory.Q.obj (testKoszulComplex p R hR)))).pt
 
 def rootDualTensorKoszul :=
-  ((derivedInfinityHomotopyEquivalence (perfectPrismRing p R)).inverse.obj (DerivedCategory.Q.obj
-    (cochainTensor ((rootDual (E := E) p R hR).obj 0).val (testKoszulComplex p R hR)))).pt
+  (((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomotopyEquivalence (perfectPrismRing p R)).inverse.obj (DerivedCategory.Q.obj
+    (cochainTensor ((rootDual (E := E) p R hR).obj 0).val (testKoszulComplex p R hR))))).pt
 
 /-- 概要：G-A5-6′（W9-II-12。W9 続き 6 で紙 ○）：D := Δ_T、N := F ⊗^L_D F、M := RHom_D(N, D)、e := φ_A^{-1}(d)、C := A/(p,e)。M は導来 (p,e) 完備。
 C が perfect であることも M ⊗^L_A C と底変換後の RHom の一致も仮定しない。
@@ -155,10 +157,10 @@ filtration の段階 H^j(K)[−j] に (2) を当て RHom_D(N, D ⊗^L_A K) ∈ D
 theorem rhom_baseChange_koszul_connection
     (h : ∀ L : ModuleCat.{u} (rootTestCoefficients p R hR),
       Derived.IsConnectiveAt (rootTestCoefficients p R hR) (-1)
-        (fiberSquareRHom (E := E) (reducedRootEdge (E := E) p R hR) (moduleHeartVertex _ L))) :
+        (fiberSquareRHom (E := E) (reducedRootEdge (E := E) p R hR) (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.ChainComplexes.moduleHeartVertex _ L))) :
     let A := perfectPrismRing p R
     let MK := fiberSquareRHom (E := E) (deltaRootEdge (E := E) p R hR 1) (koszulVertex p R hR)
-    Derived.IsConnectiveAt A (-1) MK ∧ Nonempty (VertexIso MK (rootDualTensorKoszul (E := E) p R hR)) ∧
+    Derived.IsConnectiveAt A (-1) MK ∧ Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso MK (rootDualTensorKoszul (E := E) p R hR)) ∧
       Derived.IsConnectiveAt A (-1) (rootDual (E := E) p R hR) := by
   sorry -- 随伴で全ての L の評価を A 上に戻す。pairKoszulTower の有限 Postnikov 各段に適用し、
         -- 双対可能な K でのみ Hom とテンソルを交換する。冪の塔の最高次は全射、Rlim の lim¹ は零
@@ -174,8 +176,8 @@ theorem baseChange_phiInv_eq_frobeniusTwist :
     ∃ e : rootTestCoefficients p R hR ≃+* R ⧸ Ideal.span {(p : R)},
       (∀ a : A, e (Ideal.Quotient.mk _ a) = Ideal.Quotient.mk _ (perfectPrismTheta p R hR (φ a))) ∧
       ∃ v : A ⧸ I ≃+* R, v.toRingHom.comp (Ideal.Quotient.mk I) = (perfectPrismTheta p R hR).comp φ ∧
-        Nonempty (FunctorIso (derivedInfinityBaseChange (Ideal.Quotient.mk I) ≫ derivedInfinityBaseChange v.toRingHom)
-          (derivedInfinityBaseChange φ ≫ derivedInfinityBaseChange (perfectPrismTheta p R hR))) := by
+        Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityBaseChange (Ideal.Quotient.mk I) ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityBaseChange v.toRingHom)
+          (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityBaseChange φ ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityBaseChange (perfectPrismTheta p R hR))) := by
   sorry -- φ は自己同型で (p,e) を (p,d) に送る。perfectPrism_quotientEquiv を mod p で合成
 
 /-- 一変数の de Rham cdga の E∞ 実現と、その T_∞/p への射。次数零は X を
@@ -192,7 +194,7 @@ def rootModPAlgebra : A_R (rootTestCoefficients p R hR) := by
   exact Under.mk (CommRingCat.ofHom (g.comp e.toRingHom))
 
 def rootDeRhamAugmentation : SSet.Edge (rootDeRhamSource (E := E) (rootTestCoefficients p R hR))
-    ((E.discrete _).app _ (nerveVertex (rootModPAlgebra p R hR))) := by
+    ((E.discrete _).app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (rootModPAlgebra p R hR))) := by
   sorry -- 要確認：A1-5 の自然性。X ↦ X_0、dX ↦ 0 の cdga 射
 
 /-- 概要：de Rham 入力（A1-5、G-A5-15）：φ_A^*Δ_{T/A} ⊗^L_A A/(p,d) ≃ Ω^•_{(T/p)/(R/p)}（T = R⟨X⟩、E∞ 代数として）、T → T_∞ と両立し、
@@ -203,10 +205,10 @@ T_∞ 側は L_{T_∞/R}^∧ = 0 で T_∞/p。
 theorem rootMap_modP_eq_deRham :
     let f := reducedRootEdge (E := E) p R hR
     let g := rootDeRhamAugmentation (E := E) p R hR
-    ∃ (l : VertexIso _ (rootDeRhamSource (E := E) (rootTestCoefficients p R hR)))
-      (r : VertexIso _ ((E.discrete _).app _ (nerveVertex (rootModPAlgebra p R hR)))),
-      SSet.Truncated.HomotopyCategory₂.homMk f.toTruncated ≫ r.hom =
-        l.hom ≫ SSet.Truncated.HomotopyCategory₂.homMk g.toTruncated := by
+    ∃ (l : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso _ (rootDeRhamSource (E := E) (rootTestCoefficients p R hR)))
+      (r : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso _ ((E.discrete _).app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (rootModPAlgebra p R hR)))),
+      SSet.Truncated.HomotopyCategory.homMk f.toTruncated ≫ r.hom =
+        l.hom ≫ SSet.Truncated.HomotopyCategory.homMk g.toTruncated := by
   sorry -- 要確認：A1-5 の deRham_iso_polynomial_modP・deRham_iso_rootAlgebra_modP はまだ True。
         -- Frobenius 捻りを上の係数同型で移送し、T → T_∞ に対する自然性で四角形を得る
 
@@ -251,8 +253,8 @@ theorem squareZero_rhom_coconnective (L : ModuleCat.{u} (rootTestCoefficients p 
     let C := rootTestCoefficients p R hR
     let Q := Polynomial C ⊗[C] L
     let J := {a : ℚ // 0 ≤ a ∧ a < p ∧ ∃ n : ℕ, ∃ m : ℕ, a = (m : ℚ) / p ^ n}
-    let M := fiberSquareRHom (E := E) (reducedRootEdge (E := E) p R hR) (moduleHeartVertex C L)
-    Nonempty (((derivedInfinityHomotopyEquivalence C).functor.obj ⟨M⟩) ≅
+    let M := fiberSquareRHom (E := E) (reducedRootEdge (E := E) p R hR) (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.ChainComplexes.moduleHeartVertex C L)
+    Nonempty (((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomotopyEquivalence C).functor.obj ⟨M⟩) ≅
       ((DerivedCategory.singleFunctor (ModuleCat C) (-1)).obj (ModuleCat.of C ((J × J × ℕ) → Q)))) ∧
       Derived.IsConnectiveAt C (-1) M := by
   sorry -- B=C[X^p] は多項式環。J は T_∞/p の B 基底、0 番目を Bε に替えて fib≃B^(J)[−1]。

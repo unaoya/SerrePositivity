@@ -1,5 +1,5 @@
--- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Derived.UniversalProperty（仮。原典 Cor 8.14 と E3 の欄 universal）
--- 設計書：formalization-plans/bhatt-scholze/a7-design.md §2.3、単位 A7-2。基準コミット 972bb7f53。ビルドしない。
+-- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Construction.UniversalProperty（仮。原典 Cor 8.14 と E3 の欄 universal）
+-- 設計書：formalization-plans/bhatt-scholze/a7-design.md §2.3、単位 A7-2。基準コミット efa846fe8。型検査対象（5∞-0）。
 module
 
 public import SerrePositivity.EInfinity.Perfectoidization.TheoryInterface
@@ -14,7 +14,7 @@ public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories
 
 ## 概要
 S_perfd が離散なら S_perfd は perfectoid 環で、S → S_perfd は perfectoid 環への普遍な写像（`IsPerfectoidization`）。E3 の欄は任意の離散 S
-（非完備も）について `IsDiscrete R (e3Perfd S) → IsPerfectoidization p (unit S)` で、S^∧ 経由（D41）。
+（非完備も）について `IsTheoryDiscrete R (e3Perfd S) → IsPerfectoidization p (unit S)` で、S^∧ 経由（D41）。
 
 ## 方針
 芯 G-A7-5（A5-2 と共有、drafts/A7/DiscreteCore.lean）：S_perfd 離散 ⇒ Δ_perf 離散（d 進 Nakayama）⇒ 完全 p 完備 δ 環（A4）⇒ 完全 prism ⇒ S_perfd perfectoid（Thm 3.10）。
@@ -26,7 +26,7 @@ A5 の極限の脚から。W9-II-23：単位の自然性だけでは不足）を
 S 離散。離散な環の間の animated／E∞ 代数の射は環準同型（`discreteToAnimated_fullyFaithful`）。
 
 ## 使われ方
-`PerfectoidizationInterfaceCAlg.universal`（A9）。
+`TheoryPerfectoidizationInterface.universal`（A9）。
 -/
 
 @[expose] public section
@@ -41,21 +41,22 @@ namespace SerrePositivity.BhattScholze.Perfectoidization.Derived
 
 open SerrePositivity.BhattScholze.PerfectoidizationInterface SerrePositivity.EInfinity.Perfectoidization
 open SerrePositivity.InfinityCategories SerrePositivity.EInfinity
+open SerrePositivity.BhattScholze.Prismatic
 
 variable (p : ℕ) [Fact p.Prime] (R : Type u) [CommRing R] (hR : IsIntegralPerfectoid R p)
 /-- 完備な離散入力における A4 の直接の単位を H⁰ で読む。
 P の R 代数構造と η : S → P は同じ CAlg の射から来る。 -/
-abbrev perfdValue (S : A_R R) := (perfectoidizationFunctor (E := E) p R hR).app _ (nerveVertex S)
+abbrev perfdValue (S : A_R R) := (perfectoidizationFunctor (E := E) p R hR).app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex S)
 abbrev perfdRing (S : A_R R) := cAlgH0Algebra (E := E) R (perfdValue (E := E) p R hR S)
 
 def discretePerfdUnit (S : A_R R) : S ⟶ perfdRing (E := E) p R hR S :=
   (discreteToH0 (E := E) R S).hom ≫ (cAlgH0OnHomotopy (E := E) R).map
-    (functorHomEvaluate (directHodgeTateUnit (E := E) p R hR ≫ directToPerfection (E := E) p R hR) (nerveVertex S))
+    (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (directHodgeTateUnit (E := E) p R hR ≫ directToPerfection (E := E) p R hR) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex S))
 
 /-- 指定された離散表示。H⁰ による同定が恒等になる向きを選ぶ。 -/
 def discretePerfdIso (S : A_R R) (h : IsTheoryDiscrete (E := E) R (perfdValue (E := E) p R hR S)) :
-    { e : VertexIso (perfdValue (E := E) p R hR S)
-        ((E.discrete R).app _ (nerveVertex (perfdRing (E := E) p R hR S))) //
+    { e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (perfdValue (E := E) p R hR S)
+        ((E.discrete R).app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (perfdRing (E := E) p R hR S))) //
       (cAlgH0OnHomotopy (E := E) R).map e.hom = (discreteToH0 (E := E) R (perfdRing (E := E) p R hR S)).hom } := by
   sorry -- 離散表示を H⁰ の標準同型で補正し、H⁰ が恒等となる表示を得る
 
@@ -66,8 +67,8 @@ def discretePerfdIso (S : A_R R) (h : IsTheoryDiscrete (E := E) R (perfdValue (E
 規約：—
 使われ方：Cor 8.14 の一意性。 -/
 theorem perfectoidization_of_perfectoid (T : Type u) [CommRing T] [Algebra R T] (hT : IsIntegralPerfectoid T p) :
-    IsIso (functorHomEvaluate (directHodgeTateUnit (E := E) p R hR ≫ directToPerfection (E := E) p R hR)
-      (nerveVertex (ofAlgebra R T))) := by
+    IsIso (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (directHodgeTateUnit (E := E) p R hR ≫ directToPerfection (E := E) p R hR)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (ofAlgebra R T))) := by
   sorry -- A5-2 perfectoidization_semiperfectoid_iso。T の普遍 perfectoid 化は恒等射
 
 /-! ## Cor 8.14 後半：普遍性 -/
@@ -93,8 +94,8 @@ theorem perfectoidization_map_unit_eq_unit (S : C_R R p) (h : IsTheoryDiscrete (
     let F := perfectoidizationFunctor (E := E) p R hR
     let η := discretePerfdUnit (E := E) p R hR S.obj
     (discretePerfdIso (E := E) p R hR S.obj h).1.inv ≫
-        SSet.Truncated.HomotopyCategory₂.homMk (((nerve.edgeMk η).map F).toTruncated) =
-      functorHomEvaluate (directHodgeTateUnit (E := E) p R hR ≫ directToPerfection (E := E) p R hR) (nerveVertex P) := by
+        SSet.Truncated.HomotopyCategory.homMk (((nerve.edgeMk η).map F).toTruncated) =
+      _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (directHodgeTateUnit (E := E) p R hR ≫ directToPerfection (E := E) p R hR) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex P) := by
   sorry -- 比較の脚 λ_f に対し λ_f ∘ λ_η = λ_f。離散な極限の脚が射を識別して q=λ_η=id。
         -- A5 の比較の自然性と η_P の可逆性で移す（Cor 8.14 の一意性は用いない）
 
@@ -107,13 +108,13 @@ def selfTensorSpan (S : C_R R p) (h : IsTheoryDiscrete (E := E) R (perfdValue (E
     TensorSpan (CompleteAnimatedAlgebra p R) :=
   let η : S ⟶ completePerfdRing (E := E) p R hR S h := ObjectProperty.homMk (discretePerfdUnit (E := E) p R hR S.obj)
   let f := (nerve.edgeMk η).map (completeDiscreteToAnimated p R)
-  edgeSpan f.toTruncated f.toTruncated
+  _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.edgeSpan f.toTruncated f.toTruncated
 
 abbrev selfTensorObj (S : C_R R p) (h : IsTheoryDiscrete (E := E) R (perfdValue (E := E) p R hR S.obj)) :=
   (completeAnimatedPushout p R (selfTensorSpan (E := E) p R hR S h)).1.vertex
 
 abbrev selfTensorFactor (S : C_R R p) (h : IsTheoryDiscrete (E := E) R (perfdValue (E := E) p R hR S.obj)) :=
-  (completeDiscreteToAnimated p R).app _ (nerveVertex (completePerfdRing (E := E) p R hR S h))
+  (completeDiscreteToAnimated p R).app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (completePerfdRing (E := E) p R hR S h))
 
 /-- i=0,1 は span の頂点 1,2 での同じ余錐の脚。 -/
 def selfTensorLeg (S : C_R R p) (h : IsTheoryDiscrete (E := E) R (perfdValue (E := E) p R hR S.obj)) (i : Fin 2) :
@@ -121,11 +122,11 @@ def selfTensorLeg (S : C_R R p) (h : IsTheoryDiscrete (E := E) R (perfdValue (E 
   let v : (horn 2 0 : SSet.{u+1}) _⦋0⦌ :=
     ⟨stdSimplex.obj₀Equiv.symm i.succ, by sorry⟩ -- 各頂点はホーンに含まれる
   let c := (completeAnimatedPushout p R (selfTensorSpan (E := E) p R hR S h)).1
-  convert HomotopyLimits.coconeVertexLeg c v using 1 <;>
+  convert _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.coconeVertexLeg c v using 1 <;>
     sorry -- i=0,1 について edgeSpan_left・edgeSpan_right の終点を読む
 
 abbrev hoEdge {V : SSet.{u+1}} {x y : V _⦋0⦌} (e : V.Edge x y) :=
-  SSet.Truncated.HomotopyCategory₂.homMk e.toTruncated
+  SSet.HomotopyCategory.homMk e
 
 /-- (id_P,id_P) から来る乗法。標的 P は離散なので二脚上の等式がこの射を決める。 -/
 def selfTensorMul (S : C_R R p) (h : IsTheoryDiscrete (E := E) R (perfdValue (E := E) p R hR S.obj)) :
@@ -139,33 +140,33 @@ def selfTensorMul (S : C_R R p) (h : IsTheoryDiscrete (E := E) R (perfdValue (E 
 導来 p 完備入力に制限する。非離散の X の単位もこの CAlg_R で評価する。 -/
 def animatedRealization : AnimatedAlgebra R ⟶ E.CAlg R :=
   Classical.choose (show ∃ G : AnimatedAlgebra R ⟶ E.CAlg R,
-    HomotopyLimits.PreservesSmallSiftedColimits G ∧
-      Nonempty (FunctorIso (polyYoneda R ≫ G) (polynomialDiscreteDiagram R ≫ E.discrete R)) from by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.PreservesSmallSiftedColimits G ∧
+      Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (polyYoneda R ≫ G) (polynomialDiscreteDiagram R ≫ E.discrete R)) from by
     sorry) -- 要確認：A2 の hodgeTateUnitCAlg の始域。多項式代数の E∞ 実現を sifted 延長
 
 def animatedUnderlyingCAlg : CompleteAnimatedAlgebra p R ⟶ E.CAlg R :=
   animatedCompleteInclusion p R ≫ animatedRealization (E := E) R
 
 def animatedPerfdUnit (hR : IsIntegralPerfectoid R p) :
-    FunctorHom (animatedUnderlyingCAlg (E := E) p R) (perfectoidizationAnimated (E := E) p R hR) := by
+    _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHom (animatedUnderlyingCAlg (E := E) p R) (perfectoidizationAnimated (E := E) p R hR) := by
   let P := perfectPrism p R hR
   let modD := modPrismFunctor (E := E) p R hR
-  let fil₀ : FunctorHom (animatedUnderlyingCAlg (E := E) p R) (animatedDeltaUnderlying (E := E) p R hR ≫ modD) := by
+  let fil₀ : _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHom (animatedUnderlyingCAlg (E := E) p R) (animatedDeltaUnderlying (E := E) p R hR ≫ modD) := by
     sorry -- 要確認：A2 の hodgeTateUnitCAlg の完備 animated 入力への制限
-  let toCompletion := F2.Presentable.precomposeFunctorHom (animatedFrobeniusColimit (E := E) p R hR)
+  let toCompletion := _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.precomposeFunctorHom (animatedFrobeniusColimit (E := E) p R hR)
     (prismCAlgCompletionUnit (E := E) (p := p) P)
-  exact fil₀ ≫ F2.Presentable.postcomposeFunctorHom modD (animatedTowerLeg (E := E) p R hR ≫ toCompletion)
+  exact fil₀ ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.postcomposeFunctorHom modD (animatedTowerLeg (E := E) p R hR ≫ toCompletion)
 
 /-- 完備な離散代数の実現は通常の離散 CAlg と自然に同型。 -/
 def completeRealizationDiscreteIso :
-    FunctorIso (completeDiscreteToAnimated p R ≫ animatedUnderlyingCAlg (E := E) p R)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (completeDiscreteToAnimated p R ≫ animatedUnderlyingCAlg (E := E) p R)
       (nerveMap (completeInclusion R p) ≫ E.discrete R) := by
   sorry -- 多項式分解の幾何学的実現は元の離散代数を表す
 
 theorem animatedPerfdUnit_discrete (hR : IsIntegralPerfectoid R p) :
-    F2.Presentable.precomposeFunctorHom (completeDiscreteToAnimated p R) (animatedPerfdUnit (E := E) p R hR) ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.precomposeFunctorHom (completeDiscreteToAnimated p R) (animatedPerfdUnit (E := E) p R hR) ≫
         (perfectoidizationAnimated_discrete (E := E) p R hR).hom =
-      (completeRealizationDiscreteIso (E := E) p R).hom ≫ F2.Presentable.precomposeFunctorHom
+      (completeRealizationDiscreteIso (E := E) p R).hom ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.precomposeFunctorHom
         (nerveMap (completeInclusion R p)) (directHodgeTateUnit (E := E) p R hR ≫ directToPerfection (E := E) p R hR) := by
   sorry -- A2 の Fil₀ と A4 の同じ第0脚を離散入力に制限した自然性
 
@@ -180,13 +181,13 @@ def selfTensor_perfectoidization_eq (S : C_R R p) (h : IsTheoryDiscrete (E := E)
     let X := selfTensorObj (E := E) p R hR S h
     let P := selfTensorFactor (E := E) p R hR S h
     let F := perfectoidizationAnimated (E := E) p R hR
-    { e : VertexIso (F.app _ X) ((animatedUnderlyingCAlg (E := E) p R).app _ P) //
-      ∀ i, functorHomEvaluate (animatedPerfdUnit (E := E) p R hR) P ≫
+    { e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (F.app _ X) ((animatedUnderlyingCAlg (E := E) p R).app _ P) //
+      ∀ i, _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (animatedPerfdUnit (E := E) p R hR) P ≫
         hoEdge ((selfTensorLeg (E := E) p R hR S h i).map F) ≫ e.hom = 𝟙 _ } := by
   sorry -- Prop 8.13 の二脚は F(i_j)。G-A7-8 と η_P の逆で P ⊗̂_P P ≃ P に移し、比較の逆から e を取る
 
 theorem selfTensor_unit_eq_mul (S : C_R R p) (h : IsTheoryDiscrete (E := E) R (perfdValue (E := E) p R hR S.obj)) :
-    functorHomEvaluate (animatedPerfdUnit (E := E) p R hR) (selfTensorObj (E := E) p R hR S h) ≫
+    _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (animatedPerfdUnit (E := E) p R hR) (selfTensorObj (E := E) p R hR S h) ≫
         (selfTensor_perfectoidization_eq (E := E) p R hR S h).1.hom =
       (hoFunctor.map (animatedUnderlyingCAlg (E := E) p R)).toFunctor.map (selfTensorMul (E := E) p R hR S h).1 := by
   sorry -- 単位の自然性と e の両脚上の式で、双方の i_j 制限は恒等。
@@ -219,9 +220,9 @@ theorem perfectoidization_isPerfectoidization_of_discrete (S : C_R R p)
 /-- 概要：E3 の `universal`：任意の離散 S について、`e3Perfd S` が離散なら `IsPerfectoidization p (e3H0RingData.unit.app S)`。
 方針：S^∧ に Cor 8.14（`e3Perfd_of_complete`・`e3Unit_of_complete`・`e3H0_of_complete`、A4-3）。perfectoid 環は p 完備なので S → T は S^∧ → T を
 一意に通る（`completionRing` の普遍性、Interface.lean:237、G-A7-7）。
-規約：`PerfectoidizationInterfaceCAlg.universal` の型そのまま。
+規約：`TheoryPerfectoidizationInterface.universal` の型そのまま。
 使われ方：A9。 -/
-theorem e3Universal (hR : IsIntegralPerfectoid R p := by assumption) (S : A_R R) (hS : IsTheoryDiscrete (E := E) R ((e3Perfd (E := E) p R hR).app _ (nerveVertex S))) :
+theorem e3Universal (hR : IsIntegralPerfectoid R p := by assumption) (S : A_R R) (hS : IsTheoryDiscrete (E := E) R ((e3Perfd (E := E) p R hR).app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex S))) :
     IsPerfectoidization p ((e3H0RingData (E := E) p R hR).unit.app S).right.hom := by
   sorry -- S^∧ に Cor 8.14。e3Perfd_of_complete・e3Unit_of_complete・e3H0_of_complete
         -- で離散性・単位・H⁰ を読み替え、completion_existsUnique で S→T の存在一意性を戻す

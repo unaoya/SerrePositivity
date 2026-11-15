@@ -27,7 +27,7 @@ universe u
 
 namespace SerrePositivity.BhattScholze.Prismatic
 
-open DerivedCompletion Algebra.TensorProduct
+open _root_.SerrePositivity.DerivedCompletion _root_.Algebra.TensorProduct
 
 variable {p : ℕ} [Fact p.Prime] {U A E : Type u}
 variable [CommRing U] [CommRing A] [CommRing E] [Algebra U A] [Algebra U E]
@@ -39,9 +39,9 @@ variable (hQ : algebraMap U E a = Q.generator)
 方針：通常の交換同型が二番目の完備化座標を保つことを確認する。
 規約：BS 著者版 Example 7.9。二つの因子の有界性は不要。
 使われ方：関係列への特殊化の計算と普遍性を接続する。 -/
-@[expose] def lciEnvelopeTensorSwap :
-    PrismCompletedTensor (A := U) (C := E) P ≃+*
-      PrismCompletedTensor (A := U) (C := A) Q := by
+@[expose] def _root_.SerrePositivity.BhattScholze.Semiperfectoid.lciEnvelopeTensorSwap :
+    _root_.SerrePositivity.BhattScholze.PrismCompletedTensor (A := U) (C := E) P ≃+*
+      _root_.SerrePositivity.BhattScholze.PrismCompletedTensor (A := U) (C := A) Q := by
   let e := (Algebra.TensorProduct.comm U A E).toRingEquiv
   have hd : e (includeLeftRingHom P.generator) = includeLeftRingHom Q.generator := by
     change (1 : E) ⊗ₜ[U] P.generator = Q.generator ⊗ₜ[U] (1 : A)
@@ -53,11 +53,11 @@ variable (hQ : algebraMap U E a = Q.generator)
 方針：二座標完備化の単位公式とテンソル積の基底関係を用いる。
 規約：BS 著者版 Example 7.9 の生成元を保つ同型。
 使われ方：生成元の正則性と剰余の有界性の移送。 -/
-theorem lciEnvelopeTensorSwap_generator :
-    lciEnvelopeTensorSwap P Q a hP hQ (prismCompletedTensorLeft P P.generator) =
-      prismCompletedTensorLeft Q Q.generator := by
-  unfold lciEnvelopeTensorSwap
-  simp only [prismCompletedTensorLeft, RingHom.comp_apply, pdCompletionRingEquiv_unit]
+theorem _root_.SerrePositivity.BhattScholze.Semiperfectoid.lciEnvelopeTensorSwap_generator :
+    _root_.SerrePositivity.BhattScholze.Semiperfectoid.lciEnvelopeTensorSwap P Q a hP hQ (_root_.SerrePositivity.BhattScholze.prismCompletedTensorLeft P P.generator) =
+      _root_.SerrePositivity.BhattScholze.prismCompletedTensorLeft Q Q.generator := by
+  unfold _root_.SerrePositivity.BhattScholze.Semiperfectoid.lciEnvelopeTensorSwap
+  simp only [_root_.SerrePositivity.BhattScholze.prismCompletedTensorLeft, RingHom.comp_apply, pdCompletionRingEquiv_unit]
   congr 1
   change (1 : E) ⊗ₜ[U] P.generator = Q.generator ⊗ₜ[U] (1 : A)
   rw [← hP, ← hQ]

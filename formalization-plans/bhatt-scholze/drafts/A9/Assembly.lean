@@ -1,5 +1,5 @@
--- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Derived.Assembly（仮）と、Inputs/PerfectoidizationInterface.lean の定理の証明の置き換え
--- 設計書：formalization-plans/bhatt-scholze/a9-design.md、単位 A9-1。基準コミット 972bb7f53。ビルドしない。
+-- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Interface.Assembly（仮）と、SerrePositivity/BhattScholze/Inputs/PerfectoidizationInterface.lean の定理の証明の置き換え
+-- 設計書：formalization-plans/bhatt-scholze/a9-design.md、単位 A9-1。基準コミット efa846fe8。型検査対象（5∞-0）。
 module
 public import SerrePositivity.EInfinity.Perfectoidization.TheoryInterface
 
@@ -10,7 +10,7 @@ public import SerrePositivity.EInfinity.Perfectoidization.TheoryInterface
 # 界面の組み立てと E3 の消去
 
 ## 概要
-A4〜A8 の八つの欄から `PerfectoidizationInterfaceCAlg R p hR` の項を作り、`nonempty_e3_of_theory` で D(R) 版の存在を得る。
+A4〜A8 の八つの欄から `TheoryPerfectoidizationInterface R p hR` の項を作り、`nonempty_e3_of_theory` で D(R) 版の存在を得る。
 Inputs の `exists_perfectoidizationInterfaceE3` の証明をこれに置き換える。
 
 ## 方針
@@ -32,6 +32,7 @@ variable (E : SerrePositivity.EInfinity.EInfinityTheory.{u})
 namespace SerrePositivity.BhattScholze.Perfectoidization.Derived
 
 open SerrePositivity.EInfinity.Perfectoidization
+open SerrePositivity.BhattScholze.PerfectoidizationInterface
 
 variable (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime] (hR : IsIntegralPerfectoid R p)
 
@@ -40,14 +41,14 @@ variable (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime] (hR : IsIntegralPerf
 規約：`TheoryPerfectoidizationInterface` の型そのまま。
 使われ方：以下。 -/
 def perfectoidizationInterfaceCAlg : TheoryPerfectoidizationInterface (E := E) R p hR where
-  perfd := e3Perfd (E := E) p R
-  unit := e3Unit (E := E) p R
-  h0 := e3H0RingData (E := E) p R
-  universal := e3Universal (E := E) p R
-  limitCone := e3LimitCone (E := E) p R
-  limit_isLimit := e3LimitCone_isLimit (E := E) p R
-  integral := e3Integral (E := E) p R
-  excision := e3Excision (E := E) p R
+  perfd := e3Perfd (E := E) p R (hR := hR)
+  unit := e3Unit (E := E) p R (hR := hR)
+  h0 := e3H0RingData (E := E) p R (hR := hR)
+  universal := e3Universal (E := E) p R (hR := hR)
+  limitCone := e3LimitCone (E := E) p R (hR := hR)
+  limit_isLimit := e3LimitCone_isLimit (E := E) p R (hR := hR)
+  integral := e3Integral (E := E) p R (hR := hR)
+  excision := e3Excision (E := E) p R (hR := hR)
 
 /-- 概要：CAlg 版の界面の存在。 -/
 theorem nonempty_perfectoidizationInterfaceCAlg : Nonempty (TheoryPerfectoidizationInterface (E := E) R p hR) :=

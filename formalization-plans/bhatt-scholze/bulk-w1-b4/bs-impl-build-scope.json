@@ -1,0 +1,79 @@
+{
+  "phase": "verified after main merge",
+  "source_commit": "94c593fe000ed5111f89bb324a0dbe796f970af5",
+  "source_manifest": "bs-impl-before.json",
+  "module_count": 106,
+  "covered_module_count": 106,
+  "targets": [
+    {
+      "target": "SerrePositivity.EInfinity.SimplexCuts.GeneratorBoundary",
+      "new_own_dependencies": 2
+    },
+    {
+      "target": "SerrePositivity.EInfinity.SimplexCuts.TopTerm",
+      "new_own_dependencies": 3
+    },
+    {
+      "target": "SerrePositivity.EInfinity.SimplexCuts.StraightTraceFaces",
+      "new_own_dependencies": 10
+    },
+    {
+      "target": "SerrePositivity.EInfinity.SimplexCuts.TerminalSignData",
+      "new_own_dependencies": 9
+    },
+    {
+      "target": "SerrePositivity.EInfinity.SimplexCuts.Normalization",
+      "new_own_dependencies": 11
+    },
+    {
+      "target": "SerrePositivity.EInfinity.SimplexCuts.HorizontalDeletedFaces",
+      "new_own_dependencies": 11
+    },
+    {
+      "target": "SerrePositivity.EInfinity.SimplexCuts.HorizontalBoundarySigns",
+      "new_own_dependencies": 28
+    },
+    {
+      "target": "SerrePositivity.EInfinity.SimplexCuts.MixedBoundaryValues",
+      "new_own_dependencies": 32
+    }
+  ],
+  "coverage_evidence": "/tmp/bsw16/b4-20261114/build-coverage-plan.json",
+  "merge_commit": "923a15dd61143b03908e5dc3e1b7719301699b8d",
+  "build_groups": [
+    {
+      "group": 0,
+      "targets": [
+        "SerrePositivity.EInfinity.SimplexCuts.GeneratorBoundary",
+        "SerrePositivity.EInfinity.SimplexCuts.TopTerm",
+        "SerrePositivity.EInfinity.SimplexCuts.StraightTraceFaces",
+        "SerrePositivity.EInfinity.SimplexCuts.TerminalSignData",
+        "SerrePositivity.EInfinity.SimplexCuts.Normalization"
+      ],
+      "jobs": 2376,
+      "log": "/tmp/bsw16/b4-20261114/build-00.log",
+      "sha256": "39747f00a5989a80afa8d6e719ef26fb5b95e27bc181426289d7b34d5024937d"
+    },
+    {
+      "group": 1,
+      "targets": [
+        "SerrePositivity.EInfinity.SimplexCuts.HorizontalDeletedFaces",
+        "SerrePositivity.EInfinity.SimplexCuts.HorizontalBoundarySigns"
+      ],
+      "jobs": 2257,
+      "log": "/tmp/bsw16/b4-20261114/build-01.log",
+      "sha256": "97490aa8337ebabcdba89f0f54f93cba329c0bcf228bfc59ecf09940ce5c879a"
+    },
+    {
+      "group": 2,
+      "targets": [
+        "SerrePositivity.EInfinity.SimplexCuts.MixedBoundaryValues"
+      ],
+      "jobs": 2289,
+      "log": "/tmp/bsw16/b4-20261114/build-02.log",
+      "sha256": "ea0307a02d4c40f0371a69dda5eb7c9327c0f163cc5b5e3f5d0c19e124b03347"
+    }
+  ],
+  "audit_modules": 106,
+  "audit_declarations": 967
+}

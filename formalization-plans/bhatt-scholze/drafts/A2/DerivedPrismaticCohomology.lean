@@ -1,12 +1,13 @@
 -- 将来の置き場所：SerrePositivity.BhattScholze.Prismatic.Derived.Cohomology（仮。原典 Construction 7.6）
--- 設計書：formalization-plans/bhatt-scholze/a2-design.md §2.2・§2.4 (1)、単位 A2-2。基準コミット 972bb7f53。ビルドしない。
+-- 設計書：formalization-plans/bhatt-scholze/a2-design.md §2.2・§2.4 (1)、単位 A2-2。基準コミット efa846fe8。型検査対象（5∞-0）。
 module
+public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.LeftClassificationBaseChangeHom
 
 public import SerrePositivity.EInfinity.Perfectoidization.TheoryInterface
-public import SerrePositivity.BhattScholze.Prismatic.AffineEnvelopeConstruction
+public import SerrePositivity.BhattScholze.Prismatic.CechAlexander.Envelopes.AffineEnvelopeConstruction
 
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface
-public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.UniverseSquareHom
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.UniverseSquareHom
 
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleComplete.Basic
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.NativeConeLeg
@@ -60,19 +61,19 @@ variable {p : ℕ} [Fact p.Prime] {A : Type u} [CommRing A] (P : OrientedPrism p
 方針：DerivedGeneral/CompletionFunctor の `IsDerivedComplete` を U で引き戻した充満部分複体。
 規約：sifted 余極限は CAlg_A で取って完備化（反射）。
 使われ方：Δ の値。 -/
-def completeAt (a : A) (x : (derivedInfinityCategory A) _⦋0⦌) : Prop :=
-  IsComplete A a ((derivedInfinityHomotopyEquivalence A).functor.obj ⟨x⟩)
+def completeAt (a : A) (x : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) : Prop :=
+  IsComplete A a ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomotopyEquivalence A).functor.obj ⟨x⟩)
 
 def prismComplete (x : (E.CAlg A) _⦋0⦌) : Prop :=
   let M := (E.forget A).app _ x
   completeAt (p : A) M ∧ completeAt P.generator M
 
-abbrev CompleteCAlg : SSet.{u+1} := fullSubcomplexOnVertices (E.CAlg A) (prismComplete (E := E) P)
-instance : Quasicategory (CompleteCAlg (E := E) P) := fullSubcomplexOnVertices_quasicategory _ _
+abbrev CompleteCAlg : SSet.{u+1} := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices (E.CAlg A) (prismComplete (E := E) P)
+instance : Quasicategory (CompleteCAlg (E := E) P) := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.InnerFibrations.fullSubcomplexOnVertices_quasicategory _ _
 
-def prismCompleteInclusion : CompleteCAlg (E := E) P ⟶ E.CAlg A := (fullSubcomplexOnVertices _ (prismComplete (E := E) P)).ι
+def prismCompleteInclusion : CompleteCAlg (E := E) P ⟶ E.CAlg A := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ (prismComplete (E := E) P)).ι
 
-def prismCompleteReflection : Σ L : E.CAlg A ⟶ CompleteCAlg (E := E) P, QCatAdjunction L (prismCompleteInclusion (E := E) P) := by
+def prismCompleteReflection : Σ L : E.CAlg A ⟶ CompleteCAlg (E := E) P, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.QCatAdjunction L (prismCompleteInclusion (E := E) P) := by
   sorry -- 要確認：G-A2-3・9。対称モノイダルな導来完備化の CAlg への反射
 
 abbrev prismCompletion := (prismCompleteReflection (E := E) P).1
@@ -84,14 +85,13 @@ abbrev prismModIdeal := cAlgBaseChange (E := E) (Ideal.Quotient.mk P.ideal)
 方針：G-A2-3（完備化は反射）、G-A2-4（CAlg_A の sifted 余極限、HA 3.2.3.1）。
 規約：—
 使われ方：HTT 5.5.8.15 の仮定。 -/
-theorem completeCAlg_siftedColimits : HasSmallSiftedColimits (CompleteCAlg (E := E) P) := by
+theorem completeCAlg_siftedColimits : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.HasSmallSiftedColimits (CompleteCAlg (E := E) P) := by
   sorry -- CAlg_A の小 sifted 余極限を反射し、随伴で完備代数への余錐を判定する
 
 /-! ## 多項式代数上の Δ_0（CAlg 値） -/
 
 instance polySiteSmall (n : ℕ) : EssentiallySmall.{u} (PrismOver P (polyCompletion P n) (polyCutoff P n)) :=
-  PrismOver.essentiallySmall (P := P) (R := polyCompletion P n) (by
-    sorry) -- cutoff は #A+#R 以上
+  PrismOver.essentiallySmall
 
 def testSiteRings (S : Type u) [CommRing S] [Algebra (A ⧸ P.ideal) S] (κ : Cardinal.{u})
     [EssentiallySmall.{u} (PrismOver P S κ)] : (PrismaticSite P S κ)ᵒᵖ ⥤ A_R A :=
@@ -102,7 +102,7 @@ def polyStructureRing (n : ℕ) : (PrismaticSite P (polyCompletion P n) (polyCut
 
 theorem polyStructureRing_forget (n : ℕ) :
     polyStructureRing P n ⋙ Under.forget (CommRingCat.of A) =
-      unopUnop _ ⋙ structurePresheaf (E := E) P (polyCompletion P n) (polyCutoff P n) := by
+      unopUnop _ ⋙ structurePresheaf P (polyCompletion P n) (polyCutoff P n) := by
   sorry -- 両辺は A0 の B と同じ環射を取る
 
 abbrev polyStructure (n : ℕ) := Sheaves.ringPresheafToCAlg (E := E) A (polyStructureRing P n)
@@ -126,20 +126,20 @@ def prismaticCohomologyCAlg (hP : IsBoundedPrism P) (n : ℕ) : (CompleteCAlg (E
     sorry⟩ -- Cor 3.12(d)：Čech 模型の完備な各項の極限は (p,d) 完備
 
 def polySectionsCone (hP : IsBoundedPrism P) (n : ℕ) :
-    { c : JoinCone (polyStructure (E := E) P n) // IsLimitCone c ∧ c.vertex = polySections (E := E) P n } := by
+    { c : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone (polyStructure (E := E) P n) // _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone c ∧ c.vertex = polySections (E := E) P n } := by
   sorry -- Cor 3.12(d)、isSheaf_iff_forget と derivedGlobalSections_of_isSheaf で層化単位に沿って移送
 
 /-- 多項式上での第0脚。後の A5 では多項式分解の評価を延長する。 -/
 def polySectionsProjection (hP : IsBoundedPrism P) (n : ℕ)
     (X : (PrismaticSite P (polyCompletion P n) (polyCutoff P n))ᵒᵖ) :=
-  F2.nativeConeLeg (polySectionsCone (E := E) P hP n).val (ULift.up (nerveVertex X))
+  _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.nativeConeLeg (polySectionsCone (E := E) P hP n).val (ULift.up (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X))
 
 /-- 概要：Δ_0 は Čech–Alexander 模型の Tot_{E∞}（E∞ 代数として）。
 方針：Cor 3.12 の CAlg 版（`isSheaf_iff_forget`）、脚注 10 の CAlg 版（`derivedGlobalSectionsCAlg_eq_totEInfinity`）。
 規約：Rem 4.19 の小さい模型でも大きい模型でもよい。
 使われ方：A1 の模型の環構造との一致（D27）、Δ_0 の関手性の具体形。 -/
 theorem prismaticCohomologyCAlg_eq_totEInfinity (hP : IsBoundedPrism P) (n : ℕ) :
-    Nonempty (VertexIso (polySections (E := E) P n) (Cosimplicial.totEInfinity (E := E) A (polyCosimplicialAlgebra P hP n))) := by
+    Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (polySections (E := E) P n) (Cosimplicial.totEInfinity (E := E) A (polyCosimplicialAlgebra P hP n))) := by
   sorry -- 要確認：Shared/CosimplicialEInfinity の totEInfinity_isLimitCone 待ち。
         -- Rem 4.19 の標準余積と S3 で同じ CAlg_A 図式上の極限錐を比較
 
@@ -147,8 +147,8 @@ abbrev polyTest (n : ℕ) (b : (PrismaticSite P (polyCompletion P n) (polyCutoff
   (equivSmallModel (PrismOver P (polyCompletion P n) (polyCutoff P n))).inverse.obj b.unop.unop
 
 def polyFiberIso (n : ℕ) (b : (PrismaticSite P (polyCompletion P n) (polyCutoff P n))ᵒᵖ) :
-    VertexIso ((polyStructure (E := E) P n).app _ (ULift.up (nerveVertex b)))
-      ((E.discrete A).app _ (nerveVertex ((polyStructureRing P n).obj b))) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso ((polyStructure (E := E) P n).app _ (ULift.up (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex b)))
+      ((E.discrete A).app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex ((polyStructureRing P n).obj b))) := by
   sorry -- S2 ringPresheafToCAlg の指定した環での評価
 
 def polyEval (hP : IsBoundedPrism P) (n : ℕ) (b : (PrismaticSite P (polyCompletion P n) (polyCutoff P n))ᵒᵖ) :=
@@ -163,7 +163,7 @@ Constr 4.18）から nerve で。
 使われ方：Kan 延長の入力。 -/
 structure PolyDeltaData (hP : IsBoundedPrism P) where
   val : (SSet.uliftFunctor.{u+1,u}).obj (polyNerve (A ⧸ P.ideal)) ⟶ CompleteCAlg (E := E) P
-  obj_eq (Q : Poly (A ⧸ P.ideal)) : val.app _ (ULift.up (nerveVertex Q)) = prismaticCohomologyCAlg (E := E) P hP Q.n
+  obj_eq (Q : Poly (A ⧸ P.ideal)) : val.app _ (ULift.up (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex Q)) = prismaticCohomologyCAlg (E := E) P hP Q.n
   map_eval {Q Q' : Poly (A ⧸ P.ideal)} (f : Q ⟶ Q')
       (b : (PrismaticSite P (polyCompletion P Q.n) (polyCutoff P Q.n))ᵒᵖ)
       (b' : (PrismaticSite P (polyCompletion P Q'.n) (polyCutoff P Q'.n))ᵒᵖ)
@@ -179,22 +179,29 @@ structure PolyDeltaData (hP : IsBoundedPrism P) where
     transport Q ≫ polyEval (E := E) P hP Q.n b ≫
       SSet.Truncated.HomotopyCategory.homMk ((nerve.edgeMk β).map (E.discrete A)).toTruncated =
       SSet.Truncated.HomotopyCategory.homMk
-        ((uliftEdge (nerve.edgeMk f).toTruncated).map ((truncation 2).map D)) ≫ transport Q' ≫ polyEval (E := E) P hP Q'.n b'
+        ((_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.uliftEdge (nerve.edgeMk f).toTruncated).map ((truncation 2).map D)) ≫ transport Q' ≫ polyEval (E := E) P hP Q'.n b'
 
 def polyDeltaData (hP : IsBoundedPrism P) : PolyDeltaData (E := E) P hP := by
   sorry -- 要確認：A0/S2 へ。site の R からの構造射を多項式準同型で前合成。共通 cutoff での RΓ の関手性から
         -- 全単体の合成を得る。map_eval は同じ構造前層の制限を評価した可換四角形
 
-def prismaticCohomologyPolyFunctor (hP : IsBoundedPrism P := by assumption) := (polyDeltaData (E := E) P hP).val
+def prismaticCohomologyPolyFunctor (hP : IsBoundedPrism P := by assumption) :
+    (SSet.uliftFunctor.{u+1,u}).obj (polyNerve (A ⧸ P.ideal)) ⟶ CompleteCAlg (E := E) P :=
+  (polyDeltaData (E := E) P hP).val
 
-abbrev polyUnderlying (hP : IsBoundedPrism P) := prismaticCohomologyPolyFunctor (E := E) P hP ≫ prismCompleteInclusion (E := E) P
-abbrev prismRestriction := cAlgRestrictScalars (E := E) P.deltaStructure.frobeniusLift
+abbrev polyUnderlying (hP : IsBoundedPrism P) :
+    (SSet.uliftFunctor.{u+1,u}).obj (polyNerve (A ⧸ P.ideal)) ⟶ E.CAlg A := prismaticCohomologyPolyFunctor (E := E) P hP ≫ prismCompleteInclusion (E := E) P
+abbrev prismRestriction : E.CAlg A ⟶ E.CAlg A := cAlgRestrictScalars (E := E) P.deltaStructure.frobeniusLift
 
 /-- 概要：Poly 上の Frobenius φ : Δ_0 → φ_{A*} ∘ Δ_0（φ_A 半線形）。
 方針：A0 の `structurePresheafFrobenius` の CAlg 版と RΓ の関手性。
 規約：φ_{A*} はスカラー制限（CAlg_A 上の関手、G-A2-5）。
 使われ方：Frobenius の Kan 延長。 -/
-def polyTestFrobenius (n : ℕ) (b : (PrismaticSite P (polyCompletion P n) (polyCutoff P n))ᵒᵖ) := by
+def polyTestFrobenius (n : ℕ) (b : (PrismaticSite P (polyCompletion P n) (polyCutoff P n))ᵒᵖ) :
+    let U := (polyStructureRing P n).obj b
+    HomotopyCategory.mk ((E.discrete A).app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex U)) ⟶
+      HomotopyCategory.mk ((prismRestriction (E := E) P).app _
+        ((E.discrete A).app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex U))) := by
   let U := (polyStructureRing P n).obj b
   let φ := P.deltaStructure.frobeniusLift
   let Uφ : A_R A := Under.mk (CommRingCat.ofHom (U.hom.hom.comp φ))
@@ -205,17 +212,21 @@ def polyTestFrobenius (n : ℕ) (b : (PrismaticSite P (polyCompletion P n) (poly
 
 def polyFrobeniusData (hP : IsBoundedPrism P) :
     { e : ((ihom ((SSet.uliftFunctor.{u+1,u}).obj (polyNerve (A ⧸ P.ideal)))).obj (E.CAlg A)).Edge
-        (functorVertex (polyUnderlying (E := E) P hP)) (functorVertex (polyUnderlying (E := E) P hP ≫ prismRestriction (E := E) P)) //
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (polyUnderlying (E := E) P hP)) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (polyUnderlying (E := E) P hP ≫ prismRestriction (E := E) P)) //
       ∀ (Q : Poly (A ⧸ P.ideal)) (b : (PrismaticSite P (polyCompletion P Q.n) (polyCutoff P Q.n))ᵒᵖ),
-        let x := ULift.up (nerveVertex Q)
+        let x := ULift.up (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex Q)
         let π := eqToHom (congrArg (fun v => HomotopyCategory.mk ((prismCompleteInclusion (E := E) P).app _ v))
           ((polyDeltaData (E := E) P hP).obj_eq Q)) ≫ polyEval (E := E) P hP Q.n b
         π ≫ polyTestFrobenius (E := E) P Q.n b =
-          functorHomEvaluate (SSet.Truncated.HomotopyCategory.homMk e.toTruncated) x ≫
+          _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (SSet.Truncated.HomotopyCategory.homMk e.toTruncated) x ≫
             (hoFunctor.map (prismRestriction (E := E) P)).toFunctor.map π } := by
   sorry -- structurePresheafFrobenius と RΓ 射影の自然性、cAlgRestrictScalars_algebraEmbedding
 
-def prismaticFrobeniusPoly (hP : IsBoundedPrism P) := (polyFrobeniusData (E := E) P hP).val
+def prismaticFrobeniusPoly (hP : IsBoundedPrism P) :
+    ((ihom ((SSet.uliftFunctor.{u+1,u}).obj (polyNerve (A ⧸ P.ideal)))).obj (E.CAlg A)).Edge
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (polyUnderlying (E := E) P hP))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (polyUnderlying (E := E) P hP ≫ prismRestriction (E := E) P)) :=
+  (polyFrobeniusData (E := E) P hP).val
 
 /-! ## 左 Kan 延長（Construction 7.6） -/
 
@@ -227,7 +238,7 @@ def derivedPrismaticCohomology (hP : IsBoundedPrism P := by assumption) : Animat
   siftedLan _ (completeCAlg_siftedColimits (E := E) P) (prismaticCohomologyPolyFunctor (E := E) P hP)
 
 theorem derivedPrismaticCohomology_preservesSifted (hP : IsBoundedPrism P) :
-    PreservesSmallSiftedColimits (derivedPrismaticCohomology (E := E) P hP) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.PreservesSmallSiftedColimits (derivedPrismaticCohomology (E := E) P hP) :=
   (exists_siftedExtension _ (completeCAlg_siftedColimits (E := E) P) (prismaticCohomologyPolyFunctor (E := E) P hP)).choose_spec.1
 
 def polyRecovery (hP : IsBoundedPrism P) :=
@@ -239,8 +250,8 @@ def polyRecovery (hP : IsBoundedPrism P) :=
 使われ方：A0・A1 の結果を導来版へ。 -/
 def derivedPrismaticCohomology_poly (hP : IsBoundedPrism P) (n : ℕ) :
     let j := polyYoneda (A ⧸ P.ideal)
-    let x := ULift.up (nerveVertex (⟨n⟩ : Poly (A ⧸ P.ideal)))
-    VertexIso ((j ≫ derivedPrismaticCohomology (E := E) P hP).app _ x) (prismaticCohomologyCAlg (E := E) P hP n) :=
+    let x := ULift.up (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (⟨n⟩ : Poly (A ⧸ P.ideal)))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso ((j ≫ derivedPrismaticCohomology (E := E) P hP).app _ x) (prismaticCohomologyCAlg (E := E) P hP n) :=
   (polyRecovery (E := E) P hP).app _ ≪≫ eqToIso (congrArg HomotopyCategory.mk ((polyDeltaData (E := E) P hP).obj_eq ⟨n⟩))
 
 abbrev deltaUnderlying (hP : IsBoundedPrism P) := derivedPrismaticCohomology (E := E) P hP ≫ prismCompleteInclusion (E := E) P
@@ -254,15 +265,19 @@ def frobeniusExtension (hP : IsBoundedPrism P) :
     let k := A ⧸ P.ideal
     let H := deltaUnderlying (E := E) P hP
     let res := prismRestriction (E := E) P
-    { e : ((ihom (AnimatedAlgebra k)).obj (E.CAlg A)).Edge (functorVertex H) (functorVertex (H ≫ res)) //
+    { e : ((ihom (AnimatedAlgebra k)).obj (E.CAlg A)).Edge (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex H) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (H ≫ res)) //
       let ρ := (polyRecovery (E := E) P hP).postcomp (prismCompleteInclusion (E := E) P)
-      F2.Presentable.precomposeFunctorHom (polyYoneda k)
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.precomposeFunctorHom (polyYoneda k)
         (SSet.Truncated.HomotopyCategory.homMk e.toTruncated) ≫ (ρ.postcomp res).hom =
         ρ.hom ≫ SSet.Truncated.HomotopyCategory.homMk (prismaticFrobeniusPoly (E := E) P hP).toTruncated } := by
   sorry -- 完備圏内で siftedRestriction_equivalence の充満忠実性を使い包含で送る。
         -- φ_* は sifted 余極限を保ち、(p,d) と (p,φ(d)) の根基一致で完備化と両立
 
-def derivedPrismaticFrobenius (hP : IsBoundedPrism P) := (frobeniusExtension (E := E) P hP).val
+def derivedPrismaticFrobenius (hP : IsBoundedPrism P) :
+    ((ihom (AnimatedAlgebra (A ⧸ P.ideal))).obj (E.CAlg A)).Edge
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (deltaUnderlying (E := E) P hP))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (deltaUnderlying (E := E) P hP ≫ prismRestriction (E := E) P)) :=
+  (frobeniusExtension (E := E) P hP).val
 
 /-- 概要：離散 k 代数 R の Δ_R := Δ ∘ discreteToAnimated。E3 の `perfd` の材料。
 方針：A2-1 の `discreteToAnimated`。
@@ -277,21 +292,39 @@ def derivedPrismaticCohomologyDiscrete (hP : IsBoundedPrism P := by assumption) 
 規約：—
 使われ方：E3 の D(R) 版、HT filtration（D(A) で述べる）。 -/
 def derivedPrismaticCohomologyDerived (hP : IsBoundedPrism P) :
-    AnimatedAlgebra (A ⧸ P.ideal) ⟶ derivedInfinityCategory A :=
+    AnimatedAlgebra (A ⧸ P.ideal) ⟶ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A :=
   deltaUnderlying (E := E) P hP ≫ E.forget A
 
-def discreteFrobeniusComponent (hP : IsBoundedPrism P) (U : A_R (A ⧸ P.ideal)) :=
-  (derivedPrismaticFrobenius (E := E) P hP).map (evaluateFunctorAt ((discreteToAnimated _).app _ (nerveVertex U)))
+def discreteFrobeniusComponent (hP : IsBoundedPrism P) (U : A_R (A ⧸ P.ideal)) :
+    let x := (derivedPrismaticCohomologyDiscrete (E := E) P hP ≫ prismCompleteInclusion (E := E) P).app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex U)
+    SSet.Edge x ((prismRestriction (E := E) P).app _ x) := by
+  let H := deltaUnderlying (E := E) P hP
+  let T := prismRestriction (E := E) P
+  let a := (discreteToAnimated (A ⧸ P.ideal)).app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex U)
+  let x := (derivedPrismaticCohomologyDiscrete (E := E) P hP ≫ prismCompleteInclusion (E := E) P).app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex U)
+  let ev := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (Y := E.CAlg A) a
+  have hx : H.app _ a = x := by
+    simp only [H, a, x, deltaUnderlying, derivedPrismaticCohomologyDiscrete, SSet.comp_app] <;> rfl
+  have h₀ : ev.app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex H) = x := by
+    dsimp only [ev]
+    exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt_functorVertex a H).trans hx
+  have h₁ : ev.app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (H ≫ T)) = T.app _ x := by
+    dsimp only [ev]
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt_functorVertex]
+    change T.app _ (H.app _ a) = T.app _ x
+    exact congrArg (fun z => T.app _ z) hx
+  exact Eq.mp (congrArg₂ (fun b c : (E.CAlg A) _⦋0⦌ => SSet.Edge (X := E.CAlg A) b c) h₀ h₁)
+    ((derivedPrismaticFrobenius (E := E) P hP).map ev)
 
 section Evaluation
 variable (S : Type u) [CommRing S] [Algebra (A ⧸ P.ideal) S] (κ : Cardinal.{u})
   [EssentiallySmall.{u} (PrismOver P S κ)]
 
-abbrev testStructure := Sheaves.ringPresheafToCAlg (E := E) A (testSiteRings P S κ)
+abbrev testStructure : Sheaves.presheafShape (PrismaticSite P S κ) ⟶ E.CAlg A := Sheaves.ringPresheafToCAlg (E := E) A (testSiteRings P S κ)
 
 /-- 離散代数値の O の Frobenius。係数射を φ_A と合成して A 線形な射にする。 -/
 def testStructureFrobenius :
-    FunctorHom (testStructure (E := E) P S κ) (testStructure (E := E) P S κ ≫ prismRestriction (E := E) P) := by
+    _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHom (testStructure (E := E) P S κ) (testStructure (E := E) P S κ ≫ prismRestriction (E := E) P) := by
   sorry -- structurePresheafFrobenius と cAlgRestrictScalars_algebraEmbedding。
         -- 成分は小さい模型に対応する試験 prism B の φ_B
 
@@ -299,12 +332,12 @@ def testStructureFrobenius :
 各脚は RΓ の評価から誘導され、一般の離散 S に対してこの錐の極限性を使わない。 -/
 def discreteEvaluation (hP : IsBoundedPrism P) :
     let U := ofAlgebra (A ⧸ P.ideal) S
-    let x := (derivedPrismaticCohomologyDiscrete (E := E) P hP ≫ prismCompleteInclusion (E := E) P).app _ (nerveVertex U)
-    Σ c : JoinCone (testStructure (E := E) P S κ), { v : VertexIso x c.vertex //
+    let x := (derivedPrismaticCohomologyDiscrete (E := E) P hP ≫ prismCompleteInclusion (E := E) P).app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex U)
+    Σ c : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone (testStructure (E := E) P S κ), { v : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso x c.vertex //
       ∀ b : (PrismaticSite P S κ)ᵒᵖ,
-        let t := ULift.up (nerveVertex b)
-        let π := v.hom ≫ SSet.Truncated.HomotopyCategory.homMk (F2.nativeConeLeg c t)
-        π ≫ functorHomEvaluate (testStructureFrobenius (E := E) P S κ) t =
+        let t := ULift.up (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex b)
+        let π := v.hom ≫ SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.nativeConeLeg c t)
+        π ≫ _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (testStructureFrobenius (E := E) P S κ) t =
           SSet.Truncated.HomotopyCategory.homMk (discreteFrobeniusComponent (E := E) P hP U).toTruncated ≫
             (hoFunctor.map (prismRestriction (E := E) P)).toFunctor.map π } := by
   sorry -- 各多項式→S→B/d に対する polySectionsProjection を sifted 表示で合わせる。
@@ -321,11 +354,11 @@ def perfdValueOverPrism (hP : IsBoundedPrism P) (_ : P.deltaStructure.IsPerfect)
   let τ := prismRestriction (E := E) P
   let iter : ℕ → (E.CAlg A ⟶ E.CAlg A) := Nat.rec (𝟙 _) (fun _ G => τ ≫ G)
   let T := Classical.choose (show ∃ D : (SSet.uliftFunctor.{u+1,0}).obj (nerve ℕ) ⟶ E.CAlg A,
-    (∀ n : ℕ, D.app _ (ULift.up (nerveVertex n)) =
-      (iter n).app _ ((derivedPrismaticCohomologyDiscrete (E := E) P hP ≫ prismCompleteInclusion (E := E) P).app _ (nerveVertex U))) ∧
-    (∀ n : ℕ, D.app _ (ULift.up (ComposableArrows.mk₁ (homOfLE (Nat.le_succ n)))) =
+    (∀ n : ℕ, D.app _ (ULift.up (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex n)) =
+      (iter n).app _ ((derivedPrismaticCohomologyDiscrete (E := E) P hP ≫ prismCompleteInclusion (E := E) P).app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex U))) ∧
+    (∀ n : ℕ, D.app (Opposite.op ⦋1⦌) (ULift.up (ComposableArrows.mk₁ (homOfLE (Nat.le_succ n)))) =
       (φ.map (iter n)).edge) from by sorry) -- 後続辺の自由な合成から ℕ の図式を選ぶ
-  have h : HasColimit T := by sorry -- CAlg_A は小さい逐次余極限をもつ
+  have h : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasColimit T := by sorry -- CAlg_A は小さい逐次余極限をもつ
   exact (prismCompletion (E := E) P ≫ prismCompleteInclusion (E := E) P ≫ prismModIdeal (E := E) P ≫
     cAlgBaseChange (E := E) e.toRingHom).app _ h.choose.vertex
 

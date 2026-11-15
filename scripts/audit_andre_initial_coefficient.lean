@@ -50,8 +50,8 @@ assert_no_sorry sourceResidueH0_faithfullyFlat
 example (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect)
     (f : Polynomial A) (hf : f.Monic) (hdeg : 0 < f.natDegree) :
   let hp := Nat.Prime.pos (Fact.out : p.Prime)
-  let P := PowerRootPolynomial A p hp
-  let E := powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
+  let P := _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial A p hp
+  let E := _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
   let dP := algebraMap A P W.generator
   let a := powerRootPrismMonicUnaryFamily (p := p) f
   let L₀ := PowerRootUnaryFreeDeltaRing A p hp

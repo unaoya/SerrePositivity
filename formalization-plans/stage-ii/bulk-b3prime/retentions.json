@@ -1,0 +1,11 @@
+{
+  "status": "preparation decision; mechanical generic subset still to be checked by native dependency graph and v3b",
+  "withdrawn_whole_moves": [
+    {
+      "path": "SerrePositivity/BhattScholze/Andre/Envelope/DivisionResidue.lean",
+      "provisional_destination": "SerrePositivity/BhattScholze/Delta/Division/AdjoinResidue.lean",
+      "reason": "Flatness and regularity use finite normalized tower/direct-limit constructions from Andre/Envelope/Normalized, which itself uses Andre/OrdinaryRoots/Adjoin. Moving whole file creates new Delta->Andre reversal. Keep that part in Andre; split the twelve independent raw-residue/tensor declarations only. Preserve all mathematical statements and proofs.",
+      "remaining_reverse_dependency": "LciEnvelopePresentation still needs the retained base-algebra/flatness presentation; no claim that this edge has been removed."
+    }
+  ]
+}

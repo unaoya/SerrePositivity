@@ -6681,3 +6681,16879 @@ root ビルドと全体監査・入口登録は調整役に委ねる。
 Shared の一般 k の性質は drafts のままであり、係数制限のホモロジー比較と
 π₀ の環比較の整合性も、その証明時に確認する必要がある。
 今回の native な F_p の零次・離散比較は、それらの未証明の一般 k の性質を使っていない。
+
+## 106. cosimplicial top operation：切断項の計算と、一般の BF 作用の不足（11-13）
+
+### 106.1 今回の検証済み出力
+
+main の零次・離散比較の登録 f63686a85 を枝へ取り込んだ。その後、
+任意次元の単体に対する切断の支持を、既存の ShufflePath で構成した。
+登録候補は次の三本（全て EInfinity/SimplexCuts/、計 **162行**）。
+
+| モジュール | 行数 | 証明済みの出力 |
+| --- | ---: | --- |
+| Expanded | 77 | 切断の展開位置から (色,単体の頂点) への写像。非退化性をその単射性として定義し、同色の頂点列が狭義単調であること、頂点数の上界 |
+| Balanced | 35 | top degree の頂点数の等式のもとで、各色の頂点数が q+1 であること |
+| TopTerm | 50 | 各色の面写像が同じ q 単体の恒等射であり、一つの非退化切断項の積が X^q の環での a^r になること |
+
+主な型は次のとおり（既に対象ビルドを通した宣言）。
+
+```lean
+colorPositions_card_of_top
+    (h : Nondegenerate s u) (htop : m + q + 1 = r * (q + 1))
+    (a : Fin r) : (colorPositions s u a).card = q + 1
+
+fullColorFace_eq_id
+    (h : Nondegenerate s u) (a : Fin r)
+    (hcard : (colorPositions s u a).card = q + 1) :
+    fullColorFace s u a hcard = 𝟙 ⦋q⦌
+
+topTerm_eq_power (X : CosimplicialObject CommRingCat)
+    (h : Nondegenerate s u)
+    (hcard : ∀ a, (colorPositions s u a).card = q + 1)
+    (a : X.obj ⦋q⦌) : topTerm X s u hcard a = a ^ r
+```
+
+r=p、語次数 d=q(p−1)、m+1=p+d の場合に頂点数の等式が成立する。
+これは n=−q に必要な **同じ次数 q の各項の値**の計算である。
+通常の cup 積によって次数を pq に移す操作ではない。
+ただし、まだ符号付き総和の係数を 1 と示しておらず、May の同じ W→BE 比較を評価した
+P⁰ の計算でもない。上の三本だけで n<0 の主張を完了と数えない。
+
+TopTerm までの対象ビルドは /tmp/bsw16/simplex-top-term-02.log で成功。
+専用監査 /tmp/bsw16/audit-simplex-cuts.lean は **3モジュール・18宣言、標準三公理のみ**で成功
+（/tmp/bsw16/audit-simplex-cuts.log）。新しい警告・sorry・追加公理なし。
+ビルドと監査は別々の一回の鍵で実行し、鍵を返した。共有入口・全体監査は変更していない。
+
+### 106.2 G10 より前に必要なもの
+
+§96.5 で注意したとおり、既存 IntervalCuts.cochainAction の入力は
+Surjection.complex A r ⊗ interval A、出力は power (interval A) r であり、Δ¹ 専用である。
+CochainActionComponents・CutSigns・CompositionCutSums も頂点／辺の分岐で証明しており、
+q を引数として適用する形にはなっていない。
+TableReduction.operadMap と Surjection の operad 自体は再利用できるが、
+これらが任意の正規化 cosimplicial 複体に作用するという宣言は、別に供給しなければならない。
+Assembly の ofCosimplicial と ofCosimplicial_forget も、現時点では未供給の引数である。
+
+原典 [Berger–Fresse §2.2.6–7](https://arxiv.org/pdf/math/0109158#page=34) の一般の切断公式を
+複体射と operad 作用へまとめた後で、TR に沿って同じ BE 作用に制限する必要がある。
+同論文 §3.2.3–10 の suspension と係数の評価は top 計算への経路になるが、
+既存の公開 API にその全次元版の比較はない。
+また §3.2.5 の直後の注意のとおり、下の複体の Eilenberg–Zilber 比較を取るだけでは
+BE 代数の比較を得たことにならない。複体の擬同型だけから同じ CAlg 対象とは報告しない。
+
+不足を、次の順の証明義務として切り分ける。以下の bf* は **紙の新規名**で、
+新たな仮定を本体に入れたものでも、型検査済みの宣言でもない。
+
+```lean
+-- 任意次元の単体の正規化鎖上の χ 作用。
+bfSimplexAction (A : Type u) [CommRing A] (q r : ℕ) :
+  Surjection.complex A r ⊗ bfSimplexChains A q ⟶
+    power (bfSimplexChains A q) r
+
+-- 微分・単位・置換・部分合成・単体の射での自然性を証明して作る。
+-- この段では既存 interval 上の作用との一致も照合する。
+bfNormalizedAlgebra (A : Type u) [CommRing A] :
+  CosimplicialAlgebra A ⥤ (BarrattEccles.operad A).Algebra
+
+bfNormalizedUnderlyingIso (A : Type u) [CommRing A] :
+  bfNormalizedAlgebra A ⋙ Operad.Algebra.forget _ ≅
+    bfNormalizedCochains A
+
+-- 正規化から交代余面への、指定した自然な擬同型を保持する。
+bfNormalizationComparison (A : Type u) [CommRing A] :
+  bfNormalizedCochains A ⟶ cosimplicialCochains A
+
+-- 厳密 BF 代数上で、指定係数の演算を直接評価する最終形。
+-- κ は界面と同じ EInfinityPrimeField p。ν は mayNormalizationUnit の像。
+bfMayTopValue (p : ℕ) [Fact p.Prime]
+    (X : CosimplicialAlgebra κ) (n : ℤ)
+    (a : MayClosed ((bfNormalizedAlgebra κ).obj X).carrier (-n)) :
+  mayNormalizedClass p ((bfNormalizedAlgebra κ).obj X) n ν a =
+    mayClosedClass _ (-n) (bfFrobeniusClosed X n a)
+```
+
+bfFrobeniusClosed は、同じ次数の a↦a^p が正規化した閉元を保つことを証明して作るもの。
+ここを P⁰ の定義に置き換えるのではない。指定 W→BE を計算できる比較へ移す際も、
+増大を保つ equivariant な鎖ホモトピーと、反復入力で T・N の項が消える計算を保持する。
+ν の逆冪・逆巡回生成元・TR と BF の符号を一致させる必要がある。
+
+同じ CAlg 対象との接続では、bfNormalizedAlgebra の nerve を既存の
+algebraCAlgSource へ送った関手を具体的な ofCosimplicial の候補とし、
+上の指定した正規化比較から ofCosimplicial_forget を供給する。
+任意に選んだ ofCosimplicial と台の比較だけを仮定して、上の演算の一致を結論しない。
+その候補と native な Tot の **指定錐・Frobenius の辺**との比較だけが G10 待ちである。
+**今回まだ G10 の待ちの境界には到達していない。G10 の部品は作っていない。**
+
+### 106.3 見込みの改訂と規模による中間停止
+
+§96.6 の top operation と _tot の **1,000〜1,800行**は過小な見込みだった。
+区間専用であることは §96.5 に記載済みだったが、一般の作用の微分・operad 法則を
+再利用済みの部分に近く数えてしまっていた。今回、その証明の入力型を確認して修正する。
+IntervalCuts の205本は約20,124行で、下の見込みはその全量を作り直す値ではない。
+Surjection・TR・ShufflePath・テンソルの共通 API は再利用し、区間に特殊化した
+切断の符号と境界・二段切断の証明を一般次元へ拡張する分を数える。
+
+| 残る束 | 暫定の新規見込み | 再利用／不足の根拠 |
+| --- | ---: | --- |
+| 一般の切断、符号、正規化での消滅、微分、単体の射での自然性 | 3,000〜5,500 | ShufflePath・χ の微分・tensorLift は既存。IntervalCuts の頂点／辺の境界分類は一般次元版が必要 |
+| 単位・置換・部分合成、TR による同じ BE 作用 | 3,000〜5,000 | χ と TR の operad は既存。二段切断と合成の全符号の比較は Δ¹ の証明を直接適用できない |
+| 正規化した cosimplicial 代数の全関手と指定比較 | 1,200〜2,200 | Dold–Kan の複体の比較は再利用。BE 作用の保存と同じ CAlg の選択は未供給 |
+| May の係数、ν、同じ次数での Frobenius の照合 | 1,200〜2,000 | 今回の各項の積と既存 May のホモトピー不変性を再利用。符号付き総係数は未証明 |
+| native Tot の指定比較への適用（G10 自体を除く） | 500〜900 | 全整数 H/π と現在の source 比較を再利用 |
+| A4 の二重模型の実現比較（G10 自体を除く） | 1,500〜2,800 | §96.6 の未完了分を保持 |
+| filtered 塔・A4 の利用側 | 300〜550 | §96.6 の未完了分を保持 |
+| **残り計** | **10,700〜18,950** | |
+
+改訂 May の完成済み4,128行と今回162行を足すと、現時点の完成見込みは
+**14,990〜23,240行**。これは必要行数の下界ではなく、現ソースからの暫定見込みである。
+ただし上端が指示書 §26 の外枠約20,000行を超えるため、coordination.md §2 の
+「上限を超えそうなときは報告して止める（止まる前に、それまでの検証済みの分をコミット）」
+に従い、検証済みの三本を保存して **この線の Lean を中間停止**する。
+実測が10,000行に達したという停止ではなく、一般 BF 作用を含めた残りの見込みによる停止。
+
+界面・型・範囲は変更しない。一般の BF 作用の供給を含むこの経路の規模・分担を
+調整役が判断できるように不足を明示し、代わりの作業である M15 の段0の紙を進める。
+G10 の取り込みだけでこの不足が解消するとは報告しない。
+
+## 107. M15 段0の続き：弱同値不変性の既存出力と restriction の条件（紙のみ、11-13）
+
+M14 の §106 の規模停止の後、指定された代わりの紙の作業として §95・§97 を続けた。
+M15 の Lean・界面・drafts の型は変更していない。一般 R 加群の担当も自己決定しない。
+
+### 107.1 固定した厳密 BE 模型から既存 dg 加群へ
+
+最初の不足は §97 の barrattEcclesAssociativeForget A のまま。
+標準零単体の単位・合成を元の圏で照合して、台を変えずに Mon (Complex A) へ送る。
+ホモロジー上の結合性や BE→Comm の増大は、この厳密な忘却の代用にならない。
+以下で B_X はその関手の X での値とする。
+
+その後の固定 X の型と、全厳密 BE 射 f による拡大については、
+新しい module ∞ 圏を最初から構成する必要はない。既存宣言を確認した。
+
+| 宣言（InfinityCategories/Project/DerivedCategories/） | 確認した仮定・出力 |
+| --- | --- |
+| dgAlgebraDerivedInfinityCategory A B_X | B_X 上の右半自由 dg 加群の dg nerve |
+| dgAlgebraDerivedInfinityCategory_isStable | 同じ圏の安定性。B_X の可換性を仮定しない |
+| dgAlgebraExtensionInfinity A g | dg 代数射 g:B_X→B_Y に対する実 ∞ 関手 −⊗ᴸ_{B_X}B_Y |
+| dgAlgebraExtensionInfinity_isExactFunctor | その実 ∞ 関手の完全性。A 上の平坦性を追加しない |
+| dgAlgebraMap_quasiEquivalence | QuasiIso g.hom から同じ一対象 dg 関手の準同値 |
+| dgAlgebraExtensionInfinity_isQCatEquivalence_of_quasiIso | QuasiIso g.hom から同じ拡大関手の実 ∞ 圏同値 |
+
+最後の二つは DGAlgebraMoritaInfinity.lean に証明済みで、Morita 同値を新たな仮定にする必要はない。
+特に §95 の「BE の弱同値に対する module 圏の同値」の **厳密な一辺での部分**は、
+台を変えない忘却が完成すれば、この宣言へ直接帰着できる。
+新しい紙の候補の型は次の形となる（assocForget はまだ未供給、未型検査）。
+
+```lean
+strictModuleExtend {X Y : (operad A).Algebra} (f : X ⟶ Y) :
+    dgAlgebraDerivedInfinityCategory A (assocForget.obj X) ⟶
+    dgAlgebraDerivedInfinityCategory A (assocForget.obj Y) :=
+  dgAlgebraExtensionInfinity A (assocForget.map f)
+
+strictModuleExtend_weak {X Y : (operad A).Algebra} (f : X ⟶ Y)
+    (hf : QuasiIso f.hom) : IsQCatEquivalence (strictModuleExtend f)
+```
+
+hf は忘却の台の一致を介して同じ dg 代数射の QuasiIso へ運ぶ。
+ただし、この一辺の同値性だけでは、native CAlg の全辺と合成に対する module 圏の族を
+降下したことにはならない。拡大の合成・恒等比較と、その coherence を保つ降下は残る。
+既存 dgModuleExtensionYonedaNerveIso は全関手の比較に利用できるが、
+変わる BE 代数を含む全族をこれだけで供給しているとは数えない。
+
+### 107.2 restriction と随伴で残る型の条件
+
+通常の閉零射の圏では DifferentialGraded.dgModuleExtensionRestrictionAdjunction が
+既に graph 拡大と moduleRestriction の随伴を与えている。
+ただし native な半自由模型で右随伴を作るときは、次の条件を飛ばせない。
+
+DGModuleDerivedFunctor.lean の dgModuleDerivedFunctor とその comparisonIso は、
+入力の dg 関手 F に対して
+
+```lean
+hF : ∀ M, dgModuleProjectiveProperty A D M →
+  dgModuleProjectiveProperty A E (F.obj M)
+```
+
+を要求する。一般の B_X→B_Y の restriction に、この条件を無条件で入れることはできない。
+例えば B_Y 自身は自由な右 B_Y 加群でも、B_X 上の dg 射影的な加群であるとは限らない。
+したがって「既存 dgModuleDerivedFunctor を restriction にそのまま適用」で
+native な右随伴を供給したとはしない。
+
+受け渡しでは、restriction が擬同型を保つことに沿う局所化、または restriction の後の
+指定した解像度との比較を含め、実 ∞ 関手としての右随伴を要求する。
+通常圏の随伴の単位・余単位を、その指定した比較で native に運び、三角形を照合する。
+この不足は §95 の 700〜1,400行の「台・単位・全 restriction/extension・弱同値不変性」
+に含める対象であって、その上へ別枠として二重加算しない。
+
+### 107.3 分担時の受け取り条件と見込み
+
+HA の地図の 4.2.1.15・4.5.2.1 は通常圏の場合の部分一致、4.5.3.1 は未供給という判定のまま。
+一般 R の模型の供給者からは、固定 X の安定圏だけでなく、少なくとも次を同時に受け取る必要がある。
+
+1. 同じ台と単位を持つ厳密 BE→dg 代数の忘却。
+2. 全厳密射の拡大・制限の実 ∞ 関手、随伴、恒等・合成比較。
+3. 弱同値での上記の同値と、native な CAlg の辺・合成への降下。
+4. 同じ一般 R 加群の相対テンソルと、その単位・結合性・対称性・底変換。
+5. M15 の指定した R→S の辺、その fiber と指数射を、この同じ単位とテンソルで読む比較。
+
+§95 の一般 R の束の2,500〜4,500行は暫定のまま。今回、厳密な拡大の弱同値不変性は
+既存宣言で済むことを明確にした一方、restriction の hF を省略できないことも明記した。
+相対テンソルの対称性を結合的 dg 代数への忘却だけから供給したとはしない。
+担当と受け渡す全関手の型を決める前に、この見込みを実装承認や完了数へ読み替えない。
+
+**保存**：§106 の検証済み三本と報告は 9f27a22de に17:54 JSTにコミットした。
+本節は紙のみの追記。凍結確定の連絡はまだ受けていない。
+
+## 108. 5a-5a：一般 BF 作用の固定した型一覧（11-13、実装前の紙）
+
+### 108.1 範囲・数え方・構成
+
+§106 に対するユーザー承認に従い、上の三行を共通の **5a-5a** として切り出す。
+見込み7,200〜12,700行、外枠25,400行。M14 の残り四行・native Tot・G10 は含めない。
+置き場所は EInfinity/SimplexCuts/ と新設 EInfinity/Cosimplicial/。
+既存 IntervalCuts/・Operad/ の公開定義は変えない。共有入口と全体監査への登録は調整役に委ねる。
+他レーンの同じ新規ファイルを発見した場合は編集前に止めて報告する。
+
+数え方は inf-supply-w2.md §14 と、今回のユーザー指示のとおり。
+下の L01〜L28 が新しい数学の一覧。**証明の分割は数えず、型を追記する。
+前提計算（既存構成の単位・自然性・係数移送の法則）は各 L ごとに3本まで。
+照合は I01〜I03 の全体3本まで。それ以外の新しい数学は型と漏れた理由を報告して止める。**
+定義を作る際の恒等・合成のフィールドも下の法則に含める。
+「構造を引数に要求する」ことで下の法則を仮定に逃がさない。
+
+構成は次の二層に分ける。
+
+- 一般の単体集合の正規化鎖 C_A(S) 上に χ の切断余作用を構成し、TR:E→χ に沿って制限。
+- 標準単体 Δ[q] のその余代数と X^q の離散 BE 代数から、既存 convolutionAlgebra を作る。
+  ∏q Hom(C_A(Δ[q]),disc(X^q)) のうち、全 α:q→r で前合成と後合成が一致するものを、
+  **通常の BE 代数の等化子**として取る。この台と正規化したコチェイン複体を同定する。
+  native な ∞ 圏の Tot・錐の比較はここでは作らない。
+
+後半の convolutionFunctor・convolutionPre/Post と Operad.AlgebraLimits は再利用する。
+一般次元の cochain の operad 法則をもう一度直接証明する経路にはしない。
+
+### 108.2 型のために固定する定義と記号
+
+以下は **紙の Lean 型案、未型検査**。未供給名は新規定義として構成するもので、公理・仮定ではない。
+`A : Type u [CommRing A]`、`S T : SSet.{0}`、`X Y : CosimplicialAlgebra A` とする。
+`C S := (BarrattEccles.normalizedFunctor A).obj S : Complex A`。
+`χ := Surjection.operad A`、`E := BarrattEccles.operad A`。
+`cmap f := (BarrattEccles.normalizedFunctor A).map f`。
+`gen S q x : (C S).X (-(q:ℤ))` は既存の normalized generator を extend の同型で運んだもの。
+
+組合せの入口では `s : Cut m q`、`u : Surjection.Word r (m+1)`。
+`colorPositions s u.val a` は §106 の定義をそのまま使う。
+`vertices s u a` は、その順序列を s.vertical で読む OrderHom。
+`outputDegree s u a := (colorPositions s u.val a).card-1`。
+`face s u a : ⦋outputDegree s u a⦌ ⟶ ⦋q⦌` はその単調写像。
+空の色がないことは L01 で証明する。非退化性がなくても face は定義する。
+`lo s i`・`hi s i` は水平座標 i の fiber の最初・最後の垂直座標。
+
+BF §2.2.3–6 の符号は次の定義で固定する。
+
+```lean
+intervalLength s u i := hi s i - lo s i + if Surjection.Caesura u.val i then 1 else 0
+permutationExponent s u := ∑ i, ∑ j,
+  if i < j ∧ u.val j < u.val i then intervalLength s u i * intervalLength s u j else 0
+positionExponent s u := ∑ i, if Surjection.Caesura u.val i then hi s i else 0
+cutSign s u : ℤ := (-1) ^ (permutationExponent s u + positionExponent s u)
+```
+
+`cutTensor A S s u x` は、各色の `gen S _ (S.map (face s u a).op x)` の
+既存テンソル冪への純粋テンソル。総次数は L02 で合わせる。
+`cutTerm` は cutSign 倍の cutTensor、`cutSum` は全 s に関する和。
+退化な face は normalized generator によって零となるため、符号の定義を変えずに保持する。
+`rawComponent` は係数の自由基底と単体の自由基底から線形拡張した切断和。
+`component` は L07 により正規化へ降ろし、整数次数へ延長した双線形成分。
+
+余単体的正規化の入口は `N X : Complex A` とし、
+`(N X).X (q:ℤ)` を全 codegeneracy σ_i の核の共通部分、負次数を零とする。
+微分は交代余面の和の制限。`normInclusion X : N X ⟶ cosimplicialCochains A |>.obj X`。
+これは P⁰ や levelwise Frobenius を用いて定義するものではない。
+
+`P_X := ∏q convolutionAlgebra (hopf A) (simplexBECoalgebra A q) (discAlg(X^q))`。
+`Q_X := ∏(α:q→r) convolutionAlgebra (hopf A) (simplexBECoalgebra A q) (discAlg(X^r))`。
+`post_X, pre_X : P_X ⟶ Q_X` は各 α における後合成と前合成。
+`bfNormalizedAlgebra.obj X := equalizer post_X pre_X`、射は L22 による。
+台の族の次数 k を評価するとき、内部 Hom の微分の符号を保持する。
+正次数 k の評価と N X の比較には `(-1)^(k*(k+1)/2)` の次数ごとの係数を入れ、
+その微分の式を L24 で証明する。符号を省いた評価を複体射と主張しない。
+
+### 108.3 残る数学の型一覧：切断と余作用
+
+以下の `u` の引数は上の Word、degree d の際は BasisWord へ特殊化する。
+総次数の eqToHom は L02 が供給する等式で統一する。arity零は L14 で別に処理する。
+
+```lean
+-- L01 色の出現と非空性。
+colorPositions_nonempty (s : Cut m q) (u : Surjection.Word r (m+1)) (a : Fin r) :
+  (colorPositions s u.val a).Nonempty
+
+-- L02 各色の頂点数と全出力次数（非退化性を前提にしない）。
+outputDegree_sum (s : Cut m q) (u : Surjection.Word r (m+1)) :
+  ∑ a, outputDegree s u a = m + q + 1 - r
+
+-- L03 面の非退化性と §106 の対の単射性の同値。
+faces_mono_iff (s : Cut m q) (u : Surjection.Word r (m+1)) :
+  (∀ a, Mono (face s u a)) ↔ Nondegenerate s u.val
+
+-- L04 退化な切断項は実テンソルで零。
+cutTensor_eq_zero (h : ¬Nondegenerate s u.val) (x : S _⦋q⦌) :
+  cutTensor A S s u x = 0
+
+-- L05 正規化生成元と色ごとの面の引き戻しを保つ自然性。
+cutTerm_map (f : S ⟶ T) (x : S _⦋q⦌) :
+  (TensorPowers.map (cmap f) r).f _ (cutTerm A S s u x) =
+    cutTerm A T s u (f.app _ x)
+
+-- L06 切断和の生成元公式（rawComponent の線形拡張の値）。
+rawComponent_value (u : Surjection.BasisWord (r+1) d) (x : S _⦋q⦌) :
+  rawComponent A S (r+1) d q (Surjection.basis A u) (ModuleCat.freeMk (ULift.up x)) =
+    cutSum A S u x
+
+-- L07 入力の退化を消す。標準単体の退化も、一般 S の退化も含む。
+cutSum_degenerate (u : Surjection.BasisWord (r+1) d)
+    (i : Fin (q+1)) (x : S _⦋q⦌) :
+  cutSum A S u (S.σ i x) = 0
+
+-- L08 正規化した成分でも同じ切断和を復元。
+component_generator (u : Surjection.BasisWord (r+1) d) (x : S _⦋q⦌) :
+  component A S (r+1) (-(d:ℤ)) (-(q:ℤ)) _ (by omega)
+    (Surjection.complexBasis A u) (gen S q x) = cutSum A S u x
+
+-- L09 微分の項ごとの切断和の等式。q=0,d=0 の境界も含む。
+-- boundaryCoefficient / boundarySimplex は既存の χ の微分／交代面和。
+cutSum_boundary (u : Surjection.BasisWord (r+1) d) (x : S _⦋q⦌) :
+  dTensor (cutSum A S u x) =
+    cutSumLinear A S (boundaryCoefficient u) x +
+      (-1 : ℤ)^d • cutSumLinearSimplex A S u (boundarySimplex x)
+
+-- L10 全整数の双線形 Leibniz 則。
+component_d (r : ℕ) (i j : ℤ)
+    (a : (χ.arity r).X i) (b : (C S).X j) :
+  (power (C S) r).d (i+j) (i+j+1) (component A S r i j _ rfl a b) =
+    component A S r (i+1) j _ (by omega) ((χ.arity r).d i (i+1) a) b +
+      i.negOnePow • component A S r i (j+1) _ (by omega) a ((C S).d j (j+1) b)
+
+-- L11 置換に対する全切断和の Koszul 符号。
+cutSum_permutation (σ : Equiv.Perm (Fin r)) (u : Surjection.BasisWord r d)
+    (x : S _⦋q⦌) :
+  cutSum A S (Surjection.rename σ u) x =
+    ((permutationAction (C S) r σ).asIso.hom).f _ (cutSum A S u x)
+
+-- L12 二段の切断と合成語の切断の同じ実テンソルでの一致。
+-- compositeCutSum は既存 OverlapPartition と compositionSign の有限和。
+-- nestedCutSum は外側の色の一つを内側の切断で置き換えた有限和。
+cutSum_composite (u : Surjection.BasisWord (m+1) d)
+    (v : Surjection.BasisWord n e) (i : Fin (m+1)) (x : S _⦋q⦌) :
+  compositeCutSum A S u v i x = nestedCutSum A S u v i x
+
+-- L13 unary の単位切断。q は任意。
+cutSum_unit (x : S _⦋q⦌) :
+  cutSum A S Surjection.unitWord x = (oneIso (C S)).inv.f _ (gen S q x)
+
+-- L14 nullary の余作用と、nullary を含む部分合成。
+coaction_nullary : coaction A S 0 =
+  (nullaryCoefficient A ⊗ₘ chainsAugmentation A S) ≫ (λ_ (𝟙_ (Complex A))).hom
+coaction_comp_nullary (m : ℕ) (i : Fin (m+1)) :
+  (χ.comp m 0 i ▷ C S) ≫ coaction A S m =
+    ((β_ (χ.arity (m+1)) (χ.arity 0)).hom ▷ C S) ≫
+    (α_ _ _ _).hom ≫ (χ.arity 0 ◁ coaction A S (m+1)) ≫
+    tensorCoInsertionAction (C S) (χ.arity 0) m 0 i (coaction A S 0)
+
+-- L15 全整数の余作用の自然性。正規化生成元上の L05 から。
+coaction_natural (f : S ⟶ T) (r : ℕ) :
+  (χ.arity r ◁ cmap f) ≫ coaction A T r =
+    coaction A S r ≫ TensorPowers.map (cmap f) r
+
+-- L16 正の内側 arity の、実複体射の全部分合成則。
+coaction_comp (m n : ℕ) (hn : 0<n) (i : Fin (m+1)) :
+  (χ.comp m n i ▷ C S) ≫ coaction A S (m+n) =
+    ((β_ (χ.arity (m+1)) (χ.arity n)).hom ▷ C S) ≫
+    (α_ _ _ _).hom ≫ (χ.arity n ◁ coaction A S (m+1)) ≫
+    tensorCoInsertionAction (C S) (χ.arity n) m n i (coaction A S n)
+
+-- L17 実複体射の等変性・単位（L11,L13 の線形拡張）。
+coaction_equivariance (r : ℕ) (σ : Equiv.Perm (Fin r)) :
+  (χ.sequence.map (FiniteBijection.permutation r σ) ▷ C S) ≫ coaction A S r =
+    coaction A S r ≫ (permutationAction (C S) r σ).asIso.hom
+coaction_unit : (χ.unit ▷ C S) ≫ coaction A S 1 ≫ (oneIso (C S)).hom = (λ_ (C S)).hom
+
+-- L18 作用の式を保持して TR による BE 余代数と自然な射へ束ねる。
+bfCoalgebra_coaction (r : ℕ) : (bfCoalgebra A S).coaction r =
+  ((TableReduction.operadMap A).map.app (FiniteBijection.of r) ▷ C S) ≫ coaction A S r
+bfCoalgebraMap_comm (f : S ⟶ T) (r : ℕ) :
+  (E.arity r ◁ cmap f) ≫ (bfCoalgebra A T).coaction r =
+    (bfCoalgebra A S).coaction r ≫ TensorPowers.map (cmap f) r
+```
+
+L09・L12 は境界項の相殺・二段切断の有限添字対応を証明に含む。
+退化切断も零として同じ和に保持する。端点・同色の接着・空区間・arity零を捨てない。
+L06,L08 の basis 名は現在の自由加群の実 API に合わせて定義する略記であり、
+基底の存在や正規化への降下を別の未証明仮定にしない。
+
+### 108.4 残る数学の型一覧：正規化した cosimplicial 代数
+
+```lean
+-- L19 正規化部分加群を交代余面の微分が保つ。
+normalized_d_mem_exact (q : ℕ) (a : normalizedComponent X q) :
+  ∀ i : Fin (q+1), (X.σ i).hom (alternatingCofaces X q a.val) = 0
+
+-- L20 正規化包含の微分・自然性。
+normInclusion_d (i j : ℤ) :
+  (N X).d i j ≫ (normInclusion X).f j =
+    (normInclusion X).f i ≫ ((cosimplicialCochains A).obj X).d i j
+normInclusion_naturality (f : X ⟶ Y) :
+  (Nmap f) ≫ normInclusion Y = normInclusion X ≫ (cosimplicialCochains A).map f
+
+-- L21 正規化包含の指定ホモトピー逆。余単体的な Dold–Kan の分解を使う。
+normalizationHomotopyEquiv (X : CosimplicialAlgebra A) :
+  HomotopyEquiv (N X) ((cosimplicialCochains A).obj X)
+normalizationHomotopyEquiv_hom : (normalizationHomotopyEquiv X).hom = normInclusion X
+
+-- L22 convolution の等化子への全 X 射。二つの自然性の長方形。
+post_naturality (f : X ⟶ Y) : Pmap f ≫ post_Y = post_X ≫ Qmap f
+pre_naturality (f : X ⟶ Y) : Pmap f ≫ pre_Y = pre_X ≫ Qmap f
+bfNormalizedAlgebra_map_id (X) : bfMap (𝟙 X) = 𝟙 _
+bfNormalizedAlgebra_map_comp (f : X ⟶ Y) (g : Y ⟶ Z) : bfMap (f ≫ g) = bfMap f ≫ bfMap g
+
+-- L23 等化子の斉次元を恒等 q 単体で読む評価とその逆。
+evaluation_mem (q : ℕ) (a : bfCarrier X |>.X (q:ℤ)) :
+  scaledEvaluation X q a ∈ normalizedComponent X q
+reconstruction_evaluation (q : ℕ) (a : bfCarrier X |>.X (q:ℤ)) :
+  reconstruct X q (scaledEvaluation X q a) = a
+evaluation_reconstruction (q : ℕ) (a : normalizedComponent X q) :
+  scaledEvaluation X q (reconstruct X q a) = a
+bfCarrier_isZero_negative (i : ℤ) (hi : i<0) : IsZero ((bfCarrier X).X i)
+
+-- L24 評価の次数係数と微分の比較。符号なしの評価ではない。
+evaluation_d (i j : ℤ) :
+  (bfCarrier X).d i j ≫ evaluationComponent X j =
+    evaluationComponent X i ≫ (N X).d i j
+
+-- L25 同じ評価の全 X 射での自然性。
+evaluation_naturality (f : X ⟶ Y) (i : ℤ) :
+  (bfMap f).hom.f i ≫ evaluationComponent Y i =
+    evaluationComponent X i ≫ (Nmap f).f i
+
+-- L26 全関手の台の同型と指定された正規化比較。
+bfNormalizedUnderlyingIso :
+  bfNormalizedAlgebra A ⋙ Operad.Algebra.forget E ≅ bfNormalizedCochains A
+bfNormalizationComparison : bfNormalizedCochains A ⟶ cosimplicialCochains A
+bfNormalizationComparison_app : (bfNormalizationComparison A).app X = normInclusion X
+bfNormalizationComparison_quasiIso (X) : QuasiIso ((bfNormalizationComparison A).app X)
+
+-- L27 構成した代数の作用の、各 q への射影の評価公式。
+-- wedgeProjection は等化子から同じ convolution 代数への射。
+bfAction_projection (r q : ℕ) :
+  ((bfNormalizedAlgebra A).obj X).action r ≫ (wedgeProjection X q).hom =
+    (𝟙 _ ⊗ₘ TensorPowers.map (wedgeProjection X q).hom r) ≫
+      (simplexConvolution X q).action r
+
+-- L28 同じ作用を正規化コチェインの元で読む明示的な BF 切断公式。
+-- lhs は L26 の同型で運んだ「実際の」BE作用。rhs は TR の実係数を用いた切断和。
+bfAction_formula (r d : ℕ) (e : (E.arity r).X (-(d:ℤ)))
+    (degrees : Fin r → ℕ) (a : ∀ c, normalizedComponent X (degrees c)) :
+  normalizedActionValue X e degrees a = bfCutEvaluation X e degrees a
+```
+
+L19 の codegeneracy の添字は Fin(q+1)。
+L14 の nullaryCoefficient A : χ.arity 0 ⟶ 𝟙_ (Complex A) は、
+Surjection.zeroAugmentation と正次数の基底が空であることから定義する同じ係数射。
+χ 全体の operad augmentation の存在は仮定しない。
+L21 の複体のホモトピー同値には Mathlib の Dold–Kan の分解を反対圏で用いる。
+L23 の reconstruction は、各 q 単体の単射 θ:[k]→[q] の生成元を X.map θ の像へ送り、
+非単射 θ は零とする式。全 α の自然性と codegeneracy の核の条件の同値もこの主張に含む。
+L28 の出力次数は ∑c degrees c−d、負なら零。r=0・d=0 の単位の式も含める。
+ここで Frobenius・ν・May の P⁰ の係数の総和はまだ計算しない（M14 側の残り）。
+
+### 108.5 照合の三枠と既存の再利用
+
+I01 は区間の版との必須の照合として予約する。
+
+```lean
+-- I01 Δ¹ の同じ正規化鎖の同型に沿う、全部分余作用の厳密な一致。
+intervalCoaction_compare (r : ℕ) :
+  (χ.arity r ◁ intervalCarrierIso A |>.hom) ≫ IntervalCuts.cochainAction A r =
+    coaction A Δ[1] r ≫ TensorPowers.map (intervalCarrierIso A).hom r
+```
+
+intervalCarrierIso は定義的に同じ場合は Iso.refl、extend の表現差があればその既存の標準同型。
+BE の方は、この同じ式に TableReduction.operadMap を前置した帰結とし、別の新規数学には数えない。
+I02・I03 は未使用のまま残す。二項 AW や別の模型の比較を便利さだけで追加しない。
+
+再利用する既存宣言：ShufflePath.horizontal_surjective、vertex_strictMono_on_color、
+AlexanderWhitney.generator_map_of_not_mono、normalization_restrictToNormalized、
+既存 tensorLift・ι_tensorLift、Surjection の complexPartialComposition と compositionOnWords、
+Operad.restrictCoalgebraObj、convolutionAlgebra・convolutionPre・convolutionPost、
+AlgebraLimits、Mathlib Dold–Kan の normalized/alternating のホモトピー同値。
+[原典 BF §2.2.3–7](https://arxiv.org/pdf/math/0109158#page=33) の一般の切断と符号を用いる。
+証明の順は L01〜L18 → I01 → L19〜L28。定義・既存構成の組み立ては依存順に挟む。
+完成時が調整役への取り込み点。検証済み小束は枝に保存するが、native Tot の完了とはしない。
+
+### 108.6 実装に伴う証明分割の型と計数（進行中）
+
+L01〜L03 は Outputs・Faces の対象ビルドに成功した（simplex-faces-01.log）。
+L04〜L06 は同じ一覧の範囲で実装中。検証中のファイルはまだコミットしていない。
+型一覧と数え方の紙は **18ca0ea4a** に保存済み。
+
+証明分割の補題は次の型。L02 の頂点数の分割、L03 の狭義単調性、
+L04 の零因子の消滅は、それぞれ一覧の主張の同じ証明を分けたもの。
+
+```lean
+-- L02 の分割（検証済み）。
+colorPositions_card_eq s u a : (colorPositions s u.val a).card = outputDegree s u a + 1
+colorPositions_card_sum s u : ∑ a, (colorPositions s u a).card = m + q + 1
+-- L03 の分割（検証済み）。
+vertices_strictMono (h : Nondegenerate s u.val) (a : Fin r) : StrictMono (vertices s u a)
+-- L04 の分割。
+tensorValue_eq_zero (K : Complex A) (n : ℕ) (d : Fin n → ℕ)
+  (v : ∀ i, K.X (-(d i:ℤ))) (i : Fin n) (h : v i = 0) : tensorValue K n d v = 0
+-- L07 の分割：入力で一つの退化を合成すると、少なくとも一つの色の面が退化する。
+face_comp_sigma_not_mono (s : Cut m (q+1)) (u : Surjection.Word r (m+1))
+  (i : Fin (q+1)) : ∃ a, ¬Mono (face s u a ≫ SimplexCategory.σ i)
+```
+
+L05 の前提計算は次の三本で **3/3**。新しい構成や新しい数学の枠には拡張しない。
+
+```lean
+gen_naturality f q x : (cmap f).f (-(q:ℤ)) (gen A S q x) = gen A T q (f.app _ x)
+tensorValue_map f n d v : (TensorPowers.map f n).f _ (tensorValue K n d v) =
+  tensorValue L n d (fun i => f.f _ (v i))
+component_index_naturality (f : K ⟶ L) (h : i=j) (x : K.X i) :
+  f.f j ((eqToHom (congrArg K.X h)).hom x) =
+    (eqToHom (congrArg L.X h)).hom (f.f i x)
+```
+
+lo・hi の定義に用いる intervalPositions_nonempty は、L01 の既存の horizontal_surjective
+の評価を切り出したもの。照合 I01〜I03 はまだ0/3、その他の L の前提計算も0/3。
+凍結確定の連絡はまだ受けていない。
+
+## 109. L09 の境界計算で一覧外と判定した数学（11-13、型の報告）
+
+L01〜L08 の実装・検証を進める間に、次の L09 の有限和の証明を具体化した。
+一般次元では、テンソルの出力面の削除・χ の文字の削除・入力単体の面の削除を
+対応させ、残る境界項を符号を反転させて対にする必要がある。
+既存 IntervalCuts のその対応は頂点／辺に特殊化されている。
+**§108 の一覧は境界の総和の等式だけを L09 に書き、この対応の構成を型に落としていなかった。**
+
+必要と判断した追加候補は次の型。以下は紙のみで、Lean の定義・証明は追加していない。
+`u : BasisWord (r+1) d`、`u' := positiveWord u` とする。
+全ての退化項・境界次数零の項も零として残した有限添字を使う。
+
+```lean
+abbrev BoundaryBalanceIndex (u : Surjection.BasisWord (r+1) d) (q : ℕ) :=
+  (Σ s : Cut (r+d) q, Σ a : Fin (r+1), Fin (outputDegree s (positiveWord u) a + 1)) ⊕
+  ((Fin (r+d+1) × Cut (r+d-1) q) ⊕ (Fin (q+1) × Cut (r+d) (q-1)))
+```
+
+第一群が出力のテンソルの一面を削除する項、第二群が係数語の一文字を削除する項、
+第三群が入力単体の一面を削除する項。第二・第三群は L09 の右辺から左辺へ移す符号も含める。
+d=0 の第二群、q=0 の第三群、および次数零の出力の面は零とする。
+非全射・隣接値が等しくなる係数語の削除も零として保持する。
+これらの規約で、各添字の実テンソル値を次の型で定義する必要がある。
+
+```lean
+boundaryBalanceTerm (A : Type u) [CommRing A] (S : SSet.{0})
+    (u : Surjection.BasisWord (r+1) d) (q : ℕ) :
+  BoundaryBalanceIndex u q → S _⦋q⦌ →
+    (power (chains A S) (r+1)).X (-((d+q : ℕ):ℤ) + 1)
+
+-- 追加候補 L09a（未承認・未実装）。
+boundaryBalance_pairing (u : Surjection.BasisWord (r+1) d) (q : ℕ) :
+  ∃ τ : Equiv.Perm (BoundaryBalanceIndex u q),
+    Function.Involutive τ ∧
+    (∀ j, τ j = j → ∀ (A : Type u) [CommRing A] (S : SSet.{0}) (x : S _⦋q⦌),
+      boundaryBalanceTerm A S u q j x = 0) ∧
+    (∀ j, τ j ≠ j → ∀ (A : Type u) [CommRing A] (S : SSet.{0}) (x : S _⦋q⦌),
+      boundaryBalanceTerm A S u q (τ j) x = -boundaryBalanceTerm A S u q j x)
+```
+
+これは既存の構成の単位・自然性・係数移送の式ではなく、任意次元の境界項の
+**新しい組合せ的な対応と符号の主張**である。L09 の総和の等式より強い項ごとのデータを作るため、
+「heartbeat のための同じ内容の証明分割」や前提計算3本の枠へ自己判断で入れない。
+漏れた理由は、§108 の作成時に L09 のゴールの型で境界計算を一括し、
+その証明に使う一般次元の有限添字の対応を独立の数学として数えなかったこと。
+
+ユーザーの「それ以外の新しい数学の補題が要ったら止まって報告」に従い、
+**L09a の定義・証明には進まない**。先行する L01〜L08 の検証・修正・保存を終えて報告する。
+外枠25,400行を理由にした停止ではない。照合I01〜I03も未使用のまま。
+
+## 110. 方針の再比較：May＋一般 BF と coherent Sp 値 P⁰（11-13、紙・判断待ち）
+
+### 110.1 最新の指示と作業状態
+
+**最新の指示により、5a-5a の切り出しは未決に戻す。Lean の編集・ビルド・監査は停止した。**
+§108 の「承認された独立段」という扱いは、最新の判断としては採用しない。
+以下は実装の再開や界面変更の承認を先取りしない紙の比較である。
+
+指示変更前に、§108 の紙を18ca0ea4aへ保存し、切断の下書きを進めていた。
+新しい切断の11本・**568行**は個別の対象ビルドで通過したが、専用監査・コミットは未実施。
+RawAction（52行）・DegenerateInput（46行）・Normalization（87行）の**185行**は未検証。
+RawAction の語長の cast と自由加群の評価に型検査の失敗が残っている。
+これらの修正を含め、指示変更後は Lean を触っていない。
+既存の§106の三本162行とは区別する。未検証185行を完成分として見込みから引かない。
+最後の対象ビルドのセッションは終了済みで、鍵・整理券を持っていない。
+§108.6・§109 の紙と本節は作業木に保持し、この比較中に追加コミットはしない。
+凍結確定の連絡はまだ受けていない。
+
+### 110.2 残りの新規量を同じ基準で比較する
+
+**既存実測と残りの見込みを混ぜない。** coherent 案の§94.2は、既にV・π/Hの7,194行と
+鎖模型の3,022行を除いた「残り」の表である。そこから10,216行を再度控除しない。
+同様に May の4,128行は完成分であり、§106.3はそれと当時の切断162行を除いた残り。
+
+#### (a) May 案＋一般次元の Berger–Fresse 作用
+
+§106.3の一般BFの三行7,200〜12,700行から、今回の個別コンパイル済み568行を暫定控除する。
+この568行は切断・面・符号・生成元・その自然性の束で、微分・部分合成・cosimplicial代数の
+全関手はまだ含まない。未監査のため、正式な完成認定とは区別した比較用の控除である。
+
+| 残る新規 | §106.3の残り | 現時点の残りの暫定見込み |
+| --- | ---: | ---: |
+| 一般切断・符号・正規化・微分・自然性 | 3,000〜5,500 | 2,432〜4,932 |
+| 単位・置換・部分合成とTRによる同じBE作用 | 3,000〜5,000 | 3,000〜5,000 |
+| 正規化cosimplicial代数の全関手と指定比較 | 1,200〜2,200 | 1,200〜2,200 |
+| **一般BFの残り** | **7,200〜12,700** | **6,632〜12,132** |
+| May係数・ν・Frobeniusの照合 | 1,200〜2,000 | 1,200〜2,000 |
+| native Totの指定比較への適用（G10自体を除く） | 500〜900 | 500〜900 |
+| A4の二重模型の実現比較（G10自体を除く） | 1,500〜2,800 | 1,500〜2,800 |
+| filtered塔・A4の利用側 | 300〜550 | 300〜550 |
+| **残り合計** | **10,700〜18,950** | **10,132〜18,382** |
+
+既存May4,128行・以前の切断162行・今回の568行を加えた完成時の見込みは、
+§106と同じ14,990〜23,240行。作業を進めた分を控除しただけで、見積もり全体を縮めた値ではない。
+568行を正式な完成分と数えない保守的な比較では、残り10,700〜18,950行をそのまま使う。
+
+#### (b) coherent な Sp 値 P⁰
+
+§94以降、こちらの鎖模型→nativeの未完成部分を閉じる実装は進めていない。
+新しいMayのho上のNatTransは、Sp値のFunctorHomを供給しない。
+W→BE・混合色・零次の環比較は再利用候補だが、coherentな演算との同定は別に要るので、
+May4,128行や今回のBF568行を、そのまま次の表から引かない。
+
+| §94.2からの残りの新規 | 現在の見込み | 既存分の控除の扱い |
+| --- | ---: | --- |
+| 正のHomと実orbit全複体の鎖同型 | 900〜1,600 | 次数同型・指定包含・座標は既存。微分可換性は残る |
+| native orbit・norm・Tateの全自然比較 | 3,000〜5,500 | hG本体は既存として既に考慮。比較・norm・指定境界は残る |
+| 完全入力のexact性・降下・T_pの延長 | 2,800〜4,800 | p入力・準同型保存・混合色の自由性は既存として控除済み |
+| スペクトル的な右k作用とe | 2,800〜5,000 | 鎖のseed・H⁰計算は既存。右作用とcoherentな照合は未供給 |
+| BE作用によるP⁰とRem 2.2.7 | 1,800〜3,200 | 既存BE作用を使う。Mayのhoの演算との比較を自動では仮定しない |
+| 離散・Totの最後の照合 | 1,000〜2,000 | 原表のG10後の工程。一般BF作用はこの経路の前提にしない |
+| **§94.2の範囲での残り** | **12,300〜22,100** | **10,216行はこの外側の完成済み実測** |
+
+ただし、公平なBS用の比較には、原表の一行で明示していなかった次も数える必要がある。
+現在のV_AにはsourceIsoとπ/H比較があるが、任意のnative極限・実現を保つという公開定理を
+今回の調査では確認できなかった。Gammaの有限極限保存だけではcosimplicial Totの保存にならない。
+またA4の外側の単体的実現・filtered塔への指定Frobeniusの比較は、§96.5で明示した追加義務である。
+
+coherent案ではこれを一般の自然変換の移送で処理する候補とし、
+Vの必要な極限・実現保存とその指定比較に500〜1,000行、外側の実現・filteredとA4への適用に
+500〜1,400行を**暫定の追加リスク**として置く。
+原表の離散・Totの1,000〜2,000行は成分計算・同じTotへの適用に使い、この二つの一般比較と分ける。
+これを含むBS用の残りは **13,300〜24,500行**。
+この追加1,000〜2,400行は未実装の工程見込みであり、既存宣言で短縮を検証した数字ではない。
+
+両案とも、③-bが供給するG10・一般のnative錐の橋そのものは上の新規量へ加えていない。
+それがゼロ作業という意味ではなく、どちらにも必要な共通の外部依存として別に扱っている。
+
+### 110.3 Totの群は一般BF作用を必須にしない
+
+ここは§106.2の読みを修正する。
+**一般のBerger–Fresse作用が、ofCosimplicialや厳密BE図式のTotを作るために必ず要る、とは言えない。**
+それは厳密な正規化コチェイン代数を先に作る一つの経路であり、native極限を先に作る経路がある。
+
+同じUについて、次は既に無条件で証明済みである。
+
+| ファイル・宣言 | 実際の出力 |
+| --- | --- |
+| BarrattEccles/FreeProbeDerivedFreeForget.lean：cAlgFreeForgetDerivedAdjunction | 既存CAlg_Rと既存D(A)の間の全∞随伴。A可換環のみが入力 |
+| 同：cAlgForgetDerived_mapJoinCone_isLimit | 任意のKと同じ指定極限錐cを、同じUで送った錐が極限錐 |
+| 同：cAlgForgetDerived_hasLimit_postcomp | CAlg側の極限の存在からD(A)側の存在 |
+| BarrattEccles/Theory.lean：barrattEcclesCore.forget_preservesLimits | 上の実定理が既に中核の欄へ代入済み |
+
+OfTransportという条件付き版もあるが、FreeProbeUnitLocalTransport.freeProbeUnitTransportConditionを
+代入した上の無条件版が本体にある。係数拡大・制限の随伴と取り違えていない。
+**Uの極限保存を新たな数千行のBF構成に帰着させる必要はない。**
+
+native先行の手順は次のとおり。
+
+1. Xを離散CAlgのcosimplicial図式へ送り、その**同じnative極限錐**を作る。
+2. Uの上の既存定理で同じ錐をD(A)の極限錐へ送る。
+3. discrete_forgetとG10の全関手・射・指定錐の比較を用い、台を指定した交代余面複体と比較する。
+4. パラメータX全体での極限の関手性によりofCosimplicialを作り、
+   ofCosimplicial_forgetをFunctorIsoとして、_coneを元の指定錐として供給する。
+
+**残る点**：右随伴であることはCAlgの極限の「存在」や、Uが極限を「創出」することの証明ではない。
+D(A)で極限を取って、代数構造が自動で付いたとはしない。
+第一段のCAlgのnative錐の存在・全関手性・厳密なReedy/frame模型との指定比較が③-bの3b-4の仕事である。
+通常のBE代数圏の極限だけを、そのnative極限錐と同一視しない。
+G10の一般部品を本レーンで再実装する案でもない。
+
+| 利用先 | May＋BFの場合 | coherent Spの場合 |
+| --- | --- | --- |
+| ofCosimplicial・_forget・_cone（5a-5） | native先行なら一般BF作用は不要。Mayのn<0の演算計算には別途BF作用が要る | native先行なら一般BF作用は不要 |
+| ③-b 3b-4の厳密BE図式のTotとU | Reedy/frameによるnative錐と既存Uの極限保存で進める経路があり、一般BF作用は必須でない | 同じ。P⁰の選択とは独立 |
+| M14のcosimplicial Frobeniusとの一致 | 現在の直接計算経路は同じBF作用を要する。台の擬同型だけでは足りない | coherentなSp値自然変換と極限保存の比較で進める候補。BF作用を用いる必要はない |
+
+coherent案の最後の行は「各射影でπ_nが一致する」だけの議論ではない。
+離散入力でP⁰とFrobeniusがcoherentな図式の射として一致すること、
+W=U⋙Vの必要な極限保存、および同じ極限錐の射の一意性を使う。
+離散Eilenberg–MacLane対象間の写像空間の0切断性から離散計算を全図式へ運ぶ比較も明記して証明する。
+その後にπ_nを取る。ho上の自然性だけのMay演算にこの手順を適用してはならない。
+外側の単体的実現でもWの該当する保存と指定辺の比較が必要であり、「coherentだから」の一語で省略しない。
+
+### 110.4 KSTで減らせる部分と、減らせない部分
+
+KST/SpectraのBFはBousfield–Friedlanderのスペクトル模型であり、
+ここで検討しているBerger–Fresseの一般コチェイン作用とは別である。
+
+| 既存KST宣言 | coherent経路で再利用する範囲 | 供給したことにならないもの |
+| --- | --- | --- |
+| homotopyFixedPoints、GroupAction.diagramFunctor | 実際の厳密作用図式のhG対象 | orbit、norm、Tate |
+| homotopyFixedPointsInfinityCone・_vertex・_isLimit | **元のhG対象**を頂点とするnative極限錐 | 今の周期係数模型とこの図式との全自然同定 |
+| homotopyFixedPointsMap、OmegaSpectrum.homotopyLimitMap | 同変射・図式の射での実スペクトル射 | orbit→fixedのnorm自然変換 |
+| homotopyTotalizationInfinityCone・_isLimit | 実スペクトルの指定Totのnative極限性 | CAlgやVの極限保存そのもの |
+| GroupActionCochains.levelMap_piIsomorphism、FreeActionFamily.endMap_piIsomorphism | 自由作用のcochain・endの不変性 | Tateのexact性、T_pの全入力への延長、右k作用 |
+
+従ってhG対象・指定錐を新たに作る費用は**ゼロ**。
+ただし§94.1は既にこのKSTのhGとnative錐を認識した上で§94.2を見積もっている。
+3,000〜5,500行からその構成費をもう一度引くのは二重控除になる。
+同じp入力の実作用図式との比較を作った後で、残額の中のhG側をこの既存APIへつなぐ。
+
+今回KST/SpectraとSpectra/の公開宣言を調べた範囲では、
+当該入力のnative homotopy orbit、orbit→fixedのnorm、指定境界を持つTateの全関手、
+スペクトル的な右k作用とeは確認できなかった。
+スペクトルの安定性や一般のcofiberの道具があっても、norm射の構成と自然性・指定境界の同定は別に要る。
+加群上の有限和としてのnormや、鎖の周期Homをnative Tateの定義済み実例と数えない。
+GroupNerveNormalizedCohomologyの正次数消滅はCharZeroの体を仮定するため、F_p係数の代用にはならない。
+
+原典[DAG XIII Construction 2.2.6・Remark 2.2.7・Warning 2.2.8](https://www.math.ias.edu/~lurie/papers/DAG-XIII.pdf#page=35)
+では、指定Tate類からスペクトルの演算を作る。一般kではk線形な演算ではない。
+既存のk線形なpowerOperationCoefficientSeedとそのH⁰の値だけで、
+この右作用・指定類の射eを供給したとはしない。
+[BS Lemma 8.4](https://people.mpim-bonn.mpg.de/scholze/prisms.pdf#page=63) の
+二重模型の実現上のFrobeniusの主張は、どちらの経路でも最後まで範囲に残す。
+
+### 110.5 推奨と判断点
+
+**推奨は、May案を当面維持しつつ、Totの群と3b-4はnative錐先行で進める方針。**
+一般BF作用を共通部品として独立承認する理由に「Totの構成にも必須」を使わない。
+一般BF作用が要るのは、現May経路の同じ作用でのtop operationを直接計算する工程である。
+その仕事の費用はM14の比較から消さず、残り約10,100〜18,400行（保守的には10,700〜18,950行）として示す。
+
+理由は、(1) Mayの演算・局所化・零次・離散までが既に出来ている、
+(2) 残りの型は鎖・切断の有限計算と指定されたBE比較であり、
+(3) coherentへ戻す場合はnative norm/Tate・exactな延長・右k作用eという
+別々の未供給の束が依然として残るため。
+ただし二案の見込みの幅は重なっており、行数の下界やMayが必ず短いという証明ではない。
+coherent出力を今後の∞基盤にも優先して供給する方針なら、その再利用価値を理由に後者を選ぶ判断はあり得る。
+
+coherentへ戻す場合の判断は、残り12,300〜22,100行の元工程と、
+BS用の未積算比較を含めた13,300〜24,500行の暫定見込み、界面を再び強くする範囲・分担をセットで行う。
+現ho値の界面のまま内部だけcoherentな実例を作る案も可能であり、界面変更は必須ではない。
+いずれも自己判断では採用しない。
+
+**本比較を報告して判断を待つ。5a-5aの独立段の新設・Leanの再開・界面の変更はしない。**
+待ちの間はM15の段0の紙だけを進める。
+
+## 111. 判断待ちのM15段0：極限保存と一般R加群の境界（紙のみ、11-13）
+
+§110で再確認したU:CAlg_A→D(A)の全∞随伴と極限保存は完成済みである。
+ただし、これは§95・§97・§107の一般R加群の模型の不足をそのまま解消するものではない。
+
+- 固定したAと、変わるE∞頂点Rを区別する。必要なMod_Rの台の忘却は、
+  上のCAlg_Aの忘却とは始域が違う。
+- §107のdgAlgebraExtensionInfinityと準同型不変性は、厳密BE→同じ台のdg代数という
+  忘却が出来た後の固定模型で再利用する。全Rと全辺への降下・restrictionの右随伴は引き続き必要。
+- CAlgでAmitsur図式のnative極限錐を作ってUで送れても、M15の指定R加群の単位、
+  R→Sのfiber、相対テンソルの反復と指数射の同定は別である。
+  D(A)のテンソルをMod_Rの相対テンソルに読み替えない。
+- coherentなP⁰に必要な「スペクトル的な右k作用e」は、固定した係数kでの構成。
+  それを作るだけで一般のE∞底R上のmodule族・対称相対テンソルを得たとは数えない。
+  逆方向にも、既存のk線形dg双加群だけで一般の非k線形P⁰を得たとはしない。
+
+担当を決める際の最初の受け渡しは、§107.3の五点（同じ台の厳密忘却、拡大・制限の全関手と随伴、
+弱同値・nativeの辺と合成への降下、相対テンソルと底変換、指定単位とfiber・指数射）を維持する。
+一般Rの模型の2,500〜4,500行は暫定のままで、今回の紙の比較から新しい実装の担当や上限を決めない。
+
+本節を含め、最新指示後の作業は報告書のみ。Lean編集・ビルド・監査・追加コミットなし。
+§110の二案の判断を待ち、未検証の下書きは作業木に保持する。
+
+## 112. M14再開：残り全体の型一覧（11-13、実装前の紙）
+
+### 112.1 採用範囲と停止規則
+
+§110に対する最新のユーザー承認でMay案を続ける。
+一般次元のBF作用は**独立段5a-5aではなく、M14の_totの直接計算の部品**とする。
+§108のL01〜L28の数学の型を、このM14の前半の一覧として引き継ぐ。
+§108の独立段という呼称・25,400行の枠は採用しない。
+外枠は**M14全体25,000行（完成したMay4,128行を含む）**、12,500行で途中報告して続行する。
+
+証明の分割は数えず型を記録。前提計算は一覧のLごとに3本、照合は全体3本。
+L05の既存構成の自然性・次数移送の前提計算は§108.6の三本で3/3。
+I01（IntervalCutsとの一致）は予約済み・未使用、I02・I03も未使用。
+それ以外の新しい数学は、検証済みを保存して型と漏れた理由を報告し停止する。
+凍結確定の連絡後はコミットしない。今回まだ確定連絡を受けていない。
+
+最初は未検証185行を修正して検証する。個別ビルド済み568行は専用監査後にコミットする。
+以下の紙の一覧を載せた後、承認待ちを挟まずこの順に進める。
+G10・③-bのnative錐や一般の実現の橋は作らず、受け渡し後の指定比較を適用する。
+5a-5・3b-4に一般BF作用を前提として追加しない。
+
+### 112.2 L01〜L28の補充：境界と合成の有限項の対応
+
+L01〜L28の全型は§108.3・§108.4、証明分割は§108.6に固定したもの。
+L09に対して§109で止めた追加候補を、今回の**実装前の全一覧**にL09aとして含める。
+BoundaryBalanceIndexとboundaryBalanceTermの型・零次数と退化項の規約も§109のとおり。
+
+```lean
+-- L09a：テンソルの面／係数の文字削除／入力の面の符号付き項を対にする。
+boundaryBalance_pairing (u : Surjection.BasisWord (r+1) d) (q : ℕ) :
+  ∃ τ : Equiv.Perm (BoundaryBalanceIndex u q), Function.Involutive τ ∧
+    (∀ j, τ j = j → ∀ (A : Type u) [CommRing A] (S : SSet.{0}) (x : S _⦋q⦌),
+      boundaryBalanceTerm A S u q j x = 0) ∧
+    (∀ j, τ j ≠ j → ∀ (A : Type u) [CommRing A] (S : SSet.{0}) (x : S _⦋q⦌),
+      boundaryBalanceTerm A S u q (τ j) x = -boundaryBalanceTerm A S u q j x)
+```
+
+L12の部分合成についても、有限和の等式だけで添字の対応を省かない。
+`CompositeBalanceIndex u v i q`は、既存OverlapPartitionによる係数合成と一段切断の項と、
+外側の切断のi色の出力を内側で切る二段切断の項の直和。
+`compositeBalanceTerm`は第一群を正、第二群を負とする、同じ実テンソルでの符号付き値。
+正規化で消える合成語・面は零の項として保持する。新規の型は次。
+
+```lean
+-- L12a：二段切断の項の対応。nullaryも含む。
+compositeBalance_pairing (u : Surjection.BasisWord (m+1) d)
+    (v : Surjection.BasisWord n e) (i : Fin (m+1)) (q : ℕ) :
+  ∃ τ : Equiv.Perm (CompositeBalanceIndex u v i q), Function.Involutive τ ∧
+    (∀ j, τ j = j → ∀ (A : Type u) [CommRing A] (S : SSet.{0}) (x : S _⦋q⦌),
+      compositeBalanceTerm A S u v i q j x = 0) ∧
+    (∀ j, τ j ≠ j → ∀ (A : Type u) [CommRing A] (S : SSet.{0}) (x : S _⦋q⦌),
+      compositeBalanceTerm A S u v i q (τ j) x = -compositeBalanceTerm A S u v i q j x)
+```
+
+上の二つは、既存の符号規約を変えず、各値に現れる面写像の合成とKoszul符号を比較する主張。
+L09a→L09→L10、L12a→L12→L14・L16の順に使う。
+L11の置換、L13の単位、L14のnullary、L15の自然性、L18のTR制限、
+L19〜L28の正規化・convolution等化子・台の指定比較は元の一覧どおり残る。
+
+### 112.3 L29〜L37：同じ係数のtop operationを直接計算する
+
+以下も**紙の新規名・型案（未型検査）**。κ := EInfinityPrimeField.{u} p、
+ν p n := ULift.up (mayNu p n : ZMod p)。r>0のBF作用と同じχ・TRを使う。
+`bfTopScalar p q e : κ`は、eをTRの実基底係数で展開した切断和のtop degreeのスカラー。
+切断符号に加え、L28の**実際の**convolution評価・テンソルの交換・指定次数移送の符号を含める。
+νの逆数となるようにこのスカラーを定義しない。
+`coefficientOf f s`は、Wの自由生成元e_sにfを適用して実BE係数へ運んだ値。
+
+```lean
+-- L29：増大を保つ同変比較の変更が、同じD_iのホモロジー類を変えない。
+mayDClass_comparison (f g : (mayResolution p κ).complex ⟶ (mayArityResolution p κ).complex)
+    (hf : f ≫ (mayArityResolution p κ).π = (mayResolution p κ).π)
+    (hg : g ≫ (mayArityResolution p κ).π = (mayResolution p κ).π)
+    (X : (operad κ).Algebra) (i : ℕ) (j : ℤ) (a : MayClosed X.carrier j) :
+  mayDClassWith f X i j a = mayDClassWith g X i j a
+
+-- L30：計算可能な標準の周期bar比較。Wと同じ右回転生成元・増大を使う。
+canonicalCyclicComparison : (mayResolution p κ).complex ⟶ (mayArityResolution p κ).complex
+canonicalCyclicComparison_augmentation :
+  canonicalCyclicComparison p ≫ (mayArityResolution p κ).π = (mayResolution p κ).π
+canonicalCyclicComparison_even (s : ℕ) :
+  coefficientOf (canonicalCyclicComparison p) (2*s) = canonicalEvenBarSum p s
+canonicalCyclicComparison_odd (s : ℕ) :
+  coefficientOf (canonicalCyclicComparison p) (2*s+1) = canonicalOddBarSum p s
+
+-- L31：非退化top切断の各色は全q単体。§106の積の計算を実作用へ運ぶ。
+bfAction_top_value (X : CosimplicialRingAlgebra κ) (q : ℕ)
+    (e : (operad κ).arity p |>.X (-((q*(p-1):ℕ):ℤ)))
+    (a : normalizedComponent X q) :
+  bfRepeatedActionValue X q e a = bfTopScalar p q e • frobeniusNormalizedValue X q a
+
+-- L32：標準bar和のtop係数。全符号を含む零次・一次・帰納式。
+canonicalTop_zero : bfTopScalar p 0 (coefficientOf (canonicalCyclicComparison p) 0) = 1
+canonicalTop_one :
+  bfTopScalar p 1 (coefficientOf (canonicalCyclicComparison p) (p-1)) =
+    (-1 : κ)^((p-1)/2) * (((p-1)/2).factorial : κ)
+canonicalTop_succ (q : ℕ) :
+  bfTopScalar p (q+1) (coefficientOf (canonicalCyclicComparison p) ((q+1)*(p-1))) =
+    (-1 : κ)^((q+1)*((p-1)/2)) * (((p-1)/2).factorial : κ) *
+      bfTopScalar p q (coefficientOf (canonicalCyclicComparison p) (q*(p-1)))
+
+-- L33：巡回bar和で寄与する隣接対の列挙と符号の集計。
+-- SignedTopBarIndexはL32の実有限和の非零添字。signedTopBarWeightはその実係数。
+canonicalTop_pair_count (q : ℕ) :
+  ∑ b : SignedTopBarIndex p q, signedTopBarWeight p q b =
+    (-1 : κ)^(q*(q+1)*((p-1)/2)/2) * (((p-1)/2).factorial : κ)^q
+
+-- L34：逆冪で定義したMayのνとの一致。p=2を含む。
+canonicalTop_normalized (q : ℕ) :
+  ν p (-(q:ℤ)) *
+    bfTopScalar p q (coefficientOf (canonicalCyclicComparison p) (q*(p-1))) = 1
+
+-- L35：同じ正規化した閉元のp乗。codegeneracyと微分を保つ。
+frobeniusNormalized_mem (X : CosimplicialRingAlgebra κ) (q : ℕ)
+    (a : normalizedComponent X q) : (a.val^p) ∈ normalizedComponent X q
+frobeniusNormalized_closed (X : CosimplicialRingAlgebra κ) (q : ℕ)
+    (a : MayClosed ((bfNormalizedAlgebra κ).obj X).carrier (q:ℤ)) :
+  MayClosed ((bfNormalizedAlgebra κ).obj X).carrier (q:ℤ)
+
+-- L36：全整数nの同じMay演算とlevelwise Frobeniusの実ホモロジーでの一致。
+bfMayTopValue (X : CosimplicialRingAlgebra κ) (f : X ⟶ X)
+    (hf : ∀ j a, (f.app j).right.hom a = a^p) (n : ℤ)
+    (a : MayClosed ((bfNormalizedAlgebra κ).obj X).carrier (-n)) :
+  mayNormalizedClass p ((bfNormalizedAlgebra κ).obj X) n ν p n a =
+    mayClosedClass _ (-n) (mayClosedMap ((bfNormalizedAlgebra κ).map f).hom (-n) a)
+
+-- L37：標準単体の同じ余代数によるconvolutionはBE代数の右frame。
+bfSimplexConvolutionFrame (B : (operad κ).Algebra) :
+  SimplexCategory ⥤ (operad κ).Algebraᵒᵖ
+bfSimplexConvolutionFrame_obj (B : (operad κ).Algebra) (q : ℕ) :
+  ((bfSimplexConvolutionFrame B).obj ⦋q⦌).unop =
+    convolutionAlgebra (hopf κ) (simplexBECoalgebra κ q) B
+```
+
+canonicalEvenBarSum / OddBarSum は、Wの周期微分T・Nに対し、BEの実bar収縮で
+自由生成元の像を再帰的に持ち上げた、同じ置換列の有限和。
+偶数では巡回群の元で添字づける各二列の和、奇数では同じ巡回生成元の追加を含む。
+L30で実置換列の式を検証し、L33でその寄与と符号を計算してL32へ渡す。
+計算中に生成元の逆や係数の符号を公開定義の変更で吸収しない。
+L35のclosedは定義の型だけで終わらせず、L26の指定比較でa↦a^pを読む生成元公式も供給する。
+L37はframeのmatching射のfibration・各単体の収縮・augmentationを含める。
+G10の一般native比較をL37の仮定に入れて作ったことにはしない。
+
+### 112.4 L38〜L44：指定native Tot・filtered塔・A4の二重模型
+
+ここで`nativeTot`とそのcone、実現の全関手と指定比較は③-bの供給物を使う。
+以下の型のG10/3b-4の引数は**外部の受け渡しに含まれる証明**であり、
+このレーンで新しい同名の構造を作って仮定を隠すものではない。
+正式な受け渡しの公開名に合わせる際は、数学の範囲を変えず名前を追従する。
+
+```lean
+-- L38：同じBF模型が持つnative錐。標準単体の同じframeで高次成分を作る。
+bfCosimplicialCone (X : CosimplicialRingAlgebra κ) :
+  JoinCone (cosimplicialNerve X ≫ discreteCAlgUnderEmbedding κ)
+bfCosimplicialCone_vertex (X) :
+  (bfCosimplicialCone X).vertex =
+    atVertex (nerveMap (bfNormalizedAlgebra κ) ≫ algebraCAlgSource κ) (nerveVertex X)
+
+-- L39：G10とnative側の同じ錐の全関手比較を適用する。
+bfToNativeTotIso (G10 : SpecifiedG10Comparison κ) (BE : SpecifiedNativeBETotComparison κ) :
+  FunctorIso (nerveMap (bfNormalizedAlgebra κ) ≫ algebraCAlgSource κ) (nativeOfCosimplicial κ)
+bfToNativeTotIso_frobenius (G10) (BE) (X) (f : X ⟶ X) :
+  (bfToNativeTotIso G10 BE).hom.app (nerveVertex X) ≫ nativeTotMap X f =
+    bfNativeMap X f ≫ (bfToNativeTotIso G10 BE).hom.app (nerveVertex X)
+
+-- L40：現界面の_tot。指定された同じFrobenius辺で、全整数次数。
+barrattEcclesPowerOp0_tot (G10) (BE)
+    (X : CosimplicialRingAlgebra κ) (f : X ⟶ X)
+    (hf : ∀ j a, (f.app j).right.hom a = a^p) (n : ℤ) :
+  (barrattEcclesPowerOp0 p n).app (mk (nativeTotVertex X)) =
+    (homotopyGroupsOnHo κ (cAlgForgetDerived κ) n).map
+      (homMk (nativeTotFrobeniusEdge X f))
+
+-- L41：filtered群の余極限における自然な演算の一意性。
+filteredOperation_desc {I : Type u} [SmallCategory I] [IsFiltered I]
+    (D : I ⥤ AddCommGrpCat.{u}) (c : Cocone D) (hc : IsColimit c)
+    (P Q : c.pt ⟶ c.pt)
+    (h : ∀ i, c.ι.app i ≫ P = c.ι.app i ≫ Q) : P = Q
+
+-- L42：同じFrobenius塔のshiftとP⁰。Πの指定余極限保存を入力として明記。
+frobeniusTower_powerOp (D : ℕ ⥤ hoCAlg κ) (f : D ⟶ D)
+    (c : Cocone D) (hc : IsColimit c) (n : ℤ)
+    (hπ : IsColimit ((Π κ n).mapCocone c))
+    (hP : ∀ i, (powerOp0 p n).app (D.obj i) = (Π κ n).map (f.app i)) :
+  (powerOp0 p n).app c.pt = (Π κ n).map (colimitEndomorphism c hc f)
+
+-- L43：単体的余単体的可換Fp代数の同じ厳密二重模型でのMay差の境界。
+-- doubleRealizationModelはBFの各列の作用と、外側の実際のshuffleを使う模型。
+-- F_Xはlevelwise Frobeniusから来る同じ複体射。Hは閉元ごとの明示的な原始元。
+doubleMayDifferencePrimitive (X : SimplicialObject (CosimplicialRingAlgebra κ))
+    (n : ℤ) (a : MayClosed (doubleRealizationModel X).carrier (-n)) :
+  ∃ H : (doubleRealizationModel X).carrier.X (-n-1),
+    (doubleRealizationModel X).carrier.d (-n-1) (-n) H =
+      mayNormalizedValue p (doubleRealizationModel X) n ν p n a - (F_X.f (-n) a.val)
+
+-- L44：③-bの指定実現の橋を適用したA4-localな全整数次数の比較。
+a4_realization_powerOp (G10) (BERealization : SpecifiedBERealizationComparison κ)
+    (X : SimplicialObject (CosimplicialRingAlgebra κ)) (n : ℤ) :
+  (powerOp0 p n).app (mk (nativeDoubleRealizationVertex X)) =
+    (Π κ n).map (homMk (nativeDoubleFrobeniusEdge X))
+```
+
+L39のappは紙の記法。実際は既存FunctorIsoの辺・自然性と指定join錐の脚を用いる。
+L38〜L40はG10の後。そこに到達したら区切って報告し、外部の橋は作らずM15の紙へ移る。
+L41は通常圏の群の余極限の普遍性。L42でΠがfiltered余極限を保つこと自体は、
+界面の保存の欄／別工程の忘却のsifted保存と既存のホモロジー比較から受け取る。
+その依存を供給せずに、BE実例の全filtered保存までM14で完成したとは報告しない。
+
+L43では単にΠをlevelwiseに取って実現の余極限へ交換しない。
+指定のshuffle・係数の微分・全複体のKoszul符号で差の原始元を作る。
+必要な数学を次の二つとして一覧に含める。
+
+```lean
+-- L43a：同じshuffle実現に沿うBE作用の、全係数・全射での比較。
+doubleRealization_action (X) (r : ℕ) :
+  realizationAction X r = doubleShuffleAction X r
+
+-- L43b：L43の原始元の明示的有限展開の微分。
+-- finiteMayPrimitiveは同じW係数・BF切断・外側のshuffleから定義し、
+-- 入力の閉条件で消える項も、係数微分とともに保持する。
+finiteMayPrimitive_d (X) (n : ℤ)
+    (a : MayClosed (doubleRealizationModel X).carrier (-n)) :
+  (doubleRealizationModel X).carrier.d (-n-1) (-n) (finiteMayPrimitive X n a) =
+    mayNormalizedValue p (doubleRealizationModel X) n ν p n a - F_X.f (-n) a.val
+```
+
+同じ実現模型・指定射・底の全複体との比較は、③-bの正式な受け渡しに照らして適用する。
+その前段に新しい一般の厳密化やnative錐の定理を作らない。
+この一覧にない新しい数学が要ると分かった時点で、その型と漏れた理由を報告する。
+
+### 112.5 証明順・照合の枠
+
+修正・監査→L01〜L08→L09a,L09,L10→L11〜L18（L12aを先に）→I01→L19〜L28→
+L29〜L36→L37,L38→G10/3b-4受け取り後にL39,L40→L41,L42→L43a,L43b,L43,L44。
+L32とL33は組合せの和を先に計算して規格化へ運ぶ。
+新しい独立段の取り込み点は設けず、M14の途中の検証済み分として保存する。
+
+I01以外のI02・I03は未使用。比較の定義の表現差だけなら型を記録してこの枠で処理する。
+比較そのものが新しい数学なら、照合の名で継続しない。
+以上を残り全体の開始時の型一覧とする。承認待ちを挟まず、まず568行の監査と185行の修正へ進む。
+
+### 112.6 最初の568行の監査と保存
+
+/tmp/bsw16/audit-m14-cuts-first.log：**11モジュール・101宣言、標準三公理のみ**で成功。
+568行を保存する。対象はEInfinity/SimplexCuts/の次の11本。
+Outputs、Faces、HomogeneousTensor、NormalizedGenerators、CutTensor、TensorNaturality、
+CutNaturality、Signs、SignedTerms、SignedNaturality、CollapsedFace。
+いずれも個別対象ビルドに通った版から数学の変更なし。sorry・追加公理なし。
+
+以前のExpanded・Balanced・TopTermの162行と合わせ、切断の検証済み部分は730行。
+May4,128行を足した本経路の現在の基礎実測は4,858行。
+RawAction・DegenerateInput・Normalizationの修正中の分は、ここに含めない。
+新規ファイルのdocstringに残る5a-5a L番号は§108の旧一覧の参照であり、
+今後はM14のL番号として読む。独立段を作ったという意味にはしない。
+
+全体の入口登録・rootビルド・全体監査は行っていない。
+本コミットは枝の中間保存で、独立した5a-5aの完成／取り込み点ではない。
+監査の鍵は返却済み。未検証三本の修正版は別の一回の対象ビルドで検証中。
+
+### 112.7 三本の修正完了・監査と夜の運用
+
+RawAction・DegenerateInput・Normalizationの修正版は **208行**。
+/tmp/bsw16/m14-normalization-05.log：三本すべてを含む対象ビルド成功。
+最後の三本に新しい警告なし。語長の等式を明示的に移送し、
+自由加群の拡張を既存freeDescで作り、現行Type圏の束ねた射を指定して評価した。
+退化入力の消滅とMoore正規化への降下、同じ係数と生成元での値は型を変えていない。
+
+/tmp/bsw16/audit-m14-normalization.log：**3モジュール・44宣言、標準三公理のみ**で成功。
+sorry・追加公理なし。検証済み三本を枝へ保存する。
+May4,128行と切断の検証済み938行を合わせ、本経路の基礎実測は **5,066行**。
+L09aのBoundaryIndexの新しい下書きはこの検証済み数とコミットに含めない。
+
+23時の最新連絡で、B3の凍結はmainのみとなった。各枝の編集・コミットは続行してよい。
+それ以前の「確定後は枝へコミットしない」は今回は適用しない。
+本レーンは対象ビルドと小さい専用監査だけを、一回ごとに鍵を取って実行している。
+mainへの取り込み・B4の追従は調整役からの連絡を待つ。
+
+### 112.8 L09aの前提計算1：既存の正規化生成元の微分
+
+既存AlexanderWhitney.generator_dを同じembeddingDownNatへ運ぶ法則を用いる。
+新しい境界の分類ではなく、既存の複体射・指定係数移送の法則としてL09aの前提計算**1/3**。
+内部のchains_d_negはこの同じ移送の証明分割とする。
+
+```lean
+gen_d (A : Type u) [CommRing A] (S : SSet.{0}) (q : ℕ) (x : S _⦋q+1⦌) :
+  (chains A S).d (-((q+1:ℕ):ℤ)) (-(q:ℤ)) (gen A S (q+1) x) =
+    ∑ i : Fin (q+2), (-1:ℤ)^i.val • gen A S q (S.δ i x)
+```
+
+§112.7の三本は **bea1aab1b** に保存済み。次はL09aの有限添字とこの指定微分の計算。
+
+### 112.9 L09aの前提計算2：一つの出力次数を下げる移送
+
+既存の有限和のupdateの式による次数計算を、L09aの前提計算**2/3**として記録する。
+
+```lean
+degreeSum_delete (d : Fin n → ℕ) (i : Fin n) (h : 0 < d i) :
+  degreeSum n (Function.update d i (d i-1)) + 1 = degreeSum n d
+```
+
+これは切断の新しい分類ではなく、境界項を同じ全次数成分へ送るための移送の法則。
+
+## 113. L09aの境界値までの検証と、一覧外の再帰分解での停止（11-13夜）
+
+### 113.1 検証済み・保存する範囲
+
+新しい五本は全てEInfinity/SimplexCuts/。
+
+| モジュール | 行数 | 出力 |
+| --- | ---: | --- |
+| BoundaryIndex | 33 | 出力面・係数語削除・入力面の三群の有限添字 |
+| GeneratorBoundary | 44 | 同じ整数次数の正規化生成元の微分。L09a前提計算1 |
+| BoundaryFaces | 35 | 標準面と一因子の次数を下げる指定移送。L09a前提計算2 |
+| OutputBoundaryTerms | 63 | 出力の一面を削除した実テンソルとBF・Koszul符号 |
+| BoundaryTerms | 71 | 係数語・入力面も含む、同じ次数の三群の境界値 |
+| **計** | **246** | |
+
+対象ビルド：m14-boundary-index-01.log、m14-boundary-prerequisites-01.log、
+m14-output-boundary-01.log、m14-boundary-terms-01.log（いずれも/tmp/bsw16/）。
+BoundaryFacesの未使用変数警告はδの次元を明記して解消し、最終ソースに新しい警告なし。
+小さい専用監査audit-m14-boundary-terms.logは **5モジュール・66宣言、標準三公理のみ**で成功。
+sorry・追加公理なし。鍵はビルドと監査ごとに取り直し、返却済み。
+
+独立な有限計算として、整数係数のテンソルの微分と、χの文字削除＋入力単体の面を
+Pythonで直接比較した。arity1〜3、語次数0〜3、単体次数0〜2の**495例**で一致した。
+これはBF符号の点検であり、一般のL09a・L09のLean証明の代用にはしない。
+
+三群の値は型検査済みだが、**boundaryBalance_pairingも微分等式もまだ証明していない**。
+May4,128行＋切断の検証済み1,184行で、本経路の基礎実測は **5,312行**。
+12,500行の途中報告点・25,000行の外枠で止まったのではない。
+
+### 113.2 一覧外として報告する新しい数学の型
+
+L09aのτを、最後の垂直辺を取り除く再帰で構成する筋を具体化したところ、
+次の二つが必要となった。**紙の新規名・型案、未実装・未型検査**。
+
+```lean
+-- 追加候補 R01。q+1個目の垂直辺の属する区間pで分類し、末尾を除く。
+cutLastVerticalEquiv (m q : ℕ) :
+  Cut m (q+1) ≃ Σ p : Fin (m+1), Cut p.val q
+```
+
+幾何学的には、各区間の長さの列の最後の正の成分pから一を引き、
+pより後の長さ零の区間を除く。逆はその最後に垂直辺を足し、残りの水平辺を戻す。
+既存ShufflePath.vertical_edgeは最後の垂直辺の存在と座標を供給するが、
+**区間数をp+1へ変えた経路とのこの全単射**は今回調べたAPIには見つからなかった。
+ShuffleLastFaceの既存の削除は、経路の最後の辺が垂直という条件の下で固定した水平次数を保つ式で、
+この任意の長さ零の末尾を含む分解をそのまま供給するものではない。
+
+この分解だけでなく、色ごとの出力の復元の法則も必要。
+以下でverticesListは色のfiberを元の順序で列挙してverticalで写したList。
+空のfiberも空リストとして扱い、**ここでは全射性を仮定しない**。
+
+```lean
+def verticesList {m q r : ℕ} (s : Cut m q) (v : Fin (m+1) → Fin r) (c : Fin r) :
+    List (Fin (q+1)) :=
+  ((colorPositions s v c).sort (· ≤ ·)).map (fun i => s.vertical i)
+
+def prefixLabels (v : Fin (m+1) → Fin r) (p : Fin (m+1)) : Fin (p.val+1) → Fin r :=
+  fun i => v ⟨i.val, by omega⟩
+
+def terminalMultiplicity (v : Fin (m+1) → Fin r) (p : Fin (m+1)) (c : Fin r) : ℕ :=
+  (Finset.univ.filter (fun i => p ≤ i ∧ v i = c)).card
+
+-- 追加候補 R02。欠けた色・末尾の重複も保持する、再帰の値の法則。
+verticesList_lastVertical (v : Fin (m+1) → Fin r) (p : Fin (m+1))
+    (s : Cut p.val q) (c : Fin r) :
+  verticesList ((cutLastVerticalEquiv m q).symm ⟨p,s⟩) v c =
+    (verticesList s (prefixLabels v p) c).map Fin.castSucc ++
+      List.replicate (terminalMultiplicity v p c) (Fin.last (q+1))
+```
+
+例えば語(0,1)の最後の垂直辺が第0区間にある切断では、接頭語は(0)となり色1が欠ける。
+それでも元の切断の色1には末尾の頂点が現れる。
+既存L01・L02・faceは**全射語で各色が非空**という型なので、
+そのまま同じarityの接頭語へ再帰適用はできない。
+R02は欠けた色を空のリストとして保持し、末尾で現れる回数を復元する新しい式である。
+サフィックスで色が重複すると、List.replicateの重複を正規化で消す必要がある。
+存在するかどうかのifで頂点を一つだけ付ける式にはしない。
+
+### 113.3 漏れた理由と停止の扱い
+
+§112ではL09aの**全境界項を対にするτの主張**までを型にしたが、
+τを作る再帰のデータと、全射でなくなる接頭部の値の復元を列挙していなかった。
+R01・R02は、既存の単位・余単位・自然性・係数移送の式の評価ではなく、
+入力の単体次元と区間数を同時に変える新しい組合せ的な分解の主張である。
+また単に既存のL09aの証明をelaborationのために同じ式へ分割しただけとは扱わない。
+
+ユーザーの「それ以外の新しい数学の補題が要ったら止まって報告」に従い、
+**R01・R02の実装には入らず、ここで停止する**。
+L09a前提計算は2/3、照合I01〜I03は0/3のまま。未使用の前提計算枠をこの新しい数学に流用しない。
+検証済みの五本と本報告を保存して判断を待つ。
+G10・native Totの部品や界面の変更は行っていない。
+B3の凍結はmainのみという最新連絡に従い、枝のこの保存は行う。
+
+## 114. R01・R02再開と有限組合せの枠（11-14未明）
+
+BS-W16 §28と最新指示でR01・R02をL09aの部分へ追加し再開する。
+mainは凍結中なので取り込まず、mainの指示書§28を読み取りで確認した。
+枝の編集・コミットは続行可。対象ビルド・小さい専用監査だけを行う。
+
+### 114.1 実装前の有限計算
+
+/tmp/bsw16/check-terminal-cut.py は、切断を非負の区間長の列として独立に列挙し、
+最後の正の区間の長さを一つ下げるR01の逆と、R02の色ごとの頂点列の復元を確認した。
+m=0〜4、q=0〜3、色数1〜3の全ての語（非全射も含む）、全ての色で **122,186例**が一致。
+うち接頭部の色が空で元の出力が非空の例10,378件、末尾の反復が2以上の例15,366件。
+欠けた色を削除したり、末尾を単一の頂点へ潰したりしていない。
+この点検はLean証明の代用にはしない。
+
+### 114.2 追加する有限組合せの補題：L09aの枠1/3
+
+最後の垂直辺を補集合の最大元として選び、その前の辺をFinへ詰める構成を使う。
+`lowerPart s a` は、sのaより小さい元をFin a.valに圧縮した有限集合。
+次を新しい有限組合せの枠 **C01（1/3）** として追加する。
+
+```lean
+card_lowerPart_of_max {N : ℕ} (s : Finset (Fin N)) (a : Fin N)
+    (ha : a ∈ s) (hm : ∀ i ∈ s, i ≤ a) :
+  (lowerPart s a).card + 1 = s.card
+```
+
+所属の式と補集合との可換性は、この制限の定義を評価する証明分割。
+R01・R02本体は今回承認された二本であり、C01のほかの追加枠へ数えない。
+前提計算L09aの2/3、照合の0/3とは別に記録する。
+
+### 114.3 色のfiberのリスト化：有限組合せの枠2/3
+
+R02の定義にある有限集合の昇順列を、経路の頂点の列をfilterする形へ直す。
+新しい有限組合せの枠C02（L09aの2/3）は次の型とする。
+
+```lean
+sort_filter_univ (N : ℕ) (P : Fin N → Prop) [DecidablePred P] :
+  (Finset.univ.filter P).sort (· ≤ ·) =
+    (List.finRange N).filter (fun i => decide (P i))
+```
+
+接頭部・末尾の水平・垂直座標の評価、リストの連結と写像についての計算は、
+R01・R02の同じ構成の証明分割である。新しいBE作用や法則は足していない。
+
+### 114.4 末尾の出現回数：有限組合せの枠3/3
+
+末尾の区間を `terminalSuffixIndex p j = p+j` で列挙する。
+新しい有限組合せC03（L09aの3/3）は次の型とする。
+
+```lean
+terminalSuffix_card {m r : ℕ} (v : Fin (m + 1) → Fin r)
+    (p : Fin (m + 1)) (c : Fin r) :
+  (Finset.univ.filter (fun j : Fin (m - p.val + 1) =>
+    v (terminalSuffixIndex p j) = c)).card = terminalMultiplicity v p c
+```
+
+R02の末尾の `List.replicate` の回数を元のfiberで数える式である。
+一般の新しい有限分解がさらに必要なら、この枠では足さず報告して止まる。
+
+### 114.5 R01・R02の完了と検証
+
+次の8本、計607行を対象ビルドで検証した。
+
+| モジュール（`SerrePositivity.EInfinity.SimplexCuts.` 以下） | 行数 | 内容 |
+| --- | ---: | --- |
+| LowerPart | 60 | 最大元より前の有限集合、C01 |
+| TerminalExtension | 84 | 接頭部から最後の垂直辺と末尾を戻す |
+| TerminalData | 107 | 最後の垂直辺、その区間番号、接頭部 |
+| TerminalEquiv | 72 | 逆写像の一意性、R01 `cutLastVerticalEquiv` |
+| TerminalCoordinates | 84 | 復元した切断の接頭部と末尾の座標 |
+| VertexLists | 70 | 欠けた色を含む頂点列、C02 |
+| TerminalSuffix | 66 | 末尾の反復数、C03 |
+| TerminalTrace | 64 | 頂点列の評価、R02 `verticesList_lastVertical` |
+
+R01の逆は `terminalExtend`。元の経路への復元と復元写像の単射性から同値を作った。
+R02の型は§113.2の承認された型そのままであり、`List.replicate` の回数も
+`terminalMultiplicity` の定義そのまま。全射性の仮定を足していない。
+
+対象ビルド：`lake build SerrePositivity.EInfinity.SimplexCuts.TerminalTrace` 成功
+（`/tmp/bsw16/m14-terminal-trace-03.log`）。新規8本にはLeanの警告なし。
+専用監査：`/tmp/bsw16/audit-m14-terminal.lean`、**8モジュール・104宣言・標準三公理のみ**。
+`/tmp/bsw16/audit-m14-terminal.log` に成功を確認。新規ソースにsorry・追加公理0。
+ビルドと監査はそれぞれ `--wait 3600` の鍵を取り、終了時に返した。
+rootビルド・全体監査・入口の登録はしていない。上記8本を次の登録候補とする。
+
+今回の607行を足すと、改訂MayのM14本体は **5,919行**
+（完成済みMay 4,128 + SimplexCuts既存1,184 + 今回607）。
+半分の12,500行と外枠25,000行には届いていない。
+旧coherent経路の10,216行は削除せず、この改訂Mayの内訳と分けて保持している。
+
+## 115. L09aの符号の再帰で要る四本目の有限分解（11-14未明、停止）
+
+R01・R02からL09aの境界項の対応へ戻り、接頭部の符号を比較した。
+既存の `cutSign` は `intervalLength` と `positionExponent` で
+**元の語の `Surjection.Caesura`** を使う。一方、切断の接頭部の語では
+後続の色の出現を失うので、caesuraは保存されない。
+例：`v=(0,1,0)`、`p=1`、`i=0`。元の語ではcaesuraだが、接頭語 `(0,1)` では違う。
+R02は頂点列を戻す主張であり、元の語での「最後の出現」を接頭語に運ぶ主張ではない。
+そのまま `cutSign s (prefixLabels v p)` を元の語の符号として使うことはできない。
+
+### 115.1 追加が必要な主張の型
+
+次の `prefixPosition` は報告内の記法で、未実装。
+
+```lean
+def prefixPosition {m : ℕ} (p : Fin (m + 1)) (i : Fin (p.val + 1)) :
+    Fin (m + 1) :=
+  ⟨i.val, by have hi := i.isLt; have hp := p.isLt; omega⟩
+
+caesura_prefix_iff {m r : ℕ} (v : Fin (m + 1) → Fin r)
+    (p : Fin (m + 1)) (i : Fin (p.val + 1)) :
+  Surjection.Caesura v (prefixPosition p i) ↔
+    Surjection.Caesura (prefixLabels v p) i ∨
+    ∃ j : Fin (m + 1), p < j ∧ v j = prefixLabels v p i
+```
+
+これは後続の同色のfiberを接頭部内と末尾へ分ける有限分解であり、
+L09aの同じまとまりの追加補題C04として必要になる。
+全射性を足して接頭部に欠ける色を排除することはしない。
+m=0〜4、色数1〜3、全ての語・接頭部・位置の5,384例でこの分解を確認した。
+そのうち1,396例では元の語と接頭部でcaesuraが変わる。
+有限点検は証明の代用ではなく、符号にこの区別が要ることの確認である。
+
+### 115.2 既存APIと停止の理由
+
+`Surjection.Caesuras` には定義、色の置換との可換性、全射語の最後の出現のAPIがある。
+しかし、非全射も許す接頭語への上記の分解は見つからなかった。
+既存のshuffleの混合角の交換・面の一致は利用候補だが、そちらの符号は
+`ShufflePath.sign` であり、BFの色ごとのcaesuraを保持した符号の代わりにはならない。
+
+§113では非全射の接頭部の**頂点列**の復元までを追加として挙げたが、
+元の語のcaesuraを接頭語と末尾に分解する主張を挙げていなかった。
+これはR02の構成の定義評価や相互逆の証明分割ではなく、
+符号計算のための別の色のfiberの分解なので、別枠で記録する。
+有限組合せの追加はC01・C02・C03で3/3に達した。
+前提計算の残り枠を使ってこの第四の有限分解を足すことはしない。
+**承認された枠の停止条件に従い、C04を実装する前にここで停止する。**
+R01・R02の検証済み8本と本報告をコミットして判断を待つ。
+L09aのτ・符号の相殺・微分の等式はまだ証明していない。
+BE作用・operadの法則・Tot・界面は変更せず、G10の部品も作っていない。
+
+## 116. C04とL09a再開（11-14未明、BS-W16 §29）
+
+C04を§115.1の型そのままで実装する。§115の5,384例の点検を先行確認として使う。
+`PrefixCaesuras.prefixPosition` と `caesura_prefix_iff` を置き、元の語のcaesuraを保持する。
+L09a・L09内の有限組合せは数の枠を撤廃する最新指示に従う。
+追加の型と有限点検をその都度記録し、行数1,000ごとに停止せず報告する。
+BE作用・operad・Tot・界面や別のまとまりの新しい主張の停止規則は維持する。
+
+累計は、L09aの既存境界データ五本246行とR01・R02八本607行の **853行** から数える。
+L09aのために新設した有限組合せのファイルも全て含める。
+mainは凍結中なので取り込まず、自枝で対象ビルド・小さい専用監査だけを行う。
+
+### 116.1 次の有限計算と型
+
+`/tmp/bsw16/check-terminal-endpoints.py` で、接頭切断の全ての区間長から
+復元切断のlo・hiを独立に計算して比較した（m=0〜5、q=0〜4）。
+次のC05・C06は、有限順序の区間fiberの最小・最大で定義したlo・hiの特徴づけ。
+
+```lean
+lo_eq_of_bound {m q : ℕ} (s : Cut m q) (i : Fin (m + 1)) (n : ℕ)
+    (j : Fin (m + q + 1)) (hj : s.horizontal j = i) (hv : (s.vertical j).val = n)
+    (hb : ∀ k, s.horizontal k = i → n ≤ (s.vertical k).val) : lo s i = n
+hi_eq_of_bound {m q : ℕ} (s : Cut m q) (i : Fin (m + 1)) (n : ℕ)
+    (j : Fin (m + q + 1)) (hj : s.horizontal j = i) (hv : (s.vertical j).val = n)
+    (hb : ∀ k, s.horizontal k = i → (s.vertical k).val ≤ n) : hi s i = n
+```
+
+所属する頂点での上下界は、この特徴づけの証明分割として置く。
+
+### 116.2 端点の界の型（C07〜C09）
+
+上記の区間長による917例の点検で、それぞれの区間の全頂点が次の界を満たすことも確認した。
+`terminalPrefixVertex p k hk` は位置kを同じ値の接頭頂点として読む記法。
+
+```lean
+terminal_lo_lower_bound {m q : ℕ} (p : Fin (m + 1)) (s : Cut p.val q)
+    (i : Fin (p.val + 1)) (k : Fin (m + (q + 1) + 1))
+    (hc : (terminalExtend m q p s).horizontal k = prefixPosition p i) :
+  lo s i ≤ ((terminalExtend m q p s).vertical k).val
+terminal_hi_upper_bound {m q : ℕ} (p : Fin (m + 1)) (s : Cut p.val q)
+    (i : Fin (p.val + 1)) (hip : i.val < p.val) (k : Fin (m + (q + 1) + 1))
+    (hc : (terminalExtend m q p s).horizontal k = prefixPosition p i) :
+  ((terminalExtend m q p s).vertical k).val ≤ hi s i
+terminal_vertical_of_horizontal_gt {m q : ℕ} (p : Fin (m + 1)) (s : Cut p.val q)
+    (i : Fin (m + 1)) (hip : p < i) (k : Fin (m + (q + 1) + 1))
+    (hc : (terminalExtend m q p s).horizontal k = i) :
+  (terminalExtend m q p s).vertical k = Fin.last (q + 1)
+```
+
+C07〜C09は色・区間の有限なfiberと端点の評価であり、BE作用の新しい主張ではない。
+
+### 116.3 端点の復元式の型（C10〜C13）
+
+§116.1の917例で次の等式を確認してからLeanへ入る。
+
+```lean
+lo_terminalExtend_prefix {m q : ℕ} (p : Fin (m + 1)) (s : Cut p.val q)
+    (i : Fin (p.val + 1)) :
+  lo (terminalExtend m q p s) (prefixPosition p i) = lo s i
+hi_terminalExtend_prefix {m q : ℕ} (p : Fin (m + 1)) (s : Cut p.val q)
+    (i : Fin (p.val + 1)) (hip : i.val < p.val) :
+  hi (terminalExtend m q p s) (prefixPosition p i) = hi s i
+hi_terminalExtend_at {m q : ℕ} (p : Fin (m + 1)) (s : Cut p.val q) :
+  hi (terminalExtend m q p s) p = q + 1
+endpoints_terminalExtend_suffix {m q : ℕ} (p : Fin (m + 1)) (s : Cut p.val q)
+    (i : Fin (m + 1)) (hip : p < i) :
+  lo (terminalExtend m q p s) i = q + 1 ∧ hi (terminalExtend m q p s) i = q + 1
+```
+
+L09a・L09の累計が1,000行を越えたところで、停止せずチャットでも途中報告した。
+この時点ではC04とlo・hiの特徴づけが検証済み、復元区間の界以降を対象ビルド中。
+τ・符号の相殺は未証明。C05〜C13は端点の有限計算に限っている。
+
+### 116.4 元の語のcaesuraを保持する符号データ（C14〜C17）
+
+次の式では、接頭部のcaesuraに置き換えず、元の語vのcaesuraを使う。
+`prefixIndexOfLE p i h` は値iをFin(p+1)へ読む記法。
+
+```lean
+restoredLo p s i := if h : i ≤ p then lo s (prefixIndexOfLE p i h) else q + 1
+restoredHi p s i := if h : i < p then hi s (prefixIndexOfLE p i h.le) else q + 1
+restoredLength p s v i := restoredHi p s i - restoredLo p s i +
+  if Surjection.Caesura v i then 1 else 0
+restoredSignExponent p s v :=
+  (∑ i, ∑ j, if i < j ∧ v j < v i then
+    restoredLength p s v i * restoredLength p s v j else 0) +
+  ∑ i, if Surjection.Caesura v i then restoredHi p s i else 0
+
+lo_terminalExtend {m q : ℕ} (p : Fin (m + 1)) (s : Cut p.val q)
+    (i : Fin (m + 1)) : lo (terminalExtend m q p s) i = restoredLo p s i
+hi_terminalExtend {m q : ℕ} (p : Fin (m + 1)) (s : Cut p.val q)
+    (i : Fin (m + 1)) : hi (terminalExtend m q p s) i = restoredHi p s i
+intervalLength_terminalExtend {m q r : ℕ} (p : Fin (m + 1)) (s : Cut p.val q)
+    (v : Fin (m + 1) → Fin r) (i : Fin (m + 1)) :
+  intervalLength (terminalExtend m q p s) v i = restoredLength p s v i
+cutSign_terminalExtend {m q r : ℕ} (p : Fin (m + 1)) (s : Cut p.val q)
+    (v : Fin (m + 1) → Fin r) :
+  cutSign (terminalExtend m q p s) v = (-1 : ℤ) ^ restoredSignExponent p s v
+```
+
+C14・C15は917例の端点点検の一括した式。
+C16・C17も、以下の符号点検を先行してから実装に入る。
+元の語を持つ数値の式であり、新しいBE作用やオペラッドの法則は定義しない。
+
+### 116.5 検証済みの区切り（停止せず続行）
+
+C04と端点・符号データの五本を検証した。`PrefixCaesuras` 42行、`IntervalExtrema` 57行、
+`TerminalIntervalBounds` 90行、`TerminalEndpoints` 64行、`TerminalSignData` 77行、計330行。
+符号指数の式はm=0〜3、q=0〜3、色数1〜3の全ての語で **8,206例**一致。
+対象ビルド `lake build SerrePositivity.EInfinity.SimplexCuts.TerminalSignData` 成功。
+専用監査は **5モジュール・47宣言・標準三公理のみ**、sorry・追加公理0。
+ログは `/tmp/bsw16/m14-terminal-sign-data-02.log` と
+`/tmp/bsw16/audit-m14-terminal-sign.log`。
+登録候補はこの五本（名前は全て `SerrePositivity.EInfinity.SimplexCuts.` の下）。
+
+L09a・L09の累計 **1,183行**、改訂MayのM14全体 **6,249行**。
+1,000行の途中報告は済み、次は2,000行で報告する。τと境界の相殺は未証明。
+最新のBS-W16 §30に従い、M15・G12は⑤dへ移ったので⑤aから進めない。
+引継ぎ対象の既存の紙の報告は変更しない。mainへの取り込みも行わない。
+
+## 117. 混合角の削除後の出力列（L09a続行）
+
+`/tmp/bsw16/check-corner-sign.py` で全射・隣接非退化の語と混合角を列挙した。
+m=1〜4、q=1〜3、色数1〜3の **9,536例**で、交換後に中間頂点を削除した各色の
+出力列が一致し、BF符号とテンソル境界符号の積が反対になることを確認した。
+これは符号のLean証明の代用にしない。
+C18の列の一致自体は混合角の仮定が要らないので、
+`/tmp/bsw16/check-corner-trace.py` で同じ向きの隣接辺も含む全経路を別に点検した。
+
+```lean
+def deletedTrace {m q r : ℕ} (s : Cut m q) (v : Fin (m + 1) → Fin r)
+    (k : Fin (m + q + 1)) : List (Fin r × Fin (q + 1)) :=
+  List.ofFn (fun j => (label s v (k.succAbove j), s.vertical (k.succAbove j)))
+
+deletedTrace_swapSteps {m q r : ℕ} (s : Cut m q) (v : Fin (m + 1) → Fin r)
+    (a b : Fin (m + q)) (hab : b.val = a.val + 1) :
+  deletedTrace (s.swapSteps a b) v b.castSucc = deletedTrace s v b.castSucc
+```
+
+既存の `horizontal_swapSteps`・`vertical_swapSteps` を同じ省略頂点の補集合上で使う。
+新しいBE作用ではなく、L09aの境界の二項を対応させるための有限列の照合である。
+
+### 117.1 頂点削除を色の面番号へ運ぶ型（C19・C20）
+
+C18は同向きの辺も含む550例で削除後の経路が一致した。
+`check-corner-trace.py` の最初の点検では同向きの辺まで対称差で反転して失敗したため、
+二つの位置の**交換**による像へ直した。Leanの `swapSteps` もこの交換を使う。
+
+`/tmp/bsw16/check-color-erasure.py` で、長さ0〜6・色数1〜3の全語、
+全ての色と範囲外も含む削除位置について、C20の式を点検してからLeanへ入る。
+C19の列はその位置を `succAbove` で飛ばす同じ操作。
+
+```lean
+eraseIdx_ofFn {β : Type*} {N : ℕ} (f : Fin (N + 1) → β) (k : Fin (N + 1)) :
+  (List.ofFn f).eraseIdx k.val = List.ofFn (fun j => f (k.succAbove j))
+selectColor_eraseIdx {r : ℕ} {β : Type*} (c : Fin r) (l : List (Fin r × β)) (k : ℕ) :
+  selectColor c (l.eraseIdx k) =
+    if (l[k]?.map Prod.fst) = some c then
+      (selectColor c l).eraseIdx (selectColor c (l.take k)).length
+    else selectColor c l
+```
+
+削除される色のfiber内の面番号は、元の頂点より前に出た同色の個数である。
+
+### 117.2 出力の面の位置を一つの経路の頂点へまとめる型（C21・C22）
+
+長さ0〜6、色数1〜3の全ての語で、色と色内順位の組を元の位置へ戻す写像が
+全位置を一回ずつ覆い、逆の色と先行同色数も一致することを点検した。
+Leanでは既存の `Finset.orderIsoOfFin` と `Equiv.sigmaFiberEquiv` を合成する。
+
+```lean
+colorPositionEquiv {m q r : ℕ} (s : Cut m q) (u : Surjection.Word r (m + 1)) :
+  (Σ a : Fin r, Fin (outputDegree s u a + 1)) ≃ Fin (m + q + 1)
+outputBoundaryPositionEquiv {r d : ℕ} (u : Surjection.BasisWord (r + 1) d) (q : ℕ) :
+  OutputBoundaryIndex u q ≃ Σ s : Cut (r + d) q, Fin (r + d + q + 1)
+```
+
+前者の正方向は各色の `orderEmbOfFin`、逆の色は `label s u.val k` そのもの。
+零となる境界項を添字から先に消さず、零次の色の唯一の面番号も残す。
+
+### 117.3 出力の角交換の対合（C23〜C25）
+
+m=0〜5、q=0〜4の全経路と全指定頂点で、内部の前後の辺の交換が二回で戻ることを
+点検してから実装する。同向きの辺では元の経路のまま、両端でも恒等とする。
+
+```lean
+def swapAtVertex {m q : ℕ} (s : Cut m q) (k : Fin (m + q + 1)) : Cut m q :=
+  if h : 0 < k.val ∧ k.val < m + q then
+    s.swapSteps (cornerLeftEdge k h) (cornerRightEdge k h) else s
+swapAtVertex_involutive {m q : ℕ} (k : Fin (m + q + 1)) :
+  Function.Involutive (fun s : Cut m q => swapAtVertex s k)
+vertexCornerPerm (m q : ℕ) : Equiv.Perm (Σ _ : Cut m q, Fin (m + q + 1))
+outputCornerPerm {r d : ℕ} (u : Surjection.BasisWord (r + 1) d) (q : ℕ) :
+  Equiv.Perm (OutputBoundaryIndex u q)
+outputCornerPerm_involutive {r d : ℕ} (u : Surjection.BasisWord (r + 1) d) (q : ℕ) :
+  Function.Involutive (outputCornerPerm u q)
+```
+
+これは**全境界項のτではない**。混合角以外に残る固定点の境界項は零とは主張せず、
+係数の文字削除・入力の面に対応させる段を別に残す。
+
+### 117.4 実際の色の出力列の削除の型（C26〜C28）
+
+C26〜C28は§117・§117.1の点検済みの列の式を切断へ特殊化する。
+先行同色数がその色の範囲内であることも、同じ26,430例の点検で保持した。
+
+```lean
+vertexRank s v c k :=
+  (selectColor c ((List.ofFn (fun i => (label s v i, s.vertical i))).take k.val)).length
+deletedVerticesList s v k c :=
+  if label s v k = c then (verticesList s v c).eraseIdx (vertexRank s v c k)
+  else verticesList s v c
+
+deletedVerticesList_eq_selectColor {m q r : ℕ} (s : Cut m q)
+    (v : Fin (m + 1) → Fin r) (k : Fin (m + q + 1)) (c : Fin r) :
+  deletedVerticesList s v k c = selectColor c (deletedTrace s v k)
+deletedVerticesList_swapSteps {m q r : ℕ} (s : Cut m q)
+    (v : Fin (m + 1) → Fin r) (a b : Fin (m + q)) (hab : b.val = a.val + 1)
+    (c : Fin r) :
+  deletedVerticesList (s.swapSteps a b) v b.castSucc c =
+    deletedVerticesList s v b.castSucc c
+vertexRank_lt_length {m q r : ℕ} (s : Cut m q) (v : Fin (m + 1) → Fin r)
+    (k : Fin (m + q + 1)) :
+  vertexRank s v (label s v k) k < (verticesList s v (label s v k)).length
+```
+
+### 117.5 昇順fiberの面番号の型（C29・C30）
+
+N=0〜8の全ての部分集合の各昇順位置で、「前の元の数＝順位」を点検してからLeanへ入る。
+
+```lean
+card_filter_lt_orderEmbOfFin {α : Type*} [LinearOrder α] (t : Finset α) {N : ℕ}
+    (h : t.card = N) (j : Fin N) :
+  (t.filter (fun x => x < t.orderEmbOfFin h j)).card = j.val
+colorPositionEquiv_rank {m q r : ℕ} (s : Cut m q)
+    (u : Surjection.Word r (m + 1)) (a : Fin r) (j : Fin (outputDegree s u a + 1)) :
+  ((colorPositions s u.val a).filter (fun k => k < colorPositionEquiv s u ⟨a, j⟩)).card = j.val
+```
+
+### 117.6 列の順位と面番号の一致の型（C31〜C33）
+
+§117.1の26,430例と§117.2の1,227語の順位点検から、列の先行同色数と
+有限集合の順位が一致する式を使う。C31は範囲外のkも含む点検の式の長さである。
+
+```lean
+selectColor_take_ofFn_length {r N : ℕ} {β : Type*} (f : Fin N → Fin r × β)
+    (c : Fin r) (k : ℕ) :
+  (selectColor c ((List.ofFn f).take k)).length =
+    (Finset.univ.filter (fun i => i.val < k ∧ (f i).1 = c)).card
+vertexRank_eq_card {m q r : ℕ} (s : Cut m q) (v : Fin (m + 1) → Fin r)
+    (c : Fin r) (k : Fin (m + q + 1)) :
+  vertexRank s v c k = ((colorPositions s v c).filter (fun i => i < k)).card
+vertexRank_colorPositionEquiv {m q r : ℕ} (s : Cut m q)
+    (u : Surjection.Word r (m + 1)) (a : Fin r) (j : Fin (outputDegree s u a + 1)) :
+  vertexRank s u.val a (colorPositionEquiv s u ⟨a, j⟩) = j.val
+```
+
+### 117.7 同じ指定面と頂点列の型（C34〜C36）
+
+正次数0〜4（元の頂点数2〜6）、終域次数0〜3の全ての弱単調写像と全ての削除位置で、
+標準面との合成と頂点列の一文字削除が一致することを点検してからLeanへ入る。
+
+```lean
+simplexVertexList {n q : ℕ} (f : (⦋n⦌ : SimplexCategory) ⟶ ⦋q⦌) : List (Fin (q + 1))
+simplexVertexList_injective (n q : ℕ) :
+  Function.Injective (fun f : (⦋n⦌ : SimplexCategory) ⟶ ⦋q⦌ => simplexVertexList f)
+simplexVertexList_delta {n q : ℕ}
+    (f : (⦋n + 1⦌ : SimplexCategory) ⟶ ⦋q⦌) (j : Fin (n + 2)) :
+  simplexVertexList (SimplexCategory.δ j ≫ f) = (simplexVertexList f).eraseIdx j.val
+simplexVertexList_face {m q r : ℕ} (s : Cut m q)
+    (u : Surjection.Word r (m + 1)) (a : Fin r) :
+  simplexVertexList (face s u a) = verticesList s u.val a
+```
+
+面の一致をホモトピーで済ませず、元の単体圏の射の一致へ戻すための有限計算。
+
+### 117.8 指定した出力面の列（C37〜C40）
+
+C37〜C39は、§117.2の順位と§117.1の削除の点検の同じ式を指定の面番号で読んだもの。
+C40は§117.7の標準面の点検を正次数で述べ直す。始域の等式による移送は定義評価。
+
+```lean
+vertexRank_symm_colorPositionEquiv {m q r : ℕ} (s : Cut m q)
+    (u : Surjection.Word r (m + 1)) (k : Fin (m + q + 1)) :
+  vertexRank s u.val (label s u.val k) k = ((colorPositionEquiv s u).symm k).2.val
+label_colorPositionEquiv {m q r : ℕ} (s : Cut m q)
+    (u : Surjection.Word r (m + 1)) (a : Fin r) (j : Fin (outputDegree s u a + 1)) :
+  label s u.val (colorPositionEquiv s u ⟨a, j⟩) = a
+deletedTrace_at_outputFace {m q r : ℕ} (s : Cut m q)
+    (u : Surjection.Word r (m + 1)) (a : Fin r) (j : Fin (outputDegree s u a + 1))
+    (c : Fin r) :
+  selectColor c (deletedTrace s u.val (colorPositionEquiv s u ⟨a, j⟩)) =
+    if c = a then (verticesList s u.val a).eraseIdx j.val else verticesList s u.val c
+simplexVertexList_boundaryFace {n q : ℕ} (hn : 0 < n)
+    (f : (⦋n⦌ : SimplexCategory) ⟶ ⦋q⦌) (j : Fin (n + 1)) :
+  simplexVertexList (boundaryFace n hn j ≫ f) = (simplexVertexList f).eraseIdx j.val
+simplexVertexList_cast_source {n n' q : ℕ} (h : n = n')
+    (f : (⦋n'⦌ : SimplexCategory) ⟶ ⦋q⦌) :
+  simplexVertexList (eqToHom (congrArg SimplexCategory.mk h) ≫ f) = simplexVertexList f
+```
+
+### 117.9 混合角と固定点の型（C41〜C43）
+
+m=0〜5、q=0〜4の3,829個の指定頂点付き経路で、非固定点と内部の異向きの二辺が
+ちょうど一致することを先に点検した。
+
+```lean
+swapSteps_eq_self_iff {m q : ℕ} (s : Cut m q) (a b : Fin (m + q)) :
+  s.swapSteps a b = s ↔ (a ∈ s.val ↔ b ∈ s.val)
+MixedVertex {m q : ℕ} (s : Cut m q) (k : Fin (m + q + 1)) : Prop :=
+  ∃ h : 0 < k.val ∧ k.val < m + q,
+    cornerLeftEdge k h ∈ s.val ↔ cornerRightEdge k h ∉ s.val
+swapAtVertex_ne_iff {m q : ℕ} (s : Cut m q) (k : Fin (m + q + 1)) :
+  swapAtVertex s k ≠ s ↔ MixedVertex s k
+mixedVertex_swapAtVertex_iff {m q : ℕ} (s : Cut m q) (k : Fin (m + q + 1)) :
+  MixedVertex (swapAtVertex s k) k ↔ MixedVertex s k
+```
+
+ここでの固定点は「出力の角交換」の固定点であり、全体のτの固定点とは区別する。
+
+## 118. 全境界の有限な対応候補を点検（L09a続行）
+
+`/tmp/bsw16/check-boundary-pairing.py` に、経路の指定頂点の次の対応を独立に書いた。
+水平・水平（端点で水平辺の場合も含む）はゼロ長の区間を消して係数の文字削除へ、
+垂直・垂直（端点も含む）は垂直辺を一本消して入力面へ、混合角は前後の辺を交換する。
+水平次数0の余分な係数添字、入力次数0の入力面添字、総次数0の出力添字は固定する。
+逆は、係数位置で水平なゼロ長区間を挿入、入力面の指定レベルで垂直辺を挿入する。
+
+m=0〜5、q=0〜4の **6,070添字**で二回の対応が恒等になることを確認。
+さらにm=0〜4、q=0〜3、色数1〜3の全射・隣接非退化の語について、
+`cutSign`・`deletionCoefficient`・テンソルの境界のKoszul符号・入力面の負号を保ち、
+重複した出力頂点を零とする独立な計算で **38,322項**が反対の値になった。
+これからこの候補をLeanで構成する。有限点検だけからτや境界の等式を宣言しない。
+
+### 118.1 分岐の型（C44〜C46）
+
+```lean
+inductive BoundaryVertexKind
+  | horizontal | vertical | mixed | isolated
+boundaryVertexKind {m q : ℕ} (s : Cut m q) (k : Fin (m + q + 1)) : BoundaryVertexKind
+boundaryVertexKind_eq_mixed_iff {m q : ℕ} (s : Cut m q) (k : Fin (m + q + 1)) :
+  boundaryVertexKind s k = .mixed ↔ MixedVertex s k
+boundaryVertexKind_eq_isolated_iff {m q : ℕ} (s : Cut m q) (k : Fin (m + q + 1)) :
+  boundaryVertexKind s k = .isolated ↔ m = 0 ∧ q = 0
+```
+
+C44は前後の辺の所属の判定、C45・C46は上記6,070添字の分岐を点検した条件。
+
+### 118.2 水平境界に対応する一頂点の区間（C47・C48）
+
+m=0〜5、q=0〜5の全ての区間長の列で、一頂点のfiberと零長区間の条件を点検してから
+Leanへ入る。区間の非空性と既存の経路の頂点の単射性から証明する。
+
+```lean
+intervalPositions_card_eq_one_iff {m q : ℕ} (s : Cut m q) (i : Fin (m + 1)) :
+  (intervalPositions s i).card = 1 ↔ lo s i = hi s i
+interval_gap_eq_zero_iff {m q : ℕ} (s : Cut m q) (i : Fin (m + 1)) :
+  hi s i - lo s i = 0 ↔ (intervalPositions s i).card = 1
+```
+
+### 118.3 語に依らない境界添字と種類の分割（C49・C50）
+
+§118の6,070添字の点検の各分岐を、その種類の部分型に分ける。
+有限の直和への分割は、各指定頂点を一回だけ保持する。
+
+```lean
+abbrev MarkedCut (m q : ℕ) := Σ _ : Cut m q, Fin (m + q + 1)
+abbrev BoundaryVertexOfKind (m q : ℕ) (b : BoundaryVertexKind) :=
+  {t : MarkedCut m q // boundaryVertexKind t.1 t.2 = b}
+boundaryVertexPartitionEquiv (m q : ℕ) : MarkedCut m q ≃
+  BoundaryVertexOfKind m q .horizontal ⊕ (BoundaryVertexOfKind m q .vertical ⊕
+    (BoundaryVertexOfKind m q .mixed ⊕ BoundaryVertexOfKind m q .isolated))
+abbrev UniversalBoundaryIndex (m q : ℕ) :=
+  MarkedCut m q ⊕ ((Fin (m + 1) × Cut (m - 1) q) ⊕ (Fin (q + 1) × Cut m (q - 1)))
+boundaryBalanceIndexEquiv {r d : ℕ} (u : Surjection.BasisWord (r + 1) d) (q : ℕ) :
+  BoundaryBalanceIndex u q ≃ UniversalBoundaryIndex (r + d) q
+```
+
+最後の同値は出力面の位置の同値を直和へ運ぶだけで、元の境界項の型を変更しない。
+
+### 118.4 端点・内部の判定の評価（C51〜C53）
+
+§118の全指定頂点の分岐の点検と同じ形で、定義を次の式へ評価する。
+
+```lean
+boundaryVertexKind_zero {m q : ℕ} (s : Cut m q) (hN : 0 < m + q) :
+  boundaryVertexKind s 0 =
+    if (⟨0, hN⟩ : Fin (m + q)) ∈ s.val then .horizontal else .vertical
+boundaryVertexKind_last {m q : ℕ} (s : Cut m q) (hN : 0 < m + q) :
+  boundaryVertexKind s (Fin.last (m + q)) =
+    if (⟨m + q - 1, by omega⟩ : Fin (m + q)) ∈ s.val then .horizontal else .vertical
+boundaryVertexKind_interior {m q : ℕ} (s : Cut m q) (k : Fin (m + q + 1))
+    (h : 0 < k.val ∧ k.val < m + q) :
+  boundaryVertexKind s k =
+    if cornerLeftEdge k h ∈ s.val then
+      if cornerRightEdge k h ∈ s.val then .horizontal else .mixed
+    else if cornerRightEdge k h ∈ s.val then .mixed else .vertical
+```
+
+### 118.5 一頂点のfiberと隣接辺（C54〜C56）
+
+有限単調写像（始域次数0〜5、終域次数0〜3）の全ての指定頂点で、
+fiberが一頂点であることと両側の厳密な増分の条件を点検してからLeanへ入る。
+水平辺の増分自体は、§118の全経路の既存の辺の向きの点検でも確認している。
+
+```lean
+mem_iff_horizontal_lt {m q : ℕ} (s : Cut m q) (a : Fin (m + q)) :
+  a ∈ s.val ↔ s.horizontal a.castSucc < s.horizontal a.succ
+monotone_fiber_singleton_iff {N M : ℕ} (f : Fin (N + 1) →o Fin (M + 1))
+    (k : Fin (N + 1)) :
+  (∀ j, f j = f k → j = k) ↔
+    (∀ a : Fin N, a.succ = k → f a.castSucc < f k) ∧
+    (∀ a : Fin N, a.castSucc = k → f k < f a.succ)
+HorizontalVertex {m q : ℕ} (s : Cut m q) (k : Fin (m + q + 1)) : Prop :=
+  (∀ a : Fin (m + q), a.succ = k → a ∈ s.val) ∧
+  (∀ a : Fin (m + q), a.castSucc = k → a ∈ s.val)
+horizontal_fiber_singleton_iff {m q : ℕ} (s : Cut m q) (k : Fin (m + q + 1)) :
+  (∀ j, s.horizontal j = s.horizontal k → j = k) ↔ HorizontalVertex s k
+```
+
+総次数零では左右の辺の条件は空となる点を保持し、零次の余分な係数添字の分岐を潰さない。
+
+### 118.6 水平境界の判定と隣接辺の型（C57〜C60）
+
+§118の全指定頂点の分岐の点検と§118.5のfiberの点検を、同じ左右の辺の条件で述べる。
+
+```lean
+horizontalVertex_interior_iff {m q : ℕ} (s : Cut m q) (k : Fin (m + q + 1))
+    (h : 0 < k.val ∧ k.val < m + q) :
+  HorizontalVertex s k ↔ cornerLeftEdge k h ∈ s.val ∧ cornerRightEdge k h ∈ s.val
+horizontalVertex_zero_iff {m q : ℕ} (s : Cut m q) (hN : 0 < m + q) :
+  HorizontalVertex s 0 ↔ (⟨0, hN⟩ : Fin (m + q)) ∈ s.val
+horizontalVertex_last_iff {m q : ℕ} (s : Cut m q) (hN : 0 < m + q) :
+  HorizontalVertex s (Fin.last (m + q)) ↔
+    (⟨m + q - 1, by omega⟩ : Fin (m + q)) ∈ s.val
+boundaryVertexKind_eq_horizontal_iff {m q : ℕ} (s : Cut m q)
+    (k : Fin (m + q + 1)) :
+  boundaryVertexKind s k = .horizontal ↔ 0 < m + q ∧ HorizontalVertex s k
+```
+
+### 118.7 水平境界と零長区間の型（C61〜C63）
+
+§118の全指定頂点の点検では、水平に分類した頂点の区間は零長であり、水平次数は正。
+§118.2のfiberの点検と同じ条件を合わせる。
+
+```lean
+horizontalVertex_iff_card_eq_one {m q : ℕ} (s : Cut m q)
+    (k : Fin (m + q + 1)) :
+  HorizontalVertex s k ↔ (intervalPositions s (s.horizontal k)).card = 1
+boundaryVertexKind_eq_horizontal_gap {m q : ℕ} (s : Cut m q)
+    (k : Fin (m + q + 1)) :
+  boundaryVertexKind s k = .horizontal ↔
+    0 < m + q ∧ hi s (s.horizontal k) - lo s (s.horizontal k) = 0
+horizontal_kind_pos {m q : ℕ} (s : Cut m q) (k : Fin (m + q + 1))
+    (hk : boundaryVertexKind s k = .horizontal) : 0 < m
+```
+
+### 118.8 検証済みの区切りと2,000行の途中報告
+
+§117〜§118.7の17モジュール、計 **1,031行**を対象ビルドで検証した。
+`CornerTraces`・`VertexErasure`・`BoundaryPositions`・`CornerInvolution`・`DeletedVertices`・
+`FiberRanks`・`VertexRanks`・`FaceVertexLists`・`BoundaryVertexLists`・`CornerFixedPoints`・
+`BoundaryKinds`・`IntervalSingletons`・`BoundaryPartition`・`BoundaryKindValues`・
+`SingletonFiberSteps`・`HorizontalVertexKinds`・`HorizontalSingletons`。
+名前の接頭部は全て `SerrePositivity.EInfinity.SimplexCuts.`。次の登録候補一覧はこの17本。
+
+専用監査 `/tmp/bsw16/audit-m14-boundary-fibers.lean` は
+**17モジュール・164宣言・標準三公理のみ**。
+対象ビルドは `/tmp/bsw16/m14-horizontal-singletons-01.log` などに成功を確認。
+新規ソースにsorry・追加公理0、警告も解消。rootや全体監査は回していない。
+
+この時点でL09a・L09の累計 **2,214行**、改訂MayのM14全体 **7,280行**。
+2,000行を越えた途中報告は停止せずチャットでも行った。次は3,000行で報告する。
+全体のτ、BFの境界の相殺・微分の等式はまだ証明していない。
+水平な端点の挿入の同値へ続ける。
+
+### 118.9 水平端点の挿入の同値の型（C64〜C66）
+
+§118の6,070添字の往復の点検のうち、水平な始点・終点を挿入する分岐を使う。
+既存の `BarrattEccles.horizontalInsertionEquiv` へ、固定した頂点の条件を付ける。
+
+```lean
+fixedMarkedCutEquiv {m q : ℕ} (b : BoundaryVertexKind) (k : Fin (m + q + 1)) :
+  {s : Cut m q // boundaryVertexKind s k = b} ≃
+    {t : MarkedCut m q // boundaryVertexKind t.1 t.2 = b ∧ t.2 = k}
+horizontalFirstFaceEquiv (m q : ℕ) : Cut m q ≃
+  {t : MarkedCut (m + 1) q // boundaryVertexKind t.1 t.2 = .horizontal ∧ t.2 = 0}
+horizontalLastFaceEquiv (m q : ℕ) : Cut m q ≃
+  {t : MarkedCut (m + 1) q // boundaryVertexKind t.1 t.2 = .horizontal ∧
+    t.2 = Fin.last (m + 1 + q)}
+```
+
+### 118.10 水平内部面の挿入の同値の型（C67・C68）
+
+§118の6,070添字の往復の点検のうち、内部の水平・水平の分岐を使う。
+既存の `horizontalMarkedEdgeEquiv` と `horizontalCornerEquiv` を合成し、
+角の中間頂点の値をa+1として指定頂点付き経路へ移す。
+
+```lean
+HorizontalInteriorFace (m q : ℕ) :=
+  {t : MarkedCut (m + 1) q // boundaryVertexKind t.1 t.2 = .horizontal ∧
+    0 < t.2.val ∧ t.2.val < m + 1 + q}
+horizontalCornerFaceEquiv (m q : ℕ) :
+  BarrattEccles.HorizontalCorner m q ≃ HorizontalInteriorFace m q
+horizontalInteriorFaceEquiv (m q : ℕ) :
+  Cut m q × Fin m ≃ HorizontalInteriorFace m q
+```
+
+### 118.11 水平な三分岐の同値までの検証済み区切り
+
+`HorizontalEndpointFaces` 53行、`HorizontalInteriorFaces` 86行、計139行を対象ビルドで検証した。
+水平な始点・終点・内部のそれぞれで、小さい切断から水平辺を挿入する同値が閉じた。
+既存のshuffleの角の挿入を利用し、公開宣言の定義は変更していない。
+
+対象ビルド `lake build SerrePositivity.EInfinity.SimplexCuts.HorizontalInteriorFaces` 成功
+（`/tmp/bsw16/m14-horizontal-interior-faces-03.log`）。
+専用監査 `/tmp/bsw16/audit-m14-horizontal-faces.lean` は
+**2モジュール・44宣言・標準三公理のみ**。
+新規二本にsorry・追加公理0、Leanの警告なし。次の登録候補はこの二本も含む。
+それぞれのビルド・監査だけ鍵を取り、終了時に返した。root・全体監査は回していない。
+
+L09a・L09の累計 **2,353行**、改訂MayのM14全体 **7,419行**。
+C04再開後の新規分は、五本330行、十七本1,031行、二本139行、計 **1,500行**。
+外枠25,000行と半分の12,500行には届いていない。
+有限組合せの追加の数では停止しない最新の規則を維持する。
+
+次に残る有限対応は、水平な三分岐を係数の `Fin (m + 2) × Cut m q` へまとめること、
+垂直な始点・終点・内部の対応、および混合角との直和で全体のτを作ること。
+その後の符号と正規化した境界項の反対の値のLean証明も未完。
+§118の38,322項のPython点検を、それらのLean証明として扱っていない。
+G10・Tot・界面・新しいBE作用・operadの法則は作っておらず、M15・G12にも手を付けない。
+main凍結を維持し、以上は自枝の検証済み保存の区切りとして記録する。
+
+## 119. 共通の一覧の数え方へ移行して続行（11-14）
+
+最新のcoordination.md §2に従い、既存の構成の法則（単位・余単位・自然性・係数移送・
+合成則・貼り合わせ）と証明分割に数の枠を置かない。型を報告に記録し、
+200行を超える補題には行数も記す。L09a・L09の有限組合せの事前点検、
+1,000行ごとの途中報告、M14全体25,000行の外枠は維持する。
+mainは凍結中で、自枝の対象ビルド・小さい専用監査だけを行う。
+
+### 119.1 既存の種類の部分型を三分岐へ貼り合わせる型（C69）
+
+総次数N=1〜12の全90頂点で、始点・内部・終点のちょうど一つに属することを確認。
+この有限の位置の判定を、既存の境界種類の部分型に付ける。
+
+```lean
+FirstBoundaryFace (m q : ℕ) (b : BoundaryVertexKind) :=
+  {t : MarkedCut m q // boundaryVertexKind t.1 t.2 = b ∧ t.2 = 0}
+InteriorBoundaryFace (m q : ℕ) (b : BoundaryVertexKind) :=
+  {t : MarkedCut m q // boundaryVertexKind t.1 t.2 = b ∧ 0 < t.2.val ∧ t.2.val < m + q}
+LastBoundaryFace (m q : ℕ) (b : BoundaryVertexKind) :=
+  {t : MarkedCut m q // boundaryVertexKind t.1 t.2 = b ∧ t.2 = Fin.last (m + q)}
+boundaryEndpointPartitionEquiv (m q : ℕ) (b : BoundaryVertexKind) (hN : 0 < m + q) :
+  BoundaryVertexOfKind m q b ≃ FirstBoundaryFace m q b ⊕
+    (InteriorBoundaryFace m q b ⊕ LastBoundaryFace m q b)
+```
+
+### 119.2 水平な三分岐の貼り合わせの型（C70・C71）
+
+§118の水平境界の全ての往復の点検と§119.1の位置の分割の点検を使う。
+既存の `finSumFinEquiv`、積の直和への分配、三つの挿入同値を合成する。
+
+```lean
+singletonSlotProdEquiv (X : Type*) : Fin 1 × X ≃ X
+firstInteriorLastIndexEquiv (m : ℕ) : Fin (m + 2) ≃ Fin 1 ⊕ (Fin m ⊕ Fin 1)
+coefficientIndexEndpointEquiv (m q : ℕ) :
+  Fin (m + 2) × Cut m q ≃ Cut m q ⊕ ((Cut m q × Fin m) ⊕ Cut m q)
+horizontalBoundaryFaceEquiv (m q : ℕ) :
+  Fin (m + 2) × Cut m q ≃ BoundaryVertexOfKind (m + 1) q .horizontal
+```
+
+新しい作用や定理を仮定せず、検証済みの水平な三分岐を同じ有限添字に貼り合わせる。
+
+### 119.3 既存の方向交換と境界種類の照合（C72〜C74）
+
+m=0〜5、q=0〜4の全3,829個の指定頂点付き経路で、水平辺の補集合への交換が
+水平・垂直の判定を交換し、混合・単独頂点を保つことを点検してから実装する。
+`setBoundaryKind` は既存の `boundaryVertexKind` と同じ有限判定を、全辺数と集合だけで読む記法。
+
+```lean
+BoundaryVertexKind.exchange : BoundaryVertexKind → BoundaryVertexKind
+BoundaryVertexKind.exchange_involutive : Function.Involutive BoundaryVertexKind.exchange
+setBoundaryKind {N : ℕ} (s : Finset (Fin N)) (k : Fin (N + 1)) : BoundaryVertexKind
+boundaryVertexKind_eq_setBoundaryKind {m q : ℕ} (s : Cut m q)
+    (k : Fin (m + q + 1)) : boundaryVertexKind s k = setBoundaryKind s.val k
+setBoundaryKind_compl {N : ℕ} (s : Finset (Fin N)) (k : Fin (N + 1)) :
+  setBoundaryKind sᶜ k = (setBoundaryKind s k).exchange
+setBoundaryKind_map_finCongr {N N' : ℕ} (h : N = N') (s : Finset (Fin N))
+    (k : Fin (N + 1)) :
+  setBoundaryKind (s.map (finCongr h).toEmbedding) (Fin.cast (congrArg (· + 1) h) k) =
+    setBoundaryKind s k
+boundaryVertexKind_exchange {m q : ℕ} (s : Cut m q) (k : Fin (m + q + 1)) :
+  boundaryVertexKind s.exchange (Fin.cast (by omega : m + q + 1 = q + m + 1) k) =
+    (boundaryVertexKind s k).exchange
+```
+
+新しい作用は作らず、既存の `shuffleExchangeEquiv` と有限な辺集合の判定を照合する法則。
+
+### 119.4 垂直境界への既存の同値の移送の型（C75〜C78）
+
+§118の垂直分岐の全ての往復と§119.3の方向交換の点検を使う。
+水平側の同値と方向交換の同値を合成し、別に垂直側の三分岐を作り直さない。
+
+```lean
+markedCutExchangeEquiv (m q : ℕ) : MarkedCut m q ≃ MarkedCut q m
+boundaryKindExchangeEquiv (m q : ℕ) (b : BoundaryVertexKind) :
+  BoundaryVertexOfKind m q b ≃ BoundaryVertexOfKind q m b.exchange
+verticalBoundaryFaceEquiv (m q : ℕ) :
+  Fin (q + 2) × Cut m q ≃ BoundaryVertexOfKind m (q + 1) .vertical
+vertical_kind_pos {m q : ℕ} (s : Cut m q) (k : Fin (m + q + 1))
+    (hk : boundaryVertexKind s k = .vertical) : 0 < q
+```
+
+### 119.5 全境界の同じ添字への書き換え（C79〜C82）
+
+既存の水平・垂直の同値を、正の次数と前者の次数への添字で述べ直す。
+混合角の種類の保存と対合の式は、検証済みの角交換の法則の同じ式の書き換え。
+点検は§118の全境界の往復と§117.9の混合角の点検に含まれる。
+
+```lean
+horizontalBoundaryAllEquiv (m q : ℕ) (hm : 0 < m) :
+  Fin (m + 1) × Cut (m - 1) q ≃ BoundaryVertexOfKind m q .horizontal
+verticalBoundaryAllEquiv (m q : ℕ) (hq : 0 < q) :
+  Fin (q + 1) × Cut m (q - 1) ≃ BoundaryVertexOfKind m q .vertical
+mixed_kind_swapAtVertex {m q : ℕ} (s : Cut m q) (k : Fin (m + q + 1))
+    (hk : boundaryVertexKind s k = .mixed) :
+  boundaryVertexKind (swapAtVertex s k) k = .mixed
+vertexCornerPerm_involutive (m q : ℕ) : Function.Involutive (vertexCornerPerm m q)
+```
+
+### 119.6 検証済みの同値を全境界へ貼り合わせる型（C83〜C86）
+
+§118の6,070添字の往復の点検で使った対応を、既存の挿入同値・方向交換・角交換で作る。
+水平・垂直の正の次数を満たさない余分な右辺添字と、単独の出力頂点は固定する。
+
+```lean
+universalBoundaryPartner (m q : ℕ) : UniversalBoundaryIndex m q → UniversalBoundaryIndex m q
+universalBoundaryPartner_involutive (m q : ℕ) : Function.Involutive (universalBoundaryPartner m q)
+universalBoundaryPerm (m q : ℕ) : Equiv.Perm (UniversalBoundaryIndex m q)
+boundaryBalancePerm {r d : ℕ} (u : Surjection.BasisWord (r + 1) d) (q : ℕ) :
+  Equiv.Perm (BoundaryBalanceIndex u q)
+boundaryBalancePerm_involutive {r d : ℕ} (u : Surjection.BasisWord (r + 1) d) (q : ℕ) :
+  Function.Involutive (boundaryBalancePerm u q)
+```
+
+これはL09aのτの**添字上の候補**。符号付き境界項の相殺・固定点の値が零であることは
+まだこの宣言に含めず、その証明は残す。候補を前提にL09や作用の法則を宣言しない。
+
+### 119.7 全境界の対合候補の固定点の型（C87・C88）
+
+§118の6,070添字の点検では、対合の固定点は次の零次数の余分な添字だけだった。
+この点検は候補の往復だけでなく、固定点の条件も分類したものとして使う。
+混合角の非固定性は検証済みの `swapAtVertex_ne_iff` の同じ式。
+
+```lean
+mixed_vertexCornerPerm_ne {m q : ℕ} (t : MarkedCut m q)
+    (ht : boundaryVertexKind t.1 t.2 = .mixed) : vertexCornerPerm m q t ≠ t
+universalBoundaryPartner_fixed_iff (m q : ℕ) (i : UniversalBoundaryIndex m q) :
+  universalBoundaryPartner m q i = i ↔
+    match i with
+    | .inl _ => m = 0 ∧ q = 0
+    | .inr (.inl _) => m = 0
+    | .inr (.inr _) => q = 0
+boundaryBalancePerm_fixed_iff {r d : ℕ} (u : Surjection.BasisWord (r + 1) d)
+    (q : ℕ) (i : BoundaryBalanceIndex u q) :
+  boundaryBalancePerm u q i = i ↔
+    universalBoundaryPartner (r + d) q ((boundaryBalanceIndexEquiv u q) i) =
+      (boundaryBalanceIndexEquiv u q) i
+```
+
+### 119.8 L09aの固定点の零の部分
+
+C87の固定点の条件は6,070添字で明示的に再確認した。
+§118の38,322項の符号付き値の点検では、固定点は全て零だった。
+その部分を元の境界項の定義へ戻す。L09aの一覧にある固定点の零の主張の証明分割であり、
+別の作用・定理を追加するものではない。
+
+```lean
+boundaryBalancePerm_fixed_zero (A : Type u) [CommRing A] (S : SSet.{0})
+    {r d : ℕ} (w : Surjection.BasisWord (r + 1) d) (q : ℕ)
+    (i : BoundaryBalanceIndex w q) (hi : boundaryBalancePerm w q i = i) (x : S _⦋q⦌) :
+  boundaryBalanceTerm A S w q i x = 0
+```
+
+出力側はr=d=q=0、係数側はd=0、入力側はq=0に帰着する。
+出力側の色の次数は、全頂点数が1である有限濃度評価から零と判定する。
+
+### 119.9 貼り合わせた対合の評価式
+
+以下は検証済みの対合の各分岐の定義評価であり、数の枠を置かない既存構成の法則の補題。
+点検は§118の同じ6,070添字の対応の式を使う。
+
+```lean
+universalBoundaryPartner_horizontal (m q : ℕ) (hm : 0 < m)
+    (t : BoundaryVertexOfKind m q .horizontal) :
+  universalBoundaryPartner m q (.inl t.val) =
+    .inr (.inl ((horizontalBoundaryAllEquiv m q hm).symm t))
+universalBoundaryPartner_vertical (m q : ℕ) (hq : 0 < q)
+    (t : BoundaryVertexOfKind m q .vertical) :
+  universalBoundaryPartner m q (.inl t.val) =
+    .inr (.inr ((verticalBoundaryAllEquiv m q hq).symm t))
+universalBoundaryPartner_mixed (m q : ℕ) (t : BoundaryVertexOfKind m q .mixed) :
+  universalBoundaryPartner m q (.inl t.val) = .inl (vertexCornerPerm m q t.val)
+universalBoundaryPartner_coefficient (m q : ℕ) (hm : 0 < m)
+    (c : Fin (m + 1) × Cut (m - 1) q) :
+  universalBoundaryPartner m q (.inr (.inl c)) = .inl ((horizontalBoundaryAllEquiv m q hm) c).val
+universalBoundaryPartner_input (m q : ℕ) (hq : 0 < q)
+    (v : Fin (q + 1) × Cut m (q - 1)) :
+  universalBoundaryPartner m q (.inr (.inr v)) = .inl ((verticalBoundaryAllEquiv m q hq) v).val
+universalBoundaryPartner_isolated (m q : ℕ) (t : BoundaryVertexOfKind m q .isolated) :
+  universalBoundaryPartner m q (.inl t.val) = .inl t.val
+```
+
+### 119.10 L09aの三群の等式の貼り合わせ
+
+同じ対合の既存の評価式を使う証明分割。三群の仮定は今後閉じる本来の相殺であり、
+未供給の等式を公理や暗黙の前提として最終結果へ入れない。
+
+```lean
+universalBoundaryPartner_neg_of_cases {B : Type*} [AddCommGroup B] (m q : ℕ)
+    (F : UniversalBoundaryIndex m q → B)
+    (hfixed : ∀ i, universalBoundaryPartner m q i = i → F i = 0)
+    (hc : ∀ (hm : 0 < m) (c : Fin (m + 1) × Cut (m - 1) q),
+      F (.inl ((horizontalBoundaryAllEquiv m q hm) c).val) = -F (.inr (.inl c)))
+    (hv : ∀ (hq : 0 < q) (v : Fin (q + 1) × Cut m (q - 1)),
+      F (.inl ((verticalBoundaryAllEquiv m q hq) v).val) = -F (.inr (.inr v)))
+    (hmix : ∀ t : BoundaryVertexOfKind m q .mixed,
+      F (.inl (vertexCornerPerm m q t.val)) = -F (.inl t.val))
+    (i : UniversalBoundaryIndex m q) :
+  F (universalBoundaryPartner m q i) = -F i
+```
+
+実際の境界値については `hfixed` は§119.8で証明済み。
+`hc`・`hv`・`hmix` の符号と指定面の照合が残る。全項の相殺をこの補題だけから主張しない。
+
+### 119.11 実際の境界値の同じ添字への移送の型
+
+既存の境界値を、検証済みの添字の同値に沿って読む定義とその評価の法則。
+元の複体・境界項・界面の型は変えない。
+
+```lean
+universalBoundaryValue (A : Type u) [CommRing A] (S : SSet.{0})
+    {r d : ℕ} (w : Surjection.BasisWord (r + 1) d) (q : ℕ) (x : S _⦋q⦌) :
+  UniversalBoundaryIndex (r + d) q →
+    (power (chains A S) (r + 1)).X (-((d + q : ℕ) : ℤ) + 1)
+universalBoundaryValue_at_index (A : Type u) [CommRing A] (S : SSet.{0})
+    {r d : ℕ} (w : Surjection.BasisWord (r + 1) d) (q : ℕ) (x : S _⦋q⦌)
+    (i : BoundaryBalanceIndex w q) :
+  universalBoundaryValue A S w q x ((boundaryBalanceIndexEquiv w q) i) =
+    boundaryBalanceTerm A S w q i x
+universalBoundaryValue_partner (A : Type u) [CommRing A] (S : SSet.{0})
+    {r d : ℕ} (w : Surjection.BasisWord (r + 1) d) (q : ℕ) (x : S _⦋q⦌)
+    (i : BoundaryBalanceIndex w q) :
+  universalBoundaryValue A S w q x
+    (universalBoundaryPartner (r + d) q ((boundaryBalanceIndexEquiv w q) i)) =
+      boundaryBalanceTerm A S w q (boundaryBalancePerm w q i) x
+universalBoundaryValue_fixed_zero (A : Type u) [CommRing A] (S : SSet.{0})
+    {r d : ℕ} (w : Surjection.BasisWord (r + 1) d) (q : ℕ) (x : S _⦋q⦌)
+    (i : UniversalBoundaryIndex (r + d) q) (hi : universalBoundaryPartner (r + d) q i = i) :
+  universalBoundaryValue A S w q x i = 0
+```
+
+### 119.12 同方向の削除の指定列の照合（C89・C90）
+
+m=0〜5、q=0〜4の全経路の内部の水平・水平、垂直・垂直の箇所で、
+中間頂点の削除の列が、一本の辺を消した小さい経路の指定座標を一つ飛ばす列と一致することを
+点検してから実装する。Leanでは既存の `horizontalDeletion_horizontal`・
+`horizontalDeletion_vertical`・`verticalDeletion_horizontal`・`verticalDeletion_vertical` を使う。
+
+```lean
+horizontal_deletedTrace {m q r : ℕ} (s : Cut (m + 1) q)
+    (v : Fin (m + 2) → Fin r) (a b : Fin (m + 1 + q)) (hab : b.val = a.val + 1)
+    (ha : a ∈ s.val) (hb : b ∈ s.val) :
+  deletedTrace s v a.succ = List.ofFn (fun k : Fin (m + q + 1) =>
+    (Surjection.erase v (s.horizontal a.succ)
+      (((BarrattEccles.horizontalInsertionEquiv m q a).symm ⟨s, ha⟩).horizontal k),
+    ((BarrattEccles.horizontalInsertionEquiv m q a).symm ⟨s, ha⟩).vertical k))
+vertical_deletedTrace {m q r : ℕ} (s : Cut m (q + 1))
+    (v : Fin (m + 1) → Fin r) (a b : Fin (m + (q + 1))) (hab : b.val = a.val + 1)
+    (ha : a ∉ s.val) (hb : b ∉ s.val) :
+  deletedTrace s v a.succ = List.ofFn (fun k : Fin (m + q + 1) =>
+    (v (((BarrattEccles.verticalInsertionEquiv m q a).symm ⟨s, ha⟩).horizontal k),
+    (s.vertical a.succ).succAbove
+      (((BarrattEccles.verticalInsertionEquiv m q a).symm ⟨s, ha⟩).vertical k)))
+```
+
+### 119.13 符号次数を出力次数へ結ぶ有限濃度の型（C91・C92）
+
+m=0〜5、q=0〜5の4,752個の区間fiberで、位置の連続性と
+「頂点数＝両端の垂直座標の差＋1」を点検してからLeanへ入る。
+
+```lean
+intervalPositions_eq_Icc {m q : ℕ} (s : Cut m q) (i : Fin (m + 1)) :
+  intervalPositions s i = Finset.Icc
+    ((intervalPositions s i).min' (intervalPositions_nonempty s i))
+    ((intervalPositions s i).max' (intervalPositions_nonempty s i))
+intervalPositions_card {m q : ℕ} (s : Cut m q) (i : Fin (m + 1)) :
+  (intervalPositions s i).card = hi s i - lo s i + 1
+```
+
+### 119.14 各色のcaesuraの濃度（C93〜C95）
+
+長さ1〜6・色数1〜3の全射語の全ての色で、caesuraが最後の一出現を除いた集合であり、
+最後より前の位置であることを点検してからLeanへ入る。
+既存の `Surjection.Word.lastOccurrence` の値と最大性を使う。
+
+```lean
+caesura_iff_lt_lastOccurrence {n l : ℕ} (u : Surjection.Word n l)
+    (c : Fin n) (i : Fin l) (hi : u.val i = c) :
+  Surjection.Caesura u.val i ↔ i < u.lastOccurrence c
+caesura_filter_occurrences {n l : ℕ} (u : Surjection.Word n l) (c : Fin n) :
+  (Surjection.occurrences u.val c).filter (Surjection.Caesura u.val) =
+    (Surjection.occurrences u.val c).erase (u.lastOccurrence c)
+sum_caesura_occurrences_add_one {n l : ℕ} (u : Surjection.Word n l) (c : Fin n) :
+  (∑ i ∈ Surjection.occurrences u.val c, if Surjection.Caesura u.val i then 1 else 0) + 1 =
+    (Surjection.occurrences u.val c).card
+```
+
+### 119.15 出力次数と区間の符号次数（C96・C97）
+
+m=0〜4、q=0〜4の全切断区間長、色数1〜3の全射語の各色で、
+「出力次数＝同じ色の区間の符号次数の和」を点検してからLeanへ入る。
+C96は同じ列の色のfiberを水平座標のfiberに分ける濃度式で、全射性は不要。
+
+```lean
+colorPositions_card_by_intervals {m q r : ℕ} (s : Cut m q)
+    (v : Fin (m + 1) → Fin r) (c : Fin r) :
+  (colorPositions s v c).card =
+    ∑ i ∈ Surjection.occurrences v c, (intervalPositions s i).card
+outputDegree_eq_sum_intervalLength {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (c : Fin r) :
+  outputDegree s v c = ∑ i ∈ Surjection.occurrences v.val c, intervalLength s v.val i
+```
+
+出力の境界のKoszul指数と `permutationExponent` を同じ区間の重みで計算するための有限の濃度評価。
+
+### 119.16 既存の逆転数の削除公式と境界符号（C98・C99）
+
+位置数1〜5、色数1〜3の全ての語・非空位置部分集合・その中の削除位置で、
+次の整数指数の式を点検してからLeanへ入る。
+既存の `IntervalCuts.positionInversionCount_erase` に各位置の寄与の恒等式を足す。
+
+```lean
+colorSorting_boundary_term {N r : ℕ} (v : Fin N → Fin r) (a b : Fin N) :
+  positionInversionTerm v a b + positionInversionTerm v b a +
+    (if v b < v a then 1 else 0) + (if b < a ∧ v b = v a then 1 else 0) =
+  (if b < a then 1 else 0) + 2 * positionInversionTerm v a b
+positionInversionCount_boundary {N r : ℕ} (v : Fin N → Fin r)
+    (s : Finset (Fin N)) (a : Fin N) (ha : a ∈ s) :
+  positionInversionCount v s + (s.filter (fun b => v b < v a)).card +
+    (s.filter (fun b => b < a ∧ v b = v a)).card =
+  positionInversionCount v (s.erase a) + (s.filter (fun b => b < a)).card +
+    2 * (∑ b ∈ s, positionInversionTerm v a b)
+colorSorting_boundary_sign {N r : ℕ} (v : Fin N → Fin r)
+    (s : Finset (Fin N)) (a : Fin N) (ha : a ∈ s) :
+  (-1 : ℤ) ^ (positionInversionCount v s + (s.filter (fun b => v b < v a)).card +
+    (s.filter (fun b => b < a ∧ v b = v a)).card) =
+  (-1 : ℤ) ^ positionInversionCount v (s.erase a) *
+    (-1 : ℤ) ^ (s.filter (fun b => b < a)).card
+```
+
+これは有限逆転集合の数え上げと既存の係数の冪の法則に限り、作用やoperadの新しい法則ではない。
+
+### 119.17 検証済みの区切りと3,000行の途中報告
+
+次の15本、計 **902行**を対象ビルドと専用監査で検証した。
+名前の接頭部は全て `SerrePositivity.EInfinity.SimplexCuts.`。
+`BoundaryEndpointPartition`・`HorizontalBoundaryEquiv`・`BoundaryKindExchange`・
+`VerticalBoundaryEquiv`・`BoundaryFaceTransfers`・`UniversalBoundaryPartner`・
+`BoundaryPartnerFixedPoints`・`BoundaryFixedTerms`・`BoundaryPartnerValues`・
+`BoundaryCancellationReduction`・`UniversalBoundaryValues`・`StraightTraceFaces`・
+`IntervalCardinalities`・`ColorCaesuraCounts`・`ColorIntervalDegrees`。
+次の登録候補一覧はこの15本。
+
+専用監査 `/tmp/bsw16/audit-m14-universal-boundary.lean` は
+**15モジュール・157宣言・標準三公理のみ**。
+対象ビルドは `m14-boundary-fixed-terms-01.log`・`m14-boundary-counts-01.log`・
+`m14-color-interval-degrees-02.log` などに成功を確認。新規15本にsorry・追加公理0、Leanの警告なし。
+全てのビルド・監査で `--wait 3600` の整理券を一枚ずつ使い、終了時に返した。
+mainへの取り込み・rootビルド・大きな監査は行っていない。
+
+L09a・L09の累計 **3,255行**、改訂MayのM14全体 **8,321行**。
+3,000行を越えた途中報告は停止せずチャットでも行った。次は4,000行で報告する。
+個々の補題はいずれも200行以下であり、200行を超える補題の追加はない。
+
+全境界の添字の対合候補と、実際の境界項の固定点での零は閉じた。
+水平・垂直の指定列の内部の照合、出力次数と区間の重みの同一視も閉じた。
+一方、三群の符号付き値の相殺 `hc`・`hv`・`hmix` は未完。
+`universalBoundaryPartner_neg_of_cases` はそれらを明示的な前提に取る貼り合わせの補題であり、
+最終のL09aやBFの作用の法則を閉じたとは扱わない。§119.16の有限符号計算へ続ける。
+
+### 119.18 展開した色列のcaesuraと区間の重み（C100・C101）
+
+m=0〜4、q=0〜4、色数1〜3の全ての語と切断で、展開した色列の後続の同色が
+「同じ区間の後続頂点、または元の語の後続の同色」の条件と一致することを点検した。
+各区間のそのような頂点数が `intervalLength` と一致することも点検してからLeanへ入る。
+元の語の全射性・隣接非退化性はこの二式には不要。
+
+```lean
+caesura_label_iff {m q r : ℕ} (s : Cut m q) (v : Fin (m + 1) → Fin r)
+    (i : Fin (m + 1)) (j : Fin (m + q + 1)) (hj : s.horizontal j = i) :
+  Surjection.Caesura (label s v) j ↔
+    j < (intervalPositions s i).max' (intervalPositions_nonempty s i) ∨ Surjection.Caesura v i
+interval_active_card {m q r : ℕ} (s : Cut m q) (v : Fin (m + 1) → Fin r)
+    (i : Fin (m + 1)) :
+  ((intervalPositions s i).filter (Surjection.Caesura (label s v))).card = intervalLength s v i
+```
+
+`Surjection.Word` は全射性だけでなく隣接非退化性も含む。展開色列には垂直辺で隣接反復が
+あるため、それをWordへ包んで既存のlastOccurrenceのAPIを流用することはしない。
+同じ色の後続を持つ位置の有限集合として直接扱う。
+
+### 119.19 展開色列の活動頂点の濃度（C102〜C105）
+
+§119.18の全頂点の点検と、m=0〜4、q=0〜4の全切断・色数1〜3の全射語の各色で、
+活動頂点数が出力次数に一致し、全活動頂点数が全出力次数になることを点検してから実装。
+`activeVertexPositions` は展開色列のcaesuraを選ぶ同じ有限集合の記法。
+
+```lean
+activeVertexPositions {m q r : ℕ} (s : Cut m q) (v : Fin (m + 1) → Fin r) :
+  Finset (Fin (m + q + 1))
+active_fiber_card {m q r : ℕ} (s : Cut m q) (v : Fin (m + 1) → Fin r)
+    (i : Fin (m + 1)) :
+  ((activeVertexPositions s v).filter (fun j => s.horizontal j = i)).card = intervalLength s v i
+active_color_card_eq_sum {m q r : ℕ} (s : Cut m q) (v : Fin (m + 1) → Fin r)
+    (c : Fin r) :
+  ((activeVertexPositions s v).filter (fun j => label s v j = c)).card =
+    ∑ i ∈ Surjection.occurrences v c, intervalLength s v i
+active_color_card {m q r : ℕ} (s : Cut m q) (v : Surjection.Word r (m + 1)) (c : Fin r) :
+  ((activeVertexPositions s v.val).filter (fun j => label s v.val j = c)).card = outputDegree s v c
+activeVertexPositions_card {m q r : ℕ} (s : Cut m q) (v : Surjection.Word r (m + 1)) :
+  (activeVertexPositions s v.val).card = m + q + 1 - r
+```
+
+### 119.20 単調なfiberでまとめた逆転数（C106・C107）
+
+位置数・中間の位置数1〜4、色数1〜3の全ての弱単調写像・色付け・位置部分集合で、
+逆転数がfiberの濃度の積による重み付き逆転数になることを点検してからLeanへ入る。
+途中の写像の全射性や色付けの非退化性は要求しない。
+
+```lean
+inversion_condition_comp_monotone {N M r : ℕ} (f : Fin N →o Fin M)
+    (v : Fin M → Fin r) (x y : Fin N) :
+  (x < y ∧ v (f y) < v (f x)) ↔ (f x < f y ∧ v (f y) < v (f x))
+positionInversionTerm_comp_monotone {N M r : ℕ} (f : Fin N →o Fin M)
+    (v : Fin M → Fin r) (x y : Fin N) :
+  positionInversionTerm (v ∘ f) x y = if f x < f y ∧ v (f y) < v (f x) then 1 else 0
+positionInversionCount_comp_monotone {N M r : ℕ} (f : Fin N →o Fin M)
+    (v : Fin M → Fin r) (s : Finset (Fin N)) :
+  positionInversionCount (v ∘ f) s =
+    ∑ i : Fin M, ∑ j : Fin M, if i < j ∧ v j < v i then
+      (s.filter (fun x => f x = i)).card * (s.filter (fun y => f y = j)).card else 0
+permutationExponent_eq_active_inversions {m q r : ℕ} (s : Cut m q)
+    (v : Fin (m + 1) → Fin r) :
+  permutationExponent s v = positionInversionCount (label s v) (activeVertexPositions s v)
+```
+
+有限和のfiber分割の法則を二回使い、C102の活動頂点の濃度で `intervalLength` に戻す。
+
+### 119.21 実際の出力境界符号を活動頂点で読む型（C108〜C111）
+
+m=0〜4、q=0〜3、色数1〜3の全射・隣接非退化の語と全経路の各頂点で、
+先行同色数と小さい色の出力次数が活動頂点の数に一致することを点検。
+活動頂点を削除するとき、元のBF境界指数と次のC111の指数の偶奇が一致することを
+点検してからLeanへ入る。C110・C111は既存の `outputBoundarySign` を同じ添字で評価する法則。
+
+```lean
+vertexRank_eq_active_card {m q r : ℕ} (s : Cut m q) (v : Fin (m + 1) → Fin r)
+    (k : Fin (m + q + 1)) :
+  vertexRank s v (label s v k) k =
+    ((activeVertexPositions s v).filter (fun j => j < k ∧ label s v j = label s v k)).card
+prefixOutputDegree_eq_active_card {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (c : Fin r) :
+  (∑ b ∈ Finset.univ.filter (fun b : Fin r => b < c), outputDegree s v b) =
+    ((activeVertexPositions s v.val).filter (fun j => label s v.val j < c)).card
+outputBoundarySignAt {m q r : ℕ} (s : Cut m q) (v : Surjection.Word r (m + 1))
+    (k : Fin (m + q + 1)) : ℤ
+outputBoundarySignAt_active {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (k : Fin (m + q + 1)) :
+  outputBoundarySignAt s v k = cutSign s v.val * (-1 : ℤ) ^
+    (((activeVertexPositions s v.val).filter (fun j => label s v.val j < label s v.val k)).card +
+    ((activeVertexPositions s v.val).filter (fun j => j < k ∧ label s v.val j = label s v.val k)).card)
+outputBoundarySignAt_of_active {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (k : Fin (m + q + 1))
+    (hk : k ∈ activeVertexPositions s v.val) :
+  outputBoundarySignAt s v k = (-1 : ℤ) ^ positionExponent s v.val *
+    (-1 : ℤ) ^ positionInversionCount (label s v.val) ((activeVertexPositions s v.val).erase k) *
+    (-1 : ℤ) ^ ((activeVertexPositions s v.val).filter (fun j => j < k)).card
+```
+
+### 119.22 活動頂点の境界符号までの検証済み区切り
+
+次の五本、計 **379行**を検証した。
+`ColorSortingBoundarySigns` 57行、`ExpandedCaesuras` 76行、`ActiveVertexCounts` 78行、
+`WeightedVertexInversions` 82行、`ActiveBoundarySigns` 86行。
+接頭部は全て `SerrePositivity.EInfinity.SimplexCuts.`。次の登録候補一覧はこの五本。
+
+対象ビルド `lake build SerrePositivity.EInfinity.SimplexCuts.ActiveBoundarySigns` 成功
+（`/tmp/bsw16/m14-active-boundary-signs-01.log`）。
+専用監査 `/tmp/bsw16/audit-m14-active-boundary-signs.lean` は
+**5モジュール・52宣言・標準三公理のみ**。新規五本にsorry・追加公理0、Leanの警告なし。
+鍵の待ちは一枚の整理券にまとめ、監査が終わって鍵を返した。
+
+事前点検は、色順の境界符号25,710個の指定色付き部分集合、展開caesura347,822頂点、
+活動頂点の濃度26,881個の切断と色付け、単調なfiberの重み付き逆転数89,836例、
+実際のBF出力符号14,096活動頂点で一致した。
+Leanでは、既存の逆転数の削除公式、有限和のfiber分割、同じ面番号の先行同色数を使った。
+個々の補題は全て200行以下。既存の公開宣言・界面・BE作用・operadの法則は変更していない。
+
+L09a・L09の累計 **3,634行**、改訂MayのM14全体 **8,700行**。
+この再開後は20本・1,281行を検証済みとして保存した。
+3,000行の途中報告は済み、次は4,000行で停止せず報告する。
+半分の12,500行・外枠25,000行には未到達。
+
+ここまでで全添字の対合、固定点の実際の零、水平・垂直の有限同値、内部の指定面の列、
+活動頂点における実際の出力境界符号の共通化が閉じた。
+L09a全体の `hc`・`hv`・`hmix` の符号付き値の相殺はまだ未証明。
+次は、最後の非活動頂点の符号を直前同色の活動頂点へ運ぶ法則と、対応する残りの逆転集合の照合。
+その準備として、位置数1〜6・色数1〜3の全ての色列で、直前同色位置を持つ3,534位置の
+先行同色数が一だけ違い、その交代符号が反対になることを有限点検した。
+この準備の点検だけを、未実装の照合や最終相殺の証明として扱わない。
+mainの凍結を維持し、root・全体監査やM15・G12の作業は行っていない。
+
+## 120. 次の約4,600行で残りの見込みを再評価する（11-14）
+
+調整役の最新指示に従い、L09a・L09が約4,600行になった報告で、
+L09a・L09の残りとM14全体の完成の見込みを、外枠25,000行と照合して出し直す。
+その見積もりのために停止せず、現在の符号の三群を閉じる作業を続ける。
+
+### 120.1 直前の同色の頂点（C112〜C115）
+
+`/tmp/bsw16/check-previous-vertices.py` で位置数1〜6・色数1〜3の全色列のうち、
+直前同色を持つ3,534位置の集合の削除・先行数の差一・直前位置の活動性を確認した。
+前後に同色を持たない1,006位置ではその色のfiberが一頂点であることも確認。
+以下は既存の `Surjection.previousOccurrences` の最大とその性質の評価。
+
+```lean
+previousVertex {N r : ℕ} (v : Fin N → Fin r) (k : Fin N)
+    (h : (Surjection.previousOccurrences v k).Nonempty) : Fin N
+previousVertex_mem {N r : ℕ} (v : Fin N → Fin r) (k : Fin N)
+    (h : (Surjection.previousOccurrences v k).Nonempty) :
+  previousVertex v k h ∈ Surjection.previousOccurrences v k
+previousVertex_lt {N r : ℕ} (v : Fin N → Fin r) (k : Fin N)
+    (h : (Surjection.previousOccurrences v k).Nonempty) : previousVertex v k h < k
+previousVertex_value {N r : ℕ} (v : Fin N → Fin r) (k : Fin N)
+    (h : (Surjection.previousOccurrences v k).Nonempty) : v (previousVertex v k h) = v k
+previousOccurrences_erase_previousVertex {N r : ℕ} (v : Fin N → Fin r) (k : Fin N)
+    (h : (Surjection.previousOccurrences v k).Nonempty) :
+  (Surjection.previousOccurrences v k).erase (previousVertex v k h) =
+    Surjection.previousOccurrences v (previousVertex v k h)
+previousOccurrences_card_previousVertex {N r : ℕ} (v : Fin N → Fin r) (k : Fin N)
+    (h : (Surjection.previousOccurrences v k).Nonempty) :
+  (Surjection.previousOccurrences v (previousVertex v k h)).card + 1 =
+    (Surjection.previousOccurrences v k).card
+previousVertex_active {m q r : ℕ} (s : Cut m q) (v : Fin (m + 1) → Fin r)
+    (k : Fin (m + q + 1)) (h : (Surjection.previousOccurrences (label s v) k).Nonempty) :
+  previousVertex (label s v) k h ∈ activeVertexPositions s v
+vertexRank_eq_previousOccurrences_card {m q r : ℕ} (s : Cut m q)
+    (v : Fin (m + 1) → Fin r) (k : Fin (m + q + 1)) :
+  vertexRank s v (label s v k) k = (Surjection.previousOccurrences (label s v) k).card
+vertexRank_previousVertex {m q r : ℕ} (s : Cut m q) (v : Fin (m + 1) → Fin r)
+    (k : Fin (m + q + 1)) (h : (Surjection.previousOccurrences (label s v) k).Nonempty) :
+  vertexRank s v (label s v k) k =
+    vertexRank s v (label s v (previousVertex (label s v) k h))
+      (previousVertex (label s v) k h) + 1
+```
+
+### 120.2 直前同色の面への符号の移送（C116・C117）
+
+元の語が全射・隣接非退化の場合、m=0〜4、q=0〜3、色数1〜3の全経路の
+直前同色を持つ位置で、実際のBF境界指数が一つ違って交代符号が反対になることを
+点検してから実装。`outputBoundarySignAt` の既存の係数の冪の法則とC115で証明する。
+
+```lean
+outputBoundarySignAt_rank {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (k : Fin (m + q + 1)) :
+  outputBoundarySignAt s v k = cutSign s v.val * (-1 : ℤ) ^
+    ((∑ c ∈ Finset.univ.filter (fun c : Fin r => c < label s v.val k), outputDegree s v c) +
+    vertexRank s v.val (label s v.val k) k)
+outputBoundarySignAt_previous {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (k : Fin (m + q + 1))
+    (h : (Surjection.previousOccurrences (label s v.val) k).Nonempty) :
+  outputBoundarySignAt s v k = -outputBoundarySignAt s v (previousVertex (label s v.val) k h)
+outputBoundarySignAt_via_previous {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (k : Fin (m + q + 1))
+    (h : (Surjection.previousOccurrences (label s v.val) k).Nonempty) :
+  outputBoundarySignAt s v k = -
+    ((-1 : ℤ) ^ positionExponent s v.val *
+      (-1 : ℤ) ^ positionInversionCount (label s v.val)
+        ((activeVertexPositions s v.val).erase (previousVertex (label s v.val) k h)) *
+      (-1 : ℤ) ^ ((activeVertexPositions s v.val).filter
+        (fun j => j < previousVertex (label s v.val) k h)).card)
+```
+
+C117は、k自身が非活動でも直前の同色位置が活動的であるC114と、検証済みのC111の合成。
+
+### 120.3 直前同色を持たない非活動頂点（C118〜C120）
+
+§120.1の1,006個の単独色の位置の点検を使う。前後に同色を持たないなら色のfiberは一頂点、
+したがって正の出力次数を持つ非活動頂点には直前同色が必ず存在する。
+
+```lean
+colorPositions_singleton_of_inactive_no_previous {m q r : ℕ} (s : Cut m q)
+    (v : Fin (m + 1) → Fin r) (k : Fin (m + q + 1))
+    (hk : k ∉ activeVertexPositions s v)
+    (hp : ¬(Surjection.previousOccurrences (label s v) k).Nonempty) :
+  colorPositions s v (label s v k) = {k}
+outputDegree_zero_of_inactive_no_previous {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (k : Fin (m + q + 1))
+    (hk : k ∉ activeVertexPositions s v.val)
+    (hp : ¬(Surjection.previousOccurrences (label s v.val) k).Nonempty) :
+  outputDegree s v (label s v.val k) = 0
+previousOccurrences_nonempty_of_inactive_degree_pos {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (k : Fin (m + q + 1))
+    (hk : k ∉ activeVertexPositions s v.val) (hd : 0 < outputDegree s v (label s v.val k)) :
+  (Surjection.previousOccurrences (label s v.val) k).Nonempty
+```
+
+### 120.4 既存の一般の単語削除のcaesura公式の再利用（C121〜C124）
+
+位置数1〜6・色数1〜3の全色列・全削除位置で、活動頂点の削除ではその位置だけを、
+最後の非活動頂点の削除では直前同色の活動性だけを失うことを点検した。
+既存の `IntervalCuts.GeneralDeletionCaesuras.caesura_erase_of_caesura` と
+`caesura_erase_final` を使い、同じ集合を像で移す。逆転数の移送は既存の
+`positionInversionCount_image` の法則である。
+
+```lean
+caesuraPositions {N r : ℕ} (v : Fin N → Fin r) : Finset (Fin N)
+caesuraPositions_erase_active_image {N r : ℕ} (v : Fin (N + 1) → Fin r)
+    (k : Fin (N + 1)) (hk : Surjection.Caesura v k) :
+  (caesuraPositions (Surjection.erase v k)).image k.succAbove = (caesuraPositions v).erase k
+caesuraPositions_erase_final_image {N r : ℕ} (v : Fin (N + 1) → Fin r)
+    (k : Fin (N + 1)) (hk : ¬ Surjection.Caesura v k)
+    (hp : (Surjection.previousOccurrences v k).Nonempty) :
+  (caesuraPositions (Surjection.erase v k)).image k.succAbove =
+    (caesuraPositions v).erase (previousVertex v k hp)
+inversionCount_erase_active {N r : ℕ} (v : Fin (N + 1) → Fin r)
+    (k : Fin (N + 1)) (hk : Surjection.Caesura v k) :
+  positionInversionCount (Surjection.erase v k) (caesuraPositions (Surjection.erase v k)) =
+    positionInversionCount v ((caesuraPositions v).erase k)
+inversionCount_erase_final {N r : ℕ} (v : Fin (N + 1) → Fin r)
+    (k : Fin (N + 1)) (hk : ¬ Surjection.Caesura v k)
+    (hp : (Surjection.previousOccurrences v k).Nonempty) :
+  positionInversionCount (Surjection.erase v k) (caesuraPositions (Surjection.erase v k)) =
+    positionInversionCount v ((caesuraPositions v).erase (previousVertex v k hp))
+```
+
+活動集合の移送を新しく仮定せず、既存の任意の色列での削除公式を使う証明分割。
+
+### 120.5 同じ削除色列へ移した実際のBF境界符号（C125〜C127）
+
+m=0〜4、q=0〜3、色数1〜3の全射・隣接非退化の語の全経路の正出力次数の面で、
+実際の境界符号が「位置符号・削除色列の逆転符号・展開色列の単語削除係数」の積に
+一致することを点検してから実装。既存の `Surjection.deletionCoefficient` の二分岐と、
+C111・C117・C123・C124をそのまま同じ削除色列で貼り合わせる。
+
+```lean
+erasedColorSign {N r : ℕ} (v : Fin (N + 1) → Fin r) (k : Fin (N + 1)) : ℤ
+caesuraRank_label_eq_active_rank {m q r : ℕ} (s : Cut m q)
+    (v : Fin (m + 1) → Fin r) (k : Fin (m + q + 1)) :
+  Surjection.caesuraRank (label s v) k =
+    ((activeVertexPositions s v).filter (fun j => j < k)).card
+outputBoundarySignAt_erase_active {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (k : Fin (m + q + 1))
+    (hk : Surjection.Caesura (label s v.val) k) :
+  outputBoundarySignAt s v k = (-1 : ℤ) ^ positionExponent s v.val *
+    erasedColorSign (label s v.val) k * Surjection.deletionCoefficient (label s v.val) k
+outputBoundarySignAt_erase_final {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (k : Fin (m + q + 1))
+    (hk : ¬ Surjection.Caesura (label s v.val) k)
+    (hp : (Surjection.previousOccurrences (label s v.val) k).Nonempty) :
+  outputBoundarySignAt s v k = (-1 : ℤ) ^ positionExponent s v.val *
+    erasedColorSign (label s v.val) k * Surjection.deletionCoefficient (label s v.val) k
+outputBoundarySignAt_erase {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (k : Fin (m + q + 1))
+    (hd : 0 < outputDegree s v (label s v.val k)) :
+  outputBoundarySignAt s v k = (-1 : ℤ) ^ positionExponent s v.val *
+    erasedColorSign (label s v.val) k * Surjection.deletionCoefficient (label s v.val) k
+```
+
+零次数では `outputBoundarySignAt` 自体は±1でも、既存の実際の境界項は零である。
+その場合まで誤って符号そのものを削除係数0と同一視する型にはしない。
+
+### 120.6 混合角の座標と区間端点の評価（C128〜C132）
+
+m=0〜5、q=0〜4の全経路の水平辺・垂直辺・水平から垂直への混合角で、
+水平辺直前の区間の最後、垂直辺の前後の同色、角交換の一頂点の座標を点検してから実装。
+既存の `step_of_mem`・`step_of_notMem`・`horizontal_swapSteps`・`vertical_swapSteps` を合成する。
+
+```lean
+interval_max_before_horizontal {m q : ℕ} (s : Cut m q) (a : Fin (m + q))
+    (ha : a ∈ s.val) :
+  (intervalPositions s (s.horizontal a.castSucc)).max'
+    (intervalPositions_nonempty s (s.horizontal a.castSucc)) = a.castSucc
+before_horizontal_active_iff {m q r : ℕ} (s : Cut m q) (v : Fin (m + 1) → Fin r)
+    (a : Fin (m + q)) (ha : a ∈ s.val) :
+  a.castSucc ∈ activeVertexPositions s v ↔ Surjection.Caesura v (s.horizontal a.castSucc)
+before_vertical_active {m q r : ℕ} (s : Cut m q) (v : Fin (m + 1) → Fin r)
+    (a : Fin (m + q)) (ha : a ∉ s.val) : a.castSucc ∈ activeVertexPositions s v
+previousVertex_after_vertical {m q r : ℕ} (s : Cut m q) (v : Fin (m + 1) → Fin r)
+    (a : Fin (m + q)) (ha : a ∉ s.val)
+    (hp : (Surjection.previousOccurrences (label s v) a.succ).Nonempty) :
+  previousVertex (label s v) a.succ hp = a.castSucc
+swapSteps_hv_coordinates {m q : ℕ} (s : Cut m q) (a b : Fin (m + q))
+    (hab : b.val = a.val + 1) (ha : a ∈ s.val) (hb : b ∉ s.val) :
+  (s.swapSteps a b).horizontal b.castSucc = s.horizontal a.castSucc ∧
+    ((s.swapSteps a b).vertical b.castSucc).val = (s.vertical b.castSucc).val + 1
+```
+
+### 120.7 削除後の同じ番号の順位と隣接順位（C133〜C135）
+
+位置数1〜6、色数1〜3の全色列について、活動頂点を削除した同じ番号の順位と
+隣接二位置の順位の差を点検してから実装する。
+C133は既存の `caesura_erase_of_caesura` と同値な接頭集合の濃度、
+C135は既存の `prefix_count_succ` の同じcaesura集合での評価。
+
+```lean
+caesuraRank_erase_active_at {N r : ℕ} (v : Fin (N + 1) → Fin r)
+    (a : Fin (N + 1)) (ha : Surjection.Caesura v a) (t : Fin N) (ht : t.val = a.val) :
+  Surjection.caesuraRank (Surjection.erase v a) t = Surjection.caesuraRank v a
+deletionCoefficient_erase_active_rank {N r : ℕ} (v : Fin (N + 1) → Fin r)
+    (a : Fin (N + 1)) (ha : Surjection.Caesura v a) (t : Fin N) (ht : t.val = a.val) :
+  Surjection.deletionCoefficient v a = (-1 : ℤ) ^ Surjection.caesuraRank (Surjection.erase v a) t
+caesuraRank_eq_filter_card {N r : ℕ} (v : Fin N → Fin r) (k : Fin N) :
+  Surjection.caesuraRank v k = ((caesuraPositions v).filter (fun j => j < k)).card
+caesuraRank_adjacent {N r : ℕ} (v : Fin N → Fin r) (a b : Fin N)
+    (hab : b.val = a.val + 1) :
+  Surjection.caesuraRank v b =
+    Surjection.caesuraRank v a + if Surjection.Caesura v a then 1 else 0
+```
+
+### 120.8 混合角による右端と位置指数の増分（C136〜C139）
+
+m=1〜4、q=1〜3の全経路の水平・垂直の角で、右端が直前の区間だけ一つ進むこと、
+色数1〜3の全ての語で位置指数がその区間のcaesuraだけ一つ増えることを点検してから実装。
+右端の評価C128と、最大位置の非一致、既存の有限和の一位置更新の法則を使う。
+
+```lean
+interval_max_ne_before_vertical {m q : ℕ} (s : Cut m q) (b : Fin (m + q))
+    (hb : b ∉ s.val) (i : Fin (m + 1)) :
+  (intervalPositions s i).max' (intervalPositions_nonempty s i) ≠ b.castSucc
+hi_swapSteps_hv_of_ne {m q : ℕ} (s : Cut m q) (a b : Fin (m + q))
+    (hab : b.val = a.val + 1) (ha : a ∈ s.val) (hb : b ∉ s.val)
+    (i : Fin (m + 1)) (hi : i ≠ s.horizontal a.castSucc) :
+  SimplexCuts.hi (s.swapSteps a b) i = SimplexCuts.hi s i
+hi_swapSteps_hv_at {m q : ℕ} (s : Cut m q) (a b : Fin (m + q))
+    (hab : b.val = a.val + 1) (ha : a ∈ s.val) (hb : b ∉ s.val) :
+  hi (s.swapSteps a b) (s.horizontal a.castSucc) = hi s (s.horizontal a.castSucc) + 1
+positionExponent_swapSteps_hv {m q r : ℕ} (s : Cut m q)
+    (v : Fin (m + 1) → Fin r) (a b : Fin (m + q))
+    (hab : b.val = a.val + 1) (ha : a ∈ s.val) (hb : b ∉ s.val) :
+  positionExponent (s.swapSteps a b) v = positionExponent s v +
+    if Surjection.Caesura v (s.horizontal a.castSucc) then 1 else 0
+```
+
+### 120.9 同じ削除色列と隣接同色の係数（C140〜C143）
+
+位置数2〜6、色数1〜3の全色列で、隣接同色のどちらを削除しても同じ色列になり、
+削除係数は反対になることを点検してから実装する。
+C142・C143は、既存の混合角の中間以外の座標保存と§117の削除列の点検を同じ色列で評価した法則。
+
+```lean
+erase_adjacent_equal {N r : ℕ} (v : Fin (N + 1) → Fin r) (a b : Fin (N + 1))
+    (hab : b.val = a.val + 1) (hv : v a = v b) : Surjection.erase v a = Surjection.erase v b
+deletionCoefficient_adjacent_equal {N r : ℕ} (v : Fin N → Fin r) (a b : Fin N)
+    (hab : b.val = a.val + 1) (hv : v a = v b) :
+  Surjection.deletionCoefficient v b = -Surjection.deletionCoefficient v a
+erase_label_swapSteps {m q r : ℕ} (s : Cut m q) (v : Fin (m + 1) → Fin r)
+    (a b : Fin (m + q)) (hab : b.val = a.val + 1) :
+  Surjection.erase (label (s.swapSteps a b) v) b.castSucc = Surjection.erase (label s v) b.castSucc
+erasedColorSign_swapSteps {m q r : ℕ} (s : Cut m q) (v : Fin (m + 1) → Fin r)
+    (a b : Fin (m + q)) (hab : b.val = a.val + 1) :
+  erasedColorSign (label (s.swapSteps a b) v) b.castSucc = erasedColorSign (label s v) b.castSucc
+```
+
+### 120.10 混合角の削除係数と位置指数を合わせた符号（C144）
+
+m=1〜4、q=1〜3、色数1〜3の全語で28,398例を点検した。
+C134・C135・C139〜C142を、同じ削除色列の二つの隣接順位で評価する法則。
+新しい作用やホモトピーは作らない。
+
+```lean
+signedDeletionCoefficient_swapSteps_hv {m q r : ℕ} (s : Cut m q)
+    (v : Fin (m + 1) → Fin r) (a b : Fin (m + q))
+    (hab : b.val = a.val + 1) (ha : a ∈ s.val) (hb : b ∉ s.val) :
+  (-1 : ℤ) ^ positionExponent (s.swapSteps a b) v *
+      Surjection.deletionCoefficient (label (s.swapSteps a b) v) b.castSucc =
+    -((-1 : ℤ) ^ positionExponent s v *
+      Surjection.deletionCoefficient (label s v) b.castSucc)
+```
+
+§31の追記を受領。約4,600行の区切りにはL10〜L28の各行について、
+`convolutionAlgebra`、`restrictCoalgebra`、χ・TRの既存の法則で再利用できる部分と、
+一般単体の切断でなお証明する部分を分け、M14全体の残りを数え直す。
+
+### 120.11 実際の出力境界符号への適用（C145〜C148）
+
+既存の活動頂点の色ごとの濃度と直前同色位置から、両側の出力次数が正であることを確認する。
+C147は共通の削除色列の逆転符号をくくってC144を適用し、C148は同じ角交換の自己逆性を使う。
+数値符号の有限点検は§120.10に含む。実テンソルの一致はまだ主張しない。
+
+```lean
+outputDegree_pos_of_active {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (k : Fin (m + q + 1))
+    (hk : k ∈ activeVertexPositions s v.val) : 0 < outputDegree s v (label s v.val k)
+outputDegree_pos_of_previous {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (k : Fin (m + q + 1))
+    (hp : (Surjection.previousOccurrences (label s v.val) k).Nonempty) :
+  0 < outputDegree s v (label s v.val k)
+outputBoundarySignAt_swapSteps_hv {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (a b : Fin (m + q))
+    (hab : b.val = a.val + 1) (ha : a ∈ s.val) (hb : b ∉ s.val) :
+  outputBoundarySignAt (s.swapSteps a b) v b.castSucc = -outputBoundarySignAt s v b.castSucc
+outputBoundarySignAt_swapSteps_vh {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (a b : Fin (m + q))
+    (hab : b.val = a.val + 1) (ha : a ∉ s.val) (hb : b ∈ s.val) :
+  outputBoundarySignAt (s.swapSteps a b) v b.castSucc = -outputBoundarySignAt s v b.castSucc
+```
+
+### 120.12 同じ削除列による実テンソルの更新次数（C149〜C152）
+
+既存のC27のリストの一致の長さを取り、各色の出力次数を更新した族まで一致させる。
+これはテンソルの依存した型を合わせるための既存構成の評価で、新しい次数模型は導入しない。
+リストの削除と角交換の有限点検は§117と§120.10のものを引き継ぐ。
+
+```lean
+verticesList_length {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (c : Fin r) :
+  (verticesList s v.val c).length = outputDegree s v c + 1
+deletedVerticesList_length {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (k : Fin (m + q + 1)) (c : Fin r) :
+  (deletedVerticesList s v.val k c).length =
+    outputDegree s v c + 1 - if label s v.val k = c then 1 else 0
+deletedVerticesList_length_update {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (k : Fin (m + q + 1))
+    (hk : 0 < outputDegree s v (label s v.val k)) (c : Fin r) :
+  (deletedVerticesList s v.val k c).length =
+    Function.update (outputDegree s v) (label s v.val k)
+      (outputDegree s v (label s v.val k) - 1) c + 1
+deletedOutputDegree_swapSteps {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (a b : Fin (m + q))
+    (hab : b.val = a.val + 1)
+    (ho : 0 < outputDegree s v (label s v.val b.castSucc))
+    (hn : 0 < outputDegree (s.swapSteps a b) v (label (s.swapSteps a b) v.val b.castSucc)) :
+  Function.update (outputDegree (s.swapSteps a b) v)
+      (label (s.swapSteps a b) v.val b.castSucc)
+      (outputDegree (s.swapSteps a b) v (label (s.swapSteps a b) v.val b.castSucc) - 1) =
+    Function.update (outputDegree s v) (label s v.val b.castSucc)
+      (outputDegree s v (label s v.val b.castSucc) - 1)
+```
+
+### 120.13 実際の標準面を削除列で読む（既存C40・C154）
+
+既存C40の`simplexVertexList_boundaryFace`とC36を再利用し、C26の指定削除列と同定する。
+個別ビルド後の合同監査でC153が既存C40と重複していることが分かり、
+重複宣言を除いて`BoundaryVertexLists`のimportへ置き換えた。
+式は単体圏の実際の射の頂点列であり、ホモトピー圏へ弱めない。
+
+```lean
+simplexVertexList_deletedFace {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (k : Fin (m + q + 1))
+    (hd : 0 < outputDegree s v (label s v.val k))
+    (j : Fin (outputDegree s v (label s v.val k) + 1))
+    (hj : j.val = vertexRank s v.val (label s v.val k) k) :
+  simplexVertexList (boundaryFace _ hd j ≫ face s v (label s v.val k)) =
+    deletedVerticesList s v.val k (label s v.val k)
+```
+
+## 121. 約4,600行の区切り：L09a・L09とM14全体の再見積もり（11-14、§31）
+
+### 121.1 実測と完成範囲
+
+一覧：済み 8／全体 48（うち追加 4）
+
+基準はL01〜L44にL09a・L12a・L43a・L43bを加えた48項目。
+済みはL01〜L08。C/R等の既存構成の法則・証明の分割とI01の既存作用の照合は、
+共通規則に従い数学の新しい項目として数えない。
+
+§119.22の3,634行から、今回の14モジュール934行を加え、
+**L09a・L09の実測4,568行、改訂MayのM14全体9,634行**。
+Leanファイルの空行・docstring込みで数え、報告書・監査用ファイルは含めない。
+§110の旧coherent経路10,216行は保持するが、今回の改訂Mayの外枠へ重複計上しない。
+
+今回、混合角の交換について、同じ削除色列・その逆転符号・位置指数の差・
+単語削除係数を結び、**実際の出力境界符号が反対になることを両向きに証明した**。
+削除した色別リストから、実テンソルの更新次数の族も一致した。
+指定境界面を削除列で読むC154も検証した。
+これらは元の圏・実際の整数係数の等式であり、ホモトピー圏へ弱めていない。
+
+まだL09a全体・L09は閉じていない。とくに、混合角の**実テンソル値**の一致を、
+今回の更新次数と指定面から接続するところは残る。
+水平・垂直の有限添字の対合は構成済みだが、それぞれの符号と実際の値の照合は残る。
+
+### 121.2 L09a・L09の残り
+
+以下は既存の型一覧L09a・L09の証明の残りで、新しい数学の追加ではない。
+実測4,568行からの**追加**を数える。
+
+| 行 | 残りの内容・使える完成分 | 追加見込み |
+| --- | --- | ---: |
+| 混合角 | C27の削除列、C147・C148の実符号、C152の更新次数、C154の指定面から、依存した次数移送込みの`deletedCutTensor`を一致させる。逆向きと分類の包装も含む | 180〜300 |
+| 水平境界と係数微分 | 水平の全添字同値・内点/両端の経路は既存。元の語の削除と展開語の削除の順位・位置指数の比較、無効な削除語と退化面の零、実テンソルの移送が残る | 600〜1,100 |
+| 垂直境界と入力面 | 垂直の全添字同値・削除後の座標列は既存。入力面の交代符号と位置指数の差、端点、正規化生成元と実テンソルの移送が残る | 500〜950 |
+| L09aの包装・L09 | 構成済みの対合・固定点零・三分岐の合成に実際の値の等式を渡す。有限和の相殺をテンソル微分・語の微分・入力面の和へ戻す | 200〜350 |
+| **残り合計** | | **1,480〜2,700** |
+| **L09a・L09完成時** | 現在の4,568を加算 | **6,048〜7,268** |
+
+符号の一般的な正規形は今回までに得たので、三分岐ごとに重み付き逆転数を最初から
+展開し直す見積もりにはしていない。ただし、実テンソルの依存した型と正規化の零の
+処理は未完であり、リストの等式だけで完成と数えない。
+
+### 121.3 L10〜L28：次元によらない既存部分の再利用の確認
+
+ローカルの宣言の引数・結論を読んで、次の境界を確認した。
+
+1. `Surjection.operad`（`Surjection/OperadStructure.lean`）はχの単位・置換・部分合成の
+   全法則を持つ。`TableReduction.operadMap`と`operadMap_app`（`TableReduction/OperadMap.lean`）は
+   全arityの**実際の**dg operad射と指定TR成分である。χ/TRのoperad則を再証明しない。
+2. `Operad.restrictCoalgebraObj`・`restrictCoalgebraMap`・`restrictCoalgebra`
+   （`Operad/CoalgebraRestriction.lean`）は任意の複体の余代数に使える。
+   一般単体のχ余作用の法則が揃った後、TRによるBE余作用の公理はそのまま引き戻せる。
+   ただし、χ自身がoperadであることだけから単体鎖のχ余代数構造は出ない。
+3. `Operad.convolutionAlgebra`、`convolutionAction_comp`、`convolutionAction_equivariance`、
+   `convolutionAction_unit`は非有界の一般複体・全arityで使える。
+   `convolutionPre`・`convolutionPost`・`convolutionPreNat`、
+   `convolutionAction_pre`・`convolutionAction_post`も同様。
+   正規化コチェインのBE**代数**の公理を切断公式からもう一周証明する必要はない。
+   一方、入力となる単体鎖のBE**余代数**と、指定された正規化評価の同定は先に要る。
+4. `IntervalCuts.coactionComposition_apply`は`P Q K W X : Complex A`を任意に取り、
+   二係数を交換するKoszul符号をそのまま再利用できる。
+   `compositeWord_at_non_slot`・`compositeOuterPosition_value`・
+   `compositeBasisWord_outerPosition`も単語・OverlapPartitionだけの主張である。
+   `GeneralDeletionCaesuras`の削除則、一般の位置逆転数の埋込みの法則は既にL09aで使用している。
+5. `IntervalCuts.cochainAction`は`interval A`、
+   `cochainAction_comp`・`cochainAction_operad_comp`も`interval A`に固定される。
+   `NestedEdgeCut.compositionCoefficient`は`edgeSign`と辺の二段切断、
+   `VertexCompositionSigns`は頂点/辺の有限出力族に固定される。
+   これらを一般qの定理として直接適用することはできない。
+   一般単体のL12aで必要な二段切断の全対応・一般の位置指数の貼り合わせは残る。
+   `CutSigns.edgeIntervalLength`もpivot一つの区間用で、一般qの`intervalLength`と同一視しない。
+
+したがって短縮できるのは「χ/TR・convolutionの公理」「任意の複体の係数交換」
+「単語代入の接頭部分の評価」であり、一般qの作用則を区間の完成定理だけから出す経路は採らない。
+IntervalCutsとの一致I01は指定された同じ作用の照合として残す（下のL28に計上）。
+
+### 121.4 L10〜L28の行ごとの残りの新規見込み
+
+既存宣言は直さず、一般単体に適用する証明・包装・指定比較の行数だけを数える。
+L12aの有限対応はL12に重複計上しない。すべて未完成で、以下の数字は実測ではない。
+
+| 行 | 再利用する部分と、新規に残る部分 | 新規見込み |
+| --- | --- | ---: |
+| L10 | L09と基底/正規化生成元の展開から全整数Leibnizへ。`cochainActionComponent_d`と同じ`TensorProduct.ext`・`tensorLift`の方法。区間のLeibniz定理そのものは流用しない | 130〜230 |
+| L11 | 既存の`permutationAction`・Koszulテンソルの置換評価と色別リストを使う。一般qの切断符号の置換と実テンソルの一致は新規 | 250〜450 |
+| L12a | 既存OverlapPartition・単語代入の位置/値・`coactionComposition_apply`を使用。一般qの二段切断と一段切断の有限対応、位置符号、退化項零、全色の実テンソルの比較は新規 | 1,400〜2,400 |
+| L12 | L12aの同じ添字上の有限和の相殺を`compositeCutSum = nestedCutSum`へ。χの合成係数を再構成しない | 120〜200 |
+| L13 | unaryの切断の一意性と同じ生成元。既存`oneIso`を使う | 70〜130 |
+| L14 | nullary係数とaugmentationを束ね、L12aの空入力分岐から実余作用へ。区間のnullary完成定理の直接適用はしない | 200〜380 |
+| L15 | 既存の生成元自然性L05と線形/テンソル外延性で実複体射の自然性に延長 | 100〜180 |
+| L16 | L12の有限和を`tensorCoInsertionAction`の実複体射へ。一般の結合子/交換の評価は既存を使用 | 120〜220 |
+| L17 | L11・L13を複体射の等変性/単位へ線形延長。χの対称列を使う | 100〜180 |
+| L18 | `restrictCoalgebraObj`・`restrictCoalgebraMap`・`TableReduction.operadMap`でBEへ制限。指定作用の式と射の可換性を包装 | 70〜130 |
+| L19 | cosimplicial恒等式の交代和の相殺で正規化部分を保つ。新たなBE法則は不要 | 120〜220 |
+| L20 | 同じ包含・微分・写像の制限。既存の交代余面複体の法則を使用 | 100〜180 |
+| L21 | Mathlib Dold–Kanの正規化/退化分解・ホモトピーを反対圏で使用。同じ正規化包含が指定homになる接続は新規 | 250〜450 |
+| L22 | `convolutionPre`・`convolutionPost`と各自然性、`Algebra.algebraLimitCone`・`algebraLimitIsLimit`で等化子を代数にする。恒等/合成を底のHomで確認 | 140〜260 |
+| L23 | convolution等化子の元の恒等単体での評価と逆構成、非単射で零、全単体射の自然性。一般convolutionからは出ない | 450〜850 |
+| L24 | 同じ評価の次数係数を保持した微分比較。一般Homの微分は既存だが評価符号の計算は新規 | 180〜340 |
+| L25 | L23の評価と既存のpost/pre自然性で全X射に対する自然性を確認 | 80〜160 |
+| L26 | L23〜L25を関手同型へ包装し、L20・L21の指定包含/擬同型を接続 | 120〜220 |
+| L27 | `convolutionAction_uncurry`・評価自然性と代数の極限射影から指定射影の評価式を得る。BE代数の公理は再証明しない | 80〜160 |
+| L28 | L27を実際のTR成分・単体鎖の切断公式で評価し、L26の指定同型で運ぶ。全整数次数とI01の区間との一致を含む | 250〜450 |
+| **L10〜L28（L12a込み）合計** | | **4,330〜7,790** |
+
+L21・L23・L24には「既存の同値を選べば終わる」という省略を置かない。
+同じ包含・同じ評価・同じ次数係数との照合をこの見込みに含めた。
+L12aの上端は区間の有限対応を一般qへ拡張する部分で、実測による不確実性が最も大きい。
+一般のoperad則を再利用しても、単体鎖のχ余作用の合成則のこの入力は消えない。
+
+### 121.5 M14全体の完成の見込みと25,000行の外枠
+
+§110の完成見込みをそのまま据え置かず、現在の実測と各未完成行から積み直す。
+G10や③-bの橋そのものを作る行数は含めないが、**受け取った指定比較への適用**は含める。
+
+| 部分 | 現時点の実測 / 残りの新規 |
+| --- | ---: |
+| 完成済みMayと今回までの切断の実装 | **9,634（実測）** |
+| L09a・L09の残り | 1,480〜2,700 |
+| L10〜L28（L12a・I01込み） | 4,330〜7,790 |
+| L29〜L37：同じMay係数・ν・top operationとFrobeniusの照合 | 1,200〜2,000 |
+| L38〜L40：G10後の指定native Totと同じFrobenius辺への移送 | 500〜900 |
+| L41・L42：filtered塔とA4の利用側 | 300〜550 |
+| L43a・L43b・L43・L44：二重模型の実現と同じMay演算の比較 | 1,500〜2,800 |
+| **残りの新規合計** | **9,310〜16,740** |
+| **M14完成時の見込み** | **18,944〜26,374** |
+
+**上端は25,000行を1,374行上回る。外枠内に必ず閉じるとは報告できない。**
+下端は共通符号の正規形・一般convolution・指定Dold–Kan比較の再利用が素直に通る場合、
+上端は一般qの二段切断と正規化評価の接続に余裕を取った値である。
+現在の実測の余地は15,366行で、残り上端16,740行より1,374行少ない。
+これは外枠変更の承認を仮定した見込みではなく、§31の外枠判断のための数値である。
+
+以前の§110の完成上端23,240行との差は3,134行。
+L09aの有限添字だけでなく、実際の境界符号・出力次数・指定面までの接続に行数が要り、
+一般BFの最初の行の見込みを上方修正したためである。
+χ/TR/convolutionの既存の公理を再証明しない短縮を入れても、この増分は全ては吸収できない。
+
+§31の「止まらずに」に従い、この1,000行区切り自体では停止しない。
+外枠25,000行を引き上げず、新しい数学の追加もしないまま、型一覧内の混合角の
+実テンソルの照合から続ける。今後の実測が残り上端に寄る場合は外枠到達前に明示する。
+12,500行の半分報告も別に行う。M15・G12、G10の部品には入らない。
+
+### 121.6 対象ビルド・合同監査と登録候補
+
+今回の14本はすべて対象ビルド成功。合同監査は **14モジュール・104宣言・標準三公理のみ**。
+監査ログは `/tmp/bsw16/audit-m14-corner-signs-02.log`。
+新規14本のsorry・追加公理0、Leanの警告0、`git diff --check`成功。
+合同監査で見つかった既存C40との重複は§120.13のとおり除去し、再監査を通した。
+個々の補題は200行以下。共通入口・共通監査は変更していない。mainは凍結中のまま。
+
+登録候補（接頭部 `SerrePositivity.EInfinity.SimplexCuts.`）：
+
+- `AdjacentColorDeletions`（86行）
+- `CaesuraVertexDeletion`（85行）
+- `CornerBoundarySigns`（74行）
+- `CornerDeletionSigns`（59行）
+- `CornerEndpointCoordinates`（82行）
+- `CornerIntervalMaxima`（52行）
+- `CornerPositionExponent`（64行）
+- `DeletedFaceVertexLists`（28行）
+- `DeletedOutputDegrees`（65行）
+- `ErasedBoundarySigns`（70行）
+- `ErasedCaesuraRanks`（81行）
+- `InactiveColorDegrees`（51行）
+- `PreviousBoundarySigns`（49行）
+- `PreviousVertexPositions`（88行）
+
+## 122. 約4,600行の報告後：同じ指定面の厳密な移送（11-14、続行）
+
+一覧：済み 8／全体 48（うち追加 4）
+
+§121は **1fc84640c** に保存済み。停止せず、混合角の既存の型の照合を続ける。
+`deletedCutFace`は既存`deletedCutTensor`内の色ごとの指定面を、更新次数を始域にして
+書き出したもの。新しい作用・正規化・錐は構成しない。
+C155・C156は既存の面の頂点列の評価、C157はC27・C152と頂点列の単射性による
+元の単体圏の射の一致である。ホモトピー圏の一致で代用しない。
+
+```lean
+simplexVertexList_deletedCutFace {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (a : Fin r) (ha : 0 < outputDegree s v a)
+    (j : Fin (outputDegree s v a + 1)) (c : Fin r) :
+  simplexVertexList (deletedCutFace s v a ha j c) =
+    if c = a then (verticesList s v.val a).eraseIdx j.val else verticesList s v.val c
+simplexVertexList_deletedCutFace_at_vertex {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (k : Fin (m + q + 1))
+    (hd : 0 < outputDegree s v (label s v.val k))
+    (j : Fin (outputDegree s v (label s v.val k) + 1))
+    (hj : j.val = vertexRank s v.val (label s v.val k) k) (c : Fin r) :
+  simplexVertexList (deletedCutFace s v (label s v.val k) hd j c) =
+    deletedVerticesList s v.val k c
+deletedCutFace_swapSteps {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (a b : Fin (m + q)) (hab : b.val = a.val + 1)
+    (ho : 0 < outputDegree s v (label s v.val b.castSucc))
+    (hn : 0 < outputDegree (s.swapSteps a b) v (label (s.swapSteps a b) v.val b.castSucc))
+    (jo : Fin (outputDegree s v (label s v.val b.castSucc) + 1))
+    (jno : jo.val = vertexRank s v.val (label s v.val b.castSucc) b.castSucc)
+    (jn : Fin (outputDegree (s.swapSteps a b) v (label (s.swapSteps a b) v.val b.castSucc) + 1))
+    (jnn : jn.val = vertexRank (s.swapSteps a b) v.val
+      (label (s.swapSteps a b) v.val b.castSucc) b.castSucc) (c : Fin r) :
+  deletedCutFace (s.swapSteps a b) v (label (s.swapSteps a b) v.val b.castSucc) hn jn c =
+    eqToHom (congrArg SimplexCategory.mk
+      (congrFun (deletedOutputDegree_swapSteps s v a b hab ho hn) c)) ≫
+      deletedCutFace s v (label s v.val b.castSucc) ho jo c
+```
+
+### 122.1 既存生成元と純粋テンソルの次数移送（C158・C159）
+
+同じ等式で型を移す既存構成の法則。等式の帰納法だけで証明し、
+新たな作用・ホモトピー・数学の定理は追加しない。
+
+```lean
+gen_cast_source (A : Type u) [CommRing A] (S : SSet.{0}) {n n' q : ℕ} (h : n = n')
+    (f : (⦋n'⦌ : SimplexCategory) ⟶ ⦋q⦌) (x : S _⦋q⦌) :
+  gen A S n (S.map (eqToHom (congrArg SimplexCategory.mk h) ≫ f).op x) =
+    (eqToHom (congrArg (fun t : ℤ => (chains A S).X t)
+      (congrArg (fun k : ℕ => -(k : ℤ)) h.symm))).hom
+      (gen A S n' (S.map f.op x))
+tensorValue_congr_degree (A : Type u) [CommRing A] (K : Complex A) (n : ℕ)
+    (d e : Fin n → ℕ) (h : d = e)
+    (v : ∀ i, K.X (-(d i : ℤ))) (w : ∀ i, K.X (-(e i : ℤ)))
+    (hv : ∀ i, (eqToHom (congrArg (fun t : ℤ => K.X t)
+      (congrArg (fun k : ℕ => -(k : ℤ)) (congrFun h i)))).hom (v i) = w i) :
+  (eqToHom (congrArg (fun t : ℤ => (power K n).X t)
+    (congrArg (fun k : ℕ => -(k : ℤ)) (congrArg (degreeSum n) h)))).hom
+    (tensorValue K n d v) = tensorValue K n e w
+```
+
+### 122.2 指定面と次数移送の検証済み区切り
+
+一覧：済み 8／全体 48（うち追加 4）
+
+§121の報告後も続行して、次の二本 **131行**を追加した。
+
+- `SerrePositivity.EInfinity.SimplexCuts.DeletedCutFaces`（85行）
+- `SerrePositivity.EInfinity.SimplexCuts.GeneratorDegreeTransfers`（46行）
+
+対象ビルドは `/tmp/bsw16/m14-deleted-cut-faces-03.log` と
+`/tmp/bsw16/m14-deleted-cut-faces-02.log` の各対象で成功。
+合同監査 `/tmp/bsw16/audit-m14-deleted-cut-faces.log` は
+**2モジュール・10宣言・標準三公理のみ**。sorry・追加公理0、Leanの警告0。
+いずれの補題も200行以下、共通入口・共通監査・既存の公開宣言は変更していない。
+調整役への登録候補には、この二本も加える。
+
+L09a・L09の実測 **4,699行**、改訂MayのM14全体 **9,765行**。
+§121の残り見込みの「混合角」のうち、指定面の厳密な一致と一般の次数移送を進めた。
+`deletedCutTensor`内部の各因子をこの指定面の生成元へ実際に書き換え、
+全体の次数移送と符号を合わせる接続はまだ残る。L09aの完了には数えない。
+
+## 123. 混合角の実テンソルへ指定面を接続する（11-14）
+
+一覧：済み 8／全体 48（うち追加 4）
+
+前ターンは進捗あり：`1fc84640c`・`3f38e2eec`で対象ビルド・監査済みの実装と
+§121の再見積もりを保存した。作業木はクリーンで再開し、G10や新しい作用には入らない。
+以下は既存構成の次数移送・係数移送の法則として型を追加する。
+
+```lean
+tensorValue_cast_target_congr (A : Type u) [CommRing A]
+    (K : Complex A) (n : ℕ) (d e : Fin n → ℕ)
+    (h : d = e) (v : ∀ i, K.X (-(d i : ℤ))) (w : ∀ i, K.X (-(e i : ℤ)))
+    (hv : ∀ i, v i = (eqToHom (congrArg (fun t : ℤ => K.X t)
+      (congrArg (fun k : ℕ => -(k : ℤ)) (congrFun h i).symm))).hom (w i))
+    (z : ℤ) (hd : -(degreeSum n d : ℤ) = z) (he : -(degreeSum n e : ℤ) = z) :
+  (eqToHom (congrArg (fun t : ℤ => (power K n).X t) hd)).hom (tensorValue K n d v) =
+    (eqToHom (congrArg (fun t : ℤ => (power K n).X t) he)).hom (tensorValue K n e w)
+deletedCutTensor_eq_faces (A : Type u) [CommRing A] {m q r : ℕ}
+    (S : SSet.{0}) (s : Cut m q) (v : Surjection.Word r (m + 1))
+    (a : Fin r) (ha : 0 < outputDegree s v a)
+    (j : Fin (outputDegree s v a + 1)) (x : S _⦋q⦌)
+    (h : -(degreeSum r (Function.update (outputDegree s v) a
+      (outputDegree s v a - 1)) : ℤ) = -((m + q + 1 - r : ℕ) : ℤ) + 1) :
+  deletedCutTensor A S s v a ha j x =
+    (eqToHom (congrArg (fun t : ℤ => (power (chains A S) r).X t) h)).hom
+      (tensorValue (chains A S) r
+        (Function.update (outputDegree s v) a (outputDegree s v a - 1))
+        (fun c => gen A S _ (S.map (deletedCutFace s v a ha j c).op x)))
+```
+
+### 123.1 元の削除テンソルの一致（C162・C163）
+
+C157の指定面、C158の生成元、C160の全体の次数移送を順に適用する、
+既存構成の貼り合わせの法則。単体圏の厳密な一致から始め、最後も元の加群の等式で述べる。
+
+```lean
+deletedCutTensor_eq_of_faces (A : Type u) [CommRing A] {m q r : ℕ}
+    (S : SSet.{0}) (s t : Cut m q) (v : Surjection.Word r (m + 1)) (a b : Fin r)
+    (ha : 0 < outputDegree s v a) (hb : 0 < outputDegree t v b)
+    (ja : Fin (outputDegree s v a + 1)) (jb : Fin (outputDegree t v b + 1))
+    (he : Function.update (outputDegree s v) a (outputDegree s v a - 1) =
+      Function.update (outputDegree t v) b (outputDegree t v b - 1))
+    (hf : ∀ c, deletedCutFace s v a ha ja c =
+      eqToHom (congrArg SimplexCategory.mk (congrFun he c)) ≫ deletedCutFace t v b hb jb c)
+    (x : S _⦋q⦌) :
+  deletedCutTensor A S s v a ha ja x = deletedCutTensor A S t v b hb jb x
+deletedCutTensor_swapSteps (A : Type u) [CommRing A] {m q r : ℕ}
+    (S : SSet.{0}) (s : Cut m q) (v : Surjection.Word r (m + 1))
+    (a b : Fin (m + q)) (hab : b.val = a.val + 1)
+    (ho : 0 < outputDegree s v (label s v.val b.castSucc))
+    (hn : 0 < outputDegree (s.swapSteps a b) v (label (s.swapSteps a b) v.val b.castSucc))
+    (jo : Fin (outputDegree s v (label s v.val b.castSucc) + 1))
+    (jno : jo.val = vertexRank s v.val (label s v.val b.castSucc) b.castSucc)
+    (jn : Fin (outputDegree (s.swapSteps a b) v (label (s.swapSteps a b) v.val b.castSucc) + 1))
+    (jnn : jn.val = vertexRank (s.swapSteps a b) v.val
+      (label (s.swapSteps a b) v.val b.castSucc) b.castSucc) (x : S _⦋q⦌) :
+  deletedCutTensor A S (s.swapSteps a b) v
+      (label (s.swapSteps a b) v.val b.castSucc) hn jn x =
+    deletedCutTensor A S s v (label s v.val b.castSucc) ho jo x
+```
+
+### 123.2 同じ符号付き境界項への適用（C164・C165）
+
+C164は同じ有限同値の逆の面番号を評価する法則、C165は既存の実テンソルの一致と
+既存の境界符号反転の貼り合わせ。新しい相殺の対合は作らない。
+
+```lean
+outputBoundarySign_eq_at_of_rank {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (k : Fin (m + q + 1))
+    (j : Fin (outputDegree s v (label s v.val k) + 1))
+    (hj : j.val = vertexRank s v.val (label s v.val k) k) :
+  outputBoundarySign s v (label s v.val k) j = outputBoundarySignAt s v k
+outputBoundaryTerm_swapSteps_of_sign (A : Type u) [CommRing A] {m q r : ℕ}
+    (S : SSet.{0}) (s : Cut m q) (v : Surjection.Word r (m + 1))
+    (a b : Fin (m + q)) (hab : b.val = a.val + 1)
+    (ho : 0 < outputDegree s v (label s v.val b.castSucc))
+    (hn : 0 < outputDegree (s.swapSteps a b) v (label (s.swapSteps a b) v.val b.castSucc))
+    (jo : Fin (outputDegree s v (label s v.val b.castSucc) + 1))
+    (jno : jo.val = vertexRank s v.val (label s v.val b.castSucc) b.castSucc)
+    (jn : Fin (outputDegree (s.swapSteps a b) v (label (s.swapSteps a b) v.val b.castSucc) + 1))
+    (jnn : jn.val = vertexRank (s.swapSteps a b) v.val
+      (label (s.swapSteps a b) v.val b.castSucc) b.castSucc)
+    (hs : outputBoundarySignAt (s.swapSteps a b) v b.castSucc =
+      -outputBoundarySignAt s v b.castSucc) (x : S _⦋q⦌) :
+  outputBoundaryTerm A S (s.swapSteps a b) v (label (s.swapSteps a b) v.val b.castSucc) jn x =
+    -outputBoundaryTerm A S s v (label s v.val b.castSucc) jo x
+```
+
+### 123.3 正次数の確認と両向きへの適用（C166・C167）
+
+C166は直前同色位置の既存の法則、C167は水平/垂直の向きでC147・C148とC165を使い分ける
+証明の分割。混合角の両側の元の出力境界項を、追加の正次数仮定なしに述べる。
+
+```lean
+outputDegree_pos_after_vertical {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (a : Fin (m + q)) (ha : a ∉ s.val) :
+  0 < outputDegree s v (label s v.val a.succ)
+outputBoundaryTerm_swapSteps_mixed (A : Type u) [CommRing A] {m q r : ℕ}
+    (S : SSet.{0}) (s : Cut m q) (v : Surjection.Word r (m + 1))
+    (a b : Fin (m + q)) (hab : b.val = a.val + 1) (hc : a ∈ s.val ↔ b ∉ s.val)
+    (jo : Fin (outputDegree s v (label s v.val b.castSucc) + 1))
+    (jno : jo.val = vertexRank s v.val (label s v.val b.castSucc) b.castSucc)
+    (jn : Fin (outputDegree (s.swapSteps a b) v (label (s.swapSteps a b) v.val b.castSucc) + 1))
+    (jnn : jn.val = vertexRank (s.swapSteps a b) v.val
+      (label (s.swapSteps a b) v.val b.castSucc) b.castSucc) (x : S _⦋q⦌) :
+  outputBoundaryTerm A S (s.swapSteps a b) v (label (s.swapSteps a b) v.val b.castSucc) jn x =
+    -outputBoundaryTerm A S s v (label s v.val b.castSucc) jo x
+```
+
+### 123.4 構成済みの対合の混合角の分岐へ戻す（C168・C169）
+
+C168は既存の添字同値に沿う値の定義の評価、C169はC167を既存のMixedVertex分類と
+既存の全体の次数移送へ適用する証明の分割。
+C161の証明内で使う局所的なcastの法則は
+`hcast (M N : ModuleCat A) (hMN : M = N) (y : M) : HEq ((eqToHom hMN).hom y) y`。
+等式の帰納法で証明し、HEqは依存した型の処理にだけ使う。出力はすべて元の加群の等式。
+
+```lean
+universalBoundaryValue_output (A : Type u) [CommRing A] (S : SSet.{0}) {r d : ℕ}
+    (w : Surjection.BasisWord (r + 1) d) (q : ℕ) (x : S _⦋q⦌)
+    (s : Cut (r + d) q) (k : Fin (r + d + q + 1))
+    (h : -((r + d + q + 1 - (r + 1) : ℕ) : ℤ) + 1 = -((d + q : ℕ) : ℤ) + 1) :
+  universalBoundaryValue A S w q x (.inl ⟨s, k⟩) =
+    (eqToHom (congrArg (fun t : ℤ => (power (chains A S) (r + 1)).X t) h)).hom
+      (outputBoundaryTerm A S s (positiveWord w) (label s (positiveWord w).val k)
+        ((colorPositionEquiv s (positiveWord w)).symm k).2 x)
+universalBoundaryValue_mixed_neg (A : Type u) [CommRing A] (S : SSet.{0}) {r d : ℕ}
+    (w : Surjection.BasisWord (r + 1) d) (q : ℕ) (x : S _⦋q⦌)
+    (t : BoundaryVertexOfKind (r + d) q .mixed) :
+  universalBoundaryValue A S w q x (.inl (vertexCornerPerm (r + d) q t.val)) =
+    -universalBoundaryValue A S w q x (.inl t.val)
+```
+
+### 123.5 混合角の分岐の完了・検証・保存
+
+一覧：済み 8／全体 48（うち追加 4）
+
+次の五本、**316行**が対象ビルド・合同監査を通った。
+登録候補の接頭部は `SerrePositivity.EInfinity.SimplexCuts.`。
+
+- `DeletedFaceTensors`：75行
+- `CornerDeletedTensors`：66行
+- `CornerBoundaryTerms`：52行
+- `MixedCornerTerms`：61行
+- `MixedBoundaryValues`：62行
+
+対象ビルド `/tmp/bsw16/m14-mixed-boundary-values-04.log` は五本すべて成功、Leanの警告0。
+専用監査 `/tmp/bsw16/audit-m14-mixed-boundary-values.log` は
+**5モジュール・19宣言・標準三公理のみ**。新規五本のsorry・追加公理0、
+個々の補題200行以下。既存公開宣言・共通入口・共通監査は変更していない。
+
+独立の有限点検では、m=0〜4・q=0〜3・色数1〜3の全射非退化語と全混合角で
+**9,536組**の実際の出力境界符号・削除後の全色の列・正規化での零を確認した。
+そのうち**4,080組**は削除面の重複により正規化で零となる。
+Leanではこの有限点検を仮定せず、既存の指定面の厳密一致と次数移送の法則から証明した。
+
+`universalBoundaryValue_mixed_neg`は、L09aの三群の貼り合わせ
+`universalBoundaryPartner_neg_of_cases`の**hmixを、そのまま仮定なく供給する**。
+条件を弱めたり符号の仮定を追加したりしていない。
+L09a全体・L09は未完了で、残るのは水平のhc・垂直のhvと有限和から微分への包装。
+したがって一覧の完了件数はまだ増やさない。
+
+L09a・L09累計 **5,015行**、改訂MayのM14全体 **10,081行**。
+§121の混合角の180〜300行の見込みに対し、§122の131行と今回の316行で実測**447行**、
+差は**+147〜+267行**。指定面の一致だけでは元の`deletedCutTensor`内の依存した型の
+二段の移送を解消できず、因子ごとの生成元と全体の終域次数までを明示的に接続したため。
+新しい数学の追加ではなく同じ構成の照合だが、この行数も外枠に含める。
+混合角の残りは0行として、ほかの見込みを据え置いたM14完成見込みは
+**19,211〜26,521行**。上端は外枠25,000行を1,521行上回るリスクが残る。
+外枠の変更は仮定せず、水平の分岐へ続行する。
+
+## 124. 水平・垂直の符号に共通する接頭順位（11-14、続行）
+
+一覧：済み 8／全体 48（うち追加 4）
+
+混合角の完了は **46bd6230f** に保存済み。
+次は水平の分岐の符号を照合するため、展開した語の順位を元の語と垂直座標で読む。
+m=0〜4・q=0〜3・色数1〜3の全ての語（全射性・非退化性を要求しない）で
+**142,272頂点**の順位を点検してから実装した。
+これはL09a内の接頭部分の有限の数え上げ。型は次のとおり。
+
+```lean
+caesuraRank_label {m q r : ℕ} (s : Cut m q) (v : Fin (m + 1) → Fin r)
+    (k : Fin (m + q + 1)) :
+  Surjection.caesuraRank (label s v) k =
+    (s.vertical k).val + Surjection.caesuraRank v (s.horizontal k)
+```
+
+証明は経路の頂点の帰納法で、水平辺では元の語のcaesuraだけが、垂直辺では一つが増える。
+既存のC129・C130、`step_of_mem`・`step_of_notMem`と隣接順位C135を使う。
+この法則を水平の単語削除係数と垂直の入力面の交代符号の双方へ使い、
+重み付き逆転数の二重和の展開を各分岐で繰り返さない。
+
+### 124.1 同じ削除集合の重み付き和（C171・C172）
+
+既存C121・C122の集合の一致に有限和を適用する法則。
+位置数1〜6・色数1〜3の全色列の活動/最後の位置について、
+重みH(i)=iおよびH(i)=(i+1)²で**11,344例**を点検してから実装する。
+
+```lean
+caesura_sum_erase_active {N r : ℕ} (v : Fin (N + 1) → Fin r)
+    (a : Fin (N + 1)) (ha : Surjection.Caesura v a) (H : Fin (N + 1) → ℕ) :
+  (∑ i ∈ caesuraPositions v, H i) =
+    (∑ i ∈ caesuraPositions (Surjection.erase v a), H (a.succAbove i)) + H a
+caesura_sum_erase_final {N r : ℕ} (v : Fin (N + 1) → Fin r)
+    (a : Fin (N + 1)) (ha : ¬Surjection.Caesura v a)
+    (hp : (Surjection.previousOccurrences v a).Nonempty) (H : Fin (N + 1) → ℕ) :
+  (∑ i ∈ caesuraPositions v, H i) =
+    (∑ i ∈ caesuraPositions (Surjection.erase v a), H (a.succAbove i)) +
+      H (previousVertex v a hp)
+```
+
+### 124.2 削除後に残る区間の右端（C173）
+
+一般の座標対応について既存C06の達成上界の法則を適用する、L09a内の有限fiberの評価。
+水平な二辺の内部の削除と両端の削除で、p=1〜5・q=0〜4の全経路の
+残る区間の右端を**5,700例**点検してから実装する。
+C173はその座標の対応を引数とする共通法則。水平の具体的な対応への適用は次に行う。
+
+```lean
+hi_eq_of_coordinate_cover {m n q : ℕ} (s : Cut m q) (t : Cut n q)
+    (ρ : Fin (n + q + 1) → Fin (m + q + 1)) (φ : Fin (n + 1) → Fin (m + 1))
+    (hφ : Function.Injective φ)
+    (hh : ∀ j, s.horizontal (ρ j) = φ (t.horizontal j))
+    (hv : ∀ j, s.vertical (ρ j) = t.vertical j) (i : Fin (n + 1))
+    (hcover : ∀ j, s.horizontal j = φ i → ∃ k, ρ k = j) :
+  hi t i = hi s (φ i)
+```
+
+### 124.3 水平の座標公式と位置指数への適用（C174〜C176）
+
+§124.1・§124.2の有限点検の組合せに対応する法則。
+C174は既存の`horizontalDeletion_horizontal`・`horizontalDeletion_vertical`をC173へ渡す。
+C175・C176は同じ右端の重みについてC171・C172を評価する。
+局所的な法則`positionExponent_eq_caesura_sum`は位置指数の定義を有限集合の和へ戻すだけ。
+
+```lean
+hi_horizontalDeletion {m q : ℕ} (s : Cut (m + 1) q)
+    (a b : Fin (m + 1 + q)) (hab : b.val = a.val + 1)
+    (ha : a ∈ s.val) (hb : b ∈ s.val) (i : Fin (m + 1)) :
+  hi ((BarrattEccles.horizontalInsertionEquiv m q a).symm ⟨s, ha⟩) i =
+    hi s ((s.horizontal a.succ).succAbove i)
+positionExponent_eq_caesura_sum {m q r : ℕ} (s : Cut m q)
+    (v : Fin (m + 1) → Fin r) :
+  positionExponent s v = ∑ i ∈ caesuraPositions v, hi s i
+positionExponent_erase_active {m q r : ℕ} (s : Cut (m + 1) q) (t : Cut m q)
+    (v : Fin (m + 2) → Fin r) (a : Fin (m + 2)) (ha : Surjection.Caesura v a)
+    (hh : ∀ i, hi t i = hi s (a.succAbove i)) :
+  positionExponent s v = positionExponent t (Surjection.erase v a) + hi s a
+positionExponent_erase_final {m q r : ℕ} (s : Cut (m + 1) q) (t : Cut m q)
+    (v : Fin (m + 2) → Fin r) (a : Fin (m + 2)) (ha : ¬Surjection.Caesura v a)
+    (hp : (Surjection.previousOccurrences v a).Nonempty)
+    (hh : ∀ i, hi t i = hi s (a.succAbove i)) :
+  positionExponent s v = positionExponent t (Surjection.erase v a) +
+    hi s (previousVertex v a hp)
+```
+
+### 124.4 活動区間の係数削除の符号（C177）
+
+元の語の活動区間を消す場合、C170の垂直座標とC175の右端が等しく、
+同じ(-1)の冪が二回現れて消える。m=1〜4・q=0〜3・色数1〜3の全色列の
+内部/両端の水平削除で、活動位置を消す**27,644例**を点検してから実装する。
+これはL09a内の既存の符号規則の照合で、界面・作用・operad則は変更しない。
+
+```lean
+signedDeletionCoefficient_horizontal_active {m q r : ℕ}
+    (s : Cut (m + 1) q) (t : Cut m q) (v : Fin (m + 2) → Fin r)
+    (a : Fin (m + 2)) (k : Fin (m + 1 + q + 1)) (ha : Surjection.Caesura v a)
+    (hk : s.horizontal k = a) (hy : (s.vertical k).val = hi s a)
+    (hh : ∀ i, hi t i = hi s (a.succAbove i)) :
+  (-1 : ℤ) ^ positionExponent s v * Surjection.deletionCoefficient (label s v) k =
+    Surjection.deletionCoefficient v a * (-1 : ℤ) ^ positionExponent t (Surjection.erase v a)
+```
+
+C177の局所的な整数積の法則の型は
+`cancel (P R : ℤ) (n : ℕ) : (P * (-1 : ℤ)^n) * ((-1 : ℤ)^n * R) = R * P`。
+`(-1)^n * (-1)^n = 1`と可換結合法則だけを使う。
+最後の非活動区間の分岐と、実テンソル/無効な削除語の零の照合はまだ残る。
+
+### 124.5 最後の位置の前にある同色頂点（C178）
+
+m=1〜4・q=0〜3・色数1〜3の全ての色列について、一頂点の水平区間で元の語に
+直前同色位置がある**27,644例**を点検してから実装する。
+元の語と展開語の既存の`previousOccurrences`の最大を、同じ水平fiberの最大で照合する
+有限の数え上げ。新しいBE作用や削除の構成は作らない。
+
+```lean
+previousVertex_label_horizontal_singleton {m q r : ℕ} (s : Cut m q)
+    (v : Fin (m + 1) → Fin r) (a : Fin (m + 1)) (k : Fin (m + q + 1))
+    (hk : s.horizontal k = a) (hsingle : ∀ j, s.horizontal j = a → j = k)
+    (hp : (Surjection.previousOccurrences v a).Nonempty)
+    (he : (Surjection.previousOccurrences (label s v) k).Nonempty) :
+  previousVertex (label s v) k he =
+    (intervalPositions s (previousVertex v a hp)).max'
+      (intervalPositions_nonempty s (previousVertex v a hp))
+```
+
+### 124.6 最後の非活動区間の係数削除の符号（C179）
+
+m=1〜4・q=0〜3・色数1〜3の全ての色列の内部/両端の水平削除について、
+元の語の最後の非活動位置で直前同色位置がある**18,374例**を点検してから実装する。
+C178で直前同色区間の最後を指定し、C170・C176と既存の最後の削除係数の法則を適用する。
+同じ右端の冪の二乗を消す局所法則`cancel`の型はC177と同じ。
+
+```lean
+signedDeletionCoefficient_horizontal_final {m q r : ℕ}
+    (s : Cut (m + 1) q) (t : Cut m q) (v : Fin (m + 2) → Fin r)
+    (a : Fin (m + 2)) (k : Fin (m + 1 + q + 1)) (ha : ¬Surjection.Caesura v a)
+    (hk : s.horizontal k = a) (hsingle : ∀ j, s.horizontal j = a → j = k)
+    (hp : (Surjection.previousOccurrences v a).Nonempty)
+    (he : (Surjection.previousOccurrences (label s v) k).Nonempty)
+    (hh : ∀ i, hi t i = hi s (a.succAbove i)) :
+  (-1 : ℤ) ^ positionExponent s v * Surjection.deletionCoefficient (label s v) k =
+    Surjection.deletionCoefficient v a *
+      (-1 : ℤ) ^ positionExponent t (Surjection.erase v a)
+```
+
+### 124.7 接頭順位と水平削除係数の検証済み区切り
+
+一覧：済み 8／全体 48（うち追加 4）
+
+次の七本 **366行**を対象ビルド・監査済みとして保存する。
+登録候補の接頭部は `SerrePositivity.EInfinity.SimplexCuts.`。
+
+- `ExpandedCaesuraRanks`：46行
+- `CaesuraDeletionSums`：42行
+- `DeletedIntervalMaxima`：38行
+- `HorizontalDeletionExponents`：79行
+- `HorizontalActiveDeletionSigns`：38行
+- `HorizontalPreviousVertices`：62行
+- `HorizontalFinalDeletionSigns`：61行
+
+対象ビルドは`m14-expanded-caesura-ranks-02.log`、`m14-caesura-deletion-sums-01.log`、
+`m14-deleted-interval-maxima-01.log`、`m14-horizontal-deletion-exponents-01.log`、
+`m14-horizontal-active-deletion-signs-02.log`、`m14-horizontal-previous-vertices-01.log`、
+`m14-horizontal-final-deletion-signs-03.log`（いずれも`/tmp/bsw16/`）で成功。
+新規七本のLean警告0、sorry・追加公理0、`git diff --check`成功。
+個々の補題は200行以下。
+専用監査 `/tmp/bsw16/audit-m14-horizontal-deletion-signs.log` は
+**7モジュール・23宣言・標準三公理のみ**。
+鍵スクリプトの他レーンの既存ビルド検出通知は出たが、監査のLeanの警告/エラーはない。
+鍵を持つ常駐プロセスは作っていない。
+
+C170は全ての色関数で成立し、Wordの非退化性を余分に仮定していない。
+C174は内部の水平削除の右端の具体的な対応、C175・C176は同じ右端を受け取る一般の位置指数の法則。
+C177・C179により、活動区間・最後の非活動区間の両方で、位置指数と単語削除係数が
+元の語の削除係数へ戻るところまで検証した。
+
+**水平のhcはまだ未完了**。共通の削除色列の逆転符号を小さい切断の符号へ移すこと、
+始端・終端への具体的な座標対応、実テンソルの一致、削除語が無効な場合の零が残る。
+C179の元の語と展開語の先行同色の非空性は、適用時に正の出力次数から供給する必要がある。
+その適用を仮定したままhcを証明したとは報告しない。垂直のhvも未完了。
+
+L09a・L09累計 **5,381行**、改訂MayのM14全体 **10,447行**。
+次の1,000行の区切りは約5,600行。12,500行の半分報告・25,000行の外枠には未到達。
+次は、同じ色列の次数移送で削除後の逆転符号を比較し、活動/最後の二つの係数公式を
+実際の水平境界符号へ適用する。共通入口・共通監査・界面の変更は行わない。
+
+## 125. 水平の実際の符号へ接続する（11-14）
+
+一覧：済み 8／全体 48（うち追加 4）
+
+前ターンは進捗あり：`46bd6230f`で混合角の実境界値の相殺、`5f9f9d382`で
+水平の二種類の削除係数の照合を対象ビルド・監査後に保存した。クリーンな作業木で再開。
+以下は同じ有限順序の次数移送・既存符号の照合・L09a内の有限な先行位置の分類。
+C181の事前点検は§124.5の27,644例、C182は§124.4・§124.6の両分岐を使う。
+
+```lean
+caesuraInversionCount_congr_length {N M r : ℕ} (h : N = M)
+    (v : Fin N → Fin r) (w : Fin M → Fin r) (he : ∀ i, v i = w (Fin.cast h i)) :
+  positionInversionCount v (caesuraPositions v) = positionInversionCount w (caesuraPositions w)
+erasedColorSign_eq_permutationSign {m q n q' r : ℕ} (s : Cut m q)
+    (v : Fin (m + 1) → Fin r) (k : Fin (m + q + 1)) (t : Cut n q')
+    (w : Fin (n + 1) → Fin r) (h : m + q = n + q' + 1)
+    (he : ∀ i, Surjection.erase (label s v) k i = label t w (Fin.cast h i)) :
+  erasedColorSign (label s v) k = (-1 : ℤ) ^ permutationExponent t w
+previousOccurrences_of_horizontal_singleton {m q r : ℕ} (s : Cut m q)
+    (v : Fin (m + 1) → Fin r) (a : Fin (m + 1)) (k : Fin (m + q + 1))
+    (hk : s.horizontal k = a) (hsingle : ∀ j, s.horizontal j = a → j = k)
+    (he : (Surjection.previousOccurrences (label s v) k).Nonempty) :
+  (Surjection.previousOccurrences v a).Nonempty
+signedDeletionCoefficient_horizontal {m q r : ℕ}
+    (s : Cut (m + 1) q) (t : Cut m q) (v : Surjection.Word r (m + 2))
+    (a : Fin (m + 2)) (k : Fin (m + 1 + q + 1))
+    (hk : s.horizontal k = a) (hsingle : ∀ j, s.horizontal j = a → j = k)
+    (hd : 0 < outputDegree s v (label s v.val k))
+    (hh : ∀ i, hi t i = hi s (a.succAbove i)) :
+  (-1 : ℤ) ^ positionExponent s v.val * Surjection.deletionCoefficient (label s v.val) k =
+    Surjection.deletionCoefficient v.val a *
+      (-1 : ℤ) ^ positionExponent t (Surjection.erase v.val a)
+```
+
+### 125.1 同じ小さい切断の実符号へ戻す（C183・C184）
+
+C180・C182を、元のC127の出力符号の式へ適用する既存構成の符号照合。
+内部の具体的な対応には、既存の水平削除座標公式とC174を使う。
+有効な削除語の実テンソル・無効な語の零はまだ主張しない。
+局所的な整数積の法則は`rearrange (P E D : ℤ) : P * E * D = E * (P * D)`。
+
+```lean
+outputBoundarySignAt_horizontal_of_coordinates {m q r : ℕ}
+    (s : Cut (m + 1) q) (t : Cut m q)
+    (v : Surjection.Word r (m + 2)) (w : Surjection.Word r (m + 1))
+    (a : Fin (m + 2)) (k : Fin (m + 1 + q + 1))
+    (hk : s.horizontal k = a) (hsingle : ∀ j, s.horizontal j = a → j = k)
+    (hd : 0 < outputDegree s v (label s v.val k))
+    (hh : ∀ i, hi t i = hi s (a.succAbove i)) (hw : w.val = Surjection.erase v.val a)
+    (he : ∀ i, Surjection.erase (label s v.val) k i =
+      label t w.val (Fin.cast (by omega : m + 1 + q = m + q + 1) i)) :
+  outputBoundarySignAt s v k = Surjection.deletionCoefficient v.val a * cutSign t w.val
+outputBoundarySignAt_horizontalDeletion {m q r : ℕ} (s : Cut (m + 1) q)
+    (v : Surjection.Word r (m + 2)) (a b : Fin (m + 1 + q))
+    (hab : b.val = a.val + 1) (ha : a ∈ s.val) (hb : b ∈ s.val)
+    (w : Surjection.Word r (m + 1))
+    (hw : w.val = Surjection.erase v.val (s.horizontal a.succ))
+    (hd : 0 < outputDegree s v (label s v.val a.succ)) :
+  outputBoundarySignAt s v a.succ =
+    Surjection.deletionCoefficient v.val (s.horizontal a.succ) *
+      cutSign ((BarrattEccles.horizontalInsertionEquiv m q a).symm ⟨s, ha⟩) w.val
+```
+
+### 125.2 小さい切断の更新次数と指定面（C185・C186）
+
+既存の削除列の一致の長さと、単体圏の頂点列の単射性を使う既存構成の照合。
+混合角で使ったC152・C157を、区間数の異なる小さい切断との比較にも使える形で述べる。
+削除列の具体的な一致自体を新しい仮定として残してhcを証明したことにはしない。
+
+```lean
+deletedOutputDegree_eq_of_vertexLists {m n q r : ℕ} (s : Cut m q) (t : Cut n q)
+    (v : Surjection.Word r (m + 1)) (w : Surjection.Word r (n + 1))
+    (k : Fin (m + q + 1)) (hd : 0 < outputDegree s v (label s v.val k))
+    (hl : ∀ c, deletedVerticesList s v.val k c = verticesList t w.val c) :
+  Function.update (outputDegree s v) (label s v.val k)
+    (outputDegree s v (label s v.val k) - 1) = outputDegree t w
+deletedCutFace_eq_of_vertexLists {m n q r : ℕ} (s : Cut m q) (t : Cut n q)
+    (v : Surjection.Word r (m + 1)) (w : Surjection.Word r (n + 1))
+    (k : Fin (m + q + 1)) (hd : 0 < outputDegree s v (label s v.val k))
+    (hl : ∀ c, deletedVerticesList s v.val k c = verticesList t w.val c)
+    (j : Fin (outputDegree s v (label s v.val k) + 1))
+    (hj : j.val = vertexRank s v.val (label s v.val k) k) (c : Fin r) :
+  deletedCutFace s v (label s v.val k) hd j c =
+    eqToHom (congrArg SimplexCategory.mk
+      (congrFun (deletedOutputDegree_eq_of_vertexLists s t v w k hd hl) c)) ≫ face t w c
+```
+
+### 125.3 約5,600行の区切り・B4前の検証済み保存
+
+一覧：済み 8／全体 48（うち追加 4）
+
+今回の四本 **214行**は対象ビルド成功、専用監査
+`/tmp/bsw16/audit-m14-horizontal-boundary-signs.log` も
+**4モジュール・14宣言・標準三公理のみ**で成功。Leanの警告0、sorry・追加公理0。
+登録候補の接頭部は `SerrePositivity.EInfinity.SimplexCuts.`。
+
+- `ErasedColorSignComparisons`：37行
+- `HorizontalDeletionCoefficients`：56行
+- `HorizontalBoundarySigns`：74行
+- `HorizontalDeletedFaces`：47行
+
+対象ビルドの最終ログは`m14-horizontal-deletion-coefficients-01.log`の後者の対象、
+`m14-horizontal-boundary-signs-01.log`、`m14-horizontal-deleted-faces-01.log`（`/tmp/bsw16/`）。
+L09a・L09実測 **5,595行**、改訂MayのM14全体 **10,661行**。
+約5,600行の1,000行区切りとして報告する。個々の補題は200行以下。
+
+内部の水平境界の**元の実符号**が、元の語の削除係数と小さい切断のcutSignに一致した。
+削除列が同じ場合の更新次数と指定面の厳密一致も閉じた。
+水平hcの実テンソルへの接続、両端、無効な削除語の零、垂直hvはまだ残る。
+§121・§123.5の全体見込みと外枠超過のリスクは、B4を理由に縮小した扱いにはしない。
+
+## 126. B4の追従を先に行う（11-14昼）
+
+一覧：済み 8／全体 48（うち追加 4）
+
+調整役のB4指示を受領しM14の新しい実装より優先する。
+mainの`citation-attributes.md` §14と`bulk-w1-b3/B4-README.md`を読んだ。
+現在の四本の対象ビルドと監査を完了して先に保存し、main取り込み前のソースから採取する。
+基準はc5c4436c0、本体のみ・drafts除外。
+昼の採取は`--class impl --wait 3600`で組ごとに取り、280秒の実行上限で分ける。
+索引と原ソースを保持し、保留0と差分確認の後にmainを取り込む。
+取り込み後のソースには古い索引を適用しない。
+
+### 126.1 B4採取中の記録（main取り込み前）
+
+一覧：済み 8／全体 48（うち追加 4）
+
+M14の検証済み四本は **94c593fe0** に保存済み。
+基準c5c4436c0から自枝のコミットが触った本体Leanを再集計し、draftsを除外した対象は
+**106本**。既存のB4一覧95本をすべて含み、その後の11本を加えた。
+main上には、この106本の同名ファイルはまだないことも確認した。
+
+採取前のソースコミット・全106本のSHA256・改名表のSHA256は
+`bulk-w1-b4/bs-impl-before.json`に保存した。
+原ソースの完全なコピー、分割した採取のJSON、ログは
+`/tmp/bsw16/b4-20261114/`に保持している。
+初期の6本の組の鍵内実行時間が約72秒だったため、進行中の組の完了と鍵返却を確認して
+12本の組へまとめ直した。採取済み24本は原ソース一致を再検証して引き継ぎ、
+未採取分のみを続行している。各組は`--class impl --wait 3600`、実行上限280秒。
+整理券を重複して発行していない。
+
+この記録時点の採取完了は **36／106本**。採取ジョブは稼働しており、次の組は鍵待ち。
+完了済み36本の26,311件の参照を定義元つき改名表へ照合した範囲では、
+移動する宣言への直接参照は0。これは**部分的な事前照合**であり、
+全件のrewrite・`review.json`の保留0の確認に代えるものではない。
+通常importのmodule-mapへの直接該当と、106本自身のファイル配置の移動の該当はともに0。
+非修飾名の最終的な確認には全件の採取と正式rewriteを使う。
+
+取り込み後の対象ビルドの範囲は、106本の自モジュール内のimportグラフから求めた。
+次の8本の上位importerをすべてビルドすると、自分の106本を推移的にすべて覆う。
+追加の依存が少ない順と被覆数は`bulk-w1-b4/bs-impl-build-scope.json`、
+詳細な依存グラフは`/tmp/bsw16/b4-20261114/build-coverage-plan.json`に保存した。
+これは計画であり、まだmain取り込み後のビルド成功を主張しない。
+
+- `SerrePositivity.EInfinity.SimplexCuts.GeneratorBoundary`
+- `SerrePositivity.EInfinity.SimplexCuts.TopTerm`
+- `SerrePositivity.EInfinity.SimplexCuts.StraightTraceFaces`
+- `SerrePositivity.EInfinity.SimplexCuts.TerminalSignData`
+- `SerrePositivity.EInfinity.SimplexCuts.Normalization`
+- `SerrePositivity.EInfinity.SimplexCuts.HorizontalDeletedFaces`
+- `SerrePositivity.EInfinity.SimplexCuts.HorizontalBoundarySigns`
+- `SerrePositivity.EInfinity.SimplexCuts.MixedBoundaryValues`
+
+106本それぞれに宣言があることと標準三公理のみであることを検査する専用監査も用意した。
+採取中のLeanソースは変更せず、M14の次のLean実装には戻っていない。
+全件の採取→rewrite・保留/差分確認→main取り込み→対象ビルド/専用監査の順を保つ。
+
+### 126.2 B4の完了：採取・プレビュー・main取り込み・検証
+
+一覧：済み 8／全体 48（うち追加 4）
+
+**B4は完了**。基準以降に自枝で追加・変更した、存在する本体Leanは**106本**で、
+対象JSONとの一致と、drafts以外の採取漏れ0を確認した。
+原ソースは **94c593fe0** のLeanに対応し、その後の文書コミットでLeanは変更していない。
+全106本をmain取り込み前の環境で採取し、索引と原ソースの完全なバイト一致を保って
+正式`bulk_namespace.py rewrite`を実行した（終了0）。
+
+- 採取：106／106本、10組、各実行上限280秒。鍵は組ごとに返却。
+- プレビュー：`review.json`は空、**保留0件**。
+- 差分確認：106本すべてを比較し、**書き換え0ファイル・削除0行・追加0行**。
+- 通常import・ファイル配置のmodule-map該当も0。importの追加の変更は不要。
+- main取り込み：**923a15dd6**、main側の親は **efa846fe8**（16d6b4547以降）。競合なし。
+- 取り込み後：106本が事前に生成したプレビューと一致し、import被覆グラフも不変。
+  古い索引を取り込み後のソースへ適用し直していない。
+
+原ソース・索引・分割ログ・プレビューは`/tmp/bsw16/b4-20261114/`に保持。
+初期の組をまとめ直す際は、当該採取プロセスの終了と鍵返却を確認し、
+旧監視ドライバだけを計画的に終了した。検証済み24本をバイト一致で再検証し、
+未採取分のみを新しい監視ドライバへ引き継いだ。
+この切替の記録は`batch-transition.json`。旧監視ドライバの終了137を、
+採取の失敗や未完の索引の成功扱いにはしていない。
+全106本を受け取る正式rewriteでも索引と原ソースの検査を通した。
+
+対象ビルドは、全106本を覆う8対象を、依存の追加が少ない順に3組で実行した。
+各組は独立した`with_build_lock.sh --class impl --wait 3600`で鍵を取り、終了後返却した。
+
+| 組 | 対象（接頭部`SerrePositivity.EInfinity.SimplexCuts.`） | 結果 |
+| --- | --- | --- |
+| 1 | GeneratorBoundary・TopTerm・StraightTraceFaces・TerminalSignData・Normalization | 成功、2,376 jobs |
+| 2 | HorizontalDeletedFaces・HorizontalBoundarySigns | 成功、2,257 jobs |
+| 3 | MixedBoundaryValues | 成功、2,289 jobs |
+
+続けて別の一回の鍵で、106本をそれぞれ明示した専用監査を実行。
+**106モジュール・967宣言・標準三公理のみ**で成功した。
+各モジュールの宣言が0でないことも検査しており、狭い一対象だけの監査を106本の証拠にしていない。
+新規106本のsorry・追加公理0、Leanの警告0。`git diff --check`成功。
+rootビルド・共通入口・共通監査への登録は調整役の持ち分のまま。
+
+永続的な検収資料は`bulk-w1-b4/`の次のファイル。
+
+- `bs-impl-before.json`：全106ファイルの一覧、原ソースと改名表のSHA256、元のソースコミット。
+- `bs-impl-rewrite.json`：保留0・106本一致・ソース差分0の結果。
+- `bs-impl-build-scope.json`：8対象による106本の被覆と実際のビルド結果。
+- `bs-impl-audit-source.lean.txt`：実行した専用監査の原文（本体のLeanではない検証資料）。
+- `bs-impl-audit-result.txt`：監査の成功出力。
+- `bs-impl-result.json`：merge親・各ログのハッシュ・967宣言の監査結果をまとめた記録。
+
+**登録候補は`bs-impl-before.json`の全106モジュール**。全て
+`SerrePositivity.EInfinity.SimplexCuts.*`で、B4による場所・名前の変更はない。
+入口のimportは上の8対象で106本を覆う。監査の宣言元を選ぶ際は全106本を対象にできる。
+
+B4で自レーンのLeanの差分は0なので、L09a・L09 **5,595行**、M14 **10,661行**の計数は不変。
+B4の検収報告後、承認待ちを挟まず/goalの水平hcの実テンソルの接続へ戻る。
+
+## 127. B4完了後：小さい切断の実テンソルへ戻す（11-14）
+
+一覧：済み 8／全体 48（うち追加 4）
+
+B4完了は **595254e10** に保存した。取り込み済みmainの環境で/goalへ戻る。
+以下はC185・C186の同じ削除列の一致を、元の`cutTensor`と`cutTensorAt`へ接続する
+既存構成の次数移送・貼り合わせの法則。新しい作用・錐・ホモトピーは作らない。
+C188・C189の`h`は型を合わせる次数の等式で、C187と既存の全出力次数の式から導ける。
+具体的な水平の削除列の一致は、別に既存C89から供給する。未供給のままhcを閉じたとは扱わない。
+
+```lean
+degreeSum_deleted_small_cut {m n q r : ℕ} (s : Cut m q) (t : Cut n q)
+    (v : Surjection.Word r (m + 1)) (w : Surjection.Word r (n + 1))
+    (k : Fin (m + q + 1)) (hd : 0 < outputDegree s v (label s v.val k))
+    (hl : ∀ c, deletedVerticesList s v.val k c = verticesList t w.val c) :
+  degreeSum r (outputDegree t w) + 1 = m + q + 1 - r
+deletedCutTensor_eq_small_cutTensor (A : Type u) [CommRing A] {m n q r : ℕ}
+    (S : SSet.{0}) (s : Cut m q) (t : Cut n q)
+    (v : Surjection.Word r (m + 1)) (w : Surjection.Word r (n + 1))
+    (k : Fin (m + q + 1)) (hd : 0 < outputDegree s v (label s v.val k))
+    (hl : ∀ c, deletedVerticesList s v.val k c = verticesList t w.val c)
+    (j : Fin (outputDegree s v (label s v.val k) + 1))
+    (hj : j.val = vertexRank s v.val (label s v.val k) k) (x : S _⦋q⦌)
+    (h : -(degreeSum r (outputDegree t w) : ℤ) = -((m + q + 1 - r : ℕ) : ℤ) + 1) :
+  deletedCutTensor A S s v (label s v.val k) hd j x =
+    (eqToHom (congrArg (fun z : ℤ => (power (chains A S) r).X z) h)).hom (cutTensor A S t w x)
+deletedCutTensor_eq_small_cutTensorAt (A : Type u) [CommRing A] {m n q r : ℕ}
+    (S : SSet.{0}) (s : Cut m q) (t : Cut n q)
+    (v : Surjection.Word r (m + 1)) (w : Surjection.Word r (n + 1))
+    (k : Fin (m + q + 1)) (hd : 0 < outputDegree s v (label s v.val k))
+    (hl : ∀ c, deletedVerticesList s v.val k c = verticesList t w.val c)
+    (j : Fin (outputDegree s v (label s v.val k) + 1))
+    (hj : j.val = vertexRank s v.val (label s v.val k) k) (x : S _⦋q⦌)
+    (h : -((n + q + 1 - r : ℕ) : ℤ) = -((m + q + 1 - r : ℕ) : ℤ) + 1) :
+  deletedCutTensor A S s v (label s v.val k) hd j x =
+    (eqToHom (congrArg (fun z : ℤ => (power (chains A S) r).X z) h)).hom (cutTensorAt A S t w x)
+```
+
+C189の局所法則は`step {M N P : ModuleCat A} (hMN : M = N) (hNP : N = P) (y : M) :
+(eqToHom hNP).hom ((eqToHom hMN).hom y) = (eqToHom (hMN.trans hNP)).hom y`。
+等式の帰納法だけを使う。
+
+### 127.1 検証
+
+対象ビルド成功（2,189 jobs）。別の一回の鍵で専用監査も成功、1モジュール・3宣言・標準三公理のみ。
+新規82行、L09a・L09 5,677行、M14 10,743行。sorry・追加公理0。
+登録候補：`SerrePositivity.EInfinity.SimplexCuts.DeletedSmallCutTensors`。
+一覧：済み 8／全体 48（うち追加 4）。
+
+## 128. 内部の水平面の元の実テンソル（11-14）
+
+一覧：済み 8／全体 48（うち追加 4）
+
+C190–C192は既存C89・C184・C189の係数移送と貼り合わせの法則。
+新しい組合せ分解はなく、有限点検済みのC89の削除列をそのまま各色へ写す。
+次数等式`h`を明示して共通次数の指定移送を固定し、ホモトピー圏へは移らない。
+型は次のとおり。いずれも200行以内。
+
+```lean
+lemma deletedVerticesList_horizontalDeletion {m q r : ℕ} (s : Cut (m + 1) q)
+    (v : Fin (m + 2) → Fin r) (a b : Fin (m + 1 + q))
+    (hab : b.val = a.val + 1) (ha : a ∈ s.val) (hb : b ∈ s.val)
+    (w : Fin (m + 1) → Fin r) (hw : w = Surjection.erase v (s.horizontal a.succ))
+    (c : Fin r) :
+    deletedVerticesList s v a.succ c =
+      verticesList ((BarrattEccles.horizontalInsertionEquiv m q a).symm ⟨s, ha⟩) w c
+
+lemma deletedCutTensor_horizontalDeletion {m q r : ℕ} (S : SSet.{0})
+    (s : Cut (m + 1) q) (v : Surjection.Word r (m + 2))
+    (a b : Fin (m + 1 + q)) (hab : b.val = a.val + 1) (ha : a ∈ s.val) (hb : b ∈ s.val)
+    (w : Surjection.Word r (m + 1))
+    (hw : w.val = Surjection.erase v.val (s.horizontal a.succ))
+    (hd : 0 < outputDegree s v (label s v.val a.succ))
+    (j : Fin (outputDegree s v (label s v.val a.succ) + 1))
+    (hj : j.val = vertexRank s v.val (label s v.val a.succ) a.succ) (x : S _⦋q⦌)
+    (h : -((m + q + 1 - r : ℕ) : ℤ) = -((m + 1 + q + 1 - r : ℕ) : ℤ) + 1) :
+    deletedCutTensor A S s v (label s v.val a.succ) hd j x =
+      (eqToHom (congrArg (fun z : ℤ => (power (chains A S) r).X z) h)).hom
+        (cutTensorAt A S ((BarrattEccles.horizontalInsertionEquiv m q a).symm ⟨s, ha⟩) w x)
+
+lemma signedDeletedCutTensor_horizontalDeletion {m q r : ℕ} (S : SSet.{0})
+    (s : Cut (m + 1) q) (v : Surjection.Word r (m + 2))
+    (a b : Fin (m + 1 + q)) (hab : b.val = a.val + 1) (ha : a ∈ s.val) (hb : b ∈ s.val)
+    (w : Surjection.Word r (m + 1))
+    (hw : w.val = Surjection.erase v.val (s.horizontal a.succ))
+    (hd : 0 < outputDegree s v (label s v.val a.succ))
+    (j : Fin (outputDegree s v (label s v.val a.succ) + 1))
+    (hj : j.val = vertexRank s v.val (label s v.val a.succ) a.succ) (x : S _⦋q⦌)
+    (h : -((m + q + 1 - r : ℕ) : ℤ) = -((m + 1 + q + 1 - r : ℕ) : ℤ) + 1) :
+    outputBoundarySignAt s v a.succ • deletedCutTensor A S s v (label s v.val a.succ) hd j x =
+      Surjection.deletionCoefficient v.val (s.horizontal a.succ) •
+        (eqToHom (congrArg (fun z : ℤ => (power (chains A S) r).X z) h)).hom
+          (cutTerm A S ((BarrattEccles.horizontalInsertionEquiv m q a).symm ⟨s, ha⟩) w x)
+```
+
+### 128.1 元の境界項への貼り合わせ
+
+一覧：済み 8／全体 48（うち追加 4）
+
+C193–C194も既存構成の次数移送・貼り合わせの法則。C193は既存`Surjection.Word.arity_le_length`と整数計算だけ。
+C194はC192とC164を合わせ、正の出力次数`hd`を明示した内部面について元の境界項を照合する。
+水平の端点・無効な削除語・零出力次数の扱いはなお残り、全hcの完了とは扱わない。
+
+```lean
+lemma horizontalDeletion_degree_eq {m q r : ℕ} (w : Surjection.Word r (m + 1)) :
+    -((m + q + 1 - r : ℕ) : ℤ) = -((m + 1 + q + 1 - r : ℕ) : ℤ) + 1
+
+lemma outputBoundaryTerm_horizontalDeletion {m q r : ℕ} (S : SSet.{0})
+    (s : Cut (m + 1) q) (v : Surjection.Word r (m + 2))
+    (a b : Fin (m + 1 + q)) (hab : b.val = a.val + 1) (ha : a ∈ s.val) (hb : b ∈ s.val)
+    (w : Surjection.Word r (m + 1))
+    (hw : w.val = Surjection.erase v.val (s.horizontal a.succ))
+    (hd : 0 < outputDegree s v (label s v.val a.succ))
+    (j : Fin (outputDegree s v (label s v.val a.succ) + 1))
+    (hj : j.val = vertexRank s v.val (label s v.val a.succ) a.succ) (x : S _⦋q⦌) :
+    outputBoundaryTerm A S s v (label s v.val a.succ) j x =
+      Surjection.deletionCoefficient v.val (s.horizontal a.succ) •
+        (eqToHom (congrArg (fun z : ℤ => (power (chains A S) r).X z)
+          (horizontalDeletion_degree_eq (q := q) w))).hom
+          (cutTerm A S ((BarrattEccles.horizontalInsertionEquiv m q a).symm ⟨s, ha⟩) w x)
+```
+
+### 128.2 正次数の前提の供給
+
+一覧：済み 8／全体 48（うち追加 4）
+
+C195はC150の削除リストの長さとC149の既存の長さの式から従う算術の法則。
+C196はC190・C194・C195の貼り合わせで、出力の正次数を外部の仮定として残さない。
+無効な削除語と端点はなお別の残作業。いずれも200行以内。
+
+```lean
+lemma outputDegree_pos_of_deleted_vertexLists {m n q r : ℕ} (s : Cut m q) (t : Cut n q)
+    (v : Surjection.Word r (m + 1)) (w : Surjection.Word r (n + 1))
+    (k : Fin (m + q + 1))
+    (hl : ∀ c, deletedVerticesList s v.val k c = verticesList t w.val c) :
+    0 < outputDegree s v (label s v.val k)
+
+lemma outputBoundaryTerm_horizontalDeletion_valid {m q r : ℕ} (S : SSet.{0})
+    (s : Cut (m + 1) q) (v : Surjection.Word r (m + 2))
+    (a b : Fin (m + 1 + q)) (hab : b.val = a.val + 1) (ha : a ∈ s.val) (hb : b ∈ s.val)
+    (w : Surjection.Word r (m + 1))
+    (hw : w.val = Surjection.erase v.val (s.horizontal a.succ))
+    (j : Fin (outputDegree s v (label s v.val a.succ) + 1))
+    (hj : j.val = vertexRank s v.val (label s v.val a.succ) a.succ) (x : S _⦋q⦌) :
+    outputBoundaryTerm A S s v (label s v.val a.succ) j x =
+      Surjection.deletionCoefficient v.val (s.horizontal a.succ) •
+        (eqToHom (congrArg (fun z : ℤ => (power (chains A S) r).X z)
+          (horizontalDeletion_degree_eq (q := q) w))).hom
+          (cutTerm A S ((BarrattEccles.horizontalInsertionEquiv m q a).symm ⟨s, ha⟩) w x)
+```
+
+### 128.3 検証と取り込み候補
+
+一覧：済み 8／全体 48（うち追加 4）
+
+次の3モジュール、計166行を対象ビルドと小さい監査で検証した。
+接頭部は`SerrePositivity.EInfinity.SimplexCuts.`。共通入口・共通監査には触っていない。
+
+- `HorizontalDeletedTensors`：69行（C190–C192）。
+- `HorizontalBoundaryTerms`：48行（C193–C194）。
+- `HorizontalValidTerms`：49行（C195–C196）。
+
+最終対象ビルドは`/tmp/bsw16/m14-horizontal-valid-terms-02.log`、
+**2,271 jobs成功・警告0**。最初の型検査でC194の次数等式の引数の省略が解決されず、
+既に証明済みのC193を明示して修正した。次のビルドで出た`if_pos`の非推奨警告は
+`ite_eq_left`へ直し、最終ビルドで解消を確認した。
+監査は別の一回の鍵で`/tmp/bsw16/audit-m14-horizontal-valid-terms.lean`を実行し、
+**3モジュール・10宣言・標準三公理のみ**で成功（`m14-horizontal-valid-terms-audit.log`）。
+先の一モジュール監査では内部に生成された補助も含め4宣言を確認し、
+最後は上の3モジュールすべてを明示して改めて監査した。
+各ビルド・監査で整理券は一枚、鍵は実行中だけで、終了と返却を確認した。
+sorry・追加公理0、`git diff --check`成功。
+
+§127の82行と合わせ、B4後の追加は248行。L09a・L09累計 **5,843行**、
+改訂MayのM14全体 **10,909行**。次のL09a・L09の1,000行区切りは約6,600行、
+M14半分の12,500行と外枠25,000行には未到達。
+
+有効な削除語を持つ内部水平面について、正次数の仮定を供給した上で元の境界項を
+小さい切断の指定項へ接続した。等式は元の加群のもので、ホモトピー圏へ弱めていない。
+残りは水平の両端・無効な削除語の零・全添字の貼り合わせ、垂直hvと全相殺。
+L09a・L09全体を閉じたとは扱わず、§121・§123.5の規模リスクも据え置く。
+
+B4取り込み点は595254e10の106本のまま。B4後の新規4モジュールは§127・§128に
+別途登録候補を記したので、B4の106本の監査に含まれるとは扱わない。
+
+## 129. 水平な両端の指定座標を共通の比較へ移す（11-14）
+
+一覧：済み 8／全体 48（うち追加 4）
+
+前ターンはB4と内部面の実境界項を検証・コミットした進捗。B4後の作業木から続行。
+ここでは既存の`ShuffleFirstFace`・`ShuffleLastFace`の水平削除の座標公式を使う。
+新たな作用や定理を導入せず、既存C173の右端の特徴付けと削除列の定義への貼り合わせを行う。
+両端の座標・hi・削除列は、先にPythonでm,q=0〜3、3色の任意の語について
+**20,862例**を確認した（`/tmp/bsw16/check-horizontal-endpoint-transport.py`）。
+
+### 129.1 指定座標からの移送法則（C197・C198）
+
+C197は既存C174の証明を、既に供給された水平・垂直座標に依存する形で使う。
+局所型は`hne : j ≠ k`と、Fin.cast二回が元の`l`へ戻る等式`hc`。
+C198は同じ二座標を削除列の定義へ写すだけ。両方200行以内。
+
+```lean
+lemma hi_eq_of_horizontal_deleted_coordinates {m q : ℕ} (s : Cut (m + 1) q) (t : Cut m q)
+    (k : Fin (m + 1 + q + 1)) (a : Fin (m + 2)) (hk : s.horizontal k = a)
+    (hh : ∀ j : Fin (m + q + 1),
+      s.horizontal (k.succAbove (Fin.cast (by omega : m + q + 1 = m + 1 + q) j)) =
+        a.succAbove (t.horizontal j))
+    (hv : ∀ j : Fin (m + q + 1),
+      s.vertical (k.succAbove (Fin.cast (by omega : m + q + 1 = m + 1 + q) j)) = t.vertical j)
+    (i : Fin (m + 1)) : hi t i = hi s (a.succAbove i)
+
+lemma deletedTrace_eq_of_horizontal_coordinates {m q r : ℕ} (s : Cut (m + 1) q) (t : Cut m q)
+    (v : Fin (m + 2) → Fin r) (k : Fin (m + 1 + q + 1)) (a : Fin (m + 2))
+    (hh : ∀ j : Fin (m + q + 1),
+      s.horizontal (k.succAbove (Fin.cast (by omega : m + q + 1 = m + 1 + q) j)) =
+        a.succAbove (t.horizontal j))
+    (hv : ∀ j : Fin (m + q + 1),
+      s.vertical (k.succAbove (Fin.cast (by omega : m + q + 1 = m + 1 + q) j)) = t.vertical j) :
+    deletedTrace s v k = List.ofFn (fun j : Fin (m + q + 1) =>
+      (Surjection.erase v a (t.horizontal j), t.vertical j))
+```
+
+### 129.2 同じ境界項の貼り合わせと両端（C199–C201）
+
+一覧：済み 8／全体 48（うち追加 4）
+
+C199はC183の符号・C189の実テンソル・C195の正次数へ、C197・C198の指定座標を供給する法則。
+C200・C201は既存の始端・終端の座標公式を代入する。同じ二つの構成の照合で、
+作用の新しい法則やホモトピーを作らない。個々の補題は200行以内。
+局所の`hl`は全色の削除列の等式、`hd`は正次数、`hs`はC183の符号等式。
+`hc`は二回のFin.castの消去、`hk`は末尾の辺の終点がFin.lastである等式、
+`he`は末尾の辺の標準添字と指定`a`の等式、`hH`は既存の水平端点の判定である。
+
+```lean
+lemma outputBoundaryTerm_horizontal_of_coordinates {m q r : ℕ} (S : SSet.{0})
+    (s : Cut (m + 1) q) (t : Cut m q)
+    (v : Surjection.Word r (m + 2)) (w : Surjection.Word r (m + 1))
+    (k : Fin (m + 1 + q + 1)) (a : Fin (m + 2)) (hk : s.horizontal k = a)
+    (hsingle : ∀ l, s.horizontal l = a → l = k)
+    (hw : w.val = Surjection.erase v.val a)
+    (hh : ∀ l : Fin (m + q + 1),
+      s.horizontal (k.succAbove (Fin.cast (by omega : m + q + 1 = m + 1 + q) l)) =
+        a.succAbove (t.horizontal l))
+    (hv : ∀ l : Fin (m + q + 1),
+      s.vertical (k.succAbove (Fin.cast (by omega : m + q + 1 = m + 1 + q) l)) = t.vertical l)
+    (j : Fin (outputDegree s v (label s v.val k) + 1))
+    (hj : j.val = vertexRank s v.val (label s v.val k) k) (x : S _⦋q⦌) :
+    outputBoundaryTerm A S s v (label s v.val k) j x =
+      Surjection.deletionCoefficient v.val a •
+        (eqToHom (congrArg (fun z : ℤ => (power (chains A S) r).X z)
+          (horizontalDeletion_degree_eq (q := q) w))).hom (cutTerm A S t w x)
+
+lemma outputBoundaryTerm_horizontal_first {m q r : ℕ} (S : SSet.{0})
+    (s : Cut (m + 1) q) (h₀ : (0 : Fin (m + 1 + q)) ∈ s.val)
+    (v : Surjection.Word r (m + 2)) (w : Surjection.Word r (m + 1))
+    (hw : w.val = Surjection.erase v.val 0)
+    (j : Fin (outputDegree s v (label s v.val 0) + 1))
+    (hj : j.val = vertexRank s v.val (label s v.val 0) 0) (x : S _⦋q⦌) :
+    outputBoundaryTerm A S s v (label s v.val 0) j x =
+      Surjection.deletionCoefficient v.val 0 •
+        (eqToHom (congrArg (fun z : ℤ => (power (chains A S) r).X z)
+          (horizontalDeletion_degree_eq (q := q) w))).hom
+          (cutTerm A S ((BarrattEccles.horizontalInsertionEquiv m q 0).symm ⟨s, h₀⟩) w x)
+
+lemma outputBoundaryTerm_horizontal_last {m q r : ℕ} (S : SSet.{0})
+    (s : Cut (m + 1) q) (a : Fin (m + 1 + q)) (ha : a ∈ s.val)
+    (hlast : a.val + 1 = m + 1 + q)
+    (v : Surjection.Word r (m + 2)) (w : Surjection.Word r (m + 1))
+    (hw : w.val = Surjection.erase v.val (Fin.last (m + 1)))
+    (j : Fin (outputDegree s v (label s v.val (Fin.last (m + 1 + q))) + 1))
+    (hj : j.val = vertexRank s v.val (label s v.val (Fin.last (m + 1 + q)))
+      (Fin.last (m + 1 + q))) (x : S _⦋q⦌) :
+    outputBoundaryTerm A S s v (label s v.val (Fin.last (m + 1 + q))) j x =
+      Surjection.deletionCoefficient v.val (Fin.last (m + 1)) •
+        (eqToHom (congrArg (fun z : ℤ => (power (chains A S) r).X z)
+          (horizontalDeletion_degree_eq (q := q) w))).hom
+          (cutTerm A S ((BarrattEccles.horizontalInsertionEquiv m q a).symm ⟨s, ha⟩) w x)
+```
+
+### 129.3 削除しない因子の正規化による消滅（C202–C204）
+
+一覧：済み 8／全体 48（うち追加 4）
+
+既存構成の法則の証明分割。C202は既存`faces_mono_iff`の順方向を一色だけに制限し、
+同じfiberの順序同型の逆で二頂点を読む。C203は既存`gen_map_of_not_mono`と
+`tensorValue_eq_zero`を、`deletedCutTensor`の削除しない因子に適用。C204は符号を戻す。
+新しい非退化性の定理や作用を仮定せず、既存の消滅をそのまま使用する。各補題200行以内。
+局所型は色のfiberへの所属`hci`・`hcj`、同じ順序同型の逆の評価`hei`・`hej`、
+元の面の値の等式`hval`と単射性からの添字の等式`heq`（既存`faces_mono_iff`と同型の分割）。
+
+```lean
+lemma face_not_mono_of_repeated_color {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (c : Fin r) (i j : Fin (m + q + 1))
+    (hi : label s v.val i = c) (hj : label s v.val j = c)
+    (hne : i ≠ j) (hv : s.vertical i = s.vertical j) : ¬Mono (face s v c)
+
+lemma deletedCutTensor_eq_zero_of_other_face {m q r : ℕ} (S : SSet.{0}) (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (a : Fin r) (ha : 0 < outputDegree s v a)
+    (j : Fin (outputDegree s v a + 1)) (c : Fin r) (hc : c ≠ a)
+    (hm : ¬Mono (face s v c)) (x : S _⦋q⦌) :
+    deletedCutTensor A S s v a ha j x = 0
+
+lemma outputBoundaryTerm_eq_zero_of_other_face {m q r : ℕ} (S : SSet.{0}) (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (a : Fin r) (j : Fin (outputDegree s v a + 1))
+    (c : Fin r) (hc : c ≠ a) (hm : ¬Mono (face s v c)) (x : S _⦋q⦌) :
+    outputBoundaryTerm A S s v a j x = 0
+```
+
+### 129.4 非全射な削除語の零（C205・C206）
+
+一覧：済み 8／全体 48（うち追加 4）
+
+L09a内の有限なfiberの計算。先にPythonでm=1〜4、q=0〜3、arity=1〜3の全非退化全射語を
+点検し、非全射な削除の次数零 **2,616例**、退化な削除の別の色の重複 **2,440例**で一致を確認した
+（`/tmp/bsw16/check-horizontal-invalid-deletions.py`）。
+まず前者を既存`Surjection.erase_surjective_iff`とC56の水平fiberの特徴付けへ戻す。
+C205の局所型`hu : ∀ i, v.val i = v.val (s.horizontal k) → i = s.horizontal k`、
+`hc : colorPositions s v.val (label s v.val k) = {k}`。C206は次数零の定義への貼り合わせ。
+各補題200行以内。後者の退化な削除への適用はまだ閉じたとは数えない。
+
+```lean
+lemma outputDegree_zero_horizontal_of_not_surjective {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (k : Fin (m + q + 1)) (hk : HorizontalVertex s k)
+    (hns : ¬Function.Surjective (Surjection.erase v.val (s.horizontal k))) :
+    outputDegree s v (label s v.val k) = 0
+
+lemma outputBoundaryTerm_horizontal_not_surjective {m q r : ℕ} (S : SSet.{0}) (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (k : Fin (m + q + 1)) (hk : HorizontalVertex s k)
+    (hns : ¬Function.Surjective (Surjection.erase v.val (s.horizontal k)))
+    (j : Fin (outputDegree s v (label s v.val k) + 1)) (x : S _⦋q⦌) :
+    outputBoundaryTerm A S s v (label s v.val k) j x = 0
+```
+
+### 129.5 退化した削除の元の二位置（C207）
+
+一覧：済み 8／全体 48（うち追加 4）
+
+上の2,440例の点検で使った有限な位置の計算をLeanにする。
+非退化な語で新しく隣接同色が生じるのは、消した位置をちょうど挟むときだけ。
+既存`Surjection.succAbove_val_eq`の二分岐と元の語の隣接非退化性を使う。
+局所型は削除後の隣接同色対`hij`・`he`、元での隣接の否定`hskip`、
+`hleft : i.val + 1 = a.val ∧ j.val = a.val`。200行以内。
+
+```lean
+lemma erased_word_degenerate_neighbors {m r : ℕ} (v : Surjection.Word r (m + 2))
+    (a : Fin (m + 2)) (h : ¬Surjection.Nondegenerate (Surjection.erase v.val a)) :
+    ∃ i j : Fin (m + 2), i.val + 1 = a.val ∧ a.val + 1 = j.val ∧ v.val i = v.val j
+```
+
+### 129.6 残る同色の二頂点と、無効な削除全体の零（C208–C210）
+
+一覧：済み 8／全体 48（うち追加 4）
+
+C208は上の2,440例で先に点検した有限な水平隣接辺の計算。
+C207から元の区間の両隣`i,j`を取り、水平座標の端点の公式により`0 < k.val < m+1+q`。
+その前後の辺`l,e`を読む既存`step_of_mem`で、削除しない別の色の同じ頂点を二つ得る。
+C202へ適用するだけで、BEの新しい作用・operad法則を導入しない。
+C209は既存の正規化の消滅C204への貼り合わせ、C210は非全射と退化の二場合の貼り合わせ。
+個々の補題200行以内。局所型は内部性`hk0`・`hkN`、辺の終始点`hl : l.succ=k`・
+`he : e.castSucc=k`、水平座標の一致`hi : s.horizontal l.castSucc=i`・
+`hj : s.horizontal e.succ=j`、異なる二頂点`hne : l.castSucc ≠ e.succ`。
+
+```lean
+lemma other_face_not_mono_horizontal_degenerate {m q r : ℕ} (s : Cut (m + 1) q)
+    (v : Surjection.Word r (m + 2)) (k : Fin (m + 1 + q + 1)) (hk : HorizontalVertex s k)
+    (hdeg : ¬Surjection.Nondegenerate (Surjection.erase v.val (s.horizontal k))) :
+    ∃ c : Fin r, c ≠ label s v.val k ∧ ¬Mono (face s v c)
+
+lemma outputBoundaryTerm_horizontal_degenerate {m q r : ℕ} (S : SSet.{0}) (s : Cut (m + 1) q)
+    (v : Surjection.Word r (m + 2)) (k : Fin (m + 1 + q + 1)) (hk : HorizontalVertex s k)
+    (hdeg : ¬Surjection.Nondegenerate (Surjection.erase v.val (s.horizontal k)))
+    (j : Fin (outputDegree s v (label s v.val k) + 1)) (x : S _⦋q⦌) :
+    outputBoundaryTerm A S s v (label s v.val k) j x = 0
+
+lemma outputBoundaryTerm_horizontal_invalid {m q r : ℕ} (S : SSet.{0}) (s : Cut (m + 1) q)
+    (v : Surjection.Word r (m + 2)) (k : Fin (m + 1 + q + 1)) (hk : HorizontalVertex s k)
+    (hinvalid : ¬(Function.Surjective (Surjection.erase v.val (s.horizontal k)) ∧
+      Surjection.Nondegenerate (Surjection.erase v.val (s.horizontal k))))
+    (j : Fin (outputDegree s v (label s v.val k) + 1)) (x : S _⦋q⦌) :
+    outputBoundaryTerm A S s v (label s v.val k) j x = 0
+```
+
+### 129.7 検証・実測と次の接続
+
+一覧：済み 8／全体 48（うち追加 4）
+
+今回の新規6モジュールは、対象ビルドと専用の小さい監査で検証した。
+登録候補の接頭部は`SerrePositivity.EInfinity.SimplexCuts.`。
+
+| モジュール | 実測 | 内容 |
+| --- | ---: | --- |
+| `HorizontalDeletionCoordinates` | 61行 | 指定座標から右端・削除列への移送 |
+| `HorizontalEndpointTerms` | 127行 | 同じ実境界項の比較と水平な両端 |
+| `OtherFaceZeroTerms` | 66行 | 削除しない色の非単射な面による正規化の消滅 |
+| `NonSurjectiveZeroTerms` | 53行 | 非全射な削除で次数零・元の境界項零 |
+| `DegenerateDeletionNeighbors` | 35行 | 退化した削除の元の両隣の二位置 |
+| `DegenerateHorizontalTerms` | 96行 | 別の色の重複から退化な削除・無効な削除の境界項零 |
+| **合計** | **438行** | |
+
+最終対象ビルドは`/tmp/bsw16/m14-horizontal-invalid-terms-03.log`、
+**2,288 jobs成功・Lean警告0**。
+初期の型検査では、端点判定の明示import、letの展開、存在命題の表示、
+Fin.zero・Fin.lastの値を算術へ明示する処理を修正した。
+余分な`rfl`・非推奨名・100字を超える行も直した。
+主張の型を弱めたり、非単射性やテンソルの消滅を未証明の前提に足したりしていない。
+
+別の一回の鍵で`/tmp/bsw16/audit-m14-horizontal-endpoint-invalid.lean`を実行し、
+**6モジュール・59宣言・標準三公理のみ**で成功した
+（`/tmp/bsw16/m14-horizontal-endpoint-invalid-audit.log`）。
+全6モジュールを明示し、各モジュールの宣言数が0でないことも検査した。
+新規本体のsorry・追加公理0、`git diff --check`成功。
+共通入口・共通監査の登録、rootビルドは調整役の持ち分として実行していない。
+各実行は`--class impl --wait 3600`、整理券は一枚、
+ビルドまたは監査の終了後に鍵を返却し、待ち時間・編集・報告中には鍵を持っていない。
+
+L09a・L09累計 **6,281行**、改訂MayのM14全体 **11,347行**。
+次の1,000行区切りは約6,600行、M14の半分報告は12,500行、外枠は25,000行のまま。
+§121・§123.5の完成見込みと上端超過のリスクを、今回の局所的な完了で縮小した扱いにはしない。
+
+これで有効な水平削除の内部・始端・終端の元の実境界項、および非全射・隣接退化による
+無効な水平削除の元の境界項零がそろった。すべて元の加群の等式である。
+次は既存`horizontalBoundaryFaceEquiv`／`horizontalBoundaryAllEquiv`の
+指定された語の位置・小さい切断との照合を行い、実際の全水平添字のhcへ接続する。
+垂直hv、全相殺とL09a・L09全体は未完。G10や他レーンのファイルには触っていない。
+
+## 130. 全水平添字の同値との厳密な照合（11-14）
+
+一覧：済み 8／全体 48（うち追加 4）
+
+前ターンは§129の6モジュールを検証・コミットした進捗。作業木がクリーンであることを確認して続行。
+B4は完了済み。新しい数学や別の同値を作らず、既存C70・C71が選ぶ文字位置と切断を読む。
+先にm=0〜5、q=0〜4の全切断・係数位置について、三分割の逆、対応する水平座標、
+指定削除で元の切断が復元されることをPythonで **2,771例** 点検した
+（`/tmp/bsw16/check-horizontal-index-transport.py`）。
+
+### 130.1 三つの枝での指定添字の評価（C211–C216）
+
+既存の構成の合成・逆の法則と有限の添字の計算。各補題200行以内。
+内部の文字位置は`i.castSucc.succ`、両端は0と`Fin.last (m+1)`で、元の添字を保持する。
+
+```lean
+lemma coefficientIndexEndpointEquiv_symm_first (m q : ℕ) (t : Cut m q) :
+    (coefficientIndexEndpointEquiv m q).symm (.inl t) = (0, t)
+
+lemma coefficientIndexEndpointEquiv_symm_interior (m q : ℕ) (t : Cut m q) (i : Fin m) :
+    (coefficientIndexEndpointEquiv m q).symm (.inr (.inl (t, i))) = (i.castSucc.succ, t)
+
+lemma coefficientIndexEndpointEquiv_symm_last (m q : ℕ) (t : Cut m q) :
+    (coefficientIndexEndpointEquiv m q).symm (.inr (.inr t)) = (Fin.last (m + 1), t)
+
+lemma horizontalBoundaryFaceEquiv_first (m q : ℕ) (t : Cut m q) :
+    (horizontalBoundaryFaceEquiv m q (0, t)).val = (horizontalFirstFaceEquiv m q t).val
+
+lemma horizontalBoundaryFaceEquiv_interior (m q : ℕ) (t : Cut m q) (i : Fin m) :
+    (horizontalBoundaryFaceEquiv m q (i.castSucc.succ, t)).val =
+      (horizontalInteriorFaceEquiv m q (t, i)).val
+
+lemma horizontalBoundaryFaceEquiv_last (m q : ℕ) (t : Cut m q) :
+    (horizontalBoundaryFaceEquiv m q (Fin.last (m + 1), t)).val =
+      (horizontalLastFaceEquiv m q t).val
+```
+
+### 130.2 元の文字位置の保存（C217・C218）
+
+一覧：済み 8／全体 48（うち追加 4）
+
+点検済みの有限な座標の計算と、既存の同値の法則。
+C217は`horizontalCornerEquiv_horizontal`と`horizontalMarkedEdgeEquiv_horizontal`の合成。
+C218は同じ既存の三分割の逆で三場合に分け、C214–C217と水平座標の端点の式を使う。
+個々の補題200行以内。
+
+```lean
+lemma horizontalInteriorFaceEquiv_horizontal (m q : ℕ) (t : Cut m q) (i : Fin m) :
+    (horizontalInteriorFaceEquiv m q (t, i)).val.1.horizontal
+      (horizontalInteriorFaceEquiv m q (t, i)).val.2 = i.castSucc.succ
+
+lemma horizontalBoundaryFaceEquiv_horizontal (m q : ℕ) (c : Fin (m + 2) × Cut m q) :
+    (horizontalBoundaryFaceEquiv m q c).val.1.horizontal
+      (horizontalBoundaryFaceEquiv m q c).val.2 = c.1
+```
+
+### 130.3 指定された全水平添字での実項の照合（C219・C220）
+
+一覧：済み 8／全体 48（うち追加 4）
+
+C219は既存の構成の貼り合わせの法則。C211–C216で同じ三分割に分け、
+C200・C196・C201を適用し、指定挿入の`Equiv.symm_apply_apply`で元の小さい切断へ戻す。
+C220はC218の文字位置の一致とC210の無効削除の消滅の貼り合わせ。
+どちらも元の加群の等式で、実際の小さい切断`c.2`と削除位置`c.1`を保持する。
+各補題200行以内。C219の局所型は挿入辺の所属`ha`・`hb`、
+`hh : (e t).val.horizontal a.succ = i.castSucc.succ`と
+`hw' : w.val = Surjection.erase v.val ((e t).val.horizontal a.succ)`。
+
+```lean
+lemma outputBoundaryTerm_horizontalBoundaryFaceEquiv_valid {m q r : ℕ} (S : SSet.{0})
+    (v : Surjection.Word r (m + 2)) (w : Surjection.Word r (m + 1)) :
+    ∀ (c : Fin (m + 2) × Cut m q) (_hw : w.val = Surjection.erase v.val c.1)
+      (j : Fin (outputDegree (horizontalBoundaryFaceEquiv m q c).val.1 v
+        (label (horizontalBoundaryFaceEquiv m q c).val.1 v.val
+          (horizontalBoundaryFaceEquiv m q c).val.2) + 1))
+      (_hj : j.val = vertexRank (horizontalBoundaryFaceEquiv m q c).val.1 v.val
+        (label (horizontalBoundaryFaceEquiv m q c).val.1 v.val
+          (horizontalBoundaryFaceEquiv m q c).val.2) (horizontalBoundaryFaceEquiv m q c).val.2)
+      (x : S _⦋q⦌),
+    outputBoundaryTerm A S (horizontalBoundaryFaceEquiv m q c).val.1 v
+        (label (horizontalBoundaryFaceEquiv m q c).val.1 v.val
+          (horizontalBoundaryFaceEquiv m q c).val.2) j x =
+      Surjection.deletionCoefficient v.val c.1 •
+        (eqToHom (congrArg (fun z : ℤ => (power (chains A S) r).X z)
+          (horizontalDeletion_degree_eq (q := q) w))).hom (cutTerm A S c.2 w x)
+
+lemma outputBoundaryTerm_horizontalBoundaryFaceEquiv_invalid {m q r : ℕ} (S : SSet.{0})
+    (v : Surjection.Word r (m + 2)) (c : Fin (m + 2) × Cut m q)
+    (hinvalid : ¬(Function.Surjective (Surjection.erase v.val c.1) ∧
+      Surjection.Nondegenerate (Surjection.erase v.val c.1)))
+    (j : Fin (outputDegree (horizontalBoundaryFaceEquiv m q c).val.1 v
+      (label (horizontalBoundaryFaceEquiv m q c).val.1 v.val
+        (horizontalBoundaryFaceEquiv m q c).val.2) + 1)) (x : S _⦋q⦌) :
+    outputBoundaryTerm A S (horizontalBoundaryFaceEquiv m q c).val.1 v
+      (label (horizontalBoundaryFaceEquiv m q c).val.1 v.val
+        (horizontalBoundaryFaceEquiv m q c).val.2) j x = 0
+```
+
+### 130.4 元の係数境界値との次数移送（C221–C224）
+
+一覧：済み 8／全体 48（うち追加 4）
+
+既存構成の係数移送・貼り合わせの法則。C221・C222は同じ実境界項を読む定義の照合。
+C223はC219・C220を元の全境界値の共通次数へ運び、定義の負号と相殺する。
+C224の係数次数零の場合は、削除語の長さがarityより小さいため全射が存在しないことを
+既存`Fintype.card_le_of_surjective`から読み、C220へ戻す。新しい非退化性の仮定は足さない。
+C223の局所型`ho`・`hc`は書かれている二つの整数次数の等式、
+`step {M N P : ModuleCat A} (hMN : M = N) (hNP : N = P) (y : M) :
+(eqToHom hNP).hom ((eqToHom hMN).hom y) = (eqToHom (hMN.trans hNP)).hom y`は
+§127の同じ移送の合成則。C224の`hns`は削除語の全射性・非退化性の連言の否定。
+各補題200行以内。未検証の段階ではhcの完了とは数えない。
+
+```lean
+lemma coefficientBoundaryTerm_succ_eq {r d q : ℕ} (S : SSet.{0})
+    (u : Surjection.BasisWord (r + 1) (d + 1)) (c : Fin (r + d + 2) × Cut (r + d) q)
+    (x : S _⦋q⦌)
+    (h : -((r + d + q + 1 - (r + 1) : ℕ) : ℤ) = -(((d + 1) + q : ℕ) : ℤ) + 1) :
+    coefficientBoundaryTerm A S r (d + 1) q u c x =
+      if hw : Function.Surjective (Surjection.erase (positiveWord u).val c.1) ∧
+          Surjection.Nondegenerate (Surjection.erase (positiveWord u).val c.1) then
+        -Surjection.deletionCoefficient (positiveWord u).val c.1 •
+          (eqToHom (congrArg (fun z : ℤ => (power (chains A S) (r + 1)).X z) h)).hom
+            (cutTerm A S c.2 ⟨Surjection.erase (positiveWord u).val c.1, hw⟩ x)
+      else 0
+
+lemma universalBoundaryValue_coefficient (S : SSet.{0}) {r d : ℕ}
+    (u : Surjection.BasisWord (r + 1) d) (q : ℕ) (x : S _⦋q⦌)
+    (c : Fin (r + d + 1) × Cut (r + d - 1) q) :
+    universalBoundaryValue A S u q x (.inr (.inl c)) = coefficientBoundaryTerm A S r d q u c x
+
+lemma universalBoundaryValue_horizontal_succ (S : SSet.{0}) {r d : ℕ}
+    (u : Surjection.BasisWord (r + 1) (d + 1)) (q : ℕ) (x : S _⦋q⦌)
+    (c : Fin (r + d + 2) × Cut (r + d) q) :
+    universalBoundaryValue A S u q x (.inl (horizontalBoundaryFaceEquiv (r + d) q c).val) =
+      -universalBoundaryValue A S u q x (.inr (.inl c))
+
+lemma universalBoundaryValue_horizontal_neg (S : SSet.{0}) {r d : ℕ}
+    (u : Surjection.BasisWord (r + 1) d) (q : ℕ) (x : S _⦋q⦌) (hm : 0 < r + d)
+    (c : Fin (r + d + 1) × Cut (r + d - 1) q) :
+    universalBoundaryValue A S u q x (.inl ((horizontalBoundaryAllEquiv (r + d) q hm) c).val) =
+      -universalBoundaryValue A S u q x (.inr (.inl c))
+```
+
+### 130.5 依存する面番号を保つ証明分割
+
+一覧：済み 8／全体 48（うち追加 4）
+
+C219の最初の型検査では、面番号`j`に依存する型の中を部分的にsimpして、
+元の同値の値が残った。証明の分割として、次の同じ述語`P`を局所的に置き、
+指定頂点を丸ごと書き換えてから面番号を導入する。主張の型・比較する射・前提は変更しない。
+
+```lean
+  let P (z : MarkedCut (m + 1) q) (a : Fin (m + 2)) (t : Cut m q) : Prop :=
+    ∀ (_hw : w.val = Surjection.erase v.val a)
+      (j : Fin (outputDegree z.1 v (label z.1 v.val z.2) + 1))
+      (_hj : j.val = vertexRank z.1 v.val (label z.1 v.val z.2) z.2) (x : S _⦋q⦌),
+      outputBoundaryTerm A S z.1 v (label z.1 v.val z.2) j x =
+        Surjection.deletionCoefficient v.val a •
+          (eqToHom (congrArg (fun n : ℤ => (power (chains A S) r).X n)
+            (horizontalDeletion_degree_eq (q := q) w))).hom (cutTerm A S t w x)
+```
+
+C219の同じ指定切断への戻りは、局所型
+`hsmall : e.symm ⟨(e t).val, (e t).property⟩ = t`（内部では所属証明`ha`）を
+既存`e.symm_apply_apply t`から明示し、元の等式で書き換える。新しい照合の仮定ではない。
+
+待ち時間には垂直分岐の有限計算も先に点検した。
+`/tmp/bsw16/check-vertical-position-signs.py`、**14,942例**で、
+C170の接頭順位、位置指数の差が削除区間以後のcaesura数になること、
+同色の直前の面の削除係数と実境界符号の一致を確認した。
+垂直の新しいLeanはまだ書かず、水平hcの検証を先にする。この点検を垂直hvの証明済み扱いにはしない。
+
+C223・C224の全出力値への移送では、C168で読む`⟨z.val.1,z.val.2⟩`と
+元の指定頂点`z.val`を既存`Sigma.eta`で明示的に照合する。
+局所型`hout`はC168の等式の左辺をその同じ指定頂点へ戻したもので、
+新しい射・仮定・自然性の選択を加えない。
+
+C223では、同じ実境界項の等式`ht`を、指定された共通次数への線形射に
+`congrArg`で写した`ht'`として使う。型はC219またはC220の両辺に
+`(eqToHom (congrArg (fun n : ℤ => (power (chains A S) (r+1)).X n) ho)).hom`
+を適用した等式そのもので、`map_zsmul`・`map_zero`と上の`step`だけを使う。
+依存した引数内へのrwの照合に頼らず、既存の係数移送の法則を明示する分割である。
+
+C223の詳細型の比較では、`r+(d+1)`と`(r+d)+1`が式内部に異なる形で残っていた。
+`Nat.add_assoc`で同じ正規形へそろえ、上の移送の合成則を適用する。
+一時的なppオプションは除去した。型クラス引数を明示した診断ログは
+`/tmp/bsw16/m14-horizontal-boundary-values-diag.log`に保持する。
+
+### 130.6 色と面番号の依存した組を保つ（C225）
+
+一覧：済み 8／全体 48（うち追加 4）
+
+より具体的な型検査で、逆同値の`.2`の型が`.1`に依存し、`.1=label`を
+semireducibleな定義の展開だけで読むと、通常のimplicit透明性では型が合わないことを確認した。
+加法の括弧をそろえるだけでは解消しなかった。C225は元の値を同じ依存した組のまま読む定義の法則。
+既存公開宣言は変えず、新しい名前で足す。C223・C224では
+`hp : (colorPositionEquiv z.val.1 v).symm z.val.2 = ⟨a,j⟩`で一度だけ分解し、
+既存C22から`ha : a = label z.val.1 v.val z.val.2`を得て色を置き換える。
+その後の`j`は正しい色のFinとして通常の透明性でも型が合う。
+`hj : j.val = vertexRank z.val.1 v.val (label z.val.1 v.val z.val.2) z.val.2`は既存C28の順位の式から得る。
+新しい構成や主張の弱化はなく、同じ出力値の評価の分割。C225は200行以内。
+
+```lean
+lemma universalBoundaryValue_output_paired (S : SSet.{0}) {r d : ℕ}
+    (w : Surjection.BasisWord (r + 1) d) (q : ℕ) (x : S _⦋q⦌)
+    (s : Cut (r + d) q) (k : Fin (r + d + q + 1))
+    (h : -((r + d + q + 1 - (r + 1) : ℕ) : ℤ) + 1 = -((d + q : ℕ) : ℤ) + 1) :
+    universalBoundaryValue A S w q x (.inl ⟨s, k⟩) =
+      (eqToHom (congrArg (fun n : ℤ => (power (chains A S) (r + 1)).X n) h)).hom
+        (outputBoundaryTerm A S s (positiveWord w)
+          ((colorPositionEquiv s (positiveWord w)).symm k).1
+          ((colorPositionEquiv s (positiveWord w)).symm k).2 x)
+```
+
+### 130.7 待ち時間の垂直の次の型案（紙のみ）
+
+一覧：済み 8／全体 48（うち追加 4）
+
+水平hcの検証待ちの間に、同じL09aの垂直の有限計算を整理した。
+以下のC226–C229は**紙の型案で、Lean未実装・未検証**。
+新しい数学のまとまりではなく、既存の垂直削除の座標・右端・位置指数の法則。
+C229の位置差は非退化性・全射性を仮定しない任意の3色の関数についても
+先に **76,407例** 点検した（`/tmp/bsw16/check-vertical-arbitrary-position.py`）。
+これは既存C170の接頭順位と、削除後に残る区間の右端を使う経路を確認する点検であり、
+Leanでの証明を代用しない。
+
+```lean
+-- C226：指定された垂直削除で、削除しない右端を垂直の順序単射で比較する。
+hi_eq_of_vertical_deleted_coordinates {m q : ℕ} (s : Cut m (q + 1)) (t : Cut m q)
+    (k : Fin (m + (q + 1) + 1))
+    (hh : ∀ j : Fin (m + q + 1), s.horizontal (k.succAbove j) = t.horizontal j)
+    (hv : ∀ j : Fin (m + q + 1), s.vertical (k.succAbove j) =
+      (s.vertical k).succAbove (t.vertical j))
+    (i : Fin (m + 1))
+    (hmax : (intervalPositions s i).max' (intervalPositions_nonempty s i) ≠ k) :
+  hi s i = ((s.vertical k).succAbove ⟨hi t i, by have := hi_le_q t i; omega⟩).val
+
+-- C227：垂直の削除頂点は、活動区間の右端ではない。
+hi_vertex_ne_vertical_of_caesura {m q r : ℕ} (s : Cut m (q + 1))
+    (v : Fin (m + 1) → Fin r) (k : Fin (m + (q + 1) + 1)) (hk : boundaryVertexKind s k = .vertical)
+    (i : Fin (m + 1)) (hi : Surjection.Caesura v i) :
+  (intervalPositions s i).max' (intervalPositions_nonempty s i) ≠ k
+
+-- C228：入力の削除頂点以後にある右端は、その区間以後のものに限る。
+vertical_vertex_le_hi_iff {m q : ℕ} (s : Cut m (q + 1))
+    (k : Fin (m + (q + 1) + 1)) (hk : boundaryVertexKind s k = .vertical) (i : Fin (m + 1)) :
+  (s.vertical k).val ≤ hi s i ↔ s.horizontal k ≤ i
+
+-- C229：同じ語の位置指数の差は、削除区間以後のcaesuraの個数。
+positionExponent_vertical_deleted_coordinates {m q r : ℕ}
+    (s : Cut m (q + 1)) (t : Cut m q) (v : Fin (m + 1) → Fin r)
+    (k : Fin (m + (q + 1) + 1)) (hk : boundaryVertexKind s k = .vertical)
+    (hh : ∀ j : Fin (m + q + 1), s.horizontal (k.succAbove j) = t.horizontal j)
+    (hv : ∀ j : Fin (m + q + 1), s.vertical (k.succAbove j) =
+      (s.vertical k).succAbove (t.vertical j)) :
+  positionExponent s v = positionExponent t v +
+    ((caesuraPositions v).filter (fun i => s.horizontal k ≤ i)).card
+```
+
+C226は既存C173・C06と同じ右端の上下界の特徴付けを、
+垂直座標の狭義単調な`Fin.succAbove`へ移す。C227は内部・始端の次の垂直辺と、
+終端では元の最後の区間がcaesuraにならないことを使う有限な計算。
+C228は既存の座標の単調性と直前の垂直辺、C229はこれらと`Fin.succAbove`の値の式を
+既存`positionExponent_eq_caesura_sum`へ戻す。
+全caesura数は既存`Surjection.Word.card_caesuras`／`Surjection.card_caesuras_basisWord`を使い、
+同じ濃度の式を再証明しない。C170の接頭順位と合せて入力面の交代符号へ戻す。
+
+### 130.8 待ち時間のC226のLean下書き
+
+一覧：済み 8／全体 48（うち追加 4）
+
+水平hcの検証順は維持し、待ち時間に紙のC226のみLeanの下書きを置いた。
+C227–C229はまだ紙のまま。C226は検証前にはコミットしない。
+右端の達成と上界の既存C06を使い、削除前の右端の逆像`j`と削除後の右端`jt`を比較する。
+局所型`hji : t.horizontal j = i`、`hsmall : t.vertical j ≤ ⟨hi t i,⋯⟩`、
+`hmon`は既存`Fin.strictMono_succAbove`による同じ上界の移送。
+
+実装前の有限点検は`/tmp/bsw16/check-vertical-interval-maxima.py`、
+**12,341例**で右端の移送、入力頂点以上の右端と区間番号の閾値の一致、
+削除頂点自体が右端なら最後の頂点・最後の区間になることを確認した。
+この点検はC226–C228の有限計算の確認であり、Leanの検証結果ではない。
+
+C227・C228に使う隣接辺の証明分割も作業木へ下書きした（未検証、検証前にはコミットしない）。
+既存C51–C53の始端・内部・終端の式を指定した辺へ戻すだけで、
+垂直のための新しい構造や判定の定義は作らない。各補題200行以内。
+有限点検は上の垂直頂点の全候補12,341例と、既存の全境界の対合6,070添字の点検で
+用いた同じ前後の辺の条件。局所型`he0`・`helast`は指定終始点の0・Fin.lastとの等式、
+`heq`・`hl`・`hr`は指定辺と既存の端点/角の辺番号との等式。
+
+```lean
+lemma vertical_kind_outgoing_not_mem {m q : ℕ} (s : Cut m q)
+    (k : Fin (m + q + 1)) (hk : boundaryVertexKind s k = .vertical)
+    (e : Fin (m + q)) (he : e.castSucc = k) : e ∉ s.val
+
+lemma vertical_kind_incoming_not_mem {m q : ℕ} (s : Cut m q)
+    (k : Fin (m + q + 1)) (hk : boundaryVertexKind s k = .vertical)
+    (e : Fin (m + q)) (he : e.succ = k) : e ∉ s.val
+```
+
+C227も同じ検証待ちの間に下書きした。型は§130.7のまま、未検証。
+既存の右端の達成から`hhi : s.horizontal k = i`。次の頂点がある場合は、
+上の`vertical_kind_outgoing_not_mem`と既存`step_of_notMem`で同じ区間の次の頂点が得られ、
+右端の最大性`hb : e.succ ≤ max' (intervalPositions s i) ⋯`に反する。
+終端なら水平座標の端点の式から`i=Fin.last m`で、caesuraの定義に反する。
+新しい構成を加えない有限の右端の計算。個々の補題200行以内。
+
+C228も同じ待ち時間に、§130.7の型のまま下書きした（未検証）。
+右端の頂点`j`の水平座標は`i`。`i < s.horizontal k`なら単調性で`j<k`となり、
+直前の垂直辺の厳密な増分により`hi s i < (s.vertical k).val`。
+逆に区間番号が指定区間以後なら、右端が`k`より前にあると同じ区間に`k`を含める
+最大性に反する。局所型`hjk : j < k`、`hjle : j ≤ e.castSucc`、
+`hm : (s.vertical j).val ≤ (s.vertical e.castSucc).val`、
+`hkmem : k ∈ intervalPositions s i`。既存の順序と最大性だけの有限計算で、200行以内。
+
+C229の位置指数の式も、§130.7の型のまま下書きした（未検証）。
+局所型は
+`hterm : ∀ i ∈ caesuraPositions v, hi s i = hi t i + if s.horizontal k ≤ i then 1 else 0`。
+C226・C227の右端の式と既存`Surjection.succAbove_val_eq`、C228の閾値を合わせ、
+既存`positionExponent_eq_caesura_sum`・`Finset.sum_add_distrib`・`Finset.sum_filter`へ戻す。
+任意の語の位置指数の76,407例の点検は実装前に済ませてある。
+200行以内で、同じ有限の分解と加法の法則。検証・監査前にはコミットしない。
+
+### 130.9 依存した組の等式を全体の値へ写す法則
+
+一覧：済み 8／全体 48（うち追加 4）
+
+C225の評価は通ったが、組の等式の部分的なrwは通常の透明性で型を見失うため、
+組全体を引数に取る同じ値の関数へ`congrArg`で写す法則を明示する。
+新しい構成や仮定ではなく、同じ実境界値への等式の合成。200行以内。
+垂直側ではC226・前後の辺の補題がビルド成功。C227・C228に必要な既存
+`ShuffleStepMembership`のimportを明示し、同じ主張を再検証する。
+
+```lean
+lemma universalBoundaryValue_output_of_pair (S : SSet.{0}) {r d : ℕ}
+    (w : Surjection.BasisWord (r + 1) d) (q : ℕ) (x : S _⦋q⦌)
+    (s : Cut (r + d) q) (k : Fin (r + d + q + 1))
+    (h : -((r + d + q + 1 - (r + 1) : ℕ) : ℤ) + 1 = -((d + q : ℕ) : ℤ) + 1)
+    (ij : Σ a : Fin (r + 1), Fin (outputDegree s (positiveWord w) a + 1))
+    (hp : (colorPositionEquiv s (positiveWord w)).symm k = ij) :
+    universalBoundaryValue A S w q x (.inl ⟨s, k⟩) =
+      (eqToHom (congrArg (fun n : ℤ => (power (chains A S) (r + 1)).X n) h)).hom
+        (outputBoundaryTerm A S s (positiveWord w) ij.1 ij.2 x)
+```
+
+C226〜C228と隣接辺の補題は対象ビルドを通った。C229では`rw [Nat.add_zero]`が
+暗黙の次元引数を抽象して型を崩すため、同じ算術の等式を`simpa only`で使う形に直す。
+水平C223では、依存した組の評価を通した後、同じ移送の合成の照合が残るため、
+新しいこのファイルの補助的なbackward/透明性オプションを外し、通常の設定で検証する。
+主張・比較する射・公理の仮定は変更しない。
+
+通常の透明性に戻したC223では移送の合成が通り、C229も対象ビルド成功。
+最後のC223の値の照合で、追加していた`Nat.add_assoc`と局所名の展開を外し、
+既に指定されている同じ次数・点・語のまま、負号と零だけを簡約して等式を使う。
+垂直のC226–C229はここまで検証済みだが、専用監査前にはコミットしない。
+
+C223の最後の値の型の診断では、局所名を除いた式の内部表現でも
+`r+(d+1)`と`(r+d)+1`の差が残ることを確認した。一般の結合則の展開ではなく、
+定義と同じ向きの既存`Nat.add_succ`だけで両方をそろえる。
+一時的な`run_tac`の内部表現出力は除去し、本体には残さない。
+診断の生データは`/tmp/bsw16/horizontal-actual-expr.txt`・
+`horizontal-expected-expr.txt`に保持する。
+
+### 130.10 水平hcのビルド成功
+
+一覧：済み 8／全体 48（うち追加 4）
+
+`universalBoundaryValue_horizontal_neg`が、係数次数零も含めて対象ビルドを通った。
+最後の同じ値の照合は`convert ht' using 1`で合同を明示すると閉じ、
+補助的に付けていた`rfl`は未使用なので除去した。
+同じ元の加群での等式で、ホモトピー圏への弱化や未供給の数学的仮定はない。
+同じ`universalBoundaryPartner_neg_of_cases`のhcをそのまま供給する。
+垂直のC226〜C229もビルド済みだが、垂直hvの全体やL09a・L09の完了とは数えない。
+この後は警告を除いた対象ビルドと全10モジュールの専用監査を行う。
+
+### 130.11 検証・登録候補と約6,600行の区切りの確定
+
+一覧：済み 8／全体 48（うち追加 4）
+
+以下の10本、計 **663行** を対象ビルドと専用監査で検証した。
+接頭部は`SerrePositivity.EInfinity.SimplexCuts.`。
+
+| 登録候補 | 実測 |
+| --- | ---: |
+| `EndpointCoefficientIndices` | 67行 |
+| `HorizontalFaceCoordinates` | 44行 |
+| `HorizontalFaceTerms` | 108行 |
+| `HorizontalBoundaryValues` | 131行 |
+| `OutputBoundaryPairedValues` | 46行 |
+| `VerticalDeletedMaxima` | 46行 |
+| `VerticalVertexEdges` | 67行 |
+| `VerticalActiveMaxima` | 47行 |
+| `VerticalIntervalThresholds` | 53行 |
+| `VerticalDeletionExponents` | 54行 |
+
+最終対象ビルドは`/tmp/bsw16/m14-horizontal-vertical-final.log`、
+`HorizontalBoundaryValues`・`VerticalDeletionExponents`の二対象で **2,320 jobs成功・警告0**。
+両対象のimportで新規10本を覆う。
+専用監査は別の一回の鍵で`/tmp/bsw16/audit-m14-horizontal-vertical-progress.lean`を実行し、
+**10モジュール・54宣言・標準三公理のみ**で成功
+（`/tmp/bsw16/m14-horizontal-vertical-audit.log`）。
+全10モジュールを明示し、それぞれの宣言数が0でないことも確認した。
+新規本体のsorry・追加公理0。`run_tac`や一時的なppの診断は本体に残っていない。
+`git diff --check`成功。既存公開宣言・共通入口・共通監査・draftsは変更していない。
+共通入口・共通監査への登録は調整役の担当のまま。
+
+ビルド・監査はそれぞれ独立した一回の`--class impl --wait 3600`で実行。
+整理券は常に一枚、待ち時間と編集・報告の間に鍵は持たず、各実行の終了と返却を確認した。
+
+実際に閉じたもの：
+
+- `universalBoundaryValue_horizontal_neg`：元の全水平添字のhcを、係数次数零も含め仮定なく供給。
+  元の同じ加群・指定射での等式で、ホモトピー圏へ弱めていない。
+- `positionExponent_vertical_deleted_coordinates`：C226〜C229の有限な幾何を合わせ、
+  任意の語の位置指数の差を同じ語の末尾側のcaesura数へ戻す。
+  実際の垂直の指定座標は既存C90と端点の公式から次に供給する。
+
+L09a・L09の約6,600行の区切りは、§130の途中で下書き込みの実測を止まらず報告した。
+その検証待ちの間に垂直の267行を進め、今回の検証済みの最終累計は
+**L09a・L09 6,944行、改訂MayのM14全体12,010行**。
+次は垂直の実際の削除係数と入力面の符号、指定面・生成元・実テンソル、全垂直添字のhv、
+L09aの対合への包装とL09の微分の和への戻し。
+L09a全体・L09はまだ閉じていないため、一覧の完了件数を増やさない。
+M14の半分12,500行までは490行で、その時点でも止まらず途中報告する。
+L09a・L09の次の1,000行区切りは約7,600行。
+
+### 130.12 実測による残りと外枠の照合
+
+一覧：済み 8／全体 48（うち追加 4）
+
+§121の水平の600〜1,100行に対し、混合角の完了後の5,015行から
+水平hcを閉じるまでの実測は **1,662行**（垂直に再利用する共通の順位・次数移送も含む）。
+差は **+562〜+1,062行**。依存した面番号と指定された全添字の同値、
+共通次数への実際の移送までの照合を含めた増分で、数学の主張の弱化はしていない。
+垂直の267行はこの1,662行に重複計上しない。
+
+垂直の残りの見込みは、位置指数が閉じた実測から次のように置く。
+
+| 残りの部分 | 追加の見込み |
+| --- | ---: |
+| 元の削除係数・全caesura数を合わせた実符号 | 80〜150行 |
+| 入力の面を合成した指定面・正規化生成元・実テンソル | 150〜280行 |
+| 方向交換で指定された全垂直添字の座標と小さい切断への照合 | 90〜170行 |
+| 元の入力境界値への包装とhv | 80〜150行 |
+| **垂直の残り** | **400〜750行** |
+| L09aの全対合・L09の微分の和への包装 | 200〜350行 |
+| **L09a・L09の残り** | **600〜1,100行** |
+
+垂直全体は今回までの267行を含め667〜1,017行の見込みで、
+§121の500〜950行の上端より67行高い。指定射を省いた短縮は見込んでいない。
+L09a・L09完成時の見込みは **7,544〜8,044行**。
+L10以後の既存部分の再利用は§121.3・§121.4のまま、未実装部分を勝手に控除しない。
+
+| M14の部分 | 実測／残り |
+| --- | ---: |
+| 完成済みMayと現在までの切断 | **12,010行（実測）** |
+| L09a・L09の残り | 600〜1,100行 |
+| L10〜L28（L12a込み） | 4,330〜7,790行 |
+| L29〜L37の係数・ν・top operation | 1,200〜2,000行 |
+| L38〜L40のG10後の指定比較への適用 | 500〜900行 |
+| L41・L42のfiltered塔とA4の利用側 | 300〜550行 |
+| L43a・L43b・L43・L44の二重模型の比較 | 1,500〜2,800行 |
+| **残りの合計** | **8,430〜15,140行** |
+| **M14完成時の見込み** | **20,440〜27,150行** |
+
+上端は外枠25,000行より **2,150行高い**。外枠を変更した扱いにはせず、
+同じ型一覧の中で続ける。旧coherent経路10,216行は保持し、改訂Mayに二重計上しない。
+G10・③-bの橋そのもの、M15・G12のLeanは作っていない。
+
+## 131. 垂直の実際の削除係数を入力符号へ接続する（11-14）
+
+一覧：済み 8／全体 48（うち追加 4）
+
+前ターンは水平hcと垂直C226〜C229を検証・コミットした進捗。
+枝a1dabccd9とクリーンな作業木を確認して続行。M14実測12,010行、
+12,500行の半分報告まで490行である。B4は完了済み。
+
+### 131.1 同色の直前の位置と、両端を含む垂直頂点（C230〜C233）
+
+同じL09aの有限計算と既存の削除係数の法則。実装前に
+`/tmp/bsw16/check-adjacent-deletion-coefficients.py`で任意の語の隣接同色対を
+**6,678例** 点検した。垂直頂点の係数の14,942例の点検も§130で先に済ませてある。
+C230は直前の出現集合の最大が隣接位置になることと既存C135を使う。
+C231は既存の垂直辺の判定、C232は既存C170の接頭順位、C233は既存の正次数の法則へ戻す。
+新しい作用や構成は作らない。各補題200行以内。
+局所型`hprev : previousVertex v b hp = a`、`hf`は既存の最終出現の削除係数の等式、
+`hr`は既存C135の隣接順位の式。C231の`he`は指定辺の始端または終端の一致、
+C232の`hcolor`は同じ垂直辺の両端の色の一致。
+
+```lean
+lemma deletionCoefficient_eq_rank_of_adjacent {N r : ℕ} (v : Fin N → Fin r)
+    (a b : Fin N) (hab : b.val = a.val + 1) (hcolor : v a = v b) :
+    Surjection.deletionCoefficient v b = (-1 : ℤ) ^ Surjection.caesuraRank v b
+
+lemma vertical_vertex_active_or_incoming {m q r : ℕ} (s : Cut m (q + 1))
+    (v : Fin (m + 1) → Fin r) (k : Fin (m + (q + 1) + 1))
+    (hk : boundaryVertexKind s k = .vertical) :
+    Surjection.Caesura (label s v) k ∨
+      ∃ e : Fin (m + (q + 1)), e.succ = k ∧ e ∉ s.val
+
+lemma deletionCoefficient_vertical {m q r : ℕ} (s : Cut m (q + 1))
+    (v : Fin (m + 1) → Fin r) (k : Fin (m + (q + 1) + 1))
+    (hk : boundaryVertexKind s k = .vertical) :
+    Surjection.deletionCoefficient (label s v) k =
+      (-1 : ℤ) ^ ((s.vertical k).val + Surjection.caesuraRank v (s.horizontal k))
+
+lemma outputDegree_pos_vertical {m q r : ℕ} (s : Cut m (q + 1))
+    (v : Surjection.Word r (m + 1)) (k : Fin (m + (q + 1) + 1))
+    (hk : boundaryVertexKind s k = .vertical) :
+    0 < outputDegree s v (label s v.val k)
+```
+
+### 131.2 元の語の次数と入力面番号への実符号の比較（C234〜C236）
+
+一覧：済み 8／全体 48（うち追加 4）
+
+既存構成の符号の法則の貼り合わせ。C234は既存`Word.card_caesuras`と有限集合の
+接頭/末尾の分割を使い、濃度の新しい定理は作らない。C235はC229とC234の
+自然数の加法の等式。実装前に`/tmp/bsw16/check-vertical-exponent-balance.py`で
+**14,942例** の指数の整数としての完全な等式を点検した。
+C236は既存C127・C180とC232を合わせ、C235で同じ入力面の符号へ戻す。
+座標`hh`・`hv`は、既存C90と端点/全添字の式から後で供給する。未供給のままhv全体の完了とは扱わない。
+個々の補題200行以内。局所型`hcard : (caesuraPositions v.val).card = m+1-r`、
+`hp`はC229の位置指数の式、`hc`はC234の区切り数の式、
+`hperm`はC180による同じ削除色列の逆転符号の一致。
+
+```lean
+lemma caesuraRank_add_tail_card {m r : ℕ} (v : Surjection.Word r (m + 1))
+    (a : Fin (m + 1)) :
+    Surjection.caesuraRank v.val a +
+      ((caesuraPositions v.val).filter (fun i => a ≤ i)).card = m + 1 - r
+
+lemma positionExponent_plus_vertical_rank {m q r : ℕ} (s : Cut m (q + 1)) (t : Cut m q)
+    (v : Surjection.Word r (m + 1)) (k : Fin (m + (q + 1) + 1))
+    (hk : boundaryVertexKind s k = .vertical)
+    (hh : ∀ j : Fin (m + q + 1), s.horizontal (k.succAbove j) = t.horizontal j)
+    (hv : ∀ j : Fin (m + q + 1), s.vertical (k.succAbove j) =
+      (s.vertical k).succAbove (t.vertical j)) :
+    positionExponent s v.val +
+        ((s.vertical k).val + Surjection.caesuraRank v.val (s.horizontal k)) =
+      (m + 1 - r + (s.vertical k).val) + positionExponent t v.val
+
+lemma outputBoundarySignAt_vertical_of_coordinates {m q r : ℕ} (s : Cut m (q + 1)) (t : Cut m q)
+    (v : Surjection.Word r (m + 1)) (k : Fin (m + (q + 1) + 1))
+    (hk : boundaryVertexKind s k = .vertical)
+    (hh : ∀ j : Fin (m + q + 1), s.horizontal (k.succAbove j) = t.horizontal j)
+    (hv : ∀ j : Fin (m + q + 1), s.vertical (k.succAbove j) =
+      (s.vertical k).succAbove (t.vertical j)) :
+    outputBoundarySignAt s v k =
+      (-1 : ℤ) ^ (m + 1 - r + (s.vertical k).val) * cutSign t v.val
+```
+
+### 131.3 入力の単体射を合成した指定面（C237〜C239）
+
+一覧：済み 8／全体 48（うち追加 4）
+
+C230〜C236の対象ビルドが成功。次は既存C185・C186と同じ次数・指定面の照合を、
+入力射`g`の像の色列へ使う。既存の公開宣言は変更せず、新しい名前で足す。
+C237は既存の単体射の合成とList.mapの法則、C238は既存C150・C151とList.length_map、
+C239は既存C156・C40と同じ頂点列の単射性を使う。新しい構成やホモトピーは作らない。
+実装前に`/tmp/bsw16/check-vertical-mapped-vertices.py`で
+実際の垂直削除の各色の列と入力面による像の列を **76,407例** 点検した。
+個々の補題200行以内。局所型`hsrc`はC238の次数の族の等式を一色で評価したもの。
+
+```lean
+lemma simplexVertexList_postcomp {n q q' : ℕ}
+    (f : (⦋n⦌ : SimplexCategory) ⟶ ⦋q⦌) (g : (⦋q⦌ : SimplexCategory) ⟶ ⦋q'⦌) :
+    simplexVertexList (f ≫ g) = (simplexVertexList f).map g.toOrderHom
+
+lemma deletedOutputDegree_eq_of_mapped_vertexLists {m n q q' r : ℕ}
+    (s : Cut m q) (t : Cut n q')
+    (v : Surjection.Word r (m + 1)) (w : Surjection.Word r (n + 1))
+    (k : Fin (m + q + 1)) (hd : 0 < outputDegree s v (label s v.val k))
+    (g : (⦋q'⦌ : SimplexCategory) ⟶ ⦋q⦌)
+    (hl : ∀ c, deletedVerticesList s v.val k c = (verticesList t w.val c).map g.toOrderHom) :
+    Function.update (outputDegree s v) (label s v.val k)
+      (outputDegree s v (label s v.val k) - 1) = outputDegree t w
+
+lemma deletedCutFace_eq_of_mapped_vertexLists {m n q q' r : ℕ}
+    (s : Cut m q) (t : Cut n q')
+    (v : Surjection.Word r (m + 1)) (w : Surjection.Word r (n + 1))
+    (k : Fin (m + q + 1)) (hd : 0 < outputDegree s v (label s v.val k))
+    (g : (⦋q'⦌ : SimplexCategory) ⟶ ⦋q⦌)
+    (hl : ∀ c, deletedVerticesList s v.val k c = (verticesList t w.val c).map g.toOrderHom)
+    (j : Fin (outputDegree s v (label s v.val k) + 1))
+    (hj : j.val = vertexRank s v.val (label s v.val k) k) (c : Fin r) :
+    deletedCutFace s v (label s v.val k) hd j c =
+      eqToHom (congrArg SimplexCategory.mk
+        (congrFun (deletedOutputDegree_eq_of_mapped_vertexLists s t v w k hd g hl) c)) ≫
+          (face t w c ≫ g)
+```
+
+### 131.4 入力射を合成した実テンソル（C240・C241）
+
+一覧：済み 8／全体 48（うち追加 4）
+
+C237〜C239の対象ビルド成功。C240・C241は既存C188・C189の同じ次数移送に、
+C239の指定面と既存の関手の合成則を代入する法則。新しい構成は足さない。
+個々の補題は200行以内。以下は実装する宣言の型（証明は省略）。
+
+```lean
+lemma deletedCutTensor_eq_mapped_cutTensor {m n q q' r : ℕ} (S : SSet.{0})
+    (s : Cut m q) (t : Cut n q')
+    (v : Surjection.Word r (m + 1)) (w : Surjection.Word r (n + 1))
+    (k : Fin (m + q + 1)) (hd : 0 < outputDegree s v (label s v.val k))
+    (g : (⦋q'⦌ : SimplexCategory) ⟶ ⦋q⦌)
+    (hl : ∀ c, deletedVerticesList s v.val k c = (verticesList t w.val c).map g.toOrderHom)
+    (j : Fin (outputDegree s v (label s v.val k) + 1))
+    (hj : j.val = vertexRank s v.val (label s v.val k) k) (x : S _⦋q⦌)
+    (h : -(degreeSum r (outputDegree t w) : ℤ) = -((m + q + 1 - r : ℕ) : ℤ) + 1) :
+    deletedCutTensor A S s v (label s v.val k) hd j x =
+      (eqToHom (congrArg (fun z : ℤ => (power (chains A S) r).X z) h)).hom
+        (cutTensor A S t w (S.map g.op x))
+
+lemma deletedCutTensor_eq_mapped_cutTensorAt {m n q q' r : ℕ} (S : SSet.{0})
+    (s : Cut m q) (t : Cut n q')
+    (v : Surjection.Word r (m + 1)) (w : Surjection.Word r (n + 1))
+    (k : Fin (m + q + 1)) (hd : 0 < outputDegree s v (label s v.val k))
+    (g : (⦋q'⦌ : SimplexCategory) ⟶ ⦋q⦌)
+    (hl : ∀ c, deletedVerticesList s v.val k c = (verticesList t w.val c).map g.toOrderHom)
+    (j : Fin (outputDegree s v (label s v.val k) + 1))
+    (hj : j.val = vertexRank s v.val (label s v.val k) k) (x : S _⦋q⦌)
+    (h : -((n + q' + 1 - r : ℕ) : ℤ) = -((m + q + 1 - r : ℕ) : ℤ) + 1) :
+    deletedCutTensor A S s v (label s v.val k) hd j x =
+      (eqToHom (congrArg (fun z : ℤ => (power (chains A S) r).X z) h)).hom
+        (cutTensorAt A S t w (S.map g.op x))
+
+```
+
+### 131.5 同じ入力面による各色の列の像（C242・C243）
+
+一覧：済み 8／全体 48（うち追加 4）
+
+C240・C241のビルド成功。既存C90の座標と`selectColor_map`の法則を各色へ適用する。
+§131.3の76,407例の点検に含まれる。既存構成の係数移送であり、個々の補題200行以内。
+
+```lean
+lemma deletedVerticesList_vertical_of_coordinates {m q r : ℕ}
+    (s : Cut m (q + 1)) (t : Cut m q) (v : Fin (m + 1) → Fin r)
+    (k : Fin (m + (q + 1) + 1))
+    (hh : ∀ j : Fin (m + q + 1), s.horizontal (k.succAbove j) = t.horizontal j)
+    (hv : ∀ j : Fin (m + q + 1), s.vertical (k.succAbove j) =
+      (s.vertical k).succAbove (t.vertical j)) (c : Fin r) :
+    deletedVerticesList s v k c =
+      (verticesList t v c).map (s.vertical k).succAbove
+
+lemma deletedVerticesList_vertical_interior {m q r : ℕ} (s : Cut m (q + 1))
+    (v : Fin (m + 1) → Fin r) (a b : Fin (m + (q + 1)))
+    (hab : b.val = a.val + 1) (ha : a ∉ s.val) (hb : b ∉ s.val) (c : Fin r) :
+    deletedVerticesList s v a.succ c =
+      (verticesList ((BarrattEccles.verticalInsertionEquiv m q a).symm ⟨s, ha⟩) v c).map
+        (s.vertical a.succ).succAbove
+
+```
+
+### 131.6 検証・実測・次の接続
+
+一覧：済み 8／全体 48（うち追加 4）
+
+新規5本・339行。各モジュールの対象ビルドは成功し、Leanの警告0。
+小さい独立監査は **5モジュール・24宣言・標準三公理のみ** で成功。
+新規5本にsorry・追加公理0。既存の公開宣言・界面・共通入口・共通監査は変更していない。
+`git diff --check`成功。鍵は各対象ビルド・各監査の間だけ取り、終了後返却。
+
+| 登録候補（すべて `SerrePositivity.EInfinity.SimplexCuts.` 以下） | 行数 | 対象ビルド |
+| --- | ---: | --- |
+| VerticalDeletionCoefficients | 92 | 成功、2,234 jobs |
+| VerticalBoundarySigns | 64 | 成功、2,274 jobs |
+| MappedDeletedFaces | 58 | 成功、2,185 jobs |
+| MappedDeletedTensors | 76 | 成功、2,189 jobs |
+| VerticalMappedVertices | 49 | 成功、2,039 jobs |
+
+ログは `/tmp/bsw16/m14-vertical-deletion-coefficients-01.log`、
+`m14-vertical-boundary-signs-01.log`、`m14-mapped-deleted-faces-02.log`、
+`m14-mapped-deleted-tensors-01.log`、`m14-vertical-mapped-vertices-01.log`。
+監査ソースは `/tmp/bsw16/audit-m14-vertical-mapped.lean`、
+結果は `/tmp/bsw16/m14-vertical-mapped-audit.log`。
+C237の初回ビルドは単体射の合成の定義展開の一行が不足して失敗した。
+`rfl`で補い、2回目の対象ビルド成功を検収結果とする。
+
+L09a・L09累計は **7,283行**（6,944+339）、M14全体は **12,349行**。
+12,500行の途中報告まで151行、L09a・L09の次の約7,600行の区切りまで317行。
+§130.12の完成見込み20,440〜27,150行の上側は依然として外枠25,000行を超える。
+この見込みを上限の承認とは扱わず、次の途中報告で残りを出し直す。
+
+今回閉じたのは垂直の実符号と、入力射の像の色列から元の圏での実テンソルへ戻す法則。
+C242・C243は実際の内部削除に適用済み。一方、端点と全垂直添字への適用、
+実境界項の符号付き等式、`universalBoundaryValue_vertical_neg` の組み立ては残る。
+L09a全体を完了とは数えない。次は端点を含む同じ座標の供給と、C236・C241の接続。
+B4は595254e10で完了済みのまま。/goalは継続中。
+
+## 132. 垂直端点の列と同じ入力面の実境界項（11-14）
+
+一覧：済み 8／全体 48（うち追加 4）
+
+§131は593c7df71で検証・保存済み。C244・C245は既存の始端・終端の座標式を
+C242へ代入する法則。先の76,407例の点検には端点も含まれる。
+C246は語の全射性からの次数の計算。C247はC236・C241・C242の貼り合わせであり、
+同じ入力面に対する元の圏の厳密な等式を示す。既存の公開宣言の型は変えない。
+すべて個々の補題200行以内。以下の型を記録してから検証する。
+
+```lean
+lemma deletedVerticesList_vertical_first {m q r : ℕ} (s : Cut m (q + 1))
+    (v : Fin (m + 1) → Fin r) (h₀ : (0 : Fin (m + (q + 1))) ∉ s.val) (c : Fin r) :
+    deletedVerticesList s v 0 c =
+      (verticesList ((BarrattEccles.verticalInsertionEquiv m q 0).symm ⟨s, h₀⟩) v c).map
+        (0 : Fin (q + 2)).succAbove
+
+lemma deletedVerticesList_vertical_last {m q r : ℕ} (s : Cut m (q + 1))
+    (v : Fin (m + 1) → Fin r) (a : Fin (m + (q + 1))) (ha : a ∉ s.val)
+    (hlast : a.val + 1 = m + (q + 1)) (c : Fin r) :
+    deletedVerticesList s v (Fin.last (m + (q + 1))) c =
+      (verticesList ((BarrattEccles.verticalInsertionEquiv m q a).symm ⟨s, ha⟩) v c).map
+        (Fin.last (q + 1)).succAbove
+
+lemma verticalDeletion_degree_eq {m q r : ℕ} (v : Surjection.Word r (m + 1)) :
+    -((m + q + 1 - r : ℕ) : ℤ) = -((m + (q + 1) + 1 - r : ℕ) : ℤ) + 1
+
+lemma outputBoundaryTerm_vertical_of_coordinates {m q r : ℕ} (S : SSet.{0})
+    (s : Cut m (q + 1)) (t : Cut m q) (v : Surjection.Word r (m + 1))
+    (k : Fin (m + (q + 1) + 1)) (hk : boundaryVertexKind s k = .vertical)
+    (hh : ∀ j : Fin (m + q + 1), s.horizontal (k.succAbove j) = t.horizontal j)
+    (hv : ∀ j : Fin (m + q + 1), s.vertical (k.succAbove j) =
+      (s.vertical k).succAbove (t.vertical j))
+    (j : Fin (outputDegree s v (label s v.val k) + 1))
+    (hj : j.val = vertexRank s v.val (label s v.val k) k) (x : S _⦋q + 1⦌) :
+    outputBoundaryTerm A S s v (label s v.val k) j x =
+      (-1 : ℤ) ^ (m + 1 - r + (s.vertical k).val) •
+        (eqToHom (congrArg (fun z : ℤ => (power (chains A S) r).X z)
+          (verticalDeletion_degree_eq (q := q) v))).hom
+            (cutTerm A S t v (S.δ (s.vertical k) x))
+
+```
+
+### 132.1 全添字への座標の貼り合わせ（C248）
+
+一覧：済み 8／全体 48（うち追加 4）
+
+既存の三分割と水平挿入の座標式を同じ指定切断へ適用する構成の法則。
+新しい有限同値は作らない。C248を方向交換して、既存の垂直同値の同じ指定切断を読む。
+個々の補題200行以内。以下の型を記録する。
+
+```lean
+lemma horizontalBoundaryFaceEquiv_deleted_coordinates (m q : ℕ)
+    (c : Fin (m + 2) × Cut m q) (l : Fin (m + q + 1)) :
+    let z := (horizontalBoundaryFaceEquiv m q c).val
+    z.1.horizontal (z.2.succAbove (Fin.cast (by omega : m + q + 1 = m + 1 + q) l)) =
+        c.1.succAbove (c.2.horizontal l) ∧
+      z.1.vertical (z.2.succAbove (Fin.cast (by omega : m + q + 1 = m + 1 + q) l)) =
+        c.2.vertical l
+```
+
+### 132.2 同じ全垂直添字への方向交換（C249・C250）
+
+一覧：済み 8／全体 48（うち追加 4）
+
+C218・C248と既存の`exchange_horizontal`・`exchange_vertical`だけを使う構成の法則。
+小さい切断や入力面を別の同値で選び直さない。`hcast`は同じ自然数値のFinの移送と
+`succAbove`の可換性、`ht`はC248、`hv`・`hh`は小さい切断の交換公式の適用。
+個々の補題200行以内。型は次のとおり。
+
+```lean
+lemma verticalBoundaryFaceEquiv_vertical (m q : ℕ) (c : Fin (q + 2) × Cut m q) :
+    (verticalBoundaryFaceEquiv m q c).val.1.vertical
+      (verticalBoundaryFaceEquiv m q c).val.2 = c.1
+
+lemma verticalBoundaryFaceEquiv_deleted_coordinates (m q : ℕ)
+    (c : Fin (q + 2) × Cut m q) (j : Fin (m + q + 1)) :
+    let z := (verticalBoundaryFaceEquiv m q c).val
+    z.1.horizontal (z.2.succAbove j) = c.2.horizontal j ∧
+      z.1.vertical (z.2.succAbove j) = c.1.succAbove (c.2.vertical j)
+
+```
+
+### 132.3 指定された全入力面の実境界項（C251）
+
+一覧：済み 8／全体 48（うち追加 4）
+
+C247へC249・C250を代入する構成の法則。入力面の番号を元の同値の番号で置換し、
+型の仮定を追加せず同じ指定項の厳密な一致を得る。個々の補題200行以内。
+
+```lean
+lemma outputBoundaryTerm_verticalBoundaryFaceEquiv {m q r : ℕ} (S : SSet.{0})
+    (v : Surjection.Word r (m + 1)) (c : Fin (q + 2) × Cut m q)
+    (j : Fin (outputDegree (verticalBoundaryFaceEquiv m q c).val.1 v
+      (label (verticalBoundaryFaceEquiv m q c).val.1 v.val
+        (verticalBoundaryFaceEquiv m q c).val.2) + 1))
+    (hj : j.val = vertexRank (verticalBoundaryFaceEquiv m q c).val.1 v.val
+      (label (verticalBoundaryFaceEquiv m q c).val.1 v.val
+        (verticalBoundaryFaceEquiv m q c).val.2) (verticalBoundaryFaceEquiv m q c).val.2)
+    (x : S _⦋q + 1⦌) :
+    outputBoundaryTerm A S (verticalBoundaryFaceEquiv m q c).val.1 v
+      (label (verticalBoundaryFaceEquiv m q c).val.1 v.val
+        (verticalBoundaryFaceEquiv m q c).val.2) j x =
+      (-1 : ℤ) ^ (m + 1 - r + c.1.val) •
+        (eqToHom (congrArg (fun z : ℤ => (power (chains A S) r).X z)
+          (verticalDeletion_degree_eq (q := q) v))).hom
+            (cutTerm A S c.2 v (S.δ c.1 x))
+```
+
+### 132.4 全垂直分岐とL09aの貼り合わせ（C252〜C255、L09a）
+
+一覧：済み 8／全体 48（うち追加 4）
+
+C249〜C251の対象ビルド成功、警告0。以下は既存の全境界値・依存した色と面の組・
+元の対合の貼り合わせ。C253はC223と同じ次数移送の合成を入力境界の分岐に適用する。
+新しい数学の補題ではなく、L09aの未供給のhvと既存の三分岐への接続そのもの。
+L09aは§112の型のまま。検証するまでは完了数を増やさない。個々の補題200行以内。
+
+```lean
+lemma universalBoundaryValue_input (S : SSet.{0}) {r d : ℕ}
+    (w : Surjection.BasisWord (r + 1) d) (q : ℕ) (x : S _⦋q⦌)
+    (c : Fin (q + 1) × Cut (r + d) (q - 1)) :
+    universalBoundaryValue A S w q x (.inr (.inr c)) = simplexBoundaryTerm A S w q c x
+
+lemma universalBoundaryValue_vertical_succ (S : SSet.{0}) {r d : ℕ}
+    (w : Surjection.BasisWord (r + 1) d) (q : ℕ) (x : S _⦋q + 1⦌)
+    (c : Fin (q + 2) × Cut (r + d) q) :
+    universalBoundaryValue A S w (q + 1) x
+        (.inl (verticalBoundaryFaceEquiv (r + d) q c).val) =
+      -universalBoundaryValue A S w (q + 1) x (.inr (.inr c))
+
+lemma universalBoundaryValue_vertical_neg (S : SSet.{0}) {r d : ℕ}
+    (w : Surjection.BasisWord (r + 1) d) (q : ℕ) (x : S _⦋q⦌) (hq : 0 < q)
+    (c : Fin (q + 1) × Cut (r + d) (q - 1)) :
+    universalBoundaryValue A S w q x
+        (.inl ((verticalBoundaryAllEquiv (r + d) q hq) c).val) =
+      -universalBoundaryValue A S w q x (.inr (.inr c))
+
+lemma boundaryBalancePerm_neg (A : Type u) [CommRing A] (S : SSet.{0}) {r d : ℕ}
+    (w : Surjection.BasisWord (r + 1) d) (q : ℕ) (x : S _⦋q⦌)
+    (i : BoundaryBalanceIndex w q) :
+    boundaryBalanceTerm A S w q (boundaryBalancePerm w q i) x =
+      -boundaryBalanceTerm A S w q i x
+
+theorem boundaryBalance_pairing {r d : ℕ} (w : Surjection.BasisWord (r + 1) d) (q : ℕ) :
+    ∃ τ : Equiv.Perm (BoundaryBalanceIndex w q), Function.Involutive τ ∧
+      (∀ i, τ i = i → ∀ (A : Type u) [CommRing A] (S : SSet.{0}) (x : S _⦋q⦌),
+        boundaryBalanceTerm A S w q i x = 0) ∧
+      (∀ i, τ i ≠ i → ∀ (A : Type u) [CommRing A] (S : SSet.{0}) (x : S _⦋q⦌),
+        boundaryBalanceTerm A S w q (τ i) x = -boundaryBalanceTerm A S w q i x)
+
+```
+
+### 132.5 同じ有限和の相殺（C256）
+
+一覧：済み 8／全体 48（うち追加 4）
+
+C252〜C254の対象ビルド成功。L09aの包装は混合角モジュールのimportを補って再検証する。
+C256は既存`Finset.sum_ninvolution`へ同じ対合を渡す法則であり、固定点零を使うため
+2が可逆という仮定も加えない。L09の複体の微分の式への照合は別に残る。
+個々の補題200行以内。
+
+```lean
+lemma sum_boundaryBalanceTerm_eq_zero (A : Type u) [CommRing A] (S : SSet.{0}) {r d : ℕ}
+    (w : Surjection.BasisWord (r + 1) d) (q : ℕ) (x : S _⦋q⦌) :
+    ∑ i : BoundaryBalanceIndex w q, boundaryBalanceTerm A S w q i x = 0
+```
+
+### 132.6 L09aの完了・取り込み点・検証
+
+一覧：済み 9／全体 48（うち追加 4）
+
+**L09a `boundaryBalance_pairing` は§112の型のまま完成**。同じ有限対合の対合性、
+固定点での実境界値の零、非固定点の両側の負号による一致を、任意の係数環・単体的集合・
+単体に対して元の加群で示した。三分岐のどれも仮定として残していない。
+ホモトピー圏への移行や2の可逆性は使わない。C256で同じ全境界項の和が零まで検証済み。
+**L09 `cutSum_boundary` の複体の微分の式への照合は未完**なので、完了数を増やすのはL09aの一件だけ。
+
+新規8モジュール・457行、既存公開宣言・界面・drafts・共通入口・共通監査に変更なし。
+対象ビルドと専用監査が成功。監査は **8モジュール・32宣言・標準三公理のみ**。
+全8本にsorry・追加公理0、最終ソースのLean警告0、`git diff --check`成功。
+鍵は各ビルド・監査ごとに取り、終了を確認して返却。一枚だけ並び、待機中の別レーンの
+鍵を使うことも、常駐のビルドセッションを置くこともしていない。
+
+登録候補（接頭部はすべて `SerrePositivity.EInfinity.SimplexCuts.`）：
+
+| モジュール | 行数 | 検証内容 |
+| --- | ---: | --- |
+| VerticalEndpointVertices | 46 | 始端・終端の削除色列。最初の2対象ビルドでこの対象自体の生成成功、専用監査でも読込成功 |
+| VerticalInputTerms | 54 | 座標を指定した実境界項。最終対象ビルド成功、2,278 jobs |
+| AllHorizontalDeletionCoordinates | 93 | 全水平添字の両削除座標。下のVerticalFaceTermsの成功ビルドに含む |
+| VerticalFaceCoordinates | 61 | 全垂直添字の両削除座標・入力面番号。下の成功ビルドに含む |
+| VerticalFaceTerms | 45 | 指定した同じ入力面の実境界項。最終対象ビルド成功、2,303 jobs |
+| VerticalBoundaryValues | 78 | 全境界値のhv。下の成功ビルドに含む |
+| BoundaryPairingValues | 47 | 三分岐の貼り合わせ・L09a。下の成功ビルドに含む |
+| BoundarySumCancellation | 33 | 同じ全有限和の相殺。最終対象ビルド成功、2,334 jobs |
+
+ログ：`/tmp/bsw16/m14-vertical-input-terms-01.log`（端点の対象自体は成功、別対象失敗）、
+`m14-vertical-input-terms-02.log`、`m14-all-face-coordinates-03.log`（水平の対象自体は成功、別対象失敗）、
+`m14-vertical-face-terms-02.log`、`m14-boundary-sum-cancellation-01.log`。
+専用監査は `/tmp/bsw16/audit-m14-boundary-pairing.lean` と
+`/tmp/bsw16/m14-boundary-pairing-audit.log`。
+失敗した組全体を成功とは扱わず、該当対象の生成成功と後続の成功ビルド・監査で区別している。
+途中の修正は、同値の局所略記の展開、同じFin値の移送、入力面の略記の展開、
+混合角のimport不足だけ。新しい数学の前提や追加の構成は導入していない。
+
+### 132.7 約12,500行・約7,600行の途中報告（止まらず継続）
+
+一覧：済み 9／全体 48（うち追加 4）
+
+§131の検証済み12,349行に今回457行を加え、**M14全体12,806行**。
+L09a・L09は7,283+457=**7,740行**。旧coherent経路の保管済み10,216行、
+報告・監査・Pythonの点検はこれに含めない。未検証の本体下書きは現在ない。
+半分の12,500行と、L09a・L09の次の約7,600行の区切りを越えたため、ここで出し直す。
+外枠25,000行は変更せず、残り実装可能な枠は **12,194行**。
+
+§130.12の垂直の残り400〜750行に対し、§131の339行と今回の実境界値までの377行、
+合計716行を使った。差は **−34〜+316行**（今回の包装・有限和の80行は別計上）。
+内部だけでなく全添字へ接続するため、
+既存の水平三分割の削除座標を明示し、それを方向交換する2本154行が増えた。
+この座標の供給を証明済みと見なして見込みから消したり、同じ式の仮定を残してhv完了とはしなかった。
+L09aの包装は今回のBoundaryPairingValuesの47行、有限和の相殺は33行で閉じた。
+
+L09aの残りは0。L09の残りは、零次数も含む次の既存構成の法則と貼り合わせ。
+
+| 残り | 現在の不足 | 新規見込み |
+| --- | --- | ---: |
+| 出力の微分の和 | 右括弧の同じ純粋テンソルの微分則とgen_dを、指定削除面の全和へ戻す。現在の有限和零をこれだけで微分の式とは呼べない | 250〜450 |
+| 係数・入力の和 | 非全射・退化語を零にした係数の微分の実基底の式、および入力の交代面和と同じ指定移送を照合 | 100〜180 |
+| L09包装 | 三つの和をC256に代入し、零次数の分岐と共通次数の移送をまとめる | 50〜120 |
+| **L09残り** | **L09aをやり直す部分は含まない** | **400〜750** |
+
+前の「包装・L09」200〜350行は、純粋テンソルの一般の微分則を既存の同じ型で直接使えるかの
+確認が不足していた。IntervalCutsの区間版の境界定理を一般次元の代用にはしない。
+同じ右括弧テンソルの再帰と既存のテンソル微分則を使う法則として型を記録して進める。
+L09a・L09の完成時は **8,140〜8,490行** の見込み。
+
+L10〜L28の次元によらないconvolution・χ/TR・符号の再利用の筋と行ごとの見込みは
+§121.3・§121.4から変更なし。そこを今回の実測なしに控除しない。
+
+| M14全体の残り | 下端 | 上端 |
+| --- | ---: | ---: |
+| L09 | 400 | 750 |
+| L10〜L28（L12a込み） | 4,330 | 7,790 |
+| L29〜L37 | 1,200 | 2,000 |
+| G10後のnative Totへの適用 | 500 | 900 |
+| filtered塔 | 300 | 550 |
+| 二重模型の実現の比較 | 1,500 | 2,800 |
+| **新規残り** | **8,230** | **14,790** |
+| **実測12,806行を含む完成見込み** | **21,036** | **27,596** |
+
+上側は外枠を **2,596行** 超えるリスクが残る。外枠を上げたとは扱わない。
+下端は収まり、現在の実測は外枠に届いていないため、指示どおり止まらずL09へ進む。
+次のL09a・L09の1,000行区切りは約8,600行。G10の部品、M15・G12は作らない。
+
+## 133. L09への接続：同じテンソルの微分則の型（実装前）
+
+一覧：済み 9／全体 48（うち追加 4）
+
+§132は56fc86f0bで保存した。L09aの対合・固定点零・全有限和零は検証済み。
+次のC257・C258は、既存の右括弧純粋テンソル・生成元・有限和の微分の法則を
+同じ出力境界項へ書き直すもの。新しい演算や別の鎖模型は作らない。
+C257は`tensorValue`の因子数に沿う再帰、既存`ιTensorObj`の二因子の微分則、
+既存`gen_d`を使う。因子の次数零は正次数への延長の零で分ける。
+`NegativeTensor.degreeMap_D₁`・`degreeMap_D₂`の零次数と符号の処理も参照できるが、
+IntervalCutsの区間上の境界定理を一般単体での証明の代用にはしない。
+C258はC257と`map_sum`、共通次数への`eqToHom`の自然性の貼り合わせ。
+いずれも§112のL09に必要な既存構成の法則の証明分割で、別の一覧IDを増やさない。
+
+```lean
+lemma cutTerm_d_eq_sum_outputBoundaryTerm (A : Type u) [CommRing A] (S : SSet.{0})
+    {m q r : ℕ} (s : Cut m q) (v : Surjection.Word r (m + 1)) (x : S _⦋q⦌) :
+    (power (chains A S) r).d (-((m + q + 1 - r : ℕ) : ℤ))
+        (-((m + q + 1 - r : ℕ) : ℤ) + 1) (cutTerm A S s v x) =
+      ∑ a : Fin r, ∑ j : Fin (outputDegree s v a + 1),
+        outputBoundaryTerm A S s v a j x
+
+lemma cutSum_d_eq_sum_outputBoundaryTerm (A : Type u) [CommRing A] (S : SSet.{0})
+    {r d q : ℕ} (w : Surjection.BasisWord (r + 1) d) (x : S _⦋q⦌)
+    (h : -((r + d + q + 1 - (r + 1) : ℕ) : ℤ) + 1 = -((d + q : ℕ) : ℤ) + 1) :
+    (power (chains A S) (r + 1)).d (-((d + q : ℕ) : ℤ))
+        (-((d + q : ℕ) : ℤ) + 1) (cutSum A S w x) =
+      ∑ s : Cut (r + d) q, ∑ a : Fin (r + 1),
+        ∑ j : Fin (outputDegree s (positiveWord w) a + 1),
+          (eqToHom (congrArg (fun z : ℤ => (power (chains A S) (r + 1)).X z) h)).hom
+            (outputBoundaryTerm A S s (positiveWord w) a j x)
+```
+
+C258の`h`は算術で常に供給できる等式であり、未供給の数学的仮定としてL09へ残さない。
+C257・C258はここでは型の記録だけで、実装・検証・完成行数にはまだ数えない。
+
+### 133.1 既存の因子微分の再帰的評価（C259）
+
+一覧：済み 9／全体 48（うち追加 4）
+
+既存の任意の二複体の`IntervalCuts.tensorPair_d_apply`を、同じtensorValueの右括弧で
+繰り返す。`tensorValueDifferentialFactor`は、その微分の各因子の成分を評価する略記で、
+新しい作用・微分・複体を構成しない。零番目は先頭の既存微分、後続は先頭のKoszul符号を
+掛けた同じ包含。これは§133のC257の出力微分の法則を証明する再帰の証明分割。
+個々の補題200行以内。型は次のとおり。
+
+```lean
+def tensorValueDifferentialFactor (K : Complex A) : (n : ℕ) → (d : Fin n → ℕ) →
+    (∀ i, K.X (-(d i : ℤ))) → Fin n → (power K n).X (-(degreeSum n d : ℤ) + 1)
+
+lemma tensorValue_d_sum (K : Complex A) (n : ℕ) (d : Fin n → ℕ)
+    (v : ∀ i, K.X (-(d i : ℤ))) :
+    (power K n).d (-(degreeSum n d : ℤ)) (-(degreeSum n d : ℤ) + 1)
+        (tensorValue K n d v) = ∑ i : Fin n, tensorValueDifferentialFactor K n d v i
+```
+
+### 133.2 同じ生成元の零次数と指定標準面（C260〜C262）
+
+一覧：済み 9／全体 48（うち追加 4）
+
+C259の対象ビルド成功。以下は既存の微分・零延長・gen_d・境界面の次数移送の法則。
+C260は両等式の除去、C261は既存`NegativeTensor.isZero_positive`、C262は既存gen_dを
+同じ終域の等式射で移す。C262のhはhqから算術で供給する。どの零次数も捨てない。
+個々の補題200行以内。以下の型を実装前に記録する。
+
+```lean
+lemma complex_d_cast_source_target (K : Complex A) {i i' j j' : ℤ}
+    (hi : i = i') (hj : j = j') (x : K.X i) :
+    K.d i' j' ((eqToHom (congrArg K.X hi)).hom x) =
+      (eqToHom (congrArg K.X hj)).hom (K.d i j x)
+
+lemma gen_d_zero (S : SSet.{0}) (x : S _⦋0⦌) :
+    (chains A S).d 0 1 (gen A S 0 x) = 0
+
+lemma gen_d_boundaryFace (S : SSet.{0}) (q : ℕ) (hq : 0 < q) (x : S _⦋q⦌)
+    (h : -((q - 1 : ℕ) : ℤ) = -(q : ℤ) + 1) :
+    (chains A S).d (-(q : ℤ)) (-(q : ℤ) + 1) (gen A S q x) =
+      ∑ j : Fin (q + 1), (-1 : ℤ) ^ j.val •
+        (eqToHom (congrArg (fun t : ℤ => (chains A S).X t) h)).hom
+          (gen A S (q - 1) (S.map (boundaryFace q hq j).op x))
+
+```
+
+### 133.3 包含の次数移送と微分零の成分（C263・C264）
+
+一覧：済み 9／全体 48（うち追加 4）
+
+C263は既存の斉次テンソル包含で三つの次数の等式を除去する法則。C264は同じ因子微分の
+再帰を辿り、微分零・テンソル零・包含の零保存を使う。C261の零次数因子をC257へ戻す際に使う。
+新しい比較射や準同型は作らない。個々の補題200行以内。
+
+```lean
+lemma tensorPair_cast_indices (P Q : Complex A) {i j k i' j' k' : ℤ}
+    (h : i + j = k) (h' : i' + j' = k') (hi : i = i') (hj : j = j') (hk : k = k')
+    (x : P.X i) (y : Q.X j) :
+    (eqToHom (congrArg (fun t : ℤ => (P ⊗ Q).X t) hk)).hom
+        (ιTensorObj P Q i j k h (x ⊗ₜ[A] y)) =
+      ιTensorObj P Q i' j' k' h'
+        ((eqToHom (congrArg P.X hi)).hom x ⊗ₜ[A]
+          (eqToHom (congrArg Q.X hj)).hom y)
+
+lemma tensorValueDifferentialFactor_eq_zero_of_closed (K : Complex A) (n : ℕ)
+    (d : Fin n → ℕ) (v : ∀ i, K.X (-(d i : ℤ))) (i : Fin n)
+    (h : K.d (-(d i : ℤ)) (-(d i : ℤ) + 1) (v i) = 0) :
+    tensorValueDifferentialFactor K n d v i = 0
+
+```
+
+### 133.4 入力境界の和を同じcutSumへ戻す（C265〜C267）
+
+一覧：済み 9／全体 48（うち追加 4）
+
+同じ入力境界項の定義、有限積の和の添字替え、cutSumの指定次数移送の合成、
+既存の整数冪・スカラー作用の法則を使う。新しい切断の同値や数学の主張は加えない。
+hは常に算術で供給し、界面やL09の仮定へ残さない。個々の補題200行以内。
+
+```lean
+lemma simplexBoundaryTerm_sum_cut (S : SSet.{0}) {r d q : ℕ}
+    (w : Surjection.BasisWord (r + 1) d) (i : Fin (q + 2)) (x : S _⦋q + 1⦌)
+    (h : -((d + q : ℕ) : ℤ) = -((d + (q + 1) : ℕ) : ℤ) + 1) :
+    ∑ s : Cut (r + d) q, simplexBoundaryTerm A S w (q + 1) (i, s) x =
+      -((-1 : ℤ) ^ (d + i.val)) •
+        (eqToHom (congrArg (fun z : ℤ => (power (chains A S) (r + 1)).X z) h)).hom
+          (cutSum A S w (S.δ i x))
+
+lemma sum_simplexBoundaryTerm_succ_by_face (S : SSet.{0}) {r d q : ℕ}
+    (w : Surjection.BasisWord (r + 1) d) (x : S _⦋q + 1⦌)
+    (h : -((d + q : ℕ) : ℤ) = -((d + (q + 1) : ℕ) : ℤ) + 1) :
+    ∑ c : SimplexBoundaryIndex r d (q + 1), simplexBoundaryTerm A S w (q + 1) c x =
+      ∑ i : Fin (q + 2), -((-1 : ℤ) ^ (d + i.val)) •
+        (eqToHom (congrArg (fun z : ℤ => (power (chains A S) (r + 1)).X z) h)).hom
+          (cutSum A S w (S.δ i x))
+
+lemma sum_simplexBoundaryTerm_succ (S : SSet.{0}) {r d q : ℕ}
+    (w : Surjection.BasisWord (r + 1) d) (x : S _⦋q + 1⦌)
+    (h : -((d + q : ℕ) : ℤ) = -((d + (q + 1) : ℕ) : ℤ) + 1) :
+    ∑ c : SimplexBoundaryIndex r d (q + 1), simplexBoundaryTerm A S w (q + 1) c x =
+      -((-1 : ℤ) ^ d) •
+        ∑ i : Fin (q + 2), (-1 : ℤ) ^ i.val •
+          (eqToHom (congrArg (fun z : ℤ => (power (chains A S) (r + 1)).X z) h)).hom
+            (cutSum A S w (S.δ i x))
+
+```
+
+### 133.5 同じ純粋テンソルの一因子の線形性（C268・C269）
+
+一覧：済み 9／全体 48（うち追加 4）
+
+既存のテンソル積の一因子の加法性・整数倍と包含の線形性を同じ右括弧で適用する法則。
+生成元の微分の面和をC257の同じ更新次数のテンソルへ運ぶ際に使う。
+変更しない他の因子の等式を仮定に明示するが、C257の型へ数学的仮定は加えない。
+新しいテンソル模型や線形写像を構成しない。個々の補題200行以内。
+
+```lean
+lemma tensorValue_sum_factor {J : Type*} [Fintype J] (K : Complex A) (n : ℕ)
+    (d : Fin n → ℕ) (v : ∀ i, K.X (-(d i : ℤ)))
+    (w : J → ∀ i, K.X (-(d i : ℤ))) (a : Fin n)
+    (hv : v a = ∑ j, w j a) (hw : ∀ j b, b ≠ a → w j b = v b) :
+    tensorValue K n d v = ∑ j, tensorValue K n d (w j)
+
+lemma tensorValue_zsmul_factor (K : Complex A) (n : ℕ) (d : Fin n → ℕ)
+    (v w : ∀ i, K.X (-(d i : ℤ))) (a : Fin n) (z : ℤ)
+    (hv : v a = z • w a) (hw : ∀ b, b ≠ a → w b = v b) :
+    tensorValue K n d v = z • tensorValue K n d w
+
+```
+
+### 133.6 同じ更新次数への因子微分の移送（C270〜C272、型）
+
+一覧：済み 9／全体 48（うち追加 4）
+
+C270・C271は同じ次数の等式と因子の異種等式を除去するだけの既存構成の照合。
+ホモトピー圏は使わず、型が同じになれば元の加群の等式へ戻す。
+C272は同じテンソル微分の一因子の成分を、一つだけ次数を下げた同じ純粋テンソルへ
+戻すKoszulの法則。先頭・後続に分けた同じ右括弧の帰納でC263・C270・C271を使う。
+その後C268・C269で同じ生成元の面和を展開し、既存C161で指定削除テンソルへ接続する。
+以下はC270・C271の実装前の型と、C272の残りの証明分割の型。
+C272は未実装で、一覧の完了数・検証済み行数へは含めない。
+
+```lean
+lemma tensorValue_heq_degree (K : Complex A) (n : ℕ) (d e : Fin n → ℕ)
+    (hd : d = e) (v : ∀ i, K.X (-(d i : ℤ))) (w : ∀ i, K.X (-(e i : ℤ)))
+    (hv : ∀ i, HEq (v i) (w i)) : HEq (tensorValue K n d v) (tensorValue K n e w)
+
+lemma tensorPair_heq_indices (P Q : Complex A) {i j k i' j' k' : ℤ}
+    (h : i + j = k) (h' : i' + j' = k') (hi : i = i') (hj : j = j') (hk : k = k')
+    (x : P.X i) (y : Q.X j) (x' : P.X i') (y' : Q.X j')
+    (hx : HEq x x') (hy : HEq y y') :
+    HEq (ιTensorObj P Q i j k h (x ⊗ₜ[A] y))
+      (ιTensorObj P Q i' j' k' h' (x' ⊗ₜ[A] y'))
+
+lemma tensorValueDifferentialFactor_eq_updated_tensor (K : Complex A) (n : ℕ)
+    (d e : Fin n → ℕ) (v : ∀ i, K.X (-(d i : ℤ)))
+    (w : ∀ i, K.X (-(e i : ℤ))) (a : Fin n)
+    (hd : ∀ b, d b = e b + if b = a then 1 else 0)
+    (hv : HEq (K.d (-(d a : ℤ)) (-(d a : ℤ) + 1) (v a)) (w a))
+    (hw : ∀ b, b ≠ a → HEq (v b) (w b))
+    (h : -(degreeSum n e : ℤ) = -(degreeSum n d : ℤ) + 1) :
+    tensorValueDifferentialFactor K n d v a =
+      (-1 : ℤ) ^ (∑ b ∈ Finset.univ.filter (fun b : Fin n => b < a), d b) •
+        (eqToHom (congrArg (fun z : ℤ => (power K n).X z) h)).hom
+          (tensorValue K n e w)
+```
+
+hd・hv・hwは一因子の同じ微分の値を照合するための引数であり、C257の仮定に残さない。
+既存の純粋テンソルと微分の法則で、新しい作用や比較射は作らない。
+C270・C271は個々の補題200行以内。C272の実装が200行を超えれば実測も報告する。
+
+### 133.7 C272の実装に使う局所の法則
+
+一覧：済み 9／全体 48（うち追加 4）
+
+§133.6の型のままC272の下書きを書く。`hcast`は
+`{M N : ModuleCat A} → (hMN : M = N) → (y : M) → HEq ((eqToHom hMN).hom y) y`、
+等式の除去だけ。先頭の`he`は残る次数の族の等式、`htail`はC270、
+後続の`htail`は全次数の既存等式から先頭次数を引いた同じ算術の等式。
+`hp`は既存の`Fin.sum_univ_succ`で接頭の有限和を分ける法則。
+符号の同定には既存`Int.negOnePow_neg`・`Int.coe_negOnePow_natCast`を使う。
+新しい数学や比較射は加えない。下書きは検証までコミットしない。
+
+### 133.8 指定削除面の同じ生成元への照合（C273〜C276）
+
+一覧：済み 9／全体 48（うち追加 4）
+
+既存C158・deletedCutFaceの指定始域の等式移送を、同じ生成元の異種等式で読む。
+変更しない色の指定面は面番号に依存しないので、C268の他の因子の一致を供給できる。
+選んだ色は同じ標準面と元の面の合成。新しい面や比較射は作らない。
+個々の補題200行以内。以下の型を検証前に記録する。
+
+```lean
+lemma gen_cast_source_heq (S : SSet.{0}) {n n' q : ℕ} (h : n = n')
+    (f : (⦋n'⦌ : SimplexCategory) ⟶ ⦋q⦌) (x : S _⦋q⦌) :
+    HEq (gen A S n (S.map (eqToHom (congrArg SimplexCategory.mk h) ≫ f).op x))
+      (gen A S n' (S.map f.op x))
+
+lemma deletedCutFace_other_eq {m q r : ℕ} (s : Cut m q) (v : Surjection.Word r (m + 1))
+    (a : Fin r) (ha : 0 < outputDegree s v a)
+    (j j' : Fin (outputDegree s v a + 1)) (b : Fin r) (hb : b ≠ a) :
+    deletedCutFace s v a ha j b = deletedCutFace s v a ha j' b
+
+lemma deletedCutFace_gen_other_heq (S : SSet.{0}) {m q r : ℕ}
+    (s : Cut m q) (v : Surjection.Word r (m + 1)) (a : Fin r)
+    (ha : 0 < outputDegree s v a) (j : Fin (outputDegree s v a + 1))
+    (b : Fin r) (hb : b ≠ a) (x : S _⦋q⦌) :
+    HEq (gen A S (outputDegree s v b) (S.map (face s v b).op x))
+      (gen A S (Function.update (outputDegree s v) a (outputDegree s v a - 1) b)
+        (S.map (deletedCutFace s v a ha j b).op x))
+
+lemma deletedCutFace_gen_self_heq (S : SSet.{0}) {m q r : ℕ}
+    (s : Cut m q) (v : Surjection.Word r (m + 1)) (a : Fin r)
+    (ha : 0 < outputDegree s v a) (j : Fin (outputDegree s v a + 1)) (x : S _⦋q⦌) :
+    HEq (gen A S (outputDegree s v a - 1)
+        (S.map (boundaryFace _ ha j ≫ face s v a).op x))
+      (gen A S (Function.update (outputDegree s v) a (outputDegree s v a - 1) a)
+        (S.map (deletedCutFace s v a ha j a).op x))
+
+```
+
+### 133.9 微分の交代面和を同じ指定削除面へ戻す（C277〜C279）
+
+一覧：済み 9／全体 48（うち追加 4）
+
+既存の加群の等式移送、有限和、整数倍、関手の合成の法則。C279はC262の標準面和を
+C276で同じ指定削除面へ移すだけで、新しい微分や比較は作らない。
+局所`e`は既存の一因子の更新次数、`f`は標準面の生成元、`g`は指定削除面の同じ生成元、
+`he`はFunction.update_self、`hshift`はhaからの整数次数の等式。
+`hu`はC262を共通終域で書いた等式、`hcast`は§133.7と同じ加群の等式の除去。
+個々の補題200行以内。以下の型を検証前に記録する。
+
+```lean
+lemma sum_zsmul_heq {J : Type*} [Fintype J] {M N : ModuleCat A} (h : M = N)
+    (c : J → ℤ) (x : J → M) (y : J → N) (hv : ∀ j, HEq (x j) (y j)) :
+    HEq (∑ j, c j • x j) (∑ j, c j • y j)
+
+lemma gen_map_comp (S : SSet.{0}) {n m q : ℕ}
+    (f : (⦋n⦌ : SimplexCategory) ⟶ ⦋m⦌) (g : (⦋m⦌ : SimplexCategory) ⟶ ⦋q⦌)
+    (x : S _⦋q⦌) :
+    gen A S n (S.map (f ≫ g).op x) = gen A S n (S.map f.op (S.map g.op x))
+
+lemma gen_d_heq_sum_deletedCutFace (S : SSet.{0}) {m q r : ℕ}
+    (s : Cut m q) (v : Surjection.Word r (m + 1)) (a : Fin r)
+    (ha : 0 < outputDegree s v a) (x : S _⦋q⦌) :
+    HEq ((chains A S).d (-(outputDegree s v a : ℤ)) (-(outputDegree s v a : ℤ) + 1)
+        (gen A S (outputDegree s v a) (S.map (face s v a).op x)))
+      (∑ j : Fin (outputDegree s v a + 1), (-1 : ℤ) ^ j.val •
+        gen A S (Function.update (outputDegree s v) a (outputDegree s v a - 1) a)
+          (S.map (deletedCutFace s v a ha j a).op x))
+
+```
+
+### 133.10 正次数の実因子微分への貼り合わせ（C280、実装前の型）
+
+一覧：済み 9／全体 48（うち追加 4）
+
+C272・C279を同じ更新次数に適用し、C268・C269で一因子の面和と整数倍を展開して、
+既存C161の同じdeletedCutTensorへ戻す。新しい作用・面・添字の選択は作らない。
+hは既存outputDegree_sumから常に供給できる算術の等式で、C257へ仮定として残さない。
+局所dは既存出力次数、eはその一因子の更新、Gは既存指定削除面の生成元の族、
+wは指定因子だけを交代面和にした同じ族、W jはその一面の整数倍だけを入れた同じ族。
+hd・htは同じ更新次数の等式、hw・hvはC275・C279、hs・hzはC268・C269、hgはC161、
+stepは既存の加群の等式移送の合成。個々の補題200行以内。検証までは完了扱いしない。
+
+```lean
+lemma cast_tensorValueDifferentialFactor_eq_sum_deletedCutTensor (S : SSet.{0})
+    {m q r : ℕ} (s : Cut m q) (v : Surjection.Word r (m + 1))
+    (a : Fin r) (ha : 0 < outputDegree s v a) (x : S _⦋q⦌)
+    (h : -(degreeSum r (outputDegree s v) : ℤ) + 1 = -((m + q + 1 - r : ℕ) : ℤ) + 1) :
+    (eqToHom (congrArg (fun z : ℤ => (power (chains A S) r).X z) h)).hom
+        (tensorValueDifferentialFactor (chains A S) r (outputDegree s v)
+          (fun b => gen A S (outputDegree s v b) (S.map (face s v b).op x)) a) =
+      ∑ j : Fin (outputDegree s v a + 1),
+        (-1 : ℤ) ^ ((∑ b ∈ Finset.univ.filter (fun b : Fin r => b < a), outputDegree s v b) + j.val) •
+          deletedCutTensor A S s v a ha j x
+```
+
+### 133.11 C257の零次数を含む接続（C281、C257下書き）
+
+一覧：済み 9／全体 48（うち追加 4）
+
+C257の型は§133のまま。正次数の因子はC280、零次数はC261・C264を使い、
+既存の同じcutSignとoutputBoundarySignを保持する。
+局所hgは`(p : ℕ) → (hp : p = 0) → (y : S _⦋p⦌) →
+(chains A S).d (-(p : ℤ)) (-(p : ℤ)+1) (gen A S p y) = 0`で、pの置換後C261。
+h0・h1は既存outputDegree_sumの整数次数の等式、hcはC260による同じ微分の移送。
+新しい構成や微分の選択は作らない。個々の補題200行以内。下書きは検証までコミットしない。
+
+```lean
+lemma tensorValueDifferentialFactor_cut_zero (S : SSet.{0}) {m q r : ℕ}
+    (s : Cut m q) (v : Surjection.Word r (m + 1)) (a : Fin r)
+    (ha : outputDegree s v a = 0) (x : S _⦋q⦌) :
+    tensorValueDifferentialFactor (chains A S) r (outputDegree s v)
+      (fun b => gen A S (outputDegree s v b) (S.map (face s v b).op x)) a = 0
+```
+
+### 133.12 C258と全境界和の貼り合わせ（C258・C282・C283下書き）
+
+一覧：済み 9／全体 48（うち追加 4）
+
+C258は§133の型のまま、C257・C260と有限和の線形性を適用する。
+C282は既存のΣ添字の有限和を展開し、C283は既存C256の三つの和を加群で整理する。
+新しい数学や操作は作らない。q=0・d=0も型から除かない。
+C283は同じ実境界項の二つの和までであり、係数の元の線形削除微分との照合が残るため、
+これだけでL09完成とは数えない。個々の補題200行以内。以下を検証前に記録する。
+
+```lean
+lemma cutSum_d_eq_sum_outputBoundaryTerm (S : SSet.{0})
+    {r d q : ℕ} (w : Surjection.BasisWord (r + 1) d) (x : S _⦋q⦌)
+    (h : -((r + d + q + 1 - (r + 1) : ℕ) : ℤ) + 1 = -((d + q : ℕ) : ℤ) + 1) :
+    (power (chains A S) (r + 1)).d (-((d + q : ℕ) : ℤ))
+        (-((d + q : ℕ) : ℤ) + 1) (cutSum A S w x) =
+      ∑ s : Cut (r + d) q, ∑ a : Fin (r + 1),
+        ∑ j : Fin (outputDegree s (positiveWord w) a + 1),
+          (eqToHom (congrArg (fun z : ℤ => (power (chains A S) (r + 1)).X z) h)).hom
+            (outputBoundaryTerm A S s (positiveWord w) a j x)
+
+lemma sum_boundaryBalanceTerm_output_eq_d_cutSum (S : SSet.{0}) {r d : ℕ}
+    (w : Surjection.BasisWord (r + 1) d) (q : ℕ) (x : S _⦋q⦌) :
+    (∑ i : OutputBoundaryIndex w q, boundaryBalanceTerm A S w q (.inl i) x) =
+      (power (chains A S) (r + 1)).d (-((d + q : ℕ) : ℤ))
+        (-((d + q : ℕ) : ℤ) + 1) (cutSum A S w x)
+
+lemma cutSum_d_eq_neg_boundarySums (S : SSet.{0}) {r d : ℕ}
+    (w : Surjection.BasisWord (r + 1) d) (q : ℕ) (x : S _⦋q⦌) :
+    (power (chains A S) (r + 1)).d (-((d + q : ℕ) : ℤ))
+        (-((d + q : ℕ) : ℤ) + 1) (cutSum A S w x) =
+      -((∑ c : CoefficientBoundaryIndex r d q, coefficientBoundaryTerm A S r d q w c x) +
+        ∑ i : SimplexBoundaryIndex r d q, simplexBoundaryTerm A S w q i x)
+
+```
+
+## 134. 同じ切断和の微分への接続の検証・約8,600行の区切り（11-14）
+
+一覧：済み 9／全体 48（うち追加 4）
+
+### 134.1 今回閉じた範囲と残り
+
+§133のC257・C258は、記録した型のまま検証を通した。
+任意の係数環・単体的集合・切断・非退化全射語・入力単体について、零次数の因子も含めて
+**同じcutTermの微分が全指定出力境界値の和**となり、さらに
+**同じcutSumの微分が移送した全出力境界和**となる。
+C283でL09aの全境界和の相殺を適用し、元の係数境界と入力境界の二つの和へ戻した。
+正の入力次数ではC267により入力境界の和が同じcutSumの交代面和になる。
+異種等式は次数の等式移送の照合にだけ用い、C257・C258・C283は元の加群での厳密な等式。
+
+**L09は未完**。残る係数境界の和と元の線形削除微分の照合、およびq=0・d=0を含む
+最終の線形境界式の包装を閉じる必要がある。C283だけをL09完成とは数えない。
+C257・C258に、未供給の数学的仮定を追加していない。
+C258のhは常に算術で供給できる共通次数の等式で、最終のL09の仮定へ残さない。
+
+### 134.2 検証・登録候補・取り込み点
+
+新規12モジュール・**819行**。対象ビルドと専用の小さい監査が成功。
+監査は **12モジュール・82宣言・標準三公理のみ**。
+新規12本のsorry・追加公理0、最終ソースのLean警告0。
+既存の公開宣言・界面・drafts・共通入口・共通監査は変更していない。
+鍵は各ビルド・監査の間だけ取り、終了を確認して返却。一枚だけ並び、待機中に別の鍵を取らなかった。
+
+登録候補（接頭部はすべて `SerrePositivity.EInfinity.SimplexCuts.`）：
+
+| モジュール | 行数 | 検証済みの内容 |
+| --- | ---: | --- |
+| HomogeneousTensorDifferential | 58 | 同じ純粋テンソルの微分の因子和、C259 |
+| GeneratorDifferentialValues | 63 | 同じ生成元の零次数・標準面和・微分の次数移送、C260〜C262 |
+| HomogeneousTensorDifferentialTransports | 54 | 同じ包含の次数移送・微分零の因子の成分、C263・C264 |
+| InputBoundarySums | 62 | 同じcutSumの入力面の交代和、C265〜C267 |
+| HomogeneousFactorLinearity | 72 | 一因子の有限和・整数倍、C268・C269 |
+| HomogeneousTensorHEq | 44 | 同じ次数と因子の値の照合、C270・C271 |
+| UpdatedTensorDifferential | 93 | 同じ更新次数のテンソルへのKoszul符号付き移送、C272 |
+| DeletedGeneratorValues | 60 | 同じ指定削除面の生成元の照合、C273〜C276 |
+| DeletedGeneratorDifferential | 77 | 同じ微分の交代面和から指定削除面への移送、C277〜C279 |
+| PositiveOutputFactor | 95 | 正次数因子の微分から実削除テンソルへの接続、C280 |
+| CutTermDifferential | 74 | 零次数因子・各切断項の全出力境界、C281・C257 |
+| OutputBoundarySums | 67 | 同じcutSumの微分と全実境界和、C258・C282・C283 |
+
+最終の `OutputBoundarySums` の対象ビルドは **成功、2,369 jobs**。
+この依存閉包は上のInputBoundarySumsを除く11本を含む。
+InputBoundarySumsは先の組で自対象の生成が成功しており、現ソースを専用監査でも読み込んだ。
+その先の組全体は別対象の未検証の添字の下書きで失敗したため、組全体を成功とは扱わない。
+最終の監査は上の12本すべての宣言元を明示し、各モジュールの監査宣言数が0でないことも検査した。
+
+- 対象ビルド：`/tmp/bsw16/m14-output-boundary-sums-03.log`。
+- InputBoundarySumsの生成成功：`/tmp/bsw16/m14-input-sums-and-factor-laws-01.log`。
+- 監査ソース：`/tmp/bsw16/audit-m14-tensor-boundary-laws.lean`。
+- 監査結果：`/tmp/bsw16/m14-tensor-boundary-laws-audit.log`。
+
+途中のビルドでは、有限添字の既存API・局所の次数の略記の展開・同じ標準面の合成の展開・
+加群での有限和の分配・証明が閉じた後の余分な手順を修正した。
+一因子の更新次数の同定には既存degreeSum_deleteを、同じ局所の族の型を明示して適用した。
+新しい作用・鎖模型・微分・比較射を導入したり、既存の公開宣言を変えて対処していない。
+個々の証明は200行以内。未検証の本体下書きは現在ない。
+
+### 134.3 実測と残りの見込み
+
+検証済みの基準§132に819行を加え、**L09a・L09は8,559行**、**M14全体は13,625行**。
+約8,600行の41行手前だが、検証済みの束の区切りとしてここで途中報告する。
+旧coherent経路の保管済み10,216行・報告・監査・Pythonの点検は数えない。
+外枠25,000行は変更せず、現在の残り枠は **11,375行**。
+
+§132.7ではL09の残りを400〜750行としたが、今回819行を使い、係数微分との照合は残った。
+一般の二因子の微分公式だけでは、同じ更新次数の全因子の値・一因子の線形性・
+零次数・生成元の標準面和・全切断和の次数移送までは供給されず、それぞれを
+同じ実テンソルの型で明示する必要があった。この法則の供給を以前は過小評価していた。
+
+残りは次のとおり。L09aの対合や今回閉じた出力側の微分を作り直す部分は含まない。
+
+| 残り | 用いる既存の宣言と接続 | 新規見込み |
+| --- | --- | ---: |
+| 係数微分の実基底での値 | Surjection.differential_basis・differentialOnWord・generatorとrawComponent_value。非全射・退化な削除は元と同じく零 | 100〜180 |
+| 指定係数添字・語長の照合 | 同じFinの等式移送・positiveWord・erase・deletionCoefficientの構成の法則を使い、既存coefficientBoundaryTermの同じ添字と照合 | 100〜170 |
+| L09の包装 | C283、上の係数の式、C267の入力の面和、零次数の分岐を同じ線形境界式へまとめる | 100〜150 |
+| **L09残り** | **追加の数学的仮定を残さない** | **300〜500** |
+
+§132.7から見た新規総量の出し直しは819+(300〜500)=**1,119〜1,319行**。
+旧上端750行を少なくとも369行超える。L09a・L09の完成時は **8,859〜9,059行** の見込み。
+次はこの係数微分の同じ実生成元の型を記録してから進める。L09の完了時に実測を報告する。
+
+L10〜L28の次元によらないconvolution・χ/TR・符号の再利用の筋と各行の見込みは
+§121.3・§121.4のまま。今回の一因子の線形性・次数移送も再利用できるが、
+未実装部分から実測なしに控除しない。
+
+| M14全体の残り | 下端 | 上端 |
+| --- | ---: | ---: |
+| L09 | 300 | 500 |
+| L10〜L28（L12a込み） | 4,330 | 7,790 |
+| L29〜L37 | 1,200 | 2,000 |
+| G10後のnative Totへの適用 | 500 | 900 |
+| filtered塔 | 300 | 550 |
+| 二重模型の実現の比較 | 1,500 | 2,800 |
+| **新規残り** | **8,130** | **14,540** |
+| **実測13,625行を含む完成見込み** | **21,755** | **28,165** |
+
+上側は外枠を **3,165行** 超えるリスクが残る。外枠の追加承認とは扱わない。
+現在の実測は外枠に届いておらず、指示どおり止まらずL09の残りへ進む。
+G10の部品、M15・G12は作らない。
+
+## 135. L09の残る係数微分の同じ実生成元の型（実装前）
+
+一覧：済み 9／全体 48（うち追加 4）
+
+§134はee5887388で検証・保存済み。次は既存の元の線形削除微分を使い、
+非全射・退化な削除を同じく零とした係数境界の和へ接続する。
+`Surjection.differential_basis`・`differentialOnWord`・`generator`の実際の定義を確認した。
+まず自然な語長のままC284・C285を示し、C286〜C290の等式移送の法則を使って
+`positiveWord`が使う同じ添字と語へ戻す。これらは既存構成の基底上の法則・照合で、
+新しい数学・作用・微分を作らない。L09の型は弱めない。
+
+```lean
+-- C284：元の生成元か零の評価を、同じcutSumか零として読む。
+lemma rawComponent_generator (A : Type u) [CommRing A] (S : SSet.{0}) {r d q : ℕ}
+    (v : Fin ((r + 1) + d) → Fin (r + 1)) (x : S _⦋q⦌) :
+    rawComponent A S r d q (Surjection.generator A v) (ModuleCat.freeMk (ULift.up x)) =
+      if hv : Function.Surjective v ∧ Surjection.Nondegenerate v then
+        cutSum A S (⟨v, hv⟩ : Surjection.BasisWord (r + 1) d) x
+      else 0
+
+-- C285：同じ実基底の元の線形削除微分をrawComponentで評価する。
+lemma rawComponent_differential_basis (A : Type u) [CommRing A] (S : SSet.{0})
+    {r d q : ℕ} (w : Surjection.BasisWord (r + 1) (d + 1)) (x : S _⦋q⦌) :
+    rawComponent A S r d q
+        (Surjection.differential A (r + 1) d
+          (Surjection.basis A (r + 1) (d + 1) (ULift.up w)))
+        (ModuleCat.freeMk (ULift.up x)) =
+      ∑ i : Fin ((r + 1) + (d + 1)), Surjection.deletionCoefficient w.val i •
+        rawComponent A S r d q (Surjection.generator A (Surjection.erase w.val i))
+          (ModuleCat.freeMk (ULift.up x))
+
+-- C286：同じ語長の等式移送を、値の有限添字の移送で読む。
+lemma word_cast_val {r ℓ ℓ' : ℕ} (h : ℓ = ℓ') (v : Surjection.Word r ℓ) :
+    (Eq.mp (congrArg (Surjection.Word r) h) v).val =
+      fun i : Fin ℓ' => v.val (Fin.cast h.symm i)
+
+-- C287：既存削除係数は、同じ語長と指定位置の等式移送を保つ。
+lemma deletionCoefficient_cast_length {r ℓ ℓ' : ℕ} (h : ℓ = ℓ')
+    (v : Fin ℓ → Fin r) (a : Fin ℓ) :
+    Surjection.deletionCoefficient (fun i : Fin ℓ' => v (Fin.cast h.symm i)) (Fin.cast h a) =
+      Surjection.deletionCoefficient v a
+
+-- C288：既存の文字削除は、同じ語長と指定位置の等式移送を保つ。
+lemma erase_cast_length {r ℓ ℓ' : ℕ} (h : ℓ = ℓ')
+    (v : Fin (ℓ + 1) → Fin r) (a : Fin (ℓ + 1)) :
+    Surjection.erase
+        (fun i : Fin (ℓ' + 1) => v (Fin.cast (congrArg (fun n : ℕ => n + 1) h.symm) i))
+        (Fin.cast (congrArg (fun n : ℕ => n + 1) h) a) =
+      fun i : Fin ℓ' => Surjection.erase v a (Fin.cast h.symm i)
+
+-- C289：同じ語長の等式移送は、元と同じ有効な語の判定を保つ。
+lemma word_valid_cast_length {r ℓ ℓ' : ℕ} (h : ℓ = ℓ') (v : Fin ℓ → Fin r) :
+    (Function.Surjective v ∧ Surjection.Nondegenerate v) ↔
+      (Function.Surjective (fun i : Fin ℓ' => v (Fin.cast h.symm i)) ∧
+        Surjection.Nondegenerate (fun i : Fin ℓ' => v (Fin.cast h.symm i)))
+
+-- C290：同じ語を元の係数加群の自然な語長へ移してから評価する。
+lemma rawComponent_generator_cast_length (A : Type u) [CommRing A] (S : SSet.{0})
+    {r d q ℓ : ℕ} (h : ℓ = (r + 1) + d) (v : Fin ℓ → Fin (r + 1)) (x : S _⦋q⦌) :
+    rawComponent A S r d q
+        (Surjection.generator A (fun i : Fin ((r + 1) + d) => v (Fin.cast h.symm i)))
+        (ModuleCat.freeMk (ULift.up x)) =
+      if hv : Function.Surjective v ∧ Surjection.Nondegenerate v then
+        cutSum A S (Eq.mp (congrArg (Surjection.Word (r + 1)) h) ⟨v, hv⟩) x
+      else 0
+```
+
+C284は元のgeneratorの二分岐とrawComponent_value、C285は元のdifferential_basisと
+線形性、C286〜C289はhの等式の除去、C290はhを除去してC284を適用する。
+Finの添字替えは既存finCongrの和の保存を使い、追加の有限な対応は構成しない。
+その後、coefficientBoundaryTerm_succ_eqの同じ負号・同じ切断の有限和・同じ次数移送を
+上の元の線形微分へ照合する。上の型は現時点では紙のみで、実装・検証済み行数へは数えない。
+
+## 136. 係数境界の同じ添字への接続（11-14、型を先に記録）
+
+一覧：済み 9／全体 48（うち追加 4）
+
+C284・C285の対象生成は成功。C286〜C290と次の4法則は、既存のpositiveWordの
+等式移送を評価するだけで、新しい有限対応や削除係数を作らない。
+C296は元の語長への移送とpositiveWordの移送の合成を、同じ語の厳密な等式で戻す。
+C291〜C293・C296は個々の補題200行以内。C294・C295は後の接続に使う番号として空ける。
+
+```lean
+lemma positiveWord_cast_val {r d : ℕ} (w : Surjection.BasisWord (r + 1) d) :
+    (positiveWord w).val = fun i : Fin (r + d + 1) =>
+      w.val (Fin.cast (by omega : r + d + 1 = (r + 1) + d) i)
+
+lemma erase_positiveWord {r d : ℕ} (w : Surjection.BasisWord (r + 1) (d + 1))
+    (a : Fin ((r + 1) + (d + 1))) :
+    Surjection.erase (positiveWord w).val
+        (Fin.cast (by omega : (r + 1) + (d + 1) = r + d + 2) a) =
+      fun i : Fin (r + d + 1) => Surjection.erase w.val a
+        (Fin.cast (by omega : r + d + 1 = (r + 1) + d) i)
+
+lemma deletionCoefficient_positiveWord {r d : ℕ}
+    (w : Surjection.BasisWord (r + 1) (d + 1)) (a : Fin ((r + 1) + (d + 1))) :
+    Surjection.deletionCoefficient (positiveWord w).val
+        (Fin.cast (by omega : (r + 1) + (d + 1) = r + d + 2) a) =
+      Surjection.deletionCoefficient w.val a
+
+lemma positiveWord_of_cast {r d : ℕ} (w : Surjection.Word (r + 1) (r + d + 1)) :
+    positiveWord (Eq.mp (congrArg (Surjection.Word (r + 1))
+      (by omega : r + d + 1 = (r + 1) + d)) w) = w
+
+```
+
+### 136.1 同じ指定係数位置の有限和（C294・C295、型）
+
+一覧：済み 9／全体 48（うち追加 4）
+
+C294はC290へ同じ削除語を代入し、C292で元の線形削除の生成元へ戻す法則。
+C295は既存C221の同じ切断項を足し、C296で同じ語のcutSumを復元する法則。
+局所hlは同じ語長の等式、heはC292とFinの移送の合成、hsはC221、stepは加群の
+等式移送の合成。非全射・退化な削除を零とする判定と符号を変えない。
+個々の補題200行以内。以下を検証前に記録する。
+
+```lean
+lemma rawComponent_generator_erase_positiveWord (S : SSet.{0}) {r d q : ℕ}
+    (w : Surjection.BasisWord (r + 1) (d + 1))
+    (a : Fin ((r + 1) + (d + 1))) (x : S _⦋q⦌) :
+    rawComponent A S r d q (Surjection.generator A (Surjection.erase w.val a))
+        (ModuleCat.freeMk (ULift.up x)) =
+      if hv : Function.Surjective (Surjection.erase (positiveWord w).val
+          (Fin.cast (by omega : (r + 1) + (d + 1) = r + d + 2) a)) ∧
+          Surjection.Nondegenerate (Surjection.erase (positiveWord w).val
+            (Fin.cast (by omega : (r + 1) + (d + 1) = r + d + 2) a)) then
+        cutSum A S (Eq.mp (congrArg (Surjection.Word (r + 1))
+          (by omega : r + d + 1 = (r + 1) + d))
+          ⟨Surjection.erase (positiveWord w).val
+            (Fin.cast (by omega : (r + 1) + (d + 1) = r + d + 2) a), hv⟩) x
+      else 0
+
+lemma coefficientBoundaryTerm_sum_cut (S : SSet.{0}) {r d q : ℕ}
+    (w : Surjection.BasisWord (r + 1) (d + 1)) (a : Fin (r + d + 2)) (x : S _⦋q⦌)
+    (h : -((d + q : ℕ) : ℤ) = -(((d + 1) + q : ℕ) : ℤ) + 1) :
+    (∑ s : Cut (r + d) q, coefficientBoundaryTerm A S r (d + 1) q w (a, s) x) =
+      if hv : Function.Surjective (Surjection.erase (positiveWord w).val a) ∧
+          Surjection.Nondegenerate (Surjection.erase (positiveWord w).val a) then
+        -Surjection.deletionCoefficient (positiveWord w).val a •
+          (eqToHom (congrArg (fun z : ℤ => (power (chains A S) (r + 1)).X z) h)).hom
+            (cutSum A S (Eq.mp (congrArg (Surjection.Word (r + 1))
+              (by omega : r + d + 1 = (r + 1) + d))
+              ⟨Surjection.erase (positiveWord w).val a, hv⟩) x)
+      else 0
+
+```
+
+### 136.2 元の線形微分への全和の接続（C297〜C299、型）
+
+一覧：済み 9／全体 48（うち追加 4）
+
+C297は既存finCongrによる同じ添字の和の保存、C285・C293・C294・C295と有限和の
+線形性を適用する。零判定は元と同じ。新しい対応は構成しない。
+局所heは既存の同じ全語長の等式、hrはそのfinCongrによる和の保存。
+C298・C299は元の境界の次数零の分岐を保持した零の全和。個々の補題200行以内。
+以下を検証前に記録する。
+
+```lean
+lemma sum_coefficientBoundaryTerm_succ (S : SSet.{0}) {r d q : ℕ}
+    (w : Surjection.BasisWord (r + 1) (d + 1)) (x : S _⦋q⦌)
+    (h : -((d + q : ℕ) : ℤ) = -(((d + 1) + q : ℕ) : ℤ) + 1) :
+    (∑ c : CoefficientBoundaryIndex r (d + 1) q,
+      coefficientBoundaryTerm A S r (d + 1) q w c x) =
+      -((eqToHom (congrArg (fun z : ℤ => (power (chains A S) (r + 1)).X z) h)).hom
+        (rawComponent A S r d q
+          (Surjection.differential A (r + 1) d
+            (Surjection.basis A (r + 1) (d + 1) (ULift.up w)))
+          (ModuleCat.freeMk (ULift.up x))))
+
+lemma sum_coefficientBoundaryTerm_zero (S : SSet.{0}) {r q : ℕ}
+    (w : Surjection.BasisWord (r + 1) 0) (x : S _⦋q⦌) :
+    (∑ c : CoefficientBoundaryIndex r 0 q, coefficientBoundaryTerm A S r 0 q w c x) = 0
+
+lemma sum_simplexBoundaryTerm_zero (S : SSet.{0}) {r d : ℕ}
+    (w : Surjection.BasisWord (r + 1) d) (x : S _⦋0⦌) :
+    (∑ c : SimplexBoundaryIndex r d 0, simplexBoundaryTerm A S w 0 c x) = 0
+
+```
+
+### 136.3 元の二つの微分の線形像とL09の包装（C300〜C302、L09の型）
+
+一覧：済み 9／全体 48（うち追加 4）
+
+§108・§112のL09の右辺`cutSumLinear(boundaryCoefficient)`と
+`cutSumLinearSimplex(boundarySimplex)`を、既存rawComponent・normalizedComponentへ
+元のSurjection.differential・正規化鎖のdを適用した値として明示する記法を置く。
+以下の二つはその既存の線形像の略記であり、別の切断作用・微分・鎖模型を構成しない。
+とくに全境界和から逆向きに右辺を定義せず、元の二つの微分の像を直接使う。
+C300はC297・C298、C301は既存AlexanderWhitney.generator_dとL08の生成元評価、
+C302はC267・C299、L09は既存C283とこの二つの同じ線形像を合わせる。
+q=0・d=0を除かず、追加仮定はない。個々の補題200行以内。以下を検証前に記録する。
+
+```lean
+def cutSumCoefficientBoundary (A : Type u) [CommRing A] (S : SSet.{0}) (r : ℕ) :
+    (d q : ℕ) → Surjection.BasisWord (r + 1) d → S _⦋q⦌ →
+      (power (chains A S) (r + 1)).X (-((d + q : ℕ) : ℤ) + 1)
+
+def cutSumSimplexBoundary (A : Type u) [CommRing A] (S : SSet.{0}) {r d : ℕ}
+    (w : Surjection.BasisWord (r + 1) d) :
+    (q : ℕ) → S _⦋q⦌ → (power (chains A S) (r + 1)).X (-((d + q : ℕ) : ℤ) + 1)
+
+lemma sum_coefficientBoundaryTerm_eq (S : SSet.{0}) {r d : ℕ}
+    (w : Surjection.BasisWord (r + 1) d) (q : ℕ) (x : S _⦋q⦌) :
+    (∑ c : CoefficientBoundaryIndex r d q, coefficientBoundaryTerm A S r d q w c x) =
+      -cutSumCoefficientBoundary A S r d q w x
+
+lemma cutSumSimplexBoundary_succ_eq_sum (S : SSet.{0}) {r d q : ℕ}
+    (w : Surjection.BasisWord (r + 1) d) (x : S _⦋q + 1⦌)
+    (h : -((d + q : ℕ) : ℤ) = -((d + (q + 1) : ℕ) : ℤ) + 1) :
+    cutSumSimplexBoundary A S w (q + 1) x =
+      ∑ i : Fin (q + 2), (-1 : ℤ) ^ i.val •
+        (eqToHom (congrArg (fun z : ℤ => (power (chains A S) (r + 1)).X z) h)).hom
+          (cutSum A S w (S.δ i x))
+
+lemma sum_simplexBoundaryTerm_eq (S : SSet.{0}) {r d : ℕ}
+    (w : Surjection.BasisWord (r + 1) d) (q : ℕ) (x : S _⦋q⦌) :
+    (∑ c : SimplexBoundaryIndex r d q, simplexBoundaryTerm A S w q c x) =
+      -((-1 : ℤ) ^ d) • cutSumSimplexBoundary A S w q x
+
+theorem cutSum_boundary (S : SSet.{0}) {r d q : ℕ}
+    (w : Surjection.BasisWord (r + 1) d) (x : S _⦋q⦌) :
+    (power (chains A S) (r + 1)).d (-((d + q : ℕ) : ℤ))
+        (-((d + q : ℕ) : ℤ) + 1) (cutSum A S w x) =
+      cutSumCoefficientBoundary A S r d q w x +
+        (-1 : ℤ) ^ d • cutSumSimplexBoundary A S w q x
+
+```
+
+検証まではL09の完了数へ足さない。C297・C300のhは算術で常に供給し、L09の仮定に残さない。
+
+### 136.4 検証待ちの間の次段L10の既存API点検（紙のみ）
+
+一覧：済み 9／全体 48（うち追加 4）
+
+L10のLeanにはまだ進まず、§121の再利用の筋を本体で確認した。
+`IntervalCuts.surjection_d_neg_apply`は区間の入力を含まない次元によらない宣言で、
+次の型のまま使える。コピーしてχの微分の比較を作り直す必要はない。
+
+```lean
+IntervalCuts.surjection_d_neg_apply (A : Type u) [CommRing A] (n d : ℕ)
+    (x : (Surjection.complex A n).X (-((d + 1 : ℕ) : ℤ))) :
+    (Surjection.complexXIso A n d).hom
+      ((Surjection.complex A n).d (-((d + 1 : ℕ) : ℤ)) (-(d : ℤ)) x) =
+      Surjection.differential A n d ((Surjection.complexXIso A n (d + 1)).hom x)
+```
+
+入力の任意の負自然数次数では既存`SimplexCuts.chains_d_neg`を使い、
+正次数零は`NegativeTensor.isZero_positive`、χの正次数零は
+`Surjection.complex_isZero_positive`を使う。
+一般Sの負次数は全て現れうるため、`IntervalCuts.interval_eq_zero_of_other`の
+区間に固有の零性は適用対象ではない。
+`IntervalCuts.cochainActionComponent_d`の`TensorProduct.ext`・`tensorLift`の組み立ては
+§121のとおり再利用できる。
+
+§108.3ではarity零はL14で別に処理する規約であることも確認した。
+そのときには一般Sの既存`AlexanderWhitney.cochainCounit`と
+`Surjection.zeroAugmentation`（空語を含む）を再利用する。
+今回の点検は紙のみで、L10〜L28の未実装行数を控除せず、完了数へ足さない。
+
+## 137. L09の完了・検証・実測（11-14）
+
+一覧：済み 10／全体 48（うち追加 4）
+
+### 137.1 完了した主張
+
+**L09 `cutSum_boundary` は完了**。§108・§112の同じ切断和について、
+任意の可換環A・単体的集合S・正のarity r+1・全語次数d・全入力次数qで、
+元の二つの微分のLeibniz則を、元の加群の厳密な等式として示した。
+q=0・d=0を除いていない。追加の数学的仮定はない。
+右辺は元の線形削除微分 `Surjection.differential` と元の正規化鎖微分
+`AlexanderWhitney.chains.d` を、既存のrawComponent・normalizedComponentで評価した値。
+全境界和の相殺から右辺を逆に定義することはしていない。
+
+```lean
+cutSum_boundary (A : Type u) [CommRing A] (S : SSet.{0}) {r d q : ℕ}
+    (w : Surjection.BasisWord (r + 1) d) (x : S _⦋q⦌) :
+    (power (chains A S) (r + 1)).d (-((d + q : ℕ) : ℤ))
+        (-((d + q : ℕ) : ℤ) + 1) (cutSum A S w x) =
+      cutSumCoefficientBoundary A S r d q w x +
+        (-1 : ℤ) ^ d • cutSumSimplexBoundary A S w q x
+```
+
+専用監査の実行内の `#check @...cutSum_boundary` でも、実際の型が
+A・CommRing A・S・r・d・q・w・xだけを引数に持つことを確認した。
+arity零は固定した§108.3の規約どおりL14で別に扱い、ここでは元のL09のr+1の型を維持した。
+L10やM14全体が完了したとは数えない。
+
+### 137.2 取り込み点・登録候補・検証
+
+新規 **7モジュール・432行**。最終対象ビルドは **成功、2,525 jobs**、
+専用の小さい監査は **7モジュール・70宣言・標準三公理のみ**。
+新規7本のsorry・追加公理0、Lean警告0、`git diff --check`成功。
+未検証の本体下書きは現在ない。
+既存の公開宣言・界面・drafts・共通入口・共通監査は変更していない。
+鍵は各対象ビルド・各監査の間だけ取り、終了を確認して返却した。
+整理券待ちは一枚にまとめ、最大約26分の待機中も別の鍵を取らなかった。
+
+登録候補（接頭部はすべて `SerrePositivity.EInfinity.SimplexCuts.`）：
+
+| モジュール | 行数 | 検証済みの内容 |
+| --- | ---: | --- |
+| CoefficientDifferentialValues | 52 | 元の生成元・線形削除微分の実基底での値、C284・C285 |
+| CoefficientLengthTransports | 66 | 同じ語・文字削除・削除係数・有効性・実生成元の語長移送、C286〜C290 |
+| CoefficientWordComparisons | 58 | 同じpositiveWordと元の係数語、C291〜C293・C296 |
+| CoefficientBoundarySums | 83 | 同じ指定係数位置の生成元と切断の全和、C294・C295 |
+| CoefficientDifferentialSums | 64 | 全係数境界和と元の線形微分、二つの次数零の分岐、C297〜C299 |
+| CutSumBoundaryInputs | 78 | 元の二つの微分の既存線形像の記法と同じ境界和の照合、C300〜C302 |
+| CutSumBoundary | 31 | L09、全次数の同じ切断和のLeibniz則 |
+
+入口は `CutSumBoundary` の一対象がこの7本をすべて依存に含む。
+監査では7本の宣言元をそれぞれ明示し、各モジュールの監査宣言数が0でないことも検査した。
+
+- 最終対象ビルド：`/tmp/bsw16/m14-cut-sum-boundary-03.log`。
+- 監査ソース：`/tmp/bsw16/audit-m14-coefficient-boundary.lean`。
+- 監査結果と定理の実際の型：`/tmp/bsw16/m14-coefficient-boundary-audit.log`。
+
+途中の検証では、語長の算術の等式を明示し、定義上同じ型をタクティクが拾わない箇所を
+等式の直接の接続と反射性で照合した。元の語長での有限和は既存finCongrで添字替えした。
+未使用の簡約・既に閉じた後の手順の警告を除いた。
+新しい数学の仮定、別の切断作用、別の微分、別の比較射を足して対処していない。
+個々の補題は200行以内。
+
+### 137.3 実測と見込みの差
+
+§134から432行を加え、**L09a・L09の最終実測は8,991行**、
+**M14全体は14,057行**。旧coherent経路の保管済み10,216行、報告・監査・有限点検は除外。
+L09a完成時§132の7,740行から見たL09への接続は **1,251行**。
+§132の旧上端750行に対して501行増えたが、§134で最後に出し直した残り300〜500行には
+今回の432行が収まった。§134のL09a・L09の完成見込み8,859〜9,059行の範囲内。
+
+L09a・L09の残りは0。次は固定した一覧のL10へ進む。
+次元によらない既存のχの微分・生成元の外延性・全整数の次数の組み立てを再利用し、
+区間の入力に固有の零性や区間の境界定理を一般Sへ適用しない。
+
+| M14全体の残り | 下端 | 上端 |
+| --- | ---: | ---: |
+| L10〜L28（L12a込み） | 4,330 | 7,790 |
+| L29〜L37 | 1,200 | 2,000 |
+| G10後のnative Totへの適用 | 500 | 900 |
+| filtered塔 | 300 | 550 |
+| 二重模型の実現の比較 | 1,500 | 2,800 |
+| **新規残り** | **7,830** | **14,040** |
+| **実測14,057行を含む完成見込み** | **21,887** | **28,097** |
+
+外枠25,000行は変更しない。現在の残り枠は **10,943行**。
+上側が外枠を **3,097行** 超えるリスクは残る。未実装部分から実測なしに控除しない。
+現在の実測は外枠に届いていないため、指示どおり止まらずL10へ進む。
+G10の部品、M15・G12は作らない。B4は595254e10で完了済みのまま。
+
+## 138. L10への接続：既存の基底と正規化生成元の外延性（実装前の型）
+
+一覧：済み 10／全体 48（うち追加 4）
+
+L09の検証済み7本はd5a28b42fへ保存した。次は固定したL10の全整数Leibnizへ進む。
+まずC303は既存のSurjection.basis.extとAlexanderWhitney.generator_hom_extを
+同じ双線形族へ適用する構成の法則。新しい生成性の定理は作らない。
+arityはnで零も許すが、χ・入力複体・微分の組み立ては固定した§108のとおりにする。
+この法則だけでL10完了とは数えない。局所heは元の二つのLinearMapをModuleCat.ofHomで
+見た射の等式で、最後に元の線形写像へ戻す。個々の補題200行以内。型を記録して実装する。
+
+```lean
+lemma normalized_bilinear_ext (S : SSet.{0}) {n d q : ℕ} {M : ModuleCat A}
+    (f g : Surjection.degreeModule A n d →ₗ[A] (AlexanderWhitney.chains A S).X q →ₗ[A] M)
+    (h : ∀ (w : Surjection.BasisWord n d) (x : S _⦋q⦌),
+      f (Surjection.basis A n d (ULift.up w)) (AlexanderWhitney.generator A S q x) =
+        g (Surjection.basis A n d (ULift.up w)) (AlexanderWhitney.generator A S q x)) :
+    f = g
+```
+
+C303の実装では出力Mの宇宙を `{M : ModuleCat.{u} A}` と明示する。
+既存generator_hom_extとL10の実際の終域のテンソル冪は、どちらもAと同じ宇宙uの
+ModuleCatを使う。省略した宇宙が新しい変数として推論されるのを防ぐためで、
+L10の固定した型・係数環・入力・終域を変更するものではない。
+
+### 138.1 C303の検証・保存
+
+一覧：済み 10／全体 48（うち追加 4）
+
+C303の対象ビルド **成功、2,320 jobs**。専用の小さい監査は
+**1モジュール・1宣言・標準三公理のみ**。sorry・追加公理0、Lean警告0。
+`NormalizedBilinearExt.lean` は36行。未登録の新規モジュール候補として追加する
+（`SerrePositivity.EInfinity.SimplexCuts.NormalizedBilinearExt`）。
+L09の7本とは別のL10の補助であり、L10完了とは数えない。
+
+ログ：`/tmp/bsw16/m14-normalized-bilinear-ext-02.log`、
+監査：`/tmp/bsw16/audit-m14-normalized-bilinear-ext.lean`、
+結果：`/tmp/bsw16/m14-normalized-bilinear-ext-audit.log`。
+鍵はビルド・監査ごとに取り、終了を確認して返却した。
+
+M14の実測は14,057+36=**14,093行**、L09a・L09の最終実測8,991行は不変。
+L10の実装済み補助は36行。外枠25,000行は変更せず、残り枠は **10,907行**。
+次のL10の束の見込みを出す際、この36行を未実装部分へ重ねて加算しない。
+
+### 138.2 L10の残る成分と法則の型（紙のみ）
+
+一覧：済み 10／全体 48（うち追加 4）
+
+既存normalizedComponentと元の二つの微分の合成を、同じ双線形族の値として読む。
+以下二つはその線形像の記法であり、係数微分・入力微分を別のものへ変更しない。
+C304はC303で元の基底・正規化生成元へ帰着し、L09を適用する。
+
+```lean
+def normalizedCoefficientBoundary (A : Type u) [CommRing A] (S : SSet.{0}) (r : ℕ) :
+    (d q : ℕ) → Surjection.degreeModule A (r + 1) d →ₗ[A]
+      (AlexanderWhitney.chains A S).X q →ₗ[A]
+        (power (chains A S) (r + 1)).X (-((d + q : ℕ) : ℤ) + 1)
+
+def normalizedSimplexBoundary (A : Type u) [CommRing A] (S : SSet.{0}) (r : ℕ) :
+    (d q : ℕ) → Surjection.degreeModule A (r + 1) d →ₗ[A]
+      (AlexanderWhitney.chains A S).X q →ₗ[A]
+        (power (chains A S) (r + 1)).X (-((d + q : ℕ) : ℤ) + 1)
+
+-- C304：同じ非負次数の双線形族の微分の法則。
+lemma normalizedComponent_d (A : Type u) [CommRing A] (S : SSet.{0}) (r d q : ℕ) :
+    (normalizedComponent A S r d q).compr₂
+        ((power (chains A S) (r + 1)).d (-((d + q : ℕ) : ℤ))
+          (-((d + q : ℕ) : ℤ) + 1)).hom =
+      normalizedCoefficientBoundary A S r d q +
+        (-1 : ℤ) ^ d • normalizedSimplexBoundary A S r d q
+```
+
+前者はd=0で零、d+1で元のSurjection.differentialをnormalizedComponentの係数側へ前置し、
+共通次数へ移す。後者はq=0で零、q+1で元の正規化鎖のdを入力側へ前置して共通次数へ移す。
+これらの生成元の値は、検証済みL09の右辺の二つの線形像そのもの。
+
+次に、既存positiveComponentを両入力の非正整数次数へ等式移送で延長し、正次数は零とする。
+これは§108.2で固定した整数次数のcomponentを組み立てる補助で、新しい作用の選択ではない。
+正arityの補助の型は次。arity零の扱いは固定した§108.3・L14の規約を維持する。
+
+```lean
+def positiveIntegerBilinear (A : Type u) [CommRing A] (S : SSet.{0}) (r : ℕ)
+    (i j t : ℤ) (h : i + j = t) :
+    (Surjection.complex A (r + 1)).X i →ₗ[A] (chains A S).X j →ₗ[A]
+      (power (chains A S) (r + 1)).X t
+
+-- C305：元の負自然数次数では、同じ既存positiveComponentを復元。
+lemma positiveIntegerBilinear_neg (A : Type u) [CommRing A] (S : SSet.{0}) (r d q : ℕ) :
+    positiveIntegerBilinear A S r (-(d : ℤ)) (-(q : ℤ)) (-((d + q : ℕ) : ℤ)) (by omega) =
+      positiveComponent A S r d q
+
+-- C306：同じ正arityの全整数双線形成分のLeibniz則。
+lemma positiveIntegerBilinear_d (A : Type u) [CommRing A] (S : SSet.{0})
+    (r : ℕ) (i j : ℤ) (a : (Surjection.complex A (r + 1)).X i) (b : (chains A S).X j) :
+    (power (chains A S) (r + 1)).d (i + j) (i + j + 1)
+        (positiveIntegerBilinear A S r i j (i + j) rfl a b) =
+      positiveIntegerBilinear A S r (i + 1) j (i + j + 1) (by omega)
+        ((Surjection.complex A (r + 1)).d i (i + 1) a) b +
+      i.negOnePow • positiveIntegerBilinear A S r i (j + 1) (i + j + 1) (by omega) a
+        ((chains A S).d j (j + 1) b)
+```
+
+整数の非正分岐ではd=(-i).toNat・q=(-j).toNatとし、既存positiveComponentの前後を
+同じ次数のeqToHomで移す。C306は§136.4の次元によらないχの微分比較、chains_d_neg、
+正次数の零性、C304・C305を使う。区間の零・−1以外の零性は一般Sへ適用しない。
+その後TensorProduct.ext・tensorLiftへ渡す。L10の固定した全体の型は§108のまま維持する。
+上の型はC303以外まだ紙のみで、完了数・検証済み行数へ含めない。
+
+## 139. 同じ正規化双線形族の微分の接続（L10、実装前の型）
+
+一覧：済み 10／全体 48（うち追加 4）
+
+§138.2の二つの既存線形像の記法とC304を実装する。C307・C308は、その同じ基底・
+正規化生成元での評価の法則。C307は既存normalizedComponent_gen、C308は同じ入力の
+線形合成の評価で、次数零も含む。C304はC303と検証済みL09だけで証明する。
+新しい生成性の数学や比較射を作らない。個々の補題200行以内。追加する評価の型は次。
+
+```lean
+lemma normalizedCoefficientBoundary_generator (S : SSet.{0}) {r d q : ℕ}
+    (w : Surjection.BasisWord (r + 1) d) (x : S _⦋q⦌) :
+    normalizedCoefficientBoundary A S r d q (Surjection.basis A (r + 1) d (ULift.up w))
+        (AlexanderWhitney.generator A S q x) = cutSumCoefficientBoundary A S r d q w x
+
+lemma normalizedSimplexBoundary_generator (S : SSet.{0}) {r d q : ℕ}
+    (w : Surjection.BasisWord (r + 1) d) (x : S _⦋q⦌) :
+    normalizedSimplexBoundary A S r d q (Surjection.basis A (r + 1) d (ULift.up w))
+        (AlexanderWhitney.generator A S q x) = cutSumSimplexBoundary A S w q x
+```
+
+二つの定義とC304の型は§138.2のまま。L10の全整数の組み立ては未完で、完了数へ足さない。
+
+### 139.1 C304・C307・C308 の検証・保存
+
+一覧：済み 10／全体 48（うち追加 4）
+
+対象ビルド成功（2,527 jobs）、小さい監査成功（1モジュール・40宣言、標準三公理のみ）。
+sorry・追加公理0、Lean警告0。NormalizedComponentDifferential.lean は77行。
+登録候補：`SerrePositivity.EInfinity.SimplexCuts.NormalizedComponentDifferential`。
+ビルドログ：`/tmp/bsw16/m14-normalized-component-differential-01.log`。
+監査入力：`/tmp/bsw16/audit-m14-normalized-component-differential.lean`、
+監査結果：`/tmp/bsw16/m14-normalized-component-differential-audit.log`。
+各鍵は終了・返却を確認。全整数のLeibniz則はまだ未完なのでL10を完了へ足さない。
+
+M14実測14,093+77=**14,170行**、L09a・L09の8,991行は不変。
+L10の実装済み補助は113行。外枠25,000行、残り10,830行。
+
+## 140. 同じ成分の整数次数への延長（L10、実装前の型）
+
+一覧：済み 10／全体 48（うち追加 4）
+
+§138.2 の positiveIntegerBilinear・C305 を実装する。係数・入力の双方を元の
+負自然数次数へ同じ等式で移送し、正次数の分岐を零とする。C309・C310 は
+その定義の分岐の法則で、既存の零延長以外の数学を追加しない。型は次。
+
+```lean
+lemma positiveIntegerBilinear_eq_zero_left (S : SSet.{0}) (r : ℕ)
+    (i j t : ℤ) (h : i + j = t) (hi : 0 < i) :
+    positiveIntegerBilinear A S r i j t h = 0
+
+lemma positiveIntegerBilinear_eq_zero_right (S : SSet.{0}) (r : ℕ)
+    (i j t : ℤ) (h : i + j = t) (hj : 0 < j) :
+    positiveIntegerBilinear A S r i j t h = 0
+```
+
+C305・整数成分の型は§138.2のまま。C306とテンソル複体の射への接続は次。
+個々の法則は200行以内。L10未完、一覧の数は変えない。
+
+### 140.1 出力次数の移送の法則（C311、実装前）
+
+一覧：済み 10／全体 48（うち追加 4）
+
+C305・C309・C310 の対象ビルドは2,528 jobsで成功、Lean警告0。
+依存型の次数移送は自然数の零・後続へ分ければ元の成分と定義的に同じになる。
+全整数微分への接続に、同じ出力次数を変数tで読む法則だけを足す。
+
+```lean
+lemma positiveIntegerBilinear_neg_target (S : SSet.{0}) (r d q : ℕ) (t : ℤ)
+    (h : -(d : ℤ) + -(q : ℤ) = t) :
+    positiveIntegerBilinear A S r (-(d : ℤ)) (-(q : ℤ)) t h =
+      (positiveComponent A S r d q).compr₂
+        (eqToHom (congrArg (fun z : ℤ => (power (chains A S) (r + 1)).X z)
+          (by omega : -((d + q : ℕ) : ℤ) = t))).hom
+```
+
+出力の和を代入してC305を使う証明の分割で、新しい比較射ではない。
+
+## 141. 元の整数複体の二つの微分への接続（L10、実装前）
+
+一覧：済み 10／全体 48（うち追加 4）
+
+C312はC304へ同じ次数同型を前置した評価。C313は元のχの延長微分の
+`IntervalCuts.surjection_d_neg_apply`、C314は元の鎖の`chains_d_neg`を使う。
+入力を区間へ制限せず、同じ一般Sの全非負鎖次数を扱う。いずれも既存構成の
+係数移送・微分との両立の法則で、新しい作用や擬同型の構成ではない。
+
+```lean
+lemma positiveComponent_d (S : SSet.{0}) (r d q : ℕ)
+    (a : (Surjection.complex A (r + 1)).X (-(d : ℤ)))
+    (b : (chains A S).X (-(q : ℤ))) :
+    (power (chains A S) (r + 1)).d (-((d + q : ℕ) : ℤ)) (-((d + q : ℕ) : ℤ) + 1)
+      (positiveComponent A S r d q a b) =
+    normalizedCoefficientBoundary A S r d q
+      ((Surjection.complexXIso A (r + 1) d).hom a) ((chainsXIso A S q).hom b) +
+    (-1 : ℤ)^d • normalizedSimplexBoundary A S r d q
+      ((Surjection.complexXIso A (r + 1) d).hom a) ((chainsXIso A S q).hom b)
+
+lemma positiveCoefficientBoundary_succ (S : SSet.{0}) (r d q : ℕ)
+    (a : (Surjection.complex A (r + 1)).X (-((d + 1 : ℕ) : ℤ)))
+    (b : (chains A S).X (-(q : ℤ))) :
+    normalizedCoefficientBoundary A S r (d + 1) q
+      ((Surjection.complexXIso A (r + 1) (d + 1)).hom a) ((chainsXIso A S q).hom b) =
+    positiveIntegerBilinear A S r (-(d : ℤ)) (-(q : ℤ))
+      (-(((d + 1) + q : ℕ) : ℤ) + 1) (by omega)
+      ((Surjection.complex A (r + 1)).d (-((d + 1 : ℕ) : ℤ)) (-(d : ℤ)) a) b
+
+lemma positiveSimplexBoundary_succ (S : SSet.{0}) (r d q : ℕ)
+    (a : (Surjection.complex A (r + 1)).X (-(d : ℤ)))
+    (b : (chains A S).X (-((q + 1 : ℕ) : ℤ))) :
+    normalizedSimplexBoundary A S r d (q + 1)
+      ((Surjection.complexXIso A (r + 1) d).hom a) ((chainsXIso A S (q + 1)).hom b) =
+    positiveIntegerBilinear A S r (-(d : ℤ)) (-(q : ℤ))
+      (-((d + (q + 1) : ℕ) : ℤ) + 1) (by omega) a
+      ((chains A S).d (-((q + 1 : ℕ) : ℤ)) (-(q : ℤ)) b)
+```
+
+C313・C314の次数零の分岐は、C309・C310と正規化境界の零分岐を使う。
+最後の全整数LeibnizはC306（§138.2）のまま。個々の証明200行以内。
+
+## 142. 全整数の Leibniz の次数の指定（L10、実装前）
+
+一覧：済み 10／全体 48（うち追加 4）
+
+C311とC312・C313は型検査済み。C314の次数移送の終域を明示して検証を続ける。
+C306の型は§138.2のまま。前提計算として、同じ等式の各次数を別名で指定する
+C315を置く。証明は指定した四つの次数の等式による置換のみ。
+
+```lean
+lemma positiveIntegerBilinear_d_reindex (S : SSet.{0}) (n : ℕ)
+    (i j i' j' t t' : ℤ) (hi : i' = i + 1) (hj : j' = j + 1)
+    (ht : t = i + j) (ht' : t' = i + j + 1)
+    (a : (Surjection.complex A (n + 1)).X i) (b : (chains A S).X j)
+    (H : (power (chains A S) (n + 1)).d t t'
+        (positiveIntegerBilinear A S n i j t (by omega) a b) =
+      positiveIntegerBilinear A S n i' j t' (by omega)
+        ((Surjection.complex A (n + 1)).d i i' a) b +
+      i.negOnePow • positiveIntegerBilinear A S n i j' t' (by omega) a
+        ((chains A S).d j j' b)) :
+    (power (chains A S) (n + 1)).d (i + j) (i + j + 1)
+        (positiveIntegerBilinear A S n i j (i + j) rfl a b) =
+      positiveIntegerBilinear A S n (i + 1) j (i + j + 1) (by omega)
+        ((Surjection.complex A (n + 1)).d i (i + 1) a) b +
+      i.negOnePow • positiveIntegerBilinear A S n i (j + 1) (i + j + 1) (by omega) a
+        ((chains A S).d j (j + 1) b)
+```
+
+C306は、正の入力次数を元の零延長の零性で消した後、dとqの零・後続を分ける。
+同じ元の微分の像をC313・C314で戻し、残る符号はInt.negOnePow_neg・
+Int.coe_negOnePow_natCastで同じ整数の符号へ直す。区間固有の零性は使わない。
+C315もC306も個々の証明200行以内。正arityの検証後も、L10の全arityの固定型の
+完了にはarity零（§108.3のL14の規約）の接続が必要であり、先に完了へ数えない。
+
+## 143. arity 零を含む同じ成分への接続（L10、実装前の型）
+
+一覧：済み 10／全体 48（うち追加 4）
+
+§108.3の固定したarity零の規約（L14）に従って空語augmentationと元のAW余単位を束ね、
+L10の全arityのcomponentに含める。零arityを零作用とする置き換えは行わない。
+χの元のdegreeModule A 0 1は基底が空なので零対象であり、
+normalizedChainsのd 1 0を前置したzeroAugmentationは零。その既存の法則により
+ChainComplex.toSingle₀Equivで鎖写像を作り、元の次数延長とextendSingleIsoを使う。
+型は次。新しい構成の追加ではなく、固定したL14の構成のうちL10に要る接続である。
+
+```lean
+def nullaryCoefficientChainAugmentation :
+    Surjection.normalizedChains A 0 ⟶ tensorUnit (ModuleCat A) (.down ℕ)
+
+def nullaryCoefficientAugmentation : Surjection.complex A 0 ⟶ 𝟙_ (Complex A)
+
+def nullaryAction (S : SSet.{0}) :
+    Surjection.complex A 0 ⊗ chains A S ⟶ power (chains A S) 0
+
+def component (S : SSet.{0}) : (r : ℕ) → (i j t : ℤ) → (h : i + j = t) →
+    (Surjection.complex A r).X i →ₗ[A] (chains A S).X j →ₗ[A]
+      (power (chains A S) r).X t
+
+lemma component_d (S : SSet.{0}) (r : ℕ) (i j : ℤ)
+    (a : (Surjection.complex A r).X i) (b : (chains A S).X j) :
+    (power (chains A S) r).d (i + j) (i + j + 1)
+        (component A S r i j (i + j) rfl a b) =
+      component A S r (i + 1) j (i + j + 1) (by omega)
+        ((Surjection.complex A r).d i (i + 1) a) b +
+      i.negOnePow • component A S r i (j + 1) (i + j + 1) (by omega) a
+        ((chains A S).d j (j + 1) b)
+```
+
+nullaryActionはχの空語augmentation、左単位同型、AlexanderWhitney.cochainCounitの合成。
+componentの零arityは同じ射をιTensorObjで評価したもの、正arityは既存positiveIntegerBilinear。
+component_dの零arityの証明は既存tensorComponent_dを純粋テンソルで評価するだけ。
+空語での具体的な生成元の評価や他のL14の包装は、これだけで完了扱いにしない。
+個々の証明200行以内。界面・G10・ほかのレーンのファイルには触れない。
+
+## 144. 同じテンソル成分から実複体射への包装（L10、実装前の型）
+
+一覧：済み 10／全体 48（うち追加 4）
+
+L10の微分公式を既存TensorProduct.lift・tensorLiftへ渡す。C316は元の
+テンソル成分の微分の法則、C317は元の斉次成分の復元で、構成し直した作用は使わない。
+IntervalCuts.CochainActionと同じ次元によらない包装を、今回の一般Sのcomponent_dに適用する。
+
+```lean
+def cochainActionComponent (S : SSet.{0}) (r : ℕ) (i j t : ℤ) (h : i + j = t) :
+    (Surjection.complex A r).X i ⊗ (chains A S).X j ⟶ (power (chains A S) r).X t
+
+lemma cochainActionComponent_d (S : SSet.{0}) (r : ℕ) (i j : ℤ) :
+    cochainActionComponent A S r i j (i + j) rfl ≫
+        (power (chains A S) r).d (i + j) (i + j + 1) =
+      ((Surjection.complex A r).d i (i + 1) ▷ (chains A S).X j) ≫
+        cochainActionComponent A S r (i + 1) j (i + j + 1) (by omega) +
+      i.negOnePow • (((Surjection.complex A r).X i ◁ (chains A S).d j (j + 1)) ≫
+        cochainActionComponent A S r i (j + 1) (i + j + 1) (by omega))
+
+def cochainAction (S : SSet.{0}) (r : ℕ) :
+    Surjection.complex A r ⊗ chains A S ⟶ power (chains A S) r
+
+lemma ι_cochainAction (S : SSet.{0}) (r : ℕ)
+    (i j t : ℤ) (h : i + j = t) :
+    ιTensorObj (Surjection.complex A r) (chains A S) i j t h ≫
+      (cochainAction A S r).f t = cochainActionComponent A S r i j t h
+```
+
+対称性・単位・部分合成の公理はこれだけで供給されたと扱わない。
+個々の証明200行以内。新しい数学を一覧へ足さず、固定したL10の証明の分割として数える。
+
+## 145. L11の次元によらない符号APIの下調べ（紙のみ）
+
+一覧：済み 10／全体 48（うち追加 4）
+
+L10の検証待ちに、後続L11の既存APIを点検した。
+IntervalCuts.positionInversions_symmDiff_adjacentは色の単射性を要求せず、一般の色列へ使える。
+同じneg_one_pow_card_symmDiffも使える。一方、positionInversionSign_adjacentと
+card_colorCrossPairsは集合上の色の単射性を要求するため、そのまま適用しない。
+SimplexCuts.active_color_cardは活動頂点の各色のfiberの濃度を一般qのoutputDegreeへ戻せる。
+
+有限点検では、色数2〜4・位置数0〜5・全位置部分集合・全隣接交換について、
+二色の非順序位置対の濃度=両fiberの濃度の積、および逆転符号の変化を確認した。
+**132,374例成功**。スクリプト：`/tmp/bsw16/check-weighted-adjacent-color-pairs.py`、
+結果：`/tmp/bsw16/check-weighted-adjacent-color-pairs.log`。
+これはLeanの全称証明の代わりには数えず、L11の完了数・実測にも足さない。
+
+次に必要な同じ有限集合の数え上げ・符号の法則の型は次。まだ紙のみ。
+既存colorCrossPairsを作り直さず、二色のfiberの積を位置順に並べた同じ対として数える。
+
+```lean
+-- C318（予定）：既存の二色位置対の濃度。色の単射性を要求しない。
+lemma card_colorCrossPairs_weighted {n l : ℕ} (v : Fin l → Fin n)
+    (s : Finset (Fin l)) (a b : Fin n) (hab : a ≠ b) :
+    (IntervalCuts.colorCrossPairs v s a b).card =
+      (s.filter (fun i => v i = a)).card * (s.filter (fun i => v i = b)).card
+
+-- C319（予定）：同じ逆転符号の隣接交換。二色の各出現数を保持する。
+lemma positionInversionSign_adjacent_weighted {n l : ℕ} (a : Fin n)
+    (v : Fin l → Fin (n + 1)) (s : Finset (Fin l)) :
+    (-1 : ℤ) ^ IntervalCuts.positionInversionCount (Coxeter.adjacentTransposition a ∘ v) s =
+      (-1 : ℤ) ^ IntervalCuts.positionInversionCount v s *
+        (-1 : ℤ) ^ ((s.filter (fun i => v i = a.castSucc)).card *
+          (s.filter (fun i => v i = a.succ)).card)
+```
+
+この二本は固定したL11の符号の証明の分割で、別の数学の主張を追加するものではない。
+L10の検証・監査・保存後に実装する。個々の有限数え上げの証明が200行を超えれば実測を記す。
+
+## 146. L10 完了：全 arity・全整数の厳密な微分則と実複体射
+
+一覧：済み 11／全体 48（うち追加 4）
+
+L10 `component_d` を、任意の可換環A、一般の単体集合S、全arity r、全整数i・j、
+元のχ(r)と鎖の任意の元について証明した。非正性や特定の単体次元を仮定していない。
+正arityは既存の正規化切断和そのもの。零arityは元の空語augmentationとAW余単位であり、
+零作用への変更ではない。同じ成分をTensorProduct.lift・tensorLiftで実複体射
+`cochainAction`にまとめ、`ι_cochainAction`で指定した成分を復元した。
+元の加群・複体の射の等式で証明しており、ホモトピー圏へ弱めていない。
+
+対象ビルド成功（2611 jobs）、
+専用の小さい監査成功（6モジュール・143宣言、標準三公理のみ）。
+sorry・追加公理0、Lean警告0。ビルドと監査は一回ずつ別の鍵を取り、終了・返却を確認。
+鍵待ちの間に常駐ビルドセッションを使っていない。
+監査末尾の `#check @component_d` で、全arity・全整数の型と仮定も確認した。
+
+登録候補（今回の6本、接頭部 `SerrePositivity.EInfinity.SimplexCuts.`）：
+
+| モジュール | 実測行数 |
+| --- | ---: |
+| PositiveIntegerComponent | 70 |
+| PositiveComponentDifferential | 69 |
+| PositiveIntegerLeibniz | 105 |
+| NullaryAction | 46 |
+| ComponentLeibniz | 46 |
+| CochainAction | 54 |
+
+前の保存済み補助 `NormalizedBilinearExt`（36行）、`NormalizedComponentDifferential`
+（77行、fed42a19e）もL10の登録候補。共通入口・共通監査の登録は調整役の持ち分。
+L14の残る零arityの生成元の具体式や合成との接続は、今回だけで完了へ数えない。
+
+ログ：`/tmp/bsw16/m14-cochain-action-final.log`、
+監査入力：`/tmp/bsw16/audit-m14-cochain-action.lean`、
+監査結果：`/tmp/bsw16/m14-cochain-action-audit.log`。
+
+### 146.1 実測・見込みと外枠
+
+一覧：済み 11／全体 48（うち追加 4）
+
+L09a・L09の実測8,991行は不変。M14は14,170+390=**14,560行**。
+今回までのL10は**457行**（零arityの共通構成46行はL14の前段として別計上）。
+§121.4のL10の130〜230行に対し、上端との差は+227行。
+基底/正規化生成元の外延性36行、正規化微分77行に加え、全整数への次数移送、
+元の二つの微分との照合、全arityの包装、テンソル複体射の構成が必要だった。
+これらは既存の微分の法則・証明の分割で、一覧に新しい数学は足していない。
+
+L10を未実装の見込みから除き、L14前段46行も重複計上せず、残りを次のように更新する。
+
+| 部分 | 残りの下端 | 残りの上端 |
+| --- | ---: | ---: |
+| L11〜L28（L12a込み、L14前段は控除） | 4,154 | 7,514 |
+| L29〜L37 | 1,200 | 2,000 |
+| G10後の指定比較への適用 | 500 | 900 |
+| filtered塔 | 300 | 550 |
+| 二重模型の実現の比較 | 1,500 | 2,800 |
+| **M14完成時（実測込み）** | **22,214** | **28,324** |
+
+外枠25,000行、現在の残り枠は10,440行。上端は外枠を3,324行超えるリスクを保持する。
+完成済みの分を控除した見積もりであり、残る数学を完成扱いしていない。
+次は固定したL11。G10の部品、M15・G12は作らない。B4は595254e10で完了済み。
+
+## 147. L11 の重複色の符号の接続（実装前）
+
+一覧：済み 11／全体 48（うち追加 4）
+
+§145 に型を記した C318・C319 を順に実装する。有限点検132,374例の結果は同節のまま。
+既存 colorCrossPairs を二つの色の fiber の積から位置順に並べて数える。
+C318 の局所 recover は同じ並べ替えから色a側を復元する法則であり、独立の構成ではない。
+型は `p ∈ fiber a ×ˢ fiber b → (if v (F p).1 = a then F p else (F p).swap) = p`、
+`F p := if p.1 < p.2 then p else p.swap`。その復元・単射・全射は C318 の証明の分割。
+C319 は既存の逆転対の対称差の公式と C318 だけを使う。各証明200行以内。
+χ の renameLinear_basis も実際の基底語の色置換の式であることを確認した。
+ほかの係数作用へ変更せず、次に出力の実テンソルの置換との照合へ接続する。
+
+## 148. L11 の同じ切断符号への接続（実装前の型）
+
+一覧：済み 11／全体 48（うち追加 4）
+
+C318・C319は2,201 jobsの対象ビルドに成功、Lean警告0。
+次に、色置換で元の活動位置と位置指数が変わらない法則C321〜C323を使い、
+C320で隣接交換の切断符号を同じ二出力次数の符号へ戻す。
+C320はC319・既存active_color_card・permutationExponent_eq_active_inversionsの接続だけ。
+全一般qの実際の整数の等式を保ち、出力が零・一次元であることは仮定しない。
+型は次。固定したL11の既存構成の法則・証明分割として数える。
+
+```lean
+lemma label_rename {m q r : ℕ} (s : Cut m q) (v : Fin (m + 1) → Fin r)
+    (σ : Equiv.Perm (Fin r)) : label s (σ ∘ v) = σ ∘ label s v
+
+lemma activeVertexPositions_rename {m q r : ℕ} (s : Cut m q)
+    (v : Fin (m + 1) → Fin r) (σ : Equiv.Perm (Fin r)) :
+    activeVertexPositions s (σ ∘ v) = activeVertexPositions s v
+
+lemma positionExponent_rename {m q r : ℕ} (s : Cut m q)
+    (v : Fin (m + 1) → Fin r) (σ : Equiv.Perm (Fin r)) :
+    positionExponent s (σ ∘ v) = positionExponent s v
+
+lemma cutSign_adjacent {m q n : ℕ} (s : Cut m q)
+    (v : Surjection.Word (n + 1) (m + 1)) (a : Fin n) :
+    cutSign s (Coxeter.adjacentTransposition a ∘ v.val) =
+      cutSign s v.val * (-1 : ℤ) ^ (outputDegree s v a.castSucc * outputDegree s v a.succ)
+```
+
+各証明200行以内。L11の実テンソルの置換と切断和の包装はまだ未完。
+
+## 149. L11 の元の純粋テンソルの交換の法則（実装前の型）
+
+一覧：済み 11／全体 48（うち追加 4）
+
+切断符号のC320〜C323は2,222 jobsの対象ビルドに成功、Lean警告0。
+次に任意の複体Kで、元の結合子・Koszul交換・結合子を同じ斉次元で評価するC324を置く。
+区間のswapFirstIso_applyの証明はこの部分に区間の性質を使っていないため、
+同じ証明を一般Kで述べる。元の定義・公開宣言は変えない。
+
+vectorDegree・vectorTensorは既存degreeSum・tensorValueへ同じ次数と元を渡すabbrev、
+vectorTensorAtは終域の等式移送だけ。次数と元をSigmaに一緒に保持するのは、
+色を替えた同じ因子を移す記法であり、新しい作用・比較・模型の構成ではない。
+C325〜C330・C333はその同じテンソル・包含・次数移送の法則。型は次。
+
+```lean
+lemma swapFirstIso_apply (n : ℕ) (i j k t : ℤ) (ht : i + (j + k) = t)
+    (x : K.X i) (y : K.X j) (z : (power K n).X k) :
+    (swapFirstIso K n).hom.f t
+      (ιTensorObj K (K ⊗ power K n) i (j + k) t ht
+        (x ⊗ₜ[A] ιTensorObj K (power K n) j k (j + k) rfl
+          (y ⊗ₜ[A] z))) =
+      (i * j).negOnePow •
+        ιTensorObj K (K ⊗ power K n) j (i + k) t
+          (by omega) (y ⊗ₜ[A]
+            ιTensorObj K (power K n) i k (i + k) rfl (x ⊗ₜ[A] z))
+
+abbrev vectorDegree (n : ℕ) (f : Fin n → Σ d : ℕ, K.X (-(d : ℤ))) : ℕ
+
+abbrev vectorTensor (n : ℕ) (f : Fin n → Σ d : ℕ, K.X (-(d : ℤ))) :
+    (power K n).X (-(vectorDegree K n f : ℤ))
+
+def vectorTensorAt (n : ℕ) (f : Fin n → Σ d : ℕ, K.X (-(d : ℤ))) (t : ℤ)
+    (h : -(vectorDegree K n f : ℤ) = t) : (power K n).X t
+
+lemma vectorDegree_permutation (n : ℕ) (f : Fin n → Σ d : ℕ, K.X (-(d : ℤ)))
+    (σ : Equiv.Perm (Fin n)) : vectorDegree K n (f ∘ σ) = vectorDegree K n f
+
+lemma vectorDegree_cons (n : ℕ) (a : Σ d : ℕ, K.X (-(d : ℤ)))
+    (f : Fin n → Σ d : ℕ, K.X (-(d : ℤ))) :
+    vectorDegree K (n + 1) (Fin.cons a f) = a.1 + vectorDegree K n f
+
+@[simp] lemma vectorTensorAt_refl (n : ℕ) (f : Fin n → Σ d : ℕ, K.X (-(d : ℤ))) :
+    vectorTensorAt K n f (-(vectorDegree K n f : ℤ)) rfl = vectorTensor K n f
+
+lemma vectorTensorAt_succ (n : ℕ) (f : Fin (n + 1) → Σ d : ℕ, K.X (-(d : ℤ)))
+    (i j t : ℤ) (hi : -((f 0).1 : ℤ) = i)
+    (hj : -(vectorDegree K n (fun k => f k.succ) : ℤ) = j) (ht : i + j = t) :
+    vectorTensorAt K (n + 1) f t (by
+      simp only [vectorDegree, degreeSum, Nat.cast_add]; omega) =
+      ιTensorObj K (power K n) i j t ht
+        ((eqToHom (congrArg K.X hi)).hom (f 0).2 ⊗ₜ[A]
+          vectorTensorAt K n (fun k => f k.succ) j hj)
+
+lemma vectorTensorAt_cons (n : ℕ) (a : Σ d : ℕ, K.X (-(d : ℤ)))
+    (f : Fin n → Σ d : ℕ, K.X (-(d : ℤ))) (t : ℤ)
+    (h : -(a.1 : ℤ) + -(vectorDegree K n f : ℤ) = t) :
+    vectorTensorAt K (n + 1) (Fin.cons a f) t
+      (by simp only [vectorDegree_cons, Nat.cast_add]; omega) =
+      ιTensorObj K (power K n) (-(a.1 : ℤ)) (-(vectorDegree K n f : ℤ)) t h
+        (a.2 ⊗ₜ[A] vectorTensor K n f)
+
+lemma vectorTensorAt_cons_cons (n : ℕ) (a b : Σ d : ℕ, K.X (-(d : ℤ)))
+    (f : Fin n → Σ d : ℕ, K.X (-(d : ℤ))) (t : ℤ)
+    (h : -(a.1 : ℤ) + (-(b.1 : ℤ) + -(vectorDegree K n f : ℤ)) = t) :
+    vectorTensorAt K (n + 2) (Fin.cons a (Fin.cons b f)) t
+      (by simp only [vectorDegree_cons, Nat.cast_add]; omega) =
+      ιTensorObj K (K ⊗ power K n) (-(a.1 : ℤ))
+        (-(b.1 : ℤ) + -(vectorDegree K n f : ℤ)) t h
+        (a.2 ⊗ₜ[A] ιTensorObj K (power K n) (-(b.1 : ℤ)) (-(vectorDegree K n f : ℤ))
+          (-(b.1 : ℤ) + -(vectorDegree K n f : ℤ)) rfl (b.2 ⊗ₜ[A] vectorTensor K n f))
+
+lemma swapFirstIso_vectorTensorAt (n : ℕ) (a b : Σ d : ℕ, K.X (-(d : ℤ)))
+    (f : Fin n → Σ d : ℕ, K.X (-(d : ℤ))) (t : ℤ)
+    (h : -(a.1 : ℤ) + (-(b.1 : ℤ) + -(vectorDegree K n f : ℤ)) = t) :
+    (swapFirstIso K n).hom.f t
+      (vectorTensorAt K (n + 2) (Fin.cons a (Fin.cons b f)) t
+        (by simp only [vectorDegree_cons, Nat.cast_add]; omega)) =
+      ((-(a.1 : ℤ)) * (-(b.1 : ℤ))).negOnePow •
+        vectorTensorAt K (n + 2) (Fin.cons b (Fin.cons a f)) t
+          (by simp only [vectorDegree_cons, Nat.cast_add]; omega)
+```
+
+同じ三つの次数の移送は、既存IntervalCuts.tensorInclusion_transport（P・Qが任意）を使う。
+各証明200行以内。この段階で区間に固有の零性・頂点や辺の分類は使わない。
+
+## 150. L11 の一般位置の隣接交換の法則（実装前の型）
+
+一覧：済み 11／全体 48（うち追加 4）
+
+C324が使う既存の結合子の評価の供給元はMaurerCartanCurryingだったので、
+区間の単位則を経由せず、その一般複体のモジュールを直接importする。
+次のC331・C332も、元のadjacentIsoの先頭/尾の再帰の法則を同じ斉次元で評価する。
+先頭はC330、尾は既存whiskerLeft_applyと帰納仮定。新しいテンソル置換は作らない。
+
+```lean
+lemma cons_comp_shiftPerm {α : Type*} (n : ℕ) (a : α) (f : Fin n → α)
+    (σ : Equiv.Perm (Fin n)) :
+    Fin.cons a f ∘ shiftPerm σ = Fin.cons a (f ∘ σ)
+
+lemma adjacentIso_vectorTensorAt (n : ℕ) (i : Fin n) (f : Fin (n + 1) → Σ d : ℕ, K.X (-(d : ℤ)))
+    (r : ℤ) (hf : -(vectorDegree K (n + 1) f : ℤ) = r) :
+    (adjacentIso K n i).hom.f r (vectorTensorAt K (n + 1) f r hf) =
+      ((-((f i.castSucc).1 : ℤ)) *
+        (-((f i.succ).1 : ℤ))).negOnePow •
+          vectorTensorAt K (n + 1) (f ∘ adjacentTransposition i) r
+            (by rw [vectorDegree_permutation]; exact hf)
+```
+
+各証明200行以内。一般の次数と元をそのまま保持しており、単体の次元の制限はない。
+切断の面の族との一致は、後で既存の指定面・次数移送の法則で接続する。
+
+## 151. L11 の同じ指定面の因子への接続（実装前の型）
+
+一覧：済み 11／全体 48（うち追加 4）
+
+C324とvectorTensorAtの次数移送・先頭交換の法則は型検査に成功した。
+一般位置の再帰に使うshiftPermの供給元GroupTheory.Coxeter.FirstToLastを直接importする。
+次にC334〜C338で、元の色別位置集合、元の次数、同じ順序の指定面の生成元を照合する。
+cutVectorは既存cutTensorの一因子を同じ次数と元のSigmaに入れる記法のみ。
+C336はその対の等式なので、次数の一致だけでなく同じ指定面の生成元そのものを保持する。
+新しい面や比較射の選択はしない。型は次。
+
+```lean
+lemma colorPositions_rename {m q r : ℕ} (s : Cut m q) (v : Fin (m + 1) → Fin r)
+    (σ : Equiv.Perm (Fin r)) (a : Fin r) :
+    colorPositions s (σ ∘ v) (σ a) = colorPositions s v a
+
+lemma outputDegree_rename {m q r : ℕ} (s : Cut m q) (v : Surjection.Word r (m + 1))
+    (σ : Equiv.Perm (Fin r)) (a : Fin r) :
+    outputDegree s (Surjection.Word.rename σ v) (σ a) = outputDegree s v a
+
+def cutVector {m q r : ℕ} (S : SSet.{0}) (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (a : Fin r) (x : S _⦋q⦌) :
+    Σ d : ℕ, (chains A S).X (-(d : ℤ))
+
+lemma cutVector_rename_image {m q r : ℕ} (S : SSet.{0}) (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (σ : Equiv.Perm (Fin r)) (a : Fin r) (x : S _⦋q⦌) :
+    cutVector A S s (Surjection.Word.rename σ v) (σ a) x = cutVector A S s v a x
+
+lemma cutVector_rename {m q r : ℕ} (S : SSet.{0}) (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (σ : Equiv.Perm (Fin r)) (x : S _⦋q⦌) :
+    (fun a => cutVector A S s (Surjection.Word.rename σ v) a x) =
+      (fun a => cutVector A S s v a x) ∘ σ.symm
+
+lemma cutTensor_vectorTensorAt {m q r : ℕ} (S : SSet.{0}) (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (x : S _⦋q⦌) (t : ℤ)
+    (h : -(degreeSum r (outputDegree s v) : ℤ) = t) :
+    vectorTensorAt (chains A S) r (fun a => cutVector A S s v a x) t h =
+      (eqToHom (congrArg (fun z : ℤ => (power (chains A S) r).X z) h)).hom
+        (cutTensor A S s v x)
+```
+
+C334は色置換の単射性、C335はその濃度、C336は同じ位置集合の順序列挙の等式。
+C337は逆置換による添字の読み替え、C338は既存cutTensorの定義そのもの。
+各証明200行以内。法則と証明の分割なので一覧の総数は変えない。
+
+## 152. L11 の半分での途中報告（止まらず続行）
+
+一覧：済み 11／全体 48（うち追加 4）
+
+L11の§121.4の見込み250〜450行の半分225行を超えた。
+現在、対象ビルドに通った5本は92+45+60+111+90=**398行**。
+内訳は二色対の濃度・符号92、切断符号45、一般の先頭交換60、同じ次数移送111、
+一般位置の隣接交換90。個々の証明200行以内。Lean警告0。
+5本の小さい監査は、残る接続とまとめて行う前で、監査済みとは数えない。
+
+M14のコミット・監査済み実測14,560行に対し、型検査済みの追加は398行、合計14,958行。
+CutVectorsRenamingの70行はまだ照合の一箇所を修正中で、この合計へ含めていない。
+残りは次の同じ構成の接続であり、新しい数学を増やす段ではない。
+
+| 残り | 追加見込み |
+| --- | ---: |
+| 同じ色別位置集合と指定面生成元の照合を仕上げる | 70〜110 |
+| 同じ実テンソルの交換・切断符号の交換を合わせ、切断項の全置換へ | 95〜150 |
+| 元の語長・全次数の移送を保って有限和へ戻す | 55〜80 |
+| **L11の残り** | **220〜340** |
+| **L11完成時（398行込み）** | **618〜738** |
+
+§121.4のL11の250〜450行に対して、完成時の上端は+288行となる見込み。
+同じ元の次数・値の依存した族を保持するため、一般Kの斉次テンソルの交換・
+等式移送の接続を独立に明示する必要があった。
+§146.1の全体見込みでL11の行だけを置き換えると、M14完成時は**22,582〜28,612行**。
+外枠25,000行に対する上端超過のリスクを保持する。型検査済みの実測はまだ外枠に届いて
+いないので、指示どおり止まらずL11を閉じる接続へ進む。G10の部品は作らない。
+
+## 153. L11 の切断項と同じ有限和への包装（実装前の型）
+
+一覧：済み 11／全体 48（うち追加 4）
+
+C339はC332を元のcutVectorの族へ適用し、C337・C338で同じcutTensorAtへ戻す。
+C340は同じcutSignのC320を合わせ、C341は既存permutation_induction_rightで
+任意の置換へ延長する。C342・C343は元の語長の等式移送との可換性。
+L11は既存component_index_naturalityと元の有限和の線形性で閉じる。型は次。
+
+```lean
+lemma cutTensorAt_adjacent {m q n : ℕ} (S : SSet.{0}) (s : Cut m q)
+    (v : Surjection.Word (n + 1) (m + 1)) (a : Fin n) (x : S _⦋q⦌) :
+    (adjacentIso (chains A S) n a).hom.f (-((m + q + 1 - (n + 1) : ℕ) : ℤ))
+        (cutTensorAt A S s v x) =
+      (-1 : ℤ) ^ (outputDegree s v a.castSucc * outputDegree s v a.succ) •
+        cutTensorAt A S s (Surjection.Word.rename (adjacentTransposition a) v) x
+
+lemma cutTerm_adjacent {m q n : ℕ} (S : SSet.{0}) (s : Cut m q)
+    (v : Surjection.Word (n + 1) (m + 1)) (a : Fin n) (x : S _⦋q⦌) :
+    (permutationAction (chains A S) (n + 1) (adjacentTransposition a)).asIso.hom.f
+        (-((m + q + 1 - (n + 1) : ℕ) : ℤ)) (cutTerm A S s v x) =
+      cutTerm A S s (Surjection.Word.rename (adjacentTransposition a) v) x
+
+lemma cutTerm_permutation {m q r : ℕ} (S : SSet.{0}) (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (σ : Equiv.Perm (Fin r)) (x : S _⦋q⦌) :
+    (permutationAction (chains A S) r σ).asIso.hom.f
+        (-((m + q + 1 - r : ℕ) : ℤ)) (cutTerm A S s v x) =
+      cutTerm A S s (Surjection.Word.rename σ v) x
+
+lemma rename_eq_mp {n l l' : ℕ} (h : l = l') (σ : Equiv.Perm (Fin n))
+    (v : Surjection.Word n l) :
+    Eq.mp (congrArg (fun k => Surjection.Word n k) h) (Surjection.Word.rename σ v) =
+      Surjection.Word.rename σ (Eq.mp (congrArg (fun k => Surjection.Word n k) h) v)
+
+lemma positiveWord_rename {r d : ℕ} (v : Surjection.BasisWord (r + 1) d)
+    (σ : Equiv.Perm (Fin (r + 1))) :
+    positiveWord (Surjection.Word.rename σ v) = Surjection.Word.rename σ (positiveWord v)
+
+lemma cutSum_permutation (S : SSet.{0}) {r d q : ℕ}
+    (v : Surjection.BasisWord (r + 1) d) (σ : Equiv.Perm (Fin (r + 1))) (x : S _⦋q⦌) :
+    cutSum A S (Surjection.Word.rename σ v) x =
+      (permutationAction (chains A S) (r + 1) σ).asIso.hom.f (-((d + q : ℕ) : ℤ))
+        (cutSum A S v x)
+```
+
+切断項のC341は全arity。cutSumは本体の既存定義が正arityの語であり、その同じ型を保つ。
+§108.3で別扱いとした空語・零arityの本体への接続はL14のまま変更しない。
+すべて元の加群の値の等式を主張し、ホモトピー圏への等式へ弱めない。
+各証明200行以内。法則と証明の分割なので一覧の総数を増やさない。
+
+## 154. C336 の同じ位置集合を通す証明分割
+
+一覧：済み 11／全体 48（うち追加 4）
+
+C336で構造を順にsimpした後、残る外側の次数を直接rwしようとすると、
+順序列挙の始域Fin(card-1+1)も依存しているため、motiveが型を持たなかった。
+主張の型・指定面・次数は変えない。同じ元の式を、非空位置集合の部分型を
+引数にする局所Fとして書き、Subtype.extとcongrArgで同じ集合の等式を渡す。
+局所Fは元のcutVectorの既存の式を展開したもので、新しい面・作用・比較の構成ではない。
+
+```lean
+F : {t : Finset (Fin (m + q + 1)) // t.Nonempty} →
+  Σ d : ℕ, (chains A S).X (-(d : ℤ))
+-- tの順序列挙と元のs.verticalで面を読み、次数t.card-1の同じgenを返す。
+-- 必要な引数の等式：
+(⟨colorPositions s (Surjection.Word.rename σ v).val (σ a),
+    colorPositions_nonempty s (Surjection.Word.rename σ v) (σ a)⟩ :
+  {t : Finset (Fin (m + q + 1)) // t.Nonempty}) =
+  ⟨colorPositions s v.val a, colorPositions_nonempty s v a⟩
+```
+
+この引数の等式は既存C334をSubtype.extへ渡すだけ。C336全体の証明は200行以内。
+
+## 155. 同じ因子の族を指定次数で読む法則（C344、実装前）
+
+一覧：済み 11／全体 48（うち追加 4）
+
+C336は局所Fを通す証明で通った。C339で因子の族の等式だけをrwすると、
+vectorTensorAtの次数の証明もその族に依存するためmotiveが型を持たない。
+次の同じ構成の法則で、両側の次数証明を一緒に受け取って等しい値へ移す。
+これは等しい因子の族と等式移送の法則だけで、指定面や作用を変えない。
+
+```lean
+lemma vectorTensorAt_congr (n : ℕ) (f g : Fin n → Σ d : ℕ, K.X (-(d : ℤ))) (t : ℤ)
+    (hf : -(vectorDegree K n f : ℤ) = t) (hg : -(vectorDegree K n g : ℤ) = t)
+    (hfg : f = g) : vectorTensorAt K n f t hf = vectorTensorAt K n g t hg
+```
+
+証明は因子の族の等式で置換してrfl。C339の中では、この値の等式を使ってから
+元のcutTensorAtへ戻す。C340では既存adjacentAutの同型のhomを元のadjacentIsoとして
+明示する。C341の帰納法は既存GroupTheory.Coxeter.PermutationInductionを直接importする。
+いずれも既存構成の法則・証明分割で、一覧の総数は変えない。
+
+## 156. L11 完了：同じ一般切断和と元の Koszul 置換
+
+一覧：済み 12／全体 48（うち追加 4）
+
+L11 `cutSum_permutation` を、既存cutSumの全ての入力（任意の可換環A・
+一般S・全正arity・語次数d・単体次数q・任意の色置換・実際の生成元）で証明した。
+切断項のC341 `cutTerm_permutation` は全arityで述べている。
+§108.3で別にした零arityの空語と部分合成の接続はL14のまま保持し、完了へ数えない。
+同じ位置集合・同じ順序の指定面・同じ正規化生成元・元のcutSignを保ち、
+実際の整数複体のテンソル置換と一致させた。ホモトピー圏の等式への変更はない。
+非退化な切断だけへ制限せず、退化した面の因子も元の正規化生成元のまま含む。
+
+対象ビルド成功（2,265 jobs）、小さい監査成功（8モジュール・82宣言、標準三公理のみ）。
+sorry・追加公理0、Lean警告0。ビルド・監査ごとに独立の鍵を取り、終了・返却を確認。
+監査末尾の#checkでL11・C341・C332の実際の全称型も確認した。
+元の公開宣言・界面・共通入口・共通監査は変更していない。
+
+登録候補（接頭部 `SerrePositivity.EInfinity.SimplexCuts.`）：
+
+| モジュール | 実測行数 |
+| --- | ---: |
+| WeightedColorPairs | 92 |
+| CutRenamingSigns | 45 |
+| TensorFirstSwap | 60 |
+| VectorTensorTransport | 118 |
+| TensorAdjacentSwap | 90 |
+| CutVectorsRenaming | 82 |
+| CutTermPermutation | 107 |
+| CutSumPermutation | 53 |
+
+八本は入口の `CutSumPermutation` からすべてimportされる。
+宣言元を選ぶ共通監査では、この八本をそれぞれ登録できる。
+一般Kのモノイダル評価の法則も、この段ではSimplexCutsの共通補助として置いた。
+
+ログ：`/tmp/bsw16/m14-cut-sum-permutation-05.log`。
+監査入力：`/tmp/bsw16/audit-m14-cut-sum-permutation.lean`、
+結果：`/tmp/bsw16/m14-cut-sum-permutation-audit.log`。
+有限点検132,374例は§145のとおりで、Leanの全称証明とは別の点検。
+
+### 156.1 見込みと実測の差、M14全体の残り
+
+一覧：済み 12／全体 48（うち追加 4）
+
+L11実測は**647行**。§121.4の250〜450行に対し、上端との差は**+197行**。
+§152の途中の398行からは+249行で、そこで出した残り220〜340行の見込み内。
+増分は次の同じ構成の接続だった。
+
+| §152の残りの行 | 見込み | 実測 |
+| --- | ---: | ---: |
+| 色別位置集合と指定面生成元 | 70〜110 | 82 |
+| 実テンソル・符号を合わせた切断項の置換 | 95〜150 | 107 |
+| 元の語長と全次数を保った有限和 | 55〜80 | 53 |
+| 同じ因子の族の次数移送の法則C344 | 上の接続に含む | 7 |
+| **合計** | **220〜340** | **249** |
+
+C344の7行は「実テンソル・符号を合わせた接続」の同じ次数移送の法則として増えた。
+§152の表の独立の数学の不足を新設したものではない。個々の証明200行以内。
+型は§155へ記録した。§152の398行と合わせた647行を一度だけ数える。
+
+M14実測は14,560+647=**15,207行**、L09a・L09の8,991行は不変。
+L11を残りの見込みから除いて更新する。
+
+| 部分 | 残りの下端 | 残りの上端 |
+| --- | ---: | ---: |
+| L12a・L12〜L28（L14前段46行は既に控除） | 3,904 | 7,064 |
+| L29〜L37 | 1,200 | 2,000 |
+| G10後の指定比較への適用 | 500 | 900 |
+| filtered塔 | 300 | 550 |
+| 二重模型の実現の比較 | 1,500 | 2,800 |
+| **M14完成時（実測込み）** | **22,611** | **28,521** |
+
+外枠25,000行、現在の残り枠は**9,793行**。上端には3,521行の超過リスクが残る。
+残るL12aなどの数学を完成済みとして控除していない。
+次は固定したL12aの二段切断と一段切断の有限項の対応。
+G10の部品、M15・G12には触れない。B4は595254e10で完了済みのまま。
+
+## 157. L12a の入口：元の合成側の添字と項（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+L11は6d7768d43へ保存した。次は§112.2の固定したL12aの全体（nullaryを含む）へ進む。
+まず内側arityがn+1の枝で、既存OverlapPartitionと合成基底語の切断をそのまま直積にする。
+外側語の長さはm+1+d、合成語の長さはm+(n+1)+(d+e)。切断区間の数
+m+n+(d+e)+1へ等式移送するだけで、色や合成語は変えない。
+compositeBasisWord_listとC345の同じ語長の移送の法則で、指定した元のリストとの一致を保持する。
+
+合成側の値は元のcompositionSign倍の元のcutTerm。全次数−(d+e+q)へ同じ等式で移す。
+退化した面も添字から除外せず、C347で元の正規化生成元により零になる値として保持する。
+これは§112のCompositeBalanceIndexの合成側の正arityの枝を構成するもので、
+新しい数学を一覧へ足すものではない。nullary・二段側・対応・符号・実テンソルの比較は未完。
+型は次。
+
+```lean
+abbrev PositiveCompositeCutIndex {m n d e : ℕ} (u : Surjection.BasisWord (m + 1) d)
+    (_v : Surjection.BasisWord (n + 1) e) (k : Fin (m + 1)) (q : ℕ)
+
+def positiveCompositeCutWord {m n d e : ℕ} (u : Surjection.BasisWord (m + 1) d)
+    (v : Surjection.BasisWord (n + 1) e) (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e)) :
+    Surjection.Word (m + (n + 1)) ((m + n + (d + e)) + 1)
+
+lemma word_eq_mp_ofFn {r l l' : ℕ} (h : l = l') (v : Surjection.Word r l) :
+    List.ofFn (Eq.mp (congrArg (fun k => Surjection.Word r k) h) v).val =
+      List.ofFn v.val
+
+lemma positiveCompositeCutWord_list {m n d e : ℕ} (u : Surjection.BasisWord (m + 1) d)
+    (v : Surjection.BasisWord (n + 1) e) (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e)) :
+    List.ofFn (positiveCompositeCutWord u v k r).val = Surjection.compositeWord u v k r
+
+def positiveCompositeCutTerm {m n d e q : ℕ} (S : SSet.{0})
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) (x : S _⦋q⦌) :
+    (power (chains A S) (m + (n + 1))).X (-((d + e + q : ℕ) : ℤ))
+
+lemma positiveCompositeCutTerm_eq_zero {m n d e q : ℕ} (S : SSet.{0})
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) (x : S _⦋q⦌)
+    (h : ¬Nondegenerate c.2 (positiveCompositeCutWord u v k c.1).val) :
+    positiveCompositeCutTerm A S u v k c x = 0
+```
+
+各証明200行以内。この枝の型検査だけでL12aの全称主張を完了として数えない。
+L12a全体の1,400〜2,400行の見込みを保持し、半分に達した時点で実測と残りを報告する。
+
+## 158. L12a の合成側の最初の枝の検証・保存
+
+一覧：済み 12／全体 48（うち追加 4）
+
+PositiveCompositeCuts.lean の対象ビルド成功（2,190 jobs）、
+小さい監査成功（1モジュール・24宣言、標準三公理のみ）。
+sorry・追加公理0、Lean警告0。監査には添字PositiveCompositeCutIndexのFintypeを
+全パラメータで合成するexampleも含め、単に「有限のはず」とは扱わなかった。
+C346で残った語長の算術は、元の長さの等式をomegaで明示して閉じた。
+語の値・順序・符号は変えない。各証明200行以内。
+
+登録候補：`SerrePositivity.EInfinity.SimplexCuts.PositiveCompositeCuts`。
+実測78行。M14は15,207+78=**15,285行**、外枠25,000行の残り9,715行。
+L12aの実装済み前段78行であり、対応・二段側・nullary・符号・実テンソルの比較は未完。
+一覧の完了数を増やさない。
+L12a全体の1,400〜2,400行の見込みにこの78行を含め、後で重複加算しない。
+§156.1の全体の22,611〜28,521行の見込みと上端超過リスクを保持する。
+
+ログ：`/tmp/bsw16/m14-positive-composite-cuts-02.log`。
+監査入力：`/tmp/bsw16/audit-m14-positive-composite-cuts.lean`、
+結果：`/tmp/bsw16/m14-positive-composite-cuts-audit.log`。
+ビルド・監査ごとに鍵を取り、終了・返却を確認した。
+
+## 159. 次のL12aの有限対応の原型の点検（紙のみ）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+正の内側arityで、合成語の位置には「元の外側の位置」を付ける。
+代入色の位置だけは、分割のstartからの内側位置も付ける。
+合成切断の各頂点を（外側位置、元の単体頂点）へ写し、隣り合う同一点をまとめると
+元の外側切断になる。その外側切断の代入色の頂点だけを、元の順序で順位付けする。
+元の合成切断の代入色部分を（内側位置、この順位）へ写すと、内側切断になる。
+重なる分割の隣の部分語は端点の内側位置を共有するため、外側の別の出現へ移る所も
+内側切断の縦の一歩になる。
+
+この写像の原型をPythonで点検した。外側の位置数1〜4、非空な全代入位置マスク、
+内側長1〜4、入力次元0〜3。分割は元の正の部分長と総和の条件を全列挙し、
+切断は全shuffle経路を列挙した。退化項の添字を除いていない。
+**416条件・21,939組で、得られた外側/内側切断が正しい経路であり、単射・全射を確認した。**
+スクリプト：`/tmp/bsw16/check-composite-cut-projection.py`、
+結果：`/tmp/bsw16/check-composite-cut-projection.log`。
+これは有限点検であってLeanの全称証明ではない。色マスクは語より一般の位置マスクで
+点検したが、色・compositionSign・実テンソルの値を比較したとは扱わない。
+
+対応の次の型案（未実装）は次。L12aの同じ添字の対応の証明の分割であり、
+別の数学のまとまりとして追加するものではない。
+
+```lean
+abbrev PositiveNestedCutIndex {m n d e : ℕ} (u : Surjection.BasisWord (m + 1) d)
+    (_v : Surjection.BasisWord (n + 1) e) (k : Fin (m + 1)) (q : ℕ) :=
+  Σ s : Cut (m + d) q, Cut (n + e) (outputDegree s (positiveWord u) k)
+
+-- 正の内側arityの同じ全有限添字を対応させる構成案：
+positiveCompositeNestedEquiv {m n d e : ℕ} (u : Surjection.BasisWord (m + 1) d)
+    (v : Surjection.BasisWord (n + 1) e) (k : Fin (m + 1)) (q : ℕ) :
+  PositiveCompositeCutIndex u v k q ≃ PositiveNestedCutIndex u v k q
+```
+
+逆向きでは、外側の各代入色の出現に属する内側切断の横ステップをまとめる。
+その最初/最後の内側位置から部分長を読み、共有端点と全横ステップ数により
+既存OverlapPartitionの条件を示す。外側の他の色の経路を挟んで合成切断を復元する。
+この幾何学的対応だけでcompositionSign・cutSign・指定面・実テンソルの比較が
+閉じたとは数えない。nullaryも別に残る。
+
+退化入力については既存`DegenerateInput.lean`の`cutTensor_degenerate`が
+項ごとの零を供給することを確認した。したがって二段側の退化した元の面を扱う際、
+単に和全体の相殺を仮定しない。この補題を使える形への指定面の比較も残る。
+
+## 160. L12a の同じ切断区間の端点の法則（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+前ターンはL11と合成側の前段を検証・コミットした進捗。作業木はad079c9feから再開した。
+二段側から重なる分割を復元する際、内側切断の各縦fiberの横方向の最初/最後を使う。
+その隣接fiberの共有端点は、元のCutのlo・hiの同じ法則をexchangeした経路へ適用する。
+新しい端点や経路模型を選ばない。
+
+まずm,qが0〜5の全923経路について、最初/最後の端点、隣接区間の共有端点、
+lo・hiの単調性を有限点検した（正確な件数は下の実行ログを正本とする）。
+スクリプト：`/tmp/bsw16/check-cut-interval-boundaries.py`、
+結果：`/tmp/bsw16/check-cut-interval-boundaries.log`。
+Leanの全称証明は次のC348〜C352で別に行う。型は次。
+
+```lean
+lemma lo_zero {m q : ℕ} (s : Cut m q) : lo s 0 = 0
+
+lemma hi_last {m q : ℕ} (s : Cut m q) : hi s (Fin.last m) = q
+
+lemma hi_eq_lo_succ {m q : ℕ} (s : Cut m q) (i : Fin m) :
+    hi s i.castSucc = lo s i.succ
+
+lemma hi_monotone {m q : ℕ} (s : Cut m q) : Monotone (hi s)
+
+lemma lo_monotone {m q : ℕ} (s : Cut m q) : Monotone (lo s)
+```
+
+C348・C349は既存lo_eq_of_bound・hi_eq_of_boundと元の経路の端点。
+C350は既存horizontal_edge、水平辺の直前の最大点、lo_eq_of_boundで同じ共有頂点を示す。
+C351・C352はC350と既存lo_le_hiをFinの隣接単調性へ渡す。
+各証明200行以内。固定したL12aの有限対応に使う既存構成の法則・証明分割として数える。
+
+## 161. L12a の二段側の添字と同じ色の順位の区間分解（実装前）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+C350は共有辺の垂直座標の等式の向きをそのまま使うよう直す。
+次に、元の一色の頂点の順位を元の外側水平座標のfiberに分ける。
+C353は既存orderEmbOfFinによる同じ頂点の全単射で濃度を示す。
+C354・C355・C356は、その非空性・区間順序・全順位の被覆の法則である。
+新しい頂点列や選択した面を作らない。
+
+有限点検は外側区間数1〜4・arity1〜3の全非退化全射語、入力次元0〜3の全経路。
+**2,514例で濃度・非空性・順序・被覆を確認**した。
+スクリプト：`/tmp/bsw16/check-color-interval-ranks.py`、
+結果：`/tmp/bsw16/check-color-interval-ranks.log`。
+
+二段の添字は§159の型案のまま、外側の切断と、その指定色の全出力次数の内側切断のSigmaとする。
+C357は元の語長の等式移送が指定色の出現回数を保つ法則。
+構成済みの合成側と二段側の出現の有限添字を合わせるために使う。
+型は次。固定したL12aの同じ有限対応の証明の分割として数える。
+
+```lean
+def colorIntervalRanks {m q r : ℕ} (s : Cut m q) (v : Surjection.Word r (m + 1))
+    (a : Fin r) (p : Fin (m + 1)) : Finset (Fin (outputDegree s v a + 1))
+
+lemma colorIntervalRanks_card {m q r : ℕ} (s : Cut m q) (v : Surjection.Word r (m + 1))
+    (a : Fin r) (p : Fin (m + 1)) (hp : v.val p = a) :
+    (colorIntervalRanks s v a p).card = (intervalPositions s p).card
+
+lemma colorIntervalRanks_nonempty {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (a : Fin r) (p : Fin (m + 1)) (hp : v.val p = a) :
+    (colorIntervalRanks s v a p).Nonempty
+
+lemma colorIntervalRanks_ordered {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (a : Fin r) (p p' : Fin (m + 1)) (hp : p < p')
+    (i j : Fin (outputDegree s v a + 1))
+    (hi : i ∈ colorIntervalRanks s v a p) (hj : j ∈ colorIntervalRanks s v a p') : i < j
+
+lemma colorIntervalRanks_cover {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (a : Fin r) (j : Fin (outputDegree s v a + 1)) :
+    ∃ p : Fin (m + 1), v.val p = a ∧ j ∈ colorIntervalRanks s v a p
+
+abbrev PositiveNestedCutIndex {m n d e : ℕ} (u : Surjection.BasisWord (m + 1) d)
+    (_v : Surjection.BasisWord (n + 1) e) (k : Fin (m + 1)) (q : ℕ)
+
+lemma positiveWord_occurrenceCount {m d : ℕ} (u : Surjection.BasisWord (m + 1) d)
+    (k : Fin (m + 1)) :
+    Surjection.occurrenceCount (positiveWord u).val k = Surjection.occurrenceCount u.val k
+```
+
+各証明200行以内。正の枝の対応そのもの・復元・符号・実テンソル・nullaryは未完。
+これらの法則や有限点検だけでL12aを完了へ数えない。
+
+## 162. L12a の同じ色の順位の閉区間（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§161の三本は2,241 jobsの対象ビルドに成功、Lean警告0。
+次に同じcolorIntervalRanksのmin'・max'を、その最初・最後の順位として読む。
+C358は既存の順序列挙と元の水平座標の単調性により、そのfiberが閉区間であることを示す。
+C359・C360は既存の非空性・順序をその二端点へ渡す法則。
+§161の2,514例へ閉区間の連続性の条件を加え、同じ全例で確認した。
+結果：`/tmp/bsw16/check-color-interval-ranks-convex.log`。
+型は次。選び直した順位ではなく元の同じ集合の両端である。
+
+```lean
+def colorIntervalFirst {m q r : ℕ} (s : Cut m q) (v : Surjection.Word r (m + 1))
+    (a : Fin r) (p : Fin (m + 1)) (hp : v.val p = a) : Fin (outputDegree s v a + 1)
+
+def colorIntervalLast {m q r : ℕ} (s : Cut m q) (v : Surjection.Word r (m + 1))
+    (a : Fin r) (p : Fin (m + 1)) (hp : v.val p = a) : Fin (outputDegree s v a + 1)
+
+lemma colorIntervalRanks_eq_Icc {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (a : Fin r) (p : Fin (m + 1)) (hp : v.val p = a) :
+    colorIntervalRanks s v a p =
+      Finset.Icc (colorIntervalFirst s v a p hp) (colorIntervalLast s v a p hp)
+
+lemma colorIntervalFirst_le_last {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (a : Fin r) (p : Fin (m + 1)) (hp : v.val p = a) :
+    colorIntervalFirst s v a p hp ≤ colorIntervalLast s v a p hp
+
+lemma colorIntervalLast_lt_first {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (a : Fin r) (p p' : Fin (m + 1))
+    (hp : v.val p = a) (hp' : v.val p' = a) (hpp' : p < p') :
+    colorIntervalLast s v a p hp < colorIntervalFirst s v a p' hp'
+```
+
+各証明200行以内。次にこの両端を内側切断の縦fiberへ渡し、重なる分割の長さを復元する。
+有限対応の全体・符号・実テンソル・nullaryはまだ未完。
+
+## 163. L12a の同じ出現順の順位区間の端点（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§162の閉区間の法則まで2,242 jobsの対象ビルドに成功、Lean警告0。
+次に既存occurrenceAtで元の色の出現順を使い、同じ順位区間の最初/最後を読む。
+C361は既存の昇順リストのgetで元の位置を全列挙する法則。
+C362〜C365は既存の所属・区間順序、C366〜C368は同じ被覆と有限順序の法則。
+特にC368は隣の二出現の間に別の出現がないことから順位の隙間を排除する。
+
+§161の2,514例へ最初零・最後が全順位の最後・隣接区間の隙間なしを加え、
+同じ全例で確認した。結果：`/tmp/bsw16/check-color-occurrence-boundaries.log`。
+次の型を既存構成の法則・有限対応の証明分割として実装する。
+
+```lean
+lemma occurrenceAt_exists {r l : ℕ} (v : Fin l → Fin r) (a : Fin r)
+    (p : Fin l) (hp : v p = a) :
+    ∃ j : Fin (Surjection.occurrenceCount v a), Surjection.occurrenceAt v a j = p
+
+def colorOccurrenceFirst {m q r : ℕ} (s : Cut m q) (v : Surjection.Word r (m + 1))
+    (a : Fin r) (j : Fin (Surjection.occurrenceCount v.val a)) : Fin (outputDegree s v a + 1)
+
+def colorOccurrenceLast {m q r : ℕ} (s : Cut m q) (v : Surjection.Word r (m + 1))
+    (a : Fin r) (j : Fin (Surjection.occurrenceCount v.val a)) : Fin (outputDegree s v a + 1)
+
+lemma colorOccurrenceFirst_mem {m q r : ℕ} (s : Cut m q) (v : Surjection.Word r (m + 1))
+    (a : Fin r) (j : Fin (Surjection.occurrenceCount v.val a)) :
+    colorOccurrenceFirst s v a j ∈ colorIntervalRanks s v a (Surjection.occurrenceAt v.val a j)
+
+lemma colorOccurrenceLast_mem {m q r : ℕ} (s : Cut m q) (v : Surjection.Word r (m + 1))
+    (a : Fin r) (j : Fin (Surjection.occurrenceCount v.val a)) :
+    colorOccurrenceLast s v a j ∈ colorIntervalRanks s v a (Surjection.occurrenceAt v.val a j)
+
+lemma colorOccurrenceFirst_le_last {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (a : Fin r) (j : Fin (Surjection.occurrenceCount v.val a)) :
+    colorOccurrenceFirst s v a j ≤ colorOccurrenceLast s v a j
+
+lemma colorOccurrenceLast_lt_first {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (a : Fin r)
+    (j j' : Fin (Surjection.occurrenceCount v.val a)) (hj : j < j') :
+    colorOccurrenceLast s v a j < colorOccurrenceFirst s v a j'
+
+lemma colorOccurrenceFirst_zero {m q r : ℕ} (s : Cut m q) (v : Surjection.Word r (m + 1))
+    (a : Fin r) :
+    (colorOccurrenceFirst s v a ⟨0, Surjection.occurrenceCount_pos v a⟩).val = 0
+
+lemma colorOccurrenceLast_top {m q r : ℕ} (s : Cut m q) (v : Surjection.Word r (m + 1))
+    (a : Fin r) (j : Fin (Surjection.occurrenceCount v.val a))
+    (hj : j.val + 1 = Surjection.occurrenceCount v.val a) :
+    (colorOccurrenceLast s v a j).val = outputDegree s v a
+
+lemma colorOccurrence_adjacent {m q r : ℕ} (s : Cut m q) (v : Surjection.Word r (m + 1))
+    (a : Fin r) (j j' : Fin (Surjection.occurrenceCount v.val a)) (hj : j.val + 1 = j'.val) :
+    (colorOccurrenceLast s v a j).val + 1 = (colorOccurrenceFirst s v a j').val
+```
+
+各証明200行以内。新しい出現順・順位・面の選択はしない。
+この端点を内側切断へ渡し、既存OverlapPartitionの共有端点と総長を満たす復元へ使う。
+L12aの正の枝の全対応・符号・実テンソル・nullaryはまだ未完。
+
+## 164. L12a の二段添字・区間端点の最初の保存
+
+一覧：済み 12／全体 48（うち追加 4）
+
+対象ビルド成功（2,243 jobs）、専用の小さい監査成功（5モジュール・45宣言、標準三公理のみ）。
+sorry・追加公理0、Lean警告0。二段添字のFintypeも全パラメータで型検査した。
+C361の依存した長さの書き換えは、同じ長さの等式からの不等式の推移で処理した。
+最初/最後の順位と隣接する区間の隙間なしは、その元の出現順と被覆だけで証明している。
+個々の証明200行以内。
+
+登録候補（接頭部 `SerrePositivity.EInfinity.SimplexCuts.`）：
+
+| モジュール | 実測行数 |
+| --- | ---: |
+| IntervalBoundaryGlue | 73 |
+| ColorIntervalRanks | 76 |
+| ColorRankIntervals | 66 |
+| ColorOccurrenceBoundaries | 154 |
+| PositiveNestedCuts | 31 |
+
+`PositiveNestedCuts`からこの五本をすべてimportする。入口と共通監査の登録は調整役が行う。
+ログ：`/tmp/bsw16/m14-positive-nested-cuts-04.log`、
+監査入力：`/tmp/bsw16/audit-m14-positive-nested-cuts.lean`、
+結果：`/tmp/bsw16/m14-positive-nested-cuts-audit.log`。
+鍵はビルド・監査ごとに取り、終了・返却を確認した。
+
+今回400行。L12aの前段は78+400=**478行**、M14は15,285+400=**15,685行**。
+外枠25,000行の残り9,315行。L12aの1,400〜2,400行の見込みに478行を含め、
+あとで独立の新規として重ねて数えない。L12aの対応・復元・符号・実テンソル・nullaryは
+まだ未完で、一覧の完了数は増やさない。G10の部品は作らない。
+
+## 165. L12a の二段切断から既存OverlapPartitionへの復元（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§164の五本を0a46b3af2へ保存した。次は§159の逆向きの分割のデータを作る。
+内側切断をexchangeし、元の外側出現の最初/最後の順位でlo・hiを評価する。
+C369〜C373は既存の端点の単調性・共有端点の法則をそこへ渡すもの。
+C374はその部分長の自然数の望遠和。overlapOfIntervalsは、この長さ・総和を
+元のOverlapPartitionの欄へ渡すだけで、元の定義・正規化を変えない。
+
+Pythonの正の枝の416条件・21,939組について、射影後の二段切断の各外側出現から
+読む内側の最初/最後の位置の差+1が、元の重なる分割の部分長に戻ることを確認した。
+結果：`/tmp/bsw16/check-nested-partition-recovery.log`、
+スクリプト：`/tmp/bsw16/check-nested-partition-recovery.py`。
+Leanではまず、二段切断から読む値が分割の条件を満たすことを証明する。
+射影した合成側から元の分割へ戻る全称等式は、まだこの検査だけでは証明されない。
+型は次。固定したL12aの同じ分割の復元と有限計算の証明分割として数える。
+
+```lean
+def nestedSegmentStart {m q r l : ℕ} (s : Cut m q) (v : Surjection.Word r (m + 1))
+    (a : Fin r) (t : Cut l (outputDegree s v a))
+    (j : Fin (Surjection.occurrenceCount v.val a)) : ℕ
+
+def nestedSegmentEnd {m q r l : ℕ} (s : Cut m q) (v : Surjection.Word r (m + 1))
+    (a : Fin r) (t : Cut l (outputDegree s v a))
+    (j : Fin (Surjection.occurrenceCount v.val a)) : ℕ
+
+lemma nestedSegmentStart_le_end {m q r l : ℕ} (s : Cut m q) (v : Surjection.Word r (m + 1))
+    (a : Fin r) (t : Cut l (outputDegree s v a)) (j : Fin (Surjection.occurrenceCount v.val a)) :
+    nestedSegmentStart s v a t j ≤ nestedSegmentEnd s v a t j
+
+lemma nestedSegmentEnd_le {m q r l : ℕ} (s : Cut m q) (v : Surjection.Word r (m + 1))
+    (a : Fin r) (t : Cut l (outputDegree s v a)) (j : Fin (Surjection.occurrenceCount v.val a)) :
+    nestedSegmentEnd s v a t j ≤ l
+
+lemma nestedSegmentStart_zero {m q r l : ℕ} (s : Cut m q) (v : Surjection.Word r (m + 1))
+    (a : Fin r) (t : Cut l (outputDegree s v a)) (j : Fin (Surjection.occurrenceCount v.val a))
+    (hj : j.val = 0) : nestedSegmentStart s v a t j = 0
+
+lemma nestedSegmentEnd_last {m q r l : ℕ} (s : Cut m q) (v : Surjection.Word r (m + 1))
+    (a : Fin r) (t : Cut l (outputDegree s v a)) (j : Fin (Surjection.occurrenceCount v.val a))
+    (hj : j.val + 1 = Surjection.occurrenceCount v.val a) : nestedSegmentEnd s v a t j = l
+
+lemma nestedSegmentEnd_eq_start {m q r l : ℕ} (s : Cut m q) (v : Surjection.Word r (m + 1))
+    (a : Fin r) (t : Cut l (outputDegree s v a))
+    (j j' : Fin (Surjection.occurrenceCount v.val a)) (hj : j.val + 1 = j'.val) :
+    nestedSegmentEnd s v a t j = nestedSegmentStart s v a t j'
+
+lemma intervalLengths_sum (t L : ℕ) (a b : Fin (t + 1) → ℕ)
+    (hab : ∀ j, a j ≤ b j) (hfirst : a 0 = 0) (hlast : b (Fin.last t) + 1 = L)
+    (hnext : ∀ i : Fin t, b i.castSucc = a i.succ) :
+    (∑ j : Fin (t + 1), (b j - a j + 1)) + 1 = L + (t + 1)
+
+def overlapOfIntervals {t L : ℕ} (ht : 0 < t) (a b : Fin t → ℕ)
+    (hab : ∀ j, a j ≤ b j) (hb : ∀ j, b j < L)
+    (hfirst : ∀ j, j.val = 0 → a j = 0)
+    (hlast : ∀ j, j.val + 1 = t → b j + 1 = L)
+    (hnext : ∀ i j, i.val + 1 = j.val → b i = a j) : Surjection.OverlapPartition t L
+
+def positiveNestedPartition {m n d e q : ℕ} (u : Surjection.BasisWord (m + 1) d)
+    (v : Surjection.BasisWord (n + 1) e) (k : Fin (m + 1))
+    (c : PositiveNestedCutIndex u v k q) :
+    Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e)
+```
+
+個々の証明200行以内。positiveNestedPartitionは語長・出現数の元の等式で移した
+既存OverlapPartitionの値であり、新しい合成や符号を選ぶものではない。
+合成切断自体の復元、両向きの一致、符号、実テンソル、nullaryは引き続き未完。
+
+## 166. L12a の復元した部分長の値の法則（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+C374の望遠和と既存OverlapPartitionへの欄の供給は型検査が進んでいる。
+C371ではFinの零の自然数値をFin.val_zeroで明示して簡約する。
+次に元の出現数の移送で部分長の値が変わらないC375、復元した部分長の指定式C376を示す。
+これにより単に「何らかの分割が存在する」とせず、読む部分長そのものを保持する。
+型は次。既存の分割の係数移送・同じ構成の評価の法則として数える。
+
+```lean
+lemma overlap_eq_mp_val {t t' L : ℕ} (h : t = t') (r : Surjection.OverlapPartition t L)
+    (i : Fin t') (j : Fin t) (hij : i.val = j.val) :
+    ((Eq.mp (congrArg (fun k => Surjection.OverlapPartition k L) h) r).val i).val =
+      (r.val j).val
+
+lemma positiveNestedPartition_length {m n d e q : ℕ} (u : Surjection.BasisWord (m + 1) d)
+    (v : Surjection.BasisWord (n + 1) e) (k : Fin (m + 1))
+    (c : PositiveNestedCutIndex u v k q) (i : Fin (Surjection.occurrenceCount u.val k))
+    (j : Fin (Surjection.occurrenceCount (positiveWord u).val k)) (hij : i.val = j.val) :
+    ((positiveNestedPartition u v k c).val i).val =
+      nestedSegmentEnd c.1 (positiveWord u) k c.2 j -
+        nestedSegmentStart c.1 (positiveWord u) k c.2 j + 1
+```
+
+C375は出現数の等式で置換して同じ番号を合わせるだけ。
+C376はpositiveNestedPartitionとoverlapOfIntervalsの元の定義を評価する。
+各証明200行以内。射影から元の分割へ戻る全称等式や合成切断の復元はまだ別に残る。
+
+## 167. L12a の同じOverlapPartitionの復元の検証・保存
+
+一覧：済み 12／全体 48（うち追加 4）
+
+対象ビルド成功（2,252 jobs）、小さい監査成功（4モジュール・27宣言、標準三公理のみ）。
+sorry・追加公理0、Lean警告0。監査末尾の#checkでpositiveNestedPartitionとその部分長の
+全称型も確認した。二段切断の実際の両端の差に一を足した値で、既存の重なる分割を作った。
+部分長の正値・上界・共有端点・総和を実際の同じ端点から供給し、
+元の出現数への移送でも値が変わらないC375・C376を証明した。
+
+登録候補（接頭部 `SerrePositivity.EInfinity.SimplexCuts.`）：
+
+| モジュール | 実測行数 |
+| --- | ---: |
+| NestedSegmentBounds | 74 |
+| OverlapIntervals | 53 |
+| RecoveredNestedPartition | 34 |
+| RecoveredPartitionValues | 36 |
+
+四本は`RecoveredPartitionValues`からすべてimportされる。
+前の五本（§164）と合成側の一本（§158）もL12aの登録候補のまま。
+共通入口・共通監査は変更していない。
+
+ログ：`/tmp/bsw16/m14-recovered-partition-values-01.log`。
+監査入力：`/tmp/bsw16/audit-m14-recovered-partition-values.lean`、
+結果：`/tmp/bsw16/m14-recovered-partition-values-audit.log`。
+鍵はビルド・監査ごとに取り、終了・返却を確認した。個々の証明200行以内。
+
+今回197行。L12aの前段は478+197=**675行**、M14は15,685+197=**15,882行**。
+外枠25,000行の残り**9,118行**。L12a全体の1,400〜2,400行の目安に675行を含める。
+この目安を検証済みの完成予測としては扱わず、半分の1,200行に達した時点で
+実測と未実装の対応・符号・実テンソル・nullaryの見込みを出し直す。
+正の枝の合成切断の復元と両向きの一致もまだ未完。L12aを完了へ数えない。
+
+## 168. 次のL12a：同じ切断の水平辺の高さによる復元（紙のみ）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§159の射影/復元は元の経路の座標だけで行う。実装では新しい経路の型へ移らず、
+Cut m qの元の水平辺の第i位置がi+その高さであることを使って、
+同じ有限な水平辺集合を組み立てる方法を次に試す。
+高さは元のhi s i.castSuccをFin(q+1)で読める。単調性は検証済みC351。
+元の水平辺の昇順列挙は既存orderEmbOfFinであり、その第i番より前の水平辺数はi。
+この濃度と元のcoordinate_sumから位置=i+高さを示せる。
+
+有限点検はm,qが0〜5の全923経路。水平辺の高さの族が単調であること、
+各水平辺の位置がi+高さ_iであること、全単調な高さの族を過不足なく得ることを確認した。
+スクリプト：`/tmp/bsw16/check-cut-heights.py`、
+結果：`/tmp/bsw16/check-cut-heights.log`。
+これは既存Cutの座標の法則の点検で、Leanの全称証明ではない。
+
+次の型案（未実装）は、同じCutを組み立てるL12aの証明分割として使う。
+新しいコチェイン模型・余作用・∞の構成へ置き換えない。
+
+```lean
+cutHeights {m q : ℕ} (s : Cut m q) : Fin m →o Fin (q + 1)
+cutOfHeights {m q : ℕ} (h : Fin m →o Fin (q + 1)) : Cut m q
+cutHeights_cutOfHeights {m q : ℕ} (h : Fin m →o Fin (q + 1)) :
+  cutHeights (cutOfHeights h) = h
+cutOfHeights_cutHeights {m q : ℕ} (s : Cut m q) :
+  cutOfHeights (cutHeights s) = s
+```
+
+cutOfHeightsは元のShufflePathの有限集合の構成子へ、位置i+h_iの像を渡すだけとする。
+その像がm点であることは単調性からの狭義単調な位置写像で示す。
+元の集合との一致・座標保存を別に証明し、射影/逆写像の双方の経路の一致へ使う。
+この紙の案や有限点検を、L12aの対応・符号・実テンソルの証明済み部分へ数えない。
+
+## 169. L12a の同じ水平辺の高さと元の経路の一致（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+前ターンはc6c95c4caまでの復元を検証・保存した進捗。作業木は清潔な同コミットから再開。
+§168の923経路の有限点検に対応する法則を実装する。
+C377は既存orderEmbOfFinの第i位置より前の濃度。C378・C380は元の水平/垂直座標、
+C379は元のcoordinate_sumからの辺番号=i+高さ、C381は同じ水平辺集合の一意性。
+
+cutOfHeightsは、L12aの逆向きで必要な元のCutを作る実装分割である。
+新しい経路模型へ移らず、既存ShufflePathの有限集合の構成子へ同じ辺番号の像を渡す。
+C383〜C386で元の昇順列挙と高さを保ち、元の経路へ戻ることを示す。
+これらの型は次。既存構成の座標の法則・L12aの有限対応の証明分割として数える。
+
+```lean
+lemma card_filter_lt_orderEmbOfFin {α : Type*} [LinearOrder α] (s : Finset α)
+    {n : ℕ} (h : s.card = n) (i : Fin n) :
+    (s.filter (fun x => x < s.orderEmbOfFin h i)).card = i.val
+
+abbrev cutHorizontalEdge {m q : ℕ} (s : Cut m q) (i : Fin m) : Fin (m + q)
+
+def cutHeights {m q : ℕ} (s : Cut m q) : Fin m →o Fin (q + 1)
+
+lemma horizontal_before_cutHorizontalEdge {m q : ℕ} (s : Cut m q) (i : Fin m) :
+    s.horizontal (cutHorizontalEdge s i).castSucc = i.castSucc
+
+lemma vertical_before_cutHorizontalEdge {m q : ℕ} (s : Cut m q) (i : Fin m) :
+    (s.vertical (cutHorizontalEdge s i).castSucc).val = (cutHeights s i).val
+
+lemma cutHorizontalEdge_val {m q : ℕ} (s : Cut m q) (i : Fin m) :
+    (cutHorizontalEdge s i).val = i.val + (cutHeights s i).val
+
+lemma cutHeights_injective {m q : ℕ} : Function.Injective (@cutHeights m q)
+
+def heightPosition {m q : ℕ} (h : Fin m →o Fin (q + 1)) (i : Fin m) : Fin (m + q)
+
+lemma heightPosition_strictMono {m q : ℕ} (h : Fin m →o Fin (q + 1)) :
+    StrictMono (heightPosition h)
+
+def cutOfHeights {m q : ℕ} (h : Fin m →o Fin (q + 1)) : Cut m q
+
+lemma cutHorizontalEdge_cutOfHeights {m q : ℕ} (h : Fin m →o Fin (q + 1)) (i : Fin m) :
+    cutHorizontalEdge (cutOfHeights h) i = heightPosition h i
+
+lemma cutHeights_cutOfHeights {m q : ℕ} (h : Fin m →o Fin (q + 1)) :
+    cutHeights (cutOfHeights h) = h
+
+lemma cutOfHeights_cutHeights {m q : ℕ} (s : Cut m q) :
+    cutOfHeights (cutHeights s) = s
+```
+
+各証明200行以内。これは経路の復元の座標の接続であり、合成/二段切断の全対応、
+その符号・実テンソル・nullaryの証明が完成したとは数えない。
+
+## 170. L12a の合成切断からの元の外側切断（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§169の高さと元の経路の両向きの一致まで2,210 jobsの対象ビルドに成功、Lean警告0。
+次に、元の代入済み接頭語長を使い、外側の第i水平辺の合成語内での位置を
+接頭長(i+1)-1として読む。C387〜C389は既存substitute_prefix_length_mono、
+非指定色/指定色の一文字での増分、compositeWord_lengthから得る。
+正の内側語では全部分語が非空なので、全境界は正しい有限位置にあり、順序を保つ。
+C390・C391はその同じ位置の評価と厳密な順序。
+
+この境界位置で元の合成切断の高さを読み、cutOfHeightsへ渡して元の外側Cutを作る。
+C393でその元の境界の高さを保持する。コチェイン・合成・符号の定義は変更しない。
+§159の射影の原型に、この境界位置の高さとの一致も加えて点検した。
+**416条件・21,939組で一致**。
+スクリプト：`/tmp/bsw16/check-composite-outer-heights.py`、
+結果：`/tmp/bsw16/check-composite-outer-heights.log`。
+型は次。固定したL12aの元の経路の射影を組み立てる証明分割として数える。
+
+```lean
+abbrev compositePrefixLength {m n d e : ℕ} (u : Surjection.BasisWord (m + 1) d)
+    (v : Surjection.BasisWord (n + 1) e) (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e)) (b : ℕ) : ℕ
+
+lemma compositePrefixLength_monotone {m n d e : ℕ} (u : Surjection.BasisWord (m + 1) d)
+    (v : Surjection.BasisWord (n + 1) e) (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e)) :
+    Monotone (compositePrefixLength u v k r)
+
+lemma compositePrefixLength_step {m n d e : ℕ} (u : Surjection.BasisWord (m + 1) d)
+    (v : Surjection.BasisWord (n + 1) e) (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (p : Fin ((m + 1) + d)) :
+    compositePrefixLength u v k r p.val + 1 ≤ compositePrefixLength u v k r (p.val + 1)
+
+lemma compositePrefixLength_full {m n d e : ℕ} (u : Surjection.BasisWord (m + 1) d)
+    (v : Surjection.BasisWord (n + 1) e) (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e)) :
+    compositePrefixLength u v k r ((m + 1) + d) = m + (n + 1) + (d + e)
+
+def compositeOuterEdge {m n d e : ℕ} (u : Surjection.BasisWord (m + 1) d)
+    (v : Surjection.BasisWord (n + 1) e) (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (i : Fin (m + d)) : Fin (m + n + (d + e))
+
+lemma compositeOuterEdge_strictMono {m n d e : ℕ} (u : Surjection.BasisWord (m + 1) d)
+    (v : Surjection.BasisWord (n + 1) e) (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e)) :
+    StrictMono (compositeOuterEdge u v k r)
+
+def positiveCompositeOuterCut {m n d e q : ℕ} (u : Surjection.BasisWord (m + 1) d)
+    (v : Surjection.BasisWord (n + 1) e) (k : Fin (m + 1))
+    (c : PositiveCompositeCutIndex u v k q) : Cut (m + d) q
+
+lemma positiveCompositeOuterCut_heights {m n d e q : ℕ} (u : Surjection.BasisWord (m + 1) d)
+    (v : Surjection.BasisWord (n + 1) e) (k : Fin (m + 1))
+    (c : PositiveCompositeCutIndex u v k q) (i : Fin (m + d)) :
+    cutHeights (positiveCompositeOuterCut u v k c) i =
+      cutHeights c.2 (compositeOuterEdge u v k c.1 i)
+```
+
+各証明200行以内。内側切断の射影・合成切断の逆復元・両向きの一致・符号・
+実テンソル・nullaryは未完。有限点検をLeanの全称証明としては数えない。
+
+## 171. L12a の元の分割における内側水平辺の所属（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§170の外側切断と指定境界の高さの一致まで対象ビルドに成功した。
+接頭長の型の長い行は改行してから次の束で検証し直す。
+次に内側の第p水平辺を含む分割部分を、元の開始位置がp以下の最後の部分として読む。
+共有端点そのものは複数の部分語に属しても、その次へ進む同じ水平辺の所属は一意。
+元のstart・start_next・last_end・boundary_monoを使う法則であり、分割を作り直さない。
+
+自然数p全体で元の有限候補のmax'を読むが、辺の上界・一意性はp+1<Lを明示して述べる。
+実際の内側のFinの辺番号へ適用するとき、この条件はその元の有限上界から供給する。
+有限点検は語長1〜5・部分数1〜5の全ての正の重なる部分長について行った。
+正確な辺数と読んだ位置数は `/tmp/bsw16/check-segment-edge-owner.log` に記録した。
+スクリプト：`/tmp/bsw16/check-segment-edge-owner.py`。
+型は次。固定したL12aの同じ有限対応の内部の所属・単調性・一意性の法則として数える。
+
+```lean
+def segmentEdgeCandidates {t L : ℕ} (r : Surjection.OverlapPartition t L) (p : ℕ) :
+    Finset (Fin t)
+
+lemma segmentEdgeCandidates_nonempty {t L : ℕ} (r : Surjection.OverlapPartition t L)
+    (ht : 0 < t) (p : ℕ) : (segmentEdgeCandidates r p).Nonempty
+
+def segmentEdgeOwner {t L : ℕ} (r : Surjection.OverlapPartition t L) (ht : 0 < t) (p : ℕ) :
+    Fin t
+
+lemma segmentEdgeOwner_start_le {t L : ℕ} (r : Surjection.OverlapPartition t L)
+    (ht : 0 < t) (p : ℕ) : r.start (segmentEdgeOwner r ht p) ≤ p
+
+lemma segmentEdgeOwner_end_gt {t L : ℕ} (r : Surjection.OverlapPartition t L)
+    (ht : 0 < t) (p : ℕ) (hp : p + 1 < L) :
+    p + 1 < r.start (segmentEdgeOwner r ht p) + (r.val (segmentEdgeOwner r ht p)).val
+
+lemma segmentEdgeOwner_monotone {t L : ℕ} (r : Surjection.OverlapPartition t L)
+    (ht : 0 < t) : Monotone (segmentEdgeOwner r ht)
+
+lemma segmentEdgeOwner_unique {t L : ℕ} (r : Surjection.OverlapPartition t L)
+    (ht : 0 < t) (p : ℕ) (hp : p + 1 < L) (j : Fin t)
+    (hleft : r.start j ≤ p) (hright : p + 1 < r.start j + (r.val j).val) :
+    segmentEdgeOwner r ht p = j
+```
+
+各証明200行以内。この所属だけで内側切断や全対応の完成とは数えない。
+
+## 172. L12a の色別順位と同じ区間の高さ（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+内側射影の高さを作るため、元の一つの区間内の高さを、同じ色の頂点列の順位へ移す。
+既存のcolorIntervalRanks_card・colorIntervalRanks_eq_Icc・intervalPositions_cardから、
+順位の幅と元の区間の高さの幅が一致する。その同じ幅を使って順位を読む。
+L12aの既存の有限列挙の評価・証明分割であり、新しい作用や対応を導入するものではない。
+C399〜C402を次の型で追加する（各証明200行以内の見込み）。
+
+```lean
+lemma colorIntervalRank_width {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (a : Fin r) (p : Fin (m + 1)) (hp : v.val p = a) :
+    (colorIntervalLast s v a p hp).val - (colorIntervalFirst s v a p hp).val =
+      hi s p - lo s p
+
+def colorHeightRank {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (a : Fin r) (p : Fin (m + 1)) (hp : v.val p = a)
+    (h : ℕ) (hl : lo s p ≤ h) (hr : h ≤ hi s p) : Fin (outputDegree s v a + 1)
+
+lemma colorHeightRank_mem {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (a : Fin r) (p : Fin (m + 1)) (hp : v.val p = a)
+    (h : ℕ) (hl : lo s p ≤ h) (hr : h ≤ hi s p) :
+    colorHeightRank s v a p hp h hl hr ∈ colorIntervalRanks s v a p
+
+lemma colorHeightRank_monotone {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (a : Fin r) (p : Fin (m + 1)) (hp : v.val p = a)
+    (h h' : ℕ) (hl : lo s p ≤ h) (hr : h ≤ hi s p)
+    (hl' : lo s p ≤ h') (hr' : h' ≤ hi s p) (hh : h ≤ h') :
+    colorHeightRank s v a p hp h hl hr ≤ colorHeightRank s v a p hp h' hl' hr'
+
+lemma colorHeightRank_endpoints {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (a : Fin r) (p : Fin (m + 1)) (hp : v.val p = a) :
+    colorHeightRank s v a p hp (lo s p) le_rfl (lo_le_hi s p) =
+        colorIntervalFirst s v a p hp ∧
+      colorHeightRank s v a p hp (hi s p) (lo_le_hi s p) le_rfl =
+        colorIntervalLast s v a p hp
+```
+
+有限点検：`/tmp/bsw16/check-color-height-ranks.py`。884組の語と切断、5,410箇所の高さで、
+幅の一致と、上の順位が同じ元の水平位置・高さを読むことを確認した。
+有限点検は全称証明の代わりには数えない。内側切断・逆復元・符号・nullaryは未完。
+
+## 173. L12a の外側射影と辺の所属：検証・取り込み候補
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§169〜171の6モジュール、387行を検証した。
+対象ビルド：`/tmp/bsw16/m14-composite-outer-and-owner-01.log`、2,847 jobs、成功・対象警告0。
+小監査：`/tmp/bsw16/audit-m14-composite-outer-and-owner.lean`、
+結果 `/tmp/bsw16/m14-composite-outer-and-owner-audit.log`、**6モジュール・61宣言、標準三公理のみ**。
+sorry・新規公理は0。既存の公開宣言・界面・共有入口は変更していない。
+
+登録候補（すべて `SerrePositivity.EInfinity.SimplexCuts.` の下）：
+`OrderedPrefixCard`、`CutHeights`、`CutOfHeights`、`CompositePrefixLengths`、
+`CompositeOuterCut`、`SegmentEdgeOwner`。
+元のCutの高さとの相互復元、元の合成語の接頭長、外側切断と指定境界の一致、
+内側水平辺の所属の一意性まで。L12a全体の対応・符号・実テンソル・nullaryは未完。
+
+L12a検証済み実測は675+387=**1,062行**、M14は15,882+387=**16,269行**。
+外枠25,000行まで**8,731行**。L12aの1,200行の途中報告点はまだ踏んでいない。
+§172のColorHeightRanksはこの時点では未検証の下書きで、上の実測・登録候補に含めない。
+
+## 174. L12a の同じ色別頂点写像との厳密な一致（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§172の有限点検は順位が元の水平位置・高さの頂点を指すことも点検している。
+次はその全称の照合。有限の狭義単調列では、添字の差以下には値が増えない。
+これを元の色別位置列の区間の前半・後半へ適用する。区間全体の順位の幅が高さの幅に
+等しいC399と元のcoordinate_sumから、どちらの増分にも隙間がないことが従う。
+既存の順序列挙・座標写像の法則だけで、元のverticesと厳密に一致する。
+型は次。C403〜C405はL12aの有限列挙の評価・照合の証明分割として数える。
+各証明200行以内の見込み。作用・ホモトピー・Totについての新しい主張は足さない。
+
+```lean
+lemma finite_strictMono_distance {N : ℕ} (f : Fin N → ℕ) (hf : StrictMono f)
+    (i j : Fin N) (hij : i ≤ j) : j.val - i.val ≤ f j - f i
+
+lemma vertices_on_colorIntervalRanks {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (a : Fin r) (p : Fin (m + 1)) (hp : v.val p = a)
+    (j : Fin (outputDegree s v a + 1)) (hj : j ∈ colorIntervalRanks s v a p) :
+    (vertices s v a j).val = lo s p + (j.val - (colorIntervalFirst s v a p hp).val)
+
+lemma vertices_colorHeightRank {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (a : Fin r) (p : Fin (m + 1)) (hp : v.val p = a)
+    (h : ℕ) (hl : lo s p ≤ h) (hr : h ≤ hi s p) :
+    (vertices s v a (colorHeightRank s v a p hp h hl hr)).val = h
+```
+
+## 175. L12a の内側水平辺の同じ合成語位置（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+C394〜398で所属を決めた同じ内側水平辺を、元の部分語の合成位置へ送る。
+位置は元の出現前の接頭長に、元の部分語内の相対位置を足したもの。
+型は次。C406〜C408はL12aの同じ有限対応の内部の位置・順序の法則として数える。
+各証明200行以内の見込み。新しい作用・ホモトピー・Totの主張は含まない。
+有限点検：`/tmp/bsw16/check-composite-inner-edges.py`、416条件・21,939組。
+所属部分語内で隣接する元の二位置を読み、合成語での位置が正しいことと狭義順序を確認。
+
+```lean
+lemma compositePrefixLength_occurrence_end_le {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (j : Fin (Surjection.occurrenceCount u.val k)) :
+    compositePrefixLength u v k r (Surjection.occurrenceAt u.val k j).val + (r.val j).val ≤
+      m + (n + 1) + (d + e)
+
+def compositeInnerEdge {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (a : Fin (n + e)) : Fin (m + n + (d + e))
+
+lemma compositeInnerEdge_val {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (a : Fin (n + e)) :
+    (compositeInnerEdge u v k r a).val =
+      compositePrefixLength u v k r
+          (Surjection.occurrenceAt u.val k
+            (segmentEdgeOwner r (Surjection.occurrenceCount_pos u k) a.val)).val +
+        (a.val - r.start (segmentEdgeOwner r (Surjection.occurrenceCount_pos u k) a.val))
+
+lemma compositeInnerEdge_strictMono {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e)) :
+    StrictMono (compositeInnerEdge u v k r)
+```
+
+## 176. L12a の同じ接頭境界と高さの範囲（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+内側射影の高さをC400へ渡すため、C393の射影した切断の左右の端点を読む。
+外側位置pに属する合成語内の水平辺は、元の接頭長α(p)からα(p+1)の間にある。
+その高さは射影した外側切断のloとhiの間にある。最初/最後は既存lo_zero・hi_last、
+途中は既存hi_eq_lo_succとC393の単調性だけを使う。
+C409は同じ射影の座標の法則・L12aの証明分割として追加する。各証明200行以内の見込み。
+有限点検：`/tmp/bsw16/check-composite-height-bounds.py`、416条件・21,939組。
+型は次。合成語や切断の公開定義は変更しない。
+
+```lean
+lemma positiveCompositeOuterCut_height_bounds {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (p : Fin (m + d + 1)) (a : Fin (m + n + (d + e)))
+    (hl : compositePrefixLength u v k c.1 p.val ≤ a.val)
+    (hr : a.val + 1 < compositePrefixLength u v k c.1 (p.val + 1)) :
+    lo (positiveCompositeOuterCut u v k c) p ≤ (cutHeights c.2 a).val ∧
+      (cutHeights c.2 a).val ≤ hi (positiveCompositeOuterCut u v k c) p
+```
+
+## 177. L12a の1,200行の途中報告：実測と残りの出し直し
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§172・174〜176の4本は対象ビルドが成功した。小監査は別の一回の鍵で実行中。
+`ColorHeightRanks`82行、`ColorHeightVertices`79行、`CompositeInnerEdges`102行、
+`CompositeHeightBounds`53行、合計316行。
+ビルド：`/tmp/bsw16/m14-color-height-and-inner-02.log`（内側辺）、
+`/tmp/bsw16/m14-color-height-and-bounds-03.log`（残り、2,849 jobs）、対象警告0。
+一度目の頂点照合では、差の評価に加えて同じ列挙の値自体の単調性も明示する必要があった。
+その数値的な評価を同じ証明内に足し、元の頂点との厳密な一致を閉じた。
+
+ビルド済みのL12a実測は1,062+316=**1,378行**。監査後に検証済みへ数える。
+M14は同じ基準で16,269+316=**16,585行**、外枠25,000行まで**8,415行**。
+L12aの途中報告点1,200行を踏んだので、残りを次のように出し直す。
+
+| 残るL12aの行 | 見込み |
+| --- | ---: |
+| 内側切断の高さ・単調性と順方向の写像 | 150〜250 |
+| 二段切断から合成切断の逆復元 | 300〜550 |
+| 両方向の逆の等式 | 300〜500 |
+| 同じcompositionSign・cutSignの照合 | 200〜350 |
+| 同じ指定面・実テンソル・零項の照合 | 400〜750 |
+| nullaryの元の有限添字と項の接続 | 250〜400 |
+| **残り** | **1,600〜2,800** |
+| **L12a完成時（1,378行を含む）** | **2,978〜4,178** |
+
+§159のL12a全体1,400〜2,400行の上端より、今の完成上端は+1,778行。
+増えたのは、元のCutの座標・色別順位・重なる部分語の位置を、原型のリスト上の対応から
+元の有限添字の全称証明へつなぐ分である。この前段を全対応や符号の完成として控除しない。
+§156のL12a以外の見込みを据え置いて更新すると、次のとおり。
+
+| 部分 | 残りの下端 | 残りの上端 |
+| --- | ---: | ---: |
+| L12a | 1,600 | 2,800 |
+| L12〜L28（L12aを除く、既存L14前段控除済み） | 2,504 | 4,664 |
+| L29〜L37 | 1,200 | 2,000 |
+| G10後の指定比較への適用 | 500 | 900 |
+| filtered塔 | 300 | 550 |
+| 二重模型の実現の比較 | 1,500 | 2,800 |
+| **M14完成時（実測込み）** | **24,189** | **30,299** |
+
+外枠25,000行に収まるとは主張しない。上端には**5,299行の超過リスク**がある。
+現在は実測16,585行で外枠には届いておらず、固定したL12aの内部の法則だけを進めている。
+既存構成の法則・証明分割は型を報告して続行し、新しい数学・範囲外・外枠で止める規則は維持する。
+G10・M15・G12は作らない。L12a未完のため一覧は12/48のまま。
+
+## 178. L12a の同じ出現位置と、内側高さの範囲の接続（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+次は元の出現位置をpositiveWordの同じ長さで読むだけの移送を明示し、C409へ渡す。
+C410〜C413は既存語長移送・出現位置・接頭長の法則として追加する。
+新しい作用や対応は作らない。各証明200行以内の見込み。型は次。
+
+```lean
+lemma word_eq_mp_value {r l l' : ℕ} (h : l = l') (v : Surjection.Word r l)
+    (i : Fin l') (j : Fin l) (hij : i.val = j.val) :
+    (Eq.mp (congrArg (fun L => Surjection.Word r L) h) v).val i = v.val j
+
+def positiveOccurrencePosition {m d : ℕ} (u : Surjection.BasisWord (m + 1) d)
+    (k : Fin (m + 1)) (j : Fin (Surjection.occurrenceCount u.val k)) : Fin (m + d + 1)
+
+lemma positiveOccurrencePosition_value {m d : ℕ} (u : Surjection.BasisWord (m + 1) d)
+    (k : Fin (m + 1)) (j : Fin (Surjection.occurrenceCount u.val k)) :
+    (positiveWord u).val (positiveOccurrencePosition u k j) = k
+
+lemma positiveOccurrencePosition_strictMono {m d : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (k : Fin (m + 1)) :
+    StrictMono (positiveOccurrencePosition u k)
+
+lemma positiveCompositeInnerEdge_height_bounds {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) (a : Fin (n + e)) :
+    lo (positiveCompositeOuterCut u v k c)
+        (positiveOccurrencePosition u k
+          (segmentEdgeOwner c.1 (Surjection.occurrenceCount_pos u k) a.val)) ≤
+        (cutHeights c.2 (compositeInnerEdge u v k c.1 a)).val ∧
+      (cutHeights c.2 (compositeInnerEdge u v k c.1 a)).val ≤
+        hi (positiveCompositeOuterCut u v k c)
+          (positiveOccurrencePosition u k
+            (segmentEdgeOwner c.1 (Surjection.occurrenceCount_pos u k) a.val))
+```
+
+これらの有限位置・高さは§175〜176の21,939組で点検した同じもの。
+
+## 179. L12a の同じ頂点・辺・高さの範囲：小監査完了
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§177の4本316行の小監査が成功した。
+入力 `/tmp/bsw16/audit-m14-color-height-and-inner.lean`、
+結果 `/tmp/bsw16/m14-color-height-and-inner-audit.log`、
+**4モジュール・38宣言、標準三公理のみ**。sorry・新規公理0、対象警告0。
+L12a検証済み実測**1,378行**、M14**16,585行**、外枠まで**8,415行**。
+見込みは§177を維持する。既存の公開宣言・界面・共有入口は変更していない。
+
+登録候補（接頭部 `SerrePositivity.EInfinity.SimplexCuts.`）：
+`ColorHeightRanks`、`ColorHeightVertices`、`CompositeInnerEdges`、`CompositeHeightBounds`。
+§178の2本はこの時点で未検証の下書き。上の実測・登録候補に含めない。
+
+## 180. L12a の元の内側切断への順方向の接続（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+既に報告した正の枝の対応の順方向を、元の高さと色別順位で組み立てる。
+高さが所属区間内にあるC413からcolorHeightRankを読み、同じ所属ならC401、
+後の所属ならC355で単調性を得る。元のcutOfHeightsへそのまま渡す。
+C414〜C417は固定したL12aの対応の証明分割・同じ座標の法則として追加する。
+型は次。各証明200行以内の見込み。全対応・符号・nullaryはまだ未完。
+
+```lean
+def positiveCompositeInnerHeights {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) :
+    Fin (n + e) →o Fin (outputDegree (positiveCompositeOuterCut u v k c) (positiveWord u) k + 1)
+
+def positiveCompositeInnerCut {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) :
+    Cut (n + e) (outputDegree (positiveCompositeOuterCut u v k c) (positiveWord u) k)
+
+lemma positiveCompositeInnerCut_heights {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) (a : Fin (n + e)) :
+    cutHeights (positiveCompositeInnerCut u v k c) a = positiveCompositeInnerHeights u v k c a
+
+lemma positiveCompositeInnerCut_vertices {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) (a : Fin (n + e)) :
+    vertices (positiveCompositeOuterCut u v k c) (positiveWord u) k
+        (cutHeights (positiveCompositeInnerCut u v k c) a) =
+      cutHeights c.2 (compositeInnerEdge u v k c.1 a)
+
+def positiveCompositeNestedMap {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) : PositiveCompositeCutIndex u v k q → PositiveNestedCutIndex u v k q
+
+lemma positiveCompositeNestedMap_outer {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) :
+    (positiveCompositeNestedMap u v k c).1 = positiveCompositeOuterCut u v k c
+```
+
+この順方向の高さは§175の有限点検のepsilonの水平辺の高さそのもの。
+点検には退化項を除かない21,939組が含まれる。有限点検を全称証明とは数えない。
+
+## 181. L12a の同じ復元分割の開始位置（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+逆復元に使う既存positiveNestedPartitionについて、部分長だけでなく開始位置も元の端点に
+一致することを読む。overlapOfIntervalsの同じ共有端点条件とstart_nextに自然数帰納法を
+使う法則であり、新しい分割を選ばない。C418〜C420を同じ構成の法則として追加する。
+各証明200行以内の見込み。有限点検は既存§165の21,939組の端点復元と同じもの。
+型は次。
+
+```lean
+lemma overlapOfIntervals_start {t L : ℕ} (ht : 0 < t) (a b : Fin t → ℕ)
+    (hab : ∀ j, a j ≤ b j) (hb : ∀ j, b j < L)
+    (hfirst : ∀ j, j.val = 0 → a j = 0)
+    (hlast : ∀ j, j.val + 1 = t → b j + 1 = L)
+    (hnext : ∀ i j, i.val + 1 = j.val → b i = a j) (j : Fin t) :
+    (overlapOfIntervals ht a b hab hb hfirst hlast hnext).start j = a j
+
+lemma overlap_eq_mp_start {t t' L : ℕ} (h : t = t') (r : Surjection.OverlapPartition t L)
+    (i : Fin t') (j : Fin t) (hij : i.val = j.val) :
+    (Eq.mp (congrArg (fun k => Surjection.OverlapPartition k L) h) r).start i = r.start j
+
+lemma positiveNestedPartition_start {m n d e q : ℕ} (u : Surjection.BasisWord (m + 1) d)
+    (v : Surjection.BasisWord (n + 1) e) (k : Fin (m + 1))
+    (c : PositiveNestedCutIndex u v k q) (i : Fin (Surjection.occurrenceCount u.val k))
+    (j : Fin (Surjection.occurrenceCount (positiveWord u).val k)) (hij : i.val = j.val) :
+    (positiveNestedPartition u v k c).start i = nestedSegmentStart c.1 (positiveWord u) k c.2 j
+```
+
+## 182. L12a の元の水平辺と方向を交換した区間（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+逆復元で、内側の水平辺の高さが同じ色別区間に属する条件を、復元分割の始点・終点で読む。
+元の水平辺の直前・直後の二頂点は高さが同じで横座標が一だけ増える。
+既存exchange_horizontal・exchange_vertical・lo/hiの単調性と端点の評価を使う。
+C421〜C422を同じCutの座標・所属の法則として追加する。新しい経路模型は作らない。
+各証明200行以内の見込み。型は次。
+
+```lean
+lemma cutHeights_exchange_bounds {m q : ℕ} (s : Cut m q) (a : Fin m) (y : Fin (q + 1)) :
+    (lo s.exchange y ≤ a.val ↔ y.val ≤ (cutHeights s a).val) ∧
+      (a.val < hi s.exchange y ↔ (cutHeights s a).val ≤ y.val)
+
+lemma cutHeights_mem_interval {m q : ℕ} (s : Cut m q) (a : Fin m)
+    (first last : Fin (q + 1)) :
+    (first ≤ cutHeights s a ∧ cutHeights s a ≤ last) ↔
+      lo s.exchange first ≤ a.val ∧ a.val < hi s.exchange last
+```
+
+有限点検：`/tmp/bsw16/check-cut-height-exchange.py`、923経路、19,931箇所。
+高さ・方向交換の両方の同値を、幅や高さが零の場合も含め確認した。
+
+## 183. L12a の逆復元における同じ順位の所属（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+C376・C420とC422を合わせ、復元分割の内部の辺の高さが、元の同じ色別順位の区間に
+属することを読む。C423・C424は同じ端点・頂点の法則。
+また同じ語長移送が元の出現位置の列挙を保つことをC425・C426で明示する。
+いずれも同じ有限構成の法則・証明分割として追加し、各証明200行以内の見込み。
+型は次。finiteの読み方は§165・§182の点検と同じもの。
+
+```lean
+lemma positiveNestedPartition_height_interval {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveNestedCutIndex u v k q)
+    (i : Fin (Surjection.occurrenceCount u.val k))
+    (j : Fin (Surjection.occurrenceCount (positiveWord u).val k)) (hij : i.val = j.val)
+    (a : Fin (n + e)) (hl : (positiveNestedPartition u v k c).start i ≤ a.val)
+    (hr : a.val + 1 < (positiveNestedPartition u v k c).start i +
+      ((positiveNestedPartition u v k c).val i).val) :
+    colorOccurrenceFirst c.1 (positiveWord u) k j ≤ cutHeights c.2 a ∧
+      cutHeights c.2 a ≤ colorOccurrenceLast c.1 (positiveWord u) k j
+
+lemma vertices_bounds_on_colorInterval {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (a : Fin r) (p : Fin (m + 1))
+    (j : Fin (outputDegree s v a + 1)) (hj : j ∈ colorIntervalRanks s v a p) :
+    lo s p ≤ (vertices s v a j).val ∧ (vertices s v a j).val ≤ hi s p
+
+lemma word_eq_mp_occurrenceAt {r l l' : ℕ} (h : l = l') (v : Surjection.Word r l)
+    (a : Fin r)
+    (i : Fin (Surjection.occurrenceCount
+      (Eq.mp (congrArg (fun L => Surjection.Word r L) h) v).val a))
+    (j : Fin (Surjection.occurrenceCount v.val a)) (hij : i.val = j.val) :
+    (Surjection.occurrenceAt (Eq.mp (congrArg (fun L => Surjection.Word r L) h) v).val a i).val =
+      (Surjection.occurrenceAt v.val a j).val
+
+lemma positiveOccurrencePosition_eq {m d : ℕ} (u : Surjection.BasisWord (m + 1) d)
+    (k : Fin (m + 1)) (i : Fin (Surjection.occurrenceCount u.val k))
+    (j : Fin (Surjection.occurrenceCount (positiveWord u).val k)) (hij : i.val = j.val) :
+    positiveOccurrencePosition u k i = Surjection.occurrenceAt (positiveWord u).val k j
+```
+
+## 184. L12a の順方向と同じ復元分割の座標：検証・取り込み候補
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§178・180〜182の7本380行を検証した。
+順方向は任意の正arity・全ての合成切断に対する写像として定義され、
+同じ色別verticesで読む高さの厳密な一致まで証明した。
+復元した同じ分割の開始位置と、方向を交換した元のCutによる高さの所属の同値も証明した。
+全対応・逆の等式・符号・実テンソル・nullaryの完成とは数えない。
+
+対象ビルド：`/tmp/bsw16/m14-composite-inner-height-bounds-01.log`（2,852 jobs）、
+`/tmp/bsw16/m14-composite-nested-map-02.log`（2,856 jobs）、
+`/tmp/bsw16/m14-recovered-partition-starts-01.log`（2,254 jobs）、
+`/tmp/bsw16/m14-cut-height-exchange-01.log`（2,215 jobs）、全て成功・対象警告0。
+小監査：`/tmp/bsw16/audit-m14-composite-nested-map.lean`、
+結果 `/tmp/bsw16/m14-composite-nested-map-audit.log`、
+**7モジュール・36宣言、標準三公理のみ**。sorry・新規公理0。
+各ビルドと監査で鍵を独立に取り、実行終了後に返した。
+
+登録候補（接頭部 `SerrePositivity.EInfinity.SimplexCuts.`）：
+`PositiveOccurrencePosition`45行、`CompositeInnerHeightBounds`51行、
+`CompositeInnerHeights`50行、`CompositeNestedMap`60行、`OverlapIntervalStarts`43行、
+`RecoveredPartitionStarts`36行、`CutHeightExchange`95行。
+既存の公開宣言・界面・共有入口は変更していない。
+
+L12a検証済み実測1,378+380=**1,758行**、M14は16,585+380=**16,965行**。
+外枠25,000行まで**8,035行**。§177の残りの表のうち順方向の接続の実測は206行で、
+見込み150〜250行内。174行は同じ逆復元の始点・交換座標の法則。
+逆の写像自体や両方向の等式はまだ未完。§177の超過リスクは解消したとは扱わない。
+§183の2本はまだ未検証で、上の実測・登録候補に含めない。
+
+## 185. L12a の逆復元に使う元の全水平辺の列挙（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+逆の合成切断の高さは、元の外側境界辺と元の内側内部辺の位置を合わせて指定する。
+両者の本数の和は合成語の水平辺数に等しい。元の出現位置pに属する内側辺は、
+外側境界iに対してp≤iなら先、i<pなら後にある。C387〜388と元の部分長の評価だけで示せる。
+したがって二つの位置写像の和は単射で、同じ有限濃度から全単射となる。
+C427〜C429は、§159の固定した同じ有限対応を組み立てる証明分割として追加する。
+型は次。各証明200行以内の見込み。新しい作用・定理・別の切断模型は導入しない。
+
+```lean
+lemma compositeInnerOuterEdge_order {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (a : Fin (n + e)) (i : Fin (m + d)) :
+    ((Surjection.occurrenceAt u.val k
+        (segmentEdgeOwner r (Surjection.occurrenceCount_pos u k) a.val)).val ≤ i.val →
+      compositeInnerEdge u v k r a < compositeOuterEdge u v k r i) ∧
+    (i.val < (Surjection.occurrenceAt u.val k
+        (segmentEdgeOwner r (Surjection.occurrenceCount_pos u k) a.val)).val →
+      compositeOuterEdge u v k r i < compositeInnerEdge u v k r a)
+
+def compositeEdgeSum {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e)) :
+    Fin (m + d) ⊕ Fin (n + e) → Fin (m + n + (d + e))
+
+lemma compositeEdgeSum_injective {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e)) :
+    Function.Injective (compositeEdgeSum u v k r)
+
+lemma compositeEdgeSum_bijective {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e)) :
+    Function.Bijective (compositeEdgeSum u v k r)
+```
+
+有限点検：`/tmp/bsw16/check-composite-joint-edges.py`、416条件・21,939組。
+両種の辺が重複なく全水平辺を埋め、混合した順序が上の不等式どおりであることを点検した。
+さらに外側境界の高さと、内側高さを同じ外側verticesで読む値から元の全高さが戻ることも確認。
+この最後の復元はまだLeanで証明済みとして数えない。
+
+## 186. L12a の逆方向の同じ内側高さの上下界（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+C423の順位区間の所属をC424の元のverticesの上下界へ渡す。
+元の正の語長移送の位置はC426で一致させる。C430は既存lo/hiの隣接端点の法則。
+C431は同じ復元分割の内部辺についての指定面の評価の法則。
+どちらも固定したL12aの逆復元の証明分割として追加し、各証明200行以内の見込み。
+型は次。新しい作用・比較対象は導入しない。
+
+```lean
+lemma hi_le_lo_of_lt {m q : ℕ} (s : Cut m q) (i j : Fin (m + 1)) (hij : i < j) :
+    hi s i ≤ lo s j
+
+lemma positiveNestedInnerHeight_bounds {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveNestedCutIndex u v k q) (a : Fin (n + e)) :
+    lo c.1 (positiveOccurrencePosition u k
+        (segmentEdgeOwner (positiveNestedPartition u v k c)
+          (Surjection.occurrenceCount_pos u k) a.val)) ≤
+        (vertices c.1 (positiveWord u) k (cutHeights c.2 a)).val ∧
+      (vertices c.1 (positiveWord u) k (cutHeights c.2 a)).val ≤
+        hi c.1 (positiveOccurrencePosition u k
+          (segmentEdgeOwner (positiveNestedPartition u v k c)
+            (Surjection.occurrenceCount_pos u k) a.val))
+```
+
+有限点検は§185の21,939組に含まれる同じ外側区間・内側高さの照合。
+
+## 187. L12a の逆の合成切断を同じ全辺の高さから読む（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+C429の全単射の逆で同じ水平辺を読み、外側境界では元の外側高さ、内側辺では
+元の内側高さを同じverticesで読む値を使う。同種の辺は既存単調性、異種の辺は
+C427とC430〜431で単調性を得る。元のcutOfHeightsから逆の合成切断を作る。
+C432〜C434は§159の同じ有限対応の逆方向の証明分割として追加する。
+各証明200行以内の見込み。新しい作用・別の模型は作らない。
+
+```lean
+def compositeEdgeEquiv {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e)) :
+    (Fin (m + d) ⊕ Fin (n + e)) ≃ Fin (m + n + (d + e))
+
+def positiveNestedEdgeHeight {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveNestedCutIndex u v k q) :
+    Fin (m + d) ⊕ Fin (n + e) → Fin (q + 1)
+
+lemma positiveNestedEdgeHeight_mono {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveNestedCutIndex u v k q)
+    (x y : Fin (m + d) ⊕ Fin (n + e))
+    (h : compositeEdgeSum u v k (positiveNestedPartition u v k c) x ≤
+      compositeEdgeSum u v k (positiveNestedPartition u v k c) y) :
+    positiveNestedEdgeHeight u v k c x ≤ positiveNestedEdgeHeight u v k c y
+
+def positiveNestedCompositeHeights {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveNestedCutIndex u v k q) :
+    Fin (m + n + (d + e)) →o Fin (q + 1)
+
+lemma positiveNestedCompositeHeights_apply {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveNestedCutIndex u v k q)
+    (z : Fin (m + d) ⊕ Fin (n + e)) :
+    positiveNestedCompositeHeights u v k c
+        (compositeEdgeSum u v k (positiveNestedPartition u v k c) z) =
+      positiveNestedEdgeHeight u v k c z
+
+def positiveNestedCompositeMap {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) : PositiveNestedCutIndex u v k q → PositiveCompositeCutIndex u v k q
+
+lemma positiveNestedCompositeMap_heights {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveNestedCutIndex u v k q)
+    (z : Fin (m + d) ⊕ Fin (n + e)) :
+    cutHeights (positiveNestedCompositeMap u v k c).2
+        (compositeEdgeSum u v k (positiveNestedPartition u v k c) z) =
+      positiveNestedEdgeHeight u v k c z
+```
+
+有限点検は§185。単調性と両方向の逆の等式・符号は、この紙の案で証明済みと数えない。
+
+## 188. L12a の元の外側切断の復元と同じ順位への戻し（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+逆方向で指定した外側境界の高さから、元の外側Cutがそのまま戻ることをC393・C434と
+cutHeightsの単射性で読む。また区間内の順位をverticesで読みcolorHeightRankで戻すと
+同じ順位になることをC404で読む。C435〜C436は同じ対応の逆の等式の証明分割・法則。
+各証明200行以内の見込み。全対応・符号・nullaryはまだ未完。
+型は次。有限点検は§185の同じ対応。
+
+```lean
+lemma positiveNestedCompositeMap_outerCut {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveNestedCutIndex u v k q) :
+    positiveCompositeOuterCut u v k (positiveNestedCompositeMap u v k c) = c.1
+
+lemma colorHeightRank_vertices {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (a : Fin r) (p : Fin (m + 1)) (hp : v.val p = a)
+    (j : Fin (outputDegree s v a + 1)) (hj : j ∈ colorIntervalRanks s v a p) :
+    colorHeightRank s v a p hp (vertices s v a j).val
+        (vertices_bounds_on_colorInterval s v a p j hj).1
+        (vertices_bounds_on_colorInterval s v a p j hj).2 = j
+```
+
+## 189. L12a の元の内側順位を同じ区間で戻す接続（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+C423の順位区間の所属をC426で元の出現位置へ移すC437と、その同じ順位をC436で
+復元するC438を追加する。既存構成の所属・係数移送の法則と逆の等式の証明分割。
+各証明200行以内の見込み。元の高さや頂点写像は選び直さない。
+型は次。有限点検は§185の同じ全対応の21,939組。
+
+```lean
+lemma positiveNestedInnerRank_mem {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveNestedCutIndex u v k q) (a : Fin (n + e)) :
+    cutHeights c.2 a ∈ colorIntervalRanks c.1 (positiveWord u) k
+      (positiveOccurrencePosition u k
+        (segmentEdgeOwner (positiveNestedPartition u v k c)
+          (Surjection.occurrenceCount_pos u k) a.val))
+
+lemma positiveNestedInnerRank_recover {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveNestedCutIndex u v k q) (a : Fin (n + e)) :
+    colorHeightRank c.1 (positiveWord u) k
+        (positiveOccurrencePosition u k
+          (segmentEdgeOwner (positiveNestedPartition u v k c)
+            (Surjection.occurrenceCount_pos u k) a.val))
+        (positiveOccurrencePosition_value u k _)
+        (vertices c.1 (positiveWord u) k (cutHeights c.2 a)).val
+        (positiveNestedInnerHeight_bounds u v k c a).1
+        (positiveNestedInnerHeight_bounds u v k c a).2 = cutHeights c.2 a
+```
+
+## 190. L12a の同じ二段切断への右逆の等式（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+外側Cutの等式C435が出力次数の等式を与える。C439は、この等しい次数で読んだ
+元の二つのCutの高さが同じなら同じCutであることを読む、次数移送だけの法則。
+C440で内側切断の高さの自然数値を既存定義から読み、C435・C434・C438を合わせる。
+C441の結論はSigma型の元の二段切断そのものの厳密な等式。HEqは等しい出力次数を
+持つ同じCutの添字の移送のためだけに使い、ホモトピー圏へ結論を弱めない。
+C439〜C441を同じ構成の次数移送・逆の等式の証明分割として追加する。
+各証明200行以内の見込み。型は次。
+
+```lean
+lemma cutHeights_heq {m q q' : ℕ} (s : Cut m q) (t : Cut m q') (h : q = q')
+    (hs : ∀ i, (cutHeights s i).val = (cutHeights t i).val) : HEq s t
+
+lemma positiveCompositeInnerCut_height_val {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) (a : Fin (n + e)) :
+    (cutHeights (positiveCompositeInnerCut u v k c) a).val =
+      (colorIntervalFirst (positiveCompositeOuterCut u v k c) (positiveWord u) k
+          (positiveOccurrencePosition u k
+            (segmentEdgeOwner c.1 (Surjection.occurrenceCount_pos u k) a.val))
+          (positiveOccurrencePosition_value u k _)).val +
+        ((cutHeights c.2 (compositeInnerEdge u v k c.1 a)).val -
+          lo (positiveCompositeOuterCut u v k c)
+            (positiveOccurrencePosition u k
+              (segmentEdgeOwner c.1 (Surjection.occurrenceCount_pos u k) a.val)))
+
+lemma positiveCompositeNestedMap_rightInverse {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) :
+    Function.RightInverse (positiveNestedCompositeMap u v k (q := q))
+      (positiveCompositeNestedMap u v k)
+```
+
+有限点検は§185の同じ対応。左逆・符号・実テンソル・nullaryは未完。
+
+## 191. L12a の左逆に使う同じ辺の所属番号の比較（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+元の部分語iと辺の所属番号の比較を、元のstart・終了位置の不等式へ移す。
+C442〜C443は既存のmax'とstart_mono・boundary_monoの評価の法則として追加する。
+左逆で元の部分語の両端を復元する同じ有限比較の証明分割で、新しい作用は含まない。
+各証明200行以内の見込み。型は次。
+
+```lean
+lemma le_segmentEdgeOwner_iff {t L : ℕ} (r : Surjection.OverlapPartition t L)
+    (ht : 0 < t) (p : ℕ) (i : Fin t) :
+    i ≤ segmentEdgeOwner r ht p ↔ r.start i ≤ p
+
+lemma segmentEdgeOwner_le_iff {t L : ℕ} (r : Surjection.OverlapPartition t L)
+    (ht : 0 < t) (p : ℕ) (hp : p + 1 < L) (i : Fin t) :
+    segmentEdgeOwner r ht p ≤ i ↔ p + 1 < r.start i + (r.val i).val
+```
+
+有限点検：`/tmp/bsw16/check-segment-edge-owner-order.py`、799辺、1,552箇所の位置の読み。
+有効な全水平辺について全ての部分番号との両同値を確認した。
+
+## 192. L12a の左逆への残る接続（紙の型、未実装）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+右逆の検証待ちの間に、左逆側の残る同じ有限列挙の法則を型に落とした。
+C444〜C450はL12aの同じ構成の法則と証明分割。新しい数学の項目は足さない。
+以下は紙だけであり、証明済みや行数実測には含めない。
+
+```lean
+-- C444：同じ区間の最初の順位との比較。
+lemma colorIntervalFirst_le_rank_iff {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (a : Fin r) (p p' : Fin (m + 1))
+    (hp : v.val p = a) (hp' : v.val p' = a)
+    (j : Fin (outputDegree s v a + 1)) (hj : j ∈ colorIntervalRanks s v a p) :
+    colorIntervalFirst s v a p' hp' ≤ j ↔ p' ≤ p
+
+-- C445：同じ区間の最後の順位との比較。
+lemma rank_le_colorIntervalLast_iff {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (a : Fin r) (p p' : Fin (m + 1))
+    (hp : v.val p = a) (hp' : v.val p' = a)
+    (j : Fin (outputDegree s v a + 1)) (hj : j ∈ colorIntervalRanks s v a p) :
+    j ≤ colorIntervalLast s v a p' hp' ↔ p ≤ p'
+
+-- C446：順方向の内側高さは同じ所属出現の順位区間内。
+lemma positiveCompositeInnerCut_rank_mem {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) (a : Fin (n + e)) :
+    cutHeights (positiveCompositeInnerCut u v k c) a ∈
+      colorIntervalRanks (positiveCompositeOuterCut u v k c) (positiveWord u) k
+        (positiveOccurrencePosition u k
+          (segmentEdgeOwner c.1 (Surjection.occurrenceCount_pos u k) a.val))
+
+-- C447：同じ順位の上下の比較を元の部分語の両端で読む。
+lemma positiveCompositeInnerCut_rank_bounds_iff {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (a : Fin (n + e)) (i : Fin (Surjection.occurrenceCount u.val k)) :
+    (colorIntervalFirst (positiveCompositeOuterCut u v k c) (positiveWord u) k
+        (positiveOccurrencePosition u k i) (positiveOccurrencePosition_value u k i) ≤
+        cutHeights (positiveCompositeInnerCut u v k c) a ↔ c.1.start i ≤ a.val) ∧
+    (cutHeights (positiveCompositeInnerCut u v k c) a ≤
+        colorIntervalLast (positiveCompositeOuterCut u v k c) (positiveWord u) k
+          (positiveOccurrencePosition u k i) (positiveOccurrencePosition_value u k i) ↔
+      a.val + 1 < c.1.start i + (c.1.val i).val)
+
+-- C448：有限の全ての辺との同じ比較は、その同じ端点を特定する。
+lemma nat_eq_of_fin_le_iff {m : ℕ} (x y : ℕ) (hx : x ≤ m) (hy : y ≤ m)
+    (h : ∀ a : Fin m, x ≤ a.val ↔ y ≤ a.val) : x = y
+
+-- C449：同じ交換経路の始点・終点の復元から元の部分長を得る。
+lemma positiveCompositeNestedMap_partition {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) :
+    positiveNestedPartition u v k (positiveCompositeNestedMap u v k c) = c.1
+
+-- C450：同じ全辺の指定高さによる元の合成切断の復元。
+lemma positiveCompositeNestedMap_leftInverse {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) :
+    Function.LeftInverse (positiveNestedCompositeMap u v k (q := q))
+      (positiveCompositeNestedMap u v k)
+```
+
+C444・C445は既存C355の同じ区間間の狭義順序とmin'/max'の法則から、
+C446はC400・C415から、C447はC444〜C446とC442・C443から示す。
+C448はx<yなら元の有限辺a=x、y<xならa=yを選ぶ有限比較の法則。
+C449ではC421にC447を渡し、元の開始位置・終了位置と交換経路の両端の等式を得る。
+終了位置の比較a<endはa≥endの否定なので、同じC448を使う。両端は内側の幅以下。
+C420・C376とC426で同じ出現番号へ戻し、元のOverlapPartitionの部分長を得る。
+C450ではC449を合わせ、C429の全辺の各像でC393・C416・C434の高さの等式を使い、
+元のCutの単射な座標C381で閉じる。個別の証明が200行を超えたら行数も報告する。
+有限点検は§185の同じ全対応。これで符号・実テンソル・nullaryが閉じたとは扱わない。
+
+## 193. L12a の逆方向・右逆の厳密な等式：検証・取り込み候補
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§183・185〜191の13本624行を検証した。
+元の外側境界と内側内部辺の全単射、元の二段切断からの逆の合成切断、
+同じ指定高さの保持、元の外側Cutへの復元、二段切断そのものへの右逆の等式まで。
+右逆の結論はFunction.RightInverseの元のSigma型の等式であり、ホモトピー圏の等式ではない。
+HEqを使うのは等しい出力次数の添字の移送だけ。
+左逆・符号・実テンソル・nullaryは未完で、L12aを完了に数えない。
+
+対象ビルド：
+`/tmp/bsw16/m14-nested-height-interval-01.log`（2,260 jobs）、
+`/tmp/bsw16/m14-composite-edge-enumeration-01.log`（2,807 jobs）、
+`/tmp/bsw16/m14-nested-composite-map-01.log`（2,864 jobs）、
+`/tmp/bsw16/m14-nested-composite-outer-inverse-01.log`（2,869 jobs）、
+`/tmp/bsw16/m14-nested-cut-right-inverse-03.log`（2,877 jobs）、全て成功・対象警告0。
+右逆の最初の二回は同じSigmaの射影をrewriteに明示する調整が必要だった。
+同じCutと同じ復元分割の射影表記をchangeでそろえ、数学の主張を変更せずに閉じた。
+
+小監査入力 `/tmp/bsw16/audit-m14-nested-cut-right-inverse.lean`、
+結果 `/tmp/bsw16/m14-nested-cut-right-inverse-audit.log`、
+**13モジュール・43宣言、標準三公理のみ**。sorry・新規公理0、対象警告0。
+各ビルド・監査は独立の鍵を取り、実行が終わったら返した。常駐セッションは使っていない。
+既存の公開宣言・界面・共有入口・共有監査は変更していない。
+
+登録候補（接頭部 `SerrePositivity.EInfinity.SimplexCuts.`）：
+
+| モジュール | 実測行数 |
+| --- | ---: |
+| NestedPartitionHeightInterval | 46 |
+| PositiveOccurrenceComparison | 36 |
+| CompositeMixedEdgeOrder | 55 |
+| CompositeEdgeEnumeration | 59 |
+| NestedInnerHeightBounds | 57 |
+| NestedCompositeEdgeHeights | 71 |
+| NestedCompositeMap | 63 |
+| NestedCompositeOuterCut | 27 |
+| ColorHeightRankInverse | 30 |
+| NestedInnerRankRecovery | 51 |
+| CutHeightTransport | 25 |
+| NestedCutRightInverse | 55 |
+| SegmentEdgeOwnerOrder | 49 |
+
+L12a検証済み実測1,758+624=**2,382行**、M14は16,965+624=**17,589行**。
+外枠25,000行まで**7,411行**。個別の証明200行超はない。
+§192は次の左逆の紙の型で、まだ実装・証明済みとして数えない。
+
+## 194. L12a の逆復元の実測差と残り
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§177の各行との接続を重複なく数える。
+順方向の高さ・単調性・写像は206行で見込み150〜250行内。
+逆復元は§184の始点・交換座標174行に、今回の同じ順位・出現位置・辺の列挙・
+高さ・逆写像の387行を合わせた**561行**で、見込み300〜550行の上端を**11行超過**。
+今回の残り237行は右逆と左逆への所属比較の前段で、見込み300〜500行の行に属する。
+両方向の逆の等式は、右逆を閉じたが左逆が残る。
+
+| L12a の残り | 見込み |
+| --- | ---: |
+| §192の左逆の接続 | 200〜350 |
+| 同じcompositionSign・cutSignの照合 | 200〜350 |
+| 同じ指定面・実テンソル・零項の照合 | 400〜750 |
+| nullaryの元の有限添字と項の接続 | 250〜400 |
+| **残り** | **1,050〜1,850** |
+| **L12a完成時（2,382行を含む）** | **3,432〜4,232** |
+
+§177の他の行の見込みを据え置くとM14完成時は**24,643〜30,353行**。
+外枠25,000行への上端の超過リスクは**5,353行**であり、収まるとは扱わない。
+実測は17,589行で外枠にはまだ届いていない。既存構成の法則・証明分割は型を報告して
+続け、新しい数学・まとまりの外・外枠に届くときに止まる規則を維持する。
+G10・M15・G12は作らない。B4は595254e10で完了済みのまま。
+
+## 195. §192の左逆の法則C444〜C448の実装開始
+
+一覧：済み 12／全体 48（うち追加 4）
+
+前ターンは4de85cfabで元の右逆を検証・コミットした進捗。枝は変更なしから再開した。
+§192の型のまま、同じ区間の順位の上下比較C444・C445、順方向の所属C446、
+同じ分割の両端との比較C447、有限比較による端点の特定C448を書いた。
+証明済みとして数えるのは対象ビルドと小監査の後。
+型は§192のままで、既存の法則・証明分割以外の数学は追加していない。
+各証明200行以内。G10・M15・G12・共有入口には触れない。
+
+有限点検を先に実施：`/tmp/bsw16/check-color-rank-bound-comparisons.py`。
+884組の元の語と切断・5,410箇所の高さを点検する既存スクリプトに、
+同じ色の全区間の最初/最後の順位との両比較を加え、全例で一致を確認した。
+C446・C447の分割の所属比較は§191の799辺の点検と同じ読み方。
+B4は595254e10で完了済み。前の凍結の記述はB4の明示指示で解除されている。
+
+## 196. C449の元の二端点の復元（証明分割の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+C449の証明を、同じ交換経路の両端を読む二つの法則C449a・C449bへ分ける。
+新しい構成・定理ではなく、C421・C447・C448をそのまま合わせる証明分割。
+各証明200行以内の見込み。型は次。
+
+```lean
+lemma positiveCompositeNestedMap_segmentStart {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (i : Fin (Surjection.occurrenceCount u.val k)) :
+    lo (positiveCompositeInnerCut u v k c).exchange
+        (colorIntervalFirst (positiveCompositeOuterCut u v k c) (positiveWord u) k
+          (positiveOccurrencePosition u k i) (positiveOccurrencePosition_value u k i)) =
+      c.1.start i
+
+lemma positiveCompositeNestedMap_segmentEnd {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (i : Fin (Surjection.occurrenceCount u.val k)) :
+    hi (positiveCompositeInnerCut u v k c).exchange
+        (colorIntervalLast (positiveCompositeOuterCut u v k c) (positiveWord u) k
+          (positiveOccurrencePosition u k i) (positiveOccurrencePosition_value u k i)) =
+      c.1.start i + (c.1.val i).val - 1
+```
+
+比較する両端は元の内側幅以下。全ての有限辺との同じ比較からC448で端点を特定し、
+C376・C426に戻して元の部分長を得る。有限点検は§185の元の21,939組の対応。
+
+## 197. C450と既報の正の有限対応の組み立て
+
+一覧：済み 12／全体 48（うち追加 4）
+
+C450は§192の型のまま実装する。C449で同じ分割をそろえ、C429の全水平辺の
+元の二種類の各像でC393・C416・C434を使う。元のcutHeightsの単射性で同じCutへ戻す。
+その後、§159で既報の次の正の全有限添字のEquivを、両方の逆の等式から組み立てる。
+これは固定したL12aの同じ有限対応の組み立てであり、新しい数学の項目ではない。
+
+```lean
+def positiveCompositeNestedEquiv {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (q : ℕ) :
+    PositiveCompositeCutIndex u v k q ≃ PositiveNestedCutIndex u v k q
+```
+
+各証明200行以内の見込み。退化した切断も除かない。符号・実テンソル・nullaryの
+照合はまだ別に残り、このEquivの構成だけでL12aを完了には数えない。
+
+## 198. C449の同じ位置の順位の移送（既存構成の法則）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+C444〜C448・C449a・C449bは対象ビルドに成功した。
+C449の出現位置を直接rewriteすると、その位置の色を示す証明も依存するためmotiveが不正になる。
+位置と色の証明をまとめた同じcolorIntervalFirst/Lastの移送をC449c・C449dで明示する。
+既存構成の係数移送の法則であり、新しい数学ではない。各証明200行以内。
+型は次。
+
+```lean
+lemma colorIntervalFirst_congr_position {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (a : Fin r) (p p' : Fin (m + 1))
+    (hp : v.val p = a) (hp' : v.val p' = a) (h : p = p') :
+    colorIntervalFirst s v a p hp = colorIntervalFirst s v a p' hp'
+
+lemma colorIntervalLast_congr_position {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (a : Fin r) (p p' : Fin (m + 1))
+    (hp : v.val p = a) (hp' : v.val p' = a) (h : p = p') :
+    colorIntervalLast s v a p hp = colorIntervalLast s v a p' hp'
+```
+
+次の符号照合の有限点検も実施した（まだLeanの証明ではない）：
+`/tmp/bsw16/check-general-composite-signs.py`。
+外側語長1〜4・内側語長1〜3、外側arity最大3・内側arity最大2、単体次数0〜2で、
+元の非退化全射語と全ての正の重なる分割を読む12,233組について、合成側の面の非退化性が
+二段側の両方の面の非退化性と一致した。残る3,745組では、元のcompositionExponentと
+一般cutSignの指数が、二段側の係数交換d*e・内側係数の移動e*prefixDegree・
+元の両cutSignの指数の和とmod 2で一致した。退化項は符号検査の対象から除いて別に零を比較する。
+元の符号規約を変更するものではない。
+
+## 199. L12a の同じ指定面・符号の比較の型（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+正の全有限添字の同値の後は、元の指定面と元の符号を照合する。
+指定面の族は、次数と元のverticesをそのまま組にしたもの。二段側の挿入色では
+元の外側verticesと元の内側verticesを合成し、残り色では元の外側verticesを使う。
+出力順序は既存IntervalCuts.insertionFamilyを使い、選び直さない。
+前方次数は元のoutputDegreeのprefixFamilyのdegreeSumで、係数移動と同じ次数。
+型は次。C451〜C453は固定したL12aの指定面・符号・零項の法則の証明分割であり、
+新しい数学の項目ではない。型や元の符号規約は変更しない。
+
+```lean
+def positiveCompositeFaceFamily {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) :
+    Fin (m + (n + 1)) → Σ t : ℕ, Fin (t + 1) →o Fin (q + 1)
+
+def positiveNestedFaceFamily {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveNestedCutIndex u v k q) :
+    Fin (m + (n + 1)) → Σ t : ℕ, Fin (t + 1) →o Fin (q + 1)
+
+def positiveNestedPrefixDegree {m d q : ℕ} (u : Surjection.BasisWord (m + 1) d)
+    (k : Fin (m + 1)) (s : Cut (m + d) q) : ℕ
+
+def positiveNestedCutCoefficient {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveNestedCutIndex u v k q) : ℤ
+
+-- C451：次数と元の指定面の族そのものの厳密な一致。
+lemma positiveCompositeFaceFamily_eq_nested {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) :
+    positiveCompositeFaceFamily u v k c =
+      positiveNestedFaceFamily u v k (positiveCompositeNestedMap u v k c)
+
+-- C452：元の符号の比較。零となる面の項に符号の等式を強制しない。
+lemma positiveCompositeCutCoefficient_eq_nested {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (h : Nondegenerate c.2 (positiveCompositeCutWord u v k c.1).val) :
+    Surjection.compositionSign u v k c.1 * cutSign c.2 (positiveCompositeCutWord u v k c.1).val =
+      positiveNestedCutCoefficient u v k (positiveCompositeNestedMap u v k c)
+
+-- C453：元の正規化前の面の退化性も同じ有限対応で照合する。
+lemma positiveCompositeCut_nondegenerate_iff {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) :
+    Nondegenerate c.2 (positiveCompositeCutWord u v k c.1).val ↔
+      Nondegenerate (positiveCompositeOuterCut u v k c) (positiveWord u).val ∧
+        Nondegenerate (positiveCompositeInnerCut u v k c) (positiveWord v).val
+```
+
+有限点検を先に拡張した：`/tmp/bsw16/check-general-composite-faces.py`。
+§198の12,233組で、合成側の全色の元の頂点列が、残り色の外側頂点列と、挿入色の
+内側頂点列を元の外側頂点列で読んだ列に、順序・重複も含め厳密に一致した。
+同じ全例で退化性が一致し、生き残る3,745組で元の符号も一致した。
+この点検はLeanの全称証明の代わりに数えない。零arityはこれらの型では含まず、
+L12aのnullaryの行として別に残る。
+
+## 200. L12a の正の全有限添字の同値：検証・取り込み候補
+
+一覧：済み 12／全体 48（うち追加 4）
+
+C444〜C450を閉じ、§159のpositiveCompositeNestedEquivを構成した。
+任意の正の内外arity、全語次数・単体次数で、元の重なる分割と元の一段切断の全添字と、
+元の二段切断の全添字が厳密に対応する。退化した切断も除かず、両方向の逆は元の型の等式。
+正の全添字の同値だけで、符号・実テンソル・nullaryまで閉じたとは扱わない。
+
+対象ビルド：`/tmp/bsw16/m14-composite-inner-rank-bounds-01.log`（順位比較2本成功）、
+`/tmp/bsw16/m14-composite-nested-equiv-01.log`（端点比較・端点復元成功）、
+`/tmp/bsw16/m14-composite-nested-equiv-02.log`（2,884 jobs、全対象成功・対象警告0）。
+有限端点の補助では、不要な存在しないtactic importを除き、反射性をNat.le_reflで明示した。
+C449の位置と色の証明はC449c・C449dで同じ順位ごと移して閉じた。
+
+小監査入力 `/tmp/bsw16/audit-m14-composite-nested-equiv.lean`、
+結果 `/tmp/bsw16/m14-composite-nested-equiv-audit.log`、
+**7モジュール・24宣言、標準三公理のみ**。sorry・新規公理0、対象警告0。
+個別の証明200行超はない。既存の公開宣言・界面・共有入口・共有監査は変更していない。
+各ビルドと監査は一回ずつ鍵を取り、実行が終わったら返した。
+
+登録候補（接頭部 `SerrePositivity.EInfinity.SimplexCuts.`）：
+
+| モジュール | 実測行数 |
+| --- | ---: |
+| ColorRankBoundComparisons | 53 |
+| CompositeInnerRankBounds | 54 |
+| FiniteEndpointComparison | 30 |
+| CompositeSegmentRecovery | 60 |
+| CompositePartitionRecovery | 43 |
+| ColorRankPositionTransport | 31 |
+| CompositeNestedEquiv | 47 |
+| **合計** | **318** |
+
+§194の左逆の接続200〜350行に対し実測318行で、見込み内。
+L12a検証済み実測2,382+318=**2,700行**、M14は17,589+318=**17,907行**。
+外枠25,000行まで**7,093行**。残るL12aの行は符号200〜350行・指定面と実テンソル
+400〜750行・nullary250〜400行で合計850〜1,500行、完成時3,550〜4,200行の見込み。
+他の行の見込みを据え置くとM14完成時**24,761〜30,321行**。
+上端に**5,321行の超過リスク**が残り、収まるとは扱わない。外枠・範囲の停止規則は維持する。
+§199の二本は未検証の組み立ての下書きで、上の実測・登録候補に含めない。
+
+## 201. C451の元の経路の座標と区間の所属（証明分割の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+指定面の比較に、元の経路の水平位置pと高さcを持つ頂点を読む。
+元のcoordinate_sumからその位置番号はp+cであり、区間の最小/最大位置の間にあれば
+元のhorizontalの単調性で横座標p、同じcoordinate_sumで縦座標cが特定される。
+C451a・C451bは既存座標の所属の法則であり、別の経路や新しい構成は導入しない。
+型は次。個々の証明200行以内の見込み。
+
+```lean
+def coordinatePosition {m q : ℕ} (p : Fin (m + 1)) (c : Fin (q + 1)) : Fin (m + q + 1)
+
+lemma coordinates_of_interval {m q : ℕ} (s : Cut m q)
+    (p : Fin (m + 1)) (c : Fin (q + 1)) (hl : lo s p ≤ c.val) (hr : c.val ≤ hi s p) :
+    s.horizontal (coordinatePosition p c) = p ∧ s.vertical (coordinatePosition p c) = c
+
+lemma coordinatePosition_onPath_iff {m q : ℕ} (s : Cut m q)
+    (p : Fin (m + 1)) (c : Fin (q + 1)) :
+    (s.horizontal (coordinatePosition p c) = p ∧ s.vertical (coordinatePosition p c) = c) ↔
+      lo s p ≤ c.val ∧ c.val ≤ hi s p
+```
+
+有限点検：`/tmp/bsw16/check-cut-coordinate-interval.py`。
+幅・高さ0〜5の923経路、24,683組の座標について、元の経路の頂点の座標と両端の条件が一致した。
+これはLeanの全称証明とは別の点検。指定面の全比較C451そのものはまだ未完。
+
+## 202. C451の元の合成語のブロック両端（証明分割の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+元の外側位置pに代入された部分語の最初・最後の位置は、既存の接頭長α(p)とα(p+1)-1。
+C393で定めた同じ外側切断の両端は、元の合成切断のこの二位置の両端と等しい。
+最初/最後の位置では既存lo_zero・hi_lastを使い、途中ではhi_eq_lo_succを使う。
+C451c・C451dの同じ座標の法則として次を実装する。個々の証明200行以内の見込み。
+
+```lean
+lemma compositePrefixLength_zero {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e)) :
+    compositePrefixLength u v k r 0 = 0
+
+def compositeFirstPosition {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (p : Fin (m + d + 1)) : Fin (m + n + (d + e) + 1)
+
+def compositeLastPosition {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (p : Fin (m + d + 1)) : Fin (m + n + (d + e) + 1)
+
+lemma positiveCompositeOuterCut_endpoints {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) (p : Fin (m + d + 1)) :
+    lo (positiveCompositeOuterCut u v k c) p = lo c.2 (compositeFirstPosition u v k c.1 p) ∧
+      hi (positiveCompositeOuterCut u v k c) p = hi c.2 (compositeLastPosition u v k c.1 p)
+```
+
+元のブロック位置とその両端は§170・§176の21,939組の点検と同じもの。
+新しい経路を作らず、同じ位置番号を既存のCutで読むだけの記法・評価の法則。
+
+## 203. C451の元の色別列挙から指定面への移送（既存構成の法則）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+色別位置集合の順序を保つ同じ列挙の同値が元のverticalを保つとき、元のoutputDegreeと
+verticesの組も等しい。この既存構成の係数移送を一つの補題にまとめ、残り色と挿入色の
+両方で使う。有限順序列挙はorderIsoOfFinで、同じ有限順序の自己同型は既存StrictMono.eq_id
+で一致する。HEqは等しい次数で読むFinの添字の移送だけで、最終結論はSigma型の等式。
+C451hの証明分割として次を追加する。各証明200行以内の見込み。新しい模型は導入しない。
+
+```lean
+lemma finiteOrderIso_val {N M : ℕ} (e : Fin N ≃o Fin M) (i : Fin N) : (e i).val = i.val
+
+lemma orderHom_heq_of_values {N M Q : ℕ} (f : Fin N →o Fin Q) (g : Fin M →o Fin Q)
+    (h : N = M) (hv : ∀ i j, i.val = j.val → f i = g j) : HEq f g
+
+lemma faceData_eq_of_colorOrderIso {m m' q r r' : ℕ} (s : Cut m q) (t : Cut m' q)
+    (u : Surjection.Word r (m + 1)) (v : Surjection.Word r' (m' + 1)) (a : Fin r) (b : Fin r')
+    (e : ↥(colorPositions s u.val a) ≃o ↥(colorPositions t v.val b))
+    (hv : ∀ x, s.vertical x.val = t.vertical (e x).val) :
+    (⟨outputDegree s u a, vertices s u a⟩ : Σ d : ℕ, Fin (d + 1) →o Fin (q + 1)) =
+      ⟨outputDegree t v b, vertices t v b⟩
+```
+
+この補題だけで合成切断の対応する色別位置集合の同値が供給されたとは扱わない。
+その元の位置・頂点の照合はC451の残りであり、同じ作用の法則の中で進める。
+
+## 204. C451の残り色の元の位置・頂点（証明分割の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+元の指定色以外の位置は、一文字のまま同じ代入語へ残る。既存の
+substitute_prefix_length_at_non_slot・compositeBasisWord_outerPositionと、C410の語長移送を使う。
+その最初/最後の合成位置が同じになり、C451c・C451dとC451aから元の同じ頂点を読む。
+C451e〜C451gの法則・証明分割として次を追加する。各証明200行以内の見込み。
+型は次。有限点検は§199の12,233組の同じ残り色の全頂点列の一致。
+
+```lean
+lemma compositePrefixLength_at_non_slot {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (p : Fin (m + d + 1)) (hp : (positiveWord u).val p ≠ k) :
+    compositePrefixLength u v k r (p.val + 1) = compositePrefixLength u v k r p.val + 1
+
+lemma compositeFirstPosition_eq_last_of_non_slot {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (p : Fin (m + d + 1)) (hp : (positiveWord u).val p ≠ k) :
+    compositeFirstPosition u v k r p = compositeLastPosition u v k r p
+
+lemma positiveCompositeFirstPosition_label {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (p : Fin (m + d + 1)) (hp : (positiveWord u).val p ≠ k) :
+    (positiveCompositeCutWord u v k r).val (compositeFirstPosition u v k r p) =
+      BarrattEccles.remainingPosition m (n + 1) k ⟨(positiveWord u).val p, hp⟩
+
+lemma positiveCompositeRemainingVertex_coordinates {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (p : Fin (m + d + 1)) (hp : (positiveWord u).val p ≠ k) (h : Fin (q + 1))
+    (hl : lo (positiveCompositeOuterCut u v k c) p ≤ h.val)
+    (hr : h.val ≤ hi (positiveCompositeOuterCut u v k c) p) :
+    c.2.horizontal (coordinatePosition (compositeFirstPosition u v k c.1 p) h) =
+        compositeFirstPosition u v k c.1 p ∧
+      c.2.vertical (coordinatePosition (compositeFirstPosition u v k c.1 p) h) = h
+```
+
+## 205. C451の残り色の全位置・全頂点への接続（紙の型、未実装）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+次は既存remaining_count_substituteで元の残り色の出現回数を保ち、同じcompositeFirstPosition
+の狭義単調性と有限濃度から、残り色の全出現位置の順序同値を得る。
+その同じ二端点を保つ順序同値を、区間内の全頂点へ持ち上げる。各頂点はC451aの元の
+coordinatePositionで読み、逆は元の位置の順序同値の逆で読む。最後にC451hへ渡す。
+既存構成の法則・同じ指定面の比較の証明分割として型を次に記録する。
+ここは紙だけであり、証明済み・実測へ含めない。各証明200行以内の見込み。
+
+```lean
+lemma occurrences_card_eq_count {r l : ℕ} (v : Fin l → Fin r) (a : Fin r) :
+    (Surjection.occurrences v a).card = Surjection.occurrenceCount v a
+
+lemma compositeFirstPosition_strictMono {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e)) :
+    StrictMono (compositeFirstPosition u v k r)
+
+lemma positiveCompositeWord_remaining_count {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (a : {a : Fin (m + 1) // a ≠ k}) :
+    Surjection.occurrenceCount (positiveCompositeCutWord u v k r).val
+        (BarrattEccles.remainingPosition m (n + 1) k a) =
+      Surjection.occurrenceCount (positiveWord u).val a.val
+
+def remainingWordPositionOrderIso {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (a : {a : Fin (m + 1) // a ≠ k}) :
+    ↥(Surjection.occurrences (positiveWord u).val a.val) ≃o
+      ↥(Surjection.occurrences (positiveCompositeCutWord u v k r).val
+        (BarrattEccles.remainingPosition m (n + 1) k a))
+
+def colorPathOrderIso {m m' q r r' : ℕ} (s : Cut m q) (t : Cut m' q)
+    (u : Surjection.Word r (m + 1)) (v : Surjection.Word r' (m' + 1)) (a : Fin r) (b : Fin r')
+    (e : ↥(Surjection.occurrences u.val a) ≃o ↥(Surjection.occurrences v.val b))
+    (hl : ∀ p, lo s p.val = lo t (e p).val)
+    (hr : ∀ p, hi s p.val = hi t (e p).val) :
+    ↥(colorPositions s u.val a) ≃o ↥(colorPositions t v.val b)
+
+lemma colorPathOrderIso_vertical {m m' q r r' : ℕ} (s : Cut m q) (t : Cut m' q)
+    (u : Surjection.Word r (m + 1)) (v : Surjection.Word r' (m' + 1)) (a : Fin r) (b : Fin r')
+    (e : ↥(Surjection.occurrences u.val a) ≃o ↥(Surjection.occurrences v.val b))
+    (hl : ∀ p, lo s p.val = lo t (e p).val)
+    (hr : ∀ p, hi s p.val = hi t (e p).val) (x : ↥(colorPositions s u.val a)) :
+    t.vertical (colorPathOrderIso s t u v a b e hl hr x).val = s.vertical x.val
+```
+
+occurrencesの濃度は元の昇順リストとoccurrencePositions_lengthから読む。
+compositeFirstPositionの順序はC388とC387から。有限回数の保存は元の符号や作用を触らない。
+区間内の持ち上げの単調性は、横座標が異なれば元の横座標の順序、同じなら元のverticalの
+順序とcoordinate_sumを使う。この一般の法則だけで挿入色の全頂点の比較を供給したとは扱わず、
+挿入色の部分語・元の順位の照合はC451の残りに保持する。
+
+## 206. L12a の指定面・符号の組み立てと元の座標：検証・取り込み候補
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§199・201〜204の8本401行を検証した。
+元の指定面の族、元の前方次数と二つの係数移動を持つ符号を組み立てた。
+元の二座標による頂点の所属、合成ブロックの両端、元の残り色の文字と同じ頂点の座標、
+同じ順序列挙から元の指定面への係数移送まで。C451全体・C452・C453はまだ未完。
+
+対象ビルド（全て成功・対象警告0）：
+`/tmp/bsw16/m14-nested-cut-coefficients-01.log`（2,888 jobs）、
+`/tmp/bsw16/m14-interval-vertex-coordinates-01.log`（1,135 jobs）、
+`/tmp/bsw16/m14-composite-outer-endpoints-02.log`（2,848 jobs）、
+`/tmp/bsw16/m14-face-data-order-transport-01.log`（1,129 jobs）、
+`/tmp/bsw16/m14-composite-remaining-vertices-01.log`（2,853 jobs）。
+ブロック両端の最初のビルドでは、区間のhiを局所名で隠していたためその局所名を改めた。
+数学の主張や既存の公開宣言は変えていない。
+
+小監査入力 `/tmp/bsw16/audit-m14-composite-face-coordinates.lean`、
+結果 `/tmp/bsw16/m14-composite-face-coordinates-audit.log`、
+**8モジュール・46宣言、標準三公理のみ**。sorry・新規公理0、対象警告0。
+個別の証明200行超はない。各ビルドと監査で鍵を独立に取り、実行が終わったら返した。
+共有入口・共有監査・drafts・界面は変更していない。
+
+登録候補（接頭部 `SerrePositivity.EInfinity.SimplexCuts.`）：
+
+| モジュール | 実測行数 |
+| --- | ---: |
+| CompositeFaceFamilies | 35 |
+| NestedCutCoefficients | 27 |
+| IntervalVertexCoordinates | 57 |
+| CompositeBlockPositions | 50 |
+| CompositeOuterEndpoints | 74 |
+| FaceDataOrderTransport | 56 |
+| CompositeRemainingPositions | 69 |
+| CompositeRemainingVertices | 33 |
+| **合計** | **401** |
+
+L12a検証済み実測2,700+401=**3,101行**、M14は17,907+401=**18,308行**。
+外枠25,000行まで**6,692行**。L12aは未完のため一覧は12/48のまま。
+§205は次の同じ指定面の比較の紙の型で、未実装。有限点検は§198〜199・201のとおりで、
+Leanの全称証明へ混ぜていない。
+
+## 207. C451の残りの見込みと外枠との照合
+
+一覧：済み 12／全体 48（うち追加 4）
+
+今回401行のうち27行は符号の組み立て、374行は指定面・実テンソルの比較の前段。
+指定面の比較は、元の出現位置を全頂点の順序同値へ持ち上げる法則も必要なため、
+§200の指定面と実テンソル400〜750行の見込みでは残りの接続が不足する。
+次の残りを分けて数え直す。既存法則の再利用による目安であり、完成済みとして控除しない。
+
+| 指定面・実テンソルの残り | 見込み |
+| --- | ---: |
+| 残り色の全出現位置・全頂点の順序同値とその面の評価（§205） | 160〜280 |
+| 挿入色の同じ部分語・元の順位・全頂点の比較 | 160〜280 |
+| 同じ出力次数・指定面から実テンソルと零項への接続 | 130〜240 |
+| **残り** | **450〜800** |
+| **この行の完成時（374行を含む）** | **824〜1,174** |
+
+他の行の見込みを据え置くと、符号の残り173〜323行、nullary250〜400行で、
+L12aの残り**873〜1,523行**、完成時**3,974〜4,624行**。
+M14全体の完成見込みは**25,185〜30,745行**で、下端でも外枠を185行上回る。
+外枠を緩めたり完了条件を縮めたりはしない。現在の実測は18,308行で、
+固定した同じ作用の法則の範囲内で進め、実装の外枠に届くときの停止規則を維持する。
+収まるとは主張しない。G10・M15・G12の部品は作らない。
+
+## 208. §207の停止判断の訂正：M14のLeanを外枠で区切る
+
+一覧：済み 12／全体 48（うち追加 4）
+
+前ターンはf19ee4262・1bf98147eで左逆と正の全添字の同値、その後の指定面の座標法則を
+検証・コミットした進捗。現在の枝は1bf98147e、作業木に未検証のLeanはない。
+本ターンの最初に正本coordination.md §2を読み直した。
+規模の規則は「**上限を超えそうなときは報告して止める（止まる前に、それまでの検証済みの分をコミット）**」。
+夜の規則も「**上限を超えそうなときは検証済みをコミットして報告を書き、その線の Lean は止めて決めておいた代わりの紙の作業へ**」。
+§207の、実測が25,000行未満なのでそのまま実装を続けるという解釈は訂正する。
+
+実測はM14 **18,308行**、L12a **3,101行**、外枠まで6,692行。
+しかし§207の完成見込みは **25,185〜30,745行**で、下端でも外枠を185行上回る。
+したがって、ここでこの線の追加Leanを止める。既に検証済みを保存してあり、
+見込みの外の補題を足したり、同じ型を弱めたり、証明を不自然に圧縮したりはしない。
+新しい外枠を自己承認しない。
+
+再開箇所は§205の残り色の全位置・全頂点の順序同値。その後は§199のC451〜C453と
+実テンソル・nullary、固定した§112の残り。B4や正の有限対応を再実装しない。
+L12a・M14とも未完であり、一覧の完了数は増やさない。
+本ターンは、/goalで指定された代わりの仕事「G10後のnative Tot・二重模型・filtered塔の
+型つきの一覧を紙で」を下に具体化する。M15・G12の紙の仕事へは戻らない。
+Leanファイル・drafts・界面・他レーンのファイル・共有入口・mainには変更しない。
+
+## 209. G10後の紙の一覧：受け渡しの現在地と型の記法
+
+一覧：済み 12／全体 48（うち追加 4）
+
+### 209.1 読んだ現在の証拠
+
+自分の枝の界面とMayの本体に加え、main 753c269b6の
+`formalization-plans/stage-ii/report-inf-supply-w2.md` §150〜153をread-onlyで確認した。
+枝にmainを取り込んだとは扱わない。③-bの**B・C（停止点2a）は完成、Dと停止点2bは未完**。
+§153ではG10実測19,901行、残るDは750〜1,350行で外枠20,000行のため停止している。
+各図式の錐を未完成と一括りにしたり、逆にG10全体を完成扱いしたりしない。
+
+mainの実際の公開入口は
+`InfinityCategories/HA/DerivedCategoryModels/CosimplicialTotalization/StrictDerivedTotCone.lean`。
+namespaceは同じパスの`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization`。
+次の宣言は既にあり、⑤aで作り直すものではない。
+
+```lean
+strictDerivedTotCone (X : CosimplicialObject (Complex A)) :
+  JoinCone (strictCosimplicialComplexNerve X ≫ complexOrdinaryDerivedSource A)
+strictDerivedTotCone_isLimit (X : CosimplicialObject (Complex A)) :
+  IsLimitCone (strictDerivedTotCone X)
+strictDerivedTotCone_pullback (X : CosimplicialObject (Complex A)) :
+  joinMap (𝟙 (Δ[0] : SSet.{u+1})) nativeTotIndexIso.hom ≫
+    (strictDerivedTotCone X).val = (nativeDerivedCone X).val
+```
+
+これらは同じ元のstrict複体図式の全join錐と、その極限性を供給する。
+全図式射・全錐族を含む`derivedTotVertexFamily`・`derivedTotConeFamily`の最終照合は
+G10のDに残る。⑤aでDを新しく作らない。
+③-bの§152の3b-4案R01〜R12は紙であり、BE版の完成品とは数えない。
+
+既存のBE側で再利用するものも確認した。
+
+| 現在ある宣言 | この紙での使い方と限界 |
+| --- | --- |
+| `framedLimitFunctor A K` | 同じ右frameを使う計算全関手。end/frameを再定義しない |
+| `carrierFramedLimitComparisonIso` | 台の通常局所化の同型。nativeの全join錐族の比較をこれだけで済ませない |
+| `algebraCAlgSource_underlyingDerivedIso A` | 元の`algebraCAlgSource A ≫ cAlgForgetDerived A`の全関手比較 |
+| `cAlgForgetDerived_mapJoinCone_isLimit A c hc` | 追加輸送条件なしの既存定理。Uが極限を保つことを使うときの入口 |
+| `mayPrimeFieldPowerZero_source` | 同じho(CAlg)のP⁰を、既存νと同じ厳密May演算へ引き戻す等式 |
+| `mayNormalizedHomologySourceIso k n` | 元の厳密BE代数のホモロジーとΠの自然比較 |
+| `FunctorIso.toNatIso`・`hoMapCompIso`・`ordinaryToHoNerve_naturalIso` | nativeの全比較を通常の全射の自然同型へ運ぶ |
+
+Uが極限を保つことから、任意に作ったBEの錐が極限だとは推論しない。
+同じBEのnative錐・普遍性は③-bの3b-4の受け渡しで確認する。
+点つきKanのTotは使わず、Sp値のcoherentなP⁰へ戻らない。
+
+### 209.2 以下の紙の記法
+
+以下は**未実装・未elaborationの型案**。新しい`SpecifiedG10Comparison`等の構造を
+Leanで作って不足を前提の中へ隠すものではない。
+§112のL38〜L44・L43a・L43bを、既存の欄と実際の受け渡しへ結ぶための法則・証明分割で、
+一覧の新しい項目数には加えない。元の48項目、完了12のまま。
+
+`p : ℕ`、`[Fact p.Prime]`、`κ := EInfinityPrimeField.{u} p`、
+`C := CosimplicialRingAlgebra κ`、`CA := CAlg_R κ`、`HCA := CA.HomotopyCategory`、
+`Π n := homotopyGroupsOnHo κ (cAlgForgetDerived κ) n`、
+`P n := barrattEcclesPowerOp0 p n`とする。これらの本体・型は現ソースにある。
+`B := bfNormalizedAlgebra κ`はまだ未完成のL26の出力で、現時点の既存宣言ではない。
+`F := nerveMap B ≫ algebraCAlgSource κ`、
+`FHo := ordinaryToHoNerve C ⋙ hoMap F`はその出力を受けたときの紙の記法。
+
+`T : nerve C ⟶ CA`は③-bの3b-4から**同じ指定native Tot・錐族との比較付きで**受け取る
+ofCosimplicialの候補。任意の関手にTotでの演算の主張を仮定なしに要求しない。
+`THo := ordinaryToHoNerve C ⋙ hoMap T`。
+`e : FunctorIso F T`は全関手比較で、対象ごとの同値だけへ弱めない。
+`eHo := Functor.isoWhiskerLeft (ordinaryToHoNerve C) e.toNatIso`を使う。
+このeの供給と、指定錐族・同じ脚・指定射への適合こそL39の受け渡しの検収対象。
+
+## 210. L38〜L40：native Totへの適用の型と検収
+
+一覧：済み 12／全体 48（うち追加 4）
+
+### 210.1 L38の同じBF模型の錐
+
+L37の同じ標準単体のframe・augmentationからBF模型の錐を作る部分は未完。
+既存の一般native錐の代用品を定義しない。紙の要求は§112と同じ。
+
+```lean
+bfCosimplicialCone (X : C) :
+  JoinCone (cosimplicialNerve X ≫ discreteCAlgUnderEmbedding κ)
+bfCosimplicialCone_vertex (X : C) :
+  (bfCosimplicialCone X).vertex = atVertex F (nerveVertex X)
+```
+
+錐の全join射と、各qの標準の評価脚を同じframeから照合する。
+③-bのR11が界面に制限して供給する
+`TotalizationCone (cosimplicialNerve X ≫ discreteCAlgUnderEmbedding κ)
+  (atVertex T (nerveVertex X))`
+の頂点だけをBFの頂点と同一視しない。錐の移送は全join射を保って行う。
+G10のstrictDerivedTotConeはUで忘れた加群側の検収に使い、BE錐の構成を肩代わりさせない。
+
+### 210.2 L39の全関手・同じ射の比較
+
+```lean
+bfToNativeTotIso : FunctorIso F T
+
+bfToNativeTotIso_naturality (X Y : C) (f : X ⟶ Y) :
+  FHo.map f ≫ eHo.hom.app Y = eHo.hom.app X ≫ THo.map f
+
+nativeTotHoMap (X Y : C) (f : X ⟶ Y) :
+  THo.map f = SSet.HomotopyCategory.homMk ((nerve.edgeMk f).map T)
+```
+
+二番目はeHoの自然性、三番目は既存ordinaryToHoNerve・hoMapの同じ辺への評価の法則。
+全native比較を供給したことをこれらの形式的法則だけで済ませない。
+③-bからはTと同じ全錐族・指定脚への比較を受け取ってから、eをL39として検収する。
+F側のMayの比較は、`ordinaryToHoNerve_naturalIso B`と`hoMapCompIso`で
+FHoを`B ⋙ ordinaryAlgebraHoSource κ`へ運び、
+`mayPrimeFieldPowerZero_source`と`mayNormalizedHomologySourceIso`を適用する。
+L36の同じBF作用・同じFrobeniusの計算を、この成分へ渡す。別のνや作用へ取り替えない。
+
+通常圏へ移した後の必要な係数移送の法則の型は次。
+
+```lean
+natTrans_transport_endomorphism {D : Type v} [Category D]
+    (L M : D ⥤ AddCommGrpCat.{u}) (a : L ⟶ L) (b : M ⟶ M) (e : L ≅ M)
+    (he : a ≫ e.hom = e.hom ≫ b) (X : D) (f : X ⟶ X)
+    (hX : a.app X = L.map f) : b.app X = M.map f
+```
+
+このeは上の具体的なeHoをΠでwhiskerしたもの。heは既存Pの全ho(CAlg)射に対する
+自然性から得る。形式的な移送のための独立の新しい数学の仮定ではない。
+指定射fへのeHoの自然性と、同じ比較の逆成分で消去して示す。
+
+### 210.3 L40の界面への最終形
+
+```lean
+barrattEcclesPowerOp0_tot
+    (X : C) (f : X ⟶ X)
+    (hf : ∀ j (a : (X.obj j).right), (f.app j).right.hom a = a ^ p) (n : ℤ) :
+  let x := atVertex T (nerveVertex X)
+  (barrattEcclesPowerOp0 p n).app (SSet.HomotopyCategory.mk x) =
+    (homotopyGroupsOnHo κ (cAlgForgetDerived κ) n).map
+      (SSet.HomotopyCategory.homMk ((nerve.edgeMk f).map T))
+```
+
+Tとeは上記の実際の受け渡しを前提としており、現在の新規宣言ではない。
+L36のBF側の計算とL39を適用してこの型を閉じる。
+同じTをAssemblyのofCosimplicialとpowerOp0_totの両方へ渡す。
+Assemblyは現在この欄を残り引数に取っており、既証明の零次・正次数・離散の欄を変更しない。
+対象ごとのホモロジー同型だけで、Frobeniusを指定した同じTの辺へ同定したとは扱わない。
+
+## 211. L41〜L42：filtered塔の同じ演算とshift（紙の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+### 211.1 普通の群の余極限での一意性
+
+§112のL41の数学は可換群の余極限の普遍性。filtered性は実際の利用条件であり、
+等式の消去そのものは任意の添字の余極限で成立する既存構成の法則。
+この停止中にその容易な部分だけをLeanに新設することもしない。
+
+```lean
+filteredOperation_desc {I : Type v} [Category I]
+    (D : I ⥤ AddCommGrpCat.{u}) (c : Cocone D) (hc : IsColimit c)
+    (P Q : c.pt ⟶ c.pt)
+    (h : ∀ i, c.ι.app i ≫ P = c.ι.app i ≫ Q) : P = Q
+```
+
+L41のIsFilteredを含む元の型には、そのまま適用できる。
+この型の一般化は外部の新しい数学の項目として数えず、既存余極限のhom_extの適用にすぎない。
+
+### 211.2 nativeなfiltered余極限とho(CAlg)を混同しない型
+
+§112のL42の紙では`hc : IsColimit c`をho(CAlg)の通常圏に書いた。
+実際のA4のnative余極限から、その通常圏での普遍性まで無条件には使わない。
+必要なのは同じ脚を持つcoconeと、Πによる像の可換群の余極限性である。
+ネイティブのshiftを表す同じ射sと、その脚の式を入力に明示する。
+元のL42でhcから作るcolimitEndomorphismも、この型のsとして適用できる。
+
+```lean
+frobeniusTower_powerOp_on_specified_cone
+    (D : ℕ ⥤ HCA) (f : D ⟶ D) (c : Cocone D)
+    (s : c.pt ⟶ c.pt) (hs : ∀ i, c.ι.app i ≫ s = f.app i ≫ c.ι.app i)
+    (n : ℤ) (hπ : IsColimit ((Π n).mapCocone c))
+    (hP : ∀ i, (P n).app (D.obj i) = (Π n).map (f.app i)) :
+  (P n).app c.pt = (Π n).map s
+```
+
+Pの脚への自然性→hP→hsのΠによる像→L41の順。
+Πのfiltered余極限保存自体は、忘却のsifted保存とホモロジーの比較、または対応する供給者の
+指定した保存の定理として受け取る。M14で証明済みとは数えず、hπを黙って消さない。
+Dのnativeな元図式、同じnative余錐の全脚、sの同じ代表辺を受け取ってcとhsを作る。
+ho(CAlg)の通常のIsColimitを、nativeなIsColimitConeから無条件に生成する工程を追加しない。
+
+### 211.3 A4の半線形塔への接続
+
+A4の実際の塔は`Δ → φ_*Δ → φ_*²Δ → …`であり、初めから同じR上の自己射の塔とはしない。
+mod pの後、κへの制限と、Frobeniusが素体上で恒等であることによる係数制限の指定同型を
+使って上のD・fへ送る。`E.restrictD_homologyIso`・`E.restrict_comp`等の同じ係数比較を使い、
+頂点を勝手に等しいと置かない。
+
+既存draftsの`prismaticPerfectionFrobenius_leg`の同じ第0脚の式と、その高い項への自然性を、
+c・s・hsへ照合する。全塔のshiftの同型はA4側のcofinality・完備化との両立から受け取る。
+L42だけでその同型を構成したことにはしない。
+
+```lean
+frobeniusTower_powerOp_isIso
+    (D : ℕ ⥤ HCA) (f : D ⟶ D) (c : Cocone D)
+    (s : c.pt ⟶ c.pt) [IsIso s]
+    (hs : ∀ i, c.ι.app i ≫ s = f.app i ≫ c.ι.app i)
+    (n : ℤ) (hπ : IsColimit ((Π n).mapCocone c))
+    (hP : ∀ i, (P n).app (D.obj i) = (Π n).map (f.app i)) :
+  IsIso ((P n).app c.pt)
+```
+
+これは上の等式とfunctorが同型を保つことからの法則。
+n>0なら既存`barrattEcclesPowerOp0_pos`で同じ成分は零なので、Π_nの可換群は零となる。
+n=0は既存`barrattEcclesPowerOp0_zero`を同じπ₀比較で読む。
+A4(a)ではH^{-n}の消滅と導来Nakayamaへ、(b)ではC/p→H⁰(X/p)の**単射**へ運ぶ。
+この単射を同型として使わず、Xの離散性も仮定しない。
+
+## 212. L43a・L43b・L43・L44：同じ二重模型の比較（紙の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+### 212.1 同じ模型と作用を保持する入力
+
+`X : SimplicialObject C`に対し、内側は同じBF正規化模型B、外側は同じ直和実現を使う。
+現ソースの
+`InfinityCategories/HA/DerivedCategoryModels/SimplicialRealization/DirectSumTotal.lean`
+の`directSumTotalFunctor`を、台の図式に適用する。内部次数の有界性を足さない。
+項はK^t = ⨁_{s≥0} (B(X_s).carrier)^{t+s}で、通常のcolimや積全複体へ替えない。
+微分・shiftのKoszul符号はその既存関手の指定式を保持し、別の符号を選ばない。
+
+`doubleRealizationModel X`、`doubleShuffleAction X`、`finiteMayPrimitive X n a`は
+§112の未実装の出力の紙の名前。単に台が擬同型だからBE作用も同じとはしない。
+③-bのR06・R09の模型と、同じ直和複体上のshuffle作用との適合がL43aの証明義務。
+R09の台の比較だけでは、元のBE代数の射や作用の比較まで得たとは数えない。
+
+### 212.2 固定した一覧の主張の型
+
+```lean
+-- L43a：同じ全係数・全射に沿う作用の照合。
+doubleRealization_action (X : SimplicialObject C) (r : ℕ) :
+  realizationAction X r = doubleShuffleAction X r
+
+-- L43b：同じMay係数・BF切断・外側shuffleによる有限原始元。
+finiteMayPrimitive_d (X : SimplicialObject C) (n : ℤ)
+    (a : MayClosed (doubleRealizationModel X).carrier (-n)) :
+  (doubleRealizationModel X).carrier.d (-n - 1) (-n) (finiteMayPrimitive X n a) =
+    mayNormalizedValue p (doubleRealizationModel X) n (ULift.up (mayNu p n : ZMod p)) a -
+      (doubleFrobeniusMap X).f (-n) a.val
+
+-- L43：上記の同じ原始元を持つこと。
+doubleMayDifferencePrimitive (X : SimplicialObject C) (n : ℤ)
+    (a : MayClosed (doubleRealizationModel X).carrier (-n)) :
+  ∃ H : (doubleRealizationModel X).carrier.X (-n - 1),
+    (doubleRealizationModel X).carrier.d (-n - 1) (-n) H =
+      mayNormalizedValue p (doubleRealizationModel X) n (ULift.up (mayNu p n : ZMod p)) a -
+        (doubleFrobeniusMap X).f (-n) a.val
+```
+
+ここでdoubleFrobeniusMapは、元のXのlevelwise Frobeniusを同じ模型関手で送った複体射。
+存在だけの別のFrobenius自己射を取らない。general kでは半線形の係数比較を明記するが、
+この本欄の計算はκ上。`mayNormalizedValue`は既存mayDClosedと同じ係数・次数移送から
+作る閉元の値の紙の名前であり、現時点の既存公開宣言としては扱わない。
+n>0の負の添字の分岐も含め、全整数nを保つ。n<0や有界な入力だけに縮めない。
+原始元の式では係数微分・shuffleの全境界・BF切断の境界を保持し、
+閉元条件で消える項も境界計算に入れてから消す。
+
+実際のホモロジーへの必要な法則は次（同じ原始元の既存構成への適用）。
+
+```lean
+doubleMayClass_frobenius (X : SimplicialObject C) (n : ℤ)
+    (a : MayClosed (doubleRealizationModel X).carrier (-n)) :
+  mayNormalizedClass p (doubleRealizationModel X) n (ULift.up (mayNu p n : ZMod p)) a =
+    mayClosedClass (doubleRealizationModel X).carrier (-n)
+      (mayClosedMap (doubleFrobeniusMap X) (-n) a)
+```
+
+`mayClosedClass_eq_zero_iff`・`mayClosedClass_naturality`と、既存の代表元の全射性で
+閉元から全ホモロジー元へ移す。全整数次数のνは既存mayNuを保持する。
+
+### 212.3 L44とA4-localなnative実現の最終形
+
+紙で`R : nerve (SimplicialObject C) ⟶ CA`を、③-bの指定BE実現と同じnative頂点・
+同じ実現余錐に沿う出力とする。
+`D := nerveMap doubleRealizationModel ≫ algebraCAlgSource κ`、
+`eR : FunctorIso D R`は、同じBE作用・同じ指定図式射を保つ比較として受け取って検収する。
+別のstrictificationや一般の実現保存を⑤aで新設しない。
+
+```lean
+a4_realization_powerOp
+    (X : SimplicialObject C) (f : X ⟶ X)
+    (hf : ∀ s j (a : ((X.obj s).obj j).right), ((f.app s).app j).right.hom a = a ^ p)
+    (n : ℤ) :
+  let x := atVertex R (nerveVertex X)
+  (barrattEcclesPowerOp0 p n).app (SSet.HomotopyCategory.mk x) =
+    (homotopyGroupsOnHo κ (cAlgForgetDerived κ) n).map
+      (SSet.HomotopyCategory.homMk ((nerve.edgeMk f).map R))
+```
+
+L43a・L43bの同じ作用と原始元からstrict側を読み、L39と同じ全関手・射の移送を使う。
+このA4-localな補題を界面のpowerOp0_totの新しい欄へ広げない。
+Totにおけるlevelwise Frobeniusの計算だけで、外側実現でP⁰が可換だとは推論しない。
+一般のΠと実現の可換性も仮定せず、実際の同じ二重模型上の計算を保持する。
+
+## 213. 再開時の受け渡し検収表と残作業
+
+一覧：済み 12／全体 48（うち追加 4）
+
+| 固定した項目 | 受け取る具体的なもの | ⑤aが検収・適用すること | 現状態 |
+| --- | --- | --- | --- |
+| L38 | 同じstrict複体のG10指定錐、BEの同じframeの計算 | BFの同じ全join射と標準脚 | 加群の各図式の錐はmainにある。BFとBEの比較は未完 |
+| L39 | G10のDの全族、3b-4のR04・R11の同じnative比較 | F→Tの全関手同型・全射・指定錐族 | 受け渡し未完。図式ごとの錐だけで完了としない |
+| L40 | 同じT・e、L36の全整数計算 | 現界面のpowerOp0_totの同じ型 | 未完 |
+| L41 | 可換群の指定余極限 | hom_ext | 紙のみ |
+| L42 | native塔と同じ脚、同じshift、Πによる像のIsColimit | 脚の自然性からP⁰=shift | Π保存とnative shiftを自分で供給しない。紙のみ |
+| L43a | 3b-4の実現模型・指定余錐・全射 | 同じshuffleのBE作用との比較 | 紙のみ |
+| L43b・L43 | 同じW係数・BF作用・外側shuffle | 指定有限原始元の微分、全整数の差の境界 | 紙のみ |
+| L44 | 同じeRとnative Frobenius辺 | A4-localな実現上の成分の比較 | 紙のみ |
+
+一般G10・strictification・BEのTot/実現の供給者側の証明を、この紙で⑤aの新しいLeanへ
+振り替えない。M14本体の外枠25,000行は維持したまま。上の紙を実装・証明済みや
+M14完成として数えない。M14のLeanの再開には、§208の外枠超過見込みへの調整役の判断が必要。
+判断が来た後の再開箇所は§205で、G10の再実装ではない。
+
+## 214. 紙の型の最終点検：同じ閉元とAssemblyへの渡し方
+
+一覧：済み 12／全体 48（うち追加 4）
+
+### 214.1 既存のMayの値との接続を明示する
+
+現本体の`mayPowerZeroCycle`はZMod p上で定義されている。
+κ上の上記二重模型では、一般kで既にある`mayDClosed`・`mayClosedIndex`と
+κへ送った同じmayNuを使う。§212の紙のmayNormalizedValueは次の**同じ代表元**の値の略記とする。
+別のコホモロジー類の任意の代表元を選ばない。
+
+```lean
+doubleMayNormalizedClosed (X : SimplicialObject C) (n : ℤ)
+    (a : MayClosed (doubleRealizationModel X).carrier (-n)) :
+    MayClosed (doubleRealizationModel X).carrier (-n) :=
+  if hn : 0 ≤ mayZeroIndex p n then
+    (ULift.up (mayNu p n : ZMod p) : κ) •
+      mayClosedIndex (doubleRealizationModel X).carrier (mayPowerZero_degree p n hn)
+        (mayDClosed (doubleRealizationModel X) p (mayZeroIndex p n).toNat (-n) a)
+  else 0
+
+doubleMayNormalizedClosed_class (X : SimplicialObject C) (n : ℤ)
+    (a : MayClosed (doubleRealizationModel X).carrier (-n)) :
+  mayClosedClass (doubleRealizationModel X).carrier (-n) (doubleMayNormalizedClosed X n a) =
+    mayNormalizedClass p (doubleRealizationModel X) n (ULift.up (mayNu p n : ZMod p)) a
+```
+
+`mayNormalizedValue p (doubleRealizationModel X) n (ULift.up (mayNu p n : ZMod p)) a`
+という§212の紙の記法は、この`doubleMayNormalizedClosed X n a`のvalを指す。
+閉じていることを仮定せずkernelの構成から保持し、classの上式で本体の同じMayの演算へ戻す。
+この式を新しい強いSp値の出力や、全複体の線形自己射の存在と混同しない。
+この閉元の定義とclassの式も§112のL43の同じ代表元・次数移送の法則の詳細化で、
+新しい一覧項目や既に検証したLeanではない。
+
+### 214.2 全係数のTotの欄は供給者の族を受け取る
+
+AssemblyのofCosimplicialは全Sの欄なので、κ上のT一つだけを全欄の実例としない。
+③-bから全係数Sの同じTotの族と、係数制限の比較を受け取り、そのκでの制限をTとして
+§210のpowerOp0_totへ渡す。ofCosimplicial_restrictその他の残り欄をこの紙で構成したとは数えない。
+現`barrattEcclesTheoryOfRemaining`の既証明欄はそのまま保持する。
+
+### 214.3 本ターンの検証と保存範囲
+
+今回の変更は**report-codex-w16.mdのみ**。Leanの追加・編集・下書き、draftsの変更、
+ビルド・小監査・共有鍵の取得は行っていない。型は全て紙であり、elaboration済みとは報告しない。
+参照した既存宣言の名前と型、mainのG10停止点2aと未完D、界面のpowerOp0_totの実際の型、
+既存直和全複体とMayの閉元・classの定義をread-onlyで照合した。git diff --checkを行う。
+数学実測は**18,308行**、一覧は**12/48（追加4）**から変わらない。
+外枠の超過見込みへの判断を待つ間、この線のLeanの停止を維持する。
+M14は未完であり、/goalの完了にはしない。
+
+## 215. 停止後の再確認：判断未更新、代わりの紙の利用側照合
+
+一覧：済み 12／全体 48（うち追加 4）
+
+前ターンは143b2884bで停止判断とG10後の型つき一覧を保存した進捗。
+本ターン開始時の枝は同じ143b2884b、作業木は清潔。
+mainは2b1085501へ進み、5∞-0のdrafts統合が取り込まれたが、
+`bhatt-scholze-codex-w16.md`の末尾は§31で、M14外枠25,000行の判断は未変更だった。
+したがって§208のこの線のLeanの停止を維持する。B4のやり直し・mainの取り込みはしていない。
+
+代わりの紙の作業として、§211のfiltered塔の型を実際のA4の完備化の対象へ当て直した。
+これは§209〜214の紙を実装や証明済みとして数える作業ではない。
+利用側へ渡すための具体的な未供給の入力を下に記録する。
+
+## 216. filtered塔の型の射程：raw余極限と完備化後を分ける
+
+一覧：済み 12／全体 48（うち追加 4）
+
+### 216.1 実際に読んだ定義
+
+枝とmainの両方の`drafts/A4/Perfectoidization.lean`において、
+`directPerfectionValue`は`directTowerColimit`の頂点に`prismCAlgCompletion`を施した対象。
+`prismaticPerfection`はその対象を使う。従ってLemma 8.4の対象はrawな塔の余極限と同一ではない。
+mainの統合後も、この順序は保持されていた。
+
+mainの`prismCAlgCompletion`は、A2の`prismCompleteReflection`による反射と包含の合成。
+`prismCompletion`という共通名の定義は現時点では
+`drafts/A2/DerivedPrismaticCohomology.lean`にある。
+これは反射の共通入口への統合であり、この名前があることだけで、M14に必要な
+完備化後のP⁰と指定Frobeniusの一致が本体で証明済みとは扱わない。
+
+読んだ`drafts/DerivedGeneral/CompletionFunctor.lean`の`completion_tensor_koszul`は、
+有限Koszul商を適用した完備化単位についての型で、現draftでは証明はsorryのまま。
+この型だけでは、完備化単位そのものが全Π_n上で同型・全射だとは結論しない。
+また`restrictFrobeniusCompletion`は完備化と係数制限の比較であり、
+P⁰と指定Frobeniusの**一致**を直接供給する型ではない。
+上は読んだ宣言の型の射程の確認で、関連する一般定理のプロジェクト全体での非存在を
+断言するものではない。
+
+### 216.2 §211の適用で追加してはいけない仮定
+
+`frobeniusTower_powerOp_on_specified_cone`は、実際のraw余極限のΠ像の余極限性が
+供給されればその対象の成分の等式を与える。
+完備化単位を合成した脚を同じcの脚として扱っても、完備化後のΠ像のIsColimitまで
+引き継げるとは限らない。そのhπを、実際の完備化済みの対象に無条件に入れない。
+
+§211.3のA4への接続は、完備化後のこの比較も供給されたときの利用側の筋であり、
+L42だけで完備化を越えたと読める部分はこの節で明確に限定する。
+P⁰が単位に自然であることと、完備化とFrobeniusが可換であることだけでは、
+その単位の像での二つの作用の一致から完備化後の全元の一致へ消去できない。
+
+### 216.3 必要な消去の仮定を露出させた、条件つきの型
+
+記法κ・HCA・Π・Pは§209のまま。
+raw対象x、完備化後の対象y、実際の単位ηと指定されたFrobenius射sx・syに対し、
+自然性からの消去ができる一つの**条件つきの法則**は次。
+これは仮定が得られているという主張でも、新しい承認済み一覧項目でもない。
+
+```lean
+powerOp_on_completion_of_epi
+    (x y : HCA) (η : x ⟶ y) (sx : x ⟶ x) (sy : y ⟶ y)
+    (hη : sx ≫ η = η ≫ sy) (n : ℤ) [Epi ((Π n).map η)]
+    (hx : (P n).app x = (Π n).map sx) :
+  (P n).app y = (Π n).map sy
+```
+
+紙の計算は、Pのηへの自然性、hx、hηのΠによる像を順に使い、
+`(Π n).map η ≫ (P n).app y = (Π n).map η ≫ (Π n).map sy`
+を得て、表示したEpiの仮定で消去するだけ。
+肝心の`Epi ((Π n).map η)`を、現時点の完備化反射やKoszul比較から供給済みとは扱わない。
+この仮定をAssemblyの欄やLemma 8.4の利用側へ新しく足して完成扱いすることもしない。
+
+## 217. 完備化後の比較の受け渡し：判断が要る境界（紙のみ）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+### 217.1 既存L44へ渡せる場合の入力の型
+
+L44の同じ二重模型が完備化後の対象まで表すなら、その指定Frobeniusとの比較を
+**入力として確認する**ことで、§212の計算を利用できる。
+以下でxκは実際の`prismaticPerfection/p`をκへ係数制限したCAlgの頂点、
+σκは実際の半線形Frobeniusを同じ係数制限の同型で自己辺に移したもの。
+単なるraw余極限の頂点に置き換えない。Rは§212.3の指定native実現の関手。
+
+必要な利用側の提示の型案は次。これは新しいM14のLeanとして一覧に足さない。
+
+```lean
+a4_completed_model_frobenius_comparison :
+  ∃ (M : SimplicialObject C) (ψ : M ⟶ M),
+    (∀ s j (a : ((M.obj s).obj j).right), ((ψ.app s).app j).right.hom a = a ^ p) ∧
+      ∃ e : SSet.HomotopyCategory.mk (atVertex R (nerveVertex M)) ≅
+          SSet.HomotopyCategory.mk xκ,
+        SSet.HomotopyCategory.homMk ((nerve.edgeMk ψ).map R) ≫ e.hom =
+          e.hom ≫ SSet.HomotopyCategory.homMk σκ
+```
+
+このeは対象だけの選択ではなく、同じ完備化と同じFrobeniusから得る比較を表す。
+供給側でnativeな全関手・同じ指定錐の比較を要求されている部分はそれを保持し、
+M14の演算を読む最後にこの同型と射の式を使う。
+この提示が供給されれば、L44とPのe.homへの自然性で実際のxκの成分を照合できる。
+しかし、その提示を既存L44の定義だけから新しく構成済みとは扱わない。
+
+### 217.2 別の完備化の検出を使う場合
+
+完備化の商の塔やKoszul商で検出するなら、同じ完成対象と同じFrobeniusの辺への
+比較、必要なΠの検出性、逆極限に由来する項の扱いを具体的な型で受け取る必要がある。
+各商のΠ上で一致することだけで、全対象のΠ上の一致が無条件に従うとはしない。
+同じMayの鎖模型で直接完備化後まで計算する場合も、その比較は現§112のL43a・L43bに
+含まれる同じ模型の照合なのか、追加の数学が要るのかを判断する。
+
+今回はどちらの経路も新しく実装しない。完備化後の提示をA4側から受け取れるか、
+既存M14の二重模型の範囲にその比較が既に含まれているか、追加の定理を要するかは、
+現状の型の照合だけでは確定できなかった。この判断を未証明の前提で隠さず報告する。
+§208の外枠の判断に加え、再開時の利用側の検収点として残す。
+
+## 218. 本ターンの保存範囲
+
+一覧：済み 12／全体 48（うち追加 4）
+
+変更はreport-codex-w16.mdだけ。前ターンの紙の一覧を実際のA4の完備化の定義へ
+当て直し、raw余極限と完備化後を同一視しないための入力を具体化した。
+Lean・drafts・界面・共有入口・mainは変更しない。ビルド・監査・共有鍵の取得もしていない。
+数学実測18,308行、完了12/48（追加4）は不変。紙の型をelaboration済みとは扱わない。
+外枠25,000行と、完成見込み25,185〜30,745行への判断はまだ未更新で、この線のLeanは停止中。
+G10の後の紙の一覧は§209〜214、今回の完備化後の受け渡しの注意は§216〜217。
+M14を完了にはしない。
+
+## 219. 再開判断の再確認と /goal の blocked 記録
+
+一覧：済み 12／全体 48（うち追加 4）
+
+本ターンもmain 2b1085501のW16指示書とcoordination.md §2をread-onlyで確認した。
+W16の末尾は§31、外枠25,000行と、超過が見込まれたときの停止規則に更新はない。
+枝はb3d6bc416から変更なし、未検証のLeanはない。
+
+同じ停止条件の継続は次の3ターンで確認した。
+
+1. §208〜214（143b2884b）：完成見込み25,185〜30,745行を受けてLeanの停止判断を訂正。
+   代わりの仕事としてG10後のnative Tot・filtered塔・二重模型の型つき一覧を具体化した。
+2. §215〜218（b3d6bc416）：再開判断未更新を確認。紙の一覧を実際のA4の完備化へ照合し、
+   raw余極限のΠの余極限性だけでは完備化後へのP⁰の一致を消去できない入力の不足を明示した。
+3. 本ターン：再開判断未更新を再確認。指定された代わりの紙の作業は§209〜217に保存済み。
+   型や範囲を自己承認で変更せずに進める、次のLeanの工程はない。
+
+従って /goal は **blocked（調整役の判断待ち）** とする。
+M14の完了を意味せず、目標・範囲・外枠を縮めない。
+必要な判断は、§207〜208の規模見込みへの対応と、§216〜217の完備化後の比較を
+既存のM14の模型の受け渡しに含められるか／別の供給が要るか。
+その判断の後の実装再開箇所は§205の残り色の全位置・全頂点の順序同値であり、
+既に証明した正の全有限対応やB4はやり直さない。
+
+数学実測**18,308行**、一覧**12/48（追加4）**は不変。
+本ターンはこの報告だけを保存する。Lean・drafts・界面・共有入口・mainには変更せず、
+ビルド・監査・共有鍵の取得も行わない。
+
+## 220. §32承認による再開（11-14夜）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+ユーザー承認のmain 81a3a3b31（W16 §32）をmath/bs-implへfast-forwardで取り込んだ。
+§208・§219の外枠による停止条件は、この明示の承認で解消された。
+外枠は**31,000行**へ変更、約**25,000行**で止まらず途中報告。
+型つき一覧48本と数え方・G10の部品を作らない規則は維持する。
+開始時実測18,308行、L12a3,101行、未検証のLeanはなし。
+
+§205の残り色の全位置・全頂点の順序同値から実装を再開する。
+完備化後のP⁰については§32の三案(a)(b)(c)を別に紙で比較し、仮定で隠さない。
+(c)が必要と判明したときはD79の判断に関わるため止まって報告する。
+G10・M15・G12・drafts・界面・他レーンのファイルには触れない。
+
+§205の最初の有限比較を実装前に点検した。
+`/tmp/bsw16/check-remaining-word-positions.py`：12,233組の元の合成切断の点検へ、
+全ブロックの最初の位置の狭義順序と、残り色の全出現位置・濃度の一致を加え、全例で一致。
+これはLeanの全称証明とは別の点検。型は§205のままで、同じ既存構成の法則・証明分割。
+
+## 221. C451の既存区間移送の証明分割（§205の続き）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+`colorPathOrderIso`を、同じ指定二座標の写像・その座標の法則・狭義単調性へ分割する。
+新しい作用や定理の追加ではなく、§205の同じ既存構成の法則。各証明200行以内。
+以下の共通変数のもとでの補助の型を記録する。
+
+```lean
+variable {m m' q r r' : ℕ} (s : Cut m q) (t : Cut m' q)
+  (u : Surjection.Word r (m + 1)) (v : Surjection.Word r' (m' + 1))
+  (a : Fin r) (b : Fin r')
+  (e : ↥(Surjection.occurrences u.val a) ≃o ↥(Surjection.occurrences v.val b))
+  (hl : ∀ p, lo s p.val = lo t (e p).val)
+  (hr : ∀ p, hi s p.val = hi t (e p).val)
+
+def colorPathMap (x : ↥(colorPositions s u.val a)) : ↥(colorPositions t v.val b)
+
+lemma colorPathMap_coordinates (x : ↥(colorPositions s u.val a)) :
+  t.horizontal (colorPathMap s t u v a b e hl hr x).val =
+    (e ⟨s.horizontal x.val, Finset.mem_filter.mpr
+      ⟨Finset.mem_univ _, (Finset.mem_filter.mp x.property).2⟩⟩).val ∧
+  t.vertical (colorPathMap s t u v a b e hl hr x).val = s.vertical x.val
+
+lemma colorPathMap_strictMono : StrictMono (colorPathMap s t u v a b e hl hr)
+```
+
+これをC451hへ渡す残り色の同じ指定面の比較の型は次。
+元のSigmaの等式であり、ホモトピー圏へ弱めない。退化した切断にも適用する。
+
+```lean
+lemma positiveComposite_remaining_face {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (a : {a : Fin (m + 1) // a ≠ k}) :
+    (⟨outputDegree (positiveCompositeOuterCut u v k c) (positiveWord u) a.val,
+       vertices (positiveCompositeOuterCut u v k c) (positiveWord u) a.val⟩ :
+        Σ t : ℕ, Fin (t + 1) →o Fin (q + 1)) =
+      ⟨outputDegree c.2 (positiveCompositeCutWord u v k c.1)
+          (BarrattEccles.remainingPosition m (n + 1) k a),
+       vertices c.2 (positiveCompositeCutWord u v k c.1)
+          (BarrattEccles.remainingPosition m (n + 1) k a)⟩
+```
+
+元の同じブロックの最初＝最後（non-slot）、同じ両端、§205の出現位置の順序同値、
+上の全頂点の順序同値、`faceData_eq_of_colorOrderIso`を順に使う。
+挿入色・符号・L12a全体が閉じたとは扱わない。
+
+## 222. §205の残り色の比較：検証済み・取り込み点
+
+一覧：済み 12／全体 48（うち追加 4）
+
+新しい5本306行を検証した。全出現位置の順序同値を、同じ区間の両端を使って全頂点へ
+持ち上げ、元のSigma型の中で残り色の指定面を厳密に照合した。非退化性は仮定しない。
+新しい公理・sorryなし。既存の公開宣言・界面・drafts・共有入口は変えていない。
+
+対象ビルド：`m14-remaining-word-positions-01.log`（2,859 jobs）、
+`m14-remaining-color-faces-01.log`（2,863 jobs）、ともに成功・対象警告0。
+`ColorPathTransport`の最初の二回は簡約とsubtypeの所属証明の明示で修正し、最後のビルドで検証した。
+小さい監査：`/tmp/bsw16/audit-m14-remaining-color-faces.log`、
+**5モジュール・27宣言、標準三公理のみ**。鍵はビルド・監査ごとに取得し、終了時に返した。
+
+調整役が登録すべきモジュール（共通接頭辞 `SerrePositivity.EInfinity.SimplexCuts.`）：
+
+- OccurrenceCardinalities（25行）
+- CompositeFirstPositionOrder（31行）
+- RemainingWordPositions（65行）
+- ColorPathTransport（140行）
+- RemainingColorFaces（45行）
+
+M14実測**18,614行**、L12a実測**3,407行**。一覧の完了は12/48のまま。
+§207の残り色の160〜280行に対し実測306行（上端から26行増）。
+他の行を据え置いた完成見込みは**25,331〜30,771行**で、31,000行の外枠内だが余裕は小さい。
+挿入色・符号・nullary・後段を完成済みとして控除していない。
+
+## 223. 完備化後のP⁰：§32の三案の比較（紙のみ）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+### 223.1 比較する対象を固定する
+
+`K`はrawなFrobenius塔の余極限をmod pしてκへ制限した台、
+`Y`は**実際の**`directPerfectionValue`をmod pしてκへ制限した台とする。
+`Y ≅ LΛ_d K`という単位・Frobeniusを保つ比較自体も供給義務として数える。
+以下のprincipal completionの計算を、その比較を証明せずにYへ適用しない。
+記法はcochain次数、Π_n = H^{-n}。Frobeniusは係数の半線形性も保持する。
+
+BS著者版Definition 8.2は完備化後を定義し、Lemma 8.4はlevelwise FrobeniusとP⁰を
+使っている。rawな対象へのL42・L44だけでこの完備化の比較も終わったとは読まない。
+原典の主張への反例を述べているのではなく、現在の模型での証明義務の切り分けである。
+出典：[BS著者版 §8](https://www.math.uni-bonn.de/people/scholze/prisms.pdf)。
+
+### 223.2 (a) 各項を完備化した二重模型
+
+**各項を完備化するだけでは足りない。** 完備反射Lは完備対象の圏で余極限を保つが、
+その圏の包含がambientな単体的実現を保つことは別である。
+L44で使うのはambientなdirect-sum totalであり、完備圏の余極限への変更ではない。
+
+台の複体だけでも障害が見える。R=κ[[d]]とし、正規化した外側の単体次数sの複体を
+cochain次数sにRを一つ置いたものにする（微分と正規化単体微分は零）。
+各単体次数の非正規化項はこれらの有限直和なのでd完備だが、実現の次数0は
+⊕_{s≥0} Rとなる。これはd完備ではない：完備化に存在するΣ_s d^s e_sが直和に入らない。
+従って項ごとの完備性だけから、ambientな同じ実現が完備になるとはいえない。
+この例は二重模型での自由な交換に対する点検であり、実際のA4の模型が交換不能だと
+証明する例ではない。
+
+可能性を残す経路は、元の模型にd進フィルトレーションを保持し、完備totalを作り、
+元の有限p入力の作用・明示primitiveを連続に延長して、**同じ指定Frobenius**を比較するもの。
+ただし次をまだ証明していない。
+
+1. 完備totalが実際の`directPerfectionValue/p`を表すこと。
+2. BF/Mayの指定作用とprimitiveが、必要なフィルトレーションを保ち、完備totalへ延長すること。
+3. 元のnative実現と同じFrobeniusの辺への比較。
+
+これは各項を置換するだけの照合ではなく、連続な作用の延長と完備totalの比較という
+数学的な仕事を要する。現在の48本へ証明済みの法則として紛れ込ませない。
+各項を完備化しただけのMで§217.1のeを供給できる、とはまだ結論しない。
+
+### 223.3 (b) 単位の全射性・同型性と、別方向からの検出
+
+**coconnective性だけでは単位はΠ_0上で全射にならない。**
+κ[t]→κ[[t]]は離散な環の導来t完備化の単位であり、1/(1-t)は像に入らない。
+tは非零因子なので、この例では導来と通常の完備化の差もない。
+従って§216.3のEpiをcoconnective性から供給してはならない。
+一般のΠ_nについても、完備化単位の同型性を追加仮定としてA4へ持ち込まない。
+
+単位とは反対向きの、商の塔への射による検出は別の候補になる。
+K_r = K ⊗^L (A --d^r→ A)とすると、逆極限の核にはlim¹ H^{i-1}(K_r)がある。
+この項を無視して「各商で一致すれば一致」とはしない。
+principal completionのTate項とlim¹項は
+[Stacks Example 15.95.5・Lemma 15.95.6](https://stacks.math.columbia.edu/tag/0BKF)
+で確認した。naiveな商A/d^rで置き換える際のbaseの冪ねじれ条件も別である。
+
+ここからの**自分の推論としての候補**は次。
+rawなKに対してL42・MayからH^i(K)=0 (i<0)、H^0(K)のFrobeniusが同型と
+証明できれば、H^0(K)はreducedであり、そのd冪ねじれはdで殺される。
+実際d^r a=0なら(da)^r=0なのでda=0。
+従ってそのTate moduleは零、またK_rのH^{-1}の系はpro-zeroとなる。
+これにより次の二つを導ける見込みがある。
+
+- LΛ_d Kはcoconnective。これはA4(a)に必要なΠ_n=0 (n>0)を直接与える候補。
+- H^0(LΛ_d K)→lim_r H^0(K_r)は単射。従って、**同じ指定FrobeniusとP⁰が各K_rで
+  一致すると証明した後なら**、Π_0での一致を検出できる。
+
+ただしH^0(LΛ_d K)を通常のH^0(K)の完備化と同一視しない。
+T_d(H^1(K))が残り得るためであり、その消滅を仮定として足さない。
+この候補は単位のEpiを置き換えるもので、既存のL44からの即時の帰結ではない。
+特に**各K_rで同じFrobeniusを比較する義務が残る**。
+rawな辺をd^rのKoszul商へ運ぶ際、d↦d^pとKoszul生成元の写り方も保持しなければならない。
+rawなH^0上で一致することだけでは、商のTor由来の元の一致は示していない。
+
+本体で確認した再利用候補は`complexCompletionReductionIso`、
+`complexCompletionUnit_koszul_quasiIso`（任意の複体の元の単位のKoszul比較）、
+`derivedComplexCompletionFunctor_homology_isModuleComplete`（実際のホモロジーの完備性）。
+`completionUnit_tensor_module_powerTorsion_isIso`はMinusの版であり、
+coconnectiveな任意のKへそのまま適用する一般版ではない。
+これらはP⁰と商での指定Frobeniusの一致や、Yとのnativeな比較を供給する宣言ではない。
+
+### 223.4 (c) coherentな議論が必要になる場合の境界
+
+現時点では**(c)が不可避とは結論していない**。
+(a)の連続な鎖計算や(b)の商・Π_0の検出をまだ排除できず、APIが見つからないことを
+coherentなP⁰が数学的に必要という理由にはしない。
+一方、現状のho(CAlg)上のP⁰の自然性だけで完備化を越えた、とも結論しない。
+
+もし(b)の商での照合ができず、完備化の極限そのものにP⁰を運ぶことが必要になるなら、
+最小限でも**同じ完備化塔に沿う高次に整合した演算と指定錐の比較**が要る。
+ho上の自然性は射のホモトピー類の等式だけなので、その高次整合性を供給しない。
+単に各段で代表射を選び、native極限の射へ昇格させることはしない。
+
+一般のcoherent Sp値P⁰へ戻る場合、§110.2(b)の残り13,300〜24,500行は、
+既存V・π/H・鎖模型10,216行を既に除いた見込みである。
+Mayの18,614行をさらに機械的に控除することはできない。
+特定の完備化塔だけのcoherentな比較ならこれより短い可能性はあるが、
+塔の演算・同じ指定錐・πとの比較の構成を決めておらず、現在は信頼できる行数を出せない。
+この経路が必要と判明した時点で、§32に従いLeanを止め、D79への判断を報告する。
+今回、その経路のLean・界面変更・新しい仮定の追加はしていない。
+
+### 223.5 当面の結論と残る検収点
+
+(a)は「各項を完備化すればよい」という短縮では閉じない。
+(b)の単位による消去も、coconnective性だけでは閉じない。
+ただし(b)の**逆向きの射によるΠ_0の検出**は、A4に必要な次数を分けて扱う候補として残る。
+Π_n (n>0)はrawのcoconnective性とH^0のreduced性を使った完備化の計算、
+Π_0はKoszul商での同じFrobeniusの照合という、別の証明義務になる。
+すべての整数次数での「完備化単位はEpi」を仮定して隠す案は採らない。
+
+この紙の比較は、完備化後のP⁰の照合を完了した報告ではない。
+未供給の比較や新しい完備化定理を48本へ自己承認で追加せず、L12aの既存の証明を進める。
+(c)が必要と分かったという停止報告でもない。
+
+## 224. C451hの挿入色への係数移送（既存の法則の証明分割）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+次に挿入色の頂点を、外側の指定面ρを通して元の単体へ読む。
+§203の同じ順序列挙の法則をρ付きに述べ直す。新しい作用や同値の構成ではない。
+全頂点の順序同値そのものはまだ仮定であり、供給済みとしない。
+証明は200行以内、元の次数のSigmaの等式を保つ。
+
+```lean
+lemma faceData_comp_eq_of_colorOrderIso {m m' q q' r r' : ℕ}
+    (s : Cut m q) (t : Cut m' q')
+    (u : Surjection.Word r (m + 1)) (v : Surjection.Word r' (m' + 1))
+    (a : Fin r) (b : Fin r') (ρ : Fin (q' + 1) →o Fin (q + 1))
+    (e : ↥(colorPositions s u.val a) ≃o ↥(colorPositions t v.val b))
+    (hv : ∀ x, s.vertical x.val = ρ (t.vertical (e x).val)) :
+    (⟨outputDegree s u a, vertices s u a⟩ : Σ d : ℕ, Fin (d + 1) →o Fin (q + 1)) =
+      ⟨outputDegree t v b, ρ.comp (vertices t v b)⟩
+```
+
+有限点検は§220の12,233組で既に同じ内側面・外側面の合成を全ての色で比較済み。
+この一般の移送の法則だけで、挿入色の順序同値やC451全体が完成したとは扱わない。
+
+
+## 225. C451の元の挿入部分語の位置（既存の語長移送）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+`IntervalCuts.compositeSegmentPosition`とその`_value`が既に一般の重なる分割である。
+新しい位置の選択をせず、その同じ値をpositiveCompositeCutWordの語長で読む。
+C451の同じ指定面の照合の法則として型を記録する。各証明200行以内。
+
+```lean
+def positiveCompositeSegmentPosition {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (i : Fin (Surjection.occurrenceCount u.val k)) (z : Fin (r.val i).val) :
+    Fin (m + n + (d + e) + 1)
+
+lemma positiveCompositeSegmentPosition_val {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (i : Fin (Surjection.occurrenceCount u.val k)) (z : Fin (r.val i).val) :
+    (positiveCompositeSegmentPosition u v k r i z).val =
+      compositePrefixLength u v k r (Surjection.occurrenceAt u.val k i).val + z.val
+
+lemma positiveCompositeSegmentPosition_label {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (i : Fin (Surjection.occurrenceCount u.val k)) (z : Fin (r.val i).val) :
+    (positiveCompositeCutWord u v k r).val (positiveCompositeSegmentPosition u v k r i z) =
+      BarrattEccles.insertedPosition m (n + 1) k
+        (v.val ⟨r.start i + z.val, by
+          have h := r.start_add_length_le i; have hz := z.isLt; omega⟩)
+```
+
+実装前の有限点検：`/tmp/bsw16/check-composite-segment-positions.py`。
+12,233組・非退化3,745組で、部分語の全相対位置について、元の外側位置・内側位置・
+挿入ラベルが同じことを確認した。元の脚・色の順序・符号は変えない。
+この位置の法則を示しただけでは、内側Cutの全頂点の順序同値はまだ供給していない。
+
+## 226. 挿入色の比較の前段：検証済み・取り込み点
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§224・225の2本96行を検証した。既存の全頂点の順序列挙を外側の指定面との合成へ
+適用する法則と、既存の挿入部分語の全位置・同じ挿入ラベルの語長移送まで。
+挿入色の全頂点の順序同値・指定面の比較そのものは未完で、仮定を追加して閉じていない。
+
+対象ビルド：`/tmp/bsw16/m14-composite-segment-positions-01.log`、
+2,849 jobs、成功・対象Lean警告0。
+小さい監査：`/tmp/bsw16/audit-m14-inserted-face-transports.log`、
+**2モジュール・10宣言、標準三公理のみ**。
+対象ビルドと監査は別々に鍵を取得し、終了時に返した。
+`git diff --check`成功。新しいsorry・公理なし。
+
+調整役への追加の登録対象：
+
+- `SerrePositivity.EInfinity.SimplexCuts.FaceDataCompositionTransport`（42行）
+- `SerrePositivity.EInfinity.SimplexCuts.CompositeSegmentPositions`（54行）
+
+今回§222と合わせて**7本402行**、対象の小監査は合わせて**37宣言**。
+M14実測**18,710行**、L12a実測**3,503行**。
+一覧は12/48（追加4）のまま。次は同じ元の挿入部分語の位置と内側Cutの順位を接続し、
+挿入色の全頂点の順序同値をC451hへ渡す。B4はやり直さず、mainや他レーンのファイルは触っていない。
+
+旧§219の停止理由は§32によって解消され、実際の証明作業は再開済み。
+ただし本ターンの`get_goal`が返したUI上のstatusは依然`blocked`だった。
+利用可能な`update_goal`の引数はcomplete/blocked/pausedのみで再開操作はなく、
+`create_goal`で未完の目標を置き換えることも契約上できないため、statusをactiveへ更新できていない。
+完了や別のblockedを設定することでこの差を隠さない。これは数学的な再停止判断ではない。
+
+
+## 227. C451の挿入部分語の元の全頂点と外側順位（法則の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+元の部分語内の位置を挟む最初・最後の合成位置を使い、同じ合成Cutの頂点の高さを
+元の外側区間の高さとして読み、その区間の既存colorHeightRankへ渡す。
+新しい経路や順位を選ばず、既存の指定二座標・順位の合成の法則として分割する。
+各証明200行以内。ここでは内側Cutに属することはまだ主張しない。
+
+```lean
+variable {m n d e q : ℕ}
+  (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+  (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+  (i : Fin (Surjection.occurrenceCount u.val k)) (z : Fin (c.1.val i).val)
+
+lemma positiveCompositeSegmentPosition_bounds :
+  compositeFirstPosition u v k c.1 (positiveOccurrencePosition u k i) ≤
+      positiveCompositeSegmentPosition u v k c.1 i z ∧
+    positiveCompositeSegmentPosition u v k c.1 i z ≤
+      compositeLastPosition u v k c.1 (positiveOccurrencePosition u k i)
+
+lemma positiveCompositeSegment_outer_bounds
+    (x : Fin (m + n + (d + e) + q + 1))
+    (hx : c.2.horizontal x = positiveCompositeSegmentPosition u v k c.1 i z) :
+  lo (positiveCompositeOuterCut u v k c) (positiveOccurrencePosition u k i) ≤
+      (c.2.vertical x).val ∧
+    (c.2.vertical x).val ≤
+      hi (positiveCompositeOuterCut u v k c) (positiveOccurrencePosition u k i)
+
+def positiveCompositeSegmentVertexRank
+    (x : Fin (m + n + (d + e) + q + 1))
+    (hx : c.2.horizontal x = positiveCompositeSegmentPosition u v k c.1 i z) :
+  Fin (outputDegree (positiveCompositeOuterCut u v k c) (positiveWord u) k + 1)
+
+lemma positiveCompositeSegmentVertexRank_vertices
+    (x : Fin (m + n + (d + e) + q + 1))
+    (hx : c.2.horizontal x = positiveCompositeSegmentPosition u v k c.1 i z) :
+  vertices (positiveCompositeOuterCut u v k c) (positiveWord u) k
+    (positiveCompositeSegmentVertexRank u v k c i z x hx) = c.2.vertical x
+```
+
+有限点検：`/tmp/bsw16/check-composite-segment-ranks.py`、12,233組・非退化3,745組。
+全ての挿入色の元の経路頂点について、元の外側区間への所属と、
+最初の色別順位＋高さの差で読む同じ順位・同じ頂点を確認した。
+型つき一覧の新しい項目は増やさない。
+
+
+## 228. C451の挿入頂点の内側順位への所属（法則の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+元の外側の一つの色別区間の上でverticesが順序を反映することを、既存の
+`vertices_on_colorIntervalRanks`の同じ高さの差の式から読む。
+挿入部分語の内側番号はstart＋相対位置という同じ番号の移送だけ。
+その順位が内側Cutの同じ区間内に入ることを、元の内側辺の高さと比較する。
+左の辺の所属番号はi以下、右の辺の所属番号はi以上。同じ所属なら高さを比較し、
+異なる所属なら`colorIntervalRanks_ordered`を使う。各証明200行以内の見込み。
+
+```lean
+lemma vertices_le_iff_on_colorInterval {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (a : Fin r) (p : Fin (m + 1)) (hp : v.val p = a)
+    (i j : Fin (outputDegree s v a + 1))
+    (hi : i ∈ colorIntervalRanks s v a p) (hj : j ∈ colorIntervalRanks s v a p) :
+  vertices s v a i ≤ vertices s v a j ↔ i ≤ j
+
+variable {m n d e q : ℕ}
+  (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+  (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+  (i : Fin (Surjection.occurrenceCount u.val k)) (z : Fin (c.1.val i).val)
+
+def positiveCompositeSegmentInnerPosition : Fin (n + e + 1)
+
+lemma positiveCompositeSegmentVertexRank_mem
+    (x : Fin (m + n + (d + e) + q + 1))
+    (hx : c.2.horizontal x = positiveCompositeSegmentPosition u v k c.1 i z) :
+  positiveCompositeSegmentVertexRank u v k c i z x hx ∈
+    colorIntervalRanks (positiveCompositeOuterCut u v k c) (positiveWord u) k
+      (positiveOccurrencePosition u k i)
+
+lemma positiveCompositeSegmentRank_inner_bounds
+    (x : Fin (m + n + (d + e) + q + 1))
+    (hx : c.2.horizontal x = positiveCompositeSegmentPosition u v k c.1 i z) :
+  lo (positiveCompositeInnerCut u v k c) (positiveCompositeSegmentInnerPosition u v k c i z) ≤
+      (positiveCompositeSegmentVertexRank u v k c i z x hx).val ∧
+    (positiveCompositeSegmentVertexRank u v k c i z x hx).val ≤
+      hi (positiveCompositeInnerCut u v k c) (positiveCompositeSegmentInnerPosition u v k c i z)
+```
+
+この所属を示した後、元の`coordinates_of_interval`で同じ二座標の内側頂点を読む。
+新しい作用の定理や別の経路を作るのではなく、C451の指定頂点の照合の証明分割である。
+有限点検は§227と同じ元の切断の12,233組を使う。
+
+
+## 229. C451の同じ内側経路の頂点と二段の面（法則の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§228の同じ区間への所属を、既存の`coordinates_of_interval`へ渡す。
+同じ内側番号と外側順位の二座標で元の頂点を読み、指定面と挿入ラベルを照合する。
+全頂点の同値や逆写像はまだ主張しない。同じ指定座標の合成の法則で、各証明200行以内。
+有限点検は§227の12,233組の同じ内側経路・元の外側順位を使う。
+
+```lean
+def positiveCompositeSegmentInnerVertex {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (i : Fin (Surjection.occurrenceCount u.val k)) (z : Fin (c.1.val i).val)
+    (x : Fin (m + n + (d + e) + q + 1))
+    (hx : c.2.horizontal x = positiveCompositeSegmentPosition u v k c.1 i z) :
+    Fin (n + e + outputDegree (positiveCompositeOuterCut u v k c) (positiveWord u) k + 1)
+
+lemma positiveCompositeSegmentInnerVertex_coordinates {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (i : Fin (Surjection.occurrenceCount u.val k)) (z : Fin (c.1.val i).val)
+    (x : Fin (m + n + (d + e) + q + 1))
+    (hx : c.2.horizontal x = positiveCompositeSegmentPosition u v k c.1 i z) :
+    (positiveCompositeInnerCut u v k c).horizontal
+        (positiveCompositeSegmentInnerVertex u v k c i z x hx) =
+        positiveCompositeSegmentInnerPosition u v k c i z ∧
+      (positiveCompositeInnerCut u v k c).vertical
+        (positiveCompositeSegmentInnerVertex u v k c i z x hx) =
+        positiveCompositeSegmentVertexRank u v k c i z x hx
+
+lemma positiveCompositeSegmentInnerVertex_vertices {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (i : Fin (Surjection.occurrenceCount u.val k)) (z : Fin (c.1.val i).val)
+    (x : Fin (m + n + (d + e) + q + 1))
+    (hx : c.2.horizontal x = positiveCompositeSegmentPosition u v k c.1 i z) :
+    vertices (positiveCompositeOuterCut u v k c) (positiveWord u) k
+      ((positiveCompositeInnerCut u v k c).vertical
+        (positiveCompositeSegmentInnerVertex u v k c i z x hx)) = c.2.vertical x
+
+lemma positiveCompositeSegmentInnerVertex_label {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (i : Fin (Surjection.occurrenceCount u.val k)) (z : Fin (c.1.val i).val)
+    (x : Fin (m + n + (d + e) + q + 1))
+    (hx : c.2.horizontal x = positiveCompositeSegmentPosition u v k c.1 i z) :
+    label c.2 (positiveCompositeCutWord u v k c.1).val x =
+      BarrattEccles.insertedPosition m (n + 1) k
+        (label (positiveCompositeInnerCut u v k c) (positiveWord v).val
+          (positiveCompositeSegmentInnerVertex u v k c i z x hx))
+```
+
+
+## 230. C451の挿入ラベルの全位置を元の部分語へ戻す（法則の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+既存の`exists_segmentPosition_of_inserted_pivot`は辺の非退化性を仮定するので、
+今回の全切断にはその仮定を足して使わない。
+元の接頭長の増大を使い、一般の位置を挟む最後の外側番号を有限集合のmaxで読む。
+同じ語の位置の分解の法則であって、新しい作用や合成の定理を追加するものではない。
+各証明200行以内の見込み。
+
+```lean
+lemma positiveCompositePosition_block {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (h : Fin (m + n + (d + e) + 1)) :
+    ∃ p : Fin (m + d + 1), compositePrefixLength u v k r p.val ≤ h.val ∧
+      h.val < compositePrefixLength u v k r (p.val + 1)
+
+lemma positiveCompositePosition_remaining_or_segment {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (h : Fin (m + n + (d + e) + 1)) :
+    (∃ (p : Fin (m + d + 1)) (_hp : (positiveWord u).val p ≠ k),
+      h = compositeFirstPosition u v k r p) ∨
+      ∃ (i : Fin (Surjection.occurrenceCount u.val k)) (z : Fin (r.val i).val),
+        h = positiveCompositeSegmentPosition u v k r i z
+
+lemma positiveCompositePosition_of_inserted_label {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (h : Fin (m + n + (d + e) + 1)) (b : Fin (n + 1))
+    (hb : (positiveCompositeCutWord u v k r).val h = BarrattEccles.insertedPosition m (n + 1) k b) :
+    ∃ (i : Fin (Surjection.occurrenceCount u.val k)) (z : Fin (r.val i).val),
+      h = positiveCompositeSegmentPosition u v k r i z
+```
+
+有限点検：`/tmp/bsw16/check-composite-position-blocks.py`、12,233組・非退化3,745組。
+全合成位置について、接頭長で挟む元の外側番号が一意に元のoriginと一致し、
+挿入部分語の相対位置と内側位置も一致することを先に確認した。
+``remaining_or_segment``は退化した切断を捨てずに使う。
+
+
+## 231. C451の全挿入色の頂点の順方向（法則の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§230の元の部分語分解を§229へ渡すことで、非退化性を仮定せず、全挿入色の頂点を
+同じ内側Cutの同じ色へ送る。分解の選択を使うが、元の合成語と元の二段Cutは変えない。
+同じ指定面の照合の順方向の証明分割として型を記録する。各証明200行以内。
+
+```lean
+def insertedColorPathMap {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) (b : Fin (n + 1)) :
+    ↥(colorPositions c.2 (positiveCompositeCutWord u v k c.1).val
+      (BarrattEccles.insertedPosition m (n + 1) k b)) →
+      ↥(colorPositions (positiveCompositeInnerCut u v k c) (positiveWord v).val b)
+
+lemma insertedColorPathMap_vertices {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) (b : Fin (n + 1))
+    (x : ↥(colorPositions c.2 (positiveCompositeCutWord u v k c.1).val
+      (BarrattEccles.insertedPosition m (n + 1) k b))) :
+    vertices (positiveCompositeOuterCut u v k c) (positiveWord u) k
+      ((positiveCompositeInnerCut u v k c).vertical (insertedColorPathMap u v k c b x).val) =
+        c.2.vertical x.val
+```
+
+ここでは全単射性・順序同値・C451全体を主張していない。
+次に同じ内側順位・位置からの逆復元と順序を照合し、§224の指定面の合成の法則へ渡す。
+
+
+## 232. C451の全挿入頂点の順方向の単射性（法則の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+同じ内側頂点の縦座標から元の外側色別順位を特定する。
+同じ順位が入る外側区間はfiberの定義から一意で、同じ横座標から部分語の相対位置も
+一致する。最後に同じ元のCutの二座標の単射性を使う。既存構成の同じ指定座標の法則。
+各証明200行以内で、同じ入力を弱めたり非退化性を仮定したりしない。
+
+```lean
+lemma positiveCompositeSegmentInnerVertex_source_injective {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (i : Fin (Surjection.occurrenceCount u.val k)) (z : Fin (c.1.val i).val)
+    (x : Fin (m + n + (d + e) + q + 1))
+    (hx : c.2.horizontal x = positiveCompositeSegmentPosition u v k c.1 i z)
+    (j : Fin (Surjection.occurrenceCount u.val k)) (w : Fin (c.1.val j).val)
+    (y : Fin (m + n + (d + e) + q + 1))
+    (hy : c.2.horizontal y = positiveCompositeSegmentPosition u v k c.1 j w)
+    (h : positiveCompositeSegmentInnerVertex u v k c i z x hx =
+      positiveCompositeSegmentInnerVertex u v k c j w y hy) : x = y
+
+lemma insertedColorPathMap_injective {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) (b : Fin (n + 1)) :
+    Function.Injective (insertedColorPathMap u v k c b)
+```
+
+有限点検：`/tmp/bsw16/check-inserted-vertex-map.py`、12,233組・非退化3,745組。
+全挿入頂点の内側二座標が重複せず、二座標の和が元の内側経路の列挙番号に一致することを
+先に確認した。単射性を示しただけで全射性・順序同値は結論しない。
+
+
+## 233. C451の逆方向：元の内側位置の所属（法則の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+逆方向で、元の内側頂点の縦順位に属する外側区間を選ぶと、その部分語が元の内側横位置を
+含むことを、既存C447の両端の比較で読む。新しい分割やCutは構成しない。
+位置が開始より前なら右辺の高さと最初の順位に矛盾、終了以後なら左辺の高さと最後の順位に
+矛盾する。既存構成の同じ所属の法則で、200行以内の見込み。
+
+```lean
+lemma positiveCompositeInnerPosition_segment_covered {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (i : Fin (Surjection.occurrenceCount u.val k)) (a : Fin (n + e + 1))
+    (rank : Fin (outputDegree (positiveCompositeOuterCut u v k c) (positiveWord u) k + 1))
+    (hm : rank ∈ colorIntervalRanks (positiveCompositeOuterCut u v k c) (positiveWord u) k
+      (positiveOccurrencePosition u k i))
+    (hl : lo (positiveCompositeInnerCut u v k c) a ≤ rank.val)
+    (hr : rank.val ≤ hi (positiveCompositeInnerCut u v k c) a) :
+    c.1.start i ≤ a.val ∧ a.val < c.1.start i + (c.1.val i).val
+```
+
+有限点検は§232の全内側経路の元の二座標の比較と同じ12,233組で行った。
+これだけで逆写像や全射性を完成したとは扱わない。
+
+## 234. C451の全挿入頂点の順方向・単射性：検証済み、取り込み点
+
+一覧：済み 12／全体 48（うち追加 4）
+
+前ターンは§220〜226の7本402行を対象ビルド・小監査の後にコミットした進捗。
+本ターンはそこから再開し、次の7本**523行**を対象ビルド・小監査で検証した。
+新しい作用・界面・仮定の追加なし。既存の公開宣言を変更せず、sorry・新しい公理なし。
+
+| 登録対象（共通接頭辞 SerrePositivity.EInfinity.SimplexCuts.） | 行数 |
+| --- | ---: |
+| CompositeSegmentVertexRanks | 83 |
+| ColorIntervalVertexOrder | 35 |
+| CompositeSegmentInnerRanks | 124 |
+| CompositeSegmentInnerVertices | 77 |
+| CompositePositionDecomposition | 91 |
+| CompositeSegmentInnerVertexInjective | 55 |
+| InsertedColorPathMap | 58 |
+| **合計** | **523** |
+
+検証の射程は、元の挿入部分語内の全頂点の同じ外側順位、その順位の内側Cutへの所属、
+同じ二座標・指定面・挿入ラベル、全合成位置の残り/部分語の分解、
+全挿入色の頂点の写像とその単射性まで。非退化性は仮定しない。
+`insertedColorPathMap`の全射性・狭義単調性・順序同値・C451全体・符号・nullaryは未完。
+§233は逆方向の型と/tmpの未検証の下書きだけであり、実測・完成宣言に加えていない。
+
+対象ビルドは最後に`/tmp/bsw16/m14-inserted-color-path-map-01.log`（2,873 jobs）で成功。
+途中の頂点座標も`m14-composite-inserted-geometry-01.log`で通過している。
+修正は、単調性への引数の明示、元の有限添字と語長の明示、
+既存`occurrenceAt_exists`の名前空間の訂正、100字の改行。
+新しい数学の補題で埋めたものではない。
+最後の対象Lean警告0。
+小監査は`/tmp/bsw16/audit-m14-inserted-color-path-map.log`、
+**7モジュール・53宣言、標準三公理のみ**。
+鍵は各対象ビルド・監査で一回ずつ取り、実行終了時に返した。待ちの整理券は常に一枚。
+
+M14実測**19,233行**、L12a実測**4,026行**、一覧は12/48（追加4）のまま。
+§207の挿入色の160〜280行の見込みに対し、§224〜232で既に619行を使い、全射・順序が残る。
+増えたのは同じ合成語の全位置の分解、元のCutの高さから色別順位への移送、
+内側Cutへの所属を元の辺から示す分。これを既存の位置のラベルの照合だけでは代用しない。
+残りを削ったり、元の指定面の一致をホモトピー圏へ弱めたりはしない。
+31,000行内に収まると確定したわけではなく、残りの見込みのリスクを保持する。
+約25,000行での中間報告という§32の指定も維持する。
+
+次のLeanは§233の元の内側位置の所属の検証、その同じ内側順位から元の合成頂点への逆復元、
+全射性と順序、§224の指定面の合成の法則への接続。
+完備化後のP⁰の三案の紙は§223に保存済みで、(c)が不可避との結論はまだ出していない。
+G10・M15・G12・drafts・界面・共有入口・mainは変更していない。
+ユーザーが/goalをactiveへ変更したことを受け、旧blocked表示の差は解消した。
+この取り込み点は承認待ちの停止点ではなく、同じL12aを続ける途中報告である。
+
+
+## 235. C451の同じ合成区間への逆方向（法則の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+前ターンは656d22333の検証・監査済み7本523行という進捗。
+作業木が空で同じ枝にいることを確かめ、§233の元の内側位置の所属から再開した。
+次は同じ内側順位が、元の合成語の区間の両端の間の高さになることを示す。
+部分語の最初/最後では元の外側区間の両端、内部では元の内側辺の所属と高さを使う。
+同じCut・指定verticesの合成の法則であり、別の経路・作用・仮定は作らない。
+200行以内の見込み。
+
+```lean
+lemma positiveCompositeSegment_inverse_interval {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (i : Fin (Surjection.occurrenceCount u.val k)) (z : Fin (c.1.val i).val)
+    (rank : Fin (outputDegree (positiveCompositeOuterCut u v k c) (positiveWord u) k + 1))
+    (hm : rank ∈ colorIntervalRanks (positiveCompositeOuterCut u v k c) (positiveWord u) k
+      (positiveOccurrencePosition u k i))
+    (hl : lo (positiveCompositeInnerCut u v k c)
+      (positiveCompositeSegmentInnerPosition u v k c i z) ≤ rank.val)
+    (hr : rank.val ≤ hi (positiveCompositeInnerCut u v k c)
+      (positiveCompositeSegmentInnerPosition u v k c i z)) :
+    lo c.2 (positiveCompositeSegmentPosition u v k c.1 i z) ≤
+        (vertices (positiveCompositeOuterCut u v k c) (positiveWord u) k rank).val ∧
+      (vertices (positiveCompositeOuterCut u v k c) (positiveWord u) k rank).val ≤
+        hi c.2 (positiveCompositeSegmentPosition u v k c.1 i z)
+```
+
+有限点検：`/tmp/bsw16/check-inserted-vertex-inverse.py`、12,233組・非退化3,745組。
+全内側頂点について、同じ外側順位の出現・相対位置・元の高さから戻した二座標が、
+元の合成経路上のただ一つの頂点を表すことを先に確認した。
+この区間の所属の逆向きだけで、全色の順序同値やL12aの完了は主張しない。
+
+
+## 236. C451の部分語分解の一意性と指定した分解での評価（法則の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+順方向の写像に使った分解の選択を、逆復元で得る同じ分解へ合わせる。
+異なる部分語は既存`compositeSegmentPosition_lt`で交わらず、
+同じ部分語では元の接頭長を消去する。元の構成の係数・位置の移送の法則。
+各証明200行以内の見込み。
+
+```lean
+lemma positiveCompositeSegmentPosition_sigma_injective {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e)) :
+    Function.Injective (fun s : Σ i, Fin (r.val i).val =>
+      positiveCompositeSegmentPosition u v k r s.1 s.2)
+
+lemma positiveCompositeSegmentInnerVertex_eq_of_same_source {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (i : Fin (Surjection.occurrenceCount u.val k)) (z : Fin (c.1.val i).val)
+    (x : Fin (m + n + (d + e) + q + 1))
+    (hx : c.2.horizontal x = positiveCompositeSegmentPosition u v k c.1 i z)
+    (j : Fin (Surjection.occurrenceCount u.val k)) (w : Fin (c.1.val j).val)
+    (hy : c.2.horizontal x = positiveCompositeSegmentPosition u v k c.1 j w) :
+    positiveCompositeSegmentInnerVertex u v k c i z x hx =
+      positiveCompositeSegmentInnerVertex u v k c j w x hy
+
+lemma insertedColorPathMap_val_of_segment {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) (b : Fin (n + 1))
+    (x : ↥(colorPositions c.2 (positiveCompositeCutWord u v k c.1).val
+      (BarrattEccles.insertedPosition m (n + 1) k b)))
+    (i : Fin (Surjection.occurrenceCount u.val k)) (z : Fin (c.1.val i).val)
+    (hx : c.2.horizontal x.val = positiveCompositeSegmentPosition u v k c.1 i z) :
+    (insertedColorPathMap u v k c b x).val =
+      positiveCompositeSegmentInnerVertex u v k c i z x.val hx
+```
+
+有限点検：`/tmp/bsw16/check-composite-segment-position-injective.py`、12,233組・非退化3,745組。
+元の全部分語の全相対位置の像が互いに異なることを追加して点検した。
+写像を別の選択へ置き換えず、同じ合成位置の一意性で元の指定頂点を照合する。
+
+
+## 237. C451の元の逆頂点・順位の復元と全射性（法則の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§235の元の区間への逆向きの所属を、同じ`coordinatePosition`へ渡す。
+元のverticesの高さから同じ色別順位へ戻る計算は既存の差の公式を使う。
+内側頂点の縦順位は既存の色別区間の被覆に属し、その部分語に横位置が属することは§233。
+そこから作った元の合成頂点を同じ写像で送り、元の二座標の単射性で内側頂点へ戻す。
+同じ既存のCut・指定面の逆の照合であり、各証明200行以内の見込み。
+
+```lean
+def positiveCompositeSegmentInverseVertex {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (i : Fin (Surjection.occurrenceCount u.val k)) (z : Fin (c.1.val i).val)
+    (rank : Fin (outputDegree (positiveCompositeOuterCut u v k c) (positiveWord u) k + 1)) :
+    Fin (m + n + (d + e) + q + 1)
+
+lemma positiveCompositeSegmentInverseVertex_coordinates {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (i : Fin (Surjection.occurrenceCount u.val k)) (z : Fin (c.1.val i).val)
+    (rank : Fin (outputDegree (positiveCompositeOuterCut u v k c) (positiveWord u) k + 1))
+    (hm : rank ∈ colorIntervalRanks (positiveCompositeOuterCut u v k c) (positiveWord u) k
+      (positiveOccurrencePosition u k i))
+    (hl : lo (positiveCompositeInnerCut u v k c)
+      (positiveCompositeSegmentInnerPosition u v k c i z) ≤ rank.val)
+    (hr : rank.val ≤ hi (positiveCompositeInnerCut u v k c)
+      (positiveCompositeSegmentInnerPosition u v k c i z)) :
+    c.2.horizontal (positiveCompositeSegmentInverseVertex u v k c i z rank) =
+        positiveCompositeSegmentPosition u v k c.1 i z ∧
+      c.2.vertical (positiveCompositeSegmentInverseVertex u v k c i z rank) =
+        vertices (positiveCompositeOuterCut u v k c) (positiveWord u) k rank
+
+lemma positiveCompositeSegmentInverseVertex_rank {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (i : Fin (Surjection.occurrenceCount u.val k)) (z : Fin (c.1.val i).val)
+    (rank : Fin (outputDegree (positiveCompositeOuterCut u v k c) (positiveWord u) k + 1))
+    (hm : rank ∈ colorIntervalRanks (positiveCompositeOuterCut u v k c) (positiveWord u) k
+      (positiveOccurrencePosition u k i))
+    (hl : lo (positiveCompositeInnerCut u v k c)
+      (positiveCompositeSegmentInnerPosition u v k c i z) ≤ rank.val)
+    (hr : rank.val ≤ hi (positiveCompositeInnerCut u v k c)
+      (positiveCompositeSegmentInnerPosition u v k c i z)) :
+    positiveCompositeSegmentVertexRank u v k c i z
+        (positiveCompositeSegmentInverseVertex u v k c i z rank)
+        (positiveCompositeSegmentInverseVertex_coordinates u v k c i z rank hm hl hr).1 = rank
+
+lemma insertedColorPathMap_surjective {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) (b : Fin (n + 1)) :
+    Function.Surjective (insertedColorPathMap u v k c b)
+```
+
+有限点検は§235の全内側頂点の逆復元（12,233組、非退化3,745組）。
+全射性の後も順序保存と指定面の全族・符号・nullaryは残る。
+ここは型の報告で、未検証の下書きは/tmpへ置き、実測に含めない。
+
+
+## 238. C451の挿入色の順序と指定面への接続（法則の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+同じ部分語内では、元のcoordinate_sumと同じ順位の差の式により、写像は位置番号の
+平行移動となる。異なる部分語では、元の分割の境界と色別区間の狭義順序を使う。
+§237の全射性と合わせ、同じ全頂点の順序同値を§224の面の合成の法則へ渡す。
+既存の指定面・位置の合成の法則と同じC451の証明分割であり、各証明200行以内の見込み。
+
+```lean
+lemma positiveCompositeSegmentInnerVertex_strict_order {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (i : Fin (Surjection.occurrenceCount u.val k)) (z : Fin (c.1.val i).val)
+    (x : Fin (m + n + (d + e) + q + 1))
+    (hx : c.2.horizontal x = positiveCompositeSegmentPosition u v k c.1 i z)
+    (j : Fin (Surjection.occurrenceCount u.val k)) (w : Fin (c.1.val j).val)
+    (y : Fin (m + n + (d + e) + q + 1))
+    (hy : c.2.horizontal y = positiveCompositeSegmentPosition u v k c.1 j w) (hxy : x < y) :
+    positiveCompositeSegmentInnerVertex u v k c i z x hx <
+      positiveCompositeSegmentInnerVertex u v k c j w y hy
+
+lemma insertedColorPathMap_strictMono {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) (b : Fin (n + 1)) :
+    StrictMono (insertedColorPathMap u v k c b)
+
+def insertedColorPathOrderIso {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) (b : Fin (n + 1)) :
+    ↥(colorPositions c.2 (positiveCompositeCutWord u v k c.1).val
+      (BarrattEccles.insertedPosition m (n + 1) k b)) ≃o
+      ↥(colorPositions (positiveCompositeInnerCut u v k c) (positiveWord v).val b)
+
+lemma insertedColorPathOrderIso_vertices {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) (b : Fin (n + 1))
+    (x : ↥(colorPositions c.2 (positiveCompositeCutWord u v k c.1).val
+      (BarrattEccles.insertedPosition m (n + 1) k b))) :
+    vertices (positiveCompositeOuterCut u v k c) (positiveWord u) k
+      ((positiveCompositeInnerCut u v k c).vertical (insertedColorPathOrderIso u v k c b x).val) =
+        c.2.vertical x.val
+
+lemma positiveComposite_inserted_face {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) (b : Fin (n + 1)) :
+    (⟨outputDegree c.2 (positiveCompositeCutWord u v k c.1)
+        (BarrattEccles.insertedPosition m (n + 1) k b),
+      vertices c.2 (positiveCompositeCutWord u v k c.1)
+        (BarrattEccles.insertedPosition m (n + 1) k b)⟩ :
+        Σ t : ℕ, Fin (t + 1) →o Fin (q + 1)) =
+      ⟨outputDegree (positiveCompositeInnerCut u v k c) (positiveWord v) b,
+        (vertices (positiveCompositeOuterCut u v k c) (positiveWord u) k).comp
+          (vertices (positiveCompositeInnerCut u v k c) (positiveWord v) b)⟩
+```
+
+有限点検は§232の元の全内側経路の列挙番号（12,233組、非退化3,745組）と、
+§199の全色の同じ面の合成の点検。順序を捨てた全単射や対象ごとの任意の同値で代用しない。
+ここは型と/tmpの下書きであり、検証後にのみ実測へ加える。
+
+
+## 239. C451の全指定面の族への包装（既報の型の接続）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§199の同じC451の型を変更せず、残り色と挿入色の厳密なSigmaの等式を
+元の`operadInsertionEquiv`の二つの成分で接続する。
+元の`insertionFamily`の出力順序・次数・指定面を保ち、任意の同型や順序なしの族で代用しない。
+
+```lean
+lemma positiveCompositeFaceFamily_eq_nested {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) :
+    positiveCompositeFaceFamily u v k c =
+      positiveNestedFaceFamily u v k (positiveCompositeNestedMap u v k c)
+```
+
+有限点検は§199の元の全色の指定面の族の比較（12,233組・非退化3,745組）のまま。
+この包装が通った後も、C452の符号・C453の退化性、実テンソル・nullaryは未完。
+この型の報告をC451の証明完了の代わりにはしない。
+
+
+## 240. C453の元の指定面の単射性による二つの方向（法則の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+C453の既報の同値の証明分割。C451のSigmaの等式で面の単射性を移し、
+二段の非退化性から合成の非退化性、合成の非退化性から内側の非退化性を読む。
+既存の`faces_mono_iff`と`vertices_strictMono`を再利用する。各証明200行以内の見込み。
+
+```lean
+lemma positiveCompositeCut_nondegenerate_of_nested {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (hOuter : Nondegenerate (positiveCompositeOuterCut u v k c) (positiveWord u).val)
+    (hInner : Nondegenerate (positiveCompositeInnerCut u v k c) (positiveWord v).val) :
+    Nondegenerate c.2 (positiveCompositeCutWord u v k c.1).val
+
+lemma positiveCompositeCut_inner_nondegenerate {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (h : Nondegenerate c.2 (positiveCompositeCutWord u v k c.1).val) :
+    Nondegenerate (positiveCompositeInnerCut u v k c) (positiveWord v).val
+```
+
+有限点検は§199の全12,233組の退化性の比較を再利用する。
+この二方向だけでC453全体を完成とはしない。合成から外側の指定色kの単射性へ戻す部分では、
+元の隣接する部分語の共有端点の同じラベル・高さを照合する必要が残る。
+新しい非退化性の仮定を入れたり、この色を検査から外したりはしない。
+
+
+## 241. C453の外側指定色の共有端点（法則の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+元の隣接部分語の共有端点は、異なる合成位置に同じ挿入ラベルとして現れる。
+元の合成Cutの区間の最後/最初の経路頂点を取り、元の非退化性から高さを厳密に比較する。
+外側の指定色を検査から除かずに戻すC453の法則の証明分割。各証明200行以内。
+
+```lean
+lemma positiveCompositeSegment_boundary_pair {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (i j : Fin (Surjection.occurrenceCount u.val k)) (hij : j.val = i.val + 1) :
+    compositeLastPosition u v k r (positiveOccurrencePosition u k i) <
+        compositeFirstPosition u v k r (positiveOccurrencePosition u k j) ∧
+      (positiveCompositeCutWord u v k r).val
+          (compositeLastPosition u v k r (positiveOccurrencePosition u k i)) =
+        (positiveCompositeCutWord u v k r).val
+          (compositeFirstPosition u v k r (positiveOccurrencePosition u k j))
+
+lemma positiveComposite_outer_slot_boundary_strict {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (h : Nondegenerate c.2 (positiveCompositeCutWord u v k c.1).val)
+    (i j : Fin (Surjection.occurrenceCount u.val k)) (hij : j.val = i.val + 1) :
+    hi (positiveCompositeOuterCut u v k c) (positiveOccurrencePosition u k i) <
+      lo (positiveCompositeOuterCut u v k c) (positiveOccurrencePosition u k j)
+```
+
+有限点検：`/tmp/bsw16/check-outer-slot-boundary-strict.py`。
+全12,233組を読み、生き残る3,745組の隣接する外側指定色の全出現の間で、
+元の外側右端＜次の左端を先に確認した。
+ここも/tmpの未検証の下書きであり、実測へ加えていない。
+
+
+## 242. C453の全指定色と元の非退化性の同値への接続（法則の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+共有端点の隣接する出現の厳密な高さの比較を、元のloの単調性で全出現へ延ばす。
+異なる同色区間が高さで厳密に離れれば、元の面の単射性が従うことを二座標で確認する。
+残り色はC451の面の等式、指定色kはこの区間の検査で外側へ戻す。
+§199のC453の同値の型を変更しない証明分割であり、各証明200行以内の見込み。
+
+```lean
+lemma vertices_injective_of_strict_intervals {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (a : Fin r)
+    (h : ∀ p p', v.val p = a → v.val p' = a → p < p' → hi s p < lo s p') :
+    Function.Injective (vertices s v a)
+
+lemma positiveComposite_outer_slot_intervals_strict {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (h : Nondegenerate c.2 (positiveCompositeCutWord u v k c.1).val)
+    (i j : Fin (Surjection.occurrenceCount u.val k)) (hij : i < j) :
+    hi (positiveCompositeOuterCut u v k c) (positiveOccurrencePosition u k i) <
+      lo (positiveCompositeOuterCut u v k c) (positiveOccurrencePosition u k j)
+
+lemma positiveCompositeCut_outer_nondegenerate {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (h : Nondegenerate c.2 (positiveCompositeCutWord u v k c.1).val) :
+    Nondegenerate (positiveCompositeOuterCut u v k c) (positiveWord u).val
+
+lemma positiveCompositeCut_nondegenerate_iff {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) :
+    Nondegenerate c.2 (positiveCompositeCutWord u v k c.1).val ↔
+      Nondegenerate (positiveCompositeOuterCut u v k c) (positiveWord u).val ∧
+        Nondegenerate (positiveCompositeInnerCut u v k c) (positiveWord v).val
+```
+
+有限点検は§199の全非退化性の同値と§241の共有端点の比較。
+この型の報告だけでC453の完成とせず、対象ビルド・小監査を経てから認定する。
+
+
+## 243. C452の元の符号の指数の比較（既報の型の証明分割、紙のみ）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+C451・C453の後のC452は、元のcompositionExponent・cutSignの二指数を変更せず、
+全整数係数の(-1)の累乗の比較へ戻す。次は§199のC452と同じ主張のmod 2での法則の型。
+後から符号を定義し直すものでも、消えない項を捨てるものでもない。
+
+```lean
+lemma positiveCompositeCut_exponent_modeq {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (h : Nondegenerate c.2 (positiveCompositeCutWord u v k c.1).val) :
+    Nat.ModEq 2
+      (Surjection.compositionExponent u v k c.1 +
+        (permutationExponent c.2 (positiveCompositeCutWord u v k c.1).val +
+          positionExponent c.2 (positiveCompositeCutWord u v k c.1).val))
+      ((d * e + e * positiveNestedPrefixDegree u k (positiveCompositeOuterCut u v k c)) +
+        (permutationExponent (positiveCompositeOuterCut u v k c) (positiveWord u).val +
+          positionExponent (positiveCompositeOuterCut u v k c) (positiveWord u).val) +
+        (permutationExponent (positiveCompositeInnerCut u v k c) (positiveWord v).val +
+          positionExponent (positiveCompositeInnerCut u v k c) (positiveWord v).val))
+```
+
+このmod 2の比較を供給した後は、既存`neg_one_pow_eq_pow_mod_two`と`pow_add`で
+§199の同じ整数係数の等式へ戻せる。肝心の指数の比較を追加仮定として界面やL12aへ足さない。
+これはまだ紙の型で、有限点検は§198〜199の同じ3,745個の非退化な合成切断の符号比較。
+型の正しさ・Leanの証明・監査の代わりには扱わない。
+
+## 244. C451・C453の完成：検証済み、取り込み点
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§233・235〜242の13本**849行**を検証した。
+C451（元の全出力次数と指定面の族の厳密な一致）とC453（元の合成Cutと同じ二段Cutの
+非退化性の同値）が、§199の型のまま閉じた。
+この二つはL12aの証明分割であり、一覧のIDを新しく増やしたりL12a全体を完成にしたりはしない。
+C452・実テンソル・nullaryは残る。
+
+挿入色の全頂点の写像は、同じ元の内側順位からの逆復元で全射性を示した。
+同じ部分語内では元のcoordinate_sumによる平行移動、異なる部分語では元の境界と
+色別区間の順序により、狭義順序を保つことを示した。
+残り色と挿入色のSigmaの等式を、元の`operadInsertionEquiv`で全族へ接続した。
+外側の指定色kも、隣接部分語の共有端点の同じラベルと元の非退化性で検査しており、
+検査から除いたり、追加の非退化性の仮定を置いたりしていない。
+
+対象ビルド：
+
+- `m14-inner-vertex-segment-coverage-01.log`（2,868 jobs）：元の内側位置の所属。
+- `m14-inserted-color-path-surjective-01.log`（2,890 jobs）：同じ逆頂点・順位・全射性。
+- `m14-composite-nondegenerate-components-01.log`（2,921 jobs）：C451とC453の二方向。
+- `m14-composite-nondegenerate-comparison-03.log`（2,924 jobs）：最終C453、100字の改行修正後。
+
+全て成功。最終の対象Lean警告0。
+途中の修正は、Sigmaに適用した位置写像の簡約の明示、指定面の包装での既存定義の展開、
+共有端点の自然数の等式を依存型のrewriteを使わずに読むこと、docstring/行の改行。
+元の型・定義・指定射を変更して通したものではない。
+
+小監査：`/tmp/bsw16/audit-m14-composite-faces-nondegenerate.log`、
+**13モジュール・65宣言、標準三公理のみ**。
+新しいsorry・公理なし。鍵は対象ビルド・監査ごとに一回取得して返した。
+待ちの整理券は常に一枚、編集・紙・報告の間は鍵を持っていない。
+`git diff --check`と、追加したソースを含むstaged diffの確認を行う。
+
+調整役への登録対象（共通接頭辞 `SerrePositivity.EInfinity.SimplexCuts.`）：
+
+| モジュール | 行数 |
+| --- | ---: |
+| InnerVertexSegmentCoverage | 64 |
+| CompositeSegmentInverseInterval | 108 |
+| CompositeSegmentPositionInjective | 62 |
+| InsertedColorPathMapEvaluation | 29 |
+| CompositeSegmentInverseVertices | 76 |
+| InsertedColorPathMapSurjective | 67 |
+| CompositeSegmentInnerOrder | 87 |
+| InsertedColorFaces | 52 |
+| CompositeFaceComparison | 37 |
+| CompositeNondegenerateComponents | 59 |
+| CompositeSlotBoundary | 87 |
+| VerticesStrictIntervals | 41 |
+| CompositeNondegenerateComparison | 80 |
+| **合計** | **849** |
+
+M14実測は**20,082行**、L12a実測は**4,875行**。
+このうち今回C451の逆・順序・全族への接続が582行、C453が267行。
+§207のL12a完成時3,974〜4,624行の見込みは、既に実測が上端を251行超えており、
+完成の見込みとしては使わない。
+
+## 245. C451・C453後の残りと外枠の照合
+
+一覧：済み 12／全体 48（うち追加 4）
+
+元の全位置・順位・高さの比較が見込みより増えたことを、完了したC451・C453へ反映する。
+C453の完成を、符号や実テンソルの完成として控除しない。
+他の未供給の行の旧見込みを据え置いた、保守的な比較は次のとおり。
+
+| L12aの残り | 旧見込みを据え置いた残り |
+| --- | ---: |
+| C452：元のcompositionExponentと二つのcutSignの照合（§243） | 173〜323 |
+| 同じ指定面から元の実テンソル・係数移送への接続 | 130〜240 |
+| nullary：元の有限添字と項の接続 | 250〜400 |
+| **残り** | **553〜963** |
+| **L12a完成時（実測4,875行を含む）** | **5,428〜5,838** |
+
+§177以降のL12a以外の残り6,004〜10,914行も据え置くと、
+M14完成時の比較は**26,639〜31,959行**。
+外枠は§32の**31,000行のまま**で、上端には**959行の超過リスク**がある。
+増枠や範囲の削除は自己承認せず、収まるとの主張もしない。
+約25,000行で止まらず途中報告する指定は維持し、実測と残りを分けて報告する。
+§223で未確定の完備化後の比較を、新しく無料で供給された前提として扱ってもいない。
+供給が必要と分かった仕事は全体の見込みに算入し直し、(c)が必要と判明したら§32で止める。
+
+次は同じ既報のC452の整数符号・指数の比較。
+`vectorTensorAt_congr`と`IntervalCuts.coactionComposition_apply`の実際の型も読み、
+実テンソルへの接続で元の次数・二つの係数移動・指定面を保つことを再確認した。
+この二つのAPIだけで符号の指数の照合を供給したとは扱わない。
+G10・M15・G12・drafts・界面・共有入口・mainは変更していない。
+これは同じL12aの途中の取り込み点であり、goalはactiveのまま継続する。
+
+
+## 246. C452の残り色の区切りと区間重み（法則の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+前ターンは35d3d044bでC451・C453を検証・監査・保存した進捗。
+作業木が空で同じ枝にいることを確認し、元のC452へ進む。
+§243の指数の比較のうち、残り色のCaesuraとintervalLengthを、
+既に証明した全出現位置の順序同値と元のCutの両端で読む。
+既存の符号の定義は変えず、法則の証明分割として次の型を記録する。
+各証明200行以内の見込み。
+
+```lean
+lemma caesura_iff_of_occurrenceOrderIso {r r' l l' : ℕ}
+    (v : Fin l → Fin r) (w : Fin l' → Fin r') (a : Fin r) (b : Fin r')
+    (e : ↥(Surjection.occurrences v a) ≃o ↥(Surjection.occurrences w b))
+    (p : ↥(Surjection.occurrences v a)) :
+    Surjection.Caesura w (e p).val ↔ Surjection.Caesura v p.val
+
+lemma positiveComposite_remaining_caesura_iff {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (p : Fin (m + d + 1)) (hp : (positiveWord u).val p ≠ k) :
+    Surjection.Caesura (positiveCompositeCutWord u v k r).val
+        (compositeFirstPosition u v k r p) ↔ Surjection.Caesura (positiveWord u).val p
+
+lemma positiveComposite_remaining_intervalLength {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (p : Fin (m + d + 1)) (hp : (positiveWord u).val p ≠ k) :
+    intervalLength c.2 (positiveCompositeCutWord u v k c.1).val
+        (compositeFirstPosition u v k c.1 p) =
+      intervalLength (positiveCompositeOuterCut u v k c) (positiveWord u).val p
+```
+
+有限点検：`/tmp/bsw16/check-remaining-caesura-weights.py`。
+元の12,233組（非退化3,745組を含む）に、全残り色の全位置の元の区切りと、
+各元の合成CutのintervalLengthが同じ外側のintervalLengthと一致することを追加して点検した。
+非退化な場合だけの弱い主張にはしていない。
+C452全体、挿入色の区切り、positionExponentやpermutationExponentの和の比較はまだ未完。
+
+
+## 247. C452の挿入部分語の順序と共有端点の区切り（法則の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+元の合成位置を部分語番号と相対位置の辞書式順序で読み、
+内側語の位置が真に進む場合と、元の共有端点として重なる場合を分ける。
+共有端点が次の部分語にも現れる場合は、既存C453の同じラベルの二位置をそのまま使う。
+新しい符号や分割を構成するのではなく、C452の元の区切りの法則の証明分割である。
+各証明200行以内の見込み。
+
+```lean
+lemma positiveCompositeSegmentPosition_lt_iff {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (i j : Fin (Surjection.occurrenceCount u.val k))
+    (z : Fin (r.val i).val) (w : Fin (r.val j).val) :
+    positiveCompositeSegmentPosition u v k r i z < positiveCompositeSegmentPosition u v k r j w ↔
+      i < j ∨ (i = j ∧ z.val < w.val)
+
+lemma positiveCompositeSegment_future_inner_order {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (i j : Fin (Surjection.occurrenceCount u.val k))
+    (z : Fin (r.val i).val) (w : Fin (r.val j).val)
+    (h : positiveCompositeSegmentPosition u v k r i z <
+      positiveCompositeSegmentPosition u v k r j w) :
+    r.start i + z.val < r.start j + w.val ∨
+      (r.start i + z.val = r.start j + w.val ∧
+        z.val + 1 = (r.val i).val ∧ i.val + 1 < Surjection.occurrenceCount u.val k)
+
+def segmentInnerWordPosition {t L : ℕ} (r : Surjection.OverlapPartition t L)
+    (i : Fin t) (z : Fin (r.val i).val) : Fin L
+
+lemma positiveCompositeSegment_boundary_caesura {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (i : Fin (Surjection.occurrenceCount u.val k)) (z : Fin (r.val i).val)
+    (hz : z.val + 1 = (r.val i).val) (hi : i.val + 1 < Surjection.occurrenceCount u.val k) :
+    Surjection.Caesura (positiveCompositeCutWord u v k r).val
+      (positiveCompositeSegmentPosition u v k r i z)
+```
+
+有限点検：`/tmp/bsw16/check-inserted-caesura-order.py`。
+全12,233組の元の全挿入部分語の全位置対について、合成位置の順序と内側位置の順序、
+共有端点の条件を先に照合した。元の挿入色のCaesuraの候補式も全例で点検したが、
+一般のiffのLeanの証明はまだ別に要る。
+
+
+## 248. C452の挿入色の区切りの元の全条件（法則の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+元の内側語に後の同色位置がある場合、その位置の直前の辺の所属部分語を使い、
+同じラベルの後の合成位置を得る。
+逆に後の合成位置は§230で同じ挿入部分語の位置へ分解し、§247の内側位置の順序で
+真に後の内側位置か共有端点の重複かを特定する。
+既存のCaesuraの定義と元の位置・分割の法則の証明分割であり、各証明200行以内。
+
+```lean
+lemma positiveCompositeSegment_caesura_of_inner {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (i : Fin (Surjection.occurrenceCount u.val k)) (z : Fin (r.val i).val)
+    (h : Surjection.Caesura v.val (segmentInnerWordPosition r i z)) :
+    Surjection.Caesura (positiveCompositeCutWord u v k r).val
+      (positiveCompositeSegmentPosition u v k r i z)
+
+lemma positiveComposite_inserted_caesura_iff {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (i : Fin (Surjection.occurrenceCount u.val k)) (z : Fin (r.val i).val) :
+    Surjection.Caesura (positiveCompositeCutWord u v k r).val
+        (positiveCompositeSegmentPosition u v k r i z) ↔
+      Surjection.Caesura v.val (segmentInnerWordPosition r i z) ∨
+        (z.val + 1 = (r.val i).val ∧ i.val + 1 < Surjection.occurrenceCount u.val k)
+```
+
+有限点検は§247の`check-inserted-caesura-order.py`（全12,233組、非退化3,745組）。
+共有端点で元の内側語に区切りがない場合も合成語に区切りが増えることを、候補式に含めた。
+この元のiffを、区切りを定義し直したり非退化な場合だけの比較にしたりはしない。
+
+
+## 249. C452の元の末尾・内部の重みと整数係数への移送（法則の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+元の最後の部分語の末尾には後の位置がないので、区切りがない。
+これで§248の二条件を、部分語の末尾と内部に分けた同じ0/1重みの式へ移す。
+また、§243のmod 2の指数の比較が供給された場合にだけ、同じ元の整数係数へ戻す法則を分割する。
+指数の比較の仮定を露出させた係数移送であり、未証明の§243やC452全体を完成扱いしない。
+各証明200行以内の見込み。
+
+```lean
+lemma not_caesura_last_segment_end {t L N : ℕ} (v : Fin L → Fin N)
+    (r : Surjection.OverlapPartition t L) (i : Fin t) (z : Fin (r.val i).val)
+    (hz : z.val + 1 = (r.val i).val) (hi : i.val + 1 = t) :
+    ¬ Surjection.Caesura v (segmentInnerWordPosition r i z)
+
+lemma positiveComposite_inserted_end_caesura_iff {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (i : Fin (Surjection.occurrenceCount u.val k)) (z : Fin (r.val i).val)
+    (hz : z.val + 1 = (r.val i).val) :
+    Surjection.Caesura (positiveCompositeCutWord u v k r).val
+        (positiveCompositeSegmentPosition u v k r i z) ↔
+      i.val + 1 < Surjection.occurrenceCount u.val k
+
+lemma positiveComposite_inserted_caesura_split_iff {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (i : Fin (Surjection.occurrenceCount u.val k)) (z : Fin (r.val i).val) :
+    Surjection.Caesura (positiveCompositeCutWord u v k r).val
+        (positiveCompositeSegmentPosition u v k r i z) ↔
+      if z.val + 1 = (r.val i).val then i.val + 1 < Surjection.occurrenceCount u.val k
+      else Surjection.Caesura v.val (segmentInnerWordPosition r i z)
+
+lemma positiveComposite_inserted_caesura_indicator {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (i : Fin (Surjection.occurrenceCount u.val k)) (z : Fin (r.val i).val) :
+    (if Surjection.Caesura (positiveCompositeCutWord u v k r).val
+        (positiveCompositeSegmentPosition u v k r i z) then 1 else 0 : ℕ) =
+      if z.val + 1 = (r.val i).val then
+        (if i.val + 1 < Surjection.occurrenceCount u.val k then 1 else 0)
+      else (if Surjection.Caesura v.val (segmentInnerWordPosition r i z) then 1 else 0)
+
+lemma positiveComposite_inserted_intervalLength_formula {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (i : Fin (Surjection.occurrenceCount u.val k)) (z : Fin (c.1.val i).val) :
+    intervalLength c.2 (positiveCompositeCutWord u v k c.1).val
+        (positiveCompositeSegmentPosition u v k c.1 i z) =
+      (hi c.2 (positiveCompositeSegmentPosition u v k c.1 i z) -
+        lo c.2 (positiveCompositeSegmentPosition u v k c.1 i z)) +
+      (if z.val + 1 = (c.1.val i).val then
+        (if i.val + 1 < Surjection.occurrenceCount u.val k then 1 else 0)
+      else (if Surjection.Caesura v.val (segmentInnerWordPosition c.1 i z) then 1 else 0))
+
+lemma positiveCompositeCutCoefficient_eq_nested_of_modeq {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (h : Nat.ModEq 2
+      (Surjection.compositionExponent u v k c.1 +
+        (permutationExponent c.2 (positiveCompositeCutWord u v k c.1).val +
+          positionExponent c.2 (positiveCompositeCutWord u v k c.1).val))
+      ((d * e + e * positiveNestedPrefixDegree u k (positiveCompositeOuterCut u v k c)) +
+        (permutationExponent (positiveCompositeOuterCut u v k c) (positiveWord u).val +
+          positionExponent (positiveCompositeOuterCut u v k c) (positiveWord u).val) +
+        (permutationExponent (positiveCompositeInnerCut u v k c) (positiveWord v).val +
+          positionExponent (positiveCompositeInnerCut u v k c) (positiveWord v).val))) :
+    Surjection.compositionSign u v k c.1 * cutSign c.2 (positiveCompositeCutWord u v k c.1).val =
+      positiveNestedCutCoefficient u v k (positiveCompositeNestedMap u v k c)
+```
+
+末尾・内部の式の有限点検：`/tmp/bsw16/check-inserted-caesura-boundary.py`（全12,233組）。
+最後の部分語の末尾を含め、元のCaesuraの式と一致することを先に確認した。
+整数係数の移送は既存の`neg_one_pow_eq_pow_mod_two`と`pow_add`だけを使う。
+新しい界面の欄や、A4/L12aへ追加する仮定ではない。
+
+
+## 250. C452の既存の活動頂点の移送（法則の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+既存`permutationExponent_eq_active_inversions`は、元のintervalLengthの重み付き逆転指数を
+展開した活動頂点の逆転数へ移す。ここで新しく活動頂点を定義せず、
+§246の全出現位置の順序同値によるCaesuraの法則を、展開した元の色列へ適用する。
+C451で構成した同じ挿入色の順序同値が、元の活動頂点を保つことを読む。
+既存構成の同じ順序・色別fiberの移送の法則で、各証明200行以内。
+
+```lean
+lemma colorOrderIso_active_iff {m m' q q' r r' : ℕ} (s : Cut m q) (t : Cut m' q')
+    (v : Fin (m + 1) → Fin r) (w : Fin (m' + 1) → Fin r') (a : Fin r) (b : Fin r')
+    (e : ↥(colorPositions s v a) ≃o ↥(colorPositions t w b))
+    (x : ↥(colorPositions s v a)) :
+    (e x).val ∈ activeVertexPositions t w ↔ x.val ∈ activeVertexPositions s v
+
+lemma insertedColorPathOrderIso_active_iff {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) (b : Fin (n + 1))
+    (x : ↥(colorPositions c.2 (positiveCompositeCutWord u v k c.1).val
+      (BarrattEccles.insertedPosition m (n + 1) k b))) :
+    (insertedColorPathOrderIso u v k c b x).val ∈
+        activeVertexPositions (positiveCompositeInnerCut u v k c) (positiveWord v).val ↔
+      x.val ∈ activeVertexPositions c.2 (positiveCompositeCutWord u v k c.1).val
+```
+
+有限点検：`/tmp/bsw16/check-inserted-active-vertices.py`、全12,233組。
+展開色列のCaesuraを元の経路番号で直接計算し、同じ挿入色の内側経路番号の
+展開Caesuraと一致することを先に確認した。
+この活動頂点の保存だけで二つの逆転指数の全和やC452の完成を主張しない。
+
+
+## 251. C452の元の順位・他色の活動頂点・区切り順位の橋（法則の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+既存C170 `caesuraRank_label`とC108の面番号の活動頂点数の式を再利用する。
+同じ元の色別位置までの活動頂点を、その色と他色へ分けて数えるだけの法則。
+新しい活動頂点の定義や新しい作用は作らない。200行以内の見込み。
+
+```lean
+lemma colorRank_add_other_active_prefix {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (a : Fin r) (p : Fin (m + 1))
+    (j : Fin (outputDegree s v a + 1)) (hm : j ∈ colorIntervalRanks s v a p) :
+    j.val + ((activeVertexPositions s v.val).filter (fun z =>
+      z < colorPositionEquiv s v ⟨a, j⟩ ∧ label s v.val z ≠ a)).card =
+      (vertices s v a j).val + Surjection.caesuraRank v.val p
+```
+
+有限点検：`/tmp/bsw16/check-color-rank-active-prefix.py`（全12,233組）。
+同じ元の外側経路の全頂点で、色別順位＋先行他色の活動頂点数＝高さ＋元の語の区切り順位を
+直接計算して先に確認した。位置指数と逆転指数の比較へ渡すための法則であり、
+この橋だけでC452全体のmod 2の等式を完成したとは扱わない。
+
+
+## 252. C452の同じ外側区間内の先行他色の集合（法則の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§251の他色の先行活動頂点は、元の同じ水平区間内では高さを変えても変わらない。
+二つの位置の間の全頂点の水平座標は元の単調性から同じであり、そのラベルはaなので、
+他色の位置が二つの位置を跨ぐことはない。元のfiberの法則の証明分割で200行以内。
+
+```lean
+lemma other_active_prefix_eq_on_interval {m q r : ℕ} (s : Cut m q)
+    (v : Fin (m + 1) → Fin r) (a : Fin r) (p : Fin (m + 1)) (hp : v p = a)
+    (x y : Fin (m + q + 1)) (hx : s.horizontal x = p) (hy : s.horizontal y = p) :
+    (activeVertexPositions s v).filter (fun z => z < x ∧ label s v z ≠ a) =
+      (activeVertexPositions s v).filter (fun z => z < y ∧ label s v z ≠ a)
+```
+
+有限点検：`/tmp/bsw16/check-other-active-prefix-constant.py`（全12,233組）。
+同じ元の外側区間の全頂点で、他色の先行活動頂点の番号の集合そのものが一致することを
+先に確認した。濃度だけの一致へ弱めない。
+
+
+## 253. C452の二つの指数の全和への分解（法則の型と紙の接続）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§251の順位の橋と元の成分次数の総和を使い、符号の比較を元の二つの指数へ分け直す。
+まず既存`sum_segmentDegree`と`lineRank_last`で閉じる補和の法則は次。
+零arityの内側語も含む元の合成指数を変更しない法則で、200行以内の見込み。
+
+```lean
+lemma compositionExponent_add_prefixRanks {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord n e) (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) (n + e)) :
+    Surjection.compositionExponent u v k r +
+        ∑ i, Surjection.segmentDegree v.val r i *
+          Surjection.caesuraRank u.val (Surjection.occurrenceAt u.val k i) = d * e
+```
+
+残る二つの全和の型は次の候補として具体化する。以下は紙だけで、
+既存の有限集合の濃度の記法をB_iとして置くものであり、新しい演算や界面の欄を作らない。
+`positiveCompositeOtherActivePrefix`の位置は既存の色別の最初の順位である。
+
+```lean
+def positiveCompositeOtherActivePrefix {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (i : Fin (Surjection.occurrenceCount u.val k)) : ℕ :=
+  let δ := positiveCompositeOuterCut u v k c
+  let j := colorIntervalFirst δ (positiveWord u) k (positiveOccurrencePosition u k i)
+    (positiveOccurrencePosition_value u k i)
+  ((activeVertexPositions δ (positiveWord u).val).filter (fun z =>
+    z < colorPositionEquiv δ (positiveWord u) ⟨k, j⟩ ∧ label δ (positiveWord u).val z ≠ k)).card
+
+lemma positiveComposite_positionExponent_balance {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (h : Nondegenerate c.2 (positiveCompositeCutWord u v k c.1).val) :
+  positionExponent c.2 (positiveCompositeCutWord u v k c.1).val +
+    (∑ i, Surjection.segmentDegree v.val c.1 i *
+      Surjection.caesuraRank u.val (Surjection.occurrenceAt u.val k i)) =
+  positionExponent (positiveCompositeOuterCut u v k c) (positiveWord u).val +
+    positionExponent (positiveCompositeInnerCut u v k c) (positiveWord v).val +
+    (∑ i, Surjection.segmentDegree v.val c.1 i * positiveCompositeOtherActivePrefix u v k c i)
+
+lemma positiveComposite_permutationExponent_modeq {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (h : Nondegenerate c.2 (positiveCompositeCutWord u v k c.1).val) :
+  Nat.ModEq 2 (permutationExponent c.2 (positiveCompositeCutWord u v k c.1).val)
+    (permutationExponent (positiveCompositeOuterCut u v k c) (positiveWord u).val +
+      permutationExponent (positiveCompositeInnerCut u v k c) (positiveWord v).val +
+      (∑ i, Surjection.segmentDegree v.val c.1 i *
+        (positiveCompositeOtherActivePrefix u v k c i +
+          positiveNestedPrefixDegree u k (positiveCompositeOuterCut u v k c))))
+```
+
+位置指数では、合成語の共有端点の項が元の外側の区切りの項へ戻り、
+内側の区切りの各位置では§251の順位の橋を使う。
+逆転指数では既存`permutationExponent_eq_active_inversions`を使い、
+挿入色同士、残り色同士、異なる種類の対へ元の有限和を分ける。
+§250は挿入色の活動頂点の移送に、§246は残り色の区間重みに使える。
+この説明を、未供給の有限和の比較の証明済み扱いにはしない。
+
+有限点検：`/tmp/bsw16/check-composition-exponent-decomposition.py`。
+全12,233組で補和・位置指数の等式・逆転指数のmod 2・全符号のmod 2を比較し、
+失敗は全て0。非退化3,745組だけに絞らず点検したが、上の主張の型では元のC452の
+非退化性の仮定を保持した。有限点検はLeanの全称証明ではない。
+二つの全和の法則と補和から、同じB_iの和をmod 2で二回消し、成分次数の総和eを使えば
+§243の元の指数の比較へ接続する。ここは残るLeanの仕事である。
+
+## 254. C452の異なる挿入色の順序の照合（次の法則の型、紙のみ）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§253の逆転指数の比較では、C451の色ごとの順序同値を異なる色の対でも比較する必要がある。
+新しい全色の経路や別の指定同値を作る前に、既存の同じ内側頂点の
+`positiveCompositeSegmentInnerVertex_strict_order`と
+`positiveCompositeSegmentInnerVertex_eq_of_same_source`を使って、次の法則を示せる。
+真に逆の順序ならstrict_orderに矛盾し、元の位置が等しければeq_of_same_sourceで像も等しい。
+既存の同じ順序・指定頂点の反映の法則で、各証明200行以内の見込み。
+
+```lean
+lemma positiveCompositeSegmentInnerVertex_lt_iff {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (i : Fin (Surjection.occurrenceCount u.val k)) (z : Fin (c.1.val i).val)
+    (x : Fin (m + n + (d + e) + q + 1))
+    (hx : c.2.horizontal x = positiveCompositeSegmentPosition u v k c.1 i z)
+    (j : Fin (Surjection.occurrenceCount u.val k)) (w : Fin (c.1.val j).val)
+    (y : Fin (m + n + (d + e) + q + 1))
+    (hy : c.2.horizontal y = positiveCompositeSegmentPosition u v k c.1 j w) :
+    positiveCompositeSegmentInnerVertex u v k c i z x hx <
+      positiveCompositeSegmentInnerVertex u v k c j w y hy ↔ x < y
+
+lemma insertedColorPathOrderIso_cross_lt_iff {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) (b b' : Fin (n + 1))
+    (x : ↥(colorPositions c.2 (positiveCompositeCutWord u v k c.1).val
+      (BarrattEccles.insertedPosition m (n + 1) k b)))
+    (y : ↥(colorPositions c.2 (positiveCompositeCutWord u v k c.1).val
+      (BarrattEccles.insertedPosition m (n + 1) k b'))) :
+    (insertedColorPathOrderIso u v k c b x).val <
+      (insertedColorPathOrderIso u v k c b' y).val ↔ x.val < y.val
+```
+
+有限点検：`/tmp/bsw16/check-inserted-cross-order.py`、全12,233組。
+異なる色も含む元の全挿入頂点対について、元の経路番号の順序が内側番号の順序と
+同値であることを点検した。ここはまだ紙で、同じ型のLeanの証明は次の工程。
+§250の活動頂点の保存と合わせ、挿入色同士の逆転の対を元の色別同値で数えるために使う。
+新しい全体の経路同値の構成を必須とはしない。
+
+## 255. 完備化後のP⁰の紙の続き：Koszul商の模型による検出候補
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§223の(b)の候補を、普通の商A/d^rが完全であるという仮定を入れずに具体化する。
+以下は紙の候補であり、nativeな同じ指定辺までの比較を証明済みとした報告ではない。
+L12aとは独立の紙の作業で、界面・drafts・新しい完備化のLeanは変更していない。
+
+### 255.1 (a)について追加で確認した点
+
+導来完備化は有限Koszulとのテンソルの逆極限で表せる。
+また固定した複体とのRHomとして表すこともできる。
+出典：[Stacks Lemma 15.93.10・15.93.18](https://stacks.math.columbia.edu/tag/091N)。
+この記述から、**台の導来圏では**完備化と極限の可換性を使う候補がある。
+これは反射が左随伴であることだけからの主張ではなく、RHom/有限Koszulの表示からの推論。
+ただし外側の単体的実現との可換性にはならず、§223.2のambientな実現の障害は残る。
+完備圏の余極限へ置き換えてL44を適用済みとはしない。
+
+### 255.2 (b)の商の模型：正則性を仮定しない候補
+
+記法は§223のK・Y・d・κ=F_pのまま。
+各r>0に対し、κ[t]→A/pをt↦d^r、κ[t]→κをt↦0とする。
+rawなCAlg対象から
+
+`Q_r := X_raw ⊗^L_{κ[t]} κ`
+
+という**導来**pushoutを作れば、台はK//d^rという二項Koszul商になる候補である。
+κ[t]上のκは有限の二項自由解像度を持つので、dがA/pの非零因子であることは要らない。
+通常のA/d^rとのテンソルへ勝手に置き換えない。
+
+原料の二重模型が各項で通常のκ[t]代数なら、相対的な二-sided barの各項は通常のκ代数で、
+その面・退化・増大は積と単位から作れる。各項のFrobeniusはt↦t^pの同じ平方と両立する。
+このbarで導来商を表し、L44の同じsimplicial-cosimplicial模型へ渡すのが具体的な候補。
+有限Koszulの台とのテンソルはdualizableな係数とのテンソルなので、台のTotの比較を
+任意の非完全な通常の商とのテンソルの比較へ一般化する必要もない。
+これらは構成の筋であって、同じnativeなCAlg対象と辺の同定まで得たという主張ではない。
+
+実際に型を再読した本体の宣言は
+`BarrattEccles.barrattEcclesBaseChange_forget`（CAlgExtensionForgetKFlat.lean）。
+これは任意のfに対する**関手全体の**台の係数拡大との比較で、追加のK平坦性の仮定はない。
+一方、`BarrattEccles.strictBarFunctor`・`strictBarUnderlyingExtraDegeneracy`は
+自由・忘却随伴のbarであり、上の相対的なテンソルのbarそのものの完成宣言ではない。
+名前だけを理由に、そのbarと同じ模型が供給済みとはしない。
+
+### 255.3 この候補に必要な比較を露出させる
+
+必要な仕事は次である。
+
+1. Q_rを上の相対barの同じ二重模型で表すこと。台が元のK//d^rである比較を保持する。
+2. t↦t^pによる同じFrobeniusの辺が、相対barの項ごとのa↦a^pと一致すること。
+   これは指定されたFrobeniusの辺の構成であり、P⁰をcoherentな自然変換へ強める要求ではない。
+3. barの実現、有限Koszulの台とのTotの交換、同じnativeな指定錐への比較。
+   `baseChange_forget`だけでこの全部が自動で出るとはしない。G10/3b-4の未供給の橋は作らない。
+4. 実際の完備化後のYとmod pのprincipal completionの比較。
+   perfectPrismRingは零環の枝とW(R♭)の枝を持つ固定した本体の係数であり、
+   必要なpのKoszul/mod p比較を、この実際の係数について供給する。
+   pやdの正則性を追加仮定としてA4へ入れて隠さない。
+5. §223.3のpro-zero・lim¹の計算と、YからQ_rへのΠ_0の射が共同で単射であること。
+
+(1)〜(4)が供給されれば、各Q_rでL44によりP⁰と同じFrobeniusを比較し、
+(5)とho(CAlg)上の自然性でYのΠ_0で比較する、という候補が具体化する。
+Π_n (n>0)の消滅は、rawのcoconnective性とH^0のreduced性を用いる§223.3の完備化の計算で
+別に扱う。全Π_nの上で完備化単位が全射だという仮定は使わない。
+
+この候補は、§223で不足として残した「各Koszul商での同じFrobeniusの照合」への筋である。
+native比較や新しい相対barの構成が48本の既存の受け渡しに含まれるかはまだ照合が要る。
+新しい構成を自己承認で一覧へ足して実装することはしない。
+それでも、通常の商の正則性を仮定するかcoherentなP⁰へ戻るかの二択だとはまだ言えない。
+(c)が不可避という判定は現段階では出しておらず、その判定になれば§32どおり止めて報告する。
+
+### 255.4 barとTotの比較で省いてはいけない工程
+
+κ[t]上のκが完全であることは、**導来テンソル関手**とTotの可換性の理由であり、
+二-sided barの各項とTotが項ごとに可換であるという理由ではない。
+barの各項に現れるκ[t]のテンソル冪は、κ上では無限階数になり得る。
+従って、二つの実現方向を対角へまとめてL44の模型へ渡す途中の比較は自動ではない。
+
+具体的に残る候補は、相対barの加群解像度とκ[t]上の二項自由Koszul解像度の比較を保ち、
+同じcosimplicialな係数に自然な鎖比較・ホモトピーを通して、
+実現とTotを組み合わせた実際の台を有限Koszul模型へ照合すること。
+その比較が元のnativeなbarの増大の像を表すことと、同じFrobeniusの辺も追う必要がある。
+これは未検証の必要工程であり、既存`strictBarFunctor`や`baseChange_forget`の名前だけで
+供給されたとは扱わない。(b)の候補を完成した証明へ昇格させず、(1)〜(3)の不足へ明示して残す。
+
+## 256. C452の区切り・活動頂点・指数の補和：検証済み、取り込み点
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§246〜253の12本**625行**を検証・監査した。
+残り色の元の区切り・区間長、挿入色の元の区切りの全条件と末尾/内部の判定、
+その0/1重みとintervalLengthの式、同じ活動頂点の移送、
+色別順位と先行他色数の和の式、同じ区間内の先行他色の集合の不変性、
+元のcompositionExponentと接頭区切りの重み付き和の補和までを証明した。
+
+`positiveCompositeCutCoefficient_eq_nested_of_modeq`は、元の指数の比較が与えられた場合の
+整数係数への移送だけを証明した。肝心の§243のmod 2の比較はまだ供給しておらず、
+元のC452の無条件の完成には数えない。§253の二つの全和の型と§254は紙のまま。
+C451・C453は前ターンで閉じたが、L12a全体は未完で一覧12/48（追加4）のまま。
+
+対象ビルド（全て成功）：
+
+- `m14-remaining-caesura-weights-01.log`（2,861 jobs）。
+- `m14-segment-caesura-order-01.log`（2,874 jobs）。
+- `m14-inserted-caesura-02.log`（2,878 jobs）。
+- `m14-caesura-boundary-and-modeq-01.log`（2,909 jobs、整数係数移送）。
+- `m14-caesura-weights-and-active-transport-01.log`（2,901 jobs、区切りの非推奨名修正後）。
+- `m14-color-rank-active-prefix-02.log`（2,214 jobs、未使用simp引数修正後）。
+- `m14-composition-exponent-complement-01.log`（1,572 jobs）。
+
+途中では元の有限位置の記法`segmentInnerWordPosition`の展開を明示し、
+非推奨のif_pos/if_negを現行名ite_eq_left/ite_eq_rightへ直した。
+最終ソースの対象Lean警告0。既存の公開宣言・符号規約・型は変更していない。
+
+小監査は2回に分け、新しく検証した分だけを対象にした。
+
+- `audit-m14-caesura-sign-transport.log`：11モジュール・52宣言。
+- `audit-m14-composition-exponent-complement.log`：1モジュール・2宣言。
+
+合計**12モジュール・54宣言、標準三公理のみ**。
+新しいsorry・公理なし。鍵はビルド・監査の間だけ一回ずつ取得し、終了時に返した。
+待ちの整理券は一枚。大きい監査・rootビルド・mainの作業木での作業はしていない。
+
+調整役への登録対象（共通接頭辞 `SerrePositivity.EInfinity.SimplexCuts.`）：
+
+| モジュール | 行数 |
+| --- | ---: |
+| OccurrenceCaesuraTransport | 39 |
+| RemainingCaesuraWeights | 43 |
+| SegmentPositionOrder | 70 |
+| SegmentWordPositions | 20 |
+| SegmentBoundaryCaesura | 42 |
+| SegmentCaesuraFromInner | 57 |
+| InsertedCaesura | 44 |
+| InsertedCaesuraBoundaryWeights | 98 |
+| CompositeSignModEqTransport | 48 |
+| ColorOrderActiveTransport | 37 |
+| ColorRankActivePrefix | 85 |
+| CompositionExponentComplement | 42 |
+| **合計** | **625** |
+
+M14実測は**20,707行**、L12a実測は**5,500行**。
+旧§245のC452の残り173〜323行に対し、今回既に625行を使い、全和の比較が残る。
+従って旧26,639〜31,959行を新しい完成見込みとして使わない。
+他行の旧上端を据え置き、C452の旧上端323を今回625へ置き換える機械的な比較だけでも
+**32,261行＋C452の未供給の全和の分**となる。
+これは工程見込みの比較で、確定行数や数学的な下界ではないが、上端の超過リスクは増えている。
+外枠**31,000行は変更しない**し、収まるとも主張しない。
+実測と残りを分け、§32の約25,000行の中間報告で全和の実装分を含めて出し直す。
+完備化後のP⁰の候補の不足（§255）も、無料で供給済みの前提や別枠の完成分へ置かない。
+
+次は§254の異なる挿入色の順序の比較、既存の活動頂点の逆転数の有限和、
+§253の位置指数・逆転指数の二つの全和の比較を同じ元の構成の法則として進める。
+実テンソル・nullaryと、その後のL13以降を完成済みとして控除していない。
+G10・M15・G12・drafts・界面・共有入口は変更していない。
+これは同じL12aの途中の取り込み点であり、goalはactiveのまま継続する。
+
+## 257. C452の挿入色同士の逆転対の移送（法則の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§254の二つの順序反映は対象ビルドで成功した。
+次に同じ色別同値の下で、活動的な逆転対の寄与と二重有限和を照合する。
+新しい経路・作用・同値を定義するものではなく、既存の指定同値の法則。
+以下で `γ=c.2`、`ε=positiveCompositeInnerCut u v k c`、
+`w=(positiveCompositeCutWord u v k c.1).val`、`v₊=(positiveWord v).val`、
+`ι b=BarrattEccles.insertedPosition m (n+1) k b`、
+`E b=insertedColorPathOrderIso u v k c b` と略記する。
+`x` と `y` はそれぞれ `↥(colorPositions γ w (ι b))` と同じ `b'` の型。
+
+```lean
+lemma insertedColorPathOrderIso_active_inversionTerm ... (b b' : Fin (n + 1))
+    (x : ↥(colorPositions γ w (ι b))) (y : ↥(colorPositions γ w (ι b'))) :
+    (if x.val ∈ activeVertexPositions γ w ∧ y.val ∈ activeVertexPositions γ w then
+      IntervalCuts.positionInversionTerm (label γ w) x.val y.val else 0) =
+    (if (E b x).val ∈ activeVertexPositions ε v₊ ∧
+        (E b' y).val ∈ activeVertexPositions ε v₊ then
+      IntervalCuts.positionInversionTerm (label ε v₊) (E b x).val (E b' y).val else 0)
+
+lemma insertedColorPathOrderIso_active_inversion_sum ... (b b' : Fin (n + 1)) :
+    (∑ x : ↥(colorPositions γ w (ι b)), ∑ y : ↥(colorPositions γ w (ι b')),
+      if x.val ∈ activeVertexPositions γ w ∧ y.val ∈ activeVertexPositions γ w then
+        IntervalCuts.positionInversionTerm (label γ w) x.val y.val else 0) =
+    (∑ x : ↥(colorPositions ε v₊ b), ∑ y : ↥(colorPositions ε v₊ b'),
+      if x.val ∈ activeVertexPositions ε v₊ ∧ y.val ∈ activeVertexPositions ε v₊ then
+        IntervalCuts.positionInversionTerm (label ε v₊) x.val y.val else 0)
+```
+
+有限点検を先に行った：`check-inserted-inversion-pairs.py`、全12,233組。
+各元の挿入頂点対で、活動性・位置順序・色順序を含む0/1の寄与が一致した。
+証明は§250の活動性、§254の順序、挿入色番号の共通の平行移動、
+既存の `Fintype.sum_equiv` による二重和の再添字付けを用いる。各証明200行以内の見込み。
+
+mainの指示書§33も確認した。3b-4aの取り込み後はTotの群を先にし、
+その段0は待つ間に紙で準備する。G10の部品を自分で作ることはしない。
+
+## 258. C452の色別逆転和を元の指数へ接続する法則の型
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§257の二重和のビルドは成功した。これを元の内側の逆転指数へ結ぶため、
+既存の有限和を色のfiberでまとめる二つの法則を使う。
+以下は新しい逆転数の定義ではなく、同じ `positionInversionCount` の式の変形である。
+
+```lean
+lemma sum_colorPositions {m q r : ℕ} (s : Cut m q)
+    (v : Fin (m + 1) → Fin r) (f : Fin (m + q + 1) → ℕ) :
+    (∑ a : Fin r, ∑ x : ↥(colorPositions s v a), f x.val) = ∑ x, f x
+
+lemma positionInversionCount_eq_sum_color_pairs {m q r : ℕ} (s : Cut m q)
+    (v : Fin (m + 1) → Fin r) :
+    IntervalCuts.positionInversionCount (label s v) (activeVertexPositions s v) =
+    ∑ a : Fin r, ∑ b : Fin r,
+      ∑ x : ↥(colorPositions s v a), ∑ y : ↥(colorPositions s v b),
+      if x.val ∈ activeVertexPositions s v ∧ y.val ∈ activeVertexPositions s v then
+        IntervalCuts.positionInversionTerm (label s v) x.val y.val else 0
+```
+
+§257の略記で、最後の接続の型は次のとおり。
+
+```lean
+lemma positiveComposite_inserted_inversion_sum ... :
+    (∑ b : Fin (n + 1), ∑ b' : Fin (n + 1),
+      ∑ x : ↥(colorPositions γ w (ι b)), ∑ y : ↥(colorPositions γ w (ι b')),
+      if x.val ∈ activeVertexPositions γ w ∧ y.val ∈ activeVertexPositions γ w then
+        IntervalCuts.positionInversionTerm (label γ w) x.val y.val else 0) =
+    permutationExponent ε v₊
+```
+
+有限点検：`check-inserted-inversion-sum.py`、12,233組。
+元の全挿入色対の寄与の総和が、同じ内側の全活動頂点の逆転数に一致した。
+既存のfiberwise sum、部分型の有限和、和の交換、§257と
+`permutationExponent_eq_active_inversions`で証明する。各証明200行以内の見込み。
+
+## 259. C452の全挿入色の逆転和：検証済み、取り込み点
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§254・257〜258の法則を、新規4モジュール233行で証明した。
+異なる挿入色を含む元の全頂点対の順序反映、活動逆転対の寄与と色別二重和の一致、
+同じ逆転数の色のfiberによる分解を通し、全挿入色同士の逆転和が
+**元の内側切断の `permutationExponent`** に一致するところまで接続した。
+退化しないという追加仮定を使わず、同じ指定切断・色別同値・逆転数を比較している。
+
+対象ビルドは `m14-inserted-cross-order-01.log`（2,895 jobs）、
+`m14-color-inversion-sums-01.log` の挿入色二重和の対象（2,897 jobs中の当該一本）、
+最終 `m14-composite-inserted-inversion-sum-01.log`（2,898 jobs）が成功。
+途中、if内の命題の書き換えをsimpにし、有限和の交換則のimportと関数引数を明示した。
+最終ソースの対象警告0。心拍数・再帰上限は増やしていない。
+
+小監査 `audit-m14-inserted-inversion-sums.log` は
+**4モジュール・12宣言、標準三公理のみ**。sorry・独自公理0。
+`git diff --check`成功。各ビルド・監査で鍵を一回ずつ取り、終了してから返した。
+他レーン・共有入口・共有監査・drafts・界面・mainの作業木は変更していない。
+
+登録対象（接頭辞 `SerrePositivity.EInfinity.SimplexCuts.`）：
+
+| モジュール | 行数 |
+| --- | ---: |
+| InsertedColorCrossOrder | 56 |
+| InsertedColorInversions | 73 |
+| ColorInversionSums | 67 |
+| CompositeInsertedInversionSum | 37 |
+| **計** | **233** |
+
+M14実測は**20,940行**、L12aは**5,733行**。
+C452の全指数比較は未完。残り色同士と交差項の逆転和、§253の位置指数の全和が残る。
+C452やL12a全体を完了には数えず、一覧12/48（追加4）のまま。
+§256の外枠超過リスクも解消したとは主張しない。
+完備化後のP⁰の比較は§223・255の未供給の比較を残しており、
+(c)のcoherentなP⁰が不可避という新しい結論には至っていない。
+次も同じL12aの法則を進め、main§33のTotの段0は紙で準備する。
+
+## 260. main §33 の Tot 九欄：段0の型案と受け取りの条件（紙のみ）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+mainの指示書§33を確認した。3b-4aの取り込み後、M14を区切ってTotの群を先にする。
+この節はその待ち時間の紙の準備で、TotのLean・界面・Assemblyは変更していない。
+M14の48本と、以下のTotの九欄の一覧は別であり、M14の完了数に足さない。
+
+### 260.1 型案：既存欄を同じBEの実例で埋める
+
+紙の略記として、`CA S := CAlg_R S`、`U S := cAlgForgetDerived S`、
+`D S := discreteCAlgUnderEmbedding S`、`CD S := barrattEcclesOfCdga S`、
+`res f := barrattEcclesRestrict f`、`Q S := ComplexLimits.complexOrdinaryDerivedSource S`とする。
+`FunctorIso`・`nativeConeLeg`・`nerveVertex`・`simplicialHomotopyVertexEdge`は、
+Interface/Theory.leanと同じKerodonの宣言。`Complex`・`CosimplicialRingAlgebra`・
+`CosimplicialCDGA`・`TotalizationCone`・`cosimplicialNerve`も同じInterfaceの宣言。
+以下は略記を展開してから型検査する紙の型で、検証済みのLeanとは主張しない。
+
+```lean
+-- T01
+ def barrattEcclesOfCosimplicial (S : Type u) [CommRing S] :
+     nerve (CosimplicialRingAlgebra S) ⟶ CA S
+-- T02
+ def barrattEcclesOfCosimplicial_forget (S : Type u) [CommRing S] :
+     FunctorIso (barrattEcclesOfCosimplicial S ≫ U S)
+       (nerveMap (cosimplicialCochains S) ≫ Q S)
+-- T03
+ def barrattEcclesOfCosimplicial_cone (S : Type u) [CommRing S]
+     (X : CosimplicialRingAlgebra S) :
+     TotalizationCone (cosimplicialNerve X ≫ D S)
+       (atVertex (barrattEcclesOfCosimplicial S) (nerveVertex X))
+-- T04
+ def barrattEcclesOfCosimplicial_restrict {S T : Type u} [CommRing S] [CommRing T]
+     (f : S →+* T) :
+     FunctorIso
+       (nerveMap ((Functor.whiskeringRight SimplexCategory _ _).obj
+         (restrictRingAlgebra f)) ≫ barrattEcclesOfCosimplicial S)
+       (barrattEcclesOfCosimplicial T ≫ res f)
+-- T05
+ def barrattEcclesOfCosimplicialCdga (S : Type u) [CommRing S] :
+     nerve (CosimplicialCDGA S) ⟶ CA S
+-- T06
+ def barrattEcclesOfCosimplicialCdga_cone (S : Type u) [CommRing S]
+     (X : CosimplicialCDGA S) :
+     TotalizationCone (cosimplicialNerve X ≫ CD S)
+       (atVertex (barrattEcclesOfCosimplicialCdga S) (nerveVertex X))
+-- T07
+ def barrattEcclesOfCosimplicialCdga_discrete (S : Type u) [CommRing S] :
+     FunctorIso
+       (nerveMap ((Functor.whiskeringRight SimplexCategory _ _).obj (discreteCDGA S)) ≫
+         barrattEcclesOfCosimplicialCdga S) (barrattEcclesOfCosimplicial S)
+-- T08
+ def barrattEcclesOfCosimplicialCdga_evalZero (S : Type u) [CommRing S] :
+     SSet.Homotopy (barrattEcclesOfCosimplicialCdga S)
+       (nerveMap ((evaluation SimplexCategory (CommMon (Complex S))).obj ⦋0⦌) ≫ CD S)
+-- T09
+ theorem barrattEcclesOfCosimplicialCdga_evalZero_leg (S : Type u) [CommRing S]
+     (X : CosimplicialCDGA S) :
+     (simplicialHomotopyVertexEdge (barrattEcclesOfCosimplicialCdga_evalZero S)
+       (nerveVertex X)).edge =
+     (nativeConeLeg (barrattEcclesOfCosimplicialCdga_cone S X).val
+       (ULift.up (nerveVertex (⦋0⦌ : SimplexCategory)))).edge
+```
+
+T08は評価0への変換であり、Functors全体の同型を要求する欄ではない。
+T09は同じ錐の脚の等式であって、無関係な評価射を新たに選ぶ欄ではない。
+T03・T06は任意の同値な頂点でなく、T01・T05の指定頂点と一致する証明を保持する。
+
+### 260.2 受け取るものと使う順序
+
+③-bのmain上の報告§152・160を読んだ。
+3b-4aのR01〜R05・R11/R12のTot部分には、元のBEの計算関手、全図式射の錐族、
+そのnative極限性、Uを通した全錐族の比較、離散・係数変更への制限が含まれる予定。
+G10の完成だけをもってこれらのBEの全族も供給済みとはしない。
+
+実装順序は T05/T06 → T08/T09 → T01/T03 → T02/T07/T04 を候補とする。
+厳密cdgaからBEの既存 `barrattEcclesOfCdga` への全関手を前合成し、
+3b-4aの同じnative錐族を引き戻す。
+離散代数は同じcdgaの埋め込みに制限する。
+T02はR11の離散比較とG10の `cosimplicialModuleConeFamily`・
+`cosimplicialModuleCone_homology` の全族比較で、同じ `cosimplicialCochains` の
+複体との比較を保持して作る。対象ごとのホモロジー同型だけで全FunctorIsoとしない。
+
+`cAlgForgetDerived_mapJoinCone_isLimit`は無条件で本体にあることを再確認した。
+ただし「Uが極限を保存する」だけから元のBEの錐が極限だとは逆向きに推論しない。
+元の極限性はR03から受け取り、そのU像の検収に既存の保存定理を使う。
+T04/T07/T09は全図式射と指定境界・脚の比較を必要とする。
+G10・BEのnative橋を自分で作らず、BFの作用をこの九欄の前提にしない。
+
+### 260.3 置き場所と暫定の規模
+
+新規実例ファイルは `EInfinity/BarrattEccles/Theory/` の下を候補とする。
+③-bの `StrictDiagramTotalizationComparison*` 等そのものは触らない。
+受け渡しで型の穴があれば、界面を変えたり仮定を足したりせず報告する。
+共通入口・監査登録は調整役。Assemblyへの供給は九欄の検証後にする。
+
+| まとまり | 既存・供給予定の原料 | 新規見込み |
+| --- | --- | ---: |
+| T05/T06 | R01〜R03、既存ofCdga、同じ全錐族 | 300〜550 |
+| T08/T09 | R02の評価0と同じ脚・全パラメータ | 200〜400 |
+| T01/T03 | 既存discreteCDGA・ofCdga_discrete、離散制限 | 150〜300 |
+| T02/T07 | R04/R11、G10離散全族、同じコチェイン比較 | 350〜650 |
+| T04 | R12の係数変更と指定錐族 | 200〜400 |
+| Assembly・小監査前の照合・import | 既存欄を保つ包装 | 100〜200 |
+| **計** | 3b-4aの上記全族を受領する前提 | **1,300〜2,500** |
+
+これは前提を無償に自己供給する見積もりではなく、3b-4aの完成した型を受け取った後の
+包装の暫定見積もり。2倍の規則なら外枠5,000行、見込みの半分の1,250行で途中報告。
+受け渡しの実際の宣言名・型が確定したらその対応表を先に更新する。
+Tot九欄の新規行数をM14の未証明分から勝手に控除せず、別に記録する。
+
+この紙の準備はM14のP⁰の_totや完備化後のP⁰の完成ではない。
+M14は§259の実測20,940行・一覧12/48（追加4）から続ける。
+
+## 261. C452の残り色どうしの重み付き逆転和（法則の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+元の区間長は§246で一致しているので、残り色どうしでは元の語の位置で直接比較できる。
+以下は同じ指定位置・指定重みの法則で、新しい作用や構成ではない。
+各証明200行以内の見込み。まず元の位置対、次に既存の全出現の順序同値で再添字付けする。
+
+```lean
+lemma positiveComposite_remaining_inversionTerm {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (p p' : Fin (m + d + 1))
+    (hp : (positiveWord u).val p ≠ k) (hp' : (positiveWord u).val p' ≠ k) :
+    (if compositeFirstPosition u v k c.1 p < compositeFirstPosition u v k c.1 p' ∧
+        (positiveCompositeCutWord u v k c.1).val (compositeFirstPosition u v k c.1 p') <
+          (positiveCompositeCutWord u v k c.1).val (compositeFirstPosition u v k c.1 p) then
+      intervalLength c.2 (positiveCompositeCutWord u v k c.1).val
+          (compositeFirstPosition u v k c.1 p) *
+        intervalLength c.2 (positiveCompositeCutWord u v k c.1).val
+          (compositeFirstPosition u v k c.1 p') else 0) =
+    (if p < p' ∧ (positiveWord u).val p' < (positiveWord u).val p then
+      intervalLength (positiveCompositeOuterCut u v k c) (positiveWord u).val p *
+        intervalLength (positiveCompositeOuterCut u v k c) (positiveWord u).val p' else 0)
+
+lemma remainingWordPositionOrderIso_inversion_sum {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (a b : {a : Fin (m + 1) // a ≠ k}) :
+    (∑ p : ↥(Surjection.occurrences (positiveWord u).val a.val),
+      ∑ p' : ↥(Surjection.occurrences (positiveWord u).val b.val),
+      if p.val < p'.val ∧ (positiveWord u).val p'.val < (positiveWord u).val p.val then
+        intervalLength (positiveCompositeOuterCut u v k c) (positiveWord u).val p.val *
+          intervalLength (positiveCompositeOuterCut u v k c) (positiveWord u).val p'.val else 0) =
+    (∑ p : ↥(Surjection.occurrences (positiveCompositeCutWord u v k c.1).val
+        (BarrattEccles.remainingPosition m (n + 1) k a)),
+      ∑ p' : ↥(Surjection.occurrences (positiveCompositeCutWord u v k c.1).val
+        (BarrattEccles.remainingPosition m (n + 1) k b)),
+      if p.val < p'.val ∧ (positiveCompositeCutWord u v k c.1).val p'.val <
+          (positiveCompositeCutWord u v k c.1).val p.val then
+        intervalLength c.2 (positiveCompositeCutWord u v k c.1).val p.val *
+          intervalLength c.2 (positiveCompositeCutWord u v k c.1).val p'.val else 0)
+```
+
+有限点検：`check-remaining-weighted-inversions.py`、全12,233組。
+退化も含め、元の残り位置の全ての対について、位置順序・色順序と両区間長を
+掛けた0/1の重み付き寄与が一致した。
+証明の原料は `compositeFirstPosition_strictMono`、
+`positiveCompositeFirstPosition_label`、`IntervalCuts.remainingPosition_lt_iff`、
+`positiveComposite_remaining_intervalLength`、`remainingWordPositionOrderIso`。
+これをC452全体の完成として扱わない。
+
+## 262. C452の二つの活動集合を水平fiberで数える法則
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§261の残り色の和は元の語の区間長、§259の挿入色の和は活動頂点の対で表した。
+両者を結ぶため、既存 `positionInversionCount_comp_monotone` と同じ証明を、
+左右が別々の有限集合の場合で使う。既存の逆転寄与を再添字付けする法則で、
+新しい数や作用の定義ではない。型は次。証明200行以内の見込み。
+
+```lean
+lemma sum_positionInversionTerm_comp_monotone {N M r : ℕ} (f : Fin N →o Fin M)
+    (v : Fin M → Fin r) (S T : Finset (Fin N)) :
+    (∑ x ∈ S, ∑ y ∈ T, IntervalCuts.positionInversionTerm (v ∘ f) x y) =
+      ∑ i : Fin M, ∑ j : Fin M, if i < j ∧ v j < v i then
+        (S.filter (fun x => f x = i)).card * (T.filter (fun y => f y = j)).card else 0
+```
+
+有限点検：長さ0〜3、水平値域1〜3、二色の全ラベル列、全ての二有限部分集合を
+独立に選んだ7,414例で一致した。単調写像に等しい値がある場合、
+逆転する色対は同じ水平fiber内にないことが、元の既存証明と同じ理由になる。
+左右を同じ集合に狭めたり、色順序の条件を省いたりしない。
+
+## 263. C452の色別の重み付き和と活動頂点の和を結ぶ法則
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§262は対象ビルドで成功した。次は同じ色の水平fiberの濃度を元のintervalLengthで読み、
+既存の色別の二つの表記を結ぶ。以下は既存の有限和・濃度の法則と証明分割であり、
+新しい構成や作用ではない。各証明200行以内の見込み。
+
+```lean
+lemma sum_ite_and_eq_filter {α β : Type*} (S : Finset α) (T : Finset β)
+    (P : α → Prop) (Q : β → Prop) [DecidablePred P] [DecidablePred Q]
+    (F : α → β → ℕ) :
+    (∑ x ∈ S, ∑ y ∈ T, if P x ∧ Q y then F x y else 0) =
+      ∑ x ∈ S.filter P, ∑ y ∈ T.filter Q, F x y
+
+lemma active_color_horizontal_fiber_card {m q r : ℕ} (s : Cut m q)
+    (v : Fin (m + 1) → Fin r) (a : Fin r) (i : Fin (m + 1)) :
+    (((activeVertexPositions s v).filter (fun x => label s v x = a)).filter
+      (fun x => s.horizontal x = i)).card = if v i = a then intervalLength s v i else 0
+
+lemma weighted_color_inversion_sum_eq_active {m q r : ℕ} (s : Cut m q)
+    (v : Fin (m + 1) → Fin r) (a b : Fin r) :
+    (∑ i : ↥(Surjection.occurrences v a), ∑ j : ↥(Surjection.occurrences v b),
+      if i.val < j.val ∧ v j.val < v i.val then
+        intervalLength s v i.val * intervalLength s v j.val else 0) =
+    (∑ x : ↥(colorPositions s v a), ∑ y : ↥(colorPositions s v b),
+      if x.val ∈ activeVertexPositions s v ∧ y.val ∈ activeVertexPositions s v then
+        IntervalCuts.positionInversionTerm (label s v) x.val y.val else 0)
+```
+
+有限点検を先に行った：水平幅0〜3、垂直幅0〜2、全二色列（非全射も含む）、
+全経路と全色対の1,400例。色別fiberの濃度と、重み付き・活動頂点の両逆転和が一致。
+同じ色対の逆転が零になる場合や、同じ水平位置に複数頂点がある場合も含む。
+元の符号・区間長・活動性の定義は変えない。
+
+### 263.1 部分型の二重和の明示的な証明分割
+
+一覧：済み 12／全体 48（うち追加 4）
+
+条件式を含む二重和では、`sum_coe_sort`の暗黙の関数推論で進まなかったので、
+同じ `Finset.sum_subtype` を二回適用する形に分ける。新しい定理の内容はなく、
+有限和の同じ添字の表示の照合。型は次（証明200行以内）。
+
+```lean
+lemma sum_finset_subtype_pair {α β : Type*} (S : Finset α) (T : Finset β)
+    (F : α → β → ℕ) :
+    (∑ x : ↥S, ∑ y : ↥T, F x.val y.val) = ∑ x ∈ S, ∑ y ∈ T, F x y
+```
+
+## 264. C452の全色対の和を四つに分ける法則
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§263の色別の二つの逆転和の表記はビルドで一致した。
+全色対の和を残り色同士・残り→挿入・挿入→残り・挿入色同士へ分ける際は、
+新しい色の同値を作らず、既存 `operadInsertionEquiv` の有限和の法則を使う。
+型は次。各証明200行以内。
+
+```lean
+lemma sum_insertion_positions (m n : ℕ) (k : Fin (m + 1)) (F : Fin (m + n) → ℕ) :
+    (∑ a, F a) =
+      (∑ a : {a : Fin (m + 1) // a ≠ k}, F (BarrattEccles.remainingPosition m n k a)) +
+      ∑ b : Fin n, F (BarrattEccles.insertedPosition m n k b)
+
+lemma sum_insertion_position_pairs (m n : ℕ) (k : Fin (m + 1))
+    (F : Fin (m + n) → Fin (m + n) → ℕ) :
+    (∑ a, ∑ b, F a b) =
+      (∑ a : {a : Fin (m + 1) // a ≠ k}, ∑ b : {b : Fin (m + 1) // b ≠ k},
+        F (BarrattEccles.remainingPosition m n k a) (BarrattEccles.remainingPosition m n k b)) +
+      (∑ a : {a : Fin (m + 1) // a ≠ k}, ∑ b : Fin n,
+        F (BarrattEccles.remainingPosition m n k a) (BarrattEccles.insertedPosition m n k b)) +
+      (∑ a : Fin n, ∑ b : {b : Fin (m + 1) // b ≠ k},
+        F (BarrattEccles.insertedPosition m n k a) (BarrattEccles.remainingPosition m n k b)) +
+      (∑ a : Fin n, ∑ b : Fin n,
+        F (BarrattEccles.insertedPosition m n k a) (BarrattEccles.insertedPosition m n k b))
+```
+
+有限点検：m,n=0〜3の全kについて40例。零arityも含み、
+同じ残り色・挿入色の番号が全色を重複なく覆い、四つの対の和が元の二重和に一致した。
+C452へは正の内側arity n+1で適用する。
+
+## 265. C452の逆転指数を元の交差和へ帰着する法則
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§261と§263で同じ残り色の活動逆転和を移し、§264で全色対を分け、
+挿入色同士の和を§259で元の内側指数に戻す。新しい数学や構成でなく、
+ここまでに証明した有限和の接続。型は次。各証明200行以内の見込み。
+
+```lean
+lemma positiveComposite_remaining_active_inversion_sum {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (a b : {a : Fin (m + 1) // a ≠ k}) :
+    (∑ x : ↥(colorPositions c.2 (positiveCompositeCutWord u v k c.1).val
+        (BarrattEccles.remainingPosition m (n + 1) k a)),
+      ∑ y : ↥(colorPositions c.2 (positiveCompositeCutWord u v k c.1).val
+        (BarrattEccles.remainingPosition m (n + 1) k b)),
+      if x.val ∈ activeVertexPositions c.2 (positiveCompositeCutWord u v k c.1).val ∧
+          y.val ∈ activeVertexPositions c.2 (positiveCompositeCutWord u v k c.1).val then
+        IntervalCuts.positionInversionTerm (label c.2 (positiveCompositeCutWord u v k c.1).val)
+          x.val y.val else 0) =
+    (∑ x : ↥(colorPositions (positiveCompositeOuterCut u v k c) (positiveWord u).val a.val),
+      ∑ y : ↥(colorPositions (positiveCompositeOuterCut u v k c) (positiveWord u).val b.val),
+      if x.val ∈ activeVertexPositions (positiveCompositeOuterCut u v k c) (positiveWord u).val ∧
+          y.val ∈ activeVertexPositions (positiveCompositeOuterCut u v k c) (positiveWord u).val
+        then IntervalCuts.positionInversionTerm
+          (label (positiveCompositeOuterCut u v k c) (positiveWord u).val) x.val y.val else 0)
+
+lemma positiveComposite_permutationExponent_color_decomposition {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) :
+    let δ := positiveCompositeOuterCut u v k c
+    let ε := positiveCompositeInnerCut u v k c
+    let w := (positiveCompositeCutWord u v k c.1).val
+    let uPos := (positiveWord u).val
+    permutationExponent c.2 w =
+      (∑ a : {a : Fin (m + 1) // a ≠ k}, ∑ b : {b : Fin (m + 1) // b ≠ k},
+        ∑ x : ↥(colorPositions δ uPos a.val), ∑ y : ↥(colorPositions δ uPos b.val),
+        if x.val ∈ activeVertexPositions δ uPos ∧ y.val ∈ activeVertexPositions δ uPos then
+          IntervalCuts.positionInversionTerm (label δ uPos) x.val y.val else 0) +
+      (∑ a : {a : Fin (m + 1) // a ≠ k}, ∑ b : Fin (n + 1),
+        ∑ x : ↥(colorPositions c.2 w (BarrattEccles.remainingPosition m (n + 1) k a)),
+        ∑ y : ↥(colorPositions c.2 w (BarrattEccles.insertedPosition m (n + 1) k b)),
+        if x.val ∈ activeVertexPositions c.2 w ∧ y.val ∈ activeVertexPositions c.2 w then
+          IntervalCuts.positionInversionTerm (label c.2 w) x.val y.val else 0) +
+      (∑ a : Fin (n + 1), ∑ b : {b : Fin (m + 1) // b ≠ k},
+        ∑ x : ↥(colorPositions c.2 w (BarrattEccles.insertedPosition m (n + 1) k a)),
+        ∑ y : ↥(colorPositions c.2 w (BarrattEccles.remainingPosition m (n + 1) k b)),
+        if x.val ∈ activeVertexPositions c.2 w ∧ y.val ∈ activeVertexPositions c.2 w then
+          IntervalCuts.positionInversionTerm (label c.2 w) x.val y.val else 0) +
+      permutationExponent ε (positiveWord v).val
+```
+
+§259・261・263・264の有限点検済みの同じ色番号・同じ寄与だけを用いる。
+この式の残り二つの交差和を、外側の指定色kとの和とg_iの補正へ戻すことが残る。
+位置指数の全和もまだ未証明であり、C452やL12aを完了には数えない。
+
+## 266. C452の交差項に使う連続区間の幅の和
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§265の合成逆転指数の分解が対象ビルドで成功した。
+交差項では、一つの挿入部分語の全区間長をまとめる必要がある。
+まず既存 `hi_eq_lo_succ` と `lo_le_hi` から、同じ連続区間の幾何学的な幅の和を
+元の両端へまとめる法則を示す。新しい構成ではなく既存の両端の貼り合わせの法則。
+型は次（証明200行以内の見込み）。
+
+```lean
+lemma sum_consecutive_intervalWidths {m q : ℕ} (s : Cut m q)
+    (a L : ℕ) (h : a + L < m + 1) :
+    (∑ z : Fin (L + 1), (hi s ⟨a + z.val, by have hz := z.isLt; omega⟩ -
+      lo s ⟨a + z.val, by have hz := z.isLt; omega⟩)) +
+      lo s ⟨a, by omega⟩ = hi s ⟨a + L, h⟩
+```
+
+有限点検：水平幅0〜4、垂直幅0〜3の全経路と全ての非空連続区間、1,344例。
+元のhi−loの和に元の最初のloを足すと、元の最後のhiに一致した。
+この幅の法則だけでcaesuraの個数やC452を証明済みにはしない。
+
+## 267. 完備化後のP⁰の紙の続き：(a)の台を項別完備化で表す候補
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§32の三案のうち、(a)の「完備化した項を使う」に関して、
+単にambientな実現と完備化を交換する§223.2の案とは別に、
+**実現後の鎖模型の項別完備化**を使う候補を整理する。
+ここも紙のみ。以下の未供給の構成を48本へ自己承認で追加してLeanに入ることはしない。
+
+### 267.1 台の完備化を計算する候補の前提を明示する
+
+Bを `perfectPrismRing/p` の実際のmod p係数、dを実際のprismの元の像とする。
+固定した係数の非零の枝はW(R♭)であり、B≅R♭の指定比較を供給すればBは完全でreduced。
+零環の枝も別途同じ比較で処理する。比較を証明せずBへPerfectRingインスタンスがあると
+扱ったり、dの正則性を仮定したりはしない。
+
+自分の推論：reducedな環ではd^r b=0 (r>0)から(db)^r=0、従ってdb=0。
+よってBのd冪ねじれはdで殺されるという一様な境界を持つ。
+[Stacks Lemma 15.95.1–2](https://stacks.math.columbia.edu/tag/0BKF)を再確認した。
+この有界性のもとでは、principalなKoszul塔と通常の商の塔が同じ導来完備化を計算する。
+これは一般のBや任意のdへ正則性なしで通常の商に置き換えてよい、という主張ではない。
+
+さらに、rawな対象を表す**項別に平坦かつK平坦な**B上の厳密BE代数Kを選べれば、
+K⊗^L_B B/d^rは項別の商K/d^rで計算できる。
+この商の塔は複体の各次数で全射だから、導来逆極限を項別の通常の逆極限で表す候補になる。
+ここで選ぶKは既に実現した複体の模型であり、二重模型の各項を完備化してから
+ambientな実現と交換したことにはしない。
+
+本体の `cofibrantCarrierKFlat` は実際に**K平坦性**の型であることを読み直した。
+その宣言だけで項別の平坦性まで証明済みとはしない。
+項別平坦な厳密BE代数模型を選ぶ際は、セルの次数付きの台とretractからその性質を供給し、
+同じraw対象・指定Frobeniusの辺との比較を保持する必要がある。
+
+### 267.2 連続な作用へ進める理由と、まだ残る穴
+
+厳密なB線形BE代数の有限arityの作用は、各入力のd進フィルトレーションに関して連続。
+p入力のMayの鎖の式は、各入力がd^r倍なら出力がd^{pr}倍になる。
+これは同じB線形のp入力作用からの推論で、完成したP⁰の自然性だけからの推論ではない。
+従って、項別完備化した複体へ同じ有限arityの作用・微分・operadの法則を
+連続に延ばす厳密な候補がある。
+ただし現在のκへの制限の後の模型を、理由なくB線形の模型だとはしない。
+
+ここから完成までは次が不足している。
+
+1. 項別完備化した厳密BE代数と、実際のnativeな `directPerfectionValue/p` の同じ比較。
+   台の複体の計算だけでCAlgの同じ反射・単位の比較も終えたとはしない。
+2. L44の二重模型から、上で選ぶKへ同じP⁰・同じFrobeniusを運ぶ比較。
+   K平坦な置き換えをしただけで、L44の明示的なprimitiveも移ったとは扱わない。
+3. P⁰と指定Frobeniusの差を与える**同じprimitiveの連続性**。
+   両辺の鎖の式が連続であることだけでは、ホモロジー上の等式を完備化へ移せない。
+   ここが(a)の候補でも消してはいけない主要な証明義務。
+4. Frobeniusはdをd^pへ送る半線形の辺であり、通常のB線形自己射としない。
+   フィルトレーションの添字の共終な変更と、指定されたnativeな辺まで追う。
+
+特に、denseなraw鎖でP⁰とFrobeniusがホモロジー上で一致するという理由だけで、
+完備化した鎖のホモロジーでも一致すると主張することはしない。
+continuousなprimitiveまたは商での同じ等式が要る。
+
+### 267.3 (a)(b)(c)の現在の比較
+
+(a)は上の項別完備化の模型を使えば、§223.2のambientな実現との交換を
+仮定しない別の構成候補になる。ただし(1)〜(4)は未供給で、完成済みではない。
+(b)の単位による全射性は依然として一般に成り立たず、§255のKoszul商での検出案も
+相対barとTotの比較の穴を残す。
+(c)については、(a)の連続なprimitiveと(b)の商での検出の両方が不可能とはまだ示していない。
+従ってcoherentなSp値P⁰が不可避という判定は、現段階では出さない。
+一方で、いずれかの候補が未証明であることを「May案で完備化も通った」とは報告しない。
+同じprimitive/商の比較がcoherentなP⁰なしには供給できないと判明したら、§32どおり止める。
+この節は承認済みの並行する紙の比較であり、新しい厳密完備化のLeanは書いていない。
+
+## 268. C452の残り色・四つの色対・同じ交差和への帰着：検証済み、取り込み点
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§261〜266の**8モジュール410行**を検証した。
+残り色の元の重み付き逆転寄与・全出現位置の二重和、左右が別の活動集合の水平fiber、
+色別の重み付き和と同じ活動頂点の和の一致、同じ全色対の四つへの分解を証明した。
+これらを§259の内側指数と接続し、元の合成の `permutationExponent` を、
+**元の外側の残り色対の和＋同じ二方向の交差和＋元の内側指数**へ帰着した。
+また、次の交差項に使う連続区間の幾何学的な幅の和を元の両端へまとめた。
+既存の公開宣言・符号・型は変更していない。元の圏の同じ指定切断を比較している。
+
+最終の対象ビルド（全て成功）：
+
+- `m14-remaining-inversion-sums-01.log`：2,863 jobs。
+- `m14-mixed-vertex-inversion-fibers-01.log`：1,169 jobs。
+- `m14-color-pair-weighted-inversions-04.log`：1,171 jobs。
+- `m14-insertion-color-sum-decomposition-01.log`：976 jobs。
+- `m14-composite-permutation-color-decomposition-02.log`：2,914 jobs。
+- `m14-consecutive-interval-widths-03.log`：2,208 jobs。
+
+途中、部分型の二重和の関数引数・同じlabel関数の等式・filterの集合等式を明示し、
+現行API名 `Finset.notMem_empty` と有限和の差の括弧を修正した。
+未使用simp引数を除去し、最終ソースの対象警告0。心拍数・再帰上限は増やしていない。
+
+小監査は今回の新規分だけを二回で検収：
+
+- `audit-m14-composite-permutation-colors.log`：7モジュール・17宣言。
+- `audit-m14-consecutive-interval-widths.log`：1モジュール・8宣言。
+
+合計**8モジュール・25宣言、標準三公理のみ**。sorry・独自公理0。
+各ハンドルの終了コード0、`git diff --check`成功。
+鍵は各一回の対象ビルド/小監査の間だけ使用し、終わるたびに返した。
+root・大きい監査・他レーン・共有入口・共有監査・drafts・界面・mainは変更していない。
+
+登録対象（接頭辞 `SerrePositivity.EInfinity.SimplexCuts.`）：
+
+| モジュール | 行数 |
+| --- | ---: |
+| RemainingWeightedInversions | 39 |
+| RemainingInversionSums | 45 |
+| MixedVertexInversionFibers | 52 |
+| ColorPairWeightedInversions | 107 |
+| InsertionColorSumDecomposition | 40 |
+| CompositeRemainingActiveInversions | 43 |
+| CompositePermutationColorDecomposition | 47 |
+| ConsecutiveIntervalWidths | 37 |
+| **計** | **410** |
+
+M14実測は**21,350行**、L12aは**6,143行**。
+今回、残り色同士・挿入色同士を元の和へ戻したが、二つの交差和の補正と
+§253の位置指数の全和はまだ未証明であり、C452・L12aを完了には数えない。
+§245の残りC452上端323を、ここまでの実測増分1,268へ置き換えるだけの比較でも、
+他の旧見込みを据え置いた上端は**32,904行＋C452の未供給分**となる。
+これは確定行数や下界ではなく、古い工程見込みとの機械的比較。
+外枠31,000行に収まるとは主張せず、旧完成見込みを再利用しない。
+約25,000行での止まらない中間報告の指定は維持し、その時点で実測と残りを出し直す。
+§267の新しい完備化模型の候補の仕事を、無料の前提として控除していない。
+
+次は交差項で要る、同じ挿入部分語のcaesura数・区間長の和の法則。
+同じL12aの有限和・既存構成の法則として型を先に報告して進める。
+完備化後のP⁰の三案は§267に追加で整理したが、(c)が不可避との判定には至っていない。
+Totの九欄は§260の紙のまま、3b-4aの取り込み後にmain§33の順に切り替える。
+これは途中の取り込み点で、goalはactiveのまま。
+
+## 269. C452の挿入部分語の区切り数を数える法則の型
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§266の幾何学的な幅の和に、同じ部分語の区切り数を足す。
+まず既存lineRankの有限集合の濃度と、その連続区間での差の法則を使う。
+部分語の末尾の項を分ける有限和の表示も、同じ添字の証明分割として明示する。
+以下は既存の構成の法則であり、新しい演算・作用・定理のまとまりではない。
+各証明200行以内の見込み。
+
+```lean
+lemma lineRank_succ_at {n l : ℕ} (v : Fin l → Fin n) (j : Fin l) :
+    Surjection.lineRank v (j.val + 1) =
+      Surjection.lineRank v j.val + if Surjection.Caesura v j then 1 else 0
+
+lemma sum_consecutive_caesuraIndicators {n l : ℕ} (v : Fin l → Fin n)
+    (a L : ℕ) (h : a + L ≤ l) :
+    (∑ z : Fin L, if Surjection.Caesura v
+        ⟨a + z.val, by have hz := z.isLt; omega⟩ then 1 else 0 : ℕ) +
+      Surjection.lineRank v a = Surjection.lineRank v (a + L)
+
+lemma sum_fin_last {L : ℕ} (hL : 0 < L) (F : Fin L → ℕ) :
+    (∑ z, F z) = (∑ z : Fin (L - 1), F ⟨z.val, by have hz := z.isLt; omega⟩) +
+      F ⟨L - 1, by omega⟩
+```
+
+有限点検：長さ0〜6の全二色列、全ての開始位置と区間長の2,815例。
+一位置ごとの順位の増加、全区間の0/1区切り数と順位差、末尾を分けた和が一致した。
+空区間の和を零に保ち、部分語が一文字の場合も末尾の一項だけになる。
+
+## 270. C452の同じ部分語の区切り総数と元の成分次数
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§269を元の分割の開始位置と長さに適用し、部分語の内部の区切り数を
+同じ `segmentDegree` に戻す。元の末尾の区切りは、次の同色出現があることと同値。
+いずれも既存の位置と区切りの法則で、新しい構成や作用の法則のまとまりではない。
+型は次。各証明200行以内の見込み。
+
+```lean
+lemma positiveOccurrencePosition_caesura_iff {m d : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (k : Fin (m + 1))
+    (i : Fin (Surjection.occurrenceCount u.val k)) :
+    Surjection.Caesura (positiveWord u).val (positiveOccurrencePosition u k i) ↔
+      i.val + 1 < Surjection.occurrenceCount u.val k
+
+lemma positiveComposite_segment_caesura_sum {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (i : Fin (Surjection.occurrenceCount u.val k)) :
+    (∑ z : Fin (r.val i).val, if Surjection.Caesura (positiveCompositeCutWord u v k r).val
+        (positiveCompositeSegmentPosition u v k r i z) then 1 else 0 : ℕ) =
+      Surjection.segmentDegree v.val r i +
+        if Surjection.Caesura (positiveWord u).val (positiveOccurrencePosition u k i) then 1 else 0
+```
+
+有限点検：`check-segment-caesura-sum.py`、全12,233組。
+各元の部分語の区切りの総数が、元の内側の区切り数g_iと外側の元の区切りの和に一致。
+一文字の部分語、末尾に同じ内側位置を共有する部分語も含む。
+元の外側区切りの0/1を勝手にすべて1としない。
+
+## 271. C452の元の部分語の区間長の和を外側と成分次数へ戻す法則
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§269の幅と区切り数の有限和を、同じ元の部分語の両端で合わせる。
+既存 `positiveCompositeOuterCut_endpoints` に渡す位置が同じことも型にする。
+以下は既存の両端・有限和・同じ重みの法則で、構成の置き換えではない。
+各証明200行以内の見込み。
+
+```lean
+lemma sum_nonempty_consecutive_intervalWidths {m q : ℕ} (s : Cut m q)
+    (a L : ℕ) (hL : 0 < L) (h : a + L ≤ m + 1) :
+    (∑ z : Fin L, (hi s ⟨a + z.val, by have hz := z.isLt; omega⟩ -
+      lo s ⟨a + z.val, by have hz := z.isLt; omega⟩)) +
+      lo s ⟨a, by omega⟩ = hi s ⟨a + (L - 1), by omega⟩
+
+lemma positiveCompositeSegmentPosition_endpoints {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (i : Fin (Surjection.occurrenceCount u.val k)) :
+    positiveCompositeSegmentPosition u v k r i ⟨0, r.positive (by omega) i⟩ =
+        compositeFirstPosition u v k r (positiveOccurrencePosition u k i) ∧
+      positiveCompositeSegmentPosition u v k r i
+        ⟨(r.val i).val - 1, by have hp := r.positive (by omega) i; omega⟩ =
+        compositeLastPosition u v k r (positiveOccurrencePosition u k i)
+
+lemma positiveComposite_segment_intervalWidth_sum {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (i : Fin (Surjection.occurrenceCount u.val k)) :
+    (∑ z : Fin (c.1.val i).val,
+      (hi c.2 (positiveCompositeSegmentPosition u v k c.1 i z) -
+        lo c.2 (positiveCompositeSegmentPosition u v k c.1 i z))) +
+      lo (positiveCompositeOuterCut u v k c) (positiveOccurrencePosition u k i) =
+      hi (positiveCompositeOuterCut u v k c) (positiveOccurrencePosition u k i)
+
+lemma positiveComposite_segment_intervalLength_sum {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (i : Fin (Surjection.occurrenceCount u.val k)) :
+    (∑ z : Fin (c.1.val i).val,
+      intervalLength c.2 (positiveCompositeCutWord u v k c.1).val
+        (positiveCompositeSegmentPosition u v k c.1 i z)) =
+      intervalLength (positiveCompositeOuterCut u v k c) (positiveWord u).val
+        (positiveOccurrencePosition u k i) + Surjection.segmentDegree v.val c.1 i
+```
+
+有限点検：`check-segment-interval-length-sum.py`、全12,233組。
+各部分語の幅の和と外側の両端、区間長の総和と元の外側区間長＋g_iが一致した。
+退化する切断、長さ1の部分語も含む。
+一般の非空長の幅の表示は§266の同じ法則の添字の表示を変えたもの。
+この法則から交差和のg_iの補正を出す有限和の接続はまだ別に残る。
+
+## 272. C452の残り位置と挿入部分語の交差寄与を戻す法則
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§271の全区間長の式はビルドで成功した。
+残り位置pと部分語iの位置zの前後は、元のpと指定色の第i出現の前後と同じ。
+色順序も残り色と挿入色の元の順序規則へ戻り、同じ交差寄与を読む。
+型は次。既存の指定位置と有限和の法則で、各証明200行以内の見込み。
+
+```lean
+lemma positiveComposite_remaining_segment_order {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (p : Fin (m + d + 1)) (hp : (positiveWord u).val p ≠ k)
+    (i : Fin (Surjection.occurrenceCount u.val k)) (z : Fin (r.val i).val) :
+    (compositeFirstPosition u v k r p < positiveCompositeSegmentPosition u v k r i z ↔
+      p < positiveOccurrencePosition u k i) ∧
+    (positiveCompositeSegmentPosition u v k r i z < compositeFirstPosition u v k r p ↔
+      positiveOccurrencePosition u k i < p)
+
+lemma positiveComposite_remaining_segment_cross_inversionTerm {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (p : Fin (m + d + 1)) (hp : (positiveWord u).val p ≠ k)
+    (i : Fin (Surjection.occurrenceCount u.val k)) (z : Fin (r.val i).val) :
+    IntervalCuts.positionInversionTerm (positiveCompositeCutWord u v k r).val
+        (compositeFirstPosition u v k r p) (positiveCompositeSegmentPosition u v k r i z) +
+      IntervalCuts.positionInversionTerm (positiveCompositeCutWord u v k r).val
+        (positiveCompositeSegmentPosition u v k r i z) (compositeFirstPosition u v k r p) =
+    IntervalCuts.positionInversionTerm (positiveWord u).val p (positiveOccurrencePosition u k i) +
+      IntervalCuts.positionInversionTerm (positiveWord u).val (positiveOccurrencePosition u k i) p
+
+lemma positiveComposite_segment_cross_intervalLength_sum {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (p : Fin (m + d + 1)) (hp : (positiveWord u).val p ≠ k)
+    (i : Fin (Surjection.occurrenceCount u.val k)) :
+    (∑ z : Fin (c.1.val i).val,
+      (IntervalCuts.positionInversionTerm (positiveCompositeCutWord u v k c.1).val
+          (compositeFirstPosition u v k c.1 p) (positiveCompositeSegmentPosition u v k c.1 i z) +
+        IntervalCuts.positionInversionTerm (positiveCompositeCutWord u v k c.1).val
+          (positiveCompositeSegmentPosition u v k c.1 i z) (compositeFirstPosition u v k c.1 p)) *
+      intervalLength c.2 (positiveCompositeCutWord u v k c.1).val
+        (compositeFirstPosition u v k c.1 p) *
+      intervalLength c.2 (positiveCompositeCutWord u v k c.1).val
+        (positiveCompositeSegmentPosition u v k c.1 i z)) =
+    (IntervalCuts.positionInversionTerm (positiveWord u).val p (positiveOccurrencePosition u k i) +
+      IntervalCuts.positionInversionTerm (positiveWord u).val (positiveOccurrencePosition u k i) p) *
+      intervalLength (positiveCompositeOuterCut u v k c) (positiveWord u).val p *
+      (intervalLength (positiveCompositeOuterCut u v k c) (positiveWord u).val
+        (positiveOccurrencePosition u k i) + Surjection.segmentDegree v.val c.1 i)
+```
+
+有限点検：`check-remaining-segment-cross.py`、12,233組。
+全残り位置・全部分語の全相対位置で、両方向の位置順序と元の交差寄与が一致した。
+区間長の和は§271で同じ例を先に点検済み。この三つを用いて一部分語の交差和を畳む。
+全色・全位置の交差和の再添字付けと、B_i/Pとのmod 2の照合はまだ別に残る。
+
+## 273. C452の全合成位置の和を同じ既存の位置へ戻す法則
+
+一覧：済み 12／全体 48（うち追加 4）
+
+既存の `positiveCompositePosition_remaining_or_segment`、元の接頭位置の単射性、
+`positiveCompositeSegmentPosition_sigma_injective` を有限和に適用する。
+新しい分割・写像を公開定義せず、同じ二種類の位置の全和の法則だけを置く。
+型は次。証明200行以内の見込み。
+
+```lean
+lemma positiveComposite_wordPosition_sum {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (F : Fin (m + n + (d + e) + 1) → ℕ) :
+    (∑ h, F h) =
+      (∑ p : {p : Fin (m + d + 1) // (positiveWord u).val p ≠ k},
+        F (compositeFirstPosition u v k r p.val)) +
+      ∑ i : Fin (Surjection.occurrenceCount u.val k), ∑ z : Fin (r.val i).val,
+        F (positiveCompositeSegmentPosition u v k r i z)
+```
+
+有限点検：`check-composite-word-position-sum.py`、12,233組。
+元の残り位置と全挿入相対位置の像が、全合成位置を重複なく覆うことと、
+その上の試験的な自然数値の和の一致を点検した。
+既存の位置の全称的な分解・単射性を用いてLeanでは任意のFに示す。
+交差和と位置指数の有限和を同じ指定位置で分けるために使う。
+
+## 274. C452の全交差和への接続：次の既存の有限和の法則の型（紙のみ）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§265は活動頂点の色対、§272は元の語の位置ごとの重み付き交差を用いた。
+両者は§263で色対ごとには既に一致している。全色・全位置での接続では、
+以下の有限和の再添字付けを使う。新しい全体の経路同値や作用を作る必要はない。
+以下は次の工程の型で、まだ実装した宣言には数えていない。
+各証明200行以内の見込み。既存構成の法則と証明分割で一覧の項目数は増やさない。
+
+```lean
+lemma sum_occurrences {r l : ℕ} (w : Fin l → Fin r) (F : Fin l → ℕ) :
+    (∑ a : Fin r, ∑ h : ↥(Surjection.occurrences w a), F h.val) = ∑ h, F h
+
+lemma sum_non_slot_occurrences {r l : ℕ} (w : Fin l → Fin r) (k : Fin r)
+    (F : Fin l → ℕ) :
+    (∑ a : {a : Fin r // a ≠ k}, ∑ h : ↥(Surjection.occurrences w a.val), F h.val) =
+      ∑ h : {h : Fin l // w h ≠ k}, F h.val
+
+lemma positiveComposite_remaining_wordPosition_sum {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (F : Fin (m + n + (d + e) + 1) → ℕ) :
+    (∑ a : {a : Fin (m + 1) // a ≠ k},
+      ∑ h : ↥(Surjection.occurrences (positiveCompositeCutWord u v k r).val
+        (BarrattEccles.remainingPosition m (n + 1) k a)), F h.val) =
+      ∑ p : {p : Fin (m + d + 1) // (positiveWord u).val p ≠ k},
+        F (compositeFirstPosition u v k r p.val)
+
+lemma positiveComposite_inserted_wordPosition_sum {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (F : Fin (m + n + (d + e) + 1) → ℕ) :
+    (∑ b : Fin (n + 1),
+      ∑ h : ↥(Surjection.occurrences (positiveCompositeCutWord u v k r).val
+        (BarrattEccles.insertedPosition m (n + 1) k b)), F h.val) =
+      ∑ i : Fin (Surjection.occurrenceCount u.val k), ∑ z : Fin (r.val i).val,
+        F (positiveCompositeSegmentPosition u v k r i z)
+```
+
+有限点検：`check-composite-word-color-aggregates.py`、12,233組。
+残り色の全出現の和と元の残り位置の和、挿入色の全出現の和と全部分語の位置の和を
+同じラベル・同じ試験関数で比較した。
+
+証明の接続は次とする。
+
+1. `sum_occurrences` は既存のfiberwise sumと `Finset.sum_subtype`。
+   `sum_non_slot_occurrences` は定義域を w h≠k、値域をa≠kへ制限した同じfiberwise sum。
+2. 残り色の和は `remainingWordPositionOrderIso` で色ごとに元の出現へ戻し、
+   その後 `sum_non_slot_occurrences` を使う。
+3. 挿入色の和は、`sum_occurrences` と§264の色の二分解で全位置の和へ戻す。
+   残り色の和を(2)で同じ元の和へ戻し、§273の全位置の和の分解と比較し、
+   **同じ残り位置の和をNatの加法で消去**する。新しい挿入色の逆写像を選ばない。
+4. §265の二つの交差和は、まず§263で元の位置の重み付き和にし、
+   有限和を交換して(2)(3)で再添字付けする。その後§272で各部分語の相対位置zを畳む。
+
+これで元の交差和に現れるg_iの補正を露出させる。
+B_iとPのmod 2の照合、および§253の位置指数の全和の比較は依然として残る。
+§267の完備化後のP⁰の未供給の比較も、これら有限和の証明で閉じたとはしない。
+
+## 275. C452の部分語の区間長と一部分語の交差和：検証済み、取り込み点
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§269〜273の**9モジュール505行**を証明・検証した。
+既存lineRankの一位置の増加と連続区間の区切り数、元の外側出現の区切り判定、
+同じ部分語の区切り総数・ブロック両端・全区間幅を合わせた。
+これにより同じ部分語の全区間長を
+**元の外側区間長＋同じ内側成分次数g_i**へ戻した。
+残り位置と部分語内の位置の両向きの順序・色順序を元の外側の交差寄与へ戻し、
+一部分語にわたる重み付き交差和を、この区間長の式で畳むところまで接続した。
+全合成位置の和は、既存の全位置の分解・単射性で同じ残り位置と全部分語の位置の和へ戻した。
+
+最終の対象ビルド（全て成功）：
+
+- `m14-consecutive-caesura-counts-03.log`：1,568 jobs。
+- `m14-composite-segment-interval-lengths-02.log`：2,885 jobs。
+- `m14-composite-segment-cross-sum-03.log`：2,920 jobs。
+- `m14-composite-word-position-sums-03.log`：2,874 jobs。
+
+途中の修正は、Finの移送前の型と値・加算の括弧を明示すること、
+依存する添字の証明を壊さずcongrArgで順位の等式を渡すこと、
+元の部分長の正性・必要な色順序のimport・書き換えの証明引数を明示すること、
+Sumの左右への評価と行長を直すこと。
+最終ソースの対象警告0。心拍数・再帰上限の増加なし。
+200行を超える証明・ファイルなし。既存の公開宣言・符号・仮定・界面は変更していない。
+
+小監査 `audit-m14-segment-cross-fold.log` は、今回の新規分だけの
+**9モジュール・65宣言、標準三公理のみ**。sorry・独自公理0。
+全ハンドルの終了コード0を確認し、鍵は一回の対象ビルド/小監査ごとに返した。
+整理券は一枚ずつ。常駐セッション・rootビルド・大きい監査は使っていない。
+`git diff --check`成功。他レーン・drafts・共有入口・共有監査・mainの作業木は変更していない。
+
+登録対象（接頭辞 `SerrePositivity.EInfinity.SimplexCuts.`）：
+
+| モジュール | 行数 |
+| --- | ---: |
+| ConsecutiveCaesuraCounts | 68 |
+| PositiveOccurrenceCaesuras | 44 |
+| CompositeSegmentCaesuraCounts | 61 |
+| CompositeSegmentIntervalWidths | 97 |
+| CompositeSegmentIntervalLengths | 32 |
+| RemainingSegmentOrder | 58 |
+| RemainingSegmentCrossInversions | 41 |
+| CompositeSegmentCrossSum | 42 |
+| CompositeWordPositionSums | 62 |
+| **計** | **505** |
+
+M14実測は**21,855行**、L12aは**6,648行**。
+一部分語の補正を閉じたが、全色・全位置の交差和へ戻す再添字付け、
+その補正のB_i/Pとのmod 2の照合、§253の位置指数の全和は未証明。
+§274は次の既存の有限和の法則の型と証明の筋だけで、まだ実装した宣言ではない。
+C452・L12a全体、実テンソル・nullary、L13以降を完了に数えない。
+一覧は12/48（追加4）のまま。goalはactive。
+
+外枠31,000行は変更しない。§268で報告した古い見込みの上端の超過リスクは残る。
+今回505行を足してC452の全和の未供給分を除いた機械的比較でも上端は33,409行となり、
+この古い見込みを完成の新しい見込みとして再利用しない。
+約25,000行で止まらず実測と残りを出し直す指定を維持する。
+完備化後のP⁰は§267の連続なprimitive・同じnative対象/辺との比較を未供給のまま残す。
+(c)が必要だという判定には至っておらず、そうなれば§32に従って止める。
+Tot九欄の紙の準備は§260。mainの3b-4aを受領後に§33の順へ切り替える。
+
+## 276. §274の全色・全位置の再添字付けを実装する
+
+一覧：済み 12／全体 48（うち追加 4）
+
+前ターンのab1d13fa5を基点に、§274の四つの型を同じ名前で実装する。
+追加の有限点検として、値域0〜3・語長0〜4の全有限語158例で、
+全色/指定色以外の全出現の和が元の全位置/指定色以外の和に一致した。
+空語・値域零の唯一の空の写像も含む。
+今回は§274の型を変更せず、任意の自然数値の関数Fについて証明する。
+まだビルド・監査の完了ではなく、検証後に実測・登録一覧を別に記録する。
+
+## 277. C452の二方向の交差和を同じ位置対へ戻す法則の型
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§274の四つの法則は対象ビルドで成功した。
+二つの変数に順に適用して、同じ元の残り位置と部分語の位置の対へ戻す。
+以下はその有限和の交換と接続の型で、新しい構成ではない。
+各証明200行以内の見込み。
+
+```lean
+lemma positiveComposite_remaining_inserted_wordPosition_sum {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (F : Fin (m + n + (d + e) + 1) → Fin (m + n + (d + e) + 1) → ℕ) :
+    (∑ a : {a : Fin (m + 1) // a ≠ k}, ∑ b : Fin (n + 1),
+      ∑ p : ↥(Surjection.occurrences (positiveCompositeCutWord u v k r).val
+        (BarrattEccles.remainingPosition m (n + 1) k a)),
+      ∑ h : ↥(Surjection.occurrences (positiveCompositeCutWord u v k r).val
+        (BarrattEccles.insertedPosition m (n + 1) k b)), F p.val h.val) =
+    ∑ p : {p : Fin (m + d + 1) // (positiveWord u).val p ≠ k},
+      ∑ i : Fin (Surjection.occurrenceCount u.val k), ∑ z : Fin (r.val i).val,
+        F (compositeFirstPosition u v k r p.val) (positiveCompositeSegmentPosition u v k r i z)
+
+lemma positiveComposite_inserted_remaining_wordPosition_sum {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e))
+    (F : Fin (m + n + (d + e) + 1) → Fin (m + n + (d + e) + 1) → ℕ) :
+    (∑ a : Fin (n + 1), ∑ b : {b : Fin (m + 1) // b ≠ k},
+      ∑ p : ↥(Surjection.occurrences (positiveCompositeCutWord u v k r).val
+        (BarrattEccles.insertedPosition m (n + 1) k a)),
+      ∑ h : ↥(Surjection.occurrences (positiveCompositeCutWord u v k r).val
+        (BarrattEccles.remainingPosition m (n + 1) k b)), F p.val h.val) =
+    ∑ h : {h : Fin (m + d + 1) // (positiveWord u).val h ≠ k},
+      ∑ i : Fin (Surjection.occurrenceCount u.val k), ∑ z : Fin (r.val i).val,
+        F (positiveCompositeSegmentPosition u v k r i z) (compositeFirstPosition u v k r h.val)
+```
+
+有限点検：`check-composite-cross-word-position-sums.py`、12,233組。
+同じ二つの色の全出現の対と、元の残り位置・部分語位置の対の試験的二変数関数の和を
+両方向で比較した。Leanでは任意の自然数値二変数関数Fについて証明する。
+反対方向は和を交換して同じ前向きの再添字付けに適用し、別の逆写像を作らない。
+
+## 278. C452の全交差和を元の外側の位置の和へ畳む法則
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§277の両方向の再添字付けは対象ビルドで成功した。
+元の0/1の逆転寄与に区間長の積を掛ける表示を揃え、§272へ接続する。
+以下は既存の寄与・区間長・有限和の法則。各証明200行以内の見込み。
+
+```lean
+lemma weighted_word_inversionTerm_eq {m q r : ℕ} (s : Cut m q)
+    (w : Fin (m + 1) → Fin r) (p h : Fin (m + 1)) :
+    (if p < h ∧ w h < w p then intervalLength s w p * intervalLength s w h else 0) =
+    IntervalCuts.positionInversionTerm w p h * intervalLength s w p * intervalLength s w h
+
+lemma weighted_word_inversionPair_eq {m q r : ℕ} (s : Cut m q)
+    (w : Fin (m + 1) → Fin r) (p h : Fin (m + 1)) :
+    (if p < h ∧ w h < w p then intervalLength s w p * intervalLength s w h else 0) +
+      (if h < p ∧ w p < w h then intervalLength s w h * intervalLength s w p else 0) =
+    (IntervalCuts.positionInversionTerm w p h + IntervalCuts.positionInversionTerm w h p) *
+      intervalLength s w p * intervalLength s w h
+
+lemma positiveComposite_cross_intervalLength_sum {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) :
+    let δ := positiveCompositeOuterCut u v k c
+    let w := (positiveCompositeCutWord u v k c.1).val
+    let uPos := (positiveWord u).val
+    (∑ a : {a : Fin (m + 1) // a ≠ k}, ∑ b : Fin (n + 1),
+      ∑ p : ↥(Surjection.occurrences w (BarrattEccles.remainingPosition m (n + 1) k a)),
+      ∑ h : ↥(Surjection.occurrences w (BarrattEccles.insertedPosition m (n + 1) k b)),
+      if p.val < h.val ∧ w h.val < w p.val then
+        intervalLength c.2 w p.val * intervalLength c.2 w h.val else 0) +
+    (∑ a : Fin (n + 1), ∑ b : {b : Fin (m + 1) // b ≠ k},
+      ∑ p : ↥(Surjection.occurrences w (BarrattEccles.insertedPosition m (n + 1) k a)),
+      ∑ h : ↥(Surjection.occurrences w (BarrattEccles.remainingPosition m (n + 1) k b)),
+      if p.val < h.val ∧ w h.val < w p.val then
+        intervalLength c.2 w p.val * intervalLength c.2 w h.val else 0) =
+    ∑ p : {p : Fin (m + d + 1) // uPos p ≠ k},
+      ∑ i : Fin (Surjection.occurrenceCount u.val k),
+      (IntervalCuts.positionInversionTerm uPos p.val (positiveOccurrencePosition u k i) +
+        IntervalCuts.positionInversionTerm uPos (positiveOccurrencePosition u k i) p.val) *
+        intervalLength δ uPos p.val *
+        (intervalLength δ uPos (positiveOccurrencePosition u k i) + Surjection.segmentDegree v.val c.1 i)
+```
+
+有限点検：二つの重み0〜3と二つの0/1寄与の全64例で、点ごとの積と因数分解を確認。
+さらに `check-composite-cross-interval-length-sum.py`、12,233組で、
+全色の二方向の重み付き交差和が、元の外側の位置とg_iによる右辺に一致した。
+退化する切断も含む。Leanでは既存の和の再添字付けと、同じ一部分語の和を使う。
+この式から全逆転指数のmod 2、位置指数の釣り合いまで済んだとは扱わない。
+
+## 279. C452の元の外側交差和に要る指定色の全出現の和
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§278の全交差和の右辺の外側区間長の部分を、元の外側逆転指数へ戻すため、
+既存の指定色の全出現をその元の番号で読む。元の語長の移送の法則も明示する。
+全色対の分解は§264のarity 1の既存の分解を用い、別の分割を作らない。
+各証明200行以内の見込み。
+
+```lean
+lemma positiveOccurrencePosition_complete {m d : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (k : Fin (m + 1))
+    (p : Fin (m + d + 1)) (hp : (positiveWord u).val p = k) :
+    ∃ i : Fin (Surjection.occurrenceCount u.val k), positiveOccurrencePosition u k i = p
+
+lemma positiveWord_slot_position_sum {m d : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (k : Fin (m + 1)) (F : Fin (m + d + 1) → ℕ) :
+    (∑ p : ↥(Surjection.occurrences (positiveWord u).val k), F p.val) =
+      ∑ i : Fin (Surjection.occurrenceCount u.val k), F (positiveOccurrencePosition u k i)
+
+lemma sum_position_pairs_with_slot (m : ℕ) (k : Fin (m + 1))
+    (F : Fin (m + 1) → Fin (m + 1) → ℕ) :
+    (∑ a, ∑ b, F a b) =
+      (∑ a : {a : Fin (m + 1) // a ≠ k}, ∑ b : {b : Fin (m + 1) // b ≠ k}, F a.val b.val) +
+      (∑ a : {a : Fin (m + 1) // a ≠ k}, F a.val k) +
+      (∑ b : {b : Fin (m + 1) // b ≠ k}, F k b.val) + F k k
+```
+
+位置の有限点検は§270・274の全出現の列挙と同じもの、
+色対は§264のarity 1の同じ色番号の分解である。
+指定色同士の逆転寄与が零になることと合わせ、外側の交差和を元の指数へ戻す。
+``sum_position_pairs_with_slot``は任意のFに対して対角F k kも残し、
+一般の和でその項が零だという仮定は付けない。
+
+## 280. C452の元の外側の交差和と逆転指数を結ぶ有限和の法則
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§278の元の位置ごとの式に、外側の元の逆転指数を合わせる。
+既存の和を色のfiberでまとめ、指定色の出現だけを元の番号で読む。
+以下は既存の有限和の再添字付けと証明分割。各証明200行以内の見込み。
+
+```lean
+lemma permutationExponent_eq_sum_occurrence_pairs {m q r : ℕ} (s : Cut m q)
+    (w : Fin (m + 1) → Fin r) :
+    permutationExponent s w =
+    ∑ a : Fin r, ∑ b : Fin r,
+      ∑ p : ↥(Surjection.occurrences w a), ∑ h : ↥(Surjection.occurrences w b),
+      if p.val < h.val ∧ w h.val < w p.val then
+        intervalLength s w p.val * intervalLength s w h.val else 0
+
+lemma positiveWord_remaining_slot_position_sum {m d : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (k : Fin (m + 1))
+    (F : Fin (m + d + 1) → Fin (m + d + 1) → ℕ) :
+    (∑ a : {a : Fin (m + 1) // a ≠ k},
+      ∑ p : ↥(Surjection.occurrences (positiveWord u).val a.val),
+      ∑ h : ↥(Surjection.occurrences (positiveWord u).val k), F p.val h.val) =
+    ∑ p : {p : Fin (m + d + 1) // (positiveWord u).val p ≠ k},
+      ∑ i : Fin (Surjection.occurrenceCount u.val k), F p.val (positiveOccurrencePosition u k i)
+
+lemma positiveWord_slot_cross_position_sum {m d : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (k : Fin (m + 1))
+    (F : Fin (m + d + 1) → Fin (m + d + 1) → ℕ) :
+    (∑ a : {a : Fin (m + 1) // a ≠ k},
+      ∑ p : ↥(Surjection.occurrences (positiveWord u).val a.val),
+      ∑ h : ↥(Surjection.occurrences (positiveWord u).val k), F p.val h.val) +
+    (∑ b : {b : Fin (m + 1) // b ≠ k},
+      ∑ p : ↥(Surjection.occurrences (positiveWord u).val k),
+      ∑ h : ↥(Surjection.occurrences (positiveWord u).val b.val), F p.val h.val) =
+    ∑ p : {p : Fin (m + d + 1) // (positiveWord u).val p ≠ k},
+      ∑ i : Fin (Surjection.occurrenceCount u.val k),
+        (F p.val (positiveOccurrencePosition u k i) + F (positiveOccurrencePosition u k i) p.val)
+```
+
+有限点検の原料は§276〜279の同じ全出現・元の番号・色対の分解。
+全和の交換と指定色の全出現の列挙だけを使い、対象ごとに別の出現を選ばない。
+対角の指定色同士の逆転は実際に零であることを元のラベルの等式から確認して用いる。
+
+## 281. C452の逆転指数の整数としての釣り合い（法則の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+ここまでの同じ有限和を接続する。外側の元の逆転指数は、残り色同士と
+元の指定色との交差へ分かれる。合成の交差の外側区間長の部分をその和へ戻すと、
+成分次数g_iの補正が残る。型は次。既存の逆転指数と区間長の法則の接続で、
+新しい構成・作用ではない。各証明200行以内の見込み。
+
+```lean
+lemma positiveWord_permutationExponent_with_slot {m d q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (k : Fin (m + 1)) (s : Cut (m + d) q) :
+    let w := (positiveWord u).val
+    permutationExponent s w =
+      (∑ a : {a : Fin (m + 1) // a ≠ k}, ∑ b : {b : Fin (m + 1) // b ≠ k},
+        ∑ p : ↥(Surjection.occurrences w a.val), ∑ h : ↥(Surjection.occurrences w b.val),
+        if p.val < h.val ∧ w h.val < w p.val then
+          intervalLength s w p.val * intervalLength s w h.val else 0) +
+      ∑ p : {p : Fin (m + d + 1) // w p ≠ k},
+        ∑ i : Fin (Surjection.occurrenceCount u.val k),
+        (IntervalCuts.positionInversionTerm w p.val (positiveOccurrencePosition u k i) +
+          IntervalCuts.positionInversionTerm w (positiveOccurrencePosition u k i) p.val) *
+          intervalLength s w p.val * intervalLength s w (positiveOccurrencePosition u k i)
+
+lemma positiveComposite_permutationExponent_cross_balance {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) :
+    let δ := positiveCompositeOuterCut u v k c
+    let ε := positiveCompositeInnerCut u v k c
+    let w := (positiveWord u).val
+    permutationExponent c.2 (positiveCompositeCutWord u v k c.1).val =
+      permutationExponent δ w + permutationExponent ε (positiveWord v).val +
+      ∑ i : Fin (Surjection.occurrenceCount u.val k),
+        Surjection.segmentDegree v.val c.1 i *
+        (∑ p : {p : Fin (m + d + 1) // w p ≠ k},
+          (IntervalCuts.positionInversionTerm w p.val (positiveOccurrencePosition u k i) +
+            IntervalCuts.positionInversionTerm w (positiveOccurrencePosition u k i) p.val) *
+            intervalLength δ w p.val)
+```
+
+有限点検：`check-composite-permutation-cross-balance.py`、12,233組。
+元の逆転指数は、mod 2だけでなくこの自然数の等式として一致した。
+対角の指定色同士の逆転は同じ色なので零、成分次数の補正は非負のまま残す。
+この等式の後に、括弧内の交差寄与をB_i/Pに照合するmod 2の仕事が残る。
+位置指数の釣り合いも未完であり、C452全体を完了には数えない。
+
+## 282. 完備化後のP⁰の紙の続き：実際のmod p係数の既存API
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§267.1で未供給として残した係数の比較について、実際の本体とMathlibの型を読み直した。
+Leanの新しい完備化の構成は書かず、次の既存の宣言まで確認した。
+
+- 本体 `BhattScholze/Prism/Perfectoid/AinfClassical.lean`、名前空間Semiperfectoidの
+  `ainfClassicalCoefficients_of_nonunit` は、固定した係数環がWittVector p (PreTilt R p)である式。
+  同じファイルの `ainfClassicalCoefficients_of_isUnit` と
+  `perfectoid_subsingleton_of_isUnit` は、pが単元の枝をRと零環へ戻す。
+- Mathlib `RingTheory/WittVector/Complete.lean` の `WittVector.quotientPEquiv` は、
+  完全な標数p環kに対するWittVector p kの(p)による商とkの環同型。
+  `quotientPEquiv_mk` は同じWitt代表元の像を第0係数で与える。
+- Mathlib `RingTheory/Perfection.lean` のPreTiltの定義と直後の三つのinstanceは、
+  実際のPreTiltのCommRing・CharP・PerfectRingを供給している。
+
+従って非単元の枝の**通常の係数環の商**については、上の固定した式を移送して
+`quotientPEquiv`を適用する筋が本体の既存APIから具体化した。
+これはBを任意のreducedな係数に取り替える仮定ではない。
+prismの元dのmod pの像も、同じ第0係数の像を追う必要がある。
+単元の枝は既存のSubsingletonの結論で処理し、除外しない。
+
+ただしこの環同型だけで、実際のCAlgの導来mod pとd進完備化の交換、
+同じnativeな `directPerfectionValue/p`、同じFrobeniusの辺までの比較を供給したとはしない。
+§267の項別に平坦な模型、連続なBE作用と同じprimitiveの移送も残る。
+§255の(b)の相対bar/Totの比較も別の未供給の工程である。
+(c)のcoherentなP⁰が不可避との結論には至っていない。
+新しい係数仮定・型の変更・完備化のLeanを追加していない。
+
+## 283. C452の逆転指数と交差補正の整数の釣り合い：検証済み、取り込み点
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§274・276〜281の**12モジュール651行**を検証した。
+全色と全位置の同じ再添字付け、元の指定色の全出現の和、
+元の色対の二分解と同じ外側交差和を接続した。
+`positiveComposite_permutationExponent_cross_balance` により、元の合成逆転指数が
+**元の外側指数＋元の内側指数＋成分次数g_iと元の外側交差寄与による補正**と、
+自然数の等式として一致するところまで閉じた。
+非退化性や追加の模型の仮定を足さず、同じCut・区間長・元の指定位置を比較している。
+
+最終の対象ビルド（全て成功）：
+
+- `m14-composite-word-color-sums-01.log`：2,885 jobs。
+- `m14-composite-cross-word-position-sums-01.log`：2,886 jobs（後続の対象で行長修正も検証）。
+- `m14-slot-occurrence-and-cross-sums-01.log` のPositiveOccurrenceSumsと
+  CompositeCrossIntervalLengthSumsの対象（全束のSlotColorPairSumsのimport不足は次で修正）。
+- `m14-outer-slot-cross-position-sums-01.log`：2,253 jobs（SlotColorPairSumsのimport修正済み）。
+- `m14-composite-permutation-cross-balance-02.log`：2,965 jobs。
+
+途中、既存のFinの一項の和のimport、行長と、語型に依存する書き換えをsimpへ直した。
+最終ソースの対象警告0。心拍数・再帰上限を増やしていない。
+200行を超える証明・ファイルなし。既存の公開宣言・界面・符号・仮定は変更していない。
+
+今回新規分だけの小監査 `audit-m14-permutation-cross-balance.log` は
+**12モジュール・25宣言、標準三公理のみ**。sorry・独自公理0。
+全ハンドルの終了コード0を確認し、`git diff --check`成功。
+鍵は一回の対象ビルド/小監査の間だけ取得し、整理券一枚ずつ、終わるたびに返した。
+常駐セッション・rootビルド・大きい監査・他レーン・共有入口・共有監査・drafts・mainの作業木は変更していない。
+
+登録対象（接頭辞 `SerrePositivity.EInfinity.SimplexCuts.`）：
+
+| モジュール | 行数 |
+| --- | ---: |
+| OccurrenceFiberSums | 57 |
+| CompositeRemainingWordPositionSums | 40 |
+| CompositeInsertedWordPositionSums | 34 |
+| CompositeCrossWordPositionSums | 84 |
+| WeightedWordInversionPairs | 35 |
+| CompositeCrossIntervalLengthSums | 76 |
+| PositiveOccurrenceSums | 50 |
+| SlotColorPairSums | 35 |
+| WordColorInversionSums | 48 |
+| SlotCrossWordPositionSums | 71 |
+| OuterPermutationSlotSum | 54 |
+| CompositePermutationCrossBalance | 67 |
+| **計** | **651** |
+
+M14実測は**22,506行**、L12aは**7,299行**。
+整数の逆転指数の補正まで閉じたが、括弧内の元の交差寄与とB_i/Pのmod 2の照合、
+§253の位置指数の全和はまだ未証明。C452全体・L12a全体・実テンソル・nullary・
+L13以降を完了に数えず、一覧12/48（追加4）のまま。goalはactive。
+外枠31,000行は変更せず、旧見込みの上端の超過リスクも解消したとは主張しない。
+約25,000行で止まらず実測と残りを出し直す指定を維持する。
+完備化後のP⁰の未供給の仕事も無料の前提へ置かない（§282）。
+(c)が必要と判明すれば§32に従って止める。Totの紙の準備は§260、3b-4aの受領後は§33の順へ切り替える。
+
+次は§281の補正の括弧を、元の外側の他色の先行活動頂点数B_iと
+元のprefixOutputDegreeのPへmod 2で照合する。
+既存の重み付き有限和と水平fiberの濃度を使い、同じ切断と元の出現位置で読む。
+
+## 284. C452の交差補正と二つの接頭和の整数の法則
+
+一覧：済み 12／全体 48（うち追加 4）
+
+前ターンafe18f779の整数の逆転指数の釣り合いを基点にする。
+指定位置pより前の小さい色の重みは、他色の先行数Bと全小色の重みPで二度数える。
+従って交差寄与Cにその重みの二倍を足すとB+Pになる。
+以下は元の位置順序・色順序と有限和の法則で、新しい演算や構成ではない。
+型は次。各証明200行以内の見込み。
+
+```lean
+lemma word_cross_weight_term_balance {r l : ℕ} (w : Fin l → Fin r)
+    (k : Fin r) (p : Fin l) (hp : w p = k) (j : Fin l) (a : ℕ) :
+    (IntervalCuts.positionInversionTerm w j p + IntervalCuts.positionInversionTerm w p j) * a +
+      2 * (if j < p ∧ w j < k then a else 0) =
+    (if j < p ∧ w j ≠ k then a else 0) + (if w j < k then a else 0)
+
+lemma word_cross_weight_balance {r l : ℕ} (w : Fin l → Fin r)
+    (k : Fin r) (p : Fin l) (hp : w p = k) (a : Fin l → ℕ) :
+    (∑ j : {j : Fin l // w j ≠ k},
+      (IntervalCuts.positionInversionTerm w j.val p +
+        IntervalCuts.positionInversionTerm w p j.val) * a j.val) +
+      2 * (∑ j : Fin l, if j < p ∧ w j < k then a j else 0) =
+    (∑ j : Fin l, if j < p ∧ w j ≠ k then a j else 0) +
+      (∑ j : Fin l, if w j < k then a j else 0)
+```
+
+有限点検：値域0〜3・語長0〜4の全語と指定位置534例。
+点ごとの重み0〜3と、位置ごとの試験重みについて等式とmod 2を点検した。
+同色の位置と指定位置自身の寄与は零であり、全和から除くことをLeanでも示す。
+この段のaは任意の自然数重み。次に元のintervalLengthを代入して同じ活動頂点数へ戻す。
+
+## 285. C452のB_iを元の水平位置の重み付き和で読む法則
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§284の任意の重みに元のintervalLengthを代入する。
+元の活動頂点を水平fiberで数え、同じ外側位置pの前の他色の濃度へ戻す。
+型は次。既存の有限濃度・水平座標の順序・区間長の法則で、各証明200行以内の見込み。
+
+```lean
+lemma active_filter_horizontal_card {m q r : ℕ} (s : Cut m q)
+    (w : Fin (m + 1) → Fin r) (P : Fin (m + 1) → Prop) [DecidablePred P] :
+    ((activeVertexPositions s w).filter (fun z => P (s.horizontal z))).card =
+      ∑ j : Fin (m + 1), if P j then intervalLength s w j else 0
+
+lemma other_before_iff_horizontal_before {m q r : ℕ} (s : Cut m q)
+    (w : Fin (m + 1) → Fin r) (k : Fin r) (p : Fin (m + 1)) (hp : w p = k)
+    (x j : Fin (m + q + 1)) (hx : s.horizontal x = p) :
+    (j < x ∧ label s w j ≠ k) ↔ (s.horizontal j < p ∧ label s w j ≠ k)
+
+lemma other_active_prefix_card_eq_weighted {m q r : ℕ} (s : Cut m q)
+    (w : Fin (m + 1) → Fin r) (k : Fin r) (p : Fin (m + 1)) (hp : w p = k)
+    (x : Fin (m + q + 1)) (hx : s.horizontal x = p) :
+    ((activeVertexPositions s w).filter (fun z => z < x ∧ label s w z ≠ k)).card =
+      ∑ j : Fin (m + 1), if j < p ∧ w j ≠ k then intervalLength s w j else 0
+```
+
+有限点検：`check-native-cross-prefix-counts.py`。
+水平幅0〜3・垂直幅0〜2の全経路、全二色列と各元の頂点1,796例で、
+B_iのnativeな先行他色数、水平位置の重み付き和、小色の全数、交差寄与のmod 2が一致した。
+任意の同じ水平位置の頂点xで他色の先行数が変わらないことも含む。
+指定色自身の先行頂点をB_iへ混ぜず、元のラベルの不等式を保持する。
+
+## 286. C452の同じnativeな先行数と元のPへのmod 2の移送
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§284の整数の法則と§285の元の水平fiberの濃度を合わせる。
+小さい色の出力次数の和は既存 `prefixOutputDegree_eq_active_card` で元の活動頂点数。
+元の `positiveNestedPrefixDegree` の再帰的な和も、同じ有限添字でこのPに一致させる。
+型は次。既存の有限濃度・次数・mod 2の法則で、各証明200行以内の見込み。
+
+```lean
+lemma cross_intervalLength_modeq_prefix {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (k : Fin r) (p : Fin (m + 1)) (hp : v.val p = k)
+    (x : Fin (m + q + 1)) (hx : s.horizontal x = p) :
+    Nat.ModEq 2
+      (∑ j : {j : Fin (m + 1) // v.val j ≠ k},
+        (IntervalCuts.positionInversionTerm v.val j.val p +
+          IntervalCuts.positionInversionTerm v.val p j.val) * intervalLength s v.val j.val)
+      (((activeVertexPositions s v.val).filter (fun z => z < x ∧ label s v.val z ≠ k)).card +
+        ∑ b ∈ Finset.univ.filter (fun b : Fin r => b < k), outputDegree s v b)
+
+lemma positiveNestedPrefixDegree_eq_prefixOutputDegree {m d q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (k : Fin (m + 1)) (s : Cut (m + d) q) :
+    positiveNestedPrefixDegree u k s =
+      ∑ b ∈ Finset.univ.filter (fun b : Fin (m + 1) => b < k), outputDegree s (positiveWord u) b
+```
+
+元のnativeな頂点xは任意の同じ水平位置pでよく、B_iには既に指定した最初の順位を使う。
+Pの前方因子自身を含めず、同じ出力次数を使う。
+有限点検の原料は§285の1,796例と、既存のprefixFamilyの同じ有限添字の表示である。
+この移送ではCAlg・BE作用・Tot・界面に触れない。
+
+## 287. C452の元のB_iと逆転指数のmod 2を接続する型
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§286のgenericなnative頂点の式に、§253で指定した同じ色別の最初の順位を代入する。
+`positiveCompositeOtherActivePrefix` の定義は§253の型・本体のまま。
+別の水平和で定義し直さず、既存の `colorIntervalFirst` と `colorPositionEquiv` を使う。
+接続の補題の型は次。各証明200行以内の見込み。
+
+```lean
+lemma positiveComposite_crossWeight_modeq {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (i : Fin (Surjection.occurrenceCount u.val k)) :
+    Nat.ModEq 2
+      (∑ p : {p : Fin (m + d + 1) // (positiveWord u).val p ≠ k},
+        (IntervalCuts.positionInversionTerm (positiveWord u).val p.val
+            (positiveOccurrencePosition u k i) +
+          IntervalCuts.positionInversionTerm (positiveWord u).val
+            (positiveOccurrencePosition u k i) p.val) *
+          intervalLength (positiveCompositeOuterCut u v k c) (positiveWord u).val p.val)
+      (positiveCompositeOtherActivePrefix u v k c i +
+        positiveNestedPrefixDegree u k (positiveCompositeOuterCut u v k c))
+
+lemma positiveComposite_permutationExponent_modeq {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (_h : Nondegenerate c.2 (positiveCompositeCutWord u v k c.1).val) :
+    Nat.ModEq 2 (permutationExponent c.2 (positiveCompositeCutWord u v k c.1).val)
+      (permutationExponent (positiveCompositeOuterCut u v k c) (positiveWord u).val +
+        permutationExponent (positiveCompositeInnerCut u v k c) (positiveWord v).val +
+        (∑ i, Surjection.segmentDegree v.val c.1 i *
+          (positiveCompositeOtherActivePrefix u v k c i +
+            positiveNestedPrefixDegree u k (positiveCompositeOuterCut u v k c))))
+```
+
+有限点検：`check-composite-permutation-modeq-native-prefix.py`、12,233組。
+B_iには同じ外側切断のその区間の最初のnative頂点を用い、
+元の活動頂点の先行他色数と小色の全数Pで元の逆転指数のmod 2が一致した。
+`positiveComposite_permutationExponent_modeq`の非退化性の仮定は§253の型どおりに残す。
+同じ整数の釣り合いと各iでの合同に成分次数を掛けて足すだけで接続する。
+位置指数の全和は依然として未完であり、C452全体は完了に数えない。
+
+## 288. C452の位置指数を外側と部分語内部へ分ける法則の型
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§287の逆転指数のmod 2はビルドと新規7本22宣言の小監査が成功した。
+残る位置指数では、同じ全合成位置の和を§273で分け、
+残り位置と各部分語の末尾を元の外側の区切り・高さへ戻す。
+型は次。既存の区切りと両端、有限和の接続の法則で各証明200行以内の見込み。
+
+```lean
+lemma positiveWord_position_sum {m d : ℕ} (u : Surjection.BasisWord (m + 1) d)
+    (k : Fin (m + 1)) (F : Fin (m + d + 1) → ℕ) :
+    (∑ p, F p) =
+      (∑ p : {p : Fin (m + d + 1) // (positiveWord u).val p ≠ k}, F p.val) +
+      ∑ i : Fin (Surjection.occurrenceCount u.val k), F (positiveOccurrencePosition u k i)
+
+lemma positiveComposite_remaining_positionTerm {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (p : Fin (m + d + 1)) (hp : (positiveWord u).val p ≠ k) :
+    (if Surjection.Caesura (positiveCompositeCutWord u v k c.1).val
+        (compositeFirstPosition u v k c.1 p) then
+      hi c.2 (compositeFirstPosition u v k c.1 p) else 0) =
+    (if Surjection.Caesura (positiveWord u).val p then
+      hi (positiveCompositeOuterCut u v k c) p else 0)
+
+lemma positiveComposite_segment_positionTerm_sum {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (i : Fin (Surjection.occurrenceCount u.val k)) :
+    (∑ z : Fin (c.1.val i).val,
+      if Surjection.Caesura (positiveCompositeCutWord u v k c.1).val
+          (positiveCompositeSegmentPosition u v k c.1 i z) then
+        hi c.2 (positiveCompositeSegmentPosition u v k c.1 i z) else 0) =
+    (if Surjection.Caesura (positiveWord u).val (positiveOccurrencePosition u k i) then
+      hi (positiveCompositeOuterCut u v k c) (positiveOccurrencePosition u k i) else 0) +
+    ∑ z : Fin ((c.1.val i).val - 1),
+      if Surjection.Caesura v.val
+          ⟨c.1.start i + z.val, by have hb := c.1.start_add_length_le i; have hz := z.isLt; omega⟩
+      then hi c.2 (positiveCompositeSegmentPosition u v k c.1 i
+        ⟨z.val, by have hz := z.isLt; omega⟩) else 0
+
+lemma positiveComposite_positionExponent_decomposition {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) :
+    positionExponent c.2 (positiveCompositeCutWord u v k c.1).val =
+      positionExponent (positiveCompositeOuterCut u v k c) (positiveWord u).val +
+      ∑ i : Fin (Surjection.occurrenceCount u.val k), ∑ z : Fin ((c.1.val i).val - 1),
+        if Surjection.Caesura v.val
+            ⟨c.1.start i + z.val, by have hb := c.1.start_add_length_le i; have hz := z.isLt; omega⟩
+        then hi c.2 (positiveCompositeSegmentPosition u v k c.1 i
+          ⟨z.val, by have hz := z.isLt; omega⟩) else 0
+```
+
+有限点検：`check-composite-position-exponent-decomposition.py`、全12,233組。
+元の合成位置指数が、元の外側位置指数と部分語内部の区切り高さの和に一致した。
+共有端点は外側の元の区切りへ戻し、各部分語の末尾を内部の和へ重ねない。
+内側切断の同じ順位とこの内部の高さの和の比較は、まだ残る工程。
+
+## 289. C452の位置指数の残る順位・高さ・全和の接続（次の型、紙のみ）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§288の合成側の位置指数の分解は検証した。
+次は既存の同じ内側辺の高さと色別順位を使い、内部の各項を比較する。
+以下は次の工程の型で、実装済みの宣言には数えない。
+すべて既存の構成の法則、有限位置の分解・数え上げ、同じ指定射の照合、証明分割。
+各証明200行以内の見込み。新しいCut・作用・位相的な比較を作るものではない。
+
+```lean
+lemma caesura_word_eq_mp {r l l' : ℕ} (h : l = l') (v : Surjection.Word r l)
+    (p : Fin l') (q : Fin l) (hpq : p.val = q.val) :
+    Surjection.Caesura (Eq.mp (congrArg (fun L => Surjection.Word r L) h) v).val p ↔
+      Surjection.Caesura v.val q
+
+lemma caesuraRank_word_eq_mp {r l l' : ℕ} (h : l = l') (v : Surjection.Word r l)
+    (p : Fin l') (q : Fin l) (hpq : p.val = q.val) :
+    Surjection.caesuraRank (Eq.mp (congrArg (fun L => Surjection.Word r L) h) v).val p =
+      Surjection.caesuraRank v.val q
+
+lemma positionExponent_eq_edge_sum {m q r : ℕ} (s : Cut m q)
+    (w : Fin (m + 1) → Fin r) :
+    positionExponent s w =
+      ∑ a : Fin m, if Surjection.Caesura w a.castSucc then (cutHeights s a).val else 0
+
+lemma sum_overlap_internal_positions {t n e : ℕ}
+    (r : Surjection.OverlapPartition t ((n + 1) + e)) (ht : 0 < t)
+    (F : Fin (n + e) → ℕ) :
+    (∑ a, F a) = ∑ i : Fin t, ∑ z : Fin ((r.val i).val - 1),
+      F ⟨r.start i + z.val, by have hb := r.start_add_length_le i; have hz := z.isLt; omega⟩
+
+lemma sum_internal_caesuraIndicators {r t n e : ℕ}
+    (w : Fin ((n + 1) + e) → Fin r)
+    (o : Surjection.OverlapPartition t ((n + 1) + e)) (i : Fin t) :
+    (∑ z : Fin ((o.val i).val - 1), if Surjection.Caesura w
+      ⟨o.start i + z.val, by have hb := o.start_add_length_le i; have hz := z.isLt; omega⟩
+      then 1 else 0 : ℕ) = Surjection.segmentDegree w o i
+
+lemma positiveComposite_segment_internal_height_balance {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (i : Fin (Surjection.occurrenceCount u.val k)) (z : Fin ((c.1.val i).val - 1)) :
+    hi (positiveCompositeInnerCut u v k c) (positiveCompositeSegmentInnerPosition u v k c i
+        ⟨z.val, by have hz := z.isLt; omega⟩) + positiveCompositeOtherActivePrefix u v k c i =
+      hi c.2 (positiveCompositeSegmentPosition u v k c.1 i
+        ⟨z.val, by have hz := z.isLt; omega⟩) +
+      Surjection.caesuraRank u.val (Surjection.occurrenceAt u.val k i)
+
+lemma positiveComposite_inner_positionExponent_decomposition {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) :
+    positionExponent (positiveCompositeInnerCut u v k c) (positiveWord v).val =
+      ∑ i : Fin (Surjection.occurrenceCount u.val k), ∑ z : Fin ((c.1.val i).val - 1),
+        if Surjection.Caesura v.val
+            ⟨c.1.start i + z.val, by have hb := c.1.start_add_length_le i; have hz := z.isLt; omega⟩
+        then hi (positiveCompositeInnerCut u v k c) (positiveCompositeSegmentInnerPosition u v k c i
+          ⟨z.val, by have hz := z.isLt; omega⟩) else 0
+```
+
+有限点検：`check-composite-position-inner-height-balance.py`、全12,233組。
+全部分語の全内部位置で「同じ内側の右端順位＋元のB_i＝元の合成の高さ＋元の区切り順位」を確認。
+内側位置指数が同じ内部位置の和になることも確認した。退化する切断も含む。
+
+既存の宣言で進める筋は次。
+
+1. 語長の二つの移送は `word_eq_mp_value` と同じく長さの等式を消去し、同じ値のFinを等置する。
+2. 元の位置指数の最後の位置には後続位置がないのでCaesuraは偽。
+   `sum_fin_last` と `cutHeights` の定義で元の辺の和へ書き直す。
+3. 内部位置の有限和は開始位置＋zで写す。逆の所属番号は既存 `segmentEdgeOwner`。
+   `segmentEdgeOwner_start_le`・`segmentEdgeOwner_end_gt`・`segmentEdgeOwner_unique` により
+   同じ辺を重複なく読む。新しい公開の所属写像を作らない。
+4. 内部区切り数の式は§270の証明内ですでに使った
+   `sum_consecutive_caesuraIndicators` と同じ行順位の差を単独で再利用する。
+5. 高さの式は、内部辺aの所属番号がiであることを同じuniqueで確かめ、
+   `compositeInnerEdge_val` からその像が元の部分語の同じ位置であることを示す。
+   `positiveCompositeInnerCut_rank_mem`・`positiveCompositeInnerCut_vertices`、
+   `colorRank_add_other_active_prefix` をその同じ辺へ適用する。
+   B_iは `other_active_prefix_eq_on_interval` で元の最初の順位と同じに戻す。
+   最後に語長の区切り順位の移送を使う。
+6. 内側位置指数の式は(2)(3)と同じ語長のCaesuraの移送で得る。
+   各内部位置で(5)を同じCaesuraの0/1で重み付けして足し、(4)で一定のB_i・順位の和をg_i倍へ戻す。
+   §288と合わせれば、§253の `positiveComposite_positionExponent_balance` の型へ接続する。
+
+その後の元の係数の接続は、§287の逆転指数のmod 2と§253の位置指数の釣り合い、
+`compositionExponent_add_prefixRanks` を合わせる。
+成分次数の総和 `sum_segmentDegree` でPの和をe*Pへ戻し、
+元の `positiveCompositeCutCoefficient_eq_nested_of_modeq` に渡す。
+この数値の符号の接続を、実テンソル・nullaryやL12a全体の完成と混同しない。
+
+## 290. C452の逆転指数のmod 2と合成位置指数の分解：検証済み、取り込み点
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§284〜288の**10モジュール485行**を検証した。
+元の交差補正に二度数える先行小色を足す整数の式、同じ水平fiberによるB_iの濃度、
+元の小色の出力次数Pとの比較を合わせた。
+`positiveComposite_permutationExponent_modeq` は、§253と同じB_i・P・非退化性の型で完成。
+B_iは§253どおり同じ `colorIntervalFirst`・`colorPositionEquiv` によるnativeな定義を使用した。
+さらに、元の合成位置指数を**元の外側位置指数＋同じ部分語内部の区切り高さの全和**へ分解した。
+
+最終の対象ビルド（全て成功）：
+
+- `m14-word-cross-weight-balance-03.log`：855 jobs。
+- `m14-cross-interval-prefix-modeq-01.log`：2,893 jobs。
+- `m14-composite-permutation-modeq-02.log`：2,991 jobs（前方次数の行長修正も検証済み）。
+- `m14-composite-position-exponent-decomposition-02.log`：2,898 jobs。
+
+途中、指定位置そのものの場合を分けて関数の値の等式を明示し、
+同じ定義等式の照合には `backward.isDefEq.respectTransparency false` をOtherActivePrefixCountsで使った。
+心拍数・再帰上限は増やしていない。B_i/Pの別名は定義を展開して揃えた。
+位置指数では同じ内側位置の記法を展開した。最終ソースの対象警告0。
+200行を超える証明・ファイルなし。既存の公開宣言・界面・符号・仮定は変更していない。
+
+新規分だけの小監査：
+
+- `audit-m14-composite-permutation-modeq.log`：7モジュール・22宣言。
+- `audit-m14-position-exponent-decomposition.log`：3モジュール・20宣言。
+
+合計**10モジュール・42宣言、標準三公理のみ**。sorry・独自公理0。
+全ハンドルの終了コード0を確認し、鍵は各一回の対象ビルド/小監査の間だけ使用して返した。
+整理券は一枚ずつ。常駐セッション・rootビルド・大きい監査・他レーン・共有入口・共有監査・
+drafts・mainの作業木は変更していない。`git diff --check`成功。
+
+登録対象（接頭辞 `SerrePositivity.EInfinity.SimplexCuts.`）：
+
+| モジュール | 行数 |
+| --- | ---: |
+| WordCrossWeightBalance | 57 |
+| ActiveHorizontalFilterCounts | 35 |
+| OtherActivePrefixCounts | 51 |
+| CrossIntervalPrefixModeq | 37 |
+| NestedPrefixDegreeSum | 35 |
+| CompositeOtherActivePrefix | 59 |
+| CompositePermutationModeq | 37 |
+| PositiveWordPositionSums | 38 |
+| CompositePositionTerms | 84 |
+| CompositePositionExponentDecomposition | 52 |
+| **計** | **485** |
+
+M14実測は**22,991行**、L12aは**7,784行**。
+逆転指数のmod 2は閉じたが、§289の内側の同じ順位・高さの全和の接続は紙のまま。
+§253の位置指数の釣り合い・元の係数の接続は未完で、C452/L12a全体を完了には数えない。
+実テンソル・nullary・L13以降も未完であり、一覧12/48（追加4）のまま、goalはactive。
+外枠31,000行は変更せず、旧見込みの上端の超過リスクは残す。
+約25,000行で止まらず実測と残りを出し直す指定を維持する。
+完備化後のP⁰の未供給の工程は§267・282のまま、無料の前提へ置いていない。
+(c)が必要との判定には至っておらず、その判定なら§32どおり止める。
+Tot九欄の段0は§260。3b-4aを受領したらmain§33の順へ切り替える。
+次は§289の型の法則を同じ指定辺・同じ順位で証明する。
+
+
+## 291. C452：位置指数の釣り合いと元の整数係数の厳密な一致、取り込み点
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§289の七つの型をすべて実装し、§253の位置指数の釣り合い、§243の全指数のmod 2、
+§199の `positiveCompositeCutCoefficient_eq_nested` へ接続した。
+同じcompositionSignとcutSignの積が、元の二段切断の整数係数そのものに一致する。
+元の非退化性の仮定は保持し、指数の合同を追加仮定にはしていない。
+ホモトピー圏や別の符号規約への変更はない。
+
+証明は同じ内部辺の所属を既存 `segmentEdgeOwner_unique` で指定し、
+`positiveCompositeInnerCut_rank_mem`・`positiveCompositeInnerCut_vertices` の元の順位を使う。
+同じ区間内の先行他色の集合の等式でB_iへ戻し、各内部位置の高さの等式を区切りの有無で
+重み付けして足した。内部区切り数は `sum_internal_caesuraIndicators` で同じ成分次数へ戻した。
+その釣り合いと証明済みの逆転指数の合同・合成指数の補和・成分次数の総和を合わせ、
+元の `positiveCompositeCutCoefficient_eq_nested_of_modeq` に追加の合同仮定なしで渡した。
+
+有限点検は§289の全12,233組を使用。Leanは有限点検に依存しない全称証明。
+語の略記に存在しないtoWord射影を一度使ったため既存のWordそのものへ直した。
+部分語長の正値性を明示し、有限和の引数名とPropの移送を現行APIに合わせた。
+高さの最終照合は同じCutの定義展開だけを許す透明性設定で閉じた。
+心拍数・再帰上限を増やしていない。証明・ファイル200行超なし。
+最終ソースの対象警告0。
+
+対象ビルド（/tmp/bsw16/）：
+
+- `m14-position-helpers-01.log`：語長の区切り・順位の移送。
+- `m14-position-helpers-02.log`：辺の和、内部区切り数、内部位置の和、2,239 jobs成功。
+- `m14-inner-height-balance-03.log`：同じ内部辺の高さの釣り合い。
+- `m14-position-exponent-balance-01.log`：内側位置指数の再添字付け。
+- `m14-composite-cut-coefficient-01.log`：警告の改行修正を含む最終三本、3,009 jobs成功。
+
+途中の失敗を含むログの個別成功行と、最終対象ビルドの終了コード0を確認した。
+新規分だけの別の小監査 `audit-m14-composite-cut-coefficient.log` は
+**9モジュール・44宣言、標準三公理のみ**。sorry・独自公理0。
+鍵は一回の対象ビルドまたは一回の小監査の間だけ使用して返した。整理券は一枚ずつ。
+既存の公開宣言・界面・drafts・main作業木・共有入口・共有監査は変更していない。
+rootビルド・大きい監査・常駐セッションなし。
+
+登録対象（接頭辞 `SerrePositivity.EInfinity.SimplexCuts.`）：
+
+| モジュール | 行数 |
+| --- | ---: |
+| WordCaesuraLengthTransport | 35 |
+| PositionExponentEdgeSum | 32 |
+| InternalCaesuraIndicators | 30 |
+| OverlapInternalPositionSums | 59 |
+| CompositeInternalHeightBalance | 74 |
+| CompositeInnerPositionExponent | 42 |
+| CompositePositionExponentBalance | 70 |
+| CompositeCutExponentModeq | 47 |
+| CompositeCutCoefficient | 26 |
+| **計** | **415** |
+
+M14実測は**23,406行**、L12aは**8,199行**。
+C451・C452・C453の数値・指定面の比較は閉じたが、同じ実テンソルとnullaryへの接続は残る。
+L12a全体・L13以降を完成に数えず、一覧12/48（追加4）、goalはactiveのまま。
+外枠31,000行まで実測の残り7,594行。完成見込みの上端が外枠を超えるリスクは残る。
+約25,000行で止まらず実測・残りを出し直す指定を維持する。
+完備化後のP⁰は§267・282の未供給箇所を残し、仮定を足して消していない。
+(c)が必要との判定には至っていない。3b-4a未受領のためTot九欄の実装は始めない。
+
+
+## 292. 同じ指定面の族から元の斉次実テンソルへの接続（法則の型、実装前）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+C451の等式を、元の各正規化生成元と右括弧テンソルへ適用する。
+以下は既存構成の法則・証明分割。新しい作用やテンソル模型を定義しない。
+ここで二段側は同じ指定面を合成して平坦に読んだ斉次テンソルである。
+実際の余代入の括弧替え・二つの係数移動を評価したとの主張にはしない。
+各証明200行以内の見込み。
+
+```lean
+lemma faceFamily_tensor_heq (A : Type u) [CommRing A] (S : SSet.{0}) {r q : ℕ}
+    (F G : Fin r → Σ t : ℕ, Fin (t + 1) →o Fin (q + 1)) (h : F = G)
+    (x : S _⦋q⦌) (a b : ℤ) (hab : a = b) :
+    HEq
+      (a • tensorValue (chains A S) r (fun i => (F i).1)
+        (fun i => gen A S (F i).1 (S.map (SimplexCategory.mkHom (F i).2).op x)))
+      (b • tensorValue (chains A S) r (fun i => (G i).1)
+        (fun i => gen A S (G i).1 (S.map (SimplexCategory.mkHom (G i).2).op x)))
+
+lemma positiveComposite_signedCutTensor_heq_nested
+    (A : Type u) [CommRing A] (S : SSet.{0}) {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (h : Nondegenerate c.2 (positiveCompositeCutWord u v k c.1).val) (x : S _⦋q⦌) :
+    HEq
+      ((Surjection.compositionSign u v k c.1 *
+        cutSign c.2 (positiveCompositeCutWord u v k c.1).val) •
+        cutTensor A S c.2 (positiveCompositeCutWord u v k c.1) x)
+      (positiveNestedCutCoefficient u v k (positiveCompositeNestedMap u v k c) •
+        tensorValue (chains A S) (m + (n + 1))
+          (fun a => (positiveNestedFaceFamily u v k (positiveCompositeNestedMap u v k c) a).1)
+          (fun a => gen A S
+            (positiveNestedFaceFamily u v k (positiveCompositeNestedMap u v k c) a).1
+            (S.map (SimplexCategory.mkHom
+              (positiveNestedFaceFamily u v k (positiveCompositeNestedMap u v k c) a).2).op x)))
+
+lemma gen_map_comp_faces (A : Type u) [CommRing A] (S : SSet.{0})
+    {a b q : ℕ} (f : Fin (b + 1) →o Fin (q + 1))
+    (g : Fin (a + 1) →o Fin (b + 1)) (x : S _⦋q⦌) :
+    gen A S a (S.map (SimplexCategory.mkHom (f.comp g)).op x) =
+      gen A S a (S.map (SimplexCategory.mkHom g).op
+        (S.map (SimplexCategory.mkHom f).op x))
+```
+
+第一はF=Gとa=bを消去する。第二は元のC451・C452を第一に渡すだけ。
+第三は同じ単体圏の射の合成とSの関手則を読む。
+異なる総次数の要素をHEqで記すのは既存 `tensorValue_heq_degree` と同じ証明上の型移送であり、
+ホモトピー圏への変更ではない。最終的な `compositeBalanceTerm` の共通次数へのeqToHomと
+実際の余代入の評価は別に残し、それらをこの型の仮定として隠さない。
+
+
+## 293. 元のappendIsoと余代入を同じ斉次ベクトルで評価する法則（実装前）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§292の平坦な出力を、実際の余代入と照合する次の法則。
+既存 `IntervalCuts.coInsertionBlocks_apply` はKが任意なのでそのまま使える。
+一方、既存 `appendIso_tensorVectorAt` はinterval Aの面ベクトルに限られる。
+同じappendIsoを既存の `vectorTensorAt` で評価する法則を次の型で作る。
+既存構成の法則・証明分割で、新しい余代入・新しい作用・複体を定義しない。
+以下では `K C : Complex A`、`V := Σ d : ℕ, K.X (-(d : ℤ))`。
+各証明200行以内の見込み。
+
+```lean
+lemma vectorDegree_append (K : Complex A) (m n : ℕ) (f : Fin m → V) (g : Fin n → V) :
+    vectorDegree K (m + n) (Fin.append f g) = vectorDegree K m f + vectorDegree K n g
+
+lemma vectorTensorAt_arity_transport (K : Complex A) {m n : ℕ} (h : m = n)
+    (f : Fin m → V) (t : ℤ) (hf : -(vectorDegree K m f : ℤ) = t) :
+    (eqToHom (congrArg (power K) h)).f t (vectorTensorAt K m f t hf) =
+      vectorTensorAt K n (f ∘ Fin.cast h.symm) t (by subst n; exact hf)
+
+lemma appendIso_vectorTensor (K : Complex A) (m n : ℕ)
+    (f : Fin m → V) (g : Fin n → V) (t : ℤ)
+    (ht : -(vectorDegree K m f : ℤ) + -(vectorDegree K n g : ℤ) = t) :
+    (appendIso K m n).hom.f t
+      (ιTensorObj (power K m) (power K n)
+        (-(vectorDegree K m f : ℤ)) (-(vectorDegree K n g : ℤ)) t ht
+        (vectorTensor K m f ⊗ₜ[A] vectorTensor K n g)) =
+      vectorTensorAt K (m + n) (Fin.append f g) t
+        (by rw [vectorDegree_append]; omega)
+
+lemma appendIso_vectorTensorAt (K : Complex A) (m n : ℕ)
+    (f : Fin m → V) (g : Fin n → V) (r s t : ℤ)
+    (hr : -(vectorDegree K m f : ℤ) = r) (hs : -(vectorDegree K n g : ℤ) = s)
+    (ht : r + s = t) :
+    (appendIso K m n).hom.f t
+      (ιTensorObj (power K m) (power K n) r s t ht
+        (vectorTensorAt K m f r hr ⊗ₜ[A] vectorTensorAt K n g s hs)) =
+      vectorTensorAt K (m + n) (Fin.append f g) t
+        (by rw [vectorDegree_append]; omega)
+
+lemma appendIso_inv_vectorTensorAt (K : Complex A) (m n : ℕ)
+    (f : Fin m → V) (g : Fin n → V) (r s t : ℤ)
+    (hr : -(vectorDegree K m f : ℤ) = r) (hs : -(vectorDegree K n g : ℤ) = s)
+    (ht : r + s = t) :
+    (appendIso K m n).inv.f t
+      (vectorTensorAt K (m + n) (Fin.append f g) t
+        (by rw [vectorDegree_append]; omega)) =
+      ιTensorObj (power K m) (power K n) r s t ht
+        (vectorTensorAt K m f r hr ⊗ₜ[A] vectorTensorAt K n g s hs)
+
+lemma coInsertionBlocks_vector_apply (K C : Complex A) (s n t : ℕ)
+    (θ : C ⊗ K ⟶ power K n) (c q z : ℤ)
+    (f : Fin s → V) (g : Fin n → V) (h : Fin t → V)
+    (hz : c + (-(vectorDegree K s f : ℤ) + (q + -(vectorDegree K t h : ℤ))) = z)
+    (a : C.X c) (y : K.X q) (hg : -(vectorDegree K n g : ℤ) = c + q)
+    (r : ℤ) (hθ : θ.f (c + q) (ιTensorObj C K c q (c + q) rfl (a ⊗ₜ[A] y)) =
+      r • vectorTensorAt K n g (c + q) hg) :
+    (IntervalCuts.coInsertionBlocks K C s n t θ).f z
+      (ιTensorObj C (power K s ⊗ (K ⊗ power K t))
+        c (-(vectorDegree K s f : ℤ) + (q + -(vectorDegree K t h : ℤ))) z hz
+        (a ⊗ₜ[A] ιTensorObj (power K s) (K ⊗ power K t)
+          (-(vectorDegree K s f : ℤ)) (q + -(vectorDegree K t h : ℤ))
+          (-(vectorDegree K s f : ℤ) + (q + -(vectorDegree K t h : ℤ))) rfl
+          (vectorTensor K s f ⊗ₜ[A] ιTensorObj K (power K t)
+            q (-(vectorDegree K t h : ℤ)) (q + -(vectorDegree K t h : ℤ)) rfl
+            (y ⊗ₜ[A] vectorTensor K t h)))) =
+      (c * -(vectorDegree K s f : ℤ)).negOnePow • (r •
+        vectorTensorAt K (s + (n + t)) (Fin.append f (Fin.append g h)) z
+          (by rw [vectorDegree_append, vectorDegree_append]; omega))
+```
+
+最初の二つは同じ有限和の分解と等式の消去。
+連結の順方向は `IntervalCuts.appendIso_tensorVector` と同じ帰納法で、
+既存 `vectorTensorAt_cons`・`vectorTensorAt_succ`、左単位子・結合子の評価を使う。
+逆方向はその同型の往復。最後は既存 `coInsertionBlocks_apply` で実際の交換符号を取り出し、
+同じappendIsoの評価を二回使う。係数の移動の符号を仮定や新しい規約に置き換えない。
+この後には出力族のprefixFamily・suffixFamilyへの再添字付けと、外側係数の移動の評価が残る。
+nullaryもまだこの正の語の比較で完了には数えない。
+
+
+## 294. 同じ指定面の族の斉次実テンソルへの移送：検証済み、取り込み点
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§292の三つの型を実装した。`positiveComposite_signedCutTensor_heq_nested` は
+同じ面の合成で平坦に読んだ二段の斉次テンソルと、元の合成側の符号付きcutTensorを比較する。
+同じ総次数の型の移送をHEqで表すもので、ホモトピー圏の等式ではない。
+`gen_map_comp_faces` は元の単体圏の射の合成と関手則そのもの。
+実際の余代入の括弧替え・外側係数の移動の評価を、この比較で済んだとは数えない。
+
+`m14-composite-signed-tensors-01.log`：3,014 jobs成功、対象警告0。
+別の一回の鍵の `audit-m14-composite-signed-tensors.log`：
+**2モジュール・3宣言、標準三公理のみ**、sorry・独自公理0。
+終了コード0を確認し、鍵は返却した。全体ビルド・共有入口・共有監査・他レーンは変更なし。
+
+登録対象（接頭辞 `SerrePositivity.EInfinity.SimplexCuts.`）：
+
+| モジュール | 行数 |
+| --- | ---: |
+| FaceFamilyTensors | 43 |
+| CompositeSignedTensors | 43 |
+| **計** | **86** |
+
+検証済みM14実測は**23,492行**、L12aは**8,285行**。
+§293のappendIsoの法則はこの取り込み点には含めず、対象ビルドで検証中。
+L12aの実際の余代入・共通次数・nullary、後続のL13以降は残る。
+一覧12/48（追加4）、goalはactive、外枠31,000行は据え置き。
+
+
+## 295. 元の指定因子での余代入の斉次評価（法則の型、実装前）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§293のブロック評価を元のtensorCoInsertionActionに戻す。
+既存のprefixFamily・suffixFamily・insertionFamilyとその同じ有限添字の法則は再利用する。
+残る型は下記。既存構成の次数・結合子・自然性の法則と証明分割で、各証明200行以内。
+ここではopen CategoryTheory MonoidalCategory HomologicalComplex、TensorPowers、
+DifferentialGraded、IntervalCutsの同名の族の記法、`{A : Type u} [CommRing A]`を用いる。
+
+```lean
+lemma vectorDegree_arity_transport (K : Complex A) {m n : ℕ} (h : m = n)
+    (f : Fin m → Σ d : ℕ, K.X (-(d : ℤ))) :
+    vectorDegree K n (f ∘ Fin.cast h.symm) = vectorDegree K m f
+
+lemma vectorDegree_family_blocks (K : Complex A) {m : ℕ}
+    (f : Fin (m + 1) → Σ d : ℕ, K.X (-(d : ℤ))) (i : Fin (m + 1)) :
+    vectorDegree K (m + 1) f = vectorDegree K i.val (prefixFamily f i) +
+      (f i).1 + vectorDegree K (m - i.val) (suffixFamily f i)
+
+lemma vectorDegree_insertionFamily (K : Complex A) {m n : ℕ}
+    (f : Fin (m + 1) → Σ d : ℕ, K.X (-(d : ℤ)))
+    (g : Fin n → Σ d : ℕ, K.X (-(d : ℤ))) (i : Fin (m + 1)) :
+    vectorDegree K (m + n) (insertionFamily f g i) =
+      vectorDegree K i.val (prefixFamily f i) + vectorDegree K n g +
+        vectorDegree K (m - i.val) (suffixFamily f i)
+
+lemma vectorTensorAt_family_blocks (K : Complex A) {m : ℕ}
+    (f : Fin (m + 1) → Σ d : ℕ, K.X (-(d : ℤ))) (i : Fin (m + 1))
+    (r : ℤ) (hr : -(vectorDegree K (m + 1) f : ℤ) = r) :
+    vectorTensorAt K (m + 1) f r hr =
+      (eqToHom (congrArg (power K)
+        (by omega : i.val + (m - i.val + 1) = m + 1))).f r
+        ((appendIso K i.val (m - i.val + 1)).hom.f r
+          (ιTensorObj (power K i.val) (power K (m - i.val + 1))
+            (-(vectorDegree K i.val (prefixFamily f i) : ℤ))
+            (-((f i).1 : ℤ) + -(vectorDegree K (m - i.val) (suffixFamily f i) : ℤ))
+            r (by have := vectorDegree_family_blocks K f i; omega)
+            (vectorTensor K i.val (prefixFamily f i) ⊗ₜ[A]
+              ιTensorObj K (power K (m - i.val))
+                (-((f i).1 : ℤ)) (-(vectorDegree K (m - i.val) (suffixFamily f i) : ℤ))
+                (-((f i).1 : ℤ) +
+                  -(vectorDegree K (m - i.val) (suffixFamily f i) : ℤ)) rfl
+                ((f i).2 ⊗ₜ[A] vectorTensor K (m - i.val) (suffixFamily f i)))))
+
+lemma tensorCoInsertionAction_vector_apply (K C : Complex A) (m n : ℕ) (i : Fin (m + 1))
+    (θ : C ⊗ K ⟶ power K n)
+    (c z : ℤ) (f : Fin (m + 1) → Σ d : ℕ, K.X (-(d : ℤ)))
+    (g : Fin n → Σ d : ℕ, K.X (-(d : ℤ)))
+    (hz : c + (-(vectorDegree K i.val (prefixFamily f i) : ℤ) +
+      (-((f i).1 : ℤ) + -(vectorDegree K (m - i.val) (suffixFamily f i) : ℤ))) = z)
+    (a : C.X c) (hg : -(vectorDegree K n g : ℤ) = c + -((f i).1 : ℤ))
+    (r : ℤ) (hθ : θ.f (c + -((f i).1 : ℤ))
+      (ιTensorObj C K c (-((f i).1 : ℤ))
+        (c + -((f i).1 : ℤ)) rfl (a ⊗ₜ[A] (f i).2)) =
+      r • vectorTensorAt K n g (c + -((f i).1 : ℤ)) hg) :
+    (tensorCoInsertionAction K C m n i θ).f z
+      (ιTensorObj C (power K (m + 1)) c
+        (-(vectorDegree K i.val (prefixFamily f i) : ℤ) +
+          (-((f i).1 : ℤ) + -(vectorDegree K (m - i.val) (suffixFamily f i) : ℤ)))
+        z hz (a ⊗ₜ[A] vectorTensorAt K (m + 1) f _ (by
+          have := vectorDegree_family_blocks K f i; omega))) =
+      (c * -(vectorDegree K i.val (prefixFamily f i) : ℤ)).negOnePow •
+        (r • vectorTensorAt K (m + n) (insertionFamily f g i) z (by
+          rw [vectorDegree_insertionFamily]; omega))
+```
+
+次数は元の連結式と等式消去。ブロック表示は元のappendIsoを二回評価する。
+余代入の評価は既存 `tensorCoInsertionAction_on_blocks` と§293の元の交換符号を使い、
+同じ有限添字の `family_eq_blocks`・`insertionFamily_eq_blocks` で元の出力順に戻す。
+この型には内側射θの一項の評価だけが仮定として露出し、
+新しいCAlgの作用やBFのoperad法則を仮定に足していない。
+L12aの適用では内側射の切断和を実際に展開する工程と外側係数移動がまだ要る。
+
+
+## 296. 完備化後のP⁰：有限原始元を使う案(a)の必要条件をさらに分ける（紙のみ）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§267・282の(a)(b)(c)の比較を、一覧L43bの指定有限原始元に照らして詰める。
+以下は紙の検討で、完備化の新しいLean・新しい仮定・界面変更は作らない。
+
+### 296.1 (a)に対して、連続性だけでなく閉元への適用を検収する
+
+L43bは、同じW係数・BF切断・外側shuffleの明示的な有限原始元を指定している。
+その式が閉元の選択に依存せず、全鎖の上の有限な多重線形式の対角評価として書ければ、
+同じB多重線形写像Tについてx-yがd^r倍なら
+T(x,…,x)-T(y,…,y)もd^r倍になる。望遠和の各項に差を一箇所ずつ置くためである。
+正規化スカラーはκにあり、新しいdの逆元を使わない。
+この同じ合同を有限和へ足すことで、固定次数での原始元の式のd進連続性を示す筋がある。
+これは原始元の存在だけを選ぶ場合には使えない。
+
+ただし、鎖の稠密性から閉元の稠密性は従わない。
+「rawな閉元で差が境界」「原始元の式は連続」の二つだけでも、完備化した全閉元にはまだ届かない。
+L43bの境界計算で閉条件によって消す項を保持し、全鎖aについて
+
+    d H(a) = May(a) - F(a) + （daを少なくとも一つ含む同じ有限展開）
+
+という同じ式をまず読む必要がある。係数微分・shuffle境界・BF切断境界を残すという
+元のL43bの規約は、この検収に対応する。誤差項がda=0で消えることだけでなく、
+その同じ多重線形式のd進合同を全鎖で確かめる。
+その全鎖の式を完備化へ延ばせれば、完備化した閉元に適用でき、
+rawな閉元の稠密性やπ_n上の完備化単位の全射性は要らない。
+これはまだL43bの実装・検収前であり、原始元の式が条件を満たすと断定しない。
+無限のshuffle展開を有限と読み替えず、固定次数の式が実際に定義済みの多重線形写像で
+あることと、完成した模型の同じBE作用との比較を確認する。
+
+さらに、項別の通常完備化をderived completionと比較するには、§267のとおり
+termwise-flatかつK-flatな厳密BE模型、係数の有界d-torsion、指定単位とFrobeniusの比較が要る。
+既存 `CellularCarrierKFlat` を調べ直したが、公開APIで直接得られるのはK平坦性であり、
+各次数の平坦性が無料で付くという宣言は見つかっていない。
+普通の完備化を直接 `directPerfectionValue` と定義し直してこの穴を消さない。
+
+### 296.2 (b)との違い
+
+(b)の完備化単位の全射・同型による消去は、§267の反例のため一般には使えない。
+coconnective性だけでπ_0の全射性は出ない。
+Koszul商への射影を使う別案でも、H⁰(K//d^r)にはH¹(K)のd^r-torsionが入り得るため、
+H⁰の普通の商だけへ勝手に置き換えない。指定射・Frobenius・同じ演算の比較が必要なまま。
+したがって(a)の全鎖の明示式が閉じる場合には、(b)の単位の全射という偽の一般原理を使わずに
+完備化後へ運べる可能性がある。
+
+### 296.3 (c)の判定
+
+現在は(a)の模型比較と全鎖の原始元の検収、(b)のderived商と指定射の比較が未供給である。
+それをcoherentなP⁰が必要との結論へ取り違えない。
+同じ式が全鎖で連続に延びず、指定完備化対象・Frobeniusとの比較も(a)(b)で作れないと
+判明した場合は、D79の前提に触れる(c)として§32どおり報告して止める。
+今はその判定には至っていない。仮定を足すことによる回避は行っていない。
+
+
+## 297. 同じappendIso・元の余代入の斉次評価：検証済み、取り込み点
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§293・295の法則の型をすべて検証した。
+元のappendIsoの順方向・逆方向、同じ前方・指定因子・後方のブロック表示、
+実際の `IntervalCuts.coInsertionBlocks` と `tensorCoInsertionAction` の評価を証明した。
+任意の複体の同じ斉次因子の族を使う。元のparameterCrossから出る
+係数次数×前方次数のKoszul符号を保ち、同じ二つのappendIsoを評価して元の出力順へ戻した。
+内側射θの一項の評価はこの一般の法則の入力であり、BFの内側切断和の展開はまだ残す。
+
+既存のIntervalCutsの同名の区間の面ベクトルの法則と同じ帰納証明を、
+同じ右括弧テンソルへ適用した。新しいappendIsoや余代入は定義していない。
+最初に略記のinterval Aを残した箇所をKへ直し、補助ファイルのopenを
+そのimportに実在する宣言だけに絞った。連鎖した未解決名のエラーが消え、
+心拍数・再帰上限を増やさずに全対象が通った。元の公開宣言の型・定義は変更していない。
+全ファイル・各証明200行以内。空白の警告も修正し、最終対象警告0。
+
+対象ビルド（/tmp/bsw16/）：
+
+- `m14-vector-tensor-append-02.log`：2,252 jobs成功、連結の順逆を含む。
+- `m14-vector-co-insertion-02.log`：2,822 jobs成功、元のブロック余代入。
+- `m14-vector-co-insertion-action-03.log`：直接importerまで2,826 jobs成功、対象警告0。
+
+別の一回の鍵の `audit-m14-vector-co-insertion-action.log`：
+**5モジュール・45宣言、標準三公理のみ**、sorry・独自公理0。
+すべての終了コード0を確認し、鍵は対象ビルド/小監査の終了ごとに返した。
+編集・報告の間の鍵の保持、常駐セッション、rootビルド、大きい監査なし。
+main作業木・共有入口・共有監査・他レーン・drafts・界面は変更していない。
+
+登録対象（接頭辞 `SerrePositivity.EInfinity.SimplexCuts.`）：
+
+| モジュール | 行数 |
+| --- | ---: |
+| VectorTensorAppendTransport | 36 |
+| VectorTensorAppend | 128 |
+| VectorCoInsertionEvaluation | 59 |
+| VectorTensorFamilyBlocks | 90 |
+| VectorCoInsertionActionEvaluation | 87 |
+| **計** | **400** |
+
+M14実測は**23,892行**、L12aは**8,685行**。
+§291・294と合わせ、この作業分は新規16モジュール・901行、
+小監査は計92宣言、標準三公理のみ。
+C451・C452・C453と平坦な斉次テンソルの一致に加え、元の余代入の一項の評価まで進んだ。
+L12aの残りは内側切断和の実評価・外側係数の移動・共通次数・nullaryの接続である。
+L12a全体・L13以降は未完で、一覧12/48（追加4）、goalはactive。
+外枠31,000行まで実測7,108行。約25,000行での出し直しの報告は引き続き行う。
+既報の後続の残りの見込みを無料に減らさず、完成見込みの上端の超過リスクを残す。
+
+完備化後のP⁰は§296に紙で追記した。(a)ではL43bの有限原始元を全鎖上の式で検収する必要を
+追加で切り分け、閉元の稠密性を仮定しない。(b)の単位の全射の一般原理は使えず、
+derived商の比較の穴は残る。(c)が必要との結論にはまだ至っていない。
+G10の供給者側の部品は作らず、3b-4aがmainへ入ったら§33のTot九欄を優先する。
+
+
+## 298. 内側の全有限和を元の余代入へ代入する法則（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§293・295の一項の評価を、実際の内側切断和へ適用するため有限和の法則を追加する。
+既存の同じテンソルの加法性・係数移送の法則で、一覧には加算しない。
+共通のopenと係数変数は§295のとおり。各証明200行以内の見込み。
+
+```lean
+lemma coInsertionBlocks_vector_sum_apply {ι : Type v} [Fintype ι] (K C : Complex A) (s n t : ℕ)
+    (θ : C ⊗ K ⟶ power K n)
+    (c q z : ℤ) (f : Fin s → Σ d : ℕ, K.X (-(d : ℤ)))
+    (g : ι → Fin n → Σ d : ℕ, K.X (-(d : ℤ)))
+    (h : Fin t → Σ d : ℕ, K.X (-(d : ℤ)))
+    (hz : c + (-(vectorDegree K s f : ℤ) + (q + -(vectorDegree K t h : ℤ))) = z)
+    (a : C.X c) (y : K.X q) (hg : ∀ j, -(vectorDegree K n (g j) : ℤ) = c + q)
+    (r : ι → ℤ) (hθ : θ.f (c + q) (ιTensorObj C K c q (c + q) rfl (a ⊗ₜ[A] y)) =
+      ∑ j, r j • vectorTensorAt K n (g j) (c + q) (hg j)) :
+    (IntervalCuts.coInsertionBlocks K C s n t θ).f z
+      (ιTensorObj C (power K s ⊗ (K ⊗ power K t))
+        c (-(vectorDegree K s f : ℤ) + (q + -(vectorDegree K t h : ℤ))) z hz
+        (a ⊗ₜ[A] ιTensorObj (power K s) (K ⊗ power K t)
+          (-(vectorDegree K s f : ℤ)) (q + -(vectorDegree K t h : ℤ))
+          (-(vectorDegree K s f : ℤ) + (q + -(vectorDegree K t h : ℤ))) rfl
+          (vectorTensor K s f ⊗ₜ[A] ιTensorObj K (power K t)
+            q (-(vectorDegree K t h : ℤ)) (q + -(vectorDegree K t h : ℤ)) rfl
+            (y ⊗ₜ[A] vectorTensor K t h)))) =
+      (c * -(vectorDegree K s f : ℤ)).negOnePow •
+        ∑ j, r j • vectorTensorAt K (s + (n + t)) (Fin.append f (Fin.append (g j) h)) z
+          (by rw [vectorDegree_append, vectorDegree_append]; have := hg j; omega)
+
+lemma tensorCoInsertionAction_vector_sum_apply {ι : Type v} [Fintype ι] (K C : Complex A)
+    (m n : ℕ) (i : Fin (m + 1))
+    (θ : C ⊗ K ⟶ power K n)
+    (c z : ℤ) (f : Fin (m + 1) → Σ d : ℕ, K.X (-(d : ℤ)))
+    (g : ι → Fin n → Σ d : ℕ, K.X (-(d : ℤ)))
+    (hz : c + (-(vectorDegree K i.val (prefixFamily f i) : ℤ) +
+      (-((f i).1 : ℤ) + -(vectorDegree K (m - i.val) (suffixFamily f i) : ℤ))) = z)
+    (a : C.X c) (hg : ∀ j, -(vectorDegree K n (g j) : ℤ) = c + -((f i).1 : ℤ))
+    (r : ι → ℤ) (hθ : θ.f (c + -((f i).1 : ℤ))
+      (ιTensorObj C K c (-((f i).1 : ℤ))
+        (c + -((f i).1 : ℤ)) rfl (a ⊗ₜ[A] (f i).2)) =
+      ∑ j, r j • vectorTensorAt K n (g j) (c + -((f i).1 : ℤ)) (hg j)) :
+    (tensorCoInsertionAction K C m n i θ).f z
+      (ιTensorObj C (power K (m + 1)) c
+        (-(vectorDegree K i.val (prefixFamily f i) : ℤ) +
+          (-((f i).1 : ℤ) + -(vectorDegree K (m - i.val) (suffixFamily f i) : ℤ)))
+        z hz (a ⊗ₜ[A] vectorTensorAt K (m + 1) f _ (by
+          have := vectorDegree_family_blocks K f i; omega))) =
+      (c * -(vectorDegree K i.val (prefixFamily f i) : ℤ)).negOnePow •
+        ∑ j, r j • vectorTensorAt K (m + n) (insertionFamily f (g j) i) z (by
+          rw [vectorDegree_insertionFamily]; have := hg j; omega)
+```
+
+既存の元のブロック評価に内側の全有限和を代入し、TensorProductと射のmap_sumで分配する。
+各項は§293・295の同じappendIsoの評価である。空和・零項も含める。
+θの値の全和は前提として明示するが、BFの適用ではcochainActionの実生成元の値から供給し、
+新しい公理やBFの合成法則の仮定にはしない。外側係数の移動とnullaryの接続はなお残る。
+
+
+## 299. 同じ切断和とcochainActionの基底値（法則の型、実装前）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+共通次数の等式移送を明示して、§298のθの値を元のcochainActionから供給する。
+以下は既存構成の法則と同じ生成元の照合で、一覧に追加しない。
+各証明200行以内の見込み。open・係数変数は§295と同じ。
+
+```lean
+lemma module_eqToHom_apply_heq (M N : ModuleCat A) (h : M = N) (x : M) :
+    HEq ((eqToHom h).hom x) x
+
+lemma vectorTensorAt_heq (K : Complex A) (r : ℕ)
+    (f : Fin r → Σ d : ℕ, K.X (-(d : ℤ))) (t : ℤ)
+    (ht : -(vectorDegree K r f : ℤ) = t) :
+    HEq (vectorTensorAt K r f t ht) (vectorTensor K r f)
+
+lemma cutTensorAt_heq_vectorTensor (A : Type u) [CommRing A] (S : SSet.{0})
+    {m q r : ℕ} (s : Cut m q) (w : Surjection.Word r (m + 1)) (x : S _⦋q⦌) :
+    HEq (cutTensorAt A S s w x)
+      (vectorTensor (chains A S) r (fun a =>
+        ⟨outputDegree s w a, gen A S (outputDegree s w a) (S.map (face s w a).op x)⟩))
+
+lemma cutSum_eq_sum_vectorTensorAt (A : Type u) [CommRing A] (S : SSet.{0})
+    {r d q : ℕ} (u : Surjection.BasisWord (r + 1) d) (x : S _⦋q⦌) :
+    cutSum A S u x = ∑ s : Cut (r + d) q, cutSign s (positiveWord u).val •
+      vectorTensorAt (chains A S) (r + 1)
+        (fun a => ⟨outputDegree s (positiveWord u) a,
+          gen A S (outputDegree s (positiveWord u) a) (S.map (face s (positiveWord u) a).op x)⟩)
+        (-((d + q : ℕ) : ℤ))
+        (by rw [vectorDegree, degreeSum_eq_sum, outputDegree_sum]; congr 1; congr 1; omega)
+
+lemma cochainAction_basis_generator (A : Type u) [CommRing A] (S : SSet.{0})
+    {r d q : ℕ} (u : Surjection.BasisWord (r + 1) d) (x : S _⦋q⦌) :
+    (cochainAction A S (r + 1)).f (-((d + q : ℕ) : ℤ))
+      (ιTensorObj (Surjection.complex A (r + 1)) (chains A S)
+        (-(d : ℤ)) (-(q : ℤ)) (-((d + q : ℕ) : ℤ)) (by omega)
+        ((Surjection.complexXIso A (r + 1) d).inv
+          (Surjection.basis A (r + 1) d (ULift.up u)) ⊗ₜ[A] gen A S q x)) =
+      cutSum A S u x
+```
+
+最初の三つは同じeqToHomの等式消去であり、元を選び直さない。
+切断和ではmap_sum・map_zsmulで分配し、各項の同じ次数移送を比較する。
+最後は既存 `ι_cochainAction`・`positiveIntegerBilinear_neg`・`positiveComponent_generator` を使う。
+これでθを任意の射の仮定として残さず、実際のBFの内側切断和を供給する前段に届く。
+
+
+## 300. θの実評価を元のBF切断和から供給する（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§299の元の複体射の値を任意の指定全次数で読み、§298へ適用する二つの法則。
+既存構成の同じ生成元での評価・係数移送。証明200行以内の見込み。
+以下ではprefixFamily・suffixFamily・insertionFamilyは既存IntervalCutsのもの。
+
+```lean
+lemma cochainAction_basis_cut_sum (A : Type u) [CommRing A] (S : SSet.{0})
+    {r d q : ℕ} (u : Surjection.BasisWord (r + 1) d) (x : S _⦋q⦌)
+    (t : ℤ) (ht : -(d : ℤ) + -(q : ℤ) = t) :
+    (cochainAction A S (r + 1)).f t
+      (ιTensorObj (Surjection.complex A (r + 1)) (chains A S)
+        (-(d : ℤ)) (-(q : ℤ)) t ht
+        ((Surjection.complexXIso A (r + 1) d).inv
+          (Surjection.basis A (r + 1) d (ULift.up u)) ⊗ₜ[A] gen A S q x)) =
+      ∑ s : Cut (r + d) q, cutSign s (positiveWord u).val •
+        vectorTensorAt (chains A S) (r + 1)
+          (fun a => ⟨outputDegree s (positiveWord u) a,
+            gen A S (outputDegree s (positiveWord u) a)
+              (S.map (face s (positiveWord u) a).op x)⟩) t
+          (by rw [vectorDegree, degreeSum_eq_sum, outputDegree_sum]
+              have hnat : r + d + q + 1 - (r + 1) = d + q
+
+lemma tensorCoInsertionAction_cochain_cut_sum (A : Type u) [CommRing A] (S : SSet.{0})
+    {m n e : ℕ} (v : Surjection.BasisWord (n + 1) e) (i : Fin (m + 1))
+    (f : Fin (m + 1) → Σ d : ℕ, (chains A S).X (-(d : ℤ)))
+    (x : S _⦋(f i).1⦌) (hx : (f i).2 = gen A S (f i).1 x) (z : ℤ)
+    (hz : -(e : ℤ) + (-(vectorDegree (chains A S) i.val (prefixFamily f i) : ℤ) +
+      (-((f i).1 : ℤ) + -(vectorDegree (chains A S) (m - i.val) (suffixFamily f i) : ℤ))) = z) :
+    (tensorCoInsertionAction (chains A S) (Surjection.complex A (n + 1)) m (n + 1) i
+      (cochainAction A S (n + 1))).f z
+      (ιTensorObj (Surjection.complex A (n + 1)) (power (chains A S) (m + 1))
+        (-(e : ℤ))
+        (-(vectorDegree (chains A S) i.val (prefixFamily f i) : ℤ) +
+          (-((f i).1 : ℤ) + -(vectorDegree (chains A S) (m - i.val) (suffixFamily f i) : ℤ)))
+        z hz ((Surjection.complexXIso A (n + 1) e).inv
+          (Surjection.basis A (n + 1) e (ULift.up v)) ⊗ₜ[A]
+          vectorTensorAt (chains A S) (m + 1) f _
+            (by have h := vectorDegree_family_blocks (chains A S) f i; omega))) =
+      (-(e : ℤ) * -(vectorDegree (chains A S) i.val (prefixFamily f i) : ℤ)).negOnePow •
+        ∑ s : Cut (n + e) (f i).1, cutSign s (positiveWord v).val •
+          vectorTensorAt (chains A S) (m + (n + 1))
+            (insertionFamily f (fun a => ⟨outputDegree s (positiveWord v) a,
+              gen A S (outputDegree s (positiveWord v) a)
+                (S.map (face s (positiveWord v) a).op x)⟩) i) z
+            (by rw [vectorDegree_insertionFamily]
+                have hs := outputDegree_sum s (positiveWord v)
+                rw [← degreeSum_eq_sum] at hs
+                have hnat : n + e + (f i).1 + 1 - (n + 1) = e + (f i).1
+```
+
+前者は指定全次数の等式を消去して§299に戻る。
+後者は内側射を同じcochainActionへ固定し、実際の基底語・指定生成元での全切断和を
+前者で供給する。零項を除かず全Cutを足す。各項の次数は元のoutputDegree_sum。
+fの指定因子が元のgenであるというhxは、外側切断の出力で定義どおりに供給できる条件であり、
+cochainActionの評価や合成法則を仮定に足すものではない。
+この法則の後にも外側係数の移動とnullary・全添字の相殺への接続は残る。
+
+
+## 301. 同じ共通整数次数での符号付き項の比較（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§292の斉次テンソルのHEqを、元のcutTensorAtと同じ共通次数の等式へ戻す。
+既存構成の次数・同じ指定面の法則、証明分割。各証明200行以内の見込み。
+
+```lean
+lemma positiveComposite_nested_degreeSum {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) :
+    degreeSum (m + (n + 1))
+      (fun a => (positiveNestedFaceFamily u v k (positiveCompositeNestedMap u v k c) a).1) =
+        m + n + (d + e) + q + 1 - (m + (n + 1))
+
+lemma positiveComposite_signedCutTerm_eq_nested (A : Type u) [CommRing A] (S : SSet.{0})
+    {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q)
+    (h : Nondegenerate c.2 (positiveCompositeCutWord u v k c.1).val) (x : S _⦋q⦌) :
+    (Surjection.compositionSign u v k c.1 *
+      cutSign c.2 (positiveCompositeCutWord u v k c.1).val) •
+      cutTensorAt A S c.2 (positiveCompositeCutWord u v k c.1) x =
+      positiveNestedCutCoefficient u v k (positiveCompositeNestedMap u v k c) •
+        vectorTensorAt (chains A S) (m + (n + 1))
+          (fun a =>
+            ⟨(positiveNestedFaceFamily u v k (positiveCompositeNestedMap u v k c) a).1,
+              gen A S
+                (positiveNestedFaceFamily u v k (positiveCompositeNestedMap u v k c) a).1
+                (S.map (SimplexCategory.mkHom
+                  (positiveNestedFaceFamily u v k (positiveCompositeNestedMap u v k c) a).2).op x)⟩)
+          (-((m + n + (d + e) + q + 1 - (m + (n + 1)) : ℕ) : ℤ))
+          (by rw [vectorDegree, positiveComposite_nested_degreeSum])
+```
+
+前者はC451の次数の射影と元のoutputDegree_sum。
+後者はC452の元の整数係数の等式、C451の同じ面の族、§299の同じ次数移送を使う。
+両辺は元の圏の同じ加群成分の等式である。係数の規約や退化項の扱いを変えない。
+この型は非退化性を保持し、退化時の零項の比較と全有限添字の相殺は別に接続する。
+
+
+## 302. 元のcochainActionから内側全切断和の実評価へ：検証済み、取り込み点
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§298〜300の六本を検証した。任意のθの評価を追加前提として残す段から、
+元の `cochainAction` の基底語・正規化生成元での値を供給する段へ接続した。
+`tensorCoInsertionAction_cochain_cut_sum` は実際のBFの内側射を固定し、
+元の全Cut（退化する項も含む）の符号付き和へ展開する。
+指定生成元である条件hxは外側の切断の因子で定義どおり供給するもの。
+合成法則や指数の合同を追加仮定にはしていない。
+
+対象ビルド（/tmp/bsw16/）：
+
+- `m14-vector-co-insertion-sums-01.log`：2,828 jobs成功、対象警告0。
+- `m14-cochain-action-generator-01.log`：2,657 jobs成功、対象警告0。
+- `m14-cochain-insertion-cut-sum-02.log`：3,004 jobs成功、対象警告0。
+
+型の検証では全次数を消すsubstに、選ぶ等式を明示した。
+内部次数の関数をメタ変数でchangeする代わりに、同じoutputDegreeとdegreeSumを明示した。
+それ以外の数学・元の公開宣言・符号規約は変更していない。
+各証明・ファイル200行以内、心拍数・再帰上限の増加なし。
+
+別々の一回の鍵の小監査：
+
+- `audit-m14-vector-co-insertion-sums.log`：2モジュール・15宣言。
+- `audit-m14-cochain-action-generator.log`：3モジュール・11宣言。
+- `audit-m14-cochain-insertion-cut-sum.log`：1モジュール・13宣言。
+
+**計6モジュール・39宣言、標準三公理のみ**、sorry・独自公理0。
+全ハンドルの終了コード0を確認した。鍵は一回の対象ビルド/小監査の間だけ取って返し、
+整理券は一枚ずつ。main作業木・共有入口・共有監査・drafts・界面・他レーンは変更なし。
+rootビルド・大きい監査・常駐セッションなし。`git diff --check`成功。
+
+登録対象（接頭辞 `SerrePositivity.EInfinity.SimplexCuts.`）：
+
+| モジュール | 行数 |
+| --- | ---: |
+| VectorCoInsertionSums | 66 |
+| VectorCoInsertionActionSums | 91 |
+| CutTensorDegreeTransport | 44 |
+| CutSumVectorExpansion | 44 |
+| CochainActionGenerator | 41 |
+| CochainInsertionCutSum | 95 |
+| **計** | **381** |
+
+検証済みM14実測は**24,273行**、L12aは**9,066行**。
+外枠31,000行まで実測6,727行。約25,000行での実測と完成見込みの出し直しを維持する。
+§301の共通次数の項の比較はこの取り込み点に数えず、対象ビルド中。
+外側係数の移動・元の全添字の相殺・nullaryと後続のL13以降は残る。
+L12a全体は未完、一覧12/48（追加4）、goalはactiveのまま。
+完備化後のP⁰は§296の検収箇所を保持する。(c)が必要との判定には至っていない。
+3b-4aはまだmain未受領なので、Tot九欄の実装は始めていない。
+
+
+## 303. 共通次数の比較を符号なし・退化零項へ分ける（法則の型、実装前）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§301の証明は中間の型を明示して通った。次に符号を付ける前の同じテンソルの等式を
+証明分割として取り出し、退化時は元のcutTensor_eq_zeroで消す。
+以下は同じ指定面・同じ零項の既存構成の法則で、独立の数学の項目ではない。
+各証明200行以内。§301の非退化版の型は変えず、この二つを追加する。
+
+```lean
+lemma positiveComposite_cutTensorAt_eq_nested (A : Type u) [CommRing A] (S : SSet.{0})
+    {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) (x : S _⦋q⦌) :
+    cutTensorAt A S c.2 (positiveCompositeCutWord u v k c.1) x =
+      vectorTensorAt (chains A S) (m + (n + 1))
+          (fun a =>
+            ⟨(positiveNestedFaceFamily u v k (positiveCompositeNestedMap u v k c) a).1,
+              gen A S
+                (positiveNestedFaceFamily u v k (positiveCompositeNestedMap u v k c) a).1
+                (S.map (SimplexCategory.mkHom
+                  (positiveNestedFaceFamily u v k (positiveCompositeNestedMap u v k c) a).2).op x)⟩)
+          (-((m + n + (d + e) + q + 1 - (m + (n + 1)) : ℕ) : ℤ))
+          (by rw [vectorDegree, positiveComposite_nested_degreeSum])
+
+lemma positiveComposite_signedCutTerm_eq_nested_all (A : Type u) [CommRing A] (S : SSet.{0})
+    {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) (x : S _⦋q⦌) :
+    (Surjection.compositionSign u v k c.1 *
+      cutSign c.2 (positiveCompositeCutWord u v k c.1).val) •
+      cutTensorAt A S c.2 (positiveCompositeCutWord u v k c.1) x =
+      positiveNestedCutCoefficient u v k (positiveCompositeNestedMap u v k c) •
+        vectorTensorAt (chains A S) (m + (n + 1))
+          (fun a =>
+            ⟨(positiveNestedFaceFamily u v k (positiveCompositeNestedMap u v k c) a).1,
+              gen A S
+                (positiveNestedFaceFamily u v k (positiveCompositeNestedMap u v k c) a).1
+                (S.map (SimplexCategory.mkHom
+                  (positiveNestedFaceFamily u v k (positiveCompositeNestedMap u v k c) a).2).op x)⟩)
+          (-((m + n + (d + e) + q + 1 - (m + (n + 1)) : ℕ) : ℤ))
+          (by rw [vectorDegree, positiveComposite_nested_degreeSum])
+```
+
+符号なしの等式はC451だけを使い、非退化性は不要。
+非退化時は元のC452、退化時は同じcutTensorAtの零と符号なしの等式を使う。
+退化した項に整数係数そのものの一致を強制しない。
+
+
+## 304. 正の全有限添字の符号付き相殺への接続（次の型、紙のみ）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§303の全切断の比較を、既存positiveCompositeNestedEquivの両側で読む。
+これは§112のL12aの正の内側arityの枝であり、一般のnullaryの枝は別に残す。
+次の名前はまだ実装・型検査していない。各証明200行以内の見込み。
+実際の合成側の係数と元の二段側の係数を使い、値を対応から逆算して定義しない。
+
+```lean
+lemma positiveNested_degreeSum {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveNestedCutIndex u v k q) :
+    degreeSum (m + (n + 1)) (fun a => (positiveNestedFaceFamily u v k c a).1) =
+      m + n + (d + e) + q + 1 - (m + (n + 1))
+
+def positiveCompositeBalancePerm {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (q : ℕ) :
+    Equiv.Perm (PositiveCompositeCutIndex u v k q ⊕ PositiveNestedCutIndex u v k q) :=
+  (Equiv.sumCongr (positiveCompositeNestedEquiv u v k q)
+    (positiveCompositeNestedEquiv u v k q).symm).trans (Equiv.sumComm _ _)
+
+lemma positiveCompositeBalancePerm_involutive {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (q : ℕ) :
+    Function.Involutive (positiveCompositeBalancePerm u v k q)
+
+lemma positiveCompositeBalancePerm_ne {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (q : ℕ)
+    (i : PositiveCompositeCutIndex u v k q ⊕ PositiveNestedCutIndex u v k q) :
+    positiveCompositeBalancePerm u v k q i ≠ i
+
+def positiveCompositeBalanceTerm (A : Type u) [CommRing A] (S : SSet.{0})
+    {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (q : ℕ)
+    (i : PositiveCompositeCutIndex u v k q ⊕ PositiveNestedCutIndex u v k q) (x : S _⦋q⦌) :
+    (power (chains A S) (m + (n + 1))).X
+      (-((m + n + (d + e) + q + 1 - (m + (n + 1)) : ℕ) : ℤ)) :=
+  match i with
+  | Sum.inl c => (Surjection.compositionSign u v k c.1 *
+      cutSign c.2 (positiveCompositeCutWord u v k c.1).val) •
+      cutTensorAt A S c.2 (positiveCompositeCutWord u v k c.1) x
+  | Sum.inr c => -(positiveNestedCutCoefficient u v k c •
+      vectorTensorAt (chains A S) (m + (n + 1))
+        (fun a => ⟨(positiveNestedFaceFamily u v k c a).1,
+          gen A S (positiveNestedFaceFamily u v k c a).1
+            (S.map (SimplexCategory.mkHom (positiveNestedFaceFamily u v k c a).2).op x)⟩)
+        (-((m + n + (d + e) + q + 1 - (m + (n + 1)) : ℕ) : ℤ))
+        (by rw [vectorDegree, positiveNested_degreeSum]))
+
+lemma positiveCompositeBalancePerm_neg (A : Type u) [CommRing A] (S : SSet.{0})
+    {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (q : ℕ)
+    (i : PositiveCompositeCutIndex u v k q ⊕ PositiveNestedCutIndex u v k q) (x : S _⦋q⦌) :
+    positiveCompositeBalanceTerm A S u v k q (positiveCompositeBalancePerm u v k q i) x =
+      -positiveCompositeBalanceTerm A S u v k q i x
+
+lemma sum_positiveCompositeBalanceTerm_eq_zero (A : Type u) [CommRing A] (S : SSet.{0})
+    {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (q : ℕ) (x : S _⦋q⦌) :
+    ∑ i : PositiveCompositeCutIndex u v k q ⊕ PositiveNestedCutIndex u v k q,
+      positiveCompositeBalanceTerm A S u v k q i x = 0
+```
+
+次数和は既存の同値の全射性で§301の次数和を任意の二段切断へ運ぶ。
+対合は同じ有限同値と逆の交換だけで、固定点はSumの両枝の違いにより存在しない。
+項の比較は§303の全切断の比較と同じ同値の往復を使う。
+最後はL09で使った既存Finset.sum_ninvolutionと同じ相殺則。
+零項・退化語・退化面は除外せず保持する。
+
+この正の枝の相殺を、nullaryを含むL12a全体の完成とは数えない。
+また二段側の指数に含まれるd*eの係数交換を実際の外側合成射で評価する工程は別に残す。
+§300の内側の実評価と合わせて元の合成射へ戻してからL12/L12aに適用する。
+
+
+## 305. 元の共通整数次数での全切断の項の厳密な一致：検証済み、取り込み点
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§301・303を検証した。符号なしの同じcutTensorAtの等式は全ての切断で成立する。
+元のC452を使う非退化の場合と、元のcutTensor_eq_zeroを使う退化の場合に分け、
+`positiveComposite_signedCutTerm_eq_nested_all` で零項も保持した全項の等式へ接続した。
+両辺は元の圏の同じ加群成分であり、ホモトピー圏の等式ではない。
+退化項の整数係数そのものに等式を要求していない。
+
+`m14-composite-signed-terms-02.log`で中間の型を明示した比較が通った。
+さらに同じ符号なしの比較を証明分割として取り出し、
+`m14-composite-signed-terms-all-02.log`で直接importerまで3,020 jobs成功、対象警告0。
+初回の型推論が心拍数上限に達したが、型を明示し、元の比較を分割して閉じた。
+心拍数・再帰上限は増やしていない。各証明・ファイル200行以内。
+
+別の一回の鍵の `audit-m14-composite-signed-terms-all.log`：
+**3モジュール・8宣言、標準三公理のみ**、sorry・独自公理0。
+全ハンドルの終了コード0を確認し、鍵は対象ビルド/小監査の間だけ使用して返した。
+共有入口・共有監査・main作業木・drafts・界面・他レーンは変更なし。
+rootビルド・大きい監査・常駐セッションなし。
+
+登録対象（接頭辞 `SerrePositivity.EInfinity.SimplexCuts.`）：
+
+| モジュール | 行数 |
+| --- | ---: |
+| CompositeTensorAtComparison | 71 |
+| CompositeSignedTerms | 43 |
+| CompositeSignedTermsAll | 45 |
+| **計** | **159** |
+
+検証済みM14実測は**24,432行**、L12aは**9,225行**。
+外枠31,000行まで実測6,568行。約25,000行での残りの見込みの出し直しを維持する。
+§304の正の全有限添字の相殺はこの取り込み点には数えず、対象ビルドで検証中。
+外側係数移動の実評価とnullary・後続のL13以降も未完。
+L12a全体は未完、一覧12/48（追加4）、goalはactive。
+完備化後のP⁰の未供給箇所は§296のまま保持し、(c)との判定はまだしていない。
+
+
+## 306. 正の全有限添字の実項の対合と相殺：検証済み、取り込み点
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§304の型をすべて実装した。同じpositiveCompositeNestedEquivと逆を交換する対合を作り、
+元の合成側の符号付きcutTensorAtと、負号を付けた元の二段の指定面のテンソルの和を比較した。
+値を対応の逆算で定義せず、両側とも元の整数係数と元の正規化生成元を保持する。
+退化語・退化面の零項を除かず、全有限添字を保って相殺した。
+正の内側arityの枝であり、nullaryを含むL12a全体とは数えない。
+
+`m14-positive-composite-balance-03.log`：3,023 jobs成功、対象警告0。
+初回は有限同値の適用と元の写像の記法を明示する必要があった。
+逆向きの依存する次数証明を直接書き換えず、原像で読む形にしたが、
+大きい式の展開が心拍数上限に達したため、同じ順向きの比較と対合の往復から逆向きを導いた。
+元の項の選択・符号・型を変えていない。心拍数・再帰上限の増加なし。
+各証明・ファイル200行以内。
+
+別の一回の鍵の `audit-m14-positive-composite-balance.log`：
+**3モジュール・26宣言、標準三公理のみ**、sorry・独自公理0。
+終了コード0を確認し、鍵は対象ビルド/小監査の間だけ使用して返した。
+共有入口・共有監査・main作業木・drafts・界面・他レーンは変更なし。
+rootビルド・大きい監査・常駐セッションなし。`git diff --check`成功。
+
+登録対象（接頭辞 `SerrePositivity.EInfinity.SimplexCuts.`）：
+
+| モジュール | 行数 |
+| --- | ---: |
+| PositiveCompositeBalancePerm | 52 |
+| PositiveCompositeBalanceTerms | 40 |
+| PositiveCompositeBalanceCancellation | 68 |
+| **計** | **160** |
+
+M14実測は**24,592行**、L12aは**9,385行**。
+§302・305・306のこの作業分は計12モジュール・700行、
+新規分の小監査は計73宣言、標準三公理のみ。
+外枠31,000行まで実測6,408行。約25,000行の報告で完成の残りを出し直す指定を維持する。
+L12aの外側係数移動の実評価・元の合成射への接続・nullaryが残る。
+後続L13以降も未完で、一覧12/48（追加4）、goalはactive。
+正の枝の相殺を根拠にL12aを済みへ移していない。
+
+次のnullaryの検収では、既存 `overlapPartition_empty_eq`・`count_eq_one_of_empty` と
+同じ `nullaryAction`・`AlexanderWhitney.cochainCounit` を使う。
+IntervalCutsの `nullaryOuterCutEquiv`・`nullaryNestedCutEquiv`・`nullary_edgeSign` は
+辺の場合のAPIなので、任意qの全切断の同値としてそのまま流用しない。
+削除したraw語が退化する場合、削除色が複数回現れる場合、出力arityが零の場合を残す。
+これらの型と同じ有限点検を確認してからLeanへ進める。
+
+完備化後のP⁰は§296の全鎖の有限原始元・指定完備化対象の比較を未供給のまま保持する。
+(c)が必要との判定には至っていない。3b-4aもmain未受領のままで、Tot九欄はまだ始めない。
+
+
+## 307. 実際の外側係数の交換と四射の合成（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§112のL12の右辺そのものを記法としてまとめる。新しい作用や模型を選ぶものではなく、
+元のbraiding・associator・外側cochainAction・tensorCoInsertionActionの四射をそのまま保つ。
+IntervalCutsの `coactionComposition_apply` はP,Q,K,W,Xが任意なので再利用する。
+定義の記法と適用の法則の型は次。各証明200行以内。
+
+```lean
+def iteratedCochainAction (S : SSet.{0}) (m n : ℕ) (i : Fin (m + 1)) :
+    (Surjection.complex A (m + 1) ⊗ Surjection.complex A n) ⊗ chains A S ⟶ power (chains A S) (m + n) :=
+  ((β_ (Surjection.complex A (m + 1)) (Surjection.complex A n)).hom ▷ chains A S) ≫
+    (α_ (Surjection.complex A n) (Surjection.complex A (m + 1)) (chains A S)).hom ≫
+    (Surjection.complex A n ◁ cochainAction A S (m + 1)) ≫
+    tensorCoInsertionAction (chains A S) (Surjection.complex A n) m n i (cochainAction A S n)
+
+
+lemma iteratedCochainAction_apply (S : SSet.{0}) (m n : ℕ) (i : Fin (m + 1)) (r s t z : ℤ)
+    (hz : r + s + t = z) (x : (Surjection.complex A (m + 1)).X r) (y : (Surjection.complex A n).X s)
+    (w : (chains A S).X t) :
+    (iteratedCochainAction A S m n i).f z
+      (ιTensorObj (Surjection.complex A (m + 1) ⊗ Surjection.complex A n) (chains A S) (r + s) t z hz
+        (ιTensorObj (Surjection.complex A (m + 1)) (Surjection.complex A n) r s (r + s) rfl
+          (x ⊗ₜ[A] y) ⊗ₜ[A] w)) =
+      (r * s).negOnePow •
+        (tensorCoInsertionAction (chains A S) (Surjection.complex A n) m n i (cochainAction A S n)).f z
+          (ιTensorObj (Surjection.complex A n) (power (chains A S) (m + 1)) s (r + t) z (by omega)
+            (y ⊗ₜ[A] (cochainAction A S (m + 1)).f (r + t)
+              (ιTensorObj (Surjection.complex A (m + 1)) (chains A S) r t (r + t) rfl
+                (x ⊗ₜ[A] w))))
+```
+
+符号は元のbraidingから出るr*sのnegOnePowである。
+語基底へ適用したr=-d,s=-eの符号を、あとで二段切断の元のd*eの指数と照合する。
+これは正のarityに限るための新しい仮定を付けず、全arityの同じ射の評価として置く。
+
+
+## 308. 外側の実切断和と二つの係数交換（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§307の同じ四射を基底語・正規化生成元で読み、外側の全切断和へ展開する。
+元の既存構成の加法性・係数移動・生成元の評価で、各証明200行以内。
+Aは共通の係数環変数。型は次。
+
+```lean
+lemma positiveNestedCutCoefficient_eq_koszul {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveNestedCutIndex u v k q) :
+    positiveNestedCutCoefficient u v k c =
+      ((-(d : ℤ) * -(e : ℤ)).negOnePow : ℤ) *
+        (cutSign c.1 (positiveWord u).val *
+          (((-(e : ℤ) * -(positiveNestedPrefixDegree u k c.1 : ℤ)).negOnePow : ℤ) *
+            cutSign c.2 (positiveWord v).val))
+
+lemma iteratedCochainAction_basis_outer_cut_sum (S : SSet.{0}) {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (x : S _⦋q⦌) (z : ℤ)
+    (hz : -(d : ℤ) + -(e : ℤ) + -(q : ℤ) = z) :
+    (iteratedCochainAction A S m (n + 1) k).f z
+      (ιTensorObj (Surjection.complex A (m + 1) ⊗ Surjection.complex A (n + 1)) (chains A S)
+        (-(d : ℤ) + -(e : ℤ)) (-(q : ℤ)) z hz
+        (ιTensorObj (Surjection.complex A (m + 1)) (Surjection.complex A (n + 1))
+          (-(d : ℤ)) (-(e : ℤ)) (-(d : ℤ) + -(e : ℤ)) rfl
+          ((Surjection.complexXIso A (m + 1) d).inv
+            (Surjection.basis A (m + 1) d (ULift.up u)) ⊗ₜ[A]
+            (Surjection.complexXIso A (n + 1) e).inv
+              (Surjection.basis A (n + 1) e (ULift.up v))) ⊗ₜ[A] gen A S q x)) =
+      (-(d : ℤ) * -(e : ℤ)).negOnePow •
+        ∑ s : Cut (m + d) q, cutSign s (positiveWord u).val •
+          (tensorCoInsertionAction (chains A S) (Surjection.complex A (n + 1)) m (n + 1) k
+            (cochainAction A S (n + 1))).f z
+            (ιTensorObj (Surjection.complex A (n + 1)) (power (chains A S) (m + 1))
+              (-(e : ℤ)) (-(d : ℤ) + -(q : ℤ)) z (by omega)
+              ((Surjection.complexXIso A (n + 1) e).inv
+                (Surjection.basis A (n + 1) e (ULift.up v)) ⊗ₜ[A]
+                vectorTensorAt (chains A S) (m + 1)
+                  (fun a => ⟨outputDegree s (positiveWord u) a,
+                    gen A S (outputDegree s (positiveWord u) a)
+                      (S.map (face s (positiveWord u) a).op x)⟩)
+                  (-(d : ℤ) + -(q : ℤ))
+                  (by rw [vectorDegree, degreeSum_eq_sum, outputDegree_sum]
+                      have hnat : m + d + q + 1 - (m + 1) = d + q
+```
+
+係数の法則は負次数の積を自然数の積へ戻し、元の二つの冪をまとめる。
+外側の展開は§307と§300の同じcochainActionの全切断和の評価、map_sum・map_zsmul。
+正の語で全Cutを保ち、退化項を勝手に削除しない。
+内側の余代入の共通次数・面の合成・二段全添字への再添字付けを続けて接続する。
+
+
+## 309. 内側余代入の指定入力次数と同じ生成元の族（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§308の外側切断項に§300を適用するため、入力テンソルの次数をpと指定する。
+同じ次数移送・合成面の関手則の法則で、各証明200行以内の見込み。
+
+```lean
+lemma tensorCoInsertionAction_cochain_cut_sum_at (A : Type u) [CommRing A] (S : SSet.{0})
+    {m n e : ℕ} (v : Surjection.BasisWord (n + 1) e) (i : Fin (m + 1))
+    (f : Fin (m + 1) → Σ d : ℕ, (chains A S).X (-(d : ℤ)))
+    (x : S _⦋(f i).1⦌) (hx : (f i).2 = gen A S (f i).1 x) (p z : ℤ)
+    (hp : -(vectorDegree (chains A S) (m + 1) f : ℤ) = p)
+    (hz : -(e : ℤ) + p = z) :
+    (tensorCoInsertionAction (chains A S) (Surjection.complex A (n + 1)) m (n + 1) i
+      (cochainAction A S (n + 1))).f z
+      (ιTensorObj (Surjection.complex A (n + 1)) (power (chains A S) (m + 1))
+        (-(e : ℤ))
+        p
+        z hz ((Surjection.complexXIso A (n + 1) e).inv
+          (Surjection.basis A (n + 1) e (ULift.up v)) ⊗ₜ[A]
+          vectorTensorAt (chains A S) (m + 1) f p hp)) =
+      (-(e : ℤ) * -(vectorDegree (chains A S) i.val (prefixFamily f i) : ℤ)).negOnePow •
+        ∑ s : Cut (n + e) (f i).1, cutSign s (positiveWord v).val •
+          vectorTensorAt (chains A S) (m + (n + 1))
+            (insertionFamily f (fun a => ⟨outputDegree s (positiveWord v) a,
+              gen A S (outputDegree s (positiveWord v) a)
+                (S.map (face s (positiveWord v) a).op x)⟩) i) z
+            (by rw [vectorDegree_insertionFamily]
+                have hs := outputDegree_sum s (positiveWord v)
+                rw [← degreeSum_eq_sum] at hs
+                have hnat : n + e + (f i).1 + 1 - (n + 1) = e + (f i).1 := by omega
+                rw [hnat] at hs
+                change -((vectorDegree (chains A S) i.val (prefixFamily f i) +
+                  degreeSum (n + 1) (outputDegree s (positiveWord v)) +
+                  vectorDegree (chains A S) (m - i.val) (suffixFamily f i) : ℕ) : ℤ) = z
+                rw [hs]
+                have hf := vectorDegree_family_blocks (chains A S) f i
+                omega)
+
+lemma positiveNested_vectorFamily_eq_insertion (A : Type u) [CommRing A] (S : SSet.{0})
+    {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveNestedCutIndex u v k q) (x : S _⦋q⦌) :
+    (fun a =>
+      (⟨(positiveNestedFaceFamily u v k c a).1,
+        gen A S (positiveNestedFaceFamily u v k c a).1
+          (S.map (SimplexCategory.mkHom (positiveNestedFaceFamily u v k c a).2).op x)⟩ :
+        Σ d : ℕ, (chains A S).X (-(d : ℤ)))) =
+      insertionFamily
+        (fun a => ⟨outputDegree c.1 (positiveWord u) a,
+          gen A S (outputDegree c.1 (positiveWord u) a)
+            (S.map (face c.1 (positiveWord u) a).op x)⟩)
+        (fun b => ⟨outputDegree c.2 (positiveWord v) b,
+          gen A S (outputDegree c.2 (positiveWord v) b)
+            (S.map (face c.2 (positiveWord v) b).op
+              (S.map (face c.1 (positiveWord u) k).op x))⟩) k
+```
+
+前者はpと元の三ブロックの次数の和の等式を消去して§300へ戻る。
+後者は同じoperadInsertionEquivの残り色・挿入色に場合分けし、
+既存gen_map_comp_facesで同じ合成面の生成元を読む。新しい面や新しい作用を選ばない。
+
+
+## 310. 実際の二段余作用を元の二段全切断和で読む（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+元の外側・内側の切断和と二つの係数交換を、同じ二段全添字の和へまとめる。
+既存構成の加法性・係数移送・合成面・有限和の再添字付けの法則。証明200行以内の見込み。
+
+```lean
+lemma iteratedCochainAction_basis_nested_cut_sum (S : SSet.{0}) {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (x : S _⦋q⦌) (z : ℤ)
+    (hz : -(d : ℤ) + -(e : ℤ) + -(q : ℤ) = z) :
+    (iteratedCochainAction A S m (n + 1) k).f z
+      (ιTensorObj (Surjection.complex A (m + 1) ⊗ Surjection.complex A (n + 1)) (chains A S)
+        (-(d : ℤ) + -(e : ℤ)) (-(q : ℤ)) z hz
+        (ιTensorObj (Surjection.complex A (m + 1)) (Surjection.complex A (n + 1))
+          (-(d : ℤ)) (-(e : ℤ)) (-(d : ℤ) + -(e : ℤ)) rfl
+          ((Surjection.complexXIso A (m + 1) d).inv
+            (Surjection.basis A (m + 1) d (ULift.up u)) ⊗ₜ[A]
+            (Surjection.complexXIso A (n + 1) e).inv
+              (Surjection.basis A (n + 1) e (ULift.up v))) ⊗ₜ[A] gen A S q x)) =
+      ∑ c : PositiveNestedCutIndex u v k q, positiveNestedCutCoefficient u v k c •
+        vectorTensorAt (chains A S) (m + (n + 1))
+          (fun a => ⟨(positiveNestedFaceFamily u v k c a).1,
+            gen A S (positiveNestedFaceFamily u v k c a).1
+              (S.map (SimplexCategory.mkHom (positiveNestedFaceFamily u v k c a).2).op x)⟩) z
+          (by rw [vectorDegree, positiveNested_degreeSum]
+              have hn : m + n + (d + e) + q + 1 - (m + (n + 1)) = d + e + q := by omega
+              rw [hn]; omega)
+```
+
+§308で外側を展開し、各項に§309の指定入力次数での同じ内側評価を適用する。
+生成元の族の一致は§309、整数係数の一致は§308。
+Fintype.sum_sigmaで元の全二段添字へ戻し、退化した切断も保つ。
+この法則に、合成側の実際の係数合成の評価と§304の相殺を続けて接続する。
+nullaryの枝は含まず、その完成をこの型の前提には置かない。
+
+
+## 311. 合成側の実際の係数合成の全切断和（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+元のcompositionOnWordsを同じ複体射cochainActionへ入れ、全合成切断項で読む。
+既存の語長・次数移送・加法性・生成元の評価の法則で、各証明200行以内の見込み。
+
+```lean
+lemma positiveWord_compositeBasisWord {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) ((n + 1) + e)) :
+    positiveWord (Surjection.compositeBasisWord u v k r (by omega)) =
+      positiveCompositeCutWord u v k r
+
+lemma positiveCompositeCutTerm_eq_vectorTensorAt (S : SSet.{0}) {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) (x : S _⦋q⦌) :
+    positiveCompositeCutTerm A S u v k c x =
+      Surjection.compositionSign u v k c.1 •
+        (cutSign c.2 (positiveCompositeCutWord u v k c.1).val •
+          vectorTensorAt (chains A S) (m + (n + 1))
+            (fun a => ⟨outputDegree c.2 (positiveCompositeCutWord u v k c.1) a,
+              gen A S (outputDegree c.2 (positiveCompositeCutWord u v k c.1) a)
+                (S.map (face c.2 (positiveCompositeCutWord u v k c.1) a).op x)⟩)
+            (-((d + e + q : ℕ) : ℤ))
+            (by rw [vectorDegree, degreeSum_eq_sum, outputDegree_sum]
+                have hn : m + n + (d + e) + q + 1 - (m + (n + 1)) = d + e + q
+
+lemma cochainAction_composition_cut_sum (S : SSet.{0}) {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (x : S _⦋q⦌) :
+    (cochainAction A S (m + (n + 1))).f (-((d + e + q : ℕ) : ℤ))
+      (ιTensorObj (Surjection.complex A (m + (n + 1))) (chains A S)
+        (-((d + e : ℕ) : ℤ)) (-(q : ℤ)) (-((d + e + q : ℕ) : ℤ)) (by omega)
+        ((Surjection.complexXIso A (m + (n + 1)) (d + e)).inv
+          (Surjection.compositionOnWords A u v k) ⊗ₜ[A] gen A S q x)) =
+      ∑ c : PositiveCompositeCutIndex u v k q, positiveCompositeCutTerm A S u v k c x
+```
+
+語長は同じEq.mpの証明無関係性。合成項の次数移送は元のeqToHomを保持する。
+全和はcompositionOnWordsの定義、正arityのcompositeGenerator_eq_basis、§300の基底値を使う。
+元の全分割と全Cutを足し、退化項を除くことや合成符号の再定義は行わない。
+この後に同じ総次数の相殺を実際の左右の値へ適用する。nullaryはなお別に残す。
+
+
+## 312. 実際の外側係数交換と元の全二段切断和：検証済み、取り込み点
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§307〜310の五本を検証した。元の四射の合成を、一般S・全語次数・任意の入力単体で
+同じpositiveNestedCutCoefficientと同じ生成元の全二段切断和へ展開した。
+d*eの外側係数交換と、内側係数が前方の出力を越える交換の双方を実際の射から評価した。
+整数係数を定義し直したり、二段の式を前提として置いたりしていない。
+
+型の接続で古い略記を正しいSurjection.complexとchains A Sへ直した。
+同じ前方族の部分適用と次数射影の展開差は、元の前方次数がrflで同じであることを
+明示して閉じた。既存の公開宣言・符号・仮定は変更していない。
+各証明・ファイル200行以内、心拍数・再帰上限の増加なし。
+
+対象ビルド（/tmp/bsw16/）：
+
+- `m14-iterated-outer-cut-sum-01.log`：3,117 jobs成功、直接importerまで対象警告0。
+- `m14-nested-degrees-and-generators-01.log`：3,073 jobs成功、対象警告0。
+- `m14-iterated-nested-cut-sum-03.log`：3,224 jobs成功、対象警告0。
+
+別々の一回の鍵の小監査：
+
+- `audit-m14-iterated-outer-and-families.log`：4モジュール・29宣言。
+- `audit-m14-iterated-nested-cut-sum.log`：1モジュール・7宣言。
+
+**計5モジュール・36宣言、標準三公理のみ**、sorry・独自公理0。
+全ハンドルの終了コード0を確認し、鍵は対象ビルド/小監査の終了ごとに返した。
+main作業木・共有入口・共有監査・drafts・界面・他レーンは変更なし。
+rootビルド・大きい監査・常駐セッションなし。`git diff --check`成功。
+
+登録対象（接頭辞 `SerrePositivity.EInfinity.SimplexCuts.`）：
+
+| モジュール | 行数 |
+| --- | ---: |
+| IteratedCochainAction | 61 |
+| IteratedOuterCutSum | 70 |
+| CochainInsertionCutDegrees | 61 |
+| NestedGeneratorFamilies | 51 |
+| IteratedNestedCutSum | 74 |
+| **計** | **317** |
+
+検証済みM14実測は**24,909行**、L12aは**9,702行**。
+外枠31,000行まで実測6,091行。§311の合成側の実評価は未検証なのでここには数えない。
+その実評価と相殺を元の左右の値へ戻す工程、nullary・後続L13以降は残る。
+L12a全体は未完、一覧12/48（追加4）、goalはactive。
+約25,000行の区切りの見込みの出し直しは、次の合成側の検証の区切りで報告する。
+完備化後のP⁰は§296の未供給箇所を保持し、(c)が必要との判定にはまだ至っていない。
+3b-4aはmain未受領のままで、Tot九欄の実装はまだ始めていない。
+
+
+## 313. 合成側の実際の係数合成の全切断和：検証済み、取り込み点
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§311を検証した。元のcompositionOnWordsを同じ複体射cochainActionへ入れた値は、
+元の全分割と全CutのpositiveCompositeCutTermの和そのものである。
+合成基底語のarityと次数を明示し、テンソルの係数を外へ動かす向きを揃えた。
+基底値の書き換えでは同じarityの定義展開を許し、残る同じ括弧の差はrflで閉じた。
+元の係数合成・切断項・符号規約・公開宣言は変更していない。
+
+`m14-composite-cochain-cut-sum-04.log`：3,225 jobs成功、対象警告0。
+別の一回の鍵の `audit-m14-composite-cochain-cut-sum.log`：
+**1モジュール・11宣言、標準三公理のみ**、sorry・独自公理0。
+各証明・ファイル200行以内、心拍数・再帰上限の増加なし。
+終了コード0を確認し、鍵は対象ビルド/小監査の間だけ使用して返した。
+main作業木・共有入口・共有監査・drafts・界面・他レーンは変更なし。
+rootビルド・大きい監査・常駐セッションなし。`git diff --check`成功。
+
+登録対象：`SerrePositivity.EInfinity.SimplexCuts.CompositeCochainCutSum`、**93行**。
+§312と合わせ、この作業分は6モジュール・410行、監査47宣言・標準三公理のみ。
+M14実測は**25,002行**、L12aは**9,795行**。L09a・L09の8,991行は不変。
+L12a全体と後続は未完、一覧12/48（追加4）、goalはactive。
+次は元の合成側と二段側の和を、証明済みの正の枝の相殺へ渡す。
+
+## 314. 約25,000行の途中報告：残りの見込みの出し直し
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§32の指定の途中報告。検証済み実測**25,002行**、外枠**31,000行**、残り枠**5,998行**。
+完成済みのMay4,128行を含む同じ数え方。旧coherent経路の保持分10,216行は加えない。
+実測の伸びをL12a全体の完成やL13以降の実装として控除しない。
+
+### 314.1 L12aの残り
+
+正の全有限添字・C451/C452/C453・同じ共通次数の全項の比較・有限和の相殺は検証済み。
+実際の左右の射の生成元での全和も§312・313まで検証済み。
+その生成元での値の等式を相殺から取り出す工程、nullaryの任意qの全切断、
+一般nへの枝の接続は未完である。
+
+| L12aの残り | 新しい粗い見込み |
+| --- | ---: |
+| 正の枝の相殺を同じ指定総次数の実際の左右の値へ戻す | 80〜140 |
+| nullary：複数出現・削除raw語の退化・任意qの全切断・出力arity零 | 350〜650 |
+| nullaryを含む元の一般nの添字・固定零項の包装 | 35〜65 |
+| **L12a残り** | **465〜855** |
+
+nullaryの既存 `IntervalCuts.nullaryNestedCutEquiv` は辺の場合なので任意qへ無料に広げない。
+既存の空語分割の一意性・count_eq_one_of_empty・元のnullaryActionとAW余単位は再利用する。
+削除語が退化する枝と出力arity零を落とさず、次の型と有限点検で検収する。
+
+### 314.2 L12〜L28の残りの見込み
+
+§177の2,504〜4,664行をそのまま機械的に足さず、現在の実装と再利用APIを読み直した。
+下記は未証明の部分の紙の見込みで、数学的な行数の下限や保証された上限ではない。
+L12aの上の残りとの二重計上を避け、ここでは実複体射への線形延長や後続の作用を数える。
+
+| 残る行 | 見込み | 再利用するもの・未供給の接続 |
+| --- | ---: | --- |
+| L12 | 80〜160 | 同じ相殺・全和からの切断和の合成則の包装。nullaryの幾何は上のL12aで数える |
+| L13 | 80〜160 | unaryの唯一の切断、元のoneIsoと生成元。全qの式は未供給 |
+| L14 | 150〜300 | 既存NullaryActionの前段46行は控除済み。余単位の実評価・nullaryの射の延長は残す |
+| L15 | 90〜160 | 既存CutNaturality・SignedNaturalityと同じ複体成分の生成元外延性 |
+| L16 | 150〜280 | 元のcomplexPartialCompositionの基底値、全整数・三重テンソルの外延性 |
+| L17 | 120〜240 | L11の切断和の置換とL13の単位を同じ複体射へ延長 |
+| L18 | 50〜100 | restrictCoalgebraObj・restrictCoalgebraMapと同じTableReduction.operadMap。一般operad法則を作り直さない |
+| L19〜L21 | 450〜850 | 正規化の核・微分・自然性と反対圏のDold–Kanの同じ指定包含のホモトピー逆 |
+| L22〜L26 | 900〜1,700 | convolutionFunctor/convolutionPreは再利用。等化子・恒等単体での評価/復元・次数符号・指定比較は未供給 |
+| L27〜L28 | 350〜650 | 同じ作用の射影と全係数の切断評価。convolutionAlgebraの法則は再利用するが評価符号は残す |
+| **計** | **2,420〜4,600** | |
+
+`Operad.CoalgebraRestriction` のrestrictCoalgebraObj/Map/Functor、
+`ConvolutionAlgebra` のconvolutionAlgebra、`ConvolutionFunctor` のconvolutionFunctor/convolutionPreを
+読み直した。これらの一般operad法則を新設しない分を反映したが、
+評価/復元や実際のBF作用の式を証明済みとして引いていない。
+
+### 314.3 M14全体と31,000行との照合
+
+| 残る部分 | 下端 | 上端 |
+| --- | ---: | ---: |
+| L12a | 465 | 855 |
+| L12〜L28（L12a以外、上の表） | 2,420 | 4,600 |
+| L29〜L37 | 1,200 | 2,000 |
+| G10後の指定比較への適用 | 500 | 900 |
+| filtered塔 | 300 | 550 |
+| 同じ二重模型の作用・有限原始元・実現の比較 | 1,500 | 2,800 |
+| **既知の残りの計** | **6,385** | **11,705** |
+| **実測25,002行を含む完成見込み** | **31,387** | **36,707** |
+
+L29以降は§177の粗い見込みを据え置き、未供給のものを完成として減らしていない。
+**完備化後のP⁰の模型・単位・同じFrobeniusとの比較は、この数値にまだ含めていない。**
+§296の(a)(b)の検収が済んでおらず、新規分を0行とも、上の二重模型の枠で収まるとも扱わない。
+したがって表の31,387〜36,707行だけでM14全体が閉じるという意味ではない。
+
+紙の見込みの下端でも外枠より387行多く、上端は5,707行多い。
+**現状では31,000行以内に完成する見通しが立っていない。**
+見込みは数学的下限ではないが、旧見込み30,745行を完成上端として再掲することはしない。
+外枠を自分で上げたり、残る範囲を削って完成と定義し直したりしない。
+
+§32の「約25,000行で止まらずに途中報告」に従い、この途中報告点そのものでは止まらず、
+型つきの一覧の同じ既存構成の法則の接続を続ける。
+外枠に届くとき、新しい構成/定理・範囲外が必要なとき、または完備化の(c)が必要と判明したときは
+検証済みを保存して報告し止める規則を維持する。現在は外枠まで実測5,998行ある。
+(c)の必要性は未判定。3b-4aがmainへ入ったら§33どおりTot九欄を優先する。
+
+
+## 315. 同じ総次数の実際の左右の基底値の接続（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§313の合成側と§312の二段側の実際の値を、同じ有限同値と全項の比較へ渡す。
+既存構成の次数移送・係数移送・有限和の再添字付けの法則。各証明200行以内。
+
+```lean
+lemma vectorTensorAt_target_transport (K : Complex A) (n : ℕ)
+    (f : Fin n → Σ d : ℕ, K.X (-(d : ℤ))) (t u : ℤ)
+    (ht : -(vectorDegree K n f : ℤ) = t) (hu : -(vectorDegree K n f : ℤ) = u)
+    (htu : t = u) :
+    (eqToHom (congrArg (fun z : ℤ => (power K n).X z) htu)).hom
+      (vectorTensorAt K n f t ht) = vectorTensorAt K n f u hu
+
+lemma positiveCompositeCutTerm_eq_nested_tensor (S : SSet.{0}) {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (c : PositiveCompositeCutIndex u v k q) (x : S _⦋q⦌) :
+    positiveCompositeCutTerm A S u v k c x =
+      positiveNestedCutCoefficient u v k (positiveCompositeNestedMap u v k c) •
+        vectorTensorAt (chains A S) (m + (n + 1))
+          (fun a => ⟨(positiveNestedFaceFamily u v k (positiveCompositeNestedMap u v k c) a).1,
+            gen A S (positiveNestedFaceFamily u v k (positiveCompositeNestedMap u v k c) a).1
+              (S.map (SimplexCategory.mkHom
+                (positiveNestedFaceFamily u v k (positiveCompositeNestedMap u v k c) a).2).op x)⟩)
+          (-((d + e + q : ℕ) : ℤ))
+          (by rw [vectorDegree, positiveComposite_nested_degreeSum]
+              have hn : m + n + (d + e) + q + 1 - (m + (n + 1)) = d + e + q
+
+lemma cochainAction_composition_basis_eq_iterated (S : SSet.{0}) {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord (n + 1) e)
+    (k : Fin (m + 1)) (x : S _⦋q⦌) :
+    (cochainAction A S (m + (n + 1))).f (-((d + e + q : ℕ) : ℤ))
+      (ιTensorObj (Surjection.complex A (m + (n + 1))) (chains A S)
+        (-((d + e : ℕ) : ℤ)) (-(q : ℤ)) (-((d + e + q : ℕ) : ℤ)) (by omega)
+        ((Surjection.complexXIso A (m + (n + 1)) (d + e)).inv
+          (Surjection.compositionOnWords A u v k) ⊗ₜ[A] gen A S q x)) =
+      (iteratedCochainAction A S m (n + 1) k).f (-((d + e + q : ℕ) : ℤ))
+        (ιTensorObj (Surjection.complex A (m + 1) ⊗ Surjection.complex A (n + 1)) (chains A S)
+          (-(d : ℤ) + -(e : ℤ)) (-(q : ℤ)) (-((d + e + q : ℕ) : ℤ)) (by omega)
+          (ιTensorObj (Surjection.complex A (m + 1)) (Surjection.complex A (n + 1))
+            (-(d : ℤ)) (-(e : ℤ)) (-(d : ℤ) + -(e : ℤ)) rfl
+            ((Surjection.complexXIso A (m + 1) d).inv
+              (Surjection.basis A (m + 1) d (ULift.up u)) ⊗ₜ[A]
+              (Surjection.complexXIso A (n + 1) e).inv
+                (Surjection.basis A (n + 1) e (ULift.up v))) ⊗ₜ[A] gen A S q x))
+```
+
+最初は元のeqToHomの等式消去。第二は§303の同じ全項の等式を同じ全次数へ送る。
+第三は元の全合成切断和と全二段切断和を、同じpositiveCompositeNestedEquivのsum_compで読む。
+退化零項・全語次数・任意qを保持する。nullaryや全複体射の外延性をここで完成に数えない。
+
+
+## 316. nullaryの全単体次数の有限点検と零次元色の法則（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+同じCutを水平・垂直の経路で読み、一般qのnullaryの準備を有限点検した。
+`/tmp/bsw16/check-nullary-all-simplex-cuts.py`、語長1〜5・arity1〜3・q=0〜3、**9,794組**。
+削除色が複数回現れる5,402組では、その色の出力次数は常に正。
+出力次数零は2,617組（うち出力arity零の単位の場合1組）。
+残り2,616組で同じ一頂点を削除・復元し、全ての残り色の元の頂点列が一致した。
+削除語が退化する890組も保持し、両側の退化性を確認した。
+同じ2,616組で符号指数の整数値そのものが一致した。有限点検はLeanの全称証明ではない。
+
+一頂点削除の写像へ進む前に、零次元の指定色を元のCutで特定する法則を次の型で置く。
+既存構成の有限位置・濃度・次数の法則で、各証明200行以内の見込み。
+
+```lean
+lemma outputDegree_zero_occurrenceCount {m q r : ℕ} (s : Cut m q)
+    (w : Surjection.Word r (m + 1)) (k : Fin r) (h : outputDegree s w k = 0) :
+    Surjection.occurrenceCount w.val k = 1
+
+lemma outputDegree_zero_hi_eq_lo {m q r : ℕ} (s : Cut m q)
+    (w : Surjection.Word r (m + 1)) (k : Fin r) (h : outputDegree s w k = 0)
+    (p : Fin (m + 1)) (hp : w.val p = k) : hi s p = lo s p
+
+lemma outputDegree_zero_iff_unique_position_and_point {m q r : ℕ} (s : Cut m q)
+    (w : Surjection.Word r (m + 1)) (k : Fin r) :
+    outputDegree s w k = 0 ↔
+      ∃ p : Fin (m + 1), w.val p = k ∧
+        (∀ j : Fin (m + 1), w.val j = k → j = p) ∧ hi s p = lo s p
+```
+
+出現回数の法則は既存の色別順位区間の厳密な順序を使う。
+高さは同じ区間の位置集合が色別位置集合に含まれることと元のcard=hi-lo+1。
+最後は色別位置集合の濃度1と水平射影の全射性、逆向きは同じ集合の等式。
+削除の実際のCutの構成は、これらの法則の検証後に同じ元の座標で型を記録して進める。
+
+
+## 317. 正の実際の左右の基底値の厳密な一致：検証済み、取り込み点
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§315を検証した。同じ元の係数合成をcochainActionに入れた値と、元の四射の二段余作用の値が、
+任意の可換環A・一般S・全語次数・任意q・実際の正規化生成元で一致した。
+同じpositiveCompositeNestedEquivと全項の比較を使う。退化項を除かず、
+元の圏の同じ加群成分の厳密な等式である。余代数の合成則を仮定していない。
+
+全次数の移送では終点と両端の次数証明を明示し、元のeqToHomを保持した。
+`m14-cochain-composition-basis-02.log`：3,228 jobs成功、対象警告0。
+別の一回の鍵の `audit-m14-cochain-composition-basis.log`：
+**3モジュール・12宣言、標準三公理のみ**、sorry・独自公理0。
+各証明・ファイル200行以内、心拍数・再帰上限の増加なし。
+全ハンドルの終了コード0を確認し、鍵は対象ビルド/小監査の間だけ使用して返した。
+共有入口・共有監査・main作業木・drafts・界面・他レーンは変更なし。
+rootビルド・大きい監査・常駐セッションなし。`git diff --check`成功。
+
+登録対象（接頭辞 `SerrePositivity.EInfinity.SimplexCuts.`）：
+
+| モジュール | 行数 |
+| --- | ---: |
+| VectorTensorTargetTransport | 32 |
+| CompositeNativeTerms | 60 |
+| CochainCompositionBasis | 59 |
+| **計** | **151** |
+
+M14実測は**25,153行**、L12aは**9,946行**。
+§314の「正の枝の相殺を実際の左右の値へ戻す」80〜140行に対し151行で、上端より11行多い。
+同じ次数移送の法則とその型を明示した分で、別の数学の項目を加えてはいない。
+nullary・一般nの包装・全複体射への外延性はまだ残す。
+L12a全体は未完、一覧12/48（追加4）、goalはactive。
+外枠31,000行と§314の完成見込みの超過リスクは据え置き、残る範囲を削らない。
+§316のnullaryの法則はこの取り込み点に数えず、対象ビルドで検証中。
+
+
+## 318. nullaryの一頂点削除・挿入は既存の水平辺の同値で読む（次の型、紙のみ）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§316の有限点検を辺集合にも拡張した。同じ全9,794組のうち、非空出力の一頂点削除2,616組で、
+以下の削除辺番号・挿入辺位置が一致し、元の水平辺集合を厳密に復元した。
+削除点が始点・終点の場合も含めた。新しい経路の模型は作らず、
+既存 `BarrattEccles.horizontalInsertionEquiv` と元の `cutHorizontalEdge` を使う。
+次はL12aの同じ有限対応の定義の記法と法則の型。まだ実装・型検査済みには数えない。
+各証明200行以内の見込み。
+
+```lean
+def nullaryPointEraseCut {m q : ℕ} (s : Cut (m + 1) q) (p : Fin (m + 2)) : Cut m q :=
+  let i : Fin (m + 1) := ⟨min p.val m, by have h := Nat.min_le_right p.val m; omega⟩
+  (BarrattEccles.horizontalInsertionEquiv m q (cutHorizontalEdge s i)).symm
+    ⟨s, s.val.orderEmbOfFin_mem s.property i⟩
+
+def nullaryPointInsertionEdge {m q : ℕ} (t : Cut m q) (p : Fin (m + 2)) :
+    Fin (m + 1 + q) :=
+  if hzero : p.val = 0 then ⟨0, by omega⟩
+  else if htop : p.val = m + 1 then ⟨m + q, by omega⟩
+  else
+    let i : Fin m := ⟨p.val - 1, by have hp := p.isLt; omega⟩
+    ⟨(cutHorizontalEdge t i).val + 1, by have hb := (cutHorizontalEdge t i).isLt; omega⟩
+
+def nullaryPointInsertCut {m q : ℕ} (t : Cut m q) (p : Fin (m + 2)) : Cut (m + 1) q :=
+  (BarrattEccles.horizontalInsertionEquiv m q (nullaryPointInsertionEdge t p) t).val
+
+lemma nullaryPointInsertCut_hi_eq_lo {m q : ℕ} (t : Cut m q) (p : Fin (m + 2)) :
+    hi (nullaryPointInsertCut t p) p = lo (nullaryPointInsertCut t p) p
+
+lemma nullaryPointEraseCut_insert {m q : ℕ} (t : Cut m q) (p : Fin (m + 2)) :
+    nullaryPointEraseCut (nullaryPointInsertCut t p) p = t
+
+lemma nullaryPointInsertCut_erase {m q : ℕ} (s : Cut (m + 1) q) (p : Fin (m + 2))
+    (h : hi s p = lo s p) :
+    nullaryPointInsertCut (nullaryPointEraseCut s p) p = s
+
+def nullaryPointCutEquiv (m q : ℕ) (p : Fin (m + 2)) :
+    Cut m q ≃ {s : Cut (m + 1) q // hi s p = lo s p}
+```
+
+削除する水平辺の番号はmin(p,m)。内部では一頂点の直後の辺、終端では直前の辺を削る。
+挿入位置は始点で0、終点でm+q、内部では元の直前の水平辺の直後。
+この同じ辺集合を読む点検は成功したが、Leanの逆性・hi/loの全称証明はまだ供給していない。
+区間の色の削除と残りの頂点列・元のcutSignへの適用は、この同値の後の法則として型を記す。
+出力arity零はこのCutの型の外なので、元のnullaryAction・AW余単位の枝で別に扱い、捨てない。
+
+
+## 319. nullaryの零次元色の三法則：検証済み、取り込み点
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§316の三つの法則を実装した。元の色の出力次数が零なら、語の出現は一回だけであり、
+指定された区間のhiとloは一致する。逆に唯一の出現の同じ一頂点なら出力次数は零。
+同じ色別位置集合と同じ水平射影を使い、退化性を追加仮定にしていない。
+依存するFinの型を書き換える代わりに、元の順位と零次数を数値として比較した。
+
+`m14-nullary-zero-color-02.log`：1,142 jobs成功、対象警告0。
+別の一回の鍵の `audit-m14-nullary-zero-color.log`：
+**1モジュール・11宣言、標準三公理のみ**、sorry・独自公理0。
+各証明・ファイル200行以内、心拍数・再帰上限の増加なし。
+有限点検は§316・318の全9,794組で別に記録し、Leanの全称証明と混同しない。
+終了コード0を確認し、鍵は対象ビルド/小監査の間だけ使用して返した。
+共有入口・共有監査・main作業木・drafts・界面・他レーンは変更なし。
+rootビルド・大きい監査・常駐セッションなし。`git diff --check`成功。
+
+登録対象：`SerrePositivity.EInfinity.SimplexCuts.NullaryZeroColor`、**80行**。
+M14実測は**25,233行**、L12aは**10,026行**。
+§312・313・317・319のこの作業分は計10モジュール・641行、
+小監査は計70宣言、標準三公理のみ。
+§318の一頂点の有限対応は紙の型のままであり、実装や逆性の証明済みへ数えない。
+nullaryの全対応・実余単位の評価・一般nの包装、後続の全複体射などは未完。
+L12a全体は未完、一覧12/48（追加4）、goalはactive。
+
+約25,000行の途中報告と完成見込みは§314。外枠31,000行は変更しない。
+既知の工程の見込みでも外枠超過のリスクがあり、完備化後のP⁰はその数字にまだ含まれない。
+完備化の(a)(b)の未供給の比較を仮定に足さず、(c)が必要と判明した場合の停止規則を保持する。
+3b-4aのmain取り込みは未受領のまま。次は§318の同じ水平辺の挿入/削除による有限対応。
+
+
+## 320. 同じ水平辺の前後の挿入と既存の全水平境界（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§318の内部の挿入は元の辺の直後、既存horizontalBoundaryFaceEquivは直前に挿入する。
+元の辺が属しているので二つの大きい辺集合は同じであり、同じCutの厳密な一致として照合する。
+まず有限辺集合でこの既存構成の法則を証明する。N=1〜7・全部分集合・全所属辺の769例で
+前後のinsertPositionが同じ集合になることを点検した。各証明200行以内の見込み。
+
+```lean
+lemma insertPosition_adjacent_of_mem {N : ℕ} (S : Finset (Fin N)) (a : Fin N) (ha : a ∈ S) :
+    BarrattEccles.insertPosition S a.castSucc = BarrattEccles.insertPosition S a.succ
+
+lemma horizontalInsertionEquiv_adjacent_of_mem {m q : ℕ} (t : Cut m q)
+    (a : Fin (m + q)) (ha : a ∈ t.val) :
+    (BarrattEccles.horizontalInsertionEquiv m q (Fin.cast (by omega) a.castSucc) t).val =
+      (BarrattEccles.horizontalInsertionEquiv m q (Fin.cast (by omega) a.succ) t).val
+```
+
+その後の照合・一頂点の法則の型は次。いずれも既存の同じ有限対応の法則である。
+
+```lean
+lemma nullaryPointInsertCut_eq_horizontalBoundaryFace {m q : ℕ}
+    (t : Cut m q) (p : Fin (m + 2)) :
+    nullaryPointInsertCut t p = (horizontalBoundaryFaceEquiv m q (p, t)).val.1
+
+lemma horizontalBoundaryFaceEquiv_hi_eq_lo (m q : ℕ) (p : Fin (m + 2)) (t : Cut m q) :
+    hi (horizontalBoundaryFaceEquiv m q (p, t)).val.1 p =
+      lo (horizontalBoundaryFaceEquiv m q (p, t)).val.1 p
+```
+
+最初と最後の挿入は既存のendpointの同値そのもの。
+内部では同じ昇順の水平辺の前後の挿入の等式を使い、元のCutに一致させる。
+一頂点の法則は既存boundaryVertexKind_eq_horizontal_gapと
+horizontalBoundaryFaceEquiv_horizontalから読む。
+置き換えて済ませず、§318の元の挿入位置のCutとの厳密な等式を供給してから再利用する。
+
+
+## 321. 挿入辺の三位置の評価と元の水平辺番号（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§318・320の逆性を同じ挿入辺で読むため、既存構成の三つの評価と水平辺の昇順番号を
+証明分割として取り出す。各証明200行以内の見込み。
+
+```lean
+lemma nullaryPointInsertionEdge_first {m q : ℕ} (t : Cut m q) :
+    nullaryPointInsertionEdge t 0 = 0
+
+lemma nullaryPointInsertionEdge_last {m q : ℕ} (t : Cut m q) :
+    nullaryPointInsertionEdge t (Fin.last (m + 1)) = (⟨m + q, by omega⟩ : Fin (m + 1 + q))
+
+lemma nullaryPointInsertionEdge_interior {m q : ℕ} (t : Cut m q) (i : Fin m) :
+    nullaryPointInsertionEdge t i.castSucc.succ =
+      Fin.cast (by omega) (cutHorizontalEdge t i).succ
+
+lemma cutHorizontalEdge_eq_of_horizontal {m q : ℕ} (s : Cut m q)
+    (a : Fin (m + q)) (ha : a ∈ s.val) (i : Fin m)
+    (hi : s.horizontal a.castSucc = i.castSucc) : cutHorizontalEdge s i = a
+
+lemma nullaryPointInsertionEdge_mark_val {m q : ℕ} (t : Cut m q) (p : Fin (m + 2)) :
+    (horizontalBoundaryFaceEquiv m q (p, t)).val.2.val =
+      (nullaryPointInsertionEdge t p).val + if p.val = m + 1 then 1 else 0
+```
+
+三つの辺位置は元の定義の条件分岐を評価するだけ。
+番号の法則は元の辺集合のorderIsoOfFinの逆とhorizontal_before_cutHorizontalEdge。
+最後は同じ始点・内部・終点の水平境界の指定頂点を読み、元の挿入辺位置へ合わせる。
+辺を選び直したり、別の有限対応を同値として代用したりしない。
+
+
+## 322. 元の挿入辺の番号と一頂点の全Cutの逆性（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§318の両逆と同値を実装する前に、同じ有限対応の二つの証明分割を記す。
+既存構成の昇順番号と全射性の法則で、各証明200行以内の見込み。
+
+```lean
+lemma nullaryPointInsertCut_edge {m q : ℕ} (t : Cut m q) (p : Fin (m + 2)) :
+    cutHorizontalEdge (nullaryPointInsertCut t p)
+      ⟨min p.val m, by have h := Nat.min_le_right p.val m; omega⟩ =
+        nullaryPointInsertionEdge t p
+
+lemma nullaryPointInsertCut_surjective {m q : ℕ} (s : Cut (m + 1) q) (p : Fin (m + 2))
+    (h : hi s p = lo s p) : ∃ t : Cut m q, nullaryPointInsertCut t p = s
+```
+
+最初は§321の同じ指定頂点を、終端では挿入辺の直後、他では直前として読む。
+既存step_of_memと水平辺の昇順番号の法則から、削除する辺が元の挿入辺と厳密に一致する。
+これでhorizontalInsertionEquivの同じ左逆を適用する。
+全射性は元の区間のmin'の頂点を水平境界として読み、既存horizontalBoundaryFaceEquivの逆へ渡す。
+その同値が保つ元の水平座標がpであるため、同じ指定位置へ戻る。
+右逆はこの全射性と左逆から得る。別のCutや選び直した対応を逆として置くものではない。
+
+
+## 323. 元の削除辺の等式を所属証明つきの逆へ移す（法則の型、実装前）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§322の左逆で同じ水平辺の等式を使う際、逆写像の入力の所属証明も依存する。
+その移送を、次の既存構成の法則として分割する。証明は辺の等式の消去で200行以内。
+
+```lean
+lemma horizontalInsertionEquiv_symm_congr {m q : ℕ} (s : Cut (m + 1) q)
+    (a b : Fin (m + 1 + q)) (ha : a ∈ s.val) (hb : b ∈ s.val) (h : a = b) :
+    (BarrattEccles.horizontalInsertionEquiv m q a).symm ⟨s, ha⟩ =
+      (BarrattEccles.horizontalInsertionEquiv m q b).symm ⟨s, hb⟩
+```
+
+辺の番号を選び直さず、§322で証明する同じ挿入辺の等式を渡す。
+右逆のための既存水平境界の逆像は、同じ等式を持つ変数に一般化して扱い、
+大きい同値の定義を証明の途中で展開し続けない。
+
+
+## 324. 削除しない色の全頂点列と退化raw語の零項（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§318の両逆を元の頂点列へ適用する。既存の同じ削除座標と色選択の法則で、各証明200行以内。
+§316の全9,794組（削除の前後2,616組、退化削除890組を含む）の有限点検に対応する型は次。
+
+```lean
+lemma nullaryPointInsertCut_verticesList_remaining {m q r : ℕ} (t : Cut m q)
+    (p : Fin (m + 2)) (v : Fin (m + 2) → Fin r) (c : Fin r) (hc : v p ≠ c) :
+    verticesList t (Surjection.erase v p) c = verticesList (nullaryPointInsertCut t p) v c
+
+lemma nullaryPointEraseCut_verticesList_remaining {m q r : ℕ} (s : Cut (m + 1) q)
+    (p : Fin (m + 2)) (h : hi s p = lo s p)
+    (v : Fin (m + 2) → Fin r) (c : Fin r) (hc : v p ≠ c) :
+    verticesList (nullaryPointEraseCut s p) (Surjection.erase v p) c = verticesList s v c
+
+lemma erased_word_nondegenerate_of_point_cut_nondegenerate {m q r : ℕ}
+    (s : Cut (m + 1) q) (v : Surjection.Word r (m + 2)) (p : Fin (m + 2))
+    (hpoint : hi s p = lo s p) (hcut : Nondegenerate s v.val) :
+    Surjection.Nondegenerate (Surjection.erase v.val p)
+```
+
+元の水平境界の全削除座標とdeletedTrace_eq_of_horizontal_coordinatesを再利用し、
+削除色以外ではdeletedVerticesListが元の全verticesListであることを使う。
+削除語の退化については既存other_face_not_mono_horizontal_degenerateが同じ残り色の
+非単射面を与えるので、元のfaces_mono_iffと矛盾する。新しい退化の幾何を作り直さない。
+色をまだrenumberせず元の同じ色で述べる。nullaryの実出力のarityへ移すときに
+同じ残り色の埋め込みと照合する工程は別に残す。
+
+## 325. 一頂点の全Cutの同値と残り色の全頂点列（検証済み）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§318〜324の元の挿入・削除の両逆、水平境界との厳密な一致、残り色の全頂点列、退化削除の零項を検証した。
+新規9本487行。M14実測25,720行、うちL12a 10,513行、外枠31,000行まで5,280行。
+L12aは未完了。nullaryはここまで567行で、端点・caesura・符号、色の番号の移送、実際の余単位と全arityの包装が残る。
+§314の完成見込みが外枠に収まらないという注意はそのまま。完備化後のP⁰の未評価分も含め、収まるとの主張はしていない。
+
+登録候補（すべて `SerrePositivity.EInfinity.SimplexCuts.`）：
+
+|モジュール|行数|
+|---|---:|
+|NullaryPointCuts|34|
+|AdjacentHorizontalInsertions|58|
+|NullaryPointInsertionValues|50|
+|HorizontalEdgeRanks|30|
+|NullaryPointBoundaryComparison|71|
+|NullaryPointMark|44|
+|NullaryPointInverse|113|
+|NullaryPointVertexLists|52|
+|NullaryPointNondegenerate|35|
+
+対象ビルドは `m14-nullary-point-inverse-02.log`（2,271 jobs）と
+`m14-nullary-point-vertices-01.log`（2,314 jobs）まで成功、対象の警告0。
+小監査 `audit-m14-nullary-point-equivalence.log`（7本62宣言）と
+`audit-m14-nullary-point-vertices.log`（2本4宣言）は標準三公理のみ、sorry・独自公理0。
+各ビルド・監査ごとに鍵を取り返却。共有の入口・監査は編集していない。
+
+次の符号の照合に先立ち、surjective・nondegenerateを仮定しないraw語でも有限点検した。
+長さ2〜5、色数1〜3、q=0〜2、一度だけ出る削除色で区間が一点となる5,090組について、
+残る全区間の両端、全caesura、元の整数の符号指数が削除後と一致した。
+これはLeanの証明の代用ではなく、次の型を元の構成の法則として切り出す前の点検。
+
+## 326. 一点削除の全区間の両端と区切り（実装前の法則の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§325の5,090組の点検に対応し、同じ切断の両端と同じraw語のcaesuraを比較する。
+以下は既存構成の法則・証明分割で、一覧の項目を増やさない。各証明200行以内。
+
+```lean
+lemma lo_eq_of_coordinate_cover {m n q : ℕ} (s : Cut m q) (t : Cut n q)
+    (ρ : Fin (n + q + 1) → Fin (m + q + 1)) (φ : Fin (n + 1) → Fin (m + 1))
+    (hφ : Function.Injective φ)
+    (hh : ∀ j, s.horizontal (ρ j) = φ (t.horizontal j))
+    (hv : ∀ j, s.vertical (ρ j) = t.vertical j)
+    (i : Fin (n + 1))
+    (hcover : ∀ j, s.horizontal j = φ i → ∃ k, ρ k = j) : lo t i = lo s (φ i)
+
+lemma lo_eq_of_horizontal_deleted_coordinates {m q : ℕ} (s : Cut (m + 1) q) (t : Cut m q)
+    (k : Fin (m + 1 + q + 1)) (a : Fin (m + 2)) (hk : s.horizontal k = a)
+    (hh : ∀ j : Fin (m + q + 1),
+      s.horizontal (k.succAbove (Fin.cast (by omega : m + q + 1 = m + 1 + q) j)) =
+        a.succAbove (t.horizontal j))
+    (hv : ∀ j : Fin (m + q + 1),
+      s.vertical (k.succAbove (Fin.cast (by omega : m + q + 1 = m + 1 + q) j)) = t.vertical j)
+    (i : Fin (m + 1)) : lo t i = lo s (a.succAbove i)
+
+lemma nullaryPointEraseCut_endpoints {m q : ℕ} (s : Cut (m + 1) q) (p : Fin (m + 2))
+    (h : hi s p = lo s p) (i : Fin (m + 1)) :
+    lo (nullaryPointEraseCut s p) i = lo s (p.succAbove i) ∧
+      hi (nullaryPointEraseCut s p) i = hi s (p.succAbove i)
+
+lemma not_caesura_of_unique {l r : ℕ} (v : Fin (l + 1) → Fin r) (p : Fin (l + 1))
+    (hu : ∀ j, v j = v p → j = p) : ¬ Surjection.Caesura v p
+
+lemma caesura_erase_unique {l r : ℕ} (v : Fin (l + 1) → Fin r) (p : Fin (l + 1))
+    (hu : ∀ j, v j = v p → j = p) (i : Fin l) :
+    Surjection.Caesura (Surjection.erase v p) i ↔ Surjection.Caesura v (p.succAbove i)
+```
+
+左端は既存右端の証明を同じfiberのmin'とlo_eq_of_boundで読むだけ。
+両端は元のhorizontalBoundaryFaceEquivの全削除座標を使う。
+区切りはcaesura_erase_iff_witnessを使い、唯一の削除色は将来の同色位置にならないことを読む。
+
+## 327. 一点削除の区間重みと元の整数符号（実装前の法則の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§326の全端点・caesuraから、同じ元の整数の指数を比較する。各証明200行以内。
+有限点検は§325の5,090組で指数の完全な等式まで行った。偶奇だけへの弱化はしない。
+以下で `hu : ∀ j, v j = v p → j = p` は、元の削除色が一度だけ出ること。
+
+```lean
+lemma intervalLength_unique_point {m q r : ℕ} (s : Cut (m + 1) q)
+    (v : Fin (m + 2) → Fin r) (p : Fin (m + 2))
+    (h : hi s p = lo s p) (hu : ∀ j, v j = v p → j = p) : intervalLength s v p = 0
+
+lemma intervalLength_erase_unique_point {m q r : ℕ} (s : Cut (m + 1) q)
+    (v : Fin (m + 2) → Fin r) (p : Fin (m + 2))
+    (h : hi s p = lo s p) (hu : ∀ j, v j = v p → j = p) (i : Fin (m + 1)) :
+    intervalLength (nullaryPointEraseCut s p) (Surjection.erase v p) i =
+      intervalLength s v (p.succAbove i)
+
+lemma positionExponent_erase_unique_point {m q r : ℕ} (s : Cut (m + 1) q)
+    (v : Fin (m + 2) → Fin r) (p : Fin (m + 2))
+    (h : hi s p = lo s p) (hu : ∀ j, v j = v p → j = p) :
+    positionExponent (nullaryPointEraseCut s p) (Surjection.erase v p) = positionExponent s v
+
+lemma permutationExponent_erase_unique_point {m q r : ℕ} (s : Cut (m + 1) q)
+    (v : Fin (m + 2) → Fin r) (p : Fin (m + 2))
+    (h : hi s p = lo s p) (hu : ∀ j, v j = v p → j = p) :
+    permutationExponent (nullaryPointEraseCut s p) (Surjection.erase v p) =
+      permutationExponent s v
+
+lemma cutSign_erase_unique_point {m q r : ℕ} (s : Cut (m + 1) q)
+    (v : Fin (m + 2) → Fin r) (p : Fin (m + 2))
+    (h : hi s p = lo s p) (hu : ∀ j, v j = v p → j = p) :
+    cutSign (nullaryPointEraseCut s p) (Surjection.erase v p) = cutSign s v
+```
+
+削除位置の位置指数はcaesuraでないため零。二重和の削除位置の全項は区間重み零で消える。
+残りの順序は元のFin.succAboveのstrictMono、色の値は同じerase_apply。
+新しい符号規約や別の写像へ置き換えず、元の有限和の再添字だけを使う。
+
+
+## 328. 一点削除の全端点・区切り・元の整数符号（検証済み）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§326〜327の法則6本を検証した。元の順序・全区間の端点・全caesuraを保ち、
+位置指数と逆転指数はそれぞれ自然数として厳密に一致する。
+符号の偶奇やホモトピー圏の等式への置き換えはしていない。L12aは未完了。
+
+|登録候補（すべてSimplexCuts）|行数|
+|---|---:|
+|DeletedIntervalMinima|38|
+|HorizontalDeletionMinima|44|
+|NullaryPointEndpoints|33|
+|NullaryPointCaesuras|35|
+|NullaryPointWeights|32|
+|NullaryPointSigns|54|
+
+今回236行。M14実測25,956行、L12a 10,749行、外枠31,000行まで5,044行。
+対象ビルド m14-nullary-point-endpoints-01.log（2,311 jobs）と
+m14-nullary-point-signs-02.log（2,313 jobs）は成功。未使用simp引数は修正し対象警告0。
+小監査 audit-m14-nullary-point-signs.log は6本14宣言・標準三公理のみ、sorry・独自公理0。
+ビルドと監査は各回で鍵を返却。共有の入口・監査は変更していない。
+
+## 329. 残り色を元の順序で番号づけ直す法則（実装前）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+nullaryの出力arityへ戻すとき、色の順序単射で元の符号と頂点列を比較する。
+削除色kの補集合にはFin.succAboveOrderEmb kを使う。
+まず以下を一般の順序単射の既存構成の法則として切り出す（各証明200行以内）。
+有限点検：色数1〜3、移し先は4まで、長さ1〜4の全raw語と全昇順の色埋め込み940組で、
+全caesuraと全色対の狭義順序が保存されることを確認した。
+
+```lean
+lemma caesura_comp_injective {l r R : ℕ} (v : Fin l → Fin r) (φ : Fin r → Fin R)
+    (hφ : Function.Injective φ) (i : Fin l) :
+    Surjection.Caesura (φ ∘ v) i ↔ Surjection.Caesura v i
+
+lemma intervalLength_comp_injective {m q r R : ℕ} (s : Cut m q)
+    (v : Fin (m + 1) → Fin r) (φ : Fin r → Fin R) (hφ : Function.Injective φ)
+    (i : Fin (m + 1)) : intervalLength s (φ ∘ v) i = intervalLength s v i
+
+lemma cutSign_comp_strictMono {m q r R : ℕ} (s : Cut m q)
+    (v : Fin (m + 1) → Fin r) (φ : Fin r → Fin R) (hφ : StrictMono φ) :
+    cutSign s (φ ∘ v) = cutSign s v
+
+lemma verticesList_comp_injective {m q r R : ℕ} (s : Cut m q)
+    (v : Fin (m + 1) → Fin r) (φ : Fin r → Fin R) (hφ : Function.Injective φ)
+    (c : Fin r) : verticesList s (φ ∘ v) (φ c) = verticesList s v c
+```
+
+区切りは同色の単射性、逆転指数はhφ.lt_iff_lt、頂点列は元のcolorPositionsの等式だけを使う。
+Surjection.Wordの全射性を、色数を増やすこの補助に要求しない。
+
+## 330. 実際の空語合成の位置と色を同じ削除へ戻す（実装前の法則の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§329の色の埋め込みと実際のnullaryRawWordをつなぐため、既存の二つの位置の表示を比較する。
+新しい有限対応を選ばず、元のcompositeOuterPositionの狭義単調性と有限自己順序単射の一意性を使う。
+削除色が一度だけ出る場合の型を明示する。各証明200行以内。
+
+```lean
+lemma succAbove_remainingPosition_nullary (m : ℕ) (k : Fin (m + 1))
+    (a : {j : Fin (m + 1) // j ≠ k}) :
+    k.succAbove (BarrattEccles.remainingPosition m 0 k a) = a.val
+
+lemma compositeOuterPosition_nullary_erase {m d : ℕ} (u : Surjection.BasisWord (m + 1) d)
+    (v : Surjection.BasisWord 0 0) (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) 0)
+    (p : Fin (m + 1 + d)) (hu : ∀ j, u.val j = k → j = p) (i : Fin (m + d))
+    (hne : u.val (Fin.cast (by omega : m + d + 1 = m + 1 + d)
+      ((Fin.cast (by omega : m + 1 + d = m + d + 1) p).succAbove i)) ≠ k) :
+    IntervalCuts.compositeOuterPosition u v k r
+      (Fin.cast (by omega : m + d + 1 = m + 1 + d)
+        ((Fin.cast (by omega : m + 1 + d = m + d + 1) p).succAbove i)) hne = i
+```
+
+hneqは残る位置が削除色でないことの証明で、huから証明する同じ命題。
+それを別の数学的な条件として最終定理へ足さない。
+残り全位置を元の順序でcompositeOuterPositionへ送り、同じFin(m+d)の自己順序単射を得る。
+既存StrictMono.apply_eqからその写像は各iを固定する。色はremainingPositionの元の番号公式を読むだけ。
+
+## 331. 完備化後のP⁰の三案：有限arityで延ばす作用とprimitiveを分ける（紙のみ）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§267・282・296の続き。A4の定義を読み直したが、directPerfectionValueは依然として
+実際の反射prismCAlgCompletionを施した頂点であり、普通の完備化した複体を定義として
+差し替えることはできない。仮定・drafts・界面・完備化のLeanは追加していない。
+
+### 331.1 (a) 有限arityの作用の連続延長に必要な一様性
+
+項別平坦かつK平坦な厳密B線形BE模型Kが得られた場合を検収する。
+固定したarity、operad次数、入力の各次数に対する作用はB多重線形写像である。
+入力x_iとy_iがそれぞれd^rを法として一致するなら、有限の望遠和
+
+    T(x_1,…,x_s)-T(y_1,…,y_s)
+      = Σ_i T(y_1,…,y_{i-1},x_i-y_i,x_{i+1},…,x_s)
+
+の各項はd^r倍。この合同の指数は入力元に依存しない。
+同じd進完備化の普遍性を各固定次数で使えば、有限個の入力の積上で同じ作用を延ばす候補となる。
+operadの鎖の入力は有限の線形結合なので、operad全体の無限和を完備化の外で足す必要はない。
+元の作用の単位・置換・合成・微分の有限の恒等式も、同じ合同と分離性で検収する筋がある。
+ただしこれは候補の証明の筋であり、必要な厳密BE完備化の構成・分離性・nativeな比較の
+新定理を48本の「法則」として自己承認して実装したという意味ではない。
+
+P⁰そのものはB線形である必要はない。p入力の対角評価ではb倍がb^p倍になる。
+元のFrobeniusのd↦d^pも、商の添字r↦prの共終な変更として記録する。
+B線形自己射であるとの追加条件を置いて一致させない。
+
+### 331.2 (a) primitiveの延長では「閉元だけ」の恒等式は不足
+
+上の有限多重線形の合同は、L43bの同じ明示的原始元が**全鎖の有限式**であり、
+微分にdaを含む項を残した恒等式まで供給する場合に適用する。
+閉元ごとに境界の逆像を選んだ関数へは適用できない。
+また、完成した鎖の任意の閉元をrawな閉元の極限と仮定しない。
+全鎖の式を延ばしてから閉条件を入れる必要があるという§296の穴は残る。
+元のnativeなFrobeniusの辺をこの同じ模型の射で表す比較も未供給。
+作用を延ばせることと、その比較が同じ辺を表すことを分けて検収する。
+
+### 331.3 (b) 単位での消去が代わりに使えるか
+
+κ[t]→κ[[t]]のπ_0での非全射性は変わらず、coconnective性だけでの単位の消去はできない。
+商の塔への射による検出は別案だが、Tor由来の元とlim¹を扱う§223.3の義務が残る。
+特に(a)の作用の連続性だけから、π_nを逆極限と交換したり、商での同じP⁰の比較を
+無料で得たりはしない。この案に追加のtorsion消滅仮定を足さない。
+
+### 331.4 (c) coherentなP⁰が必要と判明したか
+
+今確認できる不足は、(a)の模型と指定辺の比較および全鎖のprimitiveの検収、
+(b)の実際のderived商での同じ演算・同じFrobeniusの比較である。
+有限arityの連続延長の筋はcoherentなSp値P⁰を前提としていないので、
+現時点では両案が不可能との結論や(c)への移行は出さない。
+全鎖の式が作れない／指定対象と辺へ比較できないと分かった時点では、§32どおり止める。
+これらの未実装分は§314の完成見込みの数値にも未計上で、外枠に収まると見込んで隠さない。
+
+## 332. 実際の空語のraw合成語の値を同じ削除色へ戻す（実装前）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§330の元の位置の等式を、同じnullaryRawWord_outerPositionへ適用する。
+以下は既存構成の値の法則で、証明200行以内。huから残る位置の色≠kを証明し、
+§330のhneを最終主張の仮定として残さない。
+
+```lean
+lemma nullaryRawWord_erase_value {m d : ℕ} (u : Surjection.BasisWord (m + 1) d)
+    (v : Surjection.BasisWord 0 0) (k : Fin (m + 1))
+    (r : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) 0)
+    (p : Fin (m + 1 + d)) (hu : ∀ j, u.val j = k → j = p) (i : Fin (m + d)) :
+    k.succAbove (IntervalCuts.nullaryRawWord u v k r i) =
+      u.val (Fin.cast (by omega : m + d + 1 = m + 1 + d)
+        ((Fin.cast (by omega : m + 1 + d = m + d + 1) p).succAbove i))
+```
+
+符号の照合には§329の順序単射の法則を使う。
+compositeOuterPositionの式を結果の添字iの下へ依存するまま書き換えず、
+同じraw語へ評価する合同の等式を通してから元の色の値を読む。
+
+## 333. 削除後の実際の色づけへ移す符号と全頂点列（実装前の法則の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§327・329を同じ残り色の族へ適用する。hvは§332で実際のnullaryRawWordに対して
+証明した色の値の等式に対応する条件で、任意の別の族の選択を結論にしない。
+型のサイズを保つためraw語の長さの自然数をここではm+2と書く。
+各証明200行以内、同じ既存構成の値と符号の照合法則。
+
+```lean
+lemma nullaryPointEraseCut_cutSign_relabel {m q r : ℕ} (s : Cut (m + 1) q)
+    (v : Fin (m + 2) → Fin (r + 1)) (w : Fin (m + 1) → Fin r)
+    (p : Fin (m + 2)) (k : Fin (r + 1))
+    (hpoint : hi s p = lo s p) (hu : ∀ j, v j = v p → j = p)
+    (hv : ∀ i, k.succAbove (w i) = v (p.succAbove i)) :
+    cutSign (nullaryPointEraseCut s p) w = cutSign s v
+
+lemma nullaryPointEraseCut_verticesList_relabel {m q r : ℕ} (s : Cut (m + 1) q)
+    (v : Fin (m + 2) → Fin (r + 1)) (w : Fin (m + 1) → Fin r)
+    (p : Fin (m + 2)) (k : Fin (r + 1)) (hp : v p = k)
+    (hpoint : hi s p = lo s p)
+    (hv : ∀ i, k.succAbove (w i) = v (p.succAbove i)) (c : Fin r) :
+    verticesList (nullaryPointEraseCut s p) w c = verticesList s v (k.succAbove c)
+```
+
+元の圏の値の等式であり、符号も全頂点列も新しい選択へ変えない。
+
+## 334. 一点削除の前後の正規化零項（実装前の法則の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+元の正規化零項を保つため、同じ削除座標によるpairの単射性を両方向へ移す。
+これはL12aの既存の非退化性の定義を同じ有限集合の削除で読む法則。各証明200行以内。
+有限点検は§316の元の全切断の退化判定と、§325のraw語の一点削除に対応する。
+
+```lean
+lemma nondegenerate_iff_horizontal_deleted_coordinates {m q r : ℕ}
+    (s : Cut (m + 1) q) (t : Cut m q) (v : Fin (m + 2) → Fin r)
+    (k : Fin (m + 1 + q + 1)) (a : Fin (m + 2)) (hk : s.horizontal k = a)
+    (hh : ∀ j : Fin (m + q + 1),
+      s.horizontal (k.succAbove (Fin.cast (by omega : m + q + 1 = m + 1 + q) j)) =
+        a.succAbove (t.horizontal j))
+    (hv : ∀ j : Fin (m + q + 1),
+      s.vertical (k.succAbove (Fin.cast (by omega : m + q + 1 = m + 1 + q) j)) = t.vertical j)
+    (hu : ∀ j, v j = v a → j = a) :
+    Nondegenerate t (Surjection.erase v a) ↔ Nondegenerate s v
+
+lemma nullaryPointEraseCut_nondegenerate_iff {m q r : ℕ} (s : Cut (m + 1) q)
+    (v : Fin (m + 2) → Fin r) (p : Fin (m + 2)) (hpoint : hi s p = lo s p)
+    (hu : ∀ j, v j = v p → j = p) :
+    Nondegenerate (nullaryPointEraseCut s p) (Surjection.erase v p) ↔ Nondegenerate s v
+```
+
+元のpairの削除位置以外はhh・hvで同じ削除後のpairへ対応する。
+削除頂点の色が残るpairの色と一致すればhuによってa.succAboveの値がaとなり矛盾する。
+従って正規化で零となる場合も含めた同値を得る。
+
+## 335. 残り色の番号を詰め直した正規化零項（実装前の法則の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§334の同値を、実際の色の番号を詰め直した語へ適用するための既存構成の法則。
+§329と同じ単射を使い、各証明200行以内。新しい非退化性を定義しない。
+
+```lean
+lemma nondegenerate_comp_injective {m q r R : ℕ} (s : Cut m q)
+    (v : Fin (m + 1) → Fin r) (φ : Fin r → Fin R) (hφ : Function.Injective φ) :
+    Nondegenerate s (φ ∘ v) ↔ Nondegenerate s v
+
+lemma nullaryPointEraseCut_nondegenerate_relabel {m q r : ℕ} (s : Cut (m + 1) q)
+    (v : Fin (m + 2) → Fin (r + 1)) (w : Fin (m + 1) → Fin r)
+    (p : Fin (m + 2)) (k : Fin (r + 1))
+    (hpoint : hi s p = lo s p) (hu : ∀ j, v j = v p → j = p)
+    (hv : ∀ i, k.succAbove (w i) = v (p.succAbove i)) :
+    Nondegenerate (nullaryPointEraseCut s p) w ↔ Nondegenerate s v
+```
+
+最初はpairの第一成分だけへの単射の合成。後者はその同値を元のFin.succAboveへ適用し、
+hvで同じ削除語へ戻して§334を使うだけ。
+
+
+## 336. 実際の空語合成の位置・色・元の正規化零項（検証済み、取り込み点）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§329〜335の型を検証した。実際のnullaryRawWordとcompositeOuterPositionを使い、
+同じ一出現を削除する位置の厳密な一致、元の順序で詰めた残り色の値、
+同じ全頂点列と元の整数符号、元の正規化零項の両方向の同値までつながった。
+実際の余単位を作用の四つの射へ通す計算と全arityの包装はまだ残り、L12a完了とはしない。
+
+|登録候補（すべてSerrePositivity.EInfinity.SimplexCuts）|行数|
+|---|---:|
+|OrderedColorEmbeddings|47|
+|NullaryRawPositions|72|
+|NullaryRawValues|44|
+|NullaryPointRelabel|50|
+|HorizontalDeletionNondegenerate|63|
+|NullaryPointNormalization|31|
+|NullaryPointRelabelNormalization|45|
+
+今回352行、M14実測26,308行、L12a 11,101行、外枠31,000行まで4,692行。
+対象ビルドはm14-ordered-color-embeddings-03.log（1,140 jobs）、
+m14-nullary-raw-positions-03.log（2,802 jobs）、m14-nullary-raw-values-01.log（2,803 jobs）、
+m14-nullary-point-relabel-01.log（2,316 jobs）、
+m14-nullary-point-normalization-01.log（2,309 jobs）、
+m14-nullary-point-relabel-normalization-02.log（2,310 jobs）まで成功、対象警告0。
+小監査audit-m14-nullary-relabel-normalization-02.logは7本31宣言・標準三公理のみ、sorry・独自公理0。
+それぞれ有限の一回のビルド・監査ごとに鍵を取り返却した。共有入口・監査の変更なし。
+
+完備化後のP⁰の三案の追加の紙の検討は§331。
+(a)の固定arity・次数の有限多重線形式の合同と、全鎖のprimitiveの延長を区別した。
+指定native対象とFrobeniusの比較は未証明。(b)の単位の全射性は依然として一般に偽。
+両方が不可能と判明した(c)とはまだ判定していない。追加仮定で穴を隠していない。
+
+## 337. 零arityの実際の作用を元の余単位へ戻す（実装前の法則の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+nullaryの二段余作用を計算する前に、全整数のcomponentから作った実際のcochainActionの
+零arityが、定義で指定した元のnullaryActionと同じ複体射であることを取り出す。
+これはcomponentの定義とtensorLiftの斉次成分を読む既存構成の法則で、各証明200行以内。
+
+```lean
+lemma cochainAction_zero_eq_nullaryAction (A : Type u) [CommRing A] (S : SSet.{0}) :
+    cochainAction A S 0 = nullaryAction A S
+```
+
+同じ直和の全整数の斉次成分で比較し、元のcurryされた加群テンソル射へ戻す。
+ホモトピー圏へ移さず、実際の複体射の等式で使う。
+
+## 338. 同じ空語係数の零次augmentationの値（実装前の法則の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+元のAW余単位へ通す係数の値を取り出す。次数延長の指定比較と、
+元のChainComplex.toSingle₀Equivの零次成分の法則だけを使う。各証明200行以内。
+
+```lean
+lemma nullaryCoefficientAugmentation_zero_apply (A : Type u) [CommRing A]
+    (w : Surjection.degreeModule A 0 0) :
+    (singleObjXSelf (.up ℤ) 0 (𝟙_ (ModuleCat A))).hom
+      ((nullaryCoefficientAugmentation A).f 0 ((Surjection.complexXIso A 0 0).inv w)) =
+      Surjection.zeroAugmentation A 0 w
+
+lemma nullaryCoefficientAugmentation_basis_zero (A : Type u) [CommRing A]
+    (v : Surjection.BasisWord 0 0) :
+    (singleObjXSelf (.up ℤ) 0 (𝟙_ (ModuleCat A))).hom
+      ((nullaryCoefficientAugmentation A).f 0 ((Surjection.complexXIso A 0 0).inv
+        (Surjection.basis A 0 0 (ULift.up v)))) = (1 : A)
+```
+
+複体の台の選び直しや係数のaugmentationの変更は行わない。
+
+## 339. 零arityの実際の複体射と空語係数の値（検証済み、取り込み点）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§337〜338の3法則を検証した。全整数のtensorLiftの零arityは元のnullaryActionと
+同じ複体射であり、指定次数延長とsingleの比較で元の空語係数のaugmentation値を読む。
+元の圏での厳密な等式を使い、ホモトピー圏へ弱めていない。
+
+登録候補（すべてSerrePositivity.EInfinity.SimplexCuts）：
+
+|モジュール|行数|
+|---|---:|
+|CochainNullaryAction|36|
+|NullaryCoefficientValues|48|
+
+今回84行。M14実測26,392行、L12a 11,185行、外枠31,000行まで4,608行。
+L12aは未完了で、実際のnullaryの余単位の二段適用の値・全有限和・全arityの包装が残る。
+一覧の法則の証明分割であり、新しいIDは追加していない。
+
+対象ビルドm14-cochain-nullary-action-01.log（2,612 jobs）、
+m14-nullary-coefficient-values-03.log（2,342 jobs）が成功し、対象警告0。
+小監査audit-m14-cochain-nullary-values.logは2本4宣言・標準三公理のみ、sorry・独自公理0。
+ビルド・監査ごとに鍵を取り返却。mainの作業木・共有入口・共有監査は変更していない。
+§325以降の登録候補は計24本、今回の検証はすべて各対象と小監査だけで行った。
+
+並行する完備化の三案は§331に記した。(c)が必要との判定にはまだ至っていない。
+§314の完成見込みが外枠に収まらない懸念と完備化の未評価分は残し、
+完成を主張したり追加仮定で隠したりしていない。次は元の余単位の実際の二段値から再開する。
+
+## 340. 実際の空語作用の基底値をAW余単位へ戻す（実装前の法則の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§337〜338を使い、同じ空語基底の全整数の作用を元のAW余単位へ戻す。
+以下は同じ構成の評価の法則で、各証明200行以内。新しい作用は定義しない。
+
+```lean
+lemma cochainAction_nullary_basis_apply (A : Type u) [CommRing A] (S : SSet.{0})
+    (v : Surjection.BasisWord 0 0) (t : ℤ) (y : (chains A S).X t) :
+    (cochainAction A S 0).f t
+      (ιTensorObj (Surjection.complex A 0) (chains A S) 0 t t (zero_add t)
+        ((Surjection.complexXIso A 0 0).inv
+          (Surjection.basis A 0 0 (ULift.up v)) ⊗ₜ[A] y)) =
+      (AlexanderWhitney.cochainCounit A S).f t y
+
+lemma cochainAction_nullary_basis_generator_zero (A : Type u) [CommRing A] (S : SSet.{0})
+    (v : Surjection.BasisWord 0 0) (x : S _⦋0⦌) :
+    (cochainAction A S 0).f 0
+      (ιTensorObj (Surjection.complex A 0) (chains A S) 0 0 0 rfl
+        ((Surjection.complexXIso A 0 0).inv
+          (Surjection.basis A 0 0 (ULift.up v)) ⊗ₜ[A] gen A S 0 x)) =
+      (singleObjXSelf (.up ℤ) 0 (𝟙_ (ModuleCat A))).inv (1 : A)
+
+lemma cochainAction_nullary_basis_eq_zero_of_ne_zero (A : Type u) [CommRing A]
+    (S : SSet.{0}) (v : Surjection.BasisWord 0 0) (t : ℤ) (ht : t ≠ 0)
+    (y : (chains A S).X t) :
+    (cochainAction A S 0).f t
+      (ιTensorObj (Surjection.complex A 0) (chains A S) 0 t t (zero_add t)
+        ((Surjection.complexXIso A 0 0).inv
+          (Surjection.basis A 0 0 (ULift.up v)) ⊗ₜ[A] y)) = 0
+```
+
+最初はaugmentationの基底値一を左単位子の逆の式へ戻す。
+零次生成元は同じcochainCounit_generator_zero、零以外の次数は元のsingle複体の零対象で消す。
+指定した係数、同じ入力の全次数、同じ元の複体射を保持する。
+
+## 341. 元の出力族への実際の空語作用の代入（実装前の法則の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+内側作用の値を仮定として残さず、§340の実際の値を既存の斉次テンソル評価へ渡す。
+以下は同じ射の評価の法則・証明分割で、各証明200行以内。
+零次のhxは選んだ因子が同じ零単体の生成元であるという値の等式。
+外側の全切断和へ適用するときは実際のface族から供給し、最終合成則の仮定に足さない。
+
+```lean
+lemma tensorCoInsertionAction_cochain_nullary_positive (A : Type u) [CommRing A]
+    (S : SSet.{0}) {m : ℕ} (v : Surjection.BasisWord 0 0) (i : Fin (m + 1))
+    (f : Fin (m + 1) → Σ d : ℕ, (chains A S).X (-(d : ℤ)))
+    (hpos : 0 < (f i).1) (z : ℤ)
+    (hz : 0 + (-(vectorDegree (chains A S) i.val (prefixFamily f i) : ℤ) +
+      (-((f i).1 : ℤ) + -(vectorDegree (chains A S) (m - i.val) (suffixFamily f i) : ℤ))) = z) :
+    (tensorCoInsertionAction (chains A S) (Surjection.complex A 0) m 0 i
+      (cochainAction A S 0)).f z
+      (ιTensorObj (Surjection.complex A 0) (power (chains A S) (m + 1)) 0
+        (-(vectorDegree (chains A S) i.val (prefixFamily f i) : ℤ) +
+          (-((f i).1 : ℤ) + -(vectorDegree (chains A S) (m - i.val) (suffixFamily f i) : ℤ))) z hz
+        ((Surjection.complexXIso A 0 0).inv (Surjection.basis A 0 0 (ULift.up v)) ⊗ₜ[A]
+          vectorTensorAt (chains A S) (m + 1) f _
+            (by have h := vectorDegree_family_blocks (chains A S) f i; omega))) = 0
+```
+
+零次の版は同じ左辺でhposを `x : S _⦋0⦌` と `hx : f i = ⟨0, gen A S 0 x⟩` に替え、
+右辺を次にする（これが Lean の同じ終域の型）：
+
+```lean
+vectorTensorAt (chains A S) (m + 0)
+  (insertionFamily f (fun j : Fin 0 => Fin.elim0 j) i) z
+  (by rw [vectorDegree_insertionFamily]
+      have hi : (f i).1 = 0 := congrArg Sigma.fst hx
+      change -(vectorDegree (chains A S) i.val (prefixFamily f i) + 0 +
+        vectorDegree (chains A S) (m - i.val) (suffixFamily f i) : ℕ) = z
+      omega)
+```
+
+正次数はFin 0添字の空和を既存vector_sum_applyへ渡す。
+零次は同じvector_applyへ空の族と整数係数一を渡す。
+内側係数次数は零なので、元の二つのKoszul交換符号はここで一となる。
+
+
+## 342. 外側の実際の全切断和を内側の全arityで読む（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+既存iteratedCochainAction_basis_outer_cut_sumの証明は、外側の正arityの作用の
+全切断和と、内側の射への線形性だけを使う。内側の正arityを必要としないため、
+公開宣言を変更せず同じ法則を全arityの新しい名前で取り出す。各証明200行以内。
+
+```lean
+lemma iteratedCochainAction_basis_outer_cut_sum_all (S : SSet.{0}) {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord n e)
+    (k : Fin (m + 1)) (x : S _⦋q⦌) (z : ℤ)
+    (hz : -(d : ℤ) + -(e : ℤ) + -(q : ℤ) = z) :
+    (iteratedCochainAction A S m n k).f z
+      (ιTensorObj (Surjection.complex A (m + 1) ⊗ Surjection.complex A n) (chains A S)
+        (-(d : ℤ) + -(e : ℤ)) (-(q : ℤ)) z hz
+        (ιTensorObj (Surjection.complex A (m + 1)) (Surjection.complex A n)
+          (-(d : ℤ)) (-(e : ℤ)) (-(d : ℤ) + -(e : ℤ)) rfl
+          ((Surjection.complexXIso A (m + 1) d).inv
+            (Surjection.basis A (m + 1) d (ULift.up u)) ⊗ₜ[A]
+            (Surjection.complexXIso A n e).inv
+              (Surjection.basis A n e (ULift.up v))) ⊗ₜ[A] gen A S q x)) =
+      (-(d : ℤ) * -(e : ℤ)).negOnePow •
+        ∑ s : Cut (m + d) q, cutSign s (positiveWord u).val •
+          (tensorCoInsertionAction (chains A S) (Surjection.complex A n) m n k
+            (cochainAction A S n)).f z
+            (ιTensorObj (Surjection.complex A n) (power (chains A S) (m + 1))
+              (-(e : ℤ)) (-(d : ℤ) + -(q : ℤ)) z (by omega)
+              ((Surjection.complexXIso A n e).inv
+                (Surjection.basis A n e (ULift.up v)) ⊗ₜ[A]
+                vectorTensorAt (chains A S) (m + 1)
+                  (fun a => ⟨outputDegree s (positiveWord u) a,
+                    gen A S (outputDegree s (positiveWord u) a)
+                      (S.map (face s (positiveWord u) a).op x)⟩)
+                  (-(d : ℤ) + -(q : ℤ))
+                  (by rw [vectorDegree, degreeSum_eq_sum, outputDegree_sum]
+                      have hnat : m + d + q + 1 - (m + 1) = d + q
+```
+
+ここでは内側射の値を計算したとはしない。空語の場合の各項には§341の実際の評価を適用する。
+外側・内側の元の係数交換と全切断、全整数の同じ終域を保つ。
+
+
+## 343. 空語の零次評価のSigma入力を一般化する証明分割（実装前）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§341のhxを、依存する整数次数の下で直接書き換え続けない。
+同じ値の等式を持つ独立なSigma入力yへ一般化し、等式を消去して§340を適用する。
+次が局所的な証明分割の型（gは§341の空の族）。新しい数学・仮定・一覧IDはない。
+
+```lean
+∀ (y : Σ d : ℕ, (chains A S).X (-(d : ℤ)))
+  (hy : y = ⟨0, gen A S 0 x⟩)
+  (hg : -(vectorDegree (chains A S) 0 g : ℤ) = 0 + -(y.1 : ℤ)),
+  (cochainAction A S 0).f (0 + -(y.1 : ℤ))
+    (ιTensorObj (Surjection.complex A 0) (chains A S) 0 (-(y.1 : ℤ))
+      (0 + -(y.1 : ℤ)) rfl
+      ((Surjection.complexXIso A 0 0).inv (Surjection.basis A 0 0 (ULift.up v)) ⊗ₜ[A] y.2)) =
+    (1 : ℤ) • vectorTensorAt (chains A S) 0 g (0 + -(y.1 : ℤ)) hg
+```
+
+正次数の分岐では同じ整数次数 `0 + -((f i).1 : ℤ)` の零対象を直接使い、
+先に加算を消した別の次数へ変換する過程でgetColimitCoconeの内部を展開しない。
+
+
+## 344. 元の入力次数で読む空語代入の法則（実装前）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+外側切断和の指定入力次数へ§341を適用するため、同じ全次数の等式を引数に明示する。
+既存vectorDegree_family_blocksで二つの入力次数が等しいことを示し、その等式を消去するだけ。
+各証明200行以内。正規化零項や空語の値の仮定を新たに足さない。
+
+```lean
+lemma tensorCoInsertionAction_cochain_nullary_positive_at (A : Type u) [CommRing A]
+    (S : SSet.{0}) {m : ℕ} (v : Surjection.BasisWord 0 0) (i : Fin (m + 1))
+    (f : Fin (m + 1) → Σ d : ℕ, (chains A S).X (-(d : ℤ)))
+    (hpos : 0 < (f i).1) (p z : ℤ)
+    (hp : -(vectorDegree (chains A S) (m + 1) f : ℤ) = p)
+    (hz : 0 + p = z) :
+    (tensorCoInsertionAction (chains A S) (Surjection.complex A 0) m 0 i
+      (cochainAction A S 0)).f z
+      (ιTensorObj (Surjection.complex A 0) (power (chains A S) (m + 1)) 0 p z hz
+        ((Surjection.complexXIso A 0 0).inv (Surjection.basis A 0 0 (ULift.up v)) ⊗ₜ[A]
+          vectorTensorAt (chains A S) (m + 1) f p hp)) = 0
+```
+
+```lean
+lemma tensorCoInsertionAction_cochain_nullary_zero_at (A : Type u) [CommRing A]
+    (S : SSet.{0}) {m : ℕ} (v : Surjection.BasisWord 0 0) (i : Fin (m + 1))
+    (f : Fin (m + 1) → Σ d : ℕ, (chains A S).X (-(d : ℤ)))
+    (x : S _⦋0⦌) (hx : f i = ⟨0, gen A S 0 x⟩) (p z : ℤ)
+    (hp : -(vectorDegree (chains A S) (m + 1) f : ℤ) = p)
+    (hz : 0 + p = z) :
+    (tensorCoInsertionAction (chains A S) (Surjection.complex A 0) m 0 i
+      (cochainAction A S 0)).f z
+      (ιTensorObj (Surjection.complex A 0) (power (chains A S) (m + 1)) 0 p z hz
+        ((Surjection.complexXIso A 0 0).inv (Surjection.basis A 0 0 (ULift.up v)) ⊗ₜ[A]
+          vectorTensorAt (chains A S) (m + 1) f p hp)) =
+      vectorTensorAt (chains A S) (m + 0)
+        (insertionFamily f (fun j : Fin 0 => Fin.elim0 j) i) z
+        (by rw [vectorDegree_insertionFamily]
+            have hi : (f i).1 = 0 := congrArg Sigma.fst hx
+            change -(vectorDegree (chains A S) i.val (prefixFamily f i) + 0 +
+              vectorDegree (chains A S) (m - i.val) (suffixFamily f i) : ℕ) = z
+            have hf := vectorDegree_family_blocks (chains A S) f i
+            omega)
+```
+
+
+
+## 345. 削除色が複数出るときの実際の二段余作用の零性（実装前）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+全切断について指定色の出力次数零なら既存outputDegree_zero_occurrenceCountが一出現を与える。
+従って一出現でない分岐では全項が§344の正次数の零性で消える。各証明200行以内。
+同じ元の四つの射を合成した実際の二段余作用について、型は次。
+
+```lean
+lemma iteratedCochainAction_nullary_repeated_basis_eq_zero (S : SSet.{0}) {m d q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord 0 0)
+    (k : Fin (m + 1)) (hcount : Surjection.occurrenceCount u.val k ≠ 1) (x : S _⦋q⦌) (z : ℤ)
+    (hz : -(d : ℤ) + -(0 : ℤ) + -(q : ℤ) = z) :
+    (iteratedCochainAction A S m 0 k).f z
+      (ιTensorObj (Surjection.complex A (m + 1) ⊗ Surjection.complex A 0) (chains A S)
+        (-(d : ℤ) + -(0 : ℤ)) (-(q : ℤ)) z hz
+        (ιTensorObj (Surjection.complex A (m + 1)) (Surjection.complex A 0)
+          (-(d : ℤ)) (-(0 : ℤ)) (-(d : ℤ) + -(0 : ℤ)) rfl
+          ((Surjection.complexXIso A (m + 1) d).inv
+            (Surjection.basis A (m + 1) d (ULift.up u)) ⊗ₜ[A]
+            (Surjection.complexXIso A 0 0).inv
+              (Surjection.basis A 0 0 (ULift.up v))) ⊗ₜ[A] gen A S q x)) = 0
+```
+
+positiveWordの語長の等式移送は既存positiveWord_occurrenceCountで比較する。
+空語合成の左辺も既存compositionOnWords_nullary_of_count_ne_oneで零となるので、
+最終の合成則のこの分岐には追加仮定や非零項だけへの制限を入れない。
+
+
+## 346. 反復出現の分岐の元の圏での実際の合成則（実装前）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§345の実際の右辺の零性と、既存compositionOnWords_nullary_of_count_ne_oneを連結する。
+単に一方の零性を仮定する形でなく、元の係数合成を作用させた左辺と四射の右辺の等式を述べる。
+これはL12aの同じ合成則の分岐、各証明200行以内。
+
+```lean
+lemma cochainAction_composition_nullary_repeated_eq_iterated (S : SSet.{0}) {m d q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord 0 0)
+    (k : Fin (m + 1)) (hcount : Surjection.occurrenceCount u.val k ≠ 1) (x : S _⦋q⦌) (z : ℤ)
+    (hz : -(d : ℤ) + -(0 : ℤ) + -(q : ℤ) = z) :
+    (cochainAction A S (m + 0)).f z
+      (ιTensorObj (Surjection.complex A (m + 0)) (chains A S)
+        (-(d : ℤ)) (-(q : ℤ)) z (by omega)
+        ((Surjection.complexXIso A (m + 0) d).inv
+          (Surjection.compositionOnWords A u v k) ⊗ₜ[A] gen A S q x)) =
+    (iteratedCochainAction A S m 0 k).f z
+      (ιTensorObj (Surjection.complex A (m + 1) ⊗ Surjection.complex A 0) (chains A S)
+        (-(d : ℤ) + -(0 : ℤ)) (-(q : ℤ)) z hz
+        (ιTensorObj (Surjection.complex A (m + 1)) (Surjection.complex A 0)
+          (-(d : ℤ)) (-(0 : ℤ)) (-(d : ℤ) + -(0 : ℤ)) rfl
+          ((Surjection.complexXIso A (m + 1) d).inv
+            (Surjection.basis A (m + 1) d (ULift.up u)) ⊗ₜ[A]
+            (Surjection.complexXIso A 0 0).inv
+              (Surjection.basis A 0 0 (ULift.up v))) ⊗ₜ[A] gen A S q x))
+```
+
+## 347. 完備化後のP⁰の三案：(a)を完備部分圏の余極限として読む場合（紙のみ）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+A2/DerivedPrismaticCohomology.leanのprismCompleteReflection・prismCompletionUnitを読み直した。
+実際のdraftsはL ⊣ Iというnativeな反射の型を置いているが、その反射自体はまだsorryである。
+以下は**反射としての仕様からの形式的な検討**で、本体で証明済みの比較とはしない。
+
+(a)で「各項を完備化した模型」を取るとき、二つの余極限を区別する必要がある。
+
+- ambient CAlg_Aで項ごとの完備化の余極限を取る形は、完備化と実現の交換が必要。
+  §223の反例・不足はそのままで、項を完備化したというだけでは指定対象にならない。
+- 完備部分圏CompleteCAlgの中で余極限を取る形では、同じnative図式Mについて
+  L(colim_CAlg M) ≃ colim_CompleteCAlg(L ∘ M) となるのが左随伴の普遍性の筋。
+  同じ反射の単位から比較するので、選び直した頂点の単なる同型へ弱めない。
+  同じ図式のFrobeniusの辺を関手的に送れば、その指定辺の比較もこの形式論で追う対象となる。
+
+後者は完備化後の頂点を表す**候補の場所**を与えるが、M14のP⁰の比較までは与えない。
+忘却・mod p・π_nがこの完備部分圏の幾何学的実現をそのままambientな実現へ送るとは
+仮定できないためである。特にMayの演算を項ごとに比較しただけでπ_n上の等式を余極限へ
+移すことはできない。完備部分圏の余極限をambientな余極限と読み替えてこの穴を消さない。
+従って§331の実現後の項別平坦・K平坦な厳密模型と全鎖のprimitiveを検収する案とは
+別の形式的な切り方であり、後者の主要な義務を自動的に短縮するとは数えない。
+
+(b)の単位の全射性の反例は依然として有効で、この形式論は単位のπ_n全射性を証明しない。
+(c)については、完備部分圏での模型表示の形式論と演算の計算を分けた結果、
+現状の不足をcoherentなP⁰が不可避との判定へ飛躍させない。
+全鎖のprimitiveと指定対象・辺の比較、または実際のderived商での検出を閉じられないと
+判明した場合には§32どおり止める。反射や実現保存を新しい仮定としてA4へ足さない。
+この紙の節のためのLean・界面・drafts・G10の部品は作っていない。
+
+
+## 348. 実際の空語作用と反復出現分岐の合成則（検証済み、取り込み点）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§340〜346を検証した。全整数の実際の空語基底の値を元のAW余単位へ戻し、
+同じ出力族の零次因子の消去・正次数の零性、内側の全arityの外側切断和まで得た。
+指定色が一出現でない分岐は全Cutで指定色の出力次数が正となるため実際の右辺が零。
+元の係数合成を作用させた左辺も零なので、同じ二つの実際の射の値が元の圏で一致した。
+退化項を捨てる仮定や、内側射の評価の仮定を最終の合成則へ残していない。
+
+|登録候補（すべてSerrePositivity.EInfinity.SimplexCuts）|行数|
+|---|---:|
+|CochainNullaryValues|88|
+|CochainNullaryInsertion|105|
+|CochainNullaryInsertionDegrees|68|
+|IteratedOuterCutSumAll|56|
+|NullaryRepeatedCochainAction|63|
+|NullaryRepeatedComposition|48|
+
+今回428行。M14実測26,820行、L12a 11,613行、外枠31,000行まで4,180行。
+L12aは未完了。一出現の実際の合成値の全和の比較、零出力arity、
+全arityの同じ有限対応の包装が残る。完成見込みが外枠に収まらないという§314以降の注意は残す。
+
+対象ビルドm14-cochain-nullary-values-02.log（2,669 jobs）、
+m14-cochain-nullary-insertion-degrees-01.log（3,006 jobs）、
+m14-cochain-nullary-insertion-02.logのIteratedOuterCutSumAll（3,072 jobsの対象部分）、
+m14-nullary-repeated-composition-02.log（3,082 jobs）まで成功。対象の最終警告0。
+小監査audit-m14-nullary-repeated-composition.logは6本30宣言・標準三公理のみ、sorry・独自公理0。
+各ビルド・監査ごとに鍵を取り返却し、共有入口・監査・mainの作業木は変更していない。
+
+完備化後のP⁰の三案の追加の紙の比較は§347。反射の仕様からの完備部分圏の余極限表示と、
+Mayの演算をπ_nへ運ぶ義務を区別した。(c)が不可避との判定はまだ出していない。
+
+## 349. 一点削除の残り色の指定面を同じSigma型で比較する（実装前）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+一出現の分岐の実際のテンソルを照合するため、§333の全頂点列の等式を
+出力次数と指定面の同じSigma型の等式へ戻す。既存構成の法則・証明分割で各証明200行以内。
+
+```lean
+lemma faceData_eq_of_vertexList {q : ℕ}
+    (F G : Σ t : ℕ, Fin (t + 1) →o Fin (q + 1))
+    (h : List.ofFn F.2 = List.ofFn G.2) : F = G
+
+lemma nullaryPointEraseCut_faceData_relabel {m q r : ℕ} (s : Cut (m + 1) q)
+    (v : Surjection.Word (r + 1) (m + 2)) (w : Surjection.Word r (m + 1))
+    (p : Fin (m + 2)) (k : Fin (r + 1)) (hp : v.val p = k)
+    (hpoint : hi s p = lo s p)
+    (hv : ∀ i, k.succAbove (w.val i) = v.val (p.succAbove i)) (c : Fin r) :
+    (⟨outputDegree (nullaryPointEraseCut s p) w c,
+      vertices (nullaryPointEraseCut s p) w c⟩ : Σ t : ℕ, Fin (t + 1) →o Fin (q + 1)) =
+      ⟨outputDegree s v (k.succAbove c), vertices s v (k.succAbove c)⟩
+```
+
+最初は同じ列の長さから始域次数を比較し、List.ofFnの各値で順序写像を比較する。
+後者は既存simplexVertexList_faceで元の全頂点列へ戻し、§333を使う。
+次数や面を選び直すものではなく、HEqだけを最終出力に残さない。
+
+## 350. 一出現削除の同じ全出力順序と零次因子（実装前の法則の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§349の成分を、元のoperadInsertionEquivによる全出力順序へ戻す。
+さらに選んだ零次の面が実際の零単体の生成元を与えることをSigma型で取り出す。
+いずれも既存構成の法則で各証明200行以内。
+
+```lean
+lemma nullaryPointEraseCut_faceFamily_relabel {m q r : ℕ} (s : Cut (m + 1) q)
+    (v : Surjection.Word (r + 1) (m + 2)) (w : Surjection.Word r (m + 1))
+    (p : Fin (m + 2)) (k : Fin (r + 1)) (hp : v.val p = k)
+    (hpoint : hi s p = lo s p)
+    (hv : ∀ i, k.succAbove (w.val i) = v.val (p.succAbove i)) :
+    (fun c : Fin r => (⟨outputDegree (nullaryPointEraseCut s p) w c,
+      vertices (nullaryPointEraseCut s p) w c⟩ : Σ t : ℕ, Fin (t + 1) →o Fin (q + 1))) =
+      IntervalCuts.insertionFamily
+        (fun a => (⟨outputDegree s v a, vertices s v a⟩ :
+          Σ t : ℕ, Fin (t + 1) →o Fin (q + 1)))
+        (fun j : Fin 0 => Fin.elim0 j) k
+
+lemma faceData_generator_zero (A : Type u) [CommRing A] (S : SSet.{0}) {q : ℕ}
+    (F : Σ t : ℕ, Fin (t + 1) →o Fin (q + 1)) (hF : F.1 = 0) (x : S _⦋q⦌) :
+    ∃ y : S _⦋0⦌,
+      (⟨F.1, gen A S F.1 (S.map (SimplexCategory.mkHom F.2).op x)⟩ :
+        Σ d : ℕ, (chains A S).X (-(d : ℤ))) = ⟨0, gen A S 0 y⟩
+```
+
+全出力順序は元のoperadInsertionEquivの逆の全射性を使い、空の内側Fin 0を除く。
+残り色の成分は§330の同じremainingPositionをk.succAboveで戻す法則と§349を組み合わせる。
+生成元はFの次数を一般化して零次の等式を消去するだけで、逆像を仮定しない。
+
+
+## 351. 一点削除の同じ生成元の全族と符号付き実テンソル（実装前）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§350の同じ面の全族を、元の正規化生成元の族と指定整数次数の実テンソルへ運ぶ。
+各証明200行以内、既存構成の評価と照合の法則。符号は元の整数で比較し、
+終域の同じ全次数の証明ht・ht′は実際の次数和から供給する型を明示する。
+
+```lean
+lemma nullaryPointEraseCut_generatorFamily_relabel (A : Type u) [CommRing A] (S : SSet.{0})
+    {m q r : ℕ} (s : Cut (m + 1) q)
+    (v : Surjection.Word (r + 1) (m + 2)) (w : Surjection.Word r (m + 1))
+    (p : Fin (m + 2)) (k : Fin (r + 1)) (hp : v.val p = k)
+    (hpoint : hi s p = lo s p)
+    (hv : ∀ i, k.succAbove (w.val i) = v.val (p.succAbove i)) (x : S _⦋q⦌) :
+    (fun c : Fin r =>
+      (⟨outputDegree (nullaryPointEraseCut s p) w c,
+        gen A S (outputDegree (nullaryPointEraseCut s p) w c)
+          (S.map (face (nullaryPointEraseCut s p) w c).op x)⟩ :
+        Σ d : ℕ, (chains A S).X (-(d : ℤ)))) =
+      IntervalCuts.insertionFamily
+        (fun a => ⟨outputDegree s v a,
+          gen A S (outputDegree s v a) (S.map (face s v a).op x)⟩)
+        (fun j : Fin 0 => Fin.elim0 j) k
+```
+
+```lean
+lemma nullaryPointEraseCut_signedTensor_relabel (A : Type u) [CommRing A] (S : SSet.{0})
+    {m q r : ℕ} (s : Cut (m + 1) q)
+    (v : Surjection.Word (r + 1) (m + 2)) (w : Surjection.Word r (m + 1))
+    (p : Fin (m + 2)) (k : Fin (r + 1)) (hp : v.val p = k)
+    (hpoint : hi s p = lo s p) (hu : ∀ j, v.val j = v.val p → j = p)
+    (hv : ∀ i, k.succAbove (w.val i) = v.val (p.succAbove i)) (x : S _⦋q⦌) (z : ℤ)
+    (ht : -(vectorDegree (chains A S) r
+      (fun c => ⟨outputDegree (nullaryPointEraseCut s p) w c,
+        gen A S (outputDegree (nullaryPointEraseCut s p) w c)
+          (S.map (face (nullaryPointEraseCut s p) w c).op x)⟩) : ℤ) = z)
+    (ht' : -(vectorDegree (chains A S) (r + 0)
+      (IntervalCuts.insertionFamily
+        (fun a => ⟨outputDegree s v a,
+          gen A S (outputDegree s v a) (S.map (face s v a).op x)⟩)
+        (fun j : Fin 0 => Fin.elim0 j) k) : ℤ) = z) :
+    cutSign (nullaryPointEraseCut s p) w.val •
+      vectorTensorAt (chains A S) r
+        (fun c => ⟨outputDegree (nullaryPointEraseCut s p) w c,
+          gen A S (outputDegree (nullaryPointEraseCut s p) w c)
+            (S.map (face (nullaryPointEraseCut s p) w c).op x)⟩) z ht =
+      cutSign s v.val • vectorTensorAt (chains A S) (r + 0)
+        (IntervalCuts.insertionFamily
+          (fun a => ⟨outputDegree s v a,
+            gen A S (outputDegree s v a) (S.map (face s v a).op x)⟩)
+          (fun j : Fin 0 => Fin.elim0 j) k) z ht'
+```
+
+
+## 352. 一点削除の指定面・生成元の全族・符号付き実テンソル（検証済み）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§349〜351を検証した。元の頂点列の一致から出力次数と指定面の同じSigma型の等式を得て、
+元のoperadInsertionEquivの順序で全族へまとめた。同じ正規化生成元の全族と、
+同じ指定整数次数の元の整数符号付き実テンソルの厳密な一致までつながる。
+同じ零次の面から来る零単体の生成元も存在を証明し、内側作用の値の仮定として残さない。
+
+|登録候補（すべてSerrePositivity.EInfinity.SimplexCuts）|行数|
+|---|---:|
+|NullaryPointFaceData|49|
+|NullaryPointFaceFamilies|43|
+|ZeroFaceGenerator|29|
+|NullaryPointGeneratorFamilies|49|
+|NullaryPointSignedTensors|53|
+
+今回223行。M14実測27,043行、L12a 11,836行、外枠31,000行まで3,957行。
+L12aは未完了。実際の一出現のraw合成語への型の移送、正規化零項を含めた全有限和、
+零出力arityと全arityの包装は残る。既存構成の法則・証明分割だけで一覧IDは増やしていない。
+
+対象ビルドm14-nullary-point-face-families-01.log（2,917 jobs）、
+m14-nullary-point-signed-tensors-02.log（2,920 jobs）は成功、対象警告0。
+小監査audit-m14-nullary-point-signed-tensors.logは5本6宣言・標準三公理のみ、sorry・独自公理0。
+ビルド・監査ごとに鍵を取り返却。共有入口・監査・mainの作業木は変更していない。
+登録候補と実測はこの表のとおり。作業木の未検証のLeanは残していない。
+
+mainはこの時点で391b2a0d2のままで、§33の3b-4a完成の取り込みはまだない。
+取り込まれたら指示どおりM14を区切ってTotの9欄を先にする（段0は§260）。
+完備化後のP⁰の三案は§347の比較を維持し、(c)への判定はまだ出していない。
+
+## 353. 一出現の零次出力の全Cutの同値と全有限和（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§318の元の挿入・削除を、実際の零次出力という部分型へ包装する。
+指定色が一出現のとき、出力次数零と同じ区間が一点であることは既存§316の両方向の式。
+以下はL12aの同じ有限対応と再添字の法則。新しい対応を選び直さない。各証明200行以内。
+実装前に§316の有限点検を再実行した：全9,794 Cut、零次出力2,617、非空な残り位置の
+両逆と指数の完全一致2,616、退化削除890を確認（空の出力の特別な一例は別途残る）。
+
+```lean
+lemma outputDegree_zero_iff_point_of_unique {m q r : ℕ} (s : Cut (m + 1) q)
+    (v : Surjection.Word r (m + 2)) (p : Fin (m + 2)) (k : Fin r)
+    (hp : v.val p = k) (hu : ∀ j, v.val j = k → j = p) :
+    outputDegree s v k = 0 ↔ hi s p = lo s p
+
+def nullaryOutputCutEquiv (m q r : ℕ) (v : Surjection.Word r (m + 2))
+    (p : Fin (m + 2)) (k : Fin r) (hp : v.val p = k) (hu : ∀ j, v.val j = k → j = p) :
+    Cut m q ≃ {s : Cut (m + 1) q // outputDegree s v k = 0}
+
+lemma sum_nullaryOutputCuts {M : Type*} [AddCommMonoid M] {m q r : ℕ}
+    (v : Surjection.Word r (m + 2)) (p : Fin (m + 2)) (k : Fin r)
+    (hp : v.val p = k) (hu : ∀ j, v.val j = k → j = p)
+    (F : Cut m q → M) (G : Cut (m + 1) q → M)
+    (hpair : ∀ t, F t = G (nullaryPointInsertCut t p))
+    (hzero : ∀ s, outputDegree s v k ≠ 0 → G s = 0) :
+    ∑ t, F t = ∑ s, G s
+```
+
+同値の順方向は元のnullaryPointInsertCut、逆は元のnullaryPointEraseCut。
+和は実際の零次出力の部分型とその補集合に分け、補集合の全項を零として保持する。
+hpair・hzeroは再添字の一般法則の入力で、実際の合成則へ仮定として残すものではない。
+
+
+## 354. 全Cut再添字に元の実際の空語作用の値を入れる（実装前）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+既存cutTensorの入力族にcutGeneratorFamilyという記法を付ける。新しい作用・数学的構成ではない。
+§353のhpair・hzeroを、元の符号・面の族の等式と、§344の実際の空語作用の値で供給する。
+実際の全和の結論には内側射の評価を仮定として残さない。各証明200行以内。
+原典BF §2.2.6、同じ全整数の終域・全Cut・退化零項を保つ。型は次。
+
+```lean
+def cutGeneratorFamily (A : Type u) [CommRing A] (S : SSet.{0}) {m q r : ℕ}
+    (s : Cut m q) (v : Surjection.Word r (m + 1)) (x : S _⦋q⦌) :
+    Fin r → Σ d : ℕ, (chains A S).X (-(d : ℤ)) :=
+  fun a => ⟨outputDegree s v a,
+    gen A S (outputDegree s v a) (S.map (face s v a).op x)⟩
+
+```
+
+```lean
+lemma vectorDegree_cutGeneratorFamily (A : Type u) [CommRing A] (S : SSet.{0}) {m q r : ℕ}
+    (s : Cut m q) (v : Surjection.Word r (m + 1)) (x : S _⦋q⦌) :
+    vectorDegree (chains A S) r (cutGeneratorFamily A S s v x) = m + q + 1 - r
+```
+
+```lean
+lemma sum_nullary_cochain_cut_terms (A : Type u) [CommRing A] (S : SSet.{0})
+    {m q r : ℕ} (v : Surjection.Word (r + 1) (m + 2))
+    (w : Surjection.Word r (m + 1)) (p : Fin (m + 2)) (k : Fin (r + 1))
+    (hp : v.val p = k) (hu : ∀ j, v.val j = k → j = p)
+    (hv : ∀ i, k.succAbove (w.val i) = v.val (p.succAbove i))
+    (ν : Surjection.BasisWord 0 0) (x : S _⦋q⦌) (z : ℤ)
+    (hz : -((m + q + 1 - r : ℕ) : ℤ) = z) :
+    (∑ t : Cut m q, cutSign t w.val •
+      vectorTensorAt (chains A S) r (cutGeneratorFamily A S t w x) z
+        (by rw [vectorDegree_cutGeneratorFamily]; exact hz)) =
+      ∑ s : Cut (m + 1) q, cutSign s v.val •
+        (tensorCoInsertionAction (chains A S) (Surjection.complex A 0) r 0 k
+          (cochainAction A S 0)).f z
+          (ιTensorObj (Surjection.complex A 0) (power (chains A S) (r + 1)) 0 z z (zero_add z)
+            ((Surjection.complexXIso A 0 0).inv (Surjection.basis A 0 0 (ULift.up ν)) ⊗ₜ[A]
+              vectorTensorAt (chains A S) (r + 1) (cutGeneratorFamily A S s v x) z
+                (by rw [vectorDegree_cutGeneratorFamily]
+                    have h : (m + 1) + q + 1 - (r + 1) = m + q + 1 - r
+```
+
+
+
+## 355. 元のraw合成語の正規化と同じ語長の移送（実装前）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+実際のraw合成語を表す基底または退化零項を、元の係数合成と照合する。
+語長と削除位置の移送は同じFinite添字の値で比較する。新しい語や射を選ばない。
+ρのcount_eq_one_of_emptyから一出現性を得るため、一出現の条件を余分に仮定しない。
+各証明200行以内、同じ既存構成の値と添字の法則。以下の型のW・Vは実際のWordの等式移送。
+
+```lean
+lemma succAbove_val_eq_of_vals {l l' : ℕ} (p : Fin (l + 1)) (p' : Fin (l' + 1))
+    (i : Fin l) (i' : Fin l') (hp : p.val = p'.val) (hi : i.val = i'.val) :
+    (p.succAbove i).val = (p'.succAbove i').val
+```
+
+```lean
+lemma word_eq_mp_unique {r l l' : ℕ} (h : l = l') (v : Surjection.Word r l)
+    (p : Fin l) (k : Fin r) (hp : v.val p = k) (hu : ∀ j, v.val j = k → j = p) :
+    (Eq.mp (congrArg (fun L => Surjection.Word r L) h) v).val (Fin.cast h p) = k ∧
+      ∀ j, (Eq.mp (congrArg (fun L => Surjection.Word r L) h) v).val j = k →
+        j = Fin.cast h p
+```
+
+```lean
+lemma nullaryRawWord_eq_mp_erase_value {m d N : ℕ} (hN : m + d = N + 1)
+    (u : Surjection.BasisWord (m + 1) d) (ν : Surjection.BasisWord 0 0) (k : Fin (m + 1))
+    (ρ : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) 0)
+    (w : Surjection.BasisWord m d) (hw : w.val = IntervalCuts.nullaryRawWord u ν k ρ)
+    (p : Fin (m + 1 + d)) (hu : ∀ j, u.val j = k → j = p) (i : Fin (N + 1)) :
+    let V := Eq.mp (congrArg (fun L => Surjection.Word (m + 1) L)
+      (by omega : (m + 1) + d = N + 2)) u
+    let W := Eq.mp (congrArg (fun L => Surjection.Word m L) hN) w
+    let P : Fin (N + 2) := Fin.cast (by omega) p
+    k.succAbove (W.val i) = V.val (P.succAbove i)
+```
+
+```lean
+lemma compositionOnWords_nullary_eq_basis_of_raw (A : Type u) [CommRing A] {m d : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (ν : Surjection.BasisWord 0 0) (k : Fin (m + 1))
+    (ρ : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) 0)
+    (w : Surjection.BasisWord m d) (hw : w.val = IntervalCuts.nullaryRawWord u ν k ρ) :
+    Surjection.compositionOnWords A u ν k = Surjection.basis A m d (ULift.up w)
+```
+
+```lean
+lemma compositionOnWords_nullary_eq_zero_of_raw_degenerate (A : Type u) [CommRing A] {m d : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (ν : Surjection.BasisWord 0 0) (k : Fin (m + 1))
+    (ρ : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) 0)
+    (h : ¬Surjection.Nondegenerate (IntervalCuts.nullaryRawWord u ν k ρ)) :
+    Surjection.compositionOnWords A u ν k = 0
+```
+
+
+
+## 356. 元の唯一出現位置と全和の型の移送（実装前の法則の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+実際の係数合成から一出現位置を供給し、切断区間数の算術的な等式によって
+同じ全和を移す。別の位置や頂点を選び直す同値ではなく、元のWordとCutの等式移送だけ。
+Tは元の同じ複体射の値を代入できる任意の関数で、この型の移送に線形性は要らない。
+各証明200行以内、既存構成の法則・証明分割。
+
+```lean
+lemma unique_position_of_occurrenceCount_one {r l : ℕ} (w : Fin l → Fin r) (k : Fin r)
+    (h : Surjection.occurrenceCount w k = 1) :
+    ∃ p : Fin l, w p = k ∧ ∀ j, w j = k → j = p
+```
+
+```lean
+lemma word_eq_mp_trans {r l l' l'' : ℕ} (h : l = l') (h' : l' = l'')
+    (w : Surjection.Word r l) :
+    Eq.mp (congrArg (fun L => Surjection.Word r L) h')
+      (Eq.mp (congrArg (fun L => Surjection.Word r L) h) w) =
+      Eq.mp (congrArg (fun L => Surjection.Word r L) (h.trans h')) w
+```
+
+```lean
+lemma sum_cutGenerator_terms_eq_mp (A : Type u) [CommRing A] (S : SSet.{0})
+    {M : Type v} [AddCommGroup M] {m n q r : ℕ} (h : m = n)
+    (w : Surjection.Word r (m + 1)) (x : S _⦋q⦌) (z : ℤ)
+    (hz : -((m + q + 1 - r : ℕ) : ℤ) = z)
+    (T : (power (chains A S) r).X z → M) :
+    (∑ s : Cut m q, cutSign s w.val • T
+      (vectorTensorAt (chains A S) r (cutGeneratorFamily A S s w x) z
+        (by rw [vectorDegree_cutGeneratorFamily]; exact hz))) =
+      ∑ s : Cut n q,
+        cutSign s (Eq.mp (congrArg (fun L => Surjection.Word r (L + 1)) h) w).val • T
+          (vectorTensorAt (chains A S) r
+            (cutGeneratorFamily A S s
+              (Eq.mp (congrArg (fun L => Surjection.Word r (L + 1)) h) w) x) z
+            (by rw [vectorDegree_cutGeneratorFamily]; rw [← h]; exact hz))
+```
+
+
+## 357. 完備化後のP⁰の三案：(b)でperfect性や半線形同型だけから消去しない（紙のみ）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§347の続き。(b)の単位・torsionの条件を、actualなraw対象で期待するperfect性と区別する。
+以下は自分の明示的な環・加群の計算であり、A4の実際の対象に余分な条件を足すものではない。
+新しいLean・界面・drafts・G10の部品は作らない。
+
+### 357.1 (b) perfectな離散環でも完備化単位のπ_0全射性は出ない
+
+B = F_p[t^{1/p^∞}]、d=tとする。Bは多項式環F_p[t^{1/p^e}]の単射的な和で、
+Frobeniusはその上で同型。各非零元のtの最小指数は有限だから、Bはt進分離的。
+tは非零因子で、B/t^nの商の塔は全射。従ってこの離散な例の導来t完備化は
+同じ商の逆極限で計算できる（正則なprincipal Koszul商を使う）。
+
+逆極限には互換な元 a_n = Σ_{j=0}^{n-1} t^j mod t^n がある。
+その値aは(1-t)a=1を満たすが、Bの元の像ではない。
+もし像ならt進分離性によってBで(1-t)b=1となる。
+bはある有限段F_p[t^{1/p^e}]の多項式で、u=t^{1/p^e}と書けば
+(1-u^{p^e})b(u)=1となり、多項式の次数から不可能。
+
+さらにF(t^nB)=t^{pn}Bで、逆Frobeniusも添字を共終に変えれば連続。
+この例では完備化後もFrobeniusは同型となるが、単位はπ_0全射でない。
+従ってrawのπ_0のperfect性を確認しても、そのことだけで§216の単位のEpiを供給しない。
+これは単なるcoconnective性の反例を、perfect性もある場合へ絞り直した点検。
+
+### 357.2 (b) reducedなperfect係数と半線形同型だけではH¹のTate項も消えない
+
+同じBに対してM = B[1/t]/Bを加群として考える。
+x_n = t^{-n}+BはM[t^n]の非零元で、t x_{n+1}=x_n。
+従ってT_t(M)=lim_n M[t^n]には非零の互換な元(x_n)がある。
+BがreducedなためB自身のt冪ねじれが有界であることと、Mのねじれが有界であることは別。
+
+MのFrobenius半線形な加法同型Fから、固定の商の添字で読む写像は
+
+    M[t^n] → M[t^n],  x ↦ t^{(p-1)n} F(x)
+
+となる。この式ではt^nを掛けるとt^{pn}F(x)=F(t^n x)=0。
+塔との互換性もt·t^{(p-1)(n+1)}F(x_{n+1}) = t^{(p-1)n}F(t x_{n+1})で直接読める。
+上の元ではt^{(p-1)n}F(t^{-n}+B)=t^{-n}+Bなので、非零の互換な元は残る。
+従ってrawなH¹の半線形Frobeniusが同型であるという条件だけで、
+§223.3のTate項を零としてはいけない。
+
+この加群をA4のH¹だと同定したり、これに同じBE作用・May P⁰を供給したりはしていない。
+これは加群と半線形写像の条件だけからtorsion消滅を結論できないという点検で、
+A4やMay案の反例ではない。実際のA4のH¹に別の有界性を証明できるかは未確定。
+
+### 357.3 (a)(c)との比較
+
+(a)の同じ全鎖の有限primitiveを完備化へ延ばす案は、上の単位の全射性やTate消滅を使わない。
+指定したnative対象・Frobeniusへの比較と全鎖の式の検収は依然として未供給。
+(b)でactualなderived商の同じ演算を比較する案も残すが、一般論から得られない有界性を
+証明済みの条件として持ち込まない。
+(a)(b)のactualな比較が両方不可能と判明したわけではないため、(c)とはまだ判定しない。
+判明したときは§32どおり止めて報告する。外枠の完成見込みの未評価分もそのまま残す。
+
+
+## 358. 実際の非退化raw空語合成を全Cut和へ接続する（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§354の元の全和と§355〜356の同じ語長・係数の移送を接続する。
+ρから一出現性と元の唯一位置を供給し、wの値は実際のnullaryRawWordそのものと指定する。
+wの非退化性はこの分岐の条件で、退化分岐は零項として別途残す。
+これはL12aの同じ合成則の非退化分岐、各証明200行以内。
+
+```lean
+lemma cochainAction_composition_nullary_nondegenerate_eq_iterated
+    (A : Type u) [CommRing A] (S : SSet.{0}) {m d q : ℕ}
+    (u : Surjection.BasisWord (m + 2) d) (ν : Surjection.BasisWord 0 0) (k : Fin (m + 2))
+    (ρ : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) 0)
+    (w : Surjection.BasisWord (m + 1) d) (hw : w.val = IntervalCuts.nullaryRawWord u ν k ρ)
+    (x : S _⦋q⦌) :
+    (cochainAction A S ((m + 1) + 0)).f (-(d : ℤ) + -(q : ℤ))
+      (ιTensorObj (Surjection.complex A ((m + 1) + 0)) (chains A S)
+        (-(d : ℤ)) (-(q : ℤ)) (-(d : ℤ) + -(q : ℤ)) rfl
+        ((Surjection.complexXIso A ((m + 1) + 0) d).inv
+          (Surjection.compositionOnWords A u ν k) ⊗ₜ[A] gen A S q x)) =
+      (iteratedCochainAction A S (m + 1) 0 k).f (-(d : ℤ) + -(q : ℤ))
+        (ιTensorObj (Surjection.complex A (m + 2) ⊗ Surjection.complex A 0) (chains A S)
+          (-(d : ℤ) + -(0 : ℤ)) (-(q : ℤ)) (-(d : ℤ) + -(q : ℤ)) (by omega)
+          (ιTensorObj (Surjection.complex A (m + 2)) (Surjection.complex A 0)
+            (-(d : ℤ)) (-(0 : ℤ)) (-(d : ℤ) + -(0 : ℤ)) rfl
+            ((Surjection.complexXIso A (m + 2) d).inv
+              (Surjection.basis A (m + 2) d (ULift.up u)) ⊗ₜ[A]
+              (Surjection.complexXIso A 0 0).inv
+                (Surjection.basis A 0 0 (ULift.up ν))) ⊗ₜ[A] gen A S q x))
+```
+
+全Cutの再添字の入力hpair・hzero、内側射の評価、唯一位置の存在などを最終主張の仮定に追加しない。
+同じ元の係数合成を作用させた左辺と、同じ四射の実際の右辺を比較する。
+
+## 359. 同じ和の依存するWordの等式を運ぶ証明分割（実装前）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§358の語長の二重移送hwordを、vectorTensorAtの次数の証明の中へ直接rwしない。
+同じ和を独立なWord引数の関数Fとして先に型付けし、congrArg F hwordを使う。
+これは元の和の値と等式移送の証明分割で、新しい数学・写像の選択・一覧IDではない。
+
+```lean
+let F (a : Surjection.Word (m + 2) ((m + d) + 2)) :
+    (power (chains A S) ((m + 1) + 0)).X z :=
+  ∑ s : Cut ((m + d) + 1) q, cutSign s a.val •
+    T (vectorTensorAt (chains A S) (m + 2) (cutGeneratorFamily A S s a x) z
+      (by rw [vectorDegree_cutGeneratorFamily]; dsimp only [z]; omega))
+```
+
+既存sum_cutGenerator_terms_eq_mpの右辺をFの同じ引数への適用として読む。
+その後にcongrArg F hwordを合成するので、固定した語に依存する次数の証明を
+別の語へ無理に書き換えるmotiveを作らない。各証明200行以内。
+
+
+## 360. 一出現の実際の全和と非退化raw空語合成則（検証済み、取り込み点）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§353〜359を検証した。元の一点挿入・削除を実際の零次出力の全Cut同値へ包装し、
+零となる補集合の全項を保持した再添字を得た。対応条件と零性を元の符号・面・実際の
+空語作用の値で供給し、小さい全切断和と実際の空語代入の全和が一致した。
+
+実際のnullaryRawWordを表す非退化基底の分岐については、元の係数合成を作用させた左辺と
+同じ四射からなる二段作用の右辺の元の圏での一致まで接続した（全入力単体・全次数）。
+一出現位置や内側作用の値、Cut再添字の対応条件・零性は結論の追加仮定に残していない。
+基底wの値は実際のraw合成語そのものと指定しており、別の語へ置き換えていない。
+
+|登録候補（すべてSerrePositivity.EInfinity.SimplexCuts）|行数|
+|---|---:|
+|NullaryOutputCutEquiv|39|
+|NullaryOutputCutSums|40|
+|CutGeneratorFamilies|35|
+|NullaryCochainCutSums|83|
+|NullaryWordLengths|57|
+|NullaryCoefficientWords|40|
+|NullaryCutIndexTransport|62|
+|NullaryNondegenerateComposition|98|
+
+今回454行、M14実測27,497行、L12a 12,290行、外枠31,000行まで3,503行。
+L12aは未完了。実際の退化raw合成語の右辺の零性、零出力arity、
+全arityの同じ有限対応とその包装が残る。新しい一覧IDは追加していない。
+
+対象ビルドはm14-nullary-output-cut-sums-01.log（2,278 jobs）、
+m14-nullary-cochain-cut-sums-02.log（3,065 jobs）、
+m14-nullary-word-lengths-01.log（2,856 jobs）、
+m14-nullary-cut-index-transport-01.log（2,232 jobs）、
+m14-nullary-nondegenerate-composition-02.log（3,116 jobs）まで成功、対象警告0。
+小監査はaudit-m14-nullary-cochain-cut-sums.log（4本13宣言）、
+audit-m14-nullary-word-lengths.log（2本11宣言）、
+audit-m14-nullary-cut-index-transport.log（1本5宣言）、
+audit-m14-nullary-nondegenerate-composition.log（1本10宣言）。
+すべて標準三公理のみ、sorry・独自公理0。
+ビルド・監査ごとに鍵を取り返却した。共有入口・共有監査・mainの作業木は変更していない。
+
+並行する完備化後のP⁰の三案は§357。perfectなrawのπ_0でも完備化単位は一般に全射でなく、
+reducedなperfect係数とH¹の半線形同型だけではTate項は消えないことを具体的に点検した。
+この加群の点検をA4のBE模型やP⁰の反例とは扱わない。(a)(b)のactualな比較は未供給で、
+(c)が不可避との判定はまだない。追加仮定で消去していない。
+§314以降の完成見込みの外枠超過の懸念と、完備化の未評価分も残す。
+
+mainは391b2a0d2のまま。§33の3b-4a完成が取り込まれたらTotの9欄へ先に切り替える。
+
+
+## 361. 実際の退化raw語の二段作用の零項を保つ（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+退化分岐の実際の右辺を全Cutごとに零とするための既存構成の評価の法則。
+元の一点削除のCutが非退化なら削除raw語も非退化となる既存の法則を使う。
+指定出力次数零ではその対偶で元のテンソルが零、正次数では実際の空語作用が零となる。
+raw語を基底にする仮定や、非零項だけへの制限はしない。各証明200行以内。
+§316の有限点検を再実行し、全9,794 Cut・退化削除890・両逆2,616を再確認した。
+
+```lean
+lemma not_nondegenerate_of_nullary_raw_degenerate {m q r : ℕ} (s : Cut (m + 1) q)
+    (v : Surjection.Word (r + 1) (m + 2)) (w : Fin (m + 1) → Fin r)
+    (p : Fin (m + 2)) (k : Fin (r + 1)) (hpoint : hi s p = lo s p)
+    (hv : ∀ i, k.succAbove (w i) = v.val (p.succAbove i))
+    (hw : ¬Surjection.Nondegenerate w) : ¬Nondegenerate s v.val
+```
+
+```lean
+lemma vectorTensorAt_cutGeneratorFamily_eq_zero (A : Type u) [CommRing A] (S : SSet.{0})
+    {m q r : ℕ} (s : Cut m q) (v : Surjection.Word r (m + 1)) (x : S _⦋q⦌)
+    (h : ¬Nondegenerate s v.val) (z : ℤ)
+    (hz : -(vectorDegree (chains A S) r (cutGeneratorFamily A S s v x) : ℤ) = z) :
+    vectorTensorAt (chains A S) r (cutGeneratorFamily A S s v x) z hz = 0
+```
+
+```lean
+lemma sum_nullary_cochain_cut_terms_of_raw_degenerate
+    (A : Type u) [CommRing A] (S : SSet.{0}) {m q r : ℕ}
+    (v : Surjection.Word (r + 1) (m + 2)) (w : Fin (m + 1) → Fin r)
+    (p : Fin (m + 2)) (k : Fin (r + 1)) (hp : v.val p = k)
+    (hv : ∀ i, k.succAbove (w i) = v.val (p.succAbove i))
+    (hw : ¬Surjection.Nondegenerate w) (ν : Surjection.BasisWord 0 0)
+    (x : S _⦋q⦌) (z : ℤ) (hz : -((m + q + 1 - r : ℕ) : ℤ) = z) :
+    (∑ s : Cut (m + 1) q, cutSign s v.val •
+      (tensorCoInsertionAction (chains A S) (Surjection.complex A 0) r 0 k
+        (cochainAction A S 0)).f z
+        (ιTensorObj (Surjection.complex A 0) (power (chains A S) (r + 1)) 0 z z (zero_add z)
+          ((Surjection.complexXIso A 0 0).inv (Surjection.basis A 0 0 (ULift.up ν)) ⊗ₜ[A]
+            vectorTensorAt (chains A S) (r + 1) (cutGeneratorFamily A S s v x) z
+              (by rw [vectorDegree_cutGeneratorFamily]
+                  have h : (m + 1) + q + 1 - (r + 1) = m + q + 1 - r
+```
+
+```lean
+lemma raw_nondegenerate_cast_iff {r l l' : ℕ} (h : l = l') (w : Fin l → Fin r) :
+    Surjection.Nondegenerate (fun i : Fin l' => w (Fin.cast h.symm i)) ↔
+      Surjection.Nondegenerate w
+```
+
+```lean
+lemma nullaryRawWord_cast_erase_value {m d N : ℕ} (hN : m + d = N + 1)
+    (u : Surjection.BasisWord (m + 1) d) (ν : Surjection.BasisWord 0 0) (k : Fin (m + 1))
+    (ρ : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) 0)
+    (p : Fin (m + 1 + d)) (hu : ∀ j, u.val j = k → j = p) (i : Fin (N + 1)) :
+    let V := Eq.mp (congrArg (fun L => Surjection.Word (m + 1) L)
+      (by omega : (m + 1) + d = N + 2)) u
+    let P : Fin (N + 2) := Fin.cast (by omega) p
+    k.succAbove (IntervalCuts.nullaryRawWord u ν k ρ (Fin.cast hN.symm i)) =
+      V.val (P.succAbove i)
+```
+
+
+
+## 362. 実際の退化raw空語合成の元の圏での合成則（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§361の全和の零性を元のraw語へ戻す。左辺は既存の同じ係数合成の退化零性を使う。
+語長とCut添字の移送は§355〜359の同じものを使い、非退化基底を選ばない。
+L12aの同じ合成則の退化分岐、各証明200行以内。
+
+```lean
+lemma cochainAction_composition_nullary_degenerate_eq_iterated
+    (A : Type u) [CommRing A] (S : SSet.{0}) {m d q : ℕ}
+    (u : Surjection.BasisWord (m + 2) d) (ν : Surjection.BasisWord 0 0) (k : Fin (m + 2))
+    (ρ : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) 0)
+    (hdeg : ¬Surjection.Nondegenerate (IntervalCuts.nullaryRawWord u ν k ρ))
+    (x : S _⦋q⦌) :
+    (cochainAction A S ((m + 1) + 0)).f (-(d : ℤ) + -(q : ℤ))
+      (ιTensorObj (Surjection.complex A ((m + 1) + 0)) (chains A S)
+        (-(d : ℤ)) (-(q : ℤ)) (-(d : ℤ) + -(q : ℤ)) rfl
+        ((Surjection.complexXIso A ((m + 1) + 0) d).inv
+          (Surjection.compositionOnWords A u ν k) ⊗ₜ[A] gen A S q x)) =
+      (iteratedCochainAction A S (m + 1) 0 k).f (-(d : ℤ) + -(q : ℤ))
+        (ιTensorObj (Surjection.complex A (m + 2) ⊗ Surjection.complex A 0) (chains A S)
+          (-(d : ℤ) + -(0 : ℤ)) (-(q : ℤ)) (-(d : ℤ) + -(q : ℤ)) (by omega)
+          (ιTensorObj (Surjection.complex A (m + 2)) (Surjection.complex A 0)
+            (-(d : ℤ)) (-(0 : ℤ)) (-(d : ℤ) + -(0 : ℤ)) rfl
+            ((Surjection.complexXIso A (m + 2) d).inv
+              (Surjection.basis A (m + 2) d (ULift.up u)) ⊗ₜ[A]
+              (Surjection.complexXIso A 0 0).inv
+                (Surjection.basis A 0 0 (ULift.up ν))) ⊗ₜ[A] gen A S q x))
+```
+
+退化性以外の仮定を増やさず、内側射の値や全和の零性を結論の前提にしない。
+正の出力arityの全入力単体・全次数で、元の同じ二つの射の値の等式を述べる。
+
+
+## 363. 正の出力arityの実際の空語合成の全分岐を合わせる（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+同じ元の係数合成と二段作用に、反復出現・一出現の退化・非退化の全分岐を合わせる。
+一出現の分割ρはcountの等式から既存single 0を同じ型へ運ぶ。
+非退化分岐の基底wは実際のraw語・既存の全射性・その非退化性で構成する。
+L12aの同じ合成則の証明分割で、各証明200行以内。
+
+```lean
+lemma cochainAction_composition_nullary_positive_output_eq_iterated
+    (A : Type u) [CommRing A] (S : SSet.{0}) {m d q : ℕ}
+    (u : Surjection.BasisWord (m + 2) d) (ν : Surjection.BasisWord 0 0) (k : Fin (m + 2))
+    (x : S _⦋q⦌) :
+    (cochainAction A S ((m + 1) + 0)).f (-(d : ℤ) + -(q : ℤ))
+      (ιTensorObj (Surjection.complex A ((m + 1) + 0)) (chains A S)
+        (-(d : ℤ)) (-(q : ℤ)) (-(d : ℤ) + -(q : ℤ)) rfl
+        ((Surjection.complexXIso A ((m + 1) + 0) d).inv
+          (Surjection.compositionOnWords A u ν k) ⊗ₜ[A] gen A S q x)) =
+      (iteratedCochainAction A S (m + 1) 0 k).f (-(d : ℤ) + -(q : ℤ))
+        (ιTensorObj (Surjection.complex A (m + 2) ⊗ Surjection.complex A 0) (chains A S)
+          (-(d : ℤ) + -(0 : ℤ)) (-(q : ℤ)) (-(d : ℤ) + -(q : ℤ)) (by omega)
+          (ιTensorObj (Surjection.complex A (m + 2)) (Surjection.complex A 0)
+            (-(d : ℤ)) (-(0 : ℤ)) (-(d : ℤ) + -(0 : ℤ)) rfl
+            ((Surjection.complexXIso A (m + 2) d).inv
+              (Surjection.basis A (m + 2) d (ULift.up u)) ⊗ₜ[A]
+              (Surjection.complexXIso A 0 0).inv
+                (Surjection.basis A 0 0 (ULift.up ν))) ⊗ₜ[A] gen A S q x))
+```
+
+ρ・raw語の基底・退化条件・内側射の評価などの仮定を最終主張に残さない。
+零出力arityと全体の有限対応の包装は、これで済んだとはしない。
+
+
+## 364. 退化分岐の二つの零性を元の値で型付けする証明分割（実装前）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§362の二つの零性をcalcの未指定の元で推論させず、同じ元の左辺・右辺で先に型付けする。
+新しい数学や追加仮定ではなく、次の局所的な証明分割。各証明200行以内。
+
+```lean
+  have hL : (cochainAction A S ((m + 1) + 0)).f (-(d : ℤ) + -(q : ℤ))
+      (ιTensorObj (Surjection.complex A ((m + 1) + 0)) (chains A S)
+        (-(d : ℤ)) (-(q : ℤ)) (-(d : ℤ) + -(q : ℤ)) rfl
+        ((Surjection.complexXIso A ((m + 1) + 0) d).inv
+          (Surjection.compositionOnWords A u ν k) ⊗ₜ[A] gen A S q x)) = 0
+
+  have hR : (iteratedCochainAction A S (m + 1) 0 k).f (-(d : ℤ) + -(q : ℤ))
+        (ιTensorObj (Surjection.complex A (m + 2) ⊗ Surjection.complex A 0) (chains A S)
+          (-(d : ℤ) + -(0 : ℤ)) (-(q : ℤ)) (-(d : ℤ) + -(q : ℤ)) (by omega)
+          (ιTensorObj (Surjection.complex A (m + 2)) (Surjection.complex A 0)
+            (-(d : ℤ)) (-(0 : ℤ)) (-(d : ℤ) + -(0 : ℤ)) rfl
+            ((Surjection.complexXIso A (m + 2) d).inv
+              (Surjection.basis A (m + 2) d (ULift.up u)) ⊗ₜ[A]
+              (Surjection.complexXIso A 0 0).inv
+                (Surjection.basis A 0 0 (ULift.up ν))) ⊗ₜ[A] gen A S q x)) = 0
+```
+
+
+## 365. 零出力arityの零単体の同じ境界値（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+零出力arity・係数次数零・入力零単体を元の唯一のCutで評価する。
+§316の空出力の特別な一例に対応する。Cut 0 0の元はcard=0から元の空集合のみ。
+符号は元の指数で一、選んだ零次因子は既存faceData_generator_zeroと実際の空語作用へ渡す。
+左右とも同じsingleObjXSelfの逆で単位元一を読む。L12aの境界分岐、各証明200行以内。
+
+```lean
+lemma cochainAction_composition_nullary_output_zero_degree_zero
+    (A : Type u) [CommRing A] (S : SSet.{0}) (u : Surjection.BasisWord 1 0)
+    (ν : Surjection.BasisWord 0 0) (x : S _⦋0⦌) :
+    (cochainAction A S 0).f 0
+      (ιTensorObj (Surjection.complex A 0) (chains A S) 0 0 0 rfl
+        ((Surjection.complexXIso A 0 0).inv
+          (Surjection.compositionOnWords A u ν 0) ⊗ₜ[A] gen A S 0 x)) =
+      (iteratedCochainAction A S 0 0 0).f 0
+        (ιTensorObj (Surjection.complex A 1 ⊗ Surjection.complex A 0) (chains A S) 0 0 0 rfl
+          (ιTensorObj (Surjection.complex A 1) (Surjection.complex A 0) 0 0 0 rfl
+            ((Surjection.complexXIso A 1 0).inv
+              (Surjection.basis A 1 0 (ULift.up u)) ⊗ₜ[A]
+              (Surjection.complexXIso A 0 0).inv
+                (Surjection.basis A 0 0 (ULift.up ν))) ⊗ₜ[A] gen A S 0 x))
+```
+
+
+## 366. 零出力arityの元の合成則を全次数で読む（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+外側arity一の正次数基底は既存IsEmptyで除く。係数次数零の入力正次数は
+同じsingle複体の零対象性で左右とも零となり、零単体だけを§365の同じ値へ戻す。
+新しい作用を作らず、L12aの同じ全整数の合成則の分岐を閉じる。各証明200行以内。
+
+```lean
+lemma cochainAction_composition_nullary_zero_output_eq_iterated
+    (A : Type u) [CommRing A] (S : SSet.{0}) {d q : ℕ}
+    (u : Surjection.BasisWord 1 d) (ν : Surjection.BasisWord 0 0) (k : Fin 1)
+    (x : S _⦋q⦌) :
+    (cochainAction A S 0).f (-(d : ℤ) + -(q : ℤ))
+      (ιTensorObj (Surjection.complex A 0) (chains A S)
+        (-(d : ℤ)) (-(q : ℤ)) (-(d : ℤ) + -(q : ℤ)) rfl
+        ((Surjection.complexXIso A 0 d).inv
+          (Surjection.compositionOnWords A u ν k) ⊗ₜ[A] gen A S q x)) =
+      (iteratedCochainAction A S 0 0 k).f (-(d : ℤ) + -(q : ℤ))
+        (ιTensorObj (Surjection.complex A 1 ⊗ Surjection.complex A 0) (chains A S)
+          (-(d : ℤ) + -(0 : ℤ)) (-(q : ℤ)) (-(d : ℤ) + -(q : ℤ)) (by omega)
+          (ιTensorObj (Surjection.complex A 1) (Surjection.complex A 0)
+            (-(d : ℤ)) (-(0 : ℤ)) (-(d : ℤ) + -(0 : ℤ)) rfl
+            ((Surjection.complexXIso A 1 d).inv
+              (Surjection.basis A 1 d (ULift.up u)) ⊗ₜ[A]
+              (Surjection.complexXIso A 0 0).inv
+                (Surjection.basis A 0 0 (ULift.up ν))) ⊗ₜ[A] gen A S q x))
+```
+
+
+## 367. 全arity・全係数次数の元のBF合成則の基底値（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+正の内側arityの既存の全Cut比較と、空語の全分岐の実際の射の等式を合わせる。
+零arityの正次数基底は既存IsEmpty。出力arity零も§366で含める。
+L12aからL12への同じ合成則の証明分割で、各証明200行以内。
+
+```lean
+lemma cochainAction_composition_basis_eq_iterated_all
+    (A : Type u) [CommRing A] (S : SSet.{0}) {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord n e)
+    (k : Fin (m + 1)) (x : S _⦋q⦌) (z : ℤ)
+    (hz : -(d : ℤ) + -(e : ℤ) + -(q : ℤ) = z) :
+    (cochainAction A S (m + n)).f z
+      (ιTensorObj (Surjection.complex A (m + n)) (chains A S)
+        (-((d + e : ℕ) : ℤ)) (-(q : ℤ)) z (by omega)
+        ((Surjection.complexXIso A (m + n) (d + e)).inv
+          (Surjection.compositionOnWords A u v k) ⊗ₜ[A] gen A S q x)) =
+      (iteratedCochainAction A S m n k).f z
+        (ιTensorObj (Surjection.complex A (m + 1) ⊗ Surjection.complex A n) (chains A S)
+          (-(d : ℤ) + -(e : ℤ)) (-(q : ℤ)) z (by omega)
+          (ιTensorObj (Surjection.complex A (m + 1)) (Surjection.complex A n)
+            (-(d : ℤ)) (-(e : ℤ)) (-(d : ℤ) + -(e : ℤ)) rfl
+            ((Surjection.complexXIso A (m + 1) d).inv
+              (Surjection.basis A (m + 1) d (ULift.up u)) ⊗ₜ[A]
+              (Surjection.complexXIso A n e).inv
+                (Surjection.basis A n e (ULift.up v))) ⊗ₜ[A] gen A S q x))
+```
+
+基底値を全arityで合わせても、元の全有限添字の対合と全複体射の等式まで
+完成したとはしない。それらの包装を引き続き残す。
+
+
+## 368. 零次の唯一Cutを指定して和を読む証明分割（実装前）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§365でdefaultの選択へ依存しないよう、同じ `s : Cut 0 0 := ⟨∅, rfl⟩` を指定し、
+`∀ t : Cut 0 0, t = s` を元のcard=0から供給してFinset.sum_eq_single sを使う。
+位置の和の添字もFin 1として型付けし、同じ元の符号指数を計算する。
+新しいCut・写像・数学を作らない既存構成の法則の証明分割で、各証明200行以内。
+
+## 369. 完備化後のP⁰の三案：(a)の項別平坦な模型の既存の入口を確認（紙のみ）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§296・331の(a)で残した項別平坦な厳密BE模型について、既存のセル段階の基底を読み直した。
+以下は新しいLeanを実装したとの報告ではなく、既存の宣言からどこを再利用できるかの確認。
+
+### 369.1 本体で既に供給されているもの
+
+EInfinity/BarrattEccles/Theory/CellStageGradedBasis.leanには次がある。
+
+- `Operad.cellStageErasedFreeIso`：実際のセル段階を、元の生成球の余積上の自由代数と微分を忘れた同型で比較する。
+- `Operad.cellStageSchurDegreeIso`：同じcarrierの各次数を元のSchur自由代数の次数へ比較する。
+- `BarrattEccles.cellStageWordBasis c hX j i`：始対象からの実際の相対セル複体の各段階j・各次数iについて、carrier上のModule.Basisを与える。
+
+従って**各段階の各次数**には、同じ基底をModule.Free.of_basisへ渡し、Module.Flat.of_freeを使う筋が既にある。
+ArityKFlat.leanの`complexArity_kFlat`が、この二つのMathlib APIを同じ順に使っていることも確認した。
+従来の「cofibrantCarrierKFlatだけから項別平坦性は出ない」という注意は維持するが、
+項別平坦性への入口が未構成の自由な台の推測だけ、という扱いにはしない。
+同じ元のセル段階の**明示的な基底**が既に本体にある。
+
+### 369.2 actualな完備化模型まで残る比較
+
+各段階の基底があることと、欲しいnative頂点を表す最終cell模型が項別平坦であることは分ける。
+`cofibrantCarrierKFlat_of_cellStages`では、小対象分解の最後のcarrierを
+`isColimitOfPreserves U t'.isColimit`で台の複体の余極限へ比較し、最後にretractへ戻している。
+項別平坦性には同じ最後の余極限の次数ごとの比較、または生成元の全体での基底の比較が要る。
+各段階のModule.Basisだけを最終頂点のModule.Basisと読み替えない。
+一般のcofibrant模型を使うなら、retractを各次数の平坦性へ移す義務も残る。
+
+(a)では任意の模型の自由性を主張するより、同じraw対象へのセル置換を選び、
+既存K平坦性とこの各次数の基底からの項別平坦性をそろえる経路が具体的な候補となる。
+ただし、その置換が同じnativeなraw対象を表すこと、元のFrobeniusの辺と完備化単位を表すことは
+別の比較である。これを既存のK平坦性だけで証明済みとはしない。
+その後の同じBE作用の連続延長と、全鎖の有限primitiveの検収も§331のまま残る。
+
+### 369.3 (b)(c)との比較
+
+(b)では§357のとおりperfect性や半線形同型だけから単位の全射性・Tate項消滅を結論できない。
+今回の入口は(a)の模型の選択を具体化するもので、この偽の消去を使わない。
+一方、nativeな指定対象・辺と全鎖のprimitiveの比較はまだ供給していないため、
+May案が完備化後にも通ったとの主張はしない。(a)(b)のactualな比較が両方不可能と
+判明したわけでもないので、(c)への判定はまだ出さない。
+新しい仮定・完備化のLean・界面・drafts・G10の部品は追加していない。
+
+
+## 370. 退化・零出力・全arityの実際の合成則の基底値（検証済み、取り込み点）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§361〜368を検証した。元の退化raw語の全切断和の零性を、同じ係数合成と
+実際の二段作用の等式へ接続し、正の出力arityの全分岐を合わせた。
+零出力arityでは元の空のCutを指定して零単体の値を読み、残る正次数は同じsingle複体の
+零対象または存在しない基底で処理した。
+
+CochainCompositionBasisAllで、全arity・全内外係数次数・全入力単体に対する
+元の二つの複体射の基底値が厳密に一致する。内側・出力の零arity、退化raw語の零項も含む。
+全複体射への外延性と、一覧が要求する元の全有限添字の対合の包装はまだ残る。
+そのためL12a・L12を完了扱いにはせず、一覧IDの済み数も増やさない。
+
+|登録候補（すべてSerrePositivity.EInfinity.SimplexCuts）|行数|
+|---|---:|
+|DegenerateCutGeneratorFamilies|48|
+|NullaryDegenerateCutSums|57|
+|NullaryRawLengthValues|40|
+|NullaryDegenerateComposition|115|
+|NullaryPositiveOutputComposition|54|
+|NullaryZeroOutputValue|102|
+|NullaryZeroOutputComposition|55|
+|CochainCompositionBasisAll|58|
+
+今回529行、M14実測28,026行、L12a 12,819行、外枠31,000行まで2,974行。
+対象ビルドm14-nullary-degenerate-cut-sums-01.log（3,058 jobs）、
+m14-nullary-positive-output-composition-01.log（3,124 jobs）、
+m14-cochain-composition-basis-all-03.log（3,278 jobs）まで成功、対象最終警告0。
+小監査audit-m14-nullary-positive-output-composition.logは5本26宣言、
+audit-m14-cochain-composition-basis-all.logは3本12宣言。
+全て標準三公理のみ、sorry・独自公理0。各回で鍵を取り返却。
+共有入口・共有監査・mainの作業木・既存の公開宣言は変更していない。
+
+完備化後のP⁰の三案の並行する紙の確認は§369。既存cellStageWordBasisが
+各セル段階・各次数の基底を与えることを確認し、(a)での項別平坦性への入口を具体化した。
+最後の余極限・retract・nativeな対象と辺・全鎖のprimitiveの比較はまだ残る。
+(b)の単位全射性・Tate消滅を追加仮定として使わず、(c)への判定もまだ出していない。
+完成見込みの外枠超過の懸念と完備化の未評価分は維持する。
+
+mainは391b2a0d2のまま。3b-4a完成の取り込み後は§33のTotの9欄を先にする。
+
+
+## 371. 零項を固定点に残す同じ部分同値の交換（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+L12aの空語分岐では、零次出力の部分型だけを左側のCutと交換し、
+元の右側の正次数の零項を固定点として保持する。指定された同値eと逆以外は選ばない。
+一覧の有限対合を構成するための同じ交換とその法則であり、新しい数学・一覧IDではない。
+各証明200行以内。有限点検を先に行い、右の添字数0〜6の全部分集合とその全順序づけ
+2,372組・25,019要素について、二回で恒等・固定点の範囲・実整数項の相殺を確認した。
+
+```lean
+def matchedSubsetExchange (P : β → Prop) [DecidablePred P] (e : α ≃ {b // P b}) :
+    α ⊕ β → α ⊕ β
+  | Sum.inl a => Sum.inr (e a).val
+  | Sum.inr b => if h : P b then Sum.inl (e.symm ⟨b, h⟩) else Sum.inr b
+```
+
+```lean
+lemma matchedSubsetExchange_involutive (P : β → Prop) [DecidablePred P]
+    (e : α ≃ {b // P b}) : Function.Involutive (matchedSubsetExchange P e)
+```
+
+```lean
+def matchedSubsetPerm (P : β → Prop) [DecidablePred P] (e : α ≃ {b // P b}) :
+    Equiv.Perm (α ⊕ β)
+```
+
+```lean
+def matchedSubsetBalanceTerm {M : Type w} [AddCommGroup M] (F : α → M) (G : β → M) :
+    α ⊕ β → M
+  | Sum.inl a => F a
+  | Sum.inr b => -G b
+```
+
+```lean
+lemma matchedSubsetPerm_fixed_zero {M : Type w} [AddCommGroup M]
+    (P : β → Prop) [DecidablePred P] (e : α ≃ {b // P b}) (F : α → M) (G : β → M)
+    (hzero : ∀ b, ¬P b → G b = 0) (i : α ⊕ β) (hi : matchedSubsetPerm P e i = i) :
+    matchedSubsetBalanceTerm F G i = 0
+```
+
+```lean
+lemma matchedSubsetPerm_term_neg {M : Type w} [AddCommGroup M]
+    (P : β → Prop) [DecidablePred P] (e : α ≃ {b // P b}) (F : α → M) (G : β → M)
+    (hpair : ∀ a, F a = G (e a).val) (hzero : ∀ b, ¬P b → G b = 0) (i : α ⊕ β) :
+    matchedSubsetBalanceTerm F G (matchedSubsetPerm P e i) =
+      -matchedSubsetBalanceTerm F G i
+```
+
+hpair・hzeroはこの一般の包装の入力。実際の空語の対合へ適用するときは
+既に証明した元のCut対応・指定面・実際の余単位の値で供給し、結論へ仮定として残さない。
+
+
+## 372. 元の一点Cut対応と実際の空語作用による全添字の対合（実装前）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§371へ元のnullaryOutputCutEquivと実際のCut項を供給する。
+小さい全Cutと、大きい全Cut（正次数の零項も含む）の直和を保つ。
+対合は係数環・入力単体を選ぶ前に指定し、全係数環・全入力に共通に使う強い形。
+各証明200行以内、同じL12aの有限対応と既存構成の評価の包装。
+hpair・hzeroを最終の結論へ仮定として残さない。
+
+```lean
+def nullarySmallCutTerm (A : Type u) [CommRing A] (S : SSet.{0}) {m q r : ℕ}
+    (w : Surjection.Word r (m + 1)) (x : S _⦋q⦌) (z : ℤ)
+    (hz : -((m + q + 1 - r : ℕ) : ℤ) = z) (t : Cut m q) : (power (chains A S) r).X z
+```
+
+```lean
+def nullaryOuterCutTerm (A : Type u) [CommRing A] (S : SSet.{0}) {m q r : ℕ}
+    (v : Surjection.Word (r + 1) (m + 2)) (ν : Surjection.BasisWord 0 0) (k : Fin (r + 1))
+    (x : S _⦋q⦌) (z : ℤ) (hz : -((m + q + 1 - r : ℕ) : ℤ) = z)
+    (s : Cut (m + 1) q) : (power (chains A S) r).X z :=
+  cutSign s v.val •
+    (tensorCoInsertionAction (chains A S) (Surjection.complex A 0) r 0 k
+      (cochainAction A S 0)).f z
+      (ιTensorObj (Surjection.complex A 0) (power (chains A S) (r + 1)) 0 z z (zero_add z)
+        ((Surjection.complexXIso A 0 0).inv (Surjection.basis A 0 0 (ULift.up ν)) ⊗ₜ[A]
+          vectorTensorAt (chains A S) (r + 1) (cutGeneratorFamily A S s v x) z
+            (by rw [vectorDegree_cutGeneratorFamily]
+                have h : (m + 1) + q + 1 - (r + 1) = m + q + 1 - r
+```
+
+```lean
+def nullaryCanonicalBalancePerm {m q r : ℕ} (v : Surjection.Word r (m + 2))
+    (p : Fin (m + 2)) (k : Fin r) (hp : v.val p = k) (hu : ∀ j, v.val j = k → j = p) :
+    Equiv.Perm (Cut m q ⊕ Cut (m + 1) q)
+```
+
+```lean
+def nullaryCanonicalBalanceTerm (A : Type u) [CommRing A] (S : SSet.{0}) {m q r : ℕ}
+    (v : Surjection.Word (r + 1) (m + 2)) (w : Surjection.Word r (m + 1))
+    (ν : Surjection.BasisWord 0 0) (k : Fin (r + 1)) (x : S _⦋q⦌) (z : ℤ)
+    (hz : -((m + q + 1 - r : ℕ) : ℤ) = z) :
+    Cut m q ⊕ Cut (m + 1) q → (power (chains A S) r).X z
+```
+
+```lean
+lemma nullarySmallCutTerm_eq_insert (A : Type u) [CommRing A] (S : SSet.{0})
+    {m q r : ℕ} (v : Surjection.Word (r + 1) (m + 2)) (w : Surjection.Word r (m + 1))
+    (ν : Surjection.BasisWord 0 0) (p : Fin (m + 2)) (k : Fin (r + 1))
+    (hp : v.val p = k) (hu : ∀ j, v.val j = k → j = p)
+    (hv : ∀ i, k.succAbove (w.val i) = v.val (p.succAbove i))
+    (x : S _⦋q⦌) (z : ℤ) (hz : -((m + q + 1 - r : ℕ) : ℤ) = z) (t : Cut m q) :
+    nullarySmallCutTerm A S w x z hz t =
+      nullaryOuterCutTerm A S v ν k x z hz (nullaryPointInsertCut t p)
+```
+
+```lean
+lemma nullaryOuterCutTerm_eq_zero_of_nonzero (A : Type u) [CommRing A] (S : SSet.{0})
+    {m q r : ℕ} (v : Surjection.Word (r + 1) (m + 2)) (ν : Surjection.BasisWord 0 0)
+    (k : Fin (r + 1)) (x : S _⦋q⦌) (z : ℤ) (hz : -((m + q + 1 - r : ℕ) : ℤ) = z)
+    (s : Cut (m + 1) q) (hs : outputDegree s v k ≠ 0) :
+    nullaryOuterCutTerm A S v ν k x z hz s = 0
+```
+
+```lean
+lemma nullaryCanonicalBalance_pairing {m q r : ℕ}
+    (v : Surjection.Word (r + 1) (m + 2)) (w : Surjection.Word r (m + 1))
+    (ν : Surjection.BasisWord 0 0) (p : Fin (m + 2)) (k : Fin (r + 1))
+    (hp : v.val p = k) (hu : ∀ j, v.val j = k → j = p)
+    (hv : ∀ i, k.succAbove (w.val i) = v.val (p.succAbove i)) :
+    ∃ τ : Equiv.Perm (Cut m q ⊕ Cut (m + 1) q), Function.Involutive τ ∧
+      (∀ i, τ i = i → ∀ (A : Type u) [CommRing A] (S : SSet.{0}) (x : S _⦋q⦌) (z : ℤ)
+        (hz : -((m + q + 1 - r : ℕ) : ℤ) = z),
+        nullaryCanonicalBalanceTerm A S v w ν k x z hz i = 0) ∧
+      (∀ i, τ i ≠ i → ∀ (A : Type u) [CommRing A] (S : SSet.{0}) (x : S _⦋q⦌) (z : ℤ)
+        (hz : -((m + q + 1 - r : ℕ) : ℤ) = z),
+        nullaryCanonicalBalanceTerm A S v w ν k x z hz (τ i) =
+          -nullaryCanonicalBalanceTerm A S v w ν k x z hz i)
+```
+
+これは同じ語長の正規形での一出現・非退化raw語の包装。
+元の全OverlapPartitionの因子と元の語長へ移す包装、退化・零出力を合わせる全体の型はまだ残る。
+そのため、この節だけでL12a全体を完了扱いにしない。
+
+
+## 373. 元の全OverlapPartition因子と退化・反復の固定零項（実装前）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+左の全添字に元のOverlapPartition × Cutを保持し、合成符号と同じraw語の正規化を読む。
+右は元の外側語を等しい語長へ移した全Cutで、区間数の等式は(m+1)+d=(m+d)+1。
+これは元の右の全Cutの算術的な等式移送で、別のCutを選び直すものではない。
+元の右の全和との比較には既存sum_cutGenerator_terms_eq_mpとword_eq_mp_transを使える。
+反復出現では左の分割が存在せず、右の全項は正次数の空語作用で零となる。
+退化raw語の右の各項の零性も既存の全和の証明から取り出す。各証明200行以内。
+
+```lean
+def nullaryNativeOuterWord {m d : ℕ} (u : Surjection.BasisWord (m + 2) d) :
+    Surjection.Word (m + 2) ((m + d) + 2)
+```
+
+```lean
+lemma nullaryNativeOuterWord_count {m d : ℕ} (u : Surjection.BasisWord (m + 2) d)
+    (k : Fin (m + 2)) :
+    Surjection.occurrenceCount (nullaryNativeOuterWord u).val k = Surjection.occurrenceCount u.val k
+```
+
+```lean
+lemma overlap_eq_single_of_count_one {n l : ℕ} (hn : n = 1)
+    (ρ : Surjection.OverlapPartition n l) :
+    ρ = Eq.mp (congrArg (fun C => Surjection.OverlapPartition C l) hn.symm)
+      (Surjection.OverlapPartition.single l)
+```
+
+```lean
+abbrev NullaryNativeBalanceIndex {m d : ℕ} (u : Surjection.BasisWord (m + 2) d)
+    (k : Fin (m + 2)) (q : ℕ)
+```
+
+```lean
+def nullaryNativeCompositeTerm (A : Type u) [CommRing A] (S : SSet.{0}) {m d : ℕ}
+    (u : Surjection.BasisWord (m + 2) d) (ν : Surjection.BasisWord 0 0) (k : Fin (m + 2))
+    (q : ℕ)
+    (c : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) 0 × Cut (m + d) q)
+    (x : S _⦋q⦌) : (power (chains A S) (m + 1)).X (-((d + q : ℕ) : ℤ))
+```
+
+```lean
+def nullaryNativeOuterTerm (A : Type u) [CommRing A] (S : SSet.{0}) {m d : ℕ}
+    (u : Surjection.BasisWord (m + 2) d) (ν : Surjection.BasisWord 0 0) (k : Fin (m + 2))
+    (q : ℕ) (s : Cut ((m + d) + 1) q) (x : S _⦋q⦌) :
+    (power (chains A S) (m + 1)).X (-((d + q : ℕ) : ℤ))
+```
+
+```lean
+def nullaryNativeBalanceTerm (A : Type u) [CommRing A] (S : SSet.{0}) {m d : ℕ}
+    (u : Surjection.BasisWord (m + 2) d) (ν : Surjection.BasisWord 0 0) (k : Fin (m + 2))
+    (q : ℕ) (i : NullaryNativeBalanceIndex u k q) (x : S _⦋q⦌) :
+    (power (chains A S) (m + 1)).X (-((d + q : ℕ) : ℤ))
+```
+
+```lean
+lemma nullaryOuterCutTerm_eq_zero_of_raw_degenerate
+    (A : Type u) [CommRing A] (S : SSet.{0}) {m q r : ℕ}
+    (v : Surjection.Word (r + 1) (m + 2)) (w : Fin (m + 1) → Fin r)
+    (p : Fin (m + 2)) (k : Fin (r + 1)) (hp : v.val p = k)
+    (hv : ∀ i, k.succAbove (w i) = v.val (p.succAbove i)) (hw : ¬Surjection.Nondegenerate w)
+    (ν : Surjection.BasisWord 0 0) (x : S _⦋q⦌) (z : ℤ)
+    (hz : -((m + q + 1 - r : ℕ) : ℤ) = z) (s : Cut (m + 1) q) :
+    nullaryOuterCutTerm A S v ν k x z hz s = 0
+```
+
+```lean
+lemma nullaryNativeBalanceTerm_eq_zero_of_count_ne_one
+    (A : Type u) [CommRing A] (S : SSet.{0}) {m d : ℕ}
+    (u : Surjection.BasisWord (m + 2) d) (ν : Surjection.BasisWord 0 0) (k : Fin (m + 2))
+    (q : ℕ) (hcount : Surjection.occurrenceCount u.val k ≠ 1)
+    (i : NullaryNativeBalanceIndex u k q) (x : S _⦋q⦌) :
+    nullaryNativeBalanceTerm A S u ν k q i x = 0
+```
+
+この節は元の全添字・項・固定零項の入力の包装で、これだけで全分岐の対合を完了扱いにしない。
+新しい数学や一覧IDは追加しない。
+
+
+## 374. 元の全分割を保持する一出現・非退化対合（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§373の全添字に戻す。空語分割ρの一意性だけで左の分割因子を同値移送し、
+同じ一点Cut挿入同値へ合成する。元のcompositionSignは内側次数零の既存法則で1。
+これは既存の対合・係数移送の法則と証明分割で、新しい数学・一覧IDは足さない。
+各証明200行以内。正次数の右Cutも消去せず固定零項として残す。
+
+```lean
+def nullaryOverlapCutEquiv {c N q : ℕ} (ρ : Surjection.OverlapPartition c 0) :
+    (Surjection.OverlapPartition c 0 × Cut N q) ≃ Cut N q
+
+lemma nullaryNativeCompositeTerm_eq_small
+    (A : Type u) [CommRing A] (S : SSet.{0}) {m d q : ℕ}
+    (u : Surjection.BasisWord (m + 2) d) (ν : Surjection.BasisWord 0 0) (k : Fin (m + 2))
+    (ρ : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) 0)
+    (w : Surjection.BasisWord (m + 1) d) (hw : w.val = IntervalCuts.nullaryRawWord u ν k ρ)
+    (c : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) 0 × Cut (m + d) q)
+    (x : S _⦋q⦌) :
+    nullaryNativeCompositeTerm A S u ν k q c x =
+      nullarySmallCutTerm A S (positiveWord w) x (-((d + q : ℕ) : ℤ)) (by omega) c.2
+
+lemma nullaryNativeBalance_pairing_of_nondegenerate {m d q : ℕ}
+    (u : Surjection.BasisWord (m + 2) d) (ν : Surjection.BasisWord 0 0) (k : Fin (m + 2))
+    (ρ : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) 0)
+    (w : Surjection.BasisWord (m + 1) d) (hw : w.val = IntervalCuts.nullaryRawWord u ν k ρ) :
+    ∃ τ : Equiv.Perm (NullaryNativeBalanceIndex u k q), Function.Involutive τ ∧
+      (∀ i, τ i = i → ∀ (A : Type u) [CommRing A] (S : SSet.{0}) (x : S _⦋q⦌),
+        nullaryNativeBalanceTerm A S u ν k q i x = 0) ∧
+      (∀ i, τ i ≠ i → ∀ (A : Type u) [CommRing A] (S : SSet.{0}) (x : S _⦋q⦌),
+        nullaryNativeBalanceTerm A S u ν k q (τ i) x =
+          -nullaryNativeBalanceTerm A S u ν k q i x)
+```
+
+## 375. 元の全空語添字の退化枝と正出力の包装（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§374の非退化対合が対象ビルドで通った。次は元の全ρ因子を保つ退化零項と、
+反復・退化・非退化の三分岐を同じ全添字へ包装する。
+元の零項の法則と既存対合の証明分割で、新しい構成・数学・IDは足さない。
+各証明200行以内。零出力と正の内側arityまで含むL12a全体の完成とはしない。
+
+```lean
+lemma nullaryNativeBalanceTerm_eq_zero_of_degenerate
+    (A : Type u) [CommRing A] (S : SSet.{0}) {m d q : ℕ}
+    (u : Surjection.BasisWord (m + 2) d) (ν : Surjection.BasisWord 0 0) (k : Fin (m + 2))
+    (ρ : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) 0)
+    (hdeg : ¬Surjection.Nondegenerate (IntervalCuts.nullaryRawWord u ν k ρ))
+    (i : NullaryNativeBalanceIndex u k q) (x : S _⦋q⦌) :
+    nullaryNativeBalanceTerm A S u ν k q i x = 0
+
+lemma nullaryNativeBalance_pairing {m d q : ℕ}
+    (u : Surjection.BasisWord (m + 2) d) (ν : Surjection.BasisWord 0 0) (k : Fin (m + 2)) :
+    ∃ τ : Equiv.Perm (NullaryNativeBalanceIndex u k q), Function.Involutive τ ∧
+      (∀ i, τ i = i → ∀ (A : Type u) [CommRing A] (S : SSet.{0}) (x : S _⦋q⦌),
+        nullaryNativeBalanceTerm A S u ν k q i x = 0) ∧
+      (∀ i, τ i ≠ i → ∀ (A : Type u) [CommRing A] (S : SSet.{0}) (x : S _⦋q⦌),
+        nullaryNativeBalanceTerm A S u ν k q (τ i) x =
+          -nullaryNativeBalanceTerm A S u ν k q i x)
+```
+
+## 376. 元の全空語添字の正出力対合（検証済み、取り込み点）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§371〜375の9本を検証した。全ρ×全小Cutと全大Cutを保持し、非退化では
+元の一点Cut挿入で対応させ、反復・退化・正次数の選択因子の零項を固定点に残す。
+対合は係数環・単体に依存せず、全係数環・全入力で元の実テンソルの項が相殺する。
+元のcompositionSignは内側次数零の法則で計算し、退化raw語の項も消していない。
+零出力と全arityの有限添字の包装はまだ残る。L12aの完了を宣言しない。
+
+登録対象（全て SerrePositivity.EInfinity.SimplexCuts の下）：
+
+- MatchedSubsetPairing（87行）
+- NullaryCanonicalBalanceTerms（60行）
+- NullaryCanonicalBalanceValues（75行）
+- NullaryCanonicalBalancePairing（49行）
+- NullaryNativeInputData（45行）
+- NullaryNativeBalanceTerms（51行）
+- NullaryNativeZeroValues（64行）
+- NullaryNativeNondegeneratePairing（100行）
+- NullaryNativeBalancePairing（86行）
+
+今回617行、M14実測28,643行、L12a 13,436行、外枠31,000行まで2,357行。
+各証明200行以内。対象ビルド3083 jobs成功、追加警告0。
+小さい監査9モジュール84宣言・標準三公理のみ、sorry・追加公理0。
+最初のNativeInputDataの100字警告は改行して再ビルドで消した。
+共有鍵は各対象ビルド・監査の間だけ取得し、全て返却済み。
+
+完成見込みの外枠超過の懸念（§314以降）と完備化後P⁰の未評価分は残す。
+mainは391b2a0d2のままで、3b-4a完成の取り込みはまだない。
+完備化の三案は§369の結論を維持する：(a)の項別平坦模型と全鎖primitiveの比較は未証明、
+(b)はperfect性だけで単位の全射を結論できず、(c)が不可欠とはまだ判定しない。
+
+## 377. 零出力の元の有限項を一項ずつ読む（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+零出力では外側の正次数基底は空。外側次数零では元の全空語分割と
+空作用の余単位一項（PUnit）、右側の元の全Cut 0 qを保持する。
+Cut 0 qは元のcard=0から唯一。和の等式だけで済ませず、この唯一Cutに対応させる。
+比較は§370の元の射の厳密な等式を、既存の全Cut展開と唯一性で一項へ戻す法則。
+新しい数学・IDは足さず、各証明200行以内。
+
+```lean
+abbrev NullaryZeroBalanceIndex (u : Surjection.BasisWord 1 0) (k : Fin 1) (q : ℕ) :=
+  (Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) 0 × PUnit) ⊕ Cut 0 q
+
+def nullaryZeroCompositeTerm (A : Type u) [CommRing A] (S : SSet.{0})
+    (u : Surjection.BasisWord 1 0) (ν : Surjection.BasisWord 0 0) (k : Fin 1) {q : ℕ}
+    (c : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) 0 × PUnit)
+    (x : S _⦋q⦌) : (power (chains A S) 0).X (-(q : ℤ))
+
+def nullaryZeroOuterTerm (A : Type u) [CommRing A] (S : SSet.{0})
+    (u : Surjection.BasisWord 1 0) (ν : Surjection.BasisWord 0 0) (k : Fin 1) {q : ℕ}
+    (s : Cut 0 q) (x : S _⦋q⦌) : (power (chains A S) 0).X (-(q : ℤ))
+
+lemma nullaryZeroCompositeTerm_eq_outer (A : Type u) [CommRing A] (S : SSet.{0})
+    (u : Surjection.BasisWord 1 0) (ν : Surjection.BasisWord 0 0) (k : Fin 1) {q : ℕ}
+    (c : Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) 0 × PUnit)
+    (s : Cut 0 q) (x : S _⦋q⦌) :
+    nullaryZeroCompositeTerm A S u ν k c x = nullaryZeroOuterTerm A S u ν k s x
+```
+
+## 378. 零出力の全添字の対合（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+元の空語分割の一意性とcard=0のCutの一意性だけを使う。
+全ρ×PUnitと全Cut 0 qの同値で左右を交換する。係数環・単体に共通、
+元の一項ごとの比較は§377を使う。既存対合の法則と証明分割、各証明200行以内。
+
+```lean
+def nullaryZeroCutEquiv (u : Surjection.BasisWord 1 0) (k : Fin 1) (q : ℕ) :
+    (Surjection.OverlapPartition (Surjection.occurrenceCount u.val k) 0 × PUnit) ≃ Cut 0 q
+
+def nullaryZeroBalanceTerm (A : Type u) [CommRing A] (S : SSet.{0})
+    (u : Surjection.BasisWord 1 0) (ν : Surjection.BasisWord 0 0) (k : Fin 1) (q : ℕ)
+    (i : NullaryZeroBalanceIndex u k q) (x : S _⦋q⦌) : (power (chains A S) 0).X (-(q : ℤ))
+
+lemma nullaryZeroBalance_pairing (u : Surjection.BasisWord 1 0)
+    (ν : Surjection.BasisWord 0 0) (k : Fin 1) (q : ℕ) :
+    ∃ τ : Equiv.Perm (NullaryZeroBalanceIndex u k q), Function.Involutive τ ∧
+      (∀ i, τ i = i → ∀ (A : Type u) [CommRing A] (S : SSet.{0}) (x : S _⦋q⦌),
+        nullaryZeroBalanceTerm A S u ν k q i x = 0) ∧
+      (∀ i, τ i ≠ i → ∀ (A : Type u) [CommRing A] (S : SSet.{0}) (x : S _⦋q⦌),
+        nullaryZeroBalanceTerm A S u ν k q (τ i) x =
+          -nullaryZeroBalanceTerm A S u ν k q i x)
+```
+
+## 379. L12aの元の全arity有限添字と共通次数の包装（実装前の型）
+
+一覧：済み 12／全体 48（うち追加 4）
+
+§112のCompositeBalanceIndex・compositeBalanceTerm・compositeBalance_pairingを、
+正の内側arity、空語の正出力、空語の零出力で包装する。
+空語の正次数とarity 1の外側正次数は基底が空なのでPEmpty。
+正の枝だけは元の計算済み整数次数から-(d+e+q)へeqToHomを使う。
+項・面・符号を変えず、同じ複体の等しい次数の移送。ホモトピー圏を使わない。
+新しい数学・IDは足さず、各証明200行以内。
+
+```lean
+def CompositeBalanceIndex {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord n e)
+    (k : Fin (m + 1)) (q : ℕ) : Type
+
+instance compositeBalanceIndexFintype {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord n e)
+    (k : Fin (m + 1)) (q : ℕ) : Fintype (CompositeBalanceIndex u v k q)
+
+def compositeBalanceTerm (A : Type u) [CommRing A] (S : SSet.{0}) {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord n e)
+    (k : Fin (m + 1)) (q : ℕ) (i : CompositeBalanceIndex u v k q) (x : S _⦋q⦌) :
+    (power (chains A S) (m + n)).X (-((d + e + q : ℕ) : ℤ))
+
+lemma compositeBalance_pairing {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord n e)
+    (k : Fin (m + 1)) (q : ℕ) :
+    ∃ τ : Equiv.Perm (CompositeBalanceIndex u v k q), Function.Involutive τ ∧
+      (∀ i, τ i = i → ∀ (A : Type u) [CommRing A] (S : SSet.{0}) (x : S _⦋q⦌),
+        compositeBalanceTerm A S u v k q i x = 0) ∧
+      (∀ i, τ i ≠ i → ∀ (A : Type u) [CommRing A] (S : SSet.{0}) (x : S _⦋q⦌),
+        compositeBalanceTerm A S u v k q (τ i) x = -compositeBalanceTerm A S u v k q i x)
+```
+
+## 380. 完備化後P⁰の(a)(b)(c)：任意頂点の厳密表示と、指定Frobeniusの比較を分ける（紙のみ）
+
+一覧：済み 13／全体 48（うち追加 4）
+
+(a)の「同じnative頂点を厳密BE代数で表す」部分を、既存APIまで具体化した。
+BarrattEccles/CAlgVertexPresentation.leanの
+`cAlgVertexRepresentative A x : (operad A).Algebra` と
+`cAlgVertexRepresentativeIso A x : VertexIso (cAlgVertex A (cAlgVertexRepresentative A x)) x`
+が任意のCAlg_R頂点xに使える。CAlg.leanの`cAlgVertexEquiv`も、coherent nerveの
+零単体と元のcofibrant代数の対象の同値である。
+従って**完備化後の頂点に何らかの厳密BE表示がないこと**は障害ではない。
+mod pの後の指定頂点についても同じF_p上のAPIを使える。
+この表示だけから、各項を完備化した二重模型や指定Frobeniusの辺まで表せるとは言わない。
+
+§369の項別平坦なセル模型の最後のretractの義務には、既存の
+`Module.Flat.of_retract i r (r.comp i = LinearMap.id)`が直接使える。
+`cofibrantCarrierKFlat_of_cellStages`が使う同じ代数retractをcarrier、各次数へ写せば、
+最後のretractの平坦性はこの法則へ帰着する。
+なお各段階の平坦性から最終filtered余極限の各次数の平坦性への比較はまだ必要で、
+K平坦性の既存定理を項別平坦性として読み替えない。
+
+(a)で残る本質的な比較は、選んだ厳密表示に対してMayの値を定義できるかではなく、
+**元のcosimplicial/二重模型の指定Frobeniusが、完備化後にも同じ値を誘導するか**。
+ordinaryな項別完備化を使うなら、有限多重線形作用の連続延長と、
+全鎖での有限primitiveの恒等式（非cycleにはdaを含む誤差項）を検収する必要がある。
+完備化のcycleを単に未完備のcycleで近似できるとは仮定しない。
+L43bのclosed-inputの比較からこの全鎖の式が出るかは未証明であり、
+新しい数学の補題が必要と確定したら型つき一覧の規則で別途停止する。
+今回そのような追加補題のLeanを実装したものではない。
+
+(b)は§357のperfect環・半線形同型だけでは単位の全射性やTate項消滅を導けない、
+という結論のまま。actualなprismatic対象に必要な有界性・消滅の証明はまだない。
+(a)の指定辺との比較が不可能と示せたわけではないので、(c)が不可欠とは判定しない。
+(c)に至れば§32どおり止める。新しい仮定、G10の部品、界面・draftsの変更は加えていない。
+
+
+## 381. L12aの全arity対合が完了（検証済み、取り込み点）
+
+一覧：済み 13／全体 48（うち追加 4）
+
+`CompositeBalancePairing.compositeBalance_pairing`が§112の型を満たした。
+正の内側arity、空語の全正出力枝、零出力を全係数次数・全入力次数で含む。
+元の全分割・全Cutを保持し、退化零項も固定零項として含める。
+零出力は元のcard=0の唯一Cutと空作用の余単位の一項を対応させる。
+対合は全係数環・全単体に共通。共通整数次数へのeqToHomも負号・零を保つ。
+ホモトピー圏の等式への弱めはしていない。
+L12aだけを完了へ進め、L12・L14・L16などの別項目は未完了のまま。
+
+登録対象（全て SerrePositivity.EInfinity.SimplexCuts の下）：
+
+- NullaryZeroBalanceValues（78行）
+- NullaryZeroBalancePairing（72行）
+- CompositeBalanceTerms（69行）
+- CompositeBalancePairing（66行）
+
+今回285行、M14実測28,928行、L12a 13,721行、外枠31,000行まで2,072行。
+対象ビルド3292 jobs成功、追加警告0。
+小さい監査4モジュール78宣言・標準三公理のみ、sorry・追加公理0。
+各証明200行以内。鍵は各対象ビルド・監査の間だけ取り、返却済み。
+§376の登録対象9本は3b57d07e8。今回の4本と合わせて取り込み対象は13本。
+共有入口・共有監査の登録は触っていない。
+mainは391b2a0d2のまま。3b-4a完成の取り込みが入れば§33のTotへ切り替える。
+
+§314以降の完成見込みが外枠に収まらない懸念と、完備化後P⁰の未評価分を維持する。
+現在の実測は外枠内であり、次はL12の同じ有限和の相殺の包装へ進む。
+
+## 382. L12：同じ全有限和の相殺（実装前の型）
+
+一覧：済み 13／全体 48（うち追加 4）
+
+L12aの全対合と固定零項をFinset.sum_ninvolutionへ渡す。
+左右の和は元の直和添字の左・右で取り、反対側では零を補うだけ。
+左は合成側の正の項、右は二段側の項（balanceTermの負号を戻す）。
+新しい係数・面・添字や数学は作らない既存有限和の法則の包装。
+各証明200行以内。
+
+```lean
+def compositeBalanceIsLeft {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord n e)
+    (k : Fin (m + 1)) (q : ℕ) (i : CompositeBalanceIndex u v k q) : Bool
+
+lemma sum_compositeBalanceTerm_eq_zero (A : Type u) [CommRing A] (S : SSet.{0})
+    {m n d e : ℕ} (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord n e)
+    (k : Fin (m + 1)) (q : ℕ) (x : S _⦋q⦌) :
+    ∑ i : CompositeBalanceIndex u v k q, compositeBalanceTerm A S u v k q i x = 0
+
+def compositeCutSum (A : Type u) [CommRing A] (S : SSet.{0}) {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord n e)
+    (k : Fin (m + 1)) {q : ℕ} (x : S _⦋q⦌) :
+    (power (chains A S) (m + n)).X (-((d + e + q : ℕ) : ℤ))
+def nestedCutSum (A : Type u) [CommRing A] (S : SSet.{0}) {m n d e : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord n e)
+    (k : Fin (m + 1)) {q : ℕ} (x : S _⦋q⦌) :
+    (power (chains A S) (m + n)).X (-((d + e + q : ℕ) : ℤ))
+
+lemma cutSum_composite (A : Type u) [CommRing A] (S : SSet.{0}) {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord n e)
+    (k : Fin (m + 1)) (x : S _⦋q⦌) :
+    compositeCutSum A S u v k x = nestedCutSum A S u v k x
+```
+
+## 383. L12：全arityの同じ有限Cut和の一致（検証済み、取り込み点）
+
+一覧：済み 14／全体 48（うち追加 4）
+
+`CompositeCutSumCancellation.cutSum_composite`が通った。
+L12aの全対合をそのまま使い、固定点は零、非固定点は反対符号として相殺する。
+合成側の全分割・Cutの項と二段側の全Cutの項を、元の直和の左右で選び、
+反対側へ零を補う表記で左右の有限和を定義した。既存の整数係数・指定面は変更していない。
+零出力・空語・退化項も含む全arity、全係数環、全入力次数での主張。
+全複体射への延長（L14/L16）やL13などは、この有限和の包装だけで完了扱いにしない。
+
+登録対象：SerrePositivity.EInfinity.SimplexCuts.CompositeCutSumCancellation（84行）。
+対象ビルド3293 jobs成功、追加警告0。
+小さい監査1モジュール18宣言・標準三公理のみ、sorry・追加公理0。
+各証明200行以内。共有鍵は対象ビルド・監査の間だけ取り、返却済み。
+
+M14実測29,012行、L12a実測13,721行（今回L12の84行はL12aに重複計上しない）。
+外枠31,000行まで1,988行。直前の会話中で29,019行と述べたのは加算の誤りで、
+今回のファイルのwc -lは84行、28,928+84=29,012行が正しい。
+完備化後P⁰の三案の紙の確認は§380。新しい仮定を足して隠していない。
+M14全体の完成見込みの外枠超過の懸念は残り、一覧の残項を完成扱いにしていない。
+
+## 384. L13：一般次数の一文字単位切断（実装前の型）
+
+一覧：済み 14／全体 48（うち追加 4）
+
+区間だけのUnitValuesは適用せず、同じ右単位子の値の補題だけを再利用する。
+任意のCut 0 qはcard=0で唯一、一色の非退化性は格子経路のvertex_injectiveから得る。
+fullColorVertices_eq_idと同じ順序列挙で指定面を恒等へ同定する。
+符号は位置が一つなので逆転・caesuraがなく1。各証明200行以内。
+既存構成の単位・指定面・係数移送の法則と証明分割で、新しいIDは足さない。
+
+```lean
+lemma unaryCut_faceData {q : ℕ} (s : Cut 0 q) (u : Surjection.Word 1 1) :
+    (⟨outputDegree s u 0, vertices s u 0⟩ : Σ d : ℕ, Fin (d + 1) →o Fin (q + 1)) =
+      ⟨q, OrderHom.id⟩
+lemma unaryCut_sign {q : ℕ} (s : Cut 0 q) (u : Surjection.Word 1 1) : cutSign s u.val = 1
+lemma unaryCut_generatorFamily (A : Type u) [CommRing A] (S : SSet.{0}) {q : ℕ}
+    (s : Cut 0 q) (u : Surjection.Word 1 1) (x : S _⦋q⦌) :
+    cutGeneratorFamily A S s u x = fun _ => ⟨q, gen A S q x⟩
+lemma vectorTensorAt_one (A : Type u) [CommRing A] (K : Complex A)
+    (a : Σ d : ℕ, K.X (-(d : ℤ))) (t : ℤ) (h : -(a.1 : ℤ) = t) :
+    vectorTensorAt K 1 (fun _ => a) t (by simp [vectorDegree, degreeSum]; omega) =
+      (oneIso K).inv.f t ((eqToHom (congrArg K.X h)).hom a.2)
+lemma cutSum_unit (A : Type u) [CommRing A] (S : SSet.{0}) {q : ℕ} (x : S _⦋q⦌) :
+    cutSum A S (Surjection.permutationWord (1 : Equiv.Perm (Fin 1))) x =
+      (oneIso (chains A S)).inv.f (-((0 + q : ℕ) : ℤ))
+        ((eqToHom (congrArg (chains A S).X
+          (by omega : -(q : ℤ) = -((0 + q : ℕ) : ℤ)))).hom (gen A S q x))
+```
+
+## 385. L13の全入力次数の単位Cut和（検証済み、取り込み点）
+
+一覧：済み 15／全体 48（うち追加 4）
+
+元の唯一Cutの色別順序列挙を恒等面へ戻し、全単体の生成元を得た。
+同じ符号は1。一因子の斉次テンソルを一般の複体の右単位子の逆へ比較して、
+`UnaryCutUnit.cutSum_unit`を全qについて証明した。
+元のcutSumの整数次数-(0+q)と生成元の次数-qの等式移送を型に明示している。
+区間用の単位作用の完成定理は使わず、一般の複体の右単位子の値だけを再利用した。
+
+登録対象：SerrePositivity.EInfinity.SimplexCuts の下
+
+- UnaryCutFaces（80行）
+- UnaryCutUnit（64行）
+
+今回144行、M14実測29,156行、外枠31,000行まで1,844行。
+対象ビルド2703 jobs成功、追加警告0。
+小さい監査2モジュール14宣言・標準三公理のみ、sorry・追加公理0。
+各証明200行以内。鍵は対象ビルド・監査の間だけ取り、返却済み。
+mainは391b2a0d2のまま。§33の3b-4a完成の取り込みはまだない。
+完備化後P⁰の指定Frobeniusとの比較は§380のまま未解決で、新しい仮定を加えていない。
+L14の空語の実複体射の包装へ進む。
+
+## 386. L14の空語余作用の指定射との一致（実装前の型）
+
+一覧：済み 15／全体 48（うち追加 4）
+
+零arityのcomponentは既にnullaryActionから定義されている。
+元のtensorLiftの斉次成分とTensorProductの外延性で同じ複体射へ戻し、
+左単位子の自然性だけで係数augmentation⊗AW余単位の式に直す。
+既存構成の法則の証明分割で新しいIDなし、各証明200行以内。
+L14の合成則の全複体射への延長は別に残す。
+
+```lean
+lemma cochainAction_nullary_eq (A : Type u) [CommRing A] (S : SSet.{0}) :
+    cochainAction A S 0 = nullaryAction A S
+lemma coaction_nullary (A : Type u) [CommRing A] (S : SSet.{0}) :
+    cochainAction A S 0 =
+      (nullaryCoefficientAugmentation A ⊗ₘ AlexanderWhitney.cochainCounit A S) ≫
+        (λ_ (𝟙_ (Complex A))).hom
+```
+
+## 387. L14/L16の全整数外延性（実装前の型）
+
+一覧：済み 15／全体 48（うち追加 4）
+
+既存triple_extを二つのχの元の語基底と、一般Sの正規化生成元へ特殊化する。
+区間に限定した外延性は使わず、複体の正次数は元の零延長から除く。
+同じ線形写像の基底外延性・貼り合わせの法則と証明分割で、新しい数学・IDは足さない。
+各証明200行以内。wordPairSimplexInputは元の二つのιTensorObjの値の記法だけ。
+
+```lean
+lemma chains_generator_linear_ext (A : Type u) [CommRing A] (S : SSet.{0}) (q : ℕ)
+    {M : Type u} [AddCommGroup M] [Module A M]
+    {f g : (chains A S).X (-(q : ℤ)) →ₗ[A] M}
+    (h : ∀ x : S _⦋q⦌, f (gen A S q x) = g (gen A S q x)) : f = g
+lemma coefficient_simplex_linear_ext (A : Type u) [CommRing A] (S : SSet.{0}) (m n d e q : ℕ)
+    {M : Type u} [AddCommGroup M] [Module A M]
+    {f g : ((Surjection.complex A m).X (-(d : ℤ)) ⊗[A]
+      (Surjection.complex A n).X (-(e : ℤ))) ⊗[A] (chains A S).X (-(q : ℤ)) →ₗ[A] M}
+    (h : ∀ (u : Surjection.BasisWord m d) (v : Surjection.BasisWord n e) (x : S _⦋q⦌),
+      f (((Surjection.complexXIso A m d).inv (Surjection.basis A m d (ULift.up u)) ⊗ₜ[A]
+        (Surjection.complexXIso A n e).inv (Surjection.basis A n e (ULift.up v))) ⊗ₜ[A] gen A S q x) =
+      g (((Surjection.complexXIso A m d).inv (Surjection.basis A m d (ULift.up u)) ⊗ₜ[A]
+        (Surjection.complexXIso A n e).inv (Surjection.basis A n e (ULift.up v))) ⊗ₜ[A] gen A S q x)) : f = g
+
+def wordPairSimplexInput (A : Type u) [CommRing A] (S : SSet.{0}) {m n d e q : ℕ}
+    (u : Surjection.BasisWord m d) (v : Surjection.BasisWord n e) (x : S _⦋q⦌) :
+    ((Surjection.complex A m ⊗ Surjection.complex A n) ⊗ chains A S).X
+      (-(d : ℤ) + -(e : ℤ) + -(q : ℤ))
+lemma coefficient_simplex_hom_ext (A : Type u) [CommRing A] (S : SSet.{0}) (m n : ℕ)
+    {K : Complex A} {f g : (Surjection.complex A m ⊗ Surjection.complex A n) ⊗ chains A S ⟶ K}
+    (h : ∀ (d e q : ℕ) (u : Surjection.BasisWord m d) (v : Surjection.BasisWord n e) (x : S _⦋q⦌),
+      f.f (-(d : ℤ) + -(e : ℤ) + -(q : ℤ)) (wordPairSimplexInput A S u v x) =
+        g.f (-(d : ℤ) + -(e : ℤ) + -(q : ℤ)) (wordPairSimplexInput A S u v x)) : f = g
+```
+
+## 388. L14/L16の同じ元の複体射の部分合成則（実装前の型）
+
+一覧：済み 15／全体 48（うち追加 4）
+
+§370の全arity基底値を§387の全整数外延性で延長する。
+左辺の同じ複体合成の値はwhiskerRight_applyとcomplexPartialComposition_neg_tmul、
+partialComposition_basisだけで元のcompositionOnWordsへ戻す。
+中間整数次数-(d+e)と-d-eの照合は同じιTensorObjの等式移送で、作用・係数を変えない。
+既存構成の係数移送・合成則と証明分割で新しい数学・IDなし、各証明200行以内。
+
+```lean
+lemma cochainAction_composition_input (A : Type u) [CommRing A] (S : SSet.{0}) {m n d e q : ℕ}
+    (u : Surjection.BasisWord (m + 1) d) (v : Surjection.BasisWord n e)
+    (k : Fin (m + 1)) (x : S _⦋q⦌) :
+    ((Surjection.complexPartialComposition A m n k ▷ chains A S) ≫
+      cochainAction A S (m + n)).f (-(d : ℤ) + -(e : ℤ) + -(q : ℤ))
+        (wordPairSimplexInput A S u v x) =
+    (cochainAction A S (m + n)).f (-(d : ℤ) + -(e : ℤ) + -(q : ℤ))
+      (ιTensorObj (Surjection.complex A (m + n)) (chains A S)
+        (-((d + e : ℕ) : ℤ)) (-(q : ℤ)) (-(d : ℤ) + -(e : ℤ) + -(q : ℤ)) (by omega)
+        ((Surjection.complexXIso A (m + n) (d + e)).inv
+          (Surjection.compositionOnWords A u v k) ⊗ₜ[A] gen A S q x))
+lemma coaction_comp_all (A : Type u) [CommRing A] (S : SSet.{0}) (m n : ℕ) (k : Fin (m + 1)) :
+    (Surjection.complexPartialComposition A m n k ▷ chains A S) ≫ cochainAction A S (m + n) =
+      iteratedCochainAction A S m n k
+lemma coaction_comp_nullary (A : Type u) [CommRing A] (S : SSet.{0}) (m : ℕ) (k : Fin (m + 1)) :
+    (Surjection.complexPartialComposition A m 0 k ▷ chains A S) ≫ cochainAction A S m =
+      iteratedCochainAction A S m 0 k
+```
+
+
+§386の第1型は既存の`CochainNullaryAction.cochainAction_zero_eq_nullaryAction`と同じである。
+最終実装ではその既存宣言を直接再利用し、重複する新しい別名は追加しない。
+新規NullaryActionLawには指定されたaugmentation⊗余単位の式の包装だけを残した。
+
+## 389. L14・L16：全arityの元の実複体射の合成則（検証済み、取り込み点）
+
+一覧：済み 17／全体 48（うち追加 4）
+
+`coaction_comp_all`で、空語を含む全arityの元の複体射の部分合成則を示した。
+基底値の一致だけでなく、正の整数次数の元は元の零延長で零、
+非正整数次数は二語基底と任意次元の正規化生成元で判定する全射の外延性を通している。
+`coaction_comp_nullary`と指定augmentation⊗AW余単位の`coaction_nullary`も含む。
+L14とL16を完了へ進める。L15は次に残る。L12aの行数には重複計上しない。
+
+登録対象：SerrePositivity.EInfinity.SimplexCuts の下
+
+- NullaryActionLaw（29行）
+- SimplexGeneratorLinearExt（61行）
+- SimplexTripleGeneratorExt（83行）
+- CochainCompositionInput（61行）
+- CochainCompositionLaws（36行）
+
+今回270行、M14実測29,426行、外枠31,000行まで1,574行。
+対象ビルド3287 jobs成功、追加警告0。
+小さい監査5モジュール32宣言・標準三公理のみ、sorry・追加公理0。
+各証明200行以内。共有鍵は各対象ビルド・監査の間だけ取り、返却済み。
+mainは391b2a0d2のまま。3b-4a完成の取り込みはまだない。
+完備化後P⁰の指定Frobeniusとの比較は§380のまま未解決で、新しい仮定なし。
+
+## 390. L15の全複体射の自然性（実装前の型）
+
+一覧：済み 17／全体 48（うち追加 4）
+
+同じ基底外延性の二入力版を作り、L05のcutTerm_mapを全Cut和へ、
+その後実際のcochainActionへ延長する。零arityは同じ空語augmentationと
+既存cochainCounit_natural、左単位子の自然性だけを使う。
+既存の自然性・線形延長・貼り合わせの法則の証明分割で、新しい数学・IDは足さない。
+各証明200行以内。
+
+```lean
+lemma coefficient_simplex_pair_hom_ext (A : Type u) [CommRing A] (S : SSet.{0}) (m : ℕ)
+    {K : Complex A} {f g : Surjection.complex A m ⊗ chains A S ⟶ K}
+    (h : ∀ (d q : ℕ) (u : Surjection.BasisWord m d) (x : S _⦋q⦌),
+      f.f (-((d + q : ℕ) : ℤ))
+        (ιTensorObj (Surjection.complex A m) (chains A S) (-(d : ℤ)) (-(q : ℤ))
+          (-((d + q : ℕ) : ℤ)) (by omega)
+          ((Surjection.complexXIso A m d).inv (Surjection.basis A m d (ULift.up u)) ⊗ₜ[A] gen A S q x)) =
+      g.f (-((d + q : ℕ) : ℤ))
+        (ιTensorObj (Surjection.complex A m) (chains A S) (-(d : ℤ)) (-(q : ℤ))
+          (-((d + q : ℕ) : ℤ)) (by omega)
+          ((Surjection.complexXIso A m d).inv (Surjection.basis A m d (ULift.up u)) ⊗ₜ[A] gen A S q x))) : f = g
+lemma cutSum_map (A : Type u) [CommRing A] {S T : SSet.{0}} (f : S ⟶ T)
+    {r d q : ℕ} (u : Surjection.BasisWord (r + 1) d) (x : S _⦋q⦌) :
+    (TensorPowers.map ((BarrattEccles.normalizedFunctor A).map f) (r + 1)).f (-((d + q : ℕ) : ℤ))
+      (cutSum A S u x) = cutSum A T u (f.app _ x)
+lemma coaction_natural (A : Type u) [CommRing A] {S T : SSet.{0}} (f : S ⟶ T) (r : ℕ) :
+    (Surjection.complex A r ◁ (BarrattEccles.normalizedFunctor A).map f) ≫ cochainAction A T r =
+      cochainAction A S r ≫ TensorPowers.map ((BarrattEccles.normalizedFunctor A).map f) r
+```
+
+## 391. L15：全arityの元の複体射の自然性（検証済み、取り込み点）
+
+一覧：済み 18／全体 48（うち追加 4）
+
+`CochainNaturality.coaction_natural`を全arityについて証明した。
+正arityは元の全Cut項の自然性を全Cut和へ戻し、元の語基底と任意次元の
+正規化単体生成元の外延性で全係数・全複体射へ延長した。
+零arityは構成済みの空語作用と既存のAW余単位の自然性を使い、
+左右のテンソル作用の交換と左単位子の自然性だけで同じ指定射へ戻した。
+正整数次数の元は元の零延長で零。有限次元性・有界性の仮定は追加していない。
+
+登録対象：SerrePositivity.EInfinity.SimplexCuts の下
+
+- SimplexPairGeneratorExt（75行）
+- CochainNaturality（55行）
+
+今回130行、M14実測29,556行、外枠31,000行まで1,444行。
+対象ビルド3010 jobs成功、追加警告0。
+小さい監査2モジュール11宣言・標準三公理のみ、sorry・追加公理0。
+各証明200行以内。鍵は対象ビルド・監査の間だけ取り、返却済み。
+mainは391b2a0d2のまま。3b-4a完成の取り込みはまだない。
+次はL17の同変性・単位を実複体射へ延長し、L18の同じTRによる制限へ進む。
+M14全体や完備化後P⁰の比較を完成扱いにしていない。完備化三案は§380の状態を維持する。
+
+## 392. L17の同変性と単位の実複体射への延長（実装前の型）
+
+一覧：済み 18／全体 48（うち追加 4）
+
+同変性はL11と二入力外延性を使い、零arityの置換は唯一性で恒等へ戻す。
+係数の負次数のrenameは既存complexRename_neg_hom_applyをそのまま使う。
+単位はL13の同じ唯一Cut・指定面・一因子テンソルの計算を、入力の元の次数-qで読み、
+左単位子とcomplexUnitの既存の値の公式で実複体射へ延長する。
+既存構成の係数移送・単位・等変性・線形延長の法則と証明分割で、新しい数学・IDなし。
+各証明200行以内。
+
+```lean
+lemma complexRename_basis_inv (A : Type u) [CommRing A] {n d : ℕ}
+    (σ : Equiv.Perm (Fin n)) (v : Surjection.BasisWord n d) :
+    (Surjection.complexRename A n σ).f (-(d : ℤ))
+      ((Surjection.complexXIso A n d).inv (Surjection.basis A n d (ULift.up v))) =
+        (Surjection.complexXIso A n d).inv
+          (Surjection.basis A n d (ULift.up (Surjection.Word.rename σ v)))
+lemma cochainAction_permutation (A : Type u) [CommRing A] (S : SSet.{0})
+    (n : ℕ) (σ : Equiv.Perm (Fin n)) :
+    (Surjection.complexRename A n σ ▷ chains A S) ≫ cochainAction A S n =
+      cochainAction A S n ≫ (permutationAction (chains A S) n σ).asIso.hom
+lemma cochainAction_equivariance (A : Type u) [CommRing A] (S : SSet.{0})
+    (n : ℕ) (σ : Equiv.Perm (Fin n)) :
+    ((Surjection.sequence A).map (FiniteBijection.permutation n σ) ▷ chains A S) ≫ cochainAction A S n =
+      cochainAction A S n ≫ (permutationAction (chains A S) n σ).asIso.hom
+
+lemma cochainAction_unit_generator (A : Type u) [CommRing A] (S : SSet.{0}) {q : ℕ} (x : S _⦋q⦌) :
+    (cochainAction A S 1).f (-(q : ℤ))
+      (ιTensorObj (Surjection.complex A 1) (chains A S) 0 (-(q : ℤ)) (-(q : ℤ)) (zero_add _)
+        ((Surjection.complexXIso A 1 0).inv (Surjection.unitElement A) ⊗ₜ[A] gen A S q x)) =
+      (oneIso (chains A S)).inv.f (-(q : ℤ)) (gen A S q x)
+lemma cochainAction_unit_inv (A : Type u) [CommRing A] (S : SSet.{0}) :
+    (λ_ (chains A S)).inv ≫ (Surjection.complexUnit A ▷ chains A S) ≫ cochainAction A S 1 =
+      (oneIso (chains A S)).inv
+lemma cochainAction_unit (A : Type u) [CommRing A] (S : SSet.{0}) :
+    (Surjection.complexUnit A ▷ chains A S) ≫ cochainAction A S 1 ≫ (oneIso (chains A S)).hom =
+      (λ_ (chains A S)).hom
+```
+
+## 393. L18の同じTRによる全単体集合の余代数（実装前の型）
+
+一覧：済み 18／全体 48（うち追加 4）
+
+証明済みの全arityの単位・同変性・部分合成則を既存Coalgebraの欄へ束ねる。
+底の複体と射は元のnormalizedFunctorのまま、L15から余代数射を作る。
+Eへの制限は既存restrictCoalgebraObj/Map/Functorと元のTableReduction.operadMapを使う。
+新しい作用・模型を選ばない同じ構成の貼り合わせの包装。各証明200行以内。
+
+```lean
+def surjectionCoalgebra (A : Type u) [CommRing A] (S : SSet.{0}) :
+    (Surjection.operad A).Coalgebra
+def surjectionCoalgebraMap (A : Type u) [CommRing A] {S T : SSet.{0}} (f : S ⟶ T) :
+    surjectionCoalgebra A S ⟶ surjectionCoalgebra A T
+def surjectionCoalgebraFunctor (A : Type u) [CommRing A] :
+    SSet.{0} ⥤ (Surjection.operad A).Coalgebra
+
+def barrattEcclesCoalgebra (A : Type u) [CommRing A] (S : SSet.{0}) :
+    (BarrattEccles.operad A).Coalgebra
+def barrattEcclesCoalgebraMap (A : Type u) [CommRing A] {S T : SSet.{0}} (f : S ⟶ T) :
+    barrattEcclesCoalgebra A S ⟶ barrattEcclesCoalgebra A T
+def barrattEcclesCoalgebraFunctor (A : Type u) [CommRing A] :
+    SSet.{0} ⥤ (BarrattEccles.operad A).Coalgebra
+lemma barrattEcclesCoalgebra_coaction (A : Type u) [CommRing A] (S : SSet.{0}) (n : ℕ) :
+    (barrattEcclesCoalgebra A S).coaction n =
+      ((TableReduction.operadMap A).map.app (FiniteBijection.of n) ▷ chains A S) ≫
+        cochainAction A S n
+lemma barrattEcclesCoalgebraMap_hom (A : Type u) [CommRing A] {S T : SSet.{0}} (f : S ⟶ T) :
+    (barrattEcclesCoalgebraMap A f).hom = (BarrattEccles.normalizedFunctor A).map f
+```
+
+§393のL18の射の保存式は、同じ既存CoalgebraHom.commの指定欄として明示する。
+新しい主張ではなく、構成した射の欄を取り出す法則。
+
+```lean
+lemma barrattEcclesCoalgebraMap_comm (A : Type u) [CommRing A] {S T : SSet.{0}}
+    (f : S ⟶ T) (n : ℕ) :
+    ((BarrattEccles.operad A).arity n ◁ (BarrattEccles.normalizedFunctor A).map f) ≫
+        (barrattEcclesCoalgebra A T).coaction n =
+      (barrattEcclesCoalgebra A S).coaction n ≫
+        TensorPowers.map ((BarrattEccles.normalizedFunctor A).map f) n
+```
+
+## 394. L17・L18：元の全単体集合のBF余代数関手（検証済み、取り込み点）
+
+一覧：済み 20／全体 48（うち追加 4）
+
+L17の全整数複体射の単位と同変性、L18のχ余代数とTRによるE余代数の関手が通った。
+入力の単体次元・語次数・arityの制限はない。零arityは唯一の置換を恒等へ戻す。
+単位は元の一文字語の唯一Cutを全単体で評価し、正整数次数の元は元の零延長で零とした。
+対称列の指定置換、指定のcomplexUnit、同じTableReduction.operadMapを使用している。
+底の複体・写像はnormalizedFunctorのものをそのまま保持し、作用の式と射の保存式を明示した。
+
+登録対象：SerrePositivity.EInfinity.SimplexCuts の下
+
+- CochainPermutation（66行）
+- CochainUnit（91行）
+- Coalgebra（80行）
+
+今回237行、M14実測29,793行、外枠31,000行まで1,207行。
+対象ビルド3359 jobs成功、追加警告0。
+小さい監査3モジュール22宣言・標準三公理のみ、sorry・追加公理0。
+各証明200行以内。共有鍵は各対象ビルド・監査の間だけ取り、返却済み。
+mainは391b2a0d2のまま。§33の3b-4a完成の取り込みはまだない。
+次はL19以降のcosimplicial正規化。一般次元のBF余代数ができたことを、
+正規化cosimplicial代数の全関手やMayのtop計算の完成とは扱わない。
+完備化後P⁰の指定Frobeniusとの比較は§380のまま未解決。
+
+## 395. L19の一般余単体的加群への特殊化（実装前の型）
+
+一覧：済み 20／全体 48（うち追加 4）
+
+正規化cosimplicial代数の加群忘却に使える一般性で置く。
+SimplexCuts.normalizedComponent（χ係数の作用成分）とは別の名前空間
+EInfinity.CosimplicialNormalizationを使う。
+次数0は全体、次数q+1は全σ_iの核の共通部分。
+微分は元の交代余面和そのもの。σ_iδ_jは二つの隣接項だけが恒等で、
+残りは入力のσの零へ戻す。二項の整数符号は反対。
+L19の既存cosimplicial恒等式・有限和・核の法則の証明分割で新しいIDなし。
+各証明200行以内。
+
+```lean
+def normalizedSubmodule (A : Type u) [CommRing A] (X : CosimplicialObject (ModuleCat A)) :
+    (q : ℕ) → Submodule A (X.obj ⦋q⦌)
+def alternatingCofaces (A : Type u) [CommRing A] (X : CosimplicialObject (ModuleCat A)) (q : ℕ) :
+    X.obj ⦋q⦌ →ₗ[A] X.obj ⦋q + 1⦌
+lemma mem_normalized_succ (A : Type u) [CommRing A] (X : CosimplicialObject (ModuleCat A))
+    (q : ℕ) (a : X.obj ⦋q + 1⦌) :
+    a ∈ normalizedSubmodule A X (q + 1) ↔ ∀ i : Fin (q + 1), (X.σ i) a = 0
+lemma coface_codegeneracy_zero_of_not_neighbors
+    (A : Type u) [CommRing A] (X : CosimplicialObject (ModuleCat A)) {q : ℕ}
+    (a : X.obj ⦋q⦌) (ha : a ∈ normalizedSubmodule A X q) (i : Fin (q + 1)) (j : Fin (q + 2))
+    (h₀ : j ≠ i.castSucc) (h₁ : j ≠ i.succ) : (X.σ i) ((X.δ j) a) = 0
+lemma normalized_d_mem_exact (A : Type u) [CommRing A] (X : CosimplicialObject (ModuleCat A))
+    (q : ℕ) (a : normalizedSubmodule A X q) :
+    ∀ i : Fin (q + 1), (X.σ i) (alternatingCofaces A X q a.val) = 0
+lemma alternatingCofaces_mem (A : Type u) [CommRing A] (X : CosimplicialObject (ModuleCat A))
+    (q : ℕ) (a : normalizedSubmodule A X q) :
+    alternatingCofaces A X q a.val ∈ normalizedSubmodule A X (q + 1)
+```
+
+## 396. L19の全codegeneracy核の微分保存（検証済み、取り込み点）
+
+一覧：済み 21／全体 48（うち追加 4）
+
+一般の余単体的A加群について、元の全σの核の共通部分を
+元の交代余面微分が保つことを証明した。
+次数零も含む。σ_iδ_jの隣接二項以外を同じ入力のσの零へ戻し、
+残る二つの恒等項を元の整数符号で相殺する。
+cosimplicial代数の加群忘却へ適用できる一般性で、有限次元性等の追加仮定なし。
+正規化の作用成分名と衝突しない別の名前空間CosimplicialNormalizationに置いた。
+
+登録対象：SerrePositivity.EInfinity.CosimplicialNormalization の下
+
+- Components（34行）
+- Differential（90行）
+
+今回124行、M14実測29,917行、外枠31,000行まで1,083行。
+対象ビルド1369 jobs成功、追加警告0。
+小さい監査2モジュール21宣言・標準三公理のみ、sorry・追加公理0。
+各証明200行以内。共有鍵は対象ビルド・監査の間だけ取り、返却済み。
+L20の同じ制限微分・包含・写像へ進む。
+
+## 397. L20の同じ制限微分・包含・自然性（実装前の型）
+
+一覧：済み 21／全体 48（うち追加 4）
+
+元の交代余面複体の二乗零を使い、L19の核への制限を自然数コチェイン複体へ束ねる。
+射は同じf.appの制限、包含は元の部分加群のsubtype。最後はembeddingUpNatによる
+既存の零延長関手へ送る。G10・実現・native Totの部品は作らない。
+既存構成の制限・微分・自然性・貼り合わせの法則と証明分割で新しいIDなし。
+各証明200行以内。
+
+```lean
+lemma alternatingCofaces_eq_objD_hom (A : Type u) [CommRing A]
+    (X : CosimplicialObject (ModuleCat A)) (q : ℕ) :
+    alternatingCofaces A X q = (AlgebraicTopology.AlternatingCofaceMapComplex.objD X q).hom
+def normalizedDifferential (A : Type u) [CommRing A] (X : CosimplicialObject (ModuleCat A)) (q : ℕ) :
+    ModuleCat.of A (normalizedSubmodule A X q) ⟶ ModuleCat.of A (normalizedSubmodule A X (q + 1))
+lemma normalizedDifferential_squared (A : Type u) [CommRing A]
+    (X : CosimplicialObject (ModuleCat A)) (q : ℕ) :
+    normalizedDifferential A X q ≫ normalizedDifferential A X (q + 1) = 0
+
+def normalizedCochainNat (A : Type u) [CommRing A] (X : CosimplicialObject (ModuleCat A)) :
+    CochainComplex (ModuleCat A) ℕ
+def normInclusionNat (A : Type u) [CommRing A] (X : CosimplicialObject (ModuleCat A)) :
+    normalizedCochainNat A X ⟶ (AlgebraicTopology.alternatingCofaceMapComplex (ModuleCat A)).obj X
+lemma normalized_map_mem (A : Type u) [CommRing A] {X Y : CosimplicialObject (ModuleCat A)}
+    (f : X ⟶ Y) (q : ℕ) (a : normalizedSubmodule A X q) :
+    (f.app ⦋q⦌) a.val ∈ normalizedSubmodule A Y q
+
+def normalizedMapNat (A : Type u) [CommRing A] {X Y : CosimplicialObject (ModuleCat A)} (f : X ⟶ Y) :
+    normalizedCochainNat A X ⟶ normalizedCochainNat A Y
+def normalizedCochainNatFunctor (A : Type u) [CommRing A] :
+    CosimplicialObject (ModuleCat A) ⥤ CochainComplex (ModuleCat A) ℕ
+def normalizationInclusionNat (A : Type u) [CommRing A] :
+    normalizedCochainNatFunctor A ⟶ AlgebraicTopology.alternatingCofaceMapComplex (ModuleCat A)
+
+def normalizedCochainFunctor (A : Type u) [CommRing A] :
+    CosimplicialObject (ModuleCat A) ⥤ Complex A
+def unnormalizedCochainFunctor (A : Type u) [CommRing A] :
+    CosimplicialObject (ModuleCat A) ⥤ Complex A
+def normalizationInclusion (A : Type u) [CommRing A] :
+    normalizedCochainFunctor A ⟶ unnormalizedCochainFunctor A
+def normInclusion (A : Type u) [CommRing A] (X : CosimplicialObject (ModuleCat A)) :
+    (normalizedCochainFunctor A).obj X ⟶ (unnormalizedCochainFunctor A).obj X
+lemma normInclusion_d (A : Type u) [CommRing A] (X : CosimplicialObject (ModuleCat A)) (i j : ℤ) :
+    ((normalizedCochainFunctor A).obj X).d i j ≫ (normInclusion A X).f j =
+      (normInclusion A X).f i ≫ ((unnormalizedCochainFunctor A).obj X).d i j
+lemma normInclusion_naturality (A : Type u) [CommRing A]
+    {X Y : CosimplicialObject (ModuleCat A)} (f : X ⟶ Y) :
+    (normalizedCochainFunctor A).map f ≫ normInclusion A Y =
+      normInclusion A X ≫ (unnormalizedCochainFunctor A).map f
+```
+
+§397の整数零延長の次数比較も、既存extendXIsoの指定同型として取り出す。
+
+```lean
+def normalizedCochainXIso (A : Type u) [CommRing A] (X : CosimplicialObject (ModuleCat A)) (q : ℕ) :
+    ((normalizedCochainFunctor A).obj X).X (q : ℤ) ≅ ModuleCat.of A (normalizedSubmodule A X q)
+```
+
+## 398. L20の全整数正規化複体と指定包含（検証済み、取り込み点）
+
+一覧：済み 22／全体 48（うち追加 4）
+
+L19の元の核への制限微分を自然数コチェイン複体に束ね、
+二乗零は元の交代余面複体のd_squaredから判定した。
+全余単体的写像の各項を同じ核へ制限して関手にし、元のsubtypeの包含を自然変換にした。
+これらを既存embeddingUpNatの零延長関手へ送り、全整数での微分との可換性と自然性を得た。
+整数非負次数と元の全codegeneracy核の指定比較も既存extendXIsoで明示した。
+一般余単体的A加群の構成なので、cosimplicial代数の加群忘却へ適用できる。
+指定包含のホモトピー逆（L21）、代数作用やnative Totは完成扱いにしない。
+
+登録対象：SerrePositivity.EInfinity.CosimplicialNormalization の下
+
+- NatComplex（63行）
+- NatFunctor（91行）
+- IntegerComplex（57行）
+
+今回211行、M14実測30,128行、外枠31,000行まで872行。
+対象ビルド1920 jobs成功、追加警告0。
+小さい監査3モジュール31宣言・標準三公理のみ、sorry・追加公理0。
+各証明200行以内。共有鍵は各対象ビルド・監査の間だけ取り、返却済み。
+mainは391b2a0d2のまま。§33の3b-4a完成の取り込みはまだない。
+
+### 398.1 L21への既存APIの入口と残りの外枠
+
+MathlibのDoldKan.Degeneracies.leanにはσ_comp_PInftyと
+`degeneraciesVanish_iff_QInfty_f_comp`、PInfty.leanにはPInfty_f_add_QInfty_fがある。
+HomotopyEquivalence.leanの`homotopyPInftyToId`を、同じcosimplicial対象を
+反対圏で見たsimplicial対象へ適用できる。
+Homotopy.unopとEmbedding/ExtendHomotopy.leanのHomotopy.extendも既存。
+従ってL21では新しい収縮を作らず、同じPInftyの反対圏による移送を試す。
+移した射影が全σの核に入ること、核で恒等であること、
+同じ指定包含との合成が元の射影であることの接続はまだ未実装。
+
+この接続と指定ホモトピー逆の包装を新規300〜550行程度と暫定見積もりする。
+L21をこの範囲で閉じても残り外枠は322〜572行。
+§314のL22〜26の未供給の評価・復元の下端900行だけでもそこに収まらない。
+外枠は自分では上げず、次の接続が超えそうな所で検証済みをコミットして停止する。
+L22以降やMayのtop計算、完備化後P⁰の未評価分を消した見積もりにはしない。
+完備化の三案の比較は§380のまま。指定Frobeniusとの比較は未解決で、仮定を追加していない。
+
+## 399. L21の同じDold–Kan射影の反対圏移送（実装前の型）
+
+一覧：済み 22／全体 48（うち追加 4）
+
+§398.1の経路を型に落とす。同じ余単体的対象を反対圏のsimplicial対象で読み、
+既存PInftyとhomotopyPInftyToIdを運ぶ。指定した全σ核と包含は変更しない。
+σ_comp_PInftyで像が核に入ること、degeneraciesVanish_iff_QInfty_f_compと
+PInfty_f_add_QInfty_fで核上の恒等性を判定する。
+全てL21の既存射影の係数移送・法則・貼り合わせの証明分割。新しいIDは足さない。
+各証明200行以内。残り外枠872行、L21の見込み300〜550行。
+
+```lean
+def dualSimplicial (A : Type u) [CommRing A] (X : CosimplicialObject (ModuleCat A)) :
+    SimplicialObject ((ModuleCat A)ᵒᵖ)
+def dualAlternatingIso (A : Type u) [CommRing A] (X : CosimplicialObject (ModuleCat A)) :
+    ((AlgebraicTopology.alternatingFaceMapComplex ((ModuleCat A)ᵒᵖ)).obj (dualSimplicial A X)).unop ≅
+      (AlgebraicTopology.alternatingCofaceMapComplex (ModuleCat A)).obj X
+
+def cofaceProjectorNat (A : Type u) [CommRing A] (X : CosimplicialObject (ModuleCat A)) :
+    (AlgebraicTopology.alternatingCofaceMapComplex (ModuleCat A)).obj X ⟶
+      (AlgebraicTopology.alternatingCofaceMapComplex (ModuleCat A)).obj X
+lemma cofaceProjectorNat_f (A : Type u) [CommRing A] (X : CosimplicialObject (ModuleCat A)) (q : ℕ) :
+    (cofaceProjectorNat A X).f q =
+      ((AlgebraicTopology.DoldKan.PInfty (X := dualSimplicial A X)).f q).unop
+def cofaceProjectorNat_homotopy (A : Type u) [CommRing A] (X : CosimplicialObject (ModuleCat A)) :
+    Homotopy (cofaceProjectorNat A X) (𝟙 _)
+
+lemma cofaceProjectorNat_mem (A : Type u) [CommRing A] (X : CosimplicialObject (ModuleCat A))
+    (q : ℕ) (a : X.obj ⦋q⦌) : (cofaceProjectorNat A X).f q a ∈ normalizedSubmodule A X q
+lemma cofaceProjectorNat_normalized (A : Type u) [CommRing A] (X : CosimplicialObject (ModuleCat A))
+    (q : ℕ) (a : normalizedSubmodule A X q) : (cofaceProjectorNat A X).f q a.val = a.val
+
+def normalizationRetractionNat (A : Type u) [CommRing A] (X : CosimplicialObject (ModuleCat A)) :
+    (AlgebraicTopology.alternatingCofaceMapComplex (ModuleCat A)).obj X ⟶ normalizedCochainNat A X
+lemma normInclusionNat_retraction (A : Type u) [CommRing A] (X : CosimplicialObject (ModuleCat A)) :
+    normInclusionNat A X ≫ normalizationRetractionNat A X = 𝟙 _
+lemma normalizationRetractionNat_inclusion (A : Type u) [CommRing A] (X : CosimplicialObject (ModuleCat A)) :
+    normalizationRetractionNat A X ≫ normInclusionNat A X = cofaceProjectorNat A X
+
+def normalizationHomotopyEquivNat (A : Type u) [CommRing A] (X : CosimplicialObject (ModuleCat A)) :
+    HomotopyEquiv (normalizedCochainNat A X)
+      ((AlgebraicTopology.alternatingCofaceMapComplex (ModuleCat A)).obj X)
+def normalizationHomotopyEquiv (A : Type u) [CommRing A] (X : CosimplicialObject (ModuleCat A)) :
+    HomotopyEquiv ((normalizedCochainFunctor A).obj X) ((unnormalizedCochainFunctor A).obj X)
+lemma normalizationHomotopyEquiv_hom (A : Type u) [CommRing A] (X : CosimplicialObject (ModuleCat A)) :
+    (normalizationHomotopyEquiv A X).hom = normInclusion A X
+```
+
+## 400. L21の指定正規化包含のホモトピー逆（検証済み、取り込み点）
+
+一覧：済み 23／全体 48（うち追加 4）
+
+`normalizationHomotopyEquiv`を全整数の同じ複体について構成した。
+`normalizationHomotopyEquiv_hom`はrflで、homはL20の元のnormInclusionそのもの。
+別の比較射への変更や、擬同型の存在だけへの弱めはしていない。
+
+同じ対象を反対圏のsimplicial対象で読み、既存PInftyとhomotopyPInftyToIdを移した。
+σ_comp_PInftyから像が全σの核に入ることを示し、
+degeneraciesVanish_iff_QInfty_f_compとPInfty+QInfty=1から同じ核上の恒等性を得た。
+その射影を元の核へ制限して逆射を作り、包含との一方の合成は厳密な恒等、
+もう一方は元の同じ射影と厳密に一致。既存ホモトピーを後者へ接続した。
+自然数複体から既存Homotopy.extendで同じembeddingUpNatの零延長へ送っている。
+一般余単体的A加群の全次数の主張で、有界性・有限次元性などの追加仮定なし。
+新しい収縮やG10・native Totの部品は作っていない。
+
+登録対象：SerrePositivity.EInfinity.CosimplicialNormalization の下
+
+- DualProjector（75行）
+- ProjectorKernels（64行）
+- NatHomotopyEquiv（74行）
+- IntegerHomotopyEquiv（43行）
+
+今回256行、M14実測30,384行、外枠31,000行まで616行。
+見込み300〜550行との差は44〜294行減。既存の退化消滅の同値とP+Qの恒等式を直接使い、
+新しい射影・ホモトピーの再構成を省けた分。
+対象ビルド1936 jobs成功、追加警告0。
+小さい監査4モジュール30宣言・標準三公理のみ、sorry・追加公理0。
+各証明200行以内。共有鍵は各対象ビルド・監査の間だけ取り、返却済み。
+mainは391b2a0d2のまま。§33の3b-4a完成の取り込みはまだない。
+
+### 400.1 L22の入力の確認と次の外枠
+
+次はL22のconvolutionの等化子の関手性。元の
+SerrePositivity.Cosimplicial.CosimplicialAlgebra Aは
+`CosimplicialObject (Under (CommRingCat.of A))`であることを確認した。
+CommAlgCat値だけへ範囲を変更しない。各項の離散BE代数には、既存の
+`(commAlgCatEquivUnder (CommRingCat.of A)).inverse`の後に
+BarrattEccles.discreteAlgebraFunctor Aを用いる経路が既に本体にある。
+
+P・Qの元の全次数の積には、Functor.pi'とLimits.Pi.functorを組み合わせれば
+対象ごとの積と同じ射を保った関手を作れる。
+後合成には既存convolutionFunctor、前合成の自然性にはconvolutionPreNatが使える。
+L22の新規は従来の140〜260行程度を入口とするが、未検証の見込みであり、
+全等化子や評価・復元ができたとはしていない。
+これを閉じても残りは356〜476行で、L23の従来見込み450〜850行は上端が収まらない。
+外枠は上げず、超えそうな所で検証済みをコミットして報告して止める。
+完備化後P⁰の三案と指定Frobeniusの未解決の比較は§380のまま維持する。
+
+## 401. L22の元の全積・二射・等化子（実装前の型）
+
+一覧：済み 23／全体 48（うち追加 4）
+
+元のCosimplicialAlgebra A（Under値）を保つ。各項の離散代数は既存のUnderの同値と
+既存discreteAlgebraFunctorを合成し、単体余代数はL18の同じ全BF作用を使う。
+P・Qは全次数と全単体射にわたる元の積。積の射影・等化子の包含を保持する。
+前後合成の自然性はconvolutionFunctorとconvolutionPreNatの既存の法則。
+等化子の射は同じ積の射をequalizer.liftする。恒等・合成は包含で判定する。
+既存構成の自然性・単位・合成・貼り合わせの法則の証明分割で新しい数学・IDなし。
+各証明200行以内。残り外枠616行。L23の評価・復元や台の同型はまだ含めない。
+
+以下はEInfinity.BergerFresse名前空間。CosimplicialAlgebraは元の同じ別名。
+
+```lean
+abbrev SimplexMorphismIndex := Σ q r : ℕ, (⦋q⦌ : SimplexCategory) ⟶ ⦋r⦌
+def discreteUnderFunctor (A : Type u) [CommRing A] :
+    Under (CommRingCat.of A) ⥤ (BarrattEccles.operad A).Algebra
+def simplexCoalgebraFunctor (A : Type u) [CommRing A] :
+    SimplexCategory ⥤ (BarrattEccles.operad A).Coalgebra
+
+def convolutionOnUnder (A : Type u) [CommRing A] (q : ℕ) :
+    Under (CommRingCat.of A) ⥤ (BarrattEccles.operad A).Algebra
+def convolutionAt (A : Type u) [CommRing A] (q r : ℕ) :
+    CosimplicialAlgebra A ⥤ (BarrattEccles.operad A).Algebra
+
+def postAt (A : Type u) [CommRing A] {q r : ℕ} (α : (⦋q⦌ : SimplexCategory) ⟶ ⦋r⦌) :
+    convolutionAt A q q ⟶ convolutionAt A q r
+def preAt (A : Type u) [CommRing A] {q r : ℕ} (α : (⦋q⦌ : SimplexCategory) ⟶ ⦋r⦌) :
+    convolutionAt A r r ⟶ convolutionAt A q r
+
+def convolutionProductFunctor (A : Type u) [CommRing A] :
+    CosimplicialAlgebra A ⥤ (BarrattEccles.operad A).Algebra
+def convolutionArrowProductFunctor (A : Type u) [CommRing A] :
+    CosimplicialAlgebra A ⥤ (BarrattEccles.operad A).Algebra
+def convolutionProductProjection (A : Type u) [CommRing A] (q : ℕ) :
+    convolutionProductFunctor A ⟶ convolutionAt A q q
+
+def convolutionProductLift (A : Type u) [CommRing A] {ι : Type}
+    (F : CosimplicialAlgebra A ⥤ (BarrattEccles.operad A).Algebra)
+    (G : ι → CosimplicialAlgebra A ⥤ (BarrattEccles.operad A).Algebra) (φ : ∀ i, F ⟶ G i) :
+    F ⟶ Functor.pi' G ⋙ Limits.Pi.functor ι
+
+def post (A : Type u) [CommRing A] : convolutionProductFunctor A ⟶ convolutionArrowProductFunctor A
+def pre (A : Type u) [CommRing A] : convolutionProductFunctor A ⟶ convolutionArrowProductFunctor A
+lemma post_naturality (A : Type u) [CommRing A] {X Y : CosimplicialAlgebra A} (f : X ⟶ Y) :
+    (convolutionProductFunctor A).map f ≫ (post A).app Y =
+      (post A).app X ≫ (convolutionArrowProductFunctor A).map f
+lemma pre_naturality (A : Type u) [CommRing A] {X Y : CosimplicialAlgebra A} (f : X ⟶ Y) :
+    (convolutionProductFunctor A).map f ≫ (pre A).app Y =
+      (pre A).app X ≫ (convolutionArrowProductFunctor A).map f
+
+def bfNormalizedObj (A : Type u) [CommRing A] (X : CosimplicialAlgebra A) :
+    (BarrattEccles.operad A).Algebra
+def bfNormalizedMap (A : Type u) [CommRing A] {X Y : CosimplicialAlgebra A} (f : X ⟶ Y) :
+    bfNormalizedObj A X ⟶ bfNormalizedObj A Y
+
+def bfNormalizedAlgebra (A : Type u) [CommRing A] :
+    CosimplicialAlgebra A ⥤ (BarrattEccles.operad A).Algebra
+lemma bfNormalizedAlgebra_map_id (A : Type u) [CommRing A] (X : CosimplicialAlgebra A) :
+    bfNormalizedMap A (𝟙 X) = 𝟙 (bfNormalizedObj A X)
+lemma bfNormalizedAlgebra_map_comp (A : Type u) [CommRing A]
+    {X Y Z : CosimplicialAlgebra A} (f : X ⟶ Y) (g : Y ⟶ Z) :
+    bfNormalizedMap A (f ≫ g) = bfNormalizedMap A f ≫ bfNormalizedMap A g
+```
+
+## 402. L22の半分の区切りと内部補助の型の整理（実装前）
+
+一覧：済み 23／全体 48（うち追加 4）
+
+下書き198行、ConvolutionDiagramの71行は対象ビルド成功。
+残る全積と等化子の包装は未検証で、L22は未完了。
+内部補助convolutionProductLiftの不要な一般添字ι・任意の積族Gで
+型クラス探索が時間切れになった。heartbeatsは上げず、元の全単体射の積専用の補助とする。
+L22の全入力X・全次数・全単体射の範囲、元の積・等化子は変更しない。
+この補助は新規・未コミットで、既存の公開宣言の型は変えない。
+
+```lean
+def convolutionProductLift (A : Type u) [CommRing A]
+    (F : CosimplicialAlgebra A ⥤ (BarrattEccles.operad A).Algebra)
+    (φ : ∀ α : SimplexMorphismIndex, F ⟶ convolutionAt A α.1 α.2.1) :
+    F ⟶ convolutionArrowProductFunctor A
+```
+
+半分の見込みを再確認すると、図式71行と残る包装120〜160行程度で191〜231行。
+現在のM14の検証済み30,384行に足しても外枠31,000行の中。
+等化子の台の評価・復元は別のL23であり、この見込みに完成分として含めない。
+
+
+## 403. L22の元の全convolution等化子の全関手が完了（検証済み、取り込み点）
+
+一覧：済み 24／全体 48（うち追加 4）
+
+元のUnder値CosimplicialAlgebra Aを入力とし、全次数・全単体射の積の
+post/preを同じ射で等化するbfNormalizedAlgebraを作った。
+射は元の積の射を持ち上げ、恒等・合成は元の等化子の包含で判定した。
+対象ごとの等化子だけでなく全関手。ホモトピー圏への弱めはない。
+L23の評価・復元、L26の正規化複体との指定同型はまだ含まない。
+
+登録対象（全てSerrePositivity.EInfinity.BergerFresseの下）：
+
+- ConvolutionDiagram（71行）：Underの同じ離散代数、全単体の同じBE余代数、前後合成。
+- ProductDiagram（71行）：元の全積の関手、射影、前後合成の自然変換。
+- EqualizerFunctor（60行）：同じ等化子、同じ射、恒等・合成と全関手。
+
+追加202行。L22の見込み140〜260行の範囲内。
+M14実測30,586行、外枠31,000行まで414行。
+対象ビルド3746 jobs成功、追加警告0。
+小監査3モジュール31宣言・標準三公理のみ、sorry・追加公理0。
+各証明200行以内。対象ビルドと小監査の終了を確認し、鍵は返却済み。
+監査開始時に別の既存lake buildの通知はあったが、当レーンの常駐セッションではない。
+共有の入口・監査・他レーン・draftsは変更していない。
+
+検証ログ：
+`/tmp/bsw16/m14-bf-equalizer-functor-04.log`、
+`/tmp/bsw16/audit-m14-bf-equalizer-functor.log`。
+
+## 404. 外枠の停止：L23の指定評価・復元は残り414行に収まる見込みがない
+
+一覧：済み 24／全体 48（うち追加 4）
+
+次のL23の従来見込みは450〜850行（§121の表）。下端でも残り414行を36行超える。
+今回の既存APIの確認で、これを外枠内とする根拠は得られなかった。
+`weightEndHomComponentsEquiv`・`weightEndHomIso`は一般の積endの符号付きHom比較、
+`normalizedWeightHomEquiv`は正規化重みからの複体射のDold–Kan比較である。
+どちらも、今回のBF等化子の元を恒等q単体で読む指定評価と、その逆の
+全単体射に対する整合性をそのまま供給する定理ではない。
+
+L23では少なくとも、元の等化子の斉次元の具体化、指定次数係数つきの恒等単体での評価、
+退化で消えること、正規化元から単射上の値を復元すること、非単射上の零、
+全単体射の整合性、両合成の恒等、負次数の零を保持する必要がある。
+これらを未証明の同型や追加仮定に置き換えない。
+L24の微分符号・L25の自然性・L26の指定同型も別項目のままで、L22へ含めて完了とはしない。
+
+外枠31,000行を自分で上げず、検証済みL22を保存してこの線のLean実装を停止する。
+外枠停止はM14完成やG10待ちへの到達を意味しない。
+mainは確認時391b2a0d2で、§33の3b-4a完成の受け取りはまだない。
+後続の紙の準備は§405に記録する。
+
+## 405. 停止時の代わりの紙：G10後の一覧と完備化後P⁰の受け渡しを再確認
+
+一覧：済み 24／全体 48（うち追加 4）
+
+§112.4のL38〜L44・L43a/L43bの型案と§260のTot九欄を読み直した。
+これらは未型検査の紙であり、新しいLean実装や一覧IDは足していない。
+M15/G12は⑤dの範囲なので作業しない。
+
+L38〜L40では、nativeな極限性だけでなく、同じBF模型の頂点と錐、および全関手版の
+指定比較が必要。3b-4aのnative Totの完成は、BF模型との一致そのものを与えるとは限らない。
+L37の同じframeの検証とL26の指定台比較を飛ばさない。
+L39の指定Frobeniusの輸送は、全関手版の自然性を同じ厳密な自己射へ適用する手順であり、
+対象ごとのホモロジー同型を選んで自然性とする手順ではない。
+L40ではそれを既存のho(CAlg)上のMay演算の自然性と合わせる。
+
+L41は通常の群の余極限の普遍性。L42の仮定hπは、その同じ錐をΠへ写した錐の余極限性であり、
+ho(CAlg)の錐が余極限であることだけでは消せない。
+L43a/L43bの実現模型・有限primitive・係数微分の比較は、一般のnative実現の橋とは別の数学。
+実現の橋を受け取っただけでL43の差の境界が証明されたとはしない。
+Tot九欄はM14の48本とは別の一覧のまま。§33の受け取り後の優先順も§260のまま維持する。
+
+完備化後P⁰は§380の三案の結論を保持する。
+(a)任意頂点の厳密BE表示は既存cAlgVertexRepresentativeで取れるが、
+その表示が項別完備化の二重模型と同じ指定Frobeniusを表すことは未証明。
+L43bの閉元での式を完備化へ延ばすには、非閉元でのda誤差項も保持した式と、
+同じ作用・primitive・指定射の完備化との比較が要る。
+鎖の稠密性だけから閉元の稠密性やHの連続延長を仮定しない。
+(b)perfect性や半線形同型だけから完備化単位のπ上の全射・同型は導けない。
+§380の反例は一般の近道を排除するもので、actualなprismatic対象に対する反例とはしていない。
+(c)したがって(a)(b)のAPIが未供給であることからcoherent P⁰の不可欠性を結論しない。
+ただし(a)(b)が実対象でともに使えず(c)が必要と分かった場合は、D79の前提に関わるため止めて報告する。
+追加仮定、界面の変更、G10の作り直しでこの穴を隠していない。
+
+
+## 406. 外枠停止後の紙：既存の恒等単体評価は複体射の比較でありL23の全斉次元の代用にはならない
+
+一覧：済み 24／全体 48（うち追加 4）
+
+再開時に作業木がclean、HEAD f84713578、main 391b2a0d2であることを確認した。
+mainの指示書§33は3b-4a完成後のTot九欄を先にする指示だが、確認したmainには
+まだその完成の受け渡しはない。外枠31,000行の変更もない。
+前ターンはL22の実装・監査・コミットで進捗。本ターンはLeanを増やさず既存APIを追加検収した。
+
+§404の調査に加え、以下の実在する比較を確認した。
+名前空間SerrePositivity.EInfinity.ComplexLimitsの既存型は、紙の略記Hでなく次の範囲。
+
+```lean
+normalizedSimplexHomEquiv (A : Type u) [CommRing A]
+    (H : Complex A) (n : SimplexCategory) :
+    ((BarrattEccles.normalizedFunctor A).obj (SSet.stdSimplex.obj n) ⟶ H) ≃
+      ((Abelian.DoldKan.Γ : ChainComplex (ModuleCat A) ℕ ⥤ SimplicialObject (ModuleCat A)).obj
+        (H.truncLE' (ComplexShape.embeddingUpIntLE 0))).obj (Opposite.op n)
+```
+
+この既存同値の自然性は`normalizedSimplexHomEquiv_naturality`。
+またDiagramComparison.NormalizedSimplexFreeAdjunctionの
+`normalizedSimplexHomEquiv_freeAdjunction`は、同じ自由鎖随伴の像を
+`ULift.up (SSet.stdSimplex.objEquiv.symm (𝟙 n))`で評価した値との厳密な一致を供給する。
+従って「既存APIに恒等単体の指定評価が全くない」という理由で止めているのではない。
+
+重要な範囲差は、これらの入力が**複体射**で、smart切断の零次数にcycles条件を持つこと。
+L23の入力は内部Homを全積で等化した複体の**各整数次数の全元**であり、
+その元を閉元と仮定しない。L24でその同じ評価と微分の可換性を別に示す。
+複体射の同値をシフトして使うだけでは、閉条件のない斉次元への復元・逆写像まで供給しない。
+これを閉元だけに狭めるとL26の指定複体同型とL28の全係数の作用比較が未証明になる。
+
+したがってL23の残り450〜850行を、既存同値を一つ適用するだけとして414行以内へ
+下げられる根拠は今回も得られなかった。Leanの停止を維持する。
+これは新しい数学のIDの追加ではなく、既存同値を適用できる入力の検収である。
+
+G10後の紙の一覧についても同じ区別を保持する。L39のnativeな同値は
+実際のBF模型を指定頂点へ比較するもので、閉元のホモロジー比較から
+L26の元の全複体同型を逆に作る理由にはならない。
+Tot九欄のnative錐を先にする経路はBFを前提にせず§260どおり別途受け取る。
+完備化後P⁰についても、閉元の差が境界であるというL43bの型を、そのまま
+完備化前の全鎖に定義された連続primitiveの公式として扱わない。
+(a)のこの指定比較が未証明であることと(c)が不可欠であることは区別し、§380・§405の結論を保つ。
+
+今回は報告の紙のみ。M14実測30,586行、残り414行、一覧24/48のまま。
+ビルド・監査・鍵の取得、G10の部品、M15/G12、界面・draftsの変更はない。

@@ -1,0 +1,9 @@
+{
+  "base": "efa846fe8",
+  "file": "formalization-plans/bhatt-scholze/drafts/A4/Perfectoidization.lean",
+  "start_anchor": "/-! ## Lemma 8.4 -/",
+  "end_anchor": "/-! ## filtered 余極限との可換性",
+  "sha256": "b1339f1433b09879b583e6450e6a5ba217887a2cb74ffd43b662e8501ee2b8e5",
+  "unchanged": true,
+  "whole_protected_file_unchanged": true
+}

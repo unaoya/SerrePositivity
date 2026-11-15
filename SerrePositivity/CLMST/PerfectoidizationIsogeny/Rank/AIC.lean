@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.CommutativeAlgebra.RankLocus
 public import SerrePositivity.CommutativeAlgebra.ReducedSpectrum
-public import SerrePositivity.BhattScholze.Semiperfectoid.AbsolutelyIntegrallyClosedQuotient
+public import SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.AbsolutelyIntegrallyClosedQuotient
 public import SerrePositivity.CommutativeAlgebra.Perfectoid.Defs
 public import SerrePositivity.CLMST.PerfectoidizationIsogeny.Rank.Diagram
 public import SerrePositivity.HomologicalAlgebra.FiniteFreeComparison
@@ -16,7 +16,7 @@ André 基底の上では、元の階数の開集合を `D(d)` と表して切�
 
 ## 方針
 
-絶対整閉な perfectoid 環の零化商の定理（BhattScholze/Semiperfectoid/AbsolutelyIntegrallyClosedQuotient）を当てる。
+絶対整閉な perfectoid 環の零化商の定理（BhattScholze/Semiperfectoid/Surjectivity/AbsolutelyIntegrallyClosedQuotient）を当てる。
 
 ## 規約
 
@@ -54,7 +54,7 @@ theorem aic_rankImage_isIntegralPerfectoid
   let e := (Ideal.quotientEquivAlgOfEq R hI.symm).trans
     (openSectionImageQuotientEquiv R (rankOpen R S g hetale n))
   exact BhattScholze.isIntegralPerfectoid_of_ringEquiv p e.toRingEquiv
-    (aicPerfectoid_annihilatorPrincipalQuotient R p hR hAIC (g * a))
+    (_root_.SerrePositivity.BhattScholze.Semiperfectoid.aicPerfectoid_annihilatorPrincipalQuotient R p hR hAIC (g * a))
 
 /-- 各 Ri の指定 perfectoid 化単位そのものが全単射である。 -/
 theorem aic_rankTarget_unit_bijective
@@ -141,7 +141,7 @@ end Prop247AicRankCoefficientsPart
 section Prop247AicRankAssemblyPart
 
 namespace SerrePositivity.CLMST
-open scoped TensorProduct
+open scoped _root_.TensorProduct
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 

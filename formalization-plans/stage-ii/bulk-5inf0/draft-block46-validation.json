@@ -1,0 +1,98 @@
+{
+  "status": "partial",
+  "results": [
+    {
+      "draft": "A2/BaseChangeAndTensor",
+      "exit_code": 1,
+      "seconds": 41.267851665616035
+    }
+  ],
+  "receipts": [
+    {
+      "draft": "formalization-plans/bhatt-scholze/drafts/A2/BaseChangeAndTensor.lean",
+      "source_sha256": "8e416eaff02755103f24bf504b8c0424690ba3b66bb848cc92772188e310e14d",
+      "staged_source_sha256": "c656f4a52781de9f8e80a22a613ed1171c90d6a856fbe9a1efda13baeb0e232b",
+      "source_unchanged_during_check": true,
+      "dependencies_unchanged_during_check": true,
+      "dependency_signatures": [
+        {
+          "draft": "A2/AnimatedAlgebra",
+          "source_sha256": "e4b887fb4545ae0c94a652add74c4ce92a46770be1b39efa0feb8881cbe1bdb9",
+          "olean_sha256": "a83887a540b6e7fdf5425422ca00afc891432e18a072aa9a1dd0479965f7d695"
+        },
+        {
+          "draft": "A2/DerivedPrismaticCohomology",
+          "source_sha256": "32bf21abf0d6f2b582913c58dad90f21dbd7d6b7097be32a6e340f85d079e262",
+          "olean_sha256": "60f82677fc4d2e2badb39bef4d8d5484d0b071741ae3ab6c48a741064bd0d77b"
+        },
+        {
+          "draft": "A2/HodgeTateFiltration",
+          "source_sha256": "ccaaeb5002b18983c16d76880283246b61482b2831e6942f72eb0702707ea2ab",
+          "olean_sha256": "47539d6084a8946fe776d5232b1ca01e32b0aac6a3428128cfe3fe55c7357354"
+        },
+        {
+          "draft": "DerivedGeneral/CompletionFunctor",
+          "source_sha256": "006f26ddaa3e710b9e52d98aa1fbe9f541716da247b5e77a60637a1a587b1493",
+          "olean_sha256": "8d905f898a4446dc43b57187ad7bf4aaa730f87d60dacb8548718dd186059f72"
+        },
+        {
+          "draft": "A1/HodgeTateComparison",
+          "source_sha256": "4d0b61ca662b32ab85e5fa82a0cff793576cb2c1aa0213ee02470b40fbb47bad",
+          "olean_sha256": "5c113bbff741279026b86557b263f74e0709a70331caf6a028343d8154152090"
+        },
+        {
+          "draft": "A7/AnimatedDomain",
+          "source_sha256": "cdf118bde36070a314aeaa97fa0d1af7459da4d88d7c35a64e5a76b1cc78a348",
+          "olean_sha256": "b1ffae33c642b2347146ae72e257a3b4ea3e8a2fec2486474e21953fd9d61151"
+        },
+        {
+          "draft": "DerivedGeneral/ScalarRestriction",
+          "source_sha256": "b73e28284b96f5f1e7dca109e6b8d13459f463fbbc0fe168e86d717ac2f5bf9e",
+          "olean_sha256": "c5baf0469af06a9ae9890caa992c270fa7aaa11704ac079198f0d1c1e36b8256"
+        }
+      ],
+      "extra_public_imports": [
+        "A2/AnimatedAlgebra",
+        "A2/DerivedPrismaticCohomology",
+        "A2/HodgeTateFiltration",
+        "DerivedGeneral/CompletionFunctor",
+        "A1/HodgeTateComparison",
+        "A7/AnimatedDomain",
+        "DerivedGeneral/ScalarRestriction"
+      ],
+      "options": {
+        "maxSynthPendingDepth": 3,
+        "pp.unicode.fun": true,
+        "relaxedAutoImplicit": false,
+        "weak.linter.mathlibStandardSet": true,
+        "weak.linter.style.header": false
+      },
+      "command": [
+        "lake",
+        "env",
+        "env",
+        "LEAN_PATH=/private/tmp/bulk-5inf0/validation:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/Cli/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/batteries/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/Qq/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/aesop/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/importGraph/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/plausible/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/packages/mathlib/.lake/build/lib/lean:/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/build/lib/lean:/Users/sugakubunka/.elan/toolchains/leanprover--lean4---v4.35.0-rc4/lib/lean",
+        "lean",
+        "-DmaxSynthPendingDepth=3",
+        "-Dpp.unicode.fun=true",
+        "-DrelaxedAutoImplicit=false",
+        "-Dweak.linter.mathlibStandardSet=true",
+        "-Dweak.linter.style.header=false",
+        "--root=/private/tmp/bulk-5inf0/validation",
+        "-o",
+        "/private/tmp/bulk-5inf0/validation/Bulk5InfDraft/A2/BaseChangeAndTensor.olean",
+        "/private/tmp/bulk-5inf0/validation/Bulk5InfDraft/A2/BaseChangeAndTensor.lean"
+      ],
+      "lean_exit_code": 1,
+      "exit_code": 1,
+      "seconds": 37.739161832258105,
+      "status": "FAIL",
+      "olean": null,
+      "olean_sha256": null
+    }
+  ],
+  "raw_logs": [
+    "formalization-plans/stage-ii/bulk-5inf0/draft-block46-A2-BaseChangeAndTensor.log.gz"
+  ],
+  "individual_logs_replaced_by_later_attempts": []
+}

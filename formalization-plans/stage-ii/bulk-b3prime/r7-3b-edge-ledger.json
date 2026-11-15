@@ -1,0 +1,135 @@
+{
+  "status": "source/import preparation; actual final target build and v3b required; no claim every reverse edge disappears",
+  "review_edges": 8,
+  "already_baseline": 2,
+  "planned_resolution_in_bundle": 5,
+  "retained": 1,
+  "rows": [
+    {
+      "original_importer": "SerrePositivity.BhattScholze.Semiperfectoid.Lci.LciEnvelopeCompletedResidue",
+      "original_import": "SerrePositivity.BhattScholze.Andre.Transfinite.Colimit",
+      "target_owners": [
+        "SerrePositivity.CommutativeAlgebra.CompletelyFlat.Composition",
+        "SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletelyFlatPrincipalCompletion"
+      ],
+      "decision": "redirect to generic owners already in baseline B3",
+      "native_original_Andre_references": []
+    },
+    {
+      "original_importer": "SerrePositivity.BhattScholze.Semiperfectoid.Lci.LciEnvelopeCompletedResidueFaithful",
+      "original_import": "SerrePositivity.BhattScholze.Andre.Transfinite.Colimit",
+      "target_owners": [
+        "SerrePositivity.CommutativeAlgebra.CompletelyFlat.Composition",
+        "SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletelyFlatPrincipalCompletion"
+      ],
+      "decision": "redirect to generic owners already in baseline B3",
+      "native_original_Andre_references": []
+    },
+    {
+      "original_importer": "SerrePositivity.BhattScholze.Semiperfectoid.RootFamilyBase",
+      "original_import": "SerrePositivity.BhattScholze.Andre.Transfinite.Colimit",
+      "target_owners": [
+        "SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrincipalCompletionComparisons"
+      ],
+      "decision": "redirect to actual HA defining module; preserve actual declaration namespace",
+      "native_original_Andre_references": [
+        {
+          "module": "SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.PowerRootPolynomial",
+          "name": "SerrePositivity.BhattScholze.Andre.powerRootExponentMonoid"
+        },
+        {
+          "module": "SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.PowerRootPolynomial",
+          "name": "SerrePositivity.BhattScholze.Andre.powerRootVariableExponent"
+        }
+      ]
+    },
+    {
+      "original_importer": "SerrePositivity.BhattScholze.Semiperfectoid.RootFamilyBase",
+      "original_import": "SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.PowerRootPolynomial",
+      "target_owners": [
+        "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootFamilies.PowerRootPolynomial"
+      ],
+      "decision": "whole-module relocation",
+      "native_original_Andre_references": [
+        {
+          "module": "SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.PowerRootPolynomial",
+          "name": "SerrePositivity.BhattScholze.Andre.powerRootExponentMonoid"
+        },
+        {
+          "module": "SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.PowerRootPolynomial",
+          "name": "SerrePositivity.BhattScholze.Andre.powerRootVariableExponent"
+        }
+      ]
+    },
+    {
+      "original_importer": "SerrePositivity.BhattScholze.Semiperfectoid.Lci.LciEnvelopePresentation",
+      "original_import": "SerrePositivity.BhattScholze.Andre.Envelope.DivisionResidue",
+      "target_owners": [
+        "SerrePositivity.BhattScholze.Andre.Envelope.DivisionResidue"
+      ],
+      "decision": "retained: faithful-flatness theorem depends on Normalized and ordinary root/monic input; moving the entire owner into Delta would create Delta -> Andre reverse dependency/cycle; extract only the 12 source-independent raw-residue/tensor declarations",
+      "native_original_Andre_references": [
+        {
+          "module": "SerrePositivity.BhattScholze.Andre.Envelope.DivisionResidue",
+          "name": "SerrePositivity.BhattScholze.deltaAdjoinDivisionResidueBaseAlgebra"
+        },
+        {
+          "module": "SerrePositivity.BhattScholze.Andre.Envelope.DivisionResidue",
+          "name": "SerrePositivity.BhattScholze.deltaAdjoinDivisionResidueBaseMap"
+        },
+        {
+          "module": "SerrePositivity.BhattScholze.Andre.Envelope.DivisionResidue",
+          "name": "SerrePositivity.BhattScholze.deltaAdjoinDivisionResidueBaseMap_mk"
+        },
+        {
+          "module": "SerrePositivity.BhattScholze.Andre.Envelope.DivisionResidue",
+          "name": "SerrePositivity.BhattScholze.deltaAdjoinDivisionResidueIdeal"
+        },
+        {
+          "module": "SerrePositivity.BhattScholze.Andre.Envelope.DivisionResidue",
+          "name": "SerrePositivity.BhattScholze.deltaAdjoinDivisionResidue_moduleFaithfullyFlat"
+        },
+        {
+          "module": "SerrePositivity.BhattScholze.Andre.Envelope.Normalized",
+          "name": "SerrePositivity.BhattScholze.deltaDivisionFirstBaseIdeal"
+        }
+      ]
+    },
+    {
+      "original_importer": "SerrePositivity.BhattScholze.Semiperfectoid.Lci.LciEnvelopeRegular",
+      "original_import": "SerrePositivity.BhattScholze.Andre.Envelope.RootSource",
+      "target_owners": [
+        "SerrePositivity.HomologicalAlgebra.DerivedCompletion.IteratedPDH0"
+      ],
+      "decision": "redirect to extracted generic section with unchanged type/proof",
+      "native_original_Andre_references": [
+        {
+          "module": "SerrePositivity.BhattScholze.Andre.Envelope.RootSource",
+          "name": "SerrePositivity.BhattScholze.IteratedPDCompletionObject"
+        },
+        {
+          "module": "SerrePositivity.BhattScholze.Andre.Envelope.RootSource",
+          "name": "SerrePositivity.BhattScholze.iteratedPDH0LinearEquiv"
+        }
+      ]
+    },
+    {
+      "original_importer": "SerrePositivity.BhattScholze.Semiperfectoid.Lci.LciEnvelopeKoszul",
+      "original_import": "SerrePositivity.BhattScholze.Andre.OrdinaryRoots.MonicRelation",
+      "target_owners": [
+        "SerrePositivity.CommutativeAlgebra.KoszulRegular.MonicRelation"
+      ],
+      "decision": "already resolved in baseline B3",
+      "native_original_Andre_references": []
+    },
+    {
+      "original_importer": "SerrePositivity.BhattScholze.Semiperfectoid.RootRelationPolynomial",
+      "original_import": "SerrePositivity.BhattScholze.Andre.OrdinaryRoots.MonicRelation",
+      "target_owners": [
+        "SerrePositivity.CommutativeAlgebra.KoszulRegular.MonicRelation"
+      ],
+      "decision": "already resolved in baseline B3",
+      "native_original_Andre_references": []
+    }
+  ]
+}

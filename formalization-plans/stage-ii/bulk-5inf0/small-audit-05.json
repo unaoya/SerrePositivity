@@ -1,0 +1,27 @@
+{
+  "source": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/formalization-plans/stage-ii/bulk-5inf0/audit.lean",
+  "source_sha256": "e7d1c9d9a38fa1c62e3eb09ff173689b2e8c64a189131ca133f23393a78cc850",
+  "lake_setup_sha256": "6cc845382b3b665418e27cc7f70e7bce1fec9633ff8284320dfdccafb71eaa6b",
+  "lakefile_sha256": "ed9541f3b6cb53c408dc239f14c8623d09e983b7196879a4a48f9c7e1a3e8577",
+  "options": {
+    "maxSynthPendingDepth": 3,
+    "pp.unicode.fun": true,
+    "relaxedAutoImplicit": false,
+    "weak.linter.mathlibStandardSet": true,
+    "weak.linter.style.header": false
+  },
+  "command": [
+    "lake",
+    "env",
+    "lean",
+    "-DmaxSynthPendingDepth=3",
+    "-Dpp.unicode.fun=true",
+    "-DrelaxedAutoImplicit=false",
+    "-Dweak.linter.mathlibStandardSet=true",
+    "-Dweak.linter.style.header=false",
+    "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/formalization-plans/stage-ii/bulk-5inf0/audit.lean"
+  ],
+  "exit_code": 0,
+  "seconds": 25.523399084806442,
+  "status": "PASS"
+}

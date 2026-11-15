@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.HomologicalAlgebra.DerivedInfinity.VertexPredicates
 
 
 public meta import SerrePositivity.Util.Citation
@@ -26,10 +27,10 @@ BS 著者版 Proposition 10.4 の逆方向と Lemma 10.5 の係数三角形を�
 @[expose] public noncomputable section
 universe u
 namespace SerrePositivity.BhattScholze.Almost
-open CategoryTheory CategoryTheory.Limits CategoryTheory.Pretriangulated
-open InfinityCategories DerivedCompletion DifferentialGraded MonoidalCategory
-open Perfectoidization.Derived
-open scoped Simplicial
+open _root_.CategoryTheory _root_.CategoryTheory.Limits _root_.CategoryTheory.Pretriangulated
+open _root_.SerrePositivity.InfinityCategories _root_.SerrePositivity.DerivedCompletion _root_.SerrePositivity.DifferentialGraded _root_.CategoryTheory.MonoidalCategory
+open _root_.SerrePositivity.BhattScholze.Perfectoidization.Derived
+open scoped _root_.Simplicial
 attribute [local instance] HasDerivedCategory.standard
 set_option backward.isDefEq.respectTransparency false
 
@@ -60,23 +61,12 @@ abbrev kernelTensor (p : ℕ) [Fact p.Prime] (R : Type u) [CommRing R]
 
 end SerrePositivity.BhattScholze.Almost
 
-namespace SerrePositivity.InfinityCategories.Derived
-open CategoryTheory
-open scoped Simplicial
-attribute [local instance] HasDerivedCategory.standard
-
-/-- BS 著者版 Lemma 10.5 の連結性を、コホモロジー次数の上界で表す。 -/
-def IsConnectiveAt (R : Type u) [CommRing R] (n : ℤ)
-    (X : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory R) _⦋0⦌) : Prop :=
-  ∀ i : ℤ, n < i → Subsingleton (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomology R i X)
-
-end SerrePositivity.InfinityCategories.Derived
 
 namespace SerrePositivity.BhattScholze.Almost
-open CategoryTheory CategoryTheory.Limits CategoryTheory.Pretriangulated
-open InfinityCategories DerivedCompletion DifferentialGraded MonoidalCategory
-open Perfectoidization.Derived
-open scoped Simplicial
+open _root_.CategoryTheory _root_.CategoryTheory.Limits _root_.CategoryTheory.Pretriangulated
+open _root_.SerrePositivity.InfinityCategories _root_.SerrePositivity.DerivedCompletion _root_.SerrePositivity.DifferentialGraded _root_.CategoryTheory.MonoidalCategory
+open _root_.SerrePositivity.BhattScholze.Perfectoidization.Derived
+open scoped _root_.Simplicial
 attribute [local instance] HasDerivedCategory.standard
 set_option backward.isDefEq.respectTransparency false
 
@@ -86,11 +76,11 @@ variable (p : ℕ) [Fact p.Prime] (hR : IsIntegralPerfectoid R p) (J : Ideal R)
 /-- 完備導来テンソルの左入力に古典的な perfectoid 商を置く。 -/
 abbrev quotientTensor (M : DVertex R) : DVertex R :=
   completedModuleTensor p R
-    (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.ChainComplexes.moduleHeartVertex R (ModuleCat.of R (QuotientPerfectoidization R J p hR))) M
+    (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.ChainComplexes.moduleHeartVertex R (ModuleCat.of R (_root_.SerrePositivity.BhattScholze.Semiperfectoid.QuotientPerfectoidization R J p hR))) M
 
 /-- 頂点の連結性は通常の導来圏の t 構造で判定できる。 -/
 theorem isConnectiveAt_iff_isLE (n : ℤ) (M : DVertex R) :
-    Derived.IsConnectiveAt R n M ↔
+    SerrePositivity.DerivedInfinity.IsConnectiveAt R n M ↔
       ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomotopyEquivalence R).functor.obj ⟨M⟩).IsLE n := by
   rw [DerivedCategory.isLE_iff]
   exact forall_congr' (fun _ ↦ imp_congr_right (fun _ ↦ ModuleCat.isZero_iff_subsingleton.symm))
@@ -103,8 +93,8 @@ theorem isLE_moduleHeartVertex (N : ModuleCat.{u} R) :
 
 /-- 商との完備テンソルの各コホモロジーは商環上の加群になる。 -/
 theorem quotientTensor_isAlmostZero (M : DVertex R) :
-    IsJAlmostZero p R hR J (quotientTensor p hR J M) := by
-  let B := QuotientPerfectoidization R J p hR
+    _root_.SerrePositivity.BhattScholze.Almost.IsAlmostZeroComplex p R hR J (quotientTensor p hR J M) := by
+  let B := _root_.SerrePositivity.BhattScholze.Semiperfectoid.QuotientPerfectoidization R J p hR
   let q := quotientPerfdMap p R hR J
   let P := (M.obj 0).val
   let F := derivedComplexCompletionFunctor R (p : R)
@@ -125,7 +115,7 @@ theorem quotientTensor_isAlmostZero (M : DVertex R) :
   change q r • y = 0
   rw [show q r = 0 from hr, zero_smul]
 
-private theorem exists_quotientTensorTriangle (M : DVertex R) (hM : isPCompleteVertex p R M) :
+private theorem exists_quotientTensorTriangle (M : DVertex R) (hM : SerrePositivity.DerivedInfinity.IsPComplete p R M) :
     ∃ T : Triangle (ConcreteDerivedCategory R), T ∈ distTriang _ ∧
       Nonempty (T.obj₁ ≅ (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomotopyEquivalence R).functor.obj
         ⟨kernelTensor p R hR J M⟩) ∧
@@ -133,7 +123,7 @@ private theorem exists_quotientTensorTriangle (M : DVertex R) (hM : isPCompleteV
       Nonempty (T.obj₃ ≅ (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomotopyEquivalence R).functor.obj
         ⟨quotientTensor p hR J M⟩) := by
   let K := perfectoidKernel p R hR J
-  let B := QuotientPerfectoidization R J p hR
+  let B := _root_.SerrePositivity.BhattScholze.Semiperfectoid.QuotientPerfectoidization R J p hR
   let P := (M.obj 0).val
   let F := derivedComplexCompletionFunctor R (p : R)
   let S := ModuleCat.shortComplexOfCompEqZero K.subtype K.mkQ
@@ -160,7 +150,7 @@ private theorem exists_quotientTensorTriangle (M : DVertex R) (hM : isPCompleteV
 
 /-- 核との完備テンソルが連結なら、元の複体は almost 連結になる。 -/
 theorem almostConnective_of_kernelTensor_connective (M : DVertex R)
-    (hM : isPCompleteVertex p R M) (hK : Derived.IsConnectiveAt R 0 (kernelTensor p R hR J M)) :
+    (hM : SerrePositivity.DerivedInfinity.IsPComplete p R M) (hK : SerrePositivity.DerivedInfinity.IsConnectiveAt R 0 (kernelTensor p R hR J M)) :
     IsAlmostConnective p R hR J M := by
   obtain ⟨T, hT, ⟨e₁⟩, ⟨e₂⟩, ⟨e₃⟩⟩ := exists_quotientTensorTriangle p hR J M hM
   intro i hi
@@ -177,9 +167,9 @@ theorem almostConnective_of_kernelTensor_connective (M : DVertex R)
 
 /-- 核と商で得る二つの完備テンソルから元の複体の連結性を復元する。 -/
 theorem connective_of_kernelTensor_and_quotientTensor (M : DVertex R)
-    (hM : isPCompleteVertex p R M) (hK : Derived.IsConnectiveAt R 0 (kernelTensor p R hR J M))
-    (hB : Derived.IsConnectiveAt R 0 (quotientTensor p hR J M)) :
-    Derived.IsConnectiveAt R 0 M := by
+    (hM : SerrePositivity.DerivedInfinity.IsPComplete p R M) (hK : SerrePositivity.DerivedInfinity.IsConnectiveAt R 0 (kernelTensor p R hR J M))
+    (hB : SerrePositivity.DerivedInfinity.IsConnectiveAt R 0 (quotientTensor p hR J M)) :
+    SerrePositivity.DerivedInfinity.IsConnectiveAt R 0 M := by
   obtain ⟨T, hT, ⟨e₁⟩, ⟨e₂⟩, ⟨e₃⟩⟩ := exists_quotientTensorTriangle p hR J M hM
   have h₁ := (isConnectiveAt_iff_isLE 0 _).mp hK
   have h₃ := (isConnectiveAt_iff_isLE 0 _).mp hB
@@ -191,10 +181,10 @@ theorem connective_of_kernelTensor_and_quotientTensor (M : DVertex R)
 
 /-- BS 著者版 Proposition 10.4 の逆方向。核との完備テンソルの零性から almost 零性を得る。 -/
 theorem isAlmostZero_of_completedTensor_isZero (M : DVertex R)
-    (hM : isPCompleteVertex p R M)
+    (hM : SerrePositivity.DerivedInfinity.IsPComplete p R M)
     (hz : IsZero ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomotopyEquivalence R).functor.obj
       ⟨kernelTensor p R hR J M⟩)) :
-    IsJAlmostZero p R hR J M := by
+    _root_.SerrePositivity.BhattScholze.Almost.IsAlmostZeroComplex p R hR J M := by
   obtain ⟨T, hT, ⟨e₁⟩, ⟨e₂⟩, ⟨e₃⟩⟩ := exists_quotientTensorTriangle p hR J M hM
   have := (T.isZero₁_iff_isIso₂ hT).mp (hz.of_iso e₁)
   let e := e₂.symm ≪≫ asIso T.mor₂ ≪≫ e₃

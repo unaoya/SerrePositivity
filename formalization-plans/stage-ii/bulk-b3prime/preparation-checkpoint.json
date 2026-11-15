@@ -1,0 +1,17 @@
+{
+  "phase": "preparation, no application/freeze",
+  "baseline": "32d364b53",
+  "planned_snapshot_modules": 197,
+  "planned_reference_files": 176,
+  "last_rewrite_capture_count": 127,
+  "last_rewrite_review_files": 0,
+  "partial_kernel_loaded_modules": 128,
+  "partial_kernel_rows": 15367,
+  "source_public_names_missing_from_loaded_kernels": 0,
+  "private_prerequisite_modules": 9629,
+  "source_private_bindings": 5228,
+  "missing_ilean_modules": 0,
+  "private_canonical_collisions": 0,
+  "namespace_rule": "R8-8 all 20 Derived namespace files covered; keep methods of unchanged IsPerfectoidization/IsPrismaticEnvelope/OrientedPrism/DeltaStructure/PrismOver with actual canonical types; preserve original namespace/open lookup contexts while declaring target full names",
+  "full_target_build_v3b_metadata_root_audits_verify": "PENDING"
+}
