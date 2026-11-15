@@ -15324,3 +15324,30 @@ theorem strictBETotJointSourceNativePinchedMap_weak_iff_original
 - SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceNativePinched
 
 元の実射と基準roof射の始域・標的が揃い、元の実射の弱同値性を厳密に反映する比較まで検証した。両実射の全族の同定自体は未証明であり、R03d・3b-4aの完了とはしない。次の最小の主張は、両実射を区間写像空間へ送ったintervalFamilyHomの等式。既存RoofPrefixFamilyTriangleの全roof族の式と、元の補正pairingの同じ底のpathとの照合が必要である。
+
+## 260. R03dの同じ実射の全族照合をR03hとして追加（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 24（うち追加 12）。R03d・R03hは未完了。
+
+§19の「同じまとまり・一つの見込み1,500行以下」の枠により、元のnative実射と元のroof基準射の全族の照合をR03hとして追加する。新しいまとまりではなくR03dの元のfiber射自身の弱同値性と固定始域の全比較の正規化に必要な中間の定理。⑤aの欄の型を変えない。型を弱めず、追加の弱同値性・充填性を前提にしない。
+
+型（共通入力 `(A : Type u) [CommRing A]`、`intervalFamilyHom`はKerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories、`pinchedHomToIntervalMappingSpace`はKerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces）：
+
+```lean
+theorem strictBETotJointSourceNativePinchedMap_interval_family
+    (P : strictBETotJointHomIndex A) :
+    intervalFamilyHom
+      (strictBETotJointSourceNativePinchedMap A P ≫
+        pinchedHomToIntervalMappingSpace _ _) =
+    intervalFamilyHom
+      (strictBETotJointSourceRoofNormalizedPinchedComparison A P ≫
+        pinchedHomToIntervalMappingSpace _ _)
+```
+
+この全称命題を/private/tmp/isw2-nativepinched-family-type.leanで#checkし、実ハンドル67282・終了0。これは型の検査であり証明ではない。Lean本体に未証明の宣言・sorryを置いていない。
+
+見込み850〜1,400行。内訳：元のfiber要素圏のroof族をRoofPrefixの同じ族へ運ぶ係数・自然性の照合250〜400行、元の補正pairingを同じcoslice・edgewise比較で区間評価し、保存された底のpathを使う全族の照合300〜600行、同じ局所化三角形・probe・右置換単位での共役と既存roof全族則の合成150〜250行、まとめ150行以内。未確定の中心は二番目であり、1,500行を超える新しい中間定理やまとまりの外のものが要ると分かった場合は、§19どおり検証済みを保存して報告する。
+
+使用する既存の入口：RoofPrefixFamilyTriangle.native_family_eq_roof_arrow（一般の同じ宇宙の相対圏での全roof族）、CoherentLocalizationComparison.pinchedEquivalence_homとtriangle_naturality、pinchedEndpointEquivalence_family、今回のtwistedArrowHomPinchedEquivalence_cosliceとtwistedArrowHomOppositePinchedEquivalence_edgewise、元のstrictBETotJointSourceFiberPairingIso_postcomp（同じ底のpathの保存）。全族の評価の等式を得た後はintervalFamilyHom_eq_imp_homotopyとpinched・区間比較の弱同値性で、元の実射自身の弱同値性に戻す。以降も元の固定始域の全FunctorIsoへの正規化を省かない。
+
+§255〜256のコードは3693013ba、§257〜259のコードは7edd92b76に保存済み。検証済み196本・12,815行／外枠22,000行。停止点3b-4aの完成報告ではない。
