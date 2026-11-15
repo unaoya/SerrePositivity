@@ -2506,3 +2506,50 @@ S8-3 のこの最終型は本体で完成。S8 全体の完了とはしない。
 離散重みとの全関手比較、一般余極限を極限へ送る性質、離散層化の通常層化との比較・局所同値。
 S7 は指示どおり後続。S8-3 の成功だけで他の未供給入力を済んだものとはしない。
 一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
+
+### S8：通常の Hom の両変数を同時に保持する射列（11-15）
+
+3本201行・17宣言の対象ビルドと小監査が成功（標準三公理のみ）。
+記録：`/tmp/is-w1/s8-ordinary-hom-chains-2/`（2本13宣言）、
+`/tmp/is-w1/s8-hom-join-reindex-2/`（1本4宣言）、source SHA 一致。
+
+```lean
+ordinaryHomBifunctor C : Cᵒᵖ × C ⥤ Type u := Functor.uncurry.obj coyoneda
+OrdinaryHomElements C := (ordinaryHomBifunctor C).Elements
+
+h.hom.1.unop ≫ x.val ≫ h.hom.2 = y.val
+
+ordinaryHomJoinChain s :
+  CategoryTheory.Join (Fin (n + 1))ᵒᵖ (Fin (n + 1)) ⥤ C
+
+(ordinaryHomCrossChain s).app (op i, i) = (s.obj i).val
+
+Join.mapPair α.toFunctor.op α.toFunctor ⋙ ordinaryHomJoinChain s =
+  ordinaryHomJoinChain (α.toFunctor ⋙ s)
+```
+
+元の圏は既存の Hom 関手の Elements そのもので、新しい圏構造は作らない。
+join 図式も Mathlib の `Join.mkFunctor` に同じ二つの端点の射列と交差射を入れたもの。
+`α 0 ≠ 0` でも元の可換四角形を使って交差射を照合したので、全ての面・退化を含む。
+対象ごとの表現可能前層の同値だけで全関手比較を代用しない。
+
+原典の確認：[Kerodon Remark 8.1.0.3（03JC）](https://kerodon.net/tag/03JC) は
+Hom の元の圏による表示を述べ、[Proposition 8.1.1.10（03JN）](https://kerodon.net/tag/03JN) は
+両端射影を保持した nerve と twisted arrow の同型を、同じ射列の連結から構成している。
+ここではまだ後者の単体的同型を完成していない。
+
+次は既存の通常圏の join と単体的 join の模型を同じ切断・全射列で接続し、
+この再添字の法則を単体的比較へ送る。型の形は次のとおり（S8 の比較の証明分割）：
+```lean
+nerveJoinComparison C D : join (nerve C) (nerve D) ⟶ nerve (CategoryTheory.Join C D)
+-- この比較と同じ両端射影を保つ：
+nerve (OrdinaryHomElements C) ≅ TwistedArrow (nerve C)
+-- 全分類図式の同型を curry し、固定した元の oppositeSpaceYoneda へ戻す。
+```
+これらの模型比較・分類図式への接続がなお残り、元の `weightedSectionsData` の完成には数えない。
+一般重み側の局所的な見込み：nerve と join の比較の自然性・両端・射列の復元で約500〜900行、
+その後の指定分類図式・元の Yoneda への接続は既存の全族の API の照合が要る。
+全残量の確定見積もりは依然未確定で、外枠18,600行は維持する。
+
+検証済み全体160本10,243行・867宣言。未検証の `NerveJoinChains`・`NerveJoinNaturality` は作業木のみ。
+一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
