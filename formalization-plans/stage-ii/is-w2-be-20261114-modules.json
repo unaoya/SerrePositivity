@@ -245,5 +245,6 @@
   "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftStraighteningDiagramFiberComparison",
   "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftStraighteningDiagramFiberNaturality",
   "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointNativeTransformationEvaluation",
-  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointNativeLiftUnitPoint"
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointNativeLiftUnitPoint",
+  "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.ClassificationTransportHom"
 ]
