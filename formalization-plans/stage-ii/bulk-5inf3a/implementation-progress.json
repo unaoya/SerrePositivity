@@ -3,7 +3,7 @@
   "complete": 1,
   "total": 6,
   "added": 0,
-  "verified_head": "this commit: base 84a67e9a73fce8a2b6e2a3af63f4cc9744eb264d",
+  "verified_head": "this commit: base adbf554ad5315e00f5b17b61f06f2960aa7e9522",
   "items": {
     "HT01": "complete",
     "HT02": "in-progress",
@@ -12,15 +12,14 @@
     "HT05": "not-started",
     "HT06": "not-started"
   },
-  "latest_complete_audit_checkpoint": "resolution-candidate-and-row-unit-checkpoint.json",
-  "latest_complete_audit_declarations": 1031,
+  "latest_complete_audit_checkpoint": "complex-resolution-and-standard-naturality-checkpoint.json",
+  "latest_complete_audit_declarations": 1048,
   "working_changes_unverified": [
     "CosimplicialResolvedModels",
     "StandardModelComparisonIso",
-    "ComplexResolutionFunctor",
     "NativeCosimplicialComparison"
   ],
-  "pending_check": "bundle-057 terminal rc1; see audit module inventory; failed dependencies await next batch",
+  "pending_check": "bundle-058 terminal rc1; see audit module inventory; failed dependencies await next batch",
   "next_proof_route": "ht02-next-proof-route.md",
   "initial_record": {
     "stage": "5inf3a",
