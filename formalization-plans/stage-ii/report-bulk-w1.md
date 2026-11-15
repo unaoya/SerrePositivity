@@ -1625,3 +1625,11 @@ HT02は、環射f:C→S、有限列x（J=(x)）、幅cとその有限完全Tor�
 一覧：済み 0／全体 6（うち追加 0）。通常のbulk鍵を取り、束002は7対象を逐次検査して約48秒で返却した。[検査記録](bulk-5inf3a/first-bundle-001-002.tar.gz)と[現在のソースと一致する成功](bulk-5inf3a/first-bundle-checkpoint.json)を保存。Totalization/Componentsの103行が型検査成功。これは全複体の成分・微分・行の完全性のAPIの成功であり、Lemma4.22自体の完成ではない。
 
 HT01のprivateデータを公開値へ無理に露出しない形、存在証明から固定係数データをClassical.choiceで選ぶ形、自然性の射の結合順、整数添字とModuleCatの射の評価を修正して、束003を同じ280秒の通常の鍵で並べた。HT02の固定K-flat係数模型・実際の完備化・Totの下界の連結は、この検査が通った後に実測をまとめる。型が通っていない終点や補題を成功扱いにしない。他のレーンとmainの作業木の変更0。
+
+### 5∞-3a：固定係数模型の対象検査（11-15 朝、継続中）
+
+bundle-004 で `AffineCochainModel`、`Totalization.Components`、`Totalization.ResolvedScalarExtension`、`Totalization.ColumnPrimitive` の4本が通った。検査時の SHA256 と現行ソースの一致を確認した分だけコミットする。既存の非有界半自由分解から固定係数模型を構成し、そのテンソル関手の擬同型保存、K-flat 入力の通常の底変換への比較射、その自然性、実際の主元完備化関手への接続が型検査済みである。係数模型に架空の標的環作用を付けていない。
+
+HT01 の標準ηの公開判定、HT02 の完備化の下界・積全複体の対角線の下界は検査で出たエラーを修正中。これらの完了、および自然な完備底変換–Tot比較射の擬同型性はまだ主張しない。次の束を通常の bulk 整理券（--wait 3600、昼280秒以内）で待機中。検査記録は `bulk-5inf3a/checked-api-checkpoint.json` と `first-bundle-003-004.tar.gz`。
+
+一覧：済み 0／全体 6（うち追加 0）。承認された HT01・HT02 を続行する。
