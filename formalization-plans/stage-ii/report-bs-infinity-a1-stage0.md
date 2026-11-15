@@ -1600,3 +1600,42 @@ AsSmall の篩圏の充満忠実性は、元の Over.post の射の全射・単�
 検証済み全体76本4,722行・432宣言。S6 の元の層化単位の照合は未完。
 
 一覧：済み 4／全体 8（うち追加 0、済み：S2・S3・S4・S5、S7 は後続）。
+
+### S6：指定二胞体を保つ横の mate への接続（11-15、未検証）
+
+指定単位の比較は、縦の同値の随伴表示の単位・余単位が可逆であることを使い、
+Mathlib の `mateEquiv`・`conjugateIsoEquiv`・二重 mate の等式を直接組み合わせる。
+`EquivalenceAdjunctionIsoData.lean` で元の同じ equivalenceAdjunction の可逆性を読み、
+`EquivalenceSquareMate.lean` の型を次に固定する。
+```lean
+equivalenceSquareMateIso s t p q β : f₁ ≫ l₂ ≅ l₁ ≫ f₂
+mateEquiv s t (equivalenceSquareMateIso s t p q β).hom = β.hom
+```
+縦の `p : f₁ ⊣ u₁`・`q : f₂ ⊣ u₂` の単位・余単位が可逆、
+`β : r₁ ≫ f₁ ≅ f₂ ≫ r₂` は元の指定正方形。
+同じ `β` と `s.unit`・`t.unit` に対する全二胞体の単位法則も結論に保持する。
+これを層の包含の厳密な可換式に適用する。元の hJ・hK・指定単位を変更しない。
+
+既存の `functorIsoOfPrecompEquivalence` の存在比較には、前合成後の二胞体を
+指定値に保つ法則がない。単位の照合には上の直接の mate を用い、既存の存在比較の
+宣言・型・結論は保つ。充満忠実な逆像を別途導入する案は使わず、未検証の2本は削除した。
+必要な構成は既存の二重 mate と同型の全単射の合成だけである。
+
+一覧：済み 4／全体 8（うち追加 0、済み：S2・S3・S4・S5、S7 は後続）。
+
+### S6：元の全制限錐・元の位相の層条件の検証済みの区切り（11-15）
+
+`AsSmallSiteShape`・`AsSmallSieveConeComparison`・`AsSmallSiteInvariance` の
+3本193行、対象ビルドと14宣言の小監査成功
+（`/tmp/is-w1/native-site-original-cone/target-audit-result.json`、標準三公理のみ）。
+元の restrictionCone の全射の等式、全被覆篩での極限性の同値、
+AsSmall.down による元の誘導位相での層条件の同値まで閉じた。
+係数は SSet(u+1) のまま、計算上限変更なし。
+
+mate の単位法則の内部の計算では `g ◁ t.unit` の始域が `g ≫ 𝟙 c` なので、
+その直前の whiskering に右単位子を保持する形へ修正する。公開の型は保つ。
+検証対象の組は次回から実行ごとに別の出力先で固定し、実行開始後に追加しない。
+S6 は指定単位を保つ層化比較と、本質的小さい site の最終適用が残る。
+検証済み全体79本4,915行・446宣言。S1・S6・S8 は継続、S7 は後続。
+
+一覧：済み 4／全体 8（うち追加 0、済み：S2・S3・S4・S5、S7 は後続）。
