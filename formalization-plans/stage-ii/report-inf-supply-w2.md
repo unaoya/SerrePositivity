@@ -15008,3 +15008,112 @@ sorry・独自公理0、計算上限変更なし、[ModelCategory SSet]なし、
 - SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceNativeOppositeFiber
 
 次に使う既存のAPIはKanHammockHomPinchedMap_weakとKanHammockHomPinchedMap_app_valで、元のEx∞ hammock Homから同じ局所化頂点のpinched Homへの実射と、その全単体の値を保持している。元の同じ局所化比較・端点の指定pathを追跡し、§250の実roof射と今回のnative射の反対表示を全単体・全族として照合する。零単体の回収やπ₀だけの一致ではR03dの全同型の正規化が済んだとはしない。Tot側の停止点3b-4aはまだ未到達。
+
+## 253. 同じroofから同じ局所化頂点のpinched Homへの比較（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 23（うち追加 11）。
+
+元のstrictBETotJointSourceRoofComparisonを、元のAsSmallComparison.colimitIso、同じEx∞単位、元のkanHammockHomPinchedMapへ合成した。元の全モデル相対圏modelRelativeCategoryを使い、cofibrant/bifibrant相対圏へ置き換えていない。この実射の弱同値性は既存の三つの比較の弱同値性を合成して得る。また元の全標的比較asSmallKanHammockHomFamilyMapの同じ成分を使った構成と厳密に等しいことを、元のEx∞単位の自然性で示した。
+
+全単体の値の既存式をBEへ直接展開するとwhnfの200,000 heartbeatsに達したため、上限を変更せず、一般の相対圏で同じ値と同じ全パラメータの式に名前を付けて分割した。最終個別検査1450は終了0。これは証明・elaborationの分割であり、元の全次数・全単体の主張を保持する。二本合わせて見込み150〜260行。既存比較・係数移送・Ex∞単位・同じ評価式の前合成則なので、数学的な一覧項目は増やさない。
+
+### 253.1 名前付き評価式の意味
+
+C・X・Y・T・fは下記の型の通り。名前付き命題の定義は次の全次数・全単体の等式そのものである。
+
+```lean
+def KanHammockPinchedValueFormula {T : SSet.{u}}
+    (f : T ⟶ exInfinity.obj (colimitGraph C.weakEquivalences X Y)) : Prop :=
+  ∀ {n : ℕ} (s : T _⦋n⦌),
+    (((f ≫ kanHammockHomPinchedMap C X Y).app (Opposite.op ⦋n⦌)) s).val =
+      kanHammockPinchedSimplexValue C X Y (f.app (Opposite.op ⦋n⦌) s)
+```
+
+BEではfに同じstrictBETotJointSourceRoofKanComparisonを代入する。native fiber射との同一視はまだ残る。
+
+### 253.2 型
+
+一般版の共通入力は `(C : RelativeCategory.{u}) (X Y : C.category)`。BE版は `(A : Type u) [CommRing A]`。
+
+#### KanHammockPinchedSimplexValue（49行）
+
+```lean
+def kanHammockPinchedSimplexValue {n : ℕ}
+    (s : (exInfinity.obj (colimitGraph C.weakEquivalences X Y)) _⦋n⦌) :
+    (kanHammockNerve C) _⦋n + 1⦌
+
+theorem kanHammockHomPinchedMap_value {n : ℕ}
+    (s : (exInfinity.obj (colimitGraph C.weakEquivalences X Y)) _⦋n⦌) :
+    ((kanHammockHomPinchedMap C X Y).app (Opposite.op ⦋n⦌) s).val =
+      kanHammockPinchedSimplexValue C X Y s
+
+def KanHammockPinchedValueFormula {T : SSet.{u}}
+    (f : T ⟶ exInfinity.obj (colimitGraph C.weakEquivalences X Y)) : Prop
+
+theorem kanHammockHomPinchedMap_value_family {T : SSet.{u}}
+    (f : T ⟶ exInfinity.obj (colimitGraph C.weakEquivalences X Y)) :
+    KanHammockPinchedValueFormula C X Y f
+```
+
+#### StrictDiagramTotJointSourceRoofPinched（116行）
+
+```lean
+abbrev strictBETotJointRoofSourceObject (P : strictBETotJointHomIndex A) :
+    (modelRelativeCategory (operad A).Algebra).category
+
+abbrev strictBETotJointRoofTargetObject (P : strictBETotJointHomIndex A) :
+    (modelRelativeCategory (operad A).Algebra).category
+
+def strictBETotJointSourceRoofKanComparison (P : strictBETotJointHomIndex A) :
+    nerve ((simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P)ᵒᵖ ⟶
+      exInfinity.obj
+        (SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph
+          (modelRelativeCategory (operad A).Algebra).weakEquivalences
+          (strictBETotJointRoofSourceObject A P) (strictBETotJointRoofTargetObject A P))
+
+theorem strictBETotJointSourceRoofKanComparison_weak (P : strictBETotJointHomIndex A) :
+    IsWeakHomotopyEquivalence (strictBETotJointSourceRoofKanComparison A P)
+
+theorem strictBETotJointSourceRoofKanComparison_unit (P : strictBETotJointHomIndex A) :
+    strictBETotJointSourceRoofComparison A P ≫ exInfinityUnit.app _ ≫
+      (FrameHom.asSmallKanHammockHomFamilyMap (weakEquivalences (operad A).Algebra)
+        (framedLimitProbe A (AsSmall.down.obj P).1.unop)).app
+          (strictBETotJointRoofTargetObject A P) =
+      strictBETotJointSourceRoofKanComparison A P
+
+def strictBETotJointSourceRoofPinchedComparison (P : strictBETotJointHomIndex A) :
+    nerve ((simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P)ᵒᵖ ⟶
+      Basic.pinchedHom
+        ((SimplicialLocalization.hammockLocalizationNerveMap
+          (modelRelativeCategory (operad A).Algebra)).app (Opposite.op ⦋0⦌)
+            (nerveVertex (strictBETotJointRoofSourceObject A P)))
+        ((SimplicialLocalization.hammockLocalizationNerveMap
+          (modelRelativeCategory (operad A).Algebra)).app (Opposite.op ⦋0⦌)
+            (nerveVertex (strictBETotJointRoofTargetObject A P)))
+
+theorem strictBETotJointSourceRoofPinchedComparison_weak (P : strictBETotJointHomIndex A) :
+    IsWeakHomotopyEquivalence (strictBETotJointSourceRoofPinchedComparison A P)
+
+theorem strictBETotJointSourceRoofPinchedComparison_app_val (P : strictBETotJointHomIndex A) :
+    SimplicialLocalization.KanHammockPinchedValueFormula
+      (modelRelativeCategory (operad A).Algebra)
+      (strictBETotJointRoofSourceObject A P) (strictBETotJointRoofTargetObject A P)
+      (strictBETotJointSourceRoofKanComparison A P)
+```
+
+## 254. 同じ局所化頂点のpinched Homへの基準射の検収（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 23（うち追加 11）。R03dは未完了。
+
+§253の最終個別検査1450は終了0。321の鍵付き対象ビルド12,238 jobs、小監査195モジュール・1,363宣言が成功し、標準三公理のみ。実ハンドル73896・終了0、鍵返却済み。--class impl --wait 3600・1700秒guardを使った。新しい宣言名はmainのSerrePositivity全体にないことをgit grepで確認した。二つの互換入口の宣言0と既存補題の定義元の検査も維持している。
+
+今回二本165行（一般の全単体の値の分割49行、BEの基準射116行）。見込み150〜260行に対し上端との差−95行。検証済み191本・12,403行／外枠22,000行。自分の宣言数は1,356で、互換入口の宣言0を含む。監査全体には既存定義元・HAの直接importer等4本も含む。
+
+元の実roof比較から同じ全モデル相対圏のKan hammock Hom・同じ局所化頂点のpinched Homへの実射と、その弱同値性、元の全標的AsSmall比較と同じEx∞単位の厳密な三角形を保存した。全次数・全単体の値の式は名前付き命題の定義でそのまま保持し、elaborationの分割によって計算上限を上げずに検査した。sorry・独自公理0、[ModelCategory SSet]なし、既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・公式入口・公式監査・mainの変更なし。既存の合成・係数移送・証明の分割として一覧の項目数は増やさない。
+
+登録候補：
+
+- SerrePositivity.EInfinity.SimplicialLocalization.KanHammockPinchedSimplexValue
+- SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRoofPinched
+
+次は既存CoherentLocalizationComparison.pinchedEquivalenceを、元のstrictBETotRightFrameCoherentComparisonの同じ第二成分に適用し、同じ指定二胞体の両端の共役として元のCAlg源へ輸送する。probe始域と右置換標的を元のnative fiberの両端へ合わせること、元のnative射と基準roof射との全単体での照合、R03dの元の固定始域の全FunctorIsoへの正規化はなお残る。
