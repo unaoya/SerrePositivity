@@ -1693,3 +1693,78 @@ mateEquiv (Classical.choice hK).adjunction (Classical.choice hJ).adjunction
 補題の呼び出しにも渡して再検証する。
 
 一覧：済み 4／全体 8（うち追加 0、済み：S2・S3・S4・S5、S7 は後続）。
+
+### S6：大きい site の元の全被覆篩の同じ宇宙での表示（11-15、未検証）
+
+`LargeSiteAsSmall.lean` は元の `nerve Cᵒᵖ` と `nerve (AsSmall C)ᵒᵖ` の厳密な同型を用い、
+元のすべての被覆篩 S の AsSmall 表示の指定錐 `largeRestrictionCone F S` を作る。
+型は
+`LargeIsSheaf J F ↔ ∀ U S, S ∈ J U → IsLimitCone (largeRestrictionCone F S)`。
+元の被覆篩の順像・逆像が一致する Mathlib の同値の法則を用いる。
+対象 Type(u+1)・射 Type u・係数 SSet(u+1) を保ち、位相や κ の条件を新設しない。
+
+一覧：済み 4／全体 8（うち追加 0、済み：S2・S3・S4・S5、S7 は後続）。
+
+### S6：元の EssentiallySmall 入力から元の層条件の小さい模型比較（11-15、未検証）
+
+`SiteAsSmallEquivalence` は、元の圏同値と被覆保存性を共通の宇宙の
+AsSmall 表示へ移す。`LargeSiteSmallModel` の型は
+```lean
+IsSheaf J ((siteSmallModelShapeEquivalence e).hom ≫ F) ↔ LargeIsSheaf K F
+```
+（`e : D ≌ C`、元の両向きの被覆保存性）。
+さらに `[EssentiallySmall.{u} C]` だけから、元の誘導位相を持つ
+`SmallModel.{u} C` の同じ `IsSheaf` との同値を結論する。
+`PrismOverSmall` が供給する入力をそのまま入れられ、係数は SSet(u+1) のまま。
+新しい site 固有条件や κ の切り落としを作らない。
+
+一覧：済み 4／全体 8（うち追加 0、済み：S2・S3・S4・S5、S7 は後続）。
+
+### S6：指定単位の式の型の局所化（11-15、再検証中）
+
+指定比較そのものと元の正方形への mate の等式はビルドを通過。
+単位式では `qcatMap (F ≫ G)` を一つの原子として読む coherence の探索を避け、
+元の二つの随伴と β・α の端点を、構成因子ごとの一胞体で明示した。
+元の単位・指定二胞体・全比較の論理的な型は保ち、計算上限は変更しない。
+次の検証は各組を固定し、指定比較1本、指定単位とRΓ2本、大きいsiteの3本を分ける。
+
+一覧：済み 4／全体 8（うち追加 0、済み：S2・S3・S4・S5、S7 は後続）。
+
+### S6：元の大きい層圏と大域切断の同じ universe の接続（11-15、未検証）
+
+`LargeSheafSmallModel` は、元の大きい層の全部分準圏から小さい模型の層圏への
+全再添字を作り、包含との厳密な可換式と `IsQCatEquivalence` を結論する。
+`LargeGlobalSections` は同じ全前層圏の presentable 性を元の全同値で回収し、
+`∃ R, Nonempty (QCatAdjunction (constantFunctorMap (nerve Cᵒᵖ) E) R)` を結論する。
+元の定値関手を変えず、係数は SSet(u+1) のまま。小さい模型はこの存在の証明だけに用いる。
+このため、選んだ元の大きい Γ 全関手は模型によらず等しいことも保持する。
+
+一覧：済み 4／全体 8（うち追加 0、済み：S2・S3・S4・S5、S7 は後続）。
+
+### S6：元の大きい Γ と模型の Γ の全関手比較（11-15、未検証）
+
+`LargeGlobalSectionsSiteComparison` は、元の nerve Cᵒᵖ の上の全極限錐族を保持し、
+`FunctorIso (reindexSmallModelPresheafFunctor e E ≫ globalSectionsFunctor hE)
+ (largeGlobalSectionsFunctor e hE)` を結論する。
+元の全錐族の極限性と厳密な図式の回収も保持する。点ごとの同型だけで代用しない。
+小さい模型の Γ と元の大きい site の Γ の二つの定値随伴を、
+検証済みの元の形状同値に沿う全錐の制限で比較する。
+
+一覧：済み 4／全体 8（うち追加 0、済み：S2・S3・S4・S5、S7 は後続）。
+
+### S6：元の層化単位を保つ全層化・RΓ 比較の検証済みの区切り（11-15）
+
+`SheafificationSiteSpecifiedComparison`・`SheafificationSiteSpecifiedUnit`・
+`DerivedGlobalSectionsSiteSpecifiedComparison` の3本と `LargeSiteAsSmall` の
+合わせて4本285行、対象ビルド・31宣言の小監査成功（標準三公理のみ）。
+記録：`/tmp/is-w1/s6-sheaf-and-large-1/` の specified-comparison・specified-unit・large-as-small。
+元の hJ・hK の単位を、同じ指定正方形と横の mate の逆で保つ全二胞体の等式が通った。
+元の全前層の全 RΓ 比較も同じ比較から構成した。
+大きい site の元の全被覆篩での指定錐の極限性の判定まで通った。
+
+AsSmall の site 同値の被覆保存性は、依存する篩の型を rewrite せず、
+元の定義的に同じ合成関手へ change してから順像の合成則を用いる形へ修正する。
+検証済み全体86本5,376行・489宣言、外枠18,600行内。
+S6 は小さい模型への最終接続と大きい Γ・RΓ の同じ全比較が残る。
+
+一覧：済み 4／全体 8（うち追加 0、済み：S2・S3・S4・S5、S7 は後続）。
