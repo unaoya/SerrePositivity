@@ -393,3 +393,56 @@ GlobalSections、SheafificationReflection、Sheafify、SheafGeneratingEdges。
 S1のcoverage/sup/extensiveと指定切断比較、S2の単位とRΓ、S4の生成性はまだ未完。
 未検証のSectionsOf・RepresentableSections・SieveSectionsCriterion・SieveProbeLocality・
 SheafProbeCriterion・CechShapeは作業木に置く。旧E01の四本も対象外のまま。
+
+### S4の生成性と反射の結論（未検証）
+
+一覧：済み 0／全体 8（うち追加 0、S7は後続）。
+
+`Sheafification.lean`：
+```lean
+lemma isLocalObject_sheafGeneratingEdges_iff (hE : IsPresentable E)
+  (M : ι → E _⦋0⦌) (hM : IsDetectingFamily M) (F : (PresheafCat C E) _⦋0⦌) :
+  IsLocalObject (Set.range (sheafGeneratingEdges J hE M)) F ↔ sheafProperty J F
+theorem exists_sheafGeneratingEdges (hE : IsPresentable E) :
+  ∃ (I : Type u) (edges : I → (PresheafCat C E) _⦋1⦌),
+    ∀ F, IsLocalObject (Set.range edges) F ↔ sheafProperty J F
+theorem sheafification_exists (hE : IsPresentable E) : Sheafification J E
+```
+S4の元の結論へG8・G14・Bousfield反射を合成する下書き。局所性を入力として残さない。
+端点の定義上の照合を含め、Lean検証はこの後。
+
+### 辺の代表の照合（未検証）
+
+一覧：済み 0／全体 8（うち追加 0、S7は後続）。
+
+`LocalEdgeRepresentative.lean`：
+```lean
+lemma localForEdgeRepresentative_iff (e : X.Edge x y) (z : X _⦋0⦌) :
+  IsLocalForHom (homMk (edgeOfSimplex e.edge)) z ↔ IsLocalForHom (homMk e.toTruncated) z
+```
+S4の最後の辺族の照合でのwhnf時間切れを避ける計算の分割。端点の等式を除去するだけ。
+上限は変更しない。前段の切断錐比較・一辺局所性・検出族判定はbuild-7まで対象ビルド成功、
+反射存在の最後の組み立てと全体の監査は未完。
+
+## S4完了：生成辺から実反射へ（11-15）
+
+一覧：済み 1／全体 8（うち追加 0、済み：S4、S7は後続）。
+
+19本・1207行、対象ビルド7,316 jobs成功。107宣言の小監査で標準三公理のみ。
+ログ `/tmp/is-w1/sheaf-condition/build-9.log`。プロセス終了・鍵解放確認済み。
+計算上限変更なし。本体の既存宣言の変更なし。
+
+S4の完了証拠：`Sheafification.lean` の
+`isLocalObject_sheafGeneratingEdges_iff`、`exists_sheafGeneratingEdges`、
+`sheafification_exists` が、生成性を仮定せず任意の小さいsite・presentable係数に対して成立。
+G8の元の篩辺、指定切断錐との一致、G14のType uの検出族を実際に合成した。
+最後の辺の端点のwhnf時間切れは、任意の辺で端点の等式を除去する
+`localForEdgeRepresentative_iff` に分割して解消。
+
+今回追加検証された束は、CechShape、SectionsOf、RepresentableSections、
+SieveSectionsCriterion、SieveProbeLocality、SheafProbeCriterion、
+LocalEdgeRepresentative、Sheafification。S1のcoverage/sup/extensive、
+S2の単位とRΓ、S3のcofinality、S5、S6、S8は引き続き未完。
+S1の指定切断錐と篩切断写像の可逆性の同値も検証済みだが、
+これをS1全体の完了には数えない。S8の一般重み・局所同値も未完。
+次はS2の同じ反射の単位とRΓ、S1の生成位相の判定に進む。
