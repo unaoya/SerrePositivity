@@ -3,7 +3,7 @@
   "complete": 2,
   "total": 6,
   "added": 0,
-  "verified_head": "this commit: base 33ac4613c4bc29d48c8d085baec8e237e3362af3",
+  "verified_head": "this commit: base 1697027f4e83c2f0e8b23bcfed395df5416b55b2",
   "items": {
     "HT01": "complete",
     "HT02": "complete",
@@ -12,13 +12,12 @@
     "HT05": "not-started",
     "HT06": "not-started"
   },
-  "latest_complete_audit_checkpoint": "crystalline-forms-coefficient-basis-checkpoint.json",
-  "latest_complete_audit_declarations": 1377,
+  "latest_complete_audit_checkpoint": "prism-residue-scalar-tensor-checkpoint.json",
+  "latest_complete_audit_declarations": 1384,
   "working_changes_unverified": [
-    "PrismResidueScalarTensor",
     "CrystallineFormsBaseChange"
   ],
-  "pending_check": "bundle-107 terminal rc1; see audit module inventory; failed dependencies await next batch",
+  "pending_check": "bundle-109 terminal rc1; see audit module inventory; failed dependencies await next batch",
   "next_proof_route": "ht02-next-proof-route.md",
   "initial_record": {
     "stage": "5inf3a",
