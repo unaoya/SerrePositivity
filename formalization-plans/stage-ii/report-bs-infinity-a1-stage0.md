@@ -1988,3 +1988,35 @@ IsQCatEquivalence (sieveFactorizationRightKanShapeComparison R S t)
 検証済み全体103本6,555行・641宣言、外枠18,600行内。
 S1 の交叉降下の同値・生成系・上限位相・extensive の判定と、S8 は未完。
 一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
+
+### S1：元の各引き戻し篩の降下から、指定余単位による実右 Kan 条件（11-15）
+
+4本253行・14宣言の対象ビルドと小監査が成功（標準三公理のみ）。
+記録：`/tmp/is-w1/s1-right-kan-5/`。source SHA も一致。
+
+```lean
+(∀ t : sieveCategory R, IsLimitCone (restrictionCone F (S.pullback t.obj.hom))) →
+IsRightKanExtension (nerveMap (sieveFactorizationRightKanFunctor R S))
+  (nerveMap (sieveFactorizationRightKanSource R S) ≫ sieveFactorizationRightKanCoefficient F)
+  (nerveMap (sieveFactorizationRightKanTarget R) ≫ sieveFactorizationRightKanCoefficient F)
+  (sieveFactorizationRightKanCounitHomotopy R S F)
+```
+
+`SieveFactorizationRightKanData` は元の三角形の同じ指定余単位と実輸送を固定。
+`RightKanLocalCone` は通常の右 comma 上の局所錐を制限すると元の局所錐の
+AsSmall 表示そのものであることを証明した。
+`RightKanConeComparison` は既検証の実形状比較で全錐を引き戻すと、
+元の局所制限錐と全射が等しいことを証明し、各引き戻し篩の降下との極限性の同値を得た。
+`SieveFactorizationRightKan` は全頂点を元の中間射へ戻して上の指定右 Kan 条件を結論する。
+係数の universe は下げず、準圏性以外の極限存在は仮定しない。
+計算上限は変更せず、nerve の合成則は元の型で明示した等式を使った。
+
+次の芯は、この指定右 Kan 条件と元の錐の余単位の Hom 普遍性をつなぎ、
+交叉篩と元の篩の降下の同値を導く部分。
+任意の追加パラメータの定値族へ同じ指定輸送を写す法則は、
+`kanRightTransportPostcomp` と `kanIsLimitCone_constantFamily` から作れる。
+写像空間を π₀ だけで代用せず、全パラメータを保持して極限性へ戻す。
+
+検証済み全体107本6,808行・655宣言、外枠18,600行内。
+S1 の交叉降下の同値・生成系・上限位相・extensive の判定と、S8 は未完。
+一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
