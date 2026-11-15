@@ -211,5 +211,6 @@
   "SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.FunctorIsoConstantFamily",
   "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceTargetUnit",
   "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftStraighteningDiagramHom",
-  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointNativeTransformation"
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointNativeTransformation",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.TwistedArrowThreeSimplexCoordinates"
 ]
