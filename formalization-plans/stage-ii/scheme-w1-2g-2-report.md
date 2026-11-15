@@ -1149,3 +1149,35 @@ F8 の比較の各辺の証明分割（着手前、同じ係数移送の内数�
 F8 の射影的な場合について、実際の構造層の Frobenius 係数・スカラー・Cartesian な閉中心の射を持つ同じ四角形の完全性を、任意の有限アフィン被覆へ移す所まで済み。次は G3 の表示の同型に沿って実際のブローアップとその閉中心へ移し、一つの選んだ被覆と nerve の整合性、Frobenius 係数とアフィン conerve の自然な比較、fppf の二重 Čech と Noether 帰納、G5 を接続する。Thm 2.9 の十分性全体や停止点2g-2はまだ未完。約6,000行の途中報告は次の束の実測で行い、そこで G4・G5 の残りも出し直す。全体の見込み約5,500〜12,000行・外枠16,000行は不変。
 
 一覧：済み1／全体3（うち追加0）。
+
+
+同じ合成則の単位の分割（着手前、前記55〜120行の内数）：`schemeStructurePerfectCechPullbackMap_eq_refined f p hp hY hX U` は実際の Frobenius 係数の引き戻しと、同じ逆像被覆への恒等細分を合成した refinedPullback の等式。既存の細分の恒等則だけを用い、後続の表示の同型の比較を同じ射で扱う。
+
+
+合成則の各タプルでの証明分割（着手前、同じ内数）：`schemeStructurePerfectCechRefinedPullbackMap_comp_apply … q a t` は上記の二段の refinedPullback を、次数 q の cochain a のタプル t で評価した式が、合成射の refinedPullback の同じ評価に等しいこと。各タプルの計算と複体の射の外延性を別宣言にし、環準同型を評価する lambda の型も明示する。既定の heartbeat を保ち、主張・射・仮定は変えない。
+
+
+表示の同型の三角形で使う増大写像の自然性の分割（着手前、既存の引き戻し・細分の合成の内数、35〜85行）：`schemeStructurePerfectCechRefinedPullbackMap_augmentation f φ ψ hψ p hp hR hY hX U V ρ hρ` は、実際の大域スカラーの整合性 ψ=f.appTop.comp φ の下で、refinedPullback の零次と source の native な増大写像の合成が target の同じ増大写像に等しいこと。検証済みの通常の逆像への増大写像の自然性と、細分による増大写像の保存を合成する。既存の射とスカラーを保持し、平坦性・被覆性を追加しない。
+
+
+同じ閉中心を保つ三角形の係数移送（着手前、既存の CechAugmentedSquare.Map の自然性の内数、80〜160行）：v:Y→Z、f:X→Y、g:X→Z、he:f≫v=g、被覆 U:ι→Z.Opens と V:ι→Y.Opens、hV:∀i,V i≤v⁻¹U i に対し、`schemePerfectCechTriangle_preimage_le` は `∀i,f⁻¹V i≤g⁻¹U i`。`schemeStructurePerfectCechSquare_triangleMap` は同じ基底 R・中心 S・q:R→S・ψ:S→Γ(X,⊤)、φY=v.appTop.comp φZ と二つのスカラーの可換性から、`Map (schemeStructurePerfectCechSquare g … φZ … U) (schemeStructurePerfectCechSquare f … φY … V)` を返す。left は v の実際の refinedPullback、right は同じ X 上の逆像被覆の実際の細分、base・center は恒等。制限の可換性は上の refinedPullback の合成、scalar は上の増大写像の自然性、center は既存の細分の増大写像の自然性。完全性を追加仮定にせず、表示の同型 v への適用で同じ四角形を実際のブローアップへ移す。
+
+
+表示の同型の比較の次の分割（着手前、既存の被覆・四角形比較の法則の内数、70〜150行）：`openCoverCechRefinementMap_isIso_of_eq P U V h hV` は同じ添字で V=U の細分の射そのものが同型であること。`schemeStructurePerfectCechSquare_iso_acyclic_iff v f g he … U` は v がスキームの同型のとき、上の triangleMap で V=v⁻¹U として同じ native な四角形の全複体の完全性を両向きに移す。left は既存の実際の同型の引き戻し、right は he:f≫v=g によって等しい二つの逆像被覆の恒等細分。実際の両辺の同型から cone の完全性を供給し、完全性・quasi-isomorphism を追加仮定にしない。
+
+
+## G4：実際の引き戻しの合成、増大写像、同じ閉中心の三角形
+
+- `SchemePerfectCechPullbackComposition`（89行）：`schemeStructurePerfectCechPullbackMap_eq_refined` は通常の引き戻しと恒等細分付きの引き戻しの一致。`schemeStructurePerfectCechRefinedPullbackMap_comp_apply` は実際の appLE と Frobenius 順極限の合成を各タプルで計算した一致。`schemeStructurePerfectCechRefinedPullbackMap_comp` は既存の全タプル複体の外延性 API で同じ二段の射と合成射の一致を返す。
+- `SchemePerfectCechRefinedAugmentation`（41行）：`schemeStructurePerfectCechRefinedPullbackMap_augmentation` は、実際の大域スカラー ψ=f.appTop.comp φ に沿って、細分を含む引き戻しの零次が同じ増大写像を保つこと。
+- `SchemePerfectCechSquareTriangle`（74行）：`schemePerfectCechTriangle_preimage_le` は三角形から同じ閉中心の逆像被覆の包含を返す。`schemeStructurePerfectCechSquare_triangleMap` は left に実際の refinedPullback、right に同じ X の実際の細分、base・center に恒等を入れ、制限・スカラー・商・中心の四条件を持つ実際の四角形の射。完全性は仮定していない。
+
+単独検証、下書きと本体のソース完全一致、対象と入口のビルド5,174・5,175・5,176ジョブ成功、小監査は所有元の全宣言5・1・8（計14、生成・非公開を含む）・標準三公理のみ、終了状態0。ログ `2g-perfect-cech-pullback-composition-check-3.log`・`2g-perfect-cech-pullback-composition-native.log`、`2g-perfect-cech-refined-augmentation-check-2.log`・`2g-perfect-cech-refined-augmentation-native.log`、`2g-perfect-cech-square-triangle-check-1.log`・`2g-perfect-cech-square-triangle-native.log`、`2g-perfect-cech-triangle-bundle-audit.log`。合成の点ごとの式と射の外延性を分割し、既定の heartbeat で成功。局所的な backward.isDefEq.respectTransparency false を使用。三角形の包含の補題に LinearOrder の未使用 section variable の linter 警告がある。追加公理・sorry・既存の型変更・資源制限の引き上げ・200行超の宣言なし。共有鍵 --class impl --wait 3600、待ちは一つ、ビルドと監査は別枠。root・下流全ビルド・全体監査なし。
+
+## 約6,000行での途中報告（停止せず続行）
+
+今回3モジュール204行＋入口3行。新規91モジュール本体5,996行・入口込み6,087行。既存 API の追加25行を保守的に含む外枠計数は本体6,021行・入口込み6,112行。新規モジュールの小監査の累計641宣言、既存モジュール15宣言は別計上。
+
+G3 は完成。G4 は F8 の同じスカラー・実際の構造層の Frobenius 係数の四角形の完全性を、任意の有限アフィン被覆に移す所まで済み。実際の表示の同型による移送は、上の三角形の射を使う同型比較の下書きを検証中。残り G4 は同型移送・一つの被覆と nerve の整合性・Frobenius 係数と実際のアフィン conerve の比較・nilpotent な閉厚化・fppf の二重 Čech と Noether 帰納、約2,000〜4,000行。G5 は既存の有限型 F_p 被覆模型と filtered colimit への自然な移送、約1,000〜2,000行。合計の着地を約9,000〜12,100行へ補正し、外枠16,000行は不変。最終の AugmentedRingCechExact の型・仮定は変えない。G4・G5 と停止点2g-2は未完であり、条件付きの射影比較だけを Thm 2.9 の十分性全体の完成とは呼ばない。
+
+一覧：済み1／全体3（うち追加0）。
