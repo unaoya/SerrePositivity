@@ -14774,3 +14774,197 @@ M15・drafts・main・⑤aの既存ファイル・Interfaceは変更していな
 
 G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み10,826行。
 M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
+
+## §106 G01：非退化な指定面の上の退化の限定と、厳密な併合条件による非退化性（11-15）
+
+### 106.1 検証済みの追加
+
+追加は **7ファイル556行・明示宣言17**。累計 **97ファイル11,382行・明示宣言639**。
+NondegenerateFaceDegeneracy.lean は80行・2宣言、ComposableArrowRefinementPositions.lean は82行・2宣言、
+NerveDegeneracyEdges.lean は54行・2宣言、ComposableArrowRefinementNondegenerate.lean は87行・1宣言、
+WalkingAdjunctionIsomorphismProfiles.lean は63行・4宣言、WalkingAdjunctionBottomMergePurity.lean は120行・4宣言、
+WalkingAdjunctionRefinementNondegenerate.lean は70行・2宣言。
+200行を超える個別の宣言・証明はない。新規Leanの行長は100文字以下。
+G01の同じ実細分・原子の実表示・面と退化の全合成・逆射・係数移送・照合とその証明の分割なので、
+新しい一覧IDは足さない。
+
+任意の単体集合について、非退化な指定面を持つ単体が退化している場合、
+その退化の位置は指定面の両隣に限られ、退化を除いた低次の単体は指定面自身と一致することを示した。
+指定面と退化の合成が非退化な単体を表示するため単射となり、有限全順序の自己単射は恒等写像となる。
+面が飛ばす点以外の二点を退化で同じ点へ送れないことから、位置の限定を証明した。
+これにより、両隣での退化に一致しないことから、元の単体集合の非退化性を得る法則を証明した。
+
+実鎖の細分で挿入した対象を実等式で、右因子を異種等式で回収した。
+元のnerveの退化で重なる辺の像は同型であり、両端の対象の等式と射の異種等式に沿って同型性を戻せる。
+指定面が非退化な元の実鎖に戻る場合、左の退化は挿入対象の相違で、右の退化は右因子の非同型性で排除できる。
+この証明を元のnerveの宇宙持ち上げの単体作用上で構成し、実併合による細分へ適用した。
+
+残余射の非同型性を有限順序の明示条件へ移すため、元の実Homの同型から共通表示の実順序同型を構成した。
+元の逆射と全合成・単位則を使っており、実同型は個数と各点の値を保つ。
+実併合射の値はi↦i−1である。
+実残余射が同型なら、元の射の終点の個数はm+1で、全ての点の値はi↦i−1となる。
+逆にその個数と全点の条件が成り立つなら、終点を実併合後の対象と同一視し、
+右因子の一意性により残余射はその等式による同型となる。
+従って実残余射の同型性と、一つだけの最初の併合という個数・全点の条件の両方向を検証した。
+
+これにより、元が非退化で、指定辺がこの一つだけの併合の条件に一致しない場合、
+実併合で細分した全単体は元のHomの単体集合で非退化となる。
+残余射の非同型性を仮定とする法則に加え、有限個数と全点の値の具体的条件による法則まで検証した。
+
+### 106.2 型と残る境界
+
+原典は[Riehl–Verity §4.1–§4.2](https://emilyriehl.github.io/files/adjunctions.pdf)、
+HA Proposition 4.7.3.3、Kerodon Remark 6.2.1.4（Tag 02EN）。
+検証した型は以下。
+
+```lean
+lemma degeneracy_over_nondegenerate_face {X : SSet.{u}} {n : ℕ}
+    (z : X _⦋n + 2⦌) (k : Fin (n + 3)) (j : Fin (n + 2)) (t : X _⦋n + 1⦌)
+    (hdeg : X.σ j t = z) (hnd : X.δ k z ∈ X.nonDegenerate (n + 1)) :
+    (k = j.castSucc ∨ k = j.succ) ∧ X.σ j (X.δ k z) = z
+
+lemma nondegenerate_of_face_and_no_adjacent_degeneracy {X : SSet.{u}} {n : ℕ}
+    (z : X _⦋n + 2⦌) (k : Fin (n + 3))
+    (hnd : X.δ k z ∈ X.nonDegenerate (n + 1))
+    (hno : ∀ j : Fin (n + 2), (k = j.castSucc ∨ k = j.succ) → X.σ j (X.δ k z) ≠ z) :
+    z ∈ X.nonDegenerate (n + 2)
+
+lemma composableArrowRefinement_middle :
+    ∀ (n : ℕ) (F : ComposableArrows C (n + 1)) (k : Fin (n + 1))
+      (B : C) (q : F.obj k.castSucc ⟶ B) (g : B ⟶ F.obj k.succ),
+      (composableArrowRefinement F k B q g).obj k.succ.castSucc = B
+
+lemma composableArrowRefinement_right_edge :
+    ∀ (n : ℕ) (F : ComposableArrows C (n + 1)) (k : Fin (n + 1))
+      (B : C) (q : F.obj k.castSucc ⟶ B) (g : B ⟶ F.obj k.succ),
+      HEq ((composableArrowRefinement F k B q g).map
+        (homOfLE (Fin.castSucc_le_succ k.succ))) g
+
+lemma isIso_of_equal_objects_hom_heq {A B A' B' : C} (hA : A = A') (hB : B = B')
+    (f : A ⟶ B) (g : A' ⟶ B') (h : HEq f g) [IsIso f] : IsIso g
+
+lemma nerve_degeneracy_edge_isIso {n : ℕ} (F : ComposableArrows C n) (j : Fin (n + 1)) :
+    IsIso (((nerve C).σ j F).map (homOfLE (Fin.castSucc_le_succ j)))
+
+lemma composableArrowRefinement_nondegenerate {C : Type u} [Category.{v} C] {n : ℕ}
+    (F : ComposableArrows C (n + 1)) (k : Fin (n + 1))
+    (B : C) (q : F.obj k.castSucc ⟶ B) (g : B ⟶ F.obj k.succ)
+    (fac : q ≫ g = F.map (homOfLE (Fin.castSucc_le_succ k)))
+    (hnd : ULift.up F ∈ (SSet.uliftFunctor.{w, max u v}.obj (nerve C)).nonDegenerate (n + 1))
+    (hq : F.obj k.castSucc ≠ B) (hg : ¬ IsIso g) :
+    ULift.up (composableArrowRefinement F k B q g) ∈
+      (SSet.uliftFunctor.{w, max u v}.obj (nerve C)).nonDegenerate (n + 2)
+
+lemma ordinalOrderIso_val {m n : ℕ} (e : Fin m ≃o Fin n) (i : Fin m) :
+    (e i).val = i.val
+
+def walkingAdjunctionOrderIsoOfIsIso {X Y : WalkingAdjunctionPoint}
+    {A B : walkingAdjunctionHom X Y} (f : A ⟶ B) [IsIso f] :
+    Fin (walkingAdjunctionOrdinalCard X Y A) ≃o Fin (walkingAdjunctionOrdinalCard X Y B)
+
+lemma walkingAdjunctionCard_eq_of_isIso {X Y : WalkingAdjunctionPoint}
+    {A B : walkingAdjunctionHom X Y} (f : A ⟶ B) [IsIso f] :
+    walkingAdjunctionOrdinalCard X Y A = walkingAdjunctionOrdinalCard X Y B
+
+lemma walkingAdjunctionOrderHom_val_of_isIso {X Y : WalkingAdjunctionPoint}
+    {A B : walkingAdjunctionHom X Y} (f : A ⟶ B) [IsIso f]
+    (i : Fin (walkingAdjunctionOrdinalCard X Y A)) :
+    (walkingAdjunctionOrderHom f i).val = i.val
+
+lemma walkingAdjunctionBottomMergeArrow_val {Y : WalkingAdjunctionPoint}
+    (A : walkingAdjunctionHom .minus Y) (m : ℕ)
+    (hA : walkingAdjunctionOrdinalCard .minus Y A = m + 2)
+    (i : Fin (walkingAdjunctionOrdinalCard .minus Y A)) :
+    (walkingAdjunctionOrderHom (walkingAdjunctionBottomMergeArrow A m hA) i).val = i.val - 1
+
+lemma walkingAdjunctionBottomMerge_pure_of_residual_isIso {Y : WalkingAdjunctionPoint}
+    {A B : walkingAdjunctionHom .minus Y} (f : A ⟶ B) (m : ℕ)
+    (hA : walkingAdjunctionOrdinalCard .minus Y A = m + 2)
+    (h1 : ∀ i : Fin (walkingAdjunctionOrdinalCard .minus Y A),
+      i.val = 1 → (walkingAdjunctionOrderHom f i).val = 0)
+    [IsIso (walkingAdjunctionBottomMergeResidual f m hA h1)] :
+    walkingAdjunctionOrdinalCard .minus Y B = m + 1 ∧
+      ∀ i : Fin (walkingAdjunctionOrdinalCard .minus Y A),
+        (walkingAdjunctionOrderHom f i).val = i.val - 1
+
+lemma walkingAdjunctionBottomMerge_residual_isIso_of_pure {Y : WalkingAdjunctionPoint}
+    {A B : walkingAdjunctionHom .minus Y} (f : A ⟶ B) (m : ℕ)
+    (hA : walkingAdjunctionOrdinalCard .minus Y A = m + 2)
+    (h1 : ∀ i : Fin (walkingAdjunctionOrdinalCard .minus Y A),
+      i.val = 1 → (walkingAdjunctionOrderHom f i).val = 0)
+    (hp : walkingAdjunctionOrdinalCard .minus Y B = m + 1 ∧
+      ∀ i : Fin (walkingAdjunctionOrdinalCard .minus Y A),
+        (walkingAdjunctionOrderHom f i).val = i.val - 1) :
+    IsIso (walkingAdjunctionBottomMergeResidual f m hA h1)
+
+lemma walkingAdjunctionBottomMerge_residual_isIso_iff_pure {Y : WalkingAdjunctionPoint}
+    {A B : walkingAdjunctionHom .minus Y} (f : A ⟶ B) (m : ℕ)
+    (hA : walkingAdjunctionOrdinalCard .minus Y A = m + 2)
+    (h1 : ∀ i : Fin (walkingAdjunctionOrdinalCard .minus Y A),
+      i.val = 1 → (walkingAdjunctionOrderHom f i).val = 0) :
+    IsIso (walkingAdjunctionBottomMergeResidual f m hA h1) ↔
+      walkingAdjunctionOrdinalCard .minus Y B = m + 1 ∧
+        ∀ i : Fin (walkingAdjunctionOrdinalCard .minus Y A),
+          (walkingAdjunctionOrderHom f i).val = i.val - 1
+
+lemma walkingAdjunctionBottomMergeRefinement_nondegenerate {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom .minus Y) (n + 1)) (k : Fin (n + 1))
+    (m : ℕ) (hA : walkingAdjunctionOrdinalCard .minus Y (H.obj k.castSucc) = m + 2)
+    (h1 : ∀ i : Fin (walkingAdjunctionOrdinalCard .minus Y (H.obj k.castSucc)),
+      i.val = 1 → (walkingAdjunctionOrderHom (H.map
+        (homOfLE (Fin.castSucc_le_succ k))) i).val = 0)
+    (hnd : ULift.up H ∈ (WalkingAdjunctionHomShape.{u} .minus Y).nonDegenerate (n + 1))
+    (hg : ¬ IsIso (walkingAdjunctionBottomMergeResidual
+      (H.map (homOfLE (Fin.castSucc_le_succ k))) m hA h1)) :
+    ULift.up (walkingAdjunctionBottomMergeRefinement H k m hA h1) ∈
+      (WalkingAdjunctionHomShape.{u} .minus Y).nonDegenerate (n + 2)
+
+lemma walkingAdjunctionBottomMergeRefinement_nondegenerate_of_not_pure
+    {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom .minus Y) (n + 1)) (k : Fin (n + 1))
+    (m : ℕ) (hA : walkingAdjunctionOrdinalCard .minus Y (H.obj k.castSucc) = m + 2)
+    (h1 : ∀ i : Fin (walkingAdjunctionOrdinalCard .minus Y (H.obj k.castSucc)),
+      i.val = 1 → (walkingAdjunctionOrderHom (H.map
+        (homOfLE (Fin.castSucc_le_succ k))) i).val = 0)
+    (hnd : ULift.up H ∈ (WalkingAdjunctionHomShape.{u} .minus Y).nonDegenerate (n + 1))
+    (hp : ¬ (walkingAdjunctionOrdinalCard .minus Y (H.obj k.succ) = m + 1 ∧
+      ∀ i : Fin (walkingAdjunctionOrdinalCard .minus Y (H.obj k.castSucc)),
+        (walkingAdjunctionOrderHom (H.map (homOfLE (Fin.castSucc_le_succ k))) i).val =
+          i.val - 1)) :
+    ULift.up (walkingAdjunctionBottomMergeRefinement H k m hA h1) ∈
+      (WalkingAdjunctionHomShape.{u} .minus Y).nonDegenerate (n + 2)
+```
+
+今回は、指定された併合の辺で一つだけの併合の条件が成り立たない場合の非退化性までである。
+§105で選んだ最初の位置の実射にこの条件を適用できる。
+ただし、この有限順序の具体的条件と原典のfillable条件の全照合、
+細分後の最初の位置と厳密な併合条件の保存、親の一意性はまだ未完である。
+元が既にfillableな場合を含む全ての原子の細分に対し、無条件で非退化とは主張していない。
+従って原子のfillableな親の完成とは数えていない。
+始点plusの場合の別の親の構成、その他の面とのfiltrationの両立、parental subcomputadのfiltration、
+元のQCatAdjunctionからの全coherentな延長、原典の向きと現模型の水平反対の全比較、
+同じF≫U・単位・余単位・HAモデルの照合も引き続き未完。
+今回の条件つきの非退化性を、coherentな延長の存在へ読み替えていない。
+G01の済みは0、G02以降も未完を維持する。
+
+### 106.3 検証と進み
+
+with_build_lock.sh --class impl --wait 3600、各最大240秒の短いimpl枠。
+セッション93163で任意の単体集合の退化の位置の限定の対象ビルドが最初に通った。
+局所の単射性の束縛名の警告を整え、セッション79767の最大240秒の一つの枠で
+残りの対象と追加した実同型・厳密な併合条件の照合までを検証した。
+今回の数学の証明は全て各最初の対象ビルドで通過した。
+最終対象
+lake build SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionRefinementNondegenerate:olean
+は終了0、警告なし（1356 jobs）。続く追加17根だけの公理監査も終了0を確認し、
+同じ枠を明示的に閉じて外側の終了0を確認した。
+追加17根は入力名と出力名が一致し、公理依存はpropext・Classical.choice・Quot.soundのみ。
+sorryAx・追加公理なし。入力・根・全出力・最終対象ビルドログは
+[g12-refinement-nondegenerate-audit-2026-11-15/](g12-refinement-nondegenerate-audit-2026-11-15/)に保存した。
+現在自分の生きたビルド・監査の枠は残っていない。
+
+M15・drafts・main・⑤aの既存ファイル・Interfaceは変更していない。
+全体ビルド・大きい監査は行っていない。
+
+G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み11,382行。
+M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
