@@ -826,3 +826,110 @@ PresentableSmallLimits、RightExistence を使う。原典の右 Kan 延長を�
 S3 の未完は上記の型の確認と、確認後の同じ頂点をもつ逆向きの錐・比較。
 一般の cofinality を仮定に残さず、弱終性と指定 CechNerveData から両方の元の形状の
 cofinality を実際に証明した。S8 の NativeWeightedSections は未検証の作業木に残す。
+
+### S8：同じ全切断関手の選択と値（未検証）
+
+一覧：済み 2／全体 8（うち追加 0、済み：S2・S4、S7は後続）。
+
+`NativeWeightedSectionsData.lean` の既存の構成の選択・値の法則：
+```lean
+def nativeWeightedSectionsData O hE : Σ G, {ε // IsRightKanExtension (opFunctor.map (yonedaInfinityMap A)) O G ε}
+abbrev nativeWeightedSections O hE := (nativeWeightedSectionsData O hE).1
+lemma nativeWeightedSections_isRightKanExtension :
+  IsRightKanExtension (opFunctor.map (yonedaInfinityMap A)) O (nativeWeightedSections O hE) (nativeWeightedSectionsData O hE).2.val
+lemma nativeWeightedSections_limitValue P : ∃ c,
+  IsLimitCone c ∧ c.vertex = (nativeWeightedSections O hE).app _ P
+```
+局所図式は本文に固定し、一つの選択で元の全関手・変換と値を保持する。
+
+### S1/S6：同じ全関手同型による層条件の移送（未検証）
+
+一覧：済み 2／全体 8（うち追加 0、済み：S2・S4、S7は後続）。
+
+`SheafEquivalence.lean`、元の全錐比較の法則：
+```lean
+lemma IsSheaf.of_functorIso (hF : IsSheaf J F) (e : FunctorIso F G) : IsSheaf J G
+lemma isSheaf_iff_of_functorIso (e : FunctorIso F G) : IsSheaf J F ↔ IsSheaf J G
+lemma sheafProperty_iff_of_vertexIso (e : VertexIso F G) : sheafProperty J F ↔ sheafProperty J G
+```
+指定篩錐の同じ全同型を使い、頂点だけの同型を層の全同型と取り違えない。
+
+### S6：同じ site 関手の全前層圏への再添字（未検証）
+
+一覧：済み 2／全体 8（うち追加 0、済み：S2・S4、S7は後続）。
+
+`SiteReindex.lean`、既存の nerve・前合成の法則：
+```lean
+def siteShapeMap (f : C ⥤ D) : presheafShape C ⟶ presheafShape D
+def reindexPresheaf f F : Presheaf C E
+def reindexPresheafFunctor f : PresheafCat D E ⟶ PresheafCat C E
+lemma siteShapeMap_isQCatEquivalence (e : C ≌ D) : IsQCatEquivalence (siteShapeMap e.functor)
+lemma reindexPresheafFunctor_isQCatEquivalence (e : C ≌ D) :
+  IsQCatEquivalence (reindexPresheafFunctor (E := E) e.functor)
+```
+S6の被覆位相・層・層化・RΓの移送はまだ未完。前層圏だけの比較でS6完了とはしない。
+
+### S6：引き戻した篩の元の圏（未検証）
+
+一覧：済み 2／全体 8（うち追加 0、済み：S2・S4、S7は後続）。
+
+`SieveSiteComparison.lean`、既存の Over.post の制限・係数移送の法則：
+```lean
+def sieveSiteFunctor F S : sieveCategory (S.functorPullback F) ⥤ sieveCategory S
+instance sieveSiteFunctor_faithful [F.Faithful] : (sieveSiteFunctor F S).Faithful
+instance sieveSiteFunctor_full [F.Faithful] [F.Full] : (sieveSiteFunctor F S).Full
+instance sieveSiteFunctor_essSurj [F.IsEquivalence] : (sieveSiteFunctor F S).EssSurj
+def sieveSiteEquivalence (e : C ≌ D) S : sieveCategory (S.functorPullback e.functor) ≌ sieveCategory S
+lemma sieveSiteFunctor_diagram : (sieveSiteFunctor F S).op ⋙ sieveDiagram S = sieveDiagram (S.functorPullback F) ⋙ F.op
+```
+元の実際の比較関手を使い、前層の頂点の対応だけで篩錐の比較を代用しない。
+
+### S6：元の篩錐の制限比較（未検証）
+
+一覧：済み 2／全体 8（うち追加 0、済み：S2・S4、S7は後続）。
+
+`SieveSiteConeComparison.lean` の同じ指定錐の係数移送の法則：
+```lean
+lemma sieveSiteFunctor_cone : F.op.mapCone (sieveCone (S.functorPullback F)) = (sieveCone S).whisker (sieveSiteFunctor F S).op
+lemma sieveSiteFunctor_restrictionCone_val :
+  (restrictJoinCone (restrictionCone O S) (ulift.map (nerveMap (sieveSiteFunctor F S).op))).val =
+    (restrictionCone (reindexPresheaf F O) (S.functorPullback F)).val
+lemma isLimit_restrictionCone_site_iff (e : C ≌ D) :
+  IsLimitCone (restrictionCone (reindexPresheaf e.functor O) (S.functorPullback e.functor)) ↔
+    IsLimitCone (restrictionCone O S)
+```
+対象の対応ではなく、元の篩錐全体を同じ比較関手で制限する。
+
+### S6：対応する被覆位相での層条件（未検証）
+
+一覧：済み 2／全体 8（うち追加 0、済み：S2・S4、S7は後続）。
+
+`SheafSiteInvariance.lean` の元の再添字と単位・余単位の法則：
+```lean
+def reindexPresheaf_inverseFunctorIso e O : FunctorIso (reindexPresheaf e.inverse (reindexPresheaf e.functor O)) O
+lemma IsSheaf.reindex_of_equivalence (hcov : CoverPreserving J K e.functor) (hO : IsSheaf K O) :
+  IsSheaf J (reindexPresheaf e.functor O)
+theorem isSheaf_reindex_equivalence_iff (hf : CoverPreserving J K e.functor) (hg : CoverPreserving K J e.inverse) :
+  IsSheaf J (reindexPresheaf e.functor O) ↔ IsSheaf K O
+theorem isSheaf_inducedTopology_equivalence_iff :
+  IsSheaf J (reindexPresheaf e.functor O) ↔ IsSheaf (e.inverse.inducedTopology J) O
+```
+元の指定篩錐で証明する。反射の全比較・RΓの輸送、大きい元の site への接続はまだ残る。
+
+### S8 の全右 Kan 関手と S6 の前層圏の検証（11-15）
+
+一覧：済み 2／全体 8（うち追加 0、済み：S2・S4、S7は後続）。
+
+追加の検証済み4本・216行、全体42本・2615行、249宣言。
+NativeWeightedSections 2宣言、NativeWeightedSectionsData 6宣言、
+SheafEquivalence 3宣言、SiteReindex 5宣言。すべて小監査で標準三公理のみ。
+対象ビルドは順に5,897・5,898・7,162・7,162 jobs成功。
+ログ `/tmp/is-w1/native-weights/build.log`、`/tmp/is-w1/native-weight-data/build.log`、
+`/tmp/is-w1/sheaf-equivalence/build.log`、`/tmp/is-w1/site-reindex/build.log`。
+プロセス終了・鍵解放確認済み。既存宣言・計算上限の変更なし。
+
+S8の元の反対 Yoneda に沿う一般重みの全右 Kan 関手・指定変換・各値の極限錐まで検証。
+固定した離散 Yoneda 表示との全比較、余極限→極限、離散押し出しと局所同値は未完。
+S6の全前層圏の比較は検証済みだが、篩錐・層・層化・RΓ・大きい模型の輸送は未完。
+SieveSiteComparison・SieveSiteConeComparison・SheafSiteInvariance は未検証の作業木。
+S3の型の訂正案は判断待ち。S1の残り・S5も未完。S7は後続。
