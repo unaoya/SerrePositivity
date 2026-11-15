@@ -913,3 +913,19 @@ G4 の零次項拡張の比較の法則（着手前、既存の拡張の係数�
 今回1モジュール46行＋入口1行。2g-2 本体4,410行・入口込み4,479行、小監査523宣言・標準三公理のみ。二重 cone の交換の微分・完全性、零次項の拡張と増大項の比較は未検証の下書きで、本体には含めない。G4・G5 の残りと見込み約5,500〜12,000行・外枠16,000行は不変。停止点2g-2ではない。
 
 一覧：済み1／全体3（うち追加0）。
+
+
+G4 の増大 cone の完全性の判定の法則（着手前、既存の増大全複体の証明分割、45〜100行）：`augmentedCechCone_acyclic_iff_injective_exact A B f Z a hc` は既存の増大全複体の Acyclic と、a の単射性・a と cone の最初の微分の Function.Exact・cone の隣接微分全ての Function.Exact の同値。既存の CochainComplex.of の両向きの判定を、増大項・零次項・以後に分けて読む。増大項の比較を元の可換四角形の写像で示す際の法則で、新しい全複体や H の定義を導入しない。
+
+
+## G4：二重 cone の交換の複体の同型と零次項拡張
+
+`CechDoubleConeSwap`（103行）：`cechDoubleConeSwapTerm_differential` は、実際の可換四角 h:f≫b=a≫g に対し、前記の交換の成分と二つの cone の微分が可換であること。`cechDoubleConeSwapMap` はその実際の余鎖写像、`cechDoubleConeSwapIso` は同じ交換を逆に用いた複体の同型。零次・一次・それ以後を分け、可変次数の微分は CochainComplex.of_d を明示して読んだ。
+
+`CechZeroTermExtensionConeAcyclic`（95行）：`cechZeroTermExtensionMap_cone_acyclic` は元の比較の cone の完全性と追加係数の全単射性から、実際の零次項拡張の比較の cone の完全性を返す。追加係数の単射性を零次で、全射性を一次の境界で使い、それ以後は元の cone の微分の完全性へ戻す。
+
+各単独検証、下書きと本体のソース完全一致、対象と入口のビルド5,155・5,156ジョブ、所有元による各小監査6・30宣言（計36）・標準三公理のみ、終了状態0。ログ `2g-zero-term-extension-cone-check-4.log`・`2g-zero-term-extension-cone-native.log`・`2g-zero-term-extension-cone-audit.log` と `2g-cech-double-cone-swap-check-10.log`・`2g-cech-double-cone-swap-native.log`・`2g-cech-double-cone-swap-audit.log`。交換の congr の後の `<;>` について軽微なスタイル警告が2件ある。交換の微分の法則・余鎖写像の構成、および零次項拡張の完全性に限り、既存の cone と同じ局所的な backward.isDefEq.respectTransparency false を使う。追加公理・sorry・既存の型変更・資源制限の引き上げ・200行超の宣言なし。共有鍵 --class impl --wait 3600、待ちは一つ。対象ビルドと小監査は別の鍵の枠で行った。root・下流全ビルド・全体監査なし。
+
+今回2モジュール198行＋入口2行。2g-2 本体4,608行・入口込み4,679行、小監査559宣言・標準三公理のみ。交換による比較の cone の完全性は単独検証まで成功しているが、本体への登録と対象ビルド・監査は次の束。増大項を含めた全複体の比較と、G4・G5 の幾何的な接続は未完。見込み約5,500〜12,000行・外枠16,000行は不変。停止点2g-2ではない。
+
+一覧：済み1／全体3（うち追加0）。
