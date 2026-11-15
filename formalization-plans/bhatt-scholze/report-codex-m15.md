@@ -15165,3 +15165,119 @@ M15・drafts・main・⑤aの既存ファイル・Interfaceは変更していな
 
 G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み11,754行。
 M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
+
+## §108 G01：元のnerveの退化と、実細分の非退化性の必要十分条件（11-15）
+
+### 108.1 検証済みの追加
+
+追加は **3ファイル278行・明示宣言8**。累計 **103ファイル12,032行・明示宣言660**。
+NerveCollapsedEdges.lean は93行・2宣言、WalkingAdjunctionIsoDegeneracy.lean は83行・3宣言、
+WalkingAdjunctionRefinementNondegenerateIff.lean は102行・3宣言。
+個々の宣言・証明は200行以下、新規Leanの行長は100文字以下。
+G01の同じ実細分・実辺・退化の照合と、既存の十分条件の逆方向、その証明の分割であり、一覧IDは追加しない。
+
+任意の圏の実鎖で、一辺が対象の等式による恒等射なら、その辺の面を退化させて元の実関手を回収する。
+一点だけを後続点へ動かす実順序関手への比較を構成し、全実射の自然性を使って関手の等式を示した。
+従って元のnerveの宇宙持ち上げでも退化になる。
+四つのwalking Homでは、実同型の点の個数と値の保存から、実同型が対象の等式による恒等射になることを示した。
+これを使い、元の全単体が非退化であることと、全ての隣接実辺が非同型であることの同値を検証した。
+退化側の逆方向では、実退化の像から同型な隣接辺を取り出している。
+
+実併合の細分が非退化なら、挿入右辺との照合から実残余射が非同型であることを回収した。
+残余射の同型性の既存の全点表示と合わせ、元の単体が非退化のもとで、
+実細分の非退化性は、元の指定辺が一つだけの併合の全点条件でないことと同値になる。
+実際に選んだ最初の併合にも適用し、最初の実細分について同じ必要十分条件を得た。
+位置・同型性・非退化性の新しい証人を入力欄として仮定してはいない。
+
+### 108.2 型と未完の境界
+
+原典はRiehl–Verity §3.1・§4.1–§4.2、HA Proposition 4.7.3.3、
+Kerodon Remark 6.2.1.4（Tag 02EN）。追加の型は以下。
+
+```lean
+lemma nerve_sigma_delta_of_eqToHom_edge {C : Type u} [Category.{v} C] {n : ℕ}
+    (F : ComposableArrows C (n + 1)) (j : Fin (n + 1))
+    (hobj : F.obj j.castSucc = F.obj j.succ)
+    (hedge : F.map (homOfLE (Fin.castSucc_le_succ j)) = eqToHom hobj) :
+    (nerve C).σ j ((nerve C).δ j.castSucc F) = F
+
+lemma uliftNerve_degenerate_of_eqToHom_edge {C : Type u} [Category.{v} C] {n : ℕ}
+    (F : ComposableArrows C (n + 1)) (j : Fin (n + 1))
+    (hobj : F.obj j.castSucc = F.obj j.succ)
+    (hedge : F.map (homOfLE (Fin.castSucc_le_succ j)) = eqToHom hobj) :
+    ULift.up F ∈ (SSet.uliftFunctor.{w, max u v}.obj (nerve C)).degenerate (n + 1)
+
+lemma walkingAdjunctionIsIso_eqToHom {X Y : WalkingAdjunctionPoint}
+    {A B : walkingAdjunctionHom X Y} (f : A ⟶ B) [IsIso f] :
+    ∃ h : A = B, f = eqToHom h
+
+lemma walkingAdjunctionHomShape_degenerate_of_isIso {n : ℕ} {X Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom X Y) (n + 1)) (j : Fin (n + 1))
+    [IsIso (H.map (homOfLE (Fin.castSucc_le_succ j)))] :
+    ULift.up H ∈ (WalkingAdjunctionHomShape.{u} X Y).degenerate (n + 1)
+
+lemma walkingAdjunctionHomShape_nondegenerate_iff_no_isIso {n : ℕ}
+    {X Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom X Y) (n + 1)) :
+    ULift.up H ∈ (WalkingAdjunctionHomShape.{u} X Y).nonDegenerate (n + 1) ↔
+      ∀ j : Fin (n + 1), ¬ IsIso (H.map (homOfLE (Fin.castSucc_le_succ j)))
+
+lemma walkingAdjunctionBottomMergeResidual_not_isIso_of_nondegenerate
+    {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom .minus Y) (n + 1)) (k : Fin (n + 1))
+    (m : ℕ) (hA : walkingAdjunctionOrdinalCard .minus Y (H.obj k.castSucc) = m + 2)
+    (h1 : ∀ i : Fin (walkingAdjunctionOrdinalCard .minus Y (H.obj k.castSucc)),
+      i.val = 1 → (walkingAdjunctionOrderHom (H.map
+        (homOfLE (Fin.castSucc_le_succ k))) i).val = 0)
+    (hnd : ULift.up (walkingAdjunctionBottomMergeRefinement H k m hA h1) ∈
+      (WalkingAdjunctionHomShape.{u} .minus Y).nonDegenerate (n + 2)) :
+    ¬ IsIso (walkingAdjunctionBottomMergeResidual
+      (H.map (homOfLE (Fin.castSucc_le_succ k))) m hA h1)
+
+lemma walkingAdjunctionBottomMergeRefinement_nondegenerate_iff_not_pure
+    {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom .minus Y) (n + 1)) (k : Fin (n + 1))
+    (m : ℕ) (hA : walkingAdjunctionOrdinalCard .minus Y (H.obj k.castSucc) = m + 2)
+    (h1 : ∀ i : Fin (walkingAdjunctionOrdinalCard .minus Y (H.obj k.castSucc)),
+      i.val = 1 → (walkingAdjunctionOrderHom (H.map
+        (homOfLE (Fin.castSucc_le_succ k))) i).val = 0)
+    (hnd : ULift.up H ∈ (WalkingAdjunctionHomShape.{u} .minus Y).nonDegenerate (n + 1)) :
+    (ULift.up (walkingAdjunctionBottomMergeRefinement H k m hA h1) ∈
+      (WalkingAdjunctionHomShape.{u} .minus Y).nonDegenerate (n + 2)) ↔
+    ¬ (walkingAdjunctionOrdinalCard .minus Y (H.obj k.succ) = m + 1 ∧
+      ∀ i : Fin (walkingAdjunctionOrdinalCard .minus Y (H.obj k.castSucc)),
+        (walkingAdjunctionOrderHom (H.map (homOfLE (Fin.castSucc_le_succ k))) i).val =
+          i.val - 1)
+
+lemma walkingAdjunctionFirstRefinement_nondegenerate_iff_not_pure
+    {n : ℕ} {Y : WalkingAdjunctionPoint} (H : Fin (n + 2) ⥤ walkingAdjunctionHom .minus Y)
+    (ha : WalkingAdjunctionLevelIsAtomic (X := ⟨.minus⟩) (Y := ⟨Y⟩) H)
+    (hnd : ULift.up H ∈ (WalkingAdjunctionHomShape.{u} .minus Y).nonDegenerate (n + 1)) :
+    let k := walkingAdjunctionFirstBottomMergeIndex H
+      (walkingAdjunctionAtomic_endpoint_cards H ha).2 hnd
+    let m := walkingAdjunctionOrdinalCard .minus Y (H.obj k.castSucc) - 2
+    (ULift.up (walkingAdjunctionFirstRefinement H ha hnd) ∈
+      (WalkingAdjunctionHomShape.{u} .minus Y).nonDegenerate (n + 2)) ↔
+    ¬ (walkingAdjunctionOrdinalCard .minus Y (H.obj k.succ) = m + 1 ∧
+      ∀ i : Fin (walkingAdjunctionOrdinalCard .minus Y (H.obj k.castSucc)),
+        (walkingAdjunctionOrderHom (H.map (homOfLE (Fin.castSucc_le_succ k))) i).val =
+          i.val - 1)
+```
+
+原典の文字列表示との全比較とfillable条件の照合、親の一意性、始点plusの親、
+その他の面とのfiltrationの両立とparental subcomputadのfiltrationは未完。
+元のQCatAdjunctionからの全coherentな延長、水平反対の向きの全比較、
+同じF≫U・単位・余単位・HAモデルとの照合も未完である。G01の済みは0、G02以降も未完を維持する。
+
+### 108.3 検証と進み
+
+指定のwith_build_lock.sh --class impl --wait 3600、最大240秒の短い枠で対象ビルドを確認した。
+追加8根の小さい公理監査も通り、入力名と出力名が一致し、依存はpropext・Classical.choice・Quot.soundのみ。
+最終の固定コマンドは対象ビルドと監査を連続して実行し、外側の終了0も確認した。
+最終対象：SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionRefinementNondegenerateIff:olean。
+入力・根・監査全出力・対象ビルドログは
+[g12-isomorphic-edges-audit-2026-11-15/](g12-isomorphic-edges-audit-2026-11-15/)に保存した。
+M15・drafts・main・⑤aの既存ファイル・Interfaceは変更せず、全体ビルド・大きい監査は行っていない。
+
+G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み12,032行。
+M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
