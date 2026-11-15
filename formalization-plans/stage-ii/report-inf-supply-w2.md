@@ -14733,3 +14733,108 @@ theorem strictBETotJointSourceFiberPairing_eq (P : strictBETotJointHomIndex A) :
 登録候補：SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.SimplicialElementsFiberInclusion、およびSerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceFiberElements。
 
 この検収直後に調整役からtensorFrameHomIso_pointの集約時の重複を通知された。316の小監査は両定義を同時importする検査ではなかったため、これを検出できていない。次の修正ではmainの既存の定義と同時にimportし、宣言名の突合も行う。316の成功を集約での重複不存在の根拠としては使わない。
+
+## 243. 集約時の重複定理の修正と宣言名の突合（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 23（うち追加 11）。
+
+調整役から通知されたtensorFrameHomIso_pointの重複を修正した。TensorConeUnitPointでの宣言を削除し、FrameConeClassesの既存lemmaを再公開する互換入口だけを残した。StrictDiagramTotUniversalProbePointComparisonはFrameConeClassesを直接importし、既存lemmaの暗黙引数Yを呼び出し側で明示する。既存FrameConeClasses側は変更していない。互換入口には宣言がないので、小監査ではこのモジュールの宣言数0を明示的に要求し、補題の実際の定義元がFrameConeClassesであることも検査する。
+
+宣言名の突合は、自分のIS-W2のモジュール一覧と枝で追加したLeanファイル548本（1,728個の名前付き宣言）を対象に、main 7e03e17a7 のEInfinity配下3,749本・13,399個の名前付き宣言と行った。namespace・section・endを追跡し、コメントを除いてdef・lemma・theorem・abbrev等と名前付きinstanceを走査し、同じ完全名が異なるファイルにあるものを検出した。同一ファイルでmainと共通の宣言は重複と数えない。この修正後の対main EInfinityの衝突は0件。
+
+自分のファイル同士にも同じ走査を行い、HAのnormalizedMooreReverse_zero_inclusionをもう1件検出した。NormalizedMooreReverseZeroとNormalizedMooreReverseEvaluationに同じ完全名・同じ型の定理があった。Zero側をEvaluationの再公開だけの互換入口にし、既存Evaluation側は変更しない。直接importerのNormalizedMooreReverseExtendZeroも対象ビルドに含める。修正後の自分の新規ファイル同士の衝突は0件。HAの補題の定義元がNormalizedMooreReverseEvaluationであり、Zero側の宣言数が0であることも小監査で検査する。走査結果は/private/tmp/isw2-declaration-collision-scan.jsonと/private/tmp/isw2-declaration-collision-scan-after-fix.jsonに保存した。
+
+これは名前付き宣言をテキスト走査する確認であり、全importの同時ビルドやLeanの生成する内部名の検査とは区別する。小監査には既存の定義元を明示的にimportして、通知された二つの名前について実際の同時importと定義元も検証する。既存の公式入口・監査、⑤a、mainは変更しない。
+
+317の対象ビルド・小監査は--class impl --wait 3600で同じ整理券のまま待機する。待機中でpayloadのzshがまだ起動していないことをpsで確認してから、追加で見つかったHAの直接importerも同じジョブへまとめた。追加の整理券や鍵の取り直しは行っていない。結果が通るまではこの修正コードをコミットしない。
+
+## 244. R03dの係数移送の下書き：元の固定標的roofの反対圏へ（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 23（うち追加 11）。この下書きは対象ビルド前なので検証済みの行数・モジュール数には加えない。
+
+重複修正の対象ビルドを待つ間に、既存のULiftHom.equiv、宇宙持ち上げのelementsEquivalence、固定標的のelementsCostructuredEquivalence.rightOpを合成した。元の通常の要素圏は固定標的のroofの反対圏に移る。次数・元の実射のラベル・単体作用素を、同じ関手の厳密な式で回収する。既存の同値と係数移送の合成則であり、数学的な一覧項目を増やさない。見込み80〜150行。元のnative fiber射の弱同値性はまだ結論しない。
+
+UniverseLiftElementsのoleanが未生成だったので、その既存ソースを一時検査へ含めた。別モジュールの宇宙変数vの再宣言が一時結合ファイルだけで重なったため、その一時ファイルの宣言を整理した。最終個別検査37848は終了0。対象ビルドと小監査は、優先する重複修正を検収した後に行う。このLean下書きは重複修正のコミットに含めない。
+
+### 244.1 型
+
+共通入力は `{C : Type u} [Category.{v} C] (Q : C ⥤ SimplexCategory ⥤ C) (R : C ⥤ C)`。
+
+#### LiftedSourceFrameFiberRoof（53行）
+
+```lean
+def liftedSourceFrameFiberRoofEquivalence (P : liftedSourceFrameIndex (C := C)) :
+    (simplicialElementsCatDiagram (liftedSourceFrameCoefficients Q R)).obj P ≌
+      (CostructuredArrow (Q.obj (AsSmall.down.obj P).1.unop)
+        (R.obj (AsSmall.down.obj P).2))ᵒᵖ
+
+theorem liftedSourceFrameFiberRoofEquivalence_degree (P : liftedSourceFrameIndex (C := C))
+    (s : (simplicialElementsCatDiagram (liftedSourceFrameCoefficients Q R)).obj P) :
+    (((liftedSourceFrameFiberRoofEquivalence Q R P).functor.obj s).unop).left =
+      s.obj.unop
+
+theorem liftedSourceFrameFiberRoofEquivalence_value (P : liftedSourceFrameIndex (C := C))
+    (s : (simplicialElementsCatDiagram (liftedSourceFrameCoefficients Q R)).obj P) :
+    (((liftedSourceFrameFiberRoofEquivalence Q R P).functor.obj s).unop).hom =
+      s.val.down
+
+theorem liftedSourceFrameFiberRoofEquivalence_operator (P : liftedSourceFrameIndex (C := C))
+    {s t : (simplicialElementsCatDiagram (liftedSourceFrameCoefficients Q R)).obj P}
+    (f : s ⟶ t) :
+    (((liftedSourceFrameFiberRoofEquivalence Q R P).functor.map f).unop).left =
+      f.down.hom.unop
+```
+
+## 245. 同じroofのラベルと元のnative pairingのラベルを照合（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 23（うち追加 11）。
+
+§244の同じ既存同値の合成をBEの同じ全パラメータへ特殊化した。同じroofの射のラベルが、元のstrictBETotJointSourceFiberElementsを経由してnative pairingへ渡したsourceFrameArrowValueと厳密に等しい。次数も同じ元のHom単体の次数である。既存の係数移送・同値の合成則の照合として型を記録し、数学的な一覧項目を増やさない。一般版と合わせた一時個別検査81098は終了0。元のnative fiber射自身の弱同値性はなお未完了。
+
+優先する重複修正の318はまだ鍵の順番待ちで、psによりpayload未起動を確認した。同じジョブへこの二本の対象と小監査を追加した（整理券の追加・取り直しなし）。対象ビルドと監査が通るまでは、この二本もコミットしない。重複修正とこの係数移送は別コミットにする。追加の宣言名はgit grepでもmainのEInfinity配下に存在しないことを確認した。
+
+### 245.1 型（共通入力 `(A : Type u) [CommRing A]`）
+
+#### StrictDiagramTotJointSourceFiberRoof（58行）
+
+```lean
+def strictBETotJointSourceFiberRoofEquivalence (P : strictBETotJointHomIndex A) :
+    (simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P ≌
+      (CostructuredArrow ((strictBETotJointSourceFrame A).obj (AsSmall.down.obj P).1.unop)
+        ((rightFrameReplacement (rightFrameFamily A)).obj (AsSmall.down.obj P).2))ᵒᵖ
+
+theorem strictBETotJointSourceFiberRoofEquivalence_degree (P : strictBETotJointHomIndex A)
+    (s : (simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P) :
+    (((strictBETotJointSourceFiberRoofEquivalence A P).functor.obj s).unop).left =
+      s.obj.unop
+
+theorem strictBETotJointSourceFiberRoofEquivalence_pairingValue
+    (P : strictBETotJointHomIndex A)
+    (s : (simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P) :
+    (((strictBETotJointSourceFiberRoofEquivalence A P).functor.obj s).unop).hom =
+      FrameHom.sourceFrameArrowValue (strictBETotJointSourceFrame A)
+        (rightFrameReplacement (rightFrameFamily A))
+        ((strictBETotJointSourceFiberElements A P).obj s)
+```
+
+## 246. 調整役への重複修正の検収報告（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 23（うち追加 11）。
+
+依頼されたtensorFrameHomIso_pointの重複を削除した。TensorConeUnitPointはFrameConeClassesを再公開する宣言0の互換入口になり、StrictDiagramTotUniversalProbePointComparisonは既存lemmaを直接使う。Kᵒᵖ・重み・frame・元の比較射と暗黙のYを明示して既存lemmaを取り、その成分表示をIso.app_homで合わせた。既存FrameConeClassesは変更していない。途中の317ではYだけを明示した呼び出しでSmallCategoryの推論に失敗し、引数を明示した後は成分表示の差も修正した。最終個別検査7586は終了0。
+
+同名宣言の追加の確認で見つけたHAのnormalizedMooreReverse_zero_inclusionも同様に修正した。NormalizedMooreReverseZeroはNormalizedMooreReverseEvaluationを再公開する宣言0の互換入口となり、既存Evaluation側の証明を使う。直接importerのNormalizedMooreReverseExtendZeroも対象ビルドに含めた。一時結合検査48967は終了0。既存補題の型と内容は維持し、G10の完了項目を弱めていない。
+
+最終の全宣言名走査はmain 7f52c5cd1を対象とし、検査時点の自分の549本・1,732個の名前と、main EInfinityの3,745本・13,373個の名前を照合して、異なるファイル間の衝突0件。その後に追加したBEのroof特殊化の3宣言もgit grepでmainに存在しないことを確認した。自分の550本・1,735個の名前の最終の内部照合も衝突0件。これらはテキストによる名前付き宣言の確認であり、生成される内部名を含むrootの全ビルドとは区別する。
+
+318の最終結果：鍵付き対象ビルド12,245 jobs成功、小監査188モジュール・1,318宣言、標準三公理のみ。実ハンドル88868・終了0、鍵返却済み。--class impl --wait 3600、1700秒guardで同じ一枚の整理券を使った。待機中に個別検査を通過したR03dの二本も同じ対象と監査へまとめた。BEの自分の184本は1,311宣言、残りは既存FrameConeClassesとHAの既存・直接importerの4本である。
+
+小監査は二つの互換入口の宣言数が0であることに加え、tensorFrameHomIso_pointの定義元がFrameConeClasses、normalizedMooreReverse_zero_inclusionの定義元がNormalizedMooreReverseEvaluationであることを明示的に要求して成功した。従って旧い重複宣言の定義元を取り違えた結果を成功としていない。sorry・独自公理0、計算上限の変更なし。既存の定義元二本・公式入口・公式監査・mainは変更していない。
+
+修正対象（この修正のコミットに含む）：
+
+- SerrePositivity/EInfinity/HomotopyWeight/TensorConeUnitPoint.lean
+- SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotUniversalProbePointComparison.lean
+- SerrePositivity/HomologicalAlgebra/NormalizedMooreReverseZero.lean
+
+rootとEInfinity集約の全ビルドは実行していない。取り込みの再検収を調整役にお願いする。二つの互換入口は登録済み・登録予定の経路を維持するが、自身の宣言数は0となる。R03dで追加した二本は次節の別コミットとして記録する。

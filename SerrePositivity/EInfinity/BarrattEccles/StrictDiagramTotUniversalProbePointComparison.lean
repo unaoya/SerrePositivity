@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotUniversalProbeCone
 public import SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotTensorFrameProperties
-public import SerrePositivity.EInfinity.HomotopyWeight.TensorConeUnitPoint
+public import SerrePositivity.EInfinity.HomotopyWeight.FrameConeClasses
 
 /-!
 概要：同じBE tensor frameの零次Homが普遍probe錐の同じ標準点に写る。
@@ -35,7 +35,12 @@ theorem strictBETotTensorFrameConeIso_universalPoint
         ((HomotopyWeight.tensorFrameZeroIso Kᵒᵖ
           (HomotopyWeight.framedLimitWeight K) (rightFrameDiagram A K F)).hom ≫
             (framedLimitProbeComparison A ((framedLimitFunctor A K).obj F)).op) = _
-  rw [HomotopyWeight.tensorFrameHomIso_point]
+  have hp := HomotopyWeight.tensorFrameHomIso_point Kᵒᵖ
+    (HomotopyWeight.framedLimitWeight K) (rightFrameDiagram A K F)
+    (Y := op (framedLimitProbe A ((framedLimitFunctor A K).obj F)))
+    (framedLimitProbeComparison A ((framedLimitFunctor A K).obj F)).op
+  simp only [Iso.app_hom] at hp
+  rw [hp]
   unfold strictBETotUniversalProbeConePoint strictBETotUniversalProbeWeightedCone
     strictBETotUniversalWeightedCone
   rw [Adjunction.homEquiv_unit]
