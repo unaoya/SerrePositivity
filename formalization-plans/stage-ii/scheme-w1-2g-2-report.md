@@ -534,3 +534,11 @@ B1 の `isCechExact_of_comp` の追加条件は、細分した被覆 C/A 自身�
 検証済み実測の本体1,820行・入口込み1,851行、小監査188宣言はまだ更新しない。これらを個別に対象ビルド・監査まで確認してからまとめて記録する。G3 の残り・G4〜G5 は引き続き未完。
 
 一覧：済み0／全体3（うち追加0）。
+
+
+S04 の係数移送のチャートの法則の分割（着手前、前記200〜500行の内数、50〜100行）：次数一 f∈G1 に対し `B ⊗[R] Away G f ≃ₐ[B] Away (fun n ↦ (G n).baseChange B) (1⊗f)` を、二つの脱斉次化の同型と Mathlib `Algebra.TensorProduct.tensorQuotientEquiv` で作る。延長したイデアル `(f−1)` が `(1⊗f−1)` である式も供給する。正規化した元の純テンソルの像を比較し、任意の係数環 B での標準開の比較へ使う。B の flat 性・Noether 性は不要。これは Proj の既存の係数移送のチャートの法則で、最終の主張や主項目は追加しない。
+
+
+待ち時間の係数移送の下書き `scheme-drafts/HomogeneousDegreeOneBaseChange.lean`（49行）では、`degreeOneDehomogenizationIdeal_baseChange` と `homogeneousDegreeOneBaseChangeEquiv` の型・合成を記述した。Mathlib の `Algebra.TensorProduct.tensorQuotientEquiv` と `Ideal.quotientEquivAlgOfEq` を使い、標準開の任意の係数移送を脱斉次化の商へ戻す。未検証なので drafts のままコミットせず、自然性の式と Proj の貼り合わせも依然として未証明。検証順は現在待っている外延性 → 本体の対象ビルド → 4本の小監査 → チャートの二つの合成と同型 → 重なりとこの係数移送、を維持する。
+
+一覧：済み0／全体3（うち追加0）。
