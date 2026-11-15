@@ -678,3 +678,151 @@ S2 完了の証拠：
 S3 は CechPowerMaps の座標計算だけ、S8 は離散前層・その全埋め込み・空間値層化の存在だけ。
 S3 の cofinality、S8 の一般重み・余極限を極限へ送る性質・局所同値、S1 の残り・S5・S6 は未完。
 SpacePresheafYoneda は未検証の作業木に残す。
+
+### S3：元の Čech comma の収縮関手（未検証）
+
+一覧：済み 2／全体 8（うち追加 0、済み：S2・S4、S7は後続）。
+
+`CechCommaPrefix.lean`、S3の cofinality の証明分割：
+```lean
+abbrev CechComma d V := CostructuredArrow d.obj.rightOp (op V)
+def cechCommaPrefixLift d (r : V ⟶ U) (a : CechComma d V) : V ⟶ d.obj.obj (op ⦋a.left.len+1⦌)
+lemma cechCommaPrefixLift_proj : cechCommaPrefixLift d r a ≫ d.proj _ i = Fin.cons r (fun j ↦ a.hom.unop ≫ d.proj _ j) i
+lemma cechCommaPrefixLift_map : cechCommaPrefixLift d r b ≫ d.obj.map (simplexPrefixMap f.left).op = cechCommaPrefixLift d r a
+def cechCommaPrefix d (r : V ⟶ U) : CechComma d V ⥤ CechComma d V
+```
+③-b の既存の simplexPrefixMap・恒等・合成則を再利用する。
+次は恒等・根からの二つの自然変換、既存の contractionCospan、Quillen A に接続する。
+対象・射の宇宙は切り離したまま。cofinalityの原典の結論を仮定に追加しない。
+
+### S3：同じ comma の収縮の二変換（未検証）
+
+一覧：済み 2／全体 8（うち追加 0、済み：S2・S4、S7は後続）。
+
+`CechCommaContraction.lean`、S3の証明分割：
+```lean
+def cechCommaRoot d (r : V ⟶ U) : CechComma d V
+def cechCommaToPrefix d r : 𝟭 (CechComma d V) ⟶ cechCommaPrefix d r
+def cechCommaRootToPrefix d r : (Functor.const _).obj (cechCommaRoot d r) ⟶ cechCommaPrefix d r
+```
+weak contractibility には既存の contractionCospan を使う。
+同じ宇宙を要求する nerve API への接続では AsSmall へ輸送し、
+C の対象・射の宇宙を暗黙に同一視しない。
+
+### S3：収縮の小さい模型への輸送（未検証）
+
+一覧：済み 2／全体 8（うち追加 0、済み：S2・S4、S7は後続）。
+
+`CechCommaSmallContraction.lean`、同じ収縮と二変換の係数移送・S3の証明分割：
+```lean
+abbrev CechCommaSmall d V := AsSmall.{max u v} (CechComma d V)
+def cechCommaSmallPrefix d r : CechCommaSmall d V ⥤ CechCommaSmall d V
+def cechCommaSmallToPrefix d r : 𝟭 (CechCommaSmall d V) ⟶ cechCommaSmallPrefix d r
+def cechCommaSmallRootToPrefix d r : (Functor.const _).obj (AsSmall.up.obj (cechCommaRoot d r)) ⟶ cechCommaSmallPrefix d r
+lemma cechCommaSmall_isWeaklyContractible (r : V ⟶ U) : IsWeaklyContractible (nerve (CechCommaSmall d V))
+```
+既存の contractionCospan を実際に使う。まだ原典の cofinality 自体は未完。
+
+### S3：Quillen A の小さい模型（未検証）
+
+一覧：済み 2／全体 8（うち追加 0、済み：S2・S4、S7は後続）。
+
+`CechCofinalityModel.lean`、同じ図式の宇宙比較と S3 の証明分割：
+```lean
+def cechSmallFunctor d : AsSmall.{max u v} SimplexCategory ⥤ AsSmall.{0} Cᵒᵖ
+lemma cechSmallFunctor_nerve_isLeftCofinal (hU : CategoryTheory.IsWeaklyTerminal U) :
+  IsLeftCofinal (nerveMap (cechSmallFunctor d))
+```
+既存の AsSmallComma.equivalence、nerveQCatEquivalence、NerveLeftQuillenA を使用。
+元の cechShape・cechShapeLarge に戻す厳密な形状の照合と指定錐への適用は後続。
+
+### S3：共通模型の持ち上げ先（未検証の一般化）
+
+一覧：済み 2／全体 8（うち追加 0、済み：S2・S4、S7は後続）。
+
+小さい模型での cofinality は build.log（2,123 jobs、2宣言の小監査）で一度通った。
+元の E の宇宙の形状へ戻すため、未コミットの CechCommaSmallContraction と
+CechCofinalityModel の共通持ち上げ先を `max u v w` に一般化して再検証する。
+元の対象・射の小ささは追加せず、CechSmallFunctor は
+`AsSmall.{max u v w} SimplexCategory ⥤ AsSmall.{w} Cᵒᵖ`、
+`cechSmallFunctor_nerve_isLeftCofinal` も同じ任意 w の型とする。
+既存の本体・コミット済み宣言は変更しない。
+
+### S3：元の二つの Čech 形状へ戻す（未検証）
+
+一覧：済み 2／全体 8（うち追加 0、済み：S2・S4、S7は後続）。
+
+`CechShapeCofinality.lean`、同じ図式の宇宙比較とS3の証明分割：
+```lean
+def nerveAsSmallMaxIso (D : Type u) [Category.{v} D] : nerve D ≅ nerve (AsSmall.{max u v} D)
+lemma cechShape_isLeftCofinal (hU : CategoryTheory.IsWeaklyTerminal U) : IsLeftCofinal (cechShape d)
+lemma cechShapeLarge_isLeftCofinal (hU : CategoryTheory.IsWeaklyTerminal U) : IsLeftCofinal (cechShapeLarge d)
+```
+同じ矢の同型で戻し、旧模型の cofinality を入力には残さない。
+
+### S3 の型の照合で見つかった段0の表の誤り（11-15、判断待ち）
+
+一覧：済み 2／全体 8（うち追加 0、済み：S2・S4、S7は後続）。
+
+段0の S3 の表で、元 drafts より強い等式を私が書いていた。
+元 `drafts/Sheaves/CechConerveLimit.lean` の `exists_limitCone_of_cech` と large 版は
+```lean
+∃ c : JoinCone F, IsLimitCone c ∧ c.vertex = t.vertex
+```
+だが、段0の表は `restrictJoinCone c (cechShape d) = t` という厳密な延長を要求していた。
+一般の cofinality は錐圏の同値を与えるが、非単射の形状に沿う任意の錐の厳密な延長は与えない。
+元 drafts の同じ頂点の型へ訂正し、制限した錐と t の比較は同値で保持する案について
+調整役へ確認を出した。厳密な等号を結論する部分は保留。S3 は完了に数えない。
+
+判断によらない前向きの残り `CechLimitRestriction.lean`（未検証）：
+```lean
+theorem isLimitCone_iff_restrict_cech hU d F c :
+  IsLimitCone c ↔ IsLimitCone (restrictJoinCone c (cechShape d))
+theorem hasLimit_iff_cech hU d F : HasLimit F ↔ HasLimit (cechShape d ≫ F)
+theorem isLimitCone_iff_restrict_cech_large hU d F c :
+  IsLimitCone c ↔ IsLimitCone (restrictJoinCone c (cechShapeLarge d))
+theorem hasLimit_iff_cech_large hU d F : HasLimit F ↔ HasLimit (cechShapeLarge d ≫ F)
+```
+
+### S8：同値な局所形状への移送の法則（未検証）
+
+一覧：済み 2／全体 8（うち追加 0、済み：S2・S4、S7は後続）。
+
+`Kerodon/LimitsAndColimits/LimitsAndColimits/EquivalentShapeLimitExistence.lean`：
+```lean
+lemma hasLimit_of_equivalentRestriction (f : A ⟶ B) (hf : IsQCatEquivalence f)
+  (F : B ⟶ X) (hF : HasLimit (f ≫ F)) : HasLimit F
+```
+既存の余極限側の法則の双対。既存の因子分解・同値な単射への制限定理を使い、
+添字に単射性を足さない。S8の小さい元の圏と右 Kan 局所形状の移送に使う。
+
+### S8：一般重みの右 Kan 局所極限（未検証）
+
+一覧：済み 2／全体 8（うち追加 0、済み：S2・S4、S7は後続）。
+
+`NativeWeightedSections.lean`、S8の一般重みの存在の証明分割：
+```lean
+lemma nativeWeightedSectionsDiagram_hasLimit hE O P :
+  HasLimit (rightKanDiagram (opFunctor.map (yonedaInfinityMap A)) O (opObjEquiv.symm (functorVertex P)))
+lemma exists_nativeWeightedSections hE O :
+  ∃ G ε, IsRightKanExtension (opFunctor.map (yonedaInfinityMap A)) O G ε
+```
+既存の小さい元の圏との比較 presheafElementsRightKanComparison、
+PresentableSmallLimits、RightExistence を使う。原典の右 Kan 延長を入力にしない。
+この後、固定した oppositeSpaceYoneda への全関手比較と離散重み・保存性へつなぐ。
+
+### S3 の検証済み部分と S8 の追加入口（11-15）
+
+一覧：済み 2／全体 8（うち追加 0、済み：S2・S4、S7は後続）。
+
+検証済み全体38本・2399行、233宣言、標準三公理のみ。
+追加の SpacePresheafYoneda 5宣言、Čechの収縮と共通宇宙模型25宣言、
+元の形状の cofinality 7宣言、指定極限の制限と同値な添字での存在6宣言。
+ログ `/tmp/is-w1/space-yoneda/build.log`、`/tmp/is-w1/cech-cofinality/build-2.log`、
+`/tmp/is-w1/cech-native/build.log`、`/tmp/is-w1/cech-limits/build.log`。
+すべて対象ビルド・小監査成功、プロセス終了・鍵解放確認済み。
+既存宣言・計算上限の変更なし。
+
+S3 の未完は上記の型の確認と、確認後の同じ頂点をもつ逆向きの錐・比較。
+一般の cofinality を仮定に残さず、弱終性と指定 CechNerveData から両方の元の形状の
+cofinality を実際に証明した。S8 の NativeWeightedSections は未検証の作業木に残す。
