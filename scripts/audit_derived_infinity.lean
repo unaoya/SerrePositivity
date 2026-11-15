@@ -8380,6 +8380,61 @@ example : SSet.Quasicategory
   `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramValueKanComparison,
   `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramValueSectionsComparison]
 
+@[noinline] private def derivedAuditExpectedChunk44 : Array Lean.Name := #[
+  `SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanAdjunctionComparison,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanAdjunctionUnit,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanAugmentationConeHom,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanAugmentationHom,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanAugmentationIsoTransport,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanColimitAugmentation,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanDoubleOpposite,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanDoubleOppositeWeight,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanEndFibration,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanFrameAugmentation,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanFrameAugmentationZero,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanFrameCofibrancy,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanOverTransformation,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanOverTransformationNaturality,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanParameterNaturality,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanParameterizedRealization,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanRealizationAnodyne,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanRealizationConstant,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanRealizationHom,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanRealizationHomNaturality,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanRealizationMappingKan,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanRealizationReedy,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanTensorLifting,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanTerminalRealization,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanTerminalWeightDiagram,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanTerminalWeightLocalization,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanTransformationCylinder,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanTransformationLocalization,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanTransformationRealization,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanWeightCofibrancy,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanWeightLifting,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.ConstantWeightDegreeNaturality,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.ElementsBousfieldKanWeight,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.ElementsCopower,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.ElementsCopowerAugmentation,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.ElementsCopowerFrames,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.ElementsCopowerIsoEvaluation,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.ElementsCopowerRealization,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.ElementsCopowerWeightedHom,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.ElementsUnderProjection,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.ElementsUnderProjectionIso,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.ElementsUniverseLift,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.FrameBousfieldKanAugmentation,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.FrameBousfieldKanAugmentationFrames,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.FrameBousfieldKanAugmentationPost,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.FrameBousfieldKanReindexing,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.FrameBousfieldKanReindexingComposition,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.FrameBousfieldKanReindexingFrames,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.FrameWeightPostcomposition,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.FrameWeightReindexing,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.FrameWeightReindexingDinaturality,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.WeightedSectionsDoubleOpposite,
+  `SerrePositivity.HomotopicalAlgebra.Simplicial.AnodynePullbackHom]
+
 open Lean in
 run_cmd do
   let env ← getEnv
@@ -8875,7 +8930,8 @@ run_cmd do
     derivedAuditExpectedChunk40 ++
     derivedAuditExpectedChunk41 ++
     derivedAuditExpectedChunk42 ++
-    derivedAuditExpectedChunk43
+    derivedAuditExpectedChunk43 ++
+    derivedAuditExpectedChunk44
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
