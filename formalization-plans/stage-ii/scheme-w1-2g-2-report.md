@@ -1340,3 +1340,29 @@ G3 は完成。G4 は F8 の同じスカラー・実際の構造層の Frobenius
 今回1モジュール73行＋入口1行。新規104モジュール本体6,879行・入口込み6,983行。既存追加25行を含む外枠計数は本体6,904行・入口込み7,008行。新規小監査累計690宣言、既存15宣言は別計上。次は同じ大域スカラーの増大写像をこの実際の図式へ自然に接続し、アフィン conerve と Frobenius 係数の比較、B1 の二重 Čech、Noether 帰納を進める。G4・G5 と停止点2g-2は未完。外枠16,000行は不変。
 
 一覧：済み1／全体3（うち追加0）。
+
+
+大域スカラーと同じ nerve の増大写像の準備（着手前、既存のスカラー・係数移送の法則の内数、70〜150行）：`schemeScalarHom_over` は v:X→Y と iX:X→SpecR、iY:Y→SpecR、v≫iY=iX から iX のスカラーが iY のスカラーの引き戻しであること。`schemeScalarPresheaf_primeCast` は p の R 上の零化から任意の Y→SpecR の全ての開の切断環での零化。`schemeCechNerveScalarHom_naturality` は元の augmentedCechNerve.hom の naturality に前者を渡した式。`schemeCechNervePresheaf_primeCast` は同じ実際の nerve の基底への射から各項の零化を供給する。
+
+有限な添字の順序の補助（着手前、既存の有限集合の同型による移送の内数、20〜45行）：`cechFiniteIndexOrder α` は Fintype.equivFin による既存の順序の引き戻しを使い、toDecidableEq を元の DecidableEq α のままにする。`cechFiniteIndexOrder_decidableEq` はこの投影が元のものに等しいこと（定義上）。既存の LinearOrder を要求する増大写像・F8 の API の型は変更せず、同じ全タプル複体のインスタンスを保って使う。
+
+
+同じ係数関手への増大写像の接続（着手前、既存の増大写像の単位・自然性の内数、65〜140行）：`schemePerfectCechTupleAugmentation f U p hp hR n` は同じ実際の nerve の基底への射と schemeScalarHom に沿う既存の増大写像を、同じタプル複体の零次へ渡す。全ての切断環の標数は schemeCechNervePresheaf_primeCast で元の R から供給し、新しい仮定にしない。`…_cycle` は既存の増大写像のサイクル性。`…_naturality` は元の nerve の増大射の自然性と refinedPullback の増大写像の自然性を、同じ被覆・同じ添字・同じ等号判定で渡した式。有限添字の順序は cechFiniteIndexOrder を使い、既存 API の型を変更しない。
+
+
+同じ増大写像を複体と余単体図式へ渡す分割（着手前、既存の Mathlib の single と増大余単体の法則の内数、80〜170行）：`schemePerfectCechTupleAugmentationHom n` は既存の HomologicalComplex.mkHomFromSingle に上記の増大写像とサイクル性を渡した射。`…_f_zero` はその零次成分、`…_naturality` は同じ全ての nerve の射に自然であること。`schemePerfectCechTupleAugmented` は左辺を同じ R の Frobenius 順極限の次数零の single、右辺を検証済みの係数関手とする既存の CosimplicialObject.Augmented の値。B1 の積の増大図式や二重複体の完全性をこれだけで主張せず、同じ辺を四角形へ接続するための増大軸の供給である。
+
+
+## G4：実際のスカラーと標数から、同じ係数関手の増大写像を供給する
+
+`SchemeCechNerveScalars`（55行）：`schemeScalarHom_over` は基底への射を保つ写像の大域スカラーの自然性。`schemeScalarPresheaf_primeCast` は元の基底の標数から全ての開の切断環の標数を供給する。`schemeCechNervePresheaf_primeCast` は同じ実際の nerve の全項でのこの零化。`schemeCechNerveScalarHom_naturality` は既存の増大射の naturality による同じスカラーの自然性。
+
+`CechFiniteIndexOrder`（33行）：`cechFiniteIndexOrder` は有限集合と Fin の同型に沿う順序の移送で、toDecidableEq を元のものに保つ。compare の整合性も DecidableEq の一意性で供給。`cechFiniteIndexOrder_decidableEq` は投影の定義上の一致。既存の API の型は変更しない。
+
+`SchemePerfectCechTupleAugmentation`（66行）：`schemePerfectCechTupleAugmentation` は同じ実際の nerve の基底への射から、既存の増大写像を同じタプル複体の零次に渡す値。`…_cycle` は同じ複体のサイクルへ入ること。`…_naturality` は同じ全ての nerve の射に沿う自然性。各項の標数を追加仮定にせず、元の R の p の零化から供給し、等号判定も保持する。
+
+単独検証、本体とのソース完全一致、対象と入口のビルド5,190・5,191・5,192ジョブ成功、小監査4・4・5宣言（計13、所有元の非公開・生成宣言を含む）・標準三公理のみ、終了状態0。ログ `2g-scheme-cech-nerve-scalars-check-1.log`・`2g-scheme-cech-nerve-scalars-native.log`、`2g-cech-finite-index-order-check-2.log`・`2g-cech-finite-index-order-native.log`、`2g-perfect-cech-tuple-augmentation-check-1.log`・`2g-perfect-cech-tuple-augmentation-native.log`、`2g-nerve-scalar-augmentation-audit.log`。局所的な backward.isDefEq.respectTransparency false を使用、既定の資源制限。simp/letI の style 警告がある。追加公理・sorry・既存の型変更・200行超の宣言なし。共有鍵 --class impl --wait 3600、待ちは一つ、対象ビルドと監査は別枠。root・下流全ビルド・全体監査なし。
+
+今回3モジュール154行＋入口3行。新規107モジュール本体7,033行・入口込み7,140行。既存追加25行を含む外枠計数は本体7,058行・入口込み7,165行。新規小監査累計703宣言、既存15宣言は別計上。次の既存の single からの射と増大余単体図式は単独検証に成功したが、本体ビルド・監査前なのでこの束には含めない。B1 の二重 Čech・Noether 帰納と G5 は未完、外枠16,000行は不変。
+
+一覧：済み1／全体3（うち追加0）。
