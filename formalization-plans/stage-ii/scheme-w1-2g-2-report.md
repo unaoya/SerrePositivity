@@ -733,3 +733,26 @@ S04 の Segre の大域 pullback の法則の分割（着手前、既存の標�
 今回2モジュール179行＋入口2行。2g-2 本体3,340行・入口込み3,391行、小監査380宣言・標準三公理のみ。大域のファイバー積、有限冪、G4〜G5 は未完。二つの被覆による貼り合わせと因子の被覆条件の下書きは単独検証済みだが、本体の対象ビルドと小監査はまだなので今回のコミットに含めない。全体の見込み約5,500〜12,000行・外枠16,000行は不変。停止点2g-2ではない。
 
 一覧：済み0／全体3（うち追加0）。
+
+
+S04 の Segre の構造射の法則の分割（着手前、既存の射の合成則の内数、70〜150行）：`segreLeftProjection_structureMap`・`segreRightProjection_structureMap` は、各射影と因子のスカラー構造射との合成が、Segre の Proj の元のスカラー構造射に一致する式。全標準開に制限し、構成済みの列・行の代数写像の R 上の可換性と `projectiveAway_structureMap` で照合する。有限ファイバー冪へ帰納する際も同じ Spec R 上の射を保つための法則で、追加の射影性や平坦性の仮定はない。
+
+
+S04 の有限冪の射影の法則の分割（着手前、既存の有限 wide pullback の合成則の内数、70〜150行）：`isPullback_finiteFiberPowerSucc` は、f:X→S の n+2 個の wide pullback から、添字 Fin.succ で定めた末尾の n+1 個への射と、先頭の X への射が、S 上の pullback を与えること。既存の WidePullback.lift の普遍性で示し、同じ π・base を保つ。既存の Čech nerve の n 次が n+1 個の wide pullback なので、この法則で正の有限冪に Segre の表示を帰納できる。増大項 S と面・退化・増大写像は既存の Čech nerve のものに戻す必要があり、単なる再帰的な別の対象だけを最終出力にしない。
+
+
+## G3・S04：実際の Segre の大域のファイバー積と構造射
+
+`PairOpenCoverPullback`（78行）：`opensRange_iteratedPullbackFst` は二つの開の逆像を順に取った像の式。`isPullback_of_pairOpenCover` は、各対の同じ逆像の交叉上の局所 Cartesian 四角形を二つの因子の開被覆で貼り合わせる法則。同じ像の開埋め込みの同型と、既存の開被覆による判定を二回用いる。
+
+`DegreeOneStandardOpen`（53行）：`exists_degreeOne_homogeneous_lift` は全射な次数一評価の斉次原像の存在。`degreeOne_irrelevant_le_span` は表示の生成元のイデアルに irrelevant ideal が入ること。graded な評価の次数分解との可換性から導き、被覆条件を追加仮定にしない。
+
+`SegreProjectivePullback`（76行）：`isPullback_segreProjectiveProjections` は実際の二つの Segre 射影と、二つの因子の元のスカラー構造射が Spec R 上の Cartesian 四角形を与えること。前記の被覆・制限式・逆像・局所 Cartesian 四角形を同じ図式で貼り合わせる。平坦性・Noether 性・非零の座標の仮定はない。
+
+`SegreProjectiveStructureMap`（77行）：`segreLeftProjection_structureMap`・`segreRightProjection_structureMap` は各射影と因子の構造射の合成が Segre の元の構造射に一致すること。全標準開上で R 上の代数写像の可換性を使う。
+
+四本とも単独検証、下書きと本体のソース完全一致、対象と入口だけのビルド5,124ジョブ、小監査30宣言（3・2・12・13）・標準三公理のみ、終了状態0。開被覆の添字は書き換える前に元の型で明示した。`PairOpenCoverPullback` の貼り合わせと Segre の大域の三法則で局所的な backward.isDefEq.respectTransparency false を用い、他の既存ファイルの設定は変えていない。追加公理・sorry・既存宣言の型変更・資源制限の引き上げ・200行超の宣言はない。ログ `2g-pair-open-cover-pullback-check-2.log`・`2g-degree-one-standard-open-check-2.log`・`2g-segre-projective-pullback-check.log`・`2g-segre-projective-structure-check.log`・`2g-segre-projective-pullback-and-structure-native.log`・`2g-segre-projective-pullback-audit.log`。共有鍵 --class impl --wait 3600、待ちは一つ。root・下流全ビルド・全体監査なし。
+
+今回4モジュール284行＋入口4行。2g-2 本体3,624行・入口込み3,679行、小監査410宣言・標準三公理のみ。Segre の大域のファイバー積と元の構造射の比較まで到達。有限ファイバー冪の射影表示、G4、G5 は未完。`FiniteFiberPowerSucc.lean` の58行の下書きは単独検証まで成功したが、本体の対象ビルド・小監査前なので今回のコミットに含めない。全体の見込み約5,500〜12,000行・外枠16,000行は不変。停止点2g-2ではない。
+
+一覧：済み0／全体3（うち追加0）。
