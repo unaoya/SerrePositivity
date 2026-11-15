@@ -446,3 +446,100 @@ S2の単位とRΓ、S3のcofinality、S5、S6、S8は引き続き未完。
 S1の指定切断錐と篩切断写像の可逆性の同値も検証済みだが、
 これをS1全体の完了には数えない。S8の一般重み・局所同値も未完。
 次はS2の同じ反射の単位とRΓ、S1の生成位相の判定に進む。
+
+### S2：同じ反射の単位（未検証）
+
+一覧：済み 1／全体 8（うち追加 0、済み：S4、S7は後続）。
+
+`SheafifyUnit.lean`：
+```lean
+lemma functorVertex_sheafify : functorVertex (sheafify J hJ F) = (sheafificationFunctor J hJ).app _ (functorVertex F)
+def sheafifyUnitHom : FunctorHom F (sheafify J hJ F)
+def sheafifyUnit : SSet.Homotopy F (sheafify J hJ F)
+lemma sheafifyUnitHom_isIso_of_isSheaf (hF : IsSheaf J F) : IsIso (sheafifyUnitHom J hJ F)
+lemma sheafifyUnit_isEquivalence_of_isSheaf (hF : IsSheaf J F) :
+  IsInvertibleEdge (functorEdgeOfSimplicialHomotopy (sheafifyUnit J hJ F))
+```
+反射単位の成分と、前層の頂点の往復の等式による移送。層ではisLocal_inclusionを適用する。
+
+### S2：単位の検証と RΓ の定義（11-15）
+
+一覧：済み 1／全体 8（うち追加 0、済み：S4、S7は後続）。
+
+SheafifyUnit の対象ビルド7,163 jobs成功、6宣言の標準三公理のみの監査成功。
+ログ `/tmp/is-w1/sheaf-unit/build-2.log`。鍵解放確認済み。
+
+次の証明分割（未検証）：`DerivedGlobalSections.lean`。
+```lean
+def derivedGlobalSectionsCone J hJ hE F : JoinCone (sheafify J hJ F)
+lemma derivedGlobalSectionsCone_isLimit : IsLimitCone (derivedGlobalSectionsCone J hJ hE F)
+def derivedGlobalSections J hJ hE F : E _⦋0⦌
+lemma derivedGlobalSectionsCone_vertex :
+  (derivedGlobalSectionsCone J hJ hE F).vertex = derivedGlobalSections J hJ hE F
+```
+
+### S2：単位に沿う指定錐の輸送（未検証）
+
+一覧：済み 1／全体 8（うち追加 0、済み：S4、S7は後続）。
+
+`SheafUnitConeTransport.lean` は次の証明分割。
+```lean
+def sheafifyUnitPrism J hJ F : Δ[1] ⊗ presheafShape C ⟶ E
+lemma sheafifyUnitPrism_zero : prismEndpoint 0 _ ≫ sheafifyUnitPrism J hJ F = F
+lemma sheafifyUnitPrism_one : prismEndpoint 1 _ ≫ sheafifyUnitPrism J hJ F = sheafify J hJ F
+lemma sheafifyUnitPrism_vertex_isInvertible (hF : IsSheaf J F) (x : (presheafShape C) _⦋0⦌) :
+  IsInvertibleEdge (edgeOfSimplex ((sheafifyUnitPrism J hJ F).app _ (id₁, constant x 1)))
+def sheafUnitLimitConeTransport (hF : IsSheaf J F) (d : JoinCone (sheafify J hJ F))
+  (hd : IsLimitCone d) : SpecifiedLimitConeTransport (p := F) (sheafifyUnitPrism J hJ F) d
+lemma derivedGlobalSections_isLimitVertex_of_isSheaf (hF : IsSheaf J F) :
+  ∃ c : JoinCone F, IsLimitCone c ∧ c.vertex = derivedGlobalSections J hJ hE F
+```
+元の単位とそのホモトピー代表を固定。既存の specifiedLimitConeTransport の
+境界と全頂点の可逆性も返す。単なる独立な対象同型への置換はしない。
+
+### S2：射と全パラメータの関手（未検証）
+
+一覧：済み 1／全体 8（うち追加 0、済み：S4、S7は後続）。
+
+`GlobalSectionsFunctor.lean` の証明分割：
+```lean
+lemma exists_globalSectionsFunctor hE :
+  ∃ R : PresheafCat C E ⟶ E, Nonempty (QCatAdjunction (constantFunctorMap (presheafShape C) E) R)
+def globalSectionsFunctor hE : PresheafCat C E ⟶ E
+def globalSectionsAdjunction hE :
+  QCatAdjunction (constantFunctorMap (presheafShape C) E) (globalSectionsFunctor hE)
+def derivedGlobalSectionsFunctor J hJ hE : PresheafCat C E ⟶ E
+def globalSectionsToDerivedHom J hJ hE :
+  FunctorHom (globalSectionsFunctor hE) (derivedGlobalSectionsFunctor J hJ hE)
+```
+右随伴は既存の定値図式の余極限保存と presentable 随伴関手定理から得る。
+Γ・RΓの選択済み頂点との比較はまだ残る。
+
+### S2：選んだ頂点と全 Γ 関手の比較（未検証）
+
+一覧：済み 1／全体 8（うち追加 0、済み：S4、S7は後続）。
+
+`GlobalSectionsConeComparison.lean` の法則：
+```lean
+def globalSectionsConeFamilyIso hE s hs :
+  FunctorIso (s ≫ evaluateFunctorAt apex) ((s ≫ coneRestriction _ E) ≫ globalSectionsFunctor hE)
+def globalSectionsConeValueIso hE (c : JoinCone F) (hc : IsLimitCone c) :
+  VertexIso c.vertex ((globalSectionsFunctor hE).app _ (functorVertex F))
+```
+既存の limitConeFamily_apexIso_of_constantAdjunction を同じ右随伴へ適用し、
+一つの錐は定値の全族から回収する。法則・証明分割として扱う。
+
+### S2 の今回の検証済み部分（11-15）
+
+一覧：済み 1／全体 8（うち追加 0、済み：S4、S7は後続）。
+
+4本・275行を追加検証、全体23本・1482行。
+SheafifyUnit 6宣言、DerivedGlobalSections 5宣言、
+SheafUnitConeTransport と GlobalSectionsFunctor 計14宣言の小監査は標準三公理のみ。
+対象ビルド7,167 jobs成功、ログ `/tmp/is-w1/sections-transport/build-3.log`。
+すべてプロセス終了・鍵解放確認済み。計算上限・既存宣言は変更なし。
+
+単位の可逆性、RΓの指定極限錐、同じ単位による頂点を固定した全錐の輸送、
+Γ・RΓの全関手と同じ単位からの全自然変換まで検証した。
+S2は全Γ関手と選択済み頂点の比較・位相比較が残るため完了には数えない。
+GlobalSectionsConeComparison は作業木の未検証下書き。
