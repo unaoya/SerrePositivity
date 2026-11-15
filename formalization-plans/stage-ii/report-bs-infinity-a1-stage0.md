@@ -1517,3 +1517,32 @@ S6 は元の指定錐と指定単位の全比較が残るため未完。
 検証済み全体71本4,379行・403宣言。S1・S6・S8 は継続、S7 は後続。
 
 一覧：済み 4／全体 8（うち追加 0、済み：S2・S3・S4・S5、S7 は後続）。
+
+### S6：元の restrictionCone への全錐の比較（11-15、未検証）
+
+`AsSmallSiteShape.lean` に、`presheafShape C ≅ nerve (AsSmall C)ᵒᵖ` の同じ全単体の同型を置く。
+`AsSmallSieveConeComparison.lean` の型は、元の `S : Sieve (AsSmall.up.obj U)` に対し
+```lean
+(restrictJoinCone (nativeRestrictionCone O S) (asSmallSieveShapeEquivalence S).hom).val =
+  (restrictionCone ((asSmallSiteShapeIso C).hom ≫ O) (S.functorPullback AsSmall.up)).val
+```
+および、この等式と篩形状の同値による極限性の同値。
+前の錐の宇宙表示の法則・既存の `nerveCone_whisker`・`nerveCone_mapCone` を使う。
+係数は SSet(u+1) のまま、元のすべての被覆篩と指定錐を保持する。
+
+一覧：済み 4／全体 8（うち追加 0、済み：S2・S3・S4・S5、S7 は後続）。
+
+### S6：元の指定錐の宇宙表示の法則の検証済みの区切り（11-15）
+
+`ConeUniverseNaturality.lean`：1本73行、対象ビルドと2宣言の小監査成功
+（`/tmp/is-w1/native-site-universe-cone/target-audit-result.json`、標準三公理のみ）。
+点・図式・全ての脚の比較により、紙に書いた `uliftNerveCone_asSmall_val` の
+元の全錐の等式を証明した。計算上限変更なし。
+
+conjugate の単位法則はビルドを通過したが、小監査はその適用ファイルの
+構文の不足（Bicategory の notation）と分けて再検証する。
+篩の比較は型の読み戻しを先に明示し、不要な dsimp を change に直している。
+元の制限錐への比較2本は未検証のまま。
+検証済み全体72本4,452行・405宣言、S6 全体は未完。
+
+一覧：済み 4／全体 8（うち追加 0、済み：S2・S3・S4・S5、S7 は後続）。
