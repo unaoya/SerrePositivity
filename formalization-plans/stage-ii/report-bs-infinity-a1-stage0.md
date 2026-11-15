@@ -1238,3 +1238,78 @@ S5 は局所対象の極限閉性と係数移送まで検証済み。
 `SheafFiniteLimits` の空頂点の除去で `simpa` の型不一致が一つ残ったため、
 空部分複体の所属の証明を直接 `False.elim` に渡す形へ直して再検証する。
 この3本と係数同値・loop条件反映の2本は未検証で、コミットに含めない。
+
+### S5：全 loop 族の四つの角（11-15、未検証）
+
+一覧：済み 3／全体 8（うち追加 0、済み：S2・S3・S4、S7 は後続）。
+
+```lean
+def sheafAmbientLoopFamily J s : SheafCat J E ⟶ loopDiagrams (PresheafCat C E)
+lemma sheafAmbientLoopFamily_evaluation J s i j :
+  sheafAmbientLoopFamily J s ≫ loopDiagramEvaluation (PresheafCat C E) i j =
+    sheafInclusion J ≫ (ihom (presheafShape C)).map (s ≫ loopDiagramEvaluation E i j)
+lemma sheafAmbientLoopFamily_target J s hs :
+  sheafAmbientLoopFamily J s ≫ loopDiagramEvaluation (PresheafCat C E) 1 1 = sheafInclusion J
+lemma sheafAmbientLoopFamily_corner_isSheaf J hE s hs hΩ x i j :
+  sheafProperty J ((loopDiagramEvaluation (PresheafCat C E) i j).app _
+    ((sheafAmbientLoopFamily J s).app _ x))
+lemma sheafAmbientLoopFamily_vertices J hE s hs hΩ x :
+  FunctorVertexSatisfies square (PresheafCat C E) (sheafProperty J)
+    ((sheafAmbientLoopFamily J s).app _ x).val
+```
+前提は係数の指定 loop 切断 `s`、終点の等式 `hs`、その loop の同値性 `hΩ`。
+これらは安定係数から既存の普遍四角形の族で供給する。四つの角の確認は
+終点の等式・零頂点二つ・係数 loop 同値の保存に分ける。各補題は200行未満。
+
+### S5：全 loop 族の持ち上げと元の評価の等式（11-15、未検証）
+
+一覧：済み 3／全体 8（うち追加 0、済み：S2・S3・S4、S7 は後続）。
+
+```lean
+lemma evaluateFunctorAt_postcomp F k :
+  (ihom K).map F ≫ evaluateFunctorAt k = evaluateFunctorAt k ≫ F
+def sheafLoopSquareFamily J hE s hs hΩ : SheafCat J E ⟶ (ihom square).obj (SheafCat J E)
+lemma sheafLoopSquareFamily_comp ... :
+  sheafLoopSquareFamily ... ≫ (ihom square).map (sheafInclusion J) =
+    sheafAmbientLoopFamily J s ≫ loopInclusion
+def sheafLoopSection J hE s hs hΩ : SheafCat J E ⟶ loopDiagrams (SheafCat J E)
+lemma sheafLoopSection_comp ... : sheafLoopSection ... ≫ loopInclusion = sheafLoopSquareFamily ...
+lemma sheafLoopSection_evaluation ... i j :
+  (sheafLoopSection ... ≫ loopDiagramEvaluation (SheafCat J E) i j) ≫ sheafInclusion J =
+    sheafAmbientLoopFamily J s ≫ loopDiagramEvaluation (PresheafCat C E) i j
+lemma sheafLoopSection_target ... :
+  sheafLoopSection ... ≫ loopDiagramEvaluation (SheafCat J E) 1 1 = 𝟙 (SheafCat J E)
+lemma sheafLoopSection_source ... :
+  sheafLoopSection ... ≫ loopDiagramEvaluation (SheafCat J E) 0 0 = postcomposeSheafFunctor J hΩ.choose
+lemma sheafLoopSection_loop_isQCatEquivalence ... :
+  IsQCatEquivalence (sheafLoopSection ... ≫ loopDiagramEvaluation (SheafCat J E) 0 0)
+```
+全族を既存の `fullSubcomplexInternalHomBackward` で移す。包含後の写像の等号を
+保持し、その等号と評価の後合成則で終点と loop 関手を照合する。
+いずれも既存構成の持ち上げ・係数移送・評価の法則。各補題は200行未満。
+
+### S5：層圏の安定性への最終接続（11-15、未検証）
+
+一覧：済み 3／全体 8（うち追加 0、済み：S2・S3・S4、S7 は後続）。
+
+```lean
+theorem sheaf_isStable [IsStable E] (J : GrothendieckTopology C) (hE : IsPresentable E) :
+  IsStable (SheafCat J E)
+```
+S5 の型は維持する。有限極限と零頂点を持ち上げ、係数の既存の全 loop 切断の
+持ち上げを `isStable_of_loopEquivalence` に入れる証明分割である。
+元の有限極限と同値な loop 判定を使うため、fiber/cofiber の点ごとの選択を
+追加の自然性の仮定にしない。層化の有限極限保存はこの後の残り。
+
+### S5 の入力5本の検証済みの区切り（11-15）
+
+一覧：済み 3／全体 8（うち追加 0、済み：S2・S3・S4、S7 は後続）。
+
+`/tmp/is-w1/s5-inputs-sequence.log`：
+- 関手圏の安定性・始対象の反映・層の有限極限と零対象：3本154行、7,675 jobs、5宣言の小監査成功。
+- 係数同値の層圏への制限・loop条件の反映：2本152行、7,321 jobs、10宣言の小監査成功。
+いずれも標準三公理のみ、計算上限変更なし。空部分複体の所属は直接 False.elim に渡した。
+検証済み全体61本3,733行・361宣言。
+
+S5 の残りは、四つの角の確認・全 loop 族の持ち上げ・層圏の安定性の接続（新しい4本、未検証）と、
+指定層化の有限極限保存。S5 完成とはまだ数えない。S6 の残りは指定単位の照合と大きい site の比較。
