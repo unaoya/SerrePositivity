@@ -485,3 +485,16 @@ S03 の順写像との合成の分割（着手前、S03 の内数、60〜120行�
 S04 への接続では、Mathlib `Proj.awayι_toSpecZero` と既存の `schemeScalarMorphism_projectiveScalar` を組み合わせ、チャートの構造射を同じ Spec R 上で比較する。局所同型の貼り合わせには既存の開被覆の `glueMorphisms` を用いる。重なりでは積の分母への局所化と二次関係式の自然性の証明が依然として必要であり、下書きの代数同型だけで S03・S04 の完成とはしない。
 
 一覧：済み0／全体3（うち追加0）。
+
+
+### S03 の重なりの自然性：既存 API の照合（紙、未証明）
+
+Mathlib `HomogeneousLocalization.Away.isLocalization_mul` は、次数 d>0 の f と斉次 g に対し、`Away G (f*g)` が `Away G f` の `g^d/f^deg(g)` による通常の局所化であることを供給する。次数一同士ならこの元は g/f。`awayMap_mk` は同じ制限の分子・分母の式。したがって積の標準開ごとに新たな斉次分数の普遍性を証明する必要はない。
+
+二因子の重なりは `Away H (b_j*b_l) ⊗[R] Away G (a_i*a_k)`。`IsLocalization.tensorProduct_tensorProduct_right` と `tensorProductEquivOfMapIncludeRight`（Mathlib RingTheory/Localization/BaseChange）は、片因子の局所化を元のテンソル積の includeRight の像での局所化へ移す。反対側は交換同型で移し、`IsLocalization.Away.mul'`（Away/Basic）で二つの局所化を積の元での局所化に合わせる。この計算に平坦性は要らない。
+
+Segre チャートの同型では、追加の座標 Z_kl/Z_ij の像は、二因子の正規化した座標の純テンソルになる（検証済み `segreNormalizedCoordinateMap_X`）。上記の通常の局所化の比較をこの元に適用し、制限したチャート同型を作る予定。左右の選択の一致は局所化の射の外延性と同じ二次関係式に戻す。この自然性の Lean はまだ未証明である。
+
+続く S04 は Mathlib `Proj.awayι_toSpecZero` と本体の `schemeScalarMorphism_projectiveScalar` で Spec R への構造射をそろえ、アフィン pullback のテンソル表示と `Scheme.Cover.glueMorphisms` を使う。上記は既承認の S03〜S04 の法則の分割で、追加の主項目・最終仮定を設けない。見込み約5,500〜12,000行・外枠16,000行は不変。
+
+一覧：済み0／全体3（うち追加0）。
