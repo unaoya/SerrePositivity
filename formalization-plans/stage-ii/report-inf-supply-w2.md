@@ -17625,3 +17625,57 @@ lemma sameColumnRoofConjugation {I C : Type u} [Category.{u} I] [Category.{u} C]
 ```
 
 R03h・R03d・3b-4aは未完。一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。停止点3b-4aの検収とはせず、R03d→R02・R03→R04・R05→R11・R12のTotの分、停止点の報告後に実現R06〜R10という元の範囲・順序を維持する。
+
+## 294. 元の全局所化三角形によるroof共役と同じ定値族の成分（2026-11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+§293.3のroof側の工程。既存のNerveColumn.roof_naturalityから元の全三角形の共役を求め、元の定値通常図式への制限を同じ指定成分の定値族へ戻す。sameFunctorIso_constant_familyの既存の合成同型はeqToIsoなので、全FunctorHomのArrowとして端点の等式を保持したまま元の成分へ正規化できる。任意のnerve I全体で述べ、一つの頂点での評価は使わない。新しい数学の一覧項目ではなく、既存構成の自然性・係数移送・合成の法則と証明の分割である。
+
+最後のroof共役則に現れるhaは、元のroofのintervalFamilyHomが既存のNerveColumnの全roofと一致するという入力。その入力には既存のstrictBETotJointSourceRoofPinchedComparison_column_roofを代入する予定で、使う側の不足する比較を仮定に移す入口ではない。型つき一覧のR03h・R03dを弱めない。個別検査isw2-column-roof-constant3は終了0（前の検査2の合成の括弧の型不一致を結合則で修正）。以下を本体へ置いて対象ビルド・小監査を行う。
+
+#### NerveColumnRoofTransport（83行）
+
+```lean
+lemma roof_conjugation {I C : Type u} [Category.{u} I] [Category.{u} C]
+    {E : SSet.{u}} [Quasicategory E] {F G : nerve C ⟶ E} (e : FunctorIso F G)
+    (V : I ⥤ C) {X Y : C} (p : V ⟶ (Functor.const I).obj X)
+    (hpF : ∀ i, IsInvertibleEdge ((nerve.edgeMk (p.app i)).map F).toTruncated)
+    (hpG : ∀ i, IsInvertibleEdge ((nerve.edgeMk (p.app i)).map G).toTruncated)
+    (s : V ⟶ (Functor.const I).obj Y) :
+    (e.precomp (nerveMap ((Functor.const I).obj X))).inv ≫
+      (NerveColumn.augmentationIso F V p hpF).inv ≫ NerveColumn.hom F s ≫
+      (e.precomp (nerveMap ((Functor.const I).obj Y))).hom =
+      (NerveColumn.augmentationIso G V p hpG).inv ≫ NerveColumn.hom G s
+
+lemma constantRestriction_iso_arrow {I C : Type u} [Category.{u} I] [Category.{u} C]
+    {E : SSet.{u}} [Quasicategory E] {F G : nerve C ⟶ E} (e : FunctorIso F G) (c : C) :
+    Arrow.mk (e.precomp (nerveMap ((Functor.const I).obj c))).hom =
+      Arrow.mk (constantFunctorHomMap (nerve I) (e.app (nerveVertex c)).hom)
+
+lemma constantRestriction_iso_inv_arrow {I C : Type u} [Category.{u} I] [Category.{u} C]
+    {E : SSet.{u}} [Quasicategory E] {F G : nerve C ⟶ E} (e : FunctorIso F G) (c : C) :
+    Arrow.mk (e.precomp (nerveMap ((Functor.const I).obj c))).inv =
+      Arrow.mk (constantFunctorHomMap (nerve I) (e.app (nerveVertex c)).inv)
+
+lemma roof_constant_conjugation_arrow {I C : Type u} [Category.{u} I] [Category.{u} C]
+    {E : SSet.{u}} [Quasicategory E] {F G : nerve C ⟶ E} (e : FunctorIso F G)
+    (V : I ⥤ C) {X Y : C} (p : V ⟶ (Functor.const I).obj X)
+    (hpF : ∀ i, IsInvertibleEdge ((nerve.edgeMk (p.app i)).map F).toTruncated)
+    (hpG : ∀ i, IsInvertibleEdge ((nerve.edgeMk (p.app i)).map G).toTruncated)
+    (s : V ⟶ (Functor.const I).obj Y)
+    (a : FunctorHom (SSet.const (F.app (Opposite.op ⦋0⦌) (nerveVertex X)) : nerve I ⟶ E)
+      (SSet.const (F.app (Opposite.op ⦋0⦌) (nerveVertex Y))))
+    (ha : Arrow.mk a = Arrow.mk ((NerveColumn.augmentationIso F V p hpF).inv ≫ NerveColumn.hom F s)) :
+    Arrow.mk (constantFunctorHomMap (nerve I) (e.app (nerveVertex X)).inv ≫ a ≫
+      constantFunctorHomMap (nerve I) (e.app (nerveVertex Y)).hom) =
+      Arrow.mk ((NerveColumn.augmentationIso G V p hpG).inv ≫ NerveColumn.hom G s)
+```
+
+この検収だけでnative側とroof側の全族の最終等式や3b-4aを完成としない。
+
+### 294.2 検収
+
+新規1本83行・公開4補題。対象ビルド360（依存を含む7,217 jobs）・小監査とも終了0。共有鍵 --class impl --wait 3600、一枚の整理券、gtimeout 1700秒。小監査は263モジュール・1,706宣言、propext・Classical.choice・Quot.soundのみ、sorryAx・追加公理なし。自レーン累計259本・17,597行、実環境1,699宣言。外枠22,000行まで4,403行。新規モジュールの実環境宣言は5。git diff --check通過。main a4388efc9のEInfinity/3,745ファイル13,373名と自レーン625ファイル1,957名を照合し、異なるファイル間の重複0、内部も0。証跡：/private/tmp/isw2-build360.log、isw2-validation360.json、isw2-declaration-collision-scan360.json。既存Lean・⑤aのファイル・公式入口・公式監査は変更していない。
+
+既存のstrictBETotJointSourceRoofPinchedComparison_column_roofを実際にhaへ代入したBEでの適用も、一時ファイルisw2-roof-native-column2で終了0。最初の検査ではpinchedEndpointEquivalence_familyの推論された終点がHoの関手値から取り出した頂点となり、元のモデル源の指定頂点との型照合に失敗した。x'・y'を元の二つの指定頂点に明示して直した。対象ビルド済みの汎用補題をimportする形で、全局所化三角形を消去して元のnativeな底の全augmentation逆・評価へ戻せた。次に本体へ配置し、対象ビルド・小監査を行う。R03hのnative射側との最終等式・R03d・3b-4aは未完。
