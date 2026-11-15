@@ -15826,3 +15826,35 @@ theorem strictBETotJointSourceAugmentationDomainIso_roof_restriction
             (nerveOppositeIso (C := ((simplicialElementsCatDiagram
               (strictBETotJointSourceCoefficients A)).obj P)ᵒᵖ)).inv))
 ```
+
+## 268. B4′ 完了：B3′ の追従と重複修正後の統合検証（2026-11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 24（うち追加 12）。
+
+### 268.1 原環境の採取・プレビュー
+
+基準391b2a0d2より後の自レーンの追加・変更Lean（draftsを除く）197本を、main取り込み前にcompilerで採取した。Leanの元ソースを固定し、各組のcollectは --class impl --wait 3600、実処理は280秒以内、一枚の整理券で順に実行した。元の検証済みコードのHEADは670ef9d75、最終プレビューのHEADは4723dc1ad（この間は報告だけの変更）。採取済みJSONのsourceと実ソースのバイト列を全件照合した。
+
+最後に197本の索引をまとめ、同じ原環境のソースからmainの bulk-b3prime/B4/rewrite.py と namespace-rewrite-map.json・所有元表を使って preview-all を作り直した。結果は保留0、追加import0、書換え0ファイル・0行。openの個別解消を要する保留も0。古い索引で取り込み後のソースを再採取・再書換えする操作は行っていない。証跡は /private/tmp/isw2-b4prime-20261115/ の before-all、preview-all、preview-all-summary.json。
+
+### 268.2 main の統合
+
+main 58d6a0de9 を自レーンへ統合した。統合コミットは **81683a2ab**。以前の57705f223の取り込みを戻したrevert edf81f92eにより、通常のmerge予覧では自レーンの検証済み176本が削除されるため、削除の由来を全件照合して元の検証済みソースを保持した。二つの修正済みLean（StrictDiagramTotUniversalProbePointComparison、TensorConeUnitPoint）のmodify/delete、一覧JSON、報告の計4競合も解消した。main側の報告・一覧への独立した追記は0と確認した。
+
+最終プレビューと統合後の自レーン197本は全件バイト一致。B3′の配置の変更はmainから入り、自レーンの書換えは0ファイル・0行である。登録候補は既存の **formalization-plans/stage-ii/is-w2-be-20261114-modules.json（196本）** を使用する。
+
+### 268.3 対象ビルド・小監査・重複照合
+
+共有鍵を --class impl --wait 3600 で一回取り、gtimeout 1700秒の中で200モジュールの対象ビルドと小監査を実行した。200本は自レーン196本に、FrameConeClasses・NormalizedMooreReverseEvaluation・NormalizedMooreReverseExtendZero・NormalizedMooreReverseZeroの既存4本を加えたもの。対象モジュールの一覧は一時ディレクトリの postmerge-targets.json。
+
+- 対象ビルド：成功（依存を含む12,346 jobs）。rootのビルドではない。
+- 小監査：/private/tmp/AuditISW2BKCells325.lean、200モジュール・**1,418宣言、propext・Classical.choice・Quot.soundのみ**。sorryAx・追加公理なし。
+- TensorConeUnitPoint・NormalizedMooreReverseZeroは宣言数0。tensorFrameHomIso_pointの定義元はFrameConeClasses、normalizedMooreReverse_zero_inclusionの定義元はNormalizedMooreReverseEvaluationと実環境で確認した。既存の定理を使う修正e0c5190ecを含む状態で成功している。
+- 宣言名の照合：自レーンのmanifest群等から562ファイル・1778個の名前を取り、mainのEInfinity/3745ファイル・13373個の名前と照合。異なるファイル間の同名宣言は0、自レーン内部も0。これは名前付きのソース宣言の照合で、上の実環境での監査と分けて記録する。
+- 自レーン対象のgit diff --check：通過。
+
+ビルドと監査のログは /private/tmp/isw2-b4prime-20261115/build327.log、統合の検収記録は merge-result.json、重複照合は /private/tmp/isw2-declaration-collision-scan.json。
+
+### 268.4 /goal の続き
+
+B4′は完了。R03hの単位・反転・全augmentation制限の個別検査済みの法則を本体の新規ファイルへ分けて検証し、同じnative fiber射と元のroofの全interval族の照合を続ける。R03dの全関手同型と元の固定始域の同型との照合、3b-4aの残りは未完。点ごとの同値で置き換えず、外枠22,000行と型つき一覧の規則を維持する。
