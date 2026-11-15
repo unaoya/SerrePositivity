@@ -3,7 +3,7 @@
   "complete": 2,
   "total": 6,
   "added": 0,
-  "verified_head": "this commit: base cd43fefc47d62f33f8d8938362d6ace3aed4ac8b",
+  "verified_head": "this commit: base dae3e6c8765ae4989ef68478af17e8e8b8a41c5c",
   "items": {
     "HT01": "complete",
     "HT02": "complete",
@@ -12,10 +12,12 @@
     "HT05": "not-started",
     "HT06": "not-started"
   },
-  "latest_complete_audit_checkpoint": "affine-crystalline-reduced-model-checkpoint.json",
-  "latest_complete_audit_declarations": 1223,
-  "working_changes_unverified": [],
-  "pending_check": "bundle-083 terminal; all prepared modules passed",
+  "latest_complete_audit_checkpoint": "affine-crystalline-coefficient-algebras-checkpoint.json",
+  "latest_complete_audit_declarations": 1235,
+  "working_changes_unverified": [
+    "AffineCrystallineRowBaseChange"
+  ],
+  "pending_check": "bundle-085 terminal rc1; see audit module inventory; failed dependencies await next batch",
   "next_proof_route": "ht02-next-proof-route.md",
   "initial_record": {
     "stage": "5inf3a",
