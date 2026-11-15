@@ -55,3 +55,65 @@ S6は必要なBS固有の閉性の表を作った後に独立の段として進�
 S6はsiteの同値（小さい模型への置換）に沿い、層・層化・RΓを運ぶ一般補題だけを扱う。
 S7の`forget_sheafify`の単位条件が⑤aのCAlg模型から供給されるかは、5∞-1段0で確認する。
 配置は案どおり、入口・監査は5∞-1開始時に調整役が決める。現在の担当作業はIS-W1 G14の再開。
+
+
+## 11-15朝：5∞-1の型つき一覧とS7の先行判定
+
+一覧：済み 0／全体 8（うち追加 0）。R2：済み 1／全体 13（うち追加 11）。
+
+ユーザー承認済みのS1〜S8を次の8個のIDとして追跡する。各ID内の構成・法則・証明分割は
+数に加えない。以下は紙の型（draftsの宣言名・記法を使用）、Lean検証済みの型ではない。
+全IDの完了には表の全出力が必要であり、代表の一つだけで済みにしない。
+外枠18,600行、約9,300行で途中報告。既存のR2の行数はこの外枠に加算しない。
+
+共通記法：Cは小さい通常site、JはGrothendieckTopology C、Eはquasicategory、
+`Presheaf C E = ulift (nerve Cᵒᵖ) ⟶ E`。`hE : IsPresentable E` は必要箇所だけ。
+
+| ID | 出力の型（主張の束） | 再利用と見込み |
+|---|---|---|
+| S1 | `IsSheaf J F := ∀ U S, S ∈ J U → IsLimitCone (restrictionCone F S)`；`IsSheaf J F ↔ ∀ U S, S ∈ J U → IsInvertibleEdge (sectionsOf_map S.functorInclusion F _ _)`；`IsSheaf (K.toGrothendieck) F ↔ ∀ U S, S ∈ K U → IsLimitCone (restrictionCone F S)`；`IsSheaf (J ⊔ J') F ↔ IsSheaf J F ∧ IsSheaf J' F`；extensive位相と有限積保存の同値 | drafts SheafCondition/SetSections、G8の元の篩錐比較。700〜1,200行 |
+| S2 | `globalSectionsCone F h : JoinCone F` と `IsLimitCone`；`derivedGlobalSectionsCone J hJ hE F : JoinCone (sheafify J hJ F)` と `IsLimitCone`；`IsSheaf J F → ∃ c : JoinCone F, IsLimitCone c ∧ c.vertex = derivedGlobalSections J hJ hE F`；射・位相比較は同じ単位と指定錐を保つ全族 | drafts GlobalSections、反射の単位と指定極限比較。500〜900行 |
+| S3 | `IsLimitCone c ↔ IsLimitCone (restrictJoinCone c (cechShape d))`；逆向き `∃ c, IsLimitCone c ∧ restrictJoinCone c (cechShape d) = c₀`（元の頂点の指定Čech錐を保つ）。大きいsite版も同じ頂点 | G9のleft cofinality、CategoryTheory/CechNerveData。600〜1,000行 |
+| S4 | `∃ (I : Type u) (edges : I → (PresheafCat C E) _⦋1⦌), ∀ F, IsLocalObject (Set.range edges) F ↔ sheafProperty J F`；`Sheafification J E`（反射そのもの）；層化単位・層での可逆性 | G14検出族・G8・presentable関手圏のBousfield反射。600〜1,000行 |
+| S5 | `[IsStable E] → IsStable (SheafCat J E)`；`[IsStable E] → PreservesFiniteLimits (sheafificationFunctor J hJ)`（記法は既存native極限条件へ展開して固定する）。零・fiberでの閉性と有限余極限保存から結ぶ | 安定部分圏と極限交換。600〜1,100行。一般のPostnikov左完全性はこの型からは結論しない |
+| S6 | site同値 `e : C ≌ D` と対応する位相 `J,K` に対し `IsSheaf J (e.op.functor ⋆ F) ↔ IsSheaf K F`；反射・単位の全関手同型の輸送；`VertexIso (derivedGlobalSections J ... (e.op.functor ⋆ F)) (derivedGlobalSections K ... F)` | `⋆`はnerve/uliftによる前合成の略記。一般のsite同値と指定錐の輸送のみ。mainのPrismatic/Site/PrismOverSmallにEssentiallySmallの入力あり。κの新切り落としなし。400〜800行 |
+| S7 | `IsSheaf J F ↔ IsSheaf J (F ≫ U)`；`forget_sheafify : FunctorIso (sheafify J hD ((sheafify J hC F) ≫ U)) (sheafify J hD (F ≫ U))`；`VertexIso (U(RΓ_CAlg F)) (RΓ_D (F ≫ U))` | CAlgの保守性・極限保存、単位の局所同値は独立。600〜1,000行、模型接続を除く |
+| S8 | `weightedSectionsData O hE`；`weightedSections_discrete` は離散重みとの全関手同型；`IsColimitCone c → IsLimitCone (mapJoinCone (weightedSections O hE) (coconeReverseCone c))`；単射に沿う離散押し出し；`IsLocalEquivSet J φ → IsSheaf J O → IsInvertibleEdge (sectionsOf_map φ O _ _)` | G8の離散重み、右Kan拡張と強飽和API。1,300〜2,300行 |
+
+合計5,300〜9,300行は承認済み段0を維持。未検証の略記を本体の新たな界面としない。
+実装時は各束の全宣言をdraftsの元の型へ展開して記録する。S5の安定性・有限極限保存を
+無条件のPostnikov左完全性に広げない。S6のPrismOverSmall入力はmainには存在するが、
+現枝への未取り込みを理由にそのコードを複製しない。
+
+### S7先行判定：単位の条件が未供給のため停止
+
+今回読んだ本体：
+`EInfinity/BarrattEccles/FreeProbeDerivedFreeForget.lean` の
+`cAlgFreeForgetDerivedAdjunction` は実際のQCatAdjunction、
+`cAlgForgetDerived_mapJoinCone_isLimit` は任意の指定極限錐の保存を無条件で結論する。
+これらの型はサイトJ・前層F・層化単位を量化せず、局所同値を結論しない。
+本体EInfinity以下の `sheafif`・`localEquiv`・`LocalEquiv` の検索でも、この接続を与える
+宣言は見つからなかった。検索だけで数学的不可能性とはしないが、適用可能な証明は未供給。
+
+必要な条件を層化の辺の型で固定すると、次である（紙）。
+
+```lean
+-- η : F → sheafify_CAlg F は指定した反射の単位
+-- U_* : PSh(C,CAlg_A) → PSh(C,D(A)) は後合成
+-- L_D はD(A)値の指定層化
+IsInvertibleEdge (mapEdge L_D (mapEdge U_* η)).toTruncated
+```
+
+この条件は局所化がU_*ηを反転することそのもの。保守性・極限保存から得られる
+「忘却した層が層」という対象側の条件と取り違えない。
+局所化の普遍性で可換性を得るにも、まずこの反転性または生成局所同値のU像の反転性が必要。
+free–forget随伴を使う候補では、D(A)値の層化と自由代数モナドの両立、または
+代数的層化の構成が追加で必要になる。現在の随伴だけをその証明としない。
+
+指示書11-15朝の「供給できなければ止まって報告」に従い、ここで5∞-1のLean開始を止める。
+S7の型へこの条件を新たな入力として足して済ませたり、既に層であるFだけへ範囲を狭めたりしない。
+選択肢は、⑤a等でこの具体的な単位条件を供給するか、S7を別の停止点に分けてS1〜S6/S8を
+先行する範囲変更を調整役が決めること。どちらも今回こちらで承認済みとは扱わない。
+本体Lean・drafts・他レーンのコードの変更、ビルド、鍵取得はしていない。
+配置はInfinityCategories/Sheaves。実装するdocstringのHTT/Kerodon番号・Tagは各原典を照合して
+記入する（今回は新規Leanのdocstringなし）。
