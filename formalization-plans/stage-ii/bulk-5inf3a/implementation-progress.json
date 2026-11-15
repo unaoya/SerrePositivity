@@ -3,7 +3,7 @@
   "complete": 1,
   "total": 6,
   "added": 0,
-  "verified_head": "83515fd28 plus audited FiniteCompletion in this commit",
+  "verified_head": "this commit: base e99339bb463dbf2d41a763c0dbca911c07d96206",
   "items": {
     "HT01": "complete",
     "HT02": "in-progress",
@@ -12,25 +12,19 @@
     "HT05": "not-started",
     "HT06": "not-started"
   },
-  "latest_complete_audit_checkpoint": "finite-completion-checkpoint.json",
-  "latest_complete_audit_declarations": 493,
+  "latest_complete_audit_checkpoint": "finite-reduction-truncation-checkpoint.json",
+  "latest_complete_audit_declarations": 587,
   "working_changes_unverified": [
-    "FiniteTensorComparison",
-    "FiniteCompletionReduction",
-    "FiniteCompletionDerived",
-    "FiniteCompletionReflection",
-    "TruncationHomology",
-    "TruncationTorBounds",
-    "FiniteTensorComparisonIso",
     "FiniteCompletedComparison",
-    "FiniteComponents",
-    "TensorComparisonComponents",
-    "FiniteCompletionExact",
     "FiniteTensorInverse",
-    "TotalSplitExact",
-    "TensorNatComponents"
+    "FiniteCompletionDerived",
+    "TensorNatComponents",
+    "FiniteTruncationTorBounds",
+    "FiniteCompletionReflection",
+    "FiniteTensorComparisonIso",
+    "FiniteCompletionExact"
   ],
-  "pending_check": "bundle-023 terminal rc1; 26 successful modules audited; six failed-source repairs await next batch",
+  "pending_check": "bundle-024 terminal rc1; see audit module inventory; failed dependencies await next batch",
   "next_proof_route": "ht02-next-proof-route.md",
   "initial_record": {
     "stage": "5inf3a",
