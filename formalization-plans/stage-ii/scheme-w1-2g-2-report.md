@@ -1219,3 +1219,22 @@ G3 は完成。G4 は F8 の同じスカラー・実際の構造層の Frobenius
 今回2モジュール143行＋入口2行。新規94モジュール本体6,212行・入口込み6,306行。既存追加25行を含む外枠計数は本体6,237行・入口込み6,331行。新規小監査累計649宣言、既存15宣言は別計上。実際のブローアップとその有限ファイバー冪には既存の G3 の表示が供給されるので、この同じ定理を適用できる。ただし一つの被覆の nerve との整合性と Noether 帰納全体、G5 は未完。次のタプル被覆は drafts で検証中で、本体に含めない。外枠16,000行は不変。
 
 一覧：済み1／全体3（うち追加0）。
+
+
+タプル被覆のアフィン性に使う底変換の分割（着手前、同じ被覆の底変換の法則の内数、45〜110行）：`pullbackAffineOpen_inf` はアフィン基底 S、f:X→S・g:Y→S、アフィン開 U,V に対し、実際の pullback 上の fst⁻¹U∩snd⁻¹V がアフィンであること。制限した二つのアフィンの同じ pullback の開埋め込みの像を使う。`isPullbackAffineOpen_inf` は同じ主張を任意の H:IsPullback a b f g に実際の H.isoPullback で移す。次の有限ファイバー冪での帰納にはこの二つの既存の底変換・同型の法則を使い、射影をアフィン射と誤って仮定しない。
+
+
+タプル被覆の有限交叉・アフィン性の分割（着手前、同じ被覆の法則の内数、65〜145行）：`schemePreimage_finite_iInf` は有限族の開の交叉がスキームの逆像と可換。`schemeCechTupleOpen_succ` は n+2 個のタプル開を、末尾 n+1 個の既存の lift の逆像と先頭の射影の逆像の交叉として表す。`schemeCechTupleOpen_isAffine` は基底 S がアフィンで U の全てがアフィン開なら、同じ既存の nerve の全てのタプル開もアフィンであること。既存の finiteFiberPowerZeroIso と isPullback_finiteFiberPowerSucc、直前の Cartesian square のアフィン開の法則で帰納し、射影にアフィン射の仮定を加えない。
+
+
+## G4：一つの被覆から実際の nerve のタプル被覆を供給する
+
+`SchemeCechTupleCover`（76行）の宣言：`schemeCechTupleOpen` は実際の nerve の全ての射影の逆像の有限交叉。`schemeCechTupleOpen_iSup` は元の被覆性から各 nerve 項のタプル被覆性。`schemeCechTupleOpen_map_le` はすべての実際の nerve の射について、同じタプルの添字の前合成に沿う被覆の細分の包含。各次数で無関係な被覆を選んでおらず、面・退化を含む全ての射を扱う。
+
+`SchemePullbackAffineTupleOpen`（45行）：`pullbackAffineOpen_inf` はアフィン基底上の二つのアフィン開の実際のファイバー積が pullback 内でアフィン開であること。制限したアフィンのファイバー積の開埋め込みの像を使う。`isPullbackAffineOpen_inf` は同じ主張を H.isoPullback に沿って任意の Cartesian square に移す。元の射や pullback の射影のアフィン性を仮定しない。
+
+単独検証、本体とのソース完全一致、対象と入口のビルド5,181ジョブ成功、小監査6・3宣言（計9、所有元の非公開・生成宣言を含む）・標準三公理のみ、終了状態0。ログ `2g-scheme-cech-tuple-cover-check-5.log`・`2g-scheme-pullback-affine-tuple-open-check-3.log`・`2g-scheme-cech-tuple-cover-native-2.log`・`2g-scheme-cech-tuple-cover-audit.log`。本体の module 可視性のため既存の Mathlib.AlgebraicGeometry.PullbackCarrier を明示 import した。局所的な backward.isDefEq.respectTransparency false を使用、既定の資源制限。追加公理・sorry・既存の型変更・200行超の宣言なし。共有鍵 --class impl --wait 3600、待ちは一つ、ビルドと監査は別枠。root・下流全ビルド・全体監査なし。
+
+今回2モジュール121行＋入口2行。新規96モジュール本体6,333行・入口込み6,429行。既存追加25行を含む外枠計数は本体6,358行・入口込み6,454行。新規小監査累計658宣言、既存15宣言は別計上。タプル開の全次数でのアフィン性の帰納と有限交叉の公式は、次の未検証の下書きであり本体に含めない。閉中心への底変換の照合・二重 Čech・Noether 帰納と G5 は残る。外枠16,000行は不変。停止点2g-2ではない。
+
+一覧：済み1／全体3（うち追加0）。
