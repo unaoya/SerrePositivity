@@ -633,3 +633,32 @@ S04 の係数移送の大域の射の法則の分割（着手前、前記200〜5
 一覧：済み0／全体3（うち追加0）。
 
 S04 の係数移送の標準開の射の法則の分割（着手前、係数移送の内数、40〜100行）：`projectiveCoefficientAwayMap_eq` は元の標準開からの Away.map が、テンソル積への includeRight と係数移送の同型の合成であること。正規化の全射性と純テンソルの像の式で照合する。`projectiveCoefficientMap_awayι` は対応する Spec の写像と Proj の射の四角形の可換性。Mathlib の awayι_comp_map に渡す。追加の flat 性や Noether 性を仮定しない。
+
+
+S04 の構造射との整合性の法則の分割（着手前、係数移送の内数、60〜120行）：`projectiveCoefficientAwayMap_scalar` は任意の分母 f で、Away.map が元の R のスカラーを B のスカラーを通した同じ定数へ送る式。`projectiveCoefficientMap_structureMap` は `projectiveCoefficientMap G ≫ projectiveCechStructureMap G = projectiveCechStructureMap ((G ·).baseChange B) ≫ Spec.map (algebraMap R B)`。正次数の全標準開の被覆と既存の構造射の局所式で貼り合わせる。次数一生成・平坦性・Noether 性を追加しない。既存の射の自然性の法則で、主項目は増えない。
+
+
+S04 の係数移送の局所 pullback の法則の分割（着手前、係数移送の内数、50〜110行）：`isPullback_projectiveCoefficientChart` は、次数一 f の移送後の標準開からの Spec の二つの実際の射が、Spec R・Spec B と元の標準開の pullback を与えること。既存の `affineTensorModelIso` に構成済みの B 上の標準開の同型を渡す。`isPullback_projectiveCoefficientAwayι` は、同じ標準開の四角形が Proj の係数移送の射の pullback であること。開埋め込みと基本開の逆像の式で示す。これらを全標準開上で貼り合わせる段は後続であり、この局所四角形だけで大域の pullback の完成としない。
+
+
+S04 の係数移送の大域 pullback の法則の分割（着手前、係数移送の内数、50〜100行）：`isPullback_projectiveCoefficientMap` は、次数一の元 aᵢ の span が irrelevant ideal を含む場合に、`projectiveCoefficientMap G`・二つの既存の構造射・Spec(algebraMap R B) の四角形が実際の pullback であること。元の Proj の標準開被覆で局所判定し、局所の pullback の二つを貼り合わせる。Rees の既存の次数一被覆がこの仮定を供給する。B の平坦性や Noether 性、A の R 上の平坦性を追加しない。局所式・構造射・局所 pullback と合わせて係数移送の残りを4モジュール約230〜350行と見直す（前記200〜500行に対して、既存190行と合わせ約420〜540行）。全体の見込み・外枠は変更しない。
+
+
+S03 の重なりの法則の分割（着手前、既存の自然性の内数、70〜140行）：`homogeneousAwayMulRestrictionAlgHom G hg hx` は既存の awayMap を元の R 上の代数写像に束ねる。`homogeneousDegreeOneNormalize_eq_isLocalizationElem` は次数一の正規化された g/f と Mathlib の交叉を切り出す元との一致。`isUnit_homogeneousDegreeOneNormalize_restrict` はその元が D(fg) で単元になる法則。`homogeneousDegreeOneRestriction_transition` は次数一 x に対する `res_g(x/g) * res_f(g/f) = res_f(x/f)`。非零性や平坦性を追加せず、既存の IsLocalization_mul と斉次分数の式で示す。Segre チャートの重なりで用いる法則の分割で、新しい主項目ではない。
+
+
+## G3・S04：任意の係数移送の実際の Proj の pullback
+
+`ProjectiveCoefficientChart`（58行）：`projectiveCoefficientAwayMap_eq` は標準開の射とテンソル積への包含・構成済みの代数同型の合成との一致。`projectiveCoefficientMap_awayι` はその Spec と Proj の標準開の可換性。
+
+`ProjectiveCoefficientStructureMap`（67行）：`projectiveCoefficientAwayMap_scalar` は任意の分母の標準開の射が R のスカラーを保存すること。`projectiveCoefficientMap_structureMap` は元の Proj と移送後の Proj の構造射の実際の可換性。次数一生成も仮定しない。
+
+`ProjectiveCoefficientChartPullback`（61行）：`isPullback_projectiveCoefficientChart` は次数一の標準開と Spec B の実際の Cartesian 四角形。`isPullback_projectiveCoefficientAwayι` は任意の正次数の標準開が Proj の係数移送の射の pullback であること。
+
+`ProjectiveCoefficientPullback`（57行）：`isPullback_projectiveCoefficientMap` は、次数一の元の span が irrelevant ideal を含む場合に、移送後の Proj が元の Proj と Spec B の実際のファイバー積であること。元の Proj の開被覆で局所判定し、上の二つの Cartesian 四角形を移送した。Rees の既存の被覆がこの仮定を供給する。係数移送の平坦性・Noether 性・元の環の R 上の平坦性は不要。
+
+保存した下書きと本体のソース完全一致、四つをまとめた単独検証、対象と直接 importer のビルド5,113ジョブ、小監査19宣言（5・6・7・1）・標準三公理のみ、終了状態0。最初の局所式では graded map の像と 1⊗f の照合、構造射では被覆の定義を明示し、対応する Mathlib の証明と同じ局所的な backward.isDefEq.respectTransparency false を三宣言に用いた。資源制限の引き上げなし。行長の警告を折り返した後も対象ビルドを再実行し成功。ログ `2g-coefficient-pullback-check-2.log`・`2g-projective-coefficient-pullback-native-2.log`・`2g-projective-coefficient-pullback-audit.log`。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。検証・ビルド・監査は各回別の共有鍵 --class impl --wait 3600、待ちは一つ。root・下流全ビルド・全体監査は行っていない。
+
+今回4モジュール243行＋入口4行。2g-2 本体2,656行・入口込み2,700行、小監査290宣言・標準三公理のみ。90649a8b1 の後の係数移送の束は8モジュール433行＋入口8行、小監査49宣言。次数一被覆を持つ Proj の任意の係数移送の大域 pullback に到達した。S03 の Segre の重なりの自然性、S04 の Segre の大域貼り合わせ・有限ファイバー冪の表示、G4〜G5 は未完。残りの主要な束はこの5つ。全体の見込み約5,500〜12,000行・外枠16,000行は不変。停止点2g-2ではない。
+
+一覧：済み0／全体3（うち追加0）。
