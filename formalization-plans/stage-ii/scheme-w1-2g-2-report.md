@@ -6,7 +6,7 @@
 
 | ID | 型・出口 | 状態 | 追加 |
 | --- | --- | --- | --- |
-| G3 | BS17 Lemma 2.6 の帰納的レベルの有限性と、射影版の入力に使うブローアップ・有限ファイバー冪の表示 | 未完 | |
+| G3 | BS17 Lemma 2.6 の帰納的レベルの有限性と、射影版の入力に使うブローアップ・有限ファイバー冪の表示 | 済み | 下記の有限レベルの存在・Rees と既存の Čech 各項の実際の表示 |
 | G4 | B1 の二重 Čech の API と 2f の射影 Čech 四角形を使う、Thm 2.9 十分性のこのレーンの係数への実装 | 未完 | |
 | G5 | 実際の有限型模型・Frobenius 係数と filtered な Čech 完全性の移送、最終型への入口 | 未完 | |
 
@@ -804,3 +804,28 @@ S04 の Rees への戻しと 2f への入口（着手前、既存の Rees 表示
 今回4モジュール224行＋入口4行。2g-2 本体3,945行・入口込み4,006行、小監査481宣言・標準三公理のみ。既存の Čech nerve の各項への表示の帰納の43行の下書きは単独検証まで成功したが、本体ビルド・監査前なので今回のコミットには含めない。Rees の実際の blowup の各 Čech 項への特殊化と G4・G5 は未完。全体の見込み約5,500〜12,000行・外枠16,000行は不変。停止点2g-2ではない。
 
 一覧：済み0／全体3（うち追加0）。
+
+
+S04 の一般の blowup のアフィン開への移送の法則の分割（着手前、既存のアフィン開比較の内数、60〜140行）：`isPullback_blowupAffineOpenMap` は、既存の blowupAffineOpenMap と affineBlowupπ が、一般の blowupπ のアフィン開 j:Spec A→X への実際の pullback を与えること。既存の開埋め込み・像の式・基底への合成式を使う。`nonempty_blowupAffinePullbackProjectiveModel` は対応する中心の有限生成性から、この既存の pullback.snd の次数一表示を返す。`nonempty_blowupAffinePullbackCechTermModel` はその増大 Čech nerve の各項の同じ表示の存在。Stacks 080Y に対応する既存の比較を証人の同型移送に渡す法則で、新しい近似モデルの存在を追加しない。
+
+
+G4 の表示の同型による係数移送の法則（着手前、既存の逆像・係数図式の同型の内数、80〜160行）：`schemeStructureRingPullbackCoefficient_isIso` はスキームの同型に沿う既存の切断環の引き戻しが係数図式の同型であること。`schemeStructurePerfectPullbackCoefficient_isIso` は同じ Frobenius 順極限後の係数図式の同型。`schemeStructurePerfectCechPullbackMap_isIso` は元の被覆 U とその逆像被覆について、既存の引き戻しの Čech 複体の射そのものが同型になること。原環・実際の app・既存の逆像の比較を保ち、導来関手の H との比較は追加しない。これにより表示の同型で射影版の計算を実際の構造層へ移し、後続で同じ逆像の射と細分の自然性を使う。
+
+
+## G3・S04：実際の blowup の既存の Čech 各項の表示、G3 の区切り
+
+`DegreeOneProjectiveModelFiberPowers`（43行）：`DegreeOneProjectiveModel.finiteFiberPower` は、既存の wide pullback の base に次数一表示を帰納する。`DegreeOneProjectiveModel.cechTerm` の出口は `(Arrow.mk f).augmentedCechNerve.hom.app n` の表示そのもの。
+
+`ReesFiniteFiberPowerModel`（35行）：`nonempty_affineBlowupDegreeOneProjectiveModel` は、有限生成中心から実際の affineBlowupπ の表示の存在を供給。`nonempty_affineBlowupCechTermModel` は、その既存の増大 Čech nerve の各項の表示の存在。表示の存在は追加仮定ではなく既存の Rees 全射評価から導いた。
+
+`BlowupAffineProjectiveModel`（47行）：`isPullback_blowupAffineOpenMap` は一般の blowup の既存のアフィン開比較が実際の Cartesian 四角形であること。`nonempty_blowupAffinePullbackProjectiveModel` は元の pullback.snd の表示の存在。`nonempty_blowupAffinePullbackCechTermModel` はその既存の Čech nerve の各項の表示の存在。入力の有限生成性は対応する環イデアルだけで、Noether 基底上では既存の Noether 性から得る。
+
+三本とも単独検証、下書きと本体のソース完全一致、対象と入口のビルド5,133ジョブ、小監査17宣言（12・2・3）・標準三公理のみ、終了状態0。既定の透明性・資源制限で通る。追加公理・sorry・既存の型変更・200行超の宣言なし。ログ `2g-degree-one-model-fiber-powers-check-2.log`・`2g-rees-finite-fiber-power-model-check.log`・`2g-blowup-affine-projective-model-check.log`・`2g-blowup-cech-term-models-native.log`・`2g-blowup-cech-term-models-audit.log`。共有鍵 --class impl --wait 3600、待ちは一つ。root・下流全ビルド・全体監査なし。
+
+今回3モジュール125行＋入口3行。2g-2 本体4,070行・入口込み4,134行、小監査498宣言・標準三公理のみ。2g-1 報告56ea849a3 の木と現在の本体のファイルを独立に比較しても、新規64モジュール・本体4,070行・入口64行と一致した。累計の宣言数はこれまでの各束の所有元による小監査の和であり、今回64モジュールの再監査は行っていない。
+
+**G3 は済み**。一般の固有全射の有限レベルの存在、Rees の実際の全射表示、任意の係数移送の Proj の pullback、Segre のチャート・大域の実際のファイバー積、既存の Čech 各項への有限表示の帰納、一般の blowup のアフィン開の比較と 2f の係数入力まで揃った。
+
+G4 では、一般の ProperInductiveLevel の証人の r が射影的であるとは仮定しない。射影版の F8 を当てる箇所では、2d が返す実際の blowup を保持して Noether 基底の閉集合上の帰納を進める。その局所射・各 Čech 項には前記の同じ表示を渡す。表示の同型による構造層の Čech 複体の移送の下書きはまだ未検証で、今回のコミットには含めない。G4・G5 と停止点2g-2は未完。残りの見込みは G4 が約1,300〜2,800行、G5 が約1,000〜2,500行に、同型・被覆の整合性の余裕を含め、全体の見込み約5,500〜12,000行・外枠16,000行を維持する。
+
+一覧：済み1／全体3（うち追加0）。
