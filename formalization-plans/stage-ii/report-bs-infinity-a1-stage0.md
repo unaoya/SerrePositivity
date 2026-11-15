@@ -543,3 +543,138 @@ SheafUnitConeTransport と GlobalSectionsFunctor 計14宣言の小監査は標�
 Γ・RΓの全関手と同じ単位からの全自然変換まで検証した。
 S2は全Γ関手と選択済み頂点の比較・位相比較が残るため完了には数えない。
 GlobalSectionsConeComparison は作業木の未検証下書き。
+
+### S2：層と位相の比較（未検証）
+
+一覧：済み 1／全体 8（うち追加 0、済み：S4、S7は後続）。
+
+`DerivedGlobalSectionsComparison.lean` の法則：
+```lean
+theorem derivedGlobalSections_of_isSheaf (hF : IsSheaf J F) :
+  ∃ c : JoinCone F, IsLimitCone c ∧ c.vertex = derivedGlobalSections J hJ hE F
+def derivedGlobalSectionsSheafIso (hF : IsSheaf J F) :
+  VertexIso (derivedGlobalSections J hJ hE F) (globalSections F (hasLimit_presheaf hE F))
+def derivedGlobalSectionsTopologyIso (h : J ≤ J') (hF : IsSheaf J' F) :
+  VertexIso (derivedGlobalSections J hJ hE F) (derivedGlobalSections J' hJ' hE F)
+theorem derivedGlobalSections_of_le (h : J ≤ J') (hF : IsSheaf J' F) :
+  ∃ e : E.Edge (derivedGlobalSections J hJ hE F) (derivedGlobalSections J' hJ' hE F),
+    IsInvertibleEdge e.toTruncated
+```
+単位で輸送した指定極限錐と同じ右随伴を用いる。
+
+### S8：離散前層の入口（未検証）
+
+一覧：済み 1／全体 8（うち追加 0、済み：S4、S7は後続）。
+
+`DiscretePresheaf.lean` の証明分割：
+```lean
+def discretePresheaf (P : Cᵒᵖ ⥤ Type u) : Presheaf C SpaceInfinity
+lemma discretePresheaf_vertex (P : Cᵒᵖ ⥤ Type u) (U : C) :
+  (discretePresheaf P).app _ (ULift.up (nerveVertex (op U))) =
+    coherentNerveVertex (setsToKan.obj (P.obj (op U)))
+theorem sheafification_exists_spaces J : Sheafification J SpaceInfinity
+```
+S8の一般重みの構成・離散重みの全関手比較・局所同値の主張はまだ未完。
+
+### S2：選択済み RΓ 頂点の射（未検証）
+
+一覧：済み 1／全体 8（うち追加 0、済み：S4、S7は後続）。
+
+`DerivedGlobalSectionsMap.lean` の法則：
+```lean
+def derivedGlobalSectionsValueIso J hJ hE F :
+  VertexIso (derivedGlobalSections J hJ hE F) ((derivedGlobalSectionsFunctor J hJ hE).app _ (functorVertex F))
+def derivedGlobalSectionsHom J hJ hE (α : FunctorHom F G) : hE(RΓ F, RΓ G)
+lemma derivedGlobalSectionsHom_id : derivedGlobalSectionsHom J hJ hE (𝟙 _) = 𝟙 _
+lemma derivedGlobalSectionsHom_comp α β :
+  derivedGlobalSectionsHom J hJ hE (α ≫ β) = derivedGlobalSectionsHom J hJ hE α ≫ derivedGlobalSectionsHom J hJ hE β
+def derivedGlobalSections_map J hJ hE (η : SSet.Homotopy F G) : E.Edge (RΓ F) (RΓ G)
+lemma derivedGlobalSections_map_hom η : homMk (derivedGlobalSections_map J hJ hE η).toTruncated =
+  derivedGlobalSectionsHom J hJ hE (homMk (functorEdgeOfSimplicialHomotopy η))
+```
+辺の代表を選ぶ前の全関手・指定比較・射の類を保持する。
+
+### S2：層の全族の単位と位相（未検証）
+
+一覧：済み 1／全体 8（うち追加 0、済み：S4、S7は後続）。
+
+`SheafGlobalSectionsFamily.lean` の既存の反射と係数移送の法則：
+```lean
+abbrev SheafCat J E := fullSubcomplexOnVertices (PresheafCat C E) (sheafProperty J)
+def sheafInclusion J : SheafCat J E ⟶ PresheafCat C E
+def sheafGlobalSectionsUnitIso J hJ hE (s : A ⟶ SheafCat J E) :
+  FunctorIso ((s ≫ sheafInclusion J) ≫ globalSectionsFunctor hE)
+    ((s ≫ sheafInclusion J) ≫ derivedGlobalSectionsFunctor J hJ hE)
+def sheafTopologyInclusion (h : J ≤ J') : SheafCat J' E ⟶ SheafCat J E
+lemma sheafTopologyInclusion_comp : sheafTopologyInclusion J J' h ≫ sheafInclusion J = sheafInclusion J'
+def derivedGlobalSectionsTopologyFamilyIso (h : J ≤ J') (s : A ⟶ SheafCat J' E) :
+  FunctorIso ((s ≫ sheafInclusion J') ≫ derivedGlobalSectionsFunctor J hJ hE)
+    ((s ≫ sheafInclusion J') ≫ derivedGlobalSectionsFunctor J' hJ' hE)
+```
+任意のパラメータA、実際の全射・高次単体を保持し、比較は元の反射単位の制限から作る。
+
+### S8：離散前層の全埋め込み（未検証）
+
+一覧：済み 1／全体 8（うち追加 0、済み：S4、S7は後続）。
+
+`DiscretePresheafInclusion.lean` の既存の構成の合成と値の法則：
+```lean
+def kanDiscretePresheafFunctor C : (Cᵒᵖ ⥤ Type u) ⥤ KanDiagramObject Cᵒᵖ
+def kanDiscretePresheafMap C : nerve (Cᵒᵖ ⥤ Type u) ⟶ PresheafCat C SpaceInfinity
+lemma kanDiscretePresheafMap_vertex P : kanDiscretePresheafMap C (nerveVertex P) = functorVertex (discretePresheaf P)
+lemma kanDiscretePresheafMap_edge φ : (nerve.edgeMk φ).map (kanDiscretePresheafMap C) |₁ =
+  kanDiagramNaturalTransformationEdge (whiskerRight (whiskerRight φ setsToKan) kanObjectForget) |₁
+def kanDiscretePresheafInclusion C : { I // 頂点と辺の上記二仕様 }
+```
+既存の kanDiagramBundle・nerveToCoherent・kanDiagramRealization を合成し、
+同じ自然変換・高次単体を再構成しない。報告中の `|₁` は辺の一単体の略記。
+
+### S3：指定有限冪の座標計算（未検証）
+
+一覧：済み 1／全体 8（うち追加 0、済み：S4、S7は後続）。
+
+`CechPowerMaps.lean` は既存の CechNerveData の積の普遍性の法則：
+```lean
+def cechPowerLift d (g : Fin (n+1) → (V ⟶ U)) : V ⟶ d.obj.obj (op ⦋n⦌)
+lemma cechPowerLift_proj : cechPowerLift d g ≫ d.proj n i = g i
+lemma cechPower_hom_ext (h : ∀ i, f ≫ d.proj n i = g ≫ d.proj n i) : f = g
+lemma cechPowerLift_proj_eq f : cechPowerLift d (fun i ↦ f ≫ d.proj n i) = f
+lemma cechPowerLift_precomp : f ≫ cechPowerLift d g = cechPowerLift d (fun i ↦ f ≫ g i)
+lemma cechPowerLift_map : cechPowerLift d g ≫ d.obj.map θ.op = cechPowerLift d (fun i ↦ g (θ.toOrderHom i))
+```
+S3の comma の点・座標・収縮を元の有限冪のまま作るための前提計算。
+
+### S8：右 Kan 拡張の指定 Yoneda 射（未検証）
+
+一覧：済み 1／全体 8（うち追加 0、済み：S4、S7は後続）。
+
+`SpacePresheafYoneda.lean` は既存の構成の合成・評価の法則：
+```lean
+def discretePresheafInclusion C : { I // 元の頂点仕様 ∧ 各対象で集合の射を離散化する辺の仕様 }
+def liftedSetYoneda C : ulift (nerve C) ⟶ nerve (Cᵒᵖ ⥤ Type u)
+def oppositeSpaceYoneda C : presheafShape C ⟶ (PresheafCat C SpaceInfinity).op
+```
+S8の主張の型の元の指定 Yoneda 射を固定する。一般重みの右 Kan 拡張の存在と保存性はまだ残る。
+
+## S2 完了・S3/S8 の検証済み入口（11-15）
+
+一覧：済み 2／全体 8（うち追加 0、済み：S2・S4、S7は後続）。
+
+検証済みは全体30本・1952行、190宣言、小監査は標準三公理のみ。
+追加ログ `/tmp/is-w1/sections-comparison/build-2.log`（9宣言）、
+`/tmp/is-w1/sections-maps/build.log`（22宣言）、
+`/tmp/is-w1/sheaf-families/build-2.log`（27宣言）。対象ビルド7,318 jobs成功。
+すべてプロセス終了・鍵解放確認済み。計算上限は変更なし。
+
+S2 完了の証拠：
+- Γ と RΓ の指定極限錐・極限性、元の単位を保つ全錐の輸送。
+- Γ・RΓ の実全関手、同じ反射単位からの全自然変換。
+- `globalSectionsConeFamilyIso` と `globalSectionsConeValueIso` による指定錐との比較。
+- `derivedGlobalSections_map` と元の射の類の回収、恒等・合成則。
+- `derivedGlobalSections_of_isSheaf`、`derivedGlobalSections_of_le` は元の drafts の仮定・結論を維持。
+- `sheafGlobalSectionsUnitIso`・`derivedGlobalSectionsTopologyFamilyIso` は任意のパラメータの全族に対し、
+  同じ反射単位の制限から作った関手同型。独立な頂点の同型に縮めない。
+
+S3 は CechPowerMaps の座標計算だけ、S8 は離散前層・その全埋め込み・空間値層化の存在だけ。
+S3 の cofinality、S8 の一般重み・余極限を極限へ送る性質・局所同値、S1 の残り・S5・S6 は未完。
+SpacePresheafYoneda は未検証の作業木に残す。
