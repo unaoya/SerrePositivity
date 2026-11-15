@@ -225,5 +225,8 @@
   "SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.OppositeFunctorIsoEvaluation",
   "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceAugmentationPointValues",
   "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceTargetPointValues",
-  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointCorrectionComponentArrows"
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointCorrectionComponentArrows",
+  "SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.ArrowMiddleUnit",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.TwistedArrowVertexEdgeNerve",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointCorrectedUnitArrow"
 ]
