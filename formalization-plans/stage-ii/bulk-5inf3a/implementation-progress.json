@@ -3,7 +3,7 @@
   "complete": 2,
   "total": 6,
   "added": 0,
-  "verified_head": "this commit: base 972b56b8cf2a7a85ecef691d09b1c079c46f6070",
+  "verified_head": "this commit: base 6ffd7822e3963d2eae7b7101aa38589acb79b5d6",
   "items": {
     "HT01": "complete",
     "HT02": "complete",
@@ -12,13 +12,13 @@
     "HT05": "not-started",
     "HT06": "not-started"
   },
-  "latest_complete_audit_checkpoint": "universal-crystalline-amplitude-checkpoint.json",
-  "latest_complete_audit_declarations": 1178,
+  "latest_complete_audit_checkpoint": "universal-crystalline-totalization-checkpoint.json",
+  "latest_complete_audit_declarations": 1179,
   "working_changes_unverified": [
-    "AffineCoefficientDiagram",
-    "AffineCoefficientBockstein"
+    "AffineCoefficientBockstein",
+    "AffineCoefficientDiagram"
   ],
-  "pending_check": "bundle-075 terminal rc1; see audit module inventory; failed dependencies await next batch",
+  "pending_check": "bundle-076 terminal rc1; see audit module inventory; failed dependencies await next batch",
   "next_proof_route": "ht02-next-proof-route.md",
   "initial_record": {
     "stage": "5inf3a",
