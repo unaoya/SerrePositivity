@@ -662,3 +662,35 @@ S03 の重なりの法則の分割（着手前、既存の自然性の内数、7
 今回4モジュール243行＋入口4行。2g-2 本体2,656行・入口込み2,700行、小監査290宣言・標準三公理のみ。90649a8b1 の後の係数移送の束は8モジュール433行＋入口8行、小監査49宣言。次数一被覆を持つ Proj の任意の係数移送の大域 pullback に到達した。S03 の Segre の重なりの自然性、S04 の Segre の大域貼り合わせ・有限ファイバー冪の表示、G4〜G5 は未完。残りの主要な束はこの5つ。全体の見込み約5,500〜12,000行・外枠16,000行は不変。停止点2g-2ではない。
 
 一覧：済み0／全体3（うち追加0）。
+
+
+S03 の標準開の射の遷移の法則の分割（着手前、自然性の内数、100〜200行）：`exists_degreeOneChart_overlapMap` は、次数一評価が全射な表示について、二つの標準開から C への代数写像 φ・ψ と、単元 φ(g/f)、生成元ごとの遷移式 `ψ(aᵢ/g)*φ(g/f)=φ(aᵢ/f)` から、交叉の斉次局所化から C への同じ制限を持つ代数写像を返す。既存の IsLocalization.Away.liftAlgHom と外延性による延長の法則。`degreeOneChart_compat_of_transition` は、その二つの Spec の射を Proj へ合成すると一致すること。既存の SpecMap_awayMap_awayι に渡す。Segre の行・列の重なりを同じ法則で扱い、射影性や中心の存在を追加の仮定にしない。
+
+
+S03 の Segre の重なりの座標の法則の分割（着手前、自然性の内数、100〜200行）：二つの座標 δ=Zᵢⱼ・δ′=Zₘₙ の交叉 D(δδ′) 上で、`segreOverlapFirstCoordinate`・`segreOverlapSecondCoordinate` は二つの正規化した座標の制限。`segreOverlapFirst_minor` は小行列式の関係式の制限。`segreOverlap_crossCoordinates_isUnit` は Zₘⱼ/δ と Zᵢₙ/δ の制限がともに単元になる法則。`segreOverlap_coordinate_transition` は一般の正規化の遷移式の適用。`segreOverlap_column_transition`・`segreOverlap_row_transition` は行・列の生成元に必要な遷移式。既存の小行列式と、交叉で δ′/δ が単元になる事実から導く。元の座標環の平坦性・零因子でないことは仮定しない。
+
+
+S03 の Segre の局所射の重なりの法則の分割（着手前、自然性の内数、90〜180行）：`segreColumnChart_compat`・`segreRowChart_compat` は、D(Zᵢⱼ Zₘₙ) から Proj A・Proj B への、それぞれ二つの標準開を経由する実際の射の一致。構成済みの行・列の標準開写像を同じ交叉へ制限し、前記の単元と座標の遷移式を `degreeOneChart_compat_of_transition` へ渡す。大域の貼り合わせを行う前の可換性の法則。
+
+
+S04 の Segre の大域の射の法則の分割（着手前、既存の貼り合わせの内数、140〜260行）：`segreProjectiveOpenCover` は既存の次数一の座標の被覆を束ねる。`segreGlueMorphisms` とその標準開への合成則は、実際の交叉 D(δδ′) での可換性を Mathlib の pullbackAwayιIso と glueMorphisms へ渡す貼り合わせの法則。`segreLeftProjection`・`segreRightProjection` は行・列の局所射を貼り合わせた Proj S→Proj A・Proj B の実際の射。標準開との二つの合成則も供給する。これだけで Proj S とファイバー積の同型を主張せず、その判定と有限冪は後続に残す。
+
+
+S04 の貼り合わせ後の比較の紙の筋：二つの大域の射 πA・πB に対し、`πA ⁻¹ D(aᵢ) ∩ πB ⁻¹ D(bⱼ) = D(Zᵢⱼ)` を元の Segre の全標準開 D(Zₖₗ) 上で確認する。局所の二つの逆像は正規化された Zᵢₗ・Zₖⱼ の基本開で、その交叉は小行列式の式により正規化された Zᵢⱼ の基本開。次に二つの因子の標準開被覆で pullback を順に局所判定し、この逆像の式で現れる対象を同じ D(Zᵢⱼ) と同定する。局所の Cartesian 四角形は既存の `segreStandardOpenTensorEquiv` と二つの行・列の写像で供給する。これにより大域のファイバー積の比較を行い、その後に有限正次数のファイバー冪を帰納で供給する。現時点ではこの段は紙の筋であり、大域の pullback・有限冪は未検証。
+
+
+## G3・S03：Segre の行・列の局所射の重なりでの一致
+
+`HomogeneousDegreeOneOverlap`（72行）：`homogeneousAwayMulRestrictionAlgHom` は同じ awayMap の R 上の代数写像。`homogeneousDegreeOneNormalize_eq_isLocalizationElem` は比の同定。`isUnit_homogeneousDegreeOneNormalize_restrict` は交叉での単元性。`homogeneousDegreeOneRestriction_transition` は次数一の元の正規化の遷移式。
+
+`DegreeOneChartCompatibility`（92行）：`exists_degreeOneChart_overlapMap` は、生成元ごとの遷移式と単元の条件を満たす二つの局所射の同じ交叉への延長。`degreeOneChart_compat_of_transition` はそれらを Proj へ合成した実際の射の一致。
+
+`SegreOverlapCoordinates`（115行）：`segreOverlapFirstCoordinate`・`segreOverlapSecondCoordinate` は二つの正規化の同じ交叉への制限。`segreOverlapFirst_minor` は小行列式の制限。`segreOverlap_crossCoordinates_isUnit` は二つの交差する座標の比の単元性。`segreOverlap_coordinate_transition`・`segreOverlap_column_transition`・`segreOverlap_row_transition` は一般の座標・列・行の遷移式。
+
+`SegreChartCompatibility`（106行）：`segreColumnChart_compat`・`segreRowChart_compat` は D(Zᵢⱼ Zₘₙ) から二つの標準開を通じる Proj A・Proj B への射の一致。次数一の評価の全射性を使い、平坦性・Noether 性・非零な座標は仮定しない。
+
+四つをまとめた単独検証、下書きと本体のソース完全一致、対象と直接 importer のビルド5,117ジョブ、小監査36宣言（8・5・13・10）・標準三公理のみ、終了状態0。分母を固定する形で map_mul と小行列式の等式を合成し、依存する局所化の型の不要な書き換えを避けた。新しい四ファイルは既定の透明性・資源制限で通る。行長の折り返しの後も再ビルド成功。ログ `2g-segre-chart-compatibility-check-2.log`・`2g-segre-chart-compatibility-native-2.log`・`2g-segre-chart-compatibility-audit.log`。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。検証・ビルド・監査は各回別の共有鍵 --class impl --wait 3600、待ちは一つ。root・下流全ビルド・全体監査は行っていない。
+
+今回4モジュール385行＋入口4行。2g-2 本体3,041行・入口込み3,089行、小監査326宣言・標準三公理のみ。S03 はチャートの実際の代数同型と重なりの射の一致まで到達。S04 の大域の貼り合わせ・ファイバー積・有限冪、G4〜G5 は未完。大域射の下書き `SegreProjectiveProjections.lean` は未検証で drafts に保持。残りの主要な束は大域の貼り合わせとファイバー積、有限冪、G4、G5 の4つ。全体の見込み約5,500〜12,000行・外枠16,000行は不変。停止点2g-2ではない。B4′ の指示に従い、この検証済みの束を先にコミットして追従へ移る。
+
+一覧：済み0／全体3（うち追加0）。
