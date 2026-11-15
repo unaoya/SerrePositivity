@@ -2422,3 +2422,45 @@ IsColimitCone (discretePresheafCocone c)
 一般重み側の依存照合が未確定なので、全残量の確定見積もりは保留する。
 外枠18,600行は維持し、新しい一まとまりや上限超過の必要が判明したら共通の規則で止める。
 一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
+
+### S8：全余錐の制限則と三角形の反転の法則（11-15）
+
+4本298行・12宣言の対象ビルドと小監査が成功（標準三公理のみ）。
+記録：`/tmp/is-w1/s8-cocone-triangle-laws-8/`、source SHA 一致。
+
+```lean
+ulift.map (nerveMap G) ≫ (strictCoconeIndexIso I).hom =
+  (strictCoconeIndexIso J).hom ≫ opFunctor.map (ulift.map (nerveMap G.op))
+
+joinMap (ulift.map (nerveMap G)) (𝟙 Δ[0]) ≫
+  (strictNativeCocone c).val = (strictNativeCocone (c.whisker G)).val
+
+coherentOppositeSimplex ((nerveToCoherent C).app (op ⦋n⦌) A) =
+  (nerveToCoherent Cᵒᵖ).app (op ⦋n⦌)
+    ((ComposableArrows.opEquivalence C n).functor.obj (op A))
+
+((joinStdSimplexIso 1 0).inv ≫
+  joinMap ((stdSimplex.opIso ⦋1⦌).inv ≫ opFunctor.map a) (𝟙 Δ[0])) ≫
+  c.reverseCocone.val =
+(stdSimplex.opIso ⦋2⦌).inv ≫ opFunctor.map
+  ((pointJoinStdSimplexIso 1).inv ≫ joinMap (𝟙 Δ[0]) a ≫ c.val)
+```
+
+`StrictCoconeShapeRestriction` は既存の全錐の再添字則と反転の制限則を再利用。
+`OrdinaryCoherentReversal` は Mathlib の射列の反対同値と既存の coherent 反転の法則。
+`CoconeTriangleReverseShape` は固定した三頂点で順方向の同型を比較してから逆射へ戻す。
+`StrictCoconeEdgeReflection` は添字同型の指定辺での評価の法則。
+全て既存の構成の自然性・計算則で、型つき ID の追加はない。
+
+全余錐の制限則の推論で既定の計算上限の時間切れを確認した。
+反対の錐側の式へ証明分割し、指定した部分だけを rw して通した。上限は変更していない。
+途中の commentary の「制限則が通った」は添字の自然性だけの検証と取り違えたもので、訂正済み。
+
+直近の四角形への接続の再見積もり：当初200〜400行に対し、上の法則298行、
+係数を含む全二単体の照合の下書き約126行、四角形への同定を更に100〜200行程度とみる。
+再添字・有限反転の全射の法則を分割する必要があり、合計約524〜624行へ増えた。
+この下書きは未検証なのでコミットせず、完成とは数えない。
+
+検証済み全体153本9,637行・825宣言、外枠18,600行内。
+S1 の二判定、S8 の元の四角形・全重みの比較・連続性・局所同値は未完。
+一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
