@@ -15853,8 +15853,80 @@ main 58d6a0de9 を自レーンへ統合した。統合コミットは **81683a2a
 - 宣言名の照合：自レーンのmanifest群等から562ファイル・1778個の名前を取り、mainのEInfinity/3745ファイル・13373個の名前と照合。異なるファイル間の同名宣言は0、自レーン内部も0。これは名前付きのソース宣言の照合で、上の実環境での監査と分けて記録する。
 - 自レーン対象のgit diff --check：通過。
 
-ビルドと監査のログは /private/tmp/isw2-b4prime-20261115/build327.log、統合の検収記録は merge-result.json、重複照合は /private/tmp/isw2-declaration-collision-scan.json。
+ビルドと監査のログは /private/tmp/isw2-b4prime-20261115/build327.log、統合の検収記録は merge-result.json、重複照合は /private/tmp/isw2-b4prime-20261115/declaration-collision-scan.json。
 
 ### 268.4 /goal の続き
 
 B4′は完了。R03hの単位・反転・全augmentation制限の個別検査済みの法則を本体の新規ファイルへ分けて検証し、同じnative fiber射と元のroofの全interval族の照合を続ける。R03dの全関手同型と元の固定始域の同型との照合、3b-4aの残りは未完。点ごとの同値で置き換えず、外枠22,000行と型つき一覧の規則を維持する。
+
+## 269. 同じroof・native augmentationの照合則の本体化と、同じ全変換の射（2026-11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 24（うち追加 12）。
+
+### 269.1 検収
+
+§263〜267の個別検査済みの法則を本体の新規15モジュールへ分けた。元の同じroofのラベル・全augmentation・標的置換単位を保持したまま、元の全関手同型のfiber制限まで照合する。既存のMapHomotopyCategoryComp・FunctorIsoWhiskerCancellation・FunctorIsoVertexEvaluation等はimportして使い、再定義していない。公開importの不足と名前空間のopenを補い、最終の鍵付き対象ビルド330で確認した。
+
+さらに、既存の全straightening関手で同じ底上の射を写す共通1本と、その値を元のraw/native Homの両変数の全変換にするBE1本を追加した。これはR03dの同じ射の定義の部分であり、元の実射を別の射へ置き換えていない。mの弱同値性を仮定していない。元の単位を保つ延長を後で適用し、可逆性と固定始域の元の指定同型との一致を証明する必要が残る。
+
+コードのコミット：**e879e4d7f**。新規17本（共通6・BE11）、**1,345行・90宣言**。既存のLeanの変更は0。登録候補JSONは is-w2-be-20261114-modules.json の **213本**に更新した。入口と公式監査への登録は調整役の取り込み時の対象。
+
+- 鍵：--class impl --wait 3600、一枚の整理券、実処理gtimeout 1700秒。
+- 対象ビルド：新規17本、成功（依存を含む12,266 jobs）。
+- 小監査：AuditISW2BKCells330.lean、**217モジュール・1,508宣言、propext・Classical.choice・Quot.soundのみ**。sorryAx・追加公理なし。二つの互換モジュールの宣言数0と既存定理の定義元の検査も継続して成功。
+- 宣言名の照合：main d2354cf40に固定し、自レーン579ファイル・1,829個の名前と、mainのEInfinity/3,745ファイル・13,373個の名前を照合。異なるファイル間の重複0、自レーン内部も0。
+- git diff --check：通過。
+
+証跡：/private/tmp/isw2-build330.log、isw2-validation330.json、isw2-declaration-collision-scan330.json。§268の重複照合の証跡はB4′ディレクトリに固定したコピーへリンクを揃えた。
+
+### 269.2 規模と残り
+
+3b-4の実測は **213モジュール・14,160行・1,501宣言**（小監査の既存確認対象4本はこの実測に含めない）。外枠22,000行まで7,840行。既存構成の単位・反転・制限の法則と証明の分割なので、今回の追加を一覧の新しい数学のIDとしては数えない。
+
+§260のR03hの850〜1,400行という見込みは、前提の法則・照合データだけで15本・1,262行になったため、完成までの総増分の見込みとしては低かった。残る主等式の証明は、同じcorrected pairingの全族を同じroofの全族へ合わせる部分で、見込み450〜850行。前提の実測とこの主等式を合わせるとR03hの一群は1,712〜2,112行程度になる。新しい数学の中間の主張自体が1,500行を超える見込みや、別のまとまりが必要になった場合は§19の条件で報告する。
+
+R03hの最終interval族の等式、同じnative fiber射自身の弱同値性、R03dの全関手同型と元の固定始域の指定同型との一致は未完である。R02・R03・R04・R05、R11・R12のTotの分も引き続き残る。今回の全変換の射を可逆とみなしたり、対象ごとの同値で置き換えたりはしていない。
+
+### 269.3 今回の新しい射の定義の型
+
+以下はR03dの射の定義の分割。§263〜267に記録した法則の型は同じで、今回本体の名前空間へ配置した。privateな端点輸送の補題の型も§263・§266に記録済み。
+
+#### LeftStraighteningDiagramHom
+
+```lean
+def leftStraighteningInfinityDiagramHom {E F B : SSet.{u}}
+    (p : E ⟶ B) (q : F ⟶ B) [LeftFibration p] [LeftFibration q]
+    (f : E ⟶ F) (hf : f ≫ q = p) :
+    FunctorHom (leftStraighteningInfinityDiagram p) (leftStraighteningInfinityDiagram q)
+```
+
+#### StrictDiagramTotJointNativeTransformation
+
+```lean
+def strictBETotJointSourceNativeTransformation
+    (m : (simplicialElementsReplacement (strictBETotJointSourceCoefficients A)).left ⟶
+      strictBETotJointNativeHomTotalSpace A)
+    (hm : m ≫ strictBETotJointNativeHomProjection A =
+      (simplicialElementsReplacement (strictBETotJointSourceCoefficients A)).hom) :
+    FunctorHom (strictBETotJointRawHomCoherent A) (strictBETotJointNativeHomCoherent A)
+```
+
+### 269.4 新規の登録候補
+
+- `SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.OppositeFunctorIsoWhisker`（120行）
+- `SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.NerveLeftOpInput`（31行）
+- `SerrePositivity.EInfinity.FrameHom.NerveColumnWhiskering`（102行）
+- `SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRoofFrame`（108行）
+- `SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRoofGraph`（76行）
+- `SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRoofPrefix`（75行）
+- `SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRoofColumn`（66行）
+- `SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRoofAugmentation`（75行）
+- `SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.SimplicialElementsFiberFunctorLaws`（41行）
+- `SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRoofParameter`（136行）
+- `SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRoofNativeAugmentation`（75行）
+- `SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceTargetFiber`（91行）
+- `SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceOppositeAugmentation`（157行）
+- `SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.FunctorIsoConstantFamily`（46行）
+- `SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceTargetUnit`（64行）
+- `SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftStraighteningDiagramHom`（38行）
+- `SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointNativeTransformation`（44行）
