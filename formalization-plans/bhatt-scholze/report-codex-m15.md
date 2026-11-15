@@ -10430,3 +10430,137 @@ def endpointSimplexEquivalence : BottomSimplexCategory ≌ TopSimplexCategoryᵒ
 
 G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み1,093行。
 M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
+
+## §78 G01：混合Homの4つの水平合成の双関手（11-15）
+
+### 78.1 実構成の範囲
+
+G01のwalking adjunctionの水平合成を進めた。追加は2ファイル331行・明示宣言22。
+G12の検証済み累計は **12ファイル1,424行・明示宣言109**。
+G01自体は未完であり、一覧の済みは0のまま。
+
+| ファイル | 行数 | 構成・法則 |
+|---|---:|---|
+| OrdinalSumFunctor.lean | 106 | 非空順序和の実双関手、両側の包含、片側の因子だけからの端点保存 |
+| EndpointOrdinalActions.lean | 225 | 空順序集合を含む左右の合成の実関手族、包含の全自然性、反対側の2つの双関手 |
+| **追加** | **331** | G01の構成とその法則の分割。新しい一覧IDは加えない |
+
+直接の二つはΔ₊×Δ∞→Δ∞とΔ−∞×Δ₊→Δ−∞。
+既存の順序和と端点の包含から非空の場合の全関手族を作り、WithInitial.liftで
+空順序集合の値を同じ恒等関手として拡張した。構成済みのGalois双対と反対圏を通じ、
+Δ₊ᵒᵖ×Δ−∞→Δ−∞とΔ∞×Δ₊ᵒᵖ→Δ∞も実双関手として構成した。
+対象の値だけでなく、両変数の射の合成・自然性を含む。
+
+原典は[Riehl–Verity](https://math.jhu.edu/~eriehl/adjunctions.pdf) Remark 3.3.8。
+HA Proposition 4.7.3.3 の全拡張の添字の構成に使い、docstringにもその用途と
+Kerodon Remark 6.2.1.4（Tag 02EN）を記した。
+
+**未完との境界**：これらのActionという名前の宣言は水平合成の双関手を構成した段階。
+walking adjunction全体の結合則を検収した意味ではない。
+混合Hom同士の二つの水平合成（区間表示を通るもの）、全体の結合・単位の法則、
+元の∞随伴からの全拡張、そのF≫U・元の単位・余単位との比較がG01に残る。
+今回の4双関手の対象ビルドを、これらの未完部分の検証の代わりに使わない。
+
+### 78.2 同じ構成の型と法則
+
+以下は各ファイルと同じ圏構造と変数の文脈で読む。
+200行を超える宣言・証明はない。ファイル全体が200行を超えるものの行数は上表に示した。
+
+`OrdinalSumFunctor.lean`：
+
+```lean
+def simplexOrdinalSum : SimplexCategory × SimplexCategory ⥤ SimplexCategory
+
+lemma simplexOrdinalSum_inl {x₁ x₂ y₁ y₂ : SimplexCategory}
+    (f : x₁ ⟶ y₁) (g : x₂ ⟶ y₂) :
+    inl' x₁ x₂ ≫ tensorHomOf f g = f ≫ inl' y₁ y₂
+
+lemma simplexOrdinalSum_inr {x₁ x₂ y₁ y₂ : SimplexCategory}
+    (f : x₁ ⟶ y₁) (g : x₂ ⟶ y₂) :
+    inr' x₁ x₂ ≫ tensorHomOf f g = g ≫ inr' y₁ y₂
+
+lemma simplexOrdinalSum_inl_zero (x y : SimplexCategory) :
+    (inl' x y).toOrderHom 0 = 0
+
+lemma simplexOrdinalSum_inr_last (x y : SimplexCategory) :
+    (inr' x y).toOrderHom (Fin.last y.len) = Fin.last (tensorObjOf x y).len
+
+lemma simplexOrdinalSum_preservesBottom {x₁ x₂ y₁ y₂ : SimplexCategory}
+    (f : x₁ ⟶ y₁) (g : x₂ ⟶ y₂) (hf : simplexPreservesBottom f) :
+    simplexPreservesBottom (tensorHomOf f g)
+
+lemma simplexOrdinalSum_preservesTop {x₁ x₂ y₁ y₂ : SimplexCategory}
+    (f : x₁ ⟶ y₁) (g : x₂ ⟶ y₂) (hg : simplexPreservesTop g) :
+    simplexPreservesTop (tensorHomOf f g)
+```
+
+`EndpointOrdinalActions.lean`：
+
+```lean
+def topOrdinalPrefix : SimplexCategory ⥤ TopSimplexCategory ⥤ TopSimplexCategory
+
+def topOrdinalPrefixInclusion (x : SimplexCategory) :
+    𝟭 TopSimplexCategory ⟶ topOrdinalPrefix.obj x
+
+lemma topOrdinalPrefixInclusion_naturality {x y : SimplexCategory} (f : x ⟶ y) :
+    topOrdinalPrefixInclusion x ≫ topOrdinalPrefix.map f = topOrdinalPrefixInclusion y
+
+def topOrdinalPrefixExtended :
+    AugmentedSimplexCategory ⥤ TopSimplexCategory ⥤ TopSimplexCategory
+
+def topOrdinalAction : AugmentedSimplexCategory × TopSimplexCategory ⥤ TopSimplexCategory
+
+lemma topOrdinalPrefixExtended_empty :
+    topOrdinalPrefixExtended.obj WithInitial.star = 𝟭 TopSimplexCategory
+
+def bottomOrdinalSuffix : SimplexCategory ⥤ BottomSimplexCategory ⥤ BottomSimplexCategory
+
+def bottomOrdinalSuffixInclusion (x : SimplexCategory) :
+    𝟭 BottomSimplexCategory ⟶ bottomOrdinalSuffix.obj x
+
+lemma bottomOrdinalSuffixInclusion_naturality {x y : SimplexCategory} (f : x ⟶ y) :
+    bottomOrdinalSuffixInclusion x ≫ bottomOrdinalSuffix.map f =
+      bottomOrdinalSuffixInclusion y
+
+def bottomOrdinalSuffixExtended :
+    AugmentedSimplexCategory ⥤ BottomSimplexCategory ⥤ BottomSimplexCategory
+
+def bottomOrdinalAction :
+    BottomSimplexCategory × AugmentedSimplexCategory ⥤ BottomSimplexCategory
+
+lemma bottomOrdinalSuffixExtended_empty :
+    bottomOrdinalSuffixExtended.obj WithInitial.star = 𝟭 BottomSimplexCategory
+
+def topToBottomOpEquivalence : TopSimplexCategory ≌ BottomSimplexCategoryᵒᵖ
+
+def bottomOppositeOrdinalAction :
+    AugmentedSimplexCategoryᵒᵖ × BottomSimplexCategory ⥤ BottomSimplexCategory
+
+def topOppositeOrdinalAction :
+    TopSimplexCategory × AugmentedSimplexCategoryᵒᵖ ⥤ TopSimplexCategory
+```
+
+### 78.3 対象ビルド・小さい監査
+
+全てwith_build_lock.sh --class impl --wait 3600の下、280秒以内の短いimpl枠で実施した。
+対象はlake build SerrePositivity.InfinityCategories.HA.Monads.EndpointOrdinalActions:olean。
+依存としてOrdinalSumFunctorを含む。初回の7162は、双関手の型推論と合成の照合を修正中に
+280秒の上限で終了124。実行セッションの終端を確認してから77967の新しい枠に進んだ。
+
+修正の要点は、積圏の3対象を明示し、自然変換の合成成分と広部分圏の底の射の合成を
+同じ式へ展開すること。初期の型エラーに続いてLeanのコード生成のpanic出力も出たが、
+全ての型エラーを除いた最終の対象ビルドは **G12_ACTION_BUILD_EXIT=0**、警告なしで通った。
+コンパイラの検査を無効にしたり、追加公理・sorryで埋めたりはしていない。
+
+続く新設22宣言の小さい公理監査は **G12_ACTION_AUDIT_EXIT=0**。
+出力名22件が入力と一致し、依存は標準のpropext・Classical.choice・Quot.soundのみ。
+sorryAx・追加公理はない。監査後にexitを渡して明示的に返却し、外側の終了値も0。
+自分の生きたビルド・監査・待ち整理券はない。
+
+監査入力・根の名前・全出力と最終対象ビルドのログは
+[g12-action-audit-2026-11-15/](g12-action-audit-2026-11-15/)へ保存した。
+既存の10ファイルは変更していない。M15のLean・drafts・main・⑤a・③系・Interfaceには書き込んでいない。
+全体ビルド・大きい監査は行っていない。
+
+G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み1,424行。
+M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
