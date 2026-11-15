@@ -2354,3 +2354,33 @@ Kan 置換へ頂点や脚を移して済ませず、元の全余錐を保持し�
 検証済み全体145本9,098行・798宣言、外枠18,600行内。
 S1 の生成 coverage・extensive の判定と、S8 の全重み比較・局所同値は未完。
 一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
+
+### S8：離散前層の全埋め込みと評価の可換則（11-15）
+
+2本93行・5宣言の対象ビルドと小監査が成功（標準三公理のみ）。
+記録：`/tmp/is-w1/s8-discrete-evaluation-2/`、source SHA 一致。
+
+```lean
+kanDiscretePresheafFunctor C ⋙
+    coherentEnrichedUnderlyingFunctor (kanDiagramEvaluationEnriched U) =
+  (evaluation Cᵒᵖ (Type u)).obj U ⋙ setsToKan
+
+kanDiscretePresheafMap C ≫ evaluateFunctorAt (ULift.up (nerveVertex U)) =
+  nerveMap ((evaluation Cᵒᵖ (Type u)).obj U) ≫ discreteSpaceInclusion
+```
+
+`DiscreteSpaceCoherentRepresentation` は、元の離散埋め込みが同じ `setsToKan` の nerve の
+coherent 表示と全次数で一致する法則。
+`DiscretePresheafEvaluation` は束縛された元の図式の評価と、この全埋め込みの評価の法則。
+既存の `kanDiagramBundle_evaluation` と `nerveToCoherent_postcomp` を再利用した。
+前層の射も高次の族も同じ等式に含み、対象ごとの比較だけで全関手比較を代用しない。
+計算上限は変更していない。
+
+次の接続では元の全余錐の評価を、上の集合の同じ余錐の離散表示へ移す。
+元の `strictNativeCocone` と豊穣後合成の法則が必要なので、反対の coherent nerve の
+既存の自然性（`coherentNerveOppositeInverse_post`）と `strictCoherentCone_postcomp` を使う。
+この接続と元の押し出し四角形の同定はまだ未完で、S8 完了には数えない。
+
+検証済み全体147本9,191行・803宣言、外枠18,600行内。
+S1 の生成 coverage・extensive の判定と、S8 の全重み比較・局所同値は未完。
+一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
