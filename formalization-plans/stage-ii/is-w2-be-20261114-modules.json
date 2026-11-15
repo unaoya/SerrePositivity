@@ -185,5 +185,7 @@
   "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceFiberRoof",
   "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.ElementsOppositeUniverseIso",
   "SerrePositivity.EInfinity.FrameHom.LiftedResolutionLeftRoof",
-  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRoofComparison"
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRoofComparison",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.OppositeWeakHomotopyReflection",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceNativeOppositeFiber"
 ]

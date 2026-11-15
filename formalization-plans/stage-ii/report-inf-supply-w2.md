@@ -14944,3 +14944,67 @@ theorem strictBETotJointSourceRoofComparison_isWeakHomotopyEquivalence
 - SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRoofComparison
 
 次の照合では、normal要素圏のnerveから出る元のnative fiber射そのものをopFunctorで反対向きに写し、nerveOppositeIsoで§249の同じ反対要素圏の始域へ合わせる。この係数移送の元の写像を追跡した上で、元の指定pathと同じroofの全族との照合に進む。opによる表示の変更だけで弱同値性が証明されたとはしない。
+
+## 251. 元のnative fiber射そのものの反対表示と弱同値性の反映（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 23（うち追加 11）。
+
+§250の基準roof射と始域の向きを合わせるため、元のstrictBETotJointSourceNativeTwistedFiberMapそのものをopFunctorで写し、元のnerveOppositeIsoの逆を前合成する。同じnerve反転を戻すと元の実射のop反転を厳密に回収する。この表示を別の同値の存在へ変更しない。
+
+op反転による弱同値保存の既存定理を二度使い、同じop自己同値の単位の自然性と弱同値の消去則で元の射の弱同値性へ戻す。始域・終域のKan性を新しい入力にしない。その反映則と同じnerve反転同型により、反対表示の弱同値性は元のtwisted fiber射の弱同値性と同値となる。さらに元のvertexFiberPullbackIsoの弱同値性を消去し、元のpullbackのnative fiber射自身との同値に戻す。
+
+既存のop保存則・自己同値の単位・pullbackのfiber同型による係数移送の法則であり、新しい数学的な一覧項目は増やさない。二本で見込み100〜180行。反対表示を定義しただけで弱同値と主張せず、§249の同じ基準roof比較との指定pathを保つ照合は引き続き残る。
+
+### 251.1 型
+
+一般版は任意の `{X Y : SSet.{u}} (f : X ⟶ Y)`。BE版の共通入力は `(A : Type u) [CommRing A]`。
+
+#### OppositeWeakHomotopyReflection（36行）
+
+```lean
+theorem opposite_map_isWeakHomotopyEquivalence_iff {X Y : SSet.{u}} (f : X ⟶ Y) :
+    IsWeakHomotopyEquivalence (SSet.opFunctor.map f) ↔ IsWeakHomotopyEquivalence f
+```
+
+#### StrictDiagramTotJointSourceNativeOppositeFiber（84行）
+
+```lean
+def strictBETotJointSourceNativeOppositeFiberMap (P : strictBETotJointHomIndex A) :
+    nerve ((simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P)ᵒᵖ ⟶
+      (vertexFiber (twistedArrowProjection (CAlg_R A))
+        ((strictBETotJointNativeHomInput A).app (Opposite.op ⦋0⦌) (nerveVertex P))).op
+
+theorem strictBETotJointSourceNativeOppositeFiberMap_recover (P : strictBETotJointHomIndex A) :
+    (nerveOppositeIso
+      (C := (simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P)).hom ≫
+        strictBETotJointSourceNativeOppositeFiberMap A P =
+      SSet.opFunctor.map (strictBETotJointSourceNativeTwistedFiberMap A P)
+
+theorem strictBETotJointSourceNativeOppositeFiberMap_weak_iff (P : strictBETotJointHomIndex A) :
+    IsWeakHomotopyEquivalence (strictBETotJointSourceNativeOppositeFiberMap A P) ↔
+      IsWeakHomotopyEquivalence (strictBETotJointSourceNativeTwistedFiberMap A P)
+
+theorem strictBETotJointSourceNativeOppositeFiberMap_weak_iff_original
+    (P : strictBETotJointHomIndex A) :
+    IsWeakHomotopyEquivalence (strictBETotJointSourceNativeOppositeFiberMap A P) ↔
+      IsWeakHomotopyEquivalence (strictBETotJointSourceNativeFiberMap A P)
+```
+
+## 252. 元のnative fiber射の反対表示と弱同値性の同値を検収（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 23（うち追加 11）。R03dは未完了。
+
+§251の最終個別検査42295は終了0。op自己同値の単位の成分はIso.app_homで表示を合わせ、その自然性を元のfとopFunctor.mapの二重適用の等式として明記して既存保存則を反映した。元のnative fiberの反対表示と元のtwisted fiber射の弱同値性の同値、さらに同じvertexFiberPullbackIsoを消去して元のpullbackのnative fiber射自身との同値まで示した。
+
+320の鍵付き対象ビルド12,230 jobs成功、小監査193モジュール・1,344宣言、標準三公理のみ。実ハンドル1058・終了0、鍵返却済み。--class impl --wait 3600と1700秒guardを使った。二つの互換入口の宣言数0と既存補題の定義元の検査も維持した。新しい宣言名はgit grepでmainのSerrePositivity全体に存在しないことを確認した。
+
+今回二本120行（一般版36行、BE版84行）、見込み100〜180行に対し上端との差−60行。検証済み189本・12,238行／外枠22,000行。自分の宣言数は1,337で、互換入口の宣言0を含む。小監査全体には既存定義元とHAの直接importer等4本を加えている。既存のop・自己同値の単位・pullbackのfiber同型による係数移送の法則として、数学的な一覧項目は増やさない。
+
+sorry・独自公理0、計算上限変更なし、[ModelCategory SSet]なし、既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・公式入口・公式監査・mainの変更なし。今回の同値は実射の弱同値性を別の射の存在へ弱めていない。反対表示の射自体が弱同値であることを結論するには、§250の同じ実roof比較との指定pathを保つ照合がなお必要である。
+
+登録候補：
+
+- SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.OppositeWeakHomotopyReflection
+- SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceNativeOppositeFiber
+
+次に使う既存のAPIはKanHammockHomPinchedMap_weakとKanHammockHomPinchedMap_app_valで、元のEx∞ hammock Homから同じ局所化頂点のpinched Homへの実射と、その全単体の値を保持している。元の同じ局所化比較・端点の指定pathを追跡し、§250の実roof射と今回のnative射の反対表示を全単体・全族として照合する。零単体の回収やπ₀だけの一致ではR03dの全同型の正規化が済んだとはしない。Tot側の停止点3b-4aはまだ未到達。
