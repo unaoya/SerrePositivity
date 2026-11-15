@@ -14350,3 +14350,107 @@ M15・drafts・main・⑤aの既存ファイル・Interfaceは変更していな
 
 G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み10,002行。
 M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
+
+## §103 G01：二つの実射の指定辺への挿入と実全単体の原子性の保存（11-15）
+
+### 103.1 検証済みの追加
+
+約10,000行の途中報告§102の後も止めずに継続した。
+追加は **2ファイル151行・明示宣言7**。累計 **83ファイル10,153行・明示宣言588**。
+ComposableArrowRefinement.lean は79行・4宣言、WalkingAdjunctionAtomicRefinement.lean は72行・3宣言。
+200行を超える個別の宣言・証明はない。新規Leanの行長は100文字以下。
+G01の同じ原子の実細分・全鎖への挿入・端点の照合・係数移送とその証明の分割なので、
+新しい一覧IDは足さない。
+
+任意の実圏の有限の実鎖の指定した一辺に、中間対象と二つの実射を挿入した実関手を構成した。
+先頭の辺なら元の尾部へ二回precompし、それ以外なら尾部で再帰して元の先頭を戻す。
+再帰の出力と同時に両端の対象の実等式を構成し、全射を持つ実関手として取り出している。
+鎖の実関手やその端点の一致の存在を引数に置いていない。
+
+元の四Homの全単体について、この細分は原子性を保つことを証明した。
+両端の対象の等式により、§101の有限端点による原子性の必要十分条件を戻している。
+元の全射と実分解を含む原子性を結論としており、辺の存在だけの表示ではない。
+§102の実併合・実残余射をこの構成へ挿入し、指定の併合条件を満たす辺の実細分として
+一つ高次の元の実全単体を構成し、元が原子的なら新しい実全単体も原子的であることを得た。
+
+### 103.2 型と残る境界
+
+原典は[Riehl–Verity §4.1–§4.2](https://emilyriehl.github.io/files/adjunctions.pdf)、
+HA Proposition 4.7.3.3、Kerodon Remark 6.2.1.4（Tag 02EN）。
+検証した型は以下。
+
+```lean
+def composableArrowRefinementData :
+    ∀ (n : ℕ) (F : ComposableArrows C (n + 1)) (k : Fin (n + 1))
+      (B : C) (_q : F.obj k.castSucc ⟶ B) (_g : B ⟶ F.obj k.succ),
+      {G : ComposableArrows C (n + 2) //
+        G.obj 0 = F.obj 0 ∧ G.obj (Fin.last (n + 2)) = F.obj (Fin.last (n + 1))}
+
+def composableArrowRefinement {n : ℕ} (F : ComposableArrows C (n + 1)) (k : Fin (n + 1))
+    (B : C) (q : F.obj k.castSucc ⟶ B) (g : B ⟶ F.obj k.succ) :
+    ComposableArrows C (n + 2)
+
+lemma composableArrowRefinement_first {n : ℕ} (F : ComposableArrows C (n + 1)) (k : Fin (n + 1))
+    (B : C) (q : F.obj k.castSucc ⟶ B) (g : B ⟶ F.obj k.succ) :
+    (composableArrowRefinement F k B q g).obj 0 = F.obj 0
+
+lemma composableArrowRefinement_last {n : ℕ} (F : ComposableArrows C (n + 1)) (k : Fin (n + 1))
+    (B : C) (q : F.obj k.castSucc ⟶ B) (g : B ⟶ F.obj k.succ) :
+    (composableArrowRefinement F k B q g).obj (Fin.last (n + 2)) = F.obj (Fin.last (n + 1))
+
+lemma walkingAdjunctionRefinement_atomic {n : ℕ} {X Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom X Y) (n + 1)) (k : Fin (n + 1))
+    (B : walkingAdjunctionHom X Y) (q : H.obj k.castSucc ⟶ B) (g : B ⟶ H.obj k.succ)
+    (h : WalkingAdjunctionLevelIsAtomic (X := ⟨X⟩) (Y := ⟨Y⟩) H) :
+    WalkingAdjunctionLevelIsAtomic (X := ⟨X⟩) (Y := ⟨Y⟩)
+      (composableArrowRefinement H k B q g)
+
+def walkingAdjunctionBottomMergeRefinement {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom .minus Y) (n + 1)) (k : Fin (n + 1))
+    (m : ℕ) (hA : walkingAdjunctionOrdinalCard .minus Y (H.obj k.castSucc) = m + 2)
+    (h1 : ∀ i : Fin (walkingAdjunctionOrdinalCard .minus Y (H.obj k.castSucc)),
+      i.val = 1 → (walkingAdjunctionOrderHom (H.map
+        (homOfLE (Fin.castSucc_le_succ k))) i).val = 0) :
+    ComposableArrows (walkingAdjunctionHom .minus Y) (n + 2)
+
+lemma walkingAdjunctionBottomMergeRefinement_atomic {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom .minus Y) (n + 1)) (k : Fin (n + 1))
+    (m : ℕ) (hA : walkingAdjunctionOrdinalCard .minus Y (H.obj k.castSucc) = m + 2)
+    (h1 : ∀ i : Fin (walkingAdjunctionOrdinalCard .minus Y (H.obj k.castSucc)),
+      i.val = 1 → (walkingAdjunctionOrderHom (H.map
+        (homOfLE (Fin.castSucc_le_succ k))) i).val = 0)
+    (h : WalkingAdjunctionLevelIsAtomic (X := ⟨.minus⟩) (Y := ⟨Y⟩) H) :
+    WalkingAdjunctionLevelIsAtomic (X := ⟨.minus⟩) (Y := ⟨Y⟩)
+      (walkingAdjunctionBottomMergeRefinement H k m hA h1)
+```
+
+今回の構成は、指定位置・中間対象・二つの実射から実全鎖を作る段階である。
+指定した面が元の全鎖へ戻る等式、その他の面との両立、非退化性はまだ検証していない。
+実併合を使う場合の位置と二番目の点の像0の条件は現在の入力であり、
+全ての非fillableな原子に適切な最初の位置が実際に選べることはまだ未証明である。
+従って原子のfillableな親の完成とは数えていない。
+parental subcomputadのfiltration、元のQCatAdjunctionからの全coherentな延長、
+原典の向きと現模型の水平反対の全比較、同じF≫U・単位・余単位・HAモデルの照合も未完。
+G01の済みは0、G02以降も未完を維持する。
+
+### 103.3 検証と進み
+
+with_build_lock.sh --class impl --wait 3600、各最大240秒の短いimpl枠。
+セッション26798では基底のFin 1のSubsingletonが見つからなかったため終了1を確認した。
+有限点の値の不等式で一意性を明記し、51014で実鎖の再帰と両端の等式が通った。
+51014では指定辺の終点の型推論で失敗し、順序圏の射の始点・終点を明記した。
+50991では有限点の後続の不等式の算術表示が一致しなかったため終了1を確認した。
+既存のFin.castSucc_le_succの型を明記し、未使用束縛名の警告も整え、最終セッション62839で
+lake build SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionAtomicRefinement:olean
+と、続く追加7根だけの公理監査、外側の終了0を確認した。
+最終対象ビルドは警告なし。
+追加7根は入力名と出力名が一致し、公理依存はpropext・Classical.choice・Quot.soundのみ。
+sorryAx・追加公理なし。入力・根・全出力・最終対象ビルドログは
+[g12-atomic-refinement-audit-2026-11-15/](g12-atomic-refinement-audit-2026-11-15/)に保存した。
+現在自分の生きたビルド・監査の枠は残っていない。
+
+M15・drafts・main・⑤aの既存ファイル・Interfaceは変更していない。
+全体ビルド・大きい監査は行っていない。
+
+G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み10,153行。
+M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
