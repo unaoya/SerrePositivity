@@ -829,3 +829,20 @@ G4 の表示の同型による係数移送の法則（着手前、既存の逆�
 G4 では、一般の ProperInductiveLevel の証人の r が射影的であるとは仮定しない。射影版の F8 を当てる箇所では、2d が返す実際の blowup を保持して Noether 基底の閉集合上の帰納を進める。その局所射・各 Čech 項には前記の同じ表示を渡す。表示の同型による構造層の Čech 複体の移送の下書きはまだ未検証で、今回のコミットには含めない。G4・G5 と停止点2g-2は未完。残りの見込みは G4 が約1,300〜2,800行、G5 が約1,000〜2,500行に、同型・被覆の整合性の余裕を含め、全体の見込み約5,500〜12,000行・外枠16,000行を維持する。
 
 一覧：済み1／全体3（うち追加0）。
+
+
+G4 の忠実平坦なアフィン射と Frobenius 順極限（着手前、既承認の fppf の完全性の証明分割、100〜220行）：`affineRingCechExact_of_faithfullyFlat B` は忠実平坦な Under A の実際の増大 conerve の完全性。B1 の忠実平坦底変換による反映と、恒等射 B→B に沿う底変換の切断を用い、Amitsur の議論を再実装しない。`frobeniusArrowStep`・`frobeniusArrowDiagram` は既存の Frobenius 環写像を元の矢印の可換な反復図式として束ねる。`frobeniusArrowSmallDiagram` は同じ自然数系を AsSmall ℕ の同値で宇宙を合わせる。`isCechExact_frobeniusArrowColimit_of_faithfullyFlat` はその実際の Arrow の colimit の Čech 完全性。B1 の isCechExact_colimit を使う。各次数の環の Frobenius 順極限との自然な比較はこの完全性そのものとは別に接続し、最終の型をこの colimit の型へ置き換えない。
+
+
+上記の忠実平坦な場合の底変換・標数の法則（着手前、同じ束の内数、40〜100行）：`underPrimeCast_eq_zero` は元の基底の p=0 を Under の射で押し出す式。Frobenius 余極限の完全性の入力は hA だけとし、hB はこの式で供給する。`affineRingCechExact_baseChange_of_faithfullyFlat` は任意の A 代数 D への底変換後の完全性で、D の平坦性を仮定しない。元の忠実平坦性の底変換の既存の instance を使う。`isCechExact_frobeniusArrowBaseChangeColimit_of_faithfullyFlat` は同じ底変換後の反復 Frobenius 系の余極限の完全性。各段の Frobenius の平坦性は仮定しない。
+
+
+## G4：表示の同型による構造層の Čech の同型移送
+
+`SchemeStructurePerfectCechIso`（58行）：`schemeStructureRingPullbackCoefficient_isIso` は同型の元の app を切断環の係数図式の同型にする。`schemeStructurePerfectPullbackCoefficient_isIso` は同じ Frobenius 順極限の係数図式の射そのものの同型性。`schemeStructurePerfectCechPullbackMap_isIso` は元の被覆とその逆像について、既存の Čech 引き戻しの射そのものが複体の同型であること。原環の app と逆像の射を保つ。
+
+単独検証、下書きと本体のソース完全一致、対象と入口・必要な既存の B1 の二依存モジュールのビルド5,150ジョブ、小監査3宣言・標準三公理のみ、終了状態0。整数係数の型と任意の宇宙の切断加群を扱うため、既存の係数写像と fullCechComplexFunctor を直接用い、既存の API の宇宙や型は変更していない。新規三宣言の haveI の警告を整理後も単独検証・対象ビルドが成功。最後の複体の同型性だけに局所的な backward.isDefEq.respectTransparency false を使用。追加公理・sorry・資源制限の引き上げ・200行超の宣言なし。ログ `2g-scheme-perfect-cech-iso-check-4.log`・`2g-cech-iso-and-b1-dependencies-native.log`・`2g-scheme-perfect-cech-iso-audit.log`。共有鍵 --class impl --wait 3600、待ちは一つ。root・下流全ビルド・全体監査なし。
+
+今回1モジュール58行＋入口1行。2g-2 本体4,128行・入口込み4,193行、小監査501宣言・標準三公理のみ。G4 の同型移送の最初の法則までで、fppf の完全性・射影四角形からの Noether 帰納・二重 Čech の判定、G5 は未完。忠実平坦な場合の元の conerve と Frobenius 反復系の余極限の完全性の下書きは単独検証まで成功し、任意の底変換・標数の押し出しを追加して再検証中。これらは今回のコミットに含めない。全体の見込み約5,500〜12,000行・外枠16,000行は不変。停止点2g-2ではない。
+
+一覧：済み1／全体3（うち追加0）。
