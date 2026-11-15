@@ -2078,3 +2078,28 @@ S3 の承認済みの型（頂点の等号と指定比較同値、制限の厳�
 検証済み全体114本7,139行・676宣言、外枠18,600行内。
 S1 の交叉降下の同値・生成系・上限位相・extensive の判定と、S8 は未完。
 一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
+
+### S1：元の錐の射の底と、極限が存在する場合の判定（11-15）
+
+2本131行・4宣言の対象ビルドと小監査が成功（標準三公理のみ）。
+記録：`/tmp/is-w1/s1-cone-boundary-5/`。source SHA 一致。
+
+```lean
+constantFunctorHomMap K ((hoFunctor.map (sliceOverProjection p)).toFunctor.map β) ≫
+  coneCounitHom d = coneCounitHom c
+
+HasLimit p → (IsLimitCone c ↔ ∀ y, Function.Bijective
+  (fun β : Hom (Ho.mk y) (Ho.mk c.vertex) =>
+    constantFunctorHomMap K β ≫ coneCounitHom c))
+```
+
+`ConeMorphismBoundary` は元の錐圏の射の底が恒等射であることを示し、
+同じ頂点射が元の指定余単位を可換にする式を得た。
+`ConeCounitCriterionWithLimit` は実際の極限錐への比較辺を選び、二つの Hom 全単射で
+頂点射の逆射を作り、元の右ファイブレーションで反映した。
+極限の存在を明示する中間補題であり、最終の S1 にこの仮定は追加しない。
+計算上限は変更していない。次は形状制限・指定三角形との余単位の式を接続する。
+
+検証済み全体116本7,268行・680宣言、外枠18,600行内。
+S1・S8 は未完。
+一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
