@@ -2202,3 +2202,35 @@ RightKanHomUniversal (nerveMap δ) (normalizedNerveClass η U) →
 検証済み全体126本7,857行・707宣言、外枠18,600行内。
 S1 の交叉降下・生成系・上限位相・extensive の判定と、S8 は未完。
 一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
+
+### S1：指定右 Kan 輸送の実宇宙移送と全表現可能関手への接続（11-15）
+
+5本330行・25宣言の対象ビルドと小監査が成功（標準三公理のみ）。
+記録：`/tmp/is-w1/s1-right-universe-4/`。source SHA 一致。
+
+```lean
+IsRightKanExtension δ F₀ F α → ∀ x : D₀,
+  IsRightKanExtension (uliftFunctor.map δ)
+    (uliftFunctor.map F₀ ≫ covariantRepresentableInfinity x)
+    (uliftFunctor.map F ≫ covariantRepresentableInfinity x)
+    (kanRightCounitPostcomp (kanRightCounitUlift α) (covariantRepresentableInfinity x))
+```
+
+`UniverseTensorEndpoints` は既存 `simplexTensorMap` が元の端点の全射を保つ法則。
+`RightCounitUniverse` はその同じ全円柱の移送で指定余単位を正規化。
+`RightKanConeUniverseShape` は既存の join と実右 Kan 形状の宇宙同型を合成し、
+元の両包含と実標準全錐を同じ写像で保つことを証明した。
+`RightKanTransportUniverse` はその同じ逆比較で元の全輸送を移し、
+始端・図式・固定頂点・終端の全射の式を証明した。
+`RightKanTransportUniverseLimit` は、同じ再添字付けの下で後合成した元の全錐との
+極限性の同値を示し、既存の共変表現可能関手の極限保存を適用して上の指定右 Kan 条件を得た。
+任意の大きい図式の極限保存は追加仮定にせず、元の小さい局所全錐への保存だけを使った。
+既存の構成の宇宙・係数移送の法則として S1 内で扱う。計算上限は変更していない。
+
+次は元の全錐間の指定ホモトピーにも同じ宇宙移送を適用し、
+同じ底の指定余単位と固定頂点を保持する。全表現可能関手で検出し、
+これまでの中間補題の極限存在の仮定を最終の係数から取り除く。
+
+検証済み全体131本8,187行・732宣言、外枠18,600行内。
+S1 の交叉降下・生成系・上限位相・extensive の判定と、S8 は未完。
+一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
