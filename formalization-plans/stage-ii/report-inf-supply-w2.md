@@ -17512,3 +17512,57 @@ lemma strictBETotJointSourceNativePinchedMap_interval_family_normalization (P : 
 ```
 
 次はこの元のnative射の同じ全族を、同じcorrected pairingの全族へ戻し、§269以降の元のroofのaugmentation・評価・標的置換の全族の式と照合する。R03hの最終の全interval族の等式と、元の実射自身の弱同値性は未証明。R03dと3b-4aの残りも維持する。今回の既存構成の移送の法則を、新しい数学の完成や停止点3b-4aとは数えない。§289・§290の検証済みコードは0c24adfd9・6c1483d21に保存した。作業木に未検証のLeanは追加していない。
+
+## 292. 元の射の定義式と、反対twisted Homの全族の合成則を分割（2026-11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+§291の個別検査4は、BEへの全族の適用の宣言でkernel deterministic timeoutとなった。上限は変更していない。元のnative射の定義式だけを独立した補題へ分けた検査isw2-native-pinched-formula1は終了0。その補題を同じファイルの後続の全族の式で使う検査split1も後続の宣言でkernel deterministic timeoutとなった。
+
+次に任意の合成f≫hに対する汎用の移送則を分割した。大きなBEのimportを含む一時ファイルでは汎用のrwの証明自体がkernel deterministic timeoutになったが、BEをimportせず、等式hhをsubstで消去してから結合則だけを使う形へ分けたisw2-opposite-interval-family-composed1は終了0。BEの既存instanceを使う方も検査したが、失敗箇所は同じ旧汎用rwの補題だった。次の2モジュールに独立させて対象ビルド・小監査を行い、その検証済み汎用補題をimportしてBEへの適用を検査する。全て既存構成の係数移送・合成則と証明の分割で、新しい数学の一覧項目は追加しない。§291の元の全族の型は維持する。
+
+#### TwistedHomOppositeIntervalFamilyComparison（57行）
+
+```lean
+lemma twistedArrowHomOppositePinchedEquivalence_interval_family {K C : SSet.{u}} [Quasicategory C]
+    {x y : C _⦋0⦌} (g : K ⟶ (twistedArrowHomSpace x y).op) :
+    intervalFamilyHom (g ≫ (twistedArrowHomOppositePinchedEquivalence x y).hom ≫
+      pinchedHomToIntervalMappingSpace x y) =
+      intervalFamilyHom (g ≫ (isQCatEquivalence_of_trivialKanFibration
+        (edgewiseLeft (twistedArrowHomSpace x y))).choose.inv ≫
+        edgewiseRight (twistedArrowHomSpace x y) ≫
+        (cosliceTwistedHomMap_isQCatEquivalence x y).choose.inv ≫
+        cosliceFiberToIntervalMappingSpace x y)
+
+lemma twistedArrowHomOppositePinchedEquivalence_interval_family_comp {K T C : SSet.{u}} [Quasicategory C]
+    {x y : C _⦋0⦌} (f : K ⟶ T) (e : T ⟶ (twistedArrowHomSpace x y).op)
+    (h : T ⟶ Basic.pinchedHom x y)
+    (hh : h = e ≫ (twistedArrowHomOppositePinchedEquivalence x y).hom) :
+    intervalFamilyHom ((f ≫ h) ≫ pinchedHomToIntervalMappingSpace x y) =
+      intervalFamilyHom (f ≫ e ≫ (isQCatEquivalence_of_trivialKanFibration
+        (edgewiseLeft (twistedArrowHomSpace x y))).choose.inv ≫
+        edgewiseRight (twistedArrowHomSpace x y) ≫
+        (cosliceTwistedHomMap_isQCatEquivalence x y).choose.inv ≫
+        cosliceFiberToIntervalMappingSpace x y)
+```
+
+#### StrictDiagramTotJointSourceNativePinchedFactorization（49行）
+
+```lean
+lemma strictBETotJointSourceNativePinchedMap_factorization (P : strictBETotJointHomIndex A) : strictBETotJointSourceNativePinchedMap A P =
+      strictBETotJointSourceNativeOppositeFiberMap A P ≫
+        (SSet.opFunctor.mapIso (eqToIso
+          (congrArg (fun b => vertexFiber (twistedArrowProjection (CAlg_R A)) b)
+            (strictBETotJointNativeHomInput_model_vertex A P)))).hom ≫
+        (twistedArrowHomOppositePinchedEquivalence
+          ((strictBETotModelSource A).app (Opposite.op ⦋0⦌)
+            (nerveVertex (((strictBETotJointHomSourceIndex A).obj P).unop)))
+          ((strictBETotModelSource A).app (Opposite.op ⦋0⦌)
+            (nerveVertex ((strictBETotJointHomTargetIndex A).obj P)))).hom
+```
+
+### 292.3 検収
+
+2本106行、公開3補題・局所instance二つ。対象ビルド358は依存を含む12,251 jobsで成功、小監査も終了0。共有鍵 --class impl --wait 3600、一枚の整理券、gtimeout 1700秒でビルド・小監査の間だけ使用。小監査は261モジュール・1,703宣言、propext・Classical.choice・Quot.soundのみ、sorryAx・追加公理なし。自レーン累計257本・17,438行、実環境1,696宣言。外枠22,000行まで4,562行。git diff --check通過。main a4388efc9のEInfinity/3,745ファイル13,373名と自レーン623ファイル1,952名を照合し、異なるファイル間の重複0、内部も0。既存Lean・⑤aのファイル・公式入口・公式監査は変更していない。証跡は/private/tmp/isw2-build358.log、isw2-validation358.json、isw2-declaration-collision-scan358.json。
+
+対象ビルド済みの汎用モジュールをimportし、元のnative側の既存instanceを再利用する一時ファイルisw2-native-pinched-interval-imported1は終了0。§291の元のnative射の全interval族の正規化という同じ型が個別検査を通った。単一ファイルに汎用補題の証明も展開した検査とは区別する。計算上限は上げず、次に本体へ配置して対象ビルド・小監査を行う。R03hのroofとの最終等式・R03d・3b-4aは未完。
