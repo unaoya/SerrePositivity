@@ -711,3 +711,25 @@ S04 の標準開の Cartesian 四角形の法則の分割（着手前、既存�
 今回1モジュール120行＋入口1行。2g-2 本体3,161行・入口込み3,210行、小監査355宣言・標準三公理のみ。二つの大域射と制限式まで到達し、標準開の逆像・局所と大域のファイバー積・有限冪・G4〜G5 は未完。逆像と局所 Cartesian 四角形の未検証の下書きは drafts に保持したまま、今回のコミットには含めない。全体の見込み約5,500〜12,000行・外枠16,000行は不変。停止点2g-2ではない。
 
 一覧：済み0／全体3（うち追加0）。
+
+
+S04 の二つの開被覆による貼り合わせの法則の分割（着手前、既存の pullback の局所判定の内数、100〜220行）：`opensRange_iteratedPullbackFst` は、二つの因子の開を順に引き戻した開埋め込みの像が二つの逆像の交叉になる式。`isPullback_of_pairOpenCover` は、W→X・W→Y と X→Z・Y→Z に対し、X・Y の開被覆、各対 i,j に対応する W の開埋め込み Vᵢⱼ、像が二つの逆像の交叉になる式、Vᵢⱼ 上の実際の Cartesian 四角形から、元の四角形が Cartesian であることを返す。既存の `Scheme.isPullback_of_openCover` を二回使い、同じ像を持つ開埋め込みの同型で対応づける貼り合わせの法則。大域の可換性や全射性は追加の仮定にせず、局所四角形から得る。Segre に適用するときの Vᵢⱼ は構成済みの標準開で、前記の逆像の式と局所 Cartesian 四角形を渡す。
+
+
+S04 の因子の標準開被覆の表示の法則の分割（着手前、既存の次数一表示の内数、60〜110行）：`exists_degreeOne_homogeneous_lift` は、次数一評価 R[X]→A が全射なら各斉次元に同じ次数の斉次原像があること。`degreeOne_irrelevant_le_span` は、その生成元のイデアルが irrelevant ideal を含むこと。既存の graded な評価の次数分解との整合性を使う。Rees で検証済みの同じ計算を一般の次数付き R 代数へ供給し、Segre の二つの因子の被覆条件を追加仮定にしない。
+
+
+S04 の Segre の大域 pullback の法則の分割（着手前、既存の標準開比較の貼り合わせの内数、80〜170行）：`isPullback_segreProjectiveProjections` は、実際の二つの大域射と元の Proj のスカラー構造射が Spec R 上の Cartesian 四角形を与えること。二つの次数一の全射表示から因子の開被覆を作り、`isPullback_of_pairOpenCover` に Segre の標準開、制限式、逆像の交叉の式、局所 Cartesian 四角形を渡す。別の射影スキームや平坦性を仮定せず、元の構造層と実際の射のまま比較する。有限正次数のファイバー冪の表示はこの後に残る。
+
+
+## G3・S04：標準開の逆像と局所の Cartesian 四角形
+
+`SegreProjectivePreimage`（104行）：`segreLeftProjection_chart_preimage_basicOpen`・`segreRightProjection_chart_preimage_basicOpen` は因子の基本開の逆像の局所式。`segreProjection_chart_preimage_pair` はその交叉の正規化した座標による式。`segreProjection_preimage_pair` は全標準開の被覆を通して得た大域の等式 `πA⁻¹D(aₖ) ∩ πB⁻¹D(bₗ) = D(Zₖₗ)`。元の全射表示から作った大域射そのものに対する法則。
+
+`SegreChartPullback`（75行）：`isPullback_segreStandardOpen` は列・行の二つの標準開写像の Spec が、Spec R 上の実際の Cartesian 四角形であること。既存のテンソル積との同型の逆写像の Spec で移送し、二つの辺を単位元を含む純テンソルで照合する。余分な因子上の代数構造を入れず、R 上の元の構造を保つ。
+
+単独検証、下書きと本体の完全一致、対象と入口のビルド5,120ジョブ、小監査25宣言（16・9）・標準三公理のみ、終了状態0。行長の修正後も対象ビルド成功。局所化の値への外延性を進めすぎないよう環準同型の外延性を明示し、開集合の積の式は依存する型を不用意に書き換えず等式の合成で渡した。大域の逆像の法則と局所 pullback の法則だけに局所的な backward.isDefEq.respectTransparency false を使用。追加公理・sorry・既存の宣言の型変更・資源制限の変更・200行超の宣言はない。ログ `2g-segre-projective-preimage-check-3.log`・`2g-segre-chart-pullback-check-2.log`・`2g-segre-preimage-and-pullback-native-2.log`・`2g-segre-preimage-and-pullback-audit.log`。共有鍵 --class impl --wait 3600、待ちは一つ。root・下流全ビルド・全体監査なし。
+
+今回2モジュール179行＋入口2行。2g-2 本体3,340行・入口込み3,391行、小監査380宣言・標準三公理のみ。大域のファイバー積、有限冪、G4〜G5 は未完。二つの被覆による貼り合わせと因子の被覆条件の下書きは単独検証済みだが、本体の対象ビルドと小監査はまだなので今回のコミットに含めない。全体の見込み約5,500〜12,000行・外枠16,000行は不変。停止点2g-2ではない。
+
+一覧：済み0／全体3（うち追加0）。

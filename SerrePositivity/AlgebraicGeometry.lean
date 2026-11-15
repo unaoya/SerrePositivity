@@ -1696,3 +1696,5 @@ public import SerrePositivity.AlgebraicGeometry.DegreeOneChartCompatibility
 public import SerrePositivity.AlgebraicGeometry.SegreOverlapCoordinates
 public import SerrePositivity.AlgebraicGeometry.SegreChartCompatibility
 public import SerrePositivity.AlgebraicGeometry.SegreProjectiveProjections
+public import SerrePositivity.AlgebraicGeometry.SegreProjectivePreimage
+public import SerrePositivity.AlgebraicGeometry.SegreChartPullback
