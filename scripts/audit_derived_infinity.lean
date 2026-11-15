@@ -8334,6 +8334,52 @@ example : SSet.Quasicategory
   `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.UliftPointSimplexEvaluation,
   `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.WeightedConeComparisonStrictMap]
 
+@[noinline] private def derivedAuditExpectedChunk43 : Array Lean.Name := #[
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramCoherentEndMap,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramEvaluatedAugmentation,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFrameArrowComparison,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFrameArrowComparisonWeak,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFrameArrowCone,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFrameArrowLimit,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFrameEndCoefficients,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFrameEndpointIso,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFrameRelativeLifting,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFreeArrowAugmentation,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFreeArrowAugmentationHomWeak,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFreeArrowAugmentationWeak,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFreeArrowConeHom,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFreeArrowFrame,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFreeArrowHom,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFreeArrowRealization,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFreeArrowRealizationCofibrant,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFreeArrowRealizedAugmentation,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFreeArrowRealizedAugmentationWeak,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFreeArrowRealizedFrame,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFreeAtReindex,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFreeEvaluationAdjunction,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFreeEvaluationBousfieldKan,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFreeEvaluationCoconeLegs,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFreeEvaluationCoefficients,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFreeEvaluationCofinality,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFreeEvaluationCounit,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFreeEvaluationElementsAugmentation,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFreeEvaluationFrames,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFreeEvaluationIndex,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFreeEvaluationLiftedAdjunction,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFreeEvaluationOverAugmentation,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFreeEvaluationOverComparison,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFreeEvaluationOverFrames,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFreeEvaluationRealization,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFreeValueFrame,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFreeValueFrameConditions,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramMixedFrame,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramMixedFrameEquivalence,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramSourceFramePinched,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramSourceFrameZero,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramValueFrameComparison,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramValueKanComparison,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramValueSectionsComparison]
+
 open Lean in
 run_cmd do
   let env ← getEnv
@@ -8828,7 +8874,8 @@ run_cmd do
     derivedAuditExpectedChunk39 ++
     derivedAuditExpectedChunk40 ++
     derivedAuditExpectedChunk41 ++
-    derivedAuditExpectedChunk42
+    derivedAuditExpectedChunk42 ++
+    derivedAuditExpectedChunk43
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
