@@ -1,14 +1,15 @@
 {
   "settings": {
-    "VERIFY_JOBS": "4",
-    "VERIFY_MEMORY_GB": "32",
+    "VERIFY_JOBS": "3",
+    "VERIFY_MEMORY_GB": "24",
     "VERIFY_CACHE": "0",
     "VERIFY_EXCLUSIVE_AUDITS": "scripts/audit_axioms.lean scripts/audit_einfinity.lean scripts/audit_infinity_core.lean scripts/audit_infinity_f1.lean scripts/audit_infinity_f1b.lean scripts/audit_infinity_presentable_localization.lean scripts/audit_kst_s_construction.lean"
   },
-  "night_only": true,
-  "shared_ticket_class": "bulk",
-  "max_ticket_seconds": 1750,
+  "approval": "2026-11-15 morning coordinator/user: one daytime full verify without shared key or time limit, VERIFY_JOBS=3 VERIFY_MEMORY_GB=24, large audits serial.",
+  "night_only": false,
+  "shared_key": false,
+  "time_limit_seconds": null,
   "all_audits": 106,
-  "prior_B3_seconds_jobs3": 2968.3724,
-  "note": "No previous KL-W1 exemption; hard stop before30minutes. A timeout is not a full verify pass. No audit or check removed."
+  "actual_process_tree_guard_bytes": 32000000000,
+  "note": "Official24GB scheduler with conservative observed RSS; an individually oversize audit runs alone. Existing32GB emergency guard retained. No result cache or omitted check."
 }

@@ -1,12 +1,12 @@
 {
-  "all_passed": false,
-  "passed": 16,
+  "all_passed": true,
+  "passed": 17,
   "total_checks": 17,
-  "scope_complete": 2,
+  "scope_complete": 22,
   "scope_total": 22,
   "additional": 0,
-  "head": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6",
-  "time": 1794686449.2296472,
+  "head": "107d005583fe01dc50b97945f0586063458e48af",
+  "time": 1794702339.932148,
   "checks": [
     {
       "check": "Independent preparation complete",
@@ -62,7 +62,7 @@
     },
     {
       "check": "Full gate verify root/audits/sorry all passed",
-      "pass": false,
+      "pass": true,
       "evidence": "full-verify-complete.json"
     },
     {

@@ -1474,3 +1474,54 @@ full verifyは`871516d78`でキャッシュを使わず4ジョブ・32GBで実�
 一覧：済み 2／全体 22（うち追加 0）。今回の中断前の104本は公式の入力署名と原ログが一致したが、`verify.sh` のgateは `VERIFY_CACHE != 1` を要求するため、キャッシュによる再開案は取り下げた。キャッシュを有効にしたverifyは実行しておらず、試験準備で隔離したキャッシュも元に戻した。比較器・公開のverify・判定条件は変えていない。
 
 [次回の設定案](bulk-b3prime/next-full-verify-plan.json)は、通常のbulk鍵・wait3600・夜間・4ジョブ、スケジューラのメモリ予算28GB、実測の停止上限32GB。キャッシュなしで全106監査・root・前提・sorryを初めから回す。今回の監視上限超過を避けるためにメモリの余裕を設ける。長い鍵の一回の例外（最長60分）の回答待ちであり、再実行は始めていない。ゲート済みの完了報告もまだ出していない。
+
+
+## B3′ 完了報告（11-15 09:25）
+
+一覧：済み 22／全体 22（うち追加 0）。基準はmain32d364b53、適用前にmain391b2a0d2をmerge2bbec4f28で取り込んだ。適用の通知は11-15 01:57。本体の適用c42e8b477、監査側の改名/importの修正c2bf2a4fb・871516d78を含む検証HEADは`107d005583fe01dc50b97945f0586063458e48af`。本体のLeanは適用後の保存比較を通した版と同一で、以後の修正は監査側の参照とimportである。
+
+| 検査 | 結果 |
+| --- | --- |
+| 隔離プレビューの対象ビルド | 220／220成功（importだけの四集約はrootで検査） |
+| 実配置のv3b | 29束・214モジュール、比較対象の親宣言4,440→4,439行、wrapper削除1・未説明0 |
+| ネイティブな元の全カーネル表 | 18,963行、公開ソースの欠落0 |
+| 引用・Kerodon/Stacksタグ | 2,564→2,564、欠落0・余分0・衝突0。実場所も全件有効 |
+| 実配置のimportグラフ | 32,043モジュール、欠落0・循環0・EInfinity→BSの直接/間接0 |
+| 五段の層 | 既存の節逆順46→46・新規0。層/例外の変更0、346本を規則で登録 |
+| root | 32,194 jobs成功。full verifyでもrootと監査前提の二buildが成功 |
+| 正式監査 | 106／106成功、すべて一本ずつ。合計4931.6秒、観測最大24.17GB |
+| full verify | **PASS・gate:true**。build2・audit106・sorry1成功、失敗/既知扱い0、3036.568秒 |
+| B4補助の回帰 | 静的4ケース＋header3ケース、実Leanでimport欠落の再現と補完後の成功を確認 |
+| 完了条件 | [全17検査](bulk-b3prime/completion-audit.json)成功、[全22項目](bulk-b3prime/scope-items-complete.json)を照合 |
+
+[全保存比較](bulk-b3prime/actual-preservation-v3b.tar.gz)、[正式監査・verifyの原記録](bulk-b3prime/formal-audits-and-full-verify.tar.gz)、[full verifyの全summary](bulk-b3prime/full-verify-summary.json.gz)を保存した。full verifyは11-15朝の明示承認に従い、昼にVERIFY_JOBS=3・VERIFY_MEMORY_GB=24・VERIFY_CACHE=0で、全106監査を新規実行。10GB超の観測値と従来の大きい監査を同時実行しない組へ入れた。先行する正式監査は共有鍵bulk・wait3600を一監査ごとに返却し、各束30分以内。今回のfull verifyだけは明示承認どおり共有鍵を使わず、一回の時間上限を設けなかった。スケジューラの24GB予算と大きい監査の相互排他を維持し、従来の32GBの緊急停止監視も残した。
+
+正式監査の途中で、短名五ファイルとEInfinity集約から外したBS界面の明示import漏れを修正した。監査の型・述語・必須名・axiom許可を変えず、全監査を通した。同一入力の先行46本の原receiptは編集せず[入力一致の証跡](bulk-b3prime/audit-input-equivalence.json)で保持した。最後のfull verifyではそれらも含め全106本を結果キャッシュなしで実行している。比較器・採取器・publicなverifyの変更0。先の中断したverifyは成功として数えず、[中断の原記録](bulk-b3prime/full-verify-attempt-001.tar.gz)も残した。今回のPASSで再実行の承認待ちは解消した。
+
+### 移動・維持・取り下げ
+
+全体移動70本・切り出し先7本、旧パス71削除（旧wrapper1を含む）。公開ソースの所有元/改名表1,936行（改名1,607）、実在する新しい名前への書換表2,580行。型に属するIsPerfectoidization等のメソッドは実際の型のnamespaceを保つ。CAlg_R三本は削除せずBSへ移し、EInfinityの宣言名を保った。
+
+R7-3(b)は[八辺の実配置](bulk-b3prime/r7-3b-actual-edge-ledger.json)のとおり基準解消2・今回解消5・維持1。DivisionResidue全体のDeltaへの移動は取り下げ、独立した12宣言だけを抽出した。忠実平坦性とNormalizedのAndré依存は残す。BSの元の節順の34辺は[台帳](bulk-b3prime/actual-bs-reverse-edge-ledger.json)のとおり1解消・33維持。IntegralExistenceを分割しても残るTheorem10.11への依存は、解消済みと数えない。PD固有cochainHomotopy、R83/Spectrum、広いR21、未使用宣言の削除は範囲外のまま。これ以外の追加取り下げは0。
+
+Finiteは既存BS定理を直接呼ぶ際に落ちた有限表示性を、**元と同じ明示の引数列**で復元した。未説明の24行を説明扱いへ替えたのではなく、型・本体を実際に直し同じv3bで0にした。root最初の集約headerエラーもimportをdocstringの前へ直して再実行済み。
+
+### B4の資料
+
+[READMEと一行の書換コマンド](bulk-b3prime/B4/README.md)、module-map、所有元付きpublic-owner-map、namespace-rewrite-map、実際のimport元1,606行（同名721行）を渡す。共有の道具は変更せず、資料側のrewrite.pyで公開宣言の所有元を補う。分割元の定義・弱い仮定の削除wrapper・EInfinityへBSを戻す変更は保留にする。[回帰記録](bulk-b3prime/B4-tool-regression.tar.gz)。
+
+| レーン | 枝 | 元環境で採取する本体の候補 | 完全名/旧module文字列一致 |
+| --- | --- | ---: | ---: |
+| 5a | `math/bs-impl` | 0 | 0 |
+| 5d | `math/bs-m15` | 0 | 0 |
+| 3a | `math/inf-supply` | 7 | 0 |
+| 3b | `math/inf-supply-b` | 180 | 0 |
+| 6 | `math/scheme` | 7 | 0 |
+| kerodon | `research/kerodon-review-c` | 0 | 0 |
+
+これらは短名も調べるための候補数で、変更が確定した件数ではない。branch/HEAD・manifestはlanes.jsonへ保存。draftsはcollectから外し、本文28本・50箇所の別の文字列の影響表を渡す（保護したA4のP⁰も本文変更0）。将来の置き場所の第一行18本だけは承認範囲で追従済み。他のレーンの作業木/枝への書込み0。mainへの取り込みは調整役が行う。
+
+
+### 検証中に進んだmainとの境界
+
+今回のfull verifyの対象は上記の107d00558（取り込み済みmain391b2a0d2）である。終了時のmain51723ce33にはその後の非BS本体の増分766パスがあり、BS本体の変更は0。作業木を変えないmerge-treeの予覧ではEInfinity集約は自動統合、監査audit_bhatt_scholze_stage2.leanだけが競合した。新しいmainの行の旧module/変更対象の完全名の文字列一致は0だが、短名は未判定のため[main増分の採取候補763本・一覧・統合予覧](bulk-b3prime/B4/main-increment-handoff.json)をB4へ追加した。六レーンの一部の差分がmainへ取り込まれて候補0になった分も、この別の一覧に含めている。検証した枝へこの増分を混ぜず、主張の範囲を明記して渡す。調整役の取り込みではmain側の監査追加を保持する。統合後のmainが今回のfull verifyを通ったという主張ではない。mainへの書込み0。

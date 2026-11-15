@@ -11,7 +11,7 @@ for name in ['actual-application.json','actual-source-scope-check.json','actual-
  shutil.copy2(W/name,D/name)
 for p in (W/'B4').iterdir():
  if p.is_file():shutil.copy2(p,D/'B4'/p.name)
-for name in ['audit_input_scope.py','formal_audit_driver.py','full_verify_driver.py','continue_after_formal.py','continue_after_verify_b4.py','completion_audit.py','prepare_b4_import_owners.py','test_b4_preview.py','test_b4_native_after.py','prepare_b4_lanes.py','save_final_b3_evidence.py','write_final_b3_report.py']:
+for name in ['audit_input_scope.py','formal_audit_driver.py','full_verify_driver.py','continue_after_formal.py','continue_after_verify_b4.py','completion_audit.py','prepare_b4_import_owners.py','test_b4_preview.py','test_b4_native_after.py','prepare_b4_lanes.py','save_final_b3_evidence.py','write_final_b3_report.py','approved_day_full_verify.py','approved_day_guard.py','closing_audit.py']:
  shutil.copy2(W/name,D/'preparation-code'/name)
 with tarfile.open(D/'formal-audits-and-full-verify.tar.gz','w:gz') as archive:
  archive.add(W/'all-audits',arcname='formal-audits')
@@ -22,4 +22,5 @@ with tarfile.open(D/'formal-audits-and-full-verify.tar.gz','w:gz') as archive:
 with tarfile.open(D/'B4-tool-regression.tar.gz','w:gz') as archive:
  archive.add(W/'B4-tests-v4',arcname='B4-tests')
  for name in ['B4-regression-complete.json','B4-native-regression.log','B4-native-regression.log.json']:archive.add(W/name,arcname=name)
+(D/'next-full-verify-plan.json').write_text(json.dumps({'status':'completed','approval':'2026-11-15 morning coordinator: one daytime full verify without shared key or time limit,3jobs24GB, large audits serial','result':'full-verify-complete.json','supersedes':'Prior pending request for60minute shared ticket; this approved execution used no shared ticket.'},ensure_ascii=False,indent=2))
 print('Final B3prime evidence saved; report and commit still required')
