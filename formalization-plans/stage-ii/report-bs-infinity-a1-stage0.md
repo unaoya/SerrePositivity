@@ -2131,3 +2131,39 @@ S1 の交叉降下自体を閉じたとはしていない。
 検証済み全体119本7,425行・688宣言、外枠18,600行内。
 S1・S8 は未完。
 一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
+
+### S1：極限存在下の指定右 Kan の合成と、元の通常の全錐の変換（11-15）
+
+5本297行・9宣言の対象ビルドと小監査が成功（標準三公理のみ）。
+記録：`/tmp/is-w1/s1-right-kan-limit-3/`。source SHA 一致。
+
+```lean
+(hp : HasLimit p) → (hq : HasLimit q) →
+(α : FunctorHom (restrictJoinCone c δ).val d.val) →
+[IsIso (functorHomEvaluate α apex)] →
+RightKanHomUniversal δ (kanFunctorHomCongr
+  (restrictJoinCone c δ).property d.property ((hoFunctor.map (pre inr)).toFunctor.map α)) →
+(IsLimitCone c ↔ IsLimitCone d)
+```
+
+`ConeCounitMorphismHomUniversal` は元の全錐間の変換を保持し、頂点で可逆なら
+その底の変換との合成が元の余単位の Hom 判定を与える法則。
+`RightKanLimitComposition` はこれを形状制限と指定右 Kan の Hom 全単射へ接続した。
+**両図式の極限が存在する場合の中間補題**であり、最終の S1 に存在仮定は追加しない。
+`FixedHomotopyEvaluation` は既存の時間に定値なホモトピーの類と評価の自然性を接続。
+`ConePostcomposeComponent` は既存の `nerveConePostcomposeHomotopy` を再利用し、
+同じ係数で写した後も頂点成分が可逆であることを証明した。
+`ConePostcomposeBoundary` は、その全錐の変換の底が元の指定自然変換の像である厳密な等式。
+新しい全錐のホモトピーは作らず、既存の構成の法則として扱った。
+計算上限は変更していない。
+
+次は通常の `nerveCone_whisker` に沿って同じ全変換の始域を制限錐へ移し、
+二段分解の元の三角形へこの判定を適用する。任意の係数へ戻すには、
+全共変表現可能関手の保存・検出と宇宙変更を接続する必要がある。
+既存の `UniverseRightKanShape`・`UniverseRightKanCanonical` は実形状と標準全錐を
+保持するが、任意の指定余単位の全輸送への接続はまだ未検証。
+この部分を元の指定輸送の法則として作り、存在を仮定して済ませない。
+
+検証済み全体124本7,722行・697宣言、外枠18,600行内。
+S1 の交叉降下・生成系・上限位相・extensive の判定と、S8 は未完。
+一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
