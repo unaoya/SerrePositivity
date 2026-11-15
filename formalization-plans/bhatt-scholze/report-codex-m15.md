@@ -13311,3 +13311,133 @@ M15・drafts・main・⑤aの既存ファイル・Interfaceは変更していな
 
 G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み7,447行。
 M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
+
+## §97 G01：原子的な自由な道の忠実性と各次数の相互逆な実表示（11-15）
+
+### 97.1 検証済みの追加
+
+追加は **3ファイル323行・明示宣言13**。累計 **60ファイル7,770行・明示宣言477**。
+WalkingAdjunctionAtomicCancellation.lean は95行・3宣言、
+WalkingAdjunctionAtomicFaithful.lean は147行・5宣言、
+WalkingAdjunctionAtomicPresentation.lean は81行・5宣言。
+200行を超える個別の宣言・証明はない。
+G01の同じ全随伴の原子的な分解・合成の消去・照合の法則とその証明の分割であり、
+新しい一覧IDは足さない。
+
+同じ全単体の原子的な左因子を持つ二分解を、§96の実細分で比較した。
+大きい左因子の原子性と短い左因子の正の長さから、間の細分関手の長さが0となる。
+長さ0が実際の単位の定値関手を検出する既存の証明と全単位則を適用し、
+中点・左右の実関手・分解の実データ全体の等式を得た。
+これを各次数の射の合成の等式へ適用し、先頭の実原子の合成が等しいときは
+中間の対象が等しく、先頭と残りの射を異種等式で回収できることを証明した。
+
+原子的な一段の道は元の実射へ写ることを確認した。
+原子で終わる道、従って空でない原子的な道の実像は、全射の長さの加法性から正の長さを持つ。
+道の長さの強い帰納法で、空の道は実像の長さ0から回収し、
+空でない道は先頭の原子と残りの回収を使って短い道へ戻した。
+全次数について、同じ実像を持つ二つの原子的な自由な道の等式を証明し、
+比較関手の **Faithfulを実際に構成した**。§90で構成済みのFullと合わせて完全忠実となった。
+
+さらに、存在を証明済みの原子的な語を実際の道へ展開し、その実像が元の射となることを示した。
+これを各次数の実射の圏から原子的な自由な道の圏への逆関手に組み立てた。
+単位・全合成の法則は忠実性で戻し、比較と逆関手の両方向の合成が
+**全関手そのものとして恒等関手に等しい**ことを証明した。
+各次数での自由な表示は存在の仮定ではなく相互逆な実関手として構成済みとなった。
+
+### 97.2 型と残る境界
+
+原典はRiehl–Verity Definition 2.1.4・Proposition 3.1.10、HA Proposition 4.7.3.3、
+Kerodon Remark 6.2.1.4（Tag 02EN）。検証した型は以下。
+最初の二つの分解の法則ではn・X・YとH : Fin(n+1) ⥤ walkingAdjunctionHom X Yを暗黙に固定する。
+
+```lean
+lemma WalkingAdjunctionFactorization.eq_of_atomic_refinement
+    (a b : WalkingAdjunctionFactorization H)
+    (T : Fin (n + 1) ⥤ walkingAdjunctionHom a.middle b.middle)
+    (ha : WalkingAdjunctionLevelIsAtomic (X := ⟨X⟩) (Y := ⟨a.middle⟩) a.left)
+    (hb : WalkingAdjunctionLevelIsAtomic (X := ⟨X⟩) (Y := ⟨b.middle⟩) b.left)
+    (hp : a.left.prod' T ⋙ walkingAdjunctionHorizontal X a.middle b.middle = b.left)
+    (hq : T.prod' b.right ⋙ walkingAdjunctionHorizontal a.middle b.middle Y = a.right) : a = b
+
+lemma WalkingAdjunctionFactorization.eq_of_atomic_left (a b : WalkingAdjunctionFactorization H)
+    (ha : WalkingAdjunctionLevelIsAtomic (X := ⟨X⟩) (Y := ⟨a.middle⟩) a.left)
+    (hb : WalkingAdjunctionLevelIsAtomic (X := ⟨X⟩) (Y := ⟨b.middle⟩) b.left) : a = b
+
+lemma walkingAdjunctionAtomicLeftCancellation {A B C D : WalkingAdjunctionLevel n}
+    (f : A ⟶ B) (g : A ⟶ C) (u : B ⟶ D) (v : C ⟶ D)
+    (hf : WalkingAdjunctionLevelIsAtomic f) (hg : WalkingAdjunctionLevelIsAtomic g)
+    (h : f ≫ u = g ≫ v) : ∃ _hBC : B = C, HEq f g ∧ HEq u v
+
+lemma walkingAdjunctionAtomicPathFunctor_generator
+    {A B : WalkingAdjunctionAtomicVertex n} (e : A ⟶ B) :
+    (walkingAdjunctionAtomicPathFunctor n).map e.toPath = e.val
+
+lemma walkingAdjunctionAtomicPathFunctor_cons_size
+    {A B C : WalkingAdjunctionAtomicVertex n} (p : Quiver.Path A B) (e : B ⟶ C) :
+    0 < walkingAdjunctionLevelSize ((walkingAdjunctionAtomicPathFunctor n).map (p.cons e))
+
+lemma walkingAdjunctionAtomicPathFunctor_size_pos
+    {A B : WalkingAdjunctionAtomicVertex n} (p : Quiver.Path A B) (hp : 0 < p.length) :
+    0 < walkingAdjunctionLevelSize ((walkingAdjunctionAtomicPathFunctor n).map p)
+
+lemma walkingAdjunctionAtomicPathFunctor_map_injective
+    {A B : WalkingAdjunctionAtomicVertex n} (p q : Quiver.Path A B)
+    (h : (walkingAdjunctionAtomicPathFunctor n).map p =
+      (walkingAdjunctionAtomicPathFunctor n).map q) : p = q
+
+instance walkingAdjunctionAtomicPathFunctor_faithful (n : ℕ) :
+    (walkingAdjunctionAtomicPathFunctor n).Faithful
+
+def walkingAdjunctionAtomicWordPath {n : ℕ} {X Y : WalkingAdjunctionLevel n} (f : X ⟶ Y) :
+    Quiver.Path (V := WalkingAdjunctionAtomicVertex n) ⟨X⟩ ⟨Y⟩
+
+lemma walkingAdjunctionAtomicWordPath_map {n : ℕ} {X Y : WalkingAdjunctionLevel n} (f : X ⟶ Y) :
+    (walkingAdjunctionAtomicPathFunctor n).map (walkingAdjunctionAtomicWordPath f) = f
+
+def walkingAdjunctionAtomicInverse (n : ℕ) :
+    WalkingAdjunctionLevel n ⥤ Paths (WalkingAdjunctionAtomicVertex n)
+
+lemma walkingAdjunctionAtomic_path_roundtrip (n : ℕ) :
+    walkingAdjunctionAtomicPathFunctor n ⋙ walkingAdjunctionAtomicInverse n =
+      𝟭 (Paths (WalkingAdjunctionAtomicVertex n))
+
+lemma walkingAdjunctionAtomic_level_roundtrip (n : ℕ) :
+    walkingAdjunctionAtomicInverse n ⋙ walkingAdjunctionAtomicPathFunctor n =
+      𝟭 (WalkingAdjunctionLevel n)
+```
+
+今回完成したのは各次数の自由な表示である。
+原子的な射が退化で原子的な射へ写ることはまだ未証明であり、
+simplicial computadとしての全ての条件を完成とはしていない。
+次は有限順序集合の再添字付けと、原子性の退化との両立を検収する。
+
+原典のfillableな原子とそのparent、parental subcomputadのfiltration・実充填、
+元のQCatAdjunctionからの全coherentな延長と同じF≫U・単位・余単位・HAモデルの照合、
+G02以降も未完。G01の済みは0を維持する。
+原典の§4.1–§4.3を再確認したが、fillableなparentの存在を仮定する型を実装に追加していない。
+原典：[Homotopy coherent adjunctions and the formal theory of monads](https://emilyriehl.github.io/files/adjunctions.pdf)。
+
+### 97.3 検証と進み
+
+with_build_lock.sh --class impl --wait 3600、短いimpl枠。
+セッション56927の最大280秒の枠で原子的な左因子の回収と道の忠実性を検証した。
+道の圏の型同義語を扱う箇所では、書き換えを実関手の合成則の直接の等式へ変更し、
+忠実性のinstanceの暗黙の引数を明示した。
+その後、同じ枠の期限による終了124を確認した。ここでは監査を済みとは数えていない。
+
+セッション5568の最大240秒の枠で、最終対象
+lake build SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionAtomicPresentation:olean
+を検証した。逆関手は汎用の原像APIでの対象推論を避け、検証済みの原子的な語の実展開で構成した。
+最終G12_PRESENTATION_BUILD_EXIT=0・警告なし（1323 jobs）。
+追加13根の小さい監査はG12_PRESENTATION_AUDIT_EXIT=0。
+入力13名と出力13名は一致し、公理依存はpropext・Classical.choice・Quot.soundのみ。
+sorryAx・追加公理なし。exitで外側の終了0まで確認して枠を返却した。
+入力・根・全出力・最終対象ビルドログは
+[g12-atomic-presentation-audit-2026-11-15/](g12-atomic-presentation-audit-2026-11-15/)に保存した。
+現在自分の生きたビルド・監査の枠は残っていない。
+
+M15・drafts・main・⑤aの既存ファイル・Interfaceは変更していない。
+全体ビルド・大きい監査は行っていない。
+
+G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み7,770行。
+M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
