@@ -2553,3 +2553,21 @@ nerve (OrdinaryHomElements C) ≅ TwistedArrow (nerve C)
 
 検証済み全体160本10,243行・867宣言。未検証の `NerveJoinChains`・`NerveJoinNaturality` は作業木のみ。
 一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
+
+
+### S8 続報：nerve と join の全単体的比較
+
+`NerveJoinChains`（116行）・`NerveJoinNaturality`（154行）の2本270行・39宣言を検証した。
+対象ビルドと小監査は成功、標準三公理のみ、source SHA 一致。
+記録：`/tmp/is-w1/s8-nerve-join-natural-3/target-audit-result.json`。
+
+```lean
+nerveJoinComparison C D : join (nerve C) (nerve D) ⟶ nerve (CategoryTheory.Join C D)
+nerveJoinChain (Join.simplexMap _ _ α s) = α.toFunctor ⋙ nerveJoinChain s
+```
+
+全順序写像で対象と射を比較し、面・退化を含む自然性を閉じた。
+この段階では比較射の可逆性と係数関手に関する自然性はまだ示していない。
+次は係数関手による後合成の法則を新規ファイルで示す。
+検証済み全体162本10,513行・906宣言。S1・S8 の完成にはまだ数えない。
+一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
