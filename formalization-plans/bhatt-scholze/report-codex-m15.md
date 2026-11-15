@@ -15424,3 +15424,131 @@ M15・drafts・main・⑤aの既存ファイル・Interfaceは変更せず、全
 
 G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み12,393行。
 M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
+
+## §110 G01：終端への実射の挿入と始点plusの実親・指定面・原子性（11-15）
+
+### 110.1 検証済みの追加
+
+追加は **4ファイル339行・明示宣言16**。累計 **111ファイル12,732行・明示宣言686**。
+ComposableArrowAppend.lean は84行・6宣言、ComposableArrowAppendFaces.lean は68行・1宣言、
+ComposableArrowAppendPositions.lean は79行・3宣言、WalkingAdjunctionPlusParent.lean は108行・6宣言。
+個々の宣言・証明は200行以下、新規Leanの行長は100文字以下。
+G01の同じ全随伴の実親の構成、全関手の面・係数移送・合成・照合とその証明の分割であり、一覧IDは追加しない。
+
+任意の圏の有限実鎖の終端へ実射を挿入し、一つ高次の全実関手を構成した。
+長さ0では一辺の関手を取り、正の長さでは尾部に再帰して元の先頭の実射を戻す。
+元の始点を保つ等式と指定対象が新しい終点である等式を、実構成と同時に得る。
+最後の面が元の全実関手を回収することを、尾部と先頭への挿入の面の合成則で証明した。
+長さ0の基底では有限点を明示して全関手を比較している。
+挿入した最後の実辺が指定射と異種等式で一致すること、
+それより前の全実対象と全隣接実辺が元のものと一致することも検収した。
+
+始点plusの原子的な実全単体Hには、minusからplusへの実生成射の定値関手を前置し、
+元の実水平合成でminus始点の全実鎖Lを作った。各頂点の点の個数はHの個数に1を加えたものとなる。
+原子のHの終点の個数1から、Lの終点の個数2を証明した。
+その終点から個数1の構成済みの実対象への併合射を取り、終端挿入で実全単体の親候補を構成した。
+この実親の最後の面はLに全関手として一致する。
+両端の個数は原子性の端点判定を満たすので、この実親自体の原子性も検証した。
+親の実関手・指定面・原子性の存在を仮定する欄は置いていない。
+
+### 110.2 型と未完の境界
+
+原典はRiehl–Verity Lemma 4.1.4・§4.2、HA Proposition 4.7.3.3、
+Kerodon Remark 6.2.1.4（Tag 02EN）。追加の型は以下。
+
+```lean
+def composableArrowAppendData :
+    ∀ (n : ℕ) (F : ComposableArrows C n) (B : C) (_f : F.obj (Fin.last n) ⟶ B),
+      {G : ComposableArrows C (n + 1) // G.obj 0 = F.obj 0 ∧
+        G.obj (Fin.last (n + 1)) = B}
+
+def composableArrowAppend {n : ℕ} (F : ComposableArrows C n) (B : C)
+    (f : F.obj (Fin.last n) ⟶ B) : ComposableArrows C (n + 1)
+
+lemma composableArrowAppend_first {n : ℕ} (F : ComposableArrows C n) (B : C)
+    (f : F.obj (Fin.last n) ⟶ B) : (composableArrowAppend F B f).obj 0 = F.obj 0
+
+lemma composableArrowAppend_last {n : ℕ} (F : ComposableArrows C n) (B : C)
+    (f : F.obj (Fin.last n) ⟶ B) :
+    (composableArrowAppend F B f).obj (Fin.last (n + 1)) = B
+
+lemma composableArrowAppend_zero (F : ComposableArrows C 0) (B : C)
+    (f : F.obj (Fin.last 0) ⟶ B) :
+    composableArrowAppend F B f = ComposableArrows.mk₁ f
+
+lemma composableArrowAppend_succ {n : ℕ} (F : ComposableArrows C (n + 1)) (B : C)
+    (f : F.obj (Fin.last (n + 1)) ⟶ B) :
+    composableArrowAppend F B f = (composableArrowAppend F.δ₀ B f).precomp
+      (F.map' 0 1 ≫ eqToHom (composableArrowAppend_first F.δ₀ B f).symm)
+
+lemma composableArrowAppend_face_last :
+    ∀ (n : ℕ) (F : ComposableArrows C n) (B : C) (f : F.obj (Fin.last n) ⟶ B),
+      finiteChainFace (composableArrowAppend F B f) (Fin.last (n + 1)) = F
+
+lemma composableArrowAppend_last_edge :
+    ∀ (n : ℕ) (F : ComposableArrows C n) (B : C) (f : F.obj (Fin.last n) ⟶ B),
+      HEq ((composableArrowAppend F B f).map
+        (homOfLE (Fin.castSucc_le_succ (Fin.last n)))) f
+
+lemma composableArrowAppend_before_obj {n : ℕ} (F : ComposableArrows C n) (B : C)
+    (f : F.obj (Fin.last n) ⟶ B) (i : Fin (n + 1)) :
+    (composableArrowAppend F B f).obj i.castSucc = F.obj i
+
+lemma composableArrowAppend_before_edge {n : ℕ} (F : ComposableArrows C (n + 1)) (B : C)
+    (f : F.obj (Fin.last (n + 1)) ⟶ B) (j : Fin (n + 1)) :
+    HEq ((composableArrowAppend F B f).map
+      (homOfLE (Fin.castSucc_le_succ j.castSucc)))
+      (F.map (homOfLE (Fin.castSucc_le_succ j)))
+
+def walkingAdjunctionPlusParentPrefix {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom .plus Y) n) :
+    ComposableArrows (walkingAdjunctionHom .minus Y) n
+
+lemma walkingAdjunctionPlusParentPrefix_card {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom .plus Y) n) (i : Fin (n + 1)) :
+    walkingAdjunctionOrdinalCard .minus Y ((walkingAdjunctionPlusParentPrefix H).obj i) =
+      1 + walkingAdjunctionOrdinalCard .plus Y (H.obj i)
+
+lemma walkingAdjunctionPlusParentPrefix_last_card {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom .plus Y) n)
+    (ha : WalkingAdjunctionLevelIsAtomic (X := ⟨.plus⟩) (Y := ⟨Y⟩) H) :
+    walkingAdjunctionOrdinalCard .minus Y
+      ((walkingAdjunctionPlusParentPrefix H).obj (Fin.last n)) = 0 + 2
+
+def walkingAdjunctionPlusParent {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom .plus Y) n)
+    (ha : WalkingAdjunctionLevelIsAtomic (X := ⟨.plus⟩) (Y := ⟨Y⟩) H) :
+    ComposableArrows (walkingAdjunctionHom .minus Y) (n + 1)
+
+lemma walkingAdjunctionPlusParent_face_last {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom .plus Y) n)
+    (ha : WalkingAdjunctionLevelIsAtomic (X := ⟨.plus⟩) (Y := ⟨Y⟩) H) :
+    finiteChainFace (walkingAdjunctionPlusParent H ha) (Fin.last (n + 1)) =
+      walkingAdjunctionPlusParentPrefix H
+
+lemma walkingAdjunctionPlusParent_atomic {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom .plus Y) n)
+    (ha : WalkingAdjunctionLevelIsAtomic (X := ⟨.plus⟩) (Y := ⟨Y⟩) H) :
+    WalkingAdjunctionLevelIsAtomic (X := ⟨.minus⟩) (Y := ⟨Y⟩)
+      (walkingAdjunctionPlusParent H ha)
+```
+
+始点plusの実親の全関手・指定面・原子性は今回構成したが、
+元のHが非退化ならこの親も非退化であることはまだ今回の追加に含めていない。
+原典の文字列表示とfillable条件との全比較、始点plusの実親の対応の検収、
+その他の面とのfiltrationの両立とparental subcomputadのfiltrationは未完。
+元のQCatAdjunctionからの全coherentな延長、水平反対の向きの全比較、
+同じF≫U・単位・余単位・HAモデルとの照合も未完である。G01の済みは0、G02以降も未完を維持する。
+
+### 110.3 検証と進み
+
+with_build_lock.sh --class impl --wait 3600、最大240秒の短い枠で対象ビルドと追加16根だけの公理監査を確認した。
+最終対象はSerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionPlusParent:olean。
+最終固定コマンドの対象ビルド・監査と外側の終了は0、最終対象ビルドは警告なし。
+追加16根は入力名と出力名が一致し、公理依存はpropext・Classical.choice・Quot.soundのみ。
+sorryAx・追加公理なし。入力・根・監査全出力・対象ビルドログは
+[g12-plus-parent-construction-audit-2026-11-15/](g12-plus-parent-construction-audit-2026-11-15/)に保存した。
+M15・drafts・main・⑤aの既存ファイル・Interfaceは変更せず、全体ビルド・大きい監査は行っていない。
+
+G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み12,732行。
+M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
