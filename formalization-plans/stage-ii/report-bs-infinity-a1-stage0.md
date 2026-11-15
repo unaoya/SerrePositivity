@@ -1932,3 +1932,25 @@ presentable な係数への制限はない。
 検証済み全体99本6,316行・619宣言、外枠18,600行内。
 S1 の交叉降下の同値と被覆生成の結論、S8 は未完。
 一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
+
+### S1：指定右 Kan 局所輸送の係数前層への後合成（11-15）
+
+`KanExtensions/RightTransportPostcomp` 59行・10宣言の対象ビルドと
+小監査が成功（標準三公理のみ）。記録：`/tmp/is-w1/s1-right-postcomp-2/`。
+source SHA も一致。
+
+```lean
+kanRightTransportPostcomp (t : RightKanConeTransport δ F₀ F α c) (U : D ⟶ E) :
+  RightKanConeTransport δ (F₀ ≫ U) (F ≫ U) (kanRightCounitPostcomp α U) c
+
+(kanRightTransportPostcomp t U).cone.val = t.cone.val ≫ U
+```
+
+元の右 Kan 輸送の円柱全体に同じ係数射を合成する法則。
+右輸送は始端を標準錐に固定し、終端を比較錐とする元の定義のまま。
+極限の保存性を新しい仮定として追加せず、極限性は各像の指定錐で別途示す。
+これは既存の構成の係数移送の法則として数える。
+
+検証済み全体100本6,375行・629宣言、外枠18,600行内。
+S1 の交叉降下の同値・生成系・上限位相・extensive の判定と、S8 は未完。
+一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
