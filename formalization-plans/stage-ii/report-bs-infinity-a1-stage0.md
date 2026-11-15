@@ -1572,3 +1572,31 @@ NativeSiteDescent はビルドを通過した。AsSmall の篩比較は一般の
 検証済み全体74本4,534行・409宣言。S6 全体の指定層化単位の照合はなお残る。
 
 一覧：済み 4／全体 8（うち追加 0、済み：S2・S3・S4・S5、S7 は後続）。
+
+### S6：元の随伴の正方形の単位法則（11-15、未検証）
+
+`MateUnit.lean` の型は一般の双圏の `s : l₁ ⊣ r₁`・`t : l₂ ⊣ r₂`、
+`α : g ≫ l₂ ⟶ l₁ ≫ h` について
+```lean
+𝟙 g ⊗≫ s.unit ▷ g ⊗≫ l₁ ◁ mateEquiv s t α ⊗≫ 𝟙 ((l₁ ≫ h) ≫ r₂) =
+  𝟙 g ⊗≫ g ◁ t.unit ⊗≫ α ▷ r₂ ⊗≫ 𝟙 ((l₁ ≫ h) ≫ r₂)
+```
+（結合子・単位子は型に自動挿入される）。逆 mate の同じ単位法則も保持する。
+S6 の元の層化単位の正方形へ直接接続するための、既存の構成の法則。
+
+一覧：済み 4／全体 8（うち追加 0、済み：S2・S3・S4・S5、S7 は後続）。
+
+### S6：同じ宇宙の層条件・AsSmall の篩形状の検証済みの区切り（11-15）
+
+`NativeSiteDescent.lean`・`AsSmallSieveComparison.lean` の2本188行、
+それぞれ対象ビルドと小監査成功（合わせて23宣言、標準三公理のみ）。
+記録は `/tmp/is-w1/native-site-cones/target-audit-result.json` と
+`/tmp/is-w1/native-site-assmall-comparison/target-audit-result.json`。
+元の指定錐の再添字と両向きの被覆保存性により、係数と同じ宇宙で層条件を比較した。
+AsSmall の篩圏の充満忠実性は、元の Over.post の射の全射・単射へ直接戻して閉じた。
+
+元の restrictionCone への比較は、単体記法のスコープを補って再検証する。
+`AsSmallSiteShape` はビルド通過、全3本を合わせた小監査はまだ通っていない。
+検証済み全体76本4,722行・432宣言。S6 の元の層化単位の照合は未完。
+
+一覧：済み 4／全体 8（うち追加 0、済み：S2・S3・S4・S5、S7 は後続）。
