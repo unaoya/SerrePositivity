@@ -3,7 +3,7 @@
   "complete": 2,
   "total": 6,
   "added": 0,
-  "verified_head": "this commit: base d9fe251e1c06509413899bfcd814b60a591a4237",
+  "verified_head": "this commit: base 7a5c5dca5d92be898e585cd7ed5b6ce7bea406f1",
   "items": {
     "HT01": "complete",
     "HT02": "complete",
@@ -12,10 +12,10 @@
     "HT05": "not-started",
     "HT06": "not-started"
   },
-  "latest_complete_audit_checkpoint": "affine-base-polynomial-action-checkpoint.json",
-  "latest_complete_audit_declarations": 1332,
+  "latest_complete_audit_checkpoint": "affine-base-hodge-tate-map-checkpoint.json",
+  "latest_complete_audit_declarations": 1349,
   "working_changes_unverified": [],
-  "pending_check": "bundle-102 terminal; all prepared modules passed",
+  "pending_check": "bundle-103 terminal; all prepared modules passed",
   "next_proof_route": "ht02-next-proof-route.md",
   "initial_record": {
     "stage": "5inf3a",
