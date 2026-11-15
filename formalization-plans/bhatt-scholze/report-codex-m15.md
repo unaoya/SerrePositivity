@@ -10705,3 +10705,134 @@ sorryAx・追加公理はない。監査後にexitを渡し、外側も終了0�
 
 G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み1,708行。
 M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
+
+
+## §80 G01：区間表示の実同値と残る二つの混合水平合成（11-15）
+
+### 80.1 実装と検収の境界
+
+G01の区間表示を、Homの全単射から実関手・実同値へまとめた。
+追加はAugmentedOrdinalMaps.leanの134行とOrdinalIntervalFunctor.leanの162行、
+計2ファイル296行・明示宣言22。累計 **16ファイル2,004行・明示宣言155**。
+
+augmentedOrderHomEquivは空も含む有限順序射と増大単体圏の射の実全単射。
+ordinalIntervalRepresentationはその反対圏から両端点保存の単体圏への実関手で、
+忠実性・充満性・本質的全射性を実際に証明した。IsEquivalenceを引数に仮定せず、
+これらの証明から逆関手・単位・余単位を持つordinalIntervalEquivalenceを構成した。
+両端点保存の順序和bottomTopIntervalSumとこの逆からmixedBottomTopOrdinalを作り、
+Galois双対と反対圏を経てmixedTopBottomOrdinalも実双関手として作った。
+
+これで8通りの水平合成の実双関手のデータは揃ったが、全組合せの結合則・単位則を
+備えたwalking adjunctionにはまだ組み上げていない。一般の同値の逆を使う箇所は、
+必要な対象等式・自然性の法則を次に照合する。元のQCatAdjunctionからの全拡張、
+F≫Uとの比較、元の単位・余単位との照合も未完。G01を完成とは数えない。
+原典はHA Proposition 4.7.3.3、Riehl–Verity Remark 3.3.8、
+Kerodon Remark 6.2.1.4（Tag 02EN）。原典番号を完成属性としては登録していない。
+
+### 80.2 同じ構成の法則・表示の型
+
+以下はnamespace SerrePositivity.InfinityCategories.HA.Monads内。
+新しい一覧IDは加えず、G01の構成とその法則の分割として報告する。
+200行を超える宣言・証明はない。
+
+```lean
+abbrev augmentedOrdinalCard : AugmentedSimplexCategory → ℕ
+  | .star => 0
+  | .of x => x.len + 1
+
+/-- 概要：点の個数から同じ増大単体圏の対象を作る。
+方針：0か後続数かで分ける。規約：指定された骨格の対象。
+使われ方：Riehl–Verity Remark 3.3.8 の区間表示の対象の逆。 -/
+def augmentedOrdinalOfCard : ℕ → AugmentedSimplexCategory
+  | 0 => .star
+  | n + 1 => .of (SimplexCategory.mk n)
+
+/-- 概要：個数から作った対象は指定された点の個数を持つ。
+方針：自然数を場合分けする。規約：空の場合も含む。
+使われ方：Riehl–Verity Remark 3.3.8 の本質的全射性。 -/
+@[simp] lemma augmentedOrdinalCard_ofCard (n : ℕ) :
+    augmentedOrdinalCard (augmentedOrdinalOfCard n) = n
+
+def augmentedOrdinalOfCard : ℕ → AugmentedSimplexCategory
+  | 0 => .star
+  | n + 1 => .of (SimplexCategory.mk n)
+
+/-- 概要：個数から作った対象は指定された点の個数を持つ。
+方針：自然数を場合分けする。規約：空の場合も含む。
+使われ方：Riehl–Verity Remark 3.3.8 の本質的全射性。 -/
+@[simp] lemma augmentedOrdinalCard_ofCard (n : ℕ) :
+    augmentedOrdinalCard (augmentedOrdinalOfCard n) = n
+
+@[simp] lemma augmentedOrdinalCard_ofCard (n : ℕ) :
+    augmentedOrdinalCard (augmentedOrdinalOfCard n) = n
+
+def augmentedOrderHom {X Y : AugmentedSimplexCategory} (f : X ⟶ Y) :
+    Fin (augmentedOrdinalCard X) →o Fin (augmentedOrdinalCard Y)
+
+def augmentedHomOfOrder (X Y : AugmentedSimplexCategory)
+    (f : Fin (augmentedOrdinalCard X) →o Fin (augmentedOrdinalCard Y)) : X ⟶ Y
+
+lemma augmentedHomOfOrder_order {X Y : AugmentedSimplexCategory} (f : X ⟶ Y) :
+    augmentedHomOfOrder X Y (augmentedOrderHom f) = f
+
+lemma augmentedOrderHom_ofOrder (X Y : AugmentedSimplexCategory)
+    (f : Fin (augmentedOrdinalCard X) →o Fin (augmentedOrdinalCard Y)) :
+    augmentedOrderHom (augmentedHomOfOrder X Y f) = f
+
+def augmentedOrderHomEquiv (X Y : AugmentedSimplexCategory) :
+    (X ⟶ Y) ≃ (Fin (augmentedOrdinalCard X) →o Fin (augmentedOrdinalCard Y))
+
+@[simp] lemma augmentedOrderHom_id (X : AugmentedSimplexCategory) :
+    augmentedOrderHom (𝟙 X) = OrderHom.id
+
+@[simp] lemma augmentedOrderHom_comp {X Y Z : AugmentedSimplexCategory}
+    (f : X ⟶ Y) (g : Y ⟶ Z) :
+    augmentedOrderHom (f ≫ g) = (augmentedOrderHom g).comp (augmentedOrderHom f)
+
+def simplexPreservesEndpoints : MorphismProperty SimplexCategory
+
+instance simplexPreservesEndpoints_multiplicative :
+    simplexPreservesEndpoints.IsMultiplicative
+
+abbrev IntervalSimplexCategory
+
+def ordinalIntervalRepresentation : AugmentedSimplexCategoryᵒᵖ ⥤ IntervalSimplexCategory
+
+instance ordinalIntervalRepresentation_faithful : ordinalIntervalRepresentation.Faithful
+
+instance ordinalIntervalRepresentation_full : ordinalIntervalRepresentation.Full
+
+instance ordinalIntervalRepresentation_essSurj : ordinalIntervalRepresentation.EssSurj
+
+instance ordinalIntervalRepresentation_isEquivalence :
+    ordinalIntervalRepresentation.IsEquivalence
+
+def ordinalIntervalEquivalence : AugmentedSimplexCategoryᵒᵖ ≌ IntervalSimplexCategory
+
+def bottomTopIntervalSum :
+    BottomSimplexCategory × TopSimplexCategory ⥤ IntervalSimplexCategory
+
+def mixedBottomTopOrdinal :
+    BottomSimplexCategory × TopSimplexCategory ⥤ AugmentedSimplexCategoryᵒᵖ
+
+def mixedTopBottomOrdinal :
+    TopSimplexCategory × BottomSimplexCategory ⥤ AugmentedSimplexCategory
+```
+
+### 80.3 対象ビルドと小さい監査
+
+対象ビルドはwith_build_lock.sh --class impl --wait 3600の短い280秒のimpl枠で、
+lake build SerrePositivity.InfinityCategories.HA.Monads.OrdinalIntervalFunctor:olean。
+依存のAugmentedOrdinalMapsも含めて成功、警告なし（最終ログ1163 jobs）。
+前の対話式枠は終了済みで、新設22宣言の監査は別の最大240秒のimpl枠
+（セッション67429、待ち時間は別）で実行し、外側の終了0まで確認した。
+入力名22件と出力名22件は一致し、公理依存は標準のpropext・Classical.choice・Quot.soundのみ。
+sorryAx・追加公理はない。監査入力・根・全出力と対象ビルドログを
+[g12-functor-audit-2026-11-15/](g12-functor-audit-2026-11-15/)に保存した。
+現在、自分の生きたビルド・監査・整理券はない。
+
+既存の14ファイル、M15のLean、drafts、main、⑤aのファイル、Interfaceには書き込んでいない。
+全体ビルド・大きい監査は行っていない。
+
+G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み2,004行。
+M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
