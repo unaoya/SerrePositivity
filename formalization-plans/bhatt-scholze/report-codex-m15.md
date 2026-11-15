@@ -13617,3 +13617,202 @@ M15・drafts・main・⑤aの既存ファイル・Interfaceは変更していな
 
 G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み8,139行。
 M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
+
+## §99 G01：任意の切れ目の間の実関手と外端からの全単体の回収（11-15）
+
+### 99.1 検証済みの追加
+
+追加は **4ファイル425行・明示宣言24**。累計 **68ファイル8,564行・明示宣言521**。
+WalkingAdjunctionCutFunctor.lean は127行・7宣言、WalkingAdjunctionOuterCuts.lean は134行・11宣言、
+WalkingAdjunctionCutInclusions.lean は89行・4宣言、WalkingAdjunctionWholeInterval.lean は75行・2宣言。
+200行を超える個別の宣言・証明はない。
+G01の同じ全随伴の区間表示・単位・係数移送・合成則・照合とその証明の分割なので、
+新しい一覧IDは足さない。
+
+§95の実残余関手は既存の二つの実分解から来る切れ目を入力としていた。
+今回は任意の比較された二つの切れ目を入力にし、分解から来る条件を使わずに、
+その間の元の四Homへの実関手を構成した。
+minusからplusへの座標差が正であることは順位の偶奇の補正から証明した。
+各対象は座標差の重みで構成し、射は実区間制限の端点条件を個数の等式で移して戻した。
+恒等射と全合成の法則も既存の区間制限の法則から実際に回収した。
+
+左単位分解・右単位分解を実関手と実単位則から構成し、その同じ全単体H上の切れ目を取った。
+左端の座標は0、右端の座標はHの重みであり、順位はそれぞれ始点の補正と
+Hの長さに始点の補正を足したものとなる。
+実分解の切れ目がこの両端の間にあることは、因子の長さの非負性と全水平合成の長さの加法則から示した。
+任意の抽象的な切れ目がこの範囲にあるとは主張していない。
+
+実区間関手の対象を元のHの区間に入れる実包含を構成し、全ての射の正方形の可換性を証明した。
+左右の外端の間の場合、この包含は点の値を変えず、実関手の対象の重みはHと一致する。
+これにより、外端の間の実区間関手がH自身と、対象・全射を含む全関手として等しいことを証明した。
+関手の存在・関手則・比較の等式の存在を引数に追加していない。
+
+### 99.2 型と残る境界
+
+原典は[Riehl–Verity §4.1–§4.2](https://emilyriehl.github.io/files/adjunctions.pdf)、
+HA Proposition 4.7.3.3、Kerodon Remark 6.2.1.4（Tag 02EN）。
+現模型での区間の回収の法則として、検証した型は以下。
+
+```lean
+lemma walkingAdjunctionCut_difference_admissible
+    (a : WalkingAdjunctionCut H M) (b : WalkingAdjunctionCut H N)
+    (h : ∀ i, walkingAdjunctionCutRank a i ≤ walkingAdjunctionCutRank b i)
+    (i : Fin (n + 1)) : M = .minus → N = .plus →
+      0 < walkingAdjunctionCutCoordinate b i - walkingAdjunctionCutCoordinate a i
+
+def walkingAdjunctionCutIntervalObject
+    (a : WalkingAdjunctionCut H M) (b : WalkingAdjunctionCut H N)
+    (h : ∀ i, walkingAdjunctionCutRank a i ≤ walkingAdjunctionCutRank b i)
+    (i : Fin (n + 1)) : walkingAdjunctionHom M N
+
+lemma walkingAdjunctionCutIntervalObject_weight
+    (a : WalkingAdjunctionCut H M) (b : WalkingAdjunctionCut H N)
+    (h : ∀ i, walkingAdjunctionCutRank a i ≤ walkingAdjunctionCutRank b i)
+    (i : Fin (n + 1)) :
+    walkingAdjunctionWeight M N (walkingAdjunctionCutIntervalObject a b h i) =
+      walkingAdjunctionCutCoordinate b i - walkingAdjunctionCutCoordinate a i
+
+lemma walkingAdjunctionCutIntervalObject_card
+    (a : WalkingAdjunctionCut H M) (b : WalkingAdjunctionCut H N)
+    (h : ∀ i, walkingAdjunctionCutRank a i ≤ walkingAdjunctionCutRank b i)
+    (i : Fin (n + 1)) :
+    walkingAdjunctionOrdinalCard M N (walkingAdjunctionCutIntervalObject a b h i) =
+      walkingAdjunctionCutIntervalSize a b i
+
+def walkingAdjunctionCutIntervalHom
+    (a : WalkingAdjunctionCut H M) (b : WalkingAdjunctionCut H N)
+    (h : ∀ i, walkingAdjunctionCutRank a i ≤ walkingAdjunctionCutRank b i)
+    {i j : Fin (n + 1)} (f : i ⟶ j) :
+    walkingAdjunctionCutIntervalObject a b h i ⟶ walkingAdjunctionCutIntervalObject a b h j
+
+lemma walkingAdjunctionCutIntervalHom_profile
+    (a : WalkingAdjunctionCut H M) (b : WalkingAdjunctionCut H N)
+    (h : ∀ i, walkingAdjunctionCutRank a i ≤ walkingAdjunctionCutRank b i)
+    {i j : Fin (n + 1)} (f : i ⟶ j) :
+    walkingAdjunctionOrderHom (walkingAdjunctionCutIntervalHom a b h f) =
+      ordinalOrderHomTransport (walkingAdjunctionCutIntervalObject_card a b h i).symm
+        (walkingAdjunctionCutIntervalObject_card a b h j).symm
+        (walkingAdjunctionCutIntervalMap a b h (leOfHom f))
+
+def walkingAdjunctionCutIntervalFunctor
+    (a : WalkingAdjunctionCut H M) (b : WalkingAdjunctionCut H N)
+    (h : ∀ i, walkingAdjunctionCutRank a i ≤ walkingAdjunctionCutRank b i) :
+    Fin (n + 1) ⥤ walkingAdjunctionHom M N
+
+def walkingAdjunctionSourceFactorization (H : Fin (n + 1) ⥤ walkingAdjunctionHom X Y) :
+    WalkingAdjunctionFactorization H
+
+def walkingAdjunctionTargetFactorization (H : Fin (n + 1) ⥤ walkingAdjunctionHom X Y) :
+    WalkingAdjunctionFactorization H
+
+def walkingAdjunctionSourceCut (H : Fin (n + 1) ⥤ walkingAdjunctionHom X Y) :
+    WalkingAdjunctionCut H X
+
+def walkingAdjunctionTargetCut (H : Fin (n + 1) ⥤ walkingAdjunctionHom X Y) :
+    WalkingAdjunctionCut H Y
+
+lemma walkingAdjunctionSourceCut_coordinate
+    (H : Fin (n + 1) ⥤ walkingAdjunctionHom X Y) (i : Fin (n + 1)) :
+    walkingAdjunctionCutCoordinate (walkingAdjunctionSourceCut H) i = 0
+
+lemma walkingAdjunctionTargetCut_coordinate
+    (H : Fin (n + 1) ⥤ walkingAdjunctionHom X Y) (i : Fin (n + 1)) :
+    walkingAdjunctionCutCoordinate (walkingAdjunctionTargetCut H) i =
+      walkingAdjunctionWeight X Y (H.obj i)
+
+lemma walkingAdjunctionSourceCut_rank
+    (H : Fin (n + 1) ⥤ walkingAdjunctionHom X Y) (i : Fin (n + 1)) :
+    walkingAdjunctionCutRank (walkingAdjunctionSourceCut H) i =
+      walkingAdjunctionTargetCorrection X
+
+lemma walkingAdjunctionTargetCut_rank
+    (H : Fin (n + 1) ⥤ walkingAdjunctionHom X Y) (i : Fin (n + 1)) :
+    walkingAdjunctionCutRank (walkingAdjunctionTargetCut H) i =
+      walkingAdjunctionVertexLength X Y (H.obj i) + walkingAdjunctionTargetCorrection X
+
+lemma walkingAdjunctionOuterCuts_le
+    (H : Fin (n + 1) ⥤ walkingAdjunctionHom X Y) :
+    ∀ i, walkingAdjunctionCutRank (walkingAdjunctionSourceCut H) i ≤
+      walkingAdjunctionCutRank (walkingAdjunctionTargetCut H) i
+
+lemma WalkingAdjunctionFactorization.sourceCut_le
+    {H : Fin (n + 1) ⥤ walkingAdjunctionHom X Y} (a : WalkingAdjunctionFactorization H) :
+    ∀ i, walkingAdjunctionCutRank (walkingAdjunctionSourceCut H) i ≤
+      walkingAdjunctionCutRank a.cut i
+
+lemma WalkingAdjunctionFactorization.le_targetCut
+    {H : Fin (n + 1) ⥤ walkingAdjunctionHom X Y} (a : WalkingAdjunctionFactorization H) :
+    ∀ i, walkingAdjunctionCutRank a.cut i ≤
+      walkingAdjunctionCutRank (walkingAdjunctionTargetCut H) i
+
+def walkingAdjunctionCutFunctorInclusion
+    (a : WalkingAdjunctionCut H M) (b : WalkingAdjunctionCut H N)
+    (h : ∀ i, walkingAdjunctionCutRank a i ≤ walkingAdjunctionCutRank b i)
+    (i : Fin (n + 1)) :
+    Fin (walkingAdjunctionOrdinalCard M N ((walkingAdjunctionCutIntervalFunctor a b h).obj i)) →o
+      Fin (walkingAdjunctionOrdinalCard X Y (H.obj i))
+
+lemma walkingAdjunctionCutFunctorInclusion_val
+    (a : WalkingAdjunctionCut H M) (b : WalkingAdjunctionCut H N)
+    (h : ∀ i, walkingAdjunctionCutRank a i ≤ walkingAdjunctionCutRank b i)
+    (i : Fin (n + 1))
+    (x : Fin (walkingAdjunctionOrdinalCard M N
+      ((walkingAdjunctionCutIntervalFunctor a b h).obj i))) :
+    (walkingAdjunctionCutFunctorInclusion a b h i x).val =
+      walkingAdjunctionCutCoordinate a i + x.val
+
+lemma walkingAdjunctionCutIntervalHom_heq
+    (a : WalkingAdjunctionCut H M) (b : WalkingAdjunctionCut H N)
+    (h : ∀ i, walkingAdjunctionCutRank a i ≤ walkingAdjunctionCutRank b i)
+    {i j : Fin (n + 1)} (f : i ⟶ j) :
+    HEq (walkingAdjunctionOrderHom ((walkingAdjunctionCutIntervalFunctor a b h).map f))
+      (walkingAdjunctionCutIntervalMap a b h (leOfHom f))
+
+lemma walkingAdjunctionCutFunctor_square
+    (a : WalkingAdjunctionCut H M) (b : WalkingAdjunctionCut H N)
+    (h : ∀ i, walkingAdjunctionCutRank a i ≤ walkingAdjunctionCutRank b i)
+    {i j : Fin (n + 1)} (f : i ⟶ j) :
+    (walkingAdjunctionCutFunctorInclusion a b h j).comp
+        (walkingAdjunctionOrderHom ((walkingAdjunctionCutIntervalFunctor a b h).map f)) =
+      (walkingAdjunctionOrderHom (H.map f)).comp
+        (walkingAdjunctionCutFunctorInclusion a b h i)
+
+lemma walkingAdjunctionWholeInterval_obj {n : ℕ} {X Y : WalkingAdjunctionPoint}
+    (H : Fin (n + 1) ⥤ walkingAdjunctionHom X Y) (i : Fin (n + 1)) :
+    (walkingAdjunctionCutIntervalFunctor (walkingAdjunctionSourceCut H)
+      (walkingAdjunctionTargetCut H) (walkingAdjunctionOuterCuts_le H)).obj i = H.obj i
+
+lemma walkingAdjunctionWholeInterval {n : ℕ} {X Y : WalkingAdjunctionPoint}
+    (H : Fin (n + 1) ⥤ walkingAdjunctionHom X Y) :
+    walkingAdjunctionCutIntervalFunctor (walkingAdjunctionSourceCut H)
+      (walkingAdjunctionTargetCut H) (walkingAdjunctionOuterCuts_le H) = H
+```
+
+任意の許される切れ目からの左右の実因子の合成、fillableな原子と親の構成、
+parental subcomputadのfiltrationと随伴の実充填はまだ完成していない。
+原典のcodomain minusという向きは、現模型の水平反対ではsource minusとなる。
+この向きの全比較と、与えたQCatAdjunctionからのcoherentな延長、
+元のF≫U・単位・余単位・HAモデルの照合も引き続き未完。
+今回の全区間の回収を、coherentな延長の存在と読み替えていない。
+G01の済みは0、G02以降も未完を維持する。
+
+### 99.3 検証と進み
+
+with_build_lock.sh --class impl --wait 3600、各最大240秒の短いimpl枠。
+セッション13970でCutFunctor、69760でOuterCutsの対象ビルドの終了0を確認した。
+セッション32973ではWholeIntervalの対象表示の比較証明をLeanが推論できず、終了1を確認した。
+比較証明を明記し、最終セッション17861で修正後の
+lake build SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionWholeInterval:olean
+と、続く追加24根だけの公理監査、外側の終了0を確認した。
+追加24根は入力名と出力名が一致し、
+公理依存はpropext・Classical.choice・Quot.soundのみ。sorryAx・追加公理なし。
+入力・根・全出力・最終対象ビルドログは
+[g12-cut-functor-audit-2026-11-15/](g12-cut-functor-audit-2026-11-15/)に保存した。
+200行を超える個別の宣言・証明はなく、新規Leanの行長は100文字以下。
+現在自分の生きたビルド・監査の枠は残っていない。
+
+M15・drafts・main・⑤aの既存ファイル・Interfaceは変更していない。
+全体ビルド・大きい監査は行っていない。
+
+G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み8,564行。
+M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
