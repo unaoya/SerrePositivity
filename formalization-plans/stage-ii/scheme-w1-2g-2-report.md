@@ -781,3 +781,26 @@ S04 の表示から 2f の係数構造への移送の法則の分割（着手前
 今回2モジュール97行＋入口2行。2g-2 本体3,721行・入口込み3,778行、小監査422宣言・標準三公理のみ。有限冪の次数一表示の証人の帰納・2f への係数構造の接続と G4・G5 は未完。表示の証人とその pullback での合成、係数構造の一般形は未検証の下書きとして drafts に残し、今回のコミットには含めない。全体の見込み約5,500〜12,000行・外枠16,000行は不変。停止点2g-2ではない。
 
 一覧：済み0／全体3（うち追加0）。
+
+
+S04 の有限冪の表示の帰納（着手前、既存の表示の合成・単位・同型移送の内数、80〜180行）：`DegreeOneProjectiveModel.finiteFiberPower m n` は、元の射 f:X→Spec R の実際の表示 m から、既存の n+1 個の wide pullback の base の同じ種類の表示を返す。零次は一個の冪の同型、後続段は実際の pullback の表示とその Cartesian 四角形の同型を合成する。`DegreeOneProjectiveModel.cechTerm m n` の出口は `(Arrow.mk f).augmentedCechNerve.hom.app n` の表示そのもの。対象・基底への射は既存の Čech nerve のものを保つ。表示の各同型を通した自然性は既存の構造層の逆像と被覆比較を使い、最終の AugmentedRingCechExact の型を変えない。
+
+
+S04 の Rees への戻しと 2f への入口（着手前、既存の Rees 表示・構造射・係数移送の内数、80〜170行）：`nonempty_affineBlowupDegreeOneProjectiveModel I hI` は、有限生成中心 I の実際の affineBlowupπ I の表示の証人の存在。既存の Fin n の Rees 全射評価と構造射の等式を渡す。`nonempty_affineBlowupCechTermModel I hI n` は、既存の増大 Čech nerve の n 次の射そのものの同じ証人の存在。`DegreeOneProjectiveModel.projectiveCechData m` は、選んだ表示の評価から 2f の IsScalarTower・GradedSMul・Module.Finite・irrelevant ideal の条件を同時に返す。表示の存在・多項式環上の有限性を最終の降下定理に仮定として残さない。Noether 基底上では中心の有限生成性は既存の Noether 性から得る。
+
+
+## G3・S04：表示の実際の証人と pullback の合成、2f の入力
+
+`DegreeOneProjectiveModel`（67行）：`DegreeOneProjectiveModel f` は有限で順序のある添字、元の R 代数・次数成分・全射な次数一評価、元の Y と Proj の同型、その同型が f を保つ式を束ねたもの。`degreeOneProjectiveModelOfProj` は同じ Proj の表示を束ねる単位。`DegreeOneProjectiveModel.ofIso` は元の同型による表示の移送。存在を最終の定理の新しい仮定にしていない。
+
+`DegreeOnePolynomialAction`（66行）：`degreeOnePolynomialAlgebra` は元の評価による多項式作用。`degreeOnePolynomial_scalarTower` は R 作用との塔。`degreeOnePolynomial_finite` は全射評価からの有限加群性。`degreeOnePolynomial_gradedSMul` は同じ作用の次数保存。`degreeOne_projective_cech_data` はこれらと irrelevant ideal の条件を同じ評価から返す。
+
+`DegreeOneProjectiveModelPullback`（61行）：`DegreeOneProjectiveModel.pullback` は、実際の二つの射の表示を、実際の pullback の base の表示へ合成する。座標環・全射評価・次数分解は既存の Segre のもの、同型は構成済みの Cartesian 四角形のもの。
+
+`DegreeOneProjectiveModelCechData`（30行）：`DegreeOneProjectiveModel.projectiveCechData` は同じ証人から 2f の係数構造・有限性・標準開の被覆条件を供給する。
+
+単独検証、下書きと本体のソース完全一致、対象と入口のビルド5,130ジョブ、小監査59宣言（35・5・18・1）・標準三公理のみ、終了状態0。依存する表示の型の中の f を直接書き換えず、同型の合成の等式を取り出して移送した。係数作用の新規二宣言は命題なので theorem とし、証明中の letI の警告も整理後に再検証・対象ビルドを行った。pullback の合成だけに局所的な backward.isDefEq.respectTransparency false を用いる。追加公理・sorry・既存宣言の型変更・資源制限の引き上げ・200行超の宣言はない。ログ `2g-degree-one-projective-model-check-2.log`・`2g-degree-one-polynomial-action-check-2.log`・`2g-degree-one-model-pullback-check-2.log`・`2g-degree-one-model-cech-data-check.log`・`2g-degree-one-model-pullback-and-data-native.log`・`2g-degree-one-projective-models-audit.log`。共有鍵 --class impl --wait 3600、待ちは一つ。root・下流全ビルド・全体監査なし。
+
+今回4モジュール224行＋入口4行。2g-2 本体3,945行・入口込み4,006行、小監査481宣言・標準三公理のみ。既存の Čech nerve の各項への表示の帰納の43行の下書きは単独検証まで成功したが、本体ビルド・監査前なので今回のコミットには含めない。Rees の実際の blowup の各 Čech 項への特殊化と G4・G5 は未完。全体の見込み約5,500〜12,000行・外枠16,000行は不変。停止点2g-2ではない。
+
+一覧：済み0／全体3（うち追加0）。
