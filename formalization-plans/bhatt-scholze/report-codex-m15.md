@@ -15552,3 +15552,110 @@ M15・drafts・main・⑤aの既存ファイル・Interfaceは変更せず、全
 
 G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み12,732行。
 M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
+
+## §111 G01：始点plusの実親の非退化性・純粋な終端辺・最初の位置（11-15）
+
+### 111.1 検証済みの追加
+
+追加は **4ファイル328行・明示宣言8**。累計 **115ファイル13,060行・明示宣言694**。
+WalkingAdjunctionPrefixIsomorphisms.lean は78行・2宣言、
+WalkingAdjunctionPlusParentNondegenerate.lean は79行・1宣言、
+WalkingAdjunctionPrefixBottomMerge.lean は50行・1宣言、
+WalkingAdjunctionPlusParentPositions.lean は121行・4宣言。
+個々の宣言・証明は200行以下、新規Leanの行長は100文字以下。
+G01の同じ実親の構成、同型性の反映・実辺の係数移送・全合成・最初の位置の照合と
+その証明の分割であり、一覧IDは追加しない。
+
+minusからplusへの固定した任意の実対象の前置について、実水平合成が同型になるなら元の射が同型となることを示した。
+点の個数の加法則から元の両対象を同一視し、同型の剛性と実水平合成の忠実性で元の射を恒等射へ戻す。
+元の全鎖が非退化なら、生成射を前置した全鎖も非退化である。
+前置した実辺の型を明示し、同型性を反映する実射に型クラス推論を渡している。
+
+始点plusの原子的な全鎖Hが非退化なら、§110で実際に構成した親も元のHomのnerveで非退化となることを示した。
+挿入した最後の辺の両端の個数は2と1なので同型ではない。
+それより前の辺は終端挿入の法則で前置した元の辺に戻し、同型性の反映で否定した。
+長さ0のHも含み、親の非退化性や全隣接辺の非同型性を新しい入力に置いていない。
+
+生成射を前置した全隣接辺では、順序和の右区間に入る点の像は正となる。
+この実順序和の計算から、前置した全鎖に底の二点の併合の辺がないことを示した。
+終端挿入の実辺の照合を使い、親の最後より前の全位置でも併合が起きないことを検証した。
+最後の実辺は終点の個数1・全点の値i↦i−1という一つだけの併合の条件を満たし、
+個数2の始点の値1の点から実併合の位置の証人を構成した。
+元の有限最小元で選んだ最初の併合の位置は、この親では最後の辺に一致する。
+最後の位置を新しい仮定とせず、元の実最小元との等式を示した。
+
+### 111.2 型と未完の境界
+
+原典はRiehl–Verity Lemma 4.1.4・§4.2、HA Proposition 4.7.3.3、
+Kerodon Remark 6.2.1.4（Tag 02EN）。追加の型は以下。
+
+```lean
+lemma walkingAdjunctionPrefix_reflectsIsIso {Y : WalkingAdjunctionPoint}
+    (U : walkingAdjunctionHom .minus .plus) {A B : walkingAdjunctionHom .plus Y} (f : A ⟶ B)
+    [IsIso ((walkingAdjunctionHorizontal .minus .plus Y).map
+      (X := (U, A)) (Y := (U, B)) (𝟙 U, f))] : IsIso f
+
+lemma walkingAdjunctionPlusParentPrefix_nondegenerate {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom .plus Y) (n + 1))
+    (hnd : ULift.up H ∈ (WalkingAdjunctionHomShape.{u} .plus Y).nonDegenerate (n + 1)) :
+    ULift.up (walkingAdjunctionPlusParentPrefix H) ∈
+      (WalkingAdjunctionHomShape.{u} .minus Y).nonDegenerate (n + 1)
+
+lemma walkingAdjunctionPlusParent_nondegenerate {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom .plus Y) n)
+    (ha : WalkingAdjunctionLevelIsAtomic (X := ⟨.plus⟩) (Y := ⟨Y⟩) H)
+    (hnd : ULift.up H ∈ (WalkingAdjunctionHomShape.{u} .plus Y).nonDegenerate n) :
+    ULift.up (walkingAdjunctionPlusParent H ha) ∈
+      (WalkingAdjunctionHomShape.{u} .minus Y).nonDegenerate (n + 1)
+
+lemma walkingAdjunctionPlusParentPrefix_no_bottom_merge {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom .plus Y) (n + 1)) (j : Fin (n + 1)) :
+    ¬ WalkingAdjunctionBottomMergeAt (walkingAdjunctionPlusParentPrefix H) j
+
+lemma walkingAdjunctionPlusParent_no_before_merge {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom .plus Y) n)
+    (ha : WalkingAdjunctionLevelIsAtomic (X := ⟨.plus⟩) (Y := ⟨Y⟩) H) (j : Fin n) :
+    ¬ WalkingAdjunctionBottomMergeAt (walkingAdjunctionPlusParent H ha) j.castSucc
+
+lemma walkingAdjunctionPlusParent_last_pure {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom .plus Y) n)
+    (ha : WalkingAdjunctionLevelIsAtomic (X := ⟨.plus⟩) (Y := ⟨Y⟩) H) :
+    walkingAdjunctionOrdinalCard .minus Y
+        ((walkingAdjunctionPlusParent H ha).obj (Fin.last n).succ) = 1 ∧
+      ∀ i : Fin (walkingAdjunctionOrdinalCard .minus Y
+        ((walkingAdjunctionPlusParent H ha).obj (Fin.last n).castSucc)),
+        (walkingAdjunctionOrderHom ((walkingAdjunctionPlusParent H ha).map
+          (homOfLE (Fin.castSucc_le_succ (Fin.last n)))) i).val = i.val - 1
+
+lemma walkingAdjunctionPlusParent_last_merge {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom .plus Y) n)
+    (ha : WalkingAdjunctionLevelIsAtomic (X := ⟨.plus⟩) (Y := ⟨Y⟩) H) :
+    WalkingAdjunctionBottomMergeAt (walkingAdjunctionPlusParent H ha) (Fin.last n)
+
+lemma walkingAdjunctionPlusParent_first_index {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom .plus Y) n)
+    (ha : WalkingAdjunctionLevelIsAtomic (X := ⟨.plus⟩) (Y := ⟨Y⟩) H)
+    (hnd : ULift.up H ∈ (WalkingAdjunctionHomShape.{u} .plus Y).nonDegenerate n) :
+    walkingAdjunctionFirstBottomMergeIndex (walkingAdjunctionPlusParent H ha)
+      (walkingAdjunctionAtomic_endpoint_cards _ (walkingAdjunctionPlusParent_atomic H ha)).2
+      (walkingAdjunctionPlusParent_nondegenerate H ha hnd) = Fin.last n
+```
+
+始点plusの実親は、今回、原子性・非退化性・指定面・最初の位置とそこでの全点の純粋性まで検証した。
+原典の文字列表示とfillable条件との全比較、実親の対応の逆方向の全検収、
+その他の面とのfiltrationの両立とparental subcomputadのfiltrationは未完。
+元のQCatAdjunctionからの全coherentな延長、水平反対の向きの全比較、
+同じF≫U・単位・余単位・HAモデルとの照合も未完である。G01の済みは0、G02以降も未完を維持する。
+
+### 111.3 検証と進み
+
+with_build_lock.sh --class impl --wait 3600、最大240秒の短い枠で対象ビルドと追加8根だけの公理監査を確認した。
+最終対象はSerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionPlusParentPositions:olean。
+最終固定コマンドの対象ビルド・監査と外側の終了は0、最終対象ビルドは警告なし。
+追加8根は入力名と出力名が一致し、公理依存はpropext・Classical.choice・Quot.soundのみ。
+sorryAx・追加公理なし。入力・根・監査全出力・対象ビルドログは
+[g12-plus-parent-nondegenerate-audit-2026-11-15/](g12-plus-parent-nondegenerate-audit-2026-11-15/)に保存した。
+M15・drafts・main・⑤aの既存ファイル・Interfaceは変更せず、全体ビルド・大きい監査は行っていない。
+
+G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み13,060行。
+M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
