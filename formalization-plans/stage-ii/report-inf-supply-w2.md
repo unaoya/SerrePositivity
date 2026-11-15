@@ -16360,3 +16360,67 @@ lemma strictBETotJointSourceCorrectionIso_right_component (t : StrictBETotJointS
 3b-4の検証済みの実測は**223モジュール・15,098行・1,584宣言**。外枠22,000行まで6,902行。登録候補は273.2の四本を自レーンのJSONへ追記した。共通の入口と公式監査は変更していない。
 
 これで元のcorrected pairingの成分の左右射影が、元の全augmentationと標的単位の同じ成分であることまで接続できた。元の単位ラベルで、それらの成分の像を元の増大写像・probe比較・置換単位の実射の類へ計算する部分が残る。さらに、元の全straightening変換の単位の評価、全Yoneda評価による全変換の一致、R03hの全interval族の等式を閉じる必要がある。成分の一致だけを全族の等式とみなさない。R03h・R03d・3b-4aはまだ完了していない。
+
+## 274. 同じ全同型の反転した逆成分の評価（2026-11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 24（うち追加 12）。
+
+### 274.1 反転と同じ評価の両立
+
+元のホモトピーHの反転の頂点の辺を元の向きへ戻すと、同じHの元の頂点の辺になることを、恒等辺の反転の既存の式と区間の二頂点の計算で示した。これを元の二胞体の同じホモトピー代表へ適用し、functorOppositeHomEquivで反転してから頂点評価し、元のhomotopyOppositeEquivalenceで戻す作用は、元の頂点評価の反対射になるという等式を得た。始域は任意の単体集合で、標的だけをquasicategoryとする。
+
+さらに元の全関手同型eの反転e.opの逆成分を同じ点で評価し、反転ホモトピー圏から戻すと、元のeの同じ順成分の反対射になることを示した。成分と二胞体評価の橋は、既存のFunctorIso.app_eq_evaluateを直接使うprivateな二行の帰結である。元の同型、反転Hom対応、同じ成分の選択を保持している。新しい数学の一覧IDは追加しない。既存の係数移送・単位・成分評価の法則の分割である。
+
+新規1本・86行、公開lemma3個・private lemma1個。既存のLeanの変更は0。[ModelCategory SSet]・計算上限の変更はない。
+
+### 274.2 型
+
+privateな評価の帰結と、公開三補題の全型を記録する。
+
+```lean
+private lemma oppositeEvaluationAppHom {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
+    {f g : X ⟶ Y} (e : FunctorIso f g) (x : X _⦋0⦌) :
+    (e.app x).hom = functorHomEvaluate e.hom x
+```
+
+#### OppositeFunctorIsoEvaluation（86行）
+
+```lean
+lemma oppositeHomotopyVertexEdge_unop {A D : SSet.{u}} {F G : A ⟶ D}
+    (H : SSet.Homotopy F G) (x : A _⦋0⦌) :
+    edgeUnop (X := D) (simplicialHomotopyVertexEdge (homotopyOpposite H)
+      (SSet.opObjEquiv.symm x)).toTruncated =
+        (simplicialHomotopyVertexEdge H x).toTruncated
+
+lemma functorHomEvaluate_opposite {A D : SSet.{u}} [Quasicategory D]
+    {F G : A ⟶ D} (α : FunctorHom F G) (x : A _⦋0⦌) :
+    (homotopyOppositeEquivalence D).functor.map
+      (functorHomEvaluate (functorOppositeHomEquiv F G α) (SSet.opObjEquiv.symm x)) =
+        (functorHomEvaluate α x).op
+
+lemma functorIso_op_app_inv {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
+    {f g : X ⟶ Y} (e : FunctorIso f g) (x : X _⦋0⦌) :
+    (homotopyOppositeEquivalence Y).functor.map
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.FunctorIso.app
+        e.op (SSet.opObjEquiv.symm x)).inv) = (e.app x).hom.op
+```
+
+### 274.3 検証と次の照合
+
+コードのコミット：**166682a6b**。新規1本・86行、公開lemma3個・private lemma1個。既存のLeanの変更は0。
+
+- 全補題の個別検査は成功。成分と二胞体評価の橋は既存のFunctorIso.app_eq_evaluateの直接の二行の帰結へ短縮してから、本体の検査を行った。
+- 鍵：--class impl --wait 3600、一枚の整理券、取得後gtimeout 1700秒。検査終了とともに返却済み。
+- 対象ビルド340：新規1本、成功（依存を含む2,244 jobs）。
+- 小監査：AuditISW2BKCells340.lean、**228モジュール・1,595宣言、propext・Classical.choice・Quot.soundのみ**。sorryAx・追加公理なし。互換二モジュールの宣言数0と、既存の定理の定義元の確認も成功。
+- 新規ファイル由来として実環境で数えた定数は3個。既存OppositeFunctorIsoWhiskerの生成補題を含む数は11→12に戻ったため、今回も単純な加算ではなく現在のimport後の実環境で集計する（§272の同じimport構成による宣言名の照合を参照）。
+- 宣言名の照合：main a4388efc9に固定し、自レーン590ファイル・1,878個の名前と、mainのEInfinity/3,745ファイル・13,373個の名前を照合。異なるファイル間の重複0、自レーン内部も0。
+- git diff --check：通過。
+
+証跡：/private/tmp/isw2-build340.log、isw2-validation340.json、isw2-declaration-collision-scan340.json。
+
+3b-4の検証済みの実測は**224モジュール・15,184行・1,588宣言**。外枠22,000行まで6,816行。登録候補は274.2の一ファイルを自レーンのJSONへ追記した。共通の入口と公式監査は変更していない。
+
+次は273の同じ成分の左射影の像へ今回の公式を適用し、元のsource-frame全augmentationの成分の射の類へ戻す。前合成の成分は既存のfunctorIso_app_precomp_heqを使う。入力のnerveの零単体の表示はComposableArrows.ext₀で同じ元のparameterの点へ合わせ、同じnerveTransformationPostIsoの成分はNerveColumn.hom_component_arrowで元の実射の類へ合わせる。元の単位ラベルについて、元の増大写像・probe比較・標的単位の合成との相殺へ進む。
+
+ここまでは成分評価の計算である。R03hの全interval族の等式、元のnative fiber射自身の弱同値性、R03dの全関手同型と元の固定始域の同型の一致、3b-4aは引き続き未完。今回の等式を全パラメータの族の一致の代わりにはしない。
