@@ -2013,3 +2013,17 @@ HT02 の残りは、(a)本体の同じ全生成元／全 kernel cycle／可算�
 通常のbulk整理券の束は46.24秒で返却。HT01・HT02の84本は全件成功。元の入力を一様下界つきの行ごとの擬同型で替えた場合、同じS完備標的Totも擬同型となることを検証し、HT02を完了とする。追加したHT03の特定結晶係数射の一番目の案1本には構文の修正が必要で、HT03は未完了のまま。 新しい1本と既存の更新0本が通り、**84モジュール・1167宣言**の公理閉包は標準三公理のみ。全監査ソースのハッシュ一致を確認した。記録は `homotopy-invariance-complete-checkpoint.json` と `homotopy-invariance-complete-bundle-069.tar.gz`。準備した85本全体の成功ではなく、未検証分は分けて保持する。HT02は完成済み。残りの項目は別に数える。
 
 一覧：済み 2／全体 6（うち追加 0）。
+
+### 5∞-3a：HT01・HT02 の最初の束の完了（11-15）
+
+**HT02を完了**とする。数学のHEAD `94d0f8465`。HT01の3本・321行とHT02の81本・7614行、合計84本・7935行・1167宣言の対象ビルドと全公理閉包の検査が通った。公理はpropext・Classical.choice・Quot.soundのみ。全84本のソースハッシュを照合した台帳は `ht02-complete.json`、実行記録は `homotopy-invariance-complete-checkpoint.json` とその束の保存ログ。
+
+出口は `cosimplicialNativeCompletedBaseChangeComparison`。元の厳密な余単体的R複体X、有限列xと環射fについて、元のTotの本体の非有界S導来係数拡大・同じ有限列の完備化から、同じS完備行模型の指定積Totへ向かう標準S線形の射である。各行と元のTotのK-flat性は入力条件にしない。既存の同じ全生成元・kernel cycle・可算余極限の分解を関手として確認し、Xへ適用した後で交代余面を取った。厳密な標的の導来図式との同定は `resolvedCompletedBaseChangeDerivedIso`。
+
+同型性は `cosimplicialNativeCompletedBaseChangeComparison_isIso`。仮定は既存の `HasCochainCompleteTorAmplitude f x c` と元の行のホモロジーの一様下界bである。cは有限Koszulを含む既存定義の幅をそのまま使う。成分の零条件への置換や、任意の非有界図式への拡張はしていない。
+
+自然性は `cosimplicialNativeCompletedBaseChangeComparison_naturality`。任意の実際のK-flat源の計算が模型を選ばない標準比較に一致することは `nativeCompletedComparison_eq_canonical`、余単体的比較の同じ標準表示は `cosimplicialNativeComparison_eq_canonical`。行ごとの擬同型による厳密な模型の変更は `resolvedCompletedTotalMap_quasiIso` で検査した。元の標準単位と係数増大を保つ四角形を使い、固定したR係数分解にS作用を与えていない。
+
+HT02は当初の1,500〜3,000行から7614行へ増えた。HT03〜HT06の暫定見込みと合わせ、全体10,000〜13,000行の見込みを維持し、外枠14,000行を確認する。このままHT03の特定の普遍結晶被覆へのZp入力へ進む。一般のCor5.5は一般HTの後の系として回収する。HT03の係数射の案1本はまだ未検証で、HT03の完了数には加えない。
+
+一覧：済み 2／全体 6（うち追加 0）。

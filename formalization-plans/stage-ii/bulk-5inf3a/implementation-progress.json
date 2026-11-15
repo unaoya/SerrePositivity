@@ -1,12 +1,12 @@
 {
   "stage": "5inf3a-implementation",
-  "complete": 1,
+  "complete": 2,
   "total": 6,
   "added": 0,
-  "verified_head": "this commit: base b6861035cce8d90dd0d0c6b9899e1f7d5e2f9f39",
+  "verified_head": "94d0f8465",
   "items": {
     "HT01": "complete",
-    "HT02": "in-progress",
+    "HT02": "complete",
     "HT03": "not-started",
     "HT04": "not-started",
     "HT05": "not-started",
@@ -392,7 +392,7 @@
     }
   ],
   "working_written_lines": 5185,
-  "source_inventory_scope": "Only HT01\u2013HT06 source additions/changes against 336942ab0, plus untracked files; excludes pre-existing Comparison modules.",
+  "source_inventory_scope": "Only HT01–HT06 source additions/changes against 336942ab0, plus untracked files; excludes pre-existing Comparison modules.",
   "static_check": "static-pending-check.json; not Lean validation",
   "build_wait_history": [
     {
@@ -409,20 +409,21 @@
     }
   ],
   "current_request_last_confirmed_live_utc": "2026-11-15 04:52:28 UTC",
-  "HT02_remaining": "Strict native resolution candidate augmentation; standard S comparison isomorphism via source/target unit normalizations; diagram/model naturality and canonical cosimplicial assembly.",
+  "HT02_remaining": "complete; see ht02-complete.json",
   "prepared_source_lines": 6774,
   "prepared_modules": 71,
-  "verified_source_lines": 6258,
+  "verified_source_lines": 7935,
   "provisional_total_source_lines": [
     10000,
     13000
   ],
   "current_stage_order": {
     "HT01": "complete",
-    "HT02": "in progress; do not count as complete",
+    "HT02": "complete: original standard S comparison, naturality, source model independence, rowwise quasi-isomorphism invariance",
     "HT03": "only the Zp crystalline input transported to the specific universal crystalline cover before general HT",
     "HT04": "universal oriented base via Construction 6.1 and actual HT02 comparison",
     "HT05": "general bounded oriented base and finite variables with original eta",
     "HT06": "general crystalline Corollary 5.5 after general HT; audit and draft promotion"
-  }
+  },
+  "HT02_complete": true
 }
