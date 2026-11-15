@@ -17426,3 +17426,49 @@ lemma weightedNerveNativeStraighteningUnitIso_representation_evaluate {C : Type 
 元のnative単位に同じ表現同型を後合成すると、元のstrict単位とopposite比較の合成へ厳密に戻る。この全FunctorIsoの等式とその評価は閉じた。一方、§287の右辺にある実weightedNerveFiberMapのホモトピー類との等式は未証明。nerveLeftTransportRepresentationのcomparisonはleftCoherentTransportDirectComparisonであり、その公開の存在命題は底上の射と前合成同値性を与える。自己単位則から、この射が元のstrict transport評価と一致するとは推論しない。同じ指定された比較と同じfiber評価との両立を示す工程が残る。
 
 次は今回の正規化を使い、元のfirstVertex制限・同じ表現比較・実fiber評価の式を照合する。R03hの同じnative fiber射と元の固定始域のroofの全interval族の等式も維持する。点の同型や今回の自己単位則で全族の等式を代用しない。R03d・R03hと3b-4aは未完で、停止点3b-4aの報告ではない。新しい仮定や界面の変更は追加していない。
+
+## 290. 同じcoslice・pinched・edgewise三角形の全interval族での移送（2026-11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+R03hの全パラメータの式を進めるため、既存のcosliceFiberRightMappingEquivalenceとtwistedArrowHomPinchedEquivalence_coslice、同じedgewise三角形の指定同型を、任意のKを始域とする全interval族の等式へ移す。既存構成の単位三角形・係数移送の法則であり、新しい数学の一覧項目は増やさない。FunctorIsoから同じ実ホモトピーを取り、既存のintervalFamilyHom_eq_of_homotopyへ渡す。Kの準圏性・単体集合のモデル構造・点ごとの等式から全族への推論は使わない。
+
+#### TwistedHomIntervalFamilyComparison（70行）
+
+```lean
+lemma cosliceFiberRightMappingEquivalence_interval_family {K C : SSet.{u}} [Quasicategory C]
+    {x y : C _⦋0⦌} (f : K ⟶ vertexFiber (sliceUnderProjection (yonedaEquiv.symm x)) y) :
+    intervalFamilyHom (f ≫ (cosliceFiberRightMappingEquivalence x y).hom ≫
+      pinchedHomToIntervalMappingSpace x y) =
+      intervalFamilyHom (f ≫ cosliceFiberToIntervalMappingSpace x y)
+
+lemma twistedArrowHomPinchedEquivalence_coslice_interval_family {K C : SSet.{u}} [Quasicategory C]
+    {x y : C _⦋0⦌} (f : K ⟶ vertexFiber (sliceUnderProjection (yonedaEquiv.symm x)) y) :
+    intervalFamilyHom (f ≫ cosliceTwistedHomMap x y ≫
+      (twistedArrowHomPinchedEquivalence x y).hom ≫ pinchedHomToIntervalMappingSpace x y) =
+      intervalFamilyHom (f ≫ cosliceFiberToIntervalMappingSpace x y)
+
+lemma twistedArrowHomPinchedEquivalence_interval_family {K C : SSet.{u}} [Quasicategory C]
+    {x y : C _⦋0⦌} (g : K ⟶ twistedArrowHomSpace x y) :
+    intervalFamilyHom (g ≫ (twistedArrowHomPinchedEquivalence x y).hom ≫
+      pinchedHomToIntervalMappingSpace x y) =
+      intervalFamilyHom (g ≫ (cosliceTwistedHomMap_isQCatEquivalence x y).choose.inv ≫
+        cosliceFiberToIntervalMappingSpace x y)
+
+lemma twistedArrowHomOppositePinchedEquivalence_edgewise_interval_family {K C : SSet.{u}} [Quasicategory C]
+    {x y : C _⦋0⦌} (g : K ⟶ edgewiseSubdivision (twistedArrowHomSpace x y)) :
+    intervalFamilyHom (g ≫ edgewiseLeft (twistedArrowHomSpace x y) ≫
+      (twistedArrowHomOppositePinchedEquivalence x y).hom ≫ pinchedHomToIntervalMappingSpace x y) =
+      intervalFamilyHom (g ≫ edgewiseRight (twistedArrowHomSpace x y) ≫
+        (twistedArrowHomPinchedEquivalence x y).hom ≫ pinchedHomToIntervalMappingSpace x y)
+```
+
+今回の四式は同じ指定逆と比較射を保持する。元のnative射を同じcoslice側の全族へ送り、元のroofの全族と照合する工程はまだ残る。R03h・R03d・3b-4aの完了とはしない。
+
+### 290.2 検収と残り
+
+新規1本70行・公開4補題。対象ビルド357（依存を含む2,287 jobs）と小監査はともに終了0。共有鍵 --class impl --wait 3600、一枚の整理券、gtimeout 1700秒。小監査は259モジュール・1,697宣言、propext・Classical.choice・Quot.soundのみ、sorryAx・追加公理なし。新規モジュールの実環境宣言は8。従来モジュールTwistedHomPinchedComparisonの環境宣言はimport閉包の変化で15から16となり、ソースの追加4補題を監査の宣言増分9とは同一視していない。既存Leanのソースは変更していない。
+
+累計255本・17,332行、実環境1,690宣言。外枠22,000行まで4,668行。main a4388efc9のEInfinity/3,745ファイル13,373名と自レーン621ファイル1,949名を照合し、異なるファイルの同名宣言0、内部も0。git diff --check通過。公式入口・公式監査は変更せず、登録候補の一覧is-w2-be-20261114-modules.jsonに1本を追加した。証跡：/private/tmp/isw2-build357.log、isw2-validation357.json、isw2-declaration-collision-scan357.json。§289の2本は0c24adfd9に保存済み。
+
+元の反対twisted Homの任意の族について、同じedgewiseLeftの指定逆とedgewiseRight・同じcoslice比較の指定逆を使う一本の式へまとめる前提計算も一時ファイルで検査中。これを元のnative射へ適用し、同じcorrected pairingと元のroofの全族を比較する工程が残る。R03h・R03d・3b-4aの完成とはしない。今回の全Kの等式は点ごとの等式を代用せずに既存の三角形を移送したものである。目標の型・範囲と外枠は維持する。
