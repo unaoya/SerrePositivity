@@ -929,3 +929,19 @@ G4 の増大 cone の完全性の判定の法則（着手前、既存の増大�
 今回2モジュール198行＋入口2行。2g-2 本体4,608行・入口込み4,679行、小監査559宣言・標準三公理のみ。交換による比較の cone の完全性は単独検証まで成功しているが、本体への登録と対象ビルド・監査は次の束。増大項を含めた全複体の比較と、G4・G5 の幾何的な接続は未完。見込み約5,500〜12,000行・外枠16,000行は不変。停止点2g-2ではない。
 
 一覧：済み1／全体3（うち追加0）。
+
+
+G4 の増大項まで含む比較の法則（着手前、既存の全複体の共通細分による移送の内数、150〜280行、必要なら正向きと逆向きを分割）：f:A→B・g:A′→B′、a:Z→A⁰・a′:Z′→A′⁰ とそれぞれの cone の零次での閉性、実際の k:K(f)→K(g)、ζ:Z→Z′ に対し、`haug:(k.f 0).hom.comp a=a′.comp ζ`・`hk:(cechRefinementCone K(f) K(g) k).Acyclic`・`hζ:Function.Bijective ζ` から、`augmentedCechCone A B f Z a hc` と `augmentedCechCone A′ B′ g Z′ a′ hc′` の Acyclic の同値を示す。名前の案は正向き `augmentedCechCone_acyclic_of_comparison`・逆向き `augmentedCechCone_acyclic_reflected_of_comparison`・同値 `augmentedCechCone_acyclic_iff_of_comparison`。比較写像の cone のサイクルを持ち上げ、境界を反映して既存の微分の完全性判定へ渡す。正方向の零次は ζ の全射性と cone の最初の微分の単射性、逆方向の零次は ζ の単射性を使う。零次の完全性の反映では ζ の全射性も使う。層の導来 H の比較や別の全複体は導入しない。後続では k に実際の四角形の射からの coneMap を入れ、基底・中心・制限の自然性を保持する。
+
+
+## G4：二重 cone の交換から比較の cone の完全性、および増大項の判定
+
+`CechDoubleConeAcyclic`（36行）：`cechRefinementConeMap_cone_acyclic` は、元の可換四角の二辺の cone が完全なら、実際の cechRefinementConeMap の cone も完全になること。交換先の二つの完全な複体の間の射の QuasiIsoAt を Mathlib から得て、既存の cone の完全性と交換の同型を使う。元の射と可換性を保持する。
+
+`AugmentedCechConeExactnessCriterion`（48行）：`augmentedCechCone_acyclic_iff_injective_exact` は、既存の増大 cone の完全性と、増大写像の単射性・増大写像と次の微分の完全性・その先の全ての隣接微分の完全性の同値。既存の CochainComplex.of の判定を増大項と以後に分けて読む。
+
+各単独検証、下書きと本体のソース完全一致、対象と入口のビルド5,157・5,158ジョブ、小監査各1宣言（計2）・標準三公理のみ、終了状態0。ログ `2g-double-cone-acyclic-check-1.log`・`2g-double-cone-acyclic-native.log`・`2g-double-cone-acyclic-audit.log` と `2g-augmented-cone-criterion-check-1.log`・`2g-augmented-cone-criterion-native.log`・`2g-augmented-cone-criterion-audit.log`。前者は既定の透明性、後者の判定の法則にのみ局所的な backward.isDefEq.respectTransparency false を使用。追加公理・sorry・既存の型変更・資源制限の引き上げ・200行超の宣言なし。共有鍵 --class impl --wait 3600、待ちは一つ。対象ビルドと小監査は別の鍵の枠。root・下流全ビルド・全体監査なし。
+
+今回2モジュール84行＋入口2行。2g-2 本体4,692行・入口込み4,765行、小監査561宣言・標準三公理のみ。増大項まで含む完全性の移送は、上記の型と紙の筋までで Lean は次の束。共通細分の実際の射の四角形への適用、Frobenius 係数との自然な比較、一般の fppf の二重 Čech、実際の blowup を保持した Noether 帰納と G5 は未完。全体の見込み約5,500〜12,000行・外枠16,000行は不変。停止点2g-2ではない。
+
+一覧：済み1／全体3（うち追加0）。
