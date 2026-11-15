@@ -1329,3 +1329,14 @@ G3 は完成。G4 は F8 の同じスカラー・実際の構造層の Frobenius
 今回2モジュール97行＋入口2行。新規103モジュール本体6,806行・入口込み6,909行。既存追加25行を含む外枠計数は本体6,831行・入口込み6,934行。新規小監査累計683宣言、既存15宣言は別計上。次の同じ係数関手の自然変換は drafts で検証する段であり、本体には含めない。二重 Čech・Noether 帰納と G5 は残る。外枠16,000行は不変。停止点2g-2ではない。
 
 一覧：済み1／全体3（うち追加0）。
+
+
+## G4：同じ二つの係数関手の実際の引き戻しの自然性
+
+`SchemePerfectCechTupleNaturality`（73行）の宣言：`schemePerfectCechTuplePullbackMap` は任意の Arrow の射 F の既存の mapCechNerve の各項と、同じタプル被覆の逆像の等式による実際の refinedPullback。`schemePerfectCechTuplePullback_naturality` は元の自然変換の naturality と、同じ合成射・同じ包含に対する二つの compIndex による自然性。`schemePerfectCechTuplePullback` はこの同じ項と写像を、元の係数関手から逆像の被覆の係数関手への自然変換にまとめる。Cartesian 性・平坦性・完全性は仮定しない。各項の p の零化は保持し、最終の入口で基底の標数から供給する。
+
+単独検証、本体とのソース完全一致、対象と入口のビルド5,189ジョブ成功、小監査7宣言（所有元の非公開・生成宣言を含む）・標準三公理のみ、終了状態0。ログ `2g-perfect-cech-tuple-naturality-check-3.log`・`2g-perfect-cech-tuple-naturality-native.log`・`2g-perfect-cech-tuple-naturality-audit.log`。局所的な backward.isDefEq.respectTransparency false を使用、既定の資源制限。自然変換の暗黙の対象名 m,n を明示的に使っていないという linter 警告がある。追加公理・sorry・既存の型変更・200行超の宣言なし。共有鍵 --class impl --wait 3600、待ちは一つ、対象ビルドと監査は別枠。root・下流全ビルド・全体監査なし。
+
+今回1モジュール73行＋入口1行。新規104モジュール本体6,879行・入口込み6,983行。既存追加25行を含む外枠計数は本体6,904行・入口込み7,008行。新規小監査累計690宣言、既存15宣言は別計上。次は同じ大域スカラーの増大写像をこの実際の図式へ自然に接続し、アフィン conerve と Frobenius 係数の比較、B1 の二重 Čech、Noether 帰納を進める。G4・G5 と停止点2g-2は未完。外枠16,000行は不変。
+
+一覧：済み1／全体3（うち追加0）。
