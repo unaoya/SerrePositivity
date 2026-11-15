@@ -15930,3 +15930,94 @@ def strictBETotJointSourceNativeTransformation
 - `SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceTargetUnit`（64行）
 - `SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftStraighteningDiagramHom`（38行）
 - `SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointNativeTransformation`（44行）
+
+## 270. 元の twisted-arrow の三単体の四辺の座標（2026-11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 24（うち追加 12）。
+
+### 270.1 既存構成の法則の分割
+
+B4′は§268で完了し、§269の検証済み17本も枝に保存済み。/goalの続きとして、元のcorrected pairingの単位を調べるための座標計算を新規1本に分けた。標準三単体の二つの三角形の合成則、既存の同じedgewiseWeightIsoと左右包含・面の式を使う。新しい数学のIDの追加ではなく、既存構成の合成・射影の前提計算である。
+
+同じtwisted-arrowの辺の始点は三単体の内側の辺（1,2）、終点は外側の辺（0,3）。左射影を反転表示から戻すと（0,1）、右射影は（2,3）になる。したがって同じ三単体の合成則を、元のcorrected pairingの代表辺へ適用できる。任意の単体集合についての法則で、[ModelCategory SSet]・Kan性・計算上限の変更はない。
+
+これは元の単位の評価を調べる前提の計算である。R03hの全interval族の等式やR03dの全関手同型はまだ証明していない。個々の頂点での射の等式だけから全変換の一致を結論しない。今後は元の全straightening変換と元の固定始域の同型を、同じ局所化・Yonedaの単位で照合する必要がある。
+
+### 270.2 型
+
+以下は新規ファイルの全13宣言の型。既存の辺・三角形を端点つきで読むdefも含めて記録する。
+
+#### TwistedArrowThreeSimplexCoordinates（183行）
+
+```lean
+def twistedSquareStdEdge (n : ℕ) (i j : Fin (n + 1)) (h : i ≤ j) :
+    SSet.Edge (X := (Δ[n] : SSet.{u}))
+      (stdSimplex.obj₀Equiv.symm i) (stdSimplex.obj₀Equiv.symm j)
+
+def twistedSquareStdTriangle (n : ℕ) (i j k : Fin (n + 1)) (hij : i ≤ j) (hjk : j ≤ k) :
+    SSet.Edge.CompStruct (twistedSquareStdEdge n i j hij)
+      (twistedSquareStdEdge n j k hjk) (twistedSquareStdEdge n i k (hij.trans hjk))
+
+lemma twistedSquareStd_three_composite :
+    HomotopyCategory.homMk (twistedSquareStdEdge.{u} 3 0 1 (by decide)) ≫
+      HomotopyCategory.homMk (twistedSquareStdEdge 3 1 2 (by decide)) ≫
+        HomotopyCategory.homMk (twistedSquareStdEdge 3 2 3 (by decide)) =
+      HomotopyCategory.homMk (twistedSquareStdEdge 3 0 3 (by decide))
+
+lemma twistedSquare_three_composite {C : SSet.{u}} (σ : (Δ[3] : SSet.{u}) ⟶ C) :
+    HomotopyCategory.homMk ((twistedSquareStdEdge 3 0 1 (by decide)).map σ) ≫
+      HomotopyCategory.homMk ((twistedSquareStdEdge 3 1 2 (by decide)).map σ) ≫
+        HomotopyCategory.homMk ((twistedSquareStdEdge 3 2 3 (by decide)).map σ) =
+      HomotopyCategory.homMk ((twistedSquareStdEdge 3 0 3 (by decide)).map σ)
+
+lemma twistedSquare_source_order :
+    edgewiseWeightReindexOrderHom.{u} (SimplexCategory.δ (n := 0) (1 : Fin 2)) =
+      (stdSimplex.edge 3 1 2 (by decide)).down.toOrderHom
+
+lemma twistedSquare_target_order :
+    edgewiseWeightReindexOrderHom.{u} (SimplexCategory.δ (n := 0) (0 : Fin 2)) =
+      (stdSimplex.edge 3 0 3 (by decide)).down.toOrderHom
+
+def twistedSquareThreeSimplex {C : SSet.{u}} (s : (TwistedArrow C) _⦋1⦌) :
+    (Δ[3] : SSet.{u}) ⟶ C
+
+lemma twistedSquare_source_simplex {C : SSet.{u}} (s : (TwistedArrow C) _⦋1⦌) :
+    (edgewiseWeightIso 0).inv ≫ (TwistedArrow C).δ 1 s =
+      stdSimplex.map (stdSimplex.edge 3 1 2 (by decide)).down ≫ twistedSquareThreeSimplex s
+
+lemma twistedSquare_target_simplex {C : SSet.{u}} (s : (TwistedArrow C) _⦋1⦌) :
+    (edgewiseWeightIso 0).inv ≫ (TwistedArrow C).δ 0 s =
+      stdSimplex.map (stdSimplex.edge 3 0 3 (by decide)).down ≫ twistedSquareThreeSimplex s
+
+lemma twistedSquare_left_inclusion :
+    (stdSimplex.opIso ⦋1⦌).inv ≫ joinInl (Δ[1] : SSet.{u}).op Δ[1] =
+      stdSimplex.map (stdSimplex.edge 3 0 1 (by decide)).down ≫ (edgewiseWeightIso 1).inv
+
+lemma twistedSquare_right_inclusion :
+    joinInr (Δ[1] : SSet.{u}).op Δ[1] =
+      stdSimplex.map (stdSimplex.edge 3 2 3 (by decide)).down ≫ (edgewiseWeightIso 1).inv
+
+lemma twistedSquare_left_simplex {C : SSet.{u}} (s : (TwistedArrow C) _⦋1⦌) :
+    SSet.yonedaEquiv.symm (SSet.opObjEquiv ((edgewiseLeft C).app _ s)) =
+      stdSimplex.map (stdSimplex.edge 3 0 1 (by decide)).down ≫ twistedSquareThreeSimplex s
+
+lemma twistedSquare_right_simplex {C : SSet.{u}} (s : (TwistedArrow C) _⦋1⦌) :
+    SSet.yonedaEquiv.symm ((edgewiseRight C).app _ s) =
+      stdSimplex.map (stdSimplex.edge 3 2 3 (by decide)).down ≫ twistedSquareThreeSimplex s
+```
+
+### 270.3 検証
+
+コードのコミット：**b528ea6a1**。新規1本・183行、型を上に記録した名前付き13宣言（生成された定数を含む実環境26宣言）。既存のLeanの変更は0。
+
+- 鍵：--class impl --wait 3600、一枚の整理券、取得後の処理はgtimeout 1700秒。処理終了とともに返却済み。
+- 対象ビルド331：新規1本、成功（依存を含む1,555 jobs）。longLineのスタイル警告のみ。計算上限・linterの設定を上げたり無効にしたりしていない。
+- 小監査：AuditISW2BKCells331.lean、218モジュール・**1,534宣言、propext・Classical.choice・Quot.soundのみ**。sorryAx・追加公理なし。二つの互換モジュールの宣言数0と既存の定理の定義元の検査も成功。
+- 宣言名：main d2354cf40に固定し、自レーン580ファイル・1,842個の名前と、mainのEInfinity/3,745ファイル・13,373個の名前を照合。異なるファイル間の重複0、自レーン内部も0。
+- git diff --check：通過。
+
+証跡：/private/tmp/isw2-build331.log、isw2-validation331.json、isw2-declaration-collision-scan331.json。
+
+3b-4の実測は**214モジュール・14,343行・1,527宣言**。外枠22,000行まで7,657行。今回は既存の合成則の分割で、一覧のIDの完了数と追加数は変わらない。登録候補は自レーンのJSONだけに追記し、共通の入口と公式監査は変更していない。
+
+登録候補：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.TwistedArrowThreeSimplexCoordinates`。R03h・R03dの未完の範囲は270.1のとおりで、/goalは継続。
