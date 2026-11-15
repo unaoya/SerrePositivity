@@ -12322,3 +12322,128 @@ M15・drafts・main・⑤aの既存ファイル・Interfaceは変更していな
 
 G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み5,237行。
 M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
+
+## §91 G01：全水平合成の忠実性と固定した切れ目での全関手の回収（11-15）
+
+### 91.1 検証済みの追加
+
+追加は **2ファイル240行・明示宣言13**。累計 **42ファイル5,477行・明示宣言363**。
+OrdinalConcatenationCancellation.lean は91行・4宣言、
+WalkingAdjunctionHorizontalFaithful.lean は149行・9宣言。
+200行を超える個別の宣言・証明はない。
+G01の既存の水平合成の消去則・係数移送とその証明の分割であり、新しい一覧IDは足さない。
+
+既存の有限単調射の順序和の等式から、左と右の因子の射の等式を回収した。
+端点共有では、共有点までの包含から左因子を回収し、右因子は最小元保存を明示して
+0を別に照合した上で共有点の後の包含から回収した。因子の個数は固定している。
+
+minusから出る実射の区間表示が最小元を保つことを、二つのHomの場合で証明した。
+共通表示・入る区間の表示・出る区間の表示のそれぞれの単射性をまとめ、
+plus経由では順序和の消去、minus経由では端点共有の消去を適用した。
+これにより全八水平合成の実双関手のFaithfulを実際に構成した。
+
+さらに対象の四つの等式を輸送した射の異種等式も、両因子の異種等式へ戻せるようにした。
+任意の添字圏Iについて、二つの水平分解の各頂点の因子の対象がそれぞれ一致する場合は、
+合成関手の等式から、両方の因子の全関手の等式を回収した。
+頂点の同一視だけで終わらず全Iの射を含む。
+
+### 91.2 型と残る境界
+
+原典はRiehl–Verity Proposition 3.1.10・Remark 3.3.8、HA Proposition 4.7.3.3、
+Kerodon Remark 6.2.1.4（Tag 02EN）。検証した型は以下。
+
+```lean
+lemma ordinalAppend_inj {m n p q : ℕ}
+    {f f' : Fin m →o Fin n} {g g' : Fin p →o Fin q}
+    (h : ordinalAppend f g = ordinalAppend f' g') : f = f' ∧ g = g'
+
+lemma ordinalGlue_left_inj {m n p q : ℕ}
+    {f f' : Fin (m + 1) →o Fin (n + 1)} {g g' : Fin (p + 1) →o Fin (q + 1)}
+    (h : ordinalGlue f g = ordinalGlue f' g') : f = f'
+
+lemma ordinalGlue_right_inj {m n p q : ℕ}
+    {f f' : Fin (m + 1) →o Fin (n + 1)} {g g' : Fin (p + 1) →o Fin (q + 1)}
+    (hg : g 0 = 0) (hg' : g' 0 = 0)
+    (h : ordinalGlue f g = ordinalGlue f' g') : g = g'
+
+lemma ordinalGlue_inj {m n p q : ℕ}
+    {f f' : Fin (m + 1) →o Fin (n + 1)} {g g' : Fin (p + 1) →o Fin (q + 1)}
+    (hg : g 0 = 0) (hg' : g' 0 = 0)
+    (h : ordinalGlue f g = ordinalGlue f' g') : f = f' ∧ g = g'
+
+lemma walkingAdjunctionOutgoingMap_zero {Y : WalkingAdjunctionPoint}
+    {A B : walkingAdjunctionHom .minus Y} (f : A ⟶ B) :
+    walkingAdjunctionOutgoingMap (Y := Y) f 0 = 0
+
+lemma walkingAdjunctionOrderHom_injective {X Y : WalkingAdjunctionPoint}
+    {A B : walkingAdjunctionHom X Y} :
+    Function.Injective (walkingAdjunctionOrderHom (X := X) (Y := Y) (A := A) (B := B))
+
+lemma walkingAdjunctionIncomingMap_injective {X : WalkingAdjunctionPoint}
+    {A B : walkingAdjunctionHom X .minus} :
+    Function.Injective (walkingAdjunctionIncomingMap (X := X) (A := A) (B := B))
+
+lemma walkingAdjunctionOutgoingMap_injective {Y : WalkingAdjunctionPoint}
+    {A B : walkingAdjunctionHom .minus Y} :
+    Function.Injective (walkingAdjunctionOutgoingMap (Y := Y) (A := A) (B := B))
+
+lemma walkingAdjunctionHorizontal_plus_map_inj (X Z : WalkingAdjunctionPoint)
+    {A A' : walkingAdjunctionHom X .plus} {B B' : walkingAdjunctionHom .plus Z}
+    (f f' : A ⟶ A') (g g' : B ⟶ B')
+    (h : (walkingAdjunctionHorizontal X .plus Z).map (X := (A, B)) (Y := (A', B')) (f, g) =
+      (walkingAdjunctionHorizontal X .plus Z).map (X := (A, B)) (Y := (A', B')) (f', g')) :
+    f = f' ∧ g = g'
+
+lemma walkingAdjunctionHorizontal_minus_map_inj (X Z : WalkingAdjunctionPoint)
+    {A A' : walkingAdjunctionHom X .minus} {B B' : walkingAdjunctionHom .minus Z}
+    (f f' : A ⟶ A') (g g' : B ⟶ B')
+    (h : (walkingAdjunctionHorizontal X .minus Z).map (X := (A, B)) (Y := (A', B')) (f, g) =
+      (walkingAdjunctionHorizontal X .minus Z).map (X := (A, B)) (Y := (A', B')) (f', g')) :
+    f = f' ∧ g = g'
+
+instance walkingAdjunctionHorizontal_faithful (X Y Z : WalkingAdjunctionPoint) :
+    (walkingAdjunctionHorizontal X Y Z).Faithful
+
+lemma walkingAdjunctionHorizontal_map_hext (X Y Z : WalkingAdjunctionPoint)
+    {A B A' B' : walkingAdjunctionHom X Y} {C D C' D' : walkingAdjunctionHom Y Z}
+    (hA : A = A') (hB : B = B') (hC : C = C') (hD : D = D')
+    (f : A ⟶ B) (f' : A' ⟶ B') (g : C ⟶ D) (g' : C' ⟶ D')
+    (h : HEq ((walkingAdjunctionHorizontal X Y Z).map (X := (A, C)) (Y := (B, D)) (f, g))
+      ((walkingAdjunctionHorizontal X Y Z).map (X := (A', C')) (Y := (B', D')) (f', g'))) :
+    HEq f f' ∧ HEq g g'
+
+lemma walkingAdjunctionHorizontal_functor_inj {I : Type*} [Category I]
+    (X Y Z : WalkingAdjunctionPoint)
+    (F F' : I ⥤ walkingAdjunctionHom X Y) (G G' : I ⥤ walkingAdjunctionHom Y Z)
+    (hF : ∀ i, F.obj i = F'.obj i) (hG : ∀ i, G.obj i = G'.obj i)
+    (h : F.prod' G ⋙ walkingAdjunctionHorizontal X Y Z =
+      F'.prod' G' ⋙ walkingAdjunctionHorizontal X Y Z) : F = F' ∧ G = G'
+```
+
+今回のFaithfulは積の各固定Hom上の射の等式の反映であり、
+§90の原子的な自由な道からの比較関手のFaithfulとは異なる。
+対象の因子、つまり各頂点の切れ目が異なる二つの分解の比較はまだ残る。
+その切れ目の比較を有限単調射と区間表示のGalois対応から検収し、
+原子的な道の一意性と退化との両立へ進める。
+parental subcomputadのfiltration・実充填、水平反対の向きの照合、
+元のQCatAdjunctionからの全coherentな延長と同じF≫U・単位・余単位・HAモデルの照合、
+G02以降は引き続き未完。G01の済みは0を維持する。
+
+### 91.3 検証と進み
+
+with_build_lock.sh --class impl --wait 3600、セッション77285、最大280秒の短いimpl枠。
+対象はlake build SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionHorizontalFaithful:olean。
+Finの包含の単射性の二つの個数を明示し、有限点の値の簡約を補った。
+全関手への移送では補助関手の値域を実Hom圏と同じ宇宙0に明示した。
+最終G12_CANCEL_BUILD_EXIT=0・警告なし（1269 jobs）。
+追加13根の小さい監査はG12_CANCEL_AUDIT_EXIT=0。
+入力13名と出力13名は一致、公理依存はpropext・Classical.choice・Quot.soundのみ。
+sorryAx・追加公理なし。exitで外側の終了0を確認して枠を返却した。
+入力・根・全出力・対象ビルドログは
+[g12-horizontal-cancellation-audit-2026-11-15/](g12-horizontal-cancellation-audit-2026-11-15/)に保存した。
+
+M15・drafts・main・⑤aの既存ファイル・Interfaceは変更していない。
+全体ビルド・大きい監査は行っていない。
+
+G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み5,477行。
+M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。

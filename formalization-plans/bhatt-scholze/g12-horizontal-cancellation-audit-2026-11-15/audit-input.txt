@@ -1,0 +1,14 @@
+import SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionHorizontalFaithful
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalAppend_inj
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalGlue_left_inj
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalGlue_right_inj
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalGlue_inj
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionOutgoingMap_zero
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionOrderHom_injective
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionIncomingMap_injective
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionOutgoingMap_injective
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionHorizontal_plus_map_inj
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionHorizontal_minus_map_inj
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionHorizontal_faithful
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionHorizontal_map_hext
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionHorizontal_functor_inj
