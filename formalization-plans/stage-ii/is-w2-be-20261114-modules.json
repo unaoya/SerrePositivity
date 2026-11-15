@@ -194,5 +194,22 @@
   "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRoofEndpointTransport",
   "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointHomInputVertex",
   "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.TwistedHomPinchedComparison",
-  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceNativePinched"
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceNativePinched",
+  "SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.OppositeFunctorIsoWhisker",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.NerveLeftOpInput",
+  "SerrePositivity.EInfinity.FrameHom.NerveColumnWhiskering",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRoofFrame",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRoofGraph",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRoofPrefix",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRoofColumn",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRoofAugmentation",
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.SimplicialElementsFiberFunctorLaws",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRoofParameter",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRoofNativeAugmentation",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceTargetFiber",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceOppositeAugmentation",
+  "SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.FunctorIsoConstantFamily",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceTargetUnit",
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftStraighteningDiagramHom",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointNativeTransformation"
 ]
