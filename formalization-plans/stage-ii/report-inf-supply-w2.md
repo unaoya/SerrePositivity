@@ -14838,3 +14838,20 @@ theorem strictBETotJointSourceFiberRoofEquivalence_pairingValue
 - SerrePositivity/HomologicalAlgebra/NormalizedMooreReverseZero.lean
 
 rootとEInfinity集約の全ビルドは実行していない。取り込みの再検収を調整役にお願いする。二つの互換入口は登録済み・登録予定の経路を維持するが、自身の宣言数は0となる。R03dで追加した二本は次節の別コミットとして記録する。
+
+## 247. 同じfiberから元のroofへの係数移送を保存（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 23（うち追加 11）。R03d・R02・R03は未完了。
+
+重複修正は専用コミットe0c5190ecに保存した。その修正と別に、§244・§245の二本を同じ318の対象ビルドと小監査で検収して保存する。一般版53行、BE版58行、計111行。一般版は見込み80〜150行に対して53行（上端との差−97行）。既存の三つの同値の合成で元の通常のfiber要素圏を元の固定標的roofの反対圏へ移し、元の次数・実射ラベル・単体作用素を保持した。同じroofの射のラベルは、元のnative pairingへ渡したsourceFrameArrowValueに厳密に等しい。
+
+検証は§246に記載した318（対象ビルド12,245 jobs、188モジュール1,318宣言、標準三公理のみ、実ハンドル88868・終了0）による。個別検査37848・81098も終了0。BEの自分のモジュール一覧は184本・1,311宣言で、TensorConeUnitPointは既存補題の再公開のみのため自身の宣言0を含む。検証済みの累計は11,953行／外枠22,000行。sorry・独自公理0、計算上限変更なし、[ModelCategory SSet]なし、既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・公式入口・公式監査・mainの変更なし。
+
+今回の登録候補：
+
+- SerrePositivity.EInfinity.FrameHom.LiftedSourceFrameFiberRoof
+- SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceFiberRoof
+
+57705f223以後の検証済み新規ファイルは上記二本に加え、§238のStrictDiagramTotJointSourceNativeFiberPairing・StrictDiagramTotJointSourceNativeFiberPath、§242のSimplicialElementsFiberInclusion・StrictDiagramTotJointSourceFiberElementsの計6本。各節の完全なモジュール名を使って登録できる。こちらで公式入口・監査には登録していない。
+
+次は同じ元のfiberの反対要素圏を既存resolutionLeftRoofColimitMapへ送る。この既存の実射の弱同値性には右置換のfibrancyと指定right frame・第一分解が使える（FibrantSourceReducedFirst）。その後に§238の同じnative fiber射と指定pathを、この同じroofの全族の比較へ照合する。ラベルが一致するだけで実射の弱同値性や全FunctorIsoの正規化が済んだとはしない。Tot側の停止点3b-4aは引き続き未到達。
