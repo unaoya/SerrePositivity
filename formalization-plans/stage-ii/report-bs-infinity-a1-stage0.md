@@ -1639,3 +1639,33 @@ S6 は指定単位を保つ層化比較と、本質的小さい site の最終�
 検証済み全体79本4,915行・446宣言。S1・S6・S8 は継続、S7 は後続。
 
 一覧：済み 4／全体 8（うち追加 0、済み：S2・S3・S4・S5、S7 は後続）。
+
+### S6：指定正方形を mate として保つ層化比較（11-15、未検証）
+
+`SheafificationSiteSpecifiedComparison.lean` に、元の包含の正方形を
+`sheafInclusionReindexIso` として固定し、同じ hJ・hK の横の比較 α を構成する。
+保持する型は
+```lean
+mateEquiv (Classical.choice hK).adjunction (Classical.choice hJ).adjunction
+  (sheafificationReindexSpecifiedMateIso e J K hf hg hJ hK).hom =
+    (functorIsoToQcatIso (sheafInclusionReindexIso e J K hf)).hom
+```
+および、元の全前層の層化関手間の `sheafificationReindexSpecifiedFunctorIso`。
+後者は元の包含の正方形を reflector で前合成し、同じ α の逆を包含で後合成する。
+一般の逆 mate の単位法則とまさに同じ二胞体の合成を使うので、指定単位の照合へ接続する。
+
+一覧：済み 4／全体 8（うち追加 0、済み：S2・S3・S4・S5、S7 は後続）。
+
+### S6：一般の正方形の元の単位法則の検証済みの区切り（11-15）
+
+`MateUnit.lean`：1本56行、対象ビルド 1,580 jobs と2宣言の小監査成功
+（`/tmp/is-w1/s6-mate-canonical-1/mate-unit/target-audit-result.json`、標準三公理のみ）。
+元の s.unit・t.unit と正方形の mate の全二胞体の等式、逆 mate の法則を閉じた。
+内側の普通の合成では `g ◁ t.unit` の始域 `g ≫ 𝟙 c` を保持し、
+外側の結合子・単位子は元の型に残した。計算上限変更なし。
+
+同値の随伴表示は端点と一胞体を明示して型探索を局所化する。
+二重 mate の可逆性は自動挿入される合成の定義だけを開き、既存の IsIso の合成へ渡す。
+検証済み全体80本4,971行・448宣言。S6 の適用と大きい site の最終接続は残る。
+
+一覧：済み 4／全体 8（うち追加 0、済み：S2・S3・S4・S5、S7 は後続）。
