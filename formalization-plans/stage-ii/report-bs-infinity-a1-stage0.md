@@ -2234,3 +2234,39 @@ IsRightKanExtension δ F₀ F α → ∀ x : D₀,
 検証済み全体131本8,187行・732宣言、外枠18,600行内。
 S1 の交叉降下・生成系・上限位相・extensive の判定と、S8 は未完。
 一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
+
+### S1：極限存在を仮定しない元の指定右 Kan 比較（11-15）
+
+6本453行・29宣言の対象ビルドと小監査が成功（標準三公理のみ）。
+記録：`/tmp/is-w1/s1-cone-universe-4/`。source SHA 一致。
+
+```lean
+(α : SSet.Homotopy (δ ≫ p) q) → IsRightKanExtension δ q p α →
+(H : SSet.Homotopy (restrictJoinCone c δ).val d.val) →
+((inr ▷ Δ[1]) ≫ H.h = α.h) →
+((inl ▷ Δ[1]) ≫ H.h = fst Δ[0] Δ[1] ≫ inl ≫ (restrictJoinCone c δ).val) →
+(IsLimitCone c ↔ IsLimitCone d)
+```
+
+I・K・D は準圏。係数 D に極限存在・presentable 性を仮定しない。
+`ConeHomotopyUniverse` は元の全錐間の同じ円柱の宇宙移送と、底・固定頂点の法則。
+`FixedHomotopyEndpoints` は固定した全円柱から、その部分の厳密な端点一致を回収。
+`ConeHomotopyUniverseComponents`・`RightKanComparisonUniverse` は同じ係数で後合成し、
+実制限錐の表示へ始域だけを揃えた同じ射の頂点可逆性と底の指定射の一致を証明した。
+`RightKanLimitCompositionArbitrary` は全共変表現可能関手への同じ移送を使い、
+空間値の小極限存在下で判定してから元の全錐へ反映した。
+`NerveTriangleLimitComposition` は元の通常の三角形にこれを適用し、
+同じ通常の全ホモトピーの始端だけを実制限錐へ揃えた場合の極限性の同値を得た。
+
+一括した最初の証明は kernel の既定の計算上限で時間切れ。
+同じ指定射を公開の名前付き定義へ固定し、頂点・底・係数移送下の比較を
+別々の法則へ分割して通した。計算上限は変更していない。
+
+次は既存の篩の指定三角形にこの無条件の係数の比較を適用し、
+AsSmall の表示から元の制限錐へ戻して交叉降下を閉じる。
+この段階で元の係数に極限存在を追加して済ませる部分はなくなったが、
+S1 の交叉・生成系・上限位相・extensive の判定全体はまだ未完。
+
+検証済み全体137本8,640行・761宣言、外枠18,600行内。
+S1・S8 は未完。
+一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
