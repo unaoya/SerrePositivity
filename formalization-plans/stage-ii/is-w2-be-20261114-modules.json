@@ -228,5 +228,6 @@
   "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointCorrectionComponentArrows",
   "SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.ArrowMiddleUnit",
   "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.TwistedArrowVertexEdgeNerve",
-  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointCorrectedUnitArrow"
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointCorrectedUnitArrow",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointNativeUnitFiber"
 ]
