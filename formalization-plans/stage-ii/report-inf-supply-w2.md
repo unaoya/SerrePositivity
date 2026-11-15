@@ -15648,3 +15648,49 @@ theorem strictBETotJointSourceTargetIndex_nerve_fiber
     SSet.const (nerveVertex ((strictBETotJointHomTargetIndex A).obj P))
 
 ```
+
+## 265. B4′ の採取の組の調整と、元の同じ標的置換の全制限則（2026-11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 24（うち追加 12）。
+
+### 265.1 B4′ の現況
+
+採取・プレビュー済みは 91／197 ファイル、各 review は空。12 本の組の鍵の実保持は直近で約134〜144秒だったため、未開始の r06 の整理券だけを取り下げ、残り106本を最大20本の6組（s00〜s05）にした。一回の実処理は引き続き gtimeout 280秒、待ちは --class impl --wait 3600、一枚だけ。旧 runner の143はこの未開始の取り下げの終了値で、採取や証明の検証失敗ではない。完了済み91本の索引は保持する。現在の runner は run-remaining-20.py、状況は progress-20.json。197本の全採取後に同じ元ソースから最終の preview-all を作り、それから main を取り込む。元の Lean ソースは変更していない。
+
+### 265.2 同じ元の標的置換を、全関手同型として制限する
+
+B4′ の待ち時間に、一時 Lean ファイルだけで次の既存構成の制限・単位の法則を確認した。元の全標的置換の逆を、同じ fiber 上で同じ標的頂点へ引き戻す全 FunctorIso として同定し、その hom を元の頂点成分の逆の定値族へ同定する。点ごとの同型の存在への置き換えはしていない。依存型の書換えは前合成則と HEq の合成に分け、計算上限は変更していない。
+
+個別検査：isw2-rooftargetiso.lean（最終ログ rooftargetiso4、exit 0）、isw2-rooftargetconstant.lean（最終ログ rooftargetconstant2、exit 0）。既存の未ビルドの共通補題のソースを一時的に結合して検査したもので、本体の新規モジュールの対象ビルド・監査ではない。B4′ 完了後に共通の既存モジュールを import し、新規の法則だけを本体に分割して対象ビルドと小監査を行う。
+
+R03h の本体、すなわち同じ corrected pairing の native fiber 射と元の roof の全 interval 族との等式はまだ残る。今回の二法則を R03h の完了とは数えない。
+
+```lean
+theorem strictBETotJointSourceTargetReplacementIso_fiber
+    (P : strictBETotJointHomIndex A) :
+    HEq ((strictBETotJointSourceTargetReplacementIso A).precomp
+      (nerveMap (simplicialElementsFiberFunctor (strictBETotJointSourceCoefficients A) P)))
+      (((strictBETotTargetReplacementNativeIso A).precomp
+        (SSet.const (X := nerve ((simplicialElementsCatDiagram
+          (strictBETotJointSourceCoefficients A)).obj P))
+          (nerveVertex ((strictBETotJointHomTargetIndex A).obj P))))).symm
+
+theorem strictBETotTargetReplacementNativeIso_symm_constant_family
+    (P : strictBETotJointHomIndex A) :
+    (constantFunctorCompIso
+      (nerve ((simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P))
+      (nerveVertex ((strictBETotJointHomTargetIndex A).obj P))
+      (nerveMap (strictBETotTargetReplacement A) ≫ strictBETotModelSource A)).inv ≫
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.precomp (strictBETotTargetReplacementNativeIso A).symm
+        (SSet.const (X := nerve ((simplicialElementsCatDiagram
+          (strictBETotJointSourceCoefficients A)).obj P))
+            (nerveVertex ((strictBETotJointHomTargetIndex A).obj P)))).hom ≫
+      (constantFunctorCompIso
+        (nerve ((simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P))
+        (nerveVertex ((strictBETotJointHomTargetIndex A).obj P))
+        (strictBETotModelSource A)).hom =
+      constantFunctorHomMap
+        (nerve ((simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P))
+        ((strictBETotTargetReplacementNativeIso A).app
+          (nerveVertex ((strictBETotJointHomTargetIndex A).obj P))).inv
+```
