@@ -217,5 +217,9 @@
   "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.TwistedPairingZero",
   "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceUnitLabel",
   "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.TwistedArrowHomComposition",
-  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointCorrectionComponent"
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointCorrectionComponent",
+  "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.FunctorIsoPairingProjections",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointPairingProjectionValues",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointCorrectionProjectionValues",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointCorrectionProjectionComponents"
 ]
