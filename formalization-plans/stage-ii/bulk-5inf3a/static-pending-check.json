@@ -1,7 +1,7 @@
 {
   "scope": "Only 5inf3a additions/changes since 336942ab0; static checks do not imply Lean validation",
-  "modules": 33,
-  "lines": 3177,
+  "modules": 37,
+  "lines": 3528,
   "missing_import_sources": [],
   "cycles_among_added_modules": [],
   "explicit_sorry_or_axiom_matches": [],
@@ -62,6 +62,11 @@
       "lines": 115
     },
     {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/FiniteCompletionReduction.lean",
+      "sha256": "b152d2f7b18fbcb800252724eb20978caac2a21929c1a02f6a8a39a16d52bf04",
+      "lines": 97
+    },
+    {
       "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/FiniteCompletionReflection.lean",
       "sha256": "74f18914eda1790e23822504906469bb9410214c91c5c27d6167d6f930bcb4da",
       "lines": 86
@@ -77,6 +82,16 @@
       "lines": 91
     },
     {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/FiniteTensorComparisonIso.lean",
+      "sha256": "1962dc317396d1e4f91e16050f5f14b73085b76e9542e2e3e11c5a084ff71e98",
+      "lines": 43
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/FiniteTensorInverse.lean",
+      "sha256": "deecd69ff14e682b4e22e83609802962dcb32d3e999d9f9f6de1cb227e4493df",
+      "lines": 138
+    },
+    {
       "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/FixedTorBounds.lean",
       "sha256": "e921cf2285c2c977168de34ec0e4ac19bfae3710edbcbdcec2cea0c9db513112",
       "lines": 103
@@ -90,6 +105,11 @@
       "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/KoszulPowerBounds.lean",
       "sha256": "0ff4595bd340cb838d681cc2fc02cec60776ade96ddc364bc30741387b4d5aaa",
       "lines": 76
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/KoszulScalarNaturality.lean",
+      "sha256": "7d60af91331ed322b2fc5fbeaf37d2ce2e689854209c8738ea6f7b4073df7c72",
+      "lines": 73
     },
     {
       "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/LowerBound.lean",

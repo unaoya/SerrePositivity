@@ -20,10 +20,14 @@
     "CompletionAdditive",
     "ExtensionFunctor",
     "FiniteCompletion",
+    "FiniteCompletionReduction",
     "FiniteCompletionReflection",
     "FiniteComponents",
     "FiniteTensorComparison",
+    "FiniteTensorComparisonIso",
+    "FiniteTensorInverse",
     "KoszulPowerBounds",
+    "KoszulScalarNaturality",
     "NaturalTruncation",
     "RowTruncationExact",
     "TensorComparisonComponents",
@@ -34,7 +38,7 @@
     "TruncationHomology",
     "TruncationTorBounds"
   ],
-  "pending_check": "bundle-021 retry 1, live session 59447. One ordinary bulk request; wait 3600; whole body capped at 280 seconds. Build 2 first targets; audit successfully built modules of the first 17. If that audit passes, sequentially test 16 further HT02 modules. Follow audit covers all 33 if successful, otherwise successful follow targets only. Audit-result JSON records exact coverage; do not infer coverage from exit code alone.",
+  "pending_check": "bundle-021 retry 2, live session 65994, log /tmp/bulk-5inf3a/bundle-021.retry2.lease.log. One ordinary bulk request, wait 3600, whole body 280-second cap. Build 2 first targets; audit successful modules of first 17. On audit success, check 20 further HT02 modules sequentially. Follow audit covers all 37 only if all pass; otherwise it audits successful follow targets. Exact coverage is recorded in audit-result JSON.",
   "next_proof_route": "ht02-next-proof-route.md",
   "initial_record": {
     "stage": "5inf3a",
@@ -192,6 +196,11 @@
       "lines": 115
     },
     {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/FiniteCompletionReduction.lean",
+      "sha256": "b152d2f7b18fbcb800252724eb20978caac2a21929c1a02f6a8a39a16d52bf04",
+      "lines": 97
+    },
+    {
       "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/FiniteCompletionReflection.lean",
       "sha256": "74f18914eda1790e23822504906469bb9410214c91c5c27d6167d6f930bcb4da",
       "lines": 86
@@ -207,6 +216,16 @@
       "lines": 91
     },
     {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/FiniteTensorComparisonIso.lean",
+      "sha256": "1962dc317396d1e4f91e16050f5f14b73085b76e9542e2e3e11c5a084ff71e98",
+      "lines": 43
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/FiniteTensorInverse.lean",
+      "sha256": "deecd69ff14e682b4e22e83609802962dcb32d3e999d9f9f6de1cb227e4493df",
+      "lines": 138
+    },
+    {
       "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/FixedTorBounds.lean",
       "sha256": "e921cf2285c2c977168de34ec0e4ac19bfae3710edbcbdcec2cea0c9db513112",
       "lines": 103
@@ -220,6 +239,11 @@
       "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/KoszulPowerBounds.lean",
       "sha256": "0ff4595bd340cb838d681cc2fc02cec60776ade96ddc364bc30741387b4d5aaa",
       "lines": 76
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/KoszulScalarNaturality.lean",
+      "sha256": "7d60af91331ed322b2fc5fbeaf37d2ce2e689854209c8738ea6f7b4073df7c72",
+      "lines": 73
     },
     {
       "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/LowerBound.lean",
@@ -302,7 +326,22 @@
       "lines": 74
     }
   ],
-  "working_written_lines": 3177,
+  "working_written_lines": 3528,
   "source_inventory_scope": "Only HT01–HT06 source additions/changes against 336942ab0, plus untracked files; excludes pre-existing Comparison modules.",
-  "static_check": "static-pending-check.json; not Lean validation"
+  "static_check": "static-pending-check.json; not Lean validation",
+  "build_wait_history": [
+    {
+      "session": 71856,
+      "rc": 75,
+      "body_started": false,
+      "log": "/tmp/bulk-5inf3a/bundle-021.lease.log"
+    },
+    {
+      "session": 59447,
+      "rc": 75,
+      "body_started": false,
+      "log": "/tmp/bulk-5inf3a/bundle-021.retry1.lease.log"
+    }
+  ],
+  "current_request_last_confirmed_live_utc": "2026-11-15 04:52:28 UTC"
 }
