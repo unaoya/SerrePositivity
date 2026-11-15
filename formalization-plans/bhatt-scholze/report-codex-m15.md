@@ -11916,3 +11916,116 @@ M15・drafts・main・⑤aの既存ファイル・Interfaceは変更していな
 
 G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み4,255行。
 M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
+
+## §88 G01：全十六結合則と実単体的豊穣walking adjunction（11-15）
+
+### 88.1 検証済みの追加
+
+追加は **2ファイル275行・明示宣言11**。累計 **34ファイル4,530行・明示宣言299**。
+WalkingAdjunctionMixedAssociativity.lean は202行・7宣言、
+WalkingAdjunctionEnrichment.lean は73行・4宣言。200行を超える個別の宣言・証明はない。
+G01の既存の構成の係数移送・合成則とその証明の分割であり、新しい一覧IDは足さない。
+
+§87の忠実な全射の共通表示を用いて、中央の二点がplus・minusとminus・plusの
+二つの一般形の結合則を証明した。これは両端の四通りずつ、残っていた八通りを覆う。
+前者は順序和と端点共有の結合則、後者は端点共有と順序和の結合則へ戻した。
+区間の次元の移送は合成の点の個数の法則から供給し、共通表示の異種等式から元の射へ戻す。
+既存の八通りと合わせ、十六通り全ての結合則を、任意の添字圏上の全関手の等式として得た。
+
+四Hom圏のnerveを宇宙持ち上げし、構成済みの八つの実双関手を全次数で適用した。
+空の自己Homの定値列を単位とし、全単位則と全十六結合則を使って
+実際のEnrichedCategory SSet WalkingAdjunctionPointのinstanceを構成した。
+そのinstanceの存在や合成の法則を引数として仮定していない。
+
+### 88.2 型と残る境界
+
+原典はHA §4.7.2–§4.7.3・Proposition 4.7.3.3、Riehl–Verity Remark 3.3.8、
+Kerodon Remark 6.2.1.4（Tag 02EN）。検証した型は以下。
+
+```lean
+lemma ordinalAppend_heq {m n p q m' n' p' q' : ℕ}
+    (hm : m = m') (hn : n = n') (hp : p = p') (hq : q = q')
+    {f : Fin (m) →o Fin (n)} {f' : Fin (m') →o Fin (n')}
+    {g : Fin (p) →o Fin (q)} {g' : Fin (p') →o Fin (q')}
+    (hf : HEq f f') (hg : HEq g g') :
+    HEq (ordinalAppend f g) (ordinalAppend f' g')
+
+lemma ordinalGlue_heq {m n p q m' n' p' q' : ℕ}
+    (hm : m = m') (hn : n = n') (hp : p = p') (hq : q = q')
+    {f : Fin (m + 1) →o Fin (n + 1)} {f' : Fin (m' + 1) →o Fin (n' + 1)}
+    {g : Fin (p + 1) →o Fin (q + 1)} {g' : Fin (p' + 1) →o Fin (q' + 1)}
+    (hf : HEq f f') (hg : HEq g g') :
+    HEq (ordinalGlue f g) (ordinalGlue f' g')
+
+lemma walkingAdjunctionIncomingDim_comp_plus (X : WalkingAdjunctionPoint)
+    (A : walkingAdjunctionHom X .plus) (B : walkingAdjunctionHom .plus .minus) :
+    walkingAdjunctionIncomingDim X ((walkingAdjunctionHorizontal X .plus .minus).obj (A, B)) =
+      walkingAdjunctionOrdinalCard X .plus A + walkingAdjunctionIncomingDim .plus B
+
+lemma walkingAdjunctionOutgoingDim_comp_plus (Z : WalkingAdjunctionPoint)
+    (A : walkingAdjunctionHom .minus .plus) (B : walkingAdjunctionHom .plus Z) :
+    walkingAdjunctionOutgoingDim Z ((walkingAdjunctionHorizontal .minus .plus Z).obj (A, B)) =
+      walkingAdjunctionOutgoingDim .plus A + walkingAdjunctionOrdinalCard .plus Z B
+
+lemma walkingAdjunctionHorizontal_assoc_plus_minus (X Z : WalkingAdjunctionPoint)
+    (F : I ⥤ walkingAdjunctionHom X .plus)
+    (G : I ⥤ walkingAdjunctionHom .plus .minus)
+    (H : I ⥤ walkingAdjunctionHom .minus Z) :
+    ((F.prod' G ⋙ walkingAdjunctionHorizontal X .plus .minus).prod' H ⋙
+        walkingAdjunctionHorizontal X .minus Z) =
+      (F.prod' (G.prod' H ⋙ walkingAdjunctionHorizontal .plus .minus Z) ⋙
+        walkingAdjunctionHorizontal X .plus Z)
+
+lemma walkingAdjunctionHorizontal_assoc_minus_plus (X Z : WalkingAdjunctionPoint)
+    (F : I ⥤ walkingAdjunctionHom X .minus)
+    (G : I ⥤ walkingAdjunctionHom .minus .plus)
+    (H : I ⥤ walkingAdjunctionHom .plus Z) :
+    ((F.prod' G ⋙ walkingAdjunctionHorizontal X .minus .plus).prod' H ⋙
+        walkingAdjunctionHorizontal X .plus Z) =
+      (F.prod' (G.prod' H ⋙ walkingAdjunctionHorizontal .minus .plus Z) ⋙
+        walkingAdjunctionHorizontal X .minus Z)
+
+lemma walkingAdjunctionHorizontal_assoc (W X Y Z : WalkingAdjunctionPoint)
+    (F : I ⥤ walkingAdjunctionHom W X) (G : I ⥤ walkingAdjunctionHom X Y)
+    (H : I ⥤ walkingAdjunctionHom Y Z) :
+    ((F.prod' G ⋙ walkingAdjunctionHorizontal W X Y).prod' H ⋙
+        walkingAdjunctionHorizontal W Y Z) =
+      (F.prod' (G.prod' H ⋙ walkingAdjunctionHorizontal X Y Z) ⋙
+        walkingAdjunctionHorizontal W X Z)
+
+abbrev WalkingAdjunctionHomShape (X Y : WalkingAdjunctionPoint) : SSet.{u}
+
+def walkingAdjunctionUnit (X : WalkingAdjunctionPoint) :
+    𝟙_ SSet.{u} ⟶ WalkingAdjunctionHomShape X X
+
+def walkingAdjunctionComposition (X Y Z : WalkingAdjunctionPoint) :
+    WalkingAdjunctionHomShape.{u} X Y ⊗ WalkingAdjunctionHomShape.{u} Y Z ⟶
+      WalkingAdjunctionHomShape.{u} X Z
+
+instance walkingAdjunctionEnrichedCategory : EnrichedCategory SSet.{u} WalkingAdjunctionPoint
+```
+
+今回完成したのはG01の添字となる実豊穣圏である。
+元のQCatAdjunctionをこの豊穣圏からの全coherentな豊穣関手へ延長する構成は未完。
+Riehl–Verity Theorems 4.3.9・4.3.11の延長を、原典のparental subcomputadの
+filtrationと充填から実装する部分が次に残る。構成済みの水平反対の向きとの照合も要る。
+原典：[Homotopy coherent adjunctions and the formal theory of monads](https://emilyriehl.github.io/files/adjunctions.pdf)。
+単なる豊穣圏の構成をこの延長の代わりとはせず、延長の存在を仮定として追加しない。
+元のF≫UとのFunctorIso、元の単位・余単位、HAモデルの照合、G02以降も未完。
+
+### 88.3 検証と進み
+
+with_build_lock.sh --class impl --wait 3600、セッション15089、最大280秒の短いimpl枠。
+WalkingAdjunctionMixedAssociativity:oleanの対象ビルドは初回終了0・警告なし（1268 jobs）。
+WalkingAdjunctionEnrichment:oleanの対象ビルドも初回終了0・警告なし（1272 jobs）。
+追加11根の小さい監査はG12_MIXED_AUDIT_EXIT=0。
+入力11名と出力11名は一致、公理依存は標準のpropext・Classical.choice・Quot.soundのみ。
+sorryAx・追加公理なし。exitで外側の終了0まで確認して枠を返却した。
+入力・根・全出力・両対象ビルドログは
+[g12-walking-adjunction-audit-2026-11-15/](g12-walking-adjunction-audit-2026-11-15/)に保存した。
+
+M15・drafts・main・⑤aの既存ファイル・Interfaceは変更していない。
+全体ビルド・大きい監査は行っていない。
+
+G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み4,530行。
+M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
