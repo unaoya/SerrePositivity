@@ -14602,3 +14602,175 @@ M15・drafts・main・⑤aの既存ファイル・Interfaceは変更していな
 
 G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み10,449行。
 M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
+
+## §105 G01：元の非退化な原子から最初の併合の位置を選んだ実細分（11-15）
+
+### 105.1 検証済みの追加
+
+追加は **4ファイル377行・明示宣言17**。累計 **90ファイル10,826行・明示宣言622**。
+WalkingAdjunctionOnePointDegeneracy.lean は92行・3宣言、WalkingAdjunctionBottomMergePositions.lean は130行・6宣言、
+WalkingAdjunctionFirstBottomMerge.lean は75行・4宣言、WalkingAdjunctionFirstRefinement.lean は80行・4宣言。
+200行を超える個別の宣言・証明はない。新規Leanの行長は100文字以下。
+G01の同じ原子の実表示・退化・最初の併合の実選択・実細分とその単位・係数移送・全合成・照合と
+証明の分割なので、新しい一覧IDは足さない。
+
+全頂点の共通表示が一点の実全単体は定値であることを、対象の重みの単射性と一点への全射の一意性で示した。
+正の次元では、この定値な全単体を一つ低次の定値な単体の実退化の像として構成した。
+従ってminusからの正の次元の元のnerveの非退化な全単体には、二点以上ある頂点が存在する。
+元の単体集合のdegenerate・nonDegenerateを使っている。
+
+元の隣接辺が二番目の実点を0へ送る条件を、値1の実点とその像の証人として定義した。
+この証人から、始頂点に二点以上あることと、値1の全ての点の像0の条件が従う。
+二番目の点を0へ送らない有限単調射は、0の逆像を反映する。
+終頂点が一点でどの隣接辺にも併合がなければ、尾部の全射についてこの反映性を逆帰納し、
+全頂点の二番目の点を排除できる。minusからの全頂点は非空なので、全頂点が一点となる。
+元の非退化性と合わせ、併合する隣接辺の存在を証明した。
+
+この実条件を満たす辺の非空な有限部分集合を構成し、その最小元を実際に取った。
+選んだ位置が併合の条件を満たすことと、他の全ての併合の位置以下であることを検収した。
+原子性から終頂点の一点を取り出し、この最小位置の始頂点の個数から一つ小さい実対象を作り、
+実併合・実残余射を元の実全鎖へ挿入した。
+これにより、元の正の次元の非退化な原子から、一つ高次の原子的な実全単体と、
+元のnerveの指定面が元の全単体へ戻る等式までを構成した。
+位置・併合の証人・原子性の保存・指定面の等式は、現在の構成の追加入力にはしていない。
+
+### 105.2 型と残る境界
+
+原典は[Riehl–Verity §4.1–§4.2](https://emilyriehl.github.io/files/adjunctions.pdf)、
+HA Proposition 4.7.3.3、Kerodon Remark 6.2.1.4（Tag 02EN）。
+検証した型は以下。
+
+```lean
+lemma walkingAdjunctionConst_of_card_one {n : ℕ} {X Y : WalkingAdjunctionPoint}
+    (H : Fin (n + 1) ⥤ walkingAdjunctionHom X Y)
+    (hc : ∀ i, walkingAdjunctionOrdinalCard X Y (H.obj i) = 1) :
+    H = (Functor.const _).obj (H.obj 0)
+
+lemma walkingAdjunctionHomShape_degenerate_of_card_one {n : ℕ}
+    {X Y : WalkingAdjunctionPoint} (H : Fin (n + 2) ⥤ walkingAdjunctionHom X Y)
+    (hc : ∀ i, walkingAdjunctionOrdinalCard X Y (H.obj i) = 1) :
+    ULift.up H ∈ (WalkingAdjunctionHomShape.{u} X Y).degenerate (n + 1)
+
+lemma walkingAdjunctionHomShape_exists_large_vertex {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (H : Fin (n + 2) ⥤ walkingAdjunctionHom .minus Y)
+    (h : ULift.up H ∈ (WalkingAdjunctionHomShape.{u} .minus Y).nonDegenerate (n + 1)) :
+    ∃ i, 2 ≤ walkingAdjunctionOrdinalCard .minus Y (H.obj i)
+
+def WalkingAdjunctionBottomMergeAt {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (H : Fin (n + 2) ⥤ walkingAdjunctionHom .minus Y) (k : Fin (n + 1)) : Prop
+
+lemma ordinalReflectsZero_of_no_one {m n : ℕ} (f : Fin m →o Fin n)
+    (h : ∀ j : Fin m, j.val = 1 → (f j).val ≠ 0) :
+    ∀ i : Fin m, (f i).val = 0 → i.val = 0
+
+lemma walkingAdjunctionCard_one_of_no_bottom_merge {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (H : Fin (n + 2) ⥤ walkingAdjunctionHom .minus Y)
+    (hlast : walkingAdjunctionOrdinalCard .minus Y (H.obj (Fin.last (n + 1))) = 1)
+    (hno : ∀ k, ¬ WalkingAdjunctionBottomMergeAt H k) :
+    ∀ i, walkingAdjunctionOrdinalCard .minus Y (H.obj i) = 1
+
+lemma walkingAdjunctionExists_bottom_merge {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (H : Fin (n + 2) ⥤ walkingAdjunctionHom .minus Y)
+    (hlast : walkingAdjunctionOrdinalCard .minus Y (H.obj (Fin.last (n + 1))) = 1)
+    (hnd : ULift.up H ∈ (WalkingAdjunctionHomShape.{u} .minus Y).nonDegenerate (n + 1)) :
+    ∃ k, WalkingAdjunctionBottomMergeAt H k
+
+lemma WalkingAdjunctionBottomMergeAt.card_two_le {n : ℕ} {Y : WalkingAdjunctionPoint}
+    {H : Fin (n + 2) ⥤ walkingAdjunctionHom .minus Y} {k : Fin (n + 1)}
+    (h : WalkingAdjunctionBottomMergeAt H k) :
+    2 ≤ walkingAdjunctionOrdinalCard .minus Y (H.obj k.castSucc)
+
+lemma WalkingAdjunctionBottomMergeAt.one_zero {n : ℕ} {Y : WalkingAdjunctionPoint}
+    {H : Fin (n + 2) ⥤ walkingAdjunctionHom .minus Y} {k : Fin (n + 1)}
+    (h : WalkingAdjunctionBottomMergeAt H k) :
+    ∀ i : Fin (walkingAdjunctionOrdinalCard .minus Y (H.obj k.castSucc)), i.val = 1 →
+      (walkingAdjunctionOrderHom (H.map (homOfLE (Fin.castSucc_le_succ k))) i).val = 0
+
+def walkingAdjunctionFirstBottomMergeData {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (H : Fin (n + 2) ⥤ walkingAdjunctionHom .minus Y)
+    (hlast : walkingAdjunctionOrdinalCard .minus Y (H.obj (Fin.last (n + 1))) = 1)
+    (hnd : ULift.up H ∈ (WalkingAdjunctionHomShape.{u} .minus Y).nonDegenerate (n + 1)) :
+    {k : Fin (n + 1) // WalkingAdjunctionBottomMergeAt H k ∧
+      ∀ j, WalkingAdjunctionBottomMergeAt H j → k ≤ j}
+
+def walkingAdjunctionFirstBottomMergeIndex {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (H : Fin (n + 2) ⥤ walkingAdjunctionHom .minus Y)
+    (hlast : walkingAdjunctionOrdinalCard .minus Y (H.obj (Fin.last (n + 1))) = 1)
+    (hnd : ULift.up H ∈ (WalkingAdjunctionHomShape.{u} .minus Y).nonDegenerate (n + 1)) :
+    Fin (n + 1)
+
+lemma walkingAdjunctionFirstBottomMergeIndex_spec {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (H : Fin (n + 2) ⥤ walkingAdjunctionHom .minus Y)
+    (hlast : walkingAdjunctionOrdinalCard .minus Y (H.obj (Fin.last (n + 1))) = 1)
+    (hnd : ULift.up H ∈ (WalkingAdjunctionHomShape.{u} .minus Y).nonDegenerate (n + 1)) :
+    WalkingAdjunctionBottomMergeAt H (walkingAdjunctionFirstBottomMergeIndex H hlast hnd)
+
+lemma walkingAdjunctionFirstBottomMergeIndex_minimal {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (H : Fin (n + 2) ⥤ walkingAdjunctionHom .minus Y)
+    (hlast : walkingAdjunctionOrdinalCard .minus Y (H.obj (Fin.last (n + 1))) = 1)
+    (hnd : ULift.up H ∈ (WalkingAdjunctionHomShape.{u} .minus Y).nonDegenerate (n + 1))
+    {j : Fin (n + 1)} (hj : WalkingAdjunctionBottomMergeAt H j) :
+    walkingAdjunctionFirstBottomMergeIndex H hlast hnd ≤ j
+
+def walkingAdjunctionFirstRefinement {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (H : Fin (n + 2) ⥤ walkingAdjunctionHom .minus Y)
+    (ha : WalkingAdjunctionLevelIsAtomic (X := ⟨.minus⟩) (Y := ⟨Y⟩) H)
+    (hnd : ULift.up H ∈ (WalkingAdjunctionHomShape.{u} .minus Y).nonDegenerate (n + 1)) :
+    ComposableArrows (walkingAdjunctionHom .minus Y) (n + 2)
+
+lemma walkingAdjunctionFirstRefinement_atomic {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (H : Fin (n + 2) ⥤ walkingAdjunctionHom .minus Y)
+    (ha : WalkingAdjunctionLevelIsAtomic (X := ⟨.minus⟩) (Y := ⟨Y⟩) H)
+    (hnd : ULift.up H ∈ (WalkingAdjunctionHomShape.{u} .minus Y).nonDegenerate (n + 1)) :
+    WalkingAdjunctionLevelIsAtomic (X := ⟨.minus⟩) (Y := ⟨Y⟩)
+      (walkingAdjunctionFirstRefinement H ha hnd)
+
+lemma walkingAdjunctionFirstRefinement_face {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (H : Fin (n + 2) ⥤ walkingAdjunctionHom .minus Y)
+    (ha : WalkingAdjunctionLevelIsAtomic (X := ⟨.minus⟩) (Y := ⟨Y⟩) H)
+    (hnd : ULift.up H ∈ (WalkingAdjunctionHomShape.{u} .minus Y).nonDegenerate (n + 1)) :
+    finiteChainFace (walkingAdjunctionFirstRefinement H ha hnd)
+      (walkingAdjunctionFirstBottomMergeIndex H
+        (walkingAdjunctionAtomic_endpoint_cards H ha).2 hnd).succ.castSucc = H
+
+lemma walkingAdjunctionFirstRefinement_nerve_face {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (H : Fin (n + 2) ⥤ walkingAdjunctionHom .minus Y)
+    (ha : WalkingAdjunctionLevelIsAtomic (X := ⟨.minus⟩) (Y := ⟨Y⟩) H)
+    (hnd : ULift.up H ∈ (WalkingAdjunctionHomShape.{u} .minus Y).nonDegenerate (n + 1)) :
+    (((WalkingAdjunctionHomShape.{u} .minus Y).map (SimplexCategory.δ
+      (walkingAdjunctionFirstBottomMergeIndex H
+        (walkingAdjunctionAtomic_endpoint_cards H ha).2 hnd).succ.castSucc).op)
+          (ULift.up (walkingAdjunctionFirstRefinement H ha hnd))).down = H
+```
+
+位置の実選択は今回で構成した。残る境界は、新しい実全単体自身の非退化性、
+原典のfillable条件との照合とfillableな場合の除外、非fillableな場合の親の一意性、
+その他の面とのfiltrationの両立である。
+元が既にfillableな場合も今回の構成は定義されているため、新単体が常に非退化とは主張していない。
+従って原子のfillableな親の完成とは数えていない。
+始点plusの場合の別の親の構成、parental subcomputadのfiltration、
+元のQCatAdjunctionからの全coherentな延長、原典の向きと現模型の水平反対の全比較、
+同じF≫U・単位・余単位・HAモデルの照合も引き続き未完。
+今回の元の非退化な原子からの実細分を、coherentな延長の存在へ読み替えていない。
+G01の済みは0、G02以降も未完を維持する。
+
+### 105.3 検証と進み
+
+with_build_lock.sh --class impl --wait 3600、各最大240秒の短いimpl枠。
+初期のセッション87394は元の単体集合の非退化性の補題の明示引数が不足し、終了1を確認した。
+不足する二つの引数を与え、局所の一意性の証明の警告を整えた。
+セッション48371の最大240秒の一つの枠で、修正後の四つの対象を全て初回で検証した。
+最終対象
+lake build SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionFirstRefinement:olean
+は終了0、警告なし（1353 jobs）。続く追加17根だけの公理監査も終了0を確認し、
+同じ枠を明示的に閉じて外側の終了0を確認した。
+追加17根は入力名と出力名が一致し、公理依存はpropext・Classical.choice・Quot.soundのみ。
+sorryAx・追加公理なし。入力・根・全出力・最終対象ビルドログは
+[g12-first-refinement-audit-2026-11-15/](g12-first-refinement-audit-2026-11-15/)に保存した。
+現在自分の生きたビルド・監査の枠は残っていない。
+
+M15・drafts・main・⑤aの既存ファイル・Interfaceは変更していない。
+全体ビルド・大きい監査は行っていない。
+
+G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み10,826行。
+M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
