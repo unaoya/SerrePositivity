@@ -17679,3 +17679,66 @@ lemma roof_constant_conjugation_arrow {I C : Type u} [Category.{u} I] [Category.
 新規1本83行・公開4補題。対象ビルド360（依存を含む7,217 jobs）・小監査とも終了0。共有鍵 --class impl --wait 3600、一枚の整理券、gtimeout 1700秒。小監査は263モジュール・1,706宣言、propext・Classical.choice・Quot.soundのみ、sorryAx・追加公理なし。自レーン累計259本・17,597行、実環境1,699宣言。外枠22,000行まで4,403行。新規モジュールの実環境宣言は5。git diff --check通過。main a4388efc9のEInfinity/3,745ファイル13,373名と自レーン625ファイル1,957名を照合し、異なるファイル間の重複0、内部も0。証跡：/private/tmp/isw2-build360.log、isw2-validation360.json、isw2-declaration-collision-scan360.json。既存Lean・⑤aのファイル・公式入口・公式監査は変更していない。
 
 既存のstrictBETotJointSourceRoofPinchedComparison_column_roofを実際にhaへ代入したBEでの適用も、一時ファイルisw2-roof-native-column2で終了0。最初の検査ではpinchedEndpointEquivalence_familyの推論された終点がHoの関手値から取り出した頂点となり、元のモデル源の指定頂点との型照合に失敗した。x'・y'を元の二つの指定頂点に明示して直した。対象ビルド済みの汎用補題をimportする形で、全局所化三角形を消去して元のnativeな底の全augmentation逆・評価へ戻せた。次に本体へ配置し、対象ビルド・小監査を行う。R03hのnative射側との最終等式・R03d・3b-4aは未完。
+
+## 295. 元のroof比較の全局所化三角形の消去と指定された両端への全族の輸送（2026-11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+§294の汎用則を実際に適用する。元のstrictBETotJointSourceRoofPinchedComparison_column_roofを、そのままhaへ代入する。元の全局所化三角形c.triangleと、元のpinchedEndpointEquivalence_familyを使うと、元のroofNativePinchedComparisonの全interval族は、同じnativeモデル源の元のframe augmentationの逆と元の評価の像へ戻る。さらに元のprobe・標的置換の指定同型で両端を戻す全族の等式を得る。これは既存構成の自然性・係数移送・合成の法則で、数学の一覧項目は増やさない。
+
+個別検査isw2-roof-native-column2とisw2-roof-native-normalized-family1は終了0。前者の初回の型の不一致はpinchedEndpointEquivalence_familyのx'・y'を元のモデル源の指定頂点に明示して修正。§294の検証済みコードは1bdf91594に保存した。次の三宣言を本体へ配置し、対象ビルド・小監査を行う。
+
+#### StrictDiagramTotJointSourceRoofNativeFamily（98行）
+
+```lean
+lemma strictBETotJointSourceRoofFrameAugmentation_inverted (P : strictBETotJointHomIndex A)
+    (s : ((simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P)ᵒᵖ) :
+    IsInvertibleEdge ((nerve.edgeMk
+      ((strictBETotJointSourceRoofFrameAugmentation A P).app s)).map
+      (strictBETotModelSource A)).toTruncated
+
+lemma strictBETotJointSourceRoofNativePinchedComparison_column_roof (P : strictBETotJointHomIndex A) :
+    Arrow.mk (intervalFamilyHom (strictBETotJointSourceRoofNativePinchedComparison A P ≫
+      pinchedHomToIntervalMappingSpace _ _)) =
+    Arrow.mk ((NerveColumn.augmentationIso (strictBETotModelSource A)
+      (strictBETotJointSourceRoofFrameDiagram A P)
+      (strictBETotJointSourceRoofFrameAugmentation A P)
+      (strictBETotJointSourceRoofFrameAugmentation_inverted A P)).inv ≫
+      NerveColumn.hom (strictBETotModelSource A)
+        (strictBETotJointSourceRoofFrameEvaluation A P))
+
+lemma strictBETotJointSourceRoofNormalizedPinchedComparison_interval_family (P : strictBETotJointHomIndex A) :
+    let K := nerve ((simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P)ᵒᵖ
+    intervalFamilyHom (strictBETotJointSourceRoofNormalizedPinchedComparison A P ≫
+      pinchedHomToIntervalMappingSpace _ _) =
+      constantFunctorHomMap K (strictBETotJointRoofProbeEndpointIso A P).inv ≫
+        intervalFamilyHom (strictBETotJointSourceRoofNativePinchedComparison A P ≫
+          pinchedHomToIntervalMappingSpace _ _) ≫
+        constantFunctorHomMap K (strictBETotJointRoofTargetEndpointUnitIso A P).inv
+```
+
+元のnative fiber射とこの同じroofの全族の最終等式R03hは、まだ未証明である。今回の右辺側の照合だけで元のnative射自身の弱同値性・R03d・3b-4aを完成とはしない。
+
+### 294.3 既存の同趣旨の補題を再利用し、自レーンの未取り込みの重複を撤回（§295の検査後）
+
+次の照合のため定値自然変換の既存宣言を調べたところ、mainに既存のPowerOperation/NerveColumnRoofConjugation.leanのSerrePositivity.EInfinity.PowerOperation.nerveColumnRoofConjugation_arrow、およびNerveColumnConstantRestriction.leanのnerveColumnConstantRestriction_arrowがあることを確認した。今回追加したNerveColumnRoofTransportの一般のaの版と同趣旨だが、今回のBE適用は実pinched族fを持つため、既存のfの版で足りる。発見時にチャットで報告した。⑤aの既存ファイルは変更せず、既存宣言を完全修飾名で再利用する形を検査した。
+
+このworktreeに既存のoleanがなかったため、共有鍵 --class impl --wait 3600と1700秒guardで当該既存1モジュールだけ対象ビルドし、7,224 jobsで成功（isw2-build362-existing-transport.log）。次の個別検査isw2-roof-native-existing-transport2は終了0。functorIsoEvaluate_eq_appで既存の同じ成分の表記を揃えただけで、BEの三宣言の型は全く同じまま。変更前後の主張の型の文字列も照合した。
+
+1bdf91594の自レーンの新規NerveColumnRoofTransport.leanはmainに存在せず、公式登録もないことを確認した。同ファイルを使う本体のimporterは今回の未コミットのBE新規ファイルだけ。この自レーンの83行・4補題を撤回し、登録候補一覧から外した。mainの既存宣言は一つも変更・削除していない。過去の§294の対象ビルド・監査の結果はその時点の検証の履歴であり、最終の登録候補にはこの汎用ファイルを含めない。
+
+### 295.2 最終の依存を既存の補題へ変更した検査
+
+変更前の361対象ビルド・監査はともに終了0（12,256 jobs、264モジュール・1,708宣言、標準三公理のみ）。証跡isw2-validation361.jsonは変更前のソースのSHA256を持つ。最終の依存では当該自レーン汎用ファイルを使わず、既存PowerOperationの同趣旨の宣言を直接使う。BEの三宣言の型を保ったまま、362対象ビルドと小監査を行う。登録候補の正本は更新したis-w2-be-20261114-modules.json。
+
+### 295.3 最終の依存での検収
+
+既存のPowerOperation.nerveColumnRoofConjugation_arrowを再利用する最終ソースの362対象ビルド（依存を含む12,255 jobs）・小監査はともに終了0。共有鍵 --class impl --wait 3600、一枚の整理券、gtimeout 1700秒でビルドと小監査の間だけ使用。小監査は263モジュール・1,704宣言、propext・Classical.choice・Quot.soundのみ、sorryAx・追加公理なし。最終の新規BEモジュールは98行・公開3補題・実環境宣言3。全て元の実roofと同じ指定局所化三角形・同じ両端同型を使い、全パラメータのintervalFamilyHomを扱う。
+
+未取り込みの汎用83行を撤回した最終の自レーンは259本・17,612行、実環境1,697宣言。外枠22,000行まで4,388行。登録候補のis-w2-be-20261114-modules.jsonはこの最終ソースの259本。mainの既存宣言・⑤aのファイル・公式入口・公式監査は変更していない。宣言名照合はmain a4388efc9のEInfinity/3,745ファイル13,373名と自レーン候補626ファイルからの1,956名で、異なるファイル間の重複0、内部も0。候補数は撤回された削除パスも含む索引の候補数で、本体の現存モジュール数は一覧の259本。git diff --check通過。証跡：/private/tmp/isw2-build362.log、isw2-validation362.json、isw2-declaration-collision-scan362.json。
+
+この検収で右辺の元のroofの全局所化三角形の消去と、元の指定probe・標的置換による全族の輸送を閉じた。native fiber射側から同じ全族への最終照合R03h、元の実射自身の弱同値性、R03d・3b-4aは未完のまま。§293のnative射自身の全族の正規化と今回の全roofの式を使い、その残りを詰める。
+
+次に使う、同じprobe射のモデル源の二つの宇宙表示と元のprobe頂点同型のArrowの照合は、個別検査isw2-model-source-edge1およびisw2-roof-probe-endpoint-arrow1で終了0。一時ファイルだけで、本体への対象ビルド・監査はまだ。今回はこの二補題を検収済みモジュール数・行数には含めない。未検証の新規Leanは作業木に残していない。全ての鍵は返却済み。
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。停止点3b-4aの完了報告ではない。
