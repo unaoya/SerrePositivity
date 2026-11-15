@@ -1276,3 +1276,20 @@ G3 は完成。G4 は F8 の同じスカラー・実際の構造層の Frobenius
 今回2モジュール152行＋入口2行。新規99モジュール本体6,559行・入口込み6,658行。既存追加25行を含む外枠計数は本体6,584行・入口込み6,683行。新規小監査累計669宣言、既存15宣言は別計上。これらの法則を使った同じタプル被覆の実際の係数の関手は単独検証に成功したが、まだ本体ビルド・監査前でこの束には含めない。残る閉中心の底変換・二重 Čech・Noether 帰納と G5 は未完。外枠16,000行は不変。
 
 一覧：済み1／全体3（うち追加0）。
+
+
+## G4：同じタプル被覆の実際の Frobenius 係数の関手
+
+`SchemePerfectCechTupleFunctor`（78行）の宣言：
+
+- `schemePerfectCechTupleComplex`：実際の nerve の同じタプル被覆における構造層の Frobenius 係数の既存の全タプル複体。
+- `schemePerfectCechTupleMap`：幾何的 nerve の実際の a.op の refinedPullback と、同じタプルの添字の前合成の写像。
+- `schemePerfectCechTupleMap_id`：実際の nerve.map_id と添字の単位を、検証済みの単位則へ個別に渡した単位。
+- `schemePerfectCechTupleMap_comp`：実際の nerve.map_comp と異なる添字型の引き戻しの合成則による合成の保存。
+- `schemePerfectCechTupleFunctor`：上の同じ複体と写像を SimplexCategory 上の複体の関手へまとめたもの。h は各項の切断環での p の零化の証人を保持し、最終の入口で基底の標数から供給する。
+
+単独検証、本体とのソース完全一致、対象と入口のビルド5,185ジョブ成功、小監査9宣言（所有元の非公開・生成宣言を含む）・標準三公理のみ、終了状態0。ログ `2g-perfect-cech-tuple-functor-check-3.log`・`2g-perfect-cech-tuple-functor-native.log`・`2g-perfect-cech-tuple-functor-audit.log`。単位の移送を前記の型つきの等式に分割し、既定の heartbeat 内で成功。局所的な backward.isDefEq.respectTransparency false を使用。追加公理・sorry・既存の型変更・資源制限の引き上げ・200行超の宣言なし。共有鍵 --class impl --wait 3600、待ちは一つ、対象ビルドと監査は別枠。root・下流全ビルド・全体監査なし。
+
+今回1モジュール78行＋入口1行。基準56ea849a3からの追加ファイルを独立に数え直して、新規100モジュール本体6,637行・入口込み6,737行で一致した。既存追加25行を含む外枠計数は本体6,662行・入口込み6,762行。新規小監査累計678宣言、既存15宣言は別計上。次は実際の有限ファイバー冪の全射性・中心外同型性、閉中心への自然な底変換、同じ図式の B1 への接続。二重 Čech の判定法や Noether 帰納、G5 はまだ完成していない。外枠16,000行は不変、停止点2g-2ではない。
+
+一覧：済み1／全体3（うち追加0）。
