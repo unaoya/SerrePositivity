@@ -2270,3 +2270,30 @@ S1 の交叉・生成系・上限位相・extensive の判定全体はまだ未�
 検証済み全体137本8,640行・761宣言、外枠18,600行内。
 S1・S8 は未完。
 一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
+
+### S1：元の交叉篩の降下の同値を閉じた（11-15）
+
+3本142行・5宣言の対象ビルドと小監査が成功（標準三公理のみ）。
+記録：`/tmp/is-w1/s1-intersection-1/`。source SHA 一致。
+
+```lean
+(∀ t : sieveCategory R, IsLimitCone (restrictionCone F (S.pullback t.obj.hom))) →
+(IsLimitCone (restrictionCone F (R ⊓ S)) ↔ IsLimitCone (restrictionCone F R))
+```
+
+任意の準圏係数 E に対し、元の restrictionCone のまま上の同値を証明した。
+`AsSmallCoefficientCone` は元の全錐の同じ AsSmall 表示から係数前層へ戻す法則。
+`SieveFactorizationLimitComparison` は既存の元の指定右 Kan 条件を、
+同じ元の二段分解の三角形・全錐へ適用した。
+`SieveIntersectionDescent` は既存の合成射影の left cofinal 性と同じ全錐の制限の等式を
+合成し、元の交叉篩の降下を結論した。係数の極限存在・presentable 性は仮定していない。
+計算上限は変更していない。
+
+次は全引き戻しで降下する篩の推移性を、この同値の両順序での適用から示す。
+その篩の位相を用いて位相の上限の層条件を閉じる。
+生成 coverage は refine の条件しか持たないので、一つの生成篩での降下を
+全引き戻しの降下と混同せず、元の drafts の仮定からの接続を別に残す。
+S1 の生成系・extensive の判定と S8 は未完。
+
+検証済み全体140本8,782行・766宣言、外枠18,600行内。
+一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
