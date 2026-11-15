@@ -3,7 +3,7 @@
   "complete": 2,
   "total": 6,
   "added": 0,
-  "verified_head": "this commit: base 82c6eb822f8922a350bd5b3f3de972c60c59a7dc",
+  "verified_head": "this commit: base ad82ac11c8224fb2ed7e247af41ea7f773f76759",
   "items": {
     "HT01": "complete",
     "HT02": "complete",
@@ -12,14 +12,13 @@
     "HT05": "not-started",
     "HT06": "not-started"
   },
-  "latest_complete_audit_checkpoint": "affine-crystalline-cohomology-classes-checkpoint.json",
-  "latest_complete_audit_declarations": 1475,
+  "latest_complete_audit_checkpoint": "affine-native-base-ht-checkpoint.json",
+  "latest_complete_audit_declarations": 1487,
   "working_changes_unverified": [
-    "AffineCrystallineHodgeTateSquare",
     "UniversalCrystallineHodgeTate",
-    "AffineNativeBaseHodgeTate"
+    "AffineCrystallineHodgeTateSquare"
   ],
-  "pending_check": "bundle-133 terminal rc1; see audit module inventory; failed dependencies await next batch",
+  "pending_check": "bundle-134 terminal rc1; see audit module inventory; failed dependencies await next batch",
   "next_proof_route": "ht02-next-proof-route.md",
   "initial_record": {
     "stage": "5inf3a",
