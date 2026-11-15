@@ -10082,3 +10082,182 @@ scripts/refactor/with_build_lock.sh --class impl --wait 3600 --
 
 G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中。
 M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
+
+## §76 G01 の全合成・walking monad・指定単位の検証（11-15）
+
+### 76.1 検証した範囲と未完の結論
+
+§75の4ファイルを含め、HA/Monads/ の新設8ファイル695行を対象ビルドで検証した。
+明示宣言50（構造・inductiveを各1、名前付き局所instanceを1含む）。
+小さい公理監査も50宣言の根を全て照合し、依存は標準のpropext・Classical.choice・Quot.soundのみ。
+検証済みのG12 Lean累計は **8ファイル695行**。M15の16,936行とは別枠。
+全ファイルは125行以下で、200行を超える証明はない。
+
+今回の対象はG01の構成先と法則の部品。**G01自体は未完**。
+QCatAdjunctionからNativeMonadを構成するinducedNativeMonadと、指定F≫UへのFunctorIso、
+元の単位・余単位との全比較が残る。G01〜G15の一覧の済みは0のままにする。
+存在を仮定するinstanceや、元の随伴だけを欄に入れて全coherenceと呼ぶ代用は置いていない。
+
+§75以後に検証したもの：
+
+| ファイル | 行数 | 検証した内容 |
+|---|---:|---|
+| EndofunctorComposition.lean | 106 | 全自己関手の合成・単位・結合則と実内部MonObj |
+| EndofunctorSimplicialMonoid.lean | 62 | 全次数のモノイド表示と元の単体作用との一致 |
+| WalkingMonad.lean | 63 | N(Δ₊)と順序和の全単体写像 |
+| NativeMonad.lean | 81 | 全作用の型、元のunderlying endofunctorの回収 |
+| WalkingMonadLaws.lean | 125 | 順序和の全単位・結合則、実walkingMonadMonObj |
+| WalkingMonadEnrichment.lean | 117 | 実単体的豊穣walking monad、全作用と豊穣関手の往復 |
+| NativeMonadUnit.lean | 75 | 全作用から同じ恒等関手→同じ自己関手への単位の実辺を回収 |
+| AdjunctionRepresentatives.lean | 66 | 元の随伴の単位・余単位の実辺と同じ二胞体の類の照合 |
+| **合計** | **695** | G01の途中。新しい一覧IDは加えない |
+
+豊穣関手の値域は、閉構造からのSSetの自己豊穣構造を明示した。
+別の既存のSSetの豊穣instanceを暗黙に選んだ場合の合成と混同しない。
+名前付き局所instance endofunctorClosedEnrichment は既存の自己豊穣構造そのものであり、
+未証明の命題を仮定するinstanceではない。この宣言も監査対象に入れた。
+
+原典はHA §4.7.2–§4.7.3・Proposition 4.7.3.3とKerodon Remark 6.2.1.4（Tag 02EN）。
+[Riehl–Verity](https://math.jhu.edu/~eriehl/adjunctions.pdf) Definition 6.1.1の
+全coherentなモナドの定義は、N(Δ₊)から全自己Homへの単位と順序和を保つ全単体写像である。
+現在のNativeMonadはこの表示を採っている。HAの表示との比較と、随伴からの全拡張の存在は
+G01の検収に残す。全拡張には同書Theorems 4.3.9・4.3.11の構成経路を検討している。
+これらをsorryや追加公理で導入してはいない。
+
+### 76.2 同じ構成の法則の型
+
+以下の型は各ファイルと同じ変数・準圏性・豊穣構造の文脈で読む。
+§75に既出の型は繰り返さない。これら法則の分割で一覧の本数を増やさない。
+
+`WalkingMonadLaws.lean`（NativeMonadの節の宣言はそのnamespace内）：
+
+```lean
+lemma ordinalSum_assoc (x y z : AugmentedSimplexCategory) :
+    (x ⊗ y) ⊗ z = x ⊗ (y ⊗ z)
+
+lemma ordinalSum_associator_hom (x y z : AugmentedSimplexCategory) :
+    (α_ x y z).hom = eqToHom (ordinalSum_assoc x y z)
+
+lemma ordinalSumFunctor_assoc (F G H : I ⥤ AugmentedSimplexCategory) :
+    ((F.prod' G ⋙ tensor _).prod' H ⋙ tensor _) =
+      (F.prod' (G.prod' H ⋙ tensor _) ⋙ tensor _)
+
+lemma ordinalSum_leftUnit (x : AugmentedSimplexCategory) :
+    (WithInitial.star : AugmentedSimplexCategory) ⊗ x = x
+
+lemma ordinalSum_rightUnit (x : AugmentedSimplexCategory) :
+    x ⊗ (WithInitial.star : AugmentedSimplexCategory) = x
+
+lemma ordinalSum_leftUnitor_hom (x : AugmentedSimplexCategory) :
+    (λ_ x).hom = eqToHom (ordinalSum_leftUnit x)
+
+lemma ordinalSum_rightUnitor_hom (x : AugmentedSimplexCategory) :
+    (ρ_ x).hom = eqToHom (ordinalSum_rightUnit x)
+
+lemma ordinalSumFunctor_leftUnit (F : I ⥤ AugmentedSimplexCategory) :
+    (((Functor.const I).obj WithInitial.star).prod' F ⋙ tensor _) = F
+
+lemma ordinalSumFunctor_rightUnit (F : I ⥤ AugmentedSimplexCategory) :
+    (F.prod' ((Functor.const I).obj WithInitial.star) ⋙ tensor _) = F
+
+@[instance_reducible]
+def walkingMonadMonObj : MonObj WalkingMonadShape.{u}
+```
+
+`WalkingMonadEnrichment.lean`（NativeMonadの節の宣言はそのnamespace内）：
+
+```lean
+instance walkingMonadEnrichedCategory : EnrichedCategory SSet.{u} WalkingMonadObject
+
+local instance endofunctorClosedEnrichment : EnrichedCategory SSet.{u} SSet.{u}
+
+def toEnrichedFunctor (T : NativeMonad C) :
+    EnrichedFunctor SSet.{u} WalkingMonadObject SSet.{u}
+
+def ofEnrichedFunctor
+    (F : EnrichedFunctor SSet.{u} WalkingMonadObject SSet.{u}) :
+    NativeMonad (F.obj .star)
+
+lemma of_toEnrichedFunctor (T : NativeMonad C) :
+    ofEnrichedFunctor T.toEnrichedFunctor = T
+
+lemma to_ofEnrichedFunctor (F : EnrichedFunctor SSet.{u} WalkingMonadObject SSet.{u}) :
+    (ofEnrichedFunctor F).toEnrichedFunctor = F
+```
+
+`NativeMonadUnit.lean`（NativeMonadの節の宣言はそのnamespace内）：
+
+```lean
+def walkingMonadArrow {x y : AugmentedSimplexCategory} (f : x ⟶ y) :
+    WalkingMonadShape.{u}.Edge (ULift.up (ComposableArrows.mk₀ x))
+      (ULift.up (ComposableArrows.mk₀ y))
+
+lemma unit_vertex (T : NativeMonad C) :
+    T.action.app (Opposite.op ⦋0⦌)
+      (ULift.up (ComposableArrows.mk₀ (WithInitial.star : AugmentedSimplexCategory))) =
+        SSet.unitHomEquiv _ (curry' (𝟙 C))
+
+def unitEdge (T : NativeMonad C) :
+    (EndofunctorSpace C).Edge (SSet.unitHomEquiv _ (curry' (𝟙 C)))
+      (SSet.unitHomEquiv _ (curry' T.endofunctor))
+
+lemma unitEdge_edge (T : NativeMonad C) :
+    T.unitEdge.edge = T.action.app (Opposite.op ⦋1⦌)
+      (ULift.up (ComposableArrows.mk₁
+        (WithInitial.homTo (⦋0⦌ : SimplexCategory))))
+```
+
+`AdjunctionRepresentatives.lean`（NativeMonadの節の宣言はそのnamespace内）：
+
+```lean
+def adjunctionUnitRepresentative (a : QCatAdjunction F U) :
+    ((ihom C).obj C).Edge (functorVertex (𝟙 C)) (functorVertex (F ≫ U))
+
+lemma adjunctionUnitRepresentative_homMk (a : QCatAdjunction F U) :
+    SSet.Truncated.HomotopyCategory.homMk (adjunctionUnitRepresentative a).toTruncated =
+      a.unitHom
+
+def adjunctionCounitRepresentative (a : QCatAdjunction F U) :
+    ((ihom E).obj E).Edge (functorVertex (U ≫ F)) (functorVertex (𝟙 E))
+
+lemma adjunctionCounitRepresentative_homMk (a : QCatAdjunction F U) :
+    SSet.Truncated.HomotopyCategory.homMk (adjunctionCounitRepresentative a).toTruncated =
+      a.counitHom
+```
+
+### 76.3 対象ビルドと小さい監査
+
+全て指定のwith_build_lock.sh --class impl --wait 3600の下で行った。
+最初のセッション29814はNativeMonadのcurryの型推論エラーで終了1。
+続く63893ではその修正が通り、WalkingMonadLawsの対象等式・関手の等式の引数で終了1。
+どちらも終端を確認してから次の枠へ進み、観測のタイムアウトを理由に重複起動していない。
+
+最後のセッション41384は、280秒を上限とする同じimpl枠内で必要な修正を検証した。
+対象は次の4つの末端モジュールだけ（その依存として上の8ファイルを覆う）：
+
+```text
+lake build
+  SerrePositivity.InfinityCategories.HA.Monads.WalkingMonadEnrichment:olean
+  SerrePositivity.InfinityCategories.HA.Monads.NativeMonadUnit:olean
+  SerrePositivity.InfinityCategories.HA.Monads.EndofunctorSimplicialMonoid:olean
+  SerrePositivity.InfinityCategories.HA.Monads.AdjunctionRepresentatives:olean
+```
+
+最終の対象ビルドは **G12_BUILD_EXIT=0**、警告なし。
+その後、名前付き局所instanceのdocstringを2行追記した。型・定義・証明は変更していない。
+この文書2行も上の実測695行に含めた。
+続く新設宣言だけの監査 lake env lean /tmp/g12-small-audit.lean は **G12_AUDIT_EXIT=0**。
+全50の出力名が監査入力の50名と一致し、sorryAx・追加公理がないことを小さいPython検査でも確認した。
+監査の入力（テキスト保存）・根の名前・全出力は
+[g12-audit-2026-11-15/](g12-audit-2026-11-15/)に保存した。
+
+枠の外側の終了値は124。これは対象ビルド0・監査0の後、次の操作を待つループが
+280秒の上限で終了したものであり、対象ビルドや監査の失敗として扱わない。
+両コマンドの成功印と50件の実際の監査出力を確認した。現在はこの実行セッションも終端で、
+自分の生きたビルド・監査・待ち整理券はない。全体ビルド・大きい監査は行っていない。
+
+M15のLean、main、⑤a・③系、Interface、draftsには書き込んでいない。
+次はG01の未完の全拡張と指定F≫Uの比較を進める。G01未完のままG04以後へ飛ばさない。
+
+G12：**一覧：済み 0／全体 15（うち追加 0）**。外枠20,000行中、検証済み695行。
+M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
