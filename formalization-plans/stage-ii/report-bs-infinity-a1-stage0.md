@@ -1379,3 +1379,44 @@ theorem sheafification_map_isLimit_finite [IsStable E] J hJ hE
 終点の書き換えは既知の `hs` を明示し、始点は `hΩ.choose.hom` の元の射との
 定義の照合を rfl で閉じる二箇所を修正する。新しい仮定・構成は加えない。
 次はこの4本の後に、層化の任意有限形状の極限保存の2本を対象ビルド・小監査する。
+
+### S6：大きい site の同じ宇宙での形状比較（11-15、未検証）
+
+一覧：済み 3／全体 8（うち追加 0、済み：S2・S3・S4、S7 は後続）。
+
+`C : Type (u+1)`、射 `Type u`、小さい模型 `D : Type u`、係数 `E : SSet.{u+1}`：
+```lean
+def siteSmallModelShapeEquivalence (e : D ≌ C) :
+  QCatEquivalence (presheafShape D) (nerve Cᵒᵖ)
+lemma siteSmallModelShapeEquivalence_hom_app e σ :
+  (siteSmallModelShapeEquivalence e).hom.app _ σ = σ.down ⋙ e.functor.op
+def reindexSmallModelPresheafFunctor e E : (ihom (nerve Cᵒᵖ)).obj E ⟶ PresheafCat D E
+lemma reindexSmallModelPresheafFunctor_isQCatEquivalence e :
+  IsQCatEquivalence (reindexSmallModelPresheafFunctor e E)
+lemma hasLimit_largePresheaf_of_smallModel e hE (F : nerve Cᵒᵖ ⟶ E) : HasLimit F
+def essentiallySmallSiteShapeEquivalence C [EssentiallySmall.{u} C] :
+  QCatEquivalence (presheafShape (SmallModel C)) (nerve Cᵒᵖ)
+```
+S3 の検証済み `nerveAsSmallIso`・`nerveAsSmallMaxIso` と既存の通常圏の同値を
+再利用する。全 n 単体の順射の式も保持する。係数を SSet(u+2) へ上げる操作はしない。
+`PrismOverSmall` は EssentiallySmall の入力を既に供給するため、BS 固有の濃度条件や
+κ の切り落としは新設しない。この部品だけで層化・単位・RΓ の全輸送の完成とはしない。
+
+### S5 完了：安定な層圏と指定層化の任意有限極限保存（11-15）
+
+一覧：済み 4／全体 8（うち追加 0、済み：S2・S3・S4・S5、S7 は後続）。
+
+最終出力は、元の `SheafCat J E` の `sheaf_isStable` と
+`sheafification_map_isLimit_finite`。後者は同じ `sheafificationFunctor J hJ` について
+任意の `K : SSet.{u+1}`・`[K.Finite]`・元の図式 `p`・指定全錐 `c` を量化する。
+終対象と引き戻しの二形状だけを最終出力とせず、既存の有限極限生成を使って閉じた。
+前提は原案どおり、小さい通常 site と安定な presentable 係数。Postnikov 左完全性は追加しない。
+
+`/tmp/is-w1/s5-final-sequence.log`：
+- 全 loop 族・同じ角の等式・層圏の安定性：4本297行、7,683 jobs、21宣言の小監査成功。
+- 完全関手の任意有限極限保存・指定層化への適用：2本123行、7,694 jobs、4宣言の小監査成功。
+いずれも新しい環境で標準三公理のみ。sorry・新しい公理はなく、計算上限変更なし。
+
+S5 の証明分割は極限閉性からの15本931行。段0見込み600〜1,100行の範囲内。
+検証済み全体70本4,306行・393宣言、外枠18,600行内。
+S1・S6・S8 は継続、S7 は指示どおり後続。S6 の新しい大きい site の形状比較は未検証。
