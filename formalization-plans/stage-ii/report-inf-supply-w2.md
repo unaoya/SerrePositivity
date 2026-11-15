@@ -16237,3 +16237,126 @@ theorem strictBETotJointSourceCorrection_component_composition
 3b-4の検証済みの実測は**219モジュール・14,751行・1,560宣言**。外枠22,000行まで7,249行。登録候補は272.2の二本を自レーンのJSONへ追記した。共通の入口・公式監査は変更していない。
 
 元の成分の射影を同じ全augmentation・標的単位の成分へ合わせる所から続ける。全interval族の等式と全関手同型の照合はまだなく、R03h・R03dおよび3b-4aを完了とはしていない。
+
+## 273. 元の補正比較の二射影の全同型と、その同じ成分（2026-11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 24（うち追加 12）。
+
+### 273.1 全同型の指定値の回収
+
+元のfunctorIsoPairの二射影が、元の二つの全関手同型そのものを回収する法則を証明した。それをBEの元の端点比較へ適用し、端点の型の等式を外して同じ組の値へ照合した。元の補正比較の指定pathを射影すると元の全端点比較を回収する既存の厳密な等式を使い、次を全関手同型のHEqとして得た。
+
+- strictBETotJointSourceCorrectedPairingIsoの左射影は、元のstrictBETotJointSourceAugmentationDomainIsoの同じ逆。
+- 同じ補正比較の右射影は、元のstrictBETotJointSourceTargetReplacementIsoの同じ逆。
+
+HEqは端点の図式の表示の等式を扱うために使い、値を点ごとに新たに選んでいない。全パラメータの高次単体を持つ元の同型の値の照合である。さらに元の補正前後のpairingの射影の厳密な等式を四つに分け、それを成分評価に使って、元の同じ補正比較の成分を左右へ写した像も、元の全端点比較の逆の同じ成分にHEqで一致させた。
+
+これは既存の構成の合成・射影・端点輸送・成分評価の法則の分割であり、新しい数学の一覧IDは追加しない。新規4本（共通1・BE3）、347行。全ファイル200行以下。既存のLeanの変更は0。[ModelCategory SSet]や計算上限の変更はない。モデルのinstanceはBE代数の元のものだけを使う。
+
+### 273.2 型
+
+公開def/lemma14個の全型と、privateなEq.mpの輸送の法則を記録する。各BEファイルのlocal instanceは元のmodelCategory A、mappingCofibrantFactorization A、および底の(CAlg_R A).op ⊗ CAlg_R Aの既存のquasicategory_tensorの三つで、ファイルごとに異なる名前にしている。
+
+```lean
+private lemma jointPairingProjectionEqMpHeq {α β γ : Sort _} (h : α = β) (a : α) (b : γ) :
+    HEq (Eq.mp h a) b ↔ HEq a b
+```
+
+#### FunctorIsoPairingProjections（55行）
+
+```lean
+lemma functorIsoPair_postcomp_fst {T X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
+    {f g : T ⟶ X} {h k : T ⟶ Y} (e : FunctorIso f g) (d : FunctorIso h k) :
+    (functorIsoPair e d).postcomp (fst X Y) = e
+
+lemma functorIsoPair_postcomp_snd {T X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
+    {f g : T ⟶ X} {h k : T ⟶ Y} (e : FunctorIso f g) (d : FunctorIso h k) :
+    (functorIsoPair e d).postcomp (snd X Y) = d
+```
+
+#### StrictDiagramTotJointPairingProjectionValues（98行）
+
+```lean
+lemma strictBETotJointSourceNativePairingBaseIso_pair_value :
+    HEq (strictBETotJointSourceNativePairingBaseIso A)
+      (functorIsoPair (strictBETotJointSourceAugmentationDomainIso A)
+        (strictBETotJointSourceTargetReplacementIso A))
+
+lemma strictBETotJointSourceNativePairingBaseIso_symm_fst :
+    HEq (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.postcomp (strictBETotJointSourceNativePairingBaseIso A).symm
+      (fst (CAlg_R A).op (CAlg_R A)))
+      (strictBETotJointSourceAugmentationDomainIso A).symm
+
+lemma strictBETotJointSourceNativePairingBaseIso_symm_snd :
+    HEq (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.postcomp (strictBETotJointSourceNativePairingBaseIso A).symm
+      (snd (CAlg_R A).op (CAlg_R A)))
+      (strictBETotJointSourceTargetReplacementIso A).symm
+```
+
+#### StrictDiagramTotJointCorrectionProjectionValues（120行）
+
+```lean
+lemma strictBETotJointSourceCorrectionIso_projection_value {E : SSet.{u+1}}
+    (q : (CAlg_R A).op ⊗ CAlg_R A ⟶ E) :
+    HEq (((strictBETotJointSourceCorrectedPairingIso A).postcomp
+      (twistedArrowProjection (CAlg_R A))).postcomp q)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.postcomp (strictBETotJointSourceNativePairingBaseIso A).symm q)
+
+lemma strictBETotJointSourceCorrectionIso_left_value :
+    HEq ((strictBETotJointSourceCorrectedPairingIso A).postcomp (edgewiseLeft (CAlg_R A)))
+      (strictBETotJointSourceAugmentationDomainIso A).symm
+
+lemma strictBETotJointSourceCorrectionIso_right_value :
+    HEq ((strictBETotJointSourceCorrectedPairingIso A).postcomp (edgewiseRight (CAlg_R A)))
+      (strictBETotJointSourceTargetReplacementIso A).symm
+
+lemma strictBETotJointSourceCorrectedPairing_left :
+    strictBETotJointSourceCorrectedPairing A ≫ edgewiseLeft (CAlg_R A) =
+      strictBETotJointSourceOriginalNativeDomain A
+
+lemma strictBETotJointSourceNativePairing_left :
+    strictBETotJointSourceNativePairing A ≫ edgewiseLeft (CAlg_R A) =
+      strictBETotJointSourceNativeDomain A
+
+lemma strictBETotJointSourceCorrectedPairing_right :
+    strictBETotJointSourceCorrectedPairing A ≫ edgewiseRight (CAlg_R A) =
+      strictBETotJointSourceOriginalNativeCodomain A
+
+lemma strictBETotJointSourceNativePairing_right :
+    strictBETotJointSourceNativePairing A ≫ edgewiseRight (CAlg_R A) =
+      strictBETotJointSourceNativeCodomain A
+```
+
+#### StrictDiagramTotJointCorrectionProjectionComponents（74行）
+
+```lean
+lemma strictBETotJointSourceCorrectionIso_left_component (t : StrictBETotJointSourceElements A) :
+    HEq (VertexIso.map ((strictBETotJointSourceCorrectedPairingIso A).app (nerveVertex t))
+      (edgewiseLeft (CAlg_R A)))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.FunctorIso.app
+        (strictBETotJointSourceAugmentationDomainIso A).symm (nerveVertex t))
+
+lemma strictBETotJointSourceCorrectionIso_right_component (t : StrictBETotJointSourceElements A) :
+    HEq (VertexIso.map ((strictBETotJointSourceCorrectedPairingIso A).app (nerveVertex t))
+      (edgewiseRight (CAlg_R A)))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.FunctorIso.app
+        (strictBETotJointSourceTargetReplacementIso A).symm (nerveVertex t))
+```
+
+### 273.3 検収と残り
+
+コードのコミット：**37c38f755**。新規4本・347行。公開def/lemma14個、privateな輸送の法則1個、BEのlocal instance9個。実環境の新規四本は2・7・10・5宣言。既存のLeanの変更は0。
+
+個別検査では全型・証明が通った。既存の端点輸送と成分評価の九モジュールを再利用し、必要な依存の対象ビルド336（1,885 jobs）・337（3,392 jobs）を共有鍵で通した。本体化の338では、一時ファイルで共有していたopenの不足を検出し、新規三ファイルで名前空間を明示した。計算上限は変更していない。
+
+- 鍵：--class impl --wait 3600、一枚の整理券、取得後gtimeout 1700秒。検査終了とともに返却済み。
+- 対象ビルド339：新規四本、成功（依存を含む12,244 jobs）。
+- 小監査：AuditISW2BKCells338.lean、**227モジュール・1,591宣言、propext・Classical.choice・Quot.soundのみ**。sorryAx・追加公理なし。互換二モジュールの宣言数0と既存の定理の定義元の確認も成功。
+- 宣言名の照合：main a4388efc9に固定し、自レーン589ファイル・1,875個の名前と、mainのEInfinity/3,745ファイル・13,373個の名前を照合。異なるファイル間の重複0、自レーン内部も0。
+- git diff --check：通過。
+
+証跡：/private/tmp/isw2-build339.log、isw2-validation339.json、isw2-declaration-collision-scan339.json。
+
+3b-4の検証済みの実測は**223モジュール・15,098行・1,584宣言**。外枠22,000行まで6,902行。登録候補は273.2の四本を自レーンのJSONへ追記した。共通の入口と公式監査は変更していない。
+
+これで元のcorrected pairingの成分の左右射影が、元の全augmentationと標的単位の同じ成分であることまで接続できた。元の単位ラベルで、それらの成分の像を元の増大写像・probe比較・置換単位の実射の類へ計算する部分が残る。さらに、元の全straightening変換の単位の評価、全Yoneda評価による全変換の一致、R03hの全interval族の等式を閉じる必要がある。成分の一致だけを全族の等式とみなさない。R03h・R03d・3b-4aはまだ完了していない。
