@@ -15567,3 +15567,84 @@ lemma sameNerveTransformationPostIso_column
     (hη : ∀ i, IsInvertibleEdge ((nerve.edgeMk (η.app i)).map L).toTruncated) :
     (nerveTransformationPostIso η L hη).hom = NerveColumn.hom L η
 ```
+
+## 264. B4′採取67本と、元の指定augmentation同型の全制限の一時検査（11-15、途中）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 24（うち追加 12）。R03d・R03h・B4′は未完了。
+
+B4′は67／197本のcollect・プレビューが成功し、review.jsonは全て空、追加import0、原ソースとの差分0本。r03は待ちを含め720.4秒で成功した。単一runner38504は第r04組を継続中。mainの実際のmerge、プレビュー反映、取り込み後の対象ビルド・小監査はまだ。取り込み前のソースは変えていない。
+
+R03hの一時検査を、元の指定された全augmentationのFunctorIso自身の制限まで進めた。一般のnerve自然変換の全引き戻しが同じ反転同型を保つこと、全自然変換の表示変更がその同型を保つことを先に示し、元のstrictBETotJointSourceFrameAugmentationIsoを同じroofパラメータへ前合成した値が、同じfull augmentationのNerveColumn.augmentationIsoそのものであることをHEqで示した。対象ごとの同型へ置き換えず、同じ全関手同型の値を保存する。
+
+/private/tmp/isw2-nervecolumnprecomp.leanはハンドル61860・終了0、一般の表示変更を含む/private/tmp/isw2-nervepostisoheq.leanは77461・終了0、BEの全制限を結合した/private/tmp/isw2-roofnativeaug.leanは45906・終了0。同じfiber上の全標的入力が元の同じ標的の定値図式・定値nerve写像であることも/private/tmp/isw2-rooftarget.leanで検査し94919・終了0。これらも一時検査だけで本体には未反映。元のnative射と基準roof射の全族の等式（R03h）と、元の固定始域の全FunctorIsoへの正規化は引き続き残る。検証済み196本・12,815行／外枠22,000行の計数は維持する。
+
+使用する取り込み後の小監査の範囲も確認した。現在のAuditISW2BKCells325.leanは自分のモジュール一覧196本を全て含み、追加の既存4本（FrameConeClasses・NormalizedMooreReverseEvaluation・NormalizedMooreReverseExtendZero・NormalizedMooreReverseZero）と合わせて200本である。二つの互換入口の宣言0と既存補題の定義元の検査を維持する。新しい本体の証明分割を反映する際は、その変更後に改めて対象ビルドと小監査を行う。
+
+追加した一時の型は以下のとおり。既存構成の反転・単位・合成・係数移送の法則と証明分割なので一覧の項目数は増やさない。一般版の共通openはNerveColumn・FunctorIso等の既存の定義元に対応し、BE版の共通入力は `(A : Type u) [CommRing A]` と既存のcanonical model/factorizationのみ。
+
+```lean
+lemma sameNerveColumn_whiskerLeft
+    {I J C : Type u} [Category.{u} I] [Category.{u} J] [Category.{u} C]
+    (R : J ⥤ I) {F G : I ⥤ C} (η : F ⟶ G)
+    {Q : SSet.{u}} [Quasicategory Q] (L : nerve C ⟶ Q) :
+    (hoFunctor.map ((MonoidalClosed.pre (nerveMap R)).app Q)).toFunctor.map
+      (NerveColumn.hom L η) = NerveColumn.hom L (CategoryTheory.Functor.whiskerLeft R η)
+
+lemma sameNerveTransformationPostIso_precomp
+    {I J C : Type u} [Category.{u} I] [Category.{u} J] [Category.{u} C]
+    (R : J ⥤ I) {F G : I ⥤ C} (η : F ⟶ G)
+    {Q : SSet.{u}} [Quasicategory Q] (L : nerve C ⟶ Q)
+    (hη : ∀ i, IsInvertibleEdge ((nerve.edgeMk (η.app i)).map L).toTruncated) :
+    HEq ((nerveTransformationPostIso η L hη).precomp (nerveMap R))
+      (nerveTransformationPostIso (CategoryTheory.Functor.whiskerLeft R η) L
+        (fun j => hη (R.obj j)))
+
+lemma sameNerveTransformationPostIso_heq
+    {I C : Type u} [Category.{u} I] [Category.{u} C]
+    {F G F' G' : I ⥤ C} (hF : F = F') (hG : G = G')
+    (η : F ⟶ G) (η' : F' ⟶ G') (he : HEq η η')
+    {Q : SSet.{u}} [Quasicategory Q] (L : nerve C ⟶ Q)
+    (hη : ∀ i, IsInvertibleEdge ((nerve.edgeMk (η.app i)).map L).toTruncated)
+    (hη' : ∀ i, IsInvertibleEdge ((nerve.edgeMk (η'.app i)).map L).toTruncated) :
+    HEq (nerveTransformationPostIso η L hη) (nerveTransformationPostIso η' L hη')
+
+lemma sameNerveTransformationPostIso_augmentation
+    {I C : Type u} [Category.{u} I] [Category.{u} C]
+    (V : I ⥤ C) {X : C} (p : V ⟶ (CategoryTheory.Functor.const I).obj X)
+    {Q : SSet.{u}} [Quasicategory Q] (L : nerve C ⟶ Q)
+    (hp : ∀ i, IsInvertibleEdge ((nerve.edgeMk (p.app i)).map L).toTruncated) :
+    nerveTransformationPostIso p L hp = NerveColumn.augmentationIso L V p hp
+
+theorem strictBETotJointSourceRoofFullAugmentation_inverted
+    (P : strictBETotJointHomIndex A)
+    (s : ((simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P)ᵒᵖ) :
+    IsInvertibleEdge ((nerve.edgeMk
+      ((strictBETotJointSourceRoofFullAugmentation A P).app s)).map
+      (strictBETotModelSource A)).toTruncated
+
+theorem strictBETotJointSourceFrameAugmentationIso_roof_restriction
+    (P : strictBETotJointHomIndex A) :
+    HEq ((strictBETotJointSourceFrameAugmentationIso A).precomp
+      (nerveMap (strictBETotJointRoofParameterIndex A P)))
+      (FrameHom.NerveColumn.augmentationIso (strictBETotModelSource A)
+        (strictBETotJointSourceRoofFrameDiagram A P)
+        (strictBETotJointSourceRoofFullAugmentation A P)
+        (strictBETotJointSourceRoofFullAugmentation_inverted A P))
+
+lemma sameSimplicialElementsFiberFunctor_projection {I : Type u} [SmallCategory I]
+    (G : I ⥤ SSet.{u}) (i : I) :
+    simplicialElementsFiberFunctor G i ⋙ simplicialTotalElementsProjection G =
+      (CategoryTheory.Functor.const _).obj i
+
+theorem strictBETotJointSourceTargetIndex_fiber (P : strictBETotJointHomIndex A) :
+    simplicialElementsFiberFunctor (strictBETotJointSourceCoefficients A) P ⋙
+      strictBETotJointSourceElementsProjection A ⋙ strictBETotJointHomTargetIndex A =
+    (CategoryTheory.Functor.const _).obj ((strictBETotJointHomTargetIndex A).obj P)
+
+theorem strictBETotJointSourceTargetIndex_nerve_fiber
+    (P : strictBETotJointHomIndex A) :
+    nerveMap (simplicialElementsFiberFunctor (strictBETotJointSourceCoefficients A) P) ≫
+      nerveMap (strictBETotJointSourceElementsProjection A ⋙ strictBETotJointHomTargetIndex A) =
+    SSet.const (nerveVertex ((strictBETotJointHomTargetIndex A).obj P))
+
+```
