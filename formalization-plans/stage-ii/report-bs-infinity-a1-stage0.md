@@ -2619,3 +2619,32 @@ nerveJoinCut (nerveJoinChain s) = s.1.val
 元の Hom の元の圏から twisted arrow への比較と、固定した Yoneda への全族比較は未完成。
 S1・S8 は未完成、外枠18,600行を維持する。
 一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
+
+
+### S8 続報：Hom の元の圏から実際の twisted arrow への全単体的比較
+
+`OrdinaryHomLiftedChains`（75行8宣言）と `OrdinaryHomTwistedSimplex`（93行8宣言）の
+対象ビルド・小監査が成功した。標準三公理のみ、source SHA 一致。
+記録：`/tmp/is-w1/s8-hom-lifted-chains-1/`、`/tmp/is-w1/s8-hom-twisted-simplex-2/`。
+
+```lean
+ordinaryHomLiftedJoinChain s :
+  CategoryTheory.Join (ULift (Fin (n + 1)))ᵒᵖ (ULift (Fin (n + 1))) ⥤ C
+
+ordinaryHomTwistedSimplex s : edgewiseWeight.obj ⦋n⦌ ⟶ nerve C
+edgewiseWeight.map α ≫ ordinaryHomTwistedSimplex s =
+  ordinaryHomTwistedSimplex (α.toOrderHom.toFunctor ⋙ s)
+
+ordinaryHomTwistedComparison C : nerve (OrdinaryHomElements C) ⟶ TwistedArrow (nerve C)
+```
+
+添字の移送は順序同型の下降を左右に前合成するだけで、元の Hom の射列を作り直していない。
+実際の edgewise 重みから、既存の反対 nerve と join の比較を通す。
+面・退化を含む全自然性まで証明した。可逆性や指定 Yoneda の全族比較は未完成。
+左右の制限と射影の保持は続く新規ファイルで検証中。
+
+逆向きには既存 `edgewiseSimplexEquiv` と `edgewiseWeightReindexOrderHom_left/right` が使える。
+特に長い射列の左頂点・右頂点を同じ添字で評価し、両端間の射を読むことで、
+一般の nerve–join 比較の全単体の逆を先に作らずに済む見込み。
+検証済み全体167本10,941行・951宣言。外枠18,600行を維持する。
+一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
