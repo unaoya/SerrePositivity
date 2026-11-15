@@ -3,7 +3,7 @@
   "complete": 2,
   "total": 6,
   "added": 0,
-  "verified_head": "this commit: base 1697027f4e83c2f0e8b23bcfed395df5416b55b2",
+  "verified_head": "this commit: base bbbb0aa4e5b278e6f9bb26e63066bb56181c3e8d",
   "items": {
     "HT01": "complete",
     "HT02": "complete",
@@ -12,12 +12,10 @@
     "HT05": "not-started",
     "HT06": "not-started"
   },
-  "latest_complete_audit_checkpoint": "prism-residue-scalar-tensor-checkpoint.json",
-  "latest_complete_audit_declarations": 1384,
-  "working_changes_unverified": [
-    "CrystallineFormsBaseChange"
-  ],
-  "pending_check": "bundle-109 terminal rc1; see audit module inventory; failed dependencies await next batch",
+  "latest_complete_audit_checkpoint": "crystalline-forms-base-change-checkpoint.json",
+  "latest_complete_audit_declarations": 1403,
+  "working_changes_unverified": [],
+  "pending_check": "bundle-110 terminal; all prepared modules passed",
   "next_proof_route": "ht02-next-proof-route.md",
   "initial_record": {
     "stage": "5inf3a",
