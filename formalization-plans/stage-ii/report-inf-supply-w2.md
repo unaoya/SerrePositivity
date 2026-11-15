@@ -16584,3 +16584,109 @@ lemma strictBETotJointSourceCorrection_right_component_arrow (t : StrictBETotJoi
 証跡：/private/tmp/isw2-build343.log、isw2-validation343.json、isw2-declaration-collision-scan343.json。
 
 3b-4の検証済みの実測は**227モジュール・15,504行・1,603宣言**。外枠22,000行まで6,496行。登録候補は276.2の一ファイルを自レーンのJSONへ追記した。共通の入口と公式監査は変更していない。
+
+## 277. 元の補正単位の辺の類と native 恒等射の照合（2026-11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 24（うち追加 12）。
+
+### 277.1 同じ単位ラベルの相殺
+
+元のstrictBETotJointSourceUnitLabel A Xを、同じstrictBETotJointSourceCorrectedPairingで送った頂点の辺の類が、元のnative試験対象の恒等射のArrowに一致することを証明した。結論の恒等射は、元のstrictBETotModelSourceでmodelRelativeObject Xを送った同じ頂点上のものである。
+
+証明では元のstrictBETotJointSourceCorrectedPairingIsoの同じ成分の順射fを使う。§272の同じ成分の三辺の合成則へ、§276の同じfの左右射影の元の実射の類の同定を代入する。original pairingの同じ単位ラベルの像は§271の式であり、その像の二射の合成を同じnerveの合成三角形で計算した。f自身は同型の順射なので、左右の射影と反転ホモトピー圏の同じ比較の像も可逆である。この同じ二射を相殺して、中央の元の補正単位の辺の類を元の恒等射へ戻す。標的置換がcofibrantだという仮定や[ModelCategory SSet]を足していない。
+
+端点込みのArrowの等式で述べ、元の同型や射を再選択していない。恒等射に一致するのはホモトピー圏の射の類であり、元の単体集合の一単体が退化辺と厳密に等しいとはしていない。
+
+既存の構成の単位・合成・係数移送の法則の証明の分割として、端点を保持した相殺則、同じ実射のtwisted頂点の辺の式、同じnerveの合成の像の式を分けた。新しい数学の一覧IDは追加しない。新規3本（共通2・BE1）、170行、公開lemma4個。各ファイル200行以下。既存のLeanの変更は0。計算上限は変更していない。
+
+### 277.2 型
+
+四つの公開補題の全型を記録する。BEのlocal instanceは元のmodelCategory AとmappingCofibrantFactorization Aの二つのみである。
+
+#### ArrowMiddleUnit（43行）
+
+```lean
+lemma arrow_middle_unit_of_outer_arrow_equalities {D : Type u} [Category.{v} D]
+    {q x y z q₀ x₀ z₀ : D} (p : q ⟶ x) (a : x ⟶ y) (r : y ⟶ z) (b : q ⟶ z)
+    (p₀ : q₀ ⟶ x₀) (r₀ : x₀ ⟶ z₀) [IsIso p] [IsIso r]
+    (hp : Arrow.mk p = Arrow.mk p₀) (hr : Arrow.mk r = Arrow.mk r₀)
+    (hb : Arrow.mk b = Arrow.mk (p₀ ≫ r₀)) (h : p ≫ a ≫ r = b) :
+    Arrow.mk a = Arrow.mk (𝟙 x₀)
+```
+
+#### TwistedArrowVertexEdgeNerve（47行）
+
+```lean
+lemma twistedArrowVertexEdge_nerve_arrow {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (F : nerve C ⟶ E) {x y : C} (g : x ⟶ y) :
+    Arrow.mk (HomotopyCategory.homMk (twistedArrowVertexEdge
+      ((edgewiseWeightIso 0).hom ≫ SSet.yonedaEquiv.symm (ComposableArrows.mk₁ g) ≫ F))) =
+      Arrow.mk (HomotopyCategory.homMk ((nerve.edgeMk g).map F))
+
+lemma mappedNerveEdgeHom_comp {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (F : nerve C ⟶ E) {x y z : C} (g : x ⟶ y) (h : y ⟶ z) :
+    HomotopyCategory.homMk ((nerve.edgeMk (g ≫ h)).map F) =
+      HomotopyCategory.homMk ((nerve.edgeMk g).map F) ≫
+        HomotopyCategory.homMk ((nerve.edgeMk h).map F)
+```
+
+#### StrictDiagramTotJointCorrectedUnitArrow（80行）
+
+```lean
+lemma strictBETotJointSourceCorrectedPairing_unit_arrow (X : (operad A).Algebra) :
+    Arrow.mk (HomotopyCategory.homMk (twistedArrowVertexEdge
+      ((strictBETotJointSourceCorrectedPairing A).app (Opposite.op ⦋0⦌)
+        (nerveVertex (strictBETotJointSourceUnitLabel A X))))) =
+      Arrow.mk (𝟙 (HomotopyCategory.mk ((strictBETotModelSource A).app
+        (Opposite.op ⦋0⦌) (nerveVertex (modelRelativeObject (operad A).Algebra X)))))
+```
+
+### 277.3 検証
+
+四補題の個別検査は成功。単位ラベルの合成の係数移送は、外側のFunctor.map_compを一回だけ使い、元のsource-frame増大写像とprobe比較の合成のまとまりを保持した。新規三本の対象ビルド344と小監査も成功（--class impl --wait 3600、一枚の整理券、gtimeout 1700秒）。対象ビルドは依存を含む12,292 jobsで成功。小監査は234モジュール・1,616宣言、propext・Classical.choice・Quot.soundのみで、sorryAx・追加公理なし。新規三本170行、公開四補題と局所instance二つ。自レーン累計230本・15,674行（外枠まで6,326行）、実環境の自レーン宣言1,609。main a4388efc9のEInfinity/3,745ファイル・13,373個の名前と、自レーン596ファイル・1,892個の名前を照合し、異なるファイル間の重複0、内部も0。git diff --checkも通過。証跡は /private/tmp/isw2-build344.log、isw2-validation344.json、isw2-declaration-collision-scan344.json。共通の入口と公式監査は変更していない。
+
+コードは30887c8aeに保存した。
+
+### 277.4 残る範囲
+
+今回の補正単位の辺の類の等式は、元の全要素の同じ単位ラベルの像についてのもの。次に元のnative fiber点をこの同じラベルへ合わせ、その同じHom空間内の単位点の比較へ戻す必要がある。既存のcosliceFiberVertexIsoOfHomEqとcosliceTwistedHomMapの同じ比較・単位三角形が候補になるが、この移送はまだ検証していない。元の全straightening比較と単位条件を通した単位の評価、全Yoneda評価・局所化の前合成の充満忠実性による全変換の一致も残る。
+
+R03hの全interval族の等式、元のnative fiber射自身の弱同値性、R03dの全関手同型と元の固定始域の同型の一致、および3b-4aはまだ未完。今回の一点の辺の類の等式を、全パラメータの族の一致の代わりにはしない。/goalは元の全範囲のまま継続する。
+
+## 278. 同じnative fiber射の元の単位ラベルへの制限（2026-11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 24（うち追加 12）。
+
+### 278.1 範囲と型
+
+§277の三本は30887c8aeに保存した。元のnative fiber射に元のpullbackのfiber同型を合成した同じ射を、同じ係数の単位ラベルで評価する。元の包含後の厳密な等式を評価する既存構成の法則と証明の分割であり、新しい数学のIDの追加はない。個別検査 /private/tmp/isw2-native-unit-fiber.lean は終了コード0、出力なし。以下の型を本体へ切り出し、対象ビルドと小監査を行う。
+
+#### StrictDiagramTotJointNativeUnitFiber（84行）
+
+```lean
+def strictBETotJointSourceNativeUnitFiberElement (X : (operad A).Algebra) :
+    (simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj
+      (strictBETotJointUnitIndex A X)
+
+lemma strictBETotJointSourceNativeUnitFiberElement_value (X : (operad A).Algebra) :
+    (simplicialElementsFiberFunctor (strictBETotJointSourceCoefficients A)
+      (strictBETotJointUnitIndex A X)).obj (strictBETotJointSourceNativeUnitFiberElement A X) =
+        strictBETotJointSourceUnitLabel A X
+
+lemma strictBETotJointSourceNativeTwistedFiberMap_unit_value (X : (operad A).Algebra) :
+    ((strictBETotJointSourceNativeTwistedFiberMap A (strictBETotJointUnitIndex A X)).app
+      (Opposite.op ⦋0⦌) (nerveVertex (strictBETotJointSourceNativeUnitFiberElement A X))).val =
+      (strictBETotJointSourceCorrectedPairing A).app (Opposite.op ⦋0⦌)
+        (nerveVertex (strictBETotJointSourceUnitLabel A X))
+
+lemma strictBETotJointSourceNativeTwistedFiberMap_unit_arrow (X : (operad A).Algebra) :
+    Arrow.mk (HomotopyCategory.homMk (twistedArrowVertexEdge
+      (((strictBETotJointSourceNativeTwistedFiberMap A (strictBETotJointUnitIndex A X)).app
+        (Opposite.op ⦋0⦌) (nerveVertex (strictBETotJointSourceNativeUnitFiberElement A X))).val))) =
+      Arrow.mk (𝟙 (HomotopyCategory.mk ((strictBETotModelSource A).app
+        (Opposite.op ⦋0⦌) (nerveVertex (modelRelativeObject (operad A).Algebra X)))))
+```
+
+### 278.2 検収と残り
+
+対象ビルド345は依存を含む12,293 jobsで成功。--class impl --wait 3600、一枚の整理券、gtimeout 1700秒で対象ビルドと小監査を実行し、終了コード0。小監査は235モジュール・1,622宣言、propext・Classical.choice・Quot.soundのみ、sorryAx・追加公理なし。新規一本84行、公開定義一つ・公開補題三つ・局所instance二つ。自レーン累計231本・15,758行（外枠まで6,242行）、自レーン実環境1,615宣言。main a4388efc9のEInfinity/3,745ファイル・13,373個の名前と、自レーン597ファイル・1,896個の名前を照合し、異なるファイル間の重複0、内部も0。git diff --check通過。証跡は /private/tmp/isw2-build345.log、isw2-validation345.json、isw2-declaration-collision-scan345.json。コードは413230b6dに保存した。元のnative fiber射そのものについて同じ単位の辺の類を回収する範囲であり、Hom空間の点の同型・全straightening比較の単位評価・全変換の一致はまだ主張しない。R03h・R03d・3b-4aも未完。
