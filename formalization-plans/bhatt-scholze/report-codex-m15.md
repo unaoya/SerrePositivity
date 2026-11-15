@@ -11372,3 +11372,151 @@ sorryAx・追加公理はない。exitで外側の終了0まで確認して返�
 
 G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み2,961行。
 M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
+
+
+## §84 G01：混合合成の順序和・端点共有の射の表示とGalois比較（11-15）
+
+### 84.1 実装と残る境界
+
+追加は3ファイル391行・明示宣言19。累計 **25ファイル3,352行・明示宣言241**。
+今回の射の表示だけから、§83で残っている8通りの全関手の結合則が完成したとは数えない。
+G01は未完、一覧の済みは0のまま。
+
+| ファイル（InfinityCategories/HA/Monads/） | 行数 | 検収 |
+|---|---:|---|
+| OrdinalConcatenation.lean | 140 | 空も含む順序和の射と、非空区間の端点共有の単調射、各区間での値、型の輸送を含む外延性 |
+| OrdinalConcatenationLaws.lean | 122 | 非空の左因子の添字の輸送、順序和と端点共有の二つの結合則（個数の加法の結合則をHEqで保持） |
+| OrdinalGlueGalois.lean | 129 | 左・右に区間表示を貼る射と順序和の実Galois条件、最大元付加の随伴保存、右随伴の区間表示の照合 |
+| **追加** | **391** | G01の同じ合成の値の表示・合成則・貼り合わせ・係数輸送の分割 |
+
+ordinalAppendは元の順序和のFin.addCasesによる射の表示。
+ordinalGlueは共有点まで左の射、それより後は右の射の値を左の次元だけずらす単調射。
+写像自体は両射に端点条件を課さず作れる。実圏の双関手の合成と比較するときの端点条件は
+別に照合する。ordinalAppendNonemptyは同じ順序和の個数の表示をFin.castOrderIsoで移すだけである。
+
+順序和を前に加えて端点共有する操作と、先に端点共有して後ろに順序和を加える操作の
+二つの結合則を、三つの区間で値を照合して証明した。対象の個数の等式を隠さずHEqで保持する。
+
+混合水平合成の既存の定義はGalois随伴と区間同値の逆を使うため、新しい値の表示が
+同じ射であることをまだ検収する必要がある。今回、左に区間表示を貼る単調射の右随伴が
+元の射と右随伴の順序和であること、右に区間表示を貼る単調射の左随伴が
+左随伴と元の射の順序和であることを実際のGalois条件として証明した。
+後者の右の区間では、既存の区間表示の随伴条件の否定を使って厳密不等式を照合した。
+最大元付加も有限Galois随伴を保ち、最小元保存の右随伴の区間表示は元の射の最大元付加に等しい。
+
+これらは既存の水平合成と射の値の表示を比較するための法則。
+未検証のOrdinalIntervalConcatenation.leanには、最大元付加と順序和・端点共有の照合、
+区間表示の順序和への適合、既存tensorHomOfとの照合を置いて作業木で検証を続ける。
+このファイルは今回の検証済み行数・宣言数・コミットに含めない。
+既存の合成との比較が済むまで、残る8通りの全関手の結合則には進みを加算しない。
+全豊穣walking adjunction、随伴からの全拡張、元のF≫U・単位・余単位との比較も未完。
+
+原典はHA Proposition 4.7.3.3、Riehl–Verity Remark 3.3.8、
+Kerodon Remark 6.2.1.4（Tag 02EN）。新しい一覧IDは加えない。
+200行を超える宣言・証明はない。
+
+### 84.2 同じ構成の射の表示・法則・比較の型
+
+namespace SerrePositivity.InfinityCategories.HA.Monads内。
+m,n,p,q,r,s : ℕを共通の暗黙の変数とする。
+
+```lean
+def ordinalAppend (f : Fin m →o Fin n) (g : Fin p →o Fin q) :
+    Fin (m + p) →o Fin (n + q)
+
+@[simp] lemma ordinalAppend_castAdd (f : Fin m →o Fin n) (g : Fin p →o Fin q) (i : Fin m) :
+    ordinalAppend f g (i.castAdd p) = (f i).castAdd q
+
+@[simp] lemma ordinalAppend_natAdd (f : Fin m →o Fin n) (g : Fin p →o Fin q) (i : Fin p) :
+    ordinalAppend f g (i.natAdd m) = (g i).natAdd n
+
+lemma ordinalAppend_val_left (f : Fin m →o Fin n) (g : Fin p →o Fin q)
+    (i : Fin (m + p)) (hi : i.val < m) :
+    (ordinalAppend f g i).val = (f ⟨i.val, hi⟩).val
+
+lemma ordinalAppend_val_right (f : Fin m →o Fin n) (g : Fin p →o Fin q)
+    (i : Fin (m + p)) (hi : m ≤ i.val) :
+    (ordinalAppend f g i).val = n + (g ⟨i.val - m, by have
+
+def ordinalGlue (f : Fin (m + 1) →o Fin (n + 1))
+    (g : Fin (p + 1) →o Fin (q + 1)) : Fin (m + p + 1) →o Fin (n + q + 1)
+
+@[simp] lemma ordinalGlue_val_left (f : Fin (m + 1) →o Fin (n + 1))
+    (g : Fin (p + 1) →o Fin (q + 1)) (i : Fin (m + 1)) :
+    (ordinalGlue f g ⟨i.val, by have
+
+lemma ordinalGlue_val_right (f : Fin (m + 1) →o Fin (n + 1))
+    (g : Fin (p + 1) →o Fin (q + 1)) (hf : f (Fin.last m) = Fin.last n) (hg : g 0 = 0)
+    (i : Fin (p + 1)) :
+    (ordinalGlue f g ⟨m + i.val, by have
+
+lemma ordinalHom_hext {a b c d : ℕ} (hac : a = c) (hbd : b = d)
+    (f : Fin a →o Fin b) (g : Fin c →o Fin d)
+    (h : ∀ (i : Fin a) (j : Fin c), i.val = j.val → (f i).val = (g j).val) : HEq f g
+
+def ordinalAppendNonempty (f : Fin (m + 1) →o Fin (n + 1))
+    (g : Fin p →o Fin q) : Fin (m + p + 1) →o Fin (n + q + 1)
+
+lemma ordinalAppendNonempty_val (f : Fin (m + 1) →o Fin (n + 1))
+    (g : Fin p →o Fin q) (i : Fin (m + p + 1)) :
+    (ordinalAppendNonempty f g i).val =
+      (ordinalAppend f g ⟨i.val, by have
+
+lemma ordinalGlue_val_of_le (f : Fin (m + 1) →o Fin (n + 1))
+    (g : Fin (p + 1) →o Fin (q + 1)) (i : Fin (m + p + 1)) (hi : i.val ≤ m) :
+    (ordinalGlue f g i).val = (f ⟨i.val, by omega⟩).val
+
+lemma ordinalGlue_val_of_lt (f : Fin (m + 1) →o Fin (n + 1))
+    (g : Fin (p + 1) →o Fin (q + 1)) (i : Fin (m + p + 1)) (hi : m < i.val) :
+    (ordinalGlue f g i).val = n + (g ⟨i.val - m, by have
+
+lemma ordinalAppend_glue_assoc (f : Fin m →o Fin n)
+    (g : Fin (p + 1) →o Fin (q + 1)) (h : Fin (r + 1) →o Fin (s + 1)) :
+    HEq (ordinalGlue (m
+
+lemma ordinalGlue_append_assoc (f : Fin (m + 1) →o Fin (n + 1))
+    (g : Fin (p + 1) →o Fin (q + 1)) (h : Fin r →o Fin s) :
+    HEq (ordinalAppendNonempty (ordinalGlue f g) h)
+      (ordinalGlue f (ordinalAppendNonempty g h))
+
+lemma ordinalGlue_interval_gc (f : Fin n →o Fin m)
+    (g : Fin (p + 1) →o Fin (q + 1)) (hg : g 0 = 0) :
+    GaloisConnection (ordinalGlue (ordinalIntervalMap f) g)
+      (ordinalAppend (m
+
+lemma ordinalGlue_interval_gc_right (f : Fin (m + 1) →o Fin (n + 1))
+    (hf : f (Fin.last m) = Fin.last n) (g : Fin q →o Fin p) :
+    GaloisConnection (ordinalAppendNonempty (ordinalLeftAdjoint f hf) g)
+      (ordinalGlue f (ordinalIntervalMap g))
+
+lemma ordinalAdjoinTop_gc {a b : ℕ} {f : Fin a →o Fin b} {g : Fin b →o Fin a}
+    (h : GaloisConnection f g) : GaloisConnection (ordinalAdjoinTop f) (ordinalAdjoinTop g)
+
+lemma ordinalIntervalMap_rightAdjoint (g : Fin (p + 1) →o Fin (q + 1)) (hg : g 0 = 0) :
+    ordinalIntervalMap (ordinalRightAdjoint g hg) = ordinalAdjoinTop g
+```
+
+### 84.3 検証
+
+with_build_lock.sh --class impl --wait 3600を使い、各impl枠は最大280秒または240秒。
+セッション42796と37662は、依存するFin点の書換えと型の輸送を修正しながら検証した。
+順序和と端点共有の本体、二つの結合則、二つの実Galois条件と最大元付加の法則は対象ビルドを通った。
+未検証のOrdinalIntervalConcatenationでは既存の順序和の添字の輸送の照合が残った。
+二つの対話式枠は終了124をそれぞれ確認し、終了済みの枠を生きたまま再起動していない。
+
+その後、セッション65725の最大240秒の短い一回の処理で
+lake build SerrePositivity.InfinityCategories.HA.Monads.OrdinalGlueGalois:oleanと
+新設3ファイル19根の小さい監査を続けて実行した。
+最終 **G12_CONCAT_VERIFIED_BUILD_EXIT=0**、警告なし。
+監査は **G12_CONCAT_AUDIT_EXIT=0**。
+入力19名と出力19名が一致し、公理依存は標準のpropext・Classical.choice・Quot.soundのみ。
+sorryAx・追加公理はない。外側の終了0まで確認して枠を返却した。
+入力・根・全出力と最終対象ビルドログは
+[g12-concat-audit-2026-11-15/](g12-concat-audit-2026-11-15/)に保存した。
+現在、自分の生きたビルド・監査・整理券はない。
+
+既存の22ファイル、M15のLean、drafts、main、⑤aのファイル、Interfaceには書き込んでいない。
+全体ビルド・大きい監査は行っていない。
+
+G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み3,352行。
+M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
