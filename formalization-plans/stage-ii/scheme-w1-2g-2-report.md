@@ -982,3 +982,62 @@ G4 の実際の有限アフィン細分の cone の完全性（着手前、既�
 今回3モジュール220行＋入口3行。2g-2 本体5,100行・入口込み5,178行、小監査567宣言・標準三公理のみ。増大項まで含めた四角形の比較の法則と、共通細分の実際の写像の cone の完全性まで。実際の閉中心の逆像被覆に沿う四角形への適用、Frobenius 係数とアフィン conerve の自然な比較、fppf の二重 Čech と実際の blowup を保持した Noether 帰納、G5 は未完。見込み約5,500〜12,000行・外枠16,000行は不変。停止点2g-2ではない。
 
 一覧：済み1／全体3（うち追加0）。
+
+
+### 次の増大写像の接続の前に：既存の6宣言だけの宇宙の一般化（着手前）
+
+11-14 の条件付き承認に従い、⑥ が作った OpenCoverCechAugmentation の基礎部分だけで、`R : Type v` を `R : Type w` へ一般化し、係数の `ModuleCat.{v} R` はそのままにする。名前・引数名・仮定・結論の意味は保ち、旧来の w=v は特殊例として残す。OpenCoverCechAcyclic を使う injective・exact の二宣言は元の同宇宙の型のままで、別 section に置く。OpenCoverCechAcyclic 自体を一般化しない。
+
+変更する型の一覧（X の宇宙 u、P の値の宇宙 v、R の宇宙 w は独立）：
+
+- `openCoverCechZeroEquiv (P:(Opens X)ᵒᵖ ⥤ ModuleCat.{v} R) U : FullCechCochains (openCoverCechDiagram P U) 0 ≃ₗ[R] P.obj (op ⊤)`。
+- `openCoverCechZeroEquiv_symm_apply P U x t`：上記の逆写像の値と、同じ前層の制限の値の等式。
+- `openCoverCechAugmentation P U : P.obj (op ⊤) →ₗ[R] FullCechCochains (openCoverCechDiagram P U) 1`。
+- `openCoverCechAugmentation_eq P U`：空タプルからの微分と上記の逆写像の合成が、同じ増大写像に等しい法則。
+- `openCoverCechAugmentation_squared P U`：同じ増大写像と fullCechDifferential 1 の合成が零。
+- `openCoverCechRefinement_augmentation P U V ρ hρ`：実際の細分の長さ一の写像と増大写像の合成が、V の増大写像に等しい法則。
+
+各6名を識別子境界付きで `git grep -n -E` し、HEAD=d1e02db5b と math/bs-impl・math/inf-supply・math/inf-supply-b・math/bs-m15 の各枝について、AlgebraicGeometry の外の全追跡 Lean（BS・KST・drafts を含む）で利用0を確認した。各枝の固定コミット・コマンドの結果は `scheme-w1-2g-2-open-cover-augmentation-universe-usage.json` に保存。結果は全て終了状態1（該当なし）、標準エラー空。全追跡 Lean を対象とし、現行・旧配置の AlgebraicGeometry だけを除外した。未検証の作業用下書きは本体の利用側ではなく、この git grep には含めない。次に単独検証し、通ったら直接 importer と対象ビルド・所有元の小監査を行う。
+
+
+G4 の実際の構造層の増大写像の係数移送の法則（着手前、既存の openCoverCechAugmentation と Frobenius 写像の合成の内数、50〜110行）：`schemeStructurePerfectCechAugmentation Y φ p hp hR hY U` は環の実際の大域スカラー φ:R→Γ(Y,⊤) の Frobenius 順極限と、既存の開被覆の増大写像との合成。`..._cycle` は Čech 微分との合成が零、`..._refinement` は実際の細分と増大写像の自然性、`..._apply` は各長さ一タプルで φ と実際の切断の制限の合成に同じ Frobenius 順極限を適用した式。射影・平坦性を仮定しない。これは別の増大複体の定義ではなく、F8 の既存の scalar・center の形を任意の有限アフィン細分へ渡す、同じ係数移送の略記と法則である。
+
+
+宇宙を一般化する6宣言の型を、上の記述の補足として本体を省略して転記する。`P : (Opens X)ᵒᵖ ⥤ ModuleCat.{v} R`、`R : Type w`、U・V・ρ・hρ は元と同じ。
+
+```lean
+def openCoverCechZeroEquiv : FullCechCochains (openCoverCechDiagram P U) 0 ≃ₗ[R] P.obj (op ⊤)
+
+theorem openCoverCechZeroEquiv_symm_apply (x : P.obj (op ⊤)) (t : Fin 0 → ι) :
+    (openCoverCechZeroEquiv P U).symm x t =
+      (P.map (homOfLE (show cechOpenIntersection U (cechTupleSupport t) ≤ ⊤ from le_top)).op).hom x
+
+def openCoverCechAugmentation : P.obj (op ⊤) →ₗ[R]
+    FullCechCochains (openCoverCechDiagram P U) 1
+
+theorem openCoverCechAugmentation_eq :
+    (fullCechDifferential (openCoverCechDiagram P U) 0).comp
+      (openCoverCechZeroEquiv P U).symm.toLinearMap = openCoverCechAugmentation P U
+
+theorem openCoverCechAugmentation_squared :
+    (fullCechDifferential (openCoverCechDiagram P U) 1).comp
+      (openCoverCechAugmentation P U) = 0
+
+theorem openCoverCechRefinement_augmentation :
+    (openCoverCechRefinementCochains P U V ρ hρ 1).comp
+      (openCoverCechAugmentation P U) = openCoverCechAugmentation P V
+```
+
+
+G4 の引き戻しと増大写像の自然性（着手前、既存の係数移送・逆像被覆の自然性の内数、60〜150行）：`schemeCechCoefficientMap_augmentation η U` は同じ空間の係数前層の射について、fullCechComplexMap の零次と大域切断の増大写像の可換性。`schemeCechPreimageComplexIso_augmentation f Q U` は既存の逆像被覆の比較の零次と増大写像の可換性。`schemeCechPullbackMap_augmentation f Q η U` はその合成で、実際の引き戻しの零次と増大写像が η の全空間の成分と可換であること。係数環と加群の宇宙は元の SchemeCechPreimage と同じ独立な型。さらに Frobenius 係数の η と実際の大域スカラーを合成し、次の束で schemeStructurePerfectCechAugmentation の引き戻しとの可換性へ特殊化する。
+
+
+## G4：開被覆の増大写像の6宣言の宇宙の一般化
+
+`OpenCoverCechAugmentation` の上記6宣言だけで R の宇宙を独立にした。`openCoverCechAugmentation_injective`・`openCoverCechAugmentation_exact` は、元の同宇宙の型・引数名のまま別 section に置いた。OpenCoverCechAcyclic と最終の AugmentedRingCechExact は変更していない。既存の定義・証明を再利用し、増大写像を新しく実装し直していない。
+
+単独検証と本体のソース完全一致、対象・直接 importer の OpenCoverCechRefinementConeExact と入口のビルド5,163ジョブ、小監査15宣言（所有元の非公開・生成宣言も全件）・標準三公理のみ、終了状態0。既存の利用側をこの型の一般化後に再ビルドし、元の使い方が通ることを確認した。外部利用の git grep の結果は前掲の固定した5枝の記録のとおり0。ログ `2g-open-cover-augmentation-universe-check-1.log`・`2g-open-cover-augmentation-universe-native.log`・`2g-open-cover-augmentation-universe-audit.log`。追加公理・sorry・仮定や結論の制限・Lean の資源制限の引き上げ・200行超の宣言なし。共有鍵 --class impl --wait 3600、待ちは一つ。ビルドは依存先の再検証を含めて30分以内の枠、監査は別枠。root・下流全ビルド・AlgebraicGeometry の全体監査なし。
+
+既存1ファイルの差分は追加25行・削除14行（section の分割と既存二証明の位置の変更を含む）。新規78モジュール本体5,100行・入口込み5,178行は不変。外枠の計数には保守的にこの既存の追加25行も含め、本体5,125行・入口込み5,203行とする。新規モジュールの小監査567宣言に加え、今回の既存モジュール15宣言を別に監査した。G4・G5 は未完。見込み約5,500〜12,000行・外枠16,000行は不変。
+
+一覧：済み1／全体3（うち追加0）。
