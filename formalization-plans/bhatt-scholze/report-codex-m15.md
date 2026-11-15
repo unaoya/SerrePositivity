@@ -13441,3 +13441,179 @@ M15・drafts・main・⑤aの既存ファイル・Interfaceは変更していな
 
 G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み7,770行。
 M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
+
+## §98 G01：実単体作用の再添字付けと原子性の退化での保存（11-15）
+
+### 98.1 検証済みの追加
+
+追加は **4ファイル369行・明示宣言20**。累計 **64ファイル8,139行・明示宣言497**。
+WalkingAdjunctionReindexing.lean は65行・4宣言、WalkingAdjunctionCutFibers.lean は108行・5宣言、
+WalkingAdjunctionAtomicReindexing.lean は92行・3宣言、WalkingAdjunctionDegeneracies.lean は104行・8宣言。
+200行を超える個別の宣言・証明はない。
+G01の同じ全随伴の単体作用・原子的な分解・係数移送とその証明の分割なので、
+新しい一覧IDは足さない。
+
+任意の有限順序関手Pによる実Homへの前合成を、各次数の実圏の間の実関手にした。
+その恒等・合成の法則を示し、長さ0の単体を再添字付けても長さ0であることを証明した。
+元の射が対象の等式による恒等射の輸送である場合、plusの切れ目とminusの共有点の
+座標は変わらない。これは四Homの共通表示の恒等則と、二種類の切れ目の可換条件から得た。
+
+Pの同じ像の頂点へ写る二点について、実分解の左因子の長さが同じことを示した。
+二点の全順序と薄い順序圏での射の一意性を用い、元の全射が恒等射の輸送となることを適用した。
+右因子の長さも、左因子の長さの一致と全水平合成の長さの加法則から一致する。
+
+実切断Qを持つPについて、分解の因子がQ上で長さ0なら全体で長さ0となることを示した。
+各頂点を、Q上の同じPの像を持つ頂点と比較している。
+これを使い、原子的な全単体Fの再添字付けP⋙Fの実分解をQへ戻し、
+Fの原子性を適用して、一方の因子が全体で長さ0となることを証明した。
+従って、切断を持つ有限順序関手での再添字付けは原子性を保つ。
+この段階の切断は実関手を指定する条件つきの法則であり、次の実退化でその条件を構成した。
+
+単体圏の実射の有限順序関手を作り、恒等射・合成の保存を証明した。
+実退化σiと実面δ(i.castSucc)について、第三単体恒等式から実切断の全関手の等式を構成した。
+これにより、各次数の実退化関手が原子を原子へ送ることを証明した。
+さらに、元のWalkingAdjunctionHomShapeのnerveの退化がこの有限順序関手での前合成そのもので
+あることを実定義で照合し、元の全Homの単体集合の退化に対する原子性の保存を得た。
+原子性の保存や切断の存在を、完成した実退化の結論の仮定に追加していない。
+
+### 98.2 型と残る境界
+
+原典はRiehl–Verity Definition 2.1.4・Proposition 3.1.10、HA Proposition 4.7.3.3、
+Kerodon Remark 6.2.1.4（Tag 02EN）。検証した型は以下。
+
+```lean
+def walkingAdjunctionLevelReindex {m n : ℕ} (P : Fin (m + 1) ⥤ Fin (n + 1)) :
+    WalkingAdjunctionLevel n ⥤ WalkingAdjunctionLevel m
+
+lemma walkingAdjunctionLevelReindex_id (n : ℕ) :
+    walkingAdjunctionLevelReindex (𝟭 (Fin (n + 1))) = 𝟭 (WalkingAdjunctionLevel n)
+
+lemma walkingAdjunctionLevelReindex_comp {l m n : ℕ}
+    (P : Fin (m + 1) ⥤ Fin (n + 1)) (Q : Fin (l + 1) ⥤ Fin (m + 1)) :
+    walkingAdjunctionLevelReindex P ⋙ walkingAdjunctionLevelReindex Q =
+      walkingAdjunctionLevelReindex (Q ⋙ P)
+
+lemma walkingAdjunctionLevelSize_precomp_zero {m n : ℕ} {X Y : WalkingAdjunctionPoint}
+    (P : Fin (m + 1) ⥤ Fin (n + 1)) (F : Fin (n + 1) ⥤ walkingAdjunctionHom X Y)
+    (h : walkingAdjunctionLevelSize F = 0) : walkingAdjunctionLevelSize (P ⋙ F) = 0
+
+lemma walkingAdjunctionOrderHom_eqToHom_heq {X Y : WalkingAdjunctionPoint}
+    {A B : walkingAdjunctionHom X Y} (h : A = B) :
+    HEq (walkingAdjunctionOrderHom (eqToHom h))
+      (OrderHom.id : Fin (walkingAdjunctionOrdinalCard X Y A) →o
+        Fin (walkingAdjunctionOrdinalCard X Y A))
+
+lemma walkingAdjunctionCut_coordinate_eq_of_identity {n : ℕ} {X Y M : WalkingAdjunctionPoint}
+    {F : Fin (n + 1) ⥤ walkingAdjunctionHom X Y} (a : WalkingAdjunctionCut F M)
+    {i j : Fin (n + 1)} (hij : i ≤ j) (he : F.obj i = F.obj j)
+    (hf : F.map (homOfLE hij) = eqToHom he) :
+    walkingAdjunctionCutCoordinate a i = walkingAdjunctionCutCoordinate a j
+
+lemma WalkingAdjunctionFactorization.left_length_eq_of_identity {n : ℕ}
+    {X Y : WalkingAdjunctionPoint} {F : Fin (n + 1) ⥤ walkingAdjunctionHom X Y}
+    (a : WalkingAdjunctionFactorization F) {i j : Fin (n + 1)} (hij : i ≤ j)
+    (he : F.obj i = F.obj j) (hf : F.map (homOfLE hij) = eqToHom he) :
+    walkingAdjunctionVertexLength X a.middle (a.left.obj i) =
+      walkingAdjunctionVertexLength X a.middle (a.left.obj j)
+
+lemma WalkingAdjunctionFactorization.left_length_eq_of_reindex_fiber {m n : ℕ}
+    {X Y : WalkingAdjunctionPoint} (P : Fin (m + 1) ⥤ Fin (n + 1))
+    (F : Fin (n + 1) ⥤ walkingAdjunctionHom X Y) (a : WalkingAdjunctionFactorization (P ⋙ F))
+    {i j : Fin (m + 1)} (he : P.obj i = P.obj j) :
+    walkingAdjunctionVertexLength X a.middle (a.left.obj i) =
+      walkingAdjunctionVertexLength X a.middle (a.left.obj j)
+
+lemma WalkingAdjunctionFactorization.right_length_eq_of_reindex_fiber {m n : ℕ}
+    {X Y : WalkingAdjunctionPoint} (P : Fin (m + 1) ⥤ Fin (n + 1))
+    (F : Fin (n + 1) ⥤ walkingAdjunctionHom X Y) (a : WalkingAdjunctionFactorization (P ⋙ F))
+    {i j : Fin (m + 1)} (he : P.obj i = P.obj j) :
+    walkingAdjunctionVertexLength a.middle Y (a.right.obj i) =
+      walkingAdjunctionVertexLength a.middle Y (a.right.obj j)
+
+lemma WalkingAdjunctionFactorization.left_size_zero_of_section_zero {m n : ℕ}
+    {X Y : WalkingAdjunctionPoint} (P : Fin (m + 1) ⥤ Fin (n + 1))
+    (Q : Fin (n + 1) ⥤ Fin (m + 1)) (F : Fin (n + 1) ⥤ walkingAdjunctionHom X Y)
+    (hQP : Q ⋙ P = 𝟭 (Fin (n + 1))) (a : WalkingAdjunctionFactorization (P ⋙ F))
+    (ha : walkingAdjunctionLevelSize (Q ⋙ a.left) = 0) : walkingAdjunctionLevelSize a.left = 0
+
+lemma WalkingAdjunctionFactorization.right_size_zero_of_section_zero {m n : ℕ}
+    {X Y : WalkingAdjunctionPoint} (P : Fin (m + 1) ⥤ Fin (n + 1))
+    (Q : Fin (n + 1) ⥤ Fin (m + 1)) (F : Fin (n + 1) ⥤ walkingAdjunctionHom X Y)
+    (hQP : Q ⋙ P = 𝟭 (Fin (n + 1))) (a : WalkingAdjunctionFactorization (P ⋙ F))
+    (ha : walkingAdjunctionLevelSize (Q ⋙ a.right) = 0) :
+    walkingAdjunctionLevelSize a.right = 0
+
+lemma walkingAdjunctionLevelIsAtomic_precomp_of_split {m n : ℕ}
+    {X Y : WalkingAdjunctionPoint} (P : Fin (m + 1) ⥤ Fin (n + 1))
+    (Q : Fin (n + 1) ⥤ Fin (m + 1)) (F : Fin (n + 1) ⥤ walkingAdjunctionHom X Y)
+    (hQP : Q ⋙ P = 𝟭 (Fin (n + 1)))
+    (hf : WalkingAdjunctionLevelIsAtomic (X := ⟨X⟩) (Y := ⟨Y⟩) F) :
+    WalkingAdjunctionLevelIsAtomic (X := ⟨X⟩) (Y := ⟨Y⟩) (P ⋙ F)
+
+def walkingAdjunctionSimplexFunctor {m n : ℕ} (f : ⦋m⦌ ⟶ ⦋n⦌) :
+    Fin (m + 1) ⥤ Fin (n + 1)
+
+lemma walkingAdjunctionSimplexFunctor_id (n : ℕ) :
+    walkingAdjunctionSimplexFunctor (𝟙 ⦋n⦌) = 𝟭 (Fin (n + 1))
+
+lemma walkingAdjunctionSimplexFunctor_comp {l m n : ℕ}
+    (f : ⦋l⦌ ⟶ ⦋m⦌) (g : ⦋m⦌ ⟶ ⦋n⦌) :
+    walkingAdjunctionSimplexFunctor f ⋙ walkingAdjunctionSimplexFunctor g =
+      walkingAdjunctionSimplexFunctor (f ≫ g)
+
+lemma walkingAdjunctionDegeneracy_section (n : ℕ) (i : Fin (n + 1)) :
+    walkingAdjunctionSimplexFunctor (SimplexCategory.δ i.castSucc) ⋙
+      walkingAdjunctionSimplexFunctor (SimplexCategory.σ i) = 𝟭 (Fin (n + 1))
+
+def walkingAdjunctionDegeneracyFunctor (n : ℕ) (i : Fin (n + 1)) :
+    WalkingAdjunctionLevel n ⥤ WalkingAdjunctionLevel (n + 1)
+
+lemma walkingAdjunctionDegeneracyFunctor_map_atomic (n : ℕ) (i : Fin (n + 1))
+    {X Y : WalkingAdjunctionLevel n} (F : X ⟶ Y) (hf : WalkingAdjunctionLevelIsAtomic F) :
+    WalkingAdjunctionLevelIsAtomic ((walkingAdjunctionDegeneracyFunctor n i).map F)
+
+lemma walkingAdjunctionHomShape_degeneracy {n : ℕ} (X Y : WalkingAdjunctionPoint)
+    (i : Fin (n + 1)) (F : Fin (n + 1) ⥤ walkingAdjunctionHom X Y) :
+    (((WalkingAdjunctionHomShape.{u} X Y).map (SimplexCategory.σ i).op) (ULift.up F)).down =
+      walkingAdjunctionSimplexFunctor (SimplexCategory.σ i) ⋙ F
+
+lemma walkingAdjunctionHomShape_degeneracy_atomic {n : ℕ} (X Y : WalkingAdjunctionPoint)
+    (i : Fin (n + 1)) (F : Fin (n + 1) ⥤ walkingAdjunctionHom X Y)
+    (hf : WalkingAdjunctionLevelIsAtomic (X := ⟨X⟩) (Y := ⟨Y⟩) F) :
+    WalkingAdjunctionLevelIsAtomic (X := ⟨X⟩) (Y := ⟨Y⟩)
+      ((((WalkingAdjunctionHomShape.{u} X Y).map (SimplexCategory.σ i).op) (ULift.up F)).down)
+```
+
+現在の実模型について、§97の各次数の原子的な自由な道との相互逆な実表示と、
+今回の元のnerveの退化での原子性の保存の二条件を検証した。
+これはRiehl–Verity Definition 2.1.4のsimplicial computadの二条件の実模型上の検証である。
+この入力模型の二条件を、随伴の全coherentな延長の存在へ読み替えていない。
+
+次は原典§4.1–§4.3のfillableな原子・parental subcomputadのfiltration・実充填へ進む。
+現在の水平反対の向きと原典の向きの照合、元のQCatAdjunctionからの延長と
+同じF≫U・単位・余単位・HAモデルの照合、G02以降はまだ未完。
+G01の済みは0を維持する。
+
+### 98.3 検証と進み
+
+with_build_lock.sh --class impl --wait 3600、短いimpl枠。
+セッション81418の最大280秒の枠で、再添字付け・同じ像の頂点の照合・切断上の長さ0の検出・
+実退化の原子性の保存は全て初回の対象ビルドで数学の証明が通った。
+行長修正時にはその枠の期限による終了124を同じセッションで確認した。
+ここでは監査を済みとは数えていない。
+
+セッション50199の最大240秒の新しい枠で、修正後の最終対象
+lake build SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionDegeneracies:olean
+を検証し、対象ビルド・その後の小さい監査・外側の終了0を確認した。
+対象ビルドは警告なし（1327 jobs）。
+追加20根の監査は入力20名と出力20名が一致し、
+公理依存はpropext・Classical.choice・Quot.soundのみ。sorryAx・追加公理なし。
+入力・根・全出力・最終対象ビルドログは
+[g12-atomic-degeneracies-audit-2026-11-15/](g12-atomic-degeneracies-audit-2026-11-15/)に保存した。
+現在自分の生きたビルド・監査の枠は残っていない。
+
+M15・drafts・main・⑤aの既存ファイル・Interfaceは変更していない。
+全体ビルド・大きい監査は行っていない。
+
+G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み8,139行。
+M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
