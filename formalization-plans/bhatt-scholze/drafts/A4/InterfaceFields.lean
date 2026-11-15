@@ -1,4 +1,4 @@
--- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Derived.InterfaceFields（仮。E3 の CAlg 版界面の欄 perfd・unit・h0）
+-- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Construction.InterfaceFields（仮。E3 の CAlg 版界面の欄 perfd・unit・h0）
 -- 設計書：formalization-plans/bhatt-scholze/a4-design.md §2.3、単位 A4-3。基準コミット efa846fe8。型検査対象（5∞-0）。
 module
 

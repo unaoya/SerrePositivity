@@ -1,0 +1,37 @@
+{
+  "baseline": "32d364b53",
+  "head": "107d005583fe01dc50b97945f0586063458e48af",
+  "scope": "Original complete active import graph plus every git source delta through current HEAD, including incoming main; Archive exclusions unchanged.",
+  "modules": 32043,
+  "source_delta_paths": 548,
+  "missing_project_imports": [],
+  "cycle_residual": [],
+  "EInfinity_to_BS": [],
+  "EInfinity_transitively_reaches_BS": [],
+  "publication_targets": [
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.RootEnvelope.PerfectPrism",
+      "root_reachable": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.RootEnvelope.RawCompletion",
+      "root_reachable": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.RootEnvelope.Source",
+      "root_reachable": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.Perfection.PerfectPrismDivisionComparison",
+      "root_reachable": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Andre.Envelope.PDivisionSource",
+      "root_reachable": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Perfectoidization.TensorCompatibility",
+      "root_reachable": true
+    }
+  ]
+}

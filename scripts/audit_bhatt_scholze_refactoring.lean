@@ -1,6 +1,6 @@
-import SerrePositivity.BhattScholze.Semiperfectoid.RootEnvelope.PerfectPrism
+import SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.RootEnvelope.PerfectPrism
 import SerrePositivity.BhattScholze.Andre.Perfection.DeltaAlgebra
-import SerrePositivity.BhattScholze.Semiperfectoid.CompatibleRootPerfectoid
+import SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.CompatibleRootPerfectoid
 import SerrePositivity.BhattScholze.Delta.Extension.DeltaAdicCompletion
 import SerrePositivity.BhattScholze.Delta.Free.RelativeFreeFiniteDelta
 import SerrePositivity.BhattScholze.Delta.Free.RelativeFreeFiniteResidue
@@ -9,7 +9,7 @@ import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismPerfectoid
 import SerrePositivity.BhattScholze.Prism.Perfection.PrismPerfection
 import SerrePositivity.BhattScholze.Andre.Envelope.RootSource
 import SerrePositivity.BhattScholze.Andre.Envelope.RootFamilySource
-import SerrePositivity.BhattScholze.Semiperfectoid.RootEnvelope.Source
+import SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.RootEnvelope.Source
 import SerrePositivity.BhattScholze.Andre.Envelope.RootRelation
 import SerrePositivity.BhattScholze.Andre.Envelope.SourceEvaluation
 import SerrePositivity.BhattScholze.Delta.DividedPower.Principal.PrincipalDP
@@ -44,13 +44,13 @@ assert_no_sorry SerrePositivity.BhattScholze.existsUnique_pdCompletionRingHom
 assert_no_sorry SerrePositivity.BhattScholze.pdCompletionRingHom_ext
 assert_no_sorry SerrePositivity.BhattScholze.OrientedPrism.Hom.quotientMap_surjective
 assert_no_sorry SerrePositivity.BhattScholze.exists_perfectDeltaPDQuotientEquiv
-assert_no_sorry SerrePositivity.BhattScholze.exists_perfectDeltaPDQuotientEquiv_of_perfectoidExtension
+assert_no_sorry SerrePositivity.BhattScholze.Semiperfectoid.exists_perfectDeltaPDQuotientEquiv_of_perfectoidExtension
 
 #print axioms SerrePositivity.BhattScholze.pdCompletionH0_self_complete_p
 #print axioms SerrePositivity.BhattScholze.pdCompletionH0_self_complete_d
 #print axioms SerrePositivity.BhattScholze.OrientedPrism.Hom.quotientMap_surjective
 #print axioms SerrePositivity.BhattScholze.exists_perfectDeltaPDQuotientEquiv
-#print axioms SerrePositivity.BhattScholze.exists_perfectDeltaPDQuotientEquiv_of_perfectoidExtension
+#print axioms SerrePositivity.BhattScholze.Semiperfectoid.exists_perfectDeltaPDQuotientEquiv_of_perfectoidExtension
 
 -- R2a: moving declarations keeps their public names and inverse-map contracts.
 assert_no_sorry SerrePositivity.BhattScholze.wittTwoMap
@@ -63,24 +63,24 @@ assert_no_sorry SerrePositivity.BhattScholze.relativeFreeSubsetSplitAlgEquiv_sym
 #print axioms SerrePositivity.BhattScholze.DeltaStructure.IsDeltaHom.symm
 
 -- R1a: the original normalized module and its scalar action stay fixed.
-assert_no_sorry SerrePositivity.BhattScholze.deltaDivisionNormalizedModuleDirectLimit_moduleFlat
-#print axioms SerrePositivity.BhattScholze.deltaDivisionNormalizedModuleDirectLimit_moduleFlat
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionNormalizedModuleDirectLimit_moduleFlat
+#print axioms SerrePositivity.BhattScholze.Andre.deltaDivisionNormalizedModuleDirectLimit_moduleFlat
 
 -- R1b: retain the concrete evaluation diagrams and residue coefficient rings.
-assert_no_sorry SerrePositivity.BhattScholze.deltaDivisionEvaluationSource_tor_subsingleton_of_preservesColimit
-assert_no_sorry SerrePositivity.BhattScholze.deltaDivisionEvaluationSourceFamily_tor_subsingleton
-assert_no_sorry SerrePositivity.BhattScholze.deltaRootEvaluation_tor_subsingleton_of_preservesBoundedSupportColimit
-#print axioms SerrePositivity.BhattScholze.deltaDivisionEvaluationSource_tor_subsingleton_of_preservesColimit
-#print axioms SerrePositivity.BhattScholze.deltaRootEvaluation_tor_subsingleton_of_preservesBoundedSupportColimit
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionEvaluationSource_tor_subsingleton_of_preservesColimit
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionEvaluationSourceFamily_tor_subsingleton
+assert_no_sorry SerrePositivity.BhattScholze.Semiperfectoid.deltaRootEvaluation_tor_subsingleton_of_preservesBoundedSupportColimit
+#print axioms SerrePositivity.BhattScholze.Andre.deltaDivisionEvaluationSource_tor_subsingleton_of_preservesColimit
+#print axioms SerrePositivity.BhattScholze.Semiperfectoid.deltaRootEvaluation_tor_subsingleton_of_preservesBoundedSupportColimit
 
 -- R1c: the support and regularity statements keep their original generality.
 assert_no_sorry SerrePositivity.BhattScholze.relativeFreeWittInverseVariable_mem_supported
 assert_no_sorry SerrePositivity.BhattScholze.relativeFreeWittInverseMap_mem_supported
 assert_no_sorry SerrePositivity.BhattScholze.relativeFreeWittSupportedEquiv
-assert_no_sorry SerrePositivity.BhattScholze.deltaDivisionFirstRelation_isSMulRegular
-assert_no_sorry SerrePositivity.BhattScholze.deltaDivisionFiniteStage_next_isSMulRegular_of_frobenius_regular
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionFirstRelation_isSMulRegular
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteStage_next_isSMulRegular_of_frobenius_regular
 #print axioms SerrePositivity.BhattScholze.relativeFreeWittSupportedEquiv
-#print axioms SerrePositivity.BhattScholze.deltaDivisionFiniteStage_next_isSMulRegular_of_frobenius_regular
+#print axioms SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteStage_next_isSMulRegular_of_frobenius_regular
 
 -- R3a: general DP maps and bases under the original specialized public signatures.
 assert_no_sorry SerrePositivity.BhattScholze.rankOneDPBaseChangeMap
@@ -135,17 +135,17 @@ assert_no_sorry SerrePositivity.BhattScholze.principalDPBaseChangeEquiv_tmul_gen
 #print axioms SerrePositivity.BhattScholze.principalDPBaseChangeEquiv_tmul_generator
 
 -- R4a: compare the original first-coefficient maps with the generic monic quotient.
-assert_no_sorry SerrePositivity.BhattScholze.deltaDivisionFirstPolynomialIdeal_eq_base_sup
-assert_no_sorry SerrePositivity.BhattScholze.deltaDivisionFirstPowerEvaluation_eq_baseQuotient
-assert_no_sorry SerrePositivity.BhattScholze.deltaDivisionFirstPolynomialToPowerCover_surjective
-assert_no_sorry SerrePositivity.BhattScholze.deltaDivisionFirstPowerEvaluation_kills
-assert_no_sorry SerrePositivity.BhattScholze.deltaDivisionFirstPolynomialToPowerCover_comp_backward
-assert_no_sorry SerrePositivity.BhattScholze.deltaDivisionFirstCoefficientPowerEquiv
-assert_no_sorry SerrePositivity.BhattScholze.deltaDivisionFirstResiduePowerPolynomialEquiv
-#print axioms SerrePositivity.BhattScholze.deltaDivisionFirstPolynomialIdeal_eq_base_sup
-#print axioms SerrePositivity.BhattScholze.deltaDivisionFirstPowerEvaluation_eq_baseQuotient
-#print axioms SerrePositivity.BhattScholze.deltaDivisionFirstPolynomialToPowerCover_surjective
-#print axioms SerrePositivity.BhattScholze.deltaDivisionFirstCoefficientPowerEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionFirstPolynomialIdeal_eq_base_sup
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionFirstPowerEvaluation_eq_baseQuotient
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionFirstPolynomialToPowerCover_surjective
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionFirstPowerEvaluation_kills
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionFirstPolynomialToPowerCover_comp_backward
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionFirstCoefficientPowerEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionFirstResiduePowerPolynomialEquiv
+#print axioms SerrePositivity.BhattScholze.Andre.deltaDivisionFirstPolynomialIdeal_eq_base_sup
+#print axioms SerrePositivity.BhattScholze.Andre.deltaDivisionFirstPowerEvaluation_eq_baseQuotient
+#print axioms SerrePositivity.BhattScholze.Andre.deltaDivisionFirstPolynomialToPowerCover_surjective
+#print axioms SerrePositivity.BhattScholze.Andre.deltaDivisionFirstCoefficientPowerEquiv
 
 -- R2c: generic polynomial sections, their calculation API, and the original universal maps.
 assert_no_sorry SerrePositivity.BhattScholze.polynomialDeltaSection
@@ -220,38 +220,38 @@ assert_no_sorry SerrePositivity.BhattScholze.principalDPPresentation_p_mul_injec
 -- R4b: arbitrary nonzero exponents, including the graph relations of exponent one.
 assert_no_sorry SerrePositivity.BhattScholze.monicPowerFamilyRelation_isSMulRegular
 #print axioms SerrePositivity.BhattScholze.monicPowerFamilyRelation_isSMulRegular
-assert_no_sorry SerrePositivity.BhattScholze.deltaRootSubsetQuotient_remaining_isSMulRegular_of_ne_zero
-#print axioms SerrePositivity.BhattScholze.deltaRootSubsetQuotient_remaining_isSMulRegular_of_ne_zero
-assert_no_sorry SerrePositivity.BhattScholze.deltaRootRelation_list_isWeaklyRegular_of_ne_zero
-#print axioms SerrePositivity.BhattScholze.deltaRootRelation_list_isWeaklyRegular_of_ne_zero
-assert_no_sorry SerrePositivity.BhattScholze.deltaRootRelation_fin_isWeaklyRegular_of_ne_zero
-#print axioms SerrePositivity.BhattScholze.deltaRootRelation_fin_isWeaklyRegular_of_ne_zero
-assert_no_sorry SerrePositivity.BhattScholze.deltaRootRelation_fin_isKoszulResolution_of_ne_zero
-#print axioms SerrePositivity.BhattScholze.deltaRootRelation_fin_isKoszulResolution_of_ne_zero
-assert_no_sorry SerrePositivity.BhattScholze.deltaRootRelation_map_fin_isKoszulResolution_of_ne_zero
-#print axioms SerrePositivity.BhattScholze.deltaRootRelation_map_fin_isKoszulResolution_of_ne_zero
-assert_no_sorry SerrePositivity.BhattScholze.deltaDivisionSourceGraph_fin_isWeaklyRegular
-#print axioms SerrePositivity.BhattScholze.deltaDivisionSourceGraph_fin_isWeaklyRegular
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaRootSubsetQuotient_remaining_isSMulRegular_of_ne_zero
+#print axioms SerrePositivity.BhattScholze.Andre.deltaRootSubsetQuotient_remaining_isSMulRegular_of_ne_zero
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaRootRelation_list_isWeaklyRegular_of_ne_zero
+#print axioms SerrePositivity.BhattScholze.Andre.deltaRootRelation_list_isWeaklyRegular_of_ne_zero
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaRootRelation_fin_isWeaklyRegular_of_ne_zero
+#print axioms SerrePositivity.BhattScholze.Andre.deltaRootRelation_fin_isWeaklyRegular_of_ne_zero
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaRootRelation_fin_isKoszulResolution_of_ne_zero
+#print axioms SerrePositivity.BhattScholze.Andre.deltaRootRelation_fin_isKoszulResolution_of_ne_zero
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaRootRelation_map_fin_isKoszulResolution_of_ne_zero
+#print axioms SerrePositivity.BhattScholze.Andre.deltaRootRelation_map_fin_isKoszulResolution_of_ne_zero
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionSourceGraph_fin_isWeaklyRegular
+#print axioms SerrePositivity.BhattScholze.Andre.deltaDivisionSourceGraph_fin_isWeaklyRegular
 
 -- R4c: validated refactoring contracts.
 -- R4c: reuse existing p-regularity transport and Witt ghost injectivity.
-assert_no_sorry SerrePositivity.BhattScholze.deltaRootSource_ghostMap_injective
-#print axioms SerrePositivity.BhattScholze.deltaRootSource_ghostMap_injective
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaRootSource_ghostMap_injective
+#print axioms SerrePositivity.BhattScholze.Andre.deltaRootSource_ghostMap_injective
 
-assert_no_sorry SerrePositivity.BhattScholze.deltaRootFamilyRaw_p_mul_injective_of_p_regular
-#print axioms SerrePositivity.BhattScholze.deltaRootFamilyRaw_p_mul_injective_of_p_regular
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaRootFamilyRaw_p_mul_injective_of_p_regular
+#print axioms SerrePositivity.BhattScholze.Andre.deltaRootFamilyRaw_p_mul_injective_of_p_regular
 
-assert_no_sorry SerrePositivity.BhattScholze.deltaRootFamilyCompletedModP_homology_isZero_of_p_regular
-#print axioms SerrePositivity.BhattScholze.deltaRootFamilyCompletedModP_homology_isZero_of_p_regular
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaRootFamilyCompletedModP_homology_isZero_of_p_regular
+#print axioms SerrePositivity.BhattScholze.Andre.deltaRootFamilyCompletedModP_homology_isZero_of_p_regular
 
-assert_no_sorry SerrePositivity.BhattScholze.deltaRootFamilyCompletedModPH0_faithfullyFlat_of_p_regular
-#print axioms SerrePositivity.BhattScholze.deltaRootFamilyCompletedModPH0_faithfullyFlat_of_p_regular
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaRootFamilyCompletedModPH0_faithfullyFlat_of_p_regular
+#print axioms SerrePositivity.BhattScholze.Andre.deltaRootFamilyCompletedModPH0_faithfullyFlat_of_p_regular
 
-assert_no_sorry SerrePositivity.BhattScholze.deltaRootFamilySourceQuotientDerivedH0_faithfullyFlat
-#print axioms SerrePositivity.BhattScholze.deltaRootFamilySourceQuotientDerivedH0_faithfullyFlat
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaRootFamilySourceQuotientDerivedH0_faithfullyFlat
+#print axioms SerrePositivity.BhattScholze.Andre.deltaRootFamilySourceQuotientDerivedH0_faithfullyFlat
 
-assert_no_sorry SerrePositivity.BhattScholze.deltaRootBoundedSupportQuotientDerivedH0_faithfullyFlat
-#print axioms SerrePositivity.BhattScholze.deltaRootBoundedSupportQuotientDerivedH0_faithfullyFlat
+assert_no_sorry SerrePositivity.BhattScholze.Semiperfectoid.deltaRootBoundedSupportQuotientDerivedH0_faithfullyFlat
+#print axioms SerrePositivity.BhattScholze.Semiperfectoid.deltaRootBoundedSupportQuotientDerivedH0_faithfullyFlat
 
 -- R5a: validated refactoring contracts.
 section R5AContracts
@@ -368,38 +368,38 @@ namespace SerrePositivity.BhattScholze.R5CContracts
 universe u
 section StandardMaps
 variable {R : Type u} [CommRing R] (p : ℕ) (ρ : ℕ → R)
-example : CompatibleRootCompletion p ρ =
+example : _root_.SerrePositivity.BhattScholze.Semiperfectoid.CompatibleRootCompletion p ρ =
     AdicCompletion (Ideal.span {(p : R ⧸ compatibleRootIdeal ρ)})
       (R ⧸ compatibleRootIdeal ρ) := rfl
-example : compatibleRootCompletionMap p ρ =
-    (algebraMap (R ⧸ compatibleRootIdeal ρ) (CompatibleRootCompletion p ρ)).comp
-      (compatibleRootQuotientMap ρ) := rfl
+example : _root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootCompletionMap p ρ =
+    (algebraMap (R ⧸ compatibleRootIdeal ρ) (_root_.SerrePositivity.BhattScholze.Semiperfectoid.CompatibleRootCompletion p ρ)).comp
+      (_root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootQuotientMap ρ) := rfl
 example (r : R) :
-    compatibleRootSingletonZeroQuotientEquiv ρ (Ideal.Quotient.mk _ r) =
+    _root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootSingletonZeroQuotientEquiv ρ (Ideal.Quotient.mk _ r) =
       Ideal.Quotient.mk _ r := rfl
 example (r : R) :
-    compatibleRootSingletonQuotientEquiv ρ (Ideal.Quotient.mk _ r) =
+    _root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootSingletonQuotientEquiv ρ (Ideal.Quotient.mk _ r) =
       Ideal.Quotient.mk _ r := rfl
-example : compatibleRootSingletonCompletionEquiv p ρ =
+example : _root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootSingletonCompletionEquiv p ρ =
     RingEquiv.cast (R := fun I : Ideal R ↦
       AdicCompletion (Ideal.span {(p : R ⧸ I)}) (R ⧸ I))
-      (compatibleRootFamilyIdeal_singleton ρ) := rfl
+      (_root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootFamilyIdeal_singleton ρ) := rfl
 example :
-    (compatibleRootSingletonQuotientEquiv ρ).toRingHom.comp
-        (compatibleRootFamilyQuotientMap (fun _ : PUnit.{u+1} ↦ ρ)) =
-      (compatibleRootQuotientMap ρ).comp
-        (compatibleRootSingletonZeroQuotientEquiv ρ).toRingHom :=
-  compatibleRootSingletonQuotientEquiv_comp_quotientMap ρ
+    (_root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootSingletonQuotientEquiv ρ).toRingHom.comp
+        (_root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootFamilyQuotientMap (fun _ : PUnit.{u+1} ↦ ρ)) =
+      (_root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootQuotientMap ρ).comp
+        (_root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootSingletonZeroQuotientEquiv ρ).toRingHom :=
+  _root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootSingletonQuotientEquiv_comp_quotientMap ρ
 example :
-    (compatibleRootSingletonCompletionEquiv p ρ).toRingHom.comp
-        (compatibleRootFamilyCompletionMap p (fun _ : PUnit.{u+1} ↦ ρ)) =
-      (compatibleRootCompletionMap p ρ).comp
-        (compatibleRootSingletonZeroQuotientEquiv ρ).toRingHom :=
-  compatibleRootSingletonCompletionEquiv_comp_completionMap p ρ
+    (_root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootSingletonCompletionEquiv p ρ).toRingHom.comp
+        (_root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootFamilyCompletionMap p (fun _ : PUnit.{u+1} ↦ ρ)) =
+      (_root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootCompletionMap p ρ).comp
+        (_root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootSingletonZeroQuotientEquiv ρ).toRingHom :=
+  _root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootSingletonCompletionEquiv_comp_completionMap p ρ
 example (x : R ⧸ compatibleRootFamilyIdeal (fun _ : PUnit.{u+1} ↦ ρ)) :
-    compatibleRootSingletonCompletionEquiv p ρ (algebraMap _ _ x) =
-      algebraMap _ (CompatibleRootCompletion p ρ) (compatibleRootSingletonQuotientEquiv ρ x) :=
-  compatibleRootSingletonCompletionEquiv_algebraMap p ρ x
+    _root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootSingletonCompletionEquiv p ρ (algebraMap _ _ x) =
+      algebraMap _ (_root_.SerrePositivity.BhattScholze.Semiperfectoid.CompatibleRootCompletion p ρ) (_root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootSingletonQuotientEquiv ρ x) :=
+  _root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootSingletonCompletionEquiv_algebraMap p ρ x
 end StandardMaps
 
 section OriginalGeneralTarget
@@ -408,44 +408,44 @@ variable (ρ : ℕ → R) (hρ : ∀ n, ρ (n + 1) ^ p = ρ n)
 variable {T : Type u} [CommRing T] [IsReduced T]
 variable [IsAdicComplete (Ideal.span {(p : T)}) T]
 example (g : R ⧸ Ideal.span {ρ 0} →+* T) :
-    ∃! l : CompatibleRootCompletion p ρ →+* T,
-      l.comp (compatibleRootCompletionMap p ρ) = g :=
-  existsUnique_compatibleRootCompletionLift ρ hρ g
+    ∃! l : _root_.SerrePositivity.BhattScholze.Semiperfectoid.CompatibleRootCompletion p ρ →+* T,
+      l.comp (_root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootCompletionMap p ρ) = g :=
+  _root_.SerrePositivity.BhattScholze.Semiperfectoid.existsUnique_compatibleRootCompletionLift ρ hρ g
 end OriginalGeneralTarget
 
-assert_no_sorry SerrePositivity.BhattScholze.compatibleRootFamilyZeroIdeal_singleton
-assert_no_sorry SerrePositivity.BhattScholze.compatibleRootFamilyIdeal_singleton
-assert_no_sorry SerrePositivity.BhattScholze.compatibleRootSingletonZeroQuotientEquiv
-assert_no_sorry SerrePositivity.BhattScholze.compatibleRootSingletonZeroQuotientEquiv_mk
-assert_no_sorry SerrePositivity.BhattScholze.compatibleRootSingletonQuotientEquiv
-assert_no_sorry SerrePositivity.BhattScholze.compatibleRootSingletonQuotientEquiv_mk
-assert_no_sorry SerrePositivity.BhattScholze.compatibleRootSingletonQuotientEquiv_comp_quotientMap
-assert_no_sorry SerrePositivity.BhattScholze.compatibleRootSingletonCompletionEquiv
-assert_no_sorry SerrePositivity.BhattScholze.compatibleRootSingletonCompletionEquiv_algebraMap
-assert_no_sorry SerrePositivity.BhattScholze.compatibleRootSingletonCompletionEquiv_comp_completionMap
-assert_no_sorry SerrePositivity.BhattScholze.compatibleRootCompletion_isIntegralPerfectoid
-assert_no_sorry SerrePositivity.BhattScholze.compatibleRootCompletionMap_isPerfectoidization
-assert_no_sorry SerrePositivity.BhattScholze.surjective_of_isPerfectoidization_of_compatibleRoots_unconditional
-assert_no_sorry SerrePositivity.BhattScholze.CompatibleRootCompletion
-assert_no_sorry SerrePositivity.BhattScholze.compatibleRootCompletionMap
-assert_no_sorry SerrePositivity.BhattScholze.existsUnique_compatibleRootCompletionLift
+assert_no_sorry SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootFamilyZeroIdeal_singleton
+assert_no_sorry SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootFamilyIdeal_singleton
+assert_no_sorry SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootSingletonZeroQuotientEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootSingletonZeroQuotientEquiv_mk
+assert_no_sorry SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootSingletonQuotientEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootSingletonQuotientEquiv_mk
+assert_no_sorry SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootSingletonQuotientEquiv_comp_quotientMap
+assert_no_sorry SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootSingletonCompletionEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootSingletonCompletionEquiv_algebraMap
+assert_no_sorry SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootSingletonCompletionEquiv_comp_completionMap
+assert_no_sorry SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootCompletion_isIntegralPerfectoid
+assert_no_sorry SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootCompletionMap_isPerfectoidization
+assert_no_sorry SerrePositivity.BhattScholze.Semiperfectoid.surjective_of_isPerfectoidization_of_compatibleRoots_unconditional
+assert_no_sorry SerrePositivity.BhattScholze.Semiperfectoid.CompatibleRootCompletion
+assert_no_sorry SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootCompletionMap
+assert_no_sorry SerrePositivity.BhattScholze.Semiperfectoid.existsUnique_compatibleRootCompletionLift
 
-#print axioms SerrePositivity.BhattScholze.compatibleRootFamilyZeroIdeal_singleton
-#print axioms SerrePositivity.BhattScholze.compatibleRootFamilyIdeal_singleton
-#print axioms SerrePositivity.BhattScholze.compatibleRootSingletonZeroQuotientEquiv
-#print axioms SerrePositivity.BhattScholze.compatibleRootSingletonZeroQuotientEquiv_mk
-#print axioms SerrePositivity.BhattScholze.compatibleRootSingletonQuotientEquiv
-#print axioms SerrePositivity.BhattScholze.compatibleRootSingletonQuotientEquiv_mk
-#print axioms SerrePositivity.BhattScholze.compatibleRootSingletonQuotientEquiv_comp_quotientMap
-#print axioms SerrePositivity.BhattScholze.compatibleRootSingletonCompletionEquiv
-#print axioms SerrePositivity.BhattScholze.compatibleRootSingletonCompletionEquiv_algebraMap
-#print axioms SerrePositivity.BhattScholze.compatibleRootSingletonCompletionEquiv_comp_completionMap
-#print axioms SerrePositivity.BhattScholze.compatibleRootCompletion_isIntegralPerfectoid
-#print axioms SerrePositivity.BhattScholze.compatibleRootCompletionMap_isPerfectoidization
-#print axioms SerrePositivity.BhattScholze.surjective_of_isPerfectoidization_of_compatibleRoots_unconditional
-#print axioms SerrePositivity.BhattScholze.CompatibleRootCompletion
-#print axioms SerrePositivity.BhattScholze.compatibleRootCompletionMap
-#print axioms SerrePositivity.BhattScholze.existsUnique_compatibleRootCompletionLift
+#print axioms SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootFamilyZeroIdeal_singleton
+#print axioms SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootFamilyIdeal_singleton
+#print axioms SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootSingletonZeroQuotientEquiv
+#print axioms SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootSingletonZeroQuotientEquiv_mk
+#print axioms SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootSingletonQuotientEquiv
+#print axioms SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootSingletonQuotientEquiv_mk
+#print axioms SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootSingletonQuotientEquiv_comp_quotientMap
+#print axioms SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootSingletonCompletionEquiv
+#print axioms SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootSingletonCompletionEquiv_algebraMap
+#print axioms SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootSingletonCompletionEquiv_comp_completionMap
+#print axioms SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootCompletion_isIntegralPerfectoid
+#print axioms SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootCompletionMap_isPerfectoidization
+#print axioms SerrePositivity.BhattScholze.Semiperfectoid.surjective_of_isPerfectoidization_of_compatibleRoots_unconditional
+#print axioms SerrePositivity.BhattScholze.Semiperfectoid.CompatibleRootCompletion
+#print axioms SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootCompletionMap
+#print axioms SerrePositivity.BhattScholze.Semiperfectoid.existsUnique_compatibleRootCompletionLift
 end SerrePositivity.BhattScholze.R5CContracts
 
 -- R6: validated refactoring contracts.
@@ -512,23 +512,23 @@ variable {p : ℕ} {R σ T : Type u} [CommRing R] [CommRing T]
 variable (ρ : σ → ℕ → R) (hρ : ∀ s n, ρ s (n + 1) ^ p = ρ s n)
 variable [IsReduced T] [IsAdicComplete (Ideal.span {(p : T)}) T]
 example (g : R ⧸ compatibleRootFamilyZeroIdeal ρ →+* T) :
-    ∃! l : CompatibleRootFamilyCompletion p ρ →+* T,
-      l.comp (compatibleRootFamilyCompletionMap p ρ) = g :=
-  existsUnique_compatibleRootFamilyCompletionLift ρ hρ g
+    ∃! l : _root_.SerrePositivity.BhattScholze.Semiperfectoid.CompatibleRootFamilyCompletion p ρ →+* T,
+      l.comp (_root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootFamilyCompletionMap p ρ) = g :=
+  _root_.SerrePositivity.BhattScholze.Semiperfectoid.existsUnique_compatibleRootFamilyCompletionLift ρ hρ g
 end GenericContract
 
 section OldStandardMaps
 variable {R σ : Type u} [CommRing R] (p : ℕ) (ρ : σ → ℕ → R)
-example : CompatibleRootFamilyCompletion p ρ =
+example : _root_.SerrePositivity.BhattScholze.Semiperfectoid.CompatibleRootFamilyCompletion p ρ =
     AdicCompletion (Ideal.span {(p : R ⧸ compatibleRootFamilyIdeal ρ)})
       (R ⧸ compatibleRootFamilyIdeal ρ) := rfl
-example : compatibleRootFamilyCompletionMap p ρ =
+example : _root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootFamilyCompletionMap p ρ =
     (algebraMap (R ⧸ compatibleRootFamilyIdeal ρ) _).comp
-      (compatibleRootFamilyQuotientMap ρ) := rfl
-example (r : R) : compatibleRootFamilyQuotientMap ρ
+      (_root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootFamilyQuotientMap ρ) := rfl
+example (r : R) : _root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootFamilyQuotientMap ρ
     (Ideal.Quotient.mk (compatibleRootFamilyZeroIdeal ρ) r) =
       Ideal.Quotient.mk (compatibleRootFamilyIdeal ρ) r := rfl
-example (r : R) : compatibleRootFamilyCompletionMap p ρ
+example (r : R) : _root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootFamilyCompletionMap p ρ
     (Ideal.Quotient.mk (compatibleRootFamilyZeroIdeal ρ) r) =
       algebraMap (R ⧸ compatibleRootFamilyIdeal ρ) _
         (Ideal.Quotient.mk (compatibleRootFamilyIdeal ρ) r) := rfl
@@ -538,9 +538,9 @@ section EmptyFamily
 variable {R T : Type u} [CommRing R] [CommRing T] (p : ℕ)
 variable [IsReduced T] [IsAdicComplete (Ideal.span {(p : T)}) T]
 example (ρ : PEmpty.{u+1} → ℕ → R) (g : R ⧸ compatibleRootFamilyZeroIdeal ρ →+* T) :
-    ∃! l : CompatibleRootFamilyCompletion p ρ →+* T,
-      l.comp (compatibleRootFamilyCompletionMap p ρ) = g :=
-  existsUnique_compatibleRootFamilyCompletionLift ρ (fun s => PEmpty.elim s) g
+    ∃! l : _root_.SerrePositivity.BhattScholze.Semiperfectoid.CompatibleRootFamilyCompletion p ρ →+* T,
+      l.comp (_root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootFamilyCompletionMap p ρ) = g :=
+  _root_.SerrePositivity.BhattScholze.Semiperfectoid.existsUnique_compatibleRootFamilyCompletionLift ρ (fun s => PEmpty.elim s) g
 example (ρ : PEmpty.{u+1} → ℕ → R) : compatibleRootFamilyZeroIdeal ρ = ⊥ := by
   change Ideal.span (Set.range (fun s => ρ s 0)) = ⊥
   simp
@@ -553,70 +553,70 @@ end EmptyFamily
    Fact 2.Prime is a target-ring fact; no Fact 4.Prime is introduced. -/
 example (g : ZMod 2 ⧸ compatibleRootFamilyZeroIdeal
     (fun (_ : PUnit) (_ : ℕ) => (0 : ZMod 2)) →+* ZMod 2) :
-    ∃! l : CompatibleRootFamilyCompletion 4
+    ∃! l : _root_.SerrePositivity.BhattScholze.Semiperfectoid.CompatibleRootFamilyCompletion 4
         (fun (_ : PUnit) (_ : ℕ) => (0 : ZMod 2)) →+* ZMod 2,
-      l.comp (compatibleRootFamilyCompletionMap 4
+      l.comp (_root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootFamilyCompletionMap 4
         (fun (_ : PUnit) (_ : ℕ) => (0 : ZMod 2))) = g := by
   let : Fact (Nat.Prime 2) := ⟨Nat.prime_two⟩
   let : IsAdicComplete (Ideal.span {(4 : ZMod 2)}) (ZMod 2) := by
     have hz : (4 : ZMod 2) = 0 := by decide
     rw [hz, Ideal.span_singleton_zero]
     infer_instance
-  exact existsUnique_compatibleRootFamilyCompletionLift _ (by intros; simp) g
+  exact _root_.SerrePositivity.BhattScholze.Semiperfectoid.existsUnique_compatibleRootFamilyCompletionLift _ (by intros; simp) g
 
 /- Parameter zero, empty family, and an ordinary reduced target: no source
    precompleteness or prime assumption is available. -/
 example {R : Type} [CommRing R] (ρ : PEmpty → ℕ → R)
     (g : R ⧸ compatibleRootFamilyZeroIdeal ρ →+* ℤ) :
-    ∃! l : CompatibleRootFamilyCompletion 0 ρ →+* ℤ,
-      l.comp (compatibleRootFamilyCompletionMap 0 ρ) = g := by
+    ∃! l : _root_.SerrePositivity.BhattScholze.Semiperfectoid.CompatibleRootFamilyCompletion 0 ρ →+* ℤ,
+      l.comp (_root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootFamilyCompletionMap 0 ρ) = g := by
   let : IsAdicComplete (Ideal.span {(0 : ℤ)}) ℤ := by
     rw [Ideal.span_singleton_zero]
     infer_instance
-  exact existsUnique_compatibleRootFamilyCompletionLift ρ (fun s => PEmpty.elim s) g
+  exact _root_.SerrePositivity.BhattScholze.Semiperfectoid.existsUnique_compatibleRootFamilyCompletionLift ρ (fun s => PEmpty.elim s) g
 
 /- A literal zero source and target with arbitrary p, including p = 1. -/
 example {σ : Type u} (p : ℕ) (ρ : σ → ℕ → PUnit.{u+1})
     (g : PUnit.{u+1} ⧸ compatibleRootFamilyZeroIdeal ρ →+* PUnit.{u+1}) :
-    ∃! l : CompatibleRootFamilyCompletion p ρ →+* PUnit.{u+1},
-      l.comp (compatibleRootFamilyCompletionMap p ρ) = g := by
+    ∃! l : _root_.SerrePositivity.BhattScholze.Semiperfectoid.CompatibleRootFamilyCompletion p ρ →+* PUnit.{u+1},
+      l.comp (_root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootFamilyCompletionMap p ρ) = g := by
   let : IsReduced PUnit.{u+1} := ⟨fun _ _ => Subsingleton.elim _ _⟩
-  exact existsUnique_compatibleRootFamilyCompletionLift ρ
+  exact _root_.SerrePositivity.BhattScholze.Semiperfectoid.existsUnique_compatibleRootFamilyCompletionLift ρ
     (fun _ _ => Subsingleton.elim _ _) g
 
-#check @existsUnique_compatibleRootFamilyCompletionLift
-#print axioms existsUnique_compatibleRootFamilyCompletionLift
-#print axioms existsUnique_compatibleRootFamilyCompletionLift_to_perfectoid
-#print axioms compatibleRootFamilyCompletionMap_isPerfectoidization_of_isIntegralPerfectoid
+#check @_root_.SerrePositivity.BhattScholze.Semiperfectoid.existsUnique_compatibleRootFamilyCompletionLift
+#print axioms _root_.SerrePositivity.BhattScholze.Semiperfectoid.existsUnique_compatibleRootFamilyCompletionLift
+#print axioms _root_.SerrePositivity.BhattScholze.Semiperfectoid.existsUnique_compatibleRootFamilyCompletionLift_to_perfectoid
+#print axioms _root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootFamilyCompletionMap_isPerfectoidization_of_isIntegralPerfectoid
 
 end SerrePositivity.BhattScholze.RefactoringFamilyAudit
 
-assert_no_sorry SerrePositivity.BhattScholze.existsUnique_compatibleRootFamilyCompletionLift
-assert_no_sorry SerrePositivity.BhattScholze.existsUnique_compatibleRootFamilyCompletionLift_to_perfectoid
-assert_no_sorry SerrePositivity.BhattScholze.compatibleRootFamilyCompletionMap_isPerfectoidization_of_isIntegralPerfectoid
+assert_no_sorry SerrePositivity.BhattScholze.Semiperfectoid.existsUnique_compatibleRootFamilyCompletionLift
+assert_no_sorry SerrePositivity.BhattScholze.Semiperfectoid.existsUnique_compatibleRootFamilyCompletionLift_to_perfectoid
+assert_no_sorry SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootFamilyCompletionMap_isPerfectoidization_of_isIntegralPerfectoid
 
 -- N2: reuse the existing p-ideal map formula, preserving all four public entrances.
 
-assert_no_sorry SerrePositivity.BhattScholze.compatibleRootCompletion_isAdicComplete
-#print axioms SerrePositivity.BhattScholze.compatibleRootCompletion_isAdicComplete
-assert_no_sorry SerrePositivity.BhattScholze.exists_compatibleRootCompletionPDQuotientEquiv
-#print axioms SerrePositivity.BhattScholze.exists_compatibleRootCompletionPDQuotientEquiv
-assert_no_sorry SerrePositivity.BhattScholze.compatibleRootFamilyCompletion_isAdicComplete
-#print axioms SerrePositivity.BhattScholze.compatibleRootFamilyCompletion_isAdicComplete
-assert_no_sorry SerrePositivity.BhattScholze.exists_compatibleRootFamilyCompletionPDQuotientEquiv
-#print axioms SerrePositivity.BhattScholze.exists_compatibleRootFamilyCompletionPDQuotientEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootCompletion_isAdicComplete
+#print axioms SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootCompletion_isAdicComplete
+assert_no_sorry SerrePositivity.BhattScholze.Semiperfectoid.exists_compatibleRootCompletionPDQuotientEquiv
+#print axioms SerrePositivity.BhattScholze.Semiperfectoid.exists_compatibleRootCompletionPDQuotientEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootFamilyCompletion_isAdicComplete
+#print axioms SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootFamilyCompletion_isAdicComplete
+assert_no_sorry SerrePositivity.BhattScholze.Semiperfectoid.exists_compatibleRootFamilyCompletionPDQuotientEquiv
+#print axioms SerrePositivity.BhattScholze.Semiperfectoid.exists_compatibleRootFamilyCompletionPDQuotientEquiv
 
 -- N5/N7: all ten old public declarations, including both actual single comparisons.
-assert_no_sorry SerrePositivity.BhattScholze.perfectPrismRootSource_powerCokernel_homology_isZero
-#print axioms SerrePositivity.BhattScholze.perfectPrismRootSource_powerCokernel_homology_isZero
-assert_no_sorry SerrePositivity.BhattScholze.perfectPrismRootSource_pure
-#print axioms SerrePositivity.BhattScholze.perfectPrismRootSource_pure
-assert_no_sorry SerrePositivity.BhattScholze.perfectPrismRootSource_homology_isZero
-#print axioms SerrePositivity.BhattScholze.perfectPrismRootSource_homology_isZero
-assert_no_sorry SerrePositivity.BhattScholze.perfectPrismRootSourceSingleIso
-#print axioms SerrePositivity.BhattScholze.perfectPrismRootSourceSingleIso
-assert_no_sorry SerrePositivity.BhattScholze.perfectPrismRootSourceSingleIso_homologyZero
-#print axioms SerrePositivity.BhattScholze.perfectPrismRootSourceSingleIso_homologyZero
+assert_no_sorry SerrePositivity.BhattScholze.Semiperfectoid.perfectPrismRootSource_powerCokernel_homology_isZero
+#print axioms SerrePositivity.BhattScholze.Semiperfectoid.perfectPrismRootSource_powerCokernel_homology_isZero
+assert_no_sorry SerrePositivity.BhattScholze.Semiperfectoid.perfectPrismRootSource_pure
+#print axioms SerrePositivity.BhattScholze.Semiperfectoid.perfectPrismRootSource_pure
+assert_no_sorry SerrePositivity.BhattScholze.Semiperfectoid.perfectPrismRootSource_homology_isZero
+#print axioms SerrePositivity.BhattScholze.Semiperfectoid.perfectPrismRootSource_homology_isZero
+assert_no_sorry SerrePositivity.BhattScholze.Semiperfectoid.perfectPrismRootSourceSingleIso
+#print axioms SerrePositivity.BhattScholze.Semiperfectoid.perfectPrismRootSourceSingleIso
+assert_no_sorry SerrePositivity.BhattScholze.Semiperfectoid.perfectPrismRootSourceSingleIso_homologyZero
+#print axioms SerrePositivity.BhattScholze.Semiperfectoid.perfectPrismRootSourceSingleIso_homologyZero
 assert_no_sorry SerrePositivity.BhattScholze.perfectPrismDeltaAlgebraCompletionPower_pure_bounded_torsion
 #print axioms SerrePositivity.BhattScholze.perfectPrismDeltaAlgebraCompletionPower_pure_bounded_torsion
 assert_no_sorry SerrePositivity.BhattScholze.perfectPrismDeltaAlgebraCompletionPower_homology_isZero
@@ -640,18 +640,18 @@ set_option backward.defeqAttrib.useBackward true
 section RootSingle
 variable {p : ℕ} [Fact p.Prime] {A σ : Type u} [CommRing A]
 variable (P : OrientedPrism p A) (hP : P.deltaStructure.IsPerfect) (b : σ → A)
-local notation "X" => DeltaRootSourceIteratedPDCompletion P.deltaStructure P.generator b
+local notation "X" => _root_.SerrePositivity.BhattScholze.Andre.DeltaRootSourceIteratedPDCompletion P.deltaStructure P.generator b
 
 -- The original source itself remains both nonnegative and nonpositive.
-example : (X).obj.IsGE 0 ∧ (X).obj.IsLE 0 := perfectPrismRootSource_pure P hP b
+example : (X).obj.IsGE 0 ∧ (X).obj.IsLE 0 := _root_.SerrePositivity.BhattScholze.Semiperfectoid.perfectPrismRootSource_pure P hP b
 
 -- The existing single comparison is normalized on the same H0, not an arbitrary iso.
 example :
     (DerivedCategory.homologyFunctor (ModuleCat.{u} A) 0).map
-        (perfectPrismRootSourceSingleIso P hP b).hom ≫
+        (_root_.SerrePositivity.BhattScholze.Semiperfectoid.perfectPrismRootSourceSingleIso P hP b).hom ≫
       (DerivedCategory.singleFunctorCompHomologyFunctorIso (ModuleCat.{u} A) 0).hom.app
         ((DerivedCategory.homologyFunctor (ModuleCat.{u} A) 0).obj (X).obj) = 𝟙 _ :=
-  perfectPrismRootSourceSingleIso_homologyZero P hP b
+  _root_.SerrePositivity.BhattScholze.Semiperfectoid.perfectPrismRootSourceSingleIso_homologyZero P hP b
 end RootSingle
 
 section DeltaSingle
@@ -693,24 +693,24 @@ end
 end SerrePositivity.BhattScholze.RefactoringMilnorAudit
 
 -- N4: all nine old public declarations; local coefficient actions stay explicit.
-assert_no_sorry SerrePositivity.BhattScholze.deltaDivisionFiniteSupportTransition
-#print axioms SerrePositivity.BhattScholze.deltaDivisionFiniteSupportTransition
-assert_no_sorry SerrePositivity.BhattScholze.deltaDivisionFiniteSupportTransition_mk
-#print axioms SerrePositivity.BhattScholze.deltaDivisionFiniteSupportTransition_mk
-assert_no_sorry SerrePositivity.BhattScholze.deltaDivisionFiniteSupportModuleDiagram
-#print axioms SerrePositivity.BhattScholze.deltaDivisionFiniteSupportModuleDiagram
-assert_no_sorry SerrePositivity.BhattScholze.deltaDivisionFiniteSupportEval
-#print axioms SerrePositivity.BhattScholze.deltaDivisionFiniteSupportEval
-assert_no_sorry SerrePositivity.BhattScholze.deltaDivisionFiniteSupportEval_mk
-#print axioms SerrePositivity.BhattScholze.deltaDivisionFiniteSupportEval_mk
-assert_no_sorry SerrePositivity.BhattScholze.deltaDivisionFiniteSupportEvalCocone
-#print axioms SerrePositivity.BhattScholze.deltaDivisionFiniteSupportEvalCocone
-assert_no_sorry SerrePositivity.BhattScholze.deltaDivisionFiniteSupportEvalIsColimit
-#print axioms SerrePositivity.BhattScholze.deltaDivisionFiniteSupportEvalIsColimit
-assert_no_sorry SerrePositivity.BhattScholze.deltaDivisionFiniteSupportColimitEvalIso
-#print axioms SerrePositivity.BhattScholze.deltaDivisionFiniteSupportColimitEvalIso
-assert_no_sorry SerrePositivity.BhattScholze.deltaDivisionFiniteSupportColimitEvalIso_ι
-#print axioms SerrePositivity.BhattScholze.deltaDivisionFiniteSupportColimitEvalIso_ι
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteSupportTransition
+#print axioms SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteSupportTransition
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteSupportTransition_mk
+#print axioms SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteSupportTransition_mk
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteSupportModuleDiagram
+#print axioms SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteSupportModuleDiagram
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteSupportEval
+#print axioms SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteSupportEval
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteSupportEval_mk
+#print axioms SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteSupportEval_mk
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteSupportEvalCocone
+#print axioms SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteSupportEvalCocone
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteSupportEvalIsColimit
+#print axioms SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteSupportEvalIsColimit
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteSupportColimitEvalIso
+#print axioms SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteSupportColimitEvalIso
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteSupportColimitEvalIso_ι
+#print axioms SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteSupportColimitEvalIso_ι
 
 namespace SerrePositivity.BhattScholze.RefactoringFiniteSupportAudit
 noncomputable section
@@ -725,22 +725,22 @@ section FiniteSupport
 variable {p : ℕ} [Fact p.Prime] {A σ : Type u} [CommRing A]
 variable (D : DeltaStructure p A) (a : σ → A)
 local notation "L" => RelativeFreeDeltaRing (R := A) σ
-local notation "K" => deltaDivisionEvaluationFiniteSupportIdeal D a
+local notation "K" => _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionEvaluationFiniteSupportIdeal D a
 
 example (S : Finset (σ × ℕ)) :
-    (deltaDivisionFiniteSupportModuleDiagram D a).obj S = ModuleCat.of L (L ⧸ K S) := rfl
+    (_root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteSupportModuleDiagram D a).obj S = ModuleCat.of L (L ⧸ K S) := rfl
 
 example {S T : Finset (σ × ℕ)} (h : S ⊆ T) :
-    (deltaDivisionFiniteSupportModuleDiagram D a).map (homOfLE h) =
-      ModuleCat.ofHom (deltaDivisionFiniteSupportTransition D a h) := rfl
+    (_root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteSupportModuleDiagram D a).map (homOfLE h) =
+      ModuleCat.ofHom (_root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteSupportTransition D a h) := rfl
 
 example {S T : Finset (σ × ℕ)} (h : S ⊆ T) (r : L) :
-    deltaDivisionFiniteSupportTransition D a h (Ideal.Quotient.mk (K S) r) =
+    _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteSupportTransition D a h (Ideal.Quotient.mk (K S) r) =
       Ideal.Quotient.mk (K T) r := rfl
 
 example (S : Finset (σ × ℕ)) (r : L) :
     let := deltaDivisionSourceEvaluationAlgebra D a
-    deltaDivisionFiniteSupportEval D a S (Ideal.Quotient.mk (K S) r) =
+    _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteSupportEval D a S (Ideal.Quotient.mk (K S) r) =
       deltaDivisionSourceEval D a r := by
   let := deltaDivisionSourceEvaluationAlgebra D a
   rfl
@@ -748,25 +748,25 @@ example (S : Finset (σ × ℕ)) (r : L) :
 -- This detects changing the local L-action on A to an unrelated algebra instance.
 example (S : Finset (σ × ℕ)) (r : L) (x : L ⧸ K S) :
     let := deltaDivisionSourceEvaluationAlgebra D a
-    deltaDivisionFiniteSupportEval D a S (r • x) =
-      deltaDivisionSourceEval D a r * deltaDivisionFiniteSupportEval D a S x := by
+    _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteSupportEval D a S (r • x) =
+      deltaDivisionSourceEval D a r * _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteSupportEval D a S x := by
   let := deltaDivisionSourceEvaluationAlgebra D a
-  exact (deltaDivisionFiniteSupportEval D a S).map_smul r x
+  exact (_root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteSupportEval D a S).map_smul r x
 
 example :
     let := deltaDivisionSourceEvaluationAlgebra D a
-    IsColimit (deltaDivisionFiniteSupportEvalCocone D a) := by
+    IsColimit (_root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteSupportEvalCocone D a) := by
   let := deltaDivisionSourceEvaluationAlgebra D a
-  exact deltaDivisionFiniteSupportEvalIsColimit D a
+  exact _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteSupportEvalIsColimit D a
 
 -- Compare each original colimit injection with the actual beta-evaluation map.
 example (S : Finset (σ × ℕ)) :
     let := deltaDivisionSourceEvaluationAlgebra D a
-    colimit.ι (deltaDivisionFiniteSupportModuleDiagram D a) S ≫
-      (deltaDivisionFiniteSupportColimitEvalIso D a).hom =
-        ModuleCat.ofHom (deltaDivisionFiniteSupportEval D a S) := by
+    colimit.ι (_root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteSupportModuleDiagram D a) S ≫
+      (_root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteSupportColimitEvalIso D a).hom =
+        ModuleCat.ofHom (_root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteSupportEval D a S) := by
   let := deltaDivisionSourceEvaluationAlgebra D a
-  exact deltaDivisionFiniteSupportColimitEvalIso_ι D a S
+  exact _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteSupportColimitEvalIso_ι D a S
 end FiniteSupport
 
 
@@ -777,18 +777,18 @@ variable (D : DeltaStructure p A) (a : σ → A)
 -- Cofinal restriction still has the original beta-evaluation target and each standard leg.
 example (S : Finset (σ × ℕ)) :
     let := deltaDivisionSourceEvaluationAlgebra D a
-    colimit.ι (deltaDivisionBoundedSupportModuleDiagram D a) S ≫
-      (deltaDivisionBoundedSupportColimitEvalIso D a).hom =
-        ModuleCat.ofHom (deltaDivisionFiniteSupportEval D a (deltaDivisionCoordinateHull S)) := by
+    colimit.ι (_root_.SerrePositivity.BhattScholze.Andre.deltaDivisionBoundedSupportModuleDiagram D a) S ≫
+      (_root_.SerrePositivity.BhattScholze.Andre.deltaDivisionBoundedSupportColimitEvalIso D a).hom =
+        ModuleCat.ofHom (_root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteSupportEval D a (_root_.SerrePositivity.BhattScholze.Andre.deltaDivisionCoordinateHull S)) := by
   let := deltaDivisionSourceEvaluationAlgebra D a
-  exact deltaDivisionBoundedSupportColimitEvalIso_ι D a S
+  exact _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionBoundedSupportColimitEvalIso_ι D a S
 
 -- No nonempty-family or nontrivial-ring assumption is required.
 example :
     let := deltaDivisionSourceEvaluationAlgebra D a
-    IsColimit (deltaDivisionBoundedSupportEvalCocone D a) := by
+    IsColimit (_root_.SerrePositivity.BhattScholze.Andre.deltaDivisionBoundedSupportEvalCocone D a) := by
   let := deltaDivisionSourceEvaluationAlgebra D a
-  exact deltaDivisionBoundedSupportEvalIsColimit D a
+  exact _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionBoundedSupportEvalIsColimit D a
 end BoundedSupport
 
 section BoundedSupportTor
@@ -797,11 +797,11 @@ variable (D : DeltaStructure p A) (d : A) (a : σ → A)
 local notation "P" => MvPolynomial σ A
 local notation "L" => RelativeFreeDeltaRing (R := P) σ
 local notation "E" => polynomialRankOneDeltaStructure σ D
-local notation "r" => deltaRootRelationFamily (p := p) a
+local notation "r" => _root_.SerrePositivity.BhattScholze.Andre.deltaRootRelationFamily (p := p) a
 local notation "I" => Ideal.span {(p : L), MvPolynomial.C (MvPolynomial.C d)}
 local notation "ψ" => RingHom.comp (Ideal.Quotient.mk (R := L) I)
   (deltaDivisionSourceMap (σ := σ) E (MvPolynomial.C d))
-local notation "F" => deltaDivisionBoundedSupportModuleDiagram E r
+local notation "F" => _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionBoundedSupportModuleDiagram E r
 
 -- Keep the original residue map and explicit preservation hypothesis in the public consumer.
 example (hpA : Function.Injective (fun z : A => (p : A) * z))
@@ -810,7 +810,7 @@ example (hpA : Function.Injective (fun z : A => (p : A) * z))
     let := deltaDivisionSourceEvaluationAlgebra E r
     Subsingleton (SerrePositivity.TorAlg ψ (i + 1) P) := by
   let := deltaDivisionSourceEvaluationAlgebra E r
-  exact deltaRootEvaluation_tor_subsingleton_of_preservesBoundedSupportColimit D d a hpA v hv i hpres
+  exact _root_.SerrePositivity.BhattScholze.Semiperfectoid.deltaRootEvaluation_tor_subsingleton_of_preservesBoundedSupportColimit D d a hpA v hv i hpres
 end BoundedSupportTor
 
 section BoundaryCases
@@ -818,24 +818,24 @@ variable {p : ℕ} [Fact p.Prime]
 
 -- Empty finite support creates no relation; do not strengthen the indexed diagram.
 example {A σ : Type u} [CommRing A] (D : DeltaStructure p A) (a : σ → A) :
-    deltaDivisionEvaluationFiniteSupportIdeal D a (∅ : Finset (σ × ℕ)) = ⊥ := by
-  simp [deltaDivisionEvaluationFiniteSupportIdeal]
+    _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionEvaluationFiniteSupportIdeal D a (∅ : Finset (σ × ℕ)) = ⊥ := by
+  simp [_root_.SerrePositivity.BhattScholze.Andre.deltaDivisionEvaluationFiniteSupportIdeal]
 
 -- An empty family is allowed, with no Nonempty or Fintype assumption on the old API.
 example {A : Type u} [CommRing A] (D : DeltaStructure p A) :
     let a : PEmpty.{u + 1} → A := fun s => nomatch s
     let := deltaDivisionSourceEvaluationAlgebra D a
-    IsColimit (deltaDivisionFiniteSupportEvalCocone D a) := by
+    IsColimit (_root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteSupportEvalCocone D a) := by
   let a : PEmpty.{u + 1} → A := fun s => nomatch s
   let := deltaDivisionSourceEvaluationAlgebra D a
-  exact deltaDivisionFiniteSupportEvalIsColimit D a
+  exact _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteSupportEvalIsColimit D a
 
 -- A zero coefficient ring is allowed for any family, with the delta structure explicit.
 example {σ : Type u} (D : DeltaStructure p PUnit.{u + 1}) (a : σ → PUnit.{u + 1}) :
     let := deltaDivisionSourceEvaluationAlgebra D a
-    IsColimit (deltaDivisionFiniteSupportEvalCocone D a) := by
+    IsColimit (_root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteSupportEvalCocone D a) := by
   let := deltaDivisionSourceEvaluationAlgebra D a
-  exact deltaDivisionFiniteSupportEvalIsColimit D a
+  exact _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteSupportEvalIsColimit D a
 end BoundaryCases
 
 end
@@ -852,16 +852,16 @@ variable {p : ℕ} [Fact p.Prime]
 example {A : Type u} [CommRing A] (P : OrientedPrism p A)
     (hP : P.deltaStructure.IsPerfect) :
     let b : PEmpty.{u + 1} → A := fun s => nomatch s
-    let X := DeltaRootSourceIteratedPDCompletion P.deltaStructure P.generator b
+    let X := _root_.SerrePositivity.BhattScholze.Andre.DeltaRootSourceIteratedPDCompletion P.deltaStructure P.generator b
     X.obj.IsGE 0 ∧ X.obj.IsLE 0 := by
   let b : PEmpty.{u + 1} → A := fun s => nomatch s
-  exact perfectPrismRootSource_pure P hP b
+  exact _root_.SerrePositivity.BhattScholze.Semiperfectoid.perfectPrismRootSource_pure P hP b
 
 example {σ : Type u} (P : OrientedPrism p PUnit.{u + 1})
     (hP : P.deltaStructure.IsPerfect) (b : σ → PUnit.{u + 1}) :
-    let X := DeltaRootSourceIteratedPDCompletion P.deltaStructure P.generator b
+    let X := _root_.SerrePositivity.BhattScholze.Andre.DeltaRootSourceIteratedPDCompletion P.deltaStructure P.generator b
     X.obj.IsGE 0 ∧ X.obj.IsLE 0 :=
-  perfectPrismRootSource_pure P hP b
+  _root_.SerrePositivity.BhattScholze.Semiperfectoid.perfectPrismRootSource_pure P hP b
 
 end
 end SerrePositivity.BhattScholze.RefactoringScalarPurityAudit

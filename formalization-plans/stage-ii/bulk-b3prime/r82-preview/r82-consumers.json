@@ -1,0 +1,27 @@
+[
+  {
+    "path": "SerrePositivity/BhattScholze/Perfectoidization/Derived/RootAdjunction.lean",
+    "old_import": "public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface",
+    "new_import": "public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingInterface"
+  },
+  {
+    "path": "SerrePositivity/BhattScholze/IntegralPerfectoidization/Completion/IntegralClosureCompletion.lean",
+    "old_import": "public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface",
+    "new_import": "public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingInterface"
+  },
+  {
+    "path": "SerrePositivity/BhattScholze/IntegralPerfectoidization/Approximation/IntegralApproximation.lean",
+    "old_import": "public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface",
+    "new_import": "public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingInterface"
+  },
+  {
+    "path": "SerrePositivity/BhattScholze/IntegralPerfectoidization/Approximation/PerfectoidFilteredColimit.lean",
+    "old_import": "public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface",
+    "new_import": "public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingInterface"
+  },
+  {
+    "path": "SerrePositivity/BhattScholze/Perfectoidization/Arc/Descent/ArcPerfectoidBase.lean",
+    "old_import": "public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface",
+    "new_import": "public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingInterface"
+  }
+]

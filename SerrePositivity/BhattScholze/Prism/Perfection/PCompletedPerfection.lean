@@ -22,7 +22,7 @@ BS 著者版 Lemma 2.28・Lemma 2.34 を完全化に当てる。
 d 進完備性の仮定を外す部分は未。
 
 ## 使われ方
-d で割る完全 prism の構成（Semiperfectoid/PerfectPrismDivision）、André。
+d で割る完全 prism の構成（Semiperfectoid/Perfection/PerfectPrismDivision）、André。
 -/
 
 universe u v w

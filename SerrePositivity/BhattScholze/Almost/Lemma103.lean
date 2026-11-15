@@ -6,7 +6,7 @@ public import SerrePositivity.BhattScholze.Perfectoidization.CompletedTensor
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedTensorVanishing
 public import SerrePositivity.HomologicalAlgebra.DerivedTensorAugmentationModels
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleComplete.Closure
-public import SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity
+public import SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.Surjectivity
 public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismPerfectoid
 public import SerrePositivity.BhattScholze.PerfectoidIdeal.Basic
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Principal.KoszulModel
@@ -47,17 +47,17 @@ BS 著者版 Lemma 10.3（印刷 pp.78–79）の核の自己積に接続する�
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze
-open CategoryTheory CategoryTheory.Limits MonoidalCategory SerrePositivity.DerivedCompletion
-open scoped TensorProduct
+open _root_.CategoryTheory _root_.CategoryTheory.Limits _root_.CategoryTheory.MonoidalCategory _root_.SerrePositivity.DerivedCompletion
+open scoped _root_.TensorProduct
 attribute [local instance] HasDerivedCategory.standard
 variable {R : Type u} [CommRing R]
 
-private lemma quotient_tensor_map_mul (I : Ideal R) :
-    (boundedAboveDerivedTensorModuleFunctor (ModuleCat.of R (R ⧸ I))).map
+private lemma Almost.quotient_tensor_map_mul (I : Ideal R) :
+    (_root_.SerrePositivity.boundedAboveDerivedTensorModuleFunctor (ModuleCat.of R (R ⧸ I))).map
         (ModuleCat.ofHom I.mkQ) ≫
-      (boundedAboveDerivedAlgebraMul (R := R) (R ⧸ I)).hom =
-    (boundedAboveDerivedTensorRightUnitor
-      (boundedAboveDerivedSingleFunctor.obj (ModuleCat.of R (R ⧸ I)))).hom.hom := by
+      (_root_.SerrePositivity.boundedAboveDerivedAlgebraMul (R := R) (R ⧸ I)).hom =
+    (_root_.SerrePositivity.boundedAboveDerivedTensorRightUnitor
+      (_root_.SerrePositivity.boundedAboveDerivedSingleFunctor.obj (ModuleCat.of R (R ⧸ I)))).hom.hom := by
   let Q := ModuleCat.of R (R ⧸ I)
   let q : ModuleCat.of R R ⟶ Q := ModuleCat.ofHom I.mkQ
   have he : (tensorLeft Q).map q ≫ ModuleCat.ofHom (LinearMap.mul' R (R ⧸ I)) =
@@ -67,13 +67,13 @@ private lemma quotient_tensor_map_mul (I : Ideal R) :
     change x * (Ideal.Quotient.mk I r) = r • x
     rw [Algebra.smul_def, mul_comm]
     rfl
-  change (boundedAboveDerivedTensorModuleFunctor Q).map q ≫
-    ((boundedAboveDerivedTensorModuleAugmentation Q).app Q ≫
+  change (_root_.SerrePositivity.boundedAboveDerivedTensorModuleFunctor Q).map q ≫
+    ((_root_.SerrePositivity.boundedAboveDerivedTensorModuleAugmentation Q).app Q ≫
       (DerivedCategory.singleFunctor (ModuleCat R) 0).map
         (ModuleCat.ofHom (LinearMap.mul' R (R ⧸ I)))) = _
-  rw [← Category.assoc, (boundedAboveDerivedTensorModuleAugmentation Q).naturality q]
+  rw [← Category.assoc, (_root_.SerrePositivity.boundedAboveDerivedTensorModuleAugmentation Q).naturality q]
   simp only [Functor.comp_map, Category.assoc, ← Functor.map_comp, he]
-  exact boundedAboveDerivedTensorModuleAugmentation_rightUnitor Q
+  exact _root_.SerrePositivity.boundedAboveDerivedTensorModuleAugmentation_rightUnitor Q
 
 /--
 ## 概要
@@ -86,11 +86,11 @@ p ねじれ・零環を許す。通常の自己 Tor の消滅は仮定しない�
 ## 使われ方
 perfectoid 化の核へ特殊化し、核の自己積と almost 拡大閉性の証明に使う。
 -/
-theorem integralPerfectoid_completedQuotientTensorIdeal_isZero
+theorem Almost.integralPerfectoid_completedQuotientTensorIdeal_isZero
     (p : ℕ) [Fact p.Prime] (I : Ideal R)
-    (hR : IsIntegralPerfectoid R p) (hQ : IsIntegralPerfectoid (R ⧸ I) p) :
+    (hR : _root_.SerrePositivity.IsIntegralPerfectoid R p) (hQ : _root_.SerrePositivity.IsIntegralPerfectoid (R ⧸ I) p) :
     IsZero ((derivedComplexCompletionFunctor R (p : R)).obj
-      ((boundedAboveDerivedTensorModuleFunctor (ModuleCat.of R (R ⧸ I))).obj
+      ((_root_.SerrePositivity.boundedAboveDerivedTensorModuleFunctor (ModuleCat.of R (R ⧸ I))).obj
         (ModuleCat.of R I))) := by
   let S := ModuleCat.shortComplexOfCompEqZero I.subtype I.mkQ
     (LinearMap.exact_subtype_mkQ I).linearMap_comp_eq_zero
@@ -99,17 +99,17 @@ theorem integralPerfectoid_completedQuotientTensorIdeal_isZero
   apply completedTensor_isZero_of_shortExact_rightMap_isIso (p : R)
     (ModuleCat.of R (R ⧸ I)) S hS
   let F := derivedComplexCompletionFunctor R (p : R)
-  have : IsIso (F.map (boundedAboveDerivedAlgebraMul (R := R) (R ⧸ I)).hom) :=
-    integralPerfectoid_completedQuotientMul_isIso p R I hR hQ
-  have he := congrArg F.map (quotient_tensor_map_mul I)
+  have : IsIso (F.map (_root_.SerrePositivity.boundedAboveDerivedAlgebraMul (R := R) (R ⧸ I)).hom) :=
+    _root_.SerrePositivity.BhattScholze.integralPerfectoid_completedQuotientMul_isIso p R I hR hQ
+  have he := congrArg F.map (_root_.SerrePositivity.BhattScholze.Almost.quotient_tensor_map_mul I)
   rw [Functor.map_comp] at he
-  have : IsIso (F.map ((boundedAboveDerivedTensorModuleFunctor
+  have : IsIso (F.map ((_root_.SerrePositivity.boundedAboveDerivedTensorModuleFunctor
       (ModuleCat.of R (R ⧸ I))).map (ModuleCat.ofHom I.mkQ)) ≫
-      F.map (boundedAboveDerivedAlgebraMul (R := R) (R ⧸ I)).hom) := by
+      F.map (_root_.SerrePositivity.boundedAboveDerivedAlgebraMul (R := R) (R ⧸ I)).hom) := by
     rw [he]
     infer_instance
   exact IsIso.of_isIso_comp_right _
-    (F.map (boundedAboveDerivedAlgebraMul (R := R) (R ⧸ I)).hom)
+    (F.map (_root_.SerrePositivity.boundedAboveDerivedAlgebraMul (R := R) (R ⧸ I)).hom)
 
 /--
 ## 概要
@@ -122,17 +122,17 @@ G2 の同じ完備化関手を用い、p 正則性を仮定しない。
 ## 使われ方
 核の短完全列に I をテンソルし、その自己積の同型性を導く。
 -/
-theorem integralPerfectoid_completedIdealTensorQuotient_isZero
+theorem Almost.integralPerfectoid_completedIdealTensorQuotient_isZero
     (p : ℕ) [Fact p.Prime] (I : Ideal R)
-    (hR : IsIntegralPerfectoid R p) (hQ : IsIntegralPerfectoid (R ⧸ I) p) :
+    (hR : _root_.SerrePositivity.IsIntegralPerfectoid R p) (hQ : _root_.SerrePositivity.IsIntegralPerfectoid (R ⧸ I) p) :
     IsZero ((derivedComplexCompletionFunctor R (p : R)).obj
-      ((boundedAboveDerivedTensorModuleFunctor (ModuleCat.of R I)).obj
+      ((_root_.SerrePositivity.boundedAboveDerivedTensorModuleFunctor (ModuleCat.of R I)).obj
         (ModuleCat.of R (R ⧸ I)))) := by
   let e := (DerivedCategory.Minus.ι (C := ModuleCat R)).mapIso
-    (boundedAboveDerivedTensorSymmetry
-      (boundedAboveDerivedSingleFunctor.obj (ModuleCat.of R I))
-      (boundedAboveDerivedSingleFunctor.obj (ModuleCat.of R (R ⧸ I))))
-  exact (integralPerfectoid_completedQuotientTensorIdeal_isZero p I hR hQ).of_iso
+    (_root_.SerrePositivity.boundedAboveDerivedTensorSymmetry
+      (_root_.SerrePositivity.boundedAboveDerivedSingleFunctor.obj (ModuleCat.of R I))
+      (_root_.SerrePositivity.boundedAboveDerivedSingleFunctor.obj (ModuleCat.of R (R ⧸ I))))
+  exact (_root_.SerrePositivity.BhattScholze.Almost.integralPerfectoid_completedQuotientTensorIdeal_isZero p I hR hQ).of_iso
     ((derivedComplexCompletionFunctor R (p : R)).mapIso e)
 
 /--
@@ -145,23 +145,23 @@ theorem integralPerfectoid_completedIdealTensorQuotient_isZero
 ## 使われ方
 BS 著者版 Lemma 10.3（印刷 pp.78–79）の実自己積を明示する。
 -/
-def boundedAboveDerivedIdealMul (I : Ideal R) :
-    boundedAboveDerivedTensor.obj
-      (boundedAboveDerivedSingleFunctor.obj (ModuleCat.of R I),
-        boundedAboveDerivedSingleFunctor.obj (ModuleCat.of R I)) ⟶
-      boundedAboveDerivedSingleFunctor.obj (ModuleCat.of R I) :=
+def Almost.boundedAboveDerivedIdealMul (I : Ideal R) :
+    _root_.SerrePositivity.boundedAboveDerivedTensor.obj
+      (_root_.SerrePositivity.boundedAboveDerivedSingleFunctor.obj (ModuleCat.of R I),
+        _root_.SerrePositivity.boundedAboveDerivedSingleFunctor.obj (ModuleCat.of R I)) ⟶
+      _root_.SerrePositivity.boundedAboveDerivedSingleFunctor.obj (ModuleCat.of R I) :=
   ObjectProperty.homMk
-    ((boundedAboveDerivedTensorModuleAugmentation (ModuleCat.of R I)).app
+    ((_root_.SerrePositivity.boundedAboveDerivedTensorModuleAugmentation (ModuleCat.of R I)).app
       (ModuleCat.of R I) ≫
       (DerivedCategory.singleFunctor (ModuleCat R) 0).map
         (ModuleCat.ofHom (LinearMap.mul' R I)))
 
-private lemma ideal_tensor_subtype_mul (I : Ideal R) :
-    (boundedAboveDerivedIdealMul I).hom =
-      (boundedAboveDerivedTensorModuleFunctor (ModuleCat.of R I)).map
+private lemma Almost.ideal_tensor_subtype_mul (I : Ideal R) :
+    (_root_.SerrePositivity.BhattScholze.Almost.boundedAboveDerivedIdealMul I).hom =
+      (_root_.SerrePositivity.boundedAboveDerivedTensorModuleFunctor (ModuleCat.of R I)).map
           (ModuleCat.ofHom I.subtype) ≫
-        (boundedAboveDerivedTensorRightUnitor
-          (boundedAboveDerivedSingleFunctor.obj (ModuleCat.of R I))).hom.hom := by
+        (_root_.SerrePositivity.boundedAboveDerivedTensorRightUnitor
+          (_root_.SerrePositivity.boundedAboveDerivedSingleFunctor.obj (ModuleCat.of R I))).hom.hom := by
   let M := ModuleCat.of R I
   have he : (tensorLeft M).map (ModuleCat.ofHom I.subtype) ≫ (ρ_ M).hom =
       ModuleCat.ofHom (LinearMap.mul' R I) := by
@@ -170,11 +170,11 @@ private lemma ideal_tensor_subtype_mul (I : Ideal R) :
     apply Subtype.ext
     change (y : R) * (x : R) = (x : R) * (y : R)
     exact mul_comm _ _
-  rw [← boundedAboveDerivedTensorModuleAugmentation_rightUnitor]
+  rw [← _root_.SerrePositivity.boundedAboveDerivedTensorModuleAugmentation_rightUnitor]
   rw [← Category.assoc,
-    (boundedAboveDerivedTensorModuleAugmentation M).naturality (ModuleCat.ofHom I.subtype)]
+    (_root_.SerrePositivity.boundedAboveDerivedTensorModuleAugmentation M).naturality (ModuleCat.ofHom I.subtype)]
   simp only [Functor.comp_map, Category.assoc, ← Functor.map_comp]
-  exact congrArg (fun f => (boundedAboveDerivedTensorModuleAugmentation M).app M ≫
+  exact congrArg (fun f => (_root_.SerrePositivity.boundedAboveDerivedTensorModuleAugmentation M).app M ≫
     (DerivedCategory.singleFunctor (ModuleCat R) 0).map f) he.symm
 
 /--
@@ -189,21 +189,21 @@ I→R→R/I に I を完備導来テンソルした三角形の第三対象の�
 ## 使われ方
 perfectoid 化の核に特殊化して BS 著者版 Lemma 10.3 の第一主張を与える。
 -/
-theorem integralPerfectoid_completedIdealMul_isIso
+theorem Almost.integralPerfectoid_completedIdealMul_isIso
     (p : ℕ) [Fact p.Prime] (I : Ideal R)
-    (hR : IsIntegralPerfectoid R p) (hQ : IsIntegralPerfectoid (R ⧸ I) p) :
+    (hR : _root_.SerrePositivity.IsIntegralPerfectoid R p) (hQ : _root_.SerrePositivity.IsIntegralPerfectoid (R ⧸ I) p) :
     IsIso ((derivedComplexCompletionFunctor R (p : R)).map
-      (boundedAboveDerivedIdealMul I).hom) := by
+      (_root_.SerrePositivity.BhattScholze.Almost.boundedAboveDerivedIdealMul I).hom) := by
   let S := ModuleCat.shortComplexOfCompEqZero I.subtype I.mkQ
     (LinearMap.exact_subtype_mkQ I).linearMap_comp_eq_zero
   have hS : S.ShortExact := ModuleCat.shortComplex_shortExact S
     (LinearMap.exact_subtype_mkQ I) I.injective_subtype I.mkQ_surjective
   have : IsIso ((derivedComplexCompletionFunctor R (p : R)).map
-      ((boundedAboveDerivedTensorModuleFunctor (ModuleCat.of R I)).map
+      ((_root_.SerrePositivity.boundedAboveDerivedTensorModuleFunctor (ModuleCat.of R I)).map
         (ModuleCat.ofHom I.subtype))) :=
     completedTensor_shortExact_leftMap_isIso_of_isZero (p : R) (ModuleCat.of R I) S hS
-      (integralPerfectoid_completedIdealTensorQuotient_isZero p I hR hQ)
-  rw [ideal_tensor_subtype_mul, Functor.map_comp]
+      (_root_.SerrePositivity.BhattScholze.Almost.integralPerfectoid_completedIdealTensorQuotient_isZero p I hR hQ)
+  rw [_root_.SerrePositivity.BhattScholze.Almost.ideal_tensor_subtype_mul, Functor.map_comp]
   infer_instance
 
 /--
@@ -216,9 +216,9 @@ perfectoid 環の perfectoid 商の核は導来 p 完備である。
 ## 使われ方
 BS 著者版 Lemma 10.3（印刷 pp.78–79）の自己積の標的を元の核に同定する。
 -/
-theorem integralPerfectoid_quotientIdeal_isModuleComplete
+theorem Almost.integralPerfectoid_quotientIdeal_isModuleComplete
     (p : ℕ) [Fact p.Prime] (I : Ideal R)
-    (hR : IsIntegralPerfectoid R p) (hQ : IsIntegralPerfectoid (R ⧸ I) p) :
+    (hR : _root_.SerrePositivity.IsIntegralPerfectoid R p) (hQ : _root_.SerrePositivity.IsIntegralPerfectoid (R ⧸ I) p) :
     IsModuleComplete R (p : R) (ModuleCat.of R I) := by
   have hc := isModuleComplete_ker R (p : R)
     (M := ModuleCat.of R R) (N := ModuleCat.of R (R ⧸ I)) I.mkQ
@@ -237,12 +237,12 @@ theorem integralPerfectoid_quotientIdeal_isModuleComplete
 ## 使われ方
 BS 著者版 Lemma 10.3（印刷 pp.78–79）の第一射を表す。
 -/
-def completedDerivedIdealMul (a : R) (I : Ideal R)
+def Almost.completedDerivedIdealMul (a : R) (I : Ideal R)
     (hI : IsModuleComplete R a (ModuleCat.of R I)) :
     (derivedComplexCompletionFunctor R a).obj
-      ((boundedAboveDerivedTensorModuleFunctor (ModuleCat.of R I)).obj (ModuleCat.of R I)) ⟶
+      ((_root_.SerrePositivity.boundedAboveDerivedTensorModuleFunctor (ModuleCat.of R I)).obj (ModuleCat.of R I)) ⟶
       (DerivedCategory.singleFunctor (ModuleCat R) 0).obj (ModuleCat.of R I) :=
-  (derivedComplexCompletionFunctor R a).map (boundedAboveDerivedIdealMul I).hom ≫
+  (derivedComplexCompletionFunctor R a).map (_root_.SerrePositivity.BhattScholze.Almost.boundedAboveDerivedIdealMul I).hom ≫
     (derivedComplexCompletionUnitIso R a _ hI).inv
 
 /--
@@ -255,13 +255,13 @@ perfectoid 商の核の標準積 I⊗̂ᴸI→I[0] は同型である。
 ## 使われ方
 BS 著者版 Lemma 10.3（印刷 pp.78–79）を完備化されていない標的へ渡す。
 -/
-theorem integralPerfectoid_completedDerivedIdealMul_isIso
+theorem Almost.integralPerfectoid_completedDerivedIdealMul_isIso
     (p : ℕ) [Fact p.Prime] (I : Ideal R)
-    (hR : IsIntegralPerfectoid R p) (hQ : IsIntegralPerfectoid (R ⧸ I) p) :
-    IsIso (completedDerivedIdealMul (p : R) I
-      (integralPerfectoid_quotientIdeal_isModuleComplete p I hR hQ)) := by
-  have := integralPerfectoid_completedIdealMul_isIso p I hR hQ
-  unfold completedDerivedIdealMul
+    (hR : _root_.SerrePositivity.IsIntegralPerfectoid R p) (hQ : _root_.SerrePositivity.IsIntegralPerfectoid (R ⧸ I) p) :
+    IsIso (_root_.SerrePositivity.BhattScholze.Almost.completedDerivedIdealMul (p : R) I
+      (_root_.SerrePositivity.BhattScholze.Almost.integralPerfectoid_quotientIdeal_isModuleComplete p I hR hQ)) := by
+  have := _root_.SerrePositivity.BhattScholze.Almost.integralPerfectoid_completedIdealMul_isIso p I hR hQ
+  unfold _root_.SerrePositivity.BhattScholze.Almost.completedDerivedIdealMul
   infer_instance
 
 end SerrePositivity.BhattScholze
@@ -282,13 +282,13 @@ BS 著者版 Lemma 10.3 の証明中の主張（印刷 pp.78–79）を、実際
 G2 の元の完備導来テンソルと `derivedH0CommRing` を使う。零環と p ねじれを許す。
 
 ## 使われ方
-BS 著者版 Lemma 10.3 の商環の自己テンソルと、B5 の依存監査の入口である。
+BS 著者版 Lemma 10.3 の商環の自己テンソルと、perfectoid イデアルの依存監査の入口である。
 -/
 
 @[expose] public noncomputable section Lemma103PerfectoidTensor
 
 namespace SerrePositivity.BhattScholze
-open CategoryTheory CategoryTheory.Limits SerrePositivity.DerivedCompletion
+open _root_.CategoryTheory _root_.CategoryTheory.Limits _root_.SerrePositivity.DerivedCompletion
 attribute [local instance] HasDerivedCategory.standard
 
 /--
@@ -306,18 +306,18 @@ perfectoid 環 R 上の perfectoid 代数 S,T の完備導来テンソルは全�
 ## 使われ方
 S=T=R/K に特殊化して 商環の自己積に用いる。
 -/
-theorem lemma103_perfectoidTensor
+theorem Almost.lemma103_perfectoidTensor
     (p : ℕ) [Fact p.Prime] (R S T : Type u)
     [CommRing R] [CommRing S] [CommRing T] [Algebra R S] [Algebra R T]
-    (hR : IsIntegralPerfectoid R p) (hS : IsIntegralPerfectoid S p)
-    (hT : IsIntegralPerfectoid T p) :
+    (hR : _root_.SerrePositivity.IsIntegralPerfectoid R p) (hS : _root_.SerrePositivity.IsIntegralPerfectoid S p)
+    (hT : _root_.SerrePositivity.IsIntegralPerfectoid T p) :
     let X := boundedAboveCompletedTensorAlgebra R (p : R) S T
-    letI := derivedH0CommRing X
+    letI := _root_.SerrePositivity.derivedH0CommRing X
     (∀ i : ℤ, i ≠ 0 →
       IsZero ((DerivedCategory.homologyFunctor (ModuleCat R) i).obj X.X.obj)) ∧
-      IsIntegralPerfectoid
+      _root_.SerrePositivity.IsIntegralPerfectoid
         ((DerivedCategory.homologyFunctor (ModuleCat R) 0).obj X.X.obj) p := by
-  obtain ⟨hpure, hperf⟩ := integralPerfectoid_completedTensor_pure_and_h0 p R S T hR hS hT
+  obtain ⟨hpure, hperf⟩ := _root_.SerrePositivity.BhattScholze.integralPerfectoid_completedTensor_pure_and_h0 p R S T hR hS hT
   refine ⟨?_, hperf⟩
   intro i hi
   rcases lt_or_gt_of_ne hi with hneg | hpos
@@ -345,7 +345,7 @@ BS 著者版 Remark 10.7 の mod p 冪冪等性と BS 著者版 Proposition 10.2
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze
-open CategoryTheory CategoryTheory.Limits SerrePositivity.DerivedCompletion
+open _root_.CategoryTheory _root_.CategoryTheory.Limits _root_.SerrePositivity.DerivedCompletion
 attribute [local instance] HasDerivedCategory.standard
 variable (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime]
     (hR : IsIntegralPerfectoid R p) (g : R)
@@ -360,18 +360,18 @@ B4 の一般全射性と既存の核商同型により、B3 の選ばれた perf
 ## 使われ方
 BS 著者版 Lemma 10.3（印刷 pp.78–79）の商の実積の標的の完備性を供給する。
 -/
-theorem perfectoidIdeal_quotient_isIntegralPerfectoid :
-    IsIntegralPerfectoid (R ⧸ perfectoidIdeal R p hR g) p := by
-  let f := toQuotientPerfectoidization R (Ideal.span {g}) p hR
-  have hf := isPerfectoidization_toQuotientPerfectoidization R (Ideal.span {g}) p hR
+theorem Almost.perfectoidIdeal_quotient_isIntegralPerfectoid :
+    _root_.SerrePositivity.IsIntegralPerfectoid (R ⧸ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g) p := by
+  let f := _root_.SerrePositivity.BhattScholze.Semiperfectoid.toQuotientPerfectoidization R (Ideal.span {g}) p hR
+  have hf := _root_.SerrePositivity.BhattScholze.Semiperfectoid.isPerfectoidization_toQuotientPerfectoidization R (Ideal.span {g}) p hR
   have hs : Function.Surjective f :=
-    surjective_of_isPerfectoidization_of_semiperfectoid_quotient hR
+    _root_.SerrePositivity.BhattScholze.Semiperfectoid.surjective_of_isPerfectoidization_of_semiperfectoid_quotient hR
       (Ideal.Quotient.mk (Ideal.span {g})) Ideal.Quotient.mk_surjective
       (isModuleComplete_principal_quotient_natCast R p g (hR.isModuleComplete R p)) f hf
-  let e : R ⧸ perfectoidIdeal R p hR g ≃+*
-      QuotientPerfectoidization R (Ideal.span {g}) p hR :=
+  let e : R ⧸ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g ≃+*
+      _root_.SerrePositivity.BhattScholze.Semiperfectoid.QuotientPerfectoidization R (Ideal.span {g}) p hR :=
     RingHom.quotientKerEquivOfSurjective (hs.comp Ideal.Quotient.mk_surjective)
-  exact isIntegralPerfectoid_of_ringEquiv p e.symm hf.1
+  exact _root_.SerrePositivity.BhattScholze.isIntegralPerfectoid_of_ringEquiv p e.symm hf.1
 
 /--
 ## 概要
@@ -383,10 +383,10 @@ K は既存の perfectoidIdeal そのものである。
 ## 使われ方
 BS 著者版 Lemma 10.3（印刷 pp.78–79）の第一射の標的を固定する。
 -/
-theorem perfectoidIdeal_isModuleComplete :
-    IsModuleComplete R (p : R) (ModuleCat.of R (perfectoidIdeal R p hR g)) :=
-  integralPerfectoid_quotientIdeal_isModuleComplete p (perfectoidIdeal R p hR g) hR
-    (perfectoidIdeal_quotient_isIntegralPerfectoid R p hR g)
+theorem Almost.perfectoidIdeal_isModuleComplete :
+    IsModuleComplete R (p : R) (ModuleCat.of R (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g)) :=
+  _root_.SerrePositivity.BhattScholze.Almost.integralPerfectoid_quotientIdeal_isModuleComplete p (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g) hR
+    (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal_quotient_isIntegralPerfectoid R p hR g)
 
 /--
 ## 概要
@@ -400,19 +400,19 @@ perfectoid 商の導来完備性で元の商に標準同定される。p 正則�
 ## 使われ方
 BS 著者版 Remark 10.7 と BS 著者版 Proposition 10.2 の核イデアルに関する結果を供給する。
 -/
-theorem perfectoidIdeal_lemma103 :
-    let K := perfectoidIdeal R p hR g
-    IsIso (completedDerivedIdealMul (p : R) K
-      (perfectoidIdeal_isModuleComplete R p hR g)) ∧
+theorem Almost.perfectoidIdeal_lemma103 :
+    let K := _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g
+    IsIso (_root_.SerrePositivity.BhattScholze.Almost.completedDerivedIdealMul (p : R) K
+      (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal_isModuleComplete R p hR g)) ∧
     IsIso ((derivedComplexCompletionFunctor R (p : R)).map
-      (boundedAboveDerivedAlgebraMul (R := R) (R ⧸ K)).hom) ∧
+      (_root_.SerrePositivity.boundedAboveDerivedAlgebraMul (R := R) (R ⧸ K)).hom) ∧
     IsZero ((derivedComplexCompletionFunctor R (p : R)).obj
-      ((boundedAboveDerivedTensorModuleFunctor (ModuleCat.of R K)).obj
+      ((_root_.SerrePositivity.boundedAboveDerivedTensorModuleFunctor (ModuleCat.of R K)).obj
         (ModuleCat.of R (R ⧸ K)))) := by
-  have hQ := perfectoidIdeal_quotient_isIntegralPerfectoid R p hR g
-  exact ⟨integralPerfectoid_completedDerivedIdealMul_isIso p _ hR hQ,
-    integralPerfectoid_completedQuotientMul_isIso p R _ hR hQ,
-    integralPerfectoid_completedIdealTensorQuotient_isZero p _ hR hQ⟩
+  have hQ := _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal_quotient_isIntegralPerfectoid R p hR g
+  exact ⟨_root_.SerrePositivity.BhattScholze.Almost.integralPerfectoid_completedDerivedIdealMul_isIso p _ hR hQ,
+    _root_.SerrePositivity.BhattScholze.integralPerfectoid_completedQuotientMul_isIso p R _ hR hQ,
+    _root_.SerrePositivity.BhattScholze.Almost.integralPerfectoid_completedIdealTensorQuotient_isZero p _ hR hQ⟩
 
 /--
 ## 概要
@@ -424,15 +424,15 @@ K は perfectoidIdeal であり、標的の別コピーへの抽象的同型で�
 ## 使われ方
 BS 著者版 Lemma 10.3（印刷 pp.78–79）の第二射を元の商を標的として渡す。
 -/
-def perfectoidIdeal_completedQuotientMul :
-    let Q := R ⧸ perfectoidIdeal R p hR g
+def Almost.perfectoidIdeal_completedQuotientMul :
+    let Q := R ⧸ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g
     (derivedComplexCompletionFunctor R (p : R)).obj
-      ((boundedAboveDerivedTensorModuleFunctor (ModuleCat.of R Q)).obj (ModuleCat.of R Q)) ⟶
+      ((_root_.SerrePositivity.boundedAboveDerivedTensorModuleFunctor (ModuleCat.of R Q)).obj (ModuleCat.of R Q)) ⟶
       (DerivedCategory.singleFunctor (ModuleCat R) 0).obj (ModuleCat.of R Q) :=
   (derivedComplexCompletionFunctor R (p : R)).map
-      (boundedAboveDerivedAlgebraMul (R := R) (R ⧸ perfectoidIdeal R p hR g)).hom ≫
+      (_root_.SerrePositivity.boundedAboveDerivedAlgebraMul (R := R) (R ⧸ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g)).hom ≫
     (derivedComplexCompletionUnitIso R (p : R) _
-      ((perfectoidIdeal_quotient_isIntegralPerfectoid R p hR g).isModuleComplete_algebra R _ p)).inv
+      ((_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal_quotient_isIntegralPerfectoid R p hR g).isModuleComplete_algebra R _ p)).inv
 
 /--
 ## 概要
@@ -444,10 +444,10 @@ BS 著者版 Lemma 10.3 の第二主張と、標的の perfectoid 性による�
 ## 使われ方
 BS 著者版 Lemma 10.3（印刷 pp.78–79）の元の商を標的とする第二主張である。
 -/
-theorem perfectoidIdeal_completedQuotientMul_isIso :
-    IsIso (perfectoidIdeal_completedQuotientMul R p hR g) := by
-  have := (perfectoidIdeal_lemma103 R p hR g).2.1
-  unfold perfectoidIdeal_completedQuotientMul
+theorem Almost.perfectoidIdeal_completedQuotientMul_isIso :
+    IsIso (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal_completedQuotientMul R p hR g) := by
+  have := (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal_lemma103 R p hR g).2.1
+  unfold _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal_completedQuotientMul
   infer_instance
 
 end SerrePositivity.BhattScholze
@@ -457,9 +457,9 @@ end PerfectoidIdealLemma103
 /-! Literature correspondences from the reviewed coverage tables. -/
 
 /-! Reviewed literature correspondences. -/
-attribute [cite BS19 "Lemma 10.3" (partial := special) "三主張とも本体（sorry 0）。名前つきの宣言は単項 J=(g) の核だが、一般形 integralPerfectoid_* と perfectoidKernel_quotient_isIntegralPerfectoid を組めば任意の J で成り立つ（特殊化の宣言はない、11-12 節の見直し）。一般の perfectoid 商 R→R/K に対する混合積消滅・自己積（integralPerfectoid_*）は一般形。DOC1 照合（11-07、Codex が型で確認）：項目そのものではないので宣言の列から外したもの：lemma103_perfectoidTensor（商の自己積の同型を示す証明に利用するが、この型は積射の同型を主張しない。） ／ DOC1 照合：ok 3 件"] _root_.SerrePositivity.BhattScholze.integralPerfectoid_completedDerivedIdealMul_isIso
-attribute [cite BS19 "Lemma 10.3" (partial := special) "三主張とも本体（sorry 0）。名前つきの宣言は単項 J=(g) の核だが、一般形 integralPerfectoid_* と perfectoidKernel_quotient_isIntegralPerfectoid を組めば任意の J で成り立つ（特殊化の宣言はない、11-12 節の見直し）。一般の perfectoid 商 R→R/K に対する混合積消滅・自己積（integralPerfectoid_*）は一般形。DOC1 照合（11-07、Codex が型で確認）：項目そのものではないので宣言の列から外したもの：lemma103_perfectoidTensor（商の自己積の同型を示す証明に利用するが、この型は積射の同型を主張しない。） ／ DOC1 照合：ok 3 件"] _root_.SerrePositivity.BhattScholze.integralPerfectoid_completedIdealMul_isIso
-attribute [cite BS19 "Lemma 10.3" (partial := special) "三主張とも本体（sorry 0）。名前つきの宣言は単項 J=(g) の核だが、一般形 integralPerfectoid_* と perfectoidKernel_quotient_isIntegralPerfectoid を組めば任意の J で成り立つ（特殊化の宣言はない、11-12 節の見直し）。一般の perfectoid 商 R→R/K に対する混合積消滅・自己積（integralPerfectoid_*）は一般形。DOC1 照合（11-07、Codex が型で確認）：項目そのものではないので宣言の列から外したもの：lemma103_perfectoidTensor（商の自己積の同型を示す証明に利用するが、この型は積射の同型を主張しない。） ／ DOC1 照合：ok 3 件"] _root_.SerrePositivity.BhattScholze.integralPerfectoid_completedIdealTensorQuotient_isZero
-attribute [cite BS19 "Lemma 10.3" (partial := special) "三主張とも本体（sorry 0）。名前つきの宣言は単項 J=(g) の核だが、一般形 integralPerfectoid_* と perfectoidKernel_quotient_isIntegralPerfectoid を組めば任意の J で成り立つ（特殊化の宣言はない、11-12 節の見直し）。一般の perfectoid 商 R→R/K に対する混合積消滅・自己積（integralPerfectoid_*）は一般形。DOC1 照合（11-07、Codex が型で確認）：項目そのものではないので宣言の列から外したもの：lemma103_perfectoidTensor（商の自己積の同型を示す証明に利用するが、この型は積射の同型を主張しない。） ／ DOC1 照合：ok 3 件"] _root_.SerrePositivity.BhattScholze.integralPerfectoid_completedQuotientTensorIdeal_isZero
-attribute [cite BS19 "Lemma 10.3" (partial := special) "三主張とも本体（sorry 0）。名前つきの宣言は単項 J=(g) の核だが、一般形 integralPerfectoid_* と perfectoidKernel_quotient_isIntegralPerfectoid を組めば任意の J で成り立つ（特殊化の宣言はない、11-12 節の見直し）。一般の perfectoid 商 R→R/K に対する混合積消滅・自己積（integralPerfectoid_*）は一般形。DOC1 照合（11-07、Codex が型で確認）：項目そのものではないので宣言の列から外したもの：lemma103_perfectoidTensor（商の自己積の同型を示す証明に利用するが、この型は積射の同型を主張しない。） ／ DOC1 照合：ok 3 件"] _root_.SerrePositivity.BhattScholze.perfectoidIdeal_completedQuotientMul_isIso
-attribute [cite BS19 "Lemma 10.3" (partial := special) "三主張とも本体（sorry 0）。名前つきの宣言は単項 J=(g) の核だが、一般形 integralPerfectoid_* と perfectoidKernel_quotient_isIntegralPerfectoid を組めば任意の J で成り立つ（特殊化の宣言はない、11-12 節の見直し）。一般の perfectoid 商 R→R/K に対する混合積消滅・自己積（integralPerfectoid_*）は一般形。DOC1 照合（11-07、Codex が型で確認）：項目そのものではないので宣言の列から外したもの：lemma103_perfectoidTensor（商の自己積の同型を示す証明に利用するが、この型は積射の同型を主張しない。） ／ DOC1 照合：ok 3 件"] _root_.SerrePositivity.BhattScholze.perfectoidIdeal_lemma103
+attribute [cite BS19 "Lemma 10.3" (partial := special) "三主張とも本体（sorry 0）。名前つきの宣言は単項 J=(g) の核だが、一般形 integralPerfectoid_* と perfectoidKernel_quotient_isIntegralPerfectoid を組めば任意の J で成り立つ（特殊化の宣言はない、11-12 節の見直し）。一般の perfectoid 商 R→R/K に対する混合積消滅・自己積（integralPerfectoid_*）は一般形。DOC1 照合（11-07、Codex が型で確認）：項目そのものではないので宣言の列から外したもの：lemma103_perfectoidTensor（商の自己積の同型を示す証明に利用するが、この型は積射の同型を主張しない。） ／ DOC1 照合：ok 3 件"] _root_.SerrePositivity.BhattScholze.Almost.integralPerfectoid_completedDerivedIdealMul_isIso
+attribute [cite BS19 "Lemma 10.3" (partial := special) "三主張とも本体（sorry 0）。名前つきの宣言は単項 J=(g) の核だが、一般形 integralPerfectoid_* と perfectoidKernel_quotient_isIntegralPerfectoid を組めば任意の J で成り立つ（特殊化の宣言はない、11-12 節の見直し）。一般の perfectoid 商 R→R/K に対する混合積消滅・自己積（integralPerfectoid_*）は一般形。DOC1 照合（11-07、Codex が型で確認）：項目そのものではないので宣言の列から外したもの：lemma103_perfectoidTensor（商の自己積の同型を示す証明に利用するが、この型は積射の同型を主張しない。） ／ DOC1 照合：ok 3 件"] _root_.SerrePositivity.BhattScholze.Almost.integralPerfectoid_completedIdealMul_isIso
+attribute [cite BS19 "Lemma 10.3" (partial := special) "三主張とも本体（sorry 0）。名前つきの宣言は単項 J=(g) の核だが、一般形 integralPerfectoid_* と perfectoidKernel_quotient_isIntegralPerfectoid を組めば任意の J で成り立つ（特殊化の宣言はない、11-12 節の見直し）。一般の perfectoid 商 R→R/K に対する混合積消滅・自己積（integralPerfectoid_*）は一般形。DOC1 照合（11-07、Codex が型で確認）：項目そのものではないので宣言の列から外したもの：lemma103_perfectoidTensor（商の自己積の同型を示す証明に利用するが、この型は積射の同型を主張しない。） ／ DOC1 照合：ok 3 件"] _root_.SerrePositivity.BhattScholze.Almost.integralPerfectoid_completedIdealTensorQuotient_isZero
+attribute [cite BS19 "Lemma 10.3" (partial := special) "三主張とも本体（sorry 0）。名前つきの宣言は単項 J=(g) の核だが、一般形 integralPerfectoid_* と perfectoidKernel_quotient_isIntegralPerfectoid を組めば任意の J で成り立つ（特殊化の宣言はない、11-12 節の見直し）。一般の perfectoid 商 R→R/K に対する混合積消滅・自己積（integralPerfectoid_*）は一般形。DOC1 照合（11-07、Codex が型で確認）：項目そのものではないので宣言の列から外したもの：lemma103_perfectoidTensor（商の自己積の同型を示す証明に利用するが、この型は積射の同型を主張しない。） ／ DOC1 照合：ok 3 件"] _root_.SerrePositivity.BhattScholze.Almost.integralPerfectoid_completedQuotientTensorIdeal_isZero
+attribute [cite BS19 "Lemma 10.3" (partial := special) "三主張とも本体（sorry 0）。名前つきの宣言は単項 J=(g) の核だが、一般形 integralPerfectoid_* と perfectoidKernel_quotient_isIntegralPerfectoid を組めば任意の J で成り立つ（特殊化の宣言はない、11-12 節の見直し）。一般の perfectoid 商 R→R/K に対する混合積消滅・自己積（integralPerfectoid_*）は一般形。DOC1 照合（11-07、Codex が型で確認）：項目そのものではないので宣言の列から外したもの：lemma103_perfectoidTensor（商の自己積の同型を示す証明に利用するが、この型は積射の同型を主張しない。） ／ DOC1 照合：ok 3 件"] _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal_completedQuotientMul_isIso
+attribute [cite BS19 "Lemma 10.3" (partial := special) "三主張とも本体（sorry 0）。名前つきの宣言は単項 J=(g) の核だが、一般形 integralPerfectoid_* と perfectoidKernel_quotient_isIntegralPerfectoid を組めば任意の J で成り立つ（特殊化の宣言はない、11-12 節の見直し）。一般の perfectoid 商 R→R/K に対する混合積消滅・自己積（integralPerfectoid_*）は一般形。DOC1 照合（11-07、Codex が型で確認）：項目そのものではないので宣言の列から外したもの：lemma103_perfectoidTensor（商の自己積の同型を示す証明に利用するが、この型は積射の同型を主張しない。） ／ DOC1 照合：ok 3 件"] _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal_lemma103

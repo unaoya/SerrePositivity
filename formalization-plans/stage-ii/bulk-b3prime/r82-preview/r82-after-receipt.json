@@ -1,0 +1,29 @@
+{
+  "steps": [
+    {
+      "command": [
+        "lake",
+        "build",
+        "SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface",
+        "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingCategories",
+        "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingInterface"
+      ],
+      "rc": 0,
+      "seconds": 13.255564080551267
+    },
+    {
+      "command": [
+        "lake",
+        "env",
+        "/tmp/bulk-w1-b2/private-snapshot/snapshot",
+        "--stable-project",
+        "--modules",
+        "SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface,SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingCategories,SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingInterface",
+        "--output",
+        "/tmp/bulk-b3prime/r82-after.json"
+      ],
+      "rc": 0,
+      "seconds": 11.581192333251238
+    }
+  ]
+}

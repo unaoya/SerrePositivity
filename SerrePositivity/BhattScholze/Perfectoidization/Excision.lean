@@ -3,7 +3,7 @@ module
 public import SerrePositivity.CommutativeAlgebra.Perfectoid.Defs
 public import SerrePositivity.BhattScholze.PerfectoidIdeal.Basic
 public import SerrePositivity.BhattScholze.PerfectoidIdeal.Cover
-public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Excision
+public import SerrePositivity.BhattScholze.Perfectoidization.Interface.Excision
 public import SerrePositivity.CommutativeAlgebra.Localization.Away
 
 /-!
@@ -13,10 +13,10 @@ public import SerrePositivity.CommutativeAlgebra.Localization.Away
 excision 図式の四つの普遍環と標準射、CLMST の KL 標準 excision 四角形への接続（整で a の外で同型な場合を含む）。
 
 ## 方針
-BS 著者版 Corollary 8.12 の環版（PerfectoidizationInterface/Excision）を図式に当てる。
+BS 著者版 Corollary 8.12 の環版（Perfectoidization/Interface/Excision）を図式に当てる。
 
 ## 規約
-BS 著者版 Corollary 8.12 自体は E3 から導いた定理。
+BS 著者版 Corollary 8.12 自体は 導来 perfectoid 化の界面から導いた定理。
 
 ## 使われ方
 CLMST。
@@ -26,7 +26,7 @@ universe u
 
 /-! ## The actual four universal maps of an excision diagram
 
-The closed sides are chosen by B3 from quotients of the specified perfectoid
+The closed sides are chosen from quotients of the specified perfectoid
 rings. Their units are universal for the original source quotients as well.
 Only commutativity and identification of these actual maps are proved here;
 no excision or pullback assertion is added as an input or inferred.
@@ -41,21 +41,21 @@ variable {A B C D : Type u} [CommRing A] [CommRing B] [CommRing C] [CommRing D]
 
 /-- The closed-side unit from the original source quotient. -/
 def perfectoidizationClosedSideUnit (hf : IsPerfectoidization p f) (J : Ideal A) :
-    A ⧸ J →+* QuotientPerfectoidization C (J.map f) p hf.1 :=
-  (toQuotientPerfectoidization C (J.map f) p hf.1).comp
+    A ⧸ J →+* _root_.SerrePositivity.BhattScholze.Semiperfectoid.QuotientPerfectoidization C (J.map f) p hf.1 :=
+  (_root_.SerrePositivity.BhattScholze.Semiperfectoid.toQuotientPerfectoidization C (J.map f) p hf.1).comp
     (Ideal.quotientMap (J.map f) f Ideal.le_comap_map)
 
 /-- This exact unit is universal for the original source quotient. -/
 theorem perfectoidizationClosedSideUnit_isPerfectoidization
     (hf : IsPerfectoidization p f) (J : Ideal A) :
     IsPerfectoidization p (perfectoidizationClosedSideUnit hf J) :=
-  hf.quotient_map J (toQuotientPerfectoidization C (J.map f) p hf.1)
-    (isPerfectoidization_toQuotientPerfectoidization C (J.map f) p hf.1)
+  hf.quotient_map J (_root_.SerrePositivity.BhattScholze.Semiperfectoid.toQuotientPerfectoidization C (J.map f) p hf.1)
+    (_root_.SerrePositivity.BhattScholze.Semiperfectoid.isPerfectoidization_toQuotientPerfectoidization C (J.map f) p hf.1)
 
 /-- The vertical map starts at the specified perfectoid ring, not at a replacement model. -/
 def perfectoidizationClosedSideProjection (hf : IsPerfectoidization p f) (J : Ideal A) :
-    C →+* QuotientPerfectoidization C (J.map f) p hf.1 :=
-  (toQuotientPerfectoidization C (J.map f) p hf.1).comp (Ideal.Quotient.mk (J.map f))
+    C →+* _root_.SerrePositivity.BhattScholze.Semiperfectoid.QuotientPerfectoidization C (J.map f) p hf.1 :=
+  (_root_.SerrePositivity.BhattScholze.Semiperfectoid.toQuotientPerfectoidization C (J.map f) p hf.1).comp (Ideal.Quotient.mk (J.map f))
 
 /-- The original unit square commutes on the entire source ring. -/
 theorem perfectoidizationClosedSideProjection_comp
@@ -67,7 +67,7 @@ theorem perfectoidizationClosedSideProjection_comp
 theorem perfectoidizationClosedSideProjection_eq_zero_of_mem
     (hf : IsPerfectoidization p f) (J : Ideal A) (x : A) (hx : x ∈ J) :
     perfectoidizationClosedSideProjection hf J (f x) = 0 := by
-  change toQuotientPerfectoidization C (J.map f) p hf.1
+  change _root_.SerrePositivity.BhattScholze.Semiperfectoid.toQuotientPerfectoidization C (J.map f) p hf.1
     (Ideal.Quotient.mk (J.map f) (f x)) = 0
   rw [Ideal.Quotient.eq_zero_iff_mem.mpr (Ideal.mem_map_of_mem f hx), map_zero]
 
@@ -76,12 +76,12 @@ exactly the original coefficient map and the original quotient unit. -/
 theorem perfectoidizationClosedSideProjection_originalIdeal
     {R : Type u} [CommRing R] (hR : IsIntegralPerfectoid R p) (α : R →+* A)
     (hf : IsPerfectoidization p f) (J : Ideal A) (a : R) (ha : α a ∈ J) :
-    ∀ s ∈ perfectoidIdeal R p hR a,
+    ∀ s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR a,
       perfectoidizationClosedSideProjection hf J (f (α s)) = 0 := by
   let k := (perfectoidizationClosedSideProjection hf J).comp (f.comp α)
   have hk : k a = 0 := perfectoidizationClosedSideProjection_eq_zero_of_mem hf J (α a) ha
-  exact perfectoidIdeal_le_ker_of_eq_zero R p hR
-    (isPerfectoidization_toQuotientPerfectoidization C (J.map f) p hf.1).1 k a hk
+  exact _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal_le_ker_of_eq_zero R p hR
+    (_root_.SerrePositivity.BhattScholze.Semiperfectoid.isPerfectoidization_toQuotientPerfectoidization C (J.map f) p hf.1).1 k a hk
 
 /-- The actual functorial top map sends the original closed-side ideal into its image. -/
 theorem perfectoidizationClosedComparison_ideal_le
@@ -91,13 +91,13 @@ theorem perfectoidizationClosedComparison_ideal_le
   apply Ideal.map_le_iff_le_comap.mp
   rw [Ideal.map_map, hf.map_comp hg q, ← Ideal.map_map]
 
-/-- The lower horizontal map between the actual B3 closed-side objects. -/
+/-- The lower horizontal map between the actual quotient-perfectoidization closed-side objects. -/
 def perfectoidizationClosedComparison
     (hf : IsPerfectoidization p f) (hg : IsPerfectoidization p g)
     (q : A →+* B) (J : Ideal A) :
-    QuotientPerfectoidization C (J.map f) p hf.1 →+*
-      QuotientPerfectoidization D ((J.map q).map g) p hg.1 :=
-  quotientPerfectoidizationMap p hf.1 hg.1 (IsPerfectoidization.map hf hg q)
+    _root_.SerrePositivity.BhattScholze.Semiperfectoid.QuotientPerfectoidization C (J.map f) p hf.1 →+*
+      _root_.SerrePositivity.BhattScholze.Semiperfectoid.QuotientPerfectoidization D ((J.map q).map g) p hg.1 :=
+  _root_.SerrePositivity.BhattScholze.Almost.quotientPerfectoidizationMap p hf.1 hg.1 (IsPerfectoidization.map hf hg q)
     (J.map f) ((J.map q).map g) (perfectoidizationClosedComparison_ideal_le hf hg q J)
 
 /-- The actual perfectoidization excision square commutes. This is not a pullback assertion. -/
@@ -109,7 +109,7 @@ theorem perfectoidizationClosedComparison_square
       (perfectoidizationClosedSideProjection hg (J.map q)).comp
         (IsPerfectoidization.map hf hg q) := by
   ext x
-  exact quotientPerfectoidizationMap_mk p hf.1 hg.1 (IsPerfectoidization.map hf hg q)
+  exact _root_.SerrePositivity.BhattScholze.Almost.quotientPerfectoidizationMap_mk p hf.1 hg.1 (IsPerfectoidization.map hf hg q)
     (J.map f) ((J.map q).map g) (perfectoidizationClosedComparison_ideal_le hf hg q J) x
 
 /-- The lower horizontal map retains the original quotient units and quotient map. -/
@@ -155,7 +155,7 @@ end PerfectoidizationExcisionDiagram
 
 ## 概要
 BS 著者版 Corollary 8.12（印刷 p.69）の環の引用から、元の普遍単位と
-B3 の閉側の単位を持つ標準四角形の引き戻しを導く。
+商 perfectoid 化による閉側の単位を持つ標準四角形の引き戻しを導く。
 
 ## 方針
 閉側の単位の普遍性を引用へ供給し、四辺を既存の実写像と同定する。
@@ -166,19 +166,19 @@ CLMST は import しない。積分性は q 自身が定める A 代数構造に
 本ファイルに sorry はなく、外部入力は既存 ArcExcision の一件だけである。
 
 ## 使われ方
-CLMST-D と KL-T が元の perfectoid 化の標準 excision 四角形を使うための二つの系である。
+CLMST の降下と Tor 比較 が元の perfectoid 化の標準 excision 四角形を使うための二つの系である。
 -/
 
 @[expose] public noncomputable section PerfectoidizationExcision
 
 namespace SerrePositivity.BhattScholze
-open CategoryTheory SerrePositivity.DerivedCompletion
+open _root_.CategoryTheory _root_.SerrePositivity.DerivedCompletion
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 
 /--
 ## 概要
-付値環への一意延長条件の下で、指定された perfectoid 化と B3 の閉側による
+付値環への一意延長条件の下で、指定された perfectoid 化と 商 perfectoid 化による閉側による
 標準 excision 四角形は引き戻しである（BS 著者版 Corollary 8.12、印刷 p.69）。
 
 ## 方針
@@ -242,7 +242,7 @@ theorem klCanonicalExcisionSquare_of_excision
 有限性・単射性・付値環への追加条件は仮定しない。
 
 ## 使われ方
-CLMST-D と KL-T へ、元の q、a、f、g に関する標準四角形の引き戻しを供給する。
+CLMST の降下と Tor 比較 へ、元の q、a、f、g に関する標準四角形の引き戻しを供給する。
 -/
 theorem klCanonicalExcisionSquare_of_integral_away
     (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime] (hR : IsIntegralPerfectoid R p)
@@ -287,5 +287,5 @@ BS 著者版 Corollary 8.12（印刷 p.69）の環の引用と、標準閉側四
 ## 規約
 引用入力は ArcExcision の一件であり、系の証明に新しい引用を追加しない。
 ## 使われ方
-ルートの一行の import と、CLMST-D・KL-T への公開入口に使う。
+ルートの一行の import と、CLMST の降下・Tor 比較 への公開入口に使う。
 -/

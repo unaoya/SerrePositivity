@@ -1,0 +1,44 @@
+[
+  {
+    "root": "SerrePositivity/BhattScholze/Semiperfectoid",
+    "old_marker_occurrences": 0,
+    "old_marker_files": 0,
+    "engineering_label_candidate_files": 28,
+    "scope_note": "raw source counts include citation-review history strings; classify before changing text"
+  },
+  {
+    "root": "SerrePositivity/BhattScholze/Andre",
+    "old_marker_occurrences": 0,
+    "old_marker_files": 0,
+    "engineering_label_candidate_files": 24,
+    "scope_note": "raw source counts include citation-review history strings; classify before changing text"
+  },
+  {
+    "root": "SerrePositivity/BhattScholze/Perfectoidization",
+    "old_marker_occurrences": 0,
+    "old_marker_files": 0,
+    "engineering_label_candidate_files": 8,
+    "scope_note": "raw source counts include citation-review history strings; classify before changing text"
+  },
+  {
+    "root": "SerrePositivity/BhattScholze/Almost",
+    "old_marker_occurrences": 0,
+    "old_marker_files": 0,
+    "engineering_label_candidate_files": 6,
+    "scope_note": "raw source counts include citation-review history strings; classify before changing text"
+  },
+  {
+    "root": "SerrePositivity/BhattScholze/PerfectoidIdeal",
+    "old_marker_occurrences": 0,
+    "old_marker_files": 0,
+    "engineering_label_candidate_files": 0,
+    "scope_note": "raw source counts include citation-review history strings; classify before changing text"
+  },
+  {
+    "root": "SerrePositivity/BhattScholze/IntegralPerfectoidization",
+    "old_marker_occurrences": 0,
+    "old_marker_files": 0,
+    "engineering_label_candidate_files": 4,
+    "scope_note": "raw source counts include citation-review history strings; classify before changing text"
+  }
+]

@@ -1,0 +1,365 @@
+{
+  "baseline": "32d364b53",
+  "applied_or_already_main": 22,
+  "final_complete": 2,
+  "total": 22,
+  "additional": 0,
+  "count_policy": "Applied does not mean complete until actual v3b/citations/root/all formal audits/full verify and full scope check all pass.",
+  "items": [
+    {
+      "id": "B3P-01",
+      "ledger": "R8-2",
+      "status": "applied-awaiting-final-gates",
+      "plan": "Ordinary categories and completion into RingCategories/RingInterface first; preserve nerve/cones in BS; reuse RingCompletion",
+      "implementation": "環のSetup・CompletionをRingCategories/RingInterfaceへ分割。元のinterfaceは神経・錐を保つ。",
+      "evidence_files": [
+        "SerrePositivity/HomologicalAlgebra/DerivedCompletion/RingCategories.lean",
+        "SerrePositivity/HomologicalAlgebra/DerivedCompletion/RingInterface.lean",
+        "SerrePositivity/BhattScholze/Perfectoidization/Interface/Derived.lean"
+      ],
+      "checks": {},
+      "stage0_plan": "Ordinary categories and completion into RingCategories/RingInterface first; preserve nerve/cones in BS; reuse RingCompletion"
+    },
+    {
+      "id": "B3P-02",
+      "ledger": "R7-3(a)",
+      "status": "already-main",
+      "plan": "Generic MonicRelation and OrdinaryRoots Family imports already CA",
+      "implementation": "基準mainでMonicRelation・Familyの汎用多項式補題はKoszulRegular。再移動しない。",
+      "evidence_files": [
+        "SerrePositivity/CommutativeAlgebra/KoszulRegular/MonicRelation.lean"
+      ],
+      "checks": {},
+      "stage0_plan": "Generic MonicRelation and OrdinaryRoots Family imports already CA"
+    },
+    {
+      "id": "B3P-03",
+      "ledger": "R7-3(b)",
+      "status": "applied-awaiting-final-gates",
+      "plan": "Generic IteratedPDH0 extraction; DivisionResidue requires Normalized dependency closure, provisional destination only; withdraw if unsupported",
+      "implementation": "八辺は基準解消2・今回解消5・維持1。一般のIteratedPDH0とAdjoinResidueのみ抽出、忠実平坦性のAndre依存は残す。",
+      "evidence_files": [
+        "SerrePositivity/HomologicalAlgebra/DerivedCompletion/IteratedPDH0.lean",
+        "SerrePositivity/BhattScholze/Delta/Division/AdjoinResidue.lean"
+      ],
+      "checks": {
+        "edge_ledger": "r7-3b-edge-ledger.json"
+      },
+      "stage0_plan": "Generic IteratedPDH0 extraction; DivisionResidue requires Normalized dependency closure, provisional destination only; withdraw if unsupported"
+    },
+    {
+      "id": "B3P-04",
+      "ledger": "R7-3(c)",
+      "status": "applied-awaiting-final-gates",
+      "plan": "PowerRootPolynomial to BS Semiperfectoid Quasiregular: Delta dependency excludes pure CA",
+      "implementation": "PowerRootPolynomialはDelta依存を保ちSemiperfectoid/Quasiregular/RootFamiliesへ。",
+      "evidence_files": [
+        "SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/RootFamilies/PowerRootPolynomial.lean"
+      ],
+      "checks": {},
+      "stage0_plan": "PowerRootPolynomial to BS Semiperfectoid Quasiregular: Delta dependency excludes pure CA"
+    },
+    {
+      "id": "B3P-05",
+      "ledger": "R7-3(d)",
+      "status": "already-main",
+      "plan": "exists_boundedPerfectPrismPresentation already Prism/Perfectoid/PerfectoidPrismPresentation",
+      "implementation": "基準mainで存在定理はPrism/Perfectoid。再移動しない。",
+      "evidence_files": [
+        "SerrePositivity/BhattScholze/Prism/Perfectoid/PerfectoidPrismPresentation.lean"
+      ],
+      "checks": {},
+      "stage0_plan": "exists_boundedPerfectPrismPresentation already Prism/Perfectoid/PerfectoidPrismPresentation"
+    },
+    {
+      "id": "B3P-06",
+      "ledger": "R7-4",
+      "status": "applied-awaiting-final-gates",
+      "plan": "Semiperfectoid grouped by mathematical topic; module moves, method namespaces retained",
+      "implementation": "Discrete・Lci・Quasiregular・Perfection・Surjectivityに分類。Cotangentは作らない。",
+      "evidence_files": [],
+      "checks": {
+        "Semiperfectoid_moves": 57,
+        "whole_module_map": "B4/module-map.json"
+      },
+      "stage0_plan": "Semiperfectoid grouped by mathematical topic; module moves, method namespaces retained"
+    },
+    {
+      "id": "B3P-07",
+      "ledger": "R7-5",
+      "status": "applied-awaiting-final-gates",
+      "plan": "Normalize public Semiperfectoid names; kernel-generated/private completion required",
+      "implementation": "Semiperfectoidの宣言名とディレクトリを揃える。型に属するメソッドは型の実名前空間を保つ。",
+      "evidence_files": [],
+      "checks": {
+        "owner_table": "B4/public-owner-map.json"
+      },
+      "stage0_plan": "Normalize public Semiperfectoid names; kernel-generated/private completion required"
+    },
+    {
+      "id": "B3P-08",
+      "ledger": "R7-6(c)",
+      "status": "applied-awaiting-final-gates",
+      "plan": "Publish six proved endpoints incl TensorCompatibility in root; existing four scripts/audit files stay",
+      "implementation": "RootEnvelope三本・PerfectPrismDivisionComparison・PDivisionSourceを公開。Audit四本は既存scriptsの配置を維持。",
+      "evidence_files": [],
+      "checks": {
+        "publication_targets": [
+          {
+            "module": "SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.RootEnvelope.PerfectPrism",
+            "root_reachable": true
+          },
+          {
+            "module": "SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.RootEnvelope.RawCompletion",
+            "root_reachable": true
+          },
+          {
+            "module": "SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.RootEnvelope.Source",
+            "root_reachable": true
+          },
+          {
+            "module": "SerrePositivity.BhattScholze.Semiperfectoid.Perfection.PerfectPrismDivisionComparison",
+            "root_reachable": true
+          },
+          {
+            "module": "SerrePositivity.BhattScholze.Andre.Envelope.PDivisionSource",
+            "root_reachable": true
+          },
+          {
+            "module": "SerrePositivity.BhattScholze.Perfectoidization.TensorCompatibility",
+            "root_reachable": true
+          }
+        ],
+        "audit_coverage": "all-audit-inventory.json"
+      },
+      "stage0_plan": "Publish six proved endpoints incl TensorCompatibility in root; existing four scripts/audit files stay"
+    },
+    {
+      "id": "B3P-09",
+      "ledger": "R7-7",
+      "status": "applied-awaiting-final-gates",
+      "plan": "Classify engineering labels; historical citation-review comments not globally replaced",
+      "implementation": "旧見出し・未存在パス・工程ラベル・draftsとの古い比較をコメントだけ訂正。",
+      "evidence_files": [],
+      "checks": {
+        "comment_receipt": "bundle-docs-receipt.json",
+        "old_label_scan": "remaining-old-labels.json"
+      },
+      "stage0_plan": "Classify engineering labels; historical citation-review comments not globally replaced"
+    },
+    {
+      "id": "B3P-10",
+      "ledger": "R8-1",
+      "status": "applied-awaiting-final-gates",
+      "plan": "TheoryInterface and approved CAlg_R three files to BS; names preserved; aggregate imports corrected without reverse stubs",
+      "implementation": "TheoryInterfaceと承認済みCAlg_R三本をBSへ移動。CAlg_Rは宣言名・型・証明維持。EInfinityからBSへの直接/間接依存0。",
+      "evidence_files": [
+        "SerrePositivity/BhattScholze/Perfectoidization/Interface/TheoryInterface.lean",
+        "SerrePositivity/BhattScholze/Perfectoidization/Interface/CAlg/Comparison.lean",
+        "SerrePositivity/BhattScholze/Perfectoidization/Interface/CAlg/Definition.lean",
+        "SerrePositivity/BhattScholze/Perfectoidization/Interface/CAlg/DerivedCorollary.lean"
+      ],
+      "checks": {},
+      "stage0_plan": "TheoryInterface and approved CAlg_R three files to BS; names preserved; aggregate imports corrected without reverse stubs"
+    },
+    {
+      "id": "B3P-11",
+      "ledger": "R8-3",
+      "status": "applied-awaiting-final-gates",
+      "plan": "InitialLimit generic to Kerodon; InitialBridge to BS Interface",
+      "implementation": "IntegralExistenceを一般の初期極限・指定単位のbridge・残る存在に分割。",
+      "evidence_files": [
+        "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/Cofinality/InitialValueCone.lean",
+        "SerrePositivity/BhattScholze/Perfectoidization/Interface/InitialBridge.lean",
+        "SerrePositivity/BhattScholze/Perfectoidization/Interface/IntegralExistence.lean"
+      ],
+      "checks": {},
+      "stage0_plan": "InitialLimit generic to Kerodon; InitialBridge to BS Interface"
+    },
+    {
+      "id": "B3P-12",
+      "ledger": "R8-4",
+      "status": "applied-awaiting-final-gates",
+      "plan": "Remove obsolete Inputs wrapper and redirect finite consumer; selected E3 Inputs retained",
+      "implementation": "旧Inputs wrapper削除。FiniteはBS版を直接呼び、FinitePresentationを含む元の型の引数列を明示して保存。",
+      "evidence_files": [
+        "SerrePositivity/BhattScholze/Perfectoidization/Finite.lean"
+      ],
+      "checks": {
+        "strict_comparison": "actual-preservation/009/assessment.json",
+        "signature_restoration": "finite-fp-restoration.json"
+      },
+      "stage0_plan": "Remove obsolete Inputs wrapper and redirect finite consumer; selected E3 Inputs retained"
+    },
+    {
+      "id": "B3P-13",
+      "ledger": "R8-7",
+      "status": "applied-awaiting-final-gates",
+      "plan": "Publish TensorCompatibility; validate root closure",
+      "implementation": "TensorCompatibilityをBS集約へ追加して公開。",
+      "evidence_files": [
+        "SerrePositivity/BhattScholze/Perfectoidization/TensorCompatibility.lean"
+      ],
+      "checks": {
+        "root_reachability": [
+          {
+            "module": "SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.RootEnvelope.PerfectPrism",
+            "root_reachable": true
+          },
+          {
+            "module": "SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.RootEnvelope.RawCompletion",
+            "root_reachable": true
+          },
+          {
+            "module": "SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.RootEnvelope.Source",
+            "root_reachable": true
+          },
+          {
+            "module": "SerrePositivity.BhattScholze.Semiperfectoid.Perfection.PerfectPrismDivisionComparison",
+            "root_reachable": true
+          },
+          {
+            "module": "SerrePositivity.BhattScholze.Andre.Envelope.PDivisionSource",
+            "root_reachable": true
+          },
+          {
+            "module": "SerrePositivity.BhattScholze.Perfectoidization.TensorCompatibility",
+            "root_reachable": true
+          }
+        ]
+      },
+      "stage0_plan": "Publish TensorCompatibility; validate root closure"
+    },
+    {
+      "id": "B3P-14",
+      "ledger": "R8-8",
+      "status": "applied-awaiting-final-gates",
+      "plan": "RootAdjunction to Construction; retain mathematical content",
+      "implementation": "DerivedからInterface、RootAdjunctionはConstruction、FiniteProductはPrism/Perfectoid。drafts将来欄18本は第一行だけ。",
+      "evidence_files": [
+        "SerrePositivity/BhattScholze/Perfectoidization/Construction/RootAdjunction.lean",
+        "SerrePositivity/BhattScholze/Prism/Perfectoid/FiniteProduct.lean"
+      ],
+      "checks": {
+        "draft_headers": "draft-header-plan.json"
+      },
+      "stage0_plan": "RootAdjunction to Construction; retain mathematical content"
+    },
+    {
+      "id": "B3P-15",
+      "ledger": "R8-9",
+      "status": "applied-awaiting-final-gates",
+      "plan": "Perfectoid FiniteProduct to Prism/Perfectoid",
+      "implementation": "R8-9の工程・旧・古い利用先をコメントだけ訂正。",
+      "evidence_files": [],
+      "checks": {
+        "comment_receipt": "bundle-docs-receipt.json"
+      },
+      "stage0_plan": "Perfectoid FiniteProduct to Prism/Perfectoid"
+    },
+    {
+      "id": "B3P-16",
+      "ledger": "R10-3",
+      "status": "applied-awaiting-final-gates",
+      "plan": "Almost namespace normalization; preserve distinct systems, only BR43 explicit leaf renames",
+      "implementation": "BR43の二つの紛らわしい名前を改名。加群と複体の二つの系は別々に維持。",
+      "evidence_files": [],
+      "checks": {
+        "leaf_renames": [
+          {
+            "old": "SerrePositivity.BhattScholze.Almost.perfectoidIdeal_radical",
+            "new": "SerrePositivity.BhattScholze.Almost.perfectoidKernel_radical",
+            "old_module": "SerrePositivity.BhattScholze.Almost.AlmostConnectivity",
+            "new_module": "SerrePositivity.BhattScholze.Almost.AlmostConnectivity",
+            "source_line": 70,
+            "kind": "theorem"
+          },
+          {
+            "old": "SerrePositivity.BhattScholze.Almost.IsJAlmostZero",
+            "new": "SerrePositivity.BhattScholze.Almost.IsAlmostZeroComplex",
+            "old_module": "SerrePositivity.BhattScholze.Almost.AlmostConnectivity",
+            "new_module": "SerrePositivity.BhattScholze.Almost.AlmostConnectivity",
+            "source_line": 89,
+            "kind": "def"
+          }
+        ]
+      },
+      "stage0_plan": "Almost namespace normalization; preserve distinct systems, only BR43 explicit leaf renames"
+    },
+    {
+      "id": "B3P-17",
+      "ledger": "R10-5(a)",
+      "status": "applied-awaiting-final-gates",
+      "plan": "SupportedQuotient adjacent to Perfectoidization ExcisionTor",
+      "implementation": "SupportedQuotientをExcisionTorの隣へ。",
+      "evidence_files": [
+        "SerrePositivity/BhattScholze/Perfectoidization/SupportedQuotient.lean"
+      ],
+      "checks": {},
+      "stage0_plan": "SupportedQuotient adjacent to Perfectoidization ExcisionTor"
+    },
+    {
+      "id": "B3P-18",
+      "ledger": "R10-5(b)",
+      "status": "applied-awaiting-final-gates",
+      "plan": "Generic reduced power annihilator to CA",
+      "implementation": "被約環の冪による零化補題をCommutativeAlgebraへ。",
+      "evidence_files": [
+        "SerrePositivity/CommutativeAlgebra/Reduced/PowerAnnihilator.lean"
+      ],
+      "checks": {},
+      "stage0_plan": "Generic reduced power annihilator to CA"
+    },
+    {
+      "id": "B3P-19",
+      "ledger": "R10-5(d)",
+      "status": "applied-awaiting-final-gates",
+      "plan": "Clarify CompletedTensor module docstring for §10 common core; no forced split",
+      "implementation": "CompletedTensorに§8と§10で共有する芯を明記、型・証明を変える分割をしない。",
+      "evidence_files": [
+        "SerrePositivity/BhattScholze/Perfectoidization/CompletedTensor.lean"
+      ],
+      "checks": {},
+      "stage0_plan": "Clarify CompletedTensor module docstring for §10 common core; no forced split"
+    },
+    {
+      "id": "B3P-20",
+      "ledger": "R10-5(f/g)",
+      "status": "applied-awaiting-final-gates",
+      "plan": "IntegralClosureCompletion to Almost; IntegralApproximation to CA; E3-dependent existence remains Interface",
+      "implementation": "IntegralClosureCompletionはAlmost、純粋なIntegralApproximationはCAへ。E3依存の存在はInterfaceに維持。",
+      "evidence_files": [
+        "SerrePositivity/BhattScholze/Almost/IntegralClosureCompletion.lean",
+        "SerrePositivity/CommutativeAlgebra/IntegralApproximation/FilteredAlgebra.lean"
+      ],
+      "checks": {},
+      "stage0_plan": "IntegralClosureCompletion to Almost; IntegralApproximation to CA; E3-dependent existence remains Interface"
+    },
+    {
+      "id": "B3P-21",
+      "ledger": "R10-7",
+      "status": "applied-awaiting-final-gates",
+      "plan": "Classify remaining Almost engineering labels and names",
+      "implementation": "Almostの古い説明・ノートと工程の記述を整理。属性文字列は維持。",
+      "evidence_files": [],
+      "checks": {
+        "comment_receipt": "bundle-docs-receipt.json"
+      },
+      "stage0_plan": "Classify remaining Almost engineering labels and names"
+    },
+    {
+      "id": "B3P-22",
+      "ledger": "B3 residual",
+      "status": "applied-awaiting-final-gates",
+      "plan": "Reconcile retained-and-deferred and BS 34 section edges; exclude R83/R21 and maintenance",
+      "implementation": "B3維持表を照合：IntegralExistenceは分割後移動。PD固有cochainHomotopy・R83/Spectrum・広いR21・未使用削除は範囲外のまま。BS逆辺34は1解消33維持。",
+      "evidence_files": [],
+      "checks": {
+        "retentions": "../bulk-w1-b3/retained-and-deferred.json",
+        "edge_ledger": "actual-bs-reverse-edge-ledger.json",
+        "preexisting_section_edges": "actual-layer-comparison.json"
+      },
+      "stage0_plan": "Reconcile retained-and-deferred and BS 34 section edges; exclude R83/R21 and maintenance"
+    }
+  ]
+}

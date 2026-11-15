@@ -35,14 +35,14 @@ set_option backward.isDefEq.respectTransparency false
 universe u
 
 namespace SerrePositivity.BhattScholze
-open Section2
+open _root_.SerrePositivity.Section2
 
 /-- perfectoid ideal の核の定義で使われる、主イデアル商の選ばれた perfectoid 化。 -/
 abbrev perfectoidQuotient (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime]
     (hR : IsIntegralPerfectoid R p) (g : R) : Type u :=
   letI : Algebra.FinitePresentation R (R ⧸ Ideal.span {g}) :=
     Algebra.FinitePresentation.quotient (Submodule.fg_span_singleton g)
-  QuotientPerfectoidization R (Ideal.span {g}) p hR
+  _root_.SerrePositivity.BhattScholze.Semiperfectoid.QuotientPerfectoidization R (Ideal.span {g}) p hR
 
 /-- 標準写像が全射なら、核で割った環は選ばれたperfectoid化そのものになる。
 存在と普遍性だけで全射性が従うとは主張しない。 -/
@@ -51,8 +51,8 @@ def perfectoidIdealQuotientEquiv
     (hR : IsIntegralPerfectoid R p) (g : R)
     (hsurj : letI : Algebra.FinitePresentation R (R ⧸ Ideal.span {g}) :=
       Algebra.FinitePresentation.quotient (Submodule.fg_span_singleton g)
-      Function.Surjective (toQuotientPerfectoidization R (Ideal.span {g}) p hR)) :
-    R ⧸ perfectoidIdeal R p hR g ≃+* perfectoidQuotient R p hR g :=
+      Function.Surjective (_root_.SerrePositivity.BhattScholze.Semiperfectoid.toQuotientPerfectoidization R (Ideal.span {g}) p hR)) :
+    R ⧸ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g ≃+* perfectoidQuotient R p hR g :=
   letI : Algebra.FinitePresentation R (R ⧸ Ideal.span {g}) :=
     Algebra.FinitePresentation.quotient (Submodule.fg_span_singleton g)
   RingHom.quotientKerEquivOfSurjective
@@ -64,12 +64,12 @@ def perfectoidIdealQuotientEquiv
     (hR : IsIntegralPerfectoid R p) (g : R)
     (hsurj : letI : Algebra.FinitePresentation R (R ⧸ Ideal.span {g}) :=
       Algebra.FinitePresentation.quotient (Submodule.fg_span_singleton g)
-      Function.Surjective (toQuotientPerfectoidization R (Ideal.span {g}) p hR)) (x : R) :
+      Function.Surjective (_root_.SerrePositivity.BhattScholze.Semiperfectoid.toQuotientPerfectoidization R (Ideal.span {g}) p hR)) (x : R) :
     perfectoidIdealQuotientEquiv R p hR g hsurj
-      (Ideal.Quotient.mk (perfectoidIdeal R p hR g) x) =
+      (Ideal.Quotient.mk (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g) x) =
       (letI : Algebra.FinitePresentation R (R ⧸ Ideal.span {g}) :=
         Algebra.FinitePresentation.quotient (Submodule.fg_span_singleton g)
-       toQuotientPerfectoidization R (Ideal.span {g}) p hR
+       _root_.SerrePositivity.BhattScholze.Semiperfectoid.toQuotientPerfectoidization R (Ideal.span {g}) p hR
          (Ideal.Quotient.mk (Ideal.span {g}) x)) := rfl
 
 /-- 選ばれた perfectoid 化の被約性が与えられれば、冪の所属から perfectoid ideal への所属が従う。
@@ -79,12 +79,12 @@ theorem mem_perfectoidIdeal_of_pow_mem_span_of_reduced
     (hR : IsIntegralPerfectoid R p) (g : R)
     (hred : IsReduced (perfectoidQuotient R p hR g))
     (x : R) (k : ℕ) (hx : x ^ k ∈ Ideal.span {g}) :
-    x ∈ perfectoidIdeal R p hR g := by
+    x ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g := by
   let : Algebra.FinitePresentation R (R ⧸ Ideal.span {g}) :=
     Algebra.FinitePresentation.quotient (Submodule.fg_span_singleton g)
-  let : IsReduced (QuotientPerfectoidization R (Ideal.span {g}) p hR) := hred
+  let : IsReduced (_root_.SerrePositivity.BhattScholze.Semiperfectoid.QuotientPerfectoidization R (Ideal.span {g}) p hR) := hred
   exact mem_kernel_comp_quotient_of_pow_mem_span g
-    (toQuotientPerfectoidization R (Ideal.span {g}) p hR) x k hx
+    (_root_.SerrePositivity.BhattScholze.Semiperfectoid.toQuotientPerfectoidization R (Ideal.span {g}) p hR) x k hx
 
 /-- Every chosen principal quotient perfectoidization is reduced, including p-torsion bases. -/
 theorem perfectoidQuotient_isReduced
@@ -93,14 +93,14 @@ theorem perfectoidQuotient_isReduced
     IsReduced (perfectoidQuotient R p hR g) := by
   let : Algebra.FinitePresentation R (R ⧸ Ideal.span {g}) :=
     Algebra.FinitePresentation.quotient (Submodule.fg_span_singleton g)
-  exact (isPerfectoidization_toQuotientPerfectoidization R (Ideal.span {g}) p hR).1.isReduced _ p
+  exact (_root_.SerrePositivity.BhattScholze.Semiperfectoid.isPerfectoidization_toQuotientPerfectoidization R (Ideal.span {g}) p hR).1.isReduced _ p
 
 /-- Powers in the original principal ideal give membership without a reducedness hypothesis. -/
 theorem mem_perfectoidIdeal_of_pow_mem_span
     (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime]
     (hR : IsIntegralPerfectoid R p) (g x : R) (k : ℕ)
-    (hx : x ^ k ∈ Ideal.span {g}) : x ∈ perfectoidIdeal R p hR g :=
-  radical_span_le_perfectoidIdeal R p hR g ⟨k, hx⟩
+    (hx : x ^ k ∈ Ideal.span {g}) : x ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g :=
+  _root_.SerrePositivity.BhattScholze.Almost.radical_span_le_perfectoidIdeal R p hR g ⟨k, hx⟩
 
 /-- Compatibility for the principal quotient by p. -/
 theorem perfectoidQuotient_p_isReduced
@@ -113,7 +113,7 @@ variable (A : Type u) [CommRing A] {h : ℕ} (t : Fin h → A) (p : ℕ) [Fact p
 theorem completedTowerRoot_mem_perfectoidIdeal
     (hperf : IsIntegralPerfectoid (CompletedTower A t p) p)
     (n : ℕ) (i : Fin h) :
-    Section2.completedTowerRoot A t p n i ∈ perfectoidIdeal (CompletedTower A t p) p hperf
+    Section2.completedTowerRoot A t p n i ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf
       (algebraMap A (CompletedTower A t p) (t i)) := by
   apply mem_perfectoidIdeal_of_pow_mem_span _ p hperf _ _ (p ^ n)
   rw [Section2.completedTowerRoot_pow]
@@ -127,7 +127,7 @@ theorem completedTowerRoot_mem_perfectoidIdeal_p_of_reduced
       (p : CompletedTower A t p)))
     (n : ℕ) (i : Fin h) (hti : t i = (p : A)) :
     Section2.completedTowerRoot A t p n i ∈
-      perfectoidIdeal (CompletedTower A t p) p hperf (p : CompletedTower A t p) := by
+      _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf (p : CompletedTower A t p) := by
   apply mem_perfectoidIdeal_of_pow_mem_span_of_reduced _ p hperf _ hred _ (p ^ n)
   rw [Section2.completedTowerRoot_pow, hti, map_natCast]
   exact Ideal.subset_span (Set.mem_singleton _)
@@ -137,7 +137,7 @@ theorem completedTowerRoot_mem_perfectoidIdeal_p
     (hperf : IsIntegralPerfectoid (CompletedTower A t p) p)
     (n : ℕ) (i : Fin h) (hti : t i = (p : A)) :
     Section2.completedTowerRoot A t p n i ∈
-      perfectoidIdeal (CompletedTower A t p) p hperf (p : CompletedTower A t p) :=
+      _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf (p : CompletedTower A t p) :=
   completedTowerRoot_mem_perfectoidIdeal_p_of_reduced A t p hperf
     (perfectoidQuotient_p_isReduced (CompletedTower A t p) p hperf) n i hti
 

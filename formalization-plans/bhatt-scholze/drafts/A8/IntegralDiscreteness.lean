@@ -1,4 +1,4 @@
--- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Derived.IntegralDiscreteness（仮。原典 Thm 10.11 と E3 の欄 integral）
+-- 将来の置き場所：SerrePositivity.BhattScholze.Almost.IntegralDiscreteness（仮。原典 Thm 10.11 と E3 の欄 integral）
 -- 設計書：formalization-plans/bhatt-scholze/a8-design.md §2.4・§3.3、単位 A8-4。基準コミット efa846fe8。型検査対象（5∞-0）。
 module
 public import SerrePositivity.HomologicalAlgebra.DerivedInfinity.VertexPredicates

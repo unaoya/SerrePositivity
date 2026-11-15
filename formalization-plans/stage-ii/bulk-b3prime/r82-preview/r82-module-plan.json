@@ -1,0 +1,39 @@
+{
+  "modules": {},
+  "declarations": {
+    "SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface": {
+      "SerrePositivity.BhattScholze.PerfectoidizationInterface.A_R": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingCategories",
+      "SerrePositivity.BhattScholze.PerfectoidizationInterface.ArcOutside": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingCategories",
+      "SerrePositivity.BhattScholze.PerfectoidizationInterface.C_R": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingCategories",
+      "SerrePositivity.BhattScholze.PerfectoidizationInterface.PerfUnder_u": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingCategories",
+      "SerrePositivity.BhattScholze.PerfectoidizationInterface.completeInclusion": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingCategories",
+      "SerrePositivity.BhattScholze.PerfectoidizationInterface.completeProperty": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingCategories",
+      "SerrePositivity.BhattScholze.PerfectoidizationInterface.ofAlgebra": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingCategories",
+      "SerrePositivity.BhattScholze.PerfectoidizationInterface.perfectoidTargetInclusion": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingCategories",
+      "SerrePositivity.BhattScholze.PerfectoidizationInterface.perfectoidTargetProperty": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingCategories",
+      "SerrePositivity.BhattScholze.PerfectoidizationInterface.quotientAlgebra": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingCategories",
+      "SerrePositivity.BhattScholze.PerfectoidizationInterface.quotientComparison": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingCategories",
+      "SerrePositivity.BhattScholze.PerfectoidizationInterface.quotientProjection": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingCategories",
+      "SerrePositivity.BhattScholze.PerfectoidizationInterface.quotientSquare_commutes": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingCategories",
+      "SerrePositivity.BhattScholze.PerfectoidizationInterface.targetAlgebra": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingCategories",
+      "SerrePositivity.BhattScholze.PerfectoidizationInterface.targetUnitMap": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingCategories",
+      "SerrePositivity.BhattScholze.PerfectoidizationInterface.targetUnitMap_naturality": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingCategories",
+      "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionAlgebraUnit": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingInterface",
+      "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionAlgebraUnitIso": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingInterface",
+      "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionFunctor": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingInterface",
+      "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionLift_comp": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingInterface",
+      "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionMap": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingInterface",
+      "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionMap_comp": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingInterface",
+      "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionMap_comp_map": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingInterface",
+      "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionMap_id": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingInterface",
+      "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionRing_complete": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingInterface",
+      "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionTargetEquivalence": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingInterface",
+      "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionUnitIso": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingInterface",
+      "SerrePositivity.BhattScholze.PerfectoidizationInterface.ringCompletionFunctor": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingInterface",
+      "SerrePositivity.BhattScholze.PerfectoidizationInterface.targetExtension": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingInterface",
+      "SerrePositivity.BhattScholze.PerfectoidizationInterface.targetExtension_algebra": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingInterface",
+      "SerrePositivity.BhattScholze.PerfectoidizationInterface.targetRestriction": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingInterface",
+      "SerrePositivity.BhattScholze.PerfectoidizationInterface.targetRestriction_algebra": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingInterface"
+    }
+  }
+}

@@ -1,8 +1,9 @@
 module
+public import Mathlib.FieldTheory.IsAlgClosed.AlgebraicClosure
 
 public import SerrePositivity.BhattScholze.Perfectoidization.Arc.Descent.ArcPerfectoidBase
 public import SerrePositivity.BhattScholze.Perfectoidization.Arc.Valuations.ArcValuationCompletion
-public import SerrePositivity.BhattScholze.Semiperfectoid.CharacteristicP
+public import SerrePositivity.BhattScholze.Semiperfectoid.Perfection.CharacteristicP
 public import SerrePositivity.CommutativeAlgebra.Perfectoid.Fontaine
 public import Mathlib.FieldTheory.AlgebraicClosure
 public import Mathlib.RingTheory.Algebraic.Integral
@@ -35,15 +36,15 @@ universe u
 
 namespace SerrePositivity.BhattScholze.Perfectoidization.Derived
 
-open CategoryTheory IsLocalRing Polynomial
-open scoped nonZeroDivisors
+open _root_.CategoryTheory _root_.IsLocalRing _root_.Polynomial
+open scoped _root_.nonZeroDivisors
 
 section RankOne
 
 variable {V W : Type u} [CommRing V] [IsDomain V] [ValuationRing V]
   [CommRing W] [IsDomain W] [IsLocalRing W] [Algebra V W]
 
-private theorem finite_coeff_dvd (P : V[X]) {s : Finset ℕ} (hs : s.Nonempty) :
+private theorem _root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.finite_coeff_dvd (P : V[X]) {s : Finset ℕ} (hs : s.Nonempty) :
     ∃ n ∈ s, ∀ m ∈ s, P.coeff n ∣ P.coeff m := by
   classical
   induction s using Finset.induction_on with
@@ -66,11 +67,11 @@ private theorem finite_coeff_dvd (P : V[X]) {s : Finset ℕ} (hs : s.Nonempty) :
       exact ⟨j, by simp, by simp⟩
 
 omit [IsLocalRing W] in
-private theorem algebraic_has_relation_with_unit_coeff
+private theorem _root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.algebraic_has_relation_with_unit_coeff
     (hinj : Function.Injective (algebraMap V W)) {x : W} (hx : IsAlgebraic V x) :
     ∃ P : V[X], aeval x P = 0 ∧ ∃ n, P.coeff n = 1 := by
   obtain ⟨P, hP, hx⟩ := hx
-  obtain ⟨n, hn, hdvd⟩ := finite_coeff_dvd P (support_nonempty.mpr hP)
+  obtain ⟨n, hn, hdvd⟩ := _root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.finite_coeff_dvd P (support_nonempty.mpr hP)
   have hn0 : P.coeff n ≠ 0 := mem_support_iff.mp hn
   have hdiv : C (P.coeff n) ∣ P := (C_dvd_iff_dvd_coeff _ _).mpr fun m => by
     by_cases hm : m ∈ P.support
@@ -87,7 +88,7 @@ private theorem algebraic_has_relation_with_unit_coeff
   exact ⟨Q, (mul_eq_zero.mp hx).resolve_left hNZ, n, hcoeff'⟩
 
 /-- 階数 1 の付値環の局所代数的拡大で、整域であるものの Krull 次元は 1。 -/
-theorem rankOneValuation_dim_of_algebraic [Algebra.IsAlgebraic V W]
+theorem _root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.rankOneValuation_dim_of_algebraic [Algebra.IsAlgebraic V W]
     [IsLocalHom (algebraMap V W)] (hinj : Function.Injective (algebraMap V W))
     (hV : ringKrullDim V = 1) : ringKrullDim W = 1 := by
   have hV' := ringKrullDim_eq_one_iff_of_isLocalRing_isDomain.mp hV
@@ -129,7 +130,7 @@ theorem rankOneValuation_dim_of_algebraic [Algebra.IsAlgebraic V W]
       constructor
       intro y
       obtain ⟨z, rfl⟩ := Ideal.Quotient.mk_surjective y
-      obtain ⟨Q, hQ, n, hn⟩ := algebraic_has_relation_with_unit_coeff hinj
+      obtain ⟨Q, hQ, n, hn⟩ := _root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.algebraic_has_relation_with_unit_coeff hinj
         (Algebra.IsAlgebraic.isAlgebraic (R := V) z)
       let Q' := Q.map (Ideal.Quotient.mk (maximalIdeal V))
       refine ⟨Q', ?_, ?_⟩
@@ -151,7 +152,7 @@ section Perfectoid
 
 variable (p : ℕ) [Fact p.Prime]
 
-private theorem valuation_dvd_of_pow_dvd {W : Type u} [CommRing W] [IsDomain W] [ValuationRing W]
+private theorem _root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.valuation_dvd_of_pow_dvd {W : Type u} [CommRing W] [IsDomain W] [ValuationRing W]
     {x y : W} (h : x ^ p ∣ y ^ p) : x ∣ y := by
   by_cases hy : y = 0
   · rw [hy]
@@ -170,11 +171,11 @@ private theorem valuation_dvd_of_pow_dvd {W : Type u} [CommRing W] [IsDomain W] 
   exact (associated_mul_unit_right _ _ hu).dvd'
 
 /-- 階数 1 の p 完備付値環は、mod p の Frobenius の全射性と p の両立根から整 perfectoid。 -/
-theorem IsRankOneCompleteValuationRing.isPerfectoid_of_roots
-    {W : Type u} [CommRing W] (hW : IsRankOneCompleteValuationRing p W)
+theorem _root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.IsRankOneCompleteValuationRing.isPerfectoid_of_roots
+    {W : Type u} [CommRing W] (hW : _root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.IsRankOneCompleteValuationRing p W)
     (hF : Function.Surjective (fun x : ModP W p => x ^ p))
     (ρ : ℕ → W) (hzero : ρ 0 = (p : W)) (hpow : ∀ n, ρ (n + 1) ^ p = ρ n) :
-    IsIntegralPerfectoid W p := by
+    _root_.SerrePositivity.IsIntegralPerfectoid W p := by
   let := hW.isDomain
   let := hW.valuationRing
   let := hW.adicComplete
@@ -187,14 +188,14 @@ theorem IsRankOneCompleteValuationRing.isPerfectoid_of_roots
     let : PerfectRing W p := ⟨⟨frobenius_inj W p, fun x => by
       obtain ⟨y, hy⟩ := hF (e.symm x)
       exact ⟨e y, (map_pow e y p).symm.trans (congrArg e hy |>.trans (e.apply_symm_apply x))⟩⟩⟩
-    exact isIntegralPerfectoid_of_perfectRing_p_eq_zero hp
+    exact _root_.SerrePositivity.BhattScholze.Semiperfectoid.isIntegralPerfectoid_of_perfectRing_p_eq_zero hp
   have hpu : ¬ IsUnit (p : W) := by
     intro hu
     have htop : IsAdicComplete (⊤ : Ideal W) W :=
       Ideal.span_singleton_eq_top.mpr hu ▸ hW.adicComplete
     exact zero_ne_one (htop.subsingleton.elim 0 1)
   let : Fact (¬ IsUnit (p : W)) := ⟨hpu⟩
-  apply isIntegralPerfectoid_of_compatible_p_roots W p (mul_right_injective₀ hp) hF ρ hzero hpow
+  apply _root_.SerrePositivity.isIntegralPerfectoid_of_compatible_p_roots W p (mul_right_injective₀ hp) hF ρ hzero hpow
   intro z
   obtain ⟨x, rfl⟩ := Ideal.Quotient.mk_surjective z
   have hρ : ρ 1 ^ p = (p : W) := (hpow 0).trans hzero
@@ -209,9 +210,9 @@ theorem IsRankOneCompleteValuationRing.isPerfectoid_of_roots
     Ideal.comap_map_of_surjective _ Ideal.Quotient.mk_surjective, ← RingHom.ker_eq_comap_bot,
     Ideal.mk_ker, sup_eq_left.mpr hPJ]
   rw [Ideal.mem_span_singleton, Ideal.mem_span_singleton, ← hρ]
-  exact ⟨valuation_dvd_of_pow_dvd p, fun h => pow_dvd_pow_of_dvd h p⟩
+  exact ⟨_root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.valuation_dvd_of_pow_dvd p, fun h => pow_dvd_pow_of_dvd h p⟩
 
-private theorem valuationSubring_pow_surjective {K : Type u} [Field K] [IsAlgClosed K]
+private theorem _root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.valuationSubring_pow_surjective {K : Type u} [Field K] [IsAlgClosed K]
     (V : ValuationSubring K) : Function.Surjective (fun x : V => x ^ p) := by
   intro x
   obtain ⟨y, hy⟩ := IsAlgClosed.exists_pow_nat_eq (x : K) (Fact.out : p.Prime).pos
@@ -222,7 +223,7 @@ private theorem valuationSubring_pow_surjective {K : Type u} [Field K] [IsAlgClo
     ((pow_le_one_iff_of_nonneg (zero_le : 0 ≤ V.valuation y) (Fact.out : p.Prime).ne_zero).mp hval)
   exact ⟨⟨y, hmem⟩, Subtype.ext hy⟩
 
-private theorem faithfullyFlat_of_local_injective_valuationRing {A B : Type u}
+private theorem _root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.faithfullyFlat_of_local_injective_valuationRing {A B : Type u}
     [CommRing A] [IsDomain A] [ValuationRing A] [CommRing B] [IsDomain B] [IsLocalRing B]
     (f : A →+* B) [IsLocalHom f] (hf : Function.Injective f) : f.FaithfullyFlat := by
   let := f.toAlgebra
@@ -233,10 +234,10 @@ private theorem faithfullyFlat_of_local_injective_valuationRing {A B : Type u}
   exact RingHom.faithfullyFlat_algebraMap_iff.mpr Module.FaithfullyFlat.of_flat_of_isLocalHom
 
 /-- p 完備な階数 1 の付値環は、p の両立する根を持つ整 perfectoid 付値環に忠実平坦に拡大できる。 -/
-theorem exists_perfectoid_valuation_extension (V : CommRingCat.{u})
-    (hV : IsRankOneCompleteValuationRing p V) :
-    ∃ (W : CommRingCat.{u}) (e : V →+* W), IsRankOneCompleteValuationRing p W ∧
-      IsIntegralPerfectoid W p ∧ e.FaithfullyFlat ∧
+theorem _root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.exists_perfectoid_valuation_extension (V : CommRingCat.{u})
+    (hV : _root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.IsRankOneCompleteValuationRing p V) :
+    ∃ (W : CommRingCat.{u}) (e : V →+* W), _root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.IsRankOneCompleteValuationRing p W ∧
+      _root_.SerrePositivity.IsIntegralPerfectoid W p ∧ e.FaithfullyFlat ∧
       ∃ ρ : ℕ → W, ρ 0 = (p : W) ∧ ∀ n, ρ (n + 1) ^ p = ρ n := by
   let := hV.isDomain
   let := hV.valuationRing
@@ -258,13 +259,13 @@ theorem exists_perfectoid_valuation_extension (V : CommRingCat.{u})
     let : Algebra.IsAlgebraic V L := Algebra.IsAlgebraic.trans V K L
     let : Algebra.IsAlgebraic V W := Algebra.IsAlgebraic.of_injective
       (IsScalarTower.toAlgHom V W L) Subtype.val_injective
-    exact rankOneValuation_dim_of_algebraic hg hV.krullDim_eq_one
-  have hflat : g.FaithfullyFlat := faithfullyFlat_of_local_injective_valuationRing g hg
-  choose τ hτ using valuationSubring_pow_surjective p W
+    exact _root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.rankOneValuation_dim_of_algebraic hg hV.krullDim_eq_one
+  have hflat : g.FaithfullyFlat := _root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.faithfullyFlat_of_local_injective_valuationRing g hg
+  choose τ hτ using _root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.valuationSubring_pow_surjective p W
   let ρ : ℕ → W := Nat.rec (p : W) (fun _ x => τ x)
   have hρ (n : ℕ) : ρ (n + 1) ^ p = ρ n := hτ (ρ n)
   by_cases hp : (p : W) = 0
-  · have hWc : IsRankOneCompleteValuationRing p W :=
+  · have hWc : _root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.IsRankOneCompleteValuationRing p W :=
       ⟨inferInstance, inferInstance, hdim, by rw [hp, Ideal.span_singleton_zero]; infer_instance⟩
     have hFq : Function.Surjective (fun x : ModP W p => x ^ p) := by
       intro x
@@ -285,15 +286,15 @@ theorem exists_perfectoid_valuation_extension (V : CommRingCat.{u})
     let I := Ideal.span {(p : W)}
     let T := AdicCompletion I W
     let j := algebraMap W T
-    obtain ⟨hT, hvT, hdimT, hcomp, hj⟩ := rankOneValuation_completion (p : W) hdim hp hpu
+    obtain ⟨hT, hvT, hdimT, hcomp, hj⟩ := _root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.rankOneValuation_completion (p : W) hdim hp hpu
     let := hT
-    let hTc : IsRankOneCompleteValuationRing p T :=
+    let hTc : _root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.IsRankOneCompleteValuationRing p T :=
       ⟨hT, hvT, hdimT, by simpa only [map_natCast] using hcomp⟩
     have hFq : Function.Surjective (fun x : ModP T p => x ^ p) := by
       intro x
       obtain ⟨t, rfl⟩ := Ideal.Quotient.mk_surjective x
       have hfg : I.FG := Submodule.fg_span_singleton _
-      obtain ⟨r, hr⟩ := exists_adicCompletion_algebraMap_sub_mem I hfg 1 t
+      obtain ⟨r, hr⟩ := _root_.SerrePositivity.exists_adicCompletion_algebraMap_sub_mem I hfg 1 t
       have he : Ideal.Quotient.mk (Ideal.span {(p : T)}) (j r) =
           Ideal.Quotient.mk (Ideal.span {(p : T)}) t := by
         apply Ideal.Quotient.eq.mpr
@@ -309,7 +310,7 @@ theorem exists_perfectoid_valuation_extension (V : CommRingCat.{u})
       RingHom.FaithfullyFlat.stableUnderComposition g j hflat hj, j ∘ ρ, map_natCast _ _, hρT⟩
 
 /-- 階数 0 の非単元分岐。冪級数付値環を階数 1 の完全付値環へ忠実平坦に拡大する。 -/
-theorem arcValuation_extendField (p : ℕ) [Fact p.Prime] [Fact p.Prime]
+theorem _root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.arcValuation_extendField (p : ℕ) [Fact p.Prime] [Fact p.Prime]
     (k : Type u) [Field k] [CharP k p] [PerfectRing k p]
     (a : k) (ha : ¬ IsUnit a) :
     ∃ (V : CommRingCat.{u}) (hV : IsDomain V) (e : k →+* V),
@@ -318,12 +319,12 @@ theorem arcValuation_extendField (p : ℕ) [Fact p.Prime] [Fact p.Prime]
   let S := PowerSeries k
   let c : k →+* S := PowerSeries.C
   let : CharP S p := charP_of_injective_ringHom (f := c) PowerSeries.C_injective p
-  have hSc : IsRankOneCompleteValuationRing p S :=
+  have hSc : _root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.IsRankOneCompleteValuationRing p S :=
     ⟨inferInstance, inferInstance, IsDiscreteValuationRing.ringKrullDim_eq_one S, by
       rw [CharP.cast_eq_zero S p, Ideal.span_singleton_zero]
       infer_instance⟩
   obtain ⟨V, e, hV, hperf, hflat, _⟩ :=
-    exists_perfectoid_valuation_extension p (CommRingCat.of S) hSc
+    _root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.exists_perfectoid_valuation_extension p (CommRingCat.of S) hSc
   let := hV.isDomain
   let : CharP V p := charP_of_injective_ringHom (f := e) hflat.injective p
   have hf : (e.comp c).FaithfullyFlat := by
@@ -336,15 +337,15 @@ theorem arcValuation_extendField (p : ℕ) [Fact p.Prime] [Fact p.Prime]
     hperf.perfectRing_of_charP V p, hf, by rw [ha0, map_zero]⟩
 
 /-- 試験環 V の perfectoid な付値環拡大を選び、その同じ拡大に沿って S₀ への写像を延長する。 -/
-theorem exists_baseExtension_lift (S : Type u) [CommRing S]
+theorem _root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.exists_baseExtension_lift (S : Type u) [CommRing S]
     (hS : SerrePositivity.DerivedCompletion.IsModuleComplete S (p : S) (ModuleCat.of S S))
-    (V : CommRingCat.{u}) (hV : IsRankOneCompleteValuationRing p V) (k : S →+* V) :
-    ∃ (W : CommRingCat.{u}) (e : V →+* W) (l : baseExtension p S hS →+* W),
-      IsRankOneCompleteValuationRing p W ∧ IsIntegralPerfectoid W p ∧ e.FaithfullyFlat ∧
-      l.comp (baseExtensionUnit p S hS) = e.comp k := by
-  obtain ⟨W, e, hW, hperfd, hflat, ρ, hρ0, hρ⟩ := exists_perfectoid_valuation_extension p V hV
-  obtain ⟨b, _⟩ := perfectoidBaseRing_toValuationExtension p W hW ρ hρ0 hρ
-  obtain ⟨l, hl, _⟩ := exists_baseExtension_lift_of_map p S hS V W hV hW k e hflat b
+    (V : CommRingCat.{u}) (hV : _root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.IsRankOneCompleteValuationRing p V) (k : S →+* V) :
+    ∃ (W : CommRingCat.{u}) (e : V →+* W) (l : _root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.baseExtension p S hS →+* W),
+      _root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.IsRankOneCompleteValuationRing p W ∧ _root_.SerrePositivity.IsIntegralPerfectoid W p ∧ e.FaithfullyFlat ∧
+      l.comp (_root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.baseExtensionUnit p S hS) = e.comp k := by
+  obtain ⟨W, e, hW, hperfd, hflat, ρ, hρ0, hρ⟩ := _root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.exists_perfectoid_valuation_extension p V hV
+  obtain ⟨b, _⟩ := _root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.perfectoidBaseRing_toValuationExtension p W hW ρ hρ0 hρ
+  obtain ⟨l, hl, _⟩ := _root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.exists_baseExtension_lift_of_map p S hS V W hV hW k e hflat b
   exact ⟨W, e, l, hW, hperfd, hflat, hl⟩
 
 end Perfectoid

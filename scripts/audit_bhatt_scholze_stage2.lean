@@ -1,4 +1,4 @@
-import SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction
+import SerrePositivity.BhattScholze.Perfectoidization.Construction.RootAdjunction
 import SerrePositivity.BhattScholze.Perfectoidization.Arc.Descent.ArcPerfectoidBase
 import SerrePositivity.BhattScholze.Perfectoidization.Arc.Valuations.ArcValuationMilnor
 import SerrePositivity.BhattScholze.Perfectoidization.Arc.Valuations.ArcValuationCompletion
@@ -110,15 +110,15 @@ import SerrePositivity.BhattScholze.Almost.AlmostTensorForward
 import SerrePositivity.BhattScholze.Almost.AlmostConnectivity
 import SerrePositivity.BhattScholze.Almost.AlmostGenerators
 import SerrePositivity.BhattScholze.Almost.FiniteEtaleComparison
-import SerrePositivity.BhattScholze.IntegralPerfectoidization.Approximation.IntegralApproximation
+import SerrePositivity.CommutativeAlgebra.IntegralApproximation.FilteredAlgebra
 import SerrePositivity.BhattScholze.IntegralPerfectoidization.Approximation.IntegralClosureApproximation
-import SerrePositivity.BhattScholze.IntegralPerfectoidization.Completion.IntegralClosureCompletion
+import SerrePositivity.BhattScholze.Almost.IntegralClosureCompletion
 import SerrePositivity.BhattScholze.IntegralPerfectoidization.Approximation.PerfectoidFilteredColimit
 import SerrePositivity.EInfinity.Interface.Core
 import SerrePositivity.EInfinity.Interface.StrictInputs
 import SerrePositivity.EInfinity.Interface.Theory
 import SerrePositivity.EInfinity.BarrattEccles.Theory
-import SerrePositivity.EInfinity.Perfectoidization.TheoryInterface
+import SerrePositivity.BhattScholze.Perfectoidization.Interface.TheoryInterface
 import SerrePositivity.CommutativeAlgebra.DividedPowers.FreeDPDerivation
 import SerrePositivity.CommutativeAlgebra.DividedPowers.FreeDPIntegral
 import SerrePositivity.BhattScholze.Prismatic.HodgeTate.Affine.BocksteinCupSquare
@@ -304,8 +304,8 @@ import SerrePositivity.CommutativeAlgebra.Adic.CompatibleResidues
 import SerrePositivity.CommutativeAlgebra.Adic.ModuleCompleteSup
 import SerrePositivity.CommutativeAlgebra.CompletelyFlat.FiniteIdealReduction
 import SerrePositivity.HomologicalAlgebra.Cech.InverseTower
-import SerrePositivity.BhattScholze.Semiperfectoid.DiscreteDelta
-import SerrePositivity.BhattScholze.Semiperfectoid.DiscretePrism
+import SerrePositivity.BhattScholze.Semiperfectoid.Discrete.DiscreteDelta
+import SerrePositivity.BhattScholze.Semiperfectoid.Discrete.DiscretePrism
 import SerrePositivity.BhattScholze.Semiperfectoid.Lci.LciEnvelope
 import SerrePositivity.BhattScholze.Semiperfectoid.Lci.LciEnvelopeCoefficient
 import SerrePositivity.BhattScholze.Semiperfectoid.Lci.LciEnvelopeCompletedResidue
@@ -322,8 +322,8 @@ import SerrePositivity.BhattScholze.Semiperfectoid.Lci.LciEnvelopeRegular
 import SerrePositivity.BhattScholze.Semiperfectoid.Lci.LciEnvelopeResidue
 import SerrePositivity.BhattScholze.Semiperfectoid.Lci.LciEnvelopeTensorSwap
 import SerrePositivity.BhattScholze.Semiperfectoid.Lci.LciEnvelopeVariables
-import SerrePositivity.BhattScholze.Semiperfectoid.PrismRetract
-import SerrePositivity.BhattScholze.Semiperfectoid.RawVariableEnvelope
+import SerrePositivity.BhattScholze.Semiperfectoid.Discrete.PrismRetract
+import SerrePositivity.BhattScholze.Semiperfectoid.Lci.RawVariableEnvelope
 import SerrePositivity.CategoryTheory.InitialOfRetraction
 import SerrePositivity.CommutativeAlgebra.Adic.RingRetract
 import SerrePositivity.CommutativeAlgebra.Koszul.Generators
@@ -668,38 +668,38 @@ import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PointwiseTensorExt
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.RepeatedPrincipalRing
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.TensorCompletionUnit
 import SerrePositivity.BhattScholze.Prism.Perfectoid.AinfClassical
-import SerrePositivity.BhattScholze.Semiperfectoid.AinfClassicalMaps
-import SerrePositivity.BhattScholze.Semiperfectoid.CompletedTensorFaithful
-import SerrePositivity.BhattScholze.Semiperfectoid.CompletedTensorFlat
-import SerrePositivity.BhattScholze.Semiperfectoid.CompletedTensorRelationFaithful
-import SerrePositivity.BhattScholze.Semiperfectoid.CompletedTensorRelationResidue
+import SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.AinfClassicalMaps
+import SerrePositivity.BhattScholze.Semiperfectoid.Lci.CompletedTensorFaithful
+import SerrePositivity.BhattScholze.Semiperfectoid.Lci.CompletedTensorFlat
+import SerrePositivity.BhattScholze.Semiperfectoid.Lci.CompletedTensorRelationFaithful
+import SerrePositivity.BhattScholze.Semiperfectoid.Lci.CompletedTensorRelationResidue
 import SerrePositivity.BhattScholze.Prism.Perfectoid.FontainePrism
 import SerrePositivity.BhattScholze.Semiperfectoid.Lci.LciEnvelopeCompletedResidueFaithful
 import SerrePositivity.BhattScholze.Semiperfectoid.Lci.LciEnvelopeFaithful
 import SerrePositivity.BhattScholze.Semiperfectoid.Lci.LciEnvelopeResidueFaithful
-import SerrePositivity.BhattScholze.Semiperfectoid.PerfectEnvelopeInitial
+import SerrePositivity.BhattScholze.Semiperfectoid.Lci.PerfectEnvelopeInitial
 import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectoidPrismPresentation
-import SerrePositivity.BhattScholze.Semiperfectoid.PerfectoidRelationEnvelope
-import SerrePositivity.BhattScholze.Semiperfectoid.PerfectoidRelationEnvelopeFaithful
+import SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.PerfectoidRelationEnvelope
+import SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.PerfectoidRelationEnvelopeFaithful
 import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectoidWittEquiv
-import SerrePositivity.BhattScholze.Semiperfectoid.PrismInitialTransport
-import SerrePositivity.BhattScholze.Semiperfectoid.PrismRelationQuotient
-import SerrePositivity.BhattScholze.Semiperfectoid.RawVariableEnvelopeFaithful
-import SerrePositivity.BhattScholze.Semiperfectoid.RootFamilyBase
-import SerrePositivity.BhattScholze.Semiperfectoid.RootFamilyFractionBasis
-import SerrePositivity.BhattScholze.Semiperfectoid.RootFamilyPerfectoid
-import SerrePositivity.BhattScholze.Semiperfectoid.RootFamilyReindex
-import SerrePositivity.BhattScholze.Semiperfectoid.RootRelationAinfEnvelope
-import SerrePositivity.BhattScholze.Semiperfectoid.RootRelationBounded
-import SerrePositivity.BhattScholze.Semiperfectoid.RootRelationCompletion
-import SerrePositivity.BhattScholze.Semiperfectoid.RootRelationCoordinates
-import SerrePositivity.BhattScholze.Semiperfectoid.RootRelationEnvelope
-import SerrePositivity.BhattScholze.Semiperfectoid.RootRelationEnvelopeFaithful
-import SerrePositivity.BhattScholze.Semiperfectoid.RootRelationLift
-import SerrePositivity.BhattScholze.Semiperfectoid.RootRelationLiftInitial
-import SerrePositivity.BhattScholze.Semiperfectoid.RootRelationPolynomial
-import SerrePositivity.BhattScholze.Semiperfectoid.RootRelationRawBasis
-import SerrePositivity.BhattScholze.Semiperfectoid.RootRelationRawRegular
+import SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.PrismInitialTransport
+import SerrePositivity.BhattScholze.Semiperfectoid.Lci.PrismRelationQuotient
+import SerrePositivity.BhattScholze.Semiperfectoid.Lci.RawVariableEnvelopeFaithful
+import SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootFamilyBase
+import SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootFamilyFractionBasis
+import SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootFamilyPerfectoid
+import SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootFamilyReindex
+import SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationAinfEnvelope
+import SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationBounded
+import SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationCompletion
+import SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationCoordinates
+import SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationEnvelope
+import SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationEnvelopeFaithful
+import SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationLift
+import SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationLiftInitial
+import SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationPolynomial
+import SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationRawBasis
+import SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationRawRegular
 import SerrePositivity.CommutativeAlgebra.CompletelyFlat.OfFaithfullyFlat
 import SerrePositivity.CommutativeAlgebra.TensorProduct.QuotientFactor
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedBaseChangePrincipalH0
@@ -768,21 +768,21 @@ import SerrePositivity.CategoryTheory.ProCechNerveTransport
 import SerrePositivity.CommutativeAlgebra.Adic.Cardinality
 import SerrePositivity.CommutativeAlgebra.Localization.AwayEquivalence
 import SerrePositivity.CommutativeAlgebra.Localization.AwayGluing
-import SerrePositivity.BhattScholze.Semiperfectoid.FiniteEnvelopes.PDCompletionPrism
+import SerrePositivity.BhattScholze.Semiperfectoid.Lci.PDCompletionPrism
 import SerrePositivity.BhattScholze.Prism.Perfection.ClassicalPrismPerfection
-import SerrePositivity.BhattScholze.Semiperfectoid.FiniteEnvelopes.FiniteEnvelopeCompletion
-import SerrePositivity.BhattScholze.Semiperfectoid.FiniteEnvelopes.FiniteEnvelopeDiagram
-import SerrePositivity.BhattScholze.Semiperfectoid.FiniteEnvelopes.FiniteEnvelopeRawColimit
-import SerrePositivity.BhattScholze.Semiperfectoid.Cor73PrismComparison
-import SerrePositivity.BhattScholze.Semiperfectoid.InitialPrismPerfection
-import SerrePositivity.BhattScholze.Semiperfectoid.PrismInitialCompletion
-import SerrePositivity.BhattScholze.Semiperfectoid.RootFamilySparseBasis
-import SerrePositivity.BhattScholze.Semiperfectoid.RootRelationCompletedInitial
-import SerrePositivity.BhattScholze.Semiperfectoid.RootRelationCompletedSurjective
-import SerrePositivity.BhattScholze.Semiperfectoid.RootRelationFiniteAmbient
-import SerrePositivity.BhattScholze.Semiperfectoid.RootRelationFiniteEnvelopeDiagram
-import SerrePositivity.BhattScholze.Semiperfectoid.RootRelationPerfection
-import SerrePositivity.BhattScholze.Semiperfectoid.RootRelationSubsetRaw
+import SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.FiniteEnvelopes.FiniteEnvelopeCompletion
+import SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.FiniteEnvelopes.FiniteEnvelopeDiagram
+import SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.FiniteEnvelopes.FiniteEnvelopeRawColimit
+import SerrePositivity.BhattScholze.Semiperfectoid.Perfection.Cor73PrismComparison
+import SerrePositivity.BhattScholze.Semiperfectoid.Perfection.InitialPrismPerfection
+import SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.PrismInitialCompletion
+import SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootFamilySparseBasis
+import SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationCompletedInitial
+import SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationCompletedSurjective
+import SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationFiniteAmbient
+import SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationFiniteEnvelopeDiagram
+import SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationPerfection
+import SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationSubsetRaw
 import SerrePositivity.CommutativeAlgebra.DirectLimitRelations
 import SerrePositivity.CommutativeAlgebra.PolynomialSubsetQuotient
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrincipalCompletionUniformBound
@@ -1845,21 +1845,21 @@ run_cmd do
     `SerrePositivity.EInfinity.NativeBinaryCoconeHom,
     `SerrePositivity.EInfinity.StrictAdjunctionBar,
     `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.BinaryCoconeApexTransport,
-    `SerrePositivity.BhattScholze.Semiperfectoid.FiniteEnvelopes.PDCompletionPrism,
+    `SerrePositivity.BhattScholze.Semiperfectoid.Lci.PDCompletionPrism,
     `SerrePositivity.BhattScholze.Prism.Perfection.ClassicalPrismPerfection,
-    `SerrePositivity.BhattScholze.Semiperfectoid.FiniteEnvelopes.FiniteEnvelopeCompletion,
-    `SerrePositivity.BhattScholze.Semiperfectoid.FiniteEnvelopes.FiniteEnvelopeDiagram,
-    `SerrePositivity.BhattScholze.Semiperfectoid.FiniteEnvelopes.FiniteEnvelopeRawColimit,
-    `SerrePositivity.BhattScholze.Semiperfectoid.Cor73PrismComparison,
-    `SerrePositivity.BhattScholze.Semiperfectoid.InitialPrismPerfection,
-    `SerrePositivity.BhattScholze.Semiperfectoid.PrismInitialCompletion,
-    `SerrePositivity.BhattScholze.Semiperfectoid.RootFamilySparseBasis,
-    `SerrePositivity.BhattScholze.Semiperfectoid.RootRelationCompletedInitial,
-    `SerrePositivity.BhattScholze.Semiperfectoid.RootRelationCompletedSurjective,
-    `SerrePositivity.BhattScholze.Semiperfectoid.RootRelationFiniteAmbient,
-    `SerrePositivity.BhattScholze.Semiperfectoid.RootRelationFiniteEnvelopeDiagram,
-    `SerrePositivity.BhattScholze.Semiperfectoid.RootRelationPerfection,
-    `SerrePositivity.BhattScholze.Semiperfectoid.RootRelationSubsetRaw,
+    `SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.FiniteEnvelopes.FiniteEnvelopeCompletion,
+    `SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.FiniteEnvelopes.FiniteEnvelopeDiagram,
+    `SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.FiniteEnvelopes.FiniteEnvelopeRawColimit,
+    `SerrePositivity.BhattScholze.Semiperfectoid.Perfection.Cor73PrismComparison,
+    `SerrePositivity.BhattScholze.Semiperfectoid.Perfection.InitialPrismPerfection,
+    `SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.PrismInitialCompletion,
+    `SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootFamilySparseBasis,
+    `SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationCompletedInitial,
+    `SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationCompletedSurjective,
+    `SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationFiniteAmbient,
+    `SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationFiniteEnvelopeDiagram,
+    `SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationPerfection,
+    `SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationSubsetRaw,
     `SerrePositivity.CommutativeAlgebra.DirectLimitRelations,
     `SerrePositivity.CommutativeAlgebra.PolynomialSubsetQuotient,
     `SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrincipalCompletionUniformBound,
@@ -1922,38 +1922,38 @@ run_cmd do
     `SerrePositivity.EInfinity.BarrattEccles.Theory.BinaryTensorNaturality,
     `SerrePositivity.EInfinity.BarrattEccles.Theory.BinaryTensorWords,
     `SerrePositivity.BhattScholze.Prism.Perfectoid.AinfClassical,
-    `SerrePositivity.BhattScholze.Semiperfectoid.AinfClassicalMaps,
-    `SerrePositivity.BhattScholze.Semiperfectoid.CompletedTensorFaithful,
-    `SerrePositivity.BhattScholze.Semiperfectoid.CompletedTensorFlat,
-    `SerrePositivity.BhattScholze.Semiperfectoid.CompletedTensorRelationFaithful,
-    `SerrePositivity.BhattScholze.Semiperfectoid.CompletedTensorRelationResidue,
+    `SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.AinfClassicalMaps,
+    `SerrePositivity.BhattScholze.Semiperfectoid.Lci.CompletedTensorFaithful,
+    `SerrePositivity.BhattScholze.Semiperfectoid.Lci.CompletedTensorFlat,
+    `SerrePositivity.BhattScholze.Semiperfectoid.Lci.CompletedTensorRelationFaithful,
+    `SerrePositivity.BhattScholze.Semiperfectoid.Lci.CompletedTensorRelationResidue,
     `SerrePositivity.BhattScholze.Prism.Perfectoid.FontainePrism,
     `SerrePositivity.BhattScholze.Semiperfectoid.Lci.LciEnvelopeCompletedResidueFaithful,
     `SerrePositivity.BhattScholze.Semiperfectoid.Lci.LciEnvelopeFaithful,
     `SerrePositivity.BhattScholze.Semiperfectoid.Lci.LciEnvelopeResidueFaithful,
-    `SerrePositivity.BhattScholze.Semiperfectoid.PerfectEnvelopeInitial,
+    `SerrePositivity.BhattScholze.Semiperfectoid.Lci.PerfectEnvelopeInitial,
     `SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectoidPrismPresentation,
-    `SerrePositivity.BhattScholze.Semiperfectoid.PerfectoidRelationEnvelope,
-    `SerrePositivity.BhattScholze.Semiperfectoid.PerfectoidRelationEnvelopeFaithful,
+    `SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.PerfectoidRelationEnvelope,
+    `SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.PerfectoidRelationEnvelopeFaithful,
     `SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectoidWittEquiv,
-    `SerrePositivity.BhattScholze.Semiperfectoid.PrismInitialTransport,
-    `SerrePositivity.BhattScholze.Semiperfectoid.PrismRelationQuotient,
-    `SerrePositivity.BhattScholze.Semiperfectoid.RawVariableEnvelopeFaithful,
-    `SerrePositivity.BhattScholze.Semiperfectoid.RootFamilyBase,
-    `SerrePositivity.BhattScholze.Semiperfectoid.RootFamilyFractionBasis,
-    `SerrePositivity.BhattScholze.Semiperfectoid.RootFamilyPerfectoid,
-    `SerrePositivity.BhattScholze.Semiperfectoid.RootFamilyReindex,
-    `SerrePositivity.BhattScholze.Semiperfectoid.RootRelationAinfEnvelope,
-    `SerrePositivity.BhattScholze.Semiperfectoid.RootRelationBounded,
-    `SerrePositivity.BhattScholze.Semiperfectoid.RootRelationCompletion,
-    `SerrePositivity.BhattScholze.Semiperfectoid.RootRelationCoordinates,
-    `SerrePositivity.BhattScholze.Semiperfectoid.RootRelationEnvelope,
-    `SerrePositivity.BhattScholze.Semiperfectoid.RootRelationEnvelopeFaithful,
-    `SerrePositivity.BhattScholze.Semiperfectoid.RootRelationLift,
-    `SerrePositivity.BhattScholze.Semiperfectoid.RootRelationLiftInitial,
-    `SerrePositivity.BhattScholze.Semiperfectoid.RootRelationPolynomial,
-    `SerrePositivity.BhattScholze.Semiperfectoid.RootRelationRawBasis,
-    `SerrePositivity.BhattScholze.Semiperfectoid.RootRelationRawRegular,
+    `SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.PrismInitialTransport,
+    `SerrePositivity.BhattScholze.Semiperfectoid.Lci.PrismRelationQuotient,
+    `SerrePositivity.BhattScholze.Semiperfectoid.Lci.RawVariableEnvelopeFaithful,
+    `SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootFamilyBase,
+    `SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootFamilyFractionBasis,
+    `SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootFamilyPerfectoid,
+    `SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootFamilyReindex,
+    `SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationAinfEnvelope,
+    `SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationBounded,
+    `SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationCompletion,
+    `SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationCoordinates,
+    `SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationEnvelope,
+    `SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationEnvelopeFaithful,
+    `SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationLift,
+    `SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationLiftInitial,
+    `SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationPolynomial,
+    `SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationRawBasis,
+    `SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationRawRegular,
     `SerrePositivity.CommutativeAlgebra.CompletelyFlat.OfFaithfullyFlat,
     `SerrePositivity.CommutativeAlgebra.TensorProduct.QuotientFactor,
     `SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedBaseChangePrincipalH0,
@@ -2299,8 +2299,8 @@ run_cmd do
     `SerrePositivity.HomologicalAlgebra.TorPostFlatComposition,
     `SerrePositivity.HomologicalAlgebra.TwoCoordinateCompleteTor,
     `SerrePositivity.HomologicalAlgebra.UnboundedSemifreeModel,
-    `SerrePositivity.BhattScholze.Semiperfectoid.DiscreteDelta,
-    `SerrePositivity.BhattScholze.Semiperfectoid.DiscretePrism,
+    `SerrePositivity.BhattScholze.Semiperfectoid.Discrete.DiscreteDelta,
+    `SerrePositivity.BhattScholze.Semiperfectoid.Discrete.DiscretePrism,
     `SerrePositivity.BhattScholze.Semiperfectoid.Lci.LciEnvelope,
     `SerrePositivity.BhattScholze.Semiperfectoid.Lci.LciEnvelopeCoefficient,
     `SerrePositivity.BhattScholze.Semiperfectoid.Lci.LciEnvelopeCompletedResidue,
@@ -2317,8 +2317,8 @@ run_cmd do
     `SerrePositivity.BhattScholze.Semiperfectoid.Lci.LciEnvelopeResidue,
     `SerrePositivity.BhattScholze.Semiperfectoid.Lci.LciEnvelopeTensorSwap,
     `SerrePositivity.BhattScholze.Semiperfectoid.Lci.LciEnvelopeVariables,
-    `SerrePositivity.BhattScholze.Semiperfectoid.PrismRetract,
-    `SerrePositivity.BhattScholze.Semiperfectoid.RawVariableEnvelope,
+    `SerrePositivity.BhattScholze.Semiperfectoid.Discrete.PrismRetract,
+    `SerrePositivity.BhattScholze.Semiperfectoid.Lci.RawVariableEnvelope,
     `SerrePositivity.CategoryTheory.InitialOfRetraction,
     `SerrePositivity.CommutativeAlgebra.Adic.RingRetract,
     `SerrePositivity.CommutativeAlgebra.Koszul.Generators,
@@ -2516,11 +2516,11 @@ run_cmd do
     `SerrePositivity.EInfinity.Interface.StrictInputs,
     `SerrePositivity.EInfinity.Interface.Theory,
     `SerrePositivity.EInfinity.BarrattEccles.Theory,
-    `SerrePositivity.EInfinity.Perfectoidization.TheoryInterface,
+    `SerrePositivity.BhattScholze.Perfectoidization.Interface.TheoryInterface,
     `SerrePositivity.BhattScholze.Almost.FiniteEtaleComparison,
-    `SerrePositivity.BhattScholze.IntegralPerfectoidization.Approximation.IntegralApproximation,
+    `SerrePositivity.CommutativeAlgebra.IntegralApproximation.FilteredAlgebra,
     `SerrePositivity.BhattScholze.IntegralPerfectoidization.Approximation.IntegralClosureApproximation,
-    `SerrePositivity.BhattScholze.IntegralPerfectoidization.Completion.IntegralClosureCompletion,
+    `SerrePositivity.BhattScholze.Almost.IntegralClosureCompletion,
     `SerrePositivity.BhattScholze.IntegralPerfectoidization.Approximation.PerfectoidFilteredColimit,
     `SerrePositivity.BhattScholze.Almost.CompletedModuleTensor,
     `SerrePositivity.BhattScholze.Almost.AlmostTensor,
@@ -2589,7 +2589,7 @@ run_cmd do
     `SerrePositivity.BhattScholze.IntegralPerfectoidization.FiniteEtale.FiniteEtalePerfectoid,
     `SerrePositivity.BhattScholze.Perfectoidization.Arc.Site.ArcCardinality,
     `SerrePositivity.BhattScholze.Perfectoidization.Arc.Site.ArcSite,
-    `SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction,
+    `SerrePositivity.BhattScholze.Perfectoidization.Construction.RootAdjunction,
     `SerrePositivity.BhattScholze.Perfectoidization.Arc.Descent.ArcPerfectoidBase,
     `SerrePositivity.BhattScholze.Perfectoidization.Arc.Valuations.ArcValuationMilnor,
     `SerrePositivity.BhattScholze.Perfectoidization.Arc.Valuations.ArcValuationCompletion,

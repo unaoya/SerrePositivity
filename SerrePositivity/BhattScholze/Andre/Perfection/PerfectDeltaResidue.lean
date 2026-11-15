@@ -89,7 +89,7 @@ theorem perfectDeltaFrobeniusPrismaticResidueEquiv_mk
       (Ideal.Quotient.mk (Ideal.span {(p : A), d}) x) =
         Ideal.Quotient.mk _ ((D.frobeniusLift ^ n) x) := rfl
 
-/-- 同じ実φⁿの係数商を、G10に使う正確なA/(p,d^(pⁿ))へ比較する。 -/
+/-- 同じ実φⁿの係数商を、冪零還元からの純性・平坦性の判定に使う正確なA/(p,d^(pⁿ))へ比較する。 -/
 def perfectDeltaFrobeniusPowerResidueEquiv (hD : D.IsPerfect) (d : A) (n : ℕ) :
     (A ⧸ Ideal.span {(p : A), d}) ≃+*
       (A ⧸ Ideal.span {(p : A), d ^ (p ^ n)}) :=

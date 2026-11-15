@@ -1,0 +1,106 @@
+{
+  "status": "comment-only preview scope; native capture/build/v3b still required for new modules",
+  "additional_modules": 8,
+  "rows": [
+    {
+      "module": "SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismHomLift",
+      "comment_changes": [
+        {
+          "line": 39,
+          "before": "/-! ## André A1-a：p 冪近似を持つ源の環射の分離性\n\n## 概要\n\n源の各元が b^p+p*c と書け、標的が p を含むイデアルで分離的なら、\nそのイデアル商上で一致する二つの環射は等しい。\nBS 著者版 Lemma 4.8（著者版 pp.38–39）、BS 著者版 Remark 7.15（p.62）の基底射の一意性への準備。\n\n## 方針\n\n冪差を幾何和と元の差の積に書く。幾何和は商で p 倍となるのでイデアルに入り、\n二つの射の差を帰納的に全イデアル冪へ移す。原典の変形理論とは異なる直接計算。\n\n## 規約\n\n素数性・p 正則性・δ 構造はこの一般補題には不要。持上げの存在は結論しない。\n\n## 使われ方\n\n完全 prism から一般の有界 prism への射の一意性を、標的の p ねじれを許して証明する。\n-/",
+          "after": "/-! ## André p 冪近似を持つ源の環射の分離性\n\n## 概要\n\n源の各元が b^p+p*c と書け、標的が p を含むイデアルで分離的なら、\nそのイデアル商上で一致する二つの環射は等しい。\nBS 著者版 Lemma 4.8（著者版 pp.38–39）、BS 著者版 Remark 7.15（p.62）の基底射の一意性への準備。\n\n## 方針\n\n冪差を幾何和と元の差の積に書く。幾何和は商で p 倍となるのでイデアルに入り、\n二つの射の差を帰納的に全イデアル冪へ移す。原典の変形理論とは異なる直接計算。\n\n## 規約\n\n素数性・p 正則性・δ 構造はこの一般補題には不要。持上げの存在は結論しない。\n\n## 使われ方\n\n完全 prism から一般の有界 prism への射の一意性を、標的の p ねじれを許して証明する。\n-/"
+        },
+        {
+          "line": 137,
+          "before": "/-! ## André A1-a：完全な源から一般有界 prism への射の一意性\n\n## 概要\n\n完全 δ 環から有界 prism の台環への環射は、prism 商への合成で決まる。\n完全 prism からの prism 射も商射で決まる。BS 著者版 Lemma 4.8（著者版 pp.38–39）の一意性。\n\n## 方針\n\n完全な源で a=b^p+p*δ(b) を供給し、標的の (p,d) 分離性と幾何和による剛性を使う。\n原典の変形理論・逆極限による δ 判定とは異なる、差のイデアル冪による直接証明。\n\n## 規約\n\n標的の完全性・p 正則性は不要。持上げの存在はまだ結論しない。\n\n## 使われ方\n\nBS 著者版 Remark 7.15（著者版 p.62）の基底射の選択の一意性と入力圏の比較に使う。\n-/",
+          "after": "/-! ## André 完全な源から一般有界 prism への射の一意性\n\n## 概要\n\n完全 δ 環から有界 prism の台環への環射は、prism 商への合成で決まる。\n完全 prism からの prism 射も商射で決まる。BS 著者版 Lemma 4.8（著者版 pp.38–39）の一意性。\n\n## 方針\n\n完全な源で a=b^p+p*δ(b) を供給し、標的の (p,d) 分離性と幾何和による剛性を使う。\n原典の変形理論・逆極限による δ 判定とは異なる、差のイデアル冪による直接証明。\n\n## 規約\n\n標的の完全性・p 正則性は不要。持上げの存在はまだ結論しない。\n\n## 使われ方\n\nBS 著者版 Remark 7.15（著者版 p.62）の基底射の選択の一意性と入力圏の比較に使う。\n-/"
+        },
+        {
+          "line": 214,
+          "before": "/-! ## André A1-a：完全な源からの環射の δ 保存性\n\n## 概要\n\n完全 δ 環から p 進分離な δ 環への環射は δ を自動的に保つ。\nBS 著者版 Lemma 4.8（著者版 pp.38–39）の一般有界標的への持上げの δ 判定部分。\n\n## 方針\n\nまず環射の剛性で Frobenius 持上げとの可換性を得る。二つの W₂ 射の第1座標の差は\np で消える導分となり、完全な源の p 冪近似で消える。原典の逆 Frobenius 極限とは異なる経路。\n\n## 規約\n\n標的の p 正則性は不要。環射の存在は本ファイルでは主張しない。\n\n## 使われ方\n\n一般有界 prism への基底環射を構成した後、その δ 保存性を追加仮定なく供給する。\n-/",
+          "after": "/-! ## André 完全な源からの環射の δ 保存性\n\n## 概要\n\n完全 δ 環から p 進分離な δ 環への環射は δ を自動的に保つ。\nBS 著者版 Lemma 4.8（著者版 pp.38–39）の一般有界標的への持上げの δ 判定部分。\n\n## 方針\n\nまず環射の剛性で Frobenius 持上げとの可換性を得る。二つの W₂ 射の第1座標の差は\np で消える導分となり、完全な源の p 冪近似で消える。原典の逆 Frobenius 極限とは異なる経路。\n\n## 規約\n\n標的の p 正則性は不要。環射の存在は本ファイルでは主張しない。\n\n## 使われ方\n\n一般有界 prism への基底環射を構成した後、その δ 保存性を追加仮定なく供給する。\n-/"
+        },
+        {
+          "line": 619,
+          "before": "/-! ## André A1-a：完全 prism から一般有界 prism への商射の持上げ\n\n## 概要\n\n完全 prism の商から有界 prism の商への環射は、唯一の prism 射へ持ち上がる。\nBS 著者版 Lemma 4.8（著者版 pp.38–39）の向き付き有界標的での証明。\n\n## 方針\n\n完全源を Witt 環として復元し、商での mod p 射を tilt へ持ち上げる。\n標的とその prism 商の tilt 比較の逆と Fontaine 写像を合成する。\n商図式は Witt 持上げの一意性で確認し、δ 保存性を完全源の剛性から得る。\n原典の変形理論と逆 Frobenius 極限とは異なる経路。\n\n## 規約\n\n標的の完全性・p 正則性・非零性は要求しない。有界性を明示し、零商も含める。\n一般 Cartier イデアルを持つ向きなし prism への比較は本ファイルには含まない。\n\n## 使われ方\n\nBS 著者版 Remark 7.15（著者版 p.62）の絶対入力対象に、完全基底からの一意な基底射を供給する。\n-/",
+          "after": "/-! ## André 完全 prism から一般有界 prism への商射の持上げ\n\n## 概要\n\n完全 prism の商から有界 prism の商への環射は、唯一の prism 射へ持ち上がる。\nBS 著者版 Lemma 4.8（著者版 pp.38–39）の向き付き有界標的での証明。\n\n## 方針\n\n完全源を Witt 環として復元し、商での mod p 射を tilt へ持ち上げる。\n標的とその prism 商の tilt 比較の逆と Fontaine 写像を合成する。\n商図式は Witt 持上げの一意性で確認し、δ 保存性を完全源の剛性から得る。\n原典の変形理論と逆 Frobenius 極限とは異なる経路。\n\n## 規約\n\n標的の完全性・p 正則性・非零性は要求しない。有界性を明示し、零商も含める。\n一般 Cartier イデアルを持つ向きなし prism への比較は本ファイルには含まない。\n\n## 使われ方\n\nBS 著者版 Remark 7.15（著者版 p.62）の絶対入力対象に、完全基底からの一意な基底射を供給する。\n-/"
+        }
+      ]
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Prism.Perfection.PCompletedPerfection",
+      "comment_changes": [
+        {
+          "line": 12,
+          "before": "/-!\n# prism の完全化：完全化から古典的 p 進完備化へ（BS 著者版 Lemma 3.9 の別系統）\n\n## 概要\n任意の δ 環の完全化の古典的 p 進完備化とその普遍性・関手性・冪等性・正則性、生成元像の d 進完備性を仮定した prism への普遍性。\n\n## 方針\nBS 著者版 Lemma 2.28・Lemma 2.34 を完全化に当てる。\n\n## 規約\nd 進完備性の仮定を外す部分は未。\n\n## 使われ方\nd で割る完全 prism の構成（Semiperfectoid/PerfectPrismDivision）、André。\n-/",
+          "after": "/-!\n# prism の完全化：完全化から古典的 p 進完備化へ（BS 著者版 Lemma 3.9 の別系統）\n\n## 概要\n任意の δ 環の完全化の古典的 p 進完備化とその普遍性・関手性・冪等性・正則性、生成元像の d 進完備性を仮定した prism への普遍性。\n\n## 方針\nBS 著者版 Lemma 2.28・Lemma 2.34 を完全化に当てる。\n\n## 規約\nd 進完備性の仮定を外す部分は未。\n\n## 使われ方\nd で割る完全 prism の構成（Semiperfectoid/Perfection/PerfectPrismDivision）、André。\n-/"
+        }
+      ]
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Prism.Bounded.Completeness",
+      "comment_changes": [
+        {
+          "line": 236,
+          "before": "/-! ## André A1-a：有界 prism の台環の古典的 p 完備性\n\n## 概要\n\n導来主元完備で主元進分離な環は古典的に完備である。これを有界 prism に適用する。\nBS 著者版 Lemma 4.8（著者版 pp.38–39）の基底射の存在と BS 著者版 Remark 7.15（p.62）の入力比較の準備。\n\n## 方針\n\n導来完備性から列の差分作用の全射性を得て前完備性を供給し、既知の分離性と合わせる。\n有界 prism では (p,d) 分離性から得た p 分離性を使う。原典とは異なる直接比較の経路。\n\n## 規約\n\np の正則性や台環の有界 p ねじれは仮定しない。基底射の存在自体はまだ主張しない。\n\n## 使われ方\n\n一般有界 prism への Witt 環からの持上げで、台環の古典的 p 完備性を供給する。\n-/",
+          "after": "/-! ## André 有界 prism の台環の古典的 p 完備性\n\n## 概要\n\n導来主元完備で主元進分離な環は古典的に完備である。これを有界 prism に適用する。\nBS 著者版 Lemma 4.8（著者版 pp.38–39）の基底射の存在と BS 著者版 Remark 7.15（p.62）の入力比較の準備。\n\n## 方針\n\n導来完備性から列の差分作用の全射性を得て前完備性を供給し、既知の分離性と合わせる。\n有界 prism では (p,d) 分離性から得た p 分離性を使う。原典とは異なる直接比較の経路。\n\n## 規約\n\np の正則性や台環の有界 p ねじれは仮定しない。基底射の存在自体はまだ主張しない。\n\n## 使われ方\n\n一般有界 prism への Witt 環からの持上げで、台環の古典的 p 完備性を供給する。\n-/"
+        }
+      ]
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Prism.Bounded.Tilt",
+      "comment_changes": [
+        {
+          "line": 307,
+          "before": "/-! ## André A1-a：有界 prism の台環と商の tilt 比較\n\n## 概要\n\n有界 prism の台環から prism 商への射は tilt の環同型を誘導する。\nBS 著者版 Lemma 4.8（著者版 pp.38–39）の基底環射の構成への準備。\n\n## 方針\n\n二つの p 完備環の tilt を実互換根列と乗法的に比較する。\n既知の prism 商からの根列の一意持上げにより標準 tilt 環射の全単射性を示す。\n原典の変形理論とは異なる Teichmüller 比較の経路。\n\n## 規約\n\n標的 prism の完全性・p 正則性は要求しない。台環と prism 商で p が非可逆である場合を扱う。\n台環での非可逆性は商での非可逆性から従うが、型クラス用に明示する。\n\n## 使われ方\n\n商の tilt へ写された完全係数を台環の tilt へ戻し、Fontaine 写像による環射構成に用いる。\n-/",
+          "after": "/-! ## André 有界 prism の台環と商の tilt 比較\n\n## 概要\n\n有界 prism の台環から prism 商への射は tilt の環同型を誘導する。\nBS 著者版 Lemma 4.8（著者版 pp.38–39）の基底環射の構成への準備。\n\n## 方針\n\n二つの p 完備環の tilt を実互換根列と乗法的に比較する。\n既知の prism 商からの根列の一意持上げにより標準 tilt 環射の全単射性を示す。\n原典の変形理論とは異なる Teichmüller 比較の経路。\n\n## 規約\n\n標的 prism の完全性・p 正則性は要求しない。台環と prism 商で p が非可逆である場合を扱う。\n台環での非可逆性は商での非可逆性から従うが、型クラス用に明示する。\n\n## 使われ方\n\n商の tilt へ写された完全係数を台環の tilt へ戻し、Fontaine 写像による環射構成に用いる。\n-/"
+        }
+      ]
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Prismatic.CechAlexander.Complexes.CechAlexanderComplex",
+      "comment_changes": [
+        {
+          "line": 9,
+          "before": "/-!\n# Čech–Alexander 対象の交代余面複体\n\n## 概要\nHasEnvelopes からの余単体的対象とその mod d の剰余を、通常の A 加群の複体として読む。\n\n## 方針\n基底の下の環から加群を取り、Mathlib の交代余面複体を適用する。\n\n## 規約\nBS 著者版 Construction 4.18。非正規化複体で、Tot や導来極限との同一視は G10 の後。\n\n## 使われ方\n後の Hodge–Tate 比較と底変換の計算模型。\n-/",
+          "after": "/-!\n# Čech–Alexander 対象の交代余面複体\n\n## 概要\nHasEnvelopes からの余単体的対象とその mod d の剰余を、通常の A 加群の複体として読む。\n\n## 方針\n基底の下の環から加群を取り、Mathlib の交代余面複体を適用する。\n\n## 規約\nBS 著者版 Construction 4.18。非正規化複体で、Tot や導来極限との同一視は 冪零還元からの純性・平坦性の判定 の後。\n\n## 使われ方\n後の Hodge–Tate 比較と底変換の計算模型。\n-/"
+        }
+      ]
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Delta.Division.Basic",
+      "comment_changes": [
+        {
+          "line": 12,
+          "before": "/-!\n# d で割る δ 包 A{a_s/d}（BS 著者版 Notation 2.8 の添加の一般形）\n\n## 概要\nδ 環に a_s/d を添加した生の包 `DeltaAdjoinDivision` とその普遍性、d が正則な標的への普遍性、mod d への商射、d 冪・p 冪ねじれの δ 閉包による除去と除去商の p 正則性、古典的 (p,d) 完備化と、δ 除算・ねじれ除去・導来 (p,d) 完備化の一段操作。\nδ 除算の添加、ねじれ除去、それらを合わせた普遍性は、BS 著者版 Proposition 7.2 の証明に関わる代数的な補助である。\n\n## 方針\nこの構成は BS 著者版 Proposition 3.13 の prismatic envelope と Proposition 7.2 の証明で使う。\n\n## 規約\n係数環・素数・正則性の仮定は各宣言で明示する。\n\n## 使われ方\n`Andre/Envelope/PDivision`、`Andre/Envelope/PDivisionSource`、`Andre/PowerRootEnvelope/DeltaDivisionResidue`、`Andre/PowerRootEnvelope/DeltaDivisionWitt`、`Andre/PowerRootEnvelope/Unconditional/Localization`、`Delta/DividedPower/PDivision`、`Delta/DividedPower/PDivisionCompletion`、`Delta/Division/Family`、`Delta/Division/Relations`、`Delta/Division/Residue`、`Semiperfectoid/PerfectPrismDivision`、`Semiperfectoid/PerfectPrismDivisionComparison`。\n-/",
+          "after": "/-!\n# d で割る δ 包 A{a_s/d}（BS 著者版 Notation 2.8 の添加の一般形）\n\n## 概要\nδ 環に a_s/d を添加した生の包 `DeltaAdjoinDivision` とその普遍性、d が正則な標的への普遍性、mod d への商射、d 冪・p 冪ねじれの δ 閉包による除去と除去商の p 正則性、古典的 (p,d) 完備化と、δ 除算・ねじれ除去・導来 (p,d) 完備化の一段操作。\nδ 除算の添加、ねじれ除去、それらを合わせた普遍性は、BS 著者版 Proposition 7.2 の証明に関わる代数的な補助である。\n\n## 方針\nこの構成は BS 著者版 Proposition 3.13 の prismatic envelope と Proposition 7.2 の証明で使う。\n\n## 規約\n係数環・素数・正則性の仮定は各宣言で明示する。\n\n## 使われ方\n`Andre/Envelope/PDivision`、`Andre/Envelope/PDivisionSource`、`Andre/PowerRootEnvelope/DeltaDivisionResidue`、`Andre/PowerRootEnvelope/DeltaDivisionWitt`、`Andre/PowerRootEnvelope/Unconditional/Localization`、`Delta/DividedPower/PDivision`、`Delta/DividedPower/PDivisionCompletion`、`Delta/Division/Family`、`Delta/Division/Relations`、`Delta/Division/Residue`、`Semiperfectoid/Perfection/PerfectPrismDivision`、`Semiperfectoid/Perfection/PerfectPrismDivisionComparison`。\n-/"
+        }
+      ]
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Delta.Division.Source",
+      "comment_changes": [
+        {
+          "line": 17,
+          "before": "/-!\n# 自由 δ 射の評価源と係数商還元\n\n## 概要\n一般の除数・任意元族の自由 δ 射が与える代数構造、評価源と raw δ 包の核表示、有限 δ 関係と有限評価関係、任意有限根族の次段関係から評価関係への移送、分母 1 の raw 包、部分根族と補集合の自由 δ 変数の分離、有限部分族から任意族への p 正則性の移送、係数商への降下・基底変更・右因子への移送と Tor の消滅、自由 δ 射の通常テンソル積とその δ 構造。\nBS 著者版 Corollary 2.39 と Proposition 3.13 の包に使う、自由 δ 射の評価源と係数商を比較する。\n\n## 方針\n構成ごとに補題をまとめ、各節で共通の仮定を明示する。\n\n## 規約\n係数環・素数・正則性の仮定は各宣言で明示する。\n\n## 使われ方\n`Andre/Envelope/DivisionResidue`、`Andre/Envelope/FamilyEvaluation`、`Andre/Envelope/MonicCandidate`、`Andre/Envelope/MonicSource`、`Andre/Envelope/PDivisionSource`、`Andre/Envelope/RootFamilyRaw`、`Andre/Envelope/RootFamilySource`、`Andre/Envelope/RootSource`、`Andre/Envelope/SourceEvaluation`、`Andre/PowerRootEnvelope/Unconditional/Localization`、`Andre/PowerRootEnvelope/Unconditional/Source`、`Andre/Variants/RootedExtension`、`Semiperfectoid/RootEnvelope/Source`。\n-/",
+          "after": "/-!\n# 自由 δ 射の評価源と係数商還元\n\n## 概要\n一般の除数・任意元族の自由 δ 射が与える代数構造、評価源と raw δ 包の核表示、有限 δ 関係と有限評価関係、任意有限根族の次段関係から評価関係への移送、分母 1 の raw 包、部分根族と補集合の自由 δ 変数の分離、有限部分族から任意族への p 正則性の移送、係数商への降下・基底変更・右因子への移送と Tor の消滅、自由 δ 射の通常テンソル積とその δ 構造。\nBS 著者版 Corollary 2.39 と Proposition 3.13 の包に使う、自由 δ 射の評価源と係数商を比較する。\n\n## 方針\n構成ごとに補題をまとめ、各節で共通の仮定を明示する。\n\n## 規約\n係数環・素数・正則性の仮定は各宣言で明示する。\n\n## 使われ方\n`Andre/Envelope/DivisionResidue`、`Andre/Envelope/FamilyEvaluation`、`Andre/Envelope/MonicCandidate`、`Andre/Envelope/MonicSource`、`Andre/Envelope/PDivisionSource`、`Andre/Envelope/RootFamilyRaw`、`Andre/Envelope/RootFamilySource`、`Andre/Envelope/RootSource`、`Andre/Envelope/SourceEvaluation`、`Andre/PowerRootEnvelope/Unconditional/Localization`、`Andre/PowerRootEnvelope/Unconditional/Source`、`Andre/Variants/RootedExtension`、`Semiperfectoid/Surjectivity/RootEnvelope/Source`。\n-/"
+        },
+        {
+          "line": 1058,
+          "before": "/-! ## 自由δ射の両因子の係数商に沿うTor消滅\n\n係数射の平坦性と具体的な係数上の式を共通のTor基底変更へ供給する。\n係数イデアルの正則性・完備性やG7は要求しない。\n-/",
+          "after": "/-! ## 自由δ射の両因子の係数商に沿うTor消滅\n\n係数射の平坦性と具体的な係数上の式を共通のTor基底変更へ供給する。\n係数イデアルの正則性・完備性や余極限との比較は要求しない。\n-/"
+        }
+      ]
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Delta.Free.RelativeFreeWitt",
+      "comment_changes": [
+        {
+          "line": 264,
+          "before": "/-- 各Witt係数の変数は第n段以下。整域性・G4は不要。 -/",
+          "after": "/-- 各Witt係数の変数は第n段以下。整域性・ghost 成分の単射性の補題は不要。 -/"
+        }
+      ]
+    }
+  ]
+}

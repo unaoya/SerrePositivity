@@ -36,7 +36,7 @@ universe u
 section AllModuleAlmostTorPart
 
 namespace SerrePositivity.CLMST
-open CategoryTheory DerivedCompletion Almost
+open _root_.CategoryTheory _root_.SerrePositivity.DerivedCompletion _root_.SerrePositivity.Almost
 
 /-- 概要：p 冪ねじれ試験と完備 almost 拡大閉性から、任意加群の高次 Tor を零化する。
 方針：CLMST Thm 4.0.3(a), pp.27–28 の Milnor 列と有限生成部分加群への帰着を使う。
@@ -72,15 +72,15 @@ theorem perfectoidIdeal_allModule_tor_annihilated
     (hExt : ∀ (S : ShortComplex (ModuleCat.{u} R)), S.ShortExact →
       IsModuleComplete R (p : R) S.X₁ → IsModuleComplete R (p : R) S.X₂ →
       IsModuleComplete R (p : R) S.X₃ →
-      IsAlmostZero (perfectoidIdeal R p hR g) S.X₁ →
-      IsAlmostZero (perfectoidIdeal R p hR g) S.X₃ →
-      IsAlmostZero (perfectoidIdeal R p hR g) S.X₂)
+      IsAlmostZero (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g) S.X₁ →
+      IsAlmostZero (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g) S.X₃ →
+      IsAlmostZero (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g) S.X₂)
     (hTor : ∀ (N : ModuleCat.{u} A) (k : ℕ),
       (∀ x : N, (p : A) ^ k • x = 0) → ∀ j : ℕ, 0 < j →
-        ∀ s ∈ perfectoidIdeal R p hR g,
+        ∀ s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g,
           torCoefficientScalarEndomorphism C N j (ψ s) = 0) :
     ∀ (N : ModuleCat.{u} A) (j : ℕ), 0 < j →
-      ∀ s ∈ perfectoidIdeal R p hR g,
+      ∀ s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g,
         torCoefficientScalarEndomorphism C N j (ψ s) = 0 := by
   exact allModule_tor_annihilated_of_powerTorsion_and_extension p ψ _
     (hC.isModuleComplete_algebra A C p) hExt hTor
@@ -92,7 +92,7 @@ end AllModuleAlmostTorPart
 section ConditionalCohomologyFromPowerTorsionPart
 
 namespace SerrePositivity.CLMST
-open CategoryTheory Section2
+open _root_.CategoryTheory _root_.SerrePositivity.Section2
 
 /-- 概要：p 冪ねじれ版と完備 almost 拡大閉性から Cor 4.0.4 の両結論を得る。
 方針：Thm 4.0.3(a), pp.27–28 の全加群帰着を既存 conditional_corollary_4_0_4 に渡す。
@@ -112,18 +112,18 @@ theorem conditional_corollary_4_0_4_of_powerTorsion_and_extension
     (ψ : S →+* C) (a : S) (j₀ : Fin e)
     (ha : ψ a = algebraMap A C (t j₀))
     (hI : ∀ k : ℕ, 0 < k →
-      IsIdempotentElem ((perfectoidIdeal S p hS g).map (Ideal.Quotient.mk (Ideal.span {a ^ k}))))
+      IsIdempotentElem ((_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal S p hS g).map (Ideal.Quotient.mk (Ideal.span {a ^ k}))))
     (hExt : ∀ (X : ShortComplex (ModuleCat.{u} S)), X.ShortExact →
       DerivedCompletion.IsModuleComplete S (p : S) X.X₁ →
       DerivedCompletion.IsModuleComplete S (p : S) X.X₂ →
       DerivedCompletion.IsModuleComplete S (p : S) X.X₃ →
-      Almost.IsAlmostZero (perfectoidIdeal S p hS g) X.X₁ →
-      Almost.IsAlmostZero (perfectoidIdeal S p hS g) X.X₃ →
-      Almost.IsAlmostZero (perfectoidIdeal S p hS g) X.X₂)
+      Almost.IsAlmostZero (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal S p hS g) X.X₁ →
+      Almost.IsAlmostZero (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal S p hS g) X.X₃ →
+      Almost.IsAlmostZero (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal S p hS g) X.X₂)
     (hTor : ∀ (N : ModuleCat.{u} A) (k : ℕ),
       (∀ x : N, (p : A) ^ k • x = 0) → ∀ j : ℕ, 0 < j →
-        ∀ s ∈ (perfectoidIdeal S p hS g), torCoefficientScalarEndomorphism C N j (ψ s) = 0) :
-    (∀ i : ℕ, i < e → ∀ s ∈ (perfectoidIdeal S p hS g),
+        ∀ s ∈ (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal S p hS g), torCoefficientScalarEndomorphism C N j (ψ s) = 0) :
+    (∀ i : ℕ, i < e → ∀ s ∈ (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal S p hS g),
       HomologicalAlgebra.localCohomologyScalarEndomorphism
         (IsLocalRing.maximalIdeal D) i C (ψ s) = 0) ∧
     (∀ n : ℕ,
@@ -131,9 +131,9 @@ theorem conditional_corollary_4_0_4_of_powerTorsion_and_extension
       ∀ (y : Fin e → Section2.StageAlgebra A D t p n),
         IsSystemOfParameters (Section2.StageAlgebra A D t p n) y → ∀ i : ℕ, 0 < i →
           let _ := Module.compHom (koszulHomologySelf (φ n ∘ y) i) ψ
-          (perfectoidIdeal S p hS g) ≤ Module.annihilator S (koszulHomologySelf (φ n ∘ y) i)) := by
+          (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal S p hS g) ≤ Module.annihilator S (koszulHomologySelf (φ n ∘ y) i)) := by
   exact conditional_corollary_4_0_4 t p hsop hres φ hφ ψ
-    (perfectoidIdeal S p hS g) a j₀ ha hI
+    (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal S p hS g) a j₀ ha hI
     (perfectoidIdeal_allModule_tor_annihilated p hS g ψ hC hExt hTor)
 
 end SerrePositivity.CLMST
@@ -143,7 +143,7 @@ end ConditionalCohomologyFromPowerTorsionPart
 section CompletedTowerAllModuleTorPart
 
 namespace SerrePositivity.CLMST
-open CategoryTheory Section2 IsLocalRing
+open _root_.CategoryTheory _root_.SerrePositivity.Section2 _root_.IsLocalRing
 variable {A C : Type u} [CommRing A] [IsRegularLocalRing A] [CommRing C]
     {e : ℕ} (t : Fin e → A) (p : ℕ) [Fact p.Prime]
     [Algebra A C] [Algebra (CompletedTower A t p) C]
@@ -161,19 +161,19 @@ theorem completedTower_allModule_tor_annihilated
       DerivedCompletion.IsModuleComplete (CompletedTower A t p) (p : CompletedTower A t p) X.X₁ →
       DerivedCompletion.IsModuleComplete (CompletedTower A t p) (p : CompletedTower A t p) X.X₂ →
       DerivedCompletion.IsModuleComplete (CompletedTower A t p) (p : CompletedTower A t p) X.X₃ →
-      Almost.IsAlmostZero (perfectoidIdeal (CompletedTower A t p) p hperf
+      Almost.IsAlmostZero (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf
         (algebraMap A (CompletedTower A t p) g)) X.X₁ →
-      Almost.IsAlmostZero (perfectoidIdeal (CompletedTower A t p) p hperf
+      Almost.IsAlmostZero (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf
         (algebraMap A (CompletedTower A t p) g)) X.X₃ →
-      Almost.IsAlmostZero (perfectoidIdeal (CompletedTower A t p) p hperf
+      Almost.IsAlmostZero (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf
         (algebraMap A (CompletedTower A t p) g)) X.X₂)
     (hTor : ∀ (N : ModuleCat.{u} A) (k : ℕ),
       (∀ x : N, (p : A) ^ k • x = 0) → ∀ j : ℕ, 0 < j →
-        ∀ s ∈ perfectoidIdeal (CompletedTower A t p) p hperf
+        ∀ s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf
           (algebraMap A (CompletedTower A t p) g),
           torCoefficientScalarEndomorphism C N j (algebraMap (CompletedTower A t p) C s) = 0) :
     ∀ (N : ModuleCat.{u} A) (j : ℕ), 0 < j →
-      ∀ s ∈ perfectoidIdeal (CompletedTower A t p) p hperf
+      ∀ s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf
         (algebraMap A (CompletedTower A t p) g),
         torCoefficientScalarEndomorphism C N j (algebraMap (CompletedTower A t p) C s) = 0 := by
   exact perfectoidIdeal_allModule_tor_annihilated p hperf
@@ -193,26 +193,26 @@ theorem completedTower_cohomology_vanishing_of_powerTorsion_and_extension
       (algebraMap A D x)) = algebraMap A C x)
     (j₀ : Fin e) (htp : t j₀ = (p : A))
     (hI : ∀ k : ℕ, 0 < k → IsIdempotentElem
-      ((perfectoidIdeal (CompletedTower A t p) p hperf
+      ((_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf
         (algebraMap A (CompletedTower A t p) g)).map
           (Ideal.Quotient.mk (Ideal.span {(p : CompletedTower A t p) ^ k}))))
     (hExt : ∀ (X : ShortComplex (ModuleCat.{u} (CompletedTower A t p))), X.ShortExact →
       DerivedCompletion.IsModuleComplete (CompletedTower A t p) (p : CompletedTower A t p) X.X₁ →
       DerivedCompletion.IsModuleComplete (CompletedTower A t p) (p : CompletedTower A t p) X.X₂ →
       DerivedCompletion.IsModuleComplete (CompletedTower A t p) (p : CompletedTower A t p) X.X₃ →
-      Almost.IsAlmostZero (perfectoidIdeal (CompletedTower A t p) p hperf
+      Almost.IsAlmostZero (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf
         (algebraMap A (CompletedTower A t p) g)) X.X₁ →
-      Almost.IsAlmostZero (perfectoidIdeal (CompletedTower A t p) p hperf
+      Almost.IsAlmostZero (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf
         (algebraMap A (CompletedTower A t p) g)) X.X₃ →
-      Almost.IsAlmostZero (perfectoidIdeal (CompletedTower A t p) p hperf
+      Almost.IsAlmostZero (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf
         (algebraMap A (CompletedTower A t p) g)) X.X₂)
     (hTor : ∀ (N : ModuleCat.{u} A) (k : ℕ),
       (∀ x : N, (p : A) ^ k • x = 0) → ∀ j : ℕ, 0 < j →
-        ∀ s ∈ perfectoidIdeal (CompletedTower A t p) p hperf
+        ∀ s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf
           (algebraMap A (CompletedTower A t p) g),
           torCoefficientScalarEndomorphism C N j (algebraMap (CompletedTower A t p) C s) = 0) :
     (∀ i : ℕ, i < e →
-      ∀ s ∈ perfectoidIdeal (CompletedTower A t p) p hperf
+      ∀ s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf
         (algebraMap A (CompletedTower A t p) g),
         HomologicalAlgebra.localCohomologyScalarEndomorphism (maximalIdeal D) i C
           (algebraMap (CompletedTower A t p) C s) = 0) ∧
@@ -222,7 +222,7 @@ theorem completedTower_cohomology_vanishing_of_powerTorsion_and_extension
         IsSystemOfParameters (Section2.StageAlgebra A D t p n) y → ∀ i : ℕ, 0 < i →
           let _ := Module.compHom (koszulHomologySelf (φ n ∘ y) i)
             (algebraMap (CompletedTower A t p) C)
-          perfectoidIdeal (CompletedTower A t p) p hperf
+          _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf
             (algebraMap A (CompletedTower A t p) g) ≤
               Module.annihilator (CompletedTower A t p) (koszulHomologySelf (φ n ∘ y) i)) := by
   apply conditional_corollary_4_0_4_of_powerTorsion_and_extension t p hsop
@@ -239,7 +239,7 @@ end CompletedTowerAllModuleTorPart
 section AllModuleTorFromBSPart
 
 namespace SerrePositivity.CLMST
-open CategoryTheory Section2 IsLocalRing
+open _root_.CategoryTheory _root_.SerrePositivity.Section2 _root_.IsLocalRing
 
 /-- 概要：p 冪ねじれ版だけから全 A 加群の高次 Tor 零化へ帰着する。
 方針：CLMST Thm 4.0.3(a), pp.27–28 の Milnor 証明に 導来完備 almost 零加群の拡大閉性の証明を渡す。
@@ -252,13 +252,13 @@ theorem perfectoidIdeal_allModule_tor_annihilated_of_powerTorsion
     (ψ : R →+* C) (hC : IsIntegralPerfectoid C p)
     (hTor : ∀ (N : ModuleCat.{u} A) (k : ℕ),
       (∀ x : N, (p : A) ^ k • x = 0) → ∀ j : ℕ, 0 < j →
-        ∀ s ∈ perfectoidIdeal R p hR g,
+        ∀ s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g,
           torCoefficientScalarEndomorphism C N j (ψ s) = 0) :
     ∀ (N : ModuleCat.{u} A) (j : ℕ), 0 < j →
-      ∀ s ∈ perfectoidIdeal R p hR g,
+      ∀ s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR g,
         torCoefficientScalarEndomorphism C N j (ψ s) = 0 := by
   exact perfectoidIdeal_allModule_tor_annihilated p hR g ψ hC
-    (BhattScholze.perfectoidIdeal_isAlmostZero_extension R p hR g) hTor
+    (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal_isAlmostZero_extension R p hR g) hTor
 
 /-- 概要：ねじれ版 Tor 零化から局所コホモロジー・全段 Koszul の条件付き両消滅を得る。
 方針：BS 著者版 Proposition 10.2, p.78 を受領して拡大閉性を解消し、CLMST Cor 4.0.4, p.28 へ合流する。
@@ -278,11 +278,11 @@ theorem conditional_corollary_4_0_4_of_powerTorsion
     (ψ : S →+* C) (a : S) (j₀ : Fin e)
     (ha : ψ a = algebraMap A C (t j₀))
     (hI : ∀ k : ℕ, 0 < k →
-      IsIdempotentElem ((perfectoidIdeal S p hS g).map (Ideal.Quotient.mk (Ideal.span {a ^ k}))))
+      IsIdempotentElem ((_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal S p hS g).map (Ideal.Quotient.mk (Ideal.span {a ^ k}))))
     (hTor : ∀ (N : ModuleCat.{u} A) (k : ℕ),
       (∀ x : N, (p : A) ^ k • x = 0) → ∀ j : ℕ, 0 < j →
-        ∀ s ∈ (perfectoidIdeal S p hS g), torCoefficientScalarEndomorphism C N j (ψ s) = 0) :
-    (∀ i : ℕ, i < e → ∀ s ∈ (perfectoidIdeal S p hS g),
+        ∀ s ∈ (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal S p hS g), torCoefficientScalarEndomorphism C N j (ψ s) = 0) :
+    (∀ i : ℕ, i < e → ∀ s ∈ (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal S p hS g),
       HomologicalAlgebra.localCohomologyScalarEndomorphism
         (IsLocalRing.maximalIdeal D) i C (ψ s) = 0) ∧
     (∀ n : ℕ,
@@ -290,10 +290,10 @@ theorem conditional_corollary_4_0_4_of_powerTorsion
       ∀ (y : Fin e → Section2.StageAlgebra A D t p n),
         IsSystemOfParameters (Section2.StageAlgebra A D t p n) y → ∀ i : ℕ, 0 < i →
           let _ := Module.compHom (koszulHomologySelf (φ n ∘ y) i) ψ
-          (perfectoidIdeal S p hS g) ≤ Module.annihilator S (koszulHomologySelf (φ n ∘ y) i)) := by
+          (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal S p hS g) ≤ Module.annihilator S (koszulHomologySelf (φ n ∘ y) i)) := by
   exact conditional_corollary_4_0_4_of_powerTorsion_and_extension
     t p hsop hres φ hφ hS g hC ψ a j₀ ha hI
-    (BhattScholze.perfectoidIdeal_isAlmostZero_extension S p hS g) hTor
+    (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal_isAlmostZero_extension S p hS g) hTor
 
 variable {A C : Type u} [CommRing A] [IsRegularLocalRing A] [CommRing C]
     {e : ℕ} (t : Fin e → A) (p : ℕ) [Fact p.Prime]
@@ -318,16 +318,16 @@ theorem completedTower_cohomology_vanishing_of_powerTorsion
       (algebraMap A D x)) = algebraMap A C x)
     (j₀ : Fin e) (htp : t j₀ = (p : A))
     (hI : ∀ k : ℕ, 0 < k → IsIdempotentElem
-      ((perfectoidIdeal (CompletedTower A t p) p hperf
+      ((_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf
         (algebraMap A (CompletedTower A t p) g)).map
           (Ideal.Quotient.mk (Ideal.span {(p : CompletedTower A t p) ^ k}))))
     (hTor : ∀ (N : ModuleCat.{u} A) (k : ℕ),
       (∀ x : N, (p : A) ^ k • x = 0) → ∀ j : ℕ, 0 < j →
-        ∀ s ∈ perfectoidIdeal (CompletedTower A t p) p hperf
+        ∀ s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf
           (algebraMap A (CompletedTower A t p) g),
           torCoefficientScalarEndomorphism C N j (algebraMap (CompletedTower A t p) C s) = 0) :
     (∀ i : ℕ, i < e →
-      ∀ s ∈ perfectoidIdeal (CompletedTower A t p) p hperf
+      ∀ s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf
         (algebraMap A (CompletedTower A t p) g),
         HomologicalAlgebra.localCohomologyScalarEndomorphism (maximalIdeal D) i C
           (algebraMap (CompletedTower A t p) C s) = 0) ∧
@@ -337,12 +337,12 @@ theorem completedTower_cohomology_vanishing_of_powerTorsion
         IsSystemOfParameters (Section2.StageAlgebra A D t p n) y → ∀ i : ℕ, 0 < i →
           let _ := Module.compHom (koszulHomologySelf (φ n ∘ y) i)
             (algebraMap (CompletedTower A t p) C)
-          perfectoidIdeal (CompletedTower A t p) p hperf
+          _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal (CompletedTower A t p) p hperf
             (algebraMap A (CompletedTower A t p) g) ≤
               Module.annihilator (CompletedTower A t p) (koszulHomologySelf (φ n ∘ y) i)) := by
   exact completedTower_cohomology_vanishing_of_powerTorsion_and_extension
     t p hperf hC g ht hdim hsop φ hφ j₀ htp hI
-    (BhattScholze.perfectoidIdeal_isAlmostZero_extension (CompletedTower A t p) p hperf
+    (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal_isAlmostZero_extension (CompletedTower A t p) p hperf
       (algebraMap A (CompletedTower A t p) g)) hTor
 
 end SerrePositivity.CLMST

@@ -25,7 +25,7 @@ BS 著者版 Remark 7.15 の根の包を受け取る、有界 prism の入力圏
 
 universe u
 
-/-! ## André A1-a：入力作用を持つ有界な向き付き prism の圏
+/-! ## André 入力作用を持つ有界な向き付き prism の圏
 
 ## 概要
 
@@ -175,7 +175,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end BoundedPrismInputCategory
 
-/-! ## A1-f：固定基底上の向きなし有界入力 prism
+/-! ## 固定基底上の向きなし有界入力 prism
 
 ## 概要
 イデアル J と δ 構造・基底射・入力作用を保持し、独立な生成元をデータとして持たない。

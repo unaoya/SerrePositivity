@@ -24,9 +24,9 @@ almost purity の主イデアルへの帰着。
 
 universe u
 namespace SerrePositivity.BhattScholze.Almost
-open CategoryTheory CategoryTheory.Limits DerivedCompletion InfinityCategories
-open Perfectoidization.Derived
-open scoped TensorProduct
+open _root_.CategoryTheory _root_.CategoryTheory.Limits _root_.SerrePositivity.DerivedCompletion _root_.SerrePositivity.InfinityCategories
+open _root_.SerrePositivity.BhattScholze.Perfectoidization.Derived
+open scoped _root_.TensorProduct
 attribute [local instance] HasDerivedCategory.standard
 set_option backward.isDefEq.respectTransparency false
 
@@ -65,7 +65,7 @@ private theorem annihilator_isModuleComplete (M : ModuleCat.{u} R)
 private def quotientPerfdMap_factor (J : Ideal R)
     {A : Type u} [CommRing A] [Algebra R A]
     (h : perfectoidKernel p R hR J ≤ RingHom.ker (algebraMap R A)) :
-    QuotientPerfectoidization R J p hR →ₐ[R] A where
+    _root_.SerrePositivity.BhattScholze.Semiperfectoid.QuotientPerfectoidization R J p hR →ₐ[R] A where
   toRingHom := (Ideal.Quotient.lift (perfectoidKernel p R hR J) (algebraMap R A)
     (fun _ hx ↦ h hx)).comp
       (RingHom.quotientKerEquivOfSurjective (quotientPerfdMap_surjective p R hR J)).symm.toRingHom
@@ -84,8 +84,8 @@ private theorem perfectoidKernel_sup_le_ker {I J : Ideal R} {A : Type u} [CommRi
     (hI : perfectoidKernel p R hR I ≤ RingHom.ker (algebraMap R A))
     (hJ : perfectoidKernel p R hR J ≤ RingHom.ker (algebraMap R A)) :
     perfectoidKernel p R hR (I ⊔ J) ≤ RingHom.ker (algebraMap R A) := by
-  let S := QuotientPerfectoidization R I p hR
-  let T := QuotientPerfectoidization R J p hR
+  let S := _root_.SerrePositivity.BhattScholze.Semiperfectoid.QuotientPerfectoidization R I p hR
+  let T := _root_.SerrePositivity.BhattScholze.Semiperfectoid.QuotientPerfectoidization R J p hR
   let D := S ⊗[R] T
   let C := PrincipalCompletionH0 D (p : D)
   let : CommRing C := principalCompletionCommRing D (p : D)
@@ -100,8 +100,8 @@ private theorem perfectoidKernel_sup_le_ker {I J : Ideal R} {A : Type u} [CommRi
   have hc : IsIntegralPerfectoid C p :=
     isIntegralPerfectoid_of_ringEquiv p (completedTensorH0PrincipalRingEquiv R p S T)
       (integralPerfectoid_completedTensorH0_isIntegralPerfectoid p R S T hR
-        (isPerfectoidization_toQuotientPerfectoidization R I p hR).1
-        (isPerfectoidization_toQuotientPerfectoidization R J p hR).1)
+        (_root_.SerrePositivity.BhattScholze.Semiperfectoid.isPerfectoidization_toQuotientPerfectoidization R I p hR).1
+        (_root_.SerrePositivity.BhattScholze.Semiperfectoid.isPerfectoidization_toQuotientPerfectoidization R J p hR).1)
   have hkill : I ⊔ J ≤ RingHom.ker (d.comp (algebraMap R D)) := by
     apply sup_le
     · intro x hx
@@ -156,7 +156,7 @@ BS 著者版 Remark 10.7 に続く almost 零性の比較。
 -/
 theorem isAlmostZero_iff_forall_gen (J : Ideal R) {r : ℕ} (f : Fin r → R)
     (hf : J = Ideal.span (Set.range f)) (M : DVertex R) (hM : SerrePositivity.DerivedInfinity.IsPComplete p R M) :
-    IsJAlmostZero p R hR J M ↔ ∀ i, IsJAlmostZero p R hR (Ideal.span {f i}) M := by
+    _root_.SerrePositivity.BhattScholze.Almost.IsAlmostZeroComplex p R hR J M ↔ ∀ i, _root_.SerrePositivity.BhattScholze.Almost.IsAlmostZeroComplex p R hR (Ideal.span {f i}) M := by
   classical
   constructor
   · intro h i n

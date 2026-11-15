@@ -1,4 +1,4 @@
--- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Derived.SemiperfectoidCase（仮。原典 Prop 8.5 の証明 (4)、系 3、G-A5-17）
+-- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Descent.SemiperfectoidCase（仮。原典 Prop 8.5 の証明 (4)、系 3、G-A5-17）
 -- 設計書：formalization-plans/bhatt-scholze/a5-design.md §3.4、単位 A5-2。基準コミット efa846fe8。型検査対象（5∞-0）。
 module
 public import SerrePositivity.BhattScholze.Semiperfectoid.Basic

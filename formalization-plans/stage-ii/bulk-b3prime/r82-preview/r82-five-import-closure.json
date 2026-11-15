@@ -1,0 +1,11 @@
+{
+  "project_modules": 334,
+  "infinity_modules": [],
+  "seeds": [
+    "SerrePositivity/BhattScholze/Perfectoidization/Derived/RootAdjunction.lean",
+    "SerrePositivity/BhattScholze/IntegralPerfectoidization/Completion/IntegralClosureCompletion.lean",
+    "SerrePositivity/BhattScholze/IntegralPerfectoidization/Approximation/IntegralApproximation.lean",
+    "SerrePositivity/BhattScholze/IntegralPerfectoidization/Approximation/PerfectoidFilteredColimit.lean",
+    "SerrePositivity/BhattScholze/Perfectoidization/Arc/Descent/ArcPerfectoidBase.lean"
+  ]
+}

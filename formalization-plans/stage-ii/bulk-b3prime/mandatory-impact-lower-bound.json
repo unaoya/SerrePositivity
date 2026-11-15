@@ -1,0 +1,52 @@
+{
+  "scope": "branch changes relative to merge base with current main, plus live modified/untracked Lean; other worktrees read only",
+  "needles": [
+    "SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface",
+    "SerrePositivity.EInfinity.Perfectoidization.TheoryInterface",
+    "SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction",
+    "SerrePositivity/BhattScholze/Perfectoidization/Derived/Interface"
+  ],
+  "branches": [
+    {
+      "branch": "math/bs-impl",
+      "head": "ed5bb04348fbb4d42dbbe2f1736d5d85a6ed2868",
+      "merge_base": "ed5bb04348fbb4d42dbbe2f1736d5d85a6ed2868",
+      "files_scanned": 0,
+      "hits": [],
+      "count": 0
+    },
+    {
+      "branch": "math/bs-m15",
+      "head": "4caf05fcdf7fa8f669cd61c41b4f1950149ee678",
+      "merge_base": "825a7829f9a98f390eeecb3dc2b07f4754c6811e",
+      "files_scanned": 120,
+      "hits": [],
+      "count": 0
+    },
+    {
+      "branch": "math/inf-supply",
+      "head": "0d460506c606cee0f2a031385106560941f64ead",
+      "merge_base": "ec1b0efcfe53a7c6b62288012d0ae8b792467e14",
+      "files_scanned": 50,
+      "hits": [],
+      "count": 0
+    },
+    {
+      "branch": "math/inf-supply-b",
+      "head": "b3ee89a5c861e26d190c02ea70a14b0f53068a53",
+      "merge_base": "d7b418962423fb2accf4d8fad55b2741950128a5",
+      "files_scanned": 60,
+      "hits": [],
+      "count": 0
+    },
+    {
+      "branch": "math/scheme",
+      "head": "3f4a256ab4a87f776323f317d64b2c157150803d",
+      "merge_base": "78d0feeab6916320659f75bbe3504e3f91f49221",
+      "files_scanned": 1284,
+      "hits": [],
+      "count": 0
+    }
+  ],
+  "branch_file_count": 0
+}

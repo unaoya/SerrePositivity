@@ -1,0 +1,38 @@
+[
+  {
+    "correspondence": {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.RootRelationCoordinates",
+      "old": "SerrePositivity.BhattScholze.Andre.powerRootNatExponent.eq_1",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.powerRootNatExponent.eq_1",
+      "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationCoordinates"
+    },
+    "reason": "Same generated equation theorem name is created on demand in multiple native module environments; retain full owner evidence, do not invent a unique CLI ownership row."
+  },
+  {
+    "correspondence": {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.RootRelationSubsetRaw",
+      "old": "SerrePositivity.BhattScholze.Andre.powerRootNatExponent.eq_1",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.powerRootNatExponent.eq_1",
+      "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationSubsetRaw"
+    },
+    "reason": "Same generated equation theorem name is created on demand in multiple native module environments; retain full owner evidence, do not invent a unique CLI ownership row."
+  },
+  {
+    "correspondence": {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.RootRelationCoordinates",
+      "old": "SerrePositivity.BhattScholze.Andre.powerRootVariableExponent.eq_1",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.powerRootVariableExponent.eq_1",
+      "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationCoordinates"
+    },
+    "reason": "Same generated equation theorem name is created on demand in multiple native module environments; retain full owner evidence, do not invent a unique CLI ownership row."
+  },
+  {
+    "correspondence": {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.RootRelationSubsetRaw",
+      "old": "SerrePositivity.BhattScholze.Andre.powerRootVariableExponent.eq_1",
+      "new": "SerrePositivity.BhattScholze.Semiperfectoid.powerRootVariableExponent.eq_1",
+      "new_module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationSubsetRaw"
+    },
+    "reason": "Same generated equation theorem name is created on demand in multiple native module environments; retain full owner evidence, do not invent a unique CLI ownership row."
+  }
+]

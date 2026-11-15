@@ -59,15 +59,15 @@ set_option maxRecDepth 2048
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze.Andre
-open CategoryTheory CategoryTheory.Limits
+open _root_.CategoryTheory _root_.CategoryTheory.Limits
 attribute [local instance] HasDerivedCategory.standard
-open SerrePositivity.DerivedCompletion
+open _root_.SerrePositivity.DerivedCompletion
 variable {A : Type u} [CommRing A] {p : ℕ} [Fact p.Prime]
 variable (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect)
 variable (f : Polynomial A) (hf : f.Monic) (hdeg : 0 < f.natDegree)
 local notation "hp" => Nat.Prime.pos (Fact.out : p.Prime)
-local notation "P" => PowerRootPolynomial A p hp
-local notation "E" => powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
+local notation "P" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial A p hp
+local notation "E" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
 local notation "dP" => algebraMap A P W.generator
 local notation "a" => powerRootPrismMonicUnaryFamily (p := p) f
 local notation "L" => DeltaAdjoinDivision E dP a
@@ -218,8 +218,8 @@ R/ϖ の pd 計算と候補の p 完全忠実平坦性を結ぶ。
 @[expose] public noncomputable section Flatness
 
 namespace SerrePositivity.BhattScholze.Andre.VarpiComparison
-open TensorProduct
-open scoped TensorProduct
+open _root_.TensorProduct
+open scoped _root_.TensorProduct
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 variable {R : Type u} [CommRing R]
@@ -390,19 +390,19 @@ R/p から R/ϖ への係数商、および実装の A/p 表示と原典の R/ϖ
 @[expose] public noncomputable section PDBaseChange
 
 namespace SerrePositivity.BhattScholze.Andre.VarpiComparison
-open scoped TensorProduct
+open scoped _root_.TensorProduct
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 set_option maxRecDepth 2048
 
 section General
 variable (S : Type u) [CommRing S] (p : ℕ) (hp : 0 < p) (c : S) (f : Polynomial S)
-local notation "N" => PowerRootPolynomial S p hp
-local notation "z" => powerRootPolynomialBaseMap S p hp f
+local notation "N" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial S p hp
+local notation "z" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialBaseMap S p hp f
 local notation "D" => PrincipalDPPresentation N z
 local notation "Q" => S ⧸ Ideal.span {(c : S)}
-local notation "NQ" => PowerRootPolynomial Q p hp
-local notation "zQ" => powerRootPolynomialBaseMap Q p hp (f.map (Ideal.Quotient.mk _))
+local notation "NQ" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial Q p hp
+local notation "zQ" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialBaseMap Q p hp (f.map (Ideal.Quotient.mk _))
 
 /-- 概要：無限根環の pd 表示を係数商へテンソルすると、同じ入力の pd 表示となる。
 方針：通常テンソル商の同型と既存の二重商交換を合成する。
@@ -413,8 +413,8 @@ def powerRootPDTensorQuotientEquiv : Q ⊗[S] D ≃+* PrincipalDPPresentation NQ
     (Ideal.quotEquivOfEq (by rw [Ideal.map_span, Set.image_singleton]))).trans
       (principalDPReducedCoefficientEquiv (algebraMap S N c) z (algebraMap S D c)
         (IsScalarTower.algebraMap_apply S N D c)
-        (powerRootCoefficientQuotientEquiv S p hp c) zQ (by
-          rw [powerRootCoefficientQuotientEquiv_mk, powerRootCoefficientQuotientMap_baseMap]))
+        (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootCoefficientQuotientEquiv S p hp c) zQ (by
+          rw [_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootCoefficientQuotientEquiv_mk, _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootCoefficientQuotientMap_baseMap]))
 
 /-- 概要：係数テンソル比較はすべての標準分冪生成元を保つ。
 方針：商テンソルの代表元公式と既存の生成元公式を使う。
@@ -451,10 +451,10 @@ local notation "x" => Ideal.Quotient.mk (Ideal.span {(p : A)}) (perfectPrismVarp
 local notation "Q" => R₀ ⧸ Ideal.span {x}
 local notation "D" => PowerRootCoefficientPDEnvelope p f
 local notation "Rv" => (A ⧸ W.ideal) ⧸ Ideal.span {perfectPrismVarpi W hW}
-local notation "Nv" => PowerRootPolynomial Rv p hp
+local notation "Nv" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial Rv p hp
 local notation "barr" => RingHom.comp
   (Ideal.Quotient.mk (Ideal.span {perfectPrismVarpi W hW})) (Ideal.Quotient.mk W.ideal)
-local notation "zv" => powerRootPolynomialBaseMap Rv p hp (f.map barr)
+local notation "zv" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialBaseMap Rv p hp (f.map barr)
 local notation "Dv" => PrincipalDPPresentation Nv zv
 
 /-- 概要：原典の R/ϖ に A/p の自然な係数作用を入れる。
@@ -539,14 +539,14 @@ theorem perfectPrismPDTensorVarpiDividedPowers_generator
     (hf : f.Monic) (i : ℕ) :
     let := varpiCoefficientAlgebra W hW
     (perfectPrismPDTensorVarpiDividedPowers W hW f hf).dpow i
-      (1 ⊗ₜ[R₀] algebraMap (PowerRootPolynomial R₀ p hp) D (powerRootCoefficientPDInput p f)) =
+      (1 ⊗ₜ[R₀] algebraMap (_root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial R₀ p hp) D (powerRootCoefficientPDInput p f)) =
         1 ⊗ₜ[R₀] principalDPGenerator (powerRootCoefficientPDInput p f) i := by
   let := varpiCoefficientAlgebra W hW
   let e := perfectPrismPDTensorVarpiEquiv W hW f
   change e.symm ((perfectPrismVarpiNativeDividedPowers_of_unconditional W hW f hf).dpow i
-    (e (1 ⊗ₜ[R₀] algebraMap (PowerRootPolynomial R₀ p hp) D
+    (e (1 ⊗ₜ[R₀] algebraMap (_root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial R₀ p hp) D
       (powerRootCoefficientPDInput p f)))) = _
-  have hInput : e (1 ⊗ₜ[R₀] algebraMap (PowerRootPolynomial R₀ p hp) D
+  have hInput : e (1 ⊗ₜ[R₀] algebraMap (_root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial R₀ p hp) D
       (powerRootCoefficientPDInput p f)) = algebraMap Nv Dv zv := by
     simpa only [principalDPGenerator_one] using perfectPrismPDTensorVarpiEquiv_generator W hW f 1
   rw [hInput, perfectPrismVarpiNativeDividedPowers_base_apply_of_unconditional]
@@ -579,16 +579,16 @@ E1.25・E1.55・E1.56 と原典の係数表記を照合する補足であり、�
 @[expose] public noncomputable section Candidate
 
 namespace SerrePositivity.BhattScholze.Andre.VarpiComparison
-open SerrePositivity.DerivedCompletion
-open scoped TensorProduct
+open _root_.SerrePositivity.DerivedCompletion
+open scoped _root_.TensorProduct
 set_option maxRecDepth 2048
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 variable {A : Type u} [CommRing A] {p : ℕ} [Fact p.Prime]
 variable (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect) (f : Polynomial A)
 local notation "hp" => Nat.Prime.pos (Fact.out : p.Prime)
-local notation "P" => PowerRootPolynomial A p hp
-local notation "E" => powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
+local notation "P" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial A p hp
+local notation "E" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
 local notation "dP" => algebraMap A P W.generator
 local notation "a" => powerRootPrismMonicUnaryFamily (p := p) f
 local notation "L" => DeltaAdjoinDivision E dP a
@@ -601,11 +601,11 @@ local notation "v" => perfectPrismVarpi W hW
 local notation "Rv" => R ⧸ Ideal.span {v}
 local notation "φ" => powerRootPrismMonicHodgeTateBaseMap W hW f
 local notation "Tv" => T ⧸ Ideal.map φ (Ideal.span {v})
-local notation "Nv" => PowerRootPolynomial Rv p hp
+local notation "Nv" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial Rv p hp
 local notation "barr" => RingHom.comp
   (Ideal.Quotient.mk (Ideal.span {v})) (Ideal.Quotient.mk W.ideal)
 local notation "f'" => perfectPrismInverseFrobeniusPolynomial W hW f
-local notation "zv" => powerRootPolynomialBaseMap Rv p hp
+local notation "zv" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialBaseMap Rv p hp
   (Polynomial.map barr (perfectPrismInverseFrobeniusPolynomial W hW f))
 local notation "Dv" => PrincipalDPPresentation Nv zv
 local notation "Qv" => Nv ⧸ Ideal.span {zv ^ p}
@@ -741,7 +741,7 @@ A1-c2 の係数比較を原典の実 pd 包として照合する。
 @[expose] public noncomputable section UnconditionalPD
 
 namespace SerrePositivity.BhattScholze.Andre.VarpiComparison
-open scoped TensorProduct
+open scoped _root_.TensorProduct
 set_option maxRecDepth 2048
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
@@ -765,10 +765,10 @@ local notation "x" => Ideal.Quotient.mk (Ideal.span {(p : A)}) (perfectPrismVarp
 local notation "Q" => R₀ ⧸ Ideal.span {x}
 local notation "D" => PowerRootCoefficientPDEnvelope p f
 local notation "Rv" => (A ⧸ W.ideal) ⧸ Ideal.span {perfectPrismVarpi W hW}
-local notation "Nv" => PowerRootPolynomial Rv p hp
+local notation "Nv" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial Rv p hp
 local notation "barr" => RingHom.comp
   (Ideal.Quotient.mk (Ideal.span {perfectPrismVarpi W hW})) (Ideal.Quotient.mk W.ideal)
-local notation "zv" => powerRootPolynomialBaseMap Rv p hp (f.map barr)
+local notation "zv" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialBaseMap Rv p hp (f.map barr)
 local notation "Dv" => PrincipalDPPresentation Nv zv
 
 local notation "K" => Ideal.span {algebraMap R₀ D x}
@@ -794,14 +794,14 @@ theorem perfectPrismPDTensorVarpiDividedPowers_generator_of_unconditional
     (hf : f.Monic) (i : ℕ) :
     let := varpiCoefficientAlgebra W hW
     (perfectPrismPDTensorVarpiDividedPowers_of_unconditional W hW f hf).dpow i
-      (1 ⊗ₜ[R₀] algebraMap (PowerRootPolynomial R₀ p hp) D (powerRootCoefficientPDInput p f)) =
+      (1 ⊗ₜ[R₀] algebraMap (_root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial R₀ p hp) D (powerRootCoefficientPDInput p f)) =
         1 ⊗ₜ[R₀] principalDPGenerator (powerRootCoefficientPDInput p f) i := by
   let := varpiCoefficientAlgebra W hW
   let e := perfectPrismPDTensorVarpiEquiv W hW f
   change e.symm ((perfectPrismVarpiNativeDividedPowers_of_unconditional W hW f hf).dpow i
-    (e (1 ⊗ₜ[R₀] algebraMap (PowerRootPolynomial R₀ p hp) D
+    (e (1 ⊗ₜ[R₀] algebraMap (_root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial R₀ p hp) D
       (powerRootCoefficientPDInput p f)))) = _
-  have hInput : e (1 ⊗ₜ[R₀] algebraMap (PowerRootPolynomial R₀ p hp) D
+  have hInput : e (1 ⊗ₜ[R₀] algebraMap (_root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial R₀ p hp) D
       (powerRootCoefficientPDInput p f)) = algebraMap Nv Dv zv := by
     simpa only [principalDPGenerator_one] using perfectPrismPDTensorVarpiEquiv_generator W hW f 1
   rw [hInput, perfectPrismVarpiNativeDividedPowers_base_apply_of_unconditional]
@@ -867,16 +867,16 @@ A1-c2 の公開比較を hpR なしで供給する。
 @[expose] public noncomputable section UnconditionalCandidate
 
 namespace SerrePositivity.BhattScholze.Andre.VarpiComparison
-open SerrePositivity.DerivedCompletion
-open scoped TensorProduct
+open _root_.SerrePositivity.DerivedCompletion
+open scoped _root_.TensorProduct
 set_option maxRecDepth 2048
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 variable {A : Type u} [CommRing A] {p : ℕ} [Fact p.Prime]
 variable (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect) (f : Polynomial A)
 local notation "hp" => Nat.Prime.pos (Fact.out : p.Prime)
-local notation "P" => PowerRootPolynomial A p hp
-local notation "E" => powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
+local notation "P" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial A p hp
+local notation "E" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
 local notation "dP" => algebraMap A P W.generator
 local notation "a" => powerRootPrismMonicUnaryFamily (p := p) f
 local notation "L" => DeltaAdjoinDivision E dP a
@@ -889,11 +889,11 @@ local notation "v" => perfectPrismVarpi W hW
 local notation "Rv" => R ⧸ Ideal.span {v}
 local notation "φ" => powerRootPrismMonicHodgeTateBaseMap W hW f
 local notation "Tv" => T ⧸ Ideal.map φ (Ideal.span {v})
-local notation "Nv" => PowerRootPolynomial Rv p hp
+local notation "Nv" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial Rv p hp
 local notation "barr" => RingHom.comp
   (Ideal.Quotient.mk (Ideal.span {v})) (Ideal.Quotient.mk W.ideal)
 local notation "f'" => perfectPrismInverseFrobeniusPolynomial W hW f
-local notation "zv" => powerRootPolynomialBaseMap Rv p hp
+local notation "zv" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialBaseMap Rv p hp
   (Polynomial.map barr (perfectPrismInverseFrobeniusPolynomial W hW f))
 local notation "Dv" => PrincipalDPPresentation Nv zv
 local notation "Qv" => Nv ⧸ Ideal.span {zv ^ p}
@@ -983,7 +983,7 @@ end UnconditionalCandidate
 @[expose] public noncomputable section PDCompatibility
 
 namespace SerrePositivity.BhattScholze.Andre.VarpiComparison
-open scoped TensorProduct
+open scoped _root_.TensorProduct
 set_option maxRecDepth 2048
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
@@ -1060,7 +1060,7 @@ end PDCompatibility
 @[expose] public noncomputable section PrimeReduction
 
 namespace SerrePositivity.BhattScholze.Andre.VarpiComparison
-open scoped TensorProduct
+open scoped _root_.TensorProduct
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 
@@ -1070,27 +1070,27 @@ set_option backward.defeqAttrib.useBackward true
 使われ方：BS 著者版 Remark 7.15（著者版 p.62）の二重商係数の移送。 -/
 theorem rootCoefficientChange_baseMap {S B : Type u} [CommRing S] [CommRing B]
     (p : ℕ) (hp : 0 < p) (e : S ≃+* B) (f : Polynomial S) :
-    AddMonoidAlgebra.mapRingEquiv (powerRootExponentMonoid p hp) e
-      (powerRootPolynomialBaseMap S p hp f) =
-        powerRootPolynomialBaseMap B p hp (f.map e.toRingHom) := by
-  simp only [powerRootPolynomialBaseMap, Polynomial.aeval_def, Polynomial.eval₂_map]
-  change (AddMonoidAlgebra.mapRingEquiv (powerRootExponentMonoid p hp) e).toRingHom
-    (Polynomial.eval₂ (algebraMap S (PowerRootPolynomial S p hp))
-      (powerRootPolynomialVariable S p hp 0) f) = _
+    AddMonoidAlgebra.mapRingEquiv (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootExponentMonoid p hp) e
+      (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialBaseMap S p hp f) =
+        _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialBaseMap B p hp (f.map e.toRingHom) := by
+  simp only [_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialBaseMap, Polynomial.aeval_def, Polynomial.eval₂_map]
+  change (AddMonoidAlgebra.mapRingEquiv (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootExponentMonoid p hp) e).toRingHom
+    (Polynomial.eval₂ (algebraMap S (_root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial S p hp))
+      (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialVariable S p hp 0) f) = _
   rw [Polynomial.hom_eval₂]
-  have hv : AddMonoidAlgebra.mapRingEquiv (powerRootExponentMonoid p hp) e
-      (powerRootPolynomialVariable S p hp 0) = powerRootPolynomialVariable B p hp 0 := by
-    simp only [powerRootPolynomialVariable, AddMonoidAlgebra.mapRingEquiv_single, map_one]
+  have hv : AddMonoidAlgebra.mapRingEquiv (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootExponentMonoid p hp) e
+      (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialVariable S p hp 0) = _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialVariable B p hp 0 := by
+    simp only [_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialVariable, AddMonoidAlgebra.mapRingEquiv_single, map_one]
   change Polynomial.eval₂ _
-    (AddMonoidAlgebra.mapRingEquiv (powerRootExponentMonoid p hp) e
-      (powerRootPolynomialVariable S p hp 0)) f = _
+    (AddMonoidAlgebra.mapRingEquiv (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootExponentMonoid p hp) e
+      (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialVariable S p hp 0)) f = _
   rw [hv]
   congr 1
   apply RingHom.ext
   intro s
-  change AddMonoidAlgebra.mapRingEquiv (powerRootExponentMonoid p hp) e
-    (algebraMap S (PowerRootPolynomial S p hp) s) =
-      algebraMap B (PowerRootPolynomial B p hp) (e s)
+  change AddMonoidAlgebra.mapRingEquiv (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootExponentMonoid p hp) e
+    (algebraMap S (_root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial S p hp) s) =
+      algebraMap B (_root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial B p hp) (e s)
   simp [AddMonoidAlgebra.coe_algebraMap, AddMonoidAlgebra.mapRingEquiv_single]
 
 section Change
@@ -1118,19 +1118,19 @@ def quotientCoefficientAlgEquiv :
 使われ方：BS 著者版 Remark 7.15（著者版 p.62）の R/p と R/ϖ の直接比較。 -/
 def powerRootPDTensorChangeEquiv (p : ℕ) (hp : 0 < p) (f : Polynomial S) :
     let := quotientCoefficientAlgebra S B c e
-    B ⊗[S] PrincipalDPPresentation (PowerRootPolynomial S p hp)
-      (powerRootPolynomialBaseMap S p hp f) ≃+*
-        PrincipalDPPresentation (PowerRootPolynomial B p hp)
-          (powerRootPolynomialBaseMap B p hp
+    B ⊗[S] PrincipalDPPresentation (_root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial S p hp)
+      (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialBaseMap S p hp f) ≃+*
+        PrincipalDPPresentation (_root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial B p hp)
+          (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialBaseMap B p hp
             (f.map (e.toRingHom.comp (Ideal.Quotient.mk (Ideal.span {c}))))) := by
   let := quotientCoefficientAlgebra S B c e
-  let D := PrincipalDPPresentation (PowerRootPolynomial S p hp)
-    (powerRootPolynomialBaseMap S p hp f)
+  let D := PrincipalDPPresentation (_root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial S p hp)
+    (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialBaseMap S p hp f)
   refine ((Algebra.TensorProduct.congr (quotientCoefficientAlgEquiv S B c e).symm
     (AlgEquiv.refl : D ≃ₐ[S] D)).toRingEquiv.trans
       (powerRootPDTensorQuotientEquiv S p hp c f)).trans ?_
   refine principalDPRingEquivOfEq
-    (AddMonoidAlgebra.mapRingEquiv (powerRootExponentMonoid p hp) e) _ _ ?_
+    (AddMonoidAlgebra.mapRingEquiv (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootExponentMonoid p hp) e) _ _ ?_
   rw [rootCoefficientChange_baseMap, Polynomial.map_map]
 end Change
 
@@ -1144,11 +1144,11 @@ def primePDTensorVarpiEquiv {R : Type u} [CommRing R] (p : ℕ) (hp : 0 < p)
     let := quotientCoefficientAlgebra (R ⧸ Ideal.span {(p : R)}) (R ⧸ Ideal.span {v})
       (Ideal.Quotient.mk (Ideal.span {(p : R)}) v) e
     (R ⧸ Ideal.span {v}) ⊗[R ⧸ Ideal.span {(p : R)}]
-      PrincipalDPPresentation (PowerRootPolynomial (R ⧸ Ideal.span {(p : R)}) p hp)
-        (powerRootPolynomialBaseMap (R ⧸ Ideal.span {(p : R)}) p hp
+      PrincipalDPPresentation (_root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial (R ⧸ Ideal.span {(p : R)}) p hp)
+        (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialBaseMap (R ⧸ Ideal.span {(p : R)}) p hp
           (f.map (Ideal.Quotient.mk (Ideal.span {(p : R)})))) ≃+*
-      PrincipalDPPresentation (PowerRootPolynomial (R ⧸ Ideal.span {v}) p hp)
-        (powerRootPolynomialBaseMap (R ⧸ Ideal.span {v}) p hp
+      PrincipalDPPresentation (_root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial (R ⧸ Ideal.span {v}) p hp)
+        (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialBaseMap (R ⧸ Ideal.span {v}) p hp
           (f.map (Ideal.Quotient.mk (Ideal.span {v})))) := by
   let e := primeVarpiDoubleQuotientEquiv v (p : R) p hp hspan
   let := quotientCoefficientAlgebra (R ⧸ Ideal.span {(p : R)}) (R ⧸ Ideal.span {v})

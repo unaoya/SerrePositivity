@@ -5,7 +5,7 @@ public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.BhattScholze.Perfectoidization.CompletedTensor
 public import SerrePositivity.CommutativeAlgebra.Perfectoid.Defs
 public import SerrePositivity.BhattScholze.Perfectoidization.CompletedBaseChange
-public import SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity
+public import SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.Surjectivity
 
 /-!
 # perfectoid 化と完備テンソル積の可換性（BS 著者版 Proposition 8.13 の環版）
@@ -17,7 +17,7 @@ public import SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity
 環の普遍性、H⁰ 主元完備化の比較、perfectoid 完備テンソル定理の合成。
 
 ## 規約
-導来版は A7（原典どおりなら Δ の対称モノイダル性から）。
+ここでは環の比較を述べる。E∞ 代数の版は Δ の対称モノイダル性を用いる別の構成である。
 
 ## 使われ方
 CLMST、Lemma 10.3。
@@ -38,8 +38,8 @@ than by rebuilding prismatic cohomology or its symmetric monoidal structure.
 set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency false
 namespace SerrePositivity.BhattScholze
-open CategoryTheory SerrePositivity.DerivedCompletion
-open scoped TensorProduct
+open _root_.CategoryTheory _root_.SerrePositivity.DerivedCompletion
+open scoped _root_.TensorProduct
 attribute [local instance] HasDerivedCategory.standard
 variable {R S T P C D : Type u}
     [CommRing R] [CommRing S] [CommRing T] [CommRing P] [CommRing C] [CommRing D]
@@ -161,7 +161,7 @@ The author-version proposition, pp. 69–70, concerns arbitrary derived p-comple
 simplicial rings over a perfectoid ring and their derived E∞ perfectoidizations.
 Here the ring-perfectoidizations are specified, rather than presumed to exist
 for all rings. No identification of an arbitrary derived tensor with its H⁰ is
-made. The proof uses the existing G2 comparison and the ring universal property
+made. The proof uses the existing completion comparison and the ring universal property
 instead of the original argument via symmetric monoidal prismatic cohomology.
 -/
 
@@ -170,8 +170,8 @@ instead of the original argument via symmetric monoidal prismatic cohomology.
 set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency false
 namespace SerrePositivity.BhattScholze
-open CategoryTheory SerrePositivity.DerivedCompletion
-open scoped TensorProduct
+open _root_.CategoryTheory _root_.SerrePositivity.DerivedCompletion
+open scoped _root_.TensorProduct
 attribute [local instance] HasDerivedCategory.standard
 variable (p : ℕ) [Fact p.Prime] {R S T P C D : Type u}
     [CommRing R] [CommRing S] [CommRing T] [CommRing P] [CommRing C] [CommRing D]
@@ -328,7 +328,7 @@ end PerfectoidizationCompletedTensorCompatibility
 /-! ## The ring form of BS 著者版 Proposition 8.13 for perfectoid base change
 
 The base and new base are perfectoid. The original algebra is arbitrary once its
-ring-perfectoidization is specified. The map out of the original G2 completed
+ring-perfectoidization is specified. The map out of the original completed
 tensor H⁰ and the comparison preserve the new-base action and the original unit.
 
 In particular this applies to p-completely flat perfectoid base change. Flatness
@@ -342,8 +342,8 @@ input; no unbounded p-torsion case is silently replaced by classical completion.
 set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency false
 namespace SerrePositivity.BhattScholze
-open CategoryTheory SerrePositivity.DerivedCompletion
-open scoped TensorProduct
+open _root_.CategoryTheory _root_.SerrePositivity.DerivedCompletion
+open scoped _root_.TensorProduct
 attribute [local instance] HasDerivedCategory.standard
 variable (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime] (S A C : Type u)
     [CommRing S] [CommRing A] [CommRing C] [Algebra R S] [Algebra R A] [Algebra R C]
@@ -513,7 +513,7 @@ theorem exists_prop813BaseChange_of_perfectoid_quotient
         letI := derivedH0CommRing (boundedAboveCompletedTensorAlgebra R (p : R) S C)
         IsPerfectoidization p (prop813BaseChangeMap R p S A C hR hS f hf) := by
   obtain ⟨C, hC, f, hf⟩ :=
-    exists_perfectoidization_of_perfectoid_surjective_quotient hR (algebraMap R A) hq
+    _root_.SerrePositivity.BhattScholze.Semiperfectoid.exists_perfectoidization_of_perfectoid_surjective_quotient hR (algebraMap R A) hq
   let := hC
   let hRC : Algebra R C := (f.comp (algebraMap R A)).toAlgebra
   let fA : A →ₐ[R] C := { f with commutes' := fun _ => rfl }
@@ -537,7 +537,7 @@ theorem exists_prop813BaseChange_of_semiperfectoid_quotient
   let := hC
   let := hRC
   exact ⟨C, hC, hRC, f, hf,
-    surjective_of_isPerfectoidization_of_semiperfectoid_quotient hR
+    _root_.SerrePositivity.BhattScholze.Semiperfectoid.surjective_of_isPerfectoidization_of_semiperfectoid_quotient hR
       (algebraMap R A) hq hA f.toRingHom hf, hbase⟩
 
 end SerrePositivity.BhattScholze

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.PowerRootPolynomial
+public import SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootFamilies.PowerRootPolynomial
 public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.Varpi
 public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.PrincipalDP
 public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.DividedPowerPrime
@@ -58,7 +58,7 @@ set_option maxRecDepth 2048
 namespace SerrePositivity.BhattScholze.Andre
 variable {A : Type u} [CommRing A] (p : ℕ) [Fact p.Prime]
 local notation "hp" => Nat.Prime.pos (Fact.out : p.Prime)
-local notation "P" => PowerRootPolynomial A p hp
+local notation "P" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial A p hp
 local notation "Q" => P ⧸ Ideal.span {(p : P)}
 local notation "bar" => Ideal.Quotient.mk (Ideal.span {(p : P)})
 /-- 概要：無限根環の通常変数 Y₀ で多項式 f を評価した入力元。
@@ -66,7 +66,7 @@ local notation "bar" => Ideal.Quotient.mk (Ideal.span {(p : P)})
 規約：分冪構造の型照合で評価の内部を展開し続けないよう irreducible とする。
 使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の無限根環の一元入力。 -/
 @[irreducible] def powerRootMonicPDInput (f : Polynomial A) : P :=
-  powerRootPolynomialBaseMap A p hp f
+  _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialBaseMap A p hp f
 
 local notation "root" f => powerRootMonicPDInput p f
 
@@ -77,7 +77,7 @@ local notation "root" f => powerRootMonicPDInput p f
 theorem powerRootMonicPDInput_modPrime_regular (f : Polynomial A) (hf : f.Monic) :
     IsSMulRegular Q (bar (root f)) := by
   simpa only [powerRootMonicPDInput] using
-    powerRootPolynomial_monic_mod_prime_regular A p hp f hf
+    _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomial_monic_mod_prime_regular A p hp f hf
 
 /-- 概要：p 局所な係数環上の無限根多項式環も p 局所。
 方針：係数の単元を標準係数射で送る。
@@ -106,7 +106,7 @@ def powerRootMonicModPrimeDividedPowers
     (D : DeltaStructure p A) (f : Polynomial A) (hf : f.Monic) :
     DividedPowers (principalDPPositiveIdeal (bar (root f))) :=
   regularPrincipalModPrimeDividedPowers (A := P) (p := p) (powerRootPolynomial_primeLocal p hlocal)
-    (powerRootPolynomial_primeRegular p hpA) (powerRootPolynomialDelta p hpA D) (root f)
+    (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomial_primeRegular p hpA) (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialDelta p hpA D) (root f)
     (powerRootMonicPDInput_modPrime_regular p f hf)
 
 /-- 概要：無限根環上の入力元の n 次分冪は標準の n 次生成元。
@@ -124,7 +124,7 @@ theorem powerRootMonicModPrimeDividedPowers_base_apply
   with_reducible exact
     (@regularPrincipalModPrimeDividedPowers_base_apply p inferInstance P inferInstance
       (powerRootPolynomial_primeLocal p hlocal)
-      (powerRootPolynomial_primeRegular p hpA) (powerRootPolynomialDelta p hpA D) (root f)
+      (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomial_primeRegular p hpA) (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialDelta p hpA D) (root f)
       (powerRootMonicPDInput_modPrime_regular p f hf) n)
 
 /-- 概要：無限根環上のモニック入力の実 mod p 分冪包から分冪標的への射は一意に存在。
@@ -228,9 +228,9 @@ BS 著者版 Remark 7.15（著者版 p.62）の通常代数の自由性計算。
 @[expose] public noncomputable section PowerRootMonicPDFlat
 
 namespace SerrePositivity.BhattScholze.Andre
-open Polynomial
+open _root_.Polynomial
 variable (R : Type u) [CommRing R] (p : ℕ) (hp : 0 < p)
-local notation "P" => PowerRootPolynomial R p hp
+local notation "P" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial R p hp
 
 /-- 概要：無限 p 冪根変数内のモニック関係の分冪表示環は元の係数環上自由。
 方針：実 fᵖ 商の自由性と、その商上の分冪表示環の自由性をスカラー塔で合成する。
@@ -238,15 +238,15 @@ local notation "P" => PowerRootPolynomial R p hp
 使われ方：BS 著者版 Remark 7.15（著者版 p.62）の pd 表示の自由性。 -/
 theorem powerRootMonicDPPresentation_free (hprime : p.Prime) (hpR : (p : R) = 0)
     (f : R[X]) (hf : f.Monic) :
-    Module.Free R (PrincipalDPPresentation P (powerRootPolynomialBaseMap R p hp f)) := by
-  let := powerRootPolynomialBaseAlgebra R p hp
-  let y := powerRootPolynomialBaseMap R p hp f
+    Module.Free R (PrincipalDPPresentation P (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialBaseMap R p hp f)) := by
+  let := _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialBaseAlgebra R p hp
+  let y := _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialBaseMap R p hp f
   have hpP : (p : P) = 0 := by
     simpa only [map_natCast, map_zero] using congrArg (algebraMap R P) hpR
   have heI : (Ideal.span {f ^ p}).map (algebraMap R[X] P) = Ideal.span {y ^ p} := by
-    rw [powerRootPolynomialQuotient_ideal, map_pow]
+    rw [_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialQuotient_ideal, map_pow]
   have hQ : Module.Free R (P ⧸ Ideal.span {y ^ p}) := by
-    have h := powerRootPolynomialPowerQuotient_free R p hp f hf
+    have h := _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialPowerQuotient_free R p hp f hf
     change Module.Free R (P ⧸ (Ideal.span {f ^ p}).map (algebraMap R[X] P)) at h
     rw [heI] at h
     exact h
@@ -264,15 +264,15 @@ theorem powerRootMonicDPPresentation_free (hprime : p.Prime) (hpR : (p : R) = 0)
 theorem powerRootMonicDPPresentation_faithfullyFlat (hprime : p.Prime) (hpR : (p : R) = 0)
     (f : R[X]) (hf : f.Monic) (hdeg : 0 < f.natDegree) :
     Module.FaithfullyFlat R
-      (PrincipalDPPresentation P (powerRootPolynomialBaseMap R p hp f)) := by
-  let := powerRootPolynomialBaseAlgebra R p hp
-  let y := powerRootPolynomialBaseMap R p hp f
+      (PrincipalDPPresentation P (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialBaseMap R p hp f)) := by
+  let := _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialBaseAlgebra R p hp
+  let y := _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialBaseMap R p hp f
   have hpP : (p : P) = 0 := by
     simpa only [map_natCast, map_zero] using congrArg (algebraMap R P) hpR
   have heI : (Ideal.span {f ^ p}).map (algebraMap R[X] P) = Ideal.span {y ^ p} := by
-    rw [powerRootPolynomialQuotient_ideal, map_pow]
+    rw [_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialQuotient_ideal, map_pow]
   apply principalDPPresentation_faithfullyFlat_of_quotient p hprime hpP y
-  have h := powerRootPolynomialPowerQuotient_faithfullyFlat R p hp f hf hdeg
+  have h := _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialPowerQuotient_faithfullyFlat R p hp f hf hdeg
   change Module.FaithfullyFlat R (P ⧸ (Ideal.span {f ^ p}).map (algebraMap R[X] P)) at h
   rw [heI] at h
   exact h
@@ -312,13 +312,13 @@ set_option maxRecDepth 2048
 namespace SerrePositivity.BhattScholze.Andre
 variable {A : Type u} [CommRing A] (p : ℕ) [Fact p.Prime]
 local notation "hp" => Nat.Prime.pos (Fact.out : p.Prime)
-local notation "P" => PowerRootPolynomial A p hp
+local notation "P" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial A p hp
 local notation "Q" => P ⧸ Ideal.span {(p : P)}
 local notation "q" => Ideal.Quotient.mk (Ideal.span {(p : P)})
 local notation "R" => A ⧸ Ideal.span {(p : A)}
 local notation "bar" => Ideal.Quotient.mk (Ideal.span {(p : A)})
-local notation "N" => PowerRootPolynomial R p hp
-local notation "e" => powerRootPolynomialModPrimeEquiv A p hp
+local notation "N" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial R p hp
+local notation "e" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialModPrimeEquiv A p hp
 local notation "y" f => q (powerRootMonicPDInput p f)
 
 /-- 概要：係数 mod p 無限根環におけるモニック多項式の指定入力元。
@@ -326,7 +326,7 @@ local notation "y" f => q (powerRootMonicPDInput p f)
 規約：分冪構造の型照合で内部評価を展開し続けないよう irreducible とする。
 使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の係数商上の実 pd 包の入力。 -/
 @[irreducible] def powerRootCoefficientPDInput (f : Polynomial A) : N :=
-  powerRootPolynomialBaseMap R p hp (f.map bar)
+  _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialBaseMap R p hp (f.map bar)
 
 local notation "z" f => powerRootCoefficientPDInput p f
 
@@ -336,7 +336,7 @@ local notation "z" f => powerRootCoefficientPDInput p f
 使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の分冪包の係数比較。 -/
 theorem powerRootCoefficientPDInput_compare (f : Polynomial A) : e (y f) = z f := by
   unfold powerRootMonicPDInput powerRootCoefficientPDInput
-  rw [powerRootPolynomialModPrimeEquiv_mk, powerRootPolynomialModPrimeMap_baseMap]
+  rw [_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialModPrimeEquiv_mk, _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialModPrimeMap_baseMap]
 
 /-- 概要：係数商上の無限根環の一次関係商の実台環。
 方針：同じ係数商上の指定入力に γ₁=z の関係を課す。
@@ -494,7 +494,7 @@ variable {A : Type u} [CommRing A] (p : ℕ) [Fact p.Prime]
 local notation "hp" => Nat.Prime.pos (Fact.out : p.Prime)
 local notation "R" => A ⧸ Ideal.span {(p : A)}
 local notation "bar" => Ideal.Quotient.mk (Ideal.span {(p : A)})
-local notation "N" => PowerRootPolynomial R p hp
+local notation "N" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial R p hp
 local notation "z" f => powerRootCoefficientPDInput p f
 local notation "D" f => PowerRootCoefficientPDEnvelope p f
 local notation "J" f => principalDPPositiveIdeal (z f)
@@ -506,11 +506,11 @@ local notation "J" f => principalDPPositiveIdeal (z f)
 theorem powerRootCoefficientInputQuotient_free (f : Polynomial A) (hf : f.Monic) :
     Module.Free R (N ⧸ Ideal.span {(z f)}) := by
   unfold powerRootCoefficientPDInput
-  let := powerRootPolynomialBaseAlgebra R p hp
-  have h := powerRootPolynomialQuotient_free R p hp (f.map bar) (hf.map bar)
+  let := _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialBaseAlgebra R p hp
+  have h := _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialQuotient_free R p hp (f.map bar) (hf.map bar)
   change Module.Free R
     (N ⧸ (Ideal.span {f.map bar}).map (algebraMap (Polynomial R) N)) at h
-  rw [powerRootPolynomialQuotient_ideal] at h
+  rw [_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialQuotient_ideal] at h
   exact h
 
 /-- 概要：実無限根 pd 包を正次数分冪イデアルで割った商は係数商 A/(p) 上自由。
@@ -606,14 +606,14 @@ namespace SerrePositivity.BhattScholze.Andre
 variable {A : Type u} [CommRing A] {p : ℕ} [Fact p.Prime]
 variable (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect)
 local notation "hp" => Nat.Prime.pos (Fact.out : p.Prime)
-local notation "G" => powerRootExponentMonoid p hp
-local notation "P" => PowerRootPolynomial A p hp
+local notation "G" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootExponentMonoid p hp
+local notation "P" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial A p hp
 local notation "dP" => algebraMap A P W.generator
 local notation "K" => Ideal.span {(p : A), W.generator}
 local notation "KP" => Ideal.span {(p : P), dP}
 local notation "e" => DeltaStructure.frobeniusEquiv W.deltaStructure hW
 local notation "Rv" => (A ⧸ W.ideal) ⧸ Ideal.span {perfectPrismVarpi W hW}
-local notation "Nv" => PowerRootPolynomial Rv p hp
+local notation "Nv" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial Rv p hp
 local notation "barr" => RingHom.comp
   (Ideal.Quotient.mk (Ideal.span {perfectPrismVarpi W hW})) (Ideal.Quotient.mk W.ideal)
 
@@ -624,7 +624,7 @@ local notation "barr" => RingHom.comp
 def powerRootFrobeniusPairVarpiInputEquiv : (P ⧸ KP) ≃+* Nv :=
   ((Ideal.quotEquivOfEq (show KP = (K).map (algebraMap A P) by
     rw [Ideal.map_span, Set.image_pair, map_natCast])).trans
-      (powerRootCoefficientIdealQuotientEquiv A p hp K)).trans
+      (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootCoefficientIdealQuotientEquiv A p hp K)).trans
     (AddMonoidAlgebra.mapRingEquiv G (perfectPrismVarpiToFrobeniusPairEquiv W hW).symm)
 
 /-- 概要：入力同型は単項式の係数に逆 Frobenius を適用する。
@@ -636,8 +636,8 @@ theorem powerRootFrobeniusPairVarpiInputEquiv_single (q : G) (r : A) :
       (Ideal.Quotient.mk KP (AddMonoidAlgebra.single q r)) =
         AddMonoidAlgebra.single q (barr ((e).symm r)) := by
   simp only [powerRootFrobeniusPairVarpiInputEquiv, RingEquiv.trans_apply,
-    Ideal.quotEquivOfEq_mk, powerRootCoefficientIdealQuotientEquiv_mk,
-    powerRootCoefficientIdealQuotientMap_single, AddMonoidAlgebra.mapRingEquiv_single,
+    Ideal.quotEquivOfEq_mk, _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootCoefficientIdealQuotientEquiv_mk,
+    _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootCoefficientIdealQuotientMap_single, AddMonoidAlgebra.mapRingEquiv_single,
     perfectPrismVarpiToFrobeniusPairEquiv_symm_mk]
 
 /-- 概要：入力同型の標準係数上の公式。
@@ -656,9 +656,9 @@ theorem powerRootFrobeniusPairVarpiInputEquiv_coeff (r : A) :
 使われ方：BS 著者版 Remark 7.15（著者版 p.62）の一元多項式評価の比較。 -/
 theorem powerRootFrobeniusPairVarpiInputEquiv_variable (n : ℕ) :
     powerRootFrobeniusPairVarpiInputEquiv W hW
-      (Ideal.Quotient.mk KP (powerRootPolynomialVariable A p hp n)) =
-        powerRootPolynomialVariable Rv p hp n := by
-  simpa only [powerRootPolynomialVariable, map_one] using
+      (Ideal.Quotient.mk KP (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialVariable A p hp n)) =
+        _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialVariable Rv p hp n := by
+  simpa only [_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialVariable, map_one] using
     powerRootFrobeniusPairVarpiInputEquiv_single W hW _ 1
 
 /-- 概要：元の無限根環から ϖ 係数の無限根環への通常比較射。
@@ -674,14 +674,14 @@ def powerRootFrobeniusPairVarpiInputMap : P →+* Nv :=
 使われ方：BS 著者版 Remark 7.15（著者版 p.62）の主分冪表示の正確な入力。 -/
 theorem powerRootFrobeniusPairVarpiInputEquiv_baseMap (f : Polynomial A) :
     powerRootFrobeniusPairVarpiInputEquiv W hW
-      (Ideal.Quotient.mk KP (powerRootPolynomialBaseMap A p hp f)) =
-        powerRootPolynomialBaseMap Rv p hp
+      (Ideal.Quotient.mk KP (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialBaseMap A p hp f)) =
+        _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialBaseMap Rv p hp
           ((perfectPrismInverseFrobeniusPolynomial W hW f).map barr) := by
   let F := powerRootFrobeniusPairVarpiInputMap W hW
-  change F (powerRootPolynomialBaseMap A p hp f) = _
-  unfold powerRootPolynomialBaseMap
+  change F (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialBaseMap A p hp f) = _
+  unfold _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialBaseMap
   rw [Polynomial.aeval_def, Polynomial.hom_eval₂, Polynomial.aeval_def,
-    show F (powerRootPolynomialVariable A p hp 0) = powerRootPolynomialVariable Rv p hp 0 from
+    show F (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialVariable A p hp 0) = _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialVariable Rv p hp 0 from
       powerRootFrobeniusPairVarpiInputEquiv_variable W hW 0,
     perfectPrismInverseFrobeniusPolynomial, Polynomial.eval₂_map, Polynomial.eval₂_map]
   congr 1
@@ -696,7 +696,7 @@ theorem powerRootFrobeniusPairVarpiInputEquiv_baseMap (f : Polynomial A) :
 theorem powerRootFrobeniusPairVarpiInputEquiv_input (f : Polynomial A) :
     powerRootFrobeniusPairVarpiInputEquiv W hW
       (Ideal.Quotient.mk KP (powerRootMonicPDInput p f)) =
-        powerRootPolynomialBaseMap Rv p hp
+        _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialBaseMap Rv p hp
           ((perfectPrismInverseFrobeniusPolynomial W hW f).map barr) := by
   unfold powerRootMonicPDInput
   exact powerRootFrobeniusPairVarpiInputEquiv_baseMap W hW f
@@ -736,7 +736,7 @@ variable {A : Type u} [CommRing A] (p : ℕ) [Fact p.Prime]
 local notation "hp" => Nat.Prime.pos (Fact.out : p.Prime)
 local notation "R" => A ⧸ Ideal.span {(p : A)}
 local notation "bar" => Ideal.Quotient.mk (Ideal.span {(p : A)})
-local notation "N" => PowerRootPolynomial R p hp
+local notation "N" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial R p hp
 local notation "z" f => powerRootCoefficientPDInput p f
 local notation "D" f => PowerRootCoefficientPDEnvelope p f
 local notation "J" f => principalDPPositiveIdeal (z f)
@@ -815,8 +815,8 @@ set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze.Andre
 variable {A : Type u} [CommRing A] (p : ℕ) [Fact p.Prime]
 local notation "hp" => Nat.Prime.pos (Fact.out : p.Prime)
-local notation "G" => powerRootExponentMonoid p hp
-local notation "P" => PowerRootPolynomial A p hp
+local notation "G" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootExponentMonoid p hp
+local notation "P" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial A p hp
 variable (D : DeltaStructure p A) (hD : D.IsPerfect)
 
 /-- 概要：係数 Frobenius のみを適用する無限根環の環同型。
@@ -831,7 +831,7 @@ def powerRootCoefficientFrobeniusEquiv : P ≃+* P :=
 規約：係数を固定する。
 使われ方：BS 著者版 Remark 7.15（著者版 p.62）の全体 Frobenius の変数成分。 -/
 def powerRootVariableFrobeniusEquiv : P ≃+* P :=
-  AddMonoidAlgebra.mapDomainRingEquiv A (powerRootExponentPrimeScaleEquiv p)
+  AddMonoidAlgebra.mapDomainRingEquiv A (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootExponentPrimeScaleEquiv p)
 
 /-- 概要：係数 Frobenius は単項式の係数だけを送る。
 方針：係数環同型の単項式公式を使う。
@@ -866,9 +866,9 @@ theorem powerRootCoefficientFrobeniusEquiv_coeff (b : A) :
 規約：全ての段 n を扱う。
 使われ方：BS 著者版 Remark 7.15（著者版 p.62）の入力多項式の係数変更。 -/
 theorem powerRootCoefficientFrobeniusEquiv_variable (n : ℕ) :
-    powerRootCoefficientFrobeniusEquiv p D hD (powerRootPolynomialVariable A p hp n) =
-      powerRootPolynomialVariable A p hp n := by
-  simp only [powerRootPolynomialVariable, powerRootCoefficientFrobeniusEquiv_single, map_one]
+    powerRootCoefficientFrobeniusEquiv p D hD (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialVariable A p hp n) =
+      _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialVariable A p hp n := by
+  simp only [_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialVariable, powerRootCoefficientFrobeniusEquiv_single, map_one]
 
 /-- 概要：指数 Frobenius は元の係数の標準像を固定する。
 方針：零指数の単項式で計算する。
@@ -884,9 +884,9 @@ theorem powerRootVariableFrobeniusEquiv_coeff (b : A) :
 規約：全ての段 n を扱う。
 使われ方：BS 著者版 Remark 7.15（著者版 p.62）の変数の再配置。 -/
 theorem powerRootVariableFrobeniusEquiv_variable (n : ℕ) :
-    powerRootVariableFrobeniusEquiv (A := A) p (powerRootPolynomialVariable A p hp n) =
-      powerRootPolynomialVariable A p hp n ^ p := by
-  simp only [powerRootPolynomialVariable, powerRootVariableFrobeniusEquiv_single,
+    powerRootVariableFrobeniusEquiv (A := A) p (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialVariable A p hp n) =
+      _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialVariable A p hp n ^ p := by
+  simp only [_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialVariable, powerRootVariableFrobeniusEquiv_single,
     AddMonoidAlgebra.single_pow, one_pow]
 
 /-- 概要：係数と指数の Frobenius は環射として可換。
@@ -898,7 +898,7 @@ theorem powerRootFrobeniusFactors_commute :
       (powerRootVariableFrobeniusEquiv (A := A) p).toRingHom =
     (powerRootVariableFrobeniusEquiv (A := A) p).toRingHom.comp
       (powerRootCoefficientFrobeniusEquiv p D hD).toRingHom :=
-  AddMonoidAlgebra.mapRingHom_comp_mapDomainRingHom D.frobeniusLift (powerRootExponentPrimeScale p)
+  AddMonoidAlgebra.mapRingHom_comp_mapDomainRingHom D.frobeniusLift (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootExponentPrimeScale p)
 
 /-- 概要：全体 Frobenius は係数成分の後に指数成分を適用したもの。
 方針：既存の標準 Frobenius の定義を使う。
@@ -906,20 +906,20 @@ theorem powerRootFrobeniusFactors_commute :
 使われ方：BS 著者版 Remark 7.15（著者版 p.62）の二つの作用の正確な関係。 -/
 theorem powerRootFrobeniusFactors_apply (t : P) :
     powerRootVariableFrobeniusEquiv (A := A) p (powerRootCoefficientFrobeniusEquiv p D hD t) =
-      powerRootPolynomialFrobenius p D t := rfl
+      _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialFrobenius p D t := rfl
 
 /-- 概要：係数 Frobenius 成分は標準無限根 δ 構造の δ 自己同型。
 方針：全体 Frobenius との可換性を p 正則性の下で δ 互換性に戻す。
 規約：既存の δ 構造を使う。
 使われ方：BS 著者版 Remark 7.15（著者版 p.62）の係数変更を raw δ 包へ適用する入力。 -/
 theorem powerRootCoefficientFrobeniusEquiv_isDeltaHom :
-    (powerRootPolynomialDelta p hD.p_mul_injective D).IsDeltaHom
-      (powerRootPolynomialDelta p hD.p_mul_injective D)
+    (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialDelta p hD.p_mul_injective D).IsDeltaHom
+      (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialDelta p hD.p_mul_injective D)
       (powerRootCoefficientFrobeniusEquiv p D hD).toRingHom := by
   apply DeltaStructure.isDeltaHom_of_map_frobeniusLift _
-    (powerRootPolynomial_primeRegular p hD.p_mul_injective)
+    (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomial_primeRegular p hD.p_mul_injective)
   intro t
-  rw [powerRootPolynomialDelta_frobenius]
+  rw [_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialDelta_frobenius]
   exact RingHom.congr_fun (powerRootFrobeniusFactors_commute p D hD)
     (powerRootCoefficientFrobeniusEquiv p D hD t)
 
@@ -928,13 +928,13 @@ theorem powerRootCoefficientFrobeniusEquiv_isDeltaHom :
 規約：係数環の完全性から p 正則性を供給する。
 使われ方：BS 著者版 Remark 7.15（著者版 p.62）の変数成分を raw δ 包へ適用する入力。 -/
 theorem powerRootVariableFrobeniusEquiv_isDeltaHom :
-    (powerRootPolynomialDelta p hD.p_mul_injective D).IsDeltaHom
-      (powerRootPolynomialDelta p hD.p_mul_injective D)
+    (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialDelta p hD.p_mul_injective D).IsDeltaHom
+      (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialDelta p hD.p_mul_injective D)
       (powerRootVariableFrobeniusEquiv (A := A) p).toRingHom := by
   apply DeltaStructure.isDeltaHom_of_map_frobeniusLift _
-    (powerRootPolynomial_primeRegular p hD.p_mul_injective)
+    (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomial_primeRegular p hD.p_mul_injective)
   intro t
-  rw [powerRootPolynomialDelta_frobenius]
+  rw [_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialDelta_frobenius]
   exact congrArg (powerRootVariableFrobeniusEquiv (A := A) p)
     (RingHom.congr_fun (powerRootFrobeniusFactors_commute p D hD) t).symm
 
@@ -943,14 +943,14 @@ theorem powerRootVariableFrobeniusEquiv_isDeltaHom :
 規約：モニック性は不要。
 使われ方：BS 著者版 Remark 7.15（著者版 p.62）の φ_A 係数変更後の f の追跡。 -/
 theorem powerRootCoefficientFrobeniusEquiv_baseMap (f : Polynomial A) :
-    powerRootCoefficientFrobeniusEquiv p D hD (powerRootPolynomialBaseMap A p hp f) =
-      powerRootPolynomialBaseMap A p hp (f.map D.frobeniusLift) := by
-  unfold powerRootPolynomialBaseMap
+    powerRootCoefficientFrobeniusEquiv p D hD (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialBaseMap A p hp f) =
+      _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialBaseMap A p hp (f.map D.frobeniusLift) := by
+  unfold _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialBaseMap
   change (powerRootCoefficientFrobeniusEquiv p D hD).toRingHom
-    (Polynomial.eval₂ (algebraMap A P) (powerRootPolynomialVariable A p hp 0) f) = _
+    (Polynomial.eval₂ (algebraMap A P) (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialVariable A p hp 0) f) = _
   rw [Polynomial.hom_eval₂]
   change Polynomial.eval₂ _
-    (powerRootCoefficientFrobeniusEquiv p D hD (powerRootPolynomialVariable A p hp 0)) f = _
+    (powerRootCoefficientFrobeniusEquiv p D hD (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialVariable A p hp 0)) f = _
   rw [powerRootCoefficientFrobeniusEquiv_variable, Polynomial.aeval_def, Polynomial.eval₂_map]
   congr 1
   apply RingHom.ext
@@ -964,14 +964,14 @@ theorem powerRootCoefficientFrobeniusEquiv_baseMap (f : Polynomial A) :
 theorem powerRootFrobeniusFactors_equiv :
     (powerRootCoefficientFrobeniusEquiv p D hD).trans
       (powerRootVariableFrobeniusEquiv (A := A) p) =
-    (powerRootPolynomialDelta p hD.p_mul_injective D).frobeniusEquiv
-      (powerRootPolynomialDelta_isPerfect p D hD) := by
+    (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialDelta p hD.p_mul_injective D).frobeniusEquiv
+      (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialDelta_isPerfect p D hD) := by
   apply RingEquiv.ext
   intro t
   change powerRootVariableFrobeniusEquiv (A := A) p
     (powerRootCoefficientFrobeniusEquiv p D hD t) =
-      (powerRootPolynomialDelta p hD.p_mul_injective D).frobeniusLift t
-  rw [powerRootPolynomialDelta_frobenius]
+      (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialDelta p hD.p_mul_injective D).frobeniusLift t
+  rw [_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialDelta_frobenius]
   exact powerRootFrobeniusFactors_apply p D hD t
 
 /-- 概要：指数成分は通常多項式の係数を保ち、通常変数だけを p 乗にする。
@@ -979,14 +979,14 @@ theorem powerRootFrobeniusFactors_equiv :
 規約：任意の多項式を扱う。
 使われ方：BS 著者版 Remark 7.15（著者版 p.62）の係数引戻し後の変数再配置。 -/
 theorem powerRootVariableFrobeniusEquiv_baseMap (f : Polynomial A) :
-    powerRootVariableFrobeniusEquiv (A := A) p (powerRootPolynomialBaseMap A p hp f) =
-      Polynomial.eval₂ (algebraMap A P) (powerRootPolynomialVariable A p hp 0 ^ p) f := by
-  unfold powerRootPolynomialBaseMap
+    powerRootVariableFrobeniusEquiv (A := A) p (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialBaseMap A p hp f) =
+      Polynomial.eval₂ (algebraMap A P) (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialVariable A p hp 0 ^ p) f := by
+  unfold _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialBaseMap
   change (powerRootVariableFrobeniusEquiv (A := A) p).toRingHom
-    (Polynomial.eval₂ (algebraMap A P) (powerRootPolynomialVariable A p hp 0) f) = _
+    (Polynomial.eval₂ (algebraMap A P) (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialVariable A p hp 0) f) = _
   rw [Polynomial.hom_eval₂]
   change Polynomial.eval₂ _
-    (powerRootVariableFrobeniusEquiv (A := A) p (powerRootPolynomialVariable A p hp 0)) f = _
+    (powerRootVariableFrobeniusEquiv (A := A) p (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialVariable A p hp 0)) f = _
   rw [powerRootVariableFrobeniusEquiv_variable]
   congr 1
   apply RingHom.ext
@@ -1024,7 +1024,7 @@ prismatic envelope の入力射を、根の像を指定するデータから作�
 namespace SerrePositivity.BhattScholze.Andre
 variable {R : Type u} [CommRing R] (p : ℕ) (hp : 0 < p)
 variable {B : Type v} [CommRing B]
-local notation "P" => PowerRootPolynomial R p hp
+local notation "P" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial R p hp
 
 /-- 概要：無限根多項式環の環射は係数と全根変数の像で決まる。
 方針：単項式を一つの根変数の冪に表し、単項式による加法的生成を使う。
@@ -1032,13 +1032,13 @@ local notation "P" => PowerRootPolynomial R p hp
 使われ方：BS 著者版 Remark 7.15（著者版 p.62）の入力射の一意性。 -/
 theorem powerRootPolynomial_ringHom_ext (F G : P →+* B)
     (hcoeff : F.comp (algebraMap R P) = G.comp (algebraMap R P))
-    (hroot : ∀ n, F (powerRootPolynomialVariable R p hp n) =
-      G (powerRootPolynomialVariable R p hp n)) : F = G := by
+    (hroot : ∀ n, F (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialVariable R p hp n) =
+      G (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialVariable R p hp n)) : F = G := by
   apply RingHom.ext
   intro x
   induction x using AddMonoidAlgebra.induction_on with
   | of q =>
-    obtain ⟨n, k, h⟩ := powerRootPolynomial_single_exists R p hp q 1
+    obtain ⟨n, k, h⟩ := _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomial_single_exists R p hp q 1
     simp only [map_one, one_mul] at h
     change F (AddMonoidAlgebra.single q 1) = G (AddMonoidAlgebra.single q 1)
     rw [h, map_pow, map_pow, hroot]
@@ -1054,7 +1054,7 @@ variable (f : R →+* B) (ρ : ℕ → B) (hρ : ∀ n, ρ (n + 1) ^ p = ρ n)
 規約：元の具体的な無限根多項式環を源とする。
 使われ方：BS 著者版 Remark 7.15（著者版 p.62）の根データからの実入力射。 -/
 def powerRootPolynomialEval : P →+* B :=
-  AddMonoidAlgebra.liftNCRingHom f (powerRootExponentEvalHom p hp ρ hρ)
+  AddMonoidAlgebra.liftNCRingHom f (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootExponentEvalHom p hp ρ hρ)
     (fun _ _ => Commute.all _ _)
 
 /-- 概要：無限根評価射は元の係数を指定係数射へ送る。
@@ -1063,10 +1063,10 @@ def powerRootPolynomialEval : P →+* B :=
 使われ方：BS 著者版 Remark 7.15（著者版 p.62）の基底環上の普遍性。 -/
 theorem powerRootPolynomialEval_coeff (a : R) :
     powerRootPolynomialEval p hp f ρ hρ (algebraMap R P a) = f a := by
-  change AddMonoidAlgebra.liftNCRingHom f (powerRootExponentEvalHom p hp ρ hρ) _
+  change AddMonoidAlgebra.liftNCRingHom f (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootExponentEvalHom p hp ρ hρ) _
     (AddMonoidAlgebra.single 0 a) = _
   rw [AddMonoidAlgebra.liftNCRingHom_single]
-  change f a * (powerRootExponentEvalHom p hp ρ hρ) 1 = f a
+  change f a * (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootExponentEvalHom p hp ρ hρ) 1 = f a
   rw [map_one, mul_one]
 
 /-- 概要：無限根評価射は全ての根変数を指定根列へ送る。
@@ -1074,11 +1074,11 @@ theorem powerRootPolynomialEval_coeff (a : R) :
 規約：全段 n の元の根の像を保つ。
 使われ方：BS 著者版 Remark 7.15（著者版 p.62）の根付き入力射の照合。 -/
 theorem powerRootPolynomialEval_variable (n : ℕ) :
-    powerRootPolynomialEval p hp f ρ hρ (powerRootPolynomialVariable R p hp n) = ρ n := by
-  change AddMonoidAlgebra.liftNCRingHom f (powerRootExponentEvalHom p hp ρ hρ) _
+    powerRootPolynomialEval p hp f ρ hρ (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialVariable R p hp n) = ρ n := by
+  change AddMonoidAlgebra.liftNCRingHom f (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootExponentEvalHom p hp ρ hρ) _
     (AddMonoidAlgebra.single _ 1) = _
   rw [AddMonoidAlgebra.liftNCRingHom_single, map_one, one_mul,
-    powerRootExponentEvalHom_variable]
+    _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootExponentEvalHom_variable]
 
 include hρ in
 /-- 概要：係数と互換な根列を保つ無限根多項式環からの環射は一意に存在。
@@ -1088,7 +1088,7 @@ include hρ in
 theorem existsUnique_powerRootPolynomialHom :
     ∃! F : P →+* B,
       F.comp (algebraMap R P) = f ∧
-        ∀ n, F (powerRootPolynomialVariable R p hp n) = ρ n := by
+        ∀ n, F (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialVariable R p hp n) = ρ n := by
   have hc : (powerRootPolynomialEval p hp f ρ hρ).comp (algebraMap R P) = f := by
     apply RingHom.ext
     exact powerRootPolynomialEval_coeff p hp f ρ hρ
@@ -1129,8 +1129,8 @@ prismatic envelope の試験データを、個別の根列から実際の入力�
 
 namespace SerrePositivity.BhattScholze.Andre
 variable {R : Type u} [CommRing R] (p : ℕ) (hp : 0 < p) (f : Polynomial R)
-local notation "P" => PowerRootPolynomial R p hp
-local notation "I" => Ideal.span {powerRootPolynomialBaseMap R p hp f}
+local notation "P" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial R p hp
+local notation "I" => Ideal.span {_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialBaseMap R p hp f}
 
 /-- 概要：無限根多項式環を f(Y) = 0 で割った通常の入力環。
 方針：第零変数での多項式評価が生成する主イデアルで割る。
@@ -1150,7 +1150,7 @@ def powerRootEquationQuotientCoeff : R →+* PowerRootEquationQuotient p hp f :=
 規約：第零根が f の根になる。
 使われ方：BS 著者版 Remark 7.15（著者版 p.62）の根列の標準入力。 -/
 def powerRootEquationQuotientRoot (n : ℕ) : PowerRootEquationQuotient p hp f :=
-  Ideal.Quotient.mk I (powerRootPolynomialVariable R p hp n)
+  Ideal.Quotient.mk I (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialVariable R p hp n)
 
 /-- 概要：方程式商の標準根列は p 冪について互換。
 方針：無限根多項式環の関係式を商射で写す。
@@ -1159,7 +1159,7 @@ def powerRootEquationQuotientRoot (n : ℕ) : PowerRootEquationQuotient p hp f :
 theorem powerRootEquationQuotientRoot_pow (n : ℕ) :
     powerRootEquationQuotientRoot p hp f (n + 1) ^ p = powerRootEquationQuotientRoot p hp f n := by
   unfold powerRootEquationQuotientRoot
-  rw [← map_pow, powerRootPolynomialVariable_pow]
+  rw [← map_pow, _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialVariable_pow]
 
 /-- 概要：方程式商の第零根は指定された f を消す。
 方針：評価と商射の可換性から主イデアルの生成元の消滅に帰着する。
@@ -1169,7 +1169,7 @@ theorem powerRootEquationQuotientRoot_equation :
     f.eval₂ (powerRootEquationQuotientCoeff p hp f)
       (powerRootEquationQuotientRoot p hp f 0) = 0 := by
   have h := Polynomial.hom_eval₂ f (algebraMap R P) (Ideal.Quotient.mk I)
-    (powerRootPolynomialVariable R p hp 0)
+    (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialVariable R p hp 0)
   unfold powerRootEquationQuotientCoeff powerRootEquationQuotientRoot
   rw [← h]
   apply Ideal.Quotient.eq_zero_iff_mem.mpr
@@ -1199,8 +1199,8 @@ theorem existsUnique_powerRootEquationQuotientHom (k : R →+* B)
       F.comp (powerRootEquationQuotientCoeff p hp f) = k ∧
         ∀ n, F (powerRootEquationQuotientRoot p hp f n) = ρ n := by
   let g := powerRootPolynomialEval p hp k ρ hρ
-  have heval : g (powerRootPolynomialBaseMap R p hp f) = 0 := by
-    unfold powerRootPolynomialBaseMap
+  have heval : g (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialBaseMap R p hp f) = 0 := by
+    unfold _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialBaseMap
     rw [Polynomial.aeval_def, Polynomial.hom_eval₂, powerRootPolynomialEval_variable]
     have hc : g.comp (algebraMap R P) = k := by
       apply RingHom.ext
@@ -1227,7 +1227,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootEquationQuotient
 
-/-! ## André A1-a：方程式商の p 完備化の普遍性
+/-! ## André 方程式商の p 完備化の普遍性
 
 ## 概要
 
@@ -1281,7 +1281,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootEquationCompletionUniversal
 
-/-! ## André A1-a：原典の順序による完備モニック入力環
+/-! ## André 原典の順序による完備モニック入力環
 
 ## 概要
 
@@ -1308,8 +1308,8 @@ BS 著者版 Remark 7.15（著者版 p.62）の S との接続。
 
 namespace SerrePositivity.BhattScholze.Andre
 variable {R : Type u} [CommRing R] (p : ℕ) (hp : 0 < p) (f : Polynomial R)
-local notation "P" => PowerRootPolynomial R p hp
-local notation "z" => powerRootPolynomialBaseMap R p hp f
+local notation "P" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial R p hp
+local notation "z" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialBaseMap R p hp f
 local notation "CP" => AdicCompletion (Ideal.span {(p : P)}) P
 local notation "jP" => algebraMap P CP
 local notation "S₀" => PowerRootEquationQuotient p hp f
@@ -1328,7 +1328,7 @@ abbrev PowerRootMonicCompletedInput := CP ⧸ Ideal.span {jP z}
 def powerRootMonicCompletedInputEquiv (hf : f.Monic) :
     PowerRootMonicCompletedInput p hp f ≃+* CS :=
   primeAdicCompletionQuotientEquiv P p z
-    (fun n => powerRootPolynomial_monic_mod_prime_power_regular R p hp f hf n)
+    (fun n => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomial_monic_mod_prime_power_regular R p hp f hf n)
 
 /-- 概要：完備入力環の交換同型は元の無限根多項式の全ての像を保つ。
 方針：一般の主商交換同型の係数公式を使う。
@@ -1339,7 +1339,7 @@ theorem powerRootMonicCompletedInputEquiv_coeff (hf : f.Monic) (x : P) :
       (Ideal.Quotient.mk (Ideal.span {jP z}) (jP x)) =
         algebraMap S₀ CS (Ideal.Quotient.mk (Ideal.span {z}) x) :=
   primeAdicCompletionQuotientEquiv_coeff P p z
-    (fun n => powerRootPolynomial_monic_mod_prime_power_regular R p hp f hf n) x
+    (fun n => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomial_monic_mod_prime_power_regular R p hp f hf n) x
 
 /-- 概要：原典の順序で作ったモニック完備入力環は p 完備。
 方針：全 p 冪商でのモニック正則性と完備化後の主商の完備性を使う。
@@ -1349,13 +1349,13 @@ theorem powerRootMonicCompletedInput_isAdicComplete (hf : f.Monic) :
     IsAdicComplete (Ideal.span {(p : PowerRootMonicCompletedInput p hp f)})
       (PowerRootMonicCompletedInput p hp f) :=
   primeAdicCompletion_principal_quotient_isAdicComplete P p z
-    (fun n => powerRootPolynomial_monic_mod_prime_power_regular R p hp f hf n)
+    (fun n => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomial_monic_mod_prime_power_regular R p hp f hf n)
 
 end SerrePositivity.BhattScholze.Andre
 
 end PowerRootMonicCompletedInput
 
-/-! ## André A1-a：完備入力環からの環射の外延性
+/-! ## André 完備入力環からの環射の外延性
 
 ## 概要
 
@@ -1381,9 +1381,9 @@ BS 著者版 Remark 7.15（著者版 p.62）の入力作用を含む比較。
 namespace SerrePositivity.BhattScholze.Andre
 variable {R : Type u} [CommRing R] (p : ℕ) (hp : 0 < p) (f : Polynomial R)
 variable {B : Type v} [CommRing B] [IsAdicComplete (Ideal.span {(p : B)}) B]
-local notation "P" => PowerRootPolynomial R p hp
+local notation "P" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial R p hp
 local notation "CP" => AdicCompletion (Ideal.span {(p : P)}) P
-local notation "z" => powerRootPolynomialBaseMap R p hp f
+local notation "z" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialBaseMap R p hp f
 local notation "SI" => PowerRootMonicCompletedInput p hp f
 local notation "lS" => RingHom.comp
   (Ideal.Quotient.mk (Ideal.span {algebraMap P CP z})) (algebraMap P CP)
@@ -1394,8 +1394,8 @@ local notation "lS" => RingHom.comp
 使われ方：BS 著者版 Remark 7.15（著者版 p.62）の全入力作用の保存。 -/
 theorem powerRootMonicCompletedInput_ringHom_ext (F G : SI →+* B)
     (hc : (F.comp lS).comp (algebraMap R P) = (G.comp lS).comp (algebraMap R P))
-    (hr : ∀ n, F (lS (powerRootPolynomialVariable R p hp n)) =
-      G (lS (powerRootPolynomialVariable R p hp n))) : F = G := by
+    (hr : ∀ n, F (lS (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialVariable R p hp n)) =
+      G (lS (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialVariable R p hp n))) : F = G := by
   apply Ideal.Quotient.ringHom_ext
   apply primeAdicCompletion_ringHom_ext P p
   exact powerRootPolynomial_ringHom_ext p hp _ _ hc hr
@@ -1432,7 +1432,7 @@ namespace SerrePositivity.BhattScholze.Andre
 variable {R : Type u} [CommRing R] (p : ℕ) [Fact p.Prime]
 variable {B : Type v} [CommRing B]
 local notation "hp" => Nat.Prime.pos (Fact.out : p.Prime)
-local notation "P" => PowerRootPolynomial R p hp
+local notation "P" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial R p hp
 
 /-- 概要：無限根環からの環射が係数・全根変数上で δ と可換なら δ 射。
 方針：二つの W₂ 切断の合成を通常環射の外延性と二つの Witt 座標で比較する。
@@ -1441,8 +1441,8 @@ local notation "P" => PowerRootPolynomial R p hp
 theorem isDeltaHom_powerRootPolynomial
     (D : DeltaStructure p P) (E : DeltaStructure p B) (g : P →+* B)
     (hcoeff : ∀ a : R, g (D.delta (algebraMap R P a)) = E.delta (g (algebraMap R P a)))
-    (hroot : ∀ n, g (D.delta (powerRootPolynomialVariable R p hp n)) =
-      E.delta (g (powerRootPolynomialVariable R p hp n))) : D.IsDeltaHom E g := by
+    (hroot : ∀ n, g (D.delta (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialVariable R p hp n)) =
+      E.delta (g (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialVariable R p hp n))) : D.IsDeltaHom E g := by
   apply (D.isDeltaHom_iff_sectionHom_comp E g).mpr
   apply powerRootPolynomial_ringHom_ext p hp
   · apply RingHom.ext
@@ -1460,8 +1460,8 @@ theorem isDeltaHom_powerRootPolynomial
     intro i
     fin_cases i
     · simp only [RingHom.comp_apply, wittTwoMap_coeff]
-      exact congrArg g (D.coeff_zero (powerRootPolynomialVariable R p hp n)) |>.trans
-        (E.coeff_zero (g (powerRootPolynomialVariable R p hp n))).symm
+      exact congrArg g (D.coeff_zero (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialVariable R p hp n)) |>.trans
+        (E.coeff_zero (g (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialVariable R p hp n))).symm
     · simp only [RingHom.comp_apply, wittTwoMap_coeff]
       exact hroot n
 
@@ -1473,7 +1473,7 @@ theorem compatiblePowerRoots_delta_eq_zero (E : DeltaStructure p B)
     [IsHausdorff (Ideal.span {(p : B)}) B]
     (ρ : ℕ → B) (hρ : ∀ n, ρ (n + 1) ^ p = ρ n) (n : ℕ) : E.delta (ρ n) = 0 :=
   E.delta_eq_zero_of_has_pow_roots (ρ n) (fun m =>
-    ⟨ρ (n + m), compatiblePowerRoots_iterate p ρ hρ n m⟩)
+    ⟨ρ (n + m), _root_.SerrePositivity.BhattScholze.Semiperfectoid.compatiblePowerRoots_iterate p ρ hρ n m⟩)
 
 variable (hpR : Function.Injective (fun a : R => (p : R) * a))
 variable (D : DeltaStructure p R) (E : DeltaStructure p B) (f : R →+* B)
@@ -1486,13 +1486,13 @@ include hf hδρ in
 規約：終域の p ねじれや完備性には制約しない。
 使われ方：BS 著者版 Remark 7.15（著者版 p.62）の根データからの実入力 δ 射。 -/
 theorem powerRootPolynomialEval_isDeltaHom :
-    (powerRootPolynomialDelta p hpR D).IsDeltaHom E (powerRootPolynomialEval p hp f ρ hρ) := by
+    (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialDelta p hpR D).IsDeltaHom E (powerRootPolynomialEval p hp f ρ hρ) := by
   apply isDeltaHom_powerRootPolynomial p
   · intro a
-    rw [← powerRootPolynomialDelta_coeff_isDeltaHom p hpR D a,
+    rw [← _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialDelta_coeff_isDeltaHom p hpR D a,
       powerRootPolynomialEval_coeff, powerRootPolynomialEval_coeff, hf a]
   · intro n
-    rw [powerRootPolynomialDelta_variable, map_zero, powerRootPolynomialEval_variable, hδρ]
+    rw [_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialDelta_variable, map_zero, powerRootPolynomialEval_variable, hδρ]
 
 include hf hρ hδρ in
 /-- 概要：係数と rank 1 の互換根列を保つ δ 射は一意に存在。
@@ -1501,9 +1501,9 @@ include hf hρ hδρ in
 使われ方：BS 著者版 Remark 7.15（著者版 p.62）の指定入力射を根データへ置き換える。 -/
 theorem existsUnique_powerRootPolynomialDeltaHom :
     ∃! g : P →+* B,
-      (powerRootPolynomialDelta p hpR D).IsDeltaHom E g ∧
+      (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialDelta p hpR D).IsDeltaHom E g ∧
         g.comp (algebraMap R P) = f ∧
-          ∀ n, g (powerRootPolynomialVariable R p hp n) = ρ n := by
+          ∀ n, g (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialVariable R p hp n) = ρ n := by
   obtain ⟨g, hg, hu⟩ := existsUnique_powerRootPolynomialHom p hp f ρ hρ
   have hgeval : g = powerRootPolynomialEval p hp f ρ hρ := by
     apply powerRootPolynomial_ringHom_ext p hp g _
@@ -1526,9 +1526,9 @@ include hf hρ in
 theorem existsUnique_powerRootPolynomialDeltaHom_of_isHausdorff
     [IsHausdorff (Ideal.span {(p : B)}) B] :
     ∃! g : P →+* B,
-      (powerRootPolynomialDelta p hpR D).IsDeltaHom E g ∧
+      (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialDelta p hpR D).IsDeltaHom E g ∧
         g.comp (algebraMap R P) = f ∧
-          ∀ n, g (powerRootPolynomialVariable R p hp n) = ρ n :=
+          ∀ n, g (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialVariable R p hp n) = ρ n :=
   existsUnique_powerRootPolynomialDeltaHom p hpR D E f hf ρ hρ
     (compatiblePowerRoots_delta_eq_zero p E ρ hρ)
 
@@ -1565,7 +1565,7 @@ namespace SerrePositivity.BhattScholze.Andre
 variable {R : Type u} [CommRing R] (p : ℕ) [Fact p.Prime]
 variable {B : Type v} [CommRing B]
 local notation "hp" => Nat.Prime.pos (Fact.out : p.Prime)
-local notation "P" => PowerRootPolynomial R p hp
+local notation "P" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial R p hp
 
 /-- 概要：完全 prism の剰余互換根列を保つ無限根入力 δ 射は一意に存在。
 方針：実根列への一意持上げと rank 1 根列の δ 普遍性を合成する。
@@ -1579,9 +1579,9 @@ theorem existsUnique_powerRootPolynomialDeltaHom_of_boundedPrism_residue_roots
     (k : R →+* B) (hk : D.IsDeltaHom Q.deltaStructure k)
     (ρ : ℕ → B ⧸ Q.ideal) (hρ : ∀ n, ρ (n + 1) ^ p = ρ n) :
     ∃! g : P →+* B,
-      (powerRootPolynomialDelta p hpR D).IsDeltaHom Q.deltaStructure g ∧
+      (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialDelta p hpR D).IsDeltaHom Q.deltaStructure g ∧
         g.comp (algebraMap R P) = k ∧
-          ∀ n, Ideal.Quotient.mk Q.ideal (g (powerRootPolynomialVariable R p hp n)) = ρ n := by
+          ∀ n, Ideal.Quotient.mk Q.ideal (g (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialVariable R p hp n)) = ρ n := by
   let := _root_.SerrePositivity.BhattScholze.boundedPrism_isHausdorff_prime Q hB
   obtain ⟨σ, hσ, hσu⟩ := _root_.SerrePositivity.BhattScholze.existsUnique_boundedPrismCompatibleRootsLift Q hB ρ hρ
   obtain ⟨g, hg, hu⟩ := existsUnique_powerRootPolynomialDeltaHom_of_isHausdorff p hpR D
@@ -1590,11 +1590,11 @@ theorem existsUnique_powerRootPolynomialDeltaHom_of_boundedPrism_residue_roots
   · intro n
     exact (congrArg (Ideal.Quotient.mk Q.ideal) (hg.2.2 n)).trans (hσ.2 n)
   · intro K hK
-    let τ := fun n => K (powerRootPolynomialVariable R p hp n)
+    let τ := fun n => K (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialVariable R p hp n)
     have hτ : ∀ n, τ (n + 1) ^ p = τ n := by
       intro n
       exact (map_pow K _ p).symm.trans
-        (congrArg K (powerRootPolynomialVariable_pow R p hp n))
+        (congrArg K (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialVariable_pow R p hp n))
     have hτσ : τ = σ := hσu τ ⟨hτ, hK.2.2⟩
     apply hu K
     exact ⟨hK.1, hK.2.1, fun n => congrFun hτσ n⟩
@@ -1632,7 +1632,7 @@ namespace SerrePositivity.BhattScholze.Andre
 variable {R : Type u} [CommRing R] (p : ℕ) [Fact p.Prime]
 variable {B : Type v} [CommRing B]
 local notation "hp" => Nat.Prime.pos (Fact.out : p.Prime)
-local notation "P" => PowerRootPolynomial R p hp
+local notation "P" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial R p hp
 
 /-- 概要：完全 prism の剰余互換根列を保つ無限根入力 δ 射は一意に存在。
 方針：実根列への一意持上げと rank 1 根列の δ 普遍性を合成する。
@@ -1644,9 +1644,9 @@ theorem existsUnique_powerRootPolynomialDeltaHom_of_perfectPrism_residue_roots
     (k : R →+* B) (hk : D.IsDeltaHom Q.deltaStructure k)
     (ρ : ℕ → B ⧸ Q.ideal) (hρ : ∀ n, ρ (n + 1) ^ p = ρ n) :
     ∃! g : P →+* B,
-      (powerRootPolynomialDelta p hpR D).IsDeltaHom Q.deltaStructure g ∧
+      (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialDelta p hpR D).IsDeltaHom Q.deltaStructure g ∧
         g.comp (algebraMap R P) = k ∧
-          ∀ n, Ideal.Quotient.mk Q.ideal (g (powerRootPolynomialVariable R p hp n)) = ρ n := by
+          ∀ n, Ideal.Quotient.mk Q.ideal (g (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialVariable R p hp n)) = ρ n := by
   let := Q.isAdicComplete_p_of_perfect hQ
   obtain ⟨σ, hσ, hσu⟩ := _root_.SerrePositivity.BhattScholze.existsUnique_perfectPrismCompatibleRootsLift Q hQ ρ hρ
   obtain ⟨g, hg, hu⟩ := existsUnique_powerRootPolynomialDeltaHom_of_isHausdorff p hpR D
@@ -1655,11 +1655,11 @@ theorem existsUnique_powerRootPolynomialDeltaHom_of_perfectPrism_residue_roots
   · intro n
     exact (congrArg (Ideal.Quotient.mk Q.ideal) (hg.2.2 n)).trans (hσ.2 n)
   · intro K hK
-    let τ := fun n => K (powerRootPolynomialVariable R p hp n)
+    let τ := fun n => K (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialVariable R p hp n)
     have hτ : ∀ n, τ (n + 1) ^ p = τ n := by
       intro n
       exact (map_pow K _ p).symm.trans
-        (congrArg K (powerRootPolynomialVariable_pow R p hp n))
+        (congrArg K (_root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialVariable_pow R p hp n))
     have hτσ : τ = σ := hσu τ ⟨hτ, hK.2.2⟩
     apply hu K
     exact ⟨hK.1, hK.2.1, fun n => congrFun hτσ n⟩

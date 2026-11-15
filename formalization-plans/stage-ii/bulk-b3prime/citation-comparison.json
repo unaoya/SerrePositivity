@@ -1,0 +1,19 @@
+{
+  "before": 2564,
+  "after": 2564,
+  "missing": [],
+  "extra": [],
+  "scope": "Every citation whose actual defining module is SerrePositivity, including global-namespace and source-private declarations; imported Mathlib-owned citations are outside this project migration. Actual native names are retained in side receipts.",
+  "checked_fields": [
+    "key",
+    "number",
+    "declaration",
+    "module",
+    "relation",
+    "comment",
+    "edition"
+  ],
+  "source_locations": "Captured path and line retained in native before/after receipts; module ownership is compared after the explicit per-declaration split map. Path and line themselves intentionally move.",
+  "rule_sha256": "268ba032d38a7be059a4eb1a493a92f774dba997cb440ad53ac1f327fc45d5b2",
+  "module_plan_sha256": "0d9c8cf2401058e9ad389638e7fee59be45ecf6b90adea264ebdf6c43c624089"
+}

@@ -9,7 +9,7 @@ public import SerrePositivity.BhattScholze.Andre.OrdinaryRoots.Family
 public import SerrePositivity.BhattScholze.Andre.Envelope.MonicSource
 public import SerrePositivity.BhattScholze.Andre.Envelope.MonicCandidate
 public import SerrePositivity.BhattScholze.Andre.Variants.ArbitraryFamily
-public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.PowerRootPolynomial
+public import SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootFamilies.PowerRootPolynomial
 public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.PowerRootInput
 public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.DividedPowerPrime
 public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.PrincipalDP
