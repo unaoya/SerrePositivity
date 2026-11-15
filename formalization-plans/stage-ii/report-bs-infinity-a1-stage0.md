@@ -1954,3 +1954,37 @@ kanRightTransportPostcomp (t : RightKanConeTransport δ F₀ F α c) (U : D ⟶ 
 検証済み全体100本6,375行・629宣言、外枠18,600行内。
 S1 の交叉降下の同値・生成系・上限位相・extensive の判定と、S8 は未完。
 一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
+
+### S1：実右 Kan の局所形状への指定比較（11-15）
+
+3本180行・12宣言の対象ビルドと小監査が成功（標準三公理のみ）。
+記録：`/tmp/is-w1/s1-native-shape-5/`。source SHA も一致。
+
+```lean
+sieveFactorizationRightKanShapeComparison R S t :
+  presheafShape (sieveFactorizationLocalComma R S t) ⟶
+    rightKanShape (nerveMap (sieveFactorizationRightKanFunctor R S))
+      (nerveVertex (AsSmall.up.obj (Opposite.op t)))
+
+IsQCatEquivalence (sieveFactorizationRightKanShapeComparison R S t)
+```
+
+元の局所 comma の反転から右 comma への同値は、Mathlib の
+`costructuredArrowOpEquivalence` を直接再利用した。
+これと重なる未コミットの再実装 `CostructuredOpposite` は採用せず、作業木から除いた。
+宇宙の接続には、Mathlib の `StructuredArrow.post`・`pre` と AsSmall の
+既存同値だけを合成し、元の局所射影を全関手として厳密に保持する。
+最後に既存の `nerveRightKanShapeIso` を合成した同じ実写像の同値性を証明した。
+
+`RightConeTransportPostcomp` は、通常の指定余単位の実輸送を任意の準圏値へ写した
+場合に、元の通常の局所錐の像との全射の等式と極限性の同値を示す。
+通常の係数圏での極限性・係数射の極限保存性は仮定しない。
+
+次は、元の三角形 `sieveFactorizationTriangle` を AsSmall の係数圏へ写した
+同じ余単位の輸送を固定し、この指定形状比較の下で局所錐の全射を照合する。
+既検証の `uliftNerveCone_asSmall_val` で元の係数前層への後合成へ戻す。
+ここまでで極限の合成自体が済んだとはしない。
+
+検証済み全体103本6,555行・641宣言、外枠18,600行内。
+S1 の交叉降下の同値・生成系・上限位相・extensive の判定と、S8 は未完。
+一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
