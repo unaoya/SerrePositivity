@@ -14030,3 +14030,144 @@ M15・drafts・main・⑤aの既存ファイル・Interfaceは変更していな
 
 G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み9,258行。
 M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
+
+## §101 G01：実全単体の原子性の有限端点による必要十分条件（11-15）
+
+### 101.1 検証済みの追加
+
+追加は **4ファイル403行・明示宣言14**。累計 **78ファイル9,661行・明示宣言560**。
+WalkingAdjunctionEndpointSizes.lean は114行・5宣言、WalkingAdjunctionAtomicEndpointBounds.lean は96行・3宣言、
+WalkingAdjunctionCutBoundaryEquality.lean は83行・4宣言、WalkingAdjunctionAtomicEndpoints.lean は110行・2宣言。
+200行を超える個別の宣言・証明はない。新規Leanの行長は100文字以下。
+G01の同じ原子的な分解の実表示・端点の照合・単位・係数移送とその証明の分割なので、
+新しい一覧IDは足さない。
+
+原子的な実全単体Hの有限端点による必要十分条件を証明した。
+始頂点の共通表示の個数は始点・終点の補正の和、終頂点の個数は1となる。
+四Homでの始頂点の個数はplus→plusで0、混合で1、minus→minusで2である。
+全ての場合に終頂点は一点である。
+
+長さが正なら終頂点は非空である。空なら各頂点からの元の実射の表示が全頂点を空にし、
+長さの有限和は0となるためである。
+minus自己Homでは、始頂点が一点なら最小元・最大元の保存が全頂点を一点にし、全長0となる。
+従って正の長さなら始頂点は二点以上である。
+混合Homの非空性と合わせ、正の長さから始頂点の個数の補正による下限を得た。
+
+原子性からの上限は、余分な点がある場合に実際の内側の切れ目を構成して証明した。
+終頂点に二点以上あれば、値1のplusの切れ目が両外端の間にあり、どちらの外端とも順位が一致しない。
+始頂点の個数が補正の和を超える場合は、始点の補正を値とするminusの共有点が同じ矛盾を与える。
+§100の切れ目と実分解の往復を介して元の原子性を使い、端点の個数の必要条件を得た。
+
+逆向きには、二つの端点の個数は正の全長を保証する。
+plusの切れ目は終頂点で0か1だけで、両外端の間にある条件により実際に存在する方の外端に一致する。
+minusの共有点は始頂点で、四Homに応じて空、一つの外端、二つの外端に分かれる。
+端点の評価の単射性から自然性を含む実切れ目の等式を得て、元の全分解の原子性へ戻した。
+頂点の必要条件だけを原子性と宣言したのではなく、全ての実分解・全射を含む元の定義との同値を証明した。
+
+### 101.2 型と残る境界
+
+原典は[Riehl–Verity §4.1–§4.2](https://emilyriehl.github.io/files/adjunctions.pdf)、
+HA Proposition 4.7.3.3、Kerodon Remark 6.2.1.4（Tag 02EN）。
+現在の有限順序の実模型の原子の表示の法則として、検証した型は以下。
+
+```lean
+lemma walkingAdjunctionVertexLength_card (X Y : WalkingAdjunctionPoint)
+    (A : walkingAdjunctionHom X Y) :
+    walkingAdjunctionVertexLength X Y A + walkingAdjunctionTargetCorrection X +
+      walkingAdjunctionTargetCorrection Y = 2 * walkingAdjunctionOrdinalCard X Y A
+
+lemma walkingAdjunctionLastCard_pos_of_size_pos {n : ℕ} {X Y : WalkingAdjunctionPoint}
+    (H : Fin (n + 1) ⥤ walkingAdjunctionHom X Y) (hp : 0 < walkingAdjunctionLevelSize H) :
+    0 < walkingAdjunctionOrdinalCard X Y (H.obj (Fin.last n))
+
+lemma walkingAdjunctionMinusFirstCard_two_le_of_size_pos {n : ℕ}
+    (H : Fin (n + 1) ⥤ walkingAdjunctionHom .minus .minus)
+    (hp : 0 < walkingAdjunctionLevelSize H) :
+    2 ≤ walkingAdjunctionOrdinalCard .minus .minus (H.obj 0)
+
+lemma walkingAdjunctionFirstCard_corrections_le_of_size_pos {n : ℕ}
+    {X Y : WalkingAdjunctionPoint} (H : Fin (n + 1) ⥤ walkingAdjunctionHom X Y)
+    (hp : 0 < walkingAdjunctionLevelSize H) :
+    walkingAdjunctionTargetCorrection X + walkingAdjunctionTargetCorrection Y ≤
+      walkingAdjunctionOrdinalCard X Y (H.obj 0)
+
+lemma walkingAdjunctionSize_pos_of_endpoint_cards {n : ℕ} {X Y : WalkingAdjunctionPoint}
+    (H : Fin (n + 1) ⥤ walkingAdjunctionHom X Y)
+    (hfirst : walkingAdjunctionOrdinalCard X Y (H.obj 0) =
+      walkingAdjunctionTargetCorrection X + walkingAdjunctionTargetCorrection Y)
+    (hlast : walkingAdjunctionOrdinalCard X Y (H.obj (Fin.last n)) = 1) :
+    0 < walkingAdjunctionLevelSize H
+
+lemma walkingAdjunctionAtomic_last_card_le_one
+    (h : WalkingAdjunctionLevelIsAtomic (X := ⟨X⟩) (Y := ⟨Y⟩) H) :
+    walkingAdjunctionOrdinalCard X Y (H.obj (Fin.last n)) ≤ 1
+
+lemma walkingAdjunctionAtomic_first_card_le_corrections
+    (h : WalkingAdjunctionLevelIsAtomic (X := ⟨X⟩) (Y := ⟨Y⟩) H) :
+    walkingAdjunctionOrdinalCard X Y (H.obj 0) ≤
+      walkingAdjunctionTargetCorrection X + walkingAdjunctionTargetCorrection Y
+
+lemma walkingAdjunctionAtomic_endpoint_cards
+    (h : WalkingAdjunctionLevelIsAtomic (X := ⟨X⟩) (Y := ⟨Y⟩) H) :
+    walkingAdjunctionOrdinalCard X Y (H.obj 0) =
+        walkingAdjunctionTargetCorrection X + walkingAdjunctionTargetCorrection Y ∧
+      walkingAdjunctionOrdinalCard X Y (H.obj (Fin.last n)) = 1
+
+lemma WalkingAdjunctionPlusCut.eq_source_of_last_zero {n : ℕ} {Y : WalkingAdjunctionPoint}
+    {H : Fin (n + 1) ⥤ walkingAdjunctionHom .plus Y} (a : WalkingAdjunctionPlusCut H)
+    (hz : (a.value (Fin.last n)).val = 0) : a = walkingAdjunctionSourceCut H
+
+lemma WalkingAdjunctionPlusCut.eq_target_of_last_card {n : ℕ} {X : WalkingAdjunctionPoint}
+    {H : Fin (n + 1) ⥤ walkingAdjunctionHom X .plus} (a : WalkingAdjunctionPlusCut H)
+    (ht : (a.value (Fin.last n)).val =
+      walkingAdjunctionOrdinalCard X .plus (H.obj (Fin.last n))) :
+    a = walkingAdjunctionTargetCut H
+
+lemma WalkingAdjunctionMinusCut.eq_source_of_first_zero {n : ℕ} {Y : WalkingAdjunctionPoint}
+    {H : Fin (n + 1) ⥤ walkingAdjunctionHom .minus Y} (a : WalkingAdjunctionMinusCut H)
+    (hz : (a.value 0).val = 0) : a = walkingAdjunctionSourceCut H
+
+lemma WalkingAdjunctionMinusCut.eq_target_of_first_top {n : ℕ} {X : WalkingAdjunctionPoint}
+    {H : Fin (n + 1) ⥤ walkingAdjunctionHom X .minus} (a : WalkingAdjunctionMinusCut H)
+    (ht : (a.value 0).val + 1 = walkingAdjunctionOrdinalCard X .minus (H.obj 0)) :
+    a = walkingAdjunctionTargetCut H
+
+lemma walkingAdjunctionAtomic_of_endpoint_cards {n : ℕ} {X Y : WalkingAdjunctionPoint}
+    (H : Fin (n + 1) ⥤ walkingAdjunctionHom X Y)
+    (hfirst : walkingAdjunctionOrdinalCard X Y (H.obj 0) =
+      walkingAdjunctionTargetCorrection X + walkingAdjunctionTargetCorrection Y)
+    (hlast : walkingAdjunctionOrdinalCard X Y (H.obj (Fin.last n)) = 1) :
+    WalkingAdjunctionLevelIsAtomic (X := ⟨X⟩) (Y := ⟨Y⟩) H
+
+lemma walkingAdjunctionLevelIsAtomic_iff_endpoint_cards {n : ℕ} {X Y : WalkingAdjunctionPoint}
+    (H : Fin (n + 1) ⥤ walkingAdjunctionHom X Y) :
+    WalkingAdjunctionLevelIsAtomic (X := ⟨X⟩) (Y := ⟨Y⟩) H ↔
+      walkingAdjunctionOrdinalCard X Y (H.obj 0) =
+          walkingAdjunctionTargetCorrection X + walkingAdjunctionTargetCorrection Y ∧
+        walkingAdjunctionOrdinalCard X Y (H.obj (Fin.last n)) = 1
+```
+
+非退化の原子のfillable条件と親の実構成、parental subcomputadのfiltration、
+元のQCatAdjunctionからの全coherentな延長はまだ未完。
+原典の向きと現模型の水平反対の全比較、同じF≫U・単位・余単位・HAモデルの照合も未完。
+今回の原子の有限端点による判定を、coherentな延長の存在へ読み替えていない。
+G01の済みは0、G02以降も未完を維持する。
+
+### 101.3 検証と進み
+
+with_build_lock.sh --class impl --wait 3600、各最大240秒の短いimpl枠。
+セッション13139でEndpointSizes、49731でAtomicEndpointBounds・CutBoundaryEqualityの対象ビルドの終了0を確認した。
+セッション54125で最終対象
+lake build SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionAtomicEndpoints:olean
+と、続く追加14根だけの公理監査、外側の終了0を確認した。
+今回の数学の証明は全て最初の対象ビルドで通過した。最終対象ビルドは警告なし（1331 jobs）。
+追加14根は入力名と出力名が一致し、公理依存はpropext・Classical.choice・Quot.soundのみ。
+sorryAx・追加公理なし。入力・根・全出力・最終対象ビルドログは
+[g12-atomic-endpoints-audit-2026-11-15/](g12-atomic-endpoints-audit-2026-11-15/)に保存した。
+現在自分の生きたビルド・監査の枠は残っていない。
+
+M15・drafts・main・⑤aの既存ファイル・Interfaceは変更していない。
+全体ビルド・大きい監査は行っていない。
+
+G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み9,661行。
+M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
