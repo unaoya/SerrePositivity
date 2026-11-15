@@ -11273,3 +11273,102 @@ sorryAx・追加公理はない。監査入力・根・全出力と三つの対�
 
 G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み2,849行。
 M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
+
+
+## §83 G01：二つの混合Homの間の自己Homを移す全結合則（11-15）
+
+### 83.1 検証済みの追加
+
+前のgoal turnは§82のLean・報告を検証・コミットした進捗あり。
+今回はIntervalMixedBalancing.leanの **1ファイル112行・明示宣言7** を検証した。
+累計 **22ファイル2,961行・明示宣言222**。G01は未完で一覧の済みは0。
+
+mixedBottomTopOrdinalを実区間表示へ送ると、構成元のbottomTopIntervalSumに
+全関手で戻ることを、実同値の厳密な往復から示した。
+さらに両端点を忘却すると元の増大単体圏の順序和と全関手で一致する。
+この全比較に任意のI上の関手を前合成し、区間表示の忠実性と
+端点の忘却の忠実性・対象の単射性で等式を回収した。
+
+これにより **-++-**（Bottom × Augmented × Top）の全結合則を証明した。
+逆順の混合合成の反対がGalois双対に送った元の混合合成であることは
+実双関手の定義から一致する。既存の二つの反対側の作用の双対比較を使い、
+**+--+**（Top × Augmentedᵒᵖ × Bottom）の全結合則も証明した。
+全てIの任意の射に関する関手の等式であり、対象の個数の照合だけではない。
+
+§82の6通りと合わせて、全結合則は **16通り中8通り**。
+残る8通りは++-+、++--、+-++、+-+-、-+-+、-+--、--++、--+-。
+全8通りの単位則は§82で検証済み。
+全豊穣walking adjunction、与えられたQCatAdjunctionからの全拡張、
+元のF≫U・単位・余単位との比較は未完。G01完成とは数えない。
+
+原典はHA Proposition 4.7.3.3、Riehl–Verity Remark 3.3.8、
+Kerodon Remark 6.2.1.4（Tag 02EN）。新しい一覧IDは加えず、G01の同じ構成と
+自然性・合成則の分割として数える。200行を超える宣言・証明はない。
+
+### 83.2 同じ構成の比較・法則の型
+
+namespace SerrePositivity.InfinityCategories.HA.Monads内。
+I : Type u、[Category.{v} I]を共通の変数とする。
+
+```lean
+lemma mixedBottomTopOrdinal_representation :
+    mixedBottomTopOrdinal ⋙ ordinalIntervalRepresentation = bottomTopIntervalSum
+
+lemma bottomTopIntervalSum_forget :
+    bottomTopIntervalSum ⋙ endpointAugmentedForget simplexPreservesEndpoints =
+      (endpointAugmentedForget simplexPreservesBottom).prod
+        (endpointAugmentedForget simplexPreservesTop) ⋙ tensor AugmentedSimplexCategory
+
+lemma ordinalIntervalRepresentation_comp_injective
+    {F G : I ⥤ AugmentedSimplexCategoryᵒᵖ}
+    (h : F ⋙ ordinalIntervalRepresentation = G ⋙ ordinalIntervalRepresentation) : F = G
+
+lemma mixedBottomTopFunctor_forget (F : I ⥤ BottomSimplexCategory)
+    (G : I ⥤ TopSimplexCategory) :
+    ((F.prod' G ⋙ mixedBottomTopOrdinal) ⋙ ordinalIntervalRepresentation) ⋙
+        endpointAugmentedForget simplexPreservesEndpoints =
+      (F ⋙ endpointAugmentedForget simplexPreservesBottom).prod'
+        (G ⋙ endpointAugmentedForget simplexPreservesTop) ⋙ tensor AugmentedSimplexCategory
+
+lemma mixedBottomTopFunctor_balance (F : I ⥤ BottomSimplexCategory)
+    (G : I ⥤ AugmentedSimplexCategory) (H : I ⥤ TopSimplexCategory) :
+    ((F.prod' G ⋙ bottomOrdinalAction).prod' H ⋙ mixedBottomTopOrdinal) =
+      (F.prod' (G.prod' H ⋙ topOrdinalAction) ⋙ mixedBottomTopOrdinal)
+
+lemma mixedTopBottomFunctor_op (F : I ⥤ TopSimplexCategory)
+    (G : I ⥤ BottomSimplexCategory) :
+    (F.prod' G ⋙ mixedTopBottomOrdinal).op =
+      (F ⋙ topToBottomOpEquivalence.functor).leftOp.prod'
+        (G ⋙ endpointSimplexEquivalence.functor).leftOp ⋙ mixedBottomTopOrdinal
+
+lemma mixedTopBottomFunctor_balance (F : I ⥤ TopSimplexCategory)
+    (G : I ⥤ AugmentedSimplexCategoryᵒᵖ) (H : I ⥤ BottomSimplexCategory) :
+    ((F.prod' G ⋙ topOppositeOrdinalAction).prod' H ⋙ mixedTopBottomOrdinal) =
+      (F.prod' (G.prod' H ⋙ bottomOppositeOrdinalAction) ⋙ mixedTopBottomOrdinal)
+```
+
+### 83.3 検証と次の作業木
+
+対象はlake build SerrePositivity.InfinityCategories.HA.Monads.IntervalMixedBalancing:olean。
+with_build_lock.sh --class impl --wait 3600、最大280秒の短いimpl枠（セッション88597）で実行。
+前合成した比較の両辺を関手の結合則で正規化して修正し、
+最終 **G12_BALANCE_BUILD_EXIT=0**、警告なし（1257 jobs）。
+新設7根の小さい監査は **G12_BALANCE_AUDIT_EXIT=0**。
+入力7名と出力7名は一致し、公理依存は標準のpropext・Classical.choice・Quot.soundのみ。
+sorryAx・追加公理はない。exitで外側の終了0まで確認して返却した。
+入力・根・全出力・対象ビルドログは
+[g12-balance-audit-2026-11-15/](g12-balance-audit-2026-11-15/)へ保存した。
+
+続く作業木のOrdinalConcatenation.lean、OrdinalConcatenationLaws.lean、OrdinalGlueGalois.leanは
+残る8通りの射の比較に使う同じ構成の値の表示・貼り合わせ・Galois随伴の法則。
+この§83の検証済みの行数・宣言数・コミットには含めない。
+前のセッション42796は最大280秒で終了124を確認し、その後にセッション37662の
+別の短いimpl枠へ並び直して検証を継続している。古い枠を生きたまま再起動していない。
+新しい射の表示が既存の全合成と一致することは、Galois随伴の一意性でこれから検収する。
+値の表示だけから残る8通りの全関手の結合則が済んだとは数えない。
+
+既存の21ファイル、M15のLean、drafts、main、⑤aのファイル、Interfaceには書き込んでいない。
+全体ビルド・大きい監査は行っていない。
+
+G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み2,961行。
+M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
