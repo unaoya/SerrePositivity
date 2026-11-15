@@ -3,7 +3,7 @@
   "complete": 1,
   "total": 6,
   "added": 0,
-  "verified_head": "this commit: base 25ec58e77c69b185f86422c31475283b9369bebc",
+  "verified_head": "this commit: base 1f691c8748ba0d002e3de40aa41211808edf56ac",
   "items": {
     "HT01": "complete",
     "HT02": "in-progress",
@@ -12,13 +12,13 @@
     "HT05": "not-started",
     "HT06": "not-started"
   },
-  "latest_complete_audit_checkpoint": "resolution-functor-preparation-checkpoint.json",
-  "latest_complete_audit_declarations": 851,
+  "latest_complete_audit_checkpoint": "resolved-scalar-compatibility-checkpoint.json",
+  "latest_complete_audit_declarations": 862,
   "working_changes_unverified": [
-    "ResolutionDiskFunctor",
-    "ResolvedScalarTotalCompatibility"
+    "ResolutionKernelFunctor",
+    "ResolutionDiskFunctor"
   ],
-  "pending_check": "bundle-039 terminal rc1; see audit module inventory; failed dependencies await next batch",
+  "pending_check": "bundle-040 terminal rc1; see audit module inventory; failed dependencies await next batch",
   "next_proof_route": "ht02-next-proof-route.md",
   "initial_record": {
     "stage": "5inf3a",
