@@ -16758,3 +16758,189 @@ lemma cosliceTwistedHomMap_vertex_edge_arrow {C : SSet.{u}} {x y : C _⦋0⦌}
 これは未検証の候補で、本体・manifest・監査・済みの数には入れていない。同じedgewiseWeightIsoの逆とcosliceEdgewiseCollapseの零次元の式を合わせれば足りる見込みだが、一時ファイルの一点の証明でSubsingletonの推論が通らず、未解決のままの大きい証明はkernelの既定上限にも達した。計算上限は上げず、小さい重みの等式と辺の等式に分割する検査用ファイル /private/tmp/isw2-coslice-twisted-unit-split.lean に残した。次はFin 1の座標を明示して小さい補題ごとに検査する。既存のcosliceFiberVertexIsoOfHomEqへ実際の単位点を戻す照合、元のstraightening評価の全自然性による全変換の一致をさらに示す必要があり、今回の結果で全関手同型を得たとはしない。
 
 B4′自体は§268で完了。統合81683a2ab・報告8c7971003、書換え0・保留0を維持し、§277〜279は/goal再開後の追加の検証である。
+
+## 280. 元のcoslice比較が表す同じ辺の零次元の式（2026-11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 24（うち追加 12）。
+
+### 280.1 範囲と型
+
+前回は元の単位条件と元のnative fiberの単位の辺の類の照合を検証し、81e99bcecまで保存したため、進捗あり。作業木はクリーン、共有鍵も持っていない状態から再開した。§279.3の零次元のcoslice比較の法則を三つの小補題へ分割した。Fin 1の座標はFin.eq_zeroで明示し、同じ逆則は括弧の位置を合わせて適用した。個別検査 /private/tmp/isw2-coslice-twisted-unit-split.lean は終了コード0、出力なし。計算上限・既存の型は変更していない。以下は既存構成の単位・係数移送の法則と証明の分割であり、新しい数学のIDには数えない。
+
+#### CosliceTwistedHomVertexEdge（68行）
+
+```lean
+lemma cosliceEdgewiseCollapse_zero :
+    cosliceEdgewiseCollapse.{u} ⦋0⦌ =
+      (joinIso (stdSimplex.opIso ⦋0⦌) (Iso.refl (Δ[0] : SSet.{u}))).hom
+
+lemma edgewiseWeightIso_zero_inv_comp_cosliceCollapse :
+    (edgewiseWeightIso.{u} 0).inv ≫ cosliceEdgewiseCollapse ⦋0⦌ =
+      (joinStdSimplexIso 0 0).inv
+
+lemma cosliceTwistedHomMap_vertex_edge_arrow {C : SSet.{u}} {x y : C _⦋0⦌}
+    (v : (vertexFiber (sliceUnderProjection (yonedaEquiv.symm x)) y) _⦋0⦌) :
+    Arrow.mk (HomotopyCategory.homMk (twistedArrowVertexEdge
+      (((cosliceTwistedHomMap x y).app (Opposite.op ⦋0⦌) v).val))) =
+      Arrow.mk (HomotopyCategory.homMk (cosliceFiberVertexToEdge v))
+```
+
+### 280.2 検収と残り
+
+新規一本の対象ビルド347と、既存の次の入力cosliceFiberVertexIsoOfHomEqの定義元CosliceFiberHomClassのビルドは成功（依存を含む2,268 jobs）。--class impl --wait 3600、一枚の整理券、gtimeout 1700秒で対象ビルドと小監査を行い、終了コード0。小監査は237モジュール・1,629宣言、標準三公理propext・Classical.choice・Quot.soundのみ、sorryAx・追加公理なし。新規一本68行・公開三補題。自レーン233本・15,921行（外枠まで6,079行）、自レーン実環境1,622宣言。main a4388efc9のEInfinity/3,745ファイル・13,373個の名前と自レーン599ファイル・1,901個の名前を照合し、異なるファイル間の重複0、内部も0。git diff --check通過。証跡は /private/tmp/isw2-build347.log、isw2-validation347.json、isw2-declaration-collision-scan347.json。元のnative fiber射の弱同値性、R03hの全interval族、R03dの全関手同型、3b-4aはまだ未完。
+
+## 281. R03d内の点の比較の中間の定理R03i（型と見込み、2026-11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 25（うち追加 13）。
+
+### 281.1 追加する型
+
+指示書§19の枠で、R01〜R03の同じまとまりの中間の定理としてR03iを足す。§277〜279で示した元の単位の辺の類を、元のtwisted-arrowの同じ両端固定のHom空間の点の同型へ戻すために使う。見込みは450〜950行（既存構成の法則・証明の分割・native単位への適用を含む）、1,500行以内。既存のcosliceFiberVertexIsoOfHomEqの判定を、元のcosliceTwistedHomMapの同じ比較と同じ単位三角形で移すもので、⑤aの欄の型には触れない。
+
+```lean
+theorem nonempty_twistedArrowHomSpace_vertexIso_of_arrow_eq
+    {C : SSet.{u}} [Quasicategory C] {x y : C _⦋0⦌}
+    {v w : (twistedArrowHomSpace x y) _⦋0⦌}
+    (h : Arrow.mk (HomotopyCategory.homMk (twistedArrowVertexEdge v.val)) =
+      Arrow.mk (HomotopyCategory.homMk (twistedArrowVertexEdge w.val))) :
+    Nonempty (VertexIso v w)
+```
+
+### 281.2 証明の順序
+
+1. 元のfiber内の辺を元のtwisted-arrow全空間へ含めると、左右射影は元の底の頂点の恒等射の類になることを、包含後の厳密な定値の等式で示す。
+2. 既存のtwistedArrowHom_compositionを同じ辺へ適用し、左右の恒等射を相殺する。これにより同じfiber内のVertexIsoで辺のArrowの類が変わらないことが分かる。
+3. 既存のcosliceTwistedHomMap_isQCatEquivalenceの同じ指定逆で元の二点を戻す。元のinvHomIsoの成分と2を使い、§280の辺の式を通して、戻した二つのcoslice点の元の矢印の類を一致させる。
+4. 既存のcosliceFiberVertexIsoOfHomEqを使い、その同じ同型を元のcosliceTwistedHomMapで写す。元のinvHomIsoの二つの成分で元の二点へ戻す。
+
+ここまでが同じ点の同型の中間定理であり、それだけでR03dの全関手同型を主張しない。元の全straightening・指定単位・全パラメータの同じ変換への照合、R03hの全interval族、R03d以下の残りは維持する。
+
+### 281.3 分割した法則の型と個別検査
+
+/private/tmp/isw2-fiber-edge-constant.leanの五つの主張は個別検査5で終了コード0、出力なし。最初の四つは元の包含・射影・合成・恒等の法則の分割で、一覧のIDには数えない。最後の一つが上に追加したR03iそのもの。以下の新規四本へ分け、対象ビルド348と小監査で本体を確認する。いずれも200行未満、計算上限は変更していない。
+
+#### VertexFiberEdgeProjectedArrow（40行）
+
+```lean
+lemma vertexFiber_edge_projected_arrow {E B D : SSet.{u}} (p : E ⟶ B) (g : B ⟶ D)
+    {b : B _⦋0⦌} {v w : (vertexFiber p b) _⦋0⦌} (e : SSet.Edge v w) :
+    Arrow.mk (HomotopyCategory.homMk ((e.map (vertexFiberι p b)).map (p ≫ g))) =
+      Arrow.mk (𝟙 (HomotopyCategory.mk (g.app (Opposite.op ⦋0⦌) b)))
+```
+
+#### ArrowMiddleIdentity（37行）
+
+```lean
+lemma arrow_middle_eq_of_outer_identity_arrows {D : Type u} [Category.{v} D]
+    {q x y z x₀ y₀ : D} (p : q ⟶ x) (a : x ⟶ y) (r : y ⟶ z) (b : q ⟶ z)
+    (hp : Arrow.mk p = Arrow.mk (𝟙 x₀)) (hr : Arrow.mk r = Arrow.mk (𝟙 y₀))
+    (h : p ≫ a ≫ r = b) : Arrow.mk a = Arrow.mk b
+```
+
+#### TwistedHomVertexEdgeClasses（70行）
+
+```lean
+lemma twistedArrowHomSpace_edge_arrow_eq {C : SSet.{u}} [Quasicategory C]
+    {x y : C _⦋0⦌} {v w : (twistedArrowHomSpace x y) _⦋0⦌}
+    (e : SSet.Edge v w) :
+    Arrow.mk (HomotopyCategory.homMk (twistedArrowVertexEdge v.val)) =
+      Arrow.mk (HomotopyCategory.homMk (twistedArrowVertexEdge w.val))
+
+lemma twistedArrowHomSpace_vertexIso_arrow_eq {C : SSet.{u}} [Quasicategory C]
+    {x y : C _⦋0⦌} {v w : (twistedArrowHomSpace x y) _⦋0⦌}
+    (e : VertexIso v w) :
+    Arrow.mk (HomotopyCategory.homMk (twistedArrowVertexEdge v.val)) =
+      Arrow.mk (HomotopyCategory.homMk (twistedArrowVertexEdge w.val))
+```
+
+#### TwistedHomVertexIsoOfArrowEq（55行）
+
+```lean
+lemma nonempty_twistedArrowHomSpace_vertexIso_of_arrow_eq {C : SSet.{u}} [Quasicategory C]
+    {x y : C _⦋0⦌} {v w : (twistedArrowHomSpace x y) _⦋0⦌}
+    (h : Arrow.mk (HomotopyCategory.homMk (twistedArrowVertexEdge v.val)) =
+      Arrow.mk (HomotopyCategory.homMk (twistedArrowVertexEdge w.val))) :
+    Nonempty (VertexIso v w)
+```
+
+### 281.4 R03iの検収
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+新規四本202行の対象ビルド349は成功（依存を含む2,683 jobs）。初回348は新規ファイルの補助補題の名前空間が一つ不足して停止し、同じ新規ファイルで明示して再実行した。--class impl --wait 3600、一枚の整理券、gtimeout 1700秒。小監査は241モジュール・1,634宣言、propext・Classical.choice・Quot.soundのみ、sorryAx・追加公理なし。自レーン累計237本・16,123行（外枠まで5,877行）、自レーン実環境1,627宣言。main a4388efc9のEInfinity/3,745ファイル・13,373個の名前と、自レーン603ファイル・1,906個の名前を照合し、異なるファイル間の重複0、内部も0。名前空間のopenの追記で宣言名は変えていない。git diff --check通過。証跡は /private/tmp/isw2-build349.log、isw2-validation349.json、isw2-declaration-collision-scan349.json。既存のLean・⑤aのファイル・公式入口・公式監査には変更なし。
+
+R03iの追加した型は本体のnonempty_twistedArrowHomSpace_vertexIso_of_arrow_eqとして閉じたため、済みを一つ増やした。今回の四本202行は、R03iの見込み450〜950行のうち一般の判定の部分。§280の68行を含めた関連する前提計算は270行、元のnative単位点への適用はこの次に行う。この二点を同じHom空間で結べる判定は、まだ全パラメータの同じ変換の一致やnative fiber射自身の弱同値性を証明するものではない。R03h・R03d・3b-4aは未完のまま続ける。
+
+## 282. 元のnative単位点と、元の恒等点の同じHom空間での同型（2026-11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+### 282.1 型と範囲
+
+§280の零次元の式はfcf587ecd、R03iと既存の四法則は078318c2bに保存した。次に元のnative fiber射の単位点を、strictBETotJointNativeHomInput_model_vertexの同じ底の等式だけで移し、R03iを適用する。比較先は既存のtwistedArrowSourceIdentityそのものを、既存のtwistedArrowSourceFiberIsoで制限した点であり、別の恒等点を選び直していない。
+
+以下はR03iへの適用と既存の係数移送・制限・単位の法則の分割で、新しい数学のIDは追加しない。個別検査 /private/tmp/isw2-native-unit-points.lean は3回目で終了コード0、出力なし。最初の試みで定義上の一致とした箇所は、元のtwistedArrowSourceFiberIso_ιによる厳密な式へ直した。計算上限は変更していない。
+
+#### TwistedHomIdentityPoint（68行）
+
+```lean
+def twistedArrowHomSpaceIdentityPoint {C : SSet.{u}} (x : C _⦋0⦌) :
+    (twistedArrowHomSpace x x) _⦋0⦌
+
+lemma twistedArrowHomSpaceIdentityPoint_value {C : SSet.{u}} (x : C _⦋0⦌) :
+    (twistedArrowHomSpaceIdentityPoint x).val = SSet.const x
+
+lemma twistedArrowVertexEdge_const_arrow {C : SSet.{u}} (x : C _⦋0⦌) :
+    Arrow.mk (HomotopyCategory.homMk (twistedArrowVertexEdge (SSet.const x))) =
+      Arrow.mk (𝟙 (HomotopyCategory.mk x))
+
+lemma twistedArrowHomSpaceIdentityPoint_arrow {C : SSet.{u}} (x : C _⦋0⦌) :
+    Arrow.mk (HomotopyCategory.homMk (twistedArrowVertexEdge (twistedArrowHomSpaceIdentityPoint x).val)) =
+      Arrow.mk (𝟙 (HomotopyCategory.mk x))
+```
+
+#### StrictDiagramTotJointNativeUnitPoint（92行）
+
+```lean
+def strictBETotJointNativeUnitFiberIso (X : (operad A).Algebra) :
+    vertexFiber (twistedArrowProjection (CAlg_R A))
+      ((strictBETotJointNativeHomInput A).app (Opposite.op ⦋0⦌)
+        (nerveVertex (strictBETotJointUnitIndex A X))) ≅
+      twistedArrowHomSpace
+        ((strictBETotModelSource A).app (Opposite.op ⦋0⦌)
+          (nerveVertex (modelRelativeObject (operad A).Algebra X)))
+        ((strictBETotModelSource A).app (Opposite.op ⦋0⦌)
+          (nerveVertex (modelRelativeObject (operad A).Algebra X)))
+
+def strictBETotJointNativeUnitPoint (X : (operad A).Algebra) :
+    (twistedArrowHomSpace
+      ((strictBETotModelSource A).app (Opposite.op ⦋0⦌)
+        (nerveVertex (modelRelativeObject (operad A).Algebra X)))
+      ((strictBETotModelSource A).app (Opposite.op ⦋0⦌)
+        (nerveVertex (modelRelativeObject (operad A).Algebra X)))) _⦋0⦌
+
+lemma strictBETotJointNativeUnitPoint_value (X : (operad A).Algebra) :
+    (strictBETotJointNativeUnitPoint A X).val =
+      ((strictBETotJointSourceNativeTwistedFiberMap A (strictBETotJointUnitIndex A X)).app
+        (Opposite.op ⦋0⦌) (nerveVertex (strictBETotJointSourceNativeUnitFiberElement A X))).val
+
+lemma strictBETotJointNativeUnitPoint_identityIso (X : (operad A).Algebra) :
+    Nonempty (VertexIso (strictBETotJointNativeUnitPoint A X)
+      (twistedArrowHomSpaceIdentityPoint ((strictBETotModelSource A).app (Opposite.op ⦋0⦌)
+        (nerveVertex (modelRelativeObject (operad A).Algebra X)))))
+```
+
+係数移送の値のprivate補題も型を記録する（同じhで場合分けする既存の等式の係数移送）。
+
+```lean
+private lemma jointNativeUnitPointTransport_value {E B : SSet.{u}} (p : E ⟶ B)
+    {b b' : B _⦋0⦌} (h : b = b') (n : SimplexCategoryᵒᵖ)
+    (v : (vertexFiber p b).obj n) :
+    ((eqToHom (congrArg (vertexFiber p) h)).app n v).val = v.val
+```
+
+### 282.2 検収と残り
+
+新規二本160行の対象ビルド350は成功（依存を含む12,307 jobs）。--class impl --wait 3600、一枚の整理券、gtimeout 1700秒で対象ビルドと小監査を行い、終了コード0。小監査は243モジュール・1,646宣言、propext・Classical.choice・Quot.soundのみ、sorryAx・追加公理なし。公開定義三つ・公開補題五つ・private補題一つ・局所instance二つ。自レーン累計239本・16,283行（外枠まで5,717行）、自レーン実環境1,639宣言。main a4388efc9のEInfinity/3,745ファイル・13,373個の名前と、自レーン605ファイル・1,914個の名前を照合し、異なるファイル間の重複0、内部も0。git diff --check通過。証跡は /private/tmp/isw2-build350.log、isw2-validation350.json、isw2-declaration-collision-scan350.json。既存Lean・⑤aのファイル・公式入口・公式監査は変更していない。コードは87305debaに保存した。元の単位点の同じHom空間での同型までは本体で検証したが、この同型を元の全straighteningの評価と指定単位を通して全変換の一致へ接続する部分はまだ未完。R03h・R03d・3b-4aは未完のまま。
+
+R03iの見込み450〜950行に対し、一般の判定202行・元のcosliceの零次元の式68行・元のnative単位点への適用160行の実測は計430行（下端より20行少ない）。この範囲の中間定理は閉じた。元の単位条件を満たす全空間の射を同じfiberへ戻す§279の95行は前回の検証済みで、この差分へ重ねて数えていない。
