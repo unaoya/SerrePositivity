@@ -1257,3 +1257,22 @@ G3 は完成。G4 は F8 の同じスカラー・実際の構造層の Frobenius
 今回1モジュール74行＋入口1行。新規97モジュール本体6,407行・入口込み6,504行。既存追加25行を含む外枠計数は本体6,432行・入口込み6,529行。新規小監査累計663宣言、既存15宣言は別計上。一つの有限アフィン被覆から同じ nerve の被覆性・アフィン性・全ての射での包含を供給した。これを Frobenius の実際の係数の図式へ渡す単位・合成の法則は下書きで検証中。閉中心との底変換・二重 Čech・Noether 帰納と G5 は残る。外枠16,000行は不変。停止点2g-2は未完。
 
 一覧：済み1／全体3（うち追加0）。
+
+
+同じ nerve の係数図式の法則の束（着手前、G4 の既存の二重 Čech の係数の整合性の内数、90〜180行）：`schemePerfectCechTupleComplex f U p hp h n` は同じタプル被覆と実際の構造層の Frobenius 係数の既存の全タプル複体。`schemePerfectCechTupleMap … a` は幾何的 nerve の a.op の実際の refinedPullback とタプルの添字の前合成。`schemePerfectCechTupleMap_id` と `…_comp` は直前の単位・異なる添字の合成則をこの値へ渡す。`schemePerfectCechTupleFunctor` はこれら同じ値と射を SimplexCategory 上の既存の複体の関手にまとめる。h は各 nerve 項の全ての開での p の零化の証人を保持する引数であり、最終の入口で基底の標数から供給する。幾何的 nerve の反変な実際の切断の図式であり、各次数の無関係な H の同型を並べたものではない。まだ閉中心との底変換や B1 の二重 Čech の適用までは含まない。
+
+
+単位則を実際の nerve の単位へ渡す分割（着手前、同じ単位則の内数、10〜25行）：`schemeStructurePerfectCechRefinedPullbackMap_eq_id_of_eq f hf p hp hX U ρ hρ hc` は f:X→X、hf:f=𝟙X、ρ:ι→ι、hρ:ρ=id から、同じ refinedPullback が恒等であること。既存の単位則を等式で移すだけで、新しい完全性は主張しない。nerve.map_id と添字の単位を個別に渡し、大きな実際の nerve と複体の定義を同時に展開しない。
+
+
+## G4：異なる添字の引き戻しの合成と、実際の単位への移送
+
+`SchemePerfectCechRefinedComposition`（93行）：`fullCechComplex_hom_ext_index` は異なる添字型の全タプル複体の二つの射を target の各タプルで検査する外延性。`schemeStructurePerfectCechRefinedPullbackMap_compIndex_apply` は異なる三つの添字型と二つの添字写像 ρ,σ について、二段の実際の引き戻しと合成射・添字 ρ∘σ の引き戻しの各タプルでの一致。`schemeStructurePerfectCechRefinedPullbackMap_compIndex` は同じ実際の余鎖写像の一致。既存の同じ添字の宣言の名前・型は変えていない。
+
+`SchemePerfectCechRefinedIdentity`（59行）：`schemeStructurePerfectCechRefinedPullbackMap_id` は同じ被覆と恒等射・恒等添字の refinedPullback が複体の恒等射に等しいこと。`schemeStructurePerfectCechRefinedPullbackMap_eq_id_of_eq` は実際の射 f=𝟙、添字写像 ρ=id という二つの等式から同じ単位則を渡す。nerve の大きな定義を同時に展開せず、実際の map_id と添字の恒等性を分けて係数図式へ渡す。
+
+単独検証、本体とのソース完全一致、対象と入口のビルド5,183・5,184ジョブ成功、小監査4・2宣言（計6、所有元の全宣言）・標準三公理のみ、終了状態0。ログ `2g-perfect-cech-refined-composition-check-3.log`・`2g-perfect-cech-refined-composition-native.log`、`2g-perfect-cech-refined-identity-check-6.log`・`2g-perfect-cech-refined-identity-native-2.log`、`2g-perfect-cech-refined-laws-audit.log`。局所的な backward.isDefEq.respectTransparency false を使用、既定の資源制限。単位則の change が冗長という linter 警告がある。追加公理・sorry・既存の型変更・200行超の宣言なし。共有鍵 --class impl --wait 3600、待ちは一つ、ビルドと監査は別枠。root・下流全ビルド・全体監査なし。
+
+今回2モジュール152行＋入口2行。新規99モジュール本体6,559行・入口込み6,658行。既存追加25行を含む外枠計数は本体6,584行・入口込み6,683行。新規小監査累計669宣言、既存15宣言は別計上。これらの法則を使った同じタプル被覆の実際の係数の関手は単独検証に成功したが、まだ本体ビルド・監査前でこの束には含めない。残る閉中心の底変換・二重 Čech・Noether 帰納と G5 は未完。外枠16,000行は不変。
+
+一覧：済み1／全体3（うち追加0）。
