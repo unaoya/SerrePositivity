@@ -15210,3 +15210,117 @@ theorem strictBETotJointSourceRoofNormalizedPinchedComparison_weak
 - SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRoofEndpointTransport
 
 元のnative fiber射との全単体の比較と、その実射の弱同値性はなお残る。次は元のnative Hom入力の頂点を元のモデル源の二頂点と厳密に合わせ、twisted-arrow fiberの比較の両端を明示する。
+
+## 257. 同じnative入力の端点と既存twisted・pinched比較の単位則（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 23（うち追加 11）。R03dは未完了。
+
+元の固定始域則を零単体へ評価して、元のnative Hom入力が元の二つのCAlg源の頂点の対であることを示す。nerveMapの頂点、直積の射影則、零次の定値則を型を分けて適用する。一般のtwisted Homからpinched Homへの比較は、既存のcoslice比較の同じ指定逆とcosliceの右写像空間比較の合成とする。反転したtwisted Homは同じedgewise二射影の同じ指定逆で戻す。元のcoslice・edgewise比較との二つの単位三角形は全FunctorIsoとして保持する。既存比較の合成・単位・係数移送の法則であり、新しい数学の項目は足さない。見込み二本150〜220行。対象ビルド・監査の前にはコードをコミットしない。
+
+既存RoofPrefixFamilyTriangle.native_family_eq_roof_arrowは一般の同じ宇宙の相対圏で、全roof族の区間評価を同じaugmentationの逆と評価の合成と同定する。両端のbifibrancyを追加せず使える。この全族則を、同じfiber要素圏へ運んだroof族に適用し、元の補正pairingが保存する同じ底のpathと合わせるのが次の接続点。いまの二本だけから元のnative射の弱同値性は結論しない。
+
+BEの共通入力は `(A : Type u) [CommRing A]`。一般版は `{C : SSet.{u}} [Quasicategory C] (x y : C _⦋0⦌)`。
+
+#### StrictDiagramTotJointHomInputVertex（73行）
+
+```lean
+theorem strictBETotJointNativeHomInput_vertex (P : strictBETotJointHomIndex A) :
+    (strictBETotJointNativeHomInput A).app (Opposite.op ⦋0⦌) (nerveVertex P) =
+      (SSet.opObjEquiv.symm ((algebraCAlgSource A).app (Opposite.op ⦋0⦌)
+        (nerveVertex (AsSmall.down.obj P).1.unop)),
+       (algebraCAlgSource A).app (Opposite.op ⦋0⦌)
+        (nerveVertex (AsSmall.down.obj P).2))
+
+theorem strictBETotJointNativeHomInput_model_vertex (P : strictBETotJointHomIndex A) :
+    (strictBETotJointNativeHomInput A).app (Opposite.op ⦋0⦌) (nerveVertex P) =
+      (SSet.opObjEquiv.symm ((strictBETotModelSource A).app (Opposite.op ⦋0⦌)
+        (nerveVertex (SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject
+          (operad A).Algebra (AsSmall.down.obj P).1.unop))),
+       (strictBETotModelSource A).app (Opposite.op ⦋0⦌)
+        (nerveVertex (SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject
+          (operad A).Algebra (AsSmall.down.obj P).2)))
+```
+
+#### TwistedHomPinchedComparison（73行）
+
+```lean
+def twistedArrowHomPinchedEquivalence :
+    QCatEquivalence (twistedArrowHomSpace x y) (Basic.pinchedHom x y)
+
+def twistedArrowHomOppositePinchedEquivalence :
+    QCatEquivalence (twistedArrowHomSpace x y).op (Basic.pinchedHom x y)
+
+theorem twistedArrowHomOppositePinchedEquivalence_hom :
+    (twistedArrowHomOppositePinchedEquivalence x y).hom =
+      (isQCatEquivalence_of_trivialKanFibration
+        (edgewiseLeft (twistedArrowHomSpace x y))).choose.inv ≫
+      edgewiseRight (twistedArrowHomSpace x y) ≫
+      (cosliceTwistedHomMap_isQCatEquivalence x y).choose.inv ≫
+      (cosliceFiberRightMappingEquivalence x y).hom
+
+def twistedArrowHomPinchedEquivalence_coslice :
+    FunctorIso (cosliceTwistedHomMap x y ≫ (twistedArrowHomPinchedEquivalence x y).hom)
+      (cosliceFiberRightMappingEquivalence x y).hom
+
+def twistedArrowHomOppositePinchedEquivalence_edgewise :
+    FunctorIso
+      (edgewiseLeft (twistedArrowHomSpace x y) ≫
+        (twistedArrowHomOppositePinchedEquivalence x y).hom)
+      (edgewiseRight (twistedArrowHomSpace x y) ≫
+        (twistedArrowHomPinchedEquivalence x y).hom)
+```
+
+## 258. 元のnative実射を元のroofと同じpinched Homへ運ぶ（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 23（うち追加 11）。R03dは未完了。
+
+§257の端点の等式で元のnative twisted fiberの反転を元の両端のtwisted Homに合わせ、§257の一般比較を合成する。その同値に元のstrictBETotJointSourceNativeOppositeFiberMapを合成した実射を定義する。新しい弱同値性の前提を置かず、この実射の弱同値性と元のstrictBETotJointSourceNativeFiberMapの弱同値性が同値であることを、既存の反転則と比較の弱同値性の消去則で示す。見込み80〜130行に対し81行の下書き。既存の合成・係数移送・消去則の分割で、項目数は増やさない。
+
+個別の一時結合検査26130は終了0。対象ビルド・小監査はまだなのでコミットしない。323は端点のモデル源表示に既存BEのモデル構造をlocal instanceで明示する前のソースを読み、失敗した。固有名のlocal instanceを追加し、元のジョブの終了を確認して324を一枚の整理券で実行中。計算上限は変更していない。
+
+共通入力は `(A : Type u) [CommRing A]`。
+
+#### StrictDiagramTotJointSourceNativePinched（81行）
+
+```lean
+def strictBETotJointNativeFiberPinchedEquivalence (P : strictBETotJointHomIndex A) :
+    QCatEquivalence
+      (vertexFiber (twistedArrowProjection (CAlg_R A))
+        ((strictBETotJointNativeHomInput A).app (Opposite.op ⦋0⦌) (nerveVertex P))).op
+      (Basic.pinchedHom
+        ((strictBETotModelSource A).app (Opposite.op ⦋0⦌)
+          (nerveVertex (((strictBETotJointHomSourceIndex A).obj P).unop)))
+        ((strictBETotModelSource A).app (Opposite.op ⦋0⦌)
+          (nerveVertex ((strictBETotJointHomTargetIndex A).obj P))))
+
+def strictBETotJointSourceNativePinchedMap (P : strictBETotJointHomIndex A) :
+    nerve ((simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P)ᵒᵖ ⟶
+      Basic.pinchedHom
+        ((strictBETotModelSource A).app (Opposite.op ⦋0⦌)
+          (nerveVertex (((strictBETotJointHomSourceIndex A).obj P).unop)))
+        ((strictBETotModelSource A).app (Opposite.op ⦋0⦌)
+          (nerveVertex ((strictBETotJointHomTargetIndex A).obj P)))
+
+theorem strictBETotJointSourceNativePinchedMap_weak_iff_original
+    (P : strictBETotJointHomIndex A) :
+    IsWeakHomotopyEquivalence (strictBETotJointSourceNativePinchedMap A P) ↔
+      IsWeakHomotopyEquivalence (strictBETotJointSourceNativeFiberMap A P)
+```
+
+この実射とstrictBETotJointSourceRoofNormalizedPinchedComparisonは同じ始域・標的を持つ。残る中核は、元の補正pairingの指定された底のpathと、元のroof全族のaugmentationを、全パラメータの区間評価で照合すること。既存intervalFamilyHom_eq_imp_homotopyは任意のパラメータに対してこの全評価の等式からホモトピーを与えるので、π₀のみへの弱化を避けられる。現時点ではその等式を示していない。
+
+## 259. 元のnative射を同じpinched標的へ運ぶ既存則の検収（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 23（うち追加 11）。R03dは未完了。
+
+324の対象ビルド10,628 jobs・小監査199モジュール1,409宣言が成功（実ハンドル31286・終了0）。325は元のnative実射の対象ビルド12,248 jobs・小監査200モジュール1,418宣言が成功（実ハンドル30857・終了0）。いずれも標準三公理のみ、鍵返却済み。--class impl --wait 3600、1700秒guardで各一枚の整理券を使い、前のジョブの終了を確認して次へ進めた。既存補題の定義元と二つの互換入口の宣言0の検査も維持。今回の全新規宣言名についてmain SerrePositivity全体とのgit grepで重複がないことを確認した。
+
+今回三本229行（端点75、一般比較と全単位三角形73、同じnative実射81）。前二本の見込み150〜220行に対し148行、第三の見込み80〜130行に対し81行。検証済み196本・12,815行／外枠22,000行、自分の宣言は1,411。sorry・独自公理0、計算上限変更なし、[ModelCategory SSet]なし。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・公式入口・公式監査・mainを変更していない。
+
+登録候補：
+
+- SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointHomInputVertex
+- SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.TwistedHomPinchedComparison
+- SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceNativePinched
+
+元の実射と基準roof射の始域・標的が揃い、元の実射の弱同値性を厳密に反映する比較まで検証した。両実射の全族の同定自体は未証明であり、R03d・3b-4aの完了とはしない。次の最小の主張は、両実射を区間写像空間へ送ったintervalFamilyHomの等式。既存RoofPrefixFamilyTriangleの全roof族の式と、元の補正pairingの同じ底のpathとの照合が必要である。

@@ -191,5 +191,8 @@
   "SerrePositivity.EInfinity.SimplicialLocalization.KanHammockPinchedSimplexValue",
   "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRoofPinched",
   "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRoofNativePinched",
-  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRoofEndpointTransport"
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRoofEndpointTransport",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointHomInputVertex",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.TwistedHomPinchedComparison",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceNativePinched"
 ]
