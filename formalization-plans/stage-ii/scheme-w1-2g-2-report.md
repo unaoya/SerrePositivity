@@ -591,3 +591,18 @@ S03〜S04 の正規化の自然性の法則の分割（着手前、同じ自然�
 2g-2 本体2,223行・入口込み2,259行、小監査241宣言・標準三公理のみ。この区切りまでの数学の束は5モジュール403行＋入口5行、小監査53宣言。S03 は実際のチャートの代数同型に到達したが、重なりの自然性は未完。S04 の大域の貼り合わせと有限冪・任意の係数移送、G4〜G5 も未完。見込み約5,500〜12,000行・外枠16,000行は不変。root SerrePositivity・下流全ビルド・全体監査は実行していない。停止点2g-2ではない。
 
 一覧：済み0／全体3（うち追加0）。
+
+
+## G3・S03〜S04：任意の係数移送の標準開と正規化の自然性
+
+`HomogeneousDegreeOneBaseChange`（49行）：`degreeOneDehomogenizationIdeal_baseChange` は延長した (f−1) のイデアルが (1⊗f−1) になる式。`homogeneousDegreeOneBaseChangeEquiv` は `B ⊗[R] Away G f` と係数移送後の標準開との実際の B 上の代数同型。B の flat 性・Noether 性は不要。
+
+`HomogeneousDegreeOneNormalizationNaturality`（45行）：`homogeneousDegreeOneNormalize_naturality` は任意の graded な環写像と正規化の可換性。二つの grading の係数環と宇宙は別でもよい。Mathlib の Away.map_mk と直和の環の外延性に渡す。
+
+二つの保存した下書きから再構成した一つの Lean 検証ファイルとの一致を確認し、単独検証、各本体と直接 importer のビルド5,107ジョブ、小監査14宣言（13・1）・標準三公理のみ、終了状態0。最初の検証の恒等同型の引数と graded な環写像の coercion の照合を明示して解決した。ログ `2g-standard-chart-scalar-laws-check-2.log`・`2g-standard-chart-scalar-laws-native.log`・`2g-standard-chart-scalar-laws-audit.log`。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。検証・ビルド・監査は共有鍵 --class impl --wait 3600、待ちは一つ。
+
+今回2モジュール94行＋入口2行。2g-2 本体2,317行・入口込み2,355行、小監査255宣言・標準三公理のみ。任意の係数移送のチャートの環同型まで到達したが、その射の比較と Proj の大域の pullback はまだ未証明。S03 の重なりの自然性、S04 の貼り合わせと有限冪、G4〜G5 も未完。見込み約5,500〜12,000行・外枠16,000行は不変。停止点2g-2ではない。
+
+一覧：済み0／全体3（うち追加0）。
+
+S04 の係数移送の同型の式の分割（着手前、係数移送の内数、30〜70行）：`homogeneousDegreeOneBaseChangeEquiv_tmul_normalize` は b⊗normalize x の像が係数移送後の b⊗x の正規化になる式。商の同型の元上の式とテンソル積・商の同型の純テンソル上の式を用いる。新たな平坦性を仮定しない。
