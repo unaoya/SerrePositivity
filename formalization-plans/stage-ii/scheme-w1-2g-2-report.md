@@ -1366,3 +1366,20 @@ G3 は完成。G4 は F8 の同じスカラー・実際の構造層の Frobenius
 今回3モジュール154行＋入口3行。新規107モジュール本体7,033行・入口込み7,140行。既存追加25行を含む外枠計数は本体7,058行・入口込み7,165行。新規小監査累計703宣言、既存15宣言は別計上。次の既存の single からの射と増大余単体図式は単独検証に成功したが、本体ビルド・監査前なのでこの束には含めない。B1 の二重 Čech・Noether 帰納と G5 は未完、外枠16,000行は不変。
 
 一覧：済み1／全体3（うち追加0）。
+
+
+基底環の射に沿う同じ増大写像の係数移送（着手前、既存の自然性・スカラーの合成則の内数、70〜145行）：`schemeCechNerveMapScalarHom_naturality f g F q hq n` は f:X→SpecS、g:Y→SpecR、F:Arrow.mk f→Arrow.mk g、hq:F.right=Spec.map q に対し、実際の mapCechNerve の n 次の大域スカラーの可換性。`schemePerfectCechTuplePullback_augmentation` は、その同じ実際の引き戻しの零次と R の増大写像の合成が、S の増大写像と実際の Frobenius 順極限の q の写像の合成に等しいこと。既存の refinedPullback の増大写像の自然性とスカラーの合成則を使い、閉中心への適用では q を同じ商の写像とする。基底の二つの標数の証人を保持し、Cartesian 性・平坦性・完全性を仮定しない。
+
+
+増大軸を保つ同じ係数の引き戻し（着手前、既存の single・増大余単体の射の自然性の内数、70〜160行）：`schemePerfectCechTupleAugmentationHom_pullback` は R と S の二つの既存の single からの増大写像について、同じ実際の nerve の引き戻しと single に渡した Frobenius の q の写像が可換であること。零次成分の外延性と上の線形な係数移送を使う。`schemePerfectCechTupleAugmentedPullback` は left に既存の single.map の q、right に検証済みの係数関手の自然変換を持つ既存の CosimplicialObject.Augmented の射。w は同じ可換性の式。完全性や別の図式の同型を仮定しない。
+
+
+## G4：同じ増大写像を複体の増大余単体図式へ渡す
+
+`SchemePerfectCechTupleAugmented`（78行）の宣言：`schemePerfectCechTupleAugmentationHom` は既存の HomologicalComplex.mkHomFromSingle に同じ増大写像とサイクル性を渡した射。`…_f_zero` は同じ零次成分。`…_naturality` は同じ全ての nerve の射への自然性。`schemePerfectCechTupleAugmented` は左辺を同じ R の Frobenius 順極限の次数零 single、右辺を検証済みの係数関手とする既存の CosimplicialObject.Augmented の値。新しい single や二重複体の判定法は作っていない。
+
+単独検証、本体とのソース完全一致、対象と入口のビルド5,193ジョブ成功、小監査11宣言（所有元の非公開・生成宣言を含む）・標準三公理のみ、終了状態0。ログ `2g-perfect-cech-tuple-augmented-check-2.log`・`2g-perfect-cech-tuple-augmented-native.log`・`2g-perfect-cech-tuple-augmented-audit.log`。局所的な backward.isDefEq.respectTransparency false を使用、既定の資源制限。追加公理・sorry・既存の型変更・200行超の宣言なし。共有鍵 --class impl --wait 3600、待ちは一つ、対象ビルドと監査は別枠。root・下流全ビルド・全体監査なし。
+
+今回1モジュール78行＋入口1行。新規108モジュール本体7,111行・入口込み7,219行。既存追加25行を含む外枠計数は本体7,136行・入口込み7,244行。新規小監査累計714宣言、既存15宣言は別計上。基底環の射に沿う線形な増大写像の係数移送は単独検証に成功したが、本体ビルド・監査前なのでこの束には含めない。この増大余単体図式だけで B1 の二重図式の完全性や Noether 帰納を完成とせず、同じ基底・中心の増大軸の供給として扱う。G4・G5 は未完、外枠16,000行は不変。
+
+一覧：済み1／全体3（うち追加0）。
