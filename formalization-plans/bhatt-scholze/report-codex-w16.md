@@ -24199,3 +24199,177 @@ Totの九欄の承認は独立して保持するが、最後に確認したmain 
 今回は報告の紙のみ。Lean・界面・drafts・G10・他レーンを編集していない。
 mainの取り込み以外で検証済みコードの変更はなく、ビルド・監査・鍵の取得なし。
 紙の略記・検収義務をLeanの型検査済み定理や新しい証明済みの一覧IDとして数えない。
+
+
+## 416. §36からL23を再開：元の等化子の射影の法則（実装前の型）
+
+一覧：済み 24／全体 48（うち追加 4）
+
+mainの§36を取り込んだ（f4d8f178c）。May、M14外枠55,000行、約43,000行で途中報告。
+(a)の完備模型と全鎖primitiveは追わない。今回の三本は既存等化子の射影・自然性の法則で、
+L23の証明分割。L23の評価・復元自体を完了には数えない。各証明200行以内。
+(b′)はこの接続の区切りで紙に検収する。特に「像の外のxにdの冪を掛けると像へ入る」ことと、
+Cのd正則性からC/pのd冪ねじれを消せることは、別に根拠を確認する。
+
+```lean
+def bfProjection (A : Type u) [CommRing A] (X : CosimplicialAlgebra A) (q : ℕ) :
+  bfNormalizedObj A X ⟶ (convolutionAt A q q).obj X
+lemma bfProjection_compatible (A : Type u) [CommRing A] (X : CosimplicialAlgebra A)
+    {q r : ℕ} (α : (⦋q⦌ : SimplexCategory) ⟶ ⦋r⦌) :
+  bfProjection A X q ≫ (postAt A α).app X =
+    bfProjection A X r ≫ (preAt A α).app X
+lemma bfProjection_naturality (A : Type u) [CommRing A]
+    {X Y : CosimplicialAlgebra A} (f : X ⟶ Y) (q : ℕ) :
+  bfNormalizedMap A f ≫ bfProjection A Y q =
+    bfProjection A X q ≫ (convolutionAt A q q).map f
+```
+
+定義は元のequalizer.ιと元の積の射影の合成。整合性はequalizer.conditionを同じ単体射の
+Qの積射影で読み、自然性は同じPの全関手の自然性を用いる。
+元の公開宣言・モデル・指定射を変えず、別の等化子の対象に取り替えない。
+
+## 417. (b′)(i)：L41・L42・L44はrawなKで止める型へ（紙、§36）
+
+一覧：済み 24／全体 48（うち追加 4）
+
+§36に従い(a)の項別完備化・全鎖primitiveは追わない。
+L41・L42・L44の型を、完備化単位のπ上の全射を含まない次の役割に固定し直す。
+変更するのは未実装の紙の型であり、公開済みLean宣言の型や界面は変更しない。
+以下κ=EInfinityPrimeField p、HCA=ho(CAlg κ)、Π nは既存homotopyGroupsOnHo、
+P nはbarrattEcclesPowerOp0 p n。省略名は紙の略記で未型検査。
+
+```lean
+-- L41：群の余極限の普遍性そのもの。元の型を保持し、完備化の脚は混ぜない。
+filteredOperation_desc {I : Type u} [SmallCategory I] [IsFiltered I]
+    (D : I ⥤ AddCommGrpCat.{u}) (c : Cocone D) (hc : IsColimit c)
+    (P Q : c.pt ⟶ c.pt)
+    (h : ∀ i, c.ι.app i ≫ P = c.ι.app i ≫ Q) : P = Q
+
+-- L42：Frobeniusの塔のraw余極限の上の演算。
+raw_frobeniusTower_powerOp (D : ℕ ⥤ HCA) (f : D ⟶ D)
+    (c : Cocone D) (hc : IsColimit c) (n : ℤ)
+    (hπ : IsColimit ((Π n).mapCocone c))
+    (hP : ∀ i, (P n).app (D.obj i) = (Π n).map (f.app i)) :
+  (P n).app c.pt = (Π n).map (colimitEndomorphism c hc f)
+
+-- L44：同じstrict二重模型のambientな実現での比較。
+-- rawDoubleRealizationVertex Xは、prismCAlgCompletionを後置しない。
+a4_raw_realization_powerOp (X : SimplicialObject (CosimplicialRingAlgebra κ)) (n : ℤ) :
+  (P n).app (mk (rawDoubleRealizationVertex X)) =
+    (Π n).map (homMk (rawDoubleFrobeniusEdge X))
+```
+
+L44の実際の同じ実現・指定辺は③-bの実現の比較から受け取り、
+BF/Mayの有限計算L43/L43a/L43bの閉入力での比較を運ぶ。G10を作り直さない。
+L43bの全鎖版や完備totalへの延長を仮定・結論へ足さない。
+L41は型の数学は変わらず、L42/L44は「rawの対象・同じrawの辺」であることを明記した修正。
+L42のhπはactualなraw余極限に対して供給する義務であり、完備化後の余錐へ流用しない。
+
+これらからK=rawな塔の余極限をmod pしてκへ係数制限した対象について、
+同じshiftが可逆、P nがそれを誘導、P n=0 (n>0)によりK∈D^{≥0}を得る。
+零次のP⁰がp乗でshiftも可逆なのでH⁰(K)はperfect。
+その後は§415.1の主元導来完備化の列を使い、T_d(H⁰K)=0からLΛ_d K∈D^{≥0}へ進む。
+actualなdirectPerfectionValue/pとの同じ比較はDerivedGeneralから必要なものとして露出させ、
+この段で完備化した対象にP⁰=shiftを既に得たとはしない。
+
+## 418. (b′)(ii)の検収：単位の像をdの冪で尽くす主張は一般には成立しない
+
+一覧：済み 24／全体 48（うち追加 4）
+
+ここが今回の区切りで判明した(b′)の停止点である。
+自然性が与えるのはηの像の上のP⁰とφの一致であり、これは保持する。
+しかし「像の外の任意のxについて、あるd^n xが像に入る」は、
+完備化の定義やrawなH⁰のperfect性からは出ない。
+§357の反例に加え、**係数のbaseが既に完備・perfectでも**この推論が一般にはできないことを確認した。
+
+B₀をperfectな標数pのt進完備整域、0≠tを非単元とし、
+B=B₀[x^{1/p^∞}]、η:B→Bhatをordinary t進完備化の単位とする。
+この条件を持つB₀は、例えばFp[t^{1/p^∞}]のt進完備化で取れる。
+Frobeniusとその逆はt進位相に連続なのでperfect性を保ち、同じ元の級数表示でtは非零因子である。
+Bもperfectで、tにねじれがない。従ってこの離散Bの導来t完備化はordinaryなBhatである。
+
+Bhatには
+
+    y = Σ_{m≥0} t^m x^m
+
+がある。mod t^rでは有限多項式となるため実際に互換な元を定める。
+任意のnに対してt^n yのx^mの係数はt^{n+m}で非零。
+Bの各元は有限個のxの有理冪しか含まないので、t^n yはη(B)へ入らない。
+係数はB₀が完備なことにより取り出せ、ηの像との等式なら全ての係数が一致するはずなので矛盾する。
+従ってBhat/η(B)は一般にはt冪ねじれ加群ではない。
+
+さらにrawな塔の各項が既に完備である点も、この一般推論を救わない。
+S_nをB₀[x^{1/p^n}]のt進完備化、S=colim_n S_n（根の包含）とする。
+各S_nは完備で、Sはperfect。Frobeniusの逆は係数の逆Frobeniusと、次段へのp乗根で与えられる。
+これはS₀のFrobenius反復の余極限とも、係数を逆Frobeniusで読むことで同定できる。
+Shatの元y′=Σ_{m≥0}t^m x^{1/p^m}はmod t^rで有限和になるが、
+t^N y′はどの固定S_nにも入らない。各S_nのxの指数の分母はp^nで一様に抑えられる一方、
+この元では非零係数の指数の分母が無限に増えるためである。
+このSもtねじれなしで、その導来完備化はordinary完備化。
+従って「rawな対象が完備環のfiltered余極限」でも、冪を掛けて像へ入る性質は自動ではない。
+
+この二つの例はactualなprismatic Kを同定した反例ではない。
+またこの例ではFrobenius自体は連続延長できるので、Lemma8.4の結論への反例でもない。
+**完備化・perfect性・完備な係数baseだけから「dの冪で像へ入る」と導く段が無効**という点検である。
+actualなKについてこの段を使うなら、A4固有の別の定理が必要。
+自然性や完備化の反射をその定理の証明として扱わない。
+
+像がd進に稠密であることと、商がd冪ねじれであることは異なる。
+稠密性を使う別の推論にも、対象がordinaryに分離していることや実際の射の連続性が要る。
+ホモロジーが導来完備というだけで、それをordinary分離性として使わない。
+§415で残したT_d(H¹K)の部分が、単位の像の稠密性から自動的に処理されるわけでもない。
+
+## 419. d冪ねじれの消去とLemma2.34：H⁰上の正則性をmod pへ移してはいけない
+
+一覧：済み 24／全体 48（うち追加 4）
+
+仮にactualなxでd^n xが像へ入ることを別途証明できた場合でも、次のもう一段が残る。
+Dを比較する標数pの環、φ(d)=d^pとし、φとp乗が単位の像で一致すれば、
+
+    d^{pn}(φ(x)-x^p) = φ(d^n x)-(d^n x)^p = 0
+
+とは計算できる。しかしd冪ねじれであることだけではφ(x)-x^p=0にならない。
+必要なのは**その環Dでの**消去の根拠である。
+
+原典Lemma8.4の証明とLemma2.34を読み直すと、順序は
+
+    完備化後の指定φがmod pでFrobenius
+      → H⁰(Δ_perf)のpねじれなしと合わせてδ構造
+      → φが可逆なのでperfect δ構造
+      → Lemma2.34でdがH⁰(Δ_perf)上の非零因子
+
+である。Lemma2.34はmod pの環でdが非零因子と主張していない。
+出典：[BS Lemma2.34](https://people.mpim-bonn.mpg.de/scholze/prisms.pdf#page=21)、
+[同Lemma8.4](https://people.mpim-bonn.mpg.de/scholze/prisms.pdf#page=63)。
+
+本体のBhattScholze/Delta/Perfect/DistinguishedRegular.lean:98の
+`IsPerfect.distinguished_mul_injective`も、既にあるDeltaStructureとIsPerfectを仮定して
+元の環のd倍を単射とする型である。
+この定理でφ≡Frobenius mod pを先に示そうとすると、δ構造を作るための同じ合同を
+仮定へ戻してしまう。単にφが半線形な自己同型であることはこの仮定の代用ではない。
+
+またCがpねじれなし・p完備でdがC上正則でも、C/pのd冪ねじれは消えない。
+C=Z_p、d=pが既にその例である。標準のperfect δ構造でdはdistinguishedな非零因子だが、
+C/p=Fpではd=0であり、全ての元がdで殺される。
+このprismを除く仮定はA4にはなく、完備化の後でdを消せるとする一般の法則には使えない。
+
+C=H⁰(Δ_perf)、E₀=H⁰(Δ_perf/p)と書けばC/p→E₀は単射だが、同型とは限らない。
+pねじれなしはこの単射をdについての正則性へ強めない。
+E₀での差がd冪ねじれと分かるだけでも足りず、それをC/pで読める場合も上の問題が残る。
+reducedならd冪ねじれはdで殺されるという事実も、ねじれ自体が零という事実ではない。
+
+## 420. §36の(b′)の判定と停止
+
+一覧：済み 24／全体 48（うち追加 4）
+
+(b′)(i)のrawなKだけへの型の修正は§417に記録した。
+(b′)(ii)は、(1)actualな単位の像をdの冪で尽くすこと、
+(2)その後の差のd冪ねじれを、δ構造・Lemma2.34を循環して使わず消すこと、の二点が未解決。
+§418の一般の完備化では(1)が偽で、§419の元の環でのd正則性も(2)を与えない。
+この二点をA4固有の追加の定理で埋める根拠は、今回の検収では得られなかった。
+
+従って(b′)が閉じたとは報告せず、§36の4に従い検証済みの区切りを保存してM14のLeanを止める。
+これはcoherentの不可避性や原典の誤りの主張ではない。
+coherentかLemma8.4の引用か、またはactualなKについての別の補題を採るかは調整役とユーザーへ返す。
+(a)へは戻らず、外枠55,000行を別の許可へ読み替えない。
+Tot九欄の承認は独立して保持する。3b-4a完成の取り込みを確認できた場合は§36どおりそちらを優先する。
