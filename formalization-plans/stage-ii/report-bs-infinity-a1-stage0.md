@@ -188,3 +188,208 @@ lemma sieveSectionsDiagram_reindex (S : Sieve U) (F : Presheaf C E) :
 
 基礎・要素圏・この再添字の3本の再検証を同じworktreeの一枚の整理券で実行中。
 ログ `/tmp/is-w1/sheaf-condition/build-2.log`。元の旧E01の未検証4本は対象外。
+
+### 最大篩の終対象（未検証）
+
+一覧：済み 0／全体 8（うち追加 0、S7は後続）。
+
+```lean
+def topSieveIdentity (U : C) : sieveCategory (⊤ : Sieve U)
+def topSieveIdentityIsTerminal (U : C) : IsTerminal (topSieveIdentity U)
+```
+
+S1の `isSheaf_bot` の証明分割。元のOver.mkIdTerminalの射と一意性を
+同じ充満部分圏に読み替える。これだけでnative制限錐の極限性が済んだとはしない。
+
+### Γの既存小極限への接続（未検証）
+
+一覧：済み 0／全体 8（うち追加 0、S7は後続）。
+
+`Sheaves/GlobalSections.lean` にS2の最初の証明分割を準備。
+
+```lean
+def globalSectionsCone (F : Presheaf C E) (h : HasLimit F) : JoinCone F
+lemma globalSectionsCone_isLimit (F : Presheaf C E) (h : HasLimit F) :
+  IsLimitCone (globalSectionsCone F h)
+def globalSections (F : Presheaf C E) (h : HasLimit F) : E _⦋0⦌
+lemma hasLimit_presheaf (hE : IsPresentable E) (F : Presheaf C E) : HasLimit F
+```
+
+presentable係数の小極限の既存定理の適用。層化を仮定として束ねず、
+後続の反射と指定単位の比較をS2の未完部分として残す。
+
+### 指定制限錐の頂点の計算（未検証）
+
+一覧：済み 0／全体 8（うち追加 0、S7は後続）。
+
+`RestrictionConeVertex.lean`：
+```lean
+lemma restrictionCone_vertex (F : Presheaf C E) (S : Sieve U) :
+  (restrictionCone F S).vertex =
+    F.app (Opposite.op ⦋0⦌) (ULift.up (nerveVertex (Opposite.op U)))
+```
+既存のnerveCone・ulift・後合成の頂点の計算則のみ。S1の指定錐と
+G8の表現可能評価錐の頂点を同じ評価値として照合するために使う。
+
+### S4の既存反射への接続（未検証）
+
+一覧：済み 0／全体 8（うち追加 0、S7は後続）。
+
+`SheafificationReflection.lean` に、draftsと同じ次の型を準備。
+
+```lean
+abbrev PresheafCat C E := (ihom (presheafShape C)).obj E
+def vertexToPresheaf (F : (PresheafCat C E) _⦋0⦌) : Presheaf C E
+def sheafProperty J : (PresheafCat C E) _⦋0⦌ → Prop
+abbrev Sheafification J E := IsReflectiveSubcategory (PresheafCat C E) (sheafProperty J)
+theorem sheafification_of_generatingEdges (hE : IsPresentable E)
+  (edges : I → (PresheafCat C E) _⦋1⦌)
+  (hW : ∀ F, IsLocalObject (Set.range edges) F ↔ sheafProperty J F) : Sheafification J E
+```
+
+既存の一般の反射の適用の分割。`hW`を仮定にまとめたものを最終結果にはせず、
+S4の本体の結論は小さい生成辺の存在とこの同値を証明した後に得る。
+
+### 指定反射の像（未検証）
+
+一覧：済み 0／全体 8（うち追加 0、S7は後続）。
+
+`Sheafify.lean`：
+```lean
+def sheafificationFunctor (hJ : Sheafification J E) : PresheafCat C E ⟶ PresheafCat C E
+def sheafify (hJ : Sheafification J E) (F : Presheaf C E) : Presheaf C E
+lemma isSheaf_sheafify (hJ : Sheafification J E) (F : Presheaf C E) :
+  IsSheaf J (sheafify J hJ F)
+```
+既存の反射のlocalization_memを同じ前層圏で読む。反射の存在はまだ仮定で、
+S4の生成辺の存在証明に付け替える部分は未完として保持する。
+
+### 元の生成辺族（未検証）
+
+一覧：済み 0／全体 8（うち追加 0、S7は後続）。
+
+`SheafGeneratingEdges.lean`：
+```lean
+def sheafGeneratingEdges (J : GrothendieckTopology C) (hE : IsPresentable E)
+    (M : ι → E _⦋0⦌) :
+  (Σ U : C, {S : Sieve U // S ∈ J U} × ι) → (PresheafCat C E) _⦋1⦌
+```
+
+各辺はG8の `SetWeight.sieveTensorEdge` そのもの。生成性の定理は未完。
+
+### 最大篩の始対象の点（未検証）
+
+一覧：済み 0／全体 8（うち追加 0、S7は後続）。
+
+`TopSieveInitialPoint.lean`：
+```lean
+def topSieveInitialPoint (U : C) : Δ[0] ⟶ presheafShape (sieveCategory (⊤ : Sieve U))
+lemma topSieveInitialPoint_leftAnodyne (U : C) :
+  leftAnodyneExtensions (topSieveInitialPoint U)
+```
+最大篩の終対象の反対と既存のnervePoint_leftAnodyneの適用。
+残るのは元の制限錐をこの点へ制限した全射が定値（元の恒等脚）になる計算と、極限性の輸送。
+
+### 最大篩と最小位相（未検証）
+
+一覧：済み 0／全体 8（うち追加 0、S7は後続）。
+
+`TopSieveLimit.lean`：
+```lean
+lemma topSieveInitialPoint_eq : topSieveInitialPoint U = yonedaEquiv.symm (ULift.up (nerveVertex (op (topSieveIdentity U))))
+lemma topSieveRestrictionCone_point_val :
+  (restrictJoinCone (restrictionCone F (⊤ : Sieve U)) (topSieveInitialPoint U)).val =
+    SSet.const (F.app _ (ULift.up (nerveVertex (Opposite.op U))))
+lemma topSieveRestrictionCone_isLimit : IsLimitCone (restrictionCone F (⊤ : Sieve U))
+lemma isSheaf_bot (F : Presheaf C E) : IsSheaf ⊥ F
+```
+既存の一点錐・left anodyne制限の極限性判定と最大篩の射の計算の適用。
+
+### S3の指定Čech形状（未検証）
+
+一覧：済み 0／全体 8（うち追加 0、S7は後続）。
+
+`CechShape.lean`：
+```lean
+def cechShape (d : CategoryTheory.CechNerveData U) : ulift (nerve SimplexCategory) ⟶ presheafShape D
+def cechShapeLarge (d : CategoryTheory.CechNerveData U) : ulift (nerve SimplexCategory) ⟶ nerve Dᵒᵖ
+```
+
+単体的対象のrightOpを元の小さいΔから読む。小さいsiteと大きいsiteのサイズの差を保つ。
+S3の極限性・同じ頂点での延長は、弱終性と必要な積からcommaの縮約を作った後に示す。
+
+### 指定切断錐と層条件の比較（未検証）
+
+一覧：済み 0／全体 8（うち追加 0、S7は後続）。
+
+drafts `SetSections.lean` の証明済みの形の本文を、既存宣言と重複しない3本へ移した。
+本体の型検証・監査はまだで、draftsの本文があることを完成の証拠とはしない。
+
+- `SectionsOf`：`sectionsOfDiagram_hasLimit`、`sectionsOfCone`、`sectionsOf`、
+  `sectionsOfCone_isLimit`、`sectionsOf_map`（選んだ錐に既存G8を適用）。
+- `RepresentableSections`：`representableElementsCone` と篩への制限の一致、
+  `representableSectionsCone`、頂点計算、始対象の点とleft anodyne性、
+  点に制限した錐の全射の定値性、指定錐の極限性、`sectionsOf_representable`。
+- `SieveSectionsCriterion`：`coneComparison_isInvertible_iff`、
+  `sectionsMap_isInvertible_iff`、`uliftNerveCone_whisker_val`、
+  `sieveRestrictCanonicalCone_reindex_val`、`sieveRestrictCone_isLimit_iff`、
+  `sieveSectionsMap_isInvertible_iff`、`isSheaf_iff_sieveSectionsMap_isInvertible`。
+
+主要な結論の型は次。
+```lean
+lemma sieveRestrictCone_isLimit_iff (cU : JoinCone (sectionsOfDiagram (yoneda.obj U) F))
+  (hcU : IsLimitCone cU) :
+  IsLimitCone (SetWeight.restrictSectionsCone S.functorInclusion F cU) ↔
+    IsLimitCone (restrictionCone F S)
+lemma sieveSectionsMap_isInvertible_iff (cS : JoinCone (sectionsOfDiagram S.functor F))
+  (hcS : IsLimitCone cS) (cU : JoinCone (sectionsOfDiagram (yoneda.obj U) F))
+  (hcU : IsLimitCone cU) :
+  IsInvertibleEdge (SetWeight.sectionsMap S.functorInclusion F cS hcS cU hcU).toTruncated ↔
+    IsLimitCone (restrictionCone F S)
+```
+
+S1の指定錐とS4のG8の元の辺を接続する証明分割。同値な頂点だけで全錐を置き換えない。
+
+### G8の一辺の局所性（未検証）
+
+一覧：済み 0／全体 8（うち追加 0、S7は後続）。
+
+`SieveProbeLocality.lean` の型：
+```lean
+lemma sieveTensorEdge_locality_iff (S : Sieve U) (hE : IsPresentable E) (M : E _⦋0⦌)
+  (F : Presheaf C E) (cS : JoinCone (SetWeight.diagram S.functor F)) (hcS : IsLimitCone cS)
+  (cU : JoinCone (SetWeight.diagram (yoneda.obj U) F)) (hcU : IsLimitCone cU) :
+  IsQCatEquivalence (precompose (functorVertex F) (homMk (SetWeight.sieveTensorEdge S hE M).toTruncated)) ↔
+  IsQCatEquivalence (postcompose M (homMk (SetWeight.sieveSectionsMap S F cS hcS cU hcU).toTruncated))
+```
+G8の指定四角形と同値の左右の消去を使うS4の照合。検出族の存在・生成性はこの後。
+
+### 検出族での層条件の判定（未検証）
+
+一覧：済み 0／全体 8（うち追加 0、S7は後続）。
+
+`SheafProbeCriterion.lean`：
+```lean
+lemma isSheaf_iff_probe_locality (J : GrothendieckTopology C) (hE : IsPresentable E)
+  (M : ι → E _⦋0⦌) (hM : IsDetectingFamily M) (F : Presheaf C E) :
+  IsSheaf J F ↔ ∀ U S, S ∈ J U → ∀ i,
+    IsQCatEquivalence (precompose (functorVertex F)
+      (homMk (SetWeight.sieveTensorEdge S hE (M i)).toTruncated))
+```
+S4の証明分割。G14の元の後合成による検出性と、指定切断錐の比較を直接合成する。
+
+### 基礎11本の検証完了（11-15）
+
+一覧：済み 0／全体 8（うち追加 0、S7は後続）。
+
+11本・582行の対象ビルド7,187 jobs成功。65宣言の小監査は標準三公理のみ。
+ログ `/tmp/is-w1/sheaf-condition/build-5.log`。プロセス終了・鍵解放確認済み。
+計算上限変更なし。既存本体の変更なし。
+
+今回の検証済み：SheafCondition、SieveElements、SieveSectionsDiagram、
+TopSieveTerminal、TopSieveInitialPoint、TopSieveLimit、RestrictionConeVertex、
+GlobalSections、SheafificationReflection、Sheafify、SheafGeneratingEdges。
+最大篩の元の制限錐の極限性と `isSheaf_bot` を含む。
+S1のcoverage/sup/extensiveと指定切断比較、S2の単位とRΓ、S4の生成性はまだ未完。
+未検証のSectionsOf・RepresentableSections・SieveSectionsCriterion・SieveProbeLocality・
+SheafProbeCriterion・CechShapeは作業木に置く。旧E01の四本も対象外のまま。
