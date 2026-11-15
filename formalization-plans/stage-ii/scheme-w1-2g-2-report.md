@@ -606,3 +606,17 @@ S03〜S04 の正規化の自然性の法則の分割（着手前、同じ自然�
 一覧：済み0／全体3（うち追加0）。
 
 S04 の係数移送の同型の式の分割（着手前、係数移送の内数、30〜70行）：`homogeneousDegreeOneBaseChangeEquiv_tmul_normalize` は b⊗normalize x の像が係数移送後の b⊗x の正規化になる式。商の同型の元上の式とテンソル積・商の同型の純テンソル上の式を用いる。新たな平坦性を仮定しない。
+
+
+S04 の係数移送の大域の射の法則の分割（着手前、前記200〜500行の内数、50〜100行）：`projectiveCoefficientGradedMap` は Mathlib の includeRight の同じ環写像を、係数環 B の grading への graded な射に束ねる。`projectiveCoefficient_irrelevant_le_map` は移送後の irrelevant ideal が元の irrelevant ideal の像に入ること。各次数の baseChange の span の式で示し、Mathlib `Proj.map` に渡して実際の `Proj ((G ·).baseChange B) → Proj G` と標準開の逆像の式を供給する。flat 性・Noether 性・次数一生成はこの射の構成には不要。pullback の証明やスカラー構造射との整合性は後続の法則であり、この射だけで完了としない。
+
+
+## G3・S04：係数移送のチャート同型における正規化した純テンソルの像
+
+`HomogeneousDegreeOneBaseChangeFormula`（43行）：`homogeneousDegreeOneBaseChangeEquiv_tmul_normalize` は b⊗normalize x の像が、移送後の b⊗x の正規化になる式。任意の x に対して成り立ち、flat 性・Noether 性は不要。商の元上の式・テンソル積と商の同型の式を合成した。
+
+単独検証は初回成功、本体と保存した下書きのソース完全一致、対象と直接 importer のビルド5,108ジョブ、小監査7宣言・標準三公理のみ、終了状態0。ログ `2g-degree-one-base-change-formula-check.log`・`2g-degree-one-base-change-formula-native.log`・`2g-degree-one-base-change-formula-audit.log`。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。各確認は共有鍵 --class impl --wait 3600 の下で行い、待ちは一つ。
+
+2g-2 本体2,360行・入口込み2,399行、小監査262宣言・標準三公理のみ。90649a8b1 の後の今回の束は3モジュール137行＋入口3行、小監査21宣言。任意の係数移送の大域の射は次の drafts にあり、Proj の pullback の証明・S03 の重なりの自然性・S04 の貼り合わせと有限冪・G4〜G5 は未完。見込み約5,500〜12,000行・外枠16,000行は不変。停止点2g-2ではない。
+
+一覧：済み0／全体3（うち追加0）。
