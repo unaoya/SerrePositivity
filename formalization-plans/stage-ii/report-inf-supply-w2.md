@@ -14855,3 +14855,92 @@ rootとEInfinity集約の全ビルドは実行していない。取り込みの�
 57705f223以後の検証済み新規ファイルは上記二本に加え、§238のStrictDiagramTotJointSourceNativeFiberPairing・StrictDiagramTotJointSourceNativeFiberPath、§242のSimplicialElementsFiberInclusion・StrictDiagramTotJointSourceFiberElementsの計6本。各節の完全なモジュール名を使って登録できる。こちらで公式入口・監査には登録していない。
 
 次は同じ元のfiberの反対要素圏を既存resolutionLeftRoofColimitMapへ送る。この既存の実射の弱同値性には右置換のfibrancyと指定right frame・第一分解が使える（FibrantSourceReducedFirst）。その後に§238の同じnative fiber射と指定pathを、この同じroofの全族の比較へ照合する。ラベルが一致するだけで実射の弱同値性や全FunctorIsoの正規化が済んだとはしない。Tot側の停止点3b-4aは引き続き未到達。
+
+## 248. 元の反対要素圏を同じ実left-roof比較へ移す（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 23（うち追加 11）。
+
+§247の次の検査単位。元の持ち上げたHomの要素圏の反対nerveから、元のsourceFrameElementsFamilyの入力nerveへ、同じULiftの上下だけを使う厳密な同型を取る。その順射を元のresolutionLeftRoofColimitMapに合成する。標的のfibrancy・指定right frame・第一分解は既存の弱同値定理と同じ入力として明示し、その実射の弱同値性を同じ係数同型で移す。新しい弱同値の仮定や[ModelCategory SSet]を置かない。
+
+既存の係数移送と既存の実射の弱同値定理を同じ同型で前合成する法則であり、新しい数学的な一覧項目は増やさない。二本合わせて見込み100〜200行。元のnative fiber射自体の弱同値性をまだ結論していない。元のsame corrected pairingとこの基準roof比較の照合が残る。
+
+### 248.1 型
+
+第一のファイルの共通入力は `(K : SSet.{v})`、wは指定された宇宙の持ち上げ。第二のファイルは `{C : Type u} [Category.{v} C] [ModelCategory C] {X : C} (q : CofibrantResolution (C := C) simplex X) (Y : C)`。弱同値定理のYのfibrancy、r、cofを全て明示している。
+
+#### ElementsOppositeUniverseIso（63行）
+
+```lean
+def elementsOppositeUniverseIndex :
+    (ULiftHom.{max w v} ((SSet.uliftFunctor.{w,v}).obj K).Elements)ᵒᵖ ⥤
+      ULiftHom.{max w v} K.Elementsᵒᵖ
+
+def elementsOppositeUniverseIndexInverse :
+    ULiftHom.{max w v} K.Elementsᵒᵖ ⥤
+      (ULiftHom.{max w v} ((SSet.uliftFunctor.{w,v}).obj K).Elements)ᵒᵖ
+
+def elementsOppositeUniverseNerveIso :
+    nerve (ULiftHom.{max w v} ((SSet.uliftFunctor.{w,v}).obj K).Elements)ᵒᵖ ≅
+      nerve (ULiftHom.{max w v} K.Elementsᵒᵖ)
+```
+
+#### LiftedResolutionLeftRoof（43行）
+
+```lean
+def liftedResolutionLeftRoofColimitMap :
+    nerve (ULiftHom.{max u v}
+      ((SSet.uliftFunctor.{max u v,v}).obj ((cosimplicialHom q.obj).obj Y)).Elements)ᵒᵖ ⟶
+      SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph
+        (weakEquivalences C) X Y
+
+theorem liftedResolutionLeftRoofColimitMap_isWeakHomotopyEquivalence [IsFibrant Y]
+    (r : CofibrantResolutionFamily (C := Cᵒᵖ) simplex)
+    (cof : MorphismProperty.FunctorialFactorizationData (cofibrations C)
+      (trivialFibrations C)) :
+    IsWeakHomotopyEquivalence (liftedResolutionLeftRoofColimitMap q Y)
+```
+
+## 249. 同じBEの反対fiberから元の実roof比較への弱同値（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 23（うち追加 11）。
+
+厳密な係数同型は最終個別検査46841で終了0。元の実left-roof比較とその弱同値性の係数移送は、一時結合検査10774で終了0。nerveMapの既存の補助入口は対象宇宙を共有する圏の関手を要求するため、今回の同じ上下の関手を全射列へ直接合成して、異なる対象宇宙のnerve間の同じ実写像を定義した。両往復の厳密な等式も各射列で確認した。計算上限は変更しない。
+
+その元の実射をBEの同じ全パラメータPへ特殊化する。元のsource frameはmodelSourceFrameFamilyを同じframedLimitProbeへ適用したもの、標的は同じrightFrameReplacement。元の右置換のfibrancyとrightFrameFamily・mappingCofibrantFactorizationを、既存の弱同値定理の入力へそのまま使う。新しいfibrancyや弱同値性を仮定として追加しない。既存の係数移送・特殊化の法則として型を記録し、数学的な一覧項目は増やさない。特殊化の見込み80〜150行。
+
+これは元のnormal fiberの反対要素圏から同じhammock余極限への基準射についての弱同値性である。元のnative fiber射とこの基準射が同じ比較を表すこと、元の指定pathを保った正規化、固定始域の元の全FunctorIsoとの一致は引き続き残る。R03dを完了とは数えない。
+
+### 249.1 型（共通入力 `(A : Type u) [CommRing A]`）
+
+#### StrictDiagramTotJointSourceRoofComparison（59行）
+
+```lean
+def strictBETotJointSourceRoofComparison (P : strictBETotJointHomIndex A) :
+    nerve ((simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P)ᵒᵖ ⟶
+      SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph
+        (weakEquivalences (operad A).Algebra)
+        (framedLimitProbe A (AsSmall.down.obj P).1.unop)
+        ((rightFrameReplacement (rightFrameFamily A)).obj (AsSmall.down.obj P).2)
+
+theorem strictBETotJointSourceRoofComparison_isWeakHomotopyEquivalence
+    (P : strictBETotJointHomIndex A) :
+    IsWeakHomotopyEquivalence (strictBETotJointSourceRoofComparison A P)
+```
+
+## 250. 同じ反対fiberから元の実roof比較への弱同値の検収（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 23（うち追加 11）。R03dは未完了。
+
+§248の厳密な同型は最終個別検査46841・終了0、元の実roof比較への係数移送と弱同値性は10774・終了0、BEへの特殊化は21507・終了0。319の鍵付き対象ビルド12,236 jobsと小監査191モジュール・1,336宣言が成功し、標準三公理のみ。実ハンドル16462・終了0、鍵返却済み。--class impl --wait 3600と1700秒guardを使った。二つの互換入口の宣言数0と既存補題の正しい定義元を確認する条件も引き続き検査した。
+
+今回三本165行。一般の厳密な同型63行、既存のroof比較への移送43行、BEへの特殊化59行。§248の二本は見込み100〜200行に対して106行（上端との差−94行）、§249の特殊化は見込み80〜150行に対して59行（上端との差−91行）。検証済みは187本・12,118行／外枠22,000行。自分の187本の宣言数は1,329で、互換入口TensorConeUnitPointの宣言0を含む。小監査全体には既存定義元とHAの直接importer等の4本も加えている。
+
+元のnative fiberの反対要素圏から、同じsource frame・右置換・第一分解を使う元のhammock余極限への実射を回収し、その実射が弱同値であることを既存定理から移した。native fiber射の弱同値性や、元の固定始域の全FunctorIsoへの正規化を完了とはしていない。既存の係数移送の法則として数学的な一覧の項目数は変えない。sorry・独自公理0、計算上限変更なし、[ModelCategory SSet]なし、既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・公式入口・公式監査・mainの変更なし。
+
+登録候補：
+
+- SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.ElementsOppositeUniverseIso
+- SerrePositivity.EInfinity.FrameHom.LiftedResolutionLeftRoof
+- SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRoofComparison
+
+次の照合では、normal要素圏のnerveから出る元のnative fiber射そのものをopFunctorで反対向きに写し、nerveOppositeIsoで§249の同じ反対要素圏の始域へ合わせる。この係数移送の元の写像を追跡した上で、元の指定pathと同じroofの全族との照合に進む。opによる表示の変更だけで弱同値性が証明されたとはしない。

@@ -182,5 +182,8 @@
   "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.SimplicialElementsFiberInclusion",
   "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceFiberElements",
   "SerrePositivity.EInfinity.FrameHom.LiftedSourceFrameFiberRoof",
-  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceFiberRoof"
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceFiberRoof",
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.ElementsOppositeUniverseIso",
+  "SerrePositivity.EInfinity.FrameHom.LiftedResolutionLeftRoof",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRoofComparison"
 ]
