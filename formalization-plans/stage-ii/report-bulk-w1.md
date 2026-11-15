@@ -1675,3 +1675,11 @@ HT02の残りは約1,200〜2,600行、HT02合計約2,100〜3,500行へ見直す�
 `TensorAdjointComparison` はbundle-015、`ExtensionRows` はbundle-016の対象検査に成功。現行ソースのハッシュを確認し、**新規15モジュール・293宣言の公理閉包は標準三公理のみ**。証跡は `bulk-5inf3a/adjoint-comparison-checkpoint.json` と `adjoint-comparison-014-016.tar.gz`。鍵は通常のbulk、各束280秒以内。
 
 一覧：済み 1／全体 6（うち追加 0）。HT02を継続する。
+
+### 5∞-3a：HT02 の指定非負模型への接続（11-15 午前）
+
+`TensorNaturalComparison.lean` は、随伴の単位を非負行で取り、`extendRowHom` で零延長の始域からの射へ延長した後、指定されたHom–Tot同型で逆転置する。これにより、始域 `cochainTensor L (total K)`、終域 `total (tensorRows L K)` の比較 `tensorTotalComparison` を**鎖写像として型検査した**。始域・終域の積全複体は最初に固定した同じ `cochainProductTotalizationFunctor` の値である。
+
+対象検査bundle-017に成功し、現行ソースと検査時のハッシュの一致を確認した。**新規16モジュール・316宣言の公理閉包は標準三公理のみ**。証跡は `bulk-5inf3a/nonnegative-comparison-checkpoint.json` と `nonnegative-comparison-017.tar.gz`。非負横次数版の自然性、元の符号付き次数成分との一致、有限切断、完備化後の擬同型性はまだ残る。
+
+一覧：済み 1／全体 6（うち追加 0）。HT02を継続する。
