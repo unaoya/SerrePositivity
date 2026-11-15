@@ -3,7 +3,7 @@
   "complete": 1,
   "total": 6,
   "added": 0,
-  "verified_head": "5ca931a48",
+  "verified_head": "this commit: base e24980543dcc7f3a31ad55207d2077f3c11bf685",
   "items": {
     "HT01": "complete",
     "HT02": "in-progress",
@@ -12,24 +12,23 @@
     "HT05": "not-started",
     "HT06": "not-started"
   },
-  "latest_complete_audit_checkpoint": "finite-reduction-truncation-checkpoint.json",
-  "latest_complete_audit_declarations": 587,
+  "latest_complete_audit_checkpoint": "natural-components-checkpoint.json",
+  "latest_complete_audit_declarations": 596,
   "working_changes_unverified": [
-    "CompletedTotalComparisonIso.lean",
-    "FiniteCompletedComparison.lean",
-    "FiniteCompletedComparisonIso.lean",
-    "FiniteCompletionDerived.lean",
-    "FiniteCompletionExact.lean",
-    "FiniteCompletionIdempotent.lean",
-    "FiniteCompletionReflection.lean",
-    "FiniteRowEquivalence.lean",
-    "FiniteTensorComparisonIso.lean",
-    "FiniteTensorInverse.lean",
-    "FiniteTruncationTorBounds.lean",
-    "SingleHorizontalRow.lean",
-    "TensorNatComponents.lean"
+    "FiniteTensorInverse",
+    "CompletedTotalComparisonIso",
+    "FiniteTruncationTorBounds",
+    "FiniteCompletionIdempotent",
+    "FiniteRowEquivalence",
+    "FiniteCompletionDerived",
+    "FiniteCompletionExact",
+    "SingleHorizontalRow",
+    "FiniteCompletedComparison",
+    "FiniteCompletionReflection",
+    "FiniteCompletedComparisonIso",
+    "FiniteTensorComparisonIso"
   ],
-  "pending_check": "bundle-025: one normal bulk request, session 2786, wait 3600, whole body 280 seconds. 34 unchanged audited modules, 13 unverified; inspect exact audit inventory after terminal.",
+  "pending_check": "bundle-025 terminal rc1; see audit module inventory; failed dependencies await next batch",
   "next_proof_route": "ht02-next-proof-route.md",
   "initial_record": {
     "stage": "5inf3a",
@@ -368,7 +367,7 @@
     }
   ],
   "working_written_lines": 4526,
-  "source_inventory_scope": "Only HT01–HT06 source additions/changes against 336942ab0, plus untracked files; excludes pre-existing Comparison modules.",
+  "source_inventory_scope": "Only HT01\u2013HT06 source additions/changes against 336942ab0, plus untracked files; excludes pre-existing Comparison modules.",
   "static_check": "static-pending-check.json; not Lean validation",
   "build_wait_history": [
     {
