@@ -964,3 +964,21 @@ G4 の四角形の実際の射に沿う全複体の比較の法則（着手前�
 今回2モジュール188行＋入口2行。2g-2 本体4,880行・入口込み4,955行、小監査563宣言・標準三公理のみ。新しい増大複体は作っていない。元の augmentedCechCone の完全性の同値への接続と、四角形の実際の射への適用は下書きの検証中で、本体にはまだ含めない。G4・G5 は未完、見込み約5,500〜12,000行・外枠16,000行は不変。停止点2g-2ではない。
 
 一覧：済み1／全体3（うち追加0）。
+
+
+G4 の実際の有限アフィン細分の cone の完全性（着手前、既存の共通細分と H 比較の内数、50〜130行）：`schemeStructurePerfectCechRefinement_cone_acyclic Y p hp hY U V ρ hρ hU hV hcV` はアフィン対角の下、二つの有限アフィン族と target の被覆性から、実際の Frobenius 係数の `openCoverCechRefinementMap` の cone の Acyclic を返す。既存の schemeStructureFrobeniusCechRefinement_quasiIsoAt と cechRefinementCone_acyclic_of_quasiIso を使い、QuasiIsoAt を結論の追加仮定にしない。`schemeStructurePerfectCommonAffineCech_cones` は、二つの有限アフィン被覆の既存の schemeFiniteCommonOpenCover と既存の二つの射影の同じ写像に対し、両方の cone の完全性を同時に供給する。被覆性・アフィン性も既存の同じ共通被覆の法則から与える。
+
+
+## G4：増大 cone・四角形の実際の射・有限共通アフィン細分
+
+`AugmentedCechConeComparison`（108行）：`augmentedCechCone_acyclic_iff_of_comparison` は、元の二つの cone の実際の比較 k と自然な全単射の増大項、k の cone の完全性から、元の augmentedCechCone の完全性を両向きに移す。既存の微分を各次数で明示し、前束の要素計算を既存の完全性判定へ渡す。前束188行と合わせ、増大項の比較の実測は296行（当初見込み150〜280行から16行増）。外枠の変更はない。
+
+`CechAugmentedSquareComparison`（44行）：`CechAugmentedSquare.Map.totalComplex_acyclic_iff_of_cones` は、四角形の実際の射 m の両辺の cone の完全性と基底・中心の全単射性から、二つの全複体の完全性の同値を返す。零次項拡張の写像、差の写像の自然性、coneMap と増大写像の自然性を同じ m で接続した。H の同型だけを並べた比較ではない。
+
+`SchemePerfectCommonAffineCechCones`（68行）：`schemeStructurePerfectCechRefinement_cone_acyclic` はアフィン対角の下、有限アフィン細分の実際の Frobenius 係数の余鎖写像の cone が完全であること。`schemeStructurePerfectCommonAffineCech_cones` は二つの有限アフィン被覆から既存の同じ有限共通被覆への両写像について、cone の完全性を同時に供給する。被覆性・アフィン性は既存の同じ共通被覆から供給し、QuasiIsoAt や完全性を追加仮定にしていない。二つとも docstring に Čech 版と Stacks 30.2.6 の扱いを明記した。
+
+各単独検証、下書きと本体のソース完全一致、対象と入口のビルド5,161・5,162・5,163ジョブ、所有元による小監査1・1・2宣言（計4）・標準三公理のみ、終了状態0。ログ `2g-augmented-cone-comparison-check-3.log`・`2g-augmented-cone-comparison-native.log`・`2g-augmented-cone-comparison-audit.log`、`2g-cech-square-comparison-check-1.log`・`2g-cech-square-comparison-native.log`・`2g-cech-square-comparison-audit.log`、`2g-scheme-perfect-common-affine-cones-check-1.log`・`2g-scheme-perfect-common-affine-cones-native.log`・`2g-scheme-perfect-common-affine-cones-audit.log`。前二つの法則は局所的な backward.isDefEq.respectTransparency false、共通細分の二法則は既定の透明性。共通細分の最初の法則には証明で使う Fintype 引数が型の表示に現れないという linter の警告がある。追加公理・sorry・既存の型変更・資源制限の引き上げ・200行超の宣言なし。共有鍵 --class impl --wait 3600、待ちは一つ。対象ビルドと小監査は別枠。root・下流全ビルド・全体監査なし。
+
+今回3モジュール220行＋入口3行。2g-2 本体5,100行・入口込み5,178行、小監査567宣言・標準三公理のみ。増大項まで含めた四角形の比較の法則と、共通細分の実際の写像の cone の完全性まで。実際の閉中心の逆像被覆に沿う四角形への適用、Frobenius 係数とアフィン conerve の自然な比較、fppf の二重 Čech と実際の blowup を保持した Noether 帰納、G5 は未完。見込み約5,500〜12,000行・外枠16,000行は不変。停止点2g-2ではない。
+
+一覧：済み1／全体3（うち追加0）。
