@@ -1,0 +1,16 @@
+{
+  "scope_complete": 0,
+  "scope_total": 6,
+  "scope_added": 0,
+  "validated_current_sources": [
+    {
+      "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Totalization.Components",
+      "source_sha256": "b30ee4c6b6a42cb79f5a2fb108ef8a939ce88e1105d65e5c4952db8879664adb",
+      "rc": 0,
+      "seconds": 5.803191000595689,
+      "log": "Totalization.Components.log"
+    }
+  ],
+  "partial_typecheck_only": true,
+  "next": "bundle003 normal bulk ticket pending; K-flat/completion connection report not yet validated"
+}

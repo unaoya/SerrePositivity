@@ -1618,3 +1618,10 @@ HT02は、環射f:C→S、有限列x（J=(x)）、幅cとその有限完全Tor�
 最初の対象ビルドはbulk・wait3600・280秒の束で一つだけ並べた。B3′の鍵の免除は使わない。HT02の実測と残りの見込みの報告は、既存K-flat・完備化APIへの接続を実際に型検査した後に行う。現時点ではこの節をその検査済み報告として扱わない。
 
 監査への登録案は、BS stage IIからAffineCochainMapとTotalizationのLowerBound・CompletionBounds・ResolvedScalarExtensionをimportし、標準ηとの同値、K-flat比較、実際の完備化/全複体の下界のkernel型とaxiom閉包を検査する形。型検査で定まった公開APIと合わせて本体に登録する。HT03〜HT06の終点を先に仮定したり、定理名だけを足して監査に数えたりしない。
+
+
+### HT01・HT02の第1束の検査（11-15）
+
+一覧：済み 0／全体 6（うち追加 0）。通常のbulk鍵を取り、束002は7対象を逐次検査して約48秒で返却した。[検査記録](bulk-5inf3a/first-bundle-001-002.tar.gz)と[現在のソースと一致する成功](bulk-5inf3a/first-bundle-checkpoint.json)を保存。Totalization/Componentsの103行が型検査成功。これは全複体の成分・微分・行の完全性のAPIの成功であり、Lemma4.22自体の完成ではない。
+
+HT01のprivateデータを公開値へ無理に露出しない形、存在証明から固定係数データをClassical.choiceで選ぶ形、自然性の射の結合順、整数添字とModuleCatの射の評価を修正して、束003を同じ280秒の通常の鍵で並べた。HT02の固定K-flat係数模型・実際の完備化・Totの下界の連結は、この検査が通った後に実測をまとめる。型が通っていない終点や補題を成功扱いにしない。他のレーンとmainの作業木の変更0。
