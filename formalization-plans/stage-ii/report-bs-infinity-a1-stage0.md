@@ -1818,3 +1818,23 @@ S6 は当初の400〜800行より増えた。元の大きい site の universe �
 S1 の被覆生成・上限位相・extensive の判定、S8 の全比較が残る。
 
 一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
+
+### S1：二つの篩の交叉と二段分解の比較（11-15）
+
+`SieveFactorization` 82行・17宣言の対象ビルドと小監査が成功（標準三公理のみ）。
+記録：`/tmp/is-w1/s1-factorization-1/`。
+
+型は `sieveFactorizationSection R S ⊣ sieveFactorizationComposite R S`。
+分解の圏は Over U の充満部分圏の comma として、合成射が R ⊓ S に属し、
+中間の射が R に属する二段の射を保持する。恒等分解の後の合成は厳密に恒等。
+随伴の Hom 同値は全射を明示して証明した。
+これを反変図式の initial な比較に使い、各中間射の fiber と
+S の引き戻しの比較、さらに局所右 Kan 拡張による降下の合成へ進む。
+この段階で被覆生成・上限位相・extensive の判定が済んだとはしない。
+
+検証済み全体93本5,886行・562宣言。係数への極限存在の追加仮定は置かない。
+S3 の逆向きは drafts の `∃ c, IsLimitCone c ∧ c.vertex = t.vertex` と一致し、
+`cechLimitLift.comparison` に指定同値を保持している。
+「制限の厳密な等号は要求しない」の docstring も確認した。
+
+一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
