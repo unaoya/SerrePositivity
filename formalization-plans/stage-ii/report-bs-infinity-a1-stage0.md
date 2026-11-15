@@ -2048,3 +2048,33 @@ A は任意の単体集合。準圏性や有限性は課さない。元の指定
 検証済み全体108本6,856行・657宣言、外枠18,600行内。
 S1 の交叉降下の同値・生成系・上限位相・extensive の判定と、S8 は未完。
 一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
+
+### S1：錐の射の余単位の自然性と全関手への射影（11-15）
+
+6本283行・19宣言の対象ビルドと小監査が成功（標準三公理のみ）。
+記録：`/tmp/is-w1/s1-cone-apex-10/`。source SHA も一致。
+
+```lean
+constantFunctorHomMap K (functorHomEvaluate α apex) ≫ coneCounitHom d =
+  coneCounitHom c ≫ kanFunctorHomCongr c.property d.property
+    ((hoFunctor.map ((pre (joinInr Δ[0] K)).app X)).toFunctor.map α)
+
+functorHomEvaluate (coneHoMorphismValue β) apex =
+  (hoFunctor.map (sliceOverProjection p)).toFunctor.map β
+```
+
+`ConeCounitMorphismNaturality` は任意の全錐間の変換について元の余単位の自然性を証明。
+`ConeValueProjection` は元の錐圏から全関手への写像と、頂点・底の全写像の等式を固定。
+`ConeMorphismApex` は元の錐圏の射の頂点評価を同じ頂点射影の作用として回収した。
+`HoHomVertexTransport`・`Congr` は端点の等式での移送の合成則・同一視、
+`HoConstantMap` は任意のホモトピー圏の射が定値写像で恒等射になる法則。
+大きい本文の展開で起きた kernel の時間切れは、一般の端点移送の公開定義に分割して解消。
+計算上限は変更していない。
+
+次は底の恒等射の式を接続し、極限が存在する場合に限った余単位の Hom 判定を作る。
+この中間の存在仮定を最終の S1 へ追加せず、全表現可能関手での検出へ戻す。
+S3 の承認済みの型（頂点の等号と指定比較同値、制限の厳密な等号は不要）は保持。
+
+検証済み全体114本7,139行・676宣言、外枠18,600行内。
+S1 の交叉降下の同値・生成系・上限位相・extensive の判定と、S8 は未完。
+一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
