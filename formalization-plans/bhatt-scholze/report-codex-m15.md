@@ -13816,3 +13816,217 @@ M15・drafts・main・⑤aの既存ファイル・Interfaceは変更していな
 
 G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み8,564行。
 M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
+
+## §100 G01：実区間の貼り合わせ・切れ目と実分解の往復・原子の境界（11-15）
+
+### 100.1 検証済みの追加
+
+追加は **6ファイル694行・明示宣言25**。累計 **74ファイル9,258行・明示宣言546**。
+WalkingAdjunctionCutComposition.lean は202行・3宣言、WalkingAdjunctionCutFactorization.lean は98行・5宣言、
+WalkingAdjunctionCutEndpoints.lean は110行・8宣言、WalkingAdjunctionAtomicBoundaries.lean は90行・3宣言、
+WalkingAdjunctionCutBounds.lean は110行・5宣言、WalkingAdjunctionAtomicCuts.lean は84行・1宣言。
+200行を超える個別の宣言・証明はない。ファイル全体が202行のCutCompositionでも、
+個々の宣言・証明は200行未満である。
+G01の同じ全随伴の区間表示・単位・係数移送・合成則・貼り合わせ・照合とその証明の分割なので、
+新しい一覧IDは足さない。
+
+三つの比較された切れ目a≤b≤cについて、a–bとb–cの実区間関手の水平合成が、
+a–cの実区間関手に全関手として等しいことを証明した。
+対象は座標差の重みの加法則で、全射は先頭と残りに分け、元のHの同じ射と実包含の正方形で比較した。
+plusの中点では順序和、minusの中点では端点共有の共通表示を使い、空の因子と共有点を含めた。
+
+両外端の間の任意の切れ目から、その左右の実区間関手を因子として実水平分解を構成した。
+合成の検収は今回の貼り合わせと§99の全区間の回収を使う。
+その分解の切れ目が元の切れ目と一致することと、元の実分解の切れ目から構成し直した分解が
+元の実分解と一致することの両往復を、自然性と全射と合成の証明を含む実データの等式で証明した。
+分解の存在を新しい仮定に置いていない。
+
+plusの切れ目は終頂点の任意の有限切れ目から逆向きの区間表示で構成し、
+minusの共有点は始頂点の任意の有限点から元の共通表示で構成した。
+恒等射・全合成の法則で自然性を証明し、端点での評価と全データへの復元の両往復から実全単射を作った。
+全てのminusの共有点は両外端の間にあることを有限点の上限と順位の補正から示した。
+plusの切れ目は、始点がminusなら終頂点の値が正、終点がminusならその値が元の点の個数未満、
+という二つの端点の条件から全頂点で両外端の間にあることを証明した。
+全順位の比較を使っており、全頂点の条件を仮定し直していない。
+
+実分解の左因子の長さ0は左の単位分解との等式、右因子の長さ0は右の単位分解との等式と同値である。
+これにより、元の原子性は長さが正で、実分解が左右の単位分解だけである条件と同値となる。
+さらに、切れ目から実分解を作る構成とその往復を使い、原子性が「両外端の間の全ての切れ目の順位は、
+全頂点で左外端または全頂点で右外端に一致する」という条件と同値であることを証明した。
+
+### 100.2 型と残る境界
+
+原典は[Riehl–Verity §4.1–§4.2](https://emilyriehl.github.io/files/adjunctions.pdf)、
+HA Proposition 4.7.3.3、Kerodon Remark 6.2.1.4（Tag 02EN）。
+現模型での原子の実表示とその法則として、検証した型は以下。
+
+```lean
+lemma walkingAdjunctionCutFunctor_square_val
+    (a : WalkingAdjunctionCut H M) (b : WalkingAdjunctionCut H N)
+    (h : ∀ i, walkingAdjunctionCutRank a i ≤ walkingAdjunctionCutRank b i)
+    {i j : Fin (n + 1)} (f : i ⟶ j)
+    (k : Fin (walkingAdjunctionOrdinalCard M N
+      ((walkingAdjunctionCutIntervalFunctor a b h).obj i))) :
+    walkingAdjunctionCutCoordinate a j +
+        (walkingAdjunctionOrderHom ((walkingAdjunctionCutIntervalFunctor a b h).map f) k).val =
+      (walkingAdjunctionOrderHom (H.map f)
+        (walkingAdjunctionCutFunctorInclusion a b h i k)).val
+
+lemma walkingAdjunctionCutIntervalObject_comp
+    (a : WalkingAdjunctionCut H M) (b : WalkingAdjunctionCut H N)
+    (c : WalkingAdjunctionCut H P)
+    (hab : ∀ i, walkingAdjunctionCutRank a i ≤ walkingAdjunctionCutRank b i)
+    (hbc : ∀ i, walkingAdjunctionCutRank b i ≤ walkingAdjunctionCutRank c i)
+    (i : Fin (n + 1)) :
+    (walkingAdjunctionHorizontal M N P).obj
+      (walkingAdjunctionCutIntervalObject a b hab i,
+        walkingAdjunctionCutIntervalObject b c hbc i) =
+      walkingAdjunctionCutIntervalObject a c (fun j => (hab j).trans (hbc j)) i
+
+lemma walkingAdjunctionCutIntervalFunctor_comp
+    (a : WalkingAdjunctionCut H M) (b : WalkingAdjunctionCut H N)
+    (c : WalkingAdjunctionCut H P)
+    (hab : ∀ i, walkingAdjunctionCutRank a i ≤ walkingAdjunctionCutRank b i)
+    (hbc : ∀ i, walkingAdjunctionCutRank b i ≤ walkingAdjunctionCutRank c i) :
+    (walkingAdjunctionCutIntervalFunctor a b hab).prod'
+        (walkingAdjunctionCutIntervalFunctor b c hbc) ⋙ walkingAdjunctionHorizontal M N P =
+      walkingAdjunctionCutIntervalFunctor a c (fun i => (hab i).trans (hbc i))
+
+lemma walkingAdjunctionCut_ext {a b : WalkingAdjunctionCut H M}
+    (h : ∀ i, walkingAdjunctionCutCoordinate a i = walkingAdjunctionCutCoordinate b i) : a = b
+
+def walkingAdjunctionFactorizationOfCut (a : WalkingAdjunctionCut H M)
+    (hl : ∀ i, walkingAdjunctionCutRank (walkingAdjunctionSourceCut H) i ≤
+      walkingAdjunctionCutRank a i)
+    (hr : ∀ i, walkingAdjunctionCutRank a i ≤
+      walkingAdjunctionCutRank (walkingAdjunctionTargetCut H) i) :
+    WalkingAdjunctionFactorization H
+
+lemma walkingAdjunctionFactorizationOfCut_coordinate (a : WalkingAdjunctionCut H M)
+    (hl : ∀ i, walkingAdjunctionCutRank (walkingAdjunctionSourceCut H) i ≤
+      walkingAdjunctionCutRank a i)
+    (hr : ∀ i, walkingAdjunctionCutRank a i ≤
+      walkingAdjunctionCutRank (walkingAdjunctionTargetCut H) i) (i : Fin (n + 1)) :
+    walkingAdjunctionCutCoordinate (walkingAdjunctionFactorizationOfCut a hl hr).cut i =
+      walkingAdjunctionCutCoordinate a i
+
+lemma walkingAdjunctionFactorizationOfCut_cut (a : WalkingAdjunctionCut H M)
+    (hl : ∀ i, walkingAdjunctionCutRank (walkingAdjunctionSourceCut H) i ≤
+      walkingAdjunctionCutRank a i)
+    (hr : ∀ i, walkingAdjunctionCutRank a i ≤
+      walkingAdjunctionCutRank (walkingAdjunctionTargetCut H) i) :
+    (walkingAdjunctionFactorizationOfCut a hl hr).cut = a
+
+lemma WalkingAdjunctionFactorization.ofCut_roundtrip (a : WalkingAdjunctionFactorization H) :
+    walkingAdjunctionFactorizationOfCut a.cut a.sourceCut_le a.le_targetCut = a
+
+def WalkingAdjunctionPlusCut.ofLast
+    (t : Fin (walkingAdjunctionOrdinalCard X Y (H.obj (Fin.last n)) + 1)) :
+    WalkingAdjunctionPlusCut H
+
+lemma WalkingAdjunctionPlusCut.ofLast_value_last
+    (t : Fin (walkingAdjunctionOrdinalCard X Y (H.obj (Fin.last n)) + 1)) :
+    (WalkingAdjunctionPlusCut.ofLast H t).value (Fin.last n) = t
+
+lemma WalkingAdjunctionPlusCut.ofLast_roundtrip (a : WalkingAdjunctionPlusCut H) :
+    WalkingAdjunctionPlusCut.ofLast H (a.value (Fin.last n)) = a
+
+def WalkingAdjunctionPlusCut.lastEquiv : WalkingAdjunctionPlusCut H ≃
+    Fin (walkingAdjunctionOrdinalCard X Y (H.obj (Fin.last n)) + 1)
+
+def WalkingAdjunctionMinusCut.ofFirst
+    (t : Fin (walkingAdjunctionOrdinalCard X Y (H.obj 0))) : WalkingAdjunctionMinusCut H
+
+lemma WalkingAdjunctionMinusCut.ofFirst_value_zero
+    (t : Fin (walkingAdjunctionOrdinalCard X Y (H.obj 0))) :
+    (WalkingAdjunctionMinusCut.ofFirst H t).value 0 = t
+
+lemma WalkingAdjunctionMinusCut.ofFirst_roundtrip (a : WalkingAdjunctionMinusCut H) :
+    WalkingAdjunctionMinusCut.ofFirst H (a.value 0) = a
+
+def WalkingAdjunctionMinusCut.firstEquiv : WalkingAdjunctionMinusCut H ≃
+    Fin (walkingAdjunctionOrdinalCard X Y (H.obj 0))
+
+lemma WalkingAdjunctionFactorization.left_size_zero_iff
+    (a : WalkingAdjunctionFactorization H) : walkingAdjunctionLevelSize a.left = 0 ↔
+      a = walkingAdjunctionSourceFactorization H
+
+lemma WalkingAdjunctionFactorization.right_size_zero_iff
+    (a : WalkingAdjunctionFactorization H) : walkingAdjunctionLevelSize a.right = 0 ↔
+      a = walkingAdjunctionTargetFactorization H
+
+lemma walkingAdjunctionLevelIsAtomic_iff_boundary_factorizations
+    (H : Fin (n + 1) ⥤ walkingAdjunctionHom X Y) :
+    WalkingAdjunctionLevelIsAtomic (X := ⟨X⟩) (Y := ⟨Y⟩) H ↔
+      0 < walkingAdjunctionLevelSize H ∧ ∀ a : WalkingAdjunctionFactorization H,
+        a = walkingAdjunctionSourceFactorization H ∨
+          a = walkingAdjunctionTargetFactorization H
+
+lemma walkingAdjunctionTargetCut_rank_card (H : Fin (n + 1) ⥤ walkingAdjunctionHom X Y)
+    (i : Fin (n + 1)) :
+    walkingAdjunctionCutRank (walkingAdjunctionTargetCut H) i +
+        walkingAdjunctionTargetCorrection Y = 2 * walkingAdjunctionOrdinalCard X Y (H.obj i)
+
+lemma WalkingAdjunctionMinusCut.source_le (a : WalkingAdjunctionMinusCut H) :
+    ∀ i, walkingAdjunctionCutRank (walkingAdjunctionSourceCut H) i ≤
+      walkingAdjunctionCutRank (M := .minus) a i
+
+lemma WalkingAdjunctionMinusCut.le_target (a : WalkingAdjunctionMinusCut H) :
+    ∀ i, walkingAdjunctionCutRank (M := .minus) a i ≤
+      walkingAdjunctionCutRank (walkingAdjunctionTargetCut H) i
+
+lemma WalkingAdjunctionPlusCut.source_le (a : WalkingAdjunctionPlusCut H)
+    (hl : X = .minus → 0 < (a.value (Fin.last n)).val) :
+    ∀ i, walkingAdjunctionCutRank (walkingAdjunctionSourceCut H) i ≤
+      walkingAdjunctionCutRank (M := .plus) a i
+
+lemma WalkingAdjunctionPlusCut.le_target (a : WalkingAdjunctionPlusCut H)
+    (hr : Y = .minus → (a.value (Fin.last n)).val <
+      walkingAdjunctionOrdinalCard X Y (H.obj (Fin.last n))) :
+    ∀ i, walkingAdjunctionCutRank (M := .plus) a i ≤
+      walkingAdjunctionCutRank (walkingAdjunctionTargetCut H) i
+
+lemma walkingAdjunctionLevelIsAtomic_iff_boundary_cuts {n : ℕ} {X Y : WalkingAdjunctionPoint}
+    (H : Fin (n + 1) ⥤ walkingAdjunctionHom X Y) :
+    WalkingAdjunctionLevelIsAtomic (X := ⟨X⟩) (Y := ⟨Y⟩) H ↔
+      0 < walkingAdjunctionLevelSize H ∧
+        ∀ (M : WalkingAdjunctionPoint) (a : WalkingAdjunctionCut H M)
+          (_hl : ∀ i, walkingAdjunctionCutRank (walkingAdjunctionSourceCut H) i ≤
+            walkingAdjunctionCutRank a i)
+          (_hr : ∀ i, walkingAdjunctionCutRank a i ≤
+            walkingAdjunctionCutRank (walkingAdjunctionTargetCut H) i),
+          (∀ i, walkingAdjunctionCutRank a i =
+            walkingAdjunctionCutRank (walkingAdjunctionSourceCut H) i) ∨
+          (∀ i, walkingAdjunctionCutRank a i =
+            walkingAdjunctionCutRank (walkingAdjunctionTargetCut H) i)
+```
+
+原子性を両外端の条件まで移したが、非退化の原子のfillable条件と親の実構成、
+parental subcomputadのfiltration、元のQCatAdjunctionからの全coherentな延長はまだ未完。
+原典の向きと現模型の水平反対の全比較、同じF≫U・単位・余単位・HAモデルの照合も未完である。
+今回の切れ目と実分解の両往復を、coherentな延長の存在へ読み替えていない。
+G01の済みは0、G02以降も未完を維持する。
+
+### 100.3 検証と進み
+
+with_build_lock.sh --class impl --wait 3600、各最大240秒の短いimpl枠。
+区間合成はセッション7636の表示の不一致による算術失敗を確認し、
+関手・対象の表示を明記してセッション54785で対象ビルドの終了0を確認した。
+セッション23422でCutFactorization、3822でCutEndpointsの対象ビルドが通った。
+3822ではAtomicBoundariesの依存する型の算術書き換えが失敗し、
+書き換えを局所化して2964で対象ビルドと追加19根の小さい監査の終了0を確認した。
+最終セッション5769で、追加の境界則と原子の切れ目の判定を含む最終対象
+lake build SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionAtomicCuts:olean
+SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionCutBounds:olean
+と、続く追加25根だけの公理監査、外側の終了0を確認した。
+追加25根は入力名と出力名が一致し、
+公理依存はpropext・Classical.choice・Quot.soundのみ。sorryAx・追加公理なし。
+入力・根・全出力・最終対象ビルドログは
+[g12-cut-gluing-audit-2026-11-15/](g12-cut-gluing-audit-2026-11-15/)に保存した。
+新規Leanの行長は100文字以下。現在自分の生きたビルド・監査の枠は残っていない。
+
+M15・drafts・main・⑤aの既存ファイル・Interfaceは変更していない。
+全体ビルド・大きい監査は行っていない。
+
+G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み9,258行。
+M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
