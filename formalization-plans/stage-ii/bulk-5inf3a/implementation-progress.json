@@ -3,7 +3,7 @@
   "complete": 2,
   "total": 6,
   "added": 0,
-  "verified_head": "this commit: base f1eebf0e6aa6e3e45e464c39ae9e53a2ba081bb2",
+  "verified_head": "this commit: base 054aa2b9d84baa4a76f82937200dfee67df2766b",
   "items": {
     "HT01": "complete",
     "HT02": "complete",
@@ -12,12 +12,14 @@
     "HT05": "not-started",
     "HT06": "not-started"
   },
-  "latest_complete_audit_checkpoint": "coefficient-homology-classes-checkpoint.json",
-  "latest_complete_audit_declarations": 1467,
+  "latest_complete_audit_checkpoint": "residue-coefficient-tensor-ext-checkpoint.json",
+  "latest_complete_audit_declarations": 1468,
   "working_changes_unverified": [
-    "AffineCrystallineCohomologyClasses"
+    "AffineCrystallineCohomologyClasses",
+    "AffineCrystallineHodgeTateSquare",
+    "AffineNativeBaseHodgeTate"
   ],
-  "pending_check": "bundle-126 terminal rc1; see audit module inventory; failed dependencies await next batch",
+  "pending_check": "bundle-132 terminal rc1; see audit module inventory; failed dependencies await next batch",
   "next_proof_route": "ht02-next-proof-route.md",
   "initial_record": {
     "stage": "5inf3a",
