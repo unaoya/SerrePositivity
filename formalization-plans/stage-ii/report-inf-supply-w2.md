@@ -17269,3 +17269,85 @@ lemma weightedNerveNativeStraighteningUnitIso_fiber_value
 ### 287.3 今回の検証済みの区切り
 
 前回81e99bcecから新規16本・1,033行を検証して保存した。R03iの型は閉じたが、R03h・R03d・3b-4aは未完であり、停止点3b-4aの完了報告ではない。自レーンは248本・16,886行／外枠22,000行、残り5,114行。登録候補一覧はformalization-plans/stage-ii/is-w2-be-20261114-modules.jsonを更新済み。公式入口・公式監査への登録とmainへの取り込みは調整役が行うため、こちらでは変更していない。鍵は全て返却済み。/goalは元の全範囲を維持する。
+
+## 288. 元の表現同型の前合成と零単体評価の法則（2026-11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。R03d・R03hは未完了。
+
+§287の単位の評価の前提として、既存のfully faithfulな前合成の逆像が同じ指定同型へ戻る法則を先に切り出す。新しい構成・数学の一覧項目ではなく、既存構成の前合成・評価の法則と証明の分割。全FunctorIsoの等式を保持し、零単体でのArrowの等式はその帰結としてのみ使う。本体の対象ビルド・監査はこれから行う。
+
+### FullyFaithfulFunctorIsoPrecomposition（59行）
+
+```lean
+lemma fullyFaithfulPreimageFunctorIso_precomp {A B X : SSet.{u}} [Quasicategory X]
+    (i : A ⟶ B) (hi : IsFullyFaithful ((pre i).app X))
+    {F G : B ⟶ X} (e : FunctorIso (i ≫ F) (i ≫ G)) :
+    FunctorIso.precomp (f := F) (g := G)
+      (hi.preimageVertexIso (x := functorVertex F) (y := functorVertex G) e) i = e
+
+lemma fullyFaithfulPreimageFunctorIso_evaluate {A B X : SSet.{u}} [Quasicategory X]
+    (i : A ⟶ B) (hi : IsFullyFaithful ((pre i).app X))
+    {F G : B ⟶ X} (e : FunctorIso (i ≫ F) (i ≫ G)) (x : A _⦋0⦌) :
+    functorHomEvaluate
+      (hi.preimageVertexIso (x := functorVertex F) (y := functorVertex G) e).hom
+      (i.app (Opposite.op ⦋0⦌) x) = functorHomEvaluate e.hom x
+
+```
+
+### TransportSimplexFirstVertexZero（48行）
+
+```lean
+lemma transportSimplexFirstVertexMap_ulift_zero_vertex {B : SSet.{u}} (b : B _⦋0⦌) :
+    ((SSet.uliftFunctor.{u+1,u}).map (transportSimplexFirstVertexMap B)).app
+      (Opposite.op ⦋0⦌) (ULift.up (nerveVertex (transportSimplexIndex b))) = ULift.up b
+
+```
+
+### LeftStraighteningRepresentationRestriction（67行）
+
+```lean
+lemma leftStraighteningInfinityDiagram_representationIso_precomp {E B : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p]
+    (R : LeftTransportRepresentation ((SSet.uliftFunctor.{u+1,u}).map p)) :
+    let k := transportSimplexFirstVertexMap B
+    (leftStraighteningInfinityDiagram_representationIso p R).precomp
+      ((SSet.uliftFunctor.{u+1,u}).map k) =
+      leftStraighteningInfinityDiagram_firstVertexTransportIso p ≪≫
+        nerveCoherentTransportRepresentationIso (pullback.snd p k) (R.nativeRestrict k)
+
+lemma leftStraighteningInfinityDiagram_representationIso_precomp_evaluate {E B : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p]
+    (R : LeftTransportRepresentation ((SSet.uliftFunctor.{u+1,u}).map p))
+    (x : ((SSet.uliftFunctor.{u+1,u}).obj (nerve (TransportSimplexCategory B))) _⦋0⦌) :
+    let k := transportSimplexFirstVertexMap B
+    functorHomEvaluate (leftStraighteningInfinityDiagram_representationIso p R).hom
+      (((SSet.uliftFunctor.{u+1,u}).map k).app (Opposite.op ⦋0⦌) x) =
+    functorHomEvaluate (leftStraighteningInfinityDiagram_firstVertexTransportIso p ≪≫
+      nerveCoherentTransportRepresentationIso (pullback.snd p k) (R.nativeRestrict k)).hom x
+
+```
+
+### LeftStraighteningRepresentationZeroEvaluation（54行）
+
+```lean
+lemma leftStraighteningInfinityDiagram_representationIso_zero_evaluate_arrow {E B : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p]
+    (R : LeftTransportRepresentation ((SSet.uliftFunctor.{u+1,u}).map p)) (b : B _⦋0⦌) :
+    let k := transportSimplexFirstVertexMap B
+    Arrow.mk (functorHomEvaluate (leftStraighteningInfinityDiagram_representationIso p R).hom
+      (ULift.up b)) =
+    Arrow.mk (functorHomEvaluate (leftStraighteningInfinityDiagram_firstVertexTransportIso p ≪≫
+      nerveCoherentTransportRepresentationIso (pullback.snd p k) (R.nativeRestrict k)).hom
+        (ULift.up (nerveVertex (transportSimplexIndex b))))
+
+```
+
+### 288.5 検収と残り
+
+4本・6補題・229行を本体に追加。初回の対象ビルド355は、分割先のProject.FibrationAuxiliaries.FunctorCategoriesのopen不足で失敗し、当該openを補った。再検査355bは共有鍵 --class impl --wait 3600 と1700秒guardを一回使用し、対象4本のビルド（依存を含む3,105 jobs）・小監査とも終了0。小監査は256モジュール・1,679宣言、propext・Classical.choice・Quot.soundのみ。sorryAx・追加公理なし。既存Lean宣言は変更していない。
+
+累計は252モジュール・17,115行（外枠22,000行まで4,885行）、自レーンの実環境宣言は1,672。公式の入口・root・監査への登録はしていない。登録対象はis-w2-be-20261114-modules.jsonに追加した4本。宣言名の照合ではmain a4388efc9のEInfinity/3,745ファイル・13,373名と、自レーン618ファイル・1,937名の間に異なるファイルの同名宣言0、自レーン内部も0。genericな新規6名は今回の元の構成の前合成・評価則である。
+
+証跡：/private/tmp/isw2-build355b.log、AuditISW2BKCells355.lean、isw2-validation355.json、isw2-declaration-collision-scan355.json。git diff --check通過。B4′の結果は§268のまま（統合81683a2ab、書換え0・保留0）。
+
+この検収で§287の重み付きnative単位の実fiber評価の等式そのものを閉じたとはしない。今回の前合成の全FunctorIso等式を使い、同じ表現空間の同じ指定同型と、元のfirstVertexFiberIso・fiber評価への輸送をつなぐ段が残る。R03hの全interval族の等式・R03dの指定全関手同型・3b-4aは未完了。型・範囲を弱めず、⑤aの既存ファイルは変更していない。
