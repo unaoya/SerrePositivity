@@ -2167,3 +2167,38 @@ RightKanHomUniversal δ (kanFunctorHomCongr
 検証済み全体124本7,722行・697宣言、外枠18,600行内。
 S1 の交叉降下・生成系・上限位相・extensive の判定と、S8 は未完。
 一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
+
+### S1：通常の元の三角形へ、制限錐からの全変換として接続（11-15）
+
+2本135行・10宣言の対象ビルドと小監査が成功（標準三公理のみ）。
+記録：`/tmp/is-w1/s1-ordinary-triangle-1/`。source SHA 一致。
+
+```lean
+(hp : HasLimit (nerveMap P ≫ U)) →
+(hq : HasLimit (nerveMap Q ≫ U)) →
+RightKanHomUniversal (nerveMap δ) (normalizedNerveClass η U) →
+(IsLimitCone (mapJoinCone U (nerveCone c)) ↔
+ IsLimitCone (mapJoinCone U (nerveCone ((Cone.postcompose η).obj (c.whisker δ)))))
+```
+
+`FunctorHomCongrEvaluation` は全関手の端点の等式による表示変更が、同じ頂点成分の
+可逆性を変えない法則。`NerveConeWhiskerPostcompose` は既存の `nerveCone_whisker` と
+既検証の後合成ホモトピーを使用し、元の制限錐から元の後合成錐への全変換を固定した。
+頂点での可逆性と、底が元の三角形の同じ指定変換に一致する式を証明。
+この同じ変換に極限存在下の合成補題を適用する判定まで閉じた。
+`normalizedNerveClass η U` は本文では `nerveWhiskerCoefficient_eq` による
+`kanFunctorHomCongr` と元の `nerveNatTransHomotopy η` の後合成を明記している。
+計算上限は変更していない。
+
+次の接続の再利用を確認：
+- 実右 Kan 形状：`UniverseRightKanShape.rightKanShapeUniverseIso`。
+- 実標準錐：`UniverseRightKanCanonical.rightKanCanonicalCone_universe_val`。
+- 全円柱の宇宙移送：既存 `simplexTensorMap_source`・`target`・`constant`
+  （`Project/SimplicialCombinatorics/Subdivision/UniverseLiftTensor`）。
+  同じ原始的な宇宙移送の自然性は作り直さず、指定右 Kan 輸送の全族へ接続する。
+- 全表現可能関手の極限保存・検出：`RepresentableLimitCharacterization`。
+まだ任意の係数での交叉降下は閉じておらず、上の存在仮定を最終型へ追加しない。
+
+検証済み全体126本7,857行・707宣言、外枠18,600行内。
+S1 の交叉降下・生成系・上限位相・extensive の判定と、S8 は未完。
+一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
