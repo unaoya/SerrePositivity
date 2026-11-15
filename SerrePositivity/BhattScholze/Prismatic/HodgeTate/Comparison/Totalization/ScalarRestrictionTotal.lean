@@ -108,4 +108,27 @@ def restrictionTotalIso (f : R →+* S) (K : CochainComplex (Complex S) ℕ) :
   haveI := HomologicalComplex.Hom.isIso_of_components (restrictionTotalComparison f K)
   exact asIso (restrictionTotalComparison f K)
 
+
+/-- 同じ指定成分を保つ係数制限の比較は、S 線形の図式の射について自然である。 -/
+@[reassoc] theorem restrictionTotalComparison_naturality (f : R →+* S)
+    {K M : CochainComplex (Complex S) ℕ} (g : K ⟶ M) :
+    ((ModuleCat.restrictScalars f).mapHomologicalComplex (.up ℤ)).map
+        ((cochainProductTotalizationFunctor (ModuleCat.{u} S)).map g) ≫
+      restrictionTotalComparison f M = restrictionTotalComparison f K ≫
+        (cochainProductTotalizationFunctor (ModuleCat.{u} R)).map
+          ((((ModuleCat.restrictScalars f).mapHomologicalComplex (.up ℤ)).mapHomologicalComplex
+            (.up ℕ)).map g) := by
+  apply HomologicalComplex.Hom.ext
+  funext q
+  apply component_hom_ext
+  intro n
+  simp only [HomologicalComplex.comp_f, restrictionTotalComparison, Category.assoc,
+    restrictionTotalDegree_π, componentπ_naturality, restrictionTotalDegree_π_assoc]
+  change (ModuleCat.restrictScalars f).map
+      (((cochainProductTotalizationFunctor (ModuleCat.{u} S)).map g).f q) ≫
+        (ModuleCat.restrictScalars f).map (componentπ M n q) =
+      (ModuleCat.restrictScalars f).map (componentπ K n q) ≫
+        (ModuleCat.restrictScalars f).map ((g.f n).f (q-n))
+  rw [← Functor.map_comp, ← Functor.map_comp, componentπ_naturality]
+
 end SerrePositivity.BhattScholze.Prismatic.HTComparisonTotal
