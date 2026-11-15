@@ -6122,3 +6122,4029 @@ E01 の指定単位比較へ戻る。未検証の三本は今回のコミット�
 `deterministic timeout`。ログ：`/tmp/is-w1/unit-shared-classification/build.log`。
 新規補助定義と G2 本文分割のビルド・型保存結果を覆すものではないが、
 単位比較が通ったとはしない。計算上限は不変、未検証ファイルは未コミット。
+
+
+## 59. 指定単位の値の特徴づけを分離する試行
+
+一覧：済み 0／全体 13（うち追加 11）
+
+調整役の方向1・3に従い、新規ファイルで値の式を一度だけ命題の等式にする。
+既存構成の法則であり、追加の独立した数学的仮定はない。未検証。
+
+```lean
+/-- 概要：共有した分類射を、元の分類射と係数同型の合成で特徴づける。
+方針：一度だけ定義の値を等式にする。規約：同じ分類射を使う。
+使われ方：指定単位の比較で定義を展開せず書き換える。 -/
+lemma homWeightJointClassificationHom_value {A C : SSet.{u}}
+    [Quasicategory A] [Quasicategory C] (F : A ⟶ C) :
+    homWeightJointClassificationHom F =
+      leftClassificationHom (twistedArrowProjection A) (functorHomBifunctorProjection F F)
+        (twistedArrowFunctorComparison F) (twistedArrowFunctorComparison_projection F) ≫
+          (functorHomBifunctorDiagram_classificationIso F F).inv := by
+  rfl
+
+/-- 概要：指定単位を、共有分類射の未正規化の前合成像で特徴づける。
+方針：元の定義の値を一度だけ等式として取り出す。
+規約：別の単位を選ばない。使われ方：命題の書き換えによる指定単位比較。 -/
+lemma functorHomBifunctorUnit_value {A C : SSet.{u}}
+    [Quasicategory A] [Quasicategory C] (F : A ⟶ C) :
+    functorHomBifunctorUnit F =
+      (hoFunctor.map ((pre (uliftTensorIso.{u, u + 1} A.op A).inv).app
+        SpaceInfinity.{u})).toFunctor.map (homWeightJointClassificationHom F) := by
+  rfl
+
+end SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Cocompletion
+```
+
+### 59.1 全単位の値の等式の結果と成分の試行
+
+一覧：済み 0／全体 13（うち追加 11）
+
+全単位の値の等式（48行）の kernel timeout で終了コード1。分類射の値の補題には
+エラーなし（ファイル全体は未検証）。ログ `/tmp/is-w1/unit-propositional-values/build.log`。
+次は方向1・3に従い、同じ前合成像を def で固定し、頂点成分で比較する。
+
+```lean
+/-- 概要：指定分類射の未正規化の前合成像を固定する。
+方針：同じ関手の Hom 作用を使う。規約：指定分類射を変えない。
+使われ方：成分等式の右辺を固定して検査する。 -/
+def homWeightJointRawRestriction {A C : SSet.{u}}
+    [Quasicategory A] [Quasicategory C] (F : A ⟶ C) :
+    FunctorHom (homInfinityJointEvaluation A)
+      ((uliftTensorIso.{u, u + 1} A.op A).inv ≫ functorHomBifunctorDiagram F F) :=
+  (hoFunctor.map ((pre (uliftTensorIso.{u, u + 1} A.op A).inv).app
+    SpaceInfinity.{u})).toFunctor.map (homWeightJointClassificationHom F)
+
+/-- 概要：指定単位の頂点成分を固定した前合成像の成分として特徴づける。
+方針：全射の等式ではなく成分の式を検査する。規約：元の単位を保持する。
+使われ方：全射の比較を成分の法則へ分解するための入力。 -/
+lemma functorHomBifunctorUnit_component {A C : SSet.{u}}
+    [Quasicategory A] [Quasicategory C] (F : A ⟶ C)
+    (x : ((SSet.uliftFunctor.{u + 1, u}).obj A.op ⊗
+      (SSet.uliftFunctor.{u + 1, u}).obj A) _⦋0⦌) :
+    functorHomEvaluate (functorHomBifunctorUnit F) x =
+      functorHomEvaluate (homWeightJointRawRestriction F) x := by
+  rfl
+
+end SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Cocompletion
+```
+
+
+### 59.2 一意性経路の既存入力の点検（紙）
+
+一覧：済み 0／全体 13（うち追加 11）
+
+`leftKanHomUniversalIso_hom_unique δ α β hF hG σ hσ` は
+`hσ : leftKanHomMap δ α G σ = β` と、二つの指定単位の
+`LeftKanHomUniversal` を要求する。普遍性だけから任意の二つの単位が
+等しいという定理ではなく、単位を保つ比較射の一意性である。
+
+今回の `homWeightYonedaLeftKanComparison_evaluation_isIso_of_homUniversal`
+は既にこの一意性経路を使っているが、元の単位を評価した γ の
+`hunit : LeftKanHomUniversal (uliftFunctor.map F) γ` が未供給。
+`twistedSourceHomUnit_homUniversal` は幾何学的な別表示に対する普遍性を供給するため、
+その単位と元の γ との両立を依然示す必要がある。
+この点検だけで方向2を不可能と結論していないし、独立の普遍性証明を
+実装・検証したともしていない。未証明の両立式や hunit を E01 の仮定には追加しない。
+
+
+## 60. E01 の保留と独立項目への移行（11-14 夕、調整役指示）
+
+一覧：済み 0／全体 13（うち追加 11）
+
+最後の試行 `functorHomBifunctorUnit_component` は58行で kernel deterministic timeout、
+終了コード1。ログ `/tmp/is-w1/unit-component-values/build.log`。プロセス終了・鍵解放済み。
+E01 の直接比較と一意性経路はここで保留し、計算上限を上げない。
+
+### 60.1 現行計画の依存表
+
+○＝E01なしで進める、△＝一部の構成のみ独立、×＝現行証明で間接依存。
+数学的に他の証明が不可能だという意味ではない。
+
+| ID | E01依存 | 先に進められる範囲／依存先 |
+| --- | --- | --- |
+| E01 | 保留 | 指定単位の直接比較を再試行しない |
+| E02 | × | 指定単位の Kan 普遍性を E01 から移す計画 |
+| E03 | × | E02 の全写像空間同値を使用 |
+| E04 | × | E03 の同じ比較を全族で照合 |
+| E05 | × | E03・E04 から元の射の同値性 |
+| E06 | △ | 射の定義・評価則は独立。同値性は E05 |
+| RR01 | ○ | 実 frame の評価から coherent end への射 |
+| RR02 | ○ | RR01、Reedy 充填と各値の比較 |
+| RR03 | ○ | RR01・RR02 と同じ right frame への移送 |
+| RR04 | ○ | RR03 と E06 の射の定義。E06 の同値性は不要 |
+| RR05 | × | E06 の同値性と RR03・RR04 |
+| R2d | × | RR05 の元の span の右脚の同値性 |
+| R2e | × | R2d から実評価の充満忠実性 |
+
+E06 の射を新規 `FunctorPinchedEndMap` で先に固定し、評価則を置く。
+これは §44 の E06 の構成部分であり、項目全体の完了数は増やさない。
+RR01 以降の比較もこの同じ射を使い、後から別の弱同値へ取り替えない。
+その後 RR01 → RR02 → RR03 → RR04 の順に進む。
+
+### 60.2 最初の独立な型（未検証）
+
+```lean
+def functorPinchedEndMap {A C : SSet.{u}} [Quasicategory C] (F G : A ⟶ C) :
+    pinchedHom (functorVertex F) (functorVertex G) ⟶
+      simplicialSections (functorEndProjection F G) :=
+  (pinchedHomLeftRightEquivalence (functorVertex F) (functorVertex G)).symm.hom ≫
+    twistedArrowIdentityHomTransport (functorVertex F) (functorVertex G) ≫
+      twistedFunctorHomToEndSections F G
+
+/-- 元の end 比較による切断の評価式を、同じ pinched 比較の全族へ制限する。 -/
+lemma functorPinchedEndMap_evaluation {A C : SSet.{u}} [Quasicategory C]
+    (F G : A ⟶ C) :
+    (TwistedArrow A ◁ functorPinchedEndMap F G) ≫
+      simplicialSectionsEvaluation (functorEndProjection F G) =
+    (TwistedArrow A ◁ ((pinchedHomLeftRightEquivalence
+      (functorVertex F) (functorVertex G)).symm.hom ≫
+        twistedArrowIdentityHomTransport (functorVertex F) (functorVertex G))) ≫
+      twistedFunctorHomEndEvaluation F G := by
+  simp only [functorPinchedEndMap, whiskerLeft_comp, Category.assoc,
+    twistedFunctorHomToEndSections_evaluation]
+
+```
+
+
+### 60.3 E06 の射の構成部分の検証
+
+一覧：済み 0／全体 13（うち追加 11）
+
+対象ビルド成功（5,422 jobs）、1モジュール6宣言の小監査成功、標準三公理のみ。
+ログ `/tmp/is-w1/pinched-end-map/`。新規 49 行。
+E01 に依存する新規 import はない。E06 の同値性は未了で、一覧の済み数は増やさない。
+RR01 の実 frame からの比較の入口を引き続き調べる。
+既存 `StrictDiagramPointFrameEndIso` の源は指定 source frame の全自然変換。
+`modelBifibrantSourceFramePinchedMap` は要素圏の nerve と bifibrant な両端点を入力に取るため、
+この射をそのまま RR01 と同じ型と見なさない。元の frame・端点・全族の移送を明示する必要がある。
+
+### 60.4 別経路の紙の調査（候補、未実装）
+
+Kerodon [Tag 03KC](https://kerodon.net/tag/03KC) を確認した。
+これは現在は retired subsection で、内容の大部分は Corollary 8.2.1.10 へ移ったとの注記がある。
+同節の Lemma 11.9.5.6 の筋は、twisted arrow 上の相対関手圏の Hom を、
+単体への制限と Kan fibration の塔で調べるものである。
+これは end 表示の指定比較そのものの定理ではなく、直接使えると断定しない。
+
+候補は、元の `twistedFunctorHomToEndSections F G` を局所化して、
+単体の上での比較と境界制限の相対充填から、同じ比較の全空間の同値性を得る経路。
+既存 `FiniteSubcomplexEndComparison` の制限図式・錐は再利用候補。
+まだ単体での全パラメーターの比較、境界制限の充填、極限での弱同値保存との接続が未確認。
+この経路で E05 が得られても、E01 の元の選んだ比較の可逆性への逆接続は別に必要であり、
+E01 の型を別の end 定理へ取り替えない。新しい独立の数学が必要なら実装前に報告する。
+
+
+## 61. RR01：同じ source frame の零次への増大射
+
+一覧：済み 0／全体 13（うち追加 11）
+
+既存構成の成分・増大射の法則。元の frame を別の解像に置き換えない。
+`MixedFrameComparison.rightComparison_isIso` の cofibrant な始域へ渡す入口として、
+零次の対象と同じ増大射を固定する。RR01 本体はまだ未了。以下は未検証の型。
+
+```lean
+/-- 指定 source frame の同じ零次対象。 -/
+def strictDiagramSourceFrameZero (X : StrictComplexDiagram A d) : StrictComplexDiagram A d :=
+  (strictDiagramSourceFrame A d X).obj.obj (SimplexCategory.mk 0)
+
+/-- 指定 source frame の零次対象は cofibrant。 -/
+lemma strictDiagramSourceFrameZero_isCofibrant (X : StrictComplexDiagram A d) :
+    IsCofibrant (strictDiagramSourceFrameZero A d X) :=
+  (strictDiagramSourceFrame A d X).isCofibrant_obj _
+
+/-- 零単体への潰し写像を、同じ frame に作用させた増大射。 -/
+def strictDiagramSourceFrameZeroAugmentation (X : StrictComplexDiagram A d) :
+    (strictDiagramSourceFrame A d X).obj ⟶
+      (Functor.const SimplexCategory).obj (strictDiagramSourceFrameZero A d X) where
+  app n := (strictDiagramSourceFrame A d X).obj.map
+    (SimplexCategory.const n (SimplexCategory.mk 0) 0)
+  naturality n m f := by
+    simp only [Functor.const_obj_map, Category.comp_id, ← Functor.map_comp]
+    congr 1
+    ext i
+    rfl
+
+/-- 同じ増大射の各成分は frame のホモトピー定値性による弱同値。 -/
+lemma strictDiagramSourceFrameZeroAugmentation_weak (X : StrictComplexDiagram A d)
+    (n : SimplexCategory) :
+    weakEquivalences (StrictComplexDiagram A d)
+      ((strictDiagramSourceFrameZeroAugmentation A d X).app n) :=
+  (strictDiagramSourceFrame A d X).homotopicallyConstant _
+
+/-- 元の図式への増大射は、零次への同じ増大射を経由する。 -/
+lemma strictDiagramSourceFrameZeroAugmentation_fac (X : StrictComplexDiagram A d)
+    (n : SimplexCategory) :
+    (strictDiagramSourceFrameZeroAugmentation A d X).app n ≫
+      (strictDiagramSourceFrame A d X).augmentation.app (SimplexCategory.mk 0) =
+        (strictDiagramSourceFrame A d X).augmentation.app n := by
+  simpa only [strictDiagramSourceFrameZeroAugmentation, Functor.const_obj_map,
+    Category.comp_id] using (strictDiagramSourceFrame A d X).augmentation.naturality
+      (SimplexCategory.const n (SimplexCategory.mk 0) 0)
+```
+
+
+### 61.1 検証済み区切り
+
+一覧：済み 0／全体 13（うち追加 11）
+
+`StrictDiagramSourceFrameZero` 69行。対象ビルド成功（2,677 jobs）、
+12宣言の小監査成功、標準三公理のみ。ログ `/tmp/is-w1/source-frame-zero/build-3.log`。
+初回の初期対象 instance 探索を既存の零対象で明示し、増大射の合成式は
+元の自然性等式と `Category.comp_id` の合成で検査した。計算上限は不変。
+
+RR01 の次の接続は、同じ source frame と
+`rightFrameDiagram (strictDiagramRightFrameFamily A d)` による混合 Hom。
+左脚は元の fibrant target からの right augmentation の後合成、
+右脚は今回の零次増大射の前合成とする。
+`MixedFrameComparison.leftComparison_isIso`・`rightComparison_isIso` を使い、
+同じ両脚の anodyne 局所化での可逆性を得る。
+その後の実際の単体集合の射への回収と元の評価の端点への輸送はまだ未了であり、
+RR01 全体を完成とはしない。
+
+
+## 62. RR01：同じ両 frame の共同比較
+
+一覧：済み 0／全体 13（うち追加 11）
+
+§61の次の接続。既存の混合 Hom 構成の適用と両脚の係数移送であり、
+独立の新しい弱同値定理は作らない。元の射を固定した型は次のとおり（未検証）。
+anodyne 局所化での可逆性だけで coherent end との同値が済んだとはしない。
+
+```lean
+/-- 元の source frame と、同じ fibrant target の right frame の混合 Hom。 -/
+def strictDiagramMixedFrame (X Y : StrictComplexDiagram A d) : SSet.{u} :=
+  (EInfinity.FrameHom.MixedFrame.mixedFunctor (strictDiagramSourceFrame A d X).obj).obj
+    ((rightFrameDiagram (strictDiagramRightFrameFamily A d)).obj
+      (strictDiagramFibrantTarget A d Y))
+
+/-- 元の source frame Hom から、同じ right augmentation の後合成による射。 -/
+def strictDiagramMixedFrameLeft (X Y : StrictComplexDiagram A d) :
+    strictDiagramFrameMapping A d X Y ⟶ strictDiagramMixedFrame A d X Y :=
+  EInfinity.FrameHom.MixedFrame.leftComparison (strictDiagramSourceFrame A d X).obj
+    ((rightFrameUnit (strictDiagramRightFrameFamily A d)).app
+      (strictDiagramFibrantTarget A d Y))
+
+/-- 同じ零次の対象からの right Hom を、零次への増大射で前合成する。 -/
+def strictDiagramMixedFrameRight (X Y : StrictComplexDiagram A d) :
+    (strictDiagramRightFrameMapping A d (strictDiagramSourceFrameZero A d X)).obj
+      (strictDiagramFibrantTarget A d Y) ⟶ strictDiagramMixedFrame A d X Y :=
+  EInfinity.FrameHom.MixedFrame.rightComparison (strictDiagramSourceFrame A d X).obj
+    (strictDiagramSourceFrameZeroAugmentation A d X)
+    ((rightFrameDiagram (strictDiagramRightFrameFamily A d)).obj
+      (strictDiagramFibrantTarget A d Y))
+
+/-- 左脚は元の標的の fibrancy と既存の left frame 比較により局所化で可逆。 -/
+lemma strictDiagramMixedFrameLeft_isIso (X Y : StrictComplexDiagram A d) :
+    IsIso (AnodyneHomotopy.anodyneQ.map (strictDiagramMixedFrameLeft A d X Y)) := by
+  haveI := strictDiagramFibrantTarget_isFibrant A d Y
+  apply leftComparison_isIso (strictDiagramSourceFrame A d X).obj
+    (strictDiagramSourceFrame A d X).cofibrant
+    ((rightFrameUnit (strictDiagramRightFrameFamily A d)).app
+      (strictDiagramFibrantTarget A d Y))
+    (rightFrameDiagram_isFibrant (strictDiagramRightFrameFamily A d)
+      (strictDiagramFibrantTarget A d Y))
+  intro n
+  exact (rightFrameUnit_trivialCofibration (strictDiagramRightFrameFamily A d)
+    (strictDiagramFibrantTarget A d Y) n).2
+
+/-- 右脚は同じ零次の cofibrancy と両 frame の Reedy 条件により局所化で可逆。 -/
+lemma strictDiagramMixedFrameRight_isIso (X Y : StrictComplexDiagram A d) :
+    IsIso (AnodyneHomotopy.anodyneQ.map (strictDiagramMixedFrameRight A d X Y)) := by
+  haveI := strictDiagramSourceFrameZero_isCofibrant A d X
+  apply rightComparison_isIso (strictDiagramSourceFrame A d X).obj
+    (strictDiagramSourceFrame A d X).cofibrant
+    (strictDiagramSourceFrameZeroAugmentation A d X)
+    (strictDiagramSourceFrameZeroAugmentation_weak A d X)
+  change SerrePositivity.Reedy.reedyLeft SerrePositivity.Reedy.simplex
+    (cofibrations (StrictComplexDiagram A d)ᵒᵖ)
+    (initial.to ((strictDiagramRightFrameFamily A d).obj.obj
+      (op (strictDiagramFibrantTarget A d Y))))
+  exact (strictDiagramRightFrameFamily A d).cofibrant _
+```
+
+### 62.1 共同比較の検証と Kan 置換への接続
+
+一覧：済み 0／全体 13（うち追加 11）
+
+`StrictDiagramMixedFrame` 78行、対象ビルド9,499 jobs成功、10宣言の小監査成功、
+標準三公理のみ。ログ `/tmp/is-w1/mixed-frame/build.log`。
+次の型は同じ二つの実射と既存の Kan 置換による比較（未検証）。
+
+```lean
+/-- 左脚を同じ混合 Hom の Kan 置換へ送った元の射。 -/
+def strictDiagramMixedKanLeft (X Y : StrictComplexDiagram A d) :
+    strictDiagramFrameMapping A d X Y ⟶ exInfinity.obj (strictDiagramMixedFrame A d X Y) :=
+  strictDiagramMixedFrameLeft A d X Y ≫ exInfinityUnit.app _
+
+/-- 右脚を同じ混合 Hom の Kan 置換へ送った元の射。 -/
+def strictDiagramMixedKanRight (X Y : StrictComplexDiagram A d) :
+    (strictDiagramRightFrameMapping A d (strictDiagramSourceFrameZero A d X)).obj
+      (strictDiagramFibrantTarget A d Y) ⟶ exInfinity.obj (strictDiagramMixedFrame A d X Y) :=
+  strictDiagramMixedFrameRight A d X Y ≫ exInfinityUnit.app _
+
+private lemma mixedUnitWeak (X Y : StrictComplexDiagram A d) :
+    IsWeakHomotopyEquivalence (exInfinityUnit.app (strictDiagramMixedFrame A d X Y)) :=
+  EInfinity.FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _
+    (SSet.anodyneExtensions.Q_inverts _ (exInfinityUnit_anodyne _))
+
+/-- 元の左脚は Kan 置換後も弱同値。 -/
+lemma strictDiagramMixedKanLeft_weak (X Y : StrictComplexDiagram A d) :
+    IsWeakHomotopyEquivalence (strictDiagramMixedKanLeft A d X Y) :=
+  (EInfinity.FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _
+    (strictDiagramMixedFrameLeft_isIso A d X Y)).comp (mixedUnitWeak A d X Y)
+
+/-- 元の右脚は Kan 置換後も弱同値。 -/
+lemma strictDiagramMixedKanRight_weak (X Y : StrictComplexDiagram A d) :
+    IsWeakHomotopyEquivalence (strictDiagramMixedKanRight A d X Y) :=
+  (EInfinity.FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _
+    (strictDiagramMixedFrameRight_isIso A d X Y)).comp (mixedUnitWeak A d X Y)
+
+/-- 同じ二つの Kan Hom の比較。逆の選択はこの同じ右脚に固定する。 -/
+def strictDiagramSourceRightFrameEquivalence (X Y : StrictComplexDiagram A d) :
+    QCatEquivalence (strictDiagramFrameMapping A d X Y)
+      ((strictDiagramRightFrameMapping A d (strictDiagramSourceFrameZero A d X)).obj
+        (strictDiagramFibrantTarget A d Y)) := by
+  haveI := strictDiagramFrameMapping_kanComplex A d X Y
+  haveI := strictDiagramSourceFrameZero_isCofibrant A d X
+  haveI := Project.ModelCategoryComparison.rightFrameHom_kanComplex
+    (strictDiagramRightFrameFamily A d) (strictDiagramSourceFrameZero A d X)
+      (strictDiagramFibrantTarget A d Y)
+  exact (strictDiagramMixedKanLeft_weak A d X Y).isSimplicialHomotopyEquivalence.isQCatEquivalence.choose.trans
+    (strictDiagramMixedKanRight_weak A d X Y).isSimplicialHomotopyEquivalence.isQCatEquivalence.choose.symm
+```
+
+
+### 62.2 検証済み区切り：同じ実 frame Hom の比較同値
+
+一覧：済み 0／全体 13（うち追加 11）
+
+`StrictDiagramMixedFrameEquivalence` 80行。対象ビルド成功（9,500 jobs）、
+16宣言の小監査成功、標準三公理のみ。
+ログ `/tmp/is-w1/mixed-frame-equivalence/build-2.log`。
+初回は比較同値の型に必要な Kan instance が宣言後の証明内にしかなかったため失敗。
+既存の Kan 性を宣言前の名前付き local instance に置き、上限不変で通した。
+§62.1 の78行と合わせて二本158行・26宣言を今回コミットする。
+
+`strictDiagramSourceRightFrameEquivalence` は、同じ二つの実 Hom 空間の QCatEquivalence。
+両脚の順射を固定し、同じ共通 Kan 標的への右脚の逆を選んでいる。
+RR01 の end 切断への比較、RR04 の元の評価との全族の照合はまだ未了。
+次はこの比較を宇宙移送し、既存 `strictDiagramRightFramePinchedEquivalence` と
+元の増大射・fibrant 置換の端点同型を介して、指定評価と `functorPinchedEndMap` へ接続する。
+選んだ比較の三角形のホモトピーは捨てずに保持する。
+E01 の保留・R3 を実装しない方針は不変。
+
+
+## 63. RR01：元の増大射の端点移送
+
+一覧：済み 0／全体 13（うち追加 11）
+
+既存局所化の弱同値反転の適用。元の増大射と fibrant 置換比較の像を固定する。
+型は次のとおり（未検証）。
+
+```lean
+/-- 元の擬同型辺の指定局所化像から取る頂点同型。 -/
+def strictDiagramLocalizationQuasiIso {X Y : StrictComplexDiagram A d}
+    (f : X ⟶ Y) (hf : strictDiagramQuasiIsos A d f) :
+    VertexIso ((strictDiagramLocalization A d).app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ X))
+      ((strictDiagramLocalization A d).app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ Y)) := by
+  have hi := (strictDiagramLocalization_inverts A d) ((strictDiagramWeakEdges_mk₁ A d f).2 hf)
+  change IsInvertibleEdge
+    ((edgeOfSimplex (X := strictComplexDiagramNerve A d) (ComposableArrows.mk₁ f)).map
+      ((truncation 2).map (strictDiagramLocalization A d))) at hi
+  have hi' : IsInvertibleEdge
+      (((nerve.edgeMk f).map (strictDiagramLocalization A d)).toTruncated) := by
+    exact (isInvertibleEdge_congr
+      (e := ((nerve.edgeMk f).map (strictDiagramLocalization A d)).toTruncated)
+      (f := (edgeOfSimplex (X := strictComplexDiagramNerve A d) (ComposableArrows.mk₁ f)).map
+        ((truncation 2).map (strictDiagramLocalization A d))) rfl).mpr hi
+  haveI := hi'
+  exact asIso (Truncated.HomotopyCategory.homMk
+    (((nerve.edgeMk f).map (strictDiagramLocalization A d)).toTruncated))
+
+/-- 同じ零次の source frame 対象から、元の図式への増大射の像。 -/
+def strictDiagramSourceFrameEndpointIso (X : StrictComplexDiagram A d) :
+    VertexIso ((strictDiagramLocalization A d).app (Opposite.op ⦋0⦌)
+      (ComposableArrows.mk₀ (strictDiagramSourceFrameZero A d X)))
+      ((strictDiagramLocalization A d).app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ X)) :=
+  strictDiagramLocalizationQuasiIso A d
+    ((strictDiagramSourceFrame A d X).augmentation.app (SimplexCategory.mk 0)) (by
+      rw [← strictDiagramReedyModelCategory_weakEquivalences]
+      exact (strictDiagramSourceFrame A d X).augmentation_weakEquivalence _)
+
+/-- 元の fibrant 置換比較の像。端点を戻すときはこの同じ同型の逆を使う。 -/
+def strictDiagramFibrantTargetEndpointIso (Y : StrictComplexDiagram A d) :
+    VertexIso ((strictDiagramLocalization A d).app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ Y))
+      ((strictDiagramLocalization A d).app (Opposite.op ⦋0⦌)
+        (ComposableArrows.mk₀ (strictDiagramFibrantTarget A d Y))) :=
+  strictDiagramLocalizationQuasiIso A d (strictDiagramFibrantTargetComparison A d Y)
+    (strictDiagramFibrantTargetComparison_quasiIso A d Y)
+```
+
+### 63.1 同じ局所化の pinched Hom への接続（未検証）
+
+一覧：済み 0／全体 13（うち追加 11）
+
+端点ファイルの初回はモデル構造 instance の不足で失敗。既存 Reedy モデルを明示した。
+次に同じ両脚の比較と端点同型を合成する。
+
+```lean
+def strictDiagramSourceFramePinchedEquivalence (X Y : StrictComplexDiagram A d) :
+    QCatEquivalence ((SSet.uliftFunctor.{u + 1, u}).obj (strictDiagramFrameMapping A d X Y))
+      (pinchedHom
+        ((strictDiagramLocalization A d).app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ X))
+        ((strictDiagramLocalization A d).app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ Y))) :=
+  (Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.IsQCatEquivalence.ulift.{u, u + 1}
+    (strictDiagramSourceRightFrameEquivalence A d X Y).isQCatEquivalence).choose.trans
+      ((strictDiagramRightFramePinchedEquivalence A d (strictDiagramSourceFrameZero A d X)
+        (strictDiagramFibrantTarget A d Y)).trans
+          (pinchedEndpointEquivalence (strictDiagramSourceFrameEndpointIso A d X)
+            (strictDiagramFibrantTargetEndpointIso A d Y).symm))
+```
+
+### 63.2 RR01 の最終比較射の型（未検証）
+
+一覧：済み 0／全体 13（うち追加 11）
+
+同じ source frame と fibrant target、全射列の評価を固定した合成。
+同値性は RR02 に残し、入力仮定として追加しない。
+
+```lean
+/-- 元の strict 図式評価の同じ頂点が表す coherent 図式。 -/
+def strictDiagramEvaluatedDiagram (X : StrictComplexDiagram A d) :
+    (SSet.uliftFunctor.{u + 1, 0}).obj (nerve (strictDiagramIndex d)) ⟶
+      derivedInfinityCategory A :=
+  (functorVertexEquiv _ _).symm
+    ((strictComplexDiagramFamily A d).app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ X))
+
+/-- 同じ全図式評価の頂点を復元する。 -/
+lemma strictDiagramEvaluatedDiagram_vertex (X : StrictComplexDiagram A d) :
+    functorVertex (strictDiagramEvaluatedDiagram A d X) =
+      (strictComplexDiagramFamily A d).app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ X) :=
+  (functorVertexEquiv _ _).apply_symm_apply _
+
+/-- 元の局所化評価と strict 評価を結ぶ、同じ全関手同型の成分。 -/
+def strictDiagramEvaluatedEndpointIso (X : StrictComplexDiagram A d) :
+    VertexIso
+      ((strictDiagramDerivedEvaluation A d).app (Opposite.op ⦋0⦌)
+        ((strictDiagramLocalization A d).app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ X)))
+      (functorVertex (strictDiagramEvaluatedDiagram A d X)) :=
+  (strictDiagramDerivedEvaluation_factor A d).app (ComposableArrows.mk₀ X) ≪≫
+    eqToIso (congrArg HomotopyCategory.mk (strictDiagramEvaluatedDiagram_vertex A d X).symm)
+
+/-- RR01：元の実 frame から元の coherent 図式の end 切断への実際の全単体的比較。
+この宣言は比較射の同値性を主張しない。 -/
+def strictDiagramFrameEndComparison (X Y : StrictComplexDiagram A d) :
+    (SSet.uliftFunctor.{u + 1, u}).obj (strictDiagramFrameMapping A d X Y) ⟶
+      simplicialSections (functorEndProjection
+        (strictDiagramEvaluatedDiagram A d X) (strictDiagramEvaluatedDiagram A d Y)) :=
+  (strictDiagramSourceFramePinchedEquivalence A d X Y).hom ≫
+    pinchedHomMap (strictDiagramDerivedEvaluation A d)
+      ((strictDiagramLocalization A d).app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ X))
+      ((strictDiagramLocalization A d).app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ Y)) ≫
+    (pinchedEndpointEquivalence (strictDiagramEvaluatedEndpointIso A d X)
+      (strictDiagramEvaluatedEndpointIso A d Y)).hom ≫
+    functorPinchedEndMap (strictDiagramEvaluatedDiagram A d X) (strictDiagramEvaluatedDiagram A d Y)
+```
+
+
+### 63.3 RR01 の射の構成完了
+
+一覧：済み 1／全体 13（うち追加 11）
+
+済みは RR01 のみ。E01 は保留、E06 は射の定義のみ済み（項目全体は未了）、
+RR02〜RR05・E02〜E05・R2d・R2e は未了。
+
+- 端点と pinched 比較の二本119行：対象ビルド9,504 jobs成功、小監査24宣言成功。
+- 最終比較一本72行：対象ビルド11,386 jobs成功、小監査12宣言成功。
+- 三本191行・36宣言、標準三公理のみ。計算上限は変更していない。
+  ログ `/tmp/is-w1/source-frame-pinched/` と `/tmp/is-w1/coherent-end-map/build-2.log`。
+
+型の照合：源は §44 の同じ `ulift (strictDiagramFrameMapping A d X Y)`。
+`strictDiagramEvaluatedDiagram A d X` は同じ strict 全図式評価の頂点を
+`functorVertexEquiv.symm` で表示し、頂点の回収等式を証明した。
+標的はその同じ二図式の `functorEndProjection` の切断空間。
+射は元の source frame と fibrant target の比較から、指定された
+`strictDiagramDerivedEvaluation` 自身の pinched Hom 作用へ渡し、元の全関手同型
+`strictDiagramDerivedEvaluation_factor` の成分で端点を移し、固定済み E06 の射へ合成する。
+各次数と全作用素を持つ単体集合の射で、cofibrancy・整合・弱同値性の追加入力はない。
+同じ source frame の零次対象の cofibrancy は本体の既存補題から得ている。
+
+この RR01 は比較射の構成の完了であり、その同値性（RR02）の完了ではない。
+`strictDiagramFrameEndComparison` を今後も同じ射として保持し、
+通常 end の Kan 性だけで RR02 を済ませない。
+§57.2 からの追加を含む検証済み累計は149本・12,009行（既存G2本文 +2/-3 は別記）。
+外枠20,800行まで8,791行。次は RR02 の相対充填・各値の比較の接続を進める。
+
+
+## 64 RR02：指定frameの相対充填
+
+一覧：済み 1／全体 13（うち追加 11）
+
+RR02 の証明分割として、既存の `cosimplicialHom_fibration` と
+`boundary_lifting_of_reedyCofibrant` を、指定した同じ source frame に適用する。
+新しい ID は付けない。E01 は使用しない。型は次のとおり（局所モデルは
+`strictDiagramReedyModelCategory A d`、SSet は既存の Quillen モデル）。
+
+```lean
+/-- 指定frameのHomは、Reedy標的のfibrationをKan fibrationへ送る。 -/
+lemma strictDiagramSourceFrameHom_fibration (X : StrictComplexDiagram A d)
+    {Y Z : StrictComplexDiagram A d} (p : Y ⟶ Z) [Fibration p] :
+    Fibration ((CosimplicialHom.cosimplicialHom
+      (strictDiagramSourceFrame A d X).obj).map p) :=
+  HomotopyFunctionComplex.cosimplicialHom_fibration _
+    (strictDiagramSourceFrame A d X).cofibrant
+    (strictDiagramSourceFrame A d X).homotopicallyConstant p
+
+/-- Reedy自明fibrationに対して、指定frameのHomは全境界の相対充填を持つ。 -/
+lemma strictDiagramSourceFrameHom_boundary_lifting (X : StrictComplexDiagram A d)
+    {Y Z : StrictComplexDiagram A d} (p : Y ⟶ Z)
+    [Fibration p] [WeakEquivalence p] (n : ℕ) :
+    HasLiftingProperty (SSet.boundary.{u} n).ι
+      ((CosimplicialHom.cosimplicialHom (strictDiagramSourceFrame A d X).obj).map p) :=
+  HomotopyFunctionComplex.boundary_lifting_of_reedyCofibrant _ n
+    (strictDiagramSourceFrame A d X).cofibrant p
+
+```
+
+この相対充填だけでは、coherent end への射の弱同値性を結論しない。
+残りは値の比較の全添字での整合性と、同じ RR01 射への照合。
+一般化を中断した `OrdinaryBarHomSections` は split epi のみを供給するため、
+今回の弱同値性の代用には使わない。
+
+### 64.1 全添字の増大射
+
+一覧：済み 1／全体 13（うち追加 11）
+
+値の比較には `FrameOverFunctor` の既存の共通frameを使う。
+その前提となる指定増大射の全添字の族と弱同値性を、同じ増大射の成分から取り出す。
+RR02 の証明分割であり、頂点ごとの無関係な同値の選択ではない。
+
+```lean
+/-- 元の指定増大射を全添字で評価した、自然な余単体的増大射の族。 -/
+def strictDiagramEvaluatedAugmentation (X : StrictComplexDiagram A d) :
+    strictDiagramEvaluatedSourceFrames A d X ⟶ X ⋙ Functor.const SimplexCategory where
+  app j :=
+    { app n := ((strictDiagramSourceFrame A d X).augmentation.app n).app j
+      naturality := by
+        intro n m f
+        exact congrArg (fun a => a.app j)
+          ((strictDiagramSourceFrame A d X).augmentation.naturality f) }
+  naturality := by
+    intro i j f
+    apply NatTrans.ext
+    funext n
+    exact ((strictDiagramSourceFrame A d X).augmentation.app n).naturality f
+
+/-- 全ての添字と余単体次数で、同じ増大射は擬同型である。 -/
+lemma strictDiagramEvaluatedAugmentation_weak (X : StrictComplexDiagram A d)
+    (j : strictDiagramIndex d) (n : SimplexCategory) :
+    weakEquivalences (Complex A)
+      (((strictDiagramEvaluatedAugmentation A d X).app j).app n) := by
+  have h := (strictDiagramSourceFrame A d X).augmentation_weakEquivalence n
+  cases d <;> exact h j
+
+```
+
+### 64.2 検証と次の接続
+
+一覧：済み 1／全体 13（うち追加 11）
+
+- `StrictDiagramFrameRelativeLifting` 43行：対象ビルド2,677 jobs、小監査4宣言成功。
+- `StrictDiagramEvaluatedAugmentation` 46行：対象ビルド2,677 jobs、小監査9宣言成功。
+  初回は図式圏の局所モデル instance の不足で失敗し、指定済みの
+  `strictDiagramReedyModelCategory` を明示して再検証した。
+- 両方とも標準三公理のみ。計算上限は変更せず、鍵はビルドと小監査の間のみ。
+  ログ `/tmp/is-w1/frame-relative-lifting/build.log`、
+  `/tmp/is-w1/evaluated-augmentation/build-2.log`。
+- 検証済み累計151本・12,098行（既存G2本文 +2/-3 は別記）。外枠まで8,702行。
+
+次の接続には既存 `FrameOverFunctor` に
+`H := X`、`P := strictDiagramEvaluatedSourceFrames A d X`、
+`a := strictDiagramEvaluatedAugmentation A d X` を入れる。
+`fixedFrameOverFunctor_homLeft_homotopyEquivalence` と
+`fixedFrameOverFunctor_homRight_homotopyEquivalence` は、全添字に自然な
+同じ比較の成分でのホモトピー同値を供給する。任意の SSet モデルを仮定する
+旧 `homLeft_weakEquivalence` 版は使わない。
+これで得る値の比較だけから通常endの弱同値不変性を仮定してはならない。
+Reedyの相対充填からcoherent切断への比較を証明し、§63の同じ実射へ照合する部分は残る。
+
+E01 別経路の紙の確認：`FiniteSubcomplexEndComparison` は元の実比較を保つ
+錐の射を供給するが、有限部分での弱同値性も逆極限の弱同値保存も主張しない。
+したがって制限図式があることを E01/E05 の証明の代用にはしない。
+指定単位の直接比較と、未供給の単位の普遍性による一意性の経路は再試行していない。
+
+
+## 65 RR02：同じ全添字の値の比較
+
+一覧：済み 1／全体 13（うち追加 11）
+
+既存の `FrameOverFunctor` の適用と二変数の自然変換を固定する。
+RR02 内の証明分割で、新しい ID は追加しない。型と使用する既存の証明は次のとおり。
+
+```lean
+/-- 標準複体frameの関手的分解を、元の生成モデルから固定する。 -/
+def strictDiagramValueCofFactorization :
+    MorphismProperty.FunctorialFactorizationData
+      (cofibrations (Complex A)) (trivialFibrations (Complex A)) := by
+  haveI := EInfinity.projectiveModelCategory_cofibrantlyGenerated A
+  haveI := hasFunctorialFactorization_cofibration_trivialFibration
+    (EInfinity.projectiveGeneratingCofibrations A)
+    (EInfinity.projectiveGeneratingTrivialCofibrations A)
+  exact MorphismProperty.functorialFactorizationData _ _
+
+variable (d : StrictDiagramDirection)
+
+/-- 同じ評価増大射と標準増大射の上の、全添字に自然な共通frame。 -/
+def strictDiagramCommonValueFrame (X : StrictComplexDiagram A d) :
+    strictDiagramIndex d ⥤ (SimplexCategory ⥤ Complex A) :=
+  FrameOverFunctor.commonObj (strictDiagramValueCofFactorization A)
+    (cosimplicialResolutionFamily (strictDiagramValueCofFactorization A)) X
+    (strictDiagramEvaluatedSourceFrames A d X) (strictDiagramEvaluatedAugmentation A d X)
+
+/-- 標準値frameのHomから共通frameのHomへの、二変数に自然な比較。 -/
+def strictDiagramValueFrameHomLeft (X : StrictComplexDiagram A d) :
+    FrameOverFunctor.hom
+      (X ⋙ (cosimplicialResolutionFamily (strictDiagramValueCofFactorization A)).obj) ⟶
+    FrameOverFunctor.hom (strictDiagramCommonValueFrame A d X) :=
+  FrameOverFunctor.homLeft (strictDiagramValueCofFactorization A)
+    (cosimplicialResolutionFamily (strictDiagramValueCofFactorization A)) X
+    (strictDiagramEvaluatedSourceFrames A d X) (strictDiagramEvaluatedAugmentation A d X)
+
+/-- 元の評価frameのHomから同じ共通frameのHomへの、二変数に自然な比較。 -/
+def strictDiagramValueFrameHomRight (X : StrictComplexDiagram A d) :
+    FrameOverFunctor.hom (strictDiagramEvaluatedSourceFrames A d X) ⟶
+    FrameOverFunctor.hom (strictDiagramCommonValueFrame A d X) :=
+  FrameOverFunctor.homRight (strictDiagramValueCofFactorization A)
+    (cosimplicialResolutionFamily (strictDiagramValueCofFactorization A)) X
+    (strictDiagramEvaluatedSourceFrames A d X) (strictDiagramEvaluatedAugmentation A d X)
+
+/-- 左脚は、同じfibrant標的の各値でホモトピー同値。 -/
+lemma strictDiagramValueFrameHomLeft_equivalence (X Y : StrictComplexDiagram A d)
+    (i : (strictDiagramIndex d)ᵒᵖ) (j : strictDiagramIndex d) :
+    IsSimplicialHomotopyEquivalence
+      (((strictDiagramValueFrameHomLeft A d X).app i).app
+        ((strictDiagramFibrantTarget A d Y).obj j)) := by
+  haveI := strictDiagramFibrantTarget_obj_isFibrant A d Y j
+  exact fixedFrameOverFunctor_homLeft_homotopyEquivalence
+    (strictDiagramValueCofFactorization A)
+    (cosimplicialResolutionFamily (strictDiagramValueCofFactorization A)) X
+    (strictDiagramEvaluatedSourceFrames A d X) (strictDiagramEvaluatedAugmentation A d X)
+    (strictDiagramEvaluatedAugmentation_weak A d X) i _
+
+/-- 右脚も、指定した評価frameのcofibrancyから各値でホモトピー同値。 -/
+lemma strictDiagramValueFrameHomRight_equivalence (X Y : StrictComplexDiagram A d)
+    (i : (strictDiagramIndex d)ᵒᵖ) (j : strictDiagramIndex d) :
+    IsSimplicialHomotopyEquivalence
+      (((strictDiagramValueFrameHomRight A d X).app i).app
+        ((strictDiagramFibrantTarget A d Y).obj j)) := by
+  haveI := strictDiagramFibrantTarget_obj_isFibrant A d Y j
+  exact fixedFrameOverFunctor_homRight_homotopyEquivalence
+    (strictDiagramValueCofFactorization A)
+    (cosimplicialResolutionFamily (strictDiagramValueCofFactorization A)) X
+    (strictDiagramEvaluatedSourceFrames A d X) (strictDiagramEvaluatedAugmentation A d X)
+    (strictDiagramEvaluatedAugmentation_weak A d X)
+    (strictDiagramEvaluatedSourceFrame_cofibrant A d X)
+    (strictDiagramEvaluatedSourceFrame_homotopicallyConstant A d X) i _
+
+```
+
+coherent end の同値性や、RR01 の実射との一致はまだ結論しない。
+
+### 65.1 検証と切断への接続の条件
+
+一覧：済み 1／全体 13（うち追加 11）
+
+`StrictDiagramValueFrameComparison` 92行を対象ビルド2,865 jobsで検証。
+小監査10宣言は標準三公理のみ。ログ `/tmp/is-w1/value-frame-comparison/build.log`。
+累計152本・12,190行、外枠20,800行まで8,610行。計算上限は変更していない。
+
+両脚は単なる値ごとの同値の選択ではなく、`FrameOverFunctor.homLeft`・
+`homRight` の同じ二変数の自然変換である。今回の弱同値性の証明は
+`strictDiagramEvaluatedAugmentation_weak` と指定評価frameの cofibrancy・
+homotopical constancy を使い、E01 や実評価の充満忠実性は使わない。
+
+次の運搬には既存の `kanDiagramFunctorIsoOfPointwise` が使える。
+入力は KanObject 値の通常の図式と、その忘却図式の自然変換であり、成分の
+`IsQCatEquivalence` から coherent な全関手同型を返す。型を弱める入力は要らない。
+ただし添字は `Type u`・射は宇宙 `u` に揃える必要があるため、
+元の二変数の添字を `AsSmall` へ移し、同じ自然変換を束縛する。
+この運搬だけでも、元の frame の通常endが coherent 切断を計算することは出ない。
+RR02 の残りはこの導来end比較と、元の `strictDiagramFrameEndComparison` との一致である。
+
+
+## 66 RR02：全二変数のcoherent係数比較
+
+一覧：済み 1／全体 13（うち追加 11）
+
+既存の `kanDiagramFunctorIsoOfPointwise` に同じ値比較を入力する。
+以下は RR02 の証明分割で、通常endの弱同値不変性は主張しない。
+型を最終の検証済み定義に揃えて記録する。
+
+```lean
+/-- 同じframeの二変数Homを、宇宙を揃えた積の添字で表示する。 -/
+def strictDiagramFrameValueMatrix (P : strictDiagramIndex d ⥤ (SimplexCategory ⥤ Complex A))
+    (Y : StrictComplexDiagram A d) :
+    AsSmall.{u} ((strictDiagramIndex d)ᵒᵖ × strictDiagramIndex d) ⥤ SSet.{u} :=
+  AsSmall.down ⋙ Functor.uncurry.obj
+    (FrameOverFunctor.hom P ⋙
+      (Functor.whiskeringLeft (strictDiagramIndex d) (Complex A) SSet.{u}).obj
+        (strictDiagramFibrantTarget A d Y))
+
+/-- 指定frameのKan性で、同じ二変数の図式を束縛する。 -/
+def strictDiagramFrameValueKanDiagram (P : strictDiagramIndex d ⥤ (SimplexCategory ⥤ Complex A))
+    (hP : ∀ i, reedyLeft simplex (cofibrations (Complex A)) (initial.to (P.obj i)))
+    (hc : ∀ i {n m : SimplexCategory} (f : n ⟶ m), weakEquivalences (Complex A) ((P.obj i).map f))
+    (Y : StrictComplexDiagram A d) :
+    AsSmall.{u} ((strictDiagramIndex d)ᵒᵖ × strictDiagramIndex d) ⥤ KanObject.{u} where
+  obj t := ⟨(strictDiagramFrameValueMatrix A d P Y).obj t, by
+    haveI := strictDiagramFibrantTarget_obj_isFibrant A d Y (AsSmall.down.obj t).2
+    exact HomotopyFunctionComplex.cosimplicialHom_kanComplex _ (hP (AsSmall.down.obj t).1.unop)
+      (hc (AsSmall.down.obj t).1.unop) _⟩
+  map f := (strictDiagramFrameValueMatrix A d P Y).map f
+  map_id t := (strictDiagramFrameValueMatrix A d P Y).map_id t
+  map_comp f g := (strictDiagramFrameValueMatrix A d P Y).map_comp f g
+
+/-- 元の評価frameの全二変数Homを、同じ射の作用でKan図式へ束縛する。 -/
+def strictDiagramEvaluatedValueKan (X Y : StrictComplexDiagram A d) :
+    AsSmall.{u} ((strictDiagramIndex d)ᵒᵖ × strictDiagramIndex d) ⥤ KanObject.{u} :=
+  strictDiagramFrameValueKanDiagram A d (strictDiagramEvaluatedSourceFrames A d X)
+    (strictDiagramEvaluatedSourceFrame_cofibrant A d X)
+    (strictDiagramEvaluatedSourceFrame_homotopicallyConstant A d X) Y
+
+/-- 標準値frameの全二変数HomのKan図式。 -/
+def strictDiagramStandardValueKan (X Y : StrictComplexDiagram A d) :
+    AsSmall.{u} ((strictDiagramIndex d)ᵒᵖ × strictDiagramIndex d) ⥤ KanObject.{u} :=
+  strictDiagramFrameValueKanDiagram A d
+    (X ⋙ (cosimplicialResolutionFamily (strictDiagramValueCofFactorization A)).obj)
+    (fun i => (cosimplicialResolutionFamily (strictDiagramValueCofFactorization A)).cofibrant (X.obj i))
+    (fun i => (cosimplicialResolutionFamily (strictDiagramValueCofFactorization A)).atObject
+      (X.obj i) |>.homotopicallyConstant) Y
+
+/-- 同じ共通frameの全二変数HomのKan図式。 -/
+def strictDiagramCommonValueKan (X Y : StrictComplexDiagram A d) :
+    AsSmall.{u} ((strictDiagramIndex d)ᵒᵖ × strictDiagramIndex d) ⥤ KanObject.{u} :=
+  strictDiagramFrameValueKanDiagram A d (strictDiagramCommonValueFrame A d X)
+    (FrameOverFunctor.commonObj_cofibrant (strictDiagramValueCofFactorization A)
+      (cosimplicialResolutionFamily (strictDiagramValueCofFactorization A)) X
+      (strictDiagramEvaluatedSourceFrames A d X) (strictDiagramEvaluatedAugmentation A d X))
+    (FrameOverFunctor.commonObj_homotopicallyConstant (strictDiagramValueCofFactorization A)
+      (cosimplicialResolutionFamily (strictDiagramValueCofFactorization A)) X
+      (strictDiagramEvaluatedSourceFrames A d X) (strictDiagramEvaluatedAugmentation A d X)
+      (strictDiagramEvaluatedAugmentation_weak A d X)) Y
+
+/-- 左脚の同じ全自然変換を、宇宙を揃えた二変数へ移す。 -/
+def strictDiagramValueKanLeft (X Y : StrictComplexDiagram A d) :
+    strictDiagramStandardValueKan A d X Y ⋙ kanObjectForget ⟶
+      strictDiagramCommonValueKan A d X Y ⋙ kanObjectForget :=
+  Functor.whiskerLeft AsSmall.down (Functor.uncurry.map
+    (Functor.whiskerRight (strictDiagramValueFrameHomLeft A d X)
+      ((Functor.whiskeringLeft (strictDiagramIndex d) (Complex A) SSet.{u}).obj
+        (strictDiagramFibrantTarget A d Y))))
+
+/-- 右脚も同じ二変数の自然変換として宇宙を移す。 -/
+def strictDiagramValueKanRight (X Y : StrictComplexDiagram A d) :
+    strictDiagramEvaluatedValueKan A d X Y ⋙ kanObjectForget ⟶
+      strictDiagramCommonValueKan A d X Y ⋙ kanObjectForget :=
+  Functor.whiskerLeft AsSmall.down (Functor.uncurry.map
+    (Functor.whiskerRight (strictDiagramValueFrameHomRight A d X)
+      ((Functor.whiskeringLeft (strictDiagramIndex d) (Complex A) SSet.{u}).obj
+        (strictDiagramFibrantTarget A d Y))))
+
+/-- 標準frameから共通frameへの同じ比較は、全coherent図式の同型となる。 -/
+def strictDiagramValueKanLeftIso (X Y : StrictComplexDiagram A d) :
+    FunctorIso (kanDiagramCoherentNerve (strictDiagramStandardValueKan A d X Y))
+      (kanDiagramCoherentNerve (strictDiagramCommonValueKan A d X Y)) :=
+  kanDiagramFunctorIsoOfPointwise
+    (F := ⟨strictDiagramStandardValueKan A d X Y, trivial⟩)
+    (G := ⟨strictDiagramCommonValueKan A d X Y, trivial⟩)
+    (strictDiagramValueKanLeft A d X Y)
+    (fun t => by
+      haveI := ((strictDiagramStandardValueKan A d X Y).obj t).isKanComplex
+      haveI := ((strictDiagramCommonValueKan A d X Y).obj t).isKanComplex
+      have h : IsSimplicialHomotopyEquivalence
+          (X := ((strictDiagramStandardValueKan A d X Y).obj t).obj)
+          (Y := ((strictDiagramCommonValueKan A d X Y).obj t).obj)
+          ((strictDiagramValueKanLeft A d X Y).app t) :=
+        strictDiagramValueFrameHomLeft_equivalence A d X Y
+          (AsSmall.down.obj t).1 (AsSmall.down.obj t).2
+      exact h.isQCatEquivalence)
+
+/-- 評価frameから共通frameへの同じ比較も、全coherent図式の同型となる。 -/
+def strictDiagramValueKanRightIso (X Y : StrictComplexDiagram A d) :
+    FunctorIso (kanDiagramCoherentNerve (strictDiagramEvaluatedValueKan A d X Y))
+      (kanDiagramCoherentNerve (strictDiagramCommonValueKan A d X Y)) :=
+  kanDiagramFunctorIsoOfPointwise
+    (F := ⟨strictDiagramEvaluatedValueKan A d X Y, trivial⟩)
+    (G := ⟨strictDiagramCommonValueKan A d X Y, trivial⟩)
+    (strictDiagramValueKanRight A d X Y)
+    (fun t => by
+      haveI := ((strictDiagramEvaluatedValueKan A d X Y).obj t).isKanComplex
+      haveI := ((strictDiagramCommonValueKan A d X Y).obj t).isKanComplex
+      have h : IsSimplicialHomotopyEquivalence
+          (X := ((strictDiagramEvaluatedValueKan A d X Y).obj t).obj)
+          (Y := ((strictDiagramCommonValueKan A d X Y).obj t).obj)
+          ((strictDiagramValueKanRight A d X Y).app t) :=
+        strictDiagramValueFrameHomRight_equivalence A d X Y
+          (AsSmall.down.obj t).1 (AsSmall.down.obj t).2
+      exact h.isQCatEquivalence)
+
+/-- 同じ共通frameを介して、評価係数の全図式を標準係数へ比較する。 -/
+def strictDiagramValueKanIso (X Y : StrictComplexDiagram A d) :
+    FunctorIso (kanDiagramCoherentNerve (strictDiagramEvaluatedValueKan A d X Y))
+      (kanDiagramCoherentNerve (strictDiagramStandardValueKan A d X Y)) :=
+  strictDiagramValueKanRightIso A d X Y ≪≫ (strictDiagramValueKanLeftIso A d X Y).symm
+
+```
+
+### 66.1 検証
+
+一覧：済み 1／全体 13（うち追加 11）
+
+`StrictDiagramValueKanComparison` 144行：対象ビルド3,647 jobs成功、
+小監査28宣言成功、標準三公理のみ。
+ログ `/tmp/is-w1/value-kan-comparison/build-5.log`。
+途中の失敗は始対象の型クラス探索、公開定義からのprivate定義参照、
+同じKan性の型の照合であり、零対象と束縛された型を明示して解消した。
+計算上限は変更していない。
+
+二つの比較射は同じ自然変換のuncurryとAsSmallへの引き戻しであり、
+`kanDiagramFunctorIsoOfPointwise` の順方向はその変換の実現。
+`strictDiagramValueKanIso` は右脚と左脚の逆を合成する全図式の同型である。
+E01・E06の弱同値性と実評価の充満忠実性は使っていない。
+
+検証済み累計153本・12,334行、外枠20,800行まで8,466行。
+RR02 全体は未了。次は底を保つunstraightening比較への移送を行う。
+既存 `smallLeftUnstraighteningComparisonOfFunctorIso` は底の等式と
+前合成同値性も供給するので、全空間の同値だけから切断の同値性を推測しない。
+その後も、元のframe Homがcoherent endを計算する比較と、同じRR01射との一致が残る。
+
+
+## 67 RR02：底上の比較と切断への移送
+
+一覧：済み 1／全体 13（うち追加 11）
+
+同じ係数同型を任意の指定底の射 `a` に制限する。
+既存のsmall unstraighteningの比較と相対後合成の同値を適用する、RR02の証明分割。
+型と使用する証明を記録する。通常endの計算との一致は含めない。
+
+```lean
+variable (A : Type u) [CommRing A] (d : StrictDiagramDirection)
+  (X Y : StrictComplexDiagram A d) {B : SSet.{u}} [Quasicategory B]
+  (a : B ⟶ nerve (AsSmall.{u} ((strictDiagramIndex d)ᵒᵖ × strictDiagramIndex d)))
+
+/-- 同じ評価係数を、指定した底の射に沿って制限する。 -/
+def strictDiagramEvaluatedValueCoefficient :
+    (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u} :=
+  (SSet.uliftFunctor.{u + 1, u}).map a ≫
+    kanDiagramCoherentNerve (strictDiagramEvaluatedValueKan A d X Y)
+
+/-- 同じ標準係数を、同じ底の射に沿って制限する。 -/
+def strictDiagramStandardValueCoefficient :
+    (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u} :=
+  (SSet.uliftFunctor.{u + 1, u}).map a ≫
+    kanDiagramCoherentNerve (strictDiagramStandardValueKan A d X Y)
+
+/-- 制限後も同じ全関手同型で係数を比較する。 -/
+def strictDiagramValueCoefficientIso :
+    FunctorIso (strictDiagramEvaluatedValueCoefficient A d X Y a)
+      (strictDiagramStandardValueCoefficient A d X Y a) :=
+  FunctorIso.precomp (strictDiagramValueKanIso A d X Y)
+    ((SSet.uliftFunctor.{u + 1, u}).map a)
+
+/-- 指定の係数同型から選んだ、底上の小さい全空間の比較。 -/
+def strictDiagramValueTotalComparison :
+    smallLeftUnstraightening (strictDiagramEvaluatedValueCoefficient A d X Y a) ⟶
+      smallLeftUnstraightening (strictDiagramStandardValueCoefficient A d X Y a) :=
+  smallLeftUnstraighteningComparisonOfFunctorIso (strictDiagramValueCoefficientIso A d X Y a)
+
+/-- 同じ全空間の射が、底を厳密に保つ等式。 -/
+lemma strictDiagramValueTotalComparison_projection :
+    strictDiagramValueTotalComparison A d X Y a ≫
+      smallLeftUnstraighteningProjection (strictDiagramStandardValueCoefficient A d X Y a) =
+    smallLeftUnstraighteningProjection (strictDiagramEvaluatedValueCoefficient A d X Y a) :=
+  smallLeftUnstraighteningComparisonOfFunctorIso_projection (strictDiagramValueCoefficientIso A d X Y a)
+
+/-- 底を保つ同じ射の後合成による、coherent係数の切断の比較。 -/
+def strictDiagramValueSectionsComparison :
+    simplicialSections (smallLeftUnstraighteningProjection
+      (strictDiagramEvaluatedValueCoefficient A d X Y a)) ⟶
+    simplicialSections (smallLeftUnstraighteningProjection
+      (strictDiagramStandardValueCoefficient A d X Y a)) :=
+  simplicialSectionsMap (strictDiagramValueTotalComparison A d X Y a)
+    (strictDiagramValueTotalComparison_projection A d X Y a)
+
+/-- 同じ切断比較は、底上の逆射による相対後合成の同値からホモトピー同値となる。 -/
+lemma strictDiagramValueSectionsComparison_equivalence :
+    IsSimplicialHomotopyEquivalence (strictDiagramValueSectionsComparison A d X Y a) := by
+  let p := smallLeftUnstraighteningProjection (strictDiagramEvaluatedValueCoefficient A d X Y a)
+  let q := smallLeftUnstraighteningProjection (strictDiagramStandardValueCoefficient A d X Y a)
+  haveI := simplicialSections_kanComplex p
+  haveI := simplicialSections_kanComplex q
+  have he := relativeFunctorPost_isQCatEquivalence_of_precompositionEquivalence
+    p q (strictDiagramValueTotalComparison A d X Y a)
+    (strictDiagramValueTotalComparison_projection A d X Y a)
+    (smallLeftUnstraighteningComparisonOfFunctorIso_isPrecompositionEquivalence
+      (strictDiagramValueCoefficientIso A d X Y a)) (𝟙 B)
+  have hp := (qCatEquivalenceOfIso (simplicialSectionsRelativeIso p)).isQCatEquivalence
+  have hq := (qCatEquivalenceOfIso (simplicialSectionsRelativeIso q)).isQCatEquivalence
+  apply IsQCatEquivalence.isSimplicialHomotopyEquivalence
+  apply hq.cancel_right
+  change IsQCatEquivalence
+    (simplicialSectionsMap (strictDiagramValueTotalComparison A d X Y a)
+      (strictDiagramValueTotalComparison_projection A d X Y a) ≫
+        (simplicialSectionsRelativeIso q).hom)
+  rw [simplicialSectionsRelativeIso_naturality]
+  exact hp.comp he
+
+```
+
+### 67.1 検証と残りの芯
+
+一覧：済み 1／全体 13（うち追加 11）
+
+`StrictDiagramValueSectionsComparison` 96行：対象ビルド3,694 jobs成功、
+小監査7宣言成功、標準三公理のみ。
+ログ `/tmp/is-w1/value-sections-comparison/build-3.log`。
+二回の失敗は既存補題の名前空間不足で修正した。計算上限は変更していない。
+検証済み累計154本・12,430行、外枠20,800行まで8,370行。
+
+指定係数同型から選ばれる全空間の射について、底を厳密に保つ等式を使って
+切断の射を定義し、その同じ切断の射のホモトピー同値性を証明した。
+全空間の同値だけを切断の同値と取り違えていない。
+この宣言は任意の指定底の射 `a` に適用できるが、異なる `a` に対する選択の
+厳密な自然性まで主張するものではない。
+
+次の芯は、元の `strictDiagramFrameMapping` と評価係数のcoherent endとの比較。
+必要な底の射は、添字のnerveのtwisted-arrow射影を、既存の
+`nerveOppositeIso` と `nerveProductSwapIso` およびAsSmallの通常の関手で表示する。
+そこへの係数比較の適用だけで、通常endと導来endの一致を済ませない。
+Reedyの相対充填と、同じRR01射への照合は引き続き未了。
+`Reedy.NestedLatching` はlatching添字内の分解を供給するが、coherentな変換空間の
+導来end表示そのものを既に供給しているとは扱わない。
+E01 の直接比較・単位の一意性の経路は再試行していない。
+
+
+## 68 RR02：twisted-arrowの底の具体化
+
+一覧：済み 1／全体 13（うち追加 11）
+
+既存のtwisted-arrow射影・反対圏のnerve・積の同型を組み合わせる。
+新しいReedy構造は導入しない。RR02の係数比較に使う具体的な底の表示である。
+
+```lean
+/-- 積の同型で入れ替えた添字を、元の始点・終点の順へ戻す通常の関手。 -/
+def strictDiagramEndIndexFunctor (d : StrictDiagramDirection) :
+    AsSmall.{u} (strictDiagramIndex d) × (AsSmall.{u} (strictDiagramIndex d))ᵒᵖ ⥤
+      AsSmall.{u} ((strictDiagramIndex d)ᵒᵖ × strictDiagramIndex d) :=
+  CategoryTheory.Prod.swap _ _ ⋙
+    (AsSmall.down : AsSmall.{u} (strictDiagramIndex d) ⥤ strictDiagramIndex d).op.prod
+      (AsSmall.down : AsSmall.{u} (strictDiagramIndex d) ⥤ strictDiagramIndex d) ⋙ AsSmall.up
+
+/-- 元の添字のtwisted arrowの始点・終点を、同じ二変数係数の底へ送る。 -/
+def strictDiagramEndIndexMap (d : StrictDiagramDirection) :
+    TwistedArrow (nerve (AsSmall.{u} (strictDiagramIndex d))) ⟶
+      nerve (AsSmall.{u} ((strictDiagramIndex d)ᵒᵖ × strictDiagramIndex d)) :=
+  twistedArrowProjection (nerve (AsSmall.{u} (strictDiagramIndex d))) ≫
+    ((nerveOppositeIso (C := AsSmall.{u} (strictDiagramIndex d))).hom ⊗ₘ
+      𝟙 (nerve (AsSmall.{u} (strictDiagramIndex d)))) ≫
+    (nerveProductSwapIso (AsSmall.{u} (strictDiagramIndex d))
+      (AsSmall.{u} (strictDiagramIndex d))ᵒᵖ).inv ≫ nerveMap (strictDiagramEndIndexFunctor d)
+
+variable (A : Type u) [CommRing A] (d : StrictDiagramDirection)
+  (X Y : StrictComplexDiagram A d)
+
+/-- 同じ評価frame係数の、twisted-arrowの底上のcoherent end。 -/
+def strictDiagramEvaluatedFrameEnd : SSet.{u} :=
+  simplicialSections (smallLeftUnstraighteningProjection
+    (strictDiagramEvaluatedValueCoefficient A d X Y (strictDiagramEndIndexMap d)))
+
+/-- 標準frame係数の、同じ底上のcoherent end。 -/
+def strictDiagramStandardFrameEnd : SSet.{u} :=
+  simplicialSections (smallLeftUnstraighteningProjection
+    (strictDiagramStandardValueCoefficient A d X Y (strictDiagramEndIndexMap d)))
+
+/-- 同じ係数比較を、この指定したtwisted-arrowの底で使う。 -/
+def strictDiagramFrameEndCoefficientComparison :
+    strictDiagramEvaluatedFrameEnd A d X Y ⟶ strictDiagramStandardFrameEnd A d X Y :=
+  strictDiagramValueSectionsComparison A d X Y (strictDiagramEndIndexMap d)
+
+/-- この指定した係数比較は、同じ切断の射としてホモトピー同値。 -/
+lemma strictDiagramFrameEndCoefficientComparison_equivalence :
+    IsSimplicialHomotopyEquivalence (strictDiagramFrameEndCoefficientComparison A d X Y) :=
+  strictDiagramValueSectionsComparison_equivalence A d X Y (strictDiagramEndIndexMap d)
+
+```
+
+### 68.1 検証と残りの規模の点検
+
+一覧：済み 1／全体 13（うち追加 11）
+
+`StrictDiagramFrameEndCoefficients` 68行：対象ビルド3,714 jobs成功、
+小監査7宣言成功、標準三公理のみ。
+ログ `/tmp/is-w1/frame-end-coefficients/build.log`。
+検証済み累計155本・12,498行、外枠20,800行まで8,302行。計算上限は変更していない。
+
+今回固定したendの底は `TwistedArrow (nerve (AsSmall (strictDiagramIndex d)))`。
+RR01の元の大きい底とは、後で宇宙移送と底の比較を照合する必要がある。
+この定義だけでそれらを定義上同一とは扱わない。
+
+残りの規模は、§44・§52の上端を短縮できたと仮定せず、次の暫定値で点検する。
+
+| 未了 | 残りの見込み（行） |
+| --- | ---: |
+| E01（別経路は紙で探索中） | 700〜1,400 |
+| E02〜E06 | 1,150〜1,950 |
+| RR02の導来end比較・実射照合 | 1,400〜2,200 |
+| RR03 | 600〜1,000 |
+| RR04 | 300〜450 |
+| RR05 | 150〜250 |
+| R2d・R2e | 500〜700 |
+| 残り合計 | 4,800〜7,950 |
+| 現在の検証済みを含むR2完成まで | 17,298〜20,448 |
+
+上端の余裕は352行。これは証明の完成を保証する数字ではなく、既存の見積もりを
+据え置いた点検値。導来endの芯の分割・E01の別経路でこの上端を超える見込みが
+出た時点で、外枠の停止規則に従って報告する。
+係数の包装を増やしてRR02の完成とせず、次は
+`strictDiagramFrameMapping A d X Y ⟶ strictDiagramEvaluatedFrameEnd A d X Y`
+の実射と同値性の証明を進める。
+
+
+## 69 RR02の芯の再見積もり：外枠による中間停止
+
+一覧：済み 1／全体 13（うち追加 11）
+
+### 69.1 点検結果
+
+§68.1の「残りのRR02は1,400〜2,200行」は、§44の値を据え置いた暫定値だった。
+芯の実装に入るため既存の型を再点検した結果、この上端を維持する根拠が不足していた。
+今回は新しいLeanを書かず、未了の比較を以下の三群へ分解して見積もり直した。
+
+- `DiagramModel.MappingLimit` は通常の極限の厳密な同型で、標的は一定図式。
+  Reedy図式の二変数の導来endの普遍性は結論にない。
+- `Reedy.BoundaryHom.isLimit`・`comparison` はlatching余極限とmatching極限の移送。
+  これは各境界の計算には使えるが、coherent endの比較射とその相対充填を供給しない。
+- `FrameWeightedLimit.comparison_weakEquivalence` は既存の重み付きHomと
+  HomotopyLimit模型の比較。QuillenのSSetモデルを具体的に入れることは可能だが、
+  同じReedy frame Homをその重み付きHomへ同定する部分と、元のRR01射への照合は別。
+- `OrdinaryBarRelativeHomDescent` はword模型の選択空間の境界充填であり、
+  原典の任意のcoherent図式の厳密化や、今回の導来end比較そのものの定理ではない。
+
+§65〜68で完成した係数の比較・移送は再利用する。これらは以下の芯の代わりにはならない。
+E01の保留を、RR02に充満忠実性やend比較の同値性を仮定として足すことで回避しない。
+
+### 69.2 型つきの残り（紙、未実装）
+
+以下の名前は新規宣言案。RR02の証明分割であり、新たなIDは付けていない。
+`A : Type u`、`[CommRing A]`、`d : StrictDiagramDirection`、
+`X Y : StrictComplexDiagram A d`、`U := SSet.uliftFunctor.{u+1,u}`。
+指定の二図式は `FX := strictDiagramEvaluatedDiagram A d X`、同様に `FY` とする。
+証明済みの型としては扱わない。
+
+```lean
+-- (a) 元のframe Homから、固定した評価係数のcoherent endへの実射。
+def strictDiagramFrameDerivedEndMap :
+    strictDiagramFrameMapping A d X Y ⟶ strictDiagramEvaluatedFrameEnd A d X Y
+
+lemma strictDiagramFrameDerivedEndMap_equivalence :
+    IsSimplicialHomotopyEquivalence (strictDiagramFrameDerivedEndMap A d X Y)
+
+-- (b) 標準値frameのendから、D(A)の実際のHom係数のendへの実射。
+def strictDiagramStandardEndToDerived :
+    U.obj (strictDiagramStandardFrameEnd A d X Y) ⟶
+      simplicialSections (functorEndProjection FX FY)
+
+lemma strictDiagramStandardEndToDerived_equivalence :
+    IsSimplicialHomotopyEquivalence (strictDiagramStandardEndToDerived A d X Y)
+
+-- (c) 上の構成を、RR01で固定した同じ実射へ全族で照合する。
+def strictDiagramFrameDerivedEndComparisonIso :
+    FunctorIso
+      (U.map (strictDiagramFrameDerivedEndMap A d X Y) ≫
+        U.map (strictDiagramFrameEndCoefficientComparison A d X Y) ≫
+        strictDiagramStandardEndToDerived A d X Y)
+      (strictDiagramFrameEndComparison A d X Y)
+```
+
+(a)は実射の組み立て、Reedyの各境界への相対充填、全次数への接続。
+(b)は既存の複体HammockとD(A)の比較を全二変数の係数の射として使う部分と、
+AsSmall・ulift・twisted-arrowの底の照合。点ごとの同値を自然な族と仮定しない。
+(c)は同じ source frame・fibrant target・`strictDiagramDerivedEvaluation_factor` に戻す部分。
+この同型を省いて別の弱同値な射をRR01の射の代わりにしない。
+
+### 69.3 見積もりと停止
+
+| RR02の未了部分 | 残りの見込み（行） |
+| --- | ---: |
+| (a) Reedy frameから導来endへの実射と相対充填 | 900〜1,500 |
+| (b) D(A)の実Hom係数・宇宙と底の比較 | 500〜900 |
+| (c) 元のRR01射への全族の照合 | 500〜900 |
+| RR02の残り合計 | 1,900〜3,300 |
+| RR02以外の残り（§68.1を維持） | 3,400〜5,750 |
+| 残り合計 | 5,300〜9,050 |
+| 検証済み12,498行を含むR2完成まで | 17,798〜21,548 |
+
+上端が外枠20,800行を748行超える。行数は証明済みの下限ではなく実装見込みだが、
+「超える見込みで停止」の規則はこの状況に適用される。
+`inf-supply-w1.md`の外枠と`lane-goals-2026-11-14.md`共通規則に従い、ここでLeanの追加を停止。
+検証済みはすべて `60a4d843f` までコミット済み。未検証E01の四本は従来どおり作業木に残す。
+今回ビルド・鍵取得はしていない。R2は未完了、停止点5aには達していない。
+範囲を弱めたりR3を実装したりせず、規模または証明経路の判断を待つ。
+
+### 69.4 代わりの紙の作業：R3の利用側を再確認
+
+一覧：済み 1／全体 13（うち追加 11）
+
+現在の本体・draftsの型を読み直し、§56.3〜56.4の境目が変わらないことを確認した。
+
+| 利用側 | 現在の入力・結論 | R3の判断材料 |
+| --- | --- | --- |
+| `EInfinity/BarrattEccles/CAlgUnderlyingDerivedComparison.algebraCAlgSource_underlyingDerivedIso` | `FunctorIso (algebraCAlgSource A ≫ cAlgForgetDerived A) (algebraUnderlyingDerivedSource A)` | strict BE源の実忘却との比較。任意coherent BE図式のstrict表示の存在ではない |
+| drafts `Shared/CosimplicialEInfinity.totEInfinity_isLimitCone` | `(X : CosimplicialAlgebra A)` を入力し同じ `totEInfinityCone` の極限性 | この利用箇所はstrict入力。全coherent入力の本質的全射性を直接には要求しない |
+| drafts `A2/DerivedPrismaticCohomology.derivedPrismaticCohomology_preservesSifted` | `PreservesSmallSiftedColimits ...` | 本体の定義は任意の `D : ulift I ⟶ X` と指定余錐を量化する。strict入力だけの保存性では足りない |
+
+③-b専用worktreeの報告§38.2〜38.3も読み取りのみで再確認。
+1・2はstrict BE図式と同じ実Uの比較、3は任意coherent BE図式への拡張であり、
+加群版のstrict化だけではBE作用を回復できない、との切り分けを維持している。
+他枝のmerge・未取り込みコードのimport・R3のLean実装はしていない。
+R2の充満忠実性をR3の本質的全射性の代用にはしない。
+
+
+## 70 承認後の再開：RR02(a)の実射の構成
+
+一覧：済み 1／全体 13（うち追加 11）
+
+11-14夜のユーザー承認に従い、外枠を24,000行に更新する。
+約18,000行で一覧・(a)〜(c)の実測・E01の別経路の紙の進みを報告する。
+停止点5aで止まり、R3・R4は実装しない。goalはactiveに戻っている。
+
+(a)の実射は、既存のHomの要素圏と元のframeの全自然変換から作る。
+最初に指定の錐を固定する。これはRR02(a)の証明分割で、導来極限性を仮定しない。
+最終の検証済み型と証明は次のとおり。
+
+```lean
+/-- 元の添字のHomの要素圏。対象は実際の添字射、射はその前後合成の分解。 -/
+abbrev StrictDiagramArrowElements (d : StrictDiagramDirection) :=
+  (Functor.uncurry.obj (coyoneda (C := AsSmall.{u} (strictDiagramIndex d)))).Elements
+
+/-- 同じ添字射の始点と終点を、既存の二変数係数の底へ送る。 -/
+def strictDiagramArrowElementsBase (d : StrictDiagramDirection) :
+    StrictDiagramArrowElements.{u} d ⥤
+      AsSmall.{u} ((strictDiagramIndex d)ᵒᵖ × strictDiagramIndex d) :=
+  Functor.Elements.π _ ⋙ CategoryTheory.Prod.swap _ _ ⋙ strictDiagramEndIndexFunctor d
+
+variable (A : Type u) [CommRing A] (d : StrictDiagramDirection)
+  (X Y : StrictComplexDiagram A d)
+local instance arrowConeModel : HomotopicalAlgebra.ModelCategory (StrictComplexDiagram A d) :=
+  strictDiagramReedyModelCategory A d
+
+/-- 実際の添字射で評価した、同じframeの二変数係数。 -/
+def strictDiagramFrameArrowDiagram : StrictDiagramArrowElements.{u} d ⥤ SSet.{u} :=
+  strictDiagramArrowElementsBase d ⋙ strictDiagramEvaluatedValueKan A d X Y ⋙ kanObjectForget
+
+/-- 元の全自然変換を、指定した添字射に沿うHomへ送る実写像。 -/
+def strictDiagramFrameArrowLeg (t : StrictDiagramArrowElements.{u} d) :
+    strictDiagramFrameMapping A d X Y ⟶ (strictDiagramFrameArrowDiagram A d X Y).obj t where
+  app n := ↾fun f =>
+    ((strictDiagramSourceFrame A d X).obj.obj n.unop).map (AsSmall.down.map t.val) ≫
+      f.app (AsSmall.down.obj t.obj.2)
+  naturality := by
+    intro n m θ
+    apply ConcreteCategory.hom_ext
+    intro f
+    symm
+    change ((strictDiagramSourceFrame A d X).obj.map θ.unop).app _ ≫
+        (((strictDiagramSourceFrame A d X).obj.obj n.unop).map (AsSmall.down.map t.val) ≫
+          f.app _) =
+      ((strictDiagramSourceFrame A d X).obj.obj m.unop).map (AsSmall.down.map t.val) ≫
+        (((strictDiagramSourceFrame A d X).obj.map θ.unop).app _ ≫ f.app _)
+    rw [← Category.assoc, ← ((strictDiagramSourceFrame A d X).obj.map θ.unop).naturality,
+      Category.assoc]
+
+/-- 全ての前後合成の分解に対し、同じframeの成分は錐の自然性を満たす。 -/
+lemma strictDiagramFrameArrowLeg_naturality {t s : StrictDiagramArrowElements.{u} d}
+    (g : t ⟶ s) :
+    strictDiagramFrameArrowLeg A d X Y t ≫ (strictDiagramFrameArrowDiagram A d X Y).map g =
+      strictDiagramFrameArrowLeg A d X Y s := by
+  apply SSet.hom_ext
+  intro n
+  apply ConcreteCategory.hom_ext
+  intro f
+  have hg : g.hom.1.unop ≫ t.val ≫ g.hom.2 = s.val := by
+    have h := g.map_val
+    change (g.hom.1.unop ≫ t.val) ≫ g.hom.2 = s.val at h
+    simpa only [Category.assoc] using h
+  have hh := congrArg (fun k => AsSmall.down.map k) hg
+  change AsSmall.down.map g.hom.1.unop ≫ AsSmall.down.map t.val ≫
+      AsSmall.down.map g.hom.2 = AsSmall.down.map s.val at hh
+  change ((strictDiagramSourceFrame A d X).obj.obj n.unop).map (AsSmall.down.map g.hom.1.unop) ≫
+      (((strictDiagramSourceFrame A d X).obj.obj n.unop).map (AsSmall.down.map t.val) ≫ f.app _) ≫
+        (strictDiagramFibrantTarget A d Y).map (AsSmall.down.map g.hom.2) =
+      ((strictDiagramSourceFrame A d X).obj.obj n.unop).map (AsSmall.down.map s.val) ≫ f.app _
+  simp only [Category.assoc]
+  rw [← f.naturality]
+  have h := congrArg (fun k =>
+    ((strictDiagramSourceFrame A d X).obj.obj n.unop).map k ≫
+      f.app (AsSmall.down.obj s.obj.2)) hh
+  simpa only [CategoryTheory.Functor.op_obj, Opposite.unop_op,
+    CategoryTheory.Functor.map_comp, Category.assoc] using h
+
+/-- 元の全frame Homを頂点とする、Hom要素圏上の指定錐。 -/
+def strictDiagramFrameArrowCone : Cone (strictDiagramFrameArrowDiagram A d X Y) where
+  pt := strictDiagramFrameMapping A d X Y
+  π := { app := strictDiagramFrameArrowLeg A d X Y
+         naturality := by intro t s g; simpa using (strictDiagramFrameArrowLeg_naturality A d X Y g).symm }
+
+```
+
+### 70.1 検証と次の接続
+
+一覧：済み 1／全体 13（うち追加 11）
+
+`StrictDiagramFrameArrowCone` 93行：対象ビルド3,715 jobs成功、小監査12宣言成功、
+標準三公理のみ。ログ `/tmp/is-w1/frame-arrow-cone/build-5.log`。
+型クラスの指定、自然性の向き、反対関手の対象の計算を局所的に明示して検証した。
+計算上限は変更していない。既存のE01下書きは検証対象に含めていない。
+検証済み累計156本・12,591行、外枠24,000行まで11,409行。
+再開後のRR02(a)の実測は93行、(b)(c)の新規実装は0行。
+
+今回の錐は全単体の自然変換を元の添字射へ前合成して作っており、
+全ての前後合成の分解に対する自然性を証明した。π₀や頂点だけの錐ではない。
+次に `kanObjectConeOfUnderlying` と元の `bousfieldKanConeComparison` を使う。
+`kanCone_isLimit_of_bousfieldKanComparison` は実比較の弱同値性を入力に要求するため、
+その弱同値性をReedy条件から証明する工程は残す。
+Hom要素圏のnerveと既存twisted-arrow表示の照合もまだ必要である。
+RR02(a)の実射全体・同値性は未完了。E01の別経路は§69以前の紙の整理を維持し、
+直接の指定単位比較と未供給の単位普遍性には戻っていない。
+
+## §71 RR02(a)：同じHom要素圏の錐の通常の極限性
+
+一覧：済み 1／全体 13（うち追加 11）
+
+§69.2(a)の証明分割。追加のIDは設けない。恒等射の対象、始点・終点からの分解、
+錐からwedgeへの制限、復元した射の全成分での法則を使う。
+通常の極限性から導来極限性を推論しない。
+
+以下は `StrictDiagramFrameArrowLimit.lean` の型。恒等射の対象・始点/終点の分解は
+`strictDiagramArrowIdentity`・`strictDiagramArrowFromSource`・
+`strictDiagramArrowFromTarget`。任意の射の分解を用い、恒等射での評価からwedgeを作る。
+
+```lean
+def strictDiagramFrameArrowWedge
+    (s : Cone (strictDiagramFrameArrowDiagram A d X Y)) :
+    Wedge (strictDiagramPointFrameMapping A d X Y)
+def strictDiagramFrameArrowLift
+    (s : Cone (strictDiagramFrameArrowDiagram A d X Y)) :
+    s.pt ⟶ strictDiagramFrameMapping A d X Y
+lemma strictDiagramFrameArrowLift_fac
+    (s : Cone (strictDiagramFrameArrowDiagram A d X Y))
+    (t : StrictDiagramArrowElements.{u} d) :
+    strictDiagramFrameArrowLift A d X Y s ≫
+      strictDiagramFrameArrowLeg A d X Y t = s.π.app t
+def strictDiagramFrameArrowIsLimit :
+    IsLimit (strictDiagramFrameArrowCone A d X Y)
+```
+
+次の `StrictDiagramFrameArrowComparison.lean` は既存の構成の適用と法則。
+Kan図式・錐への束縛と忘却、同じ通常の極限性、標準比較射と全添字射での評価を扱う。
+
+```lean
+def strictDiagramFrameArrowKanCone :
+    Cone (strictDiagramFrameArrowKanDiagram A d X Y)
+lemma strictDiagramFrameArrowKanCone_forget :
+    kanObjectForget.mapCone (strictDiagramFrameArrowKanCone A d X Y) =
+      strictDiagramFrameArrowCone A d X Y
+def strictDiagramFrameArrowKanIsLimit :
+    IsLimit (strictDiagramFrameArrowKanCone A d X Y)
+def strictDiagramFrameArrowComparison : strictDiagramFrameMapping A d X Y ⟶
+    bousfieldKanHolim (strictDiagramFrameArrowDiagram A d X Y)
+lemma strictDiagramFrameArrowComparison_evaluation (t : StrictDiagramArrowElements.{u} d) :
+    strictDiagramFrameArrowComparison A d X Y ≫
+      bousfieldKanEvaluation (strictDiagramFrameArrowDiagram A d X Y) t =
+        strictDiagramFrameArrowLeg A d X Y t
+```
+
+この比較射が弱同値であること、およびHom要素圏のnerveと既存twisted-arrow切断との照合は残る。
+E01の別経路については、有限部分の切断を極限へ移すだけでは弱同値性は出ないという
+§69の確認を維持する。元の指定単位の直接比較・未供給の単位普遍性は再試行していない。
+
+### 71.1 検証・実測
+
+一覧：済み 1／全体 13（うち追加 11）
+
+| ファイル | 行数 | 対象ビルド | 小監査 |
+|---|---:|---|---|
+| StrictDiagramFrameArrowLimit | 114 | 3,717 jobs成功 | 12宣言、標準三公理のみ |
+| StrictDiagramFrameArrowComparison | 53 | 3,752 jobs成功 | 6宣言、標準三公理のみ |
+
+ログは `/tmp/is-w1/frame-arrow-limit/build-10.log` と
+`/tmp/is-w1/frame-arrow-comparison/build-2.log`。全成分の型の正規化を局所化し、
+最後の変換を `convert` で明示した。計算上限は変更していない。
+既存の未検証のE01下書き4本は今回のビルド・コミットに含めていない。
+
+検証済み累計158本・12,758行（旧G2本文の分割は別計数）。外枠24,000行まで11,242行。
+上限変更後のRR02(a)実測は260行（§70の93行＋今回167行）、(b)(c)は新規0行。
+約18,000行の途中報告点にはまだ達していない。
+
+この束で通常の極限性と同じBousfield–Kan比較射・評価の法則までを検証した。
+RR02(a)の弱同値性とtwisted-arrow切断への照合は未完で、RR02は完了に数えない。
+次はこの同じ実射の弱同値性へ進む。R3・R4の実装は行っていない。
+
+## §72 RR02(a)：自由・評価随伴による実係数の表示
+
+一覧：済み 1／全体 13（うち追加 11）
+
+前のターンは `807e0d662` の検証済み167行を追加した進捗。
+今回は§69.2(a)の証明分割として、元の二変数Homを図式圏の中のframeからのHomで表示する。
+既存の `evaluationLeftAdjoint`・`evaluationAdjunctionRight` と
+`adjunctionHomIsoSameUniverse` を適用し、随伴を再構成しない。
+
+```lean
+def strictDiagramFreeAt (j : strictDiagramIndex d) :
+    Complex A ⥤ StrictComplexDiagram A d
+def strictDiagramFreeAtAdjunction (j : strictDiagramIndex d) :
+    strictDiagramFreeAt A d j ⊣ (CategoryTheory.evaluation _ _).obj j
+lemma strictDiagramFreeAt_isLeftQuillen (j : strictDiagramIndex d) :
+    Quillen.IsLeftQuillen (strictDiagramFreeAt A d j)
+def strictDiagramFreeValueFrame (X : StrictComplexDiagram A d)
+    (i j : strictDiagramIndex d) : SimplexCategory ⥤ StrictComplexDiagram A d
+def strictDiagramFreeValueHomIso (X : StrictComplexDiagram A d)
+    (i j : strictDiagramIndex d) :
+    CosimplicialHom.cosimplicialHom (strictDiagramFreeValueFrame A d X i j) ≅
+      (CategoryTheory.evaluation _ _).obj j ⋙
+        CosimplicialHom.cosimplicialHom (strictDiagramEvaluatedSourceFrame A d X i)
+def strictDiagramFreeArrowHomIso (X Y : StrictComplexDiagram A d)
+    (t : StrictDiagramArrowElements.{u} d) :
+    (CosimplicialHom.cosimplicialHom (strictDiagramFreeValueFrame A d X
+      (AsSmall.down.obj t.obj.1.unop) (AsSmall.down.obj t.obj.2))).obj
+        (strictDiagramFibrantTarget A d Y) ≅
+      (strictDiagramFrameArrowDiagram A d X Y).obj t
+```
+
+確認した接続上の注意：`bousfieldKanConeComparison_homotopyEquivalence_of_extensions`
+は任意のobjectwise anodyne自然変換に沿う図式全体の延長性を要求する。
+各値のKan性や通常の極限性だけではこの入力は出ない。
+また `SmallHomYonedaWeight.map_weightComparison_weakEquivalence` の `hzero` は
+添字圏全体でのprojective cofibrancyであり、各値のcofibrancyではない。
+どちらも未証明の入力を仮定に足してRR02を閉じることはしない。
+
+次の接続は、この自由frameの全添字射の作用、重みの実現と元のframeの比較である。
+今回のHom同型は全標的に自然だが、自由frameのHom要素圏全体での関手への束縛はまだ含まない。
+E01の別経路は§71の紙の状態を維持する。
+
+同じ証明分割で、`StrictDiagramFreeValueFrameConditions.lean` に次の保存則の適用を置く。
+ここでも全添字族のprojective cofibrancyを各値の条件で代用しない。
+
+```lean
+lemma strictDiagramFreeValueFrame_cofibrant (X : StrictComplexDiagram A d)
+    (i j : strictDiagramIndex d) :
+    Reedy.reedyLeft Reedy.simplex (cofibrations (StrictComplexDiagram A d))
+      (initial.to (strictDiagramFreeValueFrame A d X i j))
+lemma strictDiagramFreeValueFrame_homotopicallyConstant (X : StrictComplexDiagram A d)
+    (i j : strictDiagramIndex d) {m n : SimplexCategory} (f : m ⟶ n) :
+    weakEquivalences (StrictComplexDiagram A d)
+      ((strictDiagramFreeValueFrame A d X i j).map f)
+```
+
+### 72.1 検証・実測
+
+一覧：済み 1／全体 13（うち追加 11）
+
+| ファイル | 行数 | 対象ビルド | 小監査 |
+|---|---:|---|---|
+| StrictDiagramFreeValueFrame | 68 | 3,754 jobs成功 | 11宣言、標準三公理のみ |
+| StrictDiagramFreeValueFrameConditions | 50 | 3,755 jobs成功 | 8宣言、標準三公理のみ |
+
+ログ：`/tmp/is-w1/free-value-frame/build-2.log`、
+`/tmp/is-w1/free-value-conditions/build.log`。必要な余積の既存インスタンスを明示し、
+計算上限を変更せずに通した。未検証のE01下書きは対象外。
+検証済み累計160本・12,876行。外枠24,000行まで11,124行。
+上限変更後のRR02(a)実測は378行、(b)(c)新規0行。
+RR02全体は未完。実比較の弱同値性を、条件を加えずに証明する作業を続ける。
+
+## §73 RR02(a)：自由frameの全添字族
+
+一覧：済み 1／全体 13（うち追加 11）
+
+前のターンは `da1fd7d7b` の検証済み118行を追加した進捗。
+今回も§69.2(a)の証明分割で、§72の各値を同じHom要素圏全体に束ねる。
+既存の自由図式の対象・射を変えず、余積の添字の前合成で評価頂点を移送する。
+単位・合成則は既存の構成の法則で、IDを追加しない。
+
+```lean
+def strictDiagramFreeAtReindex {i j : strictDiagramIndex d} (f : i ⟶ j) :
+    strictDiagramFreeAt A d j ⟶ strictDiagramFreeAt A d i
+lemma strictDiagramFreeAtReindex_id (i : strictDiagramIndex d) :
+    strictDiagramFreeAtReindex A d (𝟙 i) = 𝟙 (strictDiagramFreeAt A d i)
+lemma strictDiagramFreeAtReindex_comp {i j k : strictDiagramIndex d}
+    (f : i ⟶ j) (g : j ⟶ k) :
+    strictDiagramFreeAtReindex A d (f ≫ g) =
+      strictDiagramFreeAtReindex A d g ≫ strictDiagramFreeAtReindex A d f
+def strictDiagramFreeAtFunctor :
+    (strictDiagramIndex d)ᵒᵖ ⥤ Complex A ⥤ StrictComplexDiagram A d
+def strictDiagramFreeArrowIndex (d : StrictDiagramDirection) :
+    (StrictDiagramArrowElements.{u} d)ᵒᵖ ⥤
+      (strictDiagramIndex d)ᵒᵖ × strictDiagramIndex d
+def strictDiagramFreeValueFrameFamily (X : StrictComplexDiagram A d) :
+    (strictDiagramIndex d)ᵒᵖ ⥤ strictDiagramIndex d ⥤
+      SimplexCategory ⥤ StrictComplexDiagram A d
+def strictDiagramFreeArrowFrame (X : StrictComplexDiagram A d) :
+    (StrictDiagramArrowElements.{u} d)ᵒᵖ ⥤ SimplexCategory ⥤ StrictComplexDiagram A d
+lemma strictDiagramFreeArrowFrame_obj (X : StrictComplexDiagram A d)
+    (t : StrictDiagramArrowElements.{u} d) :
+    (strictDiagramFreeArrowFrame A d X).obj (Opposite.op t) =
+      strictDiagramFreeValueFrame A d X
+        (AsSmall.down.obj t.obj.1.unop) (AsSmall.down.obj t.obj.2)
+```
+
+全族のHomと実係数の自然同型、重みの実現と元のframeの比較は、この後の接続である。
+RR02の弱同値性はまだ結論していない。E01の別経路の紙は§71・§72の確認を維持する。
+
+### 73.1 検証・実測
+
+一覧：済み 1／全体 13（うち追加 11）
+
+| ファイル | 行数 | 対象ビルド | 小監査 |
+|---|---:|---|---|
+| StrictDiagramFreeAtReindex | 74 | 3,755 jobs成功 | 14宣言、標準三公理のみ |
+| StrictDiagramFreeArrowFrame | 54 | 3,757 jobs成功 | 7宣言、標準三公理のみ |
+
+ログ：`/tmp/is-w1/free-at-reindex/build-3.log` と
+`/tmp/is-w1/free-arrow-frame/build.log`。単位則の最後を恒等射との合成の法則で明示して通した。
+計算上限は変更していない。既存の未検証のE01下書き4本は対象外。
+検証済み累計162本・13,004行、外枠24,000行まで10,996行。
+上限変更後のRR02(a)実測は506行、(b)(c)新規0行。
+
+この束は全添字射で作用する自由frameの族まで。実係数との全族の同型と、
+重みの実現の弱同値性は残る。RR02の完了数は変えず、R3・R4は実装しない。
+
+## §74 RR02(a)：自由frameのHomと実係数の自然同型
+
+一覧：済み 1／全体 13（うち追加 11）
+
+前のターンは `871060df6` の検証済み128行を追加した進捗。
+§69.2(a)の証明分割として、§73の全族から取るHomと実係数を同定する。
+各値の随伴同型は§72を再利用する。自然性は余積の挿入、前合成、元の図式射の自然性で示す。
+
+```lean
+def strictDiagramFreeArrowHom (X Y : StrictComplexDiagram A d) :
+    StrictDiagramArrowElements.{u} d ⥤ SSet.{u}
+lemma strictDiagramFreeArrowHomIso_naturality (X Y : StrictComplexDiagram A d)
+    {t s : StrictDiagramArrowElements.{u} d} (g : t ⟶ s) :
+    (strictDiagramFreeArrowHom A d X Y).map g ≫ (strictDiagramFreeArrowHomIso A d X Y s).hom =
+      (strictDiagramFreeArrowHomIso A d X Y t).hom ≫
+        (strictDiagramFrameArrowDiagram A d X Y).map g
+def strictDiagramFreeArrowHomNatIso (X Y : StrictComplexDiagram A d) :
+    strictDiagramFreeArrowHom A d X Y ≅ strictDiagramFrameArrowDiagram A d X Y
+```
+
+実比較の弱同値性を仮定に追加せず、同じ図式と同じ写像の照合を進める。
+E01の別経路の紙は§71〜§73の確認を維持する。
+
+### 74.1 次の接続の型（紙）
+
+RR02(a)の同じ実比較を保つため、次に自由frameの全族から元のsource frameへの増大射を作る。
+次の型は未実装であり、検証済み宣言に数えない。
+
+```lean
+def strictDiagramFreeArrowAugmentation (X : StrictComplexDiagram A d) :
+    strictDiagramFreeArrowFrame A d X ⟶
+      (Functor.const (StrictDiagramArrowElements.{u} d)ᵒᵖ).obj
+        (strictDiagramSourceFrame A d X).obj
+lemma strictDiagramFreeArrowAugmentation_hom (X Y : StrictComplexDiagram A d)
+    (t : StrictDiagramArrowElements.{u} d) :
+    (CosimplicialHom.cosimplicialHomMap
+      ((strictDiagramFreeArrowAugmentation A d X).app (Opposite.op t))).app
+        (strictDiagramFibrantTarget A d Y) ≫
+      (strictDiagramFreeArrowHomIso A d X Y t).hom =
+        strictDiagramFrameArrowLeg A d X Y t
+```
+
+各余積の挿入に対し、元の添字射との合成をsource frameに作用させる。
+この増大射が重みの実現後に弱同値となる証明は別に必要で、増大射の存在だけで済ませない。
+
+### 74.2 検証・実測
+
+一覧：済み 1／全体 13（うち追加 11）
+
+`StrictDiagramFreeArrowHom.lean` 67行、対象ビルド3,758 jobs成功。
+小監査15宣言は標準三公理のみ。ログ `/tmp/is-w1/free-arrow-hom/build-3.log`。
+余積の添字と被加数を明示し、評価frameの表示を局所正規化して通した。
+計算上限は変更していない。未検証のE01下書き4本は今回の対象外。
+
+検証済み累計163本・13,071行。外枠24,000行まで10,929行。
+上限変更後のRR02(a)実測573行、(b)(c)新規0行。
+実係数との同型は全添字射に自然であり、値だけの同型ではない。
+増大射と、重みの実現の弱同値性は残る。RR02を完了に数えず、続ける。
+
+## §75 RR02(a)：指定したsource frameへの増大射
+
+一覧：済み 1／全体 13（うち追加 11）
+
+前のターンは `62d404e74` の検証済み67行を追加した進捗。
+§74.1の二つの型を実装する。成分は次の型で切り出す。
+これらは§69.2(a)の証明分割であり、新しいIDは設けない。
+
+```lean
+def strictDiagramFreeArrowAugmentationComponent (X : StrictComplexDiagram A d)
+    (t : StrictDiagramArrowElements.{u} d) :
+    (strictDiagramFreeArrowFrame A d X).obj (Opposite.op t) ⟶
+      (strictDiagramSourceFrame A d X).obj
+```
+
+余積の添字 `h : j ⟶ k` には `Q.map (t.val ≫ h)` を対応させる。
+全族への束縛にはHom要素圏の射の `map_val` を使い、元の添字射の前後合成の式を保つ。
+最後に、随伴Hom同型の単位成分で計算して、既存の `strictDiagramFrameArrowLeg` と照合する。
+重みの実現後の弱同値性はまだ証明対象として残る。
+
+### 75.1 評価点での比較の次案（紙、未検証）
+
+各評価点 `k` で、自由図式の余積の添字をまとめた圏は、
+`(strictDiagramFreeArrowIndex d ⋙ Prod.fst _ _ ⋙ yoneda.obj k).Elements`
+で表せる見込み。対象は `i ⟶ j ⟶ k` で、係数は元のframeの `i` での値。
+これから `Over k` への関手を合成 `i ⟶ k` で作る。
+逆向きの候補は `i ⟶ k` を `(i ⟶ k, 𝟙 k)` とするもの。
+後者を左随伴とする随伴のHomの対応では、終点側の射は要素圏の条件で決まり、
+始点側の射が `Over k` の射になる。これはまだLeanで検証していない。
+
+この添字の比較だけで重み付き実現の弱同値性を結論せず、実際の重み・増大射の移送を
+さらに照合する必要がある。新たな一般のcofinality定理を入力として仮定しない。
+
+### 75.2 検証・実測
+
+一覧：済み 1／全体 13（うち追加 11）
+
+`StrictDiagramFreeArrowAugmentation.lean` 104行、対象ビルド3,759 jobs成功。
+小監査14宣言は標準三公理のみ。ログ `/tmp/is-w1/free-arrow-augmentation/build-5.log`。
+自然性の逆向きのsimpが再帰上限に達した箇所は、必要な一本の等式の直接適用に変えた。
+縮小添字の表示を局所的な定義的等式で照合し、計算上限は変更せずに通した。
+初回の不成功な証明に伴うLeanの二次的なpanicは、修正後のビルドでは再現していない。
+未検証のE01下書き4本は今回の対象外。
+
+検証済み累計164本・13,175行。外枠24,000行まで10,825行。
+上限変更後のRR02(a)実測677行、(b)(c)新規0行。
+増大射とそのHomが既存の錐の脚に一致することまで検証した。
+§75.1の添字比較、実現後の弱同値性、既存twisted-arrow切断への接続は未完。
+E01の別経路の紙は§71〜§74の状態を維持する。RR02の完了数は変えず、続ける。
+
+## §76 RR02(a)：評価点での実余積の添字比較
+
+一覧：済み 1／全体 13（うち追加 11）
+
+前のターンは `b2db3f11a` の検証済み104行を追加した進捗。
+§75.1の案を、§69.2(a)の証明分割として実装する。型は次のとおり。
+
+```lean
+def strictDiagramFreeEvaluationWeight (d : StrictDiagramDirection) (k : strictDiagramIndex d) :
+    (StrictDiagramArrowElements.{u} d)ᵒᵖ ⥤ Type
+abbrev StrictDiagramFreeEvaluationIndex (d : StrictDiagramDirection) (k : strictDiagramIndex d) :=
+    (strictDiagramFreeEvaluationWeight.{u} d k).Elements
+def strictDiagramFreeEvaluationToOver (d : StrictDiagramDirection) (k : strictDiagramIndex d) :
+    StrictDiagramFreeEvaluationIndex.{u} d k ⥤ Over k
+def strictDiagramFreeEvaluationSectionObj (d : StrictDiagramDirection) (k : strictDiagramIndex d)
+    (t : Over k) : StrictDiagramFreeEvaluationIndex.{u} d k
+def strictDiagramFreeEvaluationSection (d : StrictDiagramDirection) (k : strictDiagramIndex d) :
+    Over k ⥤ StrictDiagramFreeEvaluationIndex.{u} d k
+```
+
+合成への関手は、Hom要素圏の関係式と、その上の余積の添字の関係式の両方を使う。
+恒等射付きの関手も全射で構成し、対象の対応だけで済ませない。
+随伴と重みの実現への移送は次の接続として残る。E01の別経路の紙は前節の状態を維持する。
+
+同じ比較の余単位は次の型で作る。元の二本目の射を使い、恒等射付きの添字から戻す。
+既存の構成の法則の接続として扱い、IDを追加しない。
+
+```lean
+def strictDiagramFreeEvaluationCounitComponent (t : StrictDiagramFreeEvaluationIndex.{u} d k) :
+    (strictDiagramFreeEvaluationSection d k).obj ((strictDiagramFreeEvaluationToOver d k).obj t) ⟶ t
+def strictDiagramFreeEvaluationCounit :
+    strictDiagramFreeEvaluationToOver.{u} d k ⋙ strictDiagramFreeEvaluationSection d k ⟶
+      𝟭 (StrictDiagramFreeEvaluationIndex.{u} d k)
+```
+
+### 76.1 検証・実測
+
+一覧：済み 1／全体 13（うち追加 11）
+
+| ファイル | 行数 | 対象ビルド | 小監査 |
+|---|---:|---|---|
+| StrictDiagramFreeEvaluationIndex | 75 | 3,760 jobs成功 | 17宣言、標準三公理のみ |
+| StrictDiagramFreeEvaluationCounit | 53 | 3,761 jobs成功 | 8宣言、標準三公理のみ |
+
+ログ：`/tmp/is-w1/free-evaluation-index/build-2.log`、
+`/tmp/is-w1/free-evaluation-counit/build-2.log`。
+合成則の単位射、縮小添字の表示を局所的な等式で明示して検証した。
+計算上限は変更していない。未検証のE01下書き4本は今回の対象外。
+
+検証済み累計166本・13,303行、外枠24,000行まで10,697行。
+上限変更後のRR02(a)実測805行、(b)(c)新規0行。
+評価点での添字比較と、合成して戻す自然な比較射まで検証した。
+随伴の単位・三角恒等式、重みの移送と実現後の弱同値性は残る。
+RR02は未完で、一覧の完了数は変えない。
+
+## §77 RR02(a)：指定した添字比較の随伴
+
+一覧：済み 1／全体 13（うち追加 11）
+
+前のターンは `aa76c7f46` の検証済み128行を追加した進捗。
+§76の二つの関手と余単位をそのまま使い、単位と両三角恒等式を証明する。
+既存の構成の法則と§69.2(a)の証明分割であり、IDを追加しない。
+
+```lean
+def strictDiagramFreeEvaluationUnit :
+    𝟭 (Over k) ⟶ strictDiagramFreeEvaluationSection.{u} d k ⋙
+      strictDiagramFreeEvaluationToOver d k
+lemma strictDiagramFreeEvaluation_left_triangle :
+    Functor.whiskerRight (strictDiagramFreeEvaluationUnit.{u} d k)
+        (strictDiagramFreeEvaluationSection d k) ≫
+      (Functor.associator _ _ _).hom ≫
+      Functor.whiskerLeft (strictDiagramFreeEvaluationSection d k)
+        (strictDiagramFreeEvaluationCounit d k) =
+      𝟙 (𝟭 (Over k) ⋙ strictDiagramFreeEvaluationSection d k)
+lemma strictDiagramFreeEvaluation_right_triangle :
+    Functor.whiskerLeft (strictDiagramFreeEvaluationToOver.{u} d k)
+        (strictDiagramFreeEvaluationUnit d k) ≫
+      (Functor.associator _ _ _).inv ≫
+      Functor.whiskerRight (strictDiagramFreeEvaluationCounit d k)
+        (strictDiagramFreeEvaluationToOver d k) =
+      𝟙 (strictDiagramFreeEvaluationToOver d k ⋙ 𝟭 (Over k))
+def strictDiagramFreeEvaluationAdjunction :
+    strictDiagramFreeEvaluationSection.{u} d k ⊣ strictDiagramFreeEvaluationToOver d k
+```
+
+この随伴を既存の増大射と重みの移送へ接続する作業は残る。
+通常の随伴ができただけでRR02の弱同値性を結論しない。
+E01の別経路の紙は前節の状態を維持する。
+
+### 77.1 検証・実測
+
+一覧：済み 1／全体 13（うち追加 11）
+
+`StrictDiagramFreeEvaluationAdjunction` 75行を検証した。対象ビルド3,762 jobs成功、
+小監査9宣言、標準三公理のみ。ログ：
+`/tmp/is-w1/free-evaluation-adjunction/build-2.log`。計算上限は変更していない。
+検証済み累計167本・13,378行、外枠24,000行まで10,622行。
+上限変更後のRR02(a)実測880行、(b)(c)新規0行。
+指定した随伴まで完了したが、重みの移送と実現後の弱同値性は未完。
+
+## §78 RR02(a)：添字比較での係数と増大射の保存
+
+一覧：済み 1／全体 13（うち追加 11）
+
+§77の随伴は `4cccee625` にコミット済み。次は既存の忘却と図式の合成を固定し、
+余単位が係数に恒等射で作用すること、増大射の自然性と切断での一致を照合する。
+既存の構成の法則とRR02(a)の証明分割であり、IDを追加しない。
+
+```lean
+def strictDiagramFreeEvaluationCoefficients :
+    StrictDiagramFreeEvaluationIndex.{u} d k ⥤ C :=
+  strictDiagramFreeEvaluationToOver d k ⋙ Over.forget k ⋙ V
+lemma strictDiagramFreeEvaluationCoefficients_counit
+    (t : StrictDiagramFreeEvaluationIndex.{u} d k) :
+    (strictDiagramFreeEvaluationCoefficients d k V).map
+        (strictDiagramFreeEvaluationCounitComponent d k t) =
+      𝟙 ((strictDiagramFreeEvaluationCoefficients d k V).obj t)
+def strictDiagramFreeEvaluationCoefficientAugmentation :
+    strictDiagramFreeEvaluationCoefficients.{u} d k V ⟶
+      (Functor.const (StrictDiagramFreeEvaluationIndex.{u} d k)).obj (V.obj k)
+lemma strictDiagramFreeEvaluationCoefficientAugmentation_section (t : Over k) :
+    (strictDiagramFreeEvaluationCoefficientAugmentation.{u} d k V).app
+        ((strictDiagramFreeEvaluationSection d k).obj t) = V.map t.hom
+```
+
+### 78.1 検証・実測と次の接続
+
+一覧：済み 1／全体 13（うち追加 11）
+
+`StrictDiagramFreeEvaluationCoefficients` 52行、対象ビルド3,763 jobs成功、
+小監査5宣言・標準三公理のみ。ログ：
+`/tmp/is-w1/free-evaluation-coefficients/build.log`。計算上限は変更していない。
+検証済み累計168本・13,430行、外枠24,000行まで10,570行。
+上限変更後のRR02(a)実測932行、(b)(c)新規0行。
+
+次はこの指定係数の添字比較を重みの実現に接続する。main の
+`Kerodon/LargeInfinityCategories/TensorProductsOfInfinityCategories/SiftedSimplexCategory`
+に `nerveMap_isRightCofinal_of_weaklyContractible_comma` があり、
+指定随伴からの StructuredArrow の始対象と合わせる候補である。
+この定理は同じ宇宙の圏を要求するので、Over の小さい宇宙を合わせる必要がある。
+nerve の right cofinal 性だけでは、このレーンの指定された実現射との一致は出ない。
+その重みの移送と弱同値性を引き続きRR02(a)で閉じる。
+E01の別経路の紙は前節の状態を維持し、未供給の単位の普遍性は仮定しない。
+
+## §79 RR02(a)：指定添字比較の高次 cofinal 性
+
+一覧：済み 1／全体 13（うち追加 11）
+
+§78の main の既存判定を再利用し、OverをAsSmallへ移して指定随伴を合成する。
+この適用はRR02(a)の証明分割。一般のcofinal定理を新造しない。
+
+```lean
+def strictDiagramFreeEvaluationSmallToOver :
+    StrictDiagramFreeEvaluationIndex.{u} d k ⥤ AsSmall.{u} (Over k) :=
+  strictDiagramFreeEvaluationToOver d k ⋙ AsSmall.up
+def strictDiagramFreeEvaluationSmallAdjunction :
+    AsSmall.down ⋙ strictDiagramFreeEvaluationSection.{u} d k ⊣
+      strictDiagramFreeEvaluationSmallToOver d k
+lemma strictDiagramFreeEvaluation_nerve_isRightCofinal :
+    IsRightCofinal (nerveMap (strictDiagramFreeEvaluationSmallToOver.{u} d k))
+```
+
+各StructuredArrowの始対象は新しい選択でなく、この指定随伴の単位を使う。
+元の係数・増大射を保つ移送と、指定実現射の弱同値性への接続は引き続き必要。
+
+### 79.1 検証・実測
+
+一覧：済み 1／全体 13（うち追加 11）
+
+`StrictDiagramFreeEvaluationCofinality` 40行、対象ビルド4,071 jobs成功、
+小監査3宣言・標準三公理のみ。ログ：`/tmp/is-w1/free-evaluation-cofinality/build.log`。
+検証済み169本・13,470行。上限変更後のRR02(a)実測972行、(b)(c)新規0行。
+
+## §80 RR02(a)：既存の重み実現の添字変更の法則
+
+一覧：済み 1／全体 13（うち追加 11）
+
+既存の `FrameWeightRealization.adjunction` の単位を制限し、同じ随伴で転置して
+添字変更射を固定する。既存の実現の係数移送の法則であり、弱同値性の新定理ではない。
+`P : L ⥤ K`、`A : K ⥤ SimplexCategory ⥤ C`、両添字は同じ小宇宙とする。
+
+```lean
+def homReindexIso :
+    hom K A ⋙ (Functor.whiskeringLeft Lᵒᵖ Kᵒᵖ SSet).obj P.op ≅ hom L (P ⋙ A)
+def reindexMap (W : Kᵒᵖ ⥤ SSet) :
+    (functor L (P ⋙ A)).obj (P.op ⋙ W) ⟶ (functor K A).obj W
+lemma reindexMap_homEquiv (W : Kᵒᵖ ⥤ SSet) :
+    (adjunction L (P ⋙ A)).homEquiv _ _ (reindexMap P A W) =
+      Functor.whiskerLeft P.op ((adjunction K A).unit.app W) ≫
+        (homReindexIso P A).hom.app ((functor K A).obj W)
+lemma reindexMap_homEquiv_comp (W : Kᵒᵖ ⥤ SSet) (Y : C)
+    (f : (functor K A).obj W ⟶ Y) :
+    (adjunction L (P ⋙ A)).homEquiv _ Y (reindexMap P A W ≫ f) =
+      Functor.whiskerLeft P.op ((adjunction K A).homEquiv W Y f) ≫
+        (homReindexIso P A).hom.app Y
+```
+
+これは制限した重みの実現射である。Bousfield–Kan重み自体の添字変更と同一視せず、
+その比較射をさらに接続する必要がある。
+
+最初の4項目は対象ビルド2,146 jobs・小監査5宣言（標準三公理のみ）が通った。
+さらに、重み全体の自然性を単位の自然性から追加し、再検証する。
+
+```lean
+lemma reindexMap_naturality {W W' : Kᵒᵖ ⥤ SSet} (f : W ⟶ W') :
+    (functor L (P ⋙ A)).map (Functor.whiskerLeft P.op f) ≫ reindexMap P A W' =
+      reindexMap P A W ≫ (functor K A).map f
+def reindexTransformation :
+    (Functor.whiskeringLeft Lᵒᵖ Kᵒᵖ SSet).obj P.op ⋙ functor L (P ⋙ A) ⟶ functor K A
+```
+
+### 80.1 次の重みの照合（紙）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+`reindexMap` の始域は制限重みの実現である。必要な次の法則は
+`bousfieldKanWeight Lᵒᵖ ⟶ P.op ⋙ bousfieldKanWeight Kᵒᵖ` で、
+成分は `nerveMap (Over.post (X := l) P.op)`。
+元の `Over.map` と `Over.post` の合成は、`P.map_comp` による等式で照合する。
+この重み射を `functor L (P ⋙ A)` で写し、`reindexMap` に前合成するのが
+実際のBousfield–Kan重みの添字変更射である。制限重みをBK重みそのものとしない。
+
+E01別経路の紙の再確認：`FiniteSubcomplexEndComparison` には、実射の自然変換、
+両側の制限錐、その間の錐の射まではある。両錐の `IsLimit` と有限部分での弱同値性、
+その逆極限での保存はまだ供給されていない。特に有限部分複体が準圏であるとは
+仮定できないため、有限準圏だけの定理でこの経路を閉じない。
+指定単位の直接比較を再実行せず、また単位の普遍性を仮定していない。
+
+### 80.2 検証・実測
+
+一覧：済み 1／全体 13（うち追加 11）
+
+`FrameWeightReindexing` の全72行（全重みの自然性を含む）を再検証した。
+対象ビルド2,146 jobs成功、小監査8宣言・標準三公理のみ。
+ログ：`/tmp/is-w1/frame-weight-reindexing/build-2.log`。計算上限は変更していない。
+今回の検証済みは§79の40行と合わせ112行、11宣言。
+累計170本・13,542行、外枠24,000行まで10,458行。
+上限変更後のRR02(a)実測1,044行、(b)(c)新規0行。
+RR02(a)の実現後の弱同値性、(b)(c)、E01の別経路は未完で、停止点5aには未到達。
+未検証のE01下書き4本はコミット対象外。次は§80.1のBK重みの比較を接続する。
+
+## §81 RR02(a)：既存のBK重み比較をframe実現へ接続
+
+一覧：済み 1／全体 13（うち追加 11）
+
+前ターンは `3f86ea185` の検証済み112行の追加という進捗。
+§80.1の重み射は既に `Project/FilteredExchange/KanReplacement/BousfieldKanWeightPost`
+の `bousfieldKanWeightPost` として存在することを確認した。全射の自然性、恒等則、
+合成則もあるので再実装しない。SSet値のcoend用の `bousfieldKanReindex` もあるが、
+今回の複体値frame実現と型が違う。既存の重み射だけを再利用して、§80の指定随伴の
+添字変更に接続する。既存実現の移送の法則でありIDを増やさない。
+
+```lean
+def bousfieldKanReindexMap :
+    (functor L (P ⋙ A)).obj (bousfieldKanWeight Lᵒᵖ) ⟶
+      (functor K A).obj (bousfieldKanWeight Kᵒᵖ)
+lemma bousfieldKanReindexMap_homEquiv (Y : C)
+    (f : (functor K A).obj (bousfieldKanWeight Kᵒᵖ) ⟶ Y) :
+    (adjunction L (P ⋙ A)).homEquiv _ Y (bousfieldKanReindexMap P A ≫ f) =
+      bousfieldKanWeightPost P.op ≫
+        Functor.whiskerLeft P.op
+          ((adjunction K A).homEquiv (bousfieldKanWeight Kᵒᵖ) Y f) ≫
+        (homReindexIso P A).hom.app Y
+```
+
+弱同値性をright cofinal性から直ちに結論しない。元の係数と増大射に接続した
+実現射の弱同値性、およびRR02(b)(c)は依然として残る。
+
+## §82 RR02(a)：指定増大射の添字変更則
+
+一覧：済み 1／全体 13（うち追加 11）
+
+次数零の任意の指定余錐から、定値零単体への重み射と既存のsimplicial Yonedaを
+使って同じ実現随伴で増大射を得る。その添字変更則を証明する。
+これは既存構成の係数移送の法則。弱同値性の仮定や新しいIDを追加しない。
+
+```lean
+def bousfieldKanZeroWeight (K : Type w) [SmallCategory K] :
+    bousfieldKanWeight Kᵒᵖ ⟶ ConstantWeightHom.weight K (SimplexCategory.mk 0)
+def bousfieldKanAugmentation
+    (c : Cocone (ConstantWeightHom.degree K A (SimplexCategory.mk 0))) :
+    (functor K A).obj (bousfieldKanWeight Kᵒᵖ) ⟶ c.pt
+lemma bousfieldKanAugmentation_homEquiv :
+    (adjunction K A).homEquiv _ _ (bousfieldKanAugmentation A c) =
+      bousfieldKanZeroWeight K ≫
+        (ConstantWeightHom.homEquiv K A (SimplexCategory.mk 0) c.pt).symm c.ι
+lemma bousfieldKanReindexMap_augmentation (P : L ⥤ K) :
+    bousfieldKanReindexMap P A ≫ bousfieldKanAugmentation A c =
+      bousfieldKanAugmentation (P ⋙ A) (c.whisker P)
+```
+
+## §83 RR02(a)：自由arrow frameの指定実現と増大射
+
+一覧：済み 1／全体 13（うち追加 11）
+
+§82を既存の `strictDiagramFreeArrowAugmentation` に特殊化し、指定source frame
+の次数零への実現射を固定する。既存の余錐・実現の接続であり、弱同値性はまだ主張しない。
+
+```lean
+def strictDiagramFreeArrowZeroCocone :
+    Cocone (ConstantWeightHom.degree (StrictDiagramArrowElements.{u} d)ᵒᵖ
+      (strictDiagramFreeArrowFrame A d X) (SimplexCategory.mk 0))
+def strictDiagramFreeArrowRealization : StrictComplexDiagram A d
+def strictDiagramFreeArrowRealizationAugmentation :
+    strictDiagramFreeArrowRealization A d X ⟶
+      (strictDiagramSourceFrame A d X).obj.obj (SimplexCategory.mk 0)
+```
+
+二重反対の添字を黙って同一視せず、重みの型に二重反対を残す。
+
+### 82.1 局所化した前提計算
+
+一覧：済み 1／全体 13（うち追加 11）
+
+広い成分比較の `change` は200,000 heartbeatで `whnf`／`isDefEq` に達した。
+上限を変更せず、次の二つの既存構成の法則に分割し、主証明は射の書き換えにする。
+Hom同型の定義全体を展開すると、implicit transparencyで中間項の型照合が失敗したため、
+定義全体の展開を使わない。
+
+```lean
+lemma bousfieldKanZeroWeight_post (P : L ⥤ K) :
+    bousfieldKanWeightPost P.op ≫ Functor.whiskerLeft P.op (bousfieldKanZeroWeight K) =
+      bousfieldKanZeroWeight L
+lemma zeroWeightCocone_reindex (P : L ⥤ K) :
+    Functor.whiskerLeft P.op
+        ((ConstantWeightHom.homEquiv K A (SimplexCategory.mk 0) c.pt).symm c.ι) ≫
+      (homReindexIso P A).hom.app c.pt =
+    (ConstantWeightHom.homEquiv L (P ⋙ A) (SimplexCategory.mk 0) c.pt).symm
+      (c.whisker P).ι
+```
+
+### 83.1 検証・実測
+
+一覧：済み 1／全体 13（うち追加 11）
+
+| ファイル | 行数 | 対象ビルド | 小監査 |
+|---|---:|---|---|
+| FrameBousfieldKanReindexing | 41 | 2,167 jobs成功 | 3宣言、標準三公理のみ |
+| FrameBousfieldKanAugmentation | 76 | 2,169 jobs成功 | 7宣言、標準三公理のみ |
+| StrictDiagramFreeArrowRealization | 52 | 3,799 jobs成功 | 10宣言、標準三公理のみ |
+
+ログ：`/tmp/is-w1/frame-bk-reindexing/build-2.log`、
+`/tmp/is-w1/frame-bk-augmentation/build-7.log`、
+`/tmp/is-w1/free-arrow-realization/build.log`。
+増大射の法則は§82.1の小さい二補題への分割で通った。計算上限は変更していない。
+
+検証済み累計173本・13,711行、外枠24,000行まで10,289行。
+上限変更後のRR02(a)実測1,213行、(b)(c)新規0行。
+今回の169行は、既存の重み射の再利用、実現の添字変更と指定余錐の増大の可換性、
+元の自由arrow frameの実増大射までである。RR02(a)の実増大射の弱同値性は未完。
+
+次の点検：SSet値の `terminalBousfieldKanAugmentation_isSimplicialHomotopyEquivalence`
+は既存だが、複体値のframe実現へそのまま適用しない。
+`FrameWeightRealization.isLeftQuillen` を使う場合は、指定BK重みの射影的cofibrancy
+またはそれに代わる実際の円柱・持ち上げを証明する必要がある。点ごとのframeの
+cofibrancyや、通常の添字圏のFinal性だけでこの入力を埋めない。
+E01別経路の紙の状態は§80.1のままである。
+
+## §84 RR02(a)：既存BK endの持ち上げを重みへ戻す
+
+一覧：済み 1／全体 13（うち追加 11）
+
+前ターンは `a95624bbc` の検証済み169行の追加という進捗。
+`BousfieldKanCoefficientFibration.bousfieldKanMap_trivialKanFibration` は、
+任意の係数ごとの自明Kan fibrationをBK endが保つことを既に示している。
+これを単位パラメータの `weightedSectionsHomEquiv` で戻せば、重みからの実自然変換の
+持ち上げになる。新しいセル分解や新しい一般定理を仮定せず、この既存持ち上げの
+随伴移送をRR02(a)の証明分割として使う。
+
+```lean
+lemma exists_bousfieldKanWeight_lift {F G : K ⥤ SSet.{u}} (p : F ⟶ G)
+    [∀ k, TrivialKanFibration (p.app k)] (a : bousfieldKanWeight K ⟶ G) :
+    ∃ b : bousfieldKanWeight K ⟶ F, b ≫ p = a
+```
+
+値のKan性も遷移のfibration性も足さない。次はこの持ち上げを実際の射影的モデルの
+cofibrancyに渡す。点ごとのcofibrancyで代用しない。
+
+### 84.1 重みの持ち上げの検証
+
+一覧：済み 1／全体 13（うち追加 11）
+
+`BousfieldKanWeightLifting` は対象ビルド2,180 jobs成功、1宣言の小監査は標準三公理のみ。
+ログ：`/tmp/is-w1/bk-weight-lifting/build.log`。
+この実持ち上げから、モデルの既存の `trivialFibrations_llp` を用いて次へ進む。
+
+## §85 RR02(a)：既存モデルの左持ち上げ条件への接続
+
+一覧：済み 1／全体 13（うち追加 11）
+
+SSetの実際のQuillenモデルと境界・hornの生成族を使い、§84の実自然変換の持ち上げを
+射影的モデルのcofibrancyへ移す。モデル構造を利用者の追加仮定にしない。
+既存持ち上げ条件のモデルへの照合であり、IDを増やさない。
+
+```lean
+lemma bousfieldKanWeight_isCofibrant :
+    let := Projective.modelCategory K SSet.modelCategoryQuillen.I SSet.modelCategoryQuillen.J
+    IsCofibrant (bousfieldKanWeight K)
+```
+
+§83.1で不足とした「実際のBK重みの射影的cofibrancy」の入力を直接閉じる段である。
+これだけから実増大射の弱同値性を結論しない。
+
+## §86 RR02(a)：実重みのcofibrancyを既存実現随伴へ渡す
+
+一覧：済み 1／全体 13（うち追加 11）
+
+§85が通った後に、既存の `FrameWeightRealization.isLeftQuillen`、
+`weighted_isLeftQuillen` に同じ重みを渡す。`hA` は各frameのReedy cofibrancy、
+`hconst` は全構造射の弱同値性で、元のfree frameでは既に証明している入力。
+新たな弱同値性や重みのcofibrancyを仮定しない。
+
+```lean
+lemma bousfieldKanRealization_isCofibrant :
+    IsCofibrant ((functor K A).obj (bousfieldKanWeight Kᵒᵖ))
+lemma bousfieldKanWeighted_isLeftQuillen :
+    Quillen.IsLeftQuillen (weightedFunctor K A (bousfieldKanWeight Kᵒᵖ))
+```
+
+いずれも既存Quillen随伴の法則への接続である。実増大射の弱同値性は別に残る。
+
+### 86.1 モデル入力の点検と直接移送への修正
+
+一覧：済み 1／全体 13（うち追加 11）
+
+§85の初回対象検証は `ModelCategory SSet` の不足で失敗した。
+`open scoped SSet.modelCategoryQuillen` は完全なモデルのinstanceを供給しない。
+`Project/ModelCategoryComparison/Inputs/KanQuillen.lean` の `kanQuillenModel` は
+`kanQuillen_model_exists` のsorryに依存するため、importしない。
+§85〜86の未検証案にあった「実際の射影的モデル」「左Quillen」の表現は撤回する。
+公開済みの型やR2の範囲を変えず、以下の直接移送で入力を外す。
+
+```lean
+lemma bousfieldKanWeight_projective_llp :
+    (trivialKanFibrations.functorCategory K).llp (initial.to (bousfieldKanWeight K))
+lemma bousfieldKanRealization_isCofibrant
+    (hA : ∀ k, reedyLeft simplex (cofibrations C) (initial.to (A.obj k))) :
+    IsCofibrant ((functor K A).obj (bousfieldKanWeight Kᵒᵖ))
+```
+
+後者の証明では、元のCの自明fibrationを既存 `boundary_lifting_of_reedyCofibrant`
+でcosimplicial Homの自明Kan fibrationへ送り、§84の持ち上げを指定随伴で戻す。
+SSetのモデル構造も、frameのhomotopically constant性も必要ない。
+これは既存の持ち上げ・随伴法則の直接接続であり、新しいモデル構造を作らない。
+
+## §87 RR02(a)：指定自由arrow frameへの直接適用
+
+一覧：済み 1／全体 13（うち追加 11）
+
+§86.1の直接持ち上げを、検証済みの自由frameのReedy cofibrancyへ適用する。
+
+```lean
+lemma strictDiagramFreeArrowRealization_isCofibrant (X : StrictComplexDiagram A d) :
+    IsCofibrant (strictDiagramFreeArrowRealization A d X)
+```
+
+模型は元の `strictDiagramReedyModelCategory A d`。新しい弱同値性の仮定も
+SSetモデル入力も追加せず、§83で固定した同じ実現対象について述べる。
+
+### 87.1 検証・実測
+
+一覧：済み 1／全体 13（うち追加 11）
+
+| ファイル | 行数 | 対象ビルド | 小監査 |
+|---|---:|---|---|
+| BousfieldKanWeightLifting | 40 | 2,180 jobs成功 | 1宣言、標準三公理のみ |
+| BousfieldKanWeightCofibrancy | 34 | 2,181 jobs成功 | 1宣言、標準三公理のみ |
+| BousfieldKanFrameCofibrancy | 53 | 2,794 jobs成功 | 1宣言、標準三公理のみ |
+| StrictDiagramFreeArrowRealizationCofibrant | 36 | 3,803 jobs成功 | 4宣言、標準三公理のみ |
+
+ログ：`/tmp/is-w1/bk-weight-lifting/build.log`、
+`/tmp/is-w1/bk-weight-cofibrancy/build-2.log`、
+`/tmp/is-w1/bk-frame-cofibrancy/build-2.log`、
+`/tmp/is-w1/free-arrow-realization-cofibrant/build.log`。
+計算上限は変更していない。未証明の `Inputs/KanQuillen` はimportしていない。
+
+最終形は§86.1の直接持ち上げであり、§85〜86の未検証だったモデル存在入力は含まない。
+実際の自由arrow frameの実現対象について、元のReedyモデルでのcofibrancyを閉じた。
+§83.1の入力不足のうち、BK重みの射影的左持ち上げと実現対象のcofibrancyは解消。
+実増大射の弱同値性、全frameへの比較、RR02(b)(c)は未完。
+
+検証済み累計177本・13,874行、外枠24,000行まで10,126行。
+上限変更後のRR02(a)実測1,376行、(b)(c)新規0行。
+E01の別経路の紙は§80.1の状態で、単位の普遍性を仮定する経路は使っていない。
+
+## §88 RR02(a)：単体パラメータ付き実現の境界条件
+
+一覧：済み 1／全体 13（うち追加 11）
+
+前ターンは `2c7e94a04` の検証済み163行の追加という進捗。
+`WeightedFunctor.weightedSectionsAdjunction` と元のframe実現随伴をそのまま合成する。
+右随伴がCの自明fibrationを自明Kan fibrationへ送ることは、前ターンと同じ
+境界持ち上げと `bousfieldKanMap_trivialKanFibration` から出る。
+この通常の随伴の持ち上げ法則で、全単射パラメータの実像がcofibrationであることを得る。
+SSetのモデル存在入力は使わない。RR02(a)の既存の随伴法則への接続で、IDを増やさない。
+
+```lean
+def bousfieldKanParameterRealization : SSet.{w} ⥤ C :=
+  weightedParameterFunctor (bousfieldKanWeight Kᵒᵖ) ⋙ functor K A
+def bousfieldKanParameterAdjunction :
+    bousfieldKanParameterRealization K A ⊣
+      hom K A ⋙ weightedSectionsFunctor (bousfieldKanWeight Kᵒᵖ)
+instance bousfieldKanParameterRealization_isLeftAdjoint :
+    (bousfieldKanParameterRealization K A).IsLeftAdjoint
+lemma bousfieldKanParameterRealization_map_cofibration
+    (hA : ∀ k, reedyLeft simplex (cofibrations C) (initial.to (A.obj k)))
+    {U V : SSet.{w}} (i : U ⟶ V) [Mono i] :
+    cofibrations C ((bousfieldKanParameterRealization K A).map i)
+```
+
+左因子は重み、右因子はパラメータで固定する。既存の反対順序のtensorとの
+同一視は仮定しない。次は標準単体の境界によるReedy cofibrancyへ接続する。
+
+### 88.1 検証と次の境界の移送
+
+一覧：済み 1／全体 13（うち追加 11）
+
+パラメータ付き実現は対象ビルド2,795 jobs成功、4宣言の小監査で標準三公理のみ。
+ログ `/tmp/is-w1/bk-parameter-realization/build.log`。計算上限は変更なし。
+次は既存の有限tensor・latching同型による次の二つの移送を証明する。
+
+```lean
+lemma bousfieldKanRealization_boundary_cofibration (n : ℕ) :
+  cofibrations C (SubcomplexTensor.inclusion (SSet.boundary n)
+    (StandardCosimplicial.diagram (bousfieldKanParameterRealization K A)))
+lemma bousfieldKanRealization_reedy_cofibrant :
+  reedyLeft simplex (cofibrations C)
+    (initial.to (StandardCosimplicial.diagram (bousfieldKanParameterRealization K A)))
+```
+
+共通引数は `hA : ∀ k, reedyLeft simplex (cofibrations C) (initial.to (A.obj k))`。
+RR02(a)の証明の分割であり、増大射の弱同値性を主張するものではない。
+
+### 88.2 検証・実測
+
+一覧：済み 1／全体 13（うち追加 11）
+
+| ファイル | 行数 | 対象ビルド | 小監査 |
+|---|---:|---|---|
+| BousfieldKanParameterizedRealization | 59 | 2,795 jobs成功 | 4宣言、標準三公理のみ |
+| BousfieldKanRealizationReedy | 53 | 2,798 jobs成功 | 2宣言、標準三公理のみ |
+
+後者のログは `/tmp/is-w1/bk-realization-reedy/build.log`。計算上限は変更なし。
+今回112行、検証済み累計179本・13,986行、外枠24,000行まで10,014行。
+上限変更後のRR02(a)実測1,488行、(b)(c)新規0行。
+単体パラメータ付き実現とそのReedy cofibrancyまで検証済み。
+実増大射の弱同値性、全frameへの比較、RR02(b)(c)は引き続き未完。
+E01の別経路の紙は§80.1のまま。停止点5aにはまだ到達していない。
+
+## §89 RR02(a)：同じ実現随伴のKan値
+
+一覧：済み 1／全体 13（うち追加 11）
+
+前ターンは `bbdd69331` の検証済み112行の追加。
+既存のhorn tensor判定とBK endのKan性を、固定した実現随伴へ接続する。
+
+```lean
+lemma bousfieldKanParameterHom_kanComplex
+    (hA : ∀ k, reedyLeft simplex (cofibrations C) (initial.to (A.obj k)))
+    (hconst : ∀ k, ∀ {n m : SimplexCategory} (f : n ⟶ m),
+      weakEquivalences C ((A.obj k).map f))
+    (Y : C) [IsFibrant Y] :
+  SSet.KanComplex
+    ((hom K A ⋙ weightedSectionsFunctor (bousfieldKanWeight Kᵒᵖ)).obj Y)
+```
+
+RR02(a)の証明の分割。これは標的がfibrantなときの写像空間の判定であり、
+任意のfibrationの保存性や実増大射の弱同値性はまだ示していない。
+一般の係数fibrationからweighted nerveの全空間のfibrationを直ちに得る補題は、
+今回の検索では見つからなかった。自明fibrationの場合と混同しない。
+
+### 89.1 検証・実測と次の接続
+
+一覧：済み 1／全体 13（うち追加 11）
+
+`BousfieldKanRealizationMappingKan` は38行。対象ビルド2,796 jobs成功、
+小監査1宣言、標準三公理のみ。ログ `/tmp/is-w1/bk-mapping-kan/build.log`。
+計算上限変更なし。検証済み累計180本・14,024行。
+上限変更後のRR02(a)実測1,526行、(b)(c)新規0行。
+
+次の接続では、fibrant標的でのKan性だけから一般のfibration保存性を推論しない。
+BK重みの検証済み射影的LLPと、単体集合のtensor・内部Homの相対持ち上げを
+組み合わせる経路を調べる。必要なのは次の同じ右随伴における保存性である。
+
+```lean
+-- 目標。まだ証明済みではない。hA, hconst は§89のまま。
+lemma bousfieldKanParameterHom_fibration
+    {Y Z : C} (p : Y ⟶ Z) [Fibration p] :
+  Fibration ((hom K A ⋙ weightedSectionsFunctor (bousfieldKanWeight Kᵒᵖ)).map p)
+```
+
+それを随伴の持ち上げ同値へ入れる際にも、SSetのモデル構造は入力にしない。
+実増大射の弱同値性・全frameへの比較は未完。E01の紙は§80.1から変更なし。
+
+## §90 RR02(a)：相対内部Homの持ち上げの移送
+
+一覧：済み 1／全体 13（うち追加 11）
+
+前ターンは `380b92d55` の写像空間のKan性の検証。
+Mathlibの `anodyneExtensions_pushoutObjObjι'` を既存の二変数随伴で移す法則を置く。
+新しいSSetモデル入力は追加しない。
+
+```lean
+lemma anodyne_pullbackHom_trivialKanFibration {A B E Y : SSet}
+    (i : A ⟶ B) (hi : anodyneExtensions i) (p : E ⟶ Y) [Fibration p]
+    (sq' : internalHom.PullbackObjObj i p) : TrivialKanFibration sq'.π
+```
+
+これは既存の構成の持ち上げ法則でIDは増やさない。次に成分ごとのこの法則を
+BK重みの射影的LLPへ渡す。相対内部Homの引き戻し図式を自然に組み立て、
+持ち上げを元のBK endの射へ戻す比較がなお必要。
+
+### 90.1 BK重みへの適用
+
+一覧：済み 1／全体 13（うち追加 11）
+
+既存の `PointwiseAdjunction.adjunction` と `evaluatePullbackObjObj` により、
+自然な相対内部Homの組み立てを作り直さずに次の移送を証明する。
+
+```lean
+lemma bousfieldKanTensor_hasLiftingProperty {A B : SSet}
+    (i : A ⟶ B) (hi : SSet.anodyneExtensions i)
+    {F G : K ⥤ SSet} (p : F ⟶ G) [∀ k, Fibration (p.app k)] :
+  HasLiftingProperty
+    (((pointwise K (curriedTensor SSet)).map i).app (bousfieldKanWeight K)) p
+```
+
+パラメータは左因子。§88の重みを左因子にした随伴へは、braidingの自然性で
+射の同型を介して移す必要がある。現段階でその同一視を定義上の等式とはしない。
+
+### 90.2 braidingと既存随伴による移送の型
+
+一覧：済み 1／全体 13（うち追加 11）
+
+```lean
+def bousfieldKanParameterSwap (A : SSet) :
+  ((pointwise K (curriedTensor SSet)).obj A).obj (bousfieldKanWeight K) ≅
+    (weightedParameterFunctor (bousfieldKanWeight K)).obj A
+lemma bousfieldKanParameter_hasLiftingProperty
+    (i : A ⟶ B) (hi : SSet.anodyneExtensions i)
+    (p : F ⟶ G) [∀ k, Fibration (p.app k)] :
+  HasLiftingProperty ((weightedParameterFunctor (bousfieldKanWeight K)).map i) p
+lemma bousfieldKanEndMap_fibration
+    (p : F ⟶ G) [∀ k, Fibration (p.app k)] :
+  Fibration (weightedSectionsMap (bousfieldKanWeight K) p)
+```
+
+既存のbraidingの自然性で射の同型を作り、§90.1の持ち上げを移す。
+最後の主張は `weightedSectionsAdjunction.hasLiftingProperty_iff` による移送。
+全てRR02(a)の同じ実現随伴に対する計算。新しいモデル構造は構成しない。
+
+### 90.3 実現随伴への移送
+
+一覧：済み 1／全体 13（うち追加 11）
+
+§89の `hA`, `hconst` の下で、既存のframe Homのfibration性へ§90.2を適用する。
+
+```lean
+lemma bousfieldKanParameterHom_fibration (p : Y ⟶ Z) [Fibration p] :
+  Fibration ((hom K A ⋙ weightedSectionsFunctor (bousfieldKanWeight Kᵒᵖ)).map p)
+lemma bousfieldKanParameterRealization_map_anodyne
+    (i : U ⟶ V) (hi : SSet.anodyneExtensions i) :
+  trivialCofibrations C ((bousfieldKanParameterRealization K A).map i)
+```
+
+最後はCの `fibrations_llp` と§88の同じ随伴による持ち上げの移送。
+
+### 90.4 検証済みの区切りと生存中の待機
+
+一覧：済み 1／全体 13（うち追加 11）
+
+| ファイル | 行数 | 対象ビルド | 小監査 |
+|---|---:|---|---|
+| AnodynePullbackHom | 31 | 1,762 jobs成功 | 1宣言、標準三公理のみ |
+| BousfieldKanTensorLifting | 43 | 2,187 jobs成功 | 1宣言、標準三公理のみ |
+
+ログは `/tmp/is-w1/anodyne-pullback-hom/build.log` と
+`/tmp/is-w1/bk-tensor-lifting/build-2.log`。計算上限変更なし。
+検証済み累計182本・14,098行、外枠24,000行まで9,902行。
+上限変更後のRR02(a)実測1,600行、(b)(c)新規0行。
+
+`BousfieldKanEndFibration` 57行は、初回の名前空間・明示引数のエラーを修正済み。
+再検証のプロセス session 90577 は生存確認済みで、調整役rootビルドの鍵を待機中。
+ログ `/tmp/is-w1/bk-end-fibration/build-2.log`。同じ整理券を維持する。
+`BousfieldKanRealizationAnodyne` 50行はその検証後にビルド予定。
+この2本は未検証として作業木に残し、今回の数学のコミットには含めない。
+E01の別経路の紙は§80.1のまま。停止点5aは未達。
+
+## §91 RR02(a)：実現後の標準単体の構造射
+
+一覧：済み 1／全体 13（うち追加 11）
+
+§90.2のBK end fibration保存性は2,188 jobsの対象ビルドと4宣言の小監査が成功。
+§90.3は同じ整理券一枚で検証待機中。
+その先の構造射には、既存の `SimplexNerve.standardTerminal_isIso` と
+`Quillen.weakEquivalences_iff_isIso_map` を使う。§89の `hA`, `hconst` の下で：
+
+```lean
+lemma bousfieldKanRealization_terminal_weakEquivalence (n : SimplexCategory) :
+  weakEquivalences C ((bousfieldKanParameterRealization K A).map
+    (SSet.stdSimplex.isTerminalObj₀.from (SSet.stdSimplex.obj n)))
+lemma bousfieldKanRealization_homotopicallyConstant
+    {n m : SimplexCategory} (f : n ⟶ m) :
+  weakEquivalences C ((SSet.stdSimplex ⋙ bousfieldKanParameterRealization K A).map f)
+```
+
+収縮は作り直さず、Cの通常の局所化へ既存の収縮を移送する。
+この同定はRR02(a)のframe条件の証明の分割であり、実増大射の弱同値性とは区別する。
+
+### 91.1 検証済みの区切り
+
+一覧：済み 1／全体 13（うち追加 11）
+
+`BousfieldKanEndFibration` 57行、対象ビルド2,188 jobs成功、小監査4宣言、
+標準三公理のみ。ログ `/tmp/is-w1/bk-end-fibration/build-2.log`。
+計算上限変更なし。検証済み累計183本・14,155行。
+上限変更後のRR02(a)実測1,657行、(b)(c)新規0行。
+
+`BousfieldKanRealizationAnodyne` の session 79525 は生存確認済み、
+調整役の監査と先行レーンの鍵を一枚の整理券で待機中。
+ログ `/tmp/is-w1/bk-realization-anodyne/build.log`。
+`BousfieldKanRealizationConstant` はその後に検証する下書き。
+これら2本は未検証としてコミットに含めない。
+E01の別経路の紙は§80.1のまま。実増大射の弱同値性はまだ未証明。
+
+## §92 RR02(a)：同じ自由arrow frameへの適用（検証待ち）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+§91.1以降の検証は session 79525 の同じ整理券で待機中、生存確認済み。
+既存の `strictDiagramFreeValueFrame_cofibrant` と
+`strictDiagramFreeValueFrame_homotopicallyConstant` をそのまま使う適用を書いた。
+
+```lean
+def strictDiagramFreeArrowRealizedFrame (X : StrictComplexDiagram A d) :
+  SimplexCategory ⥤ StrictComplexDiagram A d :=
+  SSet.stdSimplex ⋙ bousfieldKanParameterRealization
+    (StrictDiagramArrowElements d)ᵒᵖ (strictDiagramFreeArrowFrame A d X)
+lemma strictDiagramFreeArrowRealizedFrame_cofibrant (X : StrictComplexDiagram A d) :
+  Reedy.reedyLeft Reedy.simplex (cofibrations (StrictComplexDiagram A d))
+    (initial.to (strictDiagramFreeArrowRealizedFrame A d X))
+lemma strictDiagramFreeArrowRealizedFrame_homotopicallyConstant
+    (X : StrictComplexDiagram A d) {n m : SimplexCategory} (f : n ⟶ m) :
+  weakEquivalences (StrictComplexDiagram A d)
+    ((strictDiagramFreeArrowRealizedFrame A d X).map f)
+```
+
+§88で固定した実現に標準単体を代入するだけで、frameの選択は変えない。
+これはRR02(a)の証明の分割。検証順は§90.3 → §91 → この適用。
+実増大射の弱同値性と元のframe Hom比較との一致は引き続き必要。
+
+### 92.1 検証・実測
+
+一覧：済み 1／全体 13（うち追加 11）
+
+| ファイル | 行数 | 対象ビルド | 小監査 |
+|---|---:|---|---|
+| BousfieldKanRealizationAnodyne | 50 | 2,802 jobs成功 | 2宣言、標準三公理のみ |
+| BousfieldKanRealizationConstant | 56 | 下行と合わせて3,832 jobs成功 | 下行と合わせて9宣言、標準三公理のみ |
+| StrictDiagramFreeArrowRealizedFrame | 58 | 同上 | 同上 |
+
+ログ：`/tmp/is-w1/bk-realization-anodyne/build.log`、
+`/tmp/is-w1/bk-realized-frame-batch/build.log`。いずれもプロセス終了と監査成功を確認。
+計算上限変更なし。今回164行、検証済み累計186本・14,319行。
+上限変更後のRR02(a)実測1,821行、(b)(c)新規0行。
+
+これで、同じBK実現により得た自由arrowの余単体対象についてReedy cofibrancyと
+全構造射の弱同値性が本体で検証された。SSetモデル存在入力は使っていない。
+実増大射の弱同値性、実frame HomとBK endの同一視、RR02(b)(c)はまだ未完。
+後者のHom同一視には既存の `CosimplicialHom.adjunctionHomIso` と
+`QuillenStandardFrame.homIso` が使える。`WeightedFrameHomNaturality` の
+別の重み実現をそのまま同一視せず、§88の指定随伴へ適用する。
+E01の別経路の紙は§80.1のまま。停止点5aにはまだ到達していない。
+
+## §93 RR02(a)：指定実現のHomとBK endの同定
+
+一覧：済み 1／全体 13（うち追加 11）
+
+前ターンは `0d460506c` の164行の検証・コミットとして進捗。
+既存の `adjunctionHomIsoSameUniverse` と `QuillenStandardFrame.homIso` を
+§88の指定随伴に適用し、次の同型と成分の式を証明する。
+
+```lean
+def bousfieldKanRealizationHomIso :
+  cosimplicialHom (SSet.stdSimplex ⋙ bousfieldKanParameterRealization K A) ≅
+    hom K A ⋙ weightedSectionsFunctor (bousfieldKanWeight Kᵒᵖ)
+lemma bousfieldKanRealizationHomIso_hom_app (Y : C) (n : SimplexCategoryᵒᵖ)
+    (f : (bousfieldKanParameterRealization K A).obj (SSet.stdSimplex.obj n.unop) ⟶ Y) :
+  (((bousfieldKanRealizationHomIso K A).hom.app Y).app n) f =
+    SSet.yonedaEquiv ((bousfieldKanParameterAdjunction K A).homEquiv _ Y f)
+```
+
+標的自然性は同型自体に含まれる。source frame全族の自然性と実増大射の照合は
+別途接続が必要であり、この同型だけでRR02(a)の弱同値性を結論しない。
+既存の随伴・Yonedaの法則の移送としてIDは増やさない。
+
+### 93.1 source frameの自然性
+
+一覧：済み 1／全体 13（うち追加 11）
+
+§93の同型と成分式は2,798 jobs成功、小監査2宣言、標準三公理のみ。
+次は既存の `homEquiv_frame_naturality` を合成随伴へ移す。
+
+```lean
+def bousfieldKanParameterMap (a : A ⟶ B) :
+  bousfieldKanParameterRealization K A ⟶ bousfieldKanParameterRealization K B
+lemma bousfieldKanParameterHomEquiv_frame_naturality
+    (a : A ⟶ B) (T : SSet) (Y : C)
+    (t : (bousfieldKanParameterRealization K B).obj T ⟶ Y) :
+  (bousfieldKanParameterAdjunction K A).homEquiv T Y
+      ((bousfieldKanParameterMap K a).app T ≫ t) =
+    (bousfieldKanParameterAdjunction K B).homEquiv T Y t ≫
+      weightedSectionsMap (bousfieldKanWeight Kᵒᵖ) (((homFamily K).map a.op).app Y)
+```
+
+source射は元の実現の `map K a` を同じパラメータで制限したもの。
+既存随伴の自然性の移送としてIDは増やさない。
+
+### 93.2 Hom同型のsource側の照合（検証待ち）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+```lean
+lemma bousfieldKanRealizationHomIso_source_naturality (a : A ⟶ B) :
+  cosimplicialHomMap (Functor.whiskerLeft SSet.stdSimplex (bousfieldKanParameterMap K a)) ≫
+      (bousfieldKanRealizationHomIso K A).hom =
+    (bousfieldKanRealizationHomIso K B).hom ≫
+      Functor.whiskerRight ((homFamily K).map a.op)
+        (weightedSectionsFunctor (bousfieldKanWeight Kᵒᵖ))
+```
+
+§93.1をYonedaの後合成自然性で移す。既存の法則の移送でIDは増やさない。
+
+### 93.3 検証済みの区切り
+
+一覧：済み 1／全体 13（うち追加 11）
+
+`BousfieldKanRealizationHom` 38行、2,798 jobs成功、小監査2宣言、標準三公理のみ。
+ログ `/tmp/is-w1/bk-realization-hom/build.log`。計算上限変更なし。
+検証済み累計187本・14,357行、上限変更後のRR02(a)実測1,859行。
+RR02(b)(c)新規0行。E01の別経路の紙は§80.1のまま。
+
+`BousfieldKanParameterNaturality` は session 18201 が生存確認済みで、
+共有鍵を同じ一枚の整理券で待機中。ログ
+`/tmp/is-w1/bk-parameter-naturality/build.log`。
+`BousfieldKanRealizationHomNaturality` はその後の検証対象。
+この2本は未検証として作業木に残す。実増大射の弱同値性は未完。
+
+## §94 RR02(a)：実増大射に用いる次数の移送（下書き）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+§93.1の session 18201 は生存確認済みで同じ整理券を維持している。
+待ち時間に、実増大射を全次数に接続する既存Yonedaの法則を書く。
+
+```lean
+def degreeTransition (f : n ⟶ m) : degree K A n ⟶ degree K A m
+lemma homEquiv_degree_naturality (f : n ⟶ m) (Y : C)
+    (a : weight K m ⟶ (FrameWeightRealization.hom K A).obj Y) :
+  homEquiv K A n Y ((Functor.const Kᵒᵖ).map (SSet.stdSimplex.map f) ≫ a) =
+    degreeTransition K A f ≫ homEquiv K A m Y a
+```
+
+`degreeTransition` は既存の評価関手の射をwhiskerしたもの。
+この法則と既存の標的自然性を使い、BK重みと標準単体の直積から第二射影で
+標準単体重みに移した後の転置を、次数に自然な増大射へまとめる予定。
+実増大射の弱同値性は別の未完の段として保持する。
+
+### 94.1 検証の更新
+
+一覧：済み 1／全体 13（うち追加 11）
+
+session 18201 は終了。`BousfieldKanParameterNaturality` の初回ビルドは
+合成随伴の `homEquiv` を変形する `change` で失敗した。
+`simp only` に合成則を同時投入する形ではその則が未使用となったため、
+定義の簡約と `Adjunction.comp_homEquiv` の明示的な `rw` を分けた。
+計算上限は変更していない。
+
+準備済みの3本（ParameterNaturality、RealizationHomNaturality、
+ConstantWeightDegreeNaturality）をまとめた再検証 session 57859 は生存確認済み。
+整理券は一枚。ログ `/tmp/is-w1/bk-naturalities-batch/build.log`。
+この3本は未検証として作業木に残す。検証済み累計14,357行は変更なし。
+
+## §95 RR02(a)：全余単体次数の指定増大射（下書き）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+§94.1の再検証 session 57859 は生存確認済み、同じ整理券で待機。
+待ち時間に、§94の法則を使う実増大射の転置を記述した。
+以下で `e : A ⟶ (Functor.const K).obj Q` は指定frame余錐。
+
+```lean
+def bousfieldKanCoconeDegree (n : SimplexCategory) :
+  ConstantWeightHom.degree K A n ⟶ (Functor.const K).obj (Q.obj n)
+def bousfieldKanCoconeWeight (n : SimplexCategory) :
+  ConstantWeightHom.weight K n ⟶ (hom K A).obj (Q.obj n)
+lemma bousfieldKanCoconeWeight_naturality (f : n ⟶ m) :
+  (Functor.const Kᵒᵖ).map (SSet.stdSimplex.map f) ≫ bousfieldKanCoconeWeight K A Q e m =
+    bousfieldKanCoconeWeight K A Q e n ≫ (hom K A).map (Q.map f)
+def bousfieldKanCoconeParameter (n : SimplexCategory) :
+  (weightedParameterFunctor (bousfieldKanWeight Kᵒᵖ)).obj (SSet.stdSimplex.obj n) ⟶
+    (hom K A).obj (Q.obj n)
+lemma bousfieldKanCoconeParameter_naturality (f : n ⟶ m) :
+  (weightedParameterFunctor (bousfieldKanWeight Kᵒᵖ)).map (SSet.stdSimplex.map f) ≫
+      bousfieldKanCoconeParameter K A Q e m =
+    bousfieldKanCoconeParameter K A Q e n ≫ (hom K A).map (Q.map f)
+def bousfieldKanFrameAugmentation :
+  SSet.stdSimplex ⋙ bousfieldKanParameterRealization K A ⟶ Q
+```
+
+これはRR02(a)で指定された実増大射の証明の分割であり、余錐の脚を選び直さない。
+第二射影と既存Yoneda・随伴による転置だけを使う。次数零で§83の実増大射と
+一致する比較および弱同値性はまだ別に必要。未検証のためコミットしない。
+
+### 95.1 E01別経路の紙の更新
+
+一覧：済み 1／全体 13（うち追加 11）
+
+`FiniteSubcomplexEndComparison` の宣言を読み直した。
+`finiteSubcomplexEndComparison`、両制限錐、比較錐の射は全て
+`{A C : SSet} (F G : A ⟶ C)` で定義され、Aの準圏性は要求しない。
+従って有限部分複体への制限は型として可能であるが、その比較の同値性を
+有限準圏に対する定理から得ることはできない。
+
+この経路を閉じるには、少なくとも次を別々に供給する必要がある。
+1. 両制限錐の通常の `IsLimit`。
+2. 任意の有限単体集合での実比較の同値性（有限準圏だけでは足りない）。
+3. 実際の制限図式について、その同値性が逆極限へ移るための相対持ち上げ条件。
+
+一般の図式の成分ごとの弱同値を通常の逆極限が保存するとはしない。
+骨格の塔で扱う場合も、各段の制限射のfibration性と極限錐の比較を別に示す必要がある。
+この候補は紙のままで、E01の完了に数えず、新しいLeanのまとまりを開始していない。
+RR02(a)の当面の順序（自然性の検証 → 全次数の実増大射）は変えない。
+
+### 95.2 自然性3本の検証完了
+
+一覧：済み 1／全体 13（うち追加 11）
+
+合成随伴の書き換えのエラーは、随伴を展開した後も実現関手の略記が残り、
+途中の型がimplicit透明度で整合しなくなることによるものだった。
+`bousfieldKanParameterAdjunction`、`bousfieldKanParameterRealization`、
+`bousfieldKanParameterMap` を同じ箇所で局所簡約してから既存の合成則を適用し、解消。
+計算上限も透明度の設定も変更していない。
+
+| ファイル | 行数 |
+|---|---:|
+| BousfieldKanParameterNaturality | 44 |
+| BousfieldKanRealizationHomNaturality | 39 |
+| ConstantWeightDegreeNaturality | 33 |
+
+対象ビルド2,803 jobs成功、3モジュール5宣言の小監査で標準三公理のみ。
+ログ `/tmp/is-w1/bk-naturalities-batch/build-2.log`、プロセス終了確認済み。
+今回116行、検証済み累計190本・14,473行。
+上限変更後のRR02(a)実測1,975行、(b)(c)新規0行。
+
+これで指定実現Hom同型のsource射の全族の可換性、および定値重みの次数自然性まで
+検証済み。`BousfieldKanFrameAugmentation` は引き続き未検証で、
+session 6391（ログ `/tmp/is-w1/bk-frame-augmentation/build.log`）を一枚の整理券で
+待機中、生存確認済み。今回のコミットには含めない。
+実増大射の弱同値性は未完、停止点5aにはまだ到達していない。
+
+## §96 RR02(a)：元の次数零の増大との照合（下書き）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+全次数の増大射の初回ビルドでは、第二射影自然性の後に定値重みの略記の一致だけが残った。
+`rfl` を追加し、session 8459 で再検証待機中（生存確認済み、整理券一枚）。
+ログ `/tmp/is-w1/bk-frame-augmentation/build-2.log`。
+待ち時間に、元の次数零の増大射と実際に一致する次の法則を準備した。
+
+```lean
+def bousfieldKanZeroParameterIso :
+  (weightedParameterFunctor (bousfieldKanWeight Kᵒᵖ)).obj
+    (SSet.stdSimplex.obj (SimplexCategory.mk 0)) ≅ bousfieldKanWeight Kᵒᵖ
+lemma bousfieldKanZeroParameterIso_weight :
+  (bousfieldKanZeroParameterIso K).hom ≫ bousfieldKanZeroWeight K =
+    snd (bousfieldKanWeight Kᵒᵖ) (ConstantWeightHom.weight K (SimplexCategory.mk 0))
+def bousfieldKanFrameZeroCocone :
+  Cocone (ConstantWeightHom.degree K A (SimplexCategory.mk 0))
+lemma bousfieldKanFrameAugmentation_zero :
+  (functor K A).map (bousfieldKanZeroParameterIso K).hom ≫
+      bousfieldKanAugmentation A (bousfieldKanFrameZeroCocone K A Q e) =
+    (bousfieldKanFrameAugmentation K A Q e).app (SimplexCategory.mk 0)
+```
+
+単位同型は `QuillenStandardFrame.zeroUnitIso` と右unitorの合成を再利用する。
+実増大射を選び直さず、同じ随伴で照合する既存構成の法則。IDは増やさない。
+この下書きは全次数の増大射の検証後に検証し、未検証のままコミットしない。
+
+### 96.1 検証・実測
+
+一覧：済み 1／全体 13（うち追加 11）
+
+| ファイル | 行数 | 対象ビルド | 小監査 |
+|---|---:|---|---|
+| BousfieldKanFrameAugmentation | 78 | 2,798 jobs成功 | 8宣言、標準三公理のみ |
+| BousfieldKanFrameAugmentationZero | 60 | 2,805 jobs成功 | 4宣言、標準三公理のみ |
+
+ログ `/tmp/is-w1/bk-frame-augmentation/build-2.log`、
+`/tmp/is-w1/bk-frame-zero/build.log`。プロセス終了と小監査成功を確認。
+計算上限変更なし。今回138行、検証済み累計192本・14,611行。
+上限変更後のRR02(a)実測2,113行、(b)(c)新規0行。
+
+全次数の実増大射と、単位同型を介した元の次数零の実増大射との一致まで検証済み。
+これを同じ `strictDiagramFreeArrowAugmentation` へ適用し、元の実比較射への接続を続ける。
+実増大射の弱同値性は未完。E01別経路の紙は§95.1、停止点5aは未達。
+
+## §97 RR02(a)：指定自由arrow frameへの増大射の適用
+
+一覧：済み 1／全体 13（うち追加 11）
+
+前ターンは `d2de4be8c` の138行の検証・コミットとして進捗。
+§96の全次数の実増大射と次数零の照合を、元の自由arrow余錐へ適用する。
+
+```lean
+def strictDiagramFreeArrowRealizedAugmentation (X : StrictComplexDiagram A d) :
+  strictDiagramFreeArrowRealizedFrame A d X ⟶ (strictDiagramSourceFrame A d X).obj
+def strictDiagramFreeArrowRealizedZeroIso (X : StrictComplexDiagram A d) :
+  (strictDiagramFreeArrowRealizedFrame A d X).obj (SimplexCategory.mk 0) ≅
+    strictDiagramFreeArrowRealization A d X
+lemma strictDiagramFreeArrowRealizedAugmentation_zero (X : StrictComplexDiagram A d) :
+  (strictDiagramFreeArrowRealizedZeroIso A d X).hom ≫
+      strictDiagramFreeArrowRealizationAugmentation A d X =
+    (strictDiagramFreeArrowRealizedAugmentation A d X).app (SimplexCategory.mk 0)
+```
+
+既存の指定余錐と同じ実現の単位同型を使うだけの適用で、IDは増やさない。
+弱同値性は未証明であり、元の増大射から別の弱同値へ置き換えない。
+
+### §97.1 検証結果
+
+一覧：済み 1／全体 13（うち追加 11）
+
+`StrictDiagramFreeArrowRealizedAugmentation` 53行を対象ビルド（3,837 jobs）し、
+小監査10宣言・標準三公理のみを確認。ログは
+`/tmp/is-w1/free-arrow-realized-augmentation/build.log`。プロセスは終了コード0。
+計算上限変更なし。検証済み累計193本・14,664行。
+上限変更後のRR02(a)実測2,166行、(b)(c)新規0行。
+指定自由arrow frameの全次数の実増大射と次数零の一致まで接続した。
+増大射の弱同値性は未完で、RR02の完了とは数えない。
+
+## §98 RR02(a)：実増大射のHom同型の下での全単体の式
+
+一覧：済み 1／全体 13（うち追加 11）
+
+前ターンは `f6c858fe7` の検証済み53行のコミットとして進捗。
+指定増大射による前合成を、指定随伴の転置とYoneda評価で照合する。
+既存構成の法則でIDは増やさない。追加の型は次の二つ。
+
+```lean
+lemma bousfieldKanFrameAugmentation_homEquiv (n : SimplexCategory) (Y : C)
+    (f : Q.obj n ⟶ Y) :
+    (adjunction K A).homEquiv _ Y ((bousfieldKanFrameAugmentation K A Q e).app n ≫ f) =
+      bousfieldKanCoconeParameter K A Q e n ≫ (hom K A).map f
+lemma bousfieldKanAugmentationHom_app (Y : C) (n : SimplexCategoryᵒᵖ)
+    (f : Q.obj n.unop ⟶ Y) :
+    (((bousfieldKanRealizationHomIso K A).hom.app Y).app n)
+        ((bousfieldKanFrameAugmentation K A Q e).app n.unop ≫ f) =
+      SSet.yonedaEquiv ((weightedSectionsAdjunction (bousfieldKanWeight Kᵒᵖ)).homEquiv _ _
+        (bousfieldKanCoconeParameter K A Q e n.unop ≫ (hom K A).map f))
+```
+
+弱同値性は未完。全SSetの未供給モデル構造は使わない。
+
+### §98.1 検証結果と次の接続
+
+一覧：済み 1／全体 13（うち追加 11）
+
+`BousfieldKanAugmentationHom` 50行、対象ビルド2,802 jobs成功。
+小監査2宣言・標準三公理のみ。ログ `/tmp/is-w1/bk-augmentation-hom/build-3.log`、
+終了コード0。合成随伴の定義上の照合でなく、`Adjunction.comp_homEquiv` の等式を
+`congrArg` で移送している。計算上限変更なし。
+検証済み累計194本・14,714行。上限変更後のRR02(a)実測2,216行、(b)(c)新規0行。
+
+次の接続では、この全単体の式を元の自由arrow余錐へ適用し、Hom係数の同型を介して
+指定したBK錐比較と照合する。実増大射の弱同値性は別に残っている。
+既存の `terminalBousfieldKanAugmentation_isSimplicialHomotopyEquivalence` は
+SSet値のcoendの定理であり、C値のframe実現へ直接適用しない。
+評価点での余積・要素圏による表示の比較と、収縮の移送が必要。
+この不足を型の仮定で置き換えず、RR02(a)の証明分割として続ける。
+
+## §99 RR02(a)：評価と実現の交換に使う後合成則
+
+一覧：済み 1／全体 13（うち追加 11）
+
+前ターンは `8a3c5c491` の50行の証明・検証・コミットとして進捗。
+左随伴 `L ⊣ R` によるframe実現の後合成則を置く。
+既存の実現の法則であり、IDは増やさない。
+
+```lean
+abbrev postFrames (L : C ⥤ D) : K ⥤ SimplexCategory ⥤ D :=
+  A ⋙ (Functor.whiskeringRight SimplexCategory C D).obj L
+def homPostIso : hom K (postFrames K A L) ≅ R ⋙ hom K A
+def postIso : functor K A ⋙ L ≅ functor K (postFrames K A L)
+lemma postIso_unit (W : Kᵒᵖ ⥤ SSet) :
+  ((adjunction K A).comp adj).unit.app W ≫
+    (R ⋙ hom K A).map ((postIso K adj A).hom.app W) =
+  ((adjunction K (postFrames K A L)).ofNatIsoRight
+    (homPostIso K adj A)).unit.app W
+```
+
+`adjunctionHomIsoSameUniverse` と `Adjunction.leftAdjointUniq` を再利用する。
+同型の指定単位との式も保持し、後の増大射の照合に使う。
+
+追加する既存随伴の法則（同じID内）：
+
+```lean
+lemma postIso_homEquiv (W : Kᵒᵖ ⥤ SSet) (Y : D)
+    (f : (functor K (postFrames K A L)).obj W ⟶ Y) :
+  ((adjunction K A).comp adj).homEquiv W Y ((postIso K adj A).hom.app W ≫ f) =
+    (adjunction K (postFrames K A L)).homEquiv W Y f ≫
+      (homPostIso K adj A).hom.app Y
+```
+
+### §99.1 検証結果
+
+一覧：済み 1／全体 13（うち追加 11）
+
+`FrameWeightPostcomposition` 68行、対象ビルド2,148 jobs成功。
+追加の転置の式を含む小監査7宣言・標準三公理のみ。
+ログ `/tmp/is-w1/frame-weight-post/build-3.log`、終了コード0を確認。
+計算上限変更なし。検証済み累計195本・14,782行。
+上限変更後のRR02(a)実測2,284行、(b)(c)新規0行。
+
+評価関手の左随伴性には Mathlib の `evaluationAdjunctionLeft` を使える。
+今回の交換同型と転置の式により、元の図式の実現を評価した対象を、
+評価したframe族の実現へ、指定随伴を保って移せる。
+次に必要なのは自由評価の余積を要素圏へ移す比較であり、
+その後に添字の収縮を移して実増大射の弱同値性を証明する。
+RR02完了・停止点5aとは数えない。
+
+## §100 RR02(a)：自由評価の要素圏での始点固定の比較
+
+一覧：済み 1／全体 13（うち追加 11）
+
+前ターンは `e11dab081` の68行の証明・検証・コミットとして進捗。
+`F : K ⥤ Type w` の要素圏の射影について、固定始点のUnder圏を比較する。
+RR02(a)の自由評価の要素圏への展開に使う証明分割で、IDは増やさない。
+
+```lean
+def liftObj (t : Under e.obj) : Under e
+def lift : Under e.obj ⥤ Under e
+def unitComponent (t : Under e) :
+  t ≅ (lift F e).obj ((Under.post (Functor.Elements.π F)).obj t)
+def equivalence : Under e ≌ Under e.obj
+```
+
+関手部分は指定した `Under.post (Functor.Elements.π F)`。
+持ち上げの終点の要素は `F.map t.hom e.val` であり、任意の逆を選ばない。
+BK重みの照合には反対圏のOver表示への移送も必要で、今回はその前の添字比較。
+
+### §100.1 検証結果
+
+一覧：済み 1／全体 13（うち追加 11）
+
+`ElementsUnderProjection` 67行、対象ビルド693 jobs成功。
+小監査14宣言・標準三公理のみ。ログ `/tmp/is-w1/elements-under/build-2.log`、
+終了コード0を確認。計算上限変更なし。
+検証済み累計196本・14,849行。上限変更後のRR02(a)実測2,351行、(b)(c)新規0行。
+
+指定射影のUnder関手の同値までを検証した。
+この同値だけでC値の実現や元の増大射の弱同値性を結論にはしない。
+次の比較は、`F : K ⥤ Type w`、`B : K ⥤ SimplexCategory ⥤ C` に対し、
+`k ↦ ∐ (_ : F.obj k), B.obj k` を重み `W` で実現したものと、
+`F.Elements` 上の `π ⋙ B` を重み `π.op ⋙ W` で実現したものの同型。
+各余積の挿入によるHomの同値を、指定随伴へ渡す方針。
+BK重みの場合は今回の固定始点の比較を反対圏のOverへ移す必要がある。
+
+## §101 RR02(a)：余積の挿入による要素圏の余錐の比較
+
+一覧：済み 1／全体 13（うち追加 11）
+
+前ターンは `2eebbc3b3` の67行の検証・コミットとして進捗。
+RR02(a)の要素圏への展開の証明分割として、次の通常の余錐の同値を実装する。
+IDは増やさない。これを導来比較の完成とは扱わない。
+
+```lean
+def diagram : K ⥤ C -- k ↦ ∐ (_ : F.obj k), B.obj k
+def toElements (Y : C) (a : diagram F B ⟶ (Functor.const K).obj Y) :
+  Functor.Elements.π F ⋙ B ⟶ (Functor.const F.Elements).obj Y
+def fromElements (Y : C)
+  (a : Functor.Elements.π F ⋙ B ⟶ (Functor.const F.Elements).obj Y) :
+  diagram F B ⟶ (Functor.const K).obj Y
+def homEquiv (Y : C) :
+  (diagram F B ⟶ (Functor.const K).obj Y) ≃
+    (Functor.Elements.π F ⋙ B ⟶ (Functor.const F.Elements).obj Y)
+lemma homEquiv_naturality {Y Z : C} (f : Y ⟶ Z)
+  (a : diagram F B ⟶ (Functor.const K).obj Y) :
+  homEquiv F B Z (a ≫ (Functor.const K).map f) =
+    homEquiv F B Y a ≫ (Functor.const F.Elements).map f
+```
+
+### §101.1 検証結果
+
+一覧：済み 1／全体 13（うち追加 11）
+
+`ElementsCopower` 83行、対象ビルド694 jobs成功。
+小監査16宣言・標準三公理のみ。ログ `/tmp/is-w1/elements-copower/build.log`、
+終了コード0を確認。計算上限変更なし。
+検証済み累計197本・14,932行。上限変更後のRR02(a)実測2,434行、(b)(c)新規0行。
+
+各余積への制限と再構成、全添字射での自然性、両逆、標的の後合成との両立まで検証済み。
+次はこの余積図式を `K × SimplexCategory` 上で取り、`Functor.curry.obj` によって
+frame族へ戻す。重み `W` の各単体の射を余積の各挿入に制限し、
+`π.op ⋙ W ⟶ hom _ (π ⋙ B) Y` との同値を作る。
+逆向きは同じ単体ごとの `Sigma.desc`。指定実現随伴を介して実現の同型へ移す。
+通常の余錐の同値だけでRR02(a)の弱同値性が終わったとはしない。
+
+## §102 RR02(a)：重み付きHomの要素圏への制限
+
+一覧：済み 1／全体 13（うち追加 11）
+
+前ターンは `33a8d1b8a` の83行の検証・コミットとして進捗。
+§101.1の重み付き版に進む。既存の余積の挿入の法則とRR02(a)の証明分割。
+
+```lean
+def frames : K ⥤ SimplexCategory ⥤ C
+def summand (k : K) (x : F.obj k) : B.obj k ⟶ (frames F B).obj k
+lemma summand_naturality {k l : K} (f : k ⟶ l) (x : F.obj k) :
+  B.map f ≫ summand F B l (F.map f x) =
+    summand F B k x ≫ (frames F B).map f
+def weightedHomToElements (W : Kᵒᵖ ⥤ SSet) (Y : C)
+  (a : W ⟶ (FrameWeightRealization.hom K (frames F B)).obj Y) :
+  (Functor.Elements.π F).op ⋙ W ⟶
+    (FrameWeightRealization.hom F.Elements (Functor.Elements.π F ⋙ B)).obj Y
+```
+
+逆向きは全単体の `Sigma.desc` で作る。今回の制限射だけで同値とはしない。
+
+### §102.1 待機中に書く逆写像と両逆（未検証）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+前ターンの対象検証の同じプロセス（session 3242）が生存していることを確認。
+待ちを増やさず、依存する逆写像と両逆を別ファイルの作業木に書く。
+
+```lean
+def weightedHomFromElements
+  (a : (Functor.Elements.π F).op ⋙ W ⟶
+    (FrameWeightRealization.hom F.Elements (Functor.Elements.π F ⋙ B)).obj Y) :
+  W ⟶ (FrameWeightRealization.hom K (frames F B)).obj Y
+def weightedHomEquiv :
+  (W ⟶ (FrameWeightRealization.hom K (frames F B)).obj Y) ≃
+    ((Functor.Elements.π F).op ⋙ W ⟶
+      (FrameWeightRealization.hom F.Elements (Functor.Elements.π F ⋙ B)).obj Y)
+```
+
+未検証分はコミットせず、検証済み累計にも入れない。
+
+### §102.2 指定実現への移送（未検証）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+制限と逆写像の対象検証に依存する次のファイルを、待機中に作業木へ書く。
+既存の指定随伴と余米田の法則を使う。
+
+```lean
+lemma weightedHomEquiv_target_naturality {Y Z : C} (f : Y ⟶ Z)
+  (a : W ⟶ (FrameWeightRealization.hom K (frames F B)).obj Y) :
+  weightedHomEquiv F B W Z (a ≫ (FrameWeightRealization.hom K (frames F B)).map f) =
+    weightedHomEquiv F B W Y a ≫
+      (FrameWeightRealization.hom F.Elements (Functor.Elements.π F ⋙ B)).map f
+def realizationHomEquiv (Y : C) :
+  ((FrameWeightRealization.functor K (frames F B)).obj W ⟶ Y) ≃
+    ((FrameWeightRealization.functor F.Elements (Functor.Elements.π F ⋙ B)).obj
+      ((Functor.Elements.π F).op ⋙ W) ⟶ Y)
+lemma realizationHomEquiv_naturality {Y Z : C} (f : Y ⟶ Z)
+  (a : (FrameWeightRealization.functor K (frames F B)).obj W ⟶ Y) :
+  realizationHomEquiv F B W Z (a ≫ f) = realizationHomEquiv F B W Y a ≫ f
+def realizationIso :
+  (FrameWeightRealization.functor K (frames F B)).obj W ≅
+    (FrameWeightRealization.functor F.Elements (Functor.Elements.π F ⋙ B)).obj
+      ((Functor.Elements.π F).op ⋙ W)
+```
+
+### §102.3 検証結果：重み付き実現の要素圏表示
+
+一覧：済み 1／全体 13（うち追加 11）
+
+| ファイル | 行数 | 結果 |
+|---|---:|---|
+| ElementsCopowerFrames | 70 | 余積frame・挿入・制限の自然性 |
+| ElementsCopowerWeightedHom | 80 | 逆写像・両逆 |
+| ElementsCopowerRealization | 57 | 標的自然性・指定随伴による実現の同型 |
+
+3本207行を対象ビルド2,149 jobsで検証。小監査22宣言・標準三公理のみ。
+ログ `/tmp/is-w1/elements-copower-frames/build-3.log`、終了コード0。
+各単体の等式を明示して余積の挿入へ制限することで自然性を照合した。
+計算上限変更なし。検証済み累計200本・15,139行。
+上限変更後のRR02(a)実測2,641行、(b)(c)新規0行。
+
+余積frameの実際の実現と、要素圏上で制限重みを使った実際の実現との同型まで検証済み。
+次は元の自由arrow frameを評価した族への適用と、BK重みの添字比較・増大射との照合。
+実増大射の弱同値性は未完であり、RR02の完了・停止点5aとはしない。
+
+## §103 RR02(a)：元の自由frameの評価への適用
+
+一覧：済み 1／全体 13（うち追加 11）
+
+前ターンは `65cda48e4` の3本207行の検証・コミットとして進捗。
+指定した自由arrow frameを評価し、同じHom集合による余積frameへ照合する。
+既存の構成の同定でありIDは増やさない。
+
+```lean
+def strictDiagramFreeEvaluationBase (X : StrictComplexDiagram A d) :
+  (StrictDiagramArrowElements d)ᵒᵖ ⥤ SimplexCategory ⥤ Complex A
+def strictDiagramFreeEvaluationFramesIso (X : StrictComplexDiagram A d)
+  (k : strictDiagramIndex d) :
+  FrameWeightRealization.postFrames (StrictDiagramArrowElements d)ᵒᵖ
+    (strictDiagramFreeArrowFrame A d X)
+    ((CategoryTheory.evaluation (strictDiagramIndex d) (Complex A)).obj k) ≅
+  ElementsCopower.frames (strictDiagramFreeEvaluationWeight d k)
+    (strictDiagramFreeEvaluationBase A d X)
+```
+
+### §103.1 評価点での指定実現への接続（未検証）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+既存の交換同型・frame同型・要素圏実現同型を合成する。
+
+```lean
+def strictDiagramFreeEvaluationRealizationIso (X : StrictComplexDiagram A d)
+  (k : strictDiagramIndex d) :
+  (strictDiagramFreeArrowRealization A d X).obj k ≅
+    (FrameWeightRealization.functor (StrictDiagramFreeEvaluationIndex d k)
+      (Functor.Elements.π (strictDiagramFreeEvaluationWeight d k) ⋙
+        strictDiagramFreeEvaluationBase A d X)).obj
+      ((Functor.Elements.π (strictDiagramFreeEvaluationWeight d k)).op ⋙
+        bousfieldKanWeight ((StrictDiagramArrowElements d)ᵒᵖ)ᵒᵖ)
+```
+
+元のBK重みの制限を保ち、要素圏のBK重みとの比較はこの同型の後に行う。
+
+### §103.2 BK重みの比較に使う厳密な添字同型（未検証）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+同じ待機プロセスを維持し、§100の持ち上げ構成の対象・単位の法則を書く。
+既存の比較の法則であり、IDは増やさない。
+
+```lean
+lemma lift_post_obj (t : Under e) :
+  (lift F e).obj ((Under.post (Functor.Elements.π F)).obj t) = t
+lemma post_lift_obj (t : Under e.obj) :
+  (Under.post (Functor.Elements.π F)).obj ((lift F e).obj t) = t
+lemma unit_eq_eqToHom (t : Under e) :
+  (unitComponent F e t).hom = eqToHom (lift_post_obj F e t).symm
+def catIso : Cat.of (Under e) ≅ Cat.of (Under e.obj)
+def nerveIso : nerve (Under e) ≅ nerve (Under e.obj)
+lemma nerveIso_hom : (nerveIso F e).hom =
+  nerveMap (Under.post (Functor.Elements.π F) (X := e))
+```
+
+圏同値だけから単体集合の同型を結論にせず、`Cat.isoOfEquiv` の厳密な等式を確認する。
+
+### §103.3 適用時の宇宙の照合
+
+一覧：済み 1／全体 13（うち追加 11）
+
+最初の対象ビルドで、元のHom添字が `Type 0`、一般のframe実現補題の添字が
+`Type u` という差を確認。既存宣言は変更せず、未検証の適用部分で
+`strictDiagramFreeEvaluationLiftedWeight d k :=
+  strictDiagramFreeEvaluationWeight d k ⋙ CategoryTheory.uliftFunctor.{u, 0}`
+を使う。frame同型の成分は恒等同型でなく `Sigma.reindex Equiv.ulift.symm` とする。
+§103.1の中間標的はこの持ち上げた要素圏へ変更する。
+これは既存の構成の宇宙・係数移送であり、最終のRR02の型は変更しない。
+元の要素圏への上下の移送と、増大射を保つことの照合は引き続き必要。
+
+### §103.4 元の要素圏への上下の移送（未検証）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+現在の同じ検証待ちを維持し、宇宙移送の法則を別ファイルへ書く。
+基底の対象・射を変えず、要素だけをULiftで上下する。
+
+```lean
+def down : (F ⋙ uliftFunctor.{t, u}).Elements ⥤ F.Elements
+def up : F.Elements ⥤ (F ⋙ uliftFunctor.{t, u}).Elements
+def equivalence : F.Elements ≌ (F ⋙ uliftFunctor.{t, u}).Elements
+def downProjectionIso :
+  down.{t} F ⋙ Functor.Elements.π F ≅ Functor.Elements.π (F ⋙ uliftFunctor.{t, u})
+def upProjectionIso :
+  up.{t} F ⋙ Functor.Elements.π (F ⋙ uliftFunctor.{t, u}) ≅ Functor.Elements.π F
+```
+
+`SimplicialCombinatorics/UniverseLiftElements` の単体圏版と同じ上下の移送を、
+今回の集合値の係数関手に使える形で置く。単体圏版は変更しない。
+
+追加の係数移送の法則（未検証、§103.3の `Sigma.reindex` の代わりに明示）：
+
+```lean
+def strictDiagramFreeEvaluationCopowerIso (I : Type) (V : Complex A) :
+  (∐ fun _ : I => V) ≅ ∐ fun _ : ULift.{u} I => V
+```
+
+成分は `Sigma.map' ULift.up` と `Sigma.map' ULift.down`。
+対象ビルドでは宇宙の照合を通り、添字変更の計算をこの明示形へ修正した。
+
+### §103.5 指定BK重みの同型への移送（未検証）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+待機中に、§103.2の法則をOverの反対圏表示へ移す部分を書く。
+既存の `bousfieldKanWeightPost` を順方向に保つ同定。
+
+```lean
+def overOpUnderIso {K : Type w} [SmallCategory K] (e : K) :
+  Cat.of (Over (Opposite.op e)) ≅ Cat.of ((Under e)ᵒᵖ)
+def overNerveIso : nerve (Over (Opposite.op e)) ≅ nerve (Over (Opposite.op e.obj))
+lemma overNerveIso_hom : (overNerveIso F e).hom =
+  nerveMap (Over.post (Functor.Elements.π F).op (X := Opposite.op e))
+def weightIso : bousfieldKanWeight F.Elementsᵒᵖ ≅
+  (Functor.Elements.π F).op ⋙ bousfieldKanWeight Kᵒᵖ
+lemma weightIso_hom : (weightIso F).hom =
+  bousfieldKanWeightPost (Functor.Elements.π F).op
+```
+
+未検証。一般の弱同値の実現による保存をここで仮定しない。
+
+### §103.6 元の射を追うための実現同型の評価式（未検証）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+既存の余米田による実現同型の法則を追加する。
+
+```lean
+lemma realizationIso_inv_comp (Y : C)
+  (f : (FrameWeightRealization.functor K (frames F B)).obj W ⟶ Y) :
+  (realizationIso F B W).inv ≫ f = realizationHomEquiv F B W Y f
+```
+
+`Coyoneda.fullyFaithful.map_preimage` を任意の標的と射で評価する。
+既存の `ConstantWeightNaturality.iso_inv_comp` と同じ余米田の法則を、
+今回指定した異なる実現同型へ適用するもので、IDは増やさない。
+
+### §103.7 指定BK重みまでの合成（未検証）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+既存の実現同型と重み同型の合成の法則を追加する。
+
+```lean
+def strictDiagramFreeEvaluationBousfieldKanIso (X : StrictComplexDiagram A d)
+    (k : strictDiagramIndex d) :
+    (strictDiagramFreeArrowRealization A d X).obj k ≅
+      (FrameWeightRealization.functor
+        (strictDiagramFreeEvaluationLiftedWeight.{u} d k).Elements
+        (Functor.Elements.π (strictDiagramFreeEvaluationLiftedWeight d k) ⋙
+          strictDiagramFreeEvaluationBase A d X)).obj
+        (bousfieldKanWeight (strictDiagramFreeEvaluationLiftedWeight.{u} d k).Elementsᵒᵖ)
+```
+
+順方向は評価実現同型の後に `weightIso.symm` の実現を合成したもの。
+同じ対象を同型で書き直すだけで、増大射の弱同値性はここから主張しない。
+
+### §103.8 六本の検証結果
+
+一覧：済み 1／全体 13（うち追加 11）
+
+§103〜§103.6の6本・329行を対象ビルド（3,815 jobs）と
+新規58宣言の監査で検証。標準三公理のみ、計算上限変更なし。
+検証済み累計206本・15,468行。上限変更後のRR02(a)は2,970行、
+(b)(c)新規0行。§103.7の合成1本はこの検証に含めず、次に検証する。
+ログ：`/tmp/is-w1/free-evaluation-frames/build-6.log`。
+
+修正は既存APIの `NatIso.isIso_of_isIso_app` による成分からの同型登録。
+RR02の増大射の弱同値性と元の比較射との一致は未完。
+
+### §103.9 指定BK実現までの検証結果
+
+一覧：済み 1／全体 13（うち追加 11）
+
+§103.7の1本・42行を含む7本の対象ビルド（3,816 jobs）と
+62宣言の監査を通した。標準三公理のみ。
+検証済み累計207本・15,510行、上限変更後のRR02(a)3,012行、(b)(c)新規0行。
+外枠24,000行まで8,490行。計算上限変更なし。
+ログ：`/tmp/is-w1/free-evaluation-frames/build-7.log`。
+
+次は要素圏とOverの随伴による実現の収縮と元の増大射の一致。
+単体集合値の既存の終対象収縮は複体値にはそのまま適用できないため、
+指定重みの収縮をframe実現に移す段を閉じる。
+E01の別経路の紙は§95.1のまま：有限単体集合の制限錐の極限性と、
+その逆極限に対する相対fibrationの照合は未供給。
+
+## §104 RR02(a)：指定重みの収縮を実現へ移す
+
+一覧：済み 1／全体 13（うち追加 11）
+
+§69.2(a)の証明の分割。既存の `terminalWeightHomotopy` と自然性を
+重みの自然変換に束ねる法則を先に書く。新しい収縮を選ばない。
+
+```lean
+def terminalZeroWeightSection (ht : IsTerminal t) :
+  ConstantWeightHom.weight K (SimplexCategory.mk 0) ⟶ bousfieldKanWeight Kᵒᵖ
+lemma terminalZeroWeightSection_comp :
+  terminalZeroWeightSection ht ≫ bousfieldKanZeroWeight K = 𝟙 _
+def terminalWeightCylinder (ht : IsTerminal t) :
+  (weightedParameterFunctor (bousfieldKanWeight Kᵒᵖ)).obj Δ[1] ⟶
+    bousfieldKanWeight Kᵒᵖ
+def terminalWeightEndpoint (ε : Fin 2) :
+  bousfieldKanWeight Kᵒᵖ ⟶
+    (weightedParameterFunctor (bousfieldKanWeight Kᵒᵖ)).obj Δ[1]
+lemma terminalWeightEndpoint_zero :
+  terminalWeightEndpoint 0 ≫ terminalWeightCylinder ht =
+    bousfieldKanZeroWeight K ≫ terminalZeroWeightSection ht
+lemma terminalWeightEndpoint_one :
+  terminalWeightEndpoint 1 ≫ terminalWeightCylinder ht = 𝟙 _
+```
+
+続く実現段は、既存の `bousfieldKanRealization_terminal_weakEquivalence`
+で円柱の射影を通常の局所化で可逆にし、両端を同一視する。
+これにより零重みへの指定射の実現を弱同値とし、次数零の通常の余極限と
+終対象の値を同定する。元の増大射との照合は別に行う。
+
+### §104.1 収縮を局所化に送る法則（未検証）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+```lean
+def terminalWeightProjection :
+  (weightedParameterFunctor (bousfieldKanWeight Kᵒᵖ)).obj Δ[1] ⟶ bousfieldKanWeight Kᵒᵖ
+lemma terminalWeightEndpoint_projection (ε : Fin 2) :
+  terminalWeightEndpoint ε ≫ terminalWeightProjection = 𝟙 _
+lemma terminalWeightEndpoint_map_eq
+  [IsIso (F.map (terminalWeightProjection (K := K)))] :
+  F.map (terminalWeightEndpoint 0) = F.map (terminalWeightEndpoint 1)
+def terminalZeroWeightMapIso (ht : IsTerminal t)
+  [IsIso (F.map (terminalWeightProjection (K := K)))] :
+  F.obj (bousfieldKanWeight Kᵒᵖ) ≅
+    F.obj (ConstantWeightHom.weight K (SimplexCategory.mk 0))
+```
+
+最後の同型の順方向は `F.map (bousfieldKanZeroWeight K)` そのもの。
+仮定付きでRR02を閉じるのではなく、次にFを実現と通常の局所化の合成とし、
+既に検証した円柱の射影の弱同値性からこの `IsIso` を供給する。
+
+### §104.2 同じ零重み射の実現の弱同値性（未検証）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+```lean
+lemma terminalWeightProjection_realization_weakEquivalence
+  (hA : ∀ k, reedyLeft simplex (cofibrations C) (initial.to (A.obj k)))
+  (hconst : ∀ k, ∀ {n m : SimplexCategory} (f : n ⟶ m),
+    weakEquivalences C ((A.obj k).map f)) :
+  weakEquivalences C ((functor K A).map (terminalWeightProjection (K := K)))
+lemma bousfieldKanZeroWeight_realization_weakEquivalence
+  (hA : ∀ k, reedyLeft simplex (cofibrations C) (initial.to (A.obj k)))
+  (hconst : ∀ k, ∀ {n m : SimplexCategory} (f : n ⟶ m),
+    weakEquivalences C ((A.obj k).map f)) {t : K} (ht : IsTerminal t) :
+  weakEquivalences C ((functor K A).map (bousfieldKanZeroWeight K))
+```
+
+RR02(a)の収縮段。円柱射影を標準1単体の崩壊と零パラメータの単位同型に分け、
+既存の弱同値性を適用する。SSetの完全なモデル構造は使わない。
+
+### §104.3 検証結果
+
+一覧：済み 1／全体 13（うち追加 11）
+
+3本・189行を対象ビルド（2,878 jobs）と21宣言の監査で検証。
+標準三公理のみ、計算上限変更なし。
+検証済み累計210本・15,699行、上限変更後のRR02(a)3,201行、
+(b)(c)新規0行。ログ：`/tmp/is-w1/terminal-weight-diagram/build-4.log`。
+終対象のある添字で、元の零重み射のframe実現の弱同値性を証明した。
+指定余錐への増大射の照合と、要素圏からOverへの比較は残る。
+
+### §104.4 元の余錐への増大射の照合（未検証）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+```lean
+def zeroWeightCoconeMap :
+  (functor K A).obj (ConstantWeightHom.weight K (SimplexCategory.mk 0)) ⟶ c.pt
+lemma zeroWeightCoconeMap_eq : zeroWeightCoconeMap A c =
+  (ConstantWeightRealization.iso K A (SimplexCategory.mk 0)).hom ≫ colimit.desc _ c
+lemma bousfieldKanAugmentation_factor : bousfieldKanAugmentation A c =
+  (functor K A).map (bousfieldKanZeroWeight K) ≫ zeroWeightCoconeMap A c
+lemma zeroWeightCoconeMap_isIso (hc : IsColimit c) : IsIso (zeroWeightCoconeMap A c)
+lemma bousfieldKanAugmentation_weakEquivalence_of_terminal
+  {t : K} (ht : IsTerminal t) (hc : IsColimit c) :
+  weakEquivalences C (bousfieldKanAugmentation A c)
+```
+
+最後の補題には§104.2と同じpointwise Reedy cofibrant・homotopically constant
+の入力を持つ。`c` は次数零の元の余錐。既存の指定実現随伴によって因子分解を照合し、
+終対象の場合の増大射を閉じる。要素圏からOverへの比較はこの後に残る。
+
+### §104.5 元の増大射までの検証結果
+
+一覧：済み 1／全体 13（うち追加 11）
+
+§104.4の1本・70行と依存する3本の対象ビルド、および28宣言の監査を通した。
+標準三公理のみ、計算上限変更なし。
+検証済み累計211本・15,769行、上限変更後のRR02(a)3,271行、(b)(c)新規0行。
+ログ：`/tmp/is-w1/terminal-weight-diagram/build-6.log`。
+
+終対象のある添字では、指定余極限余錐への元のBK増大射が弱同値であることまで
+照合した。余極限随伴の計算は `Adjunction.mk'_homEquiv` を使い、
+定義展開で一致することを仮定しない。
+RR02(a)の次の残りは、要素圏とOverの随伴の余単位による実現比較。
+終対象のあるOver側は今回の補題へつなぐ。要素圏自身に終対象があるとは主張しない。
+
+## §105 RR02(a)：指定添字変更の合成則
+
+一覧：済み 1／全体 13（うち追加 11）
+
+要素圏とOverの随伴の移送に使う、既存の添字変更射の法則。
+
+```lean
+lemma reindexMap_id : reindexMap (𝟭 K) A W = 𝟙 _
+lemma reindexMap_comp :
+  reindexMap Q (P ⋙ A) (P.op ⋙ W) ≫ reindexMap P A W = reindexMap (Q ⋙ P) A W
+lemma bousfieldKanReindexMap_id : bousfieldKanReindexMap (𝟭 K) A = 𝟙 _
+lemma bousfieldKanReindexMap_comp :
+  bousfieldKanReindexMap Q (P ⋙ A) ≫ bousfieldKanReindexMap P A =
+    bousfieldKanReindexMap (Q ⋙ P) A
+```
+
+既存の指定随伴で転置して、`bousfieldKanWeightPost_comp` を使う。
+独立の弱同値の定理を追加するものではない。未検証。
+
+### §105.1 指定変換のOverへの移送（未検証）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+```lean
+def overTransformationSource (α : P ⟶ Q) (e : L) :
+  Over (Opposite.op e) ⥤ Over (Opposite.op (P.obj e)) :=
+  Over.post Q.op ⋙ Over.map (α.app e).op
+def overTransformation (α : P ⟶ Q) (e : L) :
+  overTransformationSource α e ⟶ Over.post P.op
+def overTransformationHomotopy (α : P ⟶ Q) (e : L) :
+  SSet.Homotopy (nerveMap (overTransformationSource α e))
+    (nerveMap (Over.post P.op (X := Opposite.op e)))
+```
+
+既存の指定自然変換のOverへの移送と、そのnerveの法則。
+反対圏のため `α : P → Q` は「Qのpostの後にαの反対射でmap」から
+「Pのpost」への比較になる。余単位の場合もこの方向を保つ。
+重み自身の自己収縮と取り違えない。実現後には係数の移送も合わせて照合する。
+
+### §105.2 検証結果
+
+一覧：済み 1／全体 13（うち追加 11）
+
+2本・114行を対象ビルド（2,523 jobs）と9宣言の監査で検証。
+標準三公理のみ、計算上限変更なし。
+検証済み累計213本・15,883行、上限変更後のRR02(a)3,385行、(b)(c)新規0行。
+ログ：`/tmp/is-w1/reindex-composition/build-5.log`。
+
+指定随伴の転置を定義展開だけで比較する方法では200,000 heartbeatsで時間切れに
+なった。関手の結合則で転置の型を先に揃え、重みの型を局所的に明示して解消した。
+`Over` の比較は元の自然変換の成分の反対射を使い、既存のnerveホモトピーへ接続済み。
+残りは添字全体での自然性、係数移送を含む実現比較のホモトピー、元の増大射との照合。
+
+## §106 RR02(a)：余単位の円柱の添字自然性
+
+一覧：済み 1／全体 13（うち追加 11）
+
+既存の指定自然変換の移送の法則を、全添字に束ねるために証明する。
+
+```lean
+lemma nerveTransformationCylinder_congr (η : F ⟶ G) (η' : F' ⟶ G')
+  (hF : F = F') (hG : G = G')
+  (hη : η ≫ eqToHom hG = eqToHom hF ≫ η') :
+  (nerveNatTransHomotopy η).h = (nerveNatTransHomotopy η').h
+lemma overTransformationSource_map :
+  Over.map f.op ⋙ overTransformationSource α i =
+    overTransformationSource α j ⋙ Over.map (P.map f).op
+lemma overTransformationHomotopy_naturality :
+  (nerveMap (Over.map f.op) ▷ Δ[1]) ≫ (overTransformationHomotopy α i).h =
+    (overTransformationHomotopy α j).h ≫ nerveMap (Over.map (P.map f).op)
+```
+
+反対関手での方向は§105.1のまま。新しい自然性を仮定せず、αの自然性から出す。
+未検証。次にこの円柱を重みの自然変換へ束ね、指定実現随伴へ送る。
+
+### §106.1 重み全体の円柱と両端（未検証）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+```lean
+def bousfieldKanTransformationCylinder (α : P ⟶ Q) :
+  (weightedParameterFunctor (bousfieldKanWeight Lᵒᵖ)).obj Δ[1] ⟶
+    P.op ⋙ bousfieldKanWeight Kᵒᵖ
+lemma bousfieldKanTransformationCylinder_zero :
+  terminalWeightEndpoint 0 ≫ bousfieldKanTransformationCylinder α =
+    bousfieldKanWeightPost Q.op ≫
+      Functor.whiskerRight (NatTrans.op α) (bousfieldKanWeight Kᵒᵖ)
+lemma bousfieldKanTransformationCylinder_one :
+  terminalWeightEndpoint 1 ≫ bousfieldKanTransformationCylinder α =
+    bousfieldKanWeightPost P.op
+```
+
+§106の自然性により束ねる。元の円柱の端点とnerveの合成保存だけで照合する。
+実現比較の二つの射が同じ局所化の射になることは、次にこの円柱を使って示す。
+
+### §106.2 指定添字変更に対する係数と重みの移送（未検証）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+```lean
+lemma reindexMap_dinaturality :
+  (functor L (P ⋙ A)).map (Functor.whiskerRight (NatTrans.op α) W) ≫
+      reindexMap P A W =
+    (map L (Functor.whiskerRight α A)).app (Q.op ⋙ W) ≫ reindexMap Q A W
+```
+
+既存の指定随伴の単位の添字自然性を、各成分で用いる法則。
+この等式によって§106.1の円柱の始端を、係数移送を含む実際の添字比較に戻す。
+
+### §106.3 円柱の実現の両端を元の比較射へ戻す（未検証）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+```lean
+def bousfieldKanTransformationRealization :
+  (bousfieldKanParameterRealization L (P ⋙ A)).obj Δ[1] ⟶
+    (functor K A).obj (bousfieldKanWeight Kᵒᵖ)
+lemma bousfieldKanTransformationRealization_zero :
+  (functor L (P ⋙ A)).map (terminalWeightEndpoint 0) ≫
+    bousfieldKanTransformationRealization α A =
+      (map L (Functor.whiskerRight α A)).app (bousfieldKanWeight Lᵒᵖ) ≫
+        bousfieldKanReindexMap Q A
+lemma bousfieldKanTransformationRealization_one :
+  (functor L (P ⋙ A)).map (terminalWeightEndpoint 1) ≫
+    bousfieldKanTransformationRealization α A = bousfieldKanReindexMap P A
+```
+
+同じ円柱の実現に指定添字変更を合成する。両端は元の実射の等式であり、
+ここではまだ局所化で同じことを仮定しない。
+
+### §106.4 元の実現比較の局所化での一致（未検証）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+```lean
+lemma bousfieldKanReindexMap_localization_naturality
+  (hA : ∀ l, reedyLeft simplex (cofibrations C) (initial.to ((P ⋙ A).obj l)))
+  (hconst : ∀ l, ∀ {n m : SimplexCategory} (f : n ⟶ m),
+    weakEquivalences C (((P ⋙ A).obj l).map f)) :
+  (weakEquivalences C).Q.map (bousfieldKanReindexMap P A) =
+    (weakEquivalences C).Q.map
+      ((map L (Functor.whiskerRight α A)).app (bousfieldKanWeight Lᵒᵖ) ≫
+        bousfieldKanReindexMap Q A)
+```
+
+§104の円柱射影の弱同値性を、源のframe族 `P ⋙ A` に適用する。
+両端の実射の一致は§106.3の法則を用いる。
+RR02(a)の余単位による比較の証明の分割であり、自然性の仮定は追加しない。
+
+### §106.5 検証結果
+
+一覧：済み 1／全体 13（うち追加 11）
+
+5本・258行の対象ビルドと15宣言の監査が成功。標準三公理のみ。
+計算上限変更なし。検証済み累計218本・16,141行。
+上限変更後のRR02(a)は3,643行、(b)(c)新規0行。
+ログ：`/tmp/is-w1/over-transform-naturality/build-7.log`。
+
+指定自然変換のOverへの移送について、添字自然性を証明して重み全体の円柱に束ねた。
+両端を係数移送を含む元の添字変更射へ照合し、通常の局所化で同じ射となる法則まで検証。
+次は要素圏とOverの随伴の余単位への適用と、指定増大射の比較。
+RR02(a)全体の弱同値性は未完。E01の別経路の紙は§95.1の不足が残る。
+
+## §107 RR02(a)：随伴の単位・余単位を実現へ移す
+
+一覧：済み 1／全体 13（うち追加 11）
+
+まず既存の指定添字変更とframe族の射の両立を使う。
+
+```lean
+lemma reindexMap_frame_naturality :
+  reindexMap P A W ≫ (map K a).app W =
+    (map L (Functor.whiskerLeft P a)).app (P.op ⋙ W) ≫ reindexMap P B W
+lemma bousfieldKanReindexMap_frame_naturality :
+  bousfieldKanReindexMap P A ≫ (map K a).app (bousfieldKanWeight Kᵒᵖ) =
+    (map L (Functor.whiskerLeft P a)).app (bousfieldKanWeight Lᵒᵖ) ≫
+      bousfieldKanReindexMap P B
+```
+
+この法則と§105の合成則、§106の局所化での自然性を使う。
+随伴 `S ⊣ P` の単位の係数移送の後に `S` の指定添字変更を合成すると、
+`P` の指定添字変更の局所化での逆を与える。一方の合成は単位の自然性、
+他方は余単位の自然性と元の三角恒等式で照合する。新しい逆を任意に選ばない。
+
+### §107.1 指定単位からの逆の候補と一方の合成（未検証）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+```lean
+def adjointReindexInverse (adj : S ⊣ P) (A : K ⥤ SimplexCategory ⥤ C) :
+  (functor K A).obj (bousfieldKanWeight Kᵒᵖ) ⟶
+    (functor L (P ⋙ A)).obj (bousfieldKanWeight Lᵒᵖ)
+lemma adjointReindex_coefficient_triangle :
+  Functor.whiskerLeft P (Functor.whiskerRight adj.unit A) ≫
+    Functor.whiskerRight adj.counit (P ⋙ A) = 𝟙 (P ⋙ A)
+lemma adjointReindexInverse_comp_localization :
+  (weakEquivalences C).Q.map
+    (adjointReindexInverse adj A ≫ bousfieldKanReindexMap P A) = 𝟙 _
+```
+
+最後の補題の入力は、Aのpointwise Reedy cofibrant性とhomotopically constant性。
+§106の法則を指定単位に適用する。逆の候補は単位による係数移送とSの比較射の合成。
+反対順序の合成には上記の係数の三角恒等式と、余単位での§106の法則を使う。
+
+### §107.2 余単位での合成と指定比較射の弱同値性（未検証）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+```lean
+lemma reindex_comp_adjointInverse_localization :
+  (weakEquivalences C).Q.map
+    (bousfieldKanReindexMap P A ≫ adjointReindexInverse adj A) = 𝟙 _
+lemma bousfieldKanReindexMap_weakEquivalence_of_adjunction :
+  weakEquivalences C (bousfieldKanReindexMap P A)
+```
+
+入力は指定随伴 `S ⊣ P` と、Aのpointwise Reedy cofibrant性・homotopically constant性。
+RR02(a)の承認済み比較の証明の分割。通常の局所化で両側の逆を示して、
+元のモデル圏の弱同値として検出する。SSetのモデル構造は要求しない。
+
+### §107.3 検証結果
+
+一覧：済み 1／全体 13（うち追加 11）
+
+3本・165行の対象ビルドと8宣言の監査が成功。標準三公理のみ。
+計算上限変更なし。検証済み累計221本・16,306行。
+上限変更後のRR02(a)は3,808行、(b)(c)新規0行。
+ログ：`/tmp/is-w1/reindex-adjunction/build-4.log`。
+
+指定右随伴による元のBK添字変更射の弱同値性まで検証した。逆の候補は
+指定単位の係数移送と左随伴の比較射の合成で、両側の逆は単位・余単位の
+円柱と右三角恒等式で照合した。SSetのモデル構造は使用しない。
+
+次は実際の `strictDiagramFreeEvaluationSmallAdjunction` と
+`ElementsUniverseLift.equivalence` を合成し、持ち上げた要素圏から
+`AsSmall (Over k)` への指定比較へ適用する。係数は元の評価source frameを使う。
+RR02(a)全体は未完であり、元の自由実現の増大射への接続を残す。
+
+## §108 RR02(a)：実際の評価点の要素圏への適用
+
+一覧：済み 1／全体 13（うち追加 11）
+
+既存の小さいOverへの随伴とULiftの同値を合成する。
+
+```lean
+def strictDiagramFreeEvaluationLiftedToOver :
+  (strictDiagramFreeEvaluationLiftedWeight.{u} d k).Elements ⥤ AsSmall.{u} (Over k)
+def strictDiagramFreeEvaluationLiftedSection :
+  AsSmall.{u} (Over k) ⥤ (strictDiagramFreeEvaluationLiftedWeight.{u} d k).Elements
+def strictDiagramFreeEvaluationLiftedAdjunction :
+  strictDiagramFreeEvaluationLiftedSection d k ⊣ strictDiagramFreeEvaluationLiftedToOver d k
+def strictDiagramFreeEvaluationOverFrames (X : StrictComplexDiagram A d)
+  (k : strictDiagramIndex d) : AsSmall.{u} (Over k) ⥤ SimplexCategory ⥤ Complex A
+def strictDiagramFreeEvaluationOverCoefficientsIso :
+  strictDiagramFreeEvaluationLiftedToOver d k ⋙ strictDiagramFreeEvaluationOverFrames A d X k ≅
+    Functor.Elements.π (strictDiagramFreeEvaluationLiftedWeight d k) ⋙
+      strictDiagramFreeEvaluationBase A d X
+lemma strictDiagramFreeEvaluationOverFrames_cofibrant :
+  Reedy.reedyLeft Reedy.simplex (cofibrations (Complex A))
+    (initial.to ((strictDiagramFreeEvaluationOverFrames A d X k).obj t))
+lemma strictDiagramFreeEvaluationOverFrames_homotopicallyConstant :
+  weakEquivalences (Complex A) (((strictDiagramFreeEvaluationOverFrames A d X k).obj t).map f)
+```
+
+係数の同型は同じ始点の評価。Reedy条件と構造射の弱同値性は既存の評価frameから供給。
+未検証。これらを§107の指定右随伴の比較へ入力する。
+
+### §108.1 元の自由実現の評価からOver実現への弱同値（未検証）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+```lean
+def strictDiagramFreeEvaluationOverComparison (X : StrictComplexDiagram A d)
+  (k : strictDiagramIndex d) :
+  (strictDiagramFreeArrowRealization A d X).obj k ⟶
+    (FrameWeightRealization.functor (AsSmall.{u} (Over k))
+      (strictDiagramFreeEvaluationOverFrames A d X k)).obj
+      (bousfieldKanWeight (AsSmall.{u} (Over k))ᵒᵖ)
+lemma strictDiagramFreeEvaluationOverComparison_weakEquivalence :
+  weakEquivalences (Complex A) (strictDiagramFreeEvaluationOverComparison A d X k)
+```
+
+比較は§103の評価同型、§108の係数同型の逆、指定右随伴によるBK比較の順に合成。
+この比較とOverの元の増大射の合成が、自由実現の元の増大射の評価値に一致することは
+次に照合する。弱同値だけで元の射との同一性を省略しない。
+
+### §108.2 Overの元の増大射（未検証）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+```lean
+def strictDiagramFreeEvaluationOverTerminal (k : strictDiagramIndex d) :
+  IsTerminal (AsSmall.up.obj (Over.mk (𝟙 k)) : AsSmall.{u} (Over k))
+def strictDiagramFreeEvaluationOverCocone :
+  Cocone (ConstantWeightHom.degree (AsSmall.{u} (Over k))
+    (strictDiagramFreeEvaluationOverFrames A d X k) (SimplexCategory.mk 0))
+def strictDiagramFreeEvaluationOverAugmentation :
+  (FrameWeightRealization.functor (AsSmall.{u} (Over k))
+    (strictDiagramFreeEvaluationOverFrames A d X k)).obj
+    (bousfieldKanWeight (AsSmall.{u} (Over k))ᵒᵖ) ⟶
+      (strictDiagramEvaluatedSourceFrame A d X k).obj (SimplexCategory.mk 0)
+lemma strictDiagramFreeEvaluationOverAugmentation_weakEquivalence :
+  weakEquivalences (Complex A) (strictDiagramFreeEvaluationOverAugmentation A d X k)
+```
+
+既存の恒等射の終対象性と、終対象を持つ図式の標準余極限余錐を用いる。
+弱同値性は§104の元の増大射の補題をそのまま適用する。
+
+### §108.3 係数移送と元の増大射の法則（未検証）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+```lean
+lemma bousfieldKanAugmentation_frame_naturality :
+  (map K a).app (bousfieldKanWeight Kᵒᵖ) ≫ bousfieldKanAugmentation B c =
+    bousfieldKanAugmentation A
+      ((Cocone.precompose (ConstantWeightRealization.degreeMap K a (SimplexCategory.mk 0))).obj c)
+```
+
+既存のframe実現随伴と零重みのYoneda表示の自然性を使う。
+§108の係数同型を通した元の増大射を照合するための法則。
+
+### §108.4 検証結果
+
+一覧：済み 1／全体 13（うち追加 11）
+
+5本・262行の対象ビルドと33宣言の監査が成功。標準三公理のみ。
+計算上限変更なし。検証済み累計226本・16,568行。
+上限変更後のRR02(a)は4,070行、(b)(c)新規0行。
+ログ：`/tmp/is-w1/evaluation-over/build-6.log`。
+
+元の自由実現を評価した対象からOver実現への指定比較の弱同値性、
+Overの元の増大射の弱同値性を、それぞれ実係数で検証した。
+係数移送とBK増大射の可換性も、元の余錐を保つ法則として検証済み。
+
+残りは両射の合成と自由実現の元の増大射の評価値の一致。
+§103の評価同型・要素圏の余積表示の同型が増大射を保つことを、
+指定随伴の転置で照合する。弱同値な別の射でRR02(a)を代用しない。
+
+## §109 RR02(a)：元の増大射の評価同型による照合
+
+一覧：済み 1／全体 13（うち追加 11）
+
+まずOverとの比較を要素圏の余錐の増大へ戻す。
+
+```lean
+def strictDiagramFreeEvaluationElementsCocone :
+  Cocone (ConstantWeightHom.degree
+    (strictDiagramFreeEvaluationLiftedWeight.{u} d k).Elements
+    (Functor.Elements.π (strictDiagramFreeEvaluationLiftedWeight d k) ⋙
+      strictDiagramFreeEvaluationBase A d X) (SimplexCategory.mk 0))
+def strictDiagramFreeEvaluationElementsAugmentation :=
+  FrameWeightRealization.bousfieldKanAugmentation _ (strictDiagramFreeEvaluationElementsCocone A d X k)
+lemma strictDiagramFreeEvaluationOverComparison_augmentation :
+  strictDiagramFreeEvaluationOverComparison A d X k ≫
+    strictDiagramFreeEvaluationOverAugmentation A d X k =
+      (strictDiagramFreeEvaluationBousfieldKanIso A d X k).hom ≫
+        strictDiagramFreeEvaluationElementsAugmentation A d X k
+```
+
+余錐はOverの同じ余錐を制限し、既存の係数同型の逆で前合成したもの。
+添字変更と係数移送に対する増大射の検証済み法則を使う。未検証。
+残る評価同型の部分は、指定実現随伴と要素圏の余米田同型の評価式で照合する。
+
+### §109.1 余積frameの要素圏表示と増大射（未検証）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+```lean
+def elementsZeroCocone :
+  Cocone (ConstantWeightHom.degree F.Elements (Functor.Elements.π F ⋙ B)
+    (SimplexCategory.mk 0))
+lemma weightedHomEquiv_zeroWeight :
+  weightedHomEquiv F B (bousfieldKanWeight Kᵒᵖ) c.pt
+    (bousfieldKanZeroWeight K ≫ (ConstantWeightHom.homEquiv K (frames F B) 0 c.pt).symm c.ι) =
+    Functor.whiskerLeft (Functor.Elements.π F).op (bousfieldKanZeroWeight K) ≫
+      (ConstantWeightHom.homEquiv F.Elements (Functor.Elements.π F ⋙ B) 0 c.pt).symm
+        (elementsZeroCocone F B c).ι
+lemma realizationIso_inv_augmentation :
+  (FrameWeightRealization.functor F.Elements (Functor.Elements.π F ⋙ B)).map
+      (bousfieldKanWeightPost (Functor.Elements.π F).op) ≫
+    (realizationIso F B (bousfieldKanWeight Kᵒᵖ)).inv ≫
+      bousfieldKanAugmentation (frames F B) c =
+    bousfieldKanAugmentation (Functor.Elements.π F ⋙ B) (elementsZeroCocone F B c)
+```
+
+上の略記 `0` は `SimplexCategory.mk 0`。
+余錐の脚は余積の挿入と元の脚の合成。既存の表示同型の選択は変更しない。
+
+### §109.2 検証結果
+
+一覧：済み 1／全体 13（うち追加 11）
+
+2本・141行の対象ビルドと10宣言の監査が成功。標準三公理のみ。
+計算上限変更なし。検証済み累計228本・16,709行。
+上限変更後のRR02(a)は4,211行、(b)(c)新規0行。
+ログ：`/tmp/is-w1/elements-augmentation/build-3.log`。
+
+Over比較と増大射の合成を要素圏の同じ余錐の増大へ戻す法則、および
+余積frameの要素圏表示同型が元の増大射を保つ法則を検証した。
+次数零余錐の脚を既存の `summand` で明示し、異なる余積構成の定義上の
+一致を仮定せず、単体的Yonedaの自然性で照合した。
+
+残りは左随伴（評価）と実現の交換同型が増大射を保つこと、実評価の係数同型を
+通した次数零余錐の脚の一致。この二つを通して元の自由増大射の評価値と
+§108の弱同値な合成を同定する。RR02(a)全体は未完。
+
+## §110 RR02(a)：左随伴と実現の交換による増大射の保存
+
+一覧：済み 1／全体 13（うち追加 11）
+
+```lean
+def postZeroCocone :
+  Cocone (ConstantWeightHom.degree K (postFrames K A L) (SimplexCategory.mk 0))
+lemma zeroWeightCocone_post :
+  (ConstantWeightHom.homEquiv K (postFrames K A L) (SimplexCategory.mk 0)
+    (L.obj c.pt)).symm (postZeroCocone K A c (L := L)).ι ≫
+      (homPostIso K adj A).hom.app (L.obj c.pt) =
+    (ConstantWeightHom.homEquiv K A (SimplexCategory.mk 0) c.pt).symm c.ι ≫
+      (hom K A).map (adj.unit.app c.pt)
+lemma postIso_augmentation :
+  (postIso K adj A).hom.app (bousfieldKanWeight Kᵒᵖ) ≫
+    bousfieldKanAugmentation (postFrames K A L) (postZeroCocone K A c (L := L)) =
+      L.map (bousfieldKanAugmentation A c)
+```
+
+指定随伴 `adj : L ⊣ R` に対する既存の交換同型の法則。余錐の脚は `L.map` の像そのもの。
+零単体のYonedaと単位の自然性を使い、元の実現随伴の転置で照合する。未検証。
+
+### §110.1 表示同型の順方向での保存則（未検証）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+```lean
+lemma augmentation_frameIso (e : A ≅ B) (c : Cocone (ConstantWeightHom.degree K A 0)) :
+  ((family K).mapIso e).hom.app (bousfieldKanWeight Kᵒᵖ) ≫
+    bousfieldKanAugmentation B
+      ((Cocone.precompose (ConstantWeightRealization.degreeMap K e.inv 0)).obj c) =
+    bousfieldKanAugmentation A c
+lemma realizationIso_hom_augmentation :
+  (realizationIso F B (bousfieldKanWeight Kᵒᵖ)).hom ≫
+    (FrameWeightRealization.functor F.Elements (Functor.Elements.π F ⋙ B)).map
+      (ElementsUnderProjection.weightIso F).inv ≫
+    bousfieldKanAugmentation (Functor.Elements.π F ⋙ B) (elementsZeroCocone F B c) =
+    bousfieldKanAugmentation (frames F B) c
+```
+
+`0` は `SimplexCategory.mk 0`。逆向きで検証済みの法則を、同じ同型の逆を
+前合成して順方向へ移す。同型・余錐・増大射の選択は変更しない。
+
+### §110.2 検証結果
+
+一覧：済み 1／全体 13（うち追加 11）
+
+2本・143行の対象ビルドと6宣言の監査が成功。標準三公理のみ。
+計算上限変更なし。検証済み累計230本・16,852行。
+上限変更後のRR02(a)は4,354行、(b)(c)新規0行。
+ログ：`/tmp/is-w1/post-augmentation/build-4.log`。
+
+既存の `postIso` が元の余錐のBK増大射を保つ法則を検証した。
+また、frame同型および余積の要素圏表示同型について、実際に用いる順方向の
+増大射保存を検証済みの逆方向の法則から得た。
+
+次は `strictDiagramFreeEvaluationFramesIso` の逆で移した評価余錐と
+`strictDiagramFreeEvaluationElementsCocone` の各脚を照合する。
+各脚は、同じ余積挿入を元の自由frame増大に続けた射と、
+Overへの合成射を元のsource frameで送った射。これらの一致の後、
+今回の三つの表示同型の保存則を合成して元の自由増大射の評価値へ戻す。
+RR02(a)全体は未完。
+
+## §111 RR02(a)：実係数での余錐の脚の照合
+
+一覧：済み 1／全体 13（うち追加 11）
+
+```lean
+def strictDiagramFreeEvaluationPostCocone := postZeroCocone _ _ _ (L := evaluationAt k)
+def strictDiagramFreeEvaluationCopowerCocone :=
+  (Cocone.precompose (degreeMap _ (strictDiagramFreeEvaluationFramesIso A d X k).inv 0)).obj
+    (strictDiagramFreeEvaluationPostCocone A d X k)
+lemma strictDiagramFreeEvaluationOverTerminal_from_left :
+  (AsSmall.down.map ((strictDiagramFreeEvaluationOverTerminal d k).from t)).left =
+    (AsSmall.down.obj t).hom
+lemma strictDiagramFreeEvaluationCopowerCocone_leg :
+  (ElementsCopower.elementsZeroCocone (strictDiagramFreeEvaluationLiftedWeight d k)
+    (strictDiagramFreeEvaluationBase A d X) (strictDiagramFreeEvaluationCopowerCocone A d X k)).ι.app e =
+    ((strictDiagramSourceFrame A d X).obj.obj 0).map (AsSmall.down.map e.obj.unop.val ≫ e.val.down)
+lemma strictDiagramFreeEvaluationElementsCocone_leg :
+  (strictDiagramFreeEvaluationElementsCocone A d X k).ι.app e =
+    ((strictDiagramSourceFrame A d X).obj.obj 0).map (AsSmall.down.map e.obj.unop.val ≫ e.val.down)
+```
+
+`evaluationAt k`・`0` は上記の評価関手・`SimplexCategory.mk 0`の略記。
+元の余錐の脚を保存する法則。余積の挿入とOverの終対象の一意性だけを用いる。未検証。
+
+### §111.1 元の自由増大射の評価と弱同値性（未検証）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+```lean
+lemma strictDiagramFreeEvaluationElementsAugmentation_eq :
+  strictDiagramFreeEvaluationElementsAugmentation A d X k =
+    bousfieldKanAugmentation _ (ElementsCopower.elementsZeroCocone _ _
+      (strictDiagramFreeEvaluationCopowerCocone A d X k))
+lemma strictDiagramFreeEvaluationOverComparison_augmentation_eq :
+  strictDiagramFreeEvaluationOverComparison A d X k ≫
+    strictDiagramFreeEvaluationOverAugmentation A d X k =
+      (strictDiagramFreeArrowRealizationAugmentation A d X).app k
+lemma strictDiagramFreeArrowRealizationAugmentation_app_weak :
+  weakEquivalences (Complex A) ((strictDiagramFreeArrowRealizationAugmentation A d X).app k)
+lemma strictDiagramFreeArrowRealizationAugmentation_weak :
+  weakEquivalences (StrictComplexDiagram A d) (strictDiagramFreeArrowRealizationAugmentation A d X)
+```
+
+脚の一致から指定随伴で増大射を同定し、§110の三つの表示同型の保存則を合成。
+最後は元のReedyモデルのobjectwise弱同値の定義を使う。
+RR02(a)の元の増大射の部分であり、写像空間の最終比較はまだこの後に残る。
+
+### §111.2 全次数への移送（未検証）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+```lean
+lemma strictDiagramFreeArrowRealizedAugmentation_zero_weak :
+  weakEquivalences (StrictComplexDiagram A d)
+    ((strictDiagramFreeArrowRealizedAugmentation A d X).app (SimplexCategory.mk 0))
+lemma strictDiagramFreeArrowRealizedAugmentation_weak (n : SimplexCategory) :
+  weakEquivalences (StrictComplexDiagram A d)
+    ((strictDiagramFreeArrowRealizedAugmentation A d X).app n)
+```
+
+次数零の既存の同型と、増大射の自然性および両frameの構造射の弱同値性を合成する。
+RR02(a)の証明の分割であり、新しい構成は加えない。
+
+### §111.3 実Homへの前合成（未検証）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+```lean
+lemma strictDiagramFreeArrowAugmentationHom_equivalence :
+  IsSimplicialHomotopyEquivalence
+    ((cosimplicialHomMap (strictDiagramFreeArrowRealizedAugmentation A d X)).app
+      (strictDiagramFibrantTarget A d Y))
+```
+
+既存の `frameHomMap_homotopyEquivalence` に、元の増大射・両frameのReedy cofibrancy・
+構造射の弱同値性・§111.2を直接渡す。SSetのモデル構造は仮定しない。
+RR02(a)の証明の分割。BKのHom表示を通した指定cone比較との照合は次。
+
+### §111.4 検証結果
+
+一覧：済み 1／全体 13（うち追加 11）
+
+4本・258行、27宣言の対象ビルドと小さい監査が成功。標準三公理のみ。
+計算上限の変更なし。検証済み累計234本・17,110行、
+上限変更後のRR02(a)は4,612行、(b)(c)新規0行。
+ログ：`/tmp/is-w1/evaluation-cocone-legs/build-5.log`。
+
+§111〜§111.3を検証済みに更新。元の自由増大射の評価値をOver比較の合成と同定し、
+その射の弱同値性を全余単体次数へ移した。さらに指定fibrant標的への
+実Homの前合成そのもののホモトピー同値性を、既存の固定Quillen類の定理から得た。
+RR02(a)の最後の指定BK比較との一致、および(b)(c)は引き続き未完。
+
+## §112 RR02(a)：指定Hom同型と錐比較の照合（未検証）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+```lean
+lemma bousfieldKanAugmentationHom_cone
+    (π : (Functor.const Kᵒᵖ).obj ((cosimplicialHom Q).obj Y) ⟶ (hom K A).obj Y)
+    (hπ : ∀ k, π.app k = (cosimplicialHomMap (e.app k.unop)).app Y) :
+  (cosimplicialHomMap (bousfieldKanFrameAugmentation K A Q e)).app Y ≫
+      (bousfieldKanRealizationHomIso K A).hom.app Y =
+    weightedConeComparison (bousfieldKanWeight Kᵒᵖ)
+      (⟨(cosimplicialHom Q).obj Y, π⟩ : Cone ((hom K A).obj Y))
+```
+
+指定増大射・Hom同型の既存の全単体の式を、同じ脚を持つ錐比較として書き直す法則。
+随伴の転置を全単体で照合し、第二射影とYonedaの自然性だけを使う。
+
+### §112.1 元のarrow錐への適用（未検証）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+```lean
+lemma strictDiagramFreeArrowConeHom_eq :
+  (cosimplicialHomMap (strictDiagramFreeArrowRealizedAugmentation A d X)).app
+      (strictDiagramFibrantTarget A d Y) ≫
+    (bousfieldKanRealizationHomIso _ (strictDiagramFreeArrowFrame A d X)).hom.app
+      (strictDiagramFibrantTarget A d Y) ≫
+    (weightedSectionsFunctor (bousfieldKanWeight (StrictDiagramArrowElements d))).map
+      (strictDiagramFreeArrowHomNatIso A d X Y).hom =
+    strictDiagramFrameArrowComparison A d X Y
+```
+
+§112を実係数に適用する法則。既存の `strictDiagramFreeArrowAugmentation_hom` と
+`weightedConeComparison_naturality` によって、元のarrow錐を回収する。
+
+### §112.2 検証結果と二重反対圏の係数移送
+
+一覧：済み 1／全体 13（うち追加 11）
+
+§112の一般保存則は対象ビルド・2宣言の監査が成功（標準三公理のみ）。
+1本・67行。検証済み累計235本・17,177行、上限変更後のRR02(a)は4,679行。
+ログ：`/tmp/is-w1/augmentation-cone-hom/build-8.log`。
+
+§112.1の下書きは未検証のまま。失敗の理由は、一般frame実現のHomが
+`(StrictDiagramArrowElements d)ᵒᵖᵒᵖ` 上にあるのに対し、元のarrow錐のHomは
+`StrictDiagramArrowElements d` 上にあること。同じ型とみなすことはしない。
+次に、標準の `opOp`・`unopUnop` に沿う既存の再添字の保存則を明示する。
+
+使用する既存の構成は `Enriched.FunctorCategory.precompEnrichedHom'` と
+`bousfieldKanWeightPost`。後者の各成分は `Over.post` のnerveで、二重反対圏では
+指定した厳密な逆を持つ。重みと係数の両方をこの同じ同型で移す。
+必要な法則の型の形は次（`H : Iᵒᵖᵒᵖ ⥤ SSet`、`c : Cone H`）。
+
+```lean
+-- 既存の再添字写像の、二重反対圏での可逆性と錐比較保存
+IsIso (Enriched.FunctorCategory.precompEnrichedHom' SSet (opOp I)
+  (bousfieldKanOpOpWeightIso I).symm (Iso.refl H'))
+-- H' = opOp I ⋙ H; bousfieldKanOpOpWeightIsoは同じweightPostのasIso
+bousfieldKanConeComparison c ≫ bousfieldKanOpOpComparison H =
+  bousfieldKanConeComparison (c.whisker (opOp I))
+```
+
+表示中の `bousfieldKanOpOpComparison` は、上の既存の再添字写像の略記。
+独立の新しい比較を選ばず、成分と逆の合成を検査する係数移送の法則として進める。
+その後、§112.1の型にはこの再添字を挿入して、元の指定比較への一致を証明する。
+RR02(a)全体、(b)(c)、E01は未完。R3・R4には着手していない。
+
+### §112.3 二重反対の重みの逆（未検証）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+```lean
+def bousfieldKanOpOpWeightIso (I : Type u) [SmallCategory I] :
+  bousfieldKanWeight I ≅ opOp I ⋙ bousfieldKanWeight Iᵒᵖᵒᵖ
+```
+
+`hom = bousfieldKanWeightPost (opOp I)`、逆は `unopUnop` のweightPostを
+`opOp`で制限したもの。既存の再添字の逆の法則を同型として束ねるだけ。
+
+### §112.4 endの二重反対の再添字（未検証）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+```lean
+lemma weightedSections_precomp_π (W H : I ⥤ SSet) (P : J ⥤ I) (j : J) :
+  precompEnrichedHom SSet W H P ≫ weightedSectionsπ (P ⋙ W) (P ⋙ H) j =
+    weightedSectionsπ W H (P.obj j)
+def weightedSectionsOpOpIso (W H : Iᵒᵖᵒᵖ ⥤ SSet) :
+  weightedSections W H ≅ weightedSections (opOp I ⋙ W) (opOp I ⋙ H)
+lemma weightedSectionsOpOpIso_cone (c : Cone H) :
+  weightedConeComparison W c ≫ (weightedSectionsOpOpIso I W H).hom =
+    weightedConeComparison (opOp I ⋙ W) (c.whisker (opOp I))
+```
+
+Mathlibの既存の再添字の成分式・逆・錐比較保存という法則。新しいendは定義しない。
+
+### §112.5 既存の移送の合成（未検証）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+```lean
+def bousfieldKanOpOpWeightSectionsIso (H : I ⥤ SSet) :
+  weightedSections (opOp I ⋙ bousfieldKanWeight Iᵒᵖᵒᵖ) H ≅ bousfieldKanHolim H
+def bousfieldKanOpOpIso (H : Iᵒᵖᵒᵖ ⥤ SSet) :
+  bousfieldKanHolim H ≅ bousfieldKanHolim (opOp I ⋙ H)
+lemma bousfieldKanOpOpIso_cone (c : Cone H) :
+  bousfieldKanConeComparison c ≫ (bousfieldKanOpOpIso I H).hom =
+    bousfieldKanConeComparison (c.whisker (opOp I))
+```
+
+既存の `weightedSectionsPre_comp`・`weightedSectionsPre_id`・
+`weightedConeComparison_pre` による逆と合成の法則。§112.3〜4を合成する。
+
+### §112.6 実係数の下書きの型の修正（未検証）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+§112.1の等式の左辺には、Hom同型と係数同型の間に
+`(bousfieldKanOpOpIso (StrictDiagramArrowElements d) _).hom` を挿入する。
+右辺の `strictDiagramFrameArrowComparison` は変更しない。
+一般保存則を元の錐の `unopUnop` による制限へ適用し、§112.5の錐比較保存で
+`opOp` の制限を戻す。元の脚の照合は既存の `strictDiagramFreeArrowAugmentation_hom`。
+
+### §112.7 元のBK比較の弱同値性（未検証）
+
+一覧：済み 1／全体 13（うち追加 11）
+
+```lean
+lemma strictDiagramFrameArrowComparison_equivalence :
+  IsSimplicialHomotopyEquivalence (strictDiagramFrameArrowComparison A d X Y)
+```
+
+RR02(a)の実BK比較の結論。§111の実増大射のHomの同値性と、§112.6の等式、
+表示・再添字・係数の指定同型を合成する。RR02(b)(c)はこの後に残る。
+
+## §113 規模の再点検と停止時の紙の材料
+
+一覧：済み 1／全体 13（うち追加 11）
+
+### §113.1 R3の利用側の再確認（紙のみ）
+
+11-15、現在の本体とdraftsの型を読み直した。
+
+- `EInfinity/BarrattEccles/CAlgUnderlyingDerivedComparison.lean:62` の
+  `algebraCAlgSource_underlyingDerivedIso` は
+  `FunctorIso (algebraCAlgSource A ≫ cAlgForgetDerived A) (algebraUnderlyingDerivedSource A)`。
+  strict源の実忘却との比較であって、任意coherent図式のstrict表示の存在ではない。
+- drafts `Shared/CosimplicialEInfinity.lean:115` の
+  `totEInfinity_isLimitCone (X : CosimplicialAlgebra A)` は指定した
+  `totEInfinityCone` の極限性。ここはstrict入力だが、界面
+  `E.ofCosimplicial_cone` が供給する性質を呼んでいるので、型の存在を
+  BE模型での独立な証明の完成と取り違えない。
+- drafts `A2/DerivedPrismaticCohomology.lean:229` の
+  `derivedPrismaticCohomology_preservesSifted` は `PreservesSmallSiftedColimits`。
+  本体の `SiftedColimitPreservation.lean:28` は任意の
+  `D : (SSet.uliftFunctor.obj I) ⟶ X` と任意の指定 `JoinCocone D` を量化する。
+  strict図式に対する保存性のみではこの全量化を満たさない。
+- ③-bの現在のworktreeの報告§38.2〜38.3を読み取りのみで再確認した。
+  1・2はstrict BE図式の模型と実U比較、3は任意coherent BE図式への拡張。
+  加群のstrict化だけでは、BE作用・coherent代数射を回復したことにならない。
+
+R3の範囲は変更せず、R3・R4のLeanは書いていない。他レーンのコードの変更・importもない。
+R2の停止点5aで調整役が利用側に照らして判断する材料として維持する。
+
+### §113.2 E01の別経路（紙）
+
+`FiniteSubcomplexEndComparison` を再読した。既存の両制限錐・比較錐の射は
+任意の単体集合Aについて定義できるが、それらの `IsLimit`、任意の有限単体集合での
+比較の同値性、逆極限への移行に要る実制限射の相対持ち上げが未供給。
+§95.1の三つの不足は解消していない。有限準圏だけの結果や成分ごとの弱同値で
+これらを代用せず、元の指定単位の直接比較・未供給の普遍性による一意性も再開していない。
+したがってE01を完了に数えず、従来の見込みを縮める根拠も得ていない。
+
+### §113.3 今回の検証結果
+
+一覧：済み 1／全体 13（うち追加 11）
+
+§112.3〜§112.7の5本・311行・24宣言を検証。対象ビルド4,211 jobs成功、
+小監査は標準三公理のみ。計算上限は変更していない。
+ログ：`/tmp/is-w1/double-op-weight/build-13.log`。プロセス終了確認済み、鍵は解放済み。
+
+検証済み累計240本・17,488行（旧G2本文の+2/-3は別記のまま）。
+上限変更後のRR02(a)実測は4,990行、(b)(c)新規0行。
+`strictDiagramFrameArrowComparison_equivalence` は元のBK比較そのものの
+単体的ホモトピー同値性である。二重反対圏からの再添字も明示している。
+ただしBK endから指定した `strictDiagramEvaluatedFrameEnd` への接続が残り、
+RR02(a)全体・RR02全体は未完。E01も§113.2のまま。停止点5aではない。
+
+### §113.4 外枠との再照合：Leanの追加を停止
+
+一覧：済み 1／全体 13（うち追加 11）
+
+今回の実測を§68.1・§69.3の未実装分へ反映する。Eや(b)(c)をまだ実装していないので、
+それらの上端を短縮できたという根拠はない。R3・R4は次の表に含まない。
+
+| 残り | 型・不足 | 見込み（行） |
+|---|---|---:|
+| RR02(a)残り | `strictDiagramFrameDerivedEndMap` とその同値性。実BK endから指定twisted-arrow底の切断へ接続 | 未確定（下の楽観計算では0と仮置き） |
+| RR02(b) | `strictDiagramStandardEndToDerived` と同値性、D(A)のHom係数・宇宙・底 | 500〜900 |
+| RR02(c) | `strictDiagramFrameDerivedEndComparisonIso`、元のRR01射への全族の照合 | 500〜900 |
+| E01 | 一般のend比較、§113.2の別経路の不足 | 700〜1,400 |
+| E02〜E06 | 全パラメーター、実比較との照合、模型と宇宙の移送 | 1,150〜1,950 |
+| RR03 | 同じright frame・指定端点への移送 | 600〜1,000 |
+| RR04 | 元のevと全パラメーターの三角形 | 300〜450 |
+| RR05 | 元の右脚への二対三則 | 150〜250 |
+| R2d・R2e | 実評価の充満忠実性と局所化への接続 | 500〜700 |
+| (a)残りを除く合計 | §68.1・§69.3の据え置き値 | 4,400〜7,550 |
+| 検証済みを含む楽観的な比較 | (a)残りを0と仮定した場合 | 21,888〜25,038 |
+
+**(a)の残りを0行とする楽観的な計算でも上端25,038行、承認外枠24,000行を
+1,038行超える。実際には(a)の接続とE01別経路の規模も未確定。**
+従来の「完成までの上端」を維持して進める根拠が失われたので、外枠の停止規則に従い、
+今回の検証済みをコミットした地点でこの線のLeanの追加を止める。
+18,000行にはまだ達していないが、超過見込みの停止を優先し、(a)〜(c)の実測と
+E01の紙の状態をここで報告する。範囲・型を弱めず、R3は実装しない。
+
+次の判断として、外枠または実装経路について調整役の指示が必要。
+目標はR2全体の完成のままで、完了・停止点5aとは報告しない。
+代わりの紙の材料は§113.1〜2。未検証の旧E01の4本はコミット対象外。
+
+## §114 停止後の紙の点検：RR02(a)の残りの接続
+
+一覧：済み 1／全体 13（うち追加 11）
+
+前ターンは検証済み5本を `17f644686` にコミットした進捗のあるターン。
+今回mainの指示書末尾を読み直したが、外枠24,000行を変更する追記はない。
+§113の停止判断を維持し、Lean・ビルド・鍵取得は行わない。
+
+既存 `BousfieldKanSectionsIso` の公開の型を確認した。
+
+```lean
+bousfieldKanSectionsIso (H : I ⥤ SSet) :
+  bousfieldKanHolim H ≅ simplicialSections (weightedNerveProjection H)
+```
+
+これに `H := strictDiagramFrameArrowDiagram A d X Y` を入れると、
+今回の実比較の先は `nerve (StrictDiagramArrowElements d)` 上のweighted nerveの切断になる。
+一方、要求された標的の定義は次の形である。
+
+```lean
+strictDiagramEvaluatedFrameEnd A d X Y :=
+  simplicialSections (smallLeftUnstraighteningProjection
+    (strictDiagramEvaluatedValueCoefficient A d X Y (strictDiagramEndIndexMap d)))
+```
+
+後者の底は `TwistedArrow (nerve (AsSmall (strictDiagramIndex d)))`。
+したがって上の既存の同型だけでRR02(a)の標的が得られたとはいえない。
+未完の接続の型を、紙の略記として次に固定する（新しいID・実装は加えない）。
+
+```lean
+-- H = strictDiagramFrameArrowDiagram A d X Y と略す
+-- p = smallLeftUnstraighteningProjection
+--       (strictDiagramEvaluatedValueCoefficient A d X Y (strictDiagramEndIndexMap d))
+arrowWeightedSectionsToEvaluatedEnd :
+  simplicialSections (weightedNerveProjection H) ⟶ simplicialSections p
+IsSimplicialHomotopyEquivalence arrowWeightedSectionsToEvaluatedEnd
+```
+
+必要な確認は、(i)通常のHom要素圏のnerveと指定twisted-arrowの底、
+(ii)その底の比較上で同じ評価係数のweighted nerveとsmall left unstraightening、
+(iii)それらが元の錐の全族を保つこと。単に二つの空間が同値という存在だけでは
+RR02(c)の元の比較射への照合に使えない。
+`bousfieldKanSectionsMap_evaluation` は元の普遍的切断族を与えるので、(iii)の入口として再利用する。
+
+今回の既存型の点検では、(i)〜(iii)がこのまま一つの既存宣言で閉じる根拠は得られなかった。
+従って§113.4の「(a)残りを0と仮置きした楽観比較」を実際の完成見積もりへ昇格させない。
+外枠または経路の判断が必要という状態は変わらない。R2全体の目標は維持する。
+
+
+## §115 11-15朝：R2停止後の利用側の照合（紙）
+
+一覧：R2 済み 1／全体 13（うち追加 11）。5∞-1 済み 0／全体 8（うち追加 0）。
+
+mainの11-15朝の追記とユーザー指示に従い、R2のLeanを停止したまま利用側を点検。
+以下の迂回は証明案であり、既存の完成した定理としては扱わない。
+
+| 利用側 | 本来R2・R3を使う場所 | R2・R3を経由しない候補と残り |
+|---|---|---|
+| 3b-4 R05 | `FunctorIso (TotBE ≫ U) (ForgetStrictBEInfinity ≫ TotDA)` をstrict複体図式の局所化上へ降ろす。Fun全体を源に選ぶならR2の充満忠実性とR3の本質的全射性でその同一視が必要 | 源を指定strict図式局所化に固定し、全関手・指定錐の比較を局所化の普遍性で降ろす。R1・R5〜R7の全族と反転性が入口。R2・R3は論理上必須ではない。ただし全パラメータの自然変換・境界制限も降ろす普遍性の適用が必要で、対象ごとの因子化だけでは不足。追加照合300〜700行程度の紙見込み |
+| 3b-4 R10 | `FunctorIso (RealizeBE ≫ U) (ForgetStrictBEInfinity ≫ RealizeDA)`。Fun全体への同一視には同様にR2・R3 | strict源を保つ同じ局所化の普遍性の道。R09の元の全余錐族との境界照合と、実現の弱同値反転を必要とする。R05と共通法則を使って300〜800行程度。模型の実現比較そのものは③-bの持ち分で別 |
+| 5a-3後半 | 全関手版 `coproduct_tensor`、barの∞図式化と実現の同定。strict barをFun全体と同一視する際にR2・R3 | 指定したstrict barの局所化像と全射をそのまま使い、余錐の普遍性を模型から証明する道。R1・R5〜R7と③-b R09/R10の指定全余錐比較を使う。任意coherent図式のstrict表示は不要になりうるが、tensor・二脚・barの全族の比較は残る。600〜1,400行程度、BE側bar構成を除く |
+| 5a-4 | `PreservesSmallSiftedColimits U` は任意coherent図式と指定余錐を量化する。strict表示への帰着ならR3、射・全族の一致ならR2 | free–forget随伴と、導来モナドのsifted余極限保存・∞モナド性から忘却がsifted余極限を創出する道。随伴だけでは足りない。現在の無条件free–forget随伴は再利用できるが、モナド性・モナドの任意coherent sifted保存・指定余錐の創出は未照合。一般定理を既存宣言から直接適用できる証拠なし。2,000〜4,000行以上の不確かな紙見込みで、新しいまとまりの承認対象 |
+| 5a-5 Tot群 | draftsの `totEInfinity_isLimitCone (X : CosimplicialAlgebra A)` と同じ指定頂点の `ofCosimplicial_cone`。strict入力なのでR3は直接不要。Fun全体を使う実装ならR2が輸送に入る | G10と③-b R01〜R05/R11のstrict入力の指定native錐を使い、実U比較を局所化の普遍性で降ろす道。無条件 `cAlgForgetDerived_mapJoinCone_isLimit` の保存方向を使用。極限の存在・反映を同じ定理から自動で得たとはしない。既存欄への接続300〜700行程度 |
+
+根拠：③-bの現在の報告§152.3、§163.1、末尾の境界の説明を読み取りのみで確認。
+R05では `ForgetStrictBEInfinity` の全因子化が既に進んでおり、局所化の源を固定する候補は
+その型に合う。一方、任意coherent BE図式は③-b §38.2の3で別問題のまま。
+⑤aの報告では全関手版coproduct_tensor・sifted・Totを既に供給したとはしていない。
+
+`PreservesSmallSiftedColimits` の定義は任意 `D : ulift I ⟶ X` と指定 `JoinCocone D` を量化する。
+従って5a-4をstrict源の保存へ弱める提案ではない。上記のモナド経路が完成するまでは未供給。
+この表の行数は依存照合の提案で、実装承認・外枠の変更ではない。
+
+5∞-1の型一覧とS7の先行判定は `report-bs-infinity-a1-stage0.md` の11-15追記に記録。
