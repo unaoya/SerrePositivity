@@ -16175,3 +16175,65 @@ R03hの全interval族の等式、元のnative fiber射自身の弱同値性、R0
 今回までの検証済みの実測は**217モジュール・14,655行・1,556宣言**。外枠22,000行まで7,345行。監査の生成定数を含む実環境の数は単純加算せず、今回のimport後の集計を用いた（既存OppositeFunctorIsoWhiskerは12→11、ソース変更0。公開宣言の追加・変更ではない）。登録候補JSONだけを更新し、共通の入口と公式監査は変更していない。
 
 登録候補は上記三本。今回の検証の後、同じ成分の合成則をホモトピー圏の元の射へ移す分割を続ける。R03h・R03dは未完で、一覧の完了数は増やしていない。
+
+## 272. 同じ corrected pairing の元の成分に対する合成則（2026-11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 24（うち追加 12）。
+
+### 272.1 同じ射への接続
+
+§271の左右射影の合成則を、twisted-arrowのホモトピー圏の任意の元の射について述べる形にした。元の射の代表辺を取って同じ三単体の計算を適用し、既存のhomotopyOppositeEquivalenceの同じ関手で反変の辺の類へ戻す。結論には選んだ代表辺を残さず、元の射そのものの左右射影と両端の元の辺だけを使う。既存の構成の合成則の証明の分割であり、一覧の新しい数学のIDは追加しない。
+
+BEでは、元のstrictBETotJointSourceCorrectedPairingIsoの同じ全関手同型の成分を代入した。これにより、同じcorrected pairingの頂点の元の辺に、元の成分の左射影と右射影を合成すると、同じoriginal pairingの頂点の元の辺になる。存在だけの成分へ置き換えていない。全要素の任意のtに対する成分の等式であり、tについての全関手の族の一致を証明したものではない。
+
+次に元の成分の二射影を、既存の全augmentation同型と標的の置換単位の同じ成分へ合わせる必要がある。元の単位ラベルのoriginal pairingの像は§271で検証したが、その像と今回の合成則だけで、まだcorrected pairingの単位の像の恒等性を完了したとしない。元の全straightening変換の単位の評価と、全Yoneda評価による全変換の一致も残る。R03hの全interval族の等式とR03dは引き続き未完。
+
+### 272.2 型
+
+新規2本（共通1・BE1）、96行。名前付きdef/lemmaは2個。BEのlocal instanceは元の代数のModelCategoryと関手的因子分解の同じ二つである。既存のLeanの変更は0。
+
+#### TwistedArrowHomComposition（52行）
+
+```lean
+lemma twistedArrowHom_composition {C : SSet.{u}} [Quasicategory C]
+    {a b : (TwistedArrow C) _⦋0⦌}
+    (f : HomotopyCategory.mk a ⟶ HomotopyCategory.mk b) :
+    ((homotopyOppositeEquivalence C).functor.map
+      ((SSet.mapHomotopyCategory (edgewiseLeft C)).map f)).unop ≫
+        HomotopyCategory.homMk (twistedArrowVertexEdge a) ≫
+          (SSet.mapHomotopyCategory (edgewiseRight C)).map f =
+            HomotopyCategory.homMk (twistedArrowVertexEdge b)
+```
+
+#### StrictDiagramTotJointCorrectionComponent（44行）
+
+```lean
+theorem strictBETotJointSourceCorrection_component_composition
+    (t : StrictBETotJointSourceElements A) :
+    let a := (strictBETotJointSourceCorrectedPairing A).app (Opposite.op ⦋0⦌) (nerveVertex t)
+    let b := (strictBETotJointSourceNativePairing A).app (Opposite.op ⦋0⦌) (nerveVertex t)
+    let f := ((strictBETotJointSourceCorrectedPairingIso A).app (nerveVertex t)).hom
+    ((homotopyOppositeEquivalence (CAlg_R A)).functor.map
+      ((SSet.mapHomotopyCategory (edgewiseLeft (CAlg_R A))).map f)).unop ≫
+        HomotopyCategory.homMk (twistedArrowVertexEdge a) ≫
+          (SSet.mapHomotopyCategory (edgewiseRight (CAlg_R A))).map f =
+            HomotopyCategory.homMk (twistedArrowVertexEdge b)
+```
+
+### 272.3 検証
+
+コードのコミット：**6d1362deb**。新規2本・96行、公開定理2個。実環境の新規二本は1・3宣言（BEのlocal instance二つを含む）。既存のLeanの変更は0。
+
+- 個別検査は両方とも成功。鍵付き対象ビルド334はBE側の単体表記のscopeが欠けていたため失敗した。open scoped Simplicialを補って個別検査を通し、335で対象ビルドと小監査を成功させた。計算上限の変更はない。
+- 鍵：--class impl --wait 3600、一枚の整理券、取得後gtimeout 1700秒。検査終了とともに返却済み。
+- 対象ビルド335：新規二本、成功（依存を含む12,226 jobs）。
+- 小監査：AuditISW2BKCells334Names.lean、**223モジュール・1,567宣言、propext・Classical.choice・Quot.soundのみ**。sorryAx・追加公理なし。互換二モジュールの宣言数0と既存定理の定義元の確認も成功。
+- §271の一件の数の差を調べるため、同じ鍵の中で元の218モジュールのimportの組も小監査で再検査した。**1,534宣言・標準三公理のみ**と元の数を再現した。OppositeFunctorIsoWhisker由来として列挙される12個と11個の名前の差は、`VertexIso.map.eq_1`という生成補題一件だけだった。手書きの公開宣言の名前の差は0。実測は今回の実環境の数を使う。
+- 宣言名の照合：main a4388efc9に固定し、自レーン585ファイル・1,861個の名前と、mainのEInfinity/3,745ファイル・13,373個の名前を照合。異なるファイル間の重複0、自レーン内部も0。
+- git diff --check：通過。
+
+証跡：/private/tmp/isw2-build335.log、isw2-validation335.json、isw2-opposite-name-difference335.json、isw2-declaration-collision-scan335.json。
+
+3b-4の検証済みの実測は**219モジュール・14,751行・1,560宣言**。外枠22,000行まで7,249行。登録候補は272.2の二本を自レーンのJSONへ追記した。共通の入口・公式監査は変更していない。
+
+元の成分の射影を同じ全augmentation・標的単位の成分へ合わせる所から続ける。全interval族の等式と全関手同型の照合はまだなく、R03h・R03dおよび3b-4aを完了とはしていない。
