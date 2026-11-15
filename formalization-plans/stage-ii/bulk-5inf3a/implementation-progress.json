@@ -3,7 +3,7 @@
   "complete": 1,
   "total": 6,
   "added": 0,
-  "verified_head": "this commit: base 13c6e6e2fcd0d15b02fecefff774487e04f6dfd6",
+  "verified_head": "this commit: base b6861035cce8d90dd0d0c6b9899e1f7d5e2f9f39",
   "items": {
     "HT01": "complete",
     "HT02": "in-progress",
@@ -12,10 +12,12 @@
     "HT05": "not-started",
     "HT06": "not-started"
   },
-  "latest_complete_audit_checkpoint": "full-native-comparison-laws-checkpoint.json",
-  "latest_complete_audit_declarations": 1166,
-  "working_changes_unverified": [],
-  "pending_check": "bundle-068 terminal; all prepared modules passed",
+  "latest_complete_audit_checkpoint": "homotopy-invariance-complete-checkpoint.json",
+  "latest_complete_audit_declarations": 1167,
+  "working_changes_unverified": [
+    "UniversalCrystallineCoefficients"
+  ],
+  "pending_check": "bundle-069 terminal rc1; see audit module inventory; failed dependencies await next batch",
   "next_proof_route": "ht02-next-proof-route.md",
   "initial_record": {
     "stage": "5inf3a",
