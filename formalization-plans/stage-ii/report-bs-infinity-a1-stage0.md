@@ -2464,3 +2464,45 @@ coherentOppositeSimplex ((nerveToCoherent C).app (op ⦋n⦌) A) =
 検証済み全体153本9,637行・825宣言、外枠18,600行内。
 S1 の二判定、S8 の元の四角形・全重みの比較・連続性・局所同値は未完。
 一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
+
+### S8-3：元の押し出し四角形と任意の余極限の離散性を閉じた（11-15）
+
+4本405行・25宣言の対象ビルドと小監査が成功（標準三公理のみ）。
+記録：`/tmp/is-w1/s8-pushout-square-5/`、source SHA 一致。
+
+```lean
+strictCoconeLegTriangleShape f ≫ (strictNativeCocone c).val =
+  SSet.yonedaEquiv.symm ((nerveToCoherent C).app (op ⦋2⦌)
+    (ComposableArrows.mk₂ (F.map f) (c.ι.app j)))
+
+((discretePushoutCocone f g).restrict strictSpanHornIso.inv).val =
+  (pushoutCocone (discretePushoutSquare f g)).val
+
+-- [Mono f]
+IsPushoutSquare (discretePushoutSquare f g) ∧
+  ∀ c : JoinCocone (pushoutSpan (discretePushoutSquare f g)),
+    IsColimitCone c → Is0Truncated c.vertex
+```
+
+`StrictNativeCoconeTriangles` は反対の錐の全単体の式と既存の反転 Yoneda の法則を使い、
+元の通常の合成二単体そのものを回収する。`StrictSpanHornEdges` は元の二辺を宇宙移送する法則。
+`DiscretePushoutSquareData` の四角形は drafts と同じ二つの合成二単体の貼り合わせを
+同じ `discretePresheafInclusion` で送った式（通常の四角形の式だけ名前に切り出した）。
+`DiscretePushoutSquareComparison` は元の全余錐を形状同型で制限し、上の二単体の等式を
+左右で使って同じ四角形の全余錐へ一致させた。
+最後に、元の前層の離散表示との指定した頂点同型を、任意の余極限へ移した。
+
+第一成分だけや、別の頂点を選んだ押し出しの存在へ弱めていない。
+S8-3 のこの最終型は本体で完成。S8 全体の完了とはしない。
+計算上限は変更していない。既存の宣言は変更せず、新規ファイルのみ。
+
+実測の差：前節の反転・制限298行と今回405行で、四角形への接続は703行。
+再見積もり524〜624行に対して79〜179行増えた。
+主な追加は持ち上げた span の指定二辺の厳密な移送58行と、元の二三角形の表示・比較の分割。
+新しい数学のまとまりや型つき ID は追加していない。
+
+検証済み全体157本10,042行・850宣言、外枠18,600行内。
+残りは S1 の生成 coverage・extensive の判定、S8 の固定した元の Yoneda に沿う一般重み、
+離散重みとの全関手比較、一般余極限を極限へ送る性質、離散層化の通常層化との比較・局所同値。
+S7 は指示どおり後続。S8-3 の成功だけで他の未供給入力を済んだものとはしない。
+一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
