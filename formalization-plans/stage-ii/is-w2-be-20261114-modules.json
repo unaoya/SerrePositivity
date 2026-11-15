@@ -235,5 +235,7 @@
   "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.VertexFiberEdgeProjectedArrow",
   "SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.ArrowMiddleIdentity",
   "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.TwistedHomVertexEdgeClasses",
-  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.TwistedHomVertexIsoOfArrowEq"
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.TwistedHomVertexIsoOfArrowEq",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.TwistedHomIdentityPoint",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointNativeUnitPoint"
 ]
