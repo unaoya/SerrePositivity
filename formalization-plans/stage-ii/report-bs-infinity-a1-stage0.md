@@ -1876,3 +1876,30 @@ fiber の比較は対象だけでなく全射を保持する充満忠実・本�
 検証済み全体95本6,054行・589宣言、外枠18,600行内。
 
 一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
+
+### S1：局所 comma の随伴と実 nerve の cofinal 性（11-15）
+
+3本162行・21宣言の対象ビルドと小監査が成功（標準三公理のみ）。
+記録：`/tmp/is-w1/s1-local-cofinal-3/`。source SHA も一致。
+
+```lean
+sieveFactorizationLocalPush R S t ⊣ sieveFactorizationLocalInclusion R S t
+IsLeftCofinal (nerveMap (sieveFactorizationComposite R S).op)
+IsLeftCofinal (nerveMap (sieveFactorizationLocalInclusion R S t).op)
+```
+
+一般の通常の左随伴の実 nerve が left cofinal である補題は
+`Kerodon/LimitsAndColimits/Cofinality/NerveAdjunction` に置いた。
+既存の各左 comma による Quillen A と終対象での収縮を使い、
+S1 の中へ一般の補題を埋め込まない。
+
+局所 comma から固定 fiber への押し出しは三角形の合成。
+Hom 同値と自然性は元の全射の式で証明した。
+既存の構成の法則・証明分割として S1 内で進めており、一覧の追加はない。
+次はこの cofinal 比較と引き戻し篩の全同値で、元の制限錐を局所 comma 上で回収する。
+極限の合成には既存の `coneTransformationMap_isQCatEquivalence` を再利用できる。
+これは任意の形状と追加パラメータの元の錐を、定値始域からの変換へ比較する。
+被覆生成の最終結論そのものはまだ未証明。
+
+検証済み全体98本6,216行・610宣言、外枠18,600行内。
+一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
