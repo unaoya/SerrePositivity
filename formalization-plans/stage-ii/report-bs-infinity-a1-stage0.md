@@ -2020,3 +2020,31 @@ AsSmall 表示そのものであることを証明した。
 検証済み全体107本6,808行・655宣言、外枠18,600行内。
 S1 の交叉降下の同値・生成系・上限位相・extensive の判定と、S8 は未完。
 一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
+
+### S1：指定右 Kan の全パラメータの Hom 普遍性（11-15）
+
+`KanExtensions/RightKanConstantFamily` 48行・2宣言の対象ビルドと小監査が成功
+（標準三公理のみ）。記録：`/tmp/is-w1/s1-right-family-1/`。source SHA も一致。
+
+```lean
+IsRightKanExtension δ F₀ F α →
+  IsRightKanExtension δ (F₀ ≫ constantFunctorMap A D) (F ≫ constantFunctorMap A D)
+    (kanRightCounitPostcomp α (constantFunctorMap A D))
+```
+
+A は任意の単体集合。準圏性や有限性は課さない。元の指定輸送を同じ定値族へ
+後合成し、元の局所極限錐の像の極限性で判定した。
+さらに同じ後合成した指定余単位の `RightKanHomUniversal` を任意の A で結論する。
+π₀ の一つの Hom 全単射だけで全写像空間の同値を代用しないための入力になる。
+既存の構成の係数移送の法則として S1 内で扱う。
+
+極限の合成の次の証明では、元の錐の余単位の比較が必要。
+`coneCounitHom_bijective`・`coneFamilyCounitHom_bijective` は必要条件で、
+それだけから任意の係数圏の極限性を主張しない。
+全パラメータの比較を元の錐の極限性へ戻す判定、または小極限が存在する係数での
+比較を証明したうえで全共変表現可能関手による極限の検出へ運ぶ経路を接続する。
+後者を用いる場合も、最終の S1 の係数に presentable 性や極限存在は追加しない。
+
+検証済み全体108本6,856行・657宣言、外枠18,600行内。
+S1 の交叉降下の同値・生成系・上限位相・extensive の判定と、S8 は未完。
+一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
