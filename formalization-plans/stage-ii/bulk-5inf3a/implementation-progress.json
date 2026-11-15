@@ -3,7 +3,7 @@
   "complete": 1,
   "total": 6,
   "added": 0,
-  "verified_head": "this commit: base c87ba8949948cf4ef008093005ea0e65116276d4",
+  "verified_head": "this commit: base bcbed453cbf94b64d2e16db50afa2e4af2482e55",
   "items": {
     "HT01": "complete",
     "HT02": "in-progress",
@@ -12,14 +12,13 @@
     "HT05": "not-started",
     "HT06": "not-started"
   },
-  "latest_complete_audit_checkpoint": "derived-unit-and-cosimplicial-naturality-checkpoint.json",
-  "latest_complete_audit_declarations": 1136,
+  "latest_complete_audit_checkpoint": "canonical-native-model-laws-checkpoint.json",
+  "latest_complete_audit_declarations": 1153,
   "working_changes_unverified": [
-    "NativeCosimplicialNaturality",
-    "NativeModelComparisonNaturality",
-    "NativeCanonicalComparison"
+    "CanonicalCosimplicialComparison",
+    "NativeCosimplicialNaturality"
   ],
-  "pending_check": "bundle-064 terminal rc1; see audit module inventory; failed dependencies await next batch",
+  "pending_check": "bundle-066 terminal rc1; see audit module inventory; failed dependencies await next batch",
   "next_proof_route": "ht02-next-proof-route.md",
   "initial_record": {
     "stage": "5inf3a",
