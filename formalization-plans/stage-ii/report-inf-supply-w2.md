@@ -17566,3 +17566,62 @@ lemma strictBETotJointSourceNativePinchedMap_factorization (P : strictBETotJoint
 2本106行、公開3補題・局所instance二つ。対象ビルド358は依存を含む12,251 jobsで成功、小監査も終了0。共有鍵 --class impl --wait 3600、一枚の整理券、gtimeout 1700秒でビルド・小監査の間だけ使用。小監査は261モジュール・1,703宣言、propext・Classical.choice・Quot.soundのみ、sorryAx・追加公理なし。自レーン累計257本・17,438行、実環境1,696宣言。外枠22,000行まで4,562行。git diff --check通過。main a4388efc9のEInfinity/3,745ファイル13,373名と自レーン623ファイル1,952名を照合し、異なるファイル間の重複0、内部も0。既存Lean・⑤aのファイル・公式入口・公式監査は変更していない。証跡は/private/tmp/isw2-build358.log、isw2-validation358.json、isw2-declaration-collision-scan358.json。
 
 対象ビルド済みの汎用モジュールをimportし、元のnative側の既存instanceを再利用する一時ファイルisw2-native-pinched-interval-imported1は終了0。§291の元のnative射の全interval族の正規化という同じ型が個別検査を通った。単一ファイルに汎用補題の証明も展開した検査とは区別する。計算上限は上げず、次に本体へ配置して対象ビルド・小監査を行う。R03hのroofとの最終等式・R03d・3b-4aは未完。
+
+## 293. 元のnative射自身の全interval族の正規化を本体へ（2026-11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+§291の型を弱めずに本体へ配置する。§292の検証済みの汎用合成則をimportし、元のnative pinched射を同じ因子の合成として代入する。新しい数学の項目ではなく、同じ指定比較の定義・合成・係数移送の法則。§292のコードはef0c24e9bに保存済み。
+
+#### StrictDiagramTotJointSourceNativeIntervalFamily（76行）
+
+```lean
+lemma strictBETotJointSourceNativePinchedMap_interval_family_normalization (P : strictBETotJointHomIndex A) :
+    let x := (strictBETotModelSource A).app (Opposite.op ⦋0⦌)
+      (nerveVertex (((strictBETotJointHomSourceIndex A).obj P).unop))
+    let y := (strictBETotModelSource A).app (Opposite.op ⦋0⦌)
+      (nerveVertex ((strictBETotJointHomTargetIndex A).obj P))
+    let e := SSet.opFunctor.mapIso (eqToIso
+      (congrArg (fun b => vertexFiber (twistedArrowProjection (CAlg_R A)) b)
+        (strictBETotJointNativeHomInput_model_vertex A P)))
+    intervalFamilyHom (strictBETotJointSourceNativePinchedMap A P ≫
+      pinchedHomToIntervalMappingSpace x y) =
+      intervalFamilyHom (strictBETotJointSourceNativeOppositeFiberMap A P ≫ e.hom ≫
+        (isQCatEquivalence_of_trivialKanFibration (edgewiseLeft (twistedArrowHomSpace x y))).choose.inv ≫
+        edgewiseRight (twistedArrowHomSpace x y) ≫
+        (cosliceTwistedHomMap_isQCatEquivalence x y).choose.inv ≫
+        cosliceFiberToIntervalMappingSpace x y)
+```
+
+R03hの右辺の元のroofの全族との最終等式はまだ得られていない。元の射自身の弱同値性やR03dの全関手同型の検収とは区別する。
+
+### 293.2 検収
+
+新規1本76行・公開1補題。§291の元のnative射自身についての全interval族の正規化の同じ型を閉じた。対象ビルド359（依存を含む12,251 jobs）・小監査とも終了0。共有鍵 --class impl --wait 3600、一枚の整理券、gtimeout 1700秒でビルドと小監査の間だけ使用した。カーネル・heartbeat・再帰の上限は変更していない。小監査は262モジュール・1,701宣言、propext・Classical.choice・Quot.soundのみ、sorryAx・追加公理なし。
+
+新規モジュールの実環境宣言は1。import閉包の変化によりTwistedHomIntervalFamilyComparisonの環境宣言は8→6、TwistedHomPinchedComparisonは16→15となり、監査合計は1,703→1,701。両モジュールのLeanソースは変更しておらず、新規宣言数と監査増減を同一視しない。自レーン累計258本・17,514行、実環境1,694宣言。外枠22,000行まで4,486行。main a4388efc9のEInfinity/3,745ファイル13,373名と自レーン624ファイル1,953名を照合し、異なるファイル間の同名宣言0、内部も0。git diff --check通過。
+
+既存のLean宣言・⑤aのファイル・公式入口・公式監査は変更していない。登録候補の一覧is-w2-be-20261114-modules.jsonに追加した。証跡：/private/tmp/isw2-build359.log、isw2-validation359.json、isw2-declaration-collision-scan359.json。全ての鍵は返却済み。
+
+### 293.3 R03hに残る全族の照合
+
+今回閉じた正規化の右辺は、元の反対fiber射に、同じ入力頂点の等式のop輸送、同じedgewiseLeftの指定逆、edgewiseRight、同じcoslice比較の指定逆、cosliceの区間比較を順に合成した全族である。残るR03hは、この同じ全族のintervalFamilyHomを、strictBETotJointSourceRoofNormalizedPinchedComparisonの全族のintervalFamilyHomと同定すること。既存の正規化を使って左辺を戻せるが、右辺の元のroofとの等式はまだ証明していない。
+
+次の証明では、元のstrictBETotJointSourceFiberPairingIsoとその全射影の等式を保持して、正規化されたnative全族を元のaugmentation・評価・標的置換の全族へ接続する。roof側では§269以降のNerveColumnのaugmentation逆と評価の全族の式、元の局所化の全三角形とのroof_naturality、pinchedEndpointEquivalence_familyによる同じ両端の輸送を使う。元のcorrected pairingの一つの頂点の類の一致だけで、この全族の等式を推論しない。§287のより強い重み付きnative単位のfiber値の式を、未証明のまま使用しない。
+
+局所化の全三角形の消去に使う、次の既存構成の自然性の共役式は一時ファイルisw2-column-roof-conjugation1で個別検査・終了0。まだ本体のモジュールには追加しておらず、上の累計行数には含めない。既存のNerveColumn.roof_naturalityの左端の指定同型を反転して移しただけの法則である。
+
+```lean
+lemma sameColumnRoofConjugation {I C : Type u} [Category.{u} I] [Category.{u} C]
+    {E : SSet.{u}} [Quasicategory E] {F G : nerve C ⟶ E} (e : FunctorIso F G)
+    (V : I ⥤ C) {X Y : C} (p : V ⟶ (Functor.const I).obj X)
+    (hpF : ∀ i, IsInvertibleEdge ((nerve.edgeMk (p.app i)).map F).toTruncated)
+    (hpG : ∀ i, IsInvertibleEdge ((nerve.edgeMk (p.app i)).map G).toTruncated)
+    (s : V ⟶ (Functor.const I).obj Y) :
+    (e.precomp (nerveMap ((Functor.const I).obj X))).inv ≫
+      (NerveColumn.augmentationIso F V p hpF).inv ≫ NerveColumn.hom F s ≫
+      (e.precomp (nerveMap ((Functor.const I).obj Y))).hom =
+      (NerveColumn.augmentationIso G V p hpG).inv ≫ NerveColumn.hom G s
+```
+
+R03h・R03d・3b-4aは未完。一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。停止点3b-4aの検収とはせず、R03d→R02・R03→R04・R05→R11・R12のTotの分、停止点の報告後に実現R06〜R10という元の範囲・順序を維持する。

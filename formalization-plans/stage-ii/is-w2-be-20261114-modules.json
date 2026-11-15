@@ -255,5 +255,6 @@
   "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.NativeNerveUnitNormalization",
   "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.TwistedHomIntervalFamilyComparison",
   "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.TwistedHomOppositeIntervalFamilyComparison",
-  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceNativePinchedFactorization"
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceNativePinchedFactorization",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceNativeIntervalFamily"
 ]
