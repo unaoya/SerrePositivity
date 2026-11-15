@@ -3,7 +3,7 @@
   "complete": 2,
   "total": 6,
   "added": 0,
-  "verified_head": "this commit: base 6c57ecfa6d9053f21d26ecbd24c5ab6b9cf1fd0a",
+  "verified_head": "this commit: base 1205cbe722f566f895c80148baa6356edeb91b9d",
   "items": {
     "HT01": "complete",
     "HT02": "complete",
@@ -12,12 +12,12 @@
     "HT05": "not-started",
     "HT06": "not-started"
   },
-  "latest_complete_audit_checkpoint": "affine-coefficient-bockstein-checkpoint.json",
-  "latest_complete_audit_declarations": 1194,
+  "latest_complete_audit_checkpoint": "affine-coefficient-sections-checkpoint.json",
+  "latest_complete_audit_declarations": 1196,
   "working_changes_unverified": [
-    "AffineCoefficientSections"
+    "AffineBaseCoefficientModels"
   ],
-  "pending_check": "bundle-077 terminal rc1; see audit module inventory; failed dependencies await next batch",
+  "pending_check": "bundle-078 terminal rc1; see audit module inventory; failed dependencies await next batch",
   "next_proof_route": "ht02-next-proof-route.md",
   "initial_record": {
     "stage": "5inf3a",
