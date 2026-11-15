@@ -1198,3 +1198,24 @@ G3 は完成。G4 は F8 の同じスカラー・実際の構造層の Frobenius
 今回1モジュール73行＋入口1行。新規92モジュール本体6,069行・入口込み6,161行。既存追加25行を含む計数は本体6,094行・入口込み6,186行。新規の小監査累計643宣言、既存15宣言は別計上。残りの模型条件の移送と実際の模型への F8 の適用は drafts で検証中で、本体には含めない。残り G4 約2,000〜4,000行・G5 約1,000〜2,000行、外枠16,000行は不変。停止点2g-2は未完。
 
 一覧：済み1／全体3（うち追加0）。
+
+
+同じ一つの被覆から nerve の被覆を作る法則（着手前、G4 の既存の幾何的 Čech nerve と有限被覆の整合性の内数、85〜180行）：`schemeCechTupleOpen f U n t` は既存の nerve の全ての射影 π_j による U(t j) の逆像の有限交叉という開集合。`schemeCechTupleOpen_iSup` は U が被覆なら全タプル t のこれらの開集合も被覆であること。`schemeCechTupleOpen_map_le` は h:m→n という実際の nerve の射に対し source のタプル s の開が、target のタプル s∘h.unop.toOrderHom の開の逆像に含まれること。したがって各次数で独立な被覆を選ばず、同じ U の添字の前合成を使える。有限性は ι の有限性から供給し、アフィン性と閉中心への底変換の照合は次の分割に残す。
+
+
+## G4：F8 を元の構造射・閉中心・任意の有限アフィン被覆へ戻す
+
+`DegreeOneProjectiveModelScalar`（66行）の宣言：
+
+- `DegreeOneProjectiveModel.scalarHom`：元の構造射の大域スカラーは、表示の同型による同じ Proj の大域スカラーの引き戻し。
+- `DegreeOneProjectiveModel.cartesian`：同じ閉中心の空間・商の構造射を保ち、右上だけを表示の同型で Proj に移した Cartesian square。
+- `DegreeOneProjectiveModel.structure_surjective`：元の構造射の全射性から、同じ表示の Proj の構造射の全射性。
+- `DegreeOneProjectiveModel.restrict_isIso`：元の構造射の任意の基底開での同型性から、同じ表示の Proj の構造射のその開での同型性。
+
+`DegreeOneProjectiveModelPerfectSquare`（77行）：`DegreeOneProjectiveModel.perfectCartesianSquare_acyclic` は、Noether 基底、元の構造射 f の全射性・中心外同型性・同じ Cartesian な閉中心・p の零化から、元の g と schemeScalarHom Y f、schemeScalarHom X iX、同じ商の Frobenius 係数の四角形の完全性を、任意の有限アフィン被覆で返す。多項式環作用・有限性・標準開の被覆条件は同じ既存の m.projectiveCechData、表示先の全射性・中心外同型性は上の二法則、m.ring の標数は元の R の標数から供給する。同じ V を逆同型で Proj に移して既存の F8 を適用し、実際の四角形の同型比較で戻す。完全性や表示先の幾何学的条件を追加仮定として要求しない。Čech 版と原典との対応を docstring に明記。
+
+単独検証、本体とのソース完全一致、対象と入口のビルド5,178・5,179ジョブ成功、小監査4・2宣言（計6、所有元の全生成宣言を含む）・標準三公理のみ、終了状態0。ログ `2g-degree-one-projective-model-scalar-check-3.log`・`2g-degree-one-projective-model-scalar-native.log`・`2g-degree-one-projective-model-scalar-audit.log`、`2g-degree-one-projective-model-perfect-square-check-2.log`・`2g-degree-one-projective-model-perfect-square-native.log`・`2g-degree-one-projective-model-perfect-square-audit.log`。局所的な backward.isDefEq.respectTransparency false を使用、既定の資源制限。letI の代わりに let を勧める style 警告と長い行の警告がある。追加公理・sorry・既存の型変更・200行超の宣言なし。共有鍵 --class impl --wait 3600、待ちは一つ、対象ビルドと監査は別枠。root・下流全ビルド・全体監査なし。
+
+今回2モジュール143行＋入口2行。新規94モジュール本体6,212行・入口込み6,306行。既存追加25行を含む外枠計数は本体6,237行・入口込み6,331行。新規小監査累計649宣言、既存15宣言は別計上。実際のブローアップとその有限ファイバー冪には既存の G3 の表示が供給されるので、この同じ定理を適用できる。ただし一つの被覆の nerve との整合性と Noether 帰納全体、G5 は未完。次のタプル被覆は drafts で検証中で、本体に含めない。外枠16,000行は不変。
+
+一覧：済み1／全体3（うち追加0）。
