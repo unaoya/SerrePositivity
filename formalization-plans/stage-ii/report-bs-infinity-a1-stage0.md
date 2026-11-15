@@ -1838,3 +1838,41 @@ S3 の逆向きは drafts の `∃ c, IsLimitCone c ∧ c.vertex = t.vertex` と
 「制限の厳密な等号は要求しない」の docstring も確認した。
 
 一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
+
+### S1：引き戻し篩の全 fiber と元の指定図式（11-15）
+
+`SieveFactorizationFiber`・`SieveFactorizationDiagram` の2本168行・27宣言が
+対象ビルド・小監査成功（標準三公理のみ）。記録：
+`/tmp/is-w1/s1-fiber-and-diagram-7/`。採取は今回の対象ビルド後の環境から行い、
+記録の source SHA と現在の2本も一致する。
+
+主な型：
+```lean
+sieveCategory (S.pullback t.obj.hom) ≌ sieveFactorizationFiber R S t
+
+(pullbackSieveToFactorizationFiber R S t).op ⋙
+  (sieveFactorizationFiberInclusion R S t).op ⋙ sieveFactorizationDiagram R S =
+    sieveDiagram (S.pullback t.obj.hom)
+
+(sieveFactorizationCone R S).π =
+  Functor.whiskerLeft (sieveFactorizationOuter R S).op (sieveCone R).π ≫
+    sieveFactorizationTriangle R S
+```
+
+fiber の比較は対象だけでなく全射を保持する充満忠実・本質的全射の比較。
+元の図式は厳密に回収し、錐の比較も元の三角形の自然変換を明示した。
+係数への極限存在の追加仮定はない。
+
+次の芯の型（未証明）は次のとおり。
+```lean
+(∀ t : sieveCategory R,
+  IsLimitCone (restrictionCone F (S.pullback t.obj.hom))) →
+(IsLimitCone (restrictionCone F (R ⊓ S)) ↔
+ IsLimitCone (restrictionCone F R))
+```
+各 fiber の比較を局所右 Kan の形状へ移し、指定三角形に沿う
+極限の合成を示してから、普遍的降下篩の位相を構成する。
+被覆生成・上限位相・extensive の判定、S8 は未完。
+検証済み全体95本6,054行・589宣言、外枠18,600行内。
+
+一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
