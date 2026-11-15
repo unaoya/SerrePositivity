@@ -1094,3 +1094,26 @@ G4 の同じ四角形の有限アフィン細分・共通細分による完全�
 次は F8 の projectivePerfectCartesianAugmentedSquare から、標準開でのこの native な値への実際の四角形の射で、既知の完全性を移す。既存の各辺の等式とスカラーの自然性は照合済みで、上に型を記録した。F8 の完全性の任意のアフィン被覆への適用そのもの、nerve との整合性、Frobenius 係数とアフィン conerve の自然な比較、fppf の二重 Čech と Noether 帰納、G5 は未完。条件付きの部品だけで Thm 2.9 の十分性を完成と呼ばない。全体の見込み約5,500〜12,000行・外枠16,000行は不変。停止点2g-2ではない。
 
 一覧：済み1／全体3（うち追加0）。
+
+
+同じ F8 の完全性の移送の法則（着手前、前記80〜200行の見込みの内数）：`projectivePerfectCartesianScalarSquare_standard_acyclic` は、同じ Noether・有限性・中心外の同型・全射性・Cartesian な閉中心の入力の下、標準開での projectivePerfectCartesianScalarSquare の全複体の Acyclic を返す。前記の実際の射の恒等成分の cone の完全性を供給し、既存の projectivePerfectCartesianSquare_acyclic から移す。F8 の完全性を追加仮定にしない。
+
+
+G4 の同じ F8 の任意の有限アフィン被覆への適用（着手前、前記の閉中心と被覆比較の法則の内数、65〜130行）：`projectivePerfectCartesianClosedImmersion` は H から g の閉埋め込み性を、商の Spec の射の閉埋め込み性と pullback で供給する。`projectivePerfectCartesianSeparated` はこれと Proj の分離性から閉中心 Y の分離性を供給する。`projectivePerfectCartesianScalarSquare_acyclic … V hV hcV` は、既存の F8 と同じ Noether・有限性・中心外同型・全射性・Cartesian な閉中心の下、任意の有限アフィン被覆 V での同じ native な四角形の全複体の Acyclic。標準開での既知の完全性を、実際の共通細分の比較で移す。g のアフィン性と両空間のアフィン対角は上の実際の幾何から供給し、追加仮定にしない。V のアフィン性と被覆性は選んだ被覆の性質として明示する。
+
+
+F8 の比較の各辺の証明分割（着手前、同じ係数移送の内数）：`projectivePerfectCartesianScalarAugmentation_eq_native` は old 四角形の scalar と、Proj の実際の大域スカラーの native な増大写像の等式。`projectivePerfectCartesianQuotient_eq_native` は quotient が同じ商の Frobenius 順極限の整数線形写像に等しいこと。`projectivePerfectCartesianCenterAugmentation_eq_native` は center と閉中心の実際の大域スカラーの native な増大写像の等式。三つとも元の G・I・p・Cartesian な証人と F8 の入力を保つ。比較の射の入れ子の証明から分け、型を明示して既定の heartbeat 内で検証する。資源制限は上げない。この分割を含む比較の束の見込みは約200〜320行へ補正する（2g-2 の外枠は不変）。
+
+
+比較の射の組み立ての追加の証明分割（着手前、同じ内数）：`projectivePerfectCartesianScalarMap_restriction`・`..._scalar`・`..._quotient`・`..._center` はそれぞれ、始域 s=old F8 四角形・終域 t=native な同じ四角形、left=𝟙s.C・right=𝟙s.E・base=center=LinearMap.id に対する Map の四条件そのものの型。すなわち `s.restriction≫𝟙s.E=𝟙s.C≫t.restriction`、`((𝟙s.C).f 0).hom.comp s.scalar=t.scalar.comp id`、`id.comp s.quotient=t.quotient.comp id`、`((𝟙s.E).f 0).hom.comp s.center=t.center.comp id`。各条件の型を独立して検証し、Map の項へ証明定数として渡して、構造体の組み立てで大きな辺の定義を再展開しない。主張・射・仮定は不変、heartbeat は既定のまま。
+
+
+## G4：F8 の同じ Cartesian なスカラーの native な係数移送
+
+`ProjectivePerfectCartesianScalarSquare`（49行）：`projectivePerfectCartesianScalarCompatibility` は元の H.w と既存の Γ–Spec の自然性から、Proj のスカラーを閉中心へ引き戻すと商を経たスカラーになること。`projectivePerfectCartesianScalarSquare` は同じ G・I・実際の閉中心とそのスカラーを、前束の既存の四角形への native な係数の代入へ渡した値。任意の被覆を渡せるが、全複体の完全性をこの値の仮定にはしていない。
+
+単独検証、下書きと本体のソース完全一致、対象と入口のビルド5,171ジョブ、小監査7宣言（所有元の生成・非公開宣言も含む）・標準三公理のみ、終了状態0。ログ `2g-projective-perfect-cartesian-scalar-square-check-2.log`・`2g-projective-perfect-cartesian-scalar-square-native.log`・`2g-projective-perfect-cartesian-scalar-square-audit.log`。既定の透明性・資源制限で成功。追加公理・sorry・既存の型変更・200行超の宣言なし。共有鍵 --class impl --wait 3600、待ちは一つ。対象ビルドと監査は別の枠。root・下流全ビルド・全体監査なし。
+
+今回1モジュール49行＋入口1行。新規86モジュール本体5,534行・入口込み5,620行、既存の追加25行を保守的に含む計数は本体5,559行・入口込み5,645行。新規モジュールの小監査の累計610宣言と、既存モジュール15宣言は別計上。比較写像と標準開での F8 の完全性の移送は次の下書きで、まだ本体には含めない。各辺の証明を独立した法則に分けて、既定の heartbeat 内で組み立てを検証中。任意の有限アフィン被覆での適用と降下の帰納、G5 は未完。全体の見込み約5,500〜12,000行・外枠16,000行は不変。
+
+一覧：済み1／全体3（うち追加0）。
