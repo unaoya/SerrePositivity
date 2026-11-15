@@ -12447,3 +12447,163 @@ M15・drafts・main・⑤aの既存ファイル・Interfaceは変更していな
 
 G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み5,477行。
 M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
+
+## §92 G01：全頂点の切れ目の一貫した比較と実水平分解からの回収（11-15）
+
+### 92.1 検証済みの追加
+
+追加は **3ファイル339行・明示宣言22**。累計 **45ファイル5,816行・明示宣言385**。
+OrdinalCutComparison.lean は115行・7宣言、WalkingAdjunctionCutChains.lean は144行・12宣言、
+WalkingAdjunctionFactorCuts.lean は80行・3宣言。
+200行を超える個別の宣言・証明はない。
+G01の既存の水平合成の切れ目の移送・回収・比較の法則とその証明の分割なので、
+新しい一覧IDは足さない。
+
+切れ目は、その左にある全ての点の条件で区別できる。
+既存の最大元付加と実区間表示のGalois対応から、元の点の像が切れ目より左にある条件と、
+逆向きの区間表示で戻した切れ目より元の点が左にある条件が同値であることを証明した。
+これを使い、順序和の二因子の間の切れ目を実区間表示から回収した。
+端点共有については左因子の最大元保存から共有点の像を照合した。
+どちらも個数の等式と射の異種等式の輸送を伴う表示にも適用できるようにした。
+
+実単体の全頂点のplusの切れ目を、逆向きの区間表示の可換条件で結んだデータを定義した。
+minusの共有点は元の有限単調射の可換条件で結ぶ。
+plusの切れ目は終頂点から一意に決まり、終頂点の順序が全頂点へ戻る。
+minusの共有点は始頂点から一意に決まり、始頂点の順序が全頂点へ進む。
+従って二つのplusの切れ目、二つのminusの共有点はそれぞれ全頂点で一貫して比較できる。
+Galois対応を使い、minusの共有点がplusの切れ目より左にある条件も全頂点で不変であることを
+証明した。二種類の切れ目の比較についても、途中で順序が入れ替わることはない。
+
+最後に、実際のplus経由の水平分解から左因子の点の個数を切れ目とするデータを構成した。
+minus経由では左因子の入る区間の次元を共有点とした。
+全射の可換条件は既存の八つの合成の実射の表示と切れ目・共有点の回収から証明し、
+これらの条件を新たな仮定として追加していない。
+
+### 92.2 型と残る境界
+
+原典はRiehl–Verity Proposition 3.1.10・Remark 3.3.8、HA Proposition 4.7.3.3、
+Kerodon Remark 6.2.1.4（Tag 02EN）。検証した型は以下。
+
+```lean
+lemma ordinalCut_ext {m : ℕ} (a b : Fin (m + 1))
+    (h : ∀ i : Fin m, i.val < a.val ↔ i.val < b.val) : a = b
+
+lemma ordinalIntervalMap_cut_iff {m n : ℕ} (f : Fin m →o Fin n)
+    (i : Fin m) (c : Fin (n + 1)) :
+    i.val < (ordinalIntervalMap f c).val ↔ (f i).val < c.val
+
+lemma ordinalIntervalMap_cut_unique {m n : ℕ} (f : Fin m →o Fin n)
+    (a : Fin (m + 1)) (b : Fin (n + 1))
+    (h : ∀ i : Fin m, i.val < a.val ↔ (f i).val < b.val) :
+    ordinalIntervalMap f b = a
+
+lemma ordinalAppend_cut {m n p q : ℕ} (f : Fin m →o Fin n) (g : Fin p →o Fin q) :
+    ordinalIntervalMap (ordinalAppend f g) ⟨n, by omega⟩ = ⟨m, by omega⟩
+
+lemma ordinalGlue_shared {m n p q : ℕ} (f : Fin (m + 1) →o Fin (n + 1))
+    (g : Fin (p + 1) →o Fin (q + 1)) (hf : f (Fin.last m) = Fin.last n) :
+    ordinalGlue f g ⟨m, by omega⟩ = ⟨n, by omega⟩
+
+lemma ordinalCut_of_append_profile {a b m n p q : ℕ} (ha : a = m + p) (hb : b = n + q)
+    (H : Fin a →o Fin b) (f : Fin m →o Fin n) (g : Fin p →o Fin q)
+    (h : HEq H (ordinalAppend f g)) (c : Fin (a + 1)) (d : Fin (b + 1))
+    (hc : c.val = m) (hd : d.val = n) : ordinalIntervalMap H d = c
+
+lemma ordinalCut_of_glue_profile {a b m n p q : ℕ}
+    (ha : a = m + p + 1) (hb : b = n + q + 1)
+    (H : Fin a →o Fin b) (f : Fin (m + 1) →o Fin (n + 1))
+    (g : Fin (p + 1) →o Fin (q + 1)) (hf : f (Fin.last m) = Fin.last n)
+    (h : HEq H (ordinalGlue f g)) (c : Fin a) (d : Fin b)
+    (hc : c.val = m) (hd : d.val = n) : H c = d
+
+structure WalkingAdjunctionPlusCut {n : ℕ} {X Y : WalkingAdjunctionPoint}
+    (F : Fin (n + 1) ⥤ walkingAdjunctionHom X Y) where
+  value (i : Fin (n + 1)) : Fin (walkingAdjunctionOrdinalCard X Y (F.obj i) + 1)
+  naturality {i j : Fin (n + 1)} (h : i ≤ j) :
+    ordinalIntervalMap (walkingAdjunctionOrderHom (F.map (homOfLE h))) (value j) = value i
+
+structure WalkingAdjunctionMinusCut {n : ℕ} {X Y : WalkingAdjunctionPoint}
+    (F : Fin (n + 1) ⥤ walkingAdjunctionHom X Y) where
+  value (i : Fin (n + 1)) : Fin (walkingAdjunctionOrdinalCard X Y (F.obj i))
+  naturality {i j : Fin (n + 1)} (h : i ≤ j) :
+    walkingAdjunctionOrderHom (F.map (homOfLE h)) (value i) = value j
+
+@[ext] lemma WalkingAdjunctionPlusCut.ext {a b : WalkingAdjunctionPlusCut F}
+    (h : ∀ i, a.value i = b.value i) : a = b
+
+@[ext] lemma WalkingAdjunctionMinusCut.ext {a b : WalkingAdjunctionMinusCut F}
+    (h : ∀ i, a.value i = b.value i) : a = b
+
+lemma WalkingAdjunctionPlusCut.le (a b : WalkingAdjunctionPlusCut F)
+    (h : a.value (Fin.last n) ≤ b.value (Fin.last n)) (i : Fin (n + 1)) :
+    a.value i ≤ b.value i
+
+lemma WalkingAdjunctionPlusCut.last_injective :
+    Function.Injective (fun a : WalkingAdjunctionPlusCut F => a.value (Fin.last n))
+
+lemma WalkingAdjunctionPlusCut.total (a b : WalkingAdjunctionPlusCut F) :
+    (∀ i, a.value i ≤ b.value i) ∨ (∀ i, b.value i ≤ a.value i)
+
+lemma WalkingAdjunctionMinusCut.le (a b : WalkingAdjunctionMinusCut F)
+    (h : a.value 0 ≤ b.value 0) (i : Fin (n + 1)) : a.value i ≤ b.value i
+
+lemma WalkingAdjunctionMinusCut.first_injective :
+    Function.Injective (fun a : WalkingAdjunctionMinusCut F => a.value 0)
+
+lemma WalkingAdjunctionMinusCut.total (a b : WalkingAdjunctionMinusCut F) :
+    (∀ i, a.value i ≤ b.value i) ∨ (∀ i, b.value i ≤ a.value i)
+
+lemma walkingAdjunctionCut_mixed_iff (a : WalkingAdjunctionPlusCut F)
+    (b : WalkingAdjunctionMinusCut F) (i : Fin (n + 1)) :
+    (b.value i).val < (a.value i).val ↔ (b.value 0).val < (a.value 0).val
+
+lemma walkingAdjunctionCut_mixed_total (a : WalkingAdjunctionPlusCut F)
+    (b : WalkingAdjunctionMinusCut F) :
+    (∀ i, (b.value i).val < (a.value i).val) ∨
+      (∀ i, (a.value i).val ≤ (b.value i).val)
+
+lemma walkingAdjunctionIncomingMap_last {X : WalkingAdjunctionPoint}
+    {A B : walkingAdjunctionHom X .minus} (f : A ⟶ B) :
+    walkingAdjunctionIncomingMap f (Fin.last (walkingAdjunctionIncomingDim X A)) =
+      Fin.last (walkingAdjunctionIncomingDim X B)
+
+def walkingAdjunctionPlusFactorCut {n : ℕ} (X Y : WalkingAdjunctionPoint)
+    (F : Fin (n + 1) ⥤ walkingAdjunctionHom X .plus)
+    (G : Fin (n + 1) ⥤ walkingAdjunctionHom .plus Y) :
+    WalkingAdjunctionPlusCut (F.prod' G ⋙ walkingAdjunctionHorizontal X .plus Y)
+
+def walkingAdjunctionMinusFactorCut {n : ℕ} (X Y : WalkingAdjunctionPoint)
+    (F : Fin (n + 1) ⥤ walkingAdjunctionHom X .minus)
+    (G : Fin (n + 1) ⥤ walkingAdjunctionHom .minus Y) :
+    WalkingAdjunctionMinusCut (F.prod' G ⋙ walkingAdjunctionHorizontal X .minus Y)
+```
+
+今回の切れ目のデータには外側の切れ目も含み、全ての追跡データを任意の端点を持つ
+水平分解へ戻せるとは主張していない。必要な端点の条件は因子の回収時に照合する。
+構成した実分解から切れ目への方向は、実射を含めて全次数で検証した。
+
+同じ単体の二つの分解の比較には、合成関手の等式に沿ってこのデータを輸送し、
+切れ目の大小から短い因子の分解を実際に回収する部分が残る。
+§90の原子的な自由な道の比較のFaithful、原子性の退化との両立、parental subcomputadの
+filtration・実充填はまだ未完。元のQCatAdjunctionからの全coherentな延長と
+同じF≫U・単位・余単位・HAモデルの照合、G02以降も未完。G01の済みは0を維持する。
+
+### 92.3 検証と進み
+
+with_build_lock.sh --class impl --wait 3600、セッション41448、最大280秒の短いimpl枠。
+対象はlake build SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionFactorCuts:olean。
+切れ目の比較、全頂点の追跡、実水平分解からの構成はいずれも初回の対象ビルドで通った。
+最終G12_CUT_BUILD_EXIT=0・警告なし（1272 jobs）。
+追加22根の小さい監査はG12_CUT_AUDIT_EXIT=0。
+入力22名と出力22名は一致し、公理依存はpropext・Classical.choice・Quot.soundのみ。
+sorryAx・追加公理なし。監査終了0の後、外側の短い枠は期限で終了124となった。
+これは監査の失敗ではなく、対象ビルド・監査の終了0はログと印字で確認済み。
+同じセッションの終了124を確認しており、生きた自分の枠は残っていない。
+入力・根・全出力・対象ビルドログは
+[g12-cut-comparison-audit-2026-11-15/](g12-cut-comparison-audit-2026-11-15/)に保存した。
+
+M15・drafts・main・⑤aの既存ファイル・Interfaceは変更していない。
+全体ビルド・大きい監査は行っていない。
+
+G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み5,816行。
+M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
