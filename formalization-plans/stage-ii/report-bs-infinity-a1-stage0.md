@@ -1313,3 +1313,69 @@ S5 の型は維持する。有限極限と零頂点を持ち上げ、係数の�
 
 S5 の残りは、四つの角の確認・全 loop 族の持ち上げ・層圏の安定性の接続（新しい4本、未検証）と、
 指定層化の有限極限保存。S5 完成とはまだ数えない。S6 の残りは指定単位の照合と大きい site の比較。
+
+### S5：指定反射の有限極限保存への前提計算（11-15、未検証）
+
+一覧：済み 3／全体 8（うち追加 0、済み：S2・S3・S4、S7 は後続）。
+
+既存随伴の始終対象・極限・余極限の保存を、安定圏の完全性へつなぐ法則：
+```lean
+lemma QCatAdjunction.left_preservesInitialVertex a x hx : IsInitialVertex (F.app _ x)
+lemma QCatAdjunction.right_preservesTerminalVertex a y hy : IsTerminalVertex (G.app _ y)
+lemma adjunction_left_preservesZeroVertices a : PreservesZeroVertices F
+lemma adjunction_right_preservesZeroVertices a : PreservesZeroVertices G
+theorem isExactFunctor_leftAdjoint [IsStable X] [IsStable Y] a : IsExactFunctor F
+theorem isExactFunctor_rightAdjoint [IsStable X] [IsStable Y] a : IsExactFunctor G
+lemma isLimitCone_iff_terminal_of_initialShape (hK : Limits.IsInitial K) (c : JoinCone p) :
+  IsLimitCone c ↔ IsTerminalVertex c.vertex
+```
+始終対象は既存の随伴の同じ写像空間比較と可縮性で判定する。零対象は既存の一意比較。
+cofiber/fiber は同じ随伴の元の全錐の保存を適用する。空形状は初期対象間の
+一意同型で既存の空錐へ戻す係数・形状移送である。各補題は200行未満。
+S5 の既存構成の法則・証明分割で、一覧IDは増やさない。
+
+### S5 の全 loop 族の対象検証（11-15、修正中）
+
+一覧：済み 3／全体 8（うち追加 0、済み：S2・S3・S4、S7 は後続）。
+
+`FunctorEvaluationPostcomp` と `SheafLoopCorners` は対象ビルド成功。
+`SheafLoopFamily` は、内部 Hom の法則を `rw` で当てる際の `loopDiagrams`・
+`sheafInclusion` の表現の不一致と、包含の `Mono` の推論の2箇所で止まった。
+法則を同じ包含の型の命題 `hb` として明示して合成し、`Mono` は元の全部分複体の
+包含へ局所的に戻して供給する。計算上限は変更しない。
+次は独立な随伴・空形状の3本を先に検証し、その後この4本を再検証する。
+
+### S5：任意有限形状の指定極限錐の保存（11-15、未検証）
+
+一覧：済み 3／全体 8（うち追加 0、済み：S2・S3・S4、S7 は後続）。
+
+```lean
+lemma isExactFunctor_map_isLimit_cospan F [IsExactFunctor F] (c : JoinCone p)
+  (hc : IsLimitCone c) : IsLimitCone (mapJoinCone F c)
+theorem isExactFunctor_map_isLimit_finite F [IsExactFunctor F]
+  {K : SSet} [K.Finite] (c : JoinCone p) (hc : IsLimitCone c) : IsLimitCone (mapJoinCone F c)
+theorem sheafification_isExactFunctor [IsStable E] J hJ hE :
+  IsExactFunctor (sheafificationFunctor J hJ)
+theorem sheafification_map_isLimit_finite [IsStable E] J hJ hE
+  {K : SSet.{u+1}} [K.Finite] {p : K ⟶ PresheafCat C E}
+  (c : JoinCone p) (hc : IsLimitCone c) :
+  IsLimitCone (mapJoinCone (sheafificationFunctor J hJ) c)
+```
+一般の完全関手の計算は、元の cospan 錐と四角形の既存の比較、空形状の判定、
+`map_isLimit_finite_of_empty_pointCospan` を使用する。反射・包含は両圏の安定性の下で完全、
+同じ指定自己関手への合成とする。S5 の元の有限極限保存の型を全錐で展開した最終出力。
+各補題は200行未満。これらを対象ビルドと小監査で検証するまでは S5 を完成としない。
+
+### S5 の随伴・空形状の3本の検証済みの区切り（11-15）
+
+一覧：済み 3／全体 8（うち追加 0、済み：S2・S3・S4、S7 は後続）。
+
+`/tmp/is-w1/adjunction-loop-sequence.log` の前半と
+`/tmp/is-w1/adjunction-exactness/target-audit-result.json`：
+対象3本153行のビルドと7宣言の小監査に成功。標準三公理のみ、計算上限変更なし。
+検証済み全体64本3,886行・368宣言。
+
+後半の loop 族は、包含後の全写像の等式と四つの角の反映まで通った。
+終点の書き換えは既知の `hs` を明示し、始点は `hΩ.choose.hom` の元の射との
+定義の照合を rfl で閉じる二箇所を修正する。新しい仮定・構成は加えない。
+次はこの4本の後に、層化の任意有限形状の極限保存の2本を対象ビルド・小監査する。
