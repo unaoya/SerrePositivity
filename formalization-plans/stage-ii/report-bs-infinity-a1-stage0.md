@@ -2297,3 +2297,33 @@ S1 の生成系・extensive の判定と S8 は未完。
 
 検証済み全体140本8,782行・766宣言、外枠18,600行内。
 一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
+
+### S1：降下位相と、元の上限位相の層条件（11-15）
+
+3本163行・16宣言の対象ビルドと小監査が成功（標準三公理のみ）。
+記録：`/tmp/is-w1/s1-descent-topology-6/`、source SHA 一致。
+
+```lean
+IsSheaf (J ⊔ J') F ↔ IsSheaf J F ∧ IsSheaf J' F
+```
+
+`UniversalSieveDescent` は交叉降下を両順序で使って全引き戻しの降下の推移性を証明。
+`DescentTopology` はその篩の位相を構成し、元の層条件を位相の包含へ同定して上の型を閉じた。
+`CoverageUniversalDescent` は生成篩の**全引き戻し**での降下を明示した中間判定。
+これは drafts の生成篩そのものだけで足りる最終定理の代用ではない。
+計算上限は変更していない。
+
+S1 の残りの芯は次の元の入力からの接続：
+```lean
+(K : Coverage C) → (F : Presheaf C E) →
+(∀ U (R : Presieve U), R ∈ K.coverings U →
+  IsLimitCone (restrictionCone F (Sieve.generate R))) →
+∀ U (R : Presieve U), R ∈ K.coverings U →
+  UniversallyDescendingSieve F (Sieve.generate R)
+```
+coverage の refine の条件を、実際の引き戻し篩そのものが生成系に属する条件と
+取り違えない。この接続と extensive の有限積判定、S8 の全重みの比較等は未完。
+新しい一まとまりや外枠超過が必要と判明した時点で、共通の停止規則に従う。
+
+検証済み全体143本8,945行・782宣言、外枠18,600行内。
+一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
