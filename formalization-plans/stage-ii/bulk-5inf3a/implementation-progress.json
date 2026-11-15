@@ -1,0 +1,94 @@
+{
+  "stage": "5inf3a",
+  "base": "336942ab0",
+  "branch": "codex/bulk-5inf3a",
+  "instruction_main": "7e03e17a7",
+  "scope_total": 6,
+  "scope_complete": 0,
+  "scope_added": 0,
+  "approved_estimate_lines": [
+    3000,
+    7000
+  ],
+  "outer_limit_lines": 14000,
+  "items": [
+    {
+      "id": "HT01",
+      "status": "implementing; canonical module/cohomology/eta interface written, unverified"
+    },
+    {
+      "id": "HT02",
+      "status": "implementing; coefficient resolution, principal completion bounds and totalization lower-bound proof written, unverified"
+    },
+    {
+      "id": "HT03",
+      "status": "pending"
+    },
+    {
+      "id": "HT04",
+      "status": "pending"
+    },
+    {
+      "id": "HT05",
+      "status": "pending"
+    },
+    {
+      "id": "HT06",
+      "status": "pending"
+    }
+  ],
+  "written_lines": 818,
+  "checked_new_lines": 0,
+  "files": [
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/AffineCochainMap.lean",
+      "lines": 92,
+      "sha256": "95e5acaacc16df7c4040ffe6f5e3ff0f0f1dd7c8143ec6cc566975fa64997b54",
+      "validation": "written, target build pending; no success claimed"
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/AffineCochainModel.lean",
+      "lines": 116,
+      "sha256": "d14754c98c4a86f4d222e3411b8d8f9197d4afd72477ee54953ef88262eefaaa",
+      "validation": "written, target build pending; no success claimed"
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/ColumnPrimitive.lean",
+      "lines": 113,
+      "sha256": "2551b3f5de12602f62ef808507b508855624e603ee5dc4457254e6339d9b752c",
+      "validation": "written, target build pending; no success claimed"
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/CompletionBounds.lean",
+      "lines": 105,
+      "sha256": "bf630f2dd92a9c311523f84165ee7a75ba90cad755a4a02d5c5988b891595b5b",
+      "validation": "written, target build pending; no success claimed"
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/Components.lean",
+      "lines": 103,
+      "sha256": "b30ee4c6b6a42cb79f5a2fb108ef8a939ce88e1105d65e5c4952db8879664adb",
+      "validation": "written, target build pending; no success claimed"
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/LowerBound.lean",
+      "lines": 169,
+      "sha256": "e6b84ee257b7c0818933c457bf3ca021f6bc814bf97171c459766da993e4409d",
+      "validation": "written, target build pending; no success claimed"
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/ResolvedScalarExtension.lean",
+      "lines": 120,
+      "sha256": "f0e45af9e57fdd05cdb97e8fe94557e724fa9ad83806183b4e3a9b74d706250b",
+      "validation": "written, target build pending; no success claimed"
+    }
+  ],
+  "HT02_API_connection_milestone": "pending Lean validation; report timing and remaining estimate after checking actual K-flat/completion connections",
+  "build": {
+    "target": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.AffineCochainModel",
+    "class": "bulk",
+    "wait_seconds": 3600,
+    "body_limit_seconds": 280,
+    "state": "one outstanding request; inspect live tool session87486 and log /tmp/bulk-5inf3a/ht01-build-001.log"
+  }
+}
