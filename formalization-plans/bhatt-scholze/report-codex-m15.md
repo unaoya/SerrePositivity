@@ -10564,3 +10564,144 @@ sorryAx・追加公理はない。監査後にexitを渡して明示的に返却
 
 G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み1,424行。
 M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
+
+## §79 G01：区間表示の射の実構成と相互逆（11-15）
+
+### 79.1 空を含む有限順序射と区間射の対応
+
+G01の残る混合Hom同士の水平合成に必要な区間表示を、有限順序射の段階で進めた。
+追加は2ファイル284行・明示宣言24。検証済みのG12累計は
+**14ファイル1,708行・明示宣言133**。G01は未完で一覧の済みは0のまま。
+
+| ファイル | 行数 | 検証した実構成 |
+|---|---:|---|
+| OrdinalAdjoinTop.lean | 145 | 最大元付加、最大元の反映、元の点への制限、付加・制限の往復、恒等・合成則 |
+| OrdinalIntervalHom.lean | 139 | 付加した射の実左随伴による区間射、両端点保存、実右随伴からの逆変換、全単射と反変合成 |
+| **追加** | **284** | G01の同じ添字の構成・法則の分割 |
+
+有限順序集合の点の個数をm,nとし、**m=0・n=0も含める**。
+元の単調射f : Fin m →o Fin nに最大元を付加してから実左Galois随伴を取り、
+Fin(n+1)→oFin(m+1)の両端点を保つ射を構成した。
+逆は、区間射の実右随伴が最大元を反映することを証明し、その元の点への制限で作る。
+いずれも実際の有限単調射の構成であり、逆変換の存在を仮定していない。
+
+原典は[Riehl–Verity](https://math.jhu.edu/~eriehl/adjunctions.pdf) Remark 3.3.8の
+区間表示ir:Δ₊ᵒᵖ→Δ₊と、その表示を通る混合Hom同士の合成。
+docstringにはHA Proposition 4.7.3.3への用途と、Kerodon Remark 6.2.1.4（Tag 02EN）も記した。
+
+**未完との境界**：今回の完成は、数値添字の有限順序射の全単射と反変合成の法則。
+増大単体圏と両端点保存の圏の間の全関手への包装、区間表示を使う二つの混合Hom同士の合成、
+walking adjunction全体の結合・単位の法則と、元の∞随伴からの全拡張はまだ残る。
+F≫U・元の単位・余単位の検収も未完。これらを今回の全単射から証明済みとはしない。
+新しい一覧IDは加えていない。200行を超える宣言・証明はない。
+
+### 79.2 同じ構成と法則の型
+
+以下は各ファイルと同じm,n,k : ℕの文脈で読む。
+
+`OrdinalAdjoinTop.lean`：
+
+```lean
+def ordinalAdjoinTop (f : Fin m →o Fin n) : Fin (m + 1) →o Fin (n + 1)
+
+@[simp] lemma ordinalAdjoinTop_castSucc (f : Fin m →o Fin n) (i : Fin m) :
+    ordinalAdjoinTop f i.castSucc = (f i).castSucc
+
+@[simp] lemma ordinalAdjoinTop_last (f : Fin m →o Fin n) :
+    ordinalAdjoinTop f (Fin.last m) = Fin.last n
+
+lemma ordinalAdjoinTop_reflectsLast (f : Fin m →o Fin n) (i : Fin (m + 1)) :
+    ordinalAdjoinTop f i = Fin.last n ↔ i = Fin.last m
+
+lemma ordinalAdjoinTop_injective : Function.Injective
+    (ordinalAdjoinTop : (Fin m →o Fin n) → _)
+
+lemma ordinalAdjoinTop_id (m : ℕ) :
+    ordinalAdjoinTop (OrderHom.id : Fin m →o Fin m) = OrderHom.id
+
+lemma ordinalAdjoinTop_comp (f : Fin m →o Fin n) (g : Fin n →o Fin k) :
+    ordinalAdjoinTop (g.comp f) = (ordinalAdjoinTop g).comp (ordinalAdjoinTop f)
+
+lemma ordinalRemoveTop_bound (g : Fin (m + 1) →o Fin (n + 1))
+    (hg : ∀ i, g i = Fin.last n ↔ i = Fin.last m) (i : Fin m) :
+    (g i.castSucc).val < n
+
+def ordinalRemoveTop (g : Fin (m + 1) →o Fin (n + 1))
+    (hg : ∀ i, g i = Fin.last n ↔ i = Fin.last m) : Fin m →o Fin n
+
+lemma ordinalRemoveTop_castSucc (g : Fin (m + 1) →o Fin (n + 1))
+    (hg : ∀ i, g i = Fin.last n ↔ i = Fin.last m) (i : Fin m) :
+    (ordinalRemoveTop g hg i).castSucc = g i.castSucc
+
+lemma ordinalRemoveTop_adjoin (f : Fin m →o Fin n) :
+    ordinalRemoveTop (ordinalAdjoinTop f) (ordinalAdjoinTop_reflectsLast f) = f
+
+lemma ordinalAdjoinTop_remove (g : Fin (m + 1) →o Fin (n + 1))
+    (hg : ∀ i, g i = Fin.last n ↔ i = Fin.last m)
+    (ht : g (Fin.last m) = Fin.last n) :
+    ordinalAdjoinTop (ordinalRemoveTop g hg) = g
+```
+
+`OrdinalIntervalHom.lean`：
+
+```lean
+def ordinalIntervalMap (f : Fin m →o Fin n) : Fin (n + 1) →o Fin (m + 1)
+
+lemma ordinalIntervalMap_gc (f : Fin m →o Fin n) :
+    GaloisConnection (ordinalIntervalMap f) (ordinalAdjoinTop f)
+
+lemma ordinalIntervalMap_zero (f : Fin m →o Fin n) : ordinalIntervalMap f 0 = 0
+
+lemma ordinalIntervalMap_last (f : Fin m →o Fin n) :
+    ordinalIntervalMap f (Fin.last n) = Fin.last m
+
+lemma intervalRightAdjoint_reflectsLast (l : Fin (n + 1) →o Fin (m + 1))
+    (h₀ : l 0 = 0) (h₁ : l (Fin.last n) = Fin.last m) (i : Fin (m + 1)) :
+    ordinalRightAdjoint l h₀ i = Fin.last n ↔ i = Fin.last m
+
+def ordinalRecoverMap (l : Fin (n + 1) →o Fin (m + 1))
+    (h₀ : l 0 = 0) (h₁ : l (Fin.last n) = Fin.last m) : Fin m →o Fin n
+
+lemma ordinalRecoverMap_adjoin (l : Fin (n + 1) →o Fin (m + 1))
+    (h₀ : l 0 = 0) (h₁ : l (Fin.last n) = Fin.last m) :
+    ordinalAdjoinTop (ordinalRecoverMap l h₀ h₁) = ordinalRightAdjoint l h₀
+
+lemma ordinalRecoverMap_interval (f : Fin m →o Fin n) :
+    ordinalRecoverMap (ordinalIntervalMap f) (ordinalIntervalMap_zero f)
+      (ordinalIntervalMap_last f) = f
+
+lemma ordinalIntervalMap_recover (l : Fin (n + 1) →o Fin (m + 1))
+    (h₀ : l 0 = 0) (h₁ : l (Fin.last n) = Fin.last m) :
+    ordinalIntervalMap (ordinalRecoverMap l h₀ h₁) = l
+
+def ordinalIntervalHomEquiv (m n : ℕ) :
+    (Fin m →o Fin n) ≃
+      {l : Fin (n + 1) →o Fin (m + 1) // l 0 = 0 ∧ l (Fin.last n) = Fin.last m}
+
+lemma ordinalIntervalMap_id (m : ℕ) :
+    ordinalIntervalMap (OrderHom.id : Fin m →o Fin m) = OrderHom.id
+
+lemma ordinalIntervalMap_comp (f : Fin m →o Fin n) (g : Fin n →o Fin k) :
+    ordinalIntervalMap (g.comp f) = (ordinalIntervalMap f).comp (ordinalIntervalMap g)
+```
+
+### 79.3 対象ビルドと小さい監査
+
+セッション19627をwith_build_lock.sh --class impl --wait 3600、最大280秒の短いimpl枠で検証した。
+対象はlake build SerrePositivity.InfinityCategories.HA.Monads.OrdinalIntervalHom:olean。
+依存にOrdinalAdjoinTopを含む。初回はFin.lastCasesの引数と値の簡約で失敗し、
+同じ短い枠内で、射の定義と場合分けの簡約を明示して修正した。
+最終 **G12_INTERVAL_BUILD_EXIT=0**、警告なし。
+
+続く新設24宣言の小さい監査は **G12_INTERVAL_AUDIT_EXIT=0**。
+出力名24件が入力の24名と一致し、公理依存は標準のpropext・Classical.choice・Quot.soundのみ。
+sorryAx・追加公理はない。監査後にexitを渡し、外側も終了0で枠を返却した。
+現在、自分の生きたビルド・監査・待ち整理券はない。
+
+監査入力・根の名前・全出力と最終対象ビルドのログは
+[g12-interval-audit-2026-11-15/](g12-interval-audit-2026-11-15/)へ保存した。
+既存の12ファイルは変更していない。M15のLean・drafts・main・⑤a・③系・Interfaceには書き込んでいない。
+全体ビルド・大きい監査は行っていない。
+
+G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み1,708行。
+M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
