@@ -2075,3 +2075,9 @@ HT02は当初の1,500〜3,000行から7614行へ増えた。HT03〜HT06の暫定
 通常のbulk整理券の束は34.97秒で返却。通常の係数拡大したmod pと実完備テンソルのmod pの比較を確認し、既存のaffine包の完備底変換と合成した。結晶的な終域の元のaffine剰余項を計算する環同型は、左脚と元のaffineEnvelopeCoefficientMapの右脚を保つ。TotとHT写像の比較はこの項ごとの同型だけでは完了としない。 新しい2本と既存の更新0本が通り、**96モジュール・1217宣言**の公理閉包は標準三公理のみ。全監査ソースのハッシュ一致を確認した。記録は `affine-crystalline-residue-terms-checkpoint.json` と `affine-crystalline-residue-terms-bundle-082.tar.gz`。準備した96本全件がビルド・公理監査まで成功した。HT02は完成済み。残りの項目は別に数える。
 
 一覧：済み 2／全体 6（うち追加 0）。
+
+### 5∞-3a：対象検査bundle-083（11-15 昼）
+
+通常のbulk整理券の束は36.18秒で返却。選択生成元がpのとき、元のhtGeneratorが各項でpであることと、元のreducedModelを同じhtRingsのmod pに同定する指定同型を確認した。元の商射上の代表元を保つ式を付けた。 新しい1本と既存の更新0本が通り、**97モジュール・1223宣言**の公理閉包は標準三公理のみ。全監査ソースのハッシュ一致を確認した。記録は `affine-crystalline-reduced-model-checkpoint.json` と `affine-crystalline-reduced-model-bundle-083.tar.gz`。準備した97本全件がビルド・公理監査まで成功した。HT02は完成済み。残りの項目は別に数える。
+
+一覧：済み 2／全体 6（うち追加 0）。
