@@ -16424,3 +16424,163 @@ lemma functorIso_op_app_inv {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
 次は273の同じ成分の左射影の像へ今回の公式を適用し、元のsource-frame全augmentationの成分の射の類へ戻す。前合成の成分は既存のfunctorIso_app_precomp_heqを使う。入力のnerveの零単体の表示はComposableArrows.ext₀で同じ元のparameterの点へ合わせ、同じnerveTransformationPostIsoの成分はNerveColumn.hom_component_arrowで元の実射の類へ合わせる。元の単位ラベルについて、元の増大写像・probe比較・標的単位の合成との相殺へ進む。
 
 ここまでは成分評価の計算である。R03hの全interval族の等式、元のnative fiber射自身の弱同値性、R03dの全関手同型と元の固定始域の同型の一致、3b-4aは引き続き未完。今回の等式を全パラメータの族の一致の代わりにはしない。
+
+## 275. 元の augmentation と標的単位の同じ成分の実射への照合（2026-11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 24（うち追加 12）。
+
+### 275.1 元の実射の類の回収
+
+§274の反転評価と、既存の前合成・成分評価の法則を使い、元の反変augmentation同型の逆成分を反転ホモトピー圏から戻した射が、元の増大写像とprobe比較の同じ合成の実射の類になることを、端点込みのArrowの等式で照合した。入力の零単体は、同じnerve反転の式を使って元のparameterの同じ点へ合わせた。元の全augmentationの成分の式は、NerveColumn.hom_component_arrowへ元の同じ全円柱を入れている。
+
+標的についても、元の全弱自然変換の同型の順成分のArrowの式を示し、元の同じ標的置換同型と全実射の標的への引き戻しへ適用した。元の標的比較の逆成分は、元の同じ置換単位の実射の類になる。新たな置換や成分の選択は行っていない。
+
+全要素の任意のtについての元の成分の計算であり、tについての全族の等式を得たとはしていない。これらを元の補正比較の成分の二射影へ代入し、§272の同じ合成則へ接続する所から進む。R03h・R03dは未完。
+
+既存の構成の係数移送・前合成・単位・成分評価の法則の分割で、新しい数学の一覧IDは追加しない。新規2本・221行、公開lemma8個・private lemma1個。各ファイル200行以下。既存のLeanの変更は0。[ModelCategory SSet]・計算上限の変更はない。
+
+### 275.2 型
+
+全公開8補題と、privateな端点輸送の法則の型を記録する。local instanceは各ファイルで元のBE代数のmodelCategory AとmappingCofibrantFactorization Aの二つだけを使い、ファイル間で名前を分けている。
+
+```lean
+private lemma jointAugmentationAppInvArrowOfHEq {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
+    {f g f' g' : X ⟶ Y} (e : FunctorIso f g) (e' : FunctorIso f' g')
+    (hf : f = f') (hg : g = g') (he : HEq e e') (x : X _⦋0⦌) :
+    Arrow.mk (e.app x).inv = Arrow.mk (e'.app x).inv
+```
+
+#### StrictDiagramTotJointSourceAugmentationPointValues（125行）
+
+```lean
+lemma strictBETotJointSourceAugmentationInput_vertex (t : StrictBETotJointSourceElements A) :
+    SSet.opObjEquiv ((strictBETotJointSourceAugmentationInput A).app
+      (Opposite.op ⦋0⦌) (nerveVertex t)) =
+      nerveVertex (((strictBETotJointSourceParameterIndex A).obj t).unop)
+
+lemma strictBETotJointSourceFrameAugmentation_parameter_component (t : StrictBETotJointSourceElements A) :
+    (strictBETotJointSourceFrameAugmentation A).app
+      (((strictBETotJointSourceParameterIndex A).obj t).unop) =
+    (AsSmall.up : (operad A).Algebra ⥤ AsSmall.{u+1} (operad A).Algebra).map
+      (((strictBETotJointRoofResolution A t.obj.1).augmentation.app t.obj.2.unop) ≫
+        framedLimitProbeComparison A (AsSmall.down.obj t.obj.1).1.unop)
+
+lemma strictBETotJointSourceFrameAugmentation_component_arrow (t : StrictBETotJointSourceElements A) :
+    Arrow.mk ((strictBETotJointSourceFrameAugmentationIso A).app
+      (nerveVertex (((strictBETotJointSourceParameterIndex A).obj t).unop))).hom =
+      Arrow.mk (HomotopyCategory.homMk
+        ((nerve.edgeMk ((strictBETotJointSourceFrameAugmentation A).app
+          (((strictBETotJointSourceParameterIndex A).obj t).unop))).map
+            (strictBETotModelSource A)))
+
+lemma strictBETotJointSourceAugmentationDomainIso_inv_component_arrow (t : StrictBETotJointSourceElements A) :
+    Arrow.mk (((homotopyOppositeEquivalence (CAlg_R A)).functor.map
+      ((strictBETotJointSourceAugmentationDomainIso A).app (nerveVertex t)).inv).unop) =
+      Arrow.mk (HomotopyCategory.homMk
+        ((nerve.edgeMk ((strictBETotJointSourceFrameAugmentation A).app
+          (((strictBETotJointSourceParameterIndex A).obj t).unop))).map
+            (strictBETotModelSource A)))
+```
+
+#### StrictDiagramTotJointSourceTargetPointValues（96行）
+
+```lean
+lemma strictBETotModelWeakTransformationIso_component_arrow {J : Type (u+1)} [SmallCategory J]
+    {F G : J ⥤ AsSmall.{u+1} (operad A).Algebra} (η : F ⟶ G)
+    (hη : ∀ j, weakEquivalences (operad A).Algebra (AsSmall.down.map (η.app j))) (j : J) :
+    Arrow.mk ((strictBETotModelWeakTransformationIso A η hη).app (nerveVertex j)).hom =
+      Arrow.mk (HomotopyCategory.homMk ((nerve.edgeMk (η.app j)).map (strictBETotModelSource A)))
+
+lemma strictBETotTargetReplacementNativeIso_component_arrow (Y : AsSmall.{u+1} (operad A).Algebra) :
+    Arrow.mk ((strictBETotTargetReplacementNativeIso A).app (nerveVertex Y)).hom =
+      Arrow.mk (HomotopyCategory.homMk
+        ((nerve.edgeMk ((strictBETotTargetReplacementUnit A).app Y)).map (strictBETotModelSource A)))
+
+lemma strictBETotJointSourceTargetReplacementIso_inv_component_arrow (t : StrictBETotJointSourceElements A) :
+    Arrow.mk ((strictBETotJointSourceTargetReplacementIso A).app (nerveVertex t)).inv =
+      Arrow.mk (HomotopyCategory.homMk
+        ((nerve.edgeMk ((strictBETotTargetReplacementUnit A).app
+          ((strictBETotJointSourceElementsProjection A ⋙ strictBETotJointHomTargetIndex A).obj t))).map
+            (strictBETotModelSource A)))
+
+lemma strictBETotJointSourceTargetReplacementUnit_parameter_component (t : StrictBETotJointSourceElements A) :
+    (strictBETotTargetReplacementUnit A).app
+      ((strictBETotJointSourceElementsProjection A ⋙ strictBETotJointHomTargetIndex A).obj t) =
+    (AsSmall.up : (operad A).Algebra ⥤ AsSmall.{u+1} (operad A).Algebra).map
+      ((rightFrameReplacementUnit (rightFrameFamily A)).app (AsSmall.down.obj t.obj.1).2)
+```
+
+### 275.3 検証
+
+コードのコミット：**fd55d35ec**。新規2本・221行、公開lemma8個・private lemma1個、local instance4個。実環境で新規二本は6・6宣言。既存のLeanの変更は0。
+
+- 個別検査で全型・証明が通った。再利用する既存NerveColumnComponentArrowとFunctorIsoComponentPreの対象ビルド341（5,713 jobs）も共有鍵で成功。
+- 鍵：--class impl --wait 3600、一枚の整理券、取得後gtimeout 1700秒。検査終了とともに返却済み。
+- 対象ビルド342：新規二本、成功（依存を含む12,284 jobs）。
+- 小監査：AuditISW2BKCells342.lean、**230モジュール・1,606宣言、propext・Classical.choice・Quot.soundのみ**。sorryAx・追加公理なし。互換二モジュールの宣言数0と既存の定理の定義元の確認も成功。
+- 宣言名の照合：main a4388efc9に固定し、自レーン592ファイル・1,886個の名前と、mainのEInfinity/3,745ファイル・13,373個の名前を照合。異なるファイル間の重複0、自レーン内部も0。
+- git diff --check：通過。
+
+証跡：/private/tmp/isw2-build342.log、isw2-validation342.json、isw2-declaration-collision-scan342.json。
+
+今回までの検証済みの実測は**226モジュール・15,405行・1,599宣言**。外枠22,000行まで6,595行。生成補題を含む数は今回のimport後の実環境で集計した。登録候補は275.2の二本を自レーンのJSONへ追記した。共通の入口と公式監査は変更していない。
+
+## 276. 元の補正比較の同じ成分の実際の左右像の実射への照合（2026-11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 24（うち追加 12）。
+
+### 276.1 同じ成分の像を代入する
+
+§273の元の全射影の値の照合を同じ点で読み、§275の同じaugmentationと標的単位の実射の類の計算を代入した。結論に現れるfは、元のstrictBETotJointSourceCorrectedPairingIsoの同じ成分の順射そのものである。元のfを左へ写して反転ホモトピー圏から戻すと、元の増大写像とprobe比較の同じ合成の実射の類になる。右へ写すと、元の標的置換単位の同じ実射の類になる。両方とも端点を保持したArrowの等式で述べる。
+
+存在だけの射へ置き換えず、§272の同じ成分の合成則で実際に使う二つの射を同定した。全要素の任意のtに対する成分の計算であり、tについての全interval族の一致を得たとはしていない。元の単位ラベルで両端を相殺する所へ進む。R03h・R03dは未完。
+
+既存の構成の単位・係数移送・成分評価・合成則の分割で、新しい数学の一覧IDは追加しない。新規1本・99行、公開lemma2個・private lemma1個。既存のLeanの変更は0。計算上限は変更していない。
+
+### 276.2 型
+
+公開二補題とprivateな成分の型の輸送の法則の全型を記録する。local instanceは元のBE代数のmodelCategory AとmappingCofibrantFactorization Aの二つのみ。
+
+```lean
+private lemma jointCorrectionAppHomArrowOfHEq {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
+    {f g f' g' : X ⟶ Y} (e : FunctorIso f g) (e' : FunctorIso f' g')
+    (hf : f = f') (hg : g = g') (he : HEq e e') (x : X _⦋0⦌) :
+    Arrow.mk (e.app x).hom = Arrow.mk (e'.app x).hom
+```
+
+#### StrictDiagramTotJointCorrectionComponentArrows（99行）
+
+```lean
+lemma strictBETotJointSourceCorrection_left_component_arrow (t : StrictBETotJointSourceElements A) :
+    let f := ((strictBETotJointSourceCorrectedPairingIso A).app (nerveVertex t)).hom
+    Arrow.mk (((homotopyOppositeEquivalence (CAlg_R A)).functor.map
+      ((SSet.mapHomotopyCategory (edgewiseLeft (CAlg_R A))).map f)).unop) =
+      Arrow.mk (HomotopyCategory.homMk ((nerve.edgeMk
+        ((AsSmall.up : (operad A).Algebra ⥤ AsSmall.{u+1} (operad A).Algebra).map
+          ((strictBETotJointRoofResolution A t.obj.1).augmentation.app t.obj.2.unop ≫
+            framedLimitProbeComparison A (AsSmall.down.obj t.obj.1).1.unop))).map
+              (strictBETotModelSource A)))
+
+lemma strictBETotJointSourceCorrection_right_component_arrow (t : StrictBETotJointSourceElements A) :
+    let f := ((strictBETotJointSourceCorrectedPairingIso A).app (nerveVertex t)).hom
+    Arrow.mk ((SSet.mapHomotopyCategory (edgewiseRight (CAlg_R A))).map f) =
+      Arrow.mk (HomotopyCategory.homMk ((nerve.edgeMk
+        ((AsSmall.up : (operad A).Algebra ⥤ AsSmall.{u+1} (operad A).Algebra).map
+          ((rightFrameReplacementUnit (rightFrameFamily A)).app (AsSmall.down.obj t.obj.1).2))).map
+            (strictBETotModelSource A)))
+```
+
+### 276.3 検証
+
+コードのコミット：**cdd6b0af0**。新規1本・99行、公開lemma2個・private lemma1個、local instance2個。実環境で新規一ファイルは4宣言。既存のLeanの変更は0。
+
+- 個別検査で全型・証明が通った。
+- 鍵：--class impl --wait 3600、一枚の整理券、取得後gtimeout 1700秒。検査終了とともに返却済み。
+- 対象ビルド343：新規一ファイル、成功（依存を含む12,289 jobs）。
+- 小監査：AuditISW2BKCells343.lean、**231モジュール・1,610宣言、propext・Classical.choice・Quot.soundのみ**。sorryAx・追加公理なし。互換二モジュールの宣言数0と既存の定理の定義元の確認も成功。
+- 宣言名の照合：main a4388efc9に固定し、自レーン593ファイル・1,888個の名前と、mainのEInfinity/3,745ファイル・13,373個の名前を照合。異なるファイル間の重複0、自レーン内部も0。
+- git diff --check：通過。
+
+証跡：/private/tmp/isw2-build343.log、isw2-validation343.json、isw2-declaration-collision-scan343.json。
+
+3b-4の検証済みの実測は**227モジュール・15,504行・1,603宣言**。外枠22,000行まで6,496行。登録候補は276.2の一ファイルを自レーンのJSONへ追記した。共通の入口と公式監査は変更していない。
