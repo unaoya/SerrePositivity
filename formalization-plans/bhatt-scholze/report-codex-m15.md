@@ -12188,3 +12188,137 @@ M15・drafts・main・⑤aの既存ファイル・Interfaceは変更していな
 
 G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み4,953行。
 M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
+
+## §90 G01：全次数の原子的な生成語と自由な道からの全射（11-15）
+
+### 90.1 検証済みの追加
+
+追加は **3ファイル284行・明示宣言19**。累計 **40ファイル5,237行・明示宣言350**。
+WalkingAdjunctionLevels.lean は116行・9宣言、WalkingAdjunctionAtomicWords.lean は84行・3宣言、
+WalkingAdjunctionAtomicPaths.lean は84行・7宣言。
+200行を超える個別の宣言・証明はない。
+G01の同じ全随伴の生成射・合成則・分解と照合の証明の分割であり、新しい一覧IDは足さない。
+
+各次数nにおいて、Fin(n+1)から四Hom圏への実関手を射とする実圏を構成した。
+§88で証明済みの全単位則と全結合則から圏構造を与え、各単体の全ての頂点の
+生成語の長さを足した有限の長さを定めた。この長さは水平合成で加法的である。
+長さ0なら端点が同じであり、全関手として単位の定値列に一致することを証明した。
+単位の対象の自己射の一意性を使っているので、頂点の等式だけで止めていない。
+
+原子的な射を「長さが正であり、二つに分解すると一方の長さが0」と定義した。
+長さ0が実単位を検出する上の証明により、これは非単位で非自明には分解しない条件である。
+原子的な語は空の語・原子・語の合成を持つ実データの型とした。
+非原子的な正の長さの射は二つのより短い射へ分解できるので、長さの強い帰納法から
+全次数の全ての実射について、この語のデータの存在を得た。
+
+原子的な実射を生成射とするquiver、その自由な道を実際に水平合成する比較関手を構成した。
+原子的な語のデータから実際の道を作り、その像が元の射そのものとなることを証明した。
+これにより全次数の比較関手のFullを構成した。
+単に分解の存在を引数に置いたり、生成するという命題を包んだ型を仮定したりしていない。
+
+### 90.2 型と残る境界
+
+原典はRiehl–Verity Definition 2.1.4・Proposition 3.1.10・Theorem 4.3.9、
+HA Proposition 4.7.3.3、Kerodon Remark 6.2.1.4（Tag 02EN）。今回の型は以下。
+
+```lean
+structure WalkingAdjunctionLevel (n : ℕ) where
+  point : WalkingAdjunctionPoint
+
+instance walkingAdjunctionLevelCategory (n : ℕ) : Category (WalkingAdjunctionLevel n)
+
+def walkingAdjunctionLevelSize {n : ℕ} {X Y : WalkingAdjunctionPoint}
+    (F : Fin (n + 1) ⥤ walkingAdjunctionHom X Y) : ℕ
+
+lemma walkingAdjunctionLevelSize_id (n : ℕ) (X : WalkingAdjunctionPoint) :
+    walkingAdjunctionLevelSize
+      ((Functor.const (Fin (n + 1))).obj (walkingAdjunctionIdentity X)) = 0
+
+lemma walkingAdjunctionLevelSize_comp {n : ℕ} (X Y Z : WalkingAdjunctionPoint)
+    (F : Fin (n + 1) ⥤ walkingAdjunctionHom X Y)
+    (G : Fin (n + 1) ⥤ walkingAdjunctionHom Y Z) :
+    walkingAdjunctionLevelSize (F.prod' G ⋙ walkingAdjunctionHorizontal X Y Z) =
+      walkingAdjunctionLevelSize F + walkingAdjunctionLevelSize G
+
+lemma walkingAdjunctionLevelSize_vertex_zero {n : ℕ} {X Y : WalkingAdjunctionPoint}
+    (F : Fin (n + 1) ⥤ walkingAdjunctionHom X Y) (h : walkingAdjunctionLevelSize F = 0)
+    (i : Fin (n + 1)) : walkingAdjunctionVertexLength X Y (F.obj i) = 0
+
+lemma walkingAdjunctionLevelSize_zero_endpoints {n : ℕ} {X Y : WalkingAdjunctionPoint}
+    (F : Fin (n + 1) ⥤ walkingAdjunctionHom X Y) (h : walkingAdjunctionLevelSize F = 0) :
+    X = Y
+
+instance walkingAdjunctionIdentityHom_subsingleton (X : WalkingAdjunctionPoint) :
+    Subsingleton (walkingAdjunctionIdentity X ⟶ walkingAdjunctionIdentity X)
+
+lemma walkingAdjunctionLevelSize_zero_eq_id {n : ℕ} {X : WalkingAdjunctionPoint}
+    (F : Fin (n + 1) ⥤ walkingAdjunctionHom X X) (h : walkingAdjunctionLevelSize F = 0) :
+    F = (Functor.const _).obj (walkingAdjunctionIdentity X)
+
+def WalkingAdjunctionLevelIsAtomic {n : ℕ} {X Y : WalkingAdjunctionLevel n} (F : X ⟶ Y) : Prop
+
+inductive WalkingAdjunctionAtomicWord (n : ℕ) :
+    {X Y : WalkingAdjunctionLevel n} → (X ⟶ Y) → Type
+  | nil (X : WalkingAdjunctionLevel n) : WalkingAdjunctionAtomicWord n (𝟙 X)
+  | atom {X Y : WalkingAdjunctionLevel n} (F : X ⟶ Y) (h : WalkingAdjunctionLevelIsAtomic F) :
+      WalkingAdjunctionAtomicWord n F
+  | comp {X Y Z : WalkingAdjunctionLevel n} {F : X ⟶ Y} {G : Y ⟶ Z}
+      (a : WalkingAdjunctionAtomicWord n F) (b : WalkingAdjunctionAtomicWord n G) :
+      WalkingAdjunctionAtomicWord n (F ≫ G)
+
+lemma walkingAdjunctionAtomicWord_nonempty {n : ℕ} {X Y : WalkingAdjunctionLevel n}
+    (F : X ⟶ Y) : Nonempty (WalkingAdjunctionAtomicWord n F)
+
+structure WalkingAdjunctionAtomicVertex (n : ℕ) where
+  level : WalkingAdjunctionLevel n
+
+instance walkingAdjunctionAtomicQuiver (n : ℕ) : Quiver (WalkingAdjunctionAtomicVertex n)
+
+def walkingAdjunctionAtomicPrefunctor (n : ℕ) :
+    WalkingAdjunctionAtomicVertex n ⥤q WalkingAdjunctionLevel n
+
+def walkingAdjunctionAtomicPathFunctor (n : ℕ) :
+    Paths (WalkingAdjunctionAtomicVertex n) ⥤ WalkingAdjunctionLevel n
+
+def WalkingAdjunctionAtomicWord.toPath {n : ℕ} {X Y : WalkingAdjunctionLevel n} {F : X ⟶ Y}
+    (a : WalkingAdjunctionAtomicWord n F) :
+    Quiver.Path (V := WalkingAdjunctionAtomicVertex n) ⟨X⟩ ⟨Y⟩
+
+lemma WalkingAdjunctionAtomicWord.toPath_map {n : ℕ} {X Y : WalkingAdjunctionLevel n}
+    {F : X ⟶ Y} (a : WalkingAdjunctionAtomicWord n F) :
+    (walkingAdjunctionAtomicPathFunctor n).map a.toPath = F
+
+instance walkingAdjunctionAtomicPathFunctor_full (n : ℕ) :
+    (walkingAdjunctionAtomicPathFunctor n).Full
+```
+
+今回の一般次数の比較についてはFullだけを証明した。Faithfulはまだ証明していない。
+原子的な語の型は二項の合成を記録し、括弧付けの一意性を主張する型ではない。
+語から自由な道へ送ることで実際の道の像を検収しているが、異なる道の像が等しいときの
+道の等式の反映は引き続き別に必要である。
+§89の零次元の完全忠実性を、一般次数の忠実性へ流用していない。
+
+次はこの比較のFaithfulと原子性の退化との両立を検収し、
+parental subcomputadのfiltrationと実充填を構成する。
+水平反対の向きの照合、元のQCatAdjunctionからの全coherentな延長、元のF≫UとのFunctorIso、
+元の単位・余単位とHAモデルの比較、G02以降は引き続き未完である。
+G01の一覧の済みは0を維持する。
+
+### 90.3 検証と進み
+
+with_build_lock.sh --class impl --wait 3600、セッション22732、最大280秒の短いimpl枠。
+対象はlake build SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionAtomicPaths:olean。
+全次数の圏・長さ・原子的な分解は初回の対象ビルドで数学の証明が通った。
+命題のhaveIと旧push_negの二警告を修正し、道への比較を追加した最終対象ビルドは
+G12_LEVEL_BUILD_EXIT=0・警告なし（1303 jobs）。
+追加19根の小さい監査はG12_LEVEL_AUDIT_EXIT=0。
+入力19名と出力19名は一致し、公理依存は標準のpropext・Classical.choice・Quot.soundのみ。
+sorryAx・追加公理なし。exitで外側の終了0まで確認して枠を返却した。
+入力・根・全出力・最終対象ビルドログは
+[g12-atomic-generation-audit-2026-11-15/](g12-atomic-generation-audit-2026-11-15/)に保存した。
+
+M15・drafts・main・⑤aの既存ファイル・Interfaceは変更していない。
+全体ビルド・大きい監査は行っていない。
+
+G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み5,237行。
+M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
