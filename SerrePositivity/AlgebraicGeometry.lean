@@ -1743,3 +1743,4 @@ public import SerrePositivity.AlgebraicGeometry.DegreeOneProjectiveModelScalar
 public import SerrePositivity.AlgebraicGeometry.DegreeOneProjectiveModelPerfectSquare
 public import SerrePositivity.AlgebraicGeometry.SchemeCechTupleCover
 public import SerrePositivity.AlgebraicGeometry.SchemePullbackAffineTupleOpen
+public import SerrePositivity.AlgebraicGeometry.SchemeCechTupleAffine

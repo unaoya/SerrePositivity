@@ -1238,3 +1238,22 @@ G3 は完成。G4 は F8 の同じスカラー・実際の構造層の Frobenius
 今回2モジュール121行＋入口2行。新規96モジュール本体6,333行・入口込み6,429行。既存追加25行を含む外枠計数は本体6,358行・入口込み6,454行。新規小監査累計658宣言、既存15宣言は別計上。タプル開の全次数でのアフィン性の帰納と有限交叉の公式は、次の未検証の下書きであり本体に含めない。閉中心への底変換の照合・二重 Čech・Noether 帰納と G5 は残る。外枠16,000行は不変。停止点2g-2ではない。
 
 一覧：済み1／全体3（うち追加0）。
+
+
+異なる次数のタプル添字への引き戻しの合成（着手前、既存の refinedPullback の合成則の内数、80〜150行）：`schemeStructurePerfectCechRefinedPullbackMap_compIndex_apply` と `..._compIndex` は、被覆 U:ι→A.Opens、V:κ→B.Opens、W:λ→C.Opens、ρ:κ→ι、σ:λ→κ と包含 hV,hW,hUW に対し、二段の実際の refinedPullback の合成が添字 ρ∘σ の合成射の refinedPullback に等しいこと。それぞれタプルごとの式と複体の射の式。先の同じ添字の合成の証明と同じ appLE・Frobenius 順極限の合成則を使う。既存の名前・型を変更せず、nerve の面・退化で添字型が異なる場合を同じ射の法則として供給する。
+
+
+同じ引き戻しの単位の法則（着手前、nerve の実際の係数図式の単位則の内数、30〜75行）：`schemeStructurePerfectCechRefinedPullbackMap_id X p hp hX U` は恒等スキーム射と同じ被覆・恒等添字からの refinedPullback が既存の全タプル複体の恒等射に等しいこと。各タプルで id の appLE と Frobenius 順極限の恒等則を使い、複体の射の外延性でまとめる。次の nerve の係数図式の map_id へ使い、既存の宣言は変更しない。
+
+
+合成の外延性の分割（着手前、同じ80〜150行の内数）：`fullCechComplex_hom_ext_index` は D:Finset ι→ModuleCat R と E:Finset ν→ModuleCat R の異なる添字型について、二つの複体の射の全ての target タプルでの評価が等しければ射が等しいこと。既存の同じ添字型の外延性と同じ証明の法則を別名で補い、既存の名前・型を変更しない。
+
+## G4：同じタプル被覆の全次数のアフィン性
+
+`SchemeCechTupleAffine`（74行）の宣言：`schemePreimage_finite_iInf` は有限交叉と逆像の可換性。`schemeCechTupleOpen_succ` は同じタプル開を、末尾の n+1 個への実際の lift の逆像と先頭の射影の逆像の交叉に分ける公式。`schemeCechTupleOpen_isAffine` はアフィン基底上で、元の U がアフィン開からなれば全ての nerve 項の同じタプル開もアフィンであること。既存の一個の冪の同型と先頭・末尾の Cartesian square の帰納を使用し、射影をアフィン射とは仮定しない。
+
+単独検証、本体とのソース完全一致、対象と入口のビルド5,182ジョブ成功、小監査5宣言（所有元の全宣言）・標準三公理のみ、終了状態0。ログ `2g-scheme-cech-tuple-affine-check-2.log`・`2g-scheme-cech-tuple-affine-native.log`・`2g-scheme-cech-tuple-affine-audit.log`。既定の透明性・資源制限で成功。式内の let b を明示的に使っていないという linter 警告がある。追加公理・sorry・既存の型変更・200行超の宣言なし。共有鍵 --class impl --wait 3600、待ちは一つ、対象ビルドと監査は別枠。root・下流全ビルド・全体監査なし。
+
+今回1モジュール74行＋入口1行。新規97モジュール本体6,407行・入口込み6,504行。既存追加25行を含む外枠計数は本体6,432行・入口込み6,529行。新規小監査累計663宣言、既存15宣言は別計上。一つの有限アフィン被覆から同じ nerve の被覆性・アフィン性・全ての射での包含を供給した。これを Frobenius の実際の係数の図式へ渡す単位・合成の法則は下書きで検証中。閉中心との底変換・二重 Čech・Noether 帰納と G5 は残る。外枠16,000行は不変。停止点2g-2は未完。
+
+一覧：済み1／全体3（うち追加0）。
