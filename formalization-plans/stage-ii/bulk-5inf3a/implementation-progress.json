@@ -3,7 +3,7 @@
   "complete": 2,
   "total": 6,
   "added": 0,
-  "verified_head": "94d0f8465",
+  "verified_head": "this commit: base bb6b599517405b059f4fb2a4bfce773e70123e05",
   "items": {
     "HT01": "complete",
     "HT02": "complete",
@@ -12,12 +12,10 @@
     "HT05": "not-started",
     "HT06": "not-started"
   },
-  "latest_complete_audit_checkpoint": "homotopy-invariance-complete-checkpoint.json",
-  "latest_complete_audit_declarations": 1167,
-  "working_changes_unverified": [
-    "UniversalCrystallineCoefficients"
-  ],
-  "pending_check": "bundle-069 terminal rc1; see audit module inventory; failed dependencies await next batch",
+  "latest_complete_audit_checkpoint": "universal-crystalline-coefficients-checkpoint.json",
+  "latest_complete_audit_declarations": 1177,
+  "working_changes_unverified": [],
+  "pending_check": "bundle-074 terminal; all prepared modules passed",
   "next_proof_route": "ht02-next-proof-route.md",
   "initial_record": {
     "stage": "5inf3a",
@@ -392,7 +390,7 @@
     }
   ],
   "working_written_lines": 5185,
-  "source_inventory_scope": "Only HT01–HT06 source additions/changes against 336942ab0, plus untracked files; excludes pre-existing Comparison modules.",
+  "source_inventory_scope": "Only HT01\u2013HT06 source additions/changes against 336942ab0, plus untracked files; excludes pre-existing Comparison modules.",
   "static_check": "static-pending-check.json; not Lean validation",
   "build_wait_history": [
     {
