@@ -1903,3 +1903,32 @@ Hom 同値と自然性は元の全射の式で証明した。
 
 検証済み全体98本6,216行・610宣言、外枠18,600行内。
 一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
+
+### S1：元の引き戻し篩の指定錐と局所 comma の極限条件（11-15）
+
+`SieveFactorizationLocalCone` 100行・9宣言の対象ビルドと小監査が成功
+（標準三公理のみ）。記録：`/tmp/is-w1/s1-local-cone-2/`。source SHA も一致。
+
+```lean
+IsLimitCone (sieveFactorizationLocalRestrictionCone R S t F) ↔
+  IsLimitCone (restrictionCone F (S.pullback t.obj.hom))
+```
+
+通常の全錐の制限が元の篩錐に等しいこと、nerve・宇宙持ち上げ・
+元の係数前層への後合成後の全射が同じであることを証明した。
+引き戻し篩から局所 comma への比較を、一つの右随伴の反転として
+left cofinal にしたため、二重の制限による頂点の選び直しはない。
+元の係数には準圏性だけを仮定する。
+
+次の接続には `NerveComparison/RightConeTransport` の
+`nerveRightConeTransport` と、その元の指定局所錐との比較を再利用する。
+`RightPointwise` は通常の係数圏の極限を前提とする結果なので、
+そのまま適用して一般の係数を縮めることはしない。
+元の輸送を係数前層へ後合成する法則と、反転した局所 comma の形状の比較をつなぐ。
+極限の合成では `ConeCounitHomUniversal`・`ConeFamilyHomUniversal` の
+指定余単位による Hom 全単射を使える。いずれも元の準圏の錐の定理で、
+presentable な係数への制限はない。
+
+検証済み全体99本6,316行・619宣言、外枠18,600行内。
+S1 の交叉降下の同値と被覆生成の結論、S8 は未完。
+一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
