@@ -15694,3 +15694,59 @@ theorem strictBETotTargetReplacementNativeIso_symm_constant_family
         ((strictBETotTargetReplacementNativeIso A).app
           (nerveVertex ((strictBETotJointHomTargetIndex A).obj P))).inv
 ```
+
+## 266. B4′ の151本までの照合と、同じ全関手同型の反転・制限則（2026-11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 24（うち追加 12）。
+
+### 266.1 B4′
+
+現在の採取・プレビュー済みは 151／197。完了した各組の review は空、元のソースとの差分は0。各 compiler capture の source と元ファイルのバイト列も照合した。670ef9d75 以降の枝のコミットに Lean の変更はない。s02 までの採取を終え、同じ runner が s03 の一枚の整理券で継続中（--class impl --wait 3600、実処理280秒）。main の取り込みはまだ行っていない。残りの全採取、同じ原環境での最終プレビューの後に統合する。
+
+取り込み後の検査の準備は、自レーン196本と既存の直接の確認対象4本（FrameConeClasses、NormalizedMooreReverseEvaluation、NormalizedMooreReverseExtendZero、NormalizedMooreReverseZero）の計200本。小監査も同じ200本を対象とし、互換用の二ファイルの宣言数0、および tensorFrameHomIso_point と normalizedMooreReverse_zero_inclusion の元の定義元を確認する。root や公式の監査は変更・実行しない。main 側の revert に由来する自レーンの削除を保持して統合する理由と対象は §262 のとおりで、統合直前に再照合する。
+
+### 266.2 既存の反転と前合成の法則
+
+isw2-opisoprecomp.lean（84行、一時ファイル）を lake env lean で検査し、最終ログ isw2-opisoprecomp13 は exit 0。元の FunctorIso.op の値を、同じ内部 Hom の反転同型による元の像へ端点だけ輸送したものとして同定した。逆射を既存の functorOppositeHomEquiv と合わせ、その既存の前合成則から、同じ全関手同型の反転と制限の両立を HEq で得た。単体ごとの、または点ごとの同型の存在への置き換えではない。
+
+端点の Eq.mp の簡約と同型の共役式を別の小補題に分けた。計算上限は上げていない。以下は既存構成の輸送・前合成の法則とその証明の分割であり、一覧の新しい数学の項目には数えない。B4′ の元のソースには追加しておらず、追従後に本体の新規モジュールへ分けて対象ビルドと小監査を通す。R03h の同じ native 射と roof の全 interval 族の最終等式は未完である。
+
+```lean
+private lemma sameEqMp_heq_iff {α β γ : Sort u} (h : α = β) (a : α) (b : γ) :
+    HEq (Eq.mp h a) b ↔ HEq a b
+
+lemma sameVertexIso_op_inv {X : SSet.{u}} [Quasicategory X] {x y : X _⦋0⦌}
+    (e : VertexIso x y) :
+    e.op.inv = homotopyCategoryOpHomEquiv x y e.hom
+
+lemma sameFunctorIso_op_heq {X Y : SSet.{u}} [Quasicategory Y] {f g : X ⟶ Y}
+    (e : FunctorIso f g) :
+    HEq e.op (VertexIso.map (VertexIso.op e)
+      (SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.OppositeInternalHom.oppositeInternalHomIso X Y).hom)
+
+lemma sameVertexIso_conjugate_heq {Z : SSet.{u}} {a b a' b' : Z _⦋0⦌}
+    (e : VertexIso a b) (ha : a = a') (hb : b = b') :
+    HEq ((eqToIso (congrArg HomotopyCategory.mk ha)).symm ≪≫ e ≪≫
+        eqToIso (congrArg HomotopyCategory.mk hb)) e
+
+lemma sameFunctorIso_op_conjugate {X Y : SSet.{u}} [Quasicategory Y] {f g : X ⟶ Y}
+    (e : FunctorIso f g) :
+    e.op = (eqToIso (congrArg HomotopyCategory.mk
+      (SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.oppositeInternalHomIso_vertex f))).symm ≪≫
+      VertexIso.map (VertexIso.op e)
+        (SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.OppositeInternalHom.oppositeInternalHomIso X Y).hom ≪≫
+      eqToIso (congrArg HomotopyCategory.mk
+        (SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.oppositeInternalHomIso_vertex g))
+
+lemma sameFunctorIso_op_inv {X Y : SSet.{u}} [Quasicategory Y] {f g : X ⟶ Y}
+    (e : FunctorIso f g) :
+    e.op.inv = functorOppositeHomEquiv f g e.hom
+
+lemma sameFunctorIso_precomp_inv {A X Y : SSet.{u}} {f g : X ⟶ Y}
+    (e : FunctorIso f g) (p : A ⟶ X) :
+    (e.precomp p).inv = (SSet.mapHomotopyCategory ((pre p).app Y)).map e.inv
+
+lemma sameFunctorIso_op_precomp {A X Y : SSet.{u}} [Quasicategory Y]
+    {f g : X ⟶ Y} (e : FunctorIso f g) (p : A ⟶ X) :
+    HEq (e.precomp p).op (e.op.precomp (SSet.opFunctor.map p))
+```
