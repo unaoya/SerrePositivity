@@ -16574,3 +16574,161 @@ M15・drafts・main・⑤aの既存ファイル・Interfaceは変更せず、全
 
 G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み15,175行。
 M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
+
+## §117 G01：全実面の幅の非増加・実順序和の加法性・始点plusの実親の幅の増分（11-15）
+
+### 117.1 検証済みの追加
+
+追加は **4ファイル453行・明示宣言16**。累計 **140ファイル15,628行・明示宣言797**。
+WalkingAdjunctionOrdinalWidthFaces.lean は159行・5宣言、
+OrdinalAppendVariation.lean は88行・3宣言、
+WalkingAdjunctionOrdinalWidthAppend.lean は87行・4宣言、
+WalkingAdjunctionPlusParentWidth.lean は119行・4宣言。
+個々の宣言・証明は200行以下、新規Leanの行長は100文字以下。
+G01の同じ実全随伴・実親・実filtrationの構成に必要な、全実面・実順序和・実挿入の合成、
+実射の像の個数・係数移送・幅の照合とその証明の分割であり、一覧IDは追加しない。
+
+一点と一辺の実全鎖の有限順序の幅を、実頂点の個数と実辺の変化量で表示した。
+先頭の実頂点を除く面の幅は、一辺の個数の差の上限と先頭挿入の幅の式から元の幅以下となる。
+最初の二辺を合成する内側の面も、元の二回の実挿入と合成辺の実挿入を比較し、
+変化量が合成で増えないことから、元の幅以下となる。
+それ以外の面は尾部の面へ帰納し、先頭の実射の対象の輸送が変化量を保つことを使った。
+これにより、任意の実全単体の全ての境界面を含む実面について、有限順序の幅は増えないことを証明した。
+先頭の実対象と有限添字の表示は同じ実頂点へ明示的に揃えている。
+
+有限順序の実順序和について、実像を左右の区間の像へ分け、
+左右が交わらないことと両包含の単射性から、実像の個数が加法的であることを示した。
+従って実順序和の変化量も加法的となる。実単調射の両端の個数と異種等式での変化量の移送も示した。
+
+実終端挿入では、挿入より前の各実辺の変化量と最後の実射の変化量を回収した。
+全実辺の有限和を最後の点で分けることで、終端挿入の幅の変化を、元の実終点・新しい終点・実射の変化量で表示した。
+空の実対象や長さ0の鎖も含む式である。
+
+始点plusの実鎖にminusからの実生成射を前置すると、各実辺の変化量は元の変化量に一致する。
+全実辺の変化量の和は変わらず、両端の個数と始点の補正を計算すると、有限順序の幅は1増える。
+構成した実底併合射の変化量は、全射性から像の個数を実終点へ戻すことで1と計算した。
+始点plusの実原子の実親では、前置した鎖の終点が二点、新しい終点が一点なので、
+終端の実底併合の挿入はその鎖の幅を保つ。
+従って構成済みの始点plusの実親の有限順序の幅は、元の子の幅より1大きい。
+親の幅の条件を新しい入力に置いていない。
+
+### 117.2 型と未完の境界
+
+原典はRiehl–Verity Lemma 4.1.4・Proposition 4.2.15、HA Proposition 4.7.3.3、
+Kerodon Remark 6.2.1.4（Tag 02EN）。追加の型は以下。
+
+```lean
+lemma walkingAdjunctionOrdinalWidth_zero {X Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom X Y) 0) :
+    walkingAdjunctionOrdinalWidth H =
+      walkingAdjunctionOrdinalCard X Y (H.obj 0) + walkingAdjunctionOrdinalCard X Y (H.obj 0) -
+        (walkingAdjunctionTargetCorrection X + walkingAdjunctionTargetCorrection Y)
+
+lemma walkingAdjunctionOrdinalWidth_one {X Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom X Y) 1) :
+    walkingAdjunctionOrdinalWidth H = walkingAdjunctionOrdinalCard X Y (H.obj 0) +
+      walkingAdjunctionOrdinalCard X Y (H.obj 1) -
+        (walkingAdjunctionTargetCorrection X + walkingAdjunctionTargetCorrection Y) +
+          ordinalMapVariation (walkingAdjunctionOrderHom (H.map' 0 1))
+
+lemma walkingAdjunctionOrdinalWidth_tail_le {n : ℕ} {X Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom X Y) (n + 1)) :
+    walkingAdjunctionOrdinalWidth H.δ₀ ≤ walkingAdjunctionOrdinalWidth H
+
+lemma walkingAdjunctionOrdinalWidth_first_inner_face_le {n : ℕ} {X Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom X Y) (n + 2)) :
+    walkingAdjunctionOrdinalWidth (finiteChainFace H (1 : Fin (n + 3))) ≤
+      walkingAdjunctionOrdinalWidth H
+
+lemma walkingAdjunctionOrdinalWidth_face_le {X Y : WalkingAdjunctionPoint} :
+    ∀ (n : ℕ) (H : ComposableArrows (walkingAdjunctionHom X Y) (n + 1)) (p : Fin (n + 2)),
+      walkingAdjunctionOrdinalWidth (finiteChainFace H p) ≤ walkingAdjunctionOrdinalWidth H
+
+lemma ordinalMapVariation_heq {a b c d : ℕ} (ha : a = c) (hb : b = d)
+    (f : Fin a →o Fin b) (g : Fin c →o Fin d) (h : HEq f g) :
+    ordinalMapVariation f = ordinalMapVariation g
+
+lemma ordinalImageCard_append {m n p q : ℕ} (f : Fin m →o Fin n) (g : Fin p →o Fin q) :
+    ordinalImageCard (ordinalAppend f g) = ordinalImageCard f + ordinalImageCard g
+
+lemma ordinalMapVariation_append {m n p q : ℕ} (f : Fin m →o Fin n) (g : Fin p →o Fin q) :
+    ordinalMapVariation (ordinalAppend f g) = ordinalMapVariation f + ordinalMapVariation g
+
+lemma walkingAdjunctionAppend_before_variation {n : ℕ} {X Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom X Y) n) (B : walkingAdjunctionHom X Y)
+    (f : H.obj (Fin.last n) ⟶ B) (j : Fin n) :
+    ordinalMapVariation (walkingAdjunctionOrderHom ((composableArrowAppend H B f).map
+      (homOfLE (Fin.castSucc_le_succ j.castSucc)))) =
+    ordinalMapVariation (walkingAdjunctionOrderHom (H.map (homOfLE (Fin.castSucc_le_succ j))))
+
+lemma walkingAdjunctionAppend_last_variation {n : ℕ} {X Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom X Y) n) (B : walkingAdjunctionHom X Y)
+    (f : H.obj (Fin.last n) ⟶ B) :
+    ordinalMapVariation (walkingAdjunctionOrderHom ((composableArrowAppend H B f).map
+      (homOfLE (Fin.castSucc_le_succ (Fin.last n))))) =
+      ordinalMapVariation (walkingAdjunctionOrderHom f)
+
+lemma walkingAdjunctionAppend_variation_sum {n : ℕ} {X Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom X Y) n) (B : walkingAdjunctionHom X Y)
+    (f : H.obj (Fin.last n) ⟶ B) :
+    (∑ j : Fin (n + 1), ordinalMapVariation
+      (walkingAdjunctionOrderHom ((composableArrowAppend H B f).map
+        (homOfLE (Fin.castSucc_le_succ j))))) =
+      (∑ j : Fin n, ordinalMapVariation
+        (walkingAdjunctionOrderHom (H.map (homOfLE (Fin.castSucc_le_succ j))))) +
+          ordinalMapVariation (walkingAdjunctionOrderHom f)
+
+lemma walkingAdjunctionOrdinalWidth_append {n : ℕ} {X Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom X Y) n) (B : walkingAdjunctionHom X Y)
+    (f : H.obj (Fin.last n) ⟶ B) :
+    walkingAdjunctionOrdinalWidth (composableArrowAppend H B f) +
+      walkingAdjunctionOrdinalCard X Y (H.obj (Fin.last n)) =
+    walkingAdjunctionOrdinalWidth H + walkingAdjunctionOrdinalCard X Y B +
+      ordinalMapVariation (walkingAdjunctionOrderHom f)
+
+lemma walkingAdjunctionPlusParentPrefix_variation {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom .plus Y) n) (j : Fin n) :
+    ordinalMapVariation (walkingAdjunctionOrderHom ((walkingAdjunctionPlusParentPrefix H).map
+      (homOfLE (Fin.castSucc_le_succ j)))) =
+      ordinalMapVariation (walkingAdjunctionOrderHom
+        (H.map (homOfLE (Fin.castSucc_le_succ j))))
+
+lemma walkingAdjunctionPlusParentPrefix_ordinalWidth {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom .plus Y) n) :
+    walkingAdjunctionOrdinalWidth (walkingAdjunctionPlusParentPrefix H) =
+      walkingAdjunctionOrdinalWidth H + 1
+
+lemma walkingAdjunctionBottomMergeArrow_variation {Y : WalkingAdjunctionPoint}
+    (A : walkingAdjunctionHom .minus Y) (m : ℕ)
+    (hA : walkingAdjunctionOrdinalCard .minus Y A = m + 2) :
+    ordinalMapVariation (walkingAdjunctionOrderHom (walkingAdjunctionBottomMergeArrow A m hA)) =
+      1
+
+lemma walkingAdjunctionPlusParent_ordinalWidth {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom .plus Y) n)
+    (ha : WalkingAdjunctionLevelIsAtomic (X := ⟨.plus⟩) (Y := ⟨Y⟩) H) :
+    walkingAdjunctionOrdinalWidth (walkingAdjunctionPlusParent H ha) =
+      walkingAdjunctionOrdinalWidth H + 1
+```
+
+現在の有限順序の幅では、内側の実親の幅の保存（§115）、最後の深さの実親の増分1、
+全実面の幅の非増加まで検証した。
+実水平分解と原子分解の幅の加法性、原典の文字列の幅・fillable条件との全比較、
+指定以外の面と原子分解についての深さの比較、parental subcomputadのfiltrationと全付着の構成は未完。
+元のQCatAdjunctionからの全coherentな延長、水平反対の向きの全比較、
+同じF≫U・単位・余単位・HAモデルとの照合も未完である。G01の済みは0、G02以降も未完を維持する。
+
+### 117.3 検証と進み
+
+with_build_lock.sh --class impl --wait 3600、最大240秒の短い枠で対象ビルド二つと追加16根だけの公理監査を確認した。
+対象はSerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionOrdinalWidthFaces:oleanと
+SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionPlusParentWidth:olean。
+最終固定コマンドの対象ビルド・監査と外側の終了は0、最終対象ビルドは警告なし。
+実面の先頭の対象の輸送・同じ実有限添字・実関手の表示・補正の0からの加算を揃え、行長も整えて最終検証した。
+追加16根は入力名と出力名が一致し、公理依存はpropext・Classical.choice・Quot.soundのみ。
+sorryAx・追加公理なし。入力・根・監査全出力・対象ビルドログは
+[g12-width-faces-plus-audit-2026-11-15/](g12-width-faces-plus-audit-2026-11-15/)に保存した。
+M15・drafts・main・⑤aの既存ファイル・Interfaceは変更せず、全体ビルド・大きい監査は行っていない。
+
+G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み15,628行。
+M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
