@@ -17351,3 +17351,78 @@ lemma leftStraighteningInfinityDiagram_representationIso_zero_evaluate_arrow {E 
 証跡：/private/tmp/isw2-build355b.log、AuditISW2BKCells355.lean、isw2-validation355.json、isw2-declaration-collision-scan355.json。git diff --check通過。B4′の結果は§268のまま（統合81683a2ab、書換え0・保留0）。
 
 この検収で§287の重み付きnative単位の実fiber評価の等式そのものを閉じたとはしない。今回の前合成の全FunctorIso等式を使い、同じ表現空間の同じ指定同型と、元のfirstVertexFiberIso・fiber評価への輸送をつなぐ段が残る。R03hの全interval族の等式・R03dの指定全関手同型・3b-4aは未完了。型・範囲を弱めず、⑤aの既存ファイルは変更していない。
+
+## 289. 元のnative単位の自己比較の消去と、同じ全表現同型との合成（2026-11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+既存のsmallFiberTransportRepresentationVertexIso_uniqueを使い、同じ表現を自分自身と比較する同型は恒等であることを示す。それを元のnerve比較へ写し、元のnative単位を元のstrict単位・opposite比較・同じ表現同型の逆の合成へ正規化する。新しい数学の項目ではなく、既存構成の単位・合成・評価の法則と証明の分割。§287の実fiber評価の等式は、この正規化だけではまだ得られない。全FunctorIsoの等式を保つ。
+
+#### TransportRepresentationSelfComparison（62行）
+
+```lean
+lemma smallFiberTransportRepresentationVertexIso_self {E B : SSet.{u+1}} (p : E ⟶ B) [LeftFibration p]
+    (hp : HasSmallSimplexFibers p) (R : LeftTransportRepresentation p) :
+    smallFiberTransportRepresentationVertexIso p hp R R = Iso.refl (HomotopyCategory.mk (transportWitnessVertex R))
+
+lemma smallFiberTransportRepresentationDiagramIso_self {E B : SSet.{u+1}} (p : E ⟶ B) [LeftFibration p]
+    (hp : HasSmallSimplexFibers p) (R : LeftTransportRepresentation p) :
+    smallFiberTransportRepresentationDiagramIso p hp R R = Iso.refl (HomotopyCategory.mk (functorVertex R.diagram))
+
+lemma nerveCoherentTransportRepresentationIso_self {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) [LeftFibration p] :
+    nerveCoherentTransportRepresentationIso p (nerveLeftTransportRepresentation p) =
+      Iso.refl (HomotopyCategory.mk (functorVertex (leftCoherentTransport p)))
+
+lemma nerveStraighteningRepresentationIso_self {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) [LeftFibration p] :
+    nerveStraighteningRepresentationIso p (nerveLeftTransportRepresentation p) =
+      leftStraighteningCoherentMap_oppositeVertexIso p
+```
+
+#### NativeNerveUnitNormalization（85行）
+
+```lean
+lemma leftStraighteningInfinityDiagram_nerveCandidateIso_normalized {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) [LeftFibration p] :
+    leftStraighteningInfinityDiagram_nerveCandidateIso p =
+      leftStraighteningInfinityDiagram_representationIso p (nerveLeftTransportRepresentation p) ≪≫
+        (leftStraighteningCoherentMap_oppositeVertexIso p).symm
+
+lemma weightedNerveNativeStraighteningUnitIso_normalized {C : Type u} [Category.{u} C] (F : C ⥤ KanObject.{u}) :
+    weightedNerveNativeStraighteningUnitIso F =
+      weightedNerveStraighteningUnitIso F ≪≫
+        leftStraighteningCoherentMap_oppositeVertexIso (weightedNerveProjection (F ⋙ kanObjectForget)) ≪≫
+        (leftStraighteningInfinityDiagram_representationIso
+          (weightedNerveProjection (F ⋙ kanObjectForget))
+          (nerveLeftTransportRepresentation (weightedNerveProjection (F ⋙ kanObjectForget)))).symm
+
+lemma weightedNerveNativeStraighteningUnitIso_trans_representationIso {C : Type u} [Category.{u} C] (F : C ⥤ KanObject.{u}) :
+    weightedNerveNativeStraighteningUnitIso F ≪≫
+      leftStraighteningInfinityDiagram_representationIso
+        (weightedNerveProjection (F ⋙ kanObjectForget))
+        (nerveLeftTransportRepresentation (weightedNerveProjection (F ⋙ kanObjectForget))) =
+    weightedNerveStraighteningUnitIso F ≪≫
+      leftStraighteningCoherentMap_oppositeVertexIso (weightedNerveProjection (F ⋙ kanObjectForget))
+
+lemma weightedNerveNativeStraighteningUnitIso_representation_evaluate {C : Type u} [Category.{u} C] (F : C ⥤ KanObject.{u}) (c : C) :
+    functorHomEvaluate (weightedNerveNativeStraighteningUnitIso F).hom
+        (ULift.up (nerveVertex c)) ≫
+      functorHomEvaluate (leftStraighteningInfinityDiagram_representationIso
+        (weightedNerveProjection (F ⋙ kanObjectForget))
+        (nerveLeftTransportRepresentation (weightedNerveProjection (F ⋙ kanObjectForget)))).hom
+        (ULift.up (nerveVertex c)) =
+    functorHomEvaluate (weightedNerveStraighteningUnitIso F).hom (ULift.up (nerveVertex c)) ≫
+      functorHomEvaluate (leftStraighteningCoherentMap_oppositeVertexIso
+        (weightedNerveProjection (F ⋙ kanObjectForget))).hom (ULift.up (nerveVertex c))
+```
+
+### 289.3 検収と残り
+
+新規2本147行、公開8補題・局所instance一つ。対象ビルド356（依存を含む3,105 jobs）と小監査はともに終了0。鍵は --class impl --wait 3600、一枚の整理券でビルド・監査の間だけ使用、gtimeout 1700秒。小監査は258モジュール・1,688宣言、propext・Classical.choice・Quot.soundのみ、sorryAx・追加公理なし。git diff --check通過。main a4388efc9のEInfinity/3,745ファイル13,373名と、自レーン620ファイル1,945名の照合で異なるファイルの同名宣言0、内部も0。証跡は/private/tmp/isw2-build356.log、isw2-validation356.json、isw2-declaration-collision-scan356.json。
+
+累計254本・17,262行、実環境1,681宣言。外枠22,000行まで4,738行。登録候補の一覧is-w2-be-20261114-modules.jsonに2本を追加した。既存のLean宣言・⑤aのファイル・公式入口・公式監査は変更していない。§288の4本は70d5f311bに保存済み。
+
+元のnative単位に同じ表現同型を後合成すると、元のstrict単位とopposite比較の合成へ厳密に戻る。この全FunctorIsoの等式とその評価は閉じた。一方、§287の右辺にある実weightedNerveFiberMapのホモトピー類との等式は未証明。nerveLeftTransportRepresentationのcomparisonはleftCoherentTransportDirectComparisonであり、その公開の存在命題は底上の射と前合成同値性を与える。自己単位則から、この射が元のstrict transport評価と一致するとは推論しない。同じ指定された比較と同じfiber評価との両立を示す工程が残る。
+
+次は今回の正規化を使い、元のfirstVertex制限・同じ表現比較・実fiber評価の式を照合する。R03hの同じnative fiber射と元の固定始域のroofの全interval族の等式も維持する。点の同型や今回の自己単位則で全族の等式を代用しない。R03d・R03hと3b-4aは未完で、停止点3b-4aの報告ではない。新しい仮定や界面の変更は追加していない。
