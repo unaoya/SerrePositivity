@@ -1747,3 +1747,11 @@ bundle-021 の最初の要求は3600秒でrc75となり、ビルド自体は始�
 準備した37本全体の成功ではない。残る依存元のエラーは、随伴の単位の恒等射の評価、`Functor.map_add` の暗黙引数、零延長の型注釈、切断での零対象のscopeと定義の書き換え、写した短複体の成分の正規化とsection変数の保持の5群へ分けた。これらが多数の下流を止めているため、先に直す。未検証の新しい法則は引き続き別に保持し、HT02の完了数は増やさない。
 
 一覧：済み 1／全体 6（うち追加 0）。
+
+### 5∞-3a：完備性と切断の対象検査022（11-15 昼）
+
+通常のbulk整理券の束022は95.00秒で鍵を返した。新たに `TensorHomComponents`、`CompletionAdditive`、`ExtensionFunctor`、`NaturalTruncation`、`TotalCompleteness`、`CompletedComparison`、`RowTruncationExact` の7本が通った。従来の18本と合わせた**25モジュール・463宣言**の公理閉包は標準三公理のみ。検査時と現行のソースハッシュは全件一致した。記録は `completeness-truncation-checkpoint.json` と `completeness-truncation-022.tar.gz`。
+
+これは準備した40本全体の成功ではない。残る依存元のエラー5群（Complexのimport、暗黙引数、単位の成分計算の型注釈、合成の評価、分裂式の正規化）をソースで修正し、次の検査へ回す。有限列の比較、有限頭部の可逆性、一般の標準S底変換への同定は未完了である。HT02の完了数は増やさない。
+
+一覧：済み 1／全体 6（うち追加 0）。
