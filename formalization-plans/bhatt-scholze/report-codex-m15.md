@@ -13184,3 +13184,130 @@ M15・drafts・main・⑤aの既存ファイル・Interfaceは変更していな
 
 G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み7,144行。
 M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
+
+## §96 G01：残りの実関手の左右の全合成と実細分（11-15）
+
+### 96.1 検証済みの追加
+
+追加は **2ファイル303行・明示宣言8**。累計 **57ファイル7,447行・明示宣言464**。
+WalkingAdjunctionResidualInclusions.lean は92行・5宣言、
+WalkingAdjunctionResidualFactorization.lean は211行・3宣言。
+個別の宣言・証明に200行を超えるものはない。
+G01の同じ水平合成の包含・係数移送・合成則・分解の照合とその証明の分割であり、
+新しい一覧IDは足さない。
+
+左因子の点の個数は切れ目の座標と中点の補正の和に一致することをまとめた。
+残りの実関手の各実対象を同じHの区間へ入れる実包含を構成し、
+その値は左の切れ目の座標に元の点の値を加えたものであることを照合した。
+残りの実関手の全射の共通表示は、個数を移した元の区間制限と異種等式で一致する。
+これを元の区間制限の可換正方形へ戻し、残りの実関手の全射がHへの実包含と可換することを示した。
+
+短い左因子と残りの実関手の合成が長い左因子に一致することを、全関手の等式として証明した。
+対象の等式は§94の構成を使い、射は全ての有限点で照合した。
+先頭区間内の点では§95の元の左因子の包含との正方形を使った。
+残りの区間内の点では、plusの順序和またはminusの端点共有の表示を用い、
+残りの実関手の包含の正方形と、元の長い左因子の先頭区間の正方形を比較した。
+共有点を捨てず、minusの場合は左区間の最後の点を含む先頭側へ入れている。
+
+残りの実関手と短い右因子の合成が長い右因子へ戻ることも、全関手の等式で証明した。
+全結合則と左の合成の等式で同じ全体Hへ送り、対象の等式を§94の重みの照合から与え、
+§91の実水平合成の忠実性で固定した左因子を消した。
+
+以上と全頂点の長さの比較から、同じ全単体の任意の二つの実水平分解について、
+一方の分解を他方で細分する **実関手と左右の全合成の等式** の存在を得た。
+細分の関手の存在を仮定する欄を導入した結果ではない。
+
+### 96.2 型と残る境界
+
+原典はRiehl–Verity Proposition 3.1.10・Remark 3.3.8、HA Proposition 4.7.3.3、
+Kerodon Remark 6.2.1.4（Tag 02EN）。検証した型は以下。
+ここではn・X・YとH : Fin(n+1) ⥤ walkingAdjunctionHom X Yを暗黙に固定する。
+
+```lean
+lemma WalkingAdjunctionFactorization.prefix_card (a : WalkingAdjunctionFactorization H)
+    (i : Fin (n + 1)) :
+    walkingAdjunctionOrdinalCard X a.middle (a.left.obj i) =
+      walkingAdjunctionCutCoordinate a.cut i + walkingAdjunctionTargetCorrection a.middle
+
+def WalkingAdjunctionFactorization.residualInclusion (a b : WalkingAdjunctionFactorization H)
+    (h : ∀ i, walkingAdjunctionVertexLength X a.middle (a.left.obj i) ≤
+      walkingAdjunctionVertexLength X b.middle (b.left.obj i)) (i : Fin (n + 1)) :
+    Fin (walkingAdjunctionOrdinalCard a.middle b.middle ((a.residualFunctor b h).obj i)) →o
+      Fin (walkingAdjunctionOrdinalCard X Y (H.obj i))
+
+lemma WalkingAdjunctionFactorization.residualInclusion_val (a b : WalkingAdjunctionFactorization H)
+    (h : ∀ i, walkingAdjunctionVertexLength X a.middle (a.left.obj i) ≤
+      walkingAdjunctionVertexLength X b.middle (b.left.obj i)) (i : Fin (n + 1))
+    (x : Fin (walkingAdjunctionOrdinalCard a.middle b.middle
+      ((a.residualFunctor b h).obj i))) :
+    (a.residualInclusion b h i x).val = walkingAdjunctionCutCoordinate a.cut i + x.val
+
+lemma WalkingAdjunctionFactorization.residualMap_interval_heq
+    (a b : WalkingAdjunctionFactorization H)
+    (h : ∀ i, walkingAdjunctionVertexLength X a.middle (a.left.obj i) ≤
+      walkingAdjunctionVertexLength X b.middle (b.left.obj i))
+    {i j : Fin (n + 1)} (f : i ⟶ j) :
+    HEq (walkingAdjunctionOrderHom ((a.residualFunctor b h).map f))
+      (walkingAdjunctionCutIntervalMap a.cut b.cut (a.rank_le_of_prefix_le b h) (leOfHom f))
+
+lemma WalkingAdjunctionFactorization.residual_square (a b : WalkingAdjunctionFactorization H)
+    (h : ∀ i, walkingAdjunctionVertexLength X a.middle (a.left.obj i) ≤
+      walkingAdjunctionVertexLength X b.middle (b.left.obj i))
+    {i j : Fin (n + 1)} (f : i ⟶ j) :
+    (a.residualInclusion b h j).comp (walkingAdjunctionOrderHom ((a.residualFunctor b h).map f)) =
+      (walkingAdjunctionOrderHom (H.map f)).comp (a.residualInclusion b h i)
+
+lemma WalkingAdjunctionFactorization.residual_prefix (a b : WalkingAdjunctionFactorization H)
+    (h : ∀ i, walkingAdjunctionVertexLength X a.middle (a.left.obj i) ≤
+      walkingAdjunctionVertexLength X b.middle (b.left.obj i)) :
+    a.left.prod' (a.residualFunctor b h) ⋙ walkingAdjunctionHorizontal X a.middle b.middle =
+      b.left
+
+lemma WalkingAdjunctionFactorization.residual_suffix (a b : WalkingAdjunctionFactorization H)
+    (h : ∀ i, walkingAdjunctionVertexLength X a.middle (a.left.obj i) ≤
+      walkingAdjunctionVertexLength X b.middle (b.left.obj i)) :
+    (a.residualFunctor b h).prod' b.right ⋙ walkingAdjunctionHorizontal a.middle b.middle Y =
+      a.right
+
+lemma WalkingAdjunctionFactorization.exists_refinement (a b : WalkingAdjunctionFactorization H) :
+    (∃ T : Fin (n + 1) ⥤ walkingAdjunctionHom a.middle b.middle,
+      a.left.prod' T ⋙ walkingAdjunctionHorizontal X a.middle b.middle = b.left ∧
+      T.prod' b.right ⋙ walkingAdjunctionHorizontal a.middle b.middle Y = a.right) ∨
+    (∃ T : Fin (n + 1) ⥤ walkingAdjunctionHom b.middle a.middle,
+      b.left.prod' T ⋙ walkingAdjunctionHorizontal X b.middle a.middle = a.left ∧
+      T.prod' a.right ⋙ walkingAdjunctionHorizontal b.middle a.middle Y = b.right)
+```
+
+同じ全単体の二つの実水平分解の比較から残りの実関手を構成し、
+その左右の全合成の等式を得るところは今回完成した。
+次はこれを原子的な左因子の一意性へ適用し、§90の原子的な自由な道の比較のFaithfulへ進める。
+一般の水平分解の比較ができたことだけで、自由な道のFaithfulを済みとはしない。
+
+原子性の退化との両立、parental subcomputadのfiltration・実充填、
+元のQCatAdjunctionからの全coherentな延長と同じF≫U・単位・余単位・HAモデルの照合、
+G02以降も引き続き未完。G01の済みは0を維持する。
+
+### 96.3 検証と進み
+
+with_build_lock.sh --class impl --wait 3600、各最大280秒の短いimpl枠。
+最初のセッション46761で残りの包含の数学の証明が通り、
+区間制限への輸送の等式は書き換えから等式の直接の合成へ修正した。
+その短い枠の終了124を同じセッションで確認した。
+
+セッション35561で最終対象
+lake build SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionResidualFactorization:olean
+を検証した。左の合成の照合では、右包含の有限点の値を自然数の和へ明示的に変える一か所を修正した。
+右の合成と実細分の存在は、その後数学の証明を変更せず通った。
+最終G12_RESINCL_BUILD_EXIT=0・警告なし（1292 jobs）。
+追加8根の小さい監査はG12_RESINCL_AUDIT_EXIT=0。
+入力8名と出力8名は一致し、公理依存はpropext・Classical.choice・Quot.soundのみ。
+sorryAx・追加公理なし。exitで外側の終了0まで確認して枠を返却した。
+入力・根・全出力・最終対象ビルドログは
+[g12-residual-factorization-audit-2026-11-15/](g12-residual-factorization-audit-2026-11-15/)に保存した。
+現在自分の生きたビルド・監査の枠は残っていない。
+
+M15・drafts・main・⑤aの既存ファイル・Interfaceは変更していない。
+全体ビルド・大きい監査は行っていない。
+
+G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み7,447行。
+M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
