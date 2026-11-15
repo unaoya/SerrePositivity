@@ -694,3 +694,20 @@ S04 の貼り合わせ後の比較の紙の筋：二つの大域の射 πA・πB
 今回4モジュール385行＋入口4行。2g-2 本体3,041行・入口込み3,089行、小監査326宣言・標準三公理のみ。S03 はチャートの実際の代数同型と重なりの射の一致まで到達。S04 の大域の貼り合わせ・ファイバー積・有限冪、G4〜G5 は未完。大域射の下書き `SegreProjectiveProjections.lean` は未検証で drafts に保持。残りの主要な束は大域の貼り合わせとファイバー積、有限冪、G4、G5 の4つ。全体の見込み約5,500〜12,000行・外枠16,000行は不変。停止点2g-2ではない。B4′ の指示に従い、この検証済みの束を先にコミットして追従へ移る。
 
 一覧：済み0／全体3（うち追加0）。
+
+
+S04 の大域射の標準開の逆像の法則の分割（着手前、既存の貼り合わせの内数、90〜180行）：`segreLeftProjection_chart_preimage_basicOpen`・`segreRightProjection_chart_preimage_basicOpen` は、D(Zᵢⱼ) 上で因子の D(aₖ)・D(bₗ) の逆像が正規化した Zₖⱼ・Zᵢₗ の基本開になる式。`segreProjection_chart_preimage_pair` は、この二つの逆像の交叉が正規化した Zₖₗ の基本開になること。`segreProjection_preimage_pair` は大域の式 `πA⁻¹D(aₖ) ∩ πB⁻¹D(bₗ) = D(Zₖₗ)`。構成済みの大域射の制限式・Proj の基本開の逆像・小行列式の関係を用いる。平坦性・非零の座標・Noether 性は追加しない。ファイバー積の判定の前の、既存の射と開集合の法則である。
+
+
+S04 の標準開の Cartesian 四角形の法則の分割（着手前、既存のチャート同型の内数、60〜130行）：`isPullback_segreStandardOpen` は、構成済みの列・行の標準開写像の Spec が、二つの因子の標準開の Spec R 上の pullback を与えること。`segreStandardOpenTensorEquiv` の逆写像の Spec の同型で `isPullback_specTensor` を移送し、二つの辺は TensorProduct.lift の単位元を含む純テンソルの式で照合する。Segre 標準開へ余分な因子側の代数構造を入れず、元の R 上の代数構造を保つ。大域の pullback の完成はこの局所四角形と前記の逆像の法則の後に残る。
+
+
+## G3・S04：Segre の二つの実際の大域射
+
+`SegreProjectiveProjections`（120行）：`segreProjectiveOpenCover` は全座標による実際の標準開被覆。`segreGlueMorphisms` は交叉 D(δδ′) 上の可換性を標準開の pullback の同型で Mathlib の貼り合わせへ渡す。`segreLeftProjection`・`segreRightProjection` は因子の Proj への実際の大域射。`segreLeftProjection_awayι`・`segreRightProjection_awayι` はそれぞれ構成済みの列・行の局所射に戻る制限式。元の次数一の全射表示を使い、平坦性・Noether 性・非零の座標の仮定はない。
+
+単独検証、下書きと本体のソース完全一致、対象と入口だけのビルド5,118ジョブ、小監査29宣言・標準三公理のみ、終了状態0。実際の代数構造を名前付きの局所インスタンスで明示し、貼り合わせの補題では被覆の添字を元の積の型へ戻してから交叉を照合した。この補題だけに局所的な backward.isDefEq.respectTransparency false を使用。資源制限の引き上げ、追加公理、sorry、既存宣言の型変更、200行超の宣言はない。行長を折り返した後も対象ビルド成功。ログ `2g-segre-projective-projections-check-3.log`・`2g-segre-projective-projections-native-2.log`・`2g-segre-projective-projections-audit.log`。共有鍵 --class impl --wait 3600、待ちは常に一つ。root・下流全ビルド・全体監査は行っていない。
+
+今回1モジュール120行＋入口1行。2g-2 本体3,161行・入口込み3,210行、小監査355宣言・標準三公理のみ。二つの大域射と制限式まで到達し、標準開の逆像・局所と大域のファイバー積・有限冪・G4〜G5 は未完。逆像と局所 Cartesian 四角形の未検証の下書きは drafts に保持したまま、今回のコミットには含めない。全体の見込み約5,500〜12,000行・外枠16,000行は不変。停止点2g-2ではない。
+
+一覧：済み0／全体3（うち追加0）。
