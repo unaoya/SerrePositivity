@@ -2183,3 +2183,9 @@ HT02は当初の1,500〜3,000行から7614行へ増えた。HT03〜HT06の暫定
 通常のbulk整理券の束は44.04秒で返却。Constructed scalar extension of raw differential forms along the actual prism residue pushout, with the canonical unit-tensor basis formula. 新しい1本と既存の更新0本が通り、**117モジュール・1403宣言**の公理閉包は標準三公理のみ。全監査ソースのハッシュ一致を確認した。記録は `crystalline-forms-base-change-checkpoint.json` と `crystalline-forms-base-change-bundle-110.tar.gz`。準備した117本全件がビルド・公理監査まで成功した。HT02は完成済み。残りの項目は別に数える。
 
 一覧：済み 2／全体 6（うち追加 0）。
+
+### 5∞-3a：対象検査bundle-120（11-15 昼）
+
+通常のbulk整理券の束は56.71秒で返却。元の基底環に関する形式の完備化単位が結晶的な場合に線形同型であることを確認し、その単位を通して元の affine 完備形式の係数拡大を同定した。同じ単項式・外積基底の単位上の値も確認した。通常係数自然性の定数上の式は、環同型から環射への変換を次に明示する。 新しい2本と既存の更新0本が通り、**119モジュール・1430宣言**の公理閉包は標準三公理のみ。全監査ソースのハッシュ一致を確認した。記録は `crystalline-affine-forms-checkpoint.json` と `crystalline-affine-forms-bundle-120.tar.gz`。準備した121本全体の成功ではなく、未検証分は分けて保持する。HT02は完成済み。残りの項目は別に数える。
+
+一覧：済み 2／全体 6（うち追加 0）。
