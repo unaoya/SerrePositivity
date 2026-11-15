@@ -893,3 +893,23 @@ G4 の二重 cone の交換の微分と複体の法則（着手前、前記の�
 今回1モジュール71行＋入口1行。2g-2 本体4,364行・入口込み4,432行、小監査522宣言・標準三公理のみ。微分との可換性と複体の同型の下書きはまだ未検証で、今回のコミットには含めない。G4・G5 の残りと見込み約5,500〜12,000行・外枠16,000行は不変。停止点2g-2ではない。
 
 一覧：済み1／全体3（うち追加0）。
+
+
+G4 の明示的な複体の完全性の反映の法則（着手前、既存の CochainComplex.of の完全性判定の逆向き、40〜100行）：`cochainComplexOf_injective_exact_of_acyclic X d hdd hK` は、`hK : (CochainComplex.of X d hdd).Acyclic` から `Function.Injective (d 0).hom ∧ ∀ n, Function.Exact (d n).hom (d (n+1)).hom` を取り出す。既存の cochainComplexOf_acyclic_of_injective_exact と同じ型・宇宙で、短複体の完全性を各次数で読む法則。増大全複体と cone の既存の証明分割に使用する。
+
+
+G4 の二重 cone の交換による完全性の法則（着手前、前記の四角形の比較の証明分割、35〜80行）：`cechRefinementConeMap_cone_acyclic f g a b h ha hb` は `h:f≫b=a≫g`・`ha:(cechRefinementCone A A′ a).Acyclic`・`hb:(cechRefinementCone B B′ b).Acyclic` から、実際の `cechRefinementConeMap a b h : K(f)→K(g)` の cone の Acyclic を返す。交換先の二複体の完全性からその射の QuasiIsoAt を得て、既存の cone の完全性の法則と交換の同型で戻す。元の四角形の射を保持し、まだ増大項の比較を主張しない。
+
+
+G4 の零次項拡張の比較の法則（着手前、既存の拡張の係数移送の内数、80〜180行）：`cechZeroTermExtensionMap_cone_acyclic α q hα hq` は `hα:(cechRefinementCone C C′ α).Acyclic` と `hq:Function.Bijective q` から、既存の `cechZeroTermExtensionMap α q` の cone の完全性を返す。零次で q の単射性、一次の境界で q の全射性を使い、それ以後は元の cone の完全性をそのまま読む。新しい被覆や H の定義は導入しない。
+
+
+## G4：明示的な複体の完全性から微分の完全性の反映
+
+`CochainComplexOfExactnessReflection`（46行）：`cochainComplexOf_injective_exact_of_acyclic` は既存の CochainComplex.of の Acyclic から、最初の微分の単射性と各隣接微分の Function.Exact を取り出す。既存の逆向きの判定と同じ型で、係数環と加群の宇宙は独立。零次と正次数の短複体の完全性を直接読む。
+
+単独検証、下書きと本体のソース完全一致、対象と入口のビルド5,154ジョブ、小監査1宣言・標準三公理のみ、終了状態0。ログ `2g-cochain-exactness-reflection-check-1.log`・`2g-cochain-exactness-reflection-native.log`・`2g-cochain-exactness-reflection-audit.log`。追加公理・sorry・既存の型変更・透明性や資源制限の変更・200行超の宣言なし。共有鍵 --class impl --wait 3600、待ちは一つ。root・下流全ビルド・全体監査なし。
+
+今回1モジュール46行＋入口1行。2g-2 本体4,410行・入口込み4,479行、小監査523宣言・標準三公理のみ。二重 cone の交換の微分・完全性、零次項の拡張と増大項の比較は未検証の下書きで、本体には含めない。G4・G5 の残りと見込み約5,500〜12,000行・外枠16,000行は不変。停止点2g-2ではない。
+
+一覧：済み1／全体3（うち追加0）。
