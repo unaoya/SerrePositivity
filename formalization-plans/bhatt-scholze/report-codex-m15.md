@@ -17327,3 +17327,102 @@ M15・drafts・main・⑤aの既存ファイル・Interfaceは変更せず、全
 
 G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み17,212行。
 M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
+
+## §121 G01：先頭の実境界面の幅の欠損・保存と、先頭・最後の実境界面の非原子性（11-16）
+
+### 121.1 検証済みの追加
+
+追加は **3ファイル214行・明示宣言6**。累計 **160ファイル17,426行・明示宣言853**。
+OrdinalSmallSourceInjective.lean は42行・1宣言、
+WalkingAdjunctionFirstFaceWidth.lean は109行・3宣言、
+WalkingAdjunctionLastFaceAtomicity.lean は63行・2宣言。
+個々の宣言・証明は200行以下、新規Leanの行長は100文字以下。
+同じG01の全実随伴・実filtrationの構成に必要な、実境界面・実挿入・実単位の法則、
+実像の個数・実同型・原子性の照合とその証明の分割であり、一覧IDは追加しない。
+
+先頭の実射の挿入の幅の式から、元の幅と先頭面の幅の差は、
+先頭辺の「始点の個数から実像の個数を除いたもの」の2倍となることを示した。
+先頭辺が単射なら、先頭面の幅は元の幅に一致する。
+二点以下からの実単調射が0を保ち底の二点を併合しなければ、単射であることも全実点で証明した。
+始点minusの実原子の実始点の個数は1または2であり、最初の併合が先頭でなければ、
+元の実最小元の最小性から先頭辺の非併合が従う。従って先頭面の幅は元と等しい。
+先頭面が原子的だと、その実始点の個数も元の実始点と同じ補正の和となる。
+先頭辺の単射性と同じ個数から変化量0を得ると、先頭辺が実同型となり元の非退化性に反する。
+この場合の先頭面の非原子性を、元の全実関手について回収した。
+
+最後の境界面についても、元の実全鎖が非退化な原子なら、その面は原子的でないことを示した。
+最後の面が原子的だと、元の最後の二つの実対象はどちらも一点となる。
+一点から一点への実射の全射性と実像の個数から変化量0を回収し、元の実Homで同型と示した。
+元の最後の実辺の非同型性に反するため、最後の面は原子的ではない。
+こちらは全四Hom・全正の次数を扱い、最後の面そのものの非退化性を仮定しない。
+
+先頭面の欠損を検討する途中では、終点と実像の差で幅が減る案を調べたが、
+実挿入の等式を解くと、正しくは始点と実像の差となる。
+未検証の減少の主張は採用せず、上記の実単射性による幅の保存と非原子性へ修正して最終検証した。
+既にコミット済みの幅の法則に変更はない。
+
+### 121.2 型と未完の境界
+
+原典はRiehl–Verity Proposition 4.2.15の境界面と原子分解、
+HA Proposition 4.7.3.3、Kerodon Remark 6.2.1.4（Tag 02EN）。追加の型は以下。
+
+```lean
+lemma ordinalInjective_of_le_two_bottom_no_one {a b : ℕ} (f : Fin a →o Fin b)
+    (ha : a ≤ 2) (h0 : ∀ i, i.val = 0 → (f i).val = 0)
+    (hno : ∀ i, i.val = 1 → (f i).val ≠ 0) : Function.Injective f
+
+lemma walkingAdjunctionOrdinalWidth_first_face_defect {n : ℕ} {X Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom X Y) (n + 1)) :
+    walkingAdjunctionOrdinalWidth H = walkingAdjunctionOrdinalWidth H.δ₀ +
+      2 * (walkingAdjunctionOrdinalCard X Y (H.obj 0) -
+        ordinalImageCard (walkingAdjunctionOrderHom (H.map' 0 1)))
+
+lemma walkingAdjunctionOrdinalWidth_first_face_of_injective {n : ℕ}
+    {X Y : WalkingAdjunctionPoint} (H : ComposableArrows (walkingAdjunctionHom X Y) (n + 1))
+    (hf : Function.Injective (walkingAdjunctionOrderHom (H.map' 0 1))) :
+    walkingAdjunctionOrdinalWidth H.δ₀ = walkingAdjunctionOrdinalWidth H
+
+lemma walkingAdjunctionFirstFace_width_and_not_atomic {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom .minus Y) (n + 1))
+    (ha : WalkingAdjunctionLevelIsAtomic (X := ⟨.minus⟩) (Y := ⟨Y⟩) H)
+    (hnd : ULift.up H ∈ (WalkingAdjunctionHomShape.{u} .minus Y).nonDegenerate (n + 1))
+    (hk : walkingAdjunctionFirstBottomMergeIndex H
+      (walkingAdjunctionAtomic_endpoint_cards H ha).2 hnd ≠ 0) :
+    walkingAdjunctionOrdinalWidth H.δ₀ = walkingAdjunctionOrdinalWidth H ∧
+      ¬ WalkingAdjunctionLevelIsAtomic (X := ⟨.minus⟩) (Y := ⟨Y⟩) H.δ₀
+
+lemma walkingAdjunctionHom_isIso_of_card_one {X Y : WalkingAdjunctionPoint}
+    {A B : walkingAdjunctionHom X Y} (f : A ⟶ B)
+    (ha : walkingAdjunctionOrdinalCard X Y A = 1)
+    (hb : walkingAdjunctionOrdinalCard X Y B = 1) : IsIso f
+
+lemma walkingAdjunctionLastFace_not_atomic {n : ℕ} {X Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom X Y) (n + 1))
+    (ha : WalkingAdjunctionLevelIsAtomic (X := ⟨X⟩) (Y := ⟨Y⟩) H)
+    (hnd : ULift.up H ∈ (WalkingAdjunctionHomShape.{u} X Y).nonDegenerate (n + 1)) :
+    ¬ WalkingAdjunctionLevelIsAtomic (X := ⟨X⟩) (Y := ⟨Y⟩)
+      (finiteChainFace H (Fin.last (n + 1)))
+```
+
+先頭面の幅の欠損と単射の場合の保存、最初の併合が先頭でない場合の先頭面の非原子性、
+全四Homでの最後の面の非原子性まで検証した。
+境界面の全原子分解とそれぞれの親を含む全ての順位の比較、
+最初の併合が先頭にある場合の境界面の全検収、原典の文字列の幅・fillable条件との全比較、
+parental subcomputadのfiltrationと全付着の構成は未完。
+元のQCatAdjunctionからの全coherentな延長、水平反対の向きの全比較、
+同じF≫U・単位・余単位・HAモデルとの照合も未完である。
+G01の済みは0、G02以降も未完を維持する。
+
+### 121.3 検証と進み
+
+with_build_lock.sh --class impl --wait 3600、最大240秒の短い枠で対象ビルドと追加6根だけの公理監査を確認した。
+最終固定コマンドの対象はWalkingAdjunctionFirstFaceWidth:oleanとWalkingAdjunctionLastFaceAtomicity:olean。
+対象ビルド・監査と外側の終了は0、最終対象ビルドは警告なし。
+先頭辺の実始点・実終点・像の個数、実点の型、依存する式の簡約を揃えて最終検証した。
+追加6根は入力名と出力名が一致し、公理依存はpropext・Classical.choice・Quot.soundのみ。
+sorryAx・追加公理なし。入力・根・監査全出力・対象ビルドログは
+[g12-boundary-faces-audit-2026-11-16/](g12-boundary-faces-audit-2026-11-16/)に保存した。
+M15・drafts・main・⑤aの既存ファイル・Interfaceは変更せず、全体ビルド・大きい監査は行っていない。
+
+G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み17,426行。
+M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
