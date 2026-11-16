@@ -3630,3 +3630,104 @@ star では空の局所図式、of i では恒等射の局所図式で示す方�
 このレーンの検証セッション18959も生存中で、同じ整理券一枚を保持して待機している。
 検証済み実測は15,034行のまま。S8・S1の未完を完成とは数えない。
 一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+### Čech comma の Hom 宇宙の移送（11-16、未検証）
+
+`CechCommaLocalContraction` 56行を作業木に追加した。新しい収縮は作らず、
+既存の `cechCommaPrefix`・`cechCommaToPrefix`・`cechCommaRootToPrefix` をそのまま包む。
+Mathlibの `CostructuredArrow` は `Functor.fromPUnit.{0}` を使い、commaの対象宇宙は
+二つの始域の対象宇宙と標的のHom宇宙のmaxで、標的の対象宇宙は含めない。
+したがって、次の Hom 宇宙の表示を試す。Leanでの検証はまだなので完了とは数えない。
+
+```lean
+CechCommaLocal (d : CechNerveData U) (V : C) : Type v := AsSmall.{v} (CechComma d V)
+cechCommaLocalPrefix d (r : V ⟶ U) : CechCommaLocal d V ⥤ CechCommaLocal d V
+cechCommaLocalToPrefix d r : 𝟭 (CechCommaLocal d V) ⟶ cechCommaLocalPrefix d r
+cechCommaLocalRootToPrefix d r :
+  (Functor.const (CechCommaLocal d V)).obj (AsSmall.up.obj (cechCommaRoot d r)) ⟶
+    cechCommaLocalPrefix d r
+cechCommaLocal_isWeaklyContractible d r : IsWeaklyContractible (nerve (CechCommaLocal d V))
+```
+
+5本の未検証を含む次の対象一覧は `/tmp/is-w1/s8-local-sections-next/files.json` に準備したが、
+実行していない。現在のセッション18959が終端を返してから、この束に切り替える。
+現セッションの観測待ちが満了しただけでは、別の整理券を発行しない。
+検証済み全体232本15,034行・1,301宣言は変わらない。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+### 同じ余錐・単位を保つための続きの照合（11-16、紙）
+
+非単射の場合の Čech 解消について、既存の native 余極限模型は
+`bousfieldKanCoherentCocone`・`kanReflectedBousfieldKanColimitObject`。
+後者の元の coend は、係数を変えず、重みを
+`bousfieldKanWeight Iᵒᵖ ⋙ SSet.opFunctor` としたもの。
+coend 全体を反転する式と混同しない。
+集合値係数 P の場合は、この coend と `nerve P.Elements` の係数計算の比較を調べる。
+次数ごとには under の射列と一点から、元の圏の射列と先頭の点へ戻す co-Yoneda の計算になる。
+この比較はまだ作っていないので、余極限性が済んだとは数えない。
+
+各点での surjection の根を一本選ぶのは、同じ元の増大余錐の点ごとの余極限性を
+G14 の検出へ渡すためだけ。前層としての自然な切断や、点ごとの同型の大域への貼り合わせを
+仮定しない。既存の Čech prefix の収縮への入力は、その固定した点での根である。
+
+同じ層化単位の比較の順序も保持する：
+(1) 元の `sectionsOf_map` で一般の局所全単射の切断の不変性を閉じる。
+(2) 既存G8の `sectionsEquivalenceNatural` とその全族自然性で、
+    離散重みから任意の空間値層への元の pinched Hom の局所性へ戻す。
+(3) Mathlibの同じ `toSheafify J P` の局所全単射性と、検証済みの
+    `isSheaf_discretePresheaf_iff` で、その単位の標的が空間値層であることを使う。
+(4) 与えられた同じ hJ の反射・単位の普遍性に沿って全族の mate を取り、
+    その可逆性を既存の全族の判定で示す。任意の点ごとの頂点同型から新たな全自然同型を作らない。
+これにより、hJ に未証明の左完全性や0切り捨ての保存を追加仮定に置かず、
+元の `sheafify_discrete_eq`・`localEquiv_of_sheafifyIso` へ接続する方針。
+指定された `weightedSections_discrete_map` 自体の証明も省略しない。
+
+上は再利用の照合であり、型の変更・独立の追加ID・検証済み行数の追加ではない。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+### 整理券の待ち時間満了（11-16 15:25 JST）
+
+セッション18959（`s8-right-kan-restrict-2`）が終了75を返した。
+これは観測の待ち時間だけの満了ではなく、`with_build_lock --wait 3600` の終端。
+対象ビルド・小監査は未開始で、検証の成功・失敗としては数えない。
+`--status` で旧整理券が列から消えたことを確認した。
+新たに準備済み6対象（うち検証済み1本、未検証5本）を
+`/tmp/is-w1/s8-local-sections-next/` にまとめ、`--class impl --wait 3600` で一枚だけ待ち直す。
+鍵保持者は引き続き調整役のrootビルド。他レーンの実行は中断せず、鍵の規則も変更しない。
+検証済み実測15,034行・1,301宣言は変わらない。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+### S1 の元の生成篩への添字比較（11-16、未検証の型）
+
+`ExtensiveSieveIndex` 77行・`ExtensiveSieveCofinality` 109行を作業木に追加した。
+既存の `WithTerminal.lift` と comma の終対象からの指定随伴を使う。
+型の引数を省略していない主要部は次のとおり（`C : Type u`, `[SmallCategory C]`）：
+
+```lean
+cofanSieveIndex [HasInitial C] [Nonempty ι] (c : Cofan B) :
+  WithTerminal (Discrete ι) ⥤ (sieveCategory (cofanGeneratedSieve c))ᵒᵖ
+cofanFactorization_label_unique [FinitaryExtensive C] [Finite ι]
+  (c : Cofan B) (hc : IsColimit c) {V : C} (hV : ¬ Nonempty (IsInitial V))
+  {i j : ι} (f : V ⟶ B i) (g : V ⟶ B j)
+  (h : f ≫ c.inj i = g ≫ c.inj j) : i = j
+cofanSieveIndex_hasTerminalComma [FinitaryExtensive C] [Finite ι] [Nonempty ι]
+  (c : Cofan B) (hc : IsColimit c)
+  (s : (sieveCategory (cofanGeneratedSieve c))ᵒᵖ) :
+  HasTerminal (CostructuredArrow (cofanSieveIndex c) s)
+cofanSieveIndex_isLeftCofinal [FinitaryExtensive C] [Finite ι] [Nonempty ι]
+  (c : Cofan B) (hc : IsColimit c) : IsLeftCofinal (nerveMap (cofanSieveIndex c))
+```
+
+任意の射が一本の脚を通るとは主張しない。分解を使うのは、生成篩の対象に限る。
+その始域が初対象なら comma の終対象は star、そうでなければ有限余積の
+非交叉性と各脚の単射性から一意な脚の三角形を終対象にする。
+これは既に報告した S1 の有限被覆の比較の証明分割で、追加IDなし、200行超の補題なし。
+
+残りは同じ錐の係数・添字移送、初対象の値が終対象であることを使う star の除去、
+空族、有限余積被覆の引き戻しと extensive 位相への接続。
+元の一般 `Coverage` の型も保持し、普遍降下を追加仮定に置いて済ませない。
+
+現在の対象ビルドのセッション18673は整理券一枚で待機中。
+上記2本は実行中の6対象から import されず、次の束の一覧にだけ準備した。
+未検証の Lean はコミットしない。検証済み232本・15,034行・1,301宣言は変わらない。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
