@@ -1845,3 +1845,20 @@ G4・G5と停止点2g-2は未完。最終の AugmentedRingCechExact と利用側
 
 
 同じ基底の増大の大域切断を経る分解（着手前、既存のスカラー合成・single の法則の内数、40〜80行）：`schemePerfectCechTupleAugmentationHom_factor_global` は f:Y→Spec R の元の増大射 schemePerfectCechTupleAugmentationHom が、元の各 nerve 項の基底への射の schemeScalarHom の実際の Frobenius 係数写像の single と、同じ大域切断の schemePerfectCechTupleGlobalAugmentationHom の合成に等しいこと。各次数で元の R、nerve の増大、タプル複体と射を全て保持し、独立な H の同型を並べない。
+
+
+## G4：同じ大域増大の準同型性と元の基底の増大の分解
+
+`CechSingleAugmentationQuasiIso`（76行）：`cechSingleAugmentation_quasiIsoAt_zero` は任意の加群 A と元の射 f:single₀(A)→C について、f.f 0 の単射性と同じ零次の完全性から同じ f の零次の QuasiIsoAt を示す。Mathlib の ShortComplex.quasiIso_iff_isIso_liftCycles に元の cycles の写像の全単射を渡す。`…_quasiIsoAt` は同じ C の正次数の完全性と合わせて全次数へ渡す。基底環と加群の宇宙は独立、既存宣言の型は変更していない。
+
+`AffineCechNerveTupleQuasiIso`（67行）：`affineCechNerveTupleGlobalAugmentation_quasiIsoAt` は直前に検証した同じアフィン nerve 項の単射性・零次完全性・全長さの完全性を、元の schemePerfectCechTupleGlobalAugmentationHom に適用する。`…_quasiIso` は同じ射の全次数の準同型性。元の single の零次の標準同型と実際の微分を使い、独立な H の同型を選んでいない。Čech 版と Stacks 30.2.6 の関係を docstring に記載し、層の H との比較は形式化しない。
+
+`AffineGammaFrobeniusCechExact`（33行）：`affineGammaFrobeniusCech_exact_of_flat_surjective` は Y,S がアフィン、f:Y→S が平坦全射なら、元の Γ(f) の矢印の実際の Frobenius 係数の AugmentedRingCechExact。Mathlib の Flat.flat_and_surjective_iff_faithfullyFlat_of_isAffine から同じ Γ(f) の忠実平坦性を供給し、既存の係数の完全性へ渡す。非アフィン基底の大域切断の平坦性を仮定するものではない。
+
+`SchemePerfectCechTupleAugmentationFactor`（49行）：`schemePerfectCechTupleAugmentationHom_factor_global` は f:Y→Spec R の元の R からのタプル増大が、元の nerve 項の基底への射の大域スカラーの Frobenius 係数写像の single と、同じ大域切断の増大の合成に等しいこと。元の R と実際の増大写像を保持する。
+
+四本をまとめた下書き検証成功、各本体は下書きと全バイト一致。新規四本と直接 importer の入口の対象ビルド5,235ジョブ成功、別の共有鍵の小監査3＋2＋1＋1＝7宣言・標準三公理のみ。実際の所有元で生成・非公開宣言も全件走査した。終了状態全て0。ログ `2g-affine-cech-global-comparison-check-3.log`・`…-native.log`・`…-audit.log`。一部の証明に局所的な backward.isDefEq.respectTransparency false、既定の資源制限、letI/haveI のstyle警告あり。追加公理・sorry・既存の型変更・200行超の宣言なし。鍵 --class impl --wait 3600、待ちは一つ、対象ビルドと小監査は別枠。root・下流全ビルド・全体監査なし。
+
+今回四本225行＋入口4行。新規150モジュール本体10,042行、既存追加25行、入口追加171行（登録150・空行21）を含む外枠計数 **10,238行**。新規小監査累計969宣言、既存15宣言は別計上。同じ自然な大域増大の各成分の準同型性と元の基底の増大の分解まで到達した。非アフィン基底の相対 proper fppf の二重 Čech、F8 全複体と元のブローアップを保つ Noether帰納、G5は未完。最終の AugmentedRingCechExact と利用側の型は不変。見込み約12,000〜15,500行・外枠16,000行は不変。停止点2g-2ではない。
+
+一覧：済み1／全体3（うち追加0）。
