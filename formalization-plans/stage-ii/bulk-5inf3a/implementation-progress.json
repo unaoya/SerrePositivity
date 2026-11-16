@@ -3,7 +3,7 @@
   "complete": 3,
   "total": 6,
   "added": 0,
-  "verified_head": "this commit: base a4771b36bde82a725f95c23aef32aa359335743f",
+  "verified_head": "this commit: base e3b9d025ed8a4bfe0e337584e2fb0937195f0f59",
   "items": {
     "HT01": "complete",
     "HT02": "complete",
@@ -12,12 +12,12 @@
     "HT05": "not-started",
     "HT06": "not-started"
   },
-  "latest_complete_audit_checkpoint": "oriented-cohomology-checkpoint.json",
-  "latest_complete_audit_declarations": 1608,
+  "latest_complete_audit_checkpoint": "associated-completeness-checkpoint.json",
+  "latest_complete_audit_declarations": 1613,
   "working_changes_unverified": [
-    "AssociatedCompleteness"
+    "AssociatedCompletionComparison"
   ],
-  "pending_check": "bundle-157 terminal rc1; see audit module inventory; failed dependencies await next batch",
+  "pending_check": "bundle-158 terminal rc1; see audit module inventory; failed dependencies await next batch",
   "next_proof_route": "ht04-next-proof-route.md",
   "initial_record": {
     "stage": "5inf3a",
