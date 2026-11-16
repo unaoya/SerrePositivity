@@ -1,0 +1,13 @@
+[
+  {
+    "module": "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotModelSource",
+    "old": "SerrePositivity.EInfinity.BarrattEccles.instModelCategoryAlgebraOperad",
+    "new": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.instModelCategoryAlgebraOperad",
+    "start": 1434,
+    "stop": 1442,
+    "source_sha256": "23b3e7f6f818148bc541cf127a0d3e075e7b4675d96102635592a35e86aa67f6",
+    "source_line": "local instance : ModelCategory (operad A).Algebra := modelCategory A",
+    "source_context": "variable (A : Type u) [CommRing A]",
+    "review": "Original compiler binder resolves the keyword instance to this exact existing native constant. Make only its transported name explicit; keep local scope, type, value, and priority. Final target build and v3b still mandatory."
+  }
+]

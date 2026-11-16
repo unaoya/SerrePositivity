@@ -231,3 +231,13 @@ main cd79e9cc5でDAG XIII・NSの対応表とCitationの略号表が更新され
 原参照は66／824本、66本のプレビュー保留0。対象集合とsource／helper署名は変えず、移動する456本を先に採取する順へ整えた。昼280秒、夜は取得時刻で最大1,680秒、各ファイルの上限190秒は変更しない。夜の長い待ちの塊へ切り替えるため、成功した塊の返却後に一度だけcontrollerを区切った（終了76、数学の検査失敗ではない）。重複整理券なしで再開済み。
 
 一覧：済み 0／全体 5（うち追加 0）。
+
+## 5 匿名local instanceの綴りの個別確認（17:49）
+
+137本目のプレビューで、StrictDiagramTotModelSource.lean:25の `local instance : ModelCategory (operad A).Algebra := modelCategory A` のbinderが保留になった。原compilerはkeyword `instance` のspanを、実在する `SerrePositivity.EInfinity.BarrattEccles.instModelCategoryAlgebraOperad` に解決している。原native表でも同じ所有元・同じ公開名を確認した。
+
+この一件のみ、輸送後の `…BarrattEccles.StoppedRoutes.ISW2Tot.instModelCategoryAlgebraOperad` を明示する。型・値・localな属性と位置は変えない。既存の匿名宣言の名前を明示する操作で、新しいinstanceやモデル構造を加える操作ではない。元のsource SHA、元の正確な一行、compiler binderのbyte spanと名前、実在native名と移送後の候補を `reviewed-anonymous-instances.json` に個別記録した。
+
+共有書換器のguardは変更せず、個別記録と全条件が一致するbinderに限って、keywordを `instance _root_.<同じ宣言の新名>` にする準備用adapterを使う。他のbinderや他の曖昧な構文は元のguardで保留する。全137本のプレビューは保留0になった。匿名の綴りと明示名のkernel上の一致は、実適用後の対象ビルド・v3bで検収する。
+
+一覧：済み 0／全体 5（うち追加 0）。
