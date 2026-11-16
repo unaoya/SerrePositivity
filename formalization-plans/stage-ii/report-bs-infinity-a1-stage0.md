@@ -3956,3 +3956,47 @@ extensiveIndex_ulift_restrict_isLimit_iff (I : Type u) [SmallCategory I]
 結果と小監査の終端を確認するまで、検証済み245本15,971行・1,394宣言には加算しない。
 mainは取り込まない。S1・S8の元の残りの型を保って継続する。
 一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+### S1 の元の有限被覆比較と有限積保存への方向（11-16 夕、検証中）
+
+新規 `ExtensiveCofanRestriction`・`ExtensiveCofanCover`・`ExtensiveFiniteProducts`。
+既存の承認された S1 の証明分割と、通常の再添字・双対・係数移送の法則のみ。
+追加IDなし、200行超の補題なし。主な型：
+
+```lean
+cofanRestriction_isLimit_iff [FinitaryExtensive C] [Finite ι] [Nonempty ι]
+  (F : Presheaf C E)
+  (h0 : IsTerminalVertex (F.app _ (ULift.up (nerveVertex (Opposite.op (⊥_ C))))))
+  (c : Cofan B) (hc : IsColimit c) :
+  IsLimitCone (restrictionCone F (cofanGeneratedSieve c)) ↔
+    IsLimitCone (((nerveCone (cofanToOppositeFan c)).ulift).postcomp F)
+cofanGeneratedSieve_mem_extensiveTopology [FinitaryExtensive C] [Finite ι]
+  (c : Cofan B) (hc : IsColimit c) :
+  cofanGeneratedSieve c ∈ (extensiveTopology C) c.pt
+isTerminal_initial_of_isSheaf_extensive [FinitaryExtensive C]
+  (F : Presheaf C E) (hF : IsSheaf (extensiveTopology C) F) :
+  IsTerminalVertex (F.app _ (ULift.up (nerveVertex (Opposite.op (⊥_ C)))))
+PreservesFiniteProductsOnSite (F : Presheaf C E) : Prop :=
+  ∀ (ι : Type u) [Finite ι] (B : ι → Cᵒᵖ) (c : Fan B), Nonempty (IsLimit c) →
+    IsLimitCone (mapJoinCone F (JoinCone.ulift.{u, u + 1} (nerveCone c)))
+IsSheaf.preservesFiniteProductsOnSite [FinitaryExtensive C]
+  (F : Presheaf C E) (hF : IsSheaf (extensiveTopology C) F) :
+  PreservesFiniteProductsOnSite F
+```
+
+定義は元 drafts と同じ型。任意の有限 Type u の量化と、空族の元の指定 fan を保つ。
+通常の被覆性には `Cofan.isColimitEquivOfEquiv` と `Fintype.equivFin` を使う。
+元の位相の被覆判定が Type 0 の有限表示であることを、量化を狭めずに処理する。
+空の cofan は同じ初対象の普遍射で作り、底篩の指定錐の終対象判定へ渡す。
+
+元の fan の双対の往復の全射を `nerve_joinPoint_hom_ext` で比較し、
+その同じ等式を宇宙移送・係数の後合成へ渡す。
+非空族では共終性と指定右Kanによる制限を合成する。
+空族では同じ F(c.pt) を頂点とする空形状の錐の判定を使い、別の終対象へ置換しない。
+
+`ExtensiveCofanCover` と先の2本の宇宙比較は対象ビルドを通ったが、小監査はまだ。
+現在 `/tmp/is-w1/s1-extensive-products-1/` の5対象、セッション43099で検証中。
+未検証のため検証済み245本15,971行・1,394宣言へ加算しない。
+逆向きは元の有限余積被覆の引き戻しと descentTopology への接続が残る。
+一般coverageとS8の元の残りも保持する。mainは停止点まで取り込まない。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
