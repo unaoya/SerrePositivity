@@ -3131,3 +3131,25 @@ mainの取り込みは11-16 16:25の指示どおり保留したまま。検証�
 
 
 元の増大環図式の項ごとのFrobenius係数の比較（G4の既存係数移送・添字移送の法則、着手前の型、80〜140行見込み）：D:AugmentedSimplexCategory→CommRingCat、hD:∀j,(p:D.obj j)=0について、`frobeniusAugmentedIntegerDiagram D p hp hD` は既存のfrobeniusRingDiagramを同じ増大単体との同値へ代入した値。Dの射・同型を既存のfrobeniusRingDiagramMap/Isoで写し、増大cochainへ渡す。Dが元のf.augmentedCechConerveの図式なら `frobeniusConerveIntegerDiagramIso` が、同じfrobeniusAugmentedRingCoefficientsの整数加群化との恒等成分の同型を返す。`frobeniusConerveIntegerDiagram_acyclic_of_faithfullyFlat` は元の忠実平坦な環の射で、この同じ係数の増大複体の完全性を供給する。既存のcolTensorIso/rowTensorIsoをまず元の環で使い、その後この項ごとの移送を適用すれば、正の軸の係数比較で「混合テンソルとperfectionの比較」を先に一般に構成する必要を避けられる可能性がある。相対比較全体がこれだけで閉じたとは数えず、各軸の実際の完全性と幾何との照合は別途行う。
+
+
+### 実際の相対アフィン交叉の係数と項ごとのFrobenius増大係数
+
+`RelativeAffineFlatFrobeniusCech`（48行）：
+
+- `affineFlatSurjective_appTop_frobeniusCechExact`：元のアフィン平坦全射のappTopに、既存の忠実平坦なFrobenius係数のČech完全性を供給する。
+- `affineFlatSurjective_restrict_frobeniusCechExact`：非アフィンでもよい基底のアフィン開Vへ元のアフィン平坦全射を制限し、その実際のappTopに同じ完全性を供給する。制限の全射性は元のpullbackの全射性から取る。
+
+`FrobeniusAugmentedIntegerDiagram`（77行）：
+
+- `frobeniusAugmentedIntegerDiagram`：元の増大単体図式の各環のFrobenius順極限を、既存の同値で増大整数加群図式へ見る。
+- `frobeniusAugmentedIntegerDiagramMap`：元の図式の射を、同じ既存のfrobeniusRingDiagramMapと同値で写す。
+- `frobeniusAugmentedIntegerDiagramIso`：元の図式の同型を、同じ既存の係数の同型と同値で写す。
+- `frobeniusConerveIntegerDiagramIso`：元の環のconerveで、同じfrobeniusAugmentedRingCoefficientsの整数加群化と恒等成分の同型で比較する。
+- `frobeniusConerveIntegerDiagram_acyclic_of_faithfullyFlat`：元の忠実平坦な環のconerveの同じ項ごとのFrobenius係数の増大複体は完全。
+
+検証：relative-affine-flatのcheck-2、frobenius-augmented-integerのcheck-2は終了0。固定manifestのSHA256と下書き・本体の全バイト一致を確認。二本と直接importerの入口の対象ビルド5,360ジョブ・成功。別の共有鍵による所有宣言監査11宣言（2、9）、非公開・生成分も含め標準三公理のみ・終了0。ログは `2g-g4-relative-frobenius-{native,audit}.log`。追加公理・sorry・既存宣言の型変更・資源上限の引き上げ・200行超の宣言なし。style警告は残る。
+
+今回本体125行＋入口2行＝127行。基準56ea849a3から検証済み19,290行（新規261モジュール18,983行、既存追加25行、入口282行。既存削除14行は差し引かない）。新規所有宣言の小監査累計2,149、既存15宣言は別計上。外枠21,000行。相対の各アフィン開への実際の入力は得たが、同じ二重図式・各軸・タプルtotalとの全体の照合、nil閉厚化、Noether帰納、G5は残る。G4・G5は未完、停止点2g-2ではない。最終の型・仮定は同じ。main未取り込み、root・下流全ビルド・全体監査・2hのLeanなし。共有鍵--class impl --wait 3600、待ちは一件、対象ビルドと監査は別リース。
+
+一覧：済み1／全体3（うち追加0）。
