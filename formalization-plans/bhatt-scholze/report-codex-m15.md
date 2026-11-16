@@ -17532,3 +17532,116 @@ M15・drafts・main・⑤aの既存ファイル・Interfaceは変更せず、全
 
 G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み17,584行。
 M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
+
+## §123 G01：幅1の実生成射の回収と、生成射を前置した実境界面の例外の識別（11-16）
+
+### 123.1 検証済みの追加
+
+追加は **3ファイル218行・明示宣言5**。累計 **165ファイル17,802行・明示宣言863**。
+WalkingAdjunctionWidthOneGenerator.lean は52行・1宣言、
+WalkingAdjunctionPrefixBoundaryRecognition.lean は64行・2宣言、
+WalkingAdjunctionWidthOneBoundary.lean は102行・2宣言。
+個々の宣言・証明は200行以下、新規Leanの行長は100文字以下。
+同じG01の全実随伴・実filtrationの構成に必要な、実境界面・実親・実生成射の実構成の法則、
+実最小元と幅の照合・係数移送とその証明の分割であり、一覧IDは追加しない。
+
+minusからplusへの幅1の実全鎖について、両端の実対象の非空性と幅の式から、
+始点の実個数が1で、全辺の変化量の和が0であることを示した。
+全実頂点の個数の上限（§116）と各頂点の非空性から、全頂点の個数は1となる。
+構成済みの定値関手の回収と実個数の単射性で、元の全実関手が実生成射の定値関手そのものであることを得た。
+この結論には原子性・非退化性の仮定を使わない。
+
+最後の実面が実生成射を始点plusの実原子Eへ前置した鎖なら、
+一点の実終点と指定面による全実関手の一意性から、元の鎖は構成済みの実親PlusParent Eと一致する。
+さらに、元の鎖が非退化で実終点が一点なら、最後より前の全辺で実併合がないことを
+元の最後の面と前置した実辺へ輸送できる。
+元の実最小元の所属から、その最初の併合位置は最後の辺に限られることを示した。
+こちらは前置される鎖Eの原子性・非退化性を仮定しない。
+
+最後の実面が幅1のminusからplusの実因子Qと始点plusの実原子Eの実水平合成である場合、
+Qを上の実生成射へ戻すことで、元の実親そのものと最後の実最小元の等式を回収した。
+QやEの非退化性を新しい入力に置いていない。
+
+先頭の実面が同じ幅1の因子Qと実原子Eの水平合成である場合、元の最初の実併合は先頭になる。
+先頭でないと仮定すると、その面の幅は元と等しい（§121）。
+Eの実原子性と実前置の個数の式から、先頭の二つの実対象の個数も等しい。
+先頭面の幅の欠損の等式で実像の個数を始点へ戻すと、先頭辺の変化量は0となる。
+その実辺の同型性は元の非退化性に反するため、元の実最小元は0に限られる。
+
+### 123.2 型と未完の境界
+
+原典はRiehl–Verity Proposition 4.2.15の境界面と親の幅が一致し得る場合、
+HA Proposition 4.7.3.3、Kerodon Remark 6.2.1.4（Tag 02EN）。追加の型は以下。
+
+```lean
+lemma walkingAdjunctionWidthOne_minus_plus_generator {n : ℕ}
+    (H : ComposableArrows (walkingAdjunctionHom .minus .plus) n)
+    (hw : walkingAdjunctionOrdinalWidth H = 1) :
+    H = (Functor.const (Fin (n + 1))).obj (walkingAdjunctionGeneratorVertex .minus)
+
+lemma walkingAdjunction_eq_plusParent_of_last_face_prefix {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom .minus Y) (n + 1))
+    (E : ComposableArrows (walkingAdjunctionHom .plus Y) n)
+    (ha : WalkingAdjunctionLevelIsAtomic (X := ⟨.plus⟩) (Y := ⟨Y⟩) E)
+    (hlast : walkingAdjunctionOrdinalCard .minus Y (H.obj (Fin.last (n + 1))) = 1)
+    (hface : finiteChainFace H (Fin.last (n + 1)) = walkingAdjunctionPlusParentPrefix E) :
+    H = walkingAdjunctionPlusParent E ha
+
+lemma walkingAdjunctionFirstIndex_last_of_last_face_prefix {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom .minus Y) (n + 1))
+    (E : ComposableArrows (walkingAdjunctionHom .plus Y) n)
+    (hlast : walkingAdjunctionOrdinalCard .minus Y (H.obj (Fin.last (n + 1))) = 1)
+    (hnd : ULift.up H ∈ (WalkingAdjunctionHomShape.{u} .minus Y).nonDegenerate (n + 1))
+    (hface : finiteChainFace H (Fin.last (n + 1)) = walkingAdjunctionPlusParentPrefix E) :
+    walkingAdjunctionFirstBottomMergeIndex H hlast hnd = Fin.last n
+
+lemma walkingAdjunctionLastFace_widthOne_prefix_control {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom .minus Y) (n + 1))
+    (Q : ComposableArrows (walkingAdjunctionHom .minus .plus) n)
+    (E : ComposableArrows (walkingAdjunctionHom .plus Y) n)
+    (ha : WalkingAdjunctionLevelIsAtomic (X := ⟨.plus⟩) (Y := ⟨Y⟩) E)
+    (hq : walkingAdjunctionOrdinalWidth Q = 1)
+    (hlast : walkingAdjunctionOrdinalCard .minus Y (H.obj (Fin.last (n + 1))) = 1)
+    (hnd : ULift.up H ∈ (WalkingAdjunctionHomShape.{u} .minus Y).nonDegenerate (n + 1))
+    (hface : finiteChainFace H (Fin.last (n + 1)) =
+      Q.prod' E ⋙ walkingAdjunctionHorizontal .minus .plus Y) :
+    H = walkingAdjunctionPlusParent E ha ∧
+      walkingAdjunctionFirstBottomMergeIndex H hlast hnd = Fin.last n
+
+lemma walkingAdjunctionFirstIndex_zero_of_first_face_widthOne_prefix {n : ℕ}
+    {Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom .minus Y) (n + 1))
+    (Q : ComposableArrows (walkingAdjunctionHom .minus .plus) n)
+    (E : ComposableArrows (walkingAdjunctionHom .plus Y) n)
+    (ha : WalkingAdjunctionLevelIsAtomic (X := ⟨.minus⟩) (Y := ⟨Y⟩) H)
+    (hea : WalkingAdjunctionLevelIsAtomic (X := ⟨.plus⟩) (Y := ⟨Y⟩) E)
+    (hq : walkingAdjunctionOrdinalWidth Q = 1)
+    (hnd : ULift.up H ∈ (WalkingAdjunctionHomShape.{u} .minus Y).nonDegenerate (n + 1))
+    (hface : H.δ₀ = Q.prod' E ⋙ walkingAdjunctionHorizontal .minus .plus Y) :
+    walkingAdjunctionFirstBottomMergeIndex H
+      (walkingAdjunctionAtomic_endpoint_cards H ha).2 hnd = 0
+```
+
+幅1のminusからplusの前置因子があり、残りが始点plusの実原子である実境界面について、
+最後では元の実親と最後の実最小元、先頭では実最小元0へ戻すことまで検証した。
+全ての実原子因子と前後の残余へ適用するための分解の整理、各因子の実親の幅・深さを含む
+全ての順位の比較は未完。
+最初の併合が先頭にある場合の境界面の全検収、原典の文字列の幅・fillable条件との全比較、
+parental subcomputadのfiltrationと全付着の構成も未完。
+元のQCatAdjunctionからの全coherentな延長、水平反対の向きの全比較、
+同じF≫U・単位・余単位・HAモデルとの照合も未完である。
+G01の済みは0、G02以降も未完を維持する。
+
+### 123.3 検証と進み
+
+with_build_lock.sh --class impl --wait 3600、最大240秒の短い枠で対象ビルドと追加5根だけの公理監査を確認した。
+最終固定コマンドの対象はWalkingAdjunctionWidthOneBoundary:oleanで、今回の他の2ファイルも取り込む。
+対象ビルド・監査と外側の終了は0、最終対象ビルドは警告なし。
+実前置の定義と同じ実全関手の等式へ輸送し、行長を揃えて最終検証した。
+追加5根は入力名と出力名が一致し、公理依存はpropext・Classical.choice・Quot.soundのみ。
+sorryAx・追加公理なし。入力・根・監査全出力・対象ビルドログは
+[g12-width-one-boundary-audit-2026-11-16/](g12-width-one-boundary-audit-2026-11-16/)に保存した。
+M15・drafts・main・⑤aの既存ファイル・Interfaceは変更せず、全体ビルド・大きい監査は行っていない。
+
+G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み17,802行。
+M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
