@@ -2231,3 +2231,27 @@ HT02は当初の1,500〜3,000行から7614行へ増えた。HT03〜HT06の暫定
 通常のbulk整理券の束は52.97秒で返却。元の通常形式の係数同型と元の基底コホモロジー同型について、同じ標準HT写像との正方形を確認した。その指定された正方形から既知の始域のHT同型を平坦な結晶係数変更先へ運んだ。元のZpのCartier計算だけを入力として、普遍向き付きprismの特定のConstruction6.1の結晶被覆上で、全次数・全有限変数の元のHodgeTateIsoStatementを確認した。一般の結晶Cor5.5は入力に使わず、HT03を完了とする。 新しい2本と既存の更新0本が通り、**129モジュール・1490宣言**の公理閉包は標準三公理のみ。全監査ソースのハッシュ一致を確認した。記録は `universal-crystalline-ht-complete-checkpoint.json` と `universal-crystalline-ht-complete-bundle-136.tar.gz`。準備した129本全件がビルド・公理監査まで成功した。HT02は完成済み。残りの項目は別に数える。
 
 一覧：済み 3／全体 6（うち追加 0）。
+
+### 5∞-3a：HT03 の完成と実測（11-16 朝）
+
+一覧：済み 3／全体 6（うち追加 0）。HT01・HT02・HT03 を完成とし、HT04・HT05・HT06 は未完成。数学の HEAD は `651eae9e5`。記録は `bulk-5inf3a/ht03-complete.json`。
+
+元の `hodgeTate_of_deRham_cartier` の Zp の計算だけから、普遍向き付き prism の **特定の** Construction 6.1 の結晶被覆について、全有限変数 r の元の `HodgeTateIsoStatement` を得た。一般の結晶 Cor 5.5 を入力にしていない。一般の `hodgeTate_iso_crystalline` は一般 HT の後の系として回収する。
+
+主な接続の型は次のとおり。k=A/P.ideal、l=B/Q.ideal。形式とコホモロジーの作用は元の剰余・affine 構造射の制限である。
+
+| 確認した法則・終点 | 型の要点 |
+|---|---|
+| `prismFormsScalarExtensionEquiv f T i` | B⊗_A forms(k,T,i) ≃ₗ[B] forms(l,T,i)。元の単項式・外積基底の単位純テンソルを同じ添字の基底へ送る |
+| `crystallineAffineBaseFormsUnitIso` | generator=p の場合に、元の通常形式の完備化単位が元の基底環について線形同型 |
+| `affineHTRawMap_basis_natural` | 同じ基底で、元の係数コホモロジー写像が source の元の標準 η の値を target の同じ標準 η の値へ送る |
+| `affineCrystallineBaseCohomologyIso_one_tmul` | f が平坦、両生成元が p の場合、元の係数ホモロジー同型は 1⊗[z] を元の剰余係数射による同じ [z] の像へ送る |
+| `affineNativeRawHTMap_bijective_iff` | generator=p のとき、同じ通常形式を基底複体のホモロジーへ送る線形写像の全単射性 ↔ 元の標準 HT 写像の全単射性 |
+| `affineCrystallineRawHT_square` | 形式の係数同型と基底コホモロジー同型の正方形が元の標準 η と可換。剰余係数の有限台展開と係数の持ち上げで基底から全体へ延ばす |
+| `universalCrystallineCover_hodgeTate_iso p r` | HodgeTateIsoStatement (Construction61.crystallineCover (universalOrientedPrism p)) (その既存の bounded 証明) r |
+
+HT03 は **45 本・3,415 行**。HT01 の 321 行、HT02 の 7,614 行と合わせ、**129 本・11,350 行**。bundle-136 の対象ビルドは全件成功し、**1,490 宣言**の公理閉包は標準三公理（propext・Classical.choice・Quot.sound）のみ。HT01・HT02 の確定した 84 本のソースハッシュは変わらず、全監査ソースとハッシュが一致する。静的検査の欠落 import・追加本の循環・明示的 sorry/axiom は 0。root ビルド・全体 verify を行ったという記録ではない。
+
+11-15 夜の最後の補題の書き込みは自動承認審査のタイムアウトで未実行となり、11-16 朝に状態を確認して再試行した。修正を反映して通常の bulk 整理券で bundle-136 を流し、52.97 秒で鍵を返した。停止や待ちの間に鍵を保持していない。
+
+以前の全体 10,000〜13,000 行という暫定見込みは維持しない。外枠まで残り 2,650 行で、HT04 の α による標準 η の反映と HT05 の一般基底への module functor の接続は未完成である。残りの型の接続の行数は未確定。外枠を拡張せず、既存構成の法則の補題として HT04 へ続ける。次の接続と未解決の前提は `bulk-5inf3a/ht04-next-proof-route.md` に記録した。
