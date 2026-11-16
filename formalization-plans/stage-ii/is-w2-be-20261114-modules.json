@@ -269,5 +269,8 @@
   "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.CosliceTwistedArrowTargetNaturality",
   "SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.UnderOppositePairing",
   "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.TwistedPairingFunctoriality",
-  "SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.UnderRightOpPairing"
+  "SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.UnderRightOpPairing",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceFiberPairingRoof",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRawCosliceFamily",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRawCoslicePath"
 ]

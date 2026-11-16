@@ -18323,3 +18323,128 @@ lemma nerveUnderLift_rightOp_native_pairing {I C : Type u} [Category.{u} I] [Cat
 同じ添字のrightOp表示と、同じ全pairingの前合成・係数移送は閉じた。BEの実際のfiber包含の両端の全関手と、元のsource-frame評価の直接の照合を続ける。R03h・R03d・3b-4aは未完。
 
 一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+## 305 同じBE fiberの全pairingと同じ指定pathの表示の照合（11-16）
+
+既存の同じfiber包含の両端の関手をroof-frame表示と等号で合わせ、元の評価のpairingを全単体上で回収する。そこから同じraw coslice familyを表示し、元のcorrected pairingの全同型を端点の等号だけで移す。最後に射影後の元の全pathを保持する。新しい数学の項目は追加せず、既存構成の再添字・係数移送・等号による表示変更の法則と証明の分割である。
+
+一つの検査ファイルでは射影のHEqのkernel検査が時間制限に達した。計算上限は変えず、三つのモジュールへ分割する。次の型を対象ビルド374と小監査で検収する（未検収）。
+
+```lean
+lemma strictBETotJointSourceFiberDomain_roof_eq (A : Type u) [CommRing A] (P : strictBETotJointHomIndex A) :
+    simplicialElementsFiberFunctor (strictBETotJointSourceCoefficients A) P ⋙
+      FrameHom.liftedSourceFrameArrowDomain (strictBETotJointSourceFrame A)
+        (rightFrameReplacement (rightFrameFamily A)) =
+      (strictBETotJointSourceRoofFrameDiagram A P).rightOp
+
+lemma strictBETotJointSourceFiberCodomain_roof_eq (A : Type u) [CommRing A] (P : strictBETotJointHomIndex A) :
+    simplicialElementsFiberFunctor (strictBETotJointSourceCoefficients A) P ⋙
+      FrameHom.liftedSourceFrameArrowCodomain (strictBETotJointSourceFrame A)
+        (rightFrameReplacement (rightFrameFamily A)) =
+      (Functor.const _).obj (modelRelativeObject (operad A).Algebra
+        ((rightFrameReplacement (rightFrameFamily A)).obj (AsSmall.down.obj P).2))
+
+lemma strictBETotJointSourceFiberPairing_roof_eq (A : Type u) [CommRing A] (P : strictBETotJointHomIndex A) :
+    nerveMap (simplicialElementsFiberFunctor (strictBETotJointSourceCoefficients A) P) ≫
+      strictBETotJointSourcePairing A =
+    twistedPairingNerveMap (strictBETotJointSourceRoofFrameDiagram A P).rightOp
+      ((Functor.const _).obj (modelRelativeObject (operad A).Algebra
+        ((rightFrameReplacement (rightFrameFamily A)).obj (AsSmall.down.obj P).2)))
+      (fun s => (strictBETotJointSourceRoofFrameEvaluation A P).app (Opposite.op s)) (by
+        intro s t f
+        change (strictBETotJointSourceRoofFrameDiagram A P).map f.op ≫
+          (strictBETotJointSourceRoofFrameEvaluation A P).app (Opposite.op s) ≫ 𝟙 _ = _
+        calc
+          _ = (strictBETotJointSourceRoofFrameDiagram A P).map f.op ≫
+            (strictBETotJointSourceRoofFrameEvaluation A P).app (Opposite.op s)
+
+def strictBETotJointSourceRawCosliceFamily (A : Type u) [CommRing A] (P : strictBETotJointHomIndex A) :
+    let c := modelRelativeObject (operad A).Algebra
+      ((rightFrameReplacement (rightFrameFamily A)).obj (AsSmall.down.obj P).2)
+    let Fop := (nerveOppositeIso (C := (modelRelativeCategory (operad A).Algebra).category)).inv ≫
+      SSet.opFunctor.map (strictBETotModelSource A)
+    nerve ((simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P) ⟶
+      sliceUnder (nervePoint (Opposite.op c) ≫ Fop)
+
+lemma strictBETotJointSourceRawCosliceFamily_pairing (A : Type u) [CommRing A] (P : strictBETotJointHomIndex A) :
+    let c := modelRelativeObject (operad A).Algebra
+      ((rightFrameReplacement (rightFrameFamily A)).obj (AsSmall.down.obj P).2)
+    let Fop := (nerveOppositeIso (C := (modelRelativeCategory (operad A).Algebra).category)).inv ≫
+      SSet.opFunctor.map (strictBETotModelSource A)
+    strictBETotJointSourceRawCosliceFamily A P ≫ cosliceOppositeTwistedArrowMap (nervePoint (Opposite.op c) ≫ Fop) =
+      simplicialElementsFiberInclusion (strictBETotJointSourceCoefficients A) P ≫
+        strictBETotJointSourceNativePairing A
+
+def strictBETotJointSourceCorrectedRawCosliceIso (A : Type u) [CommRing A] (P : strictBETotJointHomIndex A) :
+    let c := modelRelativeObject (operad A).Algebra
+      ((rightFrameReplacement (rightFrameFamily A)).obj (AsSmall.down.obj P).2)
+    let Fop := (nerveOppositeIso (C := (modelRelativeCategory (operad A).Algebra).category)).inv ≫
+      SSet.opFunctor.map (strictBETotModelSource A)
+    FunctorIso
+      (simplicialElementsFiberInclusion (strictBETotJointSourceCoefficients A) P ≫
+        strictBETotJointSourceCorrectedPairing A)
+      (strictBETotJointSourceRawCosliceFamily A P ≫ cosliceOppositeTwistedArrowMap (nervePoint (Opposite.op c) ≫ Fop))
+
+lemma strictBETotJointSourceCorrectedRawCosliceIso_postcomp (A : Type u) [CommRing A] (P : strictBETotJointHomIndex A) :
+    HEq ((strictBETotJointSourceCorrectedRawCosliceIso A P).postcomp (twistedArrowProjection (CAlg_R A)))
+      ((strictBETotJointSourceFiberPairingIso A P).postcomp (twistedArrowProjection (CAlg_R A)))
+
+lemma strictBETotJointSourceCorrectedRawCosliceIso_original_path (A : Type u) [CommRing A]
+    (P : strictBETotJointHomIndex A) :
+    HEq ((strictBETotJointSourceCorrectedRawCosliceIso A P).postcomp (twistedArrowProjection (CAlg_R A)))
+      (FunctorIso.precomp (eqToIso (congrArg (fun v => HomotopyCategory.mk (functorVertex v))
+        (strictBETotJointSourceCorrectedPairing_projection A)) ≪≫
+          strictBETotJointSourcePairingBasePathIso A)
+            (simplicialElementsFiberInclusion (strictBETotJointSourceCoefficients A) P))
+```
+
+R03h・R03d・3b-4aは未完。公式入口・公式監査・⑤aは変更しない。
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+### 305.1 kernel検査の分割
+
+余錐familyの定義までの二本の対象ビルドは終了0（12,262 jobs）。公開モジュールの自然性の証明引数を明記した。射影のHEqは、分割後も定義の展開の照合でkernel時間制限に達した。同じ値である次の定義等式を独立に検査し、既存の `functorIsoOfEq_postcomp_heq_of_eq` に渡す。型・上限・指定された比較の値は変えない。これは同じ定義の展開の分割である。
+
+```lean
+lemma strictBETotJointSourceCorrectedRawCosliceIso_eq (A : Type u) [CommRing A]
+    (P : strictBETotJointHomIndex A) :
+    strictBETotJointSourceCorrectedRawCosliceIso A P =
+      functorIsoOfEq (strictBETotJointSourceFiberPairingIso A P) rfl
+        (strictBETotJointSourceRawCosliceFamily_pairing A P).symm
+```
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+### 305.2 指定値を直接書く分割
+
+定義等式だけの追加もkernelの展開で時間制限に達したため、その未検証の補題は採用しない。射影の型に、同じ `functorIsoOfEq` の移送済みの値を直接書き、既存の法則をそのまま適用する。元の全同型と元の底のpathを保持する内容は同一であり、条件や結論は弱めない。最終の検査対象の二つの型は次のとおり（305冒頭の別名表示を置き換える）。
+
+```lean
+lemma strictBETotJointSourceCorrectedRawCosliceIso_postcomp (A : Type u) [CommRing A] (P : strictBETotJointHomIndex A) :
+    HEq ((functorIsoOfEq (strictBETotJointSourceFiberPairingIso A P) rfl
+      (strictBETotJointSourceRawCosliceFamily_pairing A P).symm).postcomp (twistedArrowProjection (CAlg_R A)))
+      ((strictBETotJointSourceFiberPairingIso A P).postcomp (twistedArrowProjection (CAlg_R A)))
+
+lemma strictBETotJointSourceCorrectedRawCosliceIso_original_path (A : Type u) [CommRing A]
+    (P : strictBETotJointHomIndex A) :
+    HEq ((functorIsoOfEq (strictBETotJointSourceFiberPairingIso A P) rfl
+      (strictBETotJointSourceRawCosliceFamily_pairing A P).symm).postcomp (twistedArrowProjection (CAlg_R A)))
+      (FunctorIso.precomp (eqToIso (congrArg (fun v => HomotopyCategory.mk (functorVertex v))
+        (strictBETotJointSourceCorrectedPairing_projection A)) ≪≫
+          strictBETotJointSourcePairingBasePathIso A)
+            (simplicialElementsFiberInclusion (strictBETotJointSourceCoefficients A) P))
+
+```
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+### 305.3 検収
+
+新規3本は110行・83行・51行、計244行。公開6補題と2定義、実環境宣言12。374対象ビルド（依存を含む12,263 jobs）・小監査とも終了0。共有鍵 --class impl --wait 3600、一枚の整理券、gtimeout 1700秒でビルドと小監査の間だけ使用。小監査278モジュール・1,746宣言、propext・Classical.choice・Quot.soundのみ、sorryAx・追加公理なし。自レーン累計274本・18,984行、実環境1,739宣言。外枠まで3,016行。宣言名の照合でmainのEInfinityとの異なるファイル間の重複0、内部も0。git diff --check通過。証跡isw2-build374.log・isw2-validation374.json・isw2-declaration-collision-scan374.json。登録候補一覧に追加。既存宣言・⑤a・公式入口・公式監査は変更していない。
+
+元のfiber包含の全pairingを同じsource-frame評価の全pairingと厳密に同定し、同じraw coslice familyとして回収した。同じcorrected pairingの全同型を端点の等号で移した値の射影は、元の指定された全pathそのものの制限を保持する。別名の定義を展開して照合する検査はkernel時間制限に達したが、最終の二つの型は同じ端点移送の項を直接書く305.2の形で通過した。計算上限は上げていない。
+
+残りは、この全同型と同じ両端のpathから、元のnative fiber自身の全interval族を、元のroofの全interval族へ照合する部分である。全pairingの同定や指定pathの保持だけからその最終等式を主張してはいない。pointCosliceFamilyHomotopyの全族の自然性と、同じsource-frame評価の全円柱の照合を次に用いる。R03h・R03d・3b-4aは未完。
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
