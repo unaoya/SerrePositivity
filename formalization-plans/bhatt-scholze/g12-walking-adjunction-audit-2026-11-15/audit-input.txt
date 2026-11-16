@@ -1,0 +1,12 @@
+import SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionEnrichment
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalAppend_heq
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalGlue_heq
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionIncomingDim_comp_plus
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionOutgoingDim_comp_plus
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionHorizontal_assoc_plus_minus
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionHorizontal_assoc_minus_plus
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionHorizontal_assoc
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionHomShape
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionUnit
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionComposition
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionEnrichedCategory

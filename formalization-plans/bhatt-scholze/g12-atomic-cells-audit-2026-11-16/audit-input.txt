@@ -1,0 +1,12 @@
+import SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionAtomicCellParentPositions
+
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionAtomicCell
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionAtomicCell.NativeFillable
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionAtomicCell.parent
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionAtomicCell.parent_nativeFillable
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionAtomicCell.parent_width
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionAtomicCell.parentFaceIndex
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionAtomicCell.parentChildImage
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionAtomicCell.parent_face
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionAtomicCell.parentFaceIndex_ne_zero
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionAtomicCell.parentFaceIndex_lt_last_iff

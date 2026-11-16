@@ -1,0 +1,9 @@
+import SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionPreviousFaceDichotomy
+
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalVal_eq_of_bottomMerge_comp_pure
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionIsIso_of_pure_bottomMerge_comp
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionPreviousFace_control
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionFirstRefinement_first_index
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionPreviousFace_parent_control
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalNoOneImage_or_through_one
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionPreviousFace_dichotomy

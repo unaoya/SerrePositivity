@@ -1,0 +1,26 @@
+import SerrePositivity.InfinityCategories.HA.Monads.OrdinalIntervalHom
+
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalAdjoinTop
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalAdjoinTop_castSucc
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalAdjoinTop_last
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalAdjoinTop_reflectsLast
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalAdjoinTop_injective
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalAdjoinTop_id
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalAdjoinTop_comp
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalRemoveTop_bound
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalRemoveTop
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalRemoveTop_castSucc
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalRemoveTop_adjoin
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalAdjoinTop_remove
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalIntervalMap
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalIntervalMap_gc
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalIntervalMap_zero
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalIntervalMap_last
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.intervalRightAdjoint_reflectsLast
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalRecoverMap
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalRecoverMap_adjoin
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalRecoverMap_interval
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalIntervalMap_recover
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalIntervalHomEquiv
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalIntervalMap_id
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalIntervalMap_comp

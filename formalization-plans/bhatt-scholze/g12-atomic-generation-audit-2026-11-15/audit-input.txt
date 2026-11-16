@@ -1,0 +1,20 @@
+import SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionAtomicPaths
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionLevel
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionLevelCategory
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionLevelSize
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionLevelSize_id
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionLevelSize_comp
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionLevelSize_vertex_zero
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionLevelSize_zero_endpoints
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionIdentityHom_subsingleton
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionLevelSize_zero_eq_id
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionLevelIsAtomic
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionAtomicWord
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionAtomicWord_nonempty
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionAtomicVertex
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionAtomicQuiver
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionAtomicPrefunctor
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionAtomicPathFunctor
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionAtomicWord.toPath
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionAtomicWord.toPath_map
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionAtomicPathFunctor_full

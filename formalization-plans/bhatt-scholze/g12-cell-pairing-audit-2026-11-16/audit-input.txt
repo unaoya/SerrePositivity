@@ -1,0 +1,14 @@
+import SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionAtomicCellPairing
+
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionAtomicCell.pure_at_of_nativeFillable
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionAtomicCell.lastChild
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionAtomicCell.innerChild
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionAtomicCell.ext_chain
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionAtomicCell.child
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionAtomicCell.child_of_last
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionAtomicCell.child_of_not_last
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionAtomicCell.lastChild_parent
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionAtomicCell.innerChild_parent
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionAtomicCell.child_parent
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionAtomicCell.parent_child
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionAtomicCellParentEquiv

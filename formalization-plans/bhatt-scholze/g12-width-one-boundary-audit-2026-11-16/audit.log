@@ -1,0 +1,15 @@
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionWidthOne_minus_plus_generator' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunction_eq_plusParent_of_last_face_prefix' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionFirstIndex_last_of_last_face_prefix' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionLastFace_widthOne_prefix_control' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionFirstIndex_zero_of_first_face_widthOne_prefix' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

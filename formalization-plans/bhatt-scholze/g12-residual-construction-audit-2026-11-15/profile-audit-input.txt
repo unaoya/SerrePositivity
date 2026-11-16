@@ -1,0 +1,11 @@
+import SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionOrderProfiles
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionOrdinalCard_sourceMinus_neZero
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionOrdinalCard_targetMinus_neZero
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionOrderBoundary
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionOrderHom_bottom
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionOrderHom_top
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionOrderHom_boundary
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionHomOfOrder
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionOrderHom_ofOrder
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionHomOfOrder_order
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionOrderProfileEquiv

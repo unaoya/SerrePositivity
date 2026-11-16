@@ -1,0 +1,9 @@
+import SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionResidualFactorization
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionFactorization.prefix_card
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionFactorization.residualInclusion
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionFactorization.residualInclusion_val
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionFactorization.residualMap_interval_heq
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionFactorization.residual_square
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionFactorization.residual_prefix
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionFactorization.residual_suffix
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionFactorization.exists_refinement

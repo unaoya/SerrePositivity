@@ -1,0 +1,18 @@
+import SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionRefinementFaces
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.finiteChainFaceIndex
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.finiteChainFaceIndex_succ
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.finiteChainFace
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.finiteChainFace_first
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.finiteChainFace_tail
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.finiteChainFace_precomp_zero
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.finiteChainFace_precomp_succ
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.finiteChainFace_precomp_pair
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.composableArrowRefinement_zero
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.composableArrowRefinement_succ
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.composableArrowPrecomp_decompose
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.composableArrowPrecomp_transport
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.composableArrowRefinement_face
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.finiteChainFaceIndex_simplex
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionHomShape_face
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionBottomMergeRefinement_face
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionBottomMergeRefinement_nerve_face
