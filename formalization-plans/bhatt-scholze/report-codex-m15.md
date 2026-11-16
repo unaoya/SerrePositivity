@@ -17787,3 +17787,90 @@ M15・drafts・main・⑤aの既存ファイル・Interfaceは変更せず、全
 
 G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み18,027行。
 M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
+
+## §125 G01：最初の純粋な併合が先頭の場合の、実単位の境界と次数1の検収（11-16）
+
+### 125.1 検証済みの追加
+
+追加は **2ファイル141行・明示宣言5**。累計 **170ファイル18,168行・明示宣言873**。
+WalkingAdjunctionOnePointSource.lean は69行・3宣言、
+WalkingAdjunctionInitialPureBoundary.lean は72行・2宣言。
+個々の宣言・証明は200行以下、新規Leanの行長は100文字以下。
+同じG01の全実随伴・実filtrationの構成に必要な、実原子・実最小元・実単位と境界の法則、
+実対象の個数・実射の端点・元の非退化性の照合とその証明の分割であり、一覧IDは追加しない。
+
+minus自己Homで実始点が一点の実射は、終点も一点になることを示した。
+唯一の実点が最小元かつ最大元なので、共通表示がその両方を保つことを比較すると、終点の個数は1となる。
+従ってminus自己Homで実鎖の始点が一点なら、始点から全頂点への実射を通して、全頂点が一点となる。
+構成済みの定値関手の回収と実個数の単射性により、その全実鎖は同じ実単位の定値関手に等しい。
+正の次数の元の鎖の二番目の実頂点が一点で、さらにその次の辺があれば、
+その実辺は一点から一点となるので同型である。元の非退化性に反するため、元の次数は1に限られる。
+
+始点minusの非退化な実原子で、実際に選んだ最初の併合位置が0である場合も検収した。
+実最小元の所属から、元の始点に二番目の実点が存在する。
+実原子の初期個数の式は1と終点側の補正の和なので、終点側がplusの場合の一点とは両立しない。
+従って終点側はminusとなる。
+その先頭の併合が純粋な場合の実個数の条件では、始点の個数2から次の個数1を得る。
+上記の実単位と非退化性の検収を使い、元の次数が1で、先頭の実面の元の実長さは0と示した。
+実単位の回収自体は全関手の等式であり、次数と単位を新しい入力に置いていない。
+この最後の結論は純粋な併合の終点の個数の条件だけで得られ、全点の値の追加仮定を必要としない。
+
+### 125.2 型と未完の境界
+
+原典はRiehl–Verity Proposition 4.2.15の幅2の余単位の場合の単位の境界、
+HA Proposition 4.7.3.3、Kerodon Remark 6.2.1.4（Tag 02EN）。追加の型は以下。
+
+```lean
+lemma walkingAdjunctionMinusHom_target_card_one
+    {A B : walkingAdjunctionHom .minus .minus} (f : A ⟶ B)
+    (ha : walkingAdjunctionOrdinalCard .minus .minus A = 1) :
+    walkingAdjunctionOrdinalCard .minus .minus B = 1
+
+lemma walkingAdjunctionMinusChain_eq_identity_of_first_card_one {n : ℕ}
+    (H : ComposableArrows (walkingAdjunctionHom .minus .minus) n)
+    (hc : walkingAdjunctionOrdinalCard .minus .minus (H.obj 0) = 1) :
+    H = (Functor.const (Fin (n + 1))).obj (walkingAdjunctionIdentity .minus)
+
+lemma walkingAdjunctionMinusChain_dimension_zero_of_second_card_one {n : ℕ}
+    (H : ComposableArrows (walkingAdjunctionHom .minus .minus) (n + 1))
+    (hnd : ULift.up H ∈ (WalkingAdjunctionHomShape.{u} .minus .minus).nonDegenerate (n + 1))
+    (hc : walkingAdjunctionOrdinalCard .minus .minus (H.obj 1) = 1) : n = 0
+
+lemma walkingAdjunctionTarget_minus_of_first_index_zero {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom .minus Y) (n + 1))
+    (ha : WalkingAdjunctionLevelIsAtomic (X := ⟨.minus⟩) (Y := ⟨Y⟩) H)
+    (hnd : ULift.up H ∈ (WalkingAdjunctionHomShape.{u} .minus Y).nonDegenerate (n + 1))
+    (hk : walkingAdjunctionFirstBottomMergeIndex H
+      (walkingAdjunctionAtomic_endpoint_cards H ha).2 hnd = 0) : Y = .minus
+
+lemma walkingAdjunctionInitialPureBoundary_control {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom .minus Y) (n + 1))
+    (ha : WalkingAdjunctionLevelIsAtomic (X := ⟨.minus⟩) (Y := ⟨Y⟩) H)
+    (hnd : ULift.up H ∈ (WalkingAdjunctionHomShape.{u} .minus Y).nonDegenerate (n + 1))
+    (hk : walkingAdjunctionFirstBottomMergeIndex H
+      (walkingAdjunctionAtomic_endpoint_cards H ha).2 hnd = 0)
+    (hp : walkingAdjunctionOrdinalCard .minus Y (H.obj 1) =
+      walkingAdjunctionOrdinalCard .minus Y (H.obj 0) - 2 + 1) :
+    Y = .minus ∧ n = 0 ∧ walkingAdjunctionLevelSize H.δ₀ = 0
+```
+
+最初の純粋な実併合が先頭にある場合、元の終点側の符号・次数1・実単位の先頭面まで検証した。
+退化した原子因子から非退化な元へ戻す全輸送とその順位の整理、
+原典の文字列の幅・fillable条件との全比較、parental subcomputadのfiltrationと全付着の構成は未完。
+元のQCatAdjunctionからの全coherentな延長、水平反対の向きの全比較、
+同じF≫U・単位・余単位・HAモデルとの照合も未完である。
+G01の済みは0、G02以降も未完を維持する。
+
+### 125.3 検証と進み
+
+with_build_lock.sh --class impl --wait 3600、最大240秒の短い枠で対象ビルドと追加5根だけの公理監査を確認した。
+最終固定コマンドの対象はWalkingAdjunctionInitialPureBoundary:oleanで、今回のもう一方のファイルも取り込む。
+対象ビルド・監査と外側の終了は0、最終対象ビルドは警告なし。
+元の実点の最小元・最大元の条件を同じ点へ揃え、実単位の全関手の等式へ輸送して最終検証した。
+追加5根は入力名と出力名が一致し、公理依存はpropext・Classical.choice・Quot.soundのみ。
+sorryAx・追加公理なし。入力・根・監査全出力・対象ビルドログは
+[g12-initial-pure-audit-2026-11-16/](g12-initial-pure-audit-2026-11-16/)に保存した。
+M15・drafts・main・⑤aの既存ファイル・Interfaceは変更せず、全体ビルド・大きい監査は行っていない。
+
+G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み18,168行。
+M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
