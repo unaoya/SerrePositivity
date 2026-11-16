@@ -255,3 +255,13 @@ main cd79e9cc5でDAG XIII・NSの対応表とCitationの略号表が更新され
 この数は参照とプレビューの進捗であり、OE05の実適用・対象ビルド・v3b・Tag・root・全監査・verifyが済んだという意味ではない。数学のソースの移動はまだ適用していない。
 
 一覧：済み 0／全体 5（うち追加 0）。
+
+## 6 相対修飾された宣言binderの個別確認（18:19）
+
+255本目でHomInfinityLocalizationTransport.leanの `def CoherentLocalizationComparison.homInfinityTransport` が保留になった。原compilerのbinderは実在する `…EInfinity.FrameHom.CoherentLocalizationComparison.homInfinityTransport` に解決しているが、記録されたnamespaceは既にCoherentLocalizationComparisonまで延びており、共有書換器の相対名の判定と合わない。さらに同じspanに名前もmoduleも空のlocalマーカーが一つ重なっていた。
+
+`reviewed-qualified-binders.json`にsource SHA・正確な綴り・byte span・原native名・移送後の名を個別記録し、同じ宣言の新しい完全名のみを明示した。adapterはspanの直前が実際のdef等の宣言keywordであり、同じspanの記録がこのbinderと名前のないlocalマーカーだけであることも確認する。この個別条件以外の局所変数の解決や共有guardは変更しない。型・引数・値は変更しない。
+
+255本のプレビューは保留0。実適用と対象ビルド・v3bでの検収は未実行。
+
+一覧：済み 0／全体 5（うち追加 0）。
