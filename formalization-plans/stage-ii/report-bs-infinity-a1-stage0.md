@@ -4358,3 +4358,176 @@ R2の停止中の4本の未追跡下書きは変更していない。
 同じ層化単位の比較、およびS1の一般Coverage判定は未完。
 次は上記の相対Čech図式の同じ各点のcommaの比較から続ける。
 一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+### S8 の相対 Čech の各点の照合（11-16 夕、検証中）
+
+前ターンは13本を検証・コミットし、権威あるソースと証拠が増えたため「進捗」。
+作業木は `math/inf-supply`、検証済み全体268本17,396行・1,513宣言。
+mainを取り込まず、停止中R2の4下書きも変更していない。
+
+同じ既存構成の表示・係数移送の法則の型（追加IDなし、200行超なし）：
+```lean
+relativeCechData (f : P ⟶ Q) [HasFiniteProducts (Over Q)] :
+  CategoryTheory.CechNerveData (Over.mk f)
+relativeCechDiagram f : AsSmall.{v} SimplexCategoryᵒᵖ ⥤ C
+relativeCechCocone f : Cocone (relativeCechDiagram f)
+relativeCechHomCocone f (V : C) :
+  Cocone (relativeCechDiagram f ⋙ coyoneda.obj (Opposite.op V))
+RelativeCechPointComma f (r : V ⟶ Q) :=
+  CostructuredArrow (elementsCoconeFunctor (relativeCechHomCocone f V)) (Discrete.mk r)
+relativeCechPointCommaToElements f r : RelativeCechPointComma f r ⥤
+  (cechPointDiagram (relativeCechData f) (Over.mk r)).Elements
+relativeCechPointCommaFromElements f r :
+  (cechPointDiagram (relativeCechData f) (Over.mk r)).Elements ⥤ RelativeCechPointComma f r
+relativeCechPointCommaEquivalence f r : RelativeCechPointComma f r ≌
+  (cechPointDiagram (relativeCechData f) (Over.mk r)).Elements
+relativeCechPointComma_isWeaklyContractible (a : V ⟶ P) (ha : a ≫ f = r) :
+  IsWeaklyContractible (nerve (RelativeCechPointComma f r))
+relativeCechHomCocone_isColimit
+  (hlift : ∀ r : V ⟶ Q, ∃ a : V ⟶ P, a ≫ f = r) :
+  IsColimitCone (strictNativeCocone (setsToKan.mapCocone (relativeCechHomCocone f V)))
+presheafSurjective_yoneda_lift (f : P ⟶ Q)
+  (hf : ∀ X : Cᵒᵖ, Function.Surjective (f.app X)) (U : C) (r : yoneda.obj U ⟶ Q) :
+  ∃ a : yoneda.obj U ⟶ P, a ≫ f = r
+presheafRelativeCechHomCocone_isColimit (f : P ⟶ Q)
+  (hf : ∀ X : Cᵒᵖ, Function.Surjective (f.app X)) (U : C) :
+  IsColimitCone (strictNativeCocone
+    (setsToKan.mapCocone (relativeCechHomCocone f (yoneda.obj U))))
+weightedAugmentation_weak_of_iso_square (W : Iᵒᵖ ⥤ SSet.{u})
+  (cF : Cocone F) (cG : Cocone G) (e : F ≅ G) (b : cF.pt ≅ cG.pt)
+  (he : ∀ i, cF.ι.app i ≫ b.hom = e.hom.app i ≫ cG.ι.app i)
+  (hc : IsWeakHomotopyEquivalence (weightedColimitAugmentation W cF)) :
+  IsWeakHomotopyEquivalence (weightedColimitAugmentation W cG)
+mappedSetCocone_isColimit_of_contractible_comma_and_iso {D : I ⥤ C} (c : Cocone D)
+  {F G : C ⥤ Type u} (e : F ≅ G)
+  (hc : ∀ q : Discrete (F.obj c.pt), IsWeaklyContractible
+    (nerve (CostructuredArrow (elementsCoconeFunctor (F.mapCocone c)) q))) :
+  IsColimitCone (strictNativeCocone (setsToKan.mapCocone (G.mapCocone c)))
+presheafRelativeCechEvaluation_isColimit (f : P ⟶ Q)
+  (hf : ∀ X : Cᵒᵖ, Function.Surjective (f.app X)) (U : C) :
+  IsColimitCone (strictNativeCocone (setsToKan.mapCocone
+    (((evaluation Cᵒᵖ (Type u)).obj (Opposite.op U)).mapCocone (relativeCechCocone f))))
+```
+
+相対Čechは `Over Q` での Mathlib の同じ有限冪。元の構造射を脚として忘却し、
+点の条件 h ≫ 構造射 = r を同じ Over の射として読む。根の選択は各点の収縮の証明内だけ。
+commaの表示の単位は、離散標的の射の証明項が異なるため厳密な等式でなく
+明示的な自然同型にした。元の次数と元の射はそのまま。
+
+`RelativeCechDiagram` と `RelativeCechPointComma` の2本は対象ビルド・小監査・SHA一致、
+セッション64741の終了0を確認（`/tmp/is-w1/s8-relative-cech-point-3/`）。
+現在セッション67688、`/tmp/is-w1/s8-presheaf-relative-hom-1/` に3対象の整理券一枚で待機。
+後半3本は下書き、まだ検証していない。
+
+Homの評価を元の点の評価へ戻す比較には、既存 `curriedYonedaLemma` の成分を
+全自然同型としてそのまま入れる。各点の存在同型を集めて大域比較を作らない。
+同じ全余錐と増大の可換四角形は、その全自然性と既存の増大の自然性から出す。
+局所全射を各点全射と仮定しない。後で像への全射に適用するための入力であり、
+一般の `sections_localEquiv_iso` が完成したという主張ではない。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+### 表現可能 Hom 値までの接続を保存（11-16 夜）
+
+`a46b584f9`：3本172行・31宣言。対象ビルド、小監査（標準三公理のみ）、SHA一致、
+セッション67688の終了0を確認。証拠 `/tmp/is-w1/s8-presheaf-relative-hom-1/target-audit-result.json`。
+検証済み全体271本17,568行・1,544宣言。
+
+同じ既存構成の法則の続きを下書きした（追加IDなし、200行超なし）：
+```lean
+presheafRelativeCechCocone_isColimit (f : P ⟶ Q)
+  (hf : ∀ X : Cᵒᵖ, Function.Surjective (f.app X)) :
+  IsColimitCone (discretePresheafCocone (relativeCechCocone f))
+relativeCechDiagonal (f : P ⟶ Q) :
+  (Functor.const (AsSmall.{v} SimplexCategoryᵒᵖ)).obj P ⟶ relativeCechDiagram f
+relativeCechDiagonal_proj f (n : AsSmall.{v} SimplexCategoryᵒᵖ)
+  (i : Fin ((AsSmall.down.obj n).unop.len + 1)) :
+  (relativeCechDiagonal f).app n ≫
+    ((relativeCechData f).proj (AsSmall.down.obj n).unop.len i).left = 𝟙 P
+relativeCechDiagonalSplitMono f (n : AsSmall.{v} SimplexCategoryᵒᵖ) :
+  SplitMono ((relativeCechDiagonal f).app n)
+relativeCechDiagonal_isSplitMono f (n : AsSmall.{v} SimplexCategoryᵒᵖ) :
+  IsSplitMono ((relativeCechDiagonal f).app n)
+relativeCech_proj_hom_ext f (n : ℕ) {V : C}
+  {h k : V ⟶ ((relativeCechData f).obj.obj (Opposite.op ⦋n⦌)).left}
+  (he : ∀ i : Fin (n + 1), h ≫ ((relativeCechData f).proj n i).left =
+    k ≫ ((relativeCechData f).proj n i).left) : h = k
+```
+
+前層の全余錐へ戻す際は、既存 `discretePresheafCocone_evaluate_val` が
+全ての余錐に使えるため、元の全余錐の評価を作り直さない。
+`isColimitCone_of_pointwise` と、元の単体集合の射を保つ図式等式の移送だけを使う。
+対角は既存の有限冪への恒等射の束ね。忘却後の座標の外延性は、
+第0座標の Over の可換式と既存 `cechPower_hom_ext` を使う。
+局所全射性や局所単射性を仮定として補う法則ではない。
+
+係数移送の検証のセッション59368は `Functor.isoWhiskerRight` の名前空間、
+39703は自然性の自動書き換えで終了1。
+後者は既存の自然性の等式に H.map の congrArg を適用する形へ修正し、
+計算上限を上げていない。現在セッション12725、
+`/tmp/is-w1/s8-presheaf-relative-eval-3/` の8対象の整理券一枚で検証中。
+mainを取り込まない方針と S7・R2・R3 停止を保持する。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+### 同じ Čech 対角の局所全射性（11-16 夜、検証中）
+
+既存構成の法則の型（追加IDなし、200行超なし）：
+```lean
+presheafRelativeCech_proj_app_ext (f : P ⟶ Q) (n : ℕ) (U : C)
+  {x y : (((relativeCechData f).obj.obj (Opposite.op ⦋n⦌)).left).obj (Opposite.op U)}
+  (he : ∀ i : Fin (n + 1), ((relativeCechData f).proj n i).left.app (Opposite.op U) x =
+    ((relativeCechData f).proj n i).left.app (Opposite.op U) y) : x = y
+finiteSieveIntersection_mem (J : GrothendieckTopology C) (U : C)
+  {ι : Type*} [Fintype ι] (R : ι → Sieve U) (hR : ∀ i, R i ∈ J U) :
+  (⨅ i, R i) ∈ J U
+relativeCechDiagonal_isLocallySurjective (J : GrothendieckTopology C) (f : P ⟶ Q)
+  [CategoryTheory.Presheaf.IsLocallyInjective J f] (j : AsSmall.{u} SimplexCategoryᵒᵖ) :
+  CategoryTheory.Presheaf.IsLocallySurjective J ((relativeCechDiagonal f).app j)
+```
+
+最初は元の Yoneda 対応で既証の全座標の外延性へ戻す。
+有限交叉は既存 `GrothendieckTopology.intersection_covering` の有限回の合成で、
+添字の宇宙をsiteの対象の宇宙から独立にする私有補題。
+対角の像を覆う篩は、第0座標と各座標の等化篩の有限交叉。
+局所単射性から各等化篩が被覆であることを `Presheaf.equalizerSieve_mem` で示し、
+元の制限した第0座標を同じ対角の前像にする。各点での単射を追加仮定にしない。
+
+セッション12725は単体記法のscopeと全余錐比較の名前空間、25560は標準図式への
+等式の暗黙の推論、91766は有限交叉の添字の宇宙で終了1。
+いずれも既存の等式と名前空間・宇宙引数を明示して直し、計算上限を上げていない。
+現在セッション14451、`/tmp/is-w1/s8-presheaf-relative-eval-6/` の10対象を検証中。
+最後の差分を除く9対象は直前の対象ビルドが通ったが、束の小監査はまだ未完。
+7本346行の未コミット分は監査が通ってから保存する。
+検証済みの累計は引き続き271本17,568行・1,544宣言。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+### 約18,000行の中間報告：Čech 余錐と局所対角の検証完了（11-16 夜）
+
+`f7066e36d`：7本346行・15宣言。既存3本を含む10対象のビルドと、
+新しい環境での46所有宣言の小監査（標準三公理のみ）、SHA一致、セッション14451の終了0を確認。
+証拠 `/tmp/is-w1/s8-presheaf-relative-eval-6/target-audit-result.json`。
+直前の未検証の型の一覧は、すべてこの束までで検証済みとなった。
+
+検証済み全体278本17,914行・1,559宣言。外枠22,000行まで残り4,086行。
+古い文献メタデータのみの変更はこの数に含めない。追加IDなし。
+ここは約18,000行での途中報告であり、停止点や全体の完成ではない。
+
+今回閉じたこと：各点で全射な前層の元の相対Čech増大が、同じ空間値前層の
+余極限余錐であること。局所単射な前層の元の全有限次数のČech対角が、
+分裂単射であり、局所全射であること。前者は各点の comma の既存の収縮と
+元の全余錐の評価、後者は各等化篩の有限交叉と同じ全座標の外延性から出した。
+局所全射を各点全射にしたり、局所単射を各点単射にしたりしていない。
+元の重みの反転、同じ増大の全族、零次の枝を保っている。
+
+残る元の主張は変えない：
+1. S8 `sections_localEquiv_iso`：像への全射とそのČech解消、像の包含への既証の局所単射の場合を
+   同じ指定切断の射へ接続する。最終の型にpresentable係数の仮定を追加しない。
+2. S8 `weightedSections_discrete_map`：現在の固定された値の同型のまま、元の射の類を照合する。
+   新しい自然な値の同型への取り替えはしない。
+3. S8 `sheafify_discrete_eq`・`localEquiv_of_sheafifyIso`：同じordinary sheafificationの単位と
+   同じ∞層化の指定普遍性を使う。別の反射や無指定な対象同型に替えない。
+4. S1：元の任意Coverageから生成位相の判定。普遍的に降下することを追加仮定にして代替しない。
+
+S7・R2・R3は停止を保持する。main cd79e9cc5 は取り込んでいない。
+自分の整理券・検証セッションはすべて終了。未検証のS8のLeanソースは残っていない。
+次も新しい数学は新規ファイルだけに書き、外枠を超えそうなら検証済みを保存して止める。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
