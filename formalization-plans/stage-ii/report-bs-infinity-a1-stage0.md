@@ -4922,3 +4922,47 @@ setWeightTensorSections_shapeIso φ hE M F cP hcP cQ hcQ :
 輸送からの固定値比較と、この既存G8の自然性との照合は引き続き残る。
 S1の一般Coverage判定、一般の局所同値、同じ層化の比較も未完のまま保持する。
 一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+
+### 11-16：left全空間の固定値比較の合成則を検証、未検証候補の型の訂正
+
+`NativeLeftSectionsComparisonLaws`（65行・8所有宣言）の対象ビルド・小監査が通過した。
+`/tmp/is-w1/s8-native-left-boxed-4/target-audit-result.json`、終了コード0、
+標準三公理のみ、対象SHA一致。元の同じ図式・頂点・値の同型に型を固定した名前を
+付け、次の既存構成の合成則を証明した。比較や余単位の新しい選択は行っていない。
+
+```lean
+nativeLeftSectionsDiagram P O :=
+  ulift.map (smallLeftUnstraighteningProjection P) ≫ (uliftOppositeIso A).hom ≫ O
+nativeLeftSectionsValue P O hE :=
+  (nativeWeightedSections O hE).app _ (opObjEquiv.symm (functorVertex P))
+nativeLeftSectionsValueIso P O hE d hd := nativeWeightedSections_leftLimitIso P O hE d hd
+nativeLeftSectionsValueIso_comp P O hE d e hd he :
+  nativeLeftSectionsValueIso P O hE d hd ≪≫ limitVertexIso d e hd he =
+    nativeLeftSectionsValueIso P O hE e he
+```
+
+Pの底は一般の小さい準圏A、Eは元のpresentable係数、d・eは元の同じleft全空間の
+係数図式の指定極限錐。完全な型は新規ファイル。定義の展開は図式と頂点の型だけに
+局所化し、元の値比較を頂点移送の式へ書き直して、結合則と
+`limitVertexIsoOfDiagramEq_hom_comp`を適用した。計算上限は変更していない。
+既存の構成の法則・証明の分割で追加IDはない。外枠用累計は**18,755行**、294本。
+
+前の未検証候補の時間切れの記録を補足・訂正する。候補ではMorphismSpacesの開放を
+落とし、図式の型に現れる`uliftOppositeIso`が未解決だった。自動暗黙引数が有効な
+宣言の型にこれが入ったまま、元の図式との型の比較を進めていた。
+このため、以前のログを意図した正しい型そのもののkernel上限の証拠とはしない。
+補助定義の本文へ分けた段階でUnknown identifierを確認し、名前空間を明示し、
+`autoImplicit false`にして意図した型へ訂正した。その型では時間切れは起こらず、
+順射の式の明示と図式・頂点の型の局所的な展開で上の合成則が通った。
+この訂正は、別に確認し承認された指定余単位の3本文の修正を取り消すものではない。
+
+同じ見落としが他の今回の追加にないか確認するため、0cde9bbd3以降に追加した11ファイル
+（撤回した重複モジュールは除く）の一時コピーに`set_option autoImplicit false`を
+加え、元ソースを変更せず全てコンパイルした。全11本が終了コード0で通り、
+uses-sorry警告なし、元ソースのSHA不変を確認した。
+証拠は`/tmp/is-w1/s8-autoimplicit-false-1/files.json`・`result.json`。
+
+次の係数図式の等式による同じ比較の移送は、新規ファイルの下書きにあり未検証。
+この段階では固定された`weightedSections_discrete_map`の全体やS8の完成は主張しない。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
