@@ -2821,3 +2821,49 @@ S1 の残りも維持し、S7 は後続とする。今回の Yoneda 比較だけ
 運用記録：先行する小監査のプロセス終了確認前に次の待ちを一度出した。
 先行の終了コード0を確認後は待ちを一つに戻した。以後は終了コードを確認してから次を出す。
 一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
+
+### S8 続報：元の反対 Yoneda に沿う全重みの右 Kan 延長
+
+新規9本477行37宣言の対象ビルド・小監査が完了した。標準三公理のみ、source SHA 一致。
+記録：`/tmp/is-w1/s8-left-limit-transport-2/`（2本5宣言）、
+`/tmp/is-w1/s8-right-kan-fixed-yoneda-4/`（3本11宣言）、
+`/tmp/is-w1/s8-right-kan-shape-iso-3/`（1本11宣言）、
+`/tmp/is-w1/s8-original-weighted-sections-3/`（3本10宣言）。全runnerの終了コード0を確認した。
+
+```lean
+hasLimit_iff_of_leftStraighteningIso p q e O :
+  HasLimit (p ≫ O) ↔ HasLimit (q ≫ O)
+
+hasLimit_rightKanDiagram_iff_of_functorIso e O c :
+  HasLimit (rightKanDiagram δ O c) ↔ HasLimit (rightKanDiagram δ' O c)
+
+-- a : K ≅ K', b : C ≅ C', hw : δ ≫ b.hom = a.hom ≫ δ'
+exists_rightKanExtension_iff_of_isoSquare a b hw O :
+  (∃ G ε, IsRightKanExtension δ (a.hom ≫ O) G ε) ↔
+    (∃ G ε, IsRightKanExtension δ' O G ε)
+
+weightedSectionsData (O : Presheaf C E) (hE : IsPresentable E) :
+  Σ G : (PresheafCat C SpaceInfinity).op ⟶ E,
+    {ε : SSet.Homotopy (oppositeSpaceYoneda C ≫ G) O //
+      IsRightKanExtension (oppositeSpaceYoneda C) O G ε}
+
+weightedSections_limitValue O hE P :
+  ∃ c : JoinCone (rightKanDiagram (oppositeSpaceYoneda C) O P),
+    IsLimitCone c ∧ c.vertex = (weightedSections O hE).app _ P
+```
+
+分類図式の指定同型、復元、小さい unstraightening の既存の比較を使い、同じ底からの係数を保つ。
+一般の同値な添字に Mono を追加せず、実際の同型の場合だけ同型の単射性を使った。
+反対 nerve の指定同型を内部 Hom の第一変数で送り、前層そのものの同型を構成した。
+元の Yoneda の全族比較とこの形状同型で、native な存在定理を元の `oppositeSpaceYoneda` に戻した。
+`weightedSectionsData` は drafts の元の型どおり、一つの全関手と指定した変換を保持する。
+新しい数学の ID は追加せず、既存の分類・同型保存・係数移送・合成則の証明分割のみ。
+
+S3 の承認された逆向きは本体 `CechLimitLift` のとおりで、頂点の等号と指定した錐比較同値を保持する。
+docstring に「制限の厳密な等号は要求しない」を記載済み。今回変更していない。
+
+残り：離散重みと `sectionsOf` の指定比較・射の自然性、任意の小さい余極限を極限に送ること、
+層化・局所同値への接続。S1 の coverage・extensive の残りも維持する。
+今回の全関手の存在だけで S8 完成とは数えない。
+検証済み全体193本12,626行・1,103宣言。外枠18,600行。
+一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
