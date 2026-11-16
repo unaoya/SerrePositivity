@@ -3417,3 +3417,43 @@ imageSieveCommaRestrictionCone_isLimit J φ [Mono φ]
 
 検証済み全体229本14,876行・1,296宣言（文献整理は外枠外）。
 一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+### 局所単射の指定右 Kan 条件（11-16）
+
+`AsSmallRightConeTransport`・`MonoLocalRightKan` の2本118行、4宣言を確認。
+記録 `/tmp/is-w1/s8-as-small-right-cone-2/`、対象ビルド・小監査とも終了0、
+標準三公理のみ、source SHA一致。既存の構成の宇宙移送とS8の証明分割、追加IDなし。
+
+```lean
+asSmallRightCounit L α :
+  asSmallLocalFunctor L ⋙ asSmallLocalFunctor F ⟶ asSmallLocalFunctor F₀
+asSmallRightCounit_cone L α j :
+  ((Functor.RightExtension.mk (asSmallLocalFunctor F) (asSmallRightCounit L α)).coneAt
+    (AsSmall.up.obj j)).whisker (asSmallStructuredArrowFunctor L j) =
+      asSmallCone ((Functor.RightExtension.mk F α).coneAt j)
+asSmallRightConeTransportPostcomp_isLimit_iff L α j U :
+  IsLimitCone (nerveRightConeTransportPostcomp (asSmallLocalFunctor L)
+    (asSmallRightCounit L α) (AsSmall.up.obj j) ((nerveAsSmallIso D).inv ≫ U)).cone ↔
+  IsLimitCone (((nerveCone ((Functor.RightExtension.mk F α).coneAt j)).ulift).postcomp U)
+
+-- V := (nerveAsSmallIso Cᵒᵖ).inv ≫ O
+-- η := asSmallRightCounit φ.mapElements φ.mapElementsCompπIso.hom
+monoLocal_isRightKanExtension J φ [Mono φ] [Presheaf.IsLocallySurjective J φ]
+    O (hO : IsSheaf J O) :
+  IsRightKanExtension (nerveMap (asSmallLocalFunctor φ.mapElements))
+    (nerveMap (asSmallLocalFunctor (Functor.Elements.π P)) ≫ V)
+    (nerveMap (asSmallLocalFunctor (Functor.Elements.π Q)) ≫ V)
+    (kanRightCounitPostcomp (nerveNatTransHomotopy η) V)
+```
+
+最後の右 Kan 条件は、全頂点を同じ元の圏の元に戻し、直前の局所錐の極限性から証明した。
+仮定として置いていない。点ごとの同型を集めて大域同型にする構成も追加していない。
+一般の局所全単射の切断不変性への次の接続は、指定恒等余単位の法則と
+`isLimitCone_iff_of_rightKan_comparison` から、制限した元の指定極限錐の極限性を戻すもの。
+実際の `sectionsOf_map` との同定を飛ばして、任意の頂点同型で完了とはしない。
+単射でない場合、同じ層化単位の比較、指定した `weightedSections_discrete` の自然性は残る。
+S1の元のcoverage・extensiveも未完。S7・R2・R3は再開していない。
+
+検証済み全体231本14,994行・1,300宣言（文献整理は外枠外）。
+今回の継続分は計11本706行・44宣言。外枠22,000行以内、完成停止点ではない。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
