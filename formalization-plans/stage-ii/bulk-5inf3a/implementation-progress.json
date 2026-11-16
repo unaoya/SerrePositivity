@@ -3,7 +3,7 @@
   "complete": 3,
   "total": 6,
   "added": 0,
-  "verified_head": "this commit: base 491349c305597ea0233036c83bcee6408a149a73",
+  "verified_head": "this commit: base 1e34461a0562c1dc97fcfd95b23a66b517a403ab",
   "items": {
     "HT01": "complete",
     "HT02": "complete",
@@ -12,15 +12,13 @@
     "HT05": "not-started",
     "HT06": "not-started"
   },
-  "latest_complete_audit_checkpoint": "ordinary-realization-and-pure-tensors-checkpoint.json",
-  "latest_complete_audit_declarations": 2024,
+  "latest_complete_audit_checkpoint": "canonical-augmentation-reflection-checkpoint.json",
+  "latest_complete_audit_declarations": 2030,
   "working_changes_unverified": [
-    "AffineCanonicalSingleRows",
-    "HomologyUnitComposite",
-    "AffineCoverTargetAugmentation",
-    "NativeAugmentationCanonicalIso"
+    "CoefficientSingleTotalNaturality",
+    "AffineCoverTargetAugmentation"
   ],
-  "pending_check": "bundle-220 terminal rc1; see audit module inventory; failed dependencies await next batch",
+  "pending_check": "bundle-221 terminal rc1; see audit module inventory; failed dependencies await next batch",
   "next_proof_route": "remaining-20000-plan.md",
   "initial_record": {
     "stage": "5inf3a",
