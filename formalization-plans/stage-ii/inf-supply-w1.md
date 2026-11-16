@@ -213,3 +213,7 @@ S3 の逆向きの型は、段 0 の表の「`restrictJoinCone c (cechShape d) =
 ## 追記（2026-11-16 夜、調整役）：5∞-1 の外枠を 24,000 行に（ユーザー承認）
 
 報告（0cde9bbd3、検証済み 18,240 行、残り 2,740〜4,710 行、全体 20,980〜22,950 行）を受けて、外枠を 22,000 行から **24,000 行**に変更する。残り（`weightedSections_discrete_map`、Čech の局所同値、`sections_localEquiv_iso`、`sheafify_discrete_eq`・`localEquiv_of_sheafifyIso`、S1 の一般の Coverage の判定）は報告どおり短縮せずに。停止点は 5∞-1 の完成（S7 を除く）のまま。約 22,000 行で止まらずに途中報告。24,000 行を超えそうなら検証済みをコミットして報告して止まる。S7・R2・R3 は再開しない。main は root の確認まで取り込まない。
+
+## 追記（2026-11-16 夜、調整役）：S8 の固定値比較の錐の選び方を直してよい
+
+報告（作業木の report-bs-infinity-a1-stage0.md 末尾、11-16「固定値の比較で、指定余単位との両立を失う選択」）を受けて承認する。`WeightedSectionsLocalComparison`・`NativeWeightedSectionsLeftLimit`・`WeightedSectionsLeftLimit` の三本文の `Classical.choose (… limitValue …)` を、元の同じ指定余単位 α に沿う `RightKanConeTransport` の終端（`valueTransport`）の錐に置き換えてよい。三本とも 5∞-1 で ③-a が新しく作った枝だけのファイルで、main・他レーンからの利用はない。条件：公開の名前・型、全関手、元の余単位、`sectionsOf` の選択は変えない。新しい仮定を置かない。展開した値が変わるので、`Sheaves/` とその下流の枝のモジュールを全部対象ビルドし直して確かめる（旧値との rfl の一致は求めない）。差分は外枠 24,000 行に数える。
