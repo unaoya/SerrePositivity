@@ -21,10 +21,12 @@ open Verso.Genre.Manual
 open Informal
 
 #doc (Manual) "1.4 ∞-Categories" =>
+%%%
+number := false
+tag := "kerodon-1-4"
+%%%
 
 Kerodon の 1.4 節（[Tag 0039](https://kerodon.net/tag/0039)）の項目と、SerrePositivity・Mathlib の宣言との対応。本文は対応表（research/kerodon-coverage）の判定の理由の要約で、Kerodon の本文の写しではない。
-
-# 節の冒頭（1.4.0）
 
 :::definition "kerodon_1_4_0_1" (lean := "SSet.Quasicategory")
 Kerodon Definition 1.4.0.1（[Tag 003A](https://kerodon.net/tag/003A)）。対応表の状態：Mathlib にある。
@@ -34,6 +36,11 @@ Kerodon Definition 1.4.0.1（[Tag 003A](https://kerodon.net/tag/003A)）。対�
 :::
 
 # 1.4.1 Objects and Morphisms
+
+%%%
+number := false
+tag := "kerodon-1-4-1"
+%%%
 
 Kerodon [Tag 003F](https://kerodon.net/tag/003F)
 
@@ -59,6 +66,11 @@ Kerodon Definition 1.4.1.5（[Tag 03X3](https://kerodon.net/tag/03X3)）。対�
 :::
 
 # 1.4.2 The Opposite of an ∞-Category
+
+%%%
+number := false
+tag := "kerodon-1-4-2"
+%%%
 
 Kerodon [Tag 003L](https://kerodon.net/tag/003L)
 
@@ -96,6 +108,11 @@ Kerodon Variant 1.4.2.8（[Tag 050H](https://kerodon.net/tag/050H)）。対応�
 
 # 1.4.3 Homotopies of Morphisms
 
+%%%
+number := false
+tag := "kerodon-1-4-3"
+%%%
+
 Kerodon [Tag 003U](https://kerodon.net/tag/003U)
 
 :::definition "kerodon_1_4_3_1" (lean := "SSet.Truncated.HomotopicL")
@@ -130,6 +147,11 @@ Kerodon Corollary 1.4.3.7（[Tag 00V0](https://kerodon.net/tag/00V0)）。対応
 
 # 1.4.4 Composition of Morphisms
 
+%%%
+number := false
+tag := "kerodon-1-4-4"
+%%%
+
 Kerodon [Tag 0041](https://kerodon.net/tag/0041)
 
 :::definition "kerodon_1_4_4_1" (lean := "SSet.Edge.CompStruct, SSet.Truncated.Edge.CompStruct")
@@ -161,6 +183,11 @@ Kerodon Proposition 1.4.4.7（[Tag 0048](https://kerodon.net/tag/0048)）。対�
 :::
 
 # 1.4.5 The Homotopy Category of an ∞-Category
+
+%%%
+number := false
+tag := "kerodon-1-4-5"
+%%%
 
 Kerodon [Tag 0049](https://kerodon.net/tag/0049)
 
@@ -211,6 +238,11 @@ Kerodon Proposition 1.4.5.7（[Tag 004H](https://kerodon.net/tag/004H)）。対�
 :::
 
 # 1.4.6 Isomorphisms
+
+%%%
+number := false
+tag := "kerodon-1-4-6"
+%%%
 
 Kerodon [Tag 004Q](https://kerodon.net/tag/004Q)
 

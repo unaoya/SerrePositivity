@@ -30,10 +30,12 @@ open Verso.Genre.Manual
 open Informal
 
 #doc (Manual) "1.5 Functors of ∞-Categories" =>
+%%%
+number := false
+tag := "kerodon-1-5"
+%%%
 
 Kerodon の 1.5 節（[Tag 0055](https://kerodon.net/tag/0055)）の項目と、SerrePositivity・Mathlib の宣言との対応。本文は対応表（research/kerodon-coverage）の判定の理由の要約で、Kerodon の本文の写しではない。
-
-# 節の冒頭（1.5.0）
 
 :::definition "kerodon_1_5_0_1" (lean := "SSet, SSet.Quasicategory")
 Kerodon Definition 1.5.0.1（[Tag 0056](https://kerodon.net/tag/0056)）。対応表の状態：Mathlib にある。
@@ -43,6 +45,11 @@ Kerodon Definition 1.5.0.1（[Tag 0056](https://kerodon.net/tag/0056)）。対�
 :::
 
 # 1.5.2 Commutative Diagrams
+
+%%%
+number := false
+tag := "kerodon-1-5-2"
+%%%
 
 Kerodon [Tag 005H](https://kerodon.net/tag/005H)
 
@@ -68,6 +75,11 @@ Kerodon Proposition 1.5.2.6（[Tag 005P](https://kerodon.net/tag/005P)）。対�
 :::
 
 # 1.5.3 The ∞-Category of Functors
+
+%%%
+number := false
+tag := "kerodon-1-5-3"
+%%%
 
 Kerodon [Tag 005Z](https://kerodon.net/tag/005Z)
 
@@ -134,6 +146,11 @@ Kerodon Definition 1.5.3.8（[Tag 0067](https://kerodon.net/tag/0067)）。対�
 :::
 
 # 1.5.4 Digression: Lifting Properties
+
+%%%
+number := false
+tag := "kerodon-1-5-4"
+%%%
 
 Kerodon [Tag 006B](https://kerodon.net/tag/006B)
 
@@ -218,6 +235,11 @@ Kerodon Proposition 1.5.4.14（[Tag 006T](https://kerodon.net/tag/006T)）。対
 
 # 1.5.5 Trivial Kan Fibrations
 
+%%%
+number := false
+tag := "kerodon-1-5-5"
+%%%
+
 Kerodon [Tag 006V](https://kerodon.net/tag/006V)
 
 :::definition "kerodon_1_5_5_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.trivialKanFibrations, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.trivialKanFibration_iff_boundary")
@@ -298,6 +320,11 @@ Kerodon Proposition 1.5.5.14（[Tag 0077](https://kerodon.net/tag/0077)）。対
 
 # 1.5.6 Uniqueness of Composition
 
+%%%
+number := false
+tag := "kerodon-1-5-6"
+%%%
+
 Kerodon [Tag 0078](https://kerodon.net/tag/0078)
 
 :::theorem "kerodon_1_5_6_1"
@@ -347,6 +374,11 @@ pushout-productのinner anodyne性は(a)を覆う。(b)のΛ²₁だけを用い
 :::
 
 # 1.5.7 Universality of Path Categories
+
+%%%
+number := false
+tag := "kerodon-1-5-7"
+%%%
 
 Kerodon [Tag 00J3](https://kerodon.net/tag/00J3)
 

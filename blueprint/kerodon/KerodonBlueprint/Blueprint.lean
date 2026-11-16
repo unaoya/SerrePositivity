@@ -14,6 +14,9 @@ open Verso.Genre.Manual
 open Informal
 
 #doc (Manual) "Kerodon に沿った形式化（試作：第 1 章）" =>
+%%%
+tag := "kerodon-blueprint"
+%%%
 
 Kerodon（Lurie）の第 1 章「The Language of ∞-Categories」の項目ごとに、SerrePositivity と Mathlib の対応する Lean の宣言を結んだブループリント。
 各ノードの本文は、対応表 `research/kerodon-coverage` の判定の理由（日本語の要約）で、Kerodon の本文の写しではない。番号から Kerodon の Tag へリンクする。

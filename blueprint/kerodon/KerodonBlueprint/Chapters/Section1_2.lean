@@ -18,10 +18,19 @@ open Verso.Genre.Manual
 open Informal
 
 #doc (Manual) "1.2 From Topological Spaces to Simplicial Sets" =>
+%%%
+number := false
+tag := "kerodon-1-2"
+%%%
 
 Kerodon の 1.2 節（[Tag 0508](https://kerodon.net/tag/0508)）の項目と、SerrePositivity・Mathlib の宣言との対応。本文は対応表（research/kerodon-coverage）の判定の理由の要約で、Kerodon の本文の写しではない。
 
 # 1.2.1 Connected Components of Simplicial Sets
+
+%%%
+number := false
+tag := "kerodon-1-2-1"
+%%%
 
 Kerodon [Tag 00G5](https://kerodon.net/tag/00G5)
 
@@ -151,6 +160,11 @@ Kerodon Corollary 1.2.1.27（[Tag 00GX](https://kerodon.net/tag/00GX)）。対�
 
 # 1.2.2 The Singular Simplicial Set of a Topological Space
 
+%%%
+number := false
+tag := "kerodon-1-2-2"
+%%%
+
 Kerodon [Tag 001Q](https://kerodon.net/tag/001Q)
 
 :::definition "kerodon_1_2_2_1" (lean := "SimplexCategory.toTop")
@@ -175,6 +189,11 @@ Kerodon Variant 1.2.2.8（[Tag 001T](https://kerodon.net/tag/001T)）。対応�
 :::
 
 # 1.2.3 The Geometric Realization of a Simplicial Set
+
+%%%
+number := false
+tag := "kerodon-1-2-3"
+%%%
 
 Kerodon [Tag 001X](https://kerodon.net/tag/001X)
 
@@ -259,6 +278,11 @@ Kerodon Corollary 1.2.3.19（[Tag 00H6](https://kerodon.net/tag/00H6)）。対�
 
 # 1.2.4 Horns
 
+%%%
+number := false
+tag := "kerodon-1-2-4"
+%%%
+
 Kerodon [Tag 000K](https://kerodon.net/tag/000K)
 
 :::definition "kerodon_1_2_4_1" (lean := "SSet.horn")
@@ -276,6 +300,11 @@ Kerodon Proposition 1.2.4.7（[Tag 050F](https://kerodon.net/tag/050F)）。対�
 :::
 
 # 1.2.5 Kan Complexes
+
+%%%
+number := false
+tag := "kerodon-1-2-5"
+%%%
 
 Kerodon [Tag 002G](https://kerodon.net/tag/002G)
 

@@ -25,10 +25,12 @@ open Verso.Genre.Manual
 open Informal
 
 #doc (Manual) "1.1 Simplicial Sets" =>
+%%%
+number := false
+tag := "kerodon-1-1"
+%%%
 
 Kerodon の 1.1 節（[Tag 0004](https://kerodon.net/tag/0004)）の項目と、SerrePositivity・Mathlib の宣言との対応。本文は対応表（research/kerodon-coverage）の判定の理由の要約で、Kerodon の本文の写しではない。
-
-# 節の冒頭（1.1.0）
 
 :::definition "kerodon_1_1_0_1"
 Kerodon Notation 1.1.0.1（[Tag 0009](https://kerodon.net/tag/0009)）。対応表の状態：Mathlib にある。
@@ -97,6 +99,11 @@ Kerodon Notation 1.1.0.13（[Tag 04Z9](https://kerodon.net/tag/04Z9)）。対応
 
 # 1.1.1 Face Operators
 
+%%%
+number := false
+tag := "kerodon-1-1-1"
+%%%
+
 Kerodon [Tag 04ZB](https://kerodon.net/tag/04ZB)
 
 :::definition "kerodon_1_1_1_1" (lean := "SemiSimplexCategory")
@@ -132,6 +139,11 @@ Kerodon Proposition 1.1.1.9（[Tag 04FQ](https://kerodon.net/tag/04FQ)）。対�
 :::
 
 # 1.1.2 Degeneracy Operators
+
+%%%
+number := false
+tag := "kerodon-1-1-2"
+%%%
 
 Kerodon [Tag 04ZJ](https://kerodon.net/tag/04ZJ)
 
@@ -190,6 +202,11 @@ Kerodon Proposition 1.1.2.14（[Tag 04FW](https://kerodon.net/tag/04FW)）。対
 
 # 1.1.3 Dimensions of Simplicial Sets
 
+%%%
+number := false
+tag := "kerodon-1-1-3"
+%%%
+
 Kerodon [Tag 04ZS](https://kerodon.net/tag/04ZS)
 
 :::definition "kerodon_1_1_3_1"
@@ -239,6 +256,11 @@ Kerodon Corollary 1.1.3.14（[Tag 04ZZ](https://kerodon.net/tag/04ZZ)）。対�
 :::
 
 # 1.1.4 The Skeletal Filtration
+
+%%%
+number := false
+tag := "kerodon-1-1-4"
+%%%
 
 Kerodon [Tag 0010](https://kerodon.net/tag/0010)
 
@@ -309,6 +331,11 @@ Mathlibのhom\_extは単射性、自前のboundaryFaceGluingは次元n+2の全�
 :::
 
 # 1.1.5 Discrete Simplicial Sets
+
+%%%
+number := false
+tag := "kerodon-1-1-5"
+%%%
 
 Kerodon [Tag 00FQ](https://kerodon.net/tag/00FQ)
 
@@ -384,6 +411,11 @@ Kerodon Proposition 1.1.5.14（[Tag 00G3](https://kerodon.net/tag/00G3)）。対
 :::
 
 # 1.1.6 Directed Graphs as Simplicial Sets
+
+%%%
+number := false
+tag := "kerodon-1-1-6"
+%%%
 
 Kerodon [Tag 001D](https://kerodon.net/tag/001D)
 

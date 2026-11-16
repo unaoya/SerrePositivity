@@ -23,10 +23,19 @@ open Verso.Genre.Manual
 open Informal
 
 #doc (Manual) "1.3 From Categories to Simplicial Sets" =>
+%%%
+number := false
+tag := "kerodon-1-3"
+%%%
 
 Kerodon の 1.3 節（[Tag 002L](https://kerodon.net/tag/002L)）の項目と、SerrePositivity・Mathlib の宣言との対応。本文は対応表（research/kerodon-coverage）の判定の理由の要約で、Kerodon の本文の写しではない。
 
 # 1.3.1 The Nerve of a Category
+
+%%%
+number := false
+tag := "kerodon-1-3-1"
+%%%
 
 Kerodon [Tag 002M](https://kerodon.net/tag/002M)
 
@@ -45,6 +54,11 @@ Kerodon Variant 1.3.1.6（[Tag 03X2](https://kerodon.net/tag/03X2)）。対応�
 :::
 
 # 1.3.2 Example: Monoids as Simplicial Sets
+
+%%%
+number := false
+tag := "kerodon-1-3-2"
+%%%
 
 Kerodon [Tag 04FY](https://kerodon.net/tag/04FY)
 
@@ -101,6 +115,11 @@ Kerodon Proposition 1.3.2.14（[Tag 04G8](https://kerodon.net/tag/04G8)）。対
 
 # 1.3.3 Recovering a Category from its Nerve
 
+%%%
+number := false
+tag := "kerodon-1-3-3"
+%%%
+
 Kerodon [Tag 002Y](https://kerodon.net/tag/002Y)
 
 :::proposition "kerodon_1_3_3_1" (lean := "CategoryTheory.nerveFunctor.full, CategoryTheory.nerveFunctor.faithful, CategoryTheory.nerveFunctor.fullyfaithful")
@@ -111,6 +130,11 @@ Kerodon Proposition 1.3.3.1（[Tag 002Z](https://kerodon.net/tag/002Z)）。対�
 :::
 
 # 1.3.4 Characterization of Nerves
+
+%%%
+number := false
+tag := "kerodon-1-3-4"
+%%%
 
 Kerodon [Tag 0030](https://kerodon.net/tag/0030)
 
@@ -141,6 +165,11 @@ Kerodon Lemma 1.3.4.3（[Tag 0033](https://kerodon.net/tag/0033)）。対応表�
 
 # 1.3.5 The Nerve of a Groupoid
 
+%%%
+number := false
+tag := "kerodon-1-3-5"
+%%%
+
 Kerodon [Tag 0035](https://kerodon.net/tag/0035)
 
 :::definition "kerodon_1_3_5_1" (lean := "CategoryTheory.Groupoid, CategoryTheory.IsGroupoid")
@@ -165,6 +194,11 @@ Kerodon Construction 1.3.5.4（[Tag 007G](https://kerodon.net/tag/007G)）。対
 :::
 
 # 1.3.6 The Homotopy Category of a Simplicial Set
+
+%%%
+number := false
+tag := "kerodon-1-3-6"
+%%%
 
 Kerodon [Tag 00HE](https://kerodon.net/tag/00HE)
 
@@ -199,6 +233,11 @@ Kerodon Corollary 1.3.6.5（[Tag 004N](https://kerodon.net/tag/004N)）。対応
 :::
 
 # 1.3.7 Example: The Path Category of a Directed Graph
+
+%%%
+number := false
+tag := "kerodon-1-3-7"
+%%%
 
 Kerodon [Tag 00HJ](https://kerodon.net/tag/00HJ)
 

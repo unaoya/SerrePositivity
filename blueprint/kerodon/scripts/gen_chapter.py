@@ -65,11 +65,12 @@ for sec in sorted(by_sec, key=lambda s: [int(x) for x in s.split('.')]):
     for r in by_sec[sec]: sub_rows['.'.join(r['number'].split('.')[:3])].append(r)
     for sub in sorted(sub_rows, key=lambda s: [int(x) for x in s.split('.')]):
         t = toc.get(sub)
-        if sub.endswith('.0'):
-            body.append(f'# 節の冒頭（{sub}）\n')
-        else:
+        if not sub.endswith('.0'):
+            # 番号は Kerodon の番号を見出しに書き、Verso の自動番号は切る。HTML の id は tag で ASCII に
             body.append(f'# {sub} {esc(t[1]) if t else ""}\n')
+            body.append('%%%\nnumber := false\ntag := "kerodon-' + sub.replace('.', '-') + '"\n%%%\n')
             if t: body.append(f'Kerodon [Tag {t[0]}](https://kerodon.net/tag/{t[0]})\n')
+        # x.y.0 の項目（節の冒頭）は見出しを立てずに節の本文の先頭に置く
         for r in sorted(sub_rows[sub], key=lambda r: [int(x) for x in r['number'].split('.')]):
             n = r['number']; kind = kinds.get(n, 'Proposition'); st = r['status_new']
             directive = KIND.get(kind, 'proposition')
@@ -94,7 +95,7 @@ for sec in sorted(by_sec, key=lambda s: [int(x) for x in s.split('.')]):
     mod = 'Section' + sec.replace('.', '_')
     hdr = ['import Verso', 'import VersoManual', 'import VersoBlueprint'] + [f'import {m}' for m in sorted(imports)] + \
           ['', 'open Verso.Genre', 'open Verso.Genre.Manual', 'open Informal', '',
-           f'#doc (Manual) "{sec} {t[1] if t else ""}" =>', '',
+           f'#doc (Manual) "{sec} {t[1] if t else ""}" =>', '%%%', 'number := false', f'tag := "kerodon-{sec.replace(".", "-")}"', '%%%', '',
            f'Kerodon の {sec} 節（[Tag {t[0]}](https://kerodon.net/tag/{t[0]})）の項目と、SerrePositivity・Mathlib の宣言との対応。本文は対応表（research/kerodon-coverage）の判定の理由の要約で、Kerodon の本文の写しではない。\n' if t else '']
     open(f'{OUT}/{mod}.lean', 'w', encoding='utf-8').write('\n'.join(hdr + body) + '\n')
     modules.append(mod)
