@@ -108,6 +108,6 @@ Mathlib `Morphisms/Separated.lean` の `IsAffineHom.of_comp` は、k:A→B、q:B
 
 G4の必要な出口は、任意のNoether環R上の固有全射と、その任意のNoetherアフィン基底変更についての元の増大totalの完全性である。そこで帰納の固定基底SをSpec Rに取り、P(C)ではSへの閉埋め込みj:Y→Sとrange j=C、その上の固定した固有全射を量化する。Yは閉埋め込みがアフィン射であることからアフィンであり、Γ(Y)のSpecとの実際のisoSpecを使える。被約化後のYと、真に小さい閉中心Zもアフィンである。
 
-このため、任意のT=Spec A→Yを扱う際に、まず非アフィンなYを新たにアフィン開へ分割する必要はない。Y.isoSpec.invを `BlowupAffineProjectiveModel.nonempty_blowupAffinePullbackProjectiveModel` の開埋め込みjへ入れ、元のblowupのΓ(Y)上の次数一表示を得る。T→Yを同じisoSpecでSpec間の射へ戻し、未検証の `DegreeOneProjectiveModel.baseChange` の法則と実際のpullbackの同型を用いる。任意の係数移送のProjのCartesian性は、既存の `isPullback_projectiveCoefficientMap` を使う。逆像イデアルのblowupと任意の底変換を同一視する工程はない。
+このため、任意のT=Spec A→Yを扱う際に、まず非アフィンなYを新たにアフィン開へ分割する必要はない。Y.isoSpec.invを モジュール `BlowupAffineProjectiveModel` の `nonempty_blowupAffinePullbackProjectiveModel` の開埋め込みjへ入れ、元のblowupのΓ(Y)上の次数一表示を得る。T→Yを同じisoSpecでSpec間の射へ戻し、未検証の `DegreeOneProjectiveModel.baseChange` の法則と実際のpullbackの同型を用いる。任意の係数移送のProjのCartesian性は、既存の `isPullback_projectiveCoefficientMap` を使う。逆像イデアルのblowupと任意の底変換を同一視する工程はない。
 
 中心Z→Sの閉像はCの真部分集合で、ZはSの閉部分スキームである。中心のTへの底変換はAのイデアルによる商のSpecとして扱い、IH(C')を同じ元の中心上の固有射とそのアフィン基底変更に適用する。TのKrull次元の減少を仮定しない。この整理はG4で必要な任意のNoetherアフィン基底上の主張を保ち、一般の非アフィン基底の降下を追加の定理として作らないという内部の証明の選択である。中間のblowup B上の相対proper fppfは依然として非アフィン基底を含むので、前節の相対比較の不足は残る。
