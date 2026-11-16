@@ -363,3 +363,11 @@ FreeProbeRelativeUnitWeak.leanは通常190秒でも、二readerと一readerの�
 ここは段1の完成ではない。物理的な移動、移送後の対象ビルド／実native所有元／保存比較／正式監査は未検収。基準は30ae8948f、mainのCitationの変更は取り込んでいない。
 
 一覧：済み 0／全体 5（うち追加 0）。
+
+### 9.1 元の設定とソースの形の静的照合（21:17）
+
+全824プレビューについて元／先のSHAを再確認し、**set_option 1,418個がすべて同じ**ことを確認した。宣言・scopeと主要な証明キーワードの集計も差0。`review_source_options.py`と`preparation/source-option-review-core.json`へ手順と結果を保存した。これは引用／状態／監査metadataのoverlay前の静的な確認であり、型や証明項の保存判定を代用しない。移送後の対象ビルドと独立したv3bはまだ必要。
+
+夜の元監査のdriverは23時まで共有鍵の外で待機中。現在、こちらの整理券は出していない。mainは未取込のまま。
+
+一覧：済み 0／全体 5（うち追加 0）。
