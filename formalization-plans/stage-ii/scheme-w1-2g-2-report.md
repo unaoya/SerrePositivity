@@ -1839,3 +1839,9 @@ G4・G5と停止点2g-2は未完。最終の AugmentedRingCechExact と利用側
 今回一本102行＋入口1行。新規146モジュール本体9,817行、既存追加25行、入口追加167行（登録146・空行21）を含む外枠計数 **10,009行**。新規小監査累計962宣言、既存15宣言は別計上。各列の増大完全性までは到達。同じ single からの増大射の準同型性への接続、非アフィン基底の相対 proper fppf の二重 Čech、F8 全複体と元のブローアップを保つ Noether帰納、G5は未完。見込み約12,000〜15,500行・外枠16,000行は不変。最終の AugmentedRingCechExact と利用側の型は不変。停止点2g-2ではない。
 
 一覧：済み1／全体3（うち追加0）。
+
+
+同じアフィン平坦全射の Γ の係数への接続（着手前、既存のアフィン判定と係数移送の法則の内数、35〜80行）：`affineGammaFrobeniusCech_exact_of_flat_surjective f p hp hS` は Y,S がアフィン、元の f:Y→S が平坦全射、Γ(S) で p=0 のとき、元の Γ(f) の矢印の実際の frobeniusAugmentedRingCoefficients の AugmentedRingCechExact。Mathlib の Flat.flat_and_surjective_iff_faithfullyFlat_of_isAffine から同じ Γ(f) の忠実平坦性を供給し、既存の環の係数の完全性へ渡す。非アフィン上の大域切断の平坦性を主張せず、最終出力の型・仮定は変更しない。
+
+
+同じ基底の増大の大域切断を経る分解（着手前、既存のスカラー合成・single の法則の内数、40〜80行）：`schemePerfectCechTupleAugmentationHom_factor_global` は f:Y→Spec R の元の増大射 schemePerfectCechTupleAugmentationHom が、元の各 nerve 項の基底への射の schemeScalarHom の実際の Frobenius 係数写像の single と、同じ大域切断の schemePerfectCechTupleGlobalAugmentationHom の合成に等しいこと。各次数で元の R、nerve の増大、タプル複体と射を全て保持し、独立な H の同型を並べない。
