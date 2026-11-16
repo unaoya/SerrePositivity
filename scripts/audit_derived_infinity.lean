@@ -8024,7 +8024,6 @@ example : SSet.Quasicategory
   `SerrePositivity.HomologicalAlgebra.NormalizedMooreReverse,
   `SerrePositivity.HomologicalAlgebra.NormalizedMooreReverseEvaluation,
   `SerrePositivity.HomologicalAlgebra.NormalizedMooreReverseExtendZero,
-  `SerrePositivity.HomologicalAlgebra.NormalizedMooreReverseZero,
   `SerrePositivity.HomologicalAlgebra.NormalizedWeightHom,
   `SerrePositivity.HomologicalAlgebra.OverNerveCoefficientWeight,
   `SerrePositivity.HomologicalAlgebra.PointwiseChainHomotopy,
@@ -8616,6 +8615,28 @@ example : SSet.Quasicategory
   `SerrePositivity.InfinityCategories.HA.Monads.WalkingMonadEnrichment,
   `SerrePositivity.InfinityCategories.HA.Monads.WalkingMonadLaws]
 
+@[noinline] private def derivedAuditExpectedChunk46 : Array Lean.Name := #[
+  `SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanDegenerate,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanFreeCells,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanRepresentableCells,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanSimplex,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.FrameWeightUnitNaturality,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.SimplicialCellSkeleton,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.SimplicialDiagramSkeleton,
+  `SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLeftAnodyne,
+  `SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.ArrowMiddleIdentity,
+  `SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.ArrowMiddleUnit,
+  `SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.OppositeFunctorIsoEvaluation,
+  `SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.OppositeFunctorIsoWhisker,
+  `SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.FullyFaithfulFunctorIsoPrecomposition,
+  `SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.FunctorIsoConstantFamily,
+  `SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHomEvaluationArrow,
+  `SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.UnderCosliceCylinder,
+  `SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.UnderLiftTwistedPairing,
+  `SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.UnderOppositePairing,
+  `SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.UnderRightOpPairing,
+  `SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.UnderTwistedPairing]
+
 open Lean in
 run_cmd do
   let env ← getEnv
@@ -9113,7 +9134,8 @@ run_cmd do
     derivedAuditExpectedChunk42 ++
     derivedAuditExpectedChunk43 ++
     derivedAuditExpectedChunk44 ++
-    derivedAuditExpectedChunk45
+    derivedAuditExpectedChunk45 ++
+    derivedAuditExpectedChunk46
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
