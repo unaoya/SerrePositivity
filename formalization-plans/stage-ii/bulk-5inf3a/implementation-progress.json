@@ -3,7 +3,7 @@
   "complete": 3,
   "total": 6,
   "added": 0,
-  "verified_head": "this commit: base 4834ed1eefeb4197bbc31e08d5c384864c8bdf69",
+  "verified_head": "this commit: base 618672e7cb541b9046c342fa4ec18e281cd5ff6c",
   "items": {
     "HT01": "complete",
     "HT02": "complete",
@@ -12,13 +12,14 @@
     "HT05": "not-started",
     "HT06": "not-started"
   },
-  "latest_complete_audit_checkpoint": "reduced-cover-terms-checkpoint.json",
-  "latest_complete_audit_declarations": 1708,
+  "latest_complete_audit_checkpoint": "canonical-affine-row-map-checkpoint.json",
+  "latest_complete_audit_declarations": 1723,
   "working_changes_unverified": [
-    "AffineOrientedBaseRows",
-    "AffineResolvedCoefficientRows"
+    "DerivedScalarAnnihilation",
+    "AffineOrientedRowUnits",
+    "AffineReducedCoverCompleteness"
   ],
-  "pending_check": "bundle-175: same normal bulk request pending or running; source inventory frozen",
+  "pending_check": "bundle-177 terminal rc1; see audit module inventory; failed dependencies await next batch",
   "next_proof_route": "remaining-20000-plan.md",
   "initial_record": {
     "stage": "5inf3a",
@@ -393,7 +394,7 @@
     }
   ],
   "working_written_lines": 5185,
-  "source_inventory_scope": "Only HT01–HT06 source additions/changes against 336942ab0, plus untracked files; excludes pre-existing Comparison modules.",
+  "source_inventory_scope": "Only HT01\u2013HT06 source additions/changes against 336942ab0, plus untracked files; excludes pre-existing Comparison modules.",
   "static_check": "static-pending-check.json; not Lean validation",
   "build_wait_history": [
     {
@@ -451,7 +452,7 @@
   },
   "scope_review_history": [
     {
-      "reason": "remaining HT04–HT06 cannot be forecast within 659 remaining lines; coordination section 2 scale rule",
+      "reason": "remaining HT04\u2013HT06 cannot be forecast within 659 remaining lines; coordination section 2 scale rule",
       "verified_math_head": "28763cb06d93b4d5c007cd928f65065873e39623",
       "verified_modules": 157,
       "verified_lines": 13341,
