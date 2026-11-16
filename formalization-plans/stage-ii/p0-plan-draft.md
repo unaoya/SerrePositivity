@@ -38,3 +38,12 @@
 ## 4. 記録
 
 - 11-16：段 0 を ⑤d（P1〜P3）・⑤a（P4〜P6）に渡した（ユーザー）。基準の main 79c1315e7。紙だけ、報告をコミットしたら止まる。両方の報告を並べて、経路・順序・担当・外枠をユーザーと決める。
+
+## 5. 段 0 の結果（11-16 午後、取り込み d18dc42db・2ab22b3aa）
+
+- ⑤a（P4〜P6、`stage-ii/report-p0-p4-p6-stage0.md`）：28 項目、補正後 59,600〜101,800 行（P4 21,000〜35,600、P5 23,000〜39,000、P6 15,600〜27,200）。D(F_p) で DAG XIII の順を推奨。
+- ⑤d（P1〜P3、`research/p0-lurie/p1-p3-stage0.md`、HA の対応表 326 件を照合）：最小 M 25 項目で補正後 58,400〜113,800 行、E 4 項目 13,800〜27,200、C（Mod_Hk ≃ D(k)）7,000〜16,000。HA の選定節を広く作る差分は 85,000〜186,000。
+- 本線（M と P4〜P6）の合計：補正後 約 118,000〜215,600 行。含まないもの：E・C、Sp の基盤（HA 4.8.4.1 を使うための D(k) の Sp 作用）。
+- 両方で一致した点：D(F_p) の道、CAlg を BE の局所化で定義しない、May の演算は定義の後の比較だけ、P⁰ は CAlg の射にしない（Warning 2.2.10）。
+- 並行の可能性：P4（norm・Tate）は安定 ∞ 圏と Kan 延長だけで作れ、P1〜P3 を待たない。P1-01〜07・10、P2-01 は D(k) を待たない。
+- 未決：(i) I03（D(k) の Sp 作用、HA 4.8.4.1 の C 線形性の C）。D(F_p) の道でも Sp の対称モノイダル構造が要る可能性。(ii) 先に置き場所を直すもの（SimplicialLocalization・ProjectiveModel・Tensor/Fixed・TensorPowerRepresentation、OE-W1 と調整）。(iii) 文献の略号 DAGXIII・NS の登録（`research/bibliography.json` と `Util/Citation.lean`）。(iv) 各束の外枠。
