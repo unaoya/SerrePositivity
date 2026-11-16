@@ -225,3 +225,8 @@ S3 の逆向きの型は、段 0 の表の「`restrictJoinCone c (cechShape d) =
 ## 追記（2026-11-17 未明、調整役）：既存の補題の証明を一つ書き換えてよい
 
 `Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/DensityFiberYonedaValue.lean` の既存の補題 `presheafElementsYonedaSliceValue_interval`（main にある）の証明だけを、`rfl` から `rw [presheafElementsYonedaSliceValue, yonedaPresheafEvaluation_interval, presheafElementsYonedaSliceInterval, Category.assoc]` に置き換えてよい（承認した三本文の変更で、直接の importer の再ビルドで `rfl` が maxRecDepth に達したため）。条件：補題の主張・名前は変えない。maxRecDepth・heartbeats は上げない。補題なので下流には影響しない（証明は無関係）。OE-W1 の移動の対象には入っていない。取り込みのときに、この一か所の差分を確かめる。
+
+## 追記（2026-11-17 未明、調整役）：LeftCoherentTransportDirectComparison の三本文を直してよい
+
+報告（作業木の report-bs-infinity-a1-stage0.md 6001 行目以降、8f06e1bcd）を受けて承認する。`Kerodon/.../ClassificationOfCocartesianFibrations/LeftCoherentTransportDirectComparison.lean`（main にある）の三本文 `leftCoherentTransportDirectComparison`・`_projection`・`_isPrecompositionEquivalence` を、新しい `ScaffoldCoherentComparison` の同じ名前の構成に置き換えてよい（弱い存在命題からの choose を、同じ span に沿う相対同型を保つ選び方に替える。先に承認した錐の選び方と同じ考え方）。条件：公開の名前・型・仮定を変えない。`exists_leftCoherentTransport_directComparison` と QCatEquivalence の証明は変えない。適用の前後で保存比較 v3b。旧値との rfl の一致は求めない。
+**影響**：このファイルを推移的に import するのは main で 3,959 本（OE-W1・⑥・一括の枝は触っていない）。レーンでの確かめは、直接の importer（NerveTransportRepresentation・SmallLeftCoherentTransportReconstruction・F1）と Sheaves の全部で足りる。下流の全体は取り込みのときに調整役が夜に root と全監査で確かめる。
