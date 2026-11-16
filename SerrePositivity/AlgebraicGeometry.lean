@@ -1767,3 +1767,4 @@ public import SerrePositivity.AlgebraicGeometry.RingDirectLimitNaturality
 public import SerrePositivity.AlgebraicGeometry.FrobeniusArrowDiagramMaps
 
 public import SerrePositivity.AlgebraicGeometry.FrobeniusArrowCocone
+public import SerrePositivity.AlgebraicGeometry.FrobeniusDirectLimitCechExact

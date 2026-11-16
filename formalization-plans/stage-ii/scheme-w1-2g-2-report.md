@@ -1505,3 +1505,20 @@ Frobenius の既存の矢印の図式の端点の照合（着手前、既存の�
 今回1モジュール124行＋入口2行（空行込み）。新規119モジュール本体7,974行・モジュール登録119行込み8,093行。既存追加25行を含む外枠計数は本体7,999行・登録込み8,118行。新規小監査累計803宣言、既存15宣言は別計上。追加の空行は登録行とは別で、数学の行数には含めない。次の実際の射への完全性の移送は未検証の下書きで、この束には含めない。標準比較の自然性と conerve への接続、B1・Noether帰納・G5は残る。見込み約10,000〜13,500行・外枠16,000行は不変。
 
 一覧：済み1／全体3（うち追加0）。
+
+
+同じ矢印の標準比較の自然性（着手前、既存の Frobenius の射・余極限の自然性の法則の内数、130〜250行）：`frobeniusDirectLimitArrowMap F` は元の可換な四角形 F の両端の同じ frobeniusDirectLimitMap からなる矢印の射。`frobeniusArrowDiagramMap F` と `frobeniusArrowSmallDiagramMap F` は元の各有限段の同じ F の自然変換。`frobeniusArrowSmallColimitIso_ι` は同じ標準脚の保存、`frobeniusArrowCocone_map` は脚と F の可換性、`frobeniusArrowSmallColimitIso_naturality` は実際の矢印の写像と、同じ図式の colim.map を標準同型が結ぶこと。端点の同型だけで代用せず、元の可換な四角形を保つ。個々の宣言は200行以内の予定。
+
+
+同じ増大 conerve への比較の移送（着手前、前記の標準比較の自然性の内数、40〜90行）：`frobeniusAugmentedConerveColimitIso` は実際の frobeniusDirectLimitMap の増大 conerve と、元の矢印の反復図式の余極限の増大 conerve の標準同型。既存の augmentedCechConerve.mapIso に上の矢印の標準同型を渡すだけで、余極限の保存を別に定義し直さない。`…_naturality` は元の四角形 F の実際の増大 conerve の写像と、同じ colim.map の増大 conerve の写像が標準同型と可換なこと。増大項と全ての次数の自然性を同じ関手で保つ。
+
+
+## G4：忠実平坦な射の実際の Frobenius 順極限の Čech 完全性
+
+`FrobeniusDirectLimitCechExact`（48行）：`isCechExact_frobeniusDirectLimit_of_faithfullyFlat` は元の忠実平坦な Under の射から、実際の frobeniusDirectLimitMap の増大 Čech 完全性を返す。元の Arrow の余極限の完全性を、矢印全体の標準同型と既存の augmentedCechConerve 関手、B1 の ringCechExact_iff_of_iso で移す。`isCechExact_frobeniusDirectLimit_baseChange_of_faithfullyFlat` は元の任意の底変換の同じ射への適用。Frobenius 順極限の標準脚と環準同型を保つ。最終の AugmentedRingCechExact の型・定義や利用側の型は変更しない。
+
+単独検証、本体とのソース完全一致、対象と入口のビルド5,205ジョブ成功、小監査3宣言（実際の所有元による生成・非公開宣言込み）・標準三公理のみ、終了状態0。ログ `2g-frobenius-direct-limit-cech-exact-check-2.log`・`2g-frobenius-direct-limit-cech-exact-native.log`・`2g-frobenius-direct-limit-cech-exact-audit.log`。既定の透明性・資源制限。letIの style 警告あり。追加公理・sorry・既存の型変更・200行超の宣言なし。共有鍵 --class impl --wait 3600、待ちは一つ、対象ビルドと小監査は別枠。root・下流全ビルド・全体監査なし。
+
+今回1モジュール48行＋入口1行。基準56ea849a3から追加の本体を独立に再計数し、新規120モジュール本体8,022行。既存追加25行を含む外枠計数は本体8,047行・登録120行込み8,167行。新規小監査累計806宣言、既存15宣言は別計上。元の四角形と同じ conerve への標準比較の自然性は未検証の下書きで、この束には含めない。G4の二重 Čech・Noether帰納、G5は残る。見込み約10,000〜13,500行・外枠16,000行は不変。
+
+一覧：済み1／全体3（うち追加0）。
