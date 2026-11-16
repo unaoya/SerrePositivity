@@ -2779,3 +2779,26 @@ mainの取り込みは11-16 16:25の指示どおり保留したまま。検証�
 検証：個別のΓ図式 `2g-g4-global-augmented-check-1.log` と、二本をまとめたmodule形式 `2g-g4-augmented-global-check-2.log` は終了0。二本と直接importerの入口の対象ビルドは5,328ジョブ・終了0（`2g-g4-augmented-global-native.log`、依存のキャッシュ再生を含む）。固定manifest・下書き・本体のSHA256と全バイト一致を確認。別の共有鍵による所有宣言の小監査は28宣言（15、13）、非公開・生成分も含め標準三公理のみ、終了0（`2g-g4-augmented-global-audit.log`）。既存APIの型変更・追加公理・sorry・資源上限の引き上げ・200行超の宣言なし。
 
 今回155行＋入口2行＝157行。基準56ea849a3からの外枠計数は16,681行（新規233モジュール本体16,402行、既存追加25行、入口254行）。新規所有宣言の小監査累計1,741、既存15宣言は別計上。外枠20,000行、完成見込み約18,000〜19,400行を維持。元の増大Γ複体へtotalから戻す比較は下書きを検証中で、まだ完成扱いにしない。元の環のconerveへの移送、F8の核と元の増大複体の比較、Noether帰納（相対proper fppf・合成を含む）、G5の自然な移送も残る。G4・G5は未完。mainを取り込んでいない。共有鍵 --class impl --wait 3600、待ちは一件。root・下流全ビルド・AlgebraicGeometry全体監査なし。一覧：済み1／全体3（うち追加0）。
+
+
+元の環の増大conerveへの出口の係数移送（G4の既存の自然同型の増大との整合性、着手前の型、60〜120行見込み）：`affineScalarPerfectAugmentedIso` は既存のaffineScalarPerfectCechIsoとそのaugmentationの式を元の基底で恒等の増大図式の同型へまとめる。`affineScalarPerfectCech_exact_iff_tuple_total_acyclic` は元のスカラーR→Γ(Y)のfrobeniusAugmentedRingCoefficientsのAugmentedRingCechExactと、同じアフィンYのschemePerfectCechTupleDoubleのtotalの完全性を同値にする。ringCechExact_iff_integer_acyclic、直前のΓ増大のtotal比較、既存のaugmentedCochain.mapIsoだけを合成する。最終型AugmentedRingCechExactは変更しない。
+
+
+### 同じtotalから元の増大Γ複体とスカラー環の出口への比較
+
+`CechIntegerTotalToRowZeroIso`（50行）：
+- `cechIntegerTotalToRowZero_isIso`：正の縦次数の各項が零のとき、既存の同じtotalToRowZeroは同型。元の各ιTotalで逆射の二つの合成を照合する。
+- `cechIntegerTotalToRowZeroIso`：同じtotalと零次行の標準同型。
+
+`SchemePerfectCechGlobalAugmentedTotal`（80行）：
+- `cechSingleAugmentedTotalIso`：元の増大図式にsingleを入れた同じtotalと元の増大複体の標準同型。既存の軸射影、singleCompEvalIsoSelf、B1.mapAugmentedCochainIsoだけを合成する。
+- `schemePerfectCechGlobalAugmentedTotalIso`：実際のΓのsingleのtotalと、同じ元の増大Γ複体の標準同型。
+- `affineCechNerveTupleAugmentedGlobal_acyclic_iff`：アフィンY上の有限アフィン被覆では、元のタプルtotalの完全性と同じ増大Γ複体の完全性が一致するČech版。
+
+`AffineScalarPerfectTupleTotal`（67行）：
+- `affineScalarPerfectAugmentedIso`：元のスカラーR→Γ(Y)の環の増大conerveのFrobenius係数と、同じΓ増大係数の標準同型。基底項では恒等。
+- `affineScalarPerfectCech_exact_iff_tuple_total_acyclic`：元のスカラー環準同型のfrobeniusAugmentedRingCoefficientsのAugmentedRingCechExactと、同じアフィンタプルtotalの完全性の同値。最終の述語の型・定義を保つČech版。
+
+検証：三本をまとめたmodule形式の下書き `2g-g4-global-row-zero-check-3.log` は終了0。三本と直接importerの入口の対象ビルドは5,331ジョブ・終了0（`2g-g4-global-row-zero-native.log`、依存のキャッシュ再生を含む）。固定manifest・下書き・本体のSHA256と全バイト一致を確認。別の共有鍵による所有宣言の小監査は31宣言（10、15、6）、非公開・生成分も含め標準三公理のみ、終了0（`2g-g4-global-row-zero-audit.log`）。追加公理・sorry・既存宣言の型変更・資源上限の引き上げ・200行超の宣言なし。haveIのstyle警告は残る。
+
+今回197行＋入口3行＝200行。基準56ea849a3からの外枠計数は16,881行（新規236モジュール本体16,599行、既存追加25行、入口257行）。新規所有宣言の小監査累計1,772、既存15宣言は別計上。20,000行の外枠内で、完成見込み約18,000〜19,400行を維持する。元のスカラー環準同型に対するアフィン環の出口が閉じた。一般のρ:R→Sへ戻すΓSpecの係数移送の法則は明示が残る。F8の核と元の増大複体との比較、相対proper fppf・合成を含むNoether帰納、G5の自然な模型・Frobenius・filtered余極限の移送はなお未完であり、この出口だけでG4を完了扱いにしない。mainは今回の停止点まで取り込まない指示を守っており、未取り込み。共有鍵 --class impl --wait 3600、待ちは一件、対象ビルドと監査は別リース。root・下流全ビルド・AlgebraicGeometry全体監査なし。一覧：済み1／全体3（うち追加0）。
