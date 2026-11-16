@@ -5141,3 +5141,106 @@ nativeLeftSectionsValueIso_hom_transportCone P O hE d hd hc :
 S8全体、一般の局所同値と同じ層化の比較、S1の一般Coverage判定は未完。
 mainは取り込んでいない。S7・R2・R3は再開しない。
 一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+
+### 11-16：任意の錐の射の制限と、外枠の再見積もり
+
+`SectionsRestrictionProjection`（48行・1所有宣言）の対象ビルド・小監査が完了
+（終了コード0、標準三公理のみ、対象SHA一致）。証拠：
+`/tmp/is-w1/s8-sections-restriction-projection-2/target-audit-result.json`。
+
+型は、P・Qを同じ小さい通常の圏C上の集合値関手、OをULift(nerve C)からXへの射、
+c・dをdiagram Q O上の錐、ℓをそのsliceOverのホモトピー圏の任意の射とする。
+R := restrictSectionsFunctor φ O、πP・πQを頂点射影、
+hc・hdを既存のR ≫ πP = πQをそれぞれc・dで評価した頂点等式とすると、
+
+```lean
+restrictSectionsFunctor_projection_naturality φ O c d ℓ :
+  (hoFunctor.map πP).toFunctor.map ((hoFunctor.map R).toFunctor.map ℓ) ≫
+    eqToHom (congrArg HomotopyCategory.mk hd) =
+  eqToHom (congrArg HomotopyCategory.mk hc) ≫
+    (hoFunctor.map πQ).toFunctor.map ℓ
+```
+
+実ソースではR・πP・πQ・hc・hdを全て明示している。制限した錐の極限性を仮定しない。
+一般の重みの射で、同値な添字による制限の場合だけの極限比較の法則を誤用しないための法則。
+初回はSheaves内のPresheafという略記をその名前空間の外で使ったためエラーになった。
+未知名はautoImplicit falseで検出された。一般の元の係数の型を明示し、頂点の等式も
+既存の全射影の等式から直接評価する形で通った。初回の後続whnfはこの型エラーに続くもの。
+計算上限は上げていない。既存構成の法則（200行未満、追加IDなし）。
+
+#### 外枠の現物による保守的な確認
+
+全306本の同時import検証用の一覧から、現物の物理行を再採取した。
+現物19,517行、撤回した重複46行と承認済み3本文で削った7行を控除せず加え、
+**外枠用には19,570行**を採用する。
+証拠：`/tmp/is-w1/s8-all-branch-import-audit-2/cap-inventory.json`。
+以前の累計に今回48行を加えた19,479行とは91行差がある。過少計上を避け、今回から
+上記の現物による大きい方を正とする。引用属性・docstringだけの変更の除外を
+この現物の上限には再適用していない。91行の差の個々の由来の照合は未完であり、
+引用属性だけが原因と確定したものではない。
+
+#### 残りの見込み（元の型を保持）
+
+| 残り | 行数の見込み |
+| --- | ---: |
+| 固定されたweightedSections_discrete_map：下の(A)〜(C) | 1,000〜1,650 |
+| 実際のČech対角の全族と定値錐・余極限の反転の接続 | 380〜650 |
+| 元の任意係数Eでのsections_localEquiv_isoと必要な宇宙移送 | 350〜600 |
+| 元のordinary層化単位との比較、同じ反射の全関手と指定単位の比較 | 550〜950 |
+| 元の一般Coverage判定（普遍降下性を追加入力にしない） | 450〜800 |
+| **残り計** | **2,730〜4,650** |
+| **現物による外枠用19,570行との計** | **22,300〜24,220** |
+
+固定された比較の残りを次のように分けて見積もった（重複なし）。
+
+(A) 同じ指定余単位を保つ既存の大域Kan比較の成分を、指定輸送錐の標準極限比較に照合する
+法則（350〜550行）。一般の同じδ、同じ係数O、α : δ ≫ F ⇒ O、β : δ ≫ G ⇒ O、
+η : FunctorIso F G、ηの元のhom_fac、両指定輸送tF・tGの極限性を入力として、型は
+
+```lean
+eqToHom (congrArg HomotopyCategory.mk tF.cone_vertex.symm) ≫
+  (limitVertexIso tF.cone tG.cone htF htG).hom ≫
+    eqToHom (congrArg HomotopyCategory.mk tG.cone_vertex) =
+      functorHomEvaluate η.hom v
+```
+
+を示すもの。新しいηを点ごとに組み立てず、既存のrightKanHomUniversalIso・hom_facを使う。
+htF・htGは元のKan延長から供給する。現在のconeFamily_isoは同型の存在を返すが、
+この式の頂点射とηの成分との一致は結論に含んでいない。可換三角形だけでこの法則を
+供給済みと数えることはできない。
+
+(B) 元の指定形状同型・係数移送からleft全空間・要素の圏までの同じ比較を、重みの射φに
+沿う族で照合する（400〜650行）。ここで必要なのは、既存のG8の全族比較と、今回の同じ
+指定輸送錐との比較であり、形状同型の自然性を追加入力に置かない。
+
+(C) 埋め込みの頂点等式の移送と同じ切断射の射影を合わせ、最後の固定された四角形を閉じる
+（250〜450行）。型は元のdraftsどおり
+
+```lean
+homMk (weighted_sections_edge φ) ≫ (weightedSections_discrete O hE P hP).hom =
+  (weightedSections_discrete O hE Q hQ).hom ≫ homMk (sectionsOf_map φ O hP hQ)
+```
+
+という向き（weighted_sections_edgeは元の同じ全関手によるφの像の辺の略記）。
+今回の可換三角形は、選んだ中間極限を消す部分までで、(A)〜(C)の全族比較自体を完成していない。
+元の固定比較の見込みの上端1,710行を単に使い切った残りと扱うと、未着手の指定余単位の
+成分照合を小さく見積もるため、残った主張ごとに上の内訳へ出し直した。
+
+**上端24,220行が外枠24,000行を220行超える見込みになったため、検証済みを保存してLeanの追加を止める。**
+下端の見込みに寄せて未証明部分を省略することはしない。これは完成の停止点ではない。
+S7・R2・R3は再開しない。mainも取り込んでいない。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+
+#### 保存前の全追加モジュールの統合検証
+
+全306本を同時にimportする対象ビルドと、採取し直した1,640所有宣言の小監査が完了した。
+監視プロセス終了コード0、成功JSON、全対象SHA一致、標準三公理のみを確認。
+証拠：`/tmp/is-w1/s8-all-branch-import-audit-2/target-audit-result.json`、
+`catalog-after.json`、`audit-after.log`。rootビルドやroot監査ではなく当レーンの対象検証であり、
+mainの取り込みも行っていない。承認された3本文以外の既存の数学的宣言は変更していない。
+停止中R2の4下書きは未変更・未検証・コミット対象外。
+以上の検証済みを保存し、前記の外枠の停止条件に従ってLeanの追加を止める。
+5∞-1の完成ではなく、未完はS1とS8。再開時は(A)の指定余単位と成分の照合から。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
