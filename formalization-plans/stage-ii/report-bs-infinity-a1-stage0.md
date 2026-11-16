@@ -5593,3 +5593,131 @@ rflが通った・失敗したとは扱わない。旧選択だけの検査を `
 次の対象ビルドの前に実行する。承認された三本文は、今待つ検証の依存先でもあるためまだ適用していない。
 S1・S8は未完。S7・R2・R3は再開せず、mainも取り込まない。
 一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+
+#### 三本文の承認差分の適用と、同じ余単位の類の代表の移送（11-17 未明）
+
+次の整理券も待機中だったため、その開始前に承認差分を適用した。
+SmallLeftUnstraighteningFunctorIsoの三本文と説明だけ、+8/-7行。
+同じ指定同型ηの実際の射作用 `smallUnstraighteningFunctorHom η.hom` と、
+その射影・同値性の既存補題を使う。新しい仮定や公開の型の変更はない。
+旧oleanでの等式検査→新本文の対象ビルド→v3b採取・保存比較→(A)の検証、の順にした。
+待機中の数学対象・その依存を実行途中で変更したわけではなく、検証は新しい本文の環境で行う。
+まだビルド待ちなので、この差分を検証済みの累計・コミットには入れない。
+差分の8挿入行を通過後に外枠へ加え、7削除行を返金しない方針。
+
+10. `RightKanHomRepresentativeTransfer`（新規36行・未検証）は次の型の既存構成の法則。
+
+```lean
+(α : SSet.Homotopy (δ ≫ F) F₀) → (b : FunctorHom (δ ≫ G) F₀) →
+(η : FunctorIso F G) →
+(rightKanHomMap δ b F η.hom = homMk (functorEdgeOfSimplicialHomotopy α)) →
+IsRightKanExtension δ F₀ F α →
+IsRightKanExtension δ F₀ G (functorHomHomotopy b)
+```
+
+既存の代表 `functorHomHomotopy b` の類がbであることを
+`functorHomHomotopy_hom`で書き換え、上の9を使うだけ。
+(B)では b := ((fixedOppositeSetYoneda_nativeIso C).postcomp G).hom ≫ [β] として、
+元の `weightedSections_nativeShape_comparison_hom_fac` から入力する。
+実際のKan条件は元のweightedSectionsのKan条件とこの移送で証明し、
+`RightKanHomUniversal.indexIso` のπ₀の条件を点ごとのKan条件に読み替えない。
+分類・底変換の同じ比較との一致は、この補題だけでは完了しない。
+200行未満の既存構成の法則、追加IDなし。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+
+#### 待ち時間の宇宙移送の法則（11-17 未明、未検証）
+
+11. `NativeSheafUniverseLift`（新規47行）に、元の篩の全錐の二つの法則を書いた。
+C : Type u、E : SSet u、F : nerve Cᵒᵖ ⟶ Eとして、型は
+
+```lean
+(JoinCone.ulift (nativeRestrictionCone F S)).val =
+  (restrictionCone ((SSet.uliftFunctor.{u + 1, u}).map F) S).val
+
+NativeIsSheaf J F ↔ IsSheaf J ((SSet.uliftFunctor.{u + 1, u}).map F)
+```
+
+前者は元の全射の等式、後者は既存の `isLimitCone_iff_ulift` と前者による錐の比較。
+presentable性や極限の存在を仮定しない。200行未満の既存構成の法則、追加IDなし。
+任意の係数のHomの宇宙を上げる際には、C′ := AsSmall.{u + 1} Cを使える。
+元の形状とnerve C′ᵒᵖの同型は既存の `asSmallSiteShapeIso C`。
+元のIsSheafを既存のAsSmallのNativeIsSheafへ送り、その同じ全被覆錐をこの法則で持ち上げる案。
+この法則だけをもって、任意の係数の `sections_localEquiv_iso` が完成したとは扱わない。
+現在の同じ一枚の整理券の後段に対象検証を入れた。検証済み累計は20,438行・322本のまま。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+
+12. `WeightedSectionsNativeRepresentative`（新規43行・未検証）は10の元の値への特殊化。
+
+```lean
+-- βは元のnativeShape射δ′に沿う指定右Kan延長の余単位、hβはそのKan条件。
+let b := ((fixedOppositeSetYoneda_nativeIso C).postcomp G).hom ≫
+  homMk (functorEdgeOfSimplicialHomotopy β)
+IsRightKanExtension (oppositeSpaceYoneda C) O G (functorHomHomotopy b)
+```
+
+元の `weightedSections_nativeShape_comparison` とその `hom_fac`、
+元の `weightedSections_isRightKanExtension` をそのまま10へ入れる。
+点ごとの同型の組み立てやHom普遍性を仮定に置く証明ではない。
+同じ指定局所比較との一致は別途残る。既存構成の法則、200行未満、追加IDなし。
+同じ一枚の整理券の最後に対象検証を入れた。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+
+13. `WeightedSectionsGlobalComparisonVertex`（新規60行・未検証）は(A)を元の全比較へ特殊化する。
+bは上の12の同じ合成、t := weightedSections_valueTransport O hE P、
+sはbの既存代表に沿う任意のRightKanConeTransportとして、型は
+
+```lean
+eqToHom (congrArg mk t.cone_vertex.symm) ≫
+  (limitVertexIso t.cone s.cone ht hs).hom ≫ eqToHom (congrArg mk s.cone_vertex) =
+  functorHomEvaluate (weightedSections_nativeShape_comparison O hE β hβ).hom P
+```
+
+htは元のweightedSections_valueTransportの極限性、hsは12と
+isRightKanExtension_iff_forall_transportで証明する。
+同じ大域比較の成分・元のtの選択・同じ指定余単位の類を保つ。
+既存構成の自然性の法則、200行未満、追加IDなし。元の添字同型に沿う局所比較との照合は依然残る。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+
+14. `WitnessPointedDiagramIso`（新規53行・未検証）の型は、同じ表現空間の頂点同型hについて
+
+```lean
+kanFunctorHomCongr R.pointedMap_projection S.pointedMap_projection
+  ((Ho.map ((ihom E).map pointedSpaceProjection)).toFunctor.map (R.pointedIso S h).hom) =
+  (Ho.map ((pre p).app SpaceInfinity)).toFunctor.map (R.diagramIso S h).hom
+```
+
+既存の `transportWitnessDiagram_condition` を同じhの射へ適用する法則。
+二つの同型を独立に選ばず、同じ族の二射影を同時に保持する。
+端点の移送はArrow上で消去し、既存の同じ射影の等式からHomの等式を回収する案。
+新しい分類の存在・一意性の定理ではなく、既存構成の射影・係数移送の法則、追加IDなし。
+この法則から元の分類・復元の選択へ戻す比較は、なお(B)に残る。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+
+### 承認された三本文の置換の対象検証・保存比較（11-17 未明）
+
+`SmallLeftUnstraighteningFunctorIso` の置換後の対象ビルドが終了0。
+同じモジュールの旧・新のv3b採取を行い、8宣言すべてについて kind・公開型・属性・公理が一致した。
+証明の内部行の除外は0、標準三公理のみ。データの本文の変更は承認された
+smallLeftUnstraighteningComparisonOfFunctorIsoだけ。承認された二つの証明の本文は公理・型とも一致。
+ソースSHAも一致。証拠：`/tmp/is-w1/s8-index-comparison-choice-check/` の
+`replacement-build-result.json`・`before.json`・`after.json`・`preservation-result.json`。
+このモジュール単体の検証済み差分として保存する。直接importer13本と既存Sheaves165本の
+対象再ビルド・小監査は別の一枚の整理券で待っており、まだ統合検証済みとはしない。
+
+最初の旧選択だけの診断は、後半の単体記法のscope不足で終了1。
+診断全体が成功したとは扱わない。旧本文の式そのものを独立の一時補題に写したrfl検査と、
+新本文が指定η.homの既存射作用であるrfl検査を用意し、次の対象再ビルドの先頭で行う。
+新たな本体の検査補題は追加しない。
+
+(A)の因子分解は端点の明示で進み、右単位の相殺だけが残ったためCategory.comp_idを明示した。
+この因子分解とその後段、宇宙移送、元の全比較への特殊化はまだ未検証。
+今回の本文差分8挿入行を加え、7削除行は返金せず、外枠用の検証済み累計は
+**20,446行・新規322本＋承認された既存1本の本文差分**。
+S1・S8は未完。S7・R2・R3は再開せず、mainも取り込まない。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。

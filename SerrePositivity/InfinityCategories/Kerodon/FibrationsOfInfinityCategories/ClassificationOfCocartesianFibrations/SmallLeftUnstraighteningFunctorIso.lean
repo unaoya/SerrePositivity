@@ -1,5 +1,6 @@
 module
 
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SmallUnstraighteningIsoHom
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SmallLeftUnstraighteningOverMap
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftUnstraighteningInvertibleTransformation
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.ResolutionComparisonEdge
@@ -44,18 +45,18 @@ lemma exists_smallLeftUnstraighteningComparison_of_functorIso
     _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.smallLeftUnstraighteningOverMap_projection F G f hf,
     _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.smallLeftUnstraighteningOverMap_isPrecompositionEquivalence F G f hf ef⟩
 
-/-- 概要：関手同型に対応する小さい unstraightening の底上の比較射を選ぶ。
-方針：底を保つ前合成同値の存在定理から順方向の射を取り出す。
+/-- 概要：指定した関手同型の射を保つ小さい unstraightening の底上の比較射。
+方針：元の同じ二胞体を送る既存の全写像空間の射作用を使う。
 規約：選択した射の底の条件と同値性を別の補題で保持する。
 使われ方：Kerodon Corollary 5.6.0.6（Tag 028T）、比較図式で使う具体的な小さい全空間の射。 -/
 noncomputable def smallLeftUnstraighteningComparisonOfFunctorIso
     {B : SSet.{u}} [Quasicategory B]
     {F G : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u}}
     (η : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso F G) : _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.smallLeftUnstraightening F ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.smallLeftUnstraightening G :=
-  (exists_smallLeftUnstraighteningComparison_of_functorIso η).choose
+  smallUnstraighteningFunctorHom η.hom
 
 /-- 概要：選択した小さい比較射は元の底を保つ。
-方針：選択した存在の証明の第一条件を取り出す。
+方針：指定した二胞体の同じ射作用の射影の法則を使う。
 規約：関手同型 η の選択を固定する。
 使われ方：Kerodon Corollary 5.6.0.6（Tag 028T）、小さい相対関手空間への比較射の入力。 -/
 lemma smallLeftUnstraighteningComparisonOfFunctorIso_projection
@@ -64,10 +65,10 @@ lemma smallLeftUnstraighteningComparisonOfFunctorIso_projection
     (η : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso F G) :
     smallLeftUnstraighteningComparisonOfFunctorIso η ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.smallLeftUnstraighteningProjection G =
       _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.smallLeftUnstraighteningProjection F :=
-  (exists_smallLeftUnstraighteningComparison_of_functorIso η).choose_spec.1
+  smallUnstraighteningFunctorHom_projection η.hom
 
 /-- 概要：選択した小さい比較射は全ての quasicategory への前合成同値。
-方針：選択した存在の証明の第二条件を取り出す。
+方針：指定した可逆二胞体の同じ射作用の同値性を使う。
 規約：順方向は構成済みの小さい比較射そのもの。
 使われ方：Kerodon Corollary 5.6.0.6（Tag 028T）、相対写像空間の同値不変性への適用。 -/
 lemma smallLeftUnstraighteningComparisonOfFunctorIso_isPrecompositionEquivalence
@@ -75,7 +76,7 @@ lemma smallLeftUnstraighteningComparisonOfFunctorIso_isPrecompositionEquivalence
     {F G : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u}}
     (η : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso F G) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.IsPrecompositionEquivalence (smallLeftUnstraighteningComparisonOfFunctorIso η) :=
-  (exists_smallLeftUnstraighteningComparison_of_functorIso η).choose_spec.2
+  smallUnstraighteningFunctorHom_isPrecompositionEquivalence η.hom
 
 /-- 概要：関手同型の小さい unstraightening は同じ宇宙の quasicategory として同値。
 方針：底上の小さい比較射の前合成同値性から逆射と単位・余単位を得る。
