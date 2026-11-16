@@ -3,29 +3,19 @@
   "complete": 3,
   "total": 6,
   "added": 0,
-  "verified_head": "this commit: base 54fabc8c9ea7618e24e0b8132e444ee526a89b97",
+  "verified_head": "589061d1b0c48f27f7083c7034e4bdd65b634650",
   "items": {
     "HT01": "complete",
     "HT02": "complete",
     "HT03": "complete",
-    "HT04": "in-progress",
+    "HT04": "incomplete; stopped at 23000-line forecast cap",
     "HT05": "not-started",
     "HT06": "not-started"
   },
   "latest_complete_audit_checkpoint": "oriented-base-hodge-tate-basis-checkpoint.json",
   "latest_complete_audit_declarations": 2049,
-  "working_changes_unverified": [
-    "OrdinaryExtendedUnit",
-    "AffineRestrictedHTCoordinates",
-    "AffineOriginalHomologyCoordinates",
-    "AffineLineBaseRealization",
-    "MapExtendHomologyCompatibility",
-    "MapExtendDegreeNormalization",
-    "OrdinaryExtendedHomology",
-    "AffineAnyOrdinaryTargetUnit",
-    "AffineAnyExtendedHomology"
-  ],
-  "pending_check": "bundle-227 terminal rc1; see audit module inventory; failed dependencies await next batch",
+  "working_changes_unverified": [],
+  "pending_check": "none; bundle-227 terminal, no build request running",
   "next_proof_route": "remaining-20000-plan.md",
   "initial_record": {
     "stage": "5inf3a",
@@ -399,8 +389,8 @@
       "lines": 74
     }
   ],
-  "working_written_lines": 5185,
-  "source_inventory_scope": "Only HT01\u2013HT06 source additions/changes against 336942ab0, plus untracked files; excludes pre-existing Comparison modules.",
+  "working_written_lines": 18021,
+  "source_inventory_scope": "Only HT01–HT06 source additions/changes against 336942ab0, plus untracked files; excludes pre-existing Comparison modules.",
   "static_check": "static-pending-check.json; not Lean validation",
   "build_wait_history": [
     {
@@ -418,47 +408,47 @@
   ],
   "current_request_last_confirmed_live_utc": "2026-11-15 04:52:28 UTC",
   "HT02_remaining": "complete; see ht02-complete.json",
-  "prepared_source_lines": 13341,
-  "prepared_modules": 157,
-  "verified_source_lines": 13341,
+  "prepared_source_lines": 18021,
+  "prepared_modules": 215,
+  "verified_source_lines": 18021,
   "provisional_total_source_lines": [
-    18441,
-    22441
+    22223,
+    25443
   ],
   "current_stage_order": {
     "HT01": "complete",
     "HT02": "complete: original standard S comparison, naturality, source model independence, rowwise quasi-isomorphism invariance",
     "HT03": "only the Zp crystalline input transported to the specific universal crystalline cover before general HT",
-    "HT04": "universal oriented base via Construction 6.1 and actual HT02 comparison",
-    "HT05": "general bounded oriented base and finite variables with original eta",
-    "HT06": "general crystalline Corollary 5.5 after general HT; audit and draft promotion"
+    "HT04": "incomplete; source-code work stopped at cap forecast; see ht04-cap23000-review.md",
+    "HT05": "not started; coordinator design review hold",
+    "HT06": "not started; coordinator design review hold"
   },
   "HT02_complete": true,
   "scope_review": {
-    "reason": "approved typed plan and 23000-line cap; continue HT04 then HT05 then HT06",
-    "instruction_commit": "36685f20c759b587ae91a4be53feacc76d27ff55",
+    "reason": "corrected upper forecast exceeds 23000; actual source count has not reached cap",
     "outer_limit_lines": 23000,
-    "verified_lines": 13341,
-    "remaining_lines": 9659,
-    "corrected_additional_lines": [
-      5100,
-      9100
+    "verified_head": "589061d1b0c48f27f7083c7034e4bdd65b634650",
+    "verified_lines": 18021,
+    "prepared_lines_before_isolation": 18673,
+    "private_prototype_lines": 150,
+    "corrected_remaining": [
+      3400,
+      6620
     ],
     "projected_corrected_total_lines": [
-      18441,
-      22441
+      22223,
+      25443
     ],
-    "gate_passed": true,
+    "gate_passed": false,
     "complete": 3,
     "total": 6,
     "added": 0,
-    "report": "remaining-20000-plan.md",
-    "authorization": "resume-23000.json",
-    "no_new_math_bundle_after_report": false
+    "report": "ht04-cap23000-review.md",
+    "no_new_math_bundle_after_report": true
   },
   "scope_review_history": [
     {
-      "reason": "remaining HT04\u2013HT06 cannot be forecast within 659 remaining lines; coordination section 2 scale rule",
+      "reason": "remaining HT04–HT06 cannot be forecast within 659 remaining lines; coordination section 2 scale rule",
       "verified_math_head": "28763cb06d93b4d5c007cd928f65065873e39623",
       "verified_modules": 157,
       "verified_lines": 13341,
@@ -492,11 +482,39 @@
       "report": "remaining-20000-plan.md",
       "estimate": "remaining-20000-estimate.json",
       "no_new_math_bundle_after_report": true
+    },
+    {
+      "reason": "approved typed plan and 23000-line cap; continue HT04 then HT05 then HT06",
+      "instruction_commit": "36685f20c759b587ae91a4be53feacc76d27ff55",
+      "outer_limit_lines": 23000,
+      "verified_lines": 13341,
+      "remaining_lines": 9659,
+      "corrected_additional_lines": [
+        5100,
+        9100
+      ],
+      "projected_corrected_total_lines": [
+        18441,
+        22441
+      ],
+      "gate_passed": true,
+      "complete": 3,
+      "total": 6,
+      "added": 0,
+      "report": "remaining-20000-plan.md",
+      "authorization": "resume-23000.json",
+      "no_new_math_bundle_after_report": false
     }
   ],
-  "provisional_total_source_lines_basis": "verified 13341 + factor-two corrected remaining estimate; conditional gate failed",
-  "terminal_stop": "HT04.R1-R3 complete: commit measured report and stop",
+  "provisional_total_source_lines_basis": "retained and archived work plus factor-two remaining estimate; forecast upper exceeds cap",
+  "terminal_stop": "23000-line forecast cap; HT04 incomplete; no follow-on work",
   "no_follow_on_5inf7a": true,
   "stop_instruction_commit": "75e22977f",
-  "HT05_HT06_on_hold": true
+  "HT05_HT06_on_hold": true,
+  "archived_unverified_candidates": "ht04-cap23000-unverified-candidates.tar.gz",
+  "prepared_before_isolation": {
+    "modules": 224,
+    "lines": 18673,
+    "private_prototype_lines": 150
+  }
 }
