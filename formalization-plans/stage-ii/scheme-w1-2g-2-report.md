@@ -1756,3 +1756,20 @@ G4・G5と停止点2g-2は未完。最終の AugmentedRingCechExact と利用側
 同じ有限アフィン被覆の実際の Frobenius 係数の長さ0の単射性と全長さの完全性、および実際の大域切断からの増大写像の単射性と零次の完全性まで検証した。アフィン nerve の環の自然な比較、相対 proper fppf の二重 Čech、F8 の全複体との接続と実際のブローアップを保つ Noether帰納、G5はなお残る。G4・G5と停止点2g-2は未完。最終の AugmentedRingCechExact と利用側の型は不変。見込み約12,000〜15,500行・外枠16,000行は不変。
 
 一覧：済み1／全体3（うち追加0）。
+
+
+同じ Γ 比較の各次数の分割（着手前、前記200〜500行の内数、45〜90行）：`affineGammaCechComponentIso f n` は、Γ(f) の環の conerve の n 次と、同じ幾何的 nerve の n 次の大域切断環の標準同型。`…_ι`・`…_head` は元の有限余積の各脚と head が、元の射影と基底への射の Γ に移る式。同じ二つの余錐の普遍性を使う。
+
+
+同じ Γ 比較の次数と増大への自然性（着手前、前記200〜500行の内数、70〜130行）：`affineGammaCechComponentIso_naturality f a` は Γ(f) の環の conerve の射 a と、同じ幾何的 nerve の射 a.op の Γ を各次数の標準比較が結ぶこと。元の各射影・head の式を使う。`affineGammaCechConerveIso f` はそれを自然同型にまとめる。`affineGammaCechConerveIso_augmentation f n` は同じ基底 Γ(S) からの増大写像が元の基底への射の Γ に移る式。
+
+
+## G4：同じアフィン nerve の Γ の余錐と普遍性
+
+`AffineGammaCechCocone`（73行）：`affineGammaCechCocone` は任意の f:Y→S の同じ広義ファイバー積の大域切断を点とする、元の各射影・基底への射の Γ の余錐。`affineGammaCechIsColimit` は Y・S がアフィンの場合、その同じ余錐の普遍性を、既存の Γ のアフィン図式の極限保存と反対圏・添字の同値による移送で示す。図式の同定には既存の WidePushoutShape.diagramIsoWideSpan を使う。`affineGammaCechCocone_ι`・`…_head` は脚が元の射影と基底への射の Γ であること。新しい存在の仮定や Noether 性は要求しない。
+
+単独検証、本体とのソース完全一致、対象と入口のビルド5,224ジョブ成功、小監査7宣言（実際の所有元による非公開・生成宣言込み）・標準三公理のみ、終了状態0。ログ `2g-affine-gamma-cech-cocone-check-2.log`・`2g-affine-gamma-cech-cocone-native.log`・`2g-affine-gamma-cech-cocone-audit.log`。余錐と普遍性の構成に局所的な backward.isDefEq.respectTransparency false、既定の資源制限。追加公理・sorry・既存の型変更・200行超の宣言なし。共有鍵 --class impl --wait 3600、待ちは一つ、対象ビルドと小監査は別枠。root・下流全ビルド・全体監査なし。
+
+今回1モジュール73行＋入口1行。新規139モジュール本体9,311行、既存追加25行を含む本体9,336行。登録139行・入口の追加空行21行を全て含む外枠計数 **9,496行**。新規小監査累計920宣言、既存15宣言は別計上。各次数の標準同型と自然性・増大の保存は下書きで、この束には含めない。G4・G5と停止点2g-2は未完。見込み約12,000〜15,500行・外枠16,000行は不変。
+
+一覧：済み1／全体3（うち追加0）。
