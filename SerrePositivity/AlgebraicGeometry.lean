@@ -1790,3 +1790,4 @@ public import SerrePositivity.AlgebraicGeometry.AffineGammaCechCocone
 public import SerrePositivity.AlgebraicGeometry.AffineGammaCechComponent
 public import SerrePositivity.AlgebraicGeometry.AffineGammaCechNaturality
 public import SerrePositivity.AlgebraicGeometry.AffineScalarCechConerve
+public import SerrePositivity.AlgebraicGeometry.AffineScalarPerfectCech

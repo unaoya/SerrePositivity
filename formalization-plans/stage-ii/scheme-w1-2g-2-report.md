@@ -1791,3 +1791,17 @@ G4・G5と停止点2g-2は未完。最終の AugmentedRingCechExact と利用側
 今回三本186行＋入口3行。基準56ea849a3から再計数し、新規142モジュール本体9,497行、既存ファイルへの追加25行（削除14行は相殺しない）、入口追加163行（登録142・空行21）を含む外枠計数 **9,685行**。新規小監査累計937宣言、既存15宣言は別計上。アフィン nerve の全ての次数と増大を保つ環の標準比較まで検証した。Frobenius 係数への同じ比較の接続、非アフィン基底での相対 proper fppf の二重 Čech、F8 の全複体と元のブローアップを保つ Noether 帰納、G5は未完。最終の AugmentedRingCechExact と利用側の型は変更していない。見込み約12,000〜15,500行・外枠16,000行は不変。停止点2g-2ではない。
 
 一覧：済み1／全体3（うち追加0）。
+
+
+次の同じ比較の Frobenius 係数への移送（着手前、既存の係数移送・増大の法則の内数、80〜160行）：`affineScalarCech_primeCast Y f p hR n` は元の環 R の p=0 を同じ conerve の増大と標準同型で同じ幾何的 nerve の Γ へ移す。`affineScalarPerfectCechIso Y f p hp hR` は同じ二つの環図式に既存の frobeniusRingDiagramIso を適用した、実際の整数加群の Frobenius 係数図式の自然同型。`…_augmentation` は元の R の実際の Frobenius 順極限からの増大写像が、ΓSpec の逆と同じ幾何的増大の Γ の合成の順極限写像へ移る式。標数条件を新しく仮定せず hR から供給し、全ての次数の射と元の R を保持する。
+
+
+## G4：同じアフィン nerve の比較の実際の Frobenius 係数への接続
+
+`AffineScalarPerfectCech`（75行）：`affineScalarCech_primeCast` は元の R の p=0 を元の conerve の増大と同じ標準自然同型で、同じ幾何的 nerve の大域切断環へ移す。`affineScalarPerfectCechIso` は同じ標準自然同型に既存の frobeniusRingDiagramIso を適用した、実際の Frobenius 順極限の整数加群の係数図式の自然同型。`…_augmentation` は元の R の同じ Frobenius 順極限からの増大が、ΓSpec の逆と同じ幾何的増大の Γ の合成の順極限写像へ移る式。有限段の同じ元と直前の環の増大の一致から示した。標数条件は hR だけから供給し、全ての次数の射・元の環と写像を保持する。
+
+下書き単独検証成功、下書きと本体全バイト一致。対象と直接 importer の入口のビルド5,228ジョブ成功、別の共有鍵の小監査7宣言・標準三公理のみ。実際の所有元で非公開・生成宣言も全件走査した。終了状態は全て0。ログ `2g-affine-scalar-perfect-cech-check-2.log`・`2g-affine-scalar-perfect-cech-native.log`・`2g-affine-scalar-perfect-cech-audit.log`。増大の証明に局所的な backward.isDefEq.respectTransparency false、資源上限は既定、長い行のstyle警告あり。追加公理・sorry・既存の型変更・200行超の宣言なし。鍵 --class impl --wait 3600、同時の待ちは一つ。root・下流全ビルド・全体監査なし。
+
+今回一本75行＋入口1行。新規143モジュール本体9,572行、既存追加25行、入口追加164行（登録143・空行21）を含む外枠計数 **9,761行**。新規小監査累計944宣言、既存15宣言は別計上。アフィン nerve の環の自然な比較と実際の Frobenius 係数への移送が同じ増大を保つ所まで検証した。非アフィン基底の相対 proper fppf の二重 Čech、F8 全複体と元のブローアップを保つ Noether帰納、G5はなお残る。G4・G5と停止点2g-2は未完。最終の AugmentedRingCechExact と利用側の型は不変。見込み約12,000〜15,500行・外枠16,000行は不変。
+
+一覧：済み1／全体3（うち追加0）。
