@@ -53,7 +53,7 @@ universe u
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze
-open CategoryTheory CategoryTheory.Limits
+open _root_.CategoryTheory _root_.CategoryTheory.Limits
 attribute [local instance] HasDerivedCategory.standard
 variable {p : ℕ} [Fact p.Prime] {A B : Type u} [CommRing A] [CommRing B]
 variable (D : DeltaStructure p A) (E : DeltaStructure p B) (j : A →+* B)
@@ -141,7 +141,7 @@ end DeltaAlgebraFrobeniusStages
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze
-open CategoryTheory CategoryTheory.Limits
+open _root_.CategoryTheory _root_.CategoryTheory.Limits
 variable {p : ℕ} [Fact p.Prime] {A B : Type u} [CommRing A] [CommRing B]
 variable (D : DeltaStructure p A) (E : DeltaStructure p B) (j : A →+* B)
 
@@ -289,7 +289,7 @@ end DeltaAlgebraPerfectionCocone
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze
-open CategoryTheory CategoryTheory.Limits
+open _root_.CategoryTheory _root_.CategoryTheory.Limits
 attribute [local instance] HasDerivedCategory.standard
 variable {p : ℕ} [Fact p.Prime] {A : Type u} [CommRing A]
 variable (D : DeltaStructure p A) (d : A) (n : ℕ)
@@ -348,7 +348,7 @@ theorem perfectPrismRootFamilySource_frobenius_residue_inputs
     (b : σ → A) {m : ℕ} (s : Fin m ≃ σ) (k : ℕ) :
     let D₀ := P.deltaStructure
     let d₀ := P.generator
-    let X₀ := DeltaRootSourceIteratedPDCompletion D₀ d₀ b
+    let X₀ := _root_.SerrePositivity.BhattScholze.Andre.DeltaRootSourceIteratedPDCompletion D₀ d₀ b
     let Q := A ⧸ Ideal.span {(p : A), (D₀.frobeniusLift ^ k) d₀}
     let Y := (boundedAboveDerivedBaseChange
       (Ideal.Quotient.mk (Ideal.span {(p : A), (D₀.frobeniusLift ^ k) d₀}))).obj X₀
@@ -358,9 +358,9 @@ theorem perfectPrismRootFamilySource_frobenius_residue_inputs
         ((ModuleCat.restrictScalars
           (perfectDeltaFrobeniusPrismaticResidueEquiv D₀ hP d₀ k).toRingHom).obj
             ((DerivedCategory.homologyFunctor (ModuleCat Q) 0).obj Y.obj)) := by
-  let X₀ := DeltaRootSourceIteratedPDCompletion P.deltaStructure P.generator b
-  have hz := perfectPrismRootFamilySource_modPD_homology_isZero P hP b s
-  have hf := perfectPrismRootFamilySource_modPDH0_faithfullyFlat P hP b s
+  let X₀ := _root_.SerrePositivity.BhattScholze.Andre.DeltaRootSourceIteratedPDCompletion P.deltaStructure P.generator b
+  have hz := _root_.SerrePositivity.BhattScholze.Andre.perfectPrismRootFamilySource_modPD_homology_isZero P hP b s
+  have hf := _root_.SerrePositivity.BhattScholze.Andre.perfectPrismRootFamilySource_modPDH0_faithfullyFlat P hP b s
   exact ⟨frobeniusPrismaticDerivedReduction_pure_faithfullyFlat
       P.deltaStructure P.generator k X₀ hz hf,
     perfectDeltaFrobeniusResidueH0_faithfullyFlat P.deltaStructure P.generator k X₀ hP hz hf⟩
@@ -376,7 +376,7 @@ end PerfectDeltaPrismaticDerivedFlat
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze
-open CategoryTheory CategoryTheory.Limits
+open _root_.CategoryTheory _root_.CategoryTheory.Limits
 attribute [local instance] HasDerivedCategory.standard
 variable {p : ℕ} [Fact p.Prime] {A : Type u} [CommRing A]
 
@@ -448,16 +448,16 @@ theorem perfectPrismRootFamilySource_frobenius_twist_inputs
     (b : σ → A) {m : ℕ} (s : Fin m ≃ σ) (k : ℕ) :
     let D := P.deltaStructure
     let d := P.generator
-    let X := DeltaRootSourceIteratedPDCompletion D d b
+    let X := _root_.SerrePositivity.BhattScholze.Andre.DeltaRootSourceIteratedPDCompletion D d b
     let Z := (boundedAboveDerivedRestrictScalars (D.frobeniusLift ^ k)).obj X
     let Q := A ⧸ Ideal.span {(p : A), d}
     let Y := (boundedAboveDerivedBaseChange (Ideal.Quotient.mk (Ideal.span {(p : A), d}))).obj Z
     (∀ i : ℤ, i ≠ 0 → IsZero ((DerivedCategory.homologyFunctor (ModuleCat Q) i).obj Y.obj)) ∧
       Module.FaithfullyFlat Q
         ((DerivedCategory.homologyFunctor (ModuleCat Q) 0).obj Y.obj) := by
-  let X := DeltaRootSourceIteratedPDCompletion P.deltaStructure P.generator b
-  have hz := perfectPrismRootFamilySource_modPD_homology_isZero P hP b s
-  have hf := perfectPrismRootFamilySource_modPDH0_faithfullyFlat P hP b s
+  let X := _root_.SerrePositivity.BhattScholze.Andre.DeltaRootSourceIteratedPDCompletion P.deltaStructure P.generator b
+  have hz := _root_.SerrePositivity.BhattScholze.Andre.perfectPrismRootFamilySource_modPD_homology_isZero P hP b s
+  have hf := _root_.SerrePositivity.BhattScholze.Andre.perfectPrismRootFamilySource_modPDH0_faithfullyFlat P hP b s
   exact ⟨perfectDeltaFrobeniusTwistResidue_homology_isZero
       P.deltaStructure hP P.generator k X hz hf,
     perfectDeltaFrobeniusTwistResidueH0_faithfullyFlat P.deltaStructure hP P.generator k X hz hf⟩
@@ -473,7 +473,7 @@ end PerfectDeltaFrobeniusStageFlat
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze
-open CategoryTheory CategoryTheory.Limits
+open _root_.CategoryTheory _root_.CategoryTheory.Limits
 attribute [local instance] HasDerivedCategory.standard
 variable {p : ℕ} [Fact p.Prime] {A B : Type u} [CommRing A] [CommRing B]
 variable (D : DeltaStructure p A) (E : DeltaStructure p B) (j : A →+* B) (d : A) (n : ℕ)
@@ -541,14 +541,14 @@ end SerrePositivity.BhattScholze
 
 end DeltaAlgebraFrobeniusStageFlat
 
-/-! ## 実δ完全化へのG7の適用 -/
+/-! ## 実δ完全化への余極限との比較の適用 -/
 
 @[expose] public noncomputable section DeltaAlgebraPerfectionTor
 
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze
-open CategoryTheory CategoryTheory.Limits
+open _root_.CategoryTheory _root_.CategoryTheory.Limits
 attribute [local instance] HasDerivedCategory.standard
 variable {p : ℕ} [Fact p.Prime] {A B : Type u} [CommRing A] [CommRing B]
 variable (D : DeltaStructure p A) (E : DeltaStructure p B) (j : A →+* B) (d : A)
@@ -561,7 +561,7 @@ local notation "M∞" => baseChangeScalarModule (deltaAlgebraPerfectionCoefficie
 local notation "X∞" => CategoryTheory.Functor.obj boundedAboveDerivedSingleFunctor M∞
 local notation "Y∞" => CategoryTheory.Functor.obj (boundedAboveDerivedBaseChange q₀) X∞
 
-/-- 各実δ環段の標準還元入力を、G7により実δ完全化の正のTorへ渡す。 -/
+/-- 各実δ環段の標準還元入力を、余極限との比較により実δ完全化の正のTorへ渡す。 -/
 theorem deltaAlgebraPerfectionResidueTor_isZero
     (hD : D.IsPerfect) (hj : D.IsDeltaHom E j)
     (hzero : ∀ i : ℤ, i ≠ 0 →
@@ -608,7 +608,7 @@ end DeltaAlgebraPerfectionTor
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze
-open CategoryTheory CategoryTheory.Limits
+open _root_.CategoryTheory _root_.CategoryTheory.Limits
 attribute [local instance] HasDerivedCategory.standard
 variable {p : ℕ} [Fact p.Prime] {A B : Type u} [CommRing A] [CommRing B]
 variable (D : DeltaStructure p A) (E : DeltaStructure p B) (j : A →+* B) (d : A)
@@ -676,8 +676,8 @@ end DeltaAlgebraPerfectionResidueFlat
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze
-open CategoryTheory CategoryTheory.Limits MonoidalCategory
-open scoped TensorProduct
+open _root_.CategoryTheory _root_.CategoryTheory.Limits _root_.CategoryTheory.MonoidalCategory
+open scoped _root_.TensorProduct
 attribute [local instance] HasDerivedCategory.standard
 variable {p : ℕ} [Fact p.Prime] {A B : Type u} [CommRing A] [CommRing B]
 variable (D : DeltaStructure p A) (E : DeltaStructure p B) (j : A →+* B) (d : A)
@@ -815,7 +815,7 @@ end DeltaAlgebraPerfectionResidueFaithful
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze
-open CategoryTheory CategoryTheory.Limits
+open _root_.CategoryTheory _root_.CategoryTheory.Limits
 attribute [local instance] HasDerivedCategory.standard
 variable {p : ℕ} [Fact p.Prime] {A B : Type u} [CommRing A] [CommRing B]
 variable (D : DeltaStructure p A) (E : DeltaStructure p B) (j : A →+* B) (d : A)
@@ -878,7 +878,7 @@ end DeltaAlgebraPerfectionResidue
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze
-open CategoryTheory CategoryTheory.Limits
+open _root_.CategoryTheory _root_.CategoryTheory.Limits
 attribute [local instance] HasDerivedCategory.standard
 variable {p : ℕ} [Fact p.Prime] {A B : Type u} [CommRing A] [CommRing B]
 variable (D : DeltaStructure p A) (E : DeltaStructure p B) (j : A →+* B) (d : A)
@@ -958,8 +958,8 @@ end DeltaAlgebraPerfectionCompletionResidue
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze
-open CategoryTheory CategoryTheory.Limits
-open SerrePositivity.DerivedCompletion
+open _root_.CategoryTheory _root_.CategoryTheory.Limits
+open _root_.SerrePositivity.DerivedCompletion
 attribute [local instance] HasDerivedCategory.standard
 variable {p : ℕ} [Fact p.Prime] {A B : Type u} [CommRing A] [CommRing B]
 variable (E : DeltaStructure p B) (j : A →+* B) (d : A)
@@ -1040,8 +1040,8 @@ end PerfectPrismDeltaAlgebraCompletionInputs
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze
-open CategoryTheory
-open SerrePositivity.DerivedCompletion
+open _root_.CategoryTheory
+open _root_.SerrePositivity.DerivedCompletion
 attribute [local instance] HasDerivedCategory.standard
 variable {p : ℕ} [Fact p.Prime] {A B : Type u} [CommRing A] [CommRing B]
 variable (E : DeltaStructure p B) (j : A →+* B) (d : A)
@@ -1093,14 +1093,14 @@ end SerrePositivity.BhattScholze
 
 end DeltaAlgebraPerfectionPowerComplete
 
-/-! ## 実δ完全化逐次対象の生成元冪商上のG9入力 -/
+/-! ## 実δ完全化逐次対象の生成元冪商上の離散性の判定入力 -/
 
 @[expose] public noncomputable section PerfectPrismDeltaAlgebraPowerInputs
 
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze
-open CategoryTheory CategoryTheory.Limits
+open _root_.CategoryTheory _root_.CategoryTheory.Limits
 attribute [local instance] HasDerivedCategory.standard
 variable {p : ℕ} [Fact p.Prime] {A B : Type u} [CommRing A] [CommRing B]
 variable (P : OrientedPrism p A) (E : DeltaStructure p B) (j : A →+* B) (n : ℕ)
@@ -1118,7 +1118,7 @@ local notation "Zₙ" => CategoryTheory.Functor.obj
 local notation "Wₙ" => CategoryTheory.Functor.obj
   (boundedAboveDerivedBaseChange (Ideal.Quotient.mk (Ideal.span (Set.singleton (p : Tₙ))))) Zₙ
 
-/-- G10と標準商比較により、同じ生成元冪商上のmod p還元は次数零・H0平坦。 -/
+/-- 冪零還元からの純性・平坦性の判定と標準商比較により、同じ生成元冪商上のmod p還元は次数零・H0平坦。 -/
 theorem perfectPrismDeltaAlgebraCompletionPower_modP_inputs
     (hP : P.deltaStructure.IsPerfect) (hj : P.deltaStructure.IsDeltaHom E j)
     (hzero : ∀ i : ℤ, i ≠ 0 →
@@ -1160,7 +1160,7 @@ theorem perfectPrismDeltaAlgebraCompletionPower_G9_inputs
   exact hP.distinguished_quotient_power_p_pow_torsion_killed_by_p_pow
     (P.isDistinguished_generator) n k x hx
 
-/-- G9-4の元の選択モデルのp余核複体へ、同じ実標準還元の消滅を渡す。 -/
+/-- 還元と余核の比較の元の選択モデルのp余核複体へ、同じ実標準還元の消滅を渡す。 -/
 theorem perfectPrismDeltaAlgebraCompletionPower_modP_cokernel_homology_isZero
     (hP : P.deltaStructure.IsPerfect) (hj : P.deltaStructure.IsDeltaHom E j)
     (hzero : ∀ i : ℤ, i ≠ 0 →
@@ -1189,8 +1189,8 @@ end PerfectPrismDeltaAlgebraPowerInputs
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze
-open CategoryTheory CategoryTheory.Limits HomologicalComplex
-open SerrePositivity.DerivedCompletion
+open _root_.CategoryTheory _root_.CategoryTheory.Limits _root_.HomologicalComplex
+open _root_.SerrePositivity.DerivedCompletion
 attribute [local instance] HasDerivedCategory.standard
 variable {p : ℕ} [Fact p.Prime] {A B : Type u} [CommRing A] [CommRing B]
 variable (P : OrientedPrism p A) (E : DeltaStructure p B) (j : A →+* B)
@@ -1286,8 +1286,8 @@ end PerfectPrismDeltaAlgebraDiscrete
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze
-open CategoryTheory CategoryTheory.Limits
-open SerrePositivity.DerivedCompletion
+open _root_.CategoryTheory _root_.CategoryTheory.Limits
+open _root_.SerrePositivity.DerivedCompletion
 attribute [local instance] HasDerivedCategory.standard
 variable {p : ℕ} [Fact p.Prime] {A B : Type u} [CommRing A] [CommRing B]
 variable (E : DeltaStructure p B) (j : A →+* B) (d : A)
@@ -1311,7 +1311,7 @@ local notation "Ud∞" => boundedAboveDerivedCompletionUnit C∞ (κ∞ d)
 def deltaAlgebraPerfectionSingleRestrictionIso : (R∞).obj S∞ ≅ X∞ :=
   ObjectProperty.isoMk _ ((derivedRestrictScalarsSingleIso κ∞ 0).app (ModuleCat.of C∞ C∞))
 
-/-- 共通G8を両方向へ適用した、同じ実逐次完備化対象の比較。 -/
+/-- 共通係数制限と完備化の比較を両方向へ適用した、同じ実逐次完備化対象の比較。 -/
 def deltaAlgebraPerfectionCompletionRestrictionIso :
     DeltaAlgebraPerfectionIteratedPDCompletion E j d ≅
       (R∞).obj ((Cd∞).obj ((Cp∞).obj S∞)) :=
@@ -1319,7 +1319,7 @@ def deltaAlgebraPerfectionCompletionRestrictionIso :
       (boundedAboveCompletionRestrictionIso κ∞ (p : A)).app S∞) ≪≫
     (boundedAboveCompletionRestrictionIso κ∞ d).app ((Cp∞).obj S∞)
 
-/-- 逐次G8比較は、元の両完備化単位の合成を保つ。 -/
+/-- 逐次係数制限と完備化の比較比較は、元の両完備化単位の合成を保つ。 -/
 theorem deltaAlgebraPerfectionCompletionRestrictionIso_unit :
     (((Up).app X∞) ≫ (Ud).app ((Cp).obj X∞)) ≫
         (deltaAlgebraPerfectionCompletionRestrictionIso E j d).hom =
@@ -1374,8 +1374,8 @@ end DeltaAlgebraPerfectionCompletionRestriction
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze
-open CategoryTheory CategoryTheory.Limits
-open SerrePositivity.DerivedCompletion
+open _root_.CategoryTheory _root_.CategoryTheory.Limits
+open _root_.SerrePositivity.DerivedCompletion
 attribute [local instance] HasDerivedCategory.standard
 variable {p : ℕ} [Fact p.Prime] {A B : Type u} [CommRing A] [CommRing B]
 variable (E : DeltaStructure p B) (j : A →+* B) (d : A)
@@ -1516,8 +1516,8 @@ end DeltaAlgebraPerfectionPDCompletionMap
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze
-open CategoryTheory CategoryTheory.Limits
-open SerrePositivity.DerivedCompletion
+open _root_.CategoryTheory _root_.CategoryTheory.Limits
+open _root_.SerrePositivity.DerivedCompletion
 attribute [local instance] HasDerivedCategory.standard
 variable {p : ℕ} [Fact p.Prime] {A B : Type u} [CommRing A] [CommRing B]
 variable (E : DeltaStructure p B) (j : A →+* B) (d : A)
@@ -1561,7 +1561,7 @@ def deltaAlgebraPerfectionPDNativeH0Iso :
     (DerivedCategory.homologyFunctor (ModuleCat A) 0).obj (X).obj ≅ M :=
   deltaAlgebraPerfectionCompletionRestrictionH0Iso E j d ≪≫
     (ModuleCat.restrictScalars κ).mapIso
-      (iteratedPDH0LinearEquiv C (κ (p : A)) (κ d) p (map_natCast κ p)).toModuleIso
+      (_root_.SerrePositivity.DerivedCompletion.iteratedPDH0LinearEquiv C (κ (p : A)) (κ d) p (map_natCast κ p)).toModuleIso
 
 /-- 元の実δ完全化逐次H0を、標準合成係数射A→C→PDの加群と同定する。 -/
 def deltaAlgebraPerfectionPDH0Iso :
@@ -1582,9 +1582,9 @@ end DeltaAlgebraPerfectionPDH0Comparison
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze
-open CategoryTheory CategoryTheory.Limits
-open SerrePositivity.DerivedCompletion
-open scoped TensorProduct
+open _root_.CategoryTheory _root_.CategoryTheory.Limits
+open _root_.SerrePositivity.DerivedCompletion
+open scoped _root_.TensorProduct
 attribute [local instance] HasDerivedCategory.standard
 variable {p : ℕ} [Fact p.Prime] {A B : Type u} [CommRing A] [CommRing B]
 variable (P : OrientedPrism p A) (E : DeltaStructure p B) (j : A →+* B)

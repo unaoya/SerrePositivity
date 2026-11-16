@@ -1,0 +1,87 @@
+{
+  "execution": {
+    "command": [
+      "zsh",
+      "scripts/refactor/verify.sh"
+    ],
+    "cwd": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout",
+    "rc": 0,
+    "reason": null,
+    "seconds": 3036.9239644557238,
+    "peak_process_tree_rss_bytes": 25589547008,
+    "peak_lean_or_snapshot_jobs": 3,
+    "threads": "3",
+    "heavy_job_limit": 3,
+    "started_local": "2026-11-15T08:34:29.417731",
+    "finished_local": "2026-11-15T09:25:06.518721"
+  },
+  "summary": {
+    "status": "PASS",
+    "gate": true,
+    "summary": "PASS build(success=2,failure=0,known=0) audit(success=106,failure=0,known=0) sorry(success=1,failure=0,known=0) preparation(success=1,failure=0,known=0) retried=0",
+    "commit": "107d005583fe01dc50b97945f0586063458e48af",
+    "seconds": 3036.568,
+    "audit_count": 106,
+    "executed_audit_count": 106,
+    "counts": {
+      "build": {
+        "success": 2,
+        "failure": 0,
+        "known": 0
+      },
+      "audit": {
+        "success": 106,
+        "failure": 0,
+        "known": 0
+      },
+      "sorry": {
+        "success": 1,
+        "failure": 0,
+        "known": 0
+      },
+      "preparation": {
+        "success": 1,
+        "failure": 0,
+        "known": 0
+      }
+    },
+    "failures": [],
+    "retried": 0,
+    "new_audits": [],
+    "runner": {
+      "jobs": 3,
+      "cache_enabled": false,
+      "audit_pool_wall_seconds": 2173.173,
+      "audit_wall_seconds": 2517.32,
+      "retried": 0,
+      "measurement_missing": []
+    },
+    "scheduling": {
+      "max_concurrent": 3,
+      "memory_budget_bytes": 24000000000,
+      "max_reserved_rss_bytes": 30218108928,
+      "max_exclusive_concurrent": 1,
+      "exclusive_audits": [
+        "scripts/audit_einfinity.lean",
+        "scripts/audit_infinity_core.lean",
+        "scripts/audit_infinity_f1.lean",
+        "scripts/audit_infinity_f1b.lean",
+        "scripts/audit_infinity_presentable_localization.lean",
+        "scripts/audit_kst_s_construction.lean"
+      ]
+    }
+  },
+  "full_summary_sha256": "510ce8a702ef734a237faf486c51e583d0aef917ec77d9aa314e9e13f5d19bc6",
+  "full_summary": "full-verify-summary.json.gz",
+  "head": "107d005583fe01dc50b97945f0586063458e48af",
+  "settings": {
+    "VERIFY_JOBS": "3",
+    "VERIFY_MEMORY_GB": "24",
+    "VERIFY_CACHE": "0",
+    "VERIFY_EXCLUSIVE_AUDITS": "scripts/audit_axioms.lean scripts/audit_einfinity.lean scripts/audit_infinity_core.lean scripts/audit_infinity_f1.lean scripts/audit_infinity_f1b.lean scripts/audit_infinity_presentable_localization.lean scripts/audit_kst_s_construction.lean"
+  },
+  "approval": "2026-11-15 morning coordinator/user: one daytime full verify without shared key or time limit, VERIFY_JOBS=3 VERIFY_MEMORY_GB=24, large audits serial.",
+  "shared_key": false,
+  "time_limit_seconds": null,
+  "time": 1794702306.6498501
+}

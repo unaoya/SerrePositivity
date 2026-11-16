@@ -1,0 +1,32 @@
+{
+  "complete": false,
+  "passed_checks": 16,
+  "total_checks": 17,
+  "pending": [
+    "normal full verify"
+  ],
+  "formal_audits_passed": 106,
+  "full_verify_attempt_001": {
+    "command": [
+      "zsh",
+      "scripts/refactor/verify.sh"
+    ],
+    "cwd": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout",
+    "rc": -15,
+    "reason": "memory budget 32 GB",
+    "seconds": 1691.165233708918,
+    "peak_process_tree_rss_bytes": 32190054400,
+    "peak_lean_or_snapshot_jobs": 4,
+    "threads": "4",
+    "heavy_job_limit": 4,
+    "started_local": "2026-11-15T04:29:26.169639",
+    "finished_local": "2026-11-15T04:57:37.348324"
+  },
+  "full_verify_progress": {
+    "completed": 104,
+    "total": 106
+  },
+  "source_head": "871516d78c0e59fa46cbe15ddf7a01b982e6e7e6",
+  "next_run_policy": "Await explicit approval of one longer night bulk ticket. Keep no-cache full scope, maximum4jobs and32GB actual process memory; reserve scheduler headroom. No new ticket currently pending.",
+  "B4_regression_passed": true
+}

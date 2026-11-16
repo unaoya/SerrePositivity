@@ -8334,6 +8334,107 @@ example : SSet.Quasicategory
   `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.UliftPointSimplexEvaluation,
   `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.WeightedConeComparisonStrictMap]
 
+@[noinline] private def derivedAuditExpectedChunk43 : Array Lean.Name := #[
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramCoherentEndMap,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramEvaluatedAugmentation,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFrameArrowComparison,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFrameArrowComparisonWeak,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFrameArrowCone,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFrameArrowLimit,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFrameEndCoefficients,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFrameEndpointIso,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFrameRelativeLifting,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFreeArrowAugmentation,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFreeArrowAugmentationHomWeak,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFreeArrowAugmentationWeak,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFreeArrowConeHom,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFreeArrowFrame,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFreeArrowHom,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFreeArrowRealization,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFreeArrowRealizationCofibrant,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFreeArrowRealizedAugmentation,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFreeArrowRealizedAugmentationWeak,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFreeArrowRealizedFrame,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFreeAtReindex,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFreeEvaluationAdjunction,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFreeEvaluationBousfieldKan,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFreeEvaluationCoconeLegs,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFreeEvaluationCoefficients,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFreeEvaluationCofinality,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFreeEvaluationCounit,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFreeEvaluationElementsAugmentation,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFreeEvaluationFrames,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFreeEvaluationIndex,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFreeEvaluationLiftedAdjunction,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFreeEvaluationOverAugmentation,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFreeEvaluationOverComparison,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFreeEvaluationOverFrames,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFreeEvaluationRealization,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFreeValueFrame,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFreeValueFrameConditions,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramMixedFrame,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramMixedFrameEquivalence,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramSourceFramePinched,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramSourceFrameZero,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramValueFrameComparison,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramValueKanComparison,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramValueSectionsComparison]
+
+@[noinline] private def derivedAuditExpectedChunk44 : Array Lean.Name := #[
+  `SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanAdjunctionComparison,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanAdjunctionUnit,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanAugmentationConeHom,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanAugmentationHom,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanAugmentationIsoTransport,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanColimitAugmentation,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanDoubleOpposite,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanDoubleOppositeWeight,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanEndFibration,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanFrameAugmentation,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanFrameAugmentationZero,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanFrameCofibrancy,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanOverTransformation,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanOverTransformationNaturality,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanParameterNaturality,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanParameterizedRealization,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanRealizationAnodyne,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanRealizationConstant,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanRealizationHom,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanRealizationHomNaturality,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanRealizationMappingKan,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanRealizationReedy,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanTensorLifting,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanTerminalRealization,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanTerminalWeightDiagram,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanTerminalWeightLocalization,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanTransformationCylinder,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanTransformationLocalization,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanTransformationRealization,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanWeightCofibrancy,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.BousfieldKanWeightLifting,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.ConstantWeightDegreeNaturality,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.ElementsBousfieldKanWeight,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.ElementsCopower,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.ElementsCopowerAugmentation,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.ElementsCopowerFrames,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.ElementsCopowerIsoEvaluation,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.ElementsCopowerRealization,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.ElementsCopowerWeightedHom,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.ElementsUnderProjection,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.ElementsUnderProjectionIso,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.ElementsUniverseLift,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.FrameBousfieldKanAugmentation,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.FrameBousfieldKanAugmentationFrames,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.FrameBousfieldKanAugmentationPost,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.FrameBousfieldKanReindexing,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.FrameBousfieldKanReindexingComposition,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.FrameBousfieldKanReindexingFrames,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.FrameWeightPostcomposition,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.FrameWeightReindexing,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.FrameWeightReindexingDinaturality,
+  `SerrePositivity.HomotopicalAlgebra.Diagram.WeightedSectionsDoubleOpposite,
+  `SerrePositivity.HomotopicalAlgebra.Simplicial.AnodynePullbackHom]
+
 open Lean in
 run_cmd do
   let env ← getEnv
@@ -8828,7 +8929,9 @@ run_cmd do
     derivedAuditExpectedChunk39 ++
     derivedAuditExpectedChunk40 ++
     derivedAuditExpectedChunk41 ++
-    derivedAuditExpectedChunk42
+    derivedAuditExpectedChunk42 ++
+    derivedAuditExpectedChunk43 ++
+    derivedAuditExpectedChunk44
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

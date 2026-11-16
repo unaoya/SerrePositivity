@@ -1,4 +1,4 @@
--- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Derived.Assembly（仮）と、Inputs/PerfectoidizationInterface.lean の定理の証明の置き換え
+-- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Interface.Assembly（仮）と、SerrePositivity/BhattScholze/Inputs/PerfectoidizationInterface.lean の定理の証明の置き換え
 -- 設計書：formalization-plans/bhatt-scholze/a9-design.md、単位 A9-1。基準コミット efa846fe8。型検査対象（5∞-0）。
 module
 public import SerrePositivity.EInfinity.Perfectoidization.TheoryInterface

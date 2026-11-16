@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Perfectoid.FiniteProduct
+public import SerrePositivity.BhattScholze.Prism.Perfectoid.FiniteProduct
 public import SerrePositivity.HomologicalAlgebra.FiniteFreeComparison
 public import SerrePositivity.CLMST.PerfectoidizationIsogeny.Descent.Uniform
 public import SerrePositivity.BhattScholze.Perfectoidization.FiniteComparisonExcision
@@ -33,7 +33,7 @@ universe u
 section Prop247LocalComparisonPart
 
 namespace SerrePositivity.CLMST
-open scoped TensorProduct
+open scoped _root_.TensorProduct
 set_option backward.isDefEq.respectTransparency false
 
 /-- 実共通モデルとその元の perfectoid 化比較の almost 零化から、元の β の錐を零化する。
@@ -68,8 +68,8 @@ end Prop247LocalComparisonPart
 section Prop247ExcisionLocalPart
 
 namespace SerrePositivity.CLMST
-open BhattScholze
-open scoped TensorProduct
+open _root_.SerrePositivity.BhattScholze
+open scoped _root_.TensorProduct
 set_option backward.isDefEq.respectTransparency false
 
 /-- KL の二つの元の canonical 四角形から元の β の錐を冪零化する。
@@ -97,8 +97,8 @@ theorem fixed_cone_of_two_canonical_excision
   let h := AlgHom.id R (Fin r → R)
   have hh : IsPerfectoidization p h.toRingHom :=
     hfree.isPerfectoidization_id
-  have hd : d ∈ perfectoidIdeal R p hR d :=
-    span_le_perfectoidIdeal R p hR d (Ideal.subset_span (Set.mem_singleton d))
+  have hd : d ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR d :=
+    _root_.SerrePositivity.BhattScholze.Almost.span_le_perfectoidIdeal R p hR d (Ideal.subset_span (Set.mem_singleton d))
   obtain ⟨hak, _hac⟩ :=
     BhattScholze.perfectoidization_comparison_almost_of_canonical_excision hR hβ hη a d hPBa
   obtain ⟨hbk, hbc⟩ :=
@@ -120,8 +120,8 @@ end Prop247ExcisionLocalPart
 section Prop247ConstantRankExcisionPart
 
 namespace SerrePositivity.CLMST
-open BhattScholze
-open scoped TensorProduct
+open _root_.SerrePositivity.BhattScholze
+open scoped _root_.TensorProduct
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 

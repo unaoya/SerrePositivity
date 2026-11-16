@@ -1,0 +1,1042 @@
+{
+  "original_edges": 34,
+  "retained_original_reverse_edges": 33,
+  "resolved_original_reverse_edges": 1,
+  "policy": "This reconciles all34 approved B3 paper-order edges, not a tier exemption. No original tier exceptions are changed. Original compiler refs and reasons retained; graph is actual source.",
+  "rows": [
+    {
+      "from": "SerrePositivity.BhattScholze.Andre.OrdinaryRoots.Adjoin",
+      "to": "SerrePositivity.BhattScholze.Perfectoidization.WittPushout",
+      "from_section": "§7",
+      "to_section": "§8",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "approved_reason": "OrdinaryRootsの根の付加で係数テンソルの写像coefficientTensorLiftを使う。WittPushoutにある既存の係数射への依存を保持する案。",
+      "approval": "Approved B3 inventory only; no exemption added to the dependency-tier checker.",
+      "actual_compiler_reference_names": [
+        {
+          "name": "SerrePositivity.BhattScholze.coefficientTensorLift",
+          "usages": 1
+        }
+      ],
+      "classification": "direct declaration reference",
+      "current_from": "SerrePositivity.BhattScholze.Andre.OrdinaryRoots.Adjoin",
+      "current_to": "SerrePositivity.BhattScholze.Perfectoidization.WittPushout",
+      "direct_import_still_present": true,
+      "original_reverse_edge_retained": true,
+      "B3prime_disposition": "retained mathematical dependency; original approved reason and compiler references remain applicable after owner/name transport",
+      "current_project_imports": [
+        "SerrePositivity.BhattScholze.Delta.Free.PolynomialExpand",
+        "SerrePositivity.BhattScholze.Perfectoidization.WittPushout",
+        "SerrePositivity.CommutativeAlgebra.CompletelyFlat.Basic",
+        "SerrePositivity.CommutativeAlgebra.Polynomial.MonicRelation",
+        "SerrePositivity.HomologicalAlgebra.Tor"
+      ]
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Andre.TorDescent",
+      "to": "SerrePositivity.BhattScholze.PerfectoidIdeal.Basic",
+      "from_section": "§7",
+      "to_section": "§10",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "approved_reason": "TorDescentでperfectoidIdealとその写像に関する包含を用いる。§10にまとめたイデアルの定義を重複して§7へ置かない。",
+      "approval": "Approved B3 inventory only; no exemption added to the dependency-tier checker.",
+      "actual_compiler_reference_names": [
+        {
+          "name": "SerrePositivity.map_mem_perfectoidIdeal",
+          "usages": 1
+        },
+        {
+          "name": "SerrePositivity.perfectoidIdeal",
+          "usages": 6
+        }
+      ],
+      "classification": "direct declaration reference",
+      "current_from": "SerrePositivity.BhattScholze.Andre.TorDescent",
+      "current_to": "SerrePositivity.BhattScholze.PerfectoidIdeal.Basic",
+      "direct_import_still_present": true,
+      "original_reverse_edge_retained": true,
+      "B3prime_disposition": "retained mathematical dependency; original approved reason and compiler references remain applicable after owner/name transport",
+      "current_project_imports": [
+        "SerrePositivity.BhattScholze.Andre.AndreFlatness",
+        "SerrePositivity.BhattScholze.PerfectoidIdeal.Basic",
+        "SerrePositivity.BhattScholze.PerfectoidIdeal.Tor",
+        "SerrePositivity.BhattScholze.Perfectoidization.CompletedBaseChange",
+        "SerrePositivity.CommutativeAlgebra.CompletelyFlat.Basic",
+        "SerrePositivity.HomologicalAlgebra.AlgebraRestrictionSingle",
+        "SerrePositivity.HomologicalAlgebra.ModuleScalarExtensionAnnihilator",
+        "SerrePositivity.HomologicalAlgebra.TorCoefficientPowerTorsionDescent"
+      ]
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Andre.TorDescent",
+      "to": "SerrePositivity.BhattScholze.PerfectoidIdeal.Tor",
+      "from_section": "§7",
+      "to_section": "§10",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "approved_reason": "TorDescentでaic principal coverから得る既存のpower-torsion/Tor入力を用いる。新しい仮定・界面への置換は行わない。",
+      "approval": "Approved B3 inventory only; no exemption added to the dependency-tier checker.",
+      "actual_compiler_reference_names": [
+        {
+          "name": "SerrePositivity.BhattScholze.perfectoidIdeal_powerTorsionTorInput_of_aic_principal_cover",
+          "usages": 1
+        }
+      ],
+      "classification": "direct declaration reference",
+      "current_from": "SerrePositivity.BhattScholze.Andre.TorDescent",
+      "current_to": "SerrePositivity.BhattScholze.PerfectoidIdeal.Tor",
+      "direct_import_still_present": true,
+      "original_reverse_edge_retained": true,
+      "B3prime_disposition": "retained mathematical dependency; original approved reason and compiler references remain applicable after owner/name transport",
+      "current_project_imports": [
+        "SerrePositivity.BhattScholze.Andre.AndreFlatness",
+        "SerrePositivity.BhattScholze.PerfectoidIdeal.Basic",
+        "SerrePositivity.BhattScholze.PerfectoidIdeal.Tor",
+        "SerrePositivity.BhattScholze.Perfectoidization.CompletedBaseChange",
+        "SerrePositivity.CommutativeAlgebra.CompletelyFlat.Basic",
+        "SerrePositivity.HomologicalAlgebra.AlgebraRestrictionSingle",
+        "SerrePositivity.HomologicalAlgebra.ModuleScalarExtensionAnnihilator",
+        "SerrePositivity.HomologicalAlgebra.TorCoefficientPowerTorsionDescent"
+      ]
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Andre.TorDescent",
+      "to": "SerrePositivity.BhattScholze.Perfectoidization.CompletedBaseChange",
+      "from_section": "§7",
+      "to_section": "§8",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "approved_reason": "TorDescentの係数Tor条件を完備底変換の条件へ読み替える二つの同値を用いる。§8の完備底変換の補題を保持する。",
+      "approval": "Approved B3 inventory only; no exemption added to the dependency-tier checker.",
+      "actual_compiler_reference_names": [
+        {
+          "name": "SerrePositivity.BhattScholze.integralPerfectoid_torCoefficientScalar_eq_zero_iff_completedBaseChangeTor",
+          "usages": 1
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.perfectoidization_torCoefficientScalar_eq_zero_iff_baseChangedPerfectoidizationTor",
+          "usages": 2
+        }
+      ],
+      "classification": "direct declaration reference",
+      "current_from": "SerrePositivity.BhattScholze.Andre.TorDescent",
+      "current_to": "SerrePositivity.BhattScholze.Perfectoidization.CompletedBaseChange",
+      "direct_import_still_present": true,
+      "original_reverse_edge_retained": true,
+      "B3prime_disposition": "retained mathematical dependency; original approved reason and compiler references remain applicable after owner/name transport",
+      "current_project_imports": [
+        "SerrePositivity.BhattScholze.Andre.AndreFlatness",
+        "SerrePositivity.BhattScholze.PerfectoidIdeal.Basic",
+        "SerrePositivity.BhattScholze.PerfectoidIdeal.Tor",
+        "SerrePositivity.BhattScholze.Perfectoidization.CompletedBaseChange",
+        "SerrePositivity.CommutativeAlgebra.CompletelyFlat.Basic",
+        "SerrePositivity.HomologicalAlgebra.AlgebraRestrictionSingle",
+        "SerrePositivity.HomologicalAlgebra.ModuleScalarExtensionAnnihilator",
+        "SerrePositivity.HomologicalAlgebra.TorCoefficientPowerTorsionDescent"
+      ]
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Excision",
+      "to": "SerrePositivity.BhattScholze.Perfectoidization.Derived.IntegralExistence",
+      "from_section": "§8",
+      "to_section": "§10",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "approved_reason": "導来Excisionで積分perfectoid化の指定された離散性specified_discを参照する。存在の定義を§8側へ複製せず既存の§10の入力として残す案。",
+      "approval": "Approved B3 inventory only; no exemption added to the dependency-tier checker.",
+      "actual_compiler_reference_names": [
+        {
+          "name": "SerrePositivity.BhattScholze.PerfectoidizationInterface.specified_disc",
+          "usages": 4
+        }
+      ],
+      "classification": "direct declaration reference",
+      "current_from": "SerrePositivity.BhattScholze.Perfectoidization.Interface.Excision",
+      "current_to": "SerrePositivity.BhattScholze.Perfectoidization.Interface.IntegralExistence",
+      "direct_import_still_present": true,
+      "original_reverse_edge_retained": true,
+      "B3prime_disposition": "retained mixed-subject interface dependency: the split removes general initial-limit and bridge components, but the residual integral existence still derives the Theorem10.11/Corollary8.14 consequence from the E3 interface; do not claim this section-order edge resolved",
+      "current_project_imports": [
+        "SerrePositivity.BhattScholze.Inputs.PerfectoidizationInterface",
+        "SerrePositivity.BhattScholze.Perfectoidization.Interface.Derived",
+        "SerrePositivity.BhattScholze.Perfectoidization.Interface.IntegralExistence",
+        "SerrePositivity.CommutativeAlgebra.DerivedSingleTrianglePullback",
+        "SerrePositivity.CommutativeAlgebra.Perfectoid.Defs",
+        "SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleComplete.Basic",
+        "SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.FiberCofiber.FiberLongExactSequence"
+      ]
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Perfectoidization.Excision",
+      "to": "SerrePositivity.BhattScholze.PerfectoidIdeal.Basic",
+      "from_section": "§8",
+      "to_section": "§10",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "approved_reason": "ExcisionでperfectoidIdealと商へのperfectoid化写像・その生成元の式を用いる。定義の所有元を§10に保つ。",
+      "approval": "Approved B3 inventory only; no exemption added to the dependency-tier checker.",
+      "actual_compiler_reference_names": [
+        {
+          "name": "SerrePositivity.perfectoidIdeal",
+          "usages": 1
+        },
+        {
+          "name": "SerrePositivity.quotientPerfectoidizationMap",
+          "usages": 1
+        },
+        {
+          "name": "SerrePositivity.quotientPerfectoidizationMap_mk",
+          "usages": 1
+        }
+      ],
+      "classification": "direct declaration reference",
+      "current_from": "SerrePositivity.BhattScholze.Perfectoidization.Excision",
+      "current_to": "SerrePositivity.BhattScholze.PerfectoidIdeal.Basic",
+      "direct_import_still_present": true,
+      "original_reverse_edge_retained": true,
+      "B3prime_disposition": "retained mathematical dependency; original approved reason and compiler references remain applicable after owner/name transport",
+      "current_project_imports": [
+        "SerrePositivity.BhattScholze.PerfectoidIdeal.Basic",
+        "SerrePositivity.BhattScholze.PerfectoidIdeal.Cover",
+        "SerrePositivity.BhattScholze.Perfectoidization.Interface.Excision",
+        "SerrePositivity.CommutativeAlgebra.Localization.Away",
+        "SerrePositivity.CommutativeAlgebra.Perfectoid.Defs"
+      ]
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Perfectoidization.Excision",
+      "to": "SerrePositivity.BhattScholze.PerfectoidIdeal.Cover",
+      "from_section": "§8",
+      "to_section": "§10",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "approved_reason": "Excisionの核の包含にperfectoidIdeal_le_ker_of_eq_zeroを用いる。イデアルの一般的な被覆補題を既存の§10から参照する。",
+      "approval": "Approved B3 inventory only; no exemption added to the dependency-tier checker.",
+      "actual_compiler_reference_names": [
+        {
+          "name": "SerrePositivity.perfectoidIdeal_le_ker_of_eq_zero",
+          "usages": 1
+        }
+      ],
+      "classification": "direct declaration reference",
+      "current_from": "SerrePositivity.BhattScholze.Perfectoidization.Excision",
+      "current_to": "SerrePositivity.BhattScholze.PerfectoidIdeal.Cover",
+      "direct_import_still_present": true,
+      "original_reverse_edge_retained": true,
+      "B3prime_disposition": "retained mathematical dependency; original approved reason and compiler references remain applicable after owner/name transport",
+      "current_project_imports": [
+        "SerrePositivity.BhattScholze.PerfectoidIdeal.Basic",
+        "SerrePositivity.BhattScholze.PerfectoidIdeal.Cover",
+        "SerrePositivity.BhattScholze.Perfectoidization.Interface.Excision",
+        "SerrePositivity.CommutativeAlgebra.Localization.Away",
+        "SerrePositivity.CommutativeAlgebra.Perfectoid.Defs"
+      ]
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Perfectoidization.ExcisionComparison",
+      "to": "SerrePositivity.BhattScholze.PerfectoidIdeal.Cover",
+      "from_section": "§8",
+      "to_section": "§10",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "approved_reason": "ExcisionComparisonでpullbackから得る核・余核のannihilationを用いる。PerfectoidIdeal/Coverの同一の補題を再利用する。",
+      "approval": "Approved B3 inventory only; no exemption added to the dependency-tier checker.",
+      "actual_compiler_reference_names": [
+        {
+          "name": "SerrePositivity.perfectoidIdeal_ker_coker_annihilated_of_isPullback",
+          "usages": 1
+        }
+      ],
+      "classification": "direct declaration reference",
+      "current_from": "SerrePositivity.BhattScholze.Perfectoidization.ExcisionComparison",
+      "current_to": "SerrePositivity.BhattScholze.PerfectoidIdeal.Cover",
+      "direct_import_still_present": true,
+      "original_reverse_edge_retained": true,
+      "B3prime_disposition": "retained mathematical dependency; original approved reason and compiler references remain applicable after owner/name transport",
+      "current_project_imports": [
+        "SerrePositivity.BhattScholze.PerfectoidIdeal.Cover",
+        "SerrePositivity.BhattScholze.Perfectoidization.Excision",
+        "SerrePositivity.CommutativeAlgebra.Perfectoid.Defs"
+      ]
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Perfectoidization.ExcisionTor",
+      "to": "SerrePositivity.BhattScholze.Almost.SupportedQuotient",
+      "from_section": "§8",
+      "to_section": "§10",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "approved_reason": "ExcisionTorで像へのalmost比較と核・余核のannihilationを用いる。Almost/SupportedQuotientで構成した比較を保持する。",
+      "approval": "Approved B3 inventory only; no exemption added to the dependency-tier checker.",
+      "actual_compiler_reference_names": [
+        {
+          "name": "SerrePositivity.BhattScholze.exists_image_perfectoidization_almost_comparison",
+          "usages": 2
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.perfectoidization_image_ker_coker_annihilated",
+          "usages": 1
+        }
+      ],
+      "classification": "direct declaration reference",
+      "current_from": "SerrePositivity.BhattScholze.Perfectoidization.ExcisionTor",
+      "current_to": "SerrePositivity.BhattScholze.Perfectoidization.SupportedQuotient",
+      "direct_import_still_present": true,
+      "original_reverse_edge_retained": false,
+      "B3prime_disposition": "resolved paper-section reversal by approved move of SupportedQuotient next to ExcisionTor; direct mathematical dependency preserved",
+      "current_project_imports": [
+        "SerrePositivity.BhattScholze.PerfectoidIdeal.CompletedQuotient",
+        "SerrePositivity.BhattScholze.Perfectoidization.ExcisionComparison",
+        "SerrePositivity.BhattScholze.Perfectoidization.SupportedQuotient",
+        "SerrePositivity.BhattScholze.Prism.Perfectoid.FiniteProduct",
+        "SerrePositivity.CommutativeAlgebra.Localization.CommonModel",
+        "SerrePositivity.CommutativeAlgebra.Localization.PowerTorsion"
+      ]
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Perfectoidization.ExcisionTor",
+      "to": "SerrePositivity.BhattScholze.PerfectoidIdeal.CompletedQuotient",
+      "from_section": "§8",
+      "to_section": "§10",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "approved_reason": "ExcisionTorでalmost比較をpower-torsion/Tor入力へ移す同値を用いる。完備商の既存の補題を参照する。",
+      "approval": "Approved B3 inventory only; no exemption added to the dependency-tier checker.",
+      "actual_compiler_reference_names": [
+        {
+          "name": "SerrePositivity.BhattScholze.perfectoidIdeal_powerTorsionTorInput_iff_of_almost_comparison",
+          "usages": 2
+        }
+      ],
+      "classification": "direct declaration reference",
+      "current_from": "SerrePositivity.BhattScholze.Perfectoidization.ExcisionTor",
+      "current_to": "SerrePositivity.BhattScholze.PerfectoidIdeal.CompletedQuotient",
+      "direct_import_still_present": true,
+      "original_reverse_edge_retained": true,
+      "B3prime_disposition": "retained mathematical dependency; original approved reason and compiler references remain applicable after owner/name transport",
+      "current_project_imports": [
+        "SerrePositivity.BhattScholze.PerfectoidIdeal.CompletedQuotient",
+        "SerrePositivity.BhattScholze.Perfectoidization.ExcisionComparison",
+        "SerrePositivity.BhattScholze.Perfectoidization.SupportedQuotient",
+        "SerrePositivity.BhattScholze.Prism.Perfectoid.FiniteProduct",
+        "SerrePositivity.CommutativeAlgebra.Localization.CommonModel",
+        "SerrePositivity.CommutativeAlgebra.Localization.PowerTorsion"
+      ]
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Perfectoidization.Finite",
+      "to": "SerrePositivity.BhattScholze.PerfectoidIdeal.Basic",
+      "from_section": "§8",
+      "to_section": "§10",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "approved_reason": "元のコンパイラ索引に直接の定数参照はない。見せ直し・推移的なinstance等の意味をこの移動だけで変更しないためimportを保持し、不要importの削除とは区別する。",
+      "approval": "Approved B3 inventory only; no exemption added to the dependency-tier checker.",
+      "actual_compiler_reference_names": [],
+      "classification": "import visibility only; no direct declaration reference in the actual after index",
+      "current_from": "SerrePositivity.BhattScholze.Perfectoidization.Finite",
+      "current_to": "SerrePositivity.BhattScholze.PerfectoidIdeal.Basic",
+      "direct_import_still_present": true,
+      "original_reverse_edge_retained": true,
+      "B3prime_disposition": "retained mathematical dependency; original approved reason and compiler references remain applicable after owner/name transport",
+      "current_project_imports": [
+        "SerrePositivity.BhattScholze.PerfectoidIdeal.Basic",
+        "SerrePositivity.BhattScholze.Perfectoidization.Interface.IntegralExistence"
+      ]
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Perfectoidization.FiniteComparisonExcision",
+      "to": "SerrePositivity.BhattScholze.PerfectoidIdeal.Tor",
+      "from_section": "§8",
+      "to_section": "§10",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "approved_reason": "有限性比較のexcisionでaic principal coverのpower-torsion/Tor入力を用いる。PerfectoidIdeal/Torの既存の定理を保持する。",
+      "approval": "Approved B3 inventory only; no exemption added to the dependency-tier checker.",
+      "actual_compiler_reference_names": [
+        {
+          "name": "SerrePositivity.BhattScholze.perfectoidIdeal_powerTorsionTorInput_of_aic_principal_cover",
+          "usages": 1
+        }
+      ],
+      "classification": "direct declaration reference",
+      "current_from": "SerrePositivity.BhattScholze.Perfectoidization.FiniteComparisonExcision",
+      "current_to": "SerrePositivity.BhattScholze.PerfectoidIdeal.Tor",
+      "direct_import_still_present": true,
+      "original_reverse_edge_retained": true,
+      "B3prime_disposition": "retained mathematical dependency; original approved reason and compiler references remain applicable after owner/name transport",
+      "current_project_imports": [
+        "SerrePositivity.BhattScholze.Andre.TorDescent",
+        "SerrePositivity.BhattScholze.PerfectoidIdeal.Tor",
+        "SerrePositivity.BhattScholze.Perfectoidization.Excision",
+        "SerrePositivity.BhattScholze.Perfectoidization.ExcisionTor",
+        "SerrePositivity.BhattScholze.Prism.Perfectoid.FiniteProduct",
+        "SerrePositivity.CommutativeAlgebra.DerivedSingleTrianglePullback",
+        "SerrePositivity.CommutativeAlgebra.Localization.EtaleAway",
+        "SerrePositivity.HomologicalAlgebra.DerivedCompleteCommonModel"
+      ]
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectoidPrismPresentation",
+      "to": "SerrePositivity.BhattScholze.Prismatic.Site.PrismOver",
+      "from_section": "§3",
+      "to_section": "§3.12/4.1",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "approved_reason": "元のコンパイラ索引に直接の定数参照はない。PrismOverのimportによる可視性を維持する案であり、§3の表示だけを根拠にimportを削除しない。",
+      "approval": "Approved B3 inventory only; no exemption added to the dependency-tier checker.",
+      "actual_compiler_reference_names": [],
+      "classification": "import visibility only; no direct declaration reference in the actual after index",
+      "current_from": "SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectoidPrismPresentation",
+      "current_to": "SerrePositivity.BhattScholze.Prismatic.Site.PrismOver",
+      "direct_import_still_present": true,
+      "original_reverse_edge_retained": true,
+      "B3prime_disposition": "retained mathematical dependency; original approved reason and compiler references remain applicable after owner/name transport",
+      "current_project_imports": [
+        "SerrePositivity.BhattScholze.Prism.Perfection.PrismPerfection",
+        "SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismPerfectoid",
+        "SerrePositivity.BhattScholze.Prismatic.Site.PrismOver",
+        "SerrePositivity.CommutativeAlgebra.Perfectoid.Torsion"
+      ]
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Prismatic.CechAlexander.Comparison.AffineCechPrismBaseChange",
+      "to": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.BaseChange.AffineEnvelopeBaseChangeCoefficients",
+      "from_section": "§4",
+      "to_section": "§6",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "approved_reason": "affine Čech prismの底変換で係数の底変換同型の存在を用いる。§6の係数比較を既存の入力として利用する。",
+      "approval": "Approved B3 inventory only; no exemption added to the dependency-tier checker.",
+      "actual_compiler_reference_names": [
+        {
+          "name": "SerrePositivity.BhattScholze.Prismatic.exists_affineEnvelopeCoefficientBaseChange_equiv",
+          "usages": 1
+        }
+      ],
+      "classification": "direct declaration reference",
+      "current_from": "SerrePositivity.BhattScholze.Prismatic.CechAlexander.Comparison.AffineCechPrismBaseChange",
+      "current_to": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.BaseChange.AffineEnvelopeBaseChangeCoefficients",
+      "direct_import_still_present": true,
+      "original_reverse_edge_retained": true,
+      "B3prime_disposition": "retained mathematical dependency; original approved reason and compiler references remain applicable after owner/name transport",
+      "current_project_imports": [
+        "SerrePositivity.BhattScholze.Prism.Bounded.CompletedTensorRingMaps",
+        "SerrePositivity.BhattScholze.Prismatic.CechAlexander.Envelopes.AffineEnvelopeMaps",
+        "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.BaseChange.AffineEnvelopeBaseChangeCoefficients",
+        "SerrePositivity.Util.Citation"
+      ]
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.CrystallinePDRetraction",
+      "to": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.Comparison.PDPolynomialFunctor",
+      "from_section": "§5",
+      "to_section": "§6",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "approved_reason": "結晶側のPD retractionでWittのPD多項式模型のframeとbase_kerを用いる。型の所有元とその仮定を保ち、新しい一般化は行わない。",
+      "approval": "Approved B3 inventory only; no exemption added to the dependency-tier checker.",
+      "actual_compiler_reference_names": [
+        {
+          "name": "_private.SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.Comparison.PDPolynomialFunctor.0.SerrePositivity.BhattScholze.Prismatic.PDPolynomialFunctor.base_ker",
+          "usages": 1
+        },
+        {
+          "name": "_private.SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.Comparison.PDPolynomialFunctor.0.SerrePositivity.BhattScholze.Prismatic.PDPolynomialFunctor.frame",
+          "usages": 1
+        }
+      ],
+      "classification": "direct declaration reference",
+      "current_from": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.CrystallinePDRetraction",
+      "current_to": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.Comparison.PDPolynomialFunctor",
+      "direct_import_still_present": true,
+      "original_reverse_edge_retained": true,
+      "B3prime_disposition": "retained mathematical dependency; original approved reason and compiler references remain applicable after owner/name transport",
+      "current_project_imports": [
+        "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.CrystallineBase",
+        "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.PDDeltaFrobeniusEvaluation",
+        "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.PDSmallModelComparison",
+        "SerrePositivity.BhattScholze.Prismatic.Crystalline.Envelopes.CrystallinePDModel",
+        "SerrePositivity.BhattScholze.Prismatic.Crystalline.Envelopes.PDSmallRawEnvelope",
+        "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.Comparison.PDPolynomialFunctor",
+        "SerrePositivity.HomologicalAlgebra.DerivedCompletion.Principal.CompletionFunctor"
+      ]
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.CrystallinePDRetractionSplit",
+      "to": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.Comparison.PDTermReductionLinear",
+      "from_section": "§5",
+      "to_section": "§6",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "approved_reason": "PD retractionの分裂でpdTermCompletionUnitAlgを用いる。§6.4の完備化の単位の代数射を保持する。",
+      "approval": "Approved B3 inventory only; no exemption added to the dependency-tier checker.",
+      "actual_compiler_reference_names": [
+        {
+          "name": "SerrePositivity.BhattScholze.Prismatic.pdTermCompletionUnitAlg",
+          "usages": 6
+        }
+      ],
+      "classification": "direct declaration reference",
+      "current_from": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.CrystallinePDRetractionSplit",
+      "current_to": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.Comparison.PDTermReductionLinear",
+      "direct_import_still_present": true,
+      "original_reverse_edge_retained": true,
+      "B3prime_disposition": "retained mathematical dependency; original approved reason and compiler references remain applicable after owner/name transport",
+      "current_project_imports": [
+        "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.CrystallineBase",
+        "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.CrystallineCechSource",
+        "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.CrystallineGeneratorBridge",
+        "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.CrystallinePDIntegral",
+        "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.CrystallinePDRetraction",
+        "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.CrystallinePDRetractionNaturality",
+        "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.PDCompletedCech",
+        "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.PDPolynomialCech",
+        "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.PDTermRingHomExt",
+        "SerrePositivity.BhattScholze.Prismatic.Crystalline.Envelopes.CrystallinePDModel",
+        "SerrePositivity.BhattScholze.Prismatic.Crystalline.Envelopes.PDSmallRawEnvelope",
+        "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.Comparison.PDTermReductionLinear",
+        "SerrePositivity.HomologicalAlgebra.DerivedCompletion.Principal.CompletionFunctor"
+      ]
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.PDDeltaFrobeniusEvaluation",
+      "to": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.Comparison.PDFrobeniusLift",
+      "from_section": "§5",
+      "to_section": "§6",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "approved_reason": "PDのFrobenius評価で分冪多項式からδ構造を得る存在定理を用いる。既存のPDFrobeniusLiftの型を保つ。",
+      "approval": "Approved B3 inventory only; no exemption added to the dependency-tier checker.",
+      "actual_compiler_reference_names": [
+        {
+          "name": "SerrePositivity.BhattScholze.Prismatic.exists_deltaStructure_of_pdPolynomial",
+          "usages": 1
+        }
+      ],
+      "classification": "direct declaration reference",
+      "current_from": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.PDDeltaFrobeniusEvaluation",
+      "current_to": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.Comparison.PDFrobeniusLift",
+      "direct_import_still_present": true,
+      "original_reverse_edge_retained": true,
+      "B3prime_disposition": "retained mathematical dependency; original approved reason and compiler references remain applicable after owner/name transport",
+      "current_project_imports": [
+        "SerrePositivity.BhattScholze.Delta.Division.Basic",
+        "SerrePositivity.BhattScholze.Prismatic.CechAlexander.Envelopes.AffineEnvelopeMaps",
+        "SerrePositivity.BhattScholze.Prismatic.Crystalline.Envelopes.PDEnvelopeCrystalline",
+        "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.Comparison.PDFrobeniusLift"
+      ]
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.PDRawBaseChangeQuotient",
+      "to": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.Envelopes.PDModelCompletionQuotient",
+      "from_section": "§5",
+      "to_section": "§6",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "approved_reason": "元のコンパイラ索引に直接の定数参照はない。完備化と商の模型の見せ直しを保持し、importの整理は別に判定する。",
+      "approval": "Approved B3 inventory only; no exemption added to the dependency-tier checker.",
+      "actual_compiler_reference_names": [],
+      "classification": "import visibility only; no direct declaration reference in the actual after index",
+      "current_from": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.PDRawBaseChangeQuotient",
+      "current_to": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.Envelopes.PDModelCompletionQuotient",
+      "direct_import_still_present": true,
+      "original_reverse_edge_retained": true,
+      "B3prime_disposition": "retained mathematical dependency; original approved reason and compiler references remain applicable after owner/name transport",
+      "current_project_imports": [
+        "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.Envelopes.PDModelCompletionQuotient"
+      ]
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.PDRawRingHomExt",
+      "to": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.Comparison.PDFrobeniusLift",
+      "from_section": "§5",
+      "to_section": "§6",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "approved_reason": "未完備環の射の外延性で階乗の正則性factorial_regularを用いる。現行の係数環・仮定における補題を保持する。",
+      "approval": "Approved B3 inventory only; no exemption added to the dependency-tier checker.",
+      "actual_compiler_reference_names": [
+        {
+          "name": "_private.SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.Comparison.PDFrobeniusLift.0.SerrePositivity.BhattScholze.Prismatic.factorial_regular",
+          "usages": 1
+        }
+      ],
+      "classification": "direct declaration reference",
+      "current_from": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.PDRawRingHomExt",
+      "current_to": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.Comparison.PDFrobeniusLift",
+      "direct_import_still_present": true,
+      "original_reverse_edge_retained": true,
+      "B3prime_disposition": "retained mathematical dependency; original approved reason and compiler references remain applicable after owner/name transport",
+      "current_project_imports": [
+        "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.PDPolynomialCech",
+        "SerrePositivity.BhattScholze.Prismatic.Crystalline.Envelopes.PDSmallRawEnvelope",
+        "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.Comparison.PDFrobeniusLift"
+      ]
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.PDTermRingHomExt",
+      "to": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.Comparison.PDTermReductionLinear",
+      "from_section": "§5",
+      "to_section": "§6",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "approved_reason": "PD項の環準同型の外延性でpdTermCompletionUnitAlgを用いる。完備化の単位への参照を保つ。",
+      "approval": "Approved B3 inventory only; no exemption added to the dependency-tier checker.",
+      "actual_compiler_reference_names": [
+        {
+          "name": "SerrePositivity.BhattScholze.Prismatic.pdTermCompletionUnitAlg",
+          "usages": 3
+        }
+      ],
+      "classification": "direct declaration reference",
+      "current_from": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.PDTermRingHomExt",
+      "current_to": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.Comparison.PDTermReductionLinear",
+      "direct_import_still_present": true,
+      "original_reverse_edge_retained": true,
+      "B3prime_disposition": "retained mathematical dependency; original approved reason and compiler references remain applicable after owner/name transport",
+      "current_project_imports": [
+        "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.PDPolynomialCech",
+        "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.PDRawRingHomExt",
+        "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamRow",
+        "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.Comparison.PDTermReductionLinear",
+        "SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrincipalClassicalComparison"
+      ]
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Envelopes.PDEnvelopeCrystalline",
+      "to": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.Comparison.PDFrobeniusLift",
+      "from_section": "§5",
+      "to_section": "§6",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "approved_reason": "結晶用PD包絡で分冪多項式からδ構造を得る存在定理を用いる。δ構造の新しい汎用界面を作らず既存の定理を使う。",
+      "approval": "Approved B3 inventory only; no exemption added to the dependency-tier checker.",
+      "actual_compiler_reference_names": [
+        {
+          "name": "SerrePositivity.BhattScholze.Prismatic.exists_deltaStructure_of_pdPolynomial",
+          "usages": 3
+        }
+      ],
+      "classification": "direct declaration reference",
+      "current_from": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Envelopes.PDEnvelopeCrystalline",
+      "current_to": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.Comparison.PDFrobeniusLift",
+      "direct_import_still_present": true,
+      "original_reverse_edge_retained": true,
+      "B3prime_disposition": "retained mathematical dependency; original approved reason and compiler references remain applicable after owner/name transport",
+      "current_project_imports": [
+        "SerrePositivity.BhattScholze.Prism.Basic.OrientedPrism",
+        "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.Comparison.PDFrobeniusLift"
+      ]
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Envelopes.PDEnvelopeCrystallineMaps",
+      "to": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.WittPDPrismMaps",
+      "from_section": "§5",
+      "to_section": "§6",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "approved_reason": "結晶用PD包絡の射でprime-spanの分冪射条件isDPMorphism_primeSpanを用いる。WittPDPrismMapsの既存の条件・型を保つ。",
+      "approval": "Approved B3 inventory only; no exemption added to the dependency-tier checker.",
+      "actual_compiler_reference_names": [
+        {
+          "name": "_private.SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.WittPDPrismMaps.0.SerrePositivity.BhattScholze.Prismatic.isDPMorphism_primeSpan",
+          "usages": 1
+        }
+      ],
+      "classification": "direct declaration reference",
+      "current_from": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Envelopes.PDEnvelopeCrystallineMaps",
+      "current_to": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.WittPDPrismMaps",
+      "direct_import_still_present": true,
+      "original_reverse_edge_retained": true,
+      "B3prime_disposition": "retained mathematical dependency; original approved reason and compiler references remain applicable after owner/name transport",
+      "current_project_imports": [
+        "SerrePositivity.BhattScholze.Prismatic.Crystalline.Envelopes.PDEnvelopeCrystalline",
+        "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.WittPDPrismMaps"
+      ]
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamRowFormsExt",
+      "to": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.PDDeRham.PDDeRhamSubstitutionDegreeZero",
+      "from_section": "§5",
+      "to_section": "§6",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "approved_reason": "PD de Rhamのrow形式の外延性で外積の次数0の単位exteriorZero_oneを用いる。§6.4の置換構成の補助を保持する。",
+      "approval": "Approved B3 inventory only; no exemption added to the dependency-tier checker.",
+      "actual_compiler_reference_names": [
+        {
+          "name": "_private.SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.PDDeRham.PDDeRhamSubstitutionDegreeZero.0.SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.exteriorZero_one",
+          "usages": 1
+        }
+      ],
+      "classification": "direct declaration reference",
+      "current_from": "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamRowFormsExt",
+      "current_to": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.PDDeRham.PDDeRhamSubstitutionDegreeZero",
+      "direct_import_still_present": true,
+      "original_reverse_edge_retained": true,
+      "B3prime_disposition": "retained mathematical dependency; original approved reason and compiler references remain applicable after owner/name transport",
+      "current_project_imports": [
+        "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.PDPolynomialCech",
+        "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamRow",
+        "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.PDDeRham.PDDeRhamSubstitutionDegreeZero",
+        "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.PDDeRham.PDDeRhamSubstitutionDifferential",
+        "SerrePositivity.KST.DerivedBlowup.ExteriorBaseChangeDegreeInclusion"
+      ]
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamRowFormsExt",
+      "to": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.PDDeRham.PDDeRhamSubstitutionDifferential",
+      "from_section": "§5",
+      "to_section": "§6",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "approved_reason": "PD de Rhamのrow形式の外延性でrowModuleとd_vertexを用いる。既存のrowの加群・微分の定義を複製しない。",
+      "approval": "Approved B3 inventory only; no exemption added to the dependency-tier checker.",
+      "actual_compiler_reference_names": [
+        {
+          "name": "_private.SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.PDDeRham.PDDeRhamSubstitutionDifferential.0.SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.d_vertex",
+          "usages": 1
+        },
+        {
+          "name": "_private.SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.PDDeRham.PDDeRhamSubstitutionDifferential.0.SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.rowModule",
+          "usages": 2
+        }
+      ],
+      "classification": "direct declaration reference",
+      "current_from": "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamRowFormsExt",
+      "current_to": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.PDDeRham.PDDeRhamSubstitutionDifferential",
+      "direct_import_still_present": true,
+      "original_reverse_edge_retained": true,
+      "B3prime_disposition": "retained mathematical dependency; original approved reason and compiler references remain applicable after owner/name transport",
+      "current_project_imports": [
+        "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.PDPolynomialCech",
+        "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamRow",
+        "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.PDDeRham.PDDeRhamSubstitutionDegreeZero",
+        "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.PDDeRham.PDDeRhamSubstitutionDifferential",
+        "SerrePositivity.KST.DerivedBlowup.ExteriorBaseChangeDegreeInclusion"
+      ]
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamSubstitutionChainRule",
+      "to": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.Comparison.PDFrobeniusLift",
+      "from_section": "§5",
+      "to_section": "§6",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "approved_reason": "分冪の未完備の連鎖律で階乗の正則性factorial_regularを用いる。現在の仮定を保つ既存の補題への参照として残す。",
+      "approval": "Approved B3 inventory only; no exemption added to the dependency-tier checker.",
+      "actual_compiler_reference_names": [
+        {
+          "name": "_private.SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.Comparison.PDFrobeniusLift.0.SerrePositivity.BhattScholze.Prismatic.factorial_regular",
+          "usages": 1
+        }
+      ],
+      "classification": "direct declaration reference",
+      "current_from": "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamSubstitutionChainRule",
+      "current_to": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.Comparison.PDFrobeniusLift",
+      "direct_import_still_present": true,
+      "original_reverse_edge_retained": true,
+      "B3prime_disposition": "retained mathematical dependency; original approved reason and compiler references remain applicable after owner/name transport",
+      "current_project_imports": [
+        "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.PDPolynomialCech",
+        "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.PDRawDifferential",
+        "SerrePositivity.BhattScholze.Prismatic.Crystalline.Envelopes.PDSmallRawEnvelope",
+        "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamBicomplex",
+        "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamColumn",
+        "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamSubstitutionJacobian",
+        "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.Comparison.PDFrobeniusLift",
+        "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.Comparison.PDRawPolynomialSubstitution"
+      ]
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamSubstitutionChainRule",
+      "to": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.Comparison.PDRawPolynomialSubstitution",
+      "from_section": "§5",
+      "to_section": "§6",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "approved_reason": "分冪の未完備の連鎖律で多項式代入substituteとコピーに関する式を用いる。§6.4に置いた係数付きの代入の定義を保持する。",
+      "approval": "Approved B3 inventory only; no exemption added to the dependency-tier checker.",
+      "actual_compiler_reference_names": [
+        {
+          "name": "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.substitute",
+          "usages": 1
+        },
+        {
+          "name": "_private.SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.Comparison.PDRawPolynomialSubstitution.0.SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.substitute_copy",
+          "usages": 1
+        }
+      ],
+      "classification": "direct declaration reference",
+      "current_from": "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamSubstitutionChainRule",
+      "current_to": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.Comparison.PDRawPolynomialSubstitution",
+      "direct_import_still_present": true,
+      "original_reverse_edge_retained": true,
+      "B3prime_disposition": "retained mathematical dependency; original approved reason and compiler references remain applicable after owner/name transport",
+      "current_project_imports": [
+        "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.PDPolynomialCech",
+        "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.PDRawDifferential",
+        "SerrePositivity.BhattScholze.Prismatic.Crystalline.Envelopes.PDSmallRawEnvelope",
+        "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamBicomplex",
+        "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamColumn",
+        "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamSubstitutionJacobian",
+        "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.Comparison.PDFrobeniusLift",
+        "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.Comparison.PDRawPolynomialSubstitution"
+      ]
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamSubstitutionJacobian",
+      "to": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.Comparison.PDRawPolynomialSubstitution",
+      "from_section": "§5",
+      "to_section": "§6",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "approved_reason": "代入のJacobianの式でevalVertexを用いる。頂点での評価の定義を§6.4の既存の代入の構成から参照する。",
+      "approval": "Approved B3 inventory only; no exemption added to the dependency-tier checker.",
+      "actual_compiler_reference_names": [
+        {
+          "name": "SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.evalVertex",
+          "usages": 4
+        }
+      ],
+      "classification": "direct declaration reference",
+      "current_from": "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamSubstitutionJacobian",
+      "current_to": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.Comparison.PDRawPolynomialSubstitution",
+      "direct_import_still_present": true,
+      "original_reverse_edge_retained": true,
+      "B3prime_disposition": "retained mathematical dependency; original approved reason and compiler references remain applicable after owner/name transport",
+      "current_project_imports": [
+        "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamColumn",
+        "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.Comparison.PDRawPolynomialSubstitution"
+      ]
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Site.CrystallineSmallCoverMaps",
+      "to": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.Comparison.CrystallineBaseStructureRestriction",
+      "from_section": "§5",
+      "to_section": "§6",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "approved_reason": "結晶siteの小さい被覆の射でcrysBaseRestrictionSiteを用いる。既存の基底制限siteを入力に取り、新しいsiteの型を作らない。",
+      "approval": "Approved B3 inventory only; no exemption added to the dependency-tier checker.",
+      "actual_compiler_reference_names": [
+        {
+          "name": "SerrePositivity.BhattScholze.Prismatic.crysBaseRestrictionSite",
+          "usages": 1
+        }
+      ],
+      "classification": "direct declaration reference",
+      "current_from": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Site.CrystallineSmallCoverMaps",
+      "current_to": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.Comparison.CrystallineBaseStructureRestriction",
+      "direct_import_still_present": true,
+      "original_reverse_edge_retained": true,
+      "B3prime_disposition": "retained mathematical dependency; original approved reason and compiler references remain applicable after owner/name transport",
+      "current_project_imports": [
+        "SerrePositivity.BhattScholze.Prismatic.Crystalline.Site.CrystallineSmallSiteTopology",
+        "SerrePositivity.BhattScholze.Prismatic.Crystalline.Site.CrystallineZariskiIso",
+        "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.Comparison.CrystallineBaseStructureRestriction"
+      ]
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Affine.CartierCompletedForms",
+      "to": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.CrystallineCompletedFreeDelta",
+      "from_section": "§4.2",
+      "to_section": "§5",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "approved_reason": "HT側の完備Cartier形式でゼロからの結晶主完備化とその単位を用いる。結晶比較側にある同じ完備化の構成を入力として保つ。",
+      "approval": "Approved B3 inventory only; no exemption added to the dependency-tier checker.",
+      "actual_compiler_reference_names": [
+        {
+          "name": "SerrePositivity.BhattScholze.Prismatic.crystallinePrincipalCompletionOfZero",
+          "usages": 1
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.Prismatic.crystallinePrincipalCompletionOfZero_unit",
+          "usages": 1
+        }
+      ],
+      "classification": "direct declaration reference",
+      "current_from": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Affine.CartierCompletedForms",
+      "current_to": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.CrystallineCompletedFreeDelta",
+      "direct_import_still_present": true,
+      "original_reverse_edge_retained": true,
+      "B3prime_disposition": "retained mathematical dependency; original approved reason and compiler references remain applicable after owner/name transport",
+      "current_project_imports": [
+        "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.CrystallineCompletedFreeDelta",
+        "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Affine.HodgeTateAffineForms"
+      ]
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Affine.HodgeTateCartierAssembly",
+      "to": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.CrystallineGeneratorClasses",
+      "from_section": "§4.2",
+      "to_section": "§5",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "approved_reason": "HT-Cartierの組み立てでcrystallineChain_generatorsを用いる。結晶側で構成済みの生成元の類を同じ名前・型で読む。",
+      "approval": "Approved B3 inventory only; no exemption added to the dependency-tier checker.",
+      "actual_compiler_reference_names": [
+        {
+          "name": "SerrePositivity.BhattScholze.Prismatic.crystallineChain_generators",
+          "usages": 2
+        }
+      ],
+      "classification": "direct declaration reference",
+      "current_from": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Affine.HodgeTateCartierAssembly",
+      "current_to": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.CrystallineGeneratorClasses",
+      "direct_import_still_present": true,
+      "original_reverse_edge_retained": true,
+      "B3prime_disposition": "retained mathematical dependency; original approved reason and compiler references remain applicable after owner/name transport",
+      "current_project_imports": [
+        "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.CrystallineGeneratorClasses",
+        "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Affine.CartierCompletedForms",
+        "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Affine.FinitePolynomialCartier",
+        "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Affine.HodgeTateAffineForms",
+        "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Affine.HodgeTateCompletedMap",
+        "SerrePositivity.CommutativeAlgebra.DeRham.UniversalProperty",
+        "SerrePositivity.Util.Citation"
+      ]
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Semiperfectoid.RootEnvelope.Source",
+      "to": "SerrePositivity.BhattScholze.Perfectoidization.TensorPerfectoidization",
+      "from_section": "§7",
+      "to_section": "§8",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "approved_reason": "根の包絡のSourceでperfectoid化のテンソル底変換、その写像と普遍性の三宣言を用いる。§8の底変換の構成を複製しない。",
+      "approval": "Approved B3 inventory only; no exemption added to the dependency-tier checker.",
+      "actual_compiler_reference_names": [
+        {
+          "name": "SerrePositivity.BhattScholze.exists_perfectoidizationTensorBaseChange",
+          "usages": 1
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.perfectoidizationTensorBaseChangeMap",
+          "usages": 2
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.perfectoidizationTensorBaseChangeMap_isPerfectoidization",
+          "usages": 1
+        }
+      ],
+      "classification": "direct declaration reference",
+      "current_from": "SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.RootEnvelope.Source",
+      "current_to": "SerrePositivity.BhattScholze.Perfectoidization.TensorPerfectoidization",
+      "direct_import_still_present": true,
+      "original_reverse_edge_retained": true,
+      "B3prime_disposition": "retained mathematical dependency; original approved reason and compiler references remain applicable after owner/name transport",
+      "current_project_imports": [
+        "SerrePositivity.BhattScholze.Andre.Envelope.FamilyEvaluation",
+        "SerrePositivity.BhattScholze.Andre.Envelope.RootRelation",
+        "SerrePositivity.BhattScholze.Andre.Envelope.RootSource",
+        "SerrePositivity.BhattScholze.Andre.Envelope.SourceEvaluation",
+        "SerrePositivity.BhattScholze.Delta.Division.Source",
+        "SerrePositivity.BhattScholze.Delta.Perfect.PerfectDelta",
+        "SerrePositivity.BhattScholze.Perfectoidization.TensorPerfectoidization",
+        "SerrePositivity.BhattScholze.Prism.Basic.OrientedPrism",
+        "SerrePositivity.BhattScholze.Prism.Perfection.PrismPerfection",
+        "SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismPerfectoid",
+        "SerrePositivity.BhattScholze.Semiperfectoid.Perfection.PerfectPrismDivision",
+        "SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.CompatibleRootPerfectoid",
+        "SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.Surjectivity",
+        "SerrePositivity.CommutativeAlgebra.Witt.Coefficients",
+        "SerrePositivity.HomologicalAlgebra.DerivedCompletion.BoundedAboveCompletion",
+        "SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrismaticResidue",
+        "SerrePositivity.HomologicalAlgebra.DerivedCompletion.Restriction.Completion",
+        "SerrePositivity.HomologicalAlgebra.DerivedPureHomology",
+        "SerrePositivity.HomologicalAlgebra.DerivedQuotientKoszul",
+        "SerrePositivity.HomologicalAlgebra.DerivedRestrictionConservative",
+        "SerrePositivity.HomologicalAlgebra.DerivedTensorH0Algebra",
+        "SerrePositivity.HomologicalAlgebra.DerivedTensorNonpositive",
+        "SerrePositivity.HomologicalAlgebra.TorExactColimits"
+      ]
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Semiperfectoid.RootFamilyPerfectoid",
+      "to": "SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction",
+      "from_section": "§7",
+      "to_section": "§8",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "approved_reason": "根の族のperfectoid性でmonomialAdicCompletionPerfectoidを用いる。根の付加の完備化に関する既存の§8の入力を保つ。",
+      "approval": "Approved B3 inventory only; no exemption added to the dependency-tier checker.",
+      "actual_compiler_reference_names": [
+        {
+          "name": "_private.SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction.0.SerrePositivity.BhattScholze.Perfectoidization.Derived.monomialAdicCompletionPerfectoid",
+          "usages": 1
+        }
+      ],
+      "classification": "direct declaration reference",
+      "current_from": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootFamilyPerfectoid",
+      "current_to": "SerrePositivity.BhattScholze.Perfectoidization.Construction.RootAdjunction",
+      "direct_import_still_present": true,
+      "original_reverse_edge_retained": true,
+      "B3prime_disposition": "retained mathematical dependency; original approved reason and compiler references remain applicable after owner/name transport",
+      "current_project_imports": [
+        "SerrePositivity.BhattScholze.Perfectoidization.Construction.RootAdjunction",
+        "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootFamilyBase"
+      ]
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity",
+      "to": "SerrePositivity.BhattScholze.Perfectoidization.TensorPerfectoidization",
+      "from_section": "§7",
+      "to_section": "§8",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "approved_reason": "Surjectivityでperfectoid化のテンソル底変換、その写像と普遍性を用いる。§8の存在・写像の型を保つ。",
+      "approval": "Approved B3 inventory only; no exemption added to the dependency-tier checker.",
+      "actual_compiler_reference_names": [
+        {
+          "name": "SerrePositivity.BhattScholze.exists_perfectoidizationTensorBaseChange",
+          "usages": 1
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.perfectoidizationTensorBaseChangeMap",
+          "usages": 2
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.perfectoidizationTensorBaseChangeMap_isPerfectoidization",
+          "usages": 1
+        }
+      ],
+      "classification": "direct declaration reference",
+      "current_from": "SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.Surjectivity",
+      "current_to": "SerrePositivity.BhattScholze.Perfectoidization.TensorPerfectoidization",
+      "direct_import_still_present": true,
+      "original_reverse_edge_retained": true,
+      "B3prime_disposition": "retained mathematical dependency; original approved reason and compiler references remain applicable after owner/name transport",
+      "current_project_imports": [
+        "SerrePositivity.BhattScholze.Andre.AndreFlatness",
+        "SerrePositivity.BhattScholze.Perfectoidization.TensorPerfectoidization",
+        "SerrePositivity.BhattScholze.Perfectoidization.WittPushout",
+        "SerrePositivity.BhattScholze.Semiperfectoid.Perfection.Perfectoidization",
+        "SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.CompatibleRoot",
+        "SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.CompatibleRootPerfectoid",
+        "SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosed.Basic",
+        "SerrePositivity.CommutativeAlgebra.Adic.Complete",
+        "SerrePositivity.CommutativeAlgebra.Adic.Reduction",
+        "SerrePositivity.CommutativeAlgebra.CompletelyFlat.Basic",
+        "SerrePositivity.CommutativeAlgebra.Perfectoid.Completion",
+        "SerrePositivity.CommutativeAlgebra.Perfectoid.Defs",
+        "SerrePositivity.CommutativeAlgebra.Perfectoid.Torsion",
+        "SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleComplete.Closure",
+        "SerrePositivity.Util.Citation"
+      ]
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity",
+      "to": "SerrePositivity.BhattScholze.Perfectoidization.WittPushout",
+      "from_section": "§7",
+      "to_section": "§8",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation",
+      "approved_reason": "Surjectivityで係数テンソル射と純テンソル上の式を用いる。WittPushoutの同じ係数射を再利用する。",
+      "approval": "Approved B3 inventory only; no exemption added to the dependency-tier checker.",
+      "actual_compiler_reference_names": [
+        {
+          "name": "SerrePositivity.BhattScholze.coefficientTensorLift",
+          "usages": 2
+        },
+        {
+          "name": "SerrePositivity.BhattScholze.coefficientTensorLift_tmul",
+          "usages": 1
+        }
+      ],
+      "classification": "direct declaration reference",
+      "current_from": "SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.Surjectivity",
+      "current_to": "SerrePositivity.BhattScholze.Perfectoidization.WittPushout",
+      "direct_import_still_present": true,
+      "original_reverse_edge_retained": true,
+      "B3prime_disposition": "retained mathematical dependency; original approved reason and compiler references remain applicable after owner/name transport",
+      "current_project_imports": [
+        "SerrePositivity.BhattScholze.Andre.AndreFlatness",
+        "SerrePositivity.BhattScholze.Perfectoidization.TensorPerfectoidization",
+        "SerrePositivity.BhattScholze.Perfectoidization.WittPushout",
+        "SerrePositivity.BhattScholze.Semiperfectoid.Perfection.Perfectoidization",
+        "SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.CompatibleRoot",
+        "SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.CompatibleRootPerfectoid",
+        "SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosed.Basic",
+        "SerrePositivity.CommutativeAlgebra.Adic.Complete",
+        "SerrePositivity.CommutativeAlgebra.Adic.Reduction",
+        "SerrePositivity.CommutativeAlgebra.CompletelyFlat.Basic",
+        "SerrePositivity.CommutativeAlgebra.Perfectoid.Completion",
+        "SerrePositivity.CommutativeAlgebra.Perfectoid.Defs",
+        "SerrePositivity.CommutativeAlgebra.Perfectoid.Torsion",
+        "SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleComplete.Closure",
+        "SerrePositivity.Util.Citation"
+      ]
+    }
+  ]
+}

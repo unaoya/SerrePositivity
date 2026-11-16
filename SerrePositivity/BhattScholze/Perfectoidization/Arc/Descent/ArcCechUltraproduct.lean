@@ -21,7 +21,7 @@ public import Mathlib.RingTheory.Flat.CategoryTheory
 
 universe u
 
-open CategoryTheory CategoryTheory.Limits MonoidalCategory TensorProduct
+open _root_.CategoryTheory _root_.CategoryTheory.Limits _root_.CategoryTheory.MonoidalCategory _root_.TensorProduct
 
 namespace SerrePositivity
 
@@ -81,7 +81,7 @@ theorem cechExact_of_ultraproducts
   let : Module.Flat A D := IsLocalization.flat D (ultrafilterDenominators R U)
   let F := tensorLeft (ModuleCat.of A D)
   let e := (K.sc n).mapHomologyIso F
-  have hK := (cechExact_baseChange_iff_tensorCochain B D).mp (h U) n
+  have hK := (_root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.cechExact_baseChange_iff_tensorCochain B D).mp (h U) n
   have hz := (HomologicalComplex.exactAt_iff_isZero_homology _ _).mp hK
   exact ModuleCat.isZero_iff_subsingleton.mp (hz.of_iso e.symm)
 

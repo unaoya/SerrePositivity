@@ -1,0 +1,6 @@
+{
+  "status": "syntactic target-name check only; native generated/private constants checked during preparation",
+  "files_scanned": 33638,
+  "public_target_name_collisions": [],
+  "split_output_path_collisions": []
+}

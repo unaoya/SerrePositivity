@@ -18,27 +18,27 @@ namespace SerrePositivity.BhattScholze
 /-- BS 著者版 §7.1 の semiperfectoid 環。
 p 完備な環 S が、ある整 perfectoid 環の全射像であること。
 完備性は既存の導来 p 完備性で表し、被覆は同じ宇宙で選ぶ。 -/
-def IsSemiperfectoid (p : ℕ) [Fact p.Prime] (S : Type u) [CommRing S] : Prop :=
-  DerivedCompletion.IsModuleComplete S (p : S) (ModuleCat.of S S) ∧
-    ∃ (T : CommRingCat.{u}) (q : T →+* S), IsIntegralPerfectoid T p ∧ Function.Surjective q
+def Semiperfectoid.IsSemiperfectoid (p : ℕ) [Fact p.Prime] (S : Type u) [CommRing S] : Prop :=
+  _root_.SerrePositivity.DerivedCompletion.IsModuleComplete S (p : S) (ModuleCat.of S S) ∧
+    ∃ (T : CommRingCat.{u}) (q : T →+* S), _root_.SerrePositivity.IsIntegralPerfectoid T p ∧ Function.Surjective q
 
 /-- semiperfectoid の定義から導来 p 完備性を取り出す。 -/
-theorem IsSemiperfectoid.isModuleComplete {p : ℕ} [Fact p.Prime]
-    {S : Type u} [CommRing S] (h : IsSemiperfectoid p S) :
-    DerivedCompletion.IsModuleComplete S (p : S) (ModuleCat.of S S) := h.1
+theorem _root_.SerrePositivity.BhattScholze.Semiperfectoid.IsSemiperfectoid.isModuleComplete {p : ℕ} [Fact p.Prime]
+    {S : Type u} [CommRing S] (h : _root_.SerrePositivity.BhattScholze.Semiperfectoid.IsSemiperfectoid p S) :
+    _root_.SerrePositivity.DerivedCompletion.IsModuleComplete S (p : S) (ModuleCat.of S S) := h.1
 
 /-- semiperfectoid の定義から perfectoid の全射被覆を取り出す。
 完備性だけから被覆の存在を推論しない。 -/
-theorem IsSemiperfectoid.exists_surjective {p : ℕ} [Fact p.Prime]
-    {S : Type u} [CommRing S] (h : IsSemiperfectoid p S) :
-    ∃ (T : CommRingCat.{u}) (q : T →+* S), IsIntegralPerfectoid T p ∧ Function.Surjective q := h.2
+theorem _root_.SerrePositivity.BhattScholze.Semiperfectoid.IsSemiperfectoid.exists_surjective {p : ℕ} [Fact p.Prime]
+    {S : Type u} [CommRing S] (h : _root_.SerrePositivity.BhattScholze.Semiperfectoid.IsSemiperfectoid p S) :
+    ∃ (T : CommRingCat.{u}) (q : T →+* S), _root_.SerrePositivity.IsIntegralPerfectoid T p ∧ Function.Surjective q := h.2
 
 /-- 指定された perfectoid の全射像が p 完備なら semiperfectoid。
 新たな完備性の定理を使わず、定義の二条件を組み合わせる。 -/
-theorem IsSemiperfectoid.of_surjective {p : ℕ} [Fact p.Prime]
+theorem _root_.SerrePositivity.BhattScholze.Semiperfectoid.IsSemiperfectoid.of_surjective {p : ℕ} [Fact p.Prime]
     {T S : Type u} [CommRing T] [CommRing S] (q : T →+* S)
-    (hT : IsIntegralPerfectoid T p) (hq : Function.Surjective q)
-    (hS : DerivedCompletion.IsModuleComplete S (p : S) (ModuleCat.of S S)) :
-    IsSemiperfectoid p S := ⟨hS, CommRingCat.of T, q, hT, hq⟩
+    (hT : _root_.SerrePositivity.IsIntegralPerfectoid T p) (hq : Function.Surjective q)
+    (hS : _root_.SerrePositivity.DerivedCompletion.IsModuleComplete S (p : S) (ModuleCat.of S S)) :
+    _root_.SerrePositivity.BhattScholze.Semiperfectoid.IsSemiperfectoid p S := ⟨hS, CommRingCat.of T, q, hT, hq⟩
 
 end SerrePositivity.BhattScholze

@@ -6,7 +6,7 @@ public import Mathlib.CategoryTheory.Presentable.Directed
 public import Mathlib.Algebra.Category.Ring.FilteredColimits
 public import Mathlib.CategoryTheory.Limits.Types.Filtered
 public import SerrePositivity.BhattScholze.Andre.Transfinite.Limit
-public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingInterface
 
 /-!
 # perfectoid 環の filtered 余極限の完備化
@@ -29,16 +29,16 @@ BS 著者版 Theorem 10.11 の証明で用いる filtered 余極限の完備化�
 
 universe u
 
-open CategoryTheory CategoryTheory.Limits
+open _root_.CategoryTheory _root_.CategoryTheory.Limits
 
 namespace SerrePositivity.BhattScholze.Perfectoidization.Derived
 
-open PerfectoidizationInterface SerrePositivity.DerivedCompletion
-open SerrePositivity.BhattScholze.Andre.Transfinite
+open _root_.SerrePositivity.BhattScholze.PerfectoidizationInterface _root_.SerrePositivity.DerivedCompletion
+open _root_.SerrePositivity.BhattScholze.Andre.Transfinite
 
 attribute [local instance] HasDerivedCategory.standard
 
-private theorem exists_final_directed_orderBot (I : Type u) [SmallCategory I] [IsFiltered I] :
+private theorem _root_.SerrePositivity.BhattScholze.Almost.exists_final_directed_orderBot (I : Type u) [SmallCategory I] [IsFiltered I] :
     ∃ (J : Type u) (_ : PartialOrder J) (_ : IsDirectedOrder J) (_ : OrderBot J)
       (G : J ⥤ I), G.Final := by
   obtain ⟨K, _, hK, hn, F, hf⟩ := IsFiltered.exists_directed I
@@ -54,7 +54,7 @@ private theorem exists_final_directed_orderBot (I : Type u) [SmallCategory I] [I
     exact ⟨⟨z, hk₀⟩, hk⟩
   exact ⟨J, inferInstance, inferInstance, inferInstance, hmon.functor ⋙ F, inferInstance⟩
 
-private def ringDirectLimitIso {J : Type u} [Preorder J] [Nonempty J] [IsDirectedOrder J]
+private def _root_.SerrePositivity.BhattScholze.Almost.ringDirectLimitIso {J : Type u} [Preorder J] [Nonempty J] [IsDirectedOrder J]
     (F : J ⥤ CommRingCat.{u}) (f : ∀ i j, i ≤ j → F.obj i →+* F.obj j)
     (hf : ∀ i j h, f i j h = (F.map (homOfLE h)).hom)
     [DirectedSystem (fun i => F.obj i) (fun i j h => f i j h)]
@@ -97,16 +97,16 @@ private def ringDirectLimitIso {J : Type u} [Preorder J] [Nonempty J] [IsDirecte
 
 /-- Theorem 10.11 の帰着に用いる。filtered 余極限の p 冪ねじれは p で消え、
 導来 p 完備化は離散な perfectoid 環である。 -/
-theorem isIntegralPerfectoid_completedFilteredColimit (p : ℕ) [Fact p.Prime]
+theorem _root_.SerrePositivity.BhattScholze.Almost.isIntegralPerfectoid_completedFilteredColimit (p : ℕ) [Fact p.Prime]
     {I : Type u} [SmallCategory I] [IsFiltered I]
     (F : I ⥤ CommRingCat.{u}) (c : Cocone F) (hc : IsColimit c)
-    (hF : ∀ i, IsIntegralPerfectoid (F.obj i) p) :
-    IsIntegralPerfectoid (completionRing p c.pt) p ∧
+    (hF : ∀ i, _root_.SerrePositivity.IsIntegralPerfectoid (F.obj i) p) :
+    _root_.SerrePositivity.IsIntegralPerfectoid (completionRing p c.pt) p ∧
       (∀ (x : c.pt) (n : ℕ), (p : c.pt)^n * x = 0 → (p : c.pt) * x = 0) ∧
       (∀ i : ℤ, i ≠ 0 → IsZero ((DerivedCategory.homologyFunctor (ModuleCat c.pt) i).obj
         ((derivedComplexCompletionFunctor c.pt (p : c.pt)).obj
           ((moduleObjectFunctor c.pt).obj (ModuleCat.of c.pt c.pt))))) := by
-  obtain ⟨J, _, _, _, G, _⟩ := exists_final_directed_orderBot I
+  obtain ⟨J, _, _, _, G, _⟩ := _root_.SerrePositivity.BhattScholze.Almost.exists_final_directed_orderBot I
   let D := G ⋙ F
   let f (i j : J) (h : i ≤ j) := (D.map (homOfLE h)).hom
   let : DirectedSystem (fun i => D.obj i) (fun i j h => f i j h) :=
@@ -116,9 +116,9 @@ theorem isIntegralPerfectoid_completedFilteredColimit (p : ℕ) [Fact p.Prime]
         (RingHom.congr_fun (congrArg (fun q : D.obj i ⟶ D.obj k => q.hom)
           (D.map_comp (homOfLE hij) (homOfLE hjk))) x).symm }
   let L := CommRingCat.of (Ring.DirectLimit (fun j => D.obj j) (fun i j h => f i j h))
-  let e := ringDirectLimitIso D f (fun _ _ _ => rfl) (c.whisker G)
+  let e := _root_.SerrePositivity.BhattScholze.Almost.ringDirectLimitIso D f (fun _ _ _ => rfl) (c.whisker G)
     ((Functor.Final.isColimitWhiskerEquiv G c).symm hc)
-  have hD (j : J) : IsIntegralPerfectoid (D.obj j) p := hF (G.obj j)
+  have hD (j : J) : _root_.SerrePositivity.IsIntegralPerfectoid (D.obj j) p := hF (G.obj j)
   have hL (n : ℕ) (x : L) (hx : (p : L) ^ n * x = 0) :
       (p : L) * x = 0 :=
     ringDirectLimit_p_power_torsion_bound_of_perfectoid (fun j => D.obj j) f p hD n x hx
@@ -133,7 +133,7 @@ theorem isIntegralPerfectoid_completedFilteredColimit (p : ℕ) [Fact p.Prime]
     let := principalCompletionAlgebra L (p : L)
     let b := boundedPrincipalCompletionAdicAlgEquiv L (p : L)
       ⟨1, fun n x hx => by simpa only [pow_one] using hL n x hx⟩
-    exact isIntegralPerfectoid_of_ringEquiv p
+    exact _root_.SerrePositivity.BhattScholze.isIntegralPerfectoid_of_ringEquiv p
       (b.toRingEquiv.symm.trans ((ringCompletionFunctor p).mapIso e).commRingCatIsoToRingEquiv)
       (isIntegralPerfectoid_adicCompletion_ringDirectLimit (fun j => D.obj j) f hD)
   · obtain ⟨hge, hle, _⟩ := completedUnit_pure_bounded_torsion c.pt (p : c.pt)
@@ -148,4 +148,4 @@ end SerrePositivity.BhattScholze.Perfectoidization.Derived
 /-! Literature correspondences from the reviewed coverage tables. -/
 
 /-! Reviewed literature correspondences. -/
-attribute [cite BS19 "Thm 10.11" (partial := component) "filtered 余極限への帰着、有限表示近似、perfectoid の余極限の完備化（BS-W13）。離散性の本体は A6・A7 待ち。E3 の欄は引き続き Inputs ／ 11-10 更新"] _root_.SerrePositivity.BhattScholze.Perfectoidization.Derived.isIntegralPerfectoid_completedFilteredColimit
+attribute [cite BS19 "Thm 10.11" (partial := component) "filtered 余極限への帰着、有限表示近似、perfectoid の余極限の完備化（BS-W13）。離散性の本体は A6・A7 待ち。E3 の欄は引き続き Inputs ／ 11-10 更新"] _root_.SerrePositivity.BhattScholze.Almost.isIntegralPerfectoid_completedFilteredColimit

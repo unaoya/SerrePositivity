@@ -1,0 +1,18 @@
+{
+  "command": [
+    "lake",
+    "build",
+    "SerrePositivity"
+  ],
+  "cwd": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout",
+  "rc": 0,
+  "reason": null,
+  "seconds": 66.22483433224261,
+  "peak_process_tree_rss_bytes": 5284347904,
+  "peak_lean_or_snapshot_jobs": 1,
+  "threads": "3",
+  "heavy_job_limit": 8,
+  "started_local": "2026-11-15T02:04:37.239528",
+  "finished_local": "2026-11-15T02:05:43.465814",
+  "application_receipt_sha256": "f3e08f9d46b2a38bb64eb724d72f99c0366605cfdffbca62b75737888da85196"
+}

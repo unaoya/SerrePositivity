@@ -57,3 +57,11 @@
 2. **証人 P0〜P3（§66.5）は ⑤∞ の A2（5∞-4）・A4（5∞-5）の出力に入れる**：使う辺（`deltaRootEdge`・`perfRootEdge`）、Amitsur の図式、`rootCover` の錐、Frobenius の列が、厳密な BE 図式の像として与えられる形で構成する（Čech–Alexander の厳密な cosimplicial 複体が Δ を計算する 5∞-2 から）。`stage-ii-second-half.md` の 5∞-4・5∞-5 の行に追記。
 3. **M15 の Lean は 5∞-2 が形になるまで止める**。検証済み（厳密な底の加群 ∞ 圏・随伴・IsThick、16,936 行）は main に入れる。
 4. **⑤d は今から G12**（CAlg の presentability、BS-W16 報告 §60〜§61、事前承認の上限 5,000 行、外枠は段 0 の上端の 2 倍）。段 0（型つきの一覧）を出して、上端が 5,000 行以下なら止まらずに Lean へ。G12 の完成が停止点。その後、5a-4（sifted の保存をモナドの道で）を持つ候補。
+
+## 8. 追記（2026-11-15、調整役）：G12 の段 0 を承認、モナドの部品は 5a-4m と共有
+
+報告 §71〜§74（51530f9c4、G01〜G15、7,000〜13,000 行、モナドの経路：F⊣U から全 coherent な誘導モナド、EM 準圏、native な Barr–Beck、accessibility）を承認する。上端が事前承認の 5,000 行を超えるが、G01〜G09（∞ モナドと EM 準圏、Barr–Beck）は **5a-4m（sifted の保存をモナドの道で）が使う同じ部品**なので、ここで一度作る。
+1. 型つきの一覧 G01〜G15 で止める。数え方は `coordination.md` §2。**外枠 20,000 行**（上端の約 1.5 倍、2 倍の規則の中）。約 10,000 行で止まらずに途中報告。
+2. 順序は G01〜G03 → G04〜G06 → G07〜G09 → G10〜G12 → G13〜G15。**G09（canonical な比較の同値、Barr–Beck）の完成を途中の取り込みの点**とし、報告して止まらずに続ける。
+3. G12 の完成（停止点 2）の後、**5a-4m を ⑤d が持つ**：`PreservesSmallSiftedColimits (cAlgForgetDerived A)` を、G01〜G09 のモナドの部品と、導来モナドが sifted 余極限を保つこと（free の sifted 保存、D(A) の sifted 余極限）から出す。段 0（型つきの一覧と見込み）を G12 の後に出す。
+4. HA の番号（4.7.3.3、4.7.2〜4.7.3、3.2.3.5、4.2.3.5）と Kerodon の Tag を docstring に。置き場所は InfinityCategories/HA の該当する節（一般のモナドの部品）と `EInfinity/BarrattEccles/Presentable/`（BE への適用）。

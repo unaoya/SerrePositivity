@@ -1,0 +1,99 @@
+{
+  "all_passed": true,
+  "passed": 17,
+  "total_checks": 17,
+  "scope_complete": 22,
+  "scope_total": 22,
+  "additional": 0,
+  "head": "107d005583fe01dc50b97945f0586063458e48af",
+  "time": 1794702339.932148,
+  "checks": [
+    {
+      "check": "Independent preparation complete",
+      "pass": true,
+      "evidence": "preparation-complete.json"
+    },
+    {
+      "check": "Actual native v3b all29groups214modules unexplained0",
+      "pass": true,
+      "evidence": "actual-preservation/complete.json"
+    },
+    {
+      "check": "Actual native citation/tag metadata exact",
+      "pass": true,
+      "evidence": "actual-citation-comparison.json"
+    },
+    {
+      "check": "All actual citation paths and lines valid within source tree",
+      "pass": true,
+      "evidence": "actual-citation-location-check.json"
+    },
+    {
+      "check": "Actual graph complete, acyclic, no EInfinity to BS, endpoints published",
+      "pass": true,
+      "evidence": "actual-import-graph.json"
+    },
+    {
+      "check": "Layers unchanged46, no new violation",
+      "pass": true,
+      "evidence": "actual-layer-comparison.json"
+    },
+    {
+      "check": "Existing tiers/exceptions unchanged, 346 permitted additions",
+      "pass": true,
+      "evidence": "actual-application.json"
+    },
+    {
+      "check": "Final applied source hashes match validated source",
+      "pass": true,
+      "evidence": {
+        "mismatches": []
+      }
+    },
+    {
+      "check": "Actual root succeeded",
+      "pass": true,
+      "evidence": "root-build-complete.json"
+    },
+    {
+      "check": "All106 formal audits exact inventory, serial, passed",
+      "pass": true,
+      "evidence": "all-audits-complete.json"
+    },
+    {
+      "check": "Full gate verify root/audits/sorry all passed",
+      "pass": true,
+      "evidence": "full-verify-complete.json"
+    },
+    {
+      "check": "Own changes entirely authorized, tooling unchanged",
+      "pass": true,
+      "evidence": "actual-source-scope-check.json"
+    },
+    {
+      "check": "All34 original BS reversals explicitly reconciled",
+      "pass": true,
+      "evidence": "actual-bs-reverse-edge-ledger.json"
+    },
+    {
+      "check": "All original module-literal audit scopes transported without loss",
+      "pass": true,
+      "evidence": "audit-module-scope-coverage.json"
+    },
+    {
+      "check": "All22 scope rows have implementation and evidence",
+      "pass": true,
+      "evidence": "scope-items-applied.json"
+    },
+    {
+      "check": "B4 import supplement regression with actual after Lean environment",
+      "pass": true,
+      "evidence": "B4-regression-complete.json"
+    },
+    {
+      "check": "B4 six live branches with no drafts in native collect",
+      "pass": true,
+      "evidence": "B4/lanes.json"
+    }
+  ]
+}

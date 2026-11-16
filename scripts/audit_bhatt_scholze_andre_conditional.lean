@@ -1,4 +1,4 @@
-import SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity
+import SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.Surjectivity
 import Mathlib.Util.AssertNoSorry
 
 -- 根の存在から両立する根列を選ぶ一般補題は証明済み。
@@ -8,5 +8,5 @@ assert_no_sorry SerrePositivity.IsAbsolutelyIntegrallyClosed.exists_compatible_p
 -- 以下は既存Andréの名前付きsorryに相対的。assert_no_sorryの対象にしない。
 
 -- 一般全射性も既存André入力に相対的。B-S引用解消とは数えない。
-#print axioms SerrePositivity.BhattScholze.surjective_of_isPerfectoidization_of_andre
-#print sorries SerrePositivity.BhattScholze.surjective_of_isPerfectoidization_of_andre
+#print axioms SerrePositivity.BhattScholze.Semiperfectoid.surjective_of_isPerfectoidization_of_andre
+#print sorries SerrePositivity.BhattScholze.Semiperfectoid.surjective_of_isPerfectoidization_of_andre

@@ -1,0 +1,9 @@
+[
+  "SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/Cocompletion/HomWeightYonedaUnitPointEvaluation.lean",
+  "SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/Cocompletion/HomWeightYonedaUnitSquare.lean",
+  "SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/Cocompletion/HomWeightYonedaUnitSquareNormalized.lean",
+  "SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/Cocompletion/HomWeightYonedaUnitValues.lean",
+  "SerrePositivity/InfinityCategories/Sheaves/SheafCondition.lean",
+  "SerrePositivity/InfinityCategories/Sheaves/SieveElements.lean",
+  "SerrePositivity/InfinityCategories/Sheaves/SieveSectionsDiagram.lean"
+]

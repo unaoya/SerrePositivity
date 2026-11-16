@@ -33,7 +33,7 @@ public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrismaticResi
 
 universe u
 
-/-! ## André E1：完全 prism の商からのモニック根候補
+/-! ## André：完全 prism の商からのモニック根候補
 
 ## 概要
 
@@ -131,7 +131,7 @@ BS 著者版 Remark 7.15（著者版 p.62）の実 prismatic envelope 比較へ�
 
 ## 方針
 
-完全 prism の生成元冪商の p 冪ねじれ上界と、標準 mod p 還元の離散・平坦性から G9 を適用する。
+完全 prism の生成元冪商の p 冪ねじれ上界と、標準 mod p 還元の離散・平坦性から 離散性の判定 を適用する。
 その生成元商の離散性と d 導来完備性から元の対象の純性を得る。
 原典の BS 著者版 Proposition 7.11 を用いる証明とは異なる経路の計算。
 
@@ -162,7 +162,7 @@ local notation "X" => MonicPrismaticSourceIteratedPDCompletion D d f
 include hP hf hdeg s
 
 /-- 概要：完全 prism 上の有限モニック族の実完備化源の正の生成元冪商は離散的。
-方針：標準 mod p の離散・平坦性、p 導来完備性、生成元冪商の p 冪ねじれ上界を G9 へ渡す。
+方針：標準 mod p の離散・平坦性、p 導来完備性、生成元冪商の p 冪ねじれ上界を 離散性の判定 へ渡す。
 規約：d mod p の正則性は仮定しない。
 使われ方：BS 著者版 Remark 7.15（著者版 p.62）の元の実完備化対象の離散性。 -/
 theorem perfectPrismMonicSourcePower_pure (n : ℕ) (hn : 0 < n) :

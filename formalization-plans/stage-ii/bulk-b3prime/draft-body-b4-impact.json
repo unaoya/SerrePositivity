@@ -1,0 +1,425 @@
+{
+  "status": "B4/draft followup text-only impact; no draft body/import/type/proof changed, no elaboration claim. B3prime approves future-destination comment lines, not wholesale protected P0 migration. Includes comments/strings and may need native review before changing code.",
+  "files": 28,
+  "occurrences": 50,
+  "rows": [
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A2/AnimatedAlgebra.lean",
+      "literal_occurrences": [
+        {
+          "line": 22,
+          "old": "SerrePositivity.EInfinity.Perfectoidization.TheoryInterface",
+          "new": "SerrePositivity.BhattScholze.Perfectoidization.Interface.TheoryInterface"
+        },
+        {
+          "line": 23,
+          "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface",
+          "new": "SerrePositivity.BhattScholze.Perfectoidization.Interface.Derived"
+        }
+      ],
+      "protected_A4_P0_review": false
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A2/DerivedPrismaticCohomology.lean",
+      "literal_occurrences": [
+        {
+          "line": 6,
+          "old": "SerrePositivity.EInfinity.Perfectoidization.TheoryInterface",
+          "new": "SerrePositivity.BhattScholze.Perfectoidization.Interface.TheoryInterface"
+        },
+        {
+          "line": 9,
+          "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface",
+          "new": "SerrePositivity.BhattScholze.Perfectoidization.Interface.Derived"
+        }
+      ],
+      "protected_A4_P0_review": false
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A3/DiscreteCase.lean",
+      "literal_occurrences": [
+        {
+          "line": 4,
+          "old": "SerrePositivity.BhattScholze.Semiperfectoid.DiscreteDelta",
+          "new": "SerrePositivity.BhattScholze.Semiperfectoid.Discrete.DiscreteDelta"
+        },
+        {
+          "line": 7,
+          "old": "SerrePositivity.BhattScholze.Semiperfectoid.PrismRetract",
+          "new": "SerrePositivity.BhattScholze.Semiperfectoid.Discrete.PrismRetract"
+        }
+      ],
+      "protected_A4_P0_review": false
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A3/LciAndQuasiregular.lean",
+      "literal_occurrences": [
+        {
+          "line": 10,
+          "old": "SerrePositivity.BhattScholze.Semiperfectoid.AinfClassicalMaps",
+          "new": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.AinfClassicalMaps"
+        },
+        {
+          "line": 12,
+          "old": "SerrePositivity.BhattScholze.Semiperfectoid.Perfectoidization",
+          "new": "SerrePositivity.BhattScholze.Semiperfectoid.Perfection.Perfectoidization"
+        },
+        {
+          "line": 16,
+          "old": "SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.PowerRootPolynomial",
+          "new": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootFamilies.PowerRootPolynomial"
+        }
+      ],
+      "protected_A4_P0_review": false
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A4/AfterComparison.lean",
+      "literal_occurrences": [
+        {
+          "line": 6,
+          "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface",
+          "new": "SerrePositivity.BhattScholze.Perfectoidization.Interface.Derived"
+        }
+      ],
+      "protected_A4_P0_review": true
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A4/InterfaceFields.lean",
+      "literal_occurrences": [
+        {
+          "line": 5,
+          "old": "SerrePositivity.EInfinity.Perfectoidization.TheoryInterface",
+          "new": "SerrePositivity.BhattScholze.Perfectoidization.Interface.TheoryInterface"
+        },
+        {
+          "line": 6,
+          "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface",
+          "new": "SerrePositivity.BhattScholze.Perfectoidization.Interface.Derived"
+        }
+      ],
+      "protected_A4_P0_review": true
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A4/Perfectoidization.lean",
+      "literal_occurrences": [
+        {
+          "line": 4,
+          "old": "SerrePositivity.BhattScholze.Semiperfectoid.AinfClassicalMaps",
+          "new": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.AinfClassicalMaps"
+        },
+        {
+          "line": 6,
+          "old": "SerrePositivity.EInfinity.Perfectoidization.TheoryInterface",
+          "new": "SerrePositivity.BhattScholze.Perfectoidization.Interface.TheoryInterface"
+        }
+      ],
+      "protected_A4_P0_review": true
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A5/InterfaceLimitCone.lean",
+      "literal_occurrences": [
+        {
+          "line": 4,
+          "old": "SerrePositivity.EInfinity.Perfectoidization.TheoryInterface",
+          "new": "SerrePositivity.BhattScholze.Perfectoidization.Interface.TheoryInterface"
+        }
+      ],
+      "protected_A4_P0_review": false
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A5/PerfectSite.lean",
+      "literal_occurrences": [
+        {
+          "line": 8,
+          "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface",
+          "new": "SerrePositivity.BhattScholze.Perfectoidization.Interface.Derived"
+        },
+        {
+          "line": 9,
+          "old": "SerrePositivity.BhattScholze.Semiperfectoid.Perfectoidization",
+          "new": "SerrePositivity.BhattScholze.Semiperfectoid.Perfection.Perfectoidization"
+        }
+      ],
+      "protected_A4_P0_review": false
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A5/PerfectSiteComparison.lean",
+      "literal_occurrences": [
+        {
+          "line": 6,
+          "old": "SerrePositivity.EInfinity.Perfectoidization.TheoryInterface",
+          "new": "SerrePositivity.BhattScholze.Perfectoidization.Interface.TheoryInterface"
+        },
+        {
+          "line": 8,
+          "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface",
+          "new": "SerrePositivity.BhattScholze.Perfectoidization.Interface.Derived"
+        }
+      ],
+      "protected_A4_P0_review": false
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A5/RootAdjunction.lean",
+      "literal_occurrences": [
+        {
+          "line": 1,
+          "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction",
+          "new": "SerrePositivity.BhattScholze.Perfectoidization.Construction.RootAdjunction"
+        },
+        {
+          "line": 5,
+          "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction",
+          "new": "SerrePositivity.BhattScholze.Perfectoidization.Construction.RootAdjunction"
+        }
+      ],
+      "protected_A4_P0_review": false
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A5/SemiperfectoidCase.lean",
+      "literal_occurrences": [
+        {
+          "line": 6,
+          "old": "SerrePositivity.EInfinity.Perfectoidization.TheoryInterface",
+          "new": "SerrePositivity.BhattScholze.Perfectoidization.Interface.TheoryInterface"
+        },
+        {
+          "line": 8,
+          "old": "SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.PowerRootPolynomial",
+          "new": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootFamilies.PowerRootPolynomial"
+        },
+        {
+          "line": 10,
+          "old": "SerrePositivity.BhattScholze.Semiperfectoid.Perfectoidization",
+          "new": "SerrePositivity.BhattScholze.Semiperfectoid.Perfection.Perfectoidization"
+        },
+        {
+          "line": 11,
+          "old": "SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity",
+          "new": "SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.Surjectivity"
+        },
+        {
+          "line": 12,
+          "old": "SerrePositivity.BhattScholze.Semiperfectoid.CompatibleRootPerfectoid",
+          "new": "SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.CompatibleRootPerfectoid"
+        },
+        {
+          "line": 131,
+          "old": "SerrePositivity.BhattScholze.IsSemiperfectoid",
+          "new": "SerrePositivity.BhattScholze.Semiperfectoid.IsSemiperfectoid"
+        }
+      ],
+      "protected_A4_P0_review": false
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A5/StrongDescent.lean",
+      "literal_occurrences": [
+        {
+          "line": 6,
+          "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface",
+          "new": "SerrePositivity.BhattScholze.Perfectoidization.Interface.Derived"
+        }
+      ],
+      "protected_A4_P0_review": false
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A5/WeaklyInitialAndDescent.lean",
+      "literal_occurrences": [
+        {
+          "line": 5,
+          "old": "SerrePositivity.EInfinity.Perfectoidization.TheoryInterface",
+          "new": "SerrePositivity.BhattScholze.Perfectoidization.Interface.TheoryInterface"
+        },
+        {
+          "line": 6,
+          "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface",
+          "new": "SerrePositivity.BhattScholze.Perfectoidization.Interface.Derived"
+        }
+      ],
+      "protected_A4_P0_review": false
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A6/ArcSite.lean",
+      "literal_occurrences": [
+        {
+          "line": 7,
+          "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface",
+          "new": "SerrePositivity.BhattScholze.Perfectoidization.Interface.Derived"
+        }
+      ],
+      "protected_A4_P0_review": false
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A6/Excision.lean",
+      "literal_occurrences": [
+        {
+          "line": 5,
+          "old": "SerrePositivity.EInfinity.Perfectoidization.TheoryInterface",
+          "new": "SerrePositivity.BhattScholze.Perfectoidization.Interface.TheoryInterface"
+        }
+      ],
+      "protected_A4_P0_review": false
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A6/SheafOfSetsExcision.lean",
+      "literal_occurrences": [
+        {
+          "line": 4,
+          "old": "SerrePositivity.BhattScholze.Perfectoid.FiniteProduct",
+          "new": "SerrePositivity.BhattScholze.Prism.Perfectoid.FiniteProduct"
+        },
+        {
+          "line": 6,
+          "old": "SerrePositivity.EInfinity.Perfectoidization.TheoryInterface",
+          "new": "SerrePositivity.BhattScholze.Perfectoidization.Interface.TheoryInterface"
+        },
+        {
+          "line": 7,
+          "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface",
+          "new": "SerrePositivity.BhattScholze.Perfectoidization.Interface.Derived"
+        }
+      ],
+      "protected_A4_P0_review": false
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A7/AnimatedDomain.lean",
+      "literal_occurrences": [
+        {
+          "line": 6,
+          "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface",
+          "new": "SerrePositivity.BhattScholze.Perfectoidization.Interface.Derived"
+        }
+      ],
+      "protected_A4_P0_review": false
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A7/AnimatedPerfectoidization.lean",
+      "literal_occurrences": [
+        {
+          "line": 6,
+          "old": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface",
+          "new": "SerrePositivity.BhattScholze.Perfectoidization.Interface.Derived"
+        }
+      ],
+      "protected_A4_P0_review": false
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A7/DiscreteCore.lean",
+      "literal_occurrences": [
+        {
+          "line": 5,
+          "old": "SerrePositivity.EInfinity.Perfectoidization.TheoryInterface",
+          "new": "SerrePositivity.BhattScholze.Perfectoidization.Interface.TheoryInterface"
+        }
+      ],
+      "protected_A4_P0_review": false
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A7/UniversalProperty.lean",
+      "literal_occurrences": [
+        {
+          "line": 5,
+          "old": "SerrePositivity.EInfinity.Perfectoidization.TheoryInterface",
+          "new": "SerrePositivity.BhattScholze.Perfectoidization.Interface.TheoryInterface"
+        }
+      ],
+      "protected_A4_P0_review": false
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A8/AlmostPurityConnectivity.lean",
+      "literal_occurrences": [
+        {
+          "line": 4,
+          "old": "SerrePositivity.BhattScholze.IntegralPerfectoidization.Completion.IntegralClosureCompletion",
+          "new": "SerrePositivity.BhattScholze.Almost.IntegralClosureCompletion"
+        },
+        {
+          "line": 14,
+          "old": "SerrePositivity.BhattScholze.Semiperfectoid.CompatibleRootPerfectoid",
+          "new": "SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.CompatibleRootPerfectoid"
+        }
+      ],
+      "protected_A4_P0_review": false
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A8/IntegralDiscreteness.lean",
+      "literal_occurrences": [
+        {
+          "line": 6,
+          "old": "SerrePositivity.BhattScholze.IntegralPerfectoidization.Approximation.IntegralApproximation",
+          "new": "SerrePositivity.CommutativeAlgebra.IntegralApproximation.FilteredAlgebra"
+        },
+        {
+          "line": 9,
+          "old": "SerrePositivity.BhattScholze.IntegralPerfectoidization.Completion.IntegralClosureCompletion",
+          "new": "SerrePositivity.BhattScholze.Almost.IntegralClosureCompletion"
+        },
+        {
+          "line": 11,
+          "old": "SerrePositivity.EInfinity.Perfectoidization.TheoryInterface",
+          "new": "SerrePositivity.BhattScholze.Perfectoidization.Interface.TheoryInterface"
+        }
+      ],
+      "protected_A4_P0_review": false
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A8/W13AssemblyInputs.lean",
+      "literal_occurrences": [
+        {
+          "line": 6,
+          "old": "SerrePositivity.BhattScholze.IntegralPerfectoidization.Completion.IntegralClosureCompletion",
+          "new": "SerrePositivity.BhattScholze.Almost.IntegralClosureCompletion"
+        },
+        {
+          "line": 8,
+          "old": "SerrePositivity.BhattScholze.IntegralPerfectoidization.Approximation.IntegralApproximation",
+          "new": "SerrePositivity.CommutativeAlgebra.IntegralApproximation.FilteredAlgebra"
+        }
+      ],
+      "protected_A4_P0_review": false
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/A9/Assembly.lean",
+      "literal_occurrences": [
+        {
+          "line": 4,
+          "old": "SerrePositivity.EInfinity.Perfectoidization.TheoryInterface",
+          "new": "SerrePositivity.BhattScholze.Perfectoidization.Interface.TheoryInterface"
+        }
+      ],
+      "protected_A4_P0_review": false
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/DerivedGeneral/ScalarRestriction.lean",
+      "literal_occurrences": [
+        {
+          "line": 9,
+          "old": "SerrePositivity.EInfinity.Perfectoidization.TheoryInterface",
+          "new": "SerrePositivity.BhattScholze.Perfectoidization.Interface.TheoryInterface"
+        }
+      ],
+      "protected_A4_P0_review": false
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/Shared/Descendable.lean",
+      "literal_occurrences": [
+        {
+          "line": 5,
+          "old": "SerrePositivity.EInfinity.Perfectoidization.TheoryInterface",
+          "new": "SerrePositivity.BhattScholze.Perfectoidization.Interface.TheoryInterface"
+        }
+      ],
+      "protected_A4_P0_review": false
+    },
+    {
+      "path": "formalization-plans/bhatt-scholze/drafts/Shared/EInfinityPowerOperation.lean",
+      "literal_occurrences": [
+        {
+          "line": 6,
+          "old": "SerrePositivity.EInfinity.Perfectoidization.TheoryInterface",
+          "new": "SerrePositivity.BhattScholze.Perfectoidization.Interface.TheoryInterface"
+        }
+      ],
+      "protected_A4_P0_review": false
+    }
+  ]
+}

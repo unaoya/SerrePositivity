@@ -1,0 +1,9 @@
+[
+  "SerrePositivity/AlgebraicGeometry.lean",
+  "SerrePositivity/AlgebraicGeometry/HomogeneousEvaluationScaling.lean",
+  "SerrePositivity/AlgebraicGeometry/SegreColumnDescent.lean",
+  "SerrePositivity/AlgebraicGeometry/SegreColumnEvaluation.lean",
+  "SerrePositivity/AlgebraicGeometry/SegreCoordinateMinors.lean",
+  "SerrePositivity/AlgebraicGeometry/SegreNormalizedCoordinates.lean",
+  "SerrePositivity/AlgebraicGeometry/SegreRowDescent.lean"
+]

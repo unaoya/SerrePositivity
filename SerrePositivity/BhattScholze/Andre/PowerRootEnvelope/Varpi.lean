@@ -438,7 +438,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PerfectPrismMonicModPrimePDEnvelope
 
-/-! ## André E1：モニック関係式の分冪表示環の忠実平坦性
+/-! ## André：モニック関係式の分冪表示環の忠実平坦性
 
 ## 概要
 

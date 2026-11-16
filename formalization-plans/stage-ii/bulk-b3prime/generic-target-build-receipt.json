@@ -1,0 +1,38 @@
+{
+  "status": "PASS",
+  "scope": "three isolated generic target builds only; full original-owner v3b is still pending",
+  "steps": [
+    {
+      "label": "build",
+      "command": [
+        "lake",
+        "build",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.InitialValueCone",
+        "SerrePositivity.HomologicalAlgebra.DerivedCompletion.IteratedPDH0",
+        "SerrePositivity.BhattScholze.Delta.Division.AdjoinResidue"
+      ],
+      "rc": 0,
+      "seconds": 12.857403583824635
+    },
+    {
+      "label": "snapshot",
+      "command": [
+        "lake",
+        "env",
+        "/tmp/bulk-w1-b2/private-snapshot/snapshot",
+        "--stable-project",
+        "--modules",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.InitialValueCone,SerrePositivity.HomologicalAlgebra.DerivedCompletion.IteratedPDH0,SerrePositivity.BhattScholze.Delta.Division.AdjoinResidue",
+        "--output",
+        "/tmp/bulk-b3prime/generic-preview-snapshot.json"
+      ],
+      "rc": 0,
+      "seconds": 14.93049175105989
+    }
+  ],
+  "source_hashes": {
+    "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.InitialValueCone": "14000e1296d7dae8ce35f3d509fa1eaf8c7dc70f97a377b609164c581d4c02b6",
+    "SerrePositivity.HomologicalAlgebra.DerivedCompletion.IteratedPDH0": "5944b2625d36c08c15f5265c043d813f0383a0f7f585dff1d7a9b7a3b14bbabf",
+    "SerrePositivity.BhattScholze.Delta.Division.AdjoinResidue": "f2a379c1476038a2a713dc9db69865ddfc6688e9574a3199e391b93247656364"
+  }
+}

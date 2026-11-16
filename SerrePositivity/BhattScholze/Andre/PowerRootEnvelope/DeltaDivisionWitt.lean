@@ -195,7 +195,7 @@ raw 比較が分母の係数像を対応する係数像へ送る公式を、座�
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze.Andre
-open SerrePositivity.DerivedCompletion
+open _root_.SerrePositivity.DerivedCompletion
 variable {p : ℕ} [Fact p.Prime] {A : Type u} [CommRing A] {σ : Type v}
 variable (D : DeltaStructure p A) (e : A ≃+* A) (he : D.IsDeltaHom D e.toRingHom)
 variable (d : A) (a : σ → A)
@@ -1213,7 +1213,7 @@ local notation "a" => fun _ : σ => D.frobeniusLift y
 local notation "Raw" => DeltaAdjoinDivision D (p : A) a
 local notation "j" => deltaAdjoinDivisionMap D (p : A) a
 local notation "PD" => PrincipalDPPresentation A y
-local notation "E" => deltaPDivisionRawPrincipalEquiv hA hpA D y hgL v hv hy
+local notation "E" => _root_.SerrePositivity.BhattScholze.Andre.deltaPDivisionRawPrincipalEquiv hA hpA D y hgL v hv hy
 
 /-- 概要：raw p 除算と主分冪表示の同型は任意の係数イデアルの像を保つ。
 方針：元の A 上の全係数公式から環射の合成を照合する。
@@ -1224,7 +1224,7 @@ theorem deltaPDivisionIdealPD_map (K : Ideal A) :
   rw [Ideal.map_map]
   congr 1
   ext r
-  exact deltaPDivisionRawPrincipalEquiv_coeff hA hpA D y hgL v hv hy r
+  exact _root_.SerrePositivity.BhattScholze.Andre.deltaPDivisionRawPrincipalEquiv_coeff hA hpA D y hgL v hv hy r
 
 /-- 概要：raw p 除算包の係数イデアル商は係数商上の主分冪表示と環同型。
 方針：raw 同型を商へ降ろし、主分冪表示と係数商の交換を合成する。
@@ -1244,7 +1244,7 @@ theorem deltaPDivisionIdealPDEquiv_coeff (K : Ideal A) (r : A) :
     deltaPDivisionIdealPDEquiv hA hpA D y hgL v hv hy K (Ideal.Quotient.mk _ (j r)) =
       algebraMap (A ⧸ K) _ (Ideal.Quotient.mk K r) := by
   rw [deltaPDivisionIdealPDEquiv, RingEquiv.trans_apply, Ideal.quotientEquiv_mk,
-    deltaPDivisionRawPrincipalEquiv_coeff, principalDPIdealQuotientEquiv_coeff]
+    _root_.SerrePositivity.BhattScholze.Andre.deltaPDivisionRawPrincipalEquiv_coeff, principalDPIdealQuotientEquiv_coeff]
 
 /-- 概要：raw-pd 係数商同型は具体的な階乗生成元を標準分冪へ送る。
 方針：raw 同型と主分冪係数商の生成元公式を使う。
@@ -1256,7 +1256,7 @@ theorem deltaPDivisionIdealPDEquiv_factorial (K : Ideal A) (n : ℕ) :
         (deltaPDivisionRawFactorialQuotient D (fun _ : σ => y) hA (default : σ) n)) =
       principalDPGenerator (Ideal.Quotient.mk K y) n := by
   rw [deltaPDivisionIdealPDEquiv, RingEquiv.trans_apply, Ideal.quotientEquiv_mk,
-    deltaPDivisionRawPrincipalEquiv_factorial, principalDPIdealQuotientEquiv_generator]
+    _root_.SerrePositivity.BhattScholze.Andre.deltaPDivisionRawPrincipalEquiv_factorial, principalDPIdealQuotientEquiv_generator]
 
 /-- 概要：raw p 除算の二元剰余は A/(p,d) 上の主分冪表示と環同型。
 方針：二元生成イデアルを元の係数イデアルの像と同定し、一般比較を適用する。
@@ -1322,7 +1322,7 @@ variable (D : DeltaStructure p A) (d : A) (a : σ → A) (N : ℕ)
 local notation "L₀" => RelativeFreeDeltaRing (R := A) σ
 local notation "I₀" => deltaDivisionFiniteRelationIdeal D d a N
 local notation "B₀" => MvPolynomial (σ × Fin (N + 1)) A
-local notation "J₀" => deltaDivisionFiniteStageInitialIdeal D d a N
+local notation "J₀" => _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteStageInitialIdeal D d a N
 local notation "Jp" => Ideal.span {(p : B₀)} ⊔ J₀
 local notation "Ip" => Ideal.span {(p : L₀)} ⊔ I₀
 
@@ -1332,7 +1332,7 @@ local notation "Ip" => Ideal.span {(p : L₀)} ⊔ I₀
 使われ方：BS 著者版 Remark 7.15（著者版 p.62）の有限 mod p 商の分離。 -/
 theorem deltaDivisionFiniteModPrimeInitialIdeal_map :
     (Jp).map (relativeFreeFiniteInitialPolynomialMap (N + 1) σ A).toRingHom = Ip := by
-  rw [Ideal.map_sup, deltaDivisionFiniteStageInitialIdeal_map,
+  rw [Ideal.map_sup, _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteStageInitialIdeal_map,
     Ideal.map_span, Set.image_singleton, map_natCast]
 
 /-- 概要：有限関係商の mod p は初期 mod p 商上の後続多項式環と環同型。
@@ -1342,7 +1342,7 @@ theorem deltaDivisionFiniteModPrimeInitialIdeal_map :
 def deltaDivisionFiniteModPrimeTailEquiv :
     (L₀ ⧸ Ip) ≃+* MvPolynomial (σ × ℕ) (B₀ ⧸ Jp) :=
   (Ideal.quotEquivOfEq (deltaDivisionFiniteModPrimeInitialIdeal_map D d a N).symm).trans
-    (relativeFreeFiniteInitialQuotientEquiv (N + 1) Jp)
+    (_root_.SerrePositivity.BhattScholze.Andre.relativeFreeFiniteInitialQuotientEquiv (N + 1) Jp)
 
 /-- 概要：有限 mod p 分離同型の代表元公式。
 方針：初期商比較の代表元公式を使う。
@@ -1353,7 +1353,7 @@ theorem deltaDivisionFiniteModPrimeTailEquiv_mk (f : L₀) :
       MvPolynomial.map (Ideal.Quotient.mk Jp)
         (relativeFreeFiniteVariableSplitAlgEquiv (N + 1) σ A f) := by
   rw [deltaDivisionFiniteModPrimeTailEquiv, RingEquiv.trans_apply,
-    Ideal.quotEquivOfEq_mk, relativeFreeFiniteInitialQuotientEquiv_mk]
+    Ideal.quotEquivOfEq_mk, _root_.SerrePositivity.BhattScholze.Andre.relativeFreeFiniteInitialQuotientEquiv_mk]
 
 /-- 概要：有限 mod p 分離同型は元の A 係数を初期係数商へ送る。
 方針：変数分離と多項式写像の係数公式を使う。
@@ -1412,7 +1412,7 @@ end DeltaDivisionFiniteModPrimeTail
 
 set_option backward.isDefEq.respectTransparency false
 namespace SerrePositivity.BhattScholze.Andre
-open SerrePositivity.DerivedCompletion
+open _root_.SerrePositivity.DerivedCompletion
 variable {p : ℕ} [Fact p.Prime] {R σ T : Type u} [CommRing R] [CommRing T]
 
 /-- 概要：正則な分母像と分子の可除性を持つ完備 δ 試験環へ、raw 実完備化から一意に延長する。
@@ -1483,7 +1483,7 @@ BS 著者版 Proposition 7.2（著者版 p.55）、BS 著者版 Remark 7.15（p.
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze.Andre
-open SerrePositivity.DerivedCompletion
+open _root_.SerrePositivity.DerivedCompletion
 variable {p : ℕ} [Fact p.Prime] {R σ : Type u} [CommRing R]
 variable (D : DeltaStructure p R) (d : R) (a : σ → R)
 local notation "B" => DeltaAdjoinDivision D d a

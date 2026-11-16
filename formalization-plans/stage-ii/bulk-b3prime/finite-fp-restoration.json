@@ -1,0 +1,37 @@
+{
+  "status": "group009 PASS with unchanged strict v3b; full comparison still running",
+  "reason": "Replacing FP-requiring wrapper by existing weaker BS theorem dropped unused FP from definition generalization. include only did not retain it for defs. Explicit original full telescope restores original definition/caller types. No new assumption or altered value.",
+  "definition": "SerrePositivity.Perfectoidization",
+  "before_type_hash": "12623050071829493702",
+  "after_type_hash": "12623050071829493702",
+  "before_body_hash": "9638455100490686474",
+  "after_body_hash": "9638455100490686474",
+  "assessment": {
+    "signature": "eb08ae0c915b6750e3c139bf68fa4c1d8756c831b5ee4d1f545b5d1c25cd06c4",
+    "original_modules": [
+      "SerrePositivity.BhattScholze.Perfectoidization.Cone",
+      "SerrePositivity.BhattScholze.Perfectoidization.Derived.Excision",
+      "SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction",
+      "SerrePositivity.BhattScholze.Perfectoidization.Excision",
+      "SerrePositivity.BhattScholze.Perfectoidization.ExcisionComparison",
+      "SerrePositivity.BhattScholze.Perfectoidization.ExcisionTor",
+      "SerrePositivity.BhattScholze.Perfectoidization.Finite",
+      "SerrePositivity.BhattScholze.Perfectoidization.FiniteComparisonExcision"
+    ],
+    "after_modules": [
+      "SerrePositivity.BhattScholze.Perfectoidization.Cone",
+      "SerrePositivity.BhattScholze.Perfectoidization.Construction.RootAdjunction",
+      "SerrePositivity.BhattScholze.Perfectoidization.Excision",
+      "SerrePositivity.BhattScholze.Perfectoidization.ExcisionComparison",
+      "SerrePositivity.BhattScholze.Perfectoidization.ExcisionTor",
+      "SerrePositivity.BhattScholze.Perfectoidization.Finite",
+      "SerrePositivity.BhattScholze.Perfectoidization.FiniteComparisonExcision",
+      "SerrePositivity.BhattScholze.Perfectoidization.Interface.Excision"
+    ],
+    "raw_status": "PASS",
+    "before_count": 159,
+    "after_count": 159,
+    "explained": [],
+    "unexplained": []
+  }
+}

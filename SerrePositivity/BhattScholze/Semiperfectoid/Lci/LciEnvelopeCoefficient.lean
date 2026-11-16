@@ -36,8 +36,8 @@ variable {A : Type u} [CommRing A] {S : Type v}
 方針：初期変数は零、後続変数は添字を一つ下げて評価し、後続変数を戻す写像を作る。
 規約：BS 著者版 Example 7.9 の自由変数模型。通常の商環を用いる。
 使われ方：普遍自由変数の d 剰余で、初期関係の Koszul 分解を分離する。 -/
-theorem exists_freeDelta_initialQuotient_equiv (d : A) :
-    let U := RelativeFreeDeltaRing (R := A) S
+theorem Semiperfectoid.exists_freeDelta_initialQuotient_equiv (d : A) :
+    let U := _root_.SerrePositivity.BhattScholze.RelativeFreeDeltaRing (R := A) S
     let I : Ideal A := Ideal.span {d}
     let J : Ideal U := Ideal.span {MvPolynomial.C d} ⊔
       Ideal.span (Set.range fun s : S => MvPolynomial.X (s, 0))
@@ -45,7 +45,7 @@ theorem exists_freeDelta_initialQuotient_equiv (d : A) :
       (∀ a, e (Ideal.Quotient.mk J (MvPolynomial.C a)) =
         MvPolynomial.C (Ideal.Quotient.mk I a)) ∧
       ∀ s n, e (Ideal.Quotient.mk J (MvPolynomial.X (s, n + 1))) = MvPolynomial.X (s, n) := by
-  let U := RelativeFreeDeltaRing (R := A) S
+  let U := _root_.SerrePositivity.BhattScholze.RelativeFreeDeltaRing (R := A) S
   let I : Ideal A := Ideal.span {d}
   let J : Ideal U := Ideal.span {MvPolynomial.C d} ⊔
     Ideal.span (Set.range fun s : S => MvPolynomial.X (s, 0))
@@ -116,13 +116,13 @@ theorem exists_freeDelta_initialQuotient_equiv (d : A) :
 方針：後続座標の多項式環の自由性と、構成した商同型を使う。
 規約：BS 著者版 Example 7.9 の普遍係数商。
 使われ方：普遍向き付き prism の p 正則性を初期関係の商へ運ぶ。 -/
-theorem freeDelta_initialQuotient_scalar_regular (d a : A)
+theorem Semiperfectoid.freeDelta_initialQuotient_scalar_regular (d a : A)
     (ha : IsSMulRegular (A ⧸ Ideal.span {d}) (Ideal.Quotient.mk (Ideal.span {d}) a)) :
-    let U := RelativeFreeDeltaRing (R := A) S
+    let U := _root_.SerrePositivity.BhattScholze.RelativeFreeDeltaRing (R := A) S
     let J : Ideal U := Ideal.span {MvPolynomial.C d} ⊔
       Ideal.span (Set.range fun s : S => MvPolynomial.X (s, 0))
     IsRegular (Ideal.Quotient.mk J (MvPolynomial.C a)) := by
-  obtain ⟨e, hC, _⟩ := exists_freeDelta_initialQuotient_equiv (S := S) d
+  obtain ⟨e, hC, _⟩ := _root_.SerrePositivity.BhattScholze.Semiperfectoid.exists_freeDelta_initialQuotient_equiv (S := S) d
   let V := MvPolynomial (S × ℕ) (A ⧸ Ideal.span {d})
   have hV : IsSMulRegular V (MvPolynomial.C (Ideal.Quotient.mk (Ideal.span {d}) a)) :=
     ha.of_flat (S := V)

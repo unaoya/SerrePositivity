@@ -21,7 +21,7 @@ public import SerrePositivity.HomologicalAlgebra.NilpotentDerivedReduction
 # モニック源と raw 包の完備化比較
 
 ## 概要
-一般の f/d 包の初期係数商と raw (p,d) 剰余の忠実平坦性、商還元の H⁰ の忠実平坦性、(p,d) 還元と raw 残余商、逐次完備化後の剰余、モニック f/d 源と raw 包の完備化比較（係数・非正性・H⁰・制限・PD）、源の逐次完備性と生成元冪商の完備性・標準冪零還元、G9 入力。
+一般の f/d 包の初期係数商と raw (p,d) 剰余の忠実平坦性、商還元の H⁰ の忠実平坦性、(p,d) 還元と raw 残余商、逐次完備化後の剰余、モニック f/d 源と raw 包の完備化比較（係数・非正性・H⁰・制限・PD）、源の逐次完備性と生成元冪商の完備性・標準冪零還元、離散性の判定 入力。
 BS 著者版 Remark 7.15 のモニック根の包に使う、源の剰余の忠実平坦性と完備化の比較を与える。
 
 ## 方針
@@ -70,7 +70,7 @@ local notation "r" => (fun s : σ => monicRelation (f s) s)
 local notation "I" => Ideal.span {(p : A), d}
 local notation "QA" => A ⧸ I
 local notation "q" => Ideal.Quotient.mk I
-local notation "J" => deltaDivisionFirstBaseIdeal (p := p) (MvPolynomial.C d) r
+local notation "J" => _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFirstBaseIdeal (p := p) (MvPolynomial.C d) r
 local notation "g" => (fun s : σ => Polynomial.map q (f s))
 local notation "C" => PolynomialFamilyQuotient g
 
@@ -87,7 +87,7 @@ abbrev MonicPrismaticCoefficientQuotient := P ⧸ J
 theorem monicPrismaticCoefficientIdeal_eq :
     J = (I).map (MvPolynomial.C : A →+* P) ⊔ polynomialFamilyRelationIdeal f := by
   simp only [Ideal.map_span, Set.image_pair, map_natCast,
-    deltaDivisionFirstBaseIdeal, polynomialFamilyRelationIdeal]
+    _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFirstBaseIdeal, polynomialFamilyRelationIdeal]
 
 /-- 概要：f/d 包の初期係数商は mod (p,d) の多項式の通常商に同型。
 方針：初期イデアルの表示と全族の係数商の交換同型を合成する。
@@ -300,7 +300,7 @@ theorem monicPrismaticRawResidue_faithfullyFlat
 @[instance_reducible] def monicPrismaticRawResidueAlgebraOfDistinguished
     (hdp : D.IsDistinguished d) : Algebra QA Res :=
   monicPrismaticRawResidueBaseAlgebra D d f hpA
-    (deltaRootSource_ghostMap_injective (σ := σ) hpA) hdp.unit hdp.unit_spec
+    (_root_.SerrePositivity.BhattScholze.Andre.deltaRootSource_ghostMap_injective (σ := σ) hpA) hdp.unit hdp.unit_spec
 
 /-- 概要：任意正次数モニック族の一般 raw f/d 包の実 (p,d) 商は A/(p,d) 上忠実平坦。
 方針：p 正則性から ghost 単射を供給し、初期係数商と実剰余の忠実平坦性を合成する。
@@ -312,7 +312,7 @@ theorem monicPrismaticRawResidue_faithfullyFlat_of_distinguished
     letI := monicPrismaticRawResidueAlgebraOfDistinguished D d f hpA hdp
     Module.FaithfullyFlat QA Res :=
   monicPrismaticRawResidue_faithfullyFlat D d f hpA
-    (deltaRootSource_ghostMap_injective (σ := σ) hpA) hdp.unit hdp.unit_spec hf hdeg
+    (_root_.SerrePositivity.BhattScholze.Andre.deltaRootSource_ghostMap_injective (σ := σ) hpA) hdp.unit hdp.unit_spec hf hdeg
 
 end SerrePositivity.BhattScholze.Andre
 
@@ -344,7 +344,7 @@ H⁰ の実源商線形比較を係数商へ制限し、明示した raw 剰余�
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze.Andre
-open CategoryTheory CategoryTheory.Limits
+open _root_.CategoryTheory _root_.CategoryTheory.Limits
 attribute [local instance] HasDerivedCategory.standard
 variable {p : ℕ} [Fact p.Prime] {A σ : Type u} [CommRing A]
 variable (D : DeltaStructure p A) (d : A) (f : σ → Polynomial A) {m : ℕ}
@@ -380,17 +380,17 @@ theorem monicPrismaticSourceQuotientDerivedH0_faithfullyFlat (s : Fin m ≃ σ)
     (hpA : Function.Injective (fun x : A => (p : A) * x))
     (v : Aˣ) (hv : (v : A) = D.delta d) :
     Module.FaithfullyFlat (A ⧸ k₀)
-      ((ModuleCat.restrictScalars (deltaRootSourceQuotientCoefficientMap (σ := σ) d)).obj
+      ((ModuleCat.restrictScalars (_root_.SerrePositivity.BhattScholze.Andre.deltaRootSourceQuotientCoefficientMap (σ := σ) d)).obj
         ((DerivedCategory.homologyFunctor (ModuleCat Q₀) 0).obj
           (MonicPrismaticSourceQuotientDerived D d f).obj)) := by
-  have hg := deltaRootSource_ghostMap_injective (σ := σ) hpA
+  have hg := _root_.SerrePositivity.BhattScholze.Andre.deltaRootSource_ghostMap_injective (σ := σ) hpA
   let := (monicPrismaticSourceQuotientResidueMap D d f).toAlgebra
   let : Module Q₀ Res₀ := Algebra.toModule
   let := monicPrismaticRawResidueBaseAlgebra D d f hpA hg v hv
   let H := (DerivedCategory.homologyFunctor (ModuleCat Q₀) 0).obj
     (MonicPrismaticSourceQuotientDerived D d f).obj
   let M := (ModuleCat.restrictScalars
-    (deltaRootSourceQuotientCoefficientMap (σ := σ) d)).obj H
+    (_root_.SerrePositivity.BhattScholze.Andre.deltaRootSourceQuotientCoefficientMap (σ := σ) d)).obj H
   let eQ := monicPrismaticSourceQuotientDerivedH0Iso D d f s hf hpA v hv
   let e : M ≃ₗ[A ⧸ k₀] Res₀ :=
     { toFun := eQ.hom.hom
@@ -403,15 +403,15 @@ theorem monicPrismaticSourceQuotientDerivedH0_faithfullyFlat (s : Fin m ≃ σ)
         obtain ⟨a, rfl⟩ := Ideal.Quotient.mk_surjective s
         change H at x
         have h := eQ.hom.hom.map_smul
-          (deltaRootSourceQuotientCoefficientMap (σ := σ) d (κ₀ a)) x
-        change eQ.hom.hom ((deltaRootSourceQuotientCoefficientMap (σ := σ) d (κ₀ a)) • x) =
+          (_root_.SerrePositivity.BhattScholze.Andre.deltaRootSourceQuotientCoefficientMap (σ := σ) d (κ₀ a)) x
+        change eQ.hom.hom ((_root_.SerrePositivity.BhattScholze.Andre.deltaRootSourceQuotientCoefficientMap (σ := σ) d (κ₀ a)) • x) =
           monicPrismaticSourceQuotientResidueMap D d f
-            (deltaRootSourceQuotientCoefficientMap (σ := σ) d (κ₀ a)) * eQ.hom.hom x at h
-        rw [deltaRootSourceQuotientCoefficientMap_mk,
+            (_root_.SerrePositivity.BhattScholze.Andre.deltaRootSourceQuotientCoefficientMap (σ := σ) d (κ₀ a)) * eQ.hom.hom x at h
+        rw [_root_.SerrePositivity.BhattScholze.Andre.deltaRootSourceQuotientCoefficientMap_mk,
           monicPrismaticSourceQuotientResidueMap_mk, deltaDivisionSourceEval_C] at h
-        change eQ.hom.hom ((deltaRootSourceQuotientCoefficientMap (σ := σ) d (κ₀ a)) • x) =
+        change eQ.hom.hom ((_root_.SerrePositivity.BhattScholze.Andre.deltaRootSourceQuotientCoefficientMap (σ := σ) d (κ₀ a)) • x) =
           monicPrismaticRawResidueBaseMap D d f hpA hg v hv (κ₀ a) * eQ.hom.hom x
-        rw [deltaRootSourceQuotientCoefficientMap_mk,
+        rw [_root_.SerrePositivity.BhattScholze.Andre.deltaRootSourceQuotientCoefficientMap_mk,
           monicPrismaticRawResidueBaseMap_mk]
         exact h }
   have := monicPrismaticRawResidue_faithfullyFlat D d f hpA hg v hv hf hdeg
@@ -447,7 +447,7 @@ BS 著者版 Remark 7.15（著者版 p.62）の元の係数作用を保つ剰余
 
 set_option backward.isDefEq.respectTransparency false
 namespace SerrePositivity.BhattScholze.Andre
-open CategoryTheory CategoryTheory.Limits
+open _root_.CategoryTheory _root_.CategoryTheory.Limits
 attribute [local instance] HasDerivedCategory.standard
 variable {p : ℕ} [Fact p.Prime] {A σ : Type u} [CommRing A]
 variable (D : DeltaStructure p A) (d : A) (f : σ → Polynomial A) {m : ℕ}
@@ -459,7 +459,7 @@ local notation "K₀" => Ideal.span {(p : L₀), MvPolynomial.C (MvPolynomial.C 
 local notation "Q₀" => L₀ ⧸ K₀
 local notation "I₀" => Ideal.span {(p : A), d}
 local notation "R₀" => A ⧸ I₀
-local notation "κ₀" => deltaRootSourceQuotientCoefficientMap (σ := σ) (p := p) d
+local notation "κ₀" => _root_.SerrePositivity.BhattScholze.Andre.deltaRootSourceQuotientCoefficientMap (σ := σ) (p := p) d
 local notation "α₀" => deltaDivisionSourceMap (σ := σ) E₀ (MvPolynomial.C d)
 local notation "ψ₀" => RingHom.comp (Ideal.Quotient.mk K₀) α₀
 local notation "Res₀" => DeltaAdjoinDivisionResidue E₀ (MvPolynomial.C d) c₀
@@ -489,7 +489,7 @@ def monicPrismaticSourceCoefficientPDReductionIso :
     (boundedAboveDerivedBaseChange (Ideal.Quotient.mk I₀)).obj
         (MonicPrismaticSourceCoefficientObject D d f) ≅
       (boundedAboveDerivedRestrictScalars κ₀).obj (MonicPrismaticSourceQuotientDerived D d f) :=
-  deltaRootSourcePDDerivedSquareIso (p := p) (A := A) (σ := σ) d X₀
+  _root_.SerrePositivity.BhattScholze.Andre.deltaRootSourcePDDerivedSquareIso (p := p) (A := A) (σ := σ) d X₀
     (boundedAboveDerivedTensorModel
       (boundedAboveDerivedSingleFunctor.obj Mβ) (boundedAboveDerivedSingleFunctor.obj Mα))
 
@@ -598,7 +598,7 @@ d mod p の正則性は仮定しない。実完備化対象自体の離散性は
 
 set_option backward.isDefEq.respectTransparency false
 namespace SerrePositivity.BhattScholze.Andre
-open CategoryTheory CategoryTheory.Limits
+open _root_.CategoryTheory _root_.CategoryTheory.Limits
 attribute [local instance] HasDerivedCategory.standard
 variable {p : ℕ} [Fact p.Prime] {A σ : Type u} [CommRing A]
 variable (D : DeltaStructure p A) (d : A) (f : σ → Polynomial A) {m : ℕ}
@@ -611,7 +611,7 @@ local notation "Q₀" => L₀ ⧸ K₀
 local notation "I₀" => Ideal.span {(p : A), d}
 local notation "R₀" => A ⧸ I₀
 local notation "q₀" => Ideal.Quotient.mk I₀
-local notation "κ₀" => deltaRootSourceQuotientCoefficientMap (σ := σ) (p := p) d
+local notation "κ₀" => _root_.SerrePositivity.BhattScholze.Andre.deltaRootSourceQuotientCoefficientMap (σ := σ) (p := p) d
 local notation "α₀" => deltaDivisionSourceMap (σ := σ) E₀ (MvPolynomial.C d)
 local notation "ψ₀" => RingHom.comp (Ideal.Quotient.mk K₀) α₀
 local notation "Res₀" => DeltaAdjoinDivisionResidue E₀ (MvPolynomial.C d) c₀
@@ -735,7 +735,7 @@ BS 著者版 Remark 7.15（著者版 p.62）の生成元冪商の離散性の準
 
 ## 方針
 
-完備性の錐と塔極限での閉性、正則冪商の Koszul 比較、G8 の係数制限の標準単位比較を使う。
+完備性の錐と塔極限での閉性、正則冪商の Koszul 比較、係数制限と完備化の比較 の係数制限の標準単位比較を使う。
 原典の BS 著者版 Proposition 7.11 を使う証明とは異なる経路の計算。
 
 ## 規約
@@ -751,8 +751,8 @@ BS 著者版 Remark 7.15（著者版 p.62）の生成元冪商の離散性の準
 
 set_option backward.isDefEq.respectTransparency false
 namespace SerrePositivity.BhattScholze.Andre
-open CategoryTheory CategoryTheory.Limits
-open SerrePositivity.DerivedCompletion
+open _root_.CategoryTheory _root_.CategoryTheory.Limits
+open _root_.SerrePositivity.DerivedCompletion
 attribute [local instance] HasDerivedCategory.standard
 variable {p : ℕ} [Fact p.Prime] {A σ : Type u} [CommRing A]
 variable (D : DeltaStructure p A) (d : A) (f : σ → Polynomial A)
@@ -884,7 +884,7 @@ n は正とする。二つの元の個別の正則性を使い、正則列とは
 
 ## 使われ方
 
-冪零還元からの純性・平坦性の既存判定 G10 へ、同じ実対象の入力を渡す。
+冪零還元からの純性・平坦性の既存判定へ、同じ実対象の入力を渡す。
 -/
 
 @[expose] public noncomputable section MonicPrismaticCanonicalPowerResidue
@@ -892,7 +892,7 @@ n は正とする。二つの元の個別の正則性を使い、正則列とは
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze.Andre
-open CategoryTheory CategoryTheory.Limits
+open _root_.CategoryTheory _root_.CategoryTheory.Limits
 attribute [local instance] HasDerivedCategory.standard
 variable {p : ℕ} [Fact p.Prime] {A σ : Type u} [CommRing A]
 variable (D : DeltaStructure p A) (d : A) (f : σ → Polynomial A) (n : ℕ) (hn : 0 < n) {m : ℕ}
@@ -905,7 +905,7 @@ local notation "Q₀" => L₀ ⧸ K₀
 local notation "I₀" => Ideal.span {(p : A), d}
 local notation "R₀" => A ⧸ I₀
 local notation "q₀" => Ideal.Quotient.mk I₀
-local notation "κ₀" => deltaRootSourceQuotientCoefficientMap (σ := σ) (p := p) d
+local notation "κ₀" => _root_.SerrePositivity.BhattScholze.Andre.deltaRootSourceQuotientCoefficientMap (σ := σ) (p := p) d
 local notation "α₀" => deltaDivisionSourceMap (σ := σ) E₀ (MvPolynomial.C d)
 local notation "ψ₀" => RingHom.comp (Ideal.Quotient.mk K₀) α₀
 local notation "Res₀" => DeltaAdjoinDivisionResidue E₀ (MvPolynomial.C d) c₀
@@ -929,7 +929,7 @@ local notation "W₀" => CategoryTheory.Functor.obj
 local notation "MCan" => CategoryTheory.Functor.obj
   (ModuleCat.restrictScalars (RingEquiv.toRingHom eₙ)) MRes
 
-/-- 概要：G10の標準冪零商による実還元は、商環上の標準raw加群のsingle対象。
+/-- 概要：冪零還元からの純性・平坦性の判定の標準冪零商による実還元は、商環上の標準raw加群のsingle対象。
 方針：標準冪零商の一般比較と、元の (p,d) 還元の実 single 比較を合成する。
 規約：有限モニック族、p と d の個別の正則性、δ(d) の単元性を使い、忠実性には正次数を追加する。
 使われ方：BS 著者版 Remark 7.15（著者版 p.62）の冪零厚化による実剰余の離散・平坦性。 -/
@@ -1033,8 +1033,8 @@ BS 著者版 Remark 7.15（著者版 p.62）の raw PD 環との比較の準備�
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze.Andre
-open CategoryTheory CategoryTheory.Limits MonoidalCategory
-open scoped TensorProduct
+open _root_.CategoryTheory _root_.CategoryTheory.Limits _root_.CategoryTheory.MonoidalCategory
+open scoped _root_.TensorProduct
 attribute [local instance] HasDerivedCategory.standard
 variable {p : ℕ} [Fact p.Prime] {A σ : Type u} [CommRing A]
 variable (D : DeltaStructure p A) (d : A) (f : σ → Polynomial A)
@@ -1216,7 +1216,7 @@ BS 著者版 Remark 7.15（著者版 p.62）の raw PD 環との比較の準備�
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze.Andre
-open CategoryTheory CategoryTheory.Limits
+open _root_.CategoryTheory _root_.CategoryTheory.Limits
 attribute [local instance] HasDerivedCategory.standard
 variable {p : ℕ} [Fact p.Prime] {A σ : Type u} [CommRing A]
 variable (D : DeltaStructure p A) (d : A) (f : σ → Polynomial A)
@@ -1304,7 +1304,7 @@ BS 著者版 Remark 7.15（著者版 p.62）の raw PD 環との比較の準備�
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze.Andre
-open CategoryTheory CategoryTheory.Limits
+open _root_.CategoryTheory _root_.CategoryTheory.Limits
 attribute [local instance] HasDerivedCategory.standard
 variable {p : ℕ} [Fact p.Prime] {A σ : Type u} [CommRing A]
 variable (D : DeltaStructure p A) (d : A) (f : σ → Polynomial A)
@@ -1421,7 +1421,7 @@ BS 著者版 Remark 7.15（著者版 p.62）の raw PD 環との比較の準備�
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze.Andre
-open CategoryTheory CategoryTheory.Limits
+open _root_.CategoryTheory _root_.CategoryTheory.Limits
 attribute [local instance] HasDerivedCategory.standard
 variable {p : ℕ} [Fact p.Prime] {A σ : Type u} [CommRing A]
 variable (D : DeltaStructure p A) (d : A) (f : σ → Polynomial A)
@@ -1519,8 +1519,8 @@ BS 著者版 Remark 7.15（著者版 p.62）の raw PD 環との比較の準備�
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze.Andre
-open CategoryTheory CategoryTheory.Limits
-open SerrePositivity.DerivedCompletion
+open _root_.CategoryTheory _root_.CategoryTheory.Limits
+open _root_.SerrePositivity.DerivedCompletion
 attribute [local instance] HasDerivedCategory.standard
 variable {p : ℕ} [Fact p.Prime] {A σ : Type u} [CommRing A]
 variable (D : DeltaStructure p A) (d : A) (f : σ → Polynomial A)
@@ -1551,7 +1551,7 @@ def monicPrismaticRawCoefficientRestrictionIso :
 使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実 H⁰ と raw PD 環の比較。 -/
 abbrev MonicPrismaticRawInternalIteratedCompletion := (Bd).obj ((Bp).obj M)
 
-/-- 概要：二度のG8を同じ係数射に適用した、元のraw実逐次対象との同型。
+/-- 概要：二度の係数制限と完備化の比較を同じ係数射に適用した、元のraw実逐次対象との同型。
 方針：一般の標準 augmentation と実係数制限・完備化比較を、同じ実対象へ適用する。
 規約：元の係数射と作用を保持し、モニック性・正次数・有限性を使わない。
 使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実 H⁰ と raw PD 環の比較。 -/
@@ -1639,7 +1639,7 @@ BS 著者版 Remark 7.15（著者版 p.62）の実源と環候補の比較。
 
 ## 方針
 
-源の標準 augmentation の H⁰ 比較、G8 の係数制限比較、既存の一般二座標 H⁰ 反射比較を合成する。
+源の標準 augmentation の H⁰ 比較、係数制限と完備化の比較 の係数制限比較、既存の一般二座標 H⁰ 反射比較を合成する。
 原典の BS 著者版 Proposition 7.11 を使う証明とは異なる具体的係数射を保つ計算。
 
 ## 規約
@@ -1656,8 +1656,8 @@ BS 著者版 Remark 7.15（著者版 p.62）の実源と環候補の比較。
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze.Andre
-open CategoryTheory CategoryTheory.Limits
-open SerrePositivity.DerivedCompletion
+open _root_.CategoryTheory _root_.CategoryTheory.Limits
+open _root_.SerrePositivity.DerivedCompletion
 attribute [local instance] HasDerivedCategory.standard
 variable {p : ℕ} [Fact p.Prime] {A σ : Type u} [CommRing A]
 variable (D : DeltaStructure p A) (d : A) (f : σ → Polynomial A)
@@ -1675,19 +1675,19 @@ local notation "H" => CategoryTheory.Functor.obj (DerivedCategory.homologyFuncto
 規約：第一座標の像が自然数 p であることを明示する。
 使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実源から環候補への比較の最終段。 -/
 def monicPrismaticRawInternalPDLinearEquiv : H Z ≃ₗ[Raw] PDCompletionH0 Raw p z :=
-  iteratedPDH0LinearEquiv Raw a z p (map_natCast c p)
+  _root_.SerrePositivity.DerivedCompletion.iteratedPDH0LinearEquiv Raw a z p (map_natCast c p)
 
 /-- 概要：raw 自身の比較は、すべての raw 係数の元の標準完備化像を保つ。
 方針：一般 H⁰ 反射比較の標準単位公式を再利用する。
 規約：単位 1 だけでなく任意の raw 元で述べる。
 使われ方：BS 著者版 Remark 7.15（著者版 p.62）の候補係数射との後続比較。 -/
 theorem monicPrismaticRawInternalPDLinearEquiv_unit (x : Raw) :
-    monicPrismaticRawInternalPDLinearEquiv D d f (iteratedPDH0Unit Raw a z x) =
+    monicPrismaticRawInternalPDLinearEquiv D d f (_root_.SerrePositivity.DerivedCompletion.iteratedPDH0Unit Raw a z x) =
       pairCompletionH0Unit Raw (p : Raw) z x :=
-  iteratedPDH0LinearEquiv_unit Raw a z p (map_natCast c p) x
+  _root_.SerrePositivity.DerivedCompletion.iteratedPDH0LinearEquiv_unit Raw a z p (map_natCast c p) x
 
 /-- 概要：元の実モニック源の逐次完備化 H⁰ は、raw PD 環の同じ A 係数制限と同型。
-方針：標準 augmentation、二度の G8、Raw 線形 H⁰ 反射比較を順に合成する。
+方針：標準 augmentation、二度の 係数制限と完備化の比較、Raw 線形 H⁰ 反射比較を順に合成する。
 規約：元の A 作用を保つ加群同型を構成する。
 使われ方：BS 著者版 Remark 7.15（著者版 p.62）の環候補の完全忠実平坦性への移送。 -/
 def monicPrismaticSourcePDH0Iso :
@@ -1702,7 +1702,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end MonicPrismaticRawPDComparison
 
-/-! ## モニック源の実生成元冪商の G9 入力
+/-! ## モニック源の実生成元冪商の 離散性の判定 入力
 
 ## 概要
 
@@ -1712,7 +1712,7 @@ BS 著者版 Remark 7.15（著者版 p.62）の生成元冪商計算。
 
 ## 方針
 
-同じ実対象の標準冪零還元に G10 を適用し、一般商比較と G8 の完備性を接続する。
+同じ実対象の標準冪零還元に 冪零還元からの純性・平坦性の判定 を適用し、一般商比較と 係数制限と完備化の比較 の完備性を接続する。
 原典の BS 著者版 Proposition 7.11 を使う証明とは異なる経路の計算。
 
 ## 規約
@@ -1721,7 +1721,7 @@ BS 著者版 Remark 7.15（著者版 p.62）の生成元冪商計算。
 
 ## 使われ方
 
-生成元冪商に G9 を適用し、完備化源の離散性と平坦性を導く。
+生成元冪商に 離散性の判定 を適用し、完備化源の離散性と平坦性を導く。
 -/
 
 @[expose] public noncomputable section MonicPrismaticSourcePowerInputs
@@ -1729,7 +1729,7 @@ BS 著者版 Remark 7.15（著者版 p.62）の生成元冪商計算。
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze.Andre
-open CategoryTheory CategoryTheory.Limits
+open _root_.CategoryTheory _root_.CategoryTheory.Limits
 attribute [local instance] HasDerivedCategory.standard
 variable {p : ℕ} [Fact p.Prime] {A σ : Type u} [CommRing A]
 variable (D : DeltaStructure p A) (d : A) (f : σ → Polynomial A) (n : ℕ) (hn : 0 < n)
@@ -1750,10 +1750,10 @@ local notation "Wₙ" => CategoryTheory.Functor.obj
   (boundedAboveDerivedBaseChange (Ideal.Quotient.mk (Ideal.span {(p : Tₙ)}))) Zₙ
 include hn hf hdeg s hpA hd v hv
 
-/-- 概要：G10により、実A/(p,dⁿ)還元は次数零に集中しH0が平坦。
-方針：標準冪零還元の離散・忠実平坦性から G10 を適用し、実合成商比較で標準 mod p 商へ移す。
+/-- 概要：冪零還元からの純性・平坦性の判定により、実A/(p,dⁿ)還元は次数零に集中しH0が平坦。
+方針：標準冪零還元の離散・忠実平坦性から 冪零還元からの純性・平坦性の判定 を適用し、実合成商比較で標準 mod p 商へ移す。
 規約：正の冪 n、有限正次数モニック族、p と d の個別の正則性、δ(d) の単元性を仮定する。
-使われ方：BS 著者版 Remark 7.15（著者版 p.62）の生成元冪商への G9 適用の入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の生成元冪商への 離散性の判定 適用の入力。 -/
 theorem monicPrismaticSourcePowerResidue_pure_flat :
     (Y₀).obj.IsGE 0 ∧ (Y₀).obj.IsLE 0 ∧
       Module.Flat Qₙ ((DerivedCategory.homologyFunctor (ModuleCat Qₙ) 0).obj (Y₀).obj) := by
@@ -1765,10 +1765,10 @@ theorem monicPrismaticSourcePowerResidue_pure_flat :
   exact derived_pure_flat_of_nilpotent_reduction Kₙ Y₀ hPure
     inferInstance ⟨n, prismaticPowerResidueIdeal_pow (p : A) d n⟩
 
-/-- 概要：G10で得た実冪剰余の非零次数ホモロジー消滅。
-方針：標準冪零還元の離散・忠実平坦性から G10 を適用し、実合成商比較で標準 mod p 商へ移す。
+/-- 概要：冪零還元からの純性・平坦性の判定で得た実冪剰余の非零次数ホモロジー消滅。
+方針：標準冪零還元の離散・忠実平坦性から 冪零還元からの純性・平坦性の判定 を適用し、実合成商比較で標準 mod p 商へ移す。
 規約：正の冪 n、有限正次数モニック族、p と d の個別の正則性、δ(d) の単元性を仮定する。
-使われ方：BS 著者版 Remark 7.15（著者版 p.62）の生成元冪商への G9 適用の入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の生成元冪商への 離散性の判定 適用の入力。 -/
 theorem monicPrismaticSourcePowerResidue_homology_isZero (i : ℤ) (hi : i ≠ 0) :
     IsZero ((DerivedCategory.homologyFunctor (ModuleCat Qₙ) i).obj (Y₀).obj) := by
   obtain ⟨hGE, hLE, _⟩ :=
@@ -1778,35 +1778,35 @@ theorem monicPrismaticSourcePowerResidue_homology_isZero (i : ℤ) (hi : i ≠ 0
   · exact (DerivedCategory.isLE_iff _ _).mp hLE i h
 
 /-- 概要：同じ実冪剰余のH0平坦性。
-方針：標準冪零還元の離散・忠実平坦性から G10 を適用し、実合成商比較で標準 mod p 商へ移す。
+方針：標準冪零還元の離散・忠実平坦性から 冪零還元からの純性・平坦性の判定 を適用し、実合成商比較で標準 mod p 商へ移す。
 規約：正の冪 n、有限正次数モニック族、p と d の個別の正則性、δ(d) の単元性を仮定する。
-使われ方：BS 著者版 Remark 7.15（著者版 p.62）の生成元冪商への G9 適用の入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の生成元冪商への 離散性の判定 適用の入力。 -/
 theorem monicPrismaticSourcePowerResidueH0_flat :
     Module.Flat Qₙ ((DerivedCategory.homologyFunctor (ModuleCat Qₙ) 0).obj (Y₀).obj) :=
   (monicPrismaticSourcePowerResidue_pure_flat D d f n hn hf hdeg s hpA hd v hv).2.2
 
 /-- 概要：A/(dⁿ)上の標準mod p実還元の非零次数ホモロジー消滅。
-方針：標準冪零還元の離散・忠実平坦性から G10 を適用し、実合成商比較で標準 mod p 商へ移す。
+方針：標準冪零還元の離散・忠実平坦性から 冪零還元からの純性・平坦性の判定 を適用し、実合成商比較で標準 mod p 商へ移す。
 規約：正の冪 n、有限正次数モニック族、p と d の個別の正則性、δ(d) の単元性を仮定する。
-使われ方：BS 著者版 Remark 7.15（著者版 p.62）の生成元冪商への G9 適用の入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の生成元冪商への 離散性の判定 適用の入力。 -/
 theorem monicPrismaticSourceGeneratorPowerModP_homology_isZero (i : ℤ) (hi : i ≠ 0) :
     IsZero ((DerivedCategory.homologyFunctor (ModuleCat Mₙ) i).obj (Wₙ).obj) :=
   prismaticGeneratorPowerModP_homology_isZero p d n X₀ i
     (monicPrismaticSourcePowerResidue_homology_isZero D d f n hn hf hdeg s hpA hd v hv i hi)
 
 /-- 概要：標準mod p実還元のH0は、その正確な商環上で平坦。
-方針：標準冪零還元の離散・忠実平坦性から G10 を適用し、実合成商比較で標準 mod p 商へ移す。
+方針：標準冪零還元の離散・忠実平坦性から 冪零還元からの純性・平坦性の判定 を適用し、実合成商比較で標準 mod p 商へ移す。
 規約：正の冪 n、有限正次数モニック族、p と d の個別の正則性、δ(d) の単元性を仮定する。
-使われ方：BS 著者版 Remark 7.15（著者版 p.62）の生成元冪商への G9 適用の入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の生成元冪商への 離散性の判定 適用の入力。 -/
 theorem monicPrismaticSourceGeneratorPowerModPH0_flat :
     Module.Flat Mₙ ((DerivedCategory.homologyFunctor (ModuleCat Mₙ) 0).obj (Wₙ).obj) :=
   prismaticGeneratorPowerModPH0_flat p d n X₀
     (monicPrismaticSourcePowerResidueH0_flat D d f n hn hf hdeg s hpA hd v hv)
 
-/-- 概要：G8の商上完備性とG10の実mod p入力を、G9用の同じ対象で束ねる。
-方針：標準冪零還元の離散・忠実平坦性から G10 を適用し、実合成商比較で標準 mod p 商へ移す。
+/-- 概要：係数制限と完備化の比較の商上完備性と冪零還元からの純性・平坦性の判定の実mod p入力を、離散性の判定用の同じ対象で束ねる。
+方針：標準冪零還元の離散・忠実平坦性から 冪零還元からの純性・平坦性の判定 を適用し、実合成商比較で標準 mod p 商へ移す。
 規約：正の冪 n、有限正次数モニック族、p と d の個別の正則性、δ(d) の単元性を仮定する。
-使われ方：BS 著者版 Remark 7.15（著者版 p.62）の生成元冪商への G9 適用の入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の生成元冪商への 離散性の判定 適用の入力。 -/
 theorem monicPrismaticSourceGeneratorPower_G9_inputs :
     DerivedCompletion.IsComplete Tₙ (p : Tₙ) (Zₙ).obj ∧
       (∀ i : ℤ, i ≠ 0 →

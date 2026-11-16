@@ -39,16 +39,16 @@ universe u
 
 namespace SerrePositivity.BhattScholze.Perfectoidization.Derived
 
-open scoped TensorProduct BigOperators
+open scoped _root_.TensorProduct _root_.BigOperators
 
 section RelativeFrobenius
 
-open Algebra TensorProduct
+open _root_.Algebra TensorProduct
 open scoped TensorProduct
 
 variable {A B : Type u} [CommRing A] [CommRing B] [Algebra A B]
 
-private def quotientBaseChangeEquiv (I : Ideal A) :
+private def _root_.SerrePositivity.BhattScholze.Almost.quotientBaseChangeEquiv (I : Ideal A) :
     (A ⧸ I) ⊗[A] B ≃ₐ[A ⧸ I] B ⧸ I.map (algebraMap A B) := by
   let e := Algebra.TensorProduct.lid A B
   have hmap : I.map (algebraMap A B) =
@@ -72,18 +72,18 @@ private def quotientBaseChangeEquiv (I : Ideal A) :
   rw [Algebra.smul_def, mul_one]
   rfl
 
-private theorem quotientBaseChangeEtale (I : Ideal A) [Algebra.Etale A B] :
+private theorem _root_.SerrePositivity.BhattScholze.Almost.quotientBaseChangeEtale (I : Ideal A) [Algebra.Etale A B] :
     Algebra.Etale (A ⧸ I) (B ⧸ I.map (algebraMap A B)) := by
-  exact Algebra.Etale.of_equiv (quotientBaseChangeEquiv (B := B) I)
+  exact Algebra.Etale.of_equiv (_root_.SerrePositivity.BhattScholze.Almost.quotientBaseChangeEquiv (B := B) I)
 
-private theorem quotientBaseChangeFinite (I : Ideal A) [Module.Finite A B] :
+private theorem _root_.SerrePositivity.BhattScholze.Almost.quotientBaseChangeFinite (I : Ideal A) [Module.Finite A B] :
     Module.Finite (A ⧸ I) (B ⧸ I.map (algebraMap A B)) := by
-  let e := quotientBaseChangeEquiv (B := B) I
+  let e := _root_.SerrePositivity.BhattScholze.Almost.quotientBaseChangeEquiv (B := B) I
   exact Module.Finite.of_surjective e.toLinearMap e.surjective
 
 variable (p : ℕ) [Fact p.Prime]
 
-private theorem bijective_of_etale_of_pow_in_range (A B : Type u) [CommRing A] [CommRing B]
+private theorem _root_.SerrePositivity.BhattScholze.Almost.bijective_of_etale_of_pow_in_range (A B : Type u) [CommRing A] [CommRing B]
     [Algebra A B] [CharP B p] [Algebra.Etale A B]
     (hpow : ∀ b : B, ∃ a : A, algebraMap A B a = b ^ p)
     (hker : ∀ a ∈ RingHom.ker (algebraMap A B), IsNilpotent a) :
@@ -147,7 +147,7 @@ private theorem bijective_of_etale_of_pow_in_range (A B : Type u) [CommRing A] [
 
 
 /-- 半完全環上のエタール代数の Frobenius は全射で、核は基礎から拡大する。 -/
-theorem etale_frobenius_surjective_ker (A B : Type u) [CommRing A] [CommRing B]
+theorem _root_.SerrePositivity.BhattScholze.Almost.etale_frobenius_surjective_ker (A B : Type u) [CommRing A] [CommRing B]
     [Algebra A B] [CharP A p] [CharP B p] [Algebra.Etale A B]
     (hF : Function.Surjective (frobenius A p)) :
     Function.Surjective (frobenius B p) ∧
@@ -179,9 +179,9 @@ theorem etale_frobenius_surjective_ker (A B : Type u) [CommRing A] [CommRing B]
   let : @IsScalarTower (A ⧸ I) (B ⧸ J) B Algebra.toSMul Algebra.toSMul Algebra.toSMul :=
     IsScalarTower.of_algebraMap_eq (R := A ⧸ I) (S := B ⧸ J) (A := B) (fun _ => rfl)
   let : Algebra.Etale (A ⧸ I) B := hE
-  let : Algebra.Etale (A ⧸ I) (B ⧸ J) := quotientBaseChangeEtale I
+  let : Algebra.Etale (A ⧸ I) (B ⧸ J) := _root_.SerrePositivity.BhattScholze.Almost.quotientBaseChangeEtale I
   let : Algebra.Etale (B ⧸ J) B := Algebra.Etale.of_restrictScalars (A ⧸ I) (B ⧸ J) B
-  have hg : Function.Bijective g := bijective_of_etale_of_pow_in_range p (B ⧸ J) B
+  have hg : Function.Bijective g := _root_.SerrePositivity.BhattScholze.Almost.bijective_of_etale_of_pow_in_range p (B ⧸ J) B
     (fun b => ⟨Ideal.Quotient.mk J b, rfl⟩) (fun b hb => by
       obtain ⟨b, rfl⟩ := Ideal.Quotient.mk_surjective b
       have hb0 : b ^ p = 0 := hb
@@ -198,7 +198,7 @@ section TiltKernel
 variable (p : ℕ) [Fact p.Prime]
 variable {A B : Type u} [CommRing A] [CommRing B] [Algebra A B] [CharP A p] [CharP B p]
 
-private theorem perfection_coeff_zero_kernel_eq_map_of_frobenius
+private theorem _root_.SerrePositivity.BhattScholze.Almost.perfection_coeff_zero_kernel_eq_map_of_frobenius
     [Module.Finite A B] (hA : Function.Surjective (frobenius A p))
     (hB : Function.Surjective (frobenius B p)) (a : A) (ha : a ^ p = 0)
     (hk : RingHom.ker (frobenius B p) = Ideal.span {algebraMap A B a}) :
@@ -291,21 +291,21 @@ variable {R T : Type u} [CommRing R] [CommRing T] [Algebra R T]
 variable [Fact (¬ IsUnit (p : R))] [Fact (¬ IsUnit (p : T))]
 variable [IsAdicComplete (Ideal.span {(p : R)}) R] [IsAdicComplete (Ideal.span {(p : T)}) T]
 
-open scoped BigOperators
+open scoped _root_.BigOperators
 
-private theorem fontaineKer_eq_of_map_and_torsion [Module.Finite R T] [Module.Projective R T]
+private theorem _root_.SerrePositivity.BhattScholze.Almost.fontaineKer_eq_of_map_and_torsion [Module.Finite R T] [Module.Projective R T]
     (hR : Function.Surjective (frobenius (ModP R p) p))
     (hT : Function.Surjective (frobenius (ModP T p) p))
     (d : WittVector p (PreTilt R p))
-    (hd : (wittDeltaStructure p (PreTilt R p)).IsDistinguished d)
+    (hd : (_root_.SerrePositivity.BhattScholze.wittDeltaStructure p (PreTilt R p)).IsDistinguished d)
     (hdker : RingHom.ker (WittVector.fontaineTheta R p) = Ideal.span {d})
     (hgen : RingHom.ker (PreTilt.coeff 0 : PreTilt T p →+* ModP T p) =
-      Ideal.span {Perfection.map p (modPMap p (algebraMap R T)) (d.coeff 0)}) :
+      Ideal.span {Perfection.map p (_root_.SerrePositivity.modPMap p (algebraMap R T)) (d.coeff 0)}) :
     RingHom.ker (WittVector.fontaineTheta T p) =
-      Ideal.span {WittVector.map (Perfection.map p (modPMap p (algebraMap R T))) d} := by
+      Ideal.span {WittVector.map (Perfection.map p (_root_.SerrePositivity.modPMap p (algebraMap R T))) d} := by
   classical
   let W := WittVector p (PreTilt T p)
-  let L := Perfection.map p (modPMap p (algebraMap R T))
+  let L := Perfection.map p (_root_.SerrePositivity.modPMap p (algebraMap R T))
   let g : WittVector p (PreTilt R p) →+* W := WittVector.map L
   let θ := WittVector.fontaineTheta T p
   let θR := WittVector.fontaineTheta R p
@@ -318,9 +318,9 @@ private theorem fontaineKer_eq_of_map_and_torsion [Module.Finite R T] [Module.Pr
       show d ∈ RingHom.ker θR from hdker ▸ Ideal.mem_span_singleton_self _
     change θ (g d) = 0
     rw [show θ (g d) = algebraMap R T (θR d) from
-      RingHom.congr_fun (fontaineTheta_natural p (algebraMap R T)) d, hd0, map_zero]
+      RingHom.congr_fun (_root_.SerrePositivity.BhattScholze.fontaineTheta_natural p (algebraMap R T)) d, hd0, map_zero]
   have hθg (x : WittVector p (PreTilt R p)) : θ (g x) = algebraMap R T (θR x) :=
-    RingHom.congr_fun (fontaineTheta_natural p (algebraMap R T)) x
+    RingHom.congr_fun (_root_.SerrePositivity.BhattScholze.fontaineTheta_natural p (algebraMap R T)) x
   -- The finite projective splitting gives p-torsion coordinates over R.
   have hlift (t : T) (ht : (p : T) * t = 0) : ∃ b : W, θ b = t ∧ (p : W) * b ∈ J := by
     obtain ⟨n, f, s, _, _, hfs⟩ := Module.Finite.exists_comp_eq_id_of_projective R T
@@ -379,10 +379,10 @@ private theorem fontaineKer_eq_of_map_and_torsion [Module.Finite R T] [Module.Pr
       rw [← hw, map_sub, Ideal.Quotient.eq_zero_iff_mem.mpr hy, sub_zero]
     rw [heq, ← map_natCast q, ← map_mul, mul_sub, map_sub,
       Ideal.Quotient.eq_zero_iff_mem.mpr hbJ, sub_zero]
-  let hd' : (wittDeltaStructure p (PreTilt T p)).IsDistinguished e :=
-    (wittDeltaStructure_isDistinguished_iff p _ _).mpr
-      (((wittDeltaStructure_isDistinguished_iff p _ _).mp hd).map L)
-  let := (wittDeltaStructure_isPerfect p (PreTilt T p)).distinguished_quotient_isAdicComplete hd'
+  let hd' : (_root_.SerrePositivity.BhattScholze.wittDeltaStructure p (PreTilt T p)).IsDistinguished e :=
+    (_root_.SerrePositivity.BhattScholze.wittDeltaStructure_isDistinguished_iff p _ _).mpr
+      (((_root_.SerrePositivity.BhattScholze.wittDeltaStructure_isDistinguished_iff p _ _).mp hd).map L)
+  let := (_root_.SerrePositivity.BhattScholze.wittDeltaStructure_isPerfect p (PreTilt T p)).distinguished_quotient_isAdicComplete hd'
   apply le_antisymm (fun x hx => ?_) hJ
   apply Ideal.Quotient.eq_zero_iff_mem.mp
   apply IsHausdorff.haus (I := Ideal.span {(p : W ⧸ J)}) inferInstance
@@ -399,7 +399,7 @@ private theorem fontaineKer_eq_of_map_and_torsion [Module.Finite R T] [Module.Pr
 end FontaineKernel
 
 
-private theorem coeffZeroKer_eq_span_of_fontaineKer {S : Type u} [CommRing S]
+private theorem _root_.SerrePositivity.BhattScholze.Almost.coeffZeroKer_eq_span_of_fontaineKer {S : Type u} [CommRing S]
     (p : ℕ) [Fact p.Prime] [Fact (¬ IsUnit (p : S))]
     [IsAdicComplete (Ideal.span {(p : S)}) S]
     (hF : Function.Surjective (frobenius (ModP S p) p))
@@ -431,10 +431,10 @@ private theorem coeffZeroKer_eq_span_of_fontaineKer {S : Type u} [CommRing S]
     rw [← WittVector.mk_fontaineTheta, h, map_zero]
 
 /-- 整 perfectoid 環上の有限エタール代数は整 perfectoid（G-A8-6）。 -/
-theorem isIntegralPerfectoid_of_finiteEtale (p : ℕ) [Fact p.Prime]
-    (R : Type u) [CommRing R] (hR : IsIntegralPerfectoid R p)
+theorem _root_.SerrePositivity.BhattScholze.Almost.isIntegralPerfectoid_of_finiteEtale (p : ℕ) [Fact p.Prime]
+    (R : Type u) [CommRing R] (hR : _root_.SerrePositivity.IsIntegralPerfectoid R p)
     (T : Type u) [CommRing T] [Algebra R T] [Module.Finite R T] [Algebra.Etale R T] :
-    IsIntegralPerfectoid T p := by
+    _root_.SerrePositivity.IsIntegralPerfectoid T p := by
   classical
   by_cases hsub : Subsingleton T
   · exact Or.inl hsub
@@ -445,7 +445,7 @@ theorem isIntegralPerfectoid_of_finiteEtale (p : ℕ) [Fact p.Prime]
       congrArg (algebraMap R T) (@Subsingleton.elim R hR0 0 1)
   let : Fact (¬ IsUnit (p : R)) := ⟨hpR⟩
   let := hcR
-  have hR : IsIntegralPerfectoid R p := Or.inr ⟨hpR, hcR, ⟨π, uπ, hπ⟩, hFR, hkerR⟩
+  have hR : _root_.SerrePositivity.IsIntegralPerfectoid R p := Or.inr ⟨hpR, hcR, ⟨π, uπ, hπ⟩, hFR, hkerR⟩
   let : Module.FinitePresentation R T := .of_finite_of_finitePresentation R T
   let : Module.Projective R T := Module.Flat.projective_of_finitePresentation
   let I : Ideal R := Ideal.span {(p : R)}
@@ -454,9 +454,9 @@ theorem isIntegralPerfectoid_of_finiteEtale (p : ℕ) [Fact p.Prime]
   have hcT : IsAdicComplete (Ideal.span {(p : T)}) T := by
     rw [← hI, IsAdicComplete.map_algebraMap_iff]
     obtain ⟨n, _, s, _, hs, _⟩ := Module.Finite.exists_comp_eq_id_of_projective R T
-    let := isAdicComplete_function (M := R) (ι := Fin n) I
-    let := isHausdorff_of_injective_linearMap I s hs
-    let := isPrecomplete_finite I T
+    let := _root_.SerrePositivity.isAdicComplete_function (M := R) (ι := Fin n) I
+    let := _root_.SerrePositivity.isHausdorff_of_injective_linearMap I s hs
+    let := _root_.SerrePositivity.isPrecomplete_finite I T
     exact {}
   let := hcT
   have hpT : ¬ IsUnit (p : T) := by
@@ -470,7 +470,7 @@ theorem isIntegralPerfectoid_of_finiteEtale (p : ℕ) [Fact p.Prime]
   let : Fact (¬ IsUnit (p : T)) := ⟨hpT⟩
   let A := ModP R p
   let B := ModP T p
-  let f := modPMap p (algebraMap R T)
+  let f := _root_.SerrePositivity.modPMap p (algebraMap R T)
   let : Algebra A B := f.toAlgebra
   let E : (T ⧸ I.map (algebraMap R T)) ≃ₐ[A] B := by
     refine { (Ideal.quotEquivOfEq hI) with commutes' := ?_ }
@@ -480,12 +480,12 @@ theorem isIntegralPerfectoid_of_finiteEtale (p : ℕ) [Fact p.Prime]
       Ideal.Quotient.mk _ (algebraMap R T r)
     exact Ideal.quotEquivOfEq_mk _ _
   let : Algebra.Etale A B := by
-    let := quotientBaseChangeEtale (B := T) I
+    let := _root_.SerrePositivity.BhattScholze.Almost.quotientBaseChangeEtale (B := T) I
     exact Algebra.Etale.of_equiv E
   let : Module.Finite A B := by
-    let := quotientBaseChangeFinite (B := T) I
+    let := _root_.SerrePositivity.BhattScholze.Almost.quotientBaseChangeFinite (B := T) I
     exact Module.Finite.of_surjective E.toLinearMap E.surjective
-  obtain ⟨hFT, hFTker⟩ := etale_frobenius_surjective_ker p A B hFR
+  obtain ⟨hFT, hFTker⟩ := _root_.SerrePositivity.BhattScholze.Almost.etale_frobenius_surjective_ker p A B hFR
   let a : A := Ideal.Quotient.mk I π
   have ha : a ^ p = 0 := by
     rw [← map_pow]
@@ -510,18 +510,18 @@ theorem isIntegralPerfectoid_of_finiteEtale (p : ℕ) [Fact p.Prime]
     · exact (Ideal.span_singleton_le_iff_mem _).mpr ha
   rw [hAker, Ideal.map_span, Set.image_singleton] at hFTker
   obtain ⟨d, hd, hdker⟩ :=
-    exists_distinguished_fontaine_kernel_generator R p hFR hkerR π uπ hπ
-  have hgen := perfection_coeff_zero_kernel_eq_map_of_frobenius p hFR hFT a ha hFTker
-  let L : PreTilt R p →+* PreTilt T p := Perfection.map p (modPMap p (algebraMap R T))
+    _root_.SerrePositivity.BhattScholze.exists_distinguished_fontaine_kernel_generator R p hFR hkerR π uπ hπ
+  have hgen := _root_.SerrePositivity.BhattScholze.Almost.perfection_coeff_zero_kernel_eq_map_of_frobenius p hFR hFT a ha hFTker
+  let L : PreTilt R p →+* PreTilt T p := Perfection.map p (_root_.SerrePositivity.modPMap p (algebraMap R T))
   change RingHom.ker (PreTilt.coeff 0 : PreTilt T p →+* ModP T p) =
     (RingHom.ker (PreTilt.coeff 0 : PreTilt R p →+* ModP R p)).map
       L at hgen
-  rw [coeffZeroKer_eq_span_of_fontaineKer p hFR d hdker, Ideal.map_span,
+  rw [_root_.SerrePositivity.BhattScholze.Almost.coeffZeroKer_eq_span_of_fontaineKer p hFR d hdker, Ideal.map_span,
     Set.image_singleton] at hgen
   refine Or.inr ⟨hpT, hcT, ⟨algebraMap R T π, Units.map (algebraMap R T) uπ, ?_⟩, hFT, ?_⟩
   · change (p : T) = algebraMap R T (uπ : R) * (algebraMap R T π) ^ p
     simpa only [map_natCast, map_mul, map_pow] using congrArg (algebraMap R T) hπ
-  · rw [fontaineKer_eq_of_map_and_torsion p hFR hFT d hd hdker hgen]
+  · rw [_root_.SerrePositivity.BhattScholze.Almost.fontaineKer_eq_of_map_and_torsion p hFR hFT d hd hdker hgen]
     exact ⟨_, rfl⟩
 
 end SerrePositivity.BhattScholze.Perfectoidization.Derived

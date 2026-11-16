@@ -1,0 +1,28 @@
+{
+  "steps": [
+    {
+      "command": [
+        "lake",
+        "build",
+        "SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface"
+      ],
+      "rc": 0,
+      "seconds": 8.431477416306734
+    },
+    {
+      "command": [
+        "lake",
+        "env",
+        "/tmp/bulk-w1-b2/private-snapshot/snapshot",
+        "--stable-project",
+        "--modules",
+        "SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface",
+        "--output",
+        "/tmp/bulk-b3prime/r82-before.json"
+      ],
+      "rc": 0,
+      "seconds": 27.502969542518258
+    }
+  ],
+  "snapshot_binary_sha256": "044d36482e16a0708bdb58e6b3f5cdbf1f53b5deec92e5921d07b290109d45b9"
+}

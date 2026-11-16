@@ -246,7 +246,7 @@ BS 著者版 Remark 7.15（著者版 p.62）の Frobenius 引戻しを実際の�
 @[expose] public noncomputable section SemilinearTensorBaseChange
 
 namespace SerrePositivity.BhattScholze.Andre
-open scoped TensorProduct
+open scoped _root_.TensorProduct
 variable {R : Type u} {S : Type v} {B : Type w} {C : Type z}
 variable [CommRing R] [CommRing S] [CommRing B] [CommRing C]
 variable [Algebra R B] [Algebra S C]
@@ -498,17 +498,17 @@ variable {A : Type u} [CommRing A] {p : ℕ} [Fact p.Prime]
 variable (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect) (f : Polynomial A)
 local notation "hp" => Nat.Prime.pos (Fact.out : p.Prime)
 local notation "R₀" => A ⧸ Ideal.span {(p : A)}
-local notation "N" => PowerRootPolynomial R₀ p hp
+local notation "N" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial R₀ p hp
 local notation "z" => powerRootCoefficientPDInput p f
 local notation "D" => PowerRootCoefficientPDEnvelope p f
 local notation "a" => Ideal.Quotient.mk (Ideal.span {(p : A)}) (perfectPrismVarpiLift W hW)
 local notation "K" => Ideal.span {algebraMap R₀ D a}
 local notation "Rv" => (A ⧸ W.ideal) ⧸ Ideal.span {perfectPrismVarpi W hW}
-local notation "Nv" => PowerRootPolynomial Rv p hp
+local notation "Nv" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial Rv p hp
 local notation "barr" => RingHom.comp
   (Ideal.Quotient.mk (Ideal.span {perfectPrismVarpi W hW}))
   (Ideal.Quotient.mk (OrientedPrism.ideal W))
-local notation "zv" => powerRootPolynomialBaseMap Rv p hp (f.map barr)
+local notation "zv" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialBaseMap Rv p hp (f.map barr)
 local notation "Dv" => PrincipalDPPresentation Nv zv
 
 /-- 概要：原典の係数環上のモニック入力の標準表示に実分冪構造を与える。
@@ -554,11 +554,11 @@ section Prime
 variable {A : Type u} [CommRing A] {p : ℕ} [Fact p.Prime]
 variable (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect)
 local notation "hp" => Nat.Prime.pos (Fact.out : p.Prime)
-local notation "G" => powerRootExponentMonoid p hp
+local notation "G" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootExponentMonoid p hp
 local notation "Rv" => (A ⧸ W.ideal) ⧸ Ideal.span {perfectPrismVarpi W hW}
 local notation "Rp" => (A ⧸ W.ideal) ⧸ Ideal.span {(p : A ⧸ W.ideal)}
-local notation "Nv" => PowerRootPolynomial Rv p hp
-local notation "Np" => PowerRootPolynomial Rp p hp
+local notation "Nv" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial Rv p hp
+local notation "Np" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial Rp p hp
 local notation "evp" => perfectPrismVarpiFrobeniusQuotientEquiv W hW
 local notation "bv" => RingHom.comp (Ideal.Quotient.mk (Ideal.span {perfectPrismVarpi W hW}))
   (Ideal.Quotient.mk (OrientedPrism.ideal W))
@@ -567,9 +567,9 @@ local notation "bp" => RingHom.comp (Ideal.Quotient.mk (Ideal.span {(p : A ⧸ W
 local notation "frob" => DeltaStructure.frobeniusEquiv W.deltaStructure hW
 
 variable (f : Polynomial A)
-local notation "zv" => powerRootPolynomialBaseMap Rv p hp
+local notation "zv" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialBaseMap Rv p hp
   (Polynomial.map bv (perfectPrismInverseFrobeniusPolynomial W hW f))
-local notation "zp" => powerRootPolynomialBaseMap Rp p hp (Polynomial.map bp f)
+local notation "zp" => _root_.SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialBaseMap Rp p hp (Polynomial.map bp f)
 local notation "Dv" => PrincipalDPPresentation Nv zv
 local notation "Dp" => PrincipalDPPresentation Np zp
 
@@ -644,8 +644,8 @@ BS 著者版 Remark 7.15（著者版 p.62）の最終生成元商への移送。
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze.Andre
-open CategoryTheory CategoryTheory.Limits
-open scoped TensorProduct
+open _root_.CategoryTheory _root_.CategoryTheory.Limits
+open scoped _root_.TensorProduct
 attribute [local instance] HasDerivedCategory.standard principalAdicQuotientAlgebra
 
 /-- 概要：正則主商への二元完全忠実平坦性の下降。
@@ -784,9 +784,9 @@ BS 著者版 Remark 7.15（著者版 p.62）の最終商への一般移送。
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze.Andre
-open CategoryTheory CategoryTheory.Limits
-open SerrePositivity.DerivedCompletion
-open scoped TensorProduct
+open _root_.CategoryTheory _root_.CategoryTheory.Limits
+open _root_.SerrePositivity.DerivedCompletion
+open scoped _root_.TensorProduct
 attribute [local instance] HasDerivedCategory.standard
 variable {p : ℕ} [Fact p.Prime] {A B : Type u} [CommRing A] [CommRing B]
 variable (P : OrientedPrism p A) (E : DeltaStructure p B) (j : A →+* B)
@@ -904,7 +904,7 @@ BS 著者版 Remark 7.15（著者版 p.62）の任意族への実余極限の入
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze.Andre
-open CategoryTheory
+open _root_.CategoryTheory
 variable {p : ℕ} [Fact p.Prime] {A σ : Type u} [CommRing A]
 variable (T : Set σ) (D : DeltaStructure p A) (d : A) (f : σ → Polynomial A)
 variable {m : ℕ} (s : Fin m ≃ T)
@@ -915,7 +915,7 @@ local notation "c₁" => (fun t : σ => monicRelation (f t) t)
 local notation "K₁" => Ideal.span {(p : L₁), MvPolynomial.C (MvPolynomial.C d)}
 local notation "q₁" => Ideal.Quotient.mk K₁
 local notation "α₁" => deltaDivisionSourceMap (σ := σ) E₁ (MvPolynomial.C d)
-local notation "cs" N => deltaDivisionFiniteFamilyCoordinates (fun i => (s i : σ)) N
+local notation "cs" N => _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteFamilyCoordinates (fun i => (s i : σ)) N
 
 /-- 概要：任意モニック族の有限部分族の有界深さ実評価列は Koszul 分解を与える。
 方針：モニック初項の弱正則性を一般部分族の δ 帰納へ渡す。
@@ -940,7 +940,7 @@ theorem monicPrismaticFiniteSubfamilyEvaluation_isKoszulResolution (N : ℕ)
   change SerrePositivity.IsKoszulResolution (η ∘ (cs N).get)
   apply SerrePositivity.isKoszulResolution_of_isWeaklyRegular
   rw [← List.map_ofFn, List.ofFn_get]
-  exact deltaDivisionFiniteSubfamilyEvaluationList_isWeaklyRegular
+  exact _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteSubfamilyEvaluationList_isWeaklyRegular
     T E₁ (MvPolynomial.C d) c₁ s hpP vP hvP
     (monicPrismaticFirstRelation_mod_pd_fin_isWeaklyRegular D d f hf
       (fun i => (s i : σ)) (Subtype.coe_injective.comp s.injective)) N
@@ -951,21 +951,21 @@ theorem monicPrismaticFiniteSubfamilyEvaluation_isKoszulResolution (N : ℕ)
 使われ方：BS 著者版 Remark 7.15（著者版 p.62）の有界深さ入力。 -/
 def monicPrismaticFiniteSubfamilySourceTorIso (N i : ℕ) :
     ((ModuleCat.extendScalars.{u, u, u} ((q₁).comp α₁)).leftDerived i).obj
-      (ModuleCat.of L₁ (DeltaDivisionSourceFiniteCoordinateQuotient E₁ c₁ (cs N).get)) ≅
+      (ModuleCat.of L₁ (_root_.SerrePositivity.BhattScholze.Andre.DeltaDivisionSourceFiniteCoordinateQuotient E₁ c₁ (cs N).get)) ≅
       (SerrePositivity.koszulComplex (fun j : Fin (cs N).length =>
         q₁ (deltaDivisionEvaluationRelation E₁ (MvPolynomial.C d) c₁
           ((cs N).get j).1 ((cs N).get j).2))).homology (-(i : ℤ)) := by
   have e := SerrePositivity.torAlgKoszulIso ((q₁).comp α₁)
-    (fun j : Fin (cs N).length => deltaDivisionSourceGraphRelation E₁ c₁ ((cs N).get j))
-    (deltaDivisionSourceGraph_fin_isKoszulResolution E₁ c₁ (cs N).get
-      (deltaDivisionFiniteFamilyCoordinates_nodup _
+    (fun j : Fin (cs N).length => _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionSourceGraphRelation E₁ c₁ ((cs N).get j))
+    (_root_.SerrePositivity.BhattScholze.Andre.deltaDivisionSourceGraph_fin_isKoszulResolution E₁ c₁ (cs N).get
+      (_root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteFamilyCoordinates_nodup _
         (Subtype.coe_injective.comp s.injective) N).injective_get) i
   have he : ((q₁).comp α₁) ∘
-      (fun j : Fin (cs N).length => deltaDivisionSourceGraphRelation E₁ c₁ ((cs N).get j)) =
+      (fun j : Fin (cs N).length => _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionSourceGraphRelation E₁ c₁ ((cs N).get j)) =
       (fun j : Fin (cs N).length => q₁ (deltaDivisionEvaluationRelation E₁ (MvPolynomial.C d) c₁
         ((cs N).get j).1 ((cs N).get j).2)) := by
     funext j
-    exact congrArg q₁ (deltaDivisionSourceGraph_map E₁ (MvPolynomial.C d) c₁ ((cs N).get j))
+    exact congrArg q₁ (_root_.SerrePositivity.BhattScholze.Andre.deltaDivisionSourceGraph_map E₁ (MvPolynomial.C d) c₁ ((cs N).get j))
   rw [he] at e
   exact e
 
@@ -978,7 +978,7 @@ theorem monicPrismaticFiniteSubfamilySource_tor_subsingleton (N : ℕ)
     (hpA : Function.Injective (fun z : A => (p : A) * z))
     (v : Aˣ) (hv : (v : A) = D.delta d) (i : ℕ) :
     Subsingleton (SerrePositivity.TorAlg ((q₁).comp α₁) (i + 1)
-      (DeltaDivisionSourceFiniteCoordinateQuotient E₁ c₁ (cs N).get)) := by
+      (_root_.SerrePositivity.BhattScholze.Andre.DeltaDivisionSourceFiniteCoordinateQuotient E₁ c₁ (cs N).get)) := by
   have hr := monicPrismaticFiniteSubfamilyEvaluation_isKoszulResolution T D d f s N hf hpA v hv
   have hz := hr.isZero (-((i + 1 : ℕ) : ℤ)) (by omega)
   have ht := hz.of_iso (monicPrismaticFiniteSubfamilySourceTorIso T D d f s N (i + 1))
@@ -1016,24 +1016,24 @@ BS 著者版 Remark 7.15（著者版 p.62）の任意族の実導来剰余計算
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze.Andre
-open CategoryTheory CategoryTheory.Limits
+open _root_.CategoryTheory _root_.CategoryTheory.Limits
 attribute [local instance] HasDerivedCategory.standard
 variable {σ : Type u}
 
 private theorem coordinate_range {m : ℕ} (T : Finset σ) (s : Fin m ≃ T) (N : ℕ) :
-    Set.range (deltaDivisionFiniteFamilyCoordinates (fun i => (s i : σ)) N).get =
+    Set.range (_root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteFamilyCoordinates (fun i => (s i : σ)) N).get =
       {z : σ × ℕ | z.1 ∈ T ∧ z.2 ≤ N} := by
   ext z
   constructor
   · rintro ⟨i, rfl⟩
     obtain ⟨j, k, hk, he⟩ :=
-      (deltaDivisionFiniteFamilyCoordinates_mem (fun i => (s i : σ)) N _).mp (List.get_mem _ i)
+      (_root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteFamilyCoordinates_mem (fun i => (s i : σ)) N _).mp (List.get_mem _ i)
     rw [← he]
     exact ⟨(s j).property, hk⟩
   · rintro ⟨hz, hn⟩
     obtain ⟨j, hj⟩ := s.surjective ⟨z.1, hz⟩
-    have hm : z ∈ deltaDivisionFiniteFamilyCoordinates (fun i => (s i : σ)) N :=
-      (deltaDivisionFiniteFamilyCoordinates_mem (fun i => (s i : σ)) N z).mpr
+    have hm : z ∈ _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteFamilyCoordinates (fun i => (s i : σ)) N :=
+      (_root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteFamilyCoordinates_mem (fun i => (s i : σ)) N z).mpr
         ⟨j, z.2, hn, Prod.ext (congrArg Subtype.val hj) rfl⟩
     obtain ⟨i, hi⟩ := List.mem_iff_get.mp hm
     exact ⟨i, hi⟩
@@ -1047,8 +1047,8 @@ local notation "r" => (fun t : σ => monicRelation (f t) t)
 local notation "I" => Ideal.span {(p : L), MvPolynomial.C (MvPolynomial.C d)}
 local notation "ψ" => RingHom.comp (Ideal.Quotient.mk I)
   (deltaDivisionSourceMap (σ := σ) E (MvPolynomial.C d))
-local notation "F" => deltaDivisionBoundedSupportModuleDiagram E r
-local notation "K" => deltaDivisionEvaluationFiniteSupportIdeal E r
+local notation "F" => _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionBoundedSupportModuleDiagram E r
+local notation "K" => _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionEvaluationFiniteSupportIdeal E r
 
 /-- 概要：任意モニック族の有界深さ評価図式の全段の高次 Tor は零。
 方針：有限座標の hull を選び、有限部分族の源グラフ商へ同定する。
@@ -1063,26 +1063,26 @@ theorem monicPrismaticBoundedSupportStage_tor_subsingleton
   let T := S.image Prod.fst
   let N := S.sup Prod.snd
   let s : Fin T.card ≃ T := (Finset.equivFin T).symm
-  let cs := deltaDivisionFiniteFamilyCoordinates (fun j => (s j : σ)) N
-  have hcoords : Set.range cs.get = (deltaDivisionCoordinateHull S : Set (σ × ℕ)) := by
+  let cs := _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteFamilyCoordinates (fun j => (s j : σ)) N
+  have hcoords : Set.range cs.get = (_root_.SerrePositivity.BhattScholze.Andre.deltaDivisionCoordinateHull S : Set (σ × ℕ)) := by
     rw [coordinate_range T s N]
     ext z
-    exact (mem_deltaDivisionCoordinateHull S z).symm
-  have hK : K (deltaDivisionCoordinateHull S) =
-      Ideal.span (Set.range fun j => deltaDivisionSourceGraphRelation E r (cs.get j)) := by
-    change Ideal.span (deltaDivisionSourceGraphRelation E r ''
-      (deltaDivisionCoordinateHull S : Set (σ × ℕ))) = _
+    exact (_root_.SerrePositivity.BhattScholze.Andre.mem_deltaDivisionCoordinateHull S z).symm
+  have hK : K (_root_.SerrePositivity.BhattScholze.Andre.deltaDivisionCoordinateHull S) =
+      Ideal.span (Set.range fun j => _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionSourceGraphRelation E r (cs.get j)) := by
+    change Ideal.span (_root_.SerrePositivity.BhattScholze.Andre.deltaDivisionSourceGraphRelation E r ''
+      (_root_.SerrePositivity.BhattScholze.Andre.deltaDivisionCoordinateHull S : Set (σ × ℕ))) = _
     rw [← hcoords, ← Set.range_comp']
   let e : (F).obj S ≅
-      ModuleCat.of L (DeltaDivisionSourceFiniteCoordinateQuotient E r cs.get) :=
-    (Submodule.quotEquivOfEq _ _ (show (K (deltaDivisionCoordinateHull S) : Submodule L L) =
-      Ideal.span (Set.range fun j => deltaDivisionSourceGraphRelation E r (cs.get j))
+      ModuleCat.of L (_root_.SerrePositivity.BhattScholze.Andre.DeltaDivisionSourceFiniteCoordinateQuotient E r cs.get) :=
+    (Submodule.quotEquivOfEq _ _ (show (K (_root_.SerrePositivity.BhattScholze.Andre.deltaDivisionCoordinateHull S) : Submodule L L) =
+      Ideal.span (Set.range fun j => _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionSourceGraphRelation E r (cs.get j))
         from hK)).toModuleIso
   let H := (ModuleCat.extendScalars.{u, u, u} ψ).leftDerived (i + 1)
   have ht := monicPrismaticFiniteSubfamilySource_tor_subsingleton
     (T : Set σ) D d f s N hf hpA v hv i
   have hz : IsZero (H.obj
-      (ModuleCat.of L (DeltaDivisionSourceFiniteCoordinateQuotient E r cs.get))) := by
+      (ModuleCat.of L (_root_.SerrePositivity.BhattScholze.Andre.DeltaDivisionSourceFiniteCoordinateQuotient E r cs.get))) := by
     let := ht
     exact ModuleCat.isZero_of_subsingleton _
   exact ModuleCat.subsingleton_of_isZero (hz.of_iso (H.mapIso e))
@@ -1106,7 +1106,7 @@ theorem monicPrismaticEvaluation_tor_subsingleton_of_preservesBoundedSupportColi
       (fun S => ModuleCat.isZero_iff_subsingleton.mpr
         (monicPrismaticBoundedSupportStage_tor_subsingleton D d f hf hpA v hv S i))
   let e : H.obj (ModuleCat.of L P) ≅ H.obj (colimit F) :=
-    H.mapIso (deltaDivisionBoundedSupportColimitEvalIso E r).symm
+    H.mapIso (_root_.SerrePositivity.BhattScholze.Andre.deltaDivisionBoundedSupportColimitEvalIso E r).symm
   exact ModuleCat.subsingleton_of_isZero (hz.of_iso e)
 
 
@@ -1156,7 +1156,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end MonicPrismaticBoundedSupportTor
 
-/-! ## André A1-a：完全基底上の入力作用からの基底保存性
+/-! ## André 完全基底上の入力作用からの基底保存性
 
 ## 概要
 
@@ -1180,7 +1180,7 @@ BS 著者版 Lemma 4.8（著者版 pp.38–39）の一意性を BS 著者版 Rem
 @[expose] public noncomputable section BoundedPrismInputRigidity
 
 namespace SerrePositivity.BhattScholze.Andre.BoundedPrismInput
-open CategoryTheory
+open _root_.CategoryTheory
 variable {p : ℕ} [Fact p.Prime] {A S : Type u} [CommRing A] [CommRing S]
 variable {W : OrientedPrism p A} {c : A ⧸ W.ideal →+* S}
 
@@ -1304,7 +1304,7 @@ BS 著者版 Remark 7.15（著者版 p.62）の ϖ から p への移送に用�
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze.Andre
-open scoped TensorProduct
+open scoped _root_.TensorProduct
 attribute [local instance] adicQuotientAlgebra
 
 /-- 概要：a 完全忠実平坦な代数の各正冪剰余は忠実平坦。
@@ -1393,7 +1393,7 @@ end CompletelyFaithfullyFlatPrincipalPower
 
 set_option backward.isDefEq.respectTransparency false
 namespace SerrePositivity.BhattScholze.Andre
-open scoped TensorProduct
+open scoped _root_.TensorProduct
 variable {R S T σ : Type u} [CommRing R] [CommRing S] [CommRing T]
 
 /-- 概要：基底自身は任意イデアルに関して完全忠実平坦。
@@ -1479,7 +1479,7 @@ BS 著者版 Theorem 7.14（著者版 p.61）、BS 著者版 Remark 7.15（p.62�
 
 set_option backward.isDefEq.respectTransparency false
 namespace SerrePositivity.BhattScholze.Andre
-open SerrePositivity.DerivedCompletion
+open _root_.SerrePositivity.DerivedCompletion
 
 /-- 概要：任意の整 perfectoid 基底上の有限正次数モニック族に、全根を持つ拡大がある。
 方針：完全 prism 商表示で有限族を構成し、基底環同型と評価の自然性で戻す。
@@ -1592,7 +1592,7 @@ local notation "a" => (fun s : σ => DeltaStructure.frobeniusLift E (r s))
 local notation "I" => Ideal.span {(p : A)}
 local notation "QA" => A ⧸ I
 local notation "q" => Ideal.Quotient.mk I
-local notation "J" => deltaDivisionFirstBaseIdeal (p := p) (p : P) a
+local notation "J" => _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFirstBaseIdeal (p := p) (p : P) a
 local notation "g" => (fun s : σ => Polynomial.map q (f s ^ p))
 local notation "C" => PolynomialFamilyQuotient g
 
@@ -1608,8 +1608,8 @@ abbrev MonicFrobeniusCoefficientQuotient := P ⧸ J
 使われ方：BS 著者版 Corollary 2.39（著者版 p.25）の係数商を通常モニック商へ移す。 -/
 theorem monicFrobeniusCoefficientIdeal_eq :
     J = (I).map (MvPolynomial.C : A →+* P) ⊔ polynomialFamilyRelationIdeal (fun s => f s ^ p) := by
-  rw [deltaPDivisionFirstBaseIdeal_frobenius_eq_power]
-  unfold deltaDivisionFirstBaseIdeal
+  rw [_root_.SerrePositivity.BhattScholze.Andre.deltaPDivisionFirstBaseIdeal_frobenius_eq_power]
+  unfold _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFirstBaseIdeal
   have hpp : Ideal.span {(p : P), (p : P)} = Ideal.span {(p : P)} :=
     congrArg Ideal.span (Set.insert_eq_of_mem (Set.mem_singleton (p : P)))
   rw [hpp]

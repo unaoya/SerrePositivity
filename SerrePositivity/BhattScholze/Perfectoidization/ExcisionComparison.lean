@@ -28,7 +28,7 @@ section PerfectoidizationExcisionComparisonPart
 
 set_option backward.isDefEq.respectTransparency false
 namespace SerrePositivity.BhattScholze
-open CategoryTheory CategoryTheory.Limits BhattScholze
+open _root_.CategoryTheory _root_.CategoryTheory.Limits _root_.SerrePositivity.BhattScholze
 variable {R A B C D : Type u}
     [CommRing R] [CommRing A] [CommRing B] [CommRing C] [CommRing D]
     [Algebra R A] [Algebra R B] [Algebra R C] [Algebra R D]
@@ -47,13 +47,13 @@ theorem perfectoidization_comparison_almost_of_canonical_excision
         ((Ideal.span {algebraMap R A a}).map q.toRingHom)))
       (CommRingCat.ofHom (perfectoidizationClosedComparison hf hg q.toRingHom
         (Ideal.span {algebraMap R A a})))) :
-    (∀ s ∈ perfectoidIdeal R p hR a,
+    (∀ s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR a,
       ∀ x : (IsPerfectoidization.mapAlgHom hf hg q).toLinearMap.ker, s • x = 0) ∧
-    (∀ s ∈ perfectoidIdeal R p hR a,
+    (∀ s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR a,
       ∀ y : D ⧸ (IsPerfectoidization.mapAlgHom hf hg q).toLinearMap.range, s • y = 0) := by
   let J : Ideal A := Ideal.span {algebraMap R A a}
-  let L := QuotientPerfectoidization C (J.map f.toRingHom) p hf.1
-  let T := QuotientPerfectoidization D ((J.map q.toRingHom).map g.toRingHom) p hg.1
+  let L := _root_.SerrePositivity.BhattScholze.Semiperfectoid.QuotientPerfectoidization C (J.map f.toRingHom) p hf.1
+  let T := _root_.SerrePositivity.BhattScholze.Semiperfectoid.QuotientPerfectoidization D ((J.map q.toRingHom).map g.toRingHom) p hg.1
   let l := perfectoidizationClosedSideProjection hf J
   let r := perfectoidizationClosedSideProjection hg (J.map q.toRingHom)
   let b := perfectoidizationClosedComparison hf hg q.toRingHom J
@@ -72,13 +72,13 @@ theorem perfectoidization_comparison_almost_of_canonical_excision
         rw [m.commutes] at h
         exact h }
   have hL : IsIntegralPerfectoid L p :=
-    (isPerfectoidization_toQuotientPerfectoidization C (J.map f.toRingHom) p hf.1).1
+    (_root_.SerrePositivity.BhattScholze.Semiperfectoid.isPerfectoidization_toQuotientPerfectoidization C (J.map f.toRingHom) p hf.1).1
   have ha : algebraMap R L a = 0 := by
     change l (algebraMap R C a) = 0
     rw [← f.commutes]
     exact perfectoidizationClosedSideProjection_eq_zero_of_mem hf J (algebraMap R A a)
       (Ideal.subset_span (Set.mem_singleton _))
-  exact perfectoidIdeal_ker_coker_annihilated_of_isPullback hR m l' r' b' hPB hL a ha
+  exact _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal_ker_coker_annihilated_of_isPullback hR m l' r' b' hPB hL a ha
 
 end SerrePositivity.BhattScholze
 

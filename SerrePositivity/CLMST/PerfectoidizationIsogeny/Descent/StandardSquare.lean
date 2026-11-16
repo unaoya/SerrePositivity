@@ -43,7 +43,7 @@ universe u
 section ConePart
 
 namespace SerrePositivity.CLMST
-open CategoryTheory DerivedCompletion
+open _root_.CategoryTheory _root_.SerrePositivity.DerivedCompletion
 attribute [local instance] HasDerivedCategory.standard
 
 variable (R S : Type u) [CommRing R] [CommRing S] [Algebra R S]
@@ -71,8 +71,8 @@ end ConePart
 section BaseChangePart
 
 namespace SerrePositivity.CLMST
-open DerivedCompletion
-open scoped TensorProduct
+open _root_.SerrePositivity.DerivedCompletion
+open scoped _root_.TensorProduct
 set_option backward.isDefEq.respectTransparency false
 
 variable (B L : Type u) [CommRing B] [CommRing L] [Algebra B L]
@@ -155,8 +155,8 @@ end BaseChangePart
 section SourceComparisonPart
 
 namespace SerrePositivity.CLMST
-open CategoryTheory DerivedCompletion
-open scoped TensorProduct
+open _root_.CategoryTheory _root_.SerrePositivity.DerivedCompletion
+open scoped _root_.TensorProduct
 attribute [local instance] HasDerivedCategory.standard
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
@@ -276,8 +276,8 @@ end SourceComparisonPart
 section StandardSquarePart
 
 namespace SerrePositivity.CLMST
-open CategoryTheory DerivedCompletion
-open scoped TensorProduct
+open _root_.CategoryTheory _root_.SerrePositivity.DerivedCompletion
+open scoped _root_.TensorProduct
 attribute [local instance] HasDerivedCategory.standard
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
@@ -416,8 +416,8 @@ end StandardSquarePart
 section StandardConePart
 
 namespace SerrePositivity.CLMST
-open CategoryTheory DerivedCompletion
-open scoped TensorProduct
+open _root_.CategoryTheory _root_.SerrePositivity.DerivedCompletion
+open scoped _root_.TensorProduct
 attribute [local instance] HasDerivedCategory.standard
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true

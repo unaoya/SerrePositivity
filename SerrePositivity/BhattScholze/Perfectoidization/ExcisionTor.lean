@@ -1,9 +1,9 @@
 module
 
-public import SerrePositivity.BhattScholze.Almost.SupportedQuotient
+public import SerrePositivity.BhattScholze.Perfectoidization.SupportedQuotient
 public import SerrePositivity.BhattScholze.PerfectoidIdeal.CompletedQuotient
 public import SerrePositivity.CommutativeAlgebra.Localization.PowerTorsion
-public import SerrePositivity.BhattScholze.Perfectoid.FiniteProduct
+public import SerrePositivity.BhattScholze.Prism.Perfectoid.FiniteProduct
 public import SerrePositivity.CommutativeAlgebra.Localization.CommonModel
 public import SerrePositivity.BhattScholze.Perfectoidization.ExcisionComparison
 
@@ -34,7 +34,7 @@ section PerfectoidizationImageTorComparisonPart
 
 set_option backward.isDefEq.respectTransparency false
 namespace SerrePositivity.BhattScholze
-open CategoryTheory
+open _root_.CategoryTheory
 variable {R A E C D : Type u}
     [CommRing R] [CommRing A] [CommRing E] [CommRing C] [CommRing D]
     [Algebra R A] [Algebra R E] [Algebra R C] [Algebra R D]
@@ -48,16 +48,16 @@ theorem perfectoidIdeal_TorInput_iff_image
     (ρ : ℕ → R) (hρ : ∀ n, ρ (n + 1) ^ p = ρ n)
     (hk : ∀ a, φ a = 0 → ∃ e : ℕ, ρ 0 ^ e • a = 0)
     (N : ModuleCat.{u} R) (k : ℕ) (hN : ∀ x : N, (p : R) ^ k • x = 0) (i : ℕ) :
-    (∀ s ∈ perfectoidIdeal R p hR (ρ 0),
+    (∀ s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR (ρ 0),
       torCoefficientScalarEndomorphism C N i (algebraMap R C s) = 0) ↔
-    (∀ s ∈ perfectoidIdeal R p hR (ρ 0),
+    (∀ s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR (ρ 0),
       torCoefficientScalarEndomorphism D N i (algebraMap R D s) = 0) := by
   obtain ⟨hker, hcoker⟩ :=
-    BhattScholze.perfectoidization_image_ker_coker_annihilated hR φ hf g hg ρ hρ hk
+    _root_.SerrePositivity.BhattScholze.Perfectoidization.perfectoidization_image_ker_coker_annihilated hR φ hf g hg ρ hρ hk
   exact torCoefficientIdeal_eq_zero_iff_of_almost_comparison
     (IsPerfectoidization.mapAlgHom hf hg φ.rangeRestrict).toLinearMap
-    (perfectoidIdeal R p hR (ρ 0)) hker hcoker N ((p : R) ^ k) hN
-    (perfectoidIdealMod_idempotent R p hR (ρ 0) k) i
+    (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR (ρ 0)) hker hcoker N ((p : R) ^ k) hN
+    (_root_.SerrePositivity.BhattScholze.Almost.perfectoidIdealMod_idempotent R p hR (ρ 0) k) i
 
 /-- An ordinary localization comparison supplies an actual image target once,
 with all Tor tests preserved; no almost kernel hypothesis is assumed. -/
@@ -71,14 +71,14 @@ theorem exists_localization_image_perfectoidization_Tor_comparison
     ∃ (D : Type u) (_ : CommRing D) (_ : Algebra R D) (g : φ.range →ₐ[R] D),
       IsPerfectoidization p g.toRingHom ∧
       ∀ (N : ModuleCat.{u} R) (k : ℕ), (∀ x : N, (p : R) ^ k • x = 0) → ∀ i : ℕ,
-        (∀ s ∈ perfectoidIdeal R p hR (ρ 0),
+        (∀ s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR (ρ 0),
           torCoefficientScalarEndomorphism C N i (algebraMap R C s) = 0) ↔
-        (∀ s ∈ perfectoidIdeal R p hR (ρ 0),
+        (∀ s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR (ρ 0),
           torCoefficientScalarEndomorphism D N i (algebraMap R D s) = 0) := by
   have hk : ∀ a, φ a = 0 → ∃ e : ℕ, ρ 0 ^ e • a = 0 :=
     localizationComparison_ker_power_torsion (ρ 0) φ.toLinearMap α j hcomm
   obtain ⟨D, hD, hDalg, g, hg, _⟩ :=
-    BhattScholze.exists_image_perfectoidization_almost_comparison hR φ hf ρ hρ hk
+    _root_.SerrePositivity.BhattScholze.Perfectoidization.exists_image_perfectoidization_almost_comparison hR φ hf ρ hρ hk
   let := hD
   let := hDalg
   exact ⟨D, hD, hDalg, g, hg,
@@ -92,8 +92,8 @@ section PerfectoidFiniteProductTorPart
 
 set_option backward.isDefEq.respectTransparency false
 namespace SerrePositivity.BhattScholze
-open CategoryTheory CategoryTheory.Limits
-open scoped TensorProduct
+open _root_.CategoryTheory _root_.CategoryTheory.Limits
+open scoped _root_.TensorProduct
 
 /-- Any specified perfectoidization of the finite product has its original
 finite-free module structure over R, and in particular is flat. -/
@@ -132,7 +132,7 @@ theorem supported_finiteProduct_image_powerTorsionTorInput
     (ρ : ℕ → R) (hρ : ∀ n, ρ (n + 1) ^ p = ρ n)
     (hk : ∀ a, φ a = 0 → ∃ e : ℕ, ρ 0 ^ e • a = 0) :
     ∀ (N : ModuleCat.{u} R) (k : ℕ), (∀ x : N, (p : R) ^ k • x = 0) →
-      ∀ i : ℕ, 0 < i → ∀ s ∈ perfectoidIdeal R p hR (ρ 0),
+      ∀ i : ℕ, 0 < i → ∀ s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR (ρ 0),
         torCoefficientScalarEndomorphism D N i (algebraMap R D s) = 0 := by
   let f : (Fin r → R) →ₐ[R] (Fin r → R) := AlgHom.id R (Fin r → R)
   have hf : IsPerfectoidization p f.toRingHom :=
@@ -158,7 +158,7 @@ theorem localizationSplitting_exists_finiteProduct_image_TorInput
         ∃ (D : Type u) (_ : CommRing D) (_ : Algebra R D) (g : v.range →ₐ[R] D),
           IsPerfectoidization p g.toRingHom ∧
           ∀ (N : ModuleCat.{u} R) (k : ℕ), (∀ x : N, (p : R) ^ k • x = 0) →
-            ∀ i : ℕ, 0 < i → ∀ s ∈ perfectoidIdeal R p hR (ρ 0),
+            ∀ i : ℕ, 0 < i → ∀ s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR (ρ 0),
               torCoefficientScalarEndomorphism D N i (algebraMap R D s) = 0 := by
   obtain ⟨E, hE, _hloc, u, v, hu, hv, _huF, _hvF, _huk, hvk, _⟩ :=
     localizationSplitting_exists_finite_common_model_bounds (ρ 0) L r e
@@ -166,7 +166,7 @@ theorem localizationSplitting_exists_finiteProduct_image_TorInput
   have hf : IsPerfectoidization p f.toRingHom :=
     (BhattScholze.isIntegralPerfectoid_finPi R p hR r).isPerfectoidization_id
   obtain ⟨D, hD, hDalg, g, hg, _⟩ :=
-    BhattScholze.exists_image_perfectoidization_almost_comparison hR v hf ρ hρ hvk
+    _root_.SerrePositivity.BhattScholze.Perfectoidization.exists_image_perfectoidization_almost_comparison hR v hf ρ hρ hvk
   let := hD
   let := hDalg
   exact ⟨E, hE, u, v, hu, hv, D, hD, hDalg, g, hg,
@@ -180,7 +180,7 @@ section CanonicalExcisionTorInputPart
 
 set_option backward.isDefEq.respectTransparency false
 namespace SerrePositivity.BhattScholze
-open CategoryTheory CategoryTheory.Limits BhattScholze
+open _root_.CategoryTheory _root_.CategoryTheory.Limits _root_.SerrePositivity.BhattScholze
 
 /-- The two actual canonical excision squares transfer all original ideal Tor
 tests from the finite free source through E to A. No almost comparison or
@@ -211,14 +211,14 @@ theorem perfectoidIdeal_powerTorsionTorInput_of_two_canonical_excision
       (CommRingCat.ofHom (perfectoidizationClosedComparison hh hg v.toRingHom
         (Ideal.span {algebraMap R (Fin r → R) a})))) :
     ∀ (N : ModuleCat.{u} R) (k : ℕ), (∀ x : N, (p : R) ^ k • x = 0) →
-      ∀ i : ℕ, 0 < i → ∀ s ∈ perfectoidIdeal R p hR a,
+      ∀ i : ℕ, 0 < i → ∀ s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR a,
         torCoefficientScalarEndomorphism C N i (algebraMap R C s) = 0 := by
   obtain ⟨huk, huc⟩ :=
     BhattScholze.perfectoidization_comparison_almost_of_canonical_excision hR hf hg u a hPBu
   obtain ⟨hvk, hvc⟩ :=
     BhattScholze.perfectoidization_comparison_almost_of_canonical_excision hR hh hg v a hPBv
   have hfree : ∀ (N : ModuleCat.{u} R) (k : ℕ), (∀ x : N, (p : R) ^ k • x = 0) →
-      ∀ i : ℕ, 0 < i → ∀ s ∈ perfectoidIdeal R p hR a,
+      ∀ i : ℕ, 0 < i → ∀ s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR a,
         torCoefficientScalarEndomorphism F N i (algebraMap R F s) = 0 := by
     intro N _ _ i hi s _
     exact finiteProduct_perfectoidization_Tor_zero R p hR r F h hh N i hi

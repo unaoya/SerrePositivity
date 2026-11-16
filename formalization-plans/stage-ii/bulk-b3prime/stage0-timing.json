@@ -1,0 +1,21 @@
+{
+  "status": "estimate only; B3prime isolated preview not yet measured",
+  "prior_B3_measured": {
+    "root_seconds": 689.2525,
+    "all_audits": 106,
+    "all_audits_seconds_sum": 5467.103423394263,
+    "verify_jobs3_seconds": 2968.3724,
+    "preservation_modules": 10195
+  },
+  "estimate_hours_excluding_lock_wait": {
+    "preparation": [
+      4,
+      12
+    ],
+    "application_and_full_validation": [
+      3,
+      8
+    ]
+  },
+  "basis": "191 static reverse-closure modules versus previous B3 10195 preservation modules. Full audits and verify remain required, no proportional shortcut. Current cache/new main may change cost; revise with first preview sample. Lock wait excluded; full audits/verify night only."
+}
