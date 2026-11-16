@@ -209,3 +209,7 @@ S3 の逆向きの型は、段 0 の表の「`restrictJoinCone c (cechShape d) =
 ## 追記（2026-11-16 午後、調整役）：大域比較は rightKanHomUniversalIso を直接使ってよい
 
 `kanRightKanExtensionIso`（RightHomUniversal.lean:93）は `rightKanHomUniversalIso`（UniversalProperty.lean:61）を `kanRightKanExtension_homUniversal` で包んだだけなので、一般の版 `rightKanHomUniversalIso`・`rightKanHomUniversalIso_hom_fac` を直接使い、添字の同型で移した Hom 普遍性と組み合わせる経路を認める。条件：`RightKanHomUniversal` は仮定として置かず証明する（既存の Kan 拡張から、または添字の同型での移送で）。元の主張の型は変えない。点ごとの同型の組み立てはしない。添字の同型での移送は既存の構成の法則として数える。外枠 22,000 行は変えない。
+
+## 追記（2026-11-16 夜、調整役）：5∞-1 の外枠を 24,000 行に（ユーザー承認）
+
+報告（0cde9bbd3、検証済み 18,240 行、残り 2,740〜4,710 行、全体 20,980〜22,950 行）を受けて、外枠を 22,000 行から **24,000 行**に変更する。残り（`weightedSections_discrete_map`、Čech の局所同値、`sections_localEquiv_iso`、`sheafify_discrete_eq`・`localEquiv_of_sheafifyIso`、S1 の一般の Coverage の判定）は報告どおり短縮せずに。停止点は 5∞-1 の完成（S7 を除く）のまま。約 22,000 行で止まらずに途中報告。24,000 行を超えそうなら検証済みをコミットして報告して止まる。S7・R2・R3 は再開しない。main は root の確認まで取り込まない。
