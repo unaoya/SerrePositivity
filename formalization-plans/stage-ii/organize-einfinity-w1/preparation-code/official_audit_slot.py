@@ -2,7 +2,7 @@
 This is the separate formal-audit gate, not a replacement for normal full verify.
 """
 from pathlib import Path
-import argparse,hashlib,json,os,subprocess,sys,time
+import argparse,datetime,hashlib,json,os,re,subprocess,sys,time
 p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--budget',type=int,required=True);a=p.parse_args();root=a.root.resolve();out=a.output.resolve();out.mkdir(parents=True,exist_ok=True);start=time.monotonic();sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 paths=sorted({p.relative_to(root).as_posix() for p in (root/'scripts').glob('audit_*.lean')}|{p.relative_to(root).as_posix() for p in (root/'scripts/audit').rglob('*.lean')});manifest=[s.strip() for s in (root/'scripts/refactor/audit_manifest.txt').read_text().splitlines() if s.strip() and not s.startswith('#')];assert len(manifest)==len(set(manifest)) and set(paths)==set(manifest);assert len(paths)==106
 sys.path.insert(0,str(root/'scripts/refactor'));from audit_imports import audit_build_targets
@@ -16,9 +16,10 @@ for i,path in enumerate(paths):
  if left<100:break
  log=out/f'{i:03}.log'
  if log.exists():log.rename(out/f'{i:03}.history-{time.time_ns()}.log')
- t=time.monotonic()
- with log.open('w') as f:r=subprocess.run(['gtimeout','--kill-after=3s',str(left),'lake','env','lean',path],cwd=root,env=os.environ|{'LEAN_NUM_THREADS':'1'},stdout=f,stderr=subprocess.STDOUT)
- row=dict(path=path,source_sha256=hashes[path],signature=signature,returncode=r.returncode,seconds=time.monotonic()-t,log=str(log));(out/f'{i:03}.attempt.json').write_text(json.dumps(row,indent=2)+'\n');print(i+1,len(paths),path,r.returncode,round(row['seconds'],2),flush=True)
+ t=time.monotonic();timing=out/f'{i:03}.time'
+ with log.open('w') as f:r=subprocess.run(['gtimeout','--kill-after=3s',str(left),'/usr/bin/time','-l','-o',str(timing),'lake','env','lean',path],cwd=root,env=os.environ|{'LEAN_NUM_THREADS':'1'},stdout=f,stderr=subprocess.STDOUT)
+ rss_match=re.search(r'(?m)^\s*(\d+)\s+maximum resident set size\s*$',timing.read_text()) if timing.exists() else None
+ row=dict(path=path,source_sha256=hashes[path],signature=signature,returncode=r.returncode,seconds=time.monotonic()-t,log=str(log),max_rss_bytes=int(rss_match[1]) if rss_match else None,measured_at=datetime.datetime.now(datetime.timezone.utc).isoformat(),time_log=str(timing));(out/f'{i:03}.attempt.json').write_text(json.dumps(row,indent=2)+'\n');print(i+1,len(paths),path,r.returncode,round(row['seconds'],2),flush=True)
  if r.returncode in (124,137):break
  if r.returncode:raise SystemExit(1)
  receipt.write_text(json.dumps(row,indent=2)+'\n');results.append(row)

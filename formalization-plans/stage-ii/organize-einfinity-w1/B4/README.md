@@ -1,6 +1,6 @@
-# OE-W1 の改名への追従資料（準備中）
+# OE-W1 の改名への追従資料（全監査・verify待ち）
 
-これは段1の準備資料。移動の適用・移送後の対象ビルド・v3b・引用／Tag・root・正式全監査・verifyは未検収であり、まだ最終の取り込み用の表ではない。完成後の報告コミットで検証済みの版を指定する。主張・証明の変更や、D81で止めた経路の再開を含めない。
+段1の適用、対象1,661本、v3b全1,071本・未説明0、引用／タグ63件・欠落／余分0、rootと正式監査の全依存先ビルドは成功。正式106監査と通常verifyは実行中／未検収であり、まだ最終の取り込み用の表ではない。完成後の報告コミットで検証済みの版を指定する。主張・証明の変更や、D81で止めた経路の再開を含めない。
 
 ## 表と所有元
 
@@ -8,8 +8,8 @@
 - `../namespace-rewrite-map.json`：原環境の実際のnative所有元から作った、既存の書換器用の表。public 3,282名とprivate user name 75名の改名候補を含む。旧BEのroot全体を置換する表ではなく、99ファイルの所有宣言だけをStoppedRoutes.ISW2Totへ運ぶ。
 - `../stage1-modules.csv`：588本の元ソースSHA、元／先のファイルとnamespace、根拠、原行数。
 - `../preparation/native-owners-before.json.gz`：原環境の588本・4,160宣言の実所有元。private 157を含む。
-- `../preparation/native-owner-destinations-proposed.json.gz`：上の全宣言の移送先候補。**privateの移送後raw kernel名を観測済みとはしていない**。最終の公開宣言／import所有元表は、対象ビルド後の実native表で確かめてから加える。
-- `../branch-impact.json`：他のレーンのHEADと、dirty／untracked Leanを読取専用で照合した文字列影響。draftsも含む。現在の5枝の候補は計2本だが、後から足した差分や短名の全束縛を検証済みという意味ではない。
+- `../preparation/native-owner-destinations-proposed.json.gz`：上の全宣言の移送先候補。これは初期の候補表であり、実測を置き換えない。移送後raw kernel名も取得済みで、実際の対応は下の `public-owner-map.csv` と `actual-owner-pairs.json.gz` を用いる。
+- `../branch-impact.json`：他のレーンのHEADと、dirty／untracked Leanを読取専用で照合した文字列影響。draftsも含む。現在の11枝の候補は計2本だが、後から足した差分や短名の全束縛を検証済みという意味ではない。
 
 モジュール名と宣言のnamespaceは同じとは限らない。特にAnodyne二本は、一般のFrameHomからKerodonの3.1と4.6へ別々に置く。namespace名からimport元を推測せず、最終のnative所有元表を用いる。今回、同じ型の別名wrapperを削除する操作はない。
 
@@ -41,7 +41,7 @@ collectは元のソースがビルド済みの原環境で行う。昼は3〜5�
 
 今回の移送後もEInfinity監査は、元の3,887モジュールをmodule-mapで運んだ集合を保持する。一般部品357本がEInfinity接頭辞の外へ出ることを理由に公理監査の対象から落とさない。これらの最終結果と、基準側の層の未登録348本・既存違反86件を区別した照合はreport-organize-einfinity.mdへ記録する。
 
-`../preparation/compiler-child-parent-review.json`には、直接のソース宣言を持たない179件の生成された等式・合同補題を記録した。ファイルのnamespaceとは別に改名される親へ追従するものが2件ある。これらの実providerを移送後のnativeで確認するまでは、source-owned API用のimport所有元として自動登録しない。
+`../preparation/compiler-child-parent-review.json`には、直接のソース宣言を持たない179件の生成された等式・合同補題を記録した。ファイルのnamespaceとは別に改名される親へ追従するものが2件ある。移送後の実providerと分割読取りの文脈差は `native-provider-context-review.json` と全captureで照合した。ソースを持たない補題をsource-owned APIのimport登録へ自動転用しない。
 
 ## Mathlib の HomotopicalAlgebra の open（11-17 追記、検証中）
 
@@ -51,6 +51,6 @@ plain な共有書換器は、宣言のnamespaceを変えない呼び出し側�
 
 ## 移送後の実所有元による照合（11-17）
 
-`public-owner-map.csv` は比較範囲1,071モジュールの公開10,244宣言について、前後で実際に観測した完全名とimport所有元を対応させたもの。生成補題も実providerのまま載せる。ソース宣言だけの候補表やファイルのnamespaceから所有元を推測した表ではない。private 232件を含む全10,476件の対応は `../preparation/actual-owner-pairs.json.gz`、前後の実データは `native-owners-before-augmented.json.gz` と `native-owners-after.json.gz` にある。欠落0・余分0であるが、型・証明項の保存結果は別のv3bで判定する。
+`public-owner-map.csv` は比較範囲1,071モジュールの公開10,244宣言について、前後で実際に観測した完全名とimport所有元を対応させたもの。生成補題も、この1,071本を同時に読んだ環境での実providerのまま載せる。ソースを持たない生成補題のproviderはimportの組合せで変わることがあるため、その行を新しいソースAPIのimport登録の根拠にはせず、親宣言の定義元も確認する。ソース宣言だけの候補表やファイルのnamespaceから所有元を推測した表ではない。private 232件を含む全10,476件の対応は `../preparation/actual-owner-pairs.json.gz`、前後の実データは `native-owners-before-augmented.json.gz` と `native-owners-after.json.gz` にある。欠落0・余分0であるが、型・証明項の保存結果は別のv3bで判定する。
 
-引用metadataの七欄と重複度は、元61件＋計画したpartial二件＝63件に完全一致。結果は `../preparation/citation-comparison.json`。現時点でroot・正式全監査・verifyは未検収なので、この資料の完成・取り込みの宣言はまだ行わない。
+引用metadataの七欄と重複度は、元61件＋計画したpartial二件＝63件に完全一致。結果は `../preparation/citation-comparison.json`。現時点で正式全監査・verifyは未検収なので、この資料の完成・取り込みの宣言はまだ行わない。
