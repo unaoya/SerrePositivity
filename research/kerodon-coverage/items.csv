@@ -3552,3 +3552,534 @@ number,kind,status,declarations,note,confidence,lean_citations,subsection_tag
 10.2.5.19,Corollary,none,,正則 ∞ 圏の宣言なし。Mathlib は 1 圏の Regular のみ,high,0,04YE
 10.2.5.20,Proposition,none,,再確認済み（SerrePositivity 全体（Archive・KST・HomotopicalAlgebra・EInfinity・CategoryTheory を含む）と Mathlib を sieve/Sieve・right covering・Čech/cechNerve・effective epi・quotient/Quotient・mono（∞ 版）・image/HasImages・Regular・left orthogonal・geometric realization で検索。SerrePositivity の sieve は F2/Tensor の 1 圏の Sieve の評価のみ、Mathlib は 1 圏の Sieve・Arrow.cechNerve・EffectiveEpi・Regular のみ）。正則 ∞ 圏の宣言なし。Mathlib は 1 圏の Regular のみ,high,0,04YE
 10.2.5.21,Corollary,none,,正則 ∞ 圏の宣言なし。Mathlib は 1 圏の Regular のみ,high,0,04YE
+1.1.0.8,Remark,,,Remark 1.1.0.8,,,
+1.1.0.9,Example,,,Example 1.1.0.9 (The Standard Simplex),,,
+1.1.0.14,Remark,,,Remark 1.1.0.14 (Simplicial Subsets),,,
+1.1.1.7,Remark,,,Remark 1.1.1.7 (Relations Among Face Operators),,,04ZB
+1.1.2.6,Remark,,,Remark 1.1.2.6,,,04ZJ
+1.1.2.8,Example,,,Example 1.1.2.8 (Degenerate $2$-Simplices),,,04ZJ
+1.1.3.2,Example,,,Example 1.1.3.2,,,04ZS
+1.1.3.3,Remark,,,Remark 1.1.3.3,,,04ZS
+1.1.3.4,Remark,,,Remark 1.1.3.4,,,04ZS
+1.1.3.13,Remark,,,Remark 1.1.3.13,,,04ZS
+1.1.4.4,Remark,,,Remark 1.1.4.4,,,0010
+1.1.4.5,Remark,,,Remark 1.1.4.5,,,0010
+1.1.6.10,Remark,,,Remark 1.1.6.10,,,001D
+1.2.1.28,Warning,,,Warning 1.2.1.28,,,00G5
+1.3.1.3,Remark,,,Remark 1.3.1.3,,,002M
+1.3.7.2,Example,,,Example 1.3.7.2,,,00HJ
+1.3.7.9,Example,,,Example 1.3.7.9,,,00HJ
+1.4.0.9,Remark,,,Remark 1.4.0.9,,,
+1.4.2.5,Example,,,Example 1.4.2.5,,,003L
+1.4.6.3,Remark,,,Remark 1.4.6.3 (Two-out-of-three),,,004Q
+1.4.6.7,Remark,,,Remark 1.4.6.7,,,004Q
+1.5.1.6,Remark,,,Remark 1.5.1.6,,,0057
+1.5.2.4,Example,,,Example 1.5.2.4 (Non-Commuting Squares),,,005H
+1.5.2.8,Example,,,Example 1.5.2.8 (Commutative Squares in a Category),,,005H
+1.5.2.9,Example,,,Example 1.5.2.9 (Square Diagrams in an $\infty $-Category),,,005H
+1.5.2.10,Exercise,,,Exercise 1.5.2.10,,,005H
+1.5.5.2,Remark,,,Remark 1.5.5.2,,,006V
+1.5.5.3,Remark,,,Remark 1.5.5.3,,,006V
+1.5.6.6,Exercise,,,Exercise 1.5.6.6,,,0078
+1.5.7.4,Remark,,,Remark 1.5.7.4,,,00J3
+1.5.7.7,Example,,,Example 1.5.7.7 (The Spine of a Simplex),,,00J3
+1.5.7.8,Remark,,,Remark 1.5.7.8 (The Generalized Associative Law),,,00J3
+1.5.7.10,Remark,,,Remark 1.5.7.10,,,00J3
+2.1.3.2,Example,,,Example 2.1.3.2 (Cartesian Products),,,00CP
+2.1.5.16,Example,,,Example 2.1.5.16,,,00DD
+2.1.7.2,Example,,,Example 2.1.7.2 (Categories Enriched Over Sets),,,00ED
+2.1.7.4,Remark,,,Remark 2.1.7.4 (Functoriality),,,00ED
+2.1.7.5,Example,,,Example 2.1.7.5 (The Underlying Category of an Enriched Category),,,00ED
+2.2.0.3,Remark,,,Remark 2.2.0.3,,,
+2.2.0.6,Example,,,Example 2.2.0.6 (Ordinary Categories),,,
+2.2.4.14,Example,,,Example 2.2.4.14,,,008G
+2.2.5.4,Example,,,Example 2.2.5.4,,,008V
+2.2.5.7,Example,,,Example 2.2.5.7,,,008V
+2.3.1.8,Remark,,,Remark 2.3.1.8,,,009T
+2.3.1.15,Example,,,Example 2.3.1.15 ($2$-Simplices of the Duskin Nerve),,,009T
+2.3.2.4,Example,,,Example 2.3.2.4,,,00AB
+2.4.1.4,Example,,,Example 2.4.1.4 (The Underlying Category of a Simplicial Category),,,00JQ
+2.4.1.12,Remark,,,Remark 2.4.1.12,,,00JQ
+2.4.2.2,Example,,,Example 2.4.2.2 (Functor Categories),,,00K4
+2.4.2.4,Example,,,Example 2.4.2.4 (Ordinary Categories as Simplicial Categories),,,00K4
+2.4.2.8,Example,,,Example 2.4.2.8 (Strict Bicategories as Simplicial Categories),,,00K4
+2.4.2.9,Remark,,,Remark 2.4.2.9,,,00K4
+2.4.3.2,Remark,,,Remark 2.4.3.2,,,00KM
+2.4.3.8,Remark,,,Remark 2.4.3.8 (Comparison with the Nerve),,,00KM
+2.4.3.9,Example,,,Example 2.4.3.9 (Vertices and Edges of the Homotopy Coherent Nerve),,,00KM
+2.4.3.10,Example,,,Example 2.4.3.10 ($2$-Simplices of the Homotopy Coherent Nerve),,,00KM
+2.4.3.11,Example,,,Example 2.4.3.11 (Comparison with the Duskin Nerve),,,00KM
+2.4.4.6,Example,,,Example 2.4.4.6 (The Path Category of a Simplex),,,00L0
+2.4.4.11,Remark,,,Remark 2.4.4.11,,,00L0
+2.4.4.17,Remark,,,Remark 2.4.4.17,,,00L0
+2.4.6.11,Example,,,Example 2.4.6.11,,,00LW
+3.1.1.2,Example,,,Example 3.1.1.2,,,00T0
+3.1.1.4,Example,,,Example 3.1.1.4,,,00T0
+3.1.1.6,Remark,,,Remark 3.1.1.6,,,00T0
+3.1.1.10,Remark,,,Remark 3.1.1.10,,,00T0
+3.1.1.11,Remark,,,Remark 3.1.1.11,,,00T0
+3.1.2.3,Remark,,,Remark 3.1.2.3,,,00UG
+3.1.2.7,Remark,,,Remark 3.1.2.7,,,00UG
+3.1.3.11,Remark,,,Remark 3.1.3.11,,,00TJ
+3.1.5.3,Remark,,,Remark 3.1.5.3 (Homotopy Extension Lifting Property),,,00TR
+3.1.5.5,Example,,,Example 3.1.5.5,,,00TR
+3.1.5.6,Example,,,Example 3.1.5.6,,,00TR
+3.1.5.7,Example,,,Example 3.1.5.7,,,00TR
+3.1.5.12,Remark,,,Remark 3.1.5.12,,,00TR
+3.1.7.3,Example,,,Example 3.1.7.3,,,00U1
+3.1.7.5,Remark,,,Remark 3.1.7.5,,,00U1
+3.1.7.7,Remark,,,Remark 3.1.7.7 (Two-out-of-Three),,,00U1
+3.1.7.16,Remark,,,Remark 3.1.7.16 (Two-out-of-Three),,,00U1
+3.1.7.21,Exercise,,,Exercise 3.1.7.21,,,00U1
+3.1.8.10,Example,,,Example 3.1.8.10 (Path Fibrations),,,00UU
+3.1.8.11,Exercise,,,Exercise 3.1.8.11,,,00UU
+3.2.2.16,Remark,,,Remark 3.2.2.16 (Functoriality),,,00VJ
+3.2.2.17,Remark,,,Remark 3.2.2.17 (Homotopy Invariance),,,00VJ
+3.2.4.2,Example,,,Example 3.2.4.2,,,02L4
+3.2.4.8,Exercise,,,Exercise 3.2.4.8,,,02L4
+3.2.4.10,Remark,,,Remark 3.2.4.10,,,02L4
+3.2.4.17,Remark,,,Remark 3.2.4.17,,,02L4
+3.3.1.2,Exercise,,,Exercise 3.3.1.2,,,00XT
+3.3.2.2,Remark,,,Remark 3.3.2.2 (Functoriality),,,00XH
+3.3.2.4,Remark,,,Remark 3.3.2.4 (Functoriality),,,00XH
+3.3.2.7,Remark,,,Remark 3.3.2.7,,,00XH
+3.3.2.9,Example,,,Example 3.3.2.9,,,00XH
+3.3.3.5,Example,,,Example 3.3.3.5,,,00Y5
+3.3.3.6,Remark,,,Remark 3.3.3.6,,,00Y5
+3.3.4.6,Example,,,Example 3.3.4.6,,,00YR
+3.3.6.3,Example,,,Example 3.3.6.3,,,00ZA
+3.3.7.2,Example,,,Example 3.3.7.2,,,00ZM
+3.3.7.3,Remark,,,Remark 3.3.7.3,,,00ZM
+3.4.0.6,Remark,,,Remark 3.4.0.6 (Homotopy Fibers),,,
+3.4.1.3,Example,,,Example 3.4.1.3,,,010K
+3.4.1.4,Example,,,Example 3.4.1.4,,,010K
+3.4.1.10,Remark,,,Remark 3.4.1.10,,,010K
+3.4.2.12,Example,,,Example 3.4.2.12,,,0112
+3.4.5.2,Remark,,,Remark 3.4.5.2,,,0120
+3.4.5.3,Remark,,,Remark 3.4.5.3,,,0120
+3.4.6.2,Remark,,,Remark 3.4.6.2,,,012B
+3.5.1.5,Remark,,,Remark 3.5.1.5 (Homotopy Invariance),,,0517
+3.5.1.10,Example,,,Example 3.5.1.10,,,0517
+3.5.1.14,Remark,,,Remark 3.5.1.14,,,0517
+3.5.1.17,Example,,,Example 3.5.1.17,,,0517
+3.5.1.19,Remark,,,Remark 3.5.1.19,,,0517
+3.5.3.21,Remark,,,Remark 3.5.3.21,,,051Z
+3.5.7.6,Remark,,,Remark 3.5.7.6,,,054N
+3.5.9.2,Example,,,Example 3.5.9.2,,,055Y
+3.5.9.9,Remark,,,Remark 3.5.9.9,,,055Y
+3.6.1.2,Example,,,Example 3.6.1.2,,,0130
+3.6.1.3,Remark,,,Remark 3.6.1.3,,,0130
+3.6.1.4,Remark,,,Remark 3.6.1.4,,,0130
+3.6.1.6,Remark,,,Remark 3.6.1.6,,,0130
+3.6.1.8,Remark,,,Remark 3.6.1.8,,,0130
+3.6.2.7,Remark,,,Remark 3.6.2.7,,,013C
+3.6.3.3,Example,,,Example 3.6.3.3,,,013P
+4.1.1.2,Example,,,Example 4.1.1.2,,,01B9
+4.1.1.5,Remark,,,Remark 4.1.1.5,,,01B9
+4.1.1.6,Remark,,,Remark 4.1.1.6,,,01B9
+4.1.1.8,Remark,,,Remark 4.1.1.8,,,01B9
+4.1.1.9,Remark,,,Remark 4.1.1.9,,,01B9
+4.1.1.13,Remark,,,Remark 4.1.1.13,,,01B9
+4.1.2.4,Example,,,Example 4.1.2.4,,,01CD
+4.1.2.6,Remark,,,Remark 4.1.2.6 (Pullbacks of Subcategories),,,01CD
+4.1.2.7,Remark,,,Remark 4.1.2.7,,,01CD
+4.1.2.8,Remark,,,Remark 4.1.2.8,,,01CD
+4.1.2.9,Remark,,,Remark 4.1.2.9,,,01CD
+4.2.1.4,Remark,,,Remark 4.2.1.4,,,01GT
+4.2.1.5,Example,,,Example 4.2.1.5,,,01GT
+4.2.1.8,Remark,,,Remark 4.2.1.8,,,01GT
+4.2.6.3,Remark,,,Remark 4.2.6.3 (The Homotopy Extension Lifting Property),,,00T8
+4.3.2.5,Example,,,Example 4.3.2.5 (Cones),,,0160
+4.3.3.16,Remark,,,Remark 4.3.3.16,,,016K
+4.3.3.17,Remark,,,Remark 4.3.3.17,,,016K
+4.3.3.21,Remark,,,Remark 4.3.3.21,,,016K
+4.3.5.2,Remark,,,Remark 4.3.5.2,,,017V
+4.3.6.7,Example,,,Example 4.3.6.7,,,018E
+4.3.7.10,Example,,,Example 4.3.7.10,,,018P
+4.3.7.11,Example,,,Example 4.3.7.11,,,018P
+4.4.1.6,Example,,,Example 4.4.1.6,,,01ER
+4.4.1.12,Example,,,Example 4.4.1.12 (Replete Subcategories),,,01ER
+4.4.1.14,Example,,,Example 4.4.1.14,,,01ER
+4.4.2.9,Example,,,Example 4.4.2.9,,,019C
+4.4.2.10,Remark,,,Remark 4.4.2.10,,,019C
+4.4.3.2,Remark,,,Remark 4.4.3.2,,,01CZ
+4.4.3.5,Remark,,,Remark 4.4.3.5 (Functoriality),,,01CZ
+4.4.4.5,Remark,,,Remark 4.4.4.5,,,01DF
+4.5.1.4,Remark,,,Remark 4.5.1.4,,,01DQ
+4.5.1.7,Remark,,,Remark 4.5.1.7,,,01DQ
+4.5.1.13,Example,,,Example 4.5.1.13,,,01DQ
+4.5.1.17,Remark,,,Remark 4.5.1.17,,,01DQ
+4.5.1.18,Remark,,,Remark 4.5.1.18 (Two-out-of-Three),,,01DQ
+4.5.1.19,Remark,,,Remark 4.5.1.19,,,01DQ
+4.5.1.20,Remark,,,Remark 4.5.1.20,,,01DQ
+4.5.1.21,Remark,,,Remark 4.5.1.21,,,01DQ
+4.5.2.9,Remark,,,Remark 4.5.2.9,,,03T1
+4.5.2.10,Remark,,,Remark 4.5.2.10,,,03T1
+4.5.3.2,Remark,,,Remark 4.5.3.2,,,032Y
+4.5.3.6,Remark,,,Remark 4.5.3.6,,,032Y
+4.5.3.7,Remark,,,Remark 4.5.3.7,,,032Y
+4.5.3.9,Remark,,,Remark 4.5.3.9,,,032Y
+4.5.3.10,Remark,,,Remark 4.5.3.10,,,032Y
+4.5.4.5,Remark,,,Remark 4.5.4.5 (Two-out-of-Three),,,01E7
+4.5.4.6,Remark,,,Remark 4.5.4.6,,,01E7
+4.5.4.7,Remark,,,Remark 4.5.4.7,,,01E7
+4.5.5.12,Example,,,Example 4.5.5.12,,,01F6
+4.5.5.13,Remark,,,Remark 4.5.5.13,,,01F6
+4.5.6.7,Remark,,,Remark 4.5.6.7,,,01FU
+4.5.6.8,Example,,,Example 4.5.6.8,,,01FU
+4.5.6.10,Remark,,,Remark 4.5.6.10,,,01FU
+4.5.6.11,Remark,,,Remark 4.5.6.11,,,01FU
+4.5.7.2,Remark,,,Remark 4.5.7.2,,,0346
+4.5.7.8,Example,,,Example 4.5.7.8 (Isofibrant Towers),,,0346
+4.5.7.18,Example,,,Example 4.5.7.18,,,0346
+4.5.8.4,Example,,,Example 4.5.8.4,,,02TM
+4.5.8.14,Remark,,,Remark 4.5.8.14,,,02TM
+4.6.1.6,Example,,,Example 4.6.1.6,,,01J4
+4.6.1.13,Example,,,Example 4.6.1.13 (Loop Spaces),,,01J4
+4.6.1.15,Remark,,,Remark 4.6.1.15 (Morphism Spaces in Homotopy Fiber Products),,,01J4
+4.6.1.18,Example,,,Example 4.6.1.18,,,01J4
+4.6.2.7,Remark,,,Remark 4.6.2.7,,,01HM
+4.6.3.6,Example,,,Example 4.6.3.6,,,01K2
+4.6.4.4,Remark,,,Remark 4.6.4.4 (Homotopy Invariance),,,01KE
+4.6.4.9,Example,,,Example 4.6.4.9,,,01KE
+4.6.5.2,Remark,,,Remark 4.6.5.2,,,01KW
+4.6.7.6,Remark,,,Remark 4.6.7.6,,,01LA
+4.6.7.7,Example,,,Example 4.6.7.7,,,01LA
+4.6.7.11,Example,,,Example 4.6.7.11,,,01LA
+4.6.7.13,Remark,,,Remark 4.6.7.13,,,01LA
+4.6.7.14,Remark,,,Remark 4.6.7.14,,,01LA
+4.6.8.10,Remark,,,Remark 4.6.8.10,,,01PF
+4.7.1.2,Remark,,,Remark 4.7.1.2,,,05EB
+4.7.1.12,Example,,,Example 4.7.1.12 (Truncated Objects of Products),,,05EB
+4.7.1.13,Remark,,,Remark 4.7.1.13 (Isomorphism Invariance),,,05EB
+4.7.2.5,Example,,,Example 4.7.2.5,,,05F8
+4.7.6.4,Remark,,,Remark 4.7.6.4,,,0583
+4.7.6.11,Remark,,,Remark 4.7.6.11,,,0583
+4.7.6.12,Remark,,,Remark 4.7.6.12,,,0583
+4.8.1.4,Example,,,Example 4.8.1.4,,,01JG
+4.8.1.6,Remark,,,Remark 4.8.1.6,,,01JG
+4.8.1.10,Remark,,,Remark 4.8.1.10,,,01JG
+4.8.2.4,Remark,,,Remark 4.8.2.4,,,059U
+4.8.2.5,Remark,,,Remark 4.8.2.5,,,059U
+4.8.2.6,Exercise,,,Exercise 4.8.2.6,,,059U
+4.8.2.11,Remark,,,Remark 4.8.2.11 (Coproducts),,,059U
+4.8.2.12,Remark,,,Remark 4.8.2.12,,,059U
+4.8.2.13,Example,,,Example 4.8.2.13,,,059U
+4.8.2.14,Remark,,,Remark 4.8.2.14 (Composition),,,059U
+4.8.2.15,Remark,,,Remark 4.8.2.15 (Change of Target),,,059U
+4.8.2.16,Example,,,Example 4.8.2.16,,,059U
+4.8.2.17,Remark,,,Remark 4.8.2.17 (Isomorphism Invariance),,,059U
+4.8.2.18,Remark,,,Remark 4.8.2.18 (Change of Source),,,059U
+4.8.2.19,Remark,,,Remark 4.8.2.19,,,059U
+4.8.2.21,Remark,,,Remark 4.8.2.21,,,059U
+4.8.2.29,Exercise,,,Exercise 4.8.2.29,,,059U
+4.8.2.31,Remark,,,Remark 4.8.2.31,,,059U
+4.8.3.6,Remark,,,Remark 4.8.3.6,,,05AW
+4.8.3.16,Remark,,,Remark 4.8.3.16,,,05AW
+4.8.3.19,Remark,,,Remark 4.8.3.19 (Monotonicity),,,05AW
+4.8.3.26,Remark,,,Remark 4.8.3.26 (Transitivity),,,05AW
+4.8.3.29,Remark,,,Remark 4.8.3.29,,,05AW
+4.8.5.8,Remark,,,Remark 4.8.5.8,,,05BY
+4.8.5.10,Remark,,,Remark 4.8.5.10 (Coproducts),,,05BY
+4.8.5.11,Remark,,,Remark 4.8.5.11,,,05BY
+4.8.8.7,Remark,,,Remark 4.8.8.7,,,05DG
+4.8.8.9,Remark,,,Remark 4.8.8.9 (Coproducts),,,05DG
+4.9.2.9,Remark,,,Remark 4.9.2.9,,,03QW
+4.9.3.4,Remark,,,Remark 4.9.3.4,,,03RB
+4.9.3.17,Remark,,,Remark 4.9.3.17,,,03RB
+4.9.3.19,Remark,,,Remark 4.9.3.19,,,03RB
+4.9.4.5,Remark,,,Remark 4.9.4.5 (Coproducts),,,03S1
+4.9.4.6,Remark,,,Remark 4.9.4.6 (Colimits),,,03S1
+4.9.4.7,Remark,,,Remark 4.9.4.7,,,03S1
+4.9.4.8,Remark,,,Remark 4.9.4.8,,,03S1
+4.9.4.9,Remark,,,Remark 4.9.4.9,,,03S1
+4.9.4.22,Remark,,,Remark 4.9.4.22,,,03S1
+4.9.5.2,Remark,,,Remark 4.9.5.2,,,03SH
+4.9.5.10,Remark,,,Remark 4.9.5.10 (Products),,,03SH
+4.9.5.13,Remark,,,Remark 4.9.5.13,,,03SH
+4.9.7.4,Example,,,Example 4.9.7.4,,,03TN
+4.9.8.5,Example,,,Example 4.9.8.5,,,047A
+4.9.8.6,Remark,,,Remark 4.9.8.6,,,047A
+5.1.1.5,Example,,,Example 5.1.1.5,,,01T4
+5.1.1.6,Remark,,,Remark 5.1.1.6,,,01T4
+5.1.1.7,Remark,,,Remark 5.1.1.7 (Products),,,01T4
+5.1.1.8,Remark,,,Remark 5.1.1.8,,,01T4
+5.1.1.12,Remark,,,Remark 5.1.1.12,,,01T4
+5.1.1.13,Remark,,,Remark 5.1.1.13,,,01T4
+5.1.3.3,Remark,,,Remark 5.1.3.3,,,01TW
+5.1.3.4,Remark,,,Remark 5.1.3.4,,,01TW
+5.1.3.5,Remark,,,Remark 5.1.3.5,,,01TW
+5.1.3.6,Example,,,Example 5.1.3.6,,,01TW
+5.1.3.8,Remark,,,Remark 5.1.3.8 (Uniqueness of Locally Cartesian Lifts),,,01TW
+5.1.4.5,Remark,,,Remark 5.1.4.5,,,01U9
+5.1.4.6,Remark,,,Remark 5.1.4.6,,,01U9
+5.1.4.7,Remark,,,Remark 5.1.4.7 (Products),,,01U9
+5.1.6.8,Remark,,,Remark 5.1.6.8,,,023L
+5.1.7.4,Remark,,,Remark 5.1.7.4 (Functoriality),,,0280
+5.1.7.7,Example,,,Example 5.1.7.7,,,0280
+5.2.2.11,Remark,,,Remark 5.2.2.11,,,019M
+5.2.2.12,Example,,,Example 5.2.2.12,,,019M
+5.2.3.14,Remark,,,Remark 5.2.3.14 (Morphism Spaces in the Relative Join),,,0241
+5.2.5.5,Remark,,,Remark 5.2.5.5,,,01VT
+5.2.6.5,Example,,,Example 5.2.6.5,,,01Q7
+5.2.8.5,Remark,,,Remark 5.2.8.5 (Functoriality),,,02RL
+5.2.8.10,Remark,,,Remark 5.2.8.10 (Functoriality),,,02RL
+5.2.8.13,Example,,,Example 5.2.8.13,,,02RL
+5.3.1.3,Remark,,,Remark 5.3.1.3,,,035D
+5.3.1.12,Remark,,,Remark 5.3.1.12,,,035D
+5.3.1.14,Example,,,Example 5.3.1.14,,,035D
+5.3.1.15,Remark,,,Remark 5.3.1.15,,,035D
+5.3.1.17,Remark,,,Remark 5.3.1.17 (Functoriality),,,035D
+5.3.1.18,Remark,,,Remark 5.3.1.18,,,035D
+5.3.1.19,Remark,,,Remark 5.3.1.19,,,035D
+5.3.1.20,Remark,,,Remark 5.3.1.20,,,035D
+5.3.2.4,Example,,,Example 5.3.2.4 (Constant Diagrams),,,035U
+5.3.2.5,Example,,,Example 5.3.2.5 (Set-Valued Functors),,,035U
+5.3.2.6,Example,,,Example 5.3.2.6 (Corepresentable Functors),,,035U
+5.3.2.7,Remark,,,Remark 5.3.2.7,,,035U
+5.3.2.8,Remark,,,Remark 5.3.2.8 (Functoriality),,,035U
+5.3.2.9,Remark,,,Remark 5.3.2.9 (Comparison with the Colimit),,,035U
+5.3.3.2,Example,,,Example 5.3.3.2,,,025W
+5.3.3.3,Remark,,,Remark 5.3.3.3 (Vertices of the Weighted Nerve),,,025W
+5.3.3.4,Remark,,,Remark 5.3.3.4 (Edges of the Weighted Nerve),,,025W
+5.3.3.5,Remark,,,Remark 5.3.3.5,,,025W
+5.3.3.7,Remark,,,Remark 5.3.3.7 (Functoriality in $\operatorname{\mathcal{C}}$),,,025W
+5.3.3.8,Example,,,Example 5.3.3.8 (Fibers of the Weighted Nerve),,,025W
+5.3.3.9,Example,,,Example 5.3.3.9 (The Weighted Nerve of a Constant Diagram),,,025W
+5.3.3.10,Remark,,,Remark 5.3.3.10 (Functoriality in $\mathscr {F}$),,,025W
+5.3.3.12,Example,,,Example 5.3.3.12 (The Weighted Nerve of a Cone),,,025W
+5.3.3.21,Example,,,Example 5.3.3.21,,,025W
+5.3.4.6,Remark,,,Remark 5.3.4.6 (Change of $\operatorname{\mathcal{E}}$),,,036V
+5.3.4.10,Remark,,,Remark 5.3.4.10 (Universality),,,036V
+5.3.8.2,Example,,,Example 5.3.8.2,,,05PM
+5.3.8.6,Remark,,,Remark 5.3.8.6,,,05PM
+5.3.8.12,Remark,,,Remark 5.3.8.12 (Uniqueness of Minimal Models),,,05PM
+5.4.2.2,Example,,,Example 5.4.2.2,,,01WF
+5.4.2.4,Remark,,,Remark 5.4.2.4,,,01WF
+5.4.5.2,Remark,,,Remark 5.4.5.2,,,01XA
+5.4.5.9,Remark,,,Remark 5.4.5.9,,,01XA
+5.4.6.4,Remark,,,Remark 5.4.6.4,,,01XQ
+5.4.6.10,Remark,,,Remark 5.4.6.10,,,01XQ
+5.4.7.4,Remark,,,Remark 5.4.7.4 (Functoriality),,,01Y4
+5.4.7.5,Remark,,,Remark 5.4.7.5,,,01Y4
+5.4.8.3,Example,,,Example 5.4.8.3,,,01YK
+5.5.3.5,Remark,,,Remark 5.5.3.5,,,0208
+5.5.3.6,Remark,,,Remark 5.5.3.6,,,0208
+5.5.3.7,Remark,,,Remark 5.5.3.7,,,0208
+5.5.3.14,Remark,,,Remark 5.5.3.14,,,0208
+5.5.5.12,Example,,,Example 5.5.5.12 (Objects and Morphisms of $\operatorname{\mathcal{QC}}_{\operatorname{Obj}}$),,,020S
+5.5.5.16,Remark,,,Remark 5.5.5.16,,,020S
+5.5.5.17,Example,,,Example 5.5.5.17 ($2$-Simplices of $\operatorname{ \pmb {\mathcal{QC}} }_{\operatorname{Obj}}$),,,020S
+5.6.2.13,Example,,,Example 5.6.2.13 (Morphisms of the $\infty $-Category of Elements),,,026H
+5.6.2.14,Remark,,,Remark 5.6.2.14 (Cocartesian Morphisms of the $\infty $-Category of Elements),,,026H
+5.6.2.15,Remark,,,Remark 5.6.2.15,,,026H
+5.6.2.16,Example,,,Example 5.6.2.16 ($2$-Simplices of the $\infty $-Category of Elements),,,026H
+5.6.2.17,Example,,,Example 5.6.2.17,,,026H
+5.6.2.18,Remark,,,Remark 5.6.2.18,,,026H
+5.6.2.19,Example,,,Example 5.6.2.19 (Fibers of the $\infty $-Category of Elements),,,026H
+5.6.2.20,Example,,,Example 5.6.2.20 (Elements of Diagram $\infty $-Categories),,,026H
+5.6.4.3,Example,,,Example 5.6.4.3 (The Comparison Map on Edges),,,0279
+5.6.4.6,Remark,,,Remark 5.6.4.6,,,0279
+5.6.4.7,Example,,,Example 5.6.4.7,,,0279
+5.6.5.3,Remark,,,Remark 5.6.5.3,,,028U
+5.6.5.5,Example,,,Example 5.6.5.5 (Fibrations over a Point),,,028U
+5.6.5.6,Example,,,Example 5.6.5.6 (Weighted Nerves),,,028U
+5.6.5.7,Example,,,Example 5.6.5.7 (Strict Transport),,,028U
+5.6.5.8,Example,,,Example 5.6.5.8,,,028U
+5.6.5.9,Example,,,Example 5.6.5.9,,,028U
+5.6.5.10,Remark,,,Remark 5.6.5.10,,,028U
+5.6.5.11,Remark,,,Remark 5.6.5.11,,,028U
+5.6.6.3,Remark,,,Remark 5.6.6.3,,,02HU
+5.6.6.4,Remark,,,Remark 5.6.6.4,,,02HU
+5.6.6.6,Remark,,,Remark 5.6.6.6,,,02HU
+5.6.6.11,Remark,,,Remark 5.6.6.11,,,02HU
+5.6.6.12,Remark,,,Remark 5.6.6.12,,,02HU
+5.6.7.4,Remark,,,Remark 5.6.7.4,,,029B
+5.6.8.2,Example,,,Example 5.6.8.2,,,02S9
+6.1.1.5,Remark,,,Remark 6.1.1.5 (Isomorphism Invariance),,,02CF
+6.2.2.9,Example,,,Example 6.2.2.9,,,02F5
+6.2.2.10,Example,,,Example 6.2.2.10,,,02F5
+6.2.5.3,Remark,,,Remark 6.2.5.3,,,02FJ
+6.3.1.4,Example,,,Example 6.3.1.4,,,01ME
+6.3.1.7,Remark,,,Remark 6.3.1.7,,,01ME
+6.3.1.8,Remark,,,Remark 6.3.1.8,,,01ME
+6.3.1.11,Exercise,,,Exercise 6.3.1.11,,,01ME
+6.3.1.12,Example,,,Example 6.3.1.12,,,01ME
+6.3.1.14,Example,,,Example 6.3.1.14,,,01ME
+6.3.1.15,Remark,,,Remark 6.3.1.15 (Coproducts),,,01ME
+6.3.1.16,Remark,,,Remark 6.3.1.16,,,01ME
+6.3.1.17,Remark,,,Remark 6.3.1.17,,,01ME
+6.3.1.20,Remark,,,Remark 6.3.1.20,,,01ME
+6.3.2.10,Remark,,,Remark 6.3.2.10 (Sizes of Localization),,,01MZ
+6.3.5.2,Example,,,Example 6.3.5.2,,,02LZ
+7.1.1.6,Example,,,Example 7.1.1.6,,,02VY
+7.1.1.8,Remark,,,Remark 7.1.1.8,,,02VY
+7.1.1.9,Remark,,,Remark 7.1.1.9,,,02VY
+7.1.1.10,Remark,,,Remark 7.1.1.10,,,02VY
+7.1.1.11,Remark,,,Remark 7.1.1.11,,,02VY
+7.1.1.17,Remark,,,Remark 7.1.1.17,,,02VY
+7.1.2.3,Remark,,,Remark 7.1.2.3,,,03EX
+7.1.2.6,Remark,,,Remark 7.1.2.6 (Powers as Limits),,,03EX
+7.1.2.9,Example,,,Example 7.1.2.9,,,03EX
+7.1.2.10,Example,,,Example 7.1.2.10,,,03EX
+7.1.2.12,Exercise,,,Exercise 7.1.2.12,,,03EX
+7.1.3.6,Remark,,,Remark 7.1.3.6,,,02JA
+7.1.3.11,Example,,,Example 7.1.3.11,,,02JA
+7.1.4.20,Remark,,,Remark 7.1.4.20,,,02JV
+7.1.4.24,Remark,,,Remark 7.1.4.24,,,02JV
+7.1.5.2,Example,,,Example 7.1.5.2,,,02WE
+7.1.5.4,Example,,,Example 7.1.5.4,,,02WE
+7.1.5.6,Remark,,,Remark 7.1.5.6 (Transitivity),,,02WE
+7.1.5.9,Remark,,,Remark 7.1.5.9,,,02WE
+7.1.6.3,Example,,,Example 7.1.6.3,,,02KF
+7.1.6.4,Example,,,Example 7.1.6.4,,,02KF
+7.1.6.6,Remark,,,Remark 7.1.6.6,,,02KF
+7.1.6.8,Remark,,,Remark 7.1.6.8,,,02KF
+7.1.6.18,Remark,,,Remark 7.1.6.18 (Limit Functors),,,02KF
+7.1.7.2,Example,,,Example 7.1.7.2,,,069P
+7.1.7.3,Example,,,Example 7.1.7.3,,,069P
+7.1.8.12,Example,,,Example 7.1.8.12,,,02X8
+7.1.9.6,Remark,,,Remark 7.1.9.6,,,06A8
+7.2.3.2,Remark,,,Remark 7.2.3.2,,,02NX
+7.3.1.7,Example,,,Example 7.3.1.7,,,02Y7
+7.3.1.9,Example,,,Example 7.3.1.9 (Cofinality and Kan Extensions),,,02Y7
+7.3.1.11,Remark,,,Remark 7.3.1.11,,,02Y7
+7.3.1.12,Remark,,,Remark 7.3.1.12,,,02Y7
+7.3.1.13,Remark,,,Remark 7.3.1.13 (Change of Target),,,02Y7
+7.3.2.3,Exercise,,,Exercise 7.3.2.3,,,02YP
+7.3.2.12,Warning,,,Warning 7.3.2.12,,,02YP
+7.3.3.6,Example,,,Example 7.3.3.6,,,02Z2
+7.3.3.17,Remark,,,Remark 7.3.3.17,,,02Z2
+7.3.5.6,Example,,,Example 7.3.5.6,,,02ZZ
+7.3.6.6,Remark,,,Remark 7.3.6.6,,,0308
+7.3.6.8,Remark,,,Remark 7.3.6.8,,,0308
+7.3.7.12,Remark,,,Remark 7.3.7.12,,,047V
+7.4.3.7,Example,,,Example 7.4.3.7 (Colimits of Corepresentable Functors),,,05RN
+7.4.4.11,Remark,,,Remark 7.4.4.11,,,02T0
+7.4.4.13,Remark,,,Remark 7.4.4.13,,,02T0
+7.4.5.11,Example,,,Example 7.4.5.11,,,02UN
+7.4.5.12,Remark,,,Remark 7.4.5.12,,,02UN
+7.4.5.16,Exercise,,,Exercise 7.4.5.16,,,02UN
+7.4.5.19,Remark,,,Remark 7.4.5.19,,,02UN
+7.5.1.3,Remark,,,Remark 7.5.1.3 (Homotopy Invariance),,,039Z
+7.5.1.6,Remark,,,Remark 7.5.1.6,,,039Z
+7.5.1.7,Example,,,Example 7.5.1.7 (Duality with Homotopy Colimits),,,039Z
+7.5.2.3,Remark,,,Remark 7.5.2.3,,,03A7
+7.5.2.7,Remark,,,Remark 7.5.2.7 (Homotopy Invariance),,,03A7
+7.5.2.8,Example,,,Example 7.5.2.8 (Homotopy Limits of Cores),,,03A7
+7.5.2.9,Remark,,,Remark 7.5.2.9,,,03A7
+7.5.2.11,Example,,,Example 7.5.2.11 (Duality with Homotopy Colimits),,,03A7
+7.5.2.12,Remark,,,Remark 7.5.2.12 (Comparison with the Limit),,,03A7
+7.5.2.16,Example,,,Example 7.5.2.16,,,03A7
+7.5.2.17,Example,,,Example 7.5.2.17,,,03A7
+7.5.3.9,Remark,,,Remark 7.5.3.9,,,03AP
+7.5.3.11,Remark,,,Remark 7.5.3.11,,,03AP
+7.5.4.2,Example,,,Example 7.5.4.2 (Limits of Isofibrant Diagrams),,,03B5
+7.5.5.5,Remark,,,Remark 7.5.5.5,,,03BL
+7.5.5.6,Remark,,,Remark 7.5.5.6 (Homotopy Invariance),,,03BL
+7.5.6.6,Remark,,,Remark 7.5.6.6 (Relationship to Isofibrant Diagrams),,,03C3
+7.6.2.9,Remark,,,Remark 7.6.2.9,,,03FE
+7.6.3.4,Example,,,Example 7.6.3.4,,,03G3
+7.6.3.6,Remark,,,Remark 7.6.3.6 (Homotopy Coherent Squares),,,03G3
+7.6.3.7,Example,,,Example 7.6.3.7 (Square Diagrams in $\operatorname{\mathcal{QC}}$),,,03G3
+7.6.3.12,Example,,,Example 7.6.3.12,,,03G3
+7.6.6.11,Example,,,Example 7.6.6.11,,,03UC
+7.6.6.12,Example,,,Example 7.6.6.12,,,03UC
+7.6.6.14,Remark,,,Remark 7.6.6.14,,,03UC
+7.6.6.17,Exercise,,,Exercise 7.6.6.17,,,03UC
+7.6.6.21,Remark,,,Remark 7.6.6.21,,,03UC
+7.7.0.2,Remark,,,Remark 7.7.0.2 (Distributivity),,,
+8.1.0.2,Remark,,,Remark 8.1.0.2,,,
+8.1.0.5,Example,,,Example 8.1.0.5,,,
+8.1.2.14,Exercise,,,Exercise 8.1.2.14,,,03JV
+8.1.3.4,Remark,,,Remark 8.1.3.4 (Symmetry),,,00AY
+8.1.3.6,Example,,,Example 8.1.3.6 (Tautological Cospans),,,00AY
+8.1.3.9,Remark,,,Remark 8.1.3.9,,,00AY
+8.1.6.2,Remark,,,Remark 8.1.6.2 (Symmetry),,,048Z
+8.1.6.3,Remark,,,Remark 8.1.6.3,,,048Z
+8.1.6.4,Remark,,,Remark 8.1.6.4,,,048Z
+8.1.6.6,Example,,,Example 8.1.6.6,,,048Z
+8.1.7.11,Remark,,,Remark 8.1.7.11,,,049E
+8.1.9.8,Example,,,Example 8.1.9.8,,,049W
+8.1.9.11,Remark,,,Remark 8.1.9.11,,,049W
+8.1.10.8,Example,,,Example 8.1.10.8,,,04AB
+8.1.10.11,Remark,,,Remark 8.1.10.11,,,04AB
+8.2.0.2,Example,,,Example 8.2.0.2 (The Twisted Arrow Coupling),,,
+8.2.1.4,Remark,,,Remark 8.2.1.4 (Symmetry),,,043X
+8.2.1.5,Example,,,Example 8.2.1.5,,,043X
+8.2.1.9,Remark,,,Remark 8.2.1.9,,,043X
+8.2.2.3,Remark,,,Remark 8.2.2.3 (Functor Couplings),,,0448
+8.2.2.4,Remark,,,Remark 8.2.2.4,,,0448
+8.2.2.12,Example,,,Example 8.2.2.12,,,0448
+8.2.3.2,Remark,,,Remark 8.2.3.2,,,044Q
+8.2.4.8,Example,,,Example 8.2.4.8,,,0455
+8.2.6.2,Example,,,Example 8.2.6.2,,,045W
+8.3.2.3,Remark,,,Remark 8.3.2.3 (Symmetry),,,03MA
+8.3.2.4,Example,,,Example 8.3.2.4 (From Profunctors to Couplings),,,03MA
+8.3.2.5,Remark,,,Remark 8.3.2.5 (From Couplings to Profunctors),,,03MA
+8.3.2.8,Remark,,,Remark 8.3.2.8,,,03MA
+8.3.2.19,Remark,,,Remark 8.3.2.19,,,03MA
+8.3.3.3,Remark,,,Remark 8.3.3.3,,,03MR
+8.3.3.16,Remark,,,Remark 8.3.3.16,,,03MR
+8.3.4.6,Remark,,,Remark 8.3.4.6,,,03NQ
+8.3.4.13,Remark,,,Remark 8.3.4.13,,,03NQ
+8.3.5.2,Remark,,,Remark 8.3.5.2,,,046H
+8.3.5.3,Remark,,,Remark 8.3.5.3,,,046H
+8.3.5.4,Remark,,,Remark 8.3.5.4,,,046H
+8.3.7.2,Remark,,,Remark 8.3.7.2,,,06BY
+8.4.1.16,Example,,,Example 8.4.1.16,,,03V8
+8.4.1.18,Remark,,,Remark 8.4.1.18 (Change of Source),,,03V8
+8.4.1.19,Remark,,,Remark 8.4.1.19 (Change of Target),,,03V8
+8.4.1.20,Remark,,,Remark 8.4.1.20,,,03V8
+8.4.1.21,Remark,,,Remark 8.4.1.21,,,03V8
+8.4.6.5,Remark,,,Remark 8.4.6.5,,,04BH
+8.5.2.9,Exercise,,,Exercise 8.5.2.9,,,03ZE
+8.5.3.4,Remark,,,Remark 8.5.3.4,,,03ZS
+8.5.4.5,Example,,,Example 8.5.4.5,,,0405
+8.5.6.3,Remark,,,Remark 8.5.6.3,,,05M8
+8.5.6.19,Remark,,,Remark 8.5.6.19 (Cofinal Idempotents),,,05M8
+8.6.1.4,Remark,,,Remark 8.6.1.4 (Base Change),,,04C6
+8.6.3.4,Remark,,,Remark 8.6.3.4 (Base Change),,,04EC
+8.6.3.7,Remark,,,Remark 8.6.3.7,,,04EC
+8.6.3.10,Remark,,,Remark 8.6.3.10,,,04EC
+8.6.4.3,Remark,,,Remark 8.6.4.3 (Symmetry),,,04D0
+8.6.5.7,Remark,,,Remark 8.6.5.7,,,04DS
+8.6.5.10,Remark,,,Remark 8.6.5.10,,,04DS
+8.6.5.17,Example,,,Example 8.6.5.17,,,04DS
+8.6.6.10,Example,,,Example 8.6.6.10,,,04ET
+8.6.6.11,Remark,,,Remark 8.6.6.11,,,04ET
+8.6.6.13,Remark,,,Remark 8.6.6.13,,,04ET
+9.1.1.6,Example,,,Example 9.1.1.6,,,02P8
+9.1.1.10,Example,,,Example 9.1.1.10,,,02P8
+9.1.1.11,Remark,,,Remark 9.1.1.11 (Monotonicity),,,02P8
+9.1.1.14,Remark,,,Remark 9.1.1.14,,,02P8
+9.1.3.7,Remark,,,Remark 9.1.3.7,,,02Q4
+9.1.3.13,Remark,,,Remark 9.1.3.13,,,02Q4
+9.1.4.2,Example,,,Example 9.1.4.2,,,06CJ
+9.1.4.6,Remark,,,Remark 9.1.4.6,,,06CJ
+9.1.6.9,Example,,,Example 9.1.6.9,,,03DD
+9.1.6.10,Example,,,Example 9.1.6.10,,,03DD
+9.1.6.11,Remark,,,Remark 9.1.6.11,,,03DD
+9.2.2.13,Remark,,,Remark 9.2.2.13 (Retracts),,,062B
+9.2.2.17,Remark,,,Remark 9.2.2.17,,,062B
+9.2.5.9,Example,,,Example 9.2.5.9,,,0649
+9.2.5.18,Remark,,,Remark 9.2.5.18 (Retracts),,,0649
+9.3.1.14,Remark,,,Remark 9.3.1.14 ($\operatorname{Ind}$-Extensions as Kan Extensions),,,063J
+9.3.4.11,Example,,,Example 9.3.4.11 (Corepresentable Functors),,,065H
+9.3.4.13,Remark,,,Remark 9.3.4.13,,,065H
+9.5.4.5,Remark,,,Remark 9.5.4.5,,,06P5
+11.5.0.111,Proposition,,,Proposition 11.5.0.111,,,
+11.9.6.1,Proposition,,,Proposition 11.9.6.1 (Functoriality of $\operatorname{Hom}$-Functors),,,03P9
+11.9.6.2,Proposition,,,Proposition 11.9.6.2,,,03P9
+11.9.6.3,Corollary,,,Corollary 11.9.6.3,,,03P9
+11.9.6.4,Remark,,,Remark 11.9.6.4,,,03P9
+11.9.6.5,Proposition,,,Proposition 11.9.6.5,,,03P9
+11.9.8.5,Proposition,,,Proposition 11.9.8.5,,,024T
+11.9.8.7,Corollary,,,Corollary 11.9.8.7,,,024T
+11.9.9.1,Remark,,,Remark 11.9.9.1 (Functoriality),,,029L
+11.9.9.2,Construction,,,Construction 11.9.9.2,,,029L
+11.9.9.3,Lemma,,,Lemma 11.9.9.3,,,029L
+11.9.9.4,Lemma,,,Lemma 11.9.9.4,,,029L
+11.9.9.6,Lemma,,,Lemma 11.9.9.6,,,029L
+11.9.9.7,Lemma,,,Lemma 11.9.9.7,,,029L
+11.9.9.8,Remark,,,Remark 11.9.9.8,,,029L
