@@ -3,7 +3,7 @@
   "complete": 3,
   "total": 6,
   "added": 0,
-  "verified_head": "this commit: base 63b16a5aa367a261a63f3002dcba2d9741ddbf83",
+  "verified_head": "this commit: base 27f110223bedc7750400c411b1c4200b1de7e058",
   "items": {
     "HT01": "complete",
     "HT02": "complete",
@@ -12,21 +12,21 @@
     "HT05": "not-started",
     "HT06": "not-started"
   },
-  "latest_complete_audit_checkpoint": "full-tensor-and-finite-unit-checkpoint.json",
-  "latest_complete_audit_declarations": 2172,
+  "latest_complete_audit_checkpoint": "completed-algebra-unit-homology-checkpoint.json",
+  "latest_complete_audit_declarations": 2174,
   "working_changes_unverified": [
-    "AffineEnvelopeTargetH0Unit",
-    "AffineFullCoverUnit",
-    "AffineResolvedRowSourceUnit",
-    "PrincipalCompletionCoefficientUnit",
-    "AffineReducedCoverExtension",
     "PairCompletedH0Unit",
+    "AffineEnvelopeTargetH0Unit",
     "AffineReducedCoverProjection",
-    "AffineFullCoverUnitMap",
     "AffineFullCoverExtension",
-    "AffineReducedCoverProjectionEpi"
+    "AffineFullCoverUnit",
+    "AffineReducedCoverExtension",
+    "AffineFullCoverUnitMap",
+    "AffineReducedCoverProjectionEpi",
+    "AffineResolvedRowPointLaw",
+    "AffineResolvedRowSourceUnit"
   ],
-  "pending_check": "bundle-252 terminal rc1; see audit module inventory; failed dependencies await next batch",
+  "pending_check": "bundle-253 terminal rc1; see audit module inventory; failed dependencies await next batch",
   "next_proof_route": "remaining-20000-plan.md",
   "initial_record": {
     "stage": "5inf3a",
@@ -400,7 +400,7 @@
       "lines": 74
     }
   ],
-  "working_written_lines": 21425,
+  "working_written_lines": 21584,
   "source_inventory_scope": "Only HT01\u2013HT06 source additions/changes against 336942ab0, plus untracked files; excludes pre-existing Comparison modules.",
   "static_check": "static-pending-check.json; not Lean validation",
   "build_wait_history": [
@@ -419,9 +419,9 @@
   ],
   "current_request_last_confirmed_live_utc": "2026-11-15 04:52:28 UTC",
   "HT02_remaining": "complete; see ht02-complete.json",
-  "prepared_source_lines": 21425,
-  "prepared_modules": 260,
-  "verified_source_lines": 20520,
+  "prepared_source_lines": 21584,
+  "prepared_modules": 262,
+  "verified_source_lines": 20617,
   "provisional_total_source_lines": [
     22223,
     25443
