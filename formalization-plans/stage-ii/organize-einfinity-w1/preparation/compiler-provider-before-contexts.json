@@ -1,0 +1,40 @@
+{
+  "changes": [
+    {
+      "name": "SerrePositivity.EInfinity.FrameHom.frameLeftRoofColimitMap.eq_1",
+      "kernel_name": "SerrePositivity.EInfinity.FrameHom.frameLeftRoofColimitMap.eq_1",
+      "initial_588_provider": "SerrePositivity.EInfinity.FrameHom.FrameFunctorImage",
+      "full_956_provider": "SerrePositivity.EInfinity.BarrattEccles.FreeProbeRelativeElementRoofImage",
+      "classification": "Source-free compiler equation/congruence; provider depends on imported context, not an authored API binding"
+    },
+    {
+      "name": "SerrePositivity.EInfinity.FrameHom.frameLeftRoofNerveMap.congr_simp",
+      "kernel_name": "SerrePositivity.EInfinity.FrameHom.frameLeftRoofNerveMap.congr_simp",
+      "initial_588_provider": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceFrameGraph",
+      "full_956_provider": "SerrePositivity.EInfinity.BarrattEccles.FreeProbeRelativeElementRoofImage",
+      "classification": "Source-free compiler equation/congruence; provider depends on imported context, not an authored API binding"
+    },
+    {
+      "name": "SerrePositivity.EInfinity.HomotopyWeight.pointwiseTensorAdjunction.eq_1",
+      "kernel_name": "SerrePositivity.EInfinity.HomotopyWeight.pointwiseTensorAdjunction.eq_1",
+      "initial_588_provider": "SerrePositivity.EInfinity.HomotopyWeight.PointwiseConePoints",
+      "full_956_provider": "SerrePositivity.EInfinity.HomotopyWeight.PointwiseTensorSource",
+      "classification": "Source-free compiler equation/congruence; provider depends on imported context, not an authored API binding"
+    },
+    {
+      "name": "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.coherentAugmentationIso.congr_simp",
+      "kernel_name": "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.coherentAugmentationIso.congr_simp",
+      "initial_588_provider": "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixColumnRoof",
+      "full_956_provider": "SerrePositivity.EInfinity.BarrattEccles.FreeProbeRelativeElementFamilyComparison",
+      "classification": "Source-free compiler equation/congruence; provider depends on imported context, not an authored API binding"
+    },
+    {
+      "name": "SerrePositivity.EInfinity.SimplicialLocalization.kanHammockHomPinchedMap.eq_1",
+      "kernel_name": "SerrePositivity.EInfinity.SimplicialLocalization.kanHammockHomPinchedMap.eq_1",
+      "initial_588_provider": "SerrePositivity.EInfinity.SimplicialLocalization.KanHammockArrowNormalization",
+      "full_956_provider": "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixFamilyTriangle",
+      "classification": "Source-free compiler equation/congruence; provider depends on imported context, not an authored API binding"
+    }
+  ],
+  "policy": "Both original environments recorded; do not infer source import owners from context-dependent compiler helpers"
+}

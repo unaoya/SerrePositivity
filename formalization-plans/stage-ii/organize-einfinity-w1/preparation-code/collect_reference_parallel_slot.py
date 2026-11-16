@@ -53,4 +53,7 @@ with concurrent.futures.ThreadPoolExecutor(max_workers=workers) as pool:
    elif rec:
     new.append(rec);print('Captured',path,round(rec['seconds'],2),flush=True)
    submit()
-completed=[f for f in required if valid(f)];(out/'completed-files.json').write_text(json.dumps(completed,indent=2)+'\n');summary=dict(signature=sig,base=base,completed_files=len(completed),total_files=len(required),unchanged_scope_files=len(stable),candidate_files=len(files),new_captures=new,failure=failure,workers=workers,available_memory_bytes=available,seconds=time.monotonic()-started,complete=len(completed)==len(required));(out/'progress.json').write_text(json.dumps(summary,indent=2)+'\n');print(json.dumps(summary));raise SystemExit(1 if failure else 0)
+completed=[f for f in required if valid(f)];(out/'completed-files.json').write_text(json.dumps(completed,indent=2)+'\n');summary=dict(signature=sig,base=base,completed_files=len(completed),total_files=len(required),unchanged_scope_files=len(stable),candidate_files=len(files),new_captures=new,failure=failure,workers=workers,available_memory_bytes=available,seconds=time.monotonic()-started,complete=len(completed)==len(required));(out/'progress.json').write_text(json.dumps(summary,indent=2)+'\n');print(json.dumps(summary))
+if not failure and (out/'pause-after-batch').exists() and not summary['complete']:
+ print('Requested orchestration pause after successful capture and lease release',flush=True);raise SystemExit(76)
+raise SystemExit(1 if failure else 0)

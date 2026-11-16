@@ -6,10 +6,14 @@ for slot in range(a.slots):
  progress=out/'progress.json'
  if progress.exists() and json.loads(progress.read_text()).get('complete'):print('Complete',flush=True);break
  stamp=str(time.time_ns());log=out/('batch-'+stamp+'.log')
- command=['zsh','scripts/refactor/with_build_lock.sh','--class','bulk','--wait','3600','--','gtimeout','--kill-after=5s','280s',sys.executable,str(code/'collect_reference_parallel_slot.py'),'--root','/private/tmp/oe-w1-before-30ae8948f','--tools',str(root/'scripts/refactor'),'--files','/private/tmp/oe-w1-reference-candidates/core-files.json','--stable-files','/private/tmp/oe-w1-reference-candidates/unchanged-scope-files.json','--output',str(out),'--budget','265']
+ command=['zsh','scripts/refactor/with_build_lock.sh','--class','bulk','--wait','3600','--',sys.executable,str(code/'reference_slot_guard.py'),'--root','/private/tmp/oe-w1-before-30ae8948f','--tools',str(root/'scripts/refactor'),'--files','/private/tmp/oe-w1-reference-candidates/core-files.json','--stable-files','/private/tmp/oe-w1-reference-candidates/unchanged-scope-files.json','--output',str(out)]
  print('Queueing batch',slot+1,log,flush=True)
  with log.open('w') as f:r=subprocess.run(command,cwd=root,stdout=f,stderr=subprocess.STDOUT)
  print('Released batch',slot+1,'returncode',r.returncode,flush=True)
+ if r.returncode==77:
+  print('Night boundary: waiting outside the lease for one minute',flush=True);time.sleep(60);continue
+ if r.returncode==76:
+  print('Requested pause; successful receipts retained, no next ticket issued',flush=True);raise SystemExit(76)
  if r.returncode==75:
   print('Ticket wait timed out; requeueing at the back, with no second ticket outstanding',flush=True);continue
  if r.returncode:
