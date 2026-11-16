@@ -1,0 +1,604 @@
+[
+  {
+    "kind": "reverse-section",
+    "path": [
+      "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.IntervalConstantFamily",
+      "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CompositionTriangleFaces"
+    ]
+  },
+  {
+    "kind": "reverse-section",
+    "path": [
+      "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.SpaceValueHomClass",
+      "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.IntervalFunctorHom"
+    ]
+  },
+  {
+    "kind": "reverse-section",
+    "path": [
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.FunctorIsoTransposeValue",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.JointComparisonPrecomposition"
+    ]
+  },
+  {
+    "kind": "reverse-section",
+    "path": [
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.PointCosliceIsoTransportComparison",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.LeftFibrationPrismTransport"
+    ]
+  },
+  {
+    "kind": "reverse-section",
+    "path": [
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.TransportSimplexFirstVertexZero",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftStraighteningRepresentation"
+    ]
+  },
+  {
+    "kind": "reverse-section",
+    "path": [
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftClassificationBaseChangeConjugation",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.JointRealizationComposition"
+    ]
+  },
+  {
+    "kind": "reverse-section",
+    "path": [
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftClassificationBaseChangeRestrictionValue",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.NormalizedFunctorIsoComponentRestriction"
+    ]
+  },
+  {
+    "kind": "reverse-section",
+    "path": [
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftClassificationPullbackSimplexIso",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.FunctorHomPrecompositionLaws"
+    ]
+  },
+  {
+    "kind": "reverse-section",
+    "path": [
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftClassificationSimplexRestriction",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.LeftClassificationBaseChangeHom"
+    ]
+  },
+  {
+    "kind": "reverse-section",
+    "path": [
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftClassificationSimplexRestrictionValue",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.NormalizedFunctorIsoComponentRestriction"
+    ]
+  },
+  {
+    "kind": "reverse-section",
+    "path": [
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftStraighteningBaseChangePasting",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.FunctorHomPrecompositionLaws"
+    ]
+  },
+  {
+    "kind": "reverse-section",
+    "path": [
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftStraighteningBaseChangeRestrictionNormalization",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.StraighteningBaseChangeRestriction"
+    ]
+  },
+  {
+    "kind": "reverse-section",
+    "path": [
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftStraighteningSimplexPastingInputs",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.HomClassificationIsoLaws"
+    ]
+  },
+  {
+    "kind": "reverse-section",
+    "path": [
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.RelativeFunctorOverUniverseNaturality",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.RelativeBaseChangeComposition"
+    ]
+  },
+  {
+    "kind": "reverse-section",
+    "path": [
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.RelativeSectionOrdinaryAction",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.RelativeBaseChangeComposition"
+    ]
+  },
+  {
+    "kind": "reverse-section",
+    "path": [
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SectionBaseChangeCompClassifiedHom",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SectionBaseChangeRealizationComposition"
+    ]
+  },
+  {
+    "kind": "reverse-section",
+    "path": [
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SectionBaseChangeCompValueHom",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SectionBaseChangeRealizationComposition"
+    ]
+  },
+  {
+    "kind": "reverse-section",
+    "path": [
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SectionDiagramBaseChangePasting",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SectionBaseChangeRealizationComposition"
+    ]
+  },
+  {
+    "kind": "reverse-section",
+    "path": [
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SimplexSectionBaseChangePasting",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.StraighteningBaseChangeRestriction"
+    ]
+  },
+  {
+    "kind": "reverse-section",
+    "path": [
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SimplexSectionCoefficientPasting",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.DiagramIsoNormalizationAlgebra"
+    ]
+  },
+  {
+    "kind": "reverse-section",
+    "path": [
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SimplexSectionCoefficientValues",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.DiagramIsoNormalizationAlgebra"
+    ]
+  },
+  {
+    "kind": "reverse-section",
+    "path": [
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.GrothendieckKanClassification",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.NativeNerveStraighteningComparison"
+    ]
+  },
+  {
+    "kind": "reverse-section",
+    "path": [
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.GrothendieckKanClassification",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.ClassificationTransport"
+    ]
+  },
+  {
+    "kind": "reverse-section",
+    "path": [
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.GrothendieckKanCoefficientComparison",
+      "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.LeftFibrationComparison"
+    ]
+  },
+  {
+    "kind": "reverse-section",
+    "path": [
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.GrothendieckKanCoefficientLift",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ContinuousLeftFibrationAnodyne"
+    ]
+  },
+  {
+    "kind": "reverse-section",
+    "path": [
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.GrothendieckKanComparisonCofinality",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ContinuousLeftFibrationAnodyne"
+    ]
+  },
+  {
+    "kind": "reverse-section",
+    "path": [
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.GrothendieckKanComparisonCofinality",
+      "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.CofinalComposition"
+    ]
+  },
+  {
+    "kind": "reverse-section",
+    "path": [
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.GrothendieckKanComparisonCofinality",
+      "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.PrecompositionCofinality"
+    ]
+  },
+  {
+    "kind": "reverse-section",
+    "path": [
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.GrothendieckWeightedNerveClassification",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.ClassificationTransport"
+    ]
+  },
+  {
+    "kind": "reverse-section",
+    "path": [
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.GrothendieckWeightedNerveOver",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ContinuousLeftFibrationFilling"
+    ]
+  },
+  {
+    "kind": "reverse-section",
+    "path": [
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.SimplicialElementsClassification",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ContinuousLeftFibrationEquivalenceMap"
+    ]
+  },
+  {
+    "kind": "reverse-section",
+    "path": [
+      "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinityUnitLeftAnodyne",
+      "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.AnodyneKanTarget"
+    ]
+  },
+  {
+    "kind": "reverse-section",
+    "path": [
+      "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanEnrichedComparisonEvaluation",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.SimplexSectionBaseChange"
+    ]
+  },
+  {
+    "kind": "reverse-section",
+    "path": [
+      "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanEnrichedComparisonEvaluation",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.KanDiagramOrdinaryEdgePrism"
+    ]
+  },
+  {
+    "kind": "reverse-section",
+    "path": [
+      "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanEnrichedDiagramOrdinaryAction",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.KanDiagramNaturalTransformation"
+    ]
+  },
+  {
+    "kind": "reverse-section",
+    "path": [
+      "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanEnrichedDiagramOrdinaryAction",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.JointComparisonPrecomposition"
+    ]
+  },
+  {
+    "kind": "reverse-section",
+    "path": [
+      "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.OppositeWeakHomotopyReflection",
+      "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PrecompositionTensor"
+    ]
+  },
+  {
+    "kind": "reverse-section",
+    "path": [
+      "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.LeftCofinalUniverseLift",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.CofinalUniverseLift"
+    ]
+  },
+  {
+    "kind": "reverse-section",
+    "path": [
+      "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.CartesianSectionsRestrictionEvaluation",
+      "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.ReflectedStrictConeEvaluation"
+    ]
+  },
+  {
+    "kind": "reverse-section",
+    "path": [
+      "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.PointedIntervalTransportVertexComparison",
+      "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.PointedIntervalTransport"
+    ]
+  },
+  {
+    "kind": "reverse-section",
+    "path": [
+      "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.RightFibrationMappingNormalizedOverMap",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.PointSlicePostcompIso"
+    ]
+  },
+  {
+    "kind": "reverse-section",
+    "path": [
+      "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.SmallSectionsComparisonEvaluation",
+      "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.RelativeConstFiberEvaluation"
+    ]
+  },
+  {
+    "kind": "reverse-section",
+    "path": [
+      "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.SmallUnstraighteningValueTransport",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.UnstraighteningValueTransport"
+    ]
+  },
+  {
+    "kind": "reverse-section",
+    "path": [
+      "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.TransposeFunctorIsoRestriction",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.TransposeFunctorIsoComposition"
+    ]
+  },
+  {
+    "kind": "reverse-section",
+    "path": [
+      "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.VertexFiberEdgeProjectedArrow",
+      "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.MappingSpacePiZero"
+    ]
+  },
+  {
+    "kind": "reverse-section",
+    "path": [
+      "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.AnodyneKanTarget",
+      "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.LeftFiberKan"
+    ]
+  },
+  {
+    "kind": "reverse-section",
+    "path": [
+      "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.AnodyneKanTarget",
+      "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.LeftKanFibration"
+    ]
+  },
+  {
+    "kind": "reverse-section",
+    "path": [
+      "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.ConeCylinderShapeRestriction",
+      "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.FatJoinComparisonNaturality"
+    ]
+  },
+  {
+    "kind": "reverse-section",
+    "path": [
+      "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.SourceConstantShapeRestriction",
+      "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.IntervalDiagramRestriction"
+    ]
+  },
+  {
+    "kind": "reverse-section",
+    "path": [
+      "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.SourceConstantShapeRestriction",
+      "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.IntervalMappingPostcompositionVertices"
+    ]
+  },
+  {
+    "kind": "reverse-section",
+    "path": [
+      "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.CosliceInvertibleLegInitial",
+      "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CoreCoconeLeg"
+    ]
+  },
+  {
+    "kind": "reverse-section",
+    "path": [
+      "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Cocompletion.FunctorPinchedEndMap",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.TwistedHomEndSection"
+    ]
+  },
+  {
+    "kind": "reverse-section",
+    "path": [
+      "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Cocompletion.HomWeightComparisonEvaluationFac",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.HomWeightYonedaLeftKan"
+    ]
+  },
+  {
+    "kind": "reverse-section",
+    "path": [
+      "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Cocompletion.HomWeightComparisonEvaluationFac",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.LeftKanHomMapPostcomposition"
+    ]
+  },
+  {
+    "kind": "reverse-section",
+    "path": [
+      "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Cocompletion.HomWeightComparisonEvaluationIso",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.HomWeightYonedaLeftKan"
+    ]
+  },
+  {
+    "kind": "reverse-section",
+    "path": [
+      "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Cocompletion.HomWeightEvaluatedKanUnit",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.HomWeightYonedaLeftKan"
+    ]
+  },
+  {
+    "kind": "reverse-section",
+    "path": [
+      "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Cocompletion.HomWeightLeftKanEvaluation",
+      "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.UniverseLeftKanShape"
+    ]
+  },
+  {
+    "kind": "reverse-section",
+    "path": [
+      "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Cocompletion.HomWeightYonedaSourcePullback",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CosliceTwistedArrowNaturality"
+    ]
+  },
+  {
+    "kind": "reverse-section",
+    "path": [
+      "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Cocompletion.HomWeightYonedaSourcePullback",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.EndSectionsRelativeHom"
+    ]
+  },
+  {
+    "kind": "reverse-section",
+    "path": [
+      "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Cocompletion.HomWeightYonedaSourcePullback",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.LeftClassificationBaseChangeHom"
+    ]
+  },
+  {
+    "kind": "reverse-section",
+    "path": [
+      "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Cocompletion.HomWeightYonedaUnitNormalizedEvaluation",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CurryHomPointEvaluation"
+    ]
+  },
+  {
+    "kind": "reverse-section",
+    "path": [
+      "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Cocompletion.LeftKanUnitPostcompositionHom",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.LeftKanHomMapPostcomposition"
+    ]
+  },
+  {
+    "kind": "reverse-section",
+    "path": [
+      "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.RepresentableUnstraighteningEvaluationPost",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.RelativeBaseChangeComposition"
+    ]
+  },
+  {
+    "kind": "tier-order",
+    "path": [
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.F2",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.GrothendieckFiberUnit"
+    ]
+  },
+  {
+    "kind": "tier-order",
+    "path": [
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.F2",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.GrothendieckKanBarLeftAnodyne"
+    ]
+  },
+  {
+    "kind": "tier-order",
+    "path": [
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.F2",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.GrothendieckKanClassification"
+    ]
+  },
+  {
+    "kind": "tier-order",
+    "path": [
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.F2",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.GrothendieckKanCoefficientComparison"
+    ]
+  },
+  {
+    "kind": "tier-order",
+    "path": [
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.F2",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.GrothendieckKanComparisonCofinality"
+    ]
+  },
+  {
+    "kind": "tier-order",
+    "path": [
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.F2",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.SimplicialElementsClassification"
+    ]
+  },
+  {
+    "kind": "tier-order",
+    "path": [
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.F2",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.SimplicialElementsFiberFunctorLaws"
+    ]
+  },
+  {
+    "kind": "tier-order",
+    "path": [
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.F2",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.SimplicialElementsFiberInclusion"
+    ]
+  },
+  {
+    "kind": "tier-order",
+    "path": [
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.F2",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.SimplicialElementsFiberMap"
+    ]
+  },
+  {
+    "kind": "tier-order",
+    "path": [
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.F2",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.SimplicialElementsFiberUnit"
+    ]
+  },
+  {
+    "kind": "tier-order",
+    "path": [
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.F2",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.SimplicialReplacementDiagonal"
+    ]
+  },
+  {
+    "kind": "tier-order",
+    "path": [
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.F2",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.SimplicialReplacementLeftAnodyne"
+    ]
+  },
+  {
+    "kind": "tier-order",
+    "path": [
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.F2",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.SimplicialReplacementReedyLeftAnodyne"
+    ]
+  },
+  {
+    "kind": "tier-order",
+    "path": [
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.F2",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.SimplicialReplacementRowCommonPresentation"
+    ]
+  },
+  {
+    "kind": "tier-order",
+    "path": [
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.F2",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.SimplicialReplacementRowEpiLifts"
+    ]
+  },
+  {
+    "kind": "tier-order",
+    "path": [
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.F2",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.SimplicialReplacementRowLatchingCocone"
+    ]
+  },
+  {
+    "kind": "tier-order",
+    "path": [
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.F2",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.SimplicialReplacementRowLatchingColimit"
+    ]
+  },
+  {
+    "kind": "tier-order",
+    "path": [
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.F2",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.SimplicialReplacementRowLatchingNaturality"
+    ]
+  },
+  {
+    "kind": "tier-order",
+    "path": [
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.F2",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.SimplicialReplacementRowLatchingRefinement"
+    ]
+  },
+  {
+    "kind": "tier-order",
+    "path": [
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.F2",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.SimplicialReplacementRowLatchingSurjective"
+    ]
+  },
+  {
+    "kind": "tier-order",
+    "path": [
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.F2",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.SimplicialReplacementRowLatchingValues"
+    ]
+  },
+  {
+    "kind": "tier-order",
+    "path": [
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.F2",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.SimplicialReplacementRowNormalization"
+    ]
+  },
+  {
+    "kind": "tier-order",
+    "path": [
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.F2",
+      "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.NerveTransformationInversion"
+    ]
+  }
+]

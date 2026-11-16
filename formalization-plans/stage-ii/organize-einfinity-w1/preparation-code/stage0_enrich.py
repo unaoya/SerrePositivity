@@ -1,14 +1,14 @@
 from pathlib import Path
 import csv,json,re,subprocess,hashlib
 out=Path('formalization-plans/stage-ii/organize-einfinity-w1');rows=list(csv.DictReader((out/'stage1-modules.csv').open()))
-ctx={};exec(Path('/private/tmp/isw2-scan-declaration-names330.py').read_text().split('mods=set()')[0],ctx)
+from source_names import declarations
 names=[]
 for r in rows:
- for n,p,line in ctx['declarations'](Path(r['old_path']).read_text(),r['old_path']):
+ for n,p,line in declarations(Path(r['old_path']).read_text(),r['old_path']):
   old=r['old_namespace'];nn=r['new_namespace']+n[len(old):] if r['action']=='move' and (n==old or n.startswith(old+'.')) else n
   names.append(dict(old=n,new=nn,owner=r['old_module'],new_owner=r['new_module'],line=line,status='source candidate; native generated/private ownership pending'))
 with (out/'source-declaration-map.csv').open('w') as f:
- w=csv.DictWriter(f,fieldnames=list(names[0]));w.writeheader();w.writerows(names)
+ w=csv.DictWriter(f,fieldnames=list(names[0]),lineterminator='\n');w.writeheader();w.writerows(names)
 oldnames={r['old'] for r in names};review=[]
 for f in Path('research/kerodon-coverage/review').glob('ch[0-9]*.csv'):
  for r in csv.DictReader(f.open()):

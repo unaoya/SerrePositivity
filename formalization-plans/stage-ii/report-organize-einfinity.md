@@ -16,7 +16,7 @@
 | OE04 | EInfinity/SimplicialLocalization/ 全体 | 152本・12,011行 | InfinityCategories/HTT/ModelCategoryLocalization/SimplicialLocalization/。HTT 1.3.4とDwyer–Kanの単体的局所化・模型圏の比較 |
 | OE05 | 3b-4のBE固有のTot比較 | 99本・7,375行 | EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/。停止済みの経路であることをmodule docstringに一行追加 |
 
-OE03の例外：AnodyneWeakDetection.lean、AnodyneFamilyHomotopy.leanは模型圏を仮定しないKan標的／anodyneの一般論なので、**InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/**へ置く。任意の模型圏のframeを使うものと分ける。HTT配置のOE04もportableな∞中核への格上げを意味しない。
+OE03の例外：AnodyneWeakDetection.leanは模型圏を仮定しないKan標的／anodyneの検出なので、**InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/**へ置く。AnodyneFamilyHomotopy.leanは全パラメータのinterval族の不変性を用いるため、**InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/MorphismSpaces/**へ置く（段1準備の静的予覧で修正）。任意の模型圏のframeを使うものと分ける。HTT配置のOE04もportableな∞中核への格上げを意味しない。
 
 名前空間は新しい数学の配置に合わせる。OE02はSerrePositivity.EInfinity.HomotopyWeight→SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight、OE03の142本はEInfinity.FrameHom→HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom、OE04はEInfinity.SimplicialLocalization→InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization。上のAnodyne二本はファイル別の表を優先する。
 
@@ -104,3 +104,29 @@ source-declaration-map.csvにはソース上の名前付き宣言候補**2,314�
 段1の完成報告では、これらの目録を含めて実測の件数・保留・取り下げ・各検査の結果とコミットを記録して停止する。主張・証明の追加やD81で止めた経路の再開は、この整理の作業へ含めない。
 
 一覧：済み 0／全体 5（うち追加 0）。束のIDはOE01〜OE05。段0の資料作成は済んだが、段1の検査完了とは数えない。
+
+## 1 段1の準備：原環境と層の予覧（2026-11-16）
+
+### 1.1 基準側の層metadataと、配置の一修正
+
+現行の元設定では∞のper-file tierが348本未登録で、層チェッカーは初期化時点で失敗した。段0の「588本がConsumers」は、未登録ファイルを既定のConsumersとして数えた静的な仮集計であり、588本全部の登録が検収済みという意味ではない。ここを訂正して区別する。348本のうち段1の588本に含むものは124本。B3′の既存の機械規則（依存順に、実装やConsumers依存はConsumers、Comparison依存はComparison、残りはPortable）で、**一時の読取専用の補完案**を作った。内訳{'Portable': 245, 'Consumers': 67, 'Comparison': 36}。既存のtierと例外は変更していない。実際のscripts/refactor/layers.jsonはまだ書き換えていない。
+
+補完案を使う基準グラフは33,254モジュール、既存の違反86件（reverse-section 63、tier-order 23）。baseline-layer-violations.jsonに全件保存した。基準の86件を今回の移動が解決したとも、層検査が全件PASSしたとも数えない。
+
+最初の移送予覧ではAnodyneFamilyHomotopyを3.1の下へ置くと、元から必要だった4.6のIntervalFamilyInvarianceへの依存が新しいreverse-sectionになると分かった。そのため同じファイルを**4.6のMorphismSpaces/**へ置く案へ修正した。主張・証明・依存そのものは変えず、3.1のAnodyneWeakDetectionの配置は保持した。修正後は、同じtier／境界／理由をmodule-mapで移した予覧で、基準86件に対し予覧86件、**新規違反0・消えた違反0**。新しい例外を追加して帳尻を合わせていない。段1の範囲は同じ588本で、他の枝の文字列の影響も再集計0本。
+
+### 1.2 原ソース・oleanの独立保持と最初のnative採取
+
+/private/tmp/oe-w1-before-30ae8948f に基準30ae8948fのdetached worktreeを作り、元の .lake/build をAPFSのcopy-on-writeで独立に保持した。第三者のpackagesだけを共有し、projectのoleanを移送後の作業木と同じディレクトリへ向けてはいない。588ソースのSHAを段0の表と全件照合して一致。代表の元oleanはSHA一致・inode相違を確認した。frozen-before-receipt.jsonに記録。mainの作業木では編集・ビルドしていない。
+
+原環境のcompiler採取はProjectiveWeightComparison一本で終了0、998参照と12のscope/openコマンドを保存した。--class bulk --wait 3600、280秒guardの一枚の鍵で実行し、返却済み。引用registryの読取専用checkも25 keysで一致。
+
+さらに独立した原環境で、ProjectiveWeightComparison・AnodyneWeakDetection・AnodyneFamilyHomotopy・ModelRightFrameComparison・StrictDiagramTotJointSourceRawCoslicePathの五本のnative inventoryを採取した。元のv3b検証専用binaryとreceiptのSHAが一致し、共有のdecl_snapshot.leanのSHAも一致。5モジュール・**31宣言**、huge_terms 0、終了0、実処理84.96秒。--class bulk --wait 3600、280秒guardで実行し、鍵は返却済み。**これは原環境のinventoryの検証であり、最終の名前正規化を用いた移送前後のv3b比較は未実行**。
+
+証跡はorganize-einfinity-w1/preparation/の各receipt、層予覧のsummary、原inventoryとcompiler参照のgzip。生の記録・ログは/private/tmp/oe-w1-captures/。表の再集計スクリプトは一時ファイルへの依存をなくし、source_names.pyを添えた。ソース上の宣言候補をnative所有元と混同しない。
+
+### 1.3 次の順序と現在の未完
+
+残る原環境のnative所有元・private名・生成宣言の採取、書換対象の原参照の採取、正式な所有元付き改名表、全プレビューの保留の解消へ進む。保留のある書換えを適用しない。基準側の86件は今回の移動の追加差分と区別し、最終の層検査でも記録を落とさない。移動そのものの適用・移送後の対象ビルド・v3b未説明0・引用／Tag・root・正式全監査・verify・目録の検収は、まだ済んでいない。Leanの主張・証明は未変更。
+
+一覧：済み 0／全体 5（うち追加 0）。

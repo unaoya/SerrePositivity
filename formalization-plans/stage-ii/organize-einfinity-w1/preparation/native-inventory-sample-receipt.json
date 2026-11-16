@@ -1,0 +1,22 @@
+{
+  "root": "/private/tmp/oe-w1-before-30ae8948f",
+  "base": "30ae8948f339beec42d9340feb02f2031c22c72b",
+  "modules": [
+    "SerrePositivity.EInfinity.HomotopyWeight.ProjectiveWeightComparison",
+    "SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection",
+    "SerrePositivity.EInfinity.FrameHom.AnodyneFamilyHomotopy",
+    "SerrePositivity.EInfinity.SimplicialLocalization.ModelRightFrameComparison",
+    "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRawCoslicePath"
+  ],
+  "source_sha256": {
+    "SerrePositivity.EInfinity.HomotopyWeight.ProjectiveWeightComparison": "3950af545b9e806f755871e5185acb2aff0565d5c135ab9901644528fd917307",
+    "SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection": "cbb7a446ab11ecac3a18b3281b285ef48dd168e3b6697e6aea85a94da8ce0f6e",
+    "SerrePositivity.EInfinity.FrameHom.AnodyneFamilyHomotopy": "96cf0e331661d15a402b3d5e1c993c5402b56ac62508b35da53e4b0229fb7e00",
+    "SerrePositivity.EInfinity.SimplicialLocalization.ModelRightFrameComparison": "eeab4b9359dcabdcd8db5236c961791e9b09bfa8e5b1955808d31f08fe951702",
+    "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRawCoslicePath": "f84d80e38ab4a92dd954c0a3fa5e12447cbc3a02cac1d5d31a4e451f6caede36"
+  },
+  "binary_sha256": "044d36482e16a0708bdb58e6b3f5cdbf1f53b5deec92e5921d07b290109d45b9",
+  "seconds": 84.95664212480187,
+  "returncode": 0,
+  "policy": "native raw before inventory only; final v3b name normalization and before/after comparison not yet run"
+}

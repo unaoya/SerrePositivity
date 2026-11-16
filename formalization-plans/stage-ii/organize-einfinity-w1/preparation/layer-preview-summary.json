@@ -1,0 +1,8 @@
+{
+  "modules": 33254,
+  "before_violations": 86,
+  "predicted_violations": 86,
+  "new_violations": [],
+  "disappeared_violations": [],
+  "policy": "graph and same tier/boundary reasons transported by exact module map; no new tier exemptions or new mathematical dependency"
+}

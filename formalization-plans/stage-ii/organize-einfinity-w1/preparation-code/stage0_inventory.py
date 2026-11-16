@@ -3,7 +3,7 @@ from collections import Counter
 import subprocess,json,csv,re,hashlib
 root=Path.cwd();out=root/'formalization-plans/stage-ii/organize-einfinity-w1'
 def git(*args):return subprocess.check_output(['git',*args],text=True).strip()
-base=git('rev-parse','HEAD');manifest=json.loads((root/'formalization-plans/stage-ii/is-w2-be-20261114-modules.json').read_text());scope=set(manifest)
+base=json.loads((out/'stage0-summary.json').read_text())['base'] if (out/'stage0-summary.json').exists() else git('rev-parse','HEAD');manifest=json.loads((root/'formalization-plans/stage-ii/is-w2-be-20261114-modules.json').read_text());scope=set(manifest)
 groups={
 'HomotopyWeight':('OE02','SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight','SerrePositivity.EInfinity.HomotopyWeight','射影cofibrant重み・BK・Kan係数と重み付き切断の一般論'),
 'FrameHom':('OE03','SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom','SerrePositivity.EInfinity.FrameHom','一般の模型圏のframe Homと局所化の比較'),
@@ -21,16 +21,17 @@ for m in sorted(scope):
   else:id='OE01';new=m;oldns='（現状維持）';newns=oldns;reason='274本中、既にKerodon/HomotopicalAlgebra等へ置かれた一般部品。再移動しない'
  if m in ['SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection','SerrePositivity.EInfinity.FrameHom.AnodyneFamilyHomotopy']:
   kp='SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes'
+  if p.stem=='AnodyneFamilyHomotopy':kp='SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces'
   new=kp+'.'+p.stem
   oldns='SerrePositivity.EInfinity.FrameHom'+('.AnodyneWeakDetection' if p.stem=='AnodyneWeakDetection' else '')
   newns=kp+('.AnodyneWeakDetection' if p.stem=='AnodyneWeakDetection' else '')
-  reason='Kan標的によるanodyne局所化の検出・全族ホモトピー。Kerodon 3.1/3.3の同じ配置へ'
+  reason='Kan標的によるanodyne局所化の検出はKerodon 3.1、全族ホモトピーは依存するIntervalFamilyInvarianceと同じ4.6へ'
  dest=new.replace('.','/')+'.lean'
  assert new==m or not (root/dest).exists(),dest
  rows.append(dict(id=id,old_module=m,new_module=new,old_path=str(p.relative_to(root)),new_path=dest,old_namespace=oldns,new_namespace=newns,source_namespace_commands=';'.join(ns),lines=len(s.splitlines()),source_sha256=hashlib.sha256(s.encode()).hexdigest(),action='keep' if new==m else 'move',basis=reason))
 assert len(rows)==588 and len({r['new_path'] for r in rows})==588
 with (out/'stage1-modules.csv').open('w') as f:
- w=csv.DictWriter(f,fieldnames=list(rows[0]));w.writeheader();w.writerows(rows)
+ w=csv.DictWriter(f,fieldnames=list(rows[0]),lineterminator='\n');w.writeheader();w.writerows(rows)
 (out/'stage1-files.json').write_text(json.dumps([r['old_path'] for r in rows],indent=2)+'\n')
 (out/'module-map.json').write_text(json.dumps({r['old_module']:r['new_module'] for r in rows},indent=2)+'\n')
 # Scope-narrowed namespace targets, not yet a compiler-derived declaration rewrite map.
@@ -48,7 +49,7 @@ for p in sorted((root/'SerrePositivity/EInfinity').rglob('*.lean')):
  else:cl='一般';basis='複体・単体集合・相対圏・模型圏の一般部品。主用途による段0分類、宣言単位の最終分類は未検収'
  classrows.append(dict(path=str(rel),module=str(rel.with_suffix('')).replace('/','.'),family=part,classification=cl,stage1='stage1 move' if str(rel) in s1old else 'stage2 paper only',lines=len(p.read_text().splitlines()),basis=basis))
 with (out/'stage2-classification.csv').open('w') as f:
- w=csv.DictWriter(f,fieldnames=list(classrows[0]));w.writeheader();w.writerows(classrows)
+ w=csv.DictWriter(f,fieldnames=list(classrows[0]),lineterminator='\n');w.writeheader();w.writerows(classrows)
 assert len(classrows)==2621
 # Branch impact: immutable git refs only, include drafts, qualified/partially-qualified names.
 changed=[r for r in rows if r['action']=='move'];needle=set(r['old_module'] for r in changed)

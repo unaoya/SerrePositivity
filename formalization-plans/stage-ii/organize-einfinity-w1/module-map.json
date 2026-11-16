@@ -98,7 +98,7 @@
   "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotWeightComparison": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.StrictDiagramTotWeightComparison",
   "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotalizationComparison": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.StrictDiagramTotalizationComparison",
   "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotalizationInput": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.StrictDiagramTotalizationInput",
-  "SerrePositivity.EInfinity.FrameHom.AnodyneFamilyHomotopy": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneFamilyHomotopy",
+  "SerrePositivity.EInfinity.FrameHom.AnodyneFamilyHomotopy": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.AnodyneFamilyHomotopy",
   "SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection",
   "SerrePositivity.EInfinity.FrameHom.ArrowSpanGrothendieck": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ArrowSpanGrothendieck",
   "SerrePositivity.EInfinity.FrameHom.AsSmallHammockHomFamily": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.AsSmallHammockHomFamily",

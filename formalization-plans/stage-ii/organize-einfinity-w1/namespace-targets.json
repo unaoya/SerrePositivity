@@ -625,7 +625,7 @@
       "file": "SerrePositivity/EInfinity/FrameHom/AnodyneFamilyHomotopy.lean",
       "owner": "SerrePositivity.EInfinity.FrameHom.AnodyneFamilyHomotopy",
       "old": "SerrePositivity.EInfinity.FrameHom",
-      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes"
+      "new": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces"
     },
     {
       "file": "SerrePositivity/EInfinity/FrameHom/AnodyneWeakDetection.lean",
