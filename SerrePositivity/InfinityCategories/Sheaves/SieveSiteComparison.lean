@@ -6,7 +6,7 @@ public import Mathlib.CategoryTheory.Sites.Sieves.Functoriality
 /-!
 概要：site 同値に沿う篩の元の圏の比較を、実際の射を保つ通常関手として作る。
 方針：Over.post の同値を、引き戻した篩の充満部分圏へ制限する。
-使われ方：HTT 6.2.2.6、Kerodon §7.1（Tag 02K2）の site 再添字の篩錐比較。
+  文献対応：HTT 6.2.2.6、Kerodon §7.1（Tag 02K2）の site 再添字の篩錐比較。
 規約：篩の対象と全射を保持し、層条件そのものを仮定しない。
 -/
 

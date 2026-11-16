@@ -7,8 +7,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCateg
 /-!
 概要：離散前層の全埋め込みと対象評価の可換性を全単体で固定する。
 方針：Kan 図式の束縛後の豊穣評価と通常 nerve の後合成則を使う。
+  文献対応：HTT 5.1.2.3・6.2.2.7、Kerodon Corollary 5.6.0.6（Tag 028T）、S8-3。
 規約：重みの射・高次の族も含む射の等式で、対象ごとの同型の選択ではない。
-使われ方：HTT 5.1.2.3・6.2.2.7、Kerodon Corollary 5.6.0.6（Tag 028T）、S8-3。
 -/
 
 @[expose] public noncomputable section

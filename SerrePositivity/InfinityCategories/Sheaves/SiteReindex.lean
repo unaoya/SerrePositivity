@@ -8,7 +8,7 @@ public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfi
 /-!
 概要：通常 site の関手の元の nerve による、全前層関手圏の再添字を固定する。
 方針：同じ反対関手・nerve・持ち上げを使い、site 同値では前合成の同値性を適用する。
-使われ方：HTT 1.2.7.3、Kerodon §4.5.1（Tag 01DQ）の前層圏の同値。
+  文献対応：HTT 1.2.7.3、Kerodon §4.5.1（Tag 01DQ）の前層圏の同値。
 規約：このファイルは前層圏の比較。被覆位相と層の比較は後続で証明する。
 -/
 

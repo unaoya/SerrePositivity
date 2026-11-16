@@ -7,7 +7,7 @@ public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Limit
 /-!
 概要：site 同値に沿う大域切断の比較を、全前層圏上の一つの関手同型として構成する。
 方針：同じ極限錐族を再添字し、S2 の二つの全錐比較を合成する。
-使われ方：HTT 5.4.7.9、Kerodon §7.1（Tag 02K2）の全 Γ 比較。
+  文献対応：HTT 5.4.7.9、Kerodon §7.1（Tag 02K2）の全 Γ 比較。
 規約：個々の頂点の同型で、元の射・全高次単体の比較を代用しない。
 -/
 

@@ -7,7 +7,7 @@ public import Mathlib.CategoryTheory.Sites.Sieves.Presheaf
 /-!
 概要：被覆篩と検出対象に添字を持つ小さい層生成辺族。
 方針：G8の元の篩テンソル辺を同じ指定のまま使う。
-使われ方：HTT 5.5.4.15・6.2.2.7、Kerodon Tag 06VH の反射へ渡す辺族。
+  文献対応：HTT 5.5.4.15・6.2.2.7、Kerodon Tag 06VH の反射へ渡す辺族。
 規約：局所対象との一致は後続の定理で示す。
 -/
 

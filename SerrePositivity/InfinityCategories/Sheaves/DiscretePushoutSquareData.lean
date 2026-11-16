@@ -7,8 +7,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Examp
 /-!
 概要：元の集合値前層の押し出し四角形と、その同じ二つの合成二単体を固定する。
 方針：対角に沿う二三角形の押し出しで通常の四角形を作り、全離散埋め込みで送る。
+  文献対応：HTT 4.2.4.1・6.2.2.7、Kerodon 7.5.4.6（Tag 03BB）、S8-3。
 規約：型と二単体は drafts/Sheaves/SpaceValued と同じ。余極限判定は別に証明する。
-使われ方：HTT 4.2.4.1・6.2.2.7、Kerodon 7.5.4.6（Tag 03BB）、S8-3。
 -/
 
 @[expose] public noncomputable section

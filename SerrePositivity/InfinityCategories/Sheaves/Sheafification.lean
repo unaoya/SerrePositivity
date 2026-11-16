@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.Util.Citation
+
 public import SerrePositivity.InfinityCategories.Sheaves.SheafGeneratingEdges
 public import SerrePositivity.InfinityCategories.Sheaves.LocalEdgeRepresentative
 public import SerrePositivity.InfinityCategories.Sheaves.SheafProbeCriterion
@@ -7,7 +9,7 @@ public import SerrePositivity.InfinityCategories.Sheaves.SheafProbeCriterion
 /-!
 概要：被覆篩の元のテンソル辺族による局所対象が層に一致し、層化反射が存在する。
 方針：G8の指定四角形とG14の検出族を使い、既存のBousfield反射へ渡す。
-使われ方：HTT 5.5.4.15・6.2.2.7、Kerodon Tag 06VH。
+  文献対応：HTT 5.5.4.15・6.2.2.7、Kerodon Tag 06VH。
 規約：一般presentable係数で、安定性やCAlgの忘却との両立を仮定しない。
 -/
 
@@ -53,6 +55,10 @@ theorem exists_sheafGeneratingEdges (J : GrothendieckTopology C) (hE : SerrePosi
   exact ⟨_, sheafGeneratingEdges J hE M, isLocalObject_sheafGeneratingEdges_iff J hE M hM⟩
 
 /-- 一般presentable係数に対し、層への実際の反射が存在する。 -/
+@[cite HTT "6.2.2.7" (partial := special)
+  "小さい通常の site の Čech 層への反射。一般の presentable 係数を扱うが、左完全性・∞ トポス性はこの結論に含めない。",
+  cite HTT "5.5.4.15" (partial := special)
+    "前層準圏の小さい生成辺族による反射の存在に特殊化する。presentability の結論全体は含めない。"]
 theorem sheafification_exists (J : GrothendieckTopology C) (hE : SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable E) :
     Sheafification J E := by
   obtain ⟨I, edges, hW⟩ := exists_sheafGeneratingEdges J hE

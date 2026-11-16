@@ -6,8 +6,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCat
 /-!
 概要：元の全重み切断の値を、元の前層形状の小さい left 全空間の指定極限へ接続する。
 方針：反対 nerve の底同型に沿う既存の全空間の同型で指定極限錐を制限する。
+  文献対応：HTT 5.1.5.6、Kerodon Remark 5.6.2.18（Tag 0271）、S8 の離散重みの比較。
 規約：元の前層と係数の形状を保持し、指定した同じ極限錐の頂点を返す。
-使われ方：HTT 5.1.5.6、Kerodon Remark 5.6.2.18（Tag 0271）、S8 の離散重みの比較。
 -/
 
 @[expose] public noncomputable section

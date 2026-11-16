@@ -6,7 +6,7 @@ public import SerrePositivity.InfinityCategories.Sheaves.GlobalSectionsSiteFamil
 /-!
 概要：site 同値に沿い、任意の前層の全 RΓ 関手を比較する。
 方針：同じ指定層化の全関手同型に Γ を後合成し、全 Γ の site 比較につなぐ。
-使われ方：BS Remark 4.5、HTT 6.2.2.7、Kerodon §6.1.3（Tag 02D4）。
+  文献対応：BS Remark 4.5、HTT 6.2.2.7、Kerodon §6.1.3（Tag 02D4）。
 規約：層である前層だけへ制限しない。全パラメータの射と高次単体を同時に保持する。
 -/
 

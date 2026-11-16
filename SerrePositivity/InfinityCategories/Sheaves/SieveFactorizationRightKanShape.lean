@@ -9,7 +9,7 @@ public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExten
 /-!
 概要：二段分解の局所 comma の元の全形状を、実右 Kan の添字へ接続する。
 方針：Mathlib の左右 comma の反転同値、AsSmall 比較、既存の右 Kan 形状同型を合成する。
-使われ方：HTT 6.2.2.6、Kerodon §7.3（Tag 02Y1）の降下の合成。
+  文献対応：HTT 6.2.2.6、Kerodon §7.3（Tag 02Y1）の降下の合成。
 規約：元の形状射を固定し、係数の universe を下げない。
 -/
 

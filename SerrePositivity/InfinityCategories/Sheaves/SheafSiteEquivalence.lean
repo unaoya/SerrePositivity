@@ -8,7 +8,7 @@ public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Fu
 /-!
 概要：対応する被覆位相を持つ site 同値から、層の全部分準圏の同値を作る。
 方針：元の再添字の全単体を層の頂点条件へ制限し、既存の全部分圏の同値判定を使う。
-使われ方：HTT 6.2.2.6、Kerodon §4.5.1（Tag 01DQ）の site 同値に沿う層の輸送。
+  文献対応：HTT 6.2.2.6、Kerodon §4.5.1（Tag 01DQ）の site 同値に沿う層の輸送。
 規約：対象だけでなく、元の全前層関手との可換性を等式として保持する。
 -/
 

@@ -5,7 +5,7 @@ public import SerrePositivity.InfinityCategories.Sheaves.SheafCondition
 /-!
 概要：最大篩の射の圏は恒等射を終対象に持つ。
 方針：Overの終対象への射を充満部分圏へ読み、その一意性を保つ。
-使われ方：HTT 6.2.2.6、Kerodon §7.1（Tag 02H1）の最大篩の層条件。
+  文献対応：HTT 6.2.2.6、Kerodon §7.1（Tag 02H1）の最大篩の層条件。
 規約：制限図式はこの圏の反対を使う。
 -/
 

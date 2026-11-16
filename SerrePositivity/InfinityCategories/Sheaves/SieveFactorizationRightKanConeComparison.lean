@@ -5,7 +5,7 @@ public import SerrePositivity.InfinityCategories.Sheaves.SieveFactorizationRight
 /-!
 概要：指定右 Kan 局所錐と、元の局所 comma の制限錐の全射を比較する。
 方針：形状比較の三因子と、nerve・AsSmall の全錐の自然性を順に合成する。
-使われ方：HTT 6.2.2.6、Kerodon §7.3（Tag 02Y1）の生成系の降下。
+  文献対応：HTT 6.2.2.6、Kerodon §7.3（Tag 02Y1）の生成系の降下。
 規約：元の係数と全脚を保持し、極限性を仮定した比較射を新しく選ばない。
 -/
 

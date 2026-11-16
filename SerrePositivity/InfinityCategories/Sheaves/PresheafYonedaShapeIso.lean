@@ -5,8 +5,8 @@ public import SerrePositivity.InfinityCategories.Sheaves.SpacePresheafOppositeYo
 /-!
 概要：実際の Yoneda と固定された前層の始域・終域を、指定した同型で揃える。
 方針：反対 nerve の既存同型を内部 Hom の第一変数で送り、反対を取る。
+  文献対応：HTT 5.1.5.6、Kerodon Definition 7.3.1.2（Tag 02Y9）の係数移送。
 規約：元の反対 Yoneda と同じ前層形状を保持する。
-使われ方：HTT 5.1.5.6、Kerodon Definition 7.3.1.2（Tag 02Y9）の係数移送。
 -/
 
 @[expose] public noncomputable section

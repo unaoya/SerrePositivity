@@ -5,7 +5,7 @@ public import SerrePositivity.InfinityCategories.Sheaves.SiteAsSmallEquivalence
 /-!
 概要：元の大きい site の全被覆篩の層条件と、小さい模型の元の層条件を比較する。
 方針：同じ AsSmall 表示の site 同値へ移し、検証済みの元の全制限錐の比較を用いる。
-使われ方：HTT 6.2.2.6、Kerodon §4.5.1（Tag 01DQ）の本質的小さい site の層。
+  文献対応：HTT 6.2.2.6、Kerodon §4.5.1（Tag 01DQ）の本質的小さい site の層。
 規約：対象 Type(u+1)・射 Type u・係数 SSet(u+1)。EssentiallySmall 以外の濃度条件なし。
 -/
 

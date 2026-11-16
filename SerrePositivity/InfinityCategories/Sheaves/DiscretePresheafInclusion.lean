@@ -6,7 +6,7 @@ public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories
 /-!
 概要：離散前層の埋め込みを、全自然変換と全高次単体を含めて固定する。
 方針：Kan 図式の既存の束縛、通常 nerve から coherent nerve への射、同じ実現を合成する。
-使われ方：HTT 5.5.6.28、Kerodon Corollary 5.6.0.6（Tag 028T）。
+  文献対応：HTT 5.5.6.28、Kerodon Corollary 5.6.0.6（Tag 028T）。
 規約：個々の集合の離散化だけで全前層関手を代用しない。
 -/
 

@@ -5,7 +5,7 @@ public import SerrePositivity.InfinityCategories.Sheaves.SieveFactorizationDiagr
 /-!
 概要：二段分解の射影の局所 comma を、固定した中間射の fiber へ縮める。
 方針：中間射から t への射を合成し、恒等射で入れる包含との随伴を明示する。
-使われ方：HTT 6.2.2.6 の被覆生成。反変図式の局所右 Kan の形状比較に使う。
+  文献対応：HTT 6.2.2.6 の被覆生成。反変図式の局所右 Kan の形状比較に使う。
 -/
 
 @[expose] public noncomputable section

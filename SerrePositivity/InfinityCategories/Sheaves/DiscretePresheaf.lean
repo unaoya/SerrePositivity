@@ -7,7 +7,7 @@ public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories
 /-!
 概要：集合値前層を、元の図式の coherent 表示で離散空間値前層へ送る。
 方針：既存の setsToKan と kanDiagramCoherentNerve を用いる。
-使われ方：HTT 5.5.6.28・6.2.2.7、Kerodon Corollary 5.6.0.6（Tag 028T）。
+  文献対応：HTT 5.5.6.28・6.2.2.7、Kerodon Corollary 5.6.0.6（Tag 028T）。
 規約：空間値層化の存在は生成辺による実反射から得る。
 -/
 

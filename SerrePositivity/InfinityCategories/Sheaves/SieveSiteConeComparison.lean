@@ -8,7 +8,7 @@ public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Limit
 /-!
 概要：同値な site の引き戻し篩で、元の指定制限錐の極限性を比較する。
 方針：篩圏の同値と、nerve・持ち上げ・全錐の後合成の公式を用いる。
-使われ方：HTT 6.2.2.6、Kerodon §7.1（Tag 02K2）の site の同値による層条件の移送。
+  文献対応：HTT 6.2.2.6、Kerodon §7.1（Tag 02K2）の site の同値による層条件の移送。
 規約：元の指定錐全体を比較し、頂点の同値だけで代用しない。
 -/
 

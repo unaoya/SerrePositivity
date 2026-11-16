@@ -7,7 +7,7 @@ public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exa
 /-!
 概要：安定な presentable 係数の指定層化は、元の任意有限形状の極限錐を保つ。
 方針：層圏の安定性から反射と包含を完全とし、同じ自己関手の完全性を有限極限保存へ移す。
-使われ方：HTT 6.2.2.7、HA Proposition 1.1.4.1、Kerodon §7.1（Tag 02H1）。
+  文献対応：HTT 6.2.2.7、HA Proposition 1.1.4.1、Kerodon §7.1（Tag 02H1）。
 規約：指定した層化の選択を変えない。Postnikov 左完全性は主張しない。
 -/
 

@@ -7,7 +7,7 @@ public import Mathlib.CategoryTheory.Adjunction.Basic
 /-!
 概要：二つの篩の交叉に属する射を二段に分解する圏。
 方針：Over U の充満部分圏の comma を使い、恒等分解と合成の随伴を作る。
-使われ方：HTT 6.2.2.6 の被覆生成の降下を、反変な極限の形状比較へ移す。
+  文献対応：HTT 6.2.2.6 の被覆生成の降下を、反変な極限の形状比較へ移す。
 -/
 
 @[expose] public noncomputable section

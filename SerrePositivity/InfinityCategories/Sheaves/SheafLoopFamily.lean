@@ -7,7 +7,7 @@ public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfi
 /-!
 概要：周囲の同じ全 loop 族を層圏へ持ち上げ、終点と loop 同値を保つ。
 方針：四つの角の層条件を内部 Hom の既存同型に入れ、loop 条件を包含から反映する。
-使われ方：HA §1.1.3、Kerodon §7.1（Tag 02H1）の安定な全部分圏。
+  文献対応：HA §1.1.3、Kerodon §7.1（Tag 02H1）の安定な全部分圏。
 規約：持ち上げの包含後の写像を等号で固定する。対象ごとの新しい loop は選ばない。
 -/
 

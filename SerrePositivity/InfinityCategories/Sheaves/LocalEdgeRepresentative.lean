@@ -5,7 +5,7 @@ public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories
 /-!
 概要：同じ一単体から復元した辺で局所性を試しても、元の辺での局所性と一致する。
 方針：辺の端点の等式を除去して同じHomとなることを確認する。
-使われ方：HTT 5.5.4.1、Kerodon Tag 06VH の生成辺族の局所性。
+  文献対応：HTT 5.5.4.1、Kerodon Tag 06VH の生成辺族の局所性。
 規約：辺の代表を変える際の計算則。
 -/
 

@@ -6,7 +6,7 @@ public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofin
 /-!
 概要：弱終対象の元の Čech 形状で、指定極限錐と極限の存在を判定する。
 方針：検証した元の形状の left cofinality を、既存の指定錐の制限定理へ渡す。
-使われ方：HTT 4.1.3.1、Kerodon §7.2（Tag 02MZ）、BS Construction 4.18 脚注10。
+  文献対応：HTT 4.1.3.1、Kerodon §7.2（Tag 02MZ）、BS Construction 4.18 脚注10。
 規約：小さい site と大きい site とも同じ元の錐の頂点を保持する。
 -/
 

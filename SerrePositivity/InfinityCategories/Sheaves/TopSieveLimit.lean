@@ -11,7 +11,7 @@ public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparis
 /-!
 概要：最大篩の指定制限錐の極限性と、最小位相での前層の層性。
 方針：恒等射の点へ制限した錐の全射を計算し、left anodyneな制限から極限性を戻す。
-使われ方：HTT 6.2.2.6、Kerodon §7.1（Tag 02H1）の最大篩の降下。
+  文献対応：HTT 6.2.2.6、Kerodon §7.1（Tag 02H1）の最大篩の降下。
 規約：元の制限錐の頂点と全脚を保つ。
 -/
 

@@ -6,7 +6,7 @@ public import SerrePositivity.InfinityCategories.Sheaves.GlobalSectionsSiteFamil
 /-!
 概要：元の大きい site の Γ と小さい模型の Γ を、全前層上で同時に比較する。
 方針：元の全極限錐族を同じ形状同値で再添字し、二つの定値随伴と比較する。
-使われ方：HTT 5.4.7.9、Kerodon §7.1（Tag 02K2）の本質的小さい site の大域切断。
+  文献対応：HTT 5.4.7.9、Kerodon §7.1（Tag 02K2）の本質的小さい site の大域切断。
 規約：元の全図式・射・高次単体の比較を保持する。係数の宇宙を上げない。
 -/
 

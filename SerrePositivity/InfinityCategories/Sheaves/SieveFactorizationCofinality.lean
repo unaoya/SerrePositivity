@@ -6,7 +6,7 @@ public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofin
 /-!
 概要：篩の二段分解と局所 fiber の、反変図式の極限を計算する cofinal 比較。
 方針：構成済みの通常の随伴を反転し、元の nerve 写像の left cofinal 性へ渡す。
-使われ方：HTT 6.2.2.6 の篩に沿う降下の合成。
+  文献対応：HTT 6.2.2.6 の篩に沿う降下の合成。
 -/
 
 @[expose] public noncomputable section

@@ -5,7 +5,7 @@ public import SerrePositivity.InfinityCategories.Sheaves.UniversalSieveDescent
 /-!
 概要：元の前層が全引き戻しで降下する篩は位相をなし、その順序で層条件を判定する。
 方針：全引き戻しでの降下の推移性を位相の三公理へ渡し、元の層条件へ戻す。
-使われ方：HTT 6.2.2.6、Kerodon §7.3（Tag 02Y1）の位相の上限と生成系。
+  文献対応：HTT 6.2.2.6、Kerodon §7.3（Tag 02Y1）の位相の上限と生成系。
 規約：任意の準圏係数。極限存在は仮定しない。
 -/
 

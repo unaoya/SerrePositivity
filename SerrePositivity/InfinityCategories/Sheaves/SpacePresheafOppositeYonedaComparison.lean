@@ -7,8 +7,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanEx
 /-!
 概要：固定した元の反対 Yoneda 射を、実際の Yoneda から移した同じ形状の射と比較する。
 方針：検証済みの全族の指定同型を反転し、同じ前層形状への前合成を行う。
+  文献対応：HTT 5.1.5.6、Kerodon Definition 7.3.1.2（Tag 02Y9）、S8 の固定射への接続。
 規約：元の oppositeSpaceYoneda を変えず、局所極限と指定右 Kan 延長の存在を比較する。
-使われ方：HTT 5.1.5.6、Kerodon Definition 7.3.1.2（Tag 02Y9）、S8 の固定射への接続。
 -/
 
 @[expose] public noncomputable section

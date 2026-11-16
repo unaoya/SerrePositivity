@@ -6,7 +6,7 @@ public import Mathlib.CategoryTheory.Sites.Equivalence
 /-!
 概要：元の小さい site と同じ AsSmall 表示で、すべての被覆篩の層条件を比較する。
 方針：元の指定制限錐の比較と、Mathlib の誘導位相の被覆の判定を使う。
-使われ方：HTT 6.2.2.6、Kerodon §7.1（Tag 02K2）の小さい模型に沿う層条件の輸送。
+  文献対応：HTT 6.2.2.6、Kerodon §7.1（Tag 02K2）の小さい模型に沿う層条件の輸送。
 規約：係数は SSet(u+1) のまま、層条件そのものを入力しない。
 -/
 

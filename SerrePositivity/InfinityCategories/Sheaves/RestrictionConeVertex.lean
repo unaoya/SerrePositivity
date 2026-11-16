@@ -6,7 +6,7 @@ public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfi
 /-!
 概要：篩上の指定制限錐の頂点は元の前層の評価値である。
 方針：nerve錐の頂点、宇宙持ち上げ、後合成の既存の計算則を合成する。
-使われ方：HTT 6.2.2.6、Kerodon §7.1（Tag 02H1）の層条件の指定頂点。
+  文献対応：HTT 6.2.2.6、Kerodon §7.1（Tag 02H1）の層条件の指定頂点。
 規約：同値な別の頂点で置き換えず、実際の頂点の等式を示す。
 -/
 

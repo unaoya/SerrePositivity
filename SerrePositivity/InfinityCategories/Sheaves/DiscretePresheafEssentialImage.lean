@@ -6,8 +6,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Limit
 /-!
 概要：離散前層の本質像を drafts と同じ型で固定し、同じ押し出し図式の余極限へ移す。
 方針：全余錐の比較から得た頂点同型を本質像の証人へ合成する。
+  文献対応：HTT 5.5.6.28・6.2.2.7、Kerodon §4.4（Tag 01EM）、S8-2・3。
 規約：前層を離散表示に等しいと要求せず、指定した頂点同型を保持する。
-使われ方：HTT 5.5.6.28・6.2.2.7、Kerodon §4.4（Tag 01EM）、S8-2・3。
 -/
 
 @[expose] public noncomputable section

@@ -6,7 +6,7 @@ public import SerrePositivity.InfinityCategories.Sheaves.SheafifyUnit
 /-!
 概要：層化後の大域切断を、指定した極限錐とともに定める。
 方針：同じ層化関手の値に presentable 係数の小極限を適用する。
-使われ方：HTT 6.2.2.7、Kerodon §7.1（Tag 02H1）の RΓ。
+  文献対応：HTT 6.2.2.7、Kerodon §7.1（Tag 02H1）の RΓ。
 規約：任意の前層に定義し、層の単位との比較は元の単位を用いる。
 -/
 

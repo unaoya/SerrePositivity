@@ -8,7 +8,7 @@ public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExten
 /-!
 概要：弱終対象の指定 Čech 図式は、共通の小さい模型で left cofinal。
 方針：既存の comma の宇宙比較で構成済みの収縮を移し、Quillen A を用いる。
-使われ方：HTT 4.1.3.1、Kerodon Theorem 7.2.3.1（Tag 02NY）。
+  文献対応：HTT 4.1.3.1、Kerodon Theorem 7.2.3.1（Tag 02NY）。
 規約：元の弱終性のみを使う。cofinality は入力にしない。
 -/
 

@@ -7,7 +7,7 @@ public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Adjoint
 /-!
 概要：site 同値と層の包含の元の正方形から、指定した可逆な層化比較を作る。
 方針：同じ二つの反射の随伴と縦の同値に、既存の二重 mate の全単射を使う。
-使われ方：HTT 6.2.2.7、Kerodon §6.2（Tag 02EH）の単位を保つ全関手の輸送。
+  文献対応：HTT 6.2.2.7、Kerodon §6.2（Tag 02EH）の単位を保つ全関手の輸送。
 規約：元の指定正方形への mate の等式を保持し、hJ・hK を選び直さない。
 -/
 

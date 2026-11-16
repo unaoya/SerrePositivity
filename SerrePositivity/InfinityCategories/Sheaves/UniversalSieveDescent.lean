@@ -6,7 +6,7 @@ public import SerrePositivity.InfinityCategories.Sheaves.TopSieveLimit
 /-!
 概要：すべての引き戻しで元の制限錐が極限となる篩について、降下の推移性を示す。
 方針：元の交叉篩の降下の同値を両順序で適用し、同じ引き戻し篩を比較する。
-使われ方：HTT 6.2.2.6、Kerodon §7.3（Tag 02Y1）の生成位相の層条件。
+  文献対応：HTT 6.2.2.6、Kerodon §7.3（Tag 02Y1）の生成位相の層条件。
 規約：一つの篩での降下だけから、その全引き戻しの降下を仮定しない。
 -/
 

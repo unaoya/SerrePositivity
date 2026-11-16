@@ -6,7 +6,7 @@ public import Mathlib.CategoryTheory.Whiskering
 /-!
 概要：二段分解の全図式と元の篩錐の指定比較。
 方針：Over の可換三角形を自然変換として保持し、fiber 上では引き戻し篩の図式を回収する。
-使われ方：HTT 6.2.2.6 の降下の合成。頂点と脚を指定したまま比較する。
+  文献対応：HTT 6.2.2.6 の降下の合成。頂点と脚を指定したまま比較する。
 -/
 
 @[expose] public noncomputable section

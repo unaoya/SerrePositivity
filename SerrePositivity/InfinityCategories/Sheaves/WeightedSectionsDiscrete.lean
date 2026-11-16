@@ -1,13 +1,15 @@
 module
 
+public meta import SerrePositivity.Util.Citation
+
 public import SerrePositivity.InfinityCategories.Sheaves.WeightedSectionsOriginalLeftLimit
 public import SerrePositivity.InfinityCategories.Sheaves.SectionsOf
 
 /-!
 概要：元の全重み切断の離散重みでの値を、元の圏上の指定した sectionsOf の値と比較する。
 方針：既存の元の圏の同値な比較と同じ底の射影の等式を、指定極限の一意性へ渡す。
+  文献対応：HTT 5.1.5.6、Kerodon §9.5（Tag 06NC）、S8-4 の集合重みの値。
 規約：元の離散前層の埋め込み、全切断関手、sectionsOf の同じ選択を保持する。
-使われ方：HTT 5.1.5.6、Kerodon §9.5（Tag 06NC）、S8-4 の集合重みの値。
 -/
 
 @[expose] public noncomputable section
@@ -27,6 +29,8 @@ variable {C : Type u} [SmallCategory C] {E : SSet.{u + 1}} [Quasicategory E]
 
 /-- 離散重みでの同じ全切断関手の値と、元の圏上の指定切断の値の比較。
 HTT 5.1.5.6、Kerodon §9.5（Tag 06NC）。指定した元の二つの極限錐の一意性を使う。 -/
+@[cite HTT "5.1.5.6" (partial := special)
+  "小さい通常の site の集合重みでの右 Kan 延長の値の比較（双対）。全関手の圏同値は含めない。"]
 def weightedSections_discrete (O : Presheaf C E)
     (hE : SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable E)
     (P : Cᵒᵖ ⥤ Type u) (hP : HasLimit (sectionsOfDiagram P O)) :

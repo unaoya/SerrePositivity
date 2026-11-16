@@ -6,8 +6,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Twis
 /-!
 概要：固定 Yoneda の全族の実現と、通常の共同 Hom の全実現の添字を揃える。
 方針：通常の Yoneda と co-Yoneda の Hom の合成則を比較し、既存の共同実現を制限する。
+  文献対応：HTT 5.1.5.6、Kerodon Proposition 8.1.1.10（Tag 03JN）、固定 Yoneda の全族比較。
 規約：同じ二変数の関手の等式を保持し、頂点ごとの比較へ弱めない。
-使われ方：HTT 5.1.5.6、Kerodon Proposition 8.1.1.10（Tag 03JN）、固定 Yoneda の全族比較。
 -/
 
 @[expose] public noncomputable section

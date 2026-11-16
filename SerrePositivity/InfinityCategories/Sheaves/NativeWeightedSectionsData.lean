@@ -1,11 +1,13 @@
 module
 
+public meta import SerrePositivity.Util.Citation
+
 public import SerrePositivity.InfinityCategories.Sheaves.NativeWeightedSections
 
 /-!
 概要：一般重みの全切断関手と指定右 Kan 変換を同じ選択で固定する。
 方針：構成した存在定理の一つの選択から、全関手・変換・局所極限を回収する。
-使われ方：HTT 5.1.5.6、Kerodon §8.4（Tag 03V7）の重み付き切断。
+  文献対応：HTT 5.1.5.6、Kerodon §8.4（Tag 03V7）の重み付き切断。
 規約：頂点ごとに別の関手を選ばない。
 -/
 
@@ -22,6 +24,8 @@ namespace SerrePositivity.InfinityCategories.Sheaves
 variable {A : SSet.{u}} [Quasicategory A] {E : SSet.{u + 1}} [Quasicategory E]
 
 /-- 同じ全切断関手と指定した右 Kan 変換を固定する。 -/
+@[cite HTT "5.1.5.6" (partial := special)
+  "実 Yoneda の反対に沿う指定右 Kan 延長の存在に特殊化する。係数には presentable 性を仮定する。"]
 def nativeWeightedSectionsData
     (O : ((SSet.uliftFunctor.{u + 1, u}).obj A).op ⟶ E)
     (hE : SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable E) :

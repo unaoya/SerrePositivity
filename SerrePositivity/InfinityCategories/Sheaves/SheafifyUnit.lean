@@ -7,7 +7,7 @@ public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExten
 /-!
 概要：指定層化の単位を全前層で固定し、層では可逆であることを示す。
 方針：反射単位の成分を、前層の頂点の往復の等式で運ぶ。
-使われ方：HTT 5.2.7.4・6.2.2.7、Kerodon Tag 02EH の反射像の単位。
+  文献対応：HTT 5.2.7.4・6.2.2.7、Kerodon Tag 02EH の反射像の単位。
 規約：独立な同値を選ばず、同じ反射の単位を使う。
 -/
 

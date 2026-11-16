@@ -5,7 +5,7 @@ public import SerrePositivity.InfinityCategories.Sheaves.SieveFactorizationRight
 /-!
 概要：各引き戻し篩での降下から、元の二段分解の指定右 Kan 条件を得る。
 方針：全頂点を元の中間射に戻し、同じ指定局所錐の極限性の同値を適用する。
-使われ方：HTT 6.2.2.6、Kerodon §7.3（Tag 02Y1）の降下の合成。
+  文献対応：HTT 6.2.2.6、Kerodon §7.3（Tag 02Y1）の降下の合成。
 規約：係数には準圏性だけを仮定する。大域の極限の存在は仮定しない。
 -/
 

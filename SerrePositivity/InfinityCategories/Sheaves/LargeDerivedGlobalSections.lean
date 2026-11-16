@@ -7,7 +7,7 @@ public import SerrePositivity.InfinityCategories.Sheaves.SheafGlobalSectionsFami
 /-!
 概要：本質的小さい大きい site の全前層の RΓ を、小さい模型の元の反射で定義する。
 方針：全再添字・元の指定層化・Γ を合成し、元の大きい Γ との全単位比較を保持する。
-使われ方：BS Remark 4.5、HTT 6.2.2.7、Kerodon §6.2（Tag 02EH）の小さい模型での層化。
+  文献対応：BS Remark 4.5、HTT 6.2.2.7、Kerodon §6.2（Tag 02EH）の小さい模型での層化。
 規約：設計どおり層化は SmallModel で行う。係数 SSet(u+1)、元の全前層を定義域とする。
 -/
 

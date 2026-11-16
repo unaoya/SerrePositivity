@@ -6,7 +6,7 @@ public import Mathlib.CategoryTheory.Sites.Sieves.Presheaf
 /-!
 概要：篩の射の圏と前層の要素の圏を、基底への射影を保つ同値で結ぶ。
 方針：同じ射をOverの対象と篩前層の要素として読み替える。
-使われ方：HTT 6.2.2.6、Kerodon §7.1（Tag 02H1）の制限錐の再添字。
+  文献対応：HTT 6.2.2.6、Kerodon §7.1（Tag 02H1）の制限錐の再添字。
 規約：篩・基底を固定し、後続で元の指定制限錐を移す。
 -/
 

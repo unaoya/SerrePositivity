@@ -9,7 +9,7 @@ public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfi
 /-!
 概要：層の全 loop 族の四つの角が、元の層の頂点条件を満たすことを確認する。
 方針：終点は元の層、始点は係数の loop 同値、残る二角は周囲の零頂点を使う。
-使われ方：HA §1.1.3、Kerodon §7.1（Tag 02H1）の安定な層の部分圏。
+  文献対応：HA §1.1.3、Kerodon §7.1（Tag 02H1）の安定な層の部分圏。
 規約：既存の関手圏の全 loop 族を使い、対象ごとの選択で全族を代用しない。
 -/
 

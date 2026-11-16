@@ -5,7 +5,7 @@ public import SerrePositivity.InfinityCategories.Sheaves.SieveFactorizationLimit
 /-!
 概要：元の各引き戻し篩で降下するとき、元の篩と交叉篩の降下は同値。
 方針：指定右 Kan の全錐比較と、二段分解から交叉への既存の left cofinal 射を合成する。
-使われ方：HTT 6.2.2.6、Kerodon §7.3（Tag 02Y1）の生成系からの降下。
+  文献対応：HTT 6.2.2.6、Kerodon §7.3（Tag 02Y1）の生成系からの降下。
 規約：任意の準圏係数。極限の存在を追加仮定せず、元の restrictionCone を結論する。
 -/
 

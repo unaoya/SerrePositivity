@@ -7,7 +7,7 @@ public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Examp
 /-!
 概要：層の頂点条件の極限閉性と、極限を保つ係数移送を固定する。
 方針：生成辺の局所性により既存の極限閉性を適用し、係数移送には元の篩錐を使う。
-使われ方：HTT 6.2.2.7、Kerodon Tag 06VHの局所対象の極限閉性。
+  文献対応：HTT 6.2.2.7、Kerodon Tag 06VHの局所対象の極限閉性。
 規約：極限錐は元の前層圏の錐。新たな極限の存在を前提に加えない。
 -/
 

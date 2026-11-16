@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.Util.Citation
+
 public import SerrePositivity.InfinityCategories.Sheaves.CechShape
 public import SerrePositivity.InfinityCategories.Sheaves.CechCofinalityModel
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.StrictNerveMaps
@@ -8,7 +10,7 @@ public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofin
 /-!
 概要：元の Čech 形状と大きい site の Čech 形状の left cofinality。
 方針：同じ図式の小さい模型での Quillen A を、矢の厳密な同型で戻す。
-使われ方：HTT 4.1.3.1、Kerodon Theorem 7.2.3.1（Tag 02NY）。
+  文献対応：HTT 4.1.3.1、Kerodon Theorem 7.2.3.1（Tag 02NY）。
 規約：小さい site と大きい site とも、元の指定形状の cofinality を結論する。
 -/
 
@@ -35,6 +37,8 @@ def nerveAsSmallMaxIso (D : Type u) [Category.{v} D] :
   inv_hom_id := rfl
 
 /-- 小さい site の指定された元の Čech 形状は left cofinal。 -/
+@[cite HTT "4.1.3.1" (partial := special)
+  "弱終対象の指定 Čech nerve の共終性に特殊化する。一般の射についての共終性判定全体ではない。"]
 lemma cechShape_isLeftCofinal {C : Type u} [SmallCategory C] {U : C}
     (d : CategoryTheory.CechNerveData U) (hU : CategoryTheory.IsWeaklyTerminal U) :
     IsLeftCofinal (cechShape d) := by
@@ -45,6 +49,8 @@ lemma cechShape_isLeftCofinal {C : Type u} [SmallCategory C] {U : C}
   exact (cechSmallFunctor_nerve_isLeftCofinal.{u, u, u + 1} d hU).of_arrow_iso e.symm
 
 /-- 大きい site でも、元の小さい Δ からの同じ Čech 形状が left cofinal。 -/
+@[cite HTT "4.1.3.1" (partial := special)
+  "弱終対象の指定 Čech nerve の共終性に特殊化する。一般の射についての共終性判定全体ではない。"]
 lemma cechShapeLarge_isLeftCofinal {C : Type (u + 1)} [Category.{u} C] {U : C}
     (d : CategoryTheory.CechNerveData U) (hU : CategoryTheory.IsWeaklyTerminal U) :
     IsLeftCofinal (cechShapeLarge d) := by

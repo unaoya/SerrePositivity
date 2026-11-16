@@ -7,8 +7,8 @@ public import SerrePositivity.InfinityCategories.Sheaves.PresheafYonedaShapeValu
 /-!
 概要：元の全重み切断の値を、移した重みの小さい left 全空間の指定極限へ接続する。
 方針：指定形状同型と native な指定極限の比較を合成し、係数の逆同型を消去する。
+  文献対応：HTT 5.1.5.6、Kerodon §9.5（Tag 06NC）、S8 の離散重みへの接続。
 規約：元の全切断関手、重み、指定した極限錐を保持する。
-使われ方：HTT 5.1.5.6、Kerodon §9.5（Tag 06NC）、S8 の離散重みへの接続。
 -/
 
 @[expose] public noncomputable section

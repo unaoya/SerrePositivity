@@ -9,7 +9,7 @@ public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfi
 /-!
 概要：係数の同じ指定同値を、層の全部分準圏へ制限する。
 方針：元の篩錐の極限性の保存反映と、全部分圏の同値判定を組み合わせる。
-使われ方：HA §1.1.3、Kerodon §4.5.1（Tag 01DQ）の係数の同値に沿う層の移送。
+  文献対応：HA §1.1.3、Kerodon §4.5.1（Tag 01DQ）の係数の同値に沿う層の移送。
 規約：全前層関手との可換式を等式として保持し、点ごとの同値へ弱めない。
 -/
 

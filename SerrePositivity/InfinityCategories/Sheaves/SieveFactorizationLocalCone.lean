@@ -8,7 +8,7 @@ public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofin
 /-!
 概要：二段分解の局所 comma 上の指定錐を、元の引き戻し篩の制限錐へ接続する。
 方針：三角形の合成の全脚を回収し、実際の cofinal 形状比較で極限性を移す。
-使われ方：HTT 6.2.2.6 の生成系からの降下。係数に極限の存在を追加仮定しない。
+  文献対応：HTT 6.2.2.6 の生成系からの降下。係数に極限の存在を追加仮定しない。
 -/
 
 @[expose] public noncomputable section

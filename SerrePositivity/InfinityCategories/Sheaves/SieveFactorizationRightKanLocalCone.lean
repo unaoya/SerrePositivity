@@ -5,7 +5,7 @@ public import SerrePositivity.InfinityCategories.Sheaves.SieveFactorizationRight
 /-!
 概要：二段分解の元の局所錐を、指定右 Kan 輸送の通常の局所錐として回収する。
 方針：左右 comma の既存反転同値と AsSmall 比較で、同じ全三角形を照合する。
-使われ方：HTT 6.2.2.6、Kerodon §7.3（Tag 02Y1）の降下の合成。
+  文献対応：HTT 6.2.2.6、Kerodon §7.3（Tag 02Y1）の降下の合成。
 規約：元の余単位・頂点・全脚を保持する。
 -/
 

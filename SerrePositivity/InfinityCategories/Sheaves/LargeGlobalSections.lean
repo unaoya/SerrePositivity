@@ -7,7 +7,7 @@ public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories
 /-!
 概要：本質的小さい大きい site の元の全前層圏上で、大域切断の全右随伴を作る。
 方針：小さい模型から同じ universe の presentable 性を移し、既存の随伴関手定理を用いる。
-使われ方：HTT 5.5.2.9・6.2.2.6、Kerodon §7.1（Tag 02H1）の大域切断。
+  文献対応：HTT 5.5.2.9・6.2.2.6、Kerodon §7.1（Tag 02H1）の大域切断。
 規約：係数を SSet(u+2) に上げず、元の定値関手の右随伴を結論する。
 -/
 

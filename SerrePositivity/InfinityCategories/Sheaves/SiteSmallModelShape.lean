@@ -12,7 +12,7 @@ public import Mathlib.CategoryTheory.EssentiallySmall
 /-!
 概要：大きい site の元の nerve と小さい模型の持ち上げた nerve を、同じ係数の宇宙で比較する。
 方針：既存の二つの nerve–AsSmall の同型と通常圏の同値を合成する。
-使われ方：HTT 1.2.7.3、Kerodon §4.5.1（Tag 01DQ）の本質的に小さい site の前層圏。
+  文献対応：HTT 1.2.7.3、Kerodon §4.5.1（Tag 01DQ）の本質的に小さい site の前層圏。
 規約：対象は Type(u+1)、射は Type u、係数は SSet(u+1)。係数の宇宙を上げず、κを新設しない。
 -/
 

@@ -27,7 +27,7 @@ public import SerrePositivity.InfinityCategories.Sheaves.SieveSectionsDiagram
 /-!
 概要：集合重みの指定切断錐を、元の篩の制限錐へ接続する。
 方針：既存のG8の射と錐の普遍性を使い、全錐の再添字を照合する。
-使われ方：HTT 6.2.2.6、Kerodon §7.1（Tag 02H1）の層条件の切断表示。
+  文献対応：HTT 6.2.2.6、Kerodon §7.1（Tag 02H1）の層条件の切断表示。
 規約：元の指定錐・比較辺を保持する。
 -/
 

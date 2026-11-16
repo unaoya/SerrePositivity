@@ -6,7 +6,7 @@ public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Homot
 /-!
 概要：小さい site の前層形状と、同じ AsSmall 表示の反対 nerve を厳密に比較する。
 方針：全合成可能射列へ AsSmall.up.op と AsSmall.down.op を後合成する。
-使われ方：HTT 1.2.7.3、Kerodon §4.5.1（Tag 01DQ）の形状の宇宙表示の変更。
+  文献対応：HTT 1.2.7.3、Kerodon §4.5.1（Tag 01DQ）の形状の宇宙表示の変更。
 規約：係数は SSet(u+1) のまま、反対圏と持ち上げの順序を明示する。
 -/
 

@@ -6,7 +6,7 @@ public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Adjoint
 /-!
 概要：層の全族で、元の反射単位に沿う Γ・RΓ と位相の比較を固定する。
 方針：包含への制限で可逆な同じ反射単位を、全 Γ 関手で送る。
-使われ方：HTT 6.2.2.7、Kerodon §6.2（Tag 02EH）、BS Remark 4.5。
+  文献対応：HTT 6.2.2.7、Kerodon §6.2（Tag 02EH）、BS Remark 4.5。
 規約：全パラメータ上の関手同型を返す。位相の比較にも同じ単位を用いる。
 -/
 

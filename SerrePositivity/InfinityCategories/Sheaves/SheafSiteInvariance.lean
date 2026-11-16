@@ -7,7 +7,7 @@ public import Mathlib.CategoryTheory.Sites.Equivalence
 /-!
 概要：対応する被覆位相を持つ site 同値に沿い、層条件を保存し反映する。
 方針：元の篩圏の同値と指定錐比較を用い、逆向きは同じ site 同値の余単位で戻す。
-使われ方：HTT 6.2.2.6、Kerodon §4.5.1（Tag 01DQ）の site の同値による輸送。
+  文献対応：HTT 6.2.2.6、Kerodon §4.5.1（Tag 01DQ）の site の同値による輸送。
 規約：元の被覆保存性を両向きに明示し、小さい模型以外の新しい濃度条件を加えない。
 -/
 

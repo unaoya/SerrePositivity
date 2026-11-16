@@ -8,8 +8,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Limit
 /-!
 概要：元の離散押し出し四角形を、同じ通常の押し出し余錐の実現へ同定する。
 方針：span の二辺と指定合成二単体を比較し、二三角形の押し出しの外延性を用いる。
+  文献対応：HTT 4.2.4.1・6.2.2.7、Kerodon 7.5.4.6（Tag 03BB）、S8-3。
 規約：型は drafts の IsPushoutSquare と任意の余極限頂点の離散性の積のまま。
-使われ方：HTT 4.2.4.1・6.2.2.7、Kerodon 7.5.4.6（Tag 03BB）、S8-3。
 -/
 
 @[expose] public noncomputable section

@@ -6,7 +6,7 @@ public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Limit
 /-!
 概要：篩の二段分解の三角形から、元の係数前層での指定右 Kan 輸送を固定する。
 方針：元の自然変換を AsSmall へ写し、既存の nerve の輸送に同じ係数射を後合成する。
-使われ方：HTT 6.2.2.6、Kerodon §7.3（Tag 02Y1）の降下の合成。
+  文献対応：HTT 6.2.2.6、Kerodon §7.3（Tag 02Y1）の降下の合成。
 規約：局所極限性は後続で証明する。余単位や局所輸送を点ごとに選び直さない。
 -/
 

@@ -7,7 +7,7 @@ public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Limit
 /-!
 概要：全極限錐族の頂点を、大域切断関手と同じ指定 adjunct で比較する。
 方針：定値図式の右随伴と全錐の既存の普遍性を組み合わせる。
-使われ方：HTT 5.5.2.9、Kerodon §7.1（Tag 02H1）の Γ の関手性。
+  文献対応：HTT 5.5.2.9、Kerodon §7.1（Tag 02H1）の Γ の関手性。
 規約：全パラメータの一つの関手同型を返し、頂点ごとの同型だけで代用しない。
 -/
 

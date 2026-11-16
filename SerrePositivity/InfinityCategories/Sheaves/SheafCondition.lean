@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.Util.Citation
+
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.Cone
 public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.UniverseLimits
 public import Mathlib.CategoryTheory.Sites.Grothendieck
@@ -8,7 +10,7 @@ public import Mathlib.CategoryTheory.Comma.Over.Basic
 /-!
 概要：小さい通常siteの篩上の指定制限錐と、準圏値のČech層条件。
 方針：篩の射の充満部分圏の錐をnerve・宇宙持ち上げ・後合成で運ぶ。
-使われ方：HTT 6.2.2.6、Kerodon §7.1（Tag 02H1）の指定錐による層条件。
+  文献対応：HTT 6.2.2.6、Kerodon §7.1（Tag 02H1）の指定錐による層条件。
 規約：層はČech層。被覆生成・層化は後続の定理で示す。
 -/
 
@@ -36,8 +38,9 @@ abbrev Presheaf (𝒞 : Type u) [SmallCategory 𝒞] (E : SSet.{u + 1}) := presh
 
 /-- 概要：篩 S の射 (V → U) のなす圏（Over U の、S に属する射の充満部分圏）。
 方針：Mathlib の `Over` と `ObjectProperty.FullSubcategory`。
+  文献対応：S 上の制限図式の添字。HTT 6.2.2.6 の「S の元の圏」。
 規約：𝒞 が小さいのでこの圏も小さい。
-使われ方：S 上の制限図式の添字。HTT 6.2.2.6 の「S の元の圏」。 -/
+-/
 def sieveCategory {U : 𝒞} (S : Sieve U) : Type u :=
   ObjectProperty.FullSubcategory (fun f : Over U => S.arrows f.hom)
 
@@ -85,6 +88,8 @@ def restrictionCone (F : Presheaf 𝒞 E) {U : 𝒞} (S : Sieve U) : _root_.Serr
 方針：すべての被覆篩 S ∈ J U について `restrictionCone F S` が極限錐。
 規約：Čech 層。hypersheaf ではない（モジュールの規約を参照）。E に極限の存在は仮定しない。
 使われ方：層化の像、Γ の定義域、Cor 3.12(d)。 -/
+@[cite HTT "6.2.2.6" (partial := special)
+  "小さい通常の site の nerve に限る Čech 層条件。空間値の定義を一般の準圏値で定式化する。"]
 def IsSheaf (J : GrothendieckTopology 𝒞) (F : Presheaf 𝒞 E) : Prop :=
   ∀ (U : 𝒞) (S : Sieve U), S ∈ J U → _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (restrictionCone F S)
 

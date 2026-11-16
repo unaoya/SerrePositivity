@@ -6,7 +6,7 @@ public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Limit
 /-!
 概要：層条件と層の頂点条件を、元の全関手同型に沿って運ぶ。
 方針：指定した篩錐全体へ同じ同型を前合成し、極限性を移す。
-使われ方：HTT 6.2.2.6、Kerodon §7.1（Tag 02K2）の全錐比較、site の同値の輸送。
+  文献対応：HTT 6.2.2.6、Kerodon §7.1（Tag 02K2）の全錐比較、site の同値の輸送。
 規約：対象ごとの同型だけを仮定せず、全関手の同型を用いる。
 -/
 

@@ -7,7 +7,7 @@ public import Mathlib.CategoryTheory.Category.ULift
 /-!
 概要：Čech comma の収縮を対象・射の共通の宇宙の模型へ運ぶ。
 方針：AsSmall の同じ up/down を用い、元の二自然変換を持ち上げる。
-使われ方：HTT 4.1.3.1、Kerodon Theorem 7.2.3.1（Tag 02NY）と §3.2（Tag 00V2）。
+  文献対応：HTT 4.1.3.1、Kerodon Theorem 7.2.3.1（Tag 02NY）と §3.2（Tag 00V2）。
 規約：元の comma の対象と射の宇宙を同一視せず、持ち上げを明示する。
 -/
 

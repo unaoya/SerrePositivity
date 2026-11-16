@@ -8,8 +8,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotop
 /-!
 概要：離散前層の本質像を、点ごとの離散性で判定する。
 方針：既存の充満忠実な離散埋め込みの本質像に図式を持ち上げ、通常前層を読み戻す。
+  文献対応：HTT 5.5.6.28、Kerodon §3.1（Tag 00SZ）、S8 の離散層化への入力。
 規約：型は drafts/Sheaves/SpaceValued の元の型。点ごとの同型からの新しい貼り合わせを作らない。
-使われ方：HTT 5.5.6.28、Kerodon §3.1（Tag 00SZ）、S8 の離散層化への入力。
 -/
 
 @[expose] public noncomputable section

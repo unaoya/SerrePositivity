@@ -6,7 +6,7 @@ public import SerrePositivity.InfinityCategories.Sheaves.SiteSmallModelShape
 /-!
 概要：小さい site を AsSmall に表示したとき、元の引き戻し篩の圏を比較する。
 方針：Over.post の同値を既存の充満部分圏に制限し、AsSmall の同値を合成する。
-使われ方：HTT 6.2.2.6、Kerodon §7.1（Tag 02K2）の site の同値による輸送。
+  文献対応：HTT 6.2.2.6、Kerodon §7.1（Tag 02K2）の site の同値による輸送。
 規約：係数の宇宙は変えず、被覆篩の全射を保持する。
 -/
 

@@ -6,8 +6,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanEx
 /-!
 概要：固定した元の全切断関手の値と、実際の反対 Yoneda の指定局所極限を比較する。
 方針：元の全族の比較と前層形状の指定同型を、指定極限の頂点比較で合成する。
+  文献対応：HTT 5.1.5.6、Kerodon Definition 7.3.1.2（Tag 02Y9）、S8 の離散重みへの接続。
 規約：元の切断関手を変えず、係数と重みを指定した同型で移す。
-使われ方：HTT 5.1.5.6、Kerodon Definition 7.3.1.2（Tag 02Y9）、S8 の離散重みへの接続。
 -/
 
 @[expose] public noncomputable section

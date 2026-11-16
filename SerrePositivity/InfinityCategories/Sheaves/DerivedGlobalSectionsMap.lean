@@ -5,7 +5,7 @@ public import SerrePositivity.InfinityCategories.Sheaves.GlobalSectionsConeCompa
 /-!
 概要：同じ層化と大域切断の全関手から、選択済み RΓ 頂点への射を構成する。
 方針：指定錐の adjunct による比較を両端に置き、元の全関手の射を運ぶ。
-使われ方：HTT 5.5.2.9・6.2.2.7、Kerodon §7.1（Tag 02H1）の RΓ の関手性。
+  文献対応：HTT 5.5.2.9・6.2.2.7、Kerodon §7.1（Tag 02H1）の RΓ の関手性。
 規約：単位と同じ層化関手を用い、射の類を回収する等式も保持する。
 -/
 

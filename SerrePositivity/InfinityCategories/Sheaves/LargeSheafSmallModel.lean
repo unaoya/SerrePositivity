@@ -6,7 +6,7 @@ public import SerrePositivity.InfinityCategories.Sheaves.SheafSiteEquivalence
 /-!
 概要：元の大きい site の層の全部分準圏を、同じ係数の小さい模型の層圏と比較する。
 方針：元の全前層の再添字を、元の層条件の保存・反映により制限する。
-使われ方：HTT 6.2.2.6、Kerodon §4.5.1（Tag 01DQ）の本質的小さい site の層圏。
+  文献対応：HTT 6.2.2.6、Kerodon §4.5.1（Tag 01DQ）の本質的小さい site の層圏。
 規約：射・全高次単体を保つ。同じ universe の再添字の等式を保持する。
 -/
 

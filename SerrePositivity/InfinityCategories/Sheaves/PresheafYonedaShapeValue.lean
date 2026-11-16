@@ -5,8 +5,8 @@ public import SerrePositivity.InfinityCategories.Sheaves.PresheafYonedaShapeIso
 /-!
 概要：指定した前層形状の同型の逆射を、同じ前層全体の前合成として計算する。
 方針：内部 Hom の第一変数の作用を、関手頂点と反対の頂点で評価する。
+  文献対応：HTT 5.1.5.6、Kerodon Definition 7.3.1.2（Tag 02Y9）、S8 の離散重みの比較。
 規約：元の全関手を保持し、対象ごとの別々の移送を選ばない。
-使われ方：HTT 5.1.5.6、Kerodon Definition 7.3.1.2（Tag 02Y9）、S8 の離散重みの比較。
 -/
 
 @[expose] public noncomputable section

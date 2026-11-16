@@ -6,7 +6,7 @@ public import Mathlib.CategoryTheory.Sites.Coverage
 /-!
 概要：生成 coverage の篩が全引き戻しで降下する場合、生成位相での元の層条件を得る。
 方針：生成位相と coverage の既存の Galois 対応を、同じ降下位相へ適用する。
-使われ方：HTT 6.2.2.6、Kerodon §7.3（Tag 02Y1）の生成被覆族の判定の中間補題。
+  文献対応：HTT 6.2.2.6、Kerodon §7.3（Tag 02Y1）の生成被覆族の判定の中間補題。
 規約：生成篩そのものの降下だけを入力とする drafts の最終定理ではない。
 全引き戻しの条件を明示し、これを省略した最終型への接続は別に証明する。
 -/

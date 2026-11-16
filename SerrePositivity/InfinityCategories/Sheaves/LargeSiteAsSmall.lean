@@ -6,7 +6,7 @@ public import SerrePositivity.InfinityCategories.Sheaves.SiteSmallModelShape
 /-!
 概要：本質的小さい大きい site の元の前層と全被覆篩を、同じ宇宙の AsSmall 表示で扱う。
 方針：元の nerve の厳密な同型と、通常圏の同値による篩の順像・逆像を用いる。
-使われ方：HTT 6.2.2.6、Kerodon §4.5.1（Tag 01DQ）の小さい模型への置き換え。
+  文献対応：HTT 6.2.2.6、Kerodon §4.5.1（Tag 01DQ）の小さい模型への置き換え。
 規約：対象 Type(u+1)・射 Type u・係数 SSet(u+1)。κの切り落としを新設しない。
 -/
 

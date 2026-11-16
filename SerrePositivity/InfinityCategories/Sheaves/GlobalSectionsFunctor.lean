@@ -6,7 +6,7 @@ public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories
 /-!
 概要：大域切断と層化後の大域切断の全関手を、同じ反射の単位とともに固定する。
 方針：定値図式の右随伴を一度選び、元の反射単位を後合成で送る。
-使われ方：HTT 5.5.2.9・6.2.2.7、Kerodon §7.1（Tag 02H1）。
+  文献対応：HTT 5.5.2.9・6.2.2.7、Kerodon §7.1（Tag 02H1）。
 規約：頂点ごとの選択を射への作用の代わりにしない。指定極限錐の頂点との比較は別途保持する。
 -/
 

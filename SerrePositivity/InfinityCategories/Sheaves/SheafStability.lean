@@ -1,11 +1,13 @@
 module
 
+public meta import SerrePositivity.Util.Citation
+
 public import SerrePositivity.InfinityCategories.Sheaves.SheafLoopFamily
 
 /-!
 概要：任意の小さい site と安定な presentable 係数について、層の全部分準圏の安定性を示す。
 方針：同じ零頂点と有限極限、持ち上げた全 loop 切断と同値を既存の安定性判定に入れる。
-使われ方：HA §1.1.3、HTT 6.2.2.7。Kerodon §7.1（Tag 02H1）の元の極限錐を使う。
+  文献対応：HA §1.1.3、HTT 6.2.2.7。Kerodon §7.1（Tag 02H1）の元の極限錐を使う。
 規約：Čech 層の元の定義を使い、hypercompletion や左完全性の追加条件を課さない。
 -/
 
@@ -23,6 +25,8 @@ namespace SerrePositivity.InfinityCategories.Sheaves
 variable {C : Type u} [SmallCategory C] {E : SSet.{u + 1}} [Quasicategory E]
 
 /-- 安定な presentable 係数の層の元の全部分準圏は安定である。 -/
+@[cite HA "1.1.3.2" (partial := special)
+  "安定な前層準圏の全部分圏のうち、小さい通常の site の Čech 層の安定性に特殊化する。presentable 係数を仮定する。"]
 theorem sheaf_isStable [IsStable E] (J : GrothendieckTopology C)
     (hE : SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable E) :
     IsStable (SheafCat J E) := by

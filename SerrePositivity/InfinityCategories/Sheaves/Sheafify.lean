@@ -5,7 +5,7 @@ public import SerrePositivity.InfinityCategories.Sheaves.SheafificationReflectio
 /-!
 概要：指定した反射の自己関手を層化として読み、その像が層であることを示す。
 方針：反射像の所属を既存のlocalization_memから得る。
-使われ方：HTT 6.2.2.7、Kerodon Tag 06VH の層化反射。
+  文献対応：HTT 6.2.2.7、Kerodon Tag 06VH の層化反射。
 規約：同じ反射の選択を全前層で用いる。反射の存在は後続の生成辺から供給する。
 -/
 

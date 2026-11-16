@@ -7,8 +7,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanEx
 /-!
 概要：固定した元の反対 Yoneda に沿って、全重みの同じ右 Kan 延長を構成する。
 方針：実際の Yoneda の右 Kan 延長の存在を、指定した形状同型と関手同型で移す。
+  文献対応：HTT 5.1.5.6、Kerodon Definition 7.3.1.2（Tag 02Y9）、S8 の重み付き切断。
 規約：元の oppositeSpaceYoneda を用い、一つの全関手と指定変換を結論にする。
-使われ方：HTT 5.1.5.6、Kerodon Definition 7.3.1.2（Tag 02Y9）、S8 の重み付き切断。
 -/
 
 @[expose] public noncomputable section

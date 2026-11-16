@@ -7,7 +7,7 @@ public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Limit
 /-!
 概要：元の各引き戻し篩の降下から、二段分解上の同じ錐と元の篩の錐を比較する。
 方針：既検証の指定右 Kan 条件を同じ通常の三角形へ適用し、AsSmall の表示から戻す。
-使われ方：HTT 6.2.2.6、Kerodon §7.3（Tag 02Y1）の交叉篩の降下。
+  文献対応：HTT 6.2.2.6、Kerodon §7.3（Tag 02Y1）の交叉篩の降下。
 規約：任意の準圏係数。極限の存在を追加仮定しない。
 -/
 

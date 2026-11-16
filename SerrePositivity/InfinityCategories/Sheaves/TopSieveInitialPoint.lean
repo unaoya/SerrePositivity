@@ -7,7 +7,7 @@ public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfi
 /-!
 概要：最大篩の制限形状の恒等射を指定し、その点への制限がleft anodyneであることを示す。
 方針：通常の終対象の反対を始対象とし、AsSmallで宇宙を合わせる。
-使われ方：HTT 6.2.2.6、Kerodon §7.1（Tag 02H1）の最大篩の降下。
+  文献対応：HTT 6.2.2.6、Kerodon §7.1（Tag 02H1）の最大篩の降下。
 規約：元の恒等射の点を保つ。
 -/
 

@@ -7,7 +7,7 @@ public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories
 /-!
 概要：同じ篩テンソル辺の局所性を、切断比較辺の写像空間で判定する。
 方針：G8の元の全四角形と両縦辺の同値性を用いて同値性を移す。
-使われ方：HTT 5.5.4.15・6.2.2.7、Kerodon Tag 06VH の層生成辺の局所性。
+  文献対応：HTT 5.5.4.15・6.2.2.7、Kerodon Tag 06VH の層生成辺の局所性。
 規約：独立な写像空間比較を選ばず、指定された切断錐とG8の比較を使う。
 -/
 

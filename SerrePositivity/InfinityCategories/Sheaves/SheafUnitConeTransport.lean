@@ -7,7 +7,7 @@ public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfi
 /-!
 概要：層の元の単位に沿い、頂点を固定して RΓ の全極限錐を元の前層へ戻す。
 方針：同じ単位の代表を指定 prism に直し、既存の全錐の輸送を適用する。
-使われ方：HTT 6.2.2.7、Kerodon §7.1（Tag 02H1）の層の大域切断の比較。
+  文献対応：HTT 6.2.2.7、Kerodon §7.1（Tag 02H1）の層の大域切断の比較。
 規約：独立な頂点の同型を選ばず、指定単位の全時刻の制限を保持する。
 -/
 

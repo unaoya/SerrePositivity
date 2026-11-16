@@ -11,7 +11,7 @@ public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfi
 /-!
 概要：安定な presentable 係数の層圏に、有限極限と零対象を元の前層圏から持ち上げる。
 方針：層の極限閉性を用い、同じ頂点の極限錐と零対象性を全部分複体へ戻す。
-使われ方：HA §1.1.3、HTT 6.2.2.7、Kerodon §7.1（Tag 02H1）の極限と始終対象。
+  文献対応：HA §1.1.3、HTT 6.2.2.7、Kerodon §7.1（Tag 02H1）の極限と始終対象。
 規約：周囲で選んだ零頂点をそのまま使う。層化の左完全性はまだ結論しない。
 -/
 

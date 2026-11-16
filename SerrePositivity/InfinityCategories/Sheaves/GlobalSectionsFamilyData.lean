@@ -6,7 +6,7 @@ public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Limit
 /-!
 概要：大域切断の指定極限錐を、元の全前層圏上の一つの coherent な族として選ぶ。
 方針：既存の全極限錐族の存在に各前層の小極限を渡す。
-使われ方：HTT 5.4.7.9、Kerodon §7.1（Tag 02H1）の site 同値に沿う全 Γ 比較。
+  文献対応：HTT 5.4.7.9、Kerodon §7.1（Tag 02H1）の site 同値に沿う全 Γ 比較。
 規約：個々の前層の錐の独立な選択で、全族の射や高次単体を代用しない。
 -/
 

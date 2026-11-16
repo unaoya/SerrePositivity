@@ -9,7 +9,7 @@ public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories
 /-!
 概要：一般の空間値重みの切断を、反対 Yoneda に沿う実右 Kan 延長として構成する。
 方針：既存の小さい元の圏との比較で局所図式の極限を取り、右 Kan 存在定理を使う。
-使われ方：HTT 5.1.5.6、Kerodon §8.4（Tag 03V7）の重み付き切断。
+  文献対応：HTT 5.1.5.6、Kerodon §8.4（Tag 03V7）の重み付き切断。
 規約：標的には小極限だけを使い、大きい局所形状の極限を仮定しない。
 -/
 

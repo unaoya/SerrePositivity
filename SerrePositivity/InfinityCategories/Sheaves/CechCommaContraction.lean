@@ -5,7 +5,7 @@ public import SerrePositivity.InfinityCategories.Sheaves.CechCommaPrefix
 /-!
 概要：Čech comma の恒等関手と根から、同じ prefix 関手への自然変換を作る。
 方針：元の座標を選ぶ tail と、根の零座標を選ぶ定値作用素を用いる。
-使われ方：HTT 4.1.3.1、Kerodon Theorem 7.2.3.1（Tag 02NY）の cofinality。
+  文献対応：HTT 4.1.3.1、Kerodon Theorem 7.2.3.1（Tag 02NY）の cofinality。
 規約：二つの変換を同じ収縮関手へ向ける。comma の終対象性を仮定しない。
 -/
 

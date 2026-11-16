@@ -7,7 +7,7 @@ public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Limit
 /-!
 概要：AsSmall の表示の被覆篩と、元の引き戻し篩の指定制限錐を比較する。
 方針：構成済みの篩圏の同値と、通常錐の宇宙表示の自然性を合成する。
-使われ方：HTT 6.2.2.6、Kerodon §7.1（Tag 02K2）の小さい模型への層条件の輸送。
+  文献対応：HTT 6.2.2.6、Kerodon §7.1（Tag 02K2）の小さい模型への層条件の輸送。
 規約：頂点だけでなく指定錐の全射を比較し、係数の宇宙を上げない。
 -/
 

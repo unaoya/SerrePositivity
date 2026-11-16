@@ -10,8 +10,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCat
 /-!
 概要：集合値前層の指定押し出し余錐を同じ離散前層の余極限として実現する。
 方針：元の全余錐の評価を同じ集合の余錐へ照合し、点ごとの余極限判定を使う。
+  文献対応：HTT 5.1.2.3・6.2.2.7、Kerodon 7.5.4.6（Tag 03BB）、S8-3。
 規約：単射性は一脚だけ。頂点と全ての脚、高次の族を同じ実現で保持する。
-使われ方：HTT 5.1.2.3・6.2.2.7、Kerodon 7.5.4.6（Tag 03BB）、S8-3。
 -/
 
 @[expose] public noncomputable section

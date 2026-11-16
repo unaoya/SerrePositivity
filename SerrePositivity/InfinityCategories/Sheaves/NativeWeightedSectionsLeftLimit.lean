@@ -7,8 +7,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Limit
 /-!
 概要：実際の重み付き切断の値を、小さい left 全空間上の指定極限と比較する。
 方針：既存の小さい元の圏の比較を二重反転の同型で送り、同じ底係数を保って錐を制限する。
+  文献対応：HTT 5.1.5.6、Kerodon §9.5（Tag 06NC）、S8 の集合重みとの比較。
 規約：新しい unstraightening を選ばず、既存の同じ射影と指定極限錐を使う。
-使われ方：HTT 5.1.5.6、Kerodon §9.5（Tag 06NC）、S8 の集合重みとの比較。
 -/
 
 @[expose] public noncomputable section

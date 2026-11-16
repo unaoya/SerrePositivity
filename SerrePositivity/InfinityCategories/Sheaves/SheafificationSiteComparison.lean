@@ -7,7 +7,7 @@ public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotop
 /-!
 概要：site 同値に沿う層化の全関手比較を、二つの指定反射の随伴から作る。
 方針：層の包含の可換正方形を指定逆へ移し、その mate の可逆性を使う。
-使われ方：HTT 6.2.2.7、Kerodon §6.1.3（Tag 02D4）の随伴の全自然比較。
+  文献対応：HTT 6.2.2.7、Kerodon §6.1.3（Tag 02D4）の随伴の全自然比較。
 規約：同じ指定反射を使う。単位との照合は後続の法則として別に保持する。
 -/
 

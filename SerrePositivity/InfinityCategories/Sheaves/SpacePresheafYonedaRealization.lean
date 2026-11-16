@@ -6,8 +6,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories
 /-!
 概要：固定した集合値 Yoneda の離散前層への全包含を、同じ二変数の Kan 図式の実現として読む。
 方針：既存の Kan 図式族の共同実現の curry の法則に、同じ Yoneda の族を代入する。
+  文献対応：HTT 5.1.5.6、Kerodon Corollary 5.6.0.6（Tag 028T）、S8 の固定 Yoneda の全族比較。
 規約：元の liftedSetYoneda と discretePresheafInclusion の射を保持する。
-使われ方：HTT 5.1.5.6、Kerodon Corollary 5.6.0.6（Tag 028T）、S8 の固定 Yoneda の全族比較。
 -/
 
 @[expose] public noncomputable section

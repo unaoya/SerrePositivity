@@ -8,7 +8,7 @@ public import Mathlib.Data.Fin.Tuple.Basic
 /-!
 概要：Čech の左 comma に固定した根の座標を付け加える。
 方針：元の有限冪の普遍性と既存の単体作用素の prefix を使う。
-使われ方：HTT 4.1.3.1、Kerodon Theorem 7.2.3.1（Tag 02NY）の comma の収縮。
+  文献対応：HTT 4.1.3.1、Kerodon Theorem 7.2.3.1（Tag 02NY）の comma の収縮。
 規約：根は指定射 V → U。弱終性から後で選び、有限積一般を仮定しない。
 -/
 

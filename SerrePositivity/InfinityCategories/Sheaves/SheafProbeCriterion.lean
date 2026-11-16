@@ -6,7 +6,7 @@ public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories
 /-!
 概要：小さい検出族で全被覆篩のテンソル辺を試して層条件を判定する。
 方針：G8の一辺の局所性、指定切断辺の判定、G14の検出性を合成する。
-使われ方：HTT 5.5.4.15・6.2.2.7、Kerodon Tag 06VH の層生成辺。
+  文献対応：HTT 5.5.4.15・6.2.2.7、Kerodon Tag 06VH の層生成辺。
 規約：検出族の自然性を追加仮定にしない。
 -/
 

@@ -6,7 +6,7 @@ public import SerrePositivity.InfinityCategories.Sheaves.SheafUnitConeTransport
 /-!
 概要：層の RΓ と Γ、および粗い位相との比較を元の単位から構成する。
 方針：同じ単位で輸送した極限錐を、同じ Γ の右随伴で比較する。
-使われ方：HTT 6.2.2.7、Kerodon §7.1（Tag 02H1）、BS Remark 4.5。
+  文献対応：HTT 6.2.2.7、Kerodon §7.1（Tag 02H1）、BS Remark 4.5。
 規約：位相比較には元の前層が細かい位相の層であることを要求する。
 -/
 

@@ -6,7 +6,7 @@ public import SerrePositivity.InfinityCategories.Sheaves.DerivedGlobalSectionsCo
 /-!
 概要：site 同値に沿う同じ指定極限錐から Γ の値を比較する。
 方針：元の大域切断錐を同じ形状写像で制限し、極限錐の一意性を使う。
-使われ方：HTT 6.2.2.6、Kerodon §7.1（Tag 02K2）の同値な添字での大域切断。
+  文献対応：HTT 6.2.2.6、Kerodon §7.1（Tag 02K2）の同値な添字での大域切断。
 規約：このファイルは値の比較。層化を含む全関手の比較を代用しない。
 -/
 

@@ -6,7 +6,7 @@ public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories
 /-!
 概要：小さい通常site上の前層の大域切断を、同じ指定極限錐の頂点として定める。
 方針：presentable係数の小極限の存在を使う。
-使われ方：HTT 5.5.2.4、Kerodon §7.1（Tag 02H1）、層化後のRΓの入口。
+  文献対応：HTT 5.5.2.4、Kerodon §7.1（Tag 02H1）、層化後のRΓの入口。
 規約：層化前のΓを定める。RΓとの比較は指定単位を用いて後続で示す。
 -/
 

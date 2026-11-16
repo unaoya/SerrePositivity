@@ -1,13 +1,15 @@
 module
 
+public meta import SerrePositivity.Util.Citation
+
 public import SerrePositivity.InfinityCategories.Sheaves.WeightedSectionsData
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.RightHomUniversal
 
 /-!
 概要：同じ指定変換を持つ重み付き切断の模型を、元の全関手と大域的に比較する。
 方針：既存の右 Kan の大域的一意性と指定変換への分解則をそのまま使う。
+  文献対応：HTT 5.1.5.6、Kerodon §7.3（Tag 02Y1）、S8 の自然な模型比較。
 規約：点ごとの同型を集める構成は行わず、全関手の一つの同型を返す。
-使われ方：HTT 5.1.5.6、Kerodon §7.3（Tag 02Y1）、S8 の自然な模型比較。
 -/
 
 @[expose] public noncomputable section
@@ -27,6 +29,8 @@ variable {C : Type u} [SmallCategory C] {E : SSet.{u + 1}} [Quasicategory E]
 
 /-- 元の同じ切断関手と指定した別の右 Kan 模型の大域的比較。
 HTT 5.1.5.6、Kerodon §7.3（Tag 02Y1）、既存の指定右 Kan 比較の特殊化。 -/
+@[cite HTT "4.3.2.15" (partial := special)
+  "小さい通常の site の反対 Yoneda に沿う指定右 Kan 延長の大域的一意性（双対）に特殊化する。"]
 def weightedSections_comparison : FunctorIso (weightedSections O hE) G :=
   kanRightKanExtensionIso (oppositeSpaceYoneda C) (weightedSectionsData O hE).2.val β
     (weightedSections_isRightKanExtension O hE) hβ

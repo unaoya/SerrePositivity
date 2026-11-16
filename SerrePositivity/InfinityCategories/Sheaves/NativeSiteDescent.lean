@@ -6,7 +6,7 @@ public import SerrePositivity.InfinityCategories.Sheaves.SheafSiteInvariance
 /-!
 概要：係数と同じ宇宙の nerve 上で、元の被覆篩の指定制限錐を比較する。
 方針：既存の篩圏の同値と通常の錐の自然性を、宇宙の持ち上げなしで用いる。
-使われ方：HTT 6.2.2.6、Kerodon §7.1（Tag 02K2）の同値な site 間の層条件。
+  文献対応：HTT 6.2.2.6、Kerodon §7.1（Tag 02K2）の同値な site 間の層条件。
 規約：大きい site の AsSmall 表示でも係数の宇宙を上げないための補助表示。
 -/
 

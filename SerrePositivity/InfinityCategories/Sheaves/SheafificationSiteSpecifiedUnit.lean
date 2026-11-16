@@ -5,7 +5,7 @@ public import SerrePositivity.InfinityCategories.Sheaves.SheafificationSiteSpeci
 /-!
 概要：site 同値に沿う指定層化比較が、元の二つの層化単位を保つことを示す。
 方針：元の包含の正方形と同じ横の mate の逆に、既存の全二胞体の単位法則を適用する。
-使われ方：HTT 6.2.2.7、Kerodon §6.2（Tag 02EH）の指定反射の輸送。
+  文献対応：HTT 6.2.2.7、Kerodon §6.2（Tag 02EH）の指定反射の輸送。
 規約：元の hJ・hK の単位、同じ包含の正方形、同じ全関手比較を保持する。
 -/
 

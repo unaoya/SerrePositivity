@@ -5,7 +5,7 @@ public import SerrePositivity.CategoryTheory.CechNerveData
 /-!
 概要：指定 Čech 脈体の有限冪への射を、各座標の指定射から作る。
 方針：CechNerveData の積錐の元の普遍性だけを用いる。
-使われ方：HTT 4.1.3.1、Kerodon Theorem 7.2.3.1（Tag 02NY）の Čech comma の収縮。
+  文献対応：HTT 4.1.3.1、Kerodon Theorem 7.2.3.1（Tag 02NY）の Čech comma の収縮。
 規約：有限積一般の存在を追加せず、元の指定された冪と射影を保持する。
 -/
 

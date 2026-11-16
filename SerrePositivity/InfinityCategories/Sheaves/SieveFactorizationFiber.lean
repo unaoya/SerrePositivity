@@ -6,7 +6,7 @@ public import Mathlib.CategoryTheory.Comma.StructuredArrow.Basic
 /-!
 概要：二段分解の中間射を固定した fiber と引き戻し篩の比較。
 方針：合成射と Over の可換三角形を相互に回収する。
-使われ方：HTT 6.2.2.6 の篩に沿う降下の合成。係数の極限存在は仮定しない。
+  文献対応：HTT 6.2.2.6 の篩に沿う降下の合成。係数の極限存在は仮定しない。
 -/
 
 @[expose] public noncomputable section

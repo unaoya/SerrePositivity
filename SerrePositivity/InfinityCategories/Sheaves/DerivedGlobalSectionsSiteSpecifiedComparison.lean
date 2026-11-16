@@ -6,7 +6,7 @@ public import SerrePositivity.InfinityCategories.Sheaves.GlobalSectionsSiteFamil
 /-!
 概要：指定単位を保つ層化比較から、任意の前層の全 RΓ の site 比較を作る。
 方針：同じ全層化同型へ Γ を後合成し、既存の指定極限錐族の Γ 比較へ接続する。
-使われ方：BS Remark 4.5、HTT 6.2.2.7、Kerodon §6.2（Tag 02EH）の反射と大域切断。
+  文献対応：BS Remark 4.5、HTT 6.2.2.7、Kerodon §6.2（Tag 02EH）の反射と大域切断。
 規約：前層が層であることは仮定せず、元の単位を保つ同じ比較を使用する。
 -/
 

@@ -6,8 +6,8 @@ public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfi
 /-!
 概要：固定した元の離散前層への Yoneda 射を、実際の Yoneda の同じ形状への制限と全族で比較する。
 方針：共同 Hom の分類図式の指定同型を既存の底同型で制限し、全関手空間の curry で送る。
+  文献対応：HTT 5.1.5.6、Kerodon Proposition 8.1.1.10（Tag 03JN）、
 規約：元の公開射を保持し、表現可能値ごとの同型には置き換えない。
-使われ方：HTT 5.1.5.6、Kerodon Proposition 8.1.1.10（Tag 03JN）、
 Corollary 5.6.0.6（Tag 028T）、S8 の重み付き右 Kan 拡張への入力。
 -/
 

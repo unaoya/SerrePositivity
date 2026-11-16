@@ -6,7 +6,7 @@ public import SerrePositivity.InfinityCategories.Project.SetWeightedTensors.SetS
 /-!
 概要：篩の切断図式は、要素圏の指定同値で制限図式へ戻る。
 方針：基底への射影保存とnerve・宇宙持ち上げの合成則を使う。
-使われ方：HTT 6.2.2.6、Kerodon §7.1（Tag 02H1）の層条件の切断表示。
+  文献対応：HTT 6.2.2.6、Kerodon §7.1（Tag 02H1）の層条件の切断表示。
 規約：G8で使う元の図式を再利用する。
 -/
 
