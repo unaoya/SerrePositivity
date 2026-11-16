@@ -47,3 +47,10 @@
 - 両方で一致した点：D(F_p) の道、CAlg を BE の局所化で定義しない、May の演算は定義の後の比較だけ、P⁰ は CAlg の射にしない（Warning 2.2.10）。
 - 並行の可能性：P4（norm・Tate）は安定 ∞ 圏と Kan 延長だけで作れ、P1〜P3 を待たない。P1-01〜07・10、P2-01 は D(k) を待たない。
 - 未決：(i) I03（D(k) の Sp 作用、HA 4.8.4.1 の C 線形性の C）。D(F_p) の道でも Sp の対称モノイダル構造が要る可能性。(ii) 先に置き場所を直すもの（SimplicialLocalization・ProjectiveModel・Tensor/Fixed・TensorPowerRepresentation、OE-W1 と調整）。(iii) 文献の略号 DAGXIII・NS の登録（`research/bibliography.json` と `Util/Citation.lean`）。(iv) 各束の外枠。
+
+## 6. 方針の決定（11-16 夕、ユーザー）
+
+- **文献に忠実に**：目標のために特別な場合だけを示すやり方はしない。定義も定理も原典の一般性で。§5 の「最小 M」・C_p／F_p に限る案は範囲の決め方としては採らない（型と依存の材料として使う）。
+- **範囲**：P⁰ への依存をたどって行き当たる節を、節ごとに全項目作る（章を丸ごとではない）。
+- **文献ごとに項目を立てる**：HA・HTT・Kerodon・DAG XIII・NS をそれぞれ項目として立てる。同じ内容が複数の文献にあっても重複してよい（例：norm は HA 6.1.6 と NS I.1 の両方）。
+- 未決：証明の忠実さの程度、既存の忠実でないもの（KST の Sp、BE の CAlg、May の演算、鎖の段階の Tate）の扱い。
