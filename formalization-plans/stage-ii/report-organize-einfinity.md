@@ -353,3 +353,13 @@ FreeProbeRelativeUnitWeak.leanは通常190秒でも、二readerと一readerの�
 適用後は元のrootの到達集合とその改名後が完全一致することを検査する。九本も比較対象956本に含み、直接の対象ビルド・v3bから除かない。整理の途中でrootの登録を勝手に加減しない。九本すべてをrootから到達するものとした未実行の準備assertionを、実際の元の到達集合を保存・比較する形に直した。
 
 一覧：済み 0／全体 5（うち追加 0）。
+
+## 9 昼の原参照と予覧の完了（21:12）
+
+**通常のcompiler採取823本＋個別に照合したILean一件＝824本、全プレビュー保留0**。scope-onlyのbyte不変132本を加えた比較対象は956本のまま。ソースの変更候補は802本（移動456本を含む）、採取済みでも予覧がbyte不変のものは22本。元の成功receiptとプレビューのsource／destination SHAを`preparation/reference-core-before-receipts.json.gz`、`reference-core-preview-manifest.json.gz`へ保存し、集計を`reference-core-preview-summary.json`に置いた。未完の採取を成功に数えていない。
+
+昼の採取のcontrollerは終了0で鍵を返した。二つの元の正式監査は23時以降、一枚ずつbulkの鍵で採取する。夜のdriverは鍵の外で待ち、各監査の失敗やプレビューの保留で停止する。実適用や数学的なソースの編集はこのdriverではしない。原監査の参照まで揃った後に、全差分・他レーンの影響を再確認し、引用／状態のmetadataを重ねて実適用・対象ビルド・v3b・引用照合・root・106正式監査・verifyへ進む。
+
+ここは段1の完成ではない。物理的な移動、移送後の対象ビルド／実native所有元／保存比較／正式監査は未検収。基準は30ae8948f、mainのCitationの変更は取り込んでいない。
+
+一覧：済み 0／全体 5（うち追加 0）。
