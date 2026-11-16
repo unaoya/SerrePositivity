@@ -2918,3 +2918,21 @@ mainの取り込みは11-16 16:25の指示どおり保留したまま。検証�
 
 
 2026-11-17 00:27の更新：前向き比較射と元の基底射影の成分の二本、および直接importerの入口の対象ビルドは5,338ジョブ・終了0（2g-g4-left-differential-native.log、依存のキャッシュ再生を含む）。同じ固定バイトの二本198行と入口2行は対象ビルド済みであり、作業木の本体計数は17,611行。別の共有鍵で所有宣言の小監査を開始し、生存するセッション37527へのpollで待機を確認した。監査はまだ未完のため、二本の数学は未コミット、宣言数・公理の監査成功とはまだ報告しない。検証コミット済みの実測は17,411行。次の基底の右逆・分裂の式と元の短複体の短完全性・元のkernelの完全性の移送の二本は下書きのままで、311行のmodule形式バッチを準備した（未検証・本体未登録）。mainは未取り込み。一覧：済み1／全体3（うち追加0）。
+
+
+### 元の再索引の鎖写像性と同じ基底射影の成分
+
+`SchemePerfectCechTupleLeftTotalDifferential`（131行）：
+- `schemePerfectCechTupleLeftTotalComponent_d`：元の各全次数の再索引は、元の二方向の符号を持つtotalの微分と可換。
+- `schemePerfectCechTupleLeftTotalMap`：同じ元の成分とその微分の式からなる、F8のY側への全複体の鎖写像。
+
+`SchemePerfectCechTupleLeftBaseComponents`（67行）：
+- `CechAugmentedSquare.leftCIso`：元のCの包含と射影を同じ二つの合成の式から同型へまとめる。
+- `CechAugmentedSquare.baseProjection_onLeft_f_succ_zero`：元のY側の基底射影の正の縦次数の成分は零。
+- `schemePerfectCechTupleLeftBaseProjection_zero`：元のpositiveBaseLeftProjectionの外零次は全ての縦次数で零。
+- `schemePerfectCechTupleLeftBaseProjection_succ_succ`：元の同じ射影の正の外次数・正の縦次数の成分は零。
+- `schemePerfectCechTupleLeftBaseProjection_succ_zero`：元の同じ射影の正の外次数・縦零次は同じRの恒等射。
+
+検証：固定した二本のmodule形式 `2g-g4-left-differential-check-3.log` は終了0。二本と直接importerの入口の対象ビルドは5,338ジョブ・終了0（`2g-g4-left-differential-native.log`、依存のキャッシュ再生を含む）。固定manifest・下書き・本体のSHA256と全バイト一致を確認。別の共有鍵による所有宣言の小監査は22宣言（15、7）、非公開・生成分も含め標準三公理のみ・終了0（`2g-g4-left-differential-audit.log`）。追加公理・sorry・既存宣言の型変更・資源上限の引き上げ・200行超の宣言なし。長い行などのstyle警告は残る。根の射と二方向の射、負の縦微分の合成を型の確定した局所値へ分け、Eq.trans/congrArgで照合して既定の資源上限で通した。
+
+今回198行＋入口2行＝200行。基準56ea849a3からの外枠計数は17,611行（新規243モジュール本体17,322行、既存追加25行、入口264行）。新規所有宣言の小監査累計1,883、既存15宣言は別計上。承認済み20,000行の外枠内。次の基底の右逆と分裂、元の短複体の短完全性と元の核の完全性の移送は311行の下書きを準備済みで、まだ未検証・本体未登録。右側のwhole totalの直接比較を含む残りの比較を450〜600行、相対proper fppf・合成を含むNoether帰納400〜700行、G5の自然な模型・Frobenius・filtered余極限の移送600〜1,000行とし、完成見込み19,061〜19,911行（約19,000〜19,900行）へ下端を更新する。上限までの余裕が小さいため、各束の実測と残りの見込みを照合する。G4・G5は未完、停止点2g-2ではない。mainを取り込んでいない。共有鍵 --class impl --wait 3600、待ちは一件、ビルドと監査は別リース。root・下流全ビルド・AlgebraicGeometry全体監査なし。一覧：済み1／全体3（うち追加0）。
