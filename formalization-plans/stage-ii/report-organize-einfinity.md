@@ -329,3 +329,11 @@ FreeProbeRelativeUnitWeak.leanは通常190秒でも、二readerと一readerの�
 原参照と個別の照合を合わせた630／824本のプレビュー保留0。mainは取り込まず、段1の基準30ae8948fを維持している。
 
 一覧：済み 0／全体 5（うち追加 0）。
+
+### 8.4 夕方の他レーンの照合（20:08）
+
+他の5枝（inf-supply、bulk-5inf3a、scheme、bs-impl、g12-monad-catalog）のHEADとdirty／untracked Leanを再読した。旧モジュール名・namespace・BEのファイル短名・一般部品のnamespace短名による一致は全枝0ファイル。draftsも確認に含めた。段1の条件付き承認（影響30ファイル以内）を引き続き満たす。`branch-impact.json`をその時点の各HEADへ更新した。適用直前にも再確認する。
+
+参照の処理は652／824本、保留0。通常compilerの参照採取と、§8.2の一件の個別ILean照合は件数と証拠を分けている。適用用のguardでもこの区別と、個別照合の六箇所の厳密な差分を確認する。
+
+一覧：済み 0／全体 5（うち追加 0）。
