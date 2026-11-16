@@ -1491,3 +1491,17 @@ Frobenius の既存の矢印の図式の端点の照合（着手前、既存の�
 今回2モジュール137行＋入口2行。新規118モジュール本体7,850行・入口込み7,968行。既存追加25行を含む外枠計数は本体7,875行・入口込み7,993行。新規小監査累計785宣言、既存15宣言は別計上。矢印全体の余錐は下書きの検証中でこの束には含めない。G4の実際の conerve 比較・B1・Noether帰納、G5は残る。全体の見込み約10,000〜13,500行・外枠16,000行は不変。
 
 一覧：済み1／全体3（うち追加0）。
+
+
+実際の Frobenius の矢印への完全性の移送（着手前、既存の filtered colimit と同型の自然な移送の法則の内数、40〜100行）：`isCechExact_frobeniusDirectLimit_of_faithfullyFlat` は元の Under の忠実平坦な射と標数条件から、実際の frobeniusDirectLimitMap の Arrow の IsCechExact を返す。上の標準同型を既存の augmentedCechConerve 関手で写し、B1 の ringCechExact_iff_of_iso と既存の同じ図式の余極限の完全性を使う。`…_baseChange_…` は元の任意の底変換の同じ射への適用。最終出力の型や Čech 完全性の定義は変更しない。
+
+
+## G4：実際の Frobenius の矢印の余極限
+
+`FrobeniusArrowCocone`（124行）：`frobeniusArrowCocone` は実際の frobeniusDirectLimitMap の矢印を点とし、両端の同じ有限段の標準写像を脚とする元の反復図式の余錐。`frobeniusArrowIsColimit` は環の lift・hom_ext と、脚の実際の可換な四角形からこの余錐の普遍性を返す。`frobeniusArrowSmallCocone`・`frobeniusArrowSmallIsColimit` は同じ余錐を既存の AsSmall の同値で移す。`frobeniusArrowSmallColimitIso` は実際の矢印と、B1 が使う同じ図式の圏論的余極限との標準同型。端点の加群同型だけではなく矢印全体の同型。
+
+単独検証、本体とのソース完全一致、対象と入口のビルド5,204ジョブ成功、小監査18宣言（実際の所有元による生成・非公開宣言込み）・標準三公理のみ、終了状態0。ログ `2g-frobenius-arrow-cocone-check-2.log`・`2g-frobenius-arrow-cocone-native.log`・`2g-frobenius-arrow-cocone-audit.log`。局所的な backward.isDefEq.respectTransparency false、既定の資源制限。letIの style 警告あり。追加公理・sorry・既存の型変更・200行超の宣言なし。共有鍵 --class impl --wait 3600、待ちは一つ、対象ビルドと小監査は別枠。root・下流全ビルド・全体監査なし。
+
+今回1モジュール124行＋入口2行（空行込み）。新規119モジュール本体7,974行・モジュール登録119行込み8,093行。既存追加25行を含む外枠計数は本体7,999行・登録込み8,118行。新規小監査累計803宣言、既存15宣言は別計上。追加の空行は登録行とは別で、数学の行数には含めない。次の実際の射への完全性の移送は未検証の下書きで、この束には含めない。標準比較の自然性と conerve への接続、B1・Noether帰納・G5は残る。見込み約10,000〜13,500行・外枠16,000行は不変。
+
+一覧：済み1／全体3（うち追加0）。
