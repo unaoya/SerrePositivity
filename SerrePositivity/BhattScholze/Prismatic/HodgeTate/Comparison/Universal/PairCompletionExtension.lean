@@ -64,4 +64,41 @@ theorem pairCompletionExtension_ext (a b : R) (X Y : DerivedCategory (ModuleCat.
   apply derivedComplexCompletionHom_ext R a ha
   simpa only [Category.assoc] using h
 
+/-- 二つの元の単位の合成は、同じ元の射について自然。 -/
+theorem pairCompletionUnits_naturality (a b : R)
+    {X X' : DerivedCategory (ModuleCat.{u} R)} (f : X ⟶ X') :
+    ((derivedComplexCompletionUnit R a).app X ≫
+        (derivedComplexCompletionUnit R b).app ((derivedComplexCompletionFunctor R a).obj X)) ≫
+      (derivedComplexCompletionFunctor R b).map ((derivedComplexCompletionFunctor R a).map f) =
+    f ≫ (derivedComplexCompletionUnit R a).app X' ≫
+      (derivedComplexCompletionUnit R b).app ((derivedComplexCompletionFunctor R a).obj X') := by
+  have ha := (derivedComplexCompletionUnit R a).naturality f
+  have hb := (derivedComplexCompletionUnit R b).naturality
+    ((derivedComplexCompletionFunctor R a).map f)
+  simp only [Functor.id_map] at ha hb
+  rw [Category.assoc, ← hb, ← Category.assoc, ← ha, Category.assoc]
+
+/-- 元の延長は、始域の同じ元の射について自然。 -/
+theorem pairCompletionExtension_precomp (a b : R)
+    {X X' Y : DerivedCategory (ModuleCat.{u} R)}
+    (ha : IsComplete R a Y) (hb : IsComplete R b Y) (g : X ⟶ X') (f : X' ⟶ Y) :
+    (derivedComplexCompletionFunctor R b).map ((derivedComplexCompletionFunctor R a).map g) ≫
+      pairCompletionExtension a b X' Y ha hb f =
+    pairCompletionExtension a b X Y ha hb (g ≫ f) := by
+  apply pairCompletionExtension_ext a b X Y ha hb
+  rw [← Category.assoc, pairCompletionUnits_naturality]
+  rw [Category.assoc, Category.assoc,
+    ← Category.assoc ((derivedComplexCompletionUnit R a).app X')]
+  rw [pairCompletionExtension_unit, pairCompletionExtension_unit]
+
+/-- 元の延長は、完備な終域への同じ元の射について自然。 -/
+theorem pairCompletionExtension_postcomp (a b : R)
+    {X Y Z : DerivedCategory (ModuleCat.{u} R)}
+    (haY : IsComplete R a Y) (hbY : IsComplete R b Y)
+    (haZ : IsComplete R a Z) (hbZ : IsComplete R b Z) (f : X ⟶ Y) (k : Y ⟶ Z) :
+    pairCompletionExtension a b X Y haY hbY f ≫ k =
+    pairCompletionExtension a b X Z haZ hbZ (f ≫ k) := by
+  apply pairCompletionExtension_ext a b X Z haZ hbZ
+  rw [← Category.assoc, pairCompletionExtension_unit, pairCompletionExtension_unit]
+
 end SerrePositivity.BhattScholze.Prismatic.HTUniversalComparison
