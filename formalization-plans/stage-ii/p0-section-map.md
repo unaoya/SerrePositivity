@@ -75,3 +75,10 @@ HA・HTT・Kerodon の項目と状態は二重管理にしない。正本は既�
 
 項目の閉包の根に、DAG XIII Constr 2.2.6・Rem 2.2.7 に加えて **NS I.1.7・I.1.8・I.1.9・I.1.10・I.1.13、I.3.1、III.1.1・III.1.2・III.1.4、IV.1.1・IV.1.2** を足す（NS の Tate 値の Frobenius までの道も範囲に入れる。Sp の普遍性 HA 1.4.2.23・1.4.4、smash 積 HA 4.8.2、CAlg(Sp)、Verdier 局所化などが新たに入る見込み）。
 ⑤d は §8 の規則、§9（モデル圏は避ける）とこの §10 で閉包を作り直す。出力は `research/p0-lurie/item-closure/` を更新（前回の 1,014 項目の版は経過として `item-closure/v1/` に移して残す）。各項目の `reached_from` で、DAG XIII の根から届くか、NS の根からだけ届くかが分かるようにする。上限 2,000 項目。
+
+## 11. 形式化がある項目では止める（11-16 夕、ユーザー決定）
+
+v2（a75cee9fb、2,000 項目で上限、Kerodon 1,400）を受けて：
+1. 各文献の対応表（`research/<文献>-coverage/review/`、Kerodon は `status_new`）で **own・mathlib・both の項目は閉包に入れるが、その主張・証明が引く辺は展開しない**。partial・none は展開する。Kerodon・HA・HTT・DAG XIII・NS のすべてに当てる。対応表は 11-12 以降のコードを反映していないが、表の状態をそのまま使う（独自に判定しない。表の更新後にもう一度刈り込める）。
+2. 展開を止めた項目は `items.csv` の reason に `stopped:<状態>`。`order.md` に止めた項目の数と、刈り込みで外れた項目の数を文献・章ごとに。
+3. 根、§8、§9 はそのまま。v2 は `item-closure/v2/` に残す。上限 4,000 項目。
