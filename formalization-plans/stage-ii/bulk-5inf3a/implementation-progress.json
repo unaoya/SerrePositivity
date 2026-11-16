@@ -3,7 +3,7 @@
   "complete": 3,
   "total": 6,
   "added": 0,
-  "verified_head": "this commit: base fe9e35c9795ba298db04dc6c921bd45c3948ceef",
+  "verified_head": "this commit: base 771bc1fa860efbb429d7415eeb5979d5dc471a47",
   "items": {
     "HT01": "complete",
     "HT02": "complete",
@@ -12,18 +12,15 @@
     "HT05": "not-started",
     "HT06": "not-started"
   },
-  "latest_complete_audit_checkpoint": "original-ordinary-target-unit-checkpoint.json",
-  "latest_complete_audit_declarations": 2059,
+  "latest_complete_audit_checkpoint": "extend-homology-and-native-coefficient-classes-checkpoint.json",
+  "latest_complete_audit_declarations": 2062,
   "working_changes_unverified": [
-    "AffineAnyExtendedHomology",
-    "OrdinaryExtendedHomology",
-    "MapExtendHomologyCompatibility",
     "AffineLineBaseRealization",
-    "AffineOriginalHomologyCoordinates",
+    "AffineLineOrdinaryBaseHomology",
     "AffineRestrictedHTCoordinates",
-    "AffineLineOrdinaryBaseHomology"
+    "AffineOriginalHomologyCoordinates"
   ],
-  "pending_check": "bundle-231 terminal rc1; see audit module inventory; failed dependencies await next batch",
+  "pending_check": "bundle-232 terminal rc1; see audit module inventory; failed dependencies await next batch",
   "next_proof_route": "remaining-20000-plan.md",
   "initial_record": {
     "stage": "5inf3a",
