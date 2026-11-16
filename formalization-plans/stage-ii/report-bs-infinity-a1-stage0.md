@@ -3457,3 +3457,100 @@ S1の元のcoverage・extensiveも未完。S7・R2・R3は再開していない�
 検証済み全体231本14,994行・1,300宣言（文献整理は外枠外）。
 今回の継続分は計11本706行・44宣言。外枠22,000行以内、完成停止点ではない。
 一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+### 恒等余単位での極限比較（11-16、検証済み）
+
+`RightKanLimitRestriction` 1本40行・1宣言。記録 `/tmp/is-w1/s8-right-kan-restrict-1/`、
+対象ビルド・小監査の終了0、標準三公理のみ、source SHA一致。既存の右 Kan 合成則の特殊化。
+
+```lean
+isLimitCone_iff_restrict_of_rightKan_refl δ p
+    (h : IsRightKanExtension δ (δ ≫ p) p
+      (SSet.RelativeMorphism.Homotopy.refl (SSet.RelativeMorphism.botEquiv.symm (δ ≫ p))))
+    (c : JoinCone p) :
+  IsLimitCone c ↔ IsLimitCone (restrictJoinCone c δ)
+```
+
+`isLimitCone_iff_of_rightKan_comparison` に元の錐の恒等円柱を渡した。
+追加IDなし。検証済み全体232本15,034行・1,301宣言（文献整理は外枠外）。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+### 指定切断射へ戻す続き（11-16、未検証の作業木）
+
+次の4本を作業木に準備した。これらは未検証で、検証済みの実測にはまだ数えていない。
+いずれもS8の既存の構成の法則・証明の分割で、追加IDなし、200行を超える補題なし。
+
+`MonoLocalRightKanRestriction`：
+```lean
+asSmallSectionsDiagram P O :=
+  nerveMap (asSmallLocalFunctor (Functor.Elements.π P)) ≫ (nerveAsSmallIso Cᵒᵖ).inv ≫ O
+-- monoLocalRightKanCounit φ O は、元の恒等余単位を同じ係数 O へ送った円柱。
+monoLocalRightKanCounit_h φ O :
+  (monoLocalRightKanCounit φ O).h = fst _ _ ≫ asSmallSectionsDiagram P O
+monoLocal_restrict_isLimit J φ [Mono φ] [Presheaf.IsLocallySurjective J φ]
+    O (hO : IsSheaf J O) (c : JoinCone (asSmallSectionsDiagram Q O)) (hc : IsLimitCone c) :
+  IsLimitCone (restrictJoinCone c (nerveMap (asSmallLocalFunctor φ.mapElements)))
+```
+
+`MonoLocalSections`：
+```lean
+asSmallSectionsDiagram_eq P O :
+  asSmallSectionsDiagram P O = (nerveAsSmallIso P.Elements).inv ≫ sectionsOfDiagram P O
+asSmallSectionsCone P O (c : JoinCone (sectionsOfDiagram P O)) :
+  JoinCone (asSmallSectionsDiagram P O)
+asSmallSectionsCone_isLimit P O c (hc : IsLimitCone c) :
+  IsLimitCone (asSmallSectionsCone P O c)
+asSmallSectionsCone_restrict_val φ O c :
+  ((restrictJoinCone (asSmallSectionsCone Q O c)
+    (nerveMap (asSmallLocalFunctor φ.mapElements))).reindexIso
+      (nerveAsSmallIso P.Elements)).val = (SetWeight.restrictSectionsCone φ O c).val
+restrictSectionsCone_isLimit_of_localMono J φ [Mono φ] [Presheaf.IsLocallySurjective J φ]
+    O (hO : IsSheaf J O) c (hc : IsLimitCone c) :
+  IsLimitCone (SetWeight.restrictSectionsCone φ O c)
+sections_localMono_iso J φ [Mono φ] [Presheaf.IsLocallySurjective J φ]
+    O (hO : IsSheaf J O) hP hQ : IsInvertibleEdge (sectionsOf_map φ O hP hQ).toTruncated
+```
+最後は元の `sectionsMap_isInvertible_iff` で同じ指定辺へ戻す。一般形の代用にはしない。
+
+`SetSectionsRestriction`：
+```lean
+sliceOver_diagramEq_val (h : p = q) n s :
+  ((eqToHom (congrArg sliceOver h)).app n s).val = s.val
+restrictSectionsFunctor φ F : sliceOver (diagram Q F) ⟶ sliceOver (diagram P F)
+restrictSectionsFunctor_val φ F n s :
+  ((restrictSectionsFunctor φ F).app n s).val = joinMap (𝟙 _) (elementsMap φ) ≫ s.val
+restrictSectionsFunctor_vertex φ F c :
+  (restrictSectionsFunctor φ F).app (op ⦋0⦌) c = restrictSectionsCone φ F c
+restrictSectionsFunctor_projection φ F :
+  restrictSectionsFunctor φ F ≫ sliceOverProjection (diagram P F) =
+    sliceOverProjection (diagram Q F)
+elementsMap_comp φ ψ : elementsMap (φ ≫ ψ) = elementsMap φ ≫ elementsMap ψ
+restrictSectionsCone_comp φ F ψ c :
+  restrictSectionsCone φ F (restrictSectionsCone ψ F c) = restrictSectionsCone (φ ≫ ψ) F c
+restrictSectionsFunctor_comp φ F ψ :
+  restrictSectionsFunctor (φ ≫ ψ) F = restrictSectionsFunctor ψ F ≫ restrictSectionsFunctor φ F
+```
+これは元の制限の全関手・全錐の法則で、点ごとの同型を集める構成ではない。
+
+`LocalInjectiveDiagonal`：
+```lean
+presheafDiagonal_fst_apply φ U p :
+  (pullback.fst φ φ).app U ((pullback.diagonal φ).app U p) = p
+presheafDiagonal_snd_apply φ U p :
+  (pullback.snd φ φ).app U ((pullback.diagonal φ).app U p) = p
+imageSieve_diagonal φ q :
+  Presheaf.imageSieve (pullback.diagonal φ) q =
+    Presheaf.equalizerSieve ((pullback.fst φ φ).app _ q) ((pullback.snd φ φ).app _ q)
+diagonal_isLocallySurjective J φ [Presheaf.IsLocallyInjective J φ] :
+  Presheaf.IsLocallySurjective J (pullback.diagonal φ)
+```
+対角はMathlibの同じ核対の射で、単射でない場合の入力を保持する。
+一般の局所同値は、核対・Čech解消と指定射の自然性との接続がまだ必要。
+層化単位の比較・`weightedSections_discrete_map`・S1のcoverageとextensiveも残る。
+S7・R2・R3は再開していない。
+
+検証の順序：現在の `/tmp/is-w1/s8-right-kan-restrict-2/`（2本）の終了を確認し、
+誤りを修正した後に上の4本をまとめて対象ビルド・小監査。待ちは一枚。
+05:42 UTCの時点でセッション18959の生存を再確認、共有鍵で調整役のrootビルドの後を待機中。
+古い索引や未検証の結果を監査の証拠に流用しない。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
