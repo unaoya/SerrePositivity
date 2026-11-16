@@ -1825,3 +1825,17 @@ G4・G5と停止点2g-2は未完。最終の AugmentedRingCechExact と利用側
 今回二本143行＋入口2行。新規145モジュール本体9,715行、既存追加25行、入口追加166行（登録145・空行21）を含む外枠計数 **9,906行**。新規小監査累計958宣言、既存15宣言は別計上。各列のアフィン性と同じ増大の完全性への接続は下書きで、この束には含めない。相対 proper fppf の二重 Čech、F8 全複体と元のブローアップを保つ Noether帰納、G5は未完。最終の AugmentedRingCechExact と利用側の型は不変。見込み約12,000〜15,500行・外枠16,000行は不変。
 
 一覧：済み1／全体3（うち追加0）。
+
+
+次の同じ増大射の準同型性への接続（着手前、既存の single・増大・完全性の法則の内数、100〜230行）：`cechSingleAugmentation_quasiIsoAt_zero` は任意の加群 A、非負複体 C、元の射 f:single₀(A)→C で、f.f 0 の単射性と (f.f 0,C.d 0 1) の Function.Exact から、同じ f の零次の QuasiIsoAt を示す。既存の ShortComplex.quasiIso_iff_isIso_liftCycles を使い、元の cycles への写像の全単射を同じ単射性と完全性で示す。`cechSingleAugmentation_quasiIsoAt` は C の正次数の既存の ExactAt と合わせて全次数の QuasiIsoAt にまとめる。基底環と加群の宇宙は独立、既存の API の型は変更しない。これを同じ schemePerfectCechTupleGlobalAugmentationHom と検証済みの各列の増大完全性に適用する。
+
+
+## G4：同じアフィン nerve 項のタプル増大の完全性
+
+`AffineCechNerveTupleExact`（102行）：`affineCechNerve_isAffine` は Y,S がアフィンなら同じ実際の nerve の各項がアフィンであることを、元の wideCospan に Scheme.isAffine_of_isLimit を適用して示す。`affineCechNerveTuple_augmentation_injective`・`…_augmentation_exact` は、元の有限アフィン被覆から作った同じタプル被覆で、実際の大域切断の恒等スカラーの増大の単射性と同じ零次微分との完全性。`…_augmentedExact` は同じ各項の全タプル長さの完全性。既存のタプル開のアフィン性と被覆性を元の被覆から供給しており、新しい被覆の完全性を仮定しない。Čech 版と Stacks 30.2.6 との関係を docstring に明記し、導来関手の H との比較は作っていない。
+
+下書き検証成功、下書きと本体は全バイト一致。対象と直接 importer の入口のビルド5,231ジョブ成功、別の共有鍵の小監査4宣言・標準三公理のみ。実際の所有元で生成・非公開宣言の有無も全件走査。終了状態全て0。ログ `2g-affine-cech-nerve-tuple-exact-check-2.log`・`…-native.log`・`…-audit.log`。一部の証明に局所的な backward.isDefEq.respectTransparency false、既定の資源制限。letI/haveI と unused Fintype のstyle警告あり。追加公理・sorry・既存の型変更・200行超の宣言なし。鍵 --class impl --wait 3600、待ちは一つ、対象ビルドと監査は別枠。root・下流全ビルド・全体監査なし。
+
+今回一本102行＋入口1行。新規146モジュール本体9,817行、既存追加25行、入口追加167行（登録146・空行21）を含む外枠計数 **10,009行**。新規小監査累計962宣言、既存15宣言は別計上。各列の増大完全性までは到達。同じ single からの増大射の準同型性への接続、非アフィン基底の相対 proper fppf の二重 Čech、F8 全複体と元のブローアップを保つ Noether帰納、G5は未完。見込み約12,000〜15,500行・外枠16,000行は不変。最終の AugmentedRingCechExact と利用側の型は不変。停止点2g-2ではない。
+
+一覧：済み1／全体3（うち追加0）。
