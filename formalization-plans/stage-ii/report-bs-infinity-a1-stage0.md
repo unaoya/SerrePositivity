@@ -3331,3 +3331,48 @@ anodyneに沿う一意な延長は既存の相対ホモトピーと定値空間�
 次は同じ通常錐を元の層条件の指定制限錐へ比較する。
 検証済み全体222本14,402行・1,262宣言（文献整理は外枠外）。
 一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+### 元の指定錐での離散層条件の比較（11-16）
+
+4本262行（文献属性・meta import4行を除く258行）、13宣言の対象ビルド・小監査が成功。
+記録 `/tmp/is-w1/s8-cone-initial-9/`、終了0、標準三公理のみ、source SHA一致。
+
+```lean
+nerveInitialCone_leg hi j :
+  (nerveInitialCone hi).app _ (coneLegSimplex j) = ComposableArrows.mk₁ (hi.to j)
+initialJoinNerveMap_eq_initialCone I :
+  initialJoinNerveMap I = joinMap (𝟙 _) (nerveMap WithInitial.incl) ≫
+    nerveInitialCone (WithInitial.starInitial (C := I))
+nerveCone_val_initial c :
+  (nerveCone c).val = joinMap (𝟙 _) (nerveMap WithInitial.incl) ≫
+    nerveInitialCone (WithInitial.starInitial (C := I)) ≫
+    nerveMap (coneWithInitialFunctor c)
+strictConeFunctor_mapCone c G :
+  coneWithInitialFunctor (asSmallCone c) ⋙ AsSmall.down ⋙ G =
+    strictConeFunctor (G.mapCone c)
+strictCoherentConeMap_mapCone c G :
+  strictCoherentConeMap (G.mapCone c) =
+    (nerveCone c).ulift.val ≫ kanDiagramCoherentNerve G
+smallNerveDiagram_reflects_limit c P
+    (hc : IsLimitCone (((nerveCone c).ulift).postcomp (smallNerveDiagram P))) :
+  Nonempty (IsLimit (P.mapCone c))
+sieveCone_eq_presieveCone S : sieveCone S = S.arrows.cocone.op
+restrictionCone_discrete_val P S :
+  (restrictionCone (discretePresheaf P) S).val =
+    (discreteSpaceCone (P.mapCone (sieveCone S))).val
+isSheaf_discretePresheaf_iff J P :
+  IsSheaf J (discretePresheaf P) ↔ CategoryTheory.Presheaf.IsSheaf J P
+```
+
+前半は既存の始対象錐・AsSmall・coherent 表示の構成の法則。
+逆向きは既存の `nerveAsSmallMaxIso`、通常の極限比較、充満忠実な離散埋め込みによる
+全錐の反映を使った。対象宇宙とHom宇宙を同一視していない。
+制限錐の頂点だけでなく全射が一致し、通常の層条件はMathlibの同じ篩の錐で得ている。
+独立の追加IDなし、200行を超える法則の補題なし、計算上限変更なし。
+主な層条件比較に HTT 6.2.2.7 の属性（小さい通常site・離散係数の特殊化）を付けた。
+
+検証済み全体226本14,660行・1,275宣言（文献整理は外枠外）。
+これは離散層化の比較の前提までであり、`sheafify_discrete_eq` そのものは未完。
+残りは同じ層化単位を保つ全比較、指定した `weightedSections_discrete` の射の自然性、
+`localEquiv_of_sheafifyIso`・`sections_localEquiv_iso`、S1の元のcoverage・extensive。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
