@@ -7336,6 +7336,2019 @@
           "resolved_namespace": "HomotopicalAlgebra"
         }
       ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/AlgebraRelativeCategory.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.AlgebraRelativeCategory",
+      "source_sha256": "2c77d1e4868e86b78aa4d8c35d45646eca2f62d299db1a289693b7fc915009ed",
+      "capture_sha256": "4d2ce6b89fc1b3c4c815bb7460176e36ba2643be9ba11f2cf44f99a9b0c13bc0",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 698,
+          "stop": 716,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/AlgebraRelativeComparisons.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.AlgebraRelativeComparisons",
+      "source_sha256": "3a4b6c9adfa08416e11e1438f40bb91e18140e947651b237952cc4475b76121d",
+      "capture_sha256": "caef1f7e756397f47d9406d12918bf18a4bd81f2a18922541c81dd76715af314",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 609,
+          "stop": 627,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/CarrierConstantDiagramClasses.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.CarrierConstantDiagramClasses",
+      "source_sha256": "caaf1af6c94bf7038656434cd48428a88bd4f5a2e0d1933b318f7df2adb87d76",
+      "capture_sha256": "30ff80a95acd0dfea4747b64291a28edb55d0ec3304238e23432d3120dff67ca",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 737,
+          "stop": 755,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/CarrierConstantProbeLocalization.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.CarrierConstantProbeLocalization",
+      "source_sha256": "b6314170407bf8b7b0b7d1b7694447cd2f3f3705bb79318e6c1f62a36fd24c7c",
+      "capture_sha256": "c866b3d83c0b79eee6239ff8b04207a7e3f1eb3912b36dcb79388ce780045fa4",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 837,
+          "stop": 855,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/CarrierFramedLimitConePiZero.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.CarrierFramedLimitConePiZero",
+      "source_sha256": "2df97503afd99a25d951b09025f5af3e1c7bd1829c7b47432dcd6dedec1e169c",
+      "capture_sha256": "2b02c616162ccd8ef9d6b2821e8e829a65d1a2028829b04cb314019b349f6d5e",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 899,
+          "stop": 917,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/CarrierFramedLimitConePiZeroSource.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.CarrierFramedLimitConePiZeroSource",
+      "source_sha256": "319fabf98cc7fba1a9335976bfcbfebf041781d46512e8fee3374351eaad8067",
+      "capture_sha256": "28362ddb50989e81e3f4d0ddfa6f88211f8ace394fd94580f674dde387f4afcd",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 944,
+          "stop": 962,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/CarrierFramedLimitDerivedHomNormalization.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.CarrierFramedLimitDerivedHomNormalization",
+      "source_sha256": "20b3f7caa121a50d9c235b9503712577d9af46c5be0e035527b69146e06503f7",
+      "capture_sha256": "8b6f453b27227ede1f3038fc59a8921e26d62808b4fd3e38064e582accbd1ce3",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 942,
+          "stop": 960,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/CarrierFramedLimitDerivedHomSource.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.CarrierFramedLimitDerivedHomSource",
+      "source_sha256": "1a7af0a2acd160158c398165ee2af8a56b98b7ad42064db34df8723ec3d86cc1",
+      "capture_sha256": "62eb5417d942803e557618af2adcd580eb44c8a3f1c2b5ce0fab70c7a98ca90f",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 952,
+          "stop": 970,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/CarrierRightFrames.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.CarrierRightFrames",
+      "source_sha256": "dc0c2ceb5ef0dfde2041d188a4192ac3164c9c4ba949d3b43281e49eda94d8ce",
+      "capture_sha256": "6cdca79059db0c52f9b15199c3a64612b8b33972f4c4401c168b922370e1df8c",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 706,
+          "stop": 724,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/CarrierRightSimplicialFrames.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.CarrierRightSimplicialFrames",
+      "source_sha256": "963518cd08cd6f3c144a7c82648c379358cfe8f4e5df6955b422ce61e7acfc97",
+      "capture_sha256": "ddaf19e34bac6910bd412b6ecca4653f9a38d02469422cb88cdf220a99d1a000",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 722,
+          "stop": 740,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/CofibrantAlgebraLocalization.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.CofibrantAlgebraLocalization",
+      "source_sha256": "bb9a7f8458336befe34305b73fb19a71ced19c9538eaf8b7b89784c3a3ad81aa",
+      "capture_sha256": "f5ba54e9a63f405ba52dd078eba2597d54fa1301ac589de59ab3513458600527",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 787,
+          "stop": 805,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/CofibrantAlgebraMappingClasses.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.CofibrantAlgebraMappingClasses",
+      "source_sha256": "4008b6ef4e211bfdac69bb04900f732f1d12a7d16e0ec29063e05ca2a5f56767",
+      "capture_sha256": "cff62f04a78271fd6d70989e0f078de445b052ca077274c7372d7766935bd826",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 749,
+          "stop": 767,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/CofibrantAlgebraMappingSpace.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.CofibrantAlgebraMappingSpace",
+      "source_sha256": "41e8b77441df18af36e4062362d50e14d151d1bf40aaab0f0bb92e53e1f89160",
+      "capture_sha256": "7c93cee5b78948482edfc44ea5b1e9ba4bf63e4b7f5effa6d817c801072939cc",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 856,
+          "stop": 874,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/CofibrantAlgebraReplacement.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.CofibrantAlgebraReplacement",
+      "source_sha256": "d5af0ad4a67ef76917bde8ca5cc30622ad7eab356283fbc32f085a41cb9a4ae5",
+      "capture_sha256": "1ec77248cdee1388eff1cd5ead4243b6c3eb1ed2fe647636c8e9be8249cce609",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 685,
+          "stop": 703,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/CofibrantDiscreteAlgebra.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.CofibrantDiscreteAlgebra",
+      "source_sha256": "5e3dc831d8d5c0c258252e63c522aea6754eadff089f5ecc9368f5284a003175",
+      "capture_sha256": "222cb50cf09bb1809c6308cf600d63fe300a66db81657923d0d22b9fd1b62bab",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 713,
+          "stop": 731,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/CofibrantHammockActions.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.CofibrantHammockActions",
+      "source_sha256": "1eabae74130adf33e814cc53d411a7bdcf0fd56527f84479dd6414b8392d3aa1",
+      "capture_sha256": "b639408d47fcfa80fe1ebc1d84e8c284989c153a60875cbbc01db190ceccf39d",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 891,
+          "stop": 909,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/CofibrantHammockInclusion.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.CofibrantHammockInclusion",
+      "source_sha256": "1b32263116e48272699c3ffdc383f00576ca70d2a4568b5a8d363dda19e46780",
+      "capture_sha256": "0569894db832fe4478b4b140db704e55450a6abba8fe42a8b51abc6505dd246d",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 873,
+          "stop": 891,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/CofibrantHammockInclusionLaws.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.CofibrantHammockInclusionLaws",
+      "source_sha256": "c031a1c29ee723df303e3c451ac0a162711a73283c691091b6e3fb5fab1307bc",
+      "capture_sha256": "381411139976da78f8bdff7b2c1ec0808a2c48599515ddfe0bd187b16c7f8a8e",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 755,
+          "stop": 773,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/CofibrantHammockValue.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.CofibrantHammockValue",
+      "source_sha256": "e396f49a65b8d0a90eeb9f477758d56dee59d1472cb4491d8b2773ab6eef9392",
+      "capture_sha256": "50da7b085e78dc92386b39529505665e5b05d68cdc63639e37529bc90be2a622",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 916,
+          "stop": 934,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceRoofAugmentationImage.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.CofibrantSourceRoofAugmentationImage",
+      "source_sha256": "433073d8af71e50a3c22b377c6f3695a3d1059d23d1687da529bcaf50c87c6fa",
+      "capture_sha256": "0053b92d601cb9dccb81e702a692968d9789c98ffb9c5363eb4d5cdcb94f3a95",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 989,
+          "stop": 1007,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceRoofEvaluationImage.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.CofibrantSourceRoofEvaluationImage",
+      "source_sha256": "25c69eb2d52d5b1041193fec8b3b97a76828525b51bd16f9b6f713e90fad1ca1",
+      "capture_sha256": "a8f08c067314a4cd107c9bc6caa7f9e93e5a42206fd04e8e7fd7bd048ae902c8",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 1009,
+          "stop": 1027,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/CofibrantZigzagValue.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.CofibrantZigzagValue",
+      "source_sha256": "86e079d07d99e1ee41182a139735b5bab0d091cd50685b2bb2c59aa4d85df783",
+      "capture_sha256": "fb8952b782864a5ff3b0a9bd1feba0838e1a3b20cfb3130662182a5256201335",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 990,
+          "stop": 1008,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/ConstantDiagramClasses.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.ConstantDiagramClasses",
+      "source_sha256": "b95eaa077a713dcfd21402a4521691a1112272eedcfd346e96801a3189d66834",
+      "capture_sha256": "2bfc59594aea0d12868361d107628b6a75d0ea10c9bd90679ee37c7773e02c91",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 708,
+          "stop": 726,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/ConstantDiagramMappingComparison.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.ConstantDiagramMappingComparison",
+      "source_sha256": "c0686fc5f1c20ec9625096b17b23252ca39aed236fa3af12ec60e4445270de0e",
+      "capture_sha256": "4d8872c48e17077a04d854659019666269d6c2a04c045e6d804cf2ab16f85e44",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 890,
+          "stop": 908,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/ConstantProbeLocalization.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.ConstantProbeLocalization",
+      "source_sha256": "815a9b8add5bdaae31823624f0b50ec4f2c638c8a21f35c094a5d8a15cbd4882",
+      "capture_sha256": "ca9327b1a1e6cf09d448db55a9621410366fefb3c1383c8fa142dfcee5dd6352",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 823,
+          "stop": 841,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitAdjunction.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.FramedLimitAdjunction",
+      "source_sha256": "e7bb90d327b0cdb886a222450bac33ec76e58ce709e7dc50ee56117756ca7564",
+      "capture_sha256": "68270a421ec9ec38a90b00c7a3312740892760186d0100d1b3d32cbdc6c5eefa",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 997,
+          "stop": 1015,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitAdjunctionNormalization.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.FramedLimitAdjunctionNormalization",
+      "source_sha256": "01b3b8bbe0457eec09be2fba16789be9a88bc1aaf684ea052b8389a7a8282e16",
+      "capture_sha256": "e3cf0a95340e446440f9717b442ee34163945edbfc819aca309d61e9a20ca5e1",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 704,
+          "stop": 722,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitCarrierDerivedComparison.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.FramedLimitCarrierDerivedComparison",
+      "source_sha256": "36d939ae1b915c4cf7d71eb2cfd4c12a56f0710aa7454402c6c423aa6dc819b9",
+      "capture_sha256": "82805274a06132539c38062fdc6da2ae6c6b53ad1c859679973967e76331b297",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 1199,
+          "stop": 1217,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitCarrierDerivedNaturality.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.FramedLimitCarrierDerivedNaturality",
+      "source_sha256": "3b8d4a84b4a983b971fd0a808b2e4e4a046848b4160384845029936b5397f0be",
+      "capture_sha256": "c960055bb80fd523b74a03fca68e81000bab1f00e81b134cdfe2508606917fdf",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 909,
+          "stop": 927,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitConePiZero.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.FramedLimitConePiZero",
+      "source_sha256": "e266aa427de5d6d42e6a84de3d2b272f056ef30f61432863cb15e8db8cc2526c",
+      "capture_sha256": "53bddd289a603c1d497a6028e0d417c660fbfea79caf265cb03b1a8cff11b163",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 917,
+          "stop": 935,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitConePiZeroSource.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.FramedLimitConePiZeroSource",
+      "source_sha256": "c00c4e2ce2725f72c48865b1d2ecf2f7a3683affda128de6f24ab6ccd9716a6c",
+      "capture_sha256": "ae5a17d665144140719ec4aaac23a1c14b33caf7041f380bdb65d4ac872886d2",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 923,
+          "stop": 941,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitDerived.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.FramedLimitDerived",
+      "source_sha256": "bc9d0f90099c3551c66c9e9e7f1511ca4f34af396d03dcf0ff19487c74792da3",
+      "capture_sha256": "316c95c30ba3de9b14d304bd1c50e65dcdbf7dfd6f38f70886269e87464c4c37",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 912,
+          "stop": 930,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitDerivedHomNormalization.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.FramedLimitDerivedHomNormalization",
+      "source_sha256": "ab4f44539564f064848b68edc3edb8526c66c24cc32465454ace8b0336d73fc9",
+      "capture_sha256": "c73ad85ab27b0c58975a407e70cfc8559d70557e205a0e7e8ce49b7c7bd3c024",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 838,
+          "stop": 856,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitDerivedHomSource.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.FramedLimitDerivedHomSource",
+      "source_sha256": "60985865634961714483359619dbfaf740df38410c8924bc4298bd45b658b9a4",
+      "capture_sha256": "45d6cbc763dea639ca31016664c40c131894882a27d299a3d85aa2d35503c807",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 852,
+          "stop": 870,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitHomIso.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.FramedLimitHomIso",
+      "source_sha256": "a456648f4f06a186f490f03daa94caf353ba82adaf4e253879c160f3f46ea068",
+      "capture_sha256": "1acab7a5c625c194554c43bab36efba2b2960e79ef0878a85afeaeaf4c43a173",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 817,
+          "stop": 835,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitLocalization.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.FramedLimitLocalization",
+      "source_sha256": "6ddf07c464b78618d52b2d6ab1d52890905a92cea823d7401cbf1cf7d4ede9e9",
+      "capture_sha256": "42d3e1d0a5d0a9c8dd7cbc073afd4d25c5f35c617de4a1a7e7ac764534364444",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 853,
+          "stop": 871,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitProbeComparison.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.FramedLimitProbeComparison",
+      "source_sha256": "becbee4d1c5e892ab7c58bee6a8cc6b13e9cfbbf06b67b2196e955336c9e4606",
+      "capture_sha256": "79d0a92dfc94539e7d0ad82a20d749ede0d96ca824793874af8b0e93d66d29a5",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 631,
+          "stop": 649,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitProbeFunctor.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.FramedLimitProbeFunctor",
+      "source_sha256": "164341d625b2d51d41a0b4591812e1cc6b31d506a10b8b8b107885cad67e27c1",
+      "capture_sha256": "68c839319dfa87b1533d770976cb87731b5200ecf5629f07bc97de88cd3e7d4e",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 821,
+          "stop": 839,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitProbeLocalization.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.FramedLimitProbeLocalization",
+      "source_sha256": "263159c849f1db95e93b3d3415c7083a480e53f07166093e5287a58690fd1046",
+      "capture_sha256": "9660335e47b40f3bc6ad0afc1a7dc7957c3a741c7df5dd0857aa7c709bfcafcd",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 705,
+          "stop": 723,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/FreeProbeElementCofibrantColumn.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.FreeProbeElementCofibrantColumn",
+      "source_sha256": "61c426bba15e2b57b873696c83ec868f317aee0484c3ba95c24a0be402edbd35",
+      "capture_sha256": "354f634d613b4a107054f1d81e9417ef6c961223d76d87c18cc80adef084d100",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 788,
+          "stop": 806,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/FreeProbeRelativeElementColumn.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.FreeProbeRelativeElementColumn",
+      "source_sha256": "ff6af2dd1bb21fca10b533662d43a9f44d292d1651b68b792b2d69811675019c",
+      "capture_sha256": "268b5df249ed951f2f841bb26cc39f15cf565bf21b981e75ec8ab2bc9d8376f0",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 703,
+          "stop": 721,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/HammockColimitComposition.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.HammockColimitComposition",
+      "source_sha256": "657cc2b3b1b35df5d3b8d1f50e37f0e7dfd30d0a4f617ce50b48b0b43bbbcbf2",
+      "capture_sha256": "bfab26b4a77aff244044ab668035e6e2e3934593b90a233514c1d05d62d7d6a7",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 858,
+          "stop": 876,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/HammockColimitUnit.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.HammockColimitUnit",
+      "source_sha256": "e71b613b1cb6ba08387de0f72c0716eae6a10ee2ee92c56643182b1c966d0ef5",
+      "capture_sha256": "dc386d7395c939c41a5f00c5180c1a3196cc074623154d88930bd355f603f143",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 918,
+          "stop": 936,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/HammockColimitWeakComparison.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.HammockColimitWeakComparison",
+      "source_sha256": "aacf04bd9d6aa77088a598df51d57e2a9df93207d79e5a7503a87f0da9374105",
+      "capture_sha256": "313587689599e0e44fc205ee694d759b10d0e13f836adbd9cb0daac86947e429",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 806,
+          "stop": 824,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/HammockCompositionPairing.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.HammockCompositionPairing",
+      "source_sha256": "e5ed107dc49c1a888cf21ac4444186fc05075f05041c391671efa2844bcd2364",
+      "capture_sha256": "6b2292d97c6ef3b9899d507f45a290820e1f5bef61ada2259600efa6e0c1102e",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 931,
+          "stop": 949,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/HammockEnrichedCategory.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.HammockEnrichedCategory",
+      "source_sha256": "b5c56da8a6a1bc5aa6e28cd1744a10130e50ac8e2f9dd893ed916a238a8db03e",
+      "capture_sha256": "8b7e4e7af889793d06c0167476ae60316690ae51065cae19accf83602db72e7b",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 796,
+          "stop": 814,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/HammockErasureConfluence.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.HammockErasureConfluence",
+      "source_sha256": "6d071c6752a1e7d1b67d32c863459aac150d781bea72dfe75564a6e186441475",
+      "capture_sha256": "3fc1269aa5804bc1b72cbfce77f4d59fd45c64ae2ebff735e0b7bc07ba21e53e",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 815,
+          "stop": 833,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/HammockGraphColimit.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.HammockGraphColimit",
+      "source_sha256": "a95b3c31b37e704ec48120ef8273645efd32a28688a0a64a64422b63ab7c0f37",
+      "capture_sha256": "fbc82021a9cd14293169b54dc02c17c3105991902b7534cf40d7fd1bbb286449",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 833,
+          "stop": 851,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/HammockGraphComposition.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.HammockGraphComposition",
+      "source_sha256": "20cffdb02f0ba28091adfb8221c618f4b813c0a6e7b0eb3f7862bc869e7eec47",
+      "capture_sha256": "f7c761bee9ea8b89ca4ea92826707b9f1a05063524ec565170bf5a8a08d9323e",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 825,
+          "stop": 843,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/HammockGraphEmbedding.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.HammockGraphEmbedding",
+      "source_sha256": "d2a920b96d591d1d1dc3a1eb8148075b5ddc19bd3986458f44a915d36016a6f7",
+      "capture_sha256": "e4287e45ca82c7b7b0a7aba6a429a68d4f8ca9d9448d39939008d96b22a6936f",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 816,
+          "stop": 834,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/HammockGraphEmbeddingRange.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.HammockGraphEmbeddingRange",
+      "source_sha256": "3841e88326bbdafc384e4d40bc6ff6d4e107e4e8ff95e61bb6128f7884fa7ee9",
+      "capture_sha256": "7d0897b67844fa0b4aab5e5e20f95f80f1b87b2ad028ad1a41b545fec648e6af",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 821,
+          "stop": 839,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/HammockGraphProper.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.HammockGraphProper",
+      "source_sha256": "db6afa5c6ff553f0707b92c1e301d38832be41541af89ab4cca336446119a2d6",
+      "capture_sha256": "61ea64213321186464878959b594ef7395ec54fd7ae367431282147ffad0528c",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 900,
+          "stop": 918,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/HammockGraphTransition.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.HammockGraphTransition",
+      "source_sha256": "581220bd9b4004f8d5d00fe65977b9a89c9178aa07375523bd866ea3856d8776",
+      "capture_sha256": "86cef64c27b5e73b819d1a31ef2e36bd1f8144de2281bdd17f579f2a0e609e2d",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 914,
+          "stop": 932,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/HammockLocalizationValue.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.HammockLocalizationValue",
+      "source_sha256": "27ab511ef7d37650cd59a33c1c730ffc098e794f75610edcbd0f5273323b41a8",
+      "capture_sha256": "7fef39a2e708a7629bb99669ba7c09d496342e5e3b4e7b3f1a02812fbe2b44d5",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 883,
+          "stop": 901,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/HammockMergeConfluence.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.HammockMergeConfluence",
+      "source_sha256": "6b6e62dc0cce47c342b1254a933a8cae9020affd9667a800cd637639659f7f9d",
+      "capture_sha256": "465641f1d1239e851c8aecb43120fac7143b0bb6d0f0aa45828fec68001fc683",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 797,
+          "stop": 815,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/HammockNormalization.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.HammockNormalization",
+      "source_sha256": "68df2405bf93dfc057fd49be8ab6a046c9ec2be75a74aa4085d7d996ef4ffecb",
+      "capture_sha256": "d9b23be3d3750ebb03fe51dd435bb3d7565e4155196e4626c65c2fd2d27e11cc",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 874,
+          "stop": 892,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/HammockReducedColimit.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.HammockReducedColimit",
+      "source_sha256": "492645c841155e648cf381e82162c5141328ea575493d9d53a5c5c9f7e00a2df",
+      "capture_sha256": "02da600e090b5929c85f090cc22baf5488af78e94d02032df6cd06abe04b4f15",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 806,
+          "stop": 824,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/HammockReduction.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.HammockReduction",
+      "source_sha256": "099ebb40be9de74aba8f355c190280a259bd725c38fcbded402ef795e40d39b6",
+      "capture_sha256": "87c44bba93a3f79a224712e15a03f79ffaacbe4fdea2ded01f0e7ade68cc9b8b",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 975,
+          "stop": 993,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/HammockUnit.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.HammockUnit",
+      "source_sha256": "5132587e568862e98319b4e2103b71d45b522e3028e121c4c94bb815571ee172",
+      "capture_sha256": "943fe82cee3a59523f228bacee3a67f60e11b9e6d8e04d5aa7e93543bbdc1f98",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 677,
+          "stop": 695,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/MappingSpaceBarInclusion.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.MappingSpaceBarInclusion",
+      "source_sha256": "e4e2dd5bf47e0c8a701951418ec182a5b5e531f53e4f25097df5417778189512",
+      "capture_sha256": "dfdee28941739ab59db69c72d0dba6a67576179762e23d6af084c6152ede7e59",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 839,
+          "stop": 857,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/MappingSpaceHammockComponentsValue.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.MappingSpaceHammockComponentsValue",
+      "source_sha256": "b9d5f365bca56410091b7e14271de4b6567487ffebe31e8dc4ef006ffd662e7c",
+      "capture_sha256": "293cf6636623fcb1011788245bb36e5d070c82183dea6070998f8a8b60e1ec18",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 923,
+          "stop": 941,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/MappingSpaceSpans.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.MappingSpaceSpans",
+      "source_sha256": "1cb2ff70fdc5f8c53d6628e0c8b1859989d8e073d7e2d746def6477bf8fe2a35",
+      "capture_sha256": "804f0d525b942725ffd2dd4eb7c4e3c85183927ea696b92ce9361462cdc9fc87",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 1030,
+          "stop": 1048,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/Modules/RawModuleProbeCommonFrame.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.Modules.RawModuleProbeCommonFrame",
+      "source_sha256": "11145f69997fba527ffc75a23bac5cb5a4f57554ec145989b19e4e5c230807e7",
+      "capture_sha256": "5a9f62a37dbbc2d92563ae4c36a854388444f96d509f298522ae7292a3e1adbc",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 950,
+          "stop": 968,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/Modules/RawModuleProbeHomComparison.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.Modules.RawModuleProbeHomComparison",
+      "source_sha256": "44f23f28fa9e39586b7e1c30fef9ad868aea771adbbf56cb1e614b609551c73f",
+      "capture_sha256": "78b82af63a4caf18a94f259696ce28016f140fd94aefe1458e80cf99e10151a6",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 889,
+          "stop": 907,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/Modules/RawModuleRelativeModel.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.Modules.RawModuleRelativeModel",
+      "source_sha256": "8f39f76cd7c02b6da6b6b5d309c98af4176bbae2757cdb9bdf80d28731a38dda",
+      "capture_sha256": "0b24ccb01f10a7538a9851a49305de288fd4d0a088d136449b14d024a5cd0600",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 756,
+          "stop": 774,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/Modules/RawModuleTensorElementDiagram.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.Modules.RawModuleTensorElementDiagram",
+      "source_sha256": "8f1fb9d93ebd5b3b809c07ccb3d4e218f4014c7cdf7b5f3a198f2041bb4453a4",
+      "capture_sha256": "b906721fc3ad820863103eedbcf9529aa2aca5acc7af2708859abc3aa8c35a8c",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 822,
+          "stop": 840,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRawCartesian.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.Modules.StrictRawCartesian",
+      "source_sha256": "a353f5770c28c3b1975d5390afd0d3c92404e9ab65c2166dac63cc1cb739a973",
+      "capture_sha256": "e2856359d8c86274ce8ab3ef2e98bfc9ea1b8230c9ae76afd5420e114231a83f",
+      "rows": [
+        {
+          "kind": "term",
+          "start": 3858,
+          "stop": 3893,
+          "old": "HomotopicalAlgebra.weakEquivalences",
+          "new": "_root_.HomotopicalAlgebra.weakEquivalences",
+          "resolutions": [
+            [
+              "Mathlib.AlgebraicTopology.ModelCategory.CategoryWithCofibrations",
+              "HomotopicalAlgebra.weakEquivalences",
+              "term"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/SourceFrameRoofComparison.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.SourceFrameRoofComparison",
+      "source_sha256": "668c3ea52bcaefc65da06f033a8b11abb1bad3515148eb011fa898ea61c11013",
+      "capture_sha256": "cd95925e9eff5452e11099eedcc78ce0011c5c45200135ecc790035ac8c87516",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 800,
+          "stop": 818,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/Theory/CAlgExtensionForgetKFlat.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.Theory.CAlgExtensionForgetKFlat",
+      "source_sha256": "887134ad2aaae5551bde3f04fd3888c06b00167ffc7ff0b3d20138d2ba9a861a",
+      "capture_sha256": "2a830440ee565402afde1f5993506e818175c485fd2e48c354c521684c811ccd",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 974,
+          "stop": 992,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/Theory/CellularCarrierKFlat.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.Theory.CellularCarrierKFlat",
+      "source_sha256": "837a48fe807fbf48bbcee7601a9a3d44599f0801e03dce0990e8eba2585e5552",
+      "capture_sha256": "469075999cfcc091c9f31193768d494f6538f74714f94d14ebb51c70aea56b2e",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 1079,
+          "stop": 1097,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/Theory/CoproductFrames.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.Theory.CoproductFrames",
+      "source_sha256": "3baae393a77ff63b5b9755d010d338984a68738b1c98155bc74d24b0373beb8c",
+      "capture_sha256": "2689a41b3c1cf2e68048c2976de159c8d17f83a99a4b884d576c859b3d38453c",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 1226,
+          "stop": 1244,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/Theory/CoproductMappingSpace.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.Theory.CoproductMappingSpace",
+      "source_sha256": "1c10b8f94f93baf84b63844fa81fdfd22619d3a04eb10c0fe15235fd8509edb2",
+      "capture_sha256": "77e3a681ee4d917dd92c8edf19cb891a4e34689d6c7c8a7653bd8c91cfc52e93",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 923,
+          "stop": 941,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/Theory/CoproductModel.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.Theory.CoproductModel",
+      "source_sha256": "8d06d52b90b0eccd95ac88ef903010c760688cd28f7880e6340095a6ed03ef34",
+      "capture_sha256": "60194af3aca1b4b635618be21bfa3bf62eb9dc0c95cd31c0b37f3b92d84db772",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 1027,
+          "stop": 1045,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/BarrattEccles/Theory/DiscreteInitial.lean",
+      "module": "SerrePositivity.EInfinity.BarrattEccles.Theory.DiscreteInitial",
+      "source_sha256": "d984412ba8849d73a5e0941f6ce6435274c1b4c53c0a34463ad90d31b064fd9c",
+      "capture_sha256": "ecd1f25b5d981d0826173d062a8a4428ae8bb05472321c2a1e48b8e9640039d1",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 976,
+          "stop": 994,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/ComplexLimits/ConstantProbeLocalization.lean",
+      "module": "SerrePositivity.EInfinity.ComplexLimits.ConstantProbeLocalization",
+      "source_sha256": "5ea931b63c3d68b1cdbcaf66a7eef38a2693e543449fb9fc2eb9015e60f37a53",
+      "capture_sha256": "462c4d1f875f1b6fcd0d9d9502b2dd709feb318b017aba80ffb96b3e479b5d95",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 823,
+          "stop": 841,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/ComplexLimits/FramedLimitAdjunction.lean",
+      "module": "SerrePositivity.EInfinity.ComplexLimits.FramedLimitAdjunction",
+      "source_sha256": "3cc8acb1d67e546882ba87b1a5c0c24acb0e1e6c73ddb6e126b436005d03ada9",
+      "capture_sha256": "8028c39c50a9861d689828647bde85a25a146d5285a1cd43fb1f9e4393b638ff",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 997,
+          "stop": 1015,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/ComplexLimits/FramedLimitAdjunctionNormalization.lean",
+      "module": "SerrePositivity.EInfinity.ComplexLimits.FramedLimitAdjunctionNormalization",
+      "source_sha256": "a01d0ff3823ffc9ad8f981f8f4b1b9153de92c8deaa099266b005d7fba534992",
+      "capture_sha256": "aa6ec28c972901edc971f7aba9b7fa43a5851814ac0b37de65db62e7f1a0e264",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 704,
+          "stop": 722,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/ComplexLimits/FramedLimitConePiZero.lean",
+      "module": "SerrePositivity.EInfinity.ComplexLimits.FramedLimitConePiZero",
+      "source_sha256": "c0d7f258499b08b8cad91893d46c88b6e60fafb88d9e07c712015cf95fd8dccb",
+      "capture_sha256": "2cd8cd1d01f1cd661bf21d1bdf433f0198c41f31f8dd28b31594d133e19f659f",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 924,
+          "stop": 942,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/ComplexLimits/FramedLimitConePiZeroSource.lean",
+      "module": "SerrePositivity.EInfinity.ComplexLimits.FramedLimitConePiZeroSource",
+      "source_sha256": "902c7b8bad3c3fed67cc66b248fb74dc2b046737f21efb57a10f6f68d6eb5d87",
+      "capture_sha256": "9084d7783aecded711701d94c344be09a3d7aea682ccdcfbde7f61817675a1de",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 930,
+          "stop": 948,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/ComplexLimits/FramedLimitDerived.lean",
+      "module": "SerrePositivity.EInfinity.ComplexLimits.FramedLimitDerived",
+      "source_sha256": "5f2e742e84e014ae26d0327bb46c64611d3ed93e0c665b344cc2bdd790aaa996",
+      "capture_sha256": "a8bc9a0d9331fb8d5d4acf45819213ba6ecd320ef906ac9463017c688b901095",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 912,
+          "stop": 930,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/ComplexLimits/FramedLimitDerivedHomNormalization.lean",
+      "module": "SerrePositivity.EInfinity.ComplexLimits.FramedLimitDerivedHomNormalization",
+      "source_sha256": "d04917cb33e7f9b81ed27f5bbc4fe019ad3d6b24df70cc2b8804d525cbb31f4c",
+      "capture_sha256": "eb1749ff1468e1215e4f2e5fcf0eaa18e0c95cde9e547c61d08afffc87e674c7",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 838,
+          "stop": 856,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/ComplexLimits/FramedLimitDerivedHomSource.lean",
+      "module": "SerrePositivity.EInfinity.ComplexLimits.FramedLimitDerivedHomSource",
+      "source_sha256": "893d2a2f8db43280ccc7cb68c4df4251e99382d03b3eb97268fd1fb48580b585",
+      "capture_sha256": "47d8584dc46b3a5311923250e4248340c7aa1c4f2c94c12498cb97a7c72de222",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 852,
+          "stop": 870,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/ComplexLimits/FramedLimitHomIso.lean",
+      "module": "SerrePositivity.EInfinity.ComplexLimits.FramedLimitHomIso",
+      "source_sha256": "efb793af93c62914e20f72b03ef4a39cac4ce9328bf62960ef73f9314a8cf673",
+      "capture_sha256": "0032f42adb1fbdf4ef5ba15c9c0a887a6ec461dec7e8634c96c391ef93814369",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 817,
+          "stop": 835,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/ComplexLimits/FramedLimitLocalization.lean",
+      "module": "SerrePositivity.EInfinity.ComplexLimits.FramedLimitLocalization",
+      "source_sha256": "400638f46d6c2d1b2cc200eedddff4a9af34b604588c2ff7c7b4e8fdce774215",
+      "capture_sha256": "601be7301b0bafe28a3c1279ae93bbbeae5e594c386a38b9353a240e2b0ed2f1",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 860,
+          "stop": 878,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/ComplexLimits/NormalizedOrdinaryDerivedHom.lean",
+      "module": "SerrePositivity.EInfinity.ComplexLimits.NormalizedOrdinaryDerivedHom",
+      "source_sha256": "0b7883182e0dc58aa94cbde6c1b4a90fd50caaa3ec4b4461ec3ad074a1d30ff4",
+      "capture_sha256": "9186e5c0dfce39cd65ebfc52d347b13a412fdbf9d74937323a4f610f5dd881b9",
+      "rows": [
+        {
+          "kind": "term",
+          "start": 4456,
+          "stop": 4497,
+          "old": "HomotopicalAlgebra.isFibrant_of_fibration",
+          "new": "_root_.HomotopicalAlgebra.isFibrant_of_fibration",
+          "resolutions": [
+            [
+              "Mathlib.AlgebraicTopology.ModelCategory.IsCofibrant",
+              "HomotopicalAlgebra.isFibrant_of_fibration",
+              "term"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/EInfinity/DGAlgebra/BifibrantCofibrant.lean",
+      "module": "SerrePositivity.EInfinity.DGAlgebra.BifibrantCofibrant",
+      "source_sha256": "db96d8c7dab82b101ba42aa718d6358a4b3ce67d0292b7fe27d2d2362998bb83",
+      "capture_sha256": "4341184430abb98c05d117bf73b5c9a37efc3f0b961d0b56a321f53df60ab695",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 785,
+          "stop": 803,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/HomotopicalAlgebra/Simplicial/DiagonalLeftAnodyne.lean",
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLeftAnodyne",
+      "source_sha256": "bb61be5fa3ff15ddd19b9e62fe1432b7882a42e0224d1ec6ebafeafbc9d31a05",
+      "capture_sha256": "6da31b5e93824c108e3719d765e8dc0e29704a5225054c0641b98be418e4ae9b",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 792,
+          "stop": 810,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/LeftAndRightFibrations/AnodyneKanTarget.lean",
+      "module": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.AnodyneKanTarget",
+      "source_sha256": "c39a2bf94687dd2cc1cf1919483cc62fa036a815a23b18372642022ee303357b",
+      "capture_sha256": "a053e4d01582e4e57765d1f3f667a312b0498d424dc3921370343e59b8ea1e17",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 1026,
+          "stop": 1044,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        },
+        {
+          "kind": "term",
+          "start": 2495,
+          "stop": 2527,
+          "old": "HomotopicalAlgebra.fibration_iff",
+          "new": "_root_.HomotopicalAlgebra.fibration_iff",
+          "resolutions": [
+            [
+              "Mathlib.AlgebraicTopology.ModelCategory.CategoryWithCofibrations",
+              "HomotopicalAlgebra.fibration_iff",
+              "term"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramCofibrantVertices.lean",
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramCofibrantVertices",
+      "source_sha256": "22b505d6b235fae98838876c27ff23396c5f9721f90603ac3b4cc13778b2e60d",
+      "capture_sha256": "b355a548700dd2ae5520d80fd9142a5992f55225fff069472c6729656d8b0b11",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 685,
+          "stop": 703,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramFrameEndpointIso.lean",
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFrameEndpointIso",
+      "source_sha256": "eae976ecbd73c326c6824970d0d0a578326739b15cc8ae00b775d29d4da989be",
+      "capture_sha256": "47e448745b16fa73466079e42d659ecdfd746cde9ab1aa158fb4aea2d9ae5b3c",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 807,
+          "stop": 825,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramFrameSections.lean",
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFrameSections",
+      "source_sha256": "2f29c615fca67da01bf6263a72f48ad3b2539b5d37efcff6a6f9f6ef7d938226",
+      "capture_sha256": "0ca118b84686e33b9e6c119fde90b36a2922770e4ca9431bed3a58da3c844c04",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 678,
+          "stop": 696,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramMappingSpan.lean",
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramMappingSpan",
+      "source_sha256": "809df7f9c0412a82c877a386c88d13fb733b02b0ded016be45b0af324f988542",
+      "capture_sha256": "8de95342391618febabc34f0bad1e903bce9ee06b07aeddc6a2e9011555d0cfe",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 986,
+          "stop": 1004,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramSourceFramePinched.lean",
+      "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramSourceFramePinched",
+      "source_sha256": "29c85819a359298d4bd5555c01502ba6dfbd9cced7622f23ea3d35dd7b24efdd",
+      "capture_sha256": "48ac55ae2499854800e925eaf67e4b2c425337616cc4bf38fe3f1e301a451a37",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 1101,
+          "stop": 1119,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Frames/FrameIndexComparison.lean",
+      "module": "SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Frames.FrameIndexComparison",
+      "source_sha256": "244e672db4fa6f92d39f6c7d3e92f188ce2be62cb44383acc78bb10d5ca7a41e",
+      "capture_sha256": "65dac31255cb70e823b6ea57ea508ba5e67e608bc52f0780eb2ef589a5bae084",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 979,
+          "stop": 997,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Frames/ModelBifibrantFrame.lean",
+      "module": "SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Frames.ModelBifibrantFrame",
+      "source_sha256": "9a7d9b2e95e96be0cadf5494df46adec35fbe250a665de3ec011d5f3fab52d68",
+      "capture_sha256": "89ba1b35b2b8f1b8f358e10ae7f269f64b568662d7f5c2d9a783f8b794ba31a3",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 927,
+          "stop": 945,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Frames/ModelBifibrantFrameElements.lean",
+      "module": "SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Frames.ModelBifibrantFrameElements",
+      "source_sha256": "3524b372f90f9d4d7cdf671eda9efaa7226859189c3e6c2508c1add5dcfc59f5",
+      "capture_sha256": "fc0969781558313fb7d655dbb3ccff32327b0ba3789bcaf41a7f20ae30a7023a",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 821,
+          "stop": 839,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Frames/RightFrameReplacement.lean",
+      "module": "SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Frames.RightFrameReplacement",
+      "source_sha256": "81f6781329b795868131f5da34e22ed4e03b7922078802be8d2c4db66f95d005",
+      "capture_sha256": "2953736d929b376b08e4ab5d1a9c5450ca4e25a3f4842b4cb5a4d5493d40ccc3",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 737,
+          "stop": 755,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Frames/RightFrameSpans.lean",
+      "module": "SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Frames.RightFrameSpans",
+      "source_sha256": "e24b2a906185d4ac28f8e31e7538a074cee5c6a931e011ddd23c12bcafd339ad",
+      "capture_sha256": "f03496305484a1a925bc0768e5698ba483c0bafd2d40bfedebe89653f63328b9",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 898,
+          "stop": 916,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Frames/RightFrameUnitFamily.lean",
+      "module": "SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Frames.RightFrameUnitFamily",
+      "source_sha256": "d577272a29b7482b57ec867b49e599a32994105434fa30db87b843763d26ffea",
+      "capture_sha256": "0820c3b6f751d59dc65990c208e8a855822b4692889a078f458b9a633cfd472a",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 740,
+          "stop": 758,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/BackwardColumnErasureComparison.lean",
+      "module": "SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.BackwardColumnErasureComparison",
+      "source_sha256": "4eed2ac89b548b320d342c203e89f60313a8f2d2e64042cdf5e38f377ad880d3",
+      "capture_sha256": "76cc1af9a29ed09b3653ef04cc29db7109b2283fe908abbc900e999f91131e74",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 912,
+          "stop": 930,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/MiddleBackwardContextErasure.lean",
+      "module": "SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.MiddleBackwardContextErasure",
+      "source_sha256": "97ccd363b149a23acf64cd0a5ffe17710919d317b84c60b5dc37ab10943f8c07",
+      "capture_sha256": "83a9bfdb5d200ce9be28dfa8b6b685d8f78925ce2efd5a693a5080f5f748f871",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 1066,
+          "stop": 1084,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/MiddleBackwardContextEssentialImage.lean",
+      "module": "SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.MiddleBackwardContextEssentialImage",
+      "source_sha256": "98237850c0e7cbf29930c2eefde056eb21eee23b74514d5bbe32511a04ea6870",
+      "capture_sha256": "c84b806f56c7c22c6ded9e64e98ad0babafe4f68ec31b7f98a57a8487ce9339b",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 1027,
+          "stop": 1045,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/MiddleBackwardContextRightIdentity.lean",
+      "module": "SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.MiddleBackwardContextRightIdentity",
+      "source_sha256": "440a322f9d8c1c33fcd8a45a8c45403ad8ab3802ed1f9ab0f6d260fcb8dbd873",
+      "capture_sha256": "f656aac95b6990e4cc2d095f7f16ca66b69241f63a4d811000558f775aecee20",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 922,
+          "stop": 940,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/MiddleBackwardContextRightReplacement.lean",
+      "module": "SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.MiddleBackwardContextRightReplacement",
+      "source_sha256": "8e495dffc579a53a250b4756b7cffd1557a21f81c360edfeb192d9243012acc1",
+      "capture_sha256": "7b5eb9e26f4a22055a5765a182aac4f226a337fd0a67a195dc150114fcd135df",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 1141,
+          "stop": 1159,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/MiddleBackwardIdentityInsertion.lean",
+      "module": "SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.MiddleBackwardIdentityInsertion",
+      "source_sha256": "e8be5178a0dcb71b5e6d1c9d3c6b95bd590cd51c0cece8dc9183139a7916ab67",
+      "capture_sha256": "6a4815405360198bf97606c84df9bb2615dbb985930df322094343406601cdf9",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 1136,
+          "stop": 1154,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/MiddleBackwardRightEssentialImage.lean",
+      "module": "SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.MiddleBackwardRightEssentialImage",
+      "source_sha256": "9c3d7bc285728c95eed870bb551fcc1f02ef1581738c8ce87a5b36186a832796",
+      "capture_sha256": "95d9f9115f8561e9b79c1a327122ad418d84515f66d7f3a93ed9ae0d685eb08b",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 970,
+          "stop": 988,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/MiddleBackwardTrivialRightReplacement.lean",
+      "module": "SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.MiddleBackwardTrivialRightReplacement",
+      "source_sha256": "e322b29d07bf8fc0035abbf353def3cfd70b53ec42b915d2ac9621162f3a48ea",
+      "capture_sha256": "e1e2e34070594fa9bdbe9cc10d49328c157fcf3dd0a6777d4886c8521e4da92f",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 1064,
+          "stop": 1082,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/ModelBifibrantDeformation.lean",
+      "module": "SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.ModelBifibrantDeformation",
+      "source_sha256": "25a54ff57cd45a4b15235ed3c5208ff0f41453da3311af006c5c34651451b7f0",
+      "capture_sha256": "27836cc59e30ebef3cf5906ab1af279b79622270e61e1b20148f0400bbe41f42",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 754,
+          "stop": 772,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/ModelBifibrantHammockWeak.lean",
+      "module": "SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.ModelBifibrantHammockWeak",
+      "source_sha256": "e80bed16054d4de47eae7290c32913fb8dabde629473c2beb99fc65ea728f5f9",
+      "capture_sha256": "53a969763243ae48b0e71460e35828bd7ad62491afbb1b5c6448da8a7c61047c",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 731,
+          "stop": 749,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/ModelBifibrantRelative.lean",
+      "module": "SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.ModelBifibrantRelative",
+      "source_sha256": "080d7ca56af5e7e32243ca35f62a5900fcbfb5567f563c52cf0c5eb00f770bcd",
+      "capture_sha256": "88563618a30395cde6561fa58a775beb1eea8c7f3c3fc8567464631e5d019431",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 891,
+          "stop": 909,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/ModelCofibrantHammockWeak.lean",
+      "module": "SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.ModelCofibrantHammockWeak",
+      "source_sha256": "e8c28c50393de6c5640127f3eafda3543d0d521399b97161437922d63061a43f",
+      "capture_sha256": "934fffe66c1d1511ad5275d9f86a58c8799885411416c77f5763a80b6d28baba",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 784,
+          "stop": 802,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/ModelRawRelative.lean",
+      "module": "SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.ModelRawRelative",
+      "source_sha256": "29a23ac8ff324d087ef89a4601711c8798c8ddac2f0dd210135dc15545d1248c",
+      "capture_sha256": "9d3ebf4e7f1eea262b7165b3ef6aa2bab8fc77894e87252952040000e4630a3a",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 783,
+          "stop": 801,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/PaddedForwardDiagramComparison.lean",
+      "module": "SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.PaddedForwardDiagramComparison",
+      "source_sha256": "dd10b7a3f53391d0b7bbe1483e201eb7f49990a839ae9c66896e40dd0bb5a682",
+      "capture_sha256": "8abe4e3067960e9f958418f9a05c99d3654b428d7e444947b8b42f9787a4ce6b",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 827,
+          "stop": 845,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/PaddingColimitComparison.lean",
+      "module": "SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.PaddingColimitComparison",
+      "source_sha256": "fdb5a7f371b4d509f78275c63239a67812239c8d82ae7dd588443c9c35950235",
+      "capture_sha256": "f4a3e1f95a33b5871a08ea2d0720264909b64fd7361d910af038c71554ff38e2",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 1124,
+          "stop": 1142,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/ResolutionSpanNormalization.lean",
+      "module": "SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.ResolutionSpanNormalization",
+      "source_sha256": "5c248ed25abfc3d654f93b7e43d21fd7d90655b31a6a7bc3206a561ceb1859d1",
+      "capture_sha256": "6ec0917b838565e8e7800beccac9ebf18d37cbf83af375d6172ea96b1d96caf0",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 1028,
+          "stop": 1046,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/KST/LocalizingInvariants/DGAlgebraNativeChosenRightFrame.lean",
+      "module": "SerrePositivity.KST.LocalizingInvariants.DGAlgebraNativeChosenRightFrame",
+      "source_sha256": "eae842a490b6ea66a0db8f3ef271058486a3aff6eb92e72ef7d03bf1993336d0",
+      "capture_sha256": "35a2ac8309183367b9a7718e080af65aed5c6ec7779c56dc14651c34e007033a",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 813,
+          "stop": 831,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
+    },
+    {
+      "source": "SerrePositivity/KST/LocalizingInvariants/DGAlgebraNativeFrameKan.lean",
+      "module": "SerrePositivity.KST.LocalizingInvariants.DGAlgebraNativeFrameKan",
+      "source_sha256": "e649f7091af3d083e4c5097a66c8ed607a8b5b8f4e6aa62c2953a13c45ca845f",
+      "capture_sha256": "b35a13995840e430625e93cc33db057e22a7168b2d3b4f0f88b0ee2b691b8daf",
+      "rows": [
+        {
+          "kind": "open",
+          "start": 1010,
+          "stop": 1028,
+          "old": "HomotopicalAlgebra",
+          "new": "_root_.HomotopicalAlgebra",
+          "mode": "simple",
+          "resolved_namespace": "HomotopicalAlgebra"
+        }
+      ]
     }
   ],
   "pending": []

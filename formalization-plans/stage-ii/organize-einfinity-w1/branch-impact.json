@@ -1,34 +1,51 @@
 {
   "base": "30ae8948f339beec42d9340feb02f2031c22c72b",
-  "policy": "Exact old module/namespace strings, BE module basenames, plus bare namespace tokens; original branch HEAD and dirty/untracked Lean sources read-only, drafts included. Candidate matches are conservative; compiler checks determine actual bindings.",
+  "policy": "Exact old module/namespace strings, BE module basenames, plus bare namespace tokens and unrooted Mathlib HomotopicalAlgebra candidates; original branch HEAD and dirty/untracked Lean sources read-only, drafts included. Candidate matches are conservative; compiler checks determine actual bindings.",
   "branches": {
     "math/inf-supply": {
-      "head": "287a524a4fd6b6935c6b21cdd35fd79186b1f2e3",
-      "touched_lean_files": 307,
+      "head": "baed0d02a6ab6942683ec5d014b75510e0634479",
+      "touched_lean_files": 318,
+      "affected_files": 2,
+      "files": [
+        {
+          "path": "SerrePositivity/InfinityCategories/Kerodon/KanComplexes/HomotopyPullbackAndHomotopyPushoutSquares/KanPushoutCocones.lean",
+          "matches": [
+            "HomotopicalAlgebra"
+          ],
+          "source_sha256": "db951af4db7a2bf51039ee08f44989fc7890bffab74fb39436bdb4ffcf39c04e",
+          "is_draft": false
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/DiscreteAnodyneExtensions.lean",
+          "matches": [
+            "HomotopicalAlgebra"
+          ],
+          "source_sha256": "82ed30b8590d0de61dd80e90945da7a88d88710bf57907529fdf7def7ea7f8a0",
+          "is_draft": false
+        }
+      ],
+      "worktree": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-classical",
+      "uncommitted_checked": 12,
+      "uncommitted_matches": [],
+      "affected_files_with_worktree": 2
+    },
+    "codex/bulk-5inf3a": {
+      "head": "3d4f31c058d6734aa08971da58206b9c1e3b5867",
+      "touched_lean_files": 274,
       "affected_files": 0,
       "files": [],
-      "worktree": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-classical",
+      "worktree": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout",
       "uncommitted_checked": 10,
       "uncommitted_matches": [],
       "affected_files_with_worktree": 0
     },
-    "codex/bulk-5inf3a": {
-      "head": "9e2a84f12842646a477a1bb3eb042403ee5078ad",
-      "touched_lean_files": 269,
-      "affected_files": 0,
-      "files": [],
-      "worktree": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout",
-      "uncommitted_checked": 5,
-      "uncommitted_matches": [],
-      "affected_files_with_worktree": 0
-    },
     "math/scheme": {
-      "head": "a7ce39b10c7e9e53084e33c369f70528b5a26384",
-      "touched_lean_files": 214,
+      "head": "4d83b6cc9eb33f9874c4c4c15e6984c067ccf9ea",
+      "touched_lean_files": 218,
       "affected_files": 0,
       "files": [],
       "worktree": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-scheme",
-      "uncommitted_checked": 2733,
+      "uncommitted_checked": 2744,
       "uncommitted_matches": [],
       "affected_files_with_worktree": 0
     },
@@ -53,6 +70,6 @@
       "affected_files_with_worktree": 0
     }
   },
-  "total_affected_files": 0,
-  "total_affected_with_worktree": 0
+  "total_affected_files": 2,
+  "total_affected_with_worktree": 2
 }
