@@ -22,7 +22,7 @@
     "AffineOriginalCoverHomologyIsos",
     "AffineOriginalCoverOneSquare"
   ],
-  "pending_check": "bundle-298 terminal rc1; see audit module inventory; failed dependencies await next batch",
+  "pending_check": "bundle-304 queued; six R2 sources unverified; R3 not started",
   "next_proof_route": "remaining-20000-plan.md",
   "initial_record": {
     "stage": "5inf3a",
@@ -396,8 +396,8 @@
       "lines": 74
     }
   ],
-  "working_written_lines": 23837,
-  "source_inventory_scope": "Only HT01\u2013HT06 source additions/changes against 336942ab0, plus untracked files; excludes pre-existing Comparison modules.",
+  "working_written_lines": 23899,
+  "source_inventory_scope": "Only HT01–HT06 source additions/changes against 336942ab0, plus untracked files; excludes pre-existing Comparison modules.",
   "static_check": "static-pending-check.json; not Lean validation",
   "build_wait_history": [
     {
@@ -415,7 +415,7 @@
   ],
   "current_request_last_confirmed_live_utc": "2026-11-15 04:52:28 UTC",
   "HT02_remaining": "complete; see ht02-complete.json",
-  "prepared_source_lines": 23837,
+  "prepared_source_lines": 23899,
   "prepared_modules": 287,
   "verified_source_lines": 23263,
   "provisional_total_source_lines": [
@@ -455,7 +455,7 @@
   },
   "scope_review_history": [
     {
-      "reason": "remaining HT04\u2013HT06 cannot be forecast within 659 remaining lines; coordination section 2 scale rule",
+      "reason": "remaining HT04–HT06 cannot be forecast within 659 remaining lines; coordination section 2 scale rule",
       "verified_math_head": "28763cb06d93b4d5c007cd928f65065873e39623",
       "verified_modules": 157,
       "verified_lines": 13341,
@@ -545,5 +545,6 @@
     "modules": 224,
     "lines": 18673,
     "private_prototype_lines": 150
-  }
+  },
+  "latest_scope_measurement": "ht04-24000-progress.json"
 }
