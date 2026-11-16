@@ -1,7 +1,7 @@
 {
   "scope": "Only 5inf3a additions/changes since 336942ab0; static checks do not imply Lean validation",
-  "modules": 54,
-  "lines": 5185,
+  "modules": 196,
+  "lines": 16568,
   "missing_import_sources": [],
   "cycles_among_added_modules": [],
   "explicit_sorry_or_axiom_matches": [],
@@ -22,9 +22,299 @@
       "lines": 106
     },
     {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Coefficients/AffineBaseCoefficientModels.lean",
+      "sha256": "227041a7259a9e2615358590f3f08c354a75b966e087f6226db2d7ab5f28103b",
+      "lines": 92
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Coefficients/AffineBaseHodgeTateMap.lean",
+      "sha256": "5953f88de53c21598e4d919427624a4a63e37da688b2b96e61bc36679eec9a9e",
+      "lines": 87
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Coefficients/AffineBasePolynomialAction.lean",
+      "sha256": "ff2fb3fa8e71f58bd5ec3221973bc632250ce5db0bbdf2d15cb346c364ba4583",
+      "lines": 71
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Coefficients/AffineCoefficientBockstein.lean",
+      "sha256": "8ce81c90cad7a449f735ce822ba341ba21eda113311f5d7b787c1ca537b55a73",
+      "lines": 70
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Coefficients/AffineCoefficientCohomology.lean",
+      "sha256": "01597841f5a74755962e9dfc714195302f3ed1f3a43399ab98b52233f5a36919",
+      "lines": 69
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Coefficients/AffineCoefficientDiagram.lean",
+      "sha256": "d8b36d46c5641e3fd58b09b27c1a13f3325ce9a44e736c3d8309f68b33fcd2b6",
+      "lines": 75
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Coefficients/AffineCoefficientSections.lean",
+      "sha256": "20e16539cff0bf18d32c2b81adddf41f2fc1c92108daaebba7ee97672dc6075b",
+      "lines": 73
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Coefficients/AffineCoefficientStandardZero.lean",
+      "sha256": "78f5a9569a4c0f387f989e0f5b7ad5fd98ef8fe66245cfdd55ba3e2f5d1384b1",
+      "lines": 109
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Coefficients/AffineCohomologyScalarClasses.lean",
+      "sha256": "0307301aba40ef4551d6fceff751d16a174591d272beef8e332c3f8d74c9700c",
+      "lines": 49
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Coefficients/AffineOrientedBaseRows.lean",
+      "sha256": "5368c2c1876410dc69574f5198c621c280372d14d4b8d11e3fdd902dd4a53d75",
+      "lines": 81
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Coefficients/AffineOrientedCoefficientDiagram.lean",
+      "sha256": "09bba1b783950eb2a73e6b6b6f1848d13d1bdef62d3a93d503f225d8bdc832cc",
+      "lines": 83
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Coefficients/AffineOrientedCohomology.lean",
+      "sha256": "a27cf9ce81e6de608170af0a258368fb10757bf0131b4ed33944b2fd8dc0421b",
+      "lines": 69
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Coefficients/AffineOrientedRawBasis.lean",
+      "sha256": "1c3327e7f1777d3668dda572313305fe9e3aa0f3ead20da0520dbbf4a8b8a9e9",
+      "lines": 111
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Coefficients/AffineOrientedRawOne.lean",
+      "sha256": "dd29999fb5fe1c3e58eccfe7c4f1a0674bdb2946ab4a3cbcc9242d1a1b7a2543",
+      "lines": 64
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Coefficients/AffineOrientedRowUnits.lean",
+      "sha256": "bd6e9bd6567516a1543eb2e49ff1dff52c2d73b630a3aeba473f6b5f1cb4a68e",
+      "lines": 63
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Coefficients/AffineOrientedStandardZero.lean",
+      "sha256": "41996ae8512444938d69122c7dceb980ed4c0d79c463b06e963f66165376ea73",
+      "lines": 95
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Coefficients/AffinePolynomialCoefficients.lean",
+      "sha256": "568f87b775611f746889fd8a5007a05d102cd3624c0e685307cce5e7425e2ea2",
+      "lines": 65
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Coefficients/AffineRawFormWords.lean",
+      "sha256": "242a327cab406f717e65b888e09abdf1f0d1397dfb765d88f442cfc02cb9a863",
+      "lines": 72
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Coefficients/AffineRawHodgeTateGenerators.lean",
+      "sha256": "9b2d06c26c56e46e4fc5d6db15e1ac77291bdb8e7cea41f017768c34b3313f76",
+      "lines": 88
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Coefficients/AffineRawHodgeTateWords.lean",
+      "sha256": "771c4545a474c6ec03b2861da242ff933de2be8a4cecafe6d396dfeaa9c1fc9c",
+      "lines": 117
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Coefficients/AffineRawPolynomialCoefficients.lean",
+      "sha256": "d86d023714fe863adb86b3b3d638220abbd018483dea0f32a68ec948d728df8b",
+      "lines": 81
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Coefficients/AffineUnitBockstein.lean",
+      "sha256": "b8902ab9a2b06a386b7aa3774abcde3200c0cb2ff4ab3b61ebefd5ce571bece0",
+      "lines": 100
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/CrystallineCover/AffineCompletedCoefficientIsomorphism.lean",
+      "sha256": "88630cbb556ebcb107cf7ba873e19cd2ca85e3b46676aa3f053020e27817f2f9",
+      "lines": 57
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/CrystallineCover/AffineCrystallineBaseCohomology.lean",
+      "sha256": "d0eecafd89b818728db1f14229cc688251f09cf043ac7079a5eb56537347babb",
+      "lines": 59
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/CrystallineCover/AffineCrystallineCohomologyClasses.lean",
+      "sha256": "cc4188af553fe0318b89bb347f656a776a94fc05d8c55b76bbba80e007551f6a",
+      "lines": 146
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/CrystallineCover/AffineCrystallineCompletedRows.lean",
+      "sha256": "8a4ea4115df51ad6599f63d8bd26cc616877d9e5b893b072ca8e0e606e64eeab",
+      "lines": 59
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/CrystallineCover/AffineCrystallineCompletedTotals.lean",
+      "sha256": "981af23af5b12c1bfac330aa494540d4dacdd2a45cc4ed13e11a7214366f7a92",
+      "lines": 79
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/CrystallineCover/AffineCrystallineHodgeTateSquare.lean",
+      "sha256": "c7336397bf176296b0934af64e23ebaeac529198b07ed716bb5db0d462d97d99",
+      "lines": 93
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/CrystallineCover/AffineCrystallineOrdinaryRows.lean",
+      "sha256": "f3a0c49f0617428d6e80418282cf2cf7edd22fcc232509502d6c0a618c56baf3",
+      "lines": 89
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/CrystallineCover/AffineCrystallineReducedAlgebra.lean",
+      "sha256": "e48d5414608981a7d3555027f3ea9381c01702f8c78cb28175b80a93b55f2c6a",
+      "lines": 50
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/CrystallineCover/AffineCrystallineReducedModel.lean",
+      "sha256": "1237099a310ed2b9a908b3c7cf3a617e57a79ce368b56faf465cead03ab745ca",
+      "lines": 55
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/CrystallineCover/AffineCrystallineResidueAlgebra.lean",
+      "sha256": "3e2c316f3adad1e7f9f8b88690ff72582cb4926bc189d843139f6b2509827b5d",
+      "lines": 57
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/CrystallineCover/AffineCrystallineResidueTerms.lean",
+      "sha256": "89d9992ebe131d178b4b34b85ccc337a568ef8a1f59c8f6f72d68de0b4e41c46",
+      "lines": 73
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/CrystallineCover/AffineCrystallineRowBaseChange.lean",
+      "sha256": "f2917d4677c5ee4e1cbf7b4b0ea874faffc3c9be7188971c48183860d318ee64",
+      "lines": 85
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/CrystallineCover/AffineNativeBaseHodgeTate.lean",
+      "sha256": "4f9dc706f243203f2c97597a2bd443dd47c59d846c24b9a11fa4d1d6bb1c6288",
+      "lines": 109
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/CrystallineCover/CrystallineAffineFormsBaseChange.lean",
+      "sha256": "7fa089881247d23175e1ebf7452c0cf766b46399eabdadea9142065f98790f32",
+      "lines": 73
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/CrystallineCover/CrystallineAffineFormsUnit.lean",
+      "sha256": "8a7470d73c9d89a0ac072531f955b3f16eb81d1dc9270b294ece206c4c57817e",
+      "lines": 115
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/CrystallineCover/CrystallineCoefficientSingleRows.lean",
+      "sha256": "7952882cc12ebe21ab0a7acbdff28ce58ce5c463f1b2297cc56f5f6842178dc0",
+      "lines": 71
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/CrystallineCover/CrystallineCompleteSingleRows.lean",
+      "sha256": "d286d208050fa0216c0ce2afa722ba4e1c9d13a824a469ae88fb2b66c737ab5b",
+      "lines": 72
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/CrystallineCover/CrystallineCompletionResidue.lean",
+      "sha256": "a8db24846a988843e86449e200e826c1b4e775e289424f11f3fccf8bccb12332",
+      "lines": 73
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/CrystallineCover/CrystallineFormsBaseChange.lean",
+      "sha256": "a2d22437c800160903c4c2281fff1f6ce843397b6c8f9b50d3a1abc74a3d08ff",
+      "lines": 78
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/CrystallineCover/CrystallineFormsCoefficientBasis.lean",
+      "sha256": "172c3a6b1f1957068bdeefff84f41ade66809b190ffd0689155520c18e0d7295",
+      "lines": 58
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/CrystallineCover/CrystallineFormsReduction.lean",
+      "sha256": "11bc89ca61de46f3e7901771f3c7ca625aee44e5f715f70a19afbbe728383706",
+      "lines": 80
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/CrystallineCover/CrystallineOrdinaryTensorResidue.lean",
+      "sha256": "5394344ea73eeeb899f5c5802e0df8b2a03829c4e4abaed3c0a2bed03c611b91",
+      "lines": 71
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/CrystallineCover/CrystallineResolvedOrdinaryTotals.lean",
+      "sha256": "e9af72b8ccb3d51755b2bf8bf71243c6408d9f9931f4a85399916425eb65b6c2",
+      "lines": 98
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/CrystallineCover/CrystallineTensorResidue.lean",
+      "sha256": "c390cc00230104990f1407316a1e55fda187ee94c1e35b80e26488aeec052ec6",
+      "lines": 62
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/CrystallineCover/HomologyCoefficientClass.lean",
+      "sha256": "c19356af58c2991e39fb6b61aa4c1150677120c3f95f56d9a5ae7b2e04121bf3",
+      "lines": 59
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/CrystallineCover/PrismResidueScalarTensor.lean",
+      "sha256": "421b0a52a80fb5c9b45cc70fb88ff3382d934909aefa36553ffddd171197165a",
+      "lines": 81
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/CrystallineCover/PrismResidueTensorExt.lean",
+      "sha256": "f2bb860c1d57708c4390bbde92c7634737e029f68cf18ef6fefcc6bb6695d882",
+      "lines": 62
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/CrystallineCover/UniversalCrystallineAffineTotals.lean",
+      "sha256": "ea6e18839fac8ba3339b0ed4c9083f3059d4c89f15c3ed1052723569f928536d",
+      "lines": 52
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/CrystallineCover/UniversalCrystallineAmplitude.lean",
+      "sha256": "7fcfae2b7c03e594721c1f938d341b8dc1a4ab3b2c004669408db2b4424efbce",
+      "lines": 41
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/CrystallineCover/UniversalCrystallineCoefficients.lean",
+      "sha256": "ab1d898ae507dec6b0e1729e9edddac3be188030c88930af63a2c31db417bd99",
+      "lines": 108
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/CrystallineCover/UniversalCrystallineHodgeTate.lean",
+      "sha256": "f8f22226aa77487944aedb61dae6e3f75427f997f6e9b9335e52aa0cc66791c4",
+      "lines": 40
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/CrystallineCover/UniversalCrystallineTotalization.lean",
+      "sha256": "01ff40bea914b392d1f3d13a97431a5e00cf9ded1f1eaafb53ee4344d3d2bc04",
+      "lines": 41
+    },
+    {
       "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/BaseChangeTotalComparison.lean",
       "sha256": "8ce6b874b829283eb45e73cfd93d872ffd4c31421027224298c210afdf305073",
       "lines": 92
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/BaseChangeTotalComponents.lean",
+      "sha256": "8ff0754a512ed8ff6824b8af6a86e75a5c45e6b70273208e2d695136b9a18795",
+      "lines": 63
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/BaseChangeTotalNaturality.lean",
+      "sha256": "5621004f55d0eb4daffe8e0fa62a75173ea37f0716aaffd1ba8054bd18b802a0",
+      "lines": 91
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/CanonicalCompletedNaturality.lean",
+      "sha256": "0f889aba70444d3ca2fd1f031f627a0e2eda6f73cbbcce246274b9c18106af33",
+      "lines": 106
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/CanonicalCosimplicialComparison.lean",
+      "sha256": "2585a4d5f9a26942dca20c44b192e35108a82251d14c38d8c4176cac71d1a00b",
+      "lines": 84
     },
     {
       "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/ColumnPrimitive.lean",
@@ -32,9 +322,19 @@
       "lines": 123
     },
     {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/CompletedAugmentationFromTotal.lean",
+      "sha256": "6094a7e94d6eeac262c21d6fc511c958eba367aaace301413d586fad24010442",
+      "lines": 98
+    },
+    {
       "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/CompletedComparison.lean",
       "sha256": "860842e2044fe665b80cdb84a9de4e7a75eda30b3bcae100a26618eb59ff9329",
       "lines": 97
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/CompletedRawCompatibility.lean",
+      "sha256": "a6bfcf83f0be6872db5c1b9c11f2846a0caad6f5021e35c44976b61379185d6b",
+      "lines": 62
     },
     {
       "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/CompletedScalarModels.lean",
@@ -57,14 +357,29 @@
       "lines": 107
     },
     {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/ComplexResolutionFunctor.lean",
+      "sha256": "7c1ce560947e898e38015227d0e9c82d0ae4fe6ec1e01fe79c83fa041f20a7e0",
+      "lines": 77
+    },
+    {
       "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/Components.lean",
       "sha256": "b30ee4c6b6a42cb79f5a2fb108ef8a939ce88e1105d65e5c4952db8879664adb",
       "lines": 103
     },
     {
       "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/CosimplicialComparison.lean",
-      "sha256": "628480888f582f62f7fdb4cd6d239e29993465a3e52adae1a08336df0c18fbcf",
-      "lines": 79
+      "sha256": "c843b5ae5e2d5f50ef63ebfa51518792e154098a22f90a0ce629a31cbedc069c",
+      "lines": 80
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/CosimplicialResolutionNaturality.lean",
+      "sha256": "91b4aa696b3aff5f19105afe987a481cb2a8abf71f22df0cc8fe115285018b41",
+      "lines": 85
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/CosimplicialResolvedModels.lean",
+      "sha256": "4b96eb02d4f4e69a96792356e8a972b88f7ed958e0923bfbde2c3798cd69c62a",
+      "lines": 98
     },
     {
       "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/ExtensionFunctor.lean",
@@ -122,6 +437,11 @@
       "lines": 61
     },
     {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/FiniteDerivedReflection.lean",
+      "sha256": "6b12a539e9052e02e0f9209da26a5b76a961f080607543747d056e2cafde70ef",
+      "lines": 122
+    },
+    {
       "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/FiniteRowEquivalence.lean",
       "sha256": "e6aecd62420a17b6fe878e25a169c28a0037c4aa2e49899d82d4d916e3b3b029",
       "lines": 137
@@ -172,9 +492,64 @@
       "lines": 172
     },
     {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/NativeCanonicalComparison.lean",
+      "sha256": "1b6e5fec712b6f994408e7a4f8951be50e2048ec26a819f239539dbd46d56c98",
+      "lines": 117
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/NativeCosimplicialComparison.lean",
+      "sha256": "65b11c144e8d39776fa8972775604a87a844468555ac1a202d747584819ef825",
+      "lines": 119
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/NativeCosimplicialHomotopyInvariance.lean",
+      "sha256": "5108ad2650a1a29c2741e98bfb9a062b07f367357c69a2a7cc7725430d86a7a6",
+      "lines": 57
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/NativeCosimplicialNaturality.lean",
+      "sha256": "681ae919e9389526cf08e4945fdfeea33d342b947744592650d6b461a9e9a7c8",
+      "lines": 83
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/NativeDerivedScalarModels.lean",
+      "sha256": "e8e4e3039de5ea73d4548fccd668d2a3ecacfdd42da7086f1dcf31b425ec0dcb",
+      "lines": 94
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/NativeModelComparisonNaturality.lean",
+      "sha256": "2c168f6b1b11562d5c516cc61edc99a4f50ee38e2b6469d350844fe171e01f01",
+      "lines": 92
+    },
+    {
       "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/NaturalTruncation.lean",
       "sha256": "385474211c92e1cb8c9cdb19e558cff107415136c282509f011f1082359dae2a",
       "lines": 144
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/ResolutionCandidateFunctor.lean",
+      "sha256": "cac6c9b3d74906fce29517304108580c738cc928dac40c59cf262853798615c5",
+      "lines": 82
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/ResolutionDiskFunctor.lean",
+      "sha256": "6f0a65e39c65834dddb514bea078372948a3420dc60bd8452c2cadb8fc04d1e7",
+      "lines": 138
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/ResolutionKernelFunctor.lean",
+      "sha256": "1bff15c361a4b4bf700a215c7a09746ec90db393247226b64d0e44fee31dfee3",
+      "lines": 199
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/ResolutionStageFunctor.lean",
+      "sha256": "e511183b7a8961cd180f567044b34a00a01979d594f82995099e3920b6df453a",
+      "lines": 93
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/ResolutionStepFunctor.lean",
+      "sha256": "b402cbcf5bd5c68e21e6b2a490424d8fc80acd39c3e16906d0d07216b21434b6",
+      "lines": 95
     },
     {
       "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/ResolvedScalarExtension.lean",
@@ -182,9 +557,44 @@
       "lines": 126
     },
     {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/ResolvedScalarTotalCompatibility.lean",
+      "sha256": "dfb30257f21bfa65ce684eca7d1116a2a396a41a1c24bd984e184e65125936db",
+      "lines": 61
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/RestrictedCompletedRows.lean",
+      "sha256": "948cf2fc2c76e5228057ad6cf0a4b2e1f9d11a1926897597ec1fe7caa7e43776",
+      "lines": 98
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/RestrictedCompletedRowsTotal.lean",
+      "sha256": "c18d6ab715caa1fa9597b2afac491c778a3437506584e7699bb3d3aed9eba671",
+      "lines": 98
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/RestrictedCompletedSource.lean",
+      "sha256": "89f30eaf35a6f9878c27cbf427a8e56afb8d21af2d367cc53dab4920959d0d03",
+      "lines": 81
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/RestrictedFiniteCompletionUnit.lean",
+      "sha256": "bc0091dc945ef3557b856d4b3a00cad6d4fa7dd46de697bbcfd1f22bc7fd2fb7",
+      "lines": 69
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/RestrictedStandardComparison.lean",
+      "sha256": "6881c5d18d047c96e5c2f9e646023084c879528f1e7110b853c7309d04b4220d",
+      "lines": 90
+    },
+    {
       "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/RowTruncationExact.lean",
       "sha256": "b45892fee8d5aacd307fb7d7790668ff3531cc791624b31df03c5c79f28fbcf0",
       "lines": 72
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/RowsTotalUnitNormalization.lean",
+      "sha256": "5a4bb1799ee9c4a2abd1c98cce52f4f050b420f2f363a1163349fd97ee141cd0",
+      "lines": 59
     },
     {
       "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/ScalarModelNaturality.lean",
@@ -197,9 +607,29 @@
       "lines": 134
     },
     {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/ScalarTotalCompatibility.lean",
+      "sha256": "56cbec3d4105c5239585d8c5a91a3f6719a99986c18d2ab5aee1ed30e58d2f70",
+      "lines": 100
+    },
+    {
       "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/SingleHorizontalRow.lean",
       "sha256": "f8f0be722dc034bd4691a456674ca9e61b60ffa7e48cf13ad9c74475b8be2c15",
       "lines": 106
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/StandardCompletedModelComparison.lean",
+      "sha256": "b97bb15d6686103b4ff891a55dd10d48ddf8cab5b11d2971c174db20baaa8a52",
+      "lines": 71
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/StandardCompletedModelNaturality.lean",
+      "sha256": "ee15d520fd709a33920f8be999a3045203a1ff08c459f89f7f907940e86768ab",
+      "lines": 81
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/StandardModelComparisonIso.lean",
+      "sha256": "617461ce3948bad77b770f0a7fd68f7f0fa6c64a986e0025446d9cc4f3162895",
+      "lines": 97
     },
     {
       "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/TailBounds.lean",
@@ -213,8 +643,8 @@
     },
     {
       "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/TensorCoefficientNaturality.lean",
-      "sha256": "c1e07e8a8a7dd47065216ee51bc3c6b3b12692c631ab557e4f2bf165e7e9018d",
-      "lines": 74
+      "sha256": "e2987d29106d828362f50de730edfda05b020661db7b68e8a42c97351f4cece8",
+      "lines": 67
     },
     {
       "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/TensorComparisonComponents.lean",
@@ -275,6 +705,286 @@
       "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/TruncationTorBounds.lean",
       "sha256": "fa4a821b4b314a32733a3a7dcdd579419e4728252d3e11406ad53dd2eb346b3c",
       "lines": 74
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineBaseChangeComplete.lean",
+      "sha256": "4d44e394e5ee95b9eb1d8cc9d826e11e87d9501a1a91d714f1830a9831e73387",
+      "lines": 79
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineCoverOrdinaryComparison.lean",
+      "sha256": "9b4bf2d92b8060ac5f0836bb4953d43428e4146a04b7f44344cfcfd0d3d55d60",
+      "lines": 66
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineCoverResolvedTotal.lean",
+      "sha256": "8c5cce61069cf388fae29f5a8d93c69e9ced6d3cbb9cc743856f36aac8d08cb7",
+      "lines": 70
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineCoverTotalization.lean",
+      "sha256": "ccddf9e7d783233347b64f62915b461df9470054e61416b5f1389f8fbada67c3",
+      "lines": 60
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineFormsComplete.lean",
+      "sha256": "dbad5ea70fa3a3dce609d14b46ab032e7dd4a098519bf8828f6f51a425cd3179",
+      "lines": 92
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineFormsProjective.lean",
+      "sha256": "240e83dd89c26c2fc79d49198ca2b6eff0dd7e951a95401cc9ac9a5ec530eb43",
+      "lines": 64
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineFormsTor.lean",
+      "sha256": "7748fe6519c0cd8d2ff0ac9d11a72cfa0ed8c154b263ffe72b4159343c8c1f14",
+      "lines": 52
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineFullCoverTerms.lean",
+      "sha256": "de86f48a81d29be90c755f62f82ea5c6388e42d1fc7b727bbcd868a9858b77c5",
+      "lines": 53
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineHTHomologyLift.lean",
+      "sha256": "4fc00a9209732393eae09c86adb655a2c5affcee341738f2a6e8c108db6dcc78",
+      "lines": 42
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineLineCriterion.lean",
+      "sha256": "50d0e9c2cf97333d1b16ae5435e7c7a98f735fb3d9f81132b1c8b7fe65c58831",
+      "lines": 86
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineLineFormalCoverAugmentation.lean",
+      "sha256": "469d45da5f7cf72972b926f5ec33e25e25e2358550a3c20897377a330566ebc3",
+      "lines": 78
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineLineRealization.lean",
+      "sha256": "d7132a518a4f3864045d9fb03e854945809b0d7ac011d5ae394030ba61e5386d",
+      "lines": 114
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineModelsComplete.lean",
+      "sha256": "ab49cf5adb6f2caebe998d5886ae265a9b565f61ed861d1fc246a48be1a63455",
+      "lines": 126
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineOrdinaryTarget.lean",
+      "sha256": "82f4a795f591f5a5a6a3cf27c15ab2faaa57885d72f4403a7d9d513d0b41eef6",
+      "lines": 72
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineOrientedForms.lean",
+      "sha256": "5e169355b13fa2ff14af218f966e7cf52264a14a24c807e21650767d00d46d1a",
+      "lines": 67
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineOrientedFormsBaseChange.lean",
+      "sha256": "473cf98b72c8b824495230d0794964d2df11a02946a41f9ff1b2ba48da9c998b",
+      "lines": 102
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineOrientedOrdinaryRows.lean",
+      "sha256": "71f459ec4c85a6d07f4488585f49c811a98d3aa619fa4325c650189cc49cb934",
+      "lines": 72
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineOrientedRowBaseChange.lean",
+      "sha256": "0cd9ccc63cb3d81346dff8821df188ca52ec30eb2a9028f9072caad8968f90d4",
+      "lines": 103
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineOriginalCoverComparison.lean",
+      "sha256": "cd89d972c3b88414b4e0f865366f31041ee81a9064fd77bd878034d7b248a5b1",
+      "lines": 59
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineOriginalCoverTarget.lean",
+      "sha256": "282a47b421a24c6af54d0a031bf85c5576ee657a8b93b902b45f454b3146d3fd",
+      "lines": 55
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineOriginalTotalModel.lean",
+      "sha256": "bc4a7989f46ad747d5dbd0947e5ebabb70acbc97d0a94c1ae838c2325afcc186",
+      "lines": 46
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffinePolynomialTor.lean",
+      "sha256": "bdcbddeb5f6685d07046eb202f87c206e556044b794a694e28988d78134897b5",
+      "lines": 85
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineReducedCone.lean",
+      "sha256": "33ad41e5261c016f818426026f5c58788646eae00828c6ae044f3740a233e127",
+      "lines": 108
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineReducedCoverCompleteness.lean",
+      "sha256": "bc41d82e523b0afe514ec7e20f6fdc06e8a2e27ab77dc8619db8be25dd15d900",
+      "lines": 120
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineReducedCoverTerms.lean",
+      "sha256": "e4bd94fed60dfecf6bee5fd70f87cb54d4623cd706e967587383ed0953512d5e",
+      "lines": 74
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineReducedPolynomialModel.lean",
+      "sha256": "a1e0a173761de92c46c2f2a30fb71bdad97c6d0fea2ee6b35cdc56d777365ec2",
+      "lines": 92
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineResolvedCoefficientRows.lean",
+      "sha256": "fb79d8852d366d960948f8f5da1a33b1c19f4a77b0ade3002f5e11be099a6aec",
+      "lines": 64
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineResolvedCriterion.lean",
+      "sha256": "75569460cd2b7c6d2bd70258a3350cd7d7cb8a7c56634280cbb42102f0d2be75",
+      "lines": 61
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineResolvedRowQuasiIso.lean",
+      "sha256": "6be56c15461b6d09757c1e28fc5e1b31f81dcb284e3f2a5eb4ecc9f5638af7e5",
+      "lines": 93
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AssociatedCompleteness.lean",
+      "sha256": "297573593ee393c5c419be5537edfa220fe7a47e6f4b8f8f957e50168eafaf66",
+      "lines": 58
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AssociatedCompletionComparison.lean",
+      "sha256": "d40f951070aacca7b6a57ce11a00a52288e949af1e3596a89f5553cf3249caf5",
+      "lines": 90
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/BaseChangeHomologyUnit.lean",
+      "sha256": "0e93c6996599a627dbfaaf85f61988554aa05b5f97243eaa74c45376373f6a57",
+      "lines": 79
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/BaseChangeHomologyZeroDifferential.lean",
+      "sha256": "b6438febb1623bb258c1fec2ab1c50a7d4055c72b2d6c5cdb78f31117fe3d3df",
+      "lines": 68
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/BiprodDerivedAugmentation.lean",
+      "sha256": "750fcdeab1d7f4a2ce6e1ff702045494325abb25154583819568a7590715eeeb",
+      "lines": 101
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/CoefficientSingleTotalModel.lean",
+      "sha256": "161734683e3d33f45c4ea9c2ba7a095bba0a5b0738d8ffb87ca36e6644994fef",
+      "lines": 44
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/CompletedFormsZeroBaseChange.lean",
+      "sha256": "0b6604da26780b4b12efefee442998dd3f5d60690bacc6b5cbfce0445b5ea49e",
+      "lines": 72
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/CompletedPolynomialSplit.lean",
+      "sha256": "d5f6dccb715338180980e9644e02b6c9e863c4158333515bee91c075c70e5eec",
+      "lines": 91
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/CompletedPolynomialZeroBaseChange.lean",
+      "sha256": "122f87eed22bde206a96bbc7df551bbae96db79151be8b562d9ada798a37afdf",
+      "lines": 145
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/CoverCompletionCoordinates.lean",
+      "sha256": "9ecec329132c6c6d8ef361fabe1aafece1d623f683496cc7fafe32b4f6c5b147",
+      "lines": 74
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/DerivedScalarAnnihilation.lean",
+      "sha256": "9f5570832a369ca1f8c77b98222d54405fbcedb969852333e7bdb636865f1665",
+      "lines": 71
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/FiniteCompleteSingleRows.lean",
+      "sha256": "409d53a1067ddcd988b1fc0330c60ce801edec049fc8918c93d54e5b6ced61db",
+      "lines": 69
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/HomologyIsoComposition.lean",
+      "sha256": "0fba8d8b78d0f3a95a3df77d0b4f0b1f1a58c46b95ef534b79e044adba6c3d2a",
+      "lines": 60
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/KFlatBiprodModels.lean",
+      "sha256": "6fbdcdc6de5b517b7573786e4c1529b08cca42014fd0eaa7df722d4ecdb92f58",
+      "lines": 103
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/PairScalarConeCompatibility.lean",
+      "sha256": "1ca1b8cfd825b5fa18a13ecb7e13ef4a8bd5709f95d1ec1aeb2283543987f387",
+      "lines": 48
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/ProjectiveHomologyLift.lean",
+      "sha256": "a6daaa76eccd9491186edd93d66e68d37547b2056ea3890c3a4f59fca7b36ba1",
+      "lines": 58
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/ResolvedCoverReflection.lean",
+      "sha256": "e5f82d132f6120cd462da18cdb74f11d339f8f5d82f930247a649865e0a681bf",
+      "lines": 63
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/ResolvedOrdinaryComparison.lean",
+      "sha256": "440e1f9d689625c7c926cdccf2ae84710bdc59ffeaf673996bef98cebfd894fd",
+      "lines": 118
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/ResolvedOrdinaryCompleteAugmentation.lean",
+      "sha256": "49b59abb2bd16f8a2df8d7557180ead3915dc56952d0b8bd56b0689bd5353372",
+      "lines": 72
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/ScalarConeOrientation.lean",
+      "sha256": "fa4bfc0cb18f15e835a99fe0cdeadb9cf5adc8b0011170aa8dfaf75c4b3cc561",
+      "lines": 63
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/SingleRowsOrdinaryTotal.lean",
+      "sha256": "9893b058810677e52218fd41f73d118476c62b03db6210cb0e52b1e1295c98de",
+      "lines": 87
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/TensorScalarQuotient.lean",
+      "sha256": "e84142b64b44884ac6c2695e0d04eea666e2e2db8afd9ca8d3c7035a93df9eec",
+      "lines": 82
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/TorAcyclicFiniteBasis.lean",
+      "sha256": "02fcd5b0fa44b42848c75489ec1cedf712a4124fed98ee890156178baaf65422",
+      "lines": 63
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/TorAcyclicResolvedRows.lean",
+      "sha256": "b90466528d3fe749f2c8812af751009587dea6ae177a904e1c60d6b5915b18a3",
+      "lines": 98
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/TorAcyclicRetracts.lean",
+      "sha256": "a6eef8e52c64dfc2ed5be4255c4a1cadcd7d65b8c2392562d89afee656a64db6",
+      "lines": 39
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/TorAcyclicSingleDegrees.lean",
+      "sha256": "375c4a0797cfd30ff44c0821d1a30c65ebbea4bcf9b71baee08adcdb16604a2c",
+      "lines": 80
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/UniversalResolvedReflection.lean",
+      "sha256": "e85b8473ec62c11068d4d798f9ae28bdee9d0d288512bf432313c423cfe1eabc",
+      "lines": 48
     }
   ],
   "import_parser": "Explicit imports including optional public, meta and all."
