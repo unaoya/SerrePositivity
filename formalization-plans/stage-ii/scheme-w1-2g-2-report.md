@@ -1716,3 +1716,21 @@ G4・G5と停止点2g-2は未完。最終の AugmentedRingCechExact と利用側
 今回1モジュール92行＋入口1行。新規134モジュール本体9,014行、既存追加25行を含む本体9,039行。登録134行・入口の追加空行21行を全て含む外枠計数 **9,194行**。新規小監査累計907宣言、既存15宣言は別計上。整数係数・同じ被覆・同じアフィン構造層への代入は下書きで、この束には含めない。G4・G5は未完。見込み約12,000〜15,500行・外枠16,000行は不変。
 
 一覧：済み1／全体3（うち追加0）。
+
+
+同じ大域切断からの実際の増大写像への接続（着手前、既存の増大項の同定と係数移送の法則の内数、45〜90行）：`schemeStructurePerfectCechAugmentation_id` は元の大域切断環の恒等スカラーを選んだ増大写像と、同じ Frobenius 係数前層の openCoverCechAugmentation の一致。`affineSchemeStructurePerfectCechAugmentation_injective`・`…_exact` は同じ有限アフィン被覆で、その実際の増大写像の単射性と後続の微分との完全性を返す。上の長さ0の項と大域切断の既存の同型を使い、元の増大写像を別の写像に置き換えない。
+
+
+## G4：同じ有限アフィン被覆の実際の Frobenius 係数の増大完全性
+
+`CechIntSequentialAugmentedExact`（66行）：`fullCechIntSequential_augmentedExact` は、任意の宇宙の整数加群の有限交叉の図式の自然数系について、各有限段の増大項の単射性と全長さの完全性を、同じ余極限へ移す。既存の ULift ℤ の係数移送、AsSmall の同値と既存の加法的係数比較を使い、元の各項の加法群と微分を保つ。
+
+`OpenCoverIntSequentialAugmentedExact`（36行）：`openCoverIntSequential_augmentedExact` は実際の前層の被覆の交叉を前記の法則に代入し、同じ colimit P の長さ0の単射性と全長さの完全性を返す。整数係数の任意の宇宙を扱い、完全性の意味は変更しない。
+
+`AffinePerfectCechAugmentedExact`（57行）：`affineSchemeStructurePerfectCech_augmentedExact` はアフィンスキームの有限アフィン被覆について、実際の構造層の Frobenius 係数の同じ増大項の単射性と全長さの完全性を返す。各有限段は元の準連接な構造層の同じ計算から、同じ制限写像に可換な加法的係数比較で供給する。同じ実際の Frobenius 前層の順極限の標準同型を使って移す。名前・docstring は Čech 版を明示し、層 Hⁱ との比較は作らない。
+
+単独検証、本体とのソース完全一致、対象3本と入口のビルド5,222ジョブ成功、小監査1・1・1宣言（計3、実際の所有元による非公開・生成宣言の有無も走査）・標準三公理のみ、終了状態0。ログ `2g-affine-perfect-cech-augmented-bundle-check-1.log`・`2g-affine-perfect-cech-augmented-bundle-native.log`・`2g-affine-perfect-cech-augmented-bundle-audit.log`。整数係数の移送だけ局所的な backward.isDefEq.respectTransparency false、既定の資源制限。letI の style 警告あり。追加公理・sorry・既存の型変更・200行超の宣言なし。共有鍵 --class impl --wait 3600、待ちは一つ、対象ビルドと小監査は別枠。root・下流全ビルド・全体監査なし。
+
+今回3モジュール159行＋入口3行。新規137モジュール本体9,173行、既存追加25行を含む本体9,198行。登録137行・入口の追加空行21行を全て含む外枠計数 **9,356行**。新規小監査累計910宣言、既存15宣言は別計上。元の大域切断からの実際の増大写像の2つの完全性の出口への接続は下書きで、この束には含めない。アフィン nerve の環の自然な比較、相対 proper fppf の二重 Čech、F8 の全複体への接続と Noether帰納、G5はなお残る。G4・G5と停止点2g-2は未完。見込み約12,000〜15,500行・外枠16,000行は不変。
+
+一覧：済み1／全体3（うち追加0）。
