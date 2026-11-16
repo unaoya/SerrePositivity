@@ -5847,3 +5847,29 @@ witness段の未検証53行は、主張の型のrawなHo射作用の推論で既
 次はpointedな法則の短い検証を先にし、直接importerと既存・追加Sheavesの再検証を続ける。
 mainは取り込まず、S7・R2・R3は再開しない。S1・S8は依然未完。
 一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+
+### 承認変更後の全Sheaves・直接importerとpointedな法則の統合検証（11-17 未明）
+
+`/tmp/is-w1/s8-integration-after-designated-comparison-1/` の監視プロセスが終了0。
+phase-results.jsonの全3段が0。各小監査の成功JSON・対象ソースのSHA一致、標準三公理のみを確認した。
+
+- witness：WitnessPointedDiagramIso、1本・61行・1所有宣言。
+  型付きの前後合成と明示的な端点・宇宙を使うことで、既定の計算上限で通った。
+  元のrawな射作用へ戻す法則は既存のeq_mapを使い、射そのもの・仮定・結論は保持。
+- scope：Sheaves全169本とSmallLeftUnstraighteningFunctorIsoの合計170本・1,012所有宣言。
+  前に承認された値の選択の3本文、今回の指定ηの射作用の3本文、その下での全Sheavesを再検証した。
+- direct-importers：SmallLeftUnstraighteningFunctorIsoの直接importer13本の対象ビルドが終了0。
+  DensityFiberYonedaValueの承認された一証明の局所化後も含む。F1の入口も含めた対象であり、
+  root全体のビルド・監査を行ったものではない。
+
+承認された既存の本文以外は変更していない。maxRecDepth・heartbeatsも同じ。
+mainは取り込んでいない。新規の入口・全体監査の登録は調整役に残す。
+今回の61行を外枠に加え、検証済み累計は **21,070行・新規332本＋承認された既存2本の差分**。
+
+残りは報告の(B)・(C)、Čechの局所同値、任意の係数への反映、同じ通常の層化との比較、S1の一般Coverage。
+(B)では既存のRepresentationComparisonCoherence、StraighteningCounitRestriction・Naturality、
+RepresentationEdgeComparisonの同じ表現空間内の比較を再利用する。
+新しい独立の分類・単位を作るのでなく、元の指定比較に沿う法則として接続する。
+S1・S8は未完。S7・R2・R3は再開しない。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
