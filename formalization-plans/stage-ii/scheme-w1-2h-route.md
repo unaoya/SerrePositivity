@@ -1,5 +1,7 @@
 # SC-W1 2h：段 0（紙）
 
+> 2026-11-16の現在の状況は§10。2g-1とG3は完成、G4・G5は未完で、2g-2の規模境界でLeanを停止した。§1〜§9の未供給・凍結・C01/C02境界の記述は各時点の履歴。2hのLeanの新規実装は未開始。
+
 2026-11-14、math/scheme。2g-1 の境界で行う代わりの作業。Lean の実装開始や 2g の完成を意味しない。2g の未完の入口を追加仮定として最終出力に残さない。
 
 2g-1 の一覧：済み 6／全体 12（うち追加 3）
@@ -212,3 +214,50 @@ Mathlib.AlgebraicTopology.CechNerve の実際の定義を照合した。`Arrow.c
 H01 の ε_A:P(A)≅A、ε_B:P(B)≅B とその自然性は、Arrow.isoMk によって `Arrow.mk P(f) ≅ Arrow.mk f` を与える。その conerve の mapIso と H02 の χ_f を合成して `P_* C(f) ≅ C(f)` を得る。G5 が左辺の AugmentedRingCechExact を供給したら、B1 の `ringCechExact_iff_of_iso` の順方向で右辺の同じ述語へ移す。
 
 ここで使う完全性は Basic.lean の定義そのもので、増大の単射・第 0 次・全正次数を含む。比較後に H⁰ だけを取り出す工程は入れない。H04 の有限族の Arrow.mk (CommRingCat.ofHom (RingHom.pi f)) にも同じ比較を使う。H01〜H04 の新しい主項目は追加せず、見込み 2,000〜5,000 行を維持する。Lean の実装・型検査を行ったという主張ではない。
+
+
+## 10. 2g-2の規模境界での段0の更新（2026-11-16）
+
+[規模境界報告](scheme-w1-2g-2-size-boundary.md) に従う代わりの紙の作業。2g-1とG3は完成、G4・G5は未完。2g-2の外枠を変更せず、2hのLeanの新規実装は始めていない。旧節のG1・G2やH02の未供給は当時の記録で、この節で現状を更新する。
+
+2g-2 の一覧：済み1／全体3（うち追加0）。
+
+2h の一覧：済み1／全体4（うち追加0）。H02相当は2g内の既存の検証済み宣言で供給されたものとして数え、同じ構成を作り直さない。H01・H03・H04は未実装。
+
+### 使う同じ環図式と既存の部品
+
+- **H01（未実装）**：完全環の実際の `FrobeniusDirectLimit` の canonical な ε_A:P(A)≃+*A を、元の第0段の構造射を逆射として作る。型案と自然性は§3のまま。`PerfectRing.bijective_frobenius` と元の `projectivePrimePowerRingHom` の逆反復を `DirectLimit.Ring.lift` へ渡す。零環を扱う一般入口は `(p:A)=0` と p乗写像の全単射性を使い、`Nontrivial` や積への `ExpChar` を足さない。第n段の式と `ε_B.comp P(f)=f.comp ε_A` を同じ元で示す。
+- **H02（既存の供給）**：`FrobeniusAugmentedRingCoefficients.lean` の `frobeniusAugmentedRingCoefficients` は各実際の係数環と射の Frobenius 順極限を持つ、可換環値の増大余単体対象。`frobeniusAugmentedRingCoefficientsIso` は、その対象と `Arrow.mk (CommRingCat.ofHom (frobeniusDirectLimitMap ... f.hom.hom)).augmentedCechConerve` の実際の自然同型である。`frobeniusRingConerveIso`、`frobeniusConervePerfectIso_naturality`・`…_augmentation` が全ての単体の射と増大を保持し、`frobeniusConervePerfectIso_arrow_naturality` が元の可換なArrowの射も保つ。これは§3のχ_fの型そのものであり、テンソル冪の比較や環の余極限を2hで再実装しない。`frobeniusRingDiagram` の整数加群の同型だけをこの環の同型として使うものではない。
+- **H03（未実装）**：G5から同じ `frobeniusAugmentedRingCoefficients` の `AugmentedRingCechExact` を受け、H02とH01の自然性から作る `Arrow.mk P(f)≅Arrow.mk f` の conerve の同型を合成する。B1の `ringCechExact_iff_of_iso` で同じ増大の単射・第0次・全正次数を移す。元の正次数の各テンソル項の完全環性を別の仮定にしない。**G5のこの入口はまだ未供給で、最終定理の追加仮定として残さない。**
+- **H04（未実装）**：G0の `isAffineVCoverFamily_iff_pi` で同じ `RingHom.pi f` の一射へ渡し、有限積のp乗の全単射性とp=0を座標ごとに供給してH03を適用する。空の族も除外しない。`FrobeniusDirectLimitPi` は同じ有限積の順極限の実際の比較と再添字付けの自然性を供給しており、必要な係数移送に再利用できる。最終の族の添字は利用側と同じ Type u・Finite のままにする。
+
+### G5の必要な出口と、既存の模型
+
+G5の要求は、元の `IsAffineVCover f` から、同じ元のArrowの `frobeniusAugmentedRingCoefficients` の `AugmentedRingCechExact` を、模型の存在やNoether性を追加仮定にせず得ること。G4のNoetherな場合の実際の降下は未完である。
+
+忠実平坦なアフィン入力の実際の完全性は `frobeniusAugmentedRingCoefficients_exact_of_faithfullyFlat` とB1のfiltered完全性で供給済み。旧§4の完全化による平坦性の話を、未記載の追加仮定としてH03へ足さない。相対 proper fppf の接続は引き続きG4の未完の仕事である。
+
+G2の `coefficientVCoverModelSmallArrowCoconeIsColimit` は、元の環のArrowを実際のfiltered被覆模型の余極限として供給する。`coefficientVCoverModelCechComparison` は同じ模型の conerve 全体と元の conerve の自然同型。これに `frobeniusConervePerfectIso_arrow_naturality`、同じFrobeniusの構造射、B1の `ringCechExact_colimit` を接続するのはG5内の仕事である。2hへ未供給の模型比較を押し込まず、既存の模型や二重複体の判定法も作り直さない。
+
+### 出口・利用側・宇宙の照合
+
+最終型は§1の `cech_exact_of_vCover_perfect` のまま、結論は `SerrePositivity.Cech.AugmentedRingCechExact ((Arrow.mk (CommRingCat.ofHom (RingHom.pi f))).augmentedCechConerve)`。現在の利用側 `formalization-plans/bhatt-scholze/drafts/A6/ArcSheafProperty.lean` の同名の型、`affineFamilyCech`、完全性の定義を読み直した。増大での単射性・第0次の完全性・全正次数の完全性を含み、元の `IsVCoverFamily` の試験付値環と証人をG0と同じ量化で扱う。2h実装時にこの同じ型の小さな照合を行い、draftsを本体へimportしない。
+
+環と有限族・試験付値環の宇宙を狭めない。被覆の有限な幾何的添字を内部でFinへ移す場合も、実際の再添字付けの写像を保持し、最終の Type u の有限族をFinに制限しない。B1や他レーンのAPIの型を変更しない。中間の射影の主張はČech版であることとStacks 30.2.6との関係を明記する既存の§9の決定を保つ。
+
+### 2hの残りの規模と、開始条件
+
+H02の既存の環の自然同型が供給されたため、2hの残りの見込みを更新する。2g-2の未完のG4・G5の作業はこの表に含めない。
+
+| 主項目／仕事 | 下端 | 上端 |
+| --- | ---: | ---: |
+| H01：ε_A、元の段の式、環の射への自然性 | 400 | 800 |
+| H02：既存χ_fの入口への代入・型照合 | 50 | 150 |
+| H03：同じ増大環図式の一射への移送 | 120 | 300 |
+| H04：同じ有限族の積への橋と最終の型 | 100 | 250 |
+| 登録・型照合・小さい対象検証の補助 | 50 | 150 |
+| 残り合計 | **720** | **1,650** |
+
+丸めて約800〜1,700行。従来の2,000〜5,000行との差は、H02を2gの検証済み部品として再利用できることによるもので、主張の弱化ではない。H01〜H04の主項目を増減せず、2hの外枠の判断は調整役に残す。2g-2の規模境界の判断とG4・G5の完成の前に、H03の入口を仮定しただけの最終定理や2hのLeanを実装しない。この更新で代わりの紙の作業を完了し、判断を待つ。
+
+2g-2 の一覧：済み1／全体3（うち追加0）。2h の一覧：済み1／全体4（うち追加0）。
