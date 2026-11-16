@@ -21,13 +21,13 @@ public import Mathlib.Algebra.MvPolynomial.Rename
 -/
 
 public noncomputable section
-universe u
+universe u v w
 open CategoryTheory
 namespace SerrePositivity.BhattScholze.Prismatic.HTUniversalComparison
 open DerivedCompletion
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
-variable (k : Type u) [CommRing k] {T S : Type u} (p : ℕ)
+variable (k : Type (max u v w)) [CommRing k] {T : Type v} {S : Type w} (p : ℕ)
 
 /-- 元の主完備多項式環の、元の変数変更による射。 -/
 def completedPolynomialRename (j : T → S) :
@@ -42,7 +42,7 @@ def completedPolynomialRename (j : T → S) :
 theorem completedPolynomialRename_unit (j : T → S) (x : MvPolynomial T k) :
     letI := principalCompletionCommRing (MvPolynomial T k) (p : MvPolynomial T k)
     letI := principalCompletionCommRing (MvPolynomial S k) (p : MvPolynomial S k)
-    completedPolynomialRename k p j
+    completedPolynomialRename.{u,v,w} k p j
       (principalCompletionUnitRingHom (MvPolynomial T k) (p : MvPolynomial T k) x) =
       principalCompletionUnitRingHom (MvPolynomial S k) (p : MvPolynomial S k)
         (MvPolynomial.rename j x) :=
@@ -62,17 +62,18 @@ theorem completedPolynomialRename_unit (j : T → S) (x : MvPolynomial T k) :
 theorem completedPolynomialRename_split (j : T → S) (q : S → T) (h : Function.LeftInverse q j) :
     letI := principalCompletionCommRing (MvPolynomial T k) (p : MvPolynomial T k)
     letI := principalCompletionCommRing (MvPolynomial S k) (p : MvPolynomial S k)
-    (completedPolynomialRename k p q).comp (completedPolynomialRename k p j) = RingHom.id _ := by
+    (completedPolynomialRename.{u,w,v} k p q).comp (completedPolynomialRename.{u,v,w} k p j) = RingHom.id _ := by
   letI := principalCompletionCommRing (MvPolynomial T k) (p : MvPolynomial T k)
   letI := principalCompletionCommRing (MvPolynomial S k) (p : MvPolynomial S k)
-  have hcomp : ((completedPolynomialRename k p q).comp (completedPolynomialRename k p j)).comp
+  have hcomp : ((completedPolynomialRename.{u,w,v} k p q).comp (completedPolynomialRename.{u,v,w} k p j)).comp
       (principalCompletionUnitRingHom (MvPolynomial T k) (p : MvPolynomial T k)) =
       principalCompletionUnitRingHom (MvPolynomial T k) (p : MvPolynomial T k) := by
     apply RingHom.ext
     intro x
-    change completedPolynomialRename k p q (completedPolynomialRename k p j
+    change completedPolynomialRename.{u,w,v} k p q (completedPolynomialRename.{u,v,w} k p j
       (principalCompletionUnitRingHom (MvPolynomial T k) (p : MvPolynomial T k) x)) = _
-    rw [completedPolynomialRename_unit, completedPolynomialRename_unit, MvPolynomial.rename_rename]
+    rw [completedPolynomialRename_unit.{u,v,w} k p j,
+      completedPolynomialRename_unit.{u,w,v} k p q, MvPolynomial.rename_rename]
     have hj : q ∘ j = id := funext h
     rw [hj, MvPolynomial.rename_id_apply]
   exact (principalCompletion_existsUnique_ringHom (MvPolynomial T k) (p : MvPolynomial T k) _
@@ -82,9 +83,9 @@ theorem completedPolynomialRename_split (j : T → S) (q : S → T) (h : Functio
 
 /-- 同じ係数の定数多項式の像は、元の完備化単位のまま。 -/
 theorem completedPolynomialRename_C (j : T → S) (a : k) :
-    completedPolynomialRename k p j
+    completedPolynomialRename.{u,v,w} k p j
       (principalCompletionUnitRingHom (MvPolynomial T k) (p : MvPolynomial T k) (MvPolynomial.C a)) =
       principalCompletionUnitRingHom (MvPolynomial S k) (p : MvPolynomial S k) (MvPolynomial.C a) := by
-  rw [completedPolynomialRename_unit, MvPolynomial.rename_C]
+  rw [completedPolynomialRename_unit.{u,v,w} k p j, MvPolynomial.rename_C]
 
 end SerrePositivity.BhattScholze.Prismatic.HTUniversalComparison
