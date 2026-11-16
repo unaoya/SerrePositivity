@@ -290,3 +290,9 @@ D79 (i)（615ceab26）で、E∞ の界面 `EInfinity/Interface/Theory.lean` が
 | 番号 | 問題 | 扱い |
 | --- | --- | --- |
 | BR54 | `Util/Citation.lean` の略号表（`knownKeys`・`knownEditions`、`bibliography.json` から生成）が属性の定義元と同じモジュールにあり、直接 896 本が import する。略号を一つ足すだけで root がほぼ全部再ビルドになる（11-16、65 分以上、四レーンが約 1 時間止まった） | 計画：属性の定義元からキーの検査を外す。属性はキーを記録するだけにし、検査は import の連鎖に入らない検査スクリプト（`bulk_citation_registry.py --check` と同じく `bibliography.json` と環境の記録を突き合わせる）か、照会コマンド `#cite_tags` と一緒に変更の少ない別モジュールへ。夜の一括で。それまで略号の追加は夜にまとめる（`coordination.md` §2） |
+
+## 11. 追記（2026-11-17）：弱い存在命題からの choose（BR55）
+
+| 番号 | 問題 | 扱い |
+| --- | --- | --- |
+| BR55 | 既存の定義が、弱い存在命題（「指定頂点を持つ極限錐がある」「底の等式と前合成同値性を満たす比較がある」など）から `Classical.choose` でデータを選び、指定構成（余単位・span・相対同型など）との両立を失う。5∞-1 で三回、既存の本文を直した（S8 の錐の選び方、`smallLeftUnstraighteningComparisonOfFunctorIso`、`leftCoherentTransportDirectComparison`）。InfinityCategories には `Classical.choose` を含むファイルが多数ある | 計画：同じ型の choose を一度にまとめて洗い出す（紙）。各箇所について、選ぶ存在命題、後で要る指定構成との両立、直し方（指定構成を保つ選び方への置き換え）、推移的な importer の数を表に。洗い出しは手の空いたレーン。直すのは使う段（レーン）で、事前承認の型（`inf-supply-w1.md` 末尾）に従う |

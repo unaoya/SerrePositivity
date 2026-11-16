@@ -230,3 +230,7 @@ S3 の逆向きの型は、段 0 の表の「`restrictJoinCone c (cechShape d) =
 
 報告（作業木の report-bs-infinity-a1-stage0.md 6001 行目以降、8f06e1bcd）を受けて承認する。`Kerodon/.../ClassificationOfCocartesianFibrations/LeftCoherentTransportDirectComparison.lean`（main にある）の三本文 `leftCoherentTransportDirectComparison`・`_projection`・`_isPrecompositionEquivalence` を、新しい `ScaffoldCoherentComparison` の同じ名前の構成に置き換えてよい（弱い存在命題からの choose を、同じ span に沿う相対同型を保つ選び方に替える。先に承認した錐の選び方と同じ考え方）。条件：公開の名前・型・仮定を変えない。`exists_leftCoherentTransport_directComparison` と QCatEquivalence の証明は変えない。適用の前後で保存比較 v3b。旧値との rfl の一致は求めない。
 **影響**：このファイルを推移的に import するのは main で 3,959 本（OE-W1・⑥・一括の枝は触っていない）。レーンでの確かめは、直接の importer（NerveTransportRepresentation・SmallLeftCoherentTransportReconstruction・F1）と Sheaves の全部で足りる。下流の全体は取り込みのときに調整役が夜に root と全監査で確かめる。
+
+## 追記（2026-11-17 朝、調整役）：同じ型の choose の置き換えは事前承認
+
+これまでの三件（S8 の錐の選び方、`smallLeftUnstraighteningComparisonOfFunctorIso`、`leftCoherentTransportDirectComparison`）と同じ型、つまり**既存の定義が弱い存在命題から `Classical.choose` で選んでいて、指定構成との両立を保つ選び方に置き換えるもの**は、止まらずに進めてよい（夜中に一件ずつ止まるのを避ける、ユーザー 11-17）。条件：公開の名前・型・仮定を変えない、新しい仮定を置かない、計算上限を上げない、適用の前後で保存比較 v3b、直接の importer と Sheaves を対象ビルド、置き換えた箇所と推移的な importer の数を報告に一行ずつ。**止まって報告するのは**：主張・型を変える必要があるとき、推移的な importer が 5,000 本を超えるとき、他のレーンの枝が触っているファイルのとき。下流の全体は取り込みの夜に調整役が root と全監査で確かめる。洗い出しは台帳 BR55。
