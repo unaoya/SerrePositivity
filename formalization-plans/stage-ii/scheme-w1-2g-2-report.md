@@ -2087,3 +2087,9 @@ G4・G5は未完。検証済みの数学の先端は `415b27a9b` のまま。未
 同じ全縦次数の増大を実際の全タプル複体へ渡す分割（既存G4の増大・全複体の内数、70〜120行）：`fullCechConstantComplexAugmentation` は A→D(∅) と元の空集合からの制限から、同じ定数余単体の交代複体 C(A)→fullCechComplex D を作る。`…_apply` は各次数が元の有限像への制限である式、`…_single_zero` は元のsingleからの包含との合成の零次が同じ増大であること。正次数も同じAを持ち、0→行の完全性や包含の各成分の全射性は仮定しない。固定済みの十二本に加えず、別の未検証下書きとする。
 
 全複体の比較の紙の補足：定数列からsingleへの成分ごとの射影は増大と可換でないが、全複体の零水平・正偶数縦次数vの成分を、負の増大で水平1・縦v−1へ補正すると、同じsingleの全複体への射影Pを作れる見通しを得た。正奇数vは0、正の水平次数は恒等、零次は元のsingleの標準同型。この向きは定数列の0/id微分とtotalの水平次数による符号で照合する。同じ包含iとのi≫P=idを示せば、行が完全な定数増大列のtotalから、元のsingleのtotalのacyclicityへretractで戻せる。各列の包含の全射性を仮定しない。まだ実装・検証済みではなく、G4の既存の全複体の比較の証明分割の候補として記録する。
+
+同じ補正付き射影の入力の分割（既存G4の全複体の比較の内数、80〜130行）：A:Module、F:Δ→Cochain、ε:const(C(A))→F に対して `cechConstantAugmentedObject` と `cechSingleAugmentedObject` は元のεとj≫εを増大射に持つ二つの図式。`cechSingleToConstantAugmented` は左で同じj、右で恒等の射。`cechSingleToConstantDouble` はそれを既存B1のaugmentedCochainで写した二重複体の射。零水平成分は元のj、正の水平成分は同じFの恒等である式を含める。補正付き射影Pの構成自体はこの分割の後であり、ここだけでacyclicityの比較が済んだとはしない。
+
+検証待ち中の追加分の計数（2026-11-16 16:18）：固定した十二本823行はSHA256一致を再確認し、同じ検証一件の待ちを維持している。その後に別の下書きとして加えた五本は、FrobeniusArrowMapLaws 91行、RectangularPerfectRowAugmentation 65行、RectangularPerfectRowFunctor 82行、CechConstantComplexAugmentation 63行、CechConstantAugmentedDouble 69行、計370行。いずれも本体未登録・未検証・未コミット。検証済み11,713行に全十七本1,193行と将来の登録17行を加えた見込み上の現物は **12,923行相当**。完成見込み14,600〜17,300行にはこれらも含める。補正付き全複体の射影そのもの・相対proper fppf・F8四角形・Noether帰納・G5は未完。
+
+一覧：済み1／全体3（うち追加0）。
