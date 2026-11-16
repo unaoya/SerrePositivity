@@ -4868,3 +4868,57 @@ isDefEqの200,000 heartbeatに達した。計算上限は上げず、候補は
 に保全し、productionソースから外した。これは元のS8の結論が偽という判定ではない。
 次は既存の制限APIを使い、元の切断射と全錐の普遍辺の射影・合成の計算法則を先に検証する。
 一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+
+### 11-16：元の切断射の射影・普遍辺の合成・一般重みのG8自然性
+
+追加3本・141行・14所有宣言（内部証明補題を含む）の対象ビルドと小監査を完了した。
+`/tmp/is-w1/s8-sections-map-projection-2/target-audit-result.json`、終了コード0、
+標準三公理のみ、対象SHA一致。いずれも既存構成の計算法則・自然性で追加IDはなく、
+200行を超える法則もない。外枠用累計は**18,690行**、検証済みの追加モジュールは293本。
+
+* `SectionsMapConeProjection`（47行）：元の`sectionsMap`の類を、同じ
+  `sectionsConeMap`の頂点射影と始点の等式による移送で表した。最初の`simpa`は
+  射影した辺の標的の型の揃え方で不一致になったため、元の同じ辺の始点・標的を
+  明示してから移送の法則を適用した。公開の射を変えていない。
+* `SectionsConeMapComposition`（41行）：元のψの普遍辺を既存のφの制限関手で写し、
+  同じφの普遍辺と合成したものが、元のφ≫ψの普遍辺の類に一致する。
+  始点・標的の等式による移送も型に含め、錐の終対象への射の一意性だけで証明した。
+* `SetWeightTensorSectionsNaturality`（53行）：既存G8の3つの一般の自然性を合成し、
+  任意の集合重みの射φについて、元の`tensorSpaceFunctor_setWeightHomNatural`
+  の下でテンソルの前合成と元の指定`sectionsMap`の後合成を結ぶ全族の`FunctorIso`を得た。
+  篩包含に限定せず、同じ元の比較ηを保持している。
+
+主張の型（略記η_Xは元の`tensorSpaceFunctor_setWeightHomNatural X hE M F cX hcX`）：
+
+```lean
+sectionsMap_hom_eq_projection φ O c hc q hq :
+  homMk (sectionsMap φ O c hc q hq).toTruncated =
+    eqToHom (congrArg HomotopyCategory.mk (restrictSectionsCone_vertex φ O q).symm) ≫
+      (hoFunctor.map (sliceOverProjection (SetWeight.diagram P O))).toFunctor.map
+        (homMk (sectionsConeMap φ O c hc q).toTruncated)
+sectionsConeMap_comp_hom φ ψ O cP hcP cQ hcQ cR :
+  let h0 := (restrictSectionsFunctor_vertex φ O (restrictSectionsCone ψ O cR)).trans
+    (restrictSectionsCone_comp φ O ψ cR)
+  let h1 := restrictSectionsFunctor_vertex φ O cQ
+  eqToHom (congrArg HomotopyCategory.mk h0.symm) ≫
+    (hoFunctor.map (restrictSectionsFunctor φ O)).toFunctor.map
+      (homMk (sectionsConeMap ψ O cQ hcQ cR).toTruncated) ≫
+    eqToHom (congrArg HomotopyCategory.mk h1) ≫
+      homMk (sectionsConeMap φ O cP hcP cQ).toTruncated =
+    homMk (sectionsConeMap (φ ≫ ψ) O cP hcP cR).toTruncated
+setWeightTensorSections_shapeIso φ hE M F cP hcP cQ hcQ :
+  FunctorIso
+    (precompose (functorVertex F) (homMk (tensorWeightEdge hE M φ).toTruncated) ≫ η_P.hom)
+    (η_Q.hom ≫ postcompose M (homMk (sectionsMap φ F cP hcP cQ hcQ).toTruncated))
+```
+
+完全な型は各新規ファイル。hEとcP・cQの指定極限性以外に比較や自然性の仮定を
+足していない。最後の一般重みの合成は、既存の
+`tensorSpaceFunctor_diagramHom_weight_naturality`・
+`setWeightSectionsEquivalenceNatural_shapeIso`・`setWeightSectionsLimitTail_shapeIso`
+を再利用した。新しいunstraightening比較や指定極限の比較を作り直していない。
+これは元の`weightedSections_discrete_map`そのものの完成ではない。同じ指定余単位の
+輸送からの固定値比較と、この既存G8の自然性との照合は引き続き残る。
+S1の一般Coverage判定、一般の局所同値、同じ層化の比較も未完のまま保持する。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
