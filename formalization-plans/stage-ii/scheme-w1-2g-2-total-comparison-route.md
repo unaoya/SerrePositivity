@@ -95,3 +95,11 @@ G2の同じ模型図式D=`coefficientVCoverModelSmallArrowDiagram (ZMod p) g`を
 二つの余極限の交換にはMathlib `CategoryTheory.Limits.colimitFlipCompColimIsoColimitCompColim` とその `ι_ι_hom` の式を使えることをソースで確認した。片方を先に取れば模型の実際のArrowのcolimit（`coefficientVCoverModelSmallArrowCoconeIsColimit`）、もう片方を先に取れば各模型の実際のFrobenius矢印のcolimit（`frobeniusArrowSmallIsColimit`）になる。各方向の標準脚を保つことを同じ式で確認してから、元の矢印のFrobenius順極限と同定する。任意のCommRing上に標数を仮定しないFrobenius関手や、別のperfectionの定義を作る必要はない。
 
 各段のG4の結論を `frobeniusAugmentedRingCoefficients_exact_iff` で同じ実際のFrobenius矢印の `IsCechExact` へ移し、B1の `isCechExact_colimit` を模型のfiltered添字に適用する。上の同型と元の増大係数の同じ `exact_iff` で戻す。最終出力は元のv被覆の `AugmentedRingCechExact (frobeniusAugmentedRingCoefficients …)` のままである。これらはG5の予定の法則であり、G4のNoetherな完全性の供給も、二つの余極限の交換のこの図式への実装も、まだ完成・検証済みとは数えない。
+
+## 相対flatの入口で使える既存のアフィン性の法則（2026-11-17、紙）
+
+Mathlib `Morphisms/Separated.lean` の `IsAffineHom.of_comp` は、k:A→B、q:B→Sについて、k≫qがアフィンでqが分離的ならkもアフィンとする。したがってBがSpec R上で分離的で、Aがアフィンなら、A→Bの各アフィン開の逆像もアフィンになる。一般のBのΓに平坦性を仮定する必要はない。
+
+2dのproper fppf g:W→Bのqcな始域に有限アフィン開被覆𝒰を取り、既存の有限直和T=∐𝒰.Xとm=Sigma.desc 𝒰.fを使う。m≫gの平坦性と局所有限表示性は、元のsigmaOpenCoverの各項で𝒰.f i≫gとなることとIsZariskiLocalAtSourceから得られる。全射性は同じ開被覆とgの全射性から得る。Tは有限なアフィンの直和なのでアフィンで、上のof_compを使えばT→Bはアフィンである。この同じTのisoSpecを用いる手順はG1の `exists_affine_finitePresentation_vCover_refinement` と同じ選択で、別の模型を作る必要はない。
+
+この結果、TのB上の相対Čech nerveの正次数は、アフィン射の底変換とTのアフィン性によりアフィンになる。Bの各アフィン開に制限すれば、平坦全射の実際の環写像へのB1の入力が得られる。ただしこれだけでは、B自体が非アフィンな場合のΓのČech列の完全性や、B→Spec Rとの合成の消去を証明したことにはならない。元のBのアフィン被覆との比較と、元の増大二重図式へ渡す自然性が残る。G4の相対proper fppf・合成の束でこれらを照合する。
