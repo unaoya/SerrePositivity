@@ -2285,3 +2285,56 @@ G4・G5は未完。検証済みの数学の先端は `415b27a9b` のまま。未
 到達点は同じ定数増大列から元のsingleのtotalへのretractによる完全性の移送と、元の開被覆の全次数の増大まで。構造層への代入の別下書きは、評価式が通り零次の照合の最後が未検証であり、今回の三本の宣言数に含めない。相対proper fppfへの代入・F8全複体・元の中心を保持するNoether帰納・G5は未完。最終のAugmentedRingCechExactと利用側の型は不変。mainは取り込んでいない。停止点2g-2ではない。
 
 一覧：済み1／全体3（うち追加0）。
+
+同じ全次数の増大の引き戻しの法則（既存G4の自然性の内数、70〜130行）：`schemeStructurePerfectCechConstantAugmentation_naturality` はX→Y、元のφ:R→Γ(Y,⊤)、ψ=f.appTop∘φ、被覆U・Vとその細分ρに対し、元の定数増大と既存refinedPullbackの複体の射の合成が、X側の同じ定数増大と等しい式。全次数を各タプルの評価へ落とし、既存のappLEの自然性とFrobenius順極限の合成則を使う。零次の結果だけを全次数へ拡張したと扱わず、同じ制限の環準同型を照合する。最終型・幾何の仮定は変えない。
+
+同じタプル被覆への全次数の増大の束ね方（既存G4の自然性・増大の法則、90〜170行）：`schemePerfectCechTupleConstantAugmentation` は元の各nerveの基底への射の大域スカラーを前記の増大へ代入し、`…_naturality` は全ての単体の射で元のタプルの前合成を保つ。`…_single` は同じsingleからの包含との合成が既存の零次singleの増大と等しい複体の射である式。`…Hom` は元の関手へ全次数の増大をまとめた自然変換、`…Hom_single` は元の増大図式の同じhomとの一致。元の係数と最終型を保つ法則の分割であり、別の完全性を仮定しない。
+
+元の増大図式と全複体への係数移送の法則（既存G4の同型・増大の内数、65〜115行）：`schemePerfectCechTupleSingleAugmentedIso` は前記の同じsingleの増大と元の増大図式の、左・右で恒等の同型。`schemePerfectCechTupleConstantDouble` は元の全次数の増大をB1の同じ関手に代入したもの。`schemePerfectCechTupleDouble_acyclic_of_constant` は同じ定数増大列のtotalの完全性を、retractと同じ恒等比較で元の `schemePerfectCechTupleDouble` のtotalへ戻す。仮定の完全性を一般のproper fppf射について供給するのは後続であり、ここをその完成とは数えない。
+
+整数加群の係数移送の法則（既存G4の係数移送の内数、70〜130行）：`ringToCechIntegerModule` は元の環・環準同型を同じ整数加群・準同型に見た図式であり、加法群への忘却は既存B1のringToAbと恒等成分で比較する。`cechIntegerAugmented_acyclic_iff` は同じ整数加群の増大余単体図式の完全性が、加法群への忘却後の完全性と同値である法則。`ringCechExact_iff_integer_acyclic` は既存B1のringCechExact_iff_acyclicとmapAugmentedCochainIsoを使い、元のAugmentedRingCechExactを同じ整数加群の複体へ渡す。B1の増大の完全性の証明を作り直さず、元の最終型も変えない。
+
+元のアフィンnerveの増大係数の移送（既存G4の係数・増大・同型の法則、100〜180行）：`affineGammaPerfectAugmentedCoefficients` は元の環のconerveのFrobenius増大係数を、既存のaffineGammaCechConerveIsoで元の幾何的nerveのΓの係数へ移す。`…Iso` は同じ基底で恒等の増大図式の同型。`…_hom_app_apply` は各増大成分が元の基底への射のΓのFrobenius順極限そのものである式。`…_acyclic` はアフィン間の元の平坦全射に対し、既存のAugmentedRingCechExactと整数係数への移送を同じ同型で渡す。一般の非アフィン源のΓの平坦性は仮定しない。
+
+同じ増大二重複体の各行への評価（既存G4の自然性・全複体への移送の内数、40〜80行）：`cechAugmentedDoubleRowIso` はE:Augmented(Cochain(Module ℤ))の同じ縦次数bを評価する操作と、B1のaugmentedCochainの交換同型。`cechIntegerAugmentedDouble_acyclic_of_rows` はその各行の完全性を、検証済みcechIntegerLiftTotal_acyclic_of_rowsに渡して元のtotalの完全性を結論する。新たな対角線の議論は作らず、B1/HAの既存の判定を元の行の係数へ代入する法則。
+
+同じ矩形の増大行への評価（既存G4の増大・係数移送の内数、50〜100行）：`rectangularPerfectAugmentedRow` は元の定数増大図式を縦次数kで評価した同じ増大余単体図式で、`…_left` は元の基底のFrobenius順極限、`…_right` は検証済みの同じ矩形の行の関手である式。`…_hom_app_apply` は各タプルで元の大域スカラーと実際の交叉への制限を合成したFrobenius写像となる。行の係数の完全性の仮定を追加する新しい定理ではなく、同じ増大の評価式。
+
+
+## G4：元のタプル被覆への全次数の増大と同じ二重複体への移送
+
+検証済みの五本を追加した。元のスカラーと実際の制限の射で全次数に増大し、既存のsingleの増大と同じ射であることを示した。元の増大図式の左右で恒等の同型を使い、定数増大列のtotalの完全性を元の `schemePerfectCechTupleDouble` へ戻す。
+
+`SchemeStructurePerfectCechConstantAugmentation`（63行）：
+- `schemeStructurePerfectCechConstantAugmentation`：元の大域スカラーと実際の開への制限による、構造層の全次数の定数増大。
+- `schemeStructurePerfectCechConstantAugmentation_apply`：各タプルの値は、同じスカラーと実際の制限の合成のFrobenius順極限。
+- `schemeStructurePerfectCechConstantAugmentation_single_zero`：singleの包含との合成の零次は、既存の同じスカラー増大の零次。
+
+`SchemePerfectCechConstantNaturality`（62行）：
+- `schemeStructurePerfectCechConstantAugmentation_naturality`：同じスカラーに沿う元の引き戻し・細分は、全次数の増大と可換。
+
+`SchemePerfectCechTupleConstantAugmentation`（88行）：
+- `schemePerfectCechTupleConstantAugmentation`：元の各nerveの基底への射に沿う大域スカラーを、同じタプル複体の全次数へ増大する。
+- `schemePerfectCechTupleConstantAugmentation_naturality`：元の全ての単体の射に沿うタプルの前合成と同じ増大は可換。
+- `schemePerfectCechTupleConstantAugmentation_single`：同じsingleの包含との合成は、既存のsingleの増大写像そのもの。
+- `schemePerfectCechTupleConstantAugmentationHom`：元のタプル係数関手への、同じ全次数の増大の自然変換。
+- `schemePerfectCechTupleConstantAugmentationHom_single`：元のsingleの包含との合成は、既存の増大図式の同じ自然変換。
+
+`SchemePerfectCechTupleConstantTotal`（62行）：
+- `schemePerfectCechTupleSingleAugmentedIso`：元の同じ増大の一致を、左・右で恒等の増大図式の同型にまとめる。
+- `schemePerfectCechTupleConstantDouble`：元の全次数の増大をB1の同じ二重複体の関手に代入する。
+- `schemePerfectCechTupleDouble_acyclic_of_constant`：同じretractと恒等の比較により、定数増大列のtotalの完全性を元のsingleのタプル複体のtotalへ戻す。
+
+`CechRingIntegerCoefficients`（69行）：
+- `ringToCechIntegerModule`：元の環と環準同型を同じ整数加群・準同型に見た係数移送。
+- `ringToCechIntegerModuleForgetIso`：元の加法群の係数図式ringToAbとの、恒等成分の同じ比較。
+- `cechIntegerAugmented_acyclic_iff`：同じ整数加群の増大複体の完全性は、加法群への忘却で保たれ反映される。
+- `ringCechExact_iff_integer_acyclic`：B1の既存の完全性の判定を使い、元のAugmentedRingCechExactを同じ整数加群の複体へ移す。
+
+検証：五本の下書き検証は `2g-g4-scheme-constant-augmentation-check-3.log`、`2g-g4-scheme-constant-naturality-check-1.log`、`2g-g4-tuple-constant-augmentation-check-1.log`、`2g-g4-tuple-constant-total-check-1.log`、`2g-g4-ring-integer-coefficients-check-1.log` が全て終了0。対応する対象と入口の本体ビルドは順に **5,281・5,282・5,283・5,284・5,285ジョブ、全て終了0**（同じ語幹の `-native.log`）。固定manifest・下書き・本体のSHA256と全バイト一致を五本とも確認した。対象ビルドと別の共有鍵で実際の所有宣言を非公開・生成分も含め監査し、**38宣言・標準三公理のみ・終了0**。順に10、2、10、9、7宣言。監査ログは `2g-g4-scheme-constant-augmentation-audit.log`、`2g-g4-tuple-constant-augmentation-audit.log`、`2g-g4-original-tuple-coefficients-audit.log`。追加公理・sorry・既存宣言の型変更・資源上限の引き上げ・200行超の宣言なし。入口と一部ファイルの長行・letI等のstyle警告は残る。共有鍵 --class impl --wait 3600、一件ずつ。root・下流全ビルド・AlgebraicGeometry全体監査なし。
+
+今回344行＋登録5行＝349行。基準56ea849a3からの外枠計数は **13,779行**（新規192モジュール本体13,541行、既存追加25行、入口213行）。新規所有宣言の小監査累計 **1,376**、既存15宣言は別計上。後続の元のアフィンnerveのΓの増大係数と同じ行の評価の二本は、下書き検証のみが成功し、本体ビルド・監査の検証数にはまだ含めない。
+
+完成見込み14,600〜17,300行、承認済み外枠18,000行は不変。残る主要な接続はG4の行の係数比較・相対proper fppf・F8・元の中心を保持するNoether帰納、およびG5の模型の極限・Frobeniusとの交換・元のv被覆への移送。G4・G5は未完で、停止点2g-2ではない。最終のAugmentedRingCechExactと利用側の型は不変。mainは取り込んでいない。
+
+一覧：済み1／全体3（うち追加0）。
