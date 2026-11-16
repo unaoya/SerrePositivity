@@ -2949,3 +2949,5 @@ mainの取り込みは11-16 16:25の指示どおり保留したまま。検証�
 
 
 2026-11-17：ユーザーが外枠21,000行への拡張と同じ型・範囲での再開を承認した。20,000行の境界によるLeanの停止を解除する。検証済み実測17,611行、完成見込み約19,600〜20,500行。現在の唯一の検証待ち64564を維持し、未検証分を検証済みとは数えない。G4・G5と一般のv被覆の最終出力は未完、2hのLeanは始めない。main未取り込み。一覧：済み1／全体3（うち追加0）。
+
+同じ中心側の元のkernelへの完全性の移送（G4の既存の短完全列の法則、着手前の型、60〜100行見込み）：`schemePerfectCechTupleRightKernelTotal_acyclic_of_center` は、元の中心fの元の逆像被覆Ucに対する `schemePerfectCechTupleDouble f Uc p hp hS` のtotalの完全性から、元の `schemePerfectCechTupleSquareRightKernel f g F q hq U …` のtotalの完全性を得る。中心自身の恒等矢印に左側の同値を代入し、同じunsigned successorの各次数の完全性と右側whole totalの比較へ渡し、元の同じ右側の射影のkernelSequenceと定数の正次数の基底列の完全性で元のkernelへ戻す。Noether性や射影性はこの移送の追加仮定とせず、中心の完全性の供給は別途のNoether帰納で行う。この条件付きの法則を一般の固有降下の完成とは呼ばない。
