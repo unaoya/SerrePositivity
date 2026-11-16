@@ -2411,3 +2411,53 @@ G4・G5は未完。検証済みの数学の先端は `415b27a9b` のまま。未
 完成見込み15,400〜17,300行、承認済み外枠18,000行は不変。残りの主要な接続は **G4のF8・元の中心を保持するNoether帰納と、G5の模型の極限・Frobeniusとの交換・元のv被覆への移送（計5接続）**。今回の平坦全射の結果は同じ選択した有限アフィン被覆での全複体の完全性であり、一般の固有全射の降下や最終のv被覆の完全性を完成扱いにしない。G4・G5は未完で、停止点2g-2ではない。最終のAugmentedRingCechExactと利用側の型は不変。mainは取り込んでいない。
 
 一覧：済み1／全体3（うち追加0）。
+
+同じF8の可換な図式の全複体への代入（既存G4の係数・全複体の法則、着手前の型）：
+- `cechIntegerLiftTotal_acyclic_of_columns`：K:HC₂(Module ℤ,up,up)、各K.X aの完全性から、同じK.totalの完全性を得る（25〜50行）。既存の行の判定をK.flipへ渡し、Mathlibの同じtotalFlipIsoで戻す。新しい対角線・境界消去の証明を作らない。
+- `schemePerfectCechTupleSquarePositiveDouble`：既存のschemePerfectCechTupleSquareFunctorを、既存の交代余面複体の関手に代入する。同じ各F8の全複体と実際の単体の射を外方向へまとめる。
+- `DegreeOneProjectiveModel.perfectCechTupleSquarePositiveTotal_acyclic`：同じ射影表示、中心のCartesianな四角形、全射性・中心外同型、有限アフィン被覆に対し、前記の同じ外方向の全複体の完全性を得る（前の定義と合わせ50〜90行）。既存のperfectCechTupleSquare_acyclicを各列へ代入する。これだけで元のproper全射の降下を完成扱いにせず、中心側との全複体の比較とNoether帰納は残る。
+
+同じ全複体の係数移送の自然性（既存G4の自然性・係数移送の法則、着手前の型、二本計100〜180行）：
+- `cechIntegerLiftBicomplexMap`：既存の整数係数の同値関手を二方向の同じ複体の射へ適用する。
+- `cechIntegerLiftTotalComponentIso_naturality`・`cechIntegerLiftTotalIso_naturality`：元の全複体の各直和入射を保つ既存の比較は、同じ二重複体の射に自然。各入射で既存のιTotal_mapと関手の合成則を使う。
+- `cechIntegerLiftTotal_quasiIso_iff`：同じ自然な比較と同値関手によって、実際のtotalの射の擬同型性を保ち反映する。
+- `cechIntegerLiftTotal_quasiIso_of_columns`：各列が擬同型で各成分が全射の同じ射は、元のtotalでも擬同型。既存HAの同じ定理をULift整数の同じ係数へ適用して戻す。元のHAの型や最終出力の型を変更せず、対角線や核の完全性を証明し直さない。
+
+同じ全複体への短完全性の移送（既存G4の係数移送・有限cone比較の法則、着手前の型、70〜130行）：`cechIntegerLiftTotalShortComplex` は元の短複体の三つの二重複体と同じ二つの射にtotalを取った短複体。`cechIntegerLiftTotal_shortExact` は元の短完全性を同じtotalへ渡す。既存HAのtotalShortExactをULift整数の同じ係数へ適用し、前記の自然なtotalの比較で移す。元の係数へ戻す際は同じ加群の関数の単射性・完全性・全射性で反映する。直和の境界消去やHAの既存の短完全性の証明を作り直さず、元のHAの型も変えない。
+
+同じ定数列の零次への射影（既存G4の単位・係数・有限cone比較の法則、着手前の型、60〜110行）：`cechConstantSingleProjection` は元の定数余単体の複体から同じ零次singleへの標準射影。`cechConstantSingleAugmentation_projection` は元の包含との合成が恒等である式、`cechConstantSingleProjection_quasiIso` は既存の包含の擬同型性から同じ射影の擬同型性を消去で得る。`cechConstantSingleProjection_surjective` は同じ各次数の成分が全射である式。元の定数列の正次数の余分な基底項を除く短完全な比較への供給であり、対角線の境界消去や既存の定数列の完全性の証明を作り直さない。
+
+
+## G4：F8 の正方向の全複体と係数移送の自然性
+
+検証済みの五本を追加した。元の各F8の全複体と実際の単体の射を保持し、外方向の同じ全複体の完全性を得た。係数の同値による同じtotalの比較は射に自然で、擬同型性と短完全性を元の整数係数へ戻せる。元のHAの型は変更していない。
+
+`CechIntegerLiftTotalColumns`（32行）：
+- `cechIntegerLiftTotal_acyclic_of_columns`：各列の完全性を既存の転置・行の判定・totalFlipIsoで同じ整数係数のtotalへ渡す。
+
+`SchemePerfectCechTupleSquarePositiveTotal`（55行）：
+- `schemePerfectCechTupleSquarePositiveDouble`：既存のF8の全複体の余単体関手を、同じ交代余面複体の関手へ代入する。
+- `DegreeOneProjectiveModel.perfectCechTupleSquarePositiveTotal_acyclic`：元の射影表示、中心のCartesianな四角形、全射性・中心外同型、有限アフィン被覆に対し、実際の外方向の全複体が完全となるČech版。docstringにBST13 Lemma 3.9・BS17 Lemma 4.6(i)、Stacks 30.2.6の比較を形式化しないことを明記した。
+
+`CechIntegerLiftTotalNaturality`（66行）：
+- `cechIntegerLiftBicomplexMap`：既存の整数係数の同値関手を同じ二重複体の射へ適用する。
+- `cechIntegerLiftTotalComponentIso_naturality`：同じ直和の標準比較は元の射の各成分に自然。
+- `cechIntegerLiftTotalIso_naturality`：同じtotalの比較は元の二重複体の射に自然。
+- `cechIntegerLiftTotal_quasiIso_iff`：自然な同じ比較と同値関手により、実際のtotalの射の擬同型性を保ち反映する。
+
+`CechIntegerLiftTotalQuasiIso`（36行）：
+- `cechIntegerLiftTotal_quasiIso_of_columns`：元の各列の擬同型と各成分の全射性から、既存HAの判定を同じ係数へ適用し、元のtotalの擬同型性へ戻す。
+
+`CechIntegerLiftTotalShortExact`（68行）：
+- `cechIntegerLiftTotalShortComplex`：元の短複体の三つの二重複体と同じ二つの射にtotalを取った短複体。
+- `cechIntegerLiftTotal_shortExact`：元の短完全性を既存HAのtotalShortExactと同じ自然な比較で元のtotalへ渡す。元の係数への反映は同じ関数の単射性・完全性・全射性による。
+
+検証：二本と三本をまとめたmodule形式の下書き検証は `2g-g4-square-positive-total-check-4.log`・`2g-g4-integer-total-naturality-check-4.log` が終了0。五本と直接importerの入口の対象ビルドは **5,300ジョブ・終了0**（`2g-g4-integer-total-naturality-native.log`、依存のキャッシュ再生を含む）。固定manifest・下書き・本体のSHA256と全バイト一致を五本とも再確認した。対象ビルドと別の共有鍵で、非公開・生成分も含む実際の全所有宣言を監査し **36宣言・標準三公理のみ・終了0**（`2g-g4-integer-total-naturality-audit.log`）。上の順に4、6、10、5、11宣言。追加公理・sorry・既存宣言の型変更・資源上限の引き上げ・200行超の宣言なし。letI等のstyle警告は残る。共有鍵 --class impl --wait 3600、待ちは一件。root・下流全ビルド・AlgebraicGeometry全体監査なし。
+
+今回257行＋登録5行＝262行。基準56ea849a3からの外枠計数は **14,505行**（新規205モジュール本体14,254行、既存追加25行、入口226行）。新規所有宣言の小監査累計 **1,455**、既存15宣言は別計上。完成見込み15,400〜17,300行、承認済み外枠18,000行は不変。
+
+到達点はF8の各項から同じ正方向の全複体への代入と、既存の全複体の自然な係数・擬同型・短完全性の比較まで。中心側との同じ有限coneの全複体の比較・Noether帰納と、G5の模型の極限・Frobeniusとの交換・元のv被覆への移送は残る。一般のproper降下や最終のv被覆の完全性を完成扱いにしない。G4・G5は未完、停止点2g-2ではない。最終のAugmentedRingCechExactと利用側の型は不変。
+
+11-16 16:25の調整役の指示に従い、Citationの変更を含むmain cd79e9cc5は取り込んでいない。次の定数列の射影は未検証の下書きに置き、本体へ登録・コミットしていない。
+
+一覧：済み1／全体3（うち追加0）。
