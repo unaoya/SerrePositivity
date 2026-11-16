@@ -3774,3 +3774,30 @@ star の空形状でも元の頂点を保つ。右 Kan 条件や係数の極限�
 `/tmp/is-w1/s8-all-local-sections-next-1/files.json` に追加した（全11対象）。
 検証済み全体232本・15,034行・1,301宣言は変わらない。
 一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+### S1 の元の fan への双対・全錐の照合（11-16、未検証）
+
+`ExtensiveCofanDuality` 56行と `ExtensiveSieveCone` 56行を追加した下書き。
+既存の通常の積・余積の普遍射と nerve の錐の法則だけを使う。
+S1 の証明の分割で、追加IDなし、200行超の補題なし。
+
+```lean
+cofanToOppositeFan {B : ι → C} (c : Cofan B) : Fan (fun i => Opposite.op (B i))
+fanToUnopCofan {B : ι → Cᵒᵖ} (c : Fan B) : Cofan (fun i => (B i).unop)
+cofanToOppositeFan_isLimit c (hc : IsColimit c) : IsLimit (cofanToOppositeFan c)
+fanToUnopCofan_isColimit c (hc : IsLimit c) : IsColimit (fanToUnopCofan c)
+cofanSieveIndexCone [HasInitial C] [Nonempty ι] (c : Cofan B) :=
+  (sieveCone (cofanGeneratedSieve c)).whisker (cofanSieveIndex c)
+cofanSieveIndex_legs [HasInitial C] [Nonempty ι] (c : Cofan B) :
+  WithTerminal.incl ⋙ cofanSieveIndex c ⋙ sieveDiagram (cofanGeneratedSieve c) =
+    Discrete.functor (fun i => Opposite.op (B i))
+cofanSieveIndexCone_legs_val [HasInitial C] [Nonempty ι] (c : Cofan B) :
+  (nerveCone ((cofanSieveIndexCone c).whisker WithTerminal.incl)).val =
+    (nerveCone (cofanToOppositeFan c)).val
+```
+
+双対の2本は有限性も非空性も仮定しない。同じ脚を保ったまま、元の積錐を余積被覆へ
+移すための法則。後半は元の篩錐を実際に whisker し、指定 fan の頂点と各脚を比較する。
+実行中の6対象には触れず、次の未実行一覧を全13対象へ更新した。
+新規S1は計7本474行が未検証。検証済み15,034行は変わらない。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
