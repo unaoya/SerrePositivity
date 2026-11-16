@@ -3159,3 +3159,23 @@ mainの取り込みは11-16 16:25の指示どおり保留したまま。検証�
 
 
 実際のnil閉厚化のアフィン係数の法則（G4の既存閉厚化・係数移送の法則、着手前の型、60〜110行見込み）：`affineNilImmersion_appTop_universalHomeomorphism (f : X ⟶ Y) [IsAffine X] [IsAffine Y] [IsClosedImmersion f] [Surjective f]` は元のf.appTop.homの環の普遍同相性を返す。元の切断写像の全射性と、同じSpecの全射性から核がnilradicalに入ることを示し、既存のisUniversalHomeomorphism_of_nil_kernelへ渡す。`affineNilImmersion_restrict_appTop_universalHomeomorphism` は任意のアフィン開Vへの元の制限のappTopに同じ結論を返す。`affineNilImmersion_frobeniusEquiv` とそのtoRingHomの式は、既存のcanonicalなFrobenius順極限の環同型へ渡し、その順方向が元のf.appTopの実際のFrobenius写像であることを保つ。Noether性や冪零指数の一様性は仮定しない。全てのnerveの実際の制限への適用と被覆の自然性の接続は別途残る。
+
+
+### 元の有限被覆による相対fppf細分と、nil閉厚化の実際の係数
+
+`RelativeFppfAffineRefinement`（53行）：
+
+- `exists_affine_flatSurjective_refinement`：G1と同じ有限アフィン被覆の余積Aと同じA→Wで、相対射の平坦性・全射性・局所有限表示性を保つ。分離的な基底への合成はアフィン射である。Noether性を追加しない。
+
+`AffineNilImmersionFrobeniusCoefficients`（64行）：
+
+- `affineNilImmersion_appTop_universalHomeomorphism`：元のアフィンな全射閉埋め込みのappTopは、同じ環の普遍同相である。
+- `affineNilImmersion_restrict_appTop_universalHomeomorphism`：非アフィンでもよい基底の各アフィン開への実際の制限のappTopも同じ普遍同相。
+- `affineNilImmersion_frobeniusEquiv`：元のappTopのcanonicalなFrobenius順極限の環同型。
+- `affineNilImmersion_frobeniusEquiv_toRingHom`：その同型の順方向は、元のappTopの実際のfrobeniusDirectLimitMapである。
+
+検証：relative-fppf-refinementのcheck-1、affine-nil-coefficientsのcheck-1は終了0。固定manifestのSHA256と下書き・本体の全バイト一致を確認。二本と直接importerの入口の対象ビルド5,362ジョブ・成功。別の共有鍵による所有宣言監査7宣言（3、4）、非公開・生成分も含め標準三公理のみ・終了0。ログは `2g-g4-refinement-nil-{native,audit}.log`。追加公理・sorry・既存宣言の型変更・資源上限の引き上げ・200行超の宣言なし。style警告は残る。
+
+今回本体117行＋入口2行＝119行。基準56ea849a3から検証済み19,409行（新規263モジュール19,100行、既存追加25行、入口284行。既存削除14行を差し引かない）。新規所有宣言の監査累計2,156、既存15宣言は別計上。外枠21,000行。G4の相対の同じ図式の軸・タプルtotalとの照合、nil閉厚化を元の全nerveの係数へ自然に渡す接続、Noether帰納、G5は未完。最終の型・仮定は同じ。main未取り込み、root・下流全ビルド・全体監査・2hのLeanなし。共有鍵--class impl --wait 3600、待ちは一件、対象ビルドと監査は別リース。
+
+一覧：済み1／全体3（うち追加0）。
