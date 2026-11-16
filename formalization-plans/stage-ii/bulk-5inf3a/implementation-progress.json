@@ -3,7 +3,7 @@
   "complete": 3,
   "total": 6,
   "added": 0,
-  "verified_head": "this commit: base 7950f65bd024822bab48fc643e713dff70aec5ef",
+  "verified_head": "this commit: base 66420880dc94eb926b1eba8e1420e01fb0617d01",
   "items": {
     "HT01": "complete",
     "HT02": "complete",
@@ -12,17 +12,16 @@
     "HT05": "not-started",
     "HT06": "not-started"
   },
-  "latest_complete_audit_checkpoint": "canonical-naturality-and-oriented-classes-checkpoint.json",
-  "latest_complete_audit_declarations": 1946,
+  "latest_complete_audit_checkpoint": "standard-forms-and-total-unit-checkpoint.json",
+  "latest_complete_audit_declarations": 1971,
   "working_changes_unverified": [
-    "AffineCanonicalSingleRows",
     "AffineCoverTargetAugmentation",
-    "CompletedFormsZeroBaseChange",
-    "AffineOrientedFormsBaseChange",
+    "AffineLineDegrees",
+    "AffineCanonicalSingleRows",
     "BaseChangeHomologyZeroDifferential",
-    "AffineOrdinarySingleTotal"
+    "AffineOrientedFormsBaseChange"
   ],
-  "pending_check": "bundle-212 terminal rc1; see audit module inventory; failed dependencies await next batch",
+  "pending_check": "bundle-213 terminal rc1; see audit module inventory; failed dependencies await next batch",
   "next_proof_route": "remaining-20000-plan.md",
   "initial_record": {
     "stage": "5inf3a",
