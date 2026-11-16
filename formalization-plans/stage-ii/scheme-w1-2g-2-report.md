@@ -1563,3 +1563,17 @@ Frobenius の既存の矢印の図式の端点の照合（着手前、既存の�
 各 conerve の有限余積の Frobenius の照合は未検証の下書きにあり、この束には含めない。G4の実際のアフィン比較・二重 Čech の完全性の判定・Noether帰納、G5は残る。全体の見込み約10,000〜13,500行・外枠16,000行は不変。
 
 一覧：済み1／全体3（うち追加0）。
+
+
+同じ conerve の反復図式への比較（着手前、既存の有限段・余極限の比較の自然性の内数、120〜300行）：`frobeniusConerveRingDiagramIso … n` は、同じ conerve の n 次の環の ringDirectSystemFunctor と、元の frobeniusArrowDiagram に既存の cechConerve 関手と n 次の評価を合成した図式との標準同型。各対象の成分は恒等、後続射は上の frobeniusConerve_step、任意の段は NatTrans.ofSequence による自然性から供給する。同じ n の射についても実際の conerve の環準同型の自然性を保持する。これを既存の conerve 関手の余極限保存と環・整数加群の標準比較で移す。係数ごとの任意の同型を新たに選ぶ方式にはしない。増大軸も同じ基底からの標準脚で照合し、最終の出力や利用側の型は変更しない。個々の宣言は200行以内の予定。
+
+
+## G4：conerve の同じ有限余積上の Frobenius
+
+`FrobeniusConerveStep`（59行）：`frobeniusConerve_primeCast` は同じ conerve の各環で p が零であることを、元の基底からの実際の WidePushout.head の環準同型で供給する。`frobeniusConerve_step` は元の frobeniusArrowStep が誘導する mapCechConerve の n 次が、同じ有限余積の環の frobeniusDirectSystemMap 0 1 と一致すること。実際の head と全ての脚で WidePushout.hom_ext と既存の Frobenius の自然性を使う。零環・空のスキームを除外しない。
+
+単独検証、本体とのソース完全一致、対象と入口のビルド5,209ジョブ成功、小監査3宣言（実際の所有元による生成・非公開宣言込み）・標準三公理のみ、終了状態0。ログ `2g-frobenius-conerve-step-check-2.log`・`2g-frobenius-conerve-step-native.log`・`2g-frobenius-conerve-step-audit.log`。局所的な backward.isDefEq.respectTransparency false、既定の資源制限。追加公理・sorry・既存の型変更・200行超の宣言なし。共有鍵 --class impl --wait 3600、待ちは一つ、対象ビルドと小監査は別枠。root・下流全ビルド・全体監査なし。
+
+今回1モジュール59行＋入口1行。新規124モジュール本体8,306行。既存追加25行を含む外枠計数は本体8,331行・登録124行と入口の追加空行21行を全て含めて **8,476行**。新規小監査累計838宣言、既存15宣言は別計上。次の同じ反復図式への標準比較は型を前節に記録したが、未実装。G4の実際のアフィン比較・二重 Čech の完全性の判定・Noether帰納、G5は残る。見込み約10,000〜13,500行・外枠16,000行は不変。停止点2g-2の完成とは呼ばない。
+
+一覧：済み1／全体3（うち追加0）。
