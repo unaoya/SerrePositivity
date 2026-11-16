@@ -3,7 +3,7 @@
   "complete": 3,
   "total": 6,
   "added": 0,
-  "verified_head": "this commit: base ede3a17238a16cf2929e12c98d68c6a2e0a48a35",
+  "verified_head": "this commit: base cdea2301e0761f9135bf14fdf36ac7d56459fd88",
   "items": {
     "HT01": "complete",
     "HT02": "complete",
@@ -12,17 +12,16 @@
     "HT05": "not-started",
     "HT06": "not-started"
   },
-  "latest_complete_audit_checkpoint": "generic-native-target-unit-checkpoint.json",
-  "latest_complete_audit_declarations": 2286,
+  "latest_complete_audit_checkpoint": "specified-target-compatibility-checkpoint.json",
+  "latest_complete_audit_declarations": 2299,
   "working_changes_unverified": [
-    "AffineCompletedCoverSquare",
-    "AffineOriginalCoverZeroSquare",
+    "AffineOriginalCoverOneSquare",
     "AffineNativeCoverHomologySquares",
-    "AffineOriginalCoverTargetCompatibility",
-    "AffineOriginalCoverHomologyIsos",
-    "AffineOriginalCoverOneSquare"
+    "AffineOriginalCoverZeroSquare",
+    "AffineCompletedCoverSquare",
+    "AffineOriginalCoverHomologyIsos"
   ],
-  "pending_check": "bundle-304 queued; six R2 sources unverified; R3 not started",
+  "pending_check": "bundle-307 terminal rc1; see audit module inventory; failed dependencies await next batch",
   "next_proof_route": "remaining-20000-plan.md",
   "initial_record": {
     "stage": "5inf3a",
@@ -396,8 +395,8 @@
       "lines": 74
     }
   ],
-  "working_written_lines": 23899,
-  "source_inventory_scope": "Only HT01–HT06 source additions/changes against 336942ab0, plus untracked files; excludes pre-existing Comparison modules.",
+  "working_written_lines": 23907,
+  "source_inventory_scope": "Only HT01\u2013HT06 source additions/changes against 336942ab0, plus untracked files; excludes pre-existing Comparison modules.",
   "static_check": "static-pending-check.json; not Lean validation",
   "build_wait_history": [
     {
@@ -415,9 +414,9 @@
   ],
   "current_request_last_confirmed_live_utc": "2026-11-15 04:52:28 UTC",
   "HT02_remaining": "complete; see ht02-complete.json",
-  "prepared_source_lines": 23899,
+  "prepared_source_lines": 23907,
   "prepared_modules": 287,
-  "verified_source_lines": 23263,
+  "verified_source_lines": 23419,
   "provisional_total_source_lines": [
     22223,
     25443
@@ -455,7 +454,7 @@
   },
   "scope_review_history": [
     {
-      "reason": "remaining HT04–HT06 cannot be forecast within 659 remaining lines; coordination section 2 scale rule",
+      "reason": "remaining HT04\u2013HT06 cannot be forecast within 659 remaining lines; coordination section 2 scale rule",
       "verified_math_head": "28763cb06d93b4d5c007cd928f65065873e39623",
       "verified_modules": 157,
       "verified_lines": 13341,
