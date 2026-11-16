@@ -5933,3 +5933,29 @@ mainを取り込まず、S7・R2・R3は再開しない。
 点ごとの同型を集める構成は作らない。S1・S8は未完。
 mainは取り込まず、S7・R2・R3は再開しない。
 一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+
+### 任意の係数への移送に使う要素圏の係数移送（11-17 未明、未検証）
+
+`PresheafElementsSiteLift`に、AsSmall.down.opとULiftによる既存の係数移送を記述する。
+型は `P.Elements ≌ (AsSmall.down.op ⋙ P ⋙ uliftFunctor).Elements`。
+同じup/downであり、射影との厳密な一致と、任意のφに関する
+`(siteLiftPresheafMap φ).mapElements ⋙ siteLiftElementsDown Q =
+siteLiftElementsDown P ⋙ φ.mapElements`を保持する。
+任意の模型の選択ではなく、既存の宇宙移送の法則として記録する（200行未満、追加IDなし）。
+検証済み累計21,178行。S1・S8は未完。mainは取り込まず、S7・R2・R3は再開しない。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+
+### 要素圏の同じ宇宙移送を検証（11-17 未明）
+
+PresheafElementsSiteLiftは80行・1本・16所有宣言。
+`/tmp/is-w1/s8-site-elements-lift-3/`の対象ビルド・小監査が終了0、成功JSON・SHA一致、標準三公理のみ。
+初回と二回目はwhiskeringのimport・名前空間の不足で失敗し、既存Functor APIの明示で解消した。
+元の要素・前層の射・射影を保つ同じ係数移送の法則で、追加IDなし。
+検証済み累計 **21,258行・新規335本＋承認された既存2本の差分**。
+次に、同じULiftが像篩・等化篩を保ち、局所全射・局所単射の条件を保存・反映する法則を記述する。
+型は `IsLocallySurjective J (Functor.whiskerRight φ uliftFunctor) ↔ IsLocallySurjective J φ`
+と同じIsLocallyInjective版。200行未満の係数移送として扱う。
+S1・S8は未完。mainは取り込まず、S7・R2・R3は再開しない。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
