@@ -1941,3 +1941,31 @@ G4・G5と停止点2g-2は未完。最終の AugmentedRingCechExact と利用側
 代わりの [2h段0の紙](scheme-w1-2h-route.md) §10を現状の宣言で更新した。H02相当は既存の同じ増大余単体環の自然同型を再利用し、2hで作り直さない。H01・H03・H04は未実装。G4・G5の未供給の入口を最終定理の仮定に押し込まず、2hのLeanも開始していない。
 
 一覧：済み1／全体3（うち追加0）。停止点2g-2は未完であり、goalの達成や2g-2の外枠の独断の変更とは扱わない。
+
+
+## 規模境界の解除（2026-11-16、ユーザー承認）
+
+外枠18,000行への拡張と、同じ型・範囲での再開の承認を受領した。有限族の幾何的比較から、同じ環の積への比較と単体の射・増大の自然性を進める。最終出力と利用側の型は不変。
+
+着手前の型つきの法則（既存の係数移送の内数、100〜180行）：`finiteFamilyCechGammaIso` は Γ(元の余積射の nerve の n 次) と Π_t Γ(元の混合ファイバー積) の同型。`…_eval` は同じ成分の評価が元の標準入射の Γ である式。`…_naturality` は単体の射によるタプルの再添字付けと元の成分の射への自然性。`…_augmentation` は元の基底からの Γ の写像が元の各混合積の基底写像に移る式。積の比較で環と添字の宇宙を同一視しない。
+
+同じ比較の分割（上の100〜180行の内数）：`smallCommRingPiIso`・`…_eval` は小さい添字と任意の宇宙の環の関数積への標準比較とその射影の式。Mathlibの同じ普遍性を用い、宇宙を狭めない。`finiteFamilyCechGammaDiagram` は同じ元の nerve の Γ を標準同型で移した余単体環で、`…_map_eval` は各射を元のタプルの再添字付けと混合積の Γ で表す。`finiteFamilyCechGammaDiagramIso` は全ての射を同時に保つ自然同型。
+
+次の Frobenius への同じ係数移送（既存の法則の内数、100〜180行）：`frobeniusDirectLimitRingIso` は元の環の同型を同じ実際のFrobenius順極限の環同型へ移す（既存の加群版と同じ射）。`finiteFamilyCechComponent_primeCast` は元の標準入射から成分の標数条件を供給する。`finiteFamilyCechFrobeniusEquiv` は有限族の同じ Γ の標準比較と検証済みの有限積の Frobenius 比較を合成し、`…_of`・`…_naturality`・`…_augmentation` で同じ有限段・単体の射・増大を照合する。無限積との交換や新しい完全性の仮定は加えない。
+
+
+## G4：元の有限族の Γ と実際の Frobenius 係数の自然な比較
+
+`FiniteFamilyCechGamma`（129行）：`smallCommRingPiIso` は小さい添字と任意の宇宙の環について圏論的な積と実際の関数環の積の標準同型、`…_eval` は元の射影との一致。`finiteFamilyCechGammaIso` は元の余積射の nerve の Γ と元の混合積の切断の関数環の同型。`…_eval` は元の標準入射の Γ、`…_naturality` は単体の射による再添字付けと元の混合積の射への自然性、`…_augmentation` は元の基底からの増大を保つ式。`finiteFamilyCechGammaDiagram` はその同じ関数環へ移した余単体環、`…_map_eval` は各射の実際の成分の式、`finiteFamilyCechGammaDiagramIso` は元の nerve の rightOp⋙Γ との自然同型。
+
+`FrobeniusDirectLimitRingIso`（46行）：`frobeniusDirectLimitRingIso` は元の環の正逆の射を実際の Frobenius 順極限に適用した環同型。既存の加群版と同じ射で、有限段の元から逆の法則を示す。`…_of` は元の有限段への評価式。
+
+`FiniteFamilyCechFrobenius`（105行）：`finiteFamilyCechComponent_primeCast` は元の標準入射の Γ により成分の標数条件を供給する。`finiteFamilyCechFrobeniusEquiv` は同じ Γ の標準同型と検証済みの有限積の Frobenius 同型の合成。`…_of` は元の入射の Γ を各有限段に適用する式、`…_naturality` は元の全ての単体の射と同じタプルの再添字付けを保つ式、`…_augmentation` は元の基底からの増大の Frobenius 写像を保つ式。空の有限族を除外せず、無限積との交換は主張しない。
+
+次の同じ混合積とタプル開の接続（既存の被覆・制限の射の法則の内数、180〜300行、上の残り300〜650行の内数）：`openFamilyCechInclusion` は Uᵢ.ι≫f の元の混合積から、f の元の nerve への標準射。`…_π`・`…_base` は元の各射影・基底への式。`openFamilyCechIso` は同じ混合積と schemeCechTupleOpen f U n t のスキームとの同型で、元の開の入射との合成が標準射に一致する。正逆を元の射影と開埋め込みの一意な持ち上げで作り、単体の射・制限の射の比較に渡す。アフィン性や元の f の滑らかさは仮定しない。
+
+検証：三本をまとめた下書き検証成功（`2g-finite-family-frobenius-gamma-check-9.log`）、本体は各下書きと全バイト一致。三本と直接importerの入口のビルド5,245ジョブ成功（`2g-finite-family-gamma-frobenius-native.log`）。別の共有鍵で実際の所有モジュールの非公開・生成宣言を含めて全件監査し、24＋9＋18＝51宣言、標準三公理のみ（`2g-finite-family-gamma-frobenius-audit.log`）。全て終了0。局所的なbackward.isDefEq.respectTransparency falseのみ、既定の資源上限、追加公理・sorry・200行超の宣言・既存宣言の型変更なし。共有鍵 --class impl --wait 3600、待ちは一つ、ビルドと監査は別枠。root・下流全ビルド・全体監査なし。
+
+再開後の今回三本280行＋登録3行＝283行。基準56ea849a3から再計数し、新規160モジュール本体10,994行、既存追加25行、入口追加181行を含む外枠計数 **11,200行**。新規所有宣言の小監査累計1,077、既存15宣言は別計上。元の有限族の同じ係数比較と単体の射・増大の自然性は閉じた。混合積と元のタプル開の同定は未検証の下書き。相対proper fppf、F8の全複体とNoether帰納、G5は未完。完成見込みの幅は引き続き約13,800〜17,100行（ユーザー承認の外枠18,000行内）。最終のAugmentedRingCechExactと利用側の型は不変。停止点2g-2ではない。
+
+一覧：済み1／全体3（うち追加0）。
