@@ -17874,3 +17874,87 @@ M15・drafts・main・⑤aの既存ファイル・Interfaceは変更せず、全
 
 G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み18,168行。
 M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
+
+## §126 G01：任意の実全射での幅・原子性の輸送と、同じ幅の非退化な実原子への還元（11-16）
+
+### 126.1 検証済みの追加
+
+追加は **3ファイル170行・明示宣言4**。累計 **173ファイル18,338行・明示宣言877**。
+WalkingAdjunctionEpiWidth.lean は57行・1宣言、
+WalkingAdjunctionEpiAtomicity.lean は60行・2宣言、
+WalkingAdjunctionAtomicNondegenerateCore.lean は53行・1宣言。
+個々の宣言・証明は200行以下、新規Leanの行長は100文字以下。
+同じG01の全実随伴・実filtrationの構成に必要な、元の単体圏・実全射・実退化の合成の法則、
+実幅・端点・原子性・非退化性の照合とその証明の分割であり、一覧IDは追加しない。
+
+一つの実退化の幅の保存（§118）を、任意の単体圏の実全射の作用へ広げた。
+始点次数に帰納し、単射でもある実全射は同じ次数の恒等射へ戻す。
+非単射の場合はmathlibの単体圏の実退化一つと残りの全射への分解を取り、
+実順序関手の合成の等式を通して、実退化の幅の保存と帰納法を合わせた。
+全て元の有限順序関手と全実関手の作用であり、合成の保存を新しい入力に置いていない。
+
+単体圏の実全射は、最小元と最大元の実原像を選ぶことで、その両端を保つことも示した。
+実最初・最後の頂点の保存を、端点による実原子性の必要十分条件へ適用し、
+全射による再添字付けで原子性が同値となることを得た。
+切断の証人を入力に置かず、元の全射性から直接検収した。
+
+元のHomのnerveの宇宙持ち上げにmathlibの非退化単体への分解を適用した。
+任意の実原子Hから、元以下の次数m、単体圏の実全射f、非退化な実全関手Kを回収し、
+元の全実関手がfの再添字付けによるKの像そのものであることを示した。
+全射による実原子性の反映からKも原子的となり、全射による幅の保存からKとHの実幅は等しい。
+実原子性・元の単体集合での非退化性・同じ幅・全関手の等式・元以下の次数を同時に結論に保持する。
+非退化な元や全射の存在を、新しい仮定として置いていない。
+
+### 126.2 型と未完の境界
+
+原典はRiehl–Verity Proposition 4.2.15の退化した原子因子から非退化な元への処理、
+HA Proposition 4.7.3.3、Kerodon Remark 6.2.1.4（Tag 02EN）。追加の型は以下。
+
+```lean
+lemma walkingAdjunctionOrdinalWidth_epi {X Y : WalkingAdjunctionPoint} :
+    ∀ (m n : ℕ) (f : ⦋m⦌ ⟶ ⦋n⦌) [Epi f]
+      (H : ComposableArrows (walkingAdjunctionHom X Y) n),
+      walkingAdjunctionOrdinalWidth (walkingAdjunctionSimplexFunctor f ⋙ H) =
+        walkingAdjunctionOrdinalWidth H
+
+lemma walkingAdjunctionSimplexFunctor_epi_endpoints {m n : ℕ} (f : ⦋m⦌ ⟶ ⦋n⦌) [Epi f] :
+    (walkingAdjunctionSimplexFunctor f).obj 0 = 0 ∧
+      (walkingAdjunctionSimplexFunctor f).obj (Fin.last m) = Fin.last n
+
+lemma walkingAdjunctionLevelIsAtomic_epi_iff {m n : ℕ} {X Y : WalkingAdjunctionPoint}
+    (f : ⦋m⦌ ⟶ ⦋n⦌) [Epi f] (H : ComposableArrows (walkingAdjunctionHom X Y) n) :
+    WalkingAdjunctionLevelIsAtomic (X := ⟨X⟩) (Y := ⟨Y⟩)
+      (walkingAdjunctionSimplexFunctor f ⋙ H) ↔
+    WalkingAdjunctionLevelIsAtomic (X := ⟨X⟩) (Y := ⟨Y⟩) H
+
+lemma walkingAdjunctionAtomic_nondegenerate_core {n : ℕ} {X Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom X Y) n)
+    (ha : WalkingAdjunctionLevelIsAtomic (X := ⟨X⟩) (Y := ⟨Y⟩) H) :
+    ∃ (m : ℕ) (f : ⦋n⦌ ⟶ ⦋m⦌) (_ : Epi f)
+      (K : ComposableArrows (walkingAdjunctionHom X Y) m),
+      WalkingAdjunctionLevelIsAtomic (X := ⟨X⟩) (Y := ⟨Y⟩) K ∧
+      ULift.up K ∈ (WalkingAdjunctionHomShape.{u} X Y).nonDegenerate m ∧
+      walkingAdjunctionOrdinalWidth K = walkingAdjunctionOrdinalWidth H ∧
+      H = walkingAdjunctionSimplexFunctor f ⋙ K ∧ m ≤ n
+```
+
+退化した実原子因子は、元の全射作用と全関手の等式を保持したまま、同じ幅の非退化な実原子へ戻せる。
+この還元と全ての面・実親の順位を一つの生成集合とfiltrationへまとめる構成、
+原典の文字列の幅・fillable条件との全比較、parental subcomputadの全付着の構成は未完。
+元のQCatAdjunctionからの全coherentな延長、水平反対の向きの全比較、
+同じF≫U・単位・余単位・HAモデルとの照合も未完である。
+G01の済みは0、G02以降も未完を維持する。
+
+### 126.3 検証と進み
+
+with_build_lock.sh --class impl --wait 3600、最大240秒の短い枠で対象ビルドと追加4根だけの公理監査を確認した。
+最終固定コマンドの対象はWalkingAdjunctionAtomicNondegenerateCore:oleanで、今回の他の2ファイルも取り込む。
+対象ビルド・監査と外側の終了は0、最終対象ビルドは警告なし。
+元の実単体作用・宇宙持ち上げの分解・同じ全関手の等式と幅へ輸送して最終検証した。
+追加4根は入力名と出力名が一致し、公理依存はpropext・Classical.choice・Quot.soundのみ。
+sorryAx・追加公理なし。入力・根・監査全出力・対象ビルドログは
+[g12-epi-nondegenerate-audit-2026-11-16/](g12-epi-nondegenerate-audit-2026-11-16/)に保存した。
+M15・drafts・main・⑤aの既存ファイル・Interfaceは変更せず、全体ビルド・大きい監査は行っていない。
+
+G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み18,338行。
+M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。

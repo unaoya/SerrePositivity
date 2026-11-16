@@ -1,0 +1,4 @@
+walkingAdjunctionOrdinalWidth_epi
+walkingAdjunctionSimplexFunctor_epi_endpoints
+walkingAdjunctionLevelIsAtomic_epi_iff
+walkingAdjunctionAtomic_nondegenerate_core
