@@ -1,0 +1,152 @@
+source,section,title,reached_from,reason
+DAGXIII,2.2,Power Operations on E∞ -Algebras,ROOT | NS §III.1,starting-section; 一項目でも参照されれば当該節の全項目を対象; 本文の番号参照を一巡（前提の同定は未完を含む）
+NS,I.1,The Tate construction for finite groups,ROOT,starting-section; 一項目でも参照されれば当該節の全項目を対象; 本文の番号参照を一巡（前提の同定は未完を含む）
+NS,I.3,Multiplicativity of the Tate construction,ROOT | NS §I.1 | NS §II.2,starting-section; 一項目でも参照されれば当該節の全項目を対象; 本文の番号参照を一巡（前提の同定は未完を含む）
+NS,III.1,The Tate diagonal,ROOT | NS §IV.1,starting-section; 一項目でも参照されれば当該節の全項目を対象; 本文の番号参照を一巡（前提の同定は未完を含む）
+NS,IV.1,The Tate valued Frobenius,ROOT | NS §III.1,starting-section; 一項目でも参照されれば当該節の全項目を対象; 本文の番号参照を一巡（前提の同定は未完を含む）
+DAGXIII,2.1,Norm Maps,DAGXIII §2.2,internal-citation: DAGXIII 2.1.23; 一項目でも参照されれば当該節の全項目を対象; 本文の番号参照を一巡（前提の同定は未完を含む）
+HA,2.0.0,HA 2.0.0 — Introduction,DAGXIII §2.2 | HA §2.4.2,named-prerequisite: HA 2.0.0.7; 一項目でも参照されれば当該節の全項目を対象; 本文の番号参照を一巡（前提の同定は未完を含む）; .0は対応表の章・節導入の番号群
+HA,2.4.2,Monoid Objects,DAGXIII §2.2 | HA §2.0.0 | HA §4.8.4,named-prerequisite: HA 2.4.2.6; 一項目でも参照されれば当該節の全項目を対象; 本文の番号参照を一巡（前提の同定は未完を含む）
+HA,2.1.3,Algebra Objects,DAGXIII §2.2 | NS §I.3 | HA §2.0.0 | HA §4.8.4,named-prerequisite: HA 2.1.3.1; 一項目でも参照されれば当該節の全項目を対象; 本文の番号参照を一巡（前提の同定は未完を含む）
+HA,4.5.2,Tensor Products over Commutative Algebras,DAGXIII §2.2,named-prerequisite: HA 4.5.2.1; 一項目でも参照されれば当該節の全項目を対象; 本文の番号参照を一巡（前提の同定は未完を含む）
+HA,7.2.4,Finiteness Properties of Rings and Modules,DAGXIII §2.2,named-prerequisite: HA 7.2.4.2; 一項目でも参照されれば当該節の全項目を対象; 本文の番号参照を一巡（前提の同定は未完を含む）
+HA,4.8.4,Properties of RModA (C),DAGXIII §2.2 | HA §7.2.4,version-correspondence: HA 4.8.4.1; 一項目でも参照されれば当該節の全項目を対象; 本文の番号参照を一巡（前提の同定は未完を含む）
+HA,6.1.6,Norm Maps,NS §I.1,bibliography-citation: HA 6.1.6; 一項目でも参照されれば当該節の全項目を対象; 本文の番号参照を一巡（前提の同定は未完を含む）
+HTT,4.3.3,Kan Extensions along General Functors,NS §I.1,bibliography-citation: HTT 4.3.3.7; 一項目でも参照されれば当該節の全項目を対象; 本文の番号参照を一巡（前提の同定は未完を含む）
+HA,4.7.4,BiCartesian Fibrations,NS §I.1,bibliography-citation: HA 4.7.4.13; 一項目でも参照されれば当該節の全項目を対象; 本文の番号参照を一巡（前提の同定は未完を含む）
+NS,II.2,Equivariant stable homotopy theory,NS §I.1 | NS §I.3,internal-citation: NS II.2; 一項目でも参照されれば当該節の全項目を対象; 本文の番号参照を一巡（前提の同定は未完を含む）
+HA,1.1.1,Stability,NS §I.1 | HA §1.1.2,named-prerequisite: HA 1.1.1.9; 一項目でも参照されれば当該節の全項目を対象; 本文の番号参照を一巡（前提の同定は未完を含む）
+HA,1.1.2,The Homotopy Category of a Stable ∞-Category,NS §I.1 | HA §6.1.6 | HA §1.1.1,named-prerequisite: HA 1.1.2.9; 一項目でも参照されれば当該節の全項目を対象; 本文の番号参照を一巡（前提の同定は未完を含む）
+HA,7.3.2,Relative Adjunctions,NS §I.3 | HA §4.8.4 | NS §II.2,bibliography-citation: HA 7.3.2.7; 一項目でも参照されれば当該節の全項目を対象; 本文の番号参照を一巡（前提の同定は未完を含む）
+HTT,5.2.7,Localization Functors,NS §I.3 | NS §II.2 | HTT §5.5.3,bibliography-citation: HTT 5.2.7.2; 一項目でも参照されれば当該節の全項目を対象; 本文の番号参照を一巡（前提の同定は未完を含む）
+HTT,5.5.3,Limits and Colimits of Presentable ∞-Categories,NS §I.3 | HA §7.2.4 | HA §4.7.4 | HTT §5.5.7,bibliography-citation: HTT 5.5.3.6; 一項目でも参照されれば当該節の全項目を対象; 本文の番号参照を一巡（前提の同定は未完を含む）
+HTT,5.5.2,Representable Functors and the Adjoint Functor Theorem,NS §I.3 | HA §7.2.4 | HA §4.8.4 | HA §4.7.4 | HA §7.3.2 | HTT §5.5.3,bibliography-citation: HTT 5.5.2.9; 一項目でも参照されれば当該節の全項目を対象; 本文の番号参照を一巡（前提の同定は未完を含む）
+HTT,4.4.2,Pushouts,NS §I.3 | HA §7.2.4 | HTT §4.3.3 | HTT §5.5.3,bibliography-citation: HTT 4.4.2.4; 一項目でも参照されれば当該節の全項目を対象; 本文の番号参照を一巡（前提の同定は未完を含む）
+HTT,5.5.7,Compactly Generated ∞-Categories,NS §I.3 | HA §7.2.4,bibliography-citation: HTT 5.5.7.2; 一項目でも参照されれば当該節の全項目を対象; 本文の番号参照を一巡（前提の同定は未完を含む）
+HTT,3.3.1,Structure Theory for Cartesian Fibrations,NS §I.3 | HTT §4.3.3,bibliography-citation: HTT 3.3.1.8; 一項目でも参照されれば当該節の全項目を対象; 途中停止：出辺の番号参照走査が未完
+HTT,2.4.2,Cartesian Fibrations,NS §I.3,bibliography-citation: HTT 2.4.2.4; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HTT,2.1.3,A Characterization of Kan Fibrations,NS §I.3 | HTT §4.4.2,bibliography-citation: HTT 2.1.3.4; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+NS,A,Symmetric monoidal ∞-categories,NS §I.3 | NS §III.1 | NS §II.2,internal-citation: NS A.5; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HA,1.4.2,Spectrum Objects,NS §III.1 | HA §7.2.4 | HA §1.1.2,bibliography-citation: HA 1.4.2.23; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+NS,II.3,Genuine cyclotomic spectra,NS §III.1,internal-citation: NS II.3; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+NS,II.4,Equivalence of TC,NS §III.1,internal-citation: NS II.4.9; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+NS,I.2,The Tate Orbit Lemma,NS §III.1 | NS §IV.1,internal-citation: NS I.2.9; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HA,4.8.2,Smash Products of Spectra,NS §III.1,named-prerequisite: HA 4.8.2.19; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HA,7.5.0,ÉtaleMorphisms — Introduction,NS §IV.1,bibliography-citation: HA 7.5.0.4; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開; .0は対応表の章・節導入の番号群
+NS,III.3,Functoriality of the Tate diagonal,NS §IV.1,internal-citation: NS III.3.1; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HA,3.2.4,Tensor Products of Commutative Algebras,NS §IV.1,named-prerequisite: HA 3.2.4.7; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+DAGXIII,1.1,Cohomological Eilenberg-Moore Spectral Sequences,DAGXIII §2.1,internal-citation: DAGXIII 1.1.5; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HA,2.1.1,From Colored Operads to ∞-Operads,HA §2.0.0 | HA §2.1.3,item-citation: HA 2.1.1.10; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HA,2.1.4,∞-Preoperads,HA §2.0.0,item-citation: HA 2.1.4.11; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HA,3.1.2,Operadic Left Kan Extensions,HA §2.0.0,item-citation: HA 3.1.2.3; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HA,3.4.4,Colimits of Modules,HA §2.0.0 | HA §4.5.2,item-citation: HA 3.4.4.3; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HA,2.1.2,Maps of ∞-Operads,HA §2.0.0 | HA §2.4.2 | HA §2.1.3,section-citation: HA 2.1; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HA,2.2.0,Constructions of ∞-Operads — Introduction,HA §2.0.0,section-citation: HA 2.2; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開; .0は対応表の章・節導入の番号群
+HA,2.2.1,Subcategories of O-Monoidal ∞-Categories,HA §2.0.0 | NS §II.2 | HA §7.3.2,section-citation: HA 2.2; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HA,2.2.2,Slicing ∞-Operads,HA §2.0.0,section-citation: HA 2.2; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HA,2.2.3,Coproducts of ∞-Operads,HA §2.0.0,section-citation: HA 2.2; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HA,2.2.4,Monoidal Envelopes,HA §2.0.0,section-citation: HA 2.2; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HA,2.2.5,Tensor Products of ∞-Operads,HA §2.0.0,section-citation: HA 2.2; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HA,2.2.6,Day Convolution,HA §2.0.0,section-citation: HA 2.2; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HA,2.3.0,Disintegration and Assembly — Introduction,HA §2.0.0,section-citation: HA 2.3; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開; .0は対応表の章・節導入の番号群
+HA,2.3.1,Unital ∞-Operads,HA §2.0.0,section-citation: HA 2.3; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HA,2.3.2,Generalized ∞-Operads,HA §2.0.0,section-citation: HA 2.3; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HA,2.3.3,Approximations to ∞-Operads,HA §2.0.0 | HA §2.4.2,section-citation: HA 2.3; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HA,2.3.4,Disintegration of ∞-Operads,HA §2.0.0,section-citation: HA 2.3; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HA,3.3.0,Modules over ∞-Operads — Introduction,HA §2.0.0,section-citation: HA 3.3; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開; .0は対応表の章・節導入の番号群
+HA,3.3.1,Coherent ∞-Operads,HA §2.0.0,section-citation: HA 3.3; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HA,3.3.2,A Coherence Criterion,HA §2.0.0,section-citation: HA 3.3; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HA,3.3.3,Module Objects,HA §2.0.0,section-citation: HA 3.3; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HA,5.4.0,Little Cubes and Manifold Topology — Introduction,HA §2.0.0,section-citation: HA 5.4; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開; .0は対応表の章・節導入の番号群
+HA,5.4.1,Embeddings of Topological Manifolds,HA §2.0.0,section-citation: HA 5.4; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HA,5.4.2,Variations on the Little Cubes Operads,HA §2.0.0,section-citation: HA 5.4; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HA,5.4.3,Digression: Nonunital Associative Algebras and their Modules,HA §2.0.0,section-citation: HA 5.4; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HA,5.4.4,Nonunital Ek -Algebras,HA §2.0.0,section-citation: HA 5.4; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HA,5.4.5,Little Cubes in a Manifold,HA §2.0.0,section-citation: HA 5.4; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HA,2.4.0,Products and Coproducts — Introduction,HA §2.0.0,section-citation: HA 2.4; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開; .0は対応表の章・節導入の番号群
+HA,2.4.1,Cartesian Symmetric Monoidal Structures,HA §2.0.0 | HA §2.4.2,section-citation: HA 2.4; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HA,2.4.3,CoCartesian Symmetric Monoidal Structures,HA §2.0.0,section-citation: HA 2.4; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HA,2.4.4,Wreath Products,HA §2.0.0,section-citation: HA 2.4; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HA,5.2.2,The Bar Construction for Associative Algebras,HA §2.4.2,item-citation: HA 5.2.2.23; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HTT,4.3.2,Kan Extensions along Inclusions,HA §2.4.2 | HA §2.1.3 | HTT §4.3.3 | HA §1.1.1 | HA §1.1.2 | HTT §5.2.7 | HTT §5.5.2,item-citation: HTT 4.3.2.15; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HTT,4.1.3,Quillen’s Theorem A for ∞-Categories,HA §2.4.2,item-citation: HTT 4.1.3.1; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HTT,2.4.4,Mapping Spaces and Cartesian Fibrations,HA §2.1.3 | HA §7.3.2,item-citation: HTT 2.4.4.4; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HA,4.4.1,Multilinear Maps,HA §4.5.2,item-citation: HA 4.4.1.28; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HA,4.4.3,Associativity of the Tensor Product,HA §4.5.2,item-citation: HA 4.4.3.12; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HA,4.5.1,Left and Right Modules over Commutative Algebras,HA §4.5.2,item-citation: HA 4.5.1.2; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HA,3.2.1,Unit Objects and Trivial Algebras,HA §4.5.2,item-citation: HA 3.2.1.1; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HA,3.1.1,Operadic Colimit Diagrams,HA §4.5.2,item-citation: HA 3.1.1.13; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HTT,2.4.1,Cartesian Morphisms,HA §4.5.2 | HA §7.3.2,item-citation: HTT 2.4.1.7; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HA,4.1.2,Monoid Objects of ∞-Categories,HA §4.5.2 | HA §4.8.4,item-citation: HA 4.1.2.9; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HA,4.4.2,Tensor Products and the Bar Construction,HA §4.5.2 | HA §7.2.4 | HA §4.8.4,item-citation: HA 4.4.2.8; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HA,4.2.4,Free Modules,HA §7.2.4 | HA §4.8.4,item-citation: HA 4.2.4.8; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HTT,5.3.5,Ind-Objects,HA §7.2.4 | HTT §5.5.3 | HTT §5.5.2,item-citation: HTT 5.3.5.11; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HTT,5.5.1,Presentability,HA §7.2.4 | HTT §5.5.3 | HTT §5.5.2 | HTT §5.5.7,item-citation: HTT 5.5.1.9; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HA,1.4.4,Presentable Stable ∞-Categories,HA §7.2.4,item-citation: HA 1.4.4.11; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HTT,4.2.3,Decomposition of Diagrams,HA §7.2.4 | HTT §4.4.2,item-citation: HTT 4.2.3.11; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HA,1.1.4,Exact Functors,HA §7.2.4,item-citation: HA 1.1.4.1; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HA,4.2.3,Limits and Colimits of Modules,HA §7.2.4 | HA §4.8.4,item-citation: HA 4.2.3.3; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HA,4.7.3,The Barr-Beck Theorem,HA §7.2.4 | HA §4.8.4,item-citation: HA 4.7.3.14; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HA,1.3.3,The Universal Property of D− (A),HA §7.2.4,item-citation: HA 1.3.3.10; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HA,1.2.4,The ∞-Categorical Dold-Kan Correspondence,HA §7.2.4,item-citation: HA 1.2.4.1; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HA,7.2.2,Flat and Projective Modules,HA §7.2.4,item-citation: HA 7.2.2.18; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HA,7.1.1,E1 -Rings and Their Modules,HA §7.2.4,item-citation: HA 7.1.1.15; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HTT,5.5.8,Nonabelian Derived Categories,HA §7.2.4,item-citation: HTT 5.5.8.23; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HA,7.1.4,Algebras over Commutative Rings,HA §7.2.4,item-citation: HA 7.1.4.17; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HTT,5.4.2,Accessibility,HA §7.2.4 | HTT §5.5.3 | HTT §5.5.7,item-citation: HTT 5.4.2.4; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HTT,5.4.5,Accessibility of Undercategories,HA §7.2.4 | HTT §5.5.3,item-citation: HTT 5.4.5.15; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HA,7.2.1,Free Resolutions and Spectral Sequences,HA §7.2.4,item-citation: HA 7.2.1.23; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HA,3.1.3,Construction of Free Algebras,HA §7.2.4,item-citation: HA 3.1.3.13; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HA,7.4.3,Connectivity and Finiteness of the Cotangent Complex,HA §7.2.4,section-citation: HA 7.4.3; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HA,4.6.2,Duality of Bimodules,HA §4.8.4,item-citation: HA 4.6.2.9; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HTT,5.3.6,Adjoining Colimits to ∞-Categories,HA §4.8.4,item-citation: HTT 5.3.6.2; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HTT,4.2.4,Homotopy Colimits,HA §4.8.4 | HA §4.7.4 | HTT §5.5.2 | HTT §4.4.2 | HTT §5.5.7,item-citation: HTT 4.2.4.1; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HA,4.2.2,Simplicial Models for Algebras and Modules,HA §4.8.4,item-citation: HA 4.2.2.17; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HTT,3.3.4,Colimits of ∞-Categories,HA §4.8.4,item-citation: HTT 3.3.4.2; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HA,4.8.1,Tensor Products of ∞-Categories,HA §4.8.4,item-citation: HA 4.8.1.4; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HA,4.8.5,Behavior of the Functor Θ,HA §4.8.4,item-citation: HA 4.8.5.2; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HA,4.3.2,"Bimodules, Left Modules, and Right Modules",HA §4.8.4,item-citation: HA 4.3.2.7; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HTT,5.4.7,Applications,HA §4.8.4 | HTT §5.5.3 | HTT §5.5.2,item-citation: HTT 5.4.7.11; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HA,6.1.2,The Taylor Tower,HA §6.1.6,item-citation: HA 6.1.2.5; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HA,6.1.5,Functors from Spaces to Spectra,HA §6.1.6,item-citation: HA 6.1.5.4; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HA,6.1.3,Functors of Many Variables,HA §6.1.6,item-citation: HA 6.1.3.4; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HA,6.1.4,Symmetric Functors,HA §6.1.6,item-citation: HA 6.1.4.10; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HA,6.1.1,n-Excisive Functors,HA §6.1.6,item-citation: HA 6.1.1.17; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HTT,3.2.2,Cartesian Fibrations over a Simplex,HTT §4.3.3,item-citation: HTT 3.2.2.7; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HTT,5.2.2,Adjunctions,HTT §4.3.3 | HA §4.7.4,item-citation: HTT 5.2.2.6; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HTT,2.4.7,Bifibrations,HTT §4.3.3,item-citation: HTT 2.4.7.12; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HTT,5.2.4,Examples of Adjoint Functors,HTT §4.3.3 | HTT §5.5.2,item-citation: HTT 5.2.4.3; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HTT,2.4.3,Stability Properties of Cartesian Fibrations,HTT §4.3.3,item-citation: HTT 2.4.3.2; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HTT,4.1.2,Smoothness and Right Anodyne Maps,HTT §4.3.3,item-citation: HTT 4.1.2.15; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HTT,3.2.0,HTT 3.2.0 — Introduction,HTT §4.3.3 | HA §4.7.4 | HTT §3.3.1,item-citation: HTT 3.2.0.1; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開; .0は対応表の章・節導入の番号群
+HTT,3.2.1,The Straightening Functor,HTT §4.3.3 | HTT §3.3.1,section-citation: HTT 3.2.1; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HTT,4.4.1,Coproducts,HTT §4.3.3,section-citation: HTT 4.4.1; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HTT,4.4.3,Coequalizers,HTT §4.3.3,section-citation: HTT 4.4.3; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HTT,4.4.4,Tensoring with Spaces,HTT §4.3.3,section-citation: HTT 4.4.4; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HTT,4.4.5,Retracts and Idempotents,HTT §4.3.3,section-citation: HTT 4.4.5; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HTT,5.1.4,Idempotent Completions,HTT §4.3.3,section-citation: HTT 5.1.4; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HTT,3.1.3,The Cartesian Model Structure,HA §4.7.4,item-citation: HTT 3.1.3.7; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HTT,A.2.6,Combinatorial Model Categories,HA §4.7.4,item-citation: HTT A.2.6.12; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HTT,7.3.1,Proper Maps of ∞-Topoi,HA §4.7.4,item-citation: HTT 7.3.1.3; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HA,1.3.4,Inverting Quasi-Isomorphisms,NS §II.2,bibliography-citation: HA 1.3.4.25; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+NS,C,Homotopy colimits,NS §II.2,internal-citation: NS C.13; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+NS,I.4,Farrell–Tate cohomology,NS §II.2,internal-citation: NS I.4.1; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HTT,1.2.12,Initial and Final Objects,HA §1.1.1,item-citation: HTT 1.2.12.9; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HTT,5.2.3,Preservation of Limits and Colimits,HA §1.1.1 | HTT §5.5.2,item-citation: HTT 5.2.3.5; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HA,1.4.3,The ∞-Category of Spectra,HA §1.1.1,section-citation: HA 1.4.3; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HA,1.3.2,Derived ∞-Categories,HA §1.1.1,section-citation: HA 1.3.2; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HTT,5.1.2,Colimits in ∞-Categories of Functors,HA §1.1.2 | HTT §5.5.3 | HTT §5.5.2 | HTT §5.5.7,item-citation: HTT 5.1.2.2; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HA,7.3.1,Stable Envelopes and Tangent Bundles,HA §7.3.2,item-citation: HA 7.3.1.9; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HTT,5.5.4,Local Objects,HTT §5.2.7 | HTT §5.5.3,item-citation: HTT 5.5.4.15; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HTT,3.1.1,Marked Anodyne Morphisms,HTT §5.2.7,section-citation: HTT 3.1.1; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HTT,5.4.4,Accessibility of Functor ∞-Categories,HTT §5.5.3,item-citation: HTT 5.4.4.3; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HTT,5.1.5,The Universal Property of P(S),HTT §5.5.3 | HTT §5.5.2,item-citation: HTT 5.1.5.6; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HTT,5.4.6,Accessibility of Fiber Products,HTT §5.5.3,item-citation: HTT 5.4.6.7; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HTT,1.2.13,Limits and Colimits,HTT §5.5.3,item-citation: HTT 1.2.13.8; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HTT,3.3.3,Limits of ∞-Categories,HTT §5.5.3 | HTT §5.5.2,item-citation: HTT 3.3.3.2; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HTT,5.1.3,Yoneda’s Lemma,HTT §5.5.2,item-citation: HTT 5.1.3.2; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HTT,5.1.1,Other Models for P(S),HTT §5.5.2,item-citation: HTT 5.1.1.1; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HTT,6.3.3,Filtered Limits of ∞-Topoi,HTT §5.5.7,item-citation: HTT 6.3.3.7; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HTT,5.3.1,Filtered ∞-Categories,HTT §5.5.7,item-citation: HTT 5.3.1.10; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HTT,5.4.1,Locally Small ∞-Categories,HTT §5.5.7,item-citation: HTT 5.4.1.2; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開
+HTT,A.3.3,Model Structures on Diagram Categories,HTT §3.3.1,item-citation: HTT A.3.3.8; 一項目でも参照されれば当該節の全項目を対象; frontier：節内の出辺は未展開

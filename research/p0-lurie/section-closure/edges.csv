@@ -1,0 +1,419 @@
+source,section,depends_on_source,depends_on_section,citing_item,evidence_number,evidence_location,kind,reason
+DAGXIII,2.2,DAGXIII,2.1,DAGXIII §2.2 introduction,DAGXIII 2.1.23,DAGXIII PDF p.33; text L1948,internal-citation,同じ論文内の番号引用。節全体へ
+DAGXIII,2.2,DAGXIII,2.1,DAGXIII 2.2.3,DAGXIII 2.1.25,DAGXIII PDF p.34; text L1997,internal-citation,同じ論文内の番号引用。節全体へ
+DAGXIII,2.2,HA,2.0.0,DAGXIII Construction 2.2.1,HA 2.0.0.7,DAGXIII §2.2; named premise: symmetric monoidal infinity-category,named-prerequisite,定義・主張の名前つき前提を当該文献の定義の節へ
+DAGXIII,2.2,HA,2.4.2,DAGXIII Construction 2.2.1,HA 2.4.2.6,DAGXIII §2.2; named premise: commutative algebra object in Cat_infinity,named-prerequisite,定義・主張の名前つき前提を当該文献の定義の節へ
+DAGXIII,2.2,HA,2.1.3,DAGXIII Remark 2.2.4,HA 2.1.3.1,DAGXIII §2.2; named premise: CAlg,named-prerequisite,定義・主張の名前つき前提を当該文献の定義の節へ
+DAGXIII,2.2,HA,4.5.2,DAGXIII Example 2.2.5,HA 4.5.2.1,DAGXIII §2.2; named premise: tensor product of k-modules,named-prerequisite,定義・主張の名前つき前提を当該文献の定義の節へ
+DAGXIII,2.2,HA,7.2.4,DAGXIII Example 2.2.5,HA 7.2.4.2,DAGXIII §2.2; named premise: perfect modules,named-prerequisite,定義・主張の名前つき前提を当該文献の定義の節へ
+DAGXIII,2.2,HA,4.8.4,DAGXIII Example 2.2.5,HA 4.8.4.1,DAGXIII §2.2; named premise: modern Eilenberg-Watts correspondence to old A.7.1.2.4,version-correspondence,旧A.7.1.2.4に対応する現行一般定理の節を前提として追加。番号の同一性の確定ではない
+NS,I.1,HA,6.1.6,NS §I.1 introduction,HA 6.1.6,NS PDF p.10; text L483,section-citation,節を明示して参照
+NS,I.1,HA,6.1.6,NS I.1.1,HA 6.1.6,NS PDF p.11; text L507,section-citation,節を明示して参照
+NS,I.1,HTT,4.3.3,NS I.1.6,HTT 4.3.3.7,NS PDF p.12; text L547,bibliography-citation,書誌略号付きの番号引用
+NS,I.1,HA,6.1.6,NS I.1.7,HA 6.1.6.3,NS PDF p.12; text L569,bibliography-citation,書誌略号付きの番号引用
+NS,I.1,HA,4.7.4,NS I.1.7,HA 4.7.4.13,NS PDF p.12; text L569,bibliography-citation,書誌略号付きの番号引用
+NS,I.1,HA,6.1.6,NS I.1.7,HA 6.1.6.7,NS PDF p.12; text L576,bibliography-citation,書誌略号付きの番号引用
+NS,I.1,HA,6.1.6,NS I.1.7,HA 6.1.6.12,NS PDF p.12; text L583,bibliography-citation,書誌略号付きの番号引用
+NS,I.1,HA,6.1.6,NS I.1.10,HA 6.1.6.3,NS PDF p.13; text L612,bibliography-citation,書誌略号付きの番号引用
+NS,I.1,NS,II.2,NS I.1.2,NS II.2,NS PDF p.11; text L520,internal-citation,同じ論文内の番号引用。節全体へ
+NS,I.1,NS,I.3,NS I.1.13,NS I.3,NS PDF p.14; text L656,internal-citation,同じ論文内の番号引用。節全体へ
+NS,I.1,HA,1.1.1,NS Definition I.1.1,HA 1.1.1.9,NS §I.1; named premise: stable infinity-category,named-prerequisite,定義・主張の名前つき前提を当該文献の定義の節へ
+NS,I.1,HA,1.1.2,NS Definition I.1.1,HA 1.1.2.9,NS §I.1; named premise: preadditive homotopy category,named-prerequisite,定義・主張の名前つき前提を当該文献の定義の節へ
+NS,I.3,HA,7.3.2,NS §I.3 introduction,HA 7.3.2.7,NS PDF p.19; text L902,bibliography-citation,書誌略号付きの番号引用
+NS,I.3,HTT,5.2.7,NS I.3.3,HTT 5.2.7.2,NS PDF p.20; text L951,bibliography-citation,書誌略号付きの番号引用
+NS,I.3,HTT,5.5.3,NS I.3.3,HTT 5.5.3.6,NS PDF p.20; text L975,bibliography-citation,書誌略号付きの番号引用
+NS,I.3,HTT,5.5.2,NS I.3.3,HTT 5.5.2.9,NS PDF p.20; text L976,bibliography-citation,書誌略号付きの番号引用
+NS,I.3,HTT,5.2.7,NS I.3.4,HTT 5.2.7.4,NS PDF p.21; text L1014,bibliography-citation,書誌略号付きの番号引用
+NS,I.3,HTT,4.4.2,NS I.3.4,HTT 4.4.2.4,NS PDF p.21; text L1026,bibliography-citation,書誌略号付きの番号引用
+NS,I.3,HTT,5.2.7,NS I.3.4,HTT 5.2.7.4,NS PDF p.22; text L1035,bibliography-citation,書誌略号付きの番号引用
+NS,I.3,HTT,5.2.7,NS I.3.4,HTT 5.2.7.2,NS PDF p.22; text L1046,bibliography-citation,書誌略号付きの番号引用
+NS,I.3,HTT,5.5.2,NS I.3.4,HTT 5.5.2.9,NS PDF p.22; text L1052,bibliography-citation,書誌略号付きの番号引用
+NS,I.3,HTT,5.5.7,NS I.3.4,HTT 5.5.7.2,NS PDF p.22; text L1057,bibliography-citation,書誌略号付きの番号引用
+NS,I.3,HTT,5.2.7,NS I.3.5,HTT 5.2.7.4,NS PDF p.22; text L1065,bibliography-citation,書誌略号付きの番号引用
+NS,I.3,HTT,5.2.7,NS I.3.5,HTT 5.2.7.2,NS PDF p.23; text L1092,bibliography-citation,書誌略号付きの番号引用
+NS,I.3,HA,7.3.2,NS I.3.6,HA 7.3.2.7,NS PDF p.23; text L1129,bibliography-citation,書誌略号付きの番号引用
+NS,I.3,HTT,5.2.7,NS I.3.6,HTT 5.2.7.4,NS PDF p.23; text L1130,bibliography-citation,書誌略号付きの番号引用
+NS,I.3,HTT,3.3.1,NS I.3.8,HTT 3.3.1.8,NS PDF p.26; text L1287,bibliography-citation,書誌略号付きの番号引用
+NS,I.3,HTT,2.4.2,NS I.3.8,HTT 2.4.2.4,NS PDF p.26; text L1288,bibliography-citation,書誌略号付きの番号引用
+NS,I.3,HTT,2.1.3,NS I.3.9,HTT 2.1.3.4,NS PDF p.26; text L1289,bibliography-citation,書誌略号付きの番号引用
+NS,I.3,NS,II.2,NS §I.3 introduction,NS II.2.13,NS PDF p.19; text L912,internal-citation,同じ論文内の番号引用。節全体へ
+NS,I.3,NS,A,NS I.3.6,NS A.5,NS PDF p.23; text L1106,internal-citation,同じ論文内の番号引用。節全体へ
+NS,I.3,NS,A,NS I.3.6,NS A.5,NS PDF p.23; text L1111,internal-citation,同じ論文内の番号引用。節全体へ
+NS,I.3,NS,A,NS §I.3 introduction,NS A,NS PDF p.19; text L902,appendix-citation,NS内の付録全体への参照
+NS,I.3,NS,A,NS I.3.6,NS A,NS PDF p.23; text L1106,appendix-citation,NS内の付録全体への参照
+NS,I.3,HA,2.1.3,NS Theorem I.3.1,HA 2.1.3.1,NS §I.3; named premise: lax symmetric monoidal / algebra objects,named-prerequisite,定義・主張の名前つき前提を当該文献の定義の節へ
+NS,III.1,DAGXIII,2.2,NS §III.1 introduction,DAGXIII 2.2.3,NS PDF p.68; text L3573,bibliography-citation,書誌略号付きの番号引用
+NS,III.1,HA,1.4.2,NS §III.1 introduction,HA 1.4.2.23,NS PDF p.69; text L3625,bibliography-citation,書誌略号付きの番号引用
+NS,III.1,HA,1.4.2,NS §III.1 introduction,HA 1.4.2.23,NS PDF p.69; text L3626,bibliography-citation,書誌略号付きの番号引用
+NS,III.1,NS,II.3,NS §III.1 introduction,NS II.3,NS PDF p.68; text L3572,internal-citation,同じ論文内の番号引用。節全体へ
+NS,III.1,NS,II.4,NS III.1.2,NS II.4.9,NS PDF p.71; text L3691,internal-citation,同じ論文内の番号引用。節全体へ
+NS,III.1,NS,I.2,NS III.1.4,NS I.2.9,NS PDF p.71; text L3710,internal-citation,同じ論文内の番号引用。節全体へ
+NS,III.1,NS,I.2,NS III.1.5,NS I.2.6,NS PDF p.71; text L3721,internal-citation,同じ論文内の番号引用。節全体へ
+NS,III.1,NS,IV.1,NS III.1.8,NS IV.1,NS PDF p.73; text L3819,internal-citation,同じ論文内の番号引用。節全体へ
+NS,III.1,NS,IV.1,NS III.1.8,NS IV.1.15,NS PDF p.73; text L3820,internal-citation,同じ論文内の番号引用。節全体へ
+NS,III.1,NS,A,NS III.1.1,NS A,NS PDF p.70; text L3646,appendix-citation,NS内の付録全体への参照
+NS,III.1,HA,4.8.2,NS Proposition III.1.1,HA 4.8.2.19,NS §III.1; named premise: symmetric monoidal structure of spectra,named-prerequisite,定義・主張の名前つき前提を当該文献の定義の節へ
+NS,IV.1,HA,7.5.0,NS §IV.1 introduction,HA 7.5.0.4,NS PDF p.99; text L5371,bibliography-citation,書誌略号付きの番号引用
+NS,IV.1,NS,III.3,NS §IV.1 introduction,NS III.3.1,NS PDF p.100; text L5423,internal-citation,同じ論文内の番号引用。節全体へ
+NS,IV.1,NS,III.3,NS §IV.1 introduction,NS III.3.1,NS PDF p.100; text L5430,internal-citation,同じ論文内の番号引用。節全体へ
+NS,IV.1,NS,III.1,NS IV.1.3,NS III.1.7,NS PDF p.101; text L5497,internal-citation,同じ論文内の番号引用。節全体へ
+NS,IV.1,NS,I.2,NS IV.1.5,NS I.2.3,NS PDF p.102; text L5551,internal-citation,同じ論文内の番号引用。節全体へ
+NS,IV.1,NS,III.1,NS IV.1.14,NS III.1.1,NS PDF p.107; text L5818,internal-citation,同じ論文内の番号引用。節全体へ
+NS,IV.1,HA,3.2.4,NS Definition IV.1.1,HA 3.2.4.7,NS §IV.1; named premise: multiplication in commutative algebra category,named-prerequisite,定義・主張の名前つき前提を当該文献の定義の節へ
+DAGXIII,2.1,DAGXIII,1.1,DAGXIII 2.1.2,DAGXIII 1.1.5,DAGXIII PDF p.29; text L1680,internal-citation,同じ論文内の番号引用。節全体へ
+DAGXIII,2.1,DAGXIII,1.1,DAGXIII 2.1.7,DAGXIII 1.1.5,DAGXIII PDF p.30; text L1735,internal-citation,同じ論文内の番号引用。節全体へ
+DAGXIII,2.1,DAGXIII,1.1,DAGXIII 2.1.7,DAGXIII 1.1.5,DAGXIII PDF p.30; text L1753,internal-citation,同じ論文内の番号引用。節全体へ
+DAGXIII,2.1,DAGXIII,1.1,DAGXIII 2.1.18,DAGXIII 1.1.5,DAGXIII PDF p.32; text L1849,internal-citation,同じ論文内の番号引用。節全体へ
+DAGXIII,2.1,DAGXIII,1.1,DAGXIII 2.1.18,DAGXIII 1.1.5,DAGXIII PDF p.32; text L1866,internal-citation,同じ論文内の番号引用。節全体へ
+HA,2.0.0,HA,2.1.1,HA 2.0.0.2,HA 2.1.1.10,HA PDF p.169; text L7783,item-citation,本文の番号引用
+HA,2.0.0,HA,2.1.1,HA 2.0.0.3,HA 2.1.1.17,HA PDF p.169; text L7789,item-citation,本文の番号引用
+HA,2.0.0,HA,2.1.4,HA 2.0.0.3,HA 2.1.4.11,HA PDF p.169; text L7792,item-citation,本文の番号引用
+HA,2.0.0,HA,3.1.2,HA 2.0.0.5,HA 3.1.2.3,HA PDF p.170; text L7821,item-citation,本文の番号引用
+HA,2.0.0,HA,3.4.4,HA 2.0.0.5,HA 3.4.4.3,HA PDF p.170; text L7821,item-citation,本文の番号引用
+HA,2.0.0,HA,2.1.1,HA 2.0.0.2,HA 2.1,HA PDF p.169; text L7786,section-citation,節を明示して参照
+HA,2.0.0,HA,2.1.2,HA 2.0.0.2,HA 2.1,HA PDF p.169; text L7786,section-citation,節を明示して参照
+HA,2.0.0,HA,2.1.3,HA 2.0.0.2,HA 2.1,HA PDF p.169; text L7786,section-citation,節を明示して参照
+HA,2.0.0,HA,2.1.4,HA 2.0.0.2,HA 2.1,HA PDF p.169; text L7786,section-citation,節を明示して参照
+HA,2.0.0,HA,2.2.0,HA 2.0.0.3,HA 2.2,HA PDF p.169; text L7793,section-citation,節を明示して参照
+HA,2.0.0,HA,2.2.1,HA 2.0.0.3,HA 2.2,HA PDF p.169; text L7793,section-citation,節を明示して参照
+HA,2.0.0,HA,2.2.2,HA 2.0.0.3,HA 2.2,HA PDF p.169; text L7793,section-citation,節を明示して参照
+HA,2.0.0,HA,2.2.3,HA 2.0.0.3,HA 2.2,HA PDF p.169; text L7793,section-citation,節を明示して参照
+HA,2.0.0,HA,2.2.4,HA 2.0.0.3,HA 2.2,HA PDF p.169; text L7793,section-citation,節を明示して参照
+HA,2.0.0,HA,2.2.5,HA 2.0.0.3,HA 2.2,HA PDF p.169; text L7793,section-citation,節を明示して参照
+HA,2.0.0,HA,2.2.6,HA 2.0.0.3,HA 2.2,HA PDF p.169; text L7793,section-citation,節を明示して参照
+HA,2.0.0,HA,2.3.0,HA 2.0.0.4,HA 2.3,HA PDF p.169; text L7796,section-citation,節を明示して参照
+HA,2.0.0,HA,2.3.1,HA 2.0.0.4,HA 2.3,HA PDF p.169; text L7796,section-citation,節を明示して参照
+HA,2.0.0,HA,2.3.2,HA 2.0.0.4,HA 2.3,HA PDF p.169; text L7796,section-citation,節を明示して参照
+HA,2.0.0,HA,2.3.3,HA 2.0.0.4,HA 2.3,HA PDF p.169; text L7796,section-citation,節を明示して参照
+HA,2.0.0,HA,2.3.4,HA 2.0.0.4,HA 2.3,HA PDF p.169; text L7796,section-citation,節を明示して参照
+HA,2.0.0,HA,3.3.0,HA 2.0.0.4,HA 3.3,HA PDF p.169; text L7798,section-citation,節を明示して参照
+HA,2.0.0,HA,3.3.1,HA 2.0.0.4,HA 3.3,HA PDF p.169; text L7798,section-citation,節を明示して参照
+HA,2.0.0,HA,3.3.2,HA 2.0.0.4,HA 3.3,HA PDF p.169; text L7798,section-citation,節を明示して参照
+HA,2.0.0,HA,3.3.3,HA 2.0.0.4,HA 3.3,HA PDF p.169; text L7798,section-citation,節を明示して参照
+HA,2.0.0,HA,5.4.0,HA 2.0.0.4,HA 5.4,HA PDF p.169; text L7799,section-citation,節を明示して参照
+HA,2.0.0,HA,5.4.1,HA 2.0.0.4,HA 5.4,HA PDF p.169; text L7799,section-citation,節を明示して参照
+HA,2.0.0,HA,5.4.2,HA 2.0.0.4,HA 5.4,HA PDF p.169; text L7799,section-citation,節を明示して参照
+HA,2.0.0,HA,5.4.3,HA 2.0.0.4,HA 5.4,HA PDF p.169; text L7799,section-citation,節を明示して参照
+HA,2.0.0,HA,5.4.4,HA 2.0.0.4,HA 5.4,HA PDF p.169; text L7799,section-citation,節を明示して参照
+HA,2.0.0,HA,5.4.5,HA 2.0.0.4,HA 5.4,HA PDF p.169; text L7799,section-citation,節を明示して参照
+HA,2.0.0,HA,2.4.0,HA 2.0.0.5,HA 2.4,HA PDF p.169; text L7804,section-citation,節を明示して参照
+HA,2.0.0,HA,2.4.1,HA 2.0.0.5,HA 2.4,HA PDF p.169; text L7804,section-citation,節を明示して参照
+HA,2.0.0,HA,2.4.2,HA 2.0.0.5,HA 2.4,HA PDF p.169; text L7804,section-citation,節を明示して参照
+HA,2.0.0,HA,2.4.3,HA 2.0.0.5,HA 2.4,HA PDF p.169; text L7804,section-citation,節を明示して参照
+HA,2.0.0,HA,2.4.4,HA 2.0.0.5,HA 2.4,HA PDF p.169; text L7804,section-citation,節を明示して参照
+HA,2.0.0,HA,2.4.0,HA 2.0.0.5,HA 2.4,HA PDF p.170; text L7812,section-citation,節を明示して参照
+HA,2.0.0,HA,2.4.1,HA 2.0.0.5,HA 2.4,HA PDF p.170; text L7812,section-citation,節を明示して参照
+HA,2.0.0,HA,2.4.2,HA 2.0.0.5,HA 2.4,HA PDF p.170; text L7812,section-citation,節を明示して参照
+HA,2.0.0,HA,2.4.3,HA 2.0.0.5,HA 2.4,HA PDF p.170; text L7812,section-citation,節を明示して参照
+HA,2.0.0,HA,2.4.4,HA 2.0.0.5,HA 2.4,HA PDF p.170; text L7812,section-citation,節を明示して参照
+HA,2.4.2,HA,2.0.0,HA §2.4.2 introduction,HA 2.0.0.7,HA PDF p.292; text L14322,item-citation,本文の番号引用
+HA,2.4.2,HA,2.0.0,HA §2.4.2 introduction,HA 2.0.0.7,HA PDF p.293; text L14333,item-citation,本文の番号引用
+HA,2.4.2,HA,2.4.1,HA §2.4.2 introduction,HA 2.4.1.9,HA PDF p.293; text L14370,item-citation,本文の番号引用
+HA,2.4.2,HA,2.4.1,HA §2.4.2 introduction,HA 2.4.1.7,HA PDF p.293; text L14371,item-citation,本文の番号引用
+HA,2.4.2,HA,5.2.2,HA §2.4.2 introduction,HA 5.2.2.23,HA PDF p.294; text L14412,item-citation,本文の番号引用
+HA,2.4.2,HA,2.3.3,HA §2.4.2 introduction,HA 2.3.3.23,HA PDF p.294; text L14414,item-citation,本文の番号引用
+HA,2.4.2,HA,2.3.3,HA §2.4.2 introduction,HA 2.3.3.6,HA PDF p.294; text L14418,item-citation,本文の番号引用
+HA,2.4.2,HA,2.1.2,HA §2.4.2 introduction,HA 2.1.2.9,HA PDF p.295; text L14439,item-citation,本文の番号引用
+HA,2.4.2,HA,2.3.3,HA §2.4.2 introduction,HA 2.3.3.23,HA PDF p.295; text L14446,item-citation,本文の番号引用
+HA,2.4.2,HTT,4.3.2,HA §2.4.2 introduction,HTT 4.3.2.15,HA PDF p.295; text L14458,item-citation,本文の番号引用
+HA,2.4.2,HTT,4.3.2,HA §2.4.2 introduction,HTT 4.3.2.15,HA PDF p.295; text L14462,item-citation,本文の番号引用
+HA,2.4.2,HTT,4.3.2,HA §2.4.2 introduction,HTT 4.3.2.13,HA PDF p.295; text L14471,item-citation,本文の番号引用
+HA,2.4.2,HTT,4.1.3,HA §2.4.2 introduction,HTT 4.1.3.1,HA PDF p.295; text L14474,item-citation,本文の番号引用
+HA,2.4.2,HTT,4.3.2,HA §2.4.2 introduction,HTT 4.3.2.7,HA PDF p.296; text L14496,item-citation,本文の番号引用
+HA,2.4.2,HA,2.4.1,HA §2.4.2 introduction,HA 2.4.1,HA PDF p.292; text L14324,section-citation,節を明示して参照
+HA,2.4.2,HA,5.2.2,HA §2.4.2 introduction,HA 5.2.2,HA PDF p.294; text L14412,section-citation,節を明示して参照
+HA,2.1.3,HA,2.1.2,HA §2.1.3 introduction,HA 2.1.2.7,HA PDF p.184; text L8533,item-citation,本文の番号引用
+HA,2.1.3,HA,2.1.2,HA §2.1.3 introduction,HA 2.1.2.7,HA PDF p.184; text L8545,item-citation,本文の番号引用
+HA,2.1.3,HA,2.1.2,HA §2.1.3 introduction,HA 2.1.2.21,HA PDF p.184; text L8548,item-citation,本文の番号引用
+HA,2.1.3,HA,2.1.2,HA §2.1.3 introduction,HA 2.1.2.16,HA PDF p.185; text L8558,item-citation,本文の番号引用
+HA,2.1.3,HTT,4.3.2,HA §2.1.3 introduction,HTT 4.3.2.15,HA PDF p.185; text L8566,item-citation,本文の番号引用
+HA,2.1.3,HTT,2.4.4,HA §2.1.3 introduction,HTT 2.4.4.4,HA PDF p.185; text L8598,item-citation,本文の番号引用
+HA,2.1.3,HA,2.1.1,HA §2.1.3 introduction,HA 2.1.1.19,HA PDF p.186; text L8612,item-citation,本文の番号引用
+HA,2.1.3,HTT,4.3.2,HA §2.1.3 introduction,HTT 4.3.2.15,HA PDF p.186; text L8657,item-citation,本文の番号引用
+HA,2.1.3,HTT,4.3.2,HA §2.1.3 introduction,HTT 4.3.2.15,HA PDF p.187; text L8672,item-citation,本文の番号引用
+HA,2.1.3,HTT,4.3.2,HA §2.1.3 introduction,HTT 4.3.2.7,HA PDF p.187; text L8689,item-citation,本文の番号引用
+HA,2.1.3,HTT,4.3.2,HA 2.1.3.1,HTT 4.3.2.7,HA PDF p.188; text L8721,item-citation,本文の番号引用
+HA,2.1.3,HA,2.1.2,HA 2.1.3.2,HA 2.1.2.12,HA PDF p.188; text L8728,item-citation,本文の番号引用
+HA,4.5.2,HA,4.4.1,HA §4.5.2 introduction,HA 4.4.1.28,HA PDF p.598; text L29995,item-citation,本文の番号引用
+HA,4.5.2,HA,4.4.3,HA §4.5.2 introduction,HA 4.4.3.12,HA PDF p.598; text L29998,item-citation,本文の番号引用
+HA,4.5.2,HA,4.5.1,HA §4.5.2 introduction,HA 4.5.1.2,HA PDF p.599; text L30008,item-citation,本文の番号引用
+HA,4.5.2,HA,4.4.3,HA §4.5.2 introduction,HA 4.4.3.12,HA PDF p.599; text L30014,item-citation,本文の番号引用
+HA,4.5.2,HA,3.2.1,HA §4.5.2 introduction,HA 3.2.1.1,HA PDF p.599; text L30022,item-citation,本文の番号引用
+HA,4.5.2,HA,3.1.1,HA §4.5.2 introduction,HA 3.1.1.13,HA PDF p.599; text L30031,item-citation,本文の番号引用
+HA,4.5.2,HA,3.1.1,HA §4.5.2 introduction,HA 3.1.1.13,HA PDF p.599; text L30032,item-citation,本文の番号引用
+HA,4.5.2,HTT,2.4.1,HA §4.5.2 introduction,HTT 2.4.1.7,HA PDF p.600; text L30064,item-citation,本文の番号引用
+HA,4.5.2,HA,3.1.1,HA §4.5.2 introduction,HA 3.1.1.10,HA PDF p.600; text L30065,item-citation,本文の番号引用
+HA,4.5.2,HA,3.4.4,HA §4.5.2 introduction,HA 3.4.4.5,HA PDF p.600; text L30068,item-citation,本文の番号引用
+HA,4.5.2,HA,3.4.4,HA §4.5.2 introduction,HA 3.4.4.3,HA PDF p.600; text L30083,item-citation,本文の番号引用
+HA,4.5.2,HA,3.1.1,HA §4.5.2 introduction,HA 3.1.1.20,HA PDF p.600; text L30085,item-citation,本文の番号引用
+HA,4.5.2,HA,4.1.2,HA §4.5.2 introduction,HA 4.1.2.9,HA PDF p.600; text L30087,item-citation,本文の番号引用
+HA,4.5.2,HA,3.4.4,HA §4.5.2 introduction,HA 3.4.4.4,HA PDF p.600; text L30096,item-citation,本文の番号引用
+HA,4.5.2,HA,3.1.1,HA §4.5.2 introduction,HA 3.1.1.15,HA PDF p.601; text L30106,item-citation,本文の番号引用
+HA,4.5.2,HA,3.4.4,HA §4.5.2 introduction,HA 3.4.4.3,HA PDF p.601; text L30107,item-citation,本文の番号引用
+HA,4.5.2,HA,4.4.3,HA §4.5.2 introduction,HA 4.4.3.12,HA PDF p.601; text L30111,item-citation,本文の番号引用
+HA,4.5.2,HA,4.4.2,HA §4.5.2 introduction,HA 4.4.2.8,HA PDF p.601; text L30112,item-citation,本文の番号引用
+HA,7.2.4,HA,4.2.4,HA §7.2.4 introduction,HA 4.2.4.8,HA PDF p.1261; text L64225,item-citation,本文の番号引用
+HA,7.2.4,HTT,5.3.5,HA §7.2.4 introduction,HTT 5.3.5.11,HA PDF p.1261; text L64231,item-citation,本文の番号引用
+HA,7.2.4,HTT,5.5.1,HA §7.2.4 introduction,HTT 5.5.1.9,HA PDF p.1261; text L64234,item-citation,本文の番号引用
+HA,7.2.4,HA,1.4.4,HA §7.2.4 introduction,HA 1.4.4.11,HA PDF p.1261; text L64236,item-citation,本文の番号引用
+HA,7.2.4,HA,4.8.4,HA §7.2.4 introduction,HA 4.8.4.8,HA PDF p.1261; text L64240,item-citation,本文の番号引用
+HA,7.2.4,HTT,5.5.3,HA §7.2.4 introduction,HTT 5.5.3.8,HA PDF p.1261; text L64256,item-citation,本文の番号引用
+HA,7.2.4,HA,4.4.2,HA §7.2.4 introduction,HA 4.4.2.14,HA PDF p.1261; text L64256,item-citation,本文の番号引用
+HA,7.2.4,HTT,4.2.3,HA §7.2.4 introduction,HTT 4.2.3.11,HA PDF p.1261; text L64260,item-citation,本文の番号引用
+HA,7.2.4,HTT,5.5.1,HA §7.2.4 introduction,HTT 5.5.1.9,HA PDF p.1261; text L64260,item-citation,本文の番号引用
+HA,7.2.4,HA,1.1.4,HA §7.2.4 introduction,HA 1.1.4.1,HA PDF p.1261; text L64260,item-citation,本文の番号引用
+HA,7.2.4,HA,4.2.4,HA §7.2.4 introduction,HA 4.2.4.8,HA PDF p.1262; text L64278,item-citation,本文の番号引用
+HA,7.2.4,HA,4.2.3,HA §7.2.4 introduction,HA 4.2.3.3,HA PDF p.1262; text L64278,item-citation,本文の番号引用
+HA,7.2.4,HA,4.2.3,HA §7.2.4 introduction,HA 4.2.3.5,HA PDF p.1262; text L64279,item-citation,本文の番号引用
+HA,7.2.4,HTT,5.5.2,HA §7.2.4 introduction,HTT 5.5.2.9,HA PDF p.1262; text L64280,item-citation,本文の番号引用
+HA,7.2.4,HA,4.7.3,HA §7.2.4 introduction,HA 4.7.3.14,HA PDF p.1262; text L64291,item-citation,本文の番号引用
+HA,7.2.4,HA,4.2.4,HA §7.2.4 introduction,HA 4.2.4.8,HA PDF p.1262; text L64296,item-citation,本文の番号引用
+HA,7.2.4,HA,1.4.2,HA §7.2.4 introduction,HA 1.4.2.22,HA PDF p.1262; text L64300,item-citation,本文の番号引用
+HA,7.2.4,HA,4.2.4,HA §7.2.4 introduction,HA 4.2.4.8,HA PDF p.1263; text L64315,item-citation,本文の番号引用
+HA,7.2.4,HA,1.4.2,HA §7.2.4 introduction,HA 1.4.2.22,HA PDF p.1263; text L64332,item-citation,本文の番号引用
+HA,7.2.4,HA,1.4.4,HA §7.2.4 introduction,HA 1.4.4.4,HA PDF p.1263; text L64332,item-citation,本文の番号引用
+HA,7.2.4,HA,1.3.3,HA §7.2.4 introduction,HA 1.3.3.10,HA PDF p.1265; text L64454,item-citation,本文の番号引用
+HA,7.2.4,HA,1.2.4,HA §7.2.4 introduction,HA 1.2.4.1,HA PDF p.1265; text L64455,item-citation,本文の番号引用
+HA,7.2.4,HA,1.2.4,HA §7.2.4 introduction,HA 1.2.4.3,HA PDF p.1265; text L64455,item-citation,本文の番号引用
+HA,7.2.4,HTT,5.3.5,HA §7.2.4 introduction,HTT 5.3.5.9,HA PDF p.1266; text L64497,item-citation,本文の番号引用
+HA,7.2.4,HA,7.2.2,HA §7.2.4 introduction,HA 7.2.2.18,HA PDF p.1270; text L64678,item-citation,本文の番号引用
+HA,7.2.4,HA,7.2.2,HA §7.2.4 introduction,HA 7.2.2.15,HA PDF p.1270; text L64691,item-citation,本文の番号引用
+HA,7.2.4,HA,7.1.1,HA §7.2.4 introduction,HA 7.1.1.15,HA PDF p.1272; text L64770,item-citation,本文の番号引用
+HA,7.2.4,HTT,5.5.8,HA §7.2.4 introduction,HTT 5.5.8.23,HA PDF p.1273; text L64804,item-citation,本文の番号引用
+HA,7.2.4,HA,7.1.4,HA §7.2.4 introduction,HA 7.1.4.17,HA PDF p.1273; text L64823,item-citation,本文の番号引用
+HA,7.2.4,HTT,5.3.5,HA §7.2.4 introduction,HTT 5.3.5.11,HA PDF p.1273; text L64824,item-citation,本文の番号引用
+HA,7.2.4,HTT,5.4.2,HA §7.2.4 introduction,HTT 5.4.2.4,HA PDF p.1273; text L64824,item-citation,本文の番号引用
+HA,7.2.4,HTT,5.5.7,HA §7.2.4 introduction,HTT 5.5.7.4,HA PDF p.1273; text L64824,item-citation,本文の番号引用
+HA,7.2.4,HTT,5.4.5,HA §7.2.4 introduction,HTT 5.4.5.15,HA PDF p.1273; text L64843,item-citation,本文の番号引用
+HA,7.2.4,HTT,4.4.2,HA §7.2.4 introduction,HTT 4.4.2.4,HA PDF p.1274; text L64872,item-citation,本文の番号引用
+HA,7.2.4,HA,7.2.1,HA §7.2.4 introduction,HA 7.2.1.23,HA PDF p.1274; text L64883,item-citation,本文の番号引用
+HA,7.2.4,HA,7.2.1,HA §7.2.4 introduction,HA 7.2.1.19,HA PDF p.1274; text L64885,item-citation,本文の番号引用
+HA,7.2.4,HA,3.1.3,HA §7.2.4 introduction,HA 3.1.3.13,HA PDF p.1275; text L64899,item-citation,本文の番号引用
+HA,7.2.4,HA,7.2.1,HA §7.2.4 introduction,HA 7.2.1.19,HA PDF p.1275; text L64917,item-citation,本文の番号引用
+HA,7.2.4,HA,7.2.1,HA §7.2.4 introduction,HA 7.2.1.23,HA PDF p.1276; text L64969,item-citation,本文の番号引用
+HA,7.2.4,HA,3.1.3,HA §7.2.4 introduction,HA 3.1.3.13,HA PDF p.1276; text L64970,item-citation,本文の番号引用
+HA,7.2.4,HA,7.4.3,HA §7.2.4 introduction,HA 7.4.3,HA PDF p.1273; text L64843,section-citation,節を明示して参照
+HA,4.8.4,HA,4.6.2,HA §4.8.4 introduction,HA 4.6.2.9,HA PDF p.731; text L36567,item-citation,本文の番号引用
+HA,4.8.4,HTT,5.3.6,HA §4.8.4 introduction,HTT 5.3.6.2,HA PDF p.731; text L36591,item-citation,本文の番号引用
+HA,4.8.4,HTT,4.2.4,HA §4.8.4 introduction,HTT 4.2.4.1,HA PDF p.732; text L36639,item-citation,本文の番号引用
+HA,4.8.4,HA,2.4.2,HA §4.8.4 introduction,HA 2.4.2.6,HA PDF p.733; text L36676,item-citation,本文の番号引用
+HA,4.8.4,HA,4.4.2,HA §4.8.4 introduction,HA 4.4.2.7,HA PDF p.733; text L36678,item-citation,本文の番号引用
+HA,4.8.4,HA,4.2.2,HA §4.8.4 introduction,HA 4.2.2.17,HA PDF p.734; text L36698,item-citation,本文の番号引用
+HA,4.8.4,HTT,3.3.4,HA §4.8.4 introduction,HTT 3.3.4.2,HA PDF p.734; text L36699,item-citation,本文の番号引用
+HA,4.8.4,HA,4.1.2,HA §4.8.4 introduction,HA 4.1.2.9,HA PDF p.734; text L36721,item-citation,本文の番号引用
+HA,4.8.4,HA,4.2.2,HA §4.8.4 introduction,HA 4.2.2.6,HA PDF p.734; text L36728,item-citation,本文の番号引用
+HA,4.8.4,HA,4.2.2,HA §4.8.4 introduction,HA 4.2.2.8,HA PDF p.735; text L36747,item-citation,本文の番号引用
+HA,4.8.4,HA,2.1.3,HA §4.8.4 introduction,HA 2.1.3.4,HA PDF p.735; text L36753,item-citation,本文の番号引用
+HA,4.8.4,HA,4.2.2,HA §4.8.4 introduction,HA 4.2.2.17,HA PDF p.735; text L36754,item-citation,本文の番号引用
+HA,4.8.4,HA,4.2.2,HA §4.8.4 introduction,HA 4.2.2.17,HA PDF p.735; text L36757,item-citation,本文の番号引用
+HA,4.8.4,HA,4.8.1,HA §4.8.4 introduction,HA 4.8.1.4,HA PDF p.737; text L36859,item-citation,本文の番号引用
+HA,4.8.4,HA,4.8.5,HA §4.8.4 introduction,HA 4.8.5.2,HA PDF p.737; text L36869,item-citation,本文の番号引用
+HA,4.8.4,HA,4.6.2,HA §4.8.4 introduction,HA 4.6.2.18,HA PDF p.737; text L36871,item-citation,本文の番号引用
+HA,4.8.4,HA,4.8.1,HA §4.8.4 introduction,HA 4.8.1.4,HA PDF p.737; text L36884,item-citation,本文の番号引用
+HA,4.8.4,HA,4.3.2,HA §4.8.4 introduction,HA 4.3.2.7,HA PDF p.738; text L36891,item-citation,本文の番号引用
+HA,4.8.4,HA,7.3.2,HA §4.8.4 introduction,HA 7.3.2.2,HA PDF p.738; text L36933,item-citation,本文の番号引用
+HA,4.8.4,HA,7.3.2,HA §4.8.4 introduction,HA 7.3.2.3,HA PDF p.738; text L36933,item-citation,本文の番号引用
+HA,4.8.4,HA,4.2.2,HA §4.8.4 introduction,HA 4.2.2.20,HA PDF p.739; text L36940,item-citation,本文の番号引用
+HA,4.8.4,HA,4.2.4,HA §4.8.4 introduction,HA 4.2.4.8,HA PDF p.739; text L36943,item-citation,本文の番号引用
+HA,4.8.4,HA,7.3.2,HA §4.8.4 introduction,HA 7.3.2.11,HA PDF p.739; text L36944,item-citation,本文の番号引用
+HA,4.8.4,HA,4.6.2,HA §4.8.4 introduction,HA 4.6.2.7,HA PDF p.739; text L36948,item-citation,本文の番号引用
+HA,4.8.4,HA,4.2.2,HA §4.8.4 introduction,HA 4.2.2.17,HA PDF p.739; text L36951,item-citation,本文の番号引用
+HA,4.8.4,HA,4.1.2,HA §4.8.4 introduction,HA 4.1.2.10,HA PDF p.739; text L36967,item-citation,本文の番号引用
+HA,4.8.4,HA,4.2.2,HA §4.8.4 introduction,HA 4.2.2.9,HA PDF p.739; text L36967,item-citation,本文の番号引用
+HA,4.8.4,HTT,5.5.2,HA §4.8.4 introduction,HTT 5.5.2.3,HA PDF p.740; text L37001,item-citation,本文の番号引用
+HA,4.8.4,HTT,5.4.7,HA §4.8.4 introduction,HTT 5.4.7.11,HA PDF p.740; text L37002,item-citation,本文の番号引用
+HA,4.8.4,HTT,5.4.7,HA §4.8.4 introduction,HTT 5.4.7.11,HA PDF p.740; text L37003,item-citation,本文の番号引用
+HA,4.8.4,HA,4.2.2,HA §4.8.4 introduction,HA 4.2.2.17,HA PDF p.740; text L37006,item-citation,本文の番号引用
+HA,4.8.4,HA,4.2.4,HA §4.8.4 introduction,HA 4.2.4.8,HA PDF p.741; text L37036,item-citation,本文の番号引用
+HA,4.8.4,HA,4.7.3,HA §4.8.4 introduction,HA 4.7.3.16,HA PDF p.741; text L37051,item-citation,本文の番号引用
+HA,4.8.4,HA,4.2.3,HA §4.8.4 introduction,HA 4.2.3.5,HA PDF p.741; text L37055,item-citation,本文の番号引用
+HA,4.8.4,HA,4.2.4,HA §4.8.4 introduction,HA 4.2.4.8,HA PDF p.741; text L37059,item-citation,本文の番号引用
+HA,4.8.4,HA,4.2.3,HA §4.8.4 introduction,HA 4.2.3.2,HA PDF p.741; text L37062,item-citation,本文の番号引用
+HA,4.8.4,HA,4.2.3,HA §4.8.4 introduction,HA 4.2.3.5,HA PDF p.741; text L37062,item-citation,本文の番号引用
+HA,4.8.4,HA,4.7.3,HA §4.8.4 introduction,HA 4.7.3.14,HA PDF p.741; text L37075,item-citation,本文の番号引用
+HA,4.8.4,HA,4.7.3,HA §4.8.4 introduction,HA 4.7.3.16,HA PDF p.742; text L37098,item-citation,本文の番号引用
+HA,4.8.4,HA,4.2.3,HA §4.8.4 introduction,HA 4.2.3.5,HA PDF p.742; text L37102,item-citation,本文の番号引用
+HA,4.8.4,HA,4.2.4,HA §4.8.4 introduction,HA 4.2.4.8,HA PDF p.742; text L37106,item-citation,本文の番号引用
+HA,4.8.4,HA,4.2.3,HA §4.8.4 introduction,HA 4.2.3.2,HA PDF p.742; text L37112,item-citation,本文の番号引用
+HA,4.8.4,HA,4.2.3,HA §4.8.4 introduction,HA 4.2.3.5,HA PDF p.742; text L37112,item-citation,本文の番号引用
+HA,4.8.4,HA,4.2.3,HA §4.8.4 introduction,HA 4.2.3.2,HA PDF p.743; text L37131,item-citation,本文の番号引用
+HA,4.8.4,HA,4.3.2,HA §4.8.4 introduction,HA 4.3.2,HA PDF p.730; text L36537,section-citation,節を明示して参照
+HA,4.8.4,HA,4.8.1,HA §4.8.4 introduction,HA 4.8.1,HA PDF p.731; text L36575,section-citation,節を明示して参照
+HA,4.8.4,HA,4.4.2,HA §4.8.4 introduction,HA 4.4.2,HA PDF p.733; text L36677,section-citation,節を明示して参照
+HA,4.8.4,HA,4.3.2,HA §4.8.4 introduction,HA 4.3.2,HA PDF p.735; text L36757,section-citation,節を明示して参照
+HA,4.8.4,HA,4.3.2,HA §4.8.4 introduction,HA 4.3.2,HA PDF p.738; text L36888,section-citation,節を明示して参照
+HA,6.1.6,HA,6.1.2,HA §6.1.6 introduction,HA 6.1.2.5,HA PDF p.1060; text L53514,item-citation,本文の番号引用
+HA,6.1.6,HA,1.1.2,HA §6.1.6 introduction,HA 1.1.2.1,HA PDF p.1066; text L53769,item-citation,本文の番号引用
+HA,6.1.6,HA,1.1.2,HA §6.1.6 introduction,HA 1.1.2.9,HA PDF p.1066; text L53773,item-citation,本文の番号引用
+HA,6.1.6,HA,6.1.5,HA §6.1.6 introduction,HA 6.1.5.4,HA PDF p.1069; text L53904,item-citation,本文の番号引用
+HA,6.1.6,HA,6.1.3,HA §6.1.6 introduction,HA 6.1.3.4,HA PDF p.1069; text L53905,item-citation,本文の番号引用
+HA,6.1.6,HA,6.1.4,HA §6.1.6 introduction,HA 6.1.4.10,HA PDF p.1069; text L53907,item-citation,本文の番号引用
+HA,6.1.6,HA,6.1.4,HA §6.1.6 introduction,HA 6.1.4.13,HA PDF p.1069; text L53915,item-citation,本文の番号引用
+HA,6.1.6,HA,6.1.4,HA §6.1.6 introduction,HA 6.1.4.14,HA PDF p.1069; text L53922,item-citation,本文の番号引用
+HA,6.1.6,HA,6.1.1,HA §6.1.6 introduction,HA 6.1.1.17,HA PDF p.1069; text L53925,item-citation,本文の番号引用
+HA,6.1.6,HA,6.1.2,HA §6.1.6 introduction,HA 6.1.2.5,HA PDF p.1069; text L53935,item-citation,本文の番号引用
+HA,6.1.6,HA,6.1.4,HA §6.1.6 introduction,HA 6.1.4.14,HA PDF p.1069; text L53941,item-citation,本文の番号引用
+HA,6.1.6,HA,6.1.4,HA §6.1.6 introduction,HA 6.1.4,HA PDF p.1061; text L53530,section-citation,節を明示して参照
+HTT,4.3.3,HTT,3.2.2,HTT §4.3.3 introduction,HTT 3.2.2.7,HTT PDF p.304; text L16640,item-citation,本文の番号引用
+HTT,4.3.3,HTT,4.3.2,HTT §4.3.3 introduction,HTT 4.3.2.6,HTT PDF p.304; text L16672,item-citation,本文の番号引用
+HTT,4.3.3,HTT,4.3.2,HTT §4.3.3 introduction,HTT 4.3.2.2,HTT PDF p.305; text L16682,item-citation,本文の番号引用
+HTT,4.3.3,HTT,4.3.2,HTT §4.3.3 introduction,HTT 4.3.2.13,HTT PDF p.305; text L16709,item-citation,本文の番号引用
+HTT,4.3.3,HTT,4.3.2,HTT §4.3.3 introduction,HTT 4.3.2.15,HTT PDF p.305; text L16730,item-citation,本文の番号引用
+HTT,4.3.3,HTT,4.3.2,HTT §4.3.3 introduction,HTT 4.3.2.16,HTT PDF p.306; text L16753,item-citation,本文の番号引用
+HTT,4.3.3,HTT,4.3.2,HTT §4.3.3 introduction,HTT 4.3.2.17,HTT PDF p.306; text L16768,item-citation,本文の番号引用
+HTT,4.3.3,HTT,5.2.2,HTT §4.3.3 introduction,HTT 5.2.2.6,HTT PDF p.306; text L16769,item-citation,本文の番号引用
+HTT,4.3.3,HTT,2.4.7,HTT §4.3.3 introduction,HTT 2.4.7.12,HTT PDF p.306; text L16771,item-citation,本文の番号引用
+HTT,4.3.3,HTT,5.2.4,HTT §4.3.3 introduction,HTT 5.2.4.3,HTT PDF p.306; text L16775,item-citation,本文の番号引用
+HTT,4.3.3,HTT,3.3.1,HTT §4.3.3 introduction,HTT 3.3.1.5,HTT PDF p.307; text L16824,item-citation,本文の番号引用
+HTT,4.3.3,HTT,2.4.3,HTT §4.3.3 introduction,HTT 2.4.3.2,HTT PDF p.308; text L16864,item-citation,本文の番号引用
+HTT,4.3.3,HTT,4.1.2,HTT §4.3.3 introduction,HTT 4.1.2.15,HTT PDF p.308; text L16887,item-citation,本文の番号引用
+HTT,4.3.3,HTT,3.2.0,HTT 4.3.3.3,HTT 3.2.0.1,HTT PDF p.309; text L16940,item-citation,本文の番号引用
+HTT,4.3.3,HTT,3.3.1,HTT 4.3.3.3,HTT 3.3.1.3,HTT PDF p.309; text L16941,item-citation,本文の番号引用
+HTT,4.3.3,HTT,3.2.2,HTT 4.3.3.4,HTT 3.2.2.7,HTT PDF p.309; text L16950,item-citation,本文の番号引用
+HTT,4.3.3,HTT,3.3.1,HTT 4.3.3.4,HTT 3.3.1.5,HTT PDF p.310; text L16969,item-citation,本文の番号引用
+HTT,4.3.3,HTT,3.2.2,HTT 4.3.3.4,HTT 3.2.2.7,HTT PDF p.310; text L16973,item-citation,本文の番号引用
+HTT,4.3.3,HTT,4.3.2,HTT 4.3.3.4,HTT 4.3.2.6,HTT PDF p.310; text L16979,item-citation,本文の番号引用
+HTT,4.3.3,HTT,4.3.2,HTT §4.3.3 introduction,HTT 4.3.2,HTT PDF p.303; text L16592,section-citation,節を明示して参照
+HTT,4.3.3,HTT,4.3.2,HTT §4.3.3 introduction,HTT 4.3.2,HTT PDF p.303; text L16596,section-citation,節を明示して参照
+HTT,4.3.3,HTT,4.3.2,HTT §4.3.3 introduction,HTT 4.3.2,HTT PDF p.303; text L16603,section-citation,節を明示して参照
+HTT,4.3.3,HTT,4.3.2,HTT §4.3.3 introduction,HTT 4.3.2,HTT PDF p.303; text L16605,section-citation,節を明示して参照
+HTT,4.3.3,HTT,3.2.1,HTT 4.3.3.2,HTT 3.2.1,HTT PDF p.309; text L16924,section-citation,節を明示して参照
+HTT,4.3.3,HTT,4.4.1,HTT 4.3.3.5,HTT 4.4.1,HTT PDF p.310; text L16995,section-citation,節を明示して参照
+HTT,4.3.3,HTT,4.4.2,HTT 4.3.3.5,HTT 4.4.2,HTT PDF p.310; text L16995,section-citation,節を明示して参照
+HTT,4.3.3,HTT,4.4.3,HTT 4.3.3.5,HTT 4.4.3,HTT PDF p.310; text L16995,section-citation,節を明示して参照
+HTT,4.3.3,HTT,4.4.4,HTT 4.3.3.5,HTT 4.4.4,HTT PDF p.310; text L17007,section-citation,節を明示して参照
+HTT,4.3.3,HTT,4.4.5,HTT 4.3.3.5,HTT 4.4.5,HTT PDF p.310; text L17009,section-citation,節を明示して参照
+HTT,4.3.3,HTT,5.1.4,HTT 4.3.3.5,HTT 5.1.4,HTT PDF p.310; text L17014,section-citation,節を明示して参照
+HA,4.7.4,HTT,5.2.2,HA §4.7.4 introduction,HTT 5.2.2.6,HA PDF p.694; text L34688,item-citation,本文の番号引用
+HA,4.7.4,HTT,3.1.3,HA §4.7.4 introduction,HTT 3.1.3.7,HA PDF p.694; text L34700,item-citation,本文の番号引用
+HA,4.7.4,HTT,3.1.3,HA §4.7.4 introduction,HTT 3.1.3.9,HA PDF p.694; text L34704,item-citation,本文の番号引用
+HA,4.7.4,HTT,3.1.3,HA §4.7.4 introduction,HTT 3.1.3.5,HA PDF p.695; text L34777,item-citation,本文の番号引用
+HA,4.7.4,HTT,3.1.3,HA §4.7.4 introduction,HTT 3.1.3.7,HA PDF p.696; text L34810,item-citation,本文の番号引用
+HA,4.7.4,HTT,A.2.6,HA §4.7.4 introduction,HTT A.2.6.12,HA PDF p.696; text L34829,item-citation,本文の番号引用
+HA,4.7.4,HTT,A.2.6,HA §4.7.4 introduction,HTT A.2.6.14,HA PDF p.696; text L34829,item-citation,本文の番号引用
+HA,4.7.4,HTT,A.2.6,HA §4.7.4 introduction,HTT A.2.6.15,HA PDF p.697; text L34857,item-citation,本文の番号引用
+HA,4.7.4,HTT,7.3.1,HA §4.7.4 introduction,HTT 7.3.1.3,HA PDF p.699; text L34975,item-citation,本文の番号引用
+HA,4.7.4,HTT,3.2.0,HA §4.7.4 introduction,HTT 3.2.0.1,HA PDF p.699; text L34984,item-citation,本文の番号引用
+HA,4.7.4,HTT,4.2.4,HA §4.7.4 introduction,HTT 4.2.4.4,HA PDF p.699; text L34984,item-citation,本文の番号引用
+HA,4.7.4,HTT,3.2.0,HA §4.7.4 introduction,HTT 3.2.0.1,HA PDF p.699; text L34997,item-citation,本文の番号引用
+HA,4.7.4,HTT,4.2.4,HA §4.7.4 introduction,HTT 4.2.4.4,HA PDF p.699; text L34997,item-citation,本文の番号引用
+HA,4.7.4,HTT,5.5.3,HA §4.7.4 introduction,HTT 5.5.3.4,HA PDF p.701; text L35081,item-citation,本文の番号引用
+HA,4.7.4,HTT,5.5.3,HA §4.7.4 introduction,HTT 5.5.3.18,HA PDF p.701; text L35081,item-citation,本文の番号引用
+HA,4.7.4,HTT,5.5.3,HA §4.7.4 introduction,HTT 5.5.3.18,HA PDF p.701; text L35124,item-citation,本文の番号引用
+HA,4.7.4,HTT,5.5.3,HA §4.7.4 introduction,HTT 5.5.3.13,HA PDF p.701; text L35126,item-citation,本文の番号引用
+HA,4.7.4,HTT,5.5.3,HA §4.7.4 introduction,HTT 5.5.3.13,HA PDF p.702; text L35141,item-citation,本文の番号引用
+HA,4.7.4,HTT,5.5.3,HA §4.7.4 introduction,HTT 5.5.3.13,HA PDF p.702; text L35143,item-citation,本文の番号引用
+HA,4.7.4,HTT,5.5.3,HA §4.7.4 introduction,HTT 5.5.3.4,HA PDF p.702; text L35143,item-citation,本文の番号引用
+HA,4.7.4,HTT,5.5.3,HA §4.7.4 introduction,HTT 5.5.3.18,HA PDF p.702; text L35144,item-citation,本文の番号引用
+HA,4.7.4,HTT,5.5.2,HA §4.7.4 introduction,HTT 5.5.2.3,HA PDF p.702; text L35147,item-citation,本文の番号引用
+NS,II.2,HTT,5.2.7,NS II.2.6,HTT 5.2.7.4,NS PDF p.40; text L1977,bibliography-citation,書誌略号付きの番号引用
+NS,II.2,HA,1.3.4,NS II.2.6,HA 1.3.4.25,NS PDF p.40; text L1984,bibliography-citation,書誌略号付きの番号引用
+NS,II.2,HA,7.3.2,NS II.2.7,HA 7.3.2.7,NS PDF p.40; text L1991,bibliography-citation,書誌略号付きの番号引用
+NS,II.2,HA,2.2.1,NS II.2.7,HA 2.2.1.9,NS PDF p.41; text L1997,bibliography-citation,書誌略号付きの番号引用
+NS,II.2,HTT,5.2.7,NS II.2.13,HTT 5.2.7.4,NS PDF p.44; text L2208,bibliography-citation,書誌略号付きの番号引用
+NS,II.2,NS,A,NS §II.2 introduction,NS A.7,NS PDF p.37; text L1837,internal-citation,同じ論文内の番号引用。節全体へ
+NS,II.2,NS,A,NS §II.2 introduction,NS A.7,NS PDF p.37; text L1839,internal-citation,同じ論文内の番号引用。節全体へ
+NS,II.2,NS,C,NS II.2.11,NS C.13,NS PDF p.42; text L2096,internal-citation,同じ論文内の番号引用。節全体へ
+NS,II.2,NS,I.3,NS II.2.12,NS I.3.1,NS PDF p.43; text L2161,internal-citation,同じ論文内の番号引用。節全体へ
+NS,II.2,NS,I.4,NS II.2.12,NS I.4.1,NS PDF p.43; text L2168,internal-citation,同じ論文内の番号引用。節全体へ
+NS,II.2,NS,A,NS §II.2 introduction,NS A,NS PDF p.37; text L1836,appendix-citation,NS内の付録全体への参照
+HA,1.1.1,HTT,1.2.12,HA §1.1.1 introduction,HTT 1.2.12.9,HA PDF p.17; text L600,item-citation,本文の番号引用
+HA,1.1.1,HTT,4.3.2,HA 1.1.1.6,HTT 4.3.2.15,HA PDF p.19; text L687,item-citation,本文の番号引用
+HA,1.1.1,HTT,5.2.3,HA 1.1.1.7,HTT 5.2.3.5,HA PDF p.19; text L701,item-citation,本文の番号引用
+HA,1.1.1,HA,1.1.2,HA 1.1.1.11,HA 1.1.2.1,HA PDF p.20; text L734,item-citation,本文の番号引用
+HA,1.1.1,HA,1.4.3,HA 1.1.1.9,HA 1.4.3,HA PDF p.20; text L721,section-citation,節を明示して参照
+HA,1.1.1,HA,1.3.2,HA 1.1.1.9,HA 1.3.2,HA PDF p.20; text L726,section-citation,節を明示して参照
+HA,1.1.2,HTT,4.3.2,HA 1.1.2.2,HTT 4.3.2.15,HA PDF p.23; text L890,item-citation,本文の番号引用
+HA,1.1.2,HTT,5.1.2,HA 1.1.2.8,HTT 5.1.2.2,HA PDF p.25; text L944,item-citation,本文の番号引用
+HA,1.1.2,HA,1.1.1,HA 1.1.2.8,HA 1.1.1.8,HA PDF p.25; text L947,item-citation,本文の番号引用
+HA,1.1.2,HA,1.4.2,HA 1.1.2.12,HA 1.4.2.27,HA PDF p.27; text L1071,item-citation,本文の番号引用
+HA,1.1.2,HTT,4.3.2,HA 1.1.2.12,HTT 4.3.2.15,HA PDF p.27; text L1084,item-citation,本文の番号引用
+HA,1.1.2,HTT,4.3.2,HA 1.1.2.12,HTT 4.3.2.15,HA PDF p.29; text L1187,item-citation,本文の番号引用
+HA,7.3.2,HA,7.3.1,HA §7.3.2 introduction,HA 7.3.1.9,HA PDF p.1287; text L65539,item-citation,本文の番号引用
+HA,7.3.2,HTT,5.5.2,HA §7.3.2 introduction,HTT 5.5.2.9,HA PDF p.1287; text L65545,item-citation,本文の番号引用
+HA,7.3.2,HTT,2.4.1,HA §7.3.2 introduction,HTT 2.4.1.3,HA PDF p.1289; text L65655,item-citation,本文の番号引用
+HA,7.3.2,HTT,2.4.1,HA §7.3.2 introduction,HTT 2.4.1.8,HA PDF p.1289; text L65655,item-citation,本文の番号引用
+HA,7.3.2,HTT,2.4.1,HA §7.3.2 introduction,HTT 2.4.1.3,HA PDF p.1289; text L65666,item-citation,本文の番号引用
+HA,7.3.2,HTT,2.4.4,HA §7.3.2 introduction,HTT 2.4.4.2,HA PDF p.1292; text L65812,item-citation,本文の番号引用
+HA,7.3.2,HTT,2.4.4,HA §7.3.2 introduction,HTT 2.4.4.2,HA PDF p.1295; text L65965,item-citation,本文の番号引用
+HA,7.3.2,HA,7.3.1,HA §7.3.2 introduction,HA 7.3.1.12,HA PDF p.1297; text L66053,item-citation,本文の番号引用
+HA,7.3.2,HA,2.2.1,HA §7.3.2 introduction,HA 2.2.1,HA PDF p.1294; text L65882,section-citation,節を明示して参照
+HTT,5.2.7,HTT,5.5.4,HTT §5.2.7 introduction,HTT 5.5.4.15,HTT PDF p.383; text L21028,item-citation,本文の番号引用
+HTT,5.2.7,HTT,4.3.2,HTT §5.2.7 introduction,HTT 4.3.2.15,HTT PDF p.387; text L21237,item-citation,本文の番号引用
+HTT,5.2.7,HTT,3.1.1,HTT §5.2.7 introduction,HTT 3.1.1,HTT PDF p.382; text L20984,section-citation,節を明示して参照
+HTT,5.2.7,HTT,5.5.4,HTT §5.2.7 introduction,HTT 5.5.4,HTT PDF p.383; text L20998,section-citation,節を明示して参照
+HTT,5.5.3,HTT,5.5.2,HTT §5.5.3 introduction,HTT 5.5.2.9,HTT PDF p.485; text L26628,item-citation,本文の番号引用
+HTT,5.5.3,HTT,5.4.7,HTT §5.5.3 introduction,HTT 5.4.7.2,HTT PDF p.485; text L26662,item-citation,本文の番号引用
+HTT,5.5.3,HTT,5.4.4,HTT §5.5.3 introduction,HTT 5.4.4.3,HTT PDF p.485; text L26671,item-citation,本文の番号引用
+HTT,5.5.3,HTT,5.1.2,HTT §5.5.3 introduction,HTT 5.1.2.2,HTT PDF p.485; text L26672,item-citation,本文の番号引用
+HTT,5.5.3,HTT,5.4.2,HTT §5.5.3 introduction,HTT 5.4.2.7,HTT PDF p.486; text L26682,item-citation,本文の番号引用
+HTT,5.5.3,HTT,5.1.2,HTT §5.5.3 introduction,HTT 5.1.2.4,HTT PDF p.486; text L26682,item-citation,本文の番号引用
+HTT,5.5.3,HTT,5.1.5,HTT §5.5.3 introduction,HTT 5.1.5.6,HTT PDF p.486; text L26683,item-citation,本文の番号引用
+HTT,5.5.3,HTT,5.1.2,HTT §5.5.3 introduction,HTT 5.1.2.2,HTT PDF p.486; text L26696,item-citation,本文の番号引用
+HTT,5.5.3,HTT,5.5.2,HTT §5.5.3 introduction,HTT 5.5.2.3,HTT PDF p.486; text L26696,item-citation,本文の番号引用
+HTT,5.5.3,HTT,5.5.1,HTT §5.5.3 introduction,HTT 5.5.1.9,HTT PDF p.486; text L26701,item-citation,本文の番号引用
+HTT,5.5.3,HTT,5.3.5,HTT §5.5.3 introduction,HTT 5.3.5.10,HTT PDF p.486; text L26702,item-citation,本文の番号引用
+HTT,5.5.3,HTT,5.4.4,HTT §5.5.3 introduction,HTT 5.4.4.3,HTT PDF p.486; text L26707,item-citation,本文の番号引用
+HTT,5.5.3,HTT,5.4.7,HTT §5.5.3 introduction,HTT 5.4.7.10,HTT PDF p.486; text L26713,item-citation,本文の番号引用
+HTT,5.5.3,HTT,5.4.4,HTT §5.5.3 introduction,HTT 5.4.4.3,HTT PDF p.486; text L26724,item-citation,本文の番号引用
+HTT,5.5.3,HTT,5.4.7,HTT §5.5.3 introduction,HTT 5.4.7.9,HTT PDF p.486; text L26726,item-citation,本文の番号引用
+HTT,5.5.3,HTT,5.4.6,HTT §5.5.3 introduction,HTT 5.4.6.7,HTT PDF p.487; text L26748,item-citation,本文の番号引用
+HTT,5.5.3,HTT,1.2.13,HTT §5.5.3 introduction,HTT 1.2.13.8,HTT PDF p.487; text L26749,item-citation,本文の番号引用
+HTT,5.5.3,HTT,5.4.5,HTT §5.5.3 introduction,HTT 5.4.5.16,HTT PDF p.487; text L26755,item-citation,本文の番号引用
+HTT,5.5.3,HTT,5.4.6,HTT §5.5.3 introduction,HTT 5.4.6.6,HTT PDF p.487; text L26778,item-citation,本文の番号引用
+HTT,5.5.3,HTT,5.4.5,HTT §5.5.3 introduction,HTT 5.4.5.2,HTT PDF p.488; text L26795,item-citation,本文の番号引用
+HTT,5.5.3,HTT,5.4.5,HTT §5.5.3 introduction,HTT 5.4.5.5,HTT PDF p.488; text L26797,item-citation,本文の番号引用
+HTT,5.5.3,HTT,4.4.2,HTT §5.5.3 introduction,HTT 4.4.2.6,HTT PDF p.488; text L26801,item-citation,本文の番号引用
+HTT,5.5.3,HTT,3.3.3,HTT §5.5.3 introduction,HTT 3.3.3.2,HTT PDF p.488; text L26812,item-citation,本文の番号引用
+HTT,5.5.3,HTT,5.2.7,HTT §5.5.3 introduction,HTT 5.2.7.8,HTT PDF p.489; text L26860,item-citation,本文の番号引用
+HTT,5.5.3,HTT,5.4.7,HTT §5.5.3 introduction,HTT 5.4.7.17,HTT PDF p.489; text L26874,item-citation,本文の番号引用
+HTT,5.5.3,HTT,5.1.2,HTT §5.5.3 introduction,HTT 5.1.2.2,HTT PDF p.489; text L26876,item-citation,本文の番号引用
+HTT,5.5.3,HTT,5.5.4,HTT §5.5.3 introduction,HTT 5.5.4.18,HTT PDF p.489; text L26879,item-citation,本文の番号引用
+HTT,5.5.3,HTT,5.1.2,HTT §5.5.3 introduction,HTT 5.1.2.2,HTT PDF p.489; text L26882,item-citation,本文の番号引用
+HTT,5.5.3,HTT,5.5.4,HTT §5.5.3 introduction,HTT 5.5.4.17,HTT PDF p.489; text L26885,item-citation,本文の番号引用
+HTT,5.5.3,HTT,3.3.3,HTT §5.5.3 introduction,HTT 3.3.3.2,HTT PDF p.490; text L26908,item-citation,本文の番号引用
+HTT,5.5.3,HTT,5.1.2,HTT §5.5.3 introduction,HTT 5.1.2.2,HTT PDF p.490; text L26920,item-citation,本文の番号引用
+HTT,5.5.3,HTT,5.1.2,HTT §5.5.3 introduction,HTT 5.1.2.2,HTT PDF p.490; text L26938,item-citation,本文の番号引用
+HTT,5.5.2,HTT,5.1.3,HTT §5.5.2 introduction,HTT 5.1.3.2,HTT PDF p.480; text L26360,item-citation,本文の番号引用
+HTT,5.5.2,HTT,5.1.2,HTT §5.5.2 introduction,HTT 5.1.2.2,HTT PDF p.480; text L26361,item-citation,本文の番号引用
+HTT,5.5.2,HTT,4.2.4,HTT §5.5.2 introduction,HTT 4.2.4.7,HTT PDF p.480; text L26371,item-citation,本文の番号引用
+HTT,5.5.2,HTT,4.2.4,HTT §5.5.2 introduction,HTT 4.2.4.4,HTT PDF p.480; text L26375,item-citation,本文の番号引用
+HTT,5.5.2,HTT,5.1.5,HTT §5.5.2 introduction,HTT 5.1.5.6,HTT PDF p.481; text L26420,item-citation,本文の番号引用
+HTT,5.5.2,HTT,5.5.1,HTT §5.5.2 introduction,HTT 5.5.1.1,HTT PDF p.481; text L26424,item-citation,本文の番号引用
+HTT,5.5.2,HTT,4.3.2,HTT §5.5.2 introduction,HTT 4.3.2.9,HTT PDF p.482; text L26460,item-citation,本文の番号引用
+HTT,5.5.2,HTT,4.3.2,HTT §5.5.2 introduction,HTT 4.3.2.9,HTT PDF p.482; text L26463,item-citation,本文の番号引用
+HTT,5.5.2,HTT,5.5.1,HTT §5.5.2 introduction,HTT 5.5.1.7,HTT PDF p.482; text L26491,item-citation,本文の番号引用
+HTT,5.5.2,HTT,3.3.3,HTT §5.5.2 introduction,HTT 3.3.3.3,HTT PDF p.483; text L26525,item-citation,本文の番号引用
+HTT,5.5.2,HTT,5.1.1,HTT §5.5.2 introduction,HTT 5.1.1.1,HTT PDF p.483; text L26552,item-citation,本文の番号引用
+HTT,5.5.2,HTT,5.3.5,HTT §5.5.2 introduction,HTT 5.3.5.10,HTT PDF p.483; text L26558,item-citation,本文の番号引用
+HTT,5.5.2,HTT,5.2.3,HTT §5.5.2 introduction,HTT 5.2.3.5,HTT PDF p.484; text L26577,item-citation,本文の番号引用
+HTT,5.5.2,HTT,5.4.7,HTT §5.5.2 introduction,HTT 5.4.7.7,HTT PDF p.484; text L26577,item-citation,本文の番号引用
+HTT,5.5.2,HTT,5.2.4,HTT §5.5.2 introduction,HTT 5.2.4.2,HTT PDF p.484; text L26583,item-citation,本文の番号引用
+HTT,4.4.2,HTT,4.2.4,HTT §4.4.2 introduction,HTT 4.2.4.1,HTT PDF p.312; text L17128,item-citation,本文の番号引用
+HTT,4.4.2,HTT,4.2.3,HTT §4.4.2 introduction,HTT 4.2.3.8,HTT PDF p.313; text L17169,item-citation,本文の番号引用
+HTT,4.4.2,HTT,4.2.3,HTT §4.4.2 introduction,HTT 4.2.3.4,HTT PDF p.313; text L17181,item-citation,本文の番号引用
+HTT,4.4.2,HTT,4.2.3,HTT §4.4.2 introduction,HTT 4.2.3.4,HTT PDF p.314; text L17202,item-citation,本文の番号引用
+HTT,4.4.2,HTT,4.2.3,HTT §4.4.2 introduction,HTT 4.2.3.10,HTT PDF p.315; text L17268,item-citation,本文の番号引用
+HTT,4.4.2,HTT,4.2.3,HTT §4.4.2 introduction,HTT 4.2.3.5,HTT PDF p.316; text L17313,item-citation,本文の番号引用
+HTT,4.4.2,HTT,4.2.3,HTT §4.4.2 introduction,HTT 4.2.3.6,HTT PDF p.316; text L17345,item-citation,本文の番号引用
+HTT,4.4.2,HTT,2.1.3,HTT §4.4.2 introduction,HTT 2.1.3.4,HTT PDF p.316; text L17348,item-citation,本文の番号引用
+HTT,4.4.2,HTT,4.2.3,HTT §4.4.2 introduction,HTT 4.2.3.6,HTT PDF p.316; text L17353,item-citation,本文の番号引用
+HTT,5.5.7,HTT,5.5.1,HTT §5.5.7 introduction,HTT 5.5.1.1,HTT PDF p.519; text L28522,item-citation,本文の番号引用
+HTT,5.5.7,HTT,5.1.2,HTT §5.5.7 introduction,HTT 5.1.2.2,HTT PDF p.519; text L28550,item-citation,本文の番号引用
+HTT,5.5.7,HTT,5.5.3,HTT §5.5.7 introduction,HTT 5.5.3.18,HTT PDF p.521; text L28632,item-citation,本文の番号引用
+HTT,5.5.7,HTT,6.3.3,HTT §5.5.7 introduction,HTT 6.3.3.7,HTT PDF p.521; text L28645,item-citation,本文の番号引用
+HTT,5.5.7,HTT,5.5.3,HTT §5.5.7 introduction,HTT 5.5.3.4,HTT PDF p.521; text L28657,item-citation,本文の番号引用
+HTT,5.5.7,HTT,5.4.2,HTT §5.5.7 introduction,HTT 5.4.2.15,HTT PDF p.522; text L28692,item-citation,本文の番号引用
+HTT,5.5.7,HTT,5.5.1,HTT §5.5.7 introduction,HTT 5.5.1.9,HTT PDF p.522; text L28692,item-citation,本文の番号引用
+HTT,5.5.7,HTT,5.3.1,HTT §5.5.7 introduction,HTT 5.3.1.10,HTT PDF p.522; text L28694,item-citation,本文の番号引用
+HTT,5.5.7,HTT,5.4.2,HTT §5.5.7 introduction,HTT 5.4.2.17,HTT PDF p.522; text L28697,item-citation,本文の番号引用
+HTT,5.5.7,HTT,5.4.2,HTT §5.5.7 introduction,HTT 5.4.2.4,HTT PDF p.522; text L28710,item-citation,本文の番号引用
+HTT,5.5.7,HTT,5.5.1,HTT §5.5.7 introduction,HTT 5.5.1.1,HTT PDF p.522; text L28710,item-citation,本文の番号引用
+HTT,5.5.7,HTT,5.4.1,HTT §5.5.7 introduction,HTT 5.4.1.2,HTT PDF p.522; text L28739,item-citation,本文の番号引用
+HTT,5.5.7,HTT,5.3.1,HTT §5.5.7 introduction,HTT 5.3.1.18,HTT PDF p.522; text L28740,item-citation,本文の番号引用
+HTT,5.5.7,HTT,4.2.4,HTT §5.5.7 introduction,HTT 4.2.4.4,HTT PDF p.522; text L28742,item-citation,本文の番号引用
+HTT,5.5.7,HTT,4.2.4,HTT §5.5.7 introduction,HTT 4.2.4.1,HTT PDF p.522; text L28743,item-citation,本文の番号引用
+HTT,3.3.1,HTT,3.2.0,HTT §3.3.1 introduction,HTT 3.2.0.1,HTT PDF p.222; text L11988,item-citation,本文の番号引用
+HTT,3.3.1,HTT,3.2.1,HTT §3.3.1 introduction,HTT 3.2.1.4,HTT PDF p.223; text L12021,item-citation,本文の番号引用
+HTT,3.3.1,HTT,3.2.0,HTT §3.3.1 introduction,HTT 3.2.0.1,HTT PDF p.223; text L12022,item-citation,本文の番号引用
+HTT,3.3.1,HTT,A.3.3,HTT §3.3.1 introduction,HTT A.3.3.8,HTT PDF p.223; text L12025,item-citation,本文の番号引用
