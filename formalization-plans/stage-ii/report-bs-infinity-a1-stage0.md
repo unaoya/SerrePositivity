@@ -3919,3 +3919,40 @@ S8は一般の局所全単射の不変性、同じ層化単位の比較、指定
 既存の大域の右Kan比較の再利用を保ち、点ごとの同型を新しく集めない。
 S7・R2・R3は再開せず、mainも停止点までは取り込まない。
 一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+### S1 の終点付き添字の宇宙移送（11-16 夕、検証中の型）
+
+既存の構成の法則として、新規2本に分けた。追加IDなし、200行超の補題なし。
+`Project/LocalizationAndKanExtensionAuxiliaries/NerveComparison/AsSmallWithTerminal` は
+既存 `WithTerminal.map` を `AsSmall.up`・`down` へ適用し、その順序交換を全単体で示す。
+`Sheaves/ExtensiveIndexUniverseRestriction` は同じ指定錐をこの添字同型で運び、
+検証済み `extensiveIndex_restrict_isLimit_iff` へ渡す。
+
+```lean
+nerveWithTerminalAsSmallIso (I : Type u) [SmallCategory I] :
+  (SSet.uliftFunctor.{u + 1, u}).obj (nerve (WithTerminal I)) ≅
+    nerve (WithTerminal (AsSmall.{u + 1} I))
+nerveWithTerminalAsSmallIso_incl I :
+  (SSet.uliftFunctor.{u + 1, u}).map (nerveMap (WithTerminal.incl : I ⥤ WithTerminal I)) ≫
+    (nerveWithTerminalAsSmallIso I).hom =
+      (nerveAsSmallIso I).hom ≫
+        nerveMap (WithTerminal.incl : AsSmall.{u + 1} I ⥤ WithTerminal (AsSmall.{u + 1} I))
+extensiveIndex_ulift_restrict_isLimit_iff (I : Type u) [SmallCategory I]
+  {E : SSet.{u + 1}} [Quasicategory E]
+  (H : (SSet.uliftFunctor.{u + 1, u}).obj (nerve (WithTerminal I)) ⟶ E)
+  (hH : IsTerminalVertex
+    (H.app _ (ULift.up (nerveVertex (WithTerminal.star : WithTerminal I)))))
+  (c : JoinCone H) :
+  IsLimitCone c ↔ IsLimitCone (restrictJoinCone c
+    ((SSet.uliftFunctor.{u + 1, u}).map (nerveMap (WithTerminal.incl : I ⥤ WithTerminal I))))
+```
+
+両逆の前提計算は `WithTerminal.map up ⋙ WithTerminal.map down = 𝟭 _` と
+逆順の等式の2本。頂点の標準終点も同じ頂点へ戻す法則を明示した。
+比較するのは全錐の射であり、同じ指定右Kan条件の後に、制限錐の全射の等式で戻す。
+点ごとの同型から新たな自然同型を作らず、係数 E の極限保存性も仮定しない。
+
+現在の対象は `/tmp/is-w1/s1-extensive-universe-1/`、セッション57886、2本。
+結果と小監査の終端を確認するまで、検証済み245本15,971行・1,394宣言には加算しない。
+mainは取り込まない。S1・S8の元の残りの型を保って継続する。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
