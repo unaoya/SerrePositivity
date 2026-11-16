@@ -3228,3 +3228,50 @@ S8の残りはこの元の全関手への接続、指定離散比較の射の自
 離散層化と局所同値。S1の元のcoverage・extensiveも残る。停止点にはまだ届いていない。
 S7・R2・R3は再開していない。
 一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
+
+### 元の全切断の小余極限・押し出し（11-16）
+
+調整役の承認 `6ea430827` に従い、既存の `rightKanHomUniversalIso` と
+`rightKanHomUniversalIso_hom_fac` を直接使った。両方のHom普遍性は
+既存の指定Kan延長から証明し、片側は添字同型で移送した。
+前節の、Hを保った点ごとの右Kan条件そのものの添字同型移送を経由する必要はなくなった。
+元の主張の型と指定変換の類を保持する同じ大域比較で結論に達する。
+
+新規3本212行（うち文献属性・必要なmeta import10行、外枠計202行）13宣言。
+対象ビルド・小監査は `/tmp/is-w1/s8-weighted-pushout-1/`、終了0、
+標準三公理のみ、source SHA一致。既存Cat包装を`Functor.toCatHom_toFunctor`で
+明示的に簡約し、計算上限は変えていない。200行超の補題なし。
+元draftsと同じ余極限・押し出しの型と引数順もLeanで確認した。
+記録 `/tmp/is-w1/s8-weighted-original-types/check.lean`・`check.log`、終了0。
+同じ新環境でSheavesの理由付き文献属性23件の登録も確認した。
+
+```lean
+rightKanHomMap_indexIso e α G η :
+  rightKanHomMap δ ((e.postcomp F).hom ≫ α) G η =
+    (e.postcomp G).hom ≫ rightKanHomMap δ' α G η
+
+-- hα : RightKanHomUniversal δ' α（呼び出し側で指定Kan延長から証明）
+RightKanHomUniversal.indexIso e hα :
+  RightKanHomUniversal δ ((e.postcomp F).hom ≫ α)
+
+weightedSections_nativeShape_comparison O hE α hα :
+  FunctorIso (weightedSections O hE) G
+-- hom_fac は元の指定余単位の類への分解則。仮定を新設してはいない。
+
+sectionsOf_colimit O hE (c : JoinCocone p) (hc : IsColimitCone c) :
+  IsLimitCone (mapJoinCone (weightedSections O hE) (coconeReverseCone c))
+
+sectionsOf_pushout (f : P ⟶ Q) (g : P ⟶ R) [Mono f] O hE :
+  IsLimitCone (mapJoinCone (weightedSections O hE)
+    (coconeReverseCone (pushoutCocone (discretePushoutSquare f g))))
+```
+
+押し出しの形状は既存の `strictSpanHornIso` で実際の小さい形状へ制限し、
+`coconeReverseCone_restrict_val` と同型での極限性の反映で元の全錐へ戻した。
+指定辺や二単体を別々に選ぶ構成は追加していない。
+
+検証済み全体219本14,250行・1,252宣言（文献整理の差分は除外）。
+S8の元の二つの結論が閉じた。指定離散比較の射の自然性、離散層化、
+局所同値と切断の比較、およびS1のcoverage・extensiveは残る。
+Mathlibの局所全単射判定と同じ層化単位への接続を次に対象検証する。
+一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
