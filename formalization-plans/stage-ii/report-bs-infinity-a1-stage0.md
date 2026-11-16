@@ -3731,3 +3731,46 @@ cofanSieveIndex_isLeftCofinal [FinitaryExtensive C] [Finite ι] [Nonempty ι]
 上記2本は実行中の6対象から import されず、次の束の一覧にだけ準備した。
 未検証の Lean はコミットしない。検証済み232本・15,034行・1,301宣言は変わらない。
 一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+### S1 の指定された star の除去（11-16、未検証）
+
+前節の有限添字の係数計算を、新規3本176行で下書きした。
+`ExtensiveTerminalComma` 31行、`ExtensiveLegRightCone` 65行、
+`ExtensiveIndexRightKan` 80行。既存の完全忠実包含の恒等三角形、
+`initialValueCone_isLimit`、`isLimitCone_iff_terminal_of_initialShape`、
+`nerveRightConeTransportPostcomp` を使う。
+主張は既存の指定局所錐と添字の法則で、新しいIDは足さない。
+
+```lean
+extensiveTerminalComma_isEmpty (I : Type u) [SmallCategory I] :
+  IsEmpty (StructuredArrow (WithTerminal.star : WithTerminal I)
+    (WithTerminal.incl : I ⥤ WithTerminal I))
+extensiveLegComma_isInitial (I : Type u) [SmallCategory I] (i : I) :
+  IsInitial (StructuredArrow.mk (T := (WithTerminal.incl : I ⥤ WithTerminal I))
+    (𝟙 (WithTerminal.of i)))
+extensiveLegRightCone_postcomp_isLimit {E : SSet.{u}} [Quasicategory E]
+  (H : nerve (WithTerminal I) ⟶ E) (i : I) :
+  IsLimitCone ((nerveCone (extensiveLegRightCone I i)).postcomp H)
+extensiveIndex_isRightKanExtension {E : SSet.{u}} [Quasicategory E]
+  (H : nerve (WithTerminal I) ⟶ E)
+  (hH : IsTerminalVertex (H.app _ (nerveVertex (WithTerminal.star : WithTerminal I)))) :
+  IsRightKanExtension (nerveMap (WithTerminal.incl : I ⥤ WithTerminal I))
+    (nerveMap (WithTerminal.incl : I ⥤ WithTerminal I) ≫ H) H
+    (SSet.RelativeMorphism.Homotopy.refl (SSet.RelativeMorphism.botEquiv.symm
+      (nerveMap (WithTerminal.incl : I ⥤ WithTerminal I) ≫ H)))
+extensiveIndex_restrict_isLimit_iff H hH (c : JoinCone H) :
+  IsLimitCone c ↔ IsLimitCone
+    (restrictJoinCone c (nerveMap (WithTerminal.incl : I ⥤ WithTerminal I)))
+```
+
+`extensiveLegRightCone_val` は元の通常の右 Kan 局所錐の nerve の全射が、
+同じ comma の初対象からの錐と等しいことを、両境界と各混合辺で比較する。
+star の空形状でも元の頂点を保つ。右 Kan 条件や係数の極限保存性は仮定しない。
+点ごとの同型を集める構成ではなく、指定された全錐の制限の法則を使う。
+200行超の補題なし。Leanではまだ未検証なので、S1完了とは数えない。
+
+現在のセッション18673の対象6本と依存は凍結したまま。
+新規S1計5本362行は次の未実行一覧
+`/tmp/is-w1/s8-all-local-sections-next-1/files.json` に追加した（全11対象）。
+検証済み全体232本・15,034行・1,301宣言は変わらない。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
