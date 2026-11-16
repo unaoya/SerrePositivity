@@ -16,6 +16,10 @@ RightKernelは中心Sが(0,1)、E_n^bが(n,b+2)の配置に比較する。元の
 
 この段落は配置と符号の紙の照合であり、標準同型・直和の射・微分との可換性の証明は残る。
 
+左右の座標の法則と、Y側の同じ各ιTotalによる次数ごとの再索引、その次数ごとの左逆は `CechAugmentedSquareLeftComponents`・`CechAugmentedSquareRightComponents`・`SchemePerfectCechTupleLeftTotalComponents`・`SchemePerfectCechTupleLeftTotalRetraction` で検証済みになった。前向きの比較の水平自然性と根の基底の交代和零も同じ下書きの検証を通した。ただしσの鎖写像性、基底射影への合成零と分裂の第二式、元の同じ核との同型はまだ残る。
+
+中心側では同じ左側の比較を複製する前に、実際のfとその恒等矢印・逆像被覆を左側の比較へ代入して再利用する。各頂点の右側の複体は、その中心の同じ左側の複体のunsignedな縦方向の一段のextendと、既存のrightEι/rightCenterιとleftCπで比較する。中心は-1、Eのb次は(-1)^bの符号を付ける。元の基底射影にも同じ符号の比較を入れて可換性を保ち、元のkernelを比較する。縦方向のextendのtotalをunsignedなtotalのextendと照合すれば、左側の既存の再索引を使い直せる。これは残りの実装案であり、この比較も検証済みとは数えない。
+
 ## 核とtotalの標準比較を使う案
 
 元のtotalの短完全性 `cechIntegerLiftTotal_shortExact` は供給済み。同じtotalFunctorの加法性を各ιTotalで照合し、Mathlibの `Functor.preservesFiniteLimits_iff_forall_exact_map_and_mono` に同じ短完全性を渡した核保存まで実装済み（dfa0a19c2）。`cechIntegerLiftTotalKernelIso` と包含を保つ `cechIntegerLiftTotalKernelIso_hom_ι` は、元の同じkernelのtotalを比較する。元の増大複体からの射・逆射の構成はなお残る。

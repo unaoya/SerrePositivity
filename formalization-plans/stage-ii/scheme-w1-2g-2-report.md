@@ -2835,3 +2835,62 @@ mainの取り込みは11-16 16:25の指示どおり保留したまま。検証�
 
 
 共有鍵待機中の追加の紙：元の各ιTotalからσの微分との可換性を照合する順番をtotal-comparison-routeへ追記した。根の(0,0)、singleの零項(0,b+1)、Cの(a+1,b)の三場合に分け、既存のtotal_d_summand、元のスカラー、同じ各余面の自然性、(-1)^aと縦微分の負符号を使う。元の鎖写像の可換性を仮定する型にはしない。下書きの水平自然性と基底の交代和零を追加したが、本体には未登録で、検証済み実測16,961行は変わらない。同じセッション63342へのpollで共有鍵の一件待機を確認した。停止点2g-2でも数学的なblockedでもない。一覧：済み1／全体3（うち追加0）。
+
+
+同じ再索引の次数ごとの左逆（G4の同じ分裂の式の証明分割、着手前の型、一本文100〜180行見込み）：`schemePerfectCechTupleLeftTotalRetractionSummand` は元のY側の(a,b+1)のC座標をleftCπで元の(a+1,b)へ戻し、(0,0)の基底だけを元のsingleへ戻し、正の外次数の基底を零へ送る。`schemePerfectCechTupleLeftTotalRetractionComponent` は元のtotalDescへこの各脚を入れた次数ごとの射。元の各ιTotalとleftCι_πからσⁿ≫ψⁿ=𝟙を照合する。ψを鎖写像とは主張せず、元の同じ核の完全性の照合の補助射とする。
+
+
+元の再索引の鎖写像性（G4の同じ微分との可換性の法則、着手前の型、一本文100〜200行見込み）：`schemePerfectCechTupleLeftTotalComponent_d (n : ℕ)` はσⁿ≫d_L=d_K≫σⁿ⁺¹。既存のtotal_d_summand、元のCの座標の水平自然性・縦微分の負符号・根のスカラー・singleの零性で照合する。`schemePerfectCechTupleLeftTotalMap` はその同じ成分を持つ複体の射。型に微分の可換性を仮定として加えず、同じσから元の核への比較を作る。
+
+
+### 元のF8の座標・直和の再索引と次数ごとの左逆
+
+`CechAugmentedSquareLeftComponents`（106行、以下の名前空間はCechAugmentedSquare）：
+- private instances：元のleftSquareの中心とEの各項の選択済み零加群のSubsingletonを、型を明示して供給する。
+- `leftCι`：元のY側の正の縦次数のCの座標への包含。
+- `leftCπ`：元のY側の正の縦次数から同じCへの射影。
+- `leftCι_π`：Cでの包含・射影の合成は恒等射。
+- `leftCπ_ι`：元のY側の各項でも射影・包含の合成は恒等射。
+- `leftCι_d`：元のCの座標の縦微分は、同じCの微分の負符号。
+- `scalar_leftCι`：元のスカラーと同じCの包含の合成は、元のY側の零次の微分。
+- `leftCι_naturality`：同じ包含は元のMap.onLeftSquareに自然。
+- `leftCι_baseProjection`：元の基底射影との合成は零。
+
+`CechAugmentedSquareRightComponents`（117行、以下の名前空間はCechAugmentedSquare）：
+- private instances：元のrightSquareのCと正次数のsourceの選択済み零加群のSubsingletonを型付きで供給する。
+- `rightEι`：元の中心側のEの座標への包含。
+- `rightEπ`：元の中心側のEの座標からの射影。
+- `rightCenterι`：元の縦一次の中心の座標への包含。
+- `rightCenterπ`：元の縦一次の中心の座標からの射影。
+- `rightEι_π`：Eでの包含・射影の合成は恒等射。
+- `rightEπ_ι`：元の中心側の各正次数でも射影・包含の合成は恒等射。
+- `rightCenterι_π`：中心での包含・射影の合成は恒等射。
+- `rightCenterπ_ι`：元の縦一次の項でも射影・包含の合成は恒等射。
+- `rightEι_d`：Eの座標は元のEの微分を保つ。
+- `rightCenterι_d`：元の中心からEへの辺は同じ負符号を持つ。
+- `rightEι_naturality`：同じEの包含は元のMap.onRightSquareに自然。
+- `rightCenterι_naturality`：同じ中心の包含は元のMap.onRightSquareに自然。
+- `rightEι_baseProjection`：元の基底射影との合成は零。
+
+`SchemePerfectCechTupleLeftTotalComponents`（118行）：
+- `schemePerfectCechTupleSquareLeftPositiveDouble`：元の同じY側の図式の交代余面複体に型を明示する。
+- `schemePerfectCechTupleLeftTotalSummand`：元の各項を同じ全次数のY側の項へ入れる、元の直和の各脚。
+- `schemePerfectCechTupleLeftTotalComponent`：同じtotalDescへ各脚を入れた各全次数の射。
+- `ι_schemePerfectCechTupleLeftTotalComponent`：元の各直和入射で指定した同じ再索引の脚になる。
+- private `cechLeftComponent_sum_f`：複体の射の同じ有限和を各成分で評価する。
+- `schemePerfectCechTupleLeftCι_horizontal`：同じCの包含は各実際の余面の交代和の水平微分と可換。
+- `schemePerfectCechTupleLeftBase_horizontal_zero`：元の基底の外零次の水平微分は、同じ恒等射二つの交代和で零。
+
+`SchemePerfectCechTupleLeftTotalRetraction`（105行）：
+- `schemePerfectCechTupleLeftTotalRetractionSummand`：元のCの座標を戻し、正の外次数の基底だけを零へ送る元の直和の各脚。
+- `schemePerfectCechTupleLeftTotalRetractionComponent`：同じtotalDescによる次数ごとの補助射。鎖写像とは主張しない。
+- `ι_schemePerfectCechTupleLeftTotalRetractionComponent`：各元の直和入射で、指定した同じ座標の射影になる。
+- `schemePerfectCechTupleLeftTotalComponent_retraction`：元の各全次数で、同じ再索引の後に座標を戻すと恒等射。
+
+検証：固定した四本をまとめたmodule形式 `2g-g4-coordinates-check-4.log` は終了0。四本と直接importerの入口の対象ビルドは5,336ジョブ・終了0（`2g-g4-coordinates-native.log`、依存のキャッシュ再生を含む）。固定manifest・下書き・本体のSHA256と全バイト一致を確認。別の共有鍵による所有宣言の小監査は70宣言（12、15、22、21）、非公開・生成分も含め標準三公理のみ、終了0（`2g-g4-coordinates-audit.log`）。追加公理・sorry・既存宣言の型変更・資源上限の引き上げ・200行超の宣言なし。letI/haveIと長い行のstyle警告は残る。零対象の型を明示し、元の微分の定義を局所的に開いて既存のof_dを使い、基底の合成は型の確定したEq.trans/congrArgで照合した。
+
+紙の符号の補助点検：worktree内のcheck-f8-reindexing-signs.pyで、次数0〜16の整数座標における左右の鎖条件・左逆・基底成分の分裂・射影への合成零を2,510件点検して一致した。中心側はunsignedな一段のずらし、Eの(-1)^bと中心の-1を用いた。補助の左逆が一般には鎖写像でないことも点検した。この有限計算はLeanの形式検証の代わりとはしない。
+
+今回446行＋入口4行＝450行。基準56ea849a3からの外枠計数は17,411行（新規241モジュール本体17,124行、既存追加25行、入口262行）。新規所有宣言の小監査累計1,861、既存15宣言は別計上。承認済みの外枠20,000行内。
+
+残りの見込みを更新する。前向きの鎖写像性・基底成分の分裂と同じ核への同型、中心側で同じ左側の比較と既存のextendを再利用する部分は計450〜800行、相対proper fppf・合成を含むNoether帰納400〜700行、G5の自然な模型・Frobenius・filtered余極限の移送600〜1,000行。残り1,450〜2,500行、完成見込み18,861〜19,911行（約18,800〜19,900行）。上端が20,000行に近いので、未検証の下書きも含め以後の各束で照合し、超える見込みになれば検証済みをコミットして境界報告と2hの紙へ移る。現在は超える見込みとはしていない。4本の完成だけでσの鎖写像性や元の核との同型、G4・G5の完成とは呼ばない。前向きの鎖写像性の下書きは未検証で作業木に残している。mainを取り込んでいない。共有鍵 --class impl --wait 3600、待ちは一件、対象ビルドと監査は別リース。root・下流全ビルド・AlgebraicGeometry全体監査なし。一覧：済み1／全体3（うち追加0）。
