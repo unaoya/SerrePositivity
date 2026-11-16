@@ -2250,3 +2250,38 @@ G4・G5は未完。検証済みの数学の先端は `415b27a9b` のまま。未
 一覧：済み1／全体3（うち追加0）。
 
 同じ全次数の増大を元の開の係数へ代入する法則（既存G4の増大・係数移送の内数、40〜80行）：P:Opens(X)ᵒᵖ→Module R、U、A→P(⊤)に対して `openCoverCechConstantComplexAugmentation` は同じ定数列C(A)から元のfullCechComplex(openCoverCechDiagram P U)へ、元の空交叉と制限の写像で増大する。`…_apply` は各タプルで元の⊤からその実際の交叉への制限を取る式。被覆のアフィン性や平坦性を新たに仮定せず、後で元の構造層のFrobenius図式と同じ基底のスカラーを代入する。現在検証中の二本とは別の未検証下書きとする。
+
+同じ全微分の法則の終域次数の分割（既存G4の全複体の比較の内数、25〜45行）：`cechBicomplex_total_d_summand_to` は元の全微分の各入射での式を、n+1=m という等式を持つ実際の終域mで述べる。総次数を後から式の一部だけで書き換えると、既存HAの非公開の生成された証明項の依存が残るため、mを量化した法則の証明の中で等式を消去して元の同じHAの補題を使う。全複体や選択した余積を変更せず、別の微分を作らない。
+
+調整役の11-16 16:25の連絡を反映：mainのcd79e9cc5は略号表の変更を含み、root未確認である。現在の停止点まではmath/schemeにmainを取り込まない。取り込みを行う場合も、夜のrootビルド完了後とする。現在の検証では枝にある共有鍵を使い、対象ビルドのみを行う。
+
+元の構造層の全次数の増大への代入（既存G4の係数移送・増大の法則、50〜100行）：`schemeStructurePerfectCechConstantAugmentation` はY上の元の大域スカラーφ:R→Γ(Y,⊤)をFrobenius順極限に送り、同じ開被覆の全タプル複体へ定数列C(Rperf)から増大する。`…_apply` は各タプルで、元のφと実際の交叉への制限を合成した環準同型のFrobenius順極限そのものになる式。`…_single_zero` は元のsingleからの包含との合成の零次が既存の増大写像と等しい式。被覆のアフィン性・平坦性や別の最終型を加えない。この代入は別の未検証下書きであり、先行二本の検証済み宣言数には数えない。
+
+
+## G4：定数増大列から元のsingleへの全複体の射影
+
+検証済みの三本を追加した。元の二つのtotal、同じ直和入射と増大を保持し、補正付き射影が微分を保つことと包含との合成が恒等になることを示した。包含の正次数での全射性は仮定しない。
+
+`CechConstantTotalRetractionDifferential`（81行）：
+- `cechBicomplex_total_d_summand_to`：既存HAの同じ全微分の各入射での式を、n+1=mを満たす実際の終域次数mで述べる。
+- `cechConstantTotalRetractionComponent_comm_succ`：正の水平成分で、同じ補正付き射影は元のtotalの微分を保つ。
+- `cechConstantTotalRetractionComponent_comm_zero`：零水平・零縦成分で、元のsingleの標準同型と同じ増大は全微分と可換。
+
+`CechConstantTotalRetraction`（154行）：
+- `cechConstantTotalRetractionComponent_comm_zero_succ`：正の縦次数の偶奇を、元の定数列の0/id微分と増大の縦・水平の法則で照合する。
+- `cechConstantTotalRetractionComponent_comm`：元の各直和入射の照合から、同じ補正付き成分は全次数でtotalの微分を保つ。
+- `cechConstantTotalRetraction`：元の定数増大列のtotalから同じsingle増大列のtotalへの補正付きの複体の射。
+- `cechConstantTotalRetraction_section`：元の包含のtotalに同じ補正付き射影を合成すると、元のsingleのtotalの恒等になる。
+- `cechSingleTotal_acyclic_of_constant`：同じretractから、定数増大列のtotalの完全性を元のsingleのtotalへ戻す。
+
+`OpenCoverCechConstantComplexAugmentation`（45行）：
+- `openCoverCechConstantComplexAugmentation`：元の大域係数から空交叉への制限を使い、同じ全タプル複体へ全次数で増大する。
+- `openCoverCechConstantComplexAugmentation_apply`：各タプルでの評価は、元の全空間から実際の有限交叉への制限。
+
+検証：二本のmodule形式でのまとめた下書き検証 `2g-g4-constant-total-retraction-check-14.log` は終了0。開被覆の一法則も `2g-g4-open-constant-augmentation-check-1.log` で終了0。error・sorry警告なし。二本と入口の対象ビルドは **5,279ジョブ・終了0**（`2g-g4-constant-total-retraction-native.log`）、開被覆の一本と入口は **5,280ジョブ・終了0**（`2g-g4-open-constant-augmentation-native.log`）。下書き・本体・固定manifestのSHA256と全バイト一致を三本とも再確認した。別の共有鍵で非公開・生成分を含む実際の所有宣言を監査し、**36宣言・標準三公理のみ・終了0**（`2g-g4-constant-total-retraction-audit.log`）。上の順に10、23、3宣言。既定の資源上限のまま、同じ式の型の照合をconvertで明示し、元の総複体の選択は変更していない。unused simp・unused tactic・長行等のstyle警告は残る。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。共有鍵は --class impl --wait 3600、一件ずつ。対象ビルドと所有宣言の小監査は別枠。root・下流全ビルド・AlgebraicGeometry全体監査なし。
+
+今回280行＋登録3行＝283行。基準56ea849a3からの外枠計数は **13,430行**（新規187モジュール本体13,197行、既存追加25行、入口208行）。新規所有宣言の小監査累計 **1,338**、既存15宣言は別計上。完成見込み14,600〜17,300行、承認済み外枠18,000行は不変。
+
+到達点は同じ定数増大列から元のsingleのtotalへのretractによる完全性の移送と、元の開被覆の全次数の増大まで。構造層への代入の別下書きは、評価式が通り零次の照合の最後が未検証であり、今回の三本の宣言数に含めない。相対proper fppfへの代入・F8全複体・元の中心を保持するNoether帰納・G5は未完。最終のAugmentedRingCechExactと利用側の型は不変。mainは取り込んでいない。停止点2g-2ではない。
+
+一覧：済み1／全体3（うち追加0）。
