@@ -4147,3 +4147,59 @@ coendのdinaturalityは既存 `simplicialReplacementUnderEvaluation_naturality` 
 元のS8の一般の局所同値や指定離散比較の射の自然性が完成したとはしない。
 検証済み252本16,556行・1,438宣言、main未取り込み、S7・R2・R3停止を保持する。
 一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+### S8 の同じ coend 比較の正規化が通った（11-16 夕）
+
+`97888df36`：反転重みの自然同型と元の Under 評価からの coend 比較の2本137行・15宣言。
+`75ee8f812`：同じ比較射の正規化の1本98行・7宣言。
+証拠は `/tmp/is-w1/s8-under-comparison-1/target-audit-result.json` と
+`/tmp/is-w1/s8-under-normalization-1/target-audit-result.json`。
+各対象ビルド、新しい環境の所有宣言の小監査（標準三公理のみ）、SHA一致と
+セッション58077・50921の終了0を確認した。検証済み全体255本16,791行・1,460宣言。
+
+正規化の型は次のとおり（既存の構成の法則、追加IDなし）：
+```lean
+underWeightedColimit_normalize (F : I ⥤ SSet.{u}) {i : I} {n : ℕ}
+  (τ : ComposableArrows (Under i) n) (x : (F.obj i) _⦋n⦌) :
+  (weightedColimitι (underNerveWeight I) F (τ.obj 0).right).app (op ⦋n⦌)
+    ((F.map (τ.obj 0).hom).app (op ⦋n⦌) x,
+      scaffoldUnderChain (τ ⋙ Under.forget i)) =
+    (weightedColimitι (underNerveWeight I) F i).app (op ⦋n⦌) (x, τ)
+replacementUnderWeightedPoint F n :
+  simplicialReplacementSimplex F n → (weightedColimit (underNerveWeight I) F) _⦋n⦌
+replacementUnderWeightedPoint_rightInverse F n :
+  Function.RightInverse (replacementUnderWeightedPoint F n)
+    ((underWeightedColimitToReplacement F).app (op ⦋n⦌))
+replacementUnderWeightedPoint_leftInverse F n :
+  Function.LeftInverse (replacementUnderWeightedPoint F n)
+    ((underWeightedColimitToReplacement F).app (op ⦋n⦌))
+underWeightedColimitToReplacement_isIso F : IsIso (underWeightedColimitToReplacement F)
+underWeightedColimitReplacementIso F :
+  weightedColimit (underNerveWeight I) F ≅ simplicialReplacement F
+```
+
+大域の射は、先に coend の普遍性と既存の全自然性から作った
+`underWeightedColimitToReplacement F` のまま。点の公式はその射の全単射性の検証だけに使う。
+無指定な成分同型を集めて大域の射を作らず、元の射に既存の同型性の判定を適用して
+`asIso` を取る。指定右Kan比較についての禁止も変更していない。
+200行超の補題なし。計算上限の変更なし。
+
+次の接続は既存 `coendFunctor` の同型の像で行う。新規2本を下書きした：
+```lean
+weightedColimitWeightFunctor (F : I ⥤ SSet.{u}) : (Iᵒᵖ ⥤ SSet.{u}) ⥤ SSet.{u}
+weightedColimitWeightIso (e : W ≅ V) (F : I ⥤ SSet.{u}) :
+  weightedColimit W F ≅ weightedColimit V F
+weightedColimitWeightIso_ι_hom e F i :
+  weightedColimitι W F i ≫ (weightedColimitWeightIso e F).hom =
+    F.obj i ◁ e.hom.app (op i) ≫ weightedColimitι V F i
+reflectedBousfieldKanReplacementIso F :
+  reflectedBousfieldKanColimit F ≅ simplicialReplacement F
+reflectedBousfieldKanElementsIso (P : I ⥤ Type u) :
+  reflectedBousfieldKanColimit (coefficients P) ≅ nerve P.Elements
+```
+
+最後は検証済みの重みの同型・比較射と、既存の同じ `elementsToReplacement` の同型の合成。
+反転していないcoendや生の集合の余極限との同一視はしていない。
+現在 `/tmp/is-w1/s8-reflected-elements-1/`、セッション43321で2対象を検証中。
+S8 の元の一般の局所同値と指定自然性・層化の同じ単位への接続はまだ残る。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
