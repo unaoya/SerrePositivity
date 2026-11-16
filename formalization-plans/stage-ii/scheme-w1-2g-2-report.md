@@ -1699,3 +1699,20 @@ G4・G5と停止点2g-2は未完。最終の AugmentedRingCechExact と利用側
 今回1モジュール46行＋入口1行。新規133モジュール本体8,922行、既存追加25行を含む本体8,947行。登録133行・入口の追加空行21行を全て含む外枠計数 **9,101行**。新規小監査累計905宣言、既存15宣言は別計上。完全性・整数係数への移送・同じアフィン被覆への適用は下書きで、この束には含めない。G4・G5は未完。見込み約12,000〜15,500行・外枠16,000行は不変。
 
 一覧：済み1／全体3（うち追加0）。
+
+
+被覆への代入の型の明示（着手前、前記の内数）：`openCoverIntSequential_augmentedExact P U` は、各 P.obj n の同じ被覆 U での「長さ0の微分の単射性 ∧ 全ての長さ k の二つの微分の Function.Exact」から、同じ colimit P でのその二つの主張を返す。整数係数の任意の宇宙で、補助述語の二つの中身を直接返す分割であり、完全性の意味は変えない。アフィンへの出口 `affineSchemeStructurePerfectCech_augmentedExact` も、同じ元の構造層の Frobenius 係数について、この単射性と全長さの完全性を返す。既存の構造層の加群を、そのまま各有限段の同じ加法群と比較して供給する。最終の AugmentedRingCechExact と既存の利用側の型は変更しない。
+
+
+宇宙の照合（2026-11-16、下書きの診断）：既存の OpenCoverCechAcyclic は `ModuleCat.{v,v} R` を使い、`ModuleCat.{u,0} ℤ` の一般の u には適用できないことを Lean の型で確認した（作業ログ `2g-cech-filtered-augmented-exact-probe-check-2.log` の末尾）。整数係数の新しい補助出口は、前節のとおり同じ増大微分の単射性と全長さの完全性を直接返す。この二つは元の補助述語の中身そのもので、主張を弱めていない。一般の u も含めて扱い、既存の型・他レーンのファイル・最終の AugmentedRingCechExact は変えない。
+
+
+## G4：同じ増大項の単射性と全長さの filtered 完全性
+
+`CechFilteredAugmentedExact`（92行）：`fullCechFiltered_injective_zero` は各有限段の同じ長さ0の微分の単射性を、既存の各項の比較と加群の exact filtered colimit で移す。`fullCechFiltered_exact` は同じ二つの微分の全ての長さの完全性を、既存の短複体の完全性の移送で示す。有限な添字には既存の cechFiniteIndexOrder を局所的に使い、元の DecidableEq を定義上保つ。新しい微分・二重複体の判定法は作らない。
+
+単独検証、本体とのソース完全一致、対象と入口のビルド5,219ジョブ成功、小監査2宣言（実際の所有元による非公開・生成宣言の有無も走査）・標準三公理のみ、終了状態0。ログ `2g-cech-filtered-augmented-exact-check-4.log`・`2g-cech-filtered-augmented-exact-native.log`・`2g-cech-filtered-augmented-exact-audit.log`。局所的な backward.isDefEq.respectTransparency false、既定の資源制限。letI・haveI の style 警告あり。追加公理・sorry・既存の型変更・200行超の宣言なし。共有鍵 --class impl --wait 3600、待ちは一つ、対象ビルドと小監査は別枠。root・下流全ビルド・全体監査なし。
+
+今回1モジュール92行＋入口1行。新規134モジュール本体9,014行、既存追加25行を含む本体9,039行。登録134行・入口の追加空行21行を全て含む外枠計数 **9,194行**。新規小監査累計907宣言、既存15宣言は別計上。整数係数・同じ被覆・同じアフィン構造層への代入は下書きで、この束には含めない。G4・G5は未完。見込み約12,000〜15,500行・外枠16,000行は不変。
+
+一覧：済み1／全体3（うち追加0）。
