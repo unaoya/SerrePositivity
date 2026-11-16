@@ -36,3 +36,11 @@ IC-0 の完成（OE-W1 の段 1 の停止点）で ③-b は止まる。取り�
 - 各束の段 0（紙）：移動・改名の表、層の検査の見込み、他のレーンへの影響、所要時間。**条件付きの事前承認**：束が §1 の範囲に収まり、他のレーンの枝への影響が 30 ファイル以下なら、報告して止まらずに準備・適用へ。超えるか範囲の外が要るときは止まって報告。
 - 各束の完成が停止点。完了の報告（結果の表、取り下げ、B4 の資料）をコミットし、調整役が取り込む。取り込みの後、次の束の段 0 へ止まらずに進む。
 - 報告は `report-infinity-consolidation.md`（新設）に。区切りごとに「一覧：済み n／全体 m（うち追加 k）」（束と、その中の移動の単位を ID に）。
+
+## 4. 未決：K 理論の置き場所（IC-4 の段 0 の前に決める、11-17 の検討）
+
+ユーザーの意見（「K 理論の基礎は KST/ とは別のディレクトリにした方がよいかもしれない」）を受けた調整役の案：
+- **K の基礎は最上位の `KTheory/` に、文献ごとの節で置く**（`InfinityCategories/<Kerodon|HTT|HA>/` と同じ考え方）：`KTheory/Waldhausen/`・`BGT/`・`Schlichting/`・`Barwick/`・`ThomasonTrobaugh/`・`LandTamme/`・`Tamme/` など。節の名前と番号は K の文献ごとの対応表（`research/k-coverage/maps/`：bgt・land-tamme・tamme・kst・others）に合わせる。IC-W1 の分類で K 固有の 912 本（S 構成 552、Fibration 227、NonConnective 80、LocalizingInvariants 50 など）はここへ。
+- **`KST/` は Kerz–Strunk–Tamme の論文の層だけ**にする（導来ブローアップ、降下、pro 切除、§5。`BhattScholze/` と同じ「論文の層」）。分類で「未定」の多く（DerivedGeometry 296、DerivedBlowup 197、Descent 169、ProExcision 150）は KST の論文に固有なので、`KST/` に残すのが自然。
+- **今の `KTheory/`（35 本：G₀・K₀ の局所化、係数、Adams 作用、比較）との名前の衝突**：別名（`AlgebraicKTheory/`）を作ると K の置き場所が二つになって紛らわしいので、**`KTheory/` に一本化**し、今の 35 本は内容の文献に合わせて `KTheory/` の中の節（例：G₀・K₀ の基礎は `KTheory/Classical/`、Adams 作用は対応する文献の節）へ移す案。今の 35 本を import しているのは論文の層（`IntersectionMultiplicity/`・`PerfectComplex/` など）で、import の書き換えだけで済む。
+- 実施は IC-4。K の再開（`k-restart-draft.md`）の前の整理として、移動だけで主張・証明は変えない。
