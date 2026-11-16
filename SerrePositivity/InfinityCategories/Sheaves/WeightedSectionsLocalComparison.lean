@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Sheaves.WeightedSectionsData
+public import SerrePositivity.InfinityCategories.Sheaves.WeightedSectionsValueTransport
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.RightKanLimitVertexTransport
 
 /-!
@@ -30,8 +31,9 @@ def weightedSections_nativeShapeLimitIso (O : Presheaf C E)
     (P : (PresheafCat C SpaceInfinity.{u}).op _⦋0⦌)
     (d : JoinCone (rightKanDiagram (nativeSetShapeOppositeYoneda C) O P))
     (hd : IsLimitCone d) : VertexIso ((weightedSections O hE).app _ P) d.vertex := by
-  let c := Classical.choose (weightedSections_limitValue O hE P)
-  have hc := Classical.choose_spec (weightedSections_limitValue O hE P)
+  let c := (weightedSections_valueTransport O hE P).cone
+  have hc := And.intro (weightedSections_valueTransport_isLimit O hE P)
+    (weightedSections_valueTransport_vertex O hE P)
   have e := rightKanLimitVertexIsoOfFunctorIso (fixedOppositeSetYoneda_nativeIso C) O P c d hc.1 hd
   exact hc.2 ▸ e
 

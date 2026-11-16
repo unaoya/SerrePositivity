@@ -4794,3 +4794,41 @@ Sheaves全体とその下流の枝のモジュールを全部、対象ビルド�
 まず直接importerを含む対象ビルド・小監査・v3bの公開型/属性/公理の保存比較を実行中。
 その後、全対象の再ビルドを分割して実施する。S7・R2・R3は再開しない。
 一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+
+### 11-16：承認された3本文の修正と、Sheaves全157本の再検証完了
+
+3本文の修正は承認された錐の選択の置換と新規輸送ファイルのimportだけ。
+新規`WeightedSectionsValueTransport`は44行・3宣言、
+`NativeWeightedSectionsValueTransport`は48行・3宣言。
+既存3ファイルの差分は追加14行・削除7行。外枠用には削除を控除せず106行を加算し、
+検証済みの累計は**291本・18,549行**（物理的な差分の正味では18,542行）と数える。
+前回の見込みの上端22,950行にこの例外106行を別枠で足しても23,056行であり、
+現時点では24,000行の中。元の5群の主張を短縮せず進める。
+
+1. 直接importerを含む7本の対象ビルドと48宣言の小監査が通過した。
+   証拠は`/tmp/is-w1/s8-value-transport-1/target-audit-result.json`。
+2. v3bの旧・新コンパイル環境の採取を行い、公開宣言および証明補題以外の生成宣言7本の
+   kind・公開の型・属性・公理が一致した。本文のハッシュが変わった公開宣言は
+   承認された3宣言だけ。証拠は同ディレクトリの`before.json`・`after.json`・
+   `preservation-result.json`、公開比較コマンドは終了コード0。
+   初回の比較は内部生成証明補題も名前集合の完全一致を要求したため終了コード1になった。
+   具体的には承認した親の`nativeWeightedSections_leftLimitIso._proof_5`と
+   `weightedSections_leftLimitIso._proof_8`が消えた。共通する内部証明補題14本の型も変わる。
+   公開型の変更ではなく本文の証明分割の変更なので、この3親に属する内部proof行だけを
+   区別して再比較した。共通する内部proof行についても属性・公理の一致は検査した。
+   公開宣言と他の生成宣言は一切この例外に含めず、全て一致を要求した。
+3. 全追跡モジュールのimportグラフを経由する推移的な下流を調べ、Sheaves配下157本、
+   その外の枝の下流は0本だった。その全157本を対象ビルドし直し、同じ新鮮な環境の
+   所有宣言963本の小監査も完了した。対象ソースのSHA一致、標準三公理のみを確認。
+   監視プロセスの終了コード0も確認した。
+   証拠は`/tmp/is-w1/s8-value-transport-all-1/scope.json`・`files.json`・
+   `target-audit-result.json`。rootビルドとmainの取り込みは行っていない。
+
+時間切れになった自作の未検証補助則は
+`/tmp/is-w1/unverified-before-value-transport/NativeWeightedSectionsLeftLimitComposition.lean`
+に保全し、productionのソース配下から外した。上の全157本に除外したソースはない。
+停止中R2の4下書きは未変更。新しい輸送と3本文の変更は検証済みであり、
+この後は同じ指定余単位のstart・diagram・fixedVertexを使って大域比較のhom_facへ照合する。
+元の`weightedSections_discrete_map`と残る4宣言の完成はまだ主張しない。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。

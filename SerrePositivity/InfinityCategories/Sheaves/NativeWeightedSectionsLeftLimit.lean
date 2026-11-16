@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Sheaves.NativeWeightedSectionsData
+public import SerrePositivity.InfinityCategories.Sheaves.NativeWeightedSectionsValueTransport
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PresheafElementsKanProjection
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.EquivalentShapeLimitVertex
 
@@ -68,10 +69,12 @@ def nativeWeightedSections_leftLimitIso {E : SSet.{u + 1}} [Quasicategory E]
       (uliftOppositeIso A).hom ≫ O)) (hd : IsLimitCone d) :
     VertexIso ((nativeWeightedSections O hE).app _
       (SSet.opObjEquiv.symm (functorVertex P))) d.vertex := by
-  let c := Classical.choose (nativeWeightedSections_limitValue O hE
+  let c := (nativeWeightedSections_valueTransport O hE
+    (SSet.opObjEquiv.symm (functorVertex P))).cone
+  have hc := And.intro (nativeWeightedSections_valueTransport_isLimit O hE
     (SSet.opObjEquiv.symm (functorVertex P)))
-  have hc := Classical.choose_spec (nativeWeightedSections_limitValue O hE
-    (SSet.opObjEquiv.symm (functorVertex P)))
+    (nativeWeightedSections_valueTransport_vertex O hE
+      (SSet.opObjEquiv.symm (functorVertex P)))
   let j := leftElementsRightKanComparison P
   letI : LeftFibration (rightKanProjection (SSet.opFunctor.map (yonedaInfinityMap A))
       (SSet.opObjEquiv.symm (functorVertex P))) :=

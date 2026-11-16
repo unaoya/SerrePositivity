@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Sheaves.WeightedSectionsNativeLimitComparison
 public import SerrePositivity.InfinityCategories.Sheaves.NativeWeightedSectionsLeftLimit
+public import SerrePositivity.InfinityCategories.Sheaves.NativeWeightedSectionsValueTransport
 public import SerrePositivity.InfinityCategories.Sheaves.PresheafYonedaShapeValue
 
 /-!
@@ -41,8 +42,9 @@ def weightedSections_leftLimitIso (O : Presheaf C E)
   let P := (SSet.uliftFunctor.{u + 1, u}).map (nerveOppositeIso (C := C)).hom ≫ F
   let O' := (fixedYonedaDomainIso C).inv ≫ O
   let v := SSet.opObjEquiv.symm (functorVertex P)
-  let c := Classical.choose (nativeWeightedSections_limitValue O' hE v)
-  have hc := Classical.choose_spec (nativeWeightedSections_limitValue O' hE v)
+  let c := (nativeWeightedSections_valueTransport O' hE v).cone
+  have hc := And.intro (nativeWeightedSections_valueTransport_isLimit O' hE v)
+    (nativeWeightedSections_valueTransport_vertex O' hE v)
   let ew : VertexIso ((weightedSections O hE).app _ (SSet.opObjEquiv.symm (functorVertex F)))
       c.vertex := by
     exact weightedSections_nativeLimitIso O hE (SSet.opObjEquiv.symm (functorVertex F)) c hc.1
