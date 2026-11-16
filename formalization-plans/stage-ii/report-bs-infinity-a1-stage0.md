@@ -5085,3 +5085,59 @@ weightedSections_originalLeftLimitIso_hom_comp O hE F d e hd he :
 未検証なので今回のコミットには含めない。固定した射の自然性とS1は依然未完。
 mainは取り込まず、S7・R2・R3も再開していない。
 一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+
+### 11-16：固定離散値比較の可換三角形と、同じ指定輸送錐の表示
+
+追加4本・248行・16所有宣言の対象ビルドと小監査が完了（終了コード0、標準三公理のみ、SHA一致）。
+証拠：`/tmp/is-w1/s8-discrete-factorization-3/target-audit-result.json`。
+外枠用累計は **19,431行・305本**。
+
+* `VertexIsoParameterTransport`（35行）：頂点のパラメータの等式による同じ同型の移送を、
+  ホモトピー圏の等式の射との合成で表す（始点・標的の2法則）。
+* `DiscreteSectionsLeftComparison`（61行）：元の離散比較の本文と同じ要素の圏の比較と
+  射影等式を固定し、同じ切断錐からの比較とその合成則を表示する。
+* `WeightedSectionsDiscreteFactorization`（63行）：固定された元の離散値の同型を、
+  任意の指定left極限との可換三角形で特徴付ける。
+* `NativeLeftSectionsTransportCone`（89行）：元の指定余単位の輸送錐を、同じleft全空間へ
+  制限した錐に名前を付ける。その頂点等式と極限性を証明し、元の値比較の順射を
+  その同じ錐との標準極限比較として表示する。新しい錐の選択はない。
+
+```lean
+vertexIso_parameter_source_cast_hom f h e :
+  (cast (congrArg (fun z => VertexIso (f z) c) h) e).hom =
+    eqToHom (congrArg HomotopyCategory.mk (congrArg f h.symm)) ≫ e.hom
+vertexIso_parameter_target_cast_hom f h e :
+  (cast (congrArg (fun z => VertexIso c (f z)) h) e).hom =
+    e.hom ≫ eqToHom (congrArg HomotopyCategory.mk (congrArg f h))
+discreteSectionsLeftComparison_hom_comp O P hP d e hd he :
+  (discreteSectionsLeftComparison O P hP d hd).hom ≫ (limitVertexIso d e hd he).hom =
+    (discreteSectionsLeftComparison O P hP e he).hom
+weightedSections_discrete_hom_fac O hE P hP d hd :
+  let f := fun v => (weightedSections O hE).app _ (SSet.opObjEquiv.symm v)
+  (weightedSections_discrete O hE P hP).hom ≫
+    (discreteSectionsLeftComparison O P hP d hd).hom =
+      eqToHom (congrArg HomotopyCategory.mk
+        (congrArg f ((discretePresheafInclusion C).property.1 P))) ≫
+          (weightedSections_originalLeftLimitIso O hE (discretePresheaf P) d hd).hom
+nativeLeftSectionsTransportCone_vertex P O hE :
+  (nativeLeftSectionsTransportCone P O hE).vertex = nativeLeftSectionsValue P O hE
+nativeLeftSectionsTransportCone_isLimit P O hE :
+  IsLimitCone (nativeLeftSectionsTransportCone P O hE)
+nativeLeftSectionsValueIso_hom_transportCone P O hE d hd hc :
+  (nativeLeftSectionsValueIso P O hE d hd).hom =
+    eqToHom (congrArg HomotopyCategory.mk
+      (nativeLeftSectionsTransportCone_vertex P O hE).symm) ≫
+        (limitVertexIso (nativeLeftSectionsTransportCone P O hE) d hc hd).hom
+```
+
+可換三角形は、元のweightedSections_discreteを展開し、同じ埋め込みの頂点等式の移送を計算する。
+中間のClassical.chooseの極限を2つの既存比較の合成則で消す。別の同型への差し替えではない。
+移送則の引数を省略した候補は未確定な等式が残ったため、f・hp.symm・同型を明示した。
+合成側はe0・wという同じ定義の別名だけを展開して逆射を消すと通った。
+指定輸送錐の法則では既存の制限の判定が入る名前空間のopenを補った。
+計算上限は上げず、既存構成の法則・証明分割だけ（各200行未満、追加IDなし）。
+可換三角形は重みの射についての自然性自体ではない。次はその射影の法則と指定余単位との照合。
+S8全体、一般の局所同値と同じ層化の比較、S1の一般Coverage判定は未完。
+mainは取り込んでいない。S7・R2・R3は再開しない。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
