@@ -1,0 +1,26 @@
+{
+  "milestone": "approx-7000-source-lines",
+  "base": "336942ab0",
+  "verified_math_head": "037342553",
+  "prepared_modules": 71,
+  "prepared_lines": 6774,
+  "audited_modules": 65,
+  "audited_lines": 6258,
+  "audited_declarations": 957,
+  "HT01_complete": true,
+  "HT02_complete": false,
+  "scope_complete": 1,
+  "scope_total": 6,
+  "scope_added": 0,
+  "outer_limit": 14000,
+  "provisional_total_lines": [
+    10000,
+    13000
+  ],
+  "remaining_HT02": [
+    "same native semifree resolution strict cosimplicial interface",
+    "unit normalizations for actual R-model versus standard S-linear completed comparison",
+    "assemble native derived scalar extension comparison and prove its isomorphism"
+  ],
+  "risk": "Provisional source estimate only; remaining interfaces need Lean validation; preserve classical endpoint types and report before outer limit."
+}

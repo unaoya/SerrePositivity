@@ -1,0 +1,48 @@
+{
+  "date_jst": "2026-11-16",
+  "instruction_commit": "36685f20c759b587ae91a4be53feacc76d27ff55",
+  "approved_plan_commit": "ca9062087",
+  "approved_plan": "remaining-20000-plan.md",
+  "outer_limit_lines": 23000,
+  "order": [
+    "HT04",
+    "HT05",
+    "HT06"
+  ],
+  "report_without_stopping": [
+    "HT04 complete",
+    "about 18000 lines"
+  ],
+  "stop_if": "verified work committed and forecast exceeds 23000 lines",
+  "after_HT06": "not authorized in this run",
+  "scope_complete": 3,
+  "scope_total": 6,
+  "scope_added": 0,
+  "baseline_verified_modules": 157,
+  "baseline_verified_lines": 13341,
+  "baseline_audited_declarations": 1708,
+  "corrected_projected_total_lines": [
+    18441,
+    22441
+  ],
+  "forecast_margin_to_cap_lines": 559,
+  "mathematical_terminal_types_unchanged": true,
+  "general_crystalline_input_for_HT04_HT05": false,
+  "normal_bulk_lock_required": true,
+  "stop_instruction_commit": "75e22977f",
+  "do_not_start": [
+    "HT05",
+    "HT06",
+    "5inf7a stage0",
+    "B2",
+    "B5",
+    "B6"
+  ],
+  "active_order": [
+    "HT04.R1",
+    "HT04.R2",
+    "HT04.R3"
+  ],
+  "stop_at": "HT04 complete; commit measured report and stop",
+  "after_HT04": "stop; HT05 and HT06 require literature-fidelity review"
+}

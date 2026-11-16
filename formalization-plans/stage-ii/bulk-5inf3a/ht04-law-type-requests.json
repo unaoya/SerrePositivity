@@ -1,0 +1,2655 @@
+[
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Coefficients.AffineCohomologyScalarClasses",
+    "short_name": "affineHTCohomology_smul_class",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Coefficients/AffineCohomologyScalarClasses.lean",
+    "line": 34,
+    "file_lines": 49
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Coefficients.AffineOrientedCoefficientDiagram",
+    "short_name": "affineHTCoefficient_generator_mem",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Coefficients/AffineOrientedCoefficientDiagram.lean",
+    "line": 35,
+    "file_lines": 83
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Coefficients.AffineOrientedCoefficientDiagram",
+    "short_name": "affineHTCoefficientReducedAny",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Coefficients/AffineOrientedCoefficientDiagram.lean",
+    "line": 45,
+    "file_lines": 83
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Coefficients.AffineOrientedCoefficientDiagram",
+    "short_name": "affineHTCoefficientReducedAny_mk",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Coefficients/AffineOrientedCoefficientDiagram.lean",
+    "line": 66,
+    "file_lines": 83
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Coefficients.AffineOrientedCoefficientDiagram",
+    "short_name": "affineHTCoefficientReducedAny_eq",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Coefficients/AffineOrientedCoefficientDiagram.lean",
+    "line": 73,
+    "file_lines": 83
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Coefficients.AffineOrientedBaseRows",
+    "short_name": "affineBaseCoefficientAny_square",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Coefficients/AffineOrientedBaseRows.lean",
+    "line": 37,
+    "file_lines": 81
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Coefficients.AffineOrientedBaseRows",
+    "short_name": "affineBaseAnyRestrictedMap",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Coefficients/AffineOrientedBaseRows.lean",
+    "line": 48,
+    "file_lines": 81
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Coefficients.AffineOrientedBaseRows",
+    "short_name": "affineBaseAnyOrdinaryCoefficientMap",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Coefficients/AffineOrientedBaseRows.lean",
+    "line": 76,
+    "file_lines": 81
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Coefficients.AffineUnitBockstein",
+    "short_name": "affineHTCoefficientReducedAny_bockstein_unit",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Coefficients/AffineUnitBockstein.lean",
+    "line": 43,
+    "file_lines": 100
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Coefficients.AffineOrientedStandardZero",
+    "short_name": "affineHTCoefficientResidueAny_square",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Coefficients/AffineOrientedStandardZero.lean",
+    "line": 43,
+    "file_lines": 95
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Coefficients.AffineOrientedStandardZero",
+    "short_name": "affineHTCoefficientReducedAny_sec",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Coefficients/AffineOrientedStandardZero.lean",
+    "line": 50,
+    "file_lines": 95
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Coefficients.AffineOrientedStandardZero",
+    "short_name": "affineHTCoefficientAny_hodgeTateMapZero",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Coefficients/AffineOrientedStandardZero.lean",
+    "line": 65,
+    "file_lines": 95
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Coefficients.AffineOrientedStandardZero",
+    "short_name": "affineHTCoefficientAny_htBocksteinZero_unit",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Coefficients/AffineOrientedStandardZero.lean",
+    "line": 80,
+    "file_lines": 95
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Coefficients.AffineOrientedCohomology",
+    "short_name": "affineCoefficientAny_cohomologyMap_cast",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Coefficients/AffineOrientedCohomology.lean",
+    "line": 32,
+    "file_lines": 69
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Coefficients.AffineOrientedCohomology",
+    "short_name": "affineHTCoefficientAnyCohomology_smul",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Coefficients/AffineOrientedCohomology.lean",
+    "line": 42,
+    "file_lines": 69
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Coefficients.AffineOrientedCohomology",
+    "short_name": "affineHTCoefficientAnyCohomologyMap",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Coefficients/AffineOrientedCohomology.lean",
+    "line": 59,
+    "file_lines": 69
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Coefficients.AffineOrientedRawOne",
+    "short_name": "affineHTRawMap_coordinate_unit",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Coefficients/AffineOrientedRawOne.lean",
+    "line": 35,
+    "file_lines": 64
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Coefficients.AffineOrientedRawOne",
+    "short_name": "affineHTRaw_d_zero_unit",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Coefficients/AffineOrientedRawOne.lean",
+    "line": 48,
+    "file_lines": 64
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Coefficients.AffineOrientedRawBasis",
+    "short_name": "affineHTRawMap_polynomial_smul",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Coefficients/AffineOrientedRawBasis.lean",
+    "line": 41,
+    "file_lines": 113
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Coefficients.AffineOrientedRawBasis",
+    "short_name": "coordinateFormWord_one_smul",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Coefficients/AffineOrientedRawBasis.lean",
+    "line": 52,
+    "file_lines": 113
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Coefficients.AffineOrientedRawBasis",
+    "short_name": "affineHTRawMap_zero_any",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Coefficients/AffineOrientedRawBasis.lean",
+    "line": 59,
+    "file_lines": 113
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Coefficients.AffineOrientedRawBasis",
+    "short_name": "affineHTRawMap_basis_zero_any",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Coefficients/AffineOrientedRawBasis.lean",
+    "line": 71,
+    "file_lines": 113
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Coefficients.AffineOrientedRawBasis",
+    "short_name": "affineHTRawMap_polynomial_coordinate_unit",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Coefficients/AffineOrientedRawBasis.lean",
+    "line": 84,
+    "file_lines": 113
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Coefficients.AffineOrientedRawBasis",
+    "short_name": "affineHTRawMap_basis_one_unit",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Coefficients/AffineOrientedRawBasis.lean",
+    "line": 99,
+    "file_lines": 113
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Coefficients.AffineOrientedRowUnits",
+    "short_name": "affineBaseAnyRestrictedMap_apply",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Coefficients/AffineOrientedRowUnits.lean",
+    "line": 33,
+    "file_lines": 63
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Coefficients.AffineOrientedRowUnits",
+    "short_name": "affineBaseAnyOrdinaryCoefficientMap_unit",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Coefficients/AffineOrientedRowUnits.lean",
+    "line": 39,
+    "file_lines": 63
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Coefficients.AffineOrientedRowUnits",
+    "short_name": "affineBaseAnyOrdinaryCoefficientMap_tmul",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Coefficients/AffineOrientedRowUnits.lean",
+    "line": 52,
+    "file_lines": 63
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Totalization.CanonicalCompletedNaturality",
+    "short_name": "canonicalCompletedBaseChangeComparison_naturality",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/CanonicalCompletedNaturality.lean",
+    "line": 33,
+    "file_lines": 107
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Totalization.CanonicalCompletedNaturality",
+    "short_name": "cosimplicialNativeComparison_comp_augmentation",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/CanonicalCompletedNaturality.lean",
+    "line": 70,
+    "file_lines": 107
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Totalization.CompletedAugmentationFromTotal",
+    "short_name": "completeFiniteUnitIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/CompletedAugmentationFromTotal.lean",
+    "line": 33,
+    "file_lines": 100
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Totalization.CompletedAugmentationFromTotal",
+    "short_name": "finiteCompletedComparison_factor_augmentation",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/CompletedAugmentationFromTotal.lean",
+    "line": 40,
+    "file_lines": 100
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Totalization.CompletedAugmentationFromTotal",
+    "short_name": "completedAugmentation_quasiIso_of_totalComparison",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/CompletedAugmentationFromTotal.lean",
+    "line": 65,
+    "file_lines": 100
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Totalization.FiniteCompleteTotalUnit",
+    "short_name": "finiteCompletionRowsUnit_total_quasiIso_of_complete",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/FiniteCompleteTotalUnit.lean",
+    "line": 34,
+    "file_lines": 47
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Totalization.NativeAugmentationCanonicalIso",
+    "short_name": "canonicalCosimplicialComparison_isIso_of_augmentation",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Totalization/NativeAugmentationCanonicalIso.lean",
+    "line": 33,
+    "file_lines": 65
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.MapExtendDegreeNormalization",
+    "short_name": "mapExtendIso_hom_f_nat",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/MapExtendDegreeNormalization.lean",
+    "line": 31,
+    "file_lines": 57
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.MapExtendDegreeNormalization",
+    "short_name": "mapExtendIso_inv_f_nat",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/MapExtendDegreeNormalization.lean",
+    "line": 45,
+    "file_lines": 57
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.OrdinaryExtendedUnit",
+    "short_name": "ordinaryExtendedUnit",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/OrdinaryExtendedUnit.lean",
+    "line": 32,
+    "file_lines": 70
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineAnyRestrictedCohomologyClasses",
+    "short_name": "affineAnyBaseRestrictedComplexMap",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineAnyRestrictedCohomologyClasses.lean",
+    "line": 39,
+    "file_lines": 85
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineAnyRestrictedCohomologyClasses",
+    "short_name": "affineAnyBaseRestrictedComplexMap_cohomology",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineAnyRestrictedCohomologyClasses.lean",
+    "line": 48,
+    "file_lines": 85
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.TensorScalarQuotient",
+    "short_name": "tensorScalarIdeal_eq",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/TensorScalarQuotient.lean",
+    "line": 32,
+    "file_lines": 82
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.TensorScalarQuotient",
+    "short_name": "tensorScalarQuotientEquiv",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/TensorScalarQuotient.lean",
+    "line": 56,
+    "file_lines": 82
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.TensorScalarQuotient",
+    "short_name": "tensorScalarQuotientEquiv_tmul",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/TensorScalarQuotient.lean",
+    "line": 68,
+    "file_lines": 82
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineOrientedRowBaseChange",
+    "short_name": "affineCoefficient_generator_associated_prime",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineOrientedRowBaseChange.lean",
+    "line": 39,
+    "file_lines": 103
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineOrientedRowBaseChange",
+    "short_name": "exists_affineOrientedRowBaseChangeEquiv",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineOrientedRowBaseChange.lean",
+    "line": 47,
+    "file_lines": 103
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineResolvedCoefficientRows",
+    "short_name": "affineAnyExtendedSingleRowsMap",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineResolvedCoefficientRows.lean",
+    "line": 34,
+    "file_lines": 64
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineResolvedCoefficientRows",
+    "short_name": "affineResolvedCompletedRowsMap",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineResolvedCoefficientRows.lean",
+    "line": 43,
+    "file_lines": 64
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineResolvedCoefficientRows",
+    "short_name": "affineResolvedCompletedRowsMap_app",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineResolvedCoefficientRows.lean",
+    "line": 53,
+    "file_lines": 64
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineOrientedOrdinaryRows",
+    "short_name": "affineBaseAnyOrdinaryCoefficientMap_app_isIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineOrientedOrdinaryRows.lean",
+    "line": 38,
+    "file_lines": 72
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineOrientedOrdinaryRows",
+    "short_name": "affineAnyExtendedSingleRowsMap_app_isIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineOrientedOrdinaryRows.lean",
+    "line": 63,
+    "file_lines": 72
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.CoefficientSingleTotalModel",
+    "short_name": "coefficientSingleTotalIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/CoefficientSingleTotalModel.lean",
+    "line": 33,
+    "file_lines": 44
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineCoverTotalization",
+    "short_name": "affineBaseSingleRows",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineCoverTotalization.lean",
+    "line": 38,
+    "file_lines": 60
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineCoverTotalization",
+    "short_name": "affineBaseSingleRows_lowerBound",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineCoverTotalization.lean",
+    "line": 42,
+    "file_lines": 60
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineCoverTotalization",
+    "short_name": "affineCover_completedTotalComparison_isIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineCoverTotalization.lean",
+    "line": 48,
+    "file_lines": 60
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineFormsProjective",
+    "short_name": "affineProjectiveVars",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineFormsProjective.lean",
+    "line": 35,
+    "file_lines": 64
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineFormsProjective",
+    "short_name": "affineCompletedFormsBasis",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineFormsProjective.lean",
+    "line": 40,
+    "file_lines": 64
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineFormsProjective",
+    "short_name": "affineForms_free",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineFormsProjective.lean",
+    "line": 52,
+    "file_lines": 64
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineFormsProjective",
+    "short_name": "affineForms_finite",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineFormsProjective.lean",
+    "line": 56,
+    "file_lines": 64
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineFormsProjective",
+    "short_name": "affineForms_projective",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineFormsProjective.lean",
+    "line": 60,
+    "file_lines": 64
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineFormsComplete",
+    "short_name": "affineAlgebra_p_complete",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineFormsComplete.lean",
+    "line": 37,
+    "file_lines": 92
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineFormsComplete",
+    "short_name": "affineForms_p_complete",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineFormsComplete.lean",
+    "line": 51,
+    "file_lines": 92
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineFormsComplete",
+    "short_name": "affineBaseToPolynomialMap_generator",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineFormsComplete.lean",
+    "line": 62,
+    "file_lines": 92
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineFormsComplete",
+    "short_name": "affineRestrictedModule_p_complete",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineFormsComplete.lean",
+    "line": 68,
+    "file_lines": 92
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineFormsComplete",
+    "short_name": "affineRestrictedModule_generator_complete",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineFormsComplete.lean",
+    "line": 83,
+    "file_lines": 92
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.ProjectiveHomologyLift",
+    "short_name": "exists_single_homology_lift",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/ProjectiveHomologyLift.lean",
+    "line": 35,
+    "file_lines": 58
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineLineRealization",
+    "short_name": "homologyBiprodInlIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineLineRealization.lean",
+    "line": 34,
+    "file_lines": 114
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineLineRealization",
+    "short_name": "homologyBiprodInrIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineLineRealization.lean",
+    "line": 50,
+    "file_lines": 114
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineLineRealization",
+    "short_name": "affineLineFormalModel",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineLineRealization.lean",
+    "line": 73,
+    "file_lines": 114
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineLineRealization",
+    "short_name": "affineLineFormalZeroIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineLineRealization.lean",
+    "line": 78,
+    "file_lines": 114
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineLineRealization",
+    "short_name": "affineLineFormalOneIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineLineRealization.lean",
+    "line": 84,
+    "file_lines": 114
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineLineRealization",
+    "short_name": "exists_affineLine_HT_realization",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineLineRealization.lean",
+    "line": 90,
+    "file_lines": 114
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineModelsComplete",
+    "short_name": "complete_zero_module",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineModelsComplete.lean",
+    "line": 39,
+    "file_lines": 126
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineModelsComplete",
+    "short_name": "complete_biprod_module",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineModelsComplete.lean",
+    "line": 44,
+    "file_lines": 126
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineModelsComplete",
+    "short_name": "complete_single_term",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineModelsComplete.lean",
+    "line": 55,
+    "file_lines": 126
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineModelsComplete",
+    "short_name": "affineLineFormal_terms_complete",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineModelsComplete.lean",
+    "line": 66,
+    "file_lines": 126
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineModelsComplete",
+    "short_name": "affineExtended_terms_complete",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineModelsComplete.lean",
+    "line": 79,
+    "file_lines": 126
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineModelsComplete",
+    "short_name": "affineTotal_terms_complete",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineModelsComplete.lean",
+    "line": 92,
+    "file_lines": 126
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineModelsComplete",
+    "short_name": "affineComplexOnBase",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineModelsComplete.lean",
+    "line": 100,
+    "file_lines": 126
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineModelsComplete",
+    "short_name": "affineComplexOnBase_complete_p",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineModelsComplete.lean",
+    "line": 104,
+    "file_lines": 126
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineModelsComplete",
+    "short_name": "affineComplexOnBase_complete_generator",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineModelsComplete.lean",
+    "line": 111,
+    "file_lines": 126
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineModelsComplete",
+    "short_name": "affineLineFormal_complete_p",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineModelsComplete.lean",
+    "line": 117,
+    "file_lines": 126
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineModelsComplete",
+    "short_name": "affineHTTotal_complete_p",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineModelsComplete.lean",
+    "line": 122,
+    "file_lines": 126
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineOriginalTotalModel",
+    "short_name": "affineBaseSingleTotalPolynomialIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineOriginalTotalModel.lean",
+    "line": 35,
+    "file_lines": 46
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineOrdinaryTarget",
+    "short_name": "affineAnyOrdinaryRowsIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineOrdinaryTarget.lean",
+    "line": 36,
+    "file_lines": 72
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineOrdinaryTarget",
+    "short_name": "affineAnyOrdinaryComplexIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineOrdinaryTarget.lean",
+    "line": 46,
+    "file_lines": 72
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineOrdinaryTarget",
+    "short_name": "affineOriginalBaseComplexIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineOrdinaryTarget.lean",
+    "line": 53,
+    "file_lines": 72
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineOrdinaryTarget",
+    "short_name": "affineAnyOrdinaryTotalIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineOrdinaryTarget.lean",
+    "line": 60,
+    "file_lines": 72
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineAnyOrdinaryTargetUnit",
+    "short_name": "affineAnyOrdinaryComplexIso_unit",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineAnyOrdinaryTargetUnit.lean",
+    "line": 41,
+    "file_lines": 73
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineAnyOrdinaryTargetUnit",
+    "short_name": "affineAnyOrdinaryTotalIso_unit",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineAnyOrdinaryTargetUnit.lean",
+    "line": 55,
+    "file_lines": 73
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.MapExtendHomologyCompatibility",
+    "short_name": "mapExtendIso_homology_compatibility",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/MapExtendHomologyCompatibility.lean",
+    "line": 32,
+    "file_lines": 105
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AssociatedCompleteness",
+    "short_name": "associatedLocalizationObjectIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AssociatedCompleteness.lean",
+    "line": 34,
+    "file_lines": 58
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AssociatedCompleteness",
+    "short_name": "isComplete_associated_iff",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AssociatedCompleteness.lean",
+    "line": 42,
+    "file_lines": 58
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AssociatedCompleteness",
+    "short_name": "isComplete_mul_unit_iff",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AssociatedCompleteness.lean",
+    "line": 54,
+    "file_lines": 58
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.DerivedScalarAnnihilation",
+    "short_name": "derivedBaseChange_scalar_id",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/DerivedScalarAnnihilation.lean",
+    "line": 34,
+    "file_lines": 71
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.DerivedScalarAnnihilation",
+    "short_name": "derivedBaseChange_scalar_zero",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/DerivedScalarAnnihilation.lean",
+    "line": 51,
+    "file_lines": 71
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.DerivedScalarAnnihilation",
+    "short_name": "derivedBaseChange_complete_of_scalar_zero",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/DerivedScalarAnnihilation.lean",
+    "line": 65,
+    "file_lines": 71
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineReducedCone",
+    "short_name": "affineFullBaseModules",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineReducedCone.lean",
+    "line": 40,
+    "file_lines": 108
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineReducedCone",
+    "short_name": "affineFullBaseProjection",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineReducedCone.lean",
+    "line": 44,
+    "file_lines": 108
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineReducedCone",
+    "short_name": "affineFullBaseProjection_zero",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineReducedCone.lean",
+    "line": 49,
+    "file_lines": 108
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineReducedCone",
+    "short_name": "affineFullBaseReduction",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineReducedCone.lean",
+    "line": 61,
+    "file_lines": 108
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineReducedCone",
+    "short_name": "affineFullBaseReduction_shortExact",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineReducedCone.lean",
+    "line": 66,
+    "file_lines": 108
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineReducedCone",
+    "short_name": "affineReducedScalarConeIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineReducedCone.lean",
+    "line": 89,
+    "file_lines": 108
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineFullCoverTerms",
+    "short_name": "affineFullCoverTermIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineFullCoverTerms.lean",
+    "line": 40,
+    "file_lines": 53
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.PairScalarConeCompatibility",
+    "short_name": "pairCompletedScalarConeIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/PairScalarConeCompatibility.lean",
+    "line": 34,
+    "file_lines": 48
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.ScalarConeOrientation",
+    "short_name": "scalarUnitSelfIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/ScalarConeOrientation.lean",
+    "line": 32,
+    "file_lines": 63
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.ScalarConeOrientation",
+    "short_name": "scalarConeOrientationArrow",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/ScalarConeOrientation.lean",
+    "line": 39,
+    "file_lines": 63
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.ScalarConeOrientation",
+    "short_name": "scalarConeOrientationIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/ScalarConeOrientation.lean",
+    "line": 47,
+    "file_lines": 63
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.ScalarConeOrientation",
+    "short_name": "scalarConeOrientationIso_inr",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/ScalarConeOrientation.lean",
+    "line": 53,
+    "file_lines": 63
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineReducedCoverTerms",
+    "short_name": "derivedScalarConeOrientationSingleIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineReducedCoverTerms.lean",
+    "line": 35,
+    "file_lines": 74
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineReducedCoverTerms",
+    "short_name": "affineReducedCoverTermIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineReducedCoverTerms.lean",
+    "line": 46,
+    "file_lines": 74
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AssociatedCompletionComparison",
+    "short_name": "associatedCoordinates_complete",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AssociatedCompletionComparison.lean",
+    "line": 34,
+    "file_lines": 90
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AssociatedCompletionComparison",
+    "short_name": "associatedFiniteCompletionIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AssociatedCompletionComparison.lean",
+    "line": 39,
+    "file_lines": 90
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AssociatedCompletionComparison",
+    "short_name": "associatedFiniteCompletionIso_unit",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AssociatedCompletionComparison.lean",
+    "line": 65,
+    "file_lines": 90
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AssociatedCompletionComparison",
+    "short_name": "associatedFiniteCompletionIso_naturality",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AssociatedCompletionComparison.lean",
+    "line": 73,
+    "file_lines": 90
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AssociatedCompletionComparison",
+    "short_name": "associatedFiniteCompletionNatIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AssociatedCompletionComparison.lean",
+    "line": 85,
+    "file_lines": 90
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.CoverCompletionCoordinates",
+    "short_name": "coverImageCoordinates",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/CoverCompletionCoordinates.lean",
+    "line": 36,
+    "file_lines": 74
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.CoverCompletionCoordinates",
+    "short_name": "coverImageCoordinates_associated",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/CoverCompletionCoordinates.lean",
+    "line": 40,
+    "file_lines": 74
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.CoverCompletionCoordinates",
+    "short_name": "coverImageCompletionNatIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/CoverCompletionCoordinates.lean",
+    "line": 54,
+    "file_lines": 74
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.CoverCompletionCoordinates",
+    "short_name": "coverImageCompletion_quasiIso_iff",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/CoverCompletionCoordinates.lean",
+    "line": 66,
+    "file_lines": 74
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineReducedCoverCompleteness",
+    "short_name": "affineBaseModule_generator_zero",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineReducedCoverCompleteness.lean",
+    "line": 37,
+    "file_lines": 120
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineReducedCoverCompleteness",
+    "short_name": "affineBaseSingle_generator_zero",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineReducedCoverCompleteness.lean",
+    "line": 45,
+    "file_lines": 120
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineReducedCoverCompleteness",
+    "short_name": "affineReducedCoverBaseChange_complete_p",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineReducedCoverCompleteness.lean",
+    "line": 55,
+    "file_lines": 120
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineReducedCoverCompleteness",
+    "short_name": "affineReducedCoverBaseChangeCompletionIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineReducedCoverCompleteness.lean",
+    "line": 66,
+    "file_lines": 120
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineReducedCoverCompleteness",
+    "short_name": "affineReducedCoverBaseChangeTermIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineReducedCoverCompleteness.lean",
+    "line": 82,
+    "file_lines": 120
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineReducedCoverCompleteness",
+    "short_name": "affineReducedCover_scalarExtensionTorVanishing",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineReducedCoverCompleteness.lean",
+    "line": 91,
+    "file_lines": 120
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineReducedCoverCompleteness",
+    "short_name": "affineReducedCover_derivedAugmentation_isIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineReducedCoverCompleteness.lean",
+    "line": 109,
+    "file_lines": 120
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.TorAcyclicResolvedRows",
+    "short_name": "nativeDerivedAugmentation_isIso_of_torVanishing",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/TorAcyclicResolvedRows.lean",
+    "line": 34,
+    "file_lines": 98
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.TorAcyclicResolvedRows",
+    "short_name": "baseChange_quasiIso_to_single_of_torVanishing",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/TorAcyclicResolvedRows.lean",
+    "line": 76,
+    "file_lines": 98
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.TorAcyclicRetracts",
+    "short_name": "scalarExtensionTorVanishing_of_split",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/TorAcyclicRetracts.lean",
+    "line": 28,
+    "file_lines": 39
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.CompletedPolynomialSplit",
+    "short_name": "completedPolynomialRename",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/CompletedPolynomialSplit.lean",
+    "line": 33,
+    "file_lines": 91
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.CompletedPolynomialSplit",
+    "short_name": "completedPolynomialRename_unit",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/CompletedPolynomialSplit.lean",
+    "line": 42,
+    "file_lines": 91
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.CompletedPolynomialSplit",
+    "short_name": "completedPolynomialRename_split",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/CompletedPolynomialSplit.lean",
+    "line": 62,
+    "file_lines": 91
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.CompletedPolynomialSplit",
+    "short_name": "completedPolynomialRename_C",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/CompletedPolynomialSplit.lean",
+    "line": 85,
+    "file_lines": 91
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineReducedPolynomialModel",
+    "short_name": "exists_affineReducedCompletedPolynomialLinearEquiv",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineReducedPolynomialModel.lean",
+    "line": 38,
+    "file_lines": 92
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffinePolynomialTor",
+    "short_name": "affineRestrictedAlgebra_scalarExtensionTorVanishing",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffinePolynomialTor.lean",
+    "line": 36,
+    "file_lines": 85
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineOrientedForms",
+    "short_name": "affineFormsCoordinateBasis",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineOrientedForms.lean",
+    "line": 32,
+    "file_lines": 67
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineOrientedForms",
+    "short_name": "affineFormsCoefficientAny",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineOrientedForms.lean",
+    "line": 50,
+    "file_lines": 67
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineOrientedForms",
+    "short_name": "affineFormsCoefficientAny_basis",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineOrientedForms.lean",
+    "line": 61,
+    "file_lines": 67
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.TorAcyclicFiniteBasis",
+    "short_name": "scalarExtensionTorVanishing_of_finiteBasis",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/TorAcyclicFiniteBasis.lean",
+    "line": 31,
+    "file_lines": 63
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineFormsTor",
+    "short_name": "affineRestrictedForms_scalarExtensionTorVanishing",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineFormsTor.lean",
+    "line": 34,
+    "file_lines": 52
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineFormsTor",
+    "short_name": "affineRestrictedForms_nativeAugmentation_isIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineFormsTor.lean",
+    "line": 44,
+    "file_lines": 52
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.TorAcyclicSingleDegrees",
+    "short_name": "baseChange_quasiIso_to_singleDegree_of_torVanishing",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/TorAcyclicSingleDegrees.lean",
+    "line": 35,
+    "file_lines": 80
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.TorAcyclicSingleDegrees",
+    "short_name": "nativeDerivedAugmentation_singleDegree_isIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/TorAcyclicSingleDegrees.lean",
+    "line": 59,
+    "file_lines": 80
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.KFlatBiprodModels",
+    "short_name": "additive_preservesBinaryBiproducts_model",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/KFlatBiprodModels.lean",
+    "line": 34,
+    "file_lines": 103
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.KFlatBiprodModels",
+    "short_name": "mapBiprod_map_square",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/KFlatBiprodModels.lean",
+    "line": 41,
+    "file_lines": 103
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.KFlatBiprodModels",
+    "short_name": "quasiIso_biprod_map_model",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/KFlatBiprodModels.lean",
+    "line": 50,
+    "file_lines": 103
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.KFlatBiprodModels",
+    "short_name": "mappedBiprod_quasiIso_model",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/KFlatBiprodModels.lean",
+    "line": 78,
+    "file_lines": 103
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.KFlatBiprodModels",
+    "short_name": "complexKFlat_biprod_model",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/KFlatBiprodModels.lean",
+    "line": 89,
+    "file_lines": 103
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.BiprodDerivedAugmentation",
+    "short_name": "nativeDerivedAugmentation_isIso_of_model",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/BiprodDerivedAugmentation.lean",
+    "line": 32,
+    "file_lines": 101
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.BiprodDerivedAugmentation",
+    "short_name": "nativeResolutionAugmentation_baseChange_quasiIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/BiprodDerivedAugmentation.lean",
+    "line": 51,
+    "file_lines": 101
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.BiprodDerivedAugmentation",
+    "short_name": "nativeDerivedAugmentation_biprod_isIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/BiprodDerivedAugmentation.lean",
+    "line": 74,
+    "file_lines": 101
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.BiprodDerivedAugmentation",
+    "short_name": "nativeDerivedAugmentation_isIso_of_iso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/BiprodDerivedAugmentation.lean",
+    "line": 91,
+    "file_lines": 101
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineLineFormalCoverAugmentation",
+    "short_name": "affineLineFormalRestrictionIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineLineFormalCoverAugmentation.lean",
+    "line": 36,
+    "file_lines": 78
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineLineFormalCoverAugmentation",
+    "short_name": "affineLineFormalCover_nativeAugmentation_isIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineLineFormalCoverAugmentation.lean",
+    "line": 55,
+    "file_lines": 78
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineLineFormalCoverAugmentation",
+    "short_name": "affineLineFormalCover_resolvedAugmentation_quasiIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineLineFormalCoverAugmentation.lean",
+    "line": 72,
+    "file_lines": 78
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.BaseChangeHomologyUnit",
+    "short_name": "restrictCochainHomologyIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/BaseChangeHomologyUnit.lean",
+    "line": 32,
+    "file_lines": 79
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.BaseChangeHomologyUnit",
+    "short_name": "complexBaseChangeHomologyUnit",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/BaseChangeHomologyUnit.lean",
+    "line": 41,
+    "file_lines": 79
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.BaseChangeHomologyUnit",
+    "short_name": "complexBaseChangeHomologyUnit_naturality",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/BaseChangeHomologyUnit.lean",
+    "line": 47,
+    "file_lines": 79
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.BaseChangeHomologyUnit",
+    "short_name": "complexBaseChangeHomologyComparison",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/BaseChangeHomologyUnit.lean",
+    "line": 61,
+    "file_lines": 79
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.BaseChangeHomologyUnit",
+    "short_name": "complexBaseChangeHomologyComparison_naturality",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/BaseChangeHomologyUnit.lean",
+    "line": 67,
+    "file_lines": 79
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.HomologyUnitPureTensor",
+    "short_name": "complexBaseChangeHomologyComparison_one_tmul",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/HomologyUnitPureTensor.lean",
+    "line": 30,
+    "file_lines": 39
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.HomologyUnitComposite",
+    "short_name": "complexBaseChangeHomologyUnit_comp",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/HomologyUnitComposite.lean",
+    "line": 32,
+    "file_lines": 61
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.HomologyUnitComposite",
+    "short_name": "complexBaseChangeHomologyComparison_one_tmul_comp",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/HomologyUnitComposite.lean",
+    "line": 50,
+    "file_lines": 61
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.OrdinaryExtendedHomology",
+    "short_name": "ordinaryExtendedHomology_one_tmul",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/OrdinaryExtendedHomology.lean",
+    "line": 34,
+    "file_lines": 83
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineAnyExtendedHomology",
+    "short_name": "affineAnyExtendedHomology_one_tmul",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineAnyExtendedHomology.lean",
+    "line": 36,
+    "file_lines": 59
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineAnySingleRowUnit",
+    "short_name": "affineAnyRestrictedSingleRowsMap",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineAnySingleRowUnit.lean",
+    "line": 40,
+    "file_lines": 69
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineAnySingleRowUnit",
+    "short_name": "affineAnyExtendedSingleRowsMap_unit",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineAnySingleRowUnit.lean",
+    "line": 51,
+    "file_lines": 69
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineBaseChangeComplete",
+    "short_name": "affineComplexOnBase_generator_smulId_zero",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineBaseChangeComplete.lean",
+    "line": 37,
+    "file_lines": 79
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineBaseChangeComplete",
+    "short_name": "affineCoverBaseChange_complete_p",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineBaseChangeComplete.lean",
+    "line": 48,
+    "file_lines": 79
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineBaseChangeComplete",
+    "short_name": "affineCoverBaseChange_completionUnit_quasiIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineBaseChangeComplete.lean",
+    "line": 71,
+    "file_lines": 79
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineBasePolynomialCohomologyClasses",
+    "short_name": "affineBasePolynomialCohomologyIso_cohomology",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineBasePolynomialCohomologyClasses.lean",
+    "line": 39,
+    "file_lines": 71
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.FiniteCompleteSingleRows",
+    "short_name": "coefficientSingleFiniteCompletionUnit",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/FiniteCompleteSingleRows.lean",
+    "line": 33,
+    "file_lines": 69
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.FiniteCompleteSingleRows",
+    "short_name": "coefficientSingleFiniteCompletionUnit_quasiIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/FiniteCompleteSingleRows.lean",
+    "line": 39,
+    "file_lines": 69
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.FiniteCompleteSingleRows",
+    "short_name": "coefficientFiniteCompletedSingleRows_lowerBound",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/FiniteCompleteSingleRows.lean",
+    "line": 50,
+    "file_lines": 69
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.FiniteCompleteSingleRows",
+    "short_name": "coefficientSingleFiniteCompletionUnit_total_quasiIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/FiniteCompleteSingleRows.lean",
+    "line": 60,
+    "file_lines": 69
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineResolvedRowQuasiIso",
+    "short_name": "affineResolvedCompletedRowsMap_quasiIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineResolvedRowQuasiIso.lean",
+    "line": 40,
+    "file_lines": 93
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineResolvedRowQuasiIso",
+    "short_name": "affineResolvedCompletedRows_lowerBound",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineResolvedRowQuasiIso.lean",
+    "line": 55,
+    "file_lines": 93
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineResolvedRowQuasiIso",
+    "short_name": "affineResolvedCompletedRows_total_quasiIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineResolvedRowQuasiIso.lean",
+    "line": 64,
+    "file_lines": 93
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineResolvedRowQuasiIso",
+    "short_name": "affineResolvedCompletedTotalIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineResolvedRowQuasiIso.lean",
+    "line": 73,
+    "file_lines": 93
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineOriginalCoverComparison",
+    "short_name": "affineOriginalCoverTotalComparison",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineOriginalCoverComparison.lean",
+    "line": 33,
+    "file_lines": 59
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineOriginalCoverComparison",
+    "short_name": "affineOriginalCoverTotalComparison_isIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineOriginalCoverComparison.lean",
+    "line": 50,
+    "file_lines": 59
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineCoverResolvedTotal",
+    "short_name": "affineCoverResolvedRowsMap",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineCoverResolvedTotal.lean",
+    "line": 37,
+    "file_lines": 70
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineCoverResolvedTotal",
+    "short_name": "affineCoverResolvedRowsMap_quasiIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineCoverResolvedTotal.lean",
+    "line": 42,
+    "file_lines": 70
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineCoverResolvedTotal",
+    "short_name": "affineCoverRows_complete",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineCoverResolvedTotal.lean",
+    "line": 49,
+    "file_lines": 70
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineCoverResolvedTotal",
+    "short_name": "affineCoverResolvedTotalIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineCoverResolvedTotal.lean",
+    "line": 58,
+    "file_lines": 70
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineOrdinaryRowsCompletion",
+    "short_name": "affineOrdinaryRows_complete",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineOrdinaryRowsCompletion.lean",
+    "line": 40,
+    "file_lines": 73
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineOrdinaryRowsCompletion",
+    "short_name": "affineOrdinaryRows_lowerBound",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineOrdinaryRowsCompletion.lean",
+    "line": 53,
+    "file_lines": 73
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineOrdinaryRowsCompletion",
+    "short_name": "affineOrdinaryRowsCompletionUnit_total_quasiIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineOrdinaryRowsCompletion.lean",
+    "line": 63,
+    "file_lines": 73
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineCanonicalSingleRows",
+    "short_name": "affineResolvedCompletedAugmentation_total_quasiIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineCanonicalSingleRows.lean",
+    "line": 44,
+    "file_lines": 92
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineCanonicalSingleRows",
+    "short_name": "affineCoverCanonicalSingleComparison_isIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineCanonicalSingleRows.lean",
+    "line": 76,
+    "file_lines": 92
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.CoefficientSingleTotalProjection",
+    "short_name": "coefficientSingleTotalIso_hom_f_nat",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/CoefficientSingleTotalProjection.lean",
+    "line": 39,
+    "file_lines": 105
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.CoefficientSingleTotalBaseChange",
+    "short_name": "coefficientSingleTotalIso_baseChange",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/CoefficientSingleTotalBaseChange.lean",
+    "line": 34,
+    "file_lines": 114
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.CoefficientSingleTotalNaturality",
+    "short_name": "coefficientSingleTotalIso_naturality",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/CoefficientSingleTotalNaturality.lean",
+    "line": 32,
+    "file_lines": 83
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineNativeCoefficientUnit",
+    "short_name": "affineNativeCoefficient_unit",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineNativeCoefficientUnit.lean",
+    "line": 37,
+    "file_lines": 68
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.CompletedCofaceCoefficientFactor",
+    "short_name": "cosimplicialFiniteCompletionUnit",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/CompletedCofaceCoefficientFactor.lean",
+    "line": 33,
+    "file_lines": 90
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.CompletedCofaceCoefficientFactor",
+    "short_name": "cosimplicialFiniteCompletionUnit_naturality",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/CompletedCofaceCoefficientFactor.lean",
+    "line": 39,
+    "file_lines": 90
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.CompletedCofaceCoefficientFactor",
+    "short_name": "finiteCompletionRowsUnit_coface",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/CompletedCofaceCoefficientFactor.lean",
+    "line": 48,
+    "file_lines": 90
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.CompletedCofaceCoefficientFactor",
+    "short_name": "baseChangeModelToCompletedCoefficientRows",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/CompletedCofaceCoefficientFactor.lean",
+    "line": 63,
+    "file_lines": 90
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineNativeOrdinaryCoefficientUnit",
+    "short_name": "affineOrdinaryCofaceCoefficient",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineNativeOrdinaryCoefficientUnit.lean",
+    "line": 41,
+    "file_lines": 162
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineNativeOrdinaryCoefficientUnit",
+    "short_name": "cosimplicialFiniteCompletionUnit_singleRows",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineNativeOrdinaryCoefficientUnit.lean",
+    "line": 54,
+    "file_lines": 162
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineNativeOrdinaryCoefficientUnit",
+    "short_name": "affineNativeCoefficient_unit_ordinary",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineNativeOrdinaryCoefficientUnit.lean",
+    "line": 60,
+    "file_lines": 162
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineNativeOrdinaryCoefficientUnit",
+    "short_name": "affineNativeCoefficient_cancel_unit",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineNativeOrdinaryCoefficientUnit.lean",
+    "line": 90,
+    "file_lines": 162
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineNativeOrdinaryCoefficientUnit",
+    "short_name": "affineResolvedCompletedTotalIso_unit",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineNativeOrdinaryCoefficientUnit.lean",
+    "line": 116,
+    "file_lines": 162
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineNativeOrdinaryCoefficientUnit",
+    "short_name": "affineNativeTotalIso_unit",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineNativeOrdinaryCoefficientUnit.lean",
+    "line": 138,
+    "file_lines": 162
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineOrdinaryCofaceCompatibility",
+    "short_name": "affineOrdinaryCofaceCoefficient_compatibility",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineOrdinaryCofaceCompatibility.lean",
+    "line": 39,
+    "file_lines": 91
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.NativeScalarModelAugmentation",
+    "short_name": "nativeDerivedScalarModelIso_comp_augmentation",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/NativeScalarModelAugmentation.lean",
+    "line": 34,
+    "file_lines": 44
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.NativeCompletedModelAugmentation",
+    "short_name": "nativeCompletedScalarModelIso_comp_augmentation",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/NativeCompletedModelAugmentation.lean",
+    "line": 34,
+    "file_lines": 56
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.NativeCompletedModelUnit",
+    "short_name": "nativeCompletedScalarModelIso_unit",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/NativeCompletedModelUnit.lean",
+    "line": 34,
+    "file_lines": 55
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineNativeOrdinaryTargetUnit",
+    "short_name": "affineNativeOrdinaryTarget_unit",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineNativeOrdinaryTargetUnit.lean",
+    "line": 37,
+    "file_lines": 121
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineNativeCoverTargetUnit",
+    "short_name": "affineOrdinaryTotalCoefficient",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineNativeCoverTargetUnit.lean",
+    "line": 40,
+    "file_lines": 74
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineNativeCoverTargetUnit",
+    "short_name": "affineNativeCoverTarget_unit",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineNativeCoverTargetUnit.lean",
+    "line": 57,
+    "file_lines": 74
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineOrdinaryTotalCompatibility",
+    "short_name": "affineOrdinaryTotalCoefficient_compatibility",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineOrdinaryTotalCompatibility.lean",
+    "line": 40,
+    "file_lines": 55
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineOriginalCoverTarget",
+    "short_name": "affineOriginalCoverTargetIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineOriginalCoverTarget.lean",
+    "line": 34,
+    "file_lines": 55
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.SingleRowsOrdinaryTotal",
+    "short_name": "isolatedTotalComponentIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/SingleRowsOrdinaryTotal.lean",
+    "line": 32,
+    "file_lines": 87
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.SingleRowsOrdinaryTotal",
+    "short_name": "totalDegree_isZero_of_components",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/SingleRowsOrdinaryTotal.lean",
+    "line": 49,
+    "file_lines": 87
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.SingleRowsOrdinaryTotal",
+    "short_name": "baseChangeTotalComparison_isIso_of_singleRows",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/SingleRowsOrdinaryTotal.lean",
+    "line": 57,
+    "file_lines": 87
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.ResolvedOrdinaryComparison",
+    "short_name": "resolvedOrdinarySourceFunctor",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/ResolvedOrdinaryComparison.lean",
+    "line": 37,
+    "file_lines": 118
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.ResolvedOrdinaryComparison",
+    "short_name": "ordinaryTargetFunctor",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/ResolvedOrdinaryComparison.lean",
+    "line": 41,
+    "file_lines": 118
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.ResolvedOrdinaryComparison",
+    "short_name": "completedOrdinaryTargetFunctor",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/ResolvedOrdinaryComparison.lean",
+    "line": 44,
+    "file_lines": 118
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.ResolvedOrdinaryComparison",
+    "short_name": "ordinaryTargetUnit",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/ResolvedOrdinaryComparison.lean",
+    "line": 47,
+    "file_lines": 118
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.ResolvedOrdinaryComparison",
+    "short_name": "ordinaryTargetUnitIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/ResolvedOrdinaryComparison.lean",
+    "line": 57,
+    "file_lines": 118
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.ResolvedOrdinaryComparison",
+    "short_name": "resolvedOrdinaryAugmentation",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/ResolvedOrdinaryComparison.lean",
+    "line": 66,
+    "file_lines": 118
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.ResolvedOrdinaryComparison",
+    "short_name": "resolvedOrdinaryComparison",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/ResolvedOrdinaryComparison.lean",
+    "line": 79,
+    "file_lines": 118
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.ResolvedOrdinaryComparison",
+    "short_name": "resolvedOrdinaryComparison_app_isIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/ResolvedOrdinaryComparison.lean",
+    "line": 84,
+    "file_lines": 118
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.ResolvedOrdinaryComparison",
+    "short_name": "unit_comp_resolvedOrdinaryComparison",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/ResolvedOrdinaryComparison.lean",
+    "line": 98,
+    "file_lines": 118
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.ResolvedOrdinaryCompleteAugmentation",
+    "short_name": "completedResolutionAugmentation_quasiIso_of_iso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/ResolvedOrdinaryCompleteAugmentation.lean",
+    "line": 34,
+    "file_lines": 73
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.ResolvedOrdinaryCompleteAugmentation",
+    "short_name": "resolvedOrdinaryComparison_app_isIso_of_completed",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/ResolvedOrdinaryCompleteAugmentation.lean",
+    "line": 62,
+    "file_lines": 73
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineCoverOrdinaryComparison",
+    "short_name": "affineRestrictedComplexFunctor",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineCoverOrdinaryComparison.lean",
+    "line": 35,
+    "file_lines": 66
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineCoverOrdinaryComparison",
+    "short_name": "affineOrdinaryCoverFunctor",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineCoverOrdinaryComparison.lean",
+    "line": 39,
+    "file_lines": 66
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineCoverOrdinaryComparison",
+    "short_name": "affineCompletedCoverFunctor",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineCoverOrdinaryComparison.lean",
+    "line": 43,
+    "file_lines": 66
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineCoverOrdinaryComparison",
+    "short_name": "affineResolvedCoverFunctor",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineCoverOrdinaryComparison.lean",
+    "line": 47,
+    "file_lines": 66
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineCoverOrdinaryComparison",
+    "short_name": "affineCoverOrdinaryComparison",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineCoverOrdinaryComparison.lean",
+    "line": 51,
+    "file_lines": 66
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineCoverOrdinaryComparison",
+    "short_name": "affineLineFormalCoverOrdinaryComparison_isIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineCoverOrdinaryComparison.lean",
+    "line": 59,
+    "file_lines": 66
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineCoverTargetAugmentation",
+    "short_name": "affineCoverOrdinarySingleTotal_complete",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineCoverTargetAugmentation.lean",
+    "line": 42,
+    "file_lines": 120
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineCoverTargetAugmentation",
+    "short_name": "affineHTTotal_completedCoverAugmentation_quasiIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineCoverTargetAugmentation.lean",
+    "line": 63,
+    "file_lines": 120
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineCoverTargetAugmentation",
+    "short_name": "affineHTTotalCoverOrdinaryComparison_isIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineCoverTargetAugmentation.lean",
+    "line": 92,
+    "file_lines": 120
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineCoverTargetAugmentation",
+    "short_name": "affineLine_resolvedCover_quasiIso_of_ordinary",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineCoverTargetAugmentation.lean",
+    "line": 100,
+    "file_lines": 120
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.FiniteCompletionComplexHomExt",
+    "short_name": "finiteCompletionComplexHom_ext",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/FiniteCompletionComplexHomExt.lean",
+    "line": 32,
+    "file_lines": 48
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineOriginalCoverTargetCompatibility",
+    "short_name": "coverImageCompletionNatIso_inv_app_normalized",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineOriginalCoverTargetCompatibility.lean",
+    "line": 45,
+    "file_lines": 156
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineOriginalCoverTargetCompatibility",
+    "short_name": "coverOriginalModelUnit",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineOriginalCoverTargetCompatibility.lean",
+    "line": 55,
+    "file_lines": 156
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineOriginalCoverTargetCompatibility",
+    "short_name": "coverOriginalModelHom_ext",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineOriginalCoverTargetCompatibility.lean",
+    "line": 67,
+    "file_lines": 156
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineOriginalCoverTargetCompatibility",
+    "short_name": "affineOriginalCoverTargetIso_eq_ordinary",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineOriginalCoverTargetCompatibility.lean",
+    "line": 80,
+    "file_lines": 156
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.DerivedHomologyComparisonSquare",
+    "short_name": "derivedHomologyComparison_square",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/DerivedHomologyComparisonSquare.lean",
+    "line": 33,
+    "file_lines": 50
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.QuotientBasisExt",
+    "short_name": "quotientBasis_linearMap_ext",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/QuotientBasisExt.lean",
+    "line": 30,
+    "file_lines": 51
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.CrystallineFormsBasisExt",
+    "short_name": "crystallineForms_basis_ext",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/CrystallineFormsBasisExt.lean",
+    "line": 34,
+    "file_lines": 56
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineOriginalBaseCoordinates",
+    "short_name": "affineOriginalBaseComplexIso_eq",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineOriginalBaseCoordinates.lean",
+    "line": 33,
+    "file_lines": 44
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineLineCriterion",
+    "short_name": "affineLineFormal_homology_isZero",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineLineCriterion.lean",
+    "line": 32,
+    "file_lines": 86
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineLineCriterion",
+    "short_name": "affineLine_moduleComparison_of_realization",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineLineCriterion.lean",
+    "line": 53,
+    "file_lines": 86
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineLineDegrees",
+    "short_name": "affineLineFormal_d_zero",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineLineDegrees.lean",
+    "line": 34,
+    "file_lines": 92
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineLineDegrees",
+    "short_name": "affineLineForms_isZero",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineLineDegrees.lean",
+    "line": 58,
+    "file_lines": 92
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineLineDegrees",
+    "short_name": "affineHTTotal_homology_high_of_HT",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineLineDegrees.lean",
+    "line": 71,
+    "file_lines": 92
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineLineDegrees",
+    "short_name": "affineHTTotal_homology_negative",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineLineDegrees.lean",
+    "line": 83,
+    "file_lines": 92
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.HomologyIsoComposition",
+    "short_name": "coefficientCyclesIso_comp_hom",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/HomologyIsoComposition.lean",
+    "line": 36,
+    "file_lines": 62
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.HomologyIsoComposition",
+    "short_name": "coefficientHomologyIso_comp_hom",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/HomologyIsoComposition.lean",
+    "line": 49,
+    "file_lines": 62
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.BaseChangeHomologyZeroDifferential",
+    "short_name": "complexBaseChangeHomologyComparison_isIso_of_zero_g",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/BaseChangeHomologyZeroDifferential.lean",
+    "line": 32,
+    "file_lines": 69
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineLineOrdinaryHomology",
+    "short_name": "affineLineFormalOrdinaryHomologyComparison_isIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineLineOrdinaryHomology.lean",
+    "line": 34,
+    "file_lines": 93
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineLineOrdinaryHomology",
+    "short_name": "affineLineFormalOrdinary_homology_isZero",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineLineOrdinaryHomology.lean",
+    "line": 43,
+    "file_lines": 93
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineLineOrdinaryHomology",
+    "short_name": "affineLineFormalRestrictedZeroIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineLineOrdinaryHomology.lean",
+    "line": 56,
+    "file_lines": 93
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineLineOrdinaryHomology",
+    "short_name": "affineLineFormalRestrictedOneIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineLineOrdinaryHomology.lean",
+    "line": 65,
+    "file_lines": 93
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineLineOrdinaryHomology",
+    "short_name": "affineLineFormalOrdinaryZeroIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineLineOrdinaryHomology.lean",
+    "line": 74,
+    "file_lines": 93
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineLineOrdinaryHomology",
+    "short_name": "affineLineFormalOrdinaryOneIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineLineOrdinaryHomology.lean",
+    "line": 84,
+    "file_lines": 93
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.HomologyRealizationBaseChange",
+    "short_name": "restrictedHomology_realization",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/HomologyRealizationBaseChange.lean",
+    "line": 31,
+    "file_lines": 57
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.HomologyRealizationBaseChange",
+    "short_name": "ordinaryHomology_realization",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/HomologyRealizationBaseChange.lean",
+    "line": 47,
+    "file_lines": 57
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineLineOrdinaryRealization",
+    "short_name": "affineRestrictedHTTotalMap",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineLineOrdinaryRealization.lean",
+    "line": 34,
+    "file_lines": 77
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineLineOrdinaryRealization",
+    "short_name": "affineLineOrdinaryRealization_zero",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineLineOrdinaryRealization.lean",
+    "line": 46,
+    "file_lines": 77
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineLineOrdinaryRealization",
+    "short_name": "affineLineOrdinaryRealization_one",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineLineOrdinaryRealization.lean",
+    "line": 62,
+    "file_lines": 77
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineOriginalHomologyCoordinates",
+    "short_name": "affineOriginalBaseComplexIso_homology",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineOriginalHomologyCoordinates.lean",
+    "line": 36,
+    "file_lines": 77
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineRestrictedHTCoordinates",
+    "short_name": "affineRestrictedHTTotalMap_coordinates",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineRestrictedHTCoordinates.lean",
+    "line": 38,
+    "file_lines": 72
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineRestrictedHTCoordinates",
+    "short_name": "affineRestrictedHTTotalMap_coordinates_raw",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineRestrictedHTCoordinates.lean",
+    "line": 58,
+    "file_lines": 72
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineLineBaseRealization",
+    "short_name": "affineRestrictedHTRealization_raw",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineLineBaseRealization.lean",
+    "line": 34,
+    "file_lines": 95
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineLineBaseRealization",
+    "short_name": "affineLineBaseRealization_zero",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineLineBaseRealization.lean",
+    "line": 66,
+    "file_lines": 95
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineLineBaseRealization",
+    "short_name": "affineLineBaseRealization_one",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineLineBaseRealization.lean",
+    "line": 81,
+    "file_lines": 95
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.HomologyUnitNaturalityValue",
+    "short_name": "complexBaseChangeHomologyComparison_naturality_one_tmul",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/HomologyUnitNaturalityValue.lean",
+    "line": 32,
+    "file_lines": 44
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineLineOrdinaryBaseHomology",
+    "short_name": "affineLineOrdinaryBaseRealization",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineLineOrdinaryBaseHomology.lean",
+    "line": 39,
+    "file_lines": 110
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineLineOrdinaryBaseHomology",
+    "short_name": "affineLineOrdinaryBaseRealization_zero",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineLineOrdinaryBaseHomology.lean",
+    "line": 49,
+    "file_lines": 110
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineLineOrdinaryBaseHomology",
+    "short_name": "affineLineOrdinaryBaseRealization_one",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineLineOrdinaryBaseHomology.lean",
+    "line": 80,
+    "file_lines": 110
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineOrientedBaseHTBasis",
+    "short_name": "affineBaseHTMap_completedFormsUnit",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineOrientedBaseHTBasis.lean",
+    "line": 37,
+    "file_lines": 73
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineOrientedBaseHTBasis",
+    "short_name": "affineAnyBaseHTMap_basis_zero",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineOrientedBaseHTBasis.lean",
+    "line": 47,
+    "file_lines": 73
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineOrientedBaseHTBasis",
+    "short_name": "affineAnyBaseHTMap_basis_one",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineOrientedBaseHTBasis.lean",
+    "line": 57,
+    "file_lines": 73
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineLineOrdinarySquares",
+    "short_name": "affineLineOrdinaryBaseRealization_zero_square",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineLineOrdinarySquares.lean",
+    "line": 39,
+    "file_lines": 133
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineLineOrdinarySquares",
+    "short_name": "affineLineOrdinaryBaseRealization_one_square",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineLineOrdinarySquares.lean",
+    "line": 84,
+    "file_lines": 133
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.CompletedPolynomialZeroBaseChange",
+    "short_name": "exists_completedPolyZeroCoefficientMap",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/CompletedPolynomialZeroBaseChange.lean",
+    "line": 36,
+    "file_lines": 145
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.CompletedPolynomialZeroBaseChange",
+    "short_name": "completedPolyRingHom_ext_to_zero",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/CompletedPolynomialZeroBaseChange.lean",
+    "line": 65,
+    "file_lines": 145
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.CompletedPolynomialZeroBaseChange",
+    "short_name": "exists_completedPolyZeroBaseChangeEquiv",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/CompletedPolynomialZeroBaseChange.lean",
+    "line": 81,
+    "file_lines": 145
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.CompletedFormsZeroBaseChange",
+    "short_name": "exists_completedFormsZeroBaseChangeEquiv",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/CompletedFormsZeroBaseChange.lean",
+    "line": 39,
+    "file_lines": 74
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineOrientedFormsBaseChange",
+    "short_name": "affineCompletedFormsBaseModule",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineOrientedFormsBaseChange.lean",
+    "line": 33,
+    "file_lines": 103
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineOrientedFormsBaseChange",
+    "short_name": "affineBaseFormsActionIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineOrientedFormsBaseChange.lean",
+    "line": 39,
+    "file_lines": 103
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineOrientedFormsBaseChange",
+    "short_name": "exists_affineOrientedFormsBaseChangeEquiv",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineOrientedFormsBaseChange.lean",
+    "line": 64,
+    "file_lines": 103
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineCompletedCoverSquare",
+    "short_name": "affineCompletedCover_ordinary_square",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineCompletedCoverSquare.lean",
+    "line": 38,
+    "file_lines": 66
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineNativeCompletedCoverModelIso",
+    "short_name": "affineResolvedDerivedScalarIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineNativeCompletedCoverModelIso.lean",
+    "line": 36,
+    "file_lines": 76
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineNativeCompletedCoverModelIso",
+    "short_name": "affineNativeCompletedCoverModelIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineNativeCompletedCoverModelIso.lean",
+    "line": 54,
+    "file_lines": 76
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineNativeCompletedCoverModelIso",
+    "short_name": "affineNativeCompletedCoverModelIso_naturality",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineNativeCompletedCoverModelIso.lean",
+    "line": 66,
+    "file_lines": 76
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineCoverFormalVanishing",
+    "short_name": "affineResolvedCoverFormal_homology_isZero",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineCoverFormalVanishing.lean",
+    "line": 35,
+    "file_lines": 67
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineCoverFormalVanishing",
+    "short_name": "affineNativeCoverFormal_homology_isZero",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineCoverFormalVanishing.lean",
+    "line": 53,
+    "file_lines": 67
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineFullCoefficientRows",
+    "short_name": "affineFullAnyRestrictedMap",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineFullCoefficientRows.lean",
+    "line": 41,
+    "file_lines": 119
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineFullCoefficientRows",
+    "short_name": "affineFullAnyOrdinaryMap",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineFullCoefficientRows.lean",
+    "line": 66,
+    "file_lines": 119
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineFullCoefficientRows",
+    "short_name": "affineFullBaseProjection_restricted",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineFullCoefficientRows.lean",
+    "line": 72,
+    "file_lines": 119
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineFullCoefficientRows",
+    "short_name": "affineFullAnyOrdinaryMap_unit",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineFullCoefficientRows.lean",
+    "line": 80,
+    "file_lines": 119
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineFullCoefficientRows",
+    "short_name": "affineFullAnyOrdinaryMap_tmul",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineFullCoefficientRows.lean",
+    "line": 92,
+    "file_lines": 119
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineFullCoefficientRows",
+    "short_name": "affineFullBaseProjection_ordinary",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineFullCoefficientRows.lean",
+    "line": 103,
+    "file_lines": 119
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineDerivedCoefficientRows",
+    "short_name": "affineDerivedFullCoefficientMap",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineDerivedCoefficientRows.lean",
+    "line": 36,
+    "file_lines": 75
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineDerivedCoefficientRows",
+    "short_name": "affineDerivedReducedCoefficientMap",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineDerivedCoefficientRows.lean",
+    "line": 45,
+    "file_lines": 75
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineDerivedCoefficientRows",
+    "short_name": "affineDerivedCoefficientMap_projection",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineDerivedCoefficientRows.lean",
+    "line": 54,
+    "file_lines": 75
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineEnvelopeCompletedTensorUnit",
+    "short_name": "affineEnvelopeCompletedTensor_tmul",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineEnvelopeCompletedTensorUnit.lean",
+    "line": 36,
+    "file_lines": 67
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.PureHomologyPostcomposition",
+    "short_name": "normalizedPureHomologyIso_postcomp",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/PureHomologyPostcomposition.lean",
+    "line": 32,
+    "file_lines": 48
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineEnvelopeH0Normalization",
+    "short_name": "affineEnvelopeTermCompletedBaseChangeIso_homology",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineEnvelopeH0Normalization.lean",
+    "line": 39,
+    "file_lines": 67
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.NonpositiveH0LiftNormalization",
+    "short_name": "nonpositiveAugmentation_postcomp_homology",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/NonpositiveH0LiftNormalization.lean",
+    "line": 31,
+    "file_lines": 46
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.NonpositiveCompletionH0Normalization",
+    "short_name": "nonpositiveCompletion_homology_unit",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/NonpositiveCompletionH0Normalization.lean",
+    "line": 33,
+    "file_lines": 59
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.IteratedCompletionH0Unit",
+    "short_name": "iteratedCompletionH0_unit",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/IteratedCompletionH0Unit.lean",
+    "line": 32,
+    "file_lines": 86
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.PrincipalCompletionCoefficientUnit",
+    "short_name": "principalCompletionCoefficientUnit",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/PrincipalCompletionCoefficientUnit.lean",
+    "line": 30,
+    "file_lines": 45
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.CompletedAlgebraCoefficientUnitHomology",
+    "short_name": "completedAlgebraUnitAlgHom_homology",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/CompletedAlgebraCoefficientUnitHomology.lean",
+    "line": 32,
+    "file_lines": 52
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.PairCompletedH0Unit",
+    "short_name": "pairCompletedBaseChangeH0LinearEquiv_unit",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/PairCompletedH0Unit.lean",
+    "line": 41,
+    "file_lines": 167
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineEnvelopeTargetH0Unit",
+    "short_name": "affineEnvelopeTargetH0_unit",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineEnvelopeTargetH0Unit.lean",
+    "line": 42,
+    "file_lines": 104
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineFullTensorCoefficients",
+    "short_name": "affineFullTensorCoefficients",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineFullTensorCoefficients.lean",
+    "line": 42,
+    "file_lines": 74
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineFullCoverUnit",
+    "short_name": "affineFullCoverTermIso_unit_homology",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineFullCoverUnit.lean",
+    "line": 43,
+    "file_lines": 90
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineFullCoverUnitMap",
+    "short_name": "affineFullCoverTermIso_unit",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineFullCoverUnitMap.lean",
+    "line": 37,
+    "file_lines": 79
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineFullRowComplete",
+    "short_name": "affineFullBaseModules_complete_p",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineFullRowComplete.lean",
+    "line": 38,
+    "file_lines": 48
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.PairCompletionExtension",
+    "short_name": "pairCompletionExtension",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/PairCompletionExtension.lean",
+    "line": 32,
+    "file_lines": 104
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.PairCompletionExtension",
+    "short_name": "pairCompletionExtension_unit",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/PairCompletionExtension.lean",
+    "line": 39,
+    "file_lines": 104
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.PairCompletionExtension",
+    "short_name": "pairCompletionExtension_ext",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/PairCompletionExtension.lean",
+    "line": 55,
+    "file_lines": 104
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.PairCompletionExtension",
+    "short_name": "pairCompletionUnits_naturality",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/PairCompletionExtension.lean",
+    "line": 68,
+    "file_lines": 104
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.PairCompletionExtension",
+    "short_name": "pairCompletionExtension_precomp",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/PairCompletionExtension.lean",
+    "line": 82,
+    "file_lines": 104
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.PairCompletionExtension",
+    "short_name": "pairCompletionExtension_postcomp",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/PairCompletionExtension.lean",
+    "line": 95,
+    "file_lines": 104
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineFullCoverExtension",
+    "short_name": "affineFullCoverTermIso_eq_extension",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineFullCoverExtension.lean",
+    "line": 38,
+    "file_lines": 65
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineHTHomologyLift",
+    "short_name": "exists_affineHTSingleLift",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineHTHomologyLift.lean",
+    "line": 31,
+    "file_lines": 42
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineLineOrdinaryQuasiIso",
+    "short_name": "affineLineOrdinaryBaseRealization_quasiIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineLineOrdinaryQuasiIso.lean",
+    "line": 37,
+    "file_lines": 109
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineOriginalCoverHomologyIsos",
+    "short_name": "affineCoverFormsEquiv",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineOriginalCoverHomologyIsos.lean",
+    "line": 35,
+    "file_lines": 115
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineOriginalCoverHomologyIsos",
+    "short_name": "affineCoverFormsEquiv_basis",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineOriginalCoverHomologyIsos.lean",
+    "line": 46,
+    "file_lines": 115
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineOriginalCoverHomologyIsos",
+    "short_name": "affineOriginalCoverTargetHomologyIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineOriginalCoverHomologyIsos.lean",
+    "line": 61,
+    "file_lines": 115
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineOriginalCoverHomologyIsos",
+    "short_name": "affineOriginalCoverSourceZeroIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineOriginalCoverHomologyIsos.lean",
+    "line": 84,
+    "file_lines": 115
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineOriginalCoverHomologyIsos",
+    "short_name": "affineOriginalCoverSourceOneIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineOriginalCoverHomologyIsos.lean",
+    "line": 100,
+    "file_lines": 115
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineOriginalCoverZeroSquare",
+    "short_name": "affineOriginalCover_zero_square",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineOriginalCoverZeroSquare.lean",
+    "line": 36,
+    "file_lines": 106
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineOriginalCoverOneSquare",
+    "short_name": "affineOriginalCover_one_square",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineOriginalCoverOneSquare.lean",
+    "line": 36,
+    "file_lines": 113
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineNativeCoverHomologySquares",
+    "short_name": "affineNativeCover_zero_square",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineNativeCoverHomologySquares.lean",
+    "line": 35,
+    "file_lines": 108
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineNativeCoverHomologySquares",
+    "short_name": "affineNativeCover_one_square",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineNativeCoverHomologySquares.lean",
+    "line": 71,
+    "file_lines": 108
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineOrdinaryEtaQuasiIso",
+    "short_name": "affineOrdinaryEta_quasiIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineOrdinaryEtaQuasiIso.lean",
+    "line": 33,
+    "file_lines": 58
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineOrdinarySingleTotal",
+    "short_name": "affineAnySingleRowsOrdinaryTotalMap",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineOrdinarySingleTotal.lean",
+    "line": 36,
+    "file_lines": 149
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineOrdinarySingleTotal",
+    "short_name": "affineAnySingleRowsRestrictedTotalMap",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineOrdinarySingleTotal.lean",
+    "line": 48,
+    "file_lines": 149
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineOrdinarySingleTotal",
+    "short_name": "affineAnySingleRowsOrdinaryTotalMap_unit",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineOrdinarySingleTotal.lean",
+    "line": 61,
+    "file_lines": 149
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineOrdinarySingleTotal",
+    "short_name": "affineAnySingleRowsOrdinaryTotalMap_isIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineOrdinarySingleTotal.lean",
+    "line": 109,
+    "file_lines": 149
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineOrdinarySingleTotal",
+    "short_name": "affineAnyOrdinaryTotalViaRowsIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineOrdinarySingleTotal.lean",
+    "line": 126,
+    "file_lines": 149
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineOrdinarySingleTotal",
+    "short_name": "affineAnyOrdinaryTotalViaRowsIso_unit",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineOrdinarySingleTotal.lean",
+    "line": 136,
+    "file_lines": 149
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.DerivedScalarConeRightLeg",
+    "short_name": "scalarConeRightLeg",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/DerivedScalarConeRightLeg.lean",
+    "line": 34,
+    "file_lines": 78
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.DerivedScalarConeRightLeg",
+    "short_name": "scalarConeRightLegDerivedInput",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/DerivedScalarConeRightLeg.lean",
+    "line": 46,
+    "file_lines": 78
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.DerivedScalarConeRightLeg",
+    "short_name": "derivedScalarConeRightLeg",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/DerivedScalarConeRightLeg.lean",
+    "line": 57,
+    "file_lines": 78
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.DerivedScalarConeRightLeg",
+    "short_name": "derivedScalarConeRightLeg_comparison",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/DerivedScalarConeRightLeg.lean",
+    "line": 71,
+    "file_lines": 78
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.BoundedScalarConeRightLeg",
+    "short_name": "boundedScalarConeRightLeg",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/BoundedScalarConeRightLeg.lean",
+    "line": 36,
+    "file_lines": 107
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.BoundedScalarConeRightLeg",
+    "short_name": "scalarConeRightLeg_model",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/BoundedScalarConeRightLeg.lean",
+    "line": 41,
+    "file_lines": 107
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.BoundedScalarConeRightLeg",
+    "short_name": "coneRightLeg_eqToHom",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/BoundedScalarConeRightLeg.lean",
+    "line": 55,
+    "file_lines": 107
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.BoundedScalarConeRightLeg",
+    "short_name": "boundedAboveDerivedBaseChangeScalarConeIso_rightLeg",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/BoundedScalarConeRightLeg.lean",
+    "line": 64,
+    "file_lines": 107
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineReducedConeRightLeg",
+    "short_name": "affineReducedScalarConeIso_rightLeg",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineReducedConeRightLeg.lean",
+    "line": 37,
+    "file_lines": 76
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineReducedConeRightLeg",
+    "short_name": "derivedScalarConeOrientationSingleIso_rightLeg",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineReducedConeRightLeg.lean",
+    "line": 62,
+    "file_lines": 76
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.CompletionScalarConeRightLeg",
+    "short_name": "completionScalarConeIso_rightLeg",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/CompletionScalarConeRightLeg.lean",
+    "line": 34,
+    "file_lines": 61
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.PairScalarConeRightLeg",
+    "short_name": "pairCompletedScalarConeIso_rightLeg",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/PairScalarConeRightLeg.lean",
+    "line": 35,
+    "file_lines": 62
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineReducedCoverProjection",
+    "short_name": "derivedScalarConeRightLeg_eqToHom",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineReducedCoverProjection.lean",
+    "line": 37,
+    "file_lines": 122
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineReducedCoverProjection",
+    "short_name": "affineReducedCoverTermIso_projection",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineReducedCoverProjection.lean",
+    "line": 48,
+    "file_lines": 122
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineReducedCoverProjectionEpi",
+    "short_name": "singleHomologyZero_epi",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineReducedCoverProjectionEpi.lean",
+    "line": 33,
+    "file_lines": 75
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineReducedCoverProjectionEpi",
+    "short_name": "affineFullBaseProjection_cover_homology_epi",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineReducedCoverProjectionEpi.lean",
+    "line": 47,
+    "file_lines": 75
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineReducedCoverExtension",
+    "short_name": "affineReducedCoverTermIso_eq_extension",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineReducedCoverExtension.lean",
+    "line": 37,
+    "file_lines": 127
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineReducedCoverExtension",
+    "short_name": "affineReducedCoverTermIso_unit",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineReducedCoverExtension.lean",
+    "line": 102,
+    "file_lines": 127
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.ResolvedCoverReflection",
+    "short_name": "quasiIso_of_resolvedCover_map_quasiIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/ResolvedCoverReflection.lean",
+    "line": 35,
+    "file_lines": 63
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineResolvedCriterion",
+    "short_name": "affineLine_moduleComparison_of_resolvedCover",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineResolvedCriterion.lean",
+    "line": 36,
+    "file_lines": 61
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.BoundedProjectiveKFlat",
+    "short_name": "boundedAboveDerivedModel_kFlat",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/BoundedProjectiveKFlat.lean",
+    "line": 31,
+    "file_lines": 40
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.UnboundedBoundedModuleBaseChange",
+    "short_name": "unboundedBoundedModuleBaseChangeIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/UnboundedBoundedModuleBaseChange.lean",
+    "line": 34,
+    "file_lines": 120
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.UnboundedBoundedModuleBaseChange",
+    "short_name": "unboundedBoundedModuleBaseChangeIso_naturality",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/UnboundedBoundedModuleBaseChange.lean",
+    "line": 43,
+    "file_lines": 120
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.UnboundedBoundedModuleBaseChange",
+    "short_name": "unboundedBoundedModuleBaseChangeNatIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/UnboundedBoundedModuleBaseChange.lean",
+    "line": 87,
+    "file_lines": 120
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.UnboundedBoundedModuleBaseChange",
+    "short_name": "unboundedBoundedModuleBaseChangeIso_augmentation",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/UnboundedBoundedModuleBaseChange.lean",
+    "line": 94,
+    "file_lines": 120
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineResolvedRowBoundedSource",
+    "short_name": "affineResolvedRowUncompletedSourceIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineResolvedRowBoundedSource.lean",
+    "line": 38,
+    "file_lines": 71
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineResolvedRowBoundedSource",
+    "short_name": "affineResolvedRowBoundedSourceIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineResolvedRowBoundedSource.lean",
+    "line": 53,
+    "file_lines": 71
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineResolvedRowStandardAugmentation",
+    "short_name": "affineResolvedRow_standardAugmentation",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineResolvedRowStandardAugmentation.lean",
+    "line": 41,
+    "file_lines": 79
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.FiniteCompletionComparisonUnit",
+    "short_name": "finiteCompletionComparisonIso_unit",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/FiniteCompletionComparisonUnit.lean",
+    "line": 32,
+    "file_lines": 43
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineResolvedRowSourceUnit",
+    "short_name": "affineResolvedRowBoundedSourceIso_unit",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineResolvedRowSourceUnit.lean",
+    "line": 40,
+    "file_lines": 93
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineResolvedRowPointLaw",
+    "short_name": "affineCoverResolvedRowsMap_point_law",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineResolvedRowPointLaw.lean",
+    "line": 42,
+    "file_lines": 101
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineRestrictedResolvedCriterion",
+    "short_name": "affineLine_moduleComparison_of_restrictedResolvedCover",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineRestrictedResolvedCriterion.lean",
+    "line": 34,
+    "file_lines": 51
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AlternatingCofaceCoherence",
+    "short_name": "alternatingCofaceFunctorIso_comp",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AlternatingCofaceCoherence.lean",
+    "line": 33,
+    "file_lines": 56
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AlternatingCofaceCoherence",
+    "short_name": "alternatingCofaceFunctorIso_natTrans",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AlternatingCofaceCoherence.lean",
+    "line": 44,
+    "file_lines": 56
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.PairCompletionHomologyExt",
+    "short_name": "pairCompletionHomology_ext",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/PairCompletionHomologyExt.lean",
+    "line": 33,
+    "file_lines": 59
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.UniversalAffineLineComparison",
+    "short_name": "universalOrientedPrism_affineLine_resolvedCover_quasiIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/UniversalAffineLineComparison.lean",
+    "line": 41,
+    "file_lines": 72
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.UniversalAffineLineComparison",
+    "short_name": "universalOrientedPrism_affineLine_moduleComparison",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/UniversalAffineLineComparison.lean",
+    "line": 60,
+    "file_lines": 72
+  },
+  {
+    "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.UniversalResolvedReflection",
+    "short_name": "universal_quasiIso_of_resolvedCover_map_quasiIso",
+    "file": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/UniversalResolvedReflection.lean",
+    "line": 33,
+    "file_lines": 48
+  }
+]

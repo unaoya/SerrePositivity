@@ -1,0 +1,103 @@
+{
+  "stage": "HT04 intermediate near 24000; not complete",
+  "authorization": "4e7e81a43",
+  "recorded_at": "2026-11-17T04:22:24.534495+09:00",
+  "complete": 3,
+  "total": 6,
+  "added": 0,
+  "outer_limit_lines": 26000,
+  "verified_math_commit": "828fbb826",
+  "verified_checkpoint": "generic-native-target-unit-checkpoint.json",
+  "verified_modules": 281,
+  "verified_lines": 23263,
+  "verified_declarations": 2286,
+  "explicit_type_index": {
+    "requested": 362,
+    "missing": 0
+  },
+  "prepared_modules": 287,
+  "prepared_lines": 23899,
+  "unverified_modules": [
+    {
+      "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineCompletedCoverSquare",
+      "lines": 61,
+      "sha256": "a639c87ae8999092eee02970c9c620ade62f0f440a9cc38a1fa0886044fbce56"
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineNativeCoverHomologySquares",
+      "lines": 104,
+      "sha256": "0d2477d7a9dc27809ba2653c36a05faa5872c9c778a9d746d47e74537d9a302c"
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineOriginalCoverHomologyIsos",
+      "lines": 115,
+      "sha256": "821b45cffb70e32e2e8c250c9fb90f431a94978aeb218d36153f83d61715ea05"
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineOriginalCoverOneSquare",
+      "lines": 109,
+      "sha256": "3ee2baf629ee6b965812f5e601f3905889ac5a8c9922c7c7231c34ad1c9d3e9e"
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineOriginalCoverTargetCompatibility",
+      "lines": 148,
+      "sha256": "6188d24920c5927074c61342d7e935a8b0325f7fe88fa86d77b8e63a6c352754"
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Universal.AffineOriginalCoverZeroSquare",
+      "lines": 99,
+      "sha256": "baaf2d23856143a1176912a0098548ac1408f21354c405fe59d6317575f4df60"
+    }
+  ],
+  "remaining_R2_repairs": {
+    "raw": [
+      100,
+      500
+    ],
+    "coefficient_2": [
+      200,
+      1000
+    ]
+  },
+  "remaining_R3": {
+    "raw": [
+      80,
+      150
+    ],
+    "coefficient_2": [
+      160,
+      300
+    ]
+  },
+  "corrected_projected_total": [
+    24259,
+    25199
+  ],
+  "under_cap": true,
+  "R1_complete": true,
+  "R2_complete": false,
+  "R3_started": false,
+  "pre_R1_226_source_differences": [],
+  "static": {
+    "source_files": 287,
+    "source_lines": 23899,
+    "outside_scope": [],
+    "project_import_closure": 992,
+    "missing_project_imports": [],
+    "cycles": [],
+    "EInfinity_imports": [
+      "SerrePositivity.EInfinity.NatTensor.Symmetry",
+      "SerrePositivity.EInfinity.AlexanderWhitney.TensorComponents"
+    ],
+    "CAlg_named_imports": [],
+    "frozen_source_differences": {
+      "ht02": [],
+      "ht03": []
+    },
+    "direct_EInfinity_imports": [],
+    "introduced_EInfinity_imports": [],
+    "inherited_utility_note": "HT03以前からCupCommutativityを通して使う古典的な鎖テンソルの対称性と有限成分。E∞比較・CAlgの入力を新しく使わない。"
+  },
+  "main_merged": false,
+  "next": "Finish R2 target and actual squares, then R3. Stop after HT04."
+}
