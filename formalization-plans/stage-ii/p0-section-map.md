@@ -25,3 +25,7 @@
 - 紙だけ（§1 の略号の登録を除く）。Lean の追加・ビルドはしない。
 - 既存の対応表（HA・HTT・Kerodon の review）は書き換えない。食い違いを見つけたら報告に書く。
 - それぞれ main（0bdc68cee 以降）から枝を切り、報告をコミットしたら止まる。調整役が二つを合わせて節の一覧と HTML の地図にする。
+
+## 4. 地図（11-16、ユーザー）
+
+新しい地図は作らず、既存の P⁰ の地図（`research/p0-lurie/p0-map.html`、公開 https://claude.ai/artifact/9hAePSTR4easWKwT35Wtiv）を更新する。§1・§2 の結果から、節単位の表示（文献ごとの節、依存の順、節ごとの own／partial／none）と、DAG XIII・NS の全項目を足す。調整役が行う。
