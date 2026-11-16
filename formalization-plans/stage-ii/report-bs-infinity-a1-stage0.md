@@ -3819,3 +3819,27 @@ cofanSieveIndexCone_legs_val [HasInitial C] [Nonempty ι] (c : Cofan B) :
 この照合で元の型を狭めたり、引き戻しの降下を追加仮定にしたりしない。
 未検証の Lean の数、検証済み15,034行はいずれも変わらない。
 一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+### S1 の空族の同じ頂点の比較（11-16、未検証）
+
+`ExtensiveEmptySieve` 55行を追加した下書き。元の空族の枝を省略しない。
+既存の空形状の判定を同じ指定制限錐へ適用する証明分割で、追加IDなし。
+
+```lean
+bottomSieveShape_isInitial (U : C) :
+  IsInitial (presheafShape (sieveCategory (⊥ : Sieve U)))
+restrictionCone_bot_isLimit_iff (F : Presheaf C E) (U : C) :
+  IsLimitCone (restrictionCone F (⊥ : Sieve U)) ↔
+    IsTerminalVertex (F.app _ (ULift.up (nerveVertex (Opposite.op U))))
+cofanGeneratedSieve_eq_bot {ι : Type u} [IsEmpty ι] {B : ι → C} (c : Cofan B) :
+  cofanGeneratedSieve c = ⊥
+```
+
+底篩の元の圏に対象がないことから、同じ持ち上げた形状の初期対象性を得る。
+`restrictionCone_vertex` と `isLimitCone_iff_terminal_of_initialShape` を合成し、
+頂点を新しい終対象に取り替えない。非空族の star の membership は使わない。
+
+新規S1の未検証は8本・物理530行（前の双対ファイルの文献番号を方針へ移す1行増を含む）。
+次の未実行一覧は全14対象。現セッション18673は整理券一枚で生存中。
+検証済み232本15,034行・1,301宣言は変わらない。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
