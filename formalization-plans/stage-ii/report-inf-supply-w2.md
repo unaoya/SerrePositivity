@@ -18107,3 +18107,89 @@ oppositePairing_naturalityの型と証明は一時ファイルisw2-twisted-pairi
 R03h・R03d・3b-4aは未完。検収済みの本体は全てコミット済み、未完の次の検査は一時ファイルだけ。共有鍵は返却済みで、起動中の自レーンの検査はない。
 
 一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+## 302. 元の同じpairingの反対表示と両端交換の全単体での厳密な一致（2026-11-16）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+§301.3の同じtwisted pairingの両端交換の法則を証明した。重みの同じ反転と標準単体表示を、標準単体の自己同型の既存の一意性で照合する。通常のnerveの反転とYoneda表示の整合性を同じnerveOppositeIsoで示し、元の長い射列の全対象・全射を反転したpairingと厳密に照合した。左・交差・右の三ブロックを扱い、元の入力の自然性から反対側の同じ自然性を導く。全パラメータの写像の等式であり、各点の同値に弱めていない。
+
+一時ファイルisw2-twisted-swap-reverse2、isw2-pairing-reverse-chain2、全体のisw2-twisted-pairing-opposite-complete1の個別Lean検査は全て終了0。§301.3の独立のedgewiseWeightReverse_standardは全swapの証明内で同じ同型の一意性を直接使えるため、本体の独立の公開宣言にはせず、一時の検査記録のままとした。新しい選択・数学の項目・模型仮定・計算上限は追加しない。全て既存の反転・自然性・合成則の法則と証明の分割。以下はprivateな分割も含む主張の型。ファイルの行数は検収で記す。各部分は200行未満。
+
+```lean
+private lemma standardIso_end_hom (n : ℕ) (e : (Δ[n] : SSet.{u}) ≅ Δ[n]) :
+    e.hom = 𝟙 _
+
+private lemma nerveReverseChain_yoneda {C : Type u} [Category.{u} C] {n : ℕ}
+    (τ : (nerve C) _⦋n⦌) :
+    (stdSimplex.opIso ⦋n⦌).inv ≫ SSet.opFunctor.map (SSet.yonedaEquiv.symm τ) ≫
+      (nerveOppositeIso (C
+
+lemma twistedArrowOppositeSwap_nerve_reverse {C : Type u} [Category.{u} C] (n : ℕ)
+    (τ : (nerve C) _⦋n+n+1⦌) :
+    (twistedArrowOppositeSwap (nerve C)).app (Opposite.op ⦋n⦌)
+      ((edgewiseWeightIso n).hom ≫ SSet.yonedaEquiv.symm (nerveReverseChain τ) ≫
+        (nerveOppositeIso (C
+
+private lemma rev_left_index {n : ℕ} (i : Fin (n+n+1+1))
+    (hi : i.val < n+1) (hr : ¬ i.rev.val < n+1) :
+    twistedPairingRightIndex i.rev hr = twistedPairingLeftIndex i hi
+
+private lemma rev_right_index {n : ℕ} (i : Fin (n+n+1+1))
+    (hi : ¬ i.val < n+1) (hr : i.rev.val < n+1) :
+    twistedPairingLeftIndex i.rev hr = twistedPairingRightIndex i hi
+
+private lemma op_heq_of_endpoints {C : Type u} [Category.{u} C]
+    {X Y X' Y' : C} (hx : X = X') (hy : Y = Y') {f : X ⟶ Y} {g : X' ⟶ Y'}
+    (h : HEq f g) : HEq f.op g.op
+
+private lemma thin_op_heq {C : Type u} [Category.{u} C] {N : ℕ}
+    (F : Fin N ⥤ C) {a b c d : Fin N} (ha : a = c) (hb : b = d)
+    {f : a ⟶ b} {g : c ⟶ d} : HEq (F.map f).op (F.map g).op
+
+private lemma cross_op {I C : Type u} [Category.{u} I] [Category.{u} C]
+    (A : I ⥤ Cᵒᵖ) (B : I ⥤ C) (h : ∀ i, (A.obj i).unop ⟶ B.obj i)
+    {n : ℕ} (σ : Fin (n+1) ⥤ I) (a b : Fin (n+1)) :
+    twistedPairingCross (B ⋙ (opOpEquivalence C).inverse) A (fun i => (h i).op) σ a b =
+      (twistedPairingCross A B h σ b a).op
+
+private lemma cross_op_heq {I C : Type u} [Category.{u} I] [Category.{u} C]
+    (A : I ⥤ Cᵒᵖ) (B : I ⥤ C) (h : ∀ i, (A.obj i).unop ⟶ B.obj i)
+    {n : ℕ} (σ : Fin (n+1) ⥤ I) {a b c d : Fin (n+1)} (ha : a = c) (hb : b = d) :
+    HEq (twistedPairingCross A B h σ a b).op (twistedPairingCross A B h σ c d).op
+
+lemma twistedPairingSimplex_reverse {I C : Type u} [Category.{u} I] [Category.{u} C]
+    (A : I ⥤ Cᵒᵖ) (B : I ⥤ C) (h : ∀ i, (A.obj i).unop ⟶ B.obj i)
+    {n : ℕ} (σ : Fin (n+1) ⥤ I) :
+    twistedPairingSimplex (B ⋙ (opOpEquivalence C).inverse) A (fun i => (h i).op) σ =
+      nerveReverseChain (twistedPairingSimplex A B h σ)
+
+private lemma oppositePairing_naturality {I C : Type u} [Category.{u} I] [Category.{u} C]
+    (A : I ⥤ Cᵒᵖ) (B : I ⥤ C) (h : ∀ i, (A.obj i).unop ⟶ B.obj i)
+    (hh : ∀ {i j} (f : i ⟶ j), (A.map f).unop ≫ h i ≫ B.map f = h j)
+    {i j : I} (f : i ⟶ j) :
+    (((B ⋙ (opOpEquivalence C).inverse).map f).unop) ≫ (h i).op ≫ A.map f = (h j).op
+
+lemma twistedPairingNerveMap_opposite_swap {I C : Type u} [Category.{u} I] [Category.{u} C]
+    (A : I ⥤ Cᵒᵖ) (B : I ⥤ C) (h : ∀ i, (A.obj i).unop ⟶ B.obj i)
+    (hh : ∀ {i j} (f : i ⟶ j), (A.map f).unop ≫ h i ≫ B.map f = h j) :
+    twistedPairingNerveMap (B ⋙ (opOpEquivalence C).inverse) A (fun i => (h i).op)
+      (oppositePairing_naturality A B h hh) ≫
+      edgewiseSubdivisionMap (nerveOppositeIso (C
+```
+
+対象ビルド369と小監査で検収する。R03h・R03d・3b-4aは未完。⑤a・公式入口・公式監査は変更しない。
+
+### 302.2 本体の公開宣言の検査での修正
+
+369対象ビルドではTwistedNerveOppositeSimplexは通ったが、TwistedPairingOppositeの公開定理の型にprivateなoppositePairing_naturalityを使っており、公開型からアクセスできないため失敗した。監査には到達していない。通常の一時ファイルの個別検査が通ったことだけを、公開モジュールの検収とはしない。
+
+最終の公開型では、この自然性の証明を同じHHの引数へ直接書く。privateな仮定や略記を公開型へ露出させず、元のhhから同じ自然性を導くだけで、主張を弱めない。同じ数学の型はproof irrelevanceで変わらない。unusedとなったprivateな自然性の補題は本体から除き、§302の上の型の表示は一時ファイルの分割の記録として残す。370で同じ二本の対象ビルドと小監査を行う。
+
+### 302.3 検収
+
+最終の新規2本は181行・46行、計227行。公開3補題・実環境宣言4。公開型の自然性の証明を元のhhから直接導く形へ直した370対象ビルド（依存を含む3,148 jobs）・小監査とも終了0。共有鍵 --class impl --wait 3600、一枚の整理券、gtimeout 1700秒でビルドと小監査の間だけ使用。小監査271モジュール・1,725宣言、propext・Classical.choice・Quot.soundのみ、sorryAx・追加公理なし。自レーン累計267本・18,478行、実環境1,718宣言。外枠まで3,522行。宣言名の照合で異なるファイル間の重複0、内部も0。git diff --check通過。証跡isw2-build370.log・isw2-validation370.json・isw2-declaration-collision-scan370.json。登録候補一覧に追加。既存宣言・⑤a・公式入口・公式監査は変更していない。
+
+元の同じtwisted pairingの両端交換と反対表示の全写像の等式は閉じた。これを元の固定標的の自然変換へ適用し、同じモデル源の後合成と厳密に可換にする法則の検査を続ける。R03hの同じcorrected pairingの指定pathを通じた全族の最終等式、R03d・3b-4aは未完。
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
