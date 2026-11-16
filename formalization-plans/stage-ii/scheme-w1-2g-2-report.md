@@ -1522,3 +1522,14 @@ Frobenius の既存の矢印の図式の端点の照合（着手前、既存の�
 今回1モジュール48行＋入口1行。基準56ea849a3から追加の本体を独立に再計数し、新規120モジュール本体8,022行。既存追加25行を含む外枠計数は本体8,047行・登録120行込み8,167行。新規小監査累計806宣言、既存15宣言は別計上。元の四角形と同じ conerve への標準比較の自然性は未検証の下書きで、この束には含めない。G4の二重 Čech・Noether帰納、G5は残る。見込み約10,000〜13,500行・外枠16,000行は不変。
 
 一覧：済み1／全体3（うち追加0）。
+
+
+## G4：元の可換な四角形に自然な、実際の矢印の標準比較
+
+`FrobeniusArrowNaturality`（103行）の宣言：`frobeniusDirectLimitArrowMap` は元の F の両端の同じ順極限写像からなる可換な矢印の射。`frobeniusArrowDiagramMap`・`frobeniusArrowSmallDiagramMap` は同じ F を各有限段に置く自然変換。`frobeniusArrowSmallColimitIso_ι` は同じ標準脚の保存。`frobeniusArrowCocone_map` は標準脚と実際の順極限写像の可換性。`frobeniusArrowSmallColimitIso_naturality` は元の四角形による実際の矢印の射と、同じ colim.map を標準同型が結ぶこと。両端の同型を独立に選ぶのでなく、矢印全体の余極限の普遍性で照合した。
+
+単独検証、本体とのソース完全一致、対象と入口のビルド5,206ジョブ成功、小監査12宣言（実際の所有元による生成・非公開宣言込み）・標準三公理のみ、終了状態0。ログ `2g-frobenius-arrow-naturality-check-2.log`・`2g-frobenius-arrow-naturality-native.log`・`2g-frobenius-arrow-naturality-audit.log`。局所的な backward.isDefEq.respectTransparency false、既定の資源制限。letIの style 警告あり。追加公理・sorry・既存の型変更・200行超の宣言なし。共有鍵 --class impl --wait 3600、待ちは一つ、対象ビルドと小監査は別枠。root・下流全ビルド・全体監査なし。
+
+今回1モジュール103行＋入口1行。新規121モジュール本体8,125行。既存追加25行を含む外枠計数は本体8,150行・登録121行込み8,271行。新規小監査累計818宣言、既存15宣言は別計上。増大 conerve への同じ自然性の移送は下書きの検証中で、この束には含めない。G4の二重 Čech・Noether帰納、G5は残る。見込み約10,000〜13,500行・外枠16,000行は不変。
+
+一覧：済み1／全体3（うち追加0）。
