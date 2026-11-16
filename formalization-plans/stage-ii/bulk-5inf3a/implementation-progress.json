@@ -3,7 +3,7 @@
   "complete": 3,
   "total": 6,
   "added": 0,
-  "verified_head": "this commit: base 771bc1fa860efbb429d7415eeb5979d5dc471a47",
+  "verified_head": "this commit: base 893649ce839bbdbce2041452946f449e67002dab",
   "items": {
     "HT01": "complete",
     "HT02": "complete",
@@ -12,15 +12,14 @@
     "HT05": "not-started",
     "HT06": "not-started"
   },
-  "latest_complete_audit_checkpoint": "extend-homology-and-native-coefficient-classes-checkpoint.json",
-  "latest_complete_audit_declarations": 2062,
+  "latest_complete_audit_checkpoint": "original-homology-coordinate-compatibility-checkpoint.json",
+  "latest_complete_audit_declarations": 2063,
   "working_changes_unverified": [
-    "AffineLineBaseRealization",
-    "AffineLineOrdinaryBaseHomology",
     "AffineRestrictedHTCoordinates",
-    "AffineOriginalHomologyCoordinates"
+    "AffineLineOrdinaryBaseHomology",
+    "AffineLineBaseRealization"
   ],
-  "pending_check": "bundle-232 terminal rc1; see audit module inventory; failed dependencies await next batch",
+  "pending_check": "bundle-233 terminal rc1; see audit module inventory; failed dependencies await next batch",
   "next_proof_route": "remaining-20000-plan.md",
   "initial_record": {
     "stage": "5inf3a",
@@ -394,7 +393,7 @@
       "lines": 74
     }
   ],
-  "working_written_lines": 18021,
+  "working_written_lines": 18854,
   "source_inventory_scope": "Only HT01\u2013HT06 source additions/changes against 336942ab0, plus untracked files; excludes pre-existing Comparison modules.",
   "static_check": "static-pending-check.json; not Lean validation",
   "build_wait_history": [
@@ -413,9 +412,9 @@
   ],
   "current_request_last_confirmed_live_utc": "2026-11-15 04:52:28 UTC",
   "HT02_remaining": "complete; see ht02-complete.json",
-  "prepared_source_lines": 18021,
-  "prepared_modules": 215,
-  "verified_source_lines": 18021,
+  "prepared_source_lines": 18854,
+  "prepared_modules": 226,
+  "verified_source_lines": 18589,
   "provisional_total_source_lines": [
     22223,
     25443
