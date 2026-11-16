@@ -5007,3 +5007,47 @@ weightedSections_leftLimitIso_hom_comp O hE F d e hd he :
 次は制限した標準極限比較の頂点射と、元の圏への同じ比較を結ぶ法則。
 固定されたweightedSections_discrete_mapの全体とS8の完成は未完のまま。
 一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+
+### 11-16：制限した標準比較と、元の底上の同値による比較の前後の合成則
+
+追加3本・169行・11所有宣言の対象ビルド・小監査が完了、監視プロセス終了コード0。
+標準三公理のみ、対象SHA一致。
+証拠：`/tmp/is-w1/s8-over-equivalence-composition-1/target-audit-result.json`。
+外枠用累計は**19,053行**、299本。全て既存構成の法則で追加IDはなく、各法則200行未満。
+
+* `LimitVertexIsoRestriction`（47行・2宣言）：標準極限比較を制限した射と元の頂点射を、
+  同じ頂点の等式の射で結ぶ。錐の標準比較の制限の既存の法則と、頂点射影の等式からの
+  自然変換の自然性を使った。
+* `EquivalentRestrictionLimitTargetComposition`（40行・1宣言）：既存の同値な添字による
+  比較の後に標的の標準極限比較を合成する法則。
+* `OverEquivalenceLimitComposition`（82行・8宣言）：元の`limitVertexIsoOfOverEquivalence`
+  の前後の標準極限比較との合成則。元の定義内の、標的を固定した同じ図式等式の移送を
+  privateな補助に表示し、現定義をchangeでそのまま読み直して証明した。
+
+```lean
+limitVertexIso_restrict_hom f d e hd he hdf hef :
+  eqToHom (congrArg HomotopyCategory.mk (restrictJoinCone_vertex d f)) ≫
+    (limitVertexIso d e hd he).hom =
+  (limitVertexIso (restrictJoinCone d f) (restrictJoinCone e f) hdf hef).hom ≫
+    eqToHom (congrArg HomotopyCategory.mk (restrictJoinCone_vertex e f))
+limitVertexIsoOfEquivalentRestriction_hom_comp a ha O c d e hc hd he :
+  (limitVertexIsoOfEquivalentRestriction a ha O c d hc hd).hom ≫
+    (limitVertexIso d e hd he).hom =
+      (limitVertexIsoOfEquivalentRestriction a ha O c e hc he).hom
+limitVertexIso_hom_comp_overEquivalence a ha hw O c c' d hc hc' hd :
+  (limitVertexIso c c' hc hc').hom ≫
+    (limitVertexIsoOfOverEquivalence a ha hw O c' d hc' hd).hom =
+      (limitVertexIsoOfOverEquivalence a ha hw O c d hc hd).hom
+limitVertexIsoOfOverEquivalence_hom_comp a ha hw O c d e hc hd he :
+  (limitVertexIsoOfOverEquivalence a ha hw O c d hc hd).hom ≫
+    (limitVertexIso d e hd he).hom =
+      (limitVertexIsoOfOverEquivalence a ha hw O c e hc he).hom
+```
+
+`hdf`・`hef`は同じ二つの制限錐の極限性。後の適用では同値な添字への制限から出す。
+最後の2本は元の底上の可換式`hw : a ≫ q = p`と、同じ底係数Oを保つ。
+比較の自然性を入力に置かず、仮定は元の構成が取る同値・可換式・指定極限性だけ。
+元の比較を新しい比較へ置き換えていない。次は元の圏に戻す値比較への接続。
+S8の固定された全族比較およびS1の一般Coverage判定は依然未完。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
