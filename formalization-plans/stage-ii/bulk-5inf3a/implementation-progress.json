@@ -3,7 +3,7 @@
   "complete": 3,
   "total": 6,
   "added": 0,
-  "verified_head": "this commit: base d2cdbc4e05e213b777cb9c348ed282efab330973",
+  "verified_head": "this commit: base 4834ed1eefeb4197bbc31e08d5c384864c8bdf69",
   "items": {
     "HT01": "complete",
     "HT02": "complete",
@@ -12,10 +12,10 @@
     "HT05": "not-started",
     "HT06": "not-started"
   },
-  "latest_complete_audit_checkpoint": "pair-scalar-cone-checkpoint.json",
-  "latest_complete_audit_declarations": 1695,
+  "latest_complete_audit_checkpoint": "reduced-cover-terms-checkpoint.json",
+  "latest_complete_audit_declarations": 1708,
   "working_changes_unverified": [],
-  "pending_check": "bundle-171 terminal; all prepared modules passed",
+  "pending_check": "bundle-172 terminal; all prepared modules passed",
   "next_proof_route": "ht04-next-proof-route.md",
   "initial_record": {
     "stage": "5inf3a",
