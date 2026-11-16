@@ -3,7 +3,7 @@
   "complete": 3,
   "total": 6,
   "added": 0,
-  "verified_head": "this commit: base 0bdd2aaadb97fbab7ddad991d4b0be2fda0afd9d",
+  "verified_head": "this commit: base f819c6e7e930cd63bc99c8a5fc3e9fd7ea510cdd",
   "items": {
     "HT01": "complete",
     "HT02": "complete",
@@ -12,14 +12,13 @@
     "HT05": "not-started",
     "HT06": "not-started"
   },
-  "latest_complete_audit_checkpoint": "tor-acyclic-single-degrees-checkpoint.json",
-  "latest_complete_audit_declarations": 1811,
+  "latest_complete_audit_checkpoint": "affine-polynomial-tor-retract-checkpoint.json",
+  "latest_complete_audit_declarations": 1812,
   "working_changes_unverified": [
     "AffineFormsTor",
-    "KFlatBiprodModels",
-    "AffinePolynomialTor"
+    "KFlatBiprodModels"
   ],
-  "pending_check": "bundle-197 terminal rc1; see audit module inventory; failed dependencies await next batch",
+  "pending_check": "bundle-198 terminal rc1; see audit module inventory; failed dependencies await next batch",
   "next_proof_route": "remaining-20000-plan.md",
   "initial_record": {
     "stage": "5inf3a",
