@@ -5244,3 +5244,125 @@ mainの取り込みも行っていない。承認された3本文以外の既存
 以上の検証済みを保存し、前記の外枠の停止条件に従ってLeanの追加を止める。
 5∞-1の完成ではなく、未完はS1とS8。再開時は(A)の指定余単位と成分の照合から。
 一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+
+### 11-16：外枠26,000行の承認を受けた再開
+
+調整役・ユーザー承認6d2c4d4abを会話で受領。mainは取り込まず、S1・S8の元の型と
+上の残りの一覧で再開する。外枠26,000行、約24,000行で止まらずに中間報告。
+出発点の保守的な累計19,570行、残り2,730〜4,650行、全体22,300〜24,220行。
+最初は(A)の同じ指定輸送の頂点成分を固定する。既存構成の法則として型を記録し、
+計算上限は変えない。S7・R2・R3は再開しない。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+
+### 11-16：指定右Kan輸送の脚・頂点・標準形状の法則の検証
+
+追加11本・598行・29所有宣言の対象ビルドと小監査が完了（終了コード0、標準三公理のみ、
+全対象SHA一致）。証拠：`/tmp/is-w1/s8-right-kan-factorization-8/target-audit-result.json`。
+外枠用累計は **20,168行・317本**。既存の構成の法則・証明分割で追加IDなし、各法則200行未満。
+既存の数学的宣言は変更せず、新規ファイルだけに置いた。
+
+| 新規ファイル | 行数 | 内容 |
+| --- | ---: | --- |
+| ConeApexEvaluationVertex | 36 | 同じ全錐の頂点評価とjoin錐の頂点の等式 |
+| RightKanTransportApex | 51 | 元の指定輸送の辺は頂点で同じ定値辺 |
+| RightKanTransportApexHom | 67 | 元の輸送の頂点射は同じ頂点等式の射 |
+| CoreCoconeLegHom | 35 | 任意の余錐の射についての脚と頂点射影の合成則 |
+| TransportBaseTargetLeg | 98 | 既存の輸送終点の比較が元の脚を保つ法則（基底の辺の類での比較も含む） |
+| TransportEndIsoFactorization | 82 | 元の二つの辺との因子分解式を持つ同じ終点比較 |
+| LimitConeFamilyProjection | 54 | 錐の関手圏の比較射と、元の標準極限比較の頂点射との照合 |
+| CocartesianTypedComposition | 49 | 既存の型つき辺の合成でのcocartesian性の法則 |
+| ConeFamilyApexEvaluation | 35 | 錐のfiberの頂点射影と同じ全錐の評価の厳密な一致 |
+| RightKanCanonicalShapeLaws | 44 | 元の標準錐の内部の同じ形状写像と、その両因子への制限 |
+| RightKanCanonicalRestriction | 47 | 同じ標準形状による前合成と、図式側・頂点側の照合 |
+
+以下でHoは元のhoFunctor、mkはその対象の構成子、qはconeApexEvaluation、
+πは元のsliceの頂点射影。全て実ソースで模型・宇宙を明示している。
+
+```lean
+coneApexEvaluation_vertex d :
+  (coneApexEvaluation K X).app _ (functorVertex d.val) = d.vertex
+RightKanConeTransport.apex_edge_eq_constant t :
+  (t.edge.map ((truncation 2).map (coneApexEvaluation (rightKanShape δ c) D))).edge =
+    PinchedHom.constant (rightKanCanonicalCone δ F c).vertex 1
+RightKanConeTransport.apex_hom t :
+  (Ho.map q).toFunctor.map (homMk t.edge) ≫
+    eqToHom (congrArg mk ((coneApexEvaluation_vertex t.cone).trans t.cone_vertex)) =
+  eqToHom (congrArg mk ((coneApexEvaluation_vertex (rightKanCanonicalCone δ F c)).trans
+    (rightKanCanonicalCone_vertex δ F c)))
+JoinCocone.leg_comp_projection_hom c d m i :
+  homMk (c.leg i) ≫ (Ho.map π).toFunctor.map m = homMk (d.leg i)
+```
+
+TransportBaseTargetLegの型は次の通り。
+V := transportBaseFiber a p b、J := Vから元のsliceUnder aへの既存の包含、
+T := transportBaseFiberTarget a p b、ι := vertexFiberι p bとすると、
+
+```lean
+transportBaseFiberTarget_leg_comp_projection a p b v w m :
+  homMk (JoinCocone.leg (J.app _ v) (𝟙 Δ[0])) ≫
+    (Ho.map ι).toFunctor.map ((Ho.map T).toFunctor.map m) =
+      homMk (JoinCocone.leg (J.app _ w) (𝟙 Δ[0]))
+transportBaseFiberTargetIso_leg_comp_projection a p b v w e :
+  homMk (JoinCocone.leg (J.app _ v) (𝟙 Δ[0])) ≫
+    (Ho.map ι).toFunctor.map (transportBaseFiberTargetIso a p b v w e).hom =
+      homMk (JoinCocone.leg (J.app _ w) (𝟙 Δ[0]))
+```
+
+3つ目の法則は、元の基底のcoslice fiberの辺の類が等しいという入力から、
+上の合成式を持つ同じ終点比較同型eの存在を得る。新たな同型の構成にはしていない。
+これを元の辺e・fへ戻した型は、元のexists_kanTransportEndVertexIso_of_homMk_eqと
+同じ入力に全空間Eのquasicategory性を明示した上で、結論を
+
+```lean
+∃ (v w : (vertexFiber p b) _⦋0⦌) (hv : v.val = y) (hw : w.val = z)
+  (i : VertexIso v w),
+  homMk e ≫ eqToHom (congrArg mk hv.symm) ≫
+    (Ho.map (vertexFiberι p b)).toFunctor.map i.hom ≫
+      eqToHom (congrArg mk hw) = homMk f
+```
+
+とする。元の持ち上げ空間の比較同型そのものを選び、cosliceの脚の法則を適用した。
+標準極限比較へ戻す法則は、Φ := sliceConeFamilyMap p、A := coneFamilyApex pとして、
+
+```lean
+sliceConeFamilyMap_apex_vertex c : A.app _ (Φ.app _ c) = c.vertex
+limitVertexIso_coneFamily_projection c d hc hd m :
+  (Ho.map A).toFunctor.map m ≫ eqToHom (congrArg mk (sliceConeFamilyMap_apex_vertex d)) =
+    eqToHom (congrArg mk (sliceConeFamilyMap_apex_vertex c)) ≫ (limitVertexIso c d hc hd).hom
+hasCocartesianHornLifting_comp p e f he hf : HasCocartesianHornLifting p (e.comp f)
+coneFamilyApex_eq_evaluation p :
+  coneFamilyApex p = vertexFiberι (coneRestriction K X) (functorVertex p) ≫
+    coneApexEvaluation K X
+```
+
+最後の標準形状q₀ := rightKanCanonicalShape δ cは元のrightKanCanonicalConeの本文の
+同じsliceUnderUncurryを名前にしただけで、選択は追加していない。
+
+```lean
+rightKanCanonicalShape_inr δ c : joinInr Δ[0] _ ≫ q₀ = rightKanProjection δ c ≫ δ
+rightKanCanonicalShape_inl δ c : joinInl Δ[0] _ ≫ q₀ = SSet.yonedaEquiv.symm c
+rightKanCanonicalCone_val δ F c : (rightKanCanonicalCone δ F c).val = q₀ ≫ F
+rightKanCanonicalShape_precomposition δ c :
+  (pre q₀).app D ≫ (pre (joinInr Δ[0] _)).app D =
+    (pre δ).app D ≫ (pre (rightKanProjection δ c)).app D
+rightKanCanonicalShape_apex δ c : q₀.app _ ((joinInl Δ[0] _).app _ (stdSimplex.obj₀Equiv.symm 0)) = c
+```
+
+検証の初期候補は、頂点の定義上の一致、余錐のSubtypeでの脚の記法、ホモトピー圏のmkの
+略記などで不一致になった。既存の評価補題・Yonedaの後合成・Fin 1の一意性を使い、
+模型・端点・既存関数を明示して修正した。依存した型を壊す関手の書き換えは、
+既存の関手等式の自然性で置き換えた。等式の射の相殺はeqToHom_trans_assocを使用。
+計算上限は一切上げていない。未検証の厳密な基底の特殊版TransportTargetLegは不要となり、
+`/tmp/is-w1/unverified-strict-transport-leg/`に保全して本体配下から外した（未検証・未コミット）。
+
+**残る(A)は、元の大域比較を同じ標準形状で前合成し、そのhom_facを上の因子分解式へ渡す部分。**
+全二胞体の標準頂点での評価の46行の下書きは現在検証中で、今回の保存には含めない。
+S8の固定された射の自然性やS1を完成したという報告ではない。
+(A)の基礎法則が見込み350〜550行に対して598行になったため、残る(A)を350〜650行、
+(B)400〜650行、(C)250〜450行、他の4行は前表のまま（計1,730〜3,000行）として、
+現時点の全体を **22,898〜24,918行**と見積もり直す。検証中46行は残る(A)に含め、二重計上しない。
+外枠26,000行の中。約24,000行での中間報告を保持する。
+mainは取り込まず、S7・R2・R3も再開していない。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
