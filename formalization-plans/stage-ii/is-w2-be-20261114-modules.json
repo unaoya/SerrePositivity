@@ -258,5 +258,6 @@
   "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceNativePinchedFactorization",
   "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceNativeIntervalFamily",
   "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRoofNativeFamily",
-  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointRoofProbeArrow"
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointRoofProbeArrow",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.PointCosliceFamilyHomotopyNaturality"
 ]

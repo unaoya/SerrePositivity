@@ -17778,3 +17778,72 @@ lemma strictBETotJointRoofProbeEndpointIso_hom_arrow (P : strictBETotJointHomInd
 指定probe同型の実際の元の射との照合は閉じたが、一般の全族の一致をこの二補題だけから推論しない。次は同じcoslice普遍円柱の制限・自然性の全族の法則を使い、native側のcorrected pairingの同じ全比較をroofの式へ接続する。R03hの最終の全interval族の等式、R03d・3b-4aは未完。
 
 一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+## 297. 指定coslice普遍円柱の全パラメータでの制限と自然性（2026-11-16）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+同じ普遍円柱の制限の厳密な等式を示し、任意のパラメータ準圏からcosliceへのFunctorIsoに沿う全HoFun射の自然性を証明する。既存の円柱の自然性・定値への後合成の単位則・2圏のwhisker_exchangeの法則であり、新しい数学の項目は足さない。点ごとの同値への置換ではない。R03hの同じ全族の最終照合はまだ未完である。
+
+一時ファイルisw2-point-coslice-unit-complete4の個別Lean検査は終了0。複雑な係数の前後合成をprivateな型つき略記に分割してelaborationを収めた。計算上限は上げていない。FunctorIsoの後合成の順射は既存functorIso_postcomp_homで合わせる。公開の最終型にprivate略記は露出しない。以下はprivateな証明分割も含む主張の型。各部分は200行未満。既存の⑤aのファイル、公式入口・公式監査は変更しない。
+
+```lean
+lemma pointCosliceFamilyHomotopy_precomp_h {A C : SSet.{u}} (c : C _⦋0⦌)
+    (a : A ⟶ sliceUnder (yonedaEquiv.symm c)) :
+    (a ▷ (Δ[1] : SSet.{u})) ≫ (pointCosliceFamilyHomotopy (𝟙 (sliceUnder (yonedaEquiv.symm c)))).h =
+      (pointCosliceFamilyHomotopy a).h
+
+lemma pointCosliceFamilyHomotopy_precomp_arrow {A C : SSet.{u}} (c : C _⦋0⦌)
+    (a : A ⟶ sliceUnder (yonedaEquiv.symm c)) :
+    Arrow.mk ((hoFunctor.map ((pre a).app C)).toFunctor.map
+      (Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
+        (pointCosliceFamilyHomotopy (𝟙 (sliceUnder (yonedaEquiv.symm c))))))) =
+      Arrow.mk (Truncated.HomotopyCategory.homMk
+        (functorEdgeOfSimplicialHomotopy (pointCosliceFamilyHomotopy a)))
+
+private def cosliceCoefficientPost {K J C : SSet.{u}} {a b : K ⟶ J}
+    (p : J ⟶ C) (α : FunctorHom a b) : FunctorHom (a ≫ p) (b ≫ p)
+
+private def cosliceCoefficientPre {K J C : SSet.{u}} {p q : J ⟶ C}
+    (a : K ⟶ J) (β : FunctorHom p q) : FunctorHom (a ≫ p) (a ≫ q)
+
+private lemma samePointCosliceUnitWhiskerNaturality {K C : SSet.{u}} [Quasicategory K] [Quasicategory C]
+    (c : C _⦋0⦌) {a b : K ⟶ sliceUnder (yonedaEquiv.symm c)} (α : FunctorHom a b) :
+    let J
+
+private lemma cosliceCoefficientPostConstArrow {K J C : SSet.{u}} [Quasicategory J]
+    {a b : K ⟶ J} (α : FunctorHom a b) (c : C _⦋0⦌) :
+    Arrow.mk (cosliceCoefficientPost (SSet.const c : J ⟶ C) α) =
+      Arrow.mk (𝟙 (HomotopyCategory.mk (functorVertex (SSet.const c : K ⟶ C))))
+
+private lemma cosliceCompArrow {D : Type*} [Category* D] {a b c a' b' c' : D}
+    (f : a ⟶ b) (g : b ⟶ c) (f' : a' ⟶ b') (g' : b' ⟶ c')
+    (hf : Arrow.mk f = Arrow.mk f') (hg : Arrow.mk g = Arrow.mk g') :
+    Arrow.mk (f ≫ g) = Arrow.mk (f' ≫ g')
+
+private lemma samePointCosliceUnitNaturalityArrow {K C : SSet.{u}} [Quasicategory K] [Quasicategory C]
+    (c : C _⦋0⦌) {a b : K ⟶ sliceUnder (yonedaEquiv.symm c)} (e : FunctorIso a b) :
+    Arrow.mk (Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
+        (pointCosliceFamilyHomotopy a)) ≫
+      (e.postcomp (sliceUnderProjection (yonedaEquiv.symm c))).hom) =
+      Arrow.mk (Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
+        (pointCosliceFamilyHomotopy b)))
+
+lemma pointCosliceFamilyHomotopy_naturality {K C : SSet.{u}} [Quasicategory K] [Quasicategory C]
+    (c : C _⦋0⦌) {a b : K ⟶ sliceUnder (yonedaEquiv.symm c)} (e : FunctorIso a b) :
+    Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
+        (pointCosliceFamilyHomotopy a)) ≫
+      (e.postcomp (sliceUnderProjection (yonedaEquiv.symm c))).hom =
+      Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
+        (pointCosliceFamilyHomotopy b))
+```
+
+対象ビルド364と小監査で検収する。
+
+### 297.2 検収
+
+新規1本143行、公開3補題、実環境宣言5。対象ビルド364（依存を含む1,954 jobs）・小監査とも終了0。共有鍵 --class impl --wait 3600、一枚の整理券、gtimeout 1700秒でビルドと小監査の間だけ使用した。小監査265モジュール・1,711宣言、propext・Classical.choice・Quot.soundのみ、sorryAx・追加公理なし。自レーン累計261本・17,801行、実環境1,704宣言。外枠22,000行まで4,199行。名前照合の異なるファイル間の重複0、内部も0。git diff --check通過。証跡isw2-build364.log・isw2-validation364.json・isw2-declaration-collision-scan364.json。登録候補一覧に追加した。
+
+既存の円柱の全HoFun射について自然性を閉じた。元のnative fiber射とroofの全interval族の照合R03h・R03d・3b-4aは未完。次に、この同じ円柱をfiberへ制限した射と既存intervalFamilyHomの厳密な対応を照合し、同じcoslice比較の全族へ接続する。
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
