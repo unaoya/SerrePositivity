@@ -1,0 +1,8 @@
+number,status,declarations,reason,axioms,check,partial_kind
+1.1,none,,原典 p.3 の「Goodwillie の有理冪零不変性と trace」を照合。cyclotomic スペクトル・THH・TC の coherent な構成と trace 比較が未構成。K 理論の一般の局所化不変量は、この trace と指定 fiber 列を与えない。,,not_found,
+1.2,none,,原典 p.5 の「Dundas–Goodwillie–McCarthy の cyclotomic trace」を照合。cyclotomic スペクトル・THH・TC の coherent な構成と trace 比較が未構成。K 理論の一般の局所化不変量は、この trace と指定 fiber 列を与えない。,,not_found,
+1.3,none,,原典 p.5 の「cyclotomic スペクトル」を照合。cyclotomic スペクトル・THH・TC の coherent な構成と trace 比較が未構成。K 理論の一般の局所化不変量は、この trace と指定 fiber 列を与えない。,,not_found,
+1.4,none,,原典 p.6 の「有界下での genuine と naive の同値」を照合。cyclotomic スペクトル・THH・TC の coherent な構成と trace 比較が未構成。K 理論の一般の局所化不変量は、この trace と指定 fiber 列を与えない。,,not_found,
+1.5,none,,原典 p.6 の「TC の Frobenius fiber 公式」を照合。cyclotomic スペクトル・THH・TC の coherent な構成と trace 比較が未構成。K 理論の一般の局所化不変量は、この trace と指定 fiber 列を与えない。,,not_found,
+1.6,none,,原典 p.6 の「TC の等化子表示」を照合。cyclotomic スペクトル・THH・TC の coherent な構成と trace 比較が未構成。K 理論の一般の局所化不変量は、この trace と指定 fiber 列を与えない。（注意・問題提起も番号付きの原項目として保持し、計画中という理由では充足に数えない。）,,not_found,
+1.7,none,,原典 p.8 の「Tate 対角の完全性・一意性・完備化」を照合。cyclotomic スペクトル・THH・TC の coherent な構成と trace 比較が未構成。K 理論の一般の局所化不変量は、この trace と指定 fiber 列を与えない。,,not_found,
