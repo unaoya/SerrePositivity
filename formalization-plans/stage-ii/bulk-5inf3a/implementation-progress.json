@@ -16,7 +16,7 @@
   "latest_complete_audit_declarations": 1708,
   "working_changes_unverified": [],
   "pending_check": "bundle-172 terminal; all prepared modules passed",
-  "next_proof_route": "ht04-next-proof-route.md",
+  "next_proof_route": "ht04-remaining-cap-review.md",
   "initial_record": {
     "stage": "5inf3a",
     "base": "336942ab0",
@@ -423,5 +423,19 @@
     "HT05": "general bounded oriented base and finite variables with original eta",
     "HT06": "general crystalline Corollary 5.5 after general HT; audit and draft promotion"
   },
-  "HT02_complete": true
+  "HT02_complete": true,
+  "scope_review": {
+    "reason": "remaining HT04\u2013HT06 cannot be forecast within 659 remaining lines; coordination section 2 scale rule",
+    "verified_math_head": "28763cb06d93b4d5c007cd928f65065873e39623",
+    "verified_modules": 157,
+    "verified_lines": 13341,
+    "verified_declarations": 1708,
+    "outer_limit_lines": 14000,
+    "remaining_lines": 659,
+    "complete": 3,
+    "total": 6,
+    "added": 0,
+    "report": "ht04-remaining-cap-review.md",
+    "no_new_math_bundle_after_report": true
+  }
 }
