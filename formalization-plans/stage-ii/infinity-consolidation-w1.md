@@ -1,6 +1,6 @@
 # 整理 IC-W1：∞ 圏のコードを InfinityCategories に集め、内容ごとにディレクトリを分ける
 
-作成：2026-11-16 夜（調整役）。決定：ユーザー（11-16「内容に合わせてディレクトリ分けをしたいのと、無限圏は InfinityCategories に移したい」「模型は a で」「3b のチャットは不調なので別のチャットで」）。担当：新しいチャット（レーン ⑦、③-b の OE-W1 を引き継ぐ）。
+作成：2026-11-16 夜（調整役）。決定：ユーザー（11-16「内容に合わせてディレクトリ分けをしたいのと、無限圏は InfinityCategories に移したい」「模型は a で」「3b のチャットは不調なので別のチャットで」）。担当：IC-0 は ③-b が今の OE-W1 の段 1 として続ける。IC-1 以降は、IC-0 の取り込みの後に新しいチャット（レーン ⑦）が持つ（ユーザー 11-16「OE-W1 はそのまま続けさせて、そのあとで新しいチャットで」）。
 
 ## 0. 目的
 
@@ -13,14 +13,14 @@
 
 | 束 | 中身 | 資料 |
 | --- | --- | --- |
-| IC-0 | **OE-W1 の段 1 を引き継いで完成させる**（`refactor/organize-einfinity`、d216f410b、作業木 `SerrePositivity-bs-d68`。456 本の移動、目録） | `organize-einfinity-general.md`、`report-organize-einfinity.md` |
+| IC-0 | **OE-W1 の段 1**（③-b が続ける。`refactor/organize-einfinity`、作業木 `SerrePositivity-bs-d68`。456 本の移動、目録） | `organize-einfinity-general.md`、`report-organize-einfinity.md` |
 | IC-1 | EInfinity の残り（OE-W1 の段 2：一般 1,247 本、BE 固有 1,047 本 → Models、E∞ の一般論 327 本） | OE-W1 の `stage2-classification.csv` |
 | IC-2 | KST・HomotopicalAlgebra・Spectra の一般の ∞ 圏論 1,725 本 | `research/infinity-outside-map/files.csv`（738be1c06） |
 | IC-3 | 同じく模型 3,776 本 → `InfinityCategories/Models/` | 同上 |
 | IC-4 | 同じく一般のホモトピー論・モデル圏 2,415 本 → `HomotopicalAlgebra/` の主題ごと、K 固有 912 本 → `KST/` の中で | 同上 |
 | 後回し | 未定 1,243 本（一般の補題と K の構成が一つのファイルに混ざるもの）。ファイルを分けてから分類し直す。IC-W1 では動かさない | 同上 |
 
-IC-0 の完成を最初の停止点とし、取り込みの後に IC-1 以降の段 0 へ。
+IC-0 の完成（OE-W1 の段 1 の停止点）で ③-b は止まる。取り込みの後、⑦ が IC-1 の段 0 から始める。
 
 ## 2. 規則（B3・OE-W1 と同じ）
 

@@ -33,6 +33,6 @@ D81（CAlg は HA 流）で `EInfinity/` は「BE の模型」の意味になっ
 
 `report-organize-einfinity.md` を新設して自分の枝にコミット。区切りごとに「一覧：済み n／全体 m（うち追加 k）」（段 1 の移動の束を ID にする）。
 
-## 追記（2026-11-16 夜、調整役）：新しいチャットへ引き継ぐ
+## 追記（2026-11-16 夜、調整役）：段 1 は ③-b が続け、その後は IC-W1 へ
 
-③-b のチャットが不調なので、OE-W1 は新しいチャット（レーン ⑦）が `infinity-consolidation-w1.md` の IC-0 として引き継ぐ（ユーザー 11-16）。枝 `refactor/organize-einfinity`（d216f410b）と作業木 `SerrePositivity-bs-d68` をそのまま使う。③-b のチャットはここで止める。
+段 1 はこのまま ③-b が続ける（ユーザー 11-16）。段 1 の完成が停止点で、段 2 には進まない。段 2 と KST・HomotopicalAlgebra・Spectra の分は、段 1 の取り込みの後、新しいチャット（レーン ⑦）が `infinity-consolidation-w1.md` の IC-1 以降として持つ。
