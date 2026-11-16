@@ -1,0 +1,291 @@
+number,kind,title,section,status,declarations,reason,confidence,lean_citations,plan_citations,kerodon,goal
+1.0.1,Definition,有理空間とその全部分圏,1.0,,,,medium,0,0,,-
+1.0.2,Definition,連結な dg Lie 代数,1.0,,,,medium,0,0,,-
+1.0.3,Theorem,Quillen の有理ホモトピー圏同値,1.0,,,,medium,0,0,,-
+1.1.1,Notation,局所系と制限・Kan 延長の記法,1.1,,,,high,0,0,,BS;inf
+1.1.2,Remark,局所系の直像の lax モノイダル性,1.1,,,,medium,0,0,,BS;inf
+1.1.3,Notation,局所係数の鎖・余鎖,1.1,,,,medium,0,0,,BS;inf
+1.1.4,Remark,鎖模型と π/H の比較,1.1,,,,medium,0,0,,BS;inf
+1.1.5,Lemma,空間のホモトピー底変換,1.1,,,,medium,0,2,HA 6.1.6.3,BS;inf
+1.1.6,Remark,局所系の t 構造と基本群表現,1.1,,,,medium,0,0,,BS;inf
+1.1.7,Definition,冪零な局所系,1.1,,,,medium,0,0,,BS;inf
+1.1.8,Remark,冪零性の基点独立性,1.1,,,,medium,0,0,,BS;inf
+1.1.9,Proposition,冪零局所系に対する余鎖の射影公式,1.1,,,,medium,0,0,,BS;inf
+1.1.10,Corollary,Eilenberg–Moore の余鎖底変換,1.1,,,,medium,0,0,,BS;inf
+1.1.11,Remark,Tor からの Eilenberg–Moore スペクトル系列,1.1,,,,medium,0,0,,BS;inf
+1.1.12,Corollary,有限型の余鎖の Künneth 同値,1.1,,,,medium,0,0,,BS;inf
+1.1.13,Remark,コホモロジーの Künneth 分解,1.1,,,,medium,0,0,,BS;inf
+1.1.14,Proposition,"K(Q,n) の自由余鎖代数",1.1,,,,medium,0,0,,BS;inf
+1.1.15,Lemma,非零な余連結加群とのテンソルによる検出,1.1,,,,medium,0,0,,BS;inf
+1.1.16,Corollary,有限次元 Q ベクトル空間の Eilenberg–MacLane 余鎖,1.1,,,,medium,0,0,,BS;inf
+1.2.1,Definition,k 有理ホモトピー型,1.2,,,,medium,0,0,,-
+1.2.2,Example,ベクトル空間の Eilenberg–MacLane 関手,1.2,,,,medium,0,0,,-
+1.2.3,Remark,V↦(R↦V⊗R) の充満忠実性,1.2,,,,medium,0,0,,-
+1.2.4,Definition,有限型の k 有理ホモトピー型,1.2,,,,medium,0,0,,-
+1.2.5,Remark,単連結 coaffine stack による特徴づけ,1.2,,,,medium,0,0,,-
+1.2.6,Proposition,sifted 余極限の保存,1.2,,,,medium,0,0,,-
+1.2.7,Lemma,"非正規化非輪体の分解と K(A,n) の実現",1.2,,,,medium,0,0,,-
+1.2.8,Corollary,導来環上での単連結性,1.2,,,,medium,0,0,,-
+1.2.9,Corollary,全射付き引き戻しの保存,1.2,,,,medium,0,0,,-
+1.2.10,Corollary,連結度の二次上昇,1.2,,,,medium,0,0,,-
+1.2.11,Corollary,Postnikov 塔の収束,1.2,,,,medium,0,0,,-
+1.2.12,Lemma,"K(V,n) への写像と filtered 余極限",1.2,,,,medium,0,0,,-
+1.2.13,Definition,n 切断 k 有理ホモトピー型,1.2,,,,medium,0,0,,-
+1.2.14,Remark,有理ホモトピー型の切断反射,1.2,,,,medium,0,0,,-
+1.2.15,Remark,Postnikov 層の fiber 正方形,1.2,,,,medium,0,0,,-
+1.2.16,Lemma,有理型の filtered 余極限閉性,1.2,,,,medium,0,0,,-
+1.2.17,Lemma,切断有限型対象のコンパクト性,1.2,,,,medium,0,0,,-
+1.2.18,Proposition,切断有理型の Ind 表示,1.2,,,,medium,0,0,,-
+1.2.19,Remark,コンパクト性と有限型の同値,1.2,,,,medium,0,0,,-
+1.2.20,Remark,全有理型のコンパクト生成性,1.2,,,,medium,0,0,,-
+1.2.21,Proposition,切断部分圏の塔の極限,1.2,,,,medium,0,0,,-
+1.3.1,Theorem,Sullivan の有限型余鎖埋め込み,1.3,,,,medium,0,0,,-
+1.3.2,Remark,余鎖と解の関手の随伴,1.3,,,,medium,0,0,,-
+1.3.3,Proposition,有理有限型空間の余鎖からの復元,1.3,,,,medium,0,0,,-
+1.3.4,Corollary,有理余鎖間の写像空間,1.3,,,,medium,0,0,,-
+1.3.5,Theorem,有限型 coaffine stack の Q 点による復元,1.3,,,,medium,0,0,,-
+1.3.6,Theorem,全有理ホモトピー型と有理空間,1.3,,,,medium,0,0,,-
+1.4.1,Notation,dg Lie ホモロジー・余鎖・Koszul 双対,1.4,,,,medium,0,0,,-
+1.4.2,Definition,dg Lie の連結性・切断性・有限型,1.4,,,,medium,0,0,,-
+1.4.3,Theorem,連結有限型 dg Lie の余鎖双対による復元,1.4,,,,medium,0,0,,-
+1.4.4,Remark,余鎖双対復元から切断仮定の除去,1.4,,,,medium,0,0,,-
+1.4.5,Construction,dg Lie 代数の下からの切断,1.4,,,,medium,0,0,,-
+1.4.6,Remark,連結部分圏への右随伴,1.4,,,,medium,0,0,,-
+1.4.7,Remark,自由 dg Lie 関手と連結度,1.4,,,,medium,0,0,,-
+1.4.8,Remark,Lie 部分圏での切断性の判定,1.4,,,,medium,0,0,,-
+1.4.9,Construction,非負 dg Lie 代数の上からの切断,1.4,,,,medium,0,0,,-
+1.4.10,Remark,dg Lie の Postnikov 塔,1.4,,,,medium,0,0,,-
+1.4.11,Notation,単一次数の可換 dg Lie 代数,1.4,,,,medium,0,0,,-
+1.4.12,Proposition,最高ホモロジーを除く fiber 列,1.4,,,,medium,0,0,,-
+1.4.13,Remark,Lie 余鎖の pushout と導来テンソル,1.4,,,,medium,0,0,,-
+1.4.14,Corollary,単一ホモロジーの Lie 代数の同定,1.4,,,,medium,0,0,,-
+1.4.15,Proposition,切断連結 Lie 代数のコンパクト生成,1.4,,,,medium,0,0,,-
+1.5.1,Construction,有理型の形式的完備化,1.5,,,,medium,0,0,,-
+1.5.2,Proposition,形式的変形問題と接複体,1.5,,,,medium,0,0,,-
+1.5.3,Theorem,有理型と二次連結形式的変形問題,1.5,,,,medium,0,0,,-
+1.5.4,Remark,有理空間の π と Lie ホモロジー,1.5,,,,medium,0,0,,-
+2.0.5,Question,構造層からの対象の復元問題,2.0,,,,medium,0,0,,-
+2.0.6,Remark,p-thin への拡張,2.0,,,,medium,0,0,,-
+2.0.7,Remark,Mandell の結果との関係,2.0,,,,medium,0,0,,-
+2.1.1,Notation,空間添字関手圏と二つの Kan 延長,2.1,,,,high,0,0,HA 6.1.6.1,BS;inf
+2.1.2,Example,群作用・不変量・余不変量,2.1,,,,high,0,0,HA 6.1.6.2,BS;inf
+2.1.3,Construction,(-1) 切断写像の norm,2.1,,,,medium,0,2,HA 6.1.6.4,BS;inf
+2.1.4,Example,同値に沿う norm,2.1,,,,medium,0,2,HA 6.1.6.5,BS;inf
+2.1.5,Example,空または可縮な fiber の norm,2.1,,,,medium,0,2,HA 6.1.6.6,BS;inf
+2.1.6,Proposition,pointed 性と (-1) norm の可逆性,2.1,,,,medium,0,2,HA 6.1.6.7,BS;inf
+2.1.7,Construction,有限離散 fiber の norm,2.1,,,,medium,0,2,HA 6.1.6.8,BS;inf
+2.1.8,Remark,二段の norm 構成の一致,2.1,,,,medium,0,2,HA 6.1.6.9,BS;inf
+2.1.9,Remark,有限離散 fiber の norm の底変換,2.1,,,,medium,0,2,HA 6.1.6.10,BS;inf
+2.1.10,Example,有限族の余積から積への標準射,2.1,,,,medium,0,2,HA 6.1.6.11,BS;inf
+2.1.11,Proposition,有限離散 norm の可逆性の判定,2.1,,,,high,0,2,HA 6.1.6.12,BS;inf
+2.1.12,Definition,半加法的 ∞ 圏,2.1,,,,medium,0,2,HA 6.1.6.13,BS;inf
+2.1.13,Remark,写像空間の coherent な加法,2.1,,,,high,0,2,HA 6.1.6.14,BS;inf
+2.1.14,Remark,半加法性とホモトピー圏,2.1,,,,medium,0,2,HA 6.1.6.15,BS;inf
+2.1.15,Example,加法圏の nerve の半加法性,2.1,,,,high,0,2,HA 6.1.6.16,BS;inf
+2.1.16,Example,安定 ∞ 圏の半加法性,2.1,,,,high,0,2,HA 6.1.6.17,BS;inf
+2.1.17,Definition,有限群oid と相対有限群oid,2.1,,,,medium,0,2,HA 6.1.6.18,BS;inf
+2.1.18,Construction,相対有限群oid の norm,2.1,,,,medium,0,3,HA 6.1.6.19,BS;inf
+2.1.19,Remark,下位の norm との整合,2.1,,,,medium,0,1,HA 6.1.6.20,BS;inf
+2.1.20,Remark,群oid norm の底変換,2.1,,,,medium,0,1,HA 6.1.6.21,BS;inf
+2.1.21,Example,有限群作用の norm,2.1,,,,medium,0,1,HA 6.1.6.22,BS;inf
+2.1.22,Remark,norm の合成と作用の総和,2.1,,,,high,0,2,HA 6.1.6.23,BS;inf
+2.1.23,Definition,norm の余ファイバーとしての Tate,2.1,,,,medium,0,3,HA 6.1.6.24,BS;inf
+2.1.24,Remark,高次有限型への norm の反復,2.1,,,,medium,0,1,HA 6.1.6.25,BS;inf
+2.1.25,Example,誘導対象の norm 同値と Tate 消滅,2.1,,,,medium,0,2,HA 6.1.6.26,BS;inf
+2.2.1,Construction,EG と拡大冪の構成,2.2,,,,high,0,6,HA 6.1.4.1,BS;inf
+2.2.2,Construction,Tate テンソル冪関手,2.2,,,,medium,0,1,,BS;inf
+2.2.3,Proposition,素数 Tate テンソル冪の完全性,2.2,,,,medium,4,4,NS III.1.1 (Sp の場合),BS;inf
+2.2.4,Remark,Tate 冪から忘却への境界変換,2.2,,,,medium,0,4,,BS;inf
+2.2.5,Example,完全加群からの Kan 延長と双加群,2.2,,,,medium,1,8,,BS;inf
+2.2.6,Construction,スペクトル値の coherent な P⁰,2.2,,,,medium,53,19,,BS;inf
+2.2.7,Remark,P⁰ の次数零・正次数の計算,2.2,,,,medium,0,4,,BS;inf
+2.2.8,Warning,P⁰ は一般に k 線形でない,2.2,,,,medium,0,1,,BS;inf
+2.2.9,Remark,全 Tate 類からの power operation,2.2,,,,medium,0,0,,BS;inf
+2.2.10,Warning,P⁰ の非乗法性と Cartan 公式,2.2,,,,medium,0,1,,BS;inf
+2.2.11,Remark,安定化と P⁰ による余接作用,2.2,,,,medium,0,0,,BS;inf
+2.2.12,Notation,被約余鎖と標準コホモロジー類,2.2,,,,medium,0,0,,BS;inf
+2.2.13,Proposition,"K(Z/p,n) 上での Frobenius 比較",2.2,,,,medium,0,0,,BS;inf
+2.2.14,Corollary,F_p コホモロジー上の P⁰ は恒等,2.2,,,,medium,0,0,,BS;inf
+2.2.15,Construction,Artin–Schreier 自然変換,2.2,,,,medium,0,0,,BS;inf
+2.2.16,Example,自由一生成代数での x−x^p,2.2,,,,medium,0,0,,BS;inf
+2.2.17,Theorem,Mandell の Artin–Schreier pushout,2.2,,,,medium,0,0,,BS;inf
+2.2.18,Remark,Mandell 表示の生成元と関係式,2.2,,,,medium,0,0,,BS;inf
+2.3.1,Definition,coherent ∞ トポスの有限構成可能対象,2.3,,,,medium,0,0,,-
+2.3.2,Example,π 有限空間,2.3,,,,medium,0,0,,-
+2.3.3,Remark,スライスへの有限構成可能性の移送,2.3,,,,medium,0,0,,-
+2.3.4,Definition,局所 coherent ∞ トポスでの定義,2.3,,,,medium,0,0,,-
+2.3.5,Proposition,有限構成可能性の局所判定,2.3,,,,medium,0,0,,-
+2.3.6,Proposition,spectral DM stack の逆像による保存,2.3,,,,medium,0,0,,-
+2.3.7,Notation,étale 有限構成可能層の関手,2.3,,,,medium,0,0,,-
+2.3.8,Theorem,有限構成可能層と filtered 環余極限,2.3,,,,medium,0,0,,-
+2.3.9,Proposition,切断した大域切断の filtered 保存,2.3,,,,medium,0,0,,-
+2.3.10,Corollary,coherent トポスの切断のコンパクト生成,2.3,,,,medium,0,0,,-
+2.3.11,Remark,有限余極限で生成するコンパクト対象,2.3,,,,medium,0,0,,-
+2.3.12,Corollary,準コンパクト射の切断直像,2.3,,,,medium,0,0,,-
+2.3.13,Remark,有限構成可能層の本質的小ささ,2.3,,,,medium,0,0,,-
+2.3.14,Lemma,相対切断射による coherence の上昇,2.3,,,,medium,0,0,,-
+2.3.15,Remark,切断対象の coherence の判定,2.3,,,,medium,0,0,,-
+2.3.16,Lemma,étale 代数と filtered 余極限,2.3,,,,medium,0,0,,-
+2.3.17,Lemma,étale ∞ トポスと filtered 余極限,2.3,,,,medium,0,0,,-
+2.3.18,Lemma,étale トポスの逆極限表示,2.3,,,,medium,0,0,,-
+2.3.19,Lemma,切断コンパクト層の環の有限段への降下,2.3,,,,medium,0,0,,-
+2.3.20,Definition,有限定数層・有限局所定数層,2.3,,,,medium,0,0,,-
+2.3.21,Lemma,有限局所定数層の有限構成可能性,2.3,,,,medium,0,0,,-
+2.3.22,Proposition,開閉の貼り合わせによる coherence の判定,2.3,,,,medium,0,0,,-
+2.3.23,Corollary,有限構成可能性の開閉貼り合わせ,2.3,,,,medium,0,0,,-
+2.3.24,Theorem,有限 étale 層化による有限構成可能性,2.3,,,,medium,0,0,,-
+2.3.25,Corollary,スペクトル代数空間の有限層化,2.3,,,,medium,0,0,,-
+2.4.1,Definition,p 有限空間と p 構成可能層,2.4,,,,medium,0,0,,-
+2.4.2,Definition,p-thin E∞ 環,2.4,,,,medium,0,0,,-
+2.4.3,Remark,定義の単体的持ち上げ条件を除く予想,2.4,,,,medium,0,0,,-
+2.4.4,Remark,p-thin 性と閉切断・局所化,2.4,,,,medium,0,0,,-
+2.4.5,Remark,p-thin 性の étale 安定性,2.4,,,,medium,0,0,,-
+2.4.6,Definition,余接複体の消滅による形式 étale 性,2.4,,,,medium,0,0,,-
+2.4.7,Remark,積の形式 étale 性,2.4,,,,medium,0,0,,-
+2.4.8,Remark,形式 étale 性の pushout 安定性,2.4,,,,medium,0,0,,-
+2.4.9,Theorem,p 構成可能層の構造代数の形式 étale 性と射影公式,2.4,,,,medium,0,0,,-
+2.4.10,Corollary,p 構成可能層の構造代数の普遍係数公式,2.4,,,,medium,0,0,,-
+2.4.11,Proposition,p 構成可能性の有限 étale 層化,2.4,,,,medium,0,0,,-
+2.4.12,Proposition,p 有限余鎖の形式 étale 性,2.4,,,,medium,0,0,,-
+2.4.13,Lemma,"K(Z/p,n) 余鎖の余接消滅",2.4,,,,medium,0,0,,-
+2.4.14,Lemma,形式 étale 性の推移,2.4,,,,medium,0,0,,-
+2.4.15,Lemma,二つの形式 étale 代数の pushout,2.4,,,,medium,0,0,,-
+2.4.16,Lemma,p 有限空間の Eilenberg–MacLane fiber 分解,2.4,,,,medium,0,0,,-
+2.4.17,Proposition,準連接層の大域切断とテンソル,2.4,,,,medium,0,0,,-
+2.4.18,Corollary,π 有限余鎖の普遍係数公式,2.4,,,,medium,0,0,,-
+2.4.19,Definition,pseudo-affine 対象,2.4,,,,medium,0,0,,-
+2.4.20,Example,affine 対象の pseudo-affine 性,2.4,,,,medium,0,0,,-
+2.4.21,Remark,離散加群による pseudo-affine 条件の検査,2.4,,,,medium,0,0,,-
+2.4.22,Lemma,標数 p の体上の定数 p 有限層,2.4,,,,medium,0,0,,-
+2.4.23,Lemma,pseudo-affine 性の切断底変換,2.4,,,,medium,0,0,,-
+2.4.24,Lemma,標数 p の環上の定数 p 有限層,2.4,,,,medium,0,0,,-
+2.4.25,Lemma,pseudo-affine 性の有限 étale 局所判定,2.4,,,,medium,0,0,,-
+2.4.26,Lemma,局所定数 p 構成可能層の pseudo-affine 性,2.4,,,,medium,0,0,,-
+2.5.1,Theorem,p 構成可能層の構造代数のコンパクト性,2.5,,,,medium,0,0,,-
+2.5.2,Proposition,p 構成可能 pullback の構造代数 pushout,2.5,,,,medium,0,0,,-
+2.5.3,Corollary,構造代数の反対圏での切断度,2.5,,,,medium,0,0,,-
+2.5.4,Lemma,平方零拡大によるコンパクト性の検出,2.5,,,,medium,0,0,,-
+2.5.5,Notation,局所化・主イデアル導来完備化,2.5,,,,medium,0,0,,-
+2.5.6,Lemma,完備化と局所化の fracture 正方形,2.5,,,,medium,0,0,,-
+2.5.7,Lemma,filtered 完備化の差の局所化不変性,2.5,,,,medium,0,0,,-
+2.5.8,Lemma,有限 étale 制限と写像空間,2.5,,,,medium,0,0,,-
+2.5.9,Lemma,p 有限空間の有限極限・retract 生成,2.5,,,,medium,0,0,,-
+2.5.10,Lemma,有限忠実平坦被覆でのコンパクト性,2.5,,,,medium,0,0,,-
+2.5.11,Lemma,局所定数層のコンパクトな構造代数,2.5,,,,medium,0,0,,-
+2.5.12,Proposition,穿孔完備化への写像関手の有限極限保存,2.5,,,,medium,0,0,,-
+2.6.1,Definition,spectral stack の p 構成可能射,2.6,,,,medium,0,0,,-
+2.6.2,Remark,幾何学的 stalk による p 構成可能性,2.6,,,,medium,0,0,,-
+2.6.3,Remark,p 構成可能射の étale 性,2.6,,,,medium,0,0,,-
+2.6.4,Remark,affine 上の二つの定義の一致,2.6,,,,medium,0,0,,-
+2.6.5,Remark,p 構成可能性の étale 局所性,2.6,,,,medium,0,0,,-
+2.6.6,Definition,p-thin spectral stack,2.6,,,,medium,0,0,,-
+2.6.7,Warning,affine の p-thin 性に関する非対称性,2.6,,,,medium,0,0,,-
+2.6.8,Remark,p-thin 性の étale 降下,2.6,,,,medium,0,0,,-
+2.6.9,Example,離散 p 冪零構造層の p-thin 性,2.6,,,,medium,0,0,,-
+2.6.10,Theorem,p 構成可能射の構造代数による写像の復元,2.6,,,,medium,0,0,,-
+2.6.11,Remark,直像構造層の準連接性,2.6,,,,medium,0,0,,-
+2.6.12,Corollary,p 構成可能層の構造代数による充満忠実埋め込み,2.6,,,,medium,0,0,,-
+2.6.13,Theorem,構造代数の R 値の解による復元,2.6,,,,medium,0,0,,-
+2.6.14,Notation,直像代数上の余連結加群,2.6,,,,medium,0,0,,-
+2.6.15,Theorem,p 構成可能射の準連接加群圏比較,2.6,,,,medium,0,0,,-
+2.6.16,Lemma,開閉分解による余連結性・切断性の検出,2.6,,,,medium,0,0,,-
+2.6.17,Lemma,p 群の非零 F_p 表現の非零不変ベクトル,2.6,,,,high,0,0,,-
+3.0.18,Remark,別の profinite ホモトピー理論への参照,3.0,,,,medium,0,0,,-
+3.1.1,Definition,アクセス可能左完全関手による Pro 圏,3.1,,,,medium,0,0,,inf
+3.1.2,Example,小さい圏の Pro と Ind の双対,3.1,,,,medium,0,0,,inf
+3.1.3,Example,通常の Pro 圏と写像の lim-colim 公式,3.1,,,,medium,0,0,,inf
+3.1.4,Remark,Pro 圏への Yoneda 埋め込み,3.1,,,,medium,0,0,,inf
+3.1.5,Remark,Pro 圏の filtered 極限,3.1,,,,medium,0,0,,inf
+3.1.6,Proposition,Pro の filtered 極限完備化の普遍性,3.1,,,,medium,0,0,,inf
+3.1.7,Remark,Pro の関手性・充満忠実性・随伴,3.1,,,,medium,0,0,,inf
+3.1.8,Notation,p-profinite étale 層と延長構造層,3.1,,,,medium,0,0,,inf
+3.1.9,Theorem,Pro 構造層の完全忠実性と形式 étale 性,3.1,,,,medium,0,0,,inf
+3.1.10,Corollary,平坦 hypercover での Pro 層の降下,3.1,,,,medium,0,0,,inf
+3.1.11,Warning,Pro 層の降下の非本質的全射性,3.1,,,,medium,0,0,,inf
+3.1.12,Definition,p-profinite 空間,3.1,,,,medium,0,0,,inf
+3.1.13,Remark,p 有限空間の Pro への埋め込み,3.1,,,,medium,0,0,,inf
+3.1.14,Notation,p-profinite 空間上の余鎖の延長,3.1,,,,medium,0,0,,inf
+3.1.15,Remark,分離閉体上の Pro 層と Pro 空間,3.1,,,,medium,0,0,,inf
+3.1.16,Proposition,分離閉体上の p-profinite 余鎖埋め込み,3.1,,,,medium,0,0,,inf
+3.1.17,Remark,Artin–Schreier 全射性への仮定の緩和,3.1,,,,medium,0,0,,inf
+3.2.1,Definition,materialization とホモトピー群,3.2,,,,medium,0,0,,-
+3.2.2,Theorem,p-profinite Whitehead 定理,3.2,,,,medium,0,0,,-
+3.2.3,Remark,materialization の保存性,3.2,,,,medium,0,0,,-
+3.2.4,Proposition,p 有限図式の余極限とスライス,3.2,,,,medium,0,0,,-
+3.2.5,Proposition,有限ホモトピー群を持つ空間の非空逆極限,3.2,,,,medium,0,0,,-
+3.2.6,Corollary,有限ホモトピー群の逆極限の連結度,3.2,,,,medium,0,0,,-
+3.2.7,Corollary,π₀ と filtered 逆極限,3.2,,,,medium,0,0,,-
+3.2.8,Remark,全ホモトピー群の逆極限表示,3.2,,,,medium,0,0,,-
+3.2.9,Remark,π₀ の Stone 位相,3.2,,,,medium,0,0,,-
+3.2.10,Definition,profinite 群と連続準同型,3.2,,,,high,0,0,,-
+3.2.11,Example,有限群の離散 profinite 化,3.2,,,,high,0,0,,-
+3.2.12,Proposition,有限群の Pro 圏と profinite 群,3.2,,,,high,0,0,,-
+3.2.13,Definition,pro-p 群の近傍による定義,3.2,,,,medium,0,0,,-
+3.2.14,Proposition,可換・p 群の場合の Pro 圏同値,3.2,,,,medium,0,0,,-
+3.2.15,Example,高次ホモトピー群の pro-p 位相,3.2,,,,medium,0,0,,-
+3.2.16,Example,零切断と profinite 集合,3.2,,,,medium,0,0,,-
+3.2.17,Remark,pro-p Postnikov 塔の収束,3.2,,,,medium,0,0,,-
+3.2.18,Definition,"作用に付随する下降列と (n,c) 切断",3.2,,,,medium,0,0,,-
+3.2.19,Example,共役作用と降中心列,3.2,,,,medium,0,0,,-
+3.2.20,Example,"(n,0) 切断・単連結の場合",3.2,,,,medium,0,0,,-
+3.2.21,Lemma,p 有限空間の作用の冪零性,3.2,,,,medium,0,0,,-
+3.2.22,Notation,"(n,c) 切断反射",3.2,,,,medium,0,0,,-
+3.2.23,Example,c=0 の切断反射,3.2,,,,medium,0,0,,-
+3.2.24,Remark,二種類の切断塔の収束,3.2,,,,medium,0,0,,-
+3.2.25,Definition,有限可換群の束,3.2,,,,medium,0,0,,-
+3.2.26,Remark,profinite 可換群束と Stone 双対,3.2,,,,medium,0,0,,-
+3.2.27,Construction,群束の相対 Eilenberg–MacLane 対象,3.2,,,,medium,0,0,,-
+3.2.28,Example,pro-p 可換群の Eilenberg–MacLane materialization,3.2,,,,medium,0,0,,-
+3.2.29,Construction,指定切断を持つ square の部分圏,3.2,,,,medium,0,0,,-
+3.3.1,Proposition,有限生成 pro-p 可換群の判定,3.3,,,,medium,0,0,,-
+3.3.2,Definition,有限型 p-profinite 空間,3.3,,,,medium,0,0,,-
+3.3.3,Theorem,有限型での materialization の充満忠実性,3.3,,,,medium,0,0,,-
+3.3.4,Definition,p-profinite 空間のコホモロジー,3.3,,,,medium,0,0,,-
+3.3.5,Remark,Eilenberg–MacLane 対象によるコホモロジー表示,3.3,,,,medium,0,0,,-
+3.3.6,Remark,H⁰ の p-Boolean 代数と π₀ の復元,3.3,,,,medium,0,0,,-
+3.3.7,Remark,materialization のコホモロジー比較,3.3,,,,medium,0,0,,-
+3.3.8,Proposition,有限型対象のコホモロジー比較同型,3.3,,,,medium,0,0,,-
+3.3.9,Proposition,コホモロジー同型から写像空間比較,3.3,,,,medium,0,0,,-
+3.3.10,Proposition,"K(Z/p^a,n) のコホモロジーの Pro 安定性",3.3,,,,medium,0,0,,-
+3.3.11,Remark,"K(Z_p,n) の有限次元ホモロジー",3.3,,,,medium,0,0,,-
+3.3.12,Remark,有限生成 pro-p 可換群の有限次元コホモロジー,3.3,,,,medium,0,0,,-
+3.3.13,Remark,冪零空間への比較の拡張,3.3,,,,medium,0,0,,-
+3.3.14,Notation,p-profinite 完備化と materialization の随伴,3.3,,,,medium,0,0,,-
+3.3.15,Lemma,mod p コホモロジーによる同値検出,3.3,,,,medium,0,0,,-
+3.4.1,Definition,pro-p 空間の切断射・連結射,3.4,,,,medium,0,0,,-
+3.4.2,Theorem,pro-p 空間の分解系,3.4,,,,medium,0,0,,-
+3.4.3,Proposition,p 有限空間の分解系,3.4,,,,medium,0,0,,-
+3.4.4,Proposition,Pro 圏への分解系の延長,3.4,,,,medium,0,0,,-
+3.4.5,Example,絶対切断の分解系による表示,3.4,,,,medium,0,0,,-
+3.4.6,Proposition,相対切断性の内在的判定,3.4,,,,medium,0,0,,-
+3.4.7,Lemma,materialization の連結射保存,3.4,,,,medium,0,0,,-
+3.4.8,Corollary,切断対象の三つの判定,3.4,,,,medium,0,0,,-
+3.4.9,Proposition,連結射の materialization・コホモロジー判定,3.4,,,,medium,0,0,,-
+3.4.10,Corollary,連結対象のコホモロジー判定,3.4,,,,medium,0,0,,-
+3.4.11,Remark,単連結時のホモトピー群の基点独立性,3.4,,,,medium,0,0,,-
+3.4.12,Theorem,有限型のコホモロジー的特徴づけ,3.4,,,,medium,0,0,,-
+3.4.13,Proposition,最初の非零コホモロジーと連続双対,3.4,,,,medium,0,0,,-
+3.4.14,Corollary,ホモトピー群の有限生成性と有限次元コホモロジー,3.4,,,,medium,0,0,,-
+3.4.15,Remark,有限次元コホモロジーの空間の pro-p 完備化,3.4,,,,medium,0,0,,-
+3.5.1,Definition,Frobenius 半線形自己写像,3.5,,,,high,0,0,,-
+3.5.2,Example,P⁰ の Frobenius 半線形性,3.5,,,,medium,0,0,,-
+3.5.3,Lemma,固定ベクトルからのスカラー拡大の単射性,3.5,,,,medium,0,0,,-
+3.5.4,Definition,可解な半線形作用と可解 E∞ 代数,3.5,,,,medium,0,0,,-
+3.5.5,Remark,可解代数の正次数の消滅,3.5,,,,medium,0,0,,-
+3.5.6,Remark,可解半線形作用の filtered 余極限,3.5,,,,medium,0,0,,-
+3.5.7,Example,有限型空間の余鎖の可解性,3.5,,,,medium,0,0,,-
+3.5.8,Theorem,可解代数による pro-p 空間の特徴づけ,3.5,,,,medium,0,0,,-
+3.5.9,Proposition,有限次元半線形作用の単射・全単射・可解性,3.5,,,,medium,0,0,,-
+3.5.10,Lemma,分離閉体上の非零固定ベクトル,3.5,,,,medium,0,0,,-
+3.5.11,Theorem,有限型 pro-p 空間の余鎖像の特徴づけ,3.5,,,,medium,0,0,,-
+3.5.12,Proposition,有限生成 Z_p ホモトピー群と materialization,3.5,,,,medium,0,0,,-
+3.5.13,Remark,有限型 materialization の一意性,3.5,,,,medium,0,0,,-
+3.5.14,Corollary,有限型 pro-p 空間の本質像,3.5,,,,medium,0,0,,-
+3.5.15,Corollary,Mandell の p 進有限型埋め込み,3.5,,,,medium,0,0,,-
+3.6.1,Notation,切断・π 有限・p 有限空間の部分圏,3.6,,,,medium,0,0,,-
+3.6.2,Construction,構造層からの étale ホモトピー型の評価射,3.6,,,,medium,0,0,,-
+3.6.3,Theorem,p-thin stack の p-profinite étale ホモトピー型,3.6,,,,medium,0,0,,-
+3.6.4,Definition,正規 spectral DM stack,3.6,,,,medium,0,0,,-
+3.6.5,Theorem,Artin–Mazur の profinite 性,3.6,,,,medium,0,0,,-
+3.6.6,Proposition,大域切断の点の π 有限対象への因子化,3.6,,,,medium,0,0,,-
+3.6.7,Lemma,二次 Kan・有限単体・有限 π 条件の有限群商への保存,3.6,,,,medium,0,0,,-

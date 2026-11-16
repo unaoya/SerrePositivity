@@ -650,6 +650,37 @@
         "url": "https://link.springer.com/chapter/10.1007/BFb0074449",
         "note": "Publisher’s title/author, LNM 1126 and original 1985 copyright/citation checked; 2006 digitization date is not the publication year."
       }
+    },
+    {
+      "key": "DAGXIII",
+      "title": "Derived Algebraic Geometry XIII: Rational and p-adic Homotopy Theory",
+      "authors": [
+        "Jacob Lurie"
+      ],
+      "edition": "2011-12-15",
+      "source": "https://www.math.ias.edu/~lurie/papers/DAG-XIII.pdf",
+      "native_attribute": null,
+      "verified_edition": true,
+      "number_style": "kind and number",
+      "pdf_sha256": "75a4d6d9e5e22c8f1261a09e499c6668ceacb90d6cfaf4a2de4a10e2fe0cd535",
+      "primary_title_checked": "2026-11-16",
+      "edition_provenance": "Pinned PDF title page checked; complete numbered inventory in research/dag13-coverage/toc.md."
+    },
+    {
+      "key": "NS",
+      "title": "On topological cyclic homology",
+      "authors": [
+        "Thomas Nikolaus",
+        "Peter Scholze"
+      ],
+      "edition": "arXiv:1707.01799v2",
+      "source": "https://arxiv.org/pdf/1707.01799v2",
+      "native_attribute": null,
+      "verified_edition": true,
+      "number_style": "kind and number",
+      "pdf_sha256": "12b6cdbd0d8ebb506284bd13f183affe80e41cc8890fef5fa21c922c2f80cec3",
+      "primary_title_checked": "2026-11-16",
+      "edition_provenance": "Pinned PDF title page checked; complete numbered inventory in research/ns-coverage/toc.md."
     }
   ]
 }
