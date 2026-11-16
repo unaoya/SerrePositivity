@@ -3,7 +3,7 @@
   "complete": 3,
   "total": 6,
   "added": 0,
-  "verified_head": "this commit: base c4a92848cc2c58b72e59ef4c506949f33fd09280",
+  "verified_head": "this commit: base 52a6aef9df874f077a17be8b3e8f70ac9c2fc809",
   "items": {
     "HT01": "complete",
     "HT02": "complete",
@@ -12,12 +12,12 @@
     "HT05": "not-started",
     "HT06": "not-started"
   },
-  "latest_complete_audit_checkpoint": "cover-coordinates-reduced-cone-checkpoint.json",
-  "latest_complete_audit_declarations": 1648,
+  "latest_complete_audit_checkpoint": "oriented-raw-one-checkpoint.json",
+  "latest_complete_audit_declarations": 1650,
   "working_changes_unverified": [
-    "AffineOrientedRawOne"
+    "MapExtendCompatibility"
   ],
-  "pending_check": "bundle-163 terminal rc1; see audit module inventory; failed dependencies await next batch",
+  "pending_check": "bundle-164 terminal rc1; see audit module inventory; failed dependencies await next batch",
   "next_proof_route": "ht04-next-proof-route.md",
   "initial_record": {
     "stage": "5inf3a",
