@@ -2867,3 +2867,49 @@ docstring に「制限の厳密な等号は要求しない」を記載済み。�
 今回の全関手の存在だけで S8 完成とは数えない。
 検証済み全体193本12,626行・1,103宣言。外枠18,600行。
 一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
+
+### S8 続報：元の全切断関手の値と指定した native 局所極限の比較
+
+新規6本313行49宣言の対象ビルド・小監査が完了した。標準三公理のみ、source SHA 一致。
+記録：`/tmp/is-w1/s8-equivalent-limit-vertex-1/`、`s8-left-straightening-vertex-1/`、
+`s8-right-kan-limit-vertex-1/`、`s8-local-limit-comparison-1/`（2本）、
+`s8-native-limit-comparison-2/`。いずれも全runnerの終了コード0を確認した。
+
+```lean
+limitVertexIsoOfEquivalentRestriction a ha O c d hc hd :
+  VertexIso c.vertex d.vertex
+-- c : JoinCone (a ≫ O), d : JoinCone O, ha : IsQCatEquivalence a
+
+limitVertexIsoOfLeftStraighteningIso p q e O c d hc hd :
+  VertexIso c.vertex d.vertex
+-- c : JoinCone (p ≫ O), d : JoinCone (q ≫ O)
+-- e : FunctorIso (leftStraighteningInfinityDiagram p) (leftStraighteningInfinityDiagram q)
+
+rightKanLimitVertexIsoOfFunctorIso e O v c d hc hd :
+  VertexIso c.vertex d.vertex
+-- c : JoinCone (rightKanDiagram δ O v), d : JoinCone (rightKanDiagram δ' O v)
+-- e : FunctorIso δ δ'
+
+rightKanLimitVertexIsoOfIsoSquare a b hw O v c d hc hd :
+  VertexIso c.vertex d.vertex
+-- hw : δ ≫ b.hom = a.hom ≫ δ'
+-- c : JoinCone (rightKanDiagram δ (a.hom ≫ O) v)
+-- d : JoinCone (rightKanDiagram δ' O (b.hom.app _ v))
+
+weightedSections_nativeLimitIso O hE P d hd :
+  VertexIso ((weightedSections O hE).app _ P) d.vertex
+-- d は実際の反対 Yoneda の局所図式の指定極限錐。
+-- 係数は (fixedYonedaDomainIso C).inv ≫ O、重みは
+-- (opFunctor.mapIso (fixedPresheafShapeIso C)).inv.app _ P。
+```
+
+同値な添字への既存の錐制限と、同じ図式の極限の一意性を合成した。
+分類図式の同型の場合も既存の二つの復元と小さい unstraightening の比較を使った。
+元の全切断関手の選択を変えず、その同じ値から指定した native 局所極限へ比較を構成する。
+局所極限の存在だけの比較から、指定錐の頂点の比較まで進んだ。
+全て既存構成の係数・形状移送と合成則で、追加 ID はない。200行を超える補題はない。
+
+残りは離散重みと `sectionsOf` の指定比較・射の自然性、一般の余極限の反転、層化・局所同値、
+S1 の coverage・extensive の残り。元の圏から Kan 局所形状への既存の射の射影則を次に検証する。
+検証済み全体199本12,939行・1,152宣言。外枠18,600行。
+一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
