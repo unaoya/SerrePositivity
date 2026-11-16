@@ -3011,3 +3011,21 @@ R2まで287モジュール・23,927行・2337宣言を検証し、`11e4dbfe3`へ
 通常のbulk整理券の束は73.87秒で返却。R3の元の普遍向き付き基底の終点が通った。一般のPの段階で同じ制限関手の型を照合してから特殊化し、HT03の特定の普遍結晶被覆の結果だけを使った。R1→R2→R3の順に全件成功し、HT04完成の停止点に達した。HT05・HT06以降には進まない。 新しい2本と既存の更新0本が通り、**289モジュール・24,050行・2340宣言**の公理閉包は標準三公理のみ。全監査ソースのハッシュ一致を確認した。記録は `universal-affine-line-checkpoint.json` と `universal-affine-line-bundle-322.tar.gz`。準備した289本全件がビルド・公理監査まで成功した。HT02は完成済み。残りの項目は別に数える。
 
 一覧：済み 4／全体 6（うち追加 0）。
+
+### 5∞-3a：HT04完成の停止点（11-17）
+
+一覧：済み 4／全体 6（うち追加 0）。HT04.R1→R2→R3をこの順で検証した。HT05・HT06・5∞-7a・B2・B5・B6には進まず、ここで止まる。
+
+**289モジュール・24,050行・2340宣言**を対象ビルドと公理閉包の監査で確認した。準備分の未検証は0、許容公理は`propext`・`Classical.choice`・`Quot.sound`のみ。外枠26,000行以内。約24,000行の途中報告は`ht04-24000-progress.json`に残した。最終記録は`bulk-5inf3a/ht04-complete.json`、束の実行記録は`universal-affine-line-checkpoint.json`と対応するアーカイブにある。root全体のビルド・full verifyを実施したという報告ではない。
+
+R1は元のκ・項同型・二つの単位の一致。R2は元のη・元の指定`affineOriginalCoverTargetIso`を保ち、零次・一次（向きの単位の逆を含む）の正方形、通常被覆像の擬同型性、零次一次以外の消滅を確認した。R3はHT03の特定の`universalCrystallineCover_hodgeTate_iso p 1`から同じηの完備被覆像の擬同型性を得て、元の反映判定へ接続した。一般の結晶比較は入力にしていない。
+
+終点は普遍向き付きP₀・元の有界性h₀に対する`Bijective (hodgeTateMapZero P₀ h₀ 1) ∧ Bijective (hodgeTateMapOne P₀ h₀ 1) ∧ ∀ i : ℕ, 1 < i → Subsingleton (hodgeTateCohomology' P₀ h₀ 1 i)`のまま。型は`ht04-endpoint-types.md`、全追加宣言379件のLeanによる型採取（欠落0）は`ht04-law-types.json`と`ht04-law-type-requests.json`にある。一般の任意有界prism・多変数・層の定理へ広げたという主張はしない。
+
+mainは取り込んでいない。HT02・HT03の固定ソース、R1前の検証済み226本のソースの差は0。変更範囲外・import欠落・循環は0。直接または新たなEInfinity依存は0だが、HT03以前の古典的な鎖テンソル補助`EInfinity.NatTensor.Symmetry`・`EInfinity.AlexanderWhitney.TensorComponents`の推移依存2本は継承する。E∞環・CAlg比較を追加していない。`ht04-static-scope-check.json`に全結果を保存した。
+
+HT03完了時からのHT04全体の追加実測は12,700行（R1完了まで10,428行、R2が2,149行、R3が123行）。R1の復元候補完了後だけを測る増分は2,912行である。特に元の同型・射の一致の正規化で増えた。この実測から、旧界面を維持する仮のHT05残量を素の値1,800〜4,400行（係数2で3,600〜8,800行）、HT06を225〜600行（450〜1,200行）に見直す。D30のE構成・U3の任意の有界prism・n変数の道・Thm6.3を層で述べるか、の再検討後の工数を保証する値ではない。両項目は開始していない。
+
+監査の追加登録は`ht04-audit-registration-proposal.json`に提案として保存した。既存の`scripts/audit_bhatt_scholze_stage2.lean`は変更していない。今回の対象監査では追加分を含む全宣言を検査している。
+
+検証済みの数学のコミットは`6f8480b73`。R3で追加した`AffineRestrictedResolvedCriterion`は、既存の制限関手と同じ型で反映判定を渡すための補助であり、終点・仮定を変えていない。具体的な普遍prismへ特殊化する前に型を照合した後、最終の束は昼の通常の鍵を73.87秒で返却した。最終記録の`verified_math_commit`をこのHEADへ固定した。
