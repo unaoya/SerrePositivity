@@ -3153,3 +3153,6 @@ mainの取り込みは11-16 16:25の指示どおり保留したまま。検証�
 今回本体125行＋入口2行＝127行。基準56ea849a3から検証済み19,290行（新規261モジュール18,983行、既存追加25行、入口282行。既存削除14行は差し引かない）。新規所有宣言の小監査累計2,149、既存15宣言は別計上。外枠21,000行。相対の各アフィン開への実際の入力は得たが、同じ二重図式・各軸・タプルtotalとの全体の照合、nil閉厚化、Noether帰納、G5は残る。G4・G5は未完、停止点2g-2ではない。最終の型・仮定は同じ。main未取り込み、root・下流全ビルド・全体監査・2hのLeanなし。共有鍵--class impl --wait 3600、待ちは一件、対象ビルドと監査は別リース。
 
 一覧：済み1／全体3（うち追加0）。
+
+
+同じ有限アフィン開被覆による相対fppfの細分の法則（G4のG1の被覆構成の法則、着手前の型、50〜100行見込み）：`exists_affine_flatSurjective_refinement (f : W ⟶ B) [CompactSpace W] [B.IsSeparated] [Flat f] [Surjective f] [LocallyOfFinitePresentation f]` は、G1と同じ有限アフィン開被覆の余積Aと同じm:A→Wを選び、IsAffine A、Flat(m≫f)、Surjective(m≫f)、LocallyOfFinitePresentation(m≫f)、IsAffineHom(m≫f)を保つ形の証人を返す。平坦性・局所有限表示性は同じsigmaOpenCoverの各脚で、全射性は同じ被覆とfで、アフィン射性は既存のIsAffineHom.of_compと分離性で得る。新しいNoether模型や別の平坦化を作らない。元のproper fppfから相対の実際のアフィン射への入口の内数。
