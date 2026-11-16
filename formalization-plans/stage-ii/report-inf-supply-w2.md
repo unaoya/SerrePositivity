@@ -18071,3 +18071,39 @@ lemma nerveUnderLift_comp_cosliceTwistedArrowMap_postcomp {I C : Type u}
 同じ元の指定自然変換から、円柱側とtwisted-arrow側の全像を厳密に照合する法則は閉じた。元の固定標的のpairingを反対圏のcosliceとして表示する際の両端交換、および元のcorrected pairingの全同型と同じ底のpathを保つ最終照合が残る。R03h・R03d・3b-4aは未完。
 
 一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+### 301.3 次の両端交換の型と、同じ重みの反転の検査
+
+固定標的の元のpairingを、反対圏で始点を固定したcosliceとして読むため、同じtwisted pairingの両端交換の法則を調べている。二重反対同値はC→Cᵒᵖᵒᵖの向きなので(opOpEquivalence C).inverseを使う。次の型はいずれも既存の構成の自然性・反転の表示の法則で、数学の一覧は増やさない。
+
+```lean
+private lemma standardIso_end_hom (n : ℕ) (e : (Δ[n] : SSet.{u}) ≅ Δ[n]) :
+    e.hom = 𝟙 _
+
+lemma edgewiseWeightReverse_standard (n : ℕ) :
+    (edgewiseWeightReverseIso.{u} ⦋n⦌).inv ≫
+      SSet.opFunctor.map (edgewiseWeightIso n).hom ≫ (stdSimplex.opIso ⦋n+n+1⦌).hom =
+        (edgewiseWeightIso n).hom
+
+private lemma oppositePairing_naturality {I C : Type u} [Category.{u} I] [Category.{u} C]
+    (A : I ⥤ Cᵒᵖ) (B : I ⥤ C) (h : ∀ i, (A.obj i).unop ⟶ B.obj i)
+    (hh : ∀ {i j} (f : i ⟶ j), (A.map f).unop ≫ h i ≫ B.map f = h j)
+    {i j : I} (f : i ⟶ j) :
+    (((B ⋙ (opOpEquivalence C).inverse).map f).unop) ≫ (h i).op ≫ A.map f = (h j).op
+
+lemma twistedPairingNerveMap_opposite_swap {I C : Type u} [Category.{u} I] [Category.{u} C]
+    (A : I ⥤ Cᵒᵖ) (B : I ⥤ C) (h : ∀ i, (A.obj i).unop ⟶ B.obj i)
+    (hh : ∀ {i j} (f : i ⟶ j), (A.map f).unop ≫ h i ≫ B.map f = h j) :
+    twistedPairingNerveMap (B ⋙ (opOpEquivalence C).inverse) A (fun i => (h i).op)
+      (oppositePairing_naturality A B h hh) ≫
+      edgewiseSubdivisionMap (nerveOppositeIso (C := C)).inv ≫
+        twistedArrowOppositeSwap (nerve C) = twistedPairingNerveMap A B h hh
+```
+
+standardIso_end_homとedgewiseWeightReverse_standardを含む一時ファイルisw2-twisted-weight-reversal2の個別Lean検査は終了0。標準単体の自己同型の射が恒等である既存Mathlibのiso_eq_iso_reflを、stdSimplexの充満忠実性で移して使った。これにより、同じ重みの反転と同じ標準単体同型を組み合わせた式は、座標の新しい選択なしに一致する。まだ本体の対象ビルド・監査をしていないため、検収済みの本数・行数・宣言数には含めない。
+
+oppositePairing_naturalityの型と証明は一時ファイルisw2-twisted-pairing-opposite3でelaborateされ、残ったのはtwistedPairingNerveMap_opposite_swapの各次数の全射の等式（検査全体は未解決の義務で終了1）。その全写像の等式はまだ未証明。新しいモデル仮定は足さない。通常圏のnerveの反転は既存nerveOppositeIsoとnerveUnreverseChain、重みの反転は上の同じ比較を使って進める。
+
+R03h・R03d・3b-4aは未完。検収済みの本体は全てコミット済み、未完の次の検査は一時ファイルだけ。共有鍵は返却済みで、起動中の自レーンの検査はない。
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
