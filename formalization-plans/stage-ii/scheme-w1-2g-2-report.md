@@ -2957,3 +2957,40 @@ mainの取り込みは11-16 16:25の指示どおり保留したまま。検証�
 普遍同相による同じ増大Frobenius係数の移送（G4の既存の係数移送の法則、着手前の型、50〜100行見込み、nil不変性の内数）：可換な四角形F:f→gの両端が環の普遍同相なら、`frobeniusDirectLimitArrowIsoOfUniversalHomeomorphisms` は元の実際のFrobenius矢印の同型を返す。両端の既存の `frobeniusDirectLimitUniversalHomeomorphismEquiv` と、既存の `frobeniusDirectLimitArrowMap F` の可換性をそのまま使う。`frobeniusAugmentedRingCoefficientsIsoOfUniversalHomeomorphisms` はその同型を同じ増大conerveの関手と既存の係数比較へ送り、`frobeniusAugmentedRingCoefficients_exact_iff_of_universalHomeomorphisms` は元のAugmentedRingCechExactの同値を得る。増大項・全ての余面と退化を保つ。これは環図式の係数移送の法則で、実際の閉厚化の各アフィン交叉とこの四角形の照合・被覆の自然性は別途残る。
 
 元の零次行射影の係数移送・自然性（G4の既存total・係数移送の法則、着手前の型、80〜160行見込み、相対比較の内数）：`cechIntegerTotalToRowZero_naturality` はtotal.map f≫π_L=π_K≫row₀.map f、`cechIntegerTotalToRowZero_component_surjective` は各全次数のπの全射性、`cechIntegerTotalToRowZero_quasiIso` は正の行の完全性から同じπの擬同型性を返す。πは既存のHA.totalToRowZeroそのもの。HAの既存のtotalToRowZero_quasiIsoは係数環と加群を同じ宇宙に置くので、⑥の既存のcechIntegerLiftFunctor・totalの同型・完全性の反映で整数係数の大きい加群に移す。HAの宣言の型は変更せず、対角線消去の証明を新しく作らない。
+
+### 元の左側の核の完全性の同値、任意の係数移送、普遍同相の係数比較
+
+`SchemePerfectCechTupleLeftTotalBaseSection`（154行）：
+- `cechLeftBasePositive_isZero`（非公開）：元の基底列の正の縦次数は零対象。
+- `schemePerfectCechTupleLeftTotalBaseSectionSummand`：正の外次数・縦零次の元のRの座標を同じ直和の脚へ戻し、他を零へ送る。
+- `schemePerfectCechTupleLeftTotalBaseSectionComponent`：同じtotalDescでまとめた次数ごとの基底の右逆。鎖写像とは主張しない。
+- `ι_schemePerfectCechTupleLeftTotalBaseSectionComponent`：元の各ιTotalに沿った同じ右逆の成分の式。
+- `schemePerfectCechTupleLeftTotalBaseSection_projection`：右逆の後に元の同じ基底射影を取ると各全次数で恒等射。
+- `schemePerfectCechTupleLeftTotal_split`：元のψ・σ・P・rの同じ各全次数でψσ+Pr=1。
+
+`SchemePerfectCechTupleLeftTotalShortComplex`（161行）：
+- `cechLeftBaseProjection_positive`（非公開）：元の同じ射影の正の縦次数の成分は零。
+- `schemePerfectCechTupleLeftTotalMap_baseProjection`：元のσの後に元のPのtotalを取ると零。
+- `schemePerfectCechTupleLeftTotalShortComplex`：同じ元のK.total→L.total→Q.totalの短複体。
+- `schemePerfectCechTupleLeftTotalDegreeSplitting`：同じ三つの合成の式を各次数のMathlib.Splittingへ代入した値。
+- `schemePerfectCechTupleLeftTotal_shortExact`：元の同じ短複体は短完全。
+- `schemePerfectCechTupleLeftWholeTotal_acyclic_iff`：同じ元のL.totalと元の増大二重Čechのtotalの完全性は同値。
+- `cechLeftOriginalKernel_shortExact`（非公開）：元の同じPのkernelSequenceは短完全。
+- `schemePerfectCechTupleLeftKernelTotal_acyclic_iff`：元のLeftKernel.totalと元の増大二重Čechのtotalの完全性は同値。元のkernelを置き換えない。
+
+`DegreeOneProjectiveModelBaseChange`（66行）：
+- `degreeOne_baseChange_aeval_surjective`：元の全射な次数一評価の生成元を1⊗aへ送った評価は、任意の係数移送後も全射。
+- `DegreeOneProjectiveModel.baseChange`：同じ元のpullback.sndの次数一表示。平坦性を仮定せず、blowupの任意の基底変更を逆像イデアルのblowupと同一視しない。
+
+`FrobeniusCechUniversalHomeomorphism`（50行）：
+- `frobeniusDirectLimitArrowIsoOfUniversalHomeomorphisms`：両端が環の普遍同相である同じ四角形から、元の実際のFrobenius矢印の同型を得る。
+- `frobeniusAugmentedRingCoefficientsIsoOfUniversalHomeomorphisms`：同じ四角形を元の増大Frobenius係数の環図式全体の同型へ送る。
+- `frobeniusAugmentedRingCoefficients_exact_iff_of_universalHomeomorphisms`：元の増大項と全正次数の完全性は同じ係数移送で同値。
+
+検証：固定したmodule形式のcheck-6は三段とも終了0（left-short-exact、model-base-change、universal-homeomorphism）。固定manifestと下書き・本体のSHA256と全バイト一致を確認。四本と直接importerの入口の対象ビルドは5,342ジョブ・終了0（2g-g4-left-model-and-nil-native.log）。
+
+別の共有鍵による所有宣言の小監査は91宣言（30、33、18、10）、非公開・生成分も含め標準三公理のみ・終了0（2g-g4-left-model-and-nil-audit.log）。新規所有宣言の小監査累計1,974、既存15宣言は別計上。追加公理・sorry・既存宣言の型変更・資源上限の引き上げ・200行超の宣言なし。長い行・letI・不要なrflなどのstyle警告は残る。
+
+今回本体431行＋入口4行＝435行。基準56ea849a3からの検証済み実測は18,046行（新規247モジュール17,753行、既存追加25行、入口268行）。承認済み外枠は21,000行。G4・G5は未完、停止点2g-2ではない。中心側の比較と元のRightKernelへの移送、実際のnil閉厚化との照合、相対proper fppf・Noether帰納、G5が残る。最終のAugmentedRingCechExactの型・仮定は変えず、条件付きのF8の仮定を最終出力へ残さない。main未取り込み。root・下流全ビルド・AlgebraicGeometry全体監査なし。一覧：済み1／全体3（うち追加0）。
+
+完成見込みは境界報告の約19,600〜20,500行を維持する。今回の型・証明の修正はその比較の修正分に、次数一表示と普遍同相の二本はNoether帰納の供給の内数に含める。中心側の六本とRightKernelへの移送、零次行射影の係数移送の新しい下書きは未検証・未登録・未コミットであり、今回の実測には含めない。共有鍵 --class impl --wait 3600、待ちは一件、対象ビルドと監査は別リース。
