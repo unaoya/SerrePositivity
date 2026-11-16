@@ -1804,3 +1804,4 @@ public import SerrePositivity.AlgebraicGeometry.FrobeniusDirectLimitPi
 public import SerrePositivity.AlgebraicGeometry.FiniteFamilyCechComponents
 public import SerrePositivity.AlgebraicGeometry.FiniteFamilyFiberRecursion
 public import SerrePositivity.AlgebraicGeometry.FiniteFamilyCechUnit
+public import SerrePositivity.AlgebraicGeometry.FiniteFamilyCechDistribution
