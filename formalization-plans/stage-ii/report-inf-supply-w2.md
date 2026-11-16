@@ -17742,3 +17742,39 @@ lemma strictBETotJointSourceRoofNormalizedPinchedComparison_interval_family (P :
 次に使う、同じprobe射のモデル源の二つの宇宙表示と元のprobe頂点同型のArrowの照合は、個別検査isw2-model-source-edge1およびisw2-roof-probe-endpoint-arrow1で終了0。一時ファイルだけで、本体への対象ビルド・監査はまだ。今回はこの二補題を検収済みモジュール数・行数には含めない。未検証の新規Leanは作業木に残していない。全ての鍵は返却済み。
 
 一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。停止点3b-4aの完了報告ではない。
+
+## 296. 指定されたprobe頂点同型と、同じ元のprobe射の像を照合（2026-11-16）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+§295.3の一時検査済みの二補題を本体へ移す。strictBETotModelSourceとalgebraCAlgSourceの同じ実射の辺は、共通のcAlgLocalizationSourceへ送る元の一単体が一致する。これを元のframedLimitProbeComparisonへ適用し、strictBETotJointRoofProbeEndpointIsoの順射が同じ元のprobe射のnative像であることをArrowとして照合する。新しい数学の項目ではなく、既存の宇宙表示と指定同型の係数移送の法則。既存のprobe比較・CAlg源・局所化三角形を選び直さない。
+
+個別検査isw2-model-source-edge1・isw2-roof-probe-endpoint-arrow1は終了0。mainのEInfinityにも今回の二つの宣言名がないことをgit grepで確認した。この二補題は指定された同じ両端成分の照合であり、一般の全パラメータの等式を点での一致から推論するものではない。§293のnative全族と§295のroof全族の最終照合は、別に全族の形で維持する。
+
+#### StrictDiagramTotJointRoofProbeArrow（46行）
+
+```lean
+lemma strictBETotModelSource_edge {X Y : (operad A).Algebra} (f : X ⟶ Y) :
+    (((nerve.edgeMk ((AsSmall.up : (operad A).Algebra ⥤ AsSmall.{u+1} (operad A).Algebra).map f)).map
+      (strictBETotModelSource A)).edge) =
+      (((nerve.edgeMk f).map (algebraCAlgSource A)).edge)
+
+lemma strictBETotJointRoofProbeEndpointIso_hom_arrow (P : strictBETotJointHomIndex A) :
+    Arrow.mk (strictBETotJointRoofProbeEndpointIso A P).hom =
+      Arrow.mk (HomotopyCategory.homMk ((nerve.edgeMk
+        ((AsSmall.up : (operad A).Algebra ⥤ AsSmall.{u+1} (operad A).Algebra).map
+          (framedLimitProbeComparison A (AsSmall.down.obj P).1.unop))).map
+        (strictBETotModelSource A)))
+```
+
+対象ビルド・小監査を行ってから検収する。既存の⑤aのファイル・公式入口・公式監査は変更しない。
+
+### 296.2 検収
+
+新規1本46行・公開2補題・実環境宣言2。対象ビルド363（依存を含む12,242 jobs）・小監査とも終了0。共有鍵 --class impl --wait 3600、一枚の整理券、gtimeout 1700秒でビルドと小監査の間だけ使用した。小監査は264モジュール・1,706宣言、propext・Classical.choice・Quot.soundのみ、sorryAx・追加公理なし。自レーン累計260本・17,658行、実環境1,699宣言。外枠22,000行まで4,342行。git diff --check通過。main a4388efc9のEInfinity/3,745ファイル13,373名と自レーン候補626ファイルからの1,958名を照合し、異なるファイル間の重複0、内部も0。
+
+証跡：/private/tmp/isw2-build363.log、isw2-validation363.json、isw2-declaration-collision-scan363.json。登録候補の一覧is-w2-be-20261114-modules.jsonに追加した。mainの既存宣言・⑤aのファイル・公式入口・公式監査は変更していない。既存の原模型のinstanceをローカルに再利用し、新しい模型の仮定は追加していない。§295の最終のBE三宣言のコードは450a6f6aeに保存済み。
+
+指定probe同型の実際の元の射との照合は閉じたが、一般の全族の一致をこの二補題だけから推論しない。次は同じcoslice普遍円柱の制限・自然性の全族の法則を使い、native側のcorrected pairingの同じ全比較をroofの式へ接続する。R03hの最終の全interval族の等式、R03d・3b-4aは未完。
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。

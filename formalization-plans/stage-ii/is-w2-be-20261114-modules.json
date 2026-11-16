@@ -257,5 +257,6 @@
   "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.TwistedHomOppositeIntervalFamilyComparison",
   "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceNativePinchedFactorization",
   "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceNativeIntervalFamily",
-  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRoofNativeFamily"
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRoofNativeFamily",
+  "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointRoofProbeArrow"
 ]
