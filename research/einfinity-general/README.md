@@ -14,7 +14,7 @@ OE-W1、2026-11-16。基準main `30ae8948f339beec42d9340feb02f2031c22c72b`。
 
 各ファイルの概要・方針・規約・利用箇所はmodule docstringから抜き出した。原典番号は利用箇所の説明であり、その一般定理の完成を意味しない。型は最初の名前つき公開宣言から証明本体を除いた抜粋。局所のuniverse・variable文脈を併記するが、open・記法・local instance・import・sectionの範囲はリンク先を参照する。ここを連結してLeanへ貼る用途ではない。
 
-配置上の対応：Kerodonはタグに対応する章・節、HTT §1.3.4は模型圏の局所化、HomotopicalAlgebraは図式の重みとホモトピー関数複体。HA Monadsの179本は今回移動せず、既存の research/g12-monad-route/README.md を参照する。
+配置上の対応：Kerodonはタグに対応する章・節、HA §1.3.4は模型圏の局所化、HomotopicalAlgebraは図式の重みとホモトピー関数複体。HA Monadsの179本は今回移動せず、既存の research/g12-monad-route/README.md を参照する。
 
 ## 役割別の集計
 
@@ -7204,7 +7204,7 @@ lemma map_eq_of_anodyneQ_eq {D : Type v} [Category.{w} D] (L : SSet.{u} ⥤ D)
 
 ### [ComparisonEnrichedFunctors.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ComparisonEnrichedFunctors.lean)
 
-OE04、43原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.ComparisonEnrichedFunctors`。
+OE04、43原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ComparisonEnrichedFunctors`。
 
 # 元の自由 hammock 対角の左右比較の実豊穣関手
 
@@ -7225,7 +7225,7 @@ def freeHammockAugmentationEnriched :
 
 ### [ComparisonEnrichment.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ComparisonEnrichment.lean)
 
-OE04、70原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.ComparisonEnrichment`。
+OE04、70原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ComparisonEnrichment`。
 
 # 元の自由 hammock 対角と hammock の実単体的豊穣圏
 
@@ -7244,7 +7244,7 @@ def HammockObjects (C : _root_.SerrePositivity.InfinityCategories.Kerodon.Adjoin
 
 ### [ComponentCategory.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ComponentCategory.lean)
 
-OE04、105原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.ComponentCategory`。
+OE04、105原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ComponentCategory`。
 
 # 単体的局所化の連結成分の圏
 
@@ -7267,7 +7267,7 @@ def localizationHomEdgeComposition {X Y Z : C.category}
 
 ### [ComponentsEquivalence.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ComponentsEquivalence.lean)
 
-OE04、127原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.ComponentsEquivalence`。
+OE04、127原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ComponentsEquivalence`。
 
 # DK の連結成分の圏と普通の局所化の同値
 
@@ -7291,7 +7291,7 @@ lemma localizationZeroHom_augmentation {X Y : C.category}
 
 ### [ComponentsLocalizationLift.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ComponentsLocalizationLift.lean)
 
-OE04、90原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.ComponentsLocalizationLift`。
+OE04、90原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ComponentsLocalizationLift`。
 
 # 普通の局所化から DK の連結成分の圏への持ち上げ
 
@@ -7312,7 +7312,7 @@ lemma localizationComponentsQ_inverts :
 
 ### [DKHammockCoefficientComparison.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/DKHammockCoefficientComparison.lean)
 
-OE04、61原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.DKHammockCoefficientComparison`。
+OE04、61原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.DKHammockCoefficientComparison`。
 
 # DK Hom と hammock の比較同型の係数自然性
 
@@ -7333,7 +7333,7 @@ def dkHammockComparisonIso (C : _root_.SerrePositivity.InfinityCategories.Kerodo
 
 ### [DKHammockComponentsValue.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/DKHammockComponentsValue.lean)
 
-OE04、52原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.DKHammockComponentsValue`。
+OE04、52原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.DKHammockComponentsValue`。
 
 # native DK/hammock 高次比較の誘導する π₀ と元の augmentation
 
@@ -7357,7 +7357,7 @@ lemma dkHammockComparisonIso_components_value (C : _root_.SerrePositivity.Infini
 
 ### [DKHammockCompositionComparison.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/DKHammockCompositionComparison.lean)
 
-OE04、104原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.DKHammockCompositionComparison`。
+OE04、104原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.DKHammockCompositionComparison`。
 
 # 元の DK hammock 比較の積と合成の正方形
 
@@ -7379,7 +7379,7 @@ def dkHammockColimitComparisonIso (X Y : C.category) :
 
 ### [DKHammockEndpointNaturality.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/DKHammockEndpointNaturality.lean)
 
-OE04、53原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.DKHammockEndpointNaturality`。
+OE04、53原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.DKHammockEndpointNaturality`。
 
 # 元の射に沿う DK hammock 比較の両端点自然性
 
@@ -7404,7 +7404,7 @@ lemma dkHammockColimitComparisonIso_postcompose (X : C.category) {Y Z : C.catego
 
 ### [DKReducedHammockEndpointNaturality.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/DKReducedHammockEndpointNaturality.lean)
 
-OE04、54原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.DKReducedHammockEndpointNaturality`。
+OE04、54原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.DKReducedHammockEndpointNaturality`。
 
 # 元の射に沿う既存の reduced DK 比較の自然性
 
@@ -7428,7 +7428,7 @@ lemma dkHammockComparisonIso_postcompose (X : C.category) {Y Z : C.category} (g 
 
 ### [EnrichedMap.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/EnrichedMap.lean)
 
-OE04、76原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.EnrichedMap`。
+OE04、76原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.EnrichedMap`。
 
 # 相対関手の単体的局所化への延長
 
@@ -7448,7 +7448,7 @@ def localizationHomMap {C D : _root_.SerrePositivity.InfinityCategories.Kerodon.
 
 ### [Enrichment.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/Enrichment.lean)
 
-OE04、85原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.Enrichment`。
+OE04、85原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.Enrichment`。
 
 # 固定対象を持つ Dwyer–Kan の単体的豊穣圏
 
@@ -7467,7 +7467,7 @@ def LocalizationObjects (C : _root_.SerrePositivity.InfinityCategories.Kerodon.A
 
 ### [FreeHammockArrowAugmentation.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockArrowAugmentation.lean)
 
-OE04、54原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.FreeHammockArrowAugmentation`。
+OE04、54原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeHammockArrowAugmentation`。
 
 # 共通始域の元の射の左比較による回収
 
@@ -7491,7 +7491,7 @@ lemma freeResolutionArrowZero_augmentation (f : X ⟶ Y) :
 
 ### [FreeHammockArrowPoint.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockArrowPoint.lean)
 
-OE04、59原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.FreeHammockArrowPoint`。
+OE04、59原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeHammockArrowPoint`。
 
 # 元の射の点を同じ自由 hammock 比較で回収する
 
@@ -7511,7 +7511,7 @@ lemma unitPointMap_comp {K L : SSet.{u}} (p : K _⦋0⦌) (f : K ⟶ L) :
 
 ### [FreeHammockArrowZero.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockArrowZero.lean)
 
-OE04、48原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.FreeHammockArrowZero`。
+OE04、48原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeHammockArrowZero`。
 
 # 元の射を自由 hammock 対角の零単体へ持ち上げる
 
@@ -7532,7 +7532,7 @@ def freeResolutionArrowZero (f : X ⟶ Y) :
 
 ### [FreeHammockAugmentation.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockAugmentation.lean)
 
-OE04、41原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.FreeHammockAugmentation`。
+OE04、41原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeHammockAugmentation`。
 
 # 元の自由解像の hammock 図式から元の hammock への augmentation
 
@@ -7553,7 +7553,7 @@ def freeHammockGraphAugmentation (C : _root_.SerrePositivity.InfinityCategories.
 
 ### [FreeHammockAugmentationValue.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockAugmentationValue.lean)
 
-OE04、107原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.FreeHammockAugmentationValue`。
+OE04、107原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeHammockAugmentationValue`。
 
 # 元の自由 hammock と DK augmentation の同じ局所化への評価
 
@@ -7581,7 +7581,7 @@ lemma freeHammockValue_augmentation (C : _root_.SerrePositivity.InfinityCategori
 
 ### [FreeHammockComparison.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockComparison.lean)
 
-OE04、45原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.FreeHammockComparison`。
+OE04、45原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeHammockComparison`。
 
 # 元の自由 hammock の対角から既存 DK Hom への右比較
 
@@ -7601,7 +7601,7 @@ def freeHammockHomComparison (C : _root_.SerrePositivity.InfinityCategories.Kero
 
 ### [FreeHammockComparisonWeak.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockComparisonWeak.lean)
 
-OE04、33原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.FreeHammockComparisonWeak`。
+OE04、33原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeHammockComparisonWeak`。
 
 # 元の全自由次数の既存 DK Hom への右比較射の弱同値性
 
@@ -7622,7 +7622,7 @@ lemma freeHammockHomComparison_app_isWeakHomotopyEquivalence (C : _root_.SerrePo
 
 ### [FreeHammockComposition.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockComposition.lean)
 
-OE04、105原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.FreeHammockComposition`。
+OE04、105原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeHammockComposition`。
 
 # 元の自由 hammock の対角の合成
 
@@ -7644,7 +7644,7 @@ def freeHammockResolutionComposition :
 
 ### [FreeHammockDiagonal.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockDiagonal.lean)
 
-OE04、48原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.FreeHammockDiagonal`。
+OE04、48原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeHammockDiagonal`。
 
 # 元の自由相対解像の hammock の対角と左比較
 
@@ -7663,7 +7663,7 @@ def freeHammockDiagonal (C : _root_.SerrePositivity.InfinityCategories.Kerodon.A
 
 ### [FreeHammockDiagonalComparisonWeak.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockDiagonalComparisonWeak.lean)
 
-OE04、31原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.FreeHammockDiagonalComparisonWeak`。
+OE04、31原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeHammockDiagonalComparisonWeak`。
 
 # 元の自由 hammock の対角から既存 DK Hom への右比較射の弱同値性
 
@@ -7683,7 +7683,7 @@ lemma freeHammockDiagonalComparison_isWeakHomotopyEquivalence (C : _root_.SerreP
 
 ### [FreeHammockDiagonalReductionWeak.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockDiagonalReductionWeak.lean)
 
-OE04、70原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.FreeHammockDiagonalReductionWeak`。
+OE04、70原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeHammockDiagonalReductionWeak`。
 
 # 元の自由 hammock 対角の左比較射自身の弱同値性
 
@@ -7704,7 +7704,7 @@ def freeHammockDiagonalColimitIso :
 
 ### [FreeHammockDiagram.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockDiagram.lean)
 
-OE04、37原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.FreeHammockDiagram`。
+OE04、37原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeHammockDiagram`。
 
 # 元の自由相対解像の固定対象の hammock の二重単体的図式
 
@@ -7724,7 +7724,7 @@ def freeHammockWordDiagram (C : _root_.SerrePositivity.InfinityCategories.Kerodo
 
 ### [FreeHammockGeneratorWords.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockGeneratorWords.lean)
 
-OE04、42原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.FreeHammockGeneratorWords`。
+OE04、42原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeHammockGeneratorWords`。
 
 # 元の自由 hammock の全次数の非指定生成文字列
 
@@ -7747,7 +7747,7 @@ def freeHammockGeneratorWordValue (C : _root_.SerrePositivity.InfinityCategories
 
 ### [FreeHammockLocalizedObjects.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockLocalizedObjects.lean)
 
-OE04、42原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.FreeHammockLocalizedObjects`。
+OE04、42原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeHammockLocalizedObjects`。
 
 # 自由 hammock と既存 DK Hom の対象表示の照合
 
@@ -7769,7 +7769,7 @@ lemma freeResolutionObject_localized (C : _root_.SerrePositivity.InfinityCategor
 
 ### [FreeHammockMap.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockMap.lean)
 
-OE04、63原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.FreeHammockMap`。
+OE04、63原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeHammockMap`。
 
 # 元の自由 hammock の係数写像
 
@@ -7790,7 +7790,7 @@ def freeHammockWordMap (X Y : C.category) : freeHammockWordDiagram C X Y ⟶
 
 ### [FreeHammockMapAugmentation.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockMapAugmentation.lean)
 
-OE04、89原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.FreeHammockMapAugmentation`。
+OE04、89原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeHammockMapAugmentation`。
 
 # 元の自由 hammock の左比較の係数自然性
 
@@ -7819,7 +7819,7 @@ lemma freeHammockFixedFunctor_augmentation (X Y : C.category) (w : _root_.SerreP
 
 ### [FreeHammockMapComparison.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockMapComparison.lean)
 
-OE04、96原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.FreeHammockMapComparison`。
+OE04、96原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeHammockMapComparison`。
 
 # 元の自由 hammock の右比較の係数自然性
 
@@ -7845,7 +7845,7 @@ lemma freeHammockValue_map (X Y : C.category) (w : _root_.SerrePositivity.Infini
 
 ### [FreeHammockObjectMap.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockObjectMap.lean)
 
-OE04、40原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.FreeHammockObjectMap`。
+OE04、40原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeHammockObjectMap`。
 
 # 元の自由解像の選択対象の係数自然性
 
@@ -7867,7 +7867,7 @@ lemma freeResolutionMap_object {C D : _root_.SerrePositivity.InfinityCategories.
 
 ### [FreeHammockObjects.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockObjects.lean)
 
-OE04、65原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.FreeHammockObjects`。
+OE04、65原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeHammockObjects`。
 
 # 自由相対解像の固定対象の表示
 
@@ -7887,7 +7887,7 @@ def freeResolutionObjectEquiv (C : _root_.SerrePositivity.InfinityCategories.Ker
 
 ### [FreeHammockPostcompose.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockPostcompose.lean)
 
-OE04、66原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.FreeHammockPostcompose`。
+OE04、66原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeHammockPostcompose`。
 
 # 元の射による自由 hammock の後合成と両比較の自然性
 
@@ -7908,7 +7908,7 @@ def freeHammockPostcompose (g : Y ⟶ Z) :
 
 ### [FreeHammockPrecompose.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockPrecompose.lean)
 
-OE04、65原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.FreeHammockPrecompose`。
+OE04、65原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeHammockPrecompose`。
 
 # 元の射による自由 hammock の前合成と両比較の自然性
 
@@ -7929,7 +7929,7 @@ def freeHammockPrecompose (f : X ⟶ Y) :
 
 ### [FreeHammockUnit.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockUnit.lean)
 
-OE04、93原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.FreeHammockUnit`。
+OE04、93原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeHammockUnit`。
 
 # 元の自由 hammock 対角の空語の単位
 
@@ -7952,7 +7952,7 @@ lemma freeHammockResolution_map {n m : SimplexCategoryᵒᵖ} (θ : n ⟶ m) :
 
 ### [FreeResolution.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeResolution.lean)
 
-OE04、83原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.FreeResolution`。
+OE04、83原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeResolution`。
 
 # Dwyer–Kan の自由相対圏の全単体的解像
 
@@ -7972,7 +7972,7 @@ lemma freeComonadPower_eq (C : _root_.SerrePositivity.InfinityCategories.Kerodon
 
 ### [FreeResolutionCanonicalMarkedHom.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeResolutionCanonicalMarkedHom.lean)
 
-OE04、62原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.FreeResolutionCanonicalMarkedHom`。
+OE04、62原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeResolutionCanonicalMarkedHom`。
 
 # 元の選択対象による指定 Hom の弱比較
 
@@ -7992,7 +7992,7 @@ def freeResolutionCanonicalMarkedHom : SSet.{u}
 
 ### [FreeResolutionFunctoriality.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeResolutionFunctoriality.lean)
 
-OE04、52原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.FreeResolutionFunctoriality`。
+OE04、52原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeResolutionFunctoriality`。
 
 # 自由相対圏の全解像の係数関手性
 
@@ -8012,7 +8012,7 @@ def freeResolutionMap {C D : _root_.SerrePositivity.InfinityCategories.Kerodon.A
 
 ### [FreeResolutionGeneratorBlocks.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeResolutionGeneratorBlocks.lean)
 
-OE04、52原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.FreeResolutionGeneratorBlocks`。
+OE04、52原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeResolutionGeneratorBlocks`。
 
 # 元の自由解像の全次数の交互標準形
 
@@ -8033,7 +8033,7 @@ def freeResolutionBlockEquiv (C : _root_.SerrePositivity.InfinityCategories.Kero
 
 ### [FreeResolutionGeneratorHom.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeResolutionGeneratorHom.lean)
 
-OE04、61原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.FreeResolutionGeneratorHom`。
+OE04、61原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeResolutionGeneratorHom`。
 
 # 元の標準生成対象の表示による自由解像の Hom
 
@@ -8054,7 +8054,7 @@ def freeResolutionHomObject (n : SimplexCategoryᵒᵖ) (X : C.category) :
 
 ### [FreeResolutionGeneratorHomOperators.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeResolutionGeneratorHomOperators.lean)
 
-OE04、50原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.FreeResolutionGeneratorHomOperators`。
+OE04、50原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeResolutionGeneratorHomOperators`。
 
 # 元の標準 Hom の全生成作用素の回収
 
@@ -8077,7 +8077,7 @@ lemma generatorHom_face_heq (n : ℕ) (i : Fin (n + 2))
 
 ### [FreeResolutionGeneratorPartition.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeResolutionGeneratorPartition.lean)
 
-OE04、55原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.FreeResolutionGeneratorPartition`。
+OE04、55原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeResolutionGeneratorPartition`。
 
 # 元の自由解像の全次数の指定生成矢と自由積の普遍性
 
@@ -8097,7 +8097,7 @@ def freeResolutionGeneratorBase (C : _root_.SerrePositivity.InfinityCategories.K
 
 ### [FreeResolutionHomContraction.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeResolutionHomContraction.lean)
 
-OE04、64原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.FreeResolutionHomContraction`。
+OE04、64原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeResolutionHomContraction`。
 
 # 元の自由解消 Hom augmentation の収縮
 
@@ -8117,7 +8117,7 @@ def freeResolutionGeneratorHomAugmented : SimplicialObject.Augmented (Type u)
 
 ### [FreeResolutionHomExtra.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeResolutionHomExtra.lean)
 
-OE04、45原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.FreeResolutionHomExtra`。
+OE04、45原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeResolutionHomExtra`。
 
 # 元の自由 Hom の一文字の列による追加退化
 
@@ -8137,7 +8137,7 @@ def generatorHomSection (f : X ⟶ Y) : (freeResolutionGeneratorHom C X Y) _⦋0
 
 ### [FreeResolutionHomExtraNaturality.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeResolutionHomExtraNaturality.lean)
 
-OE04、108原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.FreeResolutionHomExtraNaturality`。
+OE04、108原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeResolutionHomExtraNaturality`。
 
 # 一文字の追加退化と元の全作用素の整合性
 
@@ -8159,7 +8159,7 @@ lemma singlePath_conjugate_heq {V : Type u} [Category.{u} V] {A A' B B' : V}
 
 ### [FreeResolutionHomRepresentation.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeResolutionHomRepresentation.lean)
 
-OE04、60原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.FreeResolutionHomRepresentation`。
+OE04、60原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeResolutionHomRepresentation`。
 
 # 元の選択対象による Hom への収縮の移送
 
@@ -8180,7 +8180,7 @@ def freeResolutionHomRepresentationIso :
 
 ### [FreeResolutionMarkedHom.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeResolutionMarkedHom.lean)
 
-OE04、58原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.FreeResolutionMarkedHom`。
+OE04、58原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeResolutionMarkedHom`。
 
 # 元の指定射からなる自由解消 Hom
 
@@ -8200,7 +8200,7 @@ def freeResolutionMarkedHomSubcomplex : (freeResolutionGeneratorHom C X Y).Subco
 
 ### [FreeResolutionMarkedHomContraction.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeResolutionMarkedHomContraction.lean)
 
-OE04、66原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.FreeResolutionMarkedHomContraction`。
+OE04、66原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeResolutionMarkedHomContraction`。
 
 # 元の指定 Hom augmentation の収縮
 
@@ -8220,7 +8220,7 @@ def freeResolutionMarkedHomAugmented : SimplicialObject.Augmented (Type u)
 
 ### [FreeResolutionNativeMarkedHom.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeResolutionNativeMarkedHom.lean)
 
-OE04、67原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.FreeResolutionNativeMarkedHom`。
+OE04、67原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeResolutionNativeMarkedHom`。
 
 # 元の指定部分圏の固定 Hom と augmentation
 
@@ -8240,7 +8240,7 @@ def freeResolutionMarkedDiagram : SimplicialObject Cat.{u, u}
 
 ### [FreeResolutionNativeMarkedHomWeak.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeResolutionNativeMarkedHomWeak.lean)
 
-OE04、92原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.FreeResolutionNativeMarkedHomWeak`。
+OE04、92原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeResolutionNativeMarkedHomWeak`。
 
 # 元の指定部分圏の Hom augmentation 自身の弱同値性
 
@@ -8261,7 +8261,7 @@ lemma marked_eqToHom_hom {C : _root_.SerrePositivity.InfinityCategories.Kerodon.
 
 ### [FreeResolutionUnderlyingHom.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeResolutionUnderlyingHom.lean)
 
-OE04、60原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.FreeResolutionUnderlyingHom`。
+OE04、60原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeResolutionUnderlyingHom`。
 
 # 元の自由相対解像の底の固定 Hom と augmentation
 
@@ -8281,7 +8281,7 @@ def freeResolutionUnderlyingDiagram : SimplicialObject Cat.{u, u}
 
 ### [FreeWordDiagonalBackwardWeak.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeWordDiagonalBackwardWeak.lean)
 
-OE04、51原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.FreeWordDiagonalBackwardWeak`。
+OE04、51原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeWordDiagonalBackwardWeak`。
 
 # 元の自由解像の backward 一列の左比較の弱同値性
 
@@ -8306,7 +8306,7 @@ lemma freeWordDiagonalAugmentation_backward_square :
 
 ### [FreeWordDiagonalEmptyWeak.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeWordDiagonalEmptyWeak.lean)
 
-OE04、29原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.FreeWordDiagonalEmptyWeak`。
+OE04、29原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeWordDiagonalEmptyWeak`。
 
 # 元の自由解像の空語の左比較射の弱同値性
 
@@ -8326,7 +8326,7 @@ lemma freeWordDiagonalAugmentation_empty_weak (C : _root_.SerrePositivity.Infini
 
 ### [FreeWordDiagonalForwardWeak.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeWordDiagonalForwardWeak.lean)
 
-OE04、49原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.FreeWordDiagonalForwardWeak`。
+OE04、49原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeWordDiagonalForwardWeak`。
 
 # 元の自由解像の forward 一列の左比較の弱同値性
 
@@ -8349,7 +8349,7 @@ def freeWordDiagonalAugmentation :
 
 ### [FreeWordDiagonalWeak.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeWordDiagonalWeak.lean)
 
-OE04、67原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.FreeWordDiagonalWeak`。
+OE04、67原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeWordDiagonalWeak`。
 
 # 元の全語の自由対角 augmentation の弱同値性
 
@@ -8370,7 +8370,7 @@ lemma freeWordDiagonalAugmentation_weak (C : _root_.SerrePositivity.InfinityCate
 
 ### [HammockInvertsEdges.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/HammockInvertsEdges.lean)
 
-OE04、39原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.HammockInvertsEdges`。
+OE04、39原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.HammockInvertsEdges`。
 
 # 元の W の辺を反転する実 hammock nerve 関手
 
@@ -8390,7 +8390,7 @@ def weakNerveEdges : Set ((nerve C.category) _⦋1⦌)
 
 ### [HammockSourceFunctor.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/HammockSourceFunctor.lean)
 
-OE04、47原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.HammockSourceFunctor`。
+OE04、47原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.HammockSourceFunctor`。
 
 # 元の通常圏から実 hammock 豊穣圏への関手
 
@@ -8410,7 +8410,7 @@ abbrev HammockCategory
 
 ### [Hom.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/Hom.lean)
 
-OE04、65原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.Hom`。
+OE04、65原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.Hom`。
 
 # 固定対象の Dwyer–Kan Hom の単体集合
 
@@ -8430,7 +8430,7 @@ def localizationHom (X Y : C.category) : SSet.{u}
 
 ### [HomAugmentation.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/HomAugmentation.lean)
 
-OE04、117原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.HomAugmentation`。
+OE04、117原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.HomAugmentation`。
 
 # 単体的局所化の Hom から普通の局所化 Hom への比較
 
@@ -8452,7 +8452,7 @@ lemma localizedFreeResolutionAugmentation_object (n : SimplexCategoryᵒᵖ) (X 
 
 ### [HomMapLaws.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/HomMapLaws.lean)
 
-OE04、103原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.HomMapLaws`。
+OE04、103原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.HomMapLaws`。
 
 # 単体的局所化の係数射の恒等・合成則
 
@@ -8472,7 +8472,7 @@ lemma localizationHomMap_id (C : _root_.SerrePositivity.InfinityCategories.Kerod
 
 ### [KanComparisonEnrichedFunctors.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/KanComparisonEnrichedFunctors.lean)
 
-OE04、45原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.KanComparisonEnrichedFunctors`。
+OE04、45原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanComparisonEnrichedFunctors`。
 
 # 元の自由 hammock の左右比較の実 Kan 豊穣関手
 
@@ -8492,7 +8492,7 @@ abbrev KanHammockObjects
 
 ### [KanComparisonNerves.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/KanComparisonNerves.lean)
 
-OE04、95原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.KanComparisonNerves`。
+OE04、95原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanComparisonNerves`。
 
 # 元の Kan 自由 hammock の左右比較の実 coherent nerve 同値
 
@@ -8512,7 +8512,7 @@ abbrev KanHammockCategory
 
 ### [KanComparisonWeak.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/KanComparisonWeak.lean)
 
-OE04、47原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.KanComparisonWeak`。
+OE04、47原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanComparisonWeak`。
 
 # 元の Kan 豊穣比較の各 Hom の同値性
 
@@ -8533,7 +8533,7 @@ lemma kanFreeHammockAugmentationEnriched_map_weak :
 
 ### [KanComponents.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/KanComponents.lean)
 
-OE04、66原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.KanComponents`。
+OE04、66原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanComponents`。
 
 # Kan 化した DK Hom の連結成分と普通の局所化
 
@@ -8554,7 +8554,7 @@ def localizationHomKanUnitPiZeroEquiv (X Y : C.category) :
 
 ### [KanEnrichedMap.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/KanEnrichedMap.lean)
 
-OE04、72原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.KanEnrichedMap`。
+OE04、72原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanEnrichedMap`。
 
 # 単体的局所化の係数射の Kan 化
 
@@ -8574,7 +8574,7 @@ def kanLocalizationEnrichedMap {C D : _root_.SerrePositivity.InfinityCategories.
 
 ### [KanEnrichment.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/KanEnrichment.lean)
 
-OE04、106原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.KanEnrichment`。
+OE04、106原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanEnrichment`。
 
 # Ex∞ による単体的局所化の Hom の Kan 化
 
@@ -8593,7 +8593,7 @@ abbrev KanLocalizationObjects (C : _root_.SerrePositivity.InfinityCategories.Ker
 
 ### [KanHammockArrowNormalization.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/KanHammockArrowNormalization.lean)
 
-OE04、43原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.KanHammockArrowNormalization`。
+OE04、43原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanHammockArrowNormalization`。
 
 概要：元の hammock 射の pinched 零単体は元の局所化辺そのもの。
 方針：原本の coherent 零単体公式へ元の豊穣源関手の射を代入する。
@@ -8614,7 +8614,7 @@ lemma kanHammockHomPinchedMap_arrow_zero (f : X ⟶ Y) :
 
 ### [KanHammockHomCoherent.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/KanHammockHomCoherent.lean)
 
-OE04、80原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.KanHammockHomCoherent`。
+OE04、80原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanHammockHomCoherent`。
 
 概要：元の strict Kan hammock Hom 図式を同じ豊穣 Hom 関手の coherent 実現へ同定する。
 方針：元の Ex∞ 単位と lax monoidal 後合成の等式を全自然性に使う。
@@ -8635,7 +8635,7 @@ lemma kanHammock_sHomWhiskerLeft {Y Z : C.category} (f : Y ⟶ Z) :
 
 ### [KanHammockHomInfinity.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/KanHammockHomInfinity.lean)
 
-OE04、35原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.KanHammockHomInfinity`。
+OE04、35原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanHammockHomInfinity`。
 
 概要：元の Kan hammock Hom の全実現を正本の共変 Hom 全図式へ送る。
 方針：原本 Yoneda の一つの全比較に同じ局所化頂点を代入する。
@@ -8656,7 +8656,7 @@ def kanHammockHomInfinityIso :
 
 ### [KanHammockHomPinched.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/KanHammockHomPinched.lean)
 
-OE04、57原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.KanHammockHomPinched`。
+OE04、57原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanHammockHomPinched`。
 
 # 元の Kan hammock Hom から同じ局所化頂点の pinched Hom への弱比較
 
@@ -8678,7 +8678,7 @@ def kanHammockHomLiftIso : _root_.SerrePositivity.InfinityCategories.Kerodon.Kan
 
 ### [KanHammockHomPinchedValue.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/KanHammockHomPinchedValue.lean)
 
-OE04、36原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.KanHammockHomPinchedValue`。
+OE04、36原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanHammockHomPinchedValue`。
 
 # 同じ Kan hammock Hom 比較の元の coherent 単体の値
 
@@ -8702,7 +8702,7 @@ lemma kanHammockHomPinchedMap_app_val {n : ℕ}
 
 ### [KanHammockPinchedSimplexValue.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/KanHammockPinchedSimplexValue.lean)
 
-OE04、49原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.KanHammockPinchedSimplexValue`。
+OE04、49原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanHammockPinchedSimplexValue`。
 
 概要：元のKan hammockのpinched比較の同じ全単体の値に名前を付ける。
 方針：既存のcoherent単体を一般の相対圏で定義し、元の評価式をそのまま記録する。
@@ -8722,7 +8722,7 @@ def kanHammockPinchedSimplexValue {n : ℕ}
 
 ### [KanHammockPrecompose.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/KanHammockPrecompose.lean)
 
-OE04、57原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.KanHammockPrecompose`。
+OE04、57原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanHammockPrecompose`。
 
 # 元の前合成の Kan 化と同じ豊穣合成の一致
 
@@ -8746,7 +8746,7 @@ lemma kanHammockSource_precompose :
 
 ### [KanHammockSourceFunctor.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/KanHammockSourceFunctor.lean)
 
-OE04、60原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.KanHammockSourceFunctor`。
+OE04、60原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanHammockSourceFunctor`。
 
 # 元の通常圏から実 Kan hammock nerve への関手
 
@@ -8766,7 +8766,7 @@ def kanHammockSourceFunctor : C.category ⥤ KanHammockCategory C
 
 ### [KanHammockWeakArrows.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/KanHammockWeakArrows.lean)
 
-OE04、110原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.KanHammockWeakArrows`。
+OE04、110原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanHammockWeakArrows`。
 
 # 元の指定射の Kan hammock nerve 内での反転
 
@@ -8788,7 +8788,7 @@ def kanHammockBackward : (kanHammockSourceFunctor C).obj Y ⟶
 
 ### [KanHammockYonedaNormalization.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/KanHammockYonedaNormalization.lean)
 
-OE04、69原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.KanHammockYonedaNormalization`。
+OE04、69原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanHammockYonedaNormalization`。
 
 概要：全 Yoneda 比較に使う同じ恒等係数を元の hammock 零単体へ回収する。
 方針：原本の全 coslice 比較の恒等点公式と同じ源関手の恒等射保存を合成する。
@@ -8812,7 +8812,7 @@ lemma kanHammockYonedaIdentity_zero :
 
 ### [KanMapLaws.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/KanMapLaws.lean)
 
-OE04、70原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.KanMapLaws`。
+OE04、70原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanMapLaws`。
 
 # Kan 化した単体的局所化の係数関手則
 
@@ -8832,7 +8832,7 @@ lemma kanLocalizationEnrichedMap_id (C : _root_.SerrePositivity.InfinityCategori
 
 ### [LocalizationNervePrecomposition.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/LocalizationNervePrecomposition.lean)
 
-OE04、37原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.LocalizationNervePrecomposition`。
+OE04、37原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.LocalizationNervePrecomposition`。
 
 # 元の反転関手圏への全前合成と既存 nerve の比較
 
@@ -8857,7 +8857,7 @@ lemma localizationNerveSourceMap_precomposition (E : SSet.{u}) :
 
 ### [LocalizationNerveSource.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/LocalizationNerveSource.lean)
 
-OE04、85原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.LocalizationNerveSource`。
+OE04、85原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.LocalizationNerveSource`。
 
 # 元の通常圏から既存の局所化 nerve への関手
 
@@ -8878,7 +8878,7 @@ def kanHammockLocalizationEquivalence :
 
 ### [LocalizedFreeResolution.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/LocalizedFreeResolution.lean)
 
-OE04、42原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.LocalizedFreeResolution`。
+OE04、42原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.LocalizedFreeResolution`。
 
 # 自由単体的相対圏の次数ごとの厳密な局所化
 
@@ -8897,7 +8897,7 @@ def localizedFreeResolution (C : _root_.SerrePositivity.InfinityCategories.Kerod
 
 ### [LocalizedResolutionFunctoriality.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/LocalizedResolutionFunctoriality.lean)
 
-OE04、88原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.LocalizedResolutionFunctoriality`。
+OE04、88原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.LocalizedResolutionFunctoriality`。
 
 # 局所化した自由解像の係数関手と対象表示
 
@@ -8917,7 +8917,7 @@ def localizedFreeResolutionMap {C D : _root_.SerrePositivity.InfinityCategories.
 
 ### [ModelBifibrantFramePinchedWeak.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantFramePinchedWeak.lean)
 
-OE04、117原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.ModelBifibrantFramePinchedWeak`。
+OE04、117原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantFramePinchedWeak`。
 
 概要：元の ambient Hom 単体を同じ bifibrant 局所化の pinched Hom へ弱比較する。
 方針：元の Hom の包みを戻し、実二列比較と AsSmall の同じ全語同型を合成する。
@@ -8939,7 +8939,7 @@ def modelBifibrantSourceFrameIndexIso :
 
 ### [ModelBifibrantFrameRightKanCofinality.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantFrameRightKanCofinality.lean)
 
-OE04、77原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.ModelBifibrantFrameRightKanCofinality`。
+OE04、77原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantFrameRightKanCofinality`。
 
 # 元の source frame 次数比較の実右 Kan cofinal 性
 
@@ -8969,7 +8969,7 @@ lemma modelBifibrantSourceFrameRawRoofMap_isLeftCofinal (Y : HomotopicalAlgebra.
 
 ### [ModelBifibrantFrameRoof.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantFrameRoof.lean)
 
-OE04、68原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.ModelBifibrantFrameRoof`。
+OE04、68原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantFrameRoof`。
 
 概要：元の bifibrant source frame の全単体から実 hammock の屋根比較を作る。
 方針：同じ要素圏の実同型と元の raw roof 比較を合成する。
@@ -8993,7 +8993,7 @@ def modelBifibrantSourceFrameRoofMap : nerve (_root_.SerrePositivity.InfinityCat
 
 ### [ModelBifibrantFrameRoofWeak.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantFrameRoofWeak.lean)
 
-OE04、69原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.ModelBifibrantFrameRoofWeak`。
+OE04、69原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantFrameRoofWeak`。
 
 概要：元の bifibrant frame の実二列比較自身を hammock の弱同値へ接続する。
 方針：元の包含像の全射等式と ambient frame 比較を、同じ包含の Hom 弱比較で反映する。
@@ -9015,7 +9015,7 @@ def modelBifibrantFrameLeftRoofColimitMap :
 
 ### [ModelBifibrantLocalization.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantLocalization.lean)
 
-OE04、108原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.ModelBifibrantLocalization`。
+OE04、108原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantLocalization`。
 
 概要：一般モデル圏の bifibrant hammock 自身の局所化普遍性。
 方針：元の native roof の余終性を三つの right Kan 判定入力へ代入する。
@@ -9035,7 +9035,7 @@ def modelSourceFrameFamily : CofibrantResolutionFamily (C := C) simplex
 
 ### [ModelBifibrantRightKanReduction.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantRightKanReduction.lean)
 
-OE04、338原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.ModelBifibrantRightKanReduction`。
+OE04、338原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantRightKanReduction`。
 
 概要：同じ bifibrant frame の余終性を三つの実 right Kan 判定入力に還元する。
 方針：代数版の元の極限・標準錐・指定単位の証明を一般モデル圏へ移す。
@@ -9056,7 +9056,7 @@ def modelBifibrantHammockObject
 
 ### [ModelBifibrantRightKanShape.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantRightKanShape.lean)
 
-OE04、89原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.ModelBifibrantRightKanShape`。
+OE04、89原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantRightKanShape`。
 
 概要：任意モデル圏の元の bifibrant frame から実 right Kan 形状への次数比較を作る。
 方針：元の augmentation の全成分を同時に反転する実関手同型を使う。
@@ -9075,7 +9075,7 @@ def modelBifibrantHammockVertex : (kanHammockNerve (_root_.SerrePositivity.Infin
 
 ### [ModelBifibrantSourceFrameGraph.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceFrameGraph.lean)
 
-OE04、51原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.ModelBifibrantSourceFrameGraph`。
+OE04、51原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSourceFrameGraph`。
 
 概要：元の bifibrant source frame の弱比較を同じ二列 graph の実射として露出する。
 方針：元の全 Hom 同型、二列比較、AsSmall 全語同型を同じ順序で読む。
@@ -9097,7 +9097,7 @@ def modelBifibrantSourceFrameGraphMap :
 
 ### [ModelBifibrantSourceRoofAugmentationImage.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofAugmentationImage.lean)
 
-OE04、66原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.ModelBifibrantSourceRoofAugmentationImage`。
+OE04、66原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSourceRoofAugmentationImage`。
 
 概要：元の comma augmentation roof は同じ弱な balanced frame 比較の全族である。
 方針：元の全単体の三頂点・二射と全縦射を厳密に照合する。
@@ -9120,7 +9120,7 @@ lemma modelBifibrantSourceRoofProductCommaAugmentationRoofGraphMap_image :
 
 ### [ModelBifibrantSourceRoofBaseEvaluation.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofBaseEvaluation.lean)
 
-OE04、113原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.ModelBifibrantSourceRoofBaseEvaluation`。
+OE04、113原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSourceRoofBaseEvaluation`。
 
 概要：元の bifibrant frame の全屋根を同じ次数・積単体・実 slice の図式で回収する。
 方針：元の全単体の比較と同じ引き戻しの射影・全三角形を使う。
@@ -9141,7 +9141,7 @@ abbrev modelBifibrantSourceRoofProductCommaOver
 
 ### [ModelBifibrantSourceRoofCornerEvaluation.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofCornerEvaluation.lean)
 
-OE04、93原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.ModelBifibrantSourceRoofCornerEvaluation`。
+OE04、93原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSourceRoofCornerEvaluation`。
 
 概要：元の bifibrant frame の全屋根を同じ次数・積単体・実 slice の図式で回収する。
 方針：元の全単体の比較と同じ引き戻しの射影・全三角形を使う。
@@ -9162,7 +9162,7 @@ abbrev modelBifibrantSourceRoofDegreeObject : HomotopicalAlgebra.BifibrantObject
 
 ### [ModelBifibrantSourceRoofCornerOver.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofCornerOver.lean)
 
-OE04、84原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.ModelBifibrantSourceRoofCornerOver`。
+OE04、84原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSourceRoofCornerOver`。
 
 概要：元の bifibrant frame の全屋根を同じ次数・積単体・実 slice の図式で回収する。
 方針：元の全単体の比較と同じ引き戻しの射影・全三角形を使う。
@@ -9185,7 +9185,7 @@ lemma modelBifibrantSourceRoofDegreeTransportIso_inv_over :
 
 ### [ModelBifibrantSourceRoofDegreeModel.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofDegreeModel.lean)
 
-OE04、101原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.ModelBifibrantSourceRoofDegreeModel`。
+OE04、101原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSourceRoofDegreeModel`。
 
 概要：元の bifibrant frame の全屋根を同じ次数・積単体・実 slice の図式で回収する。
 方針：元の全単体の比較と同じ引き戻しの射影・全三角形を使う。
@@ -9206,7 +9206,7 @@ abbrev modelBifibrantSourceRoofProductElements
 
 ### [ModelBifibrantSourceRoofEvaluationHomotopy.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofEvaluationHomotopy.lean)
 
-OE04、87原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.ModelBifibrantSourceRoofEvaluationHomotopy`。
+OE04、87原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSourceRoofEvaluationHomotopy`。
 
 概要：元の bifibrant frame の全屋根を同じ次数・積単体・実 slice の図式で回収する。
 方針：元の全単体の比較と同じ引き戻しの射影・全三角形を使う。
@@ -9231,7 +9231,7 @@ def modelBifibrantSourceRoofProductCommaEvaluationHomotopy : SSet.Homotopy
 
 ### [ModelBifibrantSourceRoofGeometricLeftCell.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofGeometricLeftCell.lean)
 
-OE04、111原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.ModelBifibrantSourceRoofGeometricLeftCell`。
+OE04、111原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSourceRoofGeometricLeftCell`。
 
 概要：元の bifibrant frame の全屋根を同じ次数・積単体・実 slice の図式で回収する。
 方針：元の全単体の比較と同じ引き戻しの射影・全三角形を使う。
@@ -9254,7 +9254,7 @@ lemma modelBifibrantSourceRoofProductGeometricLeftCell_eq :
 
 ### [ModelBifibrantSourceRoofGeometricRightCell.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofGeometricRightCell.lean)
 
-OE04、82原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.ModelBifibrantSourceRoofGeometricRightCell`。
+OE04、82原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSourceRoofGeometricRightCell`。
 
 概要：元の bifibrant frame の全屋根を同じ次数・積単体・実 slice の図式で回収する。
 方針：元の全単体の比較と同じ引き戻しの射影・全三角形を使う。
@@ -9277,7 +9277,7 @@ lemma modelBifibrantSourceRoofProductGeometricRightHomotopy_h :
 
 ### [ModelBifibrantSourceRoofNativePinchedReference.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofNativePinchedReference.lean)
 
-OE04、117原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.ModelBifibrantSourceRoofNativePinchedReference`。
+OE04、117原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSourceRoofNativePinchedReference`。
 
 概要：元の指定次数の native roof を同じ balanced pinched 基準族と全体で同定する。
 方針：元の四列比較と augmentation roof の全等式を同じ余極限で合成する。
@@ -9302,7 +9302,7 @@ lemma modelBifibrantSourceRoofProductCommaDegreeHammockMap_transport :
 
 ### [ModelBifibrantSourceRoofNativePrism.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofNativePrism.lean)
 
-OE04、89原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.ModelBifibrantSourceRoofNativePrism`。
+OE04、89原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSourceRoofNativePrism`。
 
 概要：元の bifibrant frame の全屋根を同じ次数・積単体・実 slice の図式で回収する。
 方針：元の全単体の比較と同じ引き戻しの射影・全三角形を使う。
@@ -9329,7 +9329,7 @@ lemma modelBifibrantSourceRoofProductCommaNativeSimplex_naturality {m n : ℕ}
 
 ### [ModelBifibrantSourceRoofNativePrismOne.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofNativePrismOne.lean)
 
-OE04、107原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.ModelBifibrantSourceRoofNativePrismOne`。
+OE04、107原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSourceRoofNativePrismOne`。
 
 概要：元の bifibrant frame の全屋根を同じ次数・積単体・実 slice の図式で回収する。
 方針：元の全単体の比較と同じ引き戻しの射影・全三角形を使う。
@@ -9359,7 +9359,7 @@ lemma modelBifibrantSourceRoofProductCommaNativeSimplex_one {n : ℕ}
 
 ### [ModelBifibrantSourceRoofNativePrismProjection.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofNativePrismProjection.lean)
 
-OE04、66原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.ModelBifibrantSourceRoofNativePrismProjection`。
+OE04、66原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSourceRoofNativePrismProjection`。
 
 概要：元の bifibrant frame の全屋根を同じ次数・積単体・実 slice の図式で回収する。
 方針：元の全単体の比較と同じ引き戻しの射影・全三角形を使う。
@@ -9384,7 +9384,7 @@ lemma modelBifibrantSourceRoofProductCommaNativePrism_projection :
 
 ### [ModelBifibrantSourceRoofNativePrismZero.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofNativePrismZero.lean)
 
-OE04、87原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.ModelBifibrantSourceRoofNativePrismZero`。
+OE04、87原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSourceRoofNativePrismZero`。
 
 概要：元の bifibrant frame の全屋根を同じ次数・積単体・実 slice の図式で回収する。
 方針：元の全単体の比較と同じ引き戻しの射影・全三角形を使う。
@@ -9410,7 +9410,7 @@ lemma modelBifibrantSourceRoofProductCommaNativePrism_zero_uncurry :
 
 ### [ModelBifibrantSourceRoofNativeRoofComparison.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofNativeRoofComparison.lean)
 
-OE04、115原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.ModelBifibrantSourceRoofNativeRoofComparison`。
+OE04、115原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSourceRoofNativeRoofComparison`。
 
 概要：元の bifibrant frame の全屋根を同じ次数・積単体・実 slice の図式で回収する。
 方針：元の全単体の比較と同じ引き戻しの射影・全三角形を使う。
@@ -9434,7 +9434,7 @@ lemma modelBifibrantSourceRoofProductCommaDiagram_map_weak
 
 ### [ModelBifibrantSourceRoofNativeSimplex.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofNativeSimplex.lean)
 
-OE04、73原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.ModelBifibrantSourceRoofNativeSimplex`。
+OE04、73原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSourceRoofNativeSimplex`。
 
 概要：元の bifibrant frame の全屋根を同じ次数・積単体・実 slice の図式で回収する。
 方針：元の全単体の比較と同じ引き戻しの射影・全三角形を使う。
@@ -9458,7 +9458,7 @@ def modelBifibrantSourceRoofProductCommaNativeSimplex {n : ℕ}
 
 ### [ModelBifibrantSourceRoofNativeTriangle.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofNativeTriangle.lean)
 
-OE04、78原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.ModelBifibrantSourceRoofNativeTriangle`。
+OE04、78原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSourceRoofNativeTriangle`。
 
 概要：元の bifibrant frame の全屋根を同じ次数・積単体・実 slice の図式で回収する。
 方針：元の全単体の比較と同じ引き戻しの射影・全三角形を使う。
@@ -9482,7 +9482,7 @@ lemma modelBifibrantSourceRoofProductCommaNative_triangle
 
 ### [ModelBifibrantSourceRoofPrefixHomotopy.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofPrefixHomotopy.lean)
 
-OE04、68原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.ModelBifibrantSourceRoofPrefixHomotopy`。
+OE04、68原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSourceRoofPrefixHomotopy`。
 
 概要：元の bifibrant frame の全屋根を同じ次数・積単体・実 slice の図式で回収する。
 方針：元の全単体の比較と同じ引き戻しの射影・全三角形を使う。
@@ -9512,7 +9512,7 @@ def modelBifibrantSourceRoofProductCommaPrefixHomotopy : SSet.Homotopy
 
 ### [ModelBifibrantSourceRoofPrefixNaturality.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofPrefixNaturality.lean)
 
-OE04、46原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.ModelBifibrantSourceRoofPrefixNaturality`。
+OE04、46原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSourceRoofPrefixNaturality`。
 
 概要：元の bifibrant frame の全屋根を同じ次数・積単体・実 slice の図式で回収する。
 方針：元の全単体の比較と同じ引き戻しの射影・全三角形を使う。
@@ -9541,7 +9541,7 @@ lemma modelBifibrantSourceRoofProductCommaPrefixHomotopy_underMap
 
 ### [ModelBifibrantSourceRoofPrefixPath.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofPrefixPath.lean)
 
-OE04、78原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.ModelBifibrantSourceRoofPrefixPath`。
+OE04、78原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSourceRoofPrefixPath`。
 
 概要：元の bifibrant frame の全屋根を同じ次数・積単体・実 slice の図式で回収する。
 方針：元の全単体の比較と同じ引き戻しの射影・全三角形を使う。
@@ -9566,7 +9566,7 @@ def modelBifibrantSourceRoofProductCommaNativeFamilyMap :
 
 ### [ModelBifibrantSourceRoofProductCone.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofProductCone.lean)
 
-OE04、149原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.ModelBifibrantSourceRoofProductCone`。
+OE04、149原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSourceRoofProductCone`。
 
 概要：元の bifibrant frame の全屋根を同じ次数・積単体・実 slice の図式で回収する。
 方針：元の全単体の比較と同じ引き戻しの射影・全三角形を使う。
@@ -9587,7 +9587,7 @@ abbrev modelBifibrantSourceRoofProductComma
 
 ### [ModelBifibrantSourceRoofProductCornerProjection.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofProductCornerProjection.lean)
 
-OE04、136原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.ModelBifibrantSourceRoofProductCornerProjection`。
+OE04、136原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSourceRoofProductCornerProjection`。
 
 概要：元の bifibrant frame の全屋根を同じ次数・積単体・実 slice の図式で回収する。
 方針：元の全単体の比較と同じ引き戻しの射影・全三角形を使う。
@@ -9610,7 +9610,7 @@ lemma modelBifibrantSourceRoofDegreeTransportIso_inv_source :
 
 ### [ModelBifibrantSourceRoofProductFunctorCell.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofProductFunctorCell.lean)
 
-OE04、121原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.ModelBifibrantSourceRoofProductFunctorCell`。
+OE04、121原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSourceRoofProductFunctorCell`。
 
 概要：元の bifibrant frame の全屋根を同じ次数・積単体・実 slice の図式で回収する。
 方針：元の全単体の比較と同じ引き戻しの射影・全三角形を使う。
@@ -9635,7 +9635,7 @@ def modelBifibrantSourceRoofProductCommaEvaluationIso : _root_.SerrePositivity.I
 
 ### [ModelBifibrantSourceRoofProductGeometricTriangle.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofProductGeometricTriangle.lean)
 
-OE04、98原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.ModelBifibrantSourceRoofProductGeometricTriangle`。
+OE04、98原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSourceRoofProductGeometricTriangle`。
 
 概要：元の bifibrant frame の全屋根を同じ次数・積単体・実 slice の図式で回収する。
 方針：元の全単体の比較と同じ引き戻しの射影・全三角形を使う。
@@ -9660,7 +9660,7 @@ def modelBifibrantSourceRoofProductGeometricLeftHomotopy : SSet.Homotopy
 
 ### [ModelBifibrantSourceRoofProductIntervalCriterion.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofProductIntervalCriterion.lean)
 
-OE04、111原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.ModelBifibrantSourceRoofProductIntervalCriterion`。
+OE04、111原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSourceRoofProductIntervalCriterion`。
 
 概要：元の bifibrant frame の全屋根を同じ次数・積単体・実 slice の図式で回収する。
 方針：元の全単体の比較と同じ引き戻しの射影・全三角形を使う。
@@ -9684,7 +9684,7 @@ def modelBifibrantSourceRoofProductCommaHomMap :
 
 ### [ModelBifibrantSourceRoofProductReference.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofProductReference.lean)
 
-OE04、133原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.ModelBifibrantSourceRoofProductReference`。
+OE04、133原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSourceRoofProductReference`。
 
 概要：元の積単体の全族から指定次数の同じ pinched Hom への弱な基準射を作る。
 方針：元の第一射影、実 frame の弱比較、同じ augmentation の前合成を合成する。
@@ -9705,7 +9705,7 @@ lemma modelBifibrantSourceRoofProductFirstNerve_weak :
 
 ### [ModelBifibrantSourceRoofRightSlice.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofRightSlice.lean)
 
-OE04、105原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.ModelBifibrantSourceRoofRightSlice`。
+OE04、105原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSourceRoofRightSlice`。
 
 概要：元の bifibrant frame の全屋根を同じ次数・積単体・実 slice の図式で回収する。
 方針：元の全単体の比較と同じ引き戻しの射影・全三角形を使う。
@@ -9735,7 +9735,7 @@ lemma modelBifibrantSourceFrameRoofMap_normalizedOver :
 
 ### [ModelBifibrantSourceRoofSliceCriterion.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofSliceCriterion.lean)
 
-OE04、66原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.ModelBifibrantSourceRoofSliceCriterion`。
+OE04、66原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSourceRoofSliceCriterion`。
 
 概要：元の bifibrant frame の全屋根を同じ次数・積単体・実 slice の図式で回収する。
 方針：元の全単体の比較と同じ引き戻しの射影・全三角形を使う。
@@ -9758,7 +9758,7 @@ def modelBifibrantSourceRoofProductCornerMap :
 
 ### [ModelBifibrantSourceRoofSliceFibration.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofSliceFibration.lean)
 
-OE04、172原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.ModelBifibrantSourceRoofSliceFibration`。
+OE04、172原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSourceRoofSliceFibration`。
 
 概要：元の bifibrant frame の全屋根を同じ次数・積単体・実 slice の図式で回収する。
 方針：元の全単体の比較と同じ引き戻しの射影・全三角形を使う。
@@ -9782,7 +9782,7 @@ def modelBifibrantSourceRoofDegreeTransportIso :
 
 ### [ModelBifibrantSourceRoofSlices.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofSlices.lean)
 
-OE04、147原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.ModelBifibrantSourceRoofSlices`。
+OE04、147原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSourceRoofSlices`。
 
 概要：元の bifibrant frame の全屋根を同じ次数・積単体・実 slice の図式で回収する。
 方針：元の全単体の比較と同じ引き戻しの射影・全三角形を使う。
@@ -9802,7 +9802,7 @@ abbrev modelBifibrantSourceRoofTarget
 
 ### [ModelBifibrantSpecifiedLocalization.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSpecifiedLocalization.lean)
 
-OE04、53原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.ModelBifibrantSpecifiedLocalization`。
+OE04、53原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSpecifiedLocalization`。
 
 概要：一般モデルの bifibrant hammock を指定された同じ弱同値の ∞ 局所化へ送る。
 方針：実 right Kan 判定で得た普遍性を既存の局所化比較へ代入する。
@@ -9829,7 +9829,7 @@ def modelBifibrantSpecifiedLocalizationComparison :
 
 ### [ModelCofibrantRightKanShape.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelCofibrantRightKanShape.lean)
 
-OE04、99原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.ModelCofibrantRightKanShape`。
+OE04、99原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelCofibrantRightKanShape`。
 
 概要：任意モデル圏の元の cofibrant frame から実 right Kan 形状への次数比較を作る。
 方針：元の augmentation の全成分を同時に反転する実関手同型を使う。
@@ -9847,7 +9847,7 @@ lemma modelFrameIndex_weaklyContractible :
 
 ### [ModelHammockLocalization.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelHammockLocalization.lean)
 
-OE04、116原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.ModelHammockLocalization`。
+OE04、116原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelHammockLocalization`。
 
 概要：実 bifibrant hammock の局所化普遍性を同じ cofibrant 部分圏と全モデル圏へ戻す。
 方針：Ind-S (6) の源移送を元の弱単位・余単位へ適用し、同じ hammock nerve 同値を消去する。
@@ -9867,7 +9867,7 @@ lemma relativeNerve_mapsWeak {A B : _root_.SerrePositivity.InfinityCategories.Ke
 
 ### [ModelHammockNerveEquivalence.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelHammockNerveEquivalence.lean)
 
-OE04、66原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.ModelHammockNerveEquivalence`。
+OE04、66原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelHammockNerveEquivalence`。
 
 概要：同じ bifibrant・cofibrant・全圏の実 hammock 比較を全 coherent nerve の同値へ上げる。
 方針：元の全 Hom の弱比較と同じ弱単位または余単位を使う。
@@ -9887,7 +9887,7 @@ lemma modelCofibrantToBifibrant_nerve_isQCatEquivalence :
 
 ### [ModelRightFrameComparison.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelRightFrameComparison.lean)
 
-OE04、132原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.ModelRightFrameComparison`。
+OE04、132原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelRightFrameComparison`。
 
 概要：一般モデル圏の実 right frame と指定された全圏の ∞ 局所化の写像空間比較。
 方針：同じ bifibrant からの源移送で全圏普遍性を放電し、同じ六辺と指定二胞体を使う。
@@ -9912,7 +9912,7 @@ def modelRightFrameLocalizationComparison :
 
 ### [ModelRightFrameSpecifiedInput.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelRightFrameSpecifiedInput.lean)
 
-OE04、55原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.ModelRightFrameSpecifiedInput`。
+OE04、55原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelRightFrameSpecifiedInput`。
 
 概要：指定 right frame と第一分解から指定局所化比較への残る入力を全圏普遍性一つに絞る。
 方針：第一分解から source frame を選び、同じ六辺と同じ指定二胞体へ代入する。
@@ -9945,7 +9945,7 @@ def modelRightFrameHammockCoherentComparison :
 
 ### [Nerve.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/Nerve.lean)
 
-OE04、50原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.Nerve`。
+OE04、50原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.Nerve`。
 
 # Kan 化した単体的局所化の coherent nerve
 
@@ -9964,7 +9964,7 @@ def localizationNerve (C : _root_.SerrePositivity.InfinityCategories.Kerodon.Adj
 
 ### [NerveFunctor.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/NerveFunctor.lean)
 
-OE04、59原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.NerveFunctor`。
+OE04、59原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.NerveFunctor`。
 
 # 相対圏から局所化の coherent nerve への関手
 
@@ -9984,7 +9984,7 @@ lemma localizationNerveMap_id (C : _root_.SerrePositivity.InfinityCategories.Ker
 
 ### [NerveMap.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/NerveMap.lean)
 
-OE04、51原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.NerveMap`。
+OE04、51原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.NerveMap`。
 
 # 相対関手が誘導する局所化の coherent nerve の射
 
@@ -10004,7 +10004,7 @@ def localizationNerveMap {C D : _root_.SerrePositivity.InfinityCategories.Kerodo
 
 ### [NerveWeakVertexIso.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/NerveWeakVertexIso.lean)
 
-OE04、44原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.NerveWeakVertexIso`。
+OE04、44原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.NerveWeakVertexIso`。
 
 # 元の弱同値射の局所化 nerve の頂点同型
 
@@ -10026,7 +10026,7 @@ def localizationNerveVertexIsoOfWeak {X Y : C.category} (f : X ⟶ Y)
 
 ### [RelativeHammockEnriched.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/RelativeHammockEnriched.lean)
 
-OE04、84原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.RelativeHammockEnriched`。
+OE04、84原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RelativeHammockEnriched`。
 
 概要：元の相対関手の全 hammock Hom 射を一つの豊穣関手と coherent nerve 射へ束ねる。
 方針：元の単位と全合成の保存を使い、同じ Ex∞ で Kan 化する。
@@ -10045,7 +10045,7 @@ def relativeHammockEnriched : EnrichedFunctor SSet.{u} (HammockObjects C) (Hammo
 
 ### [RelativeHammockNerveEquivalence.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/RelativeHammockNerveEquivalence.lean)
 
-OE04、96原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.RelativeHammockNerveEquivalence`。
+OE04、96原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RelativeHammockNerveEquivalence`。
 
 概要：同じ相対変形による hammock 比較を全 coherent nerve の同値へ上げる。
 方針：全 Hom の弱比較から充満忠実性、元の弱単位から本質的全射性を得る。
@@ -10068,7 +10068,7 @@ lemma relativeKanHammockNerve_essentiallySurjective :
 
 ### [RelativeHammockSourceComparison.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/RelativeHammockSourceComparison.lean)
 
-OE04、75原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.RelativeHammockSourceComparison`。
+OE04、75原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RelativeHammockSourceComparison`。
 
 概要：同じ相対関手の全 hammock 比較は元の局所化源の射と整合する。
 方針：元の通常射の一定単体と Ex∞ 単位の自然性を使う。
@@ -10089,7 +10089,7 @@ lemma relativeHammockEnriched_arrowMap {X Y : C.category} (f : X ⟶ Y) :
 
 ### [ResolutionFaces.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ResolutionFaces.lean)
 
-OE04、86原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.ResolutionFaces`。
+OE04、86原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ResolutionFaces`。
 
 # 自由単体的局所化の一次の二面
 
@@ -10112,7 +10112,7 @@ lemma localizationResolutionHom_delta_zero {X Y : C.category}
 
 ### [ResolutionGenerators.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ResolutionGenerators.lean)
 
-OE04、94原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.ResolutionGenerators`。
+OE04、94原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ResolutionGenerators`。
 
 # 自由単体的局所化の元の射の零単体
 
@@ -10134,7 +10134,7 @@ lemma localizedFreeResolutionObject_zero (X : C.category) :
 
 ### [ResolutionObjects.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ResolutionObjects.lean)
 
-OE04、121原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.ResolutionObjects`。
+OE04、121原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ResolutionObjects`。
 
 # 局所化した自由解像の固定対象の表示
 
@@ -10154,7 +10154,7 @@ lemma freeRelativeCounit_obj_bijective (C : _root_.SerrePositivity.InfinityCateg
 
 ### [ResolutionRepresentatives.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ResolutionRepresentatives.lean)
 
-OE04、111原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.ResolutionRepresentatives`。
+OE04、111原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ResolutionRepresentatives`。
 
 # 自由解像の全次数の標準対象と射の表示
 
@@ -10184,7 +10184,7 @@ lemma freeResolutionGeneratorObject_augmentation (n : ℕ) (X : C.category) :
 
 ### [ResolutionWordEdge.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ResolutionWordEdge.lean)
 
-OE04、94原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.ResolutionWordEdge`。
+OE04、94原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ResolutionWordEdge`。
 
 # 自由な列とその合成の一文字の列を結ぶ辺
 
@@ -10207,7 +10207,7 @@ def localizationResolutionWordEdge {X Y : C.category}
 
 ### [RoofPrefixColumnRoof.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/RoofPrefixColumnRoof.lean)
 
-OE04、118原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.RoofPrefixColumnRoof`。
+OE04、118原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefixColumnRoof`。
 
 module docstringなし。実際の型とimportを参照。
 
@@ -10227,7 +10227,7 @@ lemma inv_arrow_eq {D : Type*} [Category* D] {a b a' b' : D}
 
 ### [RoofPrefixFamilyTriangle.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/RoofPrefixFamilyTriangle.lean)
 
-OE04、170原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.RoofPrefixFamilyTriangle`。
+OE04、170原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefixFamilyTriangle`。
 
 module docstringなし。実際の型とimportを参照。
 
@@ -10247,7 +10247,7 @@ def coherentPinchedFamily : nerve I ⟶
 
 ### [RoofPrefixPath.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/RoofPrefixPath.lean)
 
-OE04、89原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.RoofPrefixPath`。
+OE04、89原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefixPath`。
 
 # 元の最大座標 prefix 写像を同じ Kan hammock Hom へ送る
 
@@ -10270,7 +10270,7 @@ def familyMap : nerve I ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.Ka
 
 ### [RoofPrefixPathComposition.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/RoofPrefixPathComposition.lean)
 
-OE04、69原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.RoofPrefixPathComposition`。
+OE04、69原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefixPathComposition`。
 
 # 元の prefix path 写像の実 Kan 豊穣合成則
 
@@ -10302,7 +10302,7 @@ lemma pathMap_comp_enriched {n : ℕ} (Γ : Fin (n + 1) ⥤ I) (t : Fin (n + 1) 
 
 ### [RoofPrefixPrismCompatibility.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/RoofPrefixPrismCompatibility.lean)
 
-OE04、98原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.RoofPrefixPrismCompatibility`。
+OE04、98原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefixPrismCompatibility`。
 
 # 混合 coherent 錐の最後 Hom の元の合成条件
 
@@ -10332,7 +10332,7 @@ lemma lastHom_comp {n : ℕ} (Γ : Fin (n + 1) ⥤ I) (t : Fin (n + 1) →o Fin 
 
 ### [RoofPrefixPrismFront.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/RoofPrefixPrismFront.lean)
 
-OE04、98原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.RoofPrefixPrismFront`。
+OE04、98原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefixPrismFront`。
 
 # native roof の混合円柱の元の通常の前面
 
@@ -10354,7 +10354,7 @@ def frontRaw {n : ℕ} (Γ : Fin (n + 1) ⥤ I) (t : Fin (n + 1) →o Fin 2) :
 
 ### [RoofPrefixPrismLast.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/RoofPrefixPrismLast.lean)
 
-OE04、61原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.RoofPrefixPrismLast`。
+OE04、61原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefixPrismLast`。
 
 # 混合 coherent 錐の元の最後への Hom
 
@@ -10381,7 +10381,7 @@ def lastHom {n : ℕ} (Γ : Fin (n + 1) ⥤ I) (t : Fin (n + 1) →o Fin 2)
 
 ### [RoofPrefixPrismNaturality.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/RoofPrefixPrismNaturality.lean)
 
-OE04、67原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.RoofPrefixPrismNaturality`。
+OE04、67原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefixPrismNaturality`。
 
 # 元の混合 coherent 単体の全ての面と退化への自然性
 
@@ -10407,7 +10407,7 @@ lemma simplex_naturality {m n : ℕ} (Γ : Fin (n + 1) ⥤ I)
 
 ### [RoofPrefixPrismOne.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/RoofPrefixPrismOne.lean)
 
-OE04、47原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.RoofPrefixPrismOne`。
+OE04、47原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefixPrismOne`。
 
 # 元の混合 coherent 単体の一端は同じ native Hom 比較
 
@@ -10432,7 +10432,7 @@ lemma simplex_one {n : ℕ} (Γ : Fin (n + 1) ⥤ I) :
 
 ### [RoofPrefixPrismProjection.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/RoofPrefixPrismProjection.lean)
 
-OE04、58原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.RoofPrefixPrismProjection`。
+OE04、58原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefixPrismProjection`。
 
 # 元の native roof 全 prism の底は標準評価円柱
 
@@ -10458,7 +10458,7 @@ lemma simplex_front {n : ℕ} (Γ : Fin (n + 1) ⥤ I) (t : Fin (n + 1) →o Fin
 
 ### [RoofPrefixPrismReindex.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/RoofPrefixPrismReindex.lean)
 
-OE04、69原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.RoofPrefixPrismReindex`。
+OE04、69原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefixPrismReindex`。
 
 # 元の混合前面と最後 Hom の全添字変換
 
@@ -10484,7 +10484,7 @@ lemma frontDiagram_reindex {m n : ℕ} (Γ : Fin (n + 1) ⥤ I)
 
 ### [RoofPrefixPrismSimplex.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/RoofPrefixPrismSimplex.lean)
 
-OE04、56原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.RoofPrefixPrismSimplex`。
+OE04、56原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefixPrismSimplex`。
 
 # native roof の元の混合 coherent 単体
 
@@ -10509,7 +10509,7 @@ def mixedDiagram {n : ℕ} (Γ : Fin (n + 1) ⥤ I) (t : Fin (n + 1) →o Fin 2)
 
 ### [RoofPrefixPrismZero.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/RoofPrefixPrismZero.lean)
 
-OE04、70原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.RoofPrefixPrismZero`。
+OE04、70原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefixPrismZero`。
 
 # 元の混合 coherent 単体の零端は通常の右余錐
 
@@ -10532,7 +10532,7 @@ def rightCocone : Cocone (U ⋙ kanHammockSourceFunctor C)
 
 ### [RoofPrefixPrismZeroSlice.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/RoofPrefixPrismZeroSlice.lean)
 
-OE04、90原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.RoofPrefixPrismZeroSlice`。
+OE04、90原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefixPrismZeroSlice`。
 
 # 元の native prism の零端と通常右余錐の全円柱
 
@@ -10560,7 +10560,7 @@ lemma simplex_zero_join {n : ℕ} (Γ : Fin (n + 1) ⥤ I) :
 
 ### [SourceHom.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/SourceHom.lean)
 
-OE04、201原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.SourceHom`。
+OE04、201原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.SourceHom`。
 
 # 単体的局所化での厳密な射の代表
 
@@ -10590,7 +10590,7 @@ def kanLocalizationStrictHom {X Y : C.category} (f : X ⟶ Y) :
 
 ### [WeakNerveInverts.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/WeakNerveInverts.lean)
 
-OE04、44原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.WeakNerveInverts`。
+OE04、44原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.WeakNerveInverts`。
 
 # 元の弱同値射の反転から全指定辺の反転へ
 
@@ -10613,7 +10613,7 @@ lemma weakNerveEdges_inverts_of_arrows (C : _root_.SerrePositivity.InfinityCateg
 
 ### [ZeroLevelComponents.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ZeroLevelComponents.lean)
 
-OE04、94原行。配置：`SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.ZeroLevelComponents`。
+OE04、94原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ZeroLevelComponents`。
 
 # 零次の局所化から連結成分の圏への関手
 

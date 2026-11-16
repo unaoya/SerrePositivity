@@ -1,31 +1,34 @@
 {
   "base": "30ae8948f339beec42d9340feb02f2031c22c72b",
-  "policy": "immutable branch HEAD source files touched by commits not reachable from baseline; exact old module/qualified or partially-qualified namespace/unique BE module basename strings; includes drafts; unqualified declaration references require compiler collection",
+  "policy": "Exact old module/namespace strings, BE module basenames, plus bare namespace tokens; original branch HEAD and dirty/untracked Lean sources read-only, drafts included. Candidate matches are conservative; compiler checks determine actual bindings.",
   "branches": {
     "math/inf-supply": {
-      "head": "620448c3d6aac110576898a2a9ca677ac75a498d",
-      "touched_lean_files": 216,
+      "head": "515575b83f5a866755b1e3e2d428f878da9474e1",
+      "touched_lean_files": 232,
       "affected_files": 0,
       "files": [],
       "worktree": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-classical",
+      "uncommitted_checked": 10,
       "uncommitted_matches": [],
       "affected_files_with_worktree": 0
     },
     "codex/bulk-5inf3a": {
-      "head": "635e07b2171fd216d0c4872c828e358acad4f387",
-      "touched_lean_files": 169,
+      "head": "53a45cf9847272720c8ba8f02d01d80a74ea9e17",
+      "touched_lean_files": 186,
       "affected_files": 0,
       "files": [],
       "worktree": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout",
+      "uncommitted_checked": 10,
       "uncommitted_matches": [],
       "affected_files_with_worktree": 0
     },
     "math/scheme": {
-      "head": "53071369aacc6a9d978a78c96f04a9a61b61cda0",
-      "touched_lean_files": 133,
+      "head": "e8fd429bb06cb88906a8e90648b8beb49b248dd9",
+      "touched_lean_files": 142,
       "affected_files": 0,
       "files": [],
       "worktree": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-scheme",
+      "uncommitted_checked": 2628,
       "uncommitted_matches": [],
       "affected_files_with_worktree": 0
     },
@@ -35,6 +38,7 @@
       "affected_files": 0,
       "files": [],
       "worktree": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-impl",
+      "uncommitted_checked": 1,
       "uncommitted_matches": [],
       "affected_files_with_worktree": 0
     },
@@ -44,10 +48,11 @@
       "affected_files": 0,
       "files": [],
       "worktree": null,
+      "uncommitted_checked": 0,
       "uncommitted_matches": [],
       "affected_files_with_worktree": 0
     }
   },
   "total_affected_files": 0,
-  "total_affected_files_with_worktree": 0
+  "total_affected_with_worktree": 0
 }

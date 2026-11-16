@@ -14,7 +14,7 @@ OE-W1、2026-11-16。基準main `30ae8948f339beec42d9340feb02f2031c22c72b`。
 
 各ファイルの概要・方針・規約・利用箇所はmodule docstringから抜き出した。原典番号は利用箇所の説明であり、その一般定理の完成を意味しない。型は最初の名前つき公開宣言から証明本体を除いた抜粋。局所のuniverse・variable文脈を併記するが、open・記法・local instance・import・sectionの範囲はリンク先を参照する。ここを連結してLeanへ貼る用途ではない。
 
-配置上の対応：Kerodonはタグに対応する章・節、HTT §1.3.4は模型圏の局所化、HomotopicalAlgebraは図式の重みとホモトピー関数複体。HA Monadsの179本は今回移動せず、既存の research/g12-monad-route/README.md を参照する。
+配置上の対応：Kerodonはタグに対応する章・節、HA §1.3.4は模型圏の局所化、HomotopicalAlgebraは図式の重みとホモトピー関数複体。HA Monadsの179本は今回移動せず、既存の research/g12-monad-route/README.md を参照する。
 
 ## 役割別の集計
 

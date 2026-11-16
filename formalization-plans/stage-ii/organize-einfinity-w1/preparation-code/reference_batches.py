@@ -10,6 +10,8 @@ for slot in range(a.slots):
  print('Queueing batch',slot+1,log,flush=True)
  with log.open('w') as f:r=subprocess.run(command,cwd=root,stdout=f,stderr=subprocess.STDOUT)
  print('Released batch',slot+1,'returncode',r.returncode,flush=True)
+ if r.returncode==75:
+  print('Ticket wait timed out; requeueing at the back, with no second ticket outstanding',flush=True);continue
  if r.returncode:
   print('Stopped: unsuccessful batch; successful receipts remain resumable',flush=True);raise SystemExit(r.returncode)
  # Not holding the lease here. Do not apply a blocked preview.

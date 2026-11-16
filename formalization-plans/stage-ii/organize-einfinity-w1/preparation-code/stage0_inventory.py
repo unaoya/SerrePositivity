@@ -7,7 +7,7 @@ base=json.loads((out/'stage0-summary.json').read_text())['base'] if (out/'stage0
 groups={
 'HomotopyWeight':('OE02','SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight','SerrePositivity.EInfinity.HomotopyWeight','射影cofibrant重み・BK・Kan係数と重み付き切断の一般論'),
 'FrameHom':('OE03','SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom','SerrePositivity.EInfinity.FrameHom','一般の模型圏のframe Homと局所化の比較'),
-'SimplicialLocalization':('OE04','SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization','SerrePositivity.EInfinity.SimplicialLocalization','HTT 1.3.4 の模型圏とその∞局所化・相対圏の補助')}
+'SimplicialLocalization':('OE04','SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization','SerrePositivity.EInfinity.SimplicialLocalization','HA 1.3.4 の模型圏とその∞局所化・相対圏の補助')}
 for d in groups:scope.update(str(p.relative_to(root).with_suffix('')).replace('/','.') for p in (root/'SerrePositivity/EInfinity'/d).rglob('*.lean'))
 rows=[]
 for m in sorted(scope):

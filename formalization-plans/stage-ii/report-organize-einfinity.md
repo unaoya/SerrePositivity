@@ -13,12 +13,12 @@
 | OE01 | 274本中、既にEInfinity外の一般部品 | 132本・8,821行 | Kerodon／HomotopicalAlgebra等の現位置を保持。入口・引用・保存比較の対象から外さない |
 | OE02 | EInfinity/HomotopyWeight/ 全体 | 61本・4,697行 | HomotopicalAlgebra/Diagram/HomotopyWeight/。BK重み・Kan係数・射影cofibrancy・重み付き切断 |
 | OE03 | EInfinity/FrameHom/ 全体 | 144本・10,729行 | 142本は HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/。下の二本はKerodonのKan複体の節 |
-| OE04 | EInfinity/SimplicialLocalization/ 全体 | 152本・12,011行 | InfinityCategories/HTT/ModelCategoryLocalization/SimplicialLocalization/。HTT 1.3.4とDwyer–Kanの単体的局所化・模型圏の比較 |
+| OE04 | EInfinity/SimplicialLocalization/ 全体 | 152本・12,011行 | InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/。HA 1.3.4とDwyer–Kanの単体的局所化・模型圏の比較 |
 | OE05 | 3b-4のBE固有のTot比較 | 99本・7,375行 | EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/。停止済みの経路であることをmodule docstringに一行追加 |
 
-OE03の例外：AnodyneWeakDetection.leanは模型圏を仮定しないKan標的／anodyneの検出なので、**InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/**へ置く。AnodyneFamilyHomotopy.leanは全パラメータのinterval族の不変性を用いるため、**InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/MorphismSpaces/**へ置く（段1準備の静的予覧で修正）。任意の模型圏のframeを使うものと分ける。HTT配置のOE04もportableな∞中核への格上げを意味しない。
+OE03の例外：AnodyneWeakDetection.leanは模型圏を仮定しないKan標的／anodyneの検出なので、**InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/**へ置く。AnodyneFamilyHomotopy.leanは全パラメータのinterval族の不変性を用いるため、**InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/MorphismSpaces/**へ置く（段1準備の静的予覧で修正）。任意の模型圏のframeを使うものと分ける。HA配置のOE04もportableな∞中核への格上げを意味しない。
 
-名前空間は新しい数学の配置に合わせる。OE02はSerrePositivity.EInfinity.HomotopyWeight→SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight、OE03の142本はEInfinity.FrameHom→HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom、OE04はEInfinity.SimplicialLocalization→InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization。上のAnodyne二本はファイル別の表を優先する。
+名前空間は新しい数学の配置に合わせる。OE02はSerrePositivity.EInfinity.HomotopyWeight→SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight、OE03の142本はEInfinity.FrameHom→HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom、OE04はEInfinity.SimplicialLocalization→InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization。上のAnodyne二本はファイル別の表を優先する。
 
 OE05は**99ファイルが所有する宣言だけ**をEInfinity.BarrattEccles.StoppedRoutes.ISW2Totへ移す。EInfinity.BarrattEccles全体の文字列置換はしない。operad・既存CAlg_R・既存FramedLimit・他のBE実装の宣言は元の名前のまま。元の同じ型・同じ射・指定path・証明を保存する。互換aliasやwrapperを新設して宣言を増やす案は取らず、利用側のimportと実際の参照を機械的に追従させる。
 
@@ -174,3 +174,13 @@ EInfinity監査の元の接頭辞判定を残すだけでは、一般部品357�
 前後の実際のnative所有元が揃った後にだけ、所有元付きprivate規則と比較名表を出すprepare_preservation.pyも準備した。未対応・余分・private名の衝突があれば表の完成扱いにせず止め、既存のv3b snapshot・comparatorの本体は変更しない。
 
 一覧：済み 0／全体 5（うち追加 0）。
+
+### 2.6 SimplicialLocalizationの文献配置の訂正
+
+文献表の全native再走査で、模型圏の局所化の対応は**HA §1.3.4**であることを確認した。当初の「HTT §1.3.4」は誤記なので訂正する。OE04の152本の置き場所も、新しいHTTの束を立てる案から、既存の **InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/** の下へ変更した。一般の模型圏・相対圏の部品である点、主張・証明、対象588本と他のレーンの旧参照の範囲は同じ。原参照のソース・collector SHAも変わらない。
+
+正式な改名候補、層の予覧、採取済みプレビュー、二つの目録案をこの配置で更新する。まだ数学のソースの移動は適用していない。
+
+一覧：済み 0／全体 5（うち追加 0）。
+
+HA配置へ訂正した後の再検査：正式なMigrationの検証終了0。新しい表による採取済み13本のプレビューは保留0。層の予覧も基準86件・予覧86件、新規0・消失0。他の五つのレーンの最新HEADと未コミット／untracked Leanを読取専用で再確認し、bare namespaceも含む文字列一致は0本。branch-impact.jsonを更新した。共有鍵の一回の待ちは3600秒で終了75となったため、重複する整理券を残さず新しい一枚で並び直す。参照採取の中身の失敗ではなく、新しいcompiler採取はこの待ちでは実行していない。

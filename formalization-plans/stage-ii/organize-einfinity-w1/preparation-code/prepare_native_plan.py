@@ -19,7 +19,7 @@ for d in data['declarations']:
 opens={
  'SerrePositivity.EInfinity.HomotopyWeight':'SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight',
  'SerrePositivity.EInfinity.FrameHom':'SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom',
- 'SerrePositivity.EInfinity.SimplicialLocalization':'SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization',
+ 'SerrePositivity.EInfinity.SimplicialLocalization':'SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization',
  'SerrePositivity.EInfinity.BarrattEccles':'SerrePositivity.EInfinity.BarrattEccles'}
 ambiguous=[]
 for old,targets in prefixes.items():

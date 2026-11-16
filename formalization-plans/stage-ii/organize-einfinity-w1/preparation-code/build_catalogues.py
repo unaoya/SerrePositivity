@@ -43,7 +43,7 @@ for be in (False,True):
  '**準備中**：現在の抜粋は基準ソースの実際の宣言ヘッダー。移動後の対象ビルド・v3b・引用／タグ・root・正式全監査・verifyは未検収。最終の検査結果はreport-organize-einfinity.mdを正本とし、完了を先取りしない。' if not a.applied else '抜粋は移動後ソースの実際の宣言ヘッダー。検証の完了状況はreport-organize-einfinity.mdを参照する。','',
  '## 読み方・原典・入力','',
  '各ファイルの概要・方針・規約・利用箇所はmodule docstringから抜き出した。原典番号は利用箇所の説明であり、その一般定理の完成を意味しない。型は最初の名前つき公開宣言から証明本体を除いた抜粋。局所のuniverse・variable文脈を併記するが、open・記法・local instance・import・sectionの範囲はリンク先を参照する。ここを連結してLeanへ貼る用途ではない。','',
- '配置上の対応：Kerodonはタグに対応する章・節、HTT §1.3.4は模型圏の局所化、HomotopicalAlgebraは図式の重みとホモトピー関数複体。HA Monadsの179本は今回移動せず、既存の research/g12-monad-route/README.md を参照する。','',
+ '配置上の対応：Kerodonはタグに対応する章・節、HA §1.3.4は模型圏の局所化、HomotopicalAlgebraは図式の重みとホモトピー関数複体。HA Monadsの179本は今回移動せず、既存の research/g12-monad-route/README.md を参照する。','',
  '## 役割別の集計','', '| 束 | ファイル | 原Lean行 |','|---|---:|---:|']
  for ident in sorted({r['id'] for r in selected}):
   xs=[r for r in selected if r['id']==ident];text.append(f"| {ident} | {len(xs)} | {sum(int(r['lines']) for r in xs):,} |")

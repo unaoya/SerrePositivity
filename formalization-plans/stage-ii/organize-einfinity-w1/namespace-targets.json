@@ -16,7 +16,7 @@
     {
       "id": "OE04",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization",
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization",
       "policy": "owned declarations only"
     },
     {
@@ -1855,913 +1855,913 @@
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/ComparisonEnrichedFunctors.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.ComparisonEnrichedFunctors",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/ComparisonEnrichment.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.ComparisonEnrichment",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/ComponentCategory.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.ComponentCategory",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/ComponentsEquivalence.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.ComponentsEquivalence",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/ComponentsLocalizationLift.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.ComponentsLocalizationLift",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/DKHammockCoefficientComparison.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.DKHammockCoefficientComparison",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/DKHammockComponentsValue.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.DKHammockComponentsValue",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/DKHammockCompositionComparison.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.DKHammockCompositionComparison",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/DKHammockEndpointNaturality.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.DKHammockEndpointNaturality",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/DKReducedHammockEndpointNaturality.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.DKReducedHammockEndpointNaturality",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/EnrichedMap.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.EnrichedMap",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/Enrichment.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.Enrichment",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockArrowAugmentation.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockArrowAugmentation",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockArrowPoint.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockArrowPoint",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockArrowZero.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockArrowZero",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockAugmentation.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockAugmentation",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockAugmentationValue.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockAugmentationValue",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockComparison.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockComparison",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockComparisonWeak.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockComparisonWeak",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockComposition.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockComposition",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockDiagonal.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockDiagonal",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockDiagonalComparisonWeak.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockDiagonalComparisonWeak",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockDiagonalReductionWeak.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockDiagonalReductionWeak",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockDiagram.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockDiagram",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockGeneratorWords.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockGeneratorWords",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockLocalizedObjects.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockLocalizedObjects",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockMap.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockMap",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockMapAugmentation.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockMapAugmentation",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockMapComparison.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockMapComparison",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockObjectMap.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockObjectMap",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockObjects.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockObjects",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockPostcompose.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockPostcompose",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockPrecompose.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockPrecompose",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockUnit.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockUnit",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/FreeResolution.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.FreeResolution",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/FreeResolutionCanonicalMarkedHom.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.FreeResolutionCanonicalMarkedHom",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/FreeResolutionFunctoriality.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.FreeResolutionFunctoriality",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/FreeResolutionGeneratorBlocks.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.FreeResolutionGeneratorBlocks",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/FreeResolutionGeneratorHom.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.FreeResolutionGeneratorHom",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/FreeResolutionGeneratorHomOperators.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.FreeResolutionGeneratorHomOperators",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/FreeResolutionGeneratorPartition.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.FreeResolutionGeneratorPartition",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/FreeResolutionHomContraction.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.FreeResolutionHomContraction",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/FreeResolutionHomExtra.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.FreeResolutionHomExtra",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/FreeResolutionHomExtraNaturality.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.FreeResolutionHomExtraNaturality",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/FreeResolutionHomRepresentation.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.FreeResolutionHomRepresentation",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/FreeResolutionMarkedHom.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.FreeResolutionMarkedHom",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/FreeResolutionMarkedHomContraction.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.FreeResolutionMarkedHomContraction",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/FreeResolutionNativeMarkedHom.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.FreeResolutionNativeMarkedHom",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/FreeResolutionNativeMarkedHomWeak.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.FreeResolutionNativeMarkedHomWeak",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/FreeResolutionUnderlyingHom.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.FreeResolutionUnderlyingHom",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/FreeWordDiagonalBackwardWeak.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.FreeWordDiagonalBackwardWeak",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/FreeWordDiagonalEmptyWeak.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.FreeWordDiagonalEmptyWeak",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/FreeWordDiagonalForwardWeak.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.FreeWordDiagonalForwardWeak",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/FreeWordDiagonalWeak.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.FreeWordDiagonalWeak",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/HammockInvertsEdges.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.HammockInvertsEdges",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/HammockSourceFunctor.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.HammockSourceFunctor",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/Hom.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.Hom",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/HomAugmentation.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.HomAugmentation",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/HomMapLaws.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.HomMapLaws",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/KanComparisonEnrichedFunctors.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.KanComparisonEnrichedFunctors",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/KanComparisonNerves.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.KanComparisonNerves",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/KanComparisonWeak.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.KanComparisonWeak",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/KanComponents.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.KanComponents",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/KanEnrichedMap.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.KanEnrichedMap",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/KanEnrichment.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.KanEnrichment",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/KanHammockArrowNormalization.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.KanHammockArrowNormalization",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/KanHammockHomCoherent.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.KanHammockHomCoherent",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/KanHammockHomInfinity.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.KanHammockHomInfinity",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/KanHammockHomPinched.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.KanHammockHomPinched",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/KanHammockHomPinchedValue.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.KanHammockHomPinchedValue",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/KanHammockPinchedSimplexValue.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.KanHammockPinchedSimplexValue",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/KanHammockPrecompose.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.KanHammockPrecompose",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/KanHammockSourceFunctor.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.KanHammockSourceFunctor",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/KanHammockWeakArrows.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.KanHammockWeakArrows",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/KanHammockYonedaNormalization.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.KanHammockYonedaNormalization",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/KanMapLaws.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.KanMapLaws",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/LocalizationNervePrecomposition.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.LocalizationNervePrecomposition",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/LocalizationNerveSource.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.LocalizationNerveSource",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/LocalizedFreeResolution.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.LocalizedFreeResolution",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/LocalizedResolutionFunctoriality.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.LocalizedResolutionFunctoriality",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantFramePinchedWeak.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantFramePinchedWeak",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantFrameRightKanCofinality.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantFrameRightKanCofinality",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantFrameRoof.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantFrameRoof",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantFrameRoofWeak.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantFrameRoofWeak",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantLocalization.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantLocalization",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantRightKanReduction.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantRightKanReduction",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantRightKanShape.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantRightKanShape",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceFrameGraph.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceFrameGraph",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofAugmentationImage.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofAugmentationImage",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofBaseEvaluation.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofBaseEvaluation",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofCornerEvaluation.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofCornerEvaluation",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofCornerOver.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofCornerOver",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofDegreeModel.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofDegreeModel",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofEvaluationHomotopy.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofEvaluationHomotopy",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofGeometricLeftCell.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofGeometricLeftCell",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofGeometricRightCell.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofGeometricRightCell",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofNativePinchedReference.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofNativePinchedReference",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofNativePrism.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofNativePrism",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofNativePrismOne.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofNativePrismOne",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofNativePrismProjection.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofNativePrismProjection",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofNativePrismZero.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofNativePrismZero",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofNativeRoofComparison.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofNativeRoofComparison",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofNativeSimplex.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofNativeSimplex",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofNativeTriangle.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofNativeTriangle",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofPrefixHomotopy.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofPrefixHomotopy",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofPrefixNaturality.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofPrefixNaturality",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofPrefixPath.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofPrefixPath",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofProductCone.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofProductCone",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofProductCornerProjection.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofProductCornerProjection",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofProductFunctorCell.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofProductFunctorCell",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofProductGeometricTriangle.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofProductGeometricTriangle",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofProductIntervalCriterion.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofProductIntervalCriterion",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofProductReference.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofProductReference",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofRightSlice.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofRightSlice",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofSliceCriterion.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofSliceCriterion",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofSliceFibration.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofSliceFibration",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofSlices.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofSlices",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSpecifiedLocalization.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSpecifiedLocalization",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/ModelCofibrantRightKanShape.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.ModelCofibrantRightKanShape",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/ModelHammockLocalization.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.ModelHammockLocalization",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/ModelHammockNerveEquivalence.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.ModelHammockNerveEquivalence",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/ModelRightFrameComparison.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.ModelRightFrameComparison",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/ModelRightFrameSpecifiedInput.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.ModelRightFrameSpecifiedInput",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/Nerve.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.Nerve",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/NerveFunctor.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.NerveFunctor",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/NerveMap.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.NerveMap",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/NerveWeakVertexIso.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.NerveWeakVertexIso",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/RelativeHammockEnriched.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.RelativeHammockEnriched",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/RelativeHammockNerveEquivalence.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.RelativeHammockNerveEquivalence",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/RelativeHammockSourceComparison.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.RelativeHammockSourceComparison",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/ResolutionFaces.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.ResolutionFaces",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/ResolutionGenerators.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.ResolutionGenerators",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/ResolutionObjects.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.ResolutionObjects",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/ResolutionRepresentatives.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.ResolutionRepresentatives",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/ResolutionWordEdge.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.ResolutionWordEdge",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/RoofPrefixColumnRoof.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixColumnRoof",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/RoofPrefixFamilyTriangle.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixFamilyTriangle",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/RoofPrefixPath.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixPath",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/RoofPrefixPathComposition.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixPathComposition",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/RoofPrefixPrismCompatibility.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixPrismCompatibility",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/RoofPrefixPrismFront.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixPrismFront",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/RoofPrefixPrismLast.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixPrismLast",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/RoofPrefixPrismNaturality.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixPrismNaturality",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/RoofPrefixPrismOne.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixPrismOne",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/RoofPrefixPrismProjection.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixPrismProjection",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/RoofPrefixPrismReindex.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixPrismReindex",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/RoofPrefixPrismSimplex.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixPrismSimplex",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/RoofPrefixPrismZero.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixPrismZero",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/RoofPrefixPrismZeroSlice.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixPrismZeroSlice",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/SourceHom.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.SourceHom",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/WeakNerveInverts.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.WeakNerveInverts",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     },
     {
       "file": "SerrePositivity/EInfinity/SimplicialLocalization/ZeroLevelComponents.lean",
       "owner": "SerrePositivity.EInfinity.SimplicialLocalization.ZeroLevelComponents",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization",
-      "new": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization"
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization"
     }
   ]
 }
