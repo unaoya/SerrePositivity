@@ -3554,3 +3554,79 @@ S7・R2・R3は再開していない。
 05:42 UTCの時点でセッション18959の生存を再確認、共有鍵で調整役のrootビルドの後を待機中。
 古い索引や未検証の結果を監査の証拠に流用しない。
 一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+### 鍵待ちの紙の照合：S1 extensive の元の型（11-16）
+
+未実装。範囲・型の変更ではなく、元の有限積判定を閉じるための証明の分割。
+有限非空族 B と余極限 cofan c、生成篩 S に対し、次の添字の表示を使う案。
+
+```lean
+-- S := Sieve.generate (Presieve.ofArrows B c.inj)
+extensiveSieveIndexFunctor c (hc : IsColimit c) [Nonempty ι] :
+  WithTerminal (Discrete ι) ⥤ (sieveCategory S)ᵒᵖ
+-- of i ↦ (B i ⟶ c.pt), star ↦ (⊥_ C ⟶ c.pt)
+-- 各 i → star は元の initial.to (B i) の反転。
+
+extensiveSieveIndexFunctor_hasTerminalComma c hc (s : (sieveCategory S)ᵒᵖ) :
+  HasTerminal (CostructuredArrow (extensiveSieveIndexFunctor c hc) s)
+```
+
+像が初対象の射である star の membership は、非空族の一本の脚と篩の下方閉性から作る。
+篩の対象 s の始域 V が初対象なら、この comma の終対象は star から作る。
+V が初対象でなければ、S の元であることから V→B i の分解を一本選ぶ。
+別の脚 j への分解があれば、交叉の非交叉性と初対象の厳密性から V は初対象となり矛盾。
+同じ脚への分解の一意性は脚の単射性で示す。
+**C の任意の V→c.pt が一本の脚を通るとは仮定しない**。ここで分解を使うのは S の対象だけ。
+
+照合した既存Mathlibの入力：
+- `Mono.of_coproductDisjoint`、`IsInitial.ofCoproductDisjointOfCommSq`
+  （`Limits/Shapes/DisjointCoproduct.lean`）。
+- `FinitaryExtensive.isVanKampen_finiteCoproducts`、有限 cofan の脚の単射性と交叉の初対象性
+  （`CategoryTheory/Extensive.lean`）。
+- `Adjunction.isLeftAdjoint_of_costructuredArrowTerminals`
+  （`CategoryTheory/Adjunction/Comma.lean`）。
+これで添字比較を左随伴とし、既存の adjunction からの nerve の left cofinality を使う。
+新しい一般の Quillen A を作らない。
+
+係数側：WithTerminal (Discrete ι) の star の値 F(⊥) が終対象なら、元の全錐の極限性は
+脚だけの指定積錐の極限性と同値。離散添字の包含に沿う恒等余単位の右 Kan 条件を、
+star では空の局所図式、of i では恒等射の局所図式で示す方針。
+`isLimitCone_iff_of_rightKan_comparison` へ同じ全錐を渡す。
+空族は star の篩 membership を作れないので別の枝にし、底篩の制限錐と終対象の判定へ渡す。
+
+元の広い篩への方向には、被覆篩が有限 colimit cofan の脚を含むという
+`extensiveTopology.mem_sieves_iff_contains_colimit_cofan` と、既検証の descentTopology を使う。
+引き戻した有限 cofan も colimit であることを extensivity から示し、
+生成篩の**全引き戻し**で降下を供給する（S1の一般coverageの未完部分を仮定しない）。
+
+これは紙の接続案までであり、S1の完成には数えない。既検証の実測15,034行は変わらない。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+### 鍵待ちの紙の照合：S8 の非単射の場合（11-16）
+
+未実装の残りの接続。`CechCommaPrefix`・`CechCommaContraction` は既に
+`{C : Type u} [Category.{v} C]` と二宇宙で定義され、与えた一本の根 `r : V ⟶ U` だけから
+`cechCommaPrefix` と二つの自然変換を作る。一般の弱終対象性を仮定する前の部品である。
+非単射の場合の各点の Čech の収縮を新しく作り直す前に、この指定収縮を再利用する。
+`CechCommaSmallContraction` は `max u v w` へ持ち上げているので、
+点の根の商で実際に必要な小さい comma の宇宙への接続は別途照合する。
+小さい型であることを、まだ証明したとはしない。
+
+既存 `bousfieldKanCoherentCocone_isColimit` は一般の小さい通常の Kan 値図式を扱う。
+集合値の Čech 解消を使う際は、同じ元の増大余錐について余極限性を示す必要がある。
+各点で根を選べることだけから、前層の自然な大域切断を仮定してはいけない。
+また、生の集合の余極限を空間値の余極限と同一視しない。
+
+元の `sections_localEquiv_iso` は係数 E の presentable 性を要求していない。
+したがって、E 上の `weightedSections O hE` をそのまま使うために hE を足してはいけない。
+必要なら、既存の `covariantRepresentableInfinity` が同じ指定極限錐を保つことを使って
+空間値へ移し、指定辺の比較と宇宙移送を示してから反映する。
+`SetWeight.sectionsEquivalenceNatural` と既検証の
+`setWeightSectionsEquivalenceNatural_shapeIso` は、元の pinched Hom と切断制限の
+同じ全族を比較するので、空間値の局所性から同じ層化単位の比較への接続でも再利用する。
+指定した `weightedSections_discrete` の自然性を、存在だけの別の頂点同型で代用しない。
+
+06:09 UTCに鍵保持者の親PID30580と直接の子PID31284（lake）の生存を確認。
+このレーンの検証セッション18959も生存中で、同じ整理券一枚を保持して待機している。
+検証済み実測は15,034行のまま。S8・S1の未完を完成とは数えない。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
