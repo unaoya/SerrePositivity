@@ -1,0 +1,53 @@
+{
+  "prepared_modules": 216,
+  "prepared_lines": 18078,
+  "verified_modules": 210,
+  "verified_lines": 17665,
+  "verified_declarations": 2034,
+  "baseline": "336942ab0",
+  "checkpoint": "original-target-augmentation-checkpoint.json",
+  "remaining_HT04_raw_estimate": [
+    1100,
+    2250
+  ],
+  "remaining_HT04_factor": 2,
+  "HT04_forecast_with_factor": [
+    20278,
+    22578
+  ],
+  "remaining_blocks": [
+    {
+      "block": "cohomology and coordinate normalization",
+      "raw": [
+        350,
+        650
+      ]
+    },
+    {
+      "block": "actual eta square and ordinary cover quasi-isomorphism",
+      "raw": [
+        400,
+        700
+      ]
+    },
+    {
+      "block": "specified R1 point-law normalization",
+      "raw": [
+        250,
+        700
+      ]
+    },
+    {
+      "block": "universal reflection and endpoint",
+      "raw": [
+        100,
+        200
+      ]
+    }
+  ],
+  "HT05_HT06": "not started; remaining estimates require D30/U3/HT05.R3/sheaf review; retained provisional raw HT05 1200-2200, HT06 150-300, factor 2",
+  "scope_complete": 3,
+  "scope_total": 6,
+  "scope_added": 0,
+  "main_merge": "prohibited until HT04 stop per 2026-11-16 16:25 instruction"
+}
