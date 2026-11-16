@@ -18,6 +18,7 @@
 | IC-2 | KST・HomotopicalAlgebra・Spectra の一般の ∞ 圏論 1,725 本 | `research/infinity-outside-map/files.csv`（738be1c06） |
 | IC-3 | 同じく模型 3,776 本 → `InfinityCategories/Models/` | 同上 |
 | IC-4 | 同じく一般のホモトピー論・モデル圏 2,415 本 → `HomotopicalAlgebra/` の主題ごと、K 固有 912 本 → `KTheory/<文献>/`（§4）、今の `KTheory/` の 35 本も `KTheory/` の中の節へ。`KST/` は論文の層だけ | 同上 |
+| IC-5 | **HomologicalAlgebra/ の主題ごとの配置**（510 本、うち 365 本が最上位に平たく並ぶ。名前空間は `SerrePositivity`・`SerrePositivity.DerivedCompletion`・`SerrePositivity.HomologicalAlgebra`・`SerrePositivity.BhattScholze` などが混在）。IC-W1 の分類表には入っていないので、段 0 で主題ごとの下位ディレクトリ（例：複体・分解・Koszul・導来完備化・局所コホモロジー・Čech・余単体など）と名前空間の方針を決める | 新しく作る（`research/infinity-outside-map` と同じ形で `HomologicalAlgebra/` の分類表） |
 | 後回し | 未定 1,243 本（一般の補題と K の構成が一つのファイルに混ざるもの）。ファイルを分けてから分類し直す。IC-W1 では動かさない | 同上 |
 
 IC-0 の完成（OE-W1 の段 1 の停止点）で ③-b は止まる。取り込みの後、⑦ が IC-1 の段 0 から始める。
@@ -44,3 +45,9 @@ IC-0 の完成（OE-W1 の段 1 の停止点）で ③-b は止まる。取り�
 - **`KST/` は Kerz–Strunk–Tamme の論文の層だけ**にする（導来ブローアップ、降下、pro 切除、§5。`BhattScholze/` と同じ「論文の層」）。分類で「未定」の多く（DerivedGeometry 296、DerivedBlowup 197、Descent 169、ProExcision 150）は KST の論文に固有なので、`KST/` に残すのが自然。
 - **今の `KTheory/`（35 本：G₀・K₀ の局所化、係数、Adams 作用、比較）との名前の衝突**：別名（`AlgebraicKTheory/`）を作ると K の置き場所が二つになって紛らわしいので、**`KTheory/` に一本化**し、今の 35 本は内容の文献に合わせて `KTheory/` の中の節（例：G₀・K₀ の基礎は `KTheory/Classical/`、Adams 作用は対応する文献の節）へ移す案。今の 35 本を import しているのは論文の層（`IntersectionMultiplicity/`・`PerfectComplex/` など）で、import の書き換えだけで済む。
 - 実施は IC-4。K の再開（`k-restart-draft.md`）の前の整理として、移動だけで主張・証明は変えない。
+
+## 5. 名前空間と下位ディレクトリの方針（IC-4・IC-5 の段 0 で最初に決める、11-17）
+
+- **`HomotopicalAlgebra/`** は IC-4 で 2,415 本を受け入れて 3,500 本を超える。IC-4 の段 0 で、移す前に**下位ディレクトリの設計**（今の主題 Simplicial・Diagram・HomotopyFunctionComplex・Reedy・Rectification・Quillen・Smith・Localization などを基に、受け入れる分をどこに置くか）を決める。
+- **名前空間**：`SerrePositivity.HomotopicalAlgebra` は使わない（Mathlib の `HomotopicalAlgebra` 名前空間を `SerrePositivity` の中で隠す）。今の主題ごとの名前空間（`SerrePositivity.SimplicialModel`・`SerrePositivity.HomotopyFunctionComplex`・`SerrePositivity.DiagramModel` など）に揃える案を基本に、段 0 で表にする。`HomologicalAlgebra/` の名前空間（IC-5）も同じ考え方で、Mathlib の名前空間と衝突・隠蔽しない形に揃える。
+- 名前空間を変える宣言は改名表に入れ、他のレーンの枝の追従（B4 の資料）を作る。
