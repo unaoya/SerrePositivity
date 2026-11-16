@@ -85,3 +85,13 @@ G2の実際の被覆模型と `coefficientVCoverModelCechComparison`、既存の
 「C上の全てのTについて、そのT上の任意のv被覆」を先に量化し、Tごとに新しい平坦化中心を選ぶ形では、その中心のCへの像が真に小さいとは限らない。この形の帰納へ置き換えない。G1の一般のfppf–proper細分を最終のv被覆へ使うのは、固定した固有射についてのこの普遍的な底変換後の完全性を閉じてからである。
 
 相対fppfの接続では、中間B=blowup J上の有限アフィン被覆A→Bを使う場合も、Γ(A)⊗_{Γ(B)}Γ(A)をΓ(A×_B A)と無条件で同定しない。Bが分離的でAがアフィンならA×_B Aのアフィン性は対角の閉埋め込みで扱えるが、テンソル積を取る基底はBの各アフィン開に局所化する必要がある。B1の一般の増大二重図式の比較と、元の開被覆・底変換の自然な射を使う。これらの接続はまだ未検証であり、Spec R上のflat totalの定理のみを相対の場合の完成とは数えない。
+
+## 2026-11-17深夜：G5の二つのfiltered余極限の既存材料（紙）
+
+G2の同じ模型図式D=`coefficientVCoverModelSmallArrowDiagram (ZMod p) g`を使う。`coefficientVCoverModelSmallArrow_vCover`、両端のfiniteType/noetherian、`coefficientVCoverModelSmallArrow_finitePresentation`と`coefficientVCoverModelSmallArrow_comp_algebraMap`が各段のNoetherなv被覆と標数を供給する。模型を選び直したり、元の環のNoether性・有限表示性を最終の仮定へ足したりしない。
+
+既存の `frobeniusArrowSmallDiagramMap` は模型の各可換四角形を同じAsSmall ℕの図式の自然変換へ送る。恒等・合成は各nで元の同じ四角形であることから照合し、J→(AsSmall ℕ→Arrow CommRingCat)の実際の二変数図式へまとめる。`frobeniusArrowCocone_map` と `frobeniusArrowSmallColimitIso_naturality` が、それぞれ元の脚と実際のFrobenius順極限の矢印に自然な比較を与える。増大conerveへの比較は `frobeniusAugmentedConerveColimitIso_naturality` を再利用する。
+
+二つの余極限の交換にはMathlib `CategoryTheory.Limits.colimitFlipCompColimIsoColimitCompColim` とその `ι_ι_hom` の式を使えることをソースで確認した。片方を先に取れば模型の実際のArrowのcolimit（`coefficientVCoverModelSmallArrowCoconeIsColimit`）、もう片方を先に取れば各模型の実際のFrobenius矢印のcolimit（`frobeniusArrowSmallIsColimit`）になる。各方向の標準脚を保つことを同じ式で確認してから、元の矢印のFrobenius順極限と同定する。任意のCommRing上に標数を仮定しないFrobenius関手や、別のperfectionの定義を作る必要はない。
+
+各段のG4の結論を `frobeniusAugmentedRingCoefficients_exact_iff` で同じ実際のFrobenius矢印の `IsCechExact` へ移し、B1の `isCechExact_colimit` を模型のfiltered添字に適用する。上の同型と元の増大係数の同じ `exact_iff` で戻す。最終出力は元のv被覆の `AugmentedRingCechExact (frobeniusAugmentedRingCoefficients …)` のままである。これらはG5の予定の法則であり、G4のNoetherな完全性の供給も、二つの余極限の交換のこの図式への実装も、まだ完成・検証済みとは数えない。
