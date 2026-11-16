@@ -287,3 +287,11 @@ main cd79e9cc5でDAG XIII・NSの対応表とCitationの略号表が更新され
 `audit_*.lean` と `scripts/audit/**/*.lean` を実ファイルから列挙し、audit_manifest.txtと完全一致を確認した。**106正式監査、元ソースから抽出した必要import先7,259モジュール**。`all-audit-inventory-before.json`に全件保存した。選択除外はしていない。これは実行結果ではなく、移送後に必要import先を再計算してから夜に全件を実行する。現時点の原参照／プレビューは460本、保留0。
 
 一覧：済み 0／全体 5（うち追加 0）。
+
+## 8 移動456本の全原参照と全予覧（19:12）
+
+移動する456本すべての実compiler参照が揃い、全プレビューが保留0になった。内訳：OE02 HomotopyWeight 61／61、OE03 FrameHom 144／144（Kerodonへ分ける二本を含む）、OE04 SimplicialLocalization 152／152、OE05 D81停止BE経路99／99。`preparation/all-moving-previews.json`にsource／preview SHAと全件を保存した。
+
+原参照全体は521／824本。残る利用側303本の参照と、夜の二つの原監査の採取を続ける。byte不変132本の範囲も保持する。移動456本の予覧が揃ったことは、実適用・移送後ビルド・v3b・Tag・root・106正式監査・verifyの完成ではないため、検収済みの束にはまだ数えない。
+
+一覧：済み 0／全体 5（うち追加 0）。

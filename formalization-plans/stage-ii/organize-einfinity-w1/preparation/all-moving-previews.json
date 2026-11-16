@@ -1,0 +1,2756 @@
+{
+  "count": 456,
+  "groups": {
+    "OE02": 61,
+    "OE03": 144,
+    "OE04": 152,
+    "OE05": 99
+  },
+  "reference_preview_summary": {
+    "captured": 521,
+    "previewed": 521,
+    "changed_sources": 521,
+    "review_files": 0,
+    "review_items": 0,
+    "plan_sha256": "bffb2434b00941a5031a1a82aa16f090f36949332c706dc37873e3ad8e454232"
+  },
+  "previews": [
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotAlgebraHomInfinityComparison.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotAlgebraHomInfinityComparison.lean",
+      "source_sha256": "7ba61eb48760f7c537d4e99f4c0df8f72be47f3db372d49fd9a95404d7b48417",
+      "preview_sha256": "8b77131f0c079eda834cd46e6566e5102864201911ed48791ec91caa8d062751"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotBKClassification.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotBKClassification.lean",
+      "source_sha256": "e85795798874a9b88539d492be8bcb31f71de889225de8810ce125d65ee7a3b4",
+      "preview_sha256": "48ec657ff236e857ede1cdbc18aef3d190901baeb8ed7d39201c0baa947f4e6f"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotBKNativeClassification.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotBKNativeClassification.lean",
+      "source_sha256": "8beb569d36193c736dba091a13fdbe460f8326731c40fbe1c5607c0a230d2c5e",
+      "preview_sha256": "25510fe77f226bbfc5df6d1db6396f33cd3599fb3f505cfb34e3a38675611904"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotBKNativeSections.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotBKNativeSections.lean",
+      "source_sha256": "1bc875ef8943528ae4564c7d759180e554afe4865dcceea4c25a29b742e49cba",
+      "preview_sha256": "c304a57be81976403d12e3ecab69f07e0f3bad8310446928428e4587ab20b043"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotBKSections.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotBKSections.lean",
+      "source_sha256": "4e16e5a13ad78b6ce1c0fb1040171c29ca58085d8d0784079419859fd0d9ad6b",
+      "preview_sha256": "a835732c4e3393c53af3a91d5f8c41c69743b9b291239feccb5c8071211819b0"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotEvaluationLocalization.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotEvaluationLocalization.lean",
+      "source_sha256": "d86b32afb2245d6cb6c285c2dcbbcade1bfc3bfb26d106bc994b888a40751a1b",
+      "preview_sha256": "a369741f53d66ddacbfd5d5093829b41cf054fef8f1626aa61dd051304367516"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotFrameHomComparison.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotFrameHomComparison.lean",
+      "source_sha256": "1a4c991881ab45acd41a2ada15a2a0f50935e160e23f6848d91d4066f98e6b03",
+      "preview_sha256": "28ee3e58c10cd378f52e44fb2d8ab5874a0dc3cb7583c7345db201757ed16a17"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotFrameHomInfinity.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotFrameHomInfinity.lean",
+      "source_sha256": "8b426669cabc7358e6df0f75bf8b4f07f0dd8d63192a4744d40f471fab6e96a8",
+      "preview_sha256": "00eb8a0d6e5dc90caa48a463544033b20925c5b815deb8a94014c2dfdfb9aaf1"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotJointAugmentation.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointAugmentation.lean",
+      "source_sha256": "00b2da2828662caa78bd2bee24e87e8a3af7743c40acc8b146a41d2b8d115399",
+      "preview_sha256": "bf02db4d8b895753fa35e2e18a2d2b3daa61c03b2dec5340b349a1c09dde81a1"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotJointCorrectedUnitArrow.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointCorrectedUnitArrow.lean",
+      "source_sha256": "4dea2c4e13a3f32f7caa8cd74dc018e5ba535381086fb8aafeb312b937167b35",
+      "preview_sha256": "364c93b350475006bccf92bd1d9ae6a4f94fa9cb431385361a780c2ffc19b0f0"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotJointCorrectionComponent.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointCorrectionComponent.lean",
+      "source_sha256": "a4d0a6dbb80f3ef1d7b949537c40cc27ab230372bdfa6f2fc0bdfdb09405ec3c",
+      "preview_sha256": "fb5cd5070e26cafe739604fd233aac03032a841ab83351e108c3b2752e90d257"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotJointCorrectionComponentArrows.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointCorrectionComponentArrows.lean",
+      "source_sha256": "88818e8858bafbbaac0701a33927893c759cb34132e783a1db4eb6232d15e472",
+      "preview_sha256": "9c2d332d0acf0a0e4a496b2b896dcbf16e6ebcec2e291de6a986634fa0a1c9ac"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotJointCorrectionProjectionComponents.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointCorrectionProjectionComponents.lean",
+      "source_sha256": "fe582b81e5b4e4b299c3ea985e9d1e246237fae6b9809343ad8d715881e411f7",
+      "preview_sha256": "36c02f4b3433e03628146237e9ca4345beb18219a465e0b09fcd2a779f80d316"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotJointCorrectionProjectionValues.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointCorrectionProjectionValues.lean",
+      "source_sha256": "c7b6d7bd1f3a0a457a967be91a28f74d0dc831ac799cb76ad439dac05c935e1d",
+      "preview_sha256": "80629ea61b81f39460d6cc3b0aaad58ebb9bd3ece109941c48d8fa2f81b236e8"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotJointFirstSpan.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointFirstSpan.lean",
+      "source_sha256": "c1b8642dee497a47c37e45f482a9e20c69cd4b1af8b666170474c2aafe0d7e65",
+      "preview_sha256": "564704470396efe6956c5e02eff1a6608dbb5407cfae8c0494213bfe7e7cf3d4"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotJointHomInput.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointHomInput.lean",
+      "source_sha256": "3944aa4a608f6d7e81b0e1211e78188adbce32ec861992f1ee26fdfd5fe85480",
+      "preview_sha256": "5d711f3f14b0c6c4b3b9273487348b1fd2aa8b6f7762198d35f8c4a94780678c"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotJointHomInputVertex.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointHomInputVertex.lean",
+      "source_sha256": "60fd605742df262d48ae35d021dd88becaf1b252b0f02e99ed6c76015a4eccb6",
+      "preview_sha256": "d55806e84395ab861e645cb2f1e45493e7b8f398ddfaeaa42e49dc5f63001711"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotJointHomRestriction.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointHomRestriction.lean",
+      "source_sha256": "42ca084422437fc68c1764c29bc691a625c5c6e0810e887dd85d47c8cf52228c",
+      "preview_sha256": "12e9b45be13927c67e0d51f73ef810b15cb255d1eb18d2e1bbc599bf92a77f7a"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotJointNativeLiftUnit.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointNativeLiftUnit.lean",
+      "source_sha256": "6ff6d3c34358c4fa7d6d698c14c93ccb28ca9efbde03430e64397e75bc7c6873",
+      "preview_sha256": "5b91c635b5cb2ccb2b283df2ecdbf167956ae4582154349e9de7b524e4fb5113"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotJointNativeLiftUnitPoint.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointNativeLiftUnitPoint.lean",
+      "source_sha256": "dd031cfb45e5b198163dc9aab2fe2645ba5ffc15c492555ed451c6156f0a385c",
+      "preview_sha256": "e8a74bd0e5a33190041738dff82171a288cee5d90aff16797b61d9b4e3821cf6"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotJointNativeTransformation.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointNativeTransformation.lean",
+      "source_sha256": "757001210192bc705219be3e71e6a733eba1cf91393be25f9bcdc192413aca73",
+      "preview_sha256": "60d34af2a99aa9b7c038b884c34c6d9753865a0ba2e8c756424160eec5e9f572"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotJointNativeTransformationEvaluation.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointNativeTransformationEvaluation.lean",
+      "source_sha256": "7cbe4ef4a995bada5089ea556b80b9f99a0a9a0643f253e8aa27a19d6762d770",
+      "preview_sha256": "05a74ebcfdcd3b90aa6166a36366577e14fe5dc101f3d94c74bced6db46af678"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotJointNativeUnitFiber.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointNativeUnitFiber.lean",
+      "source_sha256": "c540901a3be1bb3cfffc699384c7bf5f2986f96504d49ef8d2f9af6f10faa921",
+      "preview_sha256": "befe1835eaf5fe03e4381fc68c7b4935783baf1d1773951369ae16e34f4d1fe0"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotJointNativeUnitPoint.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointNativeUnitPoint.lean",
+      "source_sha256": "76526b12252707af066269d7f9c8dab2333a428ea87d2f8d33f639b3b57a32a7",
+      "preview_sha256": "1d570d962e750e0c6b708effa9b1dedb4d552cbdd0cf58e593d0059464eb1dc8"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotJointPairingBaseComparison.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointPairingBaseComparison.lean",
+      "source_sha256": "1387aa067746fa1b3591774975fb722fc5903a55b5047660a8a2844fdd70cf20",
+      "preview_sha256": "4872da3dc18b1e3f7c107845e8cdd871aeb15bb263c1086fc6dfb3f3e6933594"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotJointPairingCorrection.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointPairingCorrection.lean",
+      "source_sha256": "0a3bb5feca88af7ea6cdf4378d4c08014a175c7fda993bea5826254b592fa08e",
+      "preview_sha256": "52ef7a304757dff9f63a127c6cf22f1e58877ac128717c3a4b2e9641f69b6b7d"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotJointPairingProjectionValues.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointPairingProjectionValues.lean",
+      "source_sha256": "d04007057241c6cbf4e4844dbbcefc0f8113a089e78a4f2f6904a483912820f5",
+      "preview_sha256": "bf63eb968939071307ef885e0793ad60dc33551eec33dfbdad8d6ff96a12295f"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotJointRoofProbeArrow.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointRoofProbeArrow.lean",
+      "source_sha256": "acf9682b97616c01bf3eccf306b9f4295d0d659a779f6eca7fa0f5b2032d28d0",
+      "preview_sha256": "eaa912c861425c24797f191e61fe0cfb1427864e69a001ae2266a491a71cfaf1"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotJointSourceAugmentationComparison.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceAugmentationComparison.lean",
+      "source_sha256": "58fc47c6593475880b564a9c9f89c63cb73eb7bd0b9b62a1fbbc09f38605ee01",
+      "preview_sha256": "4b9d27ca855dae09815b74d504f51c35a352d8641644f48a3b95df2b1ea4bbbf"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotJointSourceAugmentationPointValues.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceAugmentationPointValues.lean",
+      "source_sha256": "5f5cd10edd3798b085e4dbc2a1f37a5df56de522add0031bab0f4830449aa132",
+      "preview_sha256": "5a9efa17484c74668854fb55719453c3a1c3ab016eae21ce5ddf9b43e8869508"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotJointSourceElements.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceElements.lean",
+      "source_sha256": "987f986ff24e6aa0fbdec72eae9d55ee16d9446bebcf79b4bbd8da2261f4e57b",
+      "preview_sha256": "562c9622a0206df2a403e33009c2dba1849396ed68d34ad7d307f0d58a18c556"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotJointSourceFiberElements.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceFiberElements.lean",
+      "source_sha256": "2ff9d8adb2da2982b42a9d6cad242d4f3e2b601e6ab71ebeef8b15b920ab0a4c",
+      "preview_sha256": "c7845abb7f15b45ffd765650a24b2cbb2c619dc8e6bd8677ba24341a6b51ef89"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotJointSourceFiberPairingRoof.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceFiberPairingRoof.lean",
+      "source_sha256": "09f7e84f95e61fa8f8f58f005900713d860cacbfbcd146aeff222c1750046298",
+      "preview_sha256": "d2909ca2357d036dd47529cd00248fffeabd36fe1376b098f0db0d0423786f9a"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotJointSourceFiberRoof.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceFiberRoof.lean",
+      "source_sha256": "3f87528cbc3cc5d452a3f8bbce9afdc86968f9c8ce659bbb54563964c3c33b25",
+      "preview_sha256": "c1397a6059e4f51568cd332a911b83d61353997ce79fe24fd3e34ef623b72b09"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotJointSourceNativeFiber.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceNativeFiber.lean",
+      "source_sha256": "62bb05a82d659b58f1f151f2d2fc60faa84c20967dd2bf075cd61ce597042407",
+      "preview_sha256": "20bf948a3ba1750a0055edb420cf0052a6ce67c4202c4d838143395a86417384"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotJointSourceNativeFiberPairing.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceNativeFiberPairing.lean",
+      "source_sha256": "23581c4bfdf635edd03cf24fc8b6fe3f4f8ab9e9f0450d54c9e0c874c3fe5863",
+      "preview_sha256": "ca54b8d633af1122b911e55592337fbe689488a347e7183cf8e3f0063383ba6c"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotJointSourceNativeFiberPath.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceNativeFiberPath.lean",
+      "source_sha256": "21f35b68dd6695fc4f68df44ece8d0b5e846496cb7cb2b2c025454e50b759455",
+      "preview_sha256": "57234c070d3a934f25029ef09ca32fb3f2180735c52eec8b698e1996a0d0a927"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotJointSourceNativeIntervalFamily.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceNativeIntervalFamily.lean",
+      "source_sha256": "9abc80b1ceda1f6de8c0fd38e2dbaf09a6820698a07c70447075f03bc62db593",
+      "preview_sha256": "a558580f08fe29c311ad91bccb26dea77c29deffbd61cb47607252ab42c7284b"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotJointSourceNativeLift.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceNativeLift.lean",
+      "source_sha256": "b28ec550328ce61a35795710b43696cad94183dcc2f54500a1da67604c70af62",
+      "preview_sha256": "ae917c6e6499153e4ccae1f17dea431f4a6e818c375f14a9267f416ef74fbfc9"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotJointSourceNativeOppositeFiber.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceNativeOppositeFiber.lean",
+      "source_sha256": "af5e08380082552bd8f2d4be54fceee4914fb99ba9c7e137fce2a412964bd5ab",
+      "preview_sha256": "924094f705550bf53439ceff568da6a626aef537250b6983d59f91cf9ea56b19"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotJointSourceNativePinched.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceNativePinched.lean",
+      "source_sha256": "bc16f3eb8c6bfa380b1b48cf79fe9e3eb2a2fb0786c65b00d06852b043a3a786",
+      "preview_sha256": "6164ed9c77ad4ae215ac3af1f6f483df19d4b79f2d8a009c6159b90dea278bd0"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotJointSourceNativePinchedFactorization.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceNativePinchedFactorization.lean",
+      "source_sha256": "173b331bb3f30dccd4afe6027746d280899e8dc12dbab51217f12b3c4f05c9b9",
+      "preview_sha256": "0b503758bb478e7981a14f3bca26499c8014311e8b5b1eb938562f60956cb4b6"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotJointSourceOppositeAugmentation.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceOppositeAugmentation.lean",
+      "source_sha256": "64c46e5b4e73b9b2291c5b4e78fb10eccecce588d654ec29d508a40d0fdb13eb",
+      "preview_sha256": "15dcc654d59bddb56189724f811917004144745960513ecaed7d975bb3b098cf"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotJointSourcePairing.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourcePairing.lean",
+      "source_sha256": "41fdd3c902fc6e1384ed9c98b8fa30b568a09cafdee30aed0e30782f7856e1c5",
+      "preview_sha256": "cdb0e0dd6a767d15713a6f57cc8c7bd695a2cccfbd44b15fbb78411aae7e9cfe"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotJointSourceParameters.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceParameters.lean",
+      "source_sha256": "39d147eabcf951ef4cbab5c30fee148e62b83e008db55d20515944064e35a588",
+      "preview_sha256": "e5b311727409a19da02f64282296fd22f59776b4170686a8460f983d965c3534"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotJointSourceRawCosliceFamily.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceRawCosliceFamily.lean",
+      "source_sha256": "4371290c09ef0b95ce3fac28833b5925c738cb58d985cf1cd453e82d7aaaa9a7",
+      "preview_sha256": "92a4b4ca4aaf18da56bdf88b15f70da35fba707a939b5baf167e181bee3551c8"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotJointSourceRawCoslicePath.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceRawCoslicePath.lean",
+      "source_sha256": "f84d80e38ab4a92dd954c0a3fa5e12447cbc3a02cac1d5d31a4e451f6caede36",
+      "preview_sha256": "26b568a21ec62d6d2246aac3e137d4cfcb3592613de4982a604e13fb66228798"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotJointSourceRoofAugmentation.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceRoofAugmentation.lean",
+      "source_sha256": "57f43f1f7623852979b6782a9c9892b82c86adcafbca01a55ba7040cc2b768c0",
+      "preview_sha256": "c389c1fff64afb033775a8f823472adf3872ada2a0ee580c6d9c938787b90772"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotJointSourceRoofColumn.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceRoofColumn.lean",
+      "source_sha256": "11a5c4203cf0d34766ba2fa0ce0a64d5dec47c9577020a3e87b367d1d9215e5a",
+      "preview_sha256": "9fb2c7398432f594d9f50676f10aa7524c95673bd3c8873bc094208b0a7d0971"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotJointSourceRoofComparison.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceRoofComparison.lean",
+      "source_sha256": "5990304ce2cc4958ce0ebb2b1667cfb709521744c57b90e29055ad466037b123",
+      "preview_sha256": "68e96c971ce1531ba0188f17054f93ff4052c9169b0f3b689b3c464d39f99641"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotJointSourceRoofEndpointTransport.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceRoofEndpointTransport.lean",
+      "source_sha256": "b227d2d60c98864b8cb8156d281eb976e3bf295ece4d6b912d1259b3e850aafe",
+      "preview_sha256": "8e28c6ea66f04308e22e33bc24d02fc487f0fd32c8eecaad68b48093cd2f317b"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotJointSourceRoofFrame.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceRoofFrame.lean",
+      "source_sha256": "c9a9b84decc1dfb05e812b59c87dd475aa648c6512321b91b4353b4a012aac5f",
+      "preview_sha256": "7b36fcbce2181617d66fe99d70ad0f33e7d993549158f2ba6292f49c08c6a17a"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotJointSourceRoofGraph.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceRoofGraph.lean",
+      "source_sha256": "72cded4494fd54aa939d69a2328b6f0acff32029b5ad508edbc853a796810e08",
+      "preview_sha256": "946c70b9e885c3acc007f68394ecaa6b976babc2168f9c594fd08fee8e867628"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotJointSourceRoofNativeAugmentation.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceRoofNativeAugmentation.lean",
+      "source_sha256": "9416cf26534423942c2018fb5f9afe199f1a9b4effc683b733121e0b0c1743a7",
+      "preview_sha256": "f01d7612286c04406bd40d578074006527aec39e8300c0b3f08bffa6023d9677"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotJointSourceRoofNativeFamily.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceRoofNativeFamily.lean",
+      "source_sha256": "842be7200a70b8f1747882e7d8084406cb854a511b03601f98415c2ee9e9a26f",
+      "preview_sha256": "cd838fab44ff4adef533b4f14ee7d8d1c262e23c89e833da4378aeaf5b9691e9"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotJointSourceRoofNativePinched.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceRoofNativePinched.lean",
+      "source_sha256": "045a3e1ba6fd6fdd012a0d7d0e14ad71fabd587edc373908f7786071ee7f8819",
+      "preview_sha256": "d05ae6269de298a4f6529b5a6a14e3a8a1037498d50bf832a647aa06bd8a4e54"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotJointSourceRoofParameter.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceRoofParameter.lean",
+      "source_sha256": "918ee35605292beb9b36e8e70233c30dc1016677ad51499b9a692517f390c6fa",
+      "preview_sha256": "026e0dceefb86787bcdab2ed8de3e4e1a7cdf6e13c2bd4c8ec85add4e9021e13"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotJointSourceRoofPinched.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceRoofPinched.lean",
+      "source_sha256": "b46b439a2fca9aea7459161660337137eb137eb3ed8978aacb8978d8e3d64db6",
+      "preview_sha256": "779a2912cc20aba351bfe50724a9d28ba7ac23df2923dbd20091ac3812ae3880"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotJointSourceRoofPrefix.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceRoofPrefix.lean",
+      "source_sha256": "9906fa3dd9f224aff19b89bd878c4aaa507ba2508be18eb3db33d258f1899030",
+      "preview_sha256": "f3457aa7c43b9b1e3d8001c7a99ac22c7a91197945cacb1df013604eb5a47a7b"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotJointSourceTargetFiber.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceTargetFiber.lean",
+      "source_sha256": "5eedaaead5aa5d0ed451d057bb57dd1ccabf6c6593d1b0b94de83fa15b24568e",
+      "preview_sha256": "0e14ffc1fede5c1b50d947d7473651b545f9430b33dbfe2f4eb1b37ec73f4e73"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotJointSourceTargetPointValues.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceTargetPointValues.lean",
+      "source_sha256": "034599ddc5b63ec298ff1766d583e5f02825b4e9aa03aa2eb1dabd5d63669d2c",
+      "preview_sha256": "d256ea86d7f32e9726545fe11d7c1d267fc0d7b1a466e6b90e93db4ac2e8c074"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotJointSourceTargetUnit.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceTargetUnit.lean",
+      "source_sha256": "21c9cd79bc538d0b0f32881410029ba416731f888146207fcb1bbdb152b12577",
+      "preview_sha256": "9b62afdc5ec475f50189af92ad5f7364a11d6c3de75052dbcf37227f910894ef"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotJointSourceUnitLabel.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceUnitLabel.lean",
+      "source_sha256": "6f1f4a547772a2e151a0a26d43c01b2b8f8ce392e9b39d2dbde765be691680e2",
+      "preview_sha256": "6e0258fa6b292ad7528444ae4dc1b3022600891de8429241098656c035413d62"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotJointTargetReplacement.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointTargetReplacement.lean",
+      "source_sha256": "33c45e4b13333ad479b5f114a6d271503212a4d59faf3fcbe4ebfb70c84f064d",
+      "preview_sha256": "2c93051d00b844b3e2166c4e072228698df6a55824c86f964804cce3c6659022"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotLocalization.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotLocalization.lean",
+      "source_sha256": "89e3afa3267e0bdcfcd86261fa48a969eaaa53f3aff2234f2af49c2e14be6953",
+      "preview_sha256": "e00fe8f4094ca3884293f79bc2640ddf139be9b4c58cc25c08d2643159c3709f"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotModelSource.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotModelSource.lean",
+      "source_sha256": "23b3e7f6f818148bc541cf127a0d3e075e7b4675d96102635592a35e86aa67f6",
+      "preview_sha256": "c87011dddee776c2050ad447ec503f50dc8a5307c49abc9a20b6e61d930771a3"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotModelSourceComparison.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotModelSourceComparison.lean",
+      "source_sha256": "6f7927fa3d794bdaef71c704fd74d20c83241641e9d0e5eb4fae81a2e92f1e51",
+      "preview_sha256": "6c25086225b31fb87de60bc384313797ea3d2f614f6180e99521f1ae6e7811f2"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotModelWeakTransformation.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotModelWeakTransformation.lean",
+      "source_sha256": "3b7a76883eed368ac9f35c9e53076b423388ffe12942bd7065c59515ba884e98",
+      "preview_sha256": "4e389c26edbe3b63c87ec2491ec710ac600bf19b3b1905cdf31d41abd7285042"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotNativeConeAt.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotNativeConeAt.lean",
+      "source_sha256": "96356bbd1a408c07aaffe2513194423f1974e1fd47ca2a283be31ac34884092b",
+      "preview_sha256": "1867f9ed2f441ab25d8832c851e788548ff42f4047dae9406b2b960706a256a1"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotNativeFiberComparison.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotNativeFiberComparison.lean",
+      "source_sha256": "9615d12712f5a8166ecebb3009fa4015e884fbd98be6170d33258d9a9685ab1e",
+      "preview_sha256": "4df70b87f4c219724258507cca675af5ce2874e64c6c95b1d42370c8ee59d9e9"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotNativeFiberRecovery.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotNativeFiberRecovery.lean",
+      "source_sha256": "9b570d26db9bd9c237f36d45e04ccb57b9e11261cfea008993527c093c4c82e1",
+      "preview_sha256": "c6a3ef8653767d1f71db7a16f3370ca5e15bd289faba6f601ac1e16ebc4d551d"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotNativeSectionsRecovery.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotNativeSectionsRecovery.lean",
+      "source_sha256": "7ee26461fd6ffef3d4df6b70fc3d954948a89a8c823b10698d5874f3b62e59b3",
+      "preview_sha256": "66cd61ae53da244d382f0e2b3cc6b5216ba1b32e452bb48249cb400174f6fe3a"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotNativeSourceFamily.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotNativeSourceFamily.lean",
+      "source_sha256": "6414ed1929c09764ee8cf76a30e218a309408fe3c8a50c6fb08b46e7dfe681d3",
+      "preview_sha256": "4d1602fa724a5293850d90ed9d93d49f6a9b2af96e7d052a3c129411cafc6125"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotProbeCoefficientsComparison.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotProbeCoefficientsComparison.lean",
+      "source_sha256": "2cb02c335e5b54238ec29ea07367296a5752be871ef692c5e7f7775639f33cb6",
+      "preview_sha256": "a06442a04bebd017105dced3816e3bd93eece5e896823fb187e87db3f2319f6b"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotProbeCosliceClassification.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotProbeCosliceClassification.lean",
+      "source_sha256": "357bbb2345b8e764608d14629451128a010f33750ba2301db18cc99843de4786",
+      "preview_sha256": "a74d2c7555369f763633f4684be5f72386dd682480a45dd00ea7ef97e5a2c783"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotProbeFrameComparison.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotProbeFrameComparison.lean",
+      "source_sha256": "0d618007dce654de8b65e28b29b6766fb368f5adfa26402864b3f5bdbd14ef4c",
+      "preview_sha256": "51235dc43882679dacdf856210cafe5226d9ee594771223825b548269fde9fe2"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotProbeHomInfinityComparison.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotProbeHomInfinityComparison.lean",
+      "source_sha256": "0d26e5a7184ad7e896531eae702275342d99f073db983caac6f3fd6ce0c3c3d5",
+      "preview_sha256": "3a4d5b2a9c9317fdb336855471119c92aee13685991ccd1a040568f4ab8ff966"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotProbeKanCoefficients.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotProbeKanCoefficients.lean",
+      "source_sha256": "a7973644fdfd85dffe894162889a8a790296ebaaa39665523e54ab6d6a38df34",
+      "preview_sha256": "7d9439010c8314bb2554b79984b64b68e12265785c631dd636e40c6865616e13"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotProbeKanDiagram.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotProbeKanDiagram.lean",
+      "source_sha256": "69036e9f6ad0a5107c13bb10de0f6cfb83fd34e84ad8eb4347cd570dc252c4aa",
+      "preview_sha256": "1f29a5d41db44afa7288aa60eb8615ee6c1d07f5a7c719cc84503204b3cef730"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotProbeNativeHomComparison.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotProbeNativeHomComparison.lean",
+      "source_sha256": "6cdc69f12cb3060c7ddcbc26e6762428fb21a633b4b3363f974b3b2ac3f3cf17",
+      "preview_sha256": "95377606f94d326950e7dcc017e51c623f7d98caf35093edbfb72ce311ee494b"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotProbeSourceFunctor.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotProbeSourceFunctor.lean",
+      "source_sha256": "d5e1372c36594cd52931f08b128d97cbcfe41a444468df4d5016086882c18bfe",
+      "preview_sha256": "1d0df47be3f5778d15f152452fa21a0f70ffbc556176e5974f28cdcac0df7e9d"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotRightFrameCoherent.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotRightFrameCoherent.lean",
+      "source_sha256": "135ce4c901b803f1a512ebfe4e959fb9e4d1c07f4c12fa75050a8539866b9435",
+      "preview_sha256": "86b490f0f4fbd69e536f4d88d4751c7481b14bf4c75c232be02493b96b4162d3"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotRightFrameComparison.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotRightFrameComparison.lean",
+      "source_sha256": "c42dc06d0a43f7ad25c7540c86141aefb1949e794f69a5a824e8233731baf4d9",
+      "preview_sha256": "9874e4fd4d1d790fe53a973dc8b0ce5ef7fc201242f5331afe58f2ed18b99f83"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotTensorFrame.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotTensorFrame.lean",
+      "source_sha256": "48d7256acd3e338ff28f78371b35b7e7a3d4f555e6fd86d5af486c48c618440e",
+      "preview_sha256": "dfff9d4513565f4ebe2f31a73980747dcc926badcb355da4fec9aa8364c3c0f9"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotTensorFrameProperties.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotTensorFrameProperties.lean",
+      "source_sha256": "fd36a56b620b2fa2d538da72d232e723787193fd36a849be577ef1429151be0d",
+      "preview_sha256": "39893b6c53eca459a6038ce60c8a13c31d050216173c231adabb6d6687780ab7"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotUnderlyingLocalization.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotUnderlyingLocalization.lean",
+      "source_sha256": "cdcc2ca0751ff79935c8de71e61c3a99dbf8dc91de1a78618797e3eac0264725",
+      "preview_sha256": "20756cc79d2cec1615a2cf19669f7c8a580bd650b80bb08ae50e95d8a510e710"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotUnderlyingSource.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotUnderlyingSource.lean",
+      "source_sha256": "7cbad4dc9234f4e73cb25e4e854bf13daf6da986b9abc4337d017b0cfcde8dde",
+      "preview_sha256": "b059ebbe23e99d70f2308967b697efa1e9f0620adad963b1844f96818b14f1d1"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotUniversalBKProbeCone.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotUniversalBKProbeCone.lean",
+      "source_sha256": "be4ad800f7ed6804ad4bfc61acef73ffa6ffeb47402976626fb9cd6513ea8bab",
+      "preview_sha256": "bc53385d25d3006cd25d139d6debb433a49893d8169b5f36d8b039e6b634e1ff"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotUniversalProbeCone.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotUniversalProbeCone.lean",
+      "source_sha256": "6ec3d1a1d02b58a6ac24246c0553dbb952100a4639dfa910e3d2704d4014d16a",
+      "preview_sha256": "9056875cf8c98878f6fd19300007727ab6ac2fa6a05286e5474b048011fdf9ff"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotUniversalProbePointComparison.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotUniversalProbePointComparison.lean",
+      "source_sha256": "afaf3e57a7b3fdf2b8aed1e3060c819a522b90ea3c80d91cb27f531ef6e468d9",
+      "preview_sha256": "0ae2c02e1ce3f624ef32910a841a73fc89d0236d89db148a768ce3685d10cf65"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotUniversalSourceNaturality.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotUniversalSourceNaturality.lean",
+      "source_sha256": "3d6822af0b6dbe9de5a6be069a2cd2465192d5fdafeb9a890be3a96d66fbafb2",
+      "preview_sha256": "e9f3904c046eae69ab754e5ff5cddf0caeb5e5c1b4a120b1ce009b4269eb071e"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotUniversalWeightedCone.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotUniversalWeightedCone.lean",
+      "source_sha256": "79cc16057f28386982cc0dbb4c4885cd5505d2690dcc307b8a58d0265f1dfb57",
+      "preview_sha256": "efaf75403c9b54e3c8ec91dcf0b521c3cf0397b0d824935d462a616ad1981785"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotUniversalWeightedConeNaturality.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotUniversalWeightedConeNaturality.lean",
+      "source_sha256": "4cff87ba484d5fe7d5d77847ab9951a6ea5aee7371a8f117fe1a7aa71f9f4e24",
+      "preview_sha256": "addc0ba5599562a10207830e2890fecacfb81a23848e19853fc9f0e24f17405a"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotUniverseIndex.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotUniverseIndex.lean",
+      "source_sha256": "272bf90d674eceb9eb989ab40bcc286bd027eae0dce575e618f0f4539a64a261",
+      "preview_sha256": "c75270a8251725af45a1e220461ac3f2c4509466de0c587b0fad35ee3ec97411"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotUniverseNativeCone.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotUniverseNativeCone.lean",
+      "source_sha256": "2fe11e002cf2c2eeccc0fe85819299e34ab59c6108a0c305c640f0b24a12e9d1",
+      "preview_sha256": "3b49795cbe7f268ad9ff252e1f1c4d24a7bbb72e12524e1d683199d85235e4f1"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotVertexLocalization.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotVertexLocalization.lean",
+      "source_sha256": "ddeda0641cc0f5bcdd408f839fc7cfbe4013babb3bbf6d2b8beba4df3f687ff4",
+      "preview_sha256": "59165546c228d6e7be498eefb2de13e763e24c0b5dff53dc6c68bda57b278864"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotWeightComparison.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotWeightComparison.lean",
+      "source_sha256": "d3f794cdf68a7eddb5629c8e24ecf62e704f485f7ff5e9f8de3ad1119a12cbe8",
+      "preview_sha256": "f96fb36798a1e68e455d504df4476f5bcdca0eaac6ca10dd2c742c10e4117c57"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotalizationComparison.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotalizationComparison.lean",
+      "source_sha256": "5506dcf1731959432ef494a686377868bd41d40e6d1fd2362472564aadaa3cc9",
+      "preview_sha256": "e3fe1dbe205e8d88bbe9d57fdbd827effb97ba491d08b26ae4a70a11583ac488"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotalizationInput.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotalizationInput.lean",
+      "source_sha256": "584809d66e28cec584bb8f0ff1868645681a4ad4cdcb2fdb4190adebe462b166",
+      "preview_sha256": "3ce5860937961ef299abc46ba98f13a90e664701a6e7b39df8a4047133db3f40"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/AnodyneFamilyHomotopy.lean",
+      "new_path": "SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/MorphismSpaces/AnodyneFamilyHomotopy.lean",
+      "source_sha256": "96cf0e331661d15a402b3d5e1c993c5402b56ac62508b35da53e4b0229fb7e00",
+      "preview_sha256": "7cdd180ddc6b63c81157140183f0cae6456a821266357f594cb8202f078ea23e"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/AnodyneWeakDetection.lean",
+      "new_path": "SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/AnodyneWeakDetection.lean",
+      "source_sha256": "cbb7a446ab11ecac3a18b3281b285ef48dd168e3b6697e6aea85a94da8ce0f6e",
+      "preview_sha256": "792938593773ad5eff8d008e22342f0f0c365a3df51dbfaf2d6e5a13d5f51af8"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/ArrowSpanGrothendieck.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/ArrowSpanGrothendieck.lean",
+      "source_sha256": "1f357be69e672bc51c04711b92b6f8837ca58914451fa153fcc317e248dd37e3",
+      "preview_sha256": "b76c612055cc695169324295279623d2a4dd2a2712f1a2de6ef407468367b7f1"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/AsSmallHammockHomFamily.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/AsSmallHammockHomFamily.lean",
+      "source_sha256": "92fb7c38afcff732ebbebb6f6928fc5d5727a5c49c209d2d3a1b082632a1505d",
+      "preview_sha256": "077ba0b87f0fb17e7420579f99f4692be710d041cd7d3dfcf08b6348c364b36f"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/AsSmallHammockHomNormalization.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/AsSmallHammockHomNormalization.lean",
+      "source_sha256": "ad28d105d06b9238d9f17179fea8f235f2aa15e754b82c5f0e23573f7fb931d4",
+      "preview_sha256": "052e1702fcab015b1948f560c41886ef7038b4ff92be8776aa703c9acee780e0"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/BarInitialComparison.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/BarInitialComparison.lean",
+      "source_sha256": "ab51ea879d465cc174de9d71dd9c3dc9fa904739011ac2240dbf58c491aaead7",
+      "preview_sha256": "5cb91960cc7f0cbffa471ae5326d01b93e515cd052a938025715bc9916cb9e60"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/BarPointwiseInvariance.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/BarPointwiseInvariance.lean",
+      "source_sha256": "8717819cd3ba6b994e62650bf010f9704f2658e812f62add04b70d406bfe1ff6",
+      "preview_sha256": "22b66c609e1784585d5ae4f75cb48fae9180539f707f4031ce2b50992ccff20d"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/BarRowsCoproduct.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/BarRowsCoproduct.lean",
+      "source_sha256": "a3c0022e1803da53930ad9bc48fb72f5eb5d290d9a4602e4c52cb699a4f81434",
+      "preview_sha256": "a9dd441f122d01cc94009a94086f8f4e3a463fd0da58ac945f138e4bbd6aad29"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/BarValueInclusion.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/BarValueInclusion.lean",
+      "source_sha256": "5d993016133fec803541fd6c27cded928740c7cfb76145f88a40e3e6aa65745f",
+      "preview_sha256": "4455f9d1b3fe5cd16d2bc9e3c033e6e4eac402a672d51c886270eccd0b7a9d8b"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/CofinalAnodyneImage.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/CofinalAnodyneImage.lean",
+      "source_sha256": "e57f6f3b47c795983554758b167887eb5fcae21c2a2f8a0a70e69b8f7ad28159",
+      "preview_sha256": "0350eca7c6132af006d7a0684beb5b73982df9d1dd2b5a49b01dc2992ff96631"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/CommaNerveBarProjection.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/CommaNerveBarProjection.lean",
+      "source_sha256": "3994cc49b7679d39e2218685d0b448ea50d785905823e8d32a74bf9cf6464ba8",
+      "preview_sha256": "3eb3892040f08c2acacdfd1a5f30bfe325a0c8e92fd7611800cca718774ca5bd"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/CommaNerveContraction.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/CommaNerveContraction.lean",
+      "source_sha256": "c54e0d7ab9ee3fa31663feea4d9b4070ace7f12e580d0b71b564506c51c1816d",
+      "preview_sha256": "df375252bbe0dca79739dda063fc8700baedf2ae332a2c3af6501cb3fc30c2b4"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/CommaPreLeftCofinality.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/CommaPreLeftCofinality.lean",
+      "source_sha256": "b325c9b4e60fe70501a3699f9c0bd0000e7f279967e023995b134a89198d21a7",
+      "preview_sha256": "ab048c81e141309e880209e4a233be6b0a582cb8a11a117ba140a9603fcde276"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/ComonadResolutionFunctoriality.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/ComonadResolutionFunctoriality.lean",
+      "source_sha256": "c5dc05da2da338f0ca1e4f64b1d0991c0ef9798f0b63906b8baa8a40ba077368",
+      "preview_sha256": "548ba83e1c3b7b8fc128859fef5823c42decefc3e63a8c097aca6b70730e933b"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/ComonadResolutionMap.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/ComonadResolutionMap.lean",
+      "source_sha256": "b64bbe8ca4700fadaa118b67a768d805a0b3852710d7d09f8cd70a0a95039e4f",
+      "preview_sha256": "451446cdb36fdae9b25fc0df9936eb5947c29ac258bde0582ffc181b122ed3cb"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/ConstantBarAugmentation.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/ConstantBarAugmentation.lean",
+      "source_sha256": "58d3a32ea988fac3026d20097887f5373c05a645750ddf353493934dc0a2dd5f",
+      "preview_sha256": "c2f6faa80f37d5f48be961ca5f7bd8ba099b1371b81e0daf2b0857a6daf7ecee"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/ConstantBarRows.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/ConstantBarRows.lean",
+      "source_sha256": "72880d037a510ee943de3cb377f2111935a0ef131710c64687b389882bd5e3b8",
+      "preview_sha256": "5fc0c640c4bb7eff34faa54abe401eaa4140d8365ae37b3de4582da2b7fdfe9d"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/CosimplicialHomCommaInvariance.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/CosimplicialHomCommaInvariance.lean",
+      "source_sha256": "6dbef0a6a09c0a6c90711a678fb376f34acd3c0bd1ca42e0851fd1d11a76fbce",
+      "preview_sha256": "1cd8849fb5e42751ef3342273bd06b180304bbfc85b207bb95265c0603178485"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/CosimplicialHomElements.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/CosimplicialHomElements.lean",
+      "source_sha256": "9de9f5953a67435e2a41ec1694cc1b65acf61473f044f10d75c6d3c7226dfd8c",
+      "preview_sha256": "70c9e15253a6bc38abc5cbaedb95a2a8f63bdab2d73e5ea2446557ff7033db6a"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/EnrichedHomFunctor.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/EnrichedHomFunctor.lean",
+      "source_sha256": "f292499d6edc76f2939e18a3373387a77085966364c263a8fa595efd34d51eab",
+      "preview_sha256": "c543c201aec28ea25ffcebc0fd5849508a188ae1834b7fe622c9ff480c930bff"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/EnrichedHomRealization.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/EnrichedHomRealization.lean",
+      "source_sha256": "1f64289c9f33b909c17c249dbd7b9d9e50a328c8e00e9aaff40072cd7e4f5109",
+      "preview_sha256": "d082cc11e1bbdd31cfd52b325f11769ce1a31aae036c1db8b1737925619430d9"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/EnrichedHomYoneda.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/EnrichedHomYoneda.lean",
+      "source_sha256": "b0221d38d824a3080fb04cbe5b67000c8195c49d1397bd0b9e3d72fe3dd47a39",
+      "preview_sha256": "d6862bb92d7366d3d1936a4ad7f4221c1270b57484974380ae5851eeea6555bb"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/FibrantFrameSpanComparison.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FibrantFrameSpanComparison.lean",
+      "source_sha256": "c94d636b00e8e89ae36c708f8766332a82d9e939b9ebfae8f6d63391b9032d64",
+      "preview_sha256": "1d78f984c835987a380c32ca5c946783f3ee24adc831479350b1c73c99dfa4d9"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/FibrantFrameSpanNormalization.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FibrantFrameSpanNormalization.lean",
+      "source_sha256": "4abc33dc4a90b877ad135fe0fd7e0d6932bcc0e83e79bc37b63fea50d5ed2605",
+      "preview_sha256": "ff054cc757d877fa077a8a5a4209cd56c6cb34fcb0e18e26064d28bdd4284c75"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/FibrantRightResolutionDiagram.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FibrantRightResolutionDiagram.lean",
+      "source_sha256": "111ea9c601b952dd5678f8063fe454ed396d514788a6b0bd3b6e13c40c6e64bf",
+      "preview_sha256": "1454bf376b896c57c6e44020020adec7577bb0b254c9d1d5f2a06186190e8806"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/FibrantSourceReducedComparison.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FibrantSourceReducedComparison.lean",
+      "source_sha256": "97e9c13f2562fcdb157023a5b51cab3c4e05b24369dfc721060fb0a9500a953c",
+      "preview_sha256": "b4a01edf18ef6a4048d12e160c42f4eeec840b91eb46c6cd10c6dfb68984c6ba"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/FibrantSourceReducedFirst.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FibrantSourceReducedFirst.lean",
+      "source_sha256": "29768778ebfc50bfcd4eb71b43c50098285976f323d0c92bbe6780bbdc8e3944",
+      "preview_sha256": "acefc0e5914d1b4a487e2d682505f746f5401d4561b6d893efb4b330c4cff0b1"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/FixedRightGrothendieckInversion.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FixedRightGrothendieckInversion.lean",
+      "source_sha256": "1b8c7eb17e98f19cb5d1d812db1c7537275c8a4f3cadf3612d8ca985cbb0dd8e",
+      "preview_sha256": "ca5b34f97d7d4e3f16c7193ff64e6ced99c642b69391da3910fd068b4626a2e0"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/FrameArrowAugmentationLimits.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameArrowAugmentationLimits.lean",
+      "source_sha256": "a839306c388eb23caded70b37c0abc55a47eb6ca6939c1a03217ed6e3d94c38c",
+      "preview_sha256": "6fb857ac0bb8f5873e472f5a79ad289b24f6614cf1e6a10d42bd3dabc8fc5893"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/FrameArrowCofinality.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameArrowCofinality.lean",
+      "source_sha256": "cbc806f0589e4ec1a6dd2d648712ac5a4a4cfb49a6386434e51b987938b9672b",
+      "preview_sha256": "5c7d45d88034a05a5dd57cc8796d38674c2e8c1699e84213a697bb68bd8a19fc"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/FrameArrowElements.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameArrowElements.lean",
+      "source_sha256": "52e22ccc77a589f0caa881eb033a1e0e054f98c985152a211f30021e2579a9dc",
+      "preview_sha256": "7c22cb30f5ed27a7093d5b32084deca46830ae00edeb1697a4ab0750da25dfd7"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/FrameArrowLimits.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameArrowLimits.lean",
+      "source_sha256": "4ef030f1f6fa3530a167da34c5d546822915c554a723425643266fd85503399e",
+      "preview_sha256": "5459ab406d041305c80fbe21640f3eba0272af0e8040ebda8361f5efdb4f80c7"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/FrameArrowRightKan.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameArrowRightKan.lean",
+      "source_sha256": "457c0226f2be46970c7d00c07c08a890d3c6c2ee80a7fb91f09637d63ecf7e2b",
+      "preview_sha256": "3d805b744e0556a2691bf275a9a571f554d4dd25332e3eed7be01cad58badf4f"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/FrameAugmentationLimitLegs.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameAugmentationLimitLegs.lean",
+      "source_sha256": "b9aebf0d9d2784916d03e0599535204d90ddb86d630cc27012eb6653cc827442",
+      "preview_sha256": "21b95f4c7ae6a171234f2402ab433c060cf6e2a91f1a2d4e9425095ce581baf5"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/FrameElementSpans.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameElementSpans.lean",
+      "source_sha256": "152fffb39fc3482089cc21f914500c14e73d095d695546836d25c3a0f3f36884",
+      "preview_sha256": "1a2fa84d4e97718ce85f224d1f50870208f1ddeb2b6d22d96ba457e758b62498"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/FrameFunctorImage.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameFunctorImage.lean",
+      "source_sha256": "3ce15593a50101eeaf90d69a73fd14358a933a7c8475490ff10cb79fd21f48c9",
+      "preview_sha256": "4a77e0f2a865c5aafb041ab83321653c9863720f0242e5e5965468fa7f9a6e4a"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/FrameIndexAugmentation.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameIndexAugmentation.lean",
+      "source_sha256": "4ba800b40d68c5540b3cc176c2f4846ab3cbf1cb8f28817bf686f399c9b681ce",
+      "preview_sha256": "293b354890bdac7b783a81c8249d96ecb8861ab3f25d6556d406780c7fb9c937"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/FrameLeftRoof.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameLeftRoof.lean",
+      "source_sha256": "34d3cfdb1b652c42ef1d75f9ebe43049b3988cd4206995592bccdc4210b17952",
+      "preview_sha256": "1047c21641af3648a94c71839fac89513a9d78da3385e36e1f6d21e3fed7efd7"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/FrameLeftRoofPostcompose.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameLeftRoofPostcompose.lean",
+      "source_sha256": "62ad37382418936db8b04617c8aa2ef1a0d056f14324cfc85e58bf64f2caafbf",
+      "preview_sha256": "cf9003dce00ba43c23bcfcef83d1c97fbc326e656a677fb0cabd1a18cd7a9e17"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/FrameLeftRoofPrecompose.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameLeftRoofPrecompose.lean",
+      "source_sha256": "0d5b06f5b57fd232711e4f372320f73343925803b792dfa5636f632b9b637b72",
+      "preview_sha256": "aa1bbf0e6c0a912c9a0800cdece02ad5b4359056fe3208efcb068c2b1f4a87a6"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/FrameLiftComma.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameLiftComma.lean",
+      "source_sha256": "6fc1941f9e7d9cbdef37de24b851149ace15d7db9d162137de64de9f215248cd",
+      "preview_sha256": "cbd313e550912970d062e24f8e37c4d552cb4e8bf9b88e3a81cec70ae3756305"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/FrameLiftContraction.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameLiftContraction.lean",
+      "source_sha256": "299a8ccf27b9ad83cc3e079345d6ba488cf7b63665b41ba477f95bd2502b7b27",
+      "preview_sha256": "975a5dd3e840e302cc31baa47d6101f088dd12f8410ef5495570756c2dd2baeb"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/FrameLiftSimplices.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameLiftSimplices.lean",
+      "source_sha256": "1c350fc84ddaaf197a9e44c31d5aa3a15947eb6a82233626a0f3052b34fe5d72",
+      "preview_sha256": "530a66b0d6771340c87753e13f21ce0d8b2c00137fea08ffcc1d530241770337"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/FrameRightKan.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameRightKan.lean",
+      "source_sha256": "da5b80f806e0cb94bc332fd063f5f18bbdcf1065c0119e20251585946d4b1a62",
+      "preview_sha256": "5fb0d290ff2cdaff589ad232e0faa56a1e24f9eb21ca93bf7153f1367182a375"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/FrameRightKanCanonical.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameRightKanCanonical.lean",
+      "source_sha256": "6252b8204dd284936c0dab10158847f5c595a4fb6e3cd38a3d84bb58d189d553",
+      "preview_sha256": "50949bb762c5815e154f158eb1e28b3111f236fb650907b2fa7873ff259dc856"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/FrameRoofComparisonInvariance.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameRoofComparisonInvariance.lean",
+      "source_sha256": "ecc5fc347ee4745006e767522e1f0e6afc865ecc2a9e228aa7b63f19dd20aff4",
+      "preview_sha256": "a180ff913332e615bf3f750d061a8c7cb09eb7f522804af2ff1257dd0a5a52d4"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/FrameRoofCornerBaseProjection.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameRoofCornerBaseProjection.lean",
+      "source_sha256": "ca5d1689869137b7c2d634f893e69c58aeca307b58023cbdeea50cd5b560385f",
+      "preview_sha256": "2af42ccdb3231cc4a2123d08e12917bce9dd86c76fc623ca440df9b7ac3f71eb"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/FrameRoofCornerEvaluation.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameRoofCornerEvaluation.lean",
+      "source_sha256": "de795af431aa1a863fc81916e1ee368d46b5a0ca53cfa689fde38d6171dad347",
+      "preview_sha256": "2b2406895360077b72cbff8bef6fcfc76aef836137ba3e501f2b195e31fab383"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/FrameRoofCornerEvaluationPrism.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameRoofCornerEvaluationPrism.lean",
+      "source_sha256": "397789724cf1a2972d9b8823dda9b9530f4aaeeedb788ed22001553cc7bb9750",
+      "preview_sha256": "99973b0f80d64738db0f11f3e90f593a4aec005136a2a5307ec670bfe35c4ae2"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/FrameRoofCornerEvaluationTriangle.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameRoofCornerEvaluationTriangle.lean",
+      "source_sha256": "dfc214e59bdfa612dc0b2e75a09dacd2d7dbbcdda397cfa1a982887bf1f192c6",
+      "preview_sha256": "910ae32081a9eff5c8618dad9e2dc1125a48060994d23062fcdc0d0d7cddb617"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/FrameRoofCornerLeftBase.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameRoofCornerLeftBase.lean",
+      "source_sha256": "dce55012556a90fee9978442bd5c59a901eba6722569b4dd4e6f4c7fbce2f225",
+      "preview_sha256": "bf5ce47177034c770120162e029cf6947af95573dcb3485f08159db2eb63abe8"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/FrameRoofCornerNormalization.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameRoofCornerNormalization.lean",
+      "source_sha256": "7687e189dbfc991f422c184f10de68e141baf389a095c2d2d6f64aed3f78adf6",
+      "preview_sha256": "8c9bf95401212906dfbb8a63285d49b7133ec1f707d332cc90b886ca579960f9"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/FrameRoofCornerProjectionLaws.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameRoofCornerProjectionLaws.lean",
+      "source_sha256": "5c518c8764098f0eddcb97f127d8e4cbc74a72b2318f4bafd16ee401d43d3fea",
+      "preview_sha256": "abe9d8cd34f307ea2b9877291c3c07a620a5f0a1e6622d138742dc92f976b447"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/FrameRoofFiberPinched.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameRoofFiberPinched.lean",
+      "source_sha256": "0244c9b83c3b04731276bef8a76f26596301a03ef3d02778fe9c313a30f33ecd",
+      "preview_sha256": "849a168a7baecd5c17683218f8e82c51b3518283aca4369bb6086c2110bee97d"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/FrameRoofFiberPinchedProjection.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameRoofFiberPinchedProjection.lean",
+      "source_sha256": "daa00698d183f468c0cb3920d7303cb8aa0b1e207998fe9ad53d83665b492f26",
+      "preview_sha256": "4d8dae6925eaf0da2a328b5a8f9424c83670750b7d38439ed025d35e411679f2"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/FrameRoofQuillenSlice.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameRoofQuillenSlice.lean",
+      "source_sha256": "cac8a14ce99d9297f39301b82706be2aba1b9f212d577c3ad154a12e7fda4a47",
+      "preview_sha256": "af1acee9022d2d618110d0a10119494db374c7bb59cf96f934bc6e28987c1fe8"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/FrameRoofSliceFibration.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameRoofSliceFibration.lean",
+      "source_sha256": "5e6f554eadda1eeb35fa5a8f29fa9ff5c8c8157b0e684b30d9d4d4f29cfd73a7",
+      "preview_sha256": "72892140960b67d1a6d1072e13c6a52cd0327f05c21430cb133af6597f85fe42"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/FrameRoofSliceWeakContractibility.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameRoofSliceWeakContractibility.lean",
+      "source_sha256": "8272b572e19edd0df8993b7e2b7fa35b8ace3ae6fb1b9078387ca9d2f3627bf7",
+      "preview_sha256": "0d37da25f5ef9f6484d7d5a3db8e2440853bc62f070ebe410c0bfb973998a8b8"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/FrameRoofSource.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameRoofSource.lean",
+      "source_sha256": "073be02e594f65f51bd11ef110c2d1730fd50666f911240fc3a03ab3eeb4c585",
+      "preview_sha256": "e6481be74d41ae82bc8d0883cb03f45cc7f6ec783af8274d0f6726cf91ad6b0a"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/FrameRoofSourceProjection.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameRoofSourceProjection.lean",
+      "source_sha256": "a21721eb547af932d7f5f6ab90739ec9c4137c0937b546625422aaa90268c4f0",
+      "preview_sha256": "b305dfd9bb6f60422189486a3e1727c625d07248afd77c99ed7586fb4e156c8e"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/FrameRoofTarget.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameRoofTarget.lean",
+      "source_sha256": "e115f9b67af330e9a9f6788ca631ed3059090da7d4d70d0475cb0e5b77dd8d93",
+      "preview_sha256": "81bf4d20297c1217940ec3c0e580a941a8c27adeb321c4ae44f793401331fd43"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/FrameSpanNaturality.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameSpanNaturality.lean",
+      "source_sha256": "e4d622aa056f353a7f9c558ab120b8e4b322edde324cabc6a4b76c415c071e00",
+      "preview_sha256": "5c155cee014eecc643f60cea062028780edcf6c2a3afb27a99c3656adfd6140a"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/FrameSpanTargetHomotopy.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameSpanTargetHomotopy.lean",
+      "source_sha256": "328b973b975f82be012695da5b46c001b13cc1b6b3114e37d9c5f5c463431e93",
+      "preview_sha256": "f00e6bd52365d73b1f43ced5ce7004c295279287f57b169e2f0e603d9be54693"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/FullyFaithfulNerveRetraction.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FullyFaithfulNerveRetraction.lean",
+      "source_sha256": "fbf63e7cc8d7b3b67cd82868bfcaddbcc897df205da41f17b60cb929613baa62",
+      "preview_sha256": "0044d35085e55901eb1d5245d0ccd5e89bdca77e292a20582e066c60c8b03796"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/GrothendieckCommaComparison.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/GrothendieckCommaComparison.lean",
+      "source_sha256": "b650ada31a7406772c410f2f1a5b27be8da1aff4541af2ee02e8d350578c4526",
+      "preview_sha256": "858dcf9b23c393b1faa4fe9afaf52579ac442060d2294cd38b03905752fe9c05"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/GrothendieckCommaRetraction.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/GrothendieckCommaRetraction.lean",
+      "source_sha256": "2151b16f7f6a5b0b44d90387fcfec01ee8d9b014ef1102b7190022adc745d5b5",
+      "preview_sha256": "1b5614f96d870875ab03212f34a0171ea3abe763017f30e76393764eec04c8c5"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/GrothendieckFiberInvariance.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/GrothendieckFiberInvariance.lean",
+      "source_sha256": "3209240d64cc81b435d50e9e47c7ff0041ed4a79d921b78ca3447578ff4f3093",
+      "preview_sha256": "c6540bfdb1305dabb1988cd1c79fa056b7aa818499db1c8be8f9fcf386c105f3"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/HeterogeneousSmallComma.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/HeterogeneousSmallComma.lean",
+      "source_sha256": "e190be2b4ece623d1e72d30baeca740f5a1864b9985e48da8c1a513c4be77ffe",
+      "preview_sha256": "c7ff5bf6c6965d6ca57b6da85126696d4e766ad51bacce0c91269b48811fa2b9"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/HomInfinityEquivalenceTransport.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/HomInfinityEquivalenceTransport.lean",
+      "source_sha256": "e96802bef76e3424986607012054ce7079b99de93e0985382bc767980cfecac8",
+      "preview_sha256": "78f2f174c919835d0db8268c01a065835043906fff26667d3eeff03d8ca4f6f8"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/HomInfinityLocalizationTransport.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/HomInfinityLocalizationTransport.lean",
+      "source_sha256": "7a3657563cee4aaeb8672d65f600ae54661bd1d9c00f4daffd14d68cd374f38a",
+      "preview_sha256": "cb68d1affcf26348aa093241e88a58679062fe342a73d84719c5b52b06c6929f"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/KanElementsFamily.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/KanElementsFamily.lean",
+      "source_sha256": "b33dc8a20276898a632c5b64e2d1b162230b0514cf61d5f913987501f497570f",
+      "preview_sha256": "7eebad902bcd4433e1132e26a2b6b476dfafc971e15fa05d9e392ef1191de18c"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/KanHomFamily.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/KanHomFamily.lean",
+      "source_sha256": "ec03567d9807db576a4540ab8b007a364d153ddd07d59acf16fa9bacb4d68116",
+      "preview_sha256": "925d939f38076beb4ca25d34ab59b2cef169bf1d27554636d408532f42fa983e"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/KanHomFamilyOpposite.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/KanHomFamilyOpposite.lean",
+      "source_sha256": "7d21f62cfdb8bc5c263bff39961e5a6bbd4b0d9c70849bb7ec79ff5531184e45",
+      "preview_sha256": "96e45552973f894d81096e0aa3fb98850920e421e3ea20df94a5ff65e69848ff"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/KanNerveOppositeFamily.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/KanNerveOppositeFamily.lean",
+      "source_sha256": "bde39220d8f5dbd306a58d9839b6b1814a285c9334b5294878a6b73cd22cb70a",
+      "preview_sha256": "91895bd0e7dcf23e32ae89c0720fec69535ed7f35509461fdcabe291fe492e17"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/LiftedResolutionLeftRoof.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/LiftedResolutionLeftRoof.lean",
+      "source_sha256": "fceaff1205d66984fbae647c72cf5b30c7621d1f6d7cb6b26d902834d43fea41",
+      "preview_sha256": "3554412687892f19237bdefa19bfc6cc7b05bc667e02d05631bc0f215613bb5a"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/LiftedSourceFrameElements.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/LiftedSourceFrameElements.lean",
+      "source_sha256": "fe16b5c9af4ee3b123ed6133453e4d8efb4d5f661e682f1ebe58eebaefa25744",
+      "preview_sha256": "e66dd463d2706fca3bbc45603fabcd676039bc3666f625a8ef96212c8590a200"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/LiftedSourceFrameFiberRoof.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/LiftedSourceFrameFiberRoof.lean",
+      "source_sha256": "899b9128b86932237722d93b191b10a2f6cc9cac07d635b31195cfa1c5bd673b",
+      "preview_sha256": "4f9106bd29292bedf4b993dda890d6be6d744edcb4ec6bb4247447c4c08b40bf"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/LiftedSourceFramePairing.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/LiftedSourceFramePairing.lean",
+      "source_sha256": "d24b7c03eab33611e5e18555462cd441760cf4a771765dd8a62fa707b8dd612a",
+      "preview_sha256": "f8bb92704fa166c0bbc0eeca11c0408b7de0d1de13fabdc8caf259cde072daae"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/LocalizationComparison.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/LocalizationComparison.lean",
+      "source_sha256": "34a7660b35b2f23f103d143b7f8c1817d95facfa7ffab9559846ffa4c64c04ad",
+      "preview_sha256": "6a1c9a5b0646705590f9df3af072e8c6afdc39c2b5718ed02426f7cd755fcfd2"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/MixedFrame.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/MixedFrame.lean",
+      "source_sha256": "22fd704ab7b3f3d3f5f3fdba6e83d370a5d0ffd17c014d8c1e8e13ec8641b21f",
+      "preview_sha256": "691e2aa101c60170d82a575cc5114f79da80b23e30265b43c2aaddaa38446ee6"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/MixedFrameSource.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/MixedFrameSource.lean",
+      "source_sha256": "7fbb976760001728b7ea3ff84ec092909edefcfcd4f63e68a8182bbee6e083ee",
+      "preview_sha256": "18a2bd33c97051e23268a9069f8b6855b20ad6cb017b63428813b2b35e28eaa5"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/MixedNerveCoconePoint.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/MixedNerveCoconePoint.lean",
+      "source_sha256": "ef9642622f91bcfc6b3056589f4c1483af7f599f52abf5686f76e52703694d52",
+      "preview_sha256": "284ee8843dfe1a90b7e7ad5cf1d7aa8065c93cda4a03a2a0863c29d3de65cc21"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/MixedNerveCoconePrism.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/MixedNerveCoconePrism.lean",
+      "source_sha256": "a3baef2b70c879e6a8f0583e17f304eecec921e1824c363e49713336aa96652e",
+      "preview_sha256": "73b43b67e682167b7a483fae412e18186732e76309693ccb2a3dd54edb29f632"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/MixedNerveConstant.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/MixedNerveConstant.lean",
+      "source_sha256": "ad75063ede63b6d3b7dc2865c5b8578e35b53c493fcd93a2a7cb5af1b08a0790",
+      "preview_sha256": "11139729e90c7295e80cc937f675cad1d11addf8d838f63686c9812fd381e822"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/MixedNerveConstantHom.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/MixedNerveConstantHom.lean",
+      "source_sha256": "f855f1440606ae9f91a09097afe3e90e978f4be81793ebf4ea94d42495f3101d",
+      "preview_sha256": "8ca4267c59b430b01b3b07801f52bf3516723f7319214d90c31b38d77ceb79db"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/MixedNerveHomLiftIso.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/MixedNerveHomLiftIso.lean",
+      "source_sha256": "a5518ad3f895ce4c79be74d85c560339dd1e50f47bd40e5d762f97f0bd701707",
+      "preview_sha256": "f8109688275089006c9b903c3412d8a308f31c6c9e5ea2aff27097bc6f0c4b7b"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/MixedNerveHomRecovery.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/MixedNerveHomRecovery.lean",
+      "source_sha256": "1dda5a7860aba5b2daac266a991607985d353a638b0d2fabfb23d656bbd694ba",
+      "preview_sha256": "87d5d3e708cb3217af4fd111e366f2c32673811d1a86e228a7936215d37dc459"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/MixedNerveNatTrans.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/MixedNerveNatTrans.lean",
+      "source_sha256": "52a31707707359f46611e8822c88724a7b002737954454a41ab5cae504c4295d",
+      "preview_sha256": "be6484f8aeedcfaa273d66cedc2b9006c819d92bd9228d9ca5b7814111ca7859"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/MixedNerveNatTransFunctor.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/MixedNerveNatTransFunctor.lean",
+      "source_sha256": "2d14237cf6c7e112e5aefc09af3a792637437ab41484b2dc7fd6a5d95b1d73f1",
+      "preview_sha256": "bac4f3e5ae08c9beb12ff8ad1d0ca1e25eb5394a19b0e09ae4bb5b48f699e4de"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/NerveAsSmall.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/NerveAsSmall.lean",
+      "source_sha256": "4e1d26f39000a368f63192c40494e6458adba6e3ab803346f36ea990c002a404",
+      "preview_sha256": "e35b694d0fbddebee272341b4c25f1d385d36473d9df6c02b3716d69f435f418"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/NerveColumnComponentArrow.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/NerveColumnComponentArrow.lean",
+      "source_sha256": "c2e1e1aca3acb48eff70ab21edb5d1a3cf805eb1d427dedaec86321bc0461933",
+      "preview_sha256": "085ea86aa18bd0574cf0f9afcfbbe77c005e0ef0b09b508fdfa05372398afac1"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/NerveColumnNaturalityComponent.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/NerveColumnNaturalityComponent.lean",
+      "source_sha256": "d3c1bb62e30d0865ea95a843f211cf38ad434808717776a57a0a85ab06f9aca0",
+      "preview_sha256": "8b5b27dbe37c3a0a596a202c42c5269a748b8dab6ae9dad27689679ad61062ea"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/NerveColumnRoofNaturality.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/NerveColumnRoofNaturality.lean",
+      "source_sha256": "bebe5483544d78722126e541d170a6c12338de3641336582d89da6f142a5fa33",
+      "preview_sha256": "2a01d5525c2642dba539c68f83e23409a6c49f6fed554f2feb27dc0feccf0a4b"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/NerveColumnWhiskering.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/NerveColumnWhiskering.lean",
+      "source_sha256": "4bb0aebc0602cd8081c8fbf436789441f26b3f7a7516f3283e6ae3ee5cb3fb70",
+      "preview_sha256": "96eb822f85d8e97d0fd7d73eea39e5ab68f3108adb0fcd5f577680b82c1f1f20"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/NerveEquivalenceImage.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/NerveEquivalenceImage.lean",
+      "source_sha256": "09d23ab6b4b870178fc17b84c401902ebda876f045cccfc00a2c69ef58f4230b",
+      "preview_sha256": "53114924b42f32f4e0214ab927a4590b0b5a679ed5c52a6fe8f7461a37a5ed3a"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/NerveOverRightPrism.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/NerveOverRightPrism.lean",
+      "source_sha256": "310e7cc73fcf0ac6b9653da1abe016cc100b083511107dd9eec2dccfb455b742",
+      "preview_sha256": "40a5d26726e3bce5503604e9d827f04a36eb3a84853aa6e05cea29a3f76fab3c"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/NerveQuillenA.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/NerveQuillenA.lean",
+      "source_sha256": "7653dd3a84b2a1abd74e40b310a009a2a7c6f553b73d886930c6ec0aa1ae4a0a",
+      "preview_sha256": "248ff9e1fdfc5b4b0af34b60d59356f8d38078ce916734b2508afff66a1eee3b"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/NerveTerminalImage.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/NerveTerminalImage.lean",
+      "source_sha256": "cb57d9af8f00984cd95d932e693ca623441a76bc6161c38c8047d0b2974d6b8a",
+      "preview_sha256": "16c6c95923c8230dd1de1636c3cc55d2f1e22206a9580491af970c41e9511fb3"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/OppositeElementsInvariance.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/OppositeElementsInvariance.lean",
+      "source_sha256": "2eebdadcf92091c024008f93b0f457506d2255f21036620a9fefea0dfb8f942b",
+      "preview_sha256": "f8b680f27f464bf6c104b68e9152469d11e6b7a6f51077e49e0c3b62e241aafa"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/OverTerminalEvaluation.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/OverTerminalEvaluation.lean",
+      "source_sha256": "48fc3c6bad2e61bf850d960542641db565159d61eab5de137aed57e2cb28c68a",
+      "preview_sha256": "4bd42993e3538a987cc1fead7e0786b7149e371b5a02221600a53694c83652e6"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/PinchedFamilyWeakDetection.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/PinchedFamilyWeakDetection.lean",
+      "source_sha256": "17fbe1efa851bcbc0b1403c0523db87c8edd476c48184057381e814794f5234f",
+      "preview_sha256": "a92aee5e20c470474c1b343a6c36c9e4acfc368628f55bd162adc79e684179e2"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/PointSliceCornerFibration.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/PointSliceCornerFibration.lean",
+      "source_sha256": "c9700b4b01ca79d882c413977a1c68c8d73034acffb23af23fbc09238bdd393d",
+      "preview_sha256": "466da28e6fb448eb4aa20f79003f90788bd530269dfd7e21a9515a88986223b2"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/ProductSimplexElementProjectionWeak.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/ProductSimplexElementProjectionWeak.lean",
+      "source_sha256": "47a39b91061c6b7738bd20ea79c3c649de3378ec42cae80fa0c7746d6421b16a",
+      "preview_sha256": "89a88ba7ae1aee89eeb026959a7ed1791bd604d61e54813f202de1fb0ab6d5a3"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/ProductSimplexUniverseProjectionWeak.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/ProductSimplexUniverseProjectionWeak.lean",
+      "source_sha256": "1016982cbdc44ad8eec7841596bd80c4325c0c1871d7ac7f4ce86bc1df4fda99",
+      "preview_sha256": "282360fb48a8da21503c2e65bec8280a191a2322db0c6e19e2ce3c2f7a824ff0"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/RealizationHomNaturality.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/RealizationHomNaturality.lean",
+      "source_sha256": "feb5cbde6de494a9ca8b58b2f7cbbfc8245e212a3d0179edbf66dcd3451da359",
+      "preview_sha256": "2fe5dee7c4459142f3449702f2d5b2e733b97275681a23b4b9fda35194ffc615"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/ResolutionAsphericity.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/ResolutionAsphericity.lean",
+      "source_sha256": "502cc3ad141dda95f0b39f2a71f7f56f4182be39247c3ea98ad76507b6f71ea8",
+      "preview_sha256": "1dee35ae9aeda091526d52f5e9f1adb772be6a437de62a8508cabfc70f848e98"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/ResolutionCofinality.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/ResolutionCofinality.lean",
+      "source_sha256": "e82945193475fa426ce98700603b9f65c12b9a2fcef36c656b7fdf69826e9d87",
+      "preview_sha256": "f9dc05ba80e3451f050c992ea0b68ff713bd49450ae6f9af16ed8bba28753aeb"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/ResolutionCommaContraction.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/ResolutionCommaContraction.lean",
+      "source_sha256": "91abadd34b905c210affef5087ddd3aad4121afc21514c03c5a198c5eb406bbf",
+      "preview_sha256": "5b7d93019f38eb76baafa8d760225ab4897dcae3f89c48246371db92745a18ca"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/ResolutionFixedRightComparison.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/ResolutionFixedRightComparison.lean",
+      "source_sha256": "5d1b34476112067d9a70febd49d16ce86fbf5d4e03ec1f353db377a86072f4e4",
+      "preview_sha256": "7866e735737b801436a7874a1d94e74f5c559297280b06f88d08ef5f5f20d057"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/RightFrameHammockCoherent.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/RightFrameHammockCoherent.lean",
+      "source_sha256": "6fcf53dbce8505da466487e28d7f94133978b4c9425855c87c1659e286936fd8",
+      "preview_sha256": "3614333c9752bb0f4fe4b0b0320dd97707cb8adfe879da46be7deb08ec8ebeab"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/RightFrameHammockComponent.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/RightFrameHammockComponent.lean",
+      "source_sha256": "68195b6e112dfba6b845513a7d2044920c7d523ada118a07e68ef4916f3d146f",
+      "preview_sha256": "3225df1be67307abad9c44d1a5b7ee3be24d26558b8f876805448bdd46bc7373"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/RightFrameHammockComponentImage.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/RightFrameHammockComponentImage.lean",
+      "source_sha256": "5ea29bdbfdd7af1380f8a7eef628ff61abd7582c8660538d57ea48b9e510ec15",
+      "preview_sha256": "c2360bc539f2cf10da7a37ede5f1fbb3e4b6ac0e31be3b776bb09eb9eb8dafcb"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/RightFrameHammockFamily.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/RightFrameHammockFamily.lean",
+      "source_sha256": "ab5a2f607bfba7dc7f5c7bca0894fc30c329940a524b7c3833b06c5ef1cb0fd3",
+      "preview_sha256": "434ed6c880fdcbcae5f86afdbf4548e97916561d8d2a49db3e0fcc2558637b30"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/RightFrameHammockKanSpan.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/RightFrameHammockKanSpan.lean",
+      "source_sha256": "fedf655ecc8f4b3c64900710f35f372f0c5a3d3d9bf4182b3b64e10d6c10e428",
+      "preview_sha256": "778318a3ef391e581cd5d81a4d95d0a4ac07b36292473666b0388ad95d9591d6"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/RightFrameHammockUnitComparison.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/RightFrameHammockUnitComparison.lean",
+      "source_sha256": "f0629aefddc228b098e36480ea3f31ad1005f4ed5c039eb2716e93b559bcbf5b",
+      "preview_sha256": "05bbfc41afc1540846952bfb265dfd7bc34f6dedf563a891ad2efab8977ee850"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/RightFrameHammockUnitPoints.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/RightFrameHammockUnitPoints.lean",
+      "source_sha256": "b298983714c389388029cf733563f06cdc2cc4b08e62f692073f288be57b8a80",
+      "preview_sha256": "6557ee43a5b9aee9aec0862ed360aed074fd93e761ef5533b7185242cf3911ee"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/RightFrameHomBifunctor.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/RightFrameHomBifunctor.lean",
+      "source_sha256": "827b5b371b981ed8218bff65c7338ef6ab8a40feb3a2727de8753fedc04c5830",
+      "preview_sha256": "e7a6567310bceb0e32b22e94bb332745967f1472d1ff747dac3b6c44dd43b952"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/RightFrameHomInfinity.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/RightFrameHomInfinity.lean",
+      "source_sha256": "25fd23d12cb195c653e2b61fa242b7e89458f23faf5005e52b793a875df6f918",
+      "preview_sha256": "fa904604fa9923393cbb9bef5c1bfbf0ee74e5e949964cdff08558898387c1c0"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/RightFrameHomInfinityNormalization.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/RightFrameHomInfinityNormalization.lean",
+      "source_sha256": "035880aa556630fe323d9dcd20dbfc995342e3e64f37f4d1ff31951aa5306d9f",
+      "preview_sha256": "fac2d9fb1dbc97e61d7c4d4466549c838bca6cce0de398c2104783ac1381e4a2"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/RightFrameRoofComparison.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/RightFrameRoofComparison.lean",
+      "source_sha256": "85b671321b050131c82cf8e8a48c20b34ef5b0ad20b4a66d914c3740868f4bac",
+      "preview_sha256": "1208224560177df1b6b18efebd9cfe016263437a0a20fc4e58f9fcea645bdf62"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/RightFrameSpecifiedLocalization.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/RightFrameSpecifiedLocalization.lean",
+      "source_sha256": "ef9a547c44f1b730b45f821f85f496564aaacdd6754430825e223001e454a232",
+      "preview_sha256": "26452f6ab91a7324471afa25ff9dc03bc2daabaf36473634b0fc38dd8ca43fc3"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/RightFrameSpecifiedUnit.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/RightFrameSpecifiedUnit.lean",
+      "source_sha256": "a93514cfae4f354b1f615d1dec1067ff6c8d9f07df5ff925fab1246ac6786614",
+      "preview_sha256": "cbefcc43f12435cc8413a29f59d4cd4574bbc16b82fa5951148a3307b5aef2e8"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/RightFrameTerminalHomReduction.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/RightFrameTerminalHomReduction.lean",
+      "source_sha256": "77a5ca151b879f2722427e1dfed07beb66469572aece9216c11f2f284ede30a4",
+      "preview_sha256": "d79492113df0c9023e08c9498b8668dd95695534fb0c84c66e72f5705aa348dd"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/RightFrameTerminalRealization.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/RightFrameTerminalRealization.lean",
+      "source_sha256": "6962e967f3c0f953253c5a83c17b74f88b3bc904a153967dbc06d9953d43d891",
+      "preview_sha256": "22f531be4fe61abe091a4868f6920a5b4c96a785aafc8c3cdd3efd7fbb837e71"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/RightMixedBifunctor.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/RightMixedBifunctor.lean",
+      "source_sha256": "a522d7261bff2259a524e63ee8512d59a7e13f5cccdcc0600c9d75ef905376aa",
+      "preview_sha256": "1c7ef4128da8818d2c6d8f7e85e01968a542a45750ea38c713e0b483a42678a3"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/SimplexTerminalEquivalence.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/SimplexTerminalEquivalence.lean",
+      "source_sha256": "47d9669d0eb9fcf5649ac2500fb07f8df080a7eb5bba8b14d87bcef09b956d82",
+      "preview_sha256": "810ed820aa8c73f99a9358aedd12578f3a6f52e7c6315c91dd4246c5699a8fd7"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/SimplexTerminalFunctor.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/SimplexTerminalFunctor.lean",
+      "source_sha256": "af8da992c692059e8e14d39d31e9d8cf0e4666dc0a495d8b31df21e2395ae028",
+      "preview_sha256": "4e1123ce6479b05aed281f3d2082f0111ab086d526e8dc299035770f4986f280"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/SimplexTerminalStandard.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/SimplexTerminalStandard.lean",
+      "source_sha256": "065102362f0b0a8292aaa84eb6ef9e6456fbaaff43faa3573379ffec121a7f79",
+      "preview_sha256": "de1060d620b0331638716f89f05a9103ff113bf14388e9ad2ed3d51e8dd95c1e"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/SmallCommaContraction.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/SmallCommaContraction.lean",
+      "source_sha256": "8aa05dc693ccae4f51e713e4a68ecd749d96bbf0cc78f708332a90bd51abb9c5",
+      "preview_sha256": "e4c06ef845ce3c07c010ebebdaf8bdee5bf3946b07186de4796b3dd926a4fee8"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/SmallCommaGrothendieck.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/SmallCommaGrothendieck.lean",
+      "source_sha256": "11158141f6bf11d3ed6fac3c013cbec3e8111101df334359bea32d4898d965f0",
+      "preview_sha256": "881c4d7150e8ae539ecdcb2d6ad2593a844f318db3d82fd680223e736a7c2a9e"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/SmallCosimplicialHomElements.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/SmallCosimplicialHomElements.lean",
+      "source_sha256": "21b3b918196e8be4192ae8628ef474ac8d08f0c61e75719503c5d7c31ac00f9a",
+      "preview_sha256": "40bab712e1d31e1deda75d5016153d6c36a3d336f07693fed2a178f6a3a1fcd5"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/SmallNerveInvariance.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/SmallNerveInvariance.lean",
+      "source_sha256": "da73d3b24c830222b0a5173503a5f7221cd07c2a30af2b5ef2ca256f2425ab50",
+      "preview_sha256": "4f9dfdc8ba39dad0bfdca43001b338747bd46cce463eea99843743b8bb50634f"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/SourceFrameArrowElements.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/SourceFrameArrowElements.lean",
+      "source_sha256": "610385205fc191e861f30ca70c144836ae365dd6e7081a1d7c01d918e03fae1f",
+      "preview_sha256": "7d0943d498f9dcfb673f3b1cc25243ef01fca79c089643c19c6f5800f89a7af2"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/SourceRoofFamily.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/SourceRoofFamily.lean",
+      "source_sha256": "755ea2ca726ad07347cdff47a8faf53327679b4cb22c4bc44ac904783bbab01d",
+      "preview_sha256": "282a1a156ae5f23ae183f280cd2de995e1a183d0bbc799a70b6f52edc8121737"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/SourceRoofUnitNormalization.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/SourceRoofUnitNormalization.lean",
+      "source_sha256": "b8fad5aeb8cfa5331d894c4c76f7adc278c7c7cb30c1193de2c25bb7afa62d6f",
+      "preview_sha256": "291d9c5236b5eff245fcaa4d5f05fe999d649aeceb0f3102a3f8a82c6f04eb10"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/TerminalFiberBaseHomotopy.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/TerminalFiberBaseHomotopy.lean",
+      "source_sha256": "ea72169557e492d1c247c0dda63196affaa10041005c3837bdf94149a8038f08",
+      "preview_sha256": "e17d57f99121d17f87c1e65fd5c25dafd0f607f78cbc464b8a31c75ed6fe60fc"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/TerminalFiberEvaluationWeak.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/TerminalFiberEvaluationWeak.lean",
+      "source_sha256": "ce772014554e224f7a0bbf59d80b9b124c2f77dac748cf7bde8136b7fbe26e5a",
+      "preview_sha256": "b8888db54829ed7a65ca4b294e27daa21ec2d40cb6ec7eb2b3ad752e2582d87e"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/ThomasonInversion.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/ThomasonInversion.lean",
+      "source_sha256": "e78a8e5f344b99cb0c302113fa60658cc63e7f3f838cc031a2d041cb73887223",
+      "preview_sha256": "662bd17954326cc1b15a17ea12584e097ffe6378840b92ed15e504ba69272c0e"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/ThomasonNaturality.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/ThomasonNaturality.lean",
+      "source_sha256": "fa2024d259688953f1a4ce3cd3271cca79a0e362f3ef3ed3620aa935cbb2e8c3",
+      "preview_sha256": "c1b046da67ffec8b4929948bc036988ae1a6823b0b5e3be7e6a603ed5a39d39e"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/ThomasonNerveMap.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/ThomasonNerveMap.lean",
+      "source_sha256": "7a5825a166ca4050f76621b03fd2029c55572ab32045158260f81d8b914c2df3",
+      "preview_sha256": "9081eb473db5be700b743c19cf82ceb953590045b843d705039aa0c9002d9657"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/ThomasonSimplex.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/ThomasonSimplex.lean",
+      "source_sha256": "b48da47b246a488dc0684f8ca7d514e4393ceab815b3745dce5bdcb6f0943a75",
+      "preview_sha256": "079c151b64bf44a628315850ba304b334077df534e20baa33321bbd3f874ac2e"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/TotalElementsNativeClassification.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/TotalElementsNativeClassification.lean",
+      "source_sha256": "d897eb90f6ad9d49ca463124661c7df44068be6e82a0ee6ea31982b149cf628e",
+      "preview_sha256": "114ea1432c759d5249806e95ea2d842cdab8a0bb3b57cbd165d96bba8b516226"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/UnitComparisonTransport.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/UnitComparisonTransport.lean",
+      "source_sha256": "24cd5ed70d139328d7558f72fc22630fc038144de29ae07792d9b3fd78462b9c",
+      "preview_sha256": "8b9ec3605120c096ae08d12ef912ee9b0e4e48845abfec9cb43910fbd1a9053d"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/UnitComparisonWeakDetection.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/UnitComparisonWeakDetection.lean",
+      "source_sha256": "7f70e309296f6b3e52d3917e7713a3d3ab24077eea64e6ba4b4d5930ceee9717",
+      "preview_sha256": "d28ba6ce75a672b3efbaeb76a49de1774747a9e0ffc02e726b1f809c1d9df292"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/HomotopyWeight/BousfieldKanCellAttachment.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/BousfieldKanCellAttachment.lean",
+      "source_sha256": "48540262762d4495f6b226b22d4b97ad1ea01ab69643cf3a7e5bff8762425a24",
+      "preview_sha256": "4de93eec6d3346a51d87caa7166f98c046166b977ca7e81922fa42a86c600fd6"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/HomotopyWeight/BousfieldKanCellCoproduct.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/BousfieldKanCellCoproduct.lean",
+      "source_sha256": "bd4166001eab8b27d722816b1d49765eb7958df561fbe9ccfe0c7306d38ac64e",
+      "preview_sha256": "469f087a6b6dc03c64059f7997a89a3ef11e06d74d740c58f4f5feca79a417d0"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/HomotopyWeight/BousfieldKanCellEvaluation.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/BousfieldKanCellEvaluation.lean",
+      "source_sha256": "8a8d919d1c6423b2d6f3a2274232c8b52dc4458cc8903c4285e0594c8a922638",
+      "preview_sha256": "cac7ddc14edc9ff83e1e4c25ca4c16d33e8991e8f6dbbb38ba7accc6eff812db"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/HomotopyWeight/BousfieldKanCellLifting.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/BousfieldKanCellLifting.lean",
+      "source_sha256": "aeceac3b3a2ede6a38831efaee404cbb067e4c01210c10ee02b3f869788bf477",
+      "preview_sha256": "beb7e26ac3e1a2244a881b3da9e9c1a3282f01ad62e1037c6ada7fd2ce62e650"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/HomotopyWeight/BousfieldKanCellReindex.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/BousfieldKanCellReindex.lean",
+      "source_sha256": "46888dc1bd750ff375d826d9a9936eabc46e0bbefe52b013d0a7523d13760bf4",
+      "preview_sha256": "731f2603e09b0e30a3b8e4a54e1c1ad52669c61af84797ad495f99bb1ba60e5b"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/HomotopyWeight/BousfieldKanCellTensor.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/BousfieldKanCellTensor.lean",
+      "source_sha256": "d19cd56fb10aa514dcf18a90d3750913a5ff872eaead019558aaca1e4592ec5d",
+      "preview_sha256": "310561bf1dce6533393363eabe914c080154ec1617371b389e19862a8e17d4e7"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/HomotopyWeight/BousfieldKanChosenComparison.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/BousfieldKanChosenComparison.lean",
+      "source_sha256": "d2fd8a631066b7c6d49f3a748bc37d95ad14462f5259c024ef8245801eab8244",
+      "preview_sha256": "cb97c6fc290a350c5dd450f09021b0f07c850e5dddcfecc0598070f85ec9fbe9"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/HomotopyWeight/BousfieldKanCofibrant.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/BousfieldKanCofibrant.lean",
+      "source_sha256": "af4edf2f3d781168da9bcb4c48c937ae8ea6b064c11b23d1ae0e45359dd869ac",
+      "preview_sha256": "b67f9a17e63159be1108adbf57ffa039379ac96ebf7d3ad37021696f2faf1bfe"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/HomotopyWeight/BousfieldKanComparisonValues.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/BousfieldKanComparisonValues.lean",
+      "source_sha256": "879f7d74216fb373234c6cc3a4f4e2e332a93bd21c79ba4f01547f92356dea88",
+      "preview_sha256": "82f4637597c86f147fbdbab62b21257c4dc9d3dae1adda1ceff1276e34e893cd"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/HomotopyWeight/BousfieldKanExInfinityUnit.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/BousfieldKanExInfinityUnit.lean",
+      "source_sha256": "d202651198f80670337523d0ba8cc241d32f67f7c08e2830cb12dd2b27f876af",
+      "preview_sha256": "e1f118c32ab8429c015fefcc3a3bcb149a693e21c9bea02d87b2e16b07ed99b0"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/HomotopyWeight/BousfieldKanNativeFiberPoint.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/BousfieldKanNativeFiberPoint.lean",
+      "source_sha256": "b2260f05c31e3ac6e1f7a9794b16e80055a1df5478937f7eb9281bb87bf8f01c",
+      "preview_sha256": "a13b4a9928befe4a2ea5db59dd024512741223cb2cbcd2847f6313684ec19c24"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/HomotopyWeight/BousfieldKanSkeletonPushout.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/BousfieldKanSkeletonPushout.lean",
+      "source_sha256": "90a7b84119b899a2f13e81df4ff97197617cbedae43de6225d19f917d334629e",
+      "preview_sha256": "88bc3ebfbc399cd9d0851bfda18483fc91bcccea24d34040545a9bce3d875d90"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/HomotopyWeight/BousfieldKanUniverseCoefficientPoint.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/BousfieldKanUniverseCoefficientPoint.lean",
+      "source_sha256": "41a6991baf092490de0527c58cc92f6017a3e8b1300e0708ebca575678753686",
+      "preview_sha256": "a79cda8ab7a1b429aae4d40189e69ee407201eb19f66e29ae81697cbb601ced3"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/HomotopyWeight/BousfieldKanUniversePoints.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/BousfieldKanUniversePoints.lean",
+      "source_sha256": "f614fdfd2adf81af47f13e0122cdb49f661be140ceebb7497b8291d778b6dbd8",
+      "preview_sha256": "b57ae69522b871d25fbea2ff43a5f0dfd2a62789fb7230e367c8783096b5fbfb"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/HomotopyWeight/ConeInvariance.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/ConeInvariance.lean",
+      "source_sha256": "47393bf983370a9e9209dbf9c8e474d3cf5341295c472228a9e870d45f4e4f96",
+      "preview_sha256": "447b03dd67bfdaaafd4f1f28ad98307ee6b267271fe1a451ecac6624ba5c5b5a"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/HomotopyWeight/ConeLifting.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/ConeLifting.lean",
+      "source_sha256": "bf69073f012ba74e585e0ff32a9614f29b8957e1bc83c8347ebfbf0fb41d48b9",
+      "preview_sha256": "1a3d6f984008de344573393c447a11838d8025b2b31d175a0d5aabd3e7ab7c92"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/HomotopyWeight/ConePoints.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/ConePoints.lean",
+      "source_sha256": "f1c4e40e63722a8631e2891cf095f0e2db10f94e4689d93a3c68942974d3b317",
+      "preview_sha256": "63f2e0934ce758414d4525e7f12a9fa71bbebcab305cb855895941cddbf5f6ef"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/HomotopyWeight/ConeReindex.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/ConeReindex.lean",
+      "source_sha256": "4d503f678fbf5d8bd34f72c610add44193b6487387abf262fcb1ade9d86fcef0",
+      "preview_sha256": "8f1a2a0957a0a201e24078fe1fb699110d57f8e4308ba808e318a83e849b3522"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/HomotopyWeight/ConeReindexPoints.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/ConeReindexPoints.lean",
+      "source_sha256": "bb88f80f46b689899a83ee68e0016c1b3496dcaf0667912a508cbdb31f7c2720",
+      "preview_sha256": "1f5094d6892121e67c1b6df947c725799064c17e29f7aa1a70b0fa26a3097d4e"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/HomotopyWeight/ConstantComparison.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/ConstantComparison.lean",
+      "source_sha256": "009221e48476d52c4c1cdc1cf66ec1ed994288b806cb32141fb40d9a08025fba",
+      "preview_sha256": "bbea98ddc834b31f8da8b52b6df1dabd0018b577aaf4a738d14367542482e124"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/HomotopyWeight/ConstantNaturality.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/ConstantNaturality.lean",
+      "source_sha256": "b2fbd121bf74e0cef39d1bf42a14b56d4b89e9424e7d16e188bae2e08c3e2739",
+      "preview_sha256": "44566fd10a18a0239eedb626a67ff245265d6d128f3dbaa4a7788ea2b28efcfd"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/HomotopyWeight/DoubleOpposite.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/DoubleOpposite.lean",
+      "source_sha256": "e4bb996c02850c6e5519d292147ae83b98ba8eb3dfe827201962d30eb2675f89",
+      "preview_sha256": "3d47c33999cd38a19d2423aec3eba1c8b7026baca4d6969a80dcc7062cd3d0f4"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/HomotopyWeight/FrameConeClasses.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/FrameConeClasses.lean",
+      "source_sha256": "bdf6377fe6719025bb64e2796c00b8a5d72e763db71d45f469c9e049cbbc10ff",
+      "preview_sha256": "cae465cc032f08c8bc0b5c359414664e244fd9a54b367724cef7a025bc71d0a3"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/HomotopyWeight/FrameCones.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/FrameCones.lean",
+      "source_sha256": "8117311baf86ce23b408244b29896114e03b13190f693d3ec4995cfa48c44851",
+      "preview_sha256": "95de9048c1482c24831d1e2a8a7cae91289b6b339b8d9086cc5e2d5214ade561"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/HomotopyWeight/FrameLifting.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/FrameLifting.lean",
+      "source_sha256": "725398c7a146d6dd6fb82a64163b16e1a46240d15dbf7e24c3cbd69b59a367b6",
+      "preview_sha256": "4e194b7b24a72a94d3e8ef24e4bcb215452581a25a8f96d217fab488cabb186e"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/HomotopyWeight/Generators.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/Generators.lean",
+      "source_sha256": "d5394854b81c1bc286bb56e35d9832143b899af9ed6575f421a67512575ede99",
+      "preview_sha256": "8054a1d34273c994613ee5527ce66b2cb4cdc6a839bde1ead195a65830bfdad9"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/HomotopyWeight/KanConeClasses.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/KanConeClasses.lean",
+      "source_sha256": "c17b853211f6ed79e58c9e024eb8987937a52b8c5787cfcc54f1209d7ced9e55",
+      "preview_sha256": "c1785422192afb40ab1d53c68142a397b6a5d83fe0323e1905784a33eb44cacb"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/HomotopyWeight/KanConeComparison.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/KanConeComparison.lean",
+      "source_sha256": "ed9fa70af189beae0a72c1e30d79d93de7216461328d2a66df3f1dd07f0a6ed1",
+      "preview_sha256": "e81e61a0df8f757d02abdbc3468362219bca46d34f52c78bcf7f4b3570e87a27"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/HomotopyWeight/KanDiagramBrown.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/KanDiagramBrown.lean",
+      "source_sha256": "0bbb0e0640031649f9f7d1ea43be9abb8d3febd908789d35fb4ef3d2c91cb2ab",
+      "preview_sha256": "340dbaeacd81269eae57579b09cf39d9eee3e55a57e7884c8d7c594914a6ddf4"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/HomotopyWeight/KanDiagramReplacement.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/KanDiagramReplacement.lean",
+      "source_sha256": "235a9c04250e7e1d7d37b6f84506159ec8b892177d1205ae7e06545d112d68c6",
+      "preview_sha256": "eaa69d63d4e8314d6cf83ee906c508adeb94c45f90d70e61017c35be4129a1b1"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/HomotopyWeight/NativeWeightedPointMap.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/NativeWeightedPointMap.lean",
+      "source_sha256": "82d997d174ca52e5a1209416ee969d3d2759fac9cec32485029285f8d646b187",
+      "preview_sha256": "ab42cf1b9cec42a71c967d562f40765df4aa37623b79973621571bb2f7a68bb0"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/HomotopyWeight/NativeWeightedPointRestriction.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/NativeWeightedPointRestriction.lean",
+      "source_sha256": "9812a02aa50303111d3a38bd27513e47d070c9df92b0cde19e35118efefc04b6",
+      "preview_sha256": "85aadfa2563175277c56ce68509b15958d24e6c8f3344fd0bf3de06256ee13b9"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/HomotopyWeight/NativeWeightedSectionPoints.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/NativeWeightedSectionPoints.lean",
+      "source_sha256": "48a78f2ca41bf93a76cea1d70aa427a1db2ebcc3650d1fc0fcb2f7b68f02c638",
+      "preview_sha256": "63048a50567c77908ac06dec45f2af47a0ee8c33baae888db805bbf4fa8bd77e"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/HomotopyWeight/NativeWeightedSections.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/NativeWeightedSections.lean",
+      "source_sha256": "479acb974cdf3a3c287f1fd01f4ee8788b9a2c103021386ef6408b702c13d46c",
+      "preview_sha256": "6a24071409b904f2485c656b687c03cc2c9da32f5a2cd2692f33e391062676ba"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/HomotopyWeight/PointReplacement.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/PointReplacement.lean",
+      "source_sha256": "679b9776f87ae06fe87d6fb97317227dd7f20794de19af9628c25ceec5589092",
+      "preview_sha256": "4f5d952f3f466d630a61ec721c1b0695c2729fa4bc76cc09938c374456d27161"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/HomotopyWeight/PointwiseConePoints.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/PointwiseConePoints.lean",
+      "source_sha256": "304d7f27acb798019941b75b7bb6cd90a842360a3638d37cd7ae90a8ebada1cb",
+      "preview_sha256": "31fe07f3f4a9e4b500084893381a7a26e1a0a0f78511b781d89b0ad4ac0fe848"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/HomotopyWeight/PointwisePiZero.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/PointwisePiZero.lean",
+      "source_sha256": "b2c46f65d79a641f65c0b8a73733d88d37769a56a6964bb751ca371f01d8f4e7",
+      "preview_sha256": "bba6a5cf514b57a999f15ef0d061697d891e4390096e1713087e4221e8a258a9"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/HomotopyWeight/PointwiseRealization.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/PointwiseRealization.lean",
+      "source_sha256": "f9348f5b0e10543b13f88e77b7e36e7a282e20f5a3d45aa226033438f35bb181",
+      "preview_sha256": "925bd52173766aee6ba802ce1944e88d62195cfe01a9e73671612a9c0ac13591"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/HomotopyWeight/PointwiseTensorFrame.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/PointwiseTensorFrame.lean",
+      "source_sha256": "06085839c0459ac39f38b7b44fce92868074b19783984e6eae59f44ac688b4e4",
+      "preview_sha256": "5eb90d10cb7e6b1376fb9d8b48f25d3d1455ccd508838b4319c254ca428402dd"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/HomotopyWeight/PointwiseTensorSource.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/PointwiseTensorSource.lean",
+      "source_sha256": "565002dfa5899850a10fe9ba54fb9708826ae53fc65046f1ed83db2c92bae830",
+      "preview_sha256": "aa2b4ae5daeeddea975f454f39b953ab84dc4f355d7509f4b2357f72ef61dc27"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/HomotopyWeight/ProjectiveBoundaryContraction.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/ProjectiveBoundaryContraction.lean",
+      "source_sha256": "d39528ad94e1ad22bfaa67d4f1d16235671c6f63cc6e86a4a20f10a5b5e629cd",
+      "preview_sha256": "1dbc1c86420cdab890d1471d1d1b3b279c3eb2d0d1bb54276cce92f1935ef027"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/HomotopyWeight/ProjectiveHornCorner.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/ProjectiveHornCorner.lean",
+      "source_sha256": "5953f2801a8931425c9b18acd49cb5995d51ac1d194e95e85025fcfc6404a84e",
+      "preview_sha256": "9e2cb492050e98ffbb38cf3e6f0a8a389dce8baf8423c35360ba8a804f27d107"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/HomotopyWeight/ProjectiveHornFactorization.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/ProjectiveHornFactorization.lean",
+      "source_sha256": "ac2e46437d41c5d47676375384f7699833c4f4177c29b13a627a2daa42d876f4",
+      "preview_sha256": "abfcb8d83c21c2784efb7f4daa24a80e6ff64369a1c97ec981892299fea13eaa"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/HomotopyWeight/ProjectiveHornGenerators.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/ProjectiveHornGenerators.lean",
+      "source_sha256": "4a334ce62e57cddc7af453b23238e020ed93bbf167aaaaae456aeda0280ab453",
+      "preview_sha256": "2c45f370599f9804fae2b0f91a44d14bf67c65aeee6e9a76884212ce94d94e02"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/HomotopyWeight/ProjectiveHornValues.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/ProjectiveHornValues.lean",
+      "source_sha256": "a5ac320e34347f4cf908d9c10514d2078283d2569ed90332d6b41a60b093d4bb",
+      "preview_sha256": "262329d96251dd000dae5fd52e11de85c95732ca2d06372b7e568163bcca37b1"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/HomotopyWeight/ProjectiveHornWeakFactorization.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/ProjectiveHornWeakFactorization.lean",
+      "source_sha256": "0155d47eda31644b69ccd6a89bad77b64e57ac29534f56fb4eb9b170ebcbf17d",
+      "preview_sha256": "eb9abfce76cbe551e64fabe8477837c1d1b746d8be2a930974a8f8d853e46ec5"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/HomotopyWeight/ProjectiveWeightComparison.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/ProjectiveWeightComparison.lean",
+      "source_sha256": "3950af545b9e806f755871e5185acb2aff0565d5c135ab9901644528fd917307",
+      "preview_sha256": "1afe02b973a3dbb3b1c82b7a801c93817e60aff1c08e792aee95cc80ba137cba"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/HomotopyWeight/ProjectiveWeightRestriction.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/ProjectiveWeightRestriction.lean",
+      "source_sha256": "798b4510e3aaa138ff08a11d9633701c82fce08a472e27ec042eeb7e8af95c51",
+      "preview_sha256": "dea8d78d97ea9fcd357eb499cace6272f4fad43f22cab0da042c1e8cb2830446"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/HomotopyWeight/ProjectiveWeightTensorLifting.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/ProjectiveWeightTensorLifting.lean",
+      "source_sha256": "366fee9cb3aafee8fa49d342fec0408ba348d092c9cc156a7badd0667cbb74ea",
+      "preview_sha256": "bc517d93508a2c0d1bb89a76d1e4bf31a22181dd29cbe2a1cb6817a56ef8a6ba"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/HomotopyWeight/RealizationAugmentation.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/RealizationAugmentation.lean",
+      "source_sha256": "4a3180dd4dbd529734a6d8bb5bb86706355d6e7814339133b09a39853062c421",
+      "preview_sha256": "d9324d8db532cfee238b354e66de6e475e6db347ae0135716d7551f5bd18f749"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/HomotopyWeight/RealizationCoefficientMap.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/RealizationCoefficientMap.lean",
+      "source_sha256": "bd1bd875e0dea11632d9f836188bdb6551a63c708612c9edefa7e5406b81abfc",
+      "preview_sha256": "5b0f83e9559d16f03b45ee59a59a8789f434479561e9085b36c87ed6c9e941e5"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/HomotopyWeight/RealizationInvariance.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/RealizationInvariance.lean",
+      "source_sha256": "5c3c9df9619a54dd9ef8570e290d0e617ccbcc30be54b9805150006784e7b4e9",
+      "preview_sha256": "a08924b6b241f58ae53bdee543b751385d475c9293e9157c1f07b73bee449273"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/HomotopyWeight/Reindex.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/Reindex.lean",
+      "source_sha256": "1d4b61d31fc94a64e62487160abc1a379c1fdde134ff18cfe094cdf4a275c289",
+      "preview_sha256": "4df1eeecc2bcb9535d02730154878599e445c5888f020d9445e9acc7c6caeef7"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/HomotopyWeight/TensorConeUnitPoint.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/TensorConeUnitPoint.lean",
+      "source_sha256": "886707d4ed899e22c12cac2a19088a9c9488a1adff734d7df64b489c60fad1ba",
+      "preview_sha256": "bb232a3e10fb33d4ed157a0792d1e0d3deaa3743d0273e5a143e62656ae65cbe"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/HomotopyWeight/TensorPiZero.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/TensorPiZero.lean",
+      "source_sha256": "84696b1fba99865361d27914c65dc9408f836b1d2406be0448dbcf61747fffab",
+      "preview_sha256": "1d014619180deba8c2ffd1a36deda5c463e644bdd432b8bf2e1b9877d3bc0281"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/HomotopyWeight/TensorPiZeroNaturality.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/TensorPiZeroNaturality.lean",
+      "source_sha256": "733badfe67180e077b495d58080e6de2a3f96186fc37c31586327e56920b7f22",
+      "preview_sha256": "26a9da410f763dcd6497bb89b02df1f1013f84dfc51e20dbf801ec6401e643f9"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/HomotopyWeight/TensorPiZeroTarget.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/TensorPiZeroTarget.lean",
+      "source_sha256": "db17963cf1dc712e73641c20daf9af098f22eb3215e9aa60a7e52e5ab9f1e595",
+      "preview_sha256": "67f3bff63fe43b1b25785a486bc46c779066451e9e9082bacd8743cdb40e491a"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/HomotopyWeight/TensorRealization.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/TensorRealization.lean",
+      "source_sha256": "3198150a2c51ca51160750e8e5d72109d81e82b15611abeed6d210a7065398b1",
+      "preview_sha256": "ba9b58de4e02706c4718fc1a19c04c038e43a41b8f3ed499025d58f840b8ffea"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/HomotopyWeight/Values.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/Values.lean",
+      "source_sha256": "36b1d594d745476c812408ac640ec734741a0fcd58e8e009db31e19abbe9cf8e",
+      "preview_sha256": "e47f6aee08b19433268dbbdb38d15f8a7d2e5e8a28918f32c6d3f1c447a8e8d3"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/HomotopyWeight/WeightIntervalBoundary.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/WeightIntervalBoundary.lean",
+      "source_sha256": "23749490dbdead1333803b7ce29f6824cb2fdbb4ee00a133fbf653eb25b178ea",
+      "preview_sha256": "ea4a99d09a23c6fcb48ddb6904662a2aeabec81d442cc446c9a9d41fc0c6ef43"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/HomotopyWeight/WeightedSourceHomotopy.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/WeightedSourceHomotopy.lean",
+      "source_sha256": "6d6ad4074826a9545a90025e0c975a49c69eaada2e1b991bbcede155a2d30677",
+      "preview_sha256": "1b32213751e4f7507cc0f2455fe1ac33676bfb86c6d183af9506d3d4ae30e174"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ComparisonEnrichedFunctors.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ComparisonEnrichedFunctors.lean",
+      "source_sha256": "90c9a9d27e5e29dca2b0c2260dc6838bb4fe7e9d59646b560a5649789cbf50f0",
+      "preview_sha256": "a5c6665d5be6c7516b71ec2690a5ef595c79b19c5561f59e6c1329a469061106"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ComparisonEnrichment.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ComparisonEnrichment.lean",
+      "source_sha256": "def424da28e6737c25dbdc87c6dd06d9ca84cd0f56b98252f94cfb00c2c7df90",
+      "preview_sha256": "91a1c24d3e4f1d5d1dd33266d48bbdab74c1c2ddccc9b8cf47a0835a8127c3b1"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ComponentCategory.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ComponentCategory.lean",
+      "source_sha256": "72eff1bbc4cbd2c60b361383b562957e0611052c6a289be84554d9dd5d0d5f19",
+      "preview_sha256": "b2c6a32fc6a1d00dc75c433e2dfdde257147b66ba5347c75ea9cce8760db71af"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ComponentsEquivalence.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ComponentsEquivalence.lean",
+      "source_sha256": "2d5f6ff354ed5e1aef1cd049ecaa0b0b49bc86e3ac1594efe33f8551d5e8c90f",
+      "preview_sha256": "5f59fa76e665c76b592f436cdfd6a89e2b33babdf715e17d274e4d4322a975d5"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ComponentsLocalizationLift.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ComponentsLocalizationLift.lean",
+      "source_sha256": "b9cacf533858598c2af62b6d4ad826812668a6035c3a474127e12060f7816488",
+      "preview_sha256": "6a2181e313726d78a4ba4df6090998b2d8ed9450758813dc2151d293f03006ba"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/DKHammockCoefficientComparison.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/DKHammockCoefficientComparison.lean",
+      "source_sha256": "ac50090198d8919980d2a8482039f59667f2f993c27770672bd9705413d92d72",
+      "preview_sha256": "0b130ce1eb60f6997eb3512d09dceef056609209e71cef20b466ea80d23eea26"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/DKHammockComponentsValue.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/DKHammockComponentsValue.lean",
+      "source_sha256": "fca97a291ba02e2e6e66ea59a51ffe14641a45d3a018042409c626287b3ddaae",
+      "preview_sha256": "4b018e28db8e6c159df2cb44e5334837f3dedcbd0da55e556a0d3b716897ca7e"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/DKHammockCompositionComparison.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/DKHammockCompositionComparison.lean",
+      "source_sha256": "ebb0daab801b2ecbdeb84948f02abf7f886aed9e202cbb4f48991843d365ad78",
+      "preview_sha256": "30015102972333c0b10e95ae7554790399fdb6725575ea6044bf553b2f57f90c"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/DKHammockEndpointNaturality.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/DKHammockEndpointNaturality.lean",
+      "source_sha256": "20206276a9cf07e9288a5db112859a926cd345aa0f27117b45b4d6123772d99e",
+      "preview_sha256": "8d2de559284a5106703935d8d14fecae872464a72fd8014fd6798c9bca45b469"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/DKReducedHammockEndpointNaturality.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/DKReducedHammockEndpointNaturality.lean",
+      "source_sha256": "7e1ad3b69b3049b0453aa449d8e65f606c8a5fca4e0cc29c0d2bb97735f3000e",
+      "preview_sha256": "2795ac2056f2fb317c8a496969db10134c5cdf69dd647f06c9fd3ad8be6c9258"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/EnrichedMap.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/EnrichedMap.lean",
+      "source_sha256": "77f86cc592aeb3649c0dbe562fbe12cdc843183d95a26fdedb3afab1b8806f74",
+      "preview_sha256": "ee66b191df827fffd8d962c3a649c8286cdb673a893162e5c855934fa6e4a1b0"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/Enrichment.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/Enrichment.lean",
+      "source_sha256": "8085e3aafc46ae411c2822dd783f30a193e4bb8e007ece6a0ebab1f00a2e3655",
+      "preview_sha256": "b903429f1832c9e9ad36d7d926cd4d059fa85c43b05892a8aaf11ae17d2e6a75"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockArrowAugmentation.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeHammockArrowAugmentation.lean",
+      "source_sha256": "9aa896c3363c7d4097d28da469cbea083923642aac399c7c31a2619f4f95395a",
+      "preview_sha256": "732f339cdfa0d1dcf6c36030ee9894eb55ef97a91b5270133349c7aad01e45a7"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockArrowPoint.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeHammockArrowPoint.lean",
+      "source_sha256": "266da7216da32a77c72e3a3a5b03d9ece4aba6cd53490c8e7ce087edfece3a30",
+      "preview_sha256": "86dd81d1c3bc787ea8b6c99c7665e6e99a1630fe0675c83eea3af38e53173fdd"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockArrowZero.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeHammockArrowZero.lean",
+      "source_sha256": "1f0bc4fa5741ceb4c5fa7bb856481aeba7c9903ef470f118d8a366b8e84f82be",
+      "preview_sha256": "697a488d457bb428246d5cb90475ec565d4985df6a3691238bac011d042e69d7"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockAugmentation.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeHammockAugmentation.lean",
+      "source_sha256": "d560422b6aeaf14a823f87aa8e0eccf56969152c531894e4a6263755be7607ad",
+      "preview_sha256": "02c3a1661567a232326a6072792240569de9261ac6a667681b128f58a98d401d"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockAugmentationValue.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeHammockAugmentationValue.lean",
+      "source_sha256": "74ff87c1570af83f97c3d74085ac04dbbde3a503b5d298ae4c3e4fc8bdbb4003",
+      "preview_sha256": "5cb6a64ffba048d5368243338181515b7526c21294f9d7830a4b050edd5f15f3"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockComparison.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeHammockComparison.lean",
+      "source_sha256": "a8585cba18f98fb64b5f240e46039b4e650651f08ef9bb976dd510a375d470f3",
+      "preview_sha256": "cda993c11a400c1c5eb438778a7339e12e9456949207b7da5e6b783388e2bd11"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockComparisonWeak.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeHammockComparisonWeak.lean",
+      "source_sha256": "0e455d563e7f3e5afc326c0c9243b1f0f9b57d85e5b56413968901678d787c6f",
+      "preview_sha256": "d879101767ea02e8e0f17560ac6c767f1a6aa0d160ca0b5c209ae99eb59c67ed"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockComposition.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeHammockComposition.lean",
+      "source_sha256": "9ed760dcd4d02faa2732240f69317d675fa0069e8620c7b6aa76b19fe7f1ee64",
+      "preview_sha256": "9bd68ab2b8f15bbdcacd6e169e48ee824b9ddf5313b3cc73929904151b3a95eb"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockDiagonal.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeHammockDiagonal.lean",
+      "source_sha256": "16418f173cee6af962b1d5add3684626693a6da7745c5751a2a3c08b6793abc5",
+      "preview_sha256": "e83219da1794946c9daeac44e80b3b2be9acfc422e5125c2d63cd7dd213c0ae0"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockDiagonalComparisonWeak.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeHammockDiagonalComparisonWeak.lean",
+      "source_sha256": "66c7c01fab83265344ecd28d74c38ed49de5e63a3e03674cfa975a0495ed7f2e",
+      "preview_sha256": "98fc716abf9b0eaf661726098845e334c971ed41a8b839c2964916c367bd8d45"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockDiagonalReductionWeak.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeHammockDiagonalReductionWeak.lean",
+      "source_sha256": "a68a40b208d0b7c22a65e675af79c42603254c85bb05b48f61636f9417f60016",
+      "preview_sha256": "0083cd457294d1db1b1f7c1f183a7861ed4d6c46e8a21496775248e37db8eb95"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockDiagram.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeHammockDiagram.lean",
+      "source_sha256": "1495f8d8ea75c36ddacb6be6e29074c433149aca4d70bd1b1936bb2fd1dfcc9e",
+      "preview_sha256": "ada658e9767708c5f923ab05fa017b08625ae32f79d532da68c60d603c0bfee2"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockGeneratorWords.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeHammockGeneratorWords.lean",
+      "source_sha256": "884761bba94a95196890e22e43b47cf954861accb4291c082cf5db091e611127",
+      "preview_sha256": "917a6b2e168c231562132114af761ae0b9fdb465749e1ebbfd36312144627c13"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockLocalizedObjects.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeHammockLocalizedObjects.lean",
+      "source_sha256": "d826cbac2d44ffbdfd40abd096a146746ad3e75bc330bfbfc63d2851d708d186",
+      "preview_sha256": "5386d3f7053a3b5c690ddb443e9743ac46bd6a4791212e54a052d2a0f390ca87"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockMap.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeHammockMap.lean",
+      "source_sha256": "bf92aab664382600744b2cc1cf05adc8ff60b6e98bdaf7f200d1448ee182e0dc",
+      "preview_sha256": "e1793422691f86ec438289f78ecda22d2d1487cf53b2af93ae51309b6ed5431f"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockMapAugmentation.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeHammockMapAugmentation.lean",
+      "source_sha256": "aa624c631fe04dd26657e316ac5d2ad7b825f79d4027319cb08256f8151715f9",
+      "preview_sha256": "18ee216cb6c347e701062bd09dccf84de9e596eaa7ca8038b007193a92ecd7c4"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockMapComparison.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeHammockMapComparison.lean",
+      "source_sha256": "a6c399ca59b01492d209756a2a2d4908446651d24f36b4e44271eb5d789f0ab0",
+      "preview_sha256": "d1346eebd4b833286482eca8dc467c43b413b8aead706e8da96d76ed32e7bf1d"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockObjectMap.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeHammockObjectMap.lean",
+      "source_sha256": "83231c4c7037c9831654ad4f2f2115a67facf8c29cd9c23fb55db6f7dc0cd354",
+      "preview_sha256": "0d543ff9ff5e80e9b73e759b88b195935c58607d9ca5599f174a0da8119717ab"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockObjects.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeHammockObjects.lean",
+      "source_sha256": "6ba4c96a5564f82822159ccf1e82be277ec4b44910d24545b01e40d071388af5",
+      "preview_sha256": "90e1ab531ab3566d648d3ad090ceef8780bdd1850efbbfaf1e43e8af9fb8ae16"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockPostcompose.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeHammockPostcompose.lean",
+      "source_sha256": "fbabd76fd4ee6e6d4a5ebf8a11c88ddff61d2c0a1faf7ea6f61295588b870a60",
+      "preview_sha256": "4d3a67e41a788ccda75cfe74e7a1dd1d472823680f795837b0990c8adfd0f591"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockPrecompose.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeHammockPrecompose.lean",
+      "source_sha256": "80710b0bf27c049af4d0693a18c28d99eedf62ba854d8a829e99cd5d08b2b6e8",
+      "preview_sha256": "22a8493f4fa303d1dcfd9a63ebd690d4865a969e6fd38691b4702e79586cfcd9"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockUnit.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeHammockUnit.lean",
+      "source_sha256": "b0d4c39e2f3eb274a4ab3ac2fdb988015f5c64ebb4e3387e47b7b44d46638f10",
+      "preview_sha256": "e584d5e079f24988ea42c4192081badbffc5e5fa14b746d0685819e851e988e2"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/FreeResolution.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeResolution.lean",
+      "source_sha256": "2fd43fa0fd6200c9b24091c81a2ccad80941abbddaa6a1714424df4b6dc5da9f",
+      "preview_sha256": "7e2452a30fb7fd6e5520e12873198f6ca5deae099c5c4b3e97883c3eeefa7e15"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/FreeResolutionCanonicalMarkedHom.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeResolutionCanonicalMarkedHom.lean",
+      "source_sha256": "2fe60519d4ef6f22d4f9ef22404f2c25ff1a8c919aead78f2d1c26efd507eb90",
+      "preview_sha256": "99d9081a33ea65da0a4ec9e3669181a55ecb0ab68e53e6f447feb788aef0bb1b"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/FreeResolutionFunctoriality.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeResolutionFunctoriality.lean",
+      "source_sha256": "85f4c2fcd0f2123105230b237dab9fcee91a7f8ffad05cd451d7ba480a7f691b",
+      "preview_sha256": "cb073e1e7d078397ea7f7a5ca3afba95db857a4ff7661a6118e8af4bc831208e"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/FreeResolutionGeneratorBlocks.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeResolutionGeneratorBlocks.lean",
+      "source_sha256": "bb0c5776358008c7dba8ba7d8a9196573be723eac507ab8e1a42b885980f84b6",
+      "preview_sha256": "00591bb889b96e379fc6496dbc7b85b75dbd5b1ee22d2e17ed6f7481b709d1f8"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/FreeResolutionGeneratorHom.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeResolutionGeneratorHom.lean",
+      "source_sha256": "60bcc2d0559ede3e735d8fe40e5ff2c7bea94119f2864bb5508ad52cc5821659",
+      "preview_sha256": "80976d7972c8ac7e609369a112ca9159d3967f32786030c07f44cbea23c1abe1"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/FreeResolutionGeneratorHomOperators.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeResolutionGeneratorHomOperators.lean",
+      "source_sha256": "9e791e1e992025256518ac76bc18f5ae601fa0b86f9fd3cece7433affea481d3",
+      "preview_sha256": "53f66d46ae8382acaede5271aa299a1972eb458d77f5030ccb983a8d3d7122c4"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/FreeResolutionGeneratorPartition.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeResolutionGeneratorPartition.lean",
+      "source_sha256": "fbccaf37f47234756b9dfba1e8d7f6c66f3b2241dbc63eca15a788346c7f50c5",
+      "preview_sha256": "06f1088a076c23e75205ac95dbc7e997f6f8c9da1df053158c051199cf7f20a3"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/FreeResolutionHomContraction.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeResolutionHomContraction.lean",
+      "source_sha256": "5f8c4c90520eb8d377299cac31b9ca3c29c058bb32206008ba7fb56491f4d2b4",
+      "preview_sha256": "e0e27295578a6abaf13ea0c1302e05e33acfc8d6b8e8dd13816f8510dd5ff7a0"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/FreeResolutionHomExtra.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeResolutionHomExtra.lean",
+      "source_sha256": "7a588f58b2f9d4816de30dbff7981e7ca167d0695d56a76b99f65c5c7f7c26c5",
+      "preview_sha256": "4e45d91e3d5ff14114b48a533830c8ed7cbd20a45180c4f48b1aa340aaf3139a"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/FreeResolutionHomExtraNaturality.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeResolutionHomExtraNaturality.lean",
+      "source_sha256": "4e1ac95c25443ba9ac857ea799eaf30137889ecba128d6b8b7b5e1af361413ce",
+      "preview_sha256": "fda9e2eb665286caaa15447e96157112ecaae5665e199dcb07a96d1536897c00"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/FreeResolutionHomRepresentation.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeResolutionHomRepresentation.lean",
+      "source_sha256": "de9d312f28e91b19250f2460d1bb1dcc5cbacbd999f40dcd4d24e54f8c951fe2",
+      "preview_sha256": "1708e7b003337cf7e948562916cc7b713d68d01ca568decba1e9059303ce0ba3"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/FreeResolutionMarkedHom.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeResolutionMarkedHom.lean",
+      "source_sha256": "f270686f13d427c82f9de387455e3c0141d350736ce3902a71e620c3e65f39cc",
+      "preview_sha256": "1da07f5dede3e68589ce92b59de7fc44b1b9963cb877826ca3f328bb1c441e65"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/FreeResolutionMarkedHomContraction.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeResolutionMarkedHomContraction.lean",
+      "source_sha256": "c8eba03278fe0cb22927f4249b7d042459ee9151c44789feab538faf66ff7a66",
+      "preview_sha256": "0467f541f0bc0cd04191b83db1be71e5463950f4c9b85723e6b4511085e2171c"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/FreeResolutionNativeMarkedHom.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeResolutionNativeMarkedHom.lean",
+      "source_sha256": "417bf5bcd2c77eda181e6e38f07766b3729cbc01a6f4abba5271f8ccd4277ebf",
+      "preview_sha256": "f7879199c1d559aa3205f0b0caca2839db62b7087b228ccdebcf13294dd275c6"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/FreeResolutionNativeMarkedHomWeak.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeResolutionNativeMarkedHomWeak.lean",
+      "source_sha256": "ab2e6430ae223e85b81b962dfb9180510fb57cf65113f0852cbf0e5eb6319947",
+      "preview_sha256": "9efc6e3500922569a2a9aca5d19eb814633e8789724e374407325f619a10fb15"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/FreeResolutionUnderlyingHom.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeResolutionUnderlyingHom.lean",
+      "source_sha256": "fb87605b5e76c4099f57883f46897357477b1cc36a7f3ad42307a951b5e499df",
+      "preview_sha256": "d4062582dc1853a5351334497d72cfecf798b093a7c3b6fe954cf4c737122858"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/FreeWordDiagonalBackwardWeak.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeWordDiagonalBackwardWeak.lean",
+      "source_sha256": "55af9fd3df7a5f2d16ed832ac8a8578fcb1a81b235f38e7edd5c4cc175dd2a7a",
+      "preview_sha256": "f2f6e990d7aaa41bd9f6d43e7cce0552615b82594556e1c8a78ced271842090a"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/FreeWordDiagonalEmptyWeak.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeWordDiagonalEmptyWeak.lean",
+      "source_sha256": "f6bf8bf9d763757607a1ac17552f2806af28dedee90f96ae8539cf079e0ee97e",
+      "preview_sha256": "724fc9d561e827b571a2bc0a4c29c8868327861b772fbf28d8c2630eb7559a53"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/FreeWordDiagonalForwardWeak.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeWordDiagonalForwardWeak.lean",
+      "source_sha256": "511b33e78d472e75d0f176339fc9e4059f3f4dc8c97045d25edcf20eac47caad",
+      "preview_sha256": "670bdd5f75b4dcc67e49a1af2900274de58bed342ebd0cc4cee17c4bd62c38ac"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/FreeWordDiagonalWeak.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeWordDiagonalWeak.lean",
+      "source_sha256": "aa877e4b6e44215ca61d32cd2e4c53f0c64d8dd114ea62a6169177e2c2677379",
+      "preview_sha256": "573209258558a0124ca09e6c65360f77ecf89e19d4f7b6ed12eec42680a1e9d3"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/HammockInvertsEdges.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/HammockInvertsEdges.lean",
+      "source_sha256": "bba7af8256e2a09943450c44416c5ed85c59f4d273a279dd2530dc7f70af1b21",
+      "preview_sha256": "a008a44eef55bba14877dd5fe136e6ab490840987f4d3a8df36c2a64fdf8e464"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/HammockSourceFunctor.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/HammockSourceFunctor.lean",
+      "source_sha256": "bb25302d2e22b7c46c2b83156b40cf3832a87e29d9f364d47df6651f05460fe4",
+      "preview_sha256": "3be046f8707dcdfab6315a8757e233d74f609f533f57272993d9fdc6af608fc0"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/Hom.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/Hom.lean",
+      "source_sha256": "db94bcb6d46c7b78519c3e5a8d2ddd8b483ee969b4b1431b098fa5774f8fb86b",
+      "preview_sha256": "b1b817c5493918c18ac7aaaf618525055cba2e5a17d9a602d41fd2220e80608e"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/HomAugmentation.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/HomAugmentation.lean",
+      "source_sha256": "d66548fab9e010c98fcf025c7d25d939793023507c563dbcf48f5dffdcf71acc",
+      "preview_sha256": "cf1b13ef2c0f0ac19988dbdab177be90572dd25fe332378652fd3922f57e1791"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/HomMapLaws.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/HomMapLaws.lean",
+      "source_sha256": "63a705ce79b2334ca8abe0c9eac21e2fbe12d0fd927d477749c4a9270213325d",
+      "preview_sha256": "cde800dcd53b474fe090fd0906beecbb535ada0296521fd472b49f9b95925f85"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/KanComparisonEnrichedFunctors.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/KanComparisonEnrichedFunctors.lean",
+      "source_sha256": "8c663f4c9138eaae6b0adc77c4c8edee716974cd941556ef3b3ed1c024ff2c88",
+      "preview_sha256": "6428b361455f02fb80776a59fc6b44f9bd320bd48c4721a5fc8a6d6eadc0ce02"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/KanComparisonNerves.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/KanComparisonNerves.lean",
+      "source_sha256": "e4ded68ceeced08a1574e81936525961b02f8fd5238f66d8d8be9c4d0b4732ea",
+      "preview_sha256": "b389c888bc7643fe1c3adddd7158519d14bb79993d69c388fa28a855e66d9bcc"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/KanComparisonWeak.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/KanComparisonWeak.lean",
+      "source_sha256": "a0f1e26cdba70609d15b6ba69b65bb9d835a057b47ffdb57b0809d1a8b22afe3",
+      "preview_sha256": "68747f3135d65766da402770d596704f5af4215ead4766de934fb7e2bef92e6b"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/KanComponents.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/KanComponents.lean",
+      "source_sha256": "4ad77f62eeb22f9fa4018669d85908e508c36beba8bfbf020017665bf04998a4",
+      "preview_sha256": "41541504d2f91a54a5eace927db5eff7b72b4b3898f0488259a0e771b9b7dc91"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/KanEnrichedMap.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/KanEnrichedMap.lean",
+      "source_sha256": "9f59b3f18eebec3e887f69fb77d4c21ad3c4d7b7aa676d4bde19dbf59b2ecac4",
+      "preview_sha256": "d43f316eaa066855d701ad09a3fb5dba9bf7928271d87a7c63a04b85295dde3a"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/KanEnrichment.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/KanEnrichment.lean",
+      "source_sha256": "a13cac665f1b56acfe796fa98caa38f1e1326cca4f38fe53818e153c6996e340",
+      "preview_sha256": "4dbdc59abb1a146464dd2499e94ac670d61b5137011aeca474f3bf9c9bd4e8b9"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/KanHammockArrowNormalization.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/KanHammockArrowNormalization.lean",
+      "source_sha256": "0178b03ac98bad28e78f29de403afcdac383caf57dd0d2a344308168884f93c2",
+      "preview_sha256": "6036ebbf660005b9c232bd79ed425733fb41331dabbbef654402201bfe3c3e56"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/KanHammockHomCoherent.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/KanHammockHomCoherent.lean",
+      "source_sha256": "c75f81e1840701ffb0c05a0259fbee21ce452faaa37861d0ab3fe06b630bef5b",
+      "preview_sha256": "1736fdc9a81e6bbe037854c89b28facf5a809acba7eef3f3c410b3b594d3c154"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/KanHammockHomInfinity.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/KanHammockHomInfinity.lean",
+      "source_sha256": "a7a945cc7e861ec333d457e35d3f1a32a3cffe2a11c3f5e5620966e72f9d9d45",
+      "preview_sha256": "f7db7d1f7f5735422b8b491e1cb1d442612bfb14b5229e877895ab4e4dc84b31"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/KanHammockHomPinched.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/KanHammockHomPinched.lean",
+      "source_sha256": "0263b5f19543265bc65b0956594c2ea5a909ba2f52e71d3411be5a0e873d1ee8",
+      "preview_sha256": "19493d2f92712665cb830bb28c1df0d2530d97536de1fff0549aa89674f3d288"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/KanHammockHomPinchedValue.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/KanHammockHomPinchedValue.lean",
+      "source_sha256": "3c0fc042438138dfd2345aeb4693de7fa40566f5d78e0e87af6497b926e2e08b",
+      "preview_sha256": "4b1f8dccf91c30572bb9f64e2502178a77f42796a6dd8a8526166e72b96e8298"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/KanHammockPinchedSimplexValue.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/KanHammockPinchedSimplexValue.lean",
+      "source_sha256": "bd51247324d62271106be579302bab6deef3573084bdb1bdeb7fb8bca813b952",
+      "preview_sha256": "c3f9a39b063d72dbea958baa8dc4393fe853fc0a4dd810ec91aae8986d220289"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/KanHammockPrecompose.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/KanHammockPrecompose.lean",
+      "source_sha256": "0de0e7f75eed5225f26fd333d3e670aa4d6936c8236de8ac8f15446b447ba62b",
+      "preview_sha256": "3617b71f069ef2571c9ba5f13092587ad02e65d212cb8bf676a23ed5c10bd4e4"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/KanHammockSourceFunctor.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/KanHammockSourceFunctor.lean",
+      "source_sha256": "57cd243bda2c67b19473d5ea48127db33c3e56ef6822a7683a7d1809de6fcc27",
+      "preview_sha256": "c15a85634bdb0c9bc08c1d9bb7c19cd3c21bebce341a1478a15408345b677d4b"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/KanHammockWeakArrows.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/KanHammockWeakArrows.lean",
+      "source_sha256": "feaa8a0ebd49b0bef084e1c9e70c0a3f63d6586c131bbec3e1630abaf77fdbe5",
+      "preview_sha256": "706fd847ab8d45fd292298c809245dec63f95f955a5c4e5d5268a675e648abfe"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/KanHammockYonedaNormalization.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/KanHammockYonedaNormalization.lean",
+      "source_sha256": "4b94ae6604e7e2678cf889cee1058bfbb5489e3a64c1aef8a206d116b1c99437",
+      "preview_sha256": "a822b8f078c100d751d312e1814d715c4919d002a8be4f651a8d8c25272c0904"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/KanMapLaws.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/KanMapLaws.lean",
+      "source_sha256": "d07f628a3edf1745eff86cf2c84678521d372d8d7fba50b8d0b42a610004a9f0",
+      "preview_sha256": "a38aa17e3ee5880c23514355377923884432e013417fd8ccd5fc6685169f733f"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/LocalizationNervePrecomposition.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/LocalizationNervePrecomposition.lean",
+      "source_sha256": "777bfc026dfe1a5f3e6c357ae81534791a7e119efe36b21b504909a34dfc5f43",
+      "preview_sha256": "be2782cf087d04b02273a6aa38b2ff97009796f6feb7a81a9e4808ab202f6e9c"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/LocalizationNerveSource.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/LocalizationNerveSource.lean",
+      "source_sha256": "fe645c581a8d4173a1dcb728f2c397712b00b04632d994557cdda9e1f8de4c52",
+      "preview_sha256": "f08bf2af3c3b9e64b27ee8e87e6c1d3338c3b667cecd6a6c8645f91888167445"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/LocalizedFreeResolution.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/LocalizedFreeResolution.lean",
+      "source_sha256": "65bf5622d1c133cbb86812f4bb888e1a0dabb1a6624170c3b4d56b9e9e6bc510",
+      "preview_sha256": "d33e3684b8c6efcf979e26c91ecadf775617d550598c3785885c26c24114557f"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/LocalizedResolutionFunctoriality.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/LocalizedResolutionFunctoriality.lean",
+      "source_sha256": "ac810ce3a2b6ac7bbda7a7586acb7e5b61a407cad103f3be92876b7450fb4860",
+      "preview_sha256": "1f4f42c4479f4f0d7c180a79327bebdf297831ad00c74ff5ed043e949b2cd2da"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantFramePinchedWeak.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantFramePinchedWeak.lean",
+      "source_sha256": "f0d8d1208070110b0c6271579a5bfd9c2ec26a1974afb6543f0212bc58e6564f",
+      "preview_sha256": "f819ef3162e5677802c2b44366c10990aa47c3d1c4a5652e8b726ec097f72661"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantFrameRightKanCofinality.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantFrameRightKanCofinality.lean",
+      "source_sha256": "8a82f130f7010d9e39035165ece523a7ac6314fe654fa74803f3aa478de345c4",
+      "preview_sha256": "3147e48098c2f5f9634863b04f3835a85ea6e1469545279d4dd4fa9a99780710"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantFrameRoof.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantFrameRoof.lean",
+      "source_sha256": "904b13897ebfc553feaa24458f8afd0dbe9519d463c8828270318a1bfab82fd7",
+      "preview_sha256": "0a69dd80bba5b11cf9a6df1f16281d3df3cf7e001affc68f4d1c76aef824008d"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantFrameRoofWeak.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantFrameRoofWeak.lean",
+      "source_sha256": "02d29be2122c5ed3d5e39b342c6f9dee1f50f0dbf12d949887ecffb63b5ee854",
+      "preview_sha256": "1a258119a65971e2f9bee5304e56600164fea732599a0dbcd07599f4409946a3"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantLocalization.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantLocalization.lean",
+      "source_sha256": "c1edadacc3d57d16cf0b53d74873f52f01dbb6c383f6526d7532bfa51d96d5d4",
+      "preview_sha256": "87afb95c1ab239f965b53379087f07443ec972d89c02b8cf59db006dd06913d4"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantRightKanReduction.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantRightKanReduction.lean",
+      "source_sha256": "d5ce52ffe47f67c09524ca5ed02549b22a44cce1355462f9ece17b82ba778635",
+      "preview_sha256": "29fde8b7f5a1d33f274e443daaed97fd9de88c870372814e29d3e83b9b98f29d"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantRightKanShape.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantRightKanShape.lean",
+      "source_sha256": "642d07dddc430403c0ba4277f73b0b032b01b09631238901b872915ad36b33d5",
+      "preview_sha256": "ebd7340c9a15e27e74e80eb4d7fcc8c21e30e7eb4c60890446e87013f2d694a4"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceFrameGraph.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceFrameGraph.lean",
+      "source_sha256": "a5dffd7a344c164c7910d06e9f1f4d4c265d030b7257764b03972b8e8ce067d0",
+      "preview_sha256": "88eaed8c37fc34b0f737dbd446cfa9903fe113189dd487a270efc8429e753b71"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofAugmentationImage.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofAugmentationImage.lean",
+      "source_sha256": "df941cccfbcc4f20c6869d82ce61511601a6056ca20fc75e9b18681b5738f121",
+      "preview_sha256": "adcb725eb8b7ad4de549b64bbc761cb198857d200154aa6f0d78d88d3aac00f2"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofBaseEvaluation.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofBaseEvaluation.lean",
+      "source_sha256": "835e1eb5913747295c4d7c7e4c43498ab42ce679f87754a07e04369830eb8074",
+      "preview_sha256": "dd4d8cfd19d5add3935f96020b729c6ef052ce9f284be692274471351c799f49"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofCornerEvaluation.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofCornerEvaluation.lean",
+      "source_sha256": "cc17f6d223163bde60fd3249e98e278bcb6c9376d8bdae119f1c38357a8f936c",
+      "preview_sha256": "fc81335e803587e9ac74f7dd28a1614eb8c27ee64d10e6fb1d3165c8f2589bb1"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofCornerOver.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofCornerOver.lean",
+      "source_sha256": "65f8b3a6c8bebf20194bb984ad8d4180be14033bb6ac873be4e653a3efee9acc",
+      "preview_sha256": "e616a63dc083b1ee4684733704ae2e2fb73c7b067fb2862074a7664b34e8c8e9"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofDegreeModel.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofDegreeModel.lean",
+      "source_sha256": "f784f6b0935c29bc5fe26ee2d26c3d6761681710ea3867febbc8a5be2eac7e0a",
+      "preview_sha256": "4ef41a852cebf47a4d898795234995909a6741e8317babbe26835e687ca78a24"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofEvaluationHomotopy.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofEvaluationHomotopy.lean",
+      "source_sha256": "bc788be5b814f1859333b1c9c954be8e381fa751eebab9b3add87baf3f5dc2ab",
+      "preview_sha256": "b27320c95b5a124e458e2532797cfd63792e107c0b49f98e5edc9b0eb87629e4"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofGeometricLeftCell.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofGeometricLeftCell.lean",
+      "source_sha256": "ff516525cc14a5bbc5fea6fb5d6107861ed01b66b11bb4520a486650d1d04e75",
+      "preview_sha256": "5559a945b5b4eeab2577494ac31df3fa93319e195997497450eb2c010f481d17"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofGeometricRightCell.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofGeometricRightCell.lean",
+      "source_sha256": "550cff664bf720facd09420726edf37f98dacd13d96d502d37d588a987ad6613",
+      "preview_sha256": "c1d4fdc5c9cbeeacf841681c08efa2f0d260706c43f63203db9a7cbf6c6708b4"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofNativePinchedReference.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofNativePinchedReference.lean",
+      "source_sha256": "21e7a5fc88334860d577676052ab1344abba00fe377c5c2f6ab5136241ba6a0f",
+      "preview_sha256": "f7e5f7f0e7ace87e83d471a9d3cc28d4c67902fd1a8d9ab1ae74fdf4cac1e202"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofNativePrism.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofNativePrism.lean",
+      "source_sha256": "c6db1b95cf07cee732ad1fedf092154b760d081b96e3373e6c54cab0ac7c0ae8",
+      "preview_sha256": "20ab3d02b90f1dae3d1457230bc325b01dc3af8da5bc1d1589991880ba8bdc05"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofNativePrismOne.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofNativePrismOne.lean",
+      "source_sha256": "d4963437a3a6ae8dfdbe3a8712659f02ae746d4f0887fa4c2a26526a4e5a38da",
+      "preview_sha256": "58c03b0c7ca7c128616d87464acfa6af4de347b04f03ce77fb14c345e553c56f"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofNativePrismProjection.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofNativePrismProjection.lean",
+      "source_sha256": "55835801ef71ebec85234bf568cc1e18ab8071284e38f567863cb6c70017f0f1",
+      "preview_sha256": "4e79a0c8623d65aa49bf3d691d5e91cb2bf6c8fa0496fb4c1e63276fe017ed0b"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofNativePrismZero.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofNativePrismZero.lean",
+      "source_sha256": "4de9cee009a38be94405671449f322ecc08e4e9fbb3c25c77fe44219aa493cb5",
+      "preview_sha256": "d5a2abbca1bc30a2cc10ff9d07d3ef1bed82aecbceb71d644e6da2988e8b3fe0"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofNativeRoofComparison.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofNativeRoofComparison.lean",
+      "source_sha256": "7ecd0d21806b9664e1be2a08823adbf4ce1f49b0c82f7f8cc794821b8e554877",
+      "preview_sha256": "64a8d31cdfee4b3851a95f6d8ef0c230090ced056988bf2392c08055372b26ca"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofNativeSimplex.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofNativeSimplex.lean",
+      "source_sha256": "94a4313d64435936ce57465305c675579ef058ed282f13530872adf5e1f10db0",
+      "preview_sha256": "ca66f3632ebf710f4fede2b55397cb302e08e0344331611202e597b2c5299e88"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofNativeTriangle.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofNativeTriangle.lean",
+      "source_sha256": "582c899c1e64fc762bcf8f6a46d048aff2903f5a51147a94b07a69bfa5a13898",
+      "preview_sha256": "b24eef7ced1b5f73250b715b5e6b8a15976b8cc78995792aeb0afefe1b73c3a3"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofPrefixHomotopy.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofPrefixHomotopy.lean",
+      "source_sha256": "272ae2c27ca5917dfe48e389afc3e990ca8de8d957911d47abd8370ecbe8e51b",
+      "preview_sha256": "1bcb01b5ef9dbf43a4199acf79ae9878f017cfa86563d418990ce5755a8f2842"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofPrefixNaturality.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofPrefixNaturality.lean",
+      "source_sha256": "bbcc012ada22fdb987ca33b2c6ff62c69101109d413ee60b8dd193b39d5e79e2",
+      "preview_sha256": "de712d9b04e3abb0dc3c97fc8e5ad1ff53e8b15f7adaa791df0b2451eeb1fc7f"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofPrefixPath.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofPrefixPath.lean",
+      "source_sha256": "baba5d641032f6bc2ff1a68eb1c8f26890f9f7108ef1fcd702bbcbb60d6e4caf",
+      "preview_sha256": "2d471bc84bef451cfa3456e7fc882be5e56e57fbbd9920d869105ca3f2ae4e98"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofProductCone.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofProductCone.lean",
+      "source_sha256": "77f1b0c3052577afbaa81e4ca8121fa7114a957637462f2a7081903c70b1a792",
+      "preview_sha256": "0ec5b712924a52948ef5bd65007b994e2eb6a3aac977010d2c7310b14b25a44f"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofProductCornerProjection.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofProductCornerProjection.lean",
+      "source_sha256": "5427378f9871899b612d57f7bd151d0f3351db2aa54772219ac42d9d9fbc0e6d",
+      "preview_sha256": "6a4c872b91786f488227d7db66fd54e9ecee8b3a7660f10308c811a7f4577143"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofProductFunctorCell.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofProductFunctorCell.lean",
+      "source_sha256": "df76011298dfaaa81a0c6a732f4f45692c3f7d15be5ee0f23e96b44f8abd9e19",
+      "preview_sha256": "92a25153479fff90801d3aa34f35121c11459d33bbaeb0d2e0af6104abf93197"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofProductGeometricTriangle.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofProductGeometricTriangle.lean",
+      "source_sha256": "1442ddcd79f0fb50d6f31ca3b70d8a72e66e89f3195c824f9beb5ca78cde6261",
+      "preview_sha256": "80f1fe907086662a5b82762981d36240ec64a1817906719641b8ba4f2cd4dd37"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofProductIntervalCriterion.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofProductIntervalCriterion.lean",
+      "source_sha256": "f8352731458cf3f3167e40dc982b826f4a6a28039ac7dfe765cf8e4fe466f9c4",
+      "preview_sha256": "1d18978917a2b3e3e0a17ec6365284c9d2255236571a15c85571b7b2f128a632"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofProductReference.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofProductReference.lean",
+      "source_sha256": "fa1482e163a92a2466f2b8b2dcda92a2353f6f4d6acd5ca9516c44c42915b56c",
+      "preview_sha256": "bda5ee4375ffbf65c0e271c85b08a2e484a9ac22ff38c857930fa722fe8d6924"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofRightSlice.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofRightSlice.lean",
+      "source_sha256": "565d7932d1022c59c8b28f5aa012038e5aa2fba46d3bf4b80ada6a6570de9706",
+      "preview_sha256": "53ed5f287dbd0bd9e257224780bd86d233951a7ed56ad1663b56880b0e3ca93e"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofSliceCriterion.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofSliceCriterion.lean",
+      "source_sha256": "0decd41608f51588a26b39e33cd1123200a5f1db773b4cf1421f9c1b5bf9700d",
+      "preview_sha256": "241b3653e790954da5258fa36b93f9de9e64de4d5149d7ec35f10544a230b7dd"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofSliceFibration.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofSliceFibration.lean",
+      "source_sha256": "81343ddac653e281a73fd4a41d9a6d6ceb505ceaa1390b214a34ad289836a824",
+      "preview_sha256": "cfb7fd1918ab8130239e3921036a8739fb411fcfc992f36410d896178e04bc32"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofSlices.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofSlices.lean",
+      "source_sha256": "6f1f79b60368393be294d3b72a030ad38928dec52faa289c2f1538c283bf85b1",
+      "preview_sha256": "ca0ae58660eecfcbb37073a381ac24f277f8d1287b07f34f8226ef0e823a98fa"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSpecifiedLocalization.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSpecifiedLocalization.lean",
+      "source_sha256": "61ef57f23413151e872484d517e4c8078fac7c8bab855d11b691e8b0d3229266",
+      "preview_sha256": "d8060482a43ef71c1be20563ba2828bcb7d44de3161944518f52ce87df9eae85"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelCofibrantRightKanShape.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelCofibrantRightKanShape.lean",
+      "source_sha256": "215833dc908f14b18e21aaa88226b74f07a263914007ca6d08ab03f06247beeb",
+      "preview_sha256": "39962522519322bd078ff5f8b7819e0aa2f87cb63e5b86e5292d1dca1e6b8fda"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelHammockLocalization.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelHammockLocalization.lean",
+      "source_sha256": "487682f372c4c245489a10d3dc60b97df930f2313515855afda0e337b9a638f0",
+      "preview_sha256": "e6ba8ca527e672d5becc2b82e593d963007bac1df0cd5738772768dfbe00997f"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelHammockNerveEquivalence.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelHammockNerveEquivalence.lean",
+      "source_sha256": "afd0606a4b86067a978de29cd14567acfd670079349b86df9be16c6d6281467a",
+      "preview_sha256": "797d2c8ef128794adf9c648c821f19ea50d919c51dd5add9c631270183f81fe8"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelRightFrameComparison.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelRightFrameComparison.lean",
+      "source_sha256": "eeab4b9359dcabdcd8db5236c961791e9b09bfa8e5b1955808d31f08fe951702",
+      "preview_sha256": "c41170de598a038ccf983fd38715f1b40db05f9b239e0e5232f3088409484497"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelRightFrameSpecifiedInput.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelRightFrameSpecifiedInput.lean",
+      "source_sha256": "cce47cb428d7389833852458b3514c908d4127369e51ef0a82913823710edfd2",
+      "preview_sha256": "3620e2b1f41d32558cdbc6bc5ef9b633231d55e24e5db73583d7723e267a290a"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/Nerve.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/Nerve.lean",
+      "source_sha256": "281f4c63464bcd1849477ddb7b6bbe634541f5c128bdff529fd789e81a0787ae",
+      "preview_sha256": "6ce1868713046ed014b27aec469efd016bb32d2710be889a25f1cd1c5860a611"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/NerveFunctor.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/NerveFunctor.lean",
+      "source_sha256": "e605ac0475109e50b6a2bfa0515cb75c77f88a0792a2066efc6e06e6202c8613",
+      "preview_sha256": "ba37f0f5bc66c4fb18dd2524f3fb0b8de0b3d41fd9ddaafbaebcc1954057345a"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/NerveMap.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/NerveMap.lean",
+      "source_sha256": "e15d64480b05c2745bf811d92b59ff10a543e83113d8ed3ca509c419b1779e75",
+      "preview_sha256": "ca36088a2fabc0705fe3e11d1c845cfe3cabc9fa26fac04b431ba86e25b20e23"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/NerveWeakVertexIso.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/NerveWeakVertexIso.lean",
+      "source_sha256": "e24c548baf5f26eca00d677d5ad346638e3affafdaf1f75248a773bc8d31940a",
+      "preview_sha256": "1f93afc29b43dcb5f47022f2e00431ded76795c7d5f5625c1917e1a910a53a47"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/RelativeHammockEnriched.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/RelativeHammockEnriched.lean",
+      "source_sha256": "33445d7ff4636c23bc181102ee13edd77745339633e7e08206e243bbf0c29b20",
+      "preview_sha256": "764163d7a641437da34612853c5f3a027a1568be51df67cbf99924f136749ab4"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/RelativeHammockNerveEquivalence.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/RelativeHammockNerveEquivalence.lean",
+      "source_sha256": "10b7212179e872ab5400566cc4bba232027012d5c09352fd5645ca1ceaeff0eb",
+      "preview_sha256": "a3503eaa3a5b31edabc644195b1f1eee81989a7dcf58664f1c669ab24e4fb821"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/RelativeHammockSourceComparison.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/RelativeHammockSourceComparison.lean",
+      "source_sha256": "d756bc56cfccdf5a87c983c0e41fcd8e16989a582521b271cd994eedc7ea3a2f",
+      "preview_sha256": "2b75fdfa4712e1bc47a3fb17299eb68700606f17c6d0b9917c8d2453a1f35edd"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ResolutionFaces.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ResolutionFaces.lean",
+      "source_sha256": "0beb74acbb1a0876d8c8463c9404259b7755e2bf93c6904ef886051feb8ae0c8",
+      "preview_sha256": "c99a75d141c2e181ce410aca6a1a3340cee44de2dc2761d0850a1b02f490a226"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ResolutionGenerators.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ResolutionGenerators.lean",
+      "source_sha256": "782efb6ded888ca0fcdce1f5a7b76f7b5c0eb5418f7046e97077e87e80fcc3be",
+      "preview_sha256": "6e30b88edbc131e472f2636698e04a355a8d2078a2e21d3d93abe20cf18cc9ea"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ResolutionObjects.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ResolutionObjects.lean",
+      "source_sha256": "e39327ece203767e950c3ff948294b4d6ec8f44b692bccbfdfc2405d79038d94",
+      "preview_sha256": "3088ff9a8271e9341ceef299ce0a8fa46850aa13330e535962f58e0a9ee417f4"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ResolutionRepresentatives.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ResolutionRepresentatives.lean",
+      "source_sha256": "b357cb4dbc8e826df6f8ac1c3133acc9499389d9af7b076f720d9904e6c93536",
+      "preview_sha256": "acfc38a3a9a051f7263ed823db214c8e496012c2be24d60697209b1449b7bd75"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ResolutionWordEdge.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ResolutionWordEdge.lean",
+      "source_sha256": "ebfff0d68ec29745ac373f7b15ca024da01f55c41125bdf0f424268add29aad1",
+      "preview_sha256": "0f61d62476f3ae3c18090c663d3bb28da0633be02773d418836b9cd874f8b400"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/RoofPrefixColumnRoof.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/RoofPrefixColumnRoof.lean",
+      "source_sha256": "ac46fa74c8a9346cd424a4a0649bc29539ef41a6b5177ce6a22dba1bfb6541ed",
+      "preview_sha256": "ff0265fa9a96d9ee51bd09db12e3ae3606d3b7c118ce8f20cd18622567c58dd4"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/RoofPrefixFamilyTriangle.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/RoofPrefixFamilyTriangle.lean",
+      "source_sha256": "b6cdac8e7d2c607cf6821fe6391c0bff80cdbc8468e7bdb82d399c3bfcfdd9f2",
+      "preview_sha256": "be841b1bd5e1ba8b8050c8cfdc1a35887bf2b4c42f9ed14304c6a82407826b8e"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/RoofPrefixPath.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/RoofPrefixPath.lean",
+      "source_sha256": "fe9f85ccd9d1698e7d2f2c51eb7ad574af94ad09bc108244dd65c9e672ffbc4c",
+      "preview_sha256": "f3884e68a6ecbf42fde366449dd68b30b0b6cebdaab1d6eb755777a35b47e614"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/RoofPrefixPathComposition.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/RoofPrefixPathComposition.lean",
+      "source_sha256": "7517d8fb907808caff18cfc4eaf5576353508f83c984818306fb5d6bd4614ef3",
+      "preview_sha256": "ae47935c8ae0d14aadd5a00b0a8b039d108a24e259c3dd061665319903d1f08f"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/RoofPrefixPrismCompatibility.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/RoofPrefixPrismCompatibility.lean",
+      "source_sha256": "8c8faa580aee2565171bedaee8886668b207ab96339315f68cbe52538d5aa63f",
+      "preview_sha256": "e2619b2d41dd7c03d0ab41e1373718189cab4e8a90929aa9cd6f4659a97b3513"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/RoofPrefixPrismFront.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/RoofPrefixPrismFront.lean",
+      "source_sha256": "923cd188a31132d5dfe18ea42108ad551395481c593fbc231b22feb9fbf7e706",
+      "preview_sha256": "3b5a7ee54ed66293f488c6e5441bd957cd340bff185aa805d0b8766cb5156b8a"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/RoofPrefixPrismLast.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/RoofPrefixPrismLast.lean",
+      "source_sha256": "4259b154856acb2edaddfc215f78982a2655c890289d39105cd082df4dc14a38",
+      "preview_sha256": "a740ca314427ded4a03ac73a920b4663329cd03080ed146b7d172458c5e4b864"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/RoofPrefixPrismNaturality.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/RoofPrefixPrismNaturality.lean",
+      "source_sha256": "839193a23da1bb06fe7555ff8eb43ee97a6df1252f2458c23f6d5cd7f2c8b247",
+      "preview_sha256": "d0a781134bfaeaaa4e91d6380668f30e9d4df71a587ce7135cb8be93540a2279"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/RoofPrefixPrismOne.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/RoofPrefixPrismOne.lean",
+      "source_sha256": "cb203e19512c5def86ae74cee1bd4c111e8cd6b361ca27e4a448fb32a91da94a",
+      "preview_sha256": "f98e2fac81bf301079b17733a0e63b4e926b48e0188a11b8308de83491595376"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/RoofPrefixPrismProjection.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/RoofPrefixPrismProjection.lean",
+      "source_sha256": "29c494ecd62a6baf2f0a6f986eaa83c9e5dd85872ccf6b7dbc706f5c0947d76c",
+      "preview_sha256": "71e297c721c4ae035642443e2a694472a3e7ec386c87fb8735da66f4ae577259"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/RoofPrefixPrismReindex.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/RoofPrefixPrismReindex.lean",
+      "source_sha256": "5a5033fe2de1e7b4211cc9191c189fdeb04ed8149d6edfae105a86bf01b648f3",
+      "preview_sha256": "0f3754e222a12501dfb014c3f19634ce67d809a85957f215d027b0bf8a49427e"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/RoofPrefixPrismSimplex.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/RoofPrefixPrismSimplex.lean",
+      "source_sha256": "1f08094a617d83d2b9dbe8afe78184c97b078342ece6b383f56280a2a26883ea",
+      "preview_sha256": "0f9f4d434526ef7e47f91eb6b097ea125c3f951902eae588990ed49e478dec57"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/RoofPrefixPrismZero.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/RoofPrefixPrismZero.lean",
+      "source_sha256": "f1633a79d3dbf899137be4aa133cb46ba72f32c6ced6cd5b0b0c8847eaa86d8b",
+      "preview_sha256": "d0ae879bc0d4c1110ce9d84580d2ded02d652a881221fb29a3a3581652342006"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/RoofPrefixPrismZeroSlice.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/RoofPrefixPrismZeroSlice.lean",
+      "source_sha256": "cd59b84f86087897012b10b7a86c5d30b35916c062d052a7235e0d3ee394a3fd",
+      "preview_sha256": "17eddc9b8adeb8f35d79d73dd71be724feac0b83826d7f8bcd25e369d8934b9d"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/SourceHom.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/SourceHom.lean",
+      "source_sha256": "c9ae54cdce706be0ecf830403223887f44f3a76f463074910c191711481c2ba0",
+      "preview_sha256": "c1563e584f1fc0b33ee951abaa544bb37362c42b292b38512b0b08918b736444"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/WeakNerveInverts.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/WeakNerveInverts.lean",
+      "source_sha256": "ddccec82cb0b0ba857863b2771cb63ac4110d08c3dc5e370ea9a8b4bbc401f4e",
+      "preview_sha256": "428c7b33297c7a3af05a2b3cee5e70816330b8ef3683ef063dae1043de19e05c"
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ZeroLevelComponents.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ZeroLevelComponents.lean",
+      "source_sha256": "c0982d3b0c85382c8d6d604ac5e0e6f53ac43fad9b6b302a33b7b51ff20b485d",
+      "preview_sha256": "467abf926e34ff46c6eb72f2caf278fcf47d9e523fc8af663fb79c78c79a25cf"
+    }
+  ],
+  "meaning": "All moving original source captures and spelling previews ready; not applied or built after migration"
+}
