@@ -1770,3 +1770,4 @@ public import SerrePositivity.AlgebraicGeometry.FrobeniusArrowCocone
 public import SerrePositivity.AlgebraicGeometry.FrobeniusDirectLimitCechExact
 public import SerrePositivity.AlgebraicGeometry.FrobeniusArrowNaturality
 public import SerrePositivity.AlgebraicGeometry.FrobeniusAugmentedConerveComparison
+public import SerrePositivity.AlgebraicGeometry.SchemePerfectCechTupleDouble

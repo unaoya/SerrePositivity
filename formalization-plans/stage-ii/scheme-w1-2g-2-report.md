@@ -1547,3 +1547,19 @@ Frobenius の既存の矢印の図式の端点の照合（着手前、既存の�
 今回1モジュール43行＋入口1行。新規122モジュール本体8,168行。既存追加25行を含む外枠計数は本体8,193行・登録122行込み8,315行。新規小監査累計826宣言、既存15宣言は別計上。これは実際の矢印の増大 conerve への比較であり、各テンソル環の Frobenius 系との照合やスキームの二重 Čech の完成まで主張しない。G4の二重 Čech・Noether帰納、G5は残る。見込み約10,000〜13,500行・外枠16,000行は不変。
 
 一覧：済み1／全体3（うち追加0）。
+
+
+同じ conerve の有限段の Frobenius の照合（着手前、既存の有限余積の普遍性と係数の自然性の内数、60〜140行）：`frobeniusConerve_primeCast f p hA n` は同じ widePushout の head の環準同型から、各 conerve の環で p が零であることを供給する。`frobeniusConerve_step f p hp hA hB n` は元の frobeniusArrowStep が誘導する mapCechConerve の n 次が、その同じ環の frobeniusDirectSystemMap 0 1 と一致すること。実際の head と全ての脚で WidePushout.hom_ext により照合する。有限テンソル環や同型を新たに選ばず、零環も除外しない。これを各段の図式の比較に渡すのは後続の自然性の法則として別に扱う。
+
+
+## G4：同じ実際の増大係数図式を B1 の二重複体へ渡す
+
+`SchemePerfectCechTupleDouble`（79行）：`schemePerfectCechTupleDouble` は同じ実際の増大係数図式へ B1 の既存の augmentedCochain を適用した複体の複体。`…_zero` は同じ基底の single、`…_succ` は同じ nerve のタプル係数複体、`…_horizontal` は既存の増大・交代余面微分、`…_comm` は同じ複体の射の comm による二方向の可換性。`schemePerfectCechTupleDoublePullback` は既存の同じ増大係数の引き戻しを同じ関手で写した射。`…Pullback_zero`・`…Pullback_succ` は元の係数環の実際の Frobenius の写像と同じタプル係数の写像の保持。新しい水平複体や二重複体の判定法は作らず、完全性も仮定していない。
+
+単独検証、本体とのソース完全一致、対象と入口のビルド5,208ジョブ成功、小監査9宣言（実際の所有元による生成・非公開宣言込み）・標準三公理のみ、終了状態0。ログ `2g-perfect-cech-tuple-double-check-2.log`・`2g-perfect-cech-tuple-double-native.log`・`2g-perfect-cech-tuple-double-audit.log`。既定の透明性・資源制限。行長の style 警告あり。追加公理・sorry・既存の型変更・200行超の宣言なし。共有鍵 --class impl --wait 3600、待ちは一つ、対象ビルドと小監査は別枠。root・下流全ビルド・全体監査なし。
+
+今回1モジュール79行＋入口1行。基準56ea849a3から独立に再計数し、新規123モジュール本体8,247行。既存追加25行を含む外枠計数は本体8,272行。登録123行込み8,395行に加え、入口の追加の空行21行も全て含める保守的な物理行数は **8,416行**。従来の「登録込み」は各モジュール1行のimportの計数だったため、入口の空行をこの段で別に明示し、今後は外枠に含める。入口の二重importは0。新規小監査累計835宣言、既存15宣言は別計上。
+
+各 conerve の有限余積の Frobenius の照合は未検証の下書きにあり、この束には含めない。G4の実際のアフィン比較・二重 Čech の完全性の判定・Noether帰納、G5は残る。全体の見込み約10,000〜13,500行・外枠16,000行は不変。
+
+一覧：済み1／全体3（うち追加0）。
