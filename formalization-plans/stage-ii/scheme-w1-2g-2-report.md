@@ -1533,3 +1533,17 @@ Frobenius の既存の矢印の図式の端点の照合（着手前、既存の�
 今回1モジュール103行＋入口1行。新規121モジュール本体8,125行。既存追加25行を含む外枠計数は本体8,150行・登録121行込み8,271行。新規小監査累計818宣言、既存15宣言は別計上。増大 conerve への同じ自然性の移送は下書きの検証中で、この束には含めない。G4の二重 Čech・Noether帰納、G5は残る。見込み約10,000〜13,500行・外枠16,000行は不変。
 
 一覧：済み1／全体3（うち追加0）。
+
+
+同じ増大係数図式の二重複体への代入（着手前、既存の augmentedCochain 関手と係数移送の法則の内数、65〜130行）：`schemePerfectCechTupleDouble` は検証済みの schemePerfectCechTupleAugmented に B1 の既存の augmentedCochain をそのまま適用した複体の複体。`…_zero`・`…_succ` は同じ基底の single と同じタプル複体の各項、`…_horizontal` は同じ増大・交代余面微分、`…_comm` は元の複体の射の comm による二方向の可換性。`schemePerfectCechTupleDoublePullback` は検証済みの同じ AugmentedPullback を同じ関手で写し、`…_zero`・`…_succ` は既存の同じ基底環の写像と各次数の実際の係数写像との一致。新しい水平複体や二重複体の判定法は作らず、完全性も仮定しない。
+
+
+## G4：同じ増大 conerve の自然な標準比較
+
+`FrobeniusAugmentedConerveComparison`（43行）：`frobeniusAugmentedConerveColimitIso` は実際の frobeniusDirectLimitMap の増大 conerve と、元の矢印の反復図式の余極限の増大 conerve の標準同型。`frobeniusAugmentedConerveColimitIso_naturality` は元の四角形 F の実際の増大 conerve の写像と、同じ colim.map の増大 conerve の写像が標準同型と可換なこと。検証済みの矢印の同型・自然性を既存の同じ関手で写し、増大項と全ての次数の自然性を同時に保持する。各係数の同型を独立に選ぶ方法や、被覆ごとの H の同型だけで代用しない。
+
+単独検証、本体とのソース完全一致、対象と入口のビルド5,207ジョブ成功、小監査8宣言（実際の所有元による生成・非公開宣言込み）・標準三公理のみ、終了状態0。ログ `2g-frobenius-augmented-conerve-comparison-check-1.log`・`2g-frobenius-augmented-conerve-comparison-native.log`・`2g-frobenius-augmented-conerve-comparison-audit.log`。既定の透明性・資源制限。letIの style 警告あり。追加公理・sorry・既存の型変更・200行超の宣言なし。共有鍵 --class impl --wait 3600、待ちは一つ、対象ビルドと小監査は別枠。root・下流全ビルド・全体監査なし。
+
+今回1モジュール43行＋入口1行。新規122モジュール本体8,168行。既存追加25行を含む外枠計数は本体8,193行・登録122行込み8,315行。新規小監査累計826宣言、既存15宣言は別計上。これは実際の矢印の増大 conerve への比較であり、各テンソル環の Frobenius 系との照合やスキームの二重 Čech の完成まで主張しない。G4の二重 Čech・Noether帰納、G5は残る。見込み約10,000〜13,500行・外枠16,000行は不変。
+
+一覧：済み1／全体3（うち追加0）。
