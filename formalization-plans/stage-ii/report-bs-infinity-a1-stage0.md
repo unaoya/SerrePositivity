@@ -5051,3 +5051,37 @@ limitVertexIsoOfOverEquivalence_hom_comp a ha hw O c d e hc hd he :
 元の比較を新しい比較へ置き換えていない。次は元の圏に戻す値比較への接続。
 S8の固定された全族比較およびS1の一般Coverage判定は依然未完。
 一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+
+### 11-16：元の圏へ戻す同じ値比較の合成則
+
+追加2本・130行・7所有宣言の対象ビルドと小監査が完了（終了コード0、標準三公理のみ、SHA一致）。
+証拠：`/tmp/is-w1/s8-original-left-composition-2/target-audit-result.json`。
+外枠用累計は **19,183行・301本**。
+
+* `WeightedLeftSectionsCoefficientTransport`（61行）：元の同じ図式に名前を付け、
+  図式の等式に沿って元の値比較と合成則を移す。
+* `WeightedSectionsOriginalLeftLimitComposition`（69行）：同じ底同型への制限で標準極限比較を照合し、
+  元の値比較の合成則を示す。
+
+```lean
+weightedLeftSectionsValueIsoOfDiagramEq O hE F hD d hd :
+  VertexIso ((weightedSections O hE).app _ (SSet.opObjEquiv.symm (functorVertex F))) d.vertex
+weightedLeftSectionsValueIsoOfDiagramEq_hom_comp O hE F hD d e hd he :
+  (weightedLeftSectionsValueIsoOfDiagramEq O hE F hD d hd).hom ≫
+    (limitVertexIso d e hd he).hom =
+      (weightedLeftSectionsValueIsoOfDiagramEq O hE F hD e he).hom
+weightedSections_originalLeftLimitIso_hom_comp O hE F d e hd he :
+  (weightedSections_originalLeftLimitIso O hE F d hd).hom ≫
+    (limitVertexIso d e hd he).hom =
+      (weightedSections_originalLeftLimitIso O hE F e he).hom
+```
+
+係数等式の補題のD・hDは元の同じleft図式を移す型、最後のd・eは元の圏上の同じ図式の錐。
+初回候補は元の本文のletを残したままrwしたため不一致だった。
+元の同じ頂点移送をchangeで明示して、既存の移送の法則を適用すると通った。
+計算上限は変更していない。いずれも既存構成の法則で200行未満、追加IDなし。
+次の3本の下書き（パラメータの頂点移送、元の切断比較の合成則、固定離散値比較の可換三角形）は
+未検証なので今回のコミットには含めない。固定した射の自然性とS1は依然未完。
+mainは取り込まず、S7・R2・R3も再開していない。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
