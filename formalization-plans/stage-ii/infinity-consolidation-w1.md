@@ -17,7 +17,7 @@
 | IC-1 | EInfinity の残り（OE-W1 の段 2：一般 1,247 本、BE 固有 1,047 本 → Models、E∞ の一般論 327 本） | OE-W1 の `stage2-classification.csv` |
 | IC-2 | KST・HomotopicalAlgebra・Spectra の一般の ∞ 圏論 1,725 本 | `research/infinity-outside-map/files.csv`（738be1c06） |
 | IC-3 | 同じく模型 3,776 本 → `InfinityCategories/Models/` | 同上 |
-| IC-4 | 同じく一般のホモトピー論・モデル圏 2,415 本 → `HomotopicalAlgebra/` の主題ごと、K 固有 912 本 → `KST/` の中で | 同上 |
+| IC-4 | 同じく一般のホモトピー論・モデル圏 2,415 本 → `HomotopicalAlgebra/` の主題ごと、K 固有 912 本 → `KTheory/<文献>/`（§4）、今の `KTheory/` の 35 本も `KTheory/` の中の節へ。`KST/` は論文の層だけ | 同上 |
 | 後回し | 未定 1,243 本（一般の補題と K の構成が一つのファイルに混ざるもの）。ファイルを分けてから分類し直す。IC-W1 では動かさない | 同上 |
 
 IC-0 の完成（OE-W1 の段 1 の停止点）で ③-b は止まる。取り込みの後、⑦ が IC-1 の段 0 から始める。
@@ -37,9 +37,9 @@ IC-0 の完成（OE-W1 の段 1 の停止点）で ③-b は止まる。取り�
 - 各束の完成が停止点。完了の報告（結果の表、取り下げ、B4 の資料）をコミットし、調整役が取り込む。取り込みの後、次の束の段 0 へ止まらずに進む。
 - 報告は `report-infinity-consolidation.md`（新設）に。区切りごとに「一覧：済み n／全体 m（うち追加 k）」（束と、その中の移動の単位を ID に）。
 
-## 4. 未決：K 理論の置き場所（IC-4 の段 0 の前に決める、11-17 の検討）
+## 4. K 理論の置き場所（11-17、ユーザー承認）
 
-ユーザーの意見（「K 理論の基礎は KST/ とは別のディレクトリにした方がよいかもしれない」）を受けた調整役の案：
+ユーザーの意見（「K 理論の基礎は KST/ とは別のディレクトリにした方がよいかもしれない」）を受けた案を承認（11-17「okです」）。IC-4 はこの配置で：
 - **K の基礎は最上位の `KTheory/` に、文献ごとの節で置く**（`InfinityCategories/<Kerodon|HTT|HA>/` と同じ考え方）：`KTheory/Waldhausen/`・`BGT/`・`Schlichting/`・`Barwick/`・`ThomasonTrobaugh/`・`LandTamme/`・`Tamme/` など。節の名前と番号は K の文献ごとの対応表（`research/k-coverage/maps/`：bgt・land-tamme・tamme・kst・others）に合わせる。IC-W1 の分類で K 固有の 912 本（S 構成 552、Fibration 227、NonConnective 80、LocalizingInvariants 50 など）はここへ。
 - **`KST/` は Kerz–Strunk–Tamme の論文の層だけ**にする（導来ブローアップ、降下、pro 切除、§5。`BhattScholze/` と同じ「論文の層」）。分類で「未定」の多く（DerivedGeometry 296、DerivedBlowup 197、Descent 169、ProExcision 150）は KST の論文に固有なので、`KST/` に残すのが自然。
 - **今の `KTheory/`（35 本：G₀・K₀ の局所化、係数、Adams 作用、比較）との名前の衝突**：別名（`AlgebraicKTheory/`）を作ると K の置き場所が二つになって紛らわしいので、**`KTheory/` に一本化**し、今の 35 本は内容の文献に合わせて `KTheory/` の中の節（例：G₀・K₀ の基礎は `KTheory/Classical/`、Adams 作用は対応する文献の節）へ移す案。今の 35 本を import しているのは論文の層（`IntersectionMultiplicity/`・`PerfectComplex/` など）で、import の書き換えだけで済む。
