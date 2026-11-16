@@ -3,7 +3,7 @@
   "complete": 3,
   "total": 6,
   "added": 0,
-  "verified_head": "this commit: base 6f9da8d1a87a3f912c33fb442cb40cfb5b389e26",
+  "verified_head": "this commit: base 4d16f270ae1629ccdf6b779658645cf1696a03ad",
   "items": {
     "HT01": "complete",
     "HT02": "complete",
@@ -12,10 +12,12 @@
     "HT05": "not-started",
     "HT06": "not-started"
   },
-  "latest_complete_audit_checkpoint": "restored-candidates-complete-checkpoint.json",
-  "latest_complete_audit_declarations": 2079,
-  "working_changes_unverified": [],
-  "pending_check": "bundle-237 terminal; all prepared modules passed",
+  "latest_complete_audit_checkpoint": "native-scalar-model-augmentation-checkpoint.json",
+  "latest_complete_audit_declarations": 2081,
+  "working_changes_unverified": [
+    "BoundedProjectiveKFlat"
+  ],
+  "pending_check": "bundle-238 terminal rc1; see audit module inventory; failed dependencies await next batch",
   "next_proof_route": "remaining-20000-plan.md",
   "initial_record": {
     "stage": "5inf3a",
@@ -389,7 +391,7 @@
       "lines": 74
     }
   ],
-  "working_written_lines": 18866,
+  "working_written_lines": 18949,
   "source_inventory_scope": "Only HT01\u2013HT06 source additions/changes against 336942ab0, plus untracked files; excludes pre-existing Comparison modules.",
   "static_check": "static-pending-check.json; not Lean validation",
   "build_wait_history": [
@@ -408,9 +410,9 @@
   ],
   "current_request_last_confirmed_live_utc": "2026-11-15 04:52:28 UTC",
   "HT02_remaining": "complete; see ht02-complete.json",
-  "prepared_source_lines": 18866,
-  "prepared_modules": 226,
-  "verified_source_lines": 18866,
+  "prepared_source_lines": 18949,
+  "prepared_modules": 228,
+  "verified_source_lines": 18910,
   "provisional_total_source_lines": [
     22223,
     25443
