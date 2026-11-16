@@ -1999,3 +1999,25 @@ G4・G5と停止点2g-2は未完。最終の AugmentedRingCechExact と利用側
 次は同じ開の構造層の増大の式、同じFrobenius係数への移送、実際の矩形タプルの二重 Čech の行への代入。非アフィンな中間基底の相対proper fppf、F8全複体と元のブローアップを保持するNoether帰納、G2の模型と二つのfiltered colimitの代入、G5は未完。最終のAugmentedRingCechExactと利用側の型は不変。停止点2g-2ではない。
 
 一覧：済み1／全体3（うち追加0）。
+
+
+次の同じ増大の係数の式（既存の制限・係数移送の法則の内数、50〜100行）：`openSections_appLE_top` は v:X→S と O:X.Opens に対し v.appLE ⊤ O ≫ O.topIso.inv が元の O.ι≫v の Γ に一致する式。`openFamilyCechSectionsIso_augmentation` は元の基底からタプル開への appLE と同じ混合積の基底の Γ が標準同型で一致すること。既存の appLE の合成則と元の入射・基底への射の式だけを使う。最終型・仮定は変更しない。
+
+同じ Frobenius 局所係数への移送（既存の係数移送の法則の内数、100〜180行）：`openFamilyCechMixed_primeCast` は元のタプル開の標数条件を同じ環同型で混合積へ送る。`openFamilyCechPerfectSectionsEquiv` は同じ実際の Frobenius 順極限の環同型、`…_of` は有限段の元への式、`…_naturality`・`…_augmentation` は元の appLE と全ての単体の射・基底の増大との自然性。元の標数条件から供給し、独立の混合積の条件を仮定に加えない。
+
+同じ行の実際の添字と増大列の比較（既存G4の証明分割の内数）：`cechOpenIntersection_tupleSupport_eq_iInf` は fullCechComplex が使うタプルの有限像の交叉と、元の全座標の交叉の等号。`schemeCechTupleIntersection_rectangular` はその実際の fullCech の交叉を、同じ有限交叉族のタプル開へ同定する（35〜70行）。行の完全性を全複体へ渡すときは、正の縦次数にもRを持つ定数余単体の列を中間に置く。その列と零次single Rの既存の比較を用い、正の縦次数で0→行が完全だとは主張しない。最終の増大項や出力の型は変更しない。
+
+同じ増大列の比較の分割（上のG4の証明分割の内数、45〜90行）：`fullCechConstantAugmentation` は元の係数図式 D の空集合の値を定数余単体図式とし、全てのタプルの有限像への元の制限写像で fullCechCosimplicial D へ増大する自然変換。`…_apply` は同じ有限像への成分の式。これは単体の全ての射を保つ既存の増大・制限の法則であり、single の増大写像や最終の型を置き換えない。
+
+
+## G4：元の基底の増大と実際の Frobenius 局所係数
+
+`OpenFamilyCechAugmentation`（47行）：`openSections_appLE_top` は v:X→S と O:X.Opens の元の appLE を Opens.topIso.inv で大域切断に移すと、元の O.ι≫v の Γ に一致する式。元の開の appLE の同定と既存の合成則を使う。`openFamilyCechSectionsIso_augmentation` は元の基底からタプル開への実際の appLE が、同じ環同型で元の混合積の基底の Γ に移ること。元の標準入射と基底の射の式で照合する。
+
+`OpenFamilyCechPerfectCoefficients`（100行）：`openFamilyCechMixed_primeCast` は元のタプル開の標数条件を同じ環同型で混合積に供給する。`openFamilyCechPerfectSectionsEquiv` は実際の Frobenius 順極限の環同型。`…_of` は元の同じ有限段の切断への式。`…_naturality` は元の appLE と全ての単体の射との自然性、`…_augmentation` は元の基底からの増大との自然性。混合積の標数を独立の仮定にせず、零環・空の開・重複タプルを除外しない。
+
+二本をまとめた下書き検証成功（`2g-open-family-perfect-augmentation-check-3.log`）、本体は各下書きと全バイト一致。対象二本と直接importerの入口のビルド5,250ジョブ成功（`2g-open-family-perfect-augmentation-native.log`）。別の共有鍵で非公開・生成分を含む実際の所有宣言を全件小監査し、4＋7＝11宣言・標準三公理のみ（`2g-open-family-perfect-augmentation-audit.log`）。各終了0。局所的なbackward.isDefEq.respectTransparency false、資源上限は既定。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。入口で既存のhaveIのstyle警告が再掲される。共有鍵 --class impl --wait 3600、待ちは一つ。root・下流全ビルド・全体監査なし。
+
+今回147行＋登録2行＝149行。外枠計数 **11,713行**（新規165モジュール本体11,502行、既存追加25行、入口186行）。新規所有宣言の小監査累計1,125、既存15宣言は別計上。外枠18,000行、完成見込み約13,800〜17,100行。次は実際のfull Čech の有限像の交叉への代入と、全縦次数に元の増大を持つ定数余単体列の比較。相対proper fppf・F8全複体・Noether帰納・G5は未完。最終型と利用側の型は不変。停止点2g-2ではない。
+
+一覧：済み1／全体3（うち追加0）。
