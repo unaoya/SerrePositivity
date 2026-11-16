@@ -2939,3 +2939,7 @@ mainの取り込みは11-16 16:25の指示どおり保留したまま。検証�
 
 
 中心側の同じwhole totalへの直接比較（G4の既存の再索引・符号の法則、着手前の型、150〜300行見込み）：中心自身の恒等Arrowと元の逆像被覆Ucから、既存のLeftPositiveDouble LCを取る。`schemePerfectCechTupleRightCenterForwardSummand a b n h` はLCの(a,b)から元のRightFunctorのtotalのn+1へ、b=0では中心包含の負、b=c+1では(-1)^c倍のleftCπ≫rightEιを同じιTotalへ送る。`schemePerfectCechTupleRightCenterBackwardSummand a b n h` は元の右側の全次数n+1の各脚からLCの全次数nへ、縦零次を零、縦一次を中心射影の負、それ以上を同じ(-1)^c倍のrightEπ≫leftCιで戻す。totalDescで両射をまとめ、ιTotalごとの式と正逆の合成を示す。続いて同じ射をunsigned successor extensionのextendXIsoへ接続し、元の左右の微分・自然性の既存式で鎖写像性を示す。新しい対象の仮定や最終型は導入しない。未検証の下書きは本体とコミットに含めない。
+
+同じ縦一段の再索引の微分の法則（G4のtotalの法則、着手前の型、一般の補助40〜80行と実際の成分の照合60〜100行見込み）：K,Lを元の整数係数の第一象限二重複体とし、α(a,b):K(a,b)→L(a,b+1)が二方向の元の微分とそれぞれ可換なら、各totalDescの脚α(a,b)≫ιTotal(a,b+1,n+1)で作るδⁿはδⁿ≫dL=dK≫δⁿ⁺¹を満たす。二方向の符号は外次数aのままであり、整数添字のsigned shiftは用いない。元の中心側の成分をαへ代入し、既存のleftC/rightEの微分・自然性の式から二つの仮定を証明する。仮定を最終定理へ持ち越さない。
+
+2026-11-17 01:13の作業木の状況：左側の基底の右逆・短完全列と元のkernelの完全性の同値の二本312行は、module形式バッチの構文検査で局所記法のshowがquotPrecheckに拒まれたため型注釈へ直し、唯一の共有鍵のセッション98312で再検証を待っている。これはまだLean本体未登録・未検証・未コミット。中心側の各脚・正逆・二方向の微分・unsigned successorへの同型と、そのtotalの補助の六本511行も未検証の下書きとして固定したが、新しい鍵待ちは出していない。下書きの合計823行は検証済み実測17,611行には含めない。既存の素体模型・Frobeniusの自然性・MathlibのFubiniのAPIを再利用するG5の紙は86340faa2に記録済み。比較が当初の見込みより増えているため、新しいLeanを増やす前に現在のバッチの検証結果と必要な修正分を照合し、20,000行の外枠の余裕を見直す。main未取り込み、root・下流全ビルド・全体監査なし。一覧：済み1／全体3（うち追加0）。
