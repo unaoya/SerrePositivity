@@ -2894,3 +2894,21 @@ mainの取り込みは11-16 16:25の指示どおり保留したまま。検証�
 今回446行＋入口4行＝450行。基準56ea849a3からの外枠計数は17,411行（新規241モジュール本体17,124行、既存追加25行、入口262行）。新規所有宣言の小監査累計1,861、既存15宣言は別計上。承認済みの外枠20,000行内。
 
 残りの見込みを更新する。前向きの鎖写像性・基底成分の分裂と同じ核への同型、中心側で同じ左側の比較と既存のextendを再利用する部分は計450〜800行、相対proper fppf・合成を含むNoether帰納400〜700行、G5の自然な模型・Frobenius・filtered余極限の移送600〜1,000行。残り1,450〜2,500行、完成見込み18,861〜19,911行（約18,800〜19,900行）。上端が20,000行に近いので、未検証の下書きも含め以後の各束で照合し、超える見込みになれば検証済みをコミットして境界報告と2hの紙へ移る。現在は超える見込みとはしていない。4本の完成だけでσの鎖写像性や元の核との同型、G4・G5の完成とは呼ばない。前向きの鎖写像性の下書きは未検証で作業木に残している。mainを取り込んでいない。共有鍵 --class impl --wait 3600、待ちは一件、対象ビルドと監査は別リース。root・下流全ビルド・AlgebraicGeometry全体監査なし。一覧：済み1／全体3（うち追加0）。
+
+
+同じY側の基底射影の成分（G4の同じ核・分裂の式の法則、着手前の型、一本文70〜140行見込み）：元のleftCι/leftCπの二つの合成の式をleftCIsoへまとめ、同じbaseProjection.onLeftSquareの正の縦次数の成分が零であることを取る。実際のschemePerfectCechTupleSquarePositiveBaseLeftProjectionについて、外零次の全成分は零、正の外次数かつ正の縦次数は零、正の外次数の縦零次は元のRの恒等射という三つの式を、同じ構成の定義から照合する。これを元のtotalへ渡し、ψσ+Pr=1とσP=0の照合に用いる。
+
+
+元の基底射影への合成零（G4の同じ核の法則、着手前の型、一本文100〜180行見込み）：`schemePerfectCechTupleLeftTotalMap_baseProjection` は、元のσと元のschemePerfectCechTupleSquarePositiveBaseLeftProjectionのtotal.mapの合成が零である式。各元のιTotalで、根は外零次の射影零、Cの項は正の縦次数の射影零、singleの正次数は零性を使う。`schemePerfectCechTupleLeftTotalShortComplex` はこの同じ二つの射から作る短複体で、短完全性や核との同型はここで仮定せず別に示す。
+
+
+同じ基底射影の次数ごとの右逆（G4の同じ分裂の法則、着手前の型、一本文100〜180行見込み）：`schemePerfectCechTupleLeftTotalBaseSectionSummand` は元のQの正の外次数・縦零次のRを同じLの項へ入れ、零の項を零へ送る。`schemePerfectCechTupleLeftTotalBaseSectionComponent` は同じtotalDescを用いる次数ごとの射。元の射影の成分の式とQの他の項の零性からrⁿ≫P.f n=𝟙を照合する。rも鎖写像とは仮定せず、元の射影の全射性とψσ+Pr=1へ用いる。
+
+
+同じ各全次数の分裂の第二式（G4の同じ核の法則、着手前の型、基底の右逆の下書きに70〜140行を追記）：`schemePerfectCechTupleLeftTotal_split (n : ℕ)` はψⁿ≫σⁿ+P.f n≫rⁿ=𝟙。元のLの各ιTotalで、(0,0)は元のsingleの正逆、(a+1,0)は元のRの射影の恒等式、正の縦次数は元のleftCπ_ιと射影零を用いる。補助射が鎖写像であるとは主張しない。この式を短完全性と元のkernelの普遍性へ渡す。
+
+
+同じ短完全性への既存APIの代入（G4の同じ核の法則、着手前の型、短複体の下書きへ20〜50行追記）：MathlibのShortComplex.Splittingはr・sとf≫r=1、s≫g=1、r≫f+g≫s=1を受け取り、Splitting.shortExactを供給する。各全次数で元のψ・rと検証する三つの式をそのまま `schemePerfectCechTupleLeftTotalDegreeSplitting n` に入れ、既存のHomologicalComplex.shortExact_of_degreewise_shortExactへ渡す。新しい核の元の持ち上げやModuleCatの完全性の元ごとの証明は作らない。
+
+
+2026-11-17深夜の検証状況：前向き比較射の鎖写像性と同じ基底射影の成分をまとめたmodule形式の下書き `2g-g4-left-differential-check-3.log` は終了0（131行＋67行）。型の確定した局所射・Eq.trans・congrArgで根と二方向の式を照合した。同じバイトの二本を本体へ移して入口へ登録したが、対象ビルドは共有鍵の唯一のセッション60811で待機中であり、まだコミット・監査済みとはしない。コミット済みの検証実測17,411行に対し、作業木の本体はこの二本と入口200行を含め17,611行。完成見込み18,861〜19,911行はこの候補を含む。元の短複体・基底の右逆・第二の分裂の式・Mathlib.Splittingへの代入の次の二本は未検証の下書きとしてscheme-draftsに置いており、本体未登録・未コミット。最初の対象ビルドと別鍵の監査を終えてから次の下書きを検証する。停止点2g-2ではなく、mainも未取り込み。一覧：済み1／全体3（うち追加0）。
