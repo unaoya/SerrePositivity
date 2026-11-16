@@ -5480,3 +5480,116 @@ RightKanTransportDiagramHom、LimitConeFamilyProjectionArrow）の4本・203行�
 後段の同じ制限写像の別名coneRestrictionを明示して再検証を続ける。
 (A)の最終成分照合、S8全体、S1は依然未完。S7・R2・R3は再開せず、mainも取り込まない。
 一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+
+#### (A)の末尾に接続する既存構成の法則の型（未検証）
+
+8. `RightKanGlobalComparisonVertex` の `kanRightKanExtensionIso_transport_vertex`：
+   同じδに沿う元の二つのKan延長hα・hβ、任意の指定輸送t・sから、上の7と同じ式を
+   η := kanRightKanExtensionIso δ α β hα hβについて結論にする。
+   t・sの極限性はisRightKanExtension_iff_forall_transportから証明し、
+   hηはkanRightKanExtensionIso_hom_facから供給する。点ごとの同型で大域比較を作らない。
+
+```lean
+-- ht・hsは元のKan条件から証明した同じ輸送錐の極限性。
+eqToHom (congrArg mk t.cone_vertex.symm) ≫
+  (limitVertexIso t.cone s.cone ht hs).hom ≫ eqToHom (congrArg mk s.cone_vertex) =
+    functorHomEvaluate (kanRightKanExtensionIso δ α β hα hβ).hom c
+```
+
+9. `RightKanFunctorIsoTransfer` の `isRightKanExtension_of_compatible_functorIso`：
+   同じ指定余単位の類との両立を持つ元の全関手同型に沿い、実際のKan条件を移す。
+
+```lean
+(α : SSet.Homotopy (δ ≫ F) O) → (β : SSet.Homotopy (δ ≫ G) O) →
+(η : FunctorIso F G) →
+(rightKanHomMap δ [β] F η.hom = [α]) →
+IsRightKanExtension δ O F α → IsRightKanExtension δ O G β
+```
+
+証明案は、元のKan延長からtとその極限性を取り、G側の任意の輸送sと上の5の比較iを使い、
+実際のconeFamily内で終対象性を移すもの。RightKanHomUniversalを点ごとのKan条件と
+見なす証明にはしていない。この2本も既存構成の法則・証明分割で、追加IDなし、200行未満。
+現在は未検証・未コミットであり、検証済みの累計は20,371行・321本のまま。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+
+### 11-17 未明：(B)で使う指定unstraightening比較の仕様の照合（紙）
+
+(A)の対象検証を一枚の整理券で待つ間に、(B)の元の比較を展開した。
+`smallLeftUnstraighteningComparisonOfFunctorIso η` は
+`(exists_smallLeftUnstraighteningComparison_of_functorIso η).choose` である。
+存在の命題の結論にはηの射との両立がなく、F・G・底上の射影と前合成同値性だけがある。
+したがって同じF・Gに対するη・η′の選択の違いは、その命題の証明の違いにしか現れない。
+proof irrelevanceによる次の二つのrfl検査を一時ファイルに用意した（この追記時点では未実行）。
+
+```lean
+-- Bは準圏、F G : ulift B ⟶ SpaceInfinity、e e' : FunctorIso F G。
+smallLeftUnstraighteningComparisonOfFunctorIso e =
+  smallLeftUnstraighteningComparisonOfFunctorIso e'
+
+-- K・C・Dは準圏、e e' : FunctorIso δ δ'、c・dは同じ指定局所極限錐。
+rightKanLimitVertexIsoOfFunctorIso e O v c d hc hd =
+  rightKanLimitVertexIsoOfFunctorIso e' O v c d hc hd
+```
+
+この点は「(A)の同じδに沿う比較」と「(B)の元の指定添字同型に沿う比較」を接続する際の問題。
+任意のeについて、元の局所比較がeの指定余単位と両立することは、底上の同値の存在だけからは
+導かない。固定したYoneda同型の場合に元の最終定理が偽だと判定したわけではない。
+(A)の新しい法則はこの選択を使わず、そのまま対象検証を続けられる。
+
+既存の射作用を使う差分案（まだ適用しない）：
+`SmallLeftUnstraighteningFunctorIso.lean` に `SmallUnstraighteningIsoHom` をimportし、
+次の三本文だけを置き換える。
+
+```lean
+smallLeftUnstraighteningComparisonOfFunctorIso η :=
+  smallUnstraighteningFunctorHom η.hom
+
+-- 同じ公開の射影の型の証明：
+smallUnstraighteningFunctorHom_projection η.hom
+
+-- 同じ公開の前合成同値性の型の証明：
+smallUnstraighteningFunctorHom_isPrecompositionEquivalence η.hom
+```
+
+元の存在定理の証明だけの置換ではproof irrelevanceによる消去を避けられないので、
+データの定義の本文を変える必要がある。公開の名前・型・仮定は変えない。
+既存構成の射作用とその射影・同値性を再利用し、分類や局所同型を新しく作らない。
+静的なimport閉包884本の照合で、この追加importから元ファイルへの循環はなかった。
+差分案は `/tmp/is-w1/s8-index-comparison-choice-check/proposed-body-change.diff`、
+一時検査は同ディレクトリの `check.lean`。差分は+4/-3行、docstringの説明の修正は別途必要。
+既存本文の変更なので、適用には指示書§2の例外の承認が必要。
+承認された場合、同じ余単位を保つ比較の法則を引き続き証明し、変更した全Sheavesと
+枝の下流の対象ビルド・小監査・公開型の保存比較を行う。旧選択とのrfl一致は要求しない案。
+
+検証済み累計は20,371行・321本のまま。未検証の(A)5本393行を混ぜて数えていない。
+S1・S8は未完、S7・R2・R3は再開せず、mainも取り込まない。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+
+#### 上の三本文の変更の承認（11-17 未明）
+
+調整役の回答「3本文の変更を承認する」を受領した。
+現在待っている(A)の対象と依存先を途中で変えず、その検証の終了後に適用する。
+同じ一枚の整理券の検証用ランナーに、変更前の公開型・属性・公理の保存採取と上の診断を追加した。
+Leanの対象・依存ソースは変更していない。変更後は公開の型・属性・公理の一致を照合する。
+前に承認されたSheaves三本文とは別の変更であることを明示する。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+
+### (A)の指定余単位の制限を検証・保存（11-17 未明）
+
+`RightKanTransportCounitRestriction` 1本・67行・1所有宣言の対象ビルドと小監査が通った。
+検証子の終了コード0、成功JSON、ソースSHA一致、標準三公理のみ。
+証拠は `/tmp/is-w1/s8-right-kan-comparison-3/counit/`。
+同じ組の後段は辺の端点の型推論に失敗したため、組全体の成功とはしない。
+既存構成の辺と端点の等式を明示して、4本の後段の再検証を一枚の整理券で待っている。
+外枠用の検証済み累計は **20,438行・322本**。
+
+変更前のv3b採取は `/tmp/is-w1/s8-index-comparison-choice-check/before.json` に成功。
+最初の診断は同じ環境に `SmallUnstraighteningIsoHom.olean` がなかったため、import段で終了1。
+rflが通った・失敗したとは扱わない。旧選択だけの検査を `old-choice-only.lean` に分離し、
+次の対象ビルドの前に実行する。承認された三本文は、今待つ検証の依存先でもあるためまだ適用していない。
+S1・S8は未完。S7・R2・R3は再開せず、mainも取り込まない。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
