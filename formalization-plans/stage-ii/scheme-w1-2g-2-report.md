@@ -1734,3 +1734,25 @@ G4・G5と停止点2g-2は未完。最終の AugmentedRingCechExact と利用側
 今回3モジュール159行＋入口3行。新規137モジュール本体9,173行、既存追加25行を含む本体9,198行。登録137行・入口の追加空行21行を全て含む外枠計数 **9,356行**。新規小監査累計910宣言、既存15宣言は別計上。元の大域切断からの実際の増大写像の2つの完全性の出口への接続は下書きで、この束には含めない。アフィン nerve の環の自然な比較、相対 proper fppf の二重 Čech、F8 の全複体への接続と Noether帰納、G5はなお残る。G4・G5と停止点2g-2は未完。見込み約12,000〜15,500行・外枠16,000行は不変。
 
 一覧：済み1／全体3（うち追加0）。
+
+
+次の同じアフィン nerve の大域切断の比較（着手前、既存の有限極限・係数移送・自然性の法則の内数、200〜500行）：
+
+- `affineGammaCechCocone f n` は f:Y→S、Y・S がアフィンの場合、同じ有限広義ファイバー積 Y_n の大域切断を点、元の各射影と基底への射の Γ を脚とする、Γ(S)→Γ(Y) の同じ wideSpan の余錐。`affineGammaCechIsColimit f n` は既存の `preservesLimit_rightOp_Γ` と反対圏・添字の同値による移送でその普遍性を供給する。
+- `affineGammaCechConerveIso f` の型は `(Arrow.mk (Scheme.Γ.map f.op)).cechConerve ≅ (Arrow.mk f).cechNerve.rightOp ⋙ Scheme.Γ`。各有限余積の同じ普遍性で得た標準同型の脚・head の式を示し、元の nerve の射の射影の式で全ての次数への自然性を保つ。`.rightOp` が幾何的な反変 nerve から Schemeᵒᵖ への向きであり、`.leftOp` と取り違えない。
+- S=Spec R のときは既存の ΓSpec の同型と schemeScalarHom を使い、元の R→Γ(Y) の矢印の conerve へ同じ比較を移す。増大とスキームの可換な四角形の射も、元の脚を保つ形で照合する。アフィン性以外の Noether 性・有限表示性・全射性は仮定しない。最終出力の型は変更しない。
+
+この束は未実装。既存の `isColimitCoconeLeftOpOfCone`（F:J→Cᵒᵖ の極限から F.leftOp の余極限へ）と `widePullbackShapeOpEquiv` が使えることをソースで確認した。反対圏の向きと式の自然性は実装時に対象ビルドで確かめる。
+
+
+## G4：実際の大域切断からの増大写像の単射性と零次の完全性
+
+`AffinePerfectCechAugmentation`（65行）：`schemeStructurePerfectCechAugmentation_id` は、任意のスキームで大域切断の恒等スカラーを選んだ実際の増大写像と、同じ Frobenius 係数前層の対角の制限が一致すること。`affineSchemeStructurePerfectCechAugmentation_injective` は有限アフィン被覆でその実際の増大写像が単射であること。`affineSchemeStructurePerfectCechAugmentation_exact` はその同じ写像と元の複体の後続微分が完全であること。元の空タプルの項と大域切断の同型を使う。名前・docstring は Čech 版と原典 Stacks 30.2.6 との対応を明示し、層 Hⁱ との比較は形式化しない。
+
+単独検証、本体とのソース完全一致、対象と入口のビルド5,223ジョブ成功、小監査3宣言（実際の所有元による非公開・生成宣言の有無も走査）・標準三公理のみ、終了状態0。ログ `2g-affine-perfect-cech-augmentation-check-2.log`・`2g-affine-perfect-cech-augmentation-native.log`・`2g-affine-perfect-cech-augmentation-audit.log`。恒等スカラーと零次完全性の証明に局所的な backward.isDefEq.respectTransparency false、既定の資源制限。unused Fintype の style 警告あり。追加公理・sorry・既存の型変更・200行超の宣言なし。共有鍵 --class impl --wait 3600、待ちは一つ、対象ビルドと小監査は別枠。root・下流全ビルド・全体監査なし。
+
+今回1モジュール65行＋入口1行。基準56ea849a3から独立に再計数し、新規138モジュール本体9,238行。既存追加25行を含む本体9,263行、入口の追加159行（登録138・空行21）を全て含む外枠計数 **9,422行**。新規小監査累計913宣言、既存15宣言は別計上。
+
+同じ有限アフィン被覆の実際の Frobenius 係数の長さ0の単射性と全長さの完全性、および実際の大域切断からの増大写像の単射性と零次の完全性まで検証した。アフィン nerve の環の自然な比較、相対 proper fppf の二重 Čech、F8 の全複体との接続と実際のブローアップを保つ Noether帰納、G5はなお残る。G4・G5と停止点2g-2は未完。最終の AugmentedRingCechExact と利用側の型は不変。見込み約12,000〜15,500行・外枠16,000行は不変。
+
+一覧：済み1／全体3（うち追加0）。
