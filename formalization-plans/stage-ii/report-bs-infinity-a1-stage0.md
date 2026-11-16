@@ -2753,3 +2753,35 @@ ordinaryHomTwistedIso C : nerve (OrdinaryHomElements C) ≅ TwistedArrow (nerve 
 射の同型として分類図式の全族比較へ渡す。固定 Yoneda への全族比較と S8 の層化・局所同値はまだ残る。
 検証済み全体177本11,717行・1,024宣言。S1・S8 は未完成、外枠18,600行を維持する。
 一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
+
+
+### S8 続報：底を含む Hom 比較から全分類図式、固定 Yoneda の全族実現へ
+
+`OrdinaryHomTwistedArrowIso`（71行5宣言）、`LeftStraighteningOverIso`（45行5宣言）、
+`OrdinaryHomTwistedClassification`（71行11宣言）、`OrdinaryHomJointRealization`（52行6宣言）の
+対象ビルド・小監査が成功した。標準三公理のみ、source SHA 一致。
+記録：`/tmp/is-w1/s8-hom-twisted-arrow-iso-2/`、`/tmp/is-w1/s8-left-straightening-over-iso-1/`、
+`/tmp/is-w1/s8-hom-twisted-classification-1/`、`/tmp/is-w1/s8-hom-joint-realization-1/`。
+
+```lean
+ordinaryHomTwistedArrowIso C :
+  Arrow.mk (nerveMap (ordinaryHomElementsProjection C)) ≅
+    Arrow.mk (twistedArrowProjection (nerve C))
+
+leftStraighteningInfinityDiagram_overIso p q (e : Over.mk p ≅ Over.mk q) :
+  FunctorIso (leftStraighteningInfinityDiagram p) (leftStraighteningInfinityDiagram q)
+
+ordinaryHomJointRealizationIso C :
+  FunctorIso
+    ((SSet.uliftFunctor.map (ordinaryHomBaseIso C).hom) ≫ twistedArrowHomInfinity (nerve C))
+    (spaceDiagram (ordinaryHomBifunctor C))
+```
+
+積・組紐・反対の既存同型で底を揃えた。底上の同型保存則を共同分類関手で送り、
+引き戻しの既存の普遍性と straightening の底変換を合成した。
+最後の比較は既存の自然な `SetWeight.elementsComparisonNatural` と分類の余単位を再利用した。
+全底上の一つの関手同型で、対象ごとの同型を集めた仮定にしていない。
+既存構成の同型保存・係数移送・底変換の法則であり追加 ID はない。
+
+検証済み全体181本11,956行・1,051宣言。この後の固定 Yoneda の全族の実現の照合は別記する。
+一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
