@@ -2077,3 +2077,9 @@ G4・G5は未完。最終のAugmentedRingCechExactと利用側の型は不変。
 G4・G5は未完。検証済みの数学の先端は `415b27a9b` のまま。未検証Leanはコミットしない。停止点2g-2ではない。
 
 一覧：済み1／全体3（うち追加0）。
+
+同じ行の増大環の図式の単位・合成の法則（既存G4の自然性の内数、70〜120行）：`frobeniusArrowDiagramMap_id`・`…_comp`、`frobeniusArrowSmallDiagramMap_id`・`…_comp`、`frobeniusDirectLimitArrowMap_id`・`…_comp` は、既存の同じ矢印の有限段の図式と実際の順極限の写像が元の単位・合成を保つこと。縦の交叉族を動かす図式に用い、G5でも同じ法則を再利用する。現在固定済みの十二本には含めず、別の下書きとして保持する。
+
+同じ矩形の行の増大の法則（既存G4の増大・係数移送の内数、70〜120行）：`rectangularPerfectRowEquiv_augmentation` は、元の交叉族の余積射のnerveへの基底のΓのFrobenius写像を、同じ行の環同型で、元の矩形の実際の交叉上のappLEのFrobenius写像へ送る式。各成分の標準同型へ戻し、有限族の増大と元の構造層の増大の一致から示す。固定済みの十二本の後で検証する別の下書きとする。
+
+同じ矩形の行の図式への束ね方（既存G4の自然性・係数移送の内数、90〜140行）：`rectangularPerfectRowFunctor` は元の schemePerfectCechTupleFunctor の縦次数を固定した図式。`…_map_apply` はその写像が元の矩形の実際のappLEである式。`…FunctorIso` は元の交叉族の余積射のnerveの実際のFrobenius係数から、その同じ図式への自然同型。別の係数図式を同型によって定義して元の射との照合を省略しない。現在固定済みの十二本とは別の未検証下書きとする。
