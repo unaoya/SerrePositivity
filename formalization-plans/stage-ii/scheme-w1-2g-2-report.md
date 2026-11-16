@@ -3125,3 +3125,6 @@ mainの取り込みは11-16 16:25の指示どおり保留したまま。検証�
 今回本体206行＋入口2行＝208行。基準56ea849a3から検証済み19,163行（新規259モジュール18,858行、既存追加25行、入口280行。既存削除14行を差し引かない）。新規所有宣言の監査累計2,138、既存15宣言は別計上。外枠21,000行。G4・G5未完。実際のアフィン交叉の忠実平坦性、同じFrobenius係数の正の軸の完全性とタプル比較、nil閉厚化、Noether帰納、G5が残る。現時点の完成見込み約19,600〜20,500行の内数だが、残りの接続ごとに積み直し、21,000行を超える見込みになれば規則に従って止める。main未取り込み、最終型・仮定は同じ、root・下流全ビルド・全体監査・2hのLeanなし。共有鍵--class impl --wait 3600、待ちは一件、対象ビルドと監査は別リース。
 
 一覧：済み1／全体3（うち追加0）。
+
+
+相対アフィン交叉への元の忠実平坦な係数の供給（G4の既存制限・係数移送の法則、着手前の型、40〜80行見込み）：`affineFlatSurjective_appTop_frobeniusCechExact` は、アフィンスキーム間の元のFlatかつSurjectiveなfについて、元のf.appTopの増大Frobenius係数のAugmentedRingCechExactを与える。Mathlib `Flat.flat_and_surjective_iff_faithfullyFlat_of_isAffine` と既存の `frobeniusAugmentedRingCoefficients_exact_of_faithfullyFlat` を接続する。`affineFlatSurjective_restrict_frobeniusCechExact (f : X ⟶ Y) [IsAffineHom f] [Flat f] [Surjective f] (V : Y.Opens) (hV : IsAffineOpen V)` は、元の制限f∣VのappTopについて同じ結論を返す。Y自体のアフィン性やΓ(Y)の平坦性を仮定せず、Vの各有限アフィン交叉に同じ入口を使う。標数条件はΓ(V,⊤)にのみ置き、Noether性は不要。最終の出力の追加仮定とはしない。
