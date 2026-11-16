@@ -2996,3 +2996,5 @@ mainの取り込みは11-16 16:25の指示どおり保留したまま。検証�
 完成見込みは境界報告の約19,600〜20,500行を維持する。今回の型・証明の修正はその比較の修正分に、次数一表示と普遍同相の二本はNoether帰納の供給の内数に含める。中心側の六本とRightKernelへの移送、零次行射影の係数移送の新しい下書きは未検証・未登録・未コミットであり、今回の実測には含めない。共有鍵 --class impl --wait 3600、待ちは一件、対象ビルドと監査は別リース。
 
 中心側の正逆の証明の分割（G4の同じ再索引の法則、着手前の型）：`schemePerfectCechTupleRightCenterBackwardVertex a b` は元のRR(a,b+1)→LC(a,b)で、中心には負、Eには同じ(-1)^bを付ける。非公開の `cechRightCenterVertexIso a b : LC(a,b) ≅ RR(a,b+1)` に既存の座標の正逆の合成を入れ、元のtotalDescの二つの合成へ渡す。全次数の証明では、展開したC/Eの型をrwへ直接渡さず、元のLC/RRの型を持つ局所射を介して同じ各ιTotalの式を使う。最終の型・元のRightKernelは変えない。
+
+同じF8の出口の合成（G4の同じ証明の分割、着手前の型、30〜60行見込み）：`DegreeOneProjectiveModel.perfectCechTupleTotal_acyclic_of_center` は、RがNoether、元の中心Iの外で同型な次数一表示m:g:Y→Spec R、実際のCartesianな中心fI:X→Spec(R/I^1)、元の有限アフィン被覆Uに対し、中心の逆像被覆での元の増大totalの完全性から、元のg,Uの増大totalの完全性を返す。新しい入力の完全性を最終のv被覆の仮定として残さず、Noether帰納で中心の入力を供給するための合成の補題である。RightKernelへの移送、既存のF8の同じ核の消去、LeftKernelと元の増大totalの同値をそのまま合成する。
