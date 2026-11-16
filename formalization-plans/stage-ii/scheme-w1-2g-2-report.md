@@ -3066,3 +3066,6 @@ mainの取り込みは11-16 16:25の指示どおり保留したまま。検証�
 今回本体788行＋入口9行＝797行。基準56ea849a3から検証済み18,843行（新規256モジュール18,541行、既存追加25行、入口277行。既存削除14行は差し引かない）。承認済み外枠21,000行。完成見込み約19,600〜20,500行は維持し、残る相対fppfの比較・実際のnil閉厚化・Noether帰納とG5の実装時に積み直す。条件付き射影判定の中心の入力はNoether帰納で供給する必要があり、一般の固有降下の完成とは呼ばない。G4・G5は未完、停止点2g-2ではない。最終のAugmentedRingCechExactの型・仮定は変更していない。main未取り込み、root・下流全ビルド・全体監査なし。鍵は--class impl --wait 3600、対象ビルドと監査は別リース。2hのLeanなし。
 
 一覧：済み1／全体3（うち追加0）。
+
+
+元の零次列射影の法則（G4の既存の自然性・係数移送、着手前の型、80〜130行見込み）：`cechIntegerTotalToColumnZero_naturality (f : K ⟶ L)` はtotal.map f≫πL=πK≫f.f 0、`cechIntegerTotalToColumnZero_component_surjective K n` は同じπの全次数nの全射性。`cechIntegerTotalFlip_rowZero K` は既存のtotalFlipIso.hom≫totalToColumnZero K=totalToRowZero K.flipを与える。`cechIntegerTotalToColumnZero_quasiIso K (hK : ∀ a, 0<a → (K.X a).Acyclic)` は同じπの擬同型性。Mathlibの同じtotalFlipIsoの軸上の符号が一であることと、検証済みの零次行射影の判定だけを用い、対角線消去や新しい全複体を作らない。相対fppf比較の内数。最終の型・範囲は変更しない。
