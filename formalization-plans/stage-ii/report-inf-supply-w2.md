@@ -18255,3 +18255,71 @@ lemma nerveUnderLift_opposite_native_pairing {I C : Type u} [Category.{u} I] [Ca
 固定標的の元の同じ全族と、その指定モデル源でのnative pairingの厳密な一致は閉じた。次は元のBEのfiber包含とsource-frame評価へ同じ全写像の式を適用する。R03h・R03d・3b-4aは未完。
 
 一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+## 304. 同じfiberの添字を保つrightOp表示と、元の全pairingの前合成・係数移送（2026-11-16）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+BEの元のsource-frame評価VはDᵒᵖ→Cなので、元のfiber Dからの表示には既存Functor.rightOpとNatTrans.rightOpを使う。同じデータのこの係数表示に§303の証明を適用し、二重反対の新しい添字への輸送を追加せず、元のDそのものの全写像の等式にした。元のη・Fからの同じ族で、仮定を追加しない。元のpairingの通常関手Hによる前合成と、両端と同じ実射の等式による係数移送の法則も明記した。いずれも既存構成の表示・前後合成・自然性の法則、数学の一覧は増やさない。
+
+一時ファイルisw2-under-rightop-pairing1・isw2-pairing-precomp1の個別Lean検査は終了0。計算上限・既存の宣言・⑤aのファイルは変更しない。以下が型。
+
+```lean
+lemma twistedPairingNerveMap_precomp {J I C : Type u} [Category.{u} J] [Category.{u} I]
+    [Category.{u} C] (H : J ⥤ I) (A : I ⥤ Cᵒᵖ) (B : I ⥤ C)
+    (h : ∀ i, (A.obj i).unop ⟶ B.obj i)
+    (hh : ∀ {i j} (f : i ⟶ j), (A.map f).unop ≫ h i ≫ B.map f = h j) :
+    nerveMap H ≫ twistedPairingNerveMap A B h hh =
+      twistedPairingNerveMap (H ⋙ A) (H ⋙ B) (fun i => h (H.obj i))
+        (fun {_ _} f => hh (H.map f))
+
+lemma twistedPairingNerveMap_congr {I C : Type u} [Category.{u} I] [Category.{u} C]
+    {A A' : I ⥤ Cᵒᵖ} {B B' : I ⥤ C} (ha : A = A') (hb : B = B')
+    (h : ∀ i, (A.obj i).unop ⟶ B.obj i) (h' : ∀ i, (A'.obj i).unop ⟶ B'.obj i)
+    (hh : ∀ {i j} (f : i ⟶ j), (A.map f).unop ≫ h i ≫ B.map f = h j)
+    (hh' : ∀ {i j} (f : i ⟶ j), (A'.map f).unop ≫ h' i ≫ B'.map f = h' j)
+    (hv : ∀ i, HEq (h i) (h' i)) :
+    twistedPairingNerveMap A B h hh = twistedPairingNerveMap A' B' h' hh'
+
+lemma nerveUnderLift_rightOp_pairing {I C : Type u} [Category.{u} I] [Category.{u} C]
+    {c : C} {V : Iᵒᵖ ⥤ C} (η : V ⟶ (Functor.const Iᵒᵖ).obj c) :
+    nerveMap (Under.lift (X := Opposite.op c) V.rightOp (NatTrans.rightOp η)) ≫ nerveUnderMap (Opposite.op c) ≫
+      cosliceTwistedArrowMap (nervePoint (Opposite.op c)) ≫
+        edgewiseSubdivisionMap (nerveOppositeIso (C := C)).inv ≫
+          twistedArrowOppositeSwap (nerve C) =
+      twistedPairingNerveMap V.rightOp ((Functor.const I).obj c)
+        (fun i => η.app (Opposite.op i)) (by
+          intro i j f
+          change V.map f.op ≫ η.app (Opposite.op i) ≫ 𝟙 c = η.app (Opposite.op j)
+          calc
+            _ = V.map f.op ≫ η.app (Opposite.op i) := congrArg (fun g => V.map f.op ≫ g)
+              (Category.comp_id (η.app (Opposite.op i)))
+            _ = η.app (Opposite.op j) := (η.naturality f.op).trans (Category.comp_id _))
+
+lemma nerveUnderLift_rightOp_native_pairing {I C : Type u} [Category.{u} I] [Category.{u} C]
+    {c : C} {V : Iᵒᵖ ⥤ C} (η : V ⟶ (Functor.const Iᵒᵖ).obj c) {D : SSet.{u}}
+    (F : nerve C ⟶ D) :
+    let Fop := (nerveOppositeIso (C := C)).inv ≫ SSet.opFunctor.map F
+    nerveMap (Under.lift (X := Opposite.op c) V.rightOp (NatTrans.rightOp η)) ≫
+      nerveUnderMap (Opposite.op c) ≫ sliceUnderPostcomp (nervePoint (Opposite.op c)) Fop ≫
+        cosliceOppositeTwistedArrowMap (nervePoint (Opposite.op c) ≫ Fop) =
+      twistedPairingNerveMap V.rightOp ((Functor.const I).obj c)
+        (fun i => η.app (Opposite.op i)) (by
+          intro i j f
+          change V.map f.op ≫ η.app (Opposite.op i) ≫ 𝟙 c = η.app (Opposite.op j)
+          calc
+            _ = V.map f.op ≫ η.app (Opposite.op i) := congrArg (fun g => V.map f.op ≫ g)
+              (Category.comp_id (η.app (Opposite.op i)))
+            _ = η.app (Opposite.op j) := (η.naturality f.op).trans (Category.comp_id _)) ≫
+        edgewiseSubdivisionMap F
+```
+
+対象ビルド373と小監査で検収する。元のBEのfiber包含と同じsource-frame評価への適用、および元のcorrected pairingの全同型と指定pathの最終照合を続ける。R03h・R03d・3b-4aは未完。公式入口・公式監査は変更しない。
+
+### 304.2 検収
+
+新規2本は41行・87行、計128行。公開4補題・実環境宣言5。373対象ビルド（依存を含む3,864 jobs）・小監査とも終了0。共有鍵 --class impl --wait 3600、一枚の整理券、gtimeout 1700秒でビルドと小監査の間だけ使用。小監査275モジュール・1,734宣言、propext・Classical.choice・Quot.soundのみ、sorryAx・追加公理なし。自レーン累計271本・18,740行、実環境1,727宣言。外枠まで3,260行。宣言名の照合で異なるファイル間の重複0、内部も0。git diff --check通過。証跡isw2-build373.log・isw2-validation373.json・isw2-declaration-collision-scan373.json。登録候補一覧に追加。既存宣言・⑤a・公式入口・公式監査は変更していない。
+
+同じ添字のrightOp表示と、同じ全pairingの前合成・係数移送は閉じた。BEの実際のfiber包含の両端の全関手と、元のsource-frame評価の直接の照合を続ける。R03h・R03d・3b-4aは未完。
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
