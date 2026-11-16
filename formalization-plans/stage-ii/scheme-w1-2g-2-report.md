@@ -1618,3 +1618,19 @@ Frobenius の既存の矢印の図式の端点の照合（着手前、既存の�
 今回2モジュール139行＋入口2行。新規128モジュール本体8,553行、既存追加25行を含む本体8,578行。登録128行・入口の追加空行21行を全て含む外枠計数 **8,727行**。新規小監査累計866宣言、既存15宣言は別計上。次の実際の conerve への標準比較と増大の保存は下書きで、この束には含めない。G4・G5は未完。見込み約10,000〜13,500行・外枠16,000行は不変。
 
 一覧：済み1／全体3（うち追加0）。
+
+
+同じ Frobenius の係数の増大環図式への代入（着手前、既存の係数移送・同型の法則の内数、120〜220行）：`frobeniusRingConerve` は同じ元の conerve の各環の Frobenius 順極限と実際の環準同型を環の余単体図式にまとめたもの。`frobeniusAugmentedRingCoefficients` は同じ基底の順極限と元の head の順極限写像による増大。`frobeniusRingConerveIso`・`frobeniusAugmentedRingCoefficientsIso` は検証した同じ各次数の標準比較と増大の可換性を自然同型にまとめる。`frobeniusAugmentedRingCoefficients_exact_iff` は B1 の ringCechExact_iff_of_iso による同じ増大図式の完全性の同値。`…_exact_of_faithfullyFlat` と元の任意の底変換での版は、既存の実際の矢印の完全性をこの同じ比較で戻す。新しい完全性の定義・型を追加せず、同じ AugmentedRingCechExact を使う。完全性や比較を最終出力の追加仮定にしない。
+
+
+## G4：実際の Frobenius の矢印の conerve への自然な比較
+
+`FrobeniusConervePerfectIso`（57行）：`frobeniusConervePerfectIso` は同じ conerve の各環の実際の Frobenius 順極限と、実際の frobeniusDirectLimitMap の conerve の環との標準同型。二つの検証済みの同じ余極限の比較を合成する。`…_ι` は元の矢印の各有限段の標準脚の conerve の射を保つ式、`…_of` はその各元での評価。
+
+`FrobeniusConervePerfectNaturality`（73行）：`frobeniusConervePerfectIso_naturality` は元の conerve の全ての次数の射との自然性。`frobeniusConervePerfectIso_augmentation` は元の基底の実際の Frobenius 順極限からの増大写像との可換性。同じ有限段の標準脚で、元の conerve の自然性と増大の可換性を評価して示す。独立な各係数の同型だけで代用しない。
+
+単独検証、本体とのソース完全一致、対象2本と入口のビルド5,215ジョブ成功、小監査13・2宣言（計15、実際の所有元による生成・非公開宣言込み）・標準三公理のみ、終了状態0。ログ `2g-frobenius-conerve-perfect-comparison-check-1.log`・`2g-frobenius-conerve-perfect-comparison-native.log`・`2g-frobenius-conerve-perfect-comparison-audit.log`。局所的な backward.isDefEq.respectTransparency false、既定の資源制限。追加公理・sorry・既存の型変更・200行超の宣言なし。共有鍵 --class impl --wait 3600、待ちは一つ、対象ビルドと小監査は別枠。root・下流全ビルド・全体監査なし。
+
+今回2モジュール130行＋入口2行。新規130モジュール本体8,683行、既存追加25行を含む本体8,708行。登録130行・入口の追加空行21行を全て含む外枠計数 **8,859行**。新規小監査累計881宣言、既存15宣言は別計上。同じ係数を増大環図式としてまとめた値と、その忠実平坦な完全性への適用は下書きで、この束には含めない。G4のスキームのアフィン比較・二重 Čech の完全性の判定・Noether帰納、G5は残る。見込み約10,000〜13,500行・外枠16,000行は不変。
+
+一覧：済み1／全体3（うち追加0）。
