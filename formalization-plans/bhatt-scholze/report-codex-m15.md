@@ -17426,3 +17426,109 @@ M15・drafts・main・⑤aの既存ファイル・Interfaceは変更せず、全
 
 G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み17,426行。
 M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
+
+## §122 G01：非原子的な実境界面の全原子因子の幅の厳密な境界（11-16）
+
+### 122.1 検証済みの追加
+
+追加は **2ファイル158行・明示宣言5**。累計 **162ファイル17,584行・明示宣言858**。
+WalkingAdjunctionAtomicFactorWidth.lean は91行・3宣言、
+WalkingAdjunctionBoundaryFactorWidth.lean は67行・2宣言。
+個々の宣言・証明は200行以下、新規Leanの行長は100文字以下。
+同じG01の全実随伴・実filtrationの構成に必要な、実原子分解・実道の単位と合成の法則、
+実水平合成・幅の加法性・非原子性の照合とその証明の分割であり、一覧IDは追加しない。
+
+構成済みの実原子的な自由な道の比較関手について、長さ1の道の実像が原子的となることを示した。
+道を最初の実生成射と長さ0の残りへ分け、残りを空の道へ戻して元の実生成射を回収した。
+任意の実生成射eを、前の道qと後の道rの間へ置いた実道について、
+その実像の幅が、前の実像・e・後の実像の三つの幅の和となることを示した。
+これは元の実関手の合成の等式と実水平合成の加法性を、同じ実対象の上で二度使う法則である。
+
+全実像が非原子的であれば道の長さは1でない。
+この道は指定した原子eを含むので、前後の道の少なくとも一方は長さが正となる。
+その実像の元の実長さが正であることを既存の実比較関手から回収し、
+幅の正値へ移すと、eの幅は全実像の幅より真に小さくなる。
+指定する原子を先頭や末尾に限定せず、全位置の実因子に証明した。
+
+最後の実境界面では、元が非退化な実原子なら面は非原子的である（§121）。
+その面の実道への分解の任意の実原子因子に上の厳密な境界を使い、
+全実面の幅の非増加（§117）へ合成すると、その因子の幅は元の実鎖より真に小さい。
+こちらは全四Hom・全正の次数を扱う。
+始点minusの実鎖の先頭面については、最初の併合が先頭でない場合に、
+面の非原子性と元との幅の等式（§121）を使い、任意の実原子因子の幅が元より真に小さいことを示した。
+結論は元の全実関手との等式で指定した実分解に対するものである。
+
+### 122.2 型と未完の境界
+
+原典はRiehl–Verity Proposition 4.2.15の境界面の原子分解、
+HA Proposition 4.7.3.3、Kerodon Remark 6.2.1.4（Tag 02EN）。追加の型は以下。
+
+```lean
+lemma walkingAdjunctionAtomicPath_atomic_of_length_one {n : ℕ}
+    {A B : WalkingAdjunctionAtomicVertex n} (p : Quiver.Path A B) (hp : p.length = 1) :
+    WalkingAdjunctionLevelIsAtomic ((walkingAdjunctionAtomicPathFunctor n).map p)
+
+lemma walkingAdjunctionAtomicFactor_width_sum {n : ℕ}
+    {A B C D : WalkingAdjunctionAtomicVertex n}
+    (q : Quiver.Path A B) (e : B ⟶ C) (r : Quiver.Path C D) :
+    walkingAdjunctionOrdinalWidth
+      ((walkingAdjunctionAtomicPathFunctor n).map (q.comp (e.toPath.comp r))) =
+      walkingAdjunctionOrdinalWidth ((walkingAdjunctionAtomicPathFunctor n).map q) +
+        (walkingAdjunctionOrdinalWidth e.val +
+          walkingAdjunctionOrdinalWidth ((walkingAdjunctionAtomicPathFunctor n).map r))
+
+lemma walkingAdjunctionAtomicFactor_width_lt {n : ℕ}
+    {A B C D : WalkingAdjunctionAtomicVertex n}
+    (q : Quiver.Path A B) (e : B ⟶ C) (r : Quiver.Path C D)
+    (ha : ¬ WalkingAdjunctionLevelIsAtomic
+      ((walkingAdjunctionAtomicPathFunctor n).map (q.comp (e.toPath.comp r)))) :
+    walkingAdjunctionOrdinalWidth e.val < walkingAdjunctionOrdinalWidth
+      ((walkingAdjunctionAtomicPathFunctor n).map (q.comp (e.toPath.comp r)))
+
+lemma walkingAdjunctionLastFace_atomicFactor_width_lt {n : ℕ} {X Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom X Y) (n + 1))
+    (ha : WalkingAdjunctionLevelIsAtomic (X := ⟨X⟩) (Y := ⟨Y⟩) H)
+    (hnd : ULift.up H ∈ (WalkingAdjunctionHomShape.{u} X Y).nonDegenerate (n + 1))
+    {B C : WalkingAdjunctionAtomicVertex n}
+    (q : Quiver.Path (⟨⟨X⟩⟩ : WalkingAdjunctionAtomicVertex n) B) (e : B ⟶ C)
+    (r : Quiver.Path C (⟨⟨Y⟩⟩ : WalkingAdjunctionAtomicVertex n))
+    (hfac : (walkingAdjunctionAtomicPathFunctor n).map (q.comp (e.toPath.comp r)) =
+      finiteChainFace H (Fin.last (n + 1))) :
+    walkingAdjunctionOrdinalWidth e.val < walkingAdjunctionOrdinalWidth H
+
+lemma walkingAdjunctionFirstFace_atomicFactor_width_lt {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom .minus Y) (n + 1))
+    (ha : WalkingAdjunctionLevelIsAtomic (X := ⟨.minus⟩) (Y := ⟨Y⟩) H)
+    (hnd : ULift.up H ∈ (WalkingAdjunctionHomShape.{u} .minus Y).nonDegenerate (n + 1))
+    (hk : walkingAdjunctionFirstBottomMergeIndex H
+      (walkingAdjunctionAtomic_endpoint_cards H ha).2 hnd ≠ 0)
+    {B C : WalkingAdjunctionAtomicVertex n}
+    (q : Quiver.Path (⟨⟨.minus⟩⟩ : WalkingAdjunctionAtomicVertex n) B) (e : B ⟶ C)
+    (r : Quiver.Path C (⟨⟨Y⟩⟩ : WalkingAdjunctionAtomicVertex n))
+    (hfac : (walkingAdjunctionAtomicPathFunctor n).map (q.comp (e.toPath.comp r)) = H.δ₀) :
+    walkingAdjunctionOrdinalWidth e.val < walkingAdjunctionOrdinalWidth H
+```
+
+境界面の任意の位置の実原子因子について、元より幅が真に小さいことまで検証した。
+各因子の実親の幅・深さを含む全ての順位の比較は未完。
+特に、始点plusの因子の実親では幅が1増えるので、この厳密な不等式だけから
+親の幅が元より真に小さいと主張はしない。
+最初の併合が先頭にある場合の境界面の全検収、原典の文字列の幅・fillable条件との全比較、
+parental subcomputadのfiltrationと全付着の構成も未完。
+元のQCatAdjunctionからの全coherentな延長、水平反対の向きの全比較、
+同じF≫U・単位・余単位・HAモデルとの照合も未完である。
+G01の済みは0、G02以降も未完を維持する。
+
+### 122.3 検証と進み
+
+with_build_lock.sh --class impl --wait 3600、最大240秒の短い枠で対象ビルドと追加5根だけの公理監査を確認した。
+最終固定コマンドの対象はWalkingAdjunctionBoundaryFactorWidth:oleanで、今回のもう一方のファイルも取り込む。
+対象ビルド・監査と外側の終了は0、最終対象ビルドは警告なし。
+実道の型とその実像の元の対象を保つため、幅の加法性は同じ実対象を明示した等式の合成で輸送して最終検証した。
+追加5根は入力名と出力名が一致し、公理依存はpropext・Classical.choice・Quot.soundのみ。
+sorryAx・追加公理なし。入力・根・監査全出力・対象ビルドログは
+[g12-boundary-factor-audit-2026-11-16/](g12-boundary-factor-audit-2026-11-16/)に保存した。
+M15・drafts・main・⑤aの既存ファイル・Interfaceは変更せず、全体ビルド・大きい監査は行っていない。
+
+G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み17,584行。
+M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
