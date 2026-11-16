@@ -3,7 +3,7 @@
   "complete": 3,
   "total": 6,
   "added": 0,
-  "verified_head": "this commit: base 281695394fbf998ebeeda3ac403c768aff541931",
+  "verified_head": "this commit: base de539cf65aec15a11315ae76fffbbd27376d7d2e",
   "items": {
     "HT01": "complete",
     "HT02": "complete",
@@ -12,12 +12,12 @@
     "HT05": "not-started",
     "HT06": "not-started"
   },
-  "latest_complete_audit_checkpoint": "reduced-cover-standard-extension-checkpoint.json",
-  "latest_complete_audit_declarations": 2197,
+  "latest_complete_audit_checkpoint": "finite-complex-completion-hom-ext-checkpoint.json",
+  "latest_complete_audit_declarations": 2198,
   "working_changes_unverified": [
     "AffineResolvedRowPointLaw"
   ],
-  "pending_check": "bundle-264 terminal rc1; see audit module inventory; failed dependencies await next batch",
+  "pending_check": "bundle-265 terminal rc1; see audit module inventory; failed dependencies await next batch",
   "next_proof_route": "remaining-20000-plan.md",
   "initial_record": {
     "stage": "5inf3a",
@@ -391,7 +391,7 @@
       "lines": 74
     }
   ],
-  "working_written_lines": 21712,
+  "working_written_lines": 21776,
   "source_inventory_scope": "Only HT01\u2013HT06 source additions/changes against 336942ab0, plus untracked files; excludes pre-existing Comparison modules.",
   "static_check": "static-pending-check.json; not Lean validation",
   "build_wait_history": [
@@ -410,9 +410,9 @@
   ],
   "current_request_last_confirmed_live_utc": "2026-11-15 04:52:28 UTC",
   "HT02_remaining": "complete; see ht02-complete.json",
-  "prepared_source_lines": 21712,
-  "prepared_modules": 263,
-  "verified_source_lines": 21629,
+  "prepared_source_lines": 21776,
+  "prepared_modules": 264,
+  "verified_source_lines": 21677,
   "provisional_total_source_lines": [
     22223,
     25443
