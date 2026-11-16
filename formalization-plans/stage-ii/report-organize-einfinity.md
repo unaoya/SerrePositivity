@@ -265,3 +265,11 @@ main cd79e9cc5でDAG XIII・NSの対応表とCitationの略号表が更新され
 255本のプレビューは保留0。実適用と対象ビルド・v3bでの検収は未実行。
 
 一覧：済み 0／全体 5（うち追加 0）。
+
+### 6.1 残る匿名local instanceの確認（18:43）
+
+340本目で、静的な候補の最後の一件KanDiagramBrown.lean:32のbinderが保留になった。実名 `…HomotopyWeight.instIsStableUnderBaseChangeSSetFibrations_serrePositivity` を原compilerと原native表で確認し、既存のlocalなbase change安定性のinstanceの新名のみを明示する記録を追加した。元のscoped SSet模型、型、値、localな属性と計算上限は変更しない。モデル構造や仮定を新しく加えていない。個別記録は匿名instance計4件、相対修飾binder1件。
+
+340本のプレビュー保留0を確認して採取を続ける。
+
+一覧：済み 0／全体 5（うち追加 0）。
