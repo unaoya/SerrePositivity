@@ -3,7 +3,7 @@
   "complete": 3,
   "total": 6,
   "added": 0,
-  "verified_head": "this commit: base 1e34461a0562c1dc97fcfd95b23a66b517a403ab",
+  "verified_head": "this commit: base dedf150d61e2a00aa372ef0ad74381967824971d",
   "items": {
     "HT01": "complete",
     "HT02": "complete",
@@ -12,13 +12,13 @@
     "HT05": "not-started",
     "HT06": "not-started"
   },
-  "latest_complete_audit_checkpoint": "canonical-augmentation-reflection-checkpoint.json",
-  "latest_complete_audit_declarations": 2030,
+  "latest_complete_audit_checkpoint": "original-target-augmentation-checkpoint.json",
+  "latest_complete_audit_declarations": 2034,
   "working_changes_unverified": [
     "CoefficientSingleTotalNaturality",
-    "AffineCoverTargetAugmentation"
+    "AffineAnyRestrictedCohomologyClasses"
   ],
-  "pending_check": "bundle-221 terminal rc1; see audit module inventory; failed dependencies await next batch",
+  "pending_check": "bundle-222 terminal rc1; see audit module inventory; failed dependencies await next batch",
   "next_proof_route": "remaining-20000-plan.md",
   "initial_record": {
     "stage": "5inf3a",
