@@ -2093,3 +2093,90 @@ G4・G5は未完。検証済みの数学の先端は `415b27a9b` のまま。未
 検証待ち中の追加分の計数（2026-11-16 16:18）：固定した十二本823行はSHA256一致を再確認し、同じ検証一件の待ちを維持している。その後に別の下書きとして加えた五本は、FrobeniusArrowMapLaws 91行、RectangularPerfectRowAugmentation 65行、RectangularPerfectRowFunctor 82行、CechConstantComplexAugmentation 63行、CechConstantAugmentedDouble 69行、計370行。いずれも本体未登録・未検証・未コミット。検証済み11,713行に全十七本1,193行と将来の登録17行を加えた見込み上の現物は **12,923行相当**。完成見込み14,600〜17,300行にはこれらも含める。補正付き全複体の射影そのもの・相対proper fppf・F8四角形・Noether帰納・G5は未完。
 
 一覧：済み1／全体3（うち追加0）。
+
+同じ全複体上の補正付き射影の成分の分割（既存G4の全複体の比較の内数、80〜140行）：`cechConstantTotalRetractionComponent` は前記の同じ各直和項の式で、定数増大列のtotalの次数nからsingle増大列の同じtotalの次数nへの射を作る。`…_ι_succ`・`…_ι_zero_zero`・`…_ι_zero_succ` は元の各直和入射での式。ここではまだ微分との可換性やretractionを結論しない。微分との可換性と、同じ包含との合成が恒等である式を次の分割で示す。
+
+同じ補正付き射影の微分の法則（直前の全複体の比較の内数）：`cechConstantAugmentation_vertical` は ε₀.f q とF₀の縦微分の合成が、qの偶奇により0またはε₀.f(q+1)である式。`cechConstantAugmentation_horizontal` は同じε₀.f qの後の水平微分が0である式。前者は元のεの複体の射の法則と定数列の0/id微分、後者は既存B1の増大複体のd²=0の各成分を使う。
+
+同じ補正付き射影の単位の法則（直前の全複体の比較の内数、35〜60行）：`cechConstantTotalRetractionComponent_section` は、元の包含iの実際のtotalの各次数の写像にPの成分を合成すると恒等になる式。正の水平成分は同じ恒等、零次は元のsingleの標準同型の正逆、零水平・正縦次数はsingleの零対象の一意性を使う。Pが複体の射となることを省略せず、その可換性は別途必要。
+
+同じretractから完全性を戻す法則（既存G4の全複体の比較の内数、25〜45行）：C,D:Cochain(Module R)、i:C→D、r:D→C、i≫r=id と D.Acyclic から C.Acyclic を得る `cechComplex_acyclic_of_retraction`。各次数の元のhomologyの射へ単位の式を送り、Dのhomologyが零である既存の判定を使う。導来層コホモロジーとの比較ではなく、同じcochainの内部の既存のhomologyの法則。
+
+
+## G4：元の矩形の行の自然な係数比較と整数係数の全複体への移送
+`CechConstantAugmentation`（41行）：
+- `fullCechConstantAugmentation`：同じ空集合の係数から、全てのタプルの有限像への制限による増大。
+- `fullCechConstantAugmentation_apply`：同じ全次数の増大の評価は、元の有限像への制限。
+
+`CechIntegerLiftTotalComponents`（88行）：
+- `cechIntegerLiftFunctor`：同じ整数係数を、同型な大きい整数環によるスカラー制限で移す同値関手。
+- `cechIntegerLiftEquivalence`：同じスカラー制限の正逆と単位を、整数環の異なる宇宙を保って明示した同値。
+- `cechIntegerLiftFunctor_map_apply`：同じスカラー制限は、元の準同型の関数を変えない。
+- `cechIntegerLiftComplex_exactAt_iff`：同じスカラー制限は、元の複体の各次数の完全性を保ち、反映する。
+- `cechIntegerLiftBicomplex`：元の二重複体に、同じ既存の係数関手を二方向へ適用した値。
+- `cechIntegerLiftTotalComponentIso`：同じ全複体の各直和と係数移送との、元の余積を保つ標準同型。
+- `cechIntegerLiftTotalComponentIso_ι`：同じ直和の標準比較は、元の全複体の各入射を保つ。
+- `cechIntegerLiftFunctor.IsEquivalence` のinstance：同じ正逆・単位・余単位から同値を供給する。
+- `cechIntegerLiftFunctor.Additive` のinstance：同じスカラー制限の加法性を供給する。
+
+`CechIntegerLiftTotal`（84行）：
+- `cechIntegerLiftTotalComponentIso_d`：同じ直和の標準比較は、元の二方向の符号付き微分と可換。
+- `cechIntegerLiftTotalIso`：元の全複体を、同じ整数係数の同値関手で移した全複体との標準同型。
+- `cechIntegerLiftTotal_acyclic_iff`：同じ整数係数の移送は、元の全複体の完全性を保ち反映する。
+- `cechIntegerLiftTotal_acyclic_of_rows`：元の整数係数の行が完全なら、既存のHAの判定により元の全複体も完全。
+
+`CechConstantComplex`（93行）：
+- `cechConstantComplex`：定数余単体図式を、同じ既存の交代余面複体関手で写した列。
+- `cechConstantComplex_d`：同じ定数列の微分は、元の交代和により0と恒等を交互に取る。
+- `cechConstantComplex_exact`：同じ定数列は、元の0/恒等の微分により正次数で完全。
+- `cechConstantSingleAugmentation`：同じ零次 single から、元の定数列への標準的な包含。
+- `cechConstantSingleAugmentation_f_zero`：同じ包含の零次成分は、元の single の標準同型。
+- `cechConstantSingleAugmentation_quasiIso`：同じ零次 single から定数列への包含は、元の増大を保つ準同型。
+
+`RectangularCechTupleIntersection`（50行）：
+- `cechOpenIntersection_tupleSupport_eq_iInf`：タプルの有限像の交叉は、重複も含む同じ全座標の交叉。
+- `schemeCechTupleIntersection_rectangular`：元の full Čech の交叉を、同じ矩形タプルの転置で表す。
+- `openIntersectionFamily_refinement`：元の全座標の交叉は、同じタプルの再添字付けによる交叉に含まれる。
+
+`RectangularCechCoefficients`（92行）：
+- `rectangularCechSectionsIso`：元の full Čech の実際の交叉と、同じ矩形の混合積の切断環の標準同型。
+- `rectangularCechSectionsIso_augmentation`：元の交叉上への増大は、同じ矩形の混合積の基底の Γ へ移る。
+- `rectangularCechMap_le`：元の nerve の射は、同じ有限像の交叉による矩形の開を保つ。
+- `rectangularCechSectionsIso_naturality`：同じ矩形の係数比較は、元の交叉上の appLE と全ての単体の射に自然。
+
+`OpenFamilyCechRefinement`（90行）：
+- `openFamilyCechRefinementOpen_le`：同じ開の細分は、元のタプル開の包含を与える。
+- `openFamilyCechRefinementMap`：同じ開の包含と元の各射影を脚に持つ、混合積の細分の射。
+- `openFamilyCechRefinementMap_π`：同じ細分の射の射影は、元の開の包含を持つ。
+- `openFamilyCechRefinementMap_base`：同じ細分の射は、元の基底の射を保つ。
+- `openFamilyCechRefinementMap_inclusion`：同じ細分の射は、元の nerve への入射を保つ。
+- `openFamilyCechRefinementMap_iso`：元のタプル開との標準同型は、同じ開の細分に自然。
+
+`OpenFamilyCechRefinementCoefficients`（63行）：
+- `openSections_homOfLE`：同じ開の包含の Γ は、元の前層の制限と標準的に一致する。
+- `openFamilyCechSectionsIso_refinement`：同じタプル開の切断と混合積の比較は、元の開の細分の制限に自然。
+
+`FrobeniusDirectLimitRingIsoNaturality`（33行）：
+- `frobeniusDirectLimitRingIso_naturality`：同じ元の可換四角に、実際の Frobenius 順極限の環同型は自然。
+
+`OpenFamilyCechPerfectRefinement`（48行）：
+- `openFamilyCechPerfectSectionsEquiv_refinement`：同じ開の細分に、元のタプル開と混合積の Frobenius 係数の比較は自然。
+
+`RectangularPerfectRowEquiv`（94行）：
+- `rectangularPerfectRowEquiv`：同じ余積射の係数を、元の矩形タプルの実際の係数の積へ移す標準環同型。
+- `rectangularPerfectRowEquiv_of`：同じ行の係数比較を有限段で評価すると、元の入射と同じ切断環の逆同型を使う。
+- `rectangularPerfectRowEquiv_apply`：元の矩形の切断環の標準比較に戻すと、同じ転置した成分の評価になる。
+
+`RectangularPerfectRowNaturality`（72行）：
+- `rectangularPerfectRowEquiv_naturality`：同じ行の係数同型は、元の余積射の nerve と実際の矩形の appLE に自然。
+
+
+検証：十二本をまとめた下書き検証 `2g-g4-rectangular-refinement-check-5.log` 成功。モジュールごとの直接importも対象ビルドで確認し、整数係数の移送の入口に必要な Mathlib.Algebra.Homology.ShortComplex.HomologicalComplex を追加した。修正した下書きと本体は十二本とも全バイト一致、固定manifestとも照合済み。対象十二本と直接importerの入口のビルドは `2g-g4-rectangular-refinement-native-2.log`、**5,270ジョブ・終了0**。別の共有鍵で、非公開・生成分を含め実際のモジュールの所有宣言を全件監査し、**107宣言・標準三公理のみ・終了0**（`2g-g4-rectangular-refinement-audit.log`）。内訳は上のモジュール順に4、22、12、14、3、9、10、3、1、1、27、1。追加公理・sorry・既存宣言の型変更・資源上限の変更・200行超の宣言なし。unused simp と長行のstyle警告、および入口の既存haveIのstyle警告は残る。鍵は各回 --class impl --wait 3600 で一件ずつ、ビルドと監査は別枠。root・下流全ビルド・AlgebraicGeometry全体監査は行わない。
+
+今回848行＋登録12行＝860行。基準56ea849a3から再計数した外枠計数は **12,573行**（新規177モジュール本体12,350行、既存追加25行、入口198行）。新規所有宣言の小監査累計 **1,232**、既存15宣言は別計上。後続の別下書き七本は525行・登録予定7行で、これらも含めると13,105行相当。完成見込み14,600〜17,300行、承認済み外枠18,000行は不変。
+
+到達点は、元の矩形の各行の実際の係数と水平の全ての単体の射を保つ自然な環の比較、および同じ整数係数の全複体を既存HAの行の完全性へ渡す移送。元の定数列とsingleの包含も準同型であることまで。後続の行の図式への束ね方と増大、補正付き射影の成分と単位はまだ下書き。微分との可換性・相対proper fppf・F8全複体・元の中心を保持するNoether帰納・G5は未完。最終のAugmentedRingCechExactと利用側の型は不変。停止点2g-2ではない。
+
+11-16 16:25の調整役の連絡に従い、略号表の変更を含むmainは取り込んでいない。今の停止点までは現在の枝で継続する。
+
+一覧：済み1／全体3（うち追加0）。
