@@ -1634,3 +1634,19 @@ Frobenius の既存の矢印の図式の端点の照合（着手前、既存の�
 今回2モジュール130行＋入口2行。新規130モジュール本体8,683行、既存追加25行を含む本体8,708行。登録130行・入口の追加空行21行を全て含む外枠計数 **8,859行**。新規小監査累計881宣言、既存15宣言は別計上。同じ係数を増大環図式としてまとめた値と、その忠実平坦な完全性への適用は下書きで、この束には含めない。G4のスキームのアフィン比較・二重 Čech の完全性の判定・Noether帰納、G5は残る。見込み約10,000〜13,500行・外枠16,000行は不変。
 
 一覧：済み1／全体3（うち追加0）。
+
+
+同じ標準比較の元の矢印の射に対する自然性（着手前、既存の係数移送・自然性の内数、65〜140行）：`frobeniusConervePerfectIso_arrow_naturality F` は元の環の可換な四角形 F:f→g に対し、同じ元の mapCechConerve F の各環の Frobenius 順極限写像と、同じ実際の frobeniusDirectLimitArrowMap F の conerve の射を、上の標準比較が結ぶこと。既存の frobeniusArrowCocone_map を同じ conerve 関手で写し、同じ有限段の脚で評価する。これにより次数の自然性だけでなく、後続の有限型模型の射・filtered な図式の射にも標準比較を渡す。出力型や範囲は変更しない。
+
+
+## G4：同じ増大環図式への係数比較と、忠実平坦な完全性の接続
+
+`FrobeniusAugmentedRingCoefficients`（136行）の宣言：`frobeniusRingConerve` は元の conerve の各環の実際の Frobenius 順極限と同じ環準同型の余単体図式。`frobeniusAugmentedRingCoefficients` は同じ基底の順極限と元の head の順極限写像による増大環図式。`frobeniusRingConerveIso`・`frobeniusAugmentedRingCoefficientsIso` は検証した同じ標準比較と増大の可換性を余単体・増大図式の自然同型にまとめる。`frobeniusAugmentedRingCoefficients_exact_iff` は B1 の既存の同型不変性による、同じ AugmentedRingCechExact と実際の順極限の矢印の IsCechExact の同値。`frobeniusAugmentedRingCoefficients_exact_of_faithfullyFlat` は忠実平坦な元のアフィン射の係数の増大 Čech 完全性。`frobeniusAugmentedRingCoefficients_exact_baseChange_of_faithfullyFlat` は元の任意の底変換の同じ係数の完全性。新しい完全性の定義は導入しない。
+
+単独検証、本体とのソース完全一致、対象と入口のビルド5,216ジョブ成功、小監査20宣言（実際の所有元による生成・非公開宣言込み）・標準三公理のみ、終了状態0。ログ `2g-frobenius-augmented-ring-coefficients-check-1.log`・`2g-frobenius-augmented-ring-coefficients-native.log`・`2g-frobenius-augmented-ring-coefficients-audit.log`。局所的な backward.isDefEq.respectTransparency false、既定の資源制限。letIの style 警告あり。追加公理・sorry・既存の型変更・200行超の宣言なし。共有鍵 --class impl --wait 3600、待ちは一つ、対象ビルドと小監査は別枠。root・下流全ビルド・全体監査なし。
+
+今回1モジュール136行＋入口1行。基準56ea849a3から独立に再計数し、新規131モジュール本体8,819行。既存追加25行を含む本体8,844行、入口の追加152行（登録131・空行21）を全て含む外枠計数 **8,996行**。新規小監査累計901宣言、既存15宣言は別計上。
+
+アフィンな忠実平坦な射と元の任意の底変換について、実際の元の conerve の各環の Frobenius 係数の増大完全性へ到達した。スキームの任意の有限アフィン被覆との自然な比較・非アフィンの proper fppf の二重 Čech・Noether帰納、G5の実際の模型と二つの filtered な移送はなお残る。この束だけで Thm 2.9 十分性や停止点2g-2の完成とは呼ばない。元の四角形に対する係数比較の自然性は下書きの検証中。見込み約10,000〜13,500行・外枠16,000行は不変。
+
+一覧：済み1／全体3（うち追加0）。
