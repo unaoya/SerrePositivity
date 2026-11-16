@@ -1882,3 +1882,40 @@ G4・G5と停止点2g-2は未完。最終の AugmentedRingCechExact と利用側
 
 
 次の同じ有限積の Frobenius 係数への接続（着手前、既存の有限極限・係数移送の法則の内数、100〜210行）：`frobeniusDirectLimitPiMap` は元の各評価環準同型から得る、FrobeniusDirectLimit (ΠᵢAᵢ)→+*ΠᵢFrobeniusDirectLimit Aᵢ。有限の添字では各成分の有限段を同じ最大の段へそろえて全射性、各成分の冪零次数の有限上界で単射性を示し、`frobeniusDirectLimitPiEquiv` にまとめる。評価と元の成分ごとの環の射への自然性を同じ有限段の元で確認する。矩形タプルの係数比較に使い、無限積と順極限の交換は主張しない。最終出力の型や既存 API は変更しない。
+
+
+同じ余積の切断の比較の増大の式（着手前、直前の55〜120行の内数）：`schemeGammaSigmaIso_desc Z f` は元の合成族の余積射 Sigma.desc f の Γ を同じ標準同型で移すと、元の各 fᵢ の Γ を成分とする積への射になること。元の基底の環からの増大を保つ式として使う。
+
+
+次の有限ファイバー積と同じ有限余積の比較（着手前、既存の有限極限・余積の分配と射影・自然性の法則の内数、200〜440行）：族 fᵢ:Zᵢ→S と t:Fin(n+1)→ι について `finiteFamilyCechComponent f n t` は同じ widePullback S (Z∘t) (f∘t)。`finiteFamilyCechInclusion f n t` は各射影の後に元の余積入射を合成する、同じ Arrow.mk(Sigma.desc f) の nerve 項への標準射。射影と基底への合成の式、および単体の射 a に沿う t∘a と元の nerve の射との自然性を示す。その有限余積の標準射 `finiteFamilyCechMap` の同型性は、Mathlib の FinitaryPreExtensive.isPullback_sigmaDesc と既存の有限ファイバー冪の Cartesian square を使って帰納する。元の nerve を別の模型に置き換えず、全ての射影・増大を保つ標準比較を供給する。
+
+
+同じ混合ファイバー積の帰納の分割（着手前、直前200〜440行の内数、80〜150行）：`finiteFamilyFiberZeroIso` は Fin 1 で添字づけた任意の元の族の widePullback と零番の対象との、射影と基底への射を保つ同型。`isPullback_finiteFamilyFiberSucc` は任意の Fin(n+2) の族の混合 widePullback を、同じ末尾の mixed widePullback と先頭の一個の基底上の Cartesian square として表す。既存の有限ファイバー冪の法則と同じ普遍性を、元の各対象が異なる場合へ適用する。既存宣言の型変更は行わない。
+
+
+同じ分配の単位段の分割（着手前、上の200〜440行の内数、45〜85行）：`finiteFamilyCechMap_zero_isIso` は同じ標準射 finiteFamilyCechMap f ⦋0⦌ の同型性。各成分の同じ単位同型、Fin 1 のタプルの評価による余積の再添字付け、元の余積射の一個のファイバー冪の単位同型を合成し、元の各入射と射影への合成で標準射そのものに一致することを確認する。
+
+
+同じ成分比較の再添字付けの法則（着手前、既存の射・係数移送の自然性の内数、30〜70行）：`schemeGammaSigmaIso_reindex_naturality` は ρ:ι→κ と Zᵢ→Wρᵢ の元の成分の射に対し、元の余積射 Sigma.desc(fᵢ≫Sigma.ι(W,ρᵢ)) の Γ と、同じ積の各射影 ρᵢ の後の Γ(fᵢ) の自然性。`frobeniusDirectLimitPiMap_reindex_naturality` は任意の添字写像 ρ:κ→ι と成分の環の射 Aρⱼ→Bⱼ について、実際の積環の射と Frobenius 係数の比較が同じ成分の式で可換であること。単体の射で添字型が変わる場合にも同じ写像で接続し、同じ添字型の場合だけの自然性で代用しない。
+
+
+同じ分配の後続段の分割（着手前、直前200〜440行の内数、130〜220行）：`finiteFamilyCechMap_base` は元の標準射と基底への射の一致。`finiteFamilyCechMap_succ_isIso` は同じ n 次の標準射の同型性から n+1 次の同型性を、混合積の Cartesian square と Mathlib の有限余積の分配で示す。`finiteFamilyCechMap_isIso` は有限な成分の族の全ての次数への帰納。中間の同型の合成が元の標準射と一致することを、同じ各入射・先頭の射影・末尾への射で確認する。既存の nerve の対象や写像を別のものへ置き換えない。
+
+
+## G4：同じ有限族の切断・Frobenius 係数・混合ファイバー積の標準比較
+
+`SchemeGammaSigma`（71行）：`schemeGammaSigmaIso` は元の余積の Γ と成分の Γ の積の標準同型。`…_π` は各射影が元の入射の Γ である式。`…_desc` は元の族の余積射の Γ が各成分の Γ を持つ積への射へ移る式。`…_naturality` は同じ添字の族の射に自然であること。`…_reindex_naturality` は添字を変える元の成分の射にも自然であること。既存の Γ の右随伴性による極限保存と opCoproductIsoProduct を使う。
+
+`FrobeniusDirectLimitPi`（119行）：`frobeniusPi_primeCast` は元の成分の条件から積環の標数条件を供給する。`frobeniusDirectLimitPiMap` は元の各評価からの実際の Frobenius 係数写像、`…_of` は同じ有限段での評価。`…_naturality`・`…_reindex_naturality` は同じ成分の環の射と、添字を変える成分の環の射への自然性。`…_injective` は有限な成分の冪零次数の上界で単射性、`…_surjective` は成分の有限段を同じ最大の段へ移して全射性を示す。`frobeniusDirectLimitPiEquiv` はその同じ写像の環同型。空の族も除外しない。写像と自然性は任意の族、全単射性は Fintype の仮定の下で示し、無限積との交換は主張しない。
+
+`FiniteFamilyCechComponents`（108行）：`finiteFamilyCechComponent` は元の族の混合 widePullback。`finiteFamilyCechInclusion` は元の各射影と余積入射による、元の余積射の nerve への標準射。`…_π`・`…_base` は各射影と基底への射を保つ式。`finiteFamilyCechComponentMap` は単体の射による元の射影の再添字付け。`finiteFamilyCechInclusion_naturality` はそれが元の nerve の全ての射と可換であること。`finiteFamilyCechMap` はその同じ標準射の余積。
+
+`FiniteFamilyFiberRecursion`（78行）：`finiteFamilyFiberZeroIso` は同じ一個の混合ファイバー積の、元の零番の射影を持つ単位同型。`isPullback_finiteFamilyFiberSucc` は元の混合した n+2 個のファイバー積を、同じ末尾と先頭の基底上の Cartesian square として表す。任意の有限極限を持つ圏の法則で、既存の一定の対象の有限ファイバー冪の API は変更していない。
+
+`FiniteFamilyCechUnit`（54行）：`finiteFamilyCechMap_zero_isIso` は元の標準射 finiteFamilyCechMap の零次の同型性。元の単位同型、Fin 1 のタプルの零番での評価による再添字付け、元の余積射の一個のファイバー冪の単位同型を合成し、同じ入射・射影で元の標準射への一致を示した。
+
+五本をまとめた下書き検証成功、各本体は下書きと全バイト一致。新規五本と直接 importer の入口のビルド5,241ジョブ成功、別の共有鍵の所有宣言の小監査10＋17＋15＋8＋2＝52宣言・標準三公理のみ。生成・非公開宣言も実際の所有元で全件走査。終了状態全て0。ログ `2g-finite-family-coefficient-comparison-check-4.log`・`…-native.log`・`…-audit.log`。一部の射影・自然性と単位の証明に局所的な backward.isDefEq.respectTransparency false、既定の資源制限。長い行と unused Fintype のstyle警告あり。追加公理・sorry・既存の型変更・200行超の宣言なし。鍵 --class impl --wait 3600、待ちは一つ、ビルドと小監査は別枠。root・下流全ビルド・全体監査なし。
+
+今回五本430行＋入口5行。基準56ea849a3から独立に再計数し、新規156モジュール本体10,519行、既存追加25行（削除14行は相殺しない）、入口追加177行（登録156・空行21）を含む外枠計数 **10,721行**。新規小監査累計1,023宣言、既存15宣言は別計上。有限余積と元の nerve との標準比較の後続次数の同型性は下書きで、この束には含めない。相対 proper fppf の実際の行の完全性、F8 全複体と元のブローアップを保つ Noether帰納、G5は未完。最終の AugmentedRingCechExact と利用側の型は不変。見込み約12,000〜15,500行・外枠16,000行は不変。停止点2g-2ではない。
+
+一覧：済み1／全体3（うち追加0）。
