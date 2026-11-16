@@ -1969,3 +1969,20 @@ G4・G5と停止点2g-2は未完。最終の AugmentedRingCechExact と利用側
 再開後の今回三本280行＋登録3行＝283行。基準56ea849a3から再計数し、新規160モジュール本体10,994行、既存追加25行、入口追加181行を含む外枠計数 **11,200行**。新規所有宣言の小監査累計1,077、既存15宣言は別計上。元の有限族の同じ係数比較と単体の射・増大の自然性は閉じた。混合積と元のタプル開の同定は未検証の下書き。相対proper fppf、F8の全複体とNoether帰納、G5は未完。完成見込みの幅は引き続き約13,800〜17,100行（ユーザー承認の外枠18,000行内）。最終のAugmentedRingCechExactと利用側の型は不変。停止点2g-2ではない。
 
 一覧：済み1／全体3（うち追加0）。
+
+同じ矩形タプルの行の分割（既存G4の被覆・係数の法則の内数、70〜140行）：`schemeCechTupleOpen_iInf` は元の nerve のタプル開と有限交叉の交換で、同じ添字の行列の転置を実際の開の等号として与える。`openIntersectionFamily_iSup` は非空有限交叉を全タプルで取ると元の被覆と同じ全体を覆う式、`…_isAffine` はアフィン対角の下のアフィン性。`finiteAffineOpenIntersectionFamilyFrobeniusCech_exact` は元の平坦全射とその同じ交叉の族に、検証済みの有限アフィン族の完全性を代入した式。非アフィン始域の Γ の平坦性は仮定せず、同じ族の余積射を用いる。
+
+同じ開の係数への移送の分割（上の混合積・係数比較の内数、70〜130行）：`openFamilyCechOpenMap_eq_resLE` は同じ制限写像が Mathlib の resLE と一致する式。`openFamilyCechSectionsIso` は元の nerve のタプル開の実際の構造層の切断環と、同じ混合積の Γ の同型。`…_naturality` は元の nerve の appLE と混合積の全ての射の Γ を同じ自然同型で照合する。Mathlib の Opens.topIso と resLE_app_top を使い、単独の H の同型で代用しない。
+
+
+## G4：元のタプル開と混合積、同じ矩形の平坦な行
+
+`OpenFamilyCechComparison`（223行）：`openFamilyCechInclusion` は元の開の族 Uᵢ.ι≫f の混合積から f の元の nerve への標準射。`…_π`・`…_base` は元の射影・基底の式、`…_range` は同じタプル開への像の包含。`openFamilyCechToOpen`・`…_fac` はその開の入射による因子化。`openFamilyCechProjection`・`…_fac` はタプル開の各射影の元の Uᵢ への持ち上げ。`openFamilyCechFromOpen` はそれらを脚とする元の混合積への射。`openFamilyCechIso` はこの二つが互いに逆である標準同型、`…_hom_fac` は元の入射との合成の式。`openFamilyCechInclusion_naturality` は単体の射と混合積の再添字付けへの自然性。`openFamilyCechOpenMap`・`…_fac` は元の nerve の射の同じタプル開への制限、`openFamilyCechIso_naturality` は同じ標準同型がこの制限と全ての単体の射に自然であること。アフィン性・滑らかさ・固有性を仮定しない。
+
+`RectangularCechOpenRows`（70行）：`schemeCechTupleOpen_iInf` は有限交叉とタプル開の交換を、同じ矩形タプルの転置による元の開の等号で与える。`openIntersectionFamily_iSup` は非空有限交叉を全タプルで取る族が元の被覆と同じ全体を覆う式、`openIntersectionFamily_isAffine` は同じ交叉のアフィン性をアフィン対角と元の被覆から供給する。`finiteAffineOpenIntersectionFamilyFrobeniusCech_exact` は元の平坦全射と同じ有限交叉族の余積射について、既存の有限アフィン族の完全性を適用した増大環 Čech の完全性。非アフィンな始域の Γ の平坦性を推論しない。有限族が空の場合も除外せず、交叉を取る添字は非空有限（実際の正次数の Fin(k+1)）とする。
+
+検証：二本をまとめた下書き検証成功（`2g-open-family-rectangular-cech-check-4.log`）、本体と下書きは全バイト一致。対象二本と直接importerの入口のビルド5,247ジョブ成功（`2g-open-family-rectangular-cech-native.log`）。別の共有鍵で実際の所有宣言を非公開・生成分も含めて全件監査し、28＋4＝32宣言・標準三公理のみ（`2g-open-family-rectangular-cech-audit.log`）。各終了0。局所的なbackward.isDefEq.respectTransparency false、既定資源上限、haveIのstyle警告のみ。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。共有鍵 --class impl --wait 3600、待ちは一つ。root・下流全ビルド・全体監査なし。
+
+今回293行＋登録2行＝295行。外枠計数は **11,495行**（新規162モジュール本体11,287行、既存追加25行、入口183行）。新規所有宣言の小監査累計1,109、既存15宣言は別計上。タプル開との標準同型と元の単体の射への自然性、同じ矩形の開の等号と同じ交叉族への平坦な行の代入まで到達した。構造層のappLEとの同じ係数比較は下書き検証成功・本体ビルド前。相対proper fppfの二重複体への代入、F8全複体・Noether帰納、G5は未完。外枠18,000行、完成見込み約13,800〜17,100行。最終出力と利用側の型は不変。
+
+一覧：済み1／全体3（うち追加0）。
