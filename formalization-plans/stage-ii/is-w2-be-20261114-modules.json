@@ -260,5 +260,6 @@
   "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRoofNativeFamily",
   "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointRoofProbeArrow",
   "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.PointCosliceFamilyHomotopyNaturality",
-  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.PointCosliceFiberIntervalFamily"
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.PointCosliceFiberIntervalFamily",
+  "SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.UnderTwistedPairing"
 ]

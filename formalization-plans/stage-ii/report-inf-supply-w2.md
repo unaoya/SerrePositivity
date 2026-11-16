@@ -17897,3 +17897,62 @@ cosliceEdgewiseCollapse ⦋n⦌ ≫ (pointJoinStdSimplexIso n).hom ≫
 残りは、同じedgewise重みの左半分を最初の点に潰し右半分の順序を保持する式と、Under.wを使った交差射の合成則。その後も元のcorrected pairingの指定全同型・同じ底のpathとの照合が必要で、通常圏の表示のこの補題だけからR03hの全族の最終等式を推論しない。元のnative fiber射自身の弱同値性・R03d・3b-4aは未完。共有鍵は返却済み、起動中の自レーンのビルドなし。
 
 一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+## 299. Underの同じ全射族のcoslice表示とtwisted pairingの厳密な一致（2026-11-16）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+§298.3の未完の照合を証明した。元のedgewise重みを標準単体で読み、同じ崩壊の左半分を零、右半分を元の順序の後続頂点に送る式を証明した。同じ長い射列の全対象・全射を照合し、交差ブロックにはUnder.wを使った。自然性や原射の選択を置き換えていない。既存構成同士の表示の法則・証明分割で、数学の一覧は増やさない。
+
+一時ファイルisw2-collapse-standard5の個別Lean検査は終了0。最初の型の展開ではYonedaの対象をnerve Cに明示した。交差射の反対圏の恒等射はchangeで元の通常圏の恒等射と明示してから既存のid_compを使った。計算上限は変更しない。以下はprivateな証明分割も含む主張の型。各部分200行未満。
+
+```lean
+private def collapseStandard (n : ℕ) : (Δ[n+n+1] : SSet.{u}) ⟶ Δ[n+1]
+
+private def collapseOrder (n : ℕ) : Fin (n+n+1+1) →o Fin (n+2)
+
+private lemma collapseOrder_map (n : ℕ) :
+    stdSimplex.map (SimplexCategory.mkHom (collapseOrder.{u} n)) = collapseStandard.{u} n
+
+private lemma collapseStandard_left (n : ℕ) :
+    stdSimplex.map (SimplexCategory.mkHom (joinLeftOrderHom n n)) ≫ collapseStandard.{u} n =
+      (SSet.const (SSet.yonedaEquiv (𝟙 (Δ[0] : SSet.{u}))) : Δ[n] ⟶ Δ[0]) ≫
+        joinInl Δ[0] Δ[n] ≫ (pointJoinStdSimplexIso n).hom
+
+private lemma collapseStandard_right (n : ℕ) :
+    stdSimplex.map (SimplexCategory.mkHom (joinRightOrderHom n n)) ≫ collapseStandard.{u} n =
+      stdSimplex.δ (0 : Fin (n+2))
+
+private lemma collapseOrder_left (n : ℕ) (i : Fin (n+1)) :
+    collapseOrder.{u} n (joinLeftOrderHom n n i) = 0
+
+private lemma collapseOrder_right (n : ℕ) (i : Fin (n+1)) :
+    collapseOrder.{u} n (joinRightOrderHom n n i) = i.succ
+
+private lemma collapseOrder_left_val (n : ℕ) (i : Fin (n+n+1+1)) (hi : i.val < n+1) :
+    collapseOrder.{u} n i = 0
+
+private lemma collapseOrder_right_val (n : ℕ) (i : Fin (n+n+1+1)) (hi : ¬ i.val < n+1) :
+    collapseOrder.{u} n i = (twistedPairingRightIndex i hi).succ
+
+private lemma collapseUnderChain {C : Type u} [Category.{u} C] (c : C)
+    {n : ℕ} (σ : Fin (n+1) ⥤ Under c) :
+    (collapseOrder.{u} n).monotone.functor ⋙ nerveUnderChain c σ =
+      twistedPairingSimplex ((Functor.const (Under c)).obj (Opposite.op c))
+        (Under.forget c) (fun i => i.hom) σ
+
+lemma nerveUnderMap_comp_cosliceTwistedArrowMap {C : Type u} [Category.{u} C] (c : C) :
+    nerveUnderMap c ≫ cosliceTwistedArrowMap (nervePoint c) =
+      twistedPairingNerveMap ((Functor.const (Under c)).obj (Opposite.op c)) (Under.forget c)
+        (fun i => i.hom) (fun {_ _} f => by simp)
+```
+
+対象ビルド366・小監査で検収する。これは元のraw pairingの全次数のcoslice表示に用いる照合であり、同じcorrected pairingの指定pathを通じた全族の最終等式R03hは別に残る。⑤a・公式入口・公式監査は変更しない。
+
+### 299.2 検収
+
+新規1本148行、公開1補題・実環境宣言3。対象ビルド366（依存を含む1,586 jobs）・小監査とも終了0。共有鍵 --class impl --wait 3600、一枚の整理券、gtimeout 1700秒でビルドと小監査の間だけ使用。小監査267モジュール・1,715宣言、propext・Classical.choice・Quot.soundのみ、sorryAx・追加公理なし。自レーン累計263本・17,996行、実環境1,708宣言。外枠まで4,004行。宣言名の照合で異なるファイル間の重複0、内部も0。git diff --check通過。証跡isw2-build366.log・isw2-validation366.json・isw2-declaration-collision-scan366.json。登録候補一覧に追加。元の構成・既存宣言・⑤a・公式入口・公式監査は変更しない。
+
+Underの同じ全射族の二つの表示の厳密な一致は閉じた。これを局所化後の同じ全円柱へ送り、元のcorrected pairingの指定全同型と同じpathに接続する段は残る。R03h・R03d・3b-4aは未完。
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
