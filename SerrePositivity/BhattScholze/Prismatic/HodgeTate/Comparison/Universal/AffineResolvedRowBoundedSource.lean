@@ -47,14 +47,13 @@ def affineResolvedRowBoundedSourceIso
   let α := (Construction61.crystallineCoverMap P).toRingHom
   let M := (affineBaseModules P hP r).obj n
   let K := (CochainComplex.singleFunctor (ModuleCat.{u} A) 0).obj M
-  let ε := (complexResolutionAugmentation A).app K
+  let ε : (complexResolutionFunctor A).obj K ⟶ K := (complexResolutionAugmentation A).app K
   let F := finiteDerivedCompletionFunctor (fun _ : Fin 2 => (p : B))
-  let e : F.obj ((complexDerivedExtension α).obj (DerivedCategory.Q.obj K)) ≅
-      DerivedCategory.Q.obj ((finiteCompletionFunctor (fun _ : Fin 2 => (p : B))).obj
-        (baseChange α ((complexResolutionFunctor A).obj K))) := by
-    simpa only [map_natCast, Functor.id_obj, F, B] using
-      (nativeCompletedScalarModelIso α (fun _ : Fin 2 => (p : A)) ε
-        (complexResolutionAugmentation_quasiIso A K) (complexResolutionFunctor_kFlat A K))
+  let t := nativeDerivedScalarModelIso α ε
+    (complexResolutionAugmentation_quasiIso A K) (complexResolutionFunctor_kFlat A K)
+  let e := F.mapIso t ≪≫
+    (finiteDerivedCompletionComparison (fun _ : Fin 2 => (p : B))).app
+      (baseChange α ((complexResolutionFunctor A).obj K))
   exact (coverImageCompletionNatIso P).app ((complexResolutionFunctor A).obj K) ≪≫
     e.symm ≪≫ F.mapIso (unboundedBoundedModuleBaseChangeIso α M)
 
