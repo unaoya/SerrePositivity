@@ -26,7 +26,7 @@ def available_memory():
  except (OSError,ValueError,TypeError,subprocess.SubprocessError):return 0
 available=available_memory();workers=2 if available>=20*1024**3 else 1
 os.environ['LEAN_NUM_THREADS']='1'
-new=[];failure=None
+new=[];failure=None;deferred=[]
 pending=iter(f for f in required if not valid(f))
 def capture(path):
  remaining=a.budget-(time.monotonic()-started)
@@ -35,6 +35,7 @@ def capture(path):
  with tempfile.TemporaryDirectory(prefix='oe-w1-refs-') as td:
   td=Path(td);(td/'files.json').write_text(json.dumps([path]));dest=td/'output'
   with (caps/(m+'.log')).open('w') as log:r=subprocess.run(['gtimeout','--kill-after=3s',str(limit),sys.executable,str(tools/'bulk_namespace.py'),'collect','--root',str(root),'--files',str(td/'files.json'),'--output',str(dest)],stdout=log,stderr=subprocess.STDOUT,cwd=root)
+  if r.returncode==124 and limit<190:return dict(deferred=True,file=path,returncode=r.returncode,seconds=time.monotonic()-begin,limit_seconds=limit,reason='Batch tail timeout; retry in a new lease with unchanged per-file ceiling 190')
   if r.returncode:return dict(failed=True,file=path,returncode=r.returncode,seconds=time.monotonic()-begin,limit_seconds=limit)
   data=checked_capture(root,path,dest/(m+'.json'));assert data['elaboration']['collector_sha256']==helper_sha;target=caps/(m+'.json');target.write_bytes((dest/(m+'.json')).read_bytes());rec=dict(signature=sig,returncode=0,source=path,capture_sha256=hashlib.sha256(target.read_bytes()).hexdigest(),source_sha256=fingerprint[path],seconds=time.monotonic()-begin,helper_sha=helper_sha,refs=len(data['refs']),commands=len(data['commands']));(caps/(m+'.receipt.json')).write_text(json.dumps(rec,indent=2)+'\n');return rec
 with concurrent.futures.ThreadPoolExecutor(max_workers=workers) as pool:
@@ -48,12 +49,14 @@ with concurrent.futures.ThreadPoolExecutor(max_workers=workers) as pool:
   done,_=concurrent.futures.wait(active,return_when=concurrent.futures.FIRST_COMPLETED)
   for future in done:
    path=active.pop(future);rec=future.result()
-   if rec and rec.get('failed'):
+   if rec and rec.get('deferred'):
+    deferred.append(rec);print('Deferred incomplete batch-tail capture',rec,flush=True)
+   elif rec and rec.get('failed'):
     failure=rec;(out/'last-error.json').write_text(json.dumps(failure,indent=2)+'\n');print('Capture incomplete',failure,flush=True)
    elif rec:
     new.append(rec);print('Captured',path,round(rec['seconds'],2),flush=True)
    submit()
-completed=[f for f in required if valid(f)];(out/'completed-files.json').write_text(json.dumps(completed,indent=2)+'\n');summary=dict(signature=sig,base=base,completed_files=len(completed),total_files=len(required),unchanged_scope_files=len(stable),candidate_files=len(files),new_captures=new,failure=failure,workers=workers,available_memory_bytes=available,seconds=time.monotonic()-started,complete=len(completed)==len(required));(out/'progress.json').write_text(json.dumps(summary,indent=2)+'\n');print(json.dumps(summary))
+completed=[f for f in required if valid(f)];(out/'completed-files.json').write_text(json.dumps(completed,indent=2)+'\n');summary=dict(signature=sig,base=base,completed_files=len(completed),total_files=len(required),unchanged_scope_files=len(stable),candidate_files=len(files),new_captures=new,failure=failure,deferred_captures=deferred,workers=workers,available_memory_bytes=available,seconds=time.monotonic()-started,complete=len(completed)==len(required));(out/'progress.json').write_text(json.dumps(summary,indent=2)+'\n');print(json.dumps(summary))
 if not failure and (out/'pause-after-batch').exists() and not summary['complete']:
  print('Requested orchestration pause after successful capture and lease release',flush=True);raise SystemExit(76)
 raise SystemExit(1 if failure else 0)
