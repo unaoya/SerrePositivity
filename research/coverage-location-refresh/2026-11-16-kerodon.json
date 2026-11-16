@@ -1,17 +1,22 @@
 {
  "stats": {
-  "line:short": 165,
+  "kept:unverified": 264,
   "same": 2651,
   "line:name": 933,
   "moved:rename": 2573,
-  "kept:unverified": 84,
   "moved:name": 27,
-  "kept:ambiguous-field": 7,
-  "moved:short": 16,
+  "unresolved:none": 1,
   "unresolved:ambiguous": 1,
-  "skip": 186
+  "kept:ambiguous-field": 2,
+  "skip": 186,
+  "line:short": 5
  },
  "unresolved": [
+  {
+   "source": "research/kerodon-coverage/review/ch9.csv:9.1.2.12",
+   "entry": "SerrePositivity.InfinityCategories.F2.IsFilteredInfinity.cocone_nonempty @ SerrePositivity/InfinityCategories/Core/Filtered/FilteredInfinity.lean:26",
+   "candidates": []
+  },
   {
    "source": "research/kerodon-coverage/items.csv:2.5.3.5",
    "entry": "δ_obj @ SerrePositivity/InfinityCategories/DGNerve/Basic.lean:63",
@@ -22,11 +27,6 @@
   }
  ],
  "changed": [
-  {
-   "source": "research/kerodon-coverage/review/ch1.csv:1.1.0.1",
-   "old": "SimplexCategory.mk @ Mathlib/AlgebraicTopology/SimplexCategory/Defs.lean:50",
-   "new": "SimplexCategory.Hom.mk @ Mathlib/AlgebraicTopology/SimplexCategory/Defs.lean:76"
-  },
   {
    "source": "research/kerodon-coverage/review/ch1.csv:1.1.2.14",
    "old": "SerrePositivity.SimplexPresentation.equivalence @ SerrePositivity/CategoryTheory/Simplex/GenRelEquivalence.lean:486",
@@ -386,46 +386,6 @@
    "source": "research/kerodon-coverage/review/ch10.csv:10.1.3.3",
    "old": "SimplexCategory.Truncated @ Mathlib/AlgebraicTopology/SimplexCategory/Truncated.lean",
    "new": "SimplexCategory.Truncated @ Mathlib/AlgebraicTopology/SimplexCategory/Defs.lean:147"
-  },
-  {
-   "source": "research/kerodon-coverage/review/ch2.csv:2.1.2.17",
-   "old": "CategoryTheory.MonoidalCategoryStruct.leftUnitor @ Mathlib/CategoryTheory/Monoidal/Category.lean:102",
-   "new": "CategoryTheory.Functor.leftUnitor @ Mathlib/CategoryTheory/Functor/Category.lean:171"
-  },
-  {
-   "source": "research/kerodon-coverage/review/ch2.csv:2.1.2.17",
-   "old": "CategoryTheory.MonoidalCategoryStruct.rightUnitor @ Mathlib/CategoryTheory/Monoidal/Category.lean:104",
-   "new": "CategoryTheory.Functor.rightUnitor @ Mathlib/CategoryTheory/Functor/Category.lean:179"
-  },
-  {
-   "source": "research/kerodon-coverage/review/ch2.csv:2.1.2.19",
-   "old": "CategoryTheory.MonoidalCategory.triangle @ Mathlib/CategoryTheory/Monoidal/Category.lean:207",
-   "new": "SemimoduleCat.MonoidalCategory.triangle @ Mathlib/Algebra/Category/ModuleCat/Monoidal/Basic.lean:144"
-  },
-  {
-   "source": "research/kerodon-coverage/review/ch2.csv:2.1.5.2",
-   "old": "CategoryTheory.Functor.LaxMonoidal.left_unitality @ Mathlib/CategoryTheory/Monoidal/Functor.lean:84",
-   "new": "SSet.Truncated.HomotopyCategory.BinaryProduct.left_unitality @ Mathlib/AlgebraicTopology/SimplicialSet/HoFunctorMonoidal.lean:319"
-  },
-  {
-   "source": "research/kerodon-coverage/review/ch2.csv:2.1.5.2",
-   "old": "CategoryTheory.Functor.LaxMonoidal.right_unitality @ Mathlib/CategoryTheory/Monoidal/Functor.lean:87",
-   "new": "SSet.Truncated.HomotopyCategory.BinaryProduct.right_unitality @ Mathlib/AlgebraicTopology/SimplicialSet/HoFunctorMonoidal.lean:325"
-  },
-  {
-   "source": "research/kerodon-coverage/review/ch2.csv:2.2.1.10",
-   "old": "CategoryTheory.Bicategory.leftUnitor @ Mathlib/CategoryTheory/Bicategory/Basic.lean:71",
-   "new": "CategoryTheory.Localization.Monoidal.leftUnitor @ Mathlib/CategoryTheory/Localization/Monoidal/Basic.lean:151"
-  },
-  {
-   "source": "research/kerodon-coverage/review/ch2.csv:2.2.1.10",
-   "old": "CategoryTheory.Bicategory.rightUnitor @ Mathlib/CategoryTheory/Bicategory/Basic.lean:73",
-   "new": "CategoryTheory.Localization.Monoidal.rightUnitor @ Mathlib/CategoryTheory/Localization/Monoidal/Basic.lean:158"
-  },
-  {
-   "source": "research/kerodon-coverage/review/ch2.csv:2.2.1.13",
-   "old": "CategoryTheory.Bicategory.triangle @ Mathlib/CategoryTheory/Bicategory/Basic.lean:125",
-   "new": "CategoryTheory.CartesianMonoidalCategory.ofChosenFiniteProducts.triangle @ Mathlib/CategoryTheory/Monoidal/Cartesian/Basic.lean:150"
   },
   {
    "source": "research/kerodon-coverage/review/ch2.csv:2.3.5.1",
@@ -4596,11 +4556,6 @@
    "source": "research/kerodon-coverage/review/ch4.csv:4.8.8.19",
    "old": "SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.pushoutObjObj_right @ SerrePositivity/InfinityCategories/Core/PrecompositionPushoutProduct.lean:37",
    "new": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.IsPrecompositionEquivalence.pushoutObjObj_right @ SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/Equivalence/PrecompositionPushoutProduct.lean:39"
-  },
-  {
-   "source": "research/kerodon-coverage/review/ch4.csv:4.9.1.20",
-   "old": "Ordinal.instLinearOrder @ Mathlib/SetTheory/Ordinal/Basic.lean:283",
-   "new": "Fin.instLinearOrder @ Mathlib/Order/Fin/Basic.lean:61"
   },
   {
    "source": "research/kerodon-coverage/review/ch4.csv:4.9.4.1",
@@ -8808,11 +8763,6 @@
    "new": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.exists_limitCone_tensor_with_components @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/TensorLimitConeExistence.lean:27"
   },
   {
-   "source": "research/kerodon-coverage/review/ch7.csv:7.4.5.3",
-   "old": "CategoryTheory.Cat.instHasColimits @ Mathlib/CategoryTheory/Category/Cat/Colimit.lean:38",
-   "new": "AlgebraicGeometry.PresheafedSpace.instHasColimits @ Mathlib/Geometry/RingedSpace/PresheafedSpace/HasColimits.lean:289"
-  },
-  {
    "source": "research/kerodon-coverage/review/ch7.csv:7.4.6.3",
    "old": "SerrePositivity.InfinityCategories.cocartesianPullback_snd_isPrecompositionEquivalence_of_innerAnodyne @ SerrePositivity/InfinityCategories/F1/Cocartesian/RelativeOverAnodyneRestriction.lean:36",
    "new": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.cocartesianPullback_snd_isPrecompositionEquivalence_of_innerAnodyne @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/RelativeOverAnodyneRestriction.lean:38"
@@ -9141,16 +9091,6 @@
    "source": "research/kerodon-coverage/review/ch7.csv:7.6.2.16",
    "old": "SerrePositivity.InfinityCategories.terminalTargetPullback_isBinaryProduct @ SerrePositivity/InfinityCategories/Stable/ZeroTargetProduct.lean:24",
    "new": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.terminalTargetPullback_isBinaryProduct @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/ExamplesOfLimitsAndColimits/ZeroTargetProduct.lean:26"
-  },
-  {
-   "source": "research/kerodon-coverage/review/ch7.csv:7.6.2.24",
-   "old": "CategoryTheory.Over.ConstructProducts.over_binaryProduct_of_pullback @ Mathlib/CategoryTheory/Limits/Constructions/Over/Products.lean:332",
-   "new": "Over.ConstructProducts.over_binaryProduct_of_pullback @ Mathlib/CategoryTheory/Limits/Constructions/Over/Products.lean:332"
-  },
-  {
-   "source": "research/kerodon-coverage/review/ch7.csv:7.6.2.24",
-   "old": "CategoryTheory.Over.over_hasTerminal @ Mathlib/CategoryTheory/Limits/Constructions/Over/Products.lean:353",
-   "new": "Over.over_hasTerminal @ Mathlib/CategoryTheory/Limits/Constructions/Over/Products.lean:353"
   },
   {
    "source": "research/kerodon-coverage/review/ch7.csv:7.6.2.30",
@@ -11056,11 +10996,6 @@
    "source": "research/kerodon-coverage/review/ch9.csv:9.1.2.8",
    "old": "SerrePositivity.InfinityCategories.F2.Ind.isKappaFiltered_nerve_of_cardinalFiltered @ SerrePositivity/InfinityCategories/F2/Ind/FilteredPosetNerve.lean:20",
    "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.isKappaFiltered_nerve_of_cardinalFiltered @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FilteredInfinityCategories/FilteredPosetNerve.lean:24"
-  },
-  {
-   "source": "research/kerodon-coverage/review/ch9.csv:9.1.2.12",
-   "old": "SerrePositivity.InfinityCategories.F2.IsFilteredInfinity.cocone_nonempty @ SerrePositivity/InfinityCategories/Core/Filtered/FilteredInfinity.lean:26",
-   "new": "CategoryTheory.IsFiltered.cocone_nonempty @ Mathlib/CategoryTheory/Filtered/Basic.lean:292"
   },
   {
    "source": "research/kerodon-coverage/review/ch9.csv:9.1.3.1",
@@ -13478,84 +13413,19 @@
    "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.totalKanProductComparison_isWeakHomotopyEquivalence_of_sifted @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/TensorProductsOfInfinityCategories/SiftedProductComparison.lean:36"
   },
   {
-   "source": "research/kerodon-coverage/items.csv:1.1.0.1",
-   "old": "SimplexCategory.mk (⦋n⦌) @ Mathlib/AlgebraicTopology/SimplexCategory/Defs.lean:50",
-   "new": "SimplexCategory.Hom.mk (⦋n⦌) @ Mathlib/AlgebraicTopology/SimplexCategory/Defs.lean:76"
-  },
-  {
    "source": "research/kerodon-coverage/items.csv:1.1.0.11",
    "old": "X _⦋n⦌（単体）, X _⦋0⦌（頂点） @ Mathlib/AlgebraicTopology/SimplicialSet/Basic.lean:33",
    "new": "X _⦋n⦌（単体）, X _⦋0⦌（頂点） @ Mathlib/Algebra/MvPolynomial/Basic.lean:124"
   },
   {
-   "source": "research/kerodon-coverage/items.csv:1.1.4.12",
-   "old": "SSet.Subcomplex.Skeleton.isPushout @ Mathlib/AlgebraicTopology/SimplicialSet/Skeleton.lean:395",
-   "new": "SSet.relativeCellComplexOfMono.isPushout @ Mathlib/AlgebraicTopology/SimplicialSet/Skeleton.lean:395"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:1.1.4.13",
-   "old": "SerrePositivity.boundaryFaceGluing @ SerrePositivity/InfinityCategories/Kerodon/TheLanguageOfInfinityCategories/SimplicialSets/BoundaryFaceGluing.lean:59",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.boundaryFaceGluing @ SerrePositivity/InfinityCategories/Kerodon/TheLanguageOfInfinityCategories/SimplicialSets/BoundaryFaceGluing.lean:59"
-  },
-  {
    "source": "research/kerodon-coverage/items.csv:1.1.5.2",
    "old": "Functor.const @ Mathlib/CategoryTheory/Functor/Const.lean",
    "new": "Functor.const @ Mathlib/CategoryTheory/Functor/Const.lean:36"
   },
   {
-   "source": "research/kerodon-coverage/items.csv:1.1.5.2",
-   "old": "PiZeroConstant.discrete @ SerrePositivity/InfinityCategories/Kerodon/TheLanguageOfInfinityCategories/SimplicialSets/PiZeroConstant.lean:52",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.discrete @ SerrePositivity/InfinityCategories/Kerodon/TheLanguageOfInfinityCategories/SimplicialSets/PiZeroConstant.lean:52"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:1.1.5.10",
-   "old": "PiZeroConstant.discrete @ SerrePositivity/InfinityCategories/Kerodon/TheLanguageOfInfinityCategories/SimplicialSets/PiZeroConstant.lean:52",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.discrete @ SerrePositivity/InfinityCategories/Kerodon/TheLanguageOfInfinityCategories/SimplicialSets/PiZeroConstant.lean:52"
-  },
-  {
    "source": "research/kerodon-coverage/items.csv:1.1.5.12",
    "old": "Functor.const @ Mathlib/CategoryTheory/Functor/Const.lean",
    "new": "Functor.const @ Mathlib/CategoryTheory/Functor/Const.lean:36"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:1.1.5.12",
-   "old": "PiZeroConstant.discrete @ SerrePositivity/InfinityCategories/Kerodon/TheLanguageOfInfinityCategories/SimplicialSets/PiZeroConstant.lean:52",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.discrete @ SerrePositivity/InfinityCategories/Kerodon/TheLanguageOfInfinityCategories/SimplicialSets/PiZeroConstant.lean:52"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:1.2.1.12",
-   "old": "PiZeroConstant.homEquiv @ SerrePositivity/InfinityCategories/Kerodon/TheLanguageOfInfinityCategories/SimplicialSets/PiZeroConstant.lean:128",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.homEquiv @ SerrePositivity/InfinityCategories/Kerodon/TheLanguageOfInfinityCategories/SimplicialSets/PiZeroConstant.lean:128"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:1.2.1.13",
-   "old": "PiZeroConstant.homEquiv @ SerrePositivity/InfinityCategories/Kerodon/TheLanguageOfInfinityCategories/SimplicialSets/PiZeroConstant.lean:128",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.homEquiv @ SerrePositivity/InfinityCategories/Kerodon/TheLanguageOfInfinityCategories/SimplicialSets/PiZeroConstant.lean:128"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:1.2.1.18",
-   "old": "PiZeroConstant.component @ SerrePositivity/InfinityCategories/Kerodon/TheLanguageOfInfinityCategories/SimplicialSets/PiZeroConstant.lean:87",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.component @ SerrePositivity/InfinityCategories/Kerodon/TheLanguageOfInfinityCategories/SimplicialSets/PiZeroConstant.lean:87"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:1.2.1.18",
-   "old": "PiZeroConstant.fromComponents @ SerrePositivity/InfinityCategories/Kerodon/TheLanguageOfInfinityCategories/SimplicialSets/PiZeroConstant.lean:102",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.fromComponents @ SerrePositivity/InfinityCategories/Kerodon/TheLanguageOfInfinityCategories/SimplicialSets/PiZeroConstant.lean:102"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:1.2.1.19",
-   "old": "PiZeroConstant.homEquiv @ SerrePositivity/InfinityCategories/Kerodon/TheLanguageOfInfinityCategories/SimplicialSets/PiZeroConstant.lean:128",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.homEquiv @ SerrePositivity/InfinityCategories/Kerodon/TheLanguageOfInfinityCategories/SimplicialSets/PiZeroConstant.lean:128"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:1.2.1.21",
-   "old": "PiZeroConstant.homEquiv @ SerrePositivity/InfinityCategories/Kerodon/TheLanguageOfInfinityCategories/SimplicialSets/PiZeroConstant.lean:128",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.homEquiv @ SerrePositivity/InfinityCategories/Kerodon/TheLanguageOfInfinityCategories/SimplicialSets/PiZeroConstant.lean:128"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:1.2.4.7",
-   "old": "SSet.horn.desc @ Mathlib/AlgebraicTopology/SimplicialSet/HornColimits.lean:242",
-   "new": "SSet.horn.IsCompatible.desc @ Mathlib/AlgebraicTopology/SimplicialSet/HornColimits.lean:242"
   },
   {
    "source": "research/kerodon-coverage/items.csv:1.3.2.5",
@@ -13596,11 +13466,6 @@
    "source": "research/kerodon-coverage/items.csv:1.4.5.7",
    "old": "SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyCategoryBridge @ SerrePositivity/InfinityCategories/Kerodon/TheLanguageOfInfinityCategories/InfinityCategories/HomotopyCategoryBridge.lean:92",
    "new": "SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyCategoryBridge @ SerrePositivity/InfinityCategories/Kerodon/TheLanguageOfInfinityCategories/InfinityCategories/HomotopyCategoryBridge.lean:94"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:1.4.5.7",
-   "old": "SerrePositivity.InfinityCategories.HomotopyCategory.bridge_naturality @ SerrePositivity/InfinityCategories/Kerodon/TheLanguageOfInfinityCategories/InfinityCategories/HomotopyCategoryMap.lean:66",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.bridge_naturality @ SerrePositivity/InfinityCategories/Kerodon/TheLanguageOfInfinityCategories/InfinityCategories/HomotopyCategoryMap.lean:66"
   },
   {
    "source": "research/kerodon-coverage/items.csv:1.4.6.1",
@@ -13678,11 +13543,6 @@
    "new": "SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.isContractibleKan_iff_trivialKanFibration @ SerrePositivity/InfinityCategories/Kerodon/TheLanguageOfInfinityCategories/FunctorsOfInfinityCategories/ContractibleKan.lean:39"
   },
   {
-   "source": "research/kerodon-coverage/items.csv:1.5.5.11",
-   "old": "SerrePositivity.InfinityCategories.kanComplex_of_trivialKanFibration_target @ SerrePositivity/InfinityCategories/Kerodon/TheLanguageOfInfinityCategories/FunctorsOfInfinityCategories/KanMonoArrowFactorization.lean:27",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.kanComplex_of_trivialKanFibration_target @ SerrePositivity/InfinityCategories/Kerodon/TheLanguageOfInfinityCategories/FunctorsOfInfinityCategories/KanMonoArrowFactorization.lean:27"
-  },
-  {
    "source": "research/kerodon-coverage/items.csv:1.5.5.12",
    "old": "SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.isContractibleKan_iff_trivialKanFibration @ SerrePositivity/InfinityCategories/Kerodon/TheLanguageOfInfinityCategories/FunctorsOfInfinityCategories/ContractibleKan.lean:37",
    "new": "SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.isContractibleKan_iff_trivialKanFibration @ SerrePositivity/InfinityCategories/Kerodon/TheLanguageOfInfinityCategories/FunctorsOfInfinityCategories/ContractibleKan.lean:39"
@@ -13703,44 +13563,14 @@
    "new": "SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.trivialKanFibration_pre_of_innerAnodyne @ SerrePositivity/InfinityCategories/Kerodon/TheLanguageOfInfinityCategories/FunctorsOfInfinityCategories/InnerAnodyneEquivalence.lean:29"
   },
   {
-   "source": "research/kerodon-coverage/items.csv:1.5.6.2",
-   "old": "SerrePositivity.InfinityCategories.F1.compositionTriangleSpace_isContractibleKan @ SerrePositivity/InfinityCategories/Kerodon/TheLanguageOfInfinityCategories/FunctorsOfInfinityCategories/CompositionTriangleSpace.lean:67",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.compositionTriangleSpace_isContractibleKan @ SerrePositivity/InfinityCategories/Kerodon/TheLanguageOfInfinityCategories/FunctorsOfInfinityCategories/CompositionTriangleSpace.lean:69"
-  },
-  {
    "source": "research/kerodon-coverage/items.csv:1.5.7.6",
    "old": "SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.trivialKanFibration_pre_of_innerAnodyne @ SerrePositivity/InfinityCategories/Kerodon/TheLanguageOfInfinityCategories/FunctorsOfInfinityCategories/InnerAnodyneEquivalence.lean:27",
    "new": "SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.trivialKanFibration_pre_of_innerAnodyne @ SerrePositivity/InfinityCategories/Kerodon/TheLanguageOfInfinityCategories/FunctorsOfInfinityCategories/InnerAnodyneEquivalence.lean:29"
   },
   {
-   "source": "research/kerodon-coverage/items.csv:2.1.2.17",
-   "old": "CategoryTheory.MonoidalCategoryStruct.leftUnitor @ Mathlib/CategoryTheory/Monoidal/Category.lean:102",
-   "new": "CategoryTheory.Functor.leftUnitor @ Mathlib/CategoryTheory/Functor/Category.lean:171"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:2.1.2.19",
-   "old": "CategoryTheory.MonoidalCategory.triangle @ Mathlib/CategoryTheory/Monoidal/Category.lean:207",
-   "new": "SemimoduleCat.MonoidalCategory.triangle @ Mathlib/Algebra/Category/ModuleCat/Monoidal/Basic.lean:144"
-  },
-  {
    "source": "research/kerodon-coverage/items.csv:2.1.4.17",
    "old": "CategoryTheory.Functor.LaxMonoidal（comp のインスタンス） @ Mathlib/CategoryTheory/Monoidal/Functor.lean",
    "new": "CategoryTheory.Functor.LaxMonoidal（comp のインスタンス） @ Mathlib/CategoryTheory/Monoidal/Functor.lean:65"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:2.2.1.10",
-   "old": "CategoryTheory.Bicategory.leftUnitor @ Mathlib/CategoryTheory/Bicategory/Basic.lean:71",
-   "new": "CategoryTheory.Localization.Monoidal.leftUnitor @ Mathlib/CategoryTheory/Localization/Monoidal/Basic.lean:151"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:2.2.1.13",
-   "old": "CategoryTheory.Bicategory.triangle @ Mathlib/CategoryTheory/Bicategory/Basic.lean:125",
-   "new": "CategoryTheory.CartesianMonoidalCategory.ofChosenFiniteProducts.triangle @ Mathlib/CategoryTheory/Monoidal/Cartesian/Basic.lean:150"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:2.2.2.2",
-   "old": "CategoryTheory.Bicategory.Span @ Mathlib/CategoryTheory/Bicategory/Span/Basic.lean:42",
-   "new": "CategoryTheory.Span @ Mathlib/CategoryTheory/Bicategory/Span/Basic.lean:42"
   },
   {
    "source": "research/kerodon-coverage/items.csv:2.2.5.5",
@@ -13823,16 +13653,6 @@
    "new": "SerrePositivity.DifferentialGraded.DGFunctor @ SerrePositivity/DifferentialGraded/Functor/QuasiEquivalence.lean:45"
   },
   {
-   "source": "research/kerodon-coverage/items.csv:2.5.3.1",
-   "old": "DGNerve.Simplex @ SerrePositivity/InfinityCategories/Kerodon/ExamplesOfInfinityCategories/DifferentialGradedCategories/Simplex.lean:95",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex @ SerrePositivity/InfinityCategories/Kerodon/ExamplesOfInfinityCategories/DifferentialGradedCategories/Simplex.lean:97"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:2.5.3.1",
-   "old": "DGNerve.SimplexData @ SerrePositivity/InfinityCategories/Kerodon/ExamplesOfInfinityCategories/DifferentialGradedCategories/Simplex.lean:39",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData @ SerrePositivity/InfinityCategories/Kerodon/ExamplesOfInfinityCategories/DifferentialGradedCategories/Simplex.lean:41"
-  },
-  {
    "source": "research/kerodon-coverage/items.csv:2.5.3.5",
    "old": "dgNerve @ SerrePositivity/InfinityCategories/Kerodon/ExamplesOfInfinityCategories/DifferentialGradedCategories/DGNerveBasic.lean:35",
    "new": "dgNerve @ SerrePositivity/InfinityCategories/Kerodon/ExamplesOfInfinityCategories/DifferentialGradedCategories/DGNerveBasic.lean:37"
@@ -13888,44 +13708,9 @@
    "new": "toH0 @ SerrePositivity/InfinityCategories/Kerodon/ExamplesOfInfinityCategories/DifferentialGradedCategories/HomotopyCategory.lean:38"
   },
   {
-   "source": "research/kerodon-coverage/items.csv:2.5.6.1",
-   "old": "AlgebraicTopology.DoldKan.equivalence @ Mathlib/AlgebraicTopology/DoldKan/Equivalence.lean:167",
-   "new": "CategoryTheory.Abelian.DoldKan.equivalence @ Mathlib/AlgebraicTopology/DoldKan/Equivalence.lean:167"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:2.5.6.1",
-   "old": "AlgebraicTopology.DoldKan.N @ Mathlib/AlgebraicTopology/DoldKan/Equivalence.lean:141",
-   "new": "CategoryTheory.Abelian.DoldKan.N @ Mathlib/AlgebraicTopology/DoldKan/Equivalence.lean:141"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:2.5.6.3",
-   "old": "AlgebraicTopology.DoldKan.Γ @ Mathlib/AlgebraicTopology/DoldKan/Equivalence.lean:145",
-   "new": "CategoryTheory.Abelian.DoldKan.Γ @ Mathlib/AlgebraicTopology/DoldKan/Equivalence.lean:145"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:2.5.6.11",
-   "old": "AlgebraicTopology.DoldKan.equivalence @ Mathlib/AlgebraicTopology/DoldKan/Equivalence.lean:167",
-   "new": "CategoryTheory.Abelian.DoldKan.equivalence @ Mathlib/AlgebraicTopology/DoldKan/Equivalence.lean:167"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:2.5.6.12",
-   "old": "AlgebraicTopology.DoldKan.equivalence @ Mathlib/AlgebraicTopology/DoldKan/Equivalence.lean:167",
-   "new": "CategoryTheory.Abelian.DoldKan.equivalence @ Mathlib/AlgebraicTopology/DoldKan/Equivalence.lean:167"
-  },
-  {
    "source": "research/kerodon-coverage/items.csv:2.5.6.16",
    "old": "SimplicialObject.Splitting @ Mathlib/AlgebraicTopology/SimplicialObject/Split.lean",
    "new": "SimplicialObject.Splitting @ Mathlib/AlgebraicTopology/SimplicialObject/Split.lean:212"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:2.5.6.17",
-   "old": "AlgebraicTopology.DoldKan.equivalence @ Mathlib/AlgebraicTopology/DoldKan/Equivalence.lean:167",
-   "new": "CategoryTheory.Abelian.DoldKan.equivalence @ Mathlib/AlgebraicTopology/DoldKan/Equivalence.lean:167"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:2.5.6.23",
-   "old": "AlgebraicTopology.DoldKan.equivalence @ Mathlib/AlgebraicTopology/DoldKan/Equivalence.lean:167",
-   "new": "CategoryTheory.Abelian.DoldKan.equivalence @ Mathlib/AlgebraicTopology/DoldKan/Equivalence.lean:167"
   },
   {
    "source": "research/kerodon-coverage/items.csv:2.5.8.1",
@@ -14598,11 +14383,6 @@
    "new": "sliceOverProjection_rightFibration @ SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/LeftAndRightFibrations/RightFibration.lean:220"
   },
   {
-   "source": "research/kerodon-coverage/items.csv:4.3.6.18",
-   "old": "Join.boundaryJoinIso @ SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/TheSliceAndJoinConstructions/JoinBoundary.lean:81",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.boundaryJoinIso @ SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/TheSliceAndJoinConstructions/JoinBoundary.lean:81"
-  },
-  {
    "source": "research/kerodon-coverage/items.csv:4.3.7.1",
    "old": "joinPoint_mono_rightAnodyne @ SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/TheSliceAndJoinConstructions/RightConeMonoAnodyne.lean:44",
    "new": "joinPoint_mono_rightAnodyne @ SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/TheSliceAndJoinConstructions/RightConeMonoAnodyne.lean:46"
@@ -15253,29 +15033,9 @@
    "new": "IsFullyFaithful @ SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/FullFaithfulAndEssentiallySurjectiveFunctors/FullyFaithful.lean:30"
   },
   {
-   "source": "research/kerodon-coverage/items.csv:4.9.1.20",
-   "old": "Ordinal.linearOrder (instance) @ Mathlib/SetTheory/Ordinal/Basic.lean:283",
-   "new": "Bool.linearOrder (instance) @ Mathlib/Data/Bool/Basic.lean:142"
-  },
-  {
    "source": "research/kerodon-coverage/items.csv:4.9.1.26",
    "old": "IsCofinal @ Mathlib/Order/Cofinal.lean",
    "new": "IsCofinal @ Mathlib/Order/Bounds/Defs.lean:65"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:4.9.1.27",
-   "old": "Ordinal.ord_cof_eq_type_lt @ Mathlib/SetTheory/Cardinal/Cofinality/Enum.lean:75",
-   "new": "Order.ord_cof_eq_type_lt @ Mathlib/SetTheory/Cardinal/Cofinality/Enum.lean:75"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:4.9.2.15",
-   "old": "Ordinal.isRegular_cof @ Mathlib/SetTheory/Cardinal/Regular.lean:64",
-   "new": "Cardinal.isRegular_cof @ Mathlib/SetTheory/Cardinal/Regular.lean:64"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:4.9.5.1",
-   "old": "SmallSubcomplex.hull @ SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/SizeConditionsOnInfinityCategories/SmallQuasicategoryHull.lean:37",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.hull @ SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/SizeConditionsOnInfinityCategories/SmallQuasicategoryHull.lean:37"
   },
   {
    "source": "research/kerodon-coverage/items.csv:4.9.7.1",
@@ -15503,11 +15263,6 @@
    "new": "IsCoveringMap.monodromy_bijective @ Mathlib/Topology/Homotopy/Lifting.lean:468"
   },
   {
-   "source": "research/kerodon-coverage/items.csv:5.2.8.7",
-   "old": "F1.Transport.cosliceTransportPointHom @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CovariantTransport/CosliceTransportPointHom.lean:32",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.cosliceTransportPointHom @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CovariantTransport/CosliceTransportPointHom.lean:32"
-  },
-  {
    "source": "research/kerodon-coverage/items.csv:5.3.1.21",
    "old": "trivialKanFibration_relativeHom_of_leftAnodyne @ SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/LeftAndRightFibrations/LeftAnodynePushoutProduct.lean:79",
    "new": "trivialKanFibration_relativeHom_of_leftAnodyne @ SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/LeftAndRightFibrations/LeftAnodynePushoutProduct.lean:81"
@@ -15531,11 +15286,6 @@
    "source": "research/kerodon-coverage/items.csv:5.3.6.6",
    "old": "cocartesianFibration_pullback_innerAnodyne_isPrecompositionEquivalence @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/FibrationsOverOrdinaryCategories/CocartesianInnerAnodynePullback.lean:68",
    "new": "cocartesianFibration_pullback_innerAnodyne_isPrecompositionEquivalence @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/FibrationsOverOrdinaryCategories/CocartesianInnerAnodynePullback.lean:70"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:5.4.8.1",
-   "old": "Coherent.simplicialNerve_quasicategory @ SerrePositivity/InfinityCategories/Kerodon/ExamplesOfInfinityCategories/SimplicialCategories/Quasicategory.lean:32",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.simplicialNerve_quasicategory @ SerrePositivity/InfinityCategories/Kerodon/ExamplesOfInfinityCategories/SimplicialCategories/Quasicategory.lean:34"
   },
   {
    "source": "research/kerodon-coverage/items.csv:5.5.2.1",
@@ -15644,11 +15394,6 @@
   },
   {
    "source": "research/kerodon-coverage/items.csv:5.6.6.1",
-   "old": "F2.Presentable.IsCorepresentableSmallSpaceFunctor @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/CorepresentabilityEquivalence.lean:30",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.IsCorepresentableSmallSpaceFunctor @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/CorepresentabilityEquivalence.lean:30"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:5.6.6.1",
    "old": "covariantRepresentableInfinity @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/CovariantRepresentableInfinity.lean:26",
    "new": "covariantRepresentableInfinity @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/CovariantRepresentableInfinity.lean:28"
   },
@@ -15691,11 +15436,6 @@
    "source": "research/kerodon-coverage/items.csv:6.1.1.1",
    "old": "QCatAdjunction @ SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/AdjointFunctorsBetweenInfinityCategories/Adjunction.lean:42",
    "new": "QCatAdjunction @ SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/AdjointFunctorsBetweenInfinityCategories/Adjunction.lean:44"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:6.1.2.11",
-   "old": "CategoryTheory.Adjunction.leftAdjointOfStructuredArrowInitials @ Mathlib/CategoryTheory/Adjunction/Comma.lean:65",
-   "new": "CategoryTheory.leftAdjointOfStructuredArrowInitials @ Mathlib/CategoryTheory/Adjunction/Comma.lean:65"
   },
   {
    "source": "research/kerodon-coverage/items.csv:6.1.3.3",
@@ -15773,16 +15513,6 @@
    "new": "QCatAdjunction.hoHomEquiv @ SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/AdjointFunctorsBetweenInfinityCategories/HomotopyCategory.lean:84"
   },
   {
-   "source": "research/kerodon-coverage/items.csv:6.2.1.17",
-   "old": "QCatAdjunction.intervalMap_isSimplicialHomotopyEquivalence @ SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/AdjointFunctorsBetweenInfinityCategories/AdjunctionMappingSpaces.lean:159",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalMap_isSimplicialHomotopyEquivalence @ SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/AdjointFunctorsBetweenInfinityCategories/AdjunctionMappingSpaces.lean:159"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:6.2.1.17",
-   "old": "QCatAdjunction.pinchedHomEquivalence @ SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/AdjointFunctorsBetweenInfinityCategories/AdjunctionPinchedSpaces.lean:42",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.pinchedHomEquivalence @ SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/AdjointFunctorsBetweenInfinityCategories/AdjunctionPinchedSpaces.lean:44"
-  },
-  {
    "source": "research/kerodon-coverage/items.csv:6.2.1.19",
    "old": "QCatAdjunction.rightAdjointFunctorIso @ SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/AdjointFunctorsBetweenInfinityCategories/Adjunction.lean:266",
    "new": "QCatAdjunction.rightAdjointFunctorIso @ SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/AdjointFunctorsBetweenInfinityCategories/Adjunction.lean:268"
@@ -15793,31 +15523,6 @@
    "new": "QCatAdjunction.rightAdjointIso @ SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/AdjointFunctorsBetweenInfinityCategories/Adjunction.lean:235"
   },
   {
-   "source": "research/kerodon-coverage/items.csv:6.2.2.1",
-   "old": "HomotopyLimits.IsLocalForHom @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/PresentableInfinityCategories/LocalObjects.lean:45",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsLocalForHom @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/PresentableInfinityCategories/LocalObjects.lean:47"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:6.2.2.1",
-   "old": "HomotopyLimits.LocalEquivalenceHom @ SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/AdjointFunctorsBetweenInfinityCategories/LocalEquivalences.lean:25",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.LocalEquivalenceHom @ SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/AdjointFunctorsBetweenInfinityCategories/LocalEquivalences.lean:27"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:6.2.2.6",
-   "old": "HomotopyLimits.isReflectiveSubcategory_of_localReplacements @ SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/AdjointFunctorsBetweenInfinityCategories/LocalReplacementReflection.lean:26",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.isReflectiveSubcategory_of_localReplacements @ SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/AdjointFunctorsBetweenInfinityCategories/LocalReplacementReflection.lean:26"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:6.2.2.16",
-   "old": "HomotopyLimits.reflective_isIso_map_iff_localHom @ SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/AdjointFunctorsBetweenInfinityCategories/ReflectiveInvertedHom.lean:78",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.reflective_isIso_map_iff_localHom @ SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/AdjointFunctorsBetweenInfinityCategories/ReflectiveInvertedHom.lean:80"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:6.2.2.16",
-   "old": "HomotopyLimits.reflective_localEquivalenceHom_iff @ SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/AdjointFunctorsBetweenInfinityCategories/ReflectiveInvertedHom.lean:115",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.reflective_localEquivalenceHom_iff @ SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/AdjointFunctorsBetweenInfinityCategories/ReflectiveInvertedHom.lean:117"
-  },
-  {
    "source": "research/kerodon-coverage/items.csv:6.2.2.19",
    "old": "ReflectiveSubcategory @ SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/Localization/Reflective.lean:28",
    "new": "ReflectiveSubcategory @ SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/Localization/Reflective.lean:30"
@@ -15826,11 +15531,6 @@
    "source": "research/kerodon-coverage/items.csv:6.2.2.19",
    "old": "ReflectiveSubcategory.reflectionMappingEquivalence @ SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/Localization/Reflective.lean:74",
    "new": "ReflectiveSubcategory.reflectionMappingEquivalence @ SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/Localization/Reflective.lean:76"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:6.2.2.19",
-   "old": "HomotopyLimits.isReflectiveSubcategory_of_localReplacements @ SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/AdjointFunctorsBetweenInfinityCategories/LocalReplacementReflection.lean:26",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.isReflectiveSubcategory_of_localReplacements @ SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/AdjointFunctorsBetweenInfinityCategories/LocalReplacementReflection.lean:26"
   },
   {
    "source": "research/kerodon-coverage/items.csv:6.2.2.20",
@@ -15886,46 +15586,6 @@
    "source": "research/kerodon-coverage/items.csv:6.2.2.29",
    "old": "ReflectiveSubcategory.unitOnLocalizationIso @ SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/AdjointFunctorsBetweenInfinityCategories/ReflectiveUnitInvertible.lean:86",
    "new": "ReflectiveSubcategory.unitOnLocalizationIso @ SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/AdjointFunctorsBetweenInfinityCategories/ReflectiveUnitInvertible.lean:88"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:6.2.3.1",
-   "old": "HomotopyLimits.IsLocalForHom @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/PresentableInfinityCategories/LocalObjects.lean:45",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsLocalForHom @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/PresentableInfinityCategories/LocalObjects.lean:47"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:6.2.3.1",
-   "old": "HomotopyLimits.IsLocalObject @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/PresentableInfinityCategories/LocalObjects.lean:107",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsLocalObject @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/PresentableInfinityCategories/LocalObjects.lean:109"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:6.2.3.9",
-   "old": "F1B.Localization.AdjointLocalization.isLocalization @ SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/Localization/AdjointLocalization.lean:116",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.isLocalization @ SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/Localization/AdjointLocalization.lean:116"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:6.2.3.10",
-   "old": "HomotopyLimits.reflective_isLocal_iff_invertedEdges @ SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/AdjointFunctorsBetweenInfinityCategories/ReflectiveInvertedHom.lean:63",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.reflective_isLocal_iff_invertedEdges @ SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/AdjointFunctorsBetweenInfinityCategories/ReflectiveInvertedHom.lean:65"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:6.2.3.10",
-   "old": "HomotopyLimits.reflective_localEquivalences_eq @ SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/AdjointFunctorsBetweenInfinityCategories/ReflectiveInvertedHom.lean:129",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.reflective_localEquivalences_eq @ SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/AdjointFunctorsBetweenInfinityCategories/ReflectiveInvertedHom.lean:131"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:6.2.3.14",
-   "old": "HomotopyLimits.isReflectiveSubcategory_of_localReplacements @ SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/AdjointFunctorsBetweenInfinityCategories/LocalReplacementReflection.lean:26",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.isReflectiveSubcategory_of_localReplacements @ SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/AdjointFunctorsBetweenInfinityCategories/LocalReplacementReflection.lean:26"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:6.2.3.14",
-   "old": "HomotopyLimits.reflective_localEquivalences_eq @ SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/AdjointFunctorsBetweenInfinityCategories/ReflectiveInvertedHom.lean:129",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.reflective_localEquivalences_eq @ SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/AdjointFunctorsBetweenInfinityCategories/ReflectiveInvertedHom.lean:131"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:6.2.3.17",
-   "old": "HomotopyLimits.localObjectsSubcomplex @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/PresentableInfinityCategories/LocalObjects.lean:118",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.localObjectsSubcomplex @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/PresentableInfinityCategories/LocalObjects.lean:120"
   },
   {
    "source": "research/kerodon-coverage/items.csv:6.2.5.4",
@@ -16016,11 +15676,6 @@
    "source": "research/kerodon-coverage/items.csv:6.3.3.7",
    "old": "ReflectiveSubcategory.isLocalization @ SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/Localization/ReflectiveLocalization.lean:120",
    "new": "ReflectiveSubcategory.isLocalization @ SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/Localization/ReflectiveLocalization.lean:122"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:6.3.3.7",
-   "old": "QCatAdjunction.isLocalization @ SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/Localization/AdjointLocalization.lean:116",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.isLocalization @ SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/Localization/AdjointLocalization.lean:116"
   },
   {
    "source": "research/kerodon-coverage/items.csv:6.3.6.2",
@@ -16498,61 +16153,6 @@
    "new": "kanRelativeLeftKanRestriction_isFullyFaithful @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/RelativeLeftRestrictionTheorem.lean:31"
   },
   {
-   "source": "research/kerodon-coverage/items.csv:7.3.7.1",
-   "old": "F1B.kanIsRelativeLeftKanExtendedFrom_constantFamily @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/RelativeLeftConstantFamily.lean:37",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanIsRelativeLeftKanExtendedFrom_constantFamily @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/RelativeLeftConstantFamily.lean:37"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:7.3.7.13",
-   "old": "F1B.kanIsRelativeColimitCone_functor_of_pointwise @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/RelativeColimitPointwise.lean:42",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.kanIsRelativeColimitCone_functor_of_pointwise @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/RelativeColimitPointwise.lean:42"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:7.3.7.13",
-   "old": "F1B.kanIsRelativeColimitCone_constantFamily @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/RelativeColimitConstantFamily.lean:54",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanIsRelativeColimitCone_constantFamily @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/RelativeColimitConstantFamily.lean:54"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:7.3.8.1",
-   "old": "F1B.kanLeftCanonical_pre_initialBoundary @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/LeftCanonicalMapping.lean:43",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanLeftCanonical_pre_initialBoundary @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/LeftCanonicalMapping.lean:45"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:7.3.8.1",
-   "old": "F2.Ind.isColimitCone_iff_restrict_of_initialBoundary @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/InitialBoundaryCoconeRestriction.lean:105",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.isColimitCone_iff_restrict_of_initialBoundary @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/InitialBoundaryCoconeRestriction.lean:105"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:7.3.8.1",
-   "old": "F2.Presentable.hasColimit_iff_leftKanExtension @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/LeftKanColimitExistence.lean:72",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.hasColimit_iff_leftKanExtension @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/LeftKanColimitExistence.lean:72"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:7.3.8.16",
-   "old": "F2.Ind.sliceUnderRestrict_isQCatEquivalence_of_initialBoundary @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/InitialBoundaryCoconeRestriction.lean:95",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.sliceUnderRestrict_isQCatEquivalence_of_initialBoundary @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/InitialBoundaryCoconeRestriction.lean:95"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:7.3.8.16",
-   "old": "F1B.kanLeftCanonical_pre_initialBoundary @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/LeftCanonicalMapping.lean:43",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanLeftCanonical_pre_initialBoundary @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/LeftCanonicalMapping.lean:45"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:7.3.8.24",
-   "old": "F2.Ind.isColimitCone_iff_restrict_of_initialBoundary @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/InitialBoundaryCoconeRestriction.lean:105",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.isColimitCone_iff_restrict_of_initialBoundary @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/InitialBoundaryCoconeRestriction.lean:105"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:7.3.8.24",
-   "old": "F1B.kanLeftCanonical_pre_initialBoundary @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/LeftCanonicalMapping.lean:43",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanLeftCanonical_pre_initialBoundary @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/LeftCanonicalMapping.lean:45"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:7.3.8.25",
-   "old": "F2.Presentable.hasColimit_iff_leftKanExtension @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/LeftKanColimitExistence.lean:72",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.hasColimit_iff_leftKanExtension @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/LeftKanColimitExistence.lean:72"
-  },
-  {
    "source": "research/kerodon-coverage/items.csv:7.4.1.1",
    "old": "coherentDiagramSectionsCone_isLimit @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/SpaceSmallLimits.lean:39",
    "new": "coherentDiagramSectionsCone_isLimit @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/SpaceSmallLimits.lean:41"
@@ -16573,11 +16173,6 @@
    "new": "coherentDiagramSectionsCone_isLimit @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/SpaceSmallLimits.lean:41"
   },
   {
-   "source": "research/kerodon-coverage/items.csv:7.4.1.6",
-   "old": "HomotopyLimits.transportSectionsConeIsLimit @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/TransportSectionsLimit.lean:121",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.transportSectionsConeIsLimit @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/TransportSectionsLimit.lean:121"
-  },
-  {
    "source": "research/kerodon-coverage/items.csv:7.4.1.7",
    "old": "hasLimit_coherentSpaceDiagram @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/SpaceSmallLimits.lean:46",
    "new": "hasLimit_coherentSpaceDiagram @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/SpaceSmallLimits.lean:48"
@@ -16588,34 +16183,9 @@
    "new": "coherentDiagramSectionsCone @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/DiagramSectionsCone.lean:36"
   },
   {
-   "source": "research/kerodon-coverage/items.csv:7.4.1.13",
-   "old": "HomotopyLimits.simplicialSections @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/SimplicialSections.lean:27",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.simplicialSections @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/SimplicialSections.lean:27"
-  },
-  {
    "source": "research/kerodon-coverage/items.csv:7.4.1.14",
    "old": "coherentDiagramSectionsCone_isLimit @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/SpaceSmallLimits.lean:39",
    "new": "coherentDiagramSectionsCone_isLimit @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/SpaceSmallLimits.lean:41"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:7.4.1.16",
-   "old": "HomotopyLimits.spaceCone_isLimit_iff_pointRestriction_of_hasLimit @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/SpacePointLimitDetection.lean:46",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.spaceCone_isLimit_iff_pointRestriction_of_hasLimit @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/SpacePointLimitDetection.lean:46"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:7.4.1.16",
-   "old": "HomotopyLimits.smallLeftConeRestriction_isQCatEquivalence_of_map_isLimit @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/SigmaElementsConeRestriction.lean:43",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.smallLeftConeRestriction_isQCatEquivalence_of_map_isLimit @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/SigmaElementsConeRestriction.lean:43"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:7.4.3.1",
-   "old": "F2.coherentDiagramTotalCocone_isColimit @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/CoherentTotalColimit.lean:30",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.coherentDiagramTotalCocone_isColimit @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/CoherentTotalColimit.lean:32"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:7.4.3.3",
-   "old": "F2.hasColimit_coherentSpaceDiagram @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/CoherentTotalColimit.lean:39",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.hasColimit_coherentSpaceDiagram @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/CoherentTotalColimit.lean:41"
   },
   {
    "source": "research/kerodon-coverage/items.csv:7.4.3.3",
@@ -16623,49 +16193,9 @@
    "new": "space_hasSmallColimits @ SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/Definition.lean:82"
   },
   {
-   "source": "research/kerodon-coverage/items.csv:7.4.3.4",
-   "old": "HomotopyLimits.bousfieldKanCoherentCocone_isColimit @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/BousfieldKanCoherentColimit.lean:40",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.bousfieldKanCoherentCocone_isColimit @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/BousfieldKanCoherentColimit.lean:40"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:7.4.3.4",
-   "old": "HomotopyLimits.kanDiagramCoherentNerve_hasColimit @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/BousfieldKanCoherentColimit.lean:51",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.kanDiagramCoherentNerve_hasColimit @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/BousfieldKanCoherentColimit.lean:51"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:7.4.3.6",
-   "old": "F2.isColimitCone_of_coconeFiberMap_weakEquivalence @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/CoconeFiberColimitCriterion.lean:61",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.isColimitCone_of_coconeFiberMap_weakEquivalence @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/CoconeFiberColimitCriterion.lean:61"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:7.4.3.6",
-   "old": "F2.coherentDiagramTotalCocone_isColimit @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/CoherentTotalColimit.lean:30",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.coherentDiagramTotalCocone_isColimit @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/CoherentTotalColimit.lean:32"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:7.4.3.6",
-   "old": "F2.Compact.coherentTotalCoconeFiber_isWeakHomotopyEquivalence @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/CanonicalCoconeWeakEquivalence.lean:61",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.coherentTotalCoconeFiber_isWeakHomotopyEquivalence @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/CanonicalCoconeWeakEquivalence.lean:61"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:7.4.3.11",
-   "old": "F2.Ind.isColimitCone_iff_restrict_rightCofinal @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/Cofinality/CofinalCoconeRestriction.lean:84",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.isColimitCone_iff_restrict_rightCofinal @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/Cofinality/CofinalCoconeRestriction.lean:86"
-  },
-  {
    "source": "research/kerodon-coverage/items.csv:7.4.3.11",
    "old": "isRightCofinal_iff_weaklyContractible_coslices @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/Cofinality/QuillenA.lean:52",
    "new": "isRightCofinal_iff_weaklyContractible_coslices @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/Cofinality/QuillenA.lean:54"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:7.4.3.13",
-   "old": "F2.isColimitCone_of_coconeFiberMap_weakEquivalence @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/CoconeFiberColimitCriterion.lean:61",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.isColimitCone_of_coconeFiberMap_weakEquivalence @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/CoconeFiberColimitCriterion.lean:61"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:7.4.3.13",
-   "old": "F2.Compact.coherentTotalCoconeFiber_isWeakHomotopyEquivalence @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/CanonicalCoconeWeakEquivalence.lean:61",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.coherentTotalCoconeFiber_isWeakHomotopyEquivalence @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/CanonicalCoconeWeakEquivalence.lean:61"
   },
   {
    "source": "research/kerodon-coverage/items.csv:7.4.4.1",
@@ -16686,11 +16216,6 @@
    "source": "research/kerodon-coverage/items.csv:7.5.1.5",
    "old": "coherentDiagramSectionsCone_isLimit @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/SpaceSmallLimits.lean:39",
    "new": "coherentDiagramSectionsCone_isLimit @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/SpaceSmallLimits.lean:41"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:7.5.4.1",
-   "old": "KST.Descent.HasHomotopyLimitDescent @ SerrePositivity/KST/Descent/MainAugmentedHomotopyLimit.lean:99",
-   "new": "SerrePositivity.KST.Descent.Main.HasHomotopyLimitDescent @ SerrePositivity/KST/Descent/MainAugmentedHomotopyLimit.lean:99"
   },
   {
    "source": "research/kerodon-coverage/items.csv:7.5.5.8",
@@ -16718,16 +16243,6 @@
    "new": "isCofibrant_obj @ SerrePositivity/HomotopicalAlgebra/Diagram/ProjectiveCofibrations.lean:77"
   },
   {
-   "source": "research/kerodon-coverage/items.csv:7.6.1.3",
-   "old": "F2.Presentable.HasSmallCoproducts @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/ExamplesOfLimitsAndColimits/CoproductRealizationConditions.lean:25",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.HasSmallCoproducts @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/ExamplesOfLimitsAndColimits/CoproductRealizationConditions.lean:25"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:7.6.1.7",
-   "old": "F2.Presentable.HasSmallCoproducts @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/ExamplesOfLimitsAndColimits/CoproductRealizationConditions.lean:25",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.HasSmallCoproducts @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/ExamplesOfLimitsAndColimits/CoproductRealizationConditions.lean:25"
-  },
-  {
    "source": "research/kerodon-coverage/items.csv:7.6.2.1",
    "old": "IsPullbackSquare @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/ExamplesOfLimitsAndColimits/Pullback.lean:118",
    "new": "IsPullbackSquare @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/ExamplesOfLimitsAndColimits/Pullback.lean:120"
@@ -16751,11 +16266,6 @@
    "source": "research/kerodon-coverage/items.csv:7.6.3.8",
    "old": "qCatPullbackInfinityCone_isLimit @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/HomotopyLimitsAndColimits/QCatPullbackLimit.lean:68",
    "new": "qCatPullbackInfinityCone_isLimit @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/HomotopyLimitsAndColimits/QCatPullbackLimit.lean:70"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:7.6.5.11",
-   "old": "FibrationTower.projection_zero_fibration @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/ExamplesOfLimitsAndColimits/FibrationTower.lean:156",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.projection_zero_fibration @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/ExamplesOfLimitsAndColimits/FibrationTower.lean:156"
   },
   {
    "source": "research/kerodon-coverage/items.csv:7.6.6.1",
@@ -16796,31 +16306,6 @@
    "source": "research/kerodon-coverage/items.csv:7.6.6.41",
    "old": "isColimitCone_of_pointwise @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/ExamplesOfLimitsAndColimits/FunctorPointwiseColimitCriterion.lean:69",
    "new": "isColimitCone_of_pointwise @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/ExamplesOfLimitsAndColimits/FunctorPointwiseColimitCriterion.lean:71"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:7.7.0.1",
-   "old": "CategoryTheory.Limits.IsUniversalColimit @ Mathlib/CategoryTheory/Limits/VanKampen.lean:45",
-   "new": "CategoryTheory.IsUniversalColimit @ Mathlib/CategoryTheory/Limits/VanKampen.lean:45"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:7.7.1.15",
-   "old": "CategoryTheory.Limits.IsUniversalColimit @ Mathlib/CategoryTheory/Limits/VanKampen.lean:45",
-   "new": "CategoryTheory.IsUniversalColimit @ Mathlib/CategoryTheory/Limits/VanKampen.lean:45"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:7.7.1.21",
-   "old": "CategoryTheory.Limits.IsUniversalColimit @ Mathlib/CategoryTheory/Limits/VanKampen.lean:45",
-   "new": "CategoryTheory.IsUniversalColimit @ Mathlib/CategoryTheory/Limits/VanKampen.lean:45"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:7.7.2.13",
-   "old": "CategoryTheory.Limits.IsVanKampenColimit @ Mathlib/CategoryTheory/Limits/VanKampen.lean:56",
-   "new": "CategoryTheory.IsVanKampenColimit @ Mathlib/CategoryTheory/Limits/VanKampen.lean:56"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:7.7.2.15",
-   "old": "CategoryTheory.Limits.IsVanKampenColimit @ Mathlib/CategoryTheory/Limits/VanKampen.lean:56",
-   "new": "CategoryTheory.IsVanKampenColimit @ Mathlib/CategoryTheory/Limits/VanKampen.lean:56"
   },
   {
    "source": "research/kerodon-coverage/items.csv:7.7.7.3",
@@ -17418,11 +16903,6 @@
    "new": "isRightCofinal_constantDiagram_of_kappaFiltered @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/Cofinality/FilteredDiagonalCofinality.lean:64"
   },
   {
-   "source": "research/kerodon-coverage/items.csv:9.1.6.4",
-   "old": "Kan.filteredColimit_kanComplex @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/ExamplesOfLimitsAndColimits/FilteredKanColimit.lean:96",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.filteredColimit_kanComplex @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/ExamplesOfLimitsAndColimits/FilteredKanColimit.lean:96"
-  },
-  {
    "source": "research/kerodon-coverage/items.csv:9.1.6.7",
    "old": "DiagramModel.Projective.modelCategory @ SerrePositivity/HomotopicalAlgebra/Diagram/Projective.lean:89",
    "new": "DiagramModel.Projective.modelCategory @ SerrePositivity/HomotopicalAlgebra/Diagram/Projective.lean:91"
@@ -17468,144 +16948,9 @@
    "new": "DiagramModel.Projective.cofibrations_le_objectwise @ SerrePositivity/HomotopicalAlgebra/Diagram/ProjectiveCofibrations.lean:54"
   },
   {
-   "source": "research/kerodon-coverage/items.csv:9.1.7.2",
-   "old": "Ind.smallSubcomplexFamilyCocone_isColimit @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FilteredInfinityCategories/SmallSubcomplexFamilyColimit.lean:33",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.smallSubcomplexFamilyCocone_isColimit @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FilteredInfinityCategories/SmallSubcomplexFamilyColimit.lean:33"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:9.1.7.2",
-   "old": "Ind.smallSubcomplexFamily_isCardinalFiltered @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FilteredInfinityCategories/SmallSubcomplexCofinalFamily.lean:37",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.smallSubcomplexFamily_isCardinalFiltered @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FilteredInfinityCategories/SmallSubcomplexCofinalFamily.lean:37"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:9.1.7.3",
-   "old": "Presentable.exists_smallFilteredPiece_containing @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FilteredInfinityCategories/SmallFilteredPieces.lean:36",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.exists_smallFilteredPiece_containing @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FilteredInfinityCategories/SmallFilteredPieces.lean:38"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:9.1.7.4",
-   "old": "Presentable.smallFilteredPieces_cover @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FilteredInfinityCategories/SmallFilteredPieces.lean:54",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.smallFilteredPieces_cover @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FilteredInfinityCategories/SmallFilteredPieces.lean:56"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:9.1.7.4",
-   "old": "Presentable.smallFilteredPieces_isCardinalFiltered @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FilteredInfinityCategories/SmallFilteredPieces.lean:43",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.smallFilteredPieces_isCardinalFiltered @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FilteredInfinityCategories/SmallFilteredPieces.lean:45"
-  },
-  {
    "source": "research/kerodon-coverage/items.csv:9.1.7.8",
    "old": "Presentable.IsCardinalChangeBound.sharplyLT @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/PresentableInfinityCategories/CardinalChangeBound.lean:32",
    "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsCardinalChangeBound.sharplyLT @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/PresentableInfinityCategories/CardinalChangeBound.lean:34"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:9.1.7.14",
-   "old": "Presentable.exists_smallFilteredPiece_containing @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FilteredInfinityCategories/SmallFilteredPieces.lean:36",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.exists_smallFilteredPiece_containing @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FilteredInfinityCategories/SmallFilteredPieces.lean:38"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:9.1.7.16",
-   "old": "Presentable.smallFilteredPieces_cover @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FilteredInfinityCategories/SmallFilteredPieces.lean:54",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.smallFilteredPieces_cover @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FilteredInfinityCategories/SmallFilteredPieces.lean:56"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:9.1.7.16",
-   "old": "Presentable.smallFilteredPieces_isCardinalFiltered @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FilteredInfinityCategories/SmallFilteredPieces.lean:43",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.smallFilteredPieces_isCardinalFiltered @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FilteredInfinityCategories/SmallFilteredPieces.lean:45"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:9.1.7.20",
-   "old": "Presentable.smallFilteredPieces_isCardinalFiltered @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FilteredInfinityCategories/SmallFilteredPieces.lean:43",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.smallFilteredPieces_isCardinalFiltered @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FilteredInfinityCategories/SmallFilteredPieces.lean:45"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:9.1.7.20",
-   "old": "Presentable.smallFilteredPieces_cover @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FilteredInfinityCategories/SmallFilteredPieces.lean:54",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.smallFilteredPieces_cover @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FilteredInfinityCategories/SmallFilteredPieces.lean:56"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:9.1.7.20",
-   "old": "Presentable.smallFilteredPiece_nerve_isKappaFiltered @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FilteredInfinityCategories/SmallFilteredPieces.lean:68",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.smallFilteredPiece_nerve_isKappaFiltered @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FilteredInfinityCategories/SmallFilteredPieces.lean:70"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:9.1.8.1",
-   "old": "Ind.exists_cofinal_kappaFiltered_poset @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FilteredInfinityCategories/FilteredPosetNerve.lean:33",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.exists_cofinal_kappaFiltered_poset @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FilteredInfinityCategories/FilteredPosetNerve.lean:35"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:9.1.8.1",
-   "old": "Ind.isKappaFiltered_of_isTerminalVertex @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FilteredInfinityCategories/TerminalFiltered.lean:34",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.isKappaFiltered_of_isTerminalVertex @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FilteredInfinityCategories/TerminalFiltered.lean:36"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:9.1.8.2",
-   "old": "Ind.codiscreteProductProjection_trivialKanFibration @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FilteredInfinityCategories/CodiscreteProductCofinal.lean:26",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.codiscreteProductProjection_trivialKanFibration @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FilteredInfinityCategories/CodiscreteProductCofinal.lean:26"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:9.1.8.2",
-   "old": "Ind.exists_small_codiscreteConeRange @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FilteredInfinityCategories/SmallCodiscreteConeRange.lean:24",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.exists_small_codiscreteConeRange @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FilteredInfinityCategories/SmallCodiscreteConeRange.lean:24"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:9.1.8.2",
-   "old": "Ind.exists_small_terminalSubcomplex @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FilteredInfinityCategories/TerminalSubcomplexEnlargement.lean:30",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.exists_small_terminalSubcomplex @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FilteredInfinityCategories/TerminalSubcomplexEnlargement.lean:30"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:9.1.8.4",
-   "old": "Ind.terminalSubcomplexCarrierBase_isRightCofinal @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FilteredInfinityCategories/TerminalCarrierCofinal.lean:38",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.terminalSubcomplexCarrierBase_isRightCofinal @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FilteredInfinityCategories/TerminalCarrierCofinal.lean:38"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:9.1.8.4",
-   "old": "Ind.terminalSubcomplexFamily_isCardinalFiltered @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FilteredInfinityCategories/TerminalSubcomplexCover.lean:32",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.terminalSubcomplexFamily_isCardinalFiltered @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FilteredInfinityCategories/TerminalSubcomplexCover.lean:32"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:9.1.8.7",
-   "old": "Ind.exists_cofinal_cardinalFiltered_poset @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FilteredInfinityCategories/CofinalFilteredPoset.lean:22",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.exists_cofinal_cardinalFiltered_poset @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FilteredInfinityCategories/CofinalFilteredPoset.lean:22"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:9.1.8.7",
-   "old": "Ind.exists_cofinal_kappaFiltered_poset @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FilteredInfinityCategories/FilteredPosetNerve.lean:33",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.exists_cofinal_kappaFiltered_poset @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FilteredInfinityCategories/FilteredPosetNerve.lean:35"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:9.1.8.8",
-   "old": "Ind.exists_cofinal_kappaFiltered_poset @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FilteredInfinityCategories/FilteredPosetNerve.lean:33",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.exists_cofinal_kappaFiltered_poset @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FilteredInfinityCategories/FilteredPosetNerve.lean:35"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:9.1.8.8",
-   "old": "Ind.isKappaFiltered_nerve_of_cardinalFiltered @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FilteredInfinityCategories/FilteredPosetNerve.lean:22",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.isKappaFiltered_nerve_of_cardinalFiltered @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FilteredInfinityCategories/FilteredPosetNerve.lean:24"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:9.1.8.11",
-   "old": "Ind.isKappaFiltered_of_isTerminalVertex @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FilteredInfinityCategories/TerminalFiltered.lean:34",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.isKappaFiltered_of_isTerminalVertex @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FilteredInfinityCategories/TerminalFiltered.lean:36"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:9.1.8.11",
-   "old": "Compact.idemShape_isKappaFiltered @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/IdemFiltered.lean:31",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.idemShape_isKappaFiltered @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/IdemFiltered.lean:33"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:9.1.8.12",
-   "old": "Ind.isKappaFiltered_of_isTerminalVertex @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FilteredInfinityCategories/TerminalFiltered.lean:34",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.isKappaFiltered_of_isTerminalVertex @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FilteredInfinityCategories/TerminalFiltered.lean:36"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:9.1.9.6",
-   "old": "Ind.isKappaFiltered_of_strict_isColimit @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FilteredInfinityCategories/StrictKappaFilteredColimit.lean:34",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.isKappaFiltered_of_strict_isColimit @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FilteredInfinityCategories/StrictKappaFilteredColimit.lean:34"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:9.1.9.6",
-   "old": "Ind.kappaSmall_factorization_of_isColimit @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FilteredInfinityCategories/KappaRelativeFactorization.lean:26",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.kappaSmall_factorization_of_isColimit @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FilteredInfinityCategories/KappaRelativeFactorization.lean:26"
   },
   {
    "source": "research/kerodon-coverage/items.csv:9.2.0.5",
@@ -17613,84 +16958,9 @@
    "new": "SSet.Finite (instance IsFinitelyPresentable) @ Mathlib/AlgebraicTopology/SimplicialSet/Finite.lean:34"
   },
   {
-   "source": "research/kerodon-coverage/items.csv:9.2.0.5",
-   "old": "Ind.isCardinalPresentable_of_isKappaSmall @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/KappaSmallPresentable.lean:48",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.isCardinalPresentable_of_isKappaSmall @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/KappaSmallPresentable.lean:48"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:9.2.1.1",
-   "old": "Presentable.hasSmallColimits_of_coproducts_geometricRealizations @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/CoproductRealizationColimits.lean:31",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.hasSmallColimits_of_coproducts_geometricRealizations @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/CoproductRealizationColimits.lean:33"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:9.2.1.1",
-   "old": "Presentable.preservesSmallCoproducts_of_finite_filtered @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/FiniteCoproductSiftedPreservation.lean:37",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.preservesSmallCoproducts_of_finite_filtered @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/FiniteCoproductSiftedPreservation.lean:37"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:9.2.1.12",
-   "old": "Ind.HasSmallKappaFilteredColimits @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/NativeFilteredPreservation.lean:30",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.HasSmallKappaFilteredColimits @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/NativeFilteredPreservation.lean:32"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:9.2.1.12",
-   "old": "Ind.exists_cofinal_kappaFiltered_poset @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FilteredInfinityCategories/FilteredPosetNerve.lean:33",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.exists_cofinal_kappaFiltered_poset @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FilteredInfinityCategories/FilteredPosetNerve.lean:35"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:9.2.1.12",
-   "old": "Presentable.hasColimit_of_rightCofinalRestriction @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/CofinalColimitExistence.lean:37",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.hasColimit_of_rightCofinalRestriction @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/CofinalColimitExistence.lean:37"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:9.2.1.14",
-   "old": "Idempotent.isIdempotentComplete_iff_hasColimits @ SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/RetractsAndIdempotents/StrongSplittingExistence.lean:46",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.isIdempotentComplete_iff_hasColimits @ SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/RetractsAndIdempotents/StrongSplittingExistence.lean:48"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:9.2.1.14",
-   "old": "Compact.idemShape_isKappaFiltered @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/IdemFiltered.lean:31",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.idemShape_isKappaFiltered @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/IdemFiltered.lean:33"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:9.2.2.1",
-   "old": "Compact.PreservesKappaFilteredColimits @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/Definition.lean:26",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.PreservesKappaFilteredColimits @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/Definition.lean:28"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:9.2.2.1",
-   "old": "Ind.PreservesSmallKappaFilteredColimits @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/NativeFilteredPreservation.lean:23",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.PreservesSmallKappaFilteredColimits @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/NativeFilteredPreservation.lean:25"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:9.2.2.3",
-   "old": "Compact.PreservesKappaFilteredColimits @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/Definition.lean:26",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.PreservesKappaFilteredColimits @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/Definition.lean:28"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:9.2.2.3",
-   "old": "Ind.PreservesSmallKappaFilteredColimits @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/NativeFilteredPreservation.lean:23",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.PreservesSmallKappaFilteredColimits @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/NativeFilteredPreservation.lean:25"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:9.2.2.24",
-   "old": "Presentable.preservesSmallCoproducts_of_finite_filtered @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/FiniteCoproductSiftedPreservation.lean:37",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.preservesSmallCoproducts_of_finite_filtered @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/FiniteCoproductSiftedPreservation.lean:37"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:9.2.2.24",
-   "old": "Presentable.preservesSmallColimits_of_coproducts_finite @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/FiniteCoproductColimitGeneration.lean:86",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.preservesSmallColimits_of_coproducts_finite @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/FiniteCoproductColimitGeneration.lean:88"
-  },
-  {
    "source": "research/kerodon-coverage/items.csv:9.2.2.25",
    "old": "Ind.Compact.preservesKappaFilteredColimits_of_poset @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/NativePreservationPosetReductionUniverse.lean:25",
    "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.Compact.preservesKappaFilteredColimits_of_poset @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/NativePreservationPosetReductionUniverse.lean:25"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:9.2.2.25",
-   "old": "Ind.exists_cofinal_kappaFiltered_poset @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FilteredInfinityCategories/FilteredPosetNerve.lean:33",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.exists_cofinal_kappaFiltered_poset @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FilteredInfinityCategories/FilteredPosetNerve.lean:35"
   },
   {
    "source": "research/kerodon-coverage/items.csv:9.2.2.26",
@@ -17703,99 +16973,9 @@
    "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.Compact.preservesKappaFilteredColimits_of_poset @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/NativePreservationPosetReductionUniverse.lean:25"
   },
   {
-   "source": "research/kerodon-coverage/items.csv:9.2.4.1",
-   "old": "Presentable.piSSetSmall_isKappaFiltered @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/PiSmallFiltered.lean:30",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.piSSetSmall_isKappaFiltered @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/PiSmallFiltered.lean:30"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:9.2.4.1",
-   "old": "Presentable.piSSetSmallProjection_pullback_isKappaFiltered @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/PiSmallFiltered.lean:46",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.piSSetSmallProjection_pullback_isKappaFiltered @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/PiSmallFiltered.lean:46"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:9.2.4.3",
-   "old": "Presentable.pullback_hasSmallKappaFilteredColimits @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/PullbackFilteredColimits.lean:35",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.pullback_hasSmallKappaFilteredColimits @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/PullbackFilteredColimits.lean:37"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:9.2.4.3",
-   "old": "Presentable.pullback_fst_isKappaAccessibleFunctor @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/PullbackFilteredColimits.lean:76",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.pullback_fst_isKappaAccessibleFunctor @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/PullbackFilteredColimits.lean:78"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:9.2.5.1",
-   "old": "Compact.IsCompact @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/Definition.lean:41",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.IsCompact @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/Definition.lean:43"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:9.2.5.1",
-   "old": "Compact.isKappaCompact_aleph0_iff_filtered @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/Definition.lean:62",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.isKappaCompact_aleph0_iff_filtered @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/Definition.lean:64"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:9.2.5.6",
-   "old": "Compact.IsKappaCompact @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/Definition.lean:35",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.IsKappaCompact @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/Definition.lean:37"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:9.2.5.6",
-   "old": "Compact.kappaCompactObjects @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/Subcategory.lean:27",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.kappaCompactObjects @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/Subcategory.lean:29"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:9.2.5.10",
-   "old": "Ind.isCardinalPresentable_of_isKappaSmall @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/KappaSmallPresentable.lean:48",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.isCardinalPresentable_of_isKappaSmall @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/KappaSmallPresentable.lean:48"
-  },
-  {
    "source": "research/kerodon-coverage/items.csv:9.2.5.10",
    "old": "SSet.Finite (instance IsFinitelyPresentable) @ Mathlib/AlgebraicTopology/SimplicialSet/Presentable.lean:53",
    "new": "SSet.Finite (instance IsFinitelyPresentable) @ Mathlib/AlgebraicTopology/SimplicialSet/Finite.lean:34"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:9.2.5.24",
-   "old": "Presentable.isKappaCompact_smallQuasicategoryColimit_universe @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/SmallQuasicategoryColimitCompact.lean:40",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.isKappaCompact_smallQuasicategoryColimit_universe @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/SmallQuasicategoryColimitCompact.lean:42"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:9.2.5.24",
-   "old": "Presentable.isKappaCompact_smallPosetColimit_universe @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/SmallPosetColimitCompactUniverse.lean:75",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.isKappaCompact_smallPosetColimit_universe @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/SmallPosetColimitCompactUniverse.lean:75"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:9.2.5.25",
-   "old": "Presentable.isKappaCompact_smallQuasicategoryColimit_universe @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/SmallQuasicategoryColimitCompact.lean:40",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.isKappaCompact_smallQuasicategoryColimit_universe @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/SmallQuasicategoryColimitCompact.lean:42"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:9.2.5.25",
-   "old": "Presentable.isKappaCompact_smallPosetColimit_universe @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/SmallPosetColimitCompactUniverse.lean:75",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.isKappaCompact_smallPosetColimit_universe @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/SmallPosetColimitCompactUniverse.lean:75"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:9.2.5.25",
-   "old": "Compact.isKappaCompact_finiteColimit @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/FiniteColimitClosureUnconditional.lean:25",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.isKappaCompact_finiteColimit @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/FiniteColimitClosureUnconditional.lean:27"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:9.2.5.26",
-   "old": "Compact.isKappaCompact_finiteColimit @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/FiniteColimitClosureUnconditional.lean:25",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.isKappaCompact_finiteColimit @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/FiniteColimitClosureUnconditional.lean:27"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:9.2.5.26",
-   "old": "Compact.hasFiniteColimits_kappaCompactObjects @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/FiniteColimitClosureUnconditional.lean:34",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.hasFiniteColimits_kappaCompactObjects @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/FiniteColimitClosureUnconditional.lean:36"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:9.2.6.5",
-   "old": "Presentable.finiteKanReplacement_isCompact @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/FiniteKanReplacementCompact.lean:38",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.finiteKanReplacement_isCompact @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/FiniteKanReplacementCompact.lean:38"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:9.2.6.5",
-   "old": "Presentable.finiteSpaceGeneratorVertex_isCompact @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/FiniteSpaceGenerators.lean:31",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.finiteSpaceGeneratorVertex_isCompact @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/FiniteSpaceGenerators.lean:33"
   },
   {
    "source": "research/kerodon-coverage/items.csv:9.2.6.7",
@@ -17803,49 +16983,9 @@
    "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.IsKappaCompactGenerating.compact_iff_retract @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/CompactGenerators.lean:50"
   },
   {
-   "source": "research/kerodon-coverage/items.csv:9.2.6.7",
-   "old": "Presentable.spaceCompactGeneratorInclusion_isCompactGenerating @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/SpacePresentable.lean:40",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.spaceCompactGeneratorInclusion_isCompactGenerating @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/SpacePresentable.lean:42"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:9.2.6.7",
-   "old": "Presentable.finiteSpaceGeneratorVertex_isCompact @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/FiniteSpaceGenerators.lean:31",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.finiteSpaceGeneratorVertex_isCompact @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/FiniteSpaceGenerators.lean:33"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:9.2.6.9",
-   "old": "Presentable.smallKanObject_isKappaCompact @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/SmallSpaceCompact.lean:47",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.smallKanObject_isKappaCompact @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/SmallSpaceCompact.lean:49"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:9.2.6.9",
-   "old": "Presentable.exists_spaceCompactCardinal @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/SpaceCompactCardinals.lean:40",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.exists_spaceCompactCardinal @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/SpaceCompactCardinals.lean:40"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:9.2.8.2",
-   "old": "Presentable.isKappaCompact_pointCosliceVertex @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/PointCosliceCompactVertices.lean:27",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.isKappaCompact_pointCosliceVertex @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/PointCosliceCompactVertices.lean:27"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:9.2.8.2",
-   "old": "Presentable.isKappaCompact_edgeCosliceVertex @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/SourceCosliceCompactness.lean:75",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.isKappaCompact_edgeCosliceVertex @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/SourceCosliceCompactness.lean:75"
-  },
-  {
    "source": "research/kerodon-coverage/items.csv:9.2.8.3",
    "old": "exists_colimitCone_laxPullback_with_components @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/LaxPullbackColimitConeExistence.lean:29",
    "new": "exists_colimitCone_laxPullback_with_components @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/LaxPullbackColimitConeExistence.lean:31"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:9.2.8.5",
-   "old": "Presentable.componentCompactObjects_vertex_isKappaCompact @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/ComponentCompactPullback.lean:88",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.componentCompactObjects_vertex_isKappaCompact @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/ComponentCompactPullback.lean:88"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:9.2.8.9",
-   "old": "Presentable.smallConstantPointDiagram_isKappaCompact @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/SmallConstantDiagramCompact.lean:79",
-   "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.smallConstantPointDiagram_isKappaCompact @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/SmallConstantDiagramCompact.lean:79"
   },
   {
    "source": "research/kerodon-coverage/items.csv:9.3.1.1",
@@ -18058,24 +17198,9 @@
    "new": "isIndVertex_iff_hasKappaFilteredElements @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/FilteredElementsClosure.lean:44"
   },
   {
-   "source": "research/kerodon-coverage/items.csv:9.3.4.27",
-   "old": "CategoryTheory.isIndObject_iff @ Mathlib/CategoryTheory/Limits/Indization/IndObject.lean:188",
-   "new": "CategoryTheory.Limits.isIndObject_iff @ Mathlib/CategoryTheory/Limits/Indization/IndObject.lean:188"
-  },
-  {
    "source": "research/kerodon-coverage/items.csv:9.3.4.28",
    "old": "isIndVertex_iff_hasKappaFilteredElements @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/FilteredElementsClosure.lean:42",
    "new": "isIndVertex_iff_hasKappaFilteredElements @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/FilteredElementsClosure.lean:44"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:9.3.4.28",
-   "old": "CategoryTheory.isIndObject_iff @ Mathlib/CategoryTheory/Limits/Indization/IndObject.lean:188",
-   "new": "CategoryTheory.Limits.isIndObject_iff @ Mathlib/CategoryTheory/Limits/Indization/IndObject.lean:188"
-  },
-  {
-   "source": "research/kerodon-coverage/items.csv:9.3.5.25",
-   "old": "CategoryTheory.isIndObject_iff_preservesFiniteLimits @ Mathlib/CategoryTheory/Limits/Indization/IndObject.lean:207",
-   "new": "CategoryTheory.Limits.isIndObject_iff_preservesFiniteLimits @ Mathlib/CategoryTheory/Limits/Indization/IndObject.lean:207"
   },
   {
    "source": "research/kerodon-coverage/items.csv:9.3.5.27",

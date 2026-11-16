@@ -88,10 +88,11 @@ def fix(entry, src):
         rk = renamed(key)
         if rk != key:
             cands = sorted(set(by_suffix.get(rk, []))); how = 'rename'
-    if not cands:
+    if not cands and path.startswith('SerrePositivity/'):
+        # 名前空間が変わった本体の宣言だけ、末尾の成分で探す（Mathlib の構造体の構成子・フィールドは走査で拾えないので使わない）
         cands = sorted(set(by_short.get(key.split('.')[-1], []))); how = 'short'
     locs = [(f, pl) for f in cands for pl in index[f]]
-    if len(locs) > 1:
+    if len(locs) > 1 and how != 'short':
         same = [x for x in locs if x[1][0] == path]
         base = os.path.basename(path)
         if not same:
@@ -106,7 +107,18 @@ def fix(entry, src):
             return k
         best = max(score(x) for x in locs)
         top = [x for x in locs if score(x) == best]
-        if len(top) == 1: locs = top
+        locs = top if len(top) == 1 else top
+    if how == 'short' and locs:
+        tail = key.split('.')
+        need = min(2, len(tail))
+        def score2(x):
+            fp = x[0].split('.'); k = 0
+            while k < min(len(fp), len(tail)) and fp[-1-k] == tail[-1-k]: k += 1
+            return k
+        locs = [x for x in locs if score2(x) >= need]
+        if len(locs) > 1:
+            same = [x for x in locs if os.path.basename(x[1][0]) == os.path.basename(path)]
+            locs = same if len(same) == 1 else locs
     if not locs and os.path.exists(path if path.startswith('SerrePositivity/') else os.path.join(ml, path)):
         stats['kept:unverified'] += 1; return entry
     if len(locs) > 1 and os.path.exists(path if path.startswith('SerrePositivity/') else os.path.join(ml, path)):

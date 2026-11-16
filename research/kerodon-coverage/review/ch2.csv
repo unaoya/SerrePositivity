@@ -8,8 +8,8 @@ number,verdict,status_new,declarations_new,reason,axioms,check
 2.1.2.9,ok,none,,"確認済み・なし。二つの (1, υ) の間の乗法を保存する一意な同型は未発見。",,not_found
 2.1.2.10,fix,partial,CategoryTheory.MonoidalCategory @ Mathlib/CategoryTheory/Monoidal/Category.lean:161,仮定：基礎圏 C（Kerodon と一致）。結論：Mathlib の MonoidalCategory はテンソルと結合子に左右の単位子および三角恒等式を添える。Kerodon の指定する単位対象と υ : 𝟙 ⊗ 𝟙 ≅ 𝟙 から両単位子を復元する比較は引用の型にない。,,found
 2.1.2.13,fix,mathlib,CategoryTheory.MonoidalCategoryStruct.tensorUnit @ Mathlib/CategoryTheory/Monoidal/Category.lean:98,仮定：単位を持つモノイダル圏 C（Lean が弱い：射影には MonoidalCategoryStruct で足り、整合公理を要求しない）。結論：tensorUnit は C の対象を返し、原文の 𝟙_C と同じ単位対象を指定する（一致）。,,renamed
-2.1.2.17,fix,partial,CategoryTheory.Functor.leftUnitor @ Mathlib/CategoryTheory/Functor/Category.lean:171 | CategoryTheory.Functor.rightUnitor @ Mathlib/CategoryTheory/Functor/Category.lean:179,左右の単位子は型として一致するが、Mathlib では構造のデータで、原文の υ からの構成は未確認。,,renamed
-2.1.2.19,ok,mathlib,SemimoduleCat.MonoidalCategory.triangle @ Mathlib/Algebra/Category/ModuleCat/Monoidal/Basic.lean:144,"仮定：モノイダル圏 C と対象 X, Y（Kerodon と一致）。結論：(X ⊗ 𝟙) ⊗ Y から X ⊗ Y への二経路について、結合子を原文と逆向きに書いた三角恒等式を与える（一致）。",,found
+2.1.2.17,fix,partial,CategoryTheory.MonoidalCategoryStruct.leftUnitor @ Mathlib/CategoryTheory/Monoidal/Category.lean:102 | CategoryTheory.MonoidalCategoryStruct.rightUnitor @ Mathlib/CategoryTheory/Monoidal/Category.lean:104,左右の単位子は型として一致するが、Mathlib では構造のデータで、原文の υ からの構成は未確認。,,renamed
+2.1.2.19,ok,mathlib,CategoryTheory.MonoidalCategory.triangle @ Mathlib/CategoryTheory/Monoidal/Category.lean:207,"仮定：モノイダル圏 C と対象 X, Y（Kerodon と一致）。結論：(X ⊗ 𝟙) ⊗ Y から X ⊗ Y への二経路について、結合子を原文と逆向きに書いた三角恒等式を与える（一致）。",,found
 2.1.2.21,fix,partial,CategoryTheory.MonoidalCategory.unitors_equal @ Mathlib/CategoryTheory/Monoidal/CoherenceLemmas.lean:58,単位対象上で λ と ρ の射の一致はある。原文の別途与えた υ との一致は含まない。,,found
 2.1.4.1,ok,none,,確認済み・なし。単位なしのテンソルを対象と射で厳密に保存する関手の定義は未発見。,,not_found
 2.1.4.3,ok,partial,CategoryTheory.Functor.LaxMonoidal @ Mathlib/CategoryTheory/Monoidal/Functor.lean:65,テンソル比較射の方向と結合条件が一致する。Mathlib は単位射と単位条件を追加で要求。,,found
@@ -20,7 +20,7 @@ number,verdict,status_new,declarations_new,reason,axioms,check
 2.1.4.19,ok,mathlib,CategoryTheory.Comma @ Mathlib/CategoryTheory/Comma/Basic.lean:67,"仮定：三つの圏 A, B, T と関手 F : A ⥤ T、G : B ⥤ T（Kerodon と一致）。結論：Comma F G は (a,b,F(a) → G(b)) を対象とし、脚の射が作る正方形を可換とする射を持つ（一致）。",,found
 2.1.4.21,ok,none,,確認済み・なし。Comma の構成はあるが、射影を厳密モノイダルにする構造との全単射は未発見。,,not_found
 2.1.5.1,ok,partial,CategoryTheory.MonObj @ Mathlib/CategoryTheory/Monoidal/Mon.lean:72,MonObj の単位法則に対応する。非単位的代数と独立した候補射を入力にする定義はない。,,found
-2.1.5.2,fix,partial,SSet.Truncated.HomotopyCategory.BinaryProduct.left_unitality @ Mathlib/AlgebraicTopology/SimplicialSet/HoFunctorMonoidal.lean:319 | SSet.Truncated.HomotopyCategory.BinaryProduct.right_unitality @ Mathlib/AlgebraicTopology/SimplicialSet/HoFunctorMonoidal.lean:325,単位付き LaxMonoidal の左・右単位法則は原文の合成等式と一致する。独立に選ぶ片側単位の述語は未発見。,,renamed
+2.1.5.2,fix,partial,CategoryTheory.Functor.LaxMonoidal.left_unitality @ Mathlib/CategoryTheory/Monoidal/Functor.lean:84 | CategoryTheory.Functor.LaxMonoidal.right_unitality @ Mathlib/CategoryTheory/Monoidal/Functor.lean:87,単位付き LaxMonoidal の左・右単位法則は原文の合成等式と一致する。独立に選ぶ片側単位の述語は未発見。,,renamed
 2.1.5.4,ok,none,,確認済み・なし。別々の左単位射・右単位射の一致を示す宣言は未発見。,,not_found
 2.1.5.5,ok,none,,確認済み・なし。独立な左右の単位の存在と両側単位の一意存在の同値は未発見。,,not_found
 2.1.5.6,ok,none,,確認済み・なし。左右の単位条件をコンマ圏上の単位子で特徴づける宣言は未発見。,,not_found
@@ -39,8 +39,8 @@ number,verdict,status_new,declarations_new,reason,axioms,check
 2.2.0.1,ok,mathlib,CategoryTheory.Bicategory.Strict @ Mathlib/CategoryTheory/Bicategory/Strict/Basic.lean:40,仮定：対象型と Hom 圏・横合成を備えた双圏 B（Kerodon と一致。Lean では双圏の構造を先に与える）。結論：1 射の結合と単位を等式で課し、結合子・単位子をそれらの等式から得る厳密双圏の述語（一致）。,,found
 2.2.1.1,ok,mathlib,CategoryTheory.Bicategory @ Mathlib/CategoryTheory/Bicategory/Basic.lean:61,仮定：対象型 B（Kerodon と一致）。結論：Hom 圏、横合成と恒等 1 射、可逆な結合子と左右単位子、五角形と三角形の整合条件を持つ構造（一致）。,,found
 2.2.1.7,fix,none,,原文は対象・1射・2射を表す文字の慣例。Bicategory は双圏の型で、文字の使い分けに対応する宣言はない。,,not_found
-2.2.1.10,fix,partial,CategoryTheory.Localization.Monoidal.leftUnitor @ Mathlib/CategoryTheory/Localization/Monoidal/Basic.lean:151 | CategoryTheory.Localization.Monoidal.rightUnitor @ Mathlib/CategoryTheory/Localization/Monoidal/Basic.lean:158,左右の単位子の型は一致するが、Mathlib は構造の場として与え、υ からは構成しない。,,renamed
-2.2.1.13,ok,mathlib,CategoryTheory.CartesianMonoidalCategory.ofChosenFiniteProducts.triangle @ Mathlib/CategoryTheory/Monoidal/Cartesian/Basic.lean:150,仮定：双圏 B と合成可能な 1 射 f : a ⟶ b、g : b ⟶ c（Kerodon と一致）。結論：間に 𝟙_b を挟む結合子と左右の単位子でできる三角形の可換性（一致）。,,found
+2.2.1.10,fix,partial,CategoryTheory.Bicategory.leftUnitor @ Mathlib/CategoryTheory/Bicategory/Basic.lean:71 | CategoryTheory.Bicategory.rightUnitor @ Mathlib/CategoryTheory/Bicategory/Basic.lean:73,左右の単位子の型は一致するが、Mathlib は構造の場として与え、υ からは構成しない。,,renamed
+2.2.1.13,ok,mathlib,CategoryTheory.Bicategory.triangle @ Mathlib/CategoryTheory/Bicategory/Basic.lean:125,仮定：双圏 B と合成可能な 1 射 f : a ⟶ b、g : b ⟶ c（Kerodon と一致）。結論：間に 𝟙_b を挟む結合子と左右の単位子でできる三角形の可換性（一致）。,,found
 2.2.1.14,fix,partial,CategoryTheory.Bicategory.unitors_equal @ Mathlib/CategoryTheory/Bicategory/Basic.lean:451,恒等1射上で左右の単位子の射が一致する。原文で別に与える υ との一致は含まない。,,found
 2.2.1.15,fix,mathlib,CategoryTheory.Bicategory.leftUnitor_comp @ Mathlib/CategoryTheory/Bicategory/Basic.lean:435 | CategoryTheory.Bicategory.rightUnitor_comp @ Mathlib/CategoryTheory/Bicategory/Basic.lean:443,仮定：双圏 B と合成可能な 1 射 f : a ⟶ b、g : b ⟶ c（Kerodon と一致）。結論：端に恒等 1 射がある結合子を単位子とその逆、whiskering で表す左右二式（一致。Lean は逆単位子を移項する前の等式）。,,renamed
 2.2.2.2,fix,mathlib,CategoryTheory.Span @ Mathlib/CategoryTheory/Bicategory/Span/Basic.lean:42 | CategoryTheory.Span.SpanBicat @ Mathlib/CategoryTheory/Bicategory/Span/Basic.lean:151 | CategoryTheory.Span.SpanBicat.instBicategory @ Mathlib/CategoryTheory/Bicategory/Span/Basic.lean:364,仮定：引き戻しを持つ圏 C（Kerodon と一致。Lean の両脚の射の性質はともに任意の射を許す場合に取る）。結論：対象は C の対象、1 射は X ← M → Y、2 射は両脚と可換な頂点間の射、合成は引き戻しによる双圏（一致）。,,renamed

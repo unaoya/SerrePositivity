@@ -1,5 +1,5 @@
 number,verdict,status_new,declarations_new,reason,axioms,check
-1.1.0.1,fix,mathlib,SimplexCategory.Hom.mk @ Mathlib/AlgebraicTopology/SimplexCategory/Defs.lean:76,"仮定：非負整数 n（Kerodon と一致）。結論：SimplexCategory.mk n は長さ n の対象 ⦋n⦌、すなわち 0,…,n の順序集合を表す（一致）。",,renamed
+1.1.0.1,fix,mathlib,SimplexCategory.mk @ Mathlib/AlgebraicTopology/SimplexCategory/Defs.lean:50,"仮定：非負整数 n（Kerodon と一致）。結論：SimplexCategory.mk n は長さ n の対象 ⦋n⦌、すなわち 0,…,n の順序集合を表す（一致）。",,renamed
 1.1.0.2,ok,mathlib,SimplexCategory @ Mathlib/AlgebraicTopology/SimplexCategory/Defs.lean:50,仮定：非空有限順序集合の標準形 [n] を使う（Kerodon と一致）。結論：SimplexCategory の対象は長さ n、[m] から [n] の射は Fin (m+1) →o Fin (n+1) の順序写像（一致）。,,found
 1.1.0.4,fix,mathlib,CategoryTheory.SimplicialObject @ Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean:48 | CategoryTheory.CosimplicialObject @ Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean:527,仮定：任意の圏 C（Kerodon と一致）。結論：SimplicialObject C は Δᵒᵖ ⥤ C、CosimplicialObject C は Δ ⥤ C（一致）。,,renamed
 1.1.0.5,fix,mathlib,CategoryTheory.SimplicialObject @ Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean:48,仮定：圏 C、単体対象または余単体対象、次数 n（Kerodon と一致）。結論：関手の obj を反対圏の [n] または [n] に適用した値が Cₙ または Cⁿ。引用は単体対象の型で、次数別の記法は関手評価で読む（一致）。,,renamed
