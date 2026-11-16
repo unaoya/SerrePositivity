@@ -3086,3 +3086,6 @@ mainの取り込みは11-16 16:25の指示どおり保留したまま。検証�
 今回本体111行＋入口1行＝112行。基準56ea849a3から検証済み18,955行（新規257モジュール18,652行、既存追加25行、入口278行。既存削除14行は差し引かない）。新規所有宣言の小監査累計2,098、既存15宣言は別計上。外枠21,000行、完成見込み約19,600〜20,500行。元の二方向への射影は揃ったが、実際の相対fppfの係数との照合、nil閉厚化の幾何の接続、Noether帰納、G5は残る。G4・G5は未完で、停止点2g-2ではない。最終のAugmentedRingCechExactの型・仮定は同じ。main未取り込み、root・下流全ビルド・全体監査・2hのLeanなし。共有鍵--class impl --wait 3600、待ちは一件、対象ビルドと監査は別リース。
 
 一覧：済み1／全体3（うち追加0）。
+
+
+同じ二重環Čech図式の係数移送の法則（G4の既存conerveの自然性、着手前の型、100〜180行見込み）：Aを可換環、B,CをUnder Aの対象とする。`cechUnderArrowMap (f : B ⟶ C)` は恒等な基底とf.rightの元の四角形。`cechUnderConerveMap f : Cech.underCech B ⟶ Cech.underCech C` は同じ既存のArrow.mapCechConerveをUnder Aへ持ち上げた射で、増大項は恒等。恒等・合成を保つ。`cechUnderDiagramMap f : Cech.asDiagram B ⟶ Cech.asDiagram C` は既存の増大単体との同値による同じ射。`cechTensorDiagramMap (f : B ⟶ B') (g : C ⟶ C') : Cech.tensorCech B C ⟶ Cech.tensorCech B' C'` はその二つの射を既存のringTensorで写した自然変換で、恒等・合成を保つ。最終に `cechTensorDiagramFunctor (B C : J ⥤ Under A) : J ⥤ (AugmentedSimplexCategory × AugmentedSimplexCategory ⥤ CommRingCat)` として元の被覆変数を残す。B1のtensorCechそのものを使用し、HA・B1の宣言は変更しない。新しい平坦性の仮定や新しい降下定理は導入しない。相対比較の内数。
