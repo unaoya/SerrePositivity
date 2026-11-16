@@ -2576,3 +2576,52 @@ mainの取り込みは11-16 16:25の指示どおり保留したまま。検証�
 ユーザーの回答「20,000行へ広げて再開（推奨）」により、外枠20,000行で同じ型・範囲のまま再開する。直前の規模境界によるLeanの停止は解除した。mainは取り込まない。
 
 中心側・Y側に分ける同じ四角形の法則（既存G4の有限cone・合成則、着手前の型、二本計120〜220行）：`CechAugmentedSquare.leftSquare` は元のC・base・scalarを保ち、EとcenterBaseを零にした四角形。`rightSquare` は元のE・centerBase・centerを保ち、Cとbaseを零にした四角形。`Map.leftProjection` は元の四角形からleftSquareへの射影、`Map.rightInclusion` はrightSquareから元の四角形への包含。両者の同じtotalComplexMapの合成は零。この同じ二つの射の短複体が各次数で短完全であることを、元の各項の直積の包含・射影で照合する。元の構造層の係数と実際の四角形の辺を保ち、降下の仮定は新しく足さない。
+
+同じ左右の四角形の射の単位・合成・自然性（既存G4の合成則・自然性の法則、着手前の型、90〜180行）：`Map.onLeftSquare`・`Map.onRightSquare` は元の射のC/baseまたはE/centerを保つ射。同じ射のid・compを保ち、`leftProjection_naturality` と `rightInclusion_naturality` で元の四角形の射と可換。この法則を元の実際のF8余単体図式へ渡し、別々の各項の短完全性を単なる点ごとの主張で終わらせない。
+
+実際のF8の左右の短完全列の図式化（既存G4の有限cone・関手の法則、着手前の型、90〜160行）：`schemePerfectCechTupleSquareLeftFunctor`・`…RightFunctor` は同じ各nerve次数のleftSquare・rightSquareのtotalと実際の単体の射を持つ関手。`…LeftProjection`・`…RightInclusion` は元のF8図式の同じ自然変換。`schemePerfectCechTupleSquarePositiveLeftRightShortComplex` は既存の交代余面複体関手に代入した短複体。`…_shortExact` は各外次数で元のleftRight_shortExactを使う短完全性。別々のHの同型を可換な図式の代わりにしない。
+
+
+## G4：同じ中心側・F8・Y側の短完全列の実際の図式
+
+20,000行での再開後、元のC/baseまたはE/centerを保つ包含・射影を作り、同じ全複体の短完全性を全次数で照合した。同じ射の単位・合成・自然性により、元のF8の実際の余単体図式へ渡し、交代余面複体の同じ二重複体の短完全列を得た。各項のHの同型だけで可換な図式を代用していない。
+
+`CechAugmentedSquareLeftRight`（85行）：
+- `CechAugmentedSquare.leftSquare`：元のC・base・scalarを保持し、EとcenterBaseを零にしたY側の四角形。
+- `CechAugmentedSquare.rightSquare`：元のE・centerBase・centerを保持し、Cとbaseを零にした中心側の四角形。
+- `CechAugmentedSquare.Map.leftProjection`：元の四角形から同じY側への射影。
+- `CechAugmentedSquare.Map.rightInclusion`：同じ中心側から元の四角形への包含。
+- `CechAugmentedSquare.rightInclusion_leftProjection`：元の同じtotalComplexMapの包含と射影の合成は零。
+
+`CechAugmentedSquareLeftRightExact`（98行）：
+- `CechAugmentedSquare.leftRightShortComplex`：元の二つの同じtotalComplexMapからなる短複体。
+- `CechAugmentedSquare.leftRight_shortExact`：同じ各項の直積の包含・射影により、全次数で単射・完全性・全射性を照合した短完全性。
+
+`CechAugmentedSquareLeftRightNaturality`（118行）：
+- `CechAugmentedSquare.Map.onLeftSquare`：元の射のCとbaseの射を、そのままY側へ渡す。
+- `CechAugmentedSquare.Map.onRightSquare`：元の射のEとcenterの射を、そのまま中心側へ渡す。
+- `CechAugmentedSquare.Map.onLeftSquare_id`：同じY側への射は単位を保つ。
+- `CechAugmentedSquare.Map.onRightSquare_id`：同じ中心側への射は単位を保つ。
+- `CechAugmentedSquare.Map.onLeftSquare_comp`：同じY側への射は合成を保つ。
+- `CechAugmentedSquare.Map.onRightSquare_comp`：同じ中心側への射は合成を保つ。
+- `CechAugmentedSquare.leftProjection_naturality`：元の四角形からY側への射影は、元の射に自然。
+- `CechAugmentedSquare.rightInclusion_naturality`：中心側から元の四角形への包含は、元の射に自然。
+
+`SchemePerfectCechTupleSquareLeftRight`（102行）：
+- `schemePerfectCechTupleSquareLeftFunctor`：元のF8のY側の各項と全ての実際の単体の射からなる関手。
+- `schemePerfectCechTupleSquareRightFunctor`：元のF8の中心側の各項と全ての実際の単体の射からなる関手。
+- `schemePerfectCechTupleSquareLeftProjection`：元のF8図式から同じY側の図式への自然な射影。
+- `schemePerfectCechTupleSquareRightInclusion`：同じ中心側の図式から元のF8図式への自然な包含。
+- `schemePerfectCechTupleSquarePositiveLeftRightShortComplex`：元の包含・射影を既存の交代余面複体関手へ渡した短複体。
+- `schemePerfectCechTupleSquarePositiveLeftRight_shortExact`：各外次数で元のleftRight_shortExactを使う、実際の同じ二重複体の短完全性。
+
+
+検証：四本をまとめたmodule形式の下書き検証 `2g-g4-square-left-right-diagram-check-2.log` は終了0。四本と直接importerの入口の対象ビルドは **5,313ジョブ・終了0**（`2g-g4-square-left-right-diagram-native.log`、依存のキャッシュ再生を含む）。固定manifest・下書き・本体のSHA256と全バイト一致を四本とも再確認した。対象ビルドと別の共有鍵で、非公開・生成分も含む実際の全所有宣言を監査し **54宣言・標準三公理のみ・終了0**（`2g-g4-square-left-right-diagram-audit.log`）。上の順に18、3、15、18宣言。単射性の照合では直積の射影の始域を明示し、元の同じ各項を比較した。追加公理・sorry・既存宣言の型変更・資源上限の引き上げ・200行超の宣言なし。letI・未使用変数等のstyle警告は残る。共有鍵 --class impl --wait 3600、待ちは一件。root・下流全ビルド・AlgebraicGeometry全体監査なし。
+
+再開後の今回403行＋登録4行＝407行。基準56ea849a3からの外枠計数は **15,566行**（新規218モジュール本体15,302行、既存追加25行、入口239行）。新規所有宣言の小監査累計 **1,592**、既存15宣言は別計上。このターンの二つの数学の束は合計9モジュール、本体775行＋登録9行、所有宣言98件で、全件が対象ビルドと小監査を通った。
+
+外枠はユーザーが承認した **20,000行**。境界時点の完成見込み約17,200〜18,800行を暫定の基準とし、次の核の比較と帰納の組み立てで再計測する。残る主要な接続は **同じ基底列への射と核の短完全列、元の増大二重Čechとの比較、元の閉像のNoether帰納、アフィン環のČechへの出口、G5の模型・Frobenius・filtered余極限の移送（5接続）**。
+
+今回の短完全列は実際のF8の同じ正方向の図式のもの。正の定数基底列を除いた核同士の短完全列と元のY側・中心側の比較はまだ未実装である。一般のproper降下・最終のv被覆の完全性を完成扱いにしない。G4・G5は未完で、停止点2g-2ではない。最終のAugmentedRingCechExactと利用側の型は不変。mainは取り込んでいない。
+
+一覧：済み1／全体3（うち追加0）。
