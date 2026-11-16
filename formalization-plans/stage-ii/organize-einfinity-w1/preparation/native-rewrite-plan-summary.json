@@ -1,0 +1,13 @@
+{
+  "modules": 588,
+  "native_declarations": 4160,
+  "private_declarations": 157,
+  "renamed_public": 3280,
+  "renamed_private_user_names": 75,
+  "zero_declaration_modules": [
+    "SerrePositivity.EInfinity.HomotopyWeight.TensorConeUnitPoint"
+  ],
+  "ambiguous_open_prefixes": [],
+  "validated_by_existing_Migration": true,
+  "stage": "prepared; original-source reference capture and preview review still required; not yet applied"
+}

@@ -1,0 +1,13 @@
+"""Preview only successful original-source captures, keeping all diagnostics visible."""
+from pathlib import Path
+import argparse,hashlib,json,sys
+p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True);p.add_argument('--tools',type=Path,required=True);p.add_argument('--captures',type=Path,required=True);p.add_argument('--plan',type=Path,required=True);p.add_argument('--output',type=Path,required=True);a=p.parse_args()
+sys.path.insert(0,str(a.tools.resolve()));import bulk_namespace as B;import klw1_namespace as K
+migration=K.Migration(json.loads(a.plan.read_text()));a.output.mkdir(parents=True,exist_ok=True);review={};written=[];changed=[]
+for receipt in sorted(a.captures.glob('*.receipt.json')):
+ r=json.loads(receipt.read_text());assert r['returncode']==0;path=r['source'];cap=receipt.with_name(receipt.name.removesuffix('.receipt.json')+'.json');assert hashlib.sha256(cap.read_bytes()).hexdigest()==r['capture_sha256'];data=K.checked_capture(a.root,path,cap)
+ preview,issues=B.rewrite(data,migration)
+ if issues:review[path]=issues;continue
+ dest=migration.modules.get(data['module'],data['module']).replace('.','/')+'.lean';target=a.output/dest;target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes(preview);written.append(dict(old_path=path,new_path=dest,source_sha256=hashlib.sha256(data['source'].encode()).hexdigest(),preview_sha256=hashlib.sha256(preview).hexdigest()))
+ if preview!=data['source'].encode():changed.append(path)
+(a.output/'review.json').write_text(json.dumps(review,ensure_ascii=False,indent=2)+'\n');(a.output/'manifest.json').write_text(json.dumps(written,indent=2)+'\n');summary=dict(captured=len(written)+len(review),previewed=len(written),changed_sources=len(changed),review_files=len(review),review_items=sum(map(len,review.values())),plan_sha256=hashlib.sha256(a.plan.read_bytes()).hexdigest());(a.output/'summary.json').write_text(json.dumps(summary,indent=2)+'\n');print(json.dumps(summary));raise SystemExit(bool(review))

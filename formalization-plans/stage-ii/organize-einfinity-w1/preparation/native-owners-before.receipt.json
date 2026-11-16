@@ -1,0 +1,12 @@
+{
+  "returncode": 0,
+  "seconds": 58.07271966710687,
+  "base": "30ae8948f339beec42d9340feb02f2031c22c72b",
+  "root": "/private/tmp/oe-w1-before-30ae8948f",
+  "binary_sha256": "d2a3604b79e658af8a36d71484da0fd5989c58045902d81f8611aeeddfac4809",
+  "policy": "native original owner inventory only; v3b preservation still required",
+  "modules": 588,
+  "declarations": 4160,
+  "private_declarations": 157,
+  "capture_sha256": "58bfc20dddd466609421de7e453b8b2979709e5a4bbe5435935fc4e4585b9820"
+}

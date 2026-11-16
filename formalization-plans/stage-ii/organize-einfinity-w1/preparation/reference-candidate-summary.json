@@ -1,0 +1,15 @@
+{
+  "eligible_source_files": 33675,
+  "selected_files": 958,
+  "owned_scope_files": 588,
+  "selected_native_reference_files": 589,
+  "missing_baseline_ilean_files": 23185,
+  "selection_reasons": {
+    "literal": 826,
+    "native-reference": 589,
+    "scope": 588,
+    "native-import": 504
+  },
+  "drafts": "excluded from application; B4 impact recorded separately",
+  "policy": "ILEAN native owner/name references plus exact names and partial namespaces; original compiler capture validates spans/bindings before rewriting"
+}
