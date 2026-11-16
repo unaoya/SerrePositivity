@@ -221,3 +221,7 @@ S3 の逆向きの型は、段 0 の表の「`restrictJoinCone c (cechShape d) =
 ## 追記（2026-11-16 夜、調整役）：5∞-1 の外枠を 26,000 行に（ユーザー承認）
 
 報告（287a524a4、保守的な累計 19,570 行、完成見込みの上端 24,220 行）を受けて、外枠を 24,000 行から **26,000 行**に変更する。残り（S1・S8）は報告の型と見積もりどおり、短縮せずに。停止点は 5∞-1 の完成（S7 を除く）のまま。約 24,000 行で止まらずに途中報告。26,000 行を超えそうなら検証済みをコミットして報告して止まる。S7・R2・R3 は再開しない。main は root の確認まで取り込まない。
+
+## 追記（2026-11-17 未明、調整役）：既存の補題の証明を一つ書き換えてよい
+
+`Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/DensityFiberYonedaValue.lean` の既存の補題 `presheafElementsYonedaSliceValue_interval`（main にある）の証明だけを、`rfl` から `rw [presheafElementsYonedaSliceValue, yonedaPresheafEvaluation_interval, presheafElementsYonedaSliceInterval, Category.assoc]` に置き換えてよい（承認した三本文の変更で、直接の importer の再ビルドで `rfl` が maxRecDepth に達したため）。条件：補題の主張・名前は変えない。maxRecDepth・heartbeats は上げない。補題なので下流には影響しない（証明は無関係）。OE-W1 の移動の対象には入っていない。取り込みのときに、この一か所の差分を確かめる。
