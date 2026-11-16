@@ -17847,3 +17847,25 @@ lemma pointCosliceFamilyHomotopy_naturality {K C : SSet.{u}} [Quasicategory K] [
 既存の円柱の全HoFun射について自然性を閉じた。元のnative fiber射とroofの全interval族の照合R03h・R03d・3b-4aは未完。次に、この同じ円柱をfiberへ制限した射と既存intervalFamilyHomの厳密な対応を照合し、同じcoslice比較の全族へ接続する。
 
 一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+## 298. 同じcoslice fiberのinterval族を同じ普遍円柱へ厳密に接続（2026-11-16）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+既存のcosliceFiberToIntervalMappingSpaceのuncurry則で、同じfiber族のintervalFamilyHomが、包含後の同じpointCosliceFamilyHomotopyのHoFun射に一致することをArrowとして照合する。任意のパラメータ単体集合を扱い、準圏・Kanの追加仮定を要しない。円柱の終点の厳密な射影と定値表示の差だけをArrowで保持する。既存構成の係数表示の法則で、新しい数学の項目ではない。
+
+```lean
+lemma cosliceFiber_intervalFamilyHom_arrow {K C : SSet.{u}} {x y : C _⦋0⦌}
+    (f : K ⟶ vertexFiber (sliceUnderProjection (yonedaEquiv.symm x)) y) :
+    Arrow.mk (intervalFamilyHom (f ≫ cosliceFiberToIntervalMappingSpace x y)) =
+      Arrow.mk (Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
+        (pointCosliceFamilyHomotopy (f ≫ vertexFiberι _ y))))
+```
+
+一時ファイルisw2-coslice-fiber-interval-family2の個別検査は終了0。対象ビルド365と小監査を行う。これにより§293の同じnative族のcoslice正規化を§297の全関手圏の自然性へ渡せるが、元のcorrected pairingの比較の全射影を使ったR03hの最後の等式は、まだ別に必要。⑤a・公式入口・公式監査は変更しない。
+
+### 298.2 検収
+
+新規1本47行・公開1補題・実環境宣言1。対象ビルド365（依存を含む1,954 jobs）・小監査とも終了0。共有鍵 --class impl --wait 3600、一枚の整理券、gtimeout 1700秒でビルドと小監査の間だけ使用。小監査266モジュール・1,712宣言、標準三公理のみ、sorryAx・追加公理なし。自レーン累計262本・17,848行、実環境1,705宣言。外枠まで4,152行。宣言名の照合で異なるファイル間の重複0、内部も0、git diff --check通過。証跡isw2-build365.log・isw2-validation365.json・isw2-declaration-collision-scan365.json。登録候補の一覧に追加。既存宣言・⑤a・公式入口・公式監査は変更していない。R03h・R03d・3b-4aは未完。
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
