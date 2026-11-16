@@ -3,7 +3,7 @@
   "complete": 3,
   "total": 6,
   "added": 0,
-  "verified_head": "this commit: base 5774f27d8b2eae7840904c69314a42e06cb94655",
+  "verified_head": "this commit: base 8668a0658e97e2ec30798f2de3d0f0f402d007d3",
   "items": {
     "HT01": "complete",
     "HT02": "complete",
@@ -12,16 +12,15 @@
     "HT05": "not-started",
     "HT06": "not-started"
   },
-  "latest_complete_audit_checkpoint": "tor-acyclic-native-augmentation-checkpoint.json",
-  "latest_complete_audit_declarations": 1759,
+  "latest_complete_audit_checkpoint": "oriented-forms-coordinate-map-checkpoint.json",
+  "latest_complete_audit_declarations": 1775,
   "working_changes_unverified": [
-    "AffineCoverResolvedTotal",
-    "AffineOrientedForms",
     "AffineOrientedOrdinaryRows",
+    "AffineOrientedRowBaseChange",
     "AffineOriginalCoverTarget",
-    "AffineOrientedRowBaseChange"
+    "AffineCoverResolvedTotal"
   ],
-  "pending_check": "bundle-183 terminal rc1; see audit module inventory; failed dependencies await next batch",
+  "pending_check": "bundle-184 terminal rc1; see audit module inventory; failed dependencies await next batch",
   "next_proof_route": "remaining-20000-plan.md",
   "initial_record": {
     "stage": "5inf3a",
