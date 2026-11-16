@@ -2376,3 +2376,38 @@ G4・G5は未完。検証済みの数学の先端は `415b27a9b` のまま。未
 到達点は、元のアフィンnerveのΓの増大係数の完全性と、同じ増大二重複体の各行の自然な比較まで。増大を保つ矩形の行の同型・相対proper fppfへの代入・F8全複体・元の中心を保持するNoether帰納・G5は未完。最終のAugmentedRingCechExactと利用側の型は不変。mainは取り込んでいない。停止点2g-2ではない。
 
 一覧：済み1／全体3（うち追加0）。
+
+同じ増大の可換性の証明の分割（既存G4の増大・係数移送の内数、45〜85行）：`rectangularPerfectAugmentedRow_augmentation` は、元のΓ–SpecのFrobenius写像で基底を戻した増大と、有限交叉族のnerveのΓの増大を矩形の行へ送った値が各タプルで等しい式。元の二つの評価式を先に単独で合成し、その式を行の同型の可換性に渡す。関手の同型と評価式の同時展開による既定heartbeatsの超過を、資源上限を上げず証明を分割して避ける。
+
+同じ行の関手の同型の評価の分割（既存G4の係数移送の内数、30〜55行）：`rectangularPerfectRowFunctorIso_hom_apply` は同じ各成分の評価式を関手の同型の成分へ渡す法則。行の増大の同型の証明では元のΓの大きい比較の定義を展開せず、この同じ評価式と基底の係数移送の評価を使う。
+
+後続F8・帰納への接続の再確認：射影四角形の既存の入口は `projectivePerfectCartesianSquare_acyclic` および同じnativeなスカラーへの `projectivePerfectCartesianScalarSquare_standard_acyclic`。被覆を変えるときは、既存の `CechAugmentedSquare.Map.totalComplex_acyclic_iff_of_cones` に同じ二辺のconeの完全性と基底・中心の全単射性を渡す。別の二重複体の判定を作り直さない。Noether帰納では、一般のProperInductiveLevelのrを射影的と仮定せず、元の閉像に関するwell-foundedな帰納の中で2dの実際のblowup rを選ぶ。任意のNoetherなアフィンTへの底変換後も同じr_Tの射影性と中心外の同型を保持し、中心上の全ての正次数の底変換を同じ厳密に小さい元の閉像の帰納仮定に渡す。T自身の次元が減るとは主張しない。これらの後続のLeanは未実装であり、今回の検証数には含めない。
+
+
+## G4：同じ増大行の比較と平坦全射のタプル全複体
+
+検証済みの五本を追加した。元の基底のΓ–Specの係数移送と同じ増大行の係数比較をつなぎ、アフィン対角と元の有限アフィン被覆を入力に取る平坦全射の、既存のタプル二重Čechのtotalが完全であることを示した。各有限交叉族の元の環の完全性は既存の有限アフィン族の部品から取り、非アフィンな源のΓの平坦性を仮定しない。
+
+`SchemeScalarPerfectRestriction`（50行）：
+- `schemeScalarPerfectRestriction_cancel`：元のスカラーを開Wへ制限したFrobenius写像にΓSpecIso.homのFrobenius写像を合成すると、同じ構造射のappLE ⊤ WのFrobenius写像になる。
+
+`RectangularPerfectAugmentedRowAugmentation`（49行）：
+- `rectangularPerfectAugmentedRow_augmentation`：元のΓ–Specで基底を戻した増大と、有限交叉族のnerveのΓの増大を同じ矩形の行へ送った値は、各タプルで等しい。
+
+`RectangularPerfectRowFunctorEvaluation`（33行）：
+- `rectangularPerfectRowFunctorIso_hom_apply`：同じ行の関手の同型の評価は、元の各成分の矩形の環同型の評価。
+
+`RectangularPerfectAugmentedRowIso`（76行）：
+- `rectangularPerfectAugmentedRowIso`：有限交叉族の余積のアフィン性の下で、同じ幾何的nerveのΓの増大係数と元の矩形の増大行を、基底のΓ–Specの比較と同じ行の係数同型で比較する。
+
+`SchemePerfectCechTupleFlatTotal`（61行）：
+- `schemePerfectCechTupleDouble_acyclic_of_augmented_rows`：同じ各増大行の完全性を、既存の行の評価と同じretractで元のsingleのタプル全複体の完全性へ戻す。
+- `schemePerfectCechTupleDouble_acyclic_of_flat_surjective`：アフィン対角を持つ源、元の有限アフィン被覆と平坦全射を入力に、同じタプル二重Čechのtotalの完全性を得るČech版。
+
+検証：五本をまとめたmodule形式の下書き検証 `2g-g4-augmented-row-total-check-10.log` は終了0、error・sorry警告なし。下書き・本体・固定manifestのSHA256と全バイト一致を五本とも再確認した。対象五本と直接importerの入口のビルドは **5,293ジョブ・終了0**（`2g-g4-augmented-row-total-native.log`、依存はキャッシュからの再生を含む）。別の共有鍵で非公開・生成分も含む実際の全所有宣言を小監査し、**18宣言・標準三公理のみ・終了0**（`2g-g4-augmented-row-total-audit.log`）。上の順に2、1、1、9、5宣言。大きい関手の定義の展開とゴールの書き換えを避け、同じ評価式を型付けして推移律で直接つなぐことで、既定の200,000 heartbeatsのまま通した。追加公理・sorry・既存宣言の型変更・資源上限の引き上げ・200行超の宣言なし。letIと入口・既存ファイルの長行等のstyle警告は残る。共有鍵 --class impl --wait 3600、一件ずつ。対象ビルドと所有宣言の小監査は別枠。root・下流全ビルド・AlgebraicGeometry全体監査なし。
+
+今回269行＋登録5行＝274行。基準56ea849a3からの外枠計数は **14,243行**（新規200モジュール本体13,997行、既存追加25行、入口221行）。新規所有宣言の小監査累計 **1,419**、既存15宣言は別計上。今回の再開以降の四つの数学の束は、合計16モジュール・本体1,080行＋登録16行、所有宣言117件で、全件が対象ビルドと小監査を通った。
+
+完成見込み15,400〜17,300行、承認済み外枠18,000行は不変。残りの主要な接続は **G4のF8・元の中心を保持するNoether帰納と、G5の模型の極限・Frobeniusとの交換・元のv被覆への移送（計5接続）**。今回の平坦全射の結果は同じ選択した有限アフィン被覆での全複体の完全性であり、一般の固有全射の降下や最終のv被覆の完全性を完成扱いにしない。G4・G5は未完で、停止点2g-2ではない。最終のAugmentedRingCechExactと利用側の型は不変。mainは取り込んでいない。
+
+一覧：済み1／全体3（うち追加0）。
