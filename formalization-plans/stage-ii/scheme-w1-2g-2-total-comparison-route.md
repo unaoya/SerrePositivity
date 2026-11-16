@@ -50,6 +50,12 @@ RightKernelは中心Sが(0,1)、E_n^bが(n,b+2)の配置に比較する。元の
 
 検証再開順：現在生存する同じ共有鍵待ちのセッション63342の左座標の結果を受け取り、必要な修正後に左右座標と再索引・水平自然性をまとめたmodule形式の下書きを検証する。通った同じバイトだけを本体へ移し、対象と直接importerの入口の小ビルド、別の共有鍵で所有宣言の小監査を行う。鎖写像性の照合はその後であり、未検証の下書きを完成した同型と数えない。
 
+## 必要な完全性を元の短完全列で移す経路（下書き、未検証）
+
+同じσの短完全列K.total→L.total→Q.totalができれば、元のQ.totalは既存の定数の正次数の列なので完全である。これよりK.totalとL.totalの完全性は既存のacyclic_X₁/acyclic_X₂で同値になる。一方、元のPPそのもののkernelSequenceをtotalへ渡す短完全列は、元の同じLeftKernel.total→L.total→Q.totalである。同じ判定から元のLeftKernel.totalとK.totalの完全性を同値にできる。これがF8の出口に必要な型である。
+
+中心側も、中心自身の恒等矢印を同じ左側の比較へ代入し、中心の元の増大totalの完全性からその同じ左側の全totalの完全性へ渡す。その左側の全totalのunsignedな一段のextendと、元の右側の全totalを、元のC/Eの座標と中心の-1・Eの(-1)^bで直接比較する。元の右側の射影のkernelSequenceと同じ正次数の基底列から、元のRightKernel.totalの完全性を得る。F8が返す元のLeftKernel.totalへ上の同値を使えば元の増大totalに戻る。この方法では元のPPとkernelを保ち、完全性の結論を既存の短完全列のAPIで渡す。補助のkernel同型や一般のtotalとextendの交換のAPIは、この完全性の移送に先立つ必須の仮定とはしない。右側の全totalの直接比較を含め、完成したとはまだ数えない。
+
 ## アフィン環の出口
 
 `affineCechNerveTupleGlobalAugmentation_quasiIso` は、元のアフィンnerveのΓのsingleから元のタプル被覆の複体への、各列の準同型を供給する。この射の正の縦次数の成分は零加群からの射で、一般には全射ではない。既存の全成分全射を仮定する列のtotal判定へ、そのまま代入しない。
