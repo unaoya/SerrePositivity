@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.FramedLimitMixedClasses
-public import SerrePositivity.EInfinity.HomotopyWeight.ConeReindexPoints
+public import SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.ConeReindexPoints
 
 /-!
 # 元の通常錐の類と右錐の添字比較
@@ -23,7 +23,7 @@ universe u
 
 namespace SerrePositivity.EInfinity.BarrattEccles
 
-open CategoryTheory Limits HomotopicalAlgebra Opposite
+open CategoryTheory Limits _root_.HomotopicalAlgebra Opposite
 open SerrePositivity.DiagramModel
 
 variable (A : Type u) [CommRing A] (K : Type u) [SmallCategory K]
@@ -34,27 +34,27 @@ variable (A : Type u) [CommRing A] (K : Type u) [SmallCategory K]
 使われ方：両 frame の比較の全体の正規化。 -/
 lemma rightSimplicialConeIso_coneClass (F : K ⥤ (operad A).Algebra) (c : Cone F) :
     SSet.mapπ₀ (rightSimplicialConeIso A K c.pt F).hom
-      (HomotopyWeight.coneClass K (HomotopyWeight.weight K)
+      (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.coneClass K (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K)
         (strictSimplicialConeFamily A K F c)) = framedLimitConeClass A K F c := by
   let e := opOpEquivalence K
-  let W := HomotopyWeight.weight K
+  let W := _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K
   let G := rightSimplicialHomDiagram A K c.pt F
   let s := strictSimplicialConeFamily A K F c
-  let i := (HomotopyWeight.coneSpaceReindexIso e W).app G
+  let i := (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.coneSpaceReindexIso e W).app G
   let j := rightSimplicialHomDiagramIso A K c.pt F
-  have h := HomotopyWeight.coneSpaceReindexIso_class e W s
-  have hi : SSet.mapπ₀ i.inv (HomotopyWeight.coneClass K W s) =
-      HomotopyWeight.coneClass Kᵒᵖᵒᵖ (e.functor ⋙ W) (Functor.whiskerLeft e.functor s) := by
+  have h := _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.coneSpaceReindexIso_class e W s
+  have hi : SSet.mapπ₀ i.inv (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.coneClass K W s) =
+      _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.coneClass Kᵒᵖᵒᵖ (e.functor ⋙ W) (Functor.whiskerLeft e.functor s) := by
     change SSet.mapπ₀ i.hom _ = _ at h
     rw [← h, ← SSet.mapπ₀_comp_apply, Iso.hom_inv_id, SSet.mapπ₀_id_apply]
   change SSet.mapπ₀ (i.inv ≫ (WeightedCones.coneSpace Kᵒᵖᵒᵖ
-    (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K)).map j.hom) _ = _
+    (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.framedLimitWeight K)).map j.hom) _ = _
   rw [SSet.mapπ₀_comp_apply, hi]
-  have hm := HomotopyWeight.coneClass_map Kᵒᵖᵒᵖ (e.functor ⋙ W)
+  have hm := _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.coneClass_map Kᵒᵖᵒᵖ (e.functor ⋙ W)
     (Functor.whiskerLeft e.functor s) j.hom
   refine hm.trans ?_
-  change HomotopyWeight.coneClass Kᵒᵖᵒᵖ (e.functor ⋙ W) _ =
-    HomotopyWeight.coneClass Kᵒᵖᵒᵖ (e.functor ⋙ W) _
+  change _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.coneClass Kᵒᵖᵒᵖ (e.functor ⋙ W) _ =
+    _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.coneClass Kᵒᵖᵒᵖ (e.functor ⋙ W) _
   congr 1
 
 /-- 概要：両錐比較は元の通常錐の類そのものを結ぶ（Hovey §5.4）。

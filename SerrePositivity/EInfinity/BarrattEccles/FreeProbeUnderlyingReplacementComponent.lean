@@ -16,7 +16,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory SSet SerrePositivity.InfinityCategories SerrePositivity.DifferentialGraded
-open SerrePositivity.EInfinity.FrameHom ComplexLimits SimplicialLocalization
+open _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom ComplexLimits _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X : Complex A)
 
@@ -33,7 +33,7 @@ private lemma chosenTransportArrow {C D : Type*} [Category* C] [Category* D]
     (h : Arrow.mk (T.map q.hom ≫ r.hom) = Arrow.mk (s.hom ≫ t.hom)) :
     Arrow.mk (T.map (p.symm ≪≫ q).hom ≫ r.hom) =
       Arrow.mk ((T.mapIso p).symm ≪≫ s ≪≫ t).hom := by
-  have hh := RoofPrefix.comp_arrow_eq (T.map p.inv) _ (T.map p.inv) _ rfl h
+  have hh := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.comp_arrow_eq (T.map p.inv) _ (T.map p.inv) _ rfl h
   simpa only [Iso.trans_hom, Iso.symm_hom, Functor.map_comp, Functor.mapIso_inv,
     Category.assoc] using hh
 
@@ -101,7 +101,7 @@ private lemma unitEndpointArrowCancel {C : Type*} [Category* C]
     (hw : Arrow.mk (w ≫ k.hom) = Arrow.mk z.hom)
     (hn : p.hom ≫ v ≫ z.hom = n) (hm : Arrow.mk (m ≫ k.hom) = Arrow.mk n) :
     p.hom ≫ v ≫ w = m := by
-  have hc := RoofPrefix.comp_arrow_eq (p.hom ≫ v) _ (p.hom ≫ v) _ rfl hw
+  have hc := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.comp_arrow_eq (p.hom ≫ v) _ (p.hom ≫ v) _ rfl hw
   have hc' : Arrow.mk ((p.hom ≫ v ≫ w) ≫ k.hom) = Arrow.mk n := by
     simpa only [Category.assoc, hn] using hc
   exact (cancel_mono k.hom).mp ((Arrow.mk_injective _ _) (hc'.trans hm.symm))

@@ -42,7 +42,7 @@ for path in ['scripts/audit_einfinity.lean','scripts/audit_bhatt_scholze_stage2.
   old='    unless (`SerrePositivity.EInfinity).isPrefixOf mod do continue'
   roots=['SerrePositivity.EInfinity','SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight','SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom','SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization']
   singles=[r['new_module'] for r in sources.values() if r['id']=='OE03' and r['new_module'].startswith('SerrePositivity.InfinityCategories.Kerodon.')];assert len(singles)==2
-  replacement='    unless (#[\n'+',\n'.join('        `'+s for s in roots)+'] : Array Name).any (fun prefix ↦ prefix.isPrefixOf mod) ||\n      (#[\n'+',\n'.join('        `'+s for s in sorted(singles))+'] : Array Name).contains mod do continue'
+  replacement='    unless (#[\n'+',\n'.join('        `'+s for s in roots)+'] : Array Name).any (fun scopePrefix ↦ scopePrefix.isPrefixOf mod) ||\n      (#[\n'+',\n'.join('        `'+s for s in sorted(singles))+'] : Array Name).contains mod do continue'
   if old in text:
    assert text.count(old)==1;text=text.replace(old,replacement)
   else:assert replacement in text

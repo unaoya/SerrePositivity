@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.ComplexLimits.RightFrames
-public import SerrePositivity.EInfinity.SimplicialLocalization.ModelHammockLocalization
-public import SerrePositivity.EInfinity.SimplicialLocalization.WeakNerveInverts
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelHammockLocalization
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.WeakNerveInverts
 public import SerrePositivity.EInfinity.ComplexLimits.OrdinaryDerivedSource
 public import SerrePositivity.KST.LocalizingInvariants.LocalizationFactorization
 
@@ -21,7 +21,7 @@ namespace SerrePositivity.EInfinity.PowerOperation
 open CategoryTheory HomologicalComplex
 open scoped Simplicial
 open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.ComplexLimits
-open SerrePositivity.EInfinity.SimplicialLocalization
+open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization
 open SerrePositivity.InfinityCategories.Project.ModelCategoryComparison
 open SerrePositivity.InfinityCategories.HA.ModelCategoryComparison
@@ -40,18 +40,18 @@ def complexRelativeCategory : RelativeCategory.{u + 1} := by
 abbrev complexRelativeDown : (complexRelativeCategory A).category ⥤ Complex A := AsSmall.down
 
 /-- 同じ全複体の hammock の native nerve。 -/
-abbrev complexHammockNerve := kanHammockNerve (complexRelativeCategory A)
+abbrev complexHammockNerve := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockNerve (complexRelativeCategory A)
 
 /-- 同じ hammock への指定局所化写像。 -/
-abbrev complexHammockSource := hammockLocalizationNerveMap (complexRelativeCategory A)
+abbrev complexHammockSource := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (complexRelativeCategory A)
 
 lemma complexHammockSource_isLocalization :
-    IsLocalization (complexHammockSource A) (weakNerveEdges (complexRelativeCategory A)) := by
+    IsLocalization (complexHammockSource A) (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges (complexRelativeCategory A)) := by
   let := projectiveModelCategory A
   have := projectiveModelCategory_cofibrantlyGenerated A
   have := hasFunctorialFactorization_cofibration_trivialFibration
     (projectiveGeneratingCofibrations A) (projectiveGeneratingTrivialCofibrations A)
-  exact modelHammock_isLocalization (rightFrameFamily A)
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelHammock_isLocalization (rightFrameFamily A)
 
 /-- 異なる Hom 宇宙の通常図式を、同じ全複体の元の図式へ写す。 -/
 def complexRelativeNerveDown : nerve (complexRelativeCategory A).category ⟶ nerve (Complex A) where
@@ -68,8 +68,8 @@ def complexRelativeDerivedSource :
   complexRelativeNerveDown A ≫ complexOrdinaryDerivedSource A
 
 lemma complexRelativeDerivedSource_inverts :
-    InvertsEdges (complexRelativeDerivedSource A) (weakNerveEdges (complexRelativeCategory A)) := by
-  apply weakNerveEdges_inverts_of_arrows (complexRelativeCategory A)
+    InvertsEdges (complexRelativeDerivedSource A) (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges (complexRelativeCategory A)) := by
+  apply _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges_inverts_of_arrows (complexRelativeCategory A)
   intro X Y f hf
   let := projectiveModelCategory A
   have hq : QuasiIso ((complexRelativeDown A).map f) := hf

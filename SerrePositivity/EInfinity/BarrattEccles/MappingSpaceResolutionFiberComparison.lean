@@ -36,7 +36,7 @@ def mappingSpaceResolutionFiberEquivalence (X Y : (operad A).Algebra) :
     AsSmall.{u + 1} (((((mappingSpace A).obj (op X)).obj Y).Elements)ᵒᵖ) ≌
       (mappingSmallResolutionRightDiagram A X Y).obj (mappingSpaceResolutionRightLeg A Y) := by
   let := modelCategory A
-  exact FrameHom.CosimplicialHomElements.smallEquivalence.{u + 1, u, u + 1}
+  exact _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CosimplicialHomElements.smallEquivalence.{u + 1, u, u + 1}
     ((cosimplicialResolutionFamily (mappingCofibrantFactorization A)).obj.obj X)
     ((fibrantTarget (mappingFibrantFactorization A)).obj Y)
 
@@ -46,7 +46,7 @@ def mappingSpaceResolutionFiberNerveMap (X Y : (operad A).Algebra) :
       nerve ((mappingSmallResolutionRightDiagram A X Y).obj
         (mappingSpaceResolutionRightLeg A Y)) :=
   (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.NerveULiftHom.iso.{u, 0, u + 1} _).hom ≫
-    (FrameHom.NerveAsSmall.iso.{u, 0, u + 1} _).inv ≫
+    (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveAsSmall.iso.{u, 0, u + 1} _).inv ≫
       nerveMap (mappingSpaceResolutionFiberEquivalence A X Y).functor
 
 /-- 全単体で元の同じ中間射を回収する。 -/
@@ -63,7 +63,7 @@ lemma mappingSpaceResolutionFiberNerveMap_localized_isIso (X Y : (operad A).Alge
     IsIso (AnodyneHomotopy.anodyneQ.map (mappingSpaceResolutionFiberNerveMap A X Y)) := by
   have : IsIso (AnodyneHomotopy.anodyneQ.map
       (nerveMap (mappingSpaceResolutionFiberEquivalence A X Y).functor)) :=
-    (FrameHom.NerveEquivalenceImage.imageIso (mappingSpaceResolutionFiberEquivalence A X Y)
+    (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveEquivalenceImage.imageIso (mappingSpaceResolutionFiberEquivalence A X Y)
       AnodyneHomotopy.anodyneQ (Localization.inverts _ SSet.anodyneExtensions)).isIso_hom
   dsimp only [mappingSpaceResolutionFiberNerveMap]
   rw [CategoryTheory.Functor.map_comp, CategoryTheory.Functor.map_comp]
@@ -74,7 +74,7 @@ def mappingSpaceResolutionGrothendieckNerveMap (X Y : (operad A).Algebra) :
     nerve (ULiftHom.{u + 1} (((((mappingSpace A).obj (op X)).obj Y).Elements)ᵒᵖ)) ⟶
       nerve (Grothendieck (mappingSmallResolutionRightDiagram A X Y)) :=
   mappingSpaceResolutionFiberNerveMap A X Y ≫
-    (FrameHom.Thomason.selfLiftIso _).inv ≫ FrameHom.Thomason.fiberNerveMap
+    (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.selfLiftIso _).inv ≫ _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.fiberNerveMap
       (mappingSmallResolutionRightDiagram A X Y) (mappingSpaceResolutionRightLeg A Y)
 
 /-- 同じ元の右脚で全図式へ入れる比較射そのものも局所化で可逆。 -/

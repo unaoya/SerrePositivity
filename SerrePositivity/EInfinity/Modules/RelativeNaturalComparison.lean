@@ -3,7 +3,7 @@ module
 public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.EInfinity.Modules.RelativeCylinderLaws
 public import SerrePositivity.EInfinity.Modules.LocalizationComparisonEvaluation
-public import SerrePositivity.EInfinity.SimplicialLocalization.NerveFunctor
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.NerveFunctor
 public import Mathlib.Tactic.FinCases
 
 /-!
@@ -21,7 +21,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.Modules
 open CategoryTheory SSet
-open SerrePositivity.EInfinity.SimplicialLocalization
+open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization
 open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
 
@@ -32,13 +32,13 @@ variable (C : RelativeCategory.{u})
 規約：選択逆と可逆二胞体を保持する。使われ方：指定交差辺との成分の照合。 -/
 def relativeCylinderInverseEndpointIso (i : Fin 2) :
     FunctorIso (relativeCylinderProjection_isQCatEquivalence C).choose.inv
-      (localizationNerveMap (relativeCylinderEndpoint C i)) := by
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap (relativeCylinderEndpoint C i)) := by
   let e := (relativeCylinderProjection_isQCatEquivalence C).choose
-  let E := localizationNerveMap (relativeCylinderEndpoint C i)
-  have h : E ≫ e.hom = 𝟙 (localizationNerve C) := by
-    change localizationNerveMap (relativeCylinderEndpoint C i) ≫
-      localizationNerveMap (relativeCylinderProjection C) = _
-    rw [← localizationNerveMap_comp, relativeCylinderEndpoint_projection, localizationNerveMap_id]
+  let E := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap (relativeCylinderEndpoint C i)
+  have h : E ≫ e.hom = 𝟙 (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerve C) := by
+    change _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap (relativeCylinderEndpoint C i) ≫
+      _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap (relativeCylinderProjection C) = _
+    rw [← _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap_comp, relativeCylinderEndpoint_projection, _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap_id]
   have hl : e.inv = E ≫ (e.hom ≫ e.inv) := by
     rw [← Category.assoc, h, Category.id_comp]
   exact eqToIso (congrArg (fun k => SSet.HomotopyCategory.mk (functorVertex k)) hl) ≪≫
@@ -49,8 +49,8 @@ def relativeCylinderInverseEndpointIso (i : Fin 2) :
 方針：同じ射影の逆と、端点・射影の厳密な合成則を使う。
 規約：頂点ごとの比較に弱めない。使われ方：弱自然変換の局所化。 -/
 def relativeCylinderEndpointIso :
-    FunctorIso (localizationNerveMap (relativeCylinderEndpoint C 0))
-      (localizationNerveMap (relativeCylinderEndpoint C 1)) :=
+    FunctorIso (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap (relativeCylinderEndpoint C 0))
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap (relativeCylinderEndpoint C 1)) :=
   (relativeCylinderInverseEndpointIso C 0).symm ≪≫ relativeCylinderInverseEndpointIso C 1
 
 variable {C} {D : RelativeCategory.{u}} {F G : C ⟶ D}
@@ -106,14 +106,14 @@ lemma relativeNaturalCylinder_one (η : F.functor ⟶ G.functor)
 規約：全関手単体集合のホモトピー圏の同型。使われ方：同じ模型の単位・余単位。 -/
 def localizationNerveMapIsoOfWeakNatTrans (η : F.functor ⟶ G.functor)
     (hη : ∀ X, D.weakEquivalences (η.app X)) :
-    FunctorIso (localizationNerveMap F) (localizationNerveMap G) := by
-  let H := localizationNerveMap (relativeNaturalCylinder η hη)
-  have h0 : localizationNerveMap (relativeCylinderEndpoint C 0) ≫ H =
-      localizationNerveMap F := by
-    rw [← localizationNerveMap_comp, relativeNaturalCylinder_zero]
-  have h1 : localizationNerveMap (relativeCylinderEndpoint C 1) ≫ H =
-      localizationNerveMap G := by
-    rw [← localizationNerveMap_comp, relativeNaturalCylinder_one]
+    FunctorIso (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap F) (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap G) := by
+  let H := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap (relativeNaturalCylinder η hη)
+  have h0 : _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap (relativeCylinderEndpoint C 0) ≫ H =
+      _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap F := by
+    rw [← _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap_comp, relativeNaturalCylinder_zero]
+  have h1 : _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap (relativeCylinderEndpoint C 1) ≫ H =
+      _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap G := by
+    rw [← _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap_comp, relativeNaturalCylinder_one]
   exact functorIsoTransport ((relativeCylinderEndpointIso C).postcomp H) h0 h1
 
 attribute [cite HTT "1.2.7" (partial := component)

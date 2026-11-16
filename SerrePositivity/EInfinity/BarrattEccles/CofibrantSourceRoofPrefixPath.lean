@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixPathComposition
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefixPathComposition
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantSourceRoofNativePinchedReference
 
 /-!
@@ -18,7 +18,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open CategoryTheory SSet SimplicialLocalization Hammock
+open CategoryTheory SSet _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization Hammock
 open SerrePositivity.InfinityCategories
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : CofibrantAlgebra A)
@@ -30,7 +30,7 @@ def cofibrantSourceRoofProductCommaNativeFamilyMap :
         (show (cofibrantAlgebraRelativeCategory A).category from
           cofibrantSourceRoofDegreeAlgebra A X Y b)
         (show (cofibrantAlgebraRelativeCategory A).category from Y)) :=
-  RoofPrefix.familyMap (cofibrantAlgebraRelativeCategory A)
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.familyMap (cofibrantAlgebraRelativeCategory A)
     (cofibrantSourceRoofProductCommaDiagram A X Y b)
     (cofibrantSourceRoofProductCommaEvaluation A X Y b)
     (cofibrantSourceRoofProductCommaEvaluation_weak A X Y b)
@@ -43,7 +43,7 @@ lemma cofibrantSourceRoofProductCommaNativeFamilyMap_eq :
 
 lemma cofibrantSourceRoofProductCommaNativeFamilyMap_pinched :
     cofibrantSourceRoofProductCommaNativeFamilyMap A X Y b ≫
-      kanHammockHomPinchedMap (cofibrantAlgebraRelativeCategory A)
+      _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockHomPinchedMap (cofibrantAlgebraRelativeCategory A)
         (show (cofibrantAlgebraRelativeCategory A).category from
           cofibrantSourceRoofDegreeAlgebra A X Y b)
         (show (cofibrantAlgebraRelativeCategory A).category from Y) =
@@ -54,11 +54,11 @@ def cofibrantSourceRoofProductCommaPrefixPathMap {n : ℕ}
     (t : Fin (n + 1) →o Fin 2) (i : Fin (n + 1)) :
     nerve (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.LastPath.{u + 1} n i) ⟶
       SimplicialCategory.sHom
-        ((kanHammockSourceFunctor (cofibrantAlgebraRelativeCategory A)).obj
+        ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockSourceFunctor (cofibrantAlgebraRelativeCategory A)).obj
           ((cofibrantSourceRoofProductCommaDiagram A X Y b).obj (Γ.obj i)))
-        ((kanHammockSourceFunctor (cofibrantAlgebraRelativeCategory A)).obj
+        ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockSourceFunctor (cofibrantAlgebraRelativeCategory A)).obj
           (show (cofibrantAlgebraRelativeCategory A).category from Y)) :=
-  RoofPrefix.pathMap (cofibrantAlgebraRelativeCategory A)
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.pathMap (cofibrantAlgebraRelativeCategory A)
     (cofibrantSourceRoofProductCommaDiagram A X Y b)
     (cofibrantSourceRoofProductCommaEvaluation A X Y b)
     (cofibrantSourceRoofProductCommaEvaluation_weak A X Y b)

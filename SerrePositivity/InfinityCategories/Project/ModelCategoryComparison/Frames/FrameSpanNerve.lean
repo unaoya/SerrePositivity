@@ -24,7 +24,7 @@ universe u v
 
 namespace SerrePositivity.InfinityCategories.Project.ModelCategoryComparison
 
-open CategoryTheory HomotopicalAlgebra Opposite
+open CategoryTheory _root_.HomotopicalAlgebra Opposite
 open _root_.SerrePositivity.HomotopyFunctionComplex
 
 variable {C : Type u} [Category.{v} C]
@@ -40,7 +40,7 @@ def frameElementSpanNerveMap (L R : MorphismProperty C) {X Y Z : C}
       nerve (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Object L R X Y) where
   app _ := ↾fun c => c ⋙ (ULiftHom.down.{0, v, max u v}
     (C := (((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj Z).Elements)ᵒᵖ)) ⋙
-      _root_.SerrePositivity.EInfinity.FrameHom.frameElementSpanFunctor L R A p hp j hj
+      _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameElementSpanFunctor L R A p hp j hj
   naturality _ _ _ := rfl
 
 variable [ModelCategory C]

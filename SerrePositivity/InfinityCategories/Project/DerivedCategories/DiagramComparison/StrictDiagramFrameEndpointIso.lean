@@ -14,7 +14,7 @@ public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Diagr
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
-open CategoryTheory CategoryTheory.Limits HomotopicalAlgebra SSet
+open CategoryTheory CategoryTheory.Limits _root_.HomotopicalAlgebra SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
 open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations

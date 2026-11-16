@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.PowerOperation.ComplexRelativeElementTransport
 public import SerrePositivity.EInfinity.PowerOperation.ComplexRelativeElementReference
 public import SerrePositivity.EInfinity.PowerOperation.ComplexRelativeElementWeak
-public import SerrePositivity.EInfinity.FrameHom.PinchedFamilyWeakDetection
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.PinchedFamilyWeakDetection
 public import SerrePositivity.EInfinity.ComplexLimits.ProbeKProjectiveValues
 
 /-!
@@ -40,7 +40,7 @@ lemma complexRelativeElementDerivedPinchedMap_reference_family (X Y : Complex A)
 
 lemma complexRelativeElementDerivedPinchedMap_weak (X Y : KProjectiveComplex A) :
     IsWeakHomotopyEquivalence (complexRelativeElementDerivedPinchedMap A X.val Y.val) :=
-  FrameHom.pinchedFamily_weak_of_intervalFamilyHom_eq _ _
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.pinchedFamily_weak_of_intervalFamilyHom_eq _ _
     (complexRelativeElementReferencePinchedMap_weak A X Y)
     (complexRelativeElementDerivedPinchedMap_reference_family A X.val Y.val)
 

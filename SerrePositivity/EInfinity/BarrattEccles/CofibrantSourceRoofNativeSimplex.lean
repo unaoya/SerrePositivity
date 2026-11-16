@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixPrismSimplex
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefixPrismSimplex
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantSourceRoofPrefixPath
 
 /-!
@@ -18,7 +18,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open CategoryTheory SSet SimplicialLocalization
+open CategoryTheory SSet _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.InfinityCategories
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : CofibrantAlgebra A)
@@ -27,8 +27,8 @@ variable (A : Type u) [CommRing A] (X Y : CofibrantAlgebra A)
 def cofibrantSourceRoofProductCommaNativeSimplex {n : ℕ}
     (Γ : Fin (n + 1) ⥤ cofibrantSourceRoofProductComma A X Y b)
     (t : Fin (n + 1) →o Fin 2) :
-    (kanHammockNerve (cofibrantAlgebraRelativeCategory A)) _⦋n + 1⦌ :=
-  RoofPrefix.simplex (cofibrantAlgebraRelativeCategory A)
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockNerve (cofibrantAlgebraRelativeCategory A)) _⦋n + 1⦌ :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.simplex (cofibrantAlgebraRelativeCategory A)
     (cofibrantSourceRoofProductCommaDiagram A X Y b)
     (cofibrantSourceRoofProductCommaEvaluation A X Y b)
     (cofibrantSourceRoofProductCommaEvaluation_weak A X Y b)
@@ -38,16 +38,16 @@ def cofibrantSourceRoofProductCommaNativeSimplex {n : ℕ}
 lemma cofibrantSourceRoofProductCommaNativeSimplex_target {n : ℕ}
     (Γ : Fin (n + 1) ⥤ cofibrantSourceRoofProductComma A X Y b)
     (t : Fin (n + 1) →o Fin 2) :
-    (kanHammockNerve (cofibrantAlgebraRelativeCategory A)).map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.lastVertex n).op
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockNerve (cofibrantAlgebraRelativeCategory A)).map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.lastVertex n).op
       (cofibrantSourceRoofProductCommaNativeSimplex A X Y b Γ t) =
       cofibrantHammockVertex A Y :=
-  (RoofPrefix.simplex_target (cofibrantAlgebraRelativeCategory A)
+  (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.simplex_target (cofibrantAlgebraRelativeCategory A)
     (cofibrantSourceRoofProductCommaDiagram A X Y b)
     (cofibrantSourceRoofProductCommaEvaluation A X Y b)
     (cofibrantSourceRoofProductCommaEvaluation_weak A X Y b)
     (cofibrantSourceRoofProductCommaRightLeg A X Y b)
     (fun f => cofibrantSourceRoofProductCommaDiagram_map_weak A X Y b f) Γ t).trans
-      (hammockLocalizationNerveMap_vertex (cofibrantAlgebraRelativeCategory A)
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap_vertex (cofibrantAlgebraRelativeCategory A)
         (show (cofibrantAlgebraRelativeCategory A).category from Y)).symm
 
 def cofibrantSourceRoofProductCommaNativeSliceSimplex {n : ℕ}
@@ -58,7 +58,7 @@ def cofibrantSourceRoofProductCommaNativeSliceSimplex {n : ℕ}
     (cofibrantSourceRoofProductCommaNativeSimplex A X Y b Γ t), ?_⟩
   rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.joinStdSimplexIso_rightPoint_inr,
     SSet.yonedaEquiv_symm_naturality_left]
-  exact congrArg (fun z : (kanHammockNerve (cofibrantAlgebraRelativeCategory A)) _⦋0⦌ =>
+  exact congrArg (fun z : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockNerve (cofibrantAlgebraRelativeCategory A)) _⦋0⦌ =>
     SSet.yonedaEquiv.symm z) (cofibrantSourceRoofProductCommaNativeSimplex_target A X Y b Γ t)
 
 end SerrePositivity.EInfinity.BarrattEccles

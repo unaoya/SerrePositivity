@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.PowerOperation.BoundedCyclicCoefficients
 public import SerrePositivity.EInfinity.PowerOperation.ComplexRelativeElementColumn
 public import SerrePositivity.EInfinity.PowerOperation.EilenbergMacLaneHammockFunctor
-public import SerrePositivity.EInfinity.SimplicialLocalization.RelativeHammockSourceComparison
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RelativeHammockSourceComparison
 
 /-!
 # 同じ上有界周期係数模型から native Sp への実関手
@@ -21,7 +21,7 @@ universe u
 namespace SerrePositivity.EInfinity.PowerOperation
 open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded
-open SerrePositivity.EInfinity.SimplicialLocalization
+open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization
 open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
 variable (p : ℕ) [NeZero p] (k : Type u) [CommRing k]
@@ -50,20 +50,20 @@ def boundedCyclicRelativeHomMorphism : LocalizerMorphism
 
 /-- 同じ上有界係数の hammock から native Sp への実関手。 -/
 def boundedCyclicSpectrum :
-    kanHammockNerve (boundedCyclicRelativeCategory p k) ⟶ KST.Spectra.Sp.{u} :=
-  relativeKanHammockNerve (boundedCyclicRelativeHomMorphism p k) ≫
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockNerve (boundedCyclicRelativeCategory p k) ⟶ KST.Spectra.Sp.{u} :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.relativeKanHammockNerve (boundedCyclicRelativeHomMorphism p k) ≫
     eilenbergMacLaneHammockFunctor k
 
 /-- 同じ厳密な周期 Hom の図式へ戻る、全関手の指定同型。 -/
 def boundedCyclicSpectrum_sourceIso :
-    FunctorIso (hammockLocalizationNerveMap (boundedCyclicRelativeCategory p k) ≫
+    FunctorIso (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (boundedCyclicRelativeCategory p k) ≫
       boundedCyclicSpectrum p k)
       (nerveMap (boundedCyclicRelativeHomMorphism p k).functor ≫
         complexRelativeSpectrumSource k) := by
-  change FunctorIso (hammockLocalizationNerveMap (boundedCyclicRelativeCategory p k) ≫
-    (relativeKanHammockNerve (boundedCyclicRelativeHomMorphism p k) ≫
+  change FunctorIso (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (boundedCyclicRelativeCategory p k) ≫
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.relativeKanHammockNerve (boundedCyclicRelativeHomMorphism p k) ≫
       eilenbergMacLaneHammockFunctor k)) _
-  rw [← Category.assoc, relativeKanHammockNerve_source]
+  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.relativeKanHammockNerve_source]
   simpa only [Category.assoc, complexHammockSource] using
     FunctorIso.precomp (eilenbergMacLaneHammockFunctor_sourceIso k)
       (nerveMap (boundedCyclicRelativeHomMorphism p k).functor)

@@ -25,7 +25,7 @@ def nativeCellMappingUnit :
     _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.ordinaryHomFamily (cellResolution R A) ⟶
       multiplicativeMappingFunctor R (cellResolution R A) :=
   Functor.whiskerRight (multiplicativeSimplicesConstant R)
-    (EInfinity.FrameHom.MixedFrame.rightHomFunctor (cellResolution R A))
+    (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedFrame.rightHomFunctor (cellResolution R A))
 
 def nativeCellChosenRightMappingUnit :
     _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.ordinaryHomFamily (cellResolution R A) ⟶

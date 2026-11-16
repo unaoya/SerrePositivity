@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.EInfinity.BarrattEccles.FreeProbeRelativeElementFamilyComparison
-public import SerrePositivity.EInfinity.FrameHom.NerveColumnRoofNaturality
-public import SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixColumnRoof
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveColumnRoofNaturality
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefixColumnRoof
 /-! 概要：元の自由列の全屋根を実 U の全局所化源比較で移す。
 方針：同じ U の全源同型と元の augmentation・評価を全屋根自然性へ代入する。
 規約：同じ全要素圏と元の両端を保持する。
@@ -12,8 +12,8 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open CategoryTheory Opposite SSet SimplicialLocalization
-open SerrePositivity.EInfinity.FrameHom
+open CategoryTheory Opposite SSet _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
+open _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X : Complex A) (B : CofibrantAlgebra A)
@@ -25,7 +25,7 @@ lemma freeProbeRelativeElementAugmentation_forget_invertible
     (s : freeProbeRelativeElementIndex A X B) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge ((nerve.edgeMk ((freeProbeRelativeElementAugmentation A X B).app s)).map
       (cAlgLocalizationSource A ≫ cAlgForgetDerived A)).toTruncated :=
-  weakNerveEdges_inverts_arrows (cofibrantAlgebraRelativeCategory A) _
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges_inverts_arrows (cofibrantAlgebraRelativeCategory A) _
     ((cAlgLocalizationSource_inverts A).comp (cAlgForgetDerived A)) _
     (freeProbeRelativeElementAugmentation_weak A X B s)
 
@@ -51,15 +51,15 @@ lemma freeProbeRelativeElementRoof_source_naturality :
     let G := cofibrantAlgebraUnderlyingDerivedSource A
     ((cAlgForgetDerived_sourceIso A).precomp
       (nerveMap ((Functor.const K).obj (freeProbeRelativeElementSource A X)))).hom ≫
-      (NerveColumn.augmentationIso G V p
+      (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveColumn.augmentationIso G V p
         (freeProbeRelativeElementAugmentation_underlying_invertible A X B)).inv ≫
-      NerveColumn.hom G σ =
-    (NerveColumn.augmentationIso F V p
+      _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveColumn.hom G σ =
+    (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveColumn.augmentationIso F V p
       (freeProbeRelativeElementAugmentation_forget_invertible A X B)).inv ≫
-      NerveColumn.hom F σ ≫
+      _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveColumn.hom F σ ≫
       ((cAlgForgetDerived_sourceIso A).precomp
         (nerveMap ((Functor.const K).obj (ULiftHom.objUp.{u + 1, u + 1} B)))).hom :=
-  NerveColumn.roof_naturality (cAlgForgetDerived_sourceIso A)
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveColumn.roof_naturality (cAlgForgetDerived_sourceIso A)
     (freeProbeRelativeElementColumn A X B) (freeProbeRelativeElementAugmentation A X B)
     (freeProbeRelativeElementAugmentation_forget_invertible A X B)
     (freeProbeRelativeElementAugmentation_underlying_invertible A X B)
@@ -75,19 +75,19 @@ lemma freeProbeRelativeElementPinched_forget_column_roof_arrow :
     let F := cAlgLocalizationSource A ≫ cAlgForgetDerived A
     Arrow.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom (freeProbeRelativeElementPinchedMap A X B ≫
       _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.pinchedHomMap (cAlgForgetDerived A) _ _ ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace _ _)) =
-    Arrow.mk ((NerveColumn.augmentationIso F V p
+    Arrow.mk ((_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveColumn.augmentationIso F V p
       (freeProbeRelativeElementAugmentation_forget_invertible A X B)).inv ≫
-      NerveColumn.hom F σ) := by
+      _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveColumn.hom F σ) := by
   dsimp only
   rw [freeProbeRelativeElementPinchedMap_eq_hammock]
   simp only [Category.assoc]
-  exact RoofPrefix.native_family_postcomp_column_roof_arrow
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.native_family_postcomp_column_roof_arrow
     (cofibrantAlgebraRelativeCategory A) (freeProbeRelativeElementColumn A X B)
     (freeProbeRelativeElementAugmentation A X B)
     (freeProbeRelativeElementAugmentation_weak A X B)
     (freeProbeRelativeElementEvaluation A X B)
     (fun f => freeProbeRelativeElementColumn_map_weak A X B f)
-    ((kanHammockLocalizationEquivalence (cofibrantAlgebraRelativeCategory A)).hom ≫
+    ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockLocalizationEquivalence (cofibrantAlgebraRelativeCategory A)).hom ≫
       cAlgForgetDerived A)
 
 /-- 概要：実 U の全局所化源の屋根は元の忘却屋根の同じ全共役。
@@ -100,14 +100,14 @@ lemma freeProbeRelativeElementSourceRoof_eq_underlying :
     let K := freeProbeRelativeElementIndex A X B
     let F := cAlgLocalizationSource A ≫ cAlgForgetDerived A
     let G := cofibrantAlgebraUnderlyingDerivedSource A
-    (NerveColumn.augmentationIso F V p
+    (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveColumn.augmentationIso F V p
       (freeProbeRelativeElementAugmentation_forget_invertible A X B)).inv ≫
-      NerveColumn.hom F σ =
+      _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveColumn.hom F σ =
     ((cAlgForgetDerived_sourceIso A).precomp
       (nerveMap ((Functor.const K).obj (freeProbeRelativeElementSource A X)))).hom ≫
-      (NerveColumn.augmentationIso G V p
+      (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveColumn.augmentationIso G V p
         (freeProbeRelativeElementAugmentation_underlying_invertible A X B)).inv ≫
-      NerveColumn.hom G σ ≫
+      _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveColumn.hom G σ ≫
       ((cAlgForgetDerived_sourceIso A).precomp
         (nerveMap ((Functor.const K).obj (ULiftHom.objUp.{u + 1, u + 1} B)))).inv := by
   have h := freeProbeRelativeElementRoof_source_naturality A X B
@@ -129,9 +129,9 @@ lemma freeProbeRelativeElementPinched_forget_underlying_arrow :
       _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.pinchedHomMap (cAlgForgetDerived A) _ _ ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace _ _)) =
     Arrow.mk (((cAlgForgetDerived_sourceIso A).precomp
       (nerveMap ((Functor.const K).obj (freeProbeRelativeElementSource A X)))).hom ≫
-      (NerveColumn.augmentationIso G V p
+      (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveColumn.augmentationIso G V p
         (freeProbeRelativeElementAugmentation_underlying_invertible A X B)).inv ≫
-      NerveColumn.hom G σ ≫
+      _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveColumn.hom G σ ≫
       ((cAlgForgetDerived_sourceIso A).precomp
         (nerveMap ((Functor.const K).obj (ULiftHom.objUp.{u + 1, u + 1} B)))).inv) :=
   (freeProbeRelativeElementPinched_forget_column_roof_arrow A X B).trans

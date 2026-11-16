@@ -48,7 +48,7 @@ local notation "I[" A "]" => allAlgebraDKInclusion A
 /-- 全代数 nerve から Hom の宇宙を下げる。 -/
 abbrev allAlgebraDownNerve (A : Type u) [CommRing A] :
     nerve (allAlgebraRelativeCategory A).category ⟶ nerve (operad A).Algebra :=
-  FrameHom.MixedNerve.down ((operad A).Algebra)
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.down ((operad A).Algebra)
 
 /-- Hom の宇宙を上げた全代数の間の厳密な係数拡大。 -/
 abbrev allAlgebraCoefficientExtension :

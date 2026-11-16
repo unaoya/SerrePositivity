@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.EInfinity.FrameHom.MixedNerveConstant
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerveConstant
 public import SerrePositivity.EInfinity.ComplexLimits.OrdinaryDerivedSource
 
 /-!
@@ -21,7 +21,7 @@ variable (A : Type u) [CommRing A] (I : Type (u + 1)) [Category.{u} I]
 lemma complexOrdinaryDerivedConstant_eq (X : Complex A) :
     nerveMap ((Functor.const I).obj X) ≫ complexOrdinaryDerivedSource A =
     SSet.const ((complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X)) := by
-  rw [FrameHom.MixedNerve.nerveMap_const, SSet.const_comp]
+  rw [_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.nerveMap_const, SSet.const_comp]
 
 def complexOrdinaryDerivedConstantIso (X : Complex A) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (nerveMap ((Functor.const I).obj X) ≫ complexOrdinaryDerivedSource A)

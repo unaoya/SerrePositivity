@@ -15,7 +15,7 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
-open CategoryTheory Limits MonoidalCategory HomotopicalAlgebra
+open CategoryTheory Limits MonoidalCategory _root_.HomotopicalAlgebra
 open SerrePositivity.DifferentialGraded SerrePositivity.Reedy
 namespace SerrePositivity.KST.LocalizingInvariants.DGAlgebra
 variable (R : Type u) [CommRing R]

@@ -28,7 +28,7 @@ lemma mappingSpaceIndexAugmentation_isWeakHomotopyEquivalence
     (X Y : (operad A).Algebra) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
       (mappingSpaceIndexAugmentation A X Y) :=
-  FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.isWeakHomotopyEquivalence _
     (mappingSpaceIndexAugmentation_localized_isIso A X Y)
 
 /-- 元の Map^h と特殊な三本矢の局所化後の同型は同じ二つの元の射で定める。 -/

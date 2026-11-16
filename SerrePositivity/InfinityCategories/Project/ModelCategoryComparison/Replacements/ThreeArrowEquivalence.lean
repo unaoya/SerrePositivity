@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.ThreeArrow
-public import SerrePositivity.EInfinity.FrameHom.NerveEquivalenceImage
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveEquivalenceImage
 
 /-!
 # 元の三本矢と三列の hammock graph の圏同値
@@ -19,7 +19,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
 namespace SerrePositivity.InfinityCategories.Project.ModelCategoryComparison
-open CategoryTheory HomotopicalAlgebra
+open CategoryTheory _root_.HomotopicalAlgebra
 
 variable {C : Type u} [Category.{v} C] [ModelCategory C] {X Y : C}
 
@@ -118,7 +118,7 @@ def equivalence (X Y : C) :
 lemma nerveMap_localized_isIso (X Y : C) :
     IsIso (SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.map
       (nerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.ThreeArrow.functor (X := X) (Y := Y)))) :=
-  (_root_.SerrePositivity.EInfinity.FrameHom.NerveEquivalenceImage.imageIso (equivalence X Y)
+  (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveEquivalenceImage.imageIso (equivalence X Y)
     SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ
     (Localization.inverts _ SSet.anodyneExtensions)).isIso_hom
 

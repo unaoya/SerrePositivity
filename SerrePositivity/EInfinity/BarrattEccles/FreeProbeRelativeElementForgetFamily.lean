@@ -14,9 +14,9 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open CategoryTheory SSet MonoidalClosed SimplicialLocalization
+open CategoryTheory SSet MonoidalClosed _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.InfinityCategories SerrePositivity.DifferentialGraded
-open SerrePositivity.EInfinity.FrameHom
+open _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X : Complex A) (B : CofibrantAlgebra A)
 
@@ -25,7 +25,7 @@ variable (A : Type u) [CommRing A] (X : Complex A) (B : CofibrantAlgebra A)
 規約：全族と元の端点比較を保持。使われ方：標準単位の全族三角形の出口。 -/
 lemma freeProbeRelativeElementPinched_forget_family_arrow :
     let K := nerve (freeProbeRelativeElementIndex A X B)
-    let d := MixedNerve.down (freeProbeElementIndex A X B.obj)
+    let d := _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.down (freeProbeElementIndex A X B.obj)
     Arrow.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom (freeProbeRelativeElementPinchedMap A X B ≫
       _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.pinchedHomMap (cAlgForgetDerived A) _ _ ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace _ _)) =
     Arrow.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap K
@@ -34,16 +34,16 @@ lemma freeProbeRelativeElementPinched_forget_family_arrow :
       _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap K (cofibrantForgetOrdinaryVertexIso A B).inv) := by
   dsimp only
   let J := freeProbeRelativeElementIndex A X B
-  let T := (hoFunctor.map ((pre (MixedNerve.down (freeProbeElementIndex A X B.obj))).app
+  let T := (hoFunctor.map ((pre (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.down (freeProbeElementIndex A X B.obj))).app
     (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A))).toFunctor
   let eS := (cAlgForgetDerived_sourceIso A).precomp
     (nerveMap ((Functor.const J).obj (freeProbeRelativeElementSource A X)))
   let eB := (cAlgForgetDerived_sourceIso A).precomp
     (nerveMap ((Functor.const J).obj (ULiftHom.objUp.{u + 1, u + 1} B)))
-  let r := (NerveColumn.augmentationIso (cofibrantAlgebraUnderlyingDerivedSource A)
+  let r := (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveColumn.augmentationIso (cofibrantAlgebraUnderlyingDerivedSource A)
     (freeProbeRelativeElementColumn A X B) (freeProbeRelativeElementAugmentation A X B)
     (freeProbeRelativeElementAugmentation_underlying_invertible A X B)).inv ≫
-      NerveColumn.hom (cofibrantAlgebraUnderlyingDerivedSource A)
+      _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveColumn.hom (cofibrantAlgebraUnderlyingDerivedSource A)
         (freeProbeRelativeElementEvaluation A X B)
   have hs := cofibrantForgetOrdinaryRestriction_hom_arrow A
     (freeProbeElementCofibrantSource A X) J
@@ -54,9 +54,9 @@ lemma freeProbeRelativeElementPinched_forget_family_arrow :
   have hb : Arrow.mk eB.hom = Arrow.mk eB'.hom :=
     cofibrantForgetOrdinaryRestriction_hom_arrow A B J
   have hb' : Arrow.mk eB.inv = Arrow.mk eB'.inv := by
-    simpa only [IsIso.Iso.inv_hom] using RoofPrefix.inv_arrow_eq eB.hom eB'.hom hb
-  have h := RoofPrefix.comp_arrow_eq _ _ _ _
-    (RoofPrefix.comp_arrow_eq eS.hom r _ _ hs hr) hb'
+    simpa only [IsIso.Iso.inv_hom] using _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.inv_arrow_eq eB.hom eB'.hom hb
+  have h := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.comp_arrow_eq _ _ _ _
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.comp_arrow_eq eS.hom r _ _ hs hr) hb'
   exact (freeProbeRelativeElementPinched_forget_underlying_arrow A X B).trans
     (by simpa only [r, eS, eB, eB', _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.constantVertexIso, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHomPrecomp,
       Category.assoc] using h)

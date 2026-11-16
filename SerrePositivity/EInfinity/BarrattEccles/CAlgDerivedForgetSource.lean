@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantAlgebraRelativeInput
-public import SerrePositivity.EInfinity.SimplicialLocalization.WeakNerveInverts
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.WeakNerveInverts
 public import SerrePositivity.EInfinity.ComplexLimits.OrdinaryDerivedSource
 
 /-!
@@ -20,7 +20,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open SerrePositivity.InfinityCategories
-open CategoryTheory DifferentialGraded SSet SimplicialLocalization
+open CategoryTheory DifferentialGraded SSet _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open scoped Simplicial
 variable (A : Type u) [CommRing A]
 
@@ -65,8 +65,8 @@ lemma cofibrantAlgebraUnderlyingDerivedSource_map_weak
 
 lemma cofibrantAlgebraUnderlyingDerivedSource_inverts :
     _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InvertsEdges (cofibrantAlgebraUnderlyingDerivedSource A)
-      (weakNerveEdges (cofibrantAlgebraRelativeCategory A)) :=
-  weakNerveEdges_inverts_of_arrows (cofibrantAlgebraRelativeCategory A)
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges (cofibrantAlgebraRelativeCategory A)) :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges_inverts_of_arrows (cofibrantAlgebraRelativeCategory A)
     (cofibrantAlgebraUnderlyingDerivedSource A)
     (fun f hf => cofibrantAlgebraUnderlyingDerivedSource_map_weak A f hf)
 

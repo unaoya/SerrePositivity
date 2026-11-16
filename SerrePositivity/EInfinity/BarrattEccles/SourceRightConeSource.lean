@@ -24,10 +24,10 @@ universe u v w
 
 namespace SerrePositivity.EInfinity.BarrattEccles
 
-open CategoryTheory Limits HomotopicalAlgebra
+open CategoryTheory Limits _root_.HomotopicalAlgebra
 open SerrePositivity.Reedy
 open SerrePositivity.DiagramModel.WeightedCones
-open SerrePositivity.EInfinity.FrameHom.MixedFrame
+open _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedFrame
 
 attribute [local implicit_reducible] CofibrantResolutionFamily.atObject
 
@@ -65,19 +65,19 @@ lemma sourceRightConeComparisonIso_source {Y Z : (operad A).Algebra} (f : Y ⟶ 
   have hr X := _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MixedFrameDiagrams.rightDiagramComparison_isIso K (B X) (q.cofibrant _) (a X)
     (q.atObject _).augmentation_weakEquivalence R
     (fun k => rightSimplicialFrame_cofibrant A (F.obj k))
-  let T := coneSpace K (HomotopyWeight.weight K)
-  let e X := HomotopyWeight.kanConeComparisonIso K (HomotopyWeight.weight K)
-    (HomotopyWeight.weight_cofibrant K) L hL (l X) (r X) (hleft X) (hright X) (hl X) (hr X)
+  let T := coneSpace K (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K)
+  let e X := _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.kanConeComparisonIso K (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K)
+    (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight_cofibrant K) L hL (l X) (r X) (hleft X) (hright X) (hl X) (hr X)
   let g := q.obj.map (P.map f)
   let s := Functor.whiskerLeft F (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap g)
   let t := rightSimplicialHomSourceMap A K f F
-  let c := Functor.whiskerLeft R (mixedSourceMap g)
+  let c := Functor.whiskerLeft R (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedFrame.mixedSourceMap g)
   have hn : L.map (T.map s) ≫ (e Y).hom = (e Z).hom ≫ L.map (T.map t) :=
-    HomotopyWeight.kanConeComparisonIso_naturality K (HomotopyWeight.weight K)
-      (HomotopyWeight.weight_cofibrant K) L hL (l Z) (r Z) (l Y) (r Y)
+    _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.kanConeComparisonIso_naturality K (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K)
+      (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight_cofibrant K) L hL (l Z) (r Z) (l Y) (r Y)
       (hleft Z) (hright Z) (hleft Y) (hright Y) (hl Z) (hr Z) (hl Y) (hr Y) s t c
-      (leftDiagramComparison_source K g F R b)
-      (rightDiagramComparison_source K g (P.map f) (a Y) (a Z)
+      (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedFrame.leftDiagramComparison_source K g F R b)
+      (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedFrame.rightDiagramComparison_source K g (P.map f) (a Y) (a Z)
         (q.augmentation.naturality (P.map f)) R)
   have hnright : L.map (T.map t) ≫ L.map (rightSimplicialConeIso A K Y F).hom =
       L.map (rightSimplicialConeIso A K Z F).hom ≫

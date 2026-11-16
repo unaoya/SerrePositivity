@@ -18,7 +18,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.Modules
 open CategoryTheory SSet
-open SerrePositivity.EInfinity SimplicialLocalization
+open SerrePositivity.EInfinity _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization
 open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
 open SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories
@@ -41,9 +41,9 @@ lemma relativeNaturalCylinder_crossing (η : F.functor ⟶ G.functor)
 方針：二つの全端点の等式の評価を個別に適用する。
 規約：Arrow は同じ射の端点の等式も保持する。使われ方：元の成分との照合の分割。 -/
 lemma localizationWeakNat_component_factorization (η : F.functor ⟶ G.functor)
-    (hη : ∀ X, D.weakEquivalences (η.app X)) (x : (localizationNerve C) _⦋0⦌) :
+    (hη : ∀ X, D.weakEquivalences (η.app X)) (x : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerve C) _⦋0⦌) :
     Arrow.mk (((localizationNerveMapIsoOfWeakNatTrans η hη).app x).hom) =
-      Arrow.mk ((hoFunctor.map (localizationNerveMap (relativeNaturalCylinder η hη))).toFunctor.map
+      Arrow.mk ((hoFunctor.map (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap (relativeNaturalCylinder η hη))).toFunctor.map
         (((relativeCylinderEndpointIso C).app x).hom)) := by
   unfold localizationNerveMapIsoOfWeakNatTrans
   rw [functorIsoTransport_component_arrow]
@@ -55,30 +55,30 @@ lemma localizationWeakNat_component_factorization (η : F.functor ⟶ G.functor)
 lemma localizationWeakNat_component_arrow (η : F.functor ⟶ G.functor)
     (hη : ∀ X, D.weakEquivalences (η.app X)) (X : C.category) :
     Arrow.mk (((localizationNerveMapIsoOfWeakNatTrans η hη).app
-      (localizationNerveVertexEquiv C X)).hom) =
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveVertexEquiv C X)).hom) =
       Arrow.mk (SSet.HomotopyCategory.homMk
-        (coherentNerveEdge (kanLocalizationStrictHom D (η.app X)))) := by
+        (coherentNerveEdge (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanLocalizationStrictHom D (η.app X)))) := by
   let H := relativeNaturalCylinder η hη
   have hc := localizationStrictHom_coefficient_class H
     ((relativeCylinderContraction C).app (1, X))
   rw [relativeNaturalCylinder_crossing] at hc
   have hm := congrArg (fun k =>
-    eqToHom (congrArg SSet.HomotopyCategory.mk (localizationNerveMap_vertex H (0, X))) ≫ k ≫
-      eqToHom (congrArg SSet.HomotopyCategory.mk (localizationNerveMap_vertex H (1, X))).symm) hc
+    eqToHom (congrArg SSet.HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap_vertex H (0, X))) ≫ k ≫
+      eqToHom (congrArg SSet.HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap_vertex H (1, X))).symm) hc
   simp only [Category.assoc, eqToHom_trans_assoc, eqToHom_trans, eqToHom_refl,
     Category.id_comp, Category.comp_id] at hm
   have he : (relativeCylinderEndpointIso C).toNatIso.hom.app
-      (SSet.HomotopyCategory.mk (localizationNerveVertexEquiv C X)) =
+      (SSet.HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveVertexEquiv C X)) =
       relativeCylinderCrossingClass C X := relativeCylinderEndpointIso_component C X
-  have drop {a b c d : (localizationNerve D).HomotopyCategory}
+  have drop {a b c d : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerve D).HomotopyCategory}
       (ha : a = b) (k : b ⟶ c) (hd : c = d) :
       Arrow.mk (eqToHom ha ≫ k ≫ eqToHom hd) = Arrow.mk k := by
     subst b d
     simp
   rw [localizationWeakNat_component_factorization]
-  change Arrow.mk ((hoFunctor.map (localizationNerveMap H)).toFunctor.map
+  change Arrow.mk ((hoFunctor.map (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap H)).toFunctor.map
     ((relativeCylinderEndpointIso C).toNatIso.hom.app
-      (SSet.HomotopyCategory.mk (localizationNerveVertexEquiv C X)))) = _
+      (SSet.HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveVertexEquiv C X)))) = _
   rw [he]
   simp only [relativeCylinderCrossingClass, CategoryTheory.Functor.map_comp, eqToHom_map]
   rw [hm]
@@ -90,15 +90,15 @@ lemma localizationWeakNat_component_arrow (η : F.functor ⟶ G.functor)
 規約：全比較そのものと同じ端点輸送。使われ方：指定弱単位・余単位の回収。 -/
 lemma localizationNerveMapIsoOfWeakNatTrans_component (η : F.functor ⟶ G.functor)
     (hη : ∀ X, D.weakEquivalences (η.app X)) (X : C.category) :
-    eqToHom (congrArg SSet.HomotopyCategory.mk (localizationNerveMap_vertex F X)).symm ≫
-      ((localizationNerveMapIsoOfWeakNatTrans η hη).app (localizationNerveVertexEquiv C X)).hom ≫
-    eqToHom (congrArg SSet.HomotopyCategory.mk (localizationNerveMap_vertex G X)) =
-      SSet.HomotopyCategory.homMk (coherentNerveEdge (kanLocalizationStrictHom D (η.app X))) := by
+    eqToHom (congrArg SSet.HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap_vertex F X)).symm ≫
+      ((localizationNerveMapIsoOfWeakNatTrans η hη).app (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveVertexEquiv C X)).hom ≫
+    eqToHom (congrArg SSet.HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap_vertex G X)) =
+      SSet.HomotopyCategory.homMk (coherentNerveEdge (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanLocalizationStrictHom D (η.app X))) := by
   obtain ⟨hx, hy, h⟩ := (Arrow.mk_eq_mk_iff _ _).mp
     (localizationWeakNat_component_arrow η hη X)
   have hh := congrArg (fun k =>
-    eqToHom (congrArg SSet.HomotopyCategory.mk (localizationNerveMap_vertex F X)).symm ≫ k ≫
-    eqToHom (congrArg SSet.HomotopyCategory.mk (localizationNerveMap_vertex G X))) h
+    eqToHom (congrArg SSet.HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap_vertex F X)).symm ≫ k ≫
+    eqToHom (congrArg SSet.HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap_vertex G X))) h
   simpa only [Category.assoc, eqToHom_trans_assoc, eqToHom_trans, eqToHom_refl,
     Category.id_comp, Category.comp_id] using hh
 

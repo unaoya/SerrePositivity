@@ -21,7 +21,7 @@ universe u v w
 
 namespace SerrePositivity.EInfinity.BarrattEccles
 
-open CategoryTheory HomotopicalAlgebra
+open CategoryTheory _root_.HomotopicalAlgebra
 open SerrePositivity.Reedy
 
 variable (A : Type u) [CommRing A] (K : Type u) [SmallCategory K]

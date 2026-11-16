@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.AlgebraCoefficientExtension
 public import SerrePositivity.EInfinity.BarrattEccles.CAlgForgetDerived
-public import SerrePositivity.EInfinity.SimplicialLocalization.WeakNerveInverts
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.WeakNerveInverts
 public import SerrePositivity.HomotopicalAlgebra.Quillen.Brown
 public import SerrePositivity.HomotopicalAlgebra.Quillen.CofibrantObjects
 
@@ -32,7 +32,7 @@ universe u
 
 namespace SerrePositivity.EInfinity.BarrattEccles
 
-open CategoryTheory SSet HomotopicalAlgebra SimplicialLocalization
+open CategoryTheory SSet _root_.HomotopicalAlgebra _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.InfinityCategories SerrePositivity.Quillen
 open scoped Simplicial
 
@@ -47,16 +47,16 @@ lemma coefficientRestriction_isRightQuillen :
   let := modelCategory T
   have hf {X Y : (operad T).Algebra} (g : X ⟶ Y) (h : (fibrations _ ) g) :
       (fibrations _) ((coefficientRestriction f).map g) := by
-    apply (HomotopicalAlgebra.fibration_iff _).mp
+    apply (_root_.HomotopicalAlgebra.fibration_iff _).mp
     apply (fibration_iff S _).mpr
-    exact (fibration_iff T g).mp ((HomotopicalAlgebra.fibration_iff g).mpr h)
+    exact (fibration_iff T g).mp ((_root_.HomotopicalAlgebra.fibration_iff g).mpr h)
   refine ⟨fun _ _ g hg => hf g hg, ?_⟩
   intro X Y g hg
   refine ⟨hf g hg.1, ?_⟩
-  apply (HomotopicalAlgebra.weakEquivalence_iff _).mp
+  apply (_root_.HomotopicalAlgebra.weakEquivalence_iff _).mp
   apply (weakEquivalence_iff S _).mpr
   apply coefficientRestriction_map_quasiIso
-  exact (weakEquivalence_iff T g).mp ((HomotopicalAlgebra.weakEquivalence_iff g).mpr hg.2)
+  exact (weakEquivalence_iff T g).mp ((_root_.HomotopicalAlgebra.weakEquivalence_iff g).mpr hg.2)
 
 /-- 厳密拡大は、同じ環準同型に沿う係数制限の左 Quillen 随伴。 -/
 lemma coefficientExtension_isLeftQuillen :
@@ -109,11 +109,11 @@ lemma cofibrantAlgebraDKCoefficientExtension_map_weak
 /-- 拡大後の局所化は、拡大前の cofibrant 代数の擬同型を反転する。 -/
 lemma cAlgCoefficientExtensionSource_inverts :
     _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InvertsEdges (nerveMap (cofibrantAlgebraDKCoefficientExtension f) ≫ cAlgLocalizationSource T)
-      (weakNerveEdges (cofibrantAlgebraRelativeCategory S)) := by
-  apply weakNerveEdges_inverts_of_arrows
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges (cofibrantAlgebraRelativeCategory S)) := by
+  apply _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges_inverts_of_arrows
   intro X Y g hg
   let F := cofibrantAlgebraDKCoefficientExtension f
-  have h := weakNerveEdges_inverts_arrows (cofibrantAlgebraRelativeCategory T) _
+  have h := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges_inverts_arrows (cofibrantAlgebraRelativeCategory T) _
     (cAlgLocalizationSource_inverts T) (F.map g)
     (cofibrantAlgebraDKCoefficientExtension_map_weak f g hg)
   apply (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr
@@ -130,7 +130,7 @@ lemma cAlgCoefficientExtension_exists :
       Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (cAlgLocalizationSource S ≫ L)
         (nerveMap (cofibrantAlgebraDKCoefficientExtension f) ≫ cAlgLocalizationSource T)) :=
   _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.localization_extension_exists (cAlgLocalizationSource S)
-    (weakNerveEdges (cofibrantAlgebraRelativeCategory S)) (cAlgLocalizationSource_inverts S)
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges (cofibrantAlgebraRelativeCategory S)) (cAlgLocalizationSource_inverts S)
     (cAlgLocalizationPrecomposition_isQCatEquivalence S (CAlg_R T)) _
     (cAlgCoefficientExtensionSource_inverts f)
 

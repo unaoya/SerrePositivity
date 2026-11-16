@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.MappingResolutionFixedRightComparison
-public import SerrePositivity.EInfinity.FrameHom.ThomasonNaturality
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ThomasonNaturality
 
 /-!
 # 元の分解と全左脚の比較の Thomason 正方形
@@ -29,31 +29,31 @@ abbrev mappingSmallResolutionRightDiagram (X Y : (operad A).Algebra) :=
   let := modelCategory A
   mappingSmallRightSpanForget A Y ⋙ _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.costructuredArrowDiagram
     (mappingSmallResolutionOverFunctor A X ⋙
-      FrameHom.smallResolutionLeftForget.{u + 1, u, u + 1} X)
+      _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.smallResolutionLeftForget.{u + 1, u, u + 1} X)
 
 /-- 全右脚上の全左脚の小さい Cat 値図式。 -/
 abbrev mappingSmallSpanRightDiagram (X Y : (operad A).Algebra) :=
   let := modelCategory A
   mappingSmallRightSpanForget A Y ⋙ _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.costructuredArrowDiagram
-    (FrameHom.smallResolutionLeftForget.{u + 1, u, u + 1} X)
+    (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.smallResolutionLeftForget.{u + 1, u, u + 1} X)
 
 /-- 元の全右脚の比較と同じ自然変換の nerve の bar の射。 -/
 def mappingResolutionBarComparison (X Y : (operad A).Algebra) :=
   (BarConstruction.functor (AsSmall.{u + 1} (algebraRightSpanBase A Y))).map
-    (FrameHom.Thomason.nerveComparison (mappingFixedRightDiagramComparison A X Y))
+    (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.nerveComparison (mappingFixedRightDiagramComparison A X Y))
 
 /-- 全成分の反転性から、元の bar の比較そのものが反転される。 -/
 lemma mappingResolutionBarComparison_localized_isIso (X Y : (operad A).Algebra) :
     IsIso (AnodyneHomotopy.anodyneQ.map (mappingResolutionBarComparison A X Y)) :=
-  FrameHom.BarRows.map_localized_isIso _
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.BarRows.map_localized_isIso _
     (mappingFixedRightDiagramComparison_localized_isIso A X Y)
 
 /-- 元の Grothendieck 比較と bar 比較は、同じ二つの Thomason 射で厳密に可換。 -/
 lemma mappingResolutionThomasonSquare (X Y : (operad A).Algebra) :
-    FrameHom.Thomason.map (mappingSmallResolutionRightDiagram A X Y) ≫
+    _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.map (mappingSmallResolutionRightDiagram A X Y) ≫
         nerveMap (mappingFixedRightGrothendieckComparison A X Y) =
       mappingResolutionBarComparison A X Y ≫
-        FrameHom.Thomason.map (mappingSmallSpanRightDiagram A X Y) :=
-  FrameHom.Thomason.map_naturality (mappingFixedRightDiagramComparison A X Y)
+        _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.map (mappingSmallSpanRightDiagram A X Y) :=
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.map_naturality (mappingFixedRightDiagramComparison A X Y)
 
 end SerrePositivity.EInfinity.BarrattEccles

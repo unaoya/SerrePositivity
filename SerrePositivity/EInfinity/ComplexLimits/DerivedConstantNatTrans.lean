@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.EInfinity.FrameHom.MixedNerveConstantHom
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerveConstantHom
 public import SerrePositivity.EInfinity.ComplexLimits.DerivedNatTransComponent
 public import SerrePositivity.EInfinity.ComplexLimits.OrdinaryDerivedConstant
 /-!
@@ -30,7 +30,7 @@ lemma complexOrdinaryDerivedNatTransHom_const {X Y : Complex A} (f : X ⟶ Y) :
   have h : Arrow.mk (complexOrdinaryDerivedNatTransHom A ((Functor.const I).map f)) =
       Arrow.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap (nerve I) (Truncated.HomotopyCategory.homMk
         ((nerve.edgeMk f).map (complexOrdinaryDerivedSource A)).toTruncated)) :=
-    FrameHom.mixedNerve_const_postcomp_arrow f (complexOrdinaryDerivedSource A)
+    _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.mixedNerve_const_postcomp_arrow f (complexOrdinaryDerivedSource A)
   obtain ⟨hx, hy, h⟩ := (Arrow.mk_eq_mk_iff _ _).mp h
   rw [h]
   simp [complexOrdinaryDerivedConstantIso, Category.assoc]

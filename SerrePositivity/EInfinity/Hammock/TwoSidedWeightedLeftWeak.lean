@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.Hammock.TwoSidedWeightedLeftSourceCalculation
 public import SerrePositivity.EInfinity.Hammock.TwoSidedMixedLabelNaturality
-public import SerrePositivity.EInfinity.FrameHom.ThomasonInversion
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ThomasonInversion
 
 /-!
 # 元の重み付き左比較自身の弱同値性
@@ -26,7 +26,7 @@ variable {W : Type u} [Category.{u} W] (F : Wᵒᵖ ⥤ Cat.{u, u}) (S : W ⥤ T
 
 lemma map_eq_transport :
     map F S = (TwoSidedWeightedLeftSource.spaceIso F S).hom ≫
-      SSet.opFunctor.map (FrameHom.Thomason.map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedMixedLabel.pulledDiagram F S)) ≫
+      SSet.opFunctor.map (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedMixedLabel.pulledDiagram F S)) ≫
         (nerveOppositeIso (Grothendieck (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedMixedLabel.pulledDiagram F S))).inv ≫
           nerveMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedMixedLabel.toMixed F S) := by
   ext n e
@@ -34,12 +34,12 @@ lemma map_eq_transport :
     (nerveMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedMixedLabel.toMixed F S)).app n
       ((nerveOppositeIso (Grothendieck
         (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedMixedLabel.pulledDiagram F S))).inv.app n
-        ((SSet.opFunctor.map (FrameHom.Thomason.map
+        ((SSet.opFunctor.map (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.map
           (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedMixedLabel.pulledDiagram F S))).app n
           ((TwoSidedWeightedLeftSource.spaceIso F S).hom.app n e)))
   rw [TwoSidedWeightedLeftSource.spaceIso_hom_app F S n.unop.len e]
   change simplex F S e =
-    nerveOppositeSimplex (FrameHom.Thomason.simplex (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedMixedLabel.pulledDiagram F S)
+    nerveOppositeSimplex (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.simplex (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedMixedLabel.pulledDiagram F S)
       (TwoSidedWeightedLeftSource.barSimplex F S e)) ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedMixedLabel.toMixed F S
   rw [TwoSidedWeightedLeftSource.simplex_transport, nerveOppositeSimplex_oppositeNerveSimplex]
   rfl
@@ -49,7 +49,7 @@ lemma map_isWeakHomotopyEquivalence : _root_.SerrePositivity.InfinityCategories.
   have hA := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso
     (TwoSidedWeightedLeftSource.spaceIso F S)).isWeakHomotopyEquivalence
   have hB := _root_.SerrePositivity.InfinityCategories.Project.FilteredExchange.opposite_map_isWeakHomotopyEquivalence _
-    (FrameHom.Thomason.map_isWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedMixedLabel.pulledDiagram F S))
+    (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.map_isWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedMixedLabel.pulledDiagram F S))
   have hC := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso
     (nerveOppositeIso (Grothendieck
       (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedMixedLabel.pulledDiagram F S))).symm).isWeakHomotopyEquivalence

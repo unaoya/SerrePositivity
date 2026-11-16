@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.MappingResolutionAsphericity
-public import SerrePositivity.EInfinity.FrameHom.ResolutionCofinality
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ResolutionCofinality
 
 /-!
 # 元の E 代数の Map^h の分解の実際の余終性
@@ -36,7 +36,7 @@ variable (A : Type u) [CommRing A]
 def mappingSmallResolutionOverFunctor (X : (operad A).Algebra) :
     AsSmall.{u + 1} SimplexCategory ⥤ AsSmall.{u + 1} (algebraTrivialFibrationOver A X) := by
   let := modelCategory A
-  exact FrameHom.smallResolutionOverFunctor
+  exact _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.smallResolutionOverFunctor
     ((cosimplicialResolutionFamily (mappingCofibrantFactorization A)).atObject X)
 
 /-- 概要：実際の写像空間の分解の nerve は left cofinal（Low 命題 3.6）。
@@ -46,7 +46,7 @@ def mappingSmallResolutionOverFunctor (X : (operad A).Algebra) :
 lemma mappingSmallResolutionOverFunctor_isLeftCofinal (X : (operad A).Algebra) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsLeftCofinal (nerveMap (mappingSmallResolutionOverFunctor A X)) := by
   let := modelCategory A
-  exact FrameHom.smallResolutionOverFunctor_isLeftCofinal
+  exact _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.smallResolutionOverFunctor_isLeftCofinal
     ((cosimplicialResolutionFamily (mappingCofibrantFactorization A)).atObject X)
 
 /-- 概要：元の Map^h の分解の同じ nerve は弱ホモトピー同値（Low 命題 3.6）。

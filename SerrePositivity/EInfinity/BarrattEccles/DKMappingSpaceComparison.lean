@@ -16,11 +16,11 @@ public import SerrePositivity.EInfinity.BarrattEccles.MappingSpaceReducedCompari
 noncomputable section
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open CategoryTheory Opposite SimplicialLocalization SerrePositivity.SimplicialModel
+open CategoryTheory Opposite _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization SerrePositivity.SimplicialModel
 variable (A : Type u) [CommRing A]
   (X Y : (cofibrantAlgebraRelativeCategory A).category)
 def cofibrantAlgebraDKMappingSpaceComparisonIso :
-    AnodyneHomotopy.anodyneQ.obj (localizationHom (cofibrantAlgebraRelativeCategory A) X Y) ≅
+    AnodyneHomotopy.anodyneQ.obj (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHom (cofibrantAlgebraRelativeCategory A) X Y) ≅
       AnodyneHomotopy.anodyneQ.obj (SSet.uliftFunctor.{u + 1, u}.obj
         (((mappingSpace A).obj (op ((cofibrantAlgebraDKInclusion A).obj X))).obj
           ((cofibrantAlgebraDKInclusion A).obj Y))) :=

@@ -18,7 +18,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open CategoryTheory Limits HomotopicalAlgebra Opposite MonoidalCategory
+open CategoryTheory Limits _root_.HomotopicalAlgebra Opposite MonoidalCategory
 open SerrePositivity.Reedy SerrePositivity.HomotopyFunctionComplex SerrePositivity.SimplicialModel
 variable (A : Type u) [CommRing A]
 

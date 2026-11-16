@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.TwoSidedThomasonBaseChange
-public import SerrePositivity.EInfinity.FrameHom.ThomasonNerveMap
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ThomasonNerveMap
 
 /-!
 # 元の二方向比較から一方向 Thomason 比較への回収
@@ -54,8 +54,8 @@ def forgetLeftTotal : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointF
 
 lemma simplex_forgetLeft {n : ℕ} (e : ComposableArrows (labels F G n) n) :
     simplex F G e ⋙ forgetLeftTotal F G =
-      FrameHom.Thomason.simplex G (e ⋙ forgetLeftElements
-        (FrameHom.Thomason.values F n) (FrameHom.Thomason.values G n)) := by
+      _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.simplex G (e ⋙ forgetLeftElements
+        (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.values F n) (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.values G n)) := by
   refine CategoryTheory.Functor.ext (fun _ => rfl) ?_
   intro i j h
   simp only [eqToHom_refl, Category.id_comp, Category.comp_id]
@@ -63,7 +63,7 @@ lemma simplex_forgetLeft {n : ℕ} (e : ComposableArrows (labels F G n) n) :
 
 lemma map_forgetLeft :
     map F G ≫ nerveMap (forgetLeftTotal F G) =
-      forgetLeftBar (F ⋙ nerveFunctor) (G ⋙ nerveFunctor) ≫ FrameHom.Thomason.map G := by
+      forgetLeftBar (F ⋙ nerveFunctor) (G ⋙ nerveFunctor) ≫ _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.map G := by
   ext n e
   exact simplex_forgetLeft F G e
 

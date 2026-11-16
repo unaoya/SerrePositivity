@@ -20,7 +20,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory SSet
-open SerrePositivity.EInfinity.Modules SimplicialLocalization
+open SerrePositivity.EInfinity.Modules _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories
 open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories
 open IsomorphismsAndIsofibrations
@@ -31,7 +31,7 @@ variable (A : Type u) [CommRing A]
 方針：元の対象を同じ Hom 持ち上げと標準頂点同値に渡す。
 規約：対象を選び直さない。使われ方：標準 lift の二端点。 -/
 def moduleTotalVertex (M : strictRawModuleTotal A) : (moduleTotalInfinity A) _⦋0⦌ :=
-  localizationNerveVertexEquiv (strictRawModuleTotalRelative A)
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveVertexEquiv (strictRawModuleTotalRelative A)
     ((ULiftHom.up.{u,u+1,u+1} (C := strictRawModuleTotal A)).obj M)
 
 /-- 概要：同じ標準 lift の実局所化辺（HTT Definition 1.1.5.5）。
@@ -42,7 +42,7 @@ def moduleCartesianLiftEdge {X Y : (operad A).Algebra} (f : X ⟶ Y)
     SSet.Edge (moduleTotalVertex A
       ((strictRawModuleFiberInclusion A X).obj ((strictRawModuleRestrict f).obj M)))
       (moduleTotalVertex A ((strictRawModuleFiberInclusion A Y).obj M)) :=
-  coherentNerveEdge (kanLocalizationStrictHom (strictRawModuleTotalRelative A)
+  coherentNerveEdge (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanLocalizationStrictHom (strictRawModuleTotalRelative A)
     ((ULiftHom.up.{u,u+1,u+1} (C := strictRawModuleTotal A)).map
       (strictRawModuleCartesianLift A f M)))
 
@@ -61,7 +61,7 @@ lemma moduleCartesianLiftEdge_invertible {X Y : (operad A).Algebra} (f : X ⟶ Y
 lemma moduleCartesianLiftEdge_projection {X Y : (operad A).Algebra} (f : X ⟶ Y)
     (M : strictRawModuleCategory A Y) :
     ((moduleCartesianLiftEdge A f M).map (moduleTotalProjection A)).edge =
-      (coherentNerveEdge (kanLocalizationStrictHom (cofibrantAlgebraRelativeCategory A)
+      (coherentNerveEdge (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanLocalizationStrictHom (cofibrantAlgebraRelativeCategory A)
         ((algebraToCofibrantDKRelative A).functor.map
           ((ULiftHom.up.{u,u+1,u+1} (C := (operad A).Algebra)).map f)))).edge := by
   exact localizationStrictEdge_coefficient

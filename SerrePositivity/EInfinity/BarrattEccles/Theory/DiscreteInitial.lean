@@ -31,7 +31,7 @@ universe u
 
 namespace SerrePositivity.EInfinity.BarrattEccles
 
-open CategoryTheory Limits MonoidalCategory HomotopicalAlgebra SSet
+open CategoryTheory Limits MonoidalCategory _root_.HomotopicalAlgebra SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open SerrePositivity.TensorPowers
 open scoped Simplicial ZeroObject

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.CAlgQuasiIso
 public import SerrePositivity.EInfinity.BarrattEccles.AlgebraRelativeComparisons
-public import SerrePositivity.EInfinity.SimplicialLocalization.NerveWeakVertexIso
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.NerveWeakVertexIso
 
 /-!
 # 任意 CAlg_R 頂点の元の代数による表示
@@ -20,7 +20,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory SSet
-open SerrePositivity.InfinityCategories SimplicialLocalization
+open SerrePositivity.InfinityCategories _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open scoped Simplicial
 variable (A : Type u) [CommRing A]
 
@@ -28,7 +28,7 @@ def cAlgLocalizationVertexIsoOfWeak
     {X Y : (cofibrantAlgebraRelativeCategory A).category} (f : X ⟶ Y)
     (hf : (cofibrantAlgebraRelativeCategory A).weakEquivalences f) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (cAlgVertexEquiv A X) (cAlgVertexEquiv A Y) :=
-  localizationNerveVertexIsoOfWeak (cofibrantAlgebraRelativeCategory A) f hf
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveVertexIsoOfWeak (cofibrantAlgebraRelativeCategory A) f hf
 
 def cAlgVertexOfCofibrantIso (X : (cofibrantAlgebraRelativeCategory A).category) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (cAlgVertex A ((cofibrantAlgebraDKInclusion A).obj X))

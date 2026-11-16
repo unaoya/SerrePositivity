@@ -18,7 +18,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.InfinityCategories.Project.ModelCategoryComparison
-open CategoryTheory Limits HomotopicalAlgebra Opposite
+open CategoryTheory Limits _root_.HomotopicalAlgebra Opposite
 open _root_.SerrePositivity.Reedy _root_.SerrePositivity.HomotopyFunctionComplex
 variable {C : Type u} [Category.{v} C] [ModelCategory C]
 
@@ -65,20 +65,20 @@ def rightFrameUnit : Functor.const SimplexCategoryᵒᵖ ⟶ rightFrameDiagram r
 方針：定値単体図式へ同じ共変 Hom を後合成する。
 規約：元の射を商にしない。使われ方：零単体の比較の基準。 -/
 def ordinaryHomFamily (X : C) : C ⥤ SSet.{v} :=
-  Functor.const SimplexCategoryᵒᵖ ⋙ _root_.SerrePositivity.EInfinity.FrameHom.MixedFrame.rightHomFunctor X
+  Functor.const SimplexCategoryᵒᵖ ⋙ _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedFrame.rightHomFunctor X
 
 /-- 概要：cofibrant 源から実 right frame への Hom 単体集合の全標的関手。
 方針：元の図式へ共変 Hom を後合成する。
 規約：対象は任意のモデル圏、全単体は元の圏の射。
 使われ方：全標的に自然な導来 Hom 比較の始域。 -/
 def rightFrameHom (X : C) : C ⥤ SSet.{v} :=
-  rightFrameDiagram r ⋙ _root_.SerrePositivity.EInfinity.FrameHom.MixedFrame.rightHomFunctor X
+  rightFrameDiagram r ⋙ _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedFrame.rightHomFunctor X
 
 /-- 概要：元の全射を right frame Hom の全単体へ送る。
 方針：同じ augmentation を Hom に後合成する。
 規約：全標的に一つの自然変換。使われ方：局所化射の回収。 -/
 def rightFrameHomUnit (X : C) : ordinaryHomFamily X ⟶ rightFrameHom r X :=
-  Functor.whiskerRight (rightFrameUnit r) (_root_.SerrePositivity.EInfinity.FrameHom.MixedFrame.rightHomFunctor X)
+  Functor.whiskerRight (rightFrameUnit r) (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedFrame.rightHomFunctor X)
 
 /-- 概要：元の射は同じ augmentation との合成へ送られる。
 方針：自然変換の定義を読む。
@@ -108,7 +108,7 @@ lemma rightFrameHom_map (X : C) {Y Z : C} (f : Y ⟶ Z) (n : SimplexCategoryᵒ�
 def rightFrameHomOpIso (X Y : C) :
     (rightFrameHom r X).obj Y ≅
       (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (r.obj.obj (op Y))).obj (op X) :=
-  _root_.SerrePositivity.EInfinity.FrameHom.MixedFrame.rightHomIso X ((rightFrameDiagram r).obj Y)
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedFrame.rightHomIso X ((rightFrameDiagram r).obj Y)
 
 /-- 概要：cofibrant 源からの元の right frame Hom は Kan 複体。
 方針：反対源の fibrancy と同じ解像のホーン充填を使う。

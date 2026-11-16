@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.FrameHom.MixedNerveNatTrans
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerveNatTrans
 public import SerrePositivity.EInfinity.ComplexLimits.OrdinaryDerivedSource
 
 /-!
@@ -28,14 +28,14 @@ variable (A : Type u) [CommRing A] {I : Type (u + 1)} [Category.{u} I]
 def complexOrdinaryDerivedNatTransHomotopy :
     SSet.Homotopy (nerveMap F ≫ complexOrdinaryDerivedSource A)
       (nerveMap G ≫ complexOrdinaryDerivedSource A) :=
-  HomotopyClasses.postHomotopy (complexOrdinaryDerivedSource A) (FrameHom.MixedNerve.homotopy η)
+  HomotopyClasses.postHomotopy (complexOrdinaryDerivedSource A) (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.homotopy η)
 
 lemma complexOrdinaryDerivedNatTransHomotopy_component (i : I) :
     (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (complexOrdinaryDerivedNatTransHomotopy A η)
       (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex i)).edge = ((nerve.edgeMk (η.app i)).map
         (complexOrdinaryDerivedSource A)).edge :=
   congrArg ((complexOrdinaryDerivedSource A).app (Opposite.op ⦋1⦌))
-    (FrameHom.MixedNerve.homotopy_component η i)
+    (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.homotopy_component η i)
 
 def complexOrdinaryDerivedNatTransIso (hη : ∀ i, QuasiIso (η.app i)) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (nerveMap F ≫ complexOrdinaryDerivedSource A)

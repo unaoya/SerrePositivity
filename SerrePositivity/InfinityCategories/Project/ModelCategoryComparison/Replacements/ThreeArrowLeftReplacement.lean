@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.WeakThreeArrow
-public import SerrePositivity.EInfinity.FrameHom.FullyFaithfulNerveRetraction
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FullyFaithfulNerveRetraction
 public import Mathlib.CategoryTheory.MorphismProperty.Factorization
 
 /-!
@@ -18,7 +18,7 @@ universe u v
 noncomputable section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
-open CategoryTheory CategoryTheory.Limits HomotopicalAlgebra
+open CategoryTheory CategoryTheory.Limits _root_.HomotopicalAlgebra
 
 namespace SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.ThreeArrowLeftReplacement
 open _root_.SerrePositivity.SimplicialModel
@@ -227,7 +227,7 @@ include cof in
 lemma inclusion_localized_isIso :
     IsIso (AnodyneHomotopy.anodyneQ.map
       (nerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.WeakThreeArrow.leftInclusion : _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.LeftTrivialThreeArrow X Y ⥤ _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.WeakThreeArrow X Y))) :=
-  _root_.SerrePositivity.EInfinity.FrameHom.FullyFaithfulNerveRetraction.of_unit _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.WeakThreeArrow.leftInclusion (functor cof) (unit cof)
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FullyFaithfulNerveRetraction.of_unit _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.WeakThreeArrow.leftInclusion (functor cof) (unit cof)
 
 with_weak_namespace _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.WeakThreeArrow.LeftReplacement.inclusion_localized_isIso export _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.ThreeArrowLeftReplacement (inclusion_localized_isIso)
 

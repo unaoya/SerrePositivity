@@ -10,7 +10,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open CategoryTheory HomotopicalAlgebra SerrePositivity.DifferentialGraded
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.DifferentialGraded
 variable (A : Type u) [CommRing A] (X : Complex A) (B : CofibrantAlgebra A)
 
 /-- 概要：元の要素圏の Hom 宇宙を DK 入力に揃える。

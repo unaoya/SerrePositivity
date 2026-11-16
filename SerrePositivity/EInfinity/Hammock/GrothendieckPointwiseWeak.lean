@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.FrameHom.ThomasonInversion
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ThomasonInversion
 public import SerrePositivity.EInfinity.Hammock.WeakAnodyneLocalization
 
 /-!
@@ -24,11 +24,11 @@ lemma grothendieck_map_isWeakHomotopyEquivalence {D : Type u} [Category.{u} D]
     {F G : D ⥤ Cat.{u, u}} (α : F ⟶ G)
     (hα : ∀ d, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (nerveMap (α.app d).toFunctor)) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (nerveMap (Grothendieck.map α)) := by
-  have hb := FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _
-    (FrameHom.BarRows.map_localized_isIso (FrameHom.Thomason.nerveComparison α)
+  have hb := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.isWeakHomotopyEquivalence _
+    (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.BarRows.map_localized_isIso (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.nerveComparison α)
       (fun d => anodyneQ_map_isIso_of_weak _ (hα d)))
-  have h := hb.comp (FrameHom.Thomason.map_isWeakHomotopyEquivalence G)
-  rw [← FrameHom.Thomason.map_naturality α] at h
-  exact (FrameHom.Thomason.map_isWeakHomotopyEquivalence F).cancel_left h
+  have h := hb.comp (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.map_isWeakHomotopyEquivalence G)
+  rw [← _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.map_naturality α] at h
+  exact (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.map_isWeakHomotopyEquivalence F).cancel_left h
 
 end SerrePositivity.EInfinity.Hammock

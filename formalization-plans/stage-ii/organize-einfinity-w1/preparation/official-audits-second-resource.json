@@ -1,0 +1,22 @@
+{
+  "command": [
+    "python3",
+    "formalization-plans/stage-ii/organize-einfinity-w1/preparation-code/official_audit_slot.py",
+    "--root",
+    "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68",
+    "--output",
+    "/private/tmp/oe-w1-official-audits",
+    "--budget",
+    "1600"
+  ],
+  "cwd": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68",
+  "rc": 1,
+  "reason": null,
+  "seconds": 1102.1426146253943,
+  "peak_process_tree_rss_bytes": 8101216256,
+  "peak_lean_or_snapshot_jobs": 1,
+  "threads": "1",
+  "heavy_job_limit": 1,
+  "started_local": "2026-11-17T04:29:17.237480",
+  "finished_local": "2026-11-17T04:47:39.371335"
+}

@@ -19,7 +19,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open CategoryTheory HomotopicalAlgebra Hammock
+open CategoryTheory _root_.HomotopicalAlgebra Hammock
 variable (A : Type u) [CommRing A]
 
 lemma cofibrantAlgebraHammockInclusionMap_eq_mixed

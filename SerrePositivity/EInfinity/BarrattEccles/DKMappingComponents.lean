@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.BarrattEccles.CAlg
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantAlgebraMappingClasses
 public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.DiagramComparisons.ULiftRelativeLocalization
-public import SerrePositivity.EInfinity.SimplicialLocalization.KanComponents
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanComponents
 
 /-!
 # 実際の DK Hom と元の E 代数の Map^h の連結成分の同値
@@ -26,7 +26,7 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 
 open CategoryTheory Opposite
-open SerrePositivity.EInfinity.SimplicialLocalization
+open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 
 variable (A : Type u) [CommRing A]
 
@@ -43,10 +43,10 @@ def cofibrantAlgebraDKObject (X : CofibrantAlgebra A) :
 規約：高次の単体集合の比較へ置き換えない。
 使われ方：E2b の高次比較の零次の同定。 -/
 def cofibrantAlgebraDKPiZeroEquiv (X Y : CofibrantAlgebra A) :
-    SSet.π₀ (localizationHom (cofibrantAlgebraRelativeCategory A)
+    SSet.π₀ (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHom (cofibrantAlgebraRelativeCategory A)
       (cofibrantAlgebraDKObject A X) (cofibrantAlgebraDKObject A Y)) ≃
         SSet.π₀ (((cofibrantAlgebraMappingSpace A).obj (op X)).obj Y) :=
-  (localizationHomPiZeroEquiv (cofibrantAlgebraRelativeCategory A) _ _).trans
+  (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHomPiZeroEquiv (cofibrantAlgebraRelativeCategory A) _ _).trans
     ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ULiftRelativeLocalization.homEquiv (cofibrantAlgebraWeakEquivalences A) _ _).trans
       (cofibrantAlgebraMappingSpacePiZeroEquiv A X Y).symm)
 
@@ -56,14 +56,14 @@ def cofibrantAlgebraDKPiZeroEquiv (X Y : CofibrantAlgebra A) :
 使われ方：高次比較が保持するべき元の射の正規化。 -/
 lemma cofibrantAlgebraDKPiZeroEquiv_class {X Y : CofibrantAlgebra A} (f : X ⟶ Y) :
     cofibrantAlgebraDKPiZeroEquiv A X Y
-        (localizationArrowClass (cofibrantAlgebraRelativeCategory A)
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationArrowClass (cofibrantAlgebraRelativeCategory A)
           ((ULiftHom.up.{u, u + 1, u + 1} (C := CofibrantAlgebra A)).map f)) =
       mappingSpaceClass A ((cofibrantAlgebraInclusion A).map f) := by
   apply (cofibrantAlgebraMappingSpacePiZeroEquiv A X Y).injective
   change (cofibrantAlgebraMappingSpacePiZeroEquiv A X Y)
     ((cofibrantAlgebraMappingSpacePiZeroEquiv A X Y).symm _) = _
   rw [Equiv.apply_symm_apply, cofibrantAlgebraMappingSpacePiZeroEquiv_class,
-    localizationHomPiZeroEquiv_arrow]
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHomPiZeroEquiv_arrow]
   exact _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ULiftRelativeLocalization.homEquiv_map (cofibrantAlgebraWeakEquivalences A)
     ((ULiftHom.up.{u, u + 1, u + 1} (C := CofibrantAlgebra A)).map f)
 
@@ -76,7 +76,7 @@ def cofibrantAlgebraKanDKPiZeroEquiv (X Y : CofibrantAlgebra A) :
       (show CAlgSimplicialCategory A from cofibrantAlgebraDKObject A X)
       (show CAlgSimplicialCategory A from cofibrantAlgebraDKObject A Y)) ≃
         SSet.π₀ (((cofibrantAlgebraMappingSpace A).obj (op X)).obj Y) :=
-  (kanLocalizationHomPiZeroEquiv (cofibrantAlgebraRelativeCategory A) _ _).trans
+  (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanLocalizationHomPiZeroEquiv (cofibrantAlgebraRelativeCategory A) _ _).trans
     ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ULiftRelativeLocalization.homEquiv (cofibrantAlgebraWeakEquivalences A) _ _).trans
       (cofibrantAlgebraMappingSpacePiZeroEquiv A X Y).symm)
 
@@ -87,16 +87,16 @@ def cofibrantAlgebraKanDKPiZeroEquiv (X Y : CofibrantAlgebra A) :
 lemma cofibrantAlgebraKanDKPiZeroEquiv_class {X Y : CofibrantAlgebra A} (f : X ⟶ Y) :
     cofibrantAlgebraKanDKPiZeroEquiv A X Y
         (SSet.mapπ₀ (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app
-          (localizationHom (cofibrantAlgebraRelativeCategory A)
+          (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHom (cofibrantAlgebraRelativeCategory A)
             (cofibrantAlgebraDKObject A X) (cofibrantAlgebraDKObject A Y)))
-          (localizationArrowClass (cofibrantAlgebraRelativeCategory A)
+          (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationArrowClass (cofibrantAlgebraRelativeCategory A)
             ((ULiftHom.up.{u, u + 1, u + 1} (C := CofibrantAlgebra A)).map f))) =
       mappingSpaceClass A ((cofibrantAlgebraInclusion A).map f) := by
   apply (cofibrantAlgebraMappingSpacePiZeroEquiv A X Y).injective
   change (cofibrantAlgebraMappingSpacePiZeroEquiv A X Y)
     ((cofibrantAlgebraMappingSpacePiZeroEquiv A X Y).symm _) = _
   rw [Equiv.apply_symm_apply, cofibrantAlgebraMappingSpacePiZeroEquiv_class,
-    kanLocalizationHomPiZeroEquiv_arrow]
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanLocalizationHomPiZeroEquiv_arrow]
   exact _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ULiftRelativeLocalization.homEquiv_map (cofibrantAlgebraWeakEquivalences A)
     ((ULiftHom.up.{u, u + 1, u + 1} (C := CofibrantAlgebra A)).map f)
 

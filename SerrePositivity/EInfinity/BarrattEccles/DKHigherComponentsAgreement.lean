@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantHammockValue
 public import SerrePositivity.EInfinity.BarrattEccles.DKMappingComponentsValue
 public import SerrePositivity.EInfinity.BarrattEccles.DKHammockComparisonFactorization
-public import SerrePositivity.EInfinity.SimplicialLocalization.DKHammockComponentsValue
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.DKHammockComponentsValue
 
 /-!
 # 元の実 DK/Map^h 高次比較と保存済み π₀ 同値の一致
@@ -20,12 +20,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open CategoryTheory HomotopicalAlgebra Opposite SimplicialLocalization Hammock
+open CategoryTheory _root_.HomotopicalAlgebra Opposite _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization Hammock
 open SerrePositivity.SimplicialModel
 variable (A : Type u) [CommRing A] (X Y : CofibrantAlgebra A)
 
 def cofibrantAlgebraDKHigherPiZeroEquiv :
-    SSet.π₀ (localizationHom (cofibrantAlgebraRelativeCategory A)
+    SSet.π₀ (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHom (cofibrantAlgebraRelativeCategory A)
       (cofibrantAlgebraDKObject A X) (cofibrantAlgebraDKObject A Y)) ≃
         SSet.π₀ (((cofibrantAlgebraMappingSpace A).obj (op X)).obj Y) :=
   (cofibrantAlgebraDKMappingSpaceComponentsIso A
@@ -42,7 +42,7 @@ lemma cofibrantAlgebraDKHigherPiZeroEquiv_eq :
   let raw := cofibrantAlgebraDKMappingSpaceComponentsIso A x y
   let mh := mappingSpaceReducedHammockComponentsIso A B D
   let native := AnodyneComponents.iso
-    (dkHammockComparisonIso (cofibrantAlgebraRelativeCategory A) x y)
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.dkHammockComparisonIso (cofibrantAlgebraRelativeCategory A) x y)
   let alg := AnodyneComponents.iso (cofibrantAlgebraDKHammockComparisonIso A x y)
   let v := algebraReducedHammockPiZeroValue A B D
   apply Equiv.ext
@@ -62,7 +62,7 @@ lemma cofibrantAlgebraDKHigherPiZeroEquiv_eq :
   exact hm.symm.trans ((congrArg v hh).trans ((congrArg v hfp).trans
     ((cofibrantAlgebraHammockInclusionMap_components_value A X Y (native.hom z)).trans
       ((congrArg (cofibrantAlgebraDKHoHomMap A X Y)
-        (dkHammockComparisonIso_components_value (cofibrantAlgebraRelativeCategory A) x y z)).trans
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.dkHammockComparisonIso_components_value (cofibrantAlgebraRelativeCategory A) x y z)).trans
           (cofibrantAlgebraDKPiZeroEquiv_value A X Y z).symm))))
 
 end SerrePositivity.EInfinity.BarrattEccles

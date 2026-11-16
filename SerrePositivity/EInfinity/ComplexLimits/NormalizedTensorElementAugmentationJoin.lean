@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorElementAugmentedColumnJoin
-public import SerrePositivity.EInfinity.FrameHom.MixedNerveCoconePoint
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerveCoconePoint
 public import SerrePositivity.EInfinity.ComplexLimits.OrdinaryDerivedSource
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorConeUnderSimplex
 
@@ -23,13 +23,13 @@ variable (A : Type u) [CommRing A] (X Y : Complex A)
 def normalizedTensorElementAugmentationJoin :
     _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.join (nerve (normalizedTensorElementIndex A X Y)) (Δ[0] : SSet.{u + 1}) ⟶
       _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (Complex A) :=
-  FrameHom.MixedNerve.coconeJoin (normalizedTensorElementAugmentationCocone A X Y) ≫
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.coconeJoin (normalizedTensorElementAugmentationCocone A X Y) ≫
     nerveMap (complexToClosed A) ≫ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (Complex A)
 
 lemma normalizedTensorElementAugmentationJoin_inr :
     _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInr (nerve (normalizedTensorElementIndex A X Y)) (Δ[0] : SSet.{u + 1}) ≫
       normalizedTensorElementAugmentationJoin A X Y = normalizedTensorConePoint A X := by
-  rw [normalizedTensorElementAugmentationJoin, ← Category.assoc, FrameHom.MixedNerve.coconeJoin_inr]
+  rw [normalizedTensorElementAugmentationJoin, ← Category.assoc, _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.coconeJoin_inr]
   apply SSet.yonedaEquiv.injective
   rw [SSet.yonedaEquiv_comp]
   simp only [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint, normalizedTensorElementAugmentationCocone, normalizedTensorConePoint,
@@ -54,11 +54,11 @@ lemma normalizedTensorElementAugmentationJoin_restrict_simplex {n : ℕ}
 lemma normalizedTensorElementAugmentationJoin_prism :
     (β_ (nerve (normalizedTensorElementIndex A X Y)) (Δ[1] : SSet.{u + 1})).hom ≫
       _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.rightMappingSpacePrism _ ≫ normalizedTensorElementAugmentationJoin A X Y =
-      (FrameHom.MixedNerve.homotopy (normalizedTensorElementAugmentation A X Y)).h ≫
+      (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.homotopy (normalizedTensorElementAugmentation A X Y)).h ≫
         nerveMap (complexToClosed A) ≫ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (Complex A) := by
   have h := congrArg (fun f => f ≫ nerveMap (complexToClosed A) ≫
     _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (Complex A))
-    (FrameHom.MixedNerve.coconePrism_eq_homotopy (normalizedTensorElementAugmentationCocone A X Y))
+    (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.coconePrism_eq_homotopy (normalizedTensorElementAugmentationCocone A X Y))
   simpa only [Category.assoc, normalizedTensorElementAugmentationJoin,
     normalizedTensorElementAugmentationCocone] using h
 

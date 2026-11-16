@@ -36,13 +36,13 @@ attribute [local implicit_reducible] rightFrameDiagram rightFrameDiagramFamily
 使われ方：通常の極限からの比較の図式射での自然性。 -/
 lemma framedLimitHomEquiv_map {F G : K ⥤ (operad A).Algebra} (f : F ⟶ G)
     (Y : (operad A).Algebra) (h : Y ⟶ (framedLimitFunctor A K).obj F) :
-    weightedCotensorHomEquiv A K G (HomotopyWeight.weight K) Y
+    weightedCotensorHomEquiv A K G (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K) Y
         (h ≫ (framedLimitFunctor A K).map f) =
-      weightedCotensorHomEquiv A K F (HomotopyWeight.weight K) Y h ≫
+      weightedCotensorHomEquiv A K F (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K) Y h ≫
         ((FrameWeightRealization.homFamily Kᵒᵖ).map
           ((rightFrameDiagramFamily A K).map f.op).op).app (op Y) := by
   exact FrameWeightRealization.homEquiv_frame_naturality Kᵒᵖ
-    ((rightFrameDiagramFamily A K).map f.op) (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K) (op Y) h.op
+    ((rightFrameDiagramFamily A K).map f.op) (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.framedLimitWeight K) (op Y) h.op
 
 /-- 概要：通常の極限から計算対象への比較はすべての図式射に自然（Hovey §5.4）。
 方針：重み付き Hom で全単体へ移し、frame の比較と極限の射影の自然性を使う。
@@ -53,16 +53,16 @@ lemma limitComparison_naturality {F G : K ⥤ (operad A).Algebra} (f : F ⟶ G) 
     limitComparison A K F ≫ (framedLimitFunctor A K).map f =
       lim.map f ≫ limitComparison A K G := by
   let := modelCategory A
-  apply (weightedCotensorHomEquiv A K G (HomotopyWeight.weight K) (limit F)).injective
+  apply (weightedCotensorHomEquiv A K G (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K) (limit F)).injective
   rw [framedLimitHomEquiv_map, weightedCotensorHomEquiv_precomp]
-  have hF : weightedCotensorHomEquiv A K F (HomotopyWeight.weight K) (limit F)
+  have hF : weightedCotensorHomEquiv A K F (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K) (limit F)
       (limitComparison A K F) =
-        strictConeWeightedFamily A K F (HomotopyWeight.weight K) (limit.cone F) :=
-    (weightedCotensorHomEquiv A K F (HomotopyWeight.weight K) (limit F)).apply_symm_apply _
-  have hG : weightedCotensorHomEquiv A K G (HomotopyWeight.weight K) (lim.obj G)
+        strictConeWeightedFamily A K F (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K) (limit.cone F) :=
+    (weightedCotensorHomEquiv A K F (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K) (limit F)).apply_symm_apply _
+  have hG : weightedCotensorHomEquiv A K G (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K) (lim.obj G)
       (limitComparison A K G) =
-        strictConeWeightedFamily A K G (HomotopyWeight.weight K) (limit.cone G) :=
-    (weightedCotensorHomEquiv A K G (HomotopyWeight.weight K) (limit G)).apply_symm_apply _
+        strictConeWeightedFamily A K G (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K) (limit.cone G) :=
+    (weightedCotensorHomEquiv A K G (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K) (limit G)).apply_symm_apply _
   rw [hF, hG]
   apply NatTrans.ext
   funext k

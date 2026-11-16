@@ -17,8 +17,8 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open CategoryTheory SSet HomotopicalAlgebra
-open SerrePositivity.InfinityCategories SimplicialLocalization
+open CategoryTheory SSet _root_.HomotopicalAlgebra
+open SerrePositivity.InfinityCategories _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open scoped Simplicial
 variable (A : Type u) [CommRing A]
 
@@ -30,7 +30,7 @@ lemma algebraCAlgSource_map_weak {X Y : (operad A).Algebra} (f : X ⟶ Y)
     let := modelCategory A
     exact (cofibrantAlgebraDKReplacementRelative A).map _ hf
   have h := cAlgLocalizationSource_inverts A
-    (show ComposableArrows.mk₁ g ∈ weakNerveEdges (cofibrantAlgebraRelativeCategory A) from
+    (show ComposableArrows.mk₁ g ∈ _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges (cofibrantAlgebraRelativeCategory A) from
       ⟨_, _, g, hg, rfl⟩)
   change _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (X := CAlg_R A) ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex (ComposableArrows.mk₁ g)).map
     ((truncation 2).map (cAlgLocalizationSource A))) at h

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.MappingSpaceSpans
-public import SerrePositivity.EInfinity.FrameHom.FrameIndexAugmentation
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameIndexAugmentation
 public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Frames.FrameIndexComparison
 
 /-!
@@ -24,7 +24,7 @@ universe u
 
 namespace SerrePositivity.EInfinity.BarrattEccles
 
-open CategoryTheory HomotopicalAlgebra Opposite
+open CategoryTheory _root_.HomotopicalAlgebra Opposite
 open scoped Simplicial
 
 variable (A : Type u) [CommRing A]
@@ -36,7 +36,7 @@ variable (A : Type u) [CommRing A]
 def mappingSpaceIndexAugmentation (X Y : (operad A).Algebra) :
     nerve (ULiftHom.{u + 1} (((((mappingSpace A).obj (op X)).obj Y).Elements)ᵒᵖ)) ⟶
       SSet.uliftFunctor.{u + 1, u}.obj (((mappingSpace A).obj (op X)).obj Y) :=
-  FrameHom.SimplexTerminalNerve.liftedAugmentation _
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.SimplexTerminalNerve.liftedAugmentation _
 
 /-- 概要：元の Map^h への左射は実際の anodyne 反転後に可逆（Dwyer–Kan §7）。
 方針：全単体集合での終端 augmentation の反転性を同じ Hom へ代入する。
@@ -45,7 +45,7 @@ def mappingSpaceIndexAugmentation (X Y : (operad A).Algebra) :
 lemma mappingSpaceIndexAugmentation_localized_isIso (X Y : (operad A).Algebra) :
     IsIso (SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.map
       (mappingSpaceIndexAugmentation A X Y)) :=
-  FrameHom.SimplexTerminalNerve.liftedAugmentation_localized_isIso _
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.SimplexTerminalNerve.liftedAugmentation_localized_isIso _
 
 /-- 概要：左射は元の零単体の同じ持ち上げを回収する（Dwyer–Kan §7）。
 方針：終端パラメータの零次の恒等性を同じ Map^h へ適用する。
@@ -58,7 +58,7 @@ lemma mappingSpaceIndexAugmentation_zero (X Y : (operad A).Algebra)
           (((((mappingSpace A).obj (op X)).obj Y).Elements)ᵒᵖ) from
             op ((((mappingSpace A).obj (op X)).obj Y).elementsMk (op ⦋0⦌) f))) =
       ULift.up f :=
-  FrameHom.SimplexTerminalNerve.liftedAugmentation_zero _ f
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.SimplexTerminalNerve.liftedAugmentation_zero _ f
 
 /-- 概要：共通比較の全頂点で両射は元の局所化射を回収する（Dwyer–Kan §7）。
 方針：終端パラメータの要素圏射を通す一般の正規化へ元のモデルを局所代入する。

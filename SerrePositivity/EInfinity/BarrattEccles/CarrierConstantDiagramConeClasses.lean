@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.CarrierConstantDiagramClasses
-public import SerrePositivity.EInfinity.HomotopyWeight.PointwiseConePoints
-public import SerrePositivity.EInfinity.HomotopyWeight.RealizationAugmentation
-public import SerrePositivity.EInfinity.HomotopyWeight.ConstantNaturality
+public import SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.PointwiseConePoints
+public import SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.RealizationAugmentation
+public import SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.ConstantNaturality
 
 /-!
 # 通常の錐の始域 frame によるクラスの成分表示
@@ -25,7 +25,7 @@ universe u
 
 namespace SerrePositivity.EInfinity.BarrattEccles.CarrierDiagram
 
-open CategoryTheory Limits HomotopicalAlgebra
+open CategoryTheory Limits _root_.HomotopicalAlgebra
 open SerrePositivity.DifferentialGraded
 open SerrePositivity.Reedy SerrePositivity.HomotopyFunctionComplex
 
@@ -43,14 +43,14 @@ local instance : HasColimitsOfSize.{0, u} (Complex A) :=
 lemma constantDiagramSourceClass_eq_coneClass {Y : (Complex A)}
     {F : K ⥤ (Complex A)} (f : (Functor.const K).obj Y ⟶ F) :
     constantDiagramSourceClass A K f =
-      HomotopyWeight.coneClass K (HomotopyWeight.weight K)
+      _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.coneClass K (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K)
         ((constantDiagramHomEquiv A K Y F) ((constantDiagramComparison A K).app Y ≫ f)) := by
   let := SerrePositivity.EInfinity.projectiveModelCategory A
   let q := cosimplicialResolutionFamily (carrierProbeFactorization A)
   rw [constantDiagramSourceClass, SSet.mapπ₀_mk, constantDiagramFrameComparison_zero]
   apply congrArg SSet.π₀.mk
   rw [Category.assoc]
-  exact HomotopyWeight.pointwiseTensorFrameHomIso_point K (HomotopyWeight.weight K)
+  exact _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseTensorFrameHomIso_point K (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K)
     (q.obj.obj Y) ((constantDiagramComparison A K).app Y ≫ f)
 
 /-- 概要：元の錐の随伴族は各成分で同じ augmentation の後合成（Hovey §5.4）。
@@ -59,7 +59,7 @@ lemma constantDiagramSourceClass_eq_coneClass {Y : (Complex A)}
 使われ方：右 frame の族と元の混合 Hom で厳密に一致することの証明。 -/
 lemma constantDiagramHomEquiv_comparison_app {Y : (Complex A)}
     {F : K ⥤ (Complex A)} (f : (Functor.const K).obj Y ⟶ F)
-    (k : K) (n : SimplexCategoryᵒᵖ) (x : ((HomotopyWeight.weight K).obj k).obj n) :
+    (k : K) (n : SimplexCategoryᵒᵖ) (x : ((_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K).obj k).obj n) :
     let := SerrePositivity.EInfinity.projectiveModelCategory A
     let q := cosimplicialResolutionFamily (carrierProbeFactorization A)
     ((((constantDiagramHomEquiv A K Y F)
@@ -70,14 +70,14 @@ lemma constantDiagramHomEquiv_comparison_app {Y : (Complex A)}
   let B := q.obj.obj Y
   let g := (((constantDiagramComparison A K).app Y).app k)
   change (((Realization.adjunction B).homEquiv _ _ (g ≫ f.app k)).app n) x = _
-  have hg : g = (Realization.functor B).map ((HomotopyWeight.comparison K).app k) ≫
-      (HomotopyWeight.realizationPointIso B).hom ≫
+  have hg : g = (Realization.functor B).map ((_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.comparison K).app k) ≫
+      (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.realizationPointIso B).hom ≫
         (q.augmentation.app Y).app (SimplexCategory.mk 0) :=
-    HomotopyWeight.pointwiseFrameComparison_app K (B := B) _ k
+    _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseFrameComparison_app K (B := B) _ k
   have hp : (((Realization.adjunction B).homEquiv _ Y g).app n) x =
       (q.augmentation.app Y).app n.unop := by
     rw [hg]
-    exact HomotopyWeight.realizationAugmentation_homEquiv B (q.augmentation.app Y) _ _ n x
+    exact _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.realizationAugmentation_homEquiv B (q.augmentation.app Y) _ _ n x
   have hn := congrArg (fun h => (h.app n) x)
     ((Realization.adjunction B).homEquiv_naturality_right g (f.app k))
   exact hn.trans (congrArg (fun h => h ≫ f.app k) hp)

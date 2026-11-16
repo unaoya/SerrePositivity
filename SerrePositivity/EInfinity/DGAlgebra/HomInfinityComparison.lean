@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.DGAlgebra.FrameComparison
-public import SerrePositivity.EInfinity.FrameHom.RightFrameHomInfinity
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.RightFrameHomInfinity
 
 /-!
 概要：実 dg right frame と指定局所化の正本共変 Hom の無条件の全比較。
@@ -15,9 +15,9 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.DGAlgebra
-open CategoryTheory HomotopicalAlgebra SSet Opposite
+open CategoryTheory _root_.HomotopicalAlgebra SSet Opposite
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.EInfinity.SimplicialLocalization
+open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open scoped Simplicial
 variable (R : Type u) [CommRing R]
 
@@ -28,17 +28,17 @@ variable (R : Type u) [CommRing R]
 def frameTerminalHomIso {Q : SSet.{u + 1}} [Quasicategory Q] :
     letI _modelInst := modelCategory R
     ∀ (G : nerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory (Mon (Complex R))).category ⟶ Q)
-      (_hG : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization G (weakNerveEdges (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory (Mon (Complex R)))))
+      (_hG : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization G (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory (Mon (Complex R)))))
       (X : Mon (Complex R)),
       _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
-        (FrameHom.rightFrameHammockCoherentDiagram ((sourceFrameFamily R).atObject X)
+        (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockCoherentDiagram ((sourceFrameFamily R).atObject X)
           (rightFrameFamily R) 6)
         (SSet.uliftFunctor.{u + 2, u + 1}.map G ≫
           _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.homInfinityCovariant (G.app (op ⦋0⦌)
             (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject (Mon (Complex R)) X)))) := by
   letI _modelInst := modelCategory R
   intro G hG X
-  exact FrameHom.rightFrameTerminalHomIso
+  exact _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameTerminalHomIso
     ((sourceFrameFamily R).atObject X) (rightFrameFamily R)
     (frameLocalizationComparison R G hG)
 
@@ -49,10 +49,10 @@ def frameTerminalHomIso {Q : SSet.{u + 1}} [Quasicategory Q] :
 def frameCoherentHomIso {Q : SSet.{u + 1}} [Quasicategory Q] :
     letI _modelInst := modelCategory R
     ∀ (G : nerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory (Mon (Complex R))).category ⟶ Q)
-      (_hG : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization G (weakNerveEdges (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory (Mon (Complex R)))))
+      (_hG : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization G (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory (Mon (Complex R)))))
       (X : Mon (Complex R)), IsCofibrant X →
       _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
-        (FrameHom.rightFrameHammockCoherentDiagram ((sourceFrameFamily R).atObject X)
+        (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockCoherentDiagram ((sourceFrameFamily R).atObject X)
           (rightFrameFamily R) 0)
         (SSet.uliftFunctor.{u + 2, u + 1}.map G ≫
           _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.homInfinityCovariant (G.app (op ⦋0⦌)

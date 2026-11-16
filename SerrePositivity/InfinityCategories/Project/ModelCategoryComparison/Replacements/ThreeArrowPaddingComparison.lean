@@ -20,7 +20,7 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 namespace SerrePositivity.InfinityCategories.Project.ModelCategoryComparison
-open CategoryTheory HomotopicalAlgebra
+open CategoryTheory _root_.HomotopicalAlgebra
 
 variable {C : Type u} [Category.{v} C] [ModelCategory C] (X Y : C)
   {H : Type uH} [Category.{vH} H] (L : SSet.{max u v} ⥤ H)
@@ -41,7 +41,7 @@ include hL in
 lemma original_maps_image_eq :
     L.map ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram (weakEquivalences C) X Y).map _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.outerWordMap) =
       L.map ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram (weakEquivalences C) X Y).map _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.innerWordMap) := by
-  let he := _root_.SerrePositivity.EInfinity.FrameHom.NerveEquivalenceImage.imageIso (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.equivalence X Y) L hL
+  let he := _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveEquivalenceImage.imageIso (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.equivalence X Y) L hL
   have hi := he.isIso_hom
   change IsIso (L.map (nerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.ThreeArrow.functor (X := X) (Y := Y)))) at hi
   apply (cancel_epi (L.map (nerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.ThreeArrow.functor (X := X) (Y := Y))))).1

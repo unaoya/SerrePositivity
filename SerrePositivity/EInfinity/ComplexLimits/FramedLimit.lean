@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.ComplexLimits.WeightedCotensor
-public import SerrePositivity.EInfinity.HomotopyWeight.PointReplacement
-public import SerrePositivity.EInfinity.HomotopyWeight.Reindex
+public import SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.PointReplacement
+public import SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.Reindex
 public import SerrePositivity.HomotopicalAlgebra.Diagram.FrameWeightFunctoriality
 
 /-!
@@ -44,7 +44,7 @@ def rightFrameDiagramFamily :
 使われ方：元の 複体圏に値を取る計算関手の構成。 -/
 def framedLimitOpFunctor : (K ⥤ (Complex A))ᵒᵖ ⥤ (Complex A)ᵒᵖ := by
   exact rightFrameDiagramFamily A K ⋙ FrameWeightRealization.family Kᵒᵖ ⋙
-    (CategoryTheory.evaluation _ (Complex A)ᵒᵖ).obj (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K)
+    (CategoryTheory.evaluation _ (Complex A)ᵒᵖ).obj (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.framedLimitWeight K)
 
 /-- 概要：小図式の射影 cofibrant な一点重みの右 frame の end の関手（Hovey §5.4）。
 方針：反対圏で構成した関手を unop する。
@@ -59,7 +59,7 @@ def framedLimitFunctor : (K ⥤ (Complex A)) ⥤ (Complex A) :=
 使われ方：構成済みの重み付き Hom と底の比較を計算関手へ移す。 -/
 lemma framedLimitFunctor_obj (F : K ⥤ (Complex A)) :
     (framedLimitFunctor A K).obj F =
-      (weightedCotensor A K F).obj (op (HomotopyWeight.weight K)) := rfl
+      (weightedCotensor A K F).obj (op (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K)) := rfl
 
 
 

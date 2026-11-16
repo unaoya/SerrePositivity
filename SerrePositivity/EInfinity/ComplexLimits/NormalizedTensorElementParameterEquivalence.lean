@@ -51,7 +51,7 @@ lemma normalizedTensorElementParameterMap_localized_isIso :
     IsIso (AnodyneHomotopy.anodyneQ.map (normalizedTensorElementParameterMap A X Y)) := by
   have : IsIso (normalizedTensorElementLiftNerveMap A X Y) :=
     (normalizedTensorElementLiftNerveIso A X Y).isIso_hom
-  have := FrameHom.SimplexTerminalNerve.liftedAugmentation_localized_isIso.{u, u + 1}
+  have := _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.SimplexTerminalNerve.liftedAugmentation_localized_isIso.{u, u + 1}
     ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (normalizedSimplexTensor A X)).obj Y)
   dsimp only [normalizedTensorElementParameterMap]
   rw [CategoryTheory.Functor.map_comp]

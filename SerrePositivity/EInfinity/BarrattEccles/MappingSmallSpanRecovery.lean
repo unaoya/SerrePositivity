@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.MappingSpaceResolutionFiberComparison
-public import SerrePositivity.EInfinity.FrameHom.SmallCommaGrothendieck
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.SmallCommaGrothendieck
 
 /-!
 # 小さい全左脚・全右脚の図式から元の三本矢への回収
@@ -17,7 +17,7 @@ universe u
 noncomputable section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
-open CategoryTheory HomotopicalAlgebra
+open CategoryTheory _root_.HomotopicalAlgebra
 open SerrePositivity.SimplicialModel
 
 namespace SerrePositivity.EInfinity.BarrattEccles
@@ -29,10 +29,10 @@ def mappingSmallSpanRecoveryNerveMap (X Y : (operad A).Algebra) :
     nerve (Grothendieck (mappingSmallSpanRightDiagram A X Y)) ⟶
       nerve (algebraSpecialHammock A X Y) := by
   let := modelCategory A
-  exact FrameHom.SmallCommaGrothendieck.recoveryNerveMap.{u + 1, u, u + 1}
+  exact _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.SmallCommaGrothendieck.recoveryNerveMap.{u + 1, u, u + 1}
       (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ArrowSpanComma.leftSliceForget (trivialFibrations _) X)
       (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ArrowSpanComma.rightSliceForget (trivialCofibrations _) Y) ≫
-    (FrameHom.Thomason.selfLiftIso _).hom ≫
+    (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.selfLiftIso _).hom ≫
       nerveMap (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ArrowSpanComma.fromComma (trivialFibrations _) (trivialCofibrations _) X Y)
 
 /-- 全次数で元の中間射を down して取り出す。 -/
@@ -47,12 +47,12 @@ lemma mappingSmallSpanRecoveryNerveMap_middle (X Y : (operad A).Algebra)
 lemma mappingSmallSpanRecoveryNerveMap_localized_isIso (X Y : (operad A).Algebra) :
     IsIso (AnodyneHomotopy.anodyneQ.map (mappingSmallSpanRecoveryNerveMap A X Y)) := by
   let := modelCategory A
-  have := FrameHom.SmallCommaGrothendieck.recoveryNerveMap_localized_isIso.{u + 1, u, u + 1}
+  have := _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.SmallCommaGrothendieck.recoveryNerveMap_localized_isIso.{u + 1, u, u + 1}
     (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ArrowSpanComma.leftSliceForget (trivialFibrations _) X)
     (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ArrowSpanComma.rightSliceForget (trivialCofibrations _) Y)
   have : IsIso (AnodyneHomotopy.anodyneQ.map (nerveMap
       (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ArrowSpanComma.fromComma (trivialFibrations _) (trivialCofibrations _) X Y))) :=
-    (FrameHom.NerveEquivalenceImage.imageIso (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ArrowSpanComma.commaEquivalence
+    (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveEquivalenceImage.imageIso (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ArrowSpanComma.commaEquivalence
       (trivialFibrations _) (trivialCofibrations _) X Y).symm AnodyneHomotopy.anodyneQ
       (Localization.inverts _ SSet.anodyneExtensions)).isIso_hom
   dsimp only [mappingSmallSpanRecoveryNerveMap]

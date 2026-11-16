@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixPrismNaturality
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefixPrismNaturality
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantSourceRoofNativeSimplex
 
 /-!
@@ -18,7 +18,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open CategoryTheory SSet MonoidalCategory SimplicialLocalization
+open CategoryTheory SSet MonoidalCategory _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.InfinityCategories
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : CofibrantAlgebra A)
@@ -27,11 +27,11 @@ variable (A : Type u) [CommRing A] (X Y : CofibrantAlgebra A)
 lemma cofibrantSourceRoofProductCommaNativeSimplex_naturality {m n : ℕ}
     (Γ : Fin (n + 1) ⥤ cofibrantSourceRoofProductComma A X Y b)
     (t : Fin (n + 1) →o Fin 2) (α : ⦋m⦌ ⟶ ⦋n⦌) :
-    (kanHammockNerve (cofibrantAlgebraRelativeCategory A)).map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.extend α).op
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockNerve (cofibrantAlgebraRelativeCategory A)).map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.extend α).op
       (cofibrantSourceRoofProductCommaNativeSimplex A X Y b Γ t) =
     cofibrantSourceRoofProductCommaNativeSimplex A X Y b
       (α.toOrderHom.monotone.functor ⋙ Γ) (t.comp α.toOrderHom) :=
-  RoofPrefix.simplex_naturality (cofibrantAlgebraRelativeCategory A)
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.simplex_naturality (cofibrantAlgebraRelativeCategory A)
     (cofibrantSourceRoofProductCommaDiagram A X Y b)
     (cofibrantSourceRoofProductCommaEvaluation A X Y b)
     (cofibrantSourceRoofProductCommaEvaluation_weak A X Y b)
@@ -51,7 +51,7 @@ lemma cofibrantSourceRoofProductCommaNativeSliceSimplex_naturality {m n : ℕ}
       (cofibrantSourceRoofProductCommaNativeSimplex A X Y b Γ t)) = _
   rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.joinStdSimplexIso_rightPoint_naturality, Category.assoc,
     SSet.yonedaEquiv_symm_naturality_left]
-  exact congrArg (fun z : (kanHammockNerve (cofibrantAlgebraRelativeCategory A)) _⦋m + 1⦌ =>
+  exact congrArg (fun z : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockNerve (cofibrantAlgebraRelativeCategory A)) _⦋m + 1⦌ =>
     (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso m 0).hom ≫ SSet.yonedaEquiv.symm z)
     (cofibrantSourceRoofProductCommaNativeSimplex_naturality A X Y b Γ t α)
 
