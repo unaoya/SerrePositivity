@@ -3,7 +3,7 @@
   "complete": 3,
   "total": 6,
   "added": 0,
-  "verified_head": "this commit: base 772c240f2d02dc3c174f8e03c4e96a685e757da1",
+  "verified_head": "this commit: base 02cc16879cd29e33365f62acebd4c4f8d62cf67a",
   "items": {
     "HT01": "complete",
     "HT02": "complete",
@@ -12,15 +12,14 @@
     "HT05": "not-started",
     "HT06": "not-started"
   },
-  "latest_complete_audit_checkpoint": "actual-completed-eta-square-checkpoint.json",
-  "latest_complete_audit_declarations": 2300,
+  "latest_complete_audit_checkpoint": "specified-homology-isomorphisms-checkpoint.json",
+  "latest_complete_audit_declarations": 2320,
   "working_changes_unverified": [
+    "AffineOriginalCoverOneSquare",
     "AffineNativeCoverHomologySquares",
-    "AffineOriginalCoverZeroSquare",
-    "AffineOriginalCoverHomologyIsos",
-    "AffineOriginalCoverOneSquare"
+    "AffineOriginalCoverZeroSquare"
   ],
-  "pending_check": "bundle-308 terminal rc1; see audit module inventory; failed dependencies await next batch",
+  "pending_check": "bundle-309 terminal rc1; see audit module inventory; failed dependencies await next batch",
   "next_proof_route": "remaining-20000-plan.md",
   "initial_record": {
     "stage": "5inf3a",
@@ -415,7 +414,7 @@
   "HT02_remaining": "complete; see ht02-complete.json",
   "prepared_source_lines": 23912,
   "prepared_modules": 287,
-  "verified_source_lines": 23485,
+  "verified_source_lines": 23600,
   "provisional_total_source_lines": [
     22223,
     25443
