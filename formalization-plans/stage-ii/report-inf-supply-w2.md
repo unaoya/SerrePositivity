@@ -17979,3 +17979,61 @@ lemma underCosliceCylinder {C : Type u} [Category.{u} C] (c : C) :
 この照合を元のモデル源で後合成し、§299の同じtwisted pairing表示、§297の全HoFun自然性、§298の同じfiberのinterval表示へ接続する。さらに元のcorrected pairingの指定全同型とその同じ全射影のpathを保つ照合が残る。R03h・R03d・3b-4aは未完、目標は継続中。共有鍵返却済み、起動中の自レーンの検査なし。
 
 一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+## 300. 同じUnderの全coslice円柱と元の通常自然変換の全像の一致（2026-11-16）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+§299.3の全円柱の照合を証明し、任意の通常図式Vと元の指定自然変換ηへ一般化した。指定モデル源Fへの後合成でも、同じ全HoFun射が元のnerveNatTransHom ηの像に一致することをArrowとして示す。元の自然変換・円柱・モデル源を選び直さない。既存構成の単位・自然性・表示の法則で、数学の一覧は増やさない。
+
+通常圏のnerveへの二つの全円柱にnerve_hom_ext_oneを適用し、区間の一次単体を二つの端点と恒等辺に分けた。端点は同じh₀・h₁、混合辺は同じjoin円柱の切断1の式とcosliceの直接評価で回収した。通常自然変換側は既存の関手圏nerve比較の評価式で同じ構造射を回収した。その後、§297の同じ普遍円柱の前合成則と既存の通常自然変換の前合成則を使って全図式へ移す。一般の準圏へのHoFun射について点ごとの一致から全族を推論していない。
+
+一時ファイルisw2-under-coslice-cylinder18の個別Lean検査は終了0。elaborationのため零単体の二つの表示とnerveの恒等作用を明示し、計算上限は変更していない。以下はprivateな証明分割も含む型（全ファイル209行、各部分200行未満）。
+
+```lean
+private def underUnit {C : Type u} [Category.{u} C] (c : C) :
+    (Functor.const (Under c)).obj c ⟶ Under.forget c
+
+private lemma interval_one_cases (t : (Δ[1] : SSet.{u}) _⦋1⦌) :
+    t = (Δ[1] : SSet.{u}).σ 0 (stdSimplex.obj₀Equiv.symm 0) ∨
+      t = stdSimplex.objEquiv.symm (𝟙 ⦋1⦌) ∨
+        t = (Δ[1] : SSet.{u}).σ 0 (stdSimplex.obj₀Equiv.symm 1)
+
+private lemma leftPrism_mixed {A : SSet.{u}} (σ : A _⦋1⦌) :
+    (leftMappingSpacePrism A).app (Opposite.op ⦋1⦌)
+      (stdSimplex.objEquiv.symm (𝟙 ⦋1⦌), σ) =
+      Join.mkOfSum (n
+
+private lemma underUnitCylinder_mixed {C : Type u} [Category.{u} C] (c : C)
+    (σ : (nerve (Under c)) _⦋1⦌) :
+    (nerveNatTransHomotopy (underUnit c)).h.app (Opposite.op ⦋1⦌)
+      (σ, stdSimplex.objEquiv.symm (𝟙 ⦋1⦌)) = ComposableArrows.mk₁ (σ.obj 1).hom
+
+private lemma underCosliceCylinder {C : Type u} [Category.{u} C] (c : C) :
+    (pointCosliceFamilyHomotopy (nerveUnderMap c)).h =
+      (nerveNatTransHomotopy (underUnit c)).h
+
+lemma nerveUnderLift_pointCosliceFamilyHomotopy {I C : Type u} [Category.{u} I]
+    [Category.{u} C] {c : C} {V : I ⥤ C} (η : (Functor.const I).obj c ⟶ V) :
+    (pointCosliceFamilyHomotopy (nerveMap (Under.lift V η) ≫ nerveUnderMap c)).h =
+      (nerveNatTransHomotopy η).h
+
+lemma nerveUnderLift_pointCosliceFamilyHomotopy_postcomp_arrow {I C : Type u}
+    [Category.{u} I] [Category.{u} C] {c : C} {V : I ⥤ C}
+    (η : (Functor.const I).obj c ⟶ V) {D : SSet.{u}} (F : nerve C ⟶ D) :
+    Arrow.mk (Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
+      (functorHomotopyPostcomp (pointCosliceFamilyHomotopy
+        (nerveMap (Under.lift V η) ≫ nerveUnderMap c)) F))) =
+      Arrow.mk ((hoFunctor.map ((ihom (nerve I)).map F)).toFunctor.map
+        (nerveNatTransHom η))
+```
+
+対象ビルド367・小監査で検収する。mainの既存宣言・⑤a・公式入口・公式監査は変更しない。R03hの同じnative fiber射とroofの最終の全族の照合、R03d・3b-4aは未完。
+
+### 300.2 検収
+
+新規1本209行、公開2補題・実環境宣言3。対象ビルド367（依存を含む1,954 jobs）・小監査とも終了0。共有鍵 --class impl --wait 3600、一枚の整理券、gtimeout 1700秒でビルドと小監査の間だけ使用。小監査268モジュール・1,718宣言、propext・Classical.choice・Quot.soundのみ、sorryAx・追加公理なし。自レーン累計264本・18,205行、実環境1,711宣言。外枠まで3,795行。宣言名の照合で異なるファイル間の重複0、内部も0。mainのInfinityCategoriesについても公開の二宣言名をgit grepし、既存宣言との重複なし。git diff --check通過。証跡isw2-build367.log・isw2-validation367.json・isw2-declaration-collision-scan367.json。登録候補の一覧に追加。既存宣言・⑤a・公式入口・公式監査は変更していない。
+
+任意の通常図式と元の自然変換の同じcoslice円柱、指定モデル源の後合成後の全HoFun射の像の一致は閉じた。元のcorrected pairingの同じ指定pathを通じたnative fiber射とroofの最終全族の等式R03h・R03d・3b-4aは未完。
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
