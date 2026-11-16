@@ -1680,3 +1680,22 @@ Frobenius の既存の矢印の図式の端点の照合（着手前、既存の�
 G4・G5と停止点2g-2は未完。最終の AugmentedRingCechExact と利用側の型は不変。
 
 一覧：済み1／全体3（うち追加0）。
+
+
+長さ0を含む同じ Čech 微分と filtered 余極限（着手前、既存の係数移送と余極限比較の法則の内数、全体180〜350行）：`fullCechDifferentialNatTrans k` は既存の projectiveCechCochainsFunctor k から k+1 への、元の fullCechDifferential の自然変換。`fullCechFilteredDifferential_compare` は既存の各項の preservesColimitIso が同じ微分を保つ式。`fullCechFiltered_injective_zero` と `fullCechFiltered_exact` は各段の長さ0の単射性と全ての長さの完全性を、既存の加群の exact filtered colimit と同じ標準比較で移す。被覆の係数図式を代入して `openCoverCechAcyclic_filtered` を得る。整数加群の任意の宇宙へは既存の ULift ℤ の係数移送・AsSmall による添字移送を使い、既存宣言の型を変えない。最終の AugmentedRingCechExact や利用側の型も不変。新しい二重複体の判定法や微分は作らない。
+
+
+同じ増大完全性の整数係数への移送の分割（着手前、前記の内数、80〜150行）：`fullCechIntSequential_augmentedExact D` は整数加群の有限交叉の図式の自然数系 D に対し、各段の長さ0の単射性と全長さの完全性から同じ余極限のそれらを返す。既存の projectiveIntCechLiftFunctor・その余極限保存・AsSmall の同値と既存の加法的係数比較を使い、同じ各項の加法群・微分を保つ。`openCoverCechAcyclic_intSequential P U` は実際の被覆の交叉の図式を代入し、同じ前層の余極限へ移す法則。
+
+同じアフィン被覆での Frobenius 係数への代入（着手前、既存の係数移送の内数、35〜80行）：`affineSchemeStructurePerfectCech_acyclic` は任意のアフィンスキーム Y と有限アフィン被覆 U、同じ構造層の標数条件から OpenCoverCechAcyclic (frobeniusRingDiagram Y.presheaf p hp hY) U を返す。各有限段は既存の schemeStructureFrobeniusStageIso と構造層の準連接性から供給し、同じ係数の順極限の標準同型で移す。正次数だけでなく同じ増大項の単射性・零次の完全性を含める。原典の層コホモロジーとの比較を新しく作らず、名前・docstringで Čech 版を明示する。
+
+
+## G4：増大項を含む同じ Čech 微分の filtered 比較
+
+`CechFilteredAugmentedDifferential`（46行）：`fullCechDifferentialNatTrans` は長さ0を含む元の fullCechDifferential を、既存の各項の関手の間の自然変換にしたもの。`fullCechFilteredDifferential_compare` は元の同じ微分と既存の各項の preservesColimitIso が可換な式。有限段の同じ標準脚で照合している。
+
+単独検証、本体とのソース完全一致、対象と入口のビルド5,218ジョブ成功、小監査3宣言（実際の所有元による非公開・生成宣言込み）・標準三公理のみ、終了状態0。ログ `2g-cech-filtered-augmented-differential-check-2.log`・`2g-cech-filtered-augmented-differential-native.log`・`2g-cech-filtered-augmented-differential-audit.log`。局所的な backward.isDefEq.respectTransparency false、既定の資源制限。unused Fintype の style 警告あり。追加公理・sorry・既存の型変更・200行超の宣言なし。共有鍵 --class impl --wait 3600、待ちは一つ、対象ビルドと小監査は別枠。root・下流全ビルド・全体監査なし。
+
+今回1モジュール46行＋入口1行。新規133モジュール本体8,922行、既存追加25行を含む本体8,947行。登録133行・入口の追加空行21行を全て含む外枠計数 **9,101行**。新規小監査累計905宣言、既存15宣言は別計上。完全性・整数係数への移送・同じアフィン被覆への適用は下書きで、この束には含めない。G4・G5は未完。見込み約12,000〜15,500行・外枠16,000行は不変。
+
+一覧：済み1／全体3（うち追加0）。
