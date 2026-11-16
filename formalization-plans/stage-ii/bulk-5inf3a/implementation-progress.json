@@ -3,7 +3,7 @@
   "complete": 3,
   "total": 6,
   "added": 0,
-  "verified_head": "this commit: base 9f9a989df6f3cd888546aecd1da4a0e0f2d4c611",
+  "verified_head": "this commit: base a4771b36bde82a725f95c23aef32aa359335743f",
   "items": {
     "HT01": "complete",
     "HT02": "complete",
@@ -12,10 +12,12 @@
     "HT05": "not-started",
     "HT06": "not-started"
   },
-  "latest_complete_audit_checkpoint": "affine-cover-totalization-checkpoint.json",
-  "latest_complete_audit_declarations": 1602,
-  "working_changes_unverified": [],
-  "pending_check": "bundle-156 terminal; all prepared modules passed",
+  "latest_complete_audit_checkpoint": "oriented-cohomology-checkpoint.json",
+  "latest_complete_audit_declarations": 1608,
+  "working_changes_unverified": [
+    "AssociatedCompleteness"
+  ],
+  "pending_check": "bundle-157 terminal rc1; see audit module inventory; failed dependencies await next batch",
   "next_proof_route": "ht04-next-proof-route.md",
   "initial_record": {
     "stage": "5inf3a",
