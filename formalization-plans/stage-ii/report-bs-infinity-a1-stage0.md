@@ -3175,3 +3175,56 @@ Kerodon の一般定理に対する特殊化には属性を付けず、既存の
 新規の実 Yoneda の余極限反転と形状移送にも同じ理由付き属性を足し、2本の最終検証中。
 これは5∞-1の完成の報告ではない。S1とS8の残りを継続する。
 一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
+
+### 実 Yoneda の余極限反転・文献属性の最終確認（11-16）
+
+新規2本152行（文献属性・docstringの差分は除外）4宣言の最終対象ビルド・小監査が
+終了0で通った。記録 `/tmp/is-w1/s8-native-continuity-final/target-audit-result.json`。
+標準三公理のみ、source SHA一致。新規の接続2本の属性を含めて、
+Sheaves の20件すべてが新しい環境で登録され、special の理由を持つことも確認した
+（`/tmp/is-w1/sheaves-citations-registered.json`）。既存112本の属性・docstringだけの
+変更は `cd65864e0` に分けた。計算上限変更なし、200行を超える補題なし。
+
+```lean
+-- α : Homotopy (opFunctor.map (yonedaInfinityMap A) ≫ G) O
+-- hα : IsRightKanExtension (opFunctor.map (yonedaInfinityMap A)) O G α
+nativeRightKan_map_colimit_isLimit α hα
+  (c : JoinCocone p) (hc : IsColimitCone c) :
+  IsLimitCone (mapJoinCone G (coconeReverseCone c))
+
+-- O : Presheaf C E、hE : IsPresentable E
+exists_nativeShapeSections_continuous O hE :
+  ∃ (H : (PresheafCat C SpaceInfinity).op ⟶ E)
+    (ε : Homotopy (nativeSetShapeOppositeYoneda C ≫ H) O),
+    IsRightKanExtension (nativeSetShapeOppositeYoneda C) O H ε ∧
+    ∀ {I : SSet.{u}} {p : (SSet.uliftFunctor.{u+1,u}).obj I ⟶ PresheafCat C SpaceInfinity}
+      (c : JoinCocone p), IsColimitCone c →
+        IsLimitCone (mapJoinCone H (coconeReverseCone c))
+```
+
+前者は既存の指定左 Kan の全 Hom 比較を反転し、二重反転の等式の後合成で
+元の全関手・余錐に戻す。後者は実際の始域・終域の同型の可換四角形で、
+同じ全関手と指定余単位を移す。点ごとの同型を集める大域比較は作っていない。
+
+**残る接続を区別する**：このHは `nativeSetShapeOppositeYoneda` に沿う模型。
+元の `oppositeSpaceYoneda` への関手同型の移送で、Hと指定余単位の類を保つ法則が残る。
+既存の `exists_rightKanExtension_iff_of_functorIso` は存在だけを運び、
+その証明をHの保存に読み替えてはいけない。次の既存構成の法則を閉じてから、
+`kanRightKanExtensionIso`・`kanRightKanExtensionIso_hom_fac` を元の全関手へ適用する。
+
+```lean
+-- {K C D : SSet.{u}} [Quasicategory K] [Quasicategory C] [Quasicategory D]
+-- {δ δ' : K ⟶ C} (e : FunctorIso δ δ') {O : K ⟶ D} {G : C ⟶ D}
+-- (α : Homotopy (δ' ≫ G) O) (hα : IsRightKanExtension δ' O G α)
+∃ β : Homotopy (δ ≫ G) O,
+  IsRightKanExtension δ O G β ∧
+  Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy β) =
+    (e.postcomp G).hom ≫
+      Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy α)
+```
+
+検証済み全体216本14,048行・1,239宣言（文献整理の行数は除外）。
+S8の残りはこの元の全関手への接続、指定離散比較の射の自然性、押し出し、
+離散層化と局所同値。S1の元のcoverage・extensiveも残る。停止点にはまだ届いていない。
+S7・R2・R3は再開していない。
+一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
