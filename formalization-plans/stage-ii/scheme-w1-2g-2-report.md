@@ -2820,3 +2820,12 @@ mainの取り込みは11-16 16:25の指示どおり保留したまま。検証�
 検証：下書き `2g-g4-spec-scalar-total-check-2.log` は終了0。対象と直接importerの入口の小ビルドは5,332ジョブ・終了0（`2g-g4-spec-scalar-total-native.log`、依存のキャッシュ再生を含む）。固定manifestと下書き・本体のSHA256と全バイト一致を確認。別の共有鍵による所有宣言の小監査は19宣言、非公開・生成分も含め標準三公理のみ、終了0（`2g-g4-spec-scalar-total-audit.log`）。追加公理・sorry・既存宣言の型変更・資源上限の引き上げ・200行超の宣言なし。
 
 今回79行＋入口1行＝80行。基準56ea849a3からの外枠計数は16,961行（新規237モジュール本体16,678行、既存追加25行、入口258行）。新規所有宣言の小監査累計1,791、既存15宣言は別計上。20,000行の外枠内。完成見込み約18,000〜19,400行を維持する。元の任意の環準同型に対するアフィン環の出口が閉じた。F8の核と元の増大複体との比較、Noether帰納（相対proper fppf・合成を含む）、G5の模型・Frobenius・filtered余極限の自然な移送は未完であり、G4・G5はまだ完成扱いにしない。mainは取り込んでいない。共有鍵 --class impl --wait 3600、待ちは一件、対象ビルドと監査は別リース。root・下流全ビルド・AlgebraicGeometry全体監査なし。一覧：済み1／全体3（うち追加0）。
+
+
+同じF8の中心側の座標の法則（G4の元の核のtotal比較の同じ証明分割、着手前の型、一本文90〜170行見込み）：`rightEι : s.E.X b ⟶ s.rightSquare.totalComplex.X (b+2)` と逆のrightEπ、`rightCenterι : s.centerBase ⟶ s.rightSquare.totalComplex.X 1` と逆のrightCenterπを元の直積の座標で取る。各正逆の式、Eの縦微分、中心からEへの負符号、元のMap.onRightSquareとの自然性、同じbaseProjectionへの合成零を照合する。左右いずれも元の核とtotalは変えず、中心側のunsignedな次数のずらしと符号の照合の入力とする。
+
+
+元の各直和入射を使うY側のtotal比較の下書き（G4の同じ再索引の法則、着手前の型、一本文70〜150行見込み）：元のschemePerfectCechTupleDoubleの(a+1,b)の項を、同じF8のY側の(a,b+1)へleftCιで入れ、根の(0,0)は元のRのsingleObjXSelfを用い、(0,b+1)は零とする。各写像を既存のtotalDescへ渡して同じ全次数の射を作り、ι_totalDescで各入射の式を固定する。この段階は次数ごとの射であり、微分との可換性・基底射影への合成零・同じ核への持ち上げ・逆射は別途照合する。これらが未検証の間は完成した複体の同型と呼ばない。
+
+
+夜の共有鍵待機中の下書き：`CechAugmentedSquareLeftComponents.lean`（Y側の同じ座標、縦微分の負符号、自然性、基底射影への合成零）、`CechAugmentedSquareRightComponents.lean`（中心側のE・中心の同じ座標と符号）、`SchemePerfectCechTupleLeftTotalComponents.lean`（元の各ιTotalを使う同じ全次数の再索引の射）をscheme-draftsへ置いた。三本とも本体未登録・未検証・未コミットで、検証済みの実測には算入していない。最初の一本の検証は共有鍵 --class impl --wait 3600 の一件だけで待機中。生存するツールセッションへのpollで待機を確認し、夜の調整役のrootビルドと一括監査の鍵を待っている。待機を失敗・数学的なblockedとは扱わず、同じセッションを継続する。元の増大二重複体から同じ核のtotalへの鎖写像・逆射・二つの合成はなお未完。外枠の検証済み実測16,961行、完成見込み約18,000〜19,400行、承認済み上限20,000行は不変。一覧：済み1／全体3（うち追加0）。
