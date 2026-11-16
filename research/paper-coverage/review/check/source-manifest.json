@@ -1,0 +1,19 @@
+{
+  "baseline": "c499fc236",
+  "upstream_commit": "adc7f1241b42e322a6451854ab7e4b4c146bf78a",
+  "pdf_sha256": "7985cfbc11547cf659efdd6abc076a0c0371e9a38e8026aa09b23cbb042af917",
+  "layout_sha256": "374f7edf29d12588e01cd7a8f316b25e720eb8545527e5ea52901ad663fb3eb7",
+  "paper_source_md_sha256": "21a0f29f7249029b74f2585aae1f1a21cf3810009f32f87e94e99f3f543531c2",
+  "legacy_files_sha256": {
+    "research/k-coverage/maps/paper/instance-evidence.json": "a6330c1e4aaa1b3ee2ef6a9c9c538a693a4e4a32ac817dd79651e1dadfbdb596",
+    "research/k-coverage/maps/paper/items.csv": "0c6738f55f432220cffc7f5bf7730968c06a2109b9f505fc02800b1149e8d565",
+    "research/k-coverage/maps/paper/kernel-evidence.json": "2675cb17b2e885cacdce8537a7dacf2063abc32420c8c0a388fec0e80889296d",
+    "research/k-coverage/maps/paper/none-search.json": "e6e1187dd0fddea8a9dfb3c9338c1d468d8e5ef3a7aec3af7dc1710d2097b042",
+    "research/k-coverage/maps/paper/toc.md": "11adeea3865616e48d0b2d70af323cd811df73fb71fe8f34b76261492c3dca2a"
+  },
+  "method": "read-only PDF/source comparison; no Lean execution or build",
+  "statement_count": 27,
+  "equation_count": 47,
+  "figure_count": 1,
+  "headings_count": 26
+}
