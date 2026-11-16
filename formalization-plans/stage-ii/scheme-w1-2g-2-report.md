@@ -1475,3 +1475,19 @@ Frobenius の既存の矢印の図式の端点の照合（着手前、既存の�
 今回1モジュール81行＋入口1行。新規116モジュール本体7,713行・入口込み7,829行。既存追加25行を含む外枠計数は本体7,738行・入口込み7,854行。新規小監査累計778宣言、既存15宣言は別計上。環としての自然性は単独検証に成功したが本体ビルド・監査前で、この束には含めない。実際の Frobenius の矢印・conerve との比較、B1・Noether 帰納・G5 は残る。外枠16,000行は不変。
 
 一覧：済み1／全体3（うち追加0）。
+
+
+同じ Frobenius の矢印の順極限の普遍性（着手前、既存の環・矢印の余極限と添字の同値による移送の法則の内数、115〜230行）：`frobeniusArrowCocone` は点を実際の Arrow.mk(frobeniusDirectLimitMap f.hom)、脚を同じ二つの frobeniusDirectLimitOf とする既存の反復図式の余錐。`frobeniusArrowIsColimit` は両端の既存の環の lift/hom_ext でこの余錐の普遍性を返す。`frobeniusArrowSmallCocone`・`…SmallIsColimit` は既存の AsSmall の同値で同じ余錐を移し、`frobeniusArrowSmallColimitIso` は B1 が使う同じ小さい反復図式の余極限への標準同型。端点だけの加群同型で矢印の可換性を代用しない。
+
+
+## G4：環の標準比較の自然性と、元の Frobenius の矢印の端点
+
+`RingDirectLimitNaturality`（57行）：`ringDirectSystemNatTrans` は実際の環の有向系の射の自然変換。`ringDirectLimitColimitIso_of` は同じ有限段の標準写像との評価、`ringDirectLimitColimitIso_naturality` は既存の ringDirectLimitComparison と圏論的余極限の射の自然性。既存の代数的な射を作り直さない。
+
+`FrobeniusArrowDiagramMaps`（80行）：`frobeniusArrowDiagram_map_left`・`…_map_right` は既存の Functor.ofSequence の任意の自然数段の写像の端点と、同じ frobeniusDirectSystemMap の一致。後続射だけを照合する NatTrans.ofSequence から全ての段へ渡す。元の図式の定義・名前・型は変更しない。
+
+単独検証、本体とのソース完全一致、対象と入口のビルド5,202・5,203ジョブ成功、小監査4・3宣言（計7、実際の所有元による生成・非公開宣言込み）・標準三公理のみ、終了状態0。ログ `2g-ring-direct-limit-naturality-check-2.log`・`2g-ring-direct-limit-naturality-native.log`、`2g-frobenius-arrow-diagram-maps-check-3.log`・`2g-frobenius-arrow-diagram-maps-native.log`、`2g-ring-naturality-arrow-maps-audit.log`。局所的な backward.isDefEq.respectTransparency false、既定の資源制限。行長の style 警告あり。追加公理・sorry・既存の型変更・200行超の宣言なし。共有鍵 --class impl --wait 3600、待ちは一つ、対象ビルドと小監査は別枠。root・下流全ビルド・全体監査なし。
+
+今回2モジュール137行＋入口2行。新規118モジュール本体7,850行・入口込み7,968行。既存追加25行を含む外枠計数は本体7,875行・入口込み7,993行。新規小監査累計785宣言、既存15宣言は別計上。矢印全体の余錐は下書きの検証中でこの束には含めない。G4の実際の conerve 比較・B1・Noether帰納、G5は残る。全体の見込み約10,000〜13,500行・外枠16,000行は不変。
+
+一覧：済み1／全体3（うち追加0）。
