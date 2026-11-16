@@ -3,7 +3,7 @@
   "complete": 3,
   "total": 6,
   "added": 0,
-  "verified_head": "this commit: base 957f3e9040d5c134f1ead7e6ec2b96946253477e",
+  "verified_head": "this commit: base c0b20333f64e884a375b8b753a751662bcd5a4ca",
   "items": {
     "HT01": "complete",
     "HT02": "complete",
@@ -12,14 +12,16 @@
     "HT05": "not-started",
     "HT06": "not-started"
   },
-  "latest_complete_audit_checkpoint": "restricted-classes-and-total-naturality-checkpoint.json",
-  "latest_complete_audit_declarations": 2045,
+  "latest_complete_audit_checkpoint": "polynomial-and-base-cohomology-classes-checkpoint.json",
+  "latest_complete_audit_declarations": 2046,
   "working_changes_unverified": [
-    "MapExtendDegreeNormalization",
     "MapExtendHomologyCompatibility",
-    "AffineBasePolynomialCohomologyClasses"
+    "AffineOriginalHomologyCoordinates",
+    "MapExtendDegreeNormalization",
+    "AffineAnyOrdinaryTargetUnit",
+    "OrdinaryExtendedUnit"
   ],
-  "pending_check": "bundle-223 terminal rc1; see audit module inventory; failed dependencies await next batch",
+  "pending_check": "bundle-224 terminal rc1; see audit module inventory; failed dependencies await next batch",
   "next_proof_route": "remaining-20000-plan.md",
   "initial_record": {
     "stage": "5inf3a",
