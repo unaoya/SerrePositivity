@@ -247,3 +247,11 @@ main cd79e9cc5でDAG XIII・NSの対応表とCitationの略号表が更新され
 152本目でStrictDiagramTotRightFrameComparison.lean:25–26の匿名local instance二件が同じguardに当たった。元native名は `…instModelCategoryAlgebraOperad_1` と `…instHasFunctorialFactorizationAlgebraOperadCofibrationsTrivialFibrations`。前者は既存のBEモデル構造、後者は既存のcofibration／trivial fibrationの関手的分解を指定している。同じ根拠・source SHA・正確なbinder span・原native表で個別確認し、輸送後の名前のみを明示する記録を追加した（計3件）。型・値・localな属性を変更しない。152本のプレビューは保留0。
 
 一覧：済み 0／全体 5（うち追加 0）。
+
+### 5.2 18:08の参照採取と停止経路の全予覧
+
+原参照198／824本、198本のプレビュー保留0。内訳ではOE05（D81で止めたBEの99本）は**99／99本を原compilerで採取し、全プレビューが保留0**になった。OE03は35／144本、OE04は先行sampleの1本、OE02は未採取。原ソースを静的に走査した匿名local instanceの候補は計4件で、個別確認済み3件のほかにHomotopyWeight/KanDiagramBrown.lean:32が一件ある。これは実compiler binderの採取後に個別確認する。
+
+この数は参照とプレビューの進捗であり、OE05の実適用・対象ビルド・v3b・Tag・root・全監査・verifyが済んだという意味ではない。数学のソースの移動はまだ適用していない。
+
+一覧：済み 0／全体 5（うち追加 0）。
