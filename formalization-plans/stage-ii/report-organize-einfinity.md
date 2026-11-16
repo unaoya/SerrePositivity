@@ -371,3 +371,15 @@ FreeProbeRelativeUnitWeak.leanは通常190秒でも、二readerと一readerの�
 夜の元監査のdriverは23時まで共有鍵の外で待機中。現在、こちらの整理券は出していない。mainは未取込のまま。
 
 一覧：済み 0／全体 5（うち追加 0）。
+
+## 10 元の正式監査の参照とNameリテラル（23:21）
+
+元のEInfinity監査の採取は終了0、403.995秒、151,722参照・4,900コマンド。元の型つきfixtureと監査本体も実行した。この二本だけは夜の全監査相当の作業として採取する。BS監査は次の一枚の鍵で実行中。
+
+EInfinity監査には引用された既存のNameが1,334箇所あり、内訳は生の単一backtickが1,034、意味参照を持つ二重backtickが300。最初の書換器は生の1,034件を「意味参照のない名前」として保留にした。`reviewed-audit-name-literals.json`へ、各箇所の元source SHA・byte位置・引用の種類・実在する公開native名と所有元・新名を保存した。BS監査の対応する生のName一件も同じように記録したが、BSのcompiler採取はまだ実行中であり、その成功を先取りしない。
+
+adapterは生のNameだけを個別metadata編集として登録する。二重backtickの300件は実compilerの意味参照が新名へ解決することを確かめ、元の書換器に任せる。生のNameへ偽のterm参照を加えたり、共有の未解決参照guardを外したりはしない。EInfinity監査を含む別の一時出力で全825プレビューが保留0となった。最終の出力はBSの採取が終わってからdriverで作る。
+
+`preparation/audit-einfinity-before-preview-review.json`に原検査と予覧のSHA・件数を保存した。数学のソースへの実適用と、移送後のビルド・保存比較・正式全監査はまだ行っていない。
+
+一覧：済み 0／全体 5（うち追加 0）。
