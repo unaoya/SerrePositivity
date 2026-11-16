@@ -2727,3 +2727,29 @@ Function.Injective ((ordinaryHomTwistedComparison C).app (Opposite.op ⦋n⦌))
 検証済み全体174本11,503行・998宣言。S1・S8 は未完成、S7 は後続。
 外枠18,600行を維持する。
 一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
+
+
+### S8 続報：同じ両端を保持する Hom–twisted arrow の指定同型
+
+`OrdinaryHomLongChainExt`（76行18宣言）、`OrdinaryHomTwistedCounitPoint`（34行1宣言）、
+`OrdinaryHomTwistedIso`（104行7宣言）の対象ビルド・小監査が成功した。
+標準三公理のみ、source SHA 一致。
+記録：`/tmp/is-w1/s8-hom-long-ext-2/`、`/tmp/is-w1/s8-hom-counit-point-1/`、
+`/tmp/is-w1/s8-hom-twisted-iso-1/`。
+
+```lean
+ordinaryHomTwistedSimplex (ordinaryHomTwistedRead f) = f
+IsIso (ordinaryHomTwistedComparison C)
+ordinaryHomTwistedIso C : nerve (OrdinaryHomElements C) ≅ TwistedArrow (nerve C)
+```
+
+余単位は長い射列の左右の制限を既存の両端保持の法則で比較し、中央の隣接射を
+零次の余単位と全再添字から比較した。これを `ComposableArrows.ext` の証明分割に入れた。
+順射は同じ `ordinaryHomTwistedComparison` なので、前に証明した両端射影の等式をそのまま保つ。
+この模型比較は可逆性まで完成した（Kerodon Proposition 8.1.1.10、Tag 03JN）。
+一般の nerve–join 比較の全単体の逆を別に作らず、既存の edgewise の標準単体同型を再利用した。
+
+次は底 `nerve (Cᵒᵖ × C)` と `(nerve C).op ⊗ nerve C` を既存の積・反対の同型で揃え、
+射の同型として分類図式の全族比較へ渡す。固定 Yoneda への全族比較と S8 の層化・局所同値はまだ残る。
+検証済み全体177本11,717行・1,024宣言。S1・S8 は未完成、外枠18,600行を維持する。
+一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
