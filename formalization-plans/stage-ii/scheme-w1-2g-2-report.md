@@ -1805,3 +1805,23 @@ G4・G5と停止点2g-2は未完。最終の AugmentedRingCechExact と利用側
 今回一本75行＋入口1行。新規143モジュール本体9,572行、既存追加25行、入口追加164行（登録143・空行21）を含む外枠計数 **9,761行**。新規小監査累計944宣言、既存15宣言は別計上。アフィン nerve の環の自然な比較と実際の Frobenius 係数への移送が同じ増大を保つ所まで検証した。非アフィン基底の相対 proper fppf の二重 Čech、F8 全複体と元のブローアップを保つ Noether帰納、G5はなお残る。G4・G5と停止点2g-2は未完。最終の AugmentedRingCechExact と利用側の型は不変。見込み約12,000〜15,500行・外枠16,000行は不変。
 
 一覧：済み1／全体3（うち追加0）。
+
+
+次の大域切断から同じタプル被覆複体への増大の接続（着手前、既存の増大・係数移送・自然性の法則の内数、180〜380行）：
+
+- `schemeStructurePerfectCechRefinedPullbackMap_globalAugmentation` は f:X→Y と U,V,ρ の実際の refined pullback で、Γ(Y) の恒等スカラーの増大を、実際の Γ(f) の Frobenius 係数写像と Γ(X) の恒等スカラーの増大の合成へ移す式。既存の同じ R の増大の自然性で R=Γ(Y), φ=id, ψ=f.appTop と取り、元のスカラーの定義で照合する。
+- `schemePerfectCechTupleGlobalAugmentationHom f U p hp h n` は同じ nerve 項 Y_n の Γ(Y_n) の実際の Frobenius 係数の次数零 single から、同じ既存の schemePerfectCechTupleComplex の n 項への、恒等スカラーの増大を零次成分とする射。`…_f_zero` はその式、`…_naturality` は元の nerve の大域切断の係数写像と同じタプル複体の射との可換性。これを `schemePerfectCechTupleGlobalAugmentation` として、同じ係数図式を single へ移した関手から既存のタプル複体の関手への自然変換にまとめる。新しいコホモロジーや完全性の述語は作らない。
+- `affineCechNerve_isAffine` はアフィン Y,S 上の同じ実際の nerve 項のアフィン性。既存の Scheme.isAffine_of_isLimit を元の wideCospan に適用する。この事実と元のタプル開のアフィン性・被覆性で、同じ各項の実際の大域増大の単射性・零次完全性・正次数の完全性を、既存のアフィン Čech 版から供給する。元の非アフィン proper fppf 射の大域切断に忠実平坦性を仮定するものではない。
+
+
+## G4：同じ nerve 項の大域切断からタプル複体への自然な増大
+
+`SchemePerfectCechGlobalAugmentation`（39行）：`schemeStructurePerfectCechRefinedPullbackMap_globalAugmentation` は実際の refined pullback が Γ(Y) の恒等スカラーの増大を、同じ Γ(f) の Frobenius 係数写像と Γ(X) の恒等スカラーの増大の合成へ移す式。既存の同じ R の増大の自然性と元のスカラーの定義を用いる。
+
+`SchemePerfectCechTupleGlobalAugmentation`（104行）：`schemePerfectCechTupleGlobalAugmentationHom` は各 nerve 項の実際の大域切断の Frobenius 係数の次数零 single から、元のタプル複体への増大。`…_f_zero` は恒等スカラーの実際の増大が零次成分である式。`…_naturality` は元の nerve の Γ の係数写像と同じタプル被覆の射の可換性。`schemePerfectCechTupleGlobalAugmentation` は同じ大域切断の係数図式を single へ移した関手から、元のタプル複体の関手への自然変換。Y,S と元の射にアフィン性・平坦性を仮定せず、既存の係数・タプル・等号判定・全ての射を保持する。
+
+まとめた下書き検証成功、各本体は下書きと全バイト一致。二本と直接 importer の入口の対象ビルド5,230ジョブ成功、別の共有鍵の小監査1＋13＝14宣言・標準三公理のみ。非公開・生成宣言も実際の所有元で全件走査。終了状態全て0。ログ `2g-scheme-perfect-cech-tuple-global-augmentation-check-2.log`・`…-native.log`・`…-audit.log`。一部の定義・自然性の証明に局所的な backward.isDefEq.respectTransparency false、既定の資源制限。letI のstyleと未使用simp引数の警告あり。追加公理・sorry・既存の型変更・200行超の宣言なし。鍵 --class impl --wait 3600、待ちは一つ、ビルドと監査は別枠。root・下流全ビルド・全体監査なし。
+
+今回二本143行＋入口2行。新規145モジュール本体9,715行、既存追加25行、入口追加166行（登録145・空行21）を含む外枠計数 **9,906行**。新規小監査累計958宣言、既存15宣言は別計上。各列のアフィン性と同じ増大の完全性への接続は下書きで、この束には含めない。相対 proper fppf の二重 Čech、F8 全複体と元のブローアップを保つ Noether帰納、G5は未完。最終の AugmentedRingCechExact と利用側の型は不変。見込み約12,000〜15,500行・外枠16,000行は不変。
+
+一覧：済み1／全体3（うち追加0）。
