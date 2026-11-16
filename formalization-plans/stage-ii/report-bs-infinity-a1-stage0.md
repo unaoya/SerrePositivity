@@ -3376,3 +3376,44 @@ isSheaf_discretePresheaf_iff J P :
 残りは同じ層化単位を保つ全比較、指定した `weightedSections_discrete` の射の自然性、
 `localEquiv_of_sheafifyIso`・`sections_localEquiv_iso`、S1の元のcoverage・extensive。
 一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+### 局所単射の像篩と元の局所 comma（11-16）
+
+3本216行、21宣言を対象ビルド・小監査で確認した。記録 `/tmp/is-w1/s8-image-sieve-7/`、
+終了0、標準三公理のみ、source SHA一致。S8の局所同値の証明の分割で、追加IDなし。
+
+```lean
+imageSieveCommaFunctor φ q :
+  StructuredArrow q φ.mapElements ⥤ (sieveCategory (Presheaf.imageSieve φ q.val))ᵒᵖ
+imageSieveCommaFunctor_projection φ q :
+  imageSieveCommaFunctor φ q ⋙ sieveDiagram (Presheaf.imageSieve φ q.val) =
+    StructuredArrow.proj q φ.mapElements ⋙ Functor.Elements.π P
+imageSieveCommaEquivalence φ [Mono φ] q :
+  StructuredArrow q φ.mapElements ≌ (sieveCategory (Presheaf.imageSieve φ q.val))ᵒᵖ
+-- 比較の忠実性・単射での充満性・本質的全射性を個別に確認。
+-- imageSieveCommaEquivalence_projection は上と同じ射影の等式。
+imageSieveCommaCone_eq φ q :
+  imageSieveCommaCone φ q =
+    (sieveCone (Presheaf.imageSieve φ q.val)).whisker (imageSieveCommaFunctor φ q)
+imageSieveCommaRestrictionCone_val φ q O :
+  (restrictJoinCone (restrictionCone O (Presheaf.imageSieve φ q.val))
+    (uliftFunctor.map (nerveMap (imageSieveCommaFunctor φ q)))).val =
+      (imageSieveCommaRestrictionCone φ q O).val
+imageSieveCommaRestrictionCone_isLimit_iff φ [Mono φ] q O :
+  IsLimitCone (imageSieveCommaRestrictionCone φ q O) ↔
+    IsLimitCone (restrictionCone O (Presheaf.imageSieve φ q.val))
+imageSieveCommaRestrictionCone_isLimit J φ [Mono φ]
+    [Presheaf.IsLocallySurjective J φ] q O (hO : IsSheaf J O) :
+  IsLimitCone (imageSieveCommaRestrictionCone φ q O)
+```
+
+既存の `StructuredArrow`・`imageSieve`・右延長の `coneAt` の表示を照合した。
+層条件を頂点の存在へ弱めず、元の射影と全脚を保持している。
+局所全射な単射という途中の場合であり、一般の局所同値の完了には数えない。
+次は既存の `asSmallStructuredArrowFunctor` と
+`nerveRightConeTransportPostcomp_isLimit_iff` による宇宙移送を接続する。
+後者と `isLimitCone_asSmallCoefficient_iff` の合成則は、
+`AsSmallRightConeTransport` として未検証の作業木に準備した。
+
+検証済み全体229本14,876行・1,296宣言（文献整理は外枠外）。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
