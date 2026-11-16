@@ -9,7 +9,7 @@
 - `../stage1-modules.csv`：588本の元ソースSHA、元／先のファイルとnamespace、根拠、原行数。
 - `../preparation/native-owners-before.json.gz`：原環境の588本・4,160宣言の実所有元。private 157を含む。
 - `../preparation/native-owner-destinations-proposed.json.gz`：上の全宣言の移送先候補。**privateの移送後raw kernel名を観測済みとはしていない**。最終の公開宣言／import所有元表は、対象ビルド後の実native表で確かめてから加える。
-- `../branch-impact.json`：他のレーンのHEADと、dirty／untracked Leanを読取専用で照合した文字列影響。draftsも含む。現在の5枝は0本だが、後から足した差分や短名の全束縛を検証済みという意味ではない。
+- `../branch-impact.json`：他のレーンのHEADと、dirty／untracked Leanを読取専用で照合した文字列影響。draftsも含む。現在の5枝の候補は計2本だが、後から足した差分や短名の全束縛を検証済みという意味ではない。
 
 モジュール名と宣言のnamespaceは同じとは限らない。特にAnodyne二本は、一般のFrameHomからKerodonの3.1と4.6へ別々に置く。namespace名からimport元を推測せず、最終のnative所有元表を用いる。今回、同じ型の別名wrapperを削除する操作はない。
 
@@ -35,7 +35,7 @@ collectは元のソースがビルド済みの原環境で行う。昼は3〜5�
 
 ## 目録と到達点
 
-- `research/einfinity-general/README.md`：一般部品489本。現段階は原環境の実在する公開宣言と型の抜粋による目録案。
+- `research/einfinity-general/README.md`：一般部品489本。移送後の実所有元と実在する公開宣言のヘッダーによる目録。
 - `research/is-w2-be-route/README.md`：D81で止めたBE99本。IS-W2は12/25、R03d／R03hとTot比較は未完、R06〜R10は未着手。
 - `research/g12-monad-route/README.md`：HA Monads179本の既存目録。今回移動しない。
 
@@ -48,3 +48,9 @@ collectは元のソースがビルド済みの原環境で行う。昼は3〜5�
 この整理で `SerrePositivity.HomotopicalAlgebra` が新しく可視になる import 文脈がある。元のコンパイラの記録で `open HomotopicalAlgebra` が Mathlib の global な名前空間一つへ解決していたときは、`open _root_.HomotopicalAlgebra` と明示して元の解決を保存する。project 側へ解決していた open を Mathlib 側へ変えない。既に `_root_.` があるものも変更しない。元の定数参照における同じ global prefix の明記も、元の解決情報で認証した位置だけを絶対名にする。
 
 plain な共有書換器は、宣言のnamespaceを変えない呼び出し側でこの open をそのままにすることがある。module の対応表を反映しただけで終えず、元の採取の open operand と対象ビルドを確認する。現在の他レーンの保守的な文字列候補は③-aのKanPushoutCocones.leanとDiscreteAnodyneExtensions.leanの二本。これは二本とも実際に失敗するという判定ではない。元の意味参照とビルドで確かめる。
+
+## 移送後の実所有元による照合（11-17）
+
+`public-owner-map.csv` は比較範囲1,071モジュールの公開10,244宣言について、前後で実際に観測した完全名とimport所有元を対応させたもの。生成補題も実providerのまま載せる。ソース宣言だけの候補表やファイルのnamespaceから所有元を推測した表ではない。private 232件を含む全10,476件の対応は `../preparation/actual-owner-pairs.json.gz`、前後の実データは `native-owners-before-augmented.json.gz` と `native-owners-after.json.gz` にある。欠落0・余分0であるが、型・証明項の保存結果は別のv3bで判定する。
+
+引用metadataの七欄と重複度は、元61件＋計画したpartial二件＝63件に完全一致。結果は `../preparation/citation-comparison.json`。現時点でroot・正式全監査・verifyは未検収なので、この資料の完成・取り込みの宣言はまだ行わない。

@@ -36,4 +36,13 @@ extra=[dict(module=k[0],name=k[1],private=k[2]) for k in actual if k not in used
 summary=dict(before_modules=len(before['modules']),after_modules=len(after['modules']),before_declarations=len(before['declarations']),after_declarations=len(after['declarations']),paired=len(rows),private=sum(r['private'] for r in rows),missing=missing,extra=extra,policy='Observed canonical names and actual native owners; no source-line or ordinal pairing. Existing v3b snapshot and comparator remain unchanged.',before_capture_sha256=hashlib.sha256(a.before.read_bytes()).hexdigest(),after_capture_sha256=hashlib.sha256(a.after.read_bytes()).hexdigest());(a.output/'owner-pairing-summary.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2)+'\n')
 if missing or extra:print('Unpaired native declarations',len(missing),len(extra));raise SystemExit(1)
 for name in ['Init','Lean','Std','Mathlib','Batteries','Aesop','Qq','ProofWidgets','LeanSearchClient','ImportGraph','Plausible']:rule('_private.'+name,'@fixed-external-private['+name+']')
-(a.output/'comparison-name-map.json').write_text(json.dumps(rules,ensure_ascii=False,indent=2)+'\n');(a.output/'preservation-module-plan.json').write_text(json.dumps(dict(modules=mm,namespaces=plan['namespaces'],private_normalization=dict(private)),ensure_ascii=False,indent=2)+'\n');(a.output/'actual-owner-pairs.json').write_text(json.dumps(dict(rows=rows),ensure_ascii=False,indent=2)+'\n');print('Observed pairs',len(rows),'private',sum(r['private'] for r in rows))
+# The unchanged v3b comparator uses an owner's private dictionary for the whole
+# record, including its public parent and axioms. Supply the common actual name
+# rules as well as that owner's canonical private user names, on BOTH sides.
+private_rules={}
+for module,local in private.items():
+ combined={**rules,**local}
+ for owner in {module,mm[module]}:
+  if owner in private_rules:assert private_rules[owner]==combined
+  private_rules[owner]=combined
+(a.output/'comparison-name-map.json').write_text(json.dumps(rules,ensure_ascii=False,indent=2)+'\n');(a.output/'preservation-module-plan.json').write_text(json.dumps(dict(modules=mm,namespaces=plan['namespaces'],private_normalization=private_rules),ensure_ascii=False,indent=2)+'\n');(a.output/'actual-owner-pairs.json').write_text(json.dumps(dict(rows=rows),ensure_ascii=False,indent=2)+'\n');print('Observed pairs',len(rows),'private',sum(r['private'] for r in rows))

@@ -8,7 +8,7 @@ OE-W1、2026-11-16。基準main `30ae8948f339beec42d9340feb02f2031c22c72b`。
 
 ここにまとめるのは一般の図式・重み・frame・局所化の部品。SSetのモデル構造を全域で仮定するという意味ではなく、各型の仮定に従う。一般の複体・模型圏の定理と、具体的なBE値の比較を区別する。
 
-**準備中**：現在の抜粋は基準ソースの実際の宣言ヘッダー。移動後の対象ビルド・v3b・引用／タグ・root・正式全監査・verifyは未検収。最終の検査結果はreport-organize-einfinity.mdを正本とし、完了を先取りしない。
+抜粋は移動後ソースの実際の宣言ヘッダー。検証の完了状況はreport-organize-einfinity.mdを参照する。
 
 ## 読み方・原典・入力
 
@@ -36,7 +36,7 @@ OE01、68原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.Bousfield
 規約：IS-W2 R03aの自由境界細胞の証明分割。圏の射が単射とは仮定しない。
 使われ方：非退化な射列で添字付けた自由図式の細胞。
 
-主宣言（基準の完全名）：`SerrePositivity.DiagramModel.BousfieldKanCells.sigma_delta_eq_of_base`。
+主宣言：`SerrePositivity.DiagramModel.BousfieldKanCells.sigma_delta_eq_of_base`。
 
 ```lean
 universe u
@@ -58,7 +58,7 @@ OE01、78原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.Bousfield
 規約：IS-W2 R03aの細胞表示の証明分割。元の圏に余分な仮定を付けない。
 使われ方：自由境界によるBK重みの骨格の付着。
 
-主宣言（基準の完全名）：`SerrePositivity.DiagramModel.BousfieldKanCells.NondegenerateData`。
+主宣言：`SerrePositivity.DiagramModel.BousfieldKanCells.NondegenerateData`。
 
 ```lean
 universe u
@@ -76,7 +76,7 @@ OE01、58原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.Bousfield
 規約：IS-W2 R03aの自由境界細胞の証明分割。型値図式の同じ普遍性。
 使われ方：BK骨格の付着を自由評価随伴の境界生成族に同定する。
 
-主宣言（基準の完全名）：`SerrePositivity.DiagramModel.BousfieldKanCells.cellRepresentables`。
+主宣言：`SerrePositivity.DiagramModel.BousfieldKanCells.cellRepresentables`。
 
 ```lean
 universe u
@@ -94,7 +94,7 @@ OE01、84原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.Bousfield
 規約：IS-W2 R03aの細胞表示の証明分割。モデル構造を仮定しない。
 使われ方：最後の射について自由な境界細胞による射影cofibrancy。
 
-主宣言（基準の完全名）：`SerrePositivity.DiagramModel.BousfieldKanCells.SimplexData`。
+主宣言：`SerrePositivity.DiagramModel.BousfieldKanCells.SimplexData`。
 
 ```lean
 universe u
@@ -112,7 +112,7 @@ OE01、26原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.FrameWeig
 規約：既存構成の単位則。重み・frame・実現関手を変更しない。
 使われ方：BE Totの普遍重み付き錐の全図式射に対する照合。
 
-主宣言（基準の完全名）：`SerrePositivity.DiagramModel.FrameWeightRealization.unit_frame_naturality`。
+主宣言：`SerrePositivity.DiagramModel.FrameWeightRealization.unit_frame_naturality`。
 
 ```lean
 universe w u
@@ -134,7 +134,7 @@ OE01、45原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.Simplicia
 規約：IS-W2 R03aの骨格の貼り合わせの証明分割。
 使われ方：自由なBK細胞の境界射と旧骨格との厳密な照合。
 
-主宣言（基準の完全名）：`SerrePositivity.DiagramModel.SimplicialDiagramSkeleton.nondegenerate_preimage_skeleton`。
+主宣言：`SerrePositivity.DiagramModel.SimplicialDiagramSkeleton.nondegenerate_preimage_skeleton`。
 
 ```lean
 universe u
@@ -153,7 +153,7 @@ OE01、102原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.Simplici
 規約：IS-W2 R03aの境界細胞の証明分割。元の図式の単体を変更しない。
 使われ方：自由境界の段階的な付着と全体への余極限。
 
-主宣言（基準の完全名）：`SerrePositivity.DiagramModel.SimplicialDiagramSkeleton.skeleton_image_le`。
+主宣言：`SerrePositivity.DiagramModel.SimplicialDiagramSkeleton.skeleton_image_le`。
 
 ```lean
 universe u
@@ -171,7 +171,7 @@ OE01、47原行。配置：`SerrePositivity.HomotopicalAlgebra.Simplicial.Diagon
 規約：全ホーンのanodyne性への置き換えも、単体集合のモデル構造の仮定も用いない。
 使われ方：IS-W2 R03f.2のsimplicial replacementの係数比較。
 
-主宣言（基準の完全名）：`SerrePositivity.BisimplicialModel.relativeMatching_leftFibrations`。
+主宣言：`SerrePositivity.BisimplicialModel.relativeMatching_leftFibrations`。
 
 ```lean
 universe u
@@ -188,7 +188,7 @@ OE01、48原行。配置：`SerrePositivity.InfinityCategories.Kerodon.Fibration
 
 module docstringなし。実際の型とimportを参照。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.transportSimplexFirstVertexMap_ulift_zero_vertex`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.transportSimplexFirstVertexMap_ulift_zero_vertex`。
 
 ```lean
 universe u
@@ -207,7 +207,7 @@ OE01、61原行。配置：`SerrePositivity.InfinityCategories.Kerodon.Fibration
 規約：全空間・射・底の等式を保持し、弱同値を仮定しない。
 使われ方：元の全straightening比較の指定単位の評価。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftFibrationInfinityFiberEvaluation_edge`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftFibrationInfinityFiberEvaluation_edge`。
 
 ```lean
 universe u
@@ -230,7 +230,7 @@ OE01、55原行。配置：`SerrePositivity.InfinityCategories.Kerodon.Fibration
 規約：元の指定評価同型を使い、新しい同値を選ばない。
 使われ方：同じ全変換を実際のfiber射へ厳密に照合する。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftStraighteningInfinityDiagram_fiber_vertex`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftStraighteningInfinityDiagram_fiber_vertex`。
 
 ```lean
 universe u
@@ -251,7 +251,7 @@ OE01、79原行。配置：`SerrePositivity.InfinityCategories.Kerodon.Fibration
 規約：結論は同じホモトピー圏の射の厳密な等式であり、任意の底上の射を扱う。
 使われ方：元の二変数native比較の同じ全射と指定単位の評価。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftStraighteningInfinityDiagramHom_actualFiber_arrow`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftStraighteningInfinityDiagramHom_actualFiber_arrow`。
 
 ```lean
 universe u v
@@ -276,7 +276,7 @@ OE01、38原行。配置：`SerrePositivity.InfinityCategories.Kerodon.Fibration
 規約：元の射と指定された射影を保つ。弱同値の仮定は追加しない。
 使われ方：IS-W2 R03d の全関手同型を構成するための、同じ全変換の射。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftStraighteningInfinityDiagramHom`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftStraighteningInfinityDiagramHom`。
 
 ```lean
 universe u
@@ -296,7 +296,7 @@ OE01、60原行。配置：`SerrePositivity.InfinityCategories.Kerodon.Fibration
 規約：元のleftStraighteningInfinityDiagramHomそのものを使う。
 使われ方：同じ全変換の単位評価と実際のfiber射の照合。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftStraighteningInfinityDiagramHom_heq`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftStraighteningInfinityDiagramHom_heq`。
 
 ```lean
 universe u v
@@ -318,7 +318,7 @@ OE01、84原行。配置：`SerrePositivity.InfinityCategories.Kerodon.Fibration
 規約：射も評価同型も選び直さず、任意の底上の射を扱う。
 使われ方：同じnative全比較の指定単位の評価。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftStraighteningInfinityDiagramHom_evaluate_arrow`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftStraighteningInfinityDiagramHom_evaluate_arrow`。
 
 ```lean
 universe u
@@ -338,7 +338,7 @@ OE01、68原行。配置：`SerrePositivity.InfinityCategories.Kerodon.Fibration
 
 module docstringなし。実際の型とimportを参照。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftStraighteningInfinityDiagram_representationIso_precomp`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftStraighteningInfinityDiagram_representationIso_precomp`。
 
 ```lean
 universe u
@@ -355,7 +355,7 @@ OE01、54原行。配置：`SerrePositivity.InfinityCategories.Kerodon.Fibration
 
 module docstringなし。実際の型とimportを参照。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftStraighteningInfinityDiagram_representationIso_zero_evaluate_arrow`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftStraighteningInfinityDiagram_representationIso_zero_evaluate_arrow`。
 
 ```lean
 universe u
@@ -375,7 +375,7 @@ OE01、41原行。配置：`SerrePositivity.InfinityCategories.Kerodon.Fibration
 規約：点ごとのfiber同値を全図式の自然性の代用にしない。
 使われ方：Grothendieck–Kanの全分類から元のKan係数への復元。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftStraighteningInfinityDiagram_nerveCandidateIso`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftStraighteningInfinityDiagram_nerveCandidateIso`。
 
 ```lean
 universe u
@@ -392,7 +392,7 @@ OE01、85原行。配置：`SerrePositivity.InfinityCategories.Kerodon.Fibration
 
 module docstringなし。実際の型とimportを参照。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftStraighteningInfinityDiagram_nerveCandidateIso_normalized`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftStraighteningInfinityDiagram_nerveCandidateIso_normalized`。
 
 ```lean
 universe u
@@ -410,7 +410,7 @@ OE01、62原行。配置：`SerrePositivity.InfinityCategories.Kerodon.Fibration
 
 module docstringなし。実際の型とimportを参照。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.smallFiberTransportRepresentationVertexIso_self`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.smallFiberTransportRepresentationVertexIso_self`。
 
 ```lean
 universe u
@@ -429,7 +429,7 @@ OE01、63原行。配置：`SerrePositivity.InfinityCategories.Kerodon.Fibration
 規約：元の次数と全単体作用素を保持する。一般の大きい単体集合を小さくする構成ではない。
 使われ方：元のnative fiberの反対要素圏から、元のleft-roof比較の入力への係数移送。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.elementsOppositeUniverseIndex`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.elementsOppositeUniverseIndex`。
 
 ```lean
 universe w v
@@ -449,7 +449,7 @@ OE01、111原行。配置：`SerrePositivity.InfinityCategories.Kerodon.Fibratio
 規約：同じ単位・比較射・全単体を保持する。
 使われ方：BEの元の全要素圏の置換fiberと元のroof比較の照合。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothendieckReplacement`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothendieckReplacement`。
 
 ```lean
 universe u
@@ -467,7 +467,7 @@ OE01、29原行。配置：`SerrePositivity.InfinityCategories.Kerodon.Fibration
 規約：係数関手・単位・simplicialReplacementMapを変更しない。
 使われ方：IS-W2 R03fの元の相対延長の比較。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothendieckKanCoefficientBarMap_leftAnodyne`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothendieckKanCoefficientBarMap_leftAnodyne`。
 
 ```lean
 universe u
@@ -486,7 +486,7 @@ OE01、87原行。配置：`SerrePositivity.InfinityCategories.Kerodon.Fibration
 規約：一点ごとの同型から全図式の同型を推論しない。
 使われ方：IS-W2 R03dの両変数の比較の組み立て。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothendieckKanCoefficientComparison`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothendieckKanCoefficientComparison`。
 
 ```lean
 universe u
@@ -507,7 +507,7 @@ OE01、50原行。配置：`SerrePositivity.InfinityCategories.Kerodon.Fibration
 規約：元の底、射影、比較射、置換単位の厳密な等式を保つ。
 使われ方：IS-W2 R03fと全分類の比較。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothendieckKanCoefficientLift_isPrecompositionEquivalence`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothendieckKanCoefficientLift_isPrecompositionEquivalence`。
 
 ```lean
 universe u
@@ -526,7 +526,7 @@ OE01、69原行。配置：`SerrePositivity.InfinityCategories.Kerodon.Fibration
 規約：延長の存在と二つの厳密な等式だけを主張する。前合成同値性は別の検収。
 使われ方：IS-W2 R03dの指定された元の射を保つ比較の組み立て。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothendieckKanCoefficients`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothendieckKanCoefficients`。
 
 ```lean
 universe u
@@ -544,7 +544,7 @@ OE01、57原行。配置：`SerrePositivity.InfinityCategories.Kerodon.Fibration
 規約：cofinal性だけから元の延長の前合成同値性は主張しない。
 使われ方：IS-W2 R03fの最後の全空間の比較の検収。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothendieckKanCoefficientMap_isLeftCofinal`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothendieckKanCoefficientMap_isLeftCofinal`。
 
 ```lean
 universe u
@@ -563,7 +563,7 @@ OE01、59原行。配置：`SerrePositivity.InfinityCategories.Kerodon.Fibration
 規約：nerve係数のquasicategory性を用い、Kan性を仮定しない。
 使われ方：IS-W2 R03fの元の射を保つbar/scaffold比較。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothendieckNerveScaffold`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothendieckNerveScaffold`。
 
 ```lean
 universe u
@@ -582,7 +582,7 @@ OE01、36原行。配置：`SerrePositivity.InfinityCategories.Kerodon.Fibration
 規約：分類は底全体のFunctorIso。元の係数とのKan比較はまだ主張しない。
 使われ方：IS-W2 R03dの相対分類の比較の一方の端。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothendieckWeightedNerveReplacementClassificationIso`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothendieckWeightedNerveReplacementClassificationIso`。
 
 ```lean
 universe u
@@ -607,7 +607,7 @@ OE01、43原行。配置：`SerrePositivity.InfinityCategories.Kerodon.Fibration
 規約：IS-W2 R03eの前向きの単体。元の射列と同じ係数を使い、宇宙の置換を増やさない。
 使われ方：Grothendieckのnerveからweighted nerveへの前向きの全写像。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothWeightedNerveCoefficients`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothWeightedNerveCoefficients`。
 
 ```lean
 universe u
@@ -627,7 +627,7 @@ OE01、66原行。配置：`SerrePositivity.InfinityCategories.Kerodon.Fibration
 規約：IS-W2 R03eの前向きの全写像。元の底の射列を厳密に保持する。
 使われ方：同じweighted nerve比較同型の前向きの射。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothWeightedPrefixArrow_reindex`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothWeightedPrefixArrow_reindex`。
 
 ```lean
 universe u
@@ -649,7 +649,7 @@ OE01、65原行。配置：`SerrePositivity.InfinityCategories.Kerodon.Fibration
 規約：IS-W2 R03eの逆向きの単体の部分。新しいfiber対象や脚は選ばない。
 使われ方：同じ厳密な比較同型の逆射と両往復の検査。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothWeightedNerveFiberChain`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothWeightedNerveFiberChain`。
 
 ```lean
 universe u
@@ -668,7 +668,7 @@ OE01、53原行。配置：`SerrePositivity.InfinityCategories.Kerodon.Fibration
 規約：IS-W2 R03eの逆向きの単体の関手性。元の基底とfiber射を保つ。
 使われ方：同じ厳密な比較同型の逆射。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothWeightedNerveInverseMap_id`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothWeightedNerveInverseMap_id`。
 
 ```lean
 universe u
@@ -688,7 +688,7 @@ OE01、40原行。配置：`SerrePositivity.InfinityCategories.Kerodon.Fibration
 規約：IS-W2 R03e。新しい逆写像の自然性を仮定しない。
 使われ方：要素圏のnerveと同じ重み付きnerveの比較。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothWeightedNerveForward_bijective`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothWeightedNerveForward_bijective`。
 
 ```lean
 universe u
@@ -707,7 +707,7 @@ OE01、45原行。配置：`SerrePositivity.InfinityCategories.Kerodon.Fibration
 規約：元の置換と単位を保持する。元の係数とのKan分類を主張しない。
 使われ方：IS-W2 R03dの同じ底上の比較の組み立て。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothendieckWeightedNerveOverIso`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothendieckWeightedNerveOverIso`。
 
 ```lean
 universe u
@@ -726,7 +726,7 @@ OE01、65原行。配置：`SerrePositivity.InfinityCategories.Kerodon.Fibration
 規約：IS-W2 R03eの前向きの単体の部分。元の基底・fiber対象・射を保持する。
 使われ方：Grothendieckのnerveからweighted nerveへの同じprefix係数。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothWeightedPrefixIndex`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothWeightedPrefixIndex`。
 
 ```lean
 universe u
@@ -745,7 +745,7 @@ OE01、55原行。配置：`SerrePositivity.InfinityCategories.Kerodon.Fibration
 規約：IS-W2 R03eの前向きの単体の自然性・合成則。脚や対象を選び直さない。
 使われ方：全prefixを同じsimplexPrefixWeightからの自然変換へ束ねる。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothWeightedPrefixArrow_naturality`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothWeightedPrefixArrow_naturality`。
 
 ```lean
 universe u
@@ -767,7 +767,7 @@ OE01、63原行。配置：`SerrePositivity.InfinityCategories.Kerodon.Fibration
 規約：IS-W2 R03eの右往復の部分。元の係数と同じ底を保つ。
 使われ方：厳密なweighted nerve比較の全単体での全射性。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothWeightedPrefixFiber_inverse_obj`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothWeightedPrefixFiber_inverse_obj`。
 
 ```lean
 universe u
@@ -788,7 +788,7 @@ OE01、82原行。配置：`SerrePositivity.InfinityCategories.Kerodon.Fibration
 規約：IS-W2 R03eの左往復。元の射列の対象を変えない。
 使われ方：厳密なweighted nerve比較の単射性。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothWeightedNerveFiberChain_forward`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothWeightedNerveFiberChain_forward`。
 
 ```lean
 universe u
@@ -809,7 +809,7 @@ OE01、75原行。配置：`SerrePositivity.InfinityCategories.Kerodon.Fibration
 規約：IS-W2 R03eの指定点付きの型。弱同値や成分への置換は行わない。
 使われ方：元の指定点を持つ同じ底上の比較の入口。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothWeightedNerveForward_vertex`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothWeightedNerveForward_vertex`。
 
 ```lean
 universe u
@@ -831,7 +831,7 @@ OE01、90原行。配置：`SerrePositivity.InfinityCategories.Kerodon.Fibration
 規約：底と元の置換単位を保ち、固定始域のroofとの等式は別に確認する。
 使われ方：全source frameの要素圏から両変数のnative Homへの接続。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialElementsGrothendieckOverMap`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialElementsGrothendieckOverMap`。
 
 ```lean
 universe u
@@ -851,7 +851,7 @@ OE01、41原行。配置：`SerrePositivity.InfinityCategories.Kerodon.Fibration
 規約：元の全パラメータと指定された値を保持する。
 使われ方：IS-W2 R03h・R03d の native Hom と同じ roof の照合。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.sameSimplicialElementsFiberFunctor_degree`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.sameSimplicialElementsFiberFunctor_degree`。
 
 ```lean
 universe u
@@ -871,7 +871,7 @@ OE01、116原行。配置：`SerrePositivity.InfinityCategories.Kerodon.Fibratio
 規約：fiberの包含とラベルを別の同値へ置き換えない。
 使われ方：元のnative Homのfiber射を固定始域のroofの元のラベルへ照合する。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothWeightedNerveForward_fiberInclusion`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothWeightedNerveForward_fiberInclusion`。
 
 ```lean
 universe u
@@ -891,7 +891,7 @@ OE01、43原行。配置：`SerrePositivity.InfinityCategories.Kerodon.Fibration
 規約：充填性や同値性を仮定せず、元の写像の厳密な等式だけを記録する。
 使われ方：同じnative Hom比較射のfiberを元の全要素上の実射へ照合する。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialElementsFiberMap`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialElementsFiberMap`。
 
 ```lean
 universe u
@@ -912,7 +912,7 @@ OE01、100原行。配置：`SerrePositivity.InfinityCategories.Kerodon.Fibratio
 規約：元の包含・置換・単位を保ち、別のfiber同値を選ばない。
 使われ方：元のnative Hom写像のfiberの同値性とroof比較の照合。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialElementsReplacement`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialElementsReplacement`。
 
 ```lean
 universe u
@@ -930,7 +930,7 @@ OE01、148原行。配置：`SerrePositivity.InfinityCategories.Kerodon.Fibratio
 規約：元の底と係数の写像を保つ。
 使われ方：元の全source frameの要素圏から同じ底上の分類への接続。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialElementsCatDiagram`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialElementsCatDiagram`。
 
 ```lean
 universe u
@@ -948,7 +948,7 @@ OE01、69原行。配置：`SerrePositivity.InfinityCategories.Kerodon.Fibration
 規約：元の係数射の像についても同じ同型との自然性を示す。
 使われ方：IS-W2 R03f.2の対角のleft anodyne性の移送。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialReplacementDiagonalHom`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialReplacementDiagonalHom`。
 
 ```lean
 universe u
@@ -967,7 +967,7 @@ OE01、30原行。配置：`SerrePositivity.InfinityCategories.Kerodon.Fibration
 規約：元のsimplicialReplacementMapそのものの性質。条件の弱化や模型の変更をしない。
 使われ方：IS-W2 R03f.2、元のEx∞係数の単位の相対的な比較。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialReplacementMap_leftAnodyne`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialReplacementMap_leftAnodyne`。
 
 ```lean
 universe u
@@ -987,7 +987,7 @@ OE01、95原行。配置：`SerrePositivity.InfinityCategories.Kerodon.Fibration
 規約：元の相対latching射と両脚を保持する。別の射の条件つき判定に置き換えない。
 使われ方：IS-W2 R03f.2の対角への移送。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialReplacementRowsMap_relative_leftAnodyne`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialReplacementRowsMap_relative_leftAnodyne`。
 
 ```lean
 universe u
@@ -1008,7 +1008,7 @@ OE01、56原行。配置：`SerrePositivity.InfinityCategories.Kerodon.Fibration
 規約：元の二つの脚と、元の退化境界の値を厳密に保持する。
 使われ方：IS-W2 R03f.2の相対latchingの直接の持ち上げ。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialReplacementRowBoundary_component`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialReplacementRowBoundary_component`。
 
 ```lean
 universe u
@@ -1039,7 +1039,7 @@ OE01、60原行。配置：`SerrePositivity.InfinityCategories.Kerodon.Fibration
 規約：元の行の射と指定境界を厳密に保持する。
 使われ方：IS-W2 R03f.2の元の相対latching射のleft anodyne性。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialReplacementRowBoundary_lift`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialReplacementRowBoundary_lift`。
 
 ```lean
 universe u
@@ -1068,7 +1068,7 @@ OE01、38原行。配置：`SerrePositivity.InfinityCategories.Kerodon.Fibration
 規約：元の二つの表示の等式と全射の合成の等式を保持する。
 使われ方：IS-W2 R03f.2のlatching余錐の一意性の検収。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialReplacement_common_nondegenerate_presentation`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialReplacement_common_nondegenerate_presentation`。
 
 ```lean
 universe u
@@ -1089,7 +1089,7 @@ OE01、42原行。配置：`SerrePositivity.InfinityCategories.Kerodon.Fibration
 規約：任意の全射作用素を扱い、基本退化だけには制限しない。
 使われ方：IS-W2 R03f.2の退化成分の相対latchingへの分離。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialReplacement_epi_zero`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialReplacement_epi_zero`。
 
 ```lean
 universe u
@@ -1108,7 +1108,7 @@ OE01、49原行。配置：`SerrePositivity.InfinityCategories.Kerodon.Fibration
 規約：元の退化作用素とその元の係数の単体を保持する。
 使われ方：IS-W2 R03f.2のlatching余錐の一意性。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialReplacementRowReindex_mono`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialReplacementRowReindex_mono`。
 
 ```lean
 universe u
@@ -1127,7 +1127,7 @@ OE01、85原行。配置：`SerrePositivity.InfinityCategories.Kerodon.Fibration
 規約：基底部分集合は任意。元の包含と係数射を厳密な等式で保持する。
 使われ方：IS-W2 R03f.2の相対latchingの直接の境界付き持ち上げ。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialReplacementRowPartInclusion`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialReplacementRowPartInclusion`。
 
 ```lean
 universe u
@@ -1147,7 +1147,7 @@ OE01、64原行。配置：`SerrePositivity.InfinityCategories.Kerodon.Fibration
 規約：latchingとの同型性はここでは主張しない。元の全ての脚を保持する。
 使われ方：IS-W2 R03f.2の退化部分と実際の相対latchingの同定。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialReplacementRowLatchingLeg`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialReplacementRowLatchingLeg`。
 
 ```lean
 universe u
@@ -1166,7 +1166,7 @@ OE01、97原行。配置：`SerrePositivity.InfinityCategories.Kerodon.Fibration
 規約：元の全係数と全てのlatchingの脚を保つ。
 使われ方：IS-W2 R03f.2の相対latchingの退化・非退化による分離。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialReplacementRowLatching_exists_value`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialReplacementRowLatching_exists_value`。
 
 ```lean
 universe u
@@ -1189,7 +1189,7 @@ OE01、82原行。配置：`SerrePositivity.InfinityCategories.Kerodon.Fibration
 規約：元のlatching評価関手と元の比較射そのものを使う。
 使われ方：IS-W2 R03f.2の元の相対latchingから指定境界付き持ち上げへの接続。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialReplacementRowLatchingIso_hom`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialReplacementRowLatchingIso_hom`。
 
 ```lean
 universe u
@@ -1208,7 +1208,7 @@ OE01、46原行。配置：`SerrePositivity.InfinityCategories.Kerodon.Fibration
 規約：基底だけでなく元の係数の単体も実際のlatching作用素で回収する。
 使われ方：IS-W2 R03f.2の任意の余錐に対する表示の独立性。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialReplacementLatchingRefinement`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialReplacementLatchingRefinement`。
 
 ```lean
 universe u
@@ -1228,7 +1228,7 @@ OE01、46原行。配置：`SerrePositivity.InfinityCategories.Kerodon.Fibration
 規約：基底射列と係数の双方を厳密に回収する。余極限性の一意性は別に検証する。
 使われ方：IS-W2 R03f.2の退化行のlatching余極限の検収。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialReplacementRowLatching_jointly_surjective`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialReplacementRowLatching_jointly_surjective`。
 
 ```lean
 universe u
@@ -1250,7 +1250,7 @@ OE01、70原行。配置：`SerrePositivity.InfinityCategories.Kerodon.Fibration
 規約：任意の単体次数、元の係数、元の余錐の全ての脚を保つ。
 使われ方：IS-W2 R03f.2の退化行の余極限性。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialReplacementRowLatching_value_map`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialReplacementRowLatching_value_map`。
 
 ```lean
 universe u
@@ -1274,7 +1274,7 @@ OE01、47原行。配置：`SerrePositivity.InfinityCategories.Kerodon.Fibration
 規約：元の基底射列を全次数で保持する。
 使われ方：IS-W2 R03f.2の元のsimplicialReplacementMapとの照合。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialReplacementRowMap`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialReplacementRowMap`。
 
 ```lean
 universe u
@@ -1293,7 +1293,7 @@ OE01、50原行。配置：`SerrePositivity.InfinityCategories.Kerodon.Fibration
 規約：係数や基底射列を選び直す同値ではなく、元の射列の表示の等式。
 使われ方：IS-W2 R03f.2のlatchingの余極限性。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialReplacement_degenerate_presentation`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialReplacement_degenerate_presentation`。
 
 ```lean
 universe u
@@ -1314,7 +1314,7 @@ OE01、64原行。配置：`SerrePositivity.InfinityCategories.Kerodon.Fibration
 規約：基底の退化と係数の退化を区別する。外側のlatchingとの同定は別に示す。
 使われ方：IS-W2 R03f.2の相対latchingの余積表示。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialReplacementRowPart`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialReplacementRowPart`。
 
 ```lean
 universe u
@@ -1333,7 +1333,7 @@ OE01、69原行。配置：`SerrePositivity.InfinityCategories.Kerodon.Fibration
 規約：係数の単体次数と基底射列の次数を独立に保つ。
 使われ方：IS-W2 R03f.2の二重単体集合とその相対latchingの計算。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialReplacementRowReindex`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialReplacementRowReindex`。
 
 ```lean
 universe u
@@ -1352,7 +1352,7 @@ OE01、71原行。配置：`SerrePositivity.InfinityCategories.Kerodon.Fibration
 規約：全添字と係数は同じ宇宙。各行の係数の次数を基底射列の次数から独立に保つ。
 使われ方：IS-W2 R03f.2のbarの退化部分と相対latchingの分離。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialReplacementRow`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialReplacementRow`。
 
 ```lean
 universe u
@@ -1370,7 +1370,7 @@ OE01、23原行。配置：`SerrePositivity.InfinityCategories.Kerodon.KanComple
 規約：既存のEx∞関手と元の単位を変更しない。
 使われ方：IS-W2 R03fの係数単位のbar上の相対比較。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit_leftAnodyne`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit_leftAnodyne`。
 
 ```lean
 universe u
@@ -1388,7 +1388,7 @@ OE01、36原行。配置：`SerrePositivity.InfinityCategories.Kerodon.KanComple
 規約：始域・終域のKan性を仮定しない。元の射を別の比較射へ置き換えない。
 使われ方：反対要素圏で元のnative fiber射の弱同値性を検査する係数移送。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.opposite_map_isWeakHomotopyEquivalence_iff`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.opposite_map_isWeakHomotopyEquivalence_iff`。
 
 ```lean
 universe u
@@ -1406,7 +1406,7 @@ OE01、84原行。配置：`SerrePositivity.InfinityCategories.Kerodon.LargeInfi
 規約：既存の分類同型と同じ射・底の等式・前合成同値の証拠を保持する。
 使われ方：元のraw側の全分類同型の指定単位の照合。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.leftClassification_of_precompositionEquivalence_value`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.leftClassification_of_precompositionEquivalence_value`。
 
 ```lean
 universe u v
@@ -1428,7 +1428,7 @@ OE01、46原行。配置：`SerrePositivity.InfinityCategories.Kerodon.LargeInfi
 規約：元の置換関手とその単位を使い、比較を選び直さない。
 使われ方：全要素圏の同じGrothendieck表示をnativeな全分類へ移す。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.continuousLeftFibrationReplacement_map_isPrecompositionEquivalence_of_leftCofinal`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.continuousLeftFibrationReplacement_map_isPrecompositionEquivalence_of_leftCofinal`。
 
 ```lean
 universe u
@@ -1448,7 +1448,7 @@ OE01、46原行。配置：`SerrePositivity.InfinityCategories.Kerodon.LargeInfi
 規約：元の二つの同型を保ち、パラメーターの充填性は要求しない。
 使われ方：元の全source-frameの始域・標的の二つの比較をまとめる。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.functorIsoPair`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.functorIsoPair`。
 
 ```lean
 universe u
@@ -1467,7 +1467,7 @@ OE01、55原行。配置：`SerrePositivity.InfinityCategories.Kerodon.LargeInfi
 規約：端点と元の二つの同型を保持する。
 使われ方：全補正比較の元の二つの端点同型の照合。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.functorIsoPair_postcomp_fst`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.functorIsoPair_postcomp_fst`。
 
 ```lean
 universe u
@@ -1486,7 +1486,7 @@ OE01、74原行。配置：`SerrePositivity.InfinityCategories.Kerodon.LimitsAnd
 規約：元の射と厳密な底上の等式を保つ。
 使われ方：元のGrothendieck–Kan比較の指定延長の検出。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsLeftCofinal.relativeFunctorOverPre_isQCatEquivalence`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsLeftCofinal.relativeFunctorOverPre_isQCatEquivalence`。
 
 ```lean
 universe u
@@ -1507,7 +1507,7 @@ OE01、28原行。配置：`SerrePositivity.InfinityCategories.Kerodon.LimitsAnd
 規約：定義域の充填性は要求しない。元の前合成射を保持する。
 使われ方：IS-W2 R03fの元のscaffold正方形と相対延長の比較。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.isLeftCofinal_of_precompositionEquivalence`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.isLeftCofinal_of_precompositionEquivalence`。
 
 ```lean
 universe u
@@ -1526,7 +1526,7 @@ OE01、32原行。配置：`SerrePositivity.InfinityCategories.Kerodon.LimitsAnd
 規約：IS-W2 R02〜R03の既存構成の宇宙移送則。Kan性は要求しない。
 使われ方：同じ普遍BK点を全Hom∞比較の宇宙へ送る。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanUniverseSectionsIso`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanUniverseSectionsIso`。
 
 ```lean
 universe u v
@@ -1547,7 +1547,7 @@ OE01、77原行。配置：`SerrePositivity.InfinityCategories.Kerodon.LimitsAnd
 規約：IS-W2 R02〜R03の係数の宇宙移送則。小さい基底宇宙を0に固定しない。
 使われ方：元のBK切断を、全Hom∞比較の同じ持ち上げた添字へ送る。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanUniverseOverLift`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanUniverseOverLift`。
 
 ```lean
 universe u v
@@ -1566,7 +1566,7 @@ OE01、80原行。配置：`SerrePositivity.InfinityCategories.Kerodon.LimitsAnd
 規約：IS-W2 R03c。元の切断比較との同じ全四角形を保持する。
 使われ方：同じBK点から元のnative錐の脚のfiber比較へ戻る。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.classifiedFibrationFiberEquivalence`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.classifiedFibrationFiberEquivalence`。
 
 ```lean
 universe u
@@ -1587,7 +1587,7 @@ OE01、49原行。配置：`SerrePositivity.InfinityCategories.Kerodon.LimitsAnd
 規約：IS-W2 R03bの証明分割。底上の同値だけで指定変換の代用にしない。
 使われ方：切断比較の三角形と元の指定BK点の評価の追跡。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.classifiedFibrationTransport`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.classifiedFibrationTransport`。
 
 ```lean
 universe u
@@ -1608,7 +1608,7 @@ OE01、62原行。配置：`SerrePositivity.InfinityCategories.Kerodon.LimitsAnd
 規約：IS-W2 R03b。底・二つの元の射影を固定し、fiberごとの分類で代用しない。
 使われ方：元のBE TotのBK係数からnative錐の切断模型への移送。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialSectionsMap_isQCatEquivalence_of_precompositionEquivalence`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialSectionsMap_isQCatEquivalence_of_precompositionEquivalence`。
 
 ```lean
 universe u
@@ -1629,7 +1629,7 @@ OE01、50原行。配置：`SerrePositivity.InfinityCategories.Kerodon.LimitsAnd
 規約：IS-W2 R02〜R03の評価・合成則。零単体だけに弱めない。
 使われ方：元のBK点の像からnative錐の同じ脚のfiber比較への接続。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.classifiedLeftFibrationSectionsEquivalence_fiber_triangle`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.classifiedLeftFibrationSectionsEquivalence_fiber_triangle`。
 
 ```lean
 universe u
@@ -1650,7 +1650,7 @@ OE01、45原行。配置：`SerrePositivity.InfinityCategories.Kerodon.LimitsAnd
 規約：IS-W2 R03bの既存の余単位則。全単体的写像の関手同型を保持する。
 使われ方：指定BK点の像・標準脚の同じ復元中での追跡。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.classifiedLeftFibrationSectionsEquivalence_triangle`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.classifiedLeftFibrationSectionsEquivalence_triangle`。
 
 ```lean
 universe u
@@ -1676,7 +1676,7 @@ OE01、48原行。配置：`SerrePositivity.InfinityCategories.Kerodon.LimitsAnd
 規約：IS-W2 R02〜R03の既存の評価・後合成則。充填性を仮定しない。
 使われ方：同じBK点とnative錐の脚を、共通の復元のfiberで照合する。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialSectionsFiberEvaluation`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialSectionsFiberEvaluation`。
 
 ```lean
 universe u
@@ -1695,7 +1695,7 @@ OE01、72原行。配置：`SerrePositivity.InfinityCategories.Kerodon.LimitsAnd
 規約：IS-W2 R02〜R03の既存の係数宇宙移送の法則。元の添字射を保つ。
 使われ方：同じBK切断空間全体の宇宙変更と指定点の照合。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedDiagramUniverse`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedDiagramUniverse`。
 
 ```lean
 universe u v
@@ -1713,7 +1713,7 @@ OE01、47原行。配置：`SerrePositivity.InfinityCategories.Kerodon.LimitsAnd
 規約：IS-W2 R02〜R03の係数移送の法則。比較射を別の全単射で置き換えない。
 使われ方：同じBK切断空間の宇宙変更と全標準脚の照合。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUniverseEvaluation`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUniverseEvaluation`。
 
 ```lean
 universe u v
@@ -1735,7 +1735,7 @@ OE01、42原行。配置：`SerrePositivity.InfinityCategories.Kerodon.LimitsAnd
 規約：IS-W2 R02〜R03の係数移送の法則。Kan性は不要。
 使われ方：標準単体による同じ切断空間の宇宙比較の同型性。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUniverseHomEquiv`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUniverseHomEquiv`。
 
 ```lean
 universe u v
@@ -1757,7 +1757,7 @@ OE01、62原行。配置：`SerrePositivity.InfinityCategories.Kerodon.LimitsAnd
 規約：IS-W2 R02〜R03の係数移送の法則。順射を選び直さない。
 使われ方：同じBK切断の宇宙変更と標準脚の比較。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUniverseSimplexEquiv`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUniverseSimplexEquiv`。
 
 ```lean
 universe u v
@@ -1778,7 +1778,7 @@ OE01、68原行。配置：`SerrePositivity.InfinityCategories.Kerodon.LimitsAnd
 規約：IS-W2 R02〜R03の係数移送の点での法則。π₀への弱化なし。
 使われ方：同じ普遍BK点をHom∞比較の宇宙へ運ぶ。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedDiagramUniverseTensorIso_zero_fst`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedDiagramUniverseTensorIso_zero_fst`。
 
 ```lean
 universe u v
@@ -1802,7 +1802,7 @@ OE01、52原行。配置：`SerrePositivity.InfinityCategories.Kerodon.TheHomoto
 規約：IS-W2 R03dの既存の反転・自然性の法則。対象ごとの同型を選び直さない。
 使われ方：全始域・全次数のaugmentationを一つの全関手同型として反転する。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.nerveTransformationPostHomotopy`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.nerveTransformationPostHomotopy`。
 
 ```lean
 universe u
@@ -1821,7 +1821,7 @@ OE01、40原行。配置：`SerrePositivity.InfinityCategories.Kerodon.TheHomoto
 規約：底の後合成も保持し、quasicategory性を仮定しない。
 使われ方：元のtwisted Homの左右射影の単位の計算。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber_edge_projected_arrow`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber_edge_projected_arrow`。
 
 ```lean
 universe u
@@ -1841,7 +1841,7 @@ OE01、61原行。配置：`SerrePositivity.InfinityCategories.Kerodon.TheHomoto
 規約：単体集合のモデル構造の公理を仮定しない。元の射そのものの左持ち上げ性。
 使われ方：IS-W2 R03f.1、係数のEx∞単位の相対的な比較。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.leftFibration_total_kanComplex`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.leftFibration_total_kanComplex`。
 
 ```lean
 universe u
@@ -1856,7 +1856,7 @@ OE01、42原行。配置：`SerrePositivity.InfinityCategories.Kerodon.TheHomoto
 
 module docstringなし。実際の型とimportを参照。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.twistedArrowOppositeSwap_naturality`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.twistedArrowOppositeSwap_naturality`。
 
 ```lean
 universe u
@@ -1875,7 +1875,7 @@ OE01、31原行。配置：`SerrePositivity.InfinityCategories.Kerodon.TheHomoto
 規約：元の全パラメータと指定された値を保持する。
 使われ方：IS-W2 R03h・R03d の native Hom と同じ roof の照合。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.sameNerveLeftOp_input`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.sameNerveLeftOp_input`。
 
 ```lean
 universe u
@@ -1896,7 +1896,7 @@ OE01、52原行。配置：`SerrePositivity.InfinityCategories.Kerodon.TheHomoto
 規約：IS-W2 R02〜R03の既存反転・定値・逆の法則。追加の同型を選ばない。
 使われ方：同じ二変数Hom∞入力の固定始域制限の照合。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.nerveOppositeIso_inv_constant`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.nerveOppositeIso_inv_constant`。
 
 ```lean
 universe u
@@ -1917,7 +1917,7 @@ OE01、32原行。配置：`SerrePositivity.InfinityCategories.Kerodon.TheHomoto
 規約：IS-W2 R03dの既存の係数移送則。逆を選び直さない。
 使われ方：twisted arrowの左射影を、元の反変の始域関手と厳密に合わせる。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.nerveOppositeIso_inv_apply`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.nerveOppositeIso_inv_apply`。
 
 ```lean
 universe u
@@ -1937,7 +1937,7 @@ OE01、30原行。配置：`SerrePositivity.InfinityCategories.Kerodon.TheHomoto
 規約：全単体と元の関手を保つ。
 使われ方：全source-frame augmentationの反転を元の端点の全図式へ引き戻す。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.nerveOppositeIso_inv_naturality`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.nerveOppositeIso_inv_naturality`。
 
 ```lean
 universe u
@@ -1957,7 +1957,7 @@ OE01、55原行。配置：`SerrePositivity.InfinityCategories.Kerodon.TheLangua
 規約：元の対象・全射・全単体作用素を保ち、単体に外側のULiftを追加しない。
 使われ方：全要素圏のGrothendieck係数を元の全要素nerveへ照合する。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.nerveHomUniverseIso`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.nerveHomUniverseIso`。
 
 ```lean
 universe u v
@@ -1972,7 +1972,7 @@ OE01、143原行。配置：`SerrePositivity.InfinityCategories.Kerodon.TheYoned
 
 module docstringなし。実際の型とimportを参照。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.pointCosliceFamilyHomotopy_precomp_h`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.pointCosliceFamilyHomotopy_precomp_h`。
 
 ```lean
 universe u
@@ -1989,7 +1989,7 @@ OE01、47原行。配置：`SerrePositivity.InfinityCategories.Kerodon.TheYoneda
 
 module docstringなし。実際の型とimportを参照。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.cosliceFiber_intervalFamilyHom_arrow`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.cosliceFiber_intervalFamilyHom_arrow`。
 
 ```lean
 universe u
@@ -2010,7 +2010,7 @@ OE01、68原行。配置：`SerrePositivity.InfinityCategories.Kerodon.TheYoneda
 規約：対象と元の比較・元の点・元の辺を保持し、quasicategory性は仮定しない。
 使われ方：元のnative単位の辺の類を、同じHom空間の点の比較へ戻す。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.cosliceEdgewiseCollapse_zero`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.cosliceEdgewiseCollapse_zero`。
 
 ```lean
 universe u
@@ -2029,7 +2029,7 @@ OE01、170原行。配置：`SerrePositivity.InfinityCategories.Kerodon.TheYoned
 規約：任意の単体集合で述べ、Kan 性や模型構造は仮定しない。
 使われ方：元の corrected pairing の指定成分の単位・合成の計算。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedSquare_composite_of_edge_coordinates`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedSquare_composite_of_edge_coordinates`。
 
 ```lean
 universe u
@@ -2055,7 +2055,7 @@ OE01、52原行。配置：`SerrePositivity.InfinityCategories.Kerodon.TheYoneda
 規約：結論は元の射自身についての等式で、新しい逆や成分を選ぶ結論ではない。
 使われ方：元の corrected pairing の同じ指定関手同型の成分の合成則。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowHom_composition`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowHom_composition`。
 
 ```lean
 universe u
@@ -2079,7 +2079,7 @@ OE01、183原行。配置：`SerrePositivity.InfinityCategories.Kerodon.TheYoned
 規約：任意の単体集合で述べ、Kan 性や模型構造を仮定しない。
 使われ方：同じ corrected pairing の元の単位と射影を計算するための前提の法則。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedSquareStdEdge`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedSquareStdEdge`。
 
 ```lean
 universe u
@@ -2098,7 +2098,7 @@ OE01、47原行。配置：`SerrePositivity.InfinityCategories.Kerodon.TheYoneda
 規約：始域と標的と元の実射を保ち、標的に模型構造を仮定しない。
 使われ方：元の単位ラベルの original pairing の像の同じ二射の合成への照合。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowVertexEdge_nerve_arrow`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowVertexEdge_nerve_arrow`。
 
 ```lean
 universe u
@@ -2119,7 +2119,7 @@ OE01、68原行。配置：`SerrePositivity.InfinityCategories.Kerodon.TheYoneda
 規約：元のtwistedArrowSourceIdentityそのものを使い、恒等点を選び直さない。
 使われ方：元のnative単位点との同じHom空間での比較。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowHomSpaceIdentityPoint`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowHomSpaceIdentityPoint`。
 
 ```lean
 universe u
@@ -2134,7 +2134,7 @@ OE01、70原行。配置：`SerrePositivity.InfinityCategories.Kerodon.TheYoneda
 
 module docstringなし。実際の型とimportを参照。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.cosliceFiberRightMappingEquivalence_interval_family`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.cosliceFiberRightMappingEquivalence_interval_family`。
 
 ```lean
 universe u
@@ -2152,7 +2152,7 @@ OE01、57原行。配置：`SerrePositivity.InfinityCategories.Kerodon.TheYoneda
 
 module docstringなし。実際の型とimportを参照。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowHomOppositePinchedEquivalence_interval_family`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowHomOppositePinchedEquivalence_interval_family`。
 
 ```lean
 universe u
@@ -2177,7 +2177,7 @@ OE01、73原行。配置：`SerrePositivity.InfinityCategories.Kerodon.TheYoneda
 規約：任意の準圏に対する既存比較の合成。単体集合のモデル構造を仮定しない。
 使われ方：元のnative fiber射と基準roof射を同じ標的で照合する。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowHomPinchedEquivalence`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowHomPinchedEquivalence`。
 
 ```lean
 universe u
@@ -2196,7 +2196,7 @@ OE01、70原行。配置：`SerrePositivity.InfinityCategories.Kerodon.TheYoneda
 規約：元の点・元の辺・元の射影を使う。
 使われ方：元のcoslice比較の同じ単位三角形を通す。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowHomSpace_edge_arrow_eq`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowHomSpace_edge_arrow_eq`。
 
 ```lean
 universe u
@@ -2217,7 +2217,7 @@ OE01、55原行。配置：`SerrePositivity.InfinityCategories.Kerodon.TheYoneda
 規約：元の二点と両端を保持し、頂点同型を新たな前提にはしない。
 使われ方：IS-W2 R03i、同じnative単位点の照合。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.nonempty_twistedArrowHomSpace_vertexIso_of_arrow_eq`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.nonempty_twistedArrowHomSpace_vertexIso_of_arrow_eq`。
 
 ```lean
 universe u
@@ -2235,7 +2235,7 @@ OE01、181原行。配置：`SerrePositivity.InfinityCategories.Kerodon.TheYoned
 
 module docstringなし。実際の型とimportを参照。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowOppositeSwap_nerve_reverse`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowOppositeSwap_nerve_reverse`。
 
 ```lean
 universe u
@@ -2257,7 +2257,7 @@ OE01、93原行。配置：`SerrePositivity.InfinityCategories.Kerodon.TheYoneda
 規約：IS-W2 R03dの座標・自然性の法則。全単体の写像はここではまだ束ねない。
 使われ方：同じtwisted arrowの両端の射影と全再添字付けの検査。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedPairingLeftVertex_lt`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedPairingLeftVertex_lt`。
 
 ```lean
 universe u
@@ -2275,7 +2275,7 @@ OE01、50原行。配置：`SerrePositivity.InfinityCategories.Kerodon.TheYoneda
 規約：IS-W2 R03dの合成・自然性の法則。零番以外の新しい射を選ばない。
 使われ方：長い単体が任意の面・退化に厳密に自然であることの交差部分。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedPairingCross_diagonal`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedPairingCross_diagonal`。
 
 ```lean
 universe u
@@ -2294,7 +2294,7 @@ OE01、41原行。配置：`SerrePositivity.InfinityCategories.Kerodon.TheYoneda
 
 module docstringなし。実際の型とimportを参照。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedPairingNerveMap_precomp`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedPairingNerveMap_precomp`。
 
 ```lean
 universe u
@@ -2317,7 +2317,7 @@ OE01、48原行。配置：`SerrePositivity.InfinityCategories.Kerodon.TheYoneda
 規約：IS-W2 R03dの同じ射列の全自然性。点ごとの写像の選択ではない。
 使われ方：元の全source frameの要素圏から正本Hom∞への表示された比較。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedPairingWeightIso_reindex`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedPairingWeightIso_reindex`。
 
 ```lean
 universe u
@@ -2334,7 +2334,7 @@ OE01、46原行。配置：`SerrePositivity.InfinityCategories.Kerodon.TheYoneda
 
 module docstringなし。実際の型とimportを参照。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedPairingNerveMap_opposite_swap`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedPairingNerveMap_opposite_swap`。
 
 ```lean
 universe u
@@ -2362,7 +2362,7 @@ OE01、67原行。配置：`SerrePositivity.InfinityCategories.Kerodon.TheYoneda
 規約：IS-W2 R03dの全写像の自然性・係数移送則。頂点だけの照合ではない。
 使われ方：元のsource frameの射を、同じ底の正本Hom∞へ送る比較の射影式。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedPairingNerveMap_right`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedPairingNerveMap_right`。
 
 ```lean
 universe u
@@ -2383,7 +2383,7 @@ OE01、159原行。配置：`SerrePositivity.InfinityCategories.Kerodon.TheYoned
 規約：IS-W2 R03dの同じ単体と自然性の法則。頂点ごとの比較で代用しない。
 使われ方：全source frameの要素圏のnerveをtwisted arrowへ送る全写像。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedPairingLeftVertex_index`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedPairingLeftVertex_index`。
 
 ```lean
 universe u
@@ -2401,7 +2401,7 @@ OE01、69原行。配置：`SerrePositivity.InfinityCategories.Kerodon.TheYoneda
 規約：IS-W2 R03dの既存の係数移送・自然性。頂点の一致だけで代用しない。
 使われ方：twisted arrowへの全写像の二射影を元の両端と厳密に合わせる。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedPairingLeftOrder_lt`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedPairingLeftOrder_lt`。
 
 ```lean
 universe u
@@ -2419,7 +2419,7 @@ OE01、151原行。配置：`SerrePositivity.InfinityCategories.Kerodon.TheYoned
 規約：IS-W2 R03dの指定された射の全次数表示。新たな逆や単体充填は選ばない。
 使われ方：全source frameの要素を正本のtwisted arrowへ送る写像の各単体。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedPairingLeftIndex`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedPairingLeftIndex`。
 
 ```lean
 universe u
@@ -2438,7 +2438,7 @@ OE01、60原行。配置：`SerrePositivity.InfinityCategories.Kerodon.TheYoneda
 規約：元の四角形の全自然性と同じモデル源を使い、新たな単体を選ばない。
 使われ方：全 pairing の元の単位ラベルの像の計算。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedPairingSimplex_zero`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedPairingSimplex_zero`。
 
 ```lean
 universe u
@@ -2458,7 +2458,7 @@ OE01、37原行。配置：`SerrePositivity.InfinityCategories.Project.Fibration
 規約：元の全射と端点を保持する。
 使われ方：同じtwisted Homの元の辺の合成則。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.arrow_middle_eq_of_outer_identity_arrows`。
+主宣言：`SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.arrow_middle_eq_of_outer_identity_arrows`。
 
 ```lean
 universe u v
@@ -2478,7 +2478,7 @@ OE01、43原行。配置：`SerrePositivity.InfinityCategories.Project.Fibration
 規約：端点と元の射を保持する。
 使われ方：元の補正単位の像の同じ三辺の合成則の計算。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.arrow_middle_unit_of_outer_arrow_equalities`。
+主宣言：`SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.arrow_middle_unit_of_outer_arrow_equalities`。
 
 ```lean
 universe u v
@@ -2500,7 +2500,7 @@ OE01、86原行。配置：`SerrePositivity.InfinityCategories.Project.Fibration
 規約：元の反転対応と同じ逆成分を保持する。模型構造と計算上限は増やさない。
 使われ方：元の source-frame augmentation の逆成分を反転ホモトピー圏から戻す。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.oppositeHomotopyVertexEdge_unop`。
+主宣言：`SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.oppositeHomotopyVertexEdge_unop`。
 
 ```lean
 universe u
@@ -2521,7 +2521,7 @@ OE01、120原行。配置：`SerrePositivity.InfinityCategories.Project.Fibratio
 規約：元の全パラメータと指定された値を保持する。
 使われ方：IS-W2 R03h・R03d の native Hom と同じ roof の照合。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.sameVertexIso_op_inv`。
+主宣言：`SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.sameVertexIso_op_inv`。
 
 ```lean
 universe u
@@ -2537,7 +2537,7 @@ OE01、59原行。配置：`SerrePositivity.InfinityCategories.Project.Fibration
 
 module docstringなし。実際の型とimportを参照。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.fullyFaithfulPreimageFunctorIso_precomp`。
+主宣言：`SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.fullyFaithfulPreimageFunctorIso_precomp`。
 
 ```lean
 universe u
@@ -2558,7 +2558,7 @@ OE01、46原行。配置：`SerrePositivity.InfinityCategories.Project.Fibration
 規約：元の全パラメータと指定された値を保持する。
 使われ方：IS-W2 R03h・R03d の native Hom と同じ roof の照合。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.sameFunctorIso_constant_family`。
+主宣言：`SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.sameFunctorIso_constant_family`。
 
 ```lean
 universe u
@@ -2580,7 +2580,7 @@ OE01、35原行。配置：`SerrePositivity.InfinityCategories.Project.Localizat
 規約：標的の準圏性を仮定せず、元の二胞体を保つ。
 使われ方：元の全straighteningの同じ射の評価。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate_arrow`。
+主宣言：`SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate_arrow`。
 
 ```lean
 universe u
@@ -2597,7 +2597,7 @@ OE01、209原行。配置：`SerrePositivity.InfinityCategories.Project.Localiza
 
 module docstringなし。実際の型とimportを参照。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveUnderLift_pointCosliceFamilyHomotopy`。
+主宣言：`SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveUnderLift_pointCosliceFamilyHomotopy`。
 
 ```lean
 universe u
@@ -2614,7 +2614,7 @@ OE01、46原行。配置：`SerrePositivity.InfinityCategories.Project.Localizat
 
 module docstringなし。実際の型とimportを参照。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveUnderLift_comp_cosliceTwistedArrowMap`。
+主宣言：`SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveUnderLift_comp_cosliceTwistedArrowMap`。
 
 ```lean
 universe u
@@ -2632,7 +2632,7 @@ OE01、92原行。配置：`SerrePositivity.InfinityCategories.Project.Localizat
 
 module docstringなし。実際の型とimportを参照。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveUnderLift_opposite_pairing`。
+主宣言：`SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveUnderLift_opposite_pairing`。
 
 ```lean
 universe u
@@ -2659,7 +2659,7 @@ OE01、87原行。配置：`SerrePositivity.InfinityCategories.Project.Localizat
 
 module docstringなし。実際の型とimportを参照。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveUnderLift_rightOp_pairing`。
+主宣言：`SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveUnderLift_rightOp_pairing`。
 
 ```lean
 universe u
@@ -2686,7 +2686,7 @@ OE01、148原行。配置：`SerrePositivity.InfinityCategories.Project.Localiza
 
 module docstringなし。実際の型とimportを参照。
 
-主宣言（基準の完全名）：`SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveUnderMap_comp_cosliceTwistedArrowMap`。
+主宣言：`SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveUnderMap_comp_cosliceTwistedArrowMap`。
 
 ```lean
 universe u
@@ -2697,7 +2697,7 @@ lemma nerveUnderMap_comp_cosliceTwistedArrowMap {C : Type u} [Category.{u} C] (c
         (fun i => i.hom) (fun {_ _} f => by simp)
 ```
 
-### [BousfieldKanCellAttachment.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/HomotopyWeight/BousfieldKanCellAttachment.lean)
+### [BousfieldKanCellAttachment.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/BousfieldKanCellAttachment.lean)
 
 OE02、77原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.BousfieldKanCellAttachment`。
 
@@ -2706,7 +2706,7 @@ OE02、77原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyW
 規約：IS-W2 R03aの証明分割。骨格も単体も元のBK重みのもの。
 使われ方：自由境界の押し出しによるBK重み全体の射影cofibrancy。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.HomotopyWeight.bkCellSimplex`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.bkCellSimplex`。
 
 ```lean
 universe u
@@ -2716,7 +2716,7 @@ def bkCellSimplex {n : ℕ} (c : (nerve I).nonDegenerate n) :
     (nerve (Over (c.val.obj (Fin.last n)))).nonDegenerate n
 ```
 
-### [BousfieldKanCellCoproduct.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/HomotopyWeight/BousfieldKanCellCoproduct.lean)
+### [BousfieldKanCellCoproduct.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/BousfieldKanCellCoproduct.lean)
 
 OE02、70原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.BousfieldKanCellCoproduct`。
 
@@ -2725,17 +2725,17 @@ OE02、70原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyW
 規約：IS-W2 R03aの骨格押し出しの証明分割。
 使われ方：既存の単体集合の骨格の押し出しとの厳密な照合。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.HomotopyWeight.bkCellComponentInclusion`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.bkCellComponentInclusion`。
 
 ```lean
 universe u
 variable (I : Type u) [SmallCategory I]
 
 def bkCellComponentInclusion {n : ℕ} {i : I} (s : NondegenerateData I n i)
-    (X : SSet.{u}) : X ⟶ ((bkCellTensor I n).obj X).obj i
+    (X : SSet.{u}) : X ⟶ ((_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.bkCellTensor I n).obj X).obj i
 ```
 
-### [BousfieldKanCellEvaluation.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/HomotopyWeight/BousfieldKanCellEvaluation.lean)
+### [BousfieldKanCellEvaluation.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/BousfieldKanCellEvaluation.lean)
 
 OE02、81原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.BousfieldKanCellEvaluation`。
 
@@ -2744,7 +2744,7 @@ OE02、81原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyW
 規約：IS-W2 R03aの同じ骨格押し出しの証明分割。
 使われ方：既存の相対細胞の押し出しの四つの射との一致。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.HomotopyWeight.bkCellComponentInclusion_cellDesc`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.bkCellComponentInclusion_cellDesc`。
 
 ```lean
 universe u
@@ -2753,11 +2753,11 @@ variable (I : Type u) [SmallCategory I]
 @[reassoc] theorem bkCellComponentInclusion_cellDesc {n : ℕ} {i : I}
     (s : NondegenerateData I n i) (X : SSet.{u}) (Z : I ⥤ SSet.{u})
     (f : ∀ c : (nerve I).nonDegenerate n, X ⟶ Z.obj (c.val.obj (Fin.last n))) :
-    bkCellComponentInclusion I s X ≫ (bkCellDesc I X Z f).app i =
+    _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.bkCellComponentInclusion I s X ≫ (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.bkCellDesc I X Z f).app i =
       f s.1 ≫ Z.map s.2
 ```
 
-### [BousfieldKanCellLifting.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/HomotopyWeight/BousfieldKanCellLifting.lean)
+### [BousfieldKanCellLifting.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/BousfieldKanCellLifting.lean)
 
 OE02、58原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.BousfieldKanCellLifting`。
 
@@ -2766,7 +2766,7 @@ OE02、58原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyW
 規約：IS-W2 R03aの自由境界付着の証明分割。SSetモデルの追加仮定なし。
 使われ方：BK骨格の各付着の射影cofibration性。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.HomotopyWeight.bkCellTensor_map_llp`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.bkCellTensor_map_llp`。
 
 ```lean
 universe u
@@ -2774,10 +2774,10 @@ variable (I : Type u) [SmallCategory I]
 
 theorem bkCellTensor_map_llp (n : ℕ) {X Y : SSet.{u}} (f : X ⟶ Y)
     (hf : SSet.modelCategoryQuillen.I f) :
-    (boundaries I).rlp.llp ((bkCellTensor I n).map f)
+    (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.boundaries I).rlp.llp ((_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.bkCellTensor I n).map f)
 ```
 
-### [BousfieldKanCellReindex.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/HomotopyWeight/BousfieldKanCellReindex.lean)
+### [BousfieldKanCellReindex.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/BousfieldKanCellReindex.lean)
 
 OE02、75原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.BousfieldKanCellReindex`。
 
@@ -2786,7 +2786,7 @@ OE02、75原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyW
 規約：IS-W2 R03aの押し出しの証明分割。新たな重みは選ばない。
 使われ方：Mathlibの同じ骨格の押し出しを自由図式の押し出しに移す。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.HomotopyWeight.bkInitialCellEquiv`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.bkInitialCellEquiv`。
 
 ```lean
 universe u
@@ -2797,7 +2797,7 @@ def bkInitialCellEquiv (n : ℕ) (i : I) :
       NondegenerateData I n i
 ```
 
-### [BousfieldKanCellTensor.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/HomotopyWeight/BousfieldKanCellTensor.lean)
+### [BousfieldKanCellTensor.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/BousfieldKanCellTensor.lean)
 
 OE02、107原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.BousfieldKanCellTensor`。
 
@@ -2806,7 +2806,7 @@ OE02、107原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.Homotopy
 規約：IS-W2 R03aの自由境界付着の証明分割。SSetのモデル構造を仮定しない。
 使われ方：各自由境界の持ち上げを全BK細胞の持ち上げへ束ねる。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.HomotopyWeight.bkCellWeight`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.bkCellWeight`。
 
 ```lean
 universe u
@@ -2815,7 +2815,7 @@ variable (I : Type u) [SmallCategory I]
 def bkCellWeight (n : ℕ) : I ⥤ SSet.{u}
 ```
 
-### [BousfieldKanChosenComparison.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/HomotopyWeight/BousfieldKanChosenComparison.lean)
+### [BousfieldKanChosenComparison.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/BousfieldKanChosenComparison.lean)
 
 OE02、57原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.BousfieldKanChosenComparison`。
 
@@ -2824,7 +2824,7 @@ OE02、57原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyW
 規約：IS-W2 R03aの同じ比較射の構成。Kan係数ごとに選び直さない。
 使われ方：全係数図式の切断空間に対する同じ制限写像。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeightComparison`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.framedLimitWeightComparison`。
 
 ```lean
 universe u
@@ -2833,7 +2833,7 @@ variable (J : Type u) [SmallCategory J]
 abbrev framedLimitWeightComparison
 ```
 
-### [BousfieldKanCofibrant.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/HomotopyWeight/BousfieldKanCofibrant.lean)
+### [BousfieldKanCofibrant.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/BousfieldKanCofibrant.lean)
 
 OE02、51原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.BousfieldKanCofibrant`。
 
@@ -2842,16 +2842,16 @@ OE02、51原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyW
 規約：IS-W2 R03aの細胞分解の証明分割。SSetモデル構造を仮定しない。
 使われ方：指定された一点重みへの同じ比較射を選ぶ。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.HomotopyWeight.bkSkeletonZeroIsInitial`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.bkSkeletonZeroIsInitial`。
 
 ```lean
 universe u
 variable (I : Type u) [SmallCategory I]
 
-def bkSkeletonZeroIsInitial : IsInitial ((bkSkeleton I).obj 0)
+def bkSkeletonZeroIsInitial : IsInitial ((_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.bkSkeleton I).obj 0)
 ```
 
-### [BousfieldKanComparisonValues.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/HomotopyWeight/BousfieldKanComparisonValues.lean)
+### [BousfieldKanComparisonValues.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/BousfieldKanComparisonValues.lean)
 
 OE02、53原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.BousfieldKanComparisonValues`。
 
@@ -2860,7 +2860,7 @@ OE02、53原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyW
 規約：IS-W2 R03aの指定比較の照合。各値のKan性をBK重みに要求しない。
 使われ方：射影cofibrant重みのHom不変性を同じ比較射へ適用する。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.HomotopyWeight.bousfieldKanWeight_isWeaklyContractible`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.bousfieldKanWeight_isWeaklyContractible`。
 
 ```lean
 universe u
@@ -2869,7 +2869,7 @@ theorem bousfieldKanWeight_isWeaklyContractible (I : Type u) [SmallCategory I] (
     IsWeaklyContractible ((bousfieldKanWeight I).obj i)
 ```
 
-### [BousfieldKanExInfinityUnit.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/HomotopyWeight/BousfieldKanExInfinityUnit.lean)
+### [BousfieldKanExInfinityUnit.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/BousfieldKanExInfinityUnit.lean)
 
 OE02、53原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.BousfieldKanExInfinityUnit`。
 
@@ -2878,7 +2878,7 @@ OE02、53原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyW
 規約：IS-W2 R02〜R03の既存の係数移送則。元の指定点の等式を保持する。
 使われ方：同じBE TotのBK錐を全Hom∞比較の第零図式へ送る。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.HomotopyWeight.bousfieldKanExInfinityCoefficientUnit`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.bousfieldKanExInfinityCoefficientUnit`。
 
 ```lean
 universe u
@@ -2887,7 +2887,7 @@ variable (I : Type u) [SmallCategory I]
 def bousfieldKanExInfinityCoefficientUnit (H : I ⥤ SSet.{u}) : H ⟶ H ⋙ exInfinity
 ```
 
-### [BousfieldKanNativeFiberPoint.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/HomotopyWeight/BousfieldKanNativeFiberPoint.lean)
+### [BousfieldKanNativeFiberPoint.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/BousfieldKanNativeFiberPoint.lean)
 
 OE02、99原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.BousfieldKanNativeFiberPoint`。
 
@@ -2896,7 +2896,7 @@ OE02、99原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyW
 規約：IS-W2 R02〜R03の既存構成の評価・単位則。Kan性の追加なし。
 使われ方：同じBE Totのnative錐の脚と、元の指定BK錐の係数での照合。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.HomotopyWeight.bousfieldKanSectionsMap_lift_evaluation`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.bousfieldKanSectionsMap_lift_evaluation`。
 
 ```lean
 universe u
@@ -2909,7 +2909,7 @@ theorem bousfieldKanSectionsMap_lift_evaluation {A : SSet.{u}}
         weightedNerveSectionFromTransform η
 ```
 
-### [BousfieldKanSkeletonPushout.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/HomotopyWeight/BousfieldKanSkeletonPushout.lean)
+### [BousfieldKanSkeletonPushout.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/BousfieldKanSkeletonPushout.lean)
 
 OE02、81原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.BousfieldKanSkeletonPushout`。
 
@@ -2918,7 +2918,7 @@ OE02、81原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyW
 規約：IS-W2 R03aの細胞分解の証明分割。重みの置換は行わない。
 使われ方：BK重み全体の射影cofibrancy。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.HomotopyWeight.bkSkeletonInitialIso`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.bkSkeletonInitialIso`。
 
 ```lean
 universe u
@@ -2926,10 +2926,10 @@ variable (I : Type u) [SmallCategory I]
 
 def bkSkeletonInitialIso (n : ℕ) (i : I) :
     (skeletonOfMono ((⊥ : (nerve (Over i)).Subcomplex).ι) n : SSet.{u}) ≅
-      ((bkSkeleton I).obj n).obj i
+      ((_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.bkSkeleton I).obj n).obj i
 ```
 
-### [BousfieldKanUniverseCoefficientPoint.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/HomotopyWeight/BousfieldKanUniverseCoefficientPoint.lean)
+### [BousfieldKanUniverseCoefficientPoint.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/BousfieldKanUniverseCoefficientPoint.lean)
 
 OE02、65原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.BousfieldKanUniverseCoefficientPoint`。
 
@@ -2938,19 +2938,19 @@ OE02、65原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyW
 規約：IS-W2 R02〜R03の既存の宇宙変更・係数移送の評価則。
 使われ方：BE Totのnative錐の脚を、同じ元のraw係数で照合する。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.HomotopyWeight.bousfieldKanUniverseCone_identityVertex`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.bousfieldKanUniverseCone_identityVertex`。
 
 ```lean
 universe u v
 variable (I : Type u) [SmallCategory I] {H : I ⥤ SSet.{u}}
 
 theorem bousfieldKanUniverseCone_identityVertex (s : bousfieldKanWeight I ⟶ H) (i : I) :
-    ((bousfieldKanUniverseCone.{u,v} I s).app (AsSmall.up.obj i)).app (Opposite.op ⦋0⦌)
+    ((_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.bousfieldKanUniverseCone.{u,v} I s).app (AsSmall.up.obj i)).app (Opposite.op ⦋0⦌)
       (nerveVertex (Over.mk (𝟙 (((AsSmall.up : I ⥤ AsSmall.{v} I).obj i))))) =
         ULift.up ((s.app i).app (Opposite.op ⦋0⦌) (nerveVertex (Over.mk (𝟙 i))))
 ```
 
-### [BousfieldKanUniversePoints.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/HomotopyWeight/BousfieldKanUniversePoints.lean)
+### [BousfieldKanUniversePoints.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/BousfieldKanUniversePoints.lean)
 
 OE02、43原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.BousfieldKanUniversePoints`。
 
@@ -2959,7 +2959,7 @@ OE02、43原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyW
 規約：IS-W2 R02〜R03の既存の移送則。元の錐の自然変換を保持する。
 使われ方：BE Totの指定BK点を全Hom∞比較の宇宙へ運ぶ。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.HomotopyWeight.bousfieldKanUniverseCone`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.bousfieldKanUniverseCone`。
 
 ```lean
 universe u v
@@ -2969,7 +2969,7 @@ def bousfieldKanUniverseCone (s : bousfieldKanWeight I ⟶ H) :
     bousfieldKanWeight (AsSmall.{v} I) ⟶ (weightedDiagramUniverse.{u,v} I).obj H
 ```
 
-### [ConeInvariance.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/HomotopyWeight/ConeInvariance.lean)
+### [ConeInvariance.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/ConeInvariance.lean)
 
 OE02、45原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.ConeInvariance`。
 
@@ -2980,12 +2980,12 @@ OE02、45原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyW
 規約：単体集合とその図式圏の完全なモデル構造は仮定しない。
 使われ方：始域 frame と右 frame の比較を重み付き錐へ移す。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.HomotopyWeight.coneSpace_map_isIso_of_pointwiseKan`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.coneSpace_map_isIso_of_pointwiseKan`。
 
 ```lean
 universe u v w
 variable (K : Type u) [SmallCategory K] (W : K ⥤ SSet.{u})
-  (hW : (boundaries K).rlp.llp (initial.to W))
+  (hW : (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.boundaries K).rlp.llp (initial.to W))
 
 lemma coneSpace_map_isIso_of_pointwiseKan {F G : K ⥤ SSet.{u}} (f : F ⟶ G)
     (hF : ∀ k, SSet.KanComplex (F.obj k)) (hG : ∀ k, SSet.KanComplex (G.obj k))
@@ -2995,7 +2995,7 @@ lemma coneSpace_map_isIso_of_pointwiseKan {F G : K ⥤ SSet.{u}} (f : F ⟶ G)
     IsIso (L.map ((coneSpace K W).map f))
 ```
 
-### [ConeLifting.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/HomotopyWeight/ConeLifting.lean)
+### [ConeLifting.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/ConeLifting.lean)
 
 OE02、120原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.ConeLifting`。
 
@@ -3006,19 +3006,19 @@ OE02、120原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.Homotopy
 規約：単体集合の完全なモデル構造は仮定しない。
 使われ方：一般 homotopy 極限の写像空間の不変性。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.HomotopyWeight.coneSpace_map_boundary_rlp`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.coneSpace_map_boundary_rlp`。
 
 ```lean
 universe u v w
 variable (K : Type u) [SmallCategory K] (W : K ⥤ SSet.{u})
-  (hW : (boundaries K).rlp.llp (initial.to W))
+  (hW : (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.boundaries K).rlp.llp (initial.to W))
 
 lemma coneSpace_map_boundary_rlp {F G : K ⥤ SSet.{u}} (p : F ⟶ G)
     (hp : ∀ k, SSet.modelCategoryQuillen.I.rlp (p.app k)) :
     SSet.modelCategoryQuillen.I.rlp ((coneSpace K W).map p)
 ```
 
-### [ConePoints.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/HomotopyWeight/ConePoints.lean)
+### [ConePoints.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/ConePoints.lean)
 
 OE02、65原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.ConePoints`。
 
@@ -3029,7 +3029,7 @@ OE02、65原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyW
 規約：元の重みと元の族を保持する。
 使われ方：通常の錐の類と両 frame の錐比較の正規化。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.HomotopyWeight.conePoint`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.conePoint`。
 
 ```lean
 universe u
@@ -3039,7 +3039,7 @@ def conePoint {F : K ⥤ SSet.{u}} (s : W ⟶ F) :
     ((WeightedCones.coneSpace K W).obj F).obj (Opposite.op (SimplexCategory.mk 0))
 ```
 
-### [ConeReindex.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/HomotopyWeight/ConeReindex.lean)
+### [ConeReindex.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/ConeReindex.lean)
 
 OE02、55原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.ConeReindex`。
 
@@ -3050,7 +3050,7 @@ OE02、55原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyW
 規約：モデル構造は不要で、元の図式と重みをともに同じ同値で移す。
 使われ方：E 代数の右 frame の二重反対圏表示と元の始域 frame の錐の照合。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.HomotopyWeight.coneSpaceReindexAuxIso`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.coneSpaceReindexAuxIso`。
 
 ```lean
 universe u
@@ -3062,7 +3062,7 @@ def coneSpaceReindexAuxIso :
       (e.symm.congrLeft (E := SSet.{u})).inverse ⋙ coneSpace K W
 ```
 
-### [ConeReindexPoints.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/HomotopyWeight/ConeReindexPoints.lean)
+### [ConeReindexPoints.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/ConeReindexPoints.lean)
 
 OE02、101原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.ConeReindexPoints`。
 
@@ -3073,7 +3073,7 @@ OE02、101原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.Homotopy
 規約：元の比較同型を保持し、モデル構造を仮定しない。
 使われ方：右 frame の錐と元の通常錐の比較の正規化。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.HomotopyWeight.coneSpaceReindexIso_homEquiv`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.coneSpaceReindexIso_homEquiv`。
 
 ```lean
 universe u
@@ -3083,11 +3083,11 @@ variable {J K : Type u} [SmallCategory J] [SmallCategory K] (e : J ≌ K)
 lemma coneSpaceReindexIso_homEquiv (X : SSet.{u}) (F : K ⥤ SSet.{u})
     (t : (tensorDiagram K W).obj X ⟶ F) :
     (WeightedCones.adjunction J (e.functor ⋙ W)).homEquiv X _
-        (whiskerLeft e.functor t) ≫ (coneSpaceReindexIso e W).hom.app F =
+        (whiskerLeft e.functor t) ≫ (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.coneSpaceReindexIso e W).hom.app F =
       (WeightedCones.adjunction K W).homEquiv X F t
 ```
 
-### [ConstantComparison.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/HomotopyWeight/ConstantComparison.lean)
+### [ConstantComparison.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/ConstantComparison.lean)
 
 OE02、82原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.ConstantComparison`。
 
@@ -3098,7 +3098,7 @@ OE02、82原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyW
 規約：比較は図式の射であり、頂点ごとの逆の選択には依存しない。
 使われ方：一般 homotopy 極限の右導来普遍性の始域の置換。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.HomotopyWeight.liftedZeroPointIso`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.liftedZeroPointIso`。
 
 ```lean
 universe u v
@@ -3106,7 +3106,7 @@ universe u v
 def liftedZeroPointIso : uliftYoneda.{u, 0, 0}.obj (SimplexCategory.mk 0) ≅ (⊤_ SSet.{u})
 ```
 
-### [ConstantNaturality.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/HomotopyWeight/ConstantNaturality.lean)
+### [ConstantNaturality.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/ConstantNaturality.lean)
 
 OE02、105原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.ConstantNaturality`。
 
@@ -3117,7 +3117,7 @@ OE02、105原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.Homotopy
 規約：実現の係数射は既存の Kan 拡張の関手的な射。
 使われ方：定値図式の関手的な cofibrant 置換。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.HomotopyWeight.realizationPointIso_naturality`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.realizationPointIso_naturality`。
 
 ```lean
 universe u v
@@ -3125,11 +3125,11 @@ variable {C : Type v} [Category.{u} C] [HasColimitsOfSize.{0, u} C]
   {B B' : SimplexCategory ⥤ C}
 
 lemma realizationPointIso_naturality (a : B ⟶ B') :
-    (Realization.family.map a).app (⊤_ SSet.{u}) ≫ (realizationPointIso B').hom =
-      (realizationPointIso B).hom ≫ a.app (SimplexCategory.mk 0)
+    (Realization.family.map a).app (⊤_ SSet.{u}) ≫ (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.realizationPointIso B').hom =
+      (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.realizationPointIso B).hom ≫ a.app (SimplexCategory.mk 0)
 ```
 
-### [DoubleOpposite.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/HomotopyWeight/DoubleOpposite.lean)
+### [DoubleOpposite.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/DoubleOpposite.lean)
 
 OE02、49原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.DoubleOpposite`。
 
@@ -3138,7 +3138,7 @@ OE02、49原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyW
 規約：小さい添字圏だけに依存し、値圏やモデル構造を引数に加えない。
 使われ方：E 代数および複体の重み付き右 frame の end。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.HomotopyWeight.doubleOpWeights`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.doubleOpWeights`。
 
 ```lean
 universe u
@@ -3147,7 +3147,7 @@ variable (K : Type u) [SmallCategory K]
 abbrev doubleOpWeights : (K ⥤ SSet.{u}) ⥤ (Kᵒᵖᵒᵖ ⥤ SSet.{u})
 ```
 
-### [FrameConeClasses.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/HomotopyWeight/FrameConeClasses.lean)
+### [FrameConeClasses.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/FrameConeClasses.lean)
 
 OE02、73原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.FrameConeClasses`。
 
@@ -3158,7 +3158,7 @@ OE02、73原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyW
 規約：実現対象と元の射をそのまま保持する。
 使われ方：通常の錐から具体的な計算対象への射のクラス計算。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.HomotopyWeight.tensorFrameHomIso_point`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.tensorFrameHomIso_point`。
 
 ```lean
 universe u v w t
@@ -3168,12 +3168,12 @@ variable (K : Type u) [SmallCategory K]
 
 lemma tensorFrameHomIso_point {Y : C}
     (f : (FrameWeightRealization.functor K B).obj W ⟶ Y) :
-    ((((tensorFrameHomIso K W B).app Y).hom).app (Opposite.op (SimplexCategory.mk 0)))
-        ((tensorFrameZeroIso K W B).hom ≫ f) =
-      conePoint Kᵒᵖ W ((FrameWeightRealization.adjunction K B).homEquiv W Y f)
+    ((((_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.tensorFrameHomIso K W B).app Y).hom).app (Opposite.op (SimplexCategory.mk 0)))
+        ((_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.tensorFrameZeroIso K W B).hom ≫ f) =
+      _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.conePoint Kᵒᵖ W ((FrameWeightRealization.adjunction K B).homEquiv W Y f)
 ```
 
-### [FrameCones.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/HomotopyWeight/FrameCones.lean)
+### [FrameCones.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/FrameCones.lean)
 
 OE02、146原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.FrameCones`。
 
@@ -3184,18 +3184,18 @@ OE02、146原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.Homotopy
 規約：重みは実際の射影境界の左類で、単体集合モデルは仮定しない。
 使われ方：E 代数の重み付き右 frame の end の Hom 比較。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.HomotopyWeight.frameCone`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.frameCone`。
 
 ```lean
 universe u v w t
 variable (K : Type u) [SmallCategory K]
   {C : Type v} [Category.{u} C] [ModelCategory C]
-  (W : Kᵒᵖ ⥤ SSet.{u}) (hW : (boundaries Kᵒᵖ).rlp.llp (initial.to W))
+  (W : Kᵒᵖ ⥤ SSet.{u}) (hW : (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.boundaries Kᵒᵖ).rlp.llp (initial.to W))
 
 abbrev frameCone (B : K ⥤ SimplexCategory ⥤ C) : C ⥤ SSet.{u}
 ```
 
-### [FrameLifting.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/HomotopyWeight/FrameLifting.lean)
+### [FrameLifting.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/FrameLifting.lean)
 
 OE02、53原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.FrameLifting`。
 
@@ -3206,7 +3206,7 @@ OE02、53原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyW
 規約：単体集合の完全なモデル構造は仮定しない。
 使われ方：E 代数の重み付き右 frame の end の fibration 判定。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.HomotopyWeight.realization_map_cofibration`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.realization_map_cofibration`。
 
 ```lean
 universe u v
@@ -3216,11 +3216,11 @@ variable (K : Type u) [SmallCategory K]
   (hB : ∀ k, reedyLeft simplex (cofibrations C) (initial.to (B.obj k)))
 
 lemma realization_map_cofibration {W W' : Kᵒᵖ ⥤ SSet.{u}} (i : W ⟶ W')
-    (hi : (boundaries Kᵒᵖ).rlp.llp i) :
+    (hi : (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.boundaries Kᵒᵖ).rlp.llp i) :
     cofibrations C ((FrameWeightRealization.functor K B).map i)
 ```
 
-### [Generators.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/HomotopyWeight/Generators.lean)
+### [Generators.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/Generators.lean)
 
 OE02、78原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.Generators`。
 
@@ -3231,7 +3231,7 @@ OE02、78原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyW
 規約：単体集合の完全なモデル構造を仮定しない。
 使われ方：定値一点重みの射影 cofibrant 置換。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.HomotopyWeight.free`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.free`。
 
 ```lean
 universe u
@@ -3240,7 +3240,7 @@ variable (K : Type u) [SmallCategory K]
 abbrev free (k : K) : SSet.{u} ⥤ K ⥤ SSet.{u}
 ```
 
-### [KanConeClasses.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/HomotopyWeight/KanConeClasses.lean)
+### [KanConeClasses.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/KanConeClasses.lean)
 
 OE02、76原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.KanConeClasses`。
 
@@ -3251,17 +3251,17 @@ OE02、76原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyW
 規約：元の族を保持し、共通図式の Kan 性は要求しない。
 使われ方：通常の錐の始域 frame と右 frame のクラス照合。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.HomotopyWeight.kanDiagramUnit_naturality`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.kanDiagramUnit_naturality`。
 
 ```lean
 universe u
 variable (K : Type u) [SmallCategory K]
 
 lemma kanDiagramUnit_naturality {F G : K ⥤ SSet.{u}} (f : F ⟶ G) :
-    f ≫ kanDiagramUnit K G = kanDiagramUnit K F ≫ kanDiagramMap K f
+    f ≫ _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.kanDiagramUnit K G = _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.kanDiagramUnit K F ≫ _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.kanDiagramMap K f
 ```
 
-### [KanConeComparison.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/HomotopyWeight/KanConeComparison.lean)
+### [KanConeComparison.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/KanConeComparison.lean)
 
 OE02、125原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.KanConeComparison`。
 
@@ -3272,20 +3272,20 @@ OE02、125原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.Homotopy
 規約：共通図式に Kan 性を要求せず、元の錐を保持する。
 使われ方：両 frame の錐の比較の自然性と元の比較射の追跡。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.HomotopyWeight.coneComparisonArrow`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.coneComparisonArrow`。
 
 ```lean
 universe u v w
 variable (K : Type u) [SmallCategory K] (W : K ⥤ SSet.{u})
-  (hW : (boundaries K).rlp.llp (initial.to W))
+  (hW : (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.boundaries K).rlp.llp (initial.to W))
   {D : Type v} [Category.{w} D] (L : SSet.{u} ⥤ D)
   (hL : SSet.anodyneExtensions.IsInvertedBy L)
 
 def coneComparisonArrow {F H : K ⥤ SSet.{u}} (f : F ⟶ H) :
-    L.obj ((coneSpace K W).obj F) ⟶ L.obj ((coneSpace K W).obj (kanDiagram K H))
+    L.obj ((coneSpace K W).obj F) ⟶ L.obj ((coneSpace K W).obj (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.kanDiagram K H))
 ```
 
-### [KanDiagramBrown.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/HomotopyWeight/KanDiagramBrown.lean)
+### [KanDiagramBrown.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/KanDiagramBrown.lean)
 
 OE02、128原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.KanDiagramBrown`。
 
@@ -3296,7 +3296,7 @@ OE02、128原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.Homotopy
 規約：単体集合にもその図式圏にも完全なモデル構造を置かない。
 使われ方：射影 cofibrant 重みの錐の Kan 図式の不変性。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.HomotopyWeight.map_isIso_of_pointwiseKan`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.map_isIso_of_pointwiseKan`。
 
 ```lean
 universe u v w
@@ -3310,7 +3310,7 @@ lemma map_isIso_of_pointwiseKan {D : Type v} [Category.{w} D] (T : (K ⥤ SSet.{
     (hf : ∀ k, IsIso (AnodyneHomotopy.anodyneQ.map (f.app k))) : IsIso (T.map f)
 ```
 
-### [KanDiagramReplacement.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/HomotopyWeight/KanDiagramReplacement.lean)
+### [KanDiagramReplacement.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/KanDiagramReplacement.lean)
 
 OE02、105原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.KanDiagramReplacement`。
 
@@ -3321,7 +3321,7 @@ OE02、105原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.Homotopy
 規約：元の Kan 錐空間は変更せず、置換は比較の中間図式に使う。
 使われ方：混合 Hom が Kan であるという追加仮定なしに両 frame の錐を比較する。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.HomotopyWeight.kanReplacement_map_isIso`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.kanReplacement_map_isIso`。
 
 ```lean
 universe u v w
@@ -3331,7 +3331,7 @@ lemma kanReplacement_map_isIso {X Y : SSet.{u}} (f : X ⟶ Y)
     IsIso (AnodyneHomotopy.anodyneQ.map (AnodyneKanReplacement.functor.map f))
 ```
 
-### [NativeWeightedPointMap.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/HomotopyWeight/NativeWeightedPointMap.lean)
+### [NativeWeightedPointMap.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/NativeWeightedPointMap.lean)
 
 OE02、28原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.NativeWeightedPointMap`。
 
@@ -3340,18 +3340,18 @@ OE02、28原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyW
 規約：IS-W2 R02〜R03の自然性の法則。元の自然変換の実際の後合成。
 使われ方：右frameの係数同型による指定BK普遍点の輸送。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.HomotopyWeight.nativeWeightedPoint_map`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.nativeWeightedPoint_map`。
 
 ```lean
 universe u
 variable (I : Type u) [SmallCategory I]
 
 theorem nativeWeightedPoint_map {W F G : I ⥤ SSet.{u}} (s : W ⟶ F) (f : F ⟶ G) :
-    ((weightedSectionsMap W f).app (Opposite.op ⦋0⦌)) (nativeWeightedPoint I s) =
-      nativeWeightedPoint I (s ≫ f)
+    ((weightedSectionsMap W f).app (Opposite.op ⦋0⦌)) (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.nativeWeightedPoint I s) =
+      _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.nativeWeightedPoint I (s ≫ f)
 ```
 
-### [NativeWeightedPointRestriction.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/HomotopyWeight/NativeWeightedPointRestriction.lean)
+### [NativeWeightedPointRestriction.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/NativeWeightedPointRestriction.lean)
 
 OE02、46原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.NativeWeightedPointRestriction`。
 
@@ -3360,7 +3360,7 @@ OE02、46原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyW
 規約：IS-W2 R02〜R03の同じ点の照合。π₀だけの等式ではない。
 使われ方：元の普遍frame錐から同じBK切断の点を作る。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.HomotopyWeight.nativeWeightedPoint`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.nativeWeightedPoint`。
 
 ```lean
 universe u
@@ -3370,7 +3370,7 @@ def nativeWeightedPoint {W H : I ⥤ SSet.{u}} (s : W ⟶ H) :
     (weightedSections W H) _⦋0⦌
 ```
 
-### [NativeWeightedSectionPoints.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/HomotopyWeight/NativeWeightedSectionPoints.lean)
+### [NativeWeightedSectionPoints.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/NativeWeightedSectionPoints.lean)
 
 OE02、67原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.NativeWeightedSectionPoints`。
 
@@ -3379,7 +3379,7 @@ OE02、67原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyW
 規約：IS-W2 R02〜R03の既存の比較の点での法則。新しい錐の頂点は選ばない。
 使われ方：元の普遍錐の点を同じBK重み制限へ接続する。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.HomotopyWeight.coneSpaceNativeSectionsIso_homEquiv`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.coneSpaceNativeSectionsIso_homEquiv`。
 
 ```lean
 universe u
@@ -3387,11 +3387,11 @@ variable (I : Type u) [SmallCategory I] (W : I ⥤ SSet.{u})
 
 theorem coneSpaceNativeSectionsIso_homEquiv (X : SSet.{u}) (H : I ⥤ SSet.{u})
     (f : (WeightedCones.tensorDiagram I W).obj X ⟶ H) :
-    (WeightedCones.adjunction I W).homEquiv X H f ≫ (coneSpaceNativeSectionsIso I W).hom.app H =
-      weightedSectionsLift ((coneSpaceParameterIso I W).inv.app X ≫ f)
+    (WeightedCones.adjunction I W).homEquiv X H f ≫ (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.coneSpaceNativeSectionsIso I W).hom.app H =
+      weightedSectionsLift ((_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.coneSpaceParameterIso I W).inv.app X ≫ f)
 ```
 
-### [NativeWeightedSections.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/HomotopyWeight/NativeWeightedSections.lean)
+### [NativeWeightedSections.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/NativeWeightedSections.lean)
 
 OE02、52原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.NativeWeightedSections`。
 
@@ -3400,7 +3400,7 @@ OE02、52原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyW
 規約：IS-W2 R03a.1の既存構成の照合法則。重みの頂点や脚は変更しない。
 使われ方：射影cofibrancyから元の切断空間のKan性を得る。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.HomotopyWeight.coneSpaceParameterIso`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.coneSpaceParameterIso`。
 
 ```lean
 universe u
@@ -3409,7 +3409,7 @@ variable (I : Type u) [SmallCategory I] (W : I ⥤ SSet.{u})
 def coneSpaceParameterIso : WeightedCones.tensorDiagram I W ≅ weightedParameterFunctor W
 ```
 
-### [PointReplacement.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/HomotopyWeight/PointReplacement.lean)
+### [PointReplacement.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/PointReplacement.lean)
 
 OE02、67原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.PointReplacement`。
 
@@ -3420,7 +3420,7 @@ OE02、67原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyW
 規約：任意の小圏、単体集合の完全なモデル構造を仮定しない。
 使われ方：E 代数の右 frame の重み付き end に代入する標準重み。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.HomotopyWeight.point`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.point`。
 
 ```lean
 universe u
@@ -3429,7 +3429,7 @@ variable (K : Type u) [SmallCategory K]
 def point : K ⥤ SSet.{u}
 ```
 
-### [PointwiseConePoints.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/HomotopyWeight/PointwiseConePoints.lean)
+### [PointwiseConePoints.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/PointwiseConePoints.lean)
 
 OE02、50原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.PointwiseConePoints`。
 
@@ -3440,7 +3440,7 @@ OE02、50原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyW
 規約：元の図式・重み・係数 frame を保持する。
 使われ方：通常の錐の始域 frame の類の正規化。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.HomotopyWeight.pointwiseTensorFrameHomIso_point`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseTensorFrameHomIso_point`。
 
 ```lean
 universe u v
@@ -3449,13 +3449,13 @@ variable (K : Type u) [SmallCategory K]
   (W : K ⥤ SSet.{u}) (B : SimplexCategory ⥤ C)
 
 lemma pointwiseTensorFrameHomIso_point {F : K ⥤ C}
-    (f : (pointwiseRealization K B).obj W ⟶ F) :
-    ((((pointwiseTensorFrameHomIso K W B).app F).hom).app (Opposite.op (SimplexCategory.mk 0)))
-        ((pointwiseTensorFrameZeroIso K W B).hom ≫ f) =
-      conePoint K W ((pointwiseRealizationAdjunction K B).homEquiv W F f)
+    (f : (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseRealization K B).obj W ⟶ F) :
+    ((((_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseTensorFrameHomIso K W B).app F).hom).app (Opposite.op (SimplexCategory.mk 0)))
+        ((_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseTensorFrameZeroIso K W B).hom ≫ f) =
+      _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.conePoint K W ((_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseRealizationAdjunction K B).homEquiv W F f)
 ```
 
-### [PointwisePiZero.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/HomotopyWeight/PointwisePiZero.lean)
+### [PointwisePiZero.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/PointwisePiZero.lean)
 
 OE02、98原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.PointwisePiZero`。
 
@@ -3466,7 +3466,7 @@ OE02、98原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyW
 規約：元の置換図式を始域とし、単体集合のモデル構造は仮定しない。
 使われ方：定値図式を始域とする一般 homotopy 極限の Hom 比較。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.HomotopyWeight.pointwiseWeightedHomPiZeroEquiv`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseWeightedHomPiZeroEquiv`。
 
 ```lean
 universe u v w t
@@ -3474,7 +3474,7 @@ variable (K : Type u) [SmallCategory K]
   {C : Type v} [Category.{u} C] [HasColimitsOfSize.{0, u} C]
   [ModelCategory C] [ModelCategory (K ⥤ C)]
   (W : K ⥤ SSet.{u}) (B : SimplexCategory ⥤ C)
-  (hW : (boundaries K).rlp.llp (initial.to W))
+  (hW : (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.boundaries K).rlp.llp (initial.to W))
   (hB : reedyLeft simplex (cofibrations C) (initial.to B))
   (htriv : ∀ {F G : K ⥤ C} (p : F ⟶ G), trivialFibrations (K ⥤ C) p →
     ∀ k, trivialFibrations C (p.app k))
@@ -3484,11 +3484,11 @@ variable (K : Type u) [SmallCategory K]
   [Q.IsLocalization (weakEquivalences (K ⥤ C))]
 
 def pointwiseWeightedHomPiZeroEquiv (F : K ⥤ C) [IsFibrant F] :
-    SSet.π₀ ((pointwiseWeightedHom K W B).obj F) ≃
-      (Q.obj ((pointwiseRealization K B).obj W) ⟶ Q.obj F)
+    SSet.π₀ ((_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseWeightedHom K W B).obj F) ≃
+      (Q.obj ((_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseRealization K B).obj W) ⟶ Q.obj F)
 ```
 
-### [PointwiseRealization.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/HomotopyWeight/PointwiseRealization.lean)
+### [PointwiseRealization.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/PointwiseRealization.lean)
 
 OE02、96原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.PointwiseRealization`。
 
@@ -3499,7 +3499,7 @@ OE02、96原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyW
 規約：単体集合のモデル構造や値圏の局所表示可能性は仮定しない。
 使われ方：定値 E 代数図式の具体的な射影 cofibrant 置換。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.HomotopyWeight.pointwiseRealization`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseRealization`。
 
 ```lean
 universe u v
@@ -3510,7 +3510,7 @@ variable (K : Type u) [SmallCategory K]
 abbrev pointwiseRealization : (K ⥤ SSet.{u}) ⥤ K ⥤ C
 ```
 
-### [PointwiseTensorFrame.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/HomotopyWeight/PointwiseTensorFrame.lean)
+### [PointwiseTensorFrame.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/PointwiseTensorFrame.lean)
 
 OE02、150原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.PointwiseTensorFrame`。
 
@@ -3521,7 +3521,7 @@ OE02、150原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.Homotopy
 規約：図式の右類の評価での判定だけを使い、単体集合モデルは不要。
 使われ方：定値図式からの局所化 Hom と始域 frame の重み付き錐の比較。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.HomotopyWeight.pointwiseTensorRealization`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseTensorRealization`。
 
 ```lean
 universe u v
@@ -3532,7 +3532,7 @@ variable (K : Type u) [SmallCategory K]
 abbrev pointwiseTensorRealization : SSet.{u} ⥤ K ⥤ C
 ```
 
-### [PointwiseTensorSource.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/HomotopyWeight/PointwiseTensorSource.lean)
+### [PointwiseTensorSource.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/PointwiseTensorSource.lean)
 
 OE02、91原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.PointwiseTensorSource`。
 
@@ -3543,7 +3543,7 @@ OE02、91原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyW
 規約：実現の射は元の Yoneda 拡張族の同じ射。
 使われ方：元の定値図式からの局所化 Hom の始域自然性。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.HomotopyWeight.pointwiseRealization_homEquiv_source`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseRealization_homEquiv_source`。
 
 ```lean
 universe u v
@@ -3552,14 +3552,14 @@ variable (K : Type u) [SmallCategory K]
   {B B' : SimplexCategory ⥤ C} (a : B ⟶ B')
 
 lemma pointwiseRealization_homEquiv_source (X : K ⥤ SSet.{u}) (F : K ⥤ C)
-    (f : (pointwiseRealization K B').obj X ⟶ F) :
-    (pointwiseRealizationAdjunction K B).homEquiv X F
+    (f : (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseRealization K B').obj X ⟶ F) :
+    (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseRealizationAdjunction K B).homEquiv X F
         (((Functor.whiskeringRight K SSet.{u} C).map (Realization.family.map a)).app X ≫ f) =
-      (pointwiseRealizationAdjunction K B').homEquiv X F f ≫
+      (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseRealizationAdjunction K B').homEquiv X F f ≫
         ((Functor.whiskeringRight K C SSet.{u}).map (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap a)).app F
 ```
 
-### [ProjectiveBoundaryContraction.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/HomotopyWeight/ProjectiveBoundaryContraction.lean)
+### [ProjectiveBoundaryContraction.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/ProjectiveBoundaryContraction.lean)
 
 OE02、78原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.ProjectiveBoundaryContraction`。
 
@@ -3568,7 +3568,7 @@ OE02、78原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyW
 規約：IS-W2 R03a.1の証明分割。元の重みの全射を保持する。
 使われ方：同じ指定重み比較の右射の制限の実際のホモトピー逆。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.HomotopyWeight.weightIntervalProjection`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weightIntervalProjection`。
 
 ```lean
 universe u
@@ -3578,7 +3578,7 @@ def weightIntervalProjection (V : I ⥤ SSet.{u}) :
     V ⊗ (Functor.const I).obj (Δ[1] : SSet.{u}) ⟶ V
 ```
 
-### [ProjectiveHornCorner.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/HomotopyWeight/ProjectiveHornCorner.lean)
+### [ProjectiveHornCorner.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/ProjectiveHornCorner.lean)
 
 OE02、50原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.ProjectiveHornCorner`。
 
@@ -3587,19 +3587,19 @@ OE02、50原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyW
 規約：IS-W2 R03a.1の証明分割。図式モデル構造は使わない。
 使われ方：Kan係数への重み制限の全境界の持ち上げ。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.HomotopyWeight.projectiveHorn_corner_lifting`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.projectiveHorn_corner_lifting`。
 
 ```lean
 universe u
 variable (I : Type u) [SmallCategory I]
 
 theorem projectiveHorn_corner_lifting {V W F G : I ⥤ SSet.{u}} (j : V ⟶ W)
-    (hj : (horns I).rlp.llp j) {A B : SSet.{u}} (f : A ⟶ B) [Mono f]
+    (hj : (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.horns I).rlp.llp j) {A B : SSet.{u}} (f : A ⟶ B) [Mono f]
     (p : F ⟶ G) (hp : ∀ i, Fibration (p.app i)) :
     HasLiftingProperty (weightedCorner j f).ι p
 ```
 
-### [ProjectiveHornFactorization.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/HomotopyWeight/ProjectiveHornFactorization.lean)
+### [ProjectiveHornFactorization.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/ProjectiveHornFactorization.lean)
 
 OE02、55原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.ProjectiveHornFactorization`。
 
@@ -3608,17 +3608,17 @@ OE02、55原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyW
 規約：IS-W2 R03a.1の証明分割。重みの射と分解の等式を保つ。
 使われ方：重みの成分ごとの弱同値を、制限の二種類のホモトピー同値へ分ける。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.HomotopyWeight.projectiveHorn_cofibration`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.projectiveHorn_cofibration`。
 
 ```lean
 universe u
 variable (I : Type u) [SmallCategory I]
 
 theorem projectiveHorn_cofibration {V W : I ⥤ SSet.{u}} (j : V ⟶ W)
-    (hj : (horns I).rlp.llp j) : (boundaries I).rlp.llp j
+    (hj : (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.horns I).rlp.llp j) : (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.boundaries I).rlp.llp j
 ```
 
-### [ProjectiveHornGenerators.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/HomotopyWeight/ProjectiveHornGenerators.lean)
+### [ProjectiveHornGenerators.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/ProjectiveHornGenerators.lean)
 
 OE02、36原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.ProjectiveHornGenerators`。
 
@@ -3627,7 +3627,7 @@ OE02、36原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyW
 規約：IS-W2 R03a.1の証明分割。SSetモデル構造を仮定しない。
 使われ方：同じ重み比較の射影anodyne・点ごとのfibration分解。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.HomotopyWeight.horns`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.horns`。
 
 ```lean
 universe u
@@ -3636,7 +3636,7 @@ variable (K : Type u) [SmallCategory K]
 abbrev horns : MorphismProperty (K ⥤ SSet.{u})
 ```
 
-### [ProjectiveHornValues.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/HomotopyWeight/ProjectiveHornValues.lean)
+### [ProjectiveHornValues.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/ProjectiveHornValues.lean)
 
 OE02、62原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.ProjectiveHornValues`。
 
@@ -3645,17 +3645,17 @@ OE02、62原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyW
 規約：IS-W2 R03a.1の証明分割。モデル構造や弱同値のクラスを入力しない。
 使われ方：元の比較射の自由ホーン分解の成分ごとの性質。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.HomotopyWeight.free_horn_anodyne`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.free_horn_anodyne`。
 
 ```lean
 universe u
 variable (K : Type u) [SmallCategory K]
 
 theorem free_horn_anodyne (k l : K) {X Y : SSet.{u}} (f : X ⟶ Y)
-    (hf : SSet.modelCategoryQuillen.J f) : SSet.anodyneExtensions (((free K k).map f).app l)
+    (hf : SSet.modelCategoryQuillen.J f) : SSet.anodyneExtensions (((_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.free K k).map f).app l)
 ```
 
-### [ProjectiveHornWeakFactorization.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/HomotopyWeight/ProjectiveHornWeakFactorization.lean)
+### [ProjectiveHornWeakFactorization.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/ProjectiveHornWeakFactorization.lean)
 
 OE02、58原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.ProjectiveHornWeakFactorization`。
 
@@ -3664,17 +3664,17 @@ OE02、58原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyW
 規約：IS-W2 R03a.1の証明分割。一般の非Kan標的の場合をこの補題で代用しない。
 使われ方：重みのホーン置換後に元の右射の切断とホモトピーを得る。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.HomotopyWeight.projectiveHornFactorization_i_weak`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.projectiveHornFactorization_i_weak`。
 
 ```lean
 universe u
 variable (I : Type u) [SmallCategory I]
 
 theorem projectiveHornFactorization_i_weak {V W : I ⥤ SSet.{u}} (j : V ⟶ W) (i : I) :
-    IsWeakHomotopyEquivalence ((projectiveHornFactorization I j).i.app i)
+    IsWeakHomotopyEquivalence ((_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.projectiveHornFactorization I j).i.app i)
 ```
 
-### [ProjectiveWeightComparison.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/HomotopyWeight/ProjectiveWeightComparison.lean)
+### [ProjectiveWeightComparison.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/ProjectiveWeightComparison.lean)
 
 OE02、74原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.ProjectiveWeightComparison`。
 
@@ -3683,17 +3683,17 @@ OE02、74原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyW
 規約：IS-W2 R03a.1の型つきの中間定理。SSetモデル構造は仮定しない。
 使われ方：元のBK重みと指定された一点重みの同じ一つの比較射。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.HomotopyWeight.projectiveHornReplacement_kan`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.projectiveHornReplacement_kan`。
 
 ```lean
 universe u
 variable (I : Type u) [SmallCategory I]
 
 theorem projectiveHornReplacement_kan (W : I ⥤ SSet.{u}) (i : I) :
-    SSet.KanComplex ((projectiveHornFactorization I (terminal.from W)).Z.obj i)
+    SSet.KanComplex ((_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.projectiveHornFactorization I (terminal.from W)).Z.obj i)
 ```
 
-### [ProjectiveWeightRestriction.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/HomotopyWeight/ProjectiveWeightRestriction.lean)
+### [ProjectiveWeightRestriction.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/ProjectiveWeightRestriction.lean)
 
 OE02、89原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.ProjectiveWeightRestriction`。
 
@@ -3702,7 +3702,7 @@ OE02、89原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyW
 規約：IS-W2 R03a.1の既存の延長法則の証明分割。
 使われ方：各値がKanの係数に対する射影anodyneな重み制限。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.HomotopyWeight.weightedSectionsPre_trivialKanFibration_of_corner_extensions`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weightedSectionsPre_trivialKanFibration_of_corner_extensions`。
 
 ```lean
 universe u
@@ -3716,7 +3716,7 @@ theorem weightedSectionsPre_trivialKanFibration_of_corner_extensions
     TrivialKanFibration (weightedSectionsPre j H)
 ```
 
-### [ProjectiveWeightTensorLifting.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/HomotopyWeight/ProjectiveWeightTensorLifting.lean)
+### [ProjectiveWeightTensorLifting.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/ProjectiveWeightTensorLifting.lean)
 
 OE02、48原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.ProjectiveWeightTensorLifting`。
 
@@ -3725,20 +3725,20 @@ OE02、48原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyW
 規約：IS-W2 R03a.1の切断と区間収縮の証明分割。
 使われ方：同じ元の重み全体の境界から区間への持ち上げ。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.HomotopyWeight.projectiveWeight_tensor_lifting`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.projectiveWeight_tensor_lifting`。
 
 ```lean
 universe u
 variable (I : Type u) [SmallCategory I]
 
 theorem projectiveWeight_tensor_lifting (W : I ⥤ SSet.{u})
-    (hW : (boundaries I).rlp.llp (initial.to W))
+    (hW : (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.boundaries I).rlp.llp (initial.to W))
     {A B : SSet.{u}} (f : A ⟶ B) [Mono f] {F G : I ⥤ SSet.{u}} (p : F ⟶ G)
     (hp : ∀ i, SSet.modelCategoryQuillen.I.rlp (p.app i)) :
     HasLiftingProperty ((weightedParameterFunctor W).map f) p
 ```
 
-### [RealizationAugmentation.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/HomotopyWeight/RealizationAugmentation.lean)
+### [RealizationAugmentation.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/RealizationAugmentation.lean)
 
 OE02、73原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.RealizationAugmentation`。
 
@@ -3749,7 +3749,7 @@ OE02、73原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyW
 規約：元の零次同型と augmentation を選び直さない。
 使われ方：通常の錐の始域 frame の族の正規化。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.HomotopyWeight.realizationAugmentation_homEquiv`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.realizationAugmentation_homEquiv`。
 
 ```lean
 universe u v
@@ -3759,11 +3759,11 @@ variable {C : Type v} [Category.{u} C] [HasColimitsOfSize.{0, u} C]
 lemma realizationAugmentation_homEquiv (a : B ⟶ (Functor.const SimplexCategory).obj Y)
     (X : SSet.{u}) (t : X ⟶ ⊤_ SSet.{u}) (n : SimplexCategoryᵒᵖ) (x : X.obj n) :
     (((Realization.adjunction B).homEquiv X Y
-      ((Realization.functor B).map t ≫ (realizationPointIso B).hom ≫
+      ((Realization.functor B).map t ≫ (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.realizationPointIso B).hom ≫
         a.app (SimplexCategory.mk 0))).app n) x = a.app n.unop
 ```
 
-### [RealizationCoefficientMap.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/HomotopyWeight/RealizationCoefficientMap.lean)
+### [RealizationCoefficientMap.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/RealizationCoefficientMap.lean)
 
 OE02、133原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.RealizationCoefficientMap`。
 
@@ -3774,7 +3774,7 @@ OE02、133原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.Homotopy
 規約：既存の mate による射を保持し、モデル構造を仮定しない。
 使われ方：忘却後の同じ計算対象と重み付き end の比較の自然性。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.HomotopyWeight.realizationHomEquiv_app`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.realizationHomEquiv_app`。
 
 ```lean
 universe u v
@@ -3790,7 +3790,7 @@ lemma realizationHomEquiv_app (W : Kᵒᵖ ⥤ SSet.{u}) (Y : C)
       (FrameWeightRealization.presheafRealization K A).map (uliftYonedaEquiv.symm x) ≫ f
 ```
 
-### [RealizationInvariance.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/HomotopyWeight/RealizationInvariance.lean)
+### [RealizationInvariance.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/RealizationInvariance.lean)
 
 OE02、67原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.RealizationInvariance`。
 
@@ -3801,13 +3801,13 @@ OE02、67原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyW
 規約：図式の射影 cofibrancy や単体集合のモデル構造は要求しない。
 使われ方：実際の E 代数の一般 homotopy 極限の擬同型不変性。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.HomotopyWeight.realization_map_frame_weakEquivalence`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.realization_map_frame_weakEquivalence`。
 
 ```lean
 universe u v
 variable (K : Type u) [SmallCategory K]
   {C : Type v} [Category.{u} C] [HasColimitsOfSize.{u, u} C] [ModelCategory C]
-  (W : Kᵒᵖ ⥤ SSet.{u}) (hW : (boundaries Kᵒᵖ).rlp.llp (initial.to W))
+  (W : Kᵒᵖ ⥤ SSet.{u}) (hW : (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.boundaries Kᵒᵖ).rlp.llp (initial.to W))
 
 lemma realization_map_frame_weakEquivalence
     (fact : MorphismProperty.FunctorialFactorizationData
@@ -3823,7 +3823,7 @@ lemma realization_map_frame_weakEquivalence
     weakEquivalences C ((FrameWeightRealization.map K a).app W)
 ```
 
-### [Reindex.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/HomotopyWeight/Reindex.lean)
+### [Reindex.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/Reindex.lean)
 
 OE02、41原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.Reindex`。
 
@@ -3834,19 +3834,19 @@ OE02、41原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyW
 規約：通常の添字圏の同値を使い、単体集合のモデル構造は不要。
 使われ方：二重反対圏へ移した cofibrant 重みを元の小圏の end に入力する。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.HomotopyWeight.reindex_cofibration`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.reindex_cofibration`。
 
 ```lean
 universe u
 variable {J K : Type u} [SmallCategory J] [SmallCategory K]
 
 lemma reindex_cofibration (e : J ≌ K) {W W' : K ⥤ SSet.{u}} (i : W ⟶ W')
-    (hi : (boundaries K).rlp.llp i) :
-    (boundaries J).rlp.llp
+    (hi : (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.boundaries K).rlp.llp i) :
+    (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.boundaries J).rlp.llp
       (((Functor.whiskeringLeft J K SSet.{u}).obj e.functor).map i)
 ```
 
-### [TensorConeUnitPoint.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/HomotopyWeight/TensorConeUnitPoint.lean)
+### [TensorConeUnitPoint.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/TensorConeUnitPoint.lean)
 
 OE02、9原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.TensorConeUnitPoint`。
 
@@ -3857,7 +3857,7 @@ OE02、9原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWe
 
 native所有元表には0宣言。抜粋対象の名前つき公開ソース宣言なし（import用、匿名instance、生成宣言など）。原ソースと全native表を参照。
 
-### [TensorPiZero.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/HomotopyWeight/TensorPiZero.lean)
+### [TensorPiZero.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/TensorPiZero.lean)
 
 OE02、100原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.TensorPiZero`。
 
@@ -3868,7 +3868,7 @@ OE02、100原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.Homotopy
 規約：同じ重み・実現対象・局所化を保持し、単体集合モデルは仮定しない。
 使われ方：一般 homotopy 極限の擬同型不変性の検出。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.HomotopyWeight.unitTensorWeightIso`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.unitTensorWeightIso`。
 
 ```lean
 universe u v w t
@@ -3878,7 +3878,7 @@ def unitTensorWeightIso (W : K ⥤ SSet.{u}) :
     (WeightedCones.tensorDiagram K W).obj (𝟙_ SSet.{u}) ≅ W
 ```
 
-### [TensorPiZeroNaturality.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/HomotopyWeight/TensorPiZeroNaturality.lean)
+### [TensorPiZeroNaturality.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/TensorPiZeroNaturality.lean)
 
 OE02、114原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.TensorPiZeroNaturality`。
 
@@ -3889,7 +3889,7 @@ OE02、114原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.Homotopy
 規約：実現の射は既存の随伴の mate そのものを使う。
 使われ方：係数の弱同値から一般 homotopy 極限の擬同型を検出する。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.HomotopyWeight.tensorRealization_homEquiv_frame_naturality`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.tensorRealization_homEquiv_frame_naturality`。
 
 ```lean
 universe u v w t
@@ -3899,15 +3899,15 @@ variable (K : Type u) [SmallCategory K]
 
 lemma tensorRealization_homEquiv_frame_naturality
     {B B' : K ⥤ SimplexCategory ⥤ C} (a : B ⟶ B') (X : SSet.{u}) (Y : C)
-    (f : (tensorRealization K W B').obj X ⟶ Y) :
-    (tensorRealizationAdjunction K W B).homEquiv X Y
+    (f : (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.tensorRealization K W B').obj X ⟶ Y) :
+    (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.tensorRealizationAdjunction K W B).homEquiv X Y
         ((FrameWeightRealization.map K a).app ((WeightedCones.tensorDiagram Kᵒᵖ W).obj X) ≫ f) =
-      (tensorRealizationAdjunction K W B').homEquiv X Y f ≫
+      (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.tensorRealizationAdjunction K W B').homEquiv X Y f ≫
         (WeightedCones.coneSpace Kᵒᵖ W).map
           (((FrameWeightRealization.homFamily K).map a.op).app Y)
 ```
 
-### [TensorPiZeroTarget.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/HomotopyWeight/TensorPiZeroTarget.lean)
+### [TensorPiZeroTarget.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/TensorPiZeroTarget.lean)
 
 OE02、59原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.TensorPiZeroTarget`。
 
@@ -3918,27 +3918,27 @@ OE02、59原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyW
 規約：モデル構造は元の値圏だけに置く。
 使われ方：反対圏の右 frame から元の始域自然性を得る。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.HomotopyWeight.frameConePiZeroLocalizationEquiv_target`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.frameConePiZeroLocalizationEquiv_target`。
 
 ```lean
 universe u v w t
 variable (K : Type u) [SmallCategory K]
   {C : Type v} [Category.{u} C] [HasColimitsOfSize.{u, u} C] [ModelCategory C]
   (W : Kᵒᵖ ⥤ SSet.{u}) (B : K ⥤ SimplexCategory ⥤ C)
-  (hW : (boundaries Kᵒᵖ).rlp.llp (initial.to W))
+  (hW : (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.boundaries Kᵒᵖ).rlp.llp (initial.to W))
   (hB : ∀ k, reedyLeft simplex (cofibrations C) (initial.to (B.obj k)))
   (hconst : ∀ k, ∀ {n m : SimplexCategory} (f : n ⟶ m),
     weakEquivalences C ((B.obj k).map f))
   {D : Type w} [Category.{t} D] (Q : C ⥤ D) [Q.IsLocalization (weakEquivalences C)]
 
 lemma frameConePiZeroLocalizationEquiv_target {Y Z : C} [IsFibrant Y] [IsFibrant Z]
-    (f : Y ⟶ Z) (z : SSet.π₀ ((frameCone K W B).obj Y)) :
-    frameConePiZeroLocalizationEquiv K W B hW hB hconst Q Z
-        (SSet.mapπ₀ ((frameCone K W B).map f) z) =
-      frameConePiZeroLocalizationEquiv K W B hW hB hconst Q Y z ≫ Q.map f
+    (f : Y ⟶ Z) (z : SSet.π₀ ((_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.frameCone K W B).obj Y)) :
+    _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.frameConePiZeroLocalizationEquiv K W B hW hB hconst Q Z
+        (SSet.mapπ₀ ((_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.frameCone K W B).map f) z) =
+      _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.frameConePiZeroLocalizationEquiv K W B hW hB hconst Q Y z ≫ Q.map f
 ```
 
-### [TensorRealization.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/HomotopyWeight/TensorRealization.lean)
+### [TensorRealization.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/TensorRealization.lean)
 
 OE02、121原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.TensorRealization`。
 
@@ -3949,7 +3949,7 @@ OE02、121原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.Homotopy
 規約：単体集合のモデル構造は不要で、同じ重みと係数 frame を保持する。
 使われ方：重み付き錐空間と実現対象への局所化 Hom の比較。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.HomotopyWeight.tensorRealization`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.tensorRealization`。
 
 ```lean
 universe u v
@@ -3960,7 +3960,7 @@ variable (K : Type u) [SmallCategory K]
 abbrev tensorRealization : SSet.{u} ⥤ C
 ```
 
-### [Values.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/HomotopyWeight/Values.lean)
+### [Values.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/Values.lean)
 
 OE02、72原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.Values`。
 
@@ -3971,17 +3971,17 @@ OE02、72原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyW
 規約：切断と収縮は各頂点ごとのもの。図式全体での自然な切断は主張しない。
 使われ方：homotopy 極限の重みの各値を一点と比較する。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.HomotopyWeight.comparison_mono_rlp`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.comparison_mono_rlp`。
 
 ```lean
 universe u
 variable (K : Type u) [SmallCategory K]
 
 lemma comparison_mono_rlp (k : K) :
-    (MorphismProperty.monomorphisms SSet.{u}).rlp ((comparison K).app k)
+    (MorphismProperty.monomorphisms SSet.{u}).rlp ((_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.comparison K).app k)
 ```
 
-### [WeightIntervalBoundary.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/HomotopyWeight/WeightIntervalBoundary.lean)
+### [WeightIntervalBoundary.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/WeightIntervalBoundary.lean)
 
 OE02、92原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.WeightIntervalBoundary`。
 
@@ -3990,7 +3990,7 @@ OE02、92原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyW
 規約：IS-W2 R03a.1の境界持ち上げによる収縮の証明分割。
 使われ方：元の重みの同じ切断を区間で恒等射へ結ぶ。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.HomotopyWeight.weight_boundaryMap_naturality`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight_boundaryMap_naturality`。
 
 ```lean
 universe u
@@ -4000,7 +4000,7 @@ theorem weight_boundaryMap_naturality {X Y E F : SSet.{u}} (r : X ⟶ Y) (t : E 
     (r ▷ (∂Δ[1] : SSet.{u})) ≫ boundaryMap c d = boundaryMap a b ≫ t
 ```
 
-### [WeightedSourceHomotopy.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/HomotopyWeight/WeightedSourceHomotopy.lean)
+### [WeightedSourceHomotopy.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyWeight/WeightedSourceHomotopy.lean)
 
 OE02、145原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.WeightedSourceHomotopy`。
 
@@ -4009,7 +4009,7 @@ OE02、145原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.Homotopy
 規約：IS-W2 R03a.1の重みの前合成の法則。成分ごとの別々の逆射ではない。
 使われ方：境界右持ち上げ性を持つ重みの射の切断と収縮の輸送。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.HomotopyWeight.weightedSourceHomotopySection`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weightedSourceHomotopySection`。
 
 ```lean
 universe u
@@ -4020,7 +4020,7 @@ def weightedSourceHomotopySection {V W : I ⥤ SSet.{u}}
     V ⊗ (Functor.const I).obj (weightedSections W H ⊗ (Δ[1] : SSet.{u})) ⟶ H
 ```
 
-### [ArrowSpanGrothendieck.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/ArrowSpanGrothendieck.lean)
+### [ArrowSpanGrothendieck.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/ArrowSpanGrothendieck.lean)
 
 OE03、124原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ArrowSpanGrothendieck`。
 
@@ -4031,7 +4031,7 @@ OE03、124原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunction
 規約：元の frame の単体・両脚・中間射を変更しない。
 使われ方：分解側の余終性と右脚の全図式の不変性を組み合わせる比較。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.ArrowSpan.rightDiagram`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ArrowSpan.rightDiagram`。
 
 ```lean
 universe u v
@@ -4040,7 +4040,7 @@ variable {C : Type u} [Category.{v} C] (L R : MorphismProperty C) (X Y : C)
 abbrev rightDiagram : R.Under ⊤ Y ⥤ Cat.{v, max u v}
 ```
 
-### [AsSmallHammockHomFamily.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/AsSmallHammockHomFamily.lean)
+### [AsSmallHammockHomFamily.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/AsSmallHammockHomFamily.lean)
 
 OE03、71原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.AsSmallHammockHomFamily`。
 
@@ -4049,18 +4049,18 @@ OE03、71原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：一つの実自然変換を構成してから coherent な比較にする。
 使われ方：right frame 比較の終端と同じ Kan hammock 豊穣 Hom 図式の整合。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.asSmallHammockHomFamilyIso`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.asSmallHammockHomFamilyIso`。
 
 ```lean
 universe u v
 variable {C : Type u} [Category.{v} C] (W : MorphismProperty C) [W.IsMultiplicative] (X : C)
 
 def asSmallHammockHomFamilyIso :
-    AsSmall.down ⋙ hammockHomFamily W X ≅
-      hammockHomFamily (AsSmallComparison.weak W) (AsSmall.up.obj X)
+    AsSmall.down ⋙ _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.hammockHomFamily W X ≅
+      _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.hammockHomFamily (AsSmallComparison.weak W) (AsSmall.up.obj X)
 ```
 
-### [AsSmallHammockHomNormalization.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/AsSmallHammockHomNormalization.lean)
+### [AsSmallHammockHomNormalization.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/AsSmallHammockHomNormalization.lean)
 
 OE03、76原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.AsSmallHammockHomNormalization`。
 
@@ -4069,18 +4069,18 @@ OE03、76原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：全同型とは別の点ごとの同値を選ばない。
 使われ方：同じ終端図式と Yoneda 比較を合成するときの零単体回収。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.asSmallKanHammockHomFamilyMap_app`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.asSmallKanHammockHomFamilyMap_app`。
 
 ```lean
 universe u v
 variable {C : Type u} [Category.{v} C] (W : MorphismProperty C) [W.IsMultiplicative] (X : C)
 
 lemma asSmallKanHammockHomFamilyMap_app (Y : AsSmall.{max u v} C) :
-    (asSmallKanHammockHomFamilyMap W X).app Y =
+    (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.asSmallKanHammockHomFamilyMap W X).app Y =
       _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (AsSmallComparison.colimitIso W X (AsSmall.down.obj Y)).hom
 ```
 
-### [BarInitialComparison.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/BarInitialComparison.lean)
+### [BarInitialComparison.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/BarInitialComparison.lean)
 
 OE03、44原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.BarInitialComparison`。
 
@@ -4091,7 +4091,7 @@ OE03、44原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：始対象は明示的に指定する。単体集合モデルは要求しない。
 使われ方：恒等右脚から全右脚への Hom 図式の比較。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.BarRows.fromInitial`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.BarRows.fromInitial`。
 
 ```lean
 universe v uD vD
@@ -4101,7 +4101,7 @@ variable {D : Type uD} [Category.{vD} D] (F : D ⥤ SSet.{v})
 def fromInitial : (Functor.const D).obj (F.obj i) ⟶ F
 ```
 
-### [BarPointwiseInvariance.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/BarPointwiseInvariance.lean)
+### [BarPointwiseInvariance.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/BarPointwiseInvariance.lean)
 
 OE03、99原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.BarPointwiseInvariance`。
 
@@ -4120,16 +4120,16 @@ OE03、99原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 ## 使われ方
 固定右脚の Hom と、全右脚を走る bar の比較に使う。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.BarRows.rowMap`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.BarRows.rowMap`。
 
 ```lean
 universe v uD vD
 variable {D : Type uD} [Category.{vD} D] {F G : D ⥤ SSet.{v}}
 
-abbrev rowMap (η : F ⟶ G) (n : SimplexCategoryᵒᵖ) : row F n ⟶ row G n
+abbrev rowMap (η : F ⟶ G) (n : SimplexCategoryᵒᵖ) : _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.BarRows.row F n ⟶ _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.BarRows.row G n
 ```
 
-### [BarRowsCoproduct.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/BarRowsCoproduct.lean)
+### [BarRowsCoproduct.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/BarRowsCoproduct.lean)
 
 OE03、85原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.BarRowsCoproduct`。
 
@@ -4147,7 +4147,7 @@ OE03、85原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 ## 使われ方
 固定右脚の Hom の不変性を bar 全体の不変性に移すために使う。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.BarRows.row`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.BarRows.row`。
 
 ```lean
 universe v uD vD
@@ -4156,7 +4156,7 @@ variable {D : Type uD} [Category.{vD} D] (F : D ⥤ SSet.{v})
 abbrev row (n : SimplexCategoryᵒᵖ) : SSet.{max uD vD v}
 ```
 
-### [BarValueInclusion.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/BarValueInclusion.lean)
+### [BarValueInclusion.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/BarValueInclusion.lean)
 
 OE03、63原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.BarValueInclusion`。
 
@@ -4167,7 +4167,7 @@ OE03、63原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：元の各値の零でない次数も全て同じ一定の基底射列へ送る。
 使われ方：元の固定右脚の Hom から全右脚の bar への射の反転。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.BarRows.valueInclusion`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.BarRows.valueInclusion`。
 
 ```lean
 universe v uD vD
@@ -4177,7 +4177,7 @@ def valueInclusion (d : D) : SSet.uliftFunctor.{max uD vD, v}.obj (F.obj d) ⟶
     (BarConstruction.functor D).obj F
 ```
 
-### [CofinalAnodyneImage.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/CofinalAnodyneImage.lean)
+### [CofinalAnodyneImage.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/CofinalAnodyneImage.lean)
 
 OE03、64原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CofinalAnodyneImage`。
 
@@ -4188,7 +4188,7 @@ OE03、64原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：元の射や両対象を置き換えず、単体集合モデルを要求しない。
 使われ方：固定右脚の全比較の同じ局所化における反転性。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.leftAnodyne_anodyne`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.leftAnodyne_anodyne`。
 
 ```lean
 universe u uH vH
@@ -4197,7 +4197,7 @@ lemma leftAnodyne_anodyne {A B : SSet.{u}} (i : A ⟶ B) (hi : _root_.SerrePosit
     SSet.anodyneExtensions i
 ```
 
-### [CommaNerveBarProjection.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/CommaNerveBarProjection.lean)
+### [CommaNerveBarProjection.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/CommaNerveBarProjection.lean)
 
 OE03、107原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CommaNerveBarProjection`。
 
@@ -4208,19 +4208,19 @@ OE03、107原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunction
 規約：元の射列・構造射・全単体作用素を保つ。単体集合モデルは仮定しない。
 使われ方：Thomason 比較の証明に挟む comma 図式の全体の射影。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.CommaNerve.projection`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CommaNerve.projection`。
 
 ```lean
 universe uE vE uD vD
 variable {E : Type uE} [Category.{vE} E] {D : Type uD} [Category.{vD} D]
   (p : E ⥤ D) (n : ℕ)
 
-def projection : nerve (values p n).Elements ⟶
+def projection : nerve (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CommaNerve.values p n).Elements ⟶
     (Functor.const SimplexCategoryᵒᵖ).obj
       (ULift.{max uD vD} (ComposableArrows E n))
 ```
 
-### [CommaNerveContraction.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/CommaNerveContraction.lean)
+### [CommaNerveContraction.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/CommaNerveContraction.lean)
 
 OE03、95原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CommaNerveContraction`。
 
@@ -4231,7 +4231,7 @@ OE03、95原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：添字・値の宇宙を分け、元の全射列と構造射を保持する。
 使われ方：Thomason 比較の証明に挟む comma 図式の各行の収縮。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.CommaNerve.values`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CommaNerve.values`。
 
 ```lean
 universe uE vE uD vD
@@ -4241,7 +4241,7 @@ variable {E : Type uE} [Category.{vE} E] {D : Type uD} [Category.{vD} D]
 abbrev values
 ```
 
-### [CommaPreLeftCofinality.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/CommaPreLeftCofinality.lean)
+### [CommaPreLeftCofinality.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/CommaPreLeftCofinality.lean)
 
 OE03、70原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CommaPreLeftCofinality`。
 
@@ -4252,7 +4252,7 @@ OE03、70原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：元の比較射の全対象・全射を保持し、モデル構造を要求しない。
 使われ方：固定右脚ごとの比較を全右脚の図式へ接続する。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.CommaPreLeft.projection_localized_isIso`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CommaPreLeft.projection_localized_isIso`。
 
 ```lean
 universe u
@@ -4264,7 +4264,7 @@ lemma projection_localized_isIso (T : Comma Q R) :
     IsIso (AnodyneHomotopy.anodyneQ.map (nerveMap (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CommaPreLeftRetraction.projection P Q R T)))
 ```
 
-### [ComonadResolutionFunctoriality.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/ComonadResolutionFunctoriality.lean)
+### [ComonadResolutionFunctoriality.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/ComonadResolutionFunctoriality.lean)
 
 OE03、113原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ComonadResolutionFunctoriality`。
 
@@ -4275,7 +4275,7 @@ OE03、113原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunction
 規約：一般の圏と comonad のみを使い、モデル構造は要求しない。
 使われ方：自由単体的局所化へ相対関手を送る。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.ComonadResolution.powerMap`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ComonadResolution.powerMap`。
 
 ```lean
 universe u v
@@ -4289,10 +4289,10 @@ def powerMap {X Y : C} (f : X ⟶ Y) : (n : ℕ) → power G X n ⟶ power G Y n
 方針：同じ G の恒等則を反復する。
 規約：全次数の厳密な等式。
 使われ方：解像を係数に関して関手にする。 -/
-lemma powerMap_id (X : C) (n : ℕ) : powerMap G (𝟙 X) n = 𝟙 (power G X n)
+lemma powerMap_id (X : C) (n : ℕ) : _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ComonadResolution.powerMap G (𝟙 X) n = 𝟙 (power G X n)
 ```
 
-### [ComonadResolutionMap.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/ComonadResolutionMap.lean)
+### [ComonadResolutionMap.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/ComonadResolutionMap.lean)
 
 OE03、149原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ComonadResolutionMap`。
 
@@ -4303,7 +4303,7 @@ OE03、149原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunction
 規約：元の解像と augmentation を保持する。
 使われ方：相対関手を単体的局所化の間の関手へ送る。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.ComonadResolution.oppositeMap_naturality`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ComonadResolution.oppositeMap_naturality`。
 
 ```lean
 universe u v
@@ -4312,12 +4312,12 @@ variable {C : Type u} [Category.{v} C] (G : Comonad C)
 lemma oppositeMap_naturality {X Y : C} (f : X ⟶ Y)
     {n m : SimplexCategoryGenRel} (θ : n ⟶ m) :
     (ComonadResolutionPresentation.oppositeDiagram G Y).map θ ≫
-        (powerMap G f (m.len + 1)).op =
-      (powerMap G f (n.len + 1)).op ≫
+        (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ComonadResolution.powerMap G f (m.len + 1)).op =
+      (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ComonadResolution.powerMap G f (n.len + 1)).op ≫
         (ComonadResolutionPresentation.oppositeDiagram G X).map θ
 ```
 
-### [ConstantBarAugmentation.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/ConstantBarAugmentation.lean)
+### [ConstantBarAugmentation.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/ConstantBarAugmentation.lean)
 
 OE03、97原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ConstantBarAugmentation`。
 
@@ -4328,7 +4328,7 @@ OE03、97原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：元の bar の全作用素と値の宇宙拡大を保持する。単体集合モデルは不要。
 使われ方：固定右脚の値と全右脚上の bar の比較。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.ConstantBar.labels`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ConstantBar.labels`。
 
 ```lean
 universe v uD vD
@@ -4338,7 +4338,7 @@ abbrev labels (D : Type uD) [Category.{vD} D] (K : SSet.{v}) :
     SimplexCategoryᵒᵖ ⥤ SSet.{max uD vD v}
 ```
 
-### [ConstantBarRows.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/ConstantBarRows.lean)
+### [ConstantBarRows.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/ConstantBarRows.lean)
 
 OE03、94原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ConstantBarRows`。
 
@@ -4349,7 +4349,7 @@ OE03、94原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：値と添字の宇宙は独立。単体集合のモデル構造は仮定しない。
 使われ方：定値図式の bar の元の値への augmentation の反転性。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.ConstantBar.values`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ConstantBar.values`。
 
 ```lean
 universe v uD vD
@@ -4358,7 +4358,7 @@ variable (D : Type uD) [Category.{vD} D] (X : Type v)
 abbrev values : D ⥤ Type v
 ```
 
-### [CosimplicialHomCommaInvariance.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/CosimplicialHomCommaInvariance.lean)
+### [CosimplicialHomCommaInvariance.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/CosimplicialHomCommaInvariance.lean)
 
 OE03、58原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CosimplicialHomCommaInvariance`。
 
@@ -4369,7 +4369,7 @@ OE03、58原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：元の右対象の射を保持し、単体集合モデルや Hom の Kan 性は要求しない。
 使われ方：元の分解の全右脚の小さい Cat 値図式の各遷移の不変性。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.CosimplicialHomElements.smallCommaMap_localized_isIso`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CosimplicialHomElements.smallCommaMap_localized_isIso`。
 
 ```lean
 universe u v w
@@ -4378,10 +4378,10 @@ variable {C : Type u} [Category.{v} C] (A : SimplexCategory ⥤ C)
 lemma smallCommaMap_localized_isIso {V W : C} (f : V ⟶ W)
     (hf : IsIso (AnodyneHomotopy.anodyneQ.map ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).map f))) :
     IsIso (AnodyneHomotopy.anodyneQ.map (nerveMap
-      (CostructuredArrow.map (S := smallDiagram.{u, v, w} A) (AsSmall.up.map f))))
+      (CostructuredArrow.map (S := _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CosimplicialHomElements.smallDiagram.{u, v, w} A) (AsSmall.up.map f))))
 ```
 
-### [CosimplicialHomElements.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/CosimplicialHomElements.lean)
+### [CosimplicialHomElements.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/CosimplicialHomElements.lean)
 
 OE03、59原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CosimplicialHomElements`。
 
@@ -4392,7 +4392,7 @@ OE03、59原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：モデル構造・置換・cofibrancy は不要。反対を fiber の要素圏だけに取る。
 使われ方：固定右脚の元の Hom と全右脚の分解の図式の接続。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.CosimplicialHomElements.toComma`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CosimplicialHomElements.toComma`。
 
 ```lean
 universe u v
@@ -4401,7 +4401,7 @@ variable {C : Type u} [Category.{v} C] (A : SimplexCategory ⥤ C) (V : C)
 def toComma : (((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj V).Elements)ᵒᵖ ⥤ CostructuredArrow A V
 ```
 
-### [EnrichedHomFunctor.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/EnrichedHomFunctor.lean)
+### [EnrichedHomFunctor.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/EnrichedHomFunctor.lean)
 
 OE03、71原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.EnrichedHomFunctor`。
 
@@ -4410,7 +4410,7 @@ OE03、71原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：全高次 Hom の作用を保持し、頂点の比較だけから自然性を推論しない。
 使われ方：hammock の strict Hom 図式と Yoneda 側の全比較の入力。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.enrichedHomFunctor`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.enrichedHomFunctor`。
 
 ```lean
 universe u v
@@ -4420,7 +4420,7 @@ variable {D : Type v} [Category.{u} D] [SimplicialCategory D]
 def enrichedHomFunctor : EnrichedFunctor SSet.{u} D _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.KanObject.{u}
 ```
 
-### [EnrichedHomRealization.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/EnrichedHomRealization.lean)
+### [EnrichedHomRealization.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/EnrichedHomRealization.lean)
 
 OE03、77原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.EnrichedHomRealization`。
 
@@ -4429,7 +4429,7 @@ OE03、77原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：宇宙持ち上げと元の全 Hom 作用を保持する。
 使われ方：strict hammock Hom 図式から正本の共変 Hom 関手への全比較。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.enrichedHomCoherent`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.enrichedHomCoherent`。
 
 ```lean
 universe u
@@ -4440,7 +4440,7 @@ def enrichedHomCoherent : SSet.uliftFunctor.{u + 1, u}.obj (SimplicialNerve D) �
     _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u}
 ```
 
-### [EnrichedHomYoneda.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/EnrichedHomYoneda.lean)
+### [EnrichedHomYoneda.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/EnrichedHomYoneda.lean)
 
 OE03、48原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.EnrichedHomYoneda`。
 
@@ -4449,7 +4449,7 @@ OE03、48原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：原本の複製や点ごとの比較による全図式同型の推測はしない。
 使われ方：同じ hammock 終端から正本 Hom∞ への無条件の全比較。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.enrichedHomFunctor_eq_representableHomFunctor`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.enrichedHomFunctor_eq_representableHomFunctor`。
 
 ```lean
 universe u
@@ -4457,10 +4457,10 @@ variable {D : Type u} [Category.{u} D] [SimplicialCategory D]
   [∀ a b : D, KanComplex (SimplicialCategory.sHom a b)]
 
 lemma enrichedHomFunctor_eq_representableHomFunctor (x : D) :
-    enrichedHomFunctor x = _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.representableHomFunctor x
+    _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.enrichedHomFunctor x = _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.representableHomFunctor x
 ```
 
-### [FibrantFrameSpanComparison.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/FibrantFrameSpanComparison.lean)
+### [FibrantFrameSpanComparison.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FibrantFrameSpanComparison.lean)
 
 OE03、126原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FibrantFrameSpanComparison`。
 
@@ -4469,7 +4469,7 @@ OE03、126原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunction
 規約：全単体と元の射を保ち、全対象 fibrant の仮定を加えない。
 使われ方：bifibrant 中継での実 frame と hammock の比較。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.FibrantFrameSpanComparison.fiberNerveMap`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FibrantFrameSpanComparison.fiberNerveMap`。
 
 ```lean
 universe u v
@@ -4477,10 +4477,10 @@ variable {C : Type u} [Category.{v} C] [ModelCategory C]
   {X : C} (q : CofibrantResolution (C := C) simplex X) (Y : C) [IsFibrant Y]
 
 def fiberNerveMap : nerve (AsSmall.{max u v} ((((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom q.obj).obj Y).Elements)ᵒᵖ)) ⟶
-    nerve ((resolutionDiagram q Y).obj (smallInitial Y))
+    nerve ((_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FibrantRightResolutionDiagram.resolutionDiagram q Y).obj (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FibrantRightResolutionDiagram.smallInitial Y))
 ```
 
-### [FibrantFrameSpanNormalization.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/FibrantFrameSpanNormalization.lean)
+### [FibrantFrameSpanNormalization.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FibrantFrameSpanNormalization.lean)
 
 OE03、111原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FibrantFrameSpanNormalization`。
 
@@ -4489,7 +4489,7 @@ OE03、111原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunction
 規約：ホモトピーによる別射への置き換えをしない。
 使われ方：元の二列 roof と hammock の実比較の弱同値性。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.FibrantFrameSpanNormalization.comparisonFunctor`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FibrantFrameSpanNormalization.comparisonFunctor`。
 
 ```lean
 universe u v
@@ -4499,7 +4499,7 @@ variable {C : Type u} [Category.{v} C] [ModelCategory C]
 def comparisonFunctor : (((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom q.obj).obj Y).Elements)ᵒᵖ ⥤ _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.SpecialHammock X Y
 ```
 
-### [FibrantRightResolutionDiagram.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/FibrantRightResolutionDiagram.lean)
+### [FibrantRightResolutionDiagram.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FibrantRightResolutionDiagram.lean)
 
 OE03、118原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FibrantRightResolutionDiagram`。
 
@@ -4508,7 +4508,7 @@ OE03、118原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunction
 規約：元のモデル圏の全対象 fibrant は仮定せず、右終域だけを制限する。
 使われ方：一般モデル圏の frame から全三本矢への実比較の弱同値性。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.FibrantRightResolutionDiagram.smallRightForget`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FibrantRightResolutionDiagram.smallRightForget`。
 
 ```lean
 universe u v
@@ -4519,7 +4519,7 @@ def smallRightForget : AsSmall.{max u v} (_root_.SerrePositivity.InfinityCategor
     AsSmall.{max u v} C
 ```
 
-### [FibrantSourceReducedComparison.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/FibrantSourceReducedComparison.lean)
+### [FibrantSourceReducedComparison.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FibrantSourceReducedComparison.lean)
 
 OE03、89原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FibrantSourceReducedComparison`。
 
@@ -4528,7 +4528,7 @@ OE03、89原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：元の二列の射と全単体作用素を保持する。
 使われ方：bifibrant 部分圏での実 right Kan 比較。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.frameElementSmallIso`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameElementSmallIso`。
 
 ```lean
 universe u v
@@ -4540,7 +4540,7 @@ def frameElementSmallIso :
       nerve (AsSmall.{max u v} ((((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom q.obj).obj Y).Elements)ᵒᵖ))
 ```
 
-### [FibrantSourceReducedFirst.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/FibrantSourceReducedFirst.lean)
+### [FibrantSourceReducedFirst.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FibrantSourceReducedFirst.lean)
 
 OE03、68原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FibrantSourceReducedFirst`。
 
@@ -4549,7 +4549,7 @@ OE03、68原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：同じ元の二列比較射と全単体を保持する。
 使われ方：採用済みの第一関手的分解だけによる一般モデル圏の比較。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.resolutionLeftRoofColimitMap`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.resolutionLeftRoofColimitMap`。
 
 ```lean
 universe u v
@@ -4559,7 +4559,7 @@ variable {C : Type u} [Category.{v} C] [ModelCategory C] {X : C}
 def resolutionLeftRoofColimitMap
 ```
 
-### [FixedRightGrothendieckInversion.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/FixedRightGrothendieckInversion.lean)
+### [FixedRightGrothendieckInversion.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FixedRightGrothendieckInversion.lean)
 
 OE03、82原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FixedRightGrothendieckInversion`。
 
@@ -4570,7 +4570,7 @@ OE03、82原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：元の全図式の比較関手を保持し、単体集合モデルは要求しない。
 使われ方：元の Map^h から三本矢の全図式への比較の分解側の反転性。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.fixedRightGrothendieckComparison_toComma`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.fixedRightGrothendieckComparison_toComma`。
 
 ```lean
 universe u
@@ -4583,7 +4583,7 @@ lemma fixedRightGrothendieckComparison_toComma :
       _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CommaGrothendieck.toComma (P ⋙ Q) R ⋙ Comma.preLeft P Q R
 ```
 
-### [FrameArrowAugmentationLimits.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/FrameArrowAugmentationLimits.lean)
+### [FrameArrowAugmentationLimits.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameArrowAugmentationLimits.lean)
 
 OE03、64原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrowAugmentationLimits`。
 
@@ -4594,7 +4594,7 @@ OE03、64原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：任意 quasicategory 標的。対象ごとの同型の族で全関手同型を代用しない。
 使われ方：source frame の右 Kan 局所図式へ移すための実極限の供給。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.FrameArrows.augmentationHomotopy`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.augmentationHomotopy`。
 
 ```lean
 universe u
@@ -4607,7 +4607,7 @@ def augmentationHomotopy : SSet.Homotopy (nerveMap A ≫ F)
     (SSet.const (F.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X)))
 ```
 
-### [FrameArrowCofinality.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/FrameArrowCofinality.lean)
+### [FrameArrowCofinality.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameArrowCofinality.lean)
 
 OE03、46原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrowCofinality`。
 
@@ -4618,7 +4618,7 @@ OE03、46原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：通常の initial 性だけで代用せず、元の nerve 写像自身の cofinal 性を証明する。
 使われ方：source frame の全矢の局所極限を次数圏へ制限する。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.FrameArrows.nerveMap_leftAdjoint_isLeftCofinal`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.nerveMap_leftAdjoint_isLeftCofinal`。
 
 ```lean
 universe u
@@ -4628,7 +4628,7 @@ lemma nerveMap_leftAdjoint_isLeftCofinal {I D : Type u}
     _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsLeftCofinal (nerveMap L)
 ```
 
-### [FrameArrowElements.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/FrameArrowElements.lean)
+### [FrameArrowElements.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameArrowElements.lean)
 
 OE03、62原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrowElements`。
 
@@ -4639,7 +4639,7 @@ OE03、62原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：固定終域と元の右脚を保持し、全矢の comma 圏への包含も厳密に供給する。
 使われ方：既存 sourceFrameHom 比較の全体への接続。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.FrameArrows.elementsToCostructured`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.elementsToCostructured`。
 
 ```lean
 universe u v
@@ -4649,7 +4649,7 @@ def elementsToCostructured : (((_root_.SerrePositivity.InfinityCategories.Projec
     CostructuredArrow A Y
 ```
 
-### [FrameArrowLimits.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/FrameArrowLimits.lean)
+### [FrameArrowLimits.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameArrowLimits.lean)
 
 OE03、32原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrowLimits`。
 
@@ -4660,7 +4660,7 @@ OE03、32原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：標的は任意の quasicategory。全極限の存在は要求しない。
 使われ方：source frame による右 Kan 局所極限の構成。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.FrameArrows.identityInclusion_nerve_target`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.identityInclusion_nerve_target`。
 
 ```lean
 universe u
@@ -4671,7 +4671,7 @@ lemma identityInclusion_nerve_target :
     nerveMap (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FrameArrowCategory.identityInclusion A) ≫ nerveMap (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FrameArrowCategory.target A) = nerveMap A
 ```
 
-### [FrameArrowRightKan.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/FrameArrowRightKan.lean)
+### [FrameArrowRightKan.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameArrowRightKan.lean)
 
 OE03、76原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrowRightKan`。
 
@@ -4682,7 +4682,7 @@ OE03、76原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：元の qX・始域射影・全右脚を保持する。left cofinal 性は別工程。
 使われ方：source frame の実局所極限を右 Kan 図式へ移す。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.FrameArrows.totalAugmentation`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.totalAugmentation`。
 
 ```lean
 universe u
@@ -4694,7 +4694,7 @@ variable {I C : Type u} [Category.{u} I] [Category.{u} C]
 def totalAugmentation : _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FrameArrowCategory.degree A ⋙ A ⟶ (Functor.const (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FrameArrowCategory.Total A)).obj X
 ```
 
-### [FrameAugmentationLimitLegs.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/FrameAugmentationLimitLegs.lean)
+### [FrameAugmentationLimitLegs.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameAugmentationLimitLegs.lean)
 
 OE03、52原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameAugmentationLimitLegs`。
 
@@ -4705,7 +4705,7 @@ OE03、52原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：極限対象の同型だけで脚の可逆性を推論しない。
 使われ方：実右 Kan 単位の同じ成分の可逆性。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.FrameArrows.augmentationLimitConeFunctorIso`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.augmentationLimitConeFunctorIso`。
 
 ```lean
 universe u
@@ -4719,7 +4719,7 @@ def augmentationLimitConeFunctorIso (hI : _root_.SerrePositivity.InfinityCategor
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso c.val (SSet.const (F.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X)))
 ```
 
-### [FrameElementSpans.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/FrameElementSpans.lean)
+### [FrameElementSpans.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameElementSpans.lean)
 
 OE03、82原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameElementSpans`。
 
@@ -4730,7 +4730,7 @@ OE03、82原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：元の Hom の全単体と全作用素を保持し、モデル構造は要求しない。
 使われ方：特殊な hammock の nerve と元の Map^h の高次比較。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.frameElementSpan`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameElementSpan`。
 
 ```lean
 universe u v
@@ -4742,7 +4742,7 @@ def frameElementSpan (s : (((_root_.SerrePositivity.InfinityCategories.Project.H
     _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Object L R X Y
 ```
 
-### [FrameFunctorImage.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/FrameFunctorImage.lean)
+### [FrameFunctorImage.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameFunctorImage.lean)
 
 OE03、168原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameFunctorImage`。
 
@@ -4751,7 +4751,7 @@ OE03、168原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunction
 規約：元の augmentation・全作用素・全 hammock 比較射を保持する。
 使われ方：bifibrant 部分圏の実比較を ambient モデル圏へ戻す。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.frameFunctorImageHom`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameFunctorImageHom`。
 
 ```lean
 universe u v
@@ -4764,7 +4764,7 @@ def frameFunctorImageHom : (_root_.SerrePositivity.InfinityCategories.Project.Ho
     (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (A ⋙ F.functor)).obj (F.functor.obj Y)
 ```
 
-### [FrameIndexAugmentation.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/FrameIndexAugmentation.lean)
+### [FrameIndexAugmentation.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameIndexAugmentation.lean)
 
 OE03、80原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameIndexAugmentation`。
 
@@ -4775,7 +4775,7 @@ OE03、80原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：元の単体・全作用素・augmentation を保持する。
 使われ方：Dwyer–Kan §7 の同じ Map^h への共通比較の左射。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.SimplexTerminalNerve.liftedAugmentation`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.SimplexTerminalNerve.liftedAugmentation`。
 
 ```lean
 universe v w
@@ -4784,7 +4784,7 @@ def liftedAugmentation (K : SSet.{v}) :
     nerve (ULiftHom.{w} K.Elementsᵒᵖ) ⟶ SSet.uliftFunctor.{w, v}.obj K
 ```
 
-### [FrameLeftRoof.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/FrameLeftRoof.lean)
+### [FrameLeftRoof.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameLeftRoof.lean)
 
 OE03、60原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameLeftRoof`。
 
@@ -4795,7 +4795,7 @@ OE03、60原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：元の終域と全単体・全作用素を保持する。
 使われ方：恒等右脚の比較の全両端点自然性。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.frameLeftRoofFunctor`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameLeftRoofFunctor`。
 
 ```lean
 universe u v
@@ -4807,7 +4807,7 @@ def frameLeftRoofFunctor : (((_root_.SerrePositivity.InfinityCategories.Project.
     _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag W _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.word X Y
 ```
 
-### [FrameLeftRoofPostcompose.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/FrameLeftRoofPostcompose.lean)
+### [FrameLeftRoofPostcompose.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameLeftRoofPostcompose.lean)
 
 OE03、89原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameLeftRoofPostcompose`。
 
@@ -4818,7 +4818,7 @@ OE03、89原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：元の frame・全単体作用素・同じ元の射を保持する。
 使われ方：既存 Map^h と reduced hammock の終域自然性。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.frameLeftRoofFunctor_postcompose`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameLeftRoofFunctor_postcompose`。
 
 ```lean
 universe u v
@@ -4827,13 +4827,13 @@ variable {C : Type u} [Category.{v} C] (W : MorphismProperty C) [W.IsMultiplicat
   (hp : ∀ n, W (p.app n)) (hA : ∀ {i j} (a : i ⟶ j), W (A.map a)) (g : Y ⟶ Z)
 
 lemma frameLeftRoofFunctor_postcompose :
-    (frameLeftRoofFunctor W A p hp hA (Y := Y)).prod'
+    (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameLeftRoofFunctor W A p hp hA (Y := Y)).prod'
         ((Functor.const _).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ForwardZigzag.obj (W := W) g)) ⋙
       _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagAppendFunctor.functor ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAction.functor _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.postCollapse =
-    ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).map g).mapElements.op ⋙ frameLeftRoofFunctor W A p hp hA
+    ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).map g).mapElements.op ⋙ _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameLeftRoofFunctor W A p hp hA
 ```
 
-### [FrameLeftRoofPrecompose.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/FrameLeftRoofPrecompose.lean)
+### [FrameLeftRoofPrecompose.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameLeftRoofPrecompose.lean)
 
 OE03、63原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameLeftRoofPrecompose`。
 
@@ -4844,7 +4844,7 @@ OE03、63原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：元の全単体・元の始域射・同じ frame を保持する。
 使われ方：既存 Map^h の比較の始域自然性。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.frameSpanSourceIndexMap`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameSpanSourceIndexMap`。
 
 ```lean
 universe u v
@@ -4861,7 +4861,7 @@ def frameSpanSourceIndexMap :
       ULiftHom.{max u v} (((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A').obj Y).Elements)ᵒᵖ
 ```
 
-### [FrameLiftComma.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/FrameLiftComma.lean)
+### [FrameLiftComma.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameLiftComma.lean)
 
 OE03、117原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameLiftComma`。
 
@@ -4872,7 +4872,7 @@ OE03、117原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunction
 規約：comma 圏の射は元の単体作用素と三角形の整合を保持する。
 使われ方：分解から自明 fibration への comma 圏の可縮性の証明。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.FrameLift.overFunctor`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameLift.overFunctor`。
 
 ```lean
 universe u v
@@ -4883,7 +4883,7 @@ variable {C : Type u} [Category.{v} C]
 def overFunctor : SimplexCategory ⥤ Over B
 ```
 
-### [FrameLiftContraction.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/FrameLiftContraction.lean)
+### [FrameLiftContraction.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameLiftContraction.lean)
 
 OE03、81原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameLiftContraction`。
 
@@ -4894,7 +4894,7 @@ OE03、81原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：単体集合のモデル構造を仮定せず、元の LiftSpace と射影を保持する。
 使われ方：共通比較の右射の分解側の comma 圏の可縮性。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.FrameLift.projection_mono_rlp`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameLift.projection_mono_rlp`。
 
 ```lean
 universe u v uH vH
@@ -4908,7 +4908,7 @@ lemma projection_mono_rlp :
     (MorphismProperty.monomorphisms SSet.{v}).rlp (LiftSpace.projection A a p f)
 ```
 
-### [FrameLiftSimplices.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/FrameLiftSimplices.lean)
+### [FrameLiftSimplices.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameLiftSimplices.lean)
 
 OE03、96原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameLiftSimplices`。
 
@@ -4919,7 +4919,7 @@ OE03、96原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：別の fiber を定義せず、元の LiftSpace の包含を順写像に使う。
 使われ方：全単体の反対要素圏と分解の comma 圏の比較。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.FrameLift.evaluationPullback`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameLift.evaluationPullback`。
 
 ```lean
 universe u v
@@ -4932,7 +4932,7 @@ lemma evaluationPullback (n : SimplexCategoryᵒᵖ) :
       (((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).map p).app n) ((LiftSpace.point A a f).app n)
 ```
 
-### [FrameRightKan.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/FrameRightKan.lean)
+### [FrameRightKan.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameRightKan.lean)
 
 OE03、63原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameRightKan`。
 
@@ -4943,7 +4943,7 @@ OE03、63原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：元の qX・次数射影・全区間を保持する。cofinal 性は別に証明する。
 使われ方：実屋根比較を用いる source frame の右 Kan 計算。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.FrameArrows.frameRightKanHomotopy`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.frameRightKanHomotopy`。
 
 ```lean
 universe u
@@ -4956,7 +4956,7 @@ def frameRightKanHomotopy : SSet.Homotopy
     (SSet.const (X := nerve I) (q.app (op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X))) (nerveMap A ≫ q)
 ```
 
-### [FrameRightKanCanonical.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/FrameRightKanCanonical.lean)
+### [FrameRightKanCanonical.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameRightKanCanonical.lean)
 
 OE03、51原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameRightKanCanonical`。
 
@@ -4967,7 +4967,7 @@ OE03、51原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：任意 quasicategory 標的と同じ全錐を保持する。
 使われ方：元の局所化射による前合成の充満忠実性。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.FrameArrows.frameRightKanCanonicalCone_isLimit`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.frameRightKanCanonicalCone_isLimit`。
 
 ```lean
 universe u
@@ -4977,18 +4977,18 @@ variable {I C : Type u} [Category.{u} I] [Category.{u} C]
   (hp : ∀ i, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge ((nerve.edgeMk (p.app i)).map q).toTruncated)
 
 lemma frameRightKanCanonicalCone_isLimit
-    (hc : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsLeftCofinal (frameRightKanMap A p q hp))
+    (hc : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsLeftCofinal (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.frameRightKanMap A p q hp))
     (hI : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeaklyContractible (nerve I)) {Z : SSet.{u}} [Quasicategory Z] (G : E ⟶ Z) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.rightKanCanonicalCone q G (q.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X)))
 ```
 
-### [FrameRoofComparisonInvariance.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/FrameRoofComparisonInvariance.lean)
+### [FrameRoofComparisonInvariance.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameRoofComparisonInvariance.lean)
 
 OE03、75原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameRoofComparisonInvariance`。
 
 module docstringなし。実際の型とimportを参照。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.frameSpanSourceIndexMap_localized_isIso`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameSpanSourceIndexMap_localized_isIso`。
 
 ```lean
 universe u v
@@ -4999,10 +4999,10 @@ lemma frameSpanSourceIndexMap_localized_isIso
     (hα : IsIso (AnodyneHomotopy.anodyneQ.map (SSet.uliftFunctor.{max u v, v}.map
       ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap α).app Y)))) :
     IsIso (AnodyneHomotopy.anodyneQ.map
-      (nerveMap (frameSpanSourceIndexMap (Y := Y) A' A α)))
+      (nerveMap (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameSpanSourceIndexMap (Y := Y) A' A α)))
 ```
 
-### [FrameRoofCornerBaseProjection.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/FrameRoofCornerBaseProjection.lean)
+### [FrameRoofCornerBaseProjection.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameRoofCornerBaseProjection.lean)
 
 OE03、39原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameRoofCornerBaseProjection`。
 
@@ -5013,20 +5013,20 @@ OE03、39原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：元の指定点・全単体・同じ次数同型を保つ。
 使われ方：実評価の左脚を元の comma の評価自然変換へ戻す。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.FrameArrows.roofQuillenDegreeNormalizationMap_inv_over`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofQuillenDegreeNormalizationMap_inv_over`。
 
 ```lean
 universe u
 variable {I C : Type u} [Category.{u} I] [Category.{u} C] (A : I ⥤ C) (Y : C)
-  {E : SSet.{u}} (q : nerve C ⟶ E) (b : (roofTarget A Y q) _⦋0⦌)
-  {S : SSet.{u}} (f : S ⟶ roofTarget A Y q)
+  {E : SSet.{u}} (q : nerve C ⟶ E) (b : (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofTarget A Y q) _⦋0⦌)
+  {S : SSet.{u}} (f : S ⟶ _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofTarget A Y q)
 
 lemma roofQuillenDegreeNormalizationMap_inv_over :
-    inv (roofQuillenDegreeNormalizationMap A Y q b f) ≫
-      pullback.fst _ _ ≫ (roofTargetDegreeSliceIso A Y q b).hom = pullback.snd _ _
+    inv (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofQuillenDegreeNormalizationMap A Y q b f) ≫
+      pullback.fst _ _ ≫ (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofTargetDegreeSliceIso A Y q b).hom = pullback.snd _ _
 ```
 
-### [FrameRoofCornerEvaluation.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/FrameRoofCornerEvaluation.lean)
+### [FrameRoofCornerEvaluation.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameRoofCornerEvaluation.lean)
 
 OE03、63原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameRoofCornerEvaluation`。
 
@@ -5037,19 +5037,19 @@ OE03、63原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：元の点・元の q・全高次錐を保つ。Kan Hom 比較との照合は別工程。
 使われ方：実 ProductCornerMap の弱同値性を元の写像空間の比較で検査する。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.FrameArrows.roofCornerTerminalEvaluation`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofCornerTerminalEvaluation`。
 
 ```lean
 universe u
 variable {I C : Type u} [Category.{u} I] [Category.{u} C] (A : I ⥤ C) (Y : C)
-  {E : SSet.{u}} (q : nerve C ⟶ E) (b : (roofTarget A Y q) _⦋0⦌)
-  [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.LeftFibration (roofTargetProjection A Y q)]
+  {E : SSet.{u}} (q : nerve C ⟶ E) (b : (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofTarget A Y q) _⦋0⦌)
+  [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.LeftFibration (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofTargetProjection A Y q)]
 
 def roofCornerTerminalEvaluation : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.RoofTerminalEvaluation
-    (roofCornerNormalizedProjection A Y q b) (roofCornerTerminal A Y q b)
+    (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofCornerNormalizedProjection A Y q b) (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofCornerTerminal A Y q b)
 ```
 
-### [FrameRoofCornerEvaluationPrism.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/FrameRoofCornerEvaluationPrism.lean)
+### [FrameRoofCornerEvaluationPrism.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameRoofCornerEvaluationPrism.lean)
 
 OE03、73原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameRoofCornerEvaluationPrism`。
 
@@ -5060,20 +5060,20 @@ OE03、73原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：元の全時刻・全単体を保ち、辺ごとの比較で代用しない。
 使われ方：実 ProductHomMap の全三角形の slice prism 表示。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.FrameArrows.roofTargetSlicePointIso_projection`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofTargetSlicePointIso_projection`。
 
 ```lean
 universe u
 variable {I C : Type u} [Category.{u} I] [Category.{u} C] (A : I ⥤ C) (Y : C)
-  {E : SSet.{u}} (q : nerve C ⟶ E) (b : (roofTarget A Y q) _⦋0⦌)
-  [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.LeftFibration (roofTargetProjection A Y q)]
+  {E : SSet.{u}} (q : nerve C ⟶ E) (b : (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofTarget A Y q) _⦋0⦌)
+  [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.LeftFibration (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofTargetProjection A Y q)]
 
-lemma roofTargetSlicePointIso_projection : (roofTargetSlicePointIso Y q).hom ≫
+lemma roofTargetSlicePointIso_projection : (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofTargetSlicePointIso Y q).hom ≫
     _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection (SSet.yonedaEquiv.symm (q.app (op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex Y))) =
       _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex Y) ≫ q)
 ```
 
-### [FrameRoofCornerEvaluationTriangle.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/FrameRoofCornerEvaluationTriangle.lean)
+### [FrameRoofCornerEvaluationTriangle.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameRoofCornerEvaluationTriangle.lean)
 
 OE03、95原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameRoofCornerEvaluationTriangle`。
 
@@ -5084,22 +5084,22 @@ OE03、95原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：全パラメータを保ち、左脚の標準自然変換との照合は別工程。
 使われ方：実 ProductHomMap 側の全三角形の幾何的構成。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.FrameArrows.roofCornerEvaluationRightHomotopy`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofCornerEvaluationRightHomotopy`。
 
 ```lean
 universe u
 variable {I C : Type u} [Category.{u} I] [Category.{u} C] (A : I ⥤ C) (Y : C)
-  {E : SSet.{u}} (q : nerve C ⟶ E) (b : (roofTarget A Y q) _⦋0⦌)
-  [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.LeftFibration (roofTargetProjection A Y q)]
-  {S : SSet.{u}} (f : S ⟶ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.sliceOverCorner (SSet.yonedaEquiv.symm b) (roofTargetProjection A Y q))
+  {E : SSet.{u}} (q : nerve C ⟶ E) (b : (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofTarget A Y q) _⦋0⦌)
+  [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.LeftFibration (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofTargetProjection A Y q)]
+  {S : SSet.{u}} (f : S ⟶ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.sliceOverCorner (SSet.yonedaEquiv.symm b) (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofTargetProjection A Y q))
 
 def roofCornerEvaluationRightHomotopy : SSet.Homotopy
-    ((f ≫ roofCornerSourceSliceMap A Y q b) ≫
+    ((f ≫ _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofCornerSourceSliceMap A Y q b) ≫
       _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection (SSet.yonedaEquiv.symm (q.app (op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex Y))))
     (SSet.const (X := S) (q.app (op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex Y)))
 ```
 
-### [FrameRoofCornerLeftBase.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/FrameRoofCornerLeftBase.lean)
+### [FrameRoofCornerLeftBase.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameRoofCornerLeftBase.lean)
 
 OE03、47原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameRoofCornerLeftBase`。
 
@@ -5110,25 +5110,25 @@ OE03、47原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：同じ全円柱・選択済み評価・元の q を保つ。
 使われ方：全関手圏での終対象性による標準左脚との比較。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.FrameArrows.roofCornerEvaluationLeftHomotopy_h_base`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofCornerEvaluationLeftHomotopy_h_base`。
 
 ```lean
 universe u
 variable {I C : Type u} [Category.{u} I] [Category.{u} C] (A : I ⥤ C) (Y : C)
-  {E : SSet.{u}} (q : nerve C ⟶ E) (b : (roofTarget A Y q) _⦋0⦌)
-  [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.LeftFibration (roofTargetProjection A Y q)]
+  {E : SSet.{u}} (q : nerve C ⟶ E) (b : (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofTarget A Y q) _⦋0⦌)
+  [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.LeftFibration (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofTargetProjection A Y q)]
   {S : SSet.{u}} (f : S ⟶ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.sliceOverCorner (SSet.yonedaEquiv.symm b)
-    (roofTargetProjection A Y q))
+    (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofTargetProjection A Y q))
 
 lemma roofCornerEvaluationLeftHomotopy_h_base :
-    (roofCornerEvaluationLeftHomotopy A Y q b f).h =
-      (terminalFiberBaseHomotopy (roofCornerNormalizedProjection A Y q b)
-        (roofCornerTerminal A Y q b) (roofCornerTerminalEvaluation A Y q b)
-        (f ≫ roofCornerNormalizationMap A Y q b)).h ≫
-      nerveMap (Over.forget (roofTargetDegree A Y q b)) ≫ nerveMap A ≫ q
+    (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofCornerEvaluationLeftHomotopy A Y q b f).h =
+      (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.terminalFiberBaseHomotopy (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofCornerNormalizedProjection A Y q b)
+        (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofCornerTerminal A Y q b) (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofCornerTerminalEvaluation A Y q b)
+        (f ≫ _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofCornerNormalizationMap A Y q b)).h ≫
+      nerveMap (Over.forget (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofTargetDegree A Y q b)) ≫ nerveMap A ≫ q
 ```
 
-### [FrameRoofCornerNormalization.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/FrameRoofCornerNormalization.lean)
+### [FrameRoofCornerNormalization.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameRoofCornerNormalization.lean)
 
 OE03、76原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameRoofCornerNormalization`。
 
@@ -5139,17 +5139,17 @@ OE03、76原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：元の点・元の屋根射影・元の次数を保つ。
 使われ方：corner 全体から同じ指定次数の写像空間への実評価。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.FrameArrows.roofCornerNormalized`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofCornerNormalized`。
 
 ```lean
 universe u
 variable {I C : Type u} [Category.{u} I] [Category.{u} C] (A : I ⥤ C) (Y : C)
-  {E : SSet.{u}} (q : nerve C ⟶ E) (b : (roofTarget A Y q) _⦋0⦌)
+  {E : SSet.{u}} (q : nerve C ⟶ E) (b : (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofTarget A Y q) _⦋0⦌)
 
 abbrev roofCornerNormalized
 ```
 
-### [FrameRoofCornerProjectionLaws.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/FrameRoofCornerProjectionLaws.lean)
+### [FrameRoofCornerProjectionLaws.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameRoofCornerProjectionLaws.lean)
 
 OE03、47原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameRoofCornerProjectionLaws`。
 
@@ -5160,19 +5160,19 @@ OE03、47原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：元の比較射・元の点図式・全単体を保つ。
 使われ方：実 ProductHomMap の幾何的三角形の始域を標準自然変換と同定する。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.FrameArrows.roofCornerSourceSliceMap_projection`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofCornerSourceSliceMap_projection`。
 
 ```lean
 universe u
 variable {I C : Type u} [Category.{u} I] [Category.{u} C] (A : I ⥤ C) (Y : C)
-  {E : SSet.{u}} (q : nerve C ⟶ E) (b : (roofTarget A Y q) _⦋0⦌)
+  {E : SSet.{u}} (q : nerve C ⟶ E) (b : (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofTarget A Y q) _⦋0⦌)
 
-lemma roofCornerSourceSliceMap_projection : roofCornerSourceSliceMap A Y q b ≫
+lemma roofCornerSourceSliceMap_projection : _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofCornerSourceSliceMap A Y q b ≫
     _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection (SSet.yonedaEquiv.symm (q.app (op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex Y))) =
-      pullback.snd _ _ ≫ roofTargetProjection A Y q ≫ (nerveMap A ≫ q)
+      pullback.snd _ _ ≫ _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofTargetProjection A Y q ≫ (nerveMap A ≫ q)
 ```
 
-### [FrameRoofFiberPinched.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/FrameRoofFiberPinched.lean)
+### [FrameRoofFiberPinched.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameRoofFiberPinched.lean)
 
 OE03、46原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameRoofFiberPinched`。
 
@@ -5183,7 +5183,7 @@ OE03、46原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：指定次数・元の q・元の全錐の単体を保ち、別の頂点を選ばない。
 使われ方：屋根 corner の全体評価を既存の Kan Hom 比較へ接続する。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.FrameArrows.roofTargetFrameVertex`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofTargetFrameVertex`。
 
 ```lean
 universe u
@@ -5194,7 +5194,7 @@ lemma roofTargetFrameVertex (n : I) :
     (nerveMap A ≫ q).app (op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex n) = q.app (op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (A.obj n))
 ```
 
-### [FrameRoofFiberPinchedProjection.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/FrameRoofFiberPinchedProjection.lean)
+### [FrameRoofFiberPinchedProjection.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameRoofFiberPinchedProjection.lean)
 
 OE03、58原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameRoofFiberPinchedProjection`。
 
@@ -5205,7 +5205,7 @@ OE03、58原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：全単体・元の点図式・元の q を保つ。
 使われ方：実 corner 評価の prism の終端と元の pinched 族の照合。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.FrameArrows.roofSliceFiberPointTransport_ι`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofSliceFiberPointTransport_ι`。
 
 ```lean
 universe u
@@ -5217,7 +5217,7 @@ lemma roofSliceFiberPointTransport_ι {E : SSet.{u}} {p p' : (Δ[0] : SSet.{u}) 
         _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection p) x ≫ (eqToIso (congrArg _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOver h)).hom
 ```
 
-### [FrameRoofQuillenSlice.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/FrameRoofQuillenSlice.lean)
+### [FrameRoofQuillenSlice.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameRoofQuillenSlice.lean)
 
 OE03、72原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameRoofQuillenSlice`。
 
@@ -5228,18 +5228,18 @@ OE03、72原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：元の指定点を保持し、全単体の射影式を証明する。
 使われ方：sourceFrameHom×Δ[n] による元の全 Quillen A slice の比較。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.FrameArrows.roofTargetOverBaseMap`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofTargetOverBaseMap`。
 
 ```lean
 universe u
 variable {I C : Type u} [Category.{u} I] [Category.{u} C] (A : I ⥤ C) (Y : C)
-  {E : SSet.{u}} (q : nerve C ⟶ E) (b : (roofTarget A Y q) _⦋0⦌)
+  {E : SSet.{u}} (q : nerve C ⟶ E) (b : (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofTarget A Y q) _⦋0⦌)
 
 def roofTargetOverBaseMap : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOver (SSet.yonedaEquiv.symm b) ⟶
-    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOver (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (roofTargetDegree A Y q b)))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOver (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofTargetDegree A Y q b)))
 ```
 
-### [FrameRoofSliceFibration.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/FrameRoofSliceFibration.lean)
+### [FrameRoofSliceFibration.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameRoofSliceFibration.lean)
 
 OE03、93原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameRoofSliceFibration`。
 
@@ -5250,19 +5250,19 @@ OE03、93原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：元の指定点・次数・全錐・既存比較射を保つ。弱可縮性は別の主張。
 使われ方：実 slice のホモトピー fiber 比較に必要な fibration 模型。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.FrameArrows.roofTargetDegreeSliceIso`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofTargetDegreeSliceIso`。
 
 ```lean
 universe u
 variable {I C : Type u} [Category.{u} I] [Category.{u} C] (A : I ⥤ C) (Y : C)
-  {E : SSet.{u}} (q : nerve C ⟶ E) (b : (roofTarget A Y q) _⦋0⦌)
+  {E : SSet.{u}} (q : nerve C ⟶ E) (b : (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofTarget A Y q) _⦋0⦌)
 
 def roofTargetDegreeSliceIso :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOver (SSet.yonedaEquiv.symm b ≫ roofTargetProjection A Y q) ≅
-      nerve (Over (roofTargetDegree A Y q b))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOver (SSet.yonedaEquiv.symm b ≫ _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofTargetProjection A Y q) ≅
+      nerve (Over (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofTargetDegree A Y q b))
 ```
 
-### [FrameRoofSliceWeakContractibility.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/FrameRoofSliceWeakContractibility.lean)
+### [FrameRoofSliceWeakContractibility.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameRoofSliceWeakContractibility.lean)
 
 OE03、66原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameRoofSliceWeakContractibility`。
 
@@ -5273,21 +5273,21 @@ OE03、66原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：元の指定点・全高次錐を保つ。次数側の弱同値性自体は別途証明が必要。
 使われ方：元の sourceFrameHom×Δ[n] の全単体比較から Quillen A の条件へ進む。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.FrameArrows.roofQuillenDegreeCornerMap`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofQuillenDegreeCornerMap`。
 
 ```lean
 universe u
 variable {I C : Type u} [Category.{u} I] [Category.{u} C] (A : I ⥤ C) (Y : C)
-  {E : SSet.{u}} (q : nerve C ⟶ E) (b : (roofTarget A Y q) _⦋0⦌)
-  {S : SSet.{u}} (f : S ⟶ roofTarget A Y q)
+  {E : SSet.{u}} (q : nerve C ⟶ E) (b : (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofTarget A Y q) _⦋0⦌)
+  {S : SSet.{u}} (f : S ⟶ _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofTarget A Y q)
 
 def roofQuillenDegreeCornerMap :
-    pullback (f ≫ roofTargetProjection A Y q)
-      (nerveMap (Over.forget (roofTargetDegree A Y q b))) ⟶
-        _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.sliceOverCorner (SSet.yonedaEquiv.symm b) (roofTargetProjection A Y q)
+    pullback (f ≫ _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofTargetProjection A Y q)
+      (nerveMap (Over.forget (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofTargetDegree A Y q b))) ⟶
+        _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.sliceOverCorner (SSet.yonedaEquiv.symm b) (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofTargetProjection A Y q)
 ```
 
-### [FrameRoofSource.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/FrameRoofSource.lean)
+### [FrameRoofSource.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameRoofSource.lean)
 
 OE03、68原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameRoofSource`。
 
@@ -5298,7 +5298,7 @@ OE03、68原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：次数射影・元の終域への矢・同じ q の屋根比較を保持する。
 使われ方：sourceFrameHom の既存弱比較を実右 Kan cofinality へ接続する。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.FrameArrows.roofSource`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofSource`。
 
 ```lean
 universe u
@@ -5307,7 +5307,7 @@ variable {I C : Type u} [Category.{u} I] [Category.{u} C] (A : I ⥤ C) (Y : C)
 abbrev roofSource
 ```
 
-### [FrameRoofSourceProjection.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/FrameRoofSourceProjection.lean)
+### [FrameRoofSourceProjection.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameRoofSourceProjection.lean)
 
 OE03、53原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameRoofSourceProjection`。
 
@@ -5318,19 +5318,19 @@ OE03、53原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：元の q・元の点図式・全単体を保持する。
 使われ方：実評価三角形の右脚と元の通常の自然変換との比較。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.FrameArrows.frameRoofMap_over`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.frameRoofMap_over`。
 
 ```lean
 universe u
 variable {I C : Type u} [Category.{u} I] [Category.{u} C] (A : I ⥤ C) (Y : C)
   {E : SSet.{u}} (q : nerve C ⟶ E)
 
-lemma frameRoofMap_over : frameRoofMap A Y q ≫ pullback.fst _ _ =
+lemma frameRoofMap_over : _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.frameRoofMap A Y q ≫ pullback.fst _ _ =
     nerveMap (CostructuredArrow.toOver A Y) ≫ (_root_.SerrePositivity.InfinityCategories.HTT.Section1_2_9.nerveOverIso Y).hom ≫
       _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverPostcomp (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex Y)) q
 ```
 
-### [FrameRoofTarget.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/FrameRoofTarget.lean)
+### [FrameRoofTarget.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameRoofTarget.lean)
 
 OE03、66原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameRoofTarget`。
 
@@ -5341,7 +5341,7 @@ OE03、66原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：元の指定点・次数・全高次単体を保持し、頂点集合へ置き換えない。
 使われ方：実屋根比較の Quillen A の全 slice の計算。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.FrameArrows.roofTarget`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofTarget`。
 
 ```lean
 universe u
@@ -5351,7 +5351,7 @@ variable {I C : Type u} [Category.{u} I] [Category.{u} C] (A : I ⥤ C) (Y : C)
 abbrev roofTarget
 ```
 
-### [FrameSpanNaturality.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/FrameSpanNaturality.lean)
+### [FrameSpanNaturality.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameSpanNaturality.lean)
 
 OE03、72原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameSpanNaturality`。
 
@@ -5362,7 +5362,7 @@ OE03、72原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：同じ augmentation・右脚・元の単体写像を保持する。
 使われ方：既存の関手的置換と共通比較の選択独立性。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.frameSpanSourceComparison`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameSpanSourceComparison`。
 
 ```lean
 universe u v
@@ -5374,11 +5374,11 @@ variable {C : Type u} [Category.{v} C] (L R : MorphismProperty C)
   (j : Y ⟶ Z) (hj : R j)
 
 def frameSpanSourceComparison (α : A' ⟶ A) (hα : α ≫ p = p') :
-    ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap α).app Z).mapElements.op ⋙ frameElementSpanFunctor L R A' p' hp' j hj ⟶
-      frameElementSpanFunctor L R A p hp j hj
+    ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap α).app Z).mapElements.op ⋙ _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameElementSpanFunctor L R A' p' hp' j hj ⟶
+      _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameElementSpanFunctor L R A p hp j hj
 ```
 
-### [FrameSpanTargetHomotopy.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/FrameSpanTargetHomotopy.lean)
+### [FrameSpanTargetHomotopy.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameSpanTargetHomotopy.lean)
 
 OE03、81原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameSpanTargetHomotopy`。
 
@@ -5389,7 +5389,7 @@ OE03、81原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：要素圏と元の圏の異なる Hom 宇宙を保持する。
 使われ方：元の終域への frame Hom と既存 Map^h の比較の一致。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.frameSpanTargetIndexMap`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameSpanTargetIndexMap`。
 
 ```lean
 universe u v
@@ -5404,7 +5404,7 @@ def frameSpanTargetIndexMap :
       ULiftHom.{max u v} (((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj Z').Elements)ᵒᵖ
 ```
 
-### [FullyFaithfulNerveRetraction.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/FullyFaithfulNerveRetraction.lean)
+### [FullyFaithfulNerveRetraction.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FullyFaithfulNerveRetraction.lean)
 
 OE03、87原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FullyFaithfulNerveRetraction`。
 
@@ -5415,7 +5415,7 @@ OE03、87原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：随伴の三角恒等式や単体集合モデルは仮定しない。
 使われ方：三本矢の各片脚の関手的置換による包含の反転性。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.FullyFaithfulNerveRetraction.liftUnit`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FullyFaithfulNerveRetraction.liftUnit`。
 
 ```lean
 universe u v
@@ -5425,7 +5425,7 @@ variable {A B : Type u} [Category.{v} A] [Category.{v} B]
 def liftUnit (η : 𝟭 B ⟶ R ⋙ I) : 𝟭 A ⟶ I ⋙ R
 ```
 
-### [GrothendieckCommaComparison.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/GrothendieckCommaComparison.lean)
+### [GrothendieckCommaComparison.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/GrothendieckCommaComparison.lean)
 
 OE03、94原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.GrothendieckCommaComparison`。
 
@@ -5436,7 +5436,7 @@ OE03、94原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：同じ宇宙の小圏。元の脚と全射を保持し、追加の比較を仮定しない。
 使われ方：comma bar の射影の反転性を元の Thomason 射の反転性へ移す。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.Thomason.commaTotalForget`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.commaTotalForget`。
 
 ```lean
 universe u
@@ -5445,7 +5445,7 @@ variable {D : Type u} [Category.{u} D] (G : D ⥤ Cat.{u, u})
 def commaTotalForget : Grothendieck (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.commaDiagram G) ⥤ Grothendieck G
 ```
 
-### [GrothendieckCommaRetraction.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/GrothendieckCommaRetraction.lean)
+### [GrothendieckCommaRetraction.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/GrothendieckCommaRetraction.lean)
 
 OE03、100原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.GrothendieckCommaRetraction`。
 
@@ -5456,7 +5456,7 @@ OE03、100原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunction
 規約：同じ宇宙の小圏。fiber の包含の底に関する自然性は仮定しない。
 使われ方：comma 図式から元の図式への bar の比較の成分不変性。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.Thomason.fiberIntoComma`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.fiberIntoComma`。
 
 ```lean
 universe u
@@ -5465,7 +5465,7 @@ variable {D : Type u} [Category.{u} D] (G : D ⥤ Cat.{u, u}) (d : D)
 def fiberIntoComma : G.obj d ⥤ CostructuredArrow (Grothendieck.forget G) d
 ```
 
-### [GrothendieckFiberInvariance.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/GrothendieckFiberInvariance.lean)
+### [GrothendieckFiberInvariance.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/GrothendieckFiberInvariance.lean)
 
 OE03、36原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.GrothendieckFiberInvariance`。
 
@@ -5476,7 +5476,7 @@ OE03、36原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：同じ宇宙の小圏。元の fiber の nerve の Kan 性は要求しない。
 使われ方：元の固定右脚から全右脚の図式への比較。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.Thomason.fiberNerveMap_localized_isIso`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.fiberNerveMap_localized_isIso`。
 
 ```lean
 universe u
@@ -5485,10 +5485,10 @@ variable {D : Type u} [Category.{u} D] (G : D ⥤ Cat.{u, u})
 lemma fiberNerveMap_localized_isIso {i : D} (hi : IsInitial i)
     (hG : ∀ {d e : D} (f : d ⟶ e),
       IsIso (AnodyneHomotopy.anodyneQ.map (nerveMap (G.map f).toFunctor))) (d : D) :
-    IsIso (AnodyneHomotopy.anodyneQ.map (fiberNerveMap G d))
+    IsIso (AnodyneHomotopy.anodyneQ.map (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.fiberNerveMap G d))
 ```
 
-### [HeterogeneousSmallComma.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/HeterogeneousSmallComma.lean)
+### [HeterogeneousSmallComma.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/HeterogeneousSmallComma.lean)
 
 OE03、128原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.HeterogeneousSmallComma`。
 
@@ -5497,7 +5497,7 @@ OE03、128原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunction
 規約：既存の SmallCommaGrothendieck は変更せず、宇宙一般化を別の葉とする。
 使われ方：任意モデル圏の全左脚と fibrant な全右脚の図式の実回収。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.HeterogeneousSmallComma.liftFunctor`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.HeterogeneousSmallComma.liftFunctor`。
 
 ```lean
 universe uK vK uJ vJ uC vC w
@@ -5507,7 +5507,7 @@ variable {K : Type uK} [Category.{vK} K] {J : Type uJ} [Category.{vJ} J]
 abbrev liftFunctor (F : K ⥤ C) : AsSmall.{w} K ⥤ AsSmall.{w} C
 ```
 
-### [HomInfinityEquivalenceTransport.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/HomInfinityEquivalenceTransport.lean)
+### [HomInfinityEquivalenceTransport.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/HomInfinityEquivalenceTransport.lean)
 
 OE03、69原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.HomInfinityEquivalenceTransport`。
 
@@ -5516,7 +5516,7 @@ OE03、69原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：原本は読み取り専用、元の全比較射と全二胞体を保持する。
 使われ方：hammock の Yoneda 比較から指定局所化への全標的比較。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.homInfinityEquivalenceTransport`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.homInfinityEquivalenceTransport`。
 
 ```lean
 universe u
@@ -5528,7 +5528,7 @@ def homInfinityEquivalenceTransport {A B : SSet.{u}} [Quasicategory A] [Quasicat
         _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.homInfinityCovariant (e.hom.app (op ⦋0⦌) x))
 ```
 
-### [HomInfinityLocalizationTransport.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/HomInfinityLocalizationTransport.lean)
+### [HomInfinityLocalizationTransport.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/HomInfinityLocalizationTransport.lean)
 
 OE03、41原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.HomInfinityLocalizationTransport`。
 
@@ -5537,20 +5537,20 @@ OE03、41原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：元の K と三角形を変更せず、頂点ごとの別の同型を選ばない。
 使われ方：hammock の Yoneda 比較から指定局所化の Hom 関手への接続。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.CoherentLocalizationComparison.homInfinityTransport`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CoherentLocalizationComparison.homInfinityTransport`。
 
 ```lean
 universe u
 variable {A B D : SSet.{u}} [Quasicategory A] [Quasicategory B] [Quasicategory D]
-  {F : A ⟶ B} {G : A ⟶ D} (c : CoherentLocalizationComparison F G)
+  {F : A ⟶ B} {G : A ⟶ D} (c : _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CoherentLocalizationComparison F G)
 
-def CoherentLocalizationComparison.homInfinityTransport (x : A _⦋0⦌) :
+def _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CoherentLocalizationComparison.homInfinityTransport (x : A _⦋0⦌) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
       (SSet.uliftFunctor.{u + 1, u}.map F ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.homInfinityCovariant (F.app (op ⦋0⦌) x))
       (SSet.uliftFunctor.{u + 1, u}.map G ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.homInfinityCovariant (G.app (op ⦋0⦌) x))
 ```
 
-### [KanElementsFamily.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/KanElementsFamily.lean)
+### [KanElementsFamily.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/KanElementsFamily.lean)
 
 OE03、76原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.KanElementsFamily`。
 
@@ -5559,7 +5559,7 @@ OE03、76原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：底と全作用素を保ち、固定始域のroofとの等式は別に照合する。
 使われ方：両変数のsource frameの全係数の規約の比較。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.simplexElementsNerveDiagram`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.simplexElementsNerveDiagram`。
 
 ```lean
 universe u
@@ -5568,7 +5568,7 @@ variable {I : Type u} [SmallCategory I] (F : I ⥤ SSet.{u})
 abbrev simplexElementsNerveDiagram : I ⥤ SSet.{u}
 ```
 
-### [KanHomFamily.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/KanHomFamily.lean)
+### [KanHomFamily.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/KanHomFamily.lean)
 
 OE03、64原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.KanHomFamily`。
 
@@ -5577,7 +5577,7 @@ OE03、64原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：全標的と全作用素を保ち、弱自然変換を点ごとの逆へ置き換えない。
 使われ方：right frame と hammock の全自然比較の coherent な実現。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.kanHomFamily`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.kanHomFamily`。
 
 ```lean
 universe u v w
@@ -5586,7 +5586,7 @@ variable {C : Type u} [Category.{v} C]
 def kanHomFamily (F : C ⥤ SSet.{w}) : C ⥤ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.KanObject.{w}
 ```
 
-### [KanHomFamilyOpposite.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/KanHomFamilyOpposite.lean)
+### [KanHomFamilyOpposite.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/KanHomFamilyOpposite.lean)
 
 OE03、75原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.KanHomFamilyOpposite`。
 
@@ -5595,7 +5595,7 @@ OE03、75原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：反転するのは値であり、底とその全射はそのまま保つ。
 使われ方：全要素圏と元の反対要素圏の係数規約の接続。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.kanHomFamilyUnit_isWeakHomotopyEquivalence`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.kanHomFamilyUnit_isWeakHomotopyEquivalence`。
 
 ```lean
 universe u
@@ -5604,7 +5604,7 @@ lemma kanHomFamilyUnit_isWeakHomotopyEquivalence (X : SSet.{u}) :
     IsWeakHomotopyEquivalence (exInfinityUnit.app X)
 ```
 
-### [KanNerveOppositeFamily.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/KanNerveOppositeFamily.lean)
+### [KanNerveOppositeFamily.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/KanNerveOppositeFamily.lean)
 
 OE03、50原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.KanNerveOppositeFamily`。
 
@@ -5613,7 +5613,7 @@ OE03、50原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：底とその全射を保ち、値の圏だけを反転する。
 使われ方：元の全要素圏と反対要素圏の係数規約の照合。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.catNerveOppositeFamilyMap`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.catNerveOppositeFamilyMap`。
 
 ```lean
 universe u
@@ -5623,7 +5623,7 @@ def catNerveOppositeFamilyMap :
     (F ⋙ nerveFunctor) ⋙ SSet.opFunctor ⟶ (F ⋙ Cat.opFunctor) ⋙ nerveFunctor
 ```
 
-### [LiftedResolutionLeftRoof.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/LiftedResolutionLeftRoof.lean)
+### [LiftedResolutionLeftRoof.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/LiftedResolutionLeftRoof.lean)
 
 OE03、43原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.LiftedResolutionLeftRoof`。
 
@@ -5632,7 +5632,7 @@ OE03、43原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：弱同値性は元の実射についての既存定理から移す。新しい弱同値の仮定を置かない。
 使われ方：元のnative fiberと同じ元の固定始域roofを照合する実際の基準射。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.liftedResolutionLeftRoofColimitMap`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.liftedResolutionLeftRoofColimitMap`。
 
 ```lean
 universe u v
@@ -5646,7 +5646,7 @@ def liftedResolutionLeftRoofColimitMap :
         (weakEquivalences C) X Y
 ```
 
-### [LiftedSourceFrameElements.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/LiftedSourceFrameElements.lean)
+### [LiftedSourceFrameElements.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/LiftedSourceFrameElements.lean)
 
 OE03、52原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.LiftedSourceFrameElements`。
 
@@ -5655,7 +5655,7 @@ OE03、52原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：元の単体次数・ラベル・両変数の射を保つ。
 使われ方：BEの同じ全source-frameの射を元のtwisted pairingへ送る。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.liftedSourceFrameIndex`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.liftedSourceFrameIndex`。
 
 ```lean
 universe u v
@@ -5665,7 +5665,7 @@ variable {C : Type u} [Category.{v} C]
 abbrev liftedSourceFrameIndex
 ```
 
-### [LiftedSourceFrameFiberRoof.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/LiftedSourceFrameFiberRoof.lean)
+### [LiftedSourceFrameFiberRoof.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/LiftedSourceFrameFiberRoof.lean)
 
 OE03、53原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.LiftedSourceFrameFiberRoof`。
 
@@ -5674,20 +5674,20 @@ OE03、53原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：通常の要素圏と反対の要素圏の向きを保持し、元の次数とラベルを回収する。
 使われ方：同じnative fiber射と元の固定始域roofとの照合。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.liftedSourceFrameFiberRoofEquivalence`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.liftedSourceFrameFiberRoofEquivalence`。
 
 ```lean
 universe u v
 variable {C : Type u} [Category.{v} C]
   (Q : C ⥤ SimplexCategory ⥤ C) (R : C ⥤ C)
 
-def liftedSourceFrameFiberRoofEquivalence (P : liftedSourceFrameIndex (C := C)) :
-    (simplicialElementsCatDiagram (liftedSourceFrameCoefficients Q R)).obj P ≌
+def liftedSourceFrameFiberRoofEquivalence (P : _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.liftedSourceFrameIndex (C := C)) :
+    (simplicialElementsCatDiagram (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.liftedSourceFrameCoefficients Q R)).obj P ≌
       (CostructuredArrow (Q.obj (AsSmall.down.obj P).1.unop)
         (R.obj (AsSmall.down.obj P).2))ᵒᵖ
 ```
 
-### [LiftedSourceFramePairing.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/LiftedSourceFramePairing.lean)
+### [LiftedSourceFramePairing.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/LiftedSourceFramePairing.lean)
 
 OE03、64原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.LiftedSourceFramePairing`。
 
@@ -5696,7 +5696,7 @@ OE03、64原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：全射列・全単体作用素を保持する。augmentationの逆はまだ使わない。
 使われ方：BEの元の同じ全要素から正本Homへのroof比較を組み立てる。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.liftedSourceFrameArrowDomain`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.liftedSourceFrameArrowDomain`。
 
 ```lean
 universe u v
@@ -5704,10 +5704,10 @@ variable {C : Type u} [Category.{v} C]
   (Q : C ⥤ SimplexCategory ⥤ C) (R : C ⥤ C)
 
 def liftedSourceFrameArrowDomain :
-    SimplicialTotalElements (liftedSourceFrameCoefficients Q R) ⥤ (AsSmall.{max u v} C)ᵒᵖ
+    SimplicialTotalElements (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.liftedSourceFrameCoefficients Q R) ⥤ (AsSmall.{max u v} C)ᵒᵖ
 ```
 
-### [LocalizationComparison.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/LocalizationComparison.lean)
+### [LocalizationComparison.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/LocalizationComparison.lean)
 
 OE03、113原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.LocalizationComparison`。
 
@@ -5716,7 +5716,7 @@ OE03、113原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunction
 規約：KST の暫定 import はこの葉に限る。dg 代数の KST モジュールは import しない。
 使われ方：一般モデル側の比較を Sp の指定局所化へ移す。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.localizationComparison_pinchedHom_isQCatEquivalence`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.localizationComparison_pinchedHom_isQCatEquivalence`。
 
 ```lean
 universe u
@@ -5729,7 +5729,7 @@ lemma localizationComparison_pinchedHom_isQCatEquivalence (x y : Q _⦋0⦌) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.pinchedHomMap K x y)
 ```
 
-### [MixedFrame.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/MixedFrame.lean)
+### [MixedFrame.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/MixedFrame.lean)
 
 OE03、117原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedFrame`。
 
@@ -5740,7 +5740,7 @@ OE03、117原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunction
 規約：この段階ではモデル構造・弱同値性・Kan 性を仮定しない。
 使われ方：始域 frame と右 frame の錐の自然な共通比較。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.MixedFrame.mixedFunctor`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedFrame.mixedFunctor`。
 
 ```lean
 universe u v
@@ -5749,7 +5749,7 @@ variable {C : Type u} [Category.{v} C] (A : SimplexCategory ⥤ C)
 abbrev mixedFunctor : (SimplexCategoryᵒᵖ ⥤ C) ⥤ SSet.{v}
 ```
 
-### [MixedFrameSource.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/MixedFrameSource.lean)
+### [MixedFrameSource.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/MixedFrameSource.lean)
 
 OE03、77原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedFrameSource`。
 
@@ -5760,16 +5760,16 @@ OE03、77原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：元の frame の射と augmentation の可換四角形を保持する。
 使われ方：具体的な両錐比較の始域自然性。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.MixedFrame.mixedSourceMap`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedFrame.mixedSourceMap`。
 
 ```lean
 universe u v
 variable {C : Type u} [Category.{v} C] {A B : SimplexCategory ⥤ C}
 
-abbrev mixedSourceMap (a : A ⟶ B) : mixedFunctor B ⟶ mixedFunctor A
+abbrev mixedSourceMap (a : A ⟶ B) : _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedFrame.mixedFunctor B ⟶ _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedFrame.mixedFunctor A
 ```
 
-### [MixedNerveCoconePoint.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/MixedNerveCoconePoint.lean)
+### [MixedNerveCoconePoint.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/MixedNerveCoconePoint.lean)
 
 OE03、30原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerveCoconePoint`。
 
@@ -5777,17 +5777,17 @@ OE03、30原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 方針：同じ Hom 持ち上げの余錐の終端を取り、元の down の頂点評価へ戻す。
 規約：点射全体の等式。使われ方：通常 augmentation の dg nerve 値余錐の固定条件。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.MixedNerve.coconeJoin_inr`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.coconeJoin_inr`。
 
 ```lean
 universe u
 variable {I C : Type (u + 1)} [Category.{u} I] [Category.{u} C] {F : I ⥤ C}
 
 lemma coconeJoin_inr (c : Cocone F) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInr (nerve I) (Δ[0] : SSet.{u + 1}) ≫ coconeJoin c = _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint c.pt
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInr (nerve I) (Δ[0] : SSet.{u + 1}) ≫ _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.coconeJoin c = _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint c.pt
 ```
 
-### [MixedNerveCoconePrism.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/MixedNerveCoconePrism.lean)
+### [MixedNerveCoconePrism.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/MixedNerveCoconePrism.lean)
 
 OE03、49原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerveCoconePrism`。
 
@@ -5795,16 +5795,16 @@ OE03、49原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 方針：既存の Hom 持ち上げ・同じ自然変換・同じ上下射を保持して余錐比較を移す。
 規約：元の全単体の厳密な等式。使われ方：正規化 tensor の元の augmentation との比較。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.MixedNerve.liftedCocone`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.liftedCocone`。
 
 ```lean
 universe u
 variable {I C : Type (u + 1)} [Category.{u} I] [Category.{u} C] {F : I ⥤ C}
 
-def liftedCocone (c : Cocone F) : Cocone (lifted F)
+def liftedCocone (c : Cocone F) : Cocone (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.lifted F)
 ```
 
-### [MixedNerveConstant.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/MixedNerveConstant.lean)
+### [MixedNerveConstant.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/MixedNerveConstant.lean)
 
 OE03、28原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerveConstant`。
 
@@ -5812,7 +5812,7 @@ OE03、28原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 方針：元の nerve の全射列で定値関手の作用を比較する。
 規約：元の指定頂点を保つ。使われ方：全正規化単体屋根の両端の定値図式への照合。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.MixedNerve.nerveMap_const`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.nerveMap_const`。
 
 ```lean
 universe u
@@ -5822,7 +5822,7 @@ lemma nerveMap_const (x : C) :
     nerveMap ((Functor.const I).obj x) = SSet.const (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex x)
 ```
 
-### [MixedNerveConstantHom.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/MixedNerveConstantHom.lean)
+### [MixedNerveConstantHom.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/MixedNerveConstantHom.lean)
 
 OE03、118原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerveConstantHom`。
 
@@ -5831,48 +5831,48 @@ OE03、118原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunction
 規約：元の自然変換・元の辺・全パラメータを保持する。
 使われ方：元の自由単位の全図式制限を標準単位の定値族へ接続する。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.MixedNerve.homotopy_const_h`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.homotopy_const_h`。
 
 ```lean
 universe u
 
 lemma homotopy_const_h {I C : Type (u + 1)} [Category.{u} I] [Category.{u} C]
     {x y : C} (f : x ⟶ y) :
-    (homotopy ((Functor.const I).map f)).h =
+    (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.homotopy ((Functor.const I).map f)).h =
       snd (nerve I) (Δ[1] : SSet.{u + 1}) ≫ SSet.yonedaEquiv.symm (nerve.edgeMk f).edge
 ```
 
-### [MixedNerveHomLiftIso.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/MixedNerveHomLiftIso.lean)
+### [MixedNerveHomLiftIso.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/MixedNerveHomLiftIso.lean)
 
 OE03、39原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerveHomLiftIso`。
 
 module docstringなし。実際の型とimportを参照。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.MixedNerve.up_down`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.up_down`。
 
 ```lean
 universe u
 variable (C : Type (u + 1)) [Category.{u} C]
 
-lemma up_down : up C ≫ down C = 𝟙 _
+lemma up_down : _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.up C ≫ _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.down C = 𝟙 _
 ```
 
-### [MixedNerveHomRecovery.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/MixedNerveHomRecovery.lean)
+### [MixedNerveHomRecovery.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/MixedNerveHomRecovery.lean)
 
 OE03、68原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerveHomRecovery`。
 
 module docstringなし。実際の型とimportを参照。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.MixedNerve.down_up`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.down_up`。
 
 ```lean
 universe u
 variable (C : Type (u + 1)) [Category.{u} C]
 
-lemma down_up : down C ≫ up C = 𝟙 _
+lemma down_up : _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.down C ≫ _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.up C = 𝟙 _
 ```
 
-### [MixedNerveNatTrans.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/MixedNerveNatTrans.lean)
+### [MixedNerveNatTrans.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/MixedNerveNatTrans.lean)
 
 OE03、93原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerveNatTrans`。
 
@@ -5883,7 +5883,7 @@ OE03、93原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：元の対象・元の射・指定自然変換を保持する。
 使われ方：全代数の置換比較と離散入力の全関手比較。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.MixedNerve.up`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.up`。
 
 ```lean
 universe u
@@ -5892,13 +5892,13 @@ variable {C D : Type (u + 1)} [Category.{u} C] [Category.{u} D]
 def up (C : Type (u + 1)) [Category.{u} C] : nerve C ⟶ nerve (ULiftHom.{u + 1} C)
 ```
 
-### [MixedNerveNatTransFunctor.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/MixedNerveNatTransFunctor.lean)
+### [MixedNerveNatTransFunctor.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/MixedNerveNatTransFunctor.lean)
 
 OE03、75原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerveNatTransFunctor`。
 
 module docstringなし。実際の型とimportを参照。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.MixedNerve.liftedFunctor`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.liftedFunctor`。
 
 ```lean
 universe u
@@ -5907,7 +5907,7 @@ variable (C D : Type (u + 1)) [Category.{u} C] [Category.{u} D]
 def liftedFunctor : (C ⥤ D) ⥤ (ULiftHom.{u + 1} C ⥤ ULiftHom.{u + 1} D)
 ```
 
-### [NerveAsSmall.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/NerveAsSmall.lean)
+### [NerveAsSmall.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/NerveAsSmall.lean)
 
 OE03、91原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveAsSmall`。
 
@@ -5918,7 +5918,7 @@ OE03、91原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：元の対象・射・単体を保持し、圏の同値だけから同型を推論しない。
 使われ方：分解の comma の可縮性を F1b の同じ宇宙の小圏へ移す。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.NerveAsSmall.up_down`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveAsSmall.up_down`。
 
 ```lean
 universe u v w
@@ -5927,7 +5927,7 @@ variable (C : Type u) [Category.{v} C]
 lemma up_down : AsSmall.up.{v, u, w} (C := C) ⋙ AsSmall.down = 𝟭 C
 ```
 
-### [NerveColumnComponentArrow.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/NerveColumnComponentArrow.lean)
+### [NerveColumnComponentArrow.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/NerveColumnComponentArrow.lean)
 
 OE03、52原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveColumnComponentArrow`。
 
@@ -5936,7 +5936,7 @@ OE03、52原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：元の成分辺と両端表示を全 Arrow 等式で保持する。
 使われ方：閉包内の全列自然性から実 U の指定成分正方形を回収する。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.NerveColumn.hom_component_arrow`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveColumn.hom_component_arrow`。
 
 ```lean
 universe u
@@ -5944,12 +5944,12 @@ variable {I C : Type u} [Category.{u} I] [Category.{u} C]
 
 lemma hom_component_arrow {D : SSet.{u}} (q : nerve C ⟶ D)
     {V W : I ⥤ C} (a : V ⟶ W) (i : I) :
-    Arrow.mk (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (hom q a) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex i)) =
+    Arrow.mk (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveColumn.hom q a) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex i)) =
       Arrow.mk (Truncated.HomotopyCategory.homMk
         ((nerve.edgeMk (a.app i)).map q).toTruncated)
 ```
 
-### [NerveColumnNaturalityComponent.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/NerveColumnNaturalityComponent.lean)
+### [NerveColumnNaturalityComponent.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/NerveColumnNaturalityComponent.lean)
 
 OE03、44原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveColumnNaturalityComponent`。
 
@@ -5958,7 +5958,7 @@ OE03、44原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：閉包内の全列比較を再利用し、元の成分射を保持する。
 使われ方：実 U の全源比較と cofibrant 置換 augmentation の端点整合。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.NerveColumn.hom_naturality_const_component`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveColumn.hom_naturality_const_component`。
 
 ```lean
 universe u
@@ -5972,13 +5972,13 @@ lemma hom_naturality_const_component {C : Type u} [Category.{u} C]
       Truncated.HomotopyCategory.homMk ((nerve.edgeMk f).map G).toTruncated)
 ```
 
-### [NerveColumnRoofNaturality.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/NerveColumnRoofNaturality.lean)
+### [NerveColumnRoofNaturality.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/NerveColumnRoofNaturality.lean)
 
 OE03、133原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveColumnRoofNaturality`。
 
 module docstringなし。実際の型とimportを参照。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.NerveColumn.hom`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveColumn.hom`。
 
 ```lean
 universe u
@@ -5989,7 +5989,7 @@ def hom (F : nerve C ⟶ E) {V W : I ⥤ C} (a : V ⟶ W) :
     _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHom (nerveMap V ≫ F) (nerveMap W ≫ F)
 ```
 
-### [NerveColumnWhiskering.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/NerveColumnWhiskering.lean)
+### [NerveColumnWhiskering.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/NerveColumnWhiskering.lean)
 
 OE03、102原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveColumnWhiskering`。
 
@@ -5998,7 +5998,7 @@ OE03、102原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunction
 規約：元の全パラメータと指定された値を保持する。
 使われ方：IS-W2 R03h・R03d の native Hom と同じ roof の照合。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.sameNerveTransformationPostIso_column`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.sameNerveTransformationPostIso_column`。
 
 ```lean
 universe u
@@ -6008,10 +6008,10 @@ lemma sameNerveTransformationPostIso_column
     {F G : I ⥤ C} (η : F ⟶ G) {Q : SSet.{u}} [Quasicategory Q]
     (L : nerve C ⟶ Q)
     (hη : ∀ i, IsInvertibleEdge ((nerve.edgeMk (η.app i)).map L).toTruncated) :
-    (nerveTransformationPostIso η L hη).hom = NerveColumn.hom L η
+    (nerveTransformationPostIso η L hη).hom = _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveColumn.hom L η
 ```
 
-### [NerveEquivalenceImage.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/NerveEquivalenceImage.lean)
+### [NerveEquivalenceImage.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/NerveEquivalenceImage.lean)
 
 OE03、52原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveEquivalenceImage`。
 
@@ -6022,7 +6022,7 @@ OE03、52原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：単体集合モデルや nerve の Kan 性を仮定しない。
 使われ方：持ち上げ空間の可縮性を実際の comma 圏へ移す。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.NerveEquivalenceImage.imageIso`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveEquivalenceImage.imageIso`。
 
 ```lean
 universe u v uH vH
@@ -6033,7 +6033,7 @@ variable {C D : Type u} [Category.{v} C] [Category.{v} D]
 def imageIso : L.obj (nerve C) ≅ L.obj (nerve D)
 ```
 
-### [NerveOverRightPrism.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/NerveOverRightPrism.lean)
+### [NerveOverRightPrism.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/NerveOverRightPrism.lean)
 
 OE03、60原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveOverRightPrism`。
 
@@ -6044,7 +6044,7 @@ OE03、60原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：同じ q・元の全円柱を保持し、quasicategory 性は仮定しない。
 使われ方：実 corner の幾何的右脚を元の標準右脚へ戻す。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.sliceOverUncurry_pointTransport`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.sliceOverUncurry_pointTransport`。
 
 ```lean
 universe u
@@ -6054,7 +6054,7 @@ lemma sliceOverUncurry_pointTransport {S X : SSet.{u}} {p p' : (Δ[0] : SSet.{u}
     _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverUncurry (f ≫ (eqToIso (congrArg _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOver h)).hom) = _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverUncurry f
 ```
 
-### [NerveQuillenA.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/NerveQuillenA.lean)
+### [NerveQuillenA.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/NerveQuillenA.lean)
 
 OE03、74原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveQuillenA`。
 
@@ -6065,7 +6065,7 @@ OE03、74原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：同じ宇宙の小圏で適用し、単体集合のモデル構造を要求しない。
 使われ方：実際の分解の asphericity を右比較の余終性へ移す。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.NerveQuillenA.nerveMap_isLeftCofinal_of_weaklyContractible_comma`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveQuillenA.nerveMap_isLeftCofinal_of_weaklyContractible_comma`。
 
 ```lean
 universe u
@@ -6076,7 +6076,7 @@ lemma nerveMap_isLeftCofinal_of_weaklyContractible_comma
     _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsLeftCofinal (nerveMap F)
 ```
 
-### [NerveTerminalImage.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/NerveTerminalImage.lean)
+### [NerveTerminalImage.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/NerveTerminalImage.lean)
 
 OE03、58原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveTerminalImage`。
 
@@ -6087,7 +6087,7 @@ OE03、58原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：単体集合のモデル構造や群oid 条件を要求しない。
 使われ方：反対要素圏の標準単体での終端 augmentation の反転性。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.NerveTerminalImage.contraction`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveTerminalImage.contraction`。
 
 ```lean
 universe u v uH vH
@@ -6096,7 +6096,7 @@ variable {C : Type u} [Category.{v} C] {a : C} (ha : IsTerminal a)
 def contraction : 𝟭 C ⟶ (Functor.const C).obj a
 ```
 
-### [OppositeElementsInvariance.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/OppositeElementsInvariance.lean)
+### [OppositeElementsInvariance.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/OppositeElementsInvariance.lean)
 
 OE03、40原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.OppositeElementsInvariance`。
 
@@ -6107,7 +6107,7 @@ OE03、40原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：通常の要素圏と反対要素圏を区別し、単体集合モデルは仮定しない。
 使われ方：元の全右脚の Hom の不変性を全単体の圏の不変性へ移す。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.SimplexTerminalNerve.map_localized_isIso`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.SimplexTerminalNerve.map_localized_isIso`。
 
 ```lean
 universe v
@@ -6117,7 +6117,7 @@ lemma map_localized_isIso {K L : SSet.{v}} (f : K ⟶ L)
     IsIso (AnodyneHomotopy.anodyneQ.map (nerveMap f.mapElements.op))
 ```
 
-### [OverTerminalEvaluation.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/OverTerminalEvaluation.lean)
+### [OverTerminalEvaluation.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/OverTerminalEvaluation.lean)
 
 OE03、63原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.OverTerminalEvaluation`。
 
@@ -6128,7 +6128,7 @@ OE03、63原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：全単体・元の構造射を保つ。
 使われ方：実評価の底円柱と標準評価の全関手圏での比較。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.overTerminalTransformation`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.overTerminalTransformation`。
 
 ```lean
 universe u
@@ -6137,7 +6137,7 @@ variable {I C : Type u} [Category.{u} I] [Category.{u} C] (n : C) (T : I ⥤ Ove
 def overTerminalTransformation : T ⟶ (Functor.const I).obj (Over.mk (𝟙 n))
 ```
 
-### [PinchedFamilyWeakDetection.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/PinchedFamilyWeakDetection.lean)
+### [PinchedFamilyWeakDetection.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/PinchedFamilyWeakDetection.lean)
 
 OE03、38原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.PinchedFamilyWeakDetection`。
 
@@ -6148,7 +6148,7 @@ OE03、38原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：パラメータ K は任意。各頂点上の π₀ の一致を入力とはしない。
 使われ方：実 ProductHomMap と元の弱な基準射の高次比較の出口。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.pinchedFamily_weak_of_intervalFamilyHom_eq`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.pinchedFamily_weak_of_intervalFamilyHom_eq`。
 
 ```lean
 universe u
@@ -6161,7 +6161,7 @@ lemma pinchedFamily_weak_of_intervalFamilyHom_eq {K X : SSet.{u}} [Quasicategory
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence f
 ```
 
-### [PointSliceCornerFibration.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/PointSliceCornerFibration.lean)
+### [PointSliceCornerFibration.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/PointSliceCornerFibration.lean)
 
 OE03、63原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.PointSliceCornerFibration`。
 
@@ -6172,7 +6172,7 @@ OE03、63原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：元の指定点・元の底の全錐を保ち、モデル構造や Kan 全空間を仮定しない。
 使われ方：実屋根 slice を次数図式上の始点評価の fiber として比較する。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.joinHorn_point_leftAnodyne`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.joinHorn_point_leftAnodyne`。
 
 ```lean
 universe u
@@ -6182,7 +6182,7 @@ lemma joinHorn_point_leftAnodyne (n : ℕ) (i : Fin (n + 2)) :
       (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinUnion (horn (n + 1) i) (⊥ : (Δ[0] : SSet.{u}).Subcomplex)).ι
 ```
 
-### [ProductSimplexElementProjectionWeak.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/ProductSimplexElementProjectionWeak.lean)
+### [ProductSimplexElementProjectionWeak.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/ProductSimplexElementProjectionWeak.lean)
 
 OE03、66原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ProductSimplexElementProjectionWeak`。
 
@@ -6193,7 +6193,7 @@ OE03、66原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：元の M・指定 n・Hom ULift と第一成分を保持する。
 使われ方：屋根の ProductHomMap と保存済みの高次比較との照合。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.ProductSimplexLiftedOver.firstNerveMap`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ProductSimplexLiftedOver.firstNerveMap`。
 
 ```lean
 universe u
@@ -6202,7 +6202,7 @@ variable (M : SSet.{u}) (n : AsSmall.{u + 1} SimplexCategory)
 def firstNerveMap : nerve (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ProductSimplexLiftedOver.productElements M n) ⟶ nerve (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ProductSimplexLiftedOver.elements M)
 ```
 
-### [ProductSimplexUniverseProjectionWeak.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/ProductSimplexUniverseProjectionWeak.lean)
+### [ProductSimplexUniverseProjectionWeak.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/ProductSimplexUniverseProjectionWeak.lean)
 
 OE03、79原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ProductSimplexUniverseProjectionWeak`。
 
@@ -6211,7 +6211,7 @@ OE03、79原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：元の小さい単体集合と指定次数を保持する。
 使われ方：一般モデル圏の実 roof 比較の積単体の次数表示。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.ProductSimplexUniverseOver.firstNerveMap`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ProductSimplexUniverseOver.firstNerveMap`。
 
 ```lean
 universe u w
@@ -6220,7 +6220,7 @@ variable (M : SSet.{u}) (n : AsSmall.{max u w} SimplexCategory)
 def firstNerveMap : nerve (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ProductSimplexUniverseOver.productElements.{u, w} M n) ⟶ nerve (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ProductSimplexUniverseOver.elements.{u, w} M)
 ```
 
-### [RealizationHomNaturality.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/RealizationHomNaturality.lean)
+### [RealizationHomNaturality.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/RealizationHomNaturality.lean)
 
 OE03、69原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.RealizationHomNaturality`。
 
@@ -6231,7 +6231,7 @@ OE03、69原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：実現の射は既存の Realization.family の同じ射。
 使われ方：各値の重み付き始域 Hom と図式 frame Hom の自然性。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.realizationHomEquiv_app`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.realizationHomEquiv_app`。
 
 ```lean
 universe u v
@@ -6245,7 +6245,7 @@ lemma realizationHomEquiv_app {X : SSet.{u}} {Y : C}
         (Realization.functor A).map (uliftYonedaEquiv.symm x) ≫ f
 ```
 
-### [ResolutionAsphericity.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/ResolutionAsphericity.lean)
+### [ResolutionAsphericity.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/ResolutionAsphericity.lean)
 
 OE03、98原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ResolutionAsphericity`。
 
@@ -6256,7 +6256,7 @@ OE03、98原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：分解の元の augmentation と全単体作用素を保持する。
 使われ方：特殊な三本矢への右射の分解側のホモトピー余終性。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.TrivialFibrationOver`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.TrivialFibrationOver`。
 
 ```lean
 universe u v uH vH
@@ -6265,7 +6265,7 @@ variable {C : Type u} [Category.{v} C] [ModelCategory C] {X : C}
 abbrev TrivialFibrationOver (X : C)
 ```
 
-### [ResolutionCofinality.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/ResolutionCofinality.lean)
+### [ResolutionCofinality.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/ResolutionCofinality.lean)
 
 OE03、64原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ResolutionCofinality`。
 
@@ -6276,17 +6276,17 @@ OE03、64原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：元の分解・augmentation・全作用素を保持し、単体集合モデルを要求しない。
 使われ方：特殊な三本矢への共通比較の右射の分解側の余終性。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.smallResolutionOverFunctor`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.smallResolutionOverFunctor`。
 
 ```lean
 universe u v w
-variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C] {X : C}
+variable {C : Type u} [Category.{v} C] [_root_.HomotopicalAlgebra.ModelCategory C] {X : C}
 
 def smallResolutionOverFunctor (q : CofibrantResolution (C := C) simplex X) :
-    AsSmall.{max w u v} SimplexCategory ⥤ AsSmall.{w} (TrivialFibrationOver X)
+    AsSmall.{max w u v} SimplexCategory ⥤ AsSmall.{w} (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.TrivialFibrationOver X)
 ```
 
-### [ResolutionCommaContraction.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/ResolutionCommaContraction.lean)
+### [ResolutionCommaContraction.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/ResolutionCommaContraction.lean)
 
 OE03、61原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ResolutionCommaContraction`。
 
@@ -6297,7 +6297,7 @@ OE03、61原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：全次数の comma 圏を扱い、単体集合のモデル構造を要求しない。
 使われ方：特殊な三本矢への共通比較の右射のホモトピー余終性。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.FrameLift.commaTerminal_image_isIso`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameLift.commaTerminal_image_isIso`。
 
 ```lean
 universe u v uH vH
@@ -6310,10 +6310,10 @@ variable {C : Type u} [Category.{v} C] [ModelCategory C]
 lemma commaTerminal_image_isIso {H : Type uH} [Category.{vH} H] (L : SSet.{v} ⥤ H)
     (hL : SSet.anodyneExtensions.IsInvertedBy L) :
     IsIso (L.map (SSet.stdSimplex.isTerminalObj₀.from
-      (nerve (CostructuredArrow (overFunctor A a f) (Over.mk p)))))
+      (nerve (CostructuredArrow (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameLift.overFunctor A a f) (Over.mk p)))))
 ```
 
-### [ResolutionFixedRightComparison.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/ResolutionFixedRightComparison.lean)
+### [ResolutionFixedRightComparison.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/ResolutionFixedRightComparison.lean)
 
 OE03、91原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ResolutionFixedRightComparison`。
 
@@ -6324,17 +6324,17 @@ OE03、91原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：元の分解と augmentation の全作用を保持し、単体集合モデルを要求しない。
 使われ方：三本矢の右変数の全図式の成分ごとの比較。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.smallResolutionLeftForget`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.smallResolutionLeftForget`。
 
 ```lean
 universe u v w
-variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
+variable {C : Type u} [Category.{v} C] [_root_.HomotopicalAlgebra.ModelCategory C]
 
 def smallResolutionLeftForget (X : C) :
-    AsSmall.{w} (TrivialFibrationOver X) ⥤ AsSmall.{w} C
+    AsSmall.{w} (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.TrivialFibrationOver X) ⥤ AsSmall.{w} C
 ```
 
-### [RightFrameHammockCoherent.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/RightFrameHammockCoherent.lean)
+### [RightFrameHammockCoherent.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/RightFrameHammockCoherent.lean)
 
 OE03、83原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.RightFrameHammockCoherent`。
 
@@ -6343,7 +6343,7 @@ OE03、83原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：指定 right frame と元の全図式を保持し、点ごとの逆の選択をしない。
 使われ方：指定局所化の全 pinched Hom 族への接続と同じ二胞体の保持。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.rightFrameHammockCoherentDiagram`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockCoherentDiagram`。
 
 ```lean
 universe u v
@@ -6357,7 +6357,7 @@ def rightFrameHammockCoherentDiagram (i : Fin 7) :
       _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{max u v}
 ```
 
-### [RightFrameHammockComponent.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/RightFrameHammockComponent.lean)
+### [RightFrameHammockComponent.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/RightFrameHammockComponent.lean)
 
 OE03、109原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.RightFrameHammockComponent`。
 
@@ -6366,7 +6366,7 @@ OE03、109原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunction
 規約：coherent 全族の構成を保持し、hammock の局所化普遍性とは分ける。
 使われ方：指定局所化への全比較の同じ成分と実 QCat 同値性。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.rightFrameHammockKanEdgeEquivalence`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockKanEdgeEquivalence`。
 
 ```lean
 universe u v
@@ -6377,11 +6377,11 @@ variable {C : Type u} [Category.{v} C] [ModelCategory C] {X : C} [IsCofibrant X]
 
 def rightFrameHammockKanEdgeEquivalence (i : Fin 6) (Y : AsSmall.{max u v} C) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence
-      ((rightFrameHammockKanDiagram q r (rightFrameHammockEdgeSource i)).obj Y).obj
-      ((rightFrameHammockKanDiagram q r (rightFrameHammockEdgeTarget i)).obj Y).obj
+      ((_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockKanDiagram q r (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockEdgeSource i)).obj Y).obj
+      ((_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockKanDiagram q r (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockEdgeTarget i)).obj Y).obj
 ```
 
-### [RightFrameHammockComponentImage.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/RightFrameHammockComponentImage.lean)
+### [RightFrameHammockComponentImage.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/RightFrameHammockComponentImage.lean)
 
 OE03、70原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.RightFrameHammockComponentImage`。
 
@@ -6390,7 +6390,7 @@ OE03、70原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：六辺の全自然比較を点ごとの任意の同値と切り離さない。
 使われ方：同じ成分比較の単位・零単体公式の合成。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.qCatEquivalence_hom_inv_Q`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.qCatEquivalence_hom_inv_Q`。
 
 ```lean
 universe u v w
@@ -6400,7 +6400,7 @@ lemma qCatEquivalence_hom_inv_Q {A B : SSet.{w}} [Quasicategory A] [Quasicategor
     AnodyneHomotopy.anodyneQ.map e.hom ≫ AnodyneHomotopy.anodyneQ.map e.inv = 𝟙 _
 ```
 
-### [RightFrameHammockFamily.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/RightFrameHammockFamily.lean)
+### [RightFrameHammockFamily.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/RightFrameHammockFamily.lean)
 
 OE03、146原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.RightFrameHammockFamily`。
 
@@ -6409,7 +6409,7 @@ OE03、146原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunction
 規約：anodyne 局所化での全族比較であり、指定 ∞ 局所化への完成定理と区別する。
 使われ方：全 coherent 比較の構成と同じ実射の弱同値性の検出。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.rightFrameReplacementHomImageIso`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameReplacementHomImageIso`。
 
 ```lean
 universe u v uD vD
@@ -6423,7 +6423,7 @@ def rightFrameReplacementHomImageIso [IsCofibrant X] :
     _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameHom r X ⋙ L ≅ _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameReplacement r ⋙ _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameHom r X ⋙ L
 ```
 
-### [RightFrameHammockKanSpan.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/RightFrameHammockKanSpan.lean)
+### [RightFrameHammockKanSpan.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/RightFrameHammockKanSpan.lean)
 
 OE03、125原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.RightFrameHammockKanSpan`。
 
@@ -6432,7 +6432,7 @@ OE03、125原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunction
 規約：全比較は実射の自然変換であり、単に点ごとの同値を選ばない。
 使われ方：関手 ∞ 圏の全同型と零単体正規化への接続。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.rightFrameHammockFamilyDiagram`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockFamilyDiagram`。
 
 ```lean
 universe u v
@@ -6445,9 +6445,9 @@ def rightFrameHammockFamilyDiagram : Fin 7 → C ⥤ SSet.{max u v}
   | 1 => _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameReplacement r ⋙ _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameHom r X ⋙ SSet.uliftFunctor.{max u v, v}
   | 2 => _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameReplacement r ⋙ _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightMixedFamily q r ⋙ SSet.uliftFunctor.{max u v, v}
   | 3 => _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameReplacement r ⋙ _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom q.obj ⋙ SSet.uliftFunctor.{max u v, v}
-  | 4 => _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameReplacement r ⋙ sourceFrameElementsFamily q
-  | 5 => _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameReplacement r ⋙ hammockHomFamily (weakEquivalences C) X
-  | 6 => hammockHomFamily (weakEquivalences C) X
+  | 4 => _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameReplacement r ⋙ _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.sourceFrameElementsFamily q
+  | 5 => _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameReplacement r ⋙ _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.hammockHomFamily (weakEquivalences C) X
+  | 6 => _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.hammockHomFamily (weakEquivalences C) X
 
 /-- 概要：元の六つの弱比較の始域添字。
 方針：元の三つの逆向き比較を保持する。
@@ -6465,8 +6465,8 @@ def rightFrameHammockEdgeTarget : Fin 6 → Fin 7
 方針：元の単位・混合比較・要素 augmentation・roof を同じ順に使う。
 規約：元の全単体の実射。使われ方：関手 ∞ 圏に移す比較辺。 -/
 def rightFrameHammockFamilyEdge : (i : Fin 6) →
-    rightFrameHammockFamilyDiagram q r (rightFrameHammockEdgeSource i) ⟶
-      rightFrameHammockFamilyDiagram q r (rightFrameHammockEdgeTarget i)
+    _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockFamilyDiagram q r (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockEdgeSource i) ⟶
+      _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockFamilyDiagram q r (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockEdgeTarget i)
   | 0 => Functor.whiskerRight
       (Functor.whiskerRight (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameReplacementUnit r) (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameHom r X))
       SSet.uliftFunctor
@@ -6474,10 +6474,10 @@ def rightFrameHammockFamilyEdge : (i : Fin 6) →
       (Functor.whiskerLeft (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameReplacement r) (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightMixedRight q r)) SSet.uliftFunctor
   | 2 => Functor.whiskerRight
       (Functor.whiskerLeft (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameReplacement r) (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightMixedLeft q r)) SSet.uliftFunctor
-  | 3 => Functor.whiskerLeft (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameReplacement r) (sourceFrameElementsAugmentation q)
-  | 4 => Functor.whiskerLeft (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameReplacement r) (sourceRoofFamily q)
+  | 3 => Functor.whiskerLeft (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameReplacement r) (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.sourceFrameElementsAugmentation q)
+  | 4 => Functor.whiskerLeft (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameReplacement r) (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.sourceRoofFamily q)
   | 5 => Functor.whiskerRight (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameReplacementUnit r)
-      (hammockHomFamily (weakEquivalences C) X)
+      (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.hammockHomFamily (weakEquivalences C) X)
 
 variable [IsCofibrant X]
   (cof : MorphismProperty.FunctorialFactorizationData (cofibrations C) (trivialFibrations C))
@@ -6486,10 +6486,10 @@ include cof in
 方針：同じ混合比較・実 roof・元の弱単位の反転性を使う。
 規約：第一分解と指定 right frame。使われ方：coherent な全族の反転判定。 -/
 lemma rightFrameHammockFamilyEdge_weak (i : Fin 6) (Y : C) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((rightFrameHammockFamilyEdge q r i).app Y)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockFamilyEdge q r i).app Y)
 ```
 
-### [RightFrameHammockUnitComparison.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/RightFrameHammockUnitComparison.lean)
+### [RightFrameHammockUnitComparison.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/RightFrameHammockUnitComparison.lean)
 
 OE03、122原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.RightFrameHammockUnitComparison`。
 
@@ -6498,7 +6498,7 @@ OE03、122原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunction
 規約：元の射・元の比較・選択した逆を保持する。
 使われ方：指定局所化の二胞体による共役公式への入力。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.point_inverse_Q`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.point_inverse_Q`。
 
 ```lean
 universe u v w
@@ -6511,7 +6511,7 @@ lemma point_inverse_Q {A B T : SSet.{w}} [Quasicategory A] [Quasicategory B]
       AnodyneHomotopy.anodyneQ.map a
 ```
 
-### [RightFrameHammockUnitPoints.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/RightFrameHammockUnitPoints.lean)
+### [RightFrameHammockUnitPoints.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/RightFrameHammockUnitPoints.lean)
 
 OE03、162原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.RightFrameHammockUnitPoints`。
 
@@ -6520,7 +6520,7 @@ OE03、162原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunction
 規約：同じ元の射・同じ六辺を保持し、逆比較の選択と切り離さない。
 使われ方：実比較の零単体の正規化と指定二胞体の共役式への接続。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.unitHom_eq_const`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.unitHom_eq_const`。
 
 ```lean
 universe u v w
@@ -6529,7 +6529,7 @@ lemma unitHom_eq_const {K : SSet.{w}} (f : 𝟙_ SSet.{w} ⟶ K) :
     f = SSet.const (f.app (op ⦋0⦌) PUnit.unit)
 ```
 
-### [RightFrameHomBifunctor.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/RightFrameHomBifunctor.lean)
+### [RightFrameHomBifunctor.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/RightFrameHomBifunctor.lean)
 
 OE03、56原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.RightFrameHomBifunctor`。
 
@@ -6538,7 +6538,7 @@ OE03、56原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：IS-W2 R02〜R03の既存Hom構成の全係数表示。元のframe・射を変更しない。
 使われ方：固定始域ごとの比較と、始域の作用を区別して全自然性を照合する。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.rightFrameHomBifunctor`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHomBifunctor`。
 
 ```lean
 universe u v
@@ -6548,7 +6548,7 @@ variable {C : Type u} [Category.{v} C] [ModelCategory C]
 def rightFrameHomBifunctor : Cᵒᵖ ⥤ C ⥤ SSet.{v}
 ```
 
-### [RightFrameHomInfinity.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/RightFrameHomInfinity.lean)
+### [RightFrameHomInfinity.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/RightFrameHomInfinity.lean)
 
 OE03、51原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.RightFrameHomInfinity`。
 
@@ -6557,7 +6557,7 @@ OE03、51原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：追加の Yoneda 存在入力も SSet のモデル構造も要求しない。
 使われ方：Sp の β6 f4d の全標的自然性と任意図式への制限。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.rightFrameTerminalHomIso`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameTerminalHomIso`。
 
 ```lean
 universe u v
@@ -6566,15 +6566,15 @@ variable {C : Type u} [Category.{v} C] [ModelCategory C] {X : C}
   (r : CofibrantResolutionFamily (C := Cᵒᵖ) simplex)
   {Q : SSet.{max u v}} [Quasicategory Q]
   {G : nerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C).category ⟶ Q}
-  (c : CoherentLocalizationComparison (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)) G)
+  (c : _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CoherentLocalizationComparison (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)) G)
 
 def rightFrameTerminalHomIso :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (rightFrameHammockCoherentDiagram q r 6)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockCoherentDiagram q r 6)
       (SSet.uliftFunctor.{max u v + 1, max u v}.map G ≫
         _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.homInfinityCovariant (G.app (op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C X))))
 ```
 
-### [RightFrameHomInfinityNormalization.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/RightFrameHomInfinityNormalization.lean)
+### [RightFrameHomInfinityNormalization.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/RightFrameHomInfinityNormalization.lean)
 
 OE03、70原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.RightFrameHomInfinityNormalization`。
 
@@ -6583,7 +6583,7 @@ OE03、70原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：全同型とは別の局所化比較や二胞体を選び直さない。
 使われ方：Sp が全図式比較と元の辺の零単体の正規化を同時に合成する入口。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.rightFrameTerminalHomIso_hom`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameTerminalHomIso_hom`。
 
 ```lean
 universe u v
@@ -6592,19 +6592,19 @@ variable {C : Type u} [Category.{v} C] [ModelCategory C] {X : C}
   (r : CofibrantResolutionFamily (C := Cᵒᵖ) simplex)
   {Q : SSet.{max u v}} [Quasicategory Q]
   {G : nerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C).category ⟶ Q}
-  (c : CoherentLocalizationComparison (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)) G)
+  (c : _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CoherentLocalizationComparison (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)) G)
 
 lemma rightFrameTerminalHomIso_hom :
-    (rightFrameTerminalHomIso q r c).hom =
-      (rightFrameHammockTerminalRealizationIso q r).hom ≫
+    (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameTerminalHomIso q r c).hom =
+      (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockTerminalRealizationIso q r).hom ≫
         (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.precomp
-          (kanHammockHomInfinityIso (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C) (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C X))
+          (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockHomInfinityIso (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C) (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C X))
           (SSet.uliftFunctor.{max u v + 1, max u v}.map
-            (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)))).hom ≫
+            (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)))).hom ≫
         (c.homInfinityTransport (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C X))).hom
 ```
 
-### [RightFrameRoofComparison.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/RightFrameRoofComparison.lean)
+### [RightFrameRoofComparison.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/RightFrameRoofComparison.lean)
 
 OE03、75原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.RightFrameRoofComparison`。
 
@@ -6613,7 +6613,7 @@ OE03、75原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：中間射を変更せず、完全な hammock への比較とは区別する。
 使われ方：一般モデル圏における frame から三本矢への比較の右屋根段階。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.rightFrameRoofCategory`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameRoofCategory`。
 
 ```lean
 universe u v w
@@ -6623,7 +6623,7 @@ variable {C : Type u} [Category.{v} C] [ModelCategory C]
 abbrev rightFrameRoofCategory (X Y : C)
 ```
 
-### [RightFrameSpecifiedLocalization.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/RightFrameSpecifiedLocalization.lean)
+### [RightFrameSpecifiedLocalization.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/RightFrameSpecifiedLocalization.lean)
 
 OE03、73原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.RightFrameSpecifiedLocalization`。
 
@@ -6632,7 +6632,7 @@ OE03、73原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：この補助入口の普遍性入力は ModelRightFrameComparison の主入口で放電する。
 使われ方：指定 K・二胞体を保つ主入口の構成。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.rightFrameSpecifiedLocalizationData`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameSpecifiedLocalizationData`。
 
 ```lean
 universe u v
@@ -6642,17 +6642,17 @@ variable {C : Type u} [Category.{v} C] [ModelCategory C] {X : C} [IsCofibrant X]
   (cof : MorphismProperty.FunctorialFactorizationData (cofibrations C) (trivialFibrations C))
   {Q : SSet.{max u v}} [Quasicategory Q]
   (G : nerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C).category ⟶ Q)
-  (hG : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization G (weakNerveEdges (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)))
-  (hH : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C))
-    (weakNerveEdges (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)))
-  (K : kanHammockNerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C) ⟶ Q)
-  (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C) ≫ K) G)
+  (hG : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization G (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)))
+  (hH : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C))
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)))
+  (K : _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockNerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C) ⟶ Q)
+  (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C) ≫ K) G)
 
 def rightFrameSpecifiedLocalizationData :
-    CoherentLocalizationComparison (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)) G
+    _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CoherentLocalizationComparison (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)) G
 ```
 
-### [RightFrameSpecifiedUnit.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/RightFrameSpecifiedUnit.lean)
+### [RightFrameSpecifiedUnit.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/RightFrameSpecifiedUnit.lean)
 
 OE03、98原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.RightFrameSpecifiedUnit`。
 
@@ -6661,7 +6661,7 @@ OE03、98原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：指定 K と二胞体を保持し、生の辺の厳密化を要求しない。
 使われ方：Sp の元の射・端点成分による共役の照合。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.rightFrameHammockPinchedEquivalence_unit_arrow_Q`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockPinchedEquivalence_unit_arrow_Q`。
 
 ```lean
 universe u v
@@ -6672,15 +6672,15 @@ variable {C : Type u} [Category.{v} C] [ModelCategory C] {X Y : C} [IsCofibrant 
 
 lemma rightFrameHammockPinchedEquivalence_unit_arrow_Q :
     AnodyneHomotopy.anodyneQ.map
-      (rightFrameHammockUnitPoint q r f 0 ≫
-        (rightFrameHammockPinchedEquivalence q r cof Y).hom) =
+      (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockUnitPoint q r f 0 ≫
+        (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockPinchedEquivalence q r cof Y).hom) =
     AnodyneHomotopy.anodyneQ.map
       (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C).weakEquivalences (AsSmall.up.map f) ≫
-        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app _ ≫ kanHammockHomPinchedMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app _ ≫ _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockHomPinchedMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)
           (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C X) (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C Y))
 ```
 
-### [RightFrameTerminalHomReduction.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/RightFrameTerminalHomReduction.lean)
+### [RightFrameTerminalHomReduction.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/RightFrameTerminalHomReduction.lean)
 
 OE03、46原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.RightFrameTerminalHomReduction`。
 
@@ -6689,7 +6689,7 @@ OE03、46原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：Yoneda 入力は原本の供給待ちであり、この補助入口だけで完成としない。
 使われ方：Ind-S (8) の公開全図式比較の直接代入。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.rightFrameTerminalHomIso_of_yonedaIso`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameTerminalHomIso_of_yonedaIso`。
 
 ```lean
 universe u v
@@ -6698,19 +6698,19 @@ variable {C : Type u} [Category.{v} C] [ModelCategory C] {X : C}
   (r : CofibrantResolutionFamily (C := Cᵒᵖ) simplex)
   {Q : SSet.{max u v}} [Quasicategory Q]
   {G : nerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C).category ⟶ Q}
-  (c : CoherentLocalizationComparison (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)) G)
+  (c : _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CoherentLocalizationComparison (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)) G)
 
 def rightFrameTerminalHomIso_of_yonedaIso
     (h : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
-      (kanHammockHomCoherent (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C) (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C X))
-      (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.homInfinityCovariant ((hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)).app
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockHomCoherent (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C) (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C X))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.homInfinityCovariant ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)).app
         (op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C X))))) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (rightFrameHammockCoherentDiagram q r 6)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockCoherentDiagram q r 6)
       (SSet.uliftFunctor.{max u v + 1, max u v}.map G ≫
         _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.homInfinityCovariant (G.app (op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C X))))
 ```
 
-### [RightFrameTerminalRealization.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/RightFrameTerminalRealization.lean)
+### [RightFrameTerminalRealization.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/RightFrameTerminalRealization.lean)
 
 OE03、51原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.RightFrameTerminalRealization`。
 
@@ -6719,7 +6719,7 @@ OE03、51原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：終端の元の七段階図式を変更せず、点ごとの弱同値を使用しない。
 使われ方：原本の Yoneda 全比較と指定局所化の全二胞体の代入。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.rightFrameHammockTerminalRealizationIso`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockTerminalRealizationIso`。
 
 ```lean
 universe u v
@@ -6728,13 +6728,13 @@ variable {C : Type u} [Category.{v} C] [ModelCategory C] {X : C}
   (r : CofibrantResolutionFamily (C := Cᵒᵖ) simplex)
 
 def rightFrameHammockTerminalRealizationIso :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (rightFrameHammockCoherentDiagram q r 6)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockCoherentDiagram q r 6)
       (SSet.uliftFunctor.{max u v + 1, max u v}.map
-        (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)) ≫
-          kanHammockHomCoherent (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C) (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C X))
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)) ≫
+          _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockHomCoherent (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C) (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C X))
 ```
 
-### [RightMixedBifunctor.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/RightMixedBifunctor.lean)
+### [RightMixedBifunctor.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/RightMixedBifunctor.lean)
 
 OE03、83原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.RightMixedBifunctor`。
 
@@ -6743,7 +6743,7 @@ OE03、83原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：IS-W2 R02〜R03の既存構成の自然性・合成則。新しいframeや比較は選ばない。
 使われ方：全joint Hom比較の最初の二辺に、固定始域の比較をそのまま使う。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.rightMixedBifunctor`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightMixedBifunctor`。
 
 ```lean
 universe u v
@@ -6754,7 +6754,7 @@ variable {C : Type u} [Category.{v} C] [ModelCategory C]
 def rightMixedBifunctor : Cᵒᵖ ⥤ C ⥤ SSet.{v}
 ```
 
-### [SimplexTerminalEquivalence.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/SimplexTerminalEquivalence.lean)
+### [SimplexTerminalEquivalence.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/SimplexTerminalEquivalence.lean)
 
 OE03、65原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.SimplexTerminalEquivalence`。
 
@@ -6765,16 +6765,16 @@ OE03、65原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：標準単体だけの結論ではなく任意の単体集合を扱い、単体集合モデルは要求しない。
 使われ方：Dwyer–Kan §7 の共通比較の frame 側の反転可能な左射。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.SimplexTerminalNerve.augmentation_localized_isIso`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.SimplexTerminalNerve.augmentation_localized_isIso`。
 
 ```lean
 universe v uH vH
 
 lemma augmentation_localized_isIso (K : SSet.{v}) :
-    IsIso (AnodyneHomotopy.anodyneQ.map (augmentation.app K))
+    IsIso (AnodyneHomotopy.anodyneQ.map (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.SimplexTerminalNerve.augmentation.app K))
 ```
 
-### [SimplexTerminalFunctor.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/SimplexTerminalFunctor.lean)
+### [SimplexTerminalFunctor.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/SimplexTerminalFunctor.lean)
 
 OE03、70原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.SimplexTerminalFunctor`。
 
@@ -6785,7 +6785,7 @@ OE03、70原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：三本矢の共通比較と同じ反対要素圏を保持する。
 使われ方：任意の単体集合での augmentation の反転性の cellular な証明。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.SimplexTerminalNerve.functor`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.SimplexTerminalNerve.functor`。
 
 ```lean
 universe v
@@ -6793,7 +6793,7 @@ universe v
 def functor : SSet.{v} ⥤ SSet.{v}
 ```
 
-### [SimplexTerminalStandard.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/SimplexTerminalStandard.lean)
+### [SimplexTerminalStandard.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/SimplexTerminalStandard.lean)
 
 OE03、61原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.SimplexTerminalStandard`。
 
@@ -6804,7 +6804,7 @@ OE03、61原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：単体集合のモデル構造を要求しない。全単体集合の定理は後続。
 使われ方：cellular な比較の反転性の標準単体の入力。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.SimplexTerminalNerve.standardIsTerminal`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.SimplexTerminalNerve.standardIsTerminal`。
 
 ```lean
 universe v uH vH
@@ -6815,7 +6815,7 @@ def standardIsTerminal (n : SimplexCategory) :
     IsTerminal (Opposite.op (SerrePositivity.SimplicialModel.SimplexNerve.standardInitial.{v} n))
 ```
 
-### [SmallCommaContraction.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/SmallCommaContraction.lean)
+### [SmallCommaContraction.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/SmallCommaContraction.lean)
 
 OE03、57原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.SmallCommaContraction`。
 
@@ -6826,7 +6826,7 @@ OE03、57原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：終点も同じ元の対象の up として保持する。
 使われ方：分解図式への F1b の Quillen A の適用。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.AsSmallComma.terminal_localized_isIso`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.AsSmallComma.terminal_localized_isIso`。
 
 ```lean
 universe u v u' v' w
@@ -6840,7 +6840,7 @@ lemma terminal_localized_isIso
       (nerve (CostructuredArrow (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.AsSmallComma.smallFunctor.{u, v, u', v', w} F) (AsSmall.up.obj d)))))
 ```
 
-### [SmallCommaGrothendieck.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/SmallCommaGrothendieck.lean)
+### [SmallCommaGrothendieck.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/SmallCommaGrothendieck.lean)
 
 OE03、86原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.SmallCommaGrothendieck`。
 
@@ -6851,7 +6851,7 @@ OE03、86原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：出力も AsSmall で同じ宇宙に揃える。元の中間射を保持する。
 使われ方：元の Map^h の小さい全図式から元の三本矢の nerve への接続。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.SmallCommaGrothendieck.smallFunctor`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.SmallCommaGrothendieck.smallFunctor`。
 
 ```lean
 universe u v w
@@ -6861,7 +6861,7 @@ variable {K J C : Type u} [Category.{v} K] [Category.{v} J] [Category.{v} C]
 abbrev smallFunctor (F : K ⥤ C) : AsSmall.{w} K ⥤ AsSmall.{w} C
 ```
 
-### [SmallCosimplicialHomElements.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/SmallCosimplicialHomElements.lean)
+### [SmallCosimplicialHomElements.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/SmallCosimplicialHomElements.lean)
 
 OE03、83原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.SmallCosimplicialHomElements`。
 
@@ -6872,7 +6872,7 @@ OE03、83原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：対象・元の射・全作用素を保持し、同値の逆の代表を選ばない。
 使われ方：元の全右脚の小さい図式への fiber の不変性の適用。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.CosimplicialHomElements.smallDiagram`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CosimplicialHomElements.smallDiagram`。
 
 ```lean
 universe u v w
@@ -6881,7 +6881,7 @@ variable {C : Type u} [Category.{v} C] (A : SimplexCategory ⥤ C) (V : C)
 abbrev smallDiagram : AsSmall.{max w u v} SimplexCategory ⥤ AsSmall.{max w u v} C
 ```
 
-### [SmallNerveInvariance.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/SmallNerveInvariance.lean)
+### [SmallNerveInvariance.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/SmallNerveInvariance.lean)
 
 OE03、49原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.SmallNerveInvariance`。
 
@@ -6892,7 +6892,7 @@ OE03、49原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：同じ関手と全単体作用素を保持し、大きい宇宙にもモデル構造を置かない。
 使われ方：元の Hom の反対要素圏の不変性を小さい分解の図式へ移す。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.SmallNerve.functor`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.SmallNerve.functor`。
 
 ```lean
 universe u v w
@@ -6901,7 +6901,7 @@ variable {C D : Type u} [Category.{v} C] [Category.{v} D] (F : C ⥤ D)
 abbrev functor : AsSmall.{w} C ⥤ AsSmall.{w} D
 ```
 
-### [SourceFrameArrowElements.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/SourceFrameArrowElements.lean)
+### [SourceFrameArrowElements.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/SourceFrameArrowElements.lean)
 
 OE03、65原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.SourceFrameArrowElements`。
 
@@ -6910,7 +6910,7 @@ OE03、65原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：IS-W2 R03dの元の構成の全係数表示と合成則。frameや射を選び直さない。
 使われ方：元の全source frameの射を、同じ両端が変数の屋根比較へ送る。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.sourceFrameArrowCoefficients`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.sourceFrameArrowCoefficients`。
 
 ```lean
 universe u v
@@ -6921,7 +6921,7 @@ def sourceFrameArrowCoefficients :
     ((Cᵒᵖ × C) × SimplexCategoryᵒᵖ) ⥤ Type v
 ```
 
-### [SourceRoofFamily.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/SourceRoofFamily.lean)
+### [SourceRoofFamily.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/SourceRoofFamily.lean)
 
 OE03、63原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.SourceRoofFamily`。
 
@@ -6930,7 +6930,7 @@ OE03、63原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：同じ augmentation・全単体・全標的射を保持する。
 使われ方：right frame との混合比較から全局所化 Hom 族への接続。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.hammockHomFamily`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.hammockHomFamily`。
 
 ```lean
 universe u v
@@ -6940,7 +6940,7 @@ variable {C : Type u} [Category.{v} C] (W : MorphismProperty C) [W.IsMultiplicat
 def hammockHomFamily : C ⥤ SSet.{max u v}
 ```
 
-### [SourceRoofUnitNormalization.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/SourceRoofUnitNormalization.lean)
+### [SourceRoofUnitNormalization.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/SourceRoofUnitNormalization.lean)
 
 OE03、80原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.SourceRoofUnitNormalization`。
 
@@ -6949,7 +6949,7 @@ OE03、80原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：元の射・元の roof と同じ単体的円柱を保持する。
 使われ方：right frame の零単体比較と指定局所化の二胞体の照合。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.sourceFrameUnitElement`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.sourceFrameUnitElement`。
 
 ```lean
 universe u v
@@ -6960,7 +6960,7 @@ def sourceFrameUnitElement :
     ULiftHom.{max u v} (((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom q.obj).obj Y).Elements)ᵒᵖ
 ```
 
-### [TerminalFiberBaseHomotopy.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/TerminalFiberBaseHomotopy.lean)
+### [TerminalFiberBaseHomotopy.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/TerminalFiberBaseHomotopy.lean)
 
 OE03、59原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.TerminalFiberBaseHomotopy`。
 
@@ -6971,7 +6971,7 @@ OE03、59原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：元の全円柱を保ち、パラメータ空間への条件は付けない。
 使われ方：実屋根三角形の左脚と標準評価との全関手圏での同定。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.terminalFiberBaseHomotopy`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.terminalFiberBaseHomotopy`。
 
 ```lean
 universe u
@@ -6981,7 +6981,7 @@ variable {E B S : SSet.{u}} (p : E ⟶ B) (t : B _⦋0⦌)
 def terminalFiberBaseHomotopy : SSet.Homotopy (g ≫ p) (SSet.const (X := S) t)
 ```
 
-### [TerminalFiberEvaluationWeak.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/TerminalFiberEvaluationWeak.lean)
+### [TerminalFiberEvaluationWeak.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/TerminalFiberEvaluationWeak.lean)
 
 OE03、39原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.TerminalFiberEvaluationWeak`。
 
@@ -6992,7 +6992,7 @@ OE03、39原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：元の評価・包含を使う。全空間の Kan 性や単体集合モデル構造は要求しない。
 使われ方：実屋根 corner から指定次数の Kan Hom への比較。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.terminalFiberEvaluation_weak`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.terminalFiberEvaluation_weak`。
 
 ```lean
 universe u
@@ -7003,7 +7003,7 @@ lemma terminalFiberEvaluation_weak {E B : SSet.{u}} [SSet.Quasicategory B]
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence R.evaluation
 ```
 
-### [ThomasonInversion.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/ThomasonInversion.lean)
+### [ThomasonInversion.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/ThomasonInversion.lean)
 
 OE03、53原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ThomasonInversion`。
 
@@ -7014,17 +7014,17 @@ OE03、53原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：単体集合モデル・fiber の Kan 性・比較の弱同値性は入力しない。
 使われ方：元の固定右脚から三本矢の全図式の nerve への比較。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.Thomason.map_localized_isIso`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.map_localized_isIso`。
 
 ```lean
 universe u
 variable {D : Type u} [Category.{u} D] (G : D ⥤ Cat.{u, u})
 
 lemma map_localized_isIso :
-    IsIso (AnodyneHomotopy.anodyneQ.map (map G))
+    IsIso (AnodyneHomotopy.anodyneQ.map (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.map G))
 ```
 
-### [ThomasonNaturality.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/ThomasonNaturality.lean)
+### [ThomasonNaturality.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/ThomasonNaturality.lean)
 
 OE03、53原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ThomasonNaturality`。
 
@@ -7035,16 +7035,16 @@ OE03、53原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：元の自然変換からの Grothendieck.map の射そのものを使う。
 使われ方：固定右脚の図式から全左脚への比較との厳密な整合。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.Thomason.nerveComparison`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.nerveComparison`。
 
 ```lean
 universe uD vD uC vC
 variable {D : Type uD} [Category.{vD} D] {G H : D ⥤ Cat.{vC, uC}}
 
-abbrev nerveComparison (α : G ⟶ H) : nerveDiagram G ⟶ nerveDiagram H
+abbrev nerveComparison (α : G ⟶ H) : _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.nerveDiagram G ⟶ _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.nerveDiagram H
 ```
 
-### [ThomasonNerveMap.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/ThomasonNerveMap.lean)
+### [ThomasonNerveMap.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/ThomasonNerveMap.lean)
 
 OE03、58原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ThomasonNerveMap`。
 
@@ -7055,17 +7055,17 @@ OE03、58原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：値と添字の宇宙は独立。構成だけから弱同値性は主張しない。
 使われ方：Low 定理1.6 の比較と元の固定右脚の nerve の射の照合。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.Thomason.map`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.map`。
 
 ```lean
 universe uD vD uC vC
 variable {D : Type uD} [Category.{vD} D] (G : D ⥤ Cat.{vC, uC})
 
-def map : (BarConstruction.functor D).obj (nerveDiagram G) ⟶
+def map : (BarConstruction.functor D).obj (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.nerveDiagram G) ⟶
     nerve (Grothendieck G)
 ```
 
-### [ThomasonSimplex.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/ThomasonSimplex.lean)
+### [ThomasonSimplex.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/ThomasonSimplex.lean)
 
 OE03、74原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ThomasonSimplex`。
 
@@ -7076,7 +7076,7 @@ OE03、74原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：基底と fiber の対象・射を保持する。反転性は別途証明する。
 使われ方：Low 定理1.6 の Thomason 比較の実際の単体と全作用素の照合。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.Thomason.nerveDiagram`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.nerveDiagram`。
 
 ```lean
 universe uD vD uC vC
@@ -7085,7 +7085,7 @@ variable {D : Type uD} [Category.{vD} D] (G : D ⥤ Cat.{vC, uC})
 abbrev nerveDiagram : D ⥤ SSet.{max uC vC}
 ```
 
-### [TotalElementsNativeClassification.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/TotalElementsNativeClassification.lean)
+### [TotalElementsNativeClassification.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/TotalElementsNativeClassification.lean)
 
 OE03、61原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.TotalElementsNativeClassification`。
 
@@ -7094,17 +7094,17 @@ OE03、61原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：底全体のFunctorIsoであり、固定始域のroofとの等式は別に確認する。
 使われ方：全source frameの同じ係数からnativeな全分類への移送。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.totalElementsNerveCoefficientIso`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.totalElementsNerveCoefficientIso`。
 
 ```lean
 universe u
 variable {I : Type u} [SmallCategory I] (F : I ⥤ SSet.{u})
 
 def totalElementsNerveCoefficientIso :
-    simplicialElementsCatDiagram F ⋙ nerveFunctor ≅ simplexElementsNerveDiagram F
+    simplicialElementsCatDiagram F ⋙ nerveFunctor ≅ _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.simplexElementsNerveDiagram F
 ```
 
-### [UnitComparisonTransport.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/UnitComparisonTransport.lean)
+### [UnitComparisonTransport.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/UnitComparisonTransport.lean)
 
 OE03、73原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.UnitComparisonTransport`。
 
@@ -7113,7 +7113,7 @@ OE03、73原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：単位比較自身・実関手・全パラメータを保持する。
 使われ方：元の局所化源単位から既存の標準単位比較への弱同値性の移送。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.unitComparisonTransport_weak`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.unitComparisonTransport_weak`。
 
 ```lean
 universe u
@@ -7136,7 +7136,7 @@ lemma unitComparisonTransport_weak {K C D : SSet.{u}} [Quasicategory C] [Quasica
       _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalPrecompose (U.app (Opposite.op ⦋0⦌) d) η)
 ```
 
-### [UnitComparisonWeakDetection.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/UnitComparisonWeakDetection.lean)
+### [UnitComparisonWeakDetection.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/UnitComparisonWeakDetection.lean)
 
 OE03、41原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.UnitComparisonWeakDetection`。
 
@@ -7147,7 +7147,7 @@ OE03、41原行。配置：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionC
 規約：検査対象の射自身の弱同値性や各頂点上だけの一致は仮定しない。
 使われ方：標準単位比較に元の全要素族を代入する際の、Derived に依存しない最終判定。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.unitComparison_weak_of_probe_family`。
+主宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.unitComparison_weak_of_probe_family`。
 
 ```lean
 universe u
@@ -7161,7 +7161,7 @@ lemma unitComparison_weak_of_probe_family {K D X : SSet.{u}} [Quasicategory X]
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence f
 ```
 
-### [AnodyneWeakDetection.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/AnodyneWeakDetection.lean)
+### [AnodyneWeakDetection.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/AnodyneWeakDetection.lean)
 
 OE03、93原行。配置：`SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection`。
 
@@ -7172,7 +7172,7 @@ OE03、93原行。配置：`SerrePositivity.InfinityCategories.Kerodon.KanComple
 規約：元の始域・終域に Kan 性や単体集合モデルを要求しない。
 使われ方：分解の comma の可縮性と Quillen A の条件の接続。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection.homComponents`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.homComponents`。
 
 ```lean
 universe v
@@ -7180,7 +7180,7 @@ universe v
 def homComponents (Z : SSet.{v}) : SSet.{v}ᵒᵖ ⥤ Type v
 ```
 
-### [AnodyneFamilyHomotopy.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/FrameHom/AnodyneFamilyHomotopy.lean)
+### [AnodyneFamilyHomotopy.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/MorphismSpaces/AnodyneFamilyHomotopy.lean)
 
 OE03、59原行。配置：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.AnodyneFamilyHomotopy`。
 
@@ -7191,7 +7191,7 @@ OE03、59原行。配置：`SerrePositivity.InfinityCategories.Kerodon.TheHomoto
 規約：各点の π₀ だけで代用せず、始域の Kan 性を仮定しない。
 使われ方：native roof の pinched 族と保存済み基準射の全区間三角形の比較。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.FrameHom.map_eq_of_anodyneQ_eq`。
+主宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.map_eq_of_anodyneQ_eq`。
 
 ```lean
 universe u v w
@@ -7202,7 +7202,7 @@ lemma map_eq_of_anodyneQ_eq {D : Type v} [Category.{w} D] (L : SSet.{u} ⥤ D)
     L.map f = L.map g
 ```
 
-### [ComparisonEnrichedFunctors.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ComparisonEnrichedFunctors.lean)
+### [ComparisonEnrichedFunctors.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ComparisonEnrichedFunctors.lean)
 
 OE04、43原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ComparisonEnrichedFunctors`。
 
@@ -7213,17 +7213,17 @@ OE04、43原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：各 Hom の写像は既存の左右比較射そのもの。
 使われ方：同じ Ex∞ を通す実 coherent nerve の比較。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.freeHammockAugmentationEnriched`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockAugmentationEnriched`。
 
 ```lean
 universe u
 variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u})
 
 def freeHammockAugmentationEnriched :
-    EnrichedFunctor SSet.{u} (FreeHammockObjects C) (HammockObjects C)
+    EnrichedFunctor SSet.{u} (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeHammockObjects C) (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.HammockObjects C)
 ```
 
-### [ComparisonEnrichment.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ComparisonEnrichment.lean)
+### [ComparisonEnrichment.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ComparisonEnrichment.lean)
 
 OE04、70原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ComparisonEnrichment`。
 
@@ -7234,7 +7234,7 @@ OE04、70原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：元の圏の通常の Category instance を変更しない。
 使われ方：元の左右比較を実際の豊穣関手にする。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.HammockObjects`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.HammockObjects`。
 
 ```lean
 universe u
@@ -7242,7 +7242,7 @@ universe u
 def HammockObjects (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) : Type u
 ```
 
-### [ComponentCategory.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ComponentCategory.lean)
+### [ComponentCategory.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ComponentCategory.lean)
 
 OE04、105原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ComponentCategory`。
 
@@ -7253,19 +7253,19 @@ OE04、105原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategory
 規約：元の Hom の全単体は保持し、π₀ の圏は比較のために別に構成する。
 使われ方：普通の局所化と DK Hom の π₀ の同値の証明。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.localizationHomEdgeComposition`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHomEdgeComposition`。
 
 ```lean
 universe u
 variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u})
 
 def localizationHomEdgeComposition {X Y Z : C.category}
-    {f f' : (localizationHom C X Y) _⦋0⦌} {g g' : (localizationHom C Y Z) _⦋0⦌}
-    (e : (localizationHom C X Y).Edge f f') (e' : (localizationHom C Y Z).Edge g g') :
-    (localizationHom C X Z).Edge (f ≫ g) (f' ≫ g')
+    {f f' : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHom C X Y) _⦋0⦌} {g g' : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHom C Y Z) _⦋0⦌}
+    (e : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHom C X Y).Edge f f') (e' : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHom C Y Z).Edge g g') :
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHom C X Z).Edge (f ≫ g) (f' ≫ g')
 ```
 
-### [ComponentsEquivalence.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ComponentsEquivalence.lean)
+### [ComponentsEquivalence.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ComponentsEquivalence.lean)
 
 OE04、127原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ComponentsEquivalence`。
 
@@ -7276,7 +7276,7 @@ OE04、127原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategory
 規約：高次の Hom の弱同値や ∞ 局所化の普遍性とは区別する。
 使われ方：既存 Map^h の π₀ 同定との元の射に関する正規化。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.localizationZeroHom_augmentation`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationZeroHom_augmentation`。
 
 ```lean
 universe u
@@ -7285,11 +7285,11 @@ variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.
 lemma localizationZeroHom_augmentation {X Y : C.category}
     (f : C.weakEquivalences.paths.Q.obj ((Paths.of C.category).obj X) ⟶
       C.weakEquivalences.paths.Q.obj ((Paths.of C.category).obj Y)) :
-    (localizationHomAugmentation C X Y).app (op ⦋0⦌) (localizationZeroHom C f) =
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHomAugmentation C X Y).app (op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationZeroHom C f) =
       (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.strictLocalizationMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.freeCounit C.weakEquivalences)).map f
 ```
 
-### [ComponentsLocalizationLift.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ComponentsLocalizationLift.lean)
+### [ComponentsLocalizationLift.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ComponentsLocalizationLift.lean)
 
 OE04、90原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ComponentsLocalizationLift`。
 
@@ -7300,17 +7300,17 @@ OE04、90原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：元の局所化と元の生成射の類を保持する。
 使われ方：DK Hom の π₀ と普通の局所化 Hom の比較の逆関手。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.localizationComponentsQ_inverts`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationComponentsQ_inverts`。
 
 ```lean
 universe u
 variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u})
 
 lemma localizationComponentsQ_inverts :
-    C.weakEquivalences.IsInvertedBy (localizationComponentsQ C)
+    C.weakEquivalences.IsInvertedBy (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationComponentsQ C)
 ```
 
-### [DKHammockCoefficientComparison.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/DKHammockCoefficientComparison.lean)
+### [DKHammockCoefficientComparison.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/DKHammockCoefficientComparison.lean)
 
 OE04、61原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.DKHammockCoefficientComparison`。
 
@@ -7321,17 +7321,17 @@ OE04、61原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：元の全単体を保ち、両端点の高次自然性はここで仮定しない。
 使われ方：実 DK Hom と既存 Map^h の全自然比較。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.dkHammockComparisonIso`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.dkHammockComparisonIso`。
 
 ```lean
 universe u
 
 def dkHammockComparisonIso (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (X Y : C.category) :
-    AnodyneHomotopy.anodyneQ.obj (localizationHom C X Y) ≅
-      AnodyneHomotopy.anodyneQ.obj (Hammock.reducedSimplicialSet C.weakEquivalences X Y)
+    AnodyneHomotopy.anodyneQ.obj (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHom C X Y) ≅
+      AnodyneHomotopy.anodyneQ.obj (_root_.SerrePositivity.EInfinity.Hammock.reducedSimplicialSet C.weakEquivalences X Y)
 ```
 
-### [DKHammockComponentsValue.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/DKHammockComponentsValue.lean)
+### [DKHammockComponentsValue.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/DKHammockComponentsValue.lean)
 
 OE04、52原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.DKHammockComponentsValue`。
 
@@ -7342,20 +7342,20 @@ OE04、52原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：元の比較同型・全語・同じ通常の局所化を保持する。
 使われ方：実 DK/Map^h 比較の以前の π₀ 同値との一致。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.dkHammockComparisonIso_components_value`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.dkHammockComparisonIso_components_value`。
 
 ```lean
 universe u
 
 lemma dkHammockComparisonIso_components_value (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (X Y : C.category)
-    (z : SSet.π₀ (localizationHom C X Y)) :
+    (z : SSet.π₀ (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHom C X Y)) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.toComponents
         (Zigzag.Value.reducedValue C.weakEquivalences.Q C.weakEquivalences.Q_inverts X Y)
-        ((AnodyneComponents.iso (dkHammockComparisonIso C X Y)).hom z) =
-      localizationHomPiZeroEquiv C X Y z
+        ((AnodyneComponents.iso (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.dkHammockComparisonIso C X Y)).hom z) =
+      _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHomPiZeroEquiv C X Y z
 ```
 
-### [DKHammockCompositionComparison.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/DKHammockCompositionComparison.lean)
+### [DKHammockCompositionComparison.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/DKHammockCompositionComparison.lean)
 
 OE04、104原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.DKHammockCompositionComparison`。
 
@@ -7366,18 +7366,18 @@ OE04、104原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategory
 規約：局所化関手の積保存や元の射の零単体の厳密な合成保存を仮定しない。
 使われ方：元の代数射に沿う両端点の高次自然性。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.dkHammockColimitComparisonIso`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.dkHammockColimitComparisonIso`。
 
 ```lean
 universe u
 variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u})
 
 def dkHammockColimitComparisonIso (X Y : C.category) :
-    AnodyneHomotopy.anodyneQ.obj (localizationHom C X Y) ≅
+    AnodyneHomotopy.anodyneQ.obj (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHom C X Y) ≅
       AnodyneHomotopy.anodyneQ.obj (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph C.weakEquivalences X Y)
 ```
 
-### [DKHammockEndpointNaturality.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/DKHammockEndpointNaturality.lean)
+### [DKHammockEndpointNaturality.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/DKHammockEndpointNaturality.lean)
 
 OE04、53原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.DKHammockEndpointNaturality`。
 
@@ -7388,7 +7388,7 @@ OE04、53原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：原圏上の生の DK Hom の厳密な双関手は仮定しない。
 使われ方：既存 Map^h の高次比較の両端点自然性。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.dkHammockColimitComparisonIso_postcompose`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.dkHammockColimitComparisonIso_postcompose`。
 
 ```lean
 universe u
@@ -7396,13 +7396,13 @@ variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.
 
 lemma dkHammockColimitComparisonIso_postcompose (X : C.category) {Y Z : C.category}
     (g : Y ⟶ Z) :
-    AnodyneHomotopy.anodyneQ.map (localizationPostcompose C X g) ≫
-        (dkHammockColimitComparisonIso C X Z).hom =
-      (dkHammockColimitComparisonIso C X Y).hom ≫
+    AnodyneHomotopy.anodyneQ.map (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationPostcompose C X g) ≫
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.dkHammockColimitComparisonIso C X Z).hom =
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.dkHammockColimitComparisonIso C X Y).hom ≫
         AnodyneHomotopy.anodyneQ.map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.postcomposePointMap X (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap C.weakEquivalences g))
 ```
 
-### [DKReducedHammockEndpointNaturality.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/DKReducedHammockEndpointNaturality.lean)
+### [DKReducedHammockEndpointNaturality.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/DKReducedHammockEndpointNaturality.lean)
 
 OE04、54原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.DKReducedHammockEndpointNaturality`。
 
@@ -7413,20 +7413,20 @@ OE04、54原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：既存の比較同型を変更せず、元の生成射と全単体を保持する。
 使われ方：実 DK Hom と既存 Map^h の比較の両端点自然性。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.dkHammockComparisonIso_postcompose`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.dkHammockComparisonIso_postcompose`。
 
 ```lean
 universe u
 variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u})
 
 lemma dkHammockComparisonIso_postcompose (X : C.category) {Y Z : C.category} (g : Y ⟶ Z) :
-    AnodyneHomotopy.anodyneQ.map (localizationPostcompose C X g) ≫
-        (dkHammockComparisonIso C X Z).hom =
-      (dkHammockComparisonIso C X Y).hom ≫
+    AnodyneHomotopy.anodyneQ.map (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationPostcompose C X g) ≫
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.dkHammockComparisonIso C X Z).hom =
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.dkHammockComparisonIso C X Y).hom ≫
         AnodyneHomotopy.anodyneQ.map (reducedPostcomposeMap C.weakEquivalences X g)
 ```
 
-### [EnrichedMap.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/EnrichedMap.lean)
+### [EnrichedMap.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/EnrichedMap.lean)
 
 OE04、76原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.EnrichedMap`。
 
@@ -7437,16 +7437,16 @@ OE04、76原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：全次数の元の射・単位・合成を保持する。
 使われ方：Kan 化と coherent nerve の後の ∞ 関手。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.localizationHomMap`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHomMap`。
 
 ```lean
 universe u
 
 def localizationHomMap {C D : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}} (F : C ⟶ D) (X Y : C.category) :
-    localizationHom C X Y ⟶ localizationHom D (F.functor.obj X) (F.functor.obj Y)
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHom C X Y ⟶ _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHom D (F.functor.obj X) (F.functor.obj Y)
 ```
 
-### [Enrichment.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/Enrichment.lean)
+### [Enrichment.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/Enrichment.lean)
 
 OE04、85原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.Enrichment`。
 
@@ -7457,7 +7457,7 @@ OE04、85原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：Hom の Kan 性と元の Map^h との比較は後続で証明する。
 使われ方：Kan 化と coherent nerve による CAlg_R の構成。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.LocalizationObjects`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.LocalizationObjects`。
 
 ```lean
 universe u
@@ -7465,7 +7465,7 @@ universe u
 def LocalizationObjects (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) : Type u
 ```
 
-### [FreeHammockArrowAugmentation.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockArrowAugmentation.lean)
+### [FreeHammockArrowAugmentation.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeHammockArrowAugmentation.lean)
 
 OE04、54原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeHammockArrowAugmentation`。
 
@@ -7476,20 +7476,20 @@ OE04、54原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：元の射と元の両端点を保持する。
 使われ方：DK と hammock の比較の元の射への整合。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionArrowZero_augmentation`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionArrowZero_augmentation`。
 
 ```lean
 universe u
 variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) {X Y : C.category}
 
 lemma freeResolutionArrowZero_augmentation (f : X ⟶ Y) :
-    eqToHom (freeResolutionObject_augmentation C (op ⦋0⦌) X).symm ≫
-        ((freeResolutionAugmentationNatTrans C).app (op ⦋0⦌)).functor.map
-          (freeResolutionArrowZero C f) ≫
-      eqToHom (freeResolutionObject_augmentation C (op ⦋0⦌) Y) = f
+    eqToHom (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject_augmentation C (op ⦋0⦌) X).symm ≫
+        ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionAugmentationNatTrans C).app (op ⦋0⦌)).functor.map
+          (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionArrowZero C f) ≫
+      eqToHom (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject_augmentation C (op ⦋0⦌) Y) = f
 ```
 
-### [FreeHammockArrowPoint.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockArrowPoint.lean)
+### [FreeHammockArrowPoint.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeHammockArrowPoint.lean)
 
 OE04、59原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeHammockArrowPoint`。
 
@@ -7500,7 +7500,7 @@ OE04、59原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：元の DK 生成射・元の hammock 射を保持する。
 使われ方：高次比較の元の射への整合と前後合成の自然性。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.unitPointMap_comp`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.unitPointMap_comp`。
 
 ```lean
 universe u
@@ -7509,7 +7509,7 @@ lemma unitPointMap_comp {K L : SSet.{u}} (p : K _⦋0⦌) (f : K ⟶ L) :
     (SSet.unitHomEquiv K).symm p ≫ f = (SSet.unitHomEquiv L).symm (f.app _ p)
 ```
 
-### [FreeHammockArrowZero.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockArrowZero.lean)
+### [FreeHammockArrowZero.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeHammockArrowZero.lean)
 
 OE04、48原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeHammockArrowZero`。
 
@@ -7520,17 +7520,17 @@ OE04、48原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：元の射と元の両端点を保持する。
 使われ方：DK と hammock の比較の元の射への整合。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionArrowZero`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionArrowZero`。
 
 ```lean
 universe u
 variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) {X Y : C.category}
 
 def freeResolutionArrowZero (f : X ⟶ Y) :
-    freeResolutionObject C (op ⦋0⦌) X ⟶ freeResolutionObject C (op ⦋0⦌) Y
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject C (op ⦋0⦌) X ⟶ _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject C (op ⦋0⦌) Y
 ```
 
-### [FreeHammockAugmentation.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockAugmentation.lean)
+### [FreeHammockAugmentation.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeHammockAugmentation.lean)
 
 OE04、41原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeHammockAugmentation`。
 
@@ -7541,17 +7541,17 @@ OE04、41原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：全単体作用素に自然な実際の射を構成する。弱同値性は後続。
 使われ方：DK 命題2.2の左比較の元の対角前の射。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.freeHammockGraphAugmentation`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockGraphAugmentation`。
 
 ```lean
 universe u
 
 def freeHammockGraphAugmentation (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (X Y : C.category) :
-    (freeHammockWordDiagram C X Y).flip ⟶
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockWordDiagram C X Y).flip ⟶
       (Functor.const SimplexCategoryᵒᵖ).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram C.weakEquivalences X Y)
 ```
 
-### [FreeHammockAugmentationValue.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockAugmentationValue.lean)
+### [FreeHammockAugmentationValue.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeHammockAugmentationValue.lean)
 
 OE04、107原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeHammockAugmentationValue`。
 
@@ -7562,24 +7562,24 @@ OE04、107原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategory
 規約：元の augmentation・元の対象移送・全語と全単体を保持する。
 使われ方：実 DK/Map^h 高次比較の誘導する π₀ の正規化。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.freeHammockValue_augmentation`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockValue_augmentation`。
 
 ```lean
 universe u
 
 lemma freeHammockValue_augmentation (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (X Y : C.category)
     (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (n : SimplexCategoryᵒᵖ)
-    (S : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag ((freeResolution C).obj n).weakEquivalences w
-      (freeResolutionObject C n X) (freeResolutionObject C n Y)) :
+    (S : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution C).obj n).weakEquivalences w
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject C n X) (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject C n Y)) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagValuePath.value C.weakEquivalences.Q C.weakEquivalences.Q_inverts
-        ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeFixedZigzagFunctor.fixedFunctor ((freeResolutionAugmentationNatTrans C).app n)
-          (freeResolutionObject_augmentation C n X)
-          (freeResolutionObject_augmentation C n Y)).obj S) =
-      (localizationHomAugmentation C X Y).app n
-        ((freeHammockLocalizationObjects C).value n S)
+        ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeFixedZigzagFunctor.fixedFunctor ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionAugmentationNatTrans C).app n)
+          (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject_augmentation C n X)
+          (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject_augmentation C n Y)).obj S) =
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHomAugmentation C X Y).app n
+        ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockLocalizationObjects C).value n S)
 ```
 
-### [FreeHammockComparison.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockComparison.lean)
+### [FreeHammockComparison.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeHammockComparison.lean)
 
 OE04、45原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeHammockComparison`。
 
@@ -7590,16 +7590,16 @@ OE04、45原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：既存 localizationHom の全作用素と同じ対象移送を使う。弱同値性は後続。
 使われ方：元の hammock と既存 DK Hom の高次比較。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.freeHammockHomComparison`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockHomComparison`。
 
 ```lean
 universe u
 
 def freeHammockHomComparison (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (X Y : C.category) :
-    freeHammockResolution C X Y ⟶ localizationHom C X Y ⋙ Functor.const SimplexCategoryᵒᵖ
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockResolution C X Y ⟶ _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHom C X Y ⋙ Functor.const SimplexCategoryᵒᵖ
 ```
 
-### [FreeHammockComparisonWeak.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockComparisonWeak.lean)
+### [FreeHammockComparisonWeak.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeHammockComparisonWeak.lean)
 
 OE04、33原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeHammockComparisonWeak`。
 
@@ -7610,17 +7610,17 @@ OE04、33原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：元の freeHammockHomComparison 自身の成分を結論とする。
 使われ方：DK 命題2.2の対角の右比較。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.freeHammockHomComparison_app_isWeakHomotopyEquivalence`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockHomComparison_app_isWeakHomotopyEquivalence`。
 
 ```lean
 universe u
 
 lemma freeHammockHomComparison_app_isWeakHomotopyEquivalence (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u})
     (X Y : C.category) (n : SimplexCategoryᵒᵖ) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((freeHammockHomComparison C X Y).app n)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockHomComparison C X Y).app n)
 ```
 
-### [FreeHammockComposition.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockComposition.lean)
+### [FreeHammockComposition.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeHammockComposition.lean)
 
 OE04、105原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeHammockComposition`。
 
@@ -7631,18 +7631,18 @@ OE04、105原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategory
 規約：元の各次数の合成を保持する。
 使われ方：DK の左右比較の合成保存と両端点の高次自然性。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.freeHammockResolutionComposition`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockResolutionComposition`。
 
 ```lean
 universe u
 variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (X Y Z : C.category)
 
 def freeHammockResolutionComposition :
-    freeHammockResolution C X Y ⊗ freeHammockResolution C Y Z ⟶
-      freeHammockResolution C X Z
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockResolution C X Y ⊗ _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockResolution C Y Z ⟶
+      _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockResolution C X Z
 ```
 
-### [FreeHammockDiagonal.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockDiagonal.lean)
+### [FreeHammockDiagonal.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeHammockDiagonal.lean)
 
 OE04、48原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeHammockDiagonal`。
 
@@ -7653,7 +7653,7 @@ OE04、48原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：元の全次数・全作用素・元の左射を保持する。弱同値性は後続。
 使われ方：元の DK Hom と hammock の高次比較の共通始域。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.freeHammockDiagonal`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonal`。
 
 ```lean
 universe u
@@ -7661,7 +7661,7 @@ universe u
 def freeHammockDiagonal (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (X Y : C.category) : SSet.{u}
 ```
 
-### [FreeHammockDiagonalComparisonWeak.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockDiagonalComparisonWeak.lean)
+### [FreeHammockDiagonalComparisonWeak.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeHammockDiagonalComparisonWeak.lean)
 
 OE04、31原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeHammockDiagonalComparisonWeak`。
 
@@ -7672,16 +7672,16 @@ OE04、31原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：元の対角と既存 DK Hom の同じ離散対角同型を保持する。
 使われ方：元の hammock と既存 DK Hom の高次比較。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.freeHammockDiagonalComparison_isWeakHomotopyEquivalence`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalComparison_isWeakHomotopyEquivalence`。
 
 ```lean
 universe u
 
 lemma freeHammockDiagonalComparison_isWeakHomotopyEquivalence (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u})
-    (X Y : C.category) : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (freeHammockDiagonalComparison C X Y)
+    (X Y : C.category) : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalComparison C X Y)
 ```
 
-### [FreeHammockDiagonalReductionWeak.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockDiagonalReductionWeak.lean)
+### [FreeHammockDiagonalReductionWeak.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeHammockDiagonalReductionWeak.lean)
 
 OE04、70原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeHammockDiagonalReductionWeak`。
 
@@ -7692,17 +7692,17 @@ OE04、70原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：全語の filtered 性や各自由次数の通常の hammock 比較の弱同値性は仮定しない。
 使われ方：DK命題2.2の実際の左右比較を完成する。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.freeHammockDiagonalColimitIso`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalColimitIso`。
 
 ```lean
 universe u
 variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (X Y : C.category)
 
 def freeHammockDiagonalColimitIso :
-    colimit (freeHammockWordDiagram C X Y ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor) ≅ freeHammockDiagonal C X Y
+    colimit (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockWordDiagram C X Y ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor) ≅ _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonal C X Y
 ```
 
-### [FreeHammockDiagram.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockDiagram.lean)
+### [FreeHammockDiagram.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeHammockDiagram.lean)
 
 OE04、37原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeHammockDiagram`。
 
@@ -7713,7 +7713,7 @@ OE04、37原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：元の自由解像・全語・全作用素・元の余極限を保持する。
 使われ方：DK 命題2.2の対角 hammock と左右の比較。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.freeHammockWordDiagram`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockWordDiagram`。
 
 ```lean
 universe u
@@ -7722,7 +7722,7 @@ def freeHammockWordDiagram (C : _root_.SerrePositivity.InfinityCategories.Kerodo
     _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word ⥤ SimplexCategoryᵒᵖ ⥤ SSet.{u}
 ```
 
-### [FreeHammockGeneratorWords.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockGeneratorWords.lean)
+### [FreeHammockGeneratorWords.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeHammockGeneratorWords.lean)
 
 OE04、42原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeHammockGeneratorWords`。
 
@@ -7733,19 +7733,19 @@ OE04、42原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：元の各語の標準射による回収式を保持する。次数を跨ぐ不変性は要求しない。
 使われ方：Dwyer–Kan 比較補題2.3の各自由次数の hammock の分解。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.freeHammockGeneratorWordValue`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockGeneratorWordValue`。
 
 ```lean
 universe u
 
 def freeHammockGeneratorWordValue (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (X Y : C.category)
     (n : SimplexCategoryᵒᵖ) :
-    (freeHammockResolution C X Y).obj n ⟶
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockResolution C X Y).obj n ⟶
       (Functor.const SimplexCategoryᵒᵖ).obj
-        (List (Quiver.Total (freeResolutionGeneratorBase C n).category))
+        (List (Quiver.Total (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase C n).category))
 ```
 
-### [FreeHammockLocalizedObjects.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockLocalizedObjects.lean)
+### [FreeHammockLocalizedObjects.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeHammockLocalizedObjects.lean)
 
 OE04、42原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeHammockLocalizedObjects`。
 
@@ -7756,18 +7756,18 @@ OE04、42原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：対象の一致と全単体作用素への自然性は証明し、追加の入力にしない。
 使われ方：自由 hammock の局所化 Hom への評価への実際のデータの代入。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionObject_localized`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject_localized`。
 
 ```lean
 universe u
 
 lemma freeResolutionObject_localized (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (n : SimplexCategoryᵒᵖ)
     (X : C.category) :
-    ((freeResolution C).obj n).weakEquivalences.Q.obj (freeResolutionObject C n X) =
-      localizedFreeResolutionObject C n X
+    ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution C).obj n).weakEquivalences.Q.obj (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject C n X) =
+      _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizedFreeResolutionObject C n X
 ```
 
-### [FreeHammockMap.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockMap.lean)
+### [FreeHammockMap.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeHammockMap.lean)
 
 OE04、63原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeHammockMap`。
 
@@ -7778,17 +7778,17 @@ OE04、63原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：元の自由解像と全語の余極限を保持する。
 使われ方：DK の左右比較射の係数自然性。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.freeHammockWordMap`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockWordMap`。
 
 ```lean
 universe u
 variable {C D : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}} (F : C ⟶ D)
 
-def freeHammockWordMap (X Y : C.category) : freeHammockWordDiagram C X Y ⟶
-    freeHammockWordDiagram D (F.functor.obj X) (F.functor.obj Y)
+def freeHammockWordMap (X Y : C.category) : _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockWordDiagram C X Y ⟶
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockWordDiagram D (F.functor.obj X) (F.functor.obj Y)
 ```
 
-### [FreeHammockMapAugmentation.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockMapAugmentation.lean)
+### [FreeHammockMapAugmentation.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeHammockMapAugmentation.lean)
 
 OE04、89原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeHammockMapAugmentation`。
 
@@ -7799,7 +7799,7 @@ OE04、89原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：元の左比較射と元の係数写像を保持する。
 使われ方：DK の高次比較の係数自然性。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.freeHammockFixedFunctor_augmentation`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockFixedFunctor_augmentation`。
 
 ```lean
 universe u
@@ -7807,17 +7807,17 @@ variable {C D : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctor
 
 lemma freeHammockFixedFunctor_augmentation (X Y : C.category) (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word)
     (n : SimplexCategoryᵒᵖ) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeFixedZigzagFunctor.fixedFunctor (w := w) ((freeResolutionMap F).app n)
-        (freeResolutionMap_object F n X) (freeResolutionMap_object F n Y) ⋙
-      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeFixedZigzagFunctor.fixedFunctor ((freeResolutionAugmentationNatTrans D).app n)
-        (freeResolutionObject_augmentation D n (F.functor.obj X))
-        (freeResolutionObject_augmentation D n (F.functor.obj Y)) =
-    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeFixedZigzagFunctor.fixedFunctor ((freeResolutionAugmentationNatTrans C).app n)
-        (freeResolutionObject_augmentation C n X) (freeResolutionObject_augmentation C n Y) ⋙
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeFixedZigzagFunctor.fixedFunctor (w := w) ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionMap F).app n)
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionMap_object F n X) (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionMap_object F n Y) ⋙
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeFixedZigzagFunctor.fixedFunctor ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionAugmentationNatTrans D).app n)
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject_augmentation D n (F.functor.obj X))
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject_augmentation D n (F.functor.obj Y)) =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeFixedZigzagFunctor.fixedFunctor ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionAugmentationNatTrans C).app n)
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject_augmentation C n X) (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject_augmentation C n Y) ⋙
       _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeZigzagFunctor.functor F
 ```
 
-### [FreeHammockMapComparison.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockMapComparison.lean)
+### [FreeHammockMapComparison.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeHammockMapComparison.lean)
 
 OE04、96原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeHammockMapComparison`。
 
@@ -7828,22 +7828,22 @@ OE04、96原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：全語・全次数と元の右比較射を保持する。
 使われ方：DK と hammock の高次比較の係数自然性。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.freeHammockValue_map`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockValue_map`。
 
 ```lean
 universe u
 variable {C D : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}} (F : C ⟶ D)
 
 lemma freeHammockValue_map (X Y : C.category) (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (n : SimplexCategoryᵒᵖ)
-    (S : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag ((freeResolution C).obj n).weakEquivalences w
-      (freeResolutionObject C n X) (freeResolutionObject C n Y)) :
-    (freeHammockLocalizationObjects D).value n
-        ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeFixedZigzagFunctor.fixedFunctor ((freeResolutionMap F).app n)
-          (freeResolutionMap_object F n X) (freeResolutionMap_object F n Y)).obj S) =
-      (localizationHomMap F X Y).app n ((freeHammockLocalizationObjects C).value n S)
+    (S : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution C).obj n).weakEquivalences w
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject C n X) (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject C n Y)) :
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockLocalizationObjects D).value n
+        ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeFixedZigzagFunctor.fixedFunctor ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionMap F).app n)
+          (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionMap_object F n X) (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionMap_object F n Y)).obj S) =
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHomMap F X Y).app n ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockLocalizationObjects C).value n S)
 ```
 
-### [FreeHammockObjectMap.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockObjectMap.lean)
+### [FreeHammockObjectMap.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeHammockObjectMap.lean)
 
 OE04、40原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeHammockObjectMap`。
 
@@ -7854,18 +7854,18 @@ OE04、40原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：元の対象表示の自然性を仮定せず証明する。
 使われ方：自由 hammock の全係数写像と比較射の自然性。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionMap_object`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionMap_object`。
 
 ```lean
 universe u
 
 lemma freeResolutionMap_object {C D : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}} (F : C ⟶ D)
     (n : SimplexCategoryᵒᵖ) (X : C.category) :
-    ((freeResolutionMap F).app n).functor.obj (freeResolutionObject C n X) =
-      freeResolutionObject D n (F.functor.obj X)
+    ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionMap F).app n).functor.obj (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject C n X) =
+      _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject D n (F.functor.obj X)
 ```
 
-### [FreeHammockObjects.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockObjects.lean)
+### [FreeHammockObjects.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeHammockObjects.lean)
 
 OE04、65原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeHammockObjects`。
 
@@ -7876,16 +7876,16 @@ OE04、65原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：元の全単体作用素の保存を証明し、対象の同一性を仮定しない。
 使われ方：自由相対解像の固定した両対象の hammock の二重単体的図式。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionObjectEquiv`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObjectEquiv`。
 
 ```lean
 universe u
 
 def freeResolutionObjectEquiv (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (n : SimplexCategoryᵒᵖ) :
-    ((freeResolution C).obj n).category ≃ C.category
+    ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution C).obj n).category ≃ C.category
 ```
 
-### [FreeHammockPostcompose.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockPostcompose.lean)
+### [FreeHammockPostcompose.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeHammockPostcompose.lean)
 
 OE04、66原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeHammockPostcompose`。
 
@@ -7896,17 +7896,17 @@ OE04、66原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：元の射・全単体・元の両比較を保持する。
 使われ方：DK と hammock の高次比較の終域変数の自然性。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.freeHammockPostcompose`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockPostcompose`。
 
 ```lean
 universe u
 variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (X : C.category) {Y Z : C.category}
 
 def freeHammockPostcompose (g : Y ⟶ Z) :
-    freeHammockDiagonal C X Y ⟶ freeHammockDiagonal C X Z
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonal C X Y ⟶ _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonal C X Z
 ```
 
-### [FreeHammockPrecompose.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockPrecompose.lean)
+### [FreeHammockPrecompose.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeHammockPrecompose.lean)
 
 OE04、65原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeHammockPrecompose`。
 
@@ -7917,17 +7917,17 @@ OE04、65原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：元の射・全単体・元の両比較を保持する。
 使われ方：DK と hammock の高次比較の始域変数の自然性。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.freeHammockPrecompose`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockPrecompose`。
 
 ```lean
 universe u
 variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) {X Y : C.category} (Z : C.category)
 
 def freeHammockPrecompose (f : X ⟶ Y) :
-    freeHammockDiagonal C Y Z ⟶ freeHammockDiagonal C X Z
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonal C Y Z ⟶ _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonal C X Z
 ```
 
-### [FreeHammockUnit.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeHammockUnit.lean)
+### [FreeHammockUnit.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeHammockUnit.lean)
 
 OE04、93原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeHammockUnit`。
 
@@ -7938,19 +7938,19 @@ OE04、93原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：原圏の恒等射の自由な生成射へ置き換えない。
 使われ方：左右比較を同じ単位を保つ豊穣関手にする。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.freeHammockResolution_map`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockResolution_map`。
 
 ```lean
 universe u
 variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (X : C.category)
 
 lemma freeHammockResolution_map {n m : SimplexCategoryᵒᵖ} (θ : n ⟶ m) :
-    (freeHammockResolution C X X).map θ =
-      Relative.fixedColimitMap ((freeResolution C).map θ)
-        (freeResolutionObject_naturality C θ X) (freeResolutionObject_naturality C θ X)
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockResolution C X X).map θ =
+      Relative.fixedColimitMap ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution C).map θ)
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject_naturality C θ X) (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject_naturality C θ X)
 ```
 
-### [FreeResolution.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeResolution.lean)
+### [FreeResolution.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeResolution.lean)
 
 OE04、83原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeResolution`。
 
@@ -7961,7 +7961,7 @@ OE04、83原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：全単体作用素は実際の相対関手で、各次数の指定矢を保つ。
 使われ方：各次数の普通の局所化から単体的局所化を構成する。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.freeComonadPower_eq`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeComonadPower_eq`。
 
 ```lean
 universe u
@@ -7970,7 +7970,7 @@ lemma freeComonadPower_eq (C : _root_.SerrePositivity.InfinityCategories.Kerodon
     ComonadResolutionOperators.power _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.freeRelativeComonad C n = (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.freePower n).obj C
 ```
 
-### [FreeResolutionCanonicalMarkedHom.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeResolutionCanonicalMarkedHom.lean)
+### [FreeResolutionCanonicalMarkedHom.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeResolutionCanonicalMarkedHom.lean)
 
 OE04、62原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeResolutionCanonicalMarkedHom`。
 
@@ -7981,7 +7981,7 @@ OE04、62原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：元の比較射自身の弱同値性を証明する。
 使われ方：DK5.7の全語の帰納の基底。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionCanonicalMarkedHom`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionCanonicalMarkedHom`。
 
 ```lean
 universe u
@@ -7990,7 +7990,7 @@ variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.
 def freeResolutionCanonicalMarkedHom : SSet.{u}
 ```
 
-### [FreeResolutionFunctoriality.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeResolutionFunctoriality.lean)
+### [FreeResolutionFunctoriality.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeResolutionFunctoriality.lean)
 
 OE04、52原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeResolutionFunctoriality`。
 
@@ -8001,16 +8001,16 @@ OE04、52原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：元の解像・全作用素・augmentation を保持する。
 使われ方：単体的局所化の係数関手の構成。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionMap`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionMap`。
 
 ```lean
 universe u
 
 def freeResolutionMap {C D : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}} (F : C ⟶ D) :
-    freeResolution C ⟶ freeResolution D
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution C ⟶ _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution D
 ```
 
-### [FreeResolutionGeneratorBlocks.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeResolutionGeneratorBlocks.lean)
+### [FreeResolutionGeneratorBlocks.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeResolutionGeneratorBlocks.lean)
 
 OE04、52原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeResolutionGeneratorBlocks`。
 
@@ -8021,17 +8021,17 @@ OE04、52原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：元の全対象・射列・合成・恒等文字を保持する。hammock の弱比較は後続。
 使われ方：元の自由解像の各 hammock の行の分解。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionBlockEquiv`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionBlockEquiv`。
 
 ```lean
 universe u
 
 def freeResolutionBlockEquiv (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (n : SimplexCategoryᵒᵖ)
-    (X Y : ((freeResolution C).obj n).category) :
-    (X ⟶ Y) ≃ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Normal (freeResolutionGeneratorBase C n).weakEquivalences X Y
+    (X Y : ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution C).obj n).category) :
+    (X ⟶ Y) ≃ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Normal (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase C n).weakEquivalences X Y
 ```
 
-### [FreeResolutionGeneratorHom.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeResolutionGeneratorHom.lean)
+### [FreeResolutionGeneratorHom.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeResolutionGeneratorHom.lean)
 
 OE04、61原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeResolutionGeneratorHom`。
 
@@ -8042,17 +8042,17 @@ OE04、61原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：元の全作用素を変更せず、追加退化の計算だけに標準表示を使う。
 使われ方：元の Hom augmentation の収縮。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionHomObject`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionHomObject`。
 
 ```lean
 universe u
 variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u})
 
 def freeResolutionHomObject (n : SimplexCategoryᵒᵖ) (X : C.category) :
-    ((freeResolution C).obj n).category
+    ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution C).obj n).category
 ```
 
-### [FreeResolutionGeneratorHomOperators.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeResolutionGeneratorHomOperators.lean)
+### [FreeResolutionGeneratorHomOperators.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeResolutionGeneratorHomOperators.lean)
 
 OE04、50原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeResolutionGeneratorHomOperators`。
 
@@ -8063,19 +8063,19 @@ OE04、50原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：元の作用素と元の各射を保持する。
 使われ方：元の一文字の列による追加退化の恒等式。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.generatorHom_face_heq`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.generatorHom_face_heq`。
 
 ```lean
 universe u
 variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) {X Y : C.category}
 
 lemma generatorHom_face_heq (n : ℕ) (i : Fin (n + 2))
-    (f : (freeResolutionGeneratorHom C X Y) _⦋n + 1⦌) :
-    HEq ((freeResolutionGeneratorHom C X Y).δ i f)
+    (f : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorHom C X Y) _⦋n + 1⦌) :
+    HEq ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorHom C X Y).δ i f)
       ((face _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.freeRelativeComonad C (n + 1) i).functor.map f)
 ```
 
-### [FreeResolutionGeneratorPartition.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeResolutionGeneratorPartition.lean)
+### [FreeResolutionGeneratorPartition.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeResolutionGeneratorPartition.lean)
 
 OE04、55原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeResolutionGeneratorPartition`。
 
@@ -8086,7 +8086,7 @@ OE04、55原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：零次と全単体次数を含み、恒等文字も保持する。高次比較の弱同値性は後続。
 使われ方：Dwyer–Kan 比較補題2.3の各自由次数への適用。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionGeneratorBase`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase`。
 
 ```lean
 universe u u' v'
@@ -8095,7 +8095,7 @@ def freeResolutionGeneratorBase (C : _root_.SerrePositivity.InfinityCategories.K
     _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}
 ```
 
-### [FreeResolutionHomContraction.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeResolutionHomContraction.lean)
+### [FreeResolutionHomContraction.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeResolutionHomContraction.lean)
 
 OE04、64原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeResolutionHomContraction`。
 
@@ -8106,7 +8106,7 @@ OE04、64原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：単体集合のモデル構造と標的の Kan 性は仮定しない。
 使われ方：DK ホモトピー補題2.4の底の Hom の入力。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionGeneratorHomAugmented`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorHomAugmented`。
 
 ```lean
 universe u
@@ -8115,7 +8115,7 @@ variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.
 def freeResolutionGeneratorHomAugmented : SimplicialObject.Augmented (Type u)
 ```
 
-### [FreeResolutionHomExtra.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeResolutionHomExtra.lean)
+### [FreeResolutionHomExtra.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeResolutionHomExtra.lean)
 
 OE04、45原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeResolutionHomExtra`。
 
@@ -8126,16 +8126,16 @@ OE04、45原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：恒等射も一文字として保持し、圏の関手だとは仮定しない。
 使われ方：元の Hom augmentation の実際の収縮。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.generatorHomSection`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.generatorHomSection`。
 
 ```lean
 universe u
 variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) {X Y : C.category}
 
-def generatorHomSection (f : X ⟶ Y) : (freeResolutionGeneratorHom C X Y) _⦋0⦌
+def generatorHomSection (f : X ⟶ Y) : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorHom C X Y) _⦋0⦌
 ```
 
-### [FreeResolutionHomExtraNaturality.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeResolutionHomExtraNaturality.lean)
+### [FreeResolutionHomExtraNaturality.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeResolutionHomExtraNaturality.lean)
 
 OE04、108原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeResolutionHomExtraNaturality`。
 
@@ -8146,7 +8146,7 @@ OE04、108原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategory
 規約：元の作用素・augmentation と同じ射を保持する。
 使われ方：元の自由 Hom の追加退化と収縮。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.singlePath_conjugate_heq`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.singlePath_conjugate_heq`。
 
 ```lean
 universe u
@@ -8157,7 +8157,7 @@ lemma singlePath_conjugate_heq {V : Type u} [Category.{u} V] {A A' B B' : V}
       (Quiver.Hom.toPath (V := V) f)
 ```
 
-### [FreeResolutionHomRepresentation.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeResolutionHomRepresentation.lean)
+### [FreeResolutionHomRepresentation.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeResolutionHomRepresentation.lean)
 
 OE04、60原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeResolutionHomRepresentation`。
 
@@ -8168,17 +8168,17 @@ OE04、60原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：元の augmentation を別の弱同値で置き換えない。
 使われ方：DK ホモトピー補題2.4に使う元の Hom の弱比較。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionHomRepresentationIso`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionHomRepresentationIso`。
 
 ```lean
 universe u
 variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (X Y : C.category)
 
 def freeResolutionHomRepresentationIso :
-    freeResolutionHom C X Y ≅ freeResolutionGeneratorHom C X Y
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionHom C X Y ≅ _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorHom C X Y
 ```
 
-### [FreeResolutionMarkedHom.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeResolutionMarkedHom.lean)
+### [FreeResolutionMarkedHom.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeResolutionMarkedHom.lean)
 
 OE04、58原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeResolutionMarkedHom`。
 
@@ -8189,16 +8189,16 @@ OE04、58原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：指定射は元の相対圏の同じ射の類であり、飽和性を要求しない。
 使われ方：DK ホモトピー補題2.4の指定射の Hom の入力。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionMarkedHomSubcomplex`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionMarkedHomSubcomplex`。
 
 ```lean
 universe u
 variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (X Y : C.category)
 
-def freeResolutionMarkedHomSubcomplex : (freeResolutionGeneratorHom C X Y).Subcomplex
+def freeResolutionMarkedHomSubcomplex : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorHom C X Y).Subcomplex
 ```
 
-### [FreeResolutionMarkedHomContraction.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeResolutionMarkedHomContraction.lean)
+### [FreeResolutionMarkedHomContraction.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeResolutionMarkedHomContraction.lean)
 
 OE04、66原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeResolutionMarkedHomContraction`。
 
@@ -8209,7 +8209,7 @@ OE04、66原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：元の全単体作用素と指定射の類を保持する。
 使われ方：DK ホモトピー補題2.4の二つ目の入力。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionMarkedHomAugmented`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionMarkedHomAugmented`。
 
 ```lean
 universe u
@@ -8218,7 +8218,7 @@ variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.
 def freeResolutionMarkedHomAugmented : SimplicialObject.Augmented (Type u)
 ```
 
-### [FreeResolutionNativeMarkedHom.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeResolutionNativeMarkedHom.lean)
+### [FreeResolutionNativeMarkedHom.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeResolutionNativeMarkedHom.lean)
 
 OE04、67原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeResolutionNativeMarkedHom`。
 
@@ -8229,7 +8229,7 @@ OE04、67原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：部分圏の Hom は Mathlib の元の Hom 構造体であり、代替の射集合ではない。
 使われ方：DK2.4の指定部分圏についての実際の Hom 弱比較。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionMarkedDiagram`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionMarkedDiagram`。
 
 ```lean
 universe u
@@ -8238,7 +8238,7 @@ variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.
 def freeResolutionMarkedDiagram : SimplicialObject Cat.{u, u}
 ```
 
-### [FreeResolutionNativeMarkedHomWeak.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeResolutionNativeMarkedHomWeak.lean)
+### [FreeResolutionNativeMarkedHomWeak.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeResolutionNativeMarkedHomWeak.lean)
 
 OE04、92原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeResolutionNativeMarkedHomWeak`。
 
@@ -8249,7 +8249,7 @@ OE04、92原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：元の部分圏の Hom 構造体・全作用素・augmentation を保持する。
 使われ方：DK2.4の元の指定部分圏の入力。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.marked_eqToHom_hom`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.marked_eqToHom_hom`。
 
 ```lean
 universe u
@@ -8259,7 +8259,7 @@ lemma marked_eqToHom_hom {C : _root_.SerrePositivity.InfinityCategories.Kerodon.
     (eqToHom h).hom = eqToHom (congrArg WideSubcategory.obj h)
 ```
 
-### [FreeResolutionUnderlyingHom.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeResolutionUnderlyingHom.lean)
+### [FreeResolutionUnderlyingHom.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeResolutionUnderlyingHom.lean)
 
 OE04、60原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeResolutionUnderlyingHom`。
 
@@ -8270,7 +8270,7 @@ OE04、60原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：元の全作用素と元の対象移送を保持する。
 使われ方：DK ホモトピー補題2.4の底の圏の弱比較。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionUnderlyingDiagram`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionUnderlyingDiagram`。
 
 ```lean
 universe u
@@ -8279,7 +8279,7 @@ variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.
 def freeResolutionUnderlyingDiagram : SimplicialObject Cat.{u, u}
 ```
 
-### [FreeWordDiagonalBackwardWeak.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeWordDiagonalBackwardWeak.lean)
+### [FreeWordDiagonalBackwardWeak.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeWordDiagonalBackwardWeak.lean)
 
 OE04、51原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeWordDiagonalBackwardWeak`。
 
@@ -8290,21 +8290,21 @@ OE04、51原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：元の全列・全縦射と元の比較射を保持する。
 使われ方：DK5.7の全語の帰納の基底。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.freeWordDiagonalAugmentation_backward_square`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeWordDiagonalAugmentation_backward_square`。
 
 ```lean
 universe u
 variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (X Y : C.category)
 
 lemma freeWordDiagonalAugmentation_backward_square :
-    (freeWordDiagonalAugmentation C X Y).app (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .backward) ≫
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeWordDiagonalAugmentation C X Y).app (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .backward) ≫
       BackwardZigzag.graphValue =
-    singleBackwardDiagonalEvaluation (freeResolution C) (freeResolutionObject C)
-      (fun θ X => freeResolutionObject_naturality C θ X) X Y ≫
-        freeResolutionCanonicalMarkedHomAugmentation C Y X
+    singleBackwardDiagonalEvaluation (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution C) (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject C)
+      (fun θ X => _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject_naturality C θ X) X Y ≫
+        _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionCanonicalMarkedHomAugmentation C Y X
 ```
 
-### [FreeWordDiagonalEmptyWeak.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeWordDiagonalEmptyWeak.lean)
+### [FreeWordDiagonalEmptyWeak.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeWordDiagonalEmptyWeak.lean)
 
 OE04、29原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeWordDiagonalEmptyWeak`。
 
@@ -8315,16 +8315,16 @@ OE04、29原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：通常の hammock augmentation の弱同値性を仮定しない。
 使われ方：DK5.7の全語の帰納基底。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.freeWordDiagonalAugmentation_empty_weak`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeWordDiagonalAugmentation_empty_weak`。
 
 ```lean
 universe u
 
 lemma freeWordDiagonalAugmentation_empty_weak (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (X Y : C.category) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((freeWordDiagonalAugmentation C X Y).app _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.empty)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeWordDiagonalAugmentation C X Y).app _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.empty)
 ```
 
-### [FreeWordDiagonalForwardWeak.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeWordDiagonalForwardWeak.lean)
+### [FreeWordDiagonalForwardWeak.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeWordDiagonalForwardWeak.lean)
 
 OE04、49原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeWordDiagonalForwardWeak`。
 
@@ -8335,19 +8335,19 @@ OE04、49原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：元の比較射自身の弱同値性を証明する。
 使われ方：DK5.7の全語の帰納の基底。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.freeWordDiagonalAugmentation`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeWordDiagonalAugmentation`。
 
 ```lean
 universe u
 variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (X Y : C.category)
 
 def freeWordDiagonalAugmentation :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.wordDiagonalDiagram (freeResolution C) C (freeResolutionObject C)
-      (fun θ X => freeResolutionObject_naturality C θ X) X Y ⟶
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.wordDiagonalDiagram (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution C) C (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject C)
+      (fun θ X => _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject_naturality C θ X) X Y ⟶
       _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram C.weakEquivalences X Y
 ```
 
-### [FreeWordDiagonalWeak.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/FreeWordDiagonalWeak.lean)
+### [FreeWordDiagonalWeak.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/FreeWordDiagonalWeak.lean)
 
 OE04、67原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeWordDiagonalWeak`。
 
@@ -8358,17 +8358,17 @@ OE04、67原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：元の全対象・全語・全単体作用素と同じ augmentation を保持する。
 使われ方：DK5.7の元の全語の余極限への移送。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.freeWordDiagonalAugmentation_weak`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeWordDiagonalAugmentation_weak`。
 
 ```lean
 universe u
 
 lemma freeWordDiagonalAugmentation_weak (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word)
     (X Y : C.category) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((freeWordDiagonalAugmentation C X Y).app w)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeWordDiagonalAugmentation C X Y).app w)
 ```
 
-### [HammockInvertsEdges.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/HammockInvertsEdges.lean)
+### [HammockInvertsEdges.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/HammockInvertsEdges.lean)
 
 OE04、39原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.HammockInvertsEdges`。
 
@@ -8379,7 +8379,7 @@ OE04、39原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：指定辺集合は元の W だけから定義し、局所化の普遍性とは分ける。
 使われ方：全反転関手 ∞ 圏への実際の前合成写像。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.weakNerveEdges`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges`。
 
 ```lean
 universe u
@@ -8388,7 +8388,7 @@ variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.
 def weakNerveEdges : Set ((nerve C.category) _⦋1⦌)
 ```
 
-### [HammockSourceFunctor.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/HammockSourceFunctor.lean)
+### [HammockSourceFunctor.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/HammockSourceFunctor.lean)
 
 OE04、47原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.HammockSourceFunctor`。
 
@@ -8399,7 +8399,7 @@ OE04、47原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：元の対象と元の通常の Category instance を保持する。
 使われ方：元の通常圏から Kan hammock nerve への局所化関手。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.HammockCategory`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.HammockCategory`。
 
 ```lean
 universe u
@@ -8408,7 +8408,7 @@ variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.
 abbrev HammockCategory
 ```
 
-### [Hom.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/Hom.lean)
+### [Hom.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/Hom.lean)
 
 OE04、65原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.Hom`。
 
@@ -8419,7 +8419,7 @@ OE04、65原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：合成と単位は各次数の局所化圏の同じもの。
 使われ方：厳密な単体的豊穣圏の構成と Hom の Kan 化。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.localizationHom`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHom`。
 
 ```lean
 universe u
@@ -8428,7 +8428,7 @@ variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.
 def localizationHom (X Y : C.category) : SSet.{u}
 ```
 
-### [HomAugmentation.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/HomAugmentation.lean)
+### [HomAugmentation.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/HomAugmentation.lean)
 
 OE04、117原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.HomAugmentation`。
 
@@ -8439,18 +8439,18 @@ OE04、117原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategory
 規約：比較先だけを定値にし、元の Hom の全単体を保持する。
 使われ方：DK と元の Map^h の比較の零次の正規化。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.localizedFreeResolutionAugmentation_object`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizedFreeResolutionAugmentation_object`。
 
 ```lean
 universe u
 variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u})
 
 lemma localizedFreeResolutionAugmentation_object (n : SimplexCategoryᵒᵖ) (X : C.category) :
-    ((localizedFreeResolutionAugmentation C).app n).toFunctor.obj
-        (localizedFreeResolutionObject C n X) = C.weakEquivalences.Q.obj X
+    ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizedFreeResolutionAugmentation C).app n).toFunctor.obj
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizedFreeResolutionObject C n X) = C.weakEquivalences.Q.obj X
 ```
 
-### [HomMapLaws.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/HomMapLaws.lean)
+### [HomMapLaws.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/HomMapLaws.lean)
 
 OE04、103原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.HomMapLaws`。
 
@@ -8461,16 +8461,16 @@ OE04、103原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategory
 規約：元の係数射と同じ対象表示を保持する。
 使われ方：Kan 化と coherent nerve での係数関手性。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.localizationHomMap_id`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHomMap_id`。
 
 ```lean
 universe u
 
 lemma localizationHomMap_id (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (X Y : C.category) :
-    localizationHomMap (𝟙 C) X Y = 𝟙 (localizationHom C X Y)
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHomMap (𝟙 C) X Y = 𝟙 (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHom C X Y)
 ```
 
-### [KanComparisonEnrichedFunctors.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/KanComparisonEnrichedFunctors.lean)
+### [KanComparisonEnrichedFunctors.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/KanComparisonEnrichedFunctors.lean)
 
 OE04、45原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanComparisonEnrichedFunctors`。
 
@@ -8481,7 +8481,7 @@ OE04、45原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：元の Hom 射への Ex∞ の像を全 Hom で回収する。
 使われ方：元の coherent nerve の比較と ∞ 局所化関手の構成。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.KanHammockObjects`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanHammockObjects`。
 
 ```lean
 universe u
@@ -8490,7 +8490,7 @@ variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.
 abbrev KanHammockObjects
 ```
 
-### [KanComparisonNerves.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/KanComparisonNerves.lean)
+### [KanComparisonNerves.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/KanComparisonNerves.lean)
 
 OE04、95原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanComparisonNerves`。
 
@@ -8501,7 +8501,7 @@ OE04、95原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：元の localizationNerve と両比較を保持する。局所化の普遍性は別に証明する。
 使われ方：元の通常圏から実 DK nerve への局所化関手の構成。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.KanHammockCategory`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanHammockCategory`。
 
 ```lean
 universe u
@@ -8510,7 +8510,7 @@ variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.
 abbrev KanHammockCategory
 ```
 
-### [KanComparisonWeak.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/KanComparisonWeak.lean)
+### [KanComparisonWeak.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/KanComparisonWeak.lean)
 
 OE04、47原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanComparisonWeak`。
 
@@ -8521,17 +8521,17 @@ OE04、47原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：元の比較の Hom 射そのものを保持する。
 使われ方：元の coherent nerve の実比較の充満忠実性。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.kanFreeHammockAugmentationEnriched_map_weak`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanFreeHammockAugmentationEnriched_map_weak`。
 
 ```lean
 universe u
-variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (X Y : KanFreeHammockObjects C)
+variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (X Y : _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanFreeHammockObjects C)
 
 lemma kanFreeHammockAugmentationEnriched_map_weak :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((kanFreeHammockAugmentationEnriched C).map X Y)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanFreeHammockAugmentationEnriched C).map X Y)
 ```
 
-### [KanComponents.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/KanComponents.lean)
+### [KanComponents.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/KanComponents.lean)
 
 OE04、66原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanComponents`。
 
@@ -8542,17 +8542,17 @@ OE04、66原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：単体集合のモデル構造や元の Hom の Kan 性を入力しない。
 使われ方：CAlg_R の構成に使う Kan Hom と元の Map^h の零次比較。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.localizationHomKanUnitPiZeroEquiv`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHomKanUnitPiZeroEquiv`。
 
 ```lean
 universe u
 variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u})
 
 def localizationHomKanUnitPiZeroEquiv (X Y : C.category) :
-    SSet.π₀ (localizationHom C X Y) ≃ SSet.π₀ (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (localizationHom C X Y))
+    SSet.π₀ (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHom C X Y) ≃ SSet.π₀ (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHom C X Y))
 ```
 
-### [KanEnrichedMap.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/KanEnrichedMap.lean)
+### [KanEnrichedMap.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/KanEnrichedMap.lean)
 
 OE04、72原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanEnrichedMap`。
 
@@ -8563,16 +8563,16 @@ OE04、72原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：対象と元の係数関手を保持し、単体集合モデルを入力しない。
 使われ方：coherent nerve の間の係数 ∞ 関手。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.kanLocalizationEnrichedMap`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanLocalizationEnrichedMap`。
 
 ```lean
 universe u
 
 def kanLocalizationEnrichedMap {C D : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}} (F : C ⟶ D) :
-    EnrichedFunctor SSet.{u} (KanLocalizationObjects C) (KanLocalizationObjects D)
+    EnrichedFunctor SSet.{u} (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanLocalizationObjects C) (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanLocalizationObjects D)
 ```
 
-### [KanEnrichment.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/KanEnrichment.lean)
+### [KanEnrichment.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/KanEnrichment.lean)
 
 OE04、106原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanEnrichment`。
 
@@ -8583,7 +8583,7 @@ OE04、106原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategory
 規約：単体集合のモデル構造を入力せず、元の豊穣合成を保持する。
 使われ方：局所 Kan な単体的圏の coherent nerve。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.KanLocalizationObjects`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanLocalizationObjects`。
 
 ```lean
 universe u
@@ -8591,7 +8591,7 @@ universe u
 abbrev KanLocalizationObjects (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u})
 ```
 
-### [KanHammockArrowNormalization.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/KanHammockArrowNormalization.lean)
+### [KanHammockArrowNormalization.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/KanHammockArrowNormalization.lean)
 
 OE04、43原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanHammockArrowNormalization`。
 
@@ -8600,7 +8600,7 @@ OE04、43原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：原本を読み取り専用で再利用し、元の射と端点を変更しない。
 使われ方：全 frame 比較の零単体と指定二胞体の共役の接続。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.kanHammockHomPinchedMap_arrow_zero`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockHomPinchedMap_arrow_zero`。
 
 ```lean
 universe u
@@ -8608,11 +8608,11 @@ variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.
 
 lemma kanHammockHomPinchedMap_arrow_zero (f : X ⟶ Y) :
     (((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap C.weakEquivalences f ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app _ ≫
-      kanHammockHomPinchedMap C X Y).app (op ⦋0⦌) PUnit.unit)).val =
-      (hammockLocalizationNerveMap C).app (op ⦋1⦌) (ComposableArrows.mk₁ f)
+      _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockHomPinchedMap C X Y).app (op ⦋0⦌) PUnit.unit)).val =
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap C).app (op ⦋1⦌) (ComposableArrows.mk₁ f)
 ```
 
-### [KanHammockHomCoherent.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/KanHammockHomCoherent.lean)
+### [KanHammockHomCoherent.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/KanHammockHomCoherent.lean)
 
 OE04、80原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanHammockHomCoherent`。
 
@@ -8621,19 +8621,19 @@ OE04、80原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：点ごとの Hom 同値を使わず、全図式の厳密な等式を構成する。
 使われ方：Yoneda 側の全比較を S (6) の終端へ代入する。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.kanHammock_sHomWhiskerLeft`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammock_sHomWhiskerLeft`。
 
 ```lean
 universe u
 variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (X : C.category)
 
 lemma kanHammock_sHomWhiskerLeft {Y Z : C.category} (f : Y ⟶ Z) :
-    eHomWhiskerLeft SSet ((kanHammockSourceFunctor C).obj X)
-      ((kanHammockSourceFunctor C).map f) =
+    eHomWhiskerLeft SSet ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockSourceFunctor C).obj X)
+      ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockSourceFunctor C).map f) =
         _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.postcomposePointMap X (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap C.weakEquivalences f))
 ```
 
-### [KanHammockHomInfinity.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/KanHammockHomInfinity.lean)
+### [KanHammockHomInfinity.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/KanHammockHomInfinity.lean)
 
 OE04、35原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanHammockHomInfinity`。
 
@@ -8642,19 +8642,19 @@ OE04、35原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：点ごとの Hom 同値や新たな存在仮定で置き換えない。
 使われ方：right frame の終端から指定局所化への全標的比較。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.kanHammockHomInfinityIso`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockHomInfinityIso`。
 
 ```lean
 universe u
 variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (X : C.category)
 
 def kanHammockHomInfinityIso :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (kanHammockHomCoherent C X)
-      (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.homInfinityCovariant ((hammockLocalizationNerveMap C).app
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockHomCoherent C X)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.homInfinityCovariant ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap C).app
         (op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X)))
 ```
 
-### [KanHammockHomPinched.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/KanHammockHomPinched.lean)
+### [KanHammockHomPinched.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/KanHammockHomPinched.lean)
 
 OE04、57原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanHammockHomPinched`。
 
@@ -8665,7 +8665,7 @@ OE04、57原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：元の enriched Hom・元の Ex∞・実際の q の頂点を保持する。
 使われ方：元の source frame の弱な基準射を実屋根の Hom 比較へ接続する。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.kanHammockHomLiftIso`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockHomLiftIso`。
 
 ```lean
 universe u
@@ -8673,10 +8673,10 @@ variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.
 
 def kanHammockHomLiftIso : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph C.weakEquivalences X Y) ≅
     SSet.uliftFunctor.{u, u}.obj (SimplicialCategory.sHom
-      ((kanHammockSourceFunctor C).obj X) ((kanHammockSourceFunctor C).obj Y))
+      ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockSourceFunctor C).obj X) ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockSourceFunctor C).obj Y))
 ```
 
-### [KanHammockHomPinchedValue.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/KanHammockHomPinchedValue.lean)
+### [KanHammockHomPinchedValue.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/KanHammockHomPinchedValue.lean)
 
 OE04、36原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanHammockHomPinchedValue`。
 
@@ -8687,7 +8687,7 @@ OE04、36原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：元の Hom・元の局所化頂点・同じ単体を保持する。
 使われ方：native roof prism の実一端。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.kanHammockHomPinchedMap_app_val`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockHomPinchedMap_app_val`。
 
 ```lean
 universe u
@@ -8695,12 +8695,12 @@ variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.
 
 lemma kanHammockHomPinchedMap_app_val {n : ℕ}
     (s : (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph C.weakEquivalences X Y)) _⦋n⦌) :
-    ((kanHammockHomPinchedMap C X Y).app (Opposite.op ⦋n⦌) s).val =
+    ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockHomPinchedMap C X Y).app (Opposite.op ⦋n⦌) s).val =
       _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentHomComparisonSimplex (show (SimplicialCategory.sHom
-        ((kanHammockSourceFunctor C).obj X) ((kanHammockSourceFunctor C).obj Y)) _⦋n⦌ from s)
+        ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockSourceFunctor C).obj X) ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockSourceFunctor C).obj Y)) _⦋n⦌ from s)
 ```
 
-### [KanHammockPinchedSimplexValue.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/KanHammockPinchedSimplexValue.lean)
+### [KanHammockPinchedSimplexValue.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/KanHammockPinchedSimplexValue.lean)
 
 OE04、49原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanHammockPinchedSimplexValue`。
 
@@ -8709,7 +8709,7 @@ OE04、49原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：elaborationの分割のみ。元のHom単体・局所化頂点・値を変更しない。
 使われ方：複雑なBEの係数への特殊化でも同じ全単体の式を検査する。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.kanHammockPinchedSimplexValue`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockPinchedSimplexValue`。
 
 ```lean
 universe u
@@ -8717,10 +8717,10 @@ variable (C : RelativeCategory.{u}) (X Y : C.category)
 
 def kanHammockPinchedSimplexValue {n : ℕ}
     (s : (exInfinity.obj (colimitGraph C.weakEquivalences X Y)) _⦋n⦌) :
-    (kanHammockNerve C) _⦋n + 1⦌
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockNerve C) _⦋n + 1⦌
 ```
 
-### [KanHammockPrecompose.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/KanHammockPrecompose.lean)
+### [KanHammockPrecompose.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/KanHammockPrecompose.lean)
 
 OE04、57原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanHammockPrecompose`。
 
@@ -8731,7 +8731,7 @@ OE04、57原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：元の通常射・同じ Ex∞・同じ豊穣 Hom と合成を保持する。
 使われ方：native roof prism の 00 と 01 の豊穣合成条件。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.kanHammockSource_precompose`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockSource_precompose`。
 
 ```lean
 universe u
@@ -8739,12 +8739,12 @@ variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.
 
 lemma kanHammockSource_precompose :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.precomposePointMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap C.weakEquivalences f) Z) =
-    lift (toUnit _ ≫ ForgetEnrichment.homTo SSet.{u} ((kanHammockSourceFunctor C).map f))
-      (𝟙 _) ≫ eComp SSet ((kanHammockSourceFunctor C).obj X)
-        ((kanHammockSourceFunctor C).obj Y) ((kanHammockSourceFunctor C).obj Z)
+    lift (toUnit _ ≫ ForgetEnrichment.homTo SSet.{u} ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockSourceFunctor C).map f))
+      (𝟙 _) ≫ eComp SSet ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockSourceFunctor C).obj X)
+        ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockSourceFunctor C).obj Y) ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockSourceFunctor C).obj Z)
 ```
 
-### [KanHammockSourceFunctor.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/KanHammockSourceFunctor.lean)
+### [KanHammockSourceFunctor.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/KanHammockSourceFunctor.lean)
 
 OE04、60原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanHammockSourceFunctor`。
 
@@ -8755,16 +8755,16 @@ OE04、60原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：元の通常圏・同じ射・同じ頂点を保持する。
 使われ方：元の実 DK nerve への局所化関手の供給。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.kanHammockSourceFunctor`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockSourceFunctor`。
 
 ```lean
 universe u
 variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u})
 
-def kanHammockSourceFunctor : C.category ⥤ KanHammockCategory C
+def kanHammockSourceFunctor : C.category ⥤ _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanHammockCategory C
 ```
 
-### [KanHammockWeakArrows.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/KanHammockWeakArrows.lean)
+### [KanHammockWeakArrows.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/KanHammockWeakArrows.lean)
 
 OE04、110原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanHammockWeakArrows`。
 
@@ -8775,18 +8775,18 @@ OE04、110原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategory
 規約：元の W の射と実際の通常関手の像を保持する。
 使われ方：元の通常圏からの ∞ 局所化関手の反転条件。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.kanHammockBackward`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockBackward`。
 
 ```lean
 universe u
 variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) {X Y : C.category} (f : X ⟶ Y)
   (hf : C.weakEquivalences f)
 
-def kanHammockBackward : (kanHammockSourceFunctor C).obj Y ⟶
-    (kanHammockSourceFunctor C).obj X
+def kanHammockBackward : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockSourceFunctor C).obj Y ⟶
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockSourceFunctor C).obj X
 ```
 
-### [KanHammockYonedaNormalization.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/KanHammockYonedaNormalization.lean)
+### [KanHammockYonedaNormalization.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/KanHammockYonedaNormalization.lean)
 
 OE04、69原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanHammockYonedaNormalization`。
 
@@ -8795,7 +8795,7 @@ OE04、69原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：原本の全比較と異なる恒等点を選ばない。
 使われ方：全図式 Yoneda 比較と元の局所化辺の零単体照合を結ぶ。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.kanHammockYonedaIdentity_zero`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockYonedaIdentity_zero`。
 
 ```lean
 universe u
@@ -8803,14 +8803,14 @@ variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.
 
 lemma kanHammockYonedaIdentity_zero :
     _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.representableHomIdentity
-      (D := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.CoherentObjectLift (KanHammockCategory C))
-      (ULift.up ((kanHammockSourceFunctor C).obj X)) =
+      (D := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.CoherentObjectLift (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanHammockCategory C))
+      (ULift.up ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockSourceFunctor C).obj X)) =
     SSet.unitHomEquiv _
       (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap C.weakEquivalences (𝟙 X) ≫
         _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph C.weakEquivalences X X))
 ```
 
-### [KanMapLaws.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/KanMapLaws.lean)
+### [KanMapLaws.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/KanMapLaws.lean)
 
 OE04、70原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanMapLaws`。
 
@@ -8821,16 +8821,16 @@ OE04、70原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：対象と元の Hom 作用を変更しない。
 使われ方：coherent nerve の全係数関手性。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.kanLocalizationEnrichedMap_id`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanLocalizationEnrichedMap_id`。
 
 ```lean
 universe u
 
 lemma kanLocalizationEnrichedMap_id (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) :
-    kanLocalizationEnrichedMap (𝟙 C) = EnrichedFunctor.id SSet (KanLocalizationObjects C)
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanLocalizationEnrichedMap (𝟙 C) = EnrichedFunctor.id SSet (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanLocalizationObjects C)
 ```
 
-### [LocalizationNervePrecomposition.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/LocalizationNervePrecomposition.lean)
+### [LocalizationNervePrecomposition.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/LocalizationNervePrecomposition.lean)
 
 OE04、37原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.LocalizationNervePrecomposition`。
 
@@ -8841,21 +8841,21 @@ OE04、37原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：全 quasicategory 標的と全部分関手圏を扱う。普遍性自体は未供給。
 使われ方：実 hammock の ∞ 局所化を既存 CAlg_R へ移す最終工程。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.localizationNerveSourceMap_precomposition`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveSourceMap_precomposition`。
 
 ```lean
 universe u
 variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u})
 
 lemma localizationNerveSourceMap_precomposition (E : SSet.{u}) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.localizationPrecomposition (localizationNerveSourceMap C) (weakNerveEdges C)
-        (localizationNerveSourceMap_inverts C) E =
-      (pre (kanHammockLocalizationEquivalence C).hom).app E ≫
-        _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.localizationPrecomposition (hammockLocalizationNerveMap C) (weakNerveEdges C)
-          (hammockLocalizationNerveMap_inverts C) E
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.localizationPrecomposition (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveSourceMap C) (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges C)
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveSourceMap_inverts C) E =
+      (pre (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockLocalizationEquivalence C).hom).app E ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.localizationPrecomposition (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap C) (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges C)
+          (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap_inverts C) E
 ```
 
-### [LocalizationNerveSource.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/LocalizationNerveSource.lean)
+### [LocalizationNerveSource.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/LocalizationNerveSource.lean)
 
 OE04、85原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.LocalizationNerveSource`。
 
@@ -8866,17 +8866,17 @@ OE04、85原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：選択した逆の頂点作用を恒等とは仮定しない。元の頂点との比較を供給する。
 使われ方：元の指定射を反転する CAlg_R への関手と ∞ 局所化の普遍性。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.kanHammockLocalizationEquivalence`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockLocalizationEquivalence`。
 
 ```lean
 universe u
 variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u})
 
 def kanHammockLocalizationEquivalence :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence (kanHammockNerve C) (localizationNerve C)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockNerve C) (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerve C)
 ```
 
-### [LocalizedFreeResolution.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/LocalizedFreeResolution.lean)
+### [LocalizedFreeResolution.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/LocalizedFreeResolution.lean)
 
 OE04、42原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.LocalizedFreeResolution`。
 
@@ -8887,7 +8887,7 @@ OE04、42原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：各次数の指定矢は元の弱同値だけからなる列。
 使われ方：固定対象を持つ単体的圏とその Kan 化の構成。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.localizedFreeResolution`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizedFreeResolution`。
 
 ```lean
 universe u
@@ -8895,7 +8895,7 @@ universe u
 def localizedFreeResolution (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) : SimplicialObject Cat.{u, u}
 ```
 
-### [LocalizedResolutionFunctoriality.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/LocalizedResolutionFunctoriality.lean)
+### [LocalizedResolutionFunctoriality.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/LocalizedResolutionFunctoriality.lean)
 
 OE04、88原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.LocalizedResolutionFunctoriality`。
 
@@ -8906,16 +8906,16 @@ OE04、88原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：単体作用素と係数の両方に自然な元の対象表示を保持する。
 使われ方：固定対象の Hom の間の単体写像の構成。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.localizedFreeResolutionMap`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizedFreeResolutionMap`。
 
 ```lean
 universe u
 
 def localizedFreeResolutionMap {C D : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}} (F : C ⟶ D) :
-    localizedFreeResolution C ⟶ localizedFreeResolution D
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizedFreeResolution C ⟶ _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizedFreeResolution D
 ```
 
-### [ModelBifibrantFramePinchedWeak.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantFramePinchedWeak.lean)
+### [ModelBifibrantFramePinchedWeak.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantFramePinchedWeak.lean)
 
 OE04、117原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantFramePinchedWeak`。
 
@@ -8924,7 +8924,7 @@ OE04、117原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategory
 規約：元の単体・全作用素・局所化頂点を保持する。
 使われ方：実屋根の全次数の弱な pinched 基準族。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceFrameIndexIso`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceFrameIndexIso`。
 
 ```lean
 universe u v
@@ -8937,7 +8937,7 @@ def modelBifibrantSourceFrameIndexIso :
         ((((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantFrame X q)).obj Y).Elements)ᵒᵖ))
 ```
 
-### [ModelBifibrantFrameRightKanCofinality.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantFrameRightKanCofinality.lean)
+### [ModelBifibrantFrameRightKanCofinality.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantFrameRightKanCofinality.lean)
 
 OE04、77原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantFrameRightKanCofinality`。
 
@@ -8948,26 +8948,26 @@ OE04、77原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：全矢図式へ置き換えず、元の次数比較を保持する。
 使われ方：局所右 Kan 極限と標準右 Kan 錐。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceFrameRawRoofMap_isLeftCofinal`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceFrameRawRoofMap_isLeftCofinal`。
 
 ```lean
 universe u v
-variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
-  [(HomotopicalAlgebra.cofibrations C).HasFunctorialFactorization
-    (HomotopicalAlgebra.trivialFibrations C)]
-  (X : HomotopicalAlgebra.BifibrantObject C)
+variable {C : Type u} [Category.{v} C] [_root_.HomotopicalAlgebra.ModelCategory C]
+  [(_root_.HomotopicalAlgebra.cofibrations C).HasFunctorialFactorization
+    (_root_.HomotopicalAlgebra.trivialFibrations C)]
+  (X : _root_.HomotopicalAlgebra.BifibrantObject C)
   (q : SerrePositivity.Reedy.CofibrantResolution (C := C) SerrePositivity.Reedy.simplex X.obj)
   (r : SerrePositivity.Reedy.CofibrantResolutionFamily (C := Cᵒᵖ) SerrePositivity.Reedy.simplex)
 
-lemma modelBifibrantSourceFrameRawRoofMap_isLeftCofinal (Y : HomotopicalAlgebra.BifibrantObject C) :
+lemma modelBifibrantSourceFrameRawRoofMap_isLeftCofinal (Y : _root_.HomotopicalAlgebra.BifibrantObject C) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsLeftCofinal (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.rawRoofFunctorMap
-      (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C))
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C))
       (nerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantDKFrame X q))
       (SSet.yonedaEquiv.symm
         (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C Y))))
 ```
 
-### [ModelBifibrantFrameRoof.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantFrameRoof.lean)
+### [ModelBifibrantFrameRoof.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantFrameRoof.lean)
 
 OE04、68原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantFrameRoof`。
 
@@ -8976,7 +8976,7 @@ OE04、68原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：元の射と全次数射影を保持する。
 使われ方：実 right Kan 次数比較の余終性判定。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceFrameRoofMap`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceFrameRoofMap`。
 
 ```lean
 universe u v
@@ -8986,12 +8986,12 @@ variable {C : Type u} [Category.{v} C] [ModelCategory C]
 def modelBifibrantSourceFrameRoofMap : nerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantSourceFrameElementCategory X Y q) ⟶
     pullback (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection (SSet.yonedaEquiv.symm
       (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C Y)) ≫
-        hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)))
+        _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)))
       (nerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantDKFrame X q) ≫
-        hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C))
+        _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C))
 ```
 
-### [ModelBifibrantFrameRoofWeak.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantFrameRoofWeak.lean)
+### [ModelBifibrantFrameRoofWeak.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantFrameRoofWeak.lean)
 
 OE04、69原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantFrameRoofWeak`。
 
@@ -9000,7 +9000,7 @@ OE04、69原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：第一の関手的分解と指定 right frame のみを使う。
 使われ方：実 right Kan 次数比較の余終性への入力。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantFrameLeftRoofColimitMap`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantFrameLeftRoofColimitMap`。
 
 ```lean
 universe u v
@@ -9013,7 +9013,7 @@ def modelBifibrantFrameLeftRoofColimitMap :
         _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRawBifibrantWeak (C := C)) X Y
 ```
 
-### [ModelBifibrantLocalization.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantLocalization.lean)
+### [ModelBifibrantLocalization.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantLocalization.lean)
 
 OE04、108原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantLocalization`。
 
@@ -9022,7 +9022,7 @@ OE04、108原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategory
 規約：第一の関手的分解と指定 right frame を使い、SSet モデルは仮定しない。
 使われ方：cofibrant 部分圏・全圏への変形と指定局所化との coherent 比較。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.modelSourceFrameFamily`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelSourceFrameFamily`。
 
 ```lean
 universe u v
@@ -9033,7 +9033,7 @@ variable {C : Type u} [Category.{v} C] [ModelCategory C]
 def modelSourceFrameFamily : CofibrantResolutionFamily (C := C) simplex
 ```
 
-### [ModelBifibrantRightKanReduction.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantRightKanReduction.lean)
+### [ModelBifibrantRightKanReduction.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantRightKanReduction.lean)
 
 OE04、338原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantRightKanReduction`。
 
@@ -9042,19 +9042,19 @@ OE04、338原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategory
 規約：余終性は未証明の明示入力として残し、局所化普遍性の完成と扱わない。
 使われ方：一般モデルの frame→hammock 比較から局所化普遍性への接続。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantHammockObject`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantHammockObject`。
 
 ```lean
 universe u v
 variable {C : Type u} [Category.{v} C] [ModelCategory C]
   (q : ∀ X : BifibrantObject C, CofibrantResolution (C := C) simplex X.obj)
-  (hcofinal : ∀ X, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsLeftCofinal (modelBifibrantFrameRightKanMap X (q X)))
+  (hcofinal : ∀ X, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsLeftCofinal (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantFrameRightKanMap X (q X)))
 
 def modelBifibrantHammockObject
-    (z : (kanHammockNerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)) _⦋0⦌) : BifibrantObject C
+    (z : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockNerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)) _⦋0⦌) : BifibrantObject C
 ```
 
-### [ModelBifibrantRightKanShape.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantRightKanShape.lean)
+### [ModelBifibrantRightKanShape.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantRightKanShape.lean)
 
 OE04、89原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantRightKanShape`。
 
@@ -9063,17 +9063,17 @@ OE04、89原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：同じ局所化頂点と全次数の射影を保持し、余終性は後続で証明する。
 使われ方：代数版の三つの局所化判定入力の一般化。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantHammockVertex`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantHammockVertex`。
 
 ```lean
 universe u v w
 variable {C : Type u} [Category.{v} C] [ModelCategory C]
   (X : BifibrantObject C) (q : CofibrantResolution (C := C) simplex X.obj)
 
-def modelBifibrantHammockVertex : (kanHammockNerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)) _⦋0⦌
+def modelBifibrantHammockVertex : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockNerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)) _⦋0⦌
 ```
 
-### [ModelBifibrantSourceFrameGraph.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceFrameGraph.lean)
+### [ModelBifibrantSourceFrameGraph.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceFrameGraph.lean)
 
 OE04、51原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSourceFrameGraph`。
 
@@ -9082,7 +9082,7 @@ OE04、51原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：元の全単体・両端点・元の余極限標準射を保持する。
 使われ方：実 comma augmentation roof と同じ弱基準族の照合。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceFrameGraphMap`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceFrameGraphMap`。
 
 ```lean
 universe u v
@@ -9095,7 +9095,7 @@ def modelBifibrantSourceFrameGraphMap :
         (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C X) (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C Y)
 ```
 
-### [ModelBifibrantSourceRoofAugmentationImage.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofAugmentationImage.lean)
+### [ModelBifibrantSourceRoofAugmentationImage.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofAugmentationImage.lean)
 
 OE04、66原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSourceRoofAugmentationImage`。
 
@@ -9104,21 +9104,21 @@ OE04、66原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：包含の逆の選択や別の代表族を使わない。
 使われ方：指定次数の native roof と同じ弱基準射の照合。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaAugmentationRoofGraphMap_image`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaAugmentationRoofGraphMap_image`。
 
 ```lean
 universe u v
 variable {C : Type u} [Category.{v} C] [ModelCategory C]
   (X Y : BifibrantObject C) (q : CofibrantResolution (C := C) simplex X.obj)
-  (b : (modelBifibrantSourceRoofTarget X Y q) _⦋0⦌)
+  (b : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofTarget X Y q) _⦋0⦌)
 
 lemma modelBifibrantSourceRoofProductCommaAugmentationRoofGraphMap_image :
-    modelBifibrantSourceRoofProductCommaAugmentationRoofGraphMap X Y q b =
-      modelBifibrantSourceRoofProductCommaFirstNerve X Y q b ≫
-        modelBifibrantSourceFrameGraphMap X Y q
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaAugmentationRoofGraphMap X Y q b =
+      _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaFirstNerve X Y q b ≫
+        _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceFrameGraphMap X Y q
 ```
 
-### [ModelBifibrantSourceRoofBaseEvaluation.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofBaseEvaluation.lean)
+### [ModelBifibrantSourceRoofBaseEvaluation.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofBaseEvaluation.lean)
 
 OE04、113原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSourceRoofBaseEvaluation`。
 
@@ -9127,19 +9127,19 @@ OE04、113原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategory
 規約：元の解像・指定点・全錐を保持する。
 使われ方：実 right Kan 次数比較の余終性への接続。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaOver`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaOver`。
 
 ```lean
 universe u v
-variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
-  (X Y : HomotopicalAlgebra.BifibrantObject C)
+variable {C : Type u} [Category.{v} C] [_root_.HomotopicalAlgebra.ModelCategory C]
+  (X Y : _root_.HomotopicalAlgebra.BifibrantObject C)
   (q : SerrePositivity.Reedy.CofibrantResolution (C := C) SerrePositivity.Reedy.simplex X.obj)
-  (b : (modelBifibrantSourceRoofTarget X Y q) _⦋0⦌)
+  (b : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofTarget X Y q) _⦋0⦌)
 
 abbrev modelBifibrantSourceRoofProductCommaOver
 ```
 
-### [ModelBifibrantSourceRoofCornerEvaluation.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofCornerEvaluation.lean)
+### [ModelBifibrantSourceRoofCornerEvaluation.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofCornerEvaluation.lean)
 
 OE04、93原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSourceRoofCornerEvaluation`。
 
@@ -9148,19 +9148,19 @@ OE04、93原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：元の解像・指定点・全錐を保持する。
 使われ方：実 right Kan 次数比較の余終性への接続。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofDegreeObject`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofDegreeObject`。
 
 ```lean
 universe u v
-variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
-  (X Y : HomotopicalAlgebra.BifibrantObject C)
+variable {C : Type u} [Category.{v} C] [_root_.HomotopicalAlgebra.ModelCategory C]
+  (X Y : _root_.HomotopicalAlgebra.BifibrantObject C)
   (q : SerrePositivity.Reedy.CofibrantResolution (C := C) SerrePositivity.Reedy.simplex X.obj)
-  (b : (modelBifibrantSourceRoofTarget X Y q) _⦋0⦌)
+  (b : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofTarget X Y q) _⦋0⦌)
 
-abbrev modelBifibrantSourceRoofDegreeObject : HomotopicalAlgebra.BifibrantObject C
+abbrev modelBifibrantSourceRoofDegreeObject : _root_.HomotopicalAlgebra.BifibrantObject C
 ```
 
-### [ModelBifibrantSourceRoofCornerOver.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofCornerOver.lean)
+### [ModelBifibrantSourceRoofCornerOver.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofCornerOver.lean)
 
 OE04、84原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSourceRoofCornerOver`。
 
@@ -9169,21 +9169,21 @@ OE04、84原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：元の解像・指定点・全錐を保持する。
 使われ方：実 right Kan 次数比較の余終性への接続。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofDegreeTransportIso_inv_over`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofDegreeTransportIso_inv_over`。
 
 ```lean
 universe u v
-variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
-  (X Y : HomotopicalAlgebra.BifibrantObject C)
+variable {C : Type u} [Category.{v} C] [_root_.HomotopicalAlgebra.ModelCategory C]
+  (X Y : _root_.HomotopicalAlgebra.BifibrantObject C)
   (q : SerrePositivity.Reedy.CofibrantResolution (C := C) SerrePositivity.Reedy.simplex X.obj)
-  (b : (modelBifibrantSourceRoofTarget X Y q) _⦋0⦌)
+  (b : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofTarget X Y q) _⦋0⦌)
 
 lemma modelBifibrantSourceRoofDegreeTransportIso_inv_over :
-    (modelBifibrantSourceRoofDegreeTransportIso X Y q b).inv ≫ pullback.snd _ _ =
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofDegreeTransportIso X Y q b).inv ≫ pullback.snd _ _ =
       pullback.snd _ _
 ```
 
-### [ModelBifibrantSourceRoofDegreeModel.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofDegreeModel.lean)
+### [ModelBifibrantSourceRoofDegreeModel.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofDegreeModel.lean)
 
 OE04、101原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSourceRoofDegreeModel`。
 
@@ -9192,19 +9192,19 @@ OE04、101原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategory
 規約：元の解像・指定点・全錐を保持する。
 使われ方：実 right Kan 次数比較の余終性への接続。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductElements`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductElements`。
 
 ```lean
 universe u v
-variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
-  (X Y : HomotopicalAlgebra.BifibrantObject C)
+variable {C : Type u} [Category.{v} C] [_root_.HomotopicalAlgebra.ModelCategory C]
+  (X Y : _root_.HomotopicalAlgebra.BifibrantObject C)
   (q : SerrePositivity.Reedy.CofibrantResolution (C := C) SerrePositivity.Reedy.simplex X.obj)
-  (b : (modelBifibrantSourceRoofTarget X Y q) _⦋0⦌)
+  (b : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofTarget X Y q) _⦋0⦌)
 
 abbrev modelBifibrantSourceRoofProductElements
 ```
 
-### [ModelBifibrantSourceRoofEvaluationHomotopy.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofEvaluationHomotopy.lean)
+### [ModelBifibrantSourceRoofEvaluationHomotopy.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofEvaluationHomotopy.lean)
 
 OE04、87原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSourceRoofEvaluationHomotopy`。
 
@@ -9213,23 +9213,23 @@ OE04、87原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：元の解像・指定点・全錐を保持する。
 使われ方：実 right Kan 次数比較の余終性への接続。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaEvaluationHomotopy`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaEvaluationHomotopy`。
 
 ```lean
 universe u v
-variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
-  (X Y : HomotopicalAlgebra.BifibrantObject C)
+variable {C : Type u} [Category.{v} C] [_root_.HomotopicalAlgebra.ModelCategory C]
+  (X Y : _root_.HomotopicalAlgebra.BifibrantObject C)
   (q : SerrePositivity.Reedy.CofibrantResolution (C := C) SerrePositivity.Reedy.simplex X.obj)
-  (b : (modelBifibrantSourceRoofTarget X Y q) _⦋0⦌)
+  (b : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofTarget X Y q) _⦋0⦌)
 
 def modelBifibrantSourceRoofProductCommaEvaluationHomotopy : SSet.Homotopy
-    (nerveMap (modelBifibrantSourceRoofProductCommaDiagram X Y q b) ≫
-      SimplicialLocalization.hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C))
-    (SSet.const (X := nerve (modelBifibrantSourceRoofProductComma X Y q b))
-      (modelBifibrantHammockVertex (modelBifibrantSourceRoofDegreeObject X Y q b)))
+    (nerveMap (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaDiagram X Y q b) ≫
+      _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C))
+    (SSet.const (X := nerve (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductComma X Y q b))
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantHammockVertex (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofDegreeObject X Y q b)))
 ```
 
-### [ModelBifibrantSourceRoofGeometricLeftCell.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofGeometricLeftCell.lean)
+### [ModelBifibrantSourceRoofGeometricLeftCell.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofGeometricLeftCell.lean)
 
 OE04、111原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSourceRoofGeometricLeftCell`。
 
@@ -9238,21 +9238,21 @@ OE04、111原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategory
 規約：元の解像・指定点・全錐を保持する。
 使われ方：実 right Kan 次数比較の余終性への接続。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductGeometricLeftCell_eq`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductGeometricLeftCell_eq`。
 
 ```lean
 universe u v
-variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
-  (X Y : HomotopicalAlgebra.BifibrantObject C)
+variable {C : Type u} [Category.{v} C] [_root_.HomotopicalAlgebra.ModelCategory C]
+  (X Y : _root_.HomotopicalAlgebra.BifibrantObject C)
   (q : SerrePositivity.Reedy.CofibrantResolution (C := C) SerrePositivity.Reedy.simplex X.obj)
-  (b : (modelBifibrantSourceRoofTarget X Y q) _⦋0⦌)
+  (b : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofTarget X Y q) _⦋0⦌)
 
 lemma modelBifibrantSourceRoofProductGeometricLeftCell_eq :
-    modelBifibrantSourceRoofProductGeometricLeftCell X Y q b =
-      (modelBifibrantSourceRoofProductCommaEvaluationIso X Y q b).hom
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductGeometricLeftCell X Y q b =
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaEvaluationIso X Y q b).hom
 ```
 
-### [ModelBifibrantSourceRoofGeometricRightCell.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofGeometricRightCell.lean)
+### [ModelBifibrantSourceRoofGeometricRightCell.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofGeometricRightCell.lean)
 
 OE04、82原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSourceRoofGeometricRightCell`。
 
@@ -9261,21 +9261,21 @@ OE04、82原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：元の解像・指定点・全錐を保持する。
 使われ方：実 right Kan 次数比較の余終性への接続。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductGeometricRightHomotopy_h`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductGeometricRightHomotopy_h`。
 
 ```lean
 universe u v
-variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
-  (X Y : HomotopicalAlgebra.BifibrantObject C)
+variable {C : Type u} [Category.{v} C] [_root_.HomotopicalAlgebra.ModelCategory C]
+  (X Y : _root_.HomotopicalAlgebra.BifibrantObject C)
   (q : SerrePositivity.Reedy.CofibrantResolution (C := C) SerrePositivity.Reedy.simplex X.obj)
-  (b : (modelBifibrantSourceRoofTarget X Y q) _⦋0⦌)
+  (b : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofTarget X Y q) _⦋0⦌)
 
 lemma modelBifibrantSourceRoofProductGeometricRightHomotopy_h :
-    (modelBifibrantSourceRoofProductGeometricRightHomotopy X Y q b).h =
-      (modelBifibrantSourceRoofProductCommaRightHomotopy X Y q b).h
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductGeometricRightHomotopy X Y q b).h =
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaRightHomotopy X Y q b).h
 ```
 
-### [ModelBifibrantSourceRoofNativePinchedReference.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofNativePinchedReference.lean)
+### [ModelBifibrantSourceRoofNativePinchedReference.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofNativePinchedReference.lean)
 
 OE04、117原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSourceRoofNativePinchedReference`。
 
@@ -9284,23 +9284,23 @@ OE04、117原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategory
 規約：全パラメータを保持し、点ごとの類の一致へ置き換えない。
 使われ方：実 interval 族の全合成三角形と roof 余終性の接続。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaDegreeHammockMap_transport`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaDegreeHammockMap_transport`。
 
 ```lean
 universe u v
 variable {C : Type u} [Category.{v} C] [ModelCategory C]
   (X Y : BifibrantObject C) (q : CofibrantResolution (C := C) simplex X.obj)
-  (b : (modelBifibrantSourceRoofTarget X Y q) _⦋0⦌)
+  (b : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofTarget X Y q) _⦋0⦌)
 
 lemma modelBifibrantSourceRoofProductCommaDegreeHammockMap_transport :
-    (modelBifibrantSourceRoofProductCommaIso X Y q b).inv ≫
-      modelBifibrantSourceRoofProductDegreeHammockMap X Y q b =
-        modelBifibrantSourceRoofProductCommaFirstNerve X Y q b ≫
-          modelBifibrantSourceFrameColimitMap X Y q ≫
-            modelBifibrantSourceRoofDegreePrecompose X Y q b
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaIso X Y q b).inv ≫
+      _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductDegreeHammockMap X Y q b =
+        _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaFirstNerve X Y q b ≫
+          _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceFrameColimitMap X Y q ≫
+            _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofDegreePrecompose X Y q b
 ```
 
-### [ModelBifibrantSourceRoofNativePrism.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofNativePrism.lean)
+### [ModelBifibrantSourceRoofNativePrism.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofNativePrism.lean)
 
 OE04、89原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSourceRoofNativePrism`。
 
@@ -9309,25 +9309,25 @@ OE04、89原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：元の解像・指定点・全錐を保持する。
 使われ方：実 right Kan 次数比較の余終性への接続。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativeSimplex_naturality`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativeSimplex_naturality`。
 
 ```lean
 universe u v
-variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
-  (X Y : HomotopicalAlgebra.BifibrantObject C)
+variable {C : Type u} [Category.{v} C] [_root_.HomotopicalAlgebra.ModelCategory C]
+  (X Y : _root_.HomotopicalAlgebra.BifibrantObject C)
   (q : SerrePositivity.Reedy.CofibrantResolution (C := C) SerrePositivity.Reedy.simplex X.obj)
-  (b : (modelBifibrantSourceRoofTarget X Y q) _⦋0⦌)
+  (b : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofTarget X Y q) _⦋0⦌)
 
 lemma modelBifibrantSourceRoofProductCommaNativeSimplex_naturality {m n : ℕ}
-    (Γ : Fin (n + 1) ⥤ modelBifibrantSourceRoofProductComma X Y q b)
+    (Γ : Fin (n + 1) ⥤ _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductComma X Y q b)
     (t : Fin (n + 1) →o Fin 2) (α : ⦋m⦌ ⟶ ⦋n⦌) :
-    (kanHammockNerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)).map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.extend α).op
-      (modelBifibrantSourceRoofProductCommaNativeSimplex X Y q b Γ t) =
-    modelBifibrantSourceRoofProductCommaNativeSimplex X Y q b
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockNerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)).map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.extend α).op
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativeSimplex X Y q b Γ t) =
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativeSimplex X Y q b
       (α.toOrderHom.monotone.functor ⋙ Γ) (t.comp α.toOrderHom)
 ```
 
-### [ModelBifibrantSourceRoofNativePrismOne.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofNativePrismOne.lean)
+### [ModelBifibrantSourceRoofNativePrismOne.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofNativePrismOne.lean)
 
 OE04、107原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSourceRoofNativePrismOne`。
 
@@ -9336,28 +9336,28 @@ OE04、107原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategory
 規約：元の解像・指定点・全錐を保持する。
 使われ方：実 right Kan 次数比較の余終性への接続。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativeSimplex_one`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativeSimplex_one`。
 
 ```lean
 universe u v
-variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
-  (X Y : HomotopicalAlgebra.BifibrantObject C)
+variable {C : Type u} [Category.{v} C] [_root_.HomotopicalAlgebra.ModelCategory C]
+  (X Y : _root_.HomotopicalAlgebra.BifibrantObject C)
   (q : SerrePositivity.Reedy.CofibrantResolution (C := C) SerrePositivity.Reedy.simplex X.obj)
-  (b : (modelBifibrantSourceRoofTarget X Y q) _⦋0⦌)
+  (b : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofTarget X Y q) _⦋0⦌)
 
 lemma modelBifibrantSourceRoofProductCommaNativeSimplex_one {n : ℕ}
-    (Γ : Fin (n + 1) ⥤ modelBifibrantSourceRoofProductComma X Y q b) :
-    modelBifibrantSourceRoofProductCommaNativeSimplex X Y q b Γ (OrderHom.const _ 1) =
+    (Γ : Fin (n + 1) ⥤ _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductComma X Y q b) :
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativeSimplex X Y q b Γ (OrderHom.const _ 1) =
     _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentHomComparisonSimplex
-      (C := KanHammockCategory (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C))
-      (X := (kanHammockSourceFunctor (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)).obj
-        (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C (modelBifibrantSourceRoofDegreeObject X Y q b)))
-      (Y := (kanHammockSourceFunctor (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)).obj
+      (C := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanHammockCategory (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C))
+      (X := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockSourceFunctor (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)).obj
+        (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofDegreeObject X Y q b)))
+      (Y := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockSourceFunctor (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)).obj
         (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C Y))
-      ((modelBifibrantSourceRoofProductCommaNativeFamilyMap X Y q b).app (Opposite.op ⦋n⦌) Γ)
+      ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativeFamilyMap X Y q b).app (Opposite.op ⦋n⦌) Γ)
 ```
 
-### [ModelBifibrantSourceRoofNativePrismProjection.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofNativePrismProjection.lean)
+### [ModelBifibrantSourceRoofNativePrismProjection.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofNativePrismProjection.lean)
 
 OE04、66原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSourceRoofNativePrismProjection`。
 
@@ -9366,23 +9366,23 @@ OE04、66原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：元の解像・指定点・全錐を保持する。
 使われ方：実 right Kan 次数比較の余終性への接続。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativePrism_projection`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativePrism_projection`。
 
 ```lean
 universe u v
-variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
-  (X Y : HomotopicalAlgebra.BifibrantObject C)
+variable {C : Type u} [Category.{v} C] [_root_.HomotopicalAlgebra.ModelCategory C]
+  (X Y : _root_.HomotopicalAlgebra.BifibrantObject C)
   (q : SerrePositivity.Reedy.CofibrantResolution (C := C) SerrePositivity.Reedy.simplex X.obj)
-  (b : (modelBifibrantSourceRoofTarget X Y q) _⦋0⦌)
+  (b : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofTarget X Y q) _⦋0⦌)
 
 lemma modelBifibrantSourceRoofProductCommaNativePrism_projection :
-    modelBifibrantSourceRoofProductCommaNativePrism X Y q b ≫
-      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection (SSet.yonedaEquiv.symm (modelBifibrantHammockVertex Y)) =
-    (β_ (Δ[1] : SSet.{max u v}) (nerve (modelBifibrantSourceRoofProductComma X Y q b))).hom ≫
-      (modelBifibrantSourceRoofProductCommaEvaluationHomotopy X Y q b).h
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativePrism X Y q b ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantHammockVertex Y)) =
+    (β_ (Δ[1] : SSet.{max u v}) (nerve (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductComma X Y q b))).hom ≫
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaEvaluationHomotopy X Y q b).h
 ```
 
-### [ModelBifibrantSourceRoofNativePrismZero.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofNativePrismZero.lean)
+### [ModelBifibrantSourceRoofNativePrismZero.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofNativePrismZero.lean)
 
 OE04、87原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSourceRoofNativePrismZero`。
 
@@ -9391,24 +9391,24 @@ OE04、87原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：元の解像・指定点・全錐を保持する。
 使われ方：実 right Kan 次数比較の余終性への接続。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativePrism_zero_uncurry`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativePrism_zero_uncurry`。
 
 ```lean
 universe u v
-variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
-  (X Y : HomotopicalAlgebra.BifibrantObject C)
+variable {C : Type u} [Category.{v} C] [_root_.HomotopicalAlgebra.ModelCategory C]
+  (X Y : _root_.HomotopicalAlgebra.BifibrantObject C)
   (q : SerrePositivity.Reedy.CofibrantResolution (C := C) SerrePositivity.Reedy.simplex X.obj)
-  (b : (modelBifibrantSourceRoofTarget X Y q) _⦋0⦌)
+  (b : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofTarget X Y q) _⦋0⦌)
 
 lemma modelBifibrantSourceRoofProductCommaNativePrism_zero_uncurry :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverUncurry (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 0 _ ≫ modelBifibrantSourceRoofProductCommaNativePrism X Y q b) =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverUncurry (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 0 _ ≫ _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativePrism X Y q b) =
       (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.nerveCoconeEquiv (Cocone.mk
         (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C Y)
-        (modelBifibrantSourceRoofProductCommaRightLeg X Y q b))).val ≫
-      hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaRightLeg X Y q b))).val ≫
+      _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)
 ```
 
-### [ModelBifibrantSourceRoofNativeRoofComparison.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofNativeRoofComparison.lean)
+### [ModelBifibrantSourceRoofNativeRoofComparison.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofNativeRoofComparison.lean)
 
 OE04、115原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSourceRoofNativeRoofComparison`。
 
@@ -9417,22 +9417,22 @@ OE04、115原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategory
 規約：元の解像・指定点・全錐を保持する。
 使われ方：実 right Kan 次数比較の余終性への接続。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaDiagram_map_weak`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaDiagram_map_weak`。
 
 ```lean
 universe u v
-variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
-  (X Y : HomotopicalAlgebra.BifibrantObject C)
+variable {C : Type u} [Category.{v} C] [_root_.HomotopicalAlgebra.ModelCategory C]
+  (X Y : _root_.HomotopicalAlgebra.BifibrantObject C)
   (q : SerrePositivity.Reedy.CofibrantResolution (C := C) SerrePositivity.Reedy.simplex X.obj)
-  (b : (modelBifibrantSourceRoofTarget X Y q) _⦋0⦌)
+  (b : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofTarget X Y q) _⦋0⦌)
 
 lemma modelBifibrantSourceRoofProductCommaDiagram_map_weak
-    {s t : modelBifibrantSourceRoofProductComma X Y q b} (f : s ⟶ t) :
+    {s t : _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductComma X Y q b} (f : s ⟶ t) :
     (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C).weakEquivalences
-      ((modelBifibrantSourceRoofProductCommaDiagram X Y q b).map f)
+      ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaDiagram X Y q b).map f)
 ```
 
-### [ModelBifibrantSourceRoofNativeSimplex.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofNativeSimplex.lean)
+### [ModelBifibrantSourceRoofNativeSimplex.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofNativeSimplex.lean)
 
 OE04、73原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSourceRoofNativeSimplex`。
 
@@ -9441,22 +9441,22 @@ OE04、73原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：元の解像・指定点・全錐を保持する。
 使われ方：実 right Kan 次数比較の余終性への接続。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativeSimplex`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativeSimplex`。
 
 ```lean
 universe u v
-variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
-  (X Y : HomotopicalAlgebra.BifibrantObject C)
+variable {C : Type u} [Category.{v} C] [_root_.HomotopicalAlgebra.ModelCategory C]
+  (X Y : _root_.HomotopicalAlgebra.BifibrantObject C)
   (q : SerrePositivity.Reedy.CofibrantResolution (C := C) SerrePositivity.Reedy.simplex X.obj)
-  (b : (modelBifibrantSourceRoofTarget X Y q) _⦋0⦌)
+  (b : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofTarget X Y q) _⦋0⦌)
 
 def modelBifibrantSourceRoofProductCommaNativeSimplex {n : ℕ}
-    (Γ : Fin (n + 1) ⥤ modelBifibrantSourceRoofProductComma X Y q b)
+    (Γ : Fin (n + 1) ⥤ _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductComma X Y q b)
     (t : Fin (n + 1) →o Fin 2) :
-    (kanHammockNerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)) _⦋n + 1⦌
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockNerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)) _⦋n + 1⦌
 ```
 
-### [ModelBifibrantSourceRoofNativeTriangle.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofNativeTriangle.lean)
+### [ModelBifibrantSourceRoofNativeTriangle.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofNativeTriangle.lean)
 
 OE04、78原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSourceRoofNativeTriangle`。
 
@@ -9465,22 +9465,22 @@ OE04、78原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：元の解像・指定点・全錐を保持する。
 使われ方：実 right Kan 次数比較の余終性への接続。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNative_triangle`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNative_triangle`。
 
 ```lean
 universe u v
-variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
-  (X Y : HomotopicalAlgebra.BifibrantObject C)
+variable {C : Type u} [Category.{v} C] [_root_.HomotopicalAlgebra.ModelCategory C]
+  (X Y : _root_.HomotopicalAlgebra.BifibrantObject C)
   (q : SerrePositivity.Reedy.CofibrantResolution (C := C) SerrePositivity.Reedy.simplex X.obj)
 
 lemma modelBifibrantSourceRoofProductCommaNative_triangle
-    (b : (modelBifibrantSourceRoofTarget X Y q) _⦋0⦌) :
-    (modelBifibrantSourceRoofProductCommaEvaluationIso X Y q b).hom ≫
-      modelBifibrantSourceRoofProductCommaNativeIntervalCell X Y q b =
-        modelBifibrantSourceRoofProductCommaRightCell X Y q b
+    (b : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofTarget X Y q) _⦋0⦌) :
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaEvaluationIso X Y q b).hom ≫
+      _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativeIntervalCell X Y q b =
+        _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaRightCell X Y q b
 ```
 
-### [ModelBifibrantSourceRoofPrefixHomotopy.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofPrefixHomotopy.lean)
+### [ModelBifibrantSourceRoofPrefixHomotopy.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofPrefixHomotopy.lean)
 
 OE04、68原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSourceRoofPrefixHomotopy`。
 
@@ -9489,28 +9489,28 @@ OE04、68原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：元の解像・指定点・全錐を保持する。
 使われ方：実 right Kan 次数比較の余終性への接続。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaPrefixHomotopy`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaPrefixHomotopy`。
 
 ```lean
 universe u v
-variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
-  (X Y : HomotopicalAlgebra.BifibrantObject C)
+variable {C : Type u} [Category.{v} C] [_root_.HomotopicalAlgebra.ModelCategory C]
+  (X Y : _root_.HomotopicalAlgebra.BifibrantObject C)
   (q : SerrePositivity.Reedy.CofibrantResolution (C := C) SerrePositivity.Reedy.simplex X.obj)
-  (b : (modelBifibrantSourceRoofTarget X Y q) _⦋0⦌)
-  (s : modelBifibrantSourceRoofProductComma X Y q b)
+  (b : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofTarget X Y q) _⦋0⦌)
+  (s : _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductComma X Y q b)
 
 def modelBifibrantSourceRoofProductCommaPrefixHomotopy : SSet.Homotopy
     (toUnit (nerve (Under s)) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap
       (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C).weakEquivalences
-      ((modelBifibrantSourceRoofProductCommaRightLeg X Y q b).app s))
-    (nerveMap (Under.forget s) ≫ modelBifibrantSourceRoofProductCommaEvaluationRoofMap X Y q b ≫
+      ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaRightLeg X Y q b).app s))
+    (nerveMap (Under.forget s) ≫ _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaEvaluationRoofMap X Y q b ≫
       _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.precomposePointMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap
         (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C).weakEquivalences
-        ((modelBifibrantSourceRoofProductCommaEvaluation X Y q b).app s))
+        ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaEvaluation X Y q b).app s))
         (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C Y))
 ```
 
-### [ModelBifibrantSourceRoofPrefixNaturality.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofPrefixNaturality.lean)
+### [ModelBifibrantSourceRoofPrefixNaturality.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofPrefixNaturality.lean)
 
 OE04、46原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSourceRoofPrefixNaturality`。
 
@@ -9519,27 +9519,27 @@ OE04、46原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：元の解像・指定点・全錐を保持する。
 使われ方：実 right Kan 次数比較の余終性への接続。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaPrefixHomotopy_underMap`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaPrefixHomotopy_underMap`。
 
 ```lean
 universe u v
-variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
-  (X Y : HomotopicalAlgebra.BifibrantObject C)
+variable {C : Type u} [Category.{v} C] [_root_.HomotopicalAlgebra.ModelCategory C]
+  (X Y : _root_.HomotopicalAlgebra.BifibrantObject C)
   (q : SerrePositivity.Reedy.CofibrantResolution (C := C) SerrePositivity.Reedy.simplex X.obj)
-  (b : (modelBifibrantSourceRoofTarget X Y q) _⦋0⦌)
+  (b : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofTarget X Y q) _⦋0⦌)
 
 lemma modelBifibrantSourceRoofProductCommaPrefixHomotopy_underMap
-    {s t : modelBifibrantSourceRoofProductComma X Y q b} (a : s ⟶ t) :
+    {s t : _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductComma X Y q b} (a : s ⟶ t) :
     (nerveMap (Under.map a) ▷ (Δ[1] : SSet.{max u v})) ≫
-      (modelBifibrantSourceRoofProductCommaPrefixHomotopy X Y q b s).h =
-    (modelBifibrantSourceRoofProductCommaPrefixHomotopy X Y q b t).h ≫
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaPrefixHomotopy X Y q b s).h =
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaPrefixHomotopy X Y q b t).h ≫
       _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.precomposePointMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap
         (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C).weakEquivalences
-        ((modelBifibrantSourceRoofProductCommaDiagram X Y q b).map a))
+        ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaDiagram X Y q b).map a))
         (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C Y)
 ```
 
-### [ModelBifibrantSourceRoofPrefixPath.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofPrefixPath.lean)
+### [ModelBifibrantSourceRoofPrefixPath.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofPrefixPath.lean)
 
 OE04、78原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSourceRoofPrefixPath`。
 
@@ -9548,23 +9548,23 @@ OE04、78原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：元の解像・指定点・全錐を保持する。
 使われ方：実 right Kan 次数比較の余終性への接続。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativeFamilyMap`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativeFamilyMap`。
 
 ```lean
 universe u v
-variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
-  (X Y : HomotopicalAlgebra.BifibrantObject C)
+variable {C : Type u} [Category.{v} C] [_root_.HomotopicalAlgebra.ModelCategory C]
+  (X Y : _root_.HomotopicalAlgebra.BifibrantObject C)
   (q : SerrePositivity.Reedy.CofibrantResolution (C := C) SerrePositivity.Reedy.simplex X.obj)
-  (b : (modelBifibrantSourceRoofTarget X Y q) _⦋0⦌)
+  (b : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofTarget X Y q) _⦋0⦌)
 
 def modelBifibrantSourceRoofProductCommaNativeFamilyMap :
-    nerve (modelBifibrantSourceRoofProductComma X Y q b) ⟶
+    nerve (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductComma X Y q b) ⟶
       _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C).weakEquivalences
-        (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C (modelBifibrantSourceRoofDegreeObject X Y q b))
+        (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofDegreeObject X Y q b))
         (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C Y))
 ```
 
-### [ModelBifibrantSourceRoofProductCone.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofProductCone.lean)
+### [ModelBifibrantSourceRoofProductCone.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofProductCone.lean)
 
 OE04、149原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSourceRoofProductCone`。
 
@@ -9573,19 +9573,19 @@ OE04、149原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategory
 規約：元の解像・指定点・全錐を保持する。
 使われ方：実 right Kan 次数比較の余終性への接続。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductComma`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductComma`。
 
 ```lean
 universe u v
-variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
-  (X Y : HomotopicalAlgebra.BifibrantObject C)
+variable {C : Type u} [Category.{v} C] [_root_.HomotopicalAlgebra.ModelCategory C]
+  (X Y : _root_.HomotopicalAlgebra.BifibrantObject C)
   (q : SerrePositivity.Reedy.CofibrantResolution (C := C) SerrePositivity.Reedy.simplex X.obj)
-  (b : (modelBifibrantSourceRoofTarget X Y q) _⦋0⦌)
+  (b : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofTarget X Y q) _⦋0⦌)
 
 abbrev modelBifibrantSourceRoofProductComma
 ```
 
-### [ModelBifibrantSourceRoofProductCornerProjection.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofProductCornerProjection.lean)
+### [ModelBifibrantSourceRoofProductCornerProjection.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofProductCornerProjection.lean)
 
 OE04、136原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSourceRoofProductCornerProjection`。
 
@@ -9594,21 +9594,21 @@ OE04、136原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategory
 規約：元の解像・指定点・全錐を保持する。
 使われ方：実 right Kan 次数比較の余終性への接続。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofDegreeTransportIso_inv_source`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofDegreeTransportIso_inv_source`。
 
 ```lean
 universe u v
-variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
-  (X Y : HomotopicalAlgebra.BifibrantObject C)
+variable {C : Type u} [Category.{v} C] [_root_.HomotopicalAlgebra.ModelCategory C]
+  (X Y : _root_.HomotopicalAlgebra.BifibrantObject C)
   (q : SerrePositivity.Reedy.CofibrantResolution (C := C) SerrePositivity.Reedy.simplex X.obj)
-  (b : (modelBifibrantSourceRoofTarget X Y q) _⦋0⦌)
+  (b : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofTarget X Y q) _⦋0⦌)
 
 lemma modelBifibrantSourceRoofDegreeTransportIso_inv_source :
-    (modelBifibrantSourceRoofDegreeTransportIso X Y q b).inv ≫ pullback.fst _ _ =
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofDegreeTransportIso X Y q b).inv ≫ pullback.fst _ _ =
       pullback.fst _ _
 ```
 
-### [ModelBifibrantSourceRoofProductFunctorCell.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofProductFunctorCell.lean)
+### [ModelBifibrantSourceRoofProductFunctorCell.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofProductFunctorCell.lean)
 
 OE04、121原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSourceRoofProductFunctorCell`。
 
@@ -9617,23 +9617,23 @@ OE04、121原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategory
 規約：元の解像・指定点・全錐を保持する。
 使われ方：実 right Kan 次数比較の余終性への接続。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaEvaluationIso`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaEvaluationIso`。
 
 ```lean
 universe u v
-variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
-  (X Y : HomotopicalAlgebra.BifibrantObject C)
+variable {C : Type u} [Category.{v} C] [_root_.HomotopicalAlgebra.ModelCategory C]
+  (X Y : _root_.HomotopicalAlgebra.BifibrantObject C)
   (q : SerrePositivity.Reedy.CofibrantResolution (C := C) SerrePositivity.Reedy.simplex X.obj)
-  (b : (modelBifibrantSourceRoofTarget X Y q) _⦋0⦌)
+  (b : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofTarget X Y q) _⦋0⦌)
 
 def modelBifibrantSourceRoofProductCommaEvaluationIso : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
-    (nerveMap (modelBifibrantSourceRoofProductCommaDiagram X Y q b) ≫
-      SimplicialLocalization.hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C))
-    (SSet.const (X := nerve (modelBifibrantSourceRoofProductComma X Y q b))
-      (modelBifibrantHammockVertex (modelBifibrantSourceRoofDegreeObject X Y q b)))
+    (nerveMap (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaDiagram X Y q b) ≫
+      _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C))
+    (SSet.const (X := nerve (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductComma X Y q b))
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantHammockVertex (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofDegreeObject X Y q b)))
 ```
 
-### [ModelBifibrantSourceRoofProductGeometricTriangle.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofProductGeometricTriangle.lean)
+### [ModelBifibrantSourceRoofProductGeometricTriangle.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofProductGeometricTriangle.lean)
 
 OE04、98原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSourceRoofProductGeometricTriangle`。
 
@@ -9642,23 +9642,23 @@ OE04、98原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：元の解像・指定点・全錐を保持する。
 使われ方：実 right Kan 次数比較の余終性への接続。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductGeometricLeftHomotopy`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductGeometricLeftHomotopy`。
 
 ```lean
 universe u v
-variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
-  (X Y : HomotopicalAlgebra.BifibrantObject C)
+variable {C : Type u} [Category.{v} C] [_root_.HomotopicalAlgebra.ModelCategory C]
+  (X Y : _root_.HomotopicalAlgebra.BifibrantObject C)
   (q : SerrePositivity.Reedy.CofibrantResolution (C := C) SerrePositivity.Reedy.simplex X.obj)
-  (b : (modelBifibrantSourceRoofTarget X Y q) _⦋0⦌)
+  (b : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofTarget X Y q) _⦋0⦌)
 
 def modelBifibrantSourceRoofProductGeometricLeftHomotopy : SSet.Homotopy
-    (nerveMap (modelBifibrantSourceRoofProductCommaDiagram X Y q b) ≫
-      SimplicialLocalization.hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C))
-    (SSet.const (X := nerve (modelBifibrantSourceRoofProductComma X Y q b))
-      (modelBifibrantHammockVertex (modelBifibrantSourceRoofDegreeObject X Y q b)))
+    (nerveMap (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaDiagram X Y q b) ≫
+      _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C))
+    (SSet.const (X := nerve (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductComma X Y q b))
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantHammockVertex (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofDegreeObject X Y q b)))
 ```
 
-### [ModelBifibrantSourceRoofProductIntervalCriterion.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofProductIntervalCriterion.lean)
+### [ModelBifibrantSourceRoofProductIntervalCriterion.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofProductIntervalCriterion.lean)
 
 OE04、111原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSourceRoofProductIntervalCriterion`。
 
@@ -9667,22 +9667,22 @@ OE04、111原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategory
 規約：元の解像・指定点・全錐を保持する。
 使われ方：実 right Kan 次数比較の余終性への接続。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaHomMap`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaHomMap`。
 
 ```lean
 universe u v
-variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
-  (X Y : HomotopicalAlgebra.BifibrantObject C)
+variable {C : Type u} [Category.{v} C] [_root_.HomotopicalAlgebra.ModelCategory C]
+  (X Y : _root_.HomotopicalAlgebra.BifibrantObject C)
   (q : SerrePositivity.Reedy.CofibrantResolution (C := C) SerrePositivity.Reedy.simplex X.obj)
-  (b : (modelBifibrantSourceRoofTarget X Y q) _⦋0⦌)
+  (b : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofTarget X Y q) _⦋0⦌)
 
 def modelBifibrantSourceRoofProductCommaHomMap :
-  nerve (modelBifibrantSourceRoofProductComma X Y q b) ⟶
-    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.pinchedHom (modelBifibrantHammockVertex (modelBifibrantSourceRoofDegreeObject X Y q b))
-      (modelBifibrantHammockVertex Y)
+  nerve (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductComma X Y q b) ⟶
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.pinchedHom (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantHammockVertex (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofDegreeObject X Y q b))
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantHammockVertex Y)
 ```
 
-### [ModelBifibrantSourceRoofProductReference.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofProductReference.lean)
+### [ModelBifibrantSourceRoofProductReference.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofProductReference.lean)
 
 OE04、133原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSourceRoofProductReference`。
 
@@ -9691,19 +9691,19 @@ OE04、133原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategory
 規約：同じ balanced hammock 内で全比較を行い、包含の逆を選ばない。
 使われ方：実 roof の全 slice の同じ弱基準族。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductFirstNerve_weak`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductFirstNerve_weak`。
 
 ```lean
 universe u v
 variable {C : Type u} [Category.{v} C] [ModelCategory C]
   (X Y : BifibrantObject C) (q : CofibrantResolution (C := C) simplex X.obj)
-  (b : (modelBifibrantSourceRoofTarget X Y q) _⦋0⦌)
+  (b : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofTarget X Y q) _⦋0⦌)
 
 lemma modelBifibrantSourceRoofProductFirstNerve_weak :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (modelBifibrantSourceRoofProductFirstNerve X Y q b)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductFirstNerve X Y q b)
 ```
 
-### [ModelBifibrantSourceRoofRightSlice.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofRightSlice.lean)
+### [ModelBifibrantSourceRoofRightSlice.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofRightSlice.lean)
 
 OE04、105原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSourceRoofRightSlice`。
 
@@ -9712,28 +9712,28 @@ OE04、105原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategory
 規約：元の解像・指定点・全錐を保持する。
 使われ方：実 right Kan 次数比較の余終性への接続。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceFrameRoofMap_normalizedOver`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceFrameRoofMap_normalizedOver`。
 
 ```lean
 universe u v
-variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
-  (X Y : HomotopicalAlgebra.BifibrantObject C)
+variable {C : Type u} [Category.{v} C] [_root_.HomotopicalAlgebra.ModelCategory C]
+  (X Y : _root_.HomotopicalAlgebra.BifibrantObject C)
   (q : SerrePositivity.Reedy.CofibrantResolution (C := C) SerrePositivity.Reedy.simplex X.obj)
-  (b : (modelBifibrantSourceRoofTarget X Y q) _⦋0⦌)
+  (b : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofTarget X Y q) _⦋0⦌)
 
 lemma modelBifibrantSourceFrameRoofMap_normalizedOver :
-    modelBifibrantSourceFrameRoofMap X Y q ≫ pullback.fst _ _ ≫
-      (roofTargetSlicePointIso (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C Y)
-        (SimplicialLocalization.hammockLocalizationNerveMap
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceFrameRoofMap X Y q ≫ pullback.fst _ _ ≫
+      (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofTargetSlicePointIso (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C Y)
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap
           (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C))).hom =
     (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantSourceFrameElementsDKNerveIso X Y q).hom ≫
-      frameRoofRightSliceMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantDKFrame X q)
+      _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.frameRoofRightSliceMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantDKFrame X q)
         (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C Y)
-        (SimplicialLocalization.hammockLocalizationNerveMap
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap
           (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C))
 ```
 
-### [ModelBifibrantSourceRoofSliceCriterion.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofSliceCriterion.lean)
+### [ModelBifibrantSourceRoofSliceCriterion.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofSliceCriterion.lean)
 
 OE04、66原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSourceRoofSliceCriterion`。
 
@@ -9742,21 +9742,21 @@ OE04、66原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：元の解像・指定点・全錐を保持する。
 使われ方：実 right Kan 次数比較の余終性への接続。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCornerMap`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCornerMap`。
 
 ```lean
 universe u v
-variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
-  (X Y : HomotopicalAlgebra.BifibrantObject C)
+variable {C : Type u} [Category.{v} C] [_root_.HomotopicalAlgebra.ModelCategory C]
+  (X Y : _root_.HomotopicalAlgebra.BifibrantObject C)
   (q : SerrePositivity.Reedy.CofibrantResolution (C := C) SerrePositivity.Reedy.simplex X.obj)
-  (b : (modelBifibrantSourceRoofTarget X Y q) _⦋0⦌)
+  (b : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofTarget X Y q) _⦋0⦌)
 
 def modelBifibrantSourceRoofProductCornerMap :
-  nerve (modelBifibrantSourceRoofProductElements X Y q b) ⟶
-    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.sliceOverCorner (SSet.yonedaEquiv.symm b) (modelBifibrantSourceRoofProjection X Y q)
+  nerve (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductElements X Y q b) ⟶
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.sliceOverCorner (SSet.yonedaEquiv.symm b) (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProjection X Y q)
 ```
 
-### [ModelBifibrantSourceRoofSliceFibration.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofSliceFibration.lean)
+### [ModelBifibrantSourceRoofSliceFibration.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofSliceFibration.lean)
 
 OE04、172原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSourceRoofSliceFibration`。
 
@@ -9765,22 +9765,22 @@ OE04、172原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategory
 規約：元の解像・指定点・全錐を保持する。
 使われ方：実 right Kan 次数比較の余終性への接続。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofDegreeTransportIso`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofDegreeTransportIso`。
 
 ```lean
 universe u v
-variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
-  (X Y : HomotopicalAlgebra.BifibrantObject C)
+variable {C : Type u} [Category.{v} C] [_root_.HomotopicalAlgebra.ModelCategory C]
+  (X Y : _root_.HomotopicalAlgebra.BifibrantObject C)
   (q : SerrePositivity.Reedy.CofibrantResolution (C := C) SerrePositivity.Reedy.simplex X.obj)
-  (b : (modelBifibrantSourceRoofTarget X Y q) _⦋0⦌)
+  (b : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofTarget X Y q) _⦋0⦌)
 
 def modelBifibrantSourceRoofDegreeTransportIso :
-    pullback (modelBifibrantSourceFrameRoofMap X Y q ≫ modelBifibrantSourceRoofProjection X Y q)
-      (nerveMap (Over.forget (modelBifibrantSourceRoofDegree X Y q b))) ≅
-        modelBifibrantSourceRoofDegreeModel X Y q b
+    pullback (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceFrameRoofMap X Y q ≫ _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProjection X Y q)
+      (nerveMap (Over.forget (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofDegree X Y q b))) ≅
+        _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofDegreeModel X Y q b
 ```
 
-### [ModelBifibrantSourceRoofSlices.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofSlices.lean)
+### [ModelBifibrantSourceRoofSlices.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofSlices.lean)
 
 OE04、147原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSourceRoofSlices`。
 
@@ -9789,18 +9789,18 @@ OE04、147原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategory
 規約：元の解像・指定点・全錐を保持する。
 使われ方：実 right Kan 次数比較の余終性への接続。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofTarget`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofTarget`。
 
 ```lean
 universe u v
-variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
-  (X Y : HomotopicalAlgebra.BifibrantObject C)
+variable {C : Type u} [Category.{v} C] [_root_.HomotopicalAlgebra.ModelCategory C]
+  (X Y : _root_.HomotopicalAlgebra.BifibrantObject C)
   (q : SerrePositivity.Reedy.CofibrantResolution (C := C) SerrePositivity.Reedy.simplex X.obj)
 
 abbrev modelBifibrantSourceRoofTarget
 ```
 
-### [ModelBifibrantSpecifiedLocalization.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSpecifiedLocalization.lean)
+### [ModelBifibrantSpecifiedLocalization.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSpecifiedLocalization.lean)
 
 OE04、53原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSpecifiedLocalization`。
 
@@ -9809,7 +9809,7 @@ OE04、53原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：指定比較関手と指定二胞体を保持し、厳密な等式へ置き換えない。
 使われ方：全 frame 比較の指定 pinched Hom への輸送と dg 代数への特殊化。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSpecifiedLocalizationComparison`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSpecifiedLocalizationComparison`。
 
 ```lean
 universe u v
@@ -9818,16 +9818,16 @@ variable {C : Type u} [Category.{v} C] [ModelCategory C]
   (r : CofibrantResolutionFamily (C := Cᵒᵖ) simplex)
   {Q : SSet.{max u v}} [Quasicategory Q]
   (G : nerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C).category ⟶ Q)
-  (hG : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization G (weakNerveEdges (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)))
-  (K : kanHammockNerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C) ⟶ Q)
-  (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C) ≫ K) G)
+  (hG : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization G (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)))
+  (K : _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockNerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C) ⟶ Q)
+  (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C) ≫ K) G)
 
 def modelBifibrantSpecifiedLocalizationComparison :
-    FrameHom.CoherentLocalizationComparison
-      (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)) G
+    _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CoherentLocalizationComparison
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)) G
 ```
 
-### [ModelCofibrantRightKanShape.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelCofibrantRightKanShape.lean)
+### [ModelCofibrantRightKanShape.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelCofibrantRightKanShape.lean)
 
 OE04、99原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelCofibrantRightKanShape`。
 
@@ -9836,7 +9836,7 @@ OE04、99原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：同じ局所化頂点と全次数の射影を保持し、余終性は後続で証明する。
 使われ方：代数版の三つの局所化判定入力の一般化。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.modelFrameIndex_weaklyContractible`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelFrameIndex_weaklyContractible`。
 
 ```lean
 universe u v w
@@ -9845,7 +9845,7 @@ lemma modelFrameIndex_weaklyContractible :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeaklyContractible (nerve (AsSmall.{w} SimplexCategory))
 ```
 
-### [ModelHammockLocalization.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelHammockLocalization.lean)
+### [ModelHammockLocalization.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelHammockLocalization.lean)
 
 OE04、116原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelHammockLocalization`。
 
@@ -9854,18 +9854,18 @@ OE04、116原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategory
 規約：第一の関手的分解と指定 right frame のみを使い、元の源写像を保持する。
 使われ方：全 C または cofibrant 部分圏の指定局所化への比較。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.relativeNerve_mapsWeak`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.relativeNerve_mapsWeak`。
 
 ```lean
 universe u v w
 
 lemma relativeNerve_mapsWeak {A B : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{w}}
     (F : LocalizerMorphism A.weakEquivalences B.weakEquivalences)
-    (s : (nerve A.category) _⦋1⦌) (hs : s ∈ weakNerveEdges A) :
-    (nerveMap F.functor).app (Opposite.op ⦋1⦌) s ∈ weakNerveEdges B
+    (s : (nerve A.category) _⦋1⦌) (hs : s ∈ _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges A) :
+    (nerveMap F.functor).app (Opposite.op ⦋1⦌) s ∈ _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges B
 ```
 
-### [ModelHammockNerveEquivalence.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelHammockNerveEquivalence.lean)
+### [ModelHammockNerveEquivalence.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelHammockNerveEquivalence.lean)
 
 OE04、66原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelHammockNerveEquivalence`。
 
@@ -9874,7 +9874,7 @@ OE04、66原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：全圏との比較には第一の関手的分解を明示する。
 使われ方：bifibrant 中継から指定された全圏の局所化へ戻る比較。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.modelCofibrantToBifibrant_nerve_isQCatEquivalence`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelCofibrantToBifibrant_nerve_isQCatEquivalence`。
 
 ```lean
 universe u v
@@ -9882,10 +9882,10 @@ variable {C : Type u} [Category.{v} C] [ModelCategory C]
   (r : CofibrantResolutionFamily (C := Cᵒᵖ) simplex)
 
 lemma modelCofibrantToBifibrant_nerve_isQCatEquivalence :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (relativeKanHammockNerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantToBifibrantRelative r))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.relativeKanHammockNerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantToBifibrantRelative r))
 ```
 
-### [ModelRightFrameComparison.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelRightFrameComparison.lean)
+### [ModelRightFrameComparison.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelRightFrameComparison.lean)
 
 OE04、132原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelRightFrameComparison`。
 
@@ -9894,7 +9894,7 @@ OE04、132原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategory
 規約：第一の関手的分解と指定 right frame だけを追加し、全標的と元の単位を保持する。
 使われ方：Sp の実 dg 代数モデルへの追加仮定のない特殊化。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.modelRightFrameLocalizationComparison`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelRightFrameLocalizationComparison`。
 
 ```lean
 universe u v
@@ -9903,14 +9903,14 @@ variable {C : Type u} [Category.{v} C] [ModelCategory C]
   (r : CofibrantResolutionFamily (C := Cᵒᵖ) simplex)
   {Q : SSet.{max u v}} [Quasicategory Q]
   (G : nerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C).category ⟶ Q)
-  (hG : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization G (weakNerveEdges (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)))
+  (hG : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization G (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)))
 
 def modelRightFrameLocalizationComparison :
-    FrameHom.CoherentLocalizationComparison
-      (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)) G
+    _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CoherentLocalizationComparison
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)) G
 ```
 
-### [ModelRightFrameSpecifiedInput.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ModelRightFrameSpecifiedInput.lean)
+### [ModelRightFrameSpecifiedInput.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelRightFrameSpecifiedInput.lean)
 
 OE04、55原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelRightFrameSpecifiedInput`。
 
@@ -9919,7 +9919,7 @@ OE04、55原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：全圏の hammock 普遍性は Ind-S (6) の源移送を待つ明示入力である。
 使われ方：その公開定理を代入した条件なしの主入口の構成。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.modelRightFrameHammockCoherentComparison`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelRightFrameHammockCoherentComparison`。
 
 ```lean
 universe u v
@@ -9928,22 +9928,22 @@ variable {C : Type u} [Category.{v} C] [ModelCategory C]
   (r : CofibrantResolutionFamily (C := Cᵒᵖ) simplex)
   {Q : SSet.{max u v}} [Quasicategory Q]
   (G : nerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C).category ⟶ Q)
-  (hG : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization G (weakNerveEdges (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)))
-  (hH : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C))
-    (weakNerveEdges (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)))
-  (K : kanHammockNerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C) ⟶ Q)
-  (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C) ≫ K) G)
+  (hG : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization G (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)))
+  (hH : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C))
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)))
+  (K : _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockNerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C) ⟶ Q)
+  (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C) ≫ K) G)
   (X : C) [IsCofibrant X]
 
 def modelRightFrameHammockCoherentComparison :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
-      (FrameHom.rightFrameHammockCoherentDiagram
-        ((modelSourceFrameFamily (C := C)).atObject X) r 0)
-      (FrameHom.rightFrameHammockCoherentDiagram
-        ((modelSourceFrameFamily (C := C)).atObject X) r 6)
+      (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockCoherentDiagram
+        ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelSourceFrameFamily (C := C)).atObject X) r 0)
+      (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockCoherentDiagram
+        ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelSourceFrameFamily (C := C)).atObject X) r 6)
 ```
 
-### [Nerve.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/Nerve.lean)
+### [Nerve.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/Nerve.lean)
 
 OE04、50原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.Nerve`。
 
@@ -9954,7 +9954,7 @@ OE04、50原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：Mathlib の SimplicialNerve を使い、局所 Kan 性は構成から供給する。
 使われ方：CAlg_R の具体的な quasicategory とその頂点。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.localizationNerve`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerve`。
 
 ```lean
 universe u
@@ -9962,7 +9962,7 @@ universe u
 def localizationNerve (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) : SSet.{u}
 ```
 
-### [NerveFunctor.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/NerveFunctor.lean)
+### [NerveFunctor.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/NerveFunctor.lean)
 
 OE04、59原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.NerveFunctor`。
 
@@ -9973,16 +9973,16 @@ OE04、59原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：対象・Hom・単位・合成を元の構成のまま保持する。
 使われ方：忘却や離散対象の ∞ 関手の合成の整合性。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.localizationNerveMap_id`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap_id`。
 
 ```lean
 universe u
 
 lemma localizationNerveMap_id (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) :
-    localizationNerveMap (𝟙 C) = 𝟙 (localizationNerve C)
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap (𝟙 C) = 𝟙 (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerve C)
 ```
 
-### [NerveMap.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/NerveMap.lean)
+### [NerveMap.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/NerveMap.lean)
 
 OE04、51原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.NerveMap`。
 
@@ -9993,16 +9993,16 @@ OE04、51原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：頂点での作用は元の相対関手の対象写像そのもの。
 使われ方：E 代数の忘却関手や離散対象関手の ∞ 関手化。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.localizationNerveMap`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap`。
 
 ```lean
 universe u
 
 def localizationNerveMap {C D : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}} (F : C ⟶ D) :
-    localizationNerve C ⟶ localizationNerve D
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerve C ⟶ _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerve D
 ```
 
-### [NerveWeakVertexIso.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/NerveWeakVertexIso.lean)
+### [NerveWeakVertexIso.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/NerveWeakVertexIso.lean)
 
 OE04、44原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.NerveWeakVertexIso`。
 
@@ -10013,7 +10013,7 @@ OE04、44原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：元の局所化写像と頂点同値を変更しない。
 使われ方：具体的 CAlg_R の任意頂点の実代数表示。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.localizationNerveVertexIsoOfWeak`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveVertexIsoOfWeak`。
 
 ```lean
 universe u
@@ -10021,10 +10021,10 @@ variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.
 
 def localizationNerveVertexIsoOfWeak {X Y : C.category} (f : X ⟶ Y)
     (hf : C.weakEquivalences f) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (localizationNerveVertexEquiv C X) (localizationNerveVertexEquiv C Y)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveVertexEquiv C X) (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveVertexEquiv C Y)
 ```
 
-### [RelativeHammockEnriched.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/RelativeHammockEnriched.lean)
+### [RelativeHammockEnriched.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/RelativeHammockEnriched.lean)
 
 OE04、84原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RelativeHammockEnriched`。
 
@@ -10033,17 +10033,17 @@ OE04、84原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：点ごとの逆の選択を使わず、元の相対関手と全 Hom 射を保持する。
 使われ方：bifibrant 中継から同じ cofibrant 局所化へ戻す全図式比較。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.relativeHammockEnriched`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.relativeHammockEnriched`。
 
 ```lean
 universe u
 variable {C D : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}}
   (F : LocalizerMorphism C.weakEquivalences D.weakEquivalences)
 
-def relativeHammockEnriched : EnrichedFunctor SSet.{u} (HammockObjects C) (HammockObjects D)
+def relativeHammockEnriched : EnrichedFunctor SSet.{u} (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.HammockObjects C) (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.HammockObjects D)
 ```
 
-### [RelativeHammockNerveEquivalence.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/RelativeHammockNerveEquivalence.lean)
+### [RelativeHammockNerveEquivalence.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/RelativeHammockNerveEquivalence.lean)
 
 OE04、96原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RelativeHammockNerveEquivalence`。
 
@@ -10052,7 +10052,7 @@ OE04、96原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：元の全関手と指定単位を保持する。
 使われ方：bifibrant 部分圏から同じ cofibrant 局所化への復帰。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.relativeKanHammockNerve_essentiallySurjective`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.relativeKanHammockNerve_essentiallySurjective`。
 
 ```lean
 universe u
@@ -10063,10 +10063,10 @@ variable {C D : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctor
   (hη : ∀ Y, D.weakEquivalences (η.app Y))
 
 lemma relativeKanHammockNerve_essentiallySurjective :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsEssentiallySurjective (relativeKanHammockNerve F)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsEssentiallySurjective (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.relativeKanHammockNerve F)
 ```
 
-### [RelativeHammockSourceComparison.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/RelativeHammockSourceComparison.lean)
+### [RelativeHammockSourceComparison.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/RelativeHammockSourceComparison.lean)
 
 OE04、75原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RelativeHammockSourceComparison`。
 
@@ -10075,7 +10075,7 @@ OE04、75原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：全関手の等式と同じ零単体・辺を保持する。
 使われ方：指定局所化三角形の二胞体への接続。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.relativeHammockEnriched_arrowMap`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.relativeHammockEnriched_arrowMap`。
 
 ```lean
 universe u
@@ -10087,7 +10087,7 @@ lemma relativeHammockEnriched_arrowMap {X Y : C.category} (f : X ⟶ Y) :
       _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap D.weakEquivalences (F.functor.map f)
 ```
 
-### [ResolutionFaces.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ResolutionFaces.lean)
+### [ResolutionFaces.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ResolutionFaces.lean)
 
 OE04、86原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ResolutionFaces`。
 
@@ -10098,19 +10098,19 @@ OE04、86原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：一次の外側合成と内側合成を区別して保持する。
 使われ方：元の射の連結成分の恒等・合成則。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.localizationResolutionHom_delta_zero`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationResolutionHom_delta_zero`。
 
 ```lean
 universe u
 variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u})
 
 lemma localizationResolutionHom_delta_zero {X Y : C.category}
-    (f : freeResolutionGeneratorObject C 2 X ⟶ freeResolutionGeneratorObject C 2 Y) :
-    (localizationHom C X Y).δ 0 (localizationResolutionHom C 1 f) =
-      localizationResolutionHom C 0 ((pathComposition (Paths C.category)).map f)
+    (f : _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorObject C 2 X ⟶ _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorObject C 2 Y) :
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHom C X Y).δ 0 (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationResolutionHom C 1 f) =
+      _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationResolutionHom C 0 ((pathComposition (Paths C.category)).map f)
 ```
 
-### [ResolutionGenerators.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ResolutionGenerators.lean)
+### [ResolutionGenerators.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ResolutionGenerators.lean)
 
 OE04、94原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ResolutionGenerators`。
 
@@ -10121,18 +10121,18 @@ OE04、94原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：零次の生成写像自体には合成保存を仮定しない。
 使われ方：連結成分の圏と普通の局所化との比較の逆写像。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.localizedFreeResolutionObject_zero`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizedFreeResolutionObject_zero`。
 
 ```lean
 universe u
 variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u})
 
 lemma localizedFreeResolutionObject_zero (X : C.category) :
-    localizedFreeResolutionObject C (op ⦋0⦌) X =
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizedFreeResolutionObject C (op ⦋0⦌) X =
       C.weakEquivalences.paths.Q.obj ((Paths.of C.category).obj X)
 ```
 
-### [ResolutionObjects.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ResolutionObjects.lean)
+### [ResolutionObjects.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ResolutionObjects.lean)
 
 OE04、121原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ResolutionObjects`。
 
@@ -10143,7 +10143,7 @@ OE04、121原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategory
 規約：対象の表示の単体作用素との両立を証明して保持する。
 使われ方：固定対象の Hom を単体集合へ束ねる。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.freeRelativeCounit_obj_bijective`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeRelativeCounit_obj_bijective`。
 
 ```lean
 universe u
@@ -10152,7 +10152,7 @@ lemma freeRelativeCounit_obj_bijective (C : _root_.SerrePositivity.InfinityCateg
     Function.Bijective (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.freeRelativeCounit.app C).functor.obj
 ```
 
-### [ResolutionRepresentatives.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ResolutionRepresentatives.lean)
+### [ResolutionRepresentatives.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ResolutionRepresentatives.lean)
 
 OE04、111原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ResolutionRepresentatives`。
 
@@ -10163,7 +10163,7 @@ OE04、111原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategory
 規約：元の自由解像・局所化・固定対象表示を保持する。
 使われ方：一次の辺の二面による生成射の恒等・合成則。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionGeneratorObject`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorObject`。
 
 ```lean
 universe u
@@ -10178,11 +10178,11 @@ def freeResolutionGeneratorObject : (n : ℕ) → C.category → (power _root_.S
 規約：元の comonad の同じ augmentation。
 使われ方：局所化した標準対象と固定表示の同定。 -/
 lemma freeResolutionGeneratorObject_augmentation (n : ℕ) (X : C.category) :
-    (augmentation _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.freeRelativeComonad C n).functor.obj (freeResolutionGeneratorObject C n X) =
+    (augmentation _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.freeRelativeComonad C n).functor.obj (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorObject C n X) =
       X
 ```
 
-### [ResolutionWordEdge.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ResolutionWordEdge.lean)
+### [ResolutionWordEdge.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ResolutionWordEdge.lean)
 
 OE04、94原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ResolutionWordEdge`。
 
@@ -10193,7 +10193,7 @@ OE04、94原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：元の列・元の合成・元の局所化を保持する。
 使われ方：元の射の類の恒等・合成保存と普通の局所化の逆関手。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.localizationResolutionWordEdge`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationResolutionWordEdge`。
 
 ```lean
 universe u
@@ -10201,17 +10201,17 @@ variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.
 
 def localizationResolutionWordEdge {X Y : C.category}
     (p : (Paths.of C.category).obj X ⟶ (Paths.of C.category).obj Y) :
-    (localizationHom C X Y).Edge (localizationArrowZero C (composePath p))
-      (localizationResolutionHom C 0 p)
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHom C X Y).Edge (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationArrowZero C (composePath p))
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationResolutionHom C 0 p)
 ```
 
-### [RoofPrefixColumnRoof.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/RoofPrefixColumnRoof.lean)
+### [RoofPrefixColumnRoof.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/RoofPrefixColumnRoof.lean)
 
 OE04、118原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefixColumnRoof`。
 
 module docstringなし。実際の型とimportを参照。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.inv_arrow_eq`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.inv_arrow_eq`。
 
 ```lean
 universe u
@@ -10225,13 +10225,13 @@ lemma inv_arrow_eq {D : Type*} [Category* D] {a b a' b' : D}
     (h : Arrow.mk f = Arrow.mk g) : Arrow.mk (inv f) = Arrow.mk (inv g)
 ```
 
-### [RoofPrefixFamilyTriangle.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/RoofPrefixFamilyTriangle.lean)
+### [RoofPrefixFamilyTriangle.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/RoofPrefixFamilyTriangle.lean)
 
 OE04、170原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefixFamilyTriangle`。
 
 module docstringなし。実際の型とimportを参照。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.coherentPinchedFamily`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.coherentPinchedFamily`。
 
 ```lean
 universe u
@@ -10241,11 +10241,11 @@ variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.
   (hU : ∀ {i j} (a : i ⟶ j), C.weakEquivalences (U.map a))
 
 def coherentPinchedFamily : nerve I ⟶
-    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.pinchedHom (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex ((kanHammockSourceFunctor C).obj X))
-      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex ((kanHammockSourceFunctor C).obj Y))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.pinchedHom (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockSourceFunctor C).obj X))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockSourceFunctor C).obj Y))
 ```
 
-### [RoofPrefixPath.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/RoofPrefixPath.lean)
+### [RoofPrefixPath.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/RoofPrefixPath.lean)
 
 OE04、89原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefixPath`。
 
@@ -10256,7 +10256,7 @@ OE04、89原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：元の相対圏・同じ Hom・同じ源関手の通常射を保持する。
 使われ方：native roof prism の最後の頂点への豊穣 Hom の作用。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.familyMap`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.familyMap`。
 
 ```lean
 universe u
@@ -10268,7 +10268,7 @@ variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.
 def familyMap : nerve I ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph C.weakEquivalences X Y)
 ```
 
-### [RoofPrefixPathComposition.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/RoofPrefixPathComposition.lean)
+### [RoofPrefixPathComposition.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/RoofPrefixPathComposition.lean)
 
 OE04、69原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefixPathComposition`。
 
@@ -10279,7 +10279,7 @@ OE04、69原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：全 path・時間・通常射・元の Kan Hom を保持する。
 使われ方：native roof prism の 00 と 01 合成条件。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.pathMap_comp_enriched`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.pathMap_comp_enriched`。
 
 ```lean
 universe u
@@ -10291,16 +10291,16 @@ variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.
 lemma pathMap_comp_enriched {n : ℕ} (Γ : Fin (n + 1) ⥤ I) (t : Fin (n + 1) →o Fin 2)
     (i j : Fin (n + 1)) (hij : i ≤ j) :
     eComp SSet (⟨ULift.up i.castSucc⟩ : SimplicialThickening (ULift.{u} (Fin (n + 2))))
-      ⟨ULift.up j.castSucc⟩ ⟨ULift.up (Fin.last (n + 1))⟩ ≫ pathMap C U p hp σ hU Γ t i =
+      ⟨ULift.up j.castSucc⟩ ⟨ULift.up (Fin.last (n + 1))⟩ ≫ _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.pathMap C U p hp σ hU Γ t i =
     lift (toUnit _ ≫ ForgetEnrichment.homTo SSet.{u}
-      ((kanHammockSourceFunctor C).map (U.map (Γ.map (homOfLE hij)))))
-      (snd _ _ ≫ pathMap C U p hp σ hU Γ t j) ≫
-        eComp SSet ((kanHammockSourceFunctor C).obj (U.obj (Γ.obj i)))
-          ((kanHammockSourceFunctor C).obj (U.obj (Γ.obj j)))
-          ((kanHammockSourceFunctor C).obj Y)
+      ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockSourceFunctor C).map (U.map (Γ.map (homOfLE hij)))))
+      (snd _ _ ≫ _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.pathMap C U p hp σ hU Γ t j) ≫
+        eComp SSet ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockSourceFunctor C).obj (U.obj (Γ.obj i)))
+          ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockSourceFunctor C).obj (U.obj (Γ.obj j)))
+          ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockSourceFunctor C).obj Y)
 ```
 
-### [RoofPrefixPrismCompatibility.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/RoofPrefixPrismCompatibility.lean)
+### [RoofPrefixPrismCompatibility.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/RoofPrefixPrismCompatibility.lean)
 
 OE04、98原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefixPrismCompatibility`。
 
@@ -10311,7 +10311,7 @@ OE04、98原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：元の全時間・全 path・全 Kan Hom を保持する。
 使われ方：native roof の混合 coherent 図式の EnrichedFunctor 条件。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.lastHom_comp`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.lastHom_comp`。
 
 ```lean
 universe u
@@ -10323,14 +10323,14 @@ variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.
 lemma lastHom_comp {n : ℕ} (Γ : Fin (n + 1) ⥤ I) (t : Fin (n + 1) →o Fin 2)
     (i j : Fin (n + 1)) (hij : i ≤ j) :
     eComp SSet (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CoherentRightConeHom.vertex.{u} i.castSucc) (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CoherentRightConeHom.vertex j.castSucc) (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CoherentRightConeHom.vertex (Fin.last (n + 1))) ≫
-      lastHom C U p hp σ hU Γ t i =
-    lift (toUnit _ ≫ eHomEquiv SSet ((frontDiagram C U p Γ t).map (homOfLE hij)))
-      (snd _ _ ≫ lastHom C U p hp σ hU Γ t j) ≫
-        eComp SSet ((frontDiagram C U p Γ t).obj i) ((frontDiagram C U p Γ t).obj j)
-          ((kanHammockSourceFunctor C).obj Y)
+      _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.lastHom C U p hp σ hU Γ t i =
+    lift (toUnit _ ≫ eHomEquiv SSet ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.frontDiagram C U p Γ t).map (homOfLE hij)))
+      (snd _ _ ≫ _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.lastHom C U p hp σ hU Γ t j) ≫
+        eComp SSet ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.frontDiagram C U p Γ t).obj i) ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.frontDiagram C U p Γ t).obj j)
+          ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockSourceFunctor C).obj Y)
 ```
 
-### [RoofPrefixPrismFront.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/RoofPrefixPrismFront.lean)
+### [RoofPrefixPrismFront.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/RoofPrefixPrismFront.lean)
 
 OE04、98原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefixPrismFront`。
 
@@ -10341,7 +10341,7 @@ OE04、98原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：00 は元の図式の射、01 は元の評価、11 は同じ対象の恒等射。
 使われ方：mixed coherent 図式の非終点間の全 Hom。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.frontRaw`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.frontRaw`。
 
 ```lean
 universe u
@@ -10352,7 +10352,7 @@ def frontRaw {n : ℕ} (Γ : Fin (n + 1) ⥤ I) (t : Fin (n + 1) →o Fin 2) :
     Fin (n + 1) ⥤ C.category
 ```
 
-### [RoofPrefixPrismLast.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/RoofPrefixPrismLast.lean)
+### [RoofPrefixPrismLast.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/RoofPrefixPrismLast.lean)
 
 OE04、61原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefixPrismLast`。
 
@@ -10363,7 +10363,7 @@ OE04、61原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：元の全 path・時間・Kan Hom を保持する。
 使われ方：native roof 全三角形の mixed coherent 図式。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.lastHom`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.lastHom`。
 
 ```lean
 universe u
@@ -10375,11 +10375,11 @@ variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.
 def lastHom {n : ℕ} (Γ : Fin (n + 1) ⥤ I) (t : Fin (n + 1) →o Fin 2)
     (i : Fin (n + 1)) :
     SimplicialCategory.sHom (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CoherentRightConeHom.vertex.{u} i.castSucc) (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CoherentRightConeHom.vertex (Fin.last (n + 1))) ⟶
-      SimplicialCategory.sHom ((frontDiagram C U p Γ t).obj i)
-        ((kanHammockSourceFunctor C).obj Y)
+      SimplicialCategory.sHom ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.frontDiagram C U p Γ t).obj i)
+        ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockSourceFunctor C).obj Y)
 ```
 
-### [RoofPrefixPrismNaturality.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/RoofPrefixPrismNaturality.lean)
+### [RoofPrefixPrismNaturality.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/RoofPrefixPrismNaturality.lean)
 
 OE04、67原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefixPrismNaturality`。
 
@@ -10390,7 +10390,7 @@ OE04、67原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：任意の単体圏の射・全 path・元の図式と時間を保持する。
 使われ方：native roof 全三角形の実 slice prism。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.simplex_naturality`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.simplex_naturality`。
 
 ```lean
 universe u
@@ -10401,11 +10401,11 @@ variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.
 
 lemma simplex_naturality {m n : ℕ} (Γ : Fin (n + 1) ⥤ I)
     (t : Fin (n + 1) →o Fin 2) (α : ⦋m⦌ ⟶ ⦋n⦌) :
-    (kanHammockNerve C).map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.extend α).op (simplex C U p hp σ hU Γ t) =
-      simplex C U p hp σ hU (α.toOrderHom.monotone.functor ⋙ Γ) (t.comp α.toOrderHom)
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockNerve C).map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.extend α).op (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.simplex C U p hp σ hU Γ t) =
+      _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.simplex C U p hp σ hU (α.toOrderHom.monotone.functor ⋙ Γ) (t.comp α.toOrderHom)
 ```
 
-### [RoofPrefixPrismOne.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/RoofPrefixPrismOne.lean)
+### [RoofPrefixPrismOne.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/RoofPrefixPrismOne.lean)
 
 OE04、47原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefixPrismOne`。
 
@@ -10416,7 +10416,7 @@ OE04、47原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：元の全 path・元の Kan Hom・同じ familyMap を保持する。
 使われ方：native roof prism の一端の全 pinched 族への同定。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.simplex_one`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.simplex_one`。
 
 ```lean
 universe u
@@ -10426,11 +10426,11 @@ variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.
   (hU : ∀ {i j} (a : i ⟶ j), C.weakEquivalences (U.map a))
 
 lemma simplex_one {n : ℕ} (Γ : Fin (n + 1) ⥤ I) :
-    simplex C U p hp σ hU Γ (OrderHom.const _ 1) =
-      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentHomComparisonSimplex ((familyMap C U p hp σ hU).app (Opposite.op ⦋n⦌) Γ)
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.simplex C U p hp σ hU Γ (OrderHom.const _ 1) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentHomComparisonSimplex ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.familyMap C U p hp σ hU).app (Opposite.op ⦋n⦌) Γ)
 ```
 
-### [RoofPrefixPrismProjection.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/RoofPrefixPrismProjection.lean)
+### [RoofPrefixPrismProjection.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/RoofPrefixPrismProjection.lean)
 
 OE04、58原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefixPrismProjection`。
 
@@ -10441,7 +10441,7 @@ OE04、58原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：元の時間・図式・Kan 源関手・局所化射を保持する。
 使われ方：native roof 全三角形の元の左脚。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.simplex_front`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.simplex_front`。
 
 ```lean
 universe u
@@ -10451,12 +10451,12 @@ variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.
   (hU : ∀ {i j} (a : i ⟶ j), C.weakEquivalences (U.map a))
 
 lemma simplex_front {n : ℕ} (Γ : Fin (n + 1) ⥤ I) (t : Fin (n + 1) →o Fin 2) :
-    (kanHammockNerve C).map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.front n).op (simplex C U p hp σ hU Γ t) =
-      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.nerveToCoherent (KanHammockCategory C)).app (Opposite.op ⦋n⦌)
-        (frontDiagram C U p Γ t)
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockNerve C).map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.front n).op (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.simplex C U p hp σ hU Γ t) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.nerveToCoherent (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanHammockCategory C)).app (Opposite.op ⦋n⦌)
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.frontDiagram C U p Γ t)
 ```
 
-### [RoofPrefixPrismReindex.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/RoofPrefixPrismReindex.lean)
+### [RoofPrefixPrismReindex.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/RoofPrefixPrismReindex.lean)
 
 OE04、69原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefixPrismReindex`。
 
@@ -10467,7 +10467,7 @@ OE04、69原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：元の図式・時間・全 path・同じ Kan Hom を保持する。
 使われ方：mixed coherent 単体を全 slice prism に束ねる。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.frontDiagram_reindex`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.frontDiagram_reindex`。
 
 ```lean
 universe u
@@ -10478,11 +10478,11 @@ variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.
 
 lemma frontDiagram_reindex {m n : ℕ} (Γ : Fin (n + 1) ⥤ I)
     (t : Fin (n + 1) →o Fin 2) (α : ⦋m⦌ ⟶ ⦋n⦌) :
-    frontDiagram C U p (α.toOrderHom.monotone.functor ⋙ Γ) (t.comp α.toOrderHom) =
-      α.toOrderHom.monotone.functor ⋙ frontDiagram C U p Γ t
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.frontDiagram C U p (α.toOrderHom.monotone.functor ⋙ Γ) (t.comp α.toOrderHom) =
+      α.toOrderHom.monotone.functor ⋙ _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.frontDiagram C U p Γ t
 ```
 
-### [RoofPrefixPrismSimplex.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/RoofPrefixPrismSimplex.lean)
+### [RoofPrefixPrismSimplex.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/RoofPrefixPrismSimplex.lean)
 
 OE04、56原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefixPrismSimplex`。
 
@@ -10493,7 +10493,7 @@ OE04、56原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：任意の時間単体・元の全 path・元の Kan Hom を保持する。
 使われ方：native roof 全三角形の slice prism の各単体。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.mixedDiagram`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.mixedDiagram`。
 
 ```lean
 universe u
@@ -10504,10 +10504,10 @@ variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.
 
 def mixedDiagram {n : ℕ} (Γ : Fin (n + 1) ⥤ I) (t : Fin (n + 1) →o Fin 2) :
     EnrichedFunctor SSet.{u} (SimplicialThickening (ULift.{u} (Fin (n + 2))))
-      (KanHammockCategory C)
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanHammockCategory C)
 ```
 
-### [RoofPrefixPrismZero.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/RoofPrefixPrismZero.lean)
+### [RoofPrefixPrismZero.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/RoofPrefixPrismZero.lean)
 
 OE04、70原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefixPrismZero`。
 
@@ -10518,7 +10518,7 @@ OE04、70原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：同じ元の右脚を持つ余錐を保持する。
 使われ方：native roof prism の零端条件 hb。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.rightCocone`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.rightCocone`。
 
 ```lean
 universe u
@@ -10527,10 +10527,10 @@ variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.
   (hp : ∀ i, C.weakEquivalences (p.app i)) (σ : U ⟶ (Functor.const I).obj Y)
   (hU : ∀ {i j} (a : i ⟶ j), C.weakEquivalences (U.map a))
 
-def rightCocone : Cocone (U ⋙ kanHammockSourceFunctor C)
+def rightCocone : Cocone (U ⋙ _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockSourceFunctor C)
 ```
 
-### [RoofPrefixPrismZeroSlice.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/RoofPrefixPrismZeroSlice.lean)
+### [RoofPrefixPrismZeroSlice.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/RoofPrefixPrismZeroSlice.lean)
 
 OE04、90原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefixPrismZeroSlice`。
 
@@ -10541,7 +10541,7 @@ OE04、90原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：元の通常右脚の全円柱を保持する。
 使われ方：native roof 全三角形の零端条件 hb。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.simplex_zero_join`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.simplex_zero_join`。
 
 ```lean
 universe u
@@ -10552,13 +10552,13 @@ variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.
 
 lemma simplex_zero_join {n : ℕ} (Γ : Fin (n + 1) ⥤ I) :
     (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso n 0).hom ≫ SSet.yonedaEquiv.symm
-      (simplex C U p hp σ hU Γ (OrderHom.const _ 0)) =
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.simplex C U p hp σ hU Γ (OrderHom.const _ 0)) =
     _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (SSet.yonedaEquiv.symm (show (nerve I) _⦋n⦌ from Γ)) (𝟙 (Δ[0] : SSet.{u})) ≫
-      (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.nerveCoconeEquiv (rightCocone C U σ)).val ≫
-        _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.nerveToCoherent (KanHammockCategory C)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.nerveCoconeEquiv (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.rightCocone C U σ)).val ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.nerveToCoherent (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanHammockCategory C)
 ```
 
-### [SourceHom.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/SourceHom.lean)
+### [SourceHom.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/SourceHom.lean)
 
 OE04、201原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.SourceHom`。
 
@@ -10578,17 +10578,17 @@ Dwyer–Kan の比較で生成射を共通の自由 hammock の射に持ち上�
 ## 使われ方
 HA §3.2.2 の Barratt–Eccles 忘却関手の保存性。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.kanLocalizationStrictHom`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanLocalizationStrictHom`。
 
 ```lean
 universe u
 variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u})
 
 def kanLocalizationStrictHom {X Y : C.category} (f : X ⟶ Y) :
-    (show KanLocalizationCategory C from X) ⟶ (show KanLocalizationCategory C from Y)
+    (show _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanLocalizationCategory C from X) ⟶ (show _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanLocalizationCategory C from Y)
 ```
 
-### [WeakNerveInverts.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/WeakNerveInverts.lean)
+### [WeakNerveInverts.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/WeakNerveInverts.lean)
 
 OE04、44原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.WeakNerveInverts`。
 
@@ -10599,7 +10599,7 @@ OE04、44原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：元の相対圏と全辺を変更しない。
 使われ方：具体的な大きい忘却源への計算上限内の代入。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.weakNerveEdges_inverts_of_arrows`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges_inverts_of_arrows`。
 
 ```lean
 universe u
@@ -10608,10 +10608,10 @@ lemma weakNerveEdges_inverts_of_arrows (C : _root_.SerrePositivity.InfinityCateg
     (F : nerve C.category ⟶ E)
     (h : ∀ {X Y : C.category} (f : X ⟶ Y), C.weakEquivalences f →
       _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge ((nerve.edgeMk f).map F).toTruncated) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InvertsEdges F (weakNerveEdges C)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InvertsEdges F (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges C)
 ```
 
-### [ZeroLevelComponents.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/SimplicialLocalization/ZeroLevelComponents.lean)
+### [ZeroLevelComponents.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ZeroLevelComponents.lean)
 
 OE04、94原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ZeroLevelComponents`。
 
@@ -10622,7 +10622,7 @@ OE04、94原行。配置：`SerrePositivity.InfinityCategories.HA.ModelCategoryC
 規約：形式逆も含む零次の全ての射を扱う。
 使われ方：弱同値の反転と普通の局所化との比較の逆関手。
 
-主宣言（基準の完全名）：`SerrePositivity.EInfinity.SimplicialLocalization.localizationZeroHom`。
+主宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationZeroHom`。
 
 ```lean
 universe u
@@ -10631,5 +10631,5 @@ variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.
 def localizationZeroHom {X Y : C.category}
     (f : C.weakEquivalences.paths.Q.obj ((Paths.of C.category).obj X) ⟶
       C.weakEquivalences.paths.Q.obj ((Paths.of C.category).obj Y)) :
-    (localizationHom C X Y) _⦋0⦌
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHom C X Y) _⦋0⦌
 ```
