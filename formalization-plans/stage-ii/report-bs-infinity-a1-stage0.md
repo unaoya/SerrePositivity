@@ -2648,3 +2648,31 @@ ordinaryHomTwistedComparison C : nerve (OrdinaryHomElements C) ⟶ TwistedArrow 
 一般の nerve–join 比較の全単体の逆を先に作らずに済む見込み。
 検証済み全体167本10,941行・951宣言。外枠18,600行を維持する。
 一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
+
+
+### S8 続報：両端射影の保持と長い射列からの読み戻し
+
+`OrdinaryHomTwistedRestrictions`（88行6宣言）、`OrdinaryHomTwistedLeftProjection`（64行）、
+`OrdinaryHomFromLongChain`（113行）の対象ビルド・小監査が成功した。
+後二本は合わせて20宣言。標準三公理のみ、source SHA 一致。
+記録：`/tmp/is-w1/s8-hom-twisted-restrictions-2/`、
+`/tmp/is-w1/s8-hom-twisted-left-and-long-3/`。
+
+```lean
+ordinaryHomTwistedComparison C ≫ edgewiseRight (nerve C) =
+  nerveMap (ordinaryHomElementsProjection C ⋙ CategoryTheory.Prod.snd Cᵒᵖ C)
+ordinaryHomTwistedComparison C ≫ edgewiseLeft (nerve C) ≫ nerveOppositeMap =
+  nerveMap (ordinaryHomElementsProjection C ⋙ CategoryTheory.Prod.fst Cᵒᵖ C)
+
+ordinaryHomFromLongChain (L : ComposableArrows C (n + n + 1)) :
+  ComposableArrows (OrdinaryHomElements C) n
+```
+
+両端は全単体的射の等式。左側は反対圏と単体集合の反転を指定した比較で接続する。
+長い射列の各左・右頂点を結ぶ射をそのまま元とし、合成則で可換四角形を証明した。
+恒等・合成も検証済み。まだ逆関係は証明しておらず、比較の可逆性の完成には数えない。
+
+次は既存 `edgewiseSimplexEquiv` にこの読み戻しを適用し、長い射列の左右の制限を照合する。
+全体167本から3本265行26宣言増え、検証済み全体170本11,206行・977宣言。
+S1・S8 は未完成、外枠18,600行を維持する。
+一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
