@@ -2802,3 +2802,21 @@ mainの取り込みは11-16 16:25の指示どおり保留したまま。検証�
 検証：三本をまとめたmodule形式の下書き `2g-g4-global-row-zero-check-3.log` は終了0。三本と直接importerの入口の対象ビルドは5,331ジョブ・終了0（`2g-g4-global-row-zero-native.log`、依存のキャッシュ再生を含む）。固定manifest・下書き・本体のSHA256と全バイト一致を確認。別の共有鍵による所有宣言の小監査は31宣言（10、15、6）、非公開・生成分も含め標準三公理のみ、終了0（`2g-g4-global-row-zero-audit.log`）。追加公理・sorry・既存宣言の型変更・資源上限の引き上げ・200行超の宣言なし。haveIのstyle警告は残る。
 
 今回197行＋入口3行＝200行。基準56ea849a3からの外枠計数は16,881行（新規236モジュール本体16,599行、既存追加25行、入口257行）。新規所有宣言の小監査累計1,772、既存15宣言は別計上。20,000行の外枠内で、完成見込み約18,000〜19,400行を維持する。元のスカラー環準同型に対するアフィン環の出口が閉じた。一般のρ:R→Sへ戻すΓSpecの係数移送の法則は明示が残る。F8の核と元の増大複体との比較、相対proper fppf・合成を含むNoether帰納、G5の自然な模型・Frobenius・filtered余極限の移送はなお未完であり、この出口だけでG4を完了扱いにしない。mainは今回の停止点まで取り込まない指示を守っており、未取り込み。共有鍵 --class impl --wait 3600、待ちは一件、対象ビルドと監査は別リース。root・下流全ビルド・AlgebraicGeometry全体監査なし。一覧：済み1／全体3（うち追加0）。
+
+
+元の任意の環準同型へ戻すΓSpecの係数移送（G4の既存の自然同型の法則、着手前の型、一本文100〜180行見込み）：ρ:R→SのSpec.mapとその実際のスカラーR→Γ(Spec S)について、`specScalarFrobeniusArrowIso` は元のΓSpecIso_inv_naturalityと既存のfrobeniusDirectLimitRingIsoで同じFrobeniusの矢印の同型を取る。`specScalarFrobeniusAugmentedIso` は既存のfrobeniusAugmentedRingCoefficientsIsoと増大conerveの関手で元の増大環図式の同型へ戻す。`ringFrobeniusCech_exact_iff_spec_tuple_total_acyclic` は元のρのAugmentedRingCechExactと同じSpec.map ρのタプルtotalの完全性の同値。標数(p:S)=0はρと(p:R)=0から内部で供給し、最終の仮定を増やさない。
+
+
+同じF8のY側の成分の座標の法則（G4の元の核のtotal比較の証明分割、着手前の型、一本文80〜160行見込み）：各四角形sとb:ℕについて `leftCι : s.C.X b ⟶ s.leftSquare.totalComplex.X (b+1)`、`leftCπ` はその逆の同じ座標射。零次ではC⁰×0の第一座標、後続では0×Cの第二座標を使い、正逆の式・微分との負符号・Map.onLeftSquareとの自然性・元のスカラーの辺・同じbaseProjectionへの合成零を照合する。これは同じ選択済み零加群・直積の同型を明示する法則で、kernelを別の構成に置き換えず、元の全複体の再索引に使う。
+
+
+### 任意の元の環準同型の増大図式への出口
+
+`SpecScalarPerfectTupleTotal`（79行）：
+- `specScalarFrobeniusArrowIso`：任意の元のρ:R→Sと、同じSpec.map ρの大域スカラーのFrobeniusの矢印の標準同型。ΓSpecIso_inv_naturalityと既存のfrobeniusDirectLimitRingIsoを使う。
+- `specScalarFrobeniusAugmentedIso`：元のρの増大Frobenius係数と、同じ大域スカラーの増大係数の標準同型。基底項と全ての正次数の実際の射を保つ。
+- `ringFrobeniusCech_exact_iff_spec_tuple_total_acyclic`：元のρのfrobeniusAugmentedRingCoefficientsのAugmentedRingCechExactは、同じSpec.map ρのタプルtotalの完全性と同値。Sの標数条件はρとRの標数条件から内部で供給し、仮定を増やさない。
+
+検証：下書き `2g-g4-spec-scalar-total-check-2.log` は終了0。対象と直接importerの入口の小ビルドは5,332ジョブ・終了0（`2g-g4-spec-scalar-total-native.log`、依存のキャッシュ再生を含む）。固定manifestと下書き・本体のSHA256と全バイト一致を確認。別の共有鍵による所有宣言の小監査は19宣言、非公開・生成分も含め標準三公理のみ、終了0（`2g-g4-spec-scalar-total-audit.log`）。追加公理・sorry・既存宣言の型変更・資源上限の引き上げ・200行超の宣言なし。
+
+今回79行＋入口1行＝80行。基準56ea849a3からの外枠計数は16,961行（新規237モジュール本体16,678行、既存追加25行、入口258行）。新規所有宣言の小監査累計1,791、既存15宣言は別計上。20,000行の外枠内。完成見込み約18,000〜19,400行を維持する。元の任意の環準同型に対するアフィン環の出口が閉じた。F8の核と元の増大複体との比較、Noether帰納（相対proper fppf・合成を含む）、G5の模型・Frobenius・filtered余極限の自然な移送は未完であり、G4・G5はまだ完成扱いにしない。mainは取り込んでいない。共有鍵 --class impl --wait 3600、待ちは一件、対象ビルドと監査は別リース。root・下流全ビルド・AlgebraicGeometry全体監査なし。一覧：済み1／全体3（うち追加0）。
