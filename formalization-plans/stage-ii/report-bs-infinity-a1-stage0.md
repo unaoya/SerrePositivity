@@ -5814,3 +5814,36 @@ witness・nativeRep・nativeVertexはこの組では未検証。組全体を成�
 一枚の整理券で行う（外側guardは15分、一回30分以内の規則内。数学の計算上限は同じ）。
 S1・S8は未完。mainは取り込まず、S7・R2・R3は再開しない。
 一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+
+### (A)の成分照合と、元の全比較・表現可能係数への接続を検証（11-17 未明）
+
+`/tmp/is-w1/s8-right-kan-comparison-7/` で次の4段が対象ビルド・小監査の終了0。
+各段の成功JSON・全対象SHA一致・標準三公理のみを確認した。
+
+- vertex：RightKanTransportComparisonVertex・RightKanGlobalComparisonVertex、2本・153行・3所有宣言。
+  元の同じδに沿う(A)の型を、既存の大域Kan比較・hom_facから閉じた。
+  大域同型を点ごとの同型で組み立てず、同じ余単位の輸送を使う。
+- universe：NativeSheafUniverseLift・NativeSheafRepresentableCoefficients、2本・91行・3所有宣言。
+  元の被覆錐全体の宇宙移送と、共変表現可能係数への保存。presentable性は追加しない。
+- nativeRep：WeightedSectionsNativeRepresentative、1本・43行・1所有宣言。
+  元の大域Hom比較のhom_facから、元の射に沿う指定余単位の類の実際のKan条件を証明。
+- nativeVertex：WeightedSectionsGlobalComparisonVertex、1本・60行・1所有宣言。
+  元のweightedSections_nativeShape_comparisonの成分を、元のvalueTransportの標準比較へ特殊化。
+
+新規6本・347行の検証済み差分を保存する。外枠用累計は **21,009行・新規331本＋承認された既存2本の差分**。
+(A)は同じδの範囲で完成したが、(B)の元の指定添字同型・分類・復元の比較との一致は未完。
+S8の元の固定離散値比較の自然性を、この段で完成したとは扱わない。
+
+witness段の未検証53行は、主張の型のrawなHo射作用の推論で既定200,000heartbeatsのwhnfに到達した。
+計算上限は上げず、既存のpostcomposeFunctorHom・precomposeFunctorHomで型を先に固定し、
+前後合成の既存のeq_mapの法則で元の射作用へ戻す表示に直した（新規61行・未検証）。
+これは元の二射影の射そのものを保持する表示の変更で、仮定・結論を弱めるものではない。
+同じ元の射への等式は既存のLeftKanHomMapPostcomposition等の法則を使う。
+
+組全体は、直接importer13本の再ビルド中に外側900秒のguardで終了124。
+数学のkernel上限ではなく、scope段は未実行。直接importer・既存Sheavesの統合再検証は未完。
+通った4段だけを保存し、組全体の成功とはしない。
+次はpointedな法則の短い検証を先にし、直接importerと既存・追加Sheavesの再検証を続ける。
+mainは取り込まず、S7・R2・R3は再開しない。S1・S8は依然未完。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
