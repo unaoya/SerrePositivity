@@ -3309,3 +3309,25 @@ isLocalEquivSet_toSheafify J P :
 `localEquiv_of_sheafifyIso`・`sections_localEquiv_iso`、S1の元のcoverage・extensive。
 目標全体は継続中で、完成停止点ではない。追加IDなし、計算上限変更なし。
 一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
+
+### 離散係数の任意小極限（11-16）
+
+`DiscreteAnodyneExtensions`・`DiscreteSpaceLimits` の2本118行（文献整理4行を除く114行）、
+6宣言を対象ビルド・小監査で確認した。記録 `/tmp/is-w1/s8-discrete-limits-2/`、
+終了0、標準三公理のみ、source SHA一致。
+
+```lean
+discrete_precomp_injective_of_anodyne i hi T :
+  Function.Injective (fun f : B ⟶ discrete T => i ≫ f)
+existsUnique_discrete_extension i hi T a : ∃! b, i ≫ b = a
+discreteDiagram_anodyne_extensions F ι hι a : ∃ b, ι ≫ b = a
+discreteSpaceCone_isLimit (c : Cone F) (hc : IsLimit c) :
+  IsLimitCone (discreteSpaceCone c)
+```
+
+anodyneに沿う一意な延長は既存の相対ホモトピーと定値空間への射の判定から導き、
+その図式での自然性を経て、既存の全Hom極限判定に渡した。添字は任意の小さい通常の圏で、
+離散な添字に制限していない。これはS8の証明の分割で追加IDなし。
+次は同じ通常錐を元の層条件の指定制限錐へ比較する。
+検証済み全体222本14,402行・1,262宣言（文献整理は外枠外）。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
