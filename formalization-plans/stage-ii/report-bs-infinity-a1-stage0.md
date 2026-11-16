@@ -2676,3 +2676,25 @@ ordinaryHomFromLongChain (L : ComposableArrows C (n + n + 1)) :
 全体167本から3本265行26宣言増え、検証済み全体170本11,206行・977宣言。
 S1・S8 は未完成、外枠18,600行を維持する。
 一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
+
+
+### S8 続報：実際の単体の読み戻しと両端射影
+
+`OrdinaryHomTwistedRead`（114行11宣言）の対象ビルド・小監査が成功した。
+標準三公理のみ、source SHA 一致。記録：`/tmp/is-w1/s8-hom-twisted-read-2/`。
+
+```lean
+ordinaryHomTwistedRead f : ComposableArrows (OrdinaryHomElements C) n
+
+ordinaryHomTwistedRead f ⋙ ordinaryHomElementsProjection C ⋙
+  CategoryTheory.Prod.snd Cᵒᵖ C = (edgewiseRight (nerve C)).app _ f
+ordinaryHomTwistedRead f ⋙ ordinaryHomElementsProjection C ⋙
+  CategoryTheory.Prod.fst Cᵒᵖ C = nerveOppositeMap.app _ ((edgewiseLeft (nerve C)).app _ f)
+```
+
+読み戻しは既存 `edgewiseSimplexEquiv` の長い射列へ `ordinaryHomFromLongChain` を適用したもの。
+既存の左右の包含の座標式と Yoneda の自然性から両端の全射列を比較した。
+左の添字の二つの自然数式は命題の等式で移送した（計算上限の変更なし）。
+まだ往復の逆関係・可逆性は未完成。零次の単位則と各対象の全再添字則は検証待ち。
+検証済み全体171本11,320行・988宣言。S1・S8 は未完成。
+一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
