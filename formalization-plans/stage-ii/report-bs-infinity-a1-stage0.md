@@ -4107,3 +4107,43 @@ Mathlib の `Over.opEquivOpUnder` の単位・余単位が `Iso.refl` である�
 S8の元の一般の局所同値、指定離散比較の射の自然性、同じ層化単位の比較はまだ残る。
 mainは停止点まで取り込まない。S7・R2・R3は再開しない。
 一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+### S8 の coend 比較に使う既存の全射列の法則（11-16 夕）
+
+`SimplicialReplacementUnderEvaluation` に、必要な普遍評価と自然性だけでなく、
+`scaffoldUnderChain`、`simplicialReplacementUnderEvaluation_scaffold`、
+`scaffoldUnderChain_forget_factorization`、`scaffoldUnderChain_restriction` が既にある。
+同じ射列の根への正規化を新しく作り直さない。
+
+新規 `UnderWeightedColimitComparison` に、次の既存構成の比較の法則を書いた（未検証）：
+```lean
+underNerveWeight (I : Type u) [SmallCategory I] := Under.mapFunctor I ⋙ nerveFunctor
+underWeightedColimitLeg (F : I ⥤ SSet.{u}) (i : I) :
+  F.obj i ⊗ nerve (Under i) ⟶ simplicialReplacement F
+underWeightedColimitLeg_condition (F : I ⥤ SSet.{u}) {i j : I} (f : i ⟶ j) :
+  F.obj i ◁ (underNerveWeight I).map f.op ≫ underWeightedColimitLeg F i =
+    F.map f ▷ nerve (Under j) ≫ underWeightedColimitLeg F j
+underWeightedColimitToReplacement (F : I ⥤ SSet.{u}) :
+  weightedColimit (underNerveWeight I) F ⟶ simplicialReplacement F
+underWeightedColimitToReplacement_ι (F : I ⥤ SSet.{u}) (i : I) :
+  weightedColimitι (underNerveWeight I) F i ≫ underWeightedColimitToReplacement F =
+    underWeightedColimitLeg F i
+```
+各脚の底への射影は、元の Under の射列の忘却であることも保持する。
+評価は既存 `simplicialReplacementUnderEvaluation` に因子の順序交換を合成しただけ。
+coendのdinaturalityは既存 `simplicialReplacementUnderEvaluation_naturality` をそのまま使う。
+追加IDなし、既存の模型の係数移送の法則、200行超の補題なし。
+
+逆向きの接続に残る計算も、同じ既存射列を使う：replacementの単体 (σ,x) を、
+最初の頂点 σ(0) の普遍脚に `(yonedaEquiv x, scaffoldUnderChain σ)` として送る。
+任意の Under の射列 τ は最初の構造射でこの標準射列を前合成したもの、という既存の
+`scaffoldUnderChain_forget_factorization` と coend のdinaturalityで正規化する。
+単体作用素で最初の頂点が変わることは `scaffoldUnderChain_restriction` で扱う。
+この計算を終えてから既存 `elementsToReplacement` の同型へつなぐ。
+未証明の正規化・余極限性を仮定には置かない。
+
+現在は反転重みの自然性の参照を明示して、上記との2対象を
+`/tmp/is-w1/s8-under-comparison-1/`、セッション58077で検証中。
+元のS8の一般の局所同値や指定離散比較の射の自然性が完成したとはしない。
+検証済み252本16,556行・1,438宣言、main未取り込み、S7・R2・R3停止を保持する。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
