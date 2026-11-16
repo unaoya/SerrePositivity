@@ -4531,3 +4531,128 @@ S7・R2・R3は停止を保持する。main cd79e9cc5 は取り込んでいな�
 自分の整理券・検証セッションはすべて終了。未検証のS8のLeanソースは残っていない。
 次も新しい数学は新規ファイルだけに書き、外枠を超えそうなら検証済みを保存して止める。
 一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+### S8 の像への分解と固定比較の法則を保存（11-16 夜）
+
+`dfed35d90`：5本280行・19宣言。対象ビルド、小監査（新しい環境・標準三公理のみ）、
+SHA一致、セッション42632の終了0を確認。
+証拠 `/tmp/is-w1/s8-image-reduction-4/target-audit-result.json`。
+`da618f38f`：1本46行・2宣言。同じ検証とセッション97591の終了0を確認。
+証拠 `/tmp/is-w1/s8-sections-cone-composition-2/target-audit-result.json`。
+検証済み全体284本18,240行・1,580宣言。外枠まで残り3,760行。
+追加IDなし、いずれも既存構成の法則・S8内の証明分割。200行超の補題なし。
+
+型つきの法則の一覧（以下すべて検証済み）：
+```lean
+toRange_app_surjective (f : P ⟶ Q) (X : Cᵒᵖ) :
+  Function.Surjective ((Subfunctor.toRange f).app X)
+toRange_isLocallyInjective (J : GrothendieckTopology C) (f : P ⟶ Q)
+  [CategoryTheory.Presheaf.IsLocallyInjective J f] :
+  CategoryTheory.Presheaf.IsLocallyInjective J (Subfunctor.toRange f)
+rangeInclusion_isLocallySurjective (J : GrothendieckTopology C) (f : P ⟶ Q)
+  [CategoryTheory.Presheaf.IsLocallySurjective J f] :
+  CategoryTheory.Presheaf.IsLocallySurjective J (Subfunctor.range f).ι
+rangeCechCocone_isColimit (f : P ⟶ Q) :
+  IsColimitCone (discretePresheafCocone (relativeCechCocone (Subfunctor.toRange f)))
+rangeCechDiagonal_isLocallySurjective (J : GrothendieckTopology C) (f : P ⟶ Q)
+  [CategoryTheory.Presheaf.IsLocallyInjective J f] (j : AsSmall.{u} SimplexCategoryᵒᵖ) :
+  CategoryTheory.Presheaf.IsLocallySurjective J
+    ((relativeCechDiagonal (Subfunctor.toRange f)).app j)
+rangeInclusion_restrictSectionsCone_isLimit (J : GrothendieckTopology C) (f : P ⟶ Q)
+  [CategoryTheory.Presheaf.IsLocallySurjective J f] (O : Presheaf C E) (hO : IsSheaf J O)
+  (c : JoinCone (sectionsOfDiagram Q O)) (hc : IsLimitCone c) :
+  IsLimitCone (SetWeight.restrictSectionsCone (Subfunctor.range f).ι O c)
+relativeCechDiagonal_sections_isInvertible (J : GrothendieckTopology C) (f : P ⟶ Q)
+  [CategoryTheory.Presheaf.IsLocallyInjective J f]
+  (j : AsSmall.{u} SimplexCategoryᵒᵖ) (O : Presheaf C E) (hO : IsSheaf J O)
+  (hP : HasLimit (sectionsOfDiagram P O))
+  (hD : HasLimit (sectionsOfDiagram ((relativeCechDiagram f).obj j) O)) :
+  IsInvertibleEdge (sectionsOf_map ((relativeCechDiagonal f).app j) O hP hD).toTruncated
+cechReverseIndex : SSet.{u + 1} :=
+  ((SSet.uliftFunctor.{u + 1, u}).obj (nerve (AsSmall.{u} SimplexCategoryᵒᵖ))).op
+cechReverseIndex_isWeaklyContractible : IsWeaklyContractible cechReverseIndex.{u}
+cechConstantCone_isLimit (E : SSet.{u + 1}) [Quasicategory E] (x : E _⦋0⦌) :
+  IsLimitCone (constantDiagramCone cechReverseIndex.{u} E x)
+limitConeIso_hom_refl (c : JoinCone p) (hc : IsLimitCone c) :
+  (limitConeIso c c hc hc).hom = 𝟙 _
+limitConeIso_hom_comp (c d e : JoinCone p)
+  (hc : IsLimitCone c) (hd : IsLimitCone d) (he : IsLimitCone e) :
+  (limitConeIso c d hc hd).hom ≫ (limitConeIso d e hd he).hom =
+    (limitConeIso c e hc he).hom
+limitVertexIso_hom_refl (c : JoinCone p) (hc : IsLimitCone c) :
+  (limitVertexIso c c hc hc).hom = 𝟙 _
+limitVertexIso_hom_comp (c d e : JoinCone p)
+  (hc : IsLimitCone c) (hd : IsLimitCone d) (he : IsLimitCone e) :
+  (limitVertexIso c d hc hd).hom ≫ (limitVertexIso d e hd he).hom =
+    (limitVertexIso c e hc he).hom
+limitConeIso_restrict_hom (f : A ⟶ K) (c d : JoinCone p)
+  (hc : IsLimitCone c) (hd : IsLimitCone d)
+  (hcf : IsLimitCone (restrictJoinCone c f)) (hdf : IsLimitCone (restrictJoinCone d f)) :
+  (hoFunctor.map (sliceOverRestrict p f)).toFunctor.map (limitConeIso c d hc hd).hom =
+    (limitConeIso (restrictJoinCone c f) (restrictJoinCone d f) hcf hdf).hom
+vertexIso_transport_target_hom (h : b = c) (e : VertexIso a b) :
+  (h ▸ e).hom = e.hom ≫ eqToHom (congrArg HomotopyCategory.mk h)
+vertexIso_transport_source_hom (h : a = b) (e : VertexIso a c) :
+  (h ▸ e).hom = eqToHom (congrArg HomotopyCategory.mk h.symm) ≫ e.hom
+limitVertexIsoOfDiagramEq_hom (h : F = G) (c : JoinCone F) (d : JoinCone G)
+  (hc : IsLimitCone c) (hd : IsLimitCone d) :
+  (limitVertexIsoOfDiagramEq h c d hc hd).hom =
+    (limitVertexIso (c.cast h) d (hc.cast h) hd).hom
+limitVertexIsoOfEquivalentRestriction_hom (a : A ⟶ B) (ha : IsQCatEquivalence a)
+  (O : B ⟶ X) (c : JoinCone (a ≫ O)) (d : JoinCone O)
+  (hc : IsLimitCone c) (hd : IsLimitCone d) (hda : IsLimitCone (restrictJoinCone d a)) :
+  (limitVertexIsoOfEquivalentRestriction a ha O c d hc hd).hom =
+    (limitVertexIso c (restrictJoinCone d a) hc hda).hom ≫
+      eqToHom (congrArg HomotopyCategory.mk (restrictJoinCone_vertex d a))
+SetWeight.elementsMap_comp (φ : P ⟶ Q) (ψ : Q ⟶ R) :
+  elementsMap (φ ≫ ψ) = elementsMap φ ≫ elementsMap ψ
+SetWeight.restrictSectionsCone_comp (φ : P ⟶ Q) (ψ : Q ⟶ R) (O : Presheaf C E)
+  (c : JoinCone (sectionsOfDiagram R O)) :
+  restrictSectionsCone (φ ≫ ψ) O c =
+    restrictSectionsCone φ O (restrictSectionsCone ψ O c)
+```
+
+定値錐は既存の汎用
+`Project/DerivedCategories/MappingAndStability/Homotopies/HomotopyModels/WeaklyContractibleConstantLimit`
+を再利用した。依存は共終性・恒等錐の一般論だけで、G10や停止中R2の結果には依存しない。
+主な計算の失敗は名前空間・始対象保存の明示引数・mapの合成の書き換えの形であり、
+固定値の比較や元の普遍性は変更していない。計算上限も変更していない。
+
+### 22,000行の外枠に対する再見積もりと停止（11-16 夜）
+
+11-16の指示「22,000行を超えそうなら、検証済みの分をコミットして報告して止まる」に従う。
+上の6本を保存した時点で、残りの見込みの上端が外枠を超えるため、Leanの追加をここで止める。
+
+| 残り（元の一覧の証明分割。追加IDではない） | 見込み |
+| --- | ---: |
+| 固定された `weightedSections_discrete_map`：右Kanの指定錐の射の比較、元の分類・底変換・形状比較と指定同型の自然性、最後の合成 | 1,010〜1,710行 |
+| 元のČech対角と定値錐、余極限の反転を全族でつなぎ、presentable係数で一般の局所同値を閉じる | 380〜650行 |
+| `sections_localEquiv_iso` の元の任意係数 E：表現可能な写像空間による検査と必要な宇宙の移送、同じ hP・hQ と指定射への復帰 | 350〜600行 |
+| `sheafify_discrete_eq`・`localEquiv_of_sheafifyIso`：元のordinary層化単位の∞局所性、同じ反射の大域的な指定単位との比較・自然性 | 550〜950行 |
+| S1 の元の一般Coverage判定（普遍降下性を追加仮定にしない） | 450〜800行 |
+| **残り合計** | **2,740〜4,710行** |
+| **検証済み18,240行との合計** | **20,980〜22,950行** |
+
+上端は外枠を950行超える見込み。表の上端を実装で使ってよいという意味ではない。
+固定された比較の自然性は、`WeightedSectionsDiscrete` の値の同型が
+`OriginalLeftLimit` → `LeftLimit` → `NativeLimit` → `NativeShapeLimit` と
+分類・復元の形状比較を合成するため、辺の可逆性だけを示して代替できない。
+途中の `limitVertexIsoOfLeftStraighteningIso` も三つの指定極限頂点比較を合成している。
+元の全族を保ってこれらの自然性を照合する分を、前の見積もりで小さく見ていた。
+分類の底変換の貼り合わせは、本体の既存 `leftStraightening_baseChange_pasting_iso` などを使う。
+R2を再開したり、その新しい部分を作る予定ではない。
+
+また任意Eの元の型にpresentable性を足す、固定された値の同型を別物に替える、
+`RightKanHomUniversal` やČech増大の余極限性を未証明の仮定にする、Coverageの型を
+普遍降下性付きに替える、といった短縮はしない。
+
+未完の正本は drafts の元の5宣言：
+`SpaceValued.weightedSections_discrete_map`、`SpaceValued.sections_localEquiv_iso`、
+`SpaceValued.sheafify_discrete_eq`、`SpaceValued.localEquiv_of_sheafifyIso`、
+`SheafCondition.isSheaf_toGrothendieck_iff`。S7は別停止点であり再開しない。
+元の型は変更していない。
+
+自分の整理券・ビルドは終了し、未検証のS8のLean下書きはない。
+停止中R2の4下書きは未変更。main cd79e9cc5 は未取り込み。
+これは完成停止点ではなく、外枠の指示による中間停止。目標は未完のまま保持する。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
