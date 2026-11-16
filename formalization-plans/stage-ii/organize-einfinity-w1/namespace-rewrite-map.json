@@ -2460,6 +2460,7 @@
     "SerrePositivity.EInfinity.SimplicialLocalization.modelRightFrameHammockCoherentComparison": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelRightFrameHammockCoherentComparison",
     "SerrePositivity.EInfinity.SimplicialLocalization.modelRightFrameLocalizationComparison": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelRightFrameLocalizationComparison",
     "SerrePositivity.EInfinity.SimplicialLocalization.modelRightFramePinchedEquivalence": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelRightFramePinchedEquivalence",
+    "SerrePositivity.EInfinity.SimplicialLocalization.modelSourceFrameFamily": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelSourceFrameFamily",
     "SerrePositivity.EInfinity.SimplicialLocalization.relativeHammockEnriched": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.relativeHammockEnriched",
     "SerrePositivity.EInfinity.SimplicialLocalization.zeroLevelComponentsFunctor": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.zeroLevelComponentsFunctor"
   },
@@ -9999,6 +10000,11 @@
       "module": "SerrePositivity.EInfinity.FrameHom.FrameLeftRoof",
       "old": "SerrePositivity.EInfinity.FrameHom.frameLeftRoofNerveMap._proof_1",
       "new": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameLeftRoofNerveMap._proof_1"
+    },
+    {
+      "module": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceFrameGraph",
+      "old": "SerrePositivity.EInfinity.FrameHom.frameLeftRoofNerveMap.congr_simp",
+      "new": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameLeftRoofNerveMap.congr_simp"
     },
     {
       "module": "SerrePositivity.EInfinity.FrameHom.FrameFunctorImage",
@@ -18709,6 +18715,11 @@
       "module": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantLocalization",
       "old": "SerrePositivity.EInfinity.SimplicialLocalization.modelSourceFrameFamily",
       "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelSourceFrameFamily"
+    },
+    {
+      "module": "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotFrameHomInfinity",
+      "old": "SerrePositivity.EInfinity.SimplicialLocalization.modelSourceFrameFamily.congr_simp",
+      "new": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelSourceFrameFamily.congr_simp"
     },
     {
       "module": "SerrePositivity.EInfinity.SimplicialLocalization.ModelHammockNerveEquivalence",

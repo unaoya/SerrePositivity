@@ -2,11 +2,14 @@
   "modules": 588,
   "native_declarations": 4160,
   "private_declarations": 157,
-  "renamed_public": 3280,
+  "renamed_public": 3282,
   "renamed_private_user_names": 75,
   "zero_declaration_modules": [
     "SerrePositivity.EInfinity.HomotopyWeight.TensorConeUnitPoint"
   ],
+  "compiler_equation_congruence_declarations": 179,
+  "compiler_child_target_corrections": 2,
+  "foreign_private_compiler_declarations": 0,
   "ambiguous_open_prefixes": [],
   "validated_by_existing_Migration": true,
   "stage": "prepared; original-source reference capture and preview review still required; not yet applied"

@@ -3,8 +3,8 @@ No expression hashing/comparison logic is changed. No ordinal pairing is used.
 """
 from pathlib import Path
 from collections import defaultdict
-import argparse,json,sys,hashlib
-p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True);p.add_argument('--before',type=Path,required=True);p.add_argument('--after',type=Path,required=True);p.add_argument('--output',type=Path,required=True);a=p.parse_args();root=a.root.resolve();base=root/'formalization-plans/stage-ii/organize-einfinity-w1';a.output.mkdir(parents=True,exist_ok=True);plan=json.loads((base/'namespace-rewrite-map.json').read_text());sys.path.insert(0,str(root/'scripts/refactor'));from klw1_namespace import rename_prefix
+import argparse,json,sys,hashlib,re
+p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True);p.add_argument('--before',type=Path,required=True);p.add_argument('--after',type=Path,required=True);p.add_argument('--before-root',type=Path,required=True);p.add_argument('--output',type=Path,required=True);a=p.parse_args();root=a.root.resolve();base=root/'formalization-plans/stage-ii/organize-einfinity-w1';a.output.mkdir(parents=True,exist_ok=True);plan=json.loads((base/'namespace-rewrite-map.json').read_text());sys.path.insert(0,str(root/'scripts/refactor'));from klw1_namespace import rename_prefix
 before=json.loads(a.before.read_text());after=json.loads(a.after.read_text());mm={m:plan['modules'].get(m,m) for m in before['modules']};assert set(mm.values())==set(after['modules']);assert len(mm)==len(set(mm.values()))
 actual={};duplicates=[]
 for row in after['declarations']:
@@ -13,11 +13,19 @@ for row in after['declarations']:
  actual[key]=row
 assert not duplicates,duplicates
 rules={};private=defaultdict(dict);rows=[];missing=[];used=set()
+public_targets={r['old']:r['new'] for r in plan['rows'] if not r['old'].startswith('_private.')}
+source_declarations={}
 def rule(old,new):
  if old in rules:assert rules[old]==new,(old,rules[old],new)
  rules[old]=new
 for old in before['declarations']:
- module=old['module'];name=old['name'];new=rename_prefix(name,plan['namespaces'].get(module,{}));target=mm[module];key=target,new,old['is_private']
+ module=old['module'];name=old['name'];new=rename_prefix(name,plan['namespaces'].get(module,{}))
+ if not old['is_private']:
+  if name in public_targets:new=public_targets[name]
+  elif re.search(r'\.(?:congr_simp|eq_\d+)$',name):
+   if module not in source_declarations:source_declarations[module]=json.loads((a.before_root/'.lake/build/lib/lean'/(module.replace('.','/')+'.ilean')).read_text())['decls']
+   if old['kernel_name'] not in source_declarations[module]:new=rename_prefix(name,public_targets)
+ target=mm[module];key=target,new,old['is_private']
  if key not in actual:missing.append(dict(old_module=module,old=name,expected_module=target,expected_name=new,private=old['is_private']));continue
  seen=actual[key];assert key not in used;used.add(key)
  if old['is_private']:

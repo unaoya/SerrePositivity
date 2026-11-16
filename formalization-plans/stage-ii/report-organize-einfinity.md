@@ -188,3 +188,18 @@ HA配置へ訂正した後の再検査：正式なMigrationの検証終了0。�
 目録の抜粋はnativeの `(module, public name)` に一致する宣言に限るよう整えた。移送後の再生成には、実際の移送後native所有元表を必須にし、候補の名前だけから存在を推測しない。適用手順も、全compilerプレビューと夜の二監査の実採取・保留0・元ソース全SHA一致・metadata overlayの前後SHAが揃うまでは書き込めないdry-run既定の形で準備した。まだその適用は実行していない。
 
 一覧：済み 0／全体 5（うち追加 0）。
+
+## 3 compiler生成宣言の親名の照合（2026-11-16 午後）
+
+元のnative表の公開等式・合同補題のうち、元の `.ilean.decls` に直接のソース宣言を持たない179件を別に調べた。ファイルのnamespaceだけを使う案では、次の2件が改名漏れになる。
+
+| 元の生成補題 | 実際の親 | 親に従った先のnamespace | 元の観測された生成元 |
+|---|---|---|---|
+| FrameHom.frameLeftRoofNerveMap.congr_simp | FrameHom.frameLeftRoofNerveMap | HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom | SimplicialLocalization.ModelBifibrantSourceFrameGraph |
+| SimplicialLocalization.modelSourceFrameFamily.congr_simp | SimplicialLocalization.modelSourceFrameFamily | InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization | BarrattEccles.StrictDiagramTotFrameHomInfinity |
+
+この2件は明示したソースの宣言を新しく足す操作ではない。既存の実在する親を改名するとき、その親からcompilerが生成する合同補題の完全名も同じように運ぶ。179件の元kernel名・観測した所有元・ソース宣言の有無・親の名と対応を `preparation/compiler-child-parent-review.json` に保存した。親が移らないMathlib・Kerodon・Hammockの子は同じ完全名に保つ。生成補題の移送後の実際のproviderはまだ観測していないので、source-owned APIのimport元と混同しない。
+
+正式な候補表の変更名はこれにより **public 3,282（当初3,280に生成補題2件を追加）、private user name 75**。全nativeは同じ4,160件で、移動するファイル数や数学の主張・証明は変わらない。Migration検証終了0、採取済み13本のプレビューは保留0。原環境の参照の採取は同じsource／helper SHAのまま続けられる。前後の全nativeを組み合わせる準備手順も、生成補題の名前はfile namespaceだけで推測せず、正式な親の対応を使うよう整えた。
+
+一覧：済み 0／全体 5（うち追加 0）。
