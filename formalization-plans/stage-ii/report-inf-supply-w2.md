@@ -18032,8 +18032,42 @@ lemma nerveUnderLift_pointCosliceFamilyHomotopy_postcomp_arrow {I C : Type u}
 
 ### 300.2 検収
 
-新規1本209行、公開2補題・実環境宣言3。対象ビルド367（依存を含む1,954 jobs）・小監査とも終了0。共有鍵 --class impl --wait 3600、一枚の整理券、gtimeout 1700秒でビルドと小監査の間だけ使用。小監査268モジュール・1,718宣言、propext・Classical.choice・Quot.soundのみ、sorryAx・追加公理なし。自レーン累計264本・18,205行、実環境1,711宣言。外枠まで3,795行。宣言名の照合で異なるファイル間の重複0、内部も0。mainのInfinityCategoriesについても公開の二宣言名をgit grepし、既存宣言との重複なし。git diff --check通過。証跡isw2-build367.log・isw2-validation367.json・isw2-declaration-collision-scan367.json。登録候補の一覧に追加。既存宣言・⑤a・公式入口・公式監査は変更していない。
+新規1本209行、公開2補題・実環境宣言2。対象ビルド367（依存を含む2,054 jobs）・小監査とも終了0。共有鍵 --class impl --wait 3600、一枚の整理券、gtimeout 1700秒でビルドと小監査の間だけ使用。小監査268モジュール・1,717宣言、propext・Classical.choice・Quot.soundのみ、sorryAx・追加公理なし。自レーン累計264本・18,205行、実環境1,710宣言。外枠まで3,795行。宣言名の照合で異なるファイル間の重複0、内部も0。mainのInfinityCategoriesについても公開の二宣言名をgit grepし、既存宣言との重複なし。git diff --check通過。証跡isw2-build367.log・isw2-validation367.json・isw2-declaration-collision-scan367.json。登録候補の一覧に追加。既存宣言・⑤a・公式入口・公式監査は変更していない。
 
 任意の通常図式と元の自然変換の同じcoslice円柱、指定モデル源の後合成後の全HoFun射の像の一致は閉じた。元のcorrected pairingの同じ指定pathを通じたnative fiber射とroofの最終全族の等式R03h・R03d・3b-4aは未完。
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+## 301. 同じ指定自然変換の全twisted pairingと、その指定モデル源の像の厳密な一致（2026-11-16）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+§299のUnderの普遍族の厳密な等式を、元のUnder.lift V ηで前合成し、任意の指定自然変換ηの同じ全pairingへ移した。さらに既存cosliceTwistedArrowMap_postcompを使い、同じ指定モデル源Fで後合成した全写像も厳密に照合する。§300の同じ円柱の全HoFun射と今回のtwisted-arrowの全写像は、両方とも元の同じηを使う。新しい族や逆は選ばず、既存構成の前合成・後合成・自然性の法則として数学の一覧は増やさない。
+
+一時ファイルisw2-under-lift-twisted4の個別Lean検査は終了0。当初、既存のCosliceTwistedArrowNaturalityのoleanがなかったため、共有鍵 --class impl --wait 3600・1700秒guardで当該既存1モジュールだけをビルドし、3,848 jobsで成功。既存のファイルを変更・複製せず、既存の補題を完全修飾で使う。結合順序だけの差はCategory.assocで合わせた。
+
+```lean
+lemma nerveUnderLift_comp_cosliceTwistedArrowMap {I C : Type u} [Category.{u} I]
+    [Category.{u} C] {c : C} {V : I ⥤ C} (η : (Functor.const I).obj c ⟶ V) :
+    nerveMap (Under.lift V η) ≫ nerveUnderMap c ≫ cosliceTwistedArrowMap (nervePoint c) =
+      twistedPairingNerveMap ((Functor.const I).obj (Opposite.op c)) V (fun i => η.app i)
+        (fun {_ _} f => by simpa using (η.naturality f).symm)
+
+lemma nerveUnderLift_comp_cosliceTwistedArrowMap_postcomp {I C : Type u}
+    [Category.{u} I] [Category.{u} C] {c : C} {V : I ⥤ C}
+    (η : (Functor.const I).obj c ⟶ V) {D : SSet.{u}} (F : nerve C ⟶ D) :
+    nerveMap (Under.lift V η) ≫ nerveUnderMap c ≫ sliceUnderPostcomp (nervePoint c) F ≫
+      cosliceTwistedArrowMap (nervePoint c ≫ F) =
+      twistedPairingNerveMap ((Functor.const I).obj (Opposite.op c)) V (fun i => η.app i)
+        (fun {_ _} f => by simpa using (η.naturality f).symm) ≫ edgewiseSubdivisionMap F
+```
+
+対象ビルド368と小監査で検収する。§300.2の数値はisw2-validation367.jsonの実集計に訂正済み（公開2補題・実環境2宣言、2,054 jobs、監査1,717宣言、自レーン実環境1,710宣言）。この表示の一致だけでR03hの同じcorrected pairingを通じる最終等式、R03d・3b-4aを完了とはしない。⑤a・公式入口・公式監査は変更しない。
+
+### 301.2 検収
+
+新規1本46行、公開2補題・実環境宣言4。対象ビルド368（依存を含む3,858 jobs）・小監査とも終了0。共有鍵 --class impl --wait 3600、一枚の整理券、gtimeout 1700秒でビルドと小監査の間だけ使用。小監査269モジュール・1,721宣言、propext・Classical.choice・Quot.soundのみ、sorryAx・追加公理なし。自レーン累計265本・18,251行、実環境1,714宣言。外枠まで3,749行。宣言名の照合で異なるファイル間の重複0、内部も0。git diff --check通過。証跡isw2-build368.log・isw2-validation368.json・isw2-declaration-collision-scan368.json。登録候補一覧に追加。既存宣言・⑤a・公式入口・公式監査は変更していない。
+
+同じ元の指定自然変換から、円柱側とtwisted-arrow側の全像を厳密に照合する法則は閉じた。元の固定標的のpairingを反対圏のcosliceとして表示する際の両端交換、および元のcorrected pairingの全同型と同じ底のpathを保つ最終照合が残る。R03h・R03d・3b-4aは未完。
 
 一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
