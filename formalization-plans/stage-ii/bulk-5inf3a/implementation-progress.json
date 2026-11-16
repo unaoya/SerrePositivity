@@ -3,7 +3,7 @@
   "complete": 3,
   "total": 6,
   "added": 0,
-  "verified_head": "this commit: base ad6e6a6432fc86cc77db632e115a6e03d6269462",
+  "verified_head": "this commit: base 1aaca53264c81d319fe9a2726186d0d133348163",
   "items": {
     "HT01": "complete",
     "HT02": "complete",
@@ -12,13 +12,13 @@
     "HT05": "not-started",
     "HT06": "not-started"
   },
-  "latest_complete_audit_checkpoint": "oriented-forms-and-zero-differential-checkpoint.json",
-  "latest_complete_audit_declarations": 1989,
+  "latest_complete_audit_checkpoint": "ordinary-homology-realization-checkpoint.json",
+  "latest_complete_audit_declarations": 2012,
   "working_changes_unverified": [
-    "AffineCoverTargetAugmentation",
-    "AffineCanonicalSingleRows"
+    "AffineCanonicalSingleRows",
+    "AffineCoverTargetAugmentation"
   ],
-  "pending_check": "bundle-215 terminal rc1; see audit module inventory; failed dependencies await next batch",
+  "pending_check": "bundle-218 terminal rc1; see audit module inventory; failed dependencies await next batch",
   "next_proof_route": "remaining-20000-plan.md",
   "initial_record": {
     "stage": "5inf3a",
