@@ -3801,3 +3801,21 @@ cofanSieveIndexCone_legs_val [HasInitial C] [Nonempty ι] (c : Cofan B) :
 実行中の6対象には触れず、次の未実行一覧を全13対象へ更新した。
 新規S1は計7本474行が未検証。検証済み15,034行は変わらない。
 一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+### S1 の引き戻しの宇宙の照合（11-16、紙）
+
+`FinitaryPreExtensive.isIso_sigmaDesc_fst` の添字は `{α : Type}`（Type 0）である。
+元の `PreservesFiniteProductsOnSite` の `ι : Type u` に、そのまま一般版として適用しない。
+同じ Mathlib の `FinitaryPreExtensive.isUniversal_finiteCoproducts hc` と
+`IsUniversalColimit.nonempty_isColimit_of_pullbackCone_left` は一般の有限添字を扱う。
+必要な引き戻しは `hasPullbacks_of_is_coproduct hc (Discrete.mk i) f` から得る。
+生成篩の引き戻しとの同じ等式は
+`Sieve.ofArrows_eq_pullback_of_isPullback` を使い、作り直さない。
+
+もう一つの許される移送は、有限添字を有限の Type 0 の模型に移し、同じ全 fan を
+添字同値で運ぶこと。`extensiveCoverage` の定義と
+`extensiveTopology.mem_sieves_iff_contains_colimit_cofan` 自体も Type 0 の有限族で書かれる。
+どちらの場合も元の任意の有限 `Type u` の量化と、空族を含む指定錐を保持する。
+この照合で元の型を狭めたり、引き戻しの降下を追加仮定にしたりしない。
+未検証の Lean の数、検証済み15,034行はいずれも変わらない。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
