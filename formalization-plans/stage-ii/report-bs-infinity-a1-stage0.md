@@ -3069,3 +3069,49 @@ kanRightKanExtensionIso_hom_fac δ α β hα hβ :
 この再利用を考慮しても、前節の残りの上端を外枠内まで下げる根拠は得ていない。
 見込み17,691〜20,891行、検証済み13,391行は維持する。R2・R3・S7 は再開しない。
 一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
+
+### 22,000行で再開：S8 の点ごとの離散性・同値な元の圏・大域比較（11-16）
+
+ユーザー承認 `cae591fa4` を含む main を作業枝へ取り込んだ（merge `687f2db8c`）。
+外枠を22,000行へ変更し、約18,000行の途中報告を保持する。S7・R2・R3 は再開しない。
+
+新規5本316行21宣言の対象ビルド・小監査が完了。標準三公理のみ、source SHA 一致。
+記録：`/tmp/is-w1/s8-resume-global-comparison-1/`（新規2本10宣言と既存 `WeightedSectionsDiscrete` の回帰）、
+`s8-small-nerve-diagram-2/`（1本6宣言）、`s8-pointwise-discrete-2/`（1本4宣言）、
+`s8-presheaf-left-kan-colimits-2/`（1本1宣言）。全runnerの終了コード0を確認済み。
+
+```lean
+-- β : Homotopy (oppositeSpaceYoneda C ≫ G) O,
+-- hβ : IsRightKanExtension (oppositeSpaceYoneda C) O G β
+weightedSections_comparison O hE β hβ : FunctorIso (weightedSections O hE) G
+-- 本文は kanRightKanExtensionIso の特殊化。
+-- hom_fac・hom_unique も既存の同名の分解則・一意性をそのまま使う。
+
+sectionsOf_eq_limit_elements P O h e c hc : VertexIso (sectionsOf P O h) c.vertex
+-- e : D ≌ P.Elements、c は e.functor ⋙ Elements.π P に沿う元の指定極限錐。
+
+is0Truncated_iff_pointwise (x : (PresheafCat C SpaceInfinity) _⦋0⦌) :
+  Is0Truncated x ↔ ∀ U : C,
+    Is0TruncatedSpace ((vertexToPresheaf x).app _ (ULift.up (nerveVertex (Opposite.op U))))
+
+-- β : Homotopy F₀ (yonedaInfinityMap A ≫ L),
+-- hβ : IsLeftKanExtension (yonedaInfinityMap A) F₀ L β,
+-- p : (SSet.uliftFunctor.{u+1,u}).obj I ⟶ PresheafInfinity A
+presheafYonedaLeftKan_map_isColimit β hβ (c : JoinCocone p) (hc : IsColimitCone c) :
+  IsColimitCone (mapJoinCocone L c)
+```
+
+点ごとの離散性は既存の `exists_diagram_in_fullyFaithful_source` を離散埋め込みへ適用した。
+小さい nerve の図式は元の頂点・辺・三角形から通常前層へ戻し、strict Segal 則で全次数を照合した。
+元の離散前層の埋め込みとの全単体の等式も証明した。点ごとの同型を集める新しい構成は作っていない。
+この判定と S8-6 は drafts の元の型を閉じたが、S8 全体の完了とは数えない。
+
+全前層 Yoneda 左 Kan 延長の任意小余極限保存には、既存の
+`presheafExtensionHom_liftedIso` と `fullPresheafHomWeightFamily_map_isLimit` を合成した。
+前者は既存の大域的右 Kan 比較を使う。後者の元の任意余錐を保持して co-Yoneda で反映する。
+sifted 性を追加していない。これを元の反対 Yoneda に沿う `weightedSections` へ戻す接続は残る。
+
+検証済み全体211本13,707行・1,218宣言。追加 ID なし、200行超の補題なし、計算上限変更なし。
+残り：元の離散比較の射の自然性、元の全切断関手の一般余極限の反転・押し出し、離散層化・局所同値、
+S1 coverage・extensive。承認された同じ範囲で続ける。
+一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
