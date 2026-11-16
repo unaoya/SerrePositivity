@@ -205,3 +205,7 @@ S3 の逆向きの型は、段 0 の表の「`restrictJoinCone c (cechShape d) =
 2. 原典より狭いもの（Čech 層に限る、小さい通常の site に限る など）は `@[cite HTT "番号" (partial := special) "理由"]` で理由を書く。Kerodon の partial は属性を付けない（-c の見直しまで、規則どおり）。docstring に書くだけにする。
 3. 出典の番号が docstring の「使われ方」に入っているファイルは、規約（README の Conventions）どおり概要か方針の側に移す。
 属性・docstring だけの変更で、主張・証明は変えない。行数は外枠に数えない。対象ビルドと小監査を通してから停止点の報告に入れる。
+
+## 追記（2026-11-16 午後、調整役）：大域比較は rightKanHomUniversalIso を直接使ってよい
+
+`kanRightKanExtensionIso`（RightHomUniversal.lean:93）は `rightKanHomUniversalIso`（UniversalProperty.lean:61）を `kanRightKanExtension_homUniversal` で包んだだけなので、一般の版 `rightKanHomUniversalIso`・`rightKanHomUniversalIso_hom_fac` を直接使い、添字の同型で移した Hom 普遍性と組み合わせる経路を認める。条件：`RightKanHomUniversal` は仮定として置かず証明する（既存の Kan 拡張から、または添字の同型での移送で）。元の主張の型は変えない。点ごとの同型の組み立てはしない。添字の同型での移送は既存の構成の法則として数える。外枠 22,000 行は変えない。
