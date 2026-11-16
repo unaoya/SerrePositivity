@@ -2509,3 +2509,60 @@ G4・G5は未完。検証済みの数学の先端は `415b27a9b` のまま。未
 mainの取り込みは11-16 16:25の指示どおり保留したまま。検証済みはmath/schemeのみにコミットする。
 
 一覧：済み1／全体3（うち追加0）。
+
+実際のF8余単体図式への基底射影（既存G4の自然性・係数移送の法則、着手前の型、75〜140行）：`schemePerfectCechTupleSquareBaseComplex` は同じR・S・qを持つ基底四角形の全複体。`schemePerfectCechTupleSquareBaseProjectionComponent` は各nerve次数の元のF8の全複体からこの同じ複体への射影。`schemePerfectCechTupleSquareBaseProjection` は元のschemePerfectCechTupleSquareFunctorから定数基底図式への自然変換。各単体の射のbase/centerが恒等であることと既存のtotalComplexMap_compを使う。`schemePerfectCechTupleSquareBaseProjection_surjective` は実際の全ての各項の成分の全射性。中心外の同型やNoether帰納の仮定をここでは加えない。
+
+同じ定数基底列の正次数の全複体比較（既存G4の有限cone・係数移送の法則、着手前の型、三本計180〜290行）：`cechConstantCochainComplex A` は複体Aを定数余単体図式として交代余面複体へ写した二重複体。`cechConstantCochainComplex_d_f` は各縦次数の微分を元の定数加群列へ比較する。`cechConstantPositiveDouble A` は外次数0に明示的な零複体を置き、正次数は同じAと元の微分を保つ。`cechConstantPositiveDoubleProjection` は同じ定数二重複体からの各成分全射の射影。`cechConstantPositiveDoubleRowIso` はその各行とcechConstantPositiveTail(A.X b)の同じ項・微分を比較する同型。`cechConstantPositiveDouble_total_acyclic` は既存の行の判定で同じtotalの完全性へ渡す。層コホモロジーの比較や新しい対角線の境界消去は作らない。
+
+同じF8の余分な定数列を除く短完全列（既存G4の有限cone・全複体の法則、着手前の型、100〜180行）：`schemePerfectCechTupleSquarePositiveBaseProjection` は実際のF8の正方向の二重複体から、同じ基底全複体の正次数の商への射。`schemePerfectCechTupleSquarePositiveBaseProjection_surjective` は全成分の全射性。`schemePerfectCechTupleSquareReducedDouble` はこの同じ射の核。`schemePerfectCechTupleSquareReducedShortComplex`・`schemePerfectCechTupleSquareReduced_shortExact` は既存の核の短完全列。`DegreeOneProjectiveModel.perfectCechTupleSquareReducedTotal_acyclic` は元の射影F8の完全性と商の完全性から、同じ核のtotalの完全性を得るČech版。既存のtotalの短完全性とMathlibのHomologySequenceLemmas.acyclic_X₁を使う。中心側との比較とNoether帰納そのものはこの法則だけでは閉じない。
+
+
+## G4：実際のF8図式から正次数の定数基底列を除く
+
+元のschemePerfectCechTupleSquareFunctorから同じ基底図式への自然変換を作り、同じ定数列の正次数の商へ写した。射影は全ての外次数・縦次数の成分で全射。その実際の核の短完全列と、同じtotalの短完全性を使い、射影F8の完全性をこの核のtotalへ渡した。中心側との比較とNoether帰納を完了したという主張ではない。
+
+`SchemePerfectCechTupleSquareBaseProjection`（73行）：
+- `schemePerfectCechTupleSquareBaseComplex`：同じR・S・qだけを保持する基底四角形の全複体。
+- `schemePerfectCechTupleSquareBaseProjectionComponent`：各nerve次数の元のF8の全複体から同じ基底全複体への射影。
+- `schemePerfectCechTupleSquareBaseProjection_naturality`：実際の単体の射の後に射影すると、元の射影と一致する。
+- `schemePerfectCechTupleSquareBaseProjection`：元の実際のF8余単体図式から同じ定数基底図式への自然変換。
+- `schemePerfectCechTupleSquareBaseProjection_surjective`：同じ自然変換の各項の全次数の成分は全射。
+
+`CechConstantCochainComplex`（48行）：
+- `cechConstantCochainComplex`：同じ複体を定数余単体図式として既存の交代余面複体へ代入した値。
+- `cechConstantCochainComplex_d`：元の外微分は0と恒等を交互に取る。
+- `cechConstantCochainComplex_d_f`：各縦次数で評価した外微分は、同じ定数加群列の微分。
+
+`CechConstantPositiveDouble`（78行）：
+- `cechConstantPositiveDoubleTerm`：外零次に明示的な零複体を置き、正次数では元の複体を保つ各項。
+- `cechConstantPositiveDoubleD`：正の外次数で元の定数図式の微分を保つ。
+- `cechConstantPositiveDoubleD_squared`：同じ外微分の二乗は零。
+- `cechConstantPositiveDouble`：元の定数二重複体の正次数だけを残す商。
+- `cechConstantPositiveDoubleProjectionComponent`：元の定数図式から同じ商への射影の各成分。
+- `cechConstantPositiveDoubleProjection`：同じ成分からなる二重複体の射。
+- `cechConstantPositiveDoubleProjection_surjective`：全ての外次数・縦次数の同じ射影の成分は全射。
+
+`CechConstantPositiveDoubleTotal`（61行）：
+- `cechConstantPositiveDoubleRowIso`：同じ商の各行は、元の各加群のcechConstantPositiveTailと、同じ各項・微分を保って同型。
+- `cechConstantPositiveDouble_total_acyclic`：同じ商の整数係数のtotalは、既存の行の判定により完全。
+
+`SchemePerfectCechTupleSquareReducedDouble`（112行）：
+- `schemePerfectCechTupleSquarePositiveBaseProjection`：実際のF8の正方向の二重複体から、同じ定数基底列の正次数の商への射。
+- `schemePerfectCechTupleSquarePositiveBaseProjection_surjective`：実際の同じ射の全ての外次数・縦次数の成分は全射。
+- `schemePerfectCechTupleSquareReducedDouble`：元の同じ射の核。
+- `schemePerfectCechTupleSquareReducedShortComplex`：元の同じ核の包含と射影からなる短複体。
+- `schemePerfectCechTupleSquareReduced_shortExact`：同じ短複体は、既存の核の完全性と元の射の全射性により短完全。
+- `DegreeOneProjectiveModel.perfectCechTupleSquareReducedTotal_acyclic`：元の射影表示・中心のCartesian四角形・全射性・中心外同型・有限アフィン被覆の下で、同じ核のtotalが完全となるČech版。既存の射影F8、同じtotalの短完全性、MathlibのHomologySequenceLemmas.acyclic_X₁を使う。docstringにBST13 Lemma 3.9・BS17 Lemma 4.6(i)、Stacks 30.2.6の比較を形式化しないことを明記した。
+
+
+検証：五本をまとめたmodule形式の下書き検証 `2g-g4-reduced-square-check-3.log` は終了0。五本と直接importerの入口の対象ビルドは **5,309ジョブ・終了0**（`2g-g4-reduced-square-native.log`、依存のキャッシュ再生を含む）。固定manifest・下書き・本体のSHA256と全バイト一致を五本とも再確認した。対象ビルドと別の共有鍵で、非公開・生成分も含む実際の全所有宣言を監査し **44宣言・標準三公理のみ・終了0**（`2g-g4-reduced-square-audit.log`）。上の順に7、4、11、6、16宣言。選ばれた核とAbelian構造、核の包含の単射性・射影の全射性は同じ既存の構造で明示した。追加公理・sorry・既存宣言の型変更・資源上限の引き上げ・200行超の宣言なし。haveI・letI等のstyle警告は残る。共有鍵 --class impl --wait 3600、待ちは一件。root・下流全ビルド・AlgebraicGeometry全体監査なし。
+
+今回372行＋登録5行＝377行。基準56ea849a3からの外枠計数は **15,159行**（新規214モジュール本体14,899行、既存追加25行、入口235行）。新規所有宣言の小監査累計 **1,538**、既存15宣言は別計上。
+
+到達点は、元のF8の実際の全複体から余分な定数基底列を除いた同じ核のtotalの完全性まで。この核を元のY側と中心側の増大二重Čechへ比較すること、元の閉像のNoether帰納、アフィンの出口とG5は未完。最終のAugmentedRingCechExactと利用側の型は不変で、停止点2g-2ではない。
+
+残りを型に沿って再評価すると、中心側・Y側の短完全列300〜550行、同じ全複体と元の増大複体の比較450〜850行、元の閉像のNoether帰納400〜700行、元のアフィン環のČechへの出口250〜500行、G5の模型・Frobenius・filtered余極限の自然な移送600〜1,000行。残り合計 **2,000〜3,600行**、完成見込み **17,159〜18,759行（約17,200〜18,800行）**。前節の16,300〜17,300行を更新する。
+
+承認済み外枠18,000行を超える見込みとなったので、coordination.md §2の規則に従い、検証済みのこの束をコミットした後、この線の新しいLeanの編集・ビルドを止める。別の規模境界報告と、代わりの2h段0の紙を更新する。現在の条件付きの核の完全性をG4の一般の降下やG5の完成扱いにしない。mainは11-16 16:25の指示どおり取り込んでいない。
+
+一覧：済み1／全体3（うち追加0）。
