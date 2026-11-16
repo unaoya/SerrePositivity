@@ -17869,3 +17869,31 @@ lemma cosliceFiber_intervalFamilyHom_arrow {K C : SSet.{u}} {x y : C _⦋0⦌}
 新規1本47行・公開1補題・実環境宣言1。対象ビルド365（依存を含む1,954 jobs）・小監査とも終了0。共有鍵 --class impl --wait 3600、一枚の整理券、gtimeout 1700秒でビルドと小監査の間だけ使用。小監査266モジュール・1,712宣言、標準三公理のみ、sorryAx・追加公理なし。自レーン累計262本・17,848行、実環境1,705宣言。外枠まで4,152行。宣言名の照合で異なるファイル間の重複0、内部も0、git diff --check通過。証跡isw2-build365.log・isw2-validation365.json・isw2-declaration-collision-scan365.json。登録候補の一覧に追加。既存宣言・⑤a・公式入口・公式監査は変更していない。R03h・R03d・3b-4aは未完。
 
 一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+### 298.3 次の厳密な通常圏の表示の照合（未検証）
+
+元のraw pairingの標的を固定して反対表示にすると、通常圏のUnderの同じ射の族となる。その全次数のcoslice表示には、本体に既存のNerveComparison.nerveUnderMap・nerveUnderChain・cosliceTwistedArrowMapが使える。次の既存構成同士の照合を一時ファイルisw2-under-coslice-twisted.leanで検討した。
+
+```lean
+lemma nerveUnderMap_comp_cosliceTwistedArrowMap
+    {C : Type u} [Category.{u} C] (c : C) :
+    nerveUnderMap c ≫ cosliceTwistedArrowMap (nervePoint c) =
+      twistedPairingNerveMap ((Functor.const (Under c)).obj (Opposite.op c))
+        (Under.forget c) (fun i => i.hom)
+        (fun {_ _} f => by simpa using Under.w f)
+```
+
+同じ既存の構成の表示・自然性の法則であり、新しい数学の項目は増やさない。型のelaborationと全単体への展開は確認したが、証明は未完。最後の個別検査isw2-under-coslice-twisted3は終了1（以下の未解決の等式）。検証済み本数・行数・宣言数には含めず、一時ファイルだけに残した。
+
+```lean
+cosliceEdgewiseCollapse ⦋n⦌ ≫ (pointJoinStdSimplexIso n).hom ≫
+    (SSet.yonedaEquiv (X := nerve C)).symm (nerveUnderChain c σ) =
+  (edgewiseWeightIso n).hom ≫
+    (SSet.yonedaEquiv (X := nerve C)).symm
+      (twistedPairingSimplex ((Functor.const (Under c)).obj (Opposite.op c))
+        (Under.forget c) (fun i => i.hom) σ)
+```
+
+残りは、同じedgewise重みの左半分を最初の点に潰し右半分の順序を保持する式と、Under.wを使った交差射の合成則。その後も元のcorrected pairingの指定全同型・同じ底のpathとの照合が必要で、通常圏の表示のこの補題だけからR03hの全族の最終等式を推論しない。元のnative fiber射自身の弱同値性・R03d・3b-4aは未完。共有鍵は返却済み、起動中の自レーンのビルドなし。
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
