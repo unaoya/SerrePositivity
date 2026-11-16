@@ -2180,3 +2180,71 @@ G4・G5は未完。検証済みの数学の先端は `415b27a9b` のまま。未
 11-16 16:25の調整役の連絡に従い、略号表の変更を含むmainは取り込んでいない。今の停止点までは現在の枝で継続する。
 
 一覧：済み1／全体3（うち追加0）。
+
+同じ行の図式の束ね方の表記の分割：`rectangularPerfectRowGammaFunctor` は元の交叉族の余積射のnerve.rightOp⋙Γを明示する入口。元の同じ図式を名前で保持し、自然同型の型の elaboration が同じ深い式の照合を繰り返すのを避ける。資源上限は変更しない（同じ係数移送の内数）。
+
+同じ行の自然同型の各次数の分割：`rectangularPerfectRowComponentIso` は既存の同じ環同型を、元の二つの整数加群のModule構造を明示して加群同型へ移す。既存MathlibのAddEquiv.toIntLinearEquivを再利用し、自然同型の組み立てと各次数の照合を別の宣言へ分ける。計算量上限は既定のまま（同じ係数移送の内数）。
+
+同じ補正付き射影の微分との可換性の分割（既存G4の全複体の比較の内数、80〜140行）：`cechConstantTotalRetractionComponent_comm_succ` は正の水平成分で、`…_comm_zero` は零水平・零縦成分で、同じPの成分が元のtotalの微分と可換である式。前者は元の二重複体の正の水平列が同じFであること、後者は元のsingleの標準同型と同じ増大の零次を使う。元の各入射でのtotalの微分の式は、既存HAの同じ補題をimport allで再利用する。正の縦次数の偶奇と全次数の射はさらに必要であり、この二場合だけで比較を完成扱いにしない。
+
+同じ行の各次数の同型の評価の法則：`rectangularPerfectRowComponentIso_hom_apply` はその同じ加群同型の各タプルでの値が、元の矩形の環同型の値と一致する式。自然性の照合はこの評価を介して、検証済みの元の環の自然性へ戻す（同じ係数移送の内数、15〜25行）。
+
+同じ補正付き射影の全次数の分割（既存G4の全複体の比較の内数、140〜220行）：`cechConstantTotalRetractionComponent_comm_zero_succ` は正の縦次数で、定数列の0/idと元の増大の縦・水平の法則によりPとtotalの微分を照合する。`…Component_comm` で各入射から全次数の可換性を得て、`cechConstantTotalRetraction` を元の二つのtotal間の複体の射にする。`…_section` は元の包含との合成が恒等である式、`cechSingleTotal_acyclic_of_constant` は同じretractから元のsingleのtotalの完全性を戻す法則。これは既存G4の同じ増大の比較の分割であり、正次数で包含の全射性を仮定せず、別の最終型へ置き換えない。現在の七本の検証には含めない未検証下書きとする。
+
+同じ射影の各直和項の補助定義の公開：`cechConstantTotalRetractionSummand` は (a,b,n,h:a+b=n) に対し、定数増大列の(a,b)項から元のsingleのtotalの次数nへ、既に記述した同じ成分の式を与える。公開された計算可能な成分定義から参照するため、Leanのmodule可視性に合わせて同じ補助定義も公開する。別の構成や型の変更は行わない（同じ射影成分の分割の内数、20〜30行）。
+
+
+## G4：同じ行の増大・図式と定数増大列の比較の入力
+`FrobeniusArrowMapLaws`（91行）：
+- `frobeniusArrowDiagramMap_id`：同じ矢印の有限段の図式の写像は、元の恒等射を保つ。
+- `frobeniusArrowDiagramMap_comp`：同じ矢印の有限段の図式の写像は、元の合成を保つ。
+- `frobeniusArrowSmallDiagramMap_id`：同じ小さい添字の図式の写像は、元の恒等射を保つ。
+- `frobeniusArrowSmallDiagramMap_comp`：同じ小さい添字の図式の写像は、元の合成を保つ。
+- `frobeniusDirectLimitArrowMap_id`：同じ実際の Frobenius 順極限の矢印の写像は、元の恒等射を保つ。
+- `frobeniusDirectLimitArrowMap_comp`：同じ実際の Frobenius 順極限の矢印の写像は、元の合成を保つ。
+
+`RectangularPerfectRowAugmentation`（68行）：
+- `rectangularPerfectRowEquiv_augmentation`：同じ行の標準比較は、元の基底からの増大を元の矩形のappLEへ送る。
+
+`RectangularPerfectRowFunctor`（112行）：
+- `rectangularPerfectRowFunctor`：元の二重 Čech の縦次数 k を固定した、同じ実際の水平図式。
+- `rectangularPerfectRowFunctor_map_apply`：固定した縦次数の元の写像は、矩形の交叉上の実際の appLE。
+- `rectangularPerfectRowGammaFunctor`：元の同じ交叉族の余積射の nerve の実際のΓの図式。
+- `rectangularPerfectRowComponentIso`：同じ各次数の環同型を、元の二つの整数加群の構造を明示して移す。
+- `rectangularPerfectRowComponentIso_hom_apply`：同じ各次数の加群同型の評価は、元の矩形の係数の同じ環同型。
+- `rectangularPerfectRowFunctorIso`：同じ交叉族の nerve の係数と、元の実際の水平図式の自然同型。
+
+`CechConstantComplexAugmentation`（66行）：
+- `fullCechConstantComplexAugmentation`：全ての縦次数で、同じ基底の係数を元の有限像への制限で増大する。
+- `fullCechConstantComplexAugmentation_apply`：同じ全次数の増大の評価は、元の空集合から有限像への制限。
+- `fullCechConstantComplexAugmentation_single_zero`：元のsingleからの包含との合成の零次は、同じ元の増大。
+
+`CechConstantAugmentedDouble`（93行）：
+- `cechConstantAugmentedObject`：全ての縦次数に同じAを持つ、元の増大射の図式。
+- `cechSingleAugmentedObject`：元の零次singleからの包含を合成した、同じ増大の図式。
+- `cechSingleToConstantAugmented`：同じ包含と正の水平列の恒等を持つ、元の増大図式の射。
+- `cechSingleToConstantDouble`：同じ包含をB1の既存の増大複体関手で写した二重複体の射。
+- `cechSingleToConstantDouble_zero`：零水平成分は、同じ零次singleから定数列への包含。
+- `cechSingleToConstantDouble_succ`：正の水平成分は、同じ元のFの恒等写像。
+- `cechConstantAugmentation_vertical`：同じ全次数の増大と縦微分の合成は、定数列の元の0/id微分に一致する。
+- `cechConstantAugmentation_horizontal`：同じ増大の後の水平微分は、既存B1の二回の微分の零性による。
+
+`CechConstantTotalRetractionComponents`（106行）：
+- `cechConstantTotalRetractionSummand`：元の各直和項から、同じ補正付き成分の式でsingleのtotalへ送る。
+- `cechConstantTotalRetractionComponent`：同じ各直和項の補正付きの式による、全複体の次数nの射。
+- `cechConstantTotalRetractionComponent_ι_succ`：正の水平列では、元の同じ直和入射を保持する。
+- `cechConstantTotalRetractionComponent_ι_zero_zero`：零次の基底項は、元のsingleの標準同型で送る。
+- `cechConstantTotalRetractionComponent_ι_zero_succ`：正の縦次数では、偶数の場合だけ負の元の増大で隣の水平成分へ補正する。
+- `cechConstantTotalRetractionComponent_section`：元の包含のtotalの各次数の射に、同じ補正付き成分を合成すると恒等。
+
+`CechComplexRetractionExact`（31行）：
+- `cechComplex_acyclic_of_retraction`：同じ複体のretractは、元の各次数の完全性を保つ。
+
+
+検証：七本をまとめた下書き検証 `2g-g4-rectangular-extensions-check-7.log` 成功、errorとsorry警告なし。本体のmodule形式でも確認し、公開された計算用の成分が参照する同じ補助定義を公開した。修正後の下書きと本体は七本とも全バイト一致、固定manifestとも照合済み。対象七本と直接importerの入口のビルドは **5,277ジョブ・終了0**（`2g-g4-rectangular-extensions-native-2.log`）。別の共有鍵で非公開・生成分を含む実際の所有宣言を全件小監査し、**70宣言・標準三公理のみ・終了0**（`2g-g4-rectangular-extensions-audit.log`）。上のモジュール順に6、2、21、5、13、22、1。資源上限は既定のまま、各次数のModule構造と評価を明示して自然性の照合を分割した。既存宣言の型変更・追加公理・sorry・200行超の宣言なし。unused section variable、unused simp、unused variable、長行のstyle警告と入口の既存haveIのstyle警告は残る。鍵 --class impl --wait 3600 で一件ずつ、対象ビルドと小監査は別枠。root・下流全ビルド・AlgebraicGeometry全体監査なし。
+
+今回567行＋登録7行＝574行。基準56ea849a3からの外枠計数は **13,147行**（新規184モジュール本体12,917行、既存追加25行、入口205行）。新規所有宣言の小監査累計 **1,302**、既存15宣言は別計上。次の微分との可換性・同じretractからの完全性への接続の二本は196行・登録予定2行で、これらを含めると13,345行相当。完成見込み14,600〜17,300行、承認済み外枠18,000行は不変。
+
+到達点は、元の矩形の各行の全ての水平の射と増大を保つ実際の図式の同型、定数列から全タプル複体への全次数の増大、同じsingleとの包含、および元の全複体上の補正付き射影の各成分と単位則まで。補正付き射影の微分との可換性と、それによる元のsingleのtotalの完全性への接続はまだ未検証の二本。二本の最初の束はmoduleなしでimport allを読めず入口で終了したため、module形式へ直してから証明を検証する。この入口での失敗を証明の検証とは数えない。相対proper fppfへの代入・F8全複体・元の中心を保持するNoether帰納・G5は未完。最終のAugmentedRingCechExactと利用側の型は不変。mainは取り込んでいない。停止点2g-2ではない。
+
+一覧：済み1／全体3（うち追加0）。
