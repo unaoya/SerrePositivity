@@ -2461,3 +2461,51 @@ G4・G5は未完。検証済みの数学の先端は `415b27a9b` のまま。未
 11-16 16:25の調整役の指示に従い、Citationの変更を含むmain cd79e9cc5は取り込んでいない。次の定数列の射影は未検証の下書きに置き、本体へ登録・コミットしていない。
 
 一覧：済み1／全体3（うち追加0）。
+
+同じ定数列の正次数の比較（既存G4の有限cone・係数移送の法則、着手前の型、90〜150行）：`cechConstantPositiveTail` は元の定数列の零次だけを零加群に置き換え、正次数と微分を保つ複体。`cechConstantPositiveTail_acyclic` は既存の定数列の正次数完全性とd1=idから同じtailの完全性を得る。`cechConstantPositiveTailProjection` と各成分の全射性は、元の列から同じ正次数の商を取り出す。F8の実際の定数基底列の正次数を除く比較の内部の法則であり、新しい降下の仮定を置かない。
+
+同じF8の基底・中心への射影（既存G4の四角形の射・有限cone比較の法則、着手前の型、55〜100行）：`CechAugmentedSquare.baseSquare` は元のCとEを零複体にし、base・centerBase・quotientを保持した同じ四角形。`CechAugmentedSquare.Map.baseProjection` は二つの複体の射を零、基底と中心の射を恒等に取る元の四角形の射。`baseProjection_totalComplexMap_surjective` は、既存のtotalComplexMapの各成分が全射である式。元の構成の射を再利用し、二項複体の微分の可換性を作り直さない。
+
+同じ基底への射影の自然性（既存G4の自然性・合成則の法則、着手前の型、45〜90行）：`CechAugmentedSquare.Map.onBaseSquare` は元の四角形の射mのbaseとcenterを保ち、二つの零複体の射を零に取る同じbaseSquare間の射。`baseProjection_naturality` は m.comp(baseProjection t) = (baseProjection s).comp(onBaseSquare m)。元の四つの成分と合成則だけで示し、実際の余単体図式から定数基底図式への射に渡す。実装・検証の到達点は後続の検証結果の節に記録する。
+
+
+## G4：定数列の商とF8の基底・中心への自然な射影
+
+元の定数列の零次singleと正次数の商への射影を示し、各F8の四角形の二つの複体を零にした同じ基底・中心への射影を、元の四角形の射に自然にした。基底・中心・その間の商写像を保持し、元の四角形のtotalComplexMapをそのまま使う。次の実際の余単体図式と短完全列への組み立ては、この四本にはまだ含まない。
+
+`CechConstantSingleProjection`（70行）：
+- `cechConstantSingleProjection`：元の定数列から同じ零次singleへの標準射影。
+- `cechConstantSingleProjection_f_zero`：零次成分は同じsingleの標準同型の逆。
+- `cechConstantSingleAugmentation_projection`：元の包含と同じ射影の合成はsingleの恒等。
+- `cechConstantSingleProjection_quasiIso`：既存の包含の擬同型性と消去から、同じ射影の擬同型性を得る。
+- `cechConstantSingleProjection_surjective`：同じ射影の各成分は全射。
+
+`CechConstantPositiveTail`（96行）：
+- `cechConstantPositiveTailTerm`：元の定数列の零次だけを零加群へ置き換えた各項。
+- `cechConstantPositiveTailD`：正次数では元の定数列の微分を保つ。
+- `cechConstantPositiveTailD_squared`：同じ微分の二乗は零。
+- `cechConstantPositiveTail`：同じ正次数の各項と微分を持つ複体。
+- `cechConstantPositiveTail_acyclic`：元の定数列の正次数の完全性とd1=idから、同じ商の完全性を得る。
+- `cechConstantPositiveTailProjectionComponent`：元の列から同じ商への各成分の射影。
+- `cechConstantPositiveTailProjection`：同じ射影は微分を保つ。
+- `cechConstantPositiveTailProjection_surjective`：同じ射影の各成分は全射。
+
+`CechAugmentedSquareBaseProjection`（70行）：
+- `CechAugmentedSquare.baseSquare`：元のCとEを零複体にし、同じ基底・中心・商写像を保持した四角形。
+- `CechAugmentedSquare.Map.baseProjection`：元の四角形から同じ基底四角形への、基底と中心で恒等の射影。
+- `CechAugmentedSquare.baseProjection_totalComplexMap_surjective`：既存の同じtotalComplexMapの各成分は全射。
+
+`CechAugmentedSquareBaseProjectionNaturality`（37行）：
+- `CechAugmentedSquare.Map.onBaseSquare`：元の四角形の射の基底・中心を、そのまま基底四角形間の射へ渡す。
+- `CechAugmentedSquare.baseProjection_naturality`：同じ射影は、元の四角形の射とその合成に自然。
+
+
+検証：四本をまとめたmodule形式の下書き検証 `2g-g4-constant-quotients-check-1.log` は終了0。四本と直接importerの入口の対象ビルドは **5,304ジョブ・終了0**（`2g-g4-constant-quotients-native.log`、依存のキャッシュ再生を含む）。固定manifest・下書き・本体のSHA256と全バイト一致を四本とも再確認した。対象ビルドと別の共有鍵で、非公開・生成分も含む実際の全所有宣言を監査し **39宣言・標準三公理のみ・終了0**（`2g-g4-constant-quotients-audit.log`）。上の順に9、12、12、6宣言。選ばれた零対象の要素の一意性は、IsZeroから明示して使う。追加公理・sorry・既存宣言の型変更・資源上限の引き上げ・200行超の宣言なし。haveI等のstyle警告は残る。共有鍵 --class impl --wait 3600、待ちは一件。root・下流全ビルド・AlgebraicGeometry全体監査なし。
+
+今回273行＋登録4行＝277行。基準56ea849a3からの外枠計数は **14,782行**（新規209モジュール本体14,527行、既存追加25行、入口230行）。新規所有宣言の小監査累計 **1,494**、既存15宣言は別計上。今回の二つの数学の束は合計9モジュール、本体530行＋登録9行、所有宣言75件で、全件が対象ビルドと小監査を通った。
+
+実測と残る組み立てに合わせ、完成見込みの下端を更新し **16,300〜17,300行** とした。承認済み外枠18,000行は不変。残りは **G4の実際のF8余単体図式への射影・有限coneの短完全列の比較と元の中心を保持するNoether帰納、およびG5の模型の極限・Frobeniusとの交換・元のv被覆への移送**。今回の射影の自然性は各四角形の射に対する法則までで、元の図式への組み立てや一般のproper降下を完成扱いにしない。G4・G5は未完、停止点2g-2ではない。最終のAugmentedRingCechExactと利用側の型は不変。
+
+mainの取り込みは11-16 16:25の指示どおり保留したまま。検証済みはmath/schemeのみにコミットする。
+
+一覧：済み1／全体3（うち追加0）。
