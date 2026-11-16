@@ -284,3 +284,9 @@ E3 の sorry 0 には要らない。レーンが待ちで空いたときの仕�
 ## 9. 追記（2026-11-12 夜）：D79 で界面が KST を import した
 
 D79 (i)（615ceab26）で、E∞ の界面 `EInfinity/Interface/Theory.lean` が `KST.LocalizingInvariants.SpectrumHomotopyFunctor`（Ω スペクトルの準圏 `KST.Spectra.Sp` と `SpectrumHo.piFunctor`）を import するようになった。BS の主定理の閉包に KST のディレクトリが入る。中身は ∞ の一般論（R83 と同じ問題）なので、**R83 の一部として、`KST/Spectra` の Sp と `SpectrumHo` を InfinityCategories（Kerodon か HA の安定 ∞ 圏の節）へ移す**。KL-W1 の改名表は KST/Spectra を含まないので、新しい改名表を作る。時期：B3 に入れられれば B3、無理なら保守の先頭（BS の閉包を直すので優先）。
+
+## 10. 追記（2026-11-16）：略号表が import の連鎖にある（BR54）
+
+| 番号 | 問題 | 扱い |
+| --- | --- | --- |
+| BR54 | `Util/Citation.lean` の略号表（`knownKeys`・`knownEditions`、`bibliography.json` から生成）が属性の定義元と同じモジュールにあり、直接 896 本が import する。略号を一つ足すだけで root がほぼ全部再ビルドになる（11-16、65 分以上、四レーンが約 1 時間止まった） | 計画：属性の定義元からキーの検査を外す。属性はキーを記録するだけにし、検査は import の連鎖に入らない検査スクリプト（`bulk_citation_registry.py --check` と同じく `bibliography.json` と環境の記録を突き合わせる）か、照会コマンド `#cite_tags` と一緒に変更の少ない別モジュールへ。夜の一括で。それまで略号の追加は夜にまとめる（`coordination.md` §2） |
