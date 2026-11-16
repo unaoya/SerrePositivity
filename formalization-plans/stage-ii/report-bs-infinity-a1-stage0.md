@@ -3275,3 +3275,37 @@ S8の元の二つの結論が閉じた。指定離散比較の射の自然性、
 局所同値と切断の比較、およびS1のcoverage・extensiveは残る。
 Mathlibの局所全単射判定と同じ層化単位への接続を次に対象検証する。
 一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
+
+### 集合値局所同値の元の入口（11-16）
+
+`SetLocalEquivalence` 1本42行（文献属性・meta import4行を除く外枠計38行）
+4宣言を対象ビルド・小監査で確認した。記録 `/tmp/is-w1/s8-set-local-equivalence-1/`、
+終了0、標準三公理のみ、source SHA一致。定義はdraftsと同じ層化の同型の逆像。
+局所全単射の判定と単位の性質は、既存Mathlibの同じ層化・単位から証明した。
+
+```lean
+IsLocalEquivSet J φ := IsIso ((presheafToSheaf J (Type u)).map φ)
+
+isLocalEquivSet_iff_locallyBijective J φ :
+  IsLocalEquivSet J φ ↔
+    CategoryTheory.Presheaf.IsLocallyInjective J φ ∧
+    CategoryTheory.Presheaf.IsLocallySurjective J φ
+
+isLocalEquivSet_toSheafify J P :
+  IsLocalEquivSet J (CategoryTheory.toSheafify J P)
+```
+
+この通常の集合値の判定を、空間値層化での可逆性の結論としてはまだ数えない。
+次の離散層化の比較では、元の集合値単位と同じ射を使う。
+必要な切り分けは、まず
+`IsSheaf J (discretePresheaf P) ↔ CategoryTheory.Presheaf.IsSheaf J P`
+の元の制限全錐での比較、その後、同じ単位を保つ空間値反射との全自然な比較。
+既存の反射の存在だけから0切り捨ての保存を推論してはいけない。
+任意の通常の添字を持つ離散空間値図式の極限比較を、既存の全Hom判定から調べる。
+
+検証済み全体220本14,288行・1,256宣言（文献整理は外枠外）。
+今回閉じた元の結論は `sectionsOf_colimit`・`sectionsOf_pushout`（`5318de01c`）。
+未完：S8の `weightedSections_discrete_map`・`sheafify_discrete_eq`・
+`localEquiv_of_sheafifyIso`・`sections_localEquiv_iso`、S1の元のcoverage・extensive。
+目標全体は継続中で、完成停止点ではない。追加IDなし、計算上限変更なし。
+一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
