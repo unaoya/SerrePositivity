@@ -1650,3 +1650,33 @@ Frobenius の既存の矢印の図式の端点の照合（着手前、既存の�
 アフィンな忠実平坦な射と元の任意の底変換について、実際の元の conerve の各環の Frobenius 係数の増大完全性へ到達した。スキームの任意の有限アフィン被覆との自然な比較・非アフィンの proper fppf の二重 Čech・Noether帰納、G5の実際の模型と二つの filtered な移送はなお残る。この束だけで Thm 2.9 十分性や停止点2g-2の完成とは呼ばない。元の四角形に対する係数比較の自然性は下書きの検証中。見込み約10,000〜13,500行・外枠16,000行は不変。
 
 一覧：済み1／全体3（うち追加0）。
+
+
+## G4：同じ標準比較の、元の環の可換な四角形に対する自然性
+
+`FrobeniusConerveArrowNaturality`（57行）：`frobeniusConervePerfectIso_arrow_naturality` は元の可換な四角形 F:f→g について、同じ元の mapCechConerve F の各環の実際の Frobenius 順極限写像と、同じ実際の frobeniusDirectLimitArrowMap F の conerve の射を、標準比較が結ぶこと。既存の frobeniusArrowCocone_map を同じ conerve 関手で写し、各有限段の同じ脚で評価する。模型の射や filtered な図式の射への比較に使う。次数だけの自然性を、元の矢印の射の自然性と取り違えない。
+
+単独検証、本体とのソース完全一致、対象と入口のビルド5,217ジョブ成功、小監査1宣言（実際の所有元による非公開・生成宣言の有無も走査）・標準三公理のみ、終了状態0。ログ `2g-frobenius-conerve-arrow-naturality-check-1.log`・`2g-frobenius-conerve-arrow-naturality-native.log`・`2g-frobenius-conerve-arrow-naturality-audit.log`。局所的な backward.isDefEq.respectTransparency false、既定の資源制限。letIの style 警告あり。追加公理・sorry・既存の型変更・200行超の宣言なし。共有鍵 --class impl --wait 3600、待ちは一つ、対象ビルドと小監査は別枠。root・下流全ビルド・全体監査なし。
+
+今回1モジュール57行＋入口1行。新規132モジュール本体8,876行。既存追加25行を含む本体8,901行、登録132行・入口の追加空行21行を全て含む外枠計数 **9,054行**。新規小監査累計902宣言、既存15宣言は別計上。
+
+## 残りの規模の見込みの更新（2026-11-16、9,054行時点）
+
+環の conerve と各係数環の Frobenius 系・標準脚・増大・次数と元の四角形の自然性、および同じ増大環図式の忠実平坦な完全性の接続まで検証済み。残りを具体化し、従来の合計約10,000〜13,500行を、**合計約12,000〜15,500行**へ更新する。外枠16,000行は変更しない。
+
+| 残る既承認の仕事 | 残りの行数の見込み |
+| --- | --- |
+| 有限アフィン被覆での実際の Frobenius 係数の増大比較 | 300〜700 |
+| 実際の affine nerve の大域切断と環の conerve の自然な比較 | 200〜500 |
+| 非アフィンの proper fppf の相対二重 Čech と実際の被覆比較 | 400〜1,000 |
+| 検証済み F8 四角形と二重複体の全複体の接続 | 600〜1,400 |
+| アフィン交叉での nil 不変性と、実際のブローアップを保つ Noether 帰納 | 400〜900 |
+| 同じ係数比較の二つの filtered 余極限との自然な整合性 | 500〜900 |
+| G2 の実際の模型の代入と、G5 の最終型への移送・報告 | 500〜1,000 |
+| 残り合計 | 2,900〜6,400 |
+
+この表は既存の G4・G5 の分割と法則で、新しい主項目・型・主張の追加ではない。Mathlib `AffineScheme.lean` の `preservesLimit_rightOp_Γ`・`preservesColimit_Γ` は、対象がアフィンの同じ図式での比較に使える。さらに既存の `SerrePositivity.HomologicalAlgebra.bicomplexTotal_exactAt_of_rows`・`totalToRowZero_quasiIso`（`BicomplexRowQuasiIso.lean`）と列の版（`BicomplexColumnQuasiIso.lean`）があり、B1 の判定法を作り直さずに接続する材料がある。後者の全射擬同型版には成分の全射性が必要で、これを無条件の比較と読み替えない。係数環と加群の宇宙が同じ API なので、必要なら整数環の ULift と既存の係数制限で内部的に移送し、他のレーンの既存宣言の型は変えない。これらの AG への代入自体はまだ未検証。
+
+G4・G5と停止点2g-2は未完。最終の AugmentedRingCechExact と利用側の型は不変。
+
+一覧：済み1／全体3（うち追加0）。
