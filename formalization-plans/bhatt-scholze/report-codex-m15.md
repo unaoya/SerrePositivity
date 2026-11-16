@@ -17958,3 +17958,110 @@ M15・drafts・main・⑤aの既存ファイル・Interfaceは変更せず、全
 
 G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み18,338行。
 M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
+
+## §127 G01：非退化な実原子の生成元の型と、模型の純粋性・実親・指定面の一体化（11-16）
+
+### 127.1 検証済みの追加
+
+追加は **3ファイル276行・明示宣言10**。累計 **176ファイル18,614行・明示宣言887**。
+WalkingAdjunctionAtomicCells.lean は128行・4宣言、
+WalkingAdjunctionAtomicCellParentLaws.lean は80行・4宣言、
+WalkingAdjunctionAtomicCellParentPositions.lean は68行・2宣言。
+明示宣言には生成元のstructureの型を1根として含める。自動生成される欄・コンストラクタは別根に数えない。
+個々の宣言・証明は200行以下、新規Leanの行長は100文字以下。
+同じG01の全実随伴・実filtrationに使う、構成済みの実生成元・実親・純粋性・指定面の
+実データの一体化と、その幅・面・有限添字の法則であり、一覧IDは追加しない。
+
+非退化な実原子を、元の全実関手chain、原子性atomic、元の単体集合での非退化性nondegenerateを
+保持する生成元の型WalkingAdjunctionAtomicCellへまとめた。
+次数と両端は型に置く。
+有限順序模型のNativeFillableは、plus始点では偽、minus始点の次数0では真、
+minus始点の正の次数では元の実最小元の辺が純粋な底併合であるという、検証済みの具体的条件を使う。
+この定義は現在の有限順序模型の条件であり、原典の文字列の条件と一致するとの全比較を済みにはしない。
+
+NativeFillableでない生成元から、一つ高次のminus始点の実生成元parentを実際に構成した。
+plus始点には既存の実終端の親、minus始点の正の次数には既存の実最初の細分を使う。
+minus始点の次数0ではNativeFillableが真なので、非純粋性との矛盾でその場合を排除する。
+元の実構成の原子性・非退化性の定理を適用し、実親の存在や非退化性を引数の欄に置いていない。
+実親の実最小元を回収し、挿入した実辺の個数と全点の値を元へ揃えることで、
+構成した実親がNativeFillableを満たすことも証明した。
+
+まとめた実親の幅は、plus始点では元より1大きく、minus始点では元の幅に等しい。
+実親の指定面の添字parentFaceIndexも元の実構成から取り出した。
+plus始点では親の最後、minus始点では元の実最小元の直後である。
+元の生成元を親のHomへ移すparentChildImageは、plus始点で実生成射の前置、minus始点で元の実全関手となる。
+親の指定面がこのparentChildImageそのものと等しいことを、元の全実関手の等式で検収した。
+
+指定面の実添字は常に0でないことも証明した。
+その添字が親の最後より小さいことは、元の生成元の始点がminusであることと同値となる。
+従って内側と最後の二つの実付着に必要な位置の制約を、元の実添字から結論として回収できる。
+これらの法則は親の型の新しい証人を入力にせず、既存の実構成から得ている。
+
+### 127.2 型と未完の境界
+
+原典はRiehl–Verity Definition 4.1.1・4.2.1、Lemma 4.2.10、Proposition 4.2.15、
+HA Proposition 4.7.3.3、Kerodon Remark 6.2.1.4（Tag 02EN）。追加の型は以下。
+
+```lean
+structure WalkingAdjunctionAtomicCell (n : ℕ) (X Y : WalkingAdjunctionPoint) where
+  chain : ComposableArrows (walkingAdjunctionHom X Y) n
+  atomic : WalkingAdjunctionLevelIsAtomic (X := ⟨X⟩) (Y := ⟨Y⟩) chain
+  nondegenerate : ULift.up chain ∈ (WalkingAdjunctionHomShape.{u} X Y).nonDegenerate n
+
+def WalkingAdjunctionAtomicCell.NativeFillable {n : ℕ} {X Y : WalkingAdjunctionPoint}
+    (a : WalkingAdjunctionAtomicCell.{u} n X Y) : Prop
+
+def WalkingAdjunctionAtomicCell.parent {n : ℕ} {X Y : WalkingAdjunctionPoint}
+    (a : WalkingAdjunctionAtomicCell.{u} n X Y) (hnf : ¬ a.NativeFillable) :
+    WalkingAdjunctionAtomicCell.{u} (n + 1) .minus Y
+
+lemma WalkingAdjunctionAtomicCell.parent_nativeFillable {n : ℕ} {X Y : WalkingAdjunctionPoint}
+    (a : WalkingAdjunctionAtomicCell.{u} n X Y) (hnf : ¬ a.NativeFillable) :
+    (a.parent hnf).NativeFillable
+
+lemma WalkingAdjunctionAtomicCell.parent_width {n : ℕ} {X Y : WalkingAdjunctionPoint}
+    (a : WalkingAdjunctionAtomicCell.{u} n X Y) (hnf : ¬ a.NativeFillable) :
+    walkingAdjunctionOrdinalWidth (a.parent hnf).chain = walkingAdjunctionOrdinalWidth a.chain +
+      (match X with | .plus => 1 | .minus => 0)
+
+def WalkingAdjunctionAtomicCell.parentFaceIndex {n : ℕ} {X Y : WalkingAdjunctionPoint}
+    (a : WalkingAdjunctionAtomicCell.{u} n X Y) (hnf : ¬ a.NativeFillable) : Fin (n + 2)
+
+def WalkingAdjunctionAtomicCell.parentChildImage {n : ℕ} {X Y : WalkingAdjunctionPoint}
+    (a : WalkingAdjunctionAtomicCell.{u} n X Y) :
+    ComposableArrows (walkingAdjunctionHom .minus Y) n
+
+lemma WalkingAdjunctionAtomicCell.parent_face {n : ℕ} {X Y : WalkingAdjunctionPoint}
+    (a : WalkingAdjunctionAtomicCell.{u} n X Y) (hnf : ¬ a.NativeFillable) :
+    finiteChainFace (a.parent hnf).chain (a.parentFaceIndex hnf) = a.parentChildImage
+
+lemma WalkingAdjunctionAtomicCell.parentFaceIndex_ne_zero {n : ℕ}
+    {X Y : WalkingAdjunctionPoint} (a : WalkingAdjunctionAtomicCell.{u} n X Y)
+    (hnf : ¬ a.NativeFillable) : a.parentFaceIndex hnf ≠ 0
+
+lemma WalkingAdjunctionAtomicCell.parentFaceIndex_lt_last_iff {n : ℕ}
+    {X Y : WalkingAdjunctionPoint} (a : WalkingAdjunctionAtomicCell.{u} n X Y)
+    (hnf : ¬ a.NativeFillable) : a.parentFaceIndex hnf < Fin.last (n + 1) ↔ X = .minus
+```
+
+現在の有限順序模型で、実生成元・純粋性条件・非純粋な元からの実親・実親の純粋性、
+幅・指定面の実全関手の等式・付着の実位置までを一つの型の上で検証した。
+原典の文字列の幅・fillable条件との全比較、親と子の往復をこの型へまとめた全単射、
+全ての順位をまとめたfiltrationとparental subcomputadの全付着の構成は未完。
+元のQCatAdjunctionからの全coherentな延長、水平反対の向きの全比較、
+同じF≫U・単位・余単位・HAモデルとの照合も未完である。
+G01の済みは0、G02以降も未完を維持する。
+
+### 127.3 検証と進み
+
+with_build_lock.sh --class impl --wait 3600、最大240秒の短い枠で対象ビルドと追加10根だけの公理監査を確認した。
+最終固定コマンドの対象はWalkingAdjunctionAtomicCellParentPositions:oleanで、今回の他の2ファイルも取り込む。
+対象ビルド・監査と外側の終了は0、最終対象ビルドは警告なし。
+実最小元の選択に元の非退化性の引数を明示し、実面の両端の同じ実対象と実個数へ揃えて最終検証した。
+追加10根は入力名と出力名が一致し、公理依存はpropext・Classical.choice・Quot.soundのみ。
+sorryAx・追加公理なし。入力・根・監査全出力・対象ビルドログは
+[g12-atomic-cells-audit-2026-11-16/](g12-atomic-cells-audit-2026-11-16/)に保存した。
+M15・drafts・main・⑤aの既存ファイル・Interfaceは変更せず、全体ビルド・大きい監査は行っていない。
+
+G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み18,614行。
+M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
