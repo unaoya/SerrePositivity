@@ -1,6 +1,6 @@
 {
  "version": "1.3.0",
- "packagesDir": "../../.lake/packages",
+ "packagesDir": "../.lake/packages",
  "packages": [
   {
    "type": "path",
@@ -8,7 +8,7 @@
    "name": "SerrePositivity",
    "manifestFile": "lake-manifest.json",
    "inherited": false,
-   "dir": "../..",
+   "dir": "..",
    "configFile": "lakefile.toml"
   },
   {
@@ -204,7 +204,7 @@
    "configFile": "lakefile.lean"
   }
  ],
- "name": "KerodonBlueprint",
+ "name": "SerreBlueprint",
  "lakeDir": ".lake",
  "fixedToolchain": false
 }

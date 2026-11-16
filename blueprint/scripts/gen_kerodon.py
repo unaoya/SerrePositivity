@@ -1,14 +1,14 @@
 """Kerodon の章を Verso Blueprint の章モジュールとして生成する（2026-11-16、試作）。
 正本は research/kerodon-coverage/（review/ch<N>.csv の状態・宣言・判定の理由、item-tags.csv の Tag、toc.md の見出し）。
 この生成物を手で直さない。表を直して生成し直す。
-使い方（リポジトリの root で）：python3 blueprint/kerodon/scripts/gen_chapter.py 1
+使い方（リポジトリの root で）：python3 blueprint/scripts/gen_kerodon.py 1
 - 各項目は一つのノード。ラベルは kerodon_<番号>（点を _ に）。
 - 状態が own・mathlib・both で、宣言が今のソースで一意に解決できるものだけ (lean := …) で結ぶ。partial は本文に宣言名を挙げるだけ（結ぶと形式化済みに数えられるため）。
 - 本文は対応表の判定の理由（日本語の要約）。Kerodon の本文は写さず、Tag へリンクする。"""
 import csv, re, os, sys, glob, collections, json
 ch = sys.argv[1]
 K = 'research/kerodon-coverage'
-OUT = 'blueprint/kerodon/KerodonBlueprint/Chapters'
+OUT = 'blueprint/SerreBlueprint/Kerodon'
 # 見出し
 toc = {}
 for l in open(f'{K}/toc.md', encoding='utf-8'):
@@ -99,5 +99,5 @@ for sec in sorted(by_sec, key=lambda s: [int(x) for x in s.split('.')]):
            f'Kerodon の {sec} 節（[Tag {t[0]}](https://kerodon.net/tag/{t[0]})）の項目と、SerrePositivity・Mathlib の宣言との対応。本文は対応表（research/kerodon-coverage）の判定の理由の要約で、Kerodon の本文の写しではない。\n' if t else '']
     open(f'{OUT}/{mod}.lean', 'w', encoding='utf-8').write('\n'.join(hdr + body) + '\n')
     modules.append(mod)
-json.dump({'chapter': ch, 'modules': modules, 'stats': dict(stats)}, open(f'{OUT}/../ch{ch}-generated.json', 'w'), ensure_ascii=False, indent=1)
+json.dump({'chapter': ch, 'modules': modules, 'stats': dict(stats)}, open(f'{OUT}/ch{ch}-generated.json', 'w'), ensure_ascii=False, indent=1)
 print(modules, dict(stats))
