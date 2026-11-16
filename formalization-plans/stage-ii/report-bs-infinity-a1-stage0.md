@@ -2913,3 +2913,113 @@ weightedSections_nativeLimitIso O hE P d hd :
 S1 の coverage・extensive の残り。元の圏から Kan 局所形状への既存の射の射影則を次に検証する。
 検証済み全体199本12,939行・1,152宣言。外枠18,600行。
 一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
+
+### S8 続報：元の離散重みでの指定切断との比較（停止・再見積もり）
+
+新規7本452行45宣言の対象ビルド・小監査が完了。標準三公理のみ、source SHA 一致。
+記録：`/tmp/is-w1/s8-native-left-limit-2/`（2本14宣言）、
+`s8-unstraightening-base-iso-1/`（2本7宣言）、`s8-fixed-left-limit-2/`（1本9宣言）、
+`s8-discrete-weighted-sections-2/`（2本15宣言）。全runnerの終了コード0を確認。
+
+```lean
+weightedSections_discrete (O : Presheaf C E) (hE : IsPresentable E)
+    (P : Cᵒᵖ ⥤ Type u) (hP : HasLimit (sectionsOfDiagram P O)) :
+  VertexIso ((weightedSections O hE).app _ (SSet.opObjEquiv.symm
+    ((discretePresheafInclusion C).val.app _ (nerveVertex P)))) (sectionsOf P O hP)
+```
+
+これは drafts の元の型。既存の **自然な** `SetWeight.elementsComparisonNatural` とその射影・同値性を使う。
+古い `elementsComparison` を使った初回も検証は通ったが、自然な既存比較へ揃えて再検証した。
+指定した元の `sectionsOfCone` を保持する。射の自然性 `weightedSections_discrete_map` はまだ未完成。
+
+既存の密度比較の射影を反転・宇宙変更で計算し、小さい left 全空間上の指定極限へ接続した。
+`smallLeftUnstraighteningBaseIso` は既存の引き戻し比較射を `asIso` として読むだけで、
+新しい持ち上げやホモトピーを構成していない。元の前層形状へ戻す同じ底同型で錐を制限した。
+全て既存構成の射影・評価・係数移送・同型保存・合成則の証明分割。追加 ID なし。
+200行を超える補題はない。計算上限は変更していない。
+
+検証済み全体 **206本13,391行・1,197宣言**。今回の一連の追加は22本1,242行131宣言。
+入口・監査登録は調整役に委ねる。S1・S8 全体は未完成、S7 は後続のまま。
+
+#### 残りの型の照合と見込み
+
+元の drafts を再照合した。点ごとの0切り捨て判定と離散層化の比較も未供給であり、
+今回の離散重みの値比較だけでは埋まらない。既存の `Sheafification` は反射のデータで、
+左完全性や集合値層化との自然な一致を結論として取り出せる型ではない。
+一般の余極限についても、右 Kan 延長の存在と点ごとの値だけでは保存定理の証明は完結しない。
+
+| 残り | 再利用と必要な接続 | 追加見込み |
+|---|---|---:|
+| S1 coverage・extensive | `CoverageUniversalDescent`・`DescentTopology`、元の生成篩の降下から全引き戻しへの接続、空族を含む有限積判定 | 900〜1,600行 |
+| S8 離散重みの射の自然性 | 今回の同じ指定比較、`elementsComparisonNatural` の全自然性、元の `sectionsOf_map`、右 Kan の指定変換との全族照合 | 800〜1,400行 |
+| S8 任意の小さい余極限の反転 | 元の全関手 `weightedSections`、密度比較、同じ全余錐の普遍性。指定余錐を仮定した条件付き保存では閉じない | 900〜1,500行 |
+| S8 点ごとの0切り捨て・離散層化 | `Is0Truncated` の本質像、G13、集合値層化。反射の存在から0切り捨て保存・同じ単位の自然な比較への接続 | 1,000〜1,800行 |
+| S8 局所同値 | S4 の生成篩辺と層化単位、上の全余極限の反転・離散比較から元の指定射の可逆性へ | 600〜1,000行 |
+| S8 押し出し・同値な元の圏 | 検証済みの `discretePushout_isDiscrete` と任意余極限の反転、同値な添字の指定極限比較 | 100〜200行 |
+| **追加合計** | S7 を含めない | **4,300〜7,500行** |
+
+全体の見込みは **17,691〜20,891行**。上端が外枠18,600行を超える見込みになった。
+`inf-supply-w1.md` の外枠・共通停止規則に従い、検証済みをコミットし、この線の Lean の追加を止める。
+これは不可能性の主張ではなく、現在の残りの接続を含めた見積もり。外枠を自分で上げない。
+
+型の正本は引き続き drafts/Sheaves。残りの型を以下に保持する（名前の省略は open namespace のみ）。
+
+```lean
+-- S1：元の生成篩だけの降下を入力にする。
+isSheaf_toGrothendieck_iff (K : Coverage C) (F : Presheaf C E) :
+  IsSheaf K.toGrothendieck F ↔
+    ∀ U (R : Presieve U), R ∈ K.coverings U →
+      IsLimitCone (restrictionCone F (Sieve.generate R))
+
+isSheaf_extensive_iff_preservesFiniteProducts [FinitaryExtensive C] (F : Presheaf C E) :
+  IsSheaf (extensiveTopology C) F ↔ PreservesFiniteProductsOnSite F
+
+-- S8：以下は元の単位と選択した比較を使用する。
+weightedSections_discrete_map (O : Presheaf C E) (hE : IsPresentable E)
+    {P Q : Cᵒᵖ ⥤ Type u} (φ : P ⟶ Q)
+    (hP : HasLimit (sectionsOfDiagram P O)) (hQ : HasLimit (sectionsOfDiagram Q O)) :
+  let e := (nerve.edgeMk φ).map (discretePresheafInclusion C).val
+  let r := (edgeOp e.toTruncated).map ((truncation 2).map (weightedSections O hE))
+  Truncated.HomotopyCategory.homMk r ≫ (weightedSections_discrete O hE P hP).hom =
+    (weightedSections_discrete O hE Q hQ).hom ≫
+      Truncated.HomotopyCategory.homMk (sectionsOf_map φ O hP hQ).toTruncated
+
+sectionsOf_colimit (O : Presheaf C E) (hE : IsPresentable E) {K : SSet.{u}}
+    {D : (SSet.uliftFunctor.{u+1,u}).obj K ⟶ PresheafCat C SpaceInfinity.{u}}
+    (c : JoinCocone D) (hc : IsColimitCone c) :
+  IsLimitCone (mapJoinCone (weightedSections O hE) (coconeReverseCone c))
+
+is0Truncated_iff_pointwise (x : (PresheafCat C SpaceInfinity.{u}) _⦋0⦌) :
+  Is0Truncated x ↔ ∀ U : C,
+    Is0TruncatedSpace ((vertexToPresheaf x).app _ (ULift.up (nerveVertex (Opposite.op U))))
+
+sheafify_discrete_eq (J : GrothendieckTopology C) (hJ : Sheafification J SpaceInfinity.{u})
+    (P : Cᵒᵖ ⥤ Type u) :
+  FunctorIso (sheafify J hJ (discretePresheaf P))
+    (discretePresheaf (((presheafToSheaf J (Type u)).obj P).obj))
+
+-- IsLocalEquivSet J φ := IsIso ((presheafToSheaf J (Type u)).map φ)
+localEquiv_of_sheafifyIso (J : GrothendieckTopology C) (hJ : Sheafification J SpaceInfinity.{u})
+    {P Q : Cᵒᵖ ⥤ Type u} (φ : P ⟶ Q) (hφ : IsLocalEquivSet J φ) :
+  IsInvertibleEdge ((nerve.edgeMk φ).map
+    ((discretePresheafInclusion C).val ≫ sheafificationFunctor J hJ)).toTruncated
+
+sections_localEquiv_iso (J : GrothendieckTopology C) {P Q : Cᵒᵖ ⥤ Type u}
+    (φ : P ⟶ Q) (hφ : IsLocalEquivSet J φ) (O : Presheaf C E) (hO : IsSheaf J O)
+    (hP : HasLimit (sectionsOfDiagram P O)) (hQ : HasLimit (sectionsOfDiagram Q O)) :
+  IsInvertibleEdge (sectionsOf_map φ O hP hQ).toTruncated
+
+sectionsOf_pushout {P Q R : Cᵒᵖ ⥤ Type u} (f : P ⟶ Q) (g : P ⟶ R) [Mono f]
+    (O : Presheaf C E) (hE : IsPresentable E) :
+  IsLimitCone (mapJoinCone (weightedSections O hE)
+    (coconeReverseCone (pushoutCocone (discretePushoutSquare f g))))
+
+sectionsOf_eq_limit_elements (P : Cᵒᵖ ⥤ Type u) (O : Presheaf C E)
+    (h : HasLimit (sectionsOfDiagram P O)) {D : Type u} [SmallCategory D]
+    (e : D ≌ P.Elements)
+    (c : JoinCone ((SSet.uliftFunctor.{u+1,u}).map
+      (nerveMap (e.functor ⋙ Functor.Elements.π P)) ≫ O)) (hc : IsLimitCone c) :
+  VertexIso (sectionsOf P O h) c.vertex
+```
+
+一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
