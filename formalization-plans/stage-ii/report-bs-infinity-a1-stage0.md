@@ -5981,3 +5981,87 @@ S8の同じ指定大域比較と局所比較の照合、Čechの局所同値、�
 同じ通常の層化との比較、S1の一般Coverageは未完。
 mainは取り込まず、S7・R2・R3は再開しない。
 一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+
+### 指定spanの制限同型の回収（11-17 未明、未検証）
+
+(B)の調査で、既存LeftFibrationSpanStrictificationの証明中の相対同型hが、
+結論の `∃ f, f ≫ q = p ∧ IsPrecompositionEquivalence f` では捨てられていることを確認した。
+新規LeftFibrationSpanRestrictionWitnessは、その同じ証明の分割として
+`∃ f hf, IsPrecompositionEquivalence f ∧ Nonempty (VertexIso
+  ((relativeFunctorOverPre q (Over.homMk a ha)).app _ (relativeFunctorVertex q p f hf))
+  (relativeFunctorVertex q r b hb))` を記述した（200行未満、追加IDなし）。
+既存の本文は変更しない。この型の証明と、旧chooseがspanに関する引数を
+選択条件に保持しないことの一時rfl検査を、一枚の整理券で検証する。
+後者は元の最終定理の反例ではなく、選択条件の内容を確かめる検査である。
+検証済み累計21,379行。S1・S8は未完。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+
+## 指定復元比較の選択条件についての判断依頼（11-17 未明）
+
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+### 検証済みの証明分割と代案
+
+- LeftFibrationSpanRestrictionWitness：49行・1本・1所有宣言。
+  `/tmp/is-w1/s8-span-restriction-witness-2/`で対象ビルド・小監査が終了0。
+  元の証明中の同じ相対同型hを保持する型が通った。旧chooseのspan引数に関する
+  一時rfl検査も終了0。これは最終定理の反例の検査ではない。
+- ScaffoldCoherentComparison：78行・1本・9所有宣言。
+  `/tmp/is-w1/s8-scaffold-coherent-comparison-1/`で対象ビルド・小監査が終了0。
+  既存のscaffoldTransportComparisonSpanをそのまま再利用し、新しい置換やspanは作らない。
+  この同じspanのsource脚に沿う制限とtarget脚との相対同型を選択条件に含め、
+  比較射・射影の等式・前合成同値性・指定制限同型を同時に得る。
+
+両方とも成功JSON・対象SHA一致、標準三公理のみ。計算上限は同じ。
+既存の本文は変更していない。検証済み累計は
+**21,506行・新規339本＋承認された既存2本の差分**（今回127行）。
+
+### 残る照合の型と、現在の選択条件で保持されないもの
+
+(B)で使う同じ比較の法則は、適切なQuasicategory・LeftFibrationの仮定の下で
+
+```lean
+leftStraighteningInfinityDiagram_baseChangeIso p k ≪≫
+  leftStraighteningInfinityDiagram_representationIso (pullback.snd p k)
+    (R.nativeRestrict k) =
+  (leftStraighteningInfinityDiagram_representationIso p R).precomp
+    ((SSet.uliftFunctor.{u + 1, u}).map k)
+```
+
+という元の指定同型の等式。任意の別の同型の存在では足りない。
+元のrepresentationIsoは初頂点上のnerveLeftTransportRepresentationを経由し、
+そのcomparisonはleftCoherentTransportDirectComparisonを使う。
+この比較射は、底上の等式と前合成同値性だけを結論にした存在命題からchooseしている。
+元のstrictificationの証明には同じspanに沿う相対同型hがあるが、公開の選択条件にはない。
+今回の一時rfl検査は、同じp・qに対してspanの引数を変えても、
+弱い存在命題のchooseは定義上同じになることを確認した。
+この事実だけから元の最終定理が偽だとは結論しない。
+ただし、この選択条件だけから指定scaffoldとの制限同型を取り出す経路は現時点でない。
+
+### 具体的な既存本文の差分案（未適用）
+
+対象はLeftCoherentTransportDirectComparison.leanの次の3本文だけ。
+
+```lean
+leftCoherentTransportDirectComparison p := scaffoldCoherentComparison p
+leftCoherentTransportDirectComparison_projection p := scaffoldCoherentComparison_projection p
+leftCoherentTransportDirectComparison_isPrecompositionEquivalence p :=
+  scaffoldCoherentComparison_isPrecompositionEquivalence p
+```
+
+新規ScaffoldCoherentComparisonのimportを1行追加する。公開の名前・型・仮定を保ち、
+存在定理exists_leftCoherentTransport_directComparisonとQCatEquivalenceの証明は変えない。
+完全な差分は `/tmp/is-w1/s8-scaffold-coherent-comparison-1/proposed-existing-bodies.patch`。
+新規ファイルの現ソースのimport閉包に旧DirectComparisonはなく、置換で循環しないことを確認した。
+これは先に承認されたSmallLeftUnstraighteningFunctorIsoの3本文とは別の変更なので、
+指示書§2.1「既存の宣言の本文・型・名前は変えない（どうしても要るときは止めて報告）」に従い、
+適用前に判断を依頼する。旧値とのrfl一致を主張しない。
+承認された場合は、適用前後の保存比較v3bで公開の型・属性・公理を照合し、
+直接importerのNerveTransportRepresentation・SmallLeftCoherentTransportReconstruction・F1、
+および変更した選択に依存する全Sheavesを対象検証する。
+この修正だけで(B)の全式が済むとは主張せず、指定制限の同型を起点として残る法則を証明する。
+
+S1・S8は未完。S7・R2・R3は再開せず、mainも取り込んでいない。
+外枠26,000行は据え置き。上の既存本文の適用は止め、検証済みと差分案を保存して報告する。
