@@ -34,6 +34,21 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 variable {p : ℕ} [Fact p.Prime] {A : Type u} [CommRing A]
 
+/-- 完備化前の同じ半自由行と、同じ加群の上に有界な導来底変換の比較。 -/
+def affineResolvedRowUncompletedSourceIso
+    (P : OrientedPrism p A) (hP : IsBoundedPrism P) (r : ℕ) (n : SimplexCategory) :
+    let α := (Construction61.crystallineCoverMap P).toRingHom
+    let M := (affineBaseModules P hP r).obj n
+    let K := (CochainComplex.singleFunctor (ModuleCat.{u} A) 0).obj M
+    DerivedCategory.Q.obj (baseChange α ((complexResolutionFunctor A).obj K)) ≅
+      ((boundedAboveDerivedBaseChange α).obj (boundedAboveDerivedSingleFunctor.obj M)).obj := by
+  let α := (Construction61.crystallineCoverMap P).toRingHom
+  let M := (affineBaseModules P hP r).obj n
+  let K := (CochainComplex.singleFunctor (ModuleCat.{u} A) 0).obj M
+  let ε : (complexResolutionFunctor A).obj K ⟶ K := (complexResolutionAugmentation A).app K
+  exact (nativeDerivedScalarModelIso α ε (complexResolutionAugmentation_quasiIso A K)
+    (complexResolutionFunctor_kFlat A K)).symm ≪≫ unboundedBoundedModuleBaseChangeIso α M
+
 /-- 元の剰余行の指定された半自由模型を、同じ上に有界な完備底変換へ移す。 -/
 def affineResolvedRowBoundedSourceIso
     (P : OrientedPrism p A) (hP : IsBoundedPrism P) (r : ℕ) (n : SimplexCategory) :
@@ -47,14 +62,10 @@ def affineResolvedRowBoundedSourceIso
   let α := (Construction61.crystallineCoverMap P).toRingHom
   let M := (affineBaseModules P hP r).obj n
   let K := (CochainComplex.singleFunctor (ModuleCat.{u} A) 0).obj M
-  let ε : (complexResolutionFunctor A).obj K ⟶ K := (complexResolutionAugmentation A).app K
   let F := finiteDerivedCompletionFunctor (fun _ : Fin 2 => (p : B))
-  let t := nativeDerivedScalarModelIso α ε
-    (complexResolutionAugmentation_quasiIso A K) (complexResolutionFunctor_kFlat A K)
-  let e := F.mapIso t ≪≫
-    (finiteDerivedCompletionComparison (fun _ : Fin 2 => (p : B))).app
-      (baseChange α ((complexResolutionFunctor A).obj K))
   exact (coverImageCompletionNatIso P).app ((complexResolutionFunctor A).obj K) ≪≫
-    e.symm ≪≫ F.mapIso (unboundedBoundedModuleBaseChangeIso α M)
+    (finiteDerivedCompletionComparison (fun _ : Fin 2 => (p : B))).symm.app
+      (baseChange α ((complexResolutionFunctor A).obj K)) ≪≫
+    F.mapIso (affineResolvedRowUncompletedSourceIso P hP r n)
 
 end SerrePositivity.BhattScholze.Prismatic.HTUniversalComparison
