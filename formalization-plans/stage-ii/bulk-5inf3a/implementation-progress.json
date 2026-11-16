@@ -3,7 +3,7 @@
   "complete": 3,
   "total": 6,
   "added": 0,
-  "verified_head": "this commit: base b82115f73998471ae53ac5e4c4083f71c2c03cf4",
+  "verified_head": "this commit: base 7e18d6dfb07c53e8131576bb799d6ffcde6a26ec",
   "items": {
     "HT01": "complete",
     "HT02": "complete",
@@ -12,16 +12,15 @@
     "HT05": "not-started",
     "HT06": "not-started"
   },
-  "latest_complete_audit_checkpoint": "quotient-cover-h0-epimorphism-checkpoint.json",
-  "latest_complete_audit_declarations": 2192,
+  "latest_complete_audit_checkpoint": "full-cover-h0-standard-augmentation-checkpoint.json",
+  "latest_complete_audit_declarations": 2193,
   "working_changes_unverified": [
-    "AffineResolvedRowPointLaw",
-    "AffineFullCoverUnit",
+    "AffineReducedCoverExtension",
     "AffineFullCoverUnitMap",
-    "AffineFullCoverExtension",
-    "AffineReducedCoverExtension"
+    "AffineResolvedRowPointLaw",
+    "AffineFullCoverExtension"
   ],
-  "pending_check": "bundle-259 terminal rc1; see audit module inventory; failed dependencies await next batch",
+  "pending_check": "bundle-260 terminal rc1; see audit module inventory; failed dependencies await next batch",
   "next_proof_route": "remaining-20000-plan.md",
   "initial_record": {
     "stage": "5inf3a",
@@ -395,7 +394,7 @@
       "lines": 74
     }
   ],
-  "working_written_lines": 21686,
+  "working_written_lines": 21695,
   "source_inventory_scope": "Only HT01\u2013HT06 source additions/changes against 336942ab0, plus untracked files; excludes pre-existing Comparison modules.",
   "static_check": "static-pending-check.json; not Lean validation",
   "build_wait_history": [
@@ -414,9 +413,9 @@
   ],
   "current_request_last_confirmed_live_utc": "2026-11-15 04:52:28 UTC",
   "HT02_remaining": "complete; see ht02-complete.json",
-  "prepared_source_lines": 21686,
+  "prepared_source_lines": 21695,
   "prepared_modules": 263,
-  "verified_source_lines": 21268,
+  "verified_source_lines": 21358,
   "provisional_total_source_lines": [
     22223,
     25443
