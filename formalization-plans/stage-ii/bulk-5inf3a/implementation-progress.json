@@ -3,7 +3,7 @@
   "complete": 3,
   "total": 6,
   "added": 0,
-  "verified_head": "this commit: base 65040207483059a12b9160d98ef4b9c9065acb9e",
+  "verified_head": "this commit: base c95b90773b67f99a258bc4f93aaa74b41305f7f9",
   "items": {
     "HT01": "complete",
     "HT02": "complete",
@@ -12,20 +12,18 @@
     "HT05": "not-started",
     "HT06": "not-started"
   },
-  "latest_complete_audit_checkpoint": "uncompleted-row-standard-augmentation-checkpoint.json",
-  "latest_complete_audit_declarations": 2178,
+  "latest_complete_audit_checkpoint": "specified-quotient-square-and-full-h0-unit-checkpoint.json",
+  "latest_complete_audit_declarations": 2182,
   "working_changes_unverified": [
-    "AffineResolvedRowPointLaw",
-    "AffineReducedCoverProjectionEpi",
-    "AffineFullCoverExtension",
-    "AffineFullCoverUnitMap",
-    "AffineResolvedRowSourceUnit",
     "AffineReducedCoverExtension",
-    "AffineFullCoverUnit",
-    "AffineReducedCoverProjection",
-    "AffineEnvelopeTargetH0Unit"
+    "AffineFullCoverUnitMap",
+    "AffineReducedCoverProjectionEpi",
+    "AffineResolvedRowPointLaw",
+    "AffineResolvedRowSourceUnit",
+    "AffineFullCoverExtension",
+    "AffineFullCoverUnit"
   ],
-  "pending_check": "bundle-256 terminal rc1; see audit module inventory; failed dependencies await next batch",
+  "pending_check": "bundle-257 terminal rc1; see audit module inventory; failed dependencies await next batch",
   "next_proof_route": "remaining-20000-plan.md",
   "initial_record": {
     "stage": "5inf3a",
@@ -399,7 +397,7 @@
       "lines": 74
     }
   ],
-  "working_written_lines": 21649,
+  "working_written_lines": 21679,
   "source_inventory_scope": "Only HT01\u2013HT06 source additions/changes against 336942ab0, plus untracked files; excludes pre-existing Comparison modules.",
   "static_check": "static-pending-check.json; not Lean validation",
   "build_wait_history": [
@@ -418,9 +416,9 @@
   ],
   "current_request_last_confirmed_live_utc": "2026-11-15 04:52:28 UTC",
   "HT02_remaining": "complete; see ht02-complete.json",
-  "prepared_source_lines": 21649,
+  "prepared_source_lines": 21679,
   "prepared_modules": 263,
-  "verified_source_lines": 20874,
+  "verified_source_lines": 21100,
   "provisional_total_source_lines": [
     22223,
     25443
