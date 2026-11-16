@@ -5873,3 +5873,50 @@ RepresentationEdgeComparisonの同じ表現空間内の比較を再利用する�
 新しい独立の分類・単位を作るのでなく、元の指定比較に沿う法則として接続する。
 S1・S8は未完。S7・R2・R3は再開しない。
 一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+
+### (B)の元の分類比較の合成則（11-17 未明、未検証）
+
+既存のRepresentationComparisonCoherenceのdiagramIso_trans・比較の一意性と、
+RepresentationComparisonRestrictionの同じcartesian制限の法則を使う。
+同じ主張を再実装せず、残る接続として次の二つの既存構成の法則を新規ファイルに書いた。
+
+16. `NerveRepresentationComparisonLaw`（43行）の型：
+p : E ⟶ nerve C、R・Sはulift pの実際の表現、aは同じ表現空間の指定頂点同型として、
+
+```lean
+nerveCoherentTransportRepresentationIso p R ≪≫ R.diagramIso S a =
+  nerveCoherentTransportRepresentationIso p S
+```
+
+17. `StraighteningRepresentationComparisonLaw`（65行）の型：
+p : E ⟶ B、R・S・aは同様、底Bは一般の小さい単体集合として、
+
+```lean
+leftStraighteningInfinityDiagram_representationIso p R ≪≫ R.diagramIso S a =
+  leftStraighteningInfinityDiagram_representationIso p S
+```
+
+17の内部では、同じ初頂点の制限で元のpreimageVertexIsoをmap_preimageにより回収し、
+同じcartesianRestrict_diagramIsoと16を使う。最後は既存のfunctorIso_precomp_injectiveで反映する。
+KST/のファイルはimportせず、既存の一般の充満忠実性・制限のAPIを直接使う。
+新しい分類・単位の存在定理を作らず、元の同じ指定比較の合成則を保つ。
+いずれも200行未満、既存構成の法則・証明分割で追加IDなし。
+一枚の整理券で順に対象ビルド・小監査を待っている。検証済み累計は21,070行のまま。
+S1・S8は未完、mainは取り込まず、S7・R2・R3は再開しない。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+
+### nerve上の元の分類比較の合成則を検証（11-17 未明）
+
+16のNerveRepresentationComparisonLaw 1本・43行・1所有宣言の対象ビルドと小監査が終了0。
+成功JSON・対象SHA一致、標準三公理のみ。
+証拠：`/tmp/is-w1/s8-representation-comparison-laws-1/nerve/`。
+既存のdiagramIso_transと小さいfiberの表現比較の一意性を使った合成則であり、追加IDなし。
+外枠用の検証済み累計は **21,113行・新規333本＋承認された既存2本の差分**。
+
+同じ組の17は、初頂点での回収と制限を照合した後、nativeRestrictの別名のrwだけで失敗。
+同じ既存の法則を明示的な引数で適用して再検証を待っている（65行、まだ未検証）。
+組全体の成功とはせず16だけを保存する。S1・S8は未完。
+mainを取り込まず、S7・R2・R3は再開しない。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
