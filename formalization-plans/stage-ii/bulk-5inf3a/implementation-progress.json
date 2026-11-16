@@ -3,7 +3,7 @@
   "complete": 3,
   "total": 6,
   "added": 0,
-  "verified_head": "this commit: base 9cba62f327c92a7c75ce3710c7940686c62d779a",
+  "verified_head": "this commit: base 736a75f77b0b45afa744de7bee21328c2873a5a7",
   "items": {
     "HT01": "complete",
     "HT02": "complete",
@@ -12,12 +12,10 @@
     "HT05": "not-started",
     "HT06": "not-started"
   },
-  "latest_complete_audit_checkpoint": "affine-line-formal-cover-augmentation-checkpoint.json",
-  "latest_complete_audit_declarations": 1837,
-  "working_changes_unverified": [
-    "AffineBaseChangeComplete"
-  ],
-  "pending_check": "bundle-202 terminal rc1; see audit module inventory; failed dependencies await next batch",
+  "latest_complete_audit_checkpoint": "ordinary-target-and-complete-base-change-checkpoint.json",
+  "latest_complete_audit_declarations": 1852,
+  "working_changes_unverified": [],
+  "pending_check": "bundle-203 terminal; all prepared modules passed",
   "next_proof_route": "remaining-20000-plan.md",
   "initial_record": {
     "stage": "5inf3a",
