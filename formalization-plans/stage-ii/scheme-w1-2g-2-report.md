@@ -2998,3 +2998,71 @@ mainの取り込みは11-16 16:25の指示どおり保留したまま。検証�
 中心側の正逆の証明の分割（G4の同じ再索引の法則、着手前の型）：`schemePerfectCechTupleRightCenterBackwardVertex a b` は元のRR(a,b+1)→LC(a,b)で、中心には負、Eには同じ(-1)^bを付ける。非公開の `cechRightCenterVertexIso a b : LC(a,b) ≅ RR(a,b+1)` に既存の座標の正逆の合成を入れ、元のtotalDescの二つの合成へ渡す。全次数の証明では、展開したC/Eの型をrwへ直接渡さず、元のLC/RRの型を持つ局所射を介して同じ各ιTotalの式を使う。最終の型・元のRightKernelは変えない。
 
 同じF8の出口の合成（G4の同じ証明の分割、着手前の型、30〜60行見込み）：`DegreeOneProjectiveModel.perfectCechTupleTotal_acyclic_of_center` は、RがNoether、元の中心Iの外で同型な次数一表示m:g:Y→Spec R、実際のCartesianな中心fI:X→Spec(R/I^1)、元の有限アフィン被覆Uに対し、中心の逆像被覆での元の増大totalの完全性から、元のg,Uの増大totalの完全性を返す。新しい入力の完全性を最終のv被覆の仮定として残さず、Noether帰納で中心の入力を供給するための合成の補題である。RightKernelへの移送、既存のF8の同じ核の消去、LeftKernelと元の増大totalの同値をそのまま合成する。
+
+
+### 中心側の元のtotalとの同型と条件付き射影Čech判定（21,000行の承認後）
+
+`CechIntegerTotalVerticalSucc`（54行）：
+
+- `cechIntegerTotalVerticalSuccComponent`：縦次数を一つ進める各脚を同じtotalDescでまとめる。
+- `ι_cechIntegerTotalVerticalSuccComponent`：同じ全次数の各直和入射に沿う成分の式。
+- `cechIntegerTotalVerticalSuccComponent_d`：二方向の可換性から同じ一段の射とtotal微分の可換性を得る。
+
+`SchemePerfectCechTupleRightCenterComponents`（118行）：
+
+- `schemePerfectCechTupleCenterIdentity_right`：中心の恒等Arrowの右成分は元の環の恒等射のSpec像。
+- `schemePerfectCechTupleCenterLeftDouble`：元の逆像被覆と中心自身の恒等Arrowによる既存の左側二重複体。
+- `schemePerfectCechTupleRightPositiveDouble`：元の右側の関手の同じ正次数二重複体。
+- `schemePerfectCechTupleRightCenterForwardVertex`：中心には負、正次数には同じ交代符号を付けた元の座標の射。
+- `schemePerfectCechTupleRightCenterBackwardVertex`：元の座標の逆射に同じ符号を付けて中心側へ戻す。
+- `schemePerfectCechTupleRightCenterForwardSummand`：同じ順方向の座標の射を右側totalの脚へ入れる。
+- `schemePerfectCechTupleRightCenterForwardComponent`：同じ各脚をtotalDescでまとめた全次数ごとの順方向の射。
+- `ι_schemePerfectCechTupleRightCenterForwardComponent`：同じ順方向の射の直和入射に沿った式。
+- `schemePerfectCechTupleRightCenterBackwardSummand`：縦零次を零、後続次数を元の逆座標で中心側totalへ戻す。
+- `schemePerfectCechTupleRightCenterBackwardComponent`：同じ逆方向の各脚をtotalDescでまとめる。
+- `ι_schemePerfectCechTupleRightCenterBackwardComponent`：同じ逆方向の射の直和入射に沿った式。
+
+`SchemePerfectCechTupleRightCenterRetraction`（139行）：
+
+- `cechCenter_sign_sq`：交代符号の二乗は一（非公開）。
+- `cechRightCenterVertexIso`：元の座標の二つの逆射を同じ各頂点の同型へまとめる（非公開）。
+- `schemePerfectCechTupleRightCenterForward_backward`：元の全次数で順方向の後に逆方向を取ると恒等射。
+- `schemePerfectCechTupleRightCenterBackward_forward`：元の右側の全次数で逆方向の後に順方向を取ると恒等射。
+
+`SchemePerfectCechTupleRightCenterVertical`（71行）：
+
+- `CechAugmentedSquare.leftCπ_naturality`：既存の左C射影は元の四角形の射に自然。
+- `schemePerfectCechTupleRightCenterForwardVertex_vertical`：同じ頂点の射は元の縦微分と可換。
+
+`SchemePerfectCechTupleRightCenterHorizontal`（95行）：
+
+- `schemePerfectCechTupleRightCenterForwardVertex_naturality`：同じ頂点の射は元の単体圏の全ての射に自然。
+- `cechCenter_sum_f`：有限和の複体の射の成分は各成分の有限和（非公開）。
+- `schemePerfectCechTupleRightCenterForwardVertex_horizontal`：同じ頂点の射は元の横微分と可換。
+
+`SchemePerfectCechTupleRightCenterTotalIso`（104行）：
+
+- `schemePerfectCechTupleRightCenterForwardComponent_d`：同じ全次数の順方向の射はtotal微分と可換。
+- `schemePerfectCechTupleRightTotal_isZero_zero`：元の右側totalの零次は零対象。
+- `schemePerfectCechTupleRightCenterTotalIso`：中心側totalの符号なし一段延長と元の右側whole totalの同型。
+
+`SchemePerfectCechTupleRightKernelTotal`（69行）：
+
+- `cechRightOriginalKernel_shortExact`：元の右射影のkernelSequenceは短完全（非公開）。
+- `schemePerfectCechTupleRightKernelTotal_acyclic_of_center`：元の中心の増大totalの完全性から元のRightKernel.totalの完全性を得る。
+
+`CechIntegerTotalToRowZeroQuasiIso`（91行）：
+
+- `cechIntegerTotalToRowZero_naturality`：元の零次行射影は二重複体の射に自然。
+- `cechIntegerTotalToRowZero_component_surjective`：同じ零次行射影は各全次数で全射。
+- `cechIntegerTotalToRowZero_quasiIso`：正の行の完全性から、既存HAの判定を係数移送して同じ射影の擬同型性を得る。
+
+`DegreeOneProjectiveCechTupleCenterCriterion`（47行）：
+
+- `DegreeOneProjectiveModel.perfectCechTupleTotal_acyclic_of_center`：実際のCartesianな中心のČech完全性から、元の次数一射影表示のČech完全性へ戻す条件付きの合成。
+
+検証：右側七本のmodule形式check-3、零次行射影のcheck-2、同じ七本を含む射影判定のcheck-2はすべて終了0。三つの固定manifestのSHA256、下書き、本体の全バイト一致を確認。九本と直接importerの入口の対象ビルドは5,355ジョブで成功（`2g-g4-right-center-native.log`）。別の共有鍵の所有宣言監査は108宣言（13、24、13、5、6、23、11、9、4）、非公開・生成分も含め標準三公理のみ・終了0（`2g-g4-right-center-audit.log`）。新規所有宣言の小監査累計2,082、既存15宣言は別計上。追加公理・sorry・既存宣言の型変更・資源上限の引き上げ・200行超の宣言なし。style警告は残る。
+
+今回本体788行＋入口9行＝797行。基準56ea849a3から検証済み18,843行（新規256モジュール18,541行、既存追加25行、入口277行。既存削除14行は差し引かない）。承認済み外枠21,000行。完成見込み約19,600〜20,500行は維持し、残る相対fppfの比較・実際のnil閉厚化・Noether帰納とG5の実装時に積み直す。条件付き射影判定の中心の入力はNoether帰納で供給する必要があり、一般の固有降下の完成とは呼ばない。G4・G5は未完、停止点2g-2ではない。最終のAugmentedRingCechExactの型・仮定は変更していない。main未取り込み、root・下流全ビルド・全体監査なし。鍵は--class impl --wait 3600、対象ビルドと監査は別リース。2hのLeanなし。
+
+一覧：済み1／全体3（うち追加0）。
