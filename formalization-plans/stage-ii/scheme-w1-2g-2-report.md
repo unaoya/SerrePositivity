@@ -2710,3 +2710,22 @@ mainの取り込みは11-16 16:25の指示どおり保留したまま。検証�
 残る主要な接続は **元の増大複体との比較、相対proper fppfと合成を含む元の閉像のNoether帰納、アフィン環のČechへの出口、G5の自然な移送（4接続）**。今回の条件付きの消去のhRightをNoether帰納から供給する部分は未完。相対proper fppfの非アフィン中間基底の接続もこの帰納の組み立てに含め、Spec R上の平坦全射の既存の結果だけで完了扱いにしない。G4・G5は未完、停止点2g-2ではない。最終のAugmentedRingCechExactと利用側の型は不変。mainは取り込んでいない。
 
 一覧：済み1／全体3（うち追加0）。
+
+同じ整数係数のtotalの関手と核保存（既存G4の単位・加法・係数移送・有限cone比較の法則、着手前の型、二本計80〜140行）：`cechIntegerLiftTotalFunctor` は同じMathlibのtotalFunctorを固定した値。各ιTotalで加法性を照合し、既存のcechIntegerLiftTotal_shortExactを同じ関手の短完全性へ渡す。`cechIntegerLiftTotalFunctor_preservesFiniteLimits` は既存のFunctor.preservesFiniteLimits_iff_forall_exact_map_and_monoへの代入。`cechIntegerLiftTotalKernelIso` は同じkernel fのtotalと、同じtotal.map fのkernelとの標準比較で、元の核の包含の式もPreservesKernel.iso_homとkernelComparison_comp_ιから取る。直和の境界消去や核の元の持ち上げを作り直さない。
+
+
+### 同じtotalの関手と核保存（20,000行承認後）
+
+`CechIntegerLiftTotalFunctor`（44行）：
+- `cechIntegerLiftTotalFunctor`：同じMathlibの整数係数のtotalFunctorを固定する。
+- `cechIntegerLiftTotalFunctor_additive`：各ιTotalで加法性を照合する。
+- `cechIntegerLiftTotalFunctor_shortExact`：既存の同じtotalの短完全性を関手の形へ渡す。
+
+`CechIntegerLiftTotalKernel`（50行）：
+- `cechIntegerLiftTotalFunctor_preservesFiniteLimits`：既存の加法性・短完全性をMathlibの有限極限保存判定へ代入する。
+- `cechIntegerLiftTotalKernelIso`：同じ核のtotalと同じtotal.mapの核の標準同型。
+- `cechIntegerLiftTotalKernelIso_hom_ι`：同型は元の核の包含のtotalを保持する。
+
+検証：module形式の二本の下書き検証 `2g-g4-total-kernel-check-1.log` は終了0。二本と直接importerの入口の対象ビルドは5,324ジョブ・終了0（`2g-g4-total-kernel-native.log`、依存のキャッシュ再生を含む）。固定manifestのSHA256と下書き・本体の全バイト一致を確認。対象ビルドと別の共有鍵による所有宣言の小監査は20宣言（8、12）、非公開・生成分も含め標準三公理のみ、終了0（`2g-g4-total-kernel-audit.log`）。新しい核の元の持ち上げや直和の境界消去は作っていない。追加公理・sorry・既存APIの型変更・資源上限の引き上げ・200行超の宣言なし。
+
+今回94行＋入口2行＝96行。基準56ea849a3からの外枠計数は16,371行（新規229モジュール本体16,096行、既存追加25行、入口250行）。新規所有宣言の小監査累計1,693、既存15宣言は別計上。20,000行の外枠内。完成見込み約18,000〜19,400行を維持する。元の増大二重Čechとの比較は未完で、この標準比較だけでG4を完了扱いにしない。残りは元の増大複体との比較、相対proper fppfと合成を含むNoether帰納、元のアフィン環のČechへの出口、G5の模型・Frobenius・filtered余極限の自然な移送。mainを取り込んでいない。共有鍵 --class impl --wait 3600、待ちは一件、ビルドと監査の間で解放。root・下流全ビルド・AlgebraicGeometry全体監査なし。一覧：済み1／全体3（うち追加0）。
