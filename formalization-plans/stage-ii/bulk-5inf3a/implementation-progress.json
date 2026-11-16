@@ -3,7 +3,7 @@
   "complete": 3,
   "total": 6,
   "added": 0,
-  "verified_head": "this commit: base 2d9b5db5cf50f4ebf92b66ef4ca43b750a2d96ac",
+  "verified_head": "this commit: base 1b88d4e96c0030c40776d522458907d9c3001036",
   "items": {
     "HT01": "complete",
     "HT02": "complete",
@@ -12,14 +12,14 @@
     "HT05": "not-started",
     "HT06": "not-started"
   },
-  "latest_complete_audit_checkpoint": "ordinary-oriented-coefficient-iso-checkpoint.json",
-  "latest_complete_audit_declarations": 1779,
+  "latest_complete_audit_checkpoint": "tor-acyclic-split-retract-checkpoint.json",
+  "latest_complete_audit_declarations": 1780,
   "working_changes_unverified": [
-    "TorAcyclicRetracts",
+    "AffineCoverResolvedTotal",
     "AffineOriginalCoverTarget",
-    "AffineCoverResolvedTotal"
+    "CompletedPolynomialSplit"
   ],
-  "pending_check": "bundle-187 terminal rc1; see audit module inventory; failed dependencies await next batch",
+  "pending_check": "bundle-188 terminal rc1; see audit module inventory; failed dependencies await next batch",
   "next_proof_route": "remaining-20000-plan.md",
   "initial_record": {
     "stage": "5inf3a",
