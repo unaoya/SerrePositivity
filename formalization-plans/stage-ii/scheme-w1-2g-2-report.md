@@ -3128,3 +3128,6 @@ mainの取り込みは11-16 16:25の指示どおり保留したまま。検証�
 
 
 相対アフィン交叉への元の忠実平坦な係数の供給（G4の既存制限・係数移送の法則、着手前の型、40〜80行見込み）：`affineFlatSurjective_appTop_frobeniusCechExact` は、アフィンスキーム間の元のFlatかつSurjectiveなfについて、元のf.appTopの増大Frobenius係数のAugmentedRingCechExactを与える。Mathlib `Flat.flat_and_surjective_iff_faithfullyFlat_of_isAffine` と既存の `frobeniusAugmentedRingCoefficients_exact_of_faithfullyFlat` を接続する。`affineFlatSurjective_restrict_frobeniusCechExact (f : X ⟶ Y) [IsAffineHom f] [Flat f] [Surjective f] (V : Y.Opens) (hV : IsAffineOpen V)` は、元の制限f∣VのappTopについて同じ結論を返す。Y自体のアフィン性やΓ(Y)の平坦性を仮定せず、Vの各有限アフィン交叉に同じ入口を使う。標数条件はΓ(V,⊤)にのみ置き、Noether性は不要。最終の出力の追加仮定とはしない。
+
+
+元の増大環図式の項ごとのFrobenius係数の比較（G4の既存係数移送・添字移送の法則、着手前の型、80〜140行見込み）：D:AugmentedSimplexCategory→CommRingCat、hD:∀j,(p:D.obj j)=0について、`frobeniusAugmentedIntegerDiagram D p hp hD` は既存のfrobeniusRingDiagramを同じ増大単体との同値へ代入した値。Dの射・同型を既存のfrobeniusRingDiagramMap/Isoで写し、増大cochainへ渡す。Dが元のf.augmentedCechConerveの図式なら `frobeniusConerveIntegerDiagramIso` が、同じfrobeniusAugmentedRingCoefficientsの整数加群化との恒等成分の同型を返す。`frobeniusConerveIntegerDiagram_acyclic_of_faithfullyFlat` は元の忠実平坦な環の射で、この同じ係数の増大複体の完全性を供給する。既存のcolTensorIso/rowTensorIsoをまず元の環で使い、その後この項ごとの移送を適用すれば、正の軸の係数比較で「混合テンソルとperfectionの比較」を先に一般に構成する必要を避けられる可能性がある。相対比較全体がこれだけで閉じたとは数えず、各軸の実際の完全性と幾何との照合は別途行う。
