@@ -345,3 +345,11 @@ FreeProbeRelativeUnitWeak.leanは通常190秒でも、二readerと一readerの�
 `audit_reference_slot.py`はその手順の準備で、夜以外は実行を拒否する。成功したrc0の結果だけを元ソースSHA・helper SHA・capture SHA付きで保存する。現時点では実行前であり、移送後の正式全監査106件もまだ行っていない。
 
 一覧：済み 0／全体 5（うち追加 0）。
+
+### 8.6 元からrootに入っていない九本（20:41）
+
+全importグラフからrootの到達集合も調べた。段1の588本のうち、既にInfinityCategoriesにある九本（OE01、今回は移動しない）は基準のrootから到達しない。全件を`preparation/root-reachability-before.json`へ記録した。これは移動で入口から落ちたものではない。
+
+適用後は元のrootの到達集合とその改名後が完全一致することを検査する。九本も比較対象956本に含み、直接の対象ビルド・v3bから除かない。整理の途中でrootの登録を勝手に加減しない。九本すべてをrootから到達するものとした未実行の準備assertionを、実際の元の到達集合を保存・比較する形に直した。
+
+一覧：済み 0／全体 5（うち追加 0）。
