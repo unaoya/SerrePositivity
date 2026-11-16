@@ -4032,3 +4032,43 @@ cofanPullback_generatedSieve (c : Cofan B) {V : C} (f : V ⟶ c.pt)
 この1本を次に対象ビルド・小監査する。停止中のR2下書き・S7・R3は触らない。
 mainは停止点まで取り込まない。
 一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+### S1 の有限積判定の逆向きの型（11-16 夕、検証中）
+
+`ExtensiveCofanPullback` は1本の対象ビルド・小監査（所有10宣言、標準三公理のみ、
+SHA一致）とセッション60481の終了0を確認した。逆向きの組み立てとまとめてコミットする。
+証拠は `/tmp/is-w1/s1-extensive-pullback-1/target-audit-result.json`。
+
+新規 `ExtensiveProductDescent` は、同じ元の有限積判定の逆向きの証明分割：
+```lean
+PreservesFiniteProductsOnSite.initial_isTerminal (F : Presheaf C E)
+  (hF : PreservesFiniteProductsOnSite F) :
+  IsTerminalVertex (F.app _ (ULift.up (nerveVertex (Opposite.op (⊥_ C)))))
+PreservesFiniteProductsOnSite.cofanRestriction_isLimit (F : Presheaf C E)
+  (hF : PreservesFiniteProductsOnSite F) {ι : Type u} [Finite ι]
+  {B : ι → C} (c : Cofan B) (hc : IsColimit c) :
+  IsLimitCone (restrictionCone F (cofanGeneratedSieve c))
+PreservesFiniteProductsOnSite.universallyDescending_cofan (F : Presheaf C E)
+  (hF : PreservesFiniteProductsOnSite F) {ι : Type u} [Finite ι]
+  {B : ι → C} (c : Cofan B) (hc : IsColimit c) :
+  UniversallyDescendingSieve F (cofanGeneratedSieve c)
+isSheaf_extensive_of_preservesFiniteProducts (F : Presheaf C E)
+  (hF : PreservesFiniteProductsOnSite F) : IsSheaf (extensiveTopology C) F
+isSheaf_extensive_iff_preservesFiniteProducts (F : Presheaf C E) :
+  IsSheaf (extensiveTopology C) F ↔ PreservesFiniteProductsOnSite F
+```
+ここでは `[FinitaryExtensive C]`、`E : SSet.{u+1}`、`[Quasicategory E]`。
+追加IDなし、200行超の補題なし。最後の型は元draftsの型のまま。
+最後の主な宣言に `@[cite HTT "6.2.2.6" (partial := special) "理由"]` を付けた。
+小さい通常の finitary extensive site の Čech 層と、空族を含む指定有限積への特殊化を明示する。
+
+各 cofan の全引き戻しの同じ篩錐の極限性から降下位相の所属を得る。
+任意の extensive 被覆篩は Type 0 の有限余積 cofan を含むという Mathlib の判定を使い、
+その cofan を ULift の添字同値で Type u へ移す。生成篩の包含と降下位相の上方閉性で戻す。
+一般coverageの未検証の判定を使わず、普遍降下を入力へ追加して済ませることもしない。
+
+現在はこの2本の対象ビルド・小監査を `/tmp/is-w1/s1-extensive-descent-1/`、
+セッション61077で待機中。対象と依存を固定し、mainを取り込まない。
+検証済みコミットの実測250本16,387行・1,421宣言は、まだ増やしていない。
+S1の一般coverageとS8の元の一般の局所同値・指定比較は残る。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
