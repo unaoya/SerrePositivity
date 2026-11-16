@@ -17645,3 +17645,145 @@ M15・drafts・main・⑤aの既存ファイル・Interfaceは変更せず、全
 
 G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み17,802行。
 M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
+
+## §124 G01：指定面以外の実境界面の全原子因子について、実親の幅の厳密な境界（11-16）
+
+### 124.1 検証済みの追加
+
+追加は **3ファイル225行・明示宣言5**。累計 **168ファイル18,027行・明示宣言868**。
+WalkingAdjunctionPlusFactorParentWidth.lean は79行・1宣言、
+WalkingAdjunctionBoundaryPlusParentWidth.lean は78行・2宣言、
+WalkingAdjunctionBoundaryMinusParentWidth.lean は68行・2宣言。
+個々の宣言・証明は200行以下、新規Leanの行長は100文字以下。
+同じG01の全実随伴・実filtrationの構成に必要な、実親・実境界面・実道の実構成の法則、
+実幅の加法性・単位・原子分解の照合とその証明の分割であり、一覧IDは追加しない。
+
+始点minusの実鎖の原子分解で、指定する原子eの始点がplusの場合を扱った。
+その前の実道はminusからplusなので、幅0なら実長さ0となり始点・終点が一致することに反する。
+従って前の実幅は正となる。
+前後の実幅の和が2未満なら、前の実幅は1で、後の実幅は0に限られる。
+実長さ0の検出と道の長さの正値の回収から、後の実道は空となる。
+前の実像は幅1なので元の実生成射の定値関手へ戻り（§123）、
+全体は単独の実原子eに生成射を前置した実全関手となる。
+この形を排除できる実鎖では、前後の実幅の和は2以上となるため、
+eの実親の幅がeの幅より1増えること（§117）を含めても、全体の実幅より真に小さい。
+共通の補題では、この排除を実関手の等式の否定として述べている。
+
+具体的な実境界面では、その排除を元の実最小元の条件から実際に導いた。
+最後の実面については、元の最初の併合が最後でない場合、
+生成射の前置の形から実最小元が最後になること（§123）との矛盾で排除できる。
+先頭の実面については、元の最初の併合が先頭でない場合、
+同じ形から実最小元が0となること（§123）との矛盾で排除できる。
+従って指定面以外のこれらの実境界面では、始点plusの任意の実原子因子について、
+構成した実親の幅も元の実鎖より真に小さい。
+前後の道を空に限定せず、任意の位置の実原子因子を扱っている。
+
+minus始点の正の次数の非退化な実原子因子についても、
+その実最小元から構成した実細分の幅が因子と等しいこと（§115）を使った。
+先頭・最後の実面の全原子因子の幅の厳密な境界（§122）へ移し、
+実細分の幅も元の実鎖より真に小さいことを得た。
+先頭については最初の併合が先頭でない場合、最後は全四Homの元の実鎖を扱う。
+実細分の非退化性はこの幅の等式に不要なので、新しい入力欄には置いていない。
+
+### 124.2 型と未完の境界
+
+原典はRiehl–Verity Proposition 4.2.15の境界因子の親の比較、
+HA Proposition 4.7.3.3、Kerodon Remark 6.2.1.4（Tag 02EN）。追加の型は以下。
+
+```lean
+lemma walkingAdjunctionPlusFactor_parent_width_lt {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (F : ComposableArrows (walkingAdjunctionHom .minus Y) n)
+    {C : WalkingAdjunctionAtomicVertex n}
+    (q : Quiver.Path (⟨⟨.minus⟩⟩ : WalkingAdjunctionAtomicVertex n) ⟨⟨.plus⟩⟩)
+    (e : (⟨⟨.plus⟩⟩ : WalkingAdjunctionAtomicVertex n) ⟶ C)
+    (r : Quiver.Path C (⟨⟨Y⟩⟩ : WalkingAdjunctionAtomicVertex n))
+    (hfac : (walkingAdjunctionAtomicPathFunctor n).map (q.comp (e.toPath.comp r)) = F)
+    (hno : ∀ E : ComposableArrows (walkingAdjunctionHom .plus Y) n,
+      WalkingAdjunctionLevelIsAtomic (X := ⟨.plus⟩) (Y := ⟨Y⟩) E →
+        F ≠ walkingAdjunctionPlusParentPrefix E) :
+    walkingAdjunctionOrdinalWidth (walkingAdjunctionPlusParent e.val e.property) <
+      walkingAdjunctionOrdinalWidth F
+
+lemma walkingAdjunctionLastFace_plusFactor_parent_width_lt {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom .minus Y) (n + 1))
+    (ha : WalkingAdjunctionLevelIsAtomic (X := ⟨.minus⟩) (Y := ⟨Y⟩) H)
+    (hnd : ULift.up H ∈ (WalkingAdjunctionHomShape.{u} .minus Y).nonDegenerate (n + 1))
+    (hk : walkingAdjunctionFirstBottomMergeIndex H
+      (walkingAdjunctionAtomic_endpoint_cards H ha).2 hnd ≠ Fin.last n)
+    {C : WalkingAdjunctionAtomicVertex n}
+    (q : Quiver.Path (⟨⟨.minus⟩⟩ : WalkingAdjunctionAtomicVertex n) ⟨⟨.plus⟩⟩)
+    (e : (⟨⟨.plus⟩⟩ : WalkingAdjunctionAtomicVertex n) ⟶ C)
+    (r : Quiver.Path C (⟨⟨Y⟩⟩ : WalkingAdjunctionAtomicVertex n))
+    (hfac : (walkingAdjunctionAtomicPathFunctor n).map (q.comp (e.toPath.comp r)) =
+      finiteChainFace H (Fin.last (n + 1))) :
+    walkingAdjunctionOrdinalWidth (walkingAdjunctionPlusParent e.val e.property) <
+      walkingAdjunctionOrdinalWidth H
+
+lemma walkingAdjunctionFirstFace_plusFactor_parent_width_lt {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom .minus Y) (n + 1))
+    (ha : WalkingAdjunctionLevelIsAtomic (X := ⟨.minus⟩) (Y := ⟨Y⟩) H)
+    (hnd : ULift.up H ∈ (WalkingAdjunctionHomShape.{u} .minus Y).nonDegenerate (n + 1))
+    (hk : walkingAdjunctionFirstBottomMergeIndex H
+      (walkingAdjunctionAtomic_endpoint_cards H ha).2 hnd ≠ 0)
+    {C : WalkingAdjunctionAtomicVertex n}
+    (q : Quiver.Path (⟨⟨.minus⟩⟩ : WalkingAdjunctionAtomicVertex n) ⟨⟨.plus⟩⟩)
+    (e : (⟨⟨.plus⟩⟩ : WalkingAdjunctionAtomicVertex n) ⟶ C)
+    (r : Quiver.Path C (⟨⟨Y⟩⟩ : WalkingAdjunctionAtomicVertex n))
+    (hfac : (walkingAdjunctionAtomicPathFunctor n).map (q.comp (e.toPath.comp r)) = H.δ₀) :
+    walkingAdjunctionOrdinalWidth (walkingAdjunctionPlusParent e.val e.property) <
+      walkingAdjunctionOrdinalWidth H
+
+lemma walkingAdjunctionLastFace_minusFactor_parent_width_lt {n : ℕ}
+    {X Y : WalkingAdjunctionPoint} (H : ComposableArrows (walkingAdjunctionHom X Y) (n + 2))
+    (ha : WalkingAdjunctionLevelIsAtomic (X := ⟨X⟩) (Y := ⟨Y⟩) H)
+    (hnd : ULift.up H ∈ (WalkingAdjunctionHomShape.{u} X Y).nonDegenerate (n + 2))
+    {C : WalkingAdjunctionAtomicVertex (n + 1)}
+    (q : Quiver.Path (⟨⟨X⟩⟩ : WalkingAdjunctionAtomicVertex (n + 1)) ⟨⟨.minus⟩⟩)
+    (e : (⟨⟨.minus⟩⟩ : WalkingAdjunctionAtomicVertex (n + 1)) ⟶ C)
+    (r : Quiver.Path C (⟨⟨Y⟩⟩ : WalkingAdjunctionAtomicVertex (n + 1)))
+    (hfac : (walkingAdjunctionAtomicPathFunctor (n + 1)).map (q.comp (e.toPath.comp r)) =
+      finiteChainFace H (Fin.last (n + 2)))
+    (he : ULift.up e.val ∈
+      (WalkingAdjunctionHomShape.{u} .minus C.level.point).nonDegenerate (n + 1)) :
+    walkingAdjunctionOrdinalWidth (walkingAdjunctionFirstRefinement e.val e.property he) <
+      walkingAdjunctionOrdinalWidth H
+
+lemma walkingAdjunctionFirstFace_minusFactor_parent_width_lt {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (H : ComposableArrows (walkingAdjunctionHom .minus Y) (n + 2))
+    (ha : WalkingAdjunctionLevelIsAtomic (X := ⟨.minus⟩) (Y := ⟨Y⟩) H)
+    (hnd : ULift.up H ∈ (WalkingAdjunctionHomShape.{u} .minus Y).nonDegenerate (n + 2))
+    (hk : walkingAdjunctionFirstBottomMergeIndex H
+      (walkingAdjunctionAtomic_endpoint_cards H ha).2 hnd ≠ 0)
+    {C : WalkingAdjunctionAtomicVertex (n + 1)}
+    (q : Quiver.Path (⟨⟨.minus⟩⟩ : WalkingAdjunctionAtomicVertex (n + 1)) ⟨⟨.minus⟩⟩)
+    (e : (⟨⟨.minus⟩⟩ : WalkingAdjunctionAtomicVertex (n + 1)) ⟶ C)
+    (r : Quiver.Path C (⟨⟨Y⟩⟩ : WalkingAdjunctionAtomicVertex (n + 1)))
+    (hfac : (walkingAdjunctionAtomicPathFunctor (n + 1)).map (q.comp (e.toPath.comp r)) = H.δ₀)
+    (he : ULift.up e.val ∈
+      (WalkingAdjunctionHomShape.{u} .minus C.level.point).nonDegenerate (n + 1)) :
+    walkingAdjunctionOrdinalWidth (walkingAdjunctionFirstRefinement e.val e.property he) <
+      walkingAdjunctionOrdinalWidth H
+```
+
+今回の境界因子の実親の幅の比較は、構成済みの実道の分解と同じ実生成射の上で検証した。
+退化した原子因子から非退化な元へ戻す全輸送とその順位の整理、
+最初の併合が先頭にある場合の境界面の全検収、原典の文字列の幅・fillable条件との全比較、
+parental subcomputadのfiltrationと全付着の構成は未完。
+元のQCatAdjunctionからの全coherentな延長、水平反対の向きの全比較、
+同じF≫U・単位・余単位・HAモデルとの照合も未完である。
+G01の済みは0、G02以降も未完を維持する。
+
+### 124.3 検証と進み
+
+with_build_lock.sh --class impl --wait 3600、最大240秒の短い枠で対象ビルドと追加5根だけの公理監査を確認した。
+最終固定コマンドの対象はWalkingAdjunctionBoundaryMinusParentWidth:oleanと
+WalkingAdjunctionBoundaryPlusParentWidth:oleanで、今回のもう一方の共通ファイルも取り込む。
+対象ビルド・監査と外側の終了は0、最終対象ビルドは警告なし。
+行長を整え、元の実道と実幅・実関手の等式の輸送を明示して最終検証した。
+追加5根は入力名と出力名が一致し、公理依存はpropext・Classical.choice・Quot.soundのみ。
+sorryAx・追加公理なし。入力・根・監査全出力・対象ビルドログは
+[g12-boundary-parent-audit-2026-11-16/](g12-boundary-parent-audit-2026-11-16/)に保存した。
+M15・drafts・main・⑤aの既存ファイル・Interfaceは変更せず、全体ビルド・大きい監査は行っていない。
+
+G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み18,027行。
+M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
