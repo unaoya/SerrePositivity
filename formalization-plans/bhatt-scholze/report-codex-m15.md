@@ -18065,3 +18065,142 @@ M15・drafts・main・⑤aの既存ファイル・Interfaceは変更せず、全
 
 G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み18,614行。
 M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
+
+## §128 G01：有限順序模型の実子の回収と、実親子の両方向の往復・全単射（11-16）
+
+### 128.1 検証済みの追加
+
+追加は **3ファイル345行・明示宣言12**。累計 **179ファイル18,959行・明示宣言899**。
+WalkingAdjunctionAtomicCellChildren.lean は104行・3宣言、
+WalkingAdjunctionAtomicCellChild.lean は142行・7宣言、
+WalkingAdjunctionAtomicCellPairing.lean は99行・2宣言。
+個々の宣言・証明は200行以下、新規Leanの行長は100文字以下。
+同じG01の全実随伴・実filtrationに使う、構成済みの実親と実子のデータの一体化、
+実最小元・係数移送・原子性・非退化性・非純粋性と両方向の合成の照合であり、一覧IDは追加しない。
+
+模型の純粋性NativeFillableを、指定する同じ実最小元の添字へ移す補題を作った。
+添字を先に同一視することで、全点の条件の依存する有限点の型も同じ実添字に揃えている。
+純粋な実親で最初の併合が最後なら、元の最後の面から実前置を除く実子を回収し、
+その原子性・非退化性を同じ生成元の型へ戻した。始点plusなのでNativeFillableではない。
+最初の併合が内側なら、元の指定面からminus始点の実子を取り、
+原子性・非退化性・実最小元の保存と、純粋な実親の逆の非純粋性の法則を同じ型へ戻した。
+子の存在・原子性・非退化性・非純粋性を新しい入力に置いていない。
+
+正の次数の全ての純粋な実生成元からのchildを、一つの関数にまとめた。
+子の次数0では最小添字が唯一の最後の点なのでplus始点の子を取る。
+それ以外では、元の実最小元が最後かを判定し、最後の実子または内側の実子を取る。
+子の始点を依存和に保持し、その中に元の実全関手と非純粋性を保持している。
+実分岐は依存和の値そのものの等式として回収し、親の関数へその等式を移した。
+子から実親を作り直すと元の純粋な実生成元に戻ることを検証した。
+
+逆向きにも、非純粋な実生成元から親を作り、その子を回収すると、元の始点と実生成元へ戻る。
+plus始点では元の実最後の親子の往復を使う。
+minus始点の正の次数では、親の実最小元は元の最小元のcastSuccなので最後ではなく、
+実指定面を回収すると元の全実関手となる。
+実関手の等式と証明の一意性から、生成元そのものの等式へ戻した。
+二つの実関数と両方向の往復を使い、現在の有限順序模型の非純粋な生成元と
+一つ高次のminus始点の純粋な実生成元の全単射を構成した。
+この全単射は原典の文字列の模型との全比較を済みにするものではない。
+
+### 128.2 型と未完の境界
+
+原典はRiehl–Verity Definition 4.2.1の親子の全単射、
+HA Proposition 4.7.3.3、Kerodon Remark 6.2.1.4（Tag 02EN）。追加の型は以下。
+
+```lean
+lemma WalkingAdjunctionAtomicCell.pure_at_of_nativeFillable {n : ℕ}
+    {Y : WalkingAdjunctionPoint} (p : WalkingAdjunctionAtomicCell.{u} (n + 1) .minus Y)
+    (k : Fin (n + 1))
+    (hk : walkingAdjunctionFirstBottomMergeIndex p.chain
+      (walkingAdjunctionAtomic_endpoint_cards p.chain p.atomic).2 p.nondegenerate = k)
+    (hfill : p.NativeFillable) :
+    walkingAdjunctionOrdinalCard .minus Y (p.chain.obj k.succ) =
+        walkingAdjunctionOrdinalCard .minus Y (p.chain.obj k.castSucc) - 2 + 1 ∧
+      ∀ i, (walkingAdjunctionOrderHom (p.chain.map
+        (homOfLE (Fin.castSucc_le_succ k))) i).val = i.val - 1
+
+def WalkingAdjunctionAtomicCell.lastChild {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (p : WalkingAdjunctionAtomicCell.{u} (n + 1) .minus Y)
+    (hk : walkingAdjunctionFirstBottomMergeIndex p.chain
+      (walkingAdjunctionAtomic_endpoint_cards p.chain p.atomic).2 p.nondegenerate = Fin.last n)
+    (hfill : p.NativeFillable) :
+    {a : WalkingAdjunctionAtomicCell.{u} n .plus Y // ¬ a.NativeFillable}
+
+def WalkingAdjunctionAtomicCell.innerChild {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (p : WalkingAdjunctionAtomicCell.{u} (n + 2) .minus Y) (k : Fin (n + 1))
+    (hk : walkingAdjunctionFirstBottomMergeIndex p.chain
+      (walkingAdjunctionAtomic_endpoint_cards p.chain p.atomic).2 p.nondegenerate = k.castSucc)
+    (hfill : p.NativeFillable) :
+    {a : WalkingAdjunctionAtomicCell.{u} (n + 1) .minus Y // ¬ a.NativeFillable}
+
+lemma WalkingAdjunctionAtomicCell.ext_chain {n : ℕ} {X Y : WalkingAdjunctionPoint}
+    {a b : WalkingAdjunctionAtomicCell.{u} n X Y} (h : a.chain = b.chain) : a = b
+
+def WalkingAdjunctionAtomicCell.child {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (p : WalkingAdjunctionAtomicCell.{u} (n + 1) .minus Y) (hfill : p.NativeFillable) :
+    Σ X : WalkingAdjunctionPoint,
+      {a : WalkingAdjunctionAtomicCell.{u} n X Y // ¬ a.NativeFillable}
+
+lemma WalkingAdjunctionAtomicCell.child_of_last {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (p : WalkingAdjunctionAtomicCell.{u} (n + 2) .minus Y) (hfill : p.NativeFillable)
+    (hk : walkingAdjunctionFirstBottomMergeIndex p.chain
+      (walkingAdjunctionAtomic_endpoint_cards p.chain p.atomic).2 p.nondegenerate =
+      Fin.last (n + 1)) : p.child hfill = ⟨.plus, p.lastChild hk hfill⟩
+
+lemma WalkingAdjunctionAtomicCell.child_of_not_last {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (p : WalkingAdjunctionAtomicCell.{u} (n + 2) .minus Y) (hfill : p.NativeFillable)
+    (hk : walkingAdjunctionFirstBottomMergeIndex p.chain
+      (walkingAdjunctionAtomic_endpoint_cards p.chain p.atomic).2 p.nondegenerate ≠
+      Fin.last (n + 1)) : p.child hfill =
+      ⟨.minus, p.innerChild ((walkingAdjunctionFirstBottomMergeIndex p.chain
+        (walkingAdjunctionAtomic_endpoint_cards p.chain p.atomic).2 p.nondegenerate).castPred hk)
+        (Fin.castSucc_castPred _ hk).symm hfill⟩
+
+lemma WalkingAdjunctionAtomicCell.lastChild_parent {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (p : WalkingAdjunctionAtomicCell.{u} (n + 1) .minus Y)
+    (hk : walkingAdjunctionFirstBottomMergeIndex p.chain
+      (walkingAdjunctionAtomic_endpoint_cards p.chain p.atomic).2 p.nondegenerate = Fin.last n)
+    (hfill : p.NativeFillable) :
+    ((p.lastChild hk hfill).val.parent (p.lastChild hk hfill).property) = p
+
+lemma WalkingAdjunctionAtomicCell.innerChild_parent {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (p : WalkingAdjunctionAtomicCell.{u} (n + 2) .minus Y) (k : Fin (n + 1))
+    (hk : walkingAdjunctionFirstBottomMergeIndex p.chain
+      (walkingAdjunctionAtomic_endpoint_cards p.chain p.atomic).2 p.nondegenerate = k.castSucc)
+    (hfill : p.NativeFillable) :
+    ((p.innerChild k hk hfill).val.parent (p.innerChild k hk hfill).property) = p
+
+lemma WalkingAdjunctionAtomicCell.child_parent {n : ℕ} {Y : WalkingAdjunctionPoint}
+    (p : WalkingAdjunctionAtomicCell.{u} (n + 1) .minus Y) (hfill : p.NativeFillable) :
+    ((p.child hfill).2.val.parent (p.child hfill).2.property) = p
+
+lemma WalkingAdjunctionAtomicCell.parent_child {n : ℕ} {X Y : WalkingAdjunctionPoint}
+    (a : WalkingAdjunctionAtomicCell.{u} n X Y) (hnf : ¬ a.NativeFillable) :
+    (a.parent hnf).child (a.parent_nativeFillable hnf) = ⟨X, ⟨a, hnf⟩⟩
+
+def walkingAdjunctionAtomicCellParentEquiv (n : ℕ) (Y : WalkingAdjunctionPoint) :
+    (Σ X : WalkingAdjunctionPoint,
+      {a : WalkingAdjunctionAtomicCell.{u} n X Y // ¬ a.NativeFillable}) ≃
+    {p : WalkingAdjunctionAtomicCell.{u} (n + 1) .minus Y // p.NativeFillable}
+```
+
+現在の有限順序模型で、実親と実子、生成元そのものの両方向の往復と全単射まで検証した。
+原典の文字列の幅・fillable条件との全比較、全ての順位をまとめたfiltrationと
+parental subcomputadの全付着の構成は未完。
+元のQCatAdjunctionからの全coherentな延長、水平反対の向きの全比較、
+同じF≫U・単位・余単位・HAモデルとの照合も未完である。
+G01の済みは0、G02以降も未完を維持する。外枠20,000行まで残りは1,041行。
+
+### 128.3 検証と進み
+
+with_build_lock.sh --class impl --wait 3600、最大240秒の短い枠で対象ビルドと追加12根だけの公理監査を確認した。
+最終固定コマンドの対象はWalkingAdjunctionAtomicCellPairing:oleanで、今回の他の2ファイルも取り込む。
+対象ビルド・監査と外側の終了は0、最終対象ビルドは警告なし。
+最小添字の等式を依存和の値の等式として回収し、同じ親の実関手とcastPredの証明も揃えて最終検証した。
+追加12根は入力名と出力名が一致し、公理依存はpropext・Classical.choice・Quot.soundのみ。
+sorryAx・追加公理なし。入力・根・監査全出力・対象ビルドログは
+[g12-cell-pairing-audit-2026-11-16/](g12-cell-pairing-audit-2026-11-16/)に保存した。
+M15・drafts・main・⑤aの既存ファイル・Interfaceは変更せず、全体ビルド・大きい監査は行っていない。
+
+G12：**一覧：済み 0／全体 15（うち追加 0）**。G01実装中、外枠20,000行中、検証済み18,959行。
+M15：**一覧：済み 10／全体 43（うち追加 1）**。5∞-2待ちを維持。
