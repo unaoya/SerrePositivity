@@ -125,3 +125,19 @@ B→Spec Rを分離的とし、アフィンA→Bをaffine flat surjectiveとし�
 両軸は元のA、Bのタプル被覆を持つcomplexに、アフィンな積とΓのテンソル比較で戻す。角のRは被覆の変数で一元の被覆の定数Čech複体となるため、元のsingle(R)を暗黙に同一視しない。singleからその定数Čech複体への標準増大の擬同型と、tailの恒等を、元の増大doubleの比較と既存のmono-columnsのtotal判定へ渡す。これで元のschemePerfectCechTupleDoubleの型を保持する。
 
 以上は相対proper fppf・合成の束の実装候補である。未検証の零次行射影の整数係数の法則、零次列の対応、bに自然なtensorCechの図式、正の軸の実際のFrobeniusの完全性、矩形のタプルのΓとの比較、singleの角の比較が残る。型を弱めた別の降下定理として提出しない。
+
+
+## 21,000行の境界での紙の照合：nil厚化を同じ全nerveへ渡す順序（2026-11-17）
+
+以下は承認待ちに行ったソースの照合と証明案であり、Leanの追加・修正・型検査ではない。数学の先端6fd35a6d3、実測19,409行は変わらない。
+
+1. CartesianなF:f→gとH:IsPullback F.left f.hom g.hom F.rightに対し、既存の `isPullback_cechNerve_base F H n` が、元の `(Arrow.mapCechNerve F).app n` を元の基底の射F.rightの同じ底変換として与える。F.rightが全射閉埋め込みなら、閉埋め込みと全射性の底変換安定性で各nerveの射も同じ全射閉埋め込みとなる。これは任意のArrowの射についての主張ではなく、Hを使う。新しいnerveを選び直さない。
+2. 元の被覆の逆像は既存の `schemeCechTupleOpen_mapCechNerve_preimage F U n t` で各タプル開の逆像に一致する。全nerveの各項で、元のタプル開に制限した同じ射へ `affineNilImmersion_restrict_appTop_universalHomeomorphism` を適用できる。各タプル開のアフィン性は、アフィン基底なら既存の `schemeCechTupleOpen_isAffine` が供給する。
+3. その結果は制限スキームのappTopについてであり、元の係数であるapp UまたはappLEそのものとは、暗黙に定義的同一視しない。Mathlibの `morphismRestrict_appTop` は `(f∣U).appTop = f.app (U.ι ''ᵁ ⊤) ≫ X.presheaf.map (eqToHom …).op` を与える。U.ιの全開集合の像をUと照合し、元のpresheafの等式による同型を左右へ明示する。`morphismRestrict_appLE` も同じ実際の制限をappLEへ戻す。Frobeniusの環同型の順方向が元の写像である式を使い、係数を別の同型へ置き換えない。
+4. タプルČechの次数qの項は、長さq+1のタプルtごとの係数の積である。`fullCechCochainsMap` は各tで元の係数の写像を適用する `LinearMap.pi` なので、各係数が同型ならこの元の項の写像が同型になる。非空の有限交叉しか使わない：長さq+1のタプルのsupportにはt(0)が入る。したがって非アフィンな全空間に対応する空交叉の同型を別途仮定する必要はない。一般の前層全体の自然変換を同型とするより、この元のČech複体の各次数に限定して同型を示す。
+5. `schemeStructurePerfectCechRefinedPullbackMap_apply` は元の各写像を実際のappLEのFrobenius写像で表示する。ここへ2・3を渡し、同じ添字の逆像被覆で各項の全単射性を確認する。元の引き戻しの単体の射への自然性は `schemePerfectCechTuplePullback_naturality` に既にあるため、余面・退化との可換性を新しく証明し直さない。
+6. 増大項の写像は `schemePerfectCechTupleAugmentedPullback` のleftに明記された元のqのFrobenius写像のsingleである。q自身のnil不変性をこのsingleへ渡す。rightの各項の同型と合わせて、既存の同じ増大対象の射自体を同型とする。`schemePerfectCechTupleAugmentationHom_pullback` が既存の増大の可換性を供給する。最後は同じaugmentedCochainと同じtotalの関手が同型を保つことだけを使う。
+
+再開後の順序は、appTopとapp U/appLEの同じ制限の照合 → 非空supportの各係数の同型 → 元のČech複体の各項の同型 → Cartesianな全nerveと基底singleの増大 → 同じtotalの完全性の同値。これらは境界報告のnilの150〜300行の内数であり、検証済みの宣言ではない。G4の相対fppf比較・Noether帰納、G5の不足もこの紙で解消したとは数えない。
+
+外枠23,000行への回答は未受領。21,000行の停止を維持し、mainを取り込まず、ビルド・監査・2hのLeanを実行していない。一覧：済み1／全体3（うち追加0）。
