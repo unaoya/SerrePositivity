@@ -41,4 +41,4 @@ collectは元のソースがビルド済みの原環境で行う。昼は3〜5�
 
 今回の移送後もEInfinity監査は、元の3,887モジュールをmodule-mapで運んだ集合を保持する。一般部品357本がEInfinity接頭辞の外へ出ることを理由に公理監査の対象から落とさない。これらの最終結果と、基準側の層の未登録348本・既存違反86件を区別した照合はreport-organize-einfinity.mdへ記録する。
 
-`preparation/compiler-child-parent-review.json`には、直接のソース宣言を持たない179件の生成された等式・合同補題を記録した。ファイルのnamespaceとは別に改名される親へ追従するものが2件ある。これらの実providerを移送後のnativeで確認するまでは、source-owned API用のimport所有元として自動登録しない。
+`../preparation/compiler-child-parent-review.json`には、直接のソース宣言を持たない179件の生成された等式・合同補題を記録した。ファイルのnamespaceとは別に改名される親へ追従するものが2件ある。これらの実providerを移送後のnativeで確認するまでは、source-owned API用のimport所有元として自動登録しない。

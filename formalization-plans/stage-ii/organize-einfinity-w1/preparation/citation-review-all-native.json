@@ -92,7 +92,8 @@
       "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameArrowCofinality.lean",
       "tag": "02P3",
       "existing_source_attribute": false,
-      "action": "add native tag with explicit partial comment"
+      "action": "add native tag with explicit partial comment",
+      "planned_comment": "partial: 通常圏の随伴から得るnerve写像のleft cofinal性。"
     },
     {
       "review": "research/kerodon-coverage/review/ch7.csv",
@@ -110,7 +111,8 @@
       "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantRightKanReduction.lean",
       "tag": "039N",
       "existing_source_attribute": false,
-      "action": "add native tag with explicit partial comment"
+      "action": "add native tag with explicit partial comment",
+      "planned_comment": "partial: 明示したモデル圏と指定されたbifibrant frameの下のright Kan比較。"
     },
     {
       "review": "research/ha-coverage/review/ch1.csv",

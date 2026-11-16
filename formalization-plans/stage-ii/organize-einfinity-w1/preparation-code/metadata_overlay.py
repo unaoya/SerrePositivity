@@ -22,7 +22,7 @@ for row in citations:
  if row['existing_source_attribute']:continue
  assert row['key']=='kerodon' and row['status']=='partial';f=a.preview/row['new_path']
  if not f.exists():continue
- text=f.read_text();name=public[row['declaration']];comment='partial: '+row['reason'];attribute='attribute [kerodon '+row['tag']+' '+json.dumps(comment,ensure_ascii=False)+'] _root_.'+name
+ text=f.read_text();name=public[row['declaration']];comment=row['planned_comment'];attribute='attribute [kerodon '+row['tag']+' '+json.dumps(comment,ensure_ascii=False)+'] _root_.'+name
  if attribute not in text:
   if 'import Mathlib.Tactic.CrossRefAttribute' not in text:
    assert text.startswith('module\n');text=text.replace('module\n','module\npublic import Mathlib.Tactic.CrossRefAttribute\n',1)
