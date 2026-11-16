@@ -5,6 +5,8 @@ p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True);p.a
 assert subprocess.check_output(['git','branch','--show-current'],cwd=root,text=True).strip()=='refactor/organize-einfinity'
 assert subprocess.check_output(['git','rev-parse','HEAD'],cwd=before,text=True).strip()=='30ae8948f339beec42d9340feb02f2031c22c72b'
 core=set(read(Path('/private/tmp/oe-w1-reference-candidates/core-files.json')));stable=read(base/'preparation/unchanged-scope-files.json');required_core=len(core)-len(stable)
+citation_check=read(base/'preparation/citation-review-baseline-check.json');assert citation_check['passed']
+citation_receipt=read(base/'preparation/citation-before-receipt.json');assert sha((root/'SerrePositivity/Util/Citation.lean').read_bytes())==citation_receipt['citation_source_sha256'];assert sha((root/'research/bibliography.json').read_bytes())==citation_receipt['bibliography_sha256']
 progress=read(a.progress);assert progress['complete'] and progress['completed_files']==progress['total_files']==required_core
 assert read(a.preview/'review.json')=={}
 summary=read(a.preview/'summary.json');assert summary['plan_sha256']==sha((base/'namespace-rewrite-map.json').read_bytes())
