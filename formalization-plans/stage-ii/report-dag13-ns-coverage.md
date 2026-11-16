@@ -61,7 +61,7 @@ partial は原典の成分・特殊化・強い仮定での結論が直接得ら
 既存の **HA・HTT・Kerodon の対応表、旧 P⁰ 地図は変更していない**。
 
 1. HA 6.1.6.1・6.1.6.2 は旧 review で none。一方、今回の DAG XIII 1.1.1・2.1.1 / NS I.1.2 は、通常圏の nerve の場合の Fun の表示だけを component とした。左右 Kan 随伴があるという判定ではない。DAG XIII 2.1.2 / NS I.1.5 では native Sp の厳密作用図式の極限の特殊な場合も記録した。同内容の旧 HA 行の成分の数え方・更新要否は調整役の検収に渡す。
-2. 旧 `research/p0-lurie/p0-map.html` の DAG XIII 2.1.12 は preadditive_ho を根拠に partial。しかし、その型は定義に必要な全相対 norm の可逆性を述べないので、今回の定義行は none。hC の加法性は原典が明記する 2.1.16 の成分に付けた。
+2. 旧 `research/p0-lurie/map/（data.json・template.html）` の DAG XIII 2.1.12 は preadditive_ho を根拠に partial。しかし、その型は定義に必要な全相対 norm の可逆性を述べないので、今回の定義行は none。hC の加法性は原典が明記する 2.1.16 の成分に付けた。
 3. 旧 P⁰ 地図の DAG XIII 2.2.4・2.2.7 の partial は、BE の arity 作用・May の別演算の計算を指す。今回の原典対応では、指定された DAG の構成との一致がないため none。2.2.1 の partial も、今回対応させた成分は EG の underlying Čech 模型で、全拡大冪の構成ではない。
 4. 旧 P⁰ 地図の NS I.1.1 の proved は定義全体を覆うと読めるが、今回確認した直接の成分は (i) の pointed/zero object。NS が (iv) で使う additivity・全有限極限余極限・loop 同値という定義全体との比較を含めず partial とした。
 5. 旧地図の chain/ref は今回の status の語彙ではない。鎖模型を紹介する行を原典項目の partial へ機械的に変換しない。

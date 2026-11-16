@@ -35,7 +35,7 @@ P⁰の構成とRem2.2.7が今回の終点である。
 - `research/p0-lurie/README.md`
 - `research/p0-lurie/spectra.md`
 - `research/p0-lurie/ha-for-ns.md`
-- `research/p0-lurie/p0-map.html`：埋め込みJSONを読み、59項目であることも確認した。
+- `research/p0-lurie/map/（data.json・template.html）`：埋め込みJSONを読み、59項目であることも確認した。
 
 原典は [DAG XIII（2011-12-15）](https://www.math.ias.edu/~lurie/papers/DAG-XIII.pdf#page=29)、
 [HA（2017-09-18）](https://www.math.ias.edu/~lurie/papers/HA.pdf#page=730)、

@@ -28,7 +28,7 @@
 
 ## 4. 地図（11-16、ユーザー）
 
-新しい地図は作らず、既存の P⁰ の地図（`research/p0-lurie/p0-map.html`、公開 https://claude.ai/artifact/9hAePSTR4easWKwT35Wtiv）を更新する。§1・§2 の結果から、節単位の表示（文献ごとの節、依存の順、節ごとの own／partial／none）と、DAG XIII・NS の全項目を足す。調整役が行う。
+新しい地図は作らず、既存の P⁰ の地図（`research/p0-lurie/map/（data.json・template.html）`、公開 https://claude.ai/artifact/9hAePSTR4easWKwT35Wtiv）を更新する。§1・§2 の結果から、節単位の表示（文献ごとの節、依存の順、節ごとの own／partial／none）と、DAG XIII・NS の全項目を足す。調整役が行う。
 
 ## 5. 正本は一つ（11-16、ユーザー）
 

@@ -1,0 +1,273 @@
+<title>HA 形式化マップ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+JP:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,600&display=swap">
+<style>
+:root{
+  --bg:#f5f6f8; --surface:#ffffff; --ink:#1b2230; --muted:#5c6577; --faint:#8a92a1; --line:#dfe3ea; --line2:#eceff3;
+  --accent:#2a5d86; --accent-soft:#e3edf5;
+  --own:#2e7b4e; --both:#6a4fb3; --mathlib:#2f62c2; --partial:#b2741a; --none:#a8473d; --pending:#9aa1a4;
+  --own-bg:#e3f1e8; --both-bg:#ece6f7; --mathlib-bg:#e3ebf9; --partial-bg:#f7ecd9; --none-bg:#f5e4e2; --pending-bg:#eef0f0;
+  --sans:"IBM Plex Sans JP","Hiragino Sans","Noto Sans JP",system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --serif:"Source Serif 4",Georgia,"Hiragino Mincho ProN",serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#11141a; --surface:#181c24; --ink:#e5e8ee; --muted:#9da5b4; --faint:#737b8a; --line:#2a303b; --line2:#222731;
+    --accent:#7fb0d8; --accent-soft:#1d2a37;
+    --own:#6cc493; --both:#b29cf0; --mathlib:#86a8f0; --partial:#e2b25d; --none:#e08a7f; --pending:#6f7779;
+    --own-bg:#16291f; --both-bg:#241d36; --mathlib-bg:#18233a; --partial-bg:#2e2412; --none-bg:#311b19; --pending-bg:#202424;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#11141a; --surface:#181c24; --ink:#e5e8ee; --muted:#9da5b4; --faint:#737b8a; --line:#2a303b; --line2:#222731;
+  --accent:#7fb0d8; --accent-soft:#1d2a37;
+  --own:#6cc493; --both:#b29cf0; --mathlib:#86a8f0; --partial:#e2b25d; --none:#e08a7f; --pending:#6f7779;
+  --own-bg:#16291f; --both-bg:#241d36; --mathlib-bg:#18233a; --partial-bg:#2e2412; --none-bg:#311b19; --pending-bg:#202424;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:14px;line-height:1.55;margin:0}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:20px;padding-block:28px 64px}
+h1{font-family:var(--serif);font-weight:600;font-size:30px;line-height:1.2;margin:0 0 6px;text-wrap:balance;letter-spacing:-.01em}
+.lede{color:var(--muted);max-width:68ch;margin:0}
+.meta{color:var(--faint);font-size:12px;margin-top:8px}
+.meta a{color:var(--accent)}
+a{color:var(--accent)}
+.mono{font-family:var(--mono)}
+.tnum{font-variant-numeric:tabular-nums}
+
+/* overview */
+.overview{margin-top:24px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+.ov-head{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:baseline;justify-content:space-between;margin-bottom:12px}
+.ov-head h2{font-size:15px;font-weight:600;margin:0}
+.legend{display:flex;flex-wrap:wrap;gap:6px}
+.chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:3px 10px 3px 8px;font:inherit;font-size:12px;cursor:pointer}
+.chip .dot{width:9px;height:9px;border-radius:50%}
+.chip .n{color:var(--muted);font-family:var(--mono);font-size:11px}
+.chip[aria-pressed="false"]{opacity:.45}
+.chip:focus-visible,.ov-row:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.ov-rows{display:grid;gap:5px}
+.ov-row{display:grid;grid-template-columns:minmax(150px,250px) 1fr 108px;gap:12px;align-items:center;background:none;border:0;padding:3px 4px;border-radius:6px;color:inherit;font:inherit;text-align:left;cursor:pointer}
+.ov-row:hover{background:var(--line2)}
+.ov-row[aria-current="true"]{background:var(--accent-soft)}
+.ov-name{font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ov-name b{font-family:var(--mono);font-weight:500;color:var(--muted);margin-right:6px}
+.bar{display:flex;height:12px;border-radius:3px;overflow:hidden;background:var(--line2)}
+.bar span{display:block;height:100%}
+.ov-pct{font-family:var(--mono);font-size:12px;color:var(--muted);text-align:right;font-variant-numeric:tabular-nums}
+.ov-pct b{color:var(--ink);font-weight:500}
+.ov-note{color:var(--faint);font-size:12px;margin-top:10px}
+
+/* filters */
+.filters{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding-block:12px;margin-top:18px;border-bottom:1px solid var(--line);display:flex;flex-wrap:wrap;gap:8px 10px;align-items:center}
+.filters input[type=search]{flex:1 1 240px;min-width:0;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:7px;padding:7px 10px;font:inherit}
+.filters select{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:7px;padding:6px 8px;font:inherit;font-size:13px}
+.filters label.chk{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--muted)}
+.count{margin-left:auto;font-size:12px;color:var(--muted);font-family:var(--mono)}
+.btn{border:1px solid var(--line);background:var(--surface);color:var(--muted);border-radius:7px;padding:6px 10px;font:inherit;font-size:12px;cursor:pointer}
+
+/* table */
+.list{margin-top:14px}
+.chapter-h{font-family:var(--serif);font-weight:600;font-size:20px;margin:26px 0 6px;padding-bottom:6px;border-bottom:2px solid var(--ink)}
+.chapter-h .num{font-family:var(--mono);font-size:14px;color:var(--muted);margin-right:8px;font-weight:500}
+.sub{background:var(--surface);border:1px solid var(--line);border-radius:9px;margin-top:10px;overflow:hidden}
+.sub-h{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline;padding:9px 14px;border-bottom:1px solid var(--line2);background:var(--surface)}
+.sub-h .num{font-family:var(--mono);font-weight:500;font-size:13px}
+.sub-h .title{font-weight:600;font-size:14px}
+.sub-h .sec{color:var(--faint);font-size:12px}
+.sub-h .ext{margin-left:auto;font-size:12px}
+.sub-h .mini{display:flex;gap:2px;width:90px;height:6px;border-radius:2px;overflow:hidden;background:var(--line2);align-self:center}
+.sub-h .mini span{height:100%}
+.row{display:grid;grid-template-columns:86px 96px 88px minmax(0,1.25fr) minmax(0,1fr);gap:10px;padding:8px 14px;border-top:1px solid var(--line2);align-items:start}
+.row:first-of-type{border-top:0}
+.row .n{font-family:var(--mono);font-size:12.5px;font-variant-numeric:tabular-nums;padding-top:1px}
+.row .n a{color:var(--ink);text-decoration:none;border-bottom:1px dotted var(--faint)}
+.row .k{font-size:12px;color:var(--muted);padding-top:2px}
+.pill{display:inline-block;font-size:11.5px;font-weight:500;border-radius:4px;padding:1px 7px;white-space:nowrap}
+.s-own{color:var(--own);background:var(--own-bg)} .s-both{color:var(--both);background:var(--both-bg)}
+.s-mathlib{color:var(--mathlib);background:var(--mathlib-bg)} .s-partial{color:var(--partial);background:var(--partial-bg)}
+.s-pending{color:var(--pending);background:var(--pending-bg)} .s-none{color:var(--none);background:var(--none-bg)}
+.decls{display:grid;gap:4px;min-width:0}
+.decl{min-width:0}
+.decl .nm{font-family:var(--mono);font-size:12.5px;word-break:break-all;cursor:copy;background:none;border:0;padding:0;color:var(--ink);text-align:left}
+.decl .nm:hover{color:var(--accent)}
+.decl .path{display:block;font-family:var(--mono);font-size:11px;color:var(--faint);word-break:break-all}
+.decl .path.ml{color:var(--mathlib)}
+.none-txt{color:var(--faint);font-size:12px}
+.note{font-size:12.5px;color:var(--muted);min-width:0;overflow-wrap:anywhere}
+.badges{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}
+.b{font-size:10.5px;border:1px solid var(--line);color:var(--faint);border-radius:3px;padding:0 5px;letter-spacing:.02em}
+.b.ok{border-color:var(--own);color:var(--own)} .b.fix{border-color:var(--partial);color:var(--partial)} .b.unsure{border-color:var(--none);color:var(--none)}
+.empty{padding:40px 0;text-align:center;color:var(--muted)}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);font-size:12px;padding:6px 12px;border-radius:6px;opacity:0;transition:opacity .2s;pointer-events:none}
+.toast.on{opacity:1}
+@media (prefers-reduced-motion:reduce){.toast{transition:none}}
+@media (max-width:760px){
+  .row{grid-template-columns:78px 1fr;gap:4px 10px}
+  .row .k{grid-column:2;grid-row:1;padding-top:0}
+  .row .st{grid-column:2;grid-row:1;justify-self:end}
+  .row .decls,.row .note{grid-column:1 / -1}
+  .ov-row{grid-template-columns:1fr 70px}
+  .ov-row .bar{grid-column:1 / -1;grid-row:2}
+  h1{font-size:25px}
+}
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>HA 形式化マップ</h1>
+    <p class="lede">Lurie『Higher Algebra』（2017-09-18 版）の番号つきの項目 2,866 個ごとに、SerrePositivity と Mathlib の対応する Lean の宣言を並べた表。全章の照合が済んだ（11-11）。「目標 E∞」は、HA の方向で E∞ 代数を作るときに最小限要る項目（D75 で段階 II の BS の経路からは外した）。</p>
+    <p class="meta">照合は Codex（HA の確認レーン、Lean の <span class="mono">#check</span> と公理の確認、partial は四分類の基準）。§1.3.1（dg nerve）は Kerodon §2.5 と重なる。元の表は <span class="mono">research/ha-coverage/</span>、E∞ の不足一覧は <span class="mono">review/einfinity-gaps.md</span>。2026-11-12 時点（KL-W1 の配置に更新）。宣言名をクリックすると名前をコピー。</p>
+  </header>
+
+  <section class="overview" aria-labelledby="ov-h">
+    <div class="ov-head">
+      <h2 id="ov-h">章ごとの状況</h2>
+      <div class="legend" id="legend" role="group" aria-label="判定で絞り込む"></div>
+    </div>
+    <div class="ov-rows" id="ov"></div>
+    <p class="ov-note">右の数字は、照合済みの項目のうち「宣言あり（自前・両方・Mathlib）」の割合と、「一部」を含めた割合。灰色は未照合。章の行をクリックするとその章に絞る。</p>
+  </section>
+
+  <div class="filters" role="search">
+    <input type="search" id="q" placeholder="番号・題・宣言名・ファイルで検索（例 1.4.2、dg nerve、CAlg）" aria-label="検索">
+    <select id="fch" aria-label="章"><option value="">全章</option></select>
+    <select id="fkind" aria-label="種類"><option value="">全種類</option></select>
+    <label class="chk"><input type="checkbox" id="fver"> 照合済みだけ</label>
+    <button class="btn" id="reset" type="button">条件を戻す</button>
+    <span class="count" id="count"></span>
+  </div>
+
+  <div class="list" id="list"></div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script id="data" type="application/json">{{DATA}}</script>
+<script>
+(function(){
+  var D = JSON.parse(document.getElementById('data').textContent);
+  var TOC = D.toc, ITEMS = D.items;
+  var ST = [['own','自前'],['both','両方'],['mathlib','Mathlib'],['partial','一部'],['none','なし'],['pending','未照合']];
+  var STL = {}; ST.forEach(function(s){STL[s[0]]=s[1];});
+  var KINDJ = {Definition:'定義',Theorem:'定理',Proposition:'命題',Lemma:'補題',Corollary:'系',Construction:'構成',Variant:'変種',Notation:'記法',Example:'例',Remark:'注意',Warning:'警告'};
+  var VERD = {ok:'照合済み'};
+  function el(t,c,txt){var e=document.createElement(t); if(c) e.className=c; if(txt!=null) e.textContent=txt; return e;}
+  function cv(name){return getComputedStyle(document.documentElement).getPropertyValue('--'+name).trim();}
+  function sub3(n){return n.split('.').slice(0,3).join('.');}
+  function ch(n){return n.split('.')[0];}
+  function key(n){return n.split('.').map(Number);}
+
+  var state = {status:{own:true,both:true,mathlib:true,partial:true,none:true,pending:true}, ch:'', kind:'', q:'', ver:false};
+  try{ var saved = JSON.parse(localStorage.getItem('hamap-state')||'null'); if(saved){ Object.assign(state, saved); } }catch(e){}
+  var h = (location.hash||'').replace('#',''); var m = /^ch(\d+)$/.exec(h); if(m) state.ch = m[1];
+
+  // counts
+  var byCh = {}, tot = {own:0,both:0,mathlib:0,partial:0,none:0,pending:0};
+  ITEMS.forEach(function(it){ var c=ch(it[0]); (byCh[c]=byCh[c]||{own:0,both:0,mathlib:0,partial:0,none:0,pending:0,n:0}); byCh[c][it[2]]++; byCh[c].n++; tot[it[2]]++; });
+
+  // legend
+  var legend = document.getElementById('legend');
+  ST.forEach(function(s){
+    var b=el('button','chip'); b.type='button'; b.dataset.s=s[0]; b.setAttribute('aria-pressed', state.status[s[0]]?'true':'false');
+    var d=el('span','dot'); d.style.background='var(--'+s[0]+')'; b.appendChild(d); b.appendChild(document.createTextNode(s[1])); b.appendChild(el('span','n',tot[s[0]].toLocaleString()));
+    b.addEventListener('click',function(){ state.status[s[0]]=!state.status[s[0]]; b.setAttribute('aria-pressed',state.status[s[0]]?'true':'false'); apply(); });
+    legend.appendChild(b);
+  });
+
+  // overview
+  var ov=document.getElementById('ov'), fch=document.getElementById('fch');
+  Object.keys(byCh).sort(function(a,b){var x=isNaN(a)?1000+a.charCodeAt(0):+a, y=isNaN(b)?1000+b.charCodeAt(0):+b; return x-y;}).forEach(function(c){
+    var x=byCh[c], t=TOC[c]?TOC[c][1]:'';
+    var r=el('button','ov-row'); r.type='button'; r.dataset.ch=c;
+    var nm=el('span','ov-name'); var bb=el('b',null,'Ch '+c); nm.appendChild(bb); nm.appendChild(document.createTextNode(t)); nm.title=t; r.appendChild(nm);
+    var bar=el('span','bar'); ST.forEach(function(s){ if(!x[s[0]]) return; var sp=el('span'); sp.style.width=(100*x[s[0]]/x.n)+'%'; sp.style.background='var(--'+s[0]+')'; sp.title=STL[s[0]]+' '+x[s[0]]; bar.appendChild(sp); }); r.appendChild(bar);
+    var cov=x.own+x.both+x.mathlib; var rv=x.n-x.pending; var p=el('span','ov-pct'); var pb=el('b',null,rv?Math.round(100*cov/rv)+'%':'—'); p.appendChild(pb); p.appendChild(document.createTextNode(rv?' / '+Math.round(100*(cov+x.partial)/rv)+'%':'')); r.appendChild(p);
+    r.setAttribute('aria-label','Ch '+c+' '+t+'：'+x.n+' 項目、宣言あり '+cov+'、一部 '+x.partial+'、なし '+x.none);
+    r.addEventListener('click',function(){ state.ch = state.ch===c?'':c; fch.value=state.ch; apply(); });
+    ov.appendChild(r);
+    var o=el('option',null,'Ch '+c+' '+t); o.value=c; fch.appendChild(o);
+  });
+
+  var fkind=document.getElementById('fkind'); var kinds={}; ITEMS.forEach(function(it){kinds[it[1]]=(kinds[it[1]]||0)+1;});
+  Object.keys(kinds).sort(function(a,b){return kinds[b]-kinds[a];}).forEach(function(k){ var o=el('option',null,(KINDJ[k]||k)+'（'+k+'）'+kinds[k]); o.value=k; fkind.appendChild(o); });
+
+  // build list
+  var list=document.getElementById('list'), rows=[], groups=[], chHeads={};
+  var curCh=null, curSub=null, box=null, gi=null;
+  ITEMS.forEach(function(it){
+    var n=it[0], c=ch(n), s=sub3(n);
+    if(c!==curCh){ curCh=c; var hh=el('h2','chapter-h'); hh.id='ch'+c; hh.appendChild(el('span','num','Ch '+c)); hh.appendChild(document.createTextNode(TOC[c]?TOC[c][1]:'')); list.appendChild(hh); chHeads[c]={el:hh,groups:[]}; }
+    if(s!==curSub){
+      curSub=s; box=el('section','sub'); var sh=el('div','sub-h');
+      sh.appendChild(el('span','num',s)); var tt=TOC[s]?TOC[s][1]:''; sh.appendChild(el('span','title',tt));
+      var sec=n.split('.').slice(0,2).join('.'); if(TOC[sec]) sh.appendChild(el('span','sec',sec+' '+TOC[sec][1]));
+      var mini=el('span','mini'); sh.appendChild(mini);
+      if(TOC[s]&&TOC[s][0]) sh.appendChild(el('span','sec','p. '+TOC[s][0]));
+      box.appendChild(sh); list.appendChild(box);
+      gi={el:box,mini:mini,rows:[],counts:{own:0,both:0,mathlib:0,partial:0,none:0,pending:0}}; groups.push(gi); chHeads[c].groups.push(gi);
+    }
+    gi.counts[it[2]]++;
+    var r=el('div','row');
+    var nc=el('div','n',n); r.appendChild(nc);
+    var kc=el('div','k',(KINDJ[it[1]]||it[1])+' · '+it[1]); if(it[8]){ kc.appendChild(el('span','t',it[8])); } r.appendChild(kc);
+    var stc=el('div','st'); stc.appendChild(el('span','pill s-'+it[2],STL[it[2]]||it[2])); r.appendChild(stc);
+    var dc=el('div','decls');
+    if(it[3].length){ it[3].forEach(function(d){ var w=el('div','decl'); var b=el('button','nm',d[0]); b.type='button'; b.title='名前をコピー'; b.dataset.copy=d[0]; w.appendChild(b); if(d[1]){ var p=el('span','path'+(d[1].indexOf('Mathlib/')===0?' ml':''),d[1]); w.appendChild(p);} dc.appendChild(w); }); }
+    else dc.appendChild(el('span','none-txt','—'));
+    r.appendChild(dc);
+    var nt=el('div','note',it[4]||''); var bd=el('div','badges');
+    if(it[7]) bd.appendChild(el('span','b '+it[7],VERD[it[7]]||it[7])); else bd.appendChild(el('span','b','未照合'));
+    if(it[9]) bd.appendChild(el('span','b','一部の種類 '+({special:'特別な場合',direction:'片方向','stronger-hyp':'仮定が強い',component:'結論の一部'}[it[9]]||it[9])));
+    if(it[10]) bd.appendChild(el('span','b','Kerodon '+it[10]));
+    if(it[11]&&it[11]!=='-') bd.appendChild(el('span','b','目標 '+it[11]));
+    if(it[6]) bd.appendChild(el('span','b','Lean の引用 '+it[6]));
+    nt.appendChild(bd); r.appendChild(nt);
+    box.appendChild(r);
+    var hay=(n+' '+it[1]+' '+(KINDJ[it[1]]||'')+' '+(it[8]||'')+' '+(it[10]||'')+' '+(it[11]||'')+' '+it[3].map(function(d){return d[0]+' '+d[1];}).join(' ')+' '+(it[4]||'')).toLowerCase();
+    var rec={el:r,it:it,hay:hay,g:gi}; rows.push(rec); gi.rows.push(rec);
+  });
+  groups.forEach(function(g){ var t=g.rows.length; ST.forEach(function(s){ if(!g.counts[s[0]]) return; var sp=el('span'); sp.style.width=(100*g.counts[s[0]]/t)+'%'; sp.style.background='var(--'+s[0]+')'; g.mini.appendChild(sp); }); g.mini.title=ST.filter(function(s){return g.counts[s[0]];}).map(function(s){return STL[s[0]]+' '+g.counts[s[0]];}).join('、'); });
+  var emptyMsg=el('p','empty','条件に合う項目はありません。検索語か絞り込みを緩めてください。'); emptyMsg.hidden=true; list.appendChild(emptyMsg);
+
+  var qEl=document.getElementById('q'), verEl=document.getElementById('fver'), countEl=document.getElementById('count');
+  qEl.value=state.q||''; fch.value=state.ch||''; fkind.value=state.kind||''; verEl.checked=!!state.ver;
+
+  function apply(){
+    var q=(state.q||'').trim().toLowerCase(), terms=q?q.split(/\s+/):[]; var shown=0;
+    rows.forEach(function(r){
+      var it=r.it, ok=state.status[it[2]] && (!state.ch||ch(it[0])===state.ch) && (!state.kind||it[1]===state.kind) && (!state.ver||!!it[7]);
+      if(ok && terms.length){ for(var i=0;i<terms.length;i++){ if(r.hay.indexOf(terms[i])<0){ok=false;break;} } }
+      r.el.hidden=!ok; if(ok) shown++;
+    });
+    groups.forEach(function(g){ g.el.hidden=!g.rows.some(function(r){return !r.el.hidden;}); });
+    Object.keys(chHeads).forEach(function(c){ chHeads[c].el.hidden=!chHeads[c].groups.some(function(g){return !g.el.hidden;}); });
+    Array.prototype.forEach.call(ov.children,function(r){ r.setAttribute('aria-current', r.dataset.ch===state.ch?'true':'false'); });
+    emptyMsg.hidden=shown>0;
+    countEl.textContent=shown.toLocaleString()+' / '+rows.length.toLocaleString()+' 項目';
+    try{ localStorage.setItem('hamap-state', JSON.stringify(state)); }catch(e){}
+  }
+  var tmr; qEl.addEventListener('input',function(){ clearTimeout(tmr); tmr=setTimeout(function(){ state.q=qEl.value; apply(); },120); });
+  fch.addEventListener('change',function(){ state.ch=fch.value; apply(); });
+  fkind.addEventListener('change',function(){ state.kind=fkind.value; apply(); });
+  verEl.addEventListener('change',function(){ state.ver=verEl.checked; apply(); });
+  document.getElementById('reset').addEventListener('click',function(){
+    state={status:{own:true,both:true,mathlib:true,partial:true,none:true,pending:true},ch:'',kind:'',q:'',ver:false};
+    qEl.value=''; fch.value=''; fkind.value=''; verEl.checked=false;
+    Array.prototype.forEach.call(legend.children,function(b){b.setAttribute('aria-pressed','true');}); apply();
+  });
+  Array.prototype.forEach.call(legend.children,function(b){ b.setAttribute('aria-pressed', state.status[b.dataset.s]?'true':'false'); });
+
+  var toast=document.getElementById('toast'), tt;
+  function say(m){ toast.textContent=m; toast.classList.add('on'); clearTimeout(tt); tt=setTimeout(function(){toast.classList.remove('on');},1400); }
+  list.addEventListener('click',function(e){
+    var b=e.target.closest('.nm'); if(!b) return; var txt=b.dataset.copy;
+    function fallback(){ var r=document.createRange(); r.selectNodeContents(b); var s=getSelection(); s.removeAllRanges(); s.addRange(r); say('選択しました。コピーしてください'); }
+    try{ navigator.clipboard.writeText(txt).then(function(){ say('コピーしました：'+txt); }, fallback); }catch(err){ fallback(); }
+  });
+  apply();
+})();
+</script>
+
