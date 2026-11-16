@@ -14,8 +14,11 @@
   },
   "latest_complete_audit_checkpoint": "reduced-cover-terms-checkpoint.json",
   "latest_complete_audit_declarations": 1708,
-  "working_changes_unverified": [],
-  "pending_check": "bundle-172 terminal; all prepared modules passed",
+  "working_changes_unverified": [
+    "AffineOrientedBaseRows",
+    "AffineResolvedCoefficientRows"
+  ],
+  "pending_check": "bundle-175: same normal bulk request pending or running; source inventory frozen",
   "next_proof_route": "remaining-20000-plan.md",
   "initial_record": {
     "stage": "5inf3a",
@@ -425,11 +428,11 @@
   },
   "HT02_complete": true,
   "scope_review": {
-    "reason": "conditional 20000-line gate fails: corrected projected upper is 22441",
-    "instruction_commit": "cae591fa414d34db6e908369dc3d4b4c9bec9c3c",
-    "outer_limit_lines": 20000,
+    "reason": "approved typed plan and 23000-line cap; continue HT04 then HT05 then HT06",
+    "instruction_commit": "36685f20c759b587ae91a4be53feacc76d27ff55",
+    "outer_limit_lines": 23000,
     "verified_lines": 13341,
-    "remaining_lines": 6659,
+    "remaining_lines": 9659,
     "corrected_additional_lines": [
       5100,
       9100
@@ -438,13 +441,13 @@
       18441,
       22441
     ],
-    "gate_passed": false,
+    "gate_passed": true,
     "complete": 3,
     "total": 6,
     "added": 0,
     "report": "remaining-20000-plan.md",
-    "estimate": "remaining-20000-estimate.json",
-    "no_new_math_bundle_after_report": true
+    "authorization": "resume-23000.json",
+    "no_new_math_bundle_after_report": false
   },
   "scope_review_history": [
     {
@@ -459,6 +462,28 @@
       "total": 6,
       "added": 0,
       "report": "ht04-remaining-cap-review.md",
+      "no_new_math_bundle_after_report": true
+    },
+    {
+      "reason": "conditional 20000-line gate fails: corrected projected upper is 22441",
+      "instruction_commit": "cae591fa414d34db6e908369dc3d4b4c9bec9c3c",
+      "outer_limit_lines": 20000,
+      "verified_lines": 13341,
+      "remaining_lines": 6659,
+      "corrected_additional_lines": [
+        5100,
+        9100
+      ],
+      "projected_corrected_total_lines": [
+        18441,
+        22441
+      ],
+      "gate_passed": false,
+      "complete": 3,
+      "total": 6,
+      "added": 0,
+      "report": "remaining-20000-plan.md",
+      "estimate": "remaining-20000-estimate.json",
       "no_new_math_bundle_after_report": true
     }
   ],
