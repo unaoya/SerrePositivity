@@ -1452,3 +1452,26 @@ G3 は完成。G4 は F8 の同じスカラー・実際の構造層の Frobenius
 各項の完全性と同じ余単体図式の自然性がそろったが、これだけで原典の Thm 2.9 十分性や v 降下全体を完成とは呼ばない。次は実際のアフィン conerve と Frobenius の係数の自然な比較、B1 の二重 Čech の適用、実際の 2d のブローアップを保つ Noether 帰納へ接続する。G5 の模型・二つの filtered colimit への移送も残る。全体の見込み約10,000〜13,500行・外枠16,000行は不変。G4・G5 と停止点2g-2は未完。
 
 一覧：済み1／全体3（うち追加0）。
+
+
+同じ代数的環の順極限と圏論的余極限の比較（着手前、既存の順極限の普遍性・係数移送の法則の内数、65〜145行）：`ringDirectSystemFunctor f` は実際の自然数添字の環準同型の系 f を CommRingCat の同じ図式へ渡す。`ringDirectSystemCocone f` は既存の DirectLimit.Ring.of の余錐、`ringDirectSystemIsColimit f` は既存の DirectLimit.Ring.lift/hom_ext によるその余極限の普遍性。`ringDirectLimitColimitIso f` と `…_ι` は同じ環の圏論的余極限への標準同型と標準写像の一致。整数加群への忘却で代用せず、環の射として比較する。後で実際の Frobenius の矢印と conerve の余極限へ自然に渡す。
+
+
+同じ環の順極限の比較の自然性（着手前、前記の比較の自然性の内数、50〜115行）：`ringDirectSystemNatTrans f g a ha` は実際の有向系の可換な環準同型を同じ CommRingCat の図式の自然変換にする。`ringDirectLimitColimitIso_naturality` は既存の ringDirectLimitComparison を使い、有限段からの標準写像との合成で比較同型の自然性を示す。代数的な順極限の射は既存の RingDirectLimitIntNaturality のものを再利用し、環の射を別に作り直さない。
+
+
+Frobenius の既存の矢印の図式の端点の照合（着手前、既存の反復系の単位・合成・自然性の内数、80〜165行）：`frobeniusArrowDiagram_map_left`・`…_map_right` は既存の Functor.ofSequence の Frobenius の矢印の図式の任意の自然数段の射の二つの成分が、同じ frobeniusDirectSystemMap i j (leOfHom a) であること。NatTrans.ofSequence の単位成分と後続射だけの可換性から全ての射の自然性へ渡す。図式の定義・名前は変更せず、後の余錐と環の普遍性で実際の矢印を照合する。
+
+
+同じ比較の有限段評価の分割（着手前、前記の自然性の内数）：`ringDirectLimitColimitIso_of f n x` は既存の標準写像との合成の等式を各元で評価した式。自然性を同じ有限段の元で照合し、環の図式の対象の定義を圏の式全体で同時に展開しない。
+
+
+## G4：実際の環の順極限の余錐と標準比較
+
+`RingDirectLimitCocone`（81行）の宣言：`ringDirectSystemFunctor` は実際の自然数添字の環の有向系の同じ図式。`ringDirectSystemCocone` は既存の DirectLimit.Ring.of の余錐。`ringDirectSystemIsColimit` は既存の環の lift・hom_ext の普遍性による余極限の証人。`ringDirectLimitColimitIso` は同じ環の圏論的余極限への標準同型、`…_ι` は同じ有限段からの標準写像の一致。加群への忘却で代用せず、環の射を保持している。Mathlib の既存の Ring.Colimits を明示 import して HasColimit を供給し、新しい存在の仮定は置かない。
+
+単独検証、本体とのソース完全一致、対象と入口のビルド5,201ジョブ成功、小監査14宣言（所有元の非公開・生成宣言を含む）・標準三公理のみ、終了状態0。ログ `2g-ring-direct-limit-cocone-check-2.log`・`2g-ring-direct-limit-cocone-native.log`・`2g-ring-direct-limit-cocone-audit.log`。既定の透明性・資源制限で成功。追加公理・sorry・既存の型変更・200行超の宣言なし。共有鍵 --class impl --wait 3600、待ちは一つ、対象ビルドと監査は別枠。root・下流全ビルド・全体監査なし。
+
+今回1モジュール81行＋入口1行。新規116モジュール本体7,713行・入口込み7,829行。既存追加25行を含む外枠計数は本体7,738行・入口込み7,854行。新規小監査累計778宣言、既存15宣言は別計上。環としての自然性は単独検証に成功したが本体ビルド・監査前で、この束には含めない。実際の Frobenius の矢印・conerve との比較、B1・Noether 帰納・G5 は残る。外枠16,000行は不変。
+
+一覧：済み1／全体3（うち追加0）。
