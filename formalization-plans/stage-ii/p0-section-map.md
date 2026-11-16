@@ -17,7 +17,7 @@
 
 - 出発点：DAG XIII §2.2（Constr 2.2.6 とその前提）と NS の P⁰ に関わる節が引く HA・HTT・Kerodon の番号。⑤a の対応表ができる前でも、原典から直接拾ってよい。
 - たどり方：閉包に入った節について、その節の定義・主張・証明が引く番号と、節の中の項目の前提を拾い、その番号を含む節を閉包に加える。これを繰り返す。節の中は全項目を作る前提なので、一項目でも要れば節ごと入る。
-- 出力：`research/p0-lurie/section-closure/sections.csv`（列 `source,section,title,item_count,own,mathlib,partial,none,reached_from,reason`）と `edges.csv`（節 → 節、根拠の番号）、依存の順（トポロジカル順）の一覧 `order.md`。状態の内訳は既存の対応表から（HA・HTT・Kerodon）。
+- 出力：`research/p0-lurie/section-closure/sections.csv`（列 `source,section,title,reached_from,reason`。**状態・項目数の列は持たない**）と `edges.csv`（節 → 節、根拠の番号）、依存の順（トポロジカル順）の一覧 `order.md`。HA・HTT・Kerodon の項目と状態は既存の対応表（`research/ha-coverage`・`htt-coverage`・`kerodon-coverage` の review）が唯一の正本で、閉包の資料には写さない（二重管理にしない）。
 - **止める条件**：閉包が 150 節を超えたら、その時点の表をコミットして報告して止まる（大きさを見て進め方を決める）。
 
 ## 3. 規則
@@ -29,3 +29,10 @@
 ## 4. 地図（11-16、ユーザー）
 
 新しい地図は作らず、既存の P⁰ の地図（`research/p0-lurie/p0-map.html`、公開 https://claude.ai/artifact/9hAePSTR4easWKwT35Wtiv）を更新する。§1・§2 の結果から、節単位の表示（文献ごとの節、依存の順、節ごとの own／partial／none）と、DAG XIII・NS の全項目を足す。調整役が行う。
+
+## 5. 正本は一つ（11-16、ユーザー）
+
+HA・HTT・Kerodon の項目と状態は二重管理にしない。正本は既存の対応表（各 `research/<文献>-coverage/review/`、B5 の後は Lean の文献の属性から作るもの）だけ。
+- 閉包の資料（§2）は節の名前と依存の辺だけを持つ。
+- P⁰ の地図は手で状態を書かず、生成スクリプト（`research/p0-lurie/build_p0_map.py`、調整役が作る）で、閉包の資料と各対応表を読んで作り直す。今の 59 項目の表の状態も、HA・HTT・Kerodon の分は対応表から引く形に置き換える（BS・DAG XIII・NS の分は、それぞれの対応表 `bs-coverage`・`dag13-coverage`・`ns-coverage` から）。
+- 対応表と食い違う判定を見つけたら、地図ではなく対応表の側を直す（レーンは報告に書き、調整役が対応表を直す）。地図は既存の HA・HTT・Kerodon の地図（Artifact）へ節ごとに結ぶ。
