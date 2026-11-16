@@ -8931,3 +8931,9609 @@ def cosimplicialModuleCone_homology (M : CosimplicialObject (ModuleCat.{u} A)) (
 ### 160.4 そのまま3b-4へ
 
 IS-W2 §18・更新後の/goalに従い、ここで承認待ちにせず、承認済み§152のR01〜R12（外枠15,000行）のTot側から進む。TotのR01〜R05・R11/R12のTot部分が停止点3b-4a、実現のR06〜R10が停止点3b-4b。その後に任意coherent BE図式の段0を報告して止まる。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤aを変えず、無条件の `cAlgForgetDerived_mapJoinCone_isLimit` を使う。点つきKan Totは作らない。3b-4の実測はG10とは別に数える。
+
+
+## 161. 3b-4開始：R01と同じstrict図式・実U比較の入口（2026-11-14）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 1／全体 12（うち追加 0）。R01完了。R02・R04は同じ元のstrict図式・全評価と既存U比較を前合成する入口だけで、native全錐族・極限性・台の加群Totへの最終比較が完成したとは数えない。
+
+### 161.1 3b-3との境目・Tot先行の具体化
+
+§152の受け渡しを維持する。R01〜R04のstrict入力について、元のBE right frame/end・全図式射・同じalgebraCAlgSourceを使う。R05でstrict複体図式の∞局所化と全Fun比較を使う所、R09〜R10で③-aの元の実現余錐の全族を使う所が3b-3との境目。加群版のstrict図式評価の同値からBE値の任意coherent図式の厳密化を得たとは扱わない。
+
+R02〜R03の模型側では `FramedLimitCones` のKan錐空間・指定重み、`FramedLimitHomPiZero` の通常局所化Hom、一般 `ModelRightFrameComparison` の実right-frameとpinched Homの全比較を区別して使う。π₀のHom同値や通常局所化の随伴だけをnative全錐の普遍性と取り違えない。既存 `FramedLimit*`・`CAlgUnderlyingDerivedComparison`・⑤aは変更しない。既存の無条件 `cAlgForgetDerived_mapJoinCone_isLimit` は、構成したBE極限錐の像の検収に使い、逆方向に用いない。
+
+### 161.2 R11・R12で合わせる既存の欄
+
+読み取りで確認：`EInfinity/Interface/Theory` の `TotalizationCone D x` は **`{ c : JoinCone D // c.vertex = x ∧ IsLimitCone c }`**。`ofCosimplicial_forget` は全 `FunctorIso`、`ofCosimplicial_restrict` も全 `FunctorIso`。既存の型と指定頂点を変えない。
+
+またBE実例の `Theory.lean` で `discrete` に入るものは **`discreteCAlgUnderEmbedding`**（源は `Under (CommRingCat.of A)`）であり、単にCommAlgCat源の `discreteCAlgEmbedding` で代用しない。既存の全源表示は `nerveMap (commAlgCatEquivUnder ...).inverse ≫ discreteCAlgEmbedding`。従ってR11の元の離散BE図式は、この同じinverseと `discreteAlgebraFunctor` を図式へ後合成したものに固定する。`cosimplicialCochains` は既存の `discreteAlgebraModule`・交代余面・整数次数への零延長の全関手で、今回G10の離散入口に使った全関手との表示の法則を照合する。
+
+R12の係数制限は既存の `coefficientRestriction f`（strict代数）と `barrattEcclesRestrict f`（実CAlg）に固定。`barrattEcclesRestrict_sourceIso` は `algebraCAlgSource T ≫ barrattEcclesRestrict f` と `nerveMap (coefficientRestriction f) ≫ algebraCAlgSource S` の全比較。R12ではこの同じ比較の評価前合成を全錐族の右境界に保ち、左境界をTot頂点の比較に一致させる。R11の最終出口は次の既存欄そのものである（紙、未実装）：
+
+```lean
+-- S : Type u, [CommRing S]。FtotはR01を同じUnder→CommAlgCat→BE図式へ制限した全関手。
+FunctorIso (Ftot S ≫ cAlgForgetDerived S)
+  (nerveMap (cosimplicialCochains S) ≫ complexOrdinaryDerivedSource S)
+-- 同じFtotの指定頂点を保持する。
+(X : CosimplicialRingAlgebra S) →
+  TotalizationCone (cosimplicialNerve X ≫ discreteCAlgUnderEmbedding S)
+    (atVertex (Ftot S) (nerveVertex X))
+-- S T : Type u, [CommRing S] [CommRing T], f : S →+* T。
+FunctorIso
+  (nerveMap ((Functor.whiskeringRight SimplexCategory _ _).obj (restrictRingAlgebra f)) ≫ Ftot S)
+  (Ftot T ≫ barrattEcclesRestrict f)
+```
+
+R11・R12はこの欄と同じ全族の両境界を照合してから完了と数える。ここでは仮定・sorry付きのLean宣言を追加していない。
+
+### 161.3 今回の検証済みの型
+
+共通：`A : Type u`、`[CommRing A]`。
+
+登録候補：`SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotalizationComparison`（33行）。
+
+```lean
+def strictBETotVertex :
+    nerve (AsSmall.{u} SimplexCategory ⥤ (operad A).Algebra) ⟶ CAlg_R A
+
+theorem strictBETotVertex_at (F : AsSmall.{u} SimplexCategory ⥤ (operad A).Algebra) :
+    (strictBETotVertex A).app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ F) =
+      (algebraCAlgSource A).app (Opposite.op ⦋0⦌)
+        (ComposableArrows.mk₀ ((framedLimitFunctor A (AsSmall.{u} SimplexCategory)).obj F))
+
+```
+
+登録候補：`SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotalizationInput`（74行）。
+
+```lean
+def strictBECosimplicialNerve (F : AsSmall.{u} SimplexCategory ⥤ (operad A).Algebra) :
+    (SSet.uliftFunctor.{u+1,u}).obj (nerve (AsSmall.{u} SimplexCategory)) ⟶
+      nerve (operad A).Algebra
+
+def strictBECosimplicialDiagram (F : AsSmall.{u} SimplexCategory ⥤ (operad A).Algebra) :
+    (SSet.uliftFunctor.{u+1,u}).obj (nerve (AsSmall.{u} SimplexCategory)) ⟶ CAlg_R A
+
+def strictBECosimplicialEvaluationNerve :
+    (SSet.uliftFunctor.{u+1,u}).obj (nerve (AsSmall.{u} SimplexCategory)) ⊗
+      nerve (AsSmall.{u} SimplexCategory ⥤ (operad A).Algebra) ⟶
+        nerve (operad A).Algebra
+
+def strictBECosimplicialEvaluation :
+    (SSet.uliftFunctor.{u+1,u}).obj (nerve (AsSmall.{u} SimplexCategory)) ⊗
+      nerve (AsSmall.{u} SimplexCategory ⥤ (operad A).Algebra) ⟶ CAlg_R A
+
+theorem strictBECosimplicialEvaluationNerve_at
+    (F : AsSmall.{u} SimplexCategory ⥤ (operad A).Algebra) :
+    inv (fst ((SSet.uliftFunctor.{u+1,u}).obj (nerve (AsSmall.{u} SimplexCategory)))
+      (Δ[0] : SSet.{u+1})) ≫ (𝟙 _ ⊗ₘ SSet.yonedaEquiv.symm (nerveVertex F)) ≫
+        strictBECosimplicialEvaluationNerve A = strictBECosimplicialNerve A F
+
+```
+
+登録候補：`SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotUnderlyingSource`（44行）。
+
+```lean
+def strictBETotUnderlyingSourceIso :
+    FunctorIso (strictBETotVertex A ≫ cAlgForgetDerived A)
+      (nerveMap (framedLimitFunctor A (AsSmall.{u} SimplexCategory) ⋙
+        Operad.Algebra.forget (operad A)) ≫ complexOrdinaryDerivedSource A)
+
+def strictBECosimplicialUnderlyingDiagramIso
+    (F : AsSmall.{u} SimplexCategory ⥤ (operad A).Algebra) :
+    FunctorIso (strictBECosimplicialDiagram A F ≫ cAlgForgetDerived A)
+      (strictBECosimplicialNerve A F ≫ algebraUnderlyingDerivedSource A)
+
+def strictBECosimplicialUnderlyingEvaluationIso :
+    FunctorIso (strictBECosimplicialEvaluation A ≫ cAlgForgetDerived A)
+      (strictBECosimplicialEvaluationNerve A ≫ algebraUnderlyingDerivedSource A)
+
+```
+
+### 161.4 検収・実測・次の接続
+
+コード **`03e732bf0`**。R01の最初の対象ビルド205は `.app _` の零単体の次数推論で失敗し、両方の次数を明示して修正。計算上限を増やさず個別検査を通した後、最終対象ビルド206は **9,459 jobs・終了コード0**、三本だけの小監査 **12（2・7・3）宣言、標準三公理のみ**。205を成功の回として数えない。ログ `/private/tmp/isw2-build205.log`・`206.log`、監査 `/private/tmp/AuditISW2BER01Input.lean`。ハンドル終了コード0を確認済み、鍵返却済み。整理券一枚、`--class impl --wait 3600`、対象ビルド・小監査中だけ使用。sorry・独自公理0。
+
+3b-4の検証済みは **3モジュール・151行**、外枠15,000行まで14,849行。登録候補は別の `is-w2-be-20261114-modules.json` に記録し、G10の366本・22,870行と混ぜない。200行超のファイルなし。既存宣言・⑤a・入口・公式監査・mainの変更なし。
+
+次はR02の元のframe計算対象と全図式評価の間のnative全錐族、およびR03の実right-frame Homとpinched Homの同じ制限の比較を接続する。今回のU源比較だけでR04の加群Totとの最終同型が済んだとは数えない。承認待ち・範囲変更・規模による停止ではなく、検証済みの保存点。Tot先行・実現・任意coherent BE図式の段0までの/goalはactiveのまま保持する。
+
+
+## 162. 同じBE frameの全Hom比較・重み付き錐空間（2026-11-14）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 1／全体 12（うち追加 0）。R03の実frame比較の準備。R02・R03のnative全錐・極限性を完了とは数えない。
+
+### 162.1 今回の型（既存構成の法則）
+
+共通：`A : Type u`、`[CommRing A]`、`K : Type u`、`[SmallCategory K]`。局所の模型構造は既存 `modelCategory A`。新しい模型構造・重み・置換を作らない。以下の型は各ファイルの同じ変数・openの下で読む。
+
+`StrictDiagramTotModelSource`（100行）：
+
+```lean
+def strictBETotModelNerveIso :
+    nerve (modelRelativeCategory (operad A).Algebra).category ≅
+      nerve (allAlgebraRelativeCategory A).category
+
+theorem strictBETotModelNerveIso_weakEdges :
+    (strictBETotModelNerveIso A).inv.app (Opposite.op ⦋1⦌) ''
+      weakNerveEdges (allAlgebraRelativeCategory A) =
+        weakNerveEdges (modelRelativeCategory (operad A).Algebra)
+
+def strictBETotModelSource :
+    nerve (modelRelativeCategory (operad A).Algebra).category ⟶ CAlg_R A
+
+theorem strictBETotModelSource_isLocalization :
+    IsLocalization (strictBETotModelSource A)
+      (weakNerveEdges (modelRelativeCategory (operad A).Algebra))
+
+theorem strictBETotModelSource_vertex (X : (operad A).Algebra) :
+    (strictBETotModelSource A).app (Opposite.op ⦋0⦌)
+        (nerveVertex (modelRelativeObject (operad A).Algebra X)) =
+      (algebraCAlgSource A).app (Opposite.op ⦋0⦌) (nerveVertex X)
+```
+
+`StrictDiagramTotRightFrameComparison`（41行）：
+
+```lean
+def strictBETotRightFramePinchedEquivalence
+    (X : (operad A).Algebra) [IsCofibrant X] (Y : (operad A).Algebra) :
+    QCatEquivalence
+      ((SSet.uliftFunctor.{u+1,u}).obj ((rightFrameHom (rightFrameFamily A) X).obj Y))
+      (pinchedHom ((algebraCAlgSource A).app (Opposite.op ⦋0⦌) (nerveVertex X))
+        ((algebraCAlgSource A).app (Opposite.op ⦋0⦌) (nerveVertex Y)))
+```
+
+`StrictDiagramTotRightFrameCoherent`（41行）：
+
+```lean
+def strictBETotRightFrameCoherentComparison
+    (X : (operad A).Algebra) [IsCofibrant X] :
+    (FunctorIso
+      (FrameHom.rightFrameHammockCoherentDiagram
+        ((SimplicialLocalization.modelSourceFrameFamily (C := (operad A).Algebra)).atObject X) (rightFrameFamily A) 0)
+      (FrameHom.rightFrameHammockCoherentDiagram
+        ((SimplicialLocalization.modelSourceFrameFamily (C := (operad A).Algebra)).atObject X) (rightFrameFamily A) 6)) ×
+      FrameHom.CoherentLocalizationComparison
+        (SimplicialLocalization.hammockLocalizationNerveMap
+          (modelRelativeCategory (operad A).Algebra)) (strictBETotModelSource A)
+```
+
+`StrictDiagramTotTensorFrame`（75行）：
+
+```lean
+def strictBETotTensorWeights : SimplexCategory ⥤ (Kᵒᵖᵒᵖ ⥤ SSet.{u})
+
+def strictBETotTensorFrameFamily :
+    (K ⥤ (operad A).Algebra)ᵒᵖ ⥤ SimplexCategory ⥤ (operad A).Algebraᵒᵖ
+
+theorem strictBETotTensorFrameFamily_obj (F : K ⥤ (operad A).Algebra) :
+    (strictBETotTensorFrameFamily A K).obj (op F) =
+      HomotopyWeight.tensorFrame Kᵒᵖ (HomotopyWeight.framedLimitWeight K)
+        (rightFrameDiagram A K F) := rfl
+
+/-- 同じ標準零単体の単位則は、全図式射に自然な零次同型を与える。 -/
+def strictBETotTensorFrameZeroIso :
+    strictBETotTensorFrameFamily A K ⋙
+      (evaluation SimplexCategory (operad A).Algebraᵒᵖ).obj ⦋0⦌ ≅
+        framedLimitOpFunctor A K
+
+def strictBETotTensorFrameZeroIso :
+    strictBETotTensorFrameFamily A K ⋙
+      (evaluation SimplexCategory (operad A).Algebraᵒᵖ).obj ⦋0⦌ ≅
+        framedLimitOpFunctor A K
+
+def strictBETotTensorFrameAugmentation :
+    strictBETotTensorFrameFamily A K ⟶
+      framedLimitOpFunctor A K ⋙ Functor.const SimplexCategory
+```
+
+`StrictDiagramTotTensorFrameProperties`（61行）：
+
+```lean
+theorem strictBETotTensorFrame_reedyCofibrant (F : K ⥤ (operad A).Algebra) :
+    reedyLeft simplex (cofibrations (operad A).Algebraᵒᵖ)
+      (initial.to ((strictBETotTensorFrameFamily A K).obj (op F)))
+
+theorem strictBETotTensorFrame_homotopicallyConstant (F : K ⥤ (operad A).Algebra)
+    {n m : SimplexCategory} (α : n ⟶ m) :
+    weakEquivalences (operad A).Algebraᵒᵖ
+      (((strictBETotTensorFrameFamily A K).obj (op F)).map α)
+
+theorem strictBETotTensorFrameAugmentation_weak
+    (F : K ⥤ (operad A).Algebra) (n : SimplexCategory) :
+    weakEquivalences (operad A).Algebraᵒᵖ
+      (((strictBETotTensorFrameAugmentation A K).app (op F)).app n)
+
+def strictBETotTensorFrameConeIso (F : K ⥤ (operad A).Algebra)
+    (Y : (operad A).Algebra) :
+    ((SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom
+      ((strictBETotTensorFrameFamily A K).obj (op F))).obj (op (framedLimitProbe A Y))) ≅
+        (framedLimitConeSpace A K Y).obj F
+```
+
+`StrictDiagramTotFrameHomComparison`（73行）：
+
+```lean
+abbrev strictBETotFrameCommonFamily
+
+def strictBETotFrameHomLeft :
+    FrameOverFunctor.hom (FrameOverFunctor.resolution (rightFrameFamily A)
+      (framedLimitOpFunctor A K)) ⟶ FrameOverFunctor.hom (strictBETotFrameCommonFamily A K)
+
+def strictBETotFrameHomRight :
+    FrameOverFunctor.hom (strictBETotTensorFrameFamily A K) ⟶
+      FrameOverFunctor.hom (strictBETotFrameCommonFamily A K)
+
+theorem strictBETotFrameHomLeft_equivalence (F : K ⥤ (operad A).Algebra)
+    (Y : (operad A).Algebra) [IsCofibrant Y] :
+    IsSimplicialHomotopyEquivalence
+      (((strictBETotFrameHomLeft A K).app (op (op F))).app (op Y))
+
+theorem strictBETotFrameHomRight_equivalence (F : K ⥤ (operad A).Algebra)
+    (Y : (operad A).Algebra) [IsCofibrant Y] :
+    IsSimplicialHomotopyEquivalence
+      (((strictBETotFrameHomRight A K).app (op (op F))).app (op Y))
+```
+
+`StrictDiagramTotProbeFrameComparison`（50行）：
+
+```lean
+def strictBETotFrameHomLeftSourceIso (F : K ⥤ (operad A).Algebra)
+    (Y : (operad A).Algebra) :
+    ((FrameOverFunctor.hom (FrameOverFunctor.resolution (rightFrameFamily A)
+      (framedLimitOpFunctor A K))).obj (op (op F))).obj (op Y) ≅
+      ((rightFrameHom (rightFrameFamily A) Y).obj ((framedLimitFunctor A K).obj F))
+
+theorem strictBETotProbeFrameHomLeft_equivalence (F : K ⥤ (operad A).Algebra)
+    (Y : (operad A).Algebra) :
+    IsSimplicialHomotopyEquivalence
+      (((strictBETotFrameHomLeft A K).app (op (op F))).app (op (framedLimitProbe A Y)))
+
+theorem strictBETotProbeFrameHomRight_equivalence (F : K ⥤ (operad A).Algebra)
+    (Y : (operad A).Algebra) :
+    IsSimplicialHomotopyEquivalence
+      (((strictBETotFrameHomRight A K).app (op (op F))).app (op (framedLimitProbe A Y)))
+```
+
+### 162.2 同じものの比較と未完了の境界
+
+`AsSmall` のmodelRelativeCategoryと、既存のULiftHomによるallAlgebraRelativeCategoryのnerve同型を、同じ対象・射から構成。その逆像の弱辺集合を照合し、既存の全代数の局所化を前合成して同じmodelSourceを得る。既存のmodelRightFramePinchedEquivalence・全targetについてのmodelRightFrameCoherentComparisonへその源を渡す。
+
+同じframedLimitWeightとrightFrameDiagramを実現する全関手を標準単体で評価。零次同型による増大写像・Reedy cofibrant・homotopically constant・増大の弱同値性は既存tensorFrameの法則。`tensorFrameHomIso`は元のframedLimitConeSpaceとの**全単体集合の同型**。計算対象のright frameとこのtensor frameの共通frameを、既存FrameOverFunctorで取る。左右の比較は元の同じ任意probeで無条件に単体的ホモトピー同値。rightFrameHomへの源の同定は`rightFrameHomOpIso`であり、定義的等式で代用しない。
+
+これはπ₀だけの比較ではないが、指定native錐の全制限との最終照合は未完了。元の指定頂点・脚・全単体の錐とnative極限性を次に接続する。既存通常局所化の随伴だけからnative普遍性を結論しない。
+
+### 162.3 検収
+
+モデル源・pinched比較の二本はコード`bad328231`、対象ビルド208 **9,817 jobs・終了0**、二本の小監査**19（9・10）宣言・標準三公理のみ**。207・209は既存の必要依存だけの対象ビルドで、それぞれ9,730・2,423 jobs・終了0。
+
+210は四本の対象ビルド自体は成功したが、合併監査で自動生成された局所instance名の衝突を検出したため、検収成功とは数えない。未コミットの五本の局所instanceに個別の名前を与え、既存検証済み宣言は変更せず修正。最終211は五本の対象ビルド **9,835 jobs・終了0**、BE新規全10本の小監査 **64（2・7・3・9・10・4・10・6・7・6）宣言・標準三公理のみ**。実ハンドル8092の終了0を確認。sorry・独自公理0。計算上限の変更なし。
+
+整理券一枚、`--class impl --wait 3600`、ビルドと小監査の間だけ保持し返却済み。ログ`/private/tmp/isw2-build208.log`・`211.log`、最終監査`/private/tmp/AuditISW2BEFrameComplete.lean`。main・入口・公式監査・⑤a・既存FramedLimit*・CAlgUnderlyingDerivedComparisonの変更なし。
+
+3b-4の検証済み **10モジュール・592行**（外枠15,000行）。登録候補は `is-w2-be-20261114-modules.json`。200行超の新規ファイルなし。承認待ちの停止ではなく検証済みの保存点で、/goalの続きへ進む。
+
+
+## 163. 同じ全strict BE図式の評価・頂点・forgetの局所化（2026-11-14）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 1／全体 12（うち追加 0）。R05の局所化上の源と三つの全関手の因子化を証明分割。R02〜R05の最終結論が済んだとは数えない。
+
+### 163.1 R05の源と、同じ全strict図式の保持
+
+§152の `TotBE`・`ForgetStrictBEInfinity` の源を、元のstrict BE図式のnerveと、その同じobjectwise擬同型の辺集合の `edgeLocalization` とする。元の全図式の評価・元のframedLimitFunctorによる全頂点・同じforgetを、既存局所化の全関手圏の普遍性で延長した。それぞれ元の全strict図式の全射列との指定FunctorIsoを保持する。BE値の任意coherent図式の厳密化や評価比較の同値を主張しない。
+
+forgetの入力は元の `AsSmall.{u} Δ` の図式を指定 `AsSmall.up` でΔへ引き戻し、元の `Operad.Algebra.forget` を後合成するもの。図式の各射は元の同じ成分の `.hom` に厳密に等しい。このobjectwise擬同型は加群図式の既存指定局所化で反転される。R05の `ForgetStrictBEInfinity` の全因子化までを実装し、最終の `TotBE ≫ U` と `ForgetStrictBEInfinity ≫ TotDA` の比較はR02〜R04の同じ全錐の照合から続ける。
+
+### 163.2 検証済みの型
+
+共通：`A : Type u`、`[CommRing A]`。次は各ファイルの変数とopenの下で読む。
+
+`StrictDiagramTotLocalization`（50行）：
+
+```lean
+abbrev StrictBETotDiagramNerve : SSet.{u+1}
+
+def strictBETotDiagramWeakEdges : Set ((StrictBETotDiagramNerve A) _⦋1⦌)
+
+theorem strictBETotDiagramWeakEdges_mk₁
+    {F G : AsSmall.{u} SimplexCategory ⥤ (operad A).Algebra} (f : F ⟶ G) :
+    ComposableArrows.mk₁ f ∈ strictBETotDiagramWeakEdges A ↔
+      ∀ j, QuasiIso (f.app j).hom
+
+def StrictBETotDiagramInfinity : SSet.{u+1}
+
+instance strictBETotDiagramInfinity_quasicategory :
+    Quasicategory (StrictBETotDiagramInfinity A)
+
+def strictBETotDiagramLocalization :
+    StrictBETotDiagramNerve A ⟶ StrictBETotDiagramInfinity A
+
+theorem strictBETotDiagramLocalization_isLocalization :
+    IsLocalization (strictBETotDiagramLocalization A) (strictBETotDiagramWeakEdges A)
+```
+
+`StrictDiagramTotEvaluationLocalization`（94行）：
+
+```lean
+def strictBETotDiagramFamily : StrictBETotDiagramNerve A ⟶
+    (ihom ((SSet.uliftFunctor.{u+1,u}).obj (nerve (AsSmall.{u} SimplexCategory)))).obj
+      (CAlg_R A) := curry (strictBECosimplicialEvaluation A)
+
+/-- 点での全評価は元の同じ通常評価のnerveに一致。 -/
+theorem strictBETotDiagramFamily_evaluation (j : AsSmall.{u} SimplexCategory) :
+    strictBETotDiagramFamily A ≫ evaluateFunctorAt (ULift.up (ComposableArrows.mk₀ j)) =
+      nerveMap ((CategoryTheory.evaluation (AsSmall.{u} SimplexCategory)
+        (operad A).Algebra).obj j) ≫ algebraCAlgSource A
+
+theorem strictBETotDiagramFamily_evaluation (j : AsSmall.{u} SimplexCategory) :
+    strictBETotDiagramFamily A ≫ evaluateFunctorAt (ULift.up (ComposableArrows.mk₀ j)) =
+      nerveMap ((CategoryTheory.evaluation (AsSmall.{u} SimplexCategory)
+        (operad A).Algebra).obj j) ≫ algebraCAlgSource A
+
+theorem strictBETotDiagramFamily_inverts :
+    InvertsEdges (strictBETotDiagramFamily A) (strictBETotDiagramWeakEdges A)
+
+theorem exists_strictBETotLocalizedEvaluation :
+    ∃ ev : StrictBETotDiagramInfinity A ⟶
+        (ihom ((SSet.uliftFunctor.{u+1,u}).obj (nerve (AsSmall.{u} SimplexCategory)))).obj
+          (CAlg_R A),
+      Nonempty (FunctorIso (strictBETotDiagramLocalization A ≫ ev)
+        (strictBETotDiagramFamily A))
+
+def strictBETotLocalizedEvaluation : StrictBETotDiagramInfinity A ⟶
+    (ihom ((SSet.uliftFunctor.{u+1,u}).obj (nerve (AsSmall.{u} SimplexCategory)))).obj
+      (CAlg_R A) := (exists_strictBETotLocalizedEvaluation A).choose
+
+/-- 延長の指定全同型は元の全strict評価を保持する。 -/
+def strictBETotLocalizedEvaluation_factor :
+    FunctorIso (strictBETotDiagramLocalization A ≫ strictBETotLocalizedEvaluation A)
+      (strictBETotDiagramFamily A)
+
+def strictBETotLocalizedEvaluation_factor :
+    FunctorIso (strictBETotDiagramLocalization A ≫ strictBETotLocalizedEvaluation A)
+      (strictBETotDiagramFamily A)
+```
+
+`StrictDiagramTotVertexLocalization`（57行）：
+
+```lean
+theorem strictBETotVertex_inverts :
+    InvertsEdges (strictBETotVertex A) (strictBETotDiagramWeakEdges A)
+
+theorem exists_strictBETotLocalizedVertex :
+    ∃ V : StrictBETotDiagramInfinity A ⟶ CAlg_R A,
+      Nonempty (FunctorIso (strictBETotDiagramLocalization A ≫ V) (strictBETotVertex A))
+
+def strictBETotLocalizedVertex : StrictBETotDiagramInfinity A ⟶ CAlg_R A
+```
+
+`StrictDiagramTotUnderlyingLocalization`（86行）：
+
+```lean
+def strictBETotForgetDiagram :
+    (AsSmall.{u} SimplexCategory ⥤ (operad A).Algebra) ⥤
+      StrictComplexDiagram A .cosimplicial
+
+theorem strictBETotForgetDiagram_map
+    {F G : AsSmall.{u} SimplexCategory ⥤ (operad A).Algebra} (f : F ⟶ G)
+    (j : SimplexCategory) :
+    ((strictBETotForgetDiagram A).map f).app j = (f.app (AsSmall.up.obj j)).hom := rfl
+
+/-- 元の全BE図式から、同じ加群図式の指定局所化への写像。 -/
+def strictBETotForgetDiagramSource :
+    StrictBETotDiagramNerve A ⟶ StrictDiagramInfinity A .cosimplicial
+
+def strictBETotForgetDiagramSource :
+    StrictBETotDiagramNerve A ⟶ StrictDiagramInfinity A .cosimplicial
+
+theorem strictBETotForgetDiagramSource_inverts :
+    InvertsEdges (strictBETotForgetDiagramSource A) (strictBETotDiagramWeakEdges A)
+
+theorem exists_strictBETotLocalizedForget :
+    ∃ U : StrictBETotDiagramInfinity A ⟶ StrictDiagramInfinity A .cosimplicial,
+      Nonempty (FunctorIso (strictBETotDiagramLocalization A ≫ U)
+        (strictBETotForgetDiagramSource A))
+
+def strictBETotLocalizedForget :
+    StrictBETotDiagramInfinity A ⟶ StrictDiagramInfinity A .cosimplicial
+
+def strictBETotLocalizedForget_factor :
+    FunctorIso (strictBETotDiagramLocalization A ≫ strictBETotLocalizedForget A)
+      (strictBETotForgetDiagramSource A)
+```
+
+### 163.3 検収・残り
+
+対象ビルド212：最初の三本 **9,489 jobs・終了0**、BE新規全13本の小監査 **90（2・7・3・9・10・4・10・6・7・6・13・8・5）宣言・標準三公理のみ**。その前の個別検査では `nerve.edgeMk` の像と `edgeOfSimplex` の表示を明示して照合した。計算上限は増やしていない。
+
+213はforgetの輸送で `InvertsEdges` の暗黙引数名を誤り失敗、検収成功とは数えない。`a` に修正し、既存の反転命題を `IsInvertibleEdge` の同じ辺として明示。個別検査の終了0後、最終214は **9,492 jobs・終了0**、BE新規全14本の小監査 **99（2・7・3・9・10・4・10・6・7・6・13・8・5・9）宣言・標準三公理のみ**。実ハンドル51046・93720の終了0を確認、鍵返却済み。sorry・独自公理0。
+
+整理券は同時に一枚だけ、`--class impl --wait 3600`、対象ビルド・小監査の間だけ保持。ログ`/private/tmp/isw2-build212.log`・`214.log`、小監査`/private/tmp/AuditISW2BEUnderlyingLocalization.lean`。公式監査・入口・main・⑤a・既存FramedLimit*・CAlgUnderlyingDerivedComparisonは変更していない。
+
+3b-4の検証済み **14モジュール・879行**、外枠15,000行まで14121行。新規200行超のファイルなし。登録候補を同じBE用JSONに追記。G10の366本とは分ける。
+
+次はR02〜R03の核心へ戻る。同じ実frameのHom比較と重み付き錐空間の同型は§162で検証済みだが、これだけで元のCAlg図式上の指定native全錐とその極限性は得ていない。全族の錐を独立な点ごとの錐から自然だと仮定したり、通常局所化の随伴の余単位をnativeな全錐の代用にしたりしない。元の実frameの標準射を持つ全錐を構成し、同じ制限射との等式を追跡する。今回の局所化の因子化はこの構成後のR05へ再利用する。保存点であり、承認待ち・外枠・新規数学による停止ではない。/goalはactiveのまま。
+
+
+## 164. 普遍重み付き錐・元のprobe・実Homの標準点（2026-11-14）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 1／全体 12（うち追加 0）。R02・R03の既存随伴単位・零次同型の法則を分割。指定native錐・その極限性は未完了。
+
+### 164.1 元の普遍錐を固定する
+
+同じFrameWeightRealizationの随伴の単位を、元の重みで評価する。これが `strictBETotUniversalWeightedCone` で、随伴で戻すと**同じ元の計算対象の恒等射**になる。任意の元の射が表す重み付き錐は、この単位への同じ前合成。元の全計算関手の射の反対は、同じframe族の射の実現のmateそのものでもある。
+
+元の計算対象の同じ `framedLimitProbeComparison` を前合成すると、同じ `framedLimitConeSpace` の具体的な普遍probe錐の零単体が得られる。さらに元の `strictBETotTensorFrameConeIso` は、零次同型にそのprobe比較を合成したHomを、**その同じ零単体**に写す。この同定を単なるπ₀上の等式へ弱めていない。
+
+### 164.2 検証済みの型
+
+共通のunit則の宇宙・圏・余極限の仮定はソースと同じ。BE側は `A : Type u`、`[CommRing A]`、`K : Type u`、`[SmallCategory K]`。
+
+`SerrePositivity.HomotopicalAlgebra.Diagram.FrameWeightUnitNaturality`（26行）：
+
+```lean
+theorem unit_frame_naturality {B B' : K ⥤ SimplexCategory ⥤ C}
+    (a : B ⟶ B') (W : Kᵒᵖ ⥤ SSet.{w}) :
+    (adjunction K B').unit.app W ≫ ((homFamily K).map a.op).app ((functor K B').obj W) =
+      (adjunction K B).unit.app W ≫ (hom K B).map ((map K a).app W)
+```
+
+`SerrePositivity.EInfinity.HomotopyWeight.TensorConeUnitPoint`（36行）：
+
+```lean
+theorem tensorFrameHomIso_point (Y : C)
+    (f : (FrameWeightRealization.functor K B).obj W ⟶ Y) :
+    (((tensorFrameHomIso K W B).hom.app Y).app (Opposite.op ⦋0⦌))
+      ((tensorFrameZeroIso K W B).hom ≫ f) =
+        conePoint Kᵒᵖ W ((FrameWeightRealization.adjunction K B).homEquiv W Y f)
+```
+
+`SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotUniversalWeightedCone`（67行）：
+
+```lean
+def strictBETotUniversalWeightedCone (F : K ⥤ (operad A).Algebra) :
+    HomotopyWeight.framedLimitWeight K ⟶
+      (FrameWeightRealization.hom Kᵒᵖ (rightFrameDiagram A K F)).obj
+        (op ((framedLimitFunctor A K).obj F))
+
+theorem strictBETotUniversalWeightedCone_identity (F : K ⥤ (operad A).Algebra) :
+    ((FrameWeightRealization.adjunction Kᵒᵖ (rightFrameDiagram A K F)).homEquiv
+      (HomotopyWeight.framedLimitWeight K)
+      (op ((framedLimitFunctor A K).obj F))).symm
+        (strictBETotUniversalWeightedCone A K F) = 𝟙 _
+
+theorem strictBETotUniversalWeightedCone_precomp (F : K ⥤ (operad A).Algebra)
+    (Y : (operad A).Algebra) (f : Y ⟶ (framedLimitFunctor A K).obj F) :
+    (weightedCotensorHomEquiv A K F (HomotopyWeight.weight K) Y) f =
+      strictBETotUniversalWeightedCone A K F ≫
+        (FrameWeightRealization.hom Kᵒᵖ (rightFrameDiagram A K F)).map f.op
+
+def strictBETotFrameMap {F G : K ⥤ (operad A).Algebra} (f : F ⟶ G) :
+    rightFrameDiagram A K G ⟶ rightFrameDiagram A K F
+
+theorem strictBETotFrameMap_eq {F G : K ⥤ (operad A).Algebra} (f : F ⟶ G) :
+    strictBETotFrameMap A K f = (rightFrameDiagramFamily A K).map f.op
+
+theorem strictBETotFunctor_map_op {F G : K ⥤ (operad A).Algebra} (f : F ⟶ G) :
+    ((framedLimitFunctor A K).map f).op =
+      (FrameWeightRealization.map Kᵒᵖ ((rightFrameDiagramFamily A K).map f.op)).app
+        (HomotopyWeight.framedLimitWeight K)
+```
+
+`SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotUniversalProbeCone`（46行）：
+
+```lean
+def strictBETotUniversalProbeWeightedCone (F : K ⥤ (operad A).Algebra) :
+    HomotopyWeight.framedLimitWeight K ⟶
+      (FrameWeightRealization.hom Kᵒᵖ (rightFrameDiagram A K F)).obj
+        (op (framedLimitProbe A ((framedLimitFunctor A K).obj F)))
+
+theorem strictBETotUniversalProbeWeightedCone_comparison
+    (F : K ⥤ (operad A).Algebra) :
+    strictBETotUniversalProbeWeightedCone A K F =
+      weightedCotensorHomEquiv A K F (HomotopyWeight.weight K)
+        (framedLimitProbe A ((framedLimitFunctor A K).obj F))
+        (framedLimitProbeComparison A ((framedLimitFunctor A K).obj F))
+
+def strictBETotUniversalProbeConePoint (F : K ⥤ (operad A).Algebra) :
+    ((framedLimitConeSpace A K ((framedLimitFunctor A K).obj F)).obj F) _⦋0⦌
+```
+
+`SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotUniversalProbePointComparison`（43行）：
+
+```lean
+theorem strictBETotTensorFrameConeIso_universalPoint
+    (F : K ⥤ (operad A).Algebra) :
+    ((strictBETotTensorFrameConeIso A K F ((framedLimitFunctor A K).obj F)).hom.app
+      (Opposite.op ⦋0⦌))
+        ((strictBETotTensorFrameZeroIso A K).hom.app (op F) ≫
+          (framedLimitProbeComparison A ((framedLimitFunctor A K).obj F)).op) =
+      strictBETotUniversalProbeConePoint A K F
+```
+
+### 164.3 全自然性の未検証部を区別する
+
+共通の `FrameWeightRealization.unit_frame_naturality` は、既存の `unit_conjugateEquiv_symm` を直接代入して証明済み。一方、それをBE全図式族の評価表示と独立なrightFrameDiagram表示の間で一括照合する特殊化では、定義展開が200,000 heartbeatsに当たった。型・計算上限は変更せず、単位則・同じ全frame族の射・実現の射の表示を小さく分割した。
+
+特殊化の全自然性の未検証部分は `/private/tmp/StrictBETotUniversalWeightedConeNaturality-draft.lean.txt` に残し、成功した宣言・対象ビルドに含めない。残る型は次（同じ元の全frame族の射で、別の比較射を選ばない）：
+
+```lean
+theorem strictBETotUniversalWeightedCone_naturality
+    {F G : K ⥤ (operad A).Algebra} (f : F ⟶ G) :
+    strictBETotUniversalWeightedCone A K F ≫
+      ((FrameWeightRealization.homFamily Kᵒᵖ).map
+        ((rightFrameDiagramFamily A K).map f.op).op).app
+          (op ((framedLimitFunctor A K).obj F)) =
+      strictBETotUniversalWeightedCone A K G ≫
+        (FrameWeightRealization.hom Kᵒᵖ (rightFrameDiagram A K G)).map
+          (((framedLimitFunctor A K).map f).op)
+```
+
+この未検証部を一覧から除外したり、R02の全族を点ごとの錐だけへ縮めたりしない。次の指定native錐の構成と合わせて閉じる。現時点の `strictBETotUniversalProbeConePoint` をnative join錐の代用にはしない。
+
+### 164.4 検収
+
+215は共通単位則と既存ConePointsの依存だけの対象ビルド **2,325 jobs・終了0**。型照合の途中の個別検査は、未検証部でheartbeat・一時ファイルのインデント・開いた記法の不足を検出した回を成功に数えず、上記の検証済み部を合併した `CheckBETotUniversalProbePointComparison2.lean` の終了0を確認してから対象ビルドした。計算上限は増やしていない。
+
+最終216：新規五本の対象ビルド **4,018 jobs・終了0**、3b-4新規全19本の小監査 **113（2・7・3・9・10・4・10・6・7・6・13・8・5・9・1・1・7・3・2）宣言・標準三公理のみ**。実ハンドル92611・41565の終了0を確認、鍵返却済み。ログ `/private/tmp/isw2-build215.log`・`216.log`、小監査 `/private/tmp/AuditISW2BEUniversalPoint.lean`。sorry・独自公理0。
+
+同時に整理券一枚、`--class impl --wait 3600`。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainの変更なし。新規200行超のファイルなし。これは保存点であり、承認待ちや外枠による停止ではない。
+
+3b-4新規は **19モジュール・1097行**（今回218行、共通二本を含む。外枠15,000行）。登録候補JSONにも共通二本を記録し、BSやG10の登録候補と混ぜない。次は元の試験対象とprobeのnative Homの始点を合わせ、同じ普遍錐・制限射へ接続する。/goalはactive。
+
+
+## 165. 元の全BE図式と正本Hom∞の全比較・普遍錐の全自然性（2026-11-14）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 1／全体 12（うち追加 0）。R02・R03の元の全Hom比較・源移送・単位自然性まで。native join錐・極限性はまだ未完了。
+
+### 165.1 同じ全単体と同じ源を保持する
+
+§164.3で未検証だった `strictBETotUniversalWeightedCone_naturality` は、**報告した型のまま閉じた**。同じ全frame族の対象表示と同じ計算対象の反対表示を小さな等式で正規化してから、既存のmateの単位則を適用した。計算上限は変更していない。独立な二つの構成を同じものだと仮定することも、全自然性を点ごとの等式に置き換えることもしていない。
+
+元のprobe比較の実辺が与える源の頂点同型と、既存の `pinchedPrecomposeEquivalence` を用い、元の任意の試験対象に対する実right-frame Homから同じnative pinched Homへの無条件の全空間同値を得た。その頂点同型の順射は元のprobe辺の同じ類であり、実比較の順射は同じframe比較と同じprobe比較の逆による前合成。
+
+さらに既存 `FrameHom.rightFrameTerminalHomIso`（原本Yonedaの全比較を代入済み）を、既存六辺の全coherent比較と合成。元のright-frame Homの全標的図式から正本 `homInfinityCovariant` への**全FunctorIso**を得た。probe比較の源同型の反転・宇宙持ち上げを元のco-Yonedaで写すことで、こちらも元の任意の試験対象に無条件化。点ごとの逆を選んで自然だと仮定していない。
+
+モデル相対圏のAsSmall表示から元の全代数のnerveへの比較ではHom宇宙が異なるため、その包含を元の全nerve上で直接記述した。指定modelSourceへの合成は、元の `algebraCAlgSource` と**全単体で厳密に等しい**。この一致を使って全Hom∞比較を元の全代数源へ戻し、さらに元の同じstrict BE余単体図式の全nerveへ前合成した。
+
+### 165.2 今回の検証済みの型
+
+共通：`A : Type u`、`[CommRing A]`。普遍錐の全自然性には `K : Type u`、`[SmallCategory K]`。局所の模型とfactorizationは既存と同じ具体的なもの。源cofibrancyを要求する欄と、同じprobeで無条件化した欄を区別する。
+
+`StrictDiagramTotProbeNativeHomComparison`（65行）：
+
+```lean
+def strictBETotProbeSourceIso (X : (operad A).Algebra) :
+    VertexIso ((algebraCAlgSource A).app (Opposite.op ⦋0⦌)
+      (nerveVertex (framedLimitProbe A X)))
+      ((algebraCAlgSource A).app (Opposite.op ⦋0⦌) (nerveVertex X))
+
+theorem strictBETotProbeSourceIso_hom (X : (operad A).Algebra) :
+    (strictBETotProbeSourceIso A X).hom = Truncated.HomotopyCategory.homMk
+      ((nerve.edgeMk (framedLimitProbeComparison A X)).map (algebraCAlgSource A)).toTruncated
+
+def strictBETotProbeNativeHomEquivalence (X Y : (operad A).Algebra) :
+    QCatEquivalence
+      ((SSet.uliftFunctor.{u+1,u}).obj
+        ((rightFrameHom (rightFrameFamily A) (framedLimitProbe A X)).obj Y))
+      (pinchedHom ((algebraCAlgSource A).app (Opposite.op ⦋0⦌) (nerveVertex X))
+        ((algebraCAlgSource A).app (Opposite.op ⦋0⦌) (nerveVertex Y)))
+
+theorem strictBETotProbeNativeHomEquivalence_hom (X Y : (operad A).Algebra) :
+    (strictBETotProbeNativeHomEquivalence A X Y).hom =
+      (strictBETotRightFramePinchedEquivalence A (framedLimitProbe A X) Y).hom ≫
+        SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.precompose
+          ((algebraCAlgSource A).app (Opposite.op ⦋0⦌) (nerveVertex Y))
+          (strictBETotProbeSourceIso A X).inv
+```
+
+`StrictDiagramTotUniversalWeightedConeNaturality`（45行）：
+
+```lean
+theorem strictBETotFrameDiagram_obj (F : K ⥤ (operad A).Algebra) :
+    (rightFrameDiagramFamily A K).obj (op F) = rightFrameDiagram A K F
+
+theorem strictBETotFunctor_obj_op (F : K ⥤ (operad A).Algebra) :
+    op ((framedLimitFunctor A K).obj F) =
+      (FrameWeightRealization.functor Kᵒᵖ
+        ((rightFrameDiagramFamily A K).obj (op F))).obj
+          (HomotopyWeight.framedLimitWeight K)
+
+theorem strictBETotUniversalWeightedCone_naturality
+    {F G : K ⥤ (operad A).Algebra} (f : F ⟶ G) :
+    strictBETotUniversalWeightedCone A K F ≫
+      ((FrameWeightRealization.homFamily Kᵒᵖ).map
+        ((rightFrameDiagramFamily A K).map f.op).op).app
+          (op ((framedLimitFunctor A K).obj F)) =
+      strictBETotUniversalWeightedCone A K G ≫
+        (FrameWeightRealization.hom Kᵒᵖ (rightFrameDiagram A K G)).map
+          (((framedLimitFunctor A K).map f).op)
+```
+
+`StrictDiagramTotModelSourceComparison`（40行）：
+
+```lean
+def strictBETotModelUpNerve :
+    nerve (operad A).Algebra ⟶
+      nerve (SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory
+        (operad A).Algebra).category
+
+theorem strictBETotModelSource_up :
+    strictBETotModelUpNerve A ≫ strictBETotModelSource A = algebraCAlgSource A
+```
+
+`StrictDiagramTotFrameHomInfinity`（43行）：
+
+```lean
+def strictBETotFrameHomInfinityIso (X : (operad A).Algebra) [IsCofibrant X] :
+    FunctorIso
+      (FrameHom.rightFrameHammockCoherentDiagram
+        ((SimplicialLocalization.modelSourceFrameFamily (C := (operad A).Algebra)).atObject X)
+        (rightFrameFamily A) 0)
+      ((SSet.uliftFunctor.{u+2,u+1}).map (strictBETotModelSource A) ≫
+        homInfinityCovariant
+          ((algebraCAlgSource A).app (Opposite.op ⦋0⦌) (nerveVertex X)))
+```
+
+`StrictDiagramTotProbeHomInfinityComparison`（57行）：
+
+```lean
+def strictBETotProbeHomInfinitySourceIso (X : (operad A).Algebra) :
+    FunctorIso
+      (homInfinityCovariant ((algebraCAlgSource A).app (Opposite.op ⦋0⦌)
+        (nerveVertex (framedLimitProbe A X))))
+      (homInfinityCovariant ((algebraCAlgSource A).app (Opposite.op ⦋0⦌)
+        (nerveVertex X)))
+
+def strictBETotProbeFrameHomInfinityIso (X : (operad A).Algebra) :
+    FunctorIso
+      (FrameHom.rightFrameHammockCoherentDiagram
+        ((SimplicialLocalization.modelSourceFrameFamily (C := (operad A).Algebra)).atObject
+          (framedLimitProbe A X)) (rightFrameFamily A) 0)
+      ((SSet.uliftFunctor.{u+2,u+1}).map (strictBETotModelSource A) ≫
+        homInfinityCovariant
+          ((algebraCAlgSource A).app (Opposite.op ⦋0⦌) (nerveVertex X)))
+```
+
+`StrictDiagramTotAlgebraHomInfinityComparison`（64行）：
+
+```lean
+def strictBEAlgebraProbeHomInfinityIso (X : (operad A).Algebra) :
+    FunctorIso
+      ((SSet.uliftFunctor.{u+2,u+1}).map (strictBETotModelUpNerve A) ≫
+        FrameHom.rightFrameHammockCoherentDiagram
+          ((SimplicialLocalization.modelSourceFrameFamily (C := (operad A).Algebra)).atObject
+            (framedLimitProbe A X)) (rightFrameFamily A) 0)
+      ((SSet.uliftFunctor.{u+2,u+1}).map (algebraCAlgSource A) ≫
+        homInfinityCovariant
+          ((algebraCAlgSource A).app (Opposite.op ⦋0⦌) (nerveVertex X)))
+
+def strictBETotDiagramProbeHomInfinityIso
+    (F : AsSmall.{u} SimplexCategory ⥤ (operad A).Algebra)
+    (X : (operad A).Algebra) :
+    FunctorIso
+      ((SSet.uliftFunctor.{u+2,u+1}).map (strictBECosimplicialNerve A F) ≫
+        (SSet.uliftFunctor.{u+2,u+1}).map (strictBETotModelUpNerve A) ≫
+          FrameHom.rightFrameHammockCoherentDiagram
+            ((SimplicialLocalization.modelSourceFrameFamily (C := (operad A).Algebra)).atObject
+              (framedLimitProbe A X)) (rightFrameFamily A) 0)
+      ((SSet.uliftFunctor.{u+2,u+1}).map (strictBECosimplicialDiagram A F) ≫
+        homInfinityCovariant
+          ((algebraCAlgSource A).app (Opposite.op ⦋0⦌) (nerveVertex X)))
+```
+
+### 165.3 検収
+
+217は先頭の整理券で調整役の監査を待ち、同じ実ハンドル39750を生存確認し続けた。再起動・整理券の重複発行なし。最終 **9,818 jobs・終了0**、新規全20本の小監査 **123（§164の113に新規10）宣言・標準三公理のみ**。
+
+218はその終了0・返却後に次の一枚を発行し、残る五本と必要な既存依存だけを対象ビルド。**10,583 jobs・終了0**、新規全25本の小監査 **166（2・7・3・9・10・4・10・6・7・6・13・8・5・9・1・1・7・3・2・10・4・4・10・11・14）宣言・標準三公理のみ**。実ハンドル80009の終了0を確認。鍵返却済み。ログ `/private/tmp/isw2-build217.log`・`218.log`、最終小監査 `/private/tmp/AuditISW2BEHomInfinity.lean`。
+
+個別検査でprobeのcofibrancyを型推論へ渡す必要、AsSmall包含のHom宇宙の違い、Functor.hextの射の異種等式を明示する必要を検出して修正した。既存依存を一時合併した検査では `stdSimplex` の名前衝突があったため一時ファイルだけを完全修飾し、既存ソースを変えなかった。最終218は各実モジュールを独立にビルドし、合併監査も成功した。これにより一時合併検査だけから成功を推測していない。
+
+sorry・独自公理0。計算上限の変更なし。`--class impl --wait 3600`、同時整理券一枚、ビルド・小監査の間だけ鍵を保持。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。
+
+3b-4の検証済み **25モジュール・1411行**（今回314行、共通二本を含む。外枠15,000行）。新規200行超のファイルなし。登録候補は同じBE用JSONへ追記。R02・R03のnative錐・極限性を完成とは数えず、次の接続は重み付きframe錐とnative切断の間の比較。/goalはactive。
+
+## 166. 一覧外の数学：選んだ一点重みとnative切断のBK重みの比較（2026-11-14）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 1／全体 12（うち追加 0）。検証済みコードは `98df07409`（§165、25本・1,411行、166宣言、標準三公理のみ）。R02・R03の残りの経路で、以下の数学的補題が必要になったため報告する。Leanの新しい証明・公理・仮定は追加していない。
+
+### 166.1 必要になった追加の型：R03a案
+
+`J := AsSmall.{u} SimplexCategory`、`I := Jᵒᵖᵒᵖ`。元のBE計算対象は選ばれた `HomotopyWeight.framedLimitWeight J` を使う。一方、既存のnative切断との比較は `bousfieldKanWeight I`（各値 `N(I/i)`）を使う。この二つを定義的に同じだと扱えない。必要なのは、同じ一つの重みの射による制限が、全Kan係数図式についてホモトピー同値になること。
+
+追加を提案する主張の型は次のとおり（`J`・`I`は略記せず展開）：
+
+```lean
+-- universe u
+-- open CategoryTheory
+-- open SerrePositivity.EInfinity
+-- open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits
+-- open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
+
+theorem exists_strictBETotWeightComparison :
+    ∃ j : bousfieldKanWeight ((AsSmall.{u} SimplexCategory)ᵒᵖᵒᵖ) ⟶
+        HomotopyWeight.framedLimitWeight (AsSmall.{u} SimplexCategory),
+      ∀ (H : ((AsSmall.{u} SimplexCategory)ᵒᵖᵒᵖ) ⥤ SSet.{u}),
+        (∀ i, SSet.KanComplex (H.obj i)) →
+          IsSimplicialHomotopyEquivalence (weightedSectionsPre j H)
+```
+
+向きは `j : BK → W` から `sections(W,H) → sections(BK,H)`。一つの `j` を全Hに使うので、元の係数図式の射に関する自然性は既存 `weightedSectionsPre` の法則で保持できる。元のframe・重み・計算対象は変更せず、重み比較を通して元の普遍錐をnative切断へ送る。`[ModelCategory SSet]` は型に足さない。
+
+型そのものは `/private/tmp/CheckISW2WeightComparisonStatement.lean` に同じPropとして記述し、個別検査の**終了0**を確認した（ログ `/private/tmp/checkISW2WeightComparisonStatement2.log`）。これは定理の証明ではなく、型の検査だけである。本体には追加していない。
+
+### 166.2 なぜ既存構成の法則だけとは数えなかったか
+
+- `HomotopyWeight.weight_cofibrant`・`framedLimitWeight_cofibrant` は選んだ小対象分解の重みの射影cofibrancyを証明する。別の具体的な重み `bousfieldKanWeight` の射影cofibrancyや、その重みとのHom空間の比較はそのままでは得られない。
+- `weightedSectionsPre_homotopyEquivalence_of_extensions` は、**全ての成分ごとのanodyneな自然変換に対する延長性**を係数図式に要求する。今回の入力の各値がKanであるだけでは、その強い延長性を代入できない。
+- `coneSpace_kanComplex`・`coneSpace_map_boundary_rlp` は、固定した射影cofibrant重みに対する係数方向の法則である。異なる二つの重みを比較する今回の型の証明にはなっていない。
+- `YonedaHomotopyWeight`・抽象projective図式モデルの入口は値圏のModelCategory等を仮定する。これをSSetに無条件に代入したり、禁止された `[ModelCategory SSet]` を足したりしない。
+- §165の全Hom∞比較は元の正本Hom関手まで接続したが、二つの重みの違いを消す定理ではない。通常局所化の随伴・π₀の同値・忘却Uの極限保存で、この重み比較を代用しない。
+
+このため、随伴単位や全自然性の表示を分割した§164〜165とは異なり、R03aは新しい数学的補題として扱う。§152の一覧は既存frame Homとnative切断の橋を使う所で、この二つの具体的な重みのHom不変性を独立に洗い出していなかった。
+
+### 166.3 証明の見込みと配置
+
+候補の経路は、まず指定されたBK重みについて自由境界による細胞分解を示すこと。次数nの鎖 `i₀ → … → iₙ → i` を、最後の射 `iₙ → i` に関して自由な図式として扱い、非退化な鎖の境界の付加から射影cofibrancyを得る。その中で使う型は次：
+
+```lean
+-- open CategoryTheory Limits
+(HomotopyWeight.boundaries ((AsSmall.{u} SimplexCategory)ᵒᵖᵒᵖ)).rlp.llp
+  (initial.to (bousfieldKanWeight ((AsSmall.{u} SimplexCategory)ᵒᵖᵒᵖ)))
+```
+
+このPropの型も `/private/tmp/CheckISW2BKWeightStatement.lean` で検査済み。次に既存 `comparison_rlp` を用いて `BK → W` を一つ持ち上げ、両方の重みの射影cofibrancyと各値の可縮性を使って、全Kan係数図式への制限のHom不変性を証明する。この部分もモデル構造を仮定せず、自由境界・ホーンの持ち上げとして書く必要がある。
+
+置き場所の案：共通の細胞・持ち上げの部分は新規 `HomotopicalAlgebra/Diagram/`、指定Δ・二重反対・選んだWへの特殊化は新規 `EInfinity/HomotopyWeight/`。既存のFramedLimit*・⑤a・入口・公式監査は変えない。見込みは細胞の部分300〜700行、重みのHom不変性と指定比較250〜450行、計550〜1,150行。現時点の1,411行と合わせても外枠15,000行には届かないが、行数でなく型つき一覧の停止規則による判断である。
+
+### 166.4 停止の理由と現在地
+
+IS-W2 §18.2が参照する `coordination.md` §2の明文は、**「止まって報告するのは、新しい構成・新しい定理（既存の構成の法則でないもの）、まとまりの外のもの、外枠に届くときだけ」**。今回は新しい数学的補題R03aの追加の判断が必要と解した。検証済みの全25本は先にコミットし、対象ビルド218・小監査166宣言の終了0、鍵の返却、作業木に未検証のLean変更がないことを確認してから、この紙の報告を保存した。
+
+**R03aを型つき一覧に追加して進めるか、別の既存の橋を指定してもらう所で当該Lean作業を止める。** R02・R03・R04以降を完成とは数えない。停止点3b-4aにはまだ届いていない。外枠・型・既存界面は変更しない。/goalの全範囲は保持し、complete・paused・blockedには変更していない。
+
+## 167. R03a 承認後：自由細胞と元の骨格の厳密な付着（2026-11-14）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 1／全体 13（うち追加 1）。§166のR03aはユーザー承認・IS-W2 §19により一覧へ追加済み。mainを `2ca5e7878` で取り込み、§19を確認して再開した。R03aそのもの・R02・R03のnative錐の完成とは数えない。
+
+### 167.1 今回閉じた証明分割
+
+BKの単体を「台の射列＋最後の射」に厳密に分解し、退化性が台だけで決まることを示した。非退化細胞の図式は終頂点の表現可能関手の余積である。これに任意の単体集合をテンソルした全関手からの射は標準生成元で一意に決まるため、各終頂点での境界の持ち上げを同じ全図式の射へ束ねられる。
+
+さらに任意の単体集合値図式の骨格を全関手として作り、その塔の余極限が元の図式であることを証明した。BKの非退化細胞のYoneda写像で旧骨格を引き戻すと元の標準境界になる。全自由細胞から連続する二つの元の骨格への射と、その厳密な可換性も証明した。これはR03aの細胞分解の証明分割であり、独立の新しい数学の項目は追加していない。
+
+今回の10本は747行、各200行以下。3b-4の検証済みは **35モジュール・2,158行**（共通を含む、外枠15,000）。当初のR03aの細胞部分300〜700行に対し747行で、余積の添字替え・骨格押し出しの照合がまだ残るため上振れしている。元の重み・型・⑤aの欄は変更しない。
+
+### 167.2 証明分割・既存構成の法則の型
+
+以下は全て今回の新規ファイル内。namespace・universe・変数は各ソースのまま。構成の本体は省略し、主張・構成の型を記録する。R03aの追加以外に一覧の追加は0。
+
+#### BousfieldKanSimplex（84行）
+
+```lean
+universe u
+namespace SerrePositivity.DiagramModel.BousfieldKanCells
+open CategoryTheory Limits
+open scoped Simplicial
+variable (I : Type u) [SmallCategory I]
+
+abbrev SimplexData (n : ℕ) (i : I)
+
+def overSimplex {n : ℕ} {i : I} (s : SimplexData I n i) :
+    ComposableArrows (Over i) n
+
+def simplexData {n : ℕ} {i : I} (s : ComposableArrows (Over i) n) :
+    SimplexData I n i := ⟨s ⋙ Over.forget i, (s.obj (Fin.last n)).hom⟩
+
+/-- 復元したover射列の各対象は元の同じ対象。 -/
+theorem overSimplex_simplexData_obj {n : ℕ} {i : I}
+    (s : ComposableArrows (Over i) n) (a : Fin (n+1)) :
+    (overSimplex I (simplexData I s)).obj a = s.obj a
+
+theorem overSimplex_simplexData_obj {n : ℕ} {i : I}
+    (s : ComposableArrows (Over i) n) (a : Fin (n+1)) :
+    (overSimplex I (simplexData I s)).obj a = s.obj a
+
+theorem overSimplex_simplexData {n : ℕ} {i : I}
+    (s : ComposableArrows (Over i) n) : overSimplex I (simplexData I s) = s
+
+theorem simplexData_overSimplex {n : ℕ} {i : I} (s : SimplexData I n i) :
+    simplexData I (overSimplex I s) = s
+
+def simplexEquiv (n : ℕ) (i : I) :
+    ComposableArrows (Over i) n ≃ SimplexData I n i
+
+theorem simplexData_postcomp {n : ℕ} {i j : I} (f : i ⟶ j)
+    (s : ComposableArrows (Over i) n) :
+    simplexData I (s ⋙ Over.map f) =
+      ⟨(simplexData I s).1, (simplexData I s).2 ≫ f⟩
+
+```
+
+#### BousfieldKanDegenerate（68行）
+
+```lean
+universe u
+namespace SerrePositivity.DiagramModel.BousfieldKanCells
+open CategoryTheory Limits SSet
+open scoped Simplicial
+variable (I : Type u) [SmallCategory I]
+
+theorem sigma_delta_eq_of_base {n : ℕ} {i : I}
+    (s : ComposableArrows (Over i) (n+1)) (k : Fin (n+1))
+    (t : ComposableArrows I n)
+    (ht : (nerve I).σ k t = s ⋙ Over.forget i) :
+    (nerve (Over i)).σ k ((nerve (Over i)).δ k.castSucc s) = s
+
+theorem degenerate_iff_base {n : ℕ} {i : I}
+    (s : ComposableArrows (Over i) n) :
+    s ∈ (nerve (Over i)).degenerate n ↔
+      (s ⋙ Over.forget i) ∈ (nerve I).degenerate n
+
+theorem nondegenerate_iff_base {n : ℕ} {i : I}
+    (s : ComposableArrows (Over i) n) :
+    s ∈ (nerve (Over i)).nonDegenerate n ↔
+      (s ⋙ Over.forget i) ∈ (nerve I).nonDegenerate n
+
+```
+
+#### BousfieldKanFreeCells（78行）
+
+```lean
+universe u
+namespace SerrePositivity.DiagramModel.BousfieldKanCells
+open CategoryTheory Limits SSet
+open scoped Simplicial
+variable (I : Type u) [SmallCategory I]
+
+abbrev NondegenerateData (n : ℕ) (i : I)
+
+def nondegenerateEquiv (n : ℕ) (i : I) :
+    (nerve (Over i)).nonDegenerate n ≃ NondegenerateData I n i
+
+def freeCellDiagram (n : ℕ) : I ⥤ Type u
+
+def nondegenerateDiagram (n : ℕ) : I ⥤ Type u
+
+def nondegenerateDiagramIso (n : ℕ) :
+    nondegenerateDiagram I n ≅ freeCellDiagram I n
+
+```
+
+#### BousfieldKanRepresentableCells（58行）
+
+```lean
+universe u
+namespace SerrePositivity.DiagramModel.BousfieldKanCells
+open CategoryTheory Limits Opposite SSet
+open scoped Simplicial
+variable (I : Type u) [SmallCategory I]
+
+abbrev cellRepresentables (n : ℕ) (c : (nerve I).nonDegenerate n) : I ⥤ Type u
+
+def freeCellCofan (n : ℕ) : Cofan (cellRepresentables I n)
+
+def freeCellDesc {n : ℕ} {Z : I ⥤ Type u}
+    (f : ∀ c, cellRepresentables I n c ⟶ Z) : freeCellDiagram I n ⟶ Z
+
+def freeCellCofanIsColimit (n : ℕ) : IsColimit (freeCellCofan I n)
+
+```
+
+#### SimplicialDiagramSkeleton（102行）
+
+```lean
+universe u
+namespace SerrePositivity.DiagramModel.SimplicialDiagramSkeleton
+open CategoryTheory Limits SSet
+open scoped Simplicial
+
+theorem skeleton_image_le {X Y : SSet.{u}} (f : X ⟶ Y) (n : ℕ) :
+    (X.skeleton n).image f ≤ Y.skeleton n
+
+def skeletonMap {X Y : SSet.{u}} (f : X ⟶ Y) (n : ℕ) :
+    (X.skeleton n : SSet.{u}) ⟶ (Y.skeleton n : SSet.{u})
+
+@[reassoc] theorem skeletonMap_ι {X Y : SSet.{u}} (f : X ⟶ Y) (n : ℕ) :
+    skeletonMap f n ≫ (Y.skeleton n).ι = (X.skeleton n).ι ≫ f
+
+theorem skeletonMap_id (X : SSet.{u}) (n : ℕ) : skeletonMap (𝟙 X) n = 𝟙 _
+
+theorem skeletonMap_comp {X Y Z : SSet.{u}} (f : X ⟶ Y) (g : Y ⟶ Z) (n : ℕ) :
+    skeletonMap (f ≫ g) n = skeletonMap f n ≫ skeletonMap g n
+
+def skeletonFamily : I ⥤ ℕ ⥤ SSet.{u}
+
+def skeletonFiltration : ℕ ⥤ I ⥤ SSet.{u} := (skeletonFamily I W).flip
+
+/-- 同じ骨格の塔から元の図式重みへの余錐。 -/
+def skeletonCocone : Cocone (skeletonFiltration I W)
+
+def skeletonCocone : Cocone (skeletonFiltration I W)
+
+def skeletonCoconeIsColimit : IsColimit (skeletonCocone I W)
+
+```
+
+#### SimplicialCellSkeleton（45行）
+
+```lean
+universe u
+namespace SerrePositivity.DiagramModel.SimplicialDiagramSkeleton
+open CategoryTheory SSet
+open scoped Simplicial
+
+theorem nondegenerate_preimage_skeleton {X : SSet.{u}} {n : ℕ}
+    (c : X.nonDegenerate n) :
+    (X.skeleton n).preimage (yonedaEquiv.symm c.val) = ∂Δ[n]
+
+theorem nondegenerate_range_skeleton {X : SSet.{u}} {n : ℕ}
+    (c : X.nonDegenerate n) :
+    Subcomplex.range (yonedaEquiv.symm c.val) ≤ X.skeleton (n+1)
+
+theorem nondegenerate_boundary_range_skeleton {X : SSet.{u}} {n : ℕ}
+    (c : X.nonDegenerate n) :
+    Subcomplex.range (∂Δ[n].ι ≫ yonedaEquiv.symm c.val) ≤ X.skeleton n
+
+```
+
+#### BousfieldKanCellTensor（107行）
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.HomotopyWeight
+open CategoryTheory Limits Opposite SSet MonoidalCategory
+open SerrePositivity.DiagramModel SerrePositivity.DiagramModel.BousfieldKanCells
+open scoped Simplicial
+variable (I : Type u) [SmallCategory I]
+
+def bkCellWeight (n : ℕ) : I ⥤ SSet.{u}
+
+def bkCellTensor (n : ℕ) : SSet.{u} ⥤ I ⥤ SSet.{u}
+
+def bkCellGenerator {n : ℕ} (c : (nerve I).nonDegenerate n) (X : SSet.{u}) :
+    X ⟶ ((bkCellTensor I n).obj X).obj (c.val.obj (Fin.last n))
+
+theorem bkCellGenerator_naturality {n : ℕ} (c : (nerve I).nonDegenerate n)
+    {X Y : SSet.{u}} (f : X ⟶ Y) :
+    bkCellGenerator I c X ≫ ((bkCellTensor I n).map f).app (c.val.obj (Fin.last n)) =
+      f ≫ bkCellGenerator I c Y
+
+def bkCellDesc {n : ℕ} (X : SSet.{u}) (Z : I ⥤ SSet.{u})
+    (f : ∀ c : (nerve I).nonDegenerate n, X ⟶ Z.obj (c.val.obj (Fin.last n))) :
+    (bkCellTensor I n).obj X ⟶ Z
+
+theorem bkCellGenerator_desc {n : ℕ} (X : SSet.{u}) (Z : I ⥤ SSet.{u})
+    (f : ∀ c : (nerve I).nonDegenerate n, X ⟶ Z.obj (c.val.obj (Fin.last n)))
+    (c : (nerve I).nonDegenerate n) :
+    bkCellGenerator I c X ≫ (bkCellDesc I X Z f).app (c.val.obj (Fin.last n)) = f c
+
+theorem bkCellDesc_unique {n : ℕ} (X : SSet.{u}) (Z : I ⥤ SSet.{u})
+    (f : ∀ c : (nerve I).nonDegenerate n, X ⟶ Z.obj (c.val.obj (Fin.last n)))
+    (m : (bkCellTensor I n).obj X ⟶ Z)
+    (hm : ∀ c, bkCellGenerator I c X ≫ m.app (c.val.obj (Fin.last n)) = f c) :
+    m = bkCellDesc I X Z f
+
+theorem bkCellHom_ext {n : ℕ} {X : SSet.{u}} {Z : I ⥤ SSet.{u}}
+    {m m' : (bkCellTensor I n).obj X ⟶ Z}
+    (h : ∀ c, bkCellGenerator I c X ≫ m.app (c.val.obj (Fin.last n)) =
+      bkCellGenerator I c X ≫ m'.app (c.val.obj (Fin.last n))) : m = m'
+
+```
+
+#### BousfieldKanCellLifting（58行）
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.HomotopyWeight
+open CategoryTheory Limits Opposite SSet MonoidalCategory
+open SerrePositivity.DiagramModel SerrePositivity.DiagramModel.BousfieldKanCells
+open scoped Simplicial
+variable (I : Type u) [SmallCategory I]
+
+theorem bkCellTensor_map_llp (n : ℕ) {X Y : SSet.{u}} (f : X ⟶ Y)
+    (hf : SSet.modelCategoryQuillen.I f) :
+    (boundaries I).rlp.llp ((bkCellTensor I n).map f)
+
+```
+
+#### BousfieldKanCellAttachment（77行）
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.HomotopyWeight
+open CategoryTheory Limits Opposite SSet
+open SerrePositivity.DiagramModel SerrePositivity.DiagramModel.BousfieldKanCells
+open SerrePositivity.DiagramModel.SimplicialDiagramSkeleton
+open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits
+open scoped Simplicial
+variable (I : Type u) [SmallCategory I]
+
+def bkCellSimplex {n : ℕ} (c : (nerve I).nonDegenerate n) :
+    (nerve (Over (c.val.obj (Fin.last n)))).nonDegenerate n
+
+abbrev bkSkeleton := skeletonFiltration I (bousfieldKanWeight I)
+
+/-- 全標準細胞から元の重みへの同じYoneda評価。 -/
+def bkCellEvaluation (n : ℕ) : (bkCellTensor I n).obj Δ[n] ⟶ bousfieldKanWeight I
+
+def bkCellEvaluation (n : ℕ) : (bkCellTensor I n).obj Δ[n] ⟶ bousfieldKanWeight I
+
+def bkCellBoundary (n : ℕ) : (bkCellTensor I n).obj (∂Δ[n] : SSet.{u}) ⟶
+    (bkSkeleton I).obj n
+
+def bkCellTop (n : ℕ) : (bkCellTensor I n).obj Δ[n] ⟶ (bkSkeleton I).obj (n+1)
+
+theorem bkCellTop_ι (n : ℕ) :
+    bkCellTop I n ≫ (skeletonCocone I (bousfieldKanWeight I)).ι.app (n+1) =
+      bkCellEvaluation I n
+
+theorem bkCellAttachment_comm (n : ℕ) :
+    bkCellBoundary I n ≫ (bkSkeleton I).map (homOfLE (Nat.le_succ n)) =
+      (bkCellTensor I n).map ∂Δ[n].ι ≫ bkCellTop I n
+
+```
+
+#### BousfieldKanCellCoproduct（70行）
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.HomotopyWeight
+open CategoryTheory Limits Opposite SSet
+open SerrePositivity.DiagramModel.BousfieldKanCells
+open scoped Simplicial
+variable (I : Type u) [SmallCategory I]
+
+def bkCellComponentInclusion {n : ℕ} {i : I} (s : NondegenerateData I n i)
+    (X : SSet.{u}) : X ⟶ ((bkCellTensor I n).obj X).obj i
+
+def bkCellComponentCofan (n : ℕ) (i : I) (X : SSet.{u}) :
+    Cofan (fun _ : NondegenerateData I n i => X)
+
+def bkCellComponentDesc {n : ℕ} {i : I} (X Z : SSet.{u})
+    (f : NondegenerateData I n i → (X ⟶ Z)) :
+    ((bkCellTensor I n).obj X).obj i ⟶ Z
+
+@[reassoc] theorem bkCellComponentInclusion_desc {n : ℕ} {i : I} (X Z : SSet.{u})
+    (f : NondegenerateData I n i → (X ⟶ Z)) (s : NondegenerateData I n i) :
+    bkCellComponentInclusion I s X ≫ bkCellComponentDesc I X Z f = f s
+
+def bkCellComponentCofanIsColimit (n : ℕ) (i : I) (X : SSet.{u}) :
+    IsColimit (bkCellComponentCofan I n i X)
+
+theorem bkCellComponentHom_ext {n : ℕ} {i : I} {X Z : SSet.{u}}
+    {f g : ((bkCellTensor I n).obj X).obj i ⟶ Z}
+    (h : ∀ s : NondegenerateData I n i,
+      bkCellComponentInclusion I s X ≫ f = bkCellComponentInclusion I s X ≫ g) : f = g
+
+```
+
+### 167.3 検証と残り
+
+main取り込み後の219は既存の25本を対象ビルドし **10,619 jobs・終了0**、小監査166宣言・標準三公理のみ。220は自由細胞の先行4本を検証し、合計200宣言。import整理と骨格・自由テンソルの3本を加えた221は **1,590 jobs・終了0**、新規全32本の小監査 **231宣言・標準三公理のみ**。222は境界照合・付着・成分余積の3本を対象ビルドし **1,605 jobs・終了0**、新規全35本の小監査 **255宣言・標準三公理のみ**。実ハンドル35419・61534の終了0を確認し、鍵返却済み。ログ `/private/tmp/isw2-build219.log`〜`222.log`、最終小監査 `/private/tmp/AuditISW2BKCells222.lean`。
+
+個別検査ではover圏のeqToHom、退化の最終頂点、Yoneda同値の往復、自由な生成元を評価する型を明示して修正した。計算上限の変更・sorry・独自公理なし。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainの作業木は変更していない。登録候補は同じBE用JSONへ追記した。
+
+次は相対細胞の添字と自由細胞の余積を照合し、同じ骨格の押し出しから全BK重みの射影cofibrancyを得る。その後に同じjを選び、全Kan係数の制限のホモトピー同値を示す。相対細胞の添字替えの下書きは個別検査中で、この検証済み10本のコミットには含めない。全体の/goalは保持し、停止点3b-4aにもまだ届いていない。
+
+## 168. 同じ重み比較の中間定理 R03a.1 の追加（2026-11-14）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 1／全体 14（うち追加 2）。IS-W2 §19の「同じまとまりの中で一つの見込みが1,500行以下」の枠を使い、R03aのKan係数への制限の不変性を次の中間定理 **R03a.1** に分けて一覧へ追加する。R03a・R03a.1とも未完了。⑤aの欄の型・元の重み・native錐の型に変更なし。
+
+```lean
+-- universe u
+-- open CategoryTheory Limits
+-- open SerrePositivity.EInfinity
+-- open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits
+-- open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
+
+theorem weightedSectionsPre_homotopyEquivalence_of_projective_cofibrant
+    (I : Type u) [SmallCategory I] (V W : I ⥤ SSet.{u}) (f : V ⟶ W)
+    (hV : (HomotopyWeight.boundaries I).rlp.llp (initial.to V))
+    (hW : (HomotopyWeight.boundaries I).rlp.llp (initial.to W))
+    (hf : ∀ i, IsWeakHomotopyEquivalence (f.app i))
+    (H : I ⥤ SSet.{u}) (hH : ∀ i, SSet.KanComplex (H.obj i)) :
+    IsSimplicialHomotopyEquivalence (weightedSectionsPre f H)
+```
+
+型は `/private/tmp/CheckProjectiveWeightComparison.lean` で個別検査し、終了0。これは型の検査であって証明ではない。前段で個別検査を終えた元のBKの射影cofibrancyと指定された同じjの構成に、このHom不変性と各値の可縮性を合わせるのがR03aの経路。
+
+証明の案：自由ホーンの小対象分解でfを射影anodyneな左射と成分ごとのKan fibrationな右射へ分ける。左射は成分ごとのanodyneでもあるので、hfと二つ組から右射は成分ごとのtrivial Kan fibration。両方の元の重みの射影cofibrancyを使い、右射の切断と同じシリンダーによるホモトピーを取る。左射の制限は、パラメーター境界とのpushout-productの持ち上げでtrivial Kan fibrationとなる。この二つを同じ制限射の合成として合わせ、実際のホモトピー同値を得る。SSet・図式圏のModelCategoryは仮定しない。
+
+見込みは自由ホーンと点ごとの性質250〜400行、相対テンソルの持ち上げと切断空間の照合350〜550行、分解とホモトピー・最終の合成300〜450行、計900〜1,400行。一つの中間定理として1,500行以下で、R01〜R03とR03aの重み比較の同じまとまり。既存構成の法則と証明分割は各型を追記し、200行を超えるファイルは行数も記録する。見込みが1,500を超えると判明した場合・別のまとまりが必要な場合には検証済みを保存して報告する。
+
+前段の223は相対細胞の添字替え・各成分の評価・同じ骨格の押し出しを対象ビルドし、**1,608 jobs・終了0、38モジュール291宣言・標準三公理のみ**。実ハンドル60582の終了0・鍵返却を確認済み。BK全体のcofibrancyと一つの指定比較射の224は同時整理券一枚で待機中であり、その終了前に検証済みとは数えない。
+
+## 169. 元のBK重みの射影cofibrancyと一つの指定比較射（2026-11-14）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 1／全体 14（うち追加 2）。§168のR03a.1は§19の枠で追加済み。R03a・R03a.1の完成とは数えない。
+
+### 169.1 検証済みの到達点
+
+元の相対細胞の添字をBK自由細胞の添字に一致させ、全評価で余積の同型を指定した。各成分の評価が、同じ非退化単体のYoneda射そのものであることも閉じた。これによりMathlibの元の相対細胞の押し出しを、BKの同じ自由境界と二つの骨格の押し出しへ輸送し、評価関手で図式全体の押し出しへ戻した。
+
+左持ち上げ性の押し出し・逐次合成に対する安定性と、前段の元の骨格の余極限を使い、**任意の小圏Iについて元のbousfieldKanWeight Iが射影cofibrant**であることを証明した。最後に指定された二重反対化した一点比較の右持ち上げ性から、一つの `bkFramedWeightComparison J : BK(Jᵒᵖᵒᵖ) → framedLimitWeight J` を選び、元の一点比較を厳密に保つ等式を証明した。このjは係数Hに依存しない。まだその切断空間の制限のホモトピー同値は未完了。
+
+### 169.2 今回の証明分割・法則の型
+
+#### BousfieldKanCellReindex（75行）
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.HomotopyWeight
+open CategoryTheory Limits Opposite SSet
+open SerrePositivity.DiagramModel.BousfieldKanCells
+open scoped Simplicial
+variable (I : Type u) [SmallCategory I]
+
+def bkInitialCellEquiv (n : ℕ) (i : I) :
+    relativeCellComplexOfMono.Cell ((⊥ : (nerve (Over i)).Subcomplex).ι) n ≃
+      NondegenerateData I n i
+
+theorem bkInitialCellEquiv_simplex (n : ℕ) (i : I)
+    (c : relativeCellComplexOfMono.Cell ((⊥ : (nerve (Over i)).Subcomplex).ι) n) :
+    ((nondegenerateEquiv I n i).symm (bkInitialCellEquiv I n i c)).val = c.simplex
+
+def bkCellReindexIsColimit {n : ℕ} {i : I} {α : Type u}
+    (e : α ≃ NondegenerateData I n i) (X : SSet.{u}) :
+    IsColimit (Cofan.mk (((bkCellTensor I n).obj X).obj i)
+      (fun a : α => bkCellComponentInclusion I (e a) X))
+
+def bkCellReindexIso {n : ℕ} {i : I} {α : Type u}
+    (e : α ≃ NondegenerateData I n i) (X : SSet.{u}) :
+    (∐ fun _ : α => X) ≅ ((bkCellTensor I n).obj X).obj i
+
+@[reassoc] theorem bkCellReindexIso_ι {n : ℕ} {i : I} {α : Type u}
+    (e : α ≃ NondegenerateData I n i) (X : SSet.{u}) (a : α) :
+    Sigma.ι (fun _ : α => X) a ≫ (bkCellReindexIso I e X).hom =
+      bkCellComponentInclusion I (e a) X
+
+```
+
+#### BousfieldKanCellEvaluation（81行）
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.HomotopyWeight
+open CategoryTheory Limits Opposite SSet
+open SerrePositivity.DiagramModel.BousfieldKanCells
+open SerrePositivity.DiagramModel.SimplicialDiagramSkeleton
+open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits
+open scoped Simplicial
+variable (I : Type u) [SmallCategory I]
+
+@[reassoc] theorem bkCellComponentInclusion_cellDesc {n : ℕ} {i : I}
+    (s : NondegenerateData I n i) (X : SSet.{u}) (Z : I ⥤ SSet.{u})
+    (f : ∀ c : (nerve I).nonDegenerate n, X ⟶ Z.obj (c.val.obj (Fin.last n))) :
+    bkCellComponentInclusion I s X ≫ (bkCellDesc I X Z f).app i =
+      f s.1 ≫ Z.map s.2
+
+@[reassoc] theorem bkCellComponentInclusion_map {n : ℕ} {i : I}
+    (s : NondegenerateData I n i) {X Y : SSet.{u}} (f : X ⟶ Y) :
+    bkCellComponentInclusion I s X ≫ ((bkCellTensor I n).map f).app i =
+      f ≫ bkCellComponentInclusion I s Y
+
+theorem bkCellSimplex_map {n : ℕ} {i : I} (s : NondegenerateData I n i) :
+    ((bousfieldKanWeight I).map s.2).app (op ⦋n⦌) (bkCellSimplex I s.1).val =
+      ((nondegenerateEquiv I n i).symm s).val
+
+@[reassoc] theorem bkCellComponent_evaluation {n : ℕ} {i : I}
+    (s : NondegenerateData I n i) :
+    bkCellComponentInclusion I s Δ[n] ≫ (bkCellEvaluation I n).app i =
+      yonedaEquiv.symm ((nondegenerateEquiv I n i).symm s).val
+
+@[reassoc] theorem bkCellComponent_top_ι {n : ℕ} {i : I}
+    (s : NondegenerateData I n i) :
+    bkCellComponentInclusion I s Δ[n] ≫ (bkCellTop I n).app i ≫
+      (((bousfieldKanWeight I).obj i).skeleton (n+1)).ι =
+        yonedaEquiv.symm ((nondegenerateEquiv I n i).symm s).val
+
+@[reassoc] theorem bkCellComponent_boundary_ι {n : ℕ} {i : I}
+    (s : NondegenerateData I n i) :
+    bkCellComponentInclusion I s (∂Δ[n] : SSet.{u}) ≫ (bkCellBoundary I n).app i ≫
+      (((bousfieldKanWeight I).obj i).skeleton n).ι =
+        ∂Δ[n].ι ≫ yonedaEquiv.symm ((nondegenerateEquiv I n i).symm s).val
+
+```
+
+#### BousfieldKanSkeletonPushout（81行）
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.HomotopyWeight
+open CategoryTheory Limits Opposite SSet
+open SerrePositivity.DiagramModel.BousfieldKanCells
+open SerrePositivity.DiagramModel.SimplicialDiagramSkeleton
+open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits
+open scoped Simplicial
+variable (I : Type u) [SmallCategory I]
+
+def bkSkeletonInitialIso (n : ℕ) (i : I) :
+    (skeletonOfMono ((⊥ : (nerve (Over i)).Subcomplex).ι) n : SSet.{u}) ≅
+      ((bkSkeleton I).obj n).obj i
+
+@[reassoc] theorem bkSkeletonInitialIso_ι (n : ℕ) (i : I) :
+    (bkSkeletonInitialIso I n i).hom ≫ ((nerve (Over i)).skeleton n).ι =
+      (skeletonOfMono ((⊥ : (nerve (Over i)).Subcomplex).ι) n).ι
+
+theorem bkCellAttachment_isPushout_app (n : ℕ) (i : I) :
+    IsPushout ((bkCellBoundary I n).app i) (((bkCellTensor I n).map ∂Δ[n].ι).app i)
+      (((bkSkeleton I).map (homOfLE (Nat.le_succ n))).app i) ((bkCellTop I n).app i)
+
+theorem bkCellAttachment_isPushout (n : ℕ) :
+    IsPushout (bkCellBoundary I n) ((bkCellTensor I n).map ∂Δ[n].ι)
+      ((bkSkeleton I).map (homOfLE (Nat.le_succ n))) (bkCellTop I n)
+
+```
+
+#### BousfieldKanCofibrant（51行）
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.HomotopyWeight
+open CategoryTheory Limits Opposite SSet
+open SerrePositivity.DiagramModel.SimplicialDiagramSkeleton
+open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits
+open scoped Simplicial
+variable (I : Type u) [SmallCategory I]
+
+def bkSkeletonZeroIsInitial : IsInitial ((bkSkeleton I).obj 0)
+
+theorem bkSkeleton_step_llp (n : ℕ) :
+    (boundaries I).rlp.llp ((bkSkeleton I).map (homOfLE (Nat.le_succ n)))
+
+def bkSkeletonTransfinite :
+    (boundaries I).rlp.llp.TransfiniteCompositionOfShape ℕ (initial.to (bousfieldKanWeight I))
+
+theorem bousfieldKanWeight_cofibrant :
+    (boundaries I).rlp.llp (initial.to (bousfieldKanWeight I))
+
+```
+
+#### BousfieldKanChosenComparison（57行）
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.HomotopyWeight
+open CategoryTheory Limits Opposite SSet
+open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits
+open scoped Simplicial
+variable (J : Type u) [SmallCategory J]
+
+abbrev framedLimitWeightComparison := (doubleOpWeights J).map (comparison J)
+
+theorem framedLimitWeightComparison_rlp :
+    (boundaries Jᵒᵖᵒᵖ).rlp (framedLimitWeightComparison J)
+
+def bkFramedPointMap : bousfieldKanWeight Jᵒᵖᵒᵖ ⟶ (doubleOpWeights J).obj (point J)
+
+def bkFramedComparisonSquare :
+    CommSq (initial.to (framedLimitWeight J)) (initial.to (bousfieldKanWeight Jᵒᵖᵒᵖ))
+      (framedLimitWeightComparison J) (bkFramedPointMap J)
+
+def bkFramedWeightComparison : bousfieldKanWeight Jᵒᵖᵒᵖ ⟶ framedLimitWeight J
+
+theorem bkFramedWeightComparison_point :
+    bkFramedWeightComparison J ≫ framedLimitWeightComparison J = bkFramedPointMap J
+
+```
+
+### 169.3 検証・実測と残り
+
+223はこのうち先行3本で **1,608 jobs・終了0、38モジュール291宣言**。224は全体のcofibrancyと一つの比較射の2本を対象ビルドし **1,615 jobs・終了0、新規全40モジュール309宣言・標準三公理のみ**。両方の実ハンドル60582・52517の終了0を確認し、鍵返却済み。ログ `/private/tmp/isw2-build223.log`・`224.log`、小監査 `/private/tmp/AuditISW2BKCells224.lean`。同時整理券一枚、`--class impl --wait 3600`、ビルドと小監査の間だけ鍵を保持。sorry・独自公理・計算上限の変更0。
+
+今回345行、各200行以下。3b-4の検証済みは **40本・2,503行**。R03aの細胞と比較射の構成は累計1,092行で、当初の細胞の見込み300〜700行に対し約1.6倍。元の骨格への全自然な輸送と既存押し出しの四つの射の等式を明示する行数が増えた。Hom不変性は§168の中間定理R03a.1（900〜1,400行）として別に見積もった。全外枠15,000行にはまだ十分余地がある。
+
+次の自由ホーン・相対テンソル・native切断のKan性の新規下書きは個別検査中。この検証済み5本のコミットには含めない。元の重み・既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査は変更していない。/goalはactiveのまま、Hom不変性へ続ける。
+
+## 170. R03a.1前半の検証と見込みの半分での途中報告（2026-11-14）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 1／全体 14（うち追加 2）。R03aとR03a.1は未完了。
+
+### 170.1 到達点・検証
+
+自由ホーンの生成族の小対象性と各値の右類を作った。その全生成左類が、各値でanodyneとなることも、既存の余積・押し出し・逐次合成・レトラクトの法則から証明した。自由ホーンの射とパラメーターの単射の相対テンソルは、各値のKan fibrationを持ち上げる。これを同じweightedCornerと元のcurry・uncurryへ転置し、**射影anodyneな重み制限は、各値がKanな係数についてtrivial Kan fibration**となることを示した。射影cofibrantな両重みでは、元の切断空間がKanであることも証明し、実際の単体的ホモトピー同値まで閉じた。
+
+重みの元の射の自由ホーン分解について、左射の各値のanodyne性、中間重みの射影cofibrancy、右射の各値のfibration性・弱同値性を閉じた。**標的の各値がKanの場合**には、右射は各値で境界右持ち上げ性を持つ。この補助で一般の非Kan標的を代用しない。一般の比較への復帰には、両方の重みのホーン置換と同じ指定比較の分解を使う。
+
+225は先行5本で **1,721 jobs・終了0、新規全45本325宣言**。226は分解の2本で **2,612 jobs・終了0、新規全47本334宣言・標準三公理のみ**。実ハンドル76288・48784の終了0・鍵返却を確認済み。ログ `/private/tmp/isw2-build225.log`・`226.log`、小監査 `/private/tmp/AuditISW2BKCells226.lean`。対象のみ、同時整理券一枚、`--class impl --wait 3600`、ビルドと小監査の間だけ鍵を保持。
+
+### 170.2 実測と残りの再見込み（止まらず継続）
+
+今回7本402行、各200行以下。3b-4の検証済みは **47本・2,905行**。初期§152.4の合計5,700〜9,800行の下端の半分2,850行を超えたので、早めに共通規則の途中報告を残す。R03aの細胞と一つの比較射の構成1,092行に対し、R03a.1は現時点402行（見込み900〜1,400行）。重みの同じ区間ホモトピーを元の切断制限へ運ぶ下書きは個別検査中で、検証済みの行数には含めていない。
+
+残りの見込み：R03a.1の切断・区間ホモトピーと分解の最終接続500〜850行、R03aの指定jへの特殊化・可縮性の照合100〜250行、R02〜R03の元のnative錐族と普遍性への最後の接続700〜1,200行、R04〜R05は1,000〜1,800行、実現R06〜R10は2,800〜4,800行、R11〜R12は500〜900行。合計の残り5,600〜9,800行、全体約8,500〜12,700行で、外枠15,000行を維持する。native錐への接続はまだ未実測のため幅を残す。一般のHom不変性をR03a.1へ分けた分で、初期のR01〜R03の1,400〜2,300行は上振れしている。
+
+ここで止まらず、検証済みを保存してR03a.1の残りへ進む。型・範囲・既存の模型・⑤aの欄を弱めていない。SSet/図式圏のModelCategory仮定・sorry・独自公理・計算上限の変更なし。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査は変更していない。
+
+### 170.3 証明分割・法則の型
+
+全てR03a.1の証明分割または既存構成の法則。追加の一覧項目は§168以外0。
+
+#### ProjectiveHornGenerators（36行）
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.HomotopyWeight
+open CategoryTheory Limits
+variable (K : Type u) [SmallCategory K]
+
+abbrev horns : MorphismProperty (K ⥤ SSet.{u})
+
+instance horns_smallObjectArgument : (horns K).HasSmallObjectArgument.{u}
+
+theorem horns_rlp : (horns K).rlp =
+    ModelGeneration.EvaluationFamily.detected (evaluation K) SSet.modelCategoryQuillen.J.rlp
+
+```
+
+#### ProjectiveHornValues（62行）
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.HomotopyWeight
+open CategoryTheory Limits SSet
+variable (K : Type u) [SmallCategory K]
+
+theorem free_horn_anodyne (k l : K) {X Y : SSet.{u}} (f : X ⟶ Y)
+    (hf : SSet.modelCategoryQuillen.J f) : SSet.anodyneExtensions (((free K k).map f).app l)
+
+theorem horns_evaluation_le (l : K) :
+    horns K ≤ SSet.anodyneExtensions.inverseImage (evaluation K l)
+
+theorem anodyne_relativeCells_le :
+    Quillen.relativeCells.{u} SSet.anodyneExtensions ≤ SSet.anodyneExtensions
+
+theorem projectiveHorn_anodyne {F G : K ⥤ SSet.{u}} (f : F ⟶ G)
+    (hf : (horns K).rlp.llp f) (l : K) : SSet.anodyneExtensions (f.app l)
+
+```
+
+#### ProjectiveHornCorner（50行）
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.HomotopyWeight
+open CategoryTheory Limits SSet MonoidalCategory HomotopicalAlgebra
+open SerrePositivity.PointwiseAdjunction
+open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits
+open scoped Simplicial SSet.modelCategoryQuillen
+variable (I : Type u) [SmallCategory I]
+
+theorem projectiveHorn_corner_lifting {V W F G : I ⥤ SSet.{u}} (j : V ⟶ W)
+    (hj : (horns I).rlp.llp j) {A B : SSet.{u}} (f : A ⟶ B) [Mono f]
+    (p : F ⟶ G) (hp : ∀ i, Fibration (p.app i)) :
+    HasLiftingProperty (weightedCorner j f).ι p
+
+```
+
+#### NativeWeightedSections（52行）
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.HomotopyWeight
+open CategoryTheory Limits SSet MonoidalCategory HomotopicalAlgebra
+open SerrePositivity.DiagramModel
+open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits
+open scoped Simplicial SSet.modelCategoryQuillen
+variable (I : Type u) [SmallCategory I] (W : I ⥤ SSet.{u})
+
+def coneSpaceParameterIso : WeightedCones.tensorDiagram I W ≅ weightedParameterFunctor W
+
+def coneSpaceNativeSectionsIso : WeightedCones.coneSpace I W ≅ weightedSectionsFunctor W
+
+theorem weightedSections_kanComplex_of_projective_cofibrant
+    (hW : (boundaries I).rlp.llp (initial.to W))
+    (H : I ⥤ SSet.{u}) (hH : ∀ i, SSet.KanComplex (H.obj i)) :
+    SSet.KanComplex (weightedSections W H)
+
+```
+
+#### ProjectiveWeightRestriction（89行）
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.HomotopyWeight
+open CategoryTheory Limits SSet MonoidalCategory HomotopicalAlgebra
+open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits
+open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories
+open scoped Simplicial SSet.modelCategoryQuillen
+variable {I : Type u} [SmallCategory I]
+
+theorem weightedSectionsPre_trivialKanFibration_of_corner_extensions
+    {W W' H : I ⥤ SSet.{u}} (j : W ⟶ W')
+    (hcorner : ∀ n, ∀ a : (weightedCorner j (boundary n).ι).pt ⟶ H,
+      ∃ b : W' ⊗ (Functor.const I).obj (Δ[n] : SSet.{u}) ⟶ H,
+        (weightedCorner j (boundary n).ι).ι ≫ b = a) :
+    TrivialKanFibration (weightedSectionsPre j H)
+
+theorem weightedSectionsPre_trivialKanFibration_of_projectiveHorn
+    {V W H : I ⥤ SSet.{u}} (j : V ⟶ W) (hj : (horns I).rlp.llp j)
+    (hH : ∀ i, SSet.KanComplex (H.obj i)) :
+    TrivialKanFibration (weightedSectionsPre j H)
+
+theorem weightedSectionsPre_homotopyEquivalence_of_projectiveHorn
+    {V W H : I ⥤ SSet.{u}} (j : V ⟶ W) (hj : (horns I).rlp.llp j)
+    (hV : (boundaries I).rlp.llp (initial.to V))
+    (hW : (boundaries I).rlp.llp (initial.to W))
+    (hH : ∀ i, SSet.KanComplex (H.obj i)) :
+    SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsSimplicialHomotopyEquivalence
+      (weightedSectionsPre j H)
+
+```
+
+#### ProjectiveHornFactorization（55行）
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.HomotopyWeight
+open CategoryTheory Limits SSet HomotopicalAlgebra
+open scoped SSet.modelCategoryQuillen
+variable (I : Type u) [SmallCategory I]
+
+theorem projectiveHorn_cofibration {V W : I ⥤ SSet.{u}} (j : V ⟶ W)
+    (hj : (horns I).rlp.llp j) : (boundaries I).rlp.llp j
+
+def projectiveHornFactorization {V W : I ⥤ SSet.{u}} (j : V ⟶ W) :
+    MorphismProperty.MapFactorizationData (horns I).rlp.llp (horns I).rlp j
+
+theorem projectiveHornFactorization_i_anodyne {V W : I ⥤ SSet.{u}} (j : V ⟶ W) (i : I) :
+    SSet.anodyneExtensions ((projectiveHornFactorization I j).i.app i)
+
+theorem projectiveHornFactorization_p_fibration {V W : I ⥤ SSet.{u}} (j : V ⟶ W) (i : I) :
+    Fibration ((projectiveHornFactorization I j).p.app i)
+
+theorem projectiveHornFactorization_cofibrant {V W : I ⥤ SSet.{u}} (j : V ⟶ W)
+    (hV : (boundaries I).rlp.llp (initial.to V)) :
+    (boundaries I).rlp.llp (initial.to (projectiveHornFactorization I j).Z)
+
+```
+
+#### ProjectiveHornWeakFactorization（58行）
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.HomotopyWeight
+open CategoryTheory Limits SSet HomotopicalAlgebra
+open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
+open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor
+open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories
+open scoped SSet.modelCategoryQuillen
+variable (I : Type u) [SmallCategory I]
+
+theorem projectiveHornFactorization_i_weak {V W : I ⥤ SSet.{u}} (j : V ⟶ W) (i : I) :
+    IsWeakHomotopyEquivalence ((projectiveHornFactorization I j).i.app i)
+
+theorem projectiveHornFactorization_p_weak {V W : I ⥤ SSet.{u}} (j : V ⟶ W)
+    (hj : ∀ i, IsWeakHomotopyEquivalence (j.app i)) (i : I) :
+    IsWeakHomotopyEquivalence ((projectiveHornFactorization I j).p.app i)
+
+theorem projectiveHornFactorization_p_boundary_rlp {V W : I ⥤ SSet.{u}} (j : V ⟶ W)
+    (hj : ∀ i, IsWeakHomotopyEquivalence (j.app i))
+    (hW : ∀ i, SSet.KanComplex (W.obj i)) (i : I) :
+    SSet.modelCategoryQuillen.I.rlp ((projectiveHornFactorization I j).p.app i)
+
+```
+
+## 171. R03a・R03a.1 の完了：同じ一つの重み比較（2026-11-14）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 3／全体 14（うち追加 2）。済みはR01・R03a・R03a.1。R02・R03の指定native錐族・極限性は未完了であり、この重み比較をもって完成とは数えない。
+
+### 171.1 一覧の型のまま閉じた内容
+
+**R03a.1** `weightedSectionsPre_homotopyEquivalence_of_projective_cofibrant` は§168の一般の型のまま証明した。元の射影cofibrantな二重み間の成分ごとの弱同値から、全Kan係数図式への元の制限写像の実際の単体的ホモトピー同値を得る。標的重みがKanでない場合も含む。
+
+まず同じ区間パラメーターを持つ全重みの自然変換を、普遍評価に前合成して元の切断空間の区間ホモトピーへ転置し、両端点が元の制限写像に厳密に一致することを示した。境界右類の射の切断を元の標的重みのcofibrancyで取り、始域重みのcofibrancyで区間境界を持ち上げることにより、同じ全重みの区間収縮を作った。これが右射の制限の実際のホモトピー逆を与える。
+
+各値がKanな標的への自由ホーン分解では、前段の射影anodyneな制限とこの境界右類の制限を合成した。一般の標的は、元の標的の終射の自由ホーン分解によるKan置換を使う。元の比較をその左射へ合成して前のKan標的の場合に適用し、Kanな切断空間での二対三則で元の制限へ戻った。一般の非Kan標的へのfibrationを無条件にtrivialと扱っていない。
+
+**R03a** `exists_strictBETotWeightComparison` は§166で承認された型のまま閉じた。元のBK重みの各値が元のover圏の終対象によって弱可縮であることと、指定された一点比較の境界右類から、**選んだ同じjの全成分が弱同値**であることを示した。これと両方の重みの元の射影cofibrancyをR03a.1へ代入した。
+
+存在するjは `strictBETotWeightComparison := bkFramedWeightComparison (AsSmall SimplexCategory)` として一つに固定した。係数H・その全射ごとに選び直さない。元のW・二重反対添字・重みの制限の向きは保持した。高次自然性やnative錐の構成を、この存在主張だけで代用しない。
+
+### 171.2 最終検証
+
+227は区間転置・両端点の1本で **1,622 jobs・終了0、48モジュール347宣言**。228は区間境界・テンソル持ち上げ・切断収縮・一般比較の4本で **2,708 jobs・終了0、52モジュール362宣言**。229は元のjの各値の比較とBE指定比較の2本で **2,772 jobs・終了0、新規全54モジュール368宣言・標準三公理のみ**。実ハンドル34287・45990・89120の終了0を確認し、鍵返却済み。ログ `/private/tmp/isw2-build227.log`〜`229.log`、最終小監査 `/private/tmp/AuditISW2BKCells229.lean`。
+
+一時合併の検査では他のimportが収縮補題を補っていたため、各値の比較を独立に検査して不足した `MonoRightLiftingContraction` の直接importを明示した。最終229は各実モジュールを独立にビルドしてから全新規の小監査を実行した。sorry・独自公理・計算上限の変更0。SSet/図式圏のModelCategory仮定なし。`--class impl --wait 3600`、同時整理券一枚、鍵はビルド・小監査の間だけ。
+
+### 171.3 見込みと実測
+
+今回7本631行、各200行以下。3b-4の検証済みは **54モジュール・3,536行**。登録候補はBE用JSONへ追記し、入口・公式監査の登録は行っていない。
+
+| 追加項目 | 見込み | 実測 | 差 |
+| --- | ---: | ---: | ---: |
+| R03aのBK細胞・指定比較と最終特殊化 | 550〜1,150 | 1,186 | 上端+36（約3%） |
+| R03a.1の一般の重みHom不変性 | 900〜1,400 | 839 | 下端−61 |
+| 合計 | 1,450〜2,550 | 2,025 | 範囲内 |
+
+R03aの細胞分解が当初の見込みより大きくなった一方、Hom不変性は既存の二変数随伴輸送・Kan Whitehead・元のホーン小対象性を再利用できたため短く閉じた。R03a.1は§19の1,500行以下の追加の枠を満たした。§170の全体見込み約8,500〜12,700行、外枠15,000行は維持する。
+
+次はR02・R03の元の普遍重み付き錐の点を、同じ全Hom∞比較・R03aを通して指定native錐へ接続する。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainの作業木は変更していない。停止点3b-4aにはまだ届いていない。/goalはactiveのまま、そのまま続ける。
+
+### 171.4 今回の証明分割・法則の型
+
+R03a・R03a.1以外の独立の新しい数学の追加は0。
+
+#### WeightedSourceHomotopy（145行）
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.HomotopyWeight
+open CategoryTheory Limits Opposite SSet MonoidalCategory
+open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits
+open scoped Simplicial
+variable (I : Type u) [SmallCategory I]
+
+def weightedSourceHomotopySection {V W : I ⥤ SSet.{u}}
+    (T : V ⊗ (Functor.const I).obj (Δ[1] : SSet.{u}) ⟶ W) (H : I ⥤ SSet.{u}) :
+    V ⊗ (Functor.const I).obj (weightedSections W H ⊗ (Δ[1] : SSet.{u})) ⟶ H
+
+def weightedSourceHomotopyMap {V W : I ⥤ SSet.{u}}
+    (T : V ⊗ (Functor.const I).obj (Δ[1] : SSet.{u}) ⟶ W) (H : I ⥤ SSet.{u}) :
+    weightedSections W H ⊗ (Δ[1] : SSet.{u}) ⟶ weightedSections V H
+
+def weightIntervalZero (V : I ⥤ SSet.{u}) :
+    V ⟶ V ⊗ (Functor.const I).obj (Δ[1] : SSet.{u})
+
+def weightIntervalOne (V : I ⥤ SSet.{u}) :
+    V ⟶ V ⊗ (Functor.const I).obj (Δ[1] : SSet.{u})
+
+theorem weightedSourceHomotopyMap_zero {V W : I ⥤ SSet.{u}}
+    (T : V ⊗ (Functor.const I).obj (Δ[1] : SSet.{u}) ⟶ W)
+    (f : V ⟶ W) (h : weightIntervalZero I V ≫ T = f) (H : I ⥤ SSet.{u}) :
+    SSet.ι₀ ≫ weightedSourceHomotopyMap I T H = weightedSectionsPre f H
+
+theorem weightedSourceHomotopyMap_one {V W : I ⥤ SSet.{u}}
+    (T : V ⊗ (Functor.const I).obj (Δ[1] : SSet.{u}) ⟶ W)
+    (f : V ⟶ W) (h : weightIntervalOne I V ≫ T = f) (H : I ⥤ SSet.{u}) :
+    SSet.ι₁ ≫ weightedSourceHomotopyMap I T H = weightedSectionsPre f H
+
+def weightedSectionsPreHomotopy {V W : I ⥤ SSet.{u}} {f g : V ⟶ W}
+    (T : V ⊗ (Functor.const I).obj (Δ[1] : SSet.{u}) ⟶ W)
+    (h₀ : weightIntervalZero I V ≫ T = f) (h₁ : weightIntervalOne I V ≫ T = g)
+    (H : I ⥤ SSet.{u}) : SSet.Homotopy (weightedSectionsPre f H) (weightedSectionsPre g H)
+
+```
+
+#### WeightIntervalBoundary（92行）
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.HomotopyWeight
+open CategoryTheory Limits SSet MonoidalCategory CartesianMonoidalCategory
+open SerrePositivity.SimplicialModel.LargeParameterHomotopy
+open scoped Simplicial
+
+theorem weight_boundaryMap_naturality {X Y E F : SSet.{u}} (r : X ⟶ Y) (t : E ⟶ F)
+    (a b : X ⟶ E) (c d : Y ⟶ F) (ha : r ≫ c = a ≫ t) (hb : r ≫ d = b ≫ t) :
+    (r ▷ (∂Δ[1] : SSet.{u})) ≫ boundaryMap c d = boundaryMap a b ≫ t
+
+theorem weight_boundaryMap_comp {X E B : SSet.{u}} (a b : X ⟶ E) (p : E ⟶ B)
+    (h : a ≫ p = b ≫ p) :
+    boundaryMap a b ≫ p = fst X (∂Δ[1] : SSet.{u}) ≫ b ≫ p
+
+def weightIntervalBoundary {V W : I ⥤ SSet.{u}} (f g : V ⟶ W) :
+    V ⊗ (Functor.const I).obj (∂Δ[1] : SSet.{u}) ⟶ W
+
+theorem weightIntervalBoundary_lift_zero {V W : I ⥤ SSet.{u}} (f g : V ⟶ W)
+    (T : V ⊗ (Functor.const I).obj (Δ[1] : SSet.{u}) ⟶ W)
+    (h : (V ◁ (Functor.const I).map ∂Δ[1].ι) ≫ T = weightIntervalBoundary I f g) :
+    weightIntervalZero I V ≫ T = f
+
+theorem weightIntervalBoundary_lift_one {V W : I ⥤ SSet.{u}} (f g : V ⟶ W)
+    (T : V ⊗ (Functor.const I).obj (Δ[1] : SSet.{u}) ⟶ W)
+    (h : (V ◁ (Functor.const I).map ∂Δ[1].ι) ≫ T = weightIntervalBoundary I f g) :
+    weightIntervalOne I V ≫ T = g
+
+```
+
+#### ProjectiveWeightTensorLifting（48行）
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.HomotopyWeight
+open CategoryTheory Limits SSet MonoidalCategory HomotopicalAlgebra
+open SerrePositivity.PointwiseAdjunction
+open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits
+open scoped Simplicial
+variable (I : Type u) [SmallCategory I]
+
+theorem projectiveWeight_tensor_lifting (W : I ⥤ SSet.{u})
+    (hW : (boundaries I).rlp.llp (initial.to W))
+    {A B : SSet.{u}} (f : A ⟶ B) [Mono f] {F G : I ⥤ SSet.{u}} (p : F ⟶ G)
+    (hp : ∀ i, SSet.modelCategoryQuillen.I.rlp (p.app i)) :
+    HasLiftingProperty ((weightedParameterFunctor W).map f) p
+
+```
+
+#### ProjectiveBoundaryContraction（78行）
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.HomotopyWeight
+open CategoryTheory Limits SSet MonoidalCategory CartesianMonoidalCategory
+open SerrePositivity.SimplicialModel.LargeParameterHomotopy
+open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits
+open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
+open scoped Simplicial
+variable (I : Type u) [SmallCategory I]
+
+def weightIntervalProjection (V : I ⥤ SSet.{u}) :
+    V ⊗ (Functor.const I).obj (Δ[1] : SSet.{u}) ⟶ V
+
+theorem exists_projectiveBoundary_section {V W : I ⥤ SSet.{u}} (p : V ⟶ W)
+    (hp : ∀ i, SSet.modelCategoryQuillen.I.rlp (p.app i))
+    (hW : (boundaries I).rlp.llp (initial.to W)) : ∃ s : W ⟶ V, s ≫ p = 𝟙 W
+
+theorem exists_projectiveBoundary_contraction {V W : I ⥤ SSet.{u}} (p : V ⟶ W)
+    (hp : ∀ i, SSet.modelCategoryQuillen.I.rlp (p.app i))
+    (hV : (boundaries I).rlp.llp (initial.to V)) (s : W ⟶ V) (hs : s ≫ p = 𝟙 W) :
+    ∃ T : V ⊗ (Functor.const I).obj (Δ[1] : SSet.{u}) ⟶ V,
+      weightIntervalZero I V ≫ T = p ≫ s ∧ weightIntervalOne I V ≫ T = 𝟙 V
+
+theorem weightedSectionsPre_homotopyEquivalence_of_projectiveBoundary
+    {V W : I ⥤ SSet.{u}} (p : V ⟶ W)
+    (hp : ∀ i, SSet.modelCategoryQuillen.I.rlp (p.app i))
+    (hV : (boundaries I).rlp.llp (initial.to V))
+    (hW : (boundaries I).rlp.llp (initial.to W)) (H : I ⥤ SSet.{u}) :
+    IsSimplicialHomotopyEquivalence (weightedSectionsPre p H)
+
+```
+
+#### ProjectiveWeightComparison（74行）
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.HomotopyWeight
+open CategoryTheory Limits SSet HomotopicalAlgebra
+open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits
+open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
+open scoped SSet.modelCategoryQuillen
+variable (I : Type u) [SmallCategory I]
+
+theorem projectiveHornReplacement_kan (W : I ⥤ SSet.{u}) (i : I) :
+    SSet.KanComplex ((projectiveHornFactorization I (terminal.from W)).Z.obj i)
+
+theorem weightedSectionsPre_homotopyEquivalence_of_projective_cofibrant_kan_target
+    (V W : I ⥤ SSet.{u}) (f : V ⟶ W)
+    (hV : (boundaries I).rlp.llp (initial.to V))
+    (hW : (boundaries I).rlp.llp (initial.to W))
+    (hf : ∀ i, IsWeakHomotopyEquivalence (f.app i))
+    (hWK : ∀ i, SSet.KanComplex (W.obj i))
+    (H : I ⥤ SSet.{u}) (hH : ∀ i, SSet.KanComplex (H.obj i)) :
+    IsSimplicialHomotopyEquivalence (weightedSectionsPre f H)
+
+theorem weightedSectionsPre_homotopyEquivalence_of_projective_cofibrant
+    (V W : I ⥤ SSet.{u}) (f : V ⟶ W)
+    (hV : (boundaries I).rlp.llp (initial.to V))
+    (hW : (boundaries I).rlp.llp (initial.to W))
+    (hf : ∀ i, IsWeakHomotopyEquivalence (f.app i))
+    (H : I ⥤ SSet.{u}) (hH : ∀ i, SSet.KanComplex (H.obj i)) :
+    IsSimplicialHomotopyEquivalence (weightedSectionsPre f H)
+
+```
+
+#### BousfieldKanComparisonValues（53行）
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.HomotopyWeight
+open CategoryTheory Limits SSet
+open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits
+open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
+open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits
+open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories
+
+theorem bousfieldKanWeight_isWeaklyContractible (I : Type u) [SmallCategory I] (i : I) :
+    IsWeaklyContractible ((bousfieldKanWeight I).obj i)
+
+theorem framedLimitWeightComparison_weak (i : Jᵒᵖᵒᵖ) :
+    IsWeakHomotopyEquivalence ((framedLimitWeightComparison J).app i)
+
+theorem bkFramedWeightComparison_weak (i : Jᵒᵖᵒᵖ) :
+    IsWeakHomotopyEquivalence ((bkFramedWeightComparison J).app i)
+
+```
+
+#### StrictDiagramTotWeightComparison（41行）
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.BarrattEccles
+open CategoryTheory
+open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits
+open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
+
+abbrev strictBETotWeightComparison :=
+  HomotopyWeight.bkFramedWeightComparison (AsSmall.{u} SimplexCategory)
+
+theorem strictBETotWeightComparison_homotopyEquivalence
+    (H : ((AsSmall.{u} SimplexCategory)ᵒᵖᵒᵖ) ⥤ SSet.{u})
+    (hH : ∀ i, SSet.KanComplex (H.obj i)) :
+    IsSimplicialHomotopyEquivalence (weightedSectionsPre strictBETotWeightComparison H)
+
+theorem exists_strictBETotWeightComparison :
+    ∃ j : bousfieldKanWeight ((AsSmall.{u} SimplexCategory)ᵒᵖᵒᵖ) ⟶
+        HomotopyWeight.framedLimitWeight (AsSmall.{u} SimplexCategory),
+      ∀ (H : ((AsSmall.{u} SimplexCategory)ᵒᵖᵒᵖ) ⥤ SSet.{u}),
+        (∀ i, SSet.KanComplex (H.obj i)) →
+          IsSimplicialHomotopyEquivalence (weightedSectionsPre j H)
+
+```
+
+## 172. 元のprobe錐から同じBK切断への実写像・指定点の接続（2026-11-14）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 3／全体 14（うち追加 2）。R02・R03は未完了。
+
+### 172.1 今回の到達点
+
+§171までの重み比較を、元の普遍probe錐の**同じ零単体**へ適用した。先に既存のconeSpaceとnativeなweightedSectionsの右随伴同型が同じHom転置を運ぶ式を示し、標準零単体のテンソル同型がnativeな第一射影へ移ることを照合した。その結果、元の `conePoint s` が同じ自然変換sのnative切断の零単体へ移ることを、π₀でなく実際の零単体の等式として証明した。
+
+次に指定した一つの `bkFramedWeightComparison K` の前合成で、同じ普遍probe錐を `BK(Kᵒᵖᵒᵖ) →` 元の右frame Hom係数図式へ送った。元のprobe錐空間から同じBK切断空間への実写像 `strictBETotProbeConeBKMap` を定義し、そのホモトピー同値性を各右frameのKan性とR03a.1から証明した。この同じ写像が元の `strictBETotUniversalProbeConePoint` を指定された `strictBETotUniversalBKProbeConePoint` へ送る等式も閉じた。
+
+元のTot頂点・probe・右frame・一点重み・同じ比較jを保っている。まだBK切断の点から**全図式射を含むnative join錐の族**への接続はしていないため、R02・R03・停止点3b-4aの完成とは数えない。Uの極限保存から元のBE錐の極限性を逆算していない。
+
+### 172.2 検証
+
+230は右随伴の点・重み制限の点・元のBK普遍点の3本で **5,055 jobs・終了0、57モジュール380宣言**。231は同じ実写像のホモトピー同値の1本で **5,105 jobs・終了0、新規全58モジュール387宣言・標準三公理のみ**。実ハンドル31290・34664の終了0を確認し、鍵返却済み。ログ `/private/tmp/isw2-build230.log`・`231.log`、最終小監査 `/private/tmp/AuditISW2BKCells231.lean`。対象ビルドのみで、root・公式監査は流していない。
+
+個別検査では、opaqueなendを展開して転置を同一視する代わりに、元のHom同値の両側の逆性を明示した。またKan性を同じ右随伴の全関手評価の型で明示して型クラス探索に渡した。計算上限の変更・sorry・独自公理0。SSetモデル構造の仮定なし。`--class impl --wait 3600`、同時整理券一枚、ビルドと小監査の間だけ鍵を保持した。
+
+今回4本256行、各200行以下。3b-4の検証済み **58本・3,792行**。登録候補は同じBE用JSONへ追記。全体見込み・外枠15,000行は§170〜171のまま。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainの作業木は変更していない。
+
+### 172.3 型と残り
+
+今回全て既存の右随伴・前合成・元の右frameの法則の照合。独立の新しい数学の一覧への追加0。次は同じ係数図式を既存の全Hom∞比較の入口へ合わせ、分類された切断から同じnative join錐へ進む。SimplicialHomとそのopを定義的に同一視せず、元の全自然同型・同じ頂点・両境界を保持する。/goalはactiveのまま続ける。
+
+#### NativeWeightedSectionPoints（67行）
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.HomotopyWeight
+open CategoryTheory Limits SSet MonoidalCategory CartesianMonoidalCategory
+open SerrePositivity.DiagramModel
+open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits
+open scoped Simplicial
+variable (I : Type u) [SmallCategory I] (W : I ⥤ SSet.{u})
+
+theorem coneSpaceNativeSectionsIso_homEquiv (X : SSet.{u}) (H : I ⥤ SSet.{u})
+    (f : (WeightedCones.tensorDiagram I W).obj X ⟶ H) :
+    (WeightedCones.adjunction I W).homEquiv X H f ≫ (coneSpaceNativeSectionsIso I W).hom.app H =
+      weightedSectionsLift ((coneSpaceParameterIso I W).inv.app X ≫ f)
+
+theorem coneSpaceParameterIso_zero :
+    (coneSpaceParameterIso I W).inv.app (Δ[0] : SSet.{u}) ≫ (zeroTensorWeightIso I W).hom =
+      fst W ((Functor.const I).obj (Δ[0] : SSet.{u}))
+
+theorem coneSpaceNativeSectionsIso_point {H : I ⥤ SSet.{u}} (s : W ⟶ H) :
+    (((coneSpaceNativeSectionsIso I W).hom.app H).app (Opposite.op ⦋0⦌)) (conePoint I W s) =
+      SSet.yonedaEquiv (weightedSectionsLift
+        (fst W ((Functor.const I).obj (Δ[0] : SSet.{u})) ≫ s))
+
+```
+
+#### NativeWeightedPointRestriction（46行）
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.HomotopyWeight
+open CategoryTheory Limits SSet MonoidalCategory CartesianMonoidalCategory
+open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits
+open scoped Simplicial
+variable (I : Type u) [SmallCategory I]
+
+def nativeWeightedPoint {W H : I ⥤ SSet.{u}} (s : W ⟶ H) :
+    (weightedSections W H) _⦋0⦌
+
+theorem nativeWeightedPoint_pre {V W H : I ⥤ SSet.{u}} (j : V ⟶ W) (s : W ⟶ H) :
+    ((weightedSectionsPre j H).app (Opposite.op ⦋0⦌)) (nativeWeightedPoint I s) =
+      nativeWeightedPoint I (j ≫ s)
+
+```
+
+#### StrictDiagramTotUniversalBKProbeCone（58行）
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.BarrattEccles
+open CategoryTheory Opposite
+open SerrePositivity.DiagramModel
+open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits
+open scoped Simplicial
+variable (A : Type u) [CommRing A] (K : Type u) [SmallCategory K]
+
+abbrev strictBETotProbeCoefficients (F : K ⥤ (operad A).Algebra) (Y : (operad A).Algebra) :
+    Kᵒᵖᵒᵖ ⥤ SSet.{u}
+
+def strictBETotUniversalBKProbeWeightedCone (F : K ⥤ (operad A).Algebra) :
+    bousfieldKanWeight Kᵒᵖᵒᵖ ⟶
+      strictBETotProbeCoefficients A K F ((framedLimitFunctor A K).obj F)
+
+def strictBETotUniversalBKProbeConePoint (F : K ⥤ (operad A).Algebra) :
+    (weightedSections (bousfieldKanWeight Kᵒᵖᵒᵖ)
+      (strictBETotProbeCoefficients A K F ((framedLimitFunctor A K).obj F))) _⦋0⦌
+
+theorem strictBETotUniversalBKProbeConePoint_comparison (F : K ⥤ (operad A).Algebra) :
+    ((weightedSectionsPre (HomotopyWeight.bkFramedWeightComparison K)
+      (strictBETotProbeCoefficients A K F ((framedLimitFunctor A K).obj F))).app (op ⦋0⦌))
+        ((((HomotopyWeight.coneSpaceNativeSectionsIso Kᵒᵖᵒᵖ
+          (HomotopyWeight.framedLimitWeight K)).hom.app
+            (strictBETotProbeCoefficients A K F ((framedLimitFunctor A K).obj F))).app (op ⦋0⦌))
+              (strictBETotUniversalProbeConePoint A K F)) =
+      strictBETotUniversalBKProbeConePoint A K F
+
+```
+
+#### StrictDiagramTotBKSections（85行）
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.BarrattEccles
+open CategoryTheory HomotopicalAlgebra Opposite SSet
+open SerrePositivity.DiagramModel SerrePositivity.HomotopyFunctionComplex
+open SerrePositivity.InfinityCategories.Project.ModelCategoryComparison
+open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits
+open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
+open scoped Simplicial
+variable (A : Type u) [CommRing A] (K : Type u) [SmallCategory K]
+local instance strictBETotBKSectionsModelCategory : ModelCategory (operad A).Algebra := modelCategory A
+local instance strictBETotBKSectionsProbeCofibrant (Y : (operad A).Algebra) :
+    IsCofibrant (framedLimitProbe A Y) := framedLimitProbe_cofibrant A Y
+
+theorem strictBETotProbeCoefficients_kanComplex (F : K ⥤ (operad A).Algebra)
+    (Y : (operad A).Algebra) (i : Kᵒᵖᵒᵖ) :
+    SSet.KanComplex ((strictBETotProbeCoefficients A K F Y).obj i)
+
+theorem strictBETotProbeBKRestriction_homotopyEquivalence (F : K ⥤ (operad A).Algebra)
+    (Y : (operad A).Algebra) :
+    IsSimplicialHomotopyEquivalence (weightedSectionsPre (HomotopyWeight.bkFramedWeightComparison K)
+      (strictBETotProbeCoefficients A K F Y))
+
+def strictBETotProbeConeBKMap (F : K ⥤ (operad A).Algebra) (Y : (operad A).Algebra) :
+    ((framedLimitConeSpace A K Y).obj F) ⟶
+      weightedSections (bousfieldKanWeight Kᵒᵖᵒᵖ) (strictBETotProbeCoefficients A K F Y)
+
+theorem strictBETotProbeConeBKMap_homotopyEquivalence
+    (F : K ⥤ (operad A).Algebra) (Y : (operad A).Algebra) :
+    IsSimplicialHomotopyEquivalence (strictBETotProbeConeBKMap A K F Y)
+
+theorem strictBETotProbeConeBKMap_point (F : K ⥤ (operad A).Algebra) :
+    ((strictBETotProbeConeBKMap A K F ((framedLimitFunctor A K).obj F)).app (op ⦋0⦌))
+      (strictBETotUniversalProbeConePoint A K F) = strictBETotUniversalBKProbeConePoint A K F
+
+```
+
+## 173. 全rightFrameHom係数と同じBK重みの宇宙移送（2026-11-14）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 3／全体 14（うち追加 2）。R02・R03は未完了。
+
+### 173.1 検証済みの到達点
+
+元の右frameの反対圏Homと全Hom∞比較の入口の `rightFrameHom` を、同じ二重反対添字Kᵒᵖᵒᵖの**全射に自然な同型**として束ねた。元の自然同型 `rightFrameHomOpIso` の各成分を使い、各添字で独立に逆を選んでいない。指定されたBK普遍錐を同じ係数同型の逆で全rightFrameHom図式へ送り、同じ零単体の輸送の等式を閉じた。元の係数同型で戻すと、自然変換全体として元のBK普遍錐に戻る。
+
+次のHom∞比較の入口は `rightFrameHammockKanDiagram` のphase0で、これは元のrightFrameHomの**宇宙持ち上げの後にEx∞を施した全図式**。単に同じKan複体だから定義的に等しいとは扱わない。また元の添字Kの宇宙uからmax(u,v)へのAsSmall変更が必要になるため、既存の0宇宙基底版の法則を、同じ明示的なover列のup・downで一般宇宙へ移した。
+
+新規 `BousfieldKanUniverseWeight` は、`bousfieldKanWeight (AsSmall.{v} J)` と `AsSmall.down ⋙ bousfieldKanWeight J ⋙ SSet.uliftFunctor.{max u v,u}` の実同型を、元のdownを順射として指定する。単体・構造射・添字の作用を保持し、別の重みを選んでいない。一般になった宇宙変更の法則なのでKerodon/LimitsAndColimits/HomotopyLimitsAndColimits/へ置いた。既存の0宇宙版やG10のファイルは変更していない。
+
+### 173.2 検証・規模
+
+232は係数の同型・点の後合成の2本で **5,107 jobs・終了0、60モジュール397宣言**。233は一般宇宙の重み同型の1本で **1,242 jobs・終了0、新規全61モジュール408宣言・標準三公理のみ**。実ハンドル84787・79978の終了0・鍵返却を確認。ログ `/private/tmp/isw2-build232.log`・`233.log`、小監査 `/private/tmp/AuditISW2BKCells233.lean`。対象ビルドと小監査だけ、`--class impl --wait 3600`、同時整理券一枚。
+
+今回3本173行、各200行以下。3b-4の検証済み **61本・3,965行**。登録候補の同じJSONには一般のKerodonの1本も追加した。sorry・独自公理・計算上限の変更0。SSetモデルの仮定なし。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainの作業木は変更していない。既存構成の係数移送・自然性の法則の照合であり、新しい独立の数学の一覧への追加0。
+
+### 173.3 次の接続（未証明を明記）
+
+次に必要なのは、同じBK切断の宇宙変更を切断空間全体の同型へ移すこと。型の案を一時ファイル `/private/tmp/CheckBKUniverseSectionsType.lean` で検査し、終了0を確認した。これは型の検査だけで、この同型の証明を済みとは数えていない。
+
+```lean
+-- universe u v
+-- open CategoryTheory
+-- open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits
+
+def bousfieldKanUniverseSectionsIso (I : Type u) [SmallCategory I] (H : I ⥤ SSet.{u}) :
+    (SSet.uliftFunctor.{max u v,u}).obj (bousfieldKanHolim H) ≅
+      bousfieldKanHolim ((AsSmall.down : AsSmall.{v} I ⥤ I) ⋙ H ⋙
+        SSet.uliftFunctor.{max u v,u})
+```
+
+候補は、今回の同じBK重みの同型、既存の切断の `uliftSectionsIso`・`bousfieldKanSectionsIso`、またはULiftの全忠実性と元の転置の自然性を使う経路。実際の順射と元の指定点・標準脚の等式を保持して組み立てる。続くEx∞への係数の単位については、既存 `BousfieldKanHomotopyInvariance.bousfieldKanMap_homotopyEquivalence` がKan係数の成分ごとの同値から**同じ係数射が誘導するBK切断写像**のホモトピー同値を与える。ここを新しい係数不変性の定理で作り直す必要はない。
+
+その後、既存 `weightedNerveStraighteningUnitIso` と§165の全Hom∞比較を使い、同じ分類像・cosliceの切断へ移す。`fixedVertexConeSpaceEquiv` に戻す際は元の頂点を指定し、全族の両境界と、極限判定のa・ha・heの同じ頂点評価の等式を省略しない。まだnative join錐族を構成・検証したとは数えない。/goalはactiveのまま、次の同じ宇宙の切断の照合へ続ける。
+
+### 173.4 今回の法則の型
+
+#### NativeWeightedPointMap（28行）
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.HomotopyWeight
+open CategoryTheory Limits SSet CartesianMonoidalCategory
+open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits
+open scoped Simplicial
+variable (I : Type u) [SmallCategory I]
+
+theorem nativeWeightedPoint_map {W F G : I ⥤ SSet.{u}} (s : W ⟶ F) (f : F ⟶ G) :
+    ((weightedSectionsMap W f).app (Opposite.op ⦋0⦌)) (nativeWeightedPoint I s) =
+      nativeWeightedPoint I (s ≫ f)
+
+```
+
+#### StrictDiagramTotProbeCoefficientsComparison（68行）
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.BarrattEccles
+open CategoryTheory HomotopicalAlgebra Opposite SSet
+open SerrePositivity.InfinityCategories.Project.ModelCategoryComparison
+open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits
+open scoped Simplicial
+variable (A : Type u) [CommRing A] (K : Type u) [SmallCategory K]
+local instance strictBETotProbeCoefficientComparisonModel : ModelCategory (operad A).Algebra := modelCategory A
+
+def strictBETotProbeRightHomDiagram (F : K ⥤ (operad A).Algebra) (Y : (operad A).Algebra) :
+    Kᵒᵖᵒᵖ ⥤ SSet.{u}
+
+def strictBETotProbeCoefficientsIso (F : K ⥤ (operad A).Algebra) (Y : (operad A).Algebra) :
+    strictBETotProbeRightHomDiagram A K F Y ≅ strictBETotProbeCoefficients A K F Y
+
+def strictBETotUniversalBKRightHomCone (F : K ⥤ (operad A).Algebra) :
+    bousfieldKanWeight Kᵒᵖᵒᵖ ⟶
+      strictBETotProbeRightHomDiagram A K F ((framedLimitFunctor A K).obj F)
+
+theorem strictBETotUniversalBKRightHomCone_back (F : K ⥤ (operad A).Algebra) :
+    strictBETotUniversalBKRightHomCone A K F ≫
+      (strictBETotProbeCoefficientsIso A K F ((framedLimitFunctor A K).obj F)).hom =
+        strictBETotUniversalBKProbeWeightedCone A K F
+
+def strictBETotUniversalBKRightHomPoint (F : K ⥤ (operad A).Algebra) :
+    (weightedSections (bousfieldKanWeight Kᵒᵖᵒᵖ)
+      (strictBETotProbeRightHomDiagram A K F ((framedLimitFunctor A K).obj F))) _⦋0⦌
+
+theorem strictBETotUniversalBKRightHomPoint_comparison (F : K ⥤ (operad A).Algebra) :
+    ((weightedSectionsMap (bousfieldKanWeight Kᵒᵖᵒᵖ)
+      (strictBETotProbeCoefficientsIso A K F ((framedLimitFunctor A K).obj F)).inv).app (op ⦋0⦌))
+        (strictBETotUniversalBKProbeConePoint A K F) = strictBETotUniversalBKRightHomPoint A K F
+
+```
+
+#### BousfieldKanUniverseWeight（77行）
+
+```lean
+universe u v
+namespace SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits
+open CategoryTheory
+variable (J : Type u) [SmallCategory J]
+
+def bousfieldKanUniverseOverLift (j : AsSmall.{v} J) :
+    Over ((AsSmall.down : AsSmall.{v} J ⥤ J).obj j) ⥤ Over j
+
+theorem bousfieldKanUniverseOverLift_down (j : AsSmall.{v} J) :
+    bousfieldKanUniverseOverLift J j ⋙ Over.post (AsSmall.down : AsSmall.{v} J ⥤ J) = 𝟭 _
+
+theorem bousfieldKanUniverseOverDown_lift (j : AsSmall.{v} J) :
+    Over.post (AsSmall.down : AsSmall.{v} J ⥤ J) ⋙ bousfieldKanUniverseOverLift J j = 𝟭 _
+
+def bousfieldKanUniverseWeightDown : bousfieldKanWeight (AsSmall.{v} J) ⟶
+    (AsSmall.down : AsSmall.{v} J ⥤ J) ⋙ bousfieldKanWeight J ⋙ SSet.uliftFunctor.{max u v,u}
+
+instance bousfieldKanUniverseWeightDown_isIso : IsIso (bousfieldKanUniverseWeightDown.{u,v} J)
+
+def bousfieldKanUniverseWeightIso : bousfieldKanWeight (AsSmall.{v} J) ≅
+    (AsSmall.down : AsSmall.{v} J ⥤ J) ⋙ bousfieldKanWeight J ⋙ SSet.uliftFunctor.{max u v,u}
+
+```
+
+## 174. 同じBK切断の宇宙変更と指定点（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 3／全体 14（うち追加 2）。
+
+R02〜R03の係数移送の法則として、ULiftとAsSmall.downによる同じ切断空間の比較を構成した。順射は元の普遍評価の転置で、ULiftの全忠実性から各標準単体上で全単射になることを示した。同じBK重みの指定downとの合成が `bousfieldKanUniverseSectionsIso` の順射である。さらに元の自然変換が定める零単体を、同じdownで運んだ自然変換の零単体へ厳密に送ることを示した。新しいKan置換や別の指定点を選んでいない。
+
+7本・366行追加、累計68本・4331行（外枠15,000行）。いずれも200行以下。既存の宇宙変更・切断の普遍性・係数移送の法則で、一覧の追加項目は増やさない。native join錐の族と極限性はまだ未完で、R02/R03を完了とは数えない。
+
+検証：対象ビルド234は1,262 jobs、235は2,346 jobsで成功。235の小監査は68本・434宣言、標準三公理 `propext`・`Classical.choice`・`Quot.sound` のみ。両ログで成功と監査完走を確認し、235のプロセスも終了済み。sorry・新規公理なし。共通入口と本体監査には登録せず、上記manifestを調整役への登録候補とする。
+
+次は同じ零単体をEx∞の係数単位に運び、既存の全Hom∞比較およびcoslice分類との比較へ接続する。元の頂点と脚の照合を残す。
+
+### 174.1 今回の法則と証明分割の型
+
+#### BousfieldKanUniversePoints（43行）
+
+```lean
+def bousfieldKanUniverseCone (s : bousfieldKanWeight I ⟶ H) :
+    bousfieldKanWeight (AsSmall.{v} I) ⟶ (weightedDiagramUniverse.{u,v} I).obj H
+
+theorem bousfieldKanUniverseSectionsIso_point (s : bousfieldKanWeight I ⟶ H) :
+    (((bousfieldKanUniverseSectionsIso.{u,v} I H).hom).app (Opposite.op ⦋0⦌))
+      (ULift.up (nativeWeightedPoint I s)) =
+        nativeWeightedPoint (AsSmall.{v} I) (bousfieldKanUniverseCone I s)
+```
+
+#### BousfieldKanUniverseSections（32行）
+
+```lean
+def bousfieldKanUniverseSectionsIso :
+    (SSet.uliftFunctor.{max u v,u}).obj (bousfieldKanHolim H) ≅
+      bousfieldKanHolim ((AsSmall.down : AsSmall.{v} I ⥤ I) ⋙ H ⋙
+        SSet.uliftFunctor.{max u v,u})
+
+theorem bousfieldKanUniverseSectionsIso_hom :
+    (bousfieldKanUniverseSectionsIso.{u,v} I H).hom =
+      weightedSectionsUniverseComparison I (bousfieldKanWeight I) H ≫
+        weightedSectionsPre (bousfieldKanUniverseWeightDown I) ((weightedDiagramUniverse.{u,v} I).obj H)
+```
+
+#### WeightedDiagramUniverse（72行）
+
+```lean
+def weightedDiagramUniverse : (I ⥤ SSet.{u}) ⥤ (AsSmall.{v} I ⥤ SSet.{max u v})
+
+instance weightedDiagramUniverse_full : (weightedDiagramUniverse.{u,v} I).Full
+
+instance weightedDiagramUniverse_faithful : (weightedDiagramUniverse.{u,v} I).Faithful
+
+def weightedDiagramUniverseTensorIso (W : I ⥤ SSet.{u}) (A : SSet.{u}) :
+    (weightedDiagramUniverse.{u,v} I).obj (W ⊗ (Functor.const I).obj A) ≅
+      (weightedDiagramUniverse.{u,v} I).obj W ⊗
+        (Functor.const (AsSmall.{v} I)).obj ((SSet.uliftFunctor.{max u v,u}).obj A)
+
+@[reassoc] theorem weightedDiagramUniverseTensorIso_inv_parameter (W : I ⥤ SSet.{u})
+    {A B : SSet.{u}} (f : A ⟶ B) :
+    ((weightedDiagramUniverse.{u,v} I).obj W ◁
+      (Functor.const (AsSmall.{v} I)).map ((SSet.uliftFunctor.{max u v,u}).map f)) ≫
+        (weightedDiagramUniverseTensorIso I W B).inv =
+      (weightedDiagramUniverseTensorIso I W A).inv ≫
+        (weightedDiagramUniverse I).map (W ◁ (Functor.const I).map f)
+```
+
+#### WeightedSectionsUniverseComparison（47行）
+
+```lean
+def weightedSectionsUniverseEvaluation :
+    (weightedDiagramUniverse.{u,v} I).obj W ⊗
+      (Functor.const (AsSmall.{v} I)).obj
+        ((SSet.uliftFunctor.{max u v,u}).obj (weightedSections W H)) ⟶
+          (weightedDiagramUniverse.{u,v} I).obj H
+
+def weightedSectionsUniverseComparison :
+    (SSet.uliftFunctor.{max u v,u}).obj (weightedSections W H) ⟶
+      weightedSections ((weightedDiagramUniverse.{u,v} I).obj W)
+        ((weightedDiagramUniverse.{u,v} I).obj H)
+
+theorem weightedSectionsUniverseComparison_map_uncurry {A : SSet.{u}}
+    (f : A ⟶ weightedSections W H) :
+    weightedSectionsUncurry ((SSet.uliftFunctor.{max u v,u}).map f ≫
+      weightedSectionsUniverseComparison I W H) =
+        (weightedDiagramUniverseTensorIso I W A).inv ≫
+          (weightedDiagramUniverse I).map (weightedSectionsUncurry f)
+```
+
+#### WeightedSectionsUniverseHomEquiv（42行）
+
+```lean
+def weightedSectionsUniverseHomEquiv (A : SSet.{u}) :
+    (A ⟶ weightedSections W H) ≃
+      ((SSet.uliftFunctor.{max u v,u}).obj A ⟶
+        weightedSections ((weightedDiagramUniverse.{u,v} I).obj W)
+          ((weightedDiagramUniverse.{u,v} I).obj H)) where
+  toFun f
+```
+
+#### WeightedSectionsUniverseIso（62行）
+
+```lean
+def weightedSectionsUniverseSimplexEquiv (n : ℕ) :
+    ((SSet.uliftFunctor.{max u v,u}).obj (weightedSections W H)) _⦋n⦌ ≃
+      (weightedSections ((weightedDiagramUniverse.{u,v} I).obj W)
+        ((weightedDiagramUniverse.{u,v} I).obj H)) _⦋n⦌
+
+theorem weightedSectionsUniverseSimplexEquiv_apply {n : ℕ}
+    (s : ((SSet.uliftFunctor.{max u v,u}).obj (weightedSections W H)) _⦋n⦌) :
+    weightedSectionsUniverseSimplexEquiv I W H n s =
+      (weightedSectionsUniverseComparison.{u,v} I W H).app (Opposite.op ⦋n⦌) s
+
+instance weightedSectionsUniverseComparison_isIso :
+    IsIso (weightedSectionsUniverseComparison.{u,v} I W H)
+
+def weightedSectionsUniverseIso :
+    (SSet.uliftFunctor.{max u v,u}).obj (weightedSections W H) ≅
+      weightedSections ((weightedDiagramUniverse.{u,v} I).obj W)
+        ((weightedDiagramUniverse.{u,v} I).obj H)
+```
+
+#### WeightedSectionsUniversePoints（68行）
+
+```lean
+@[reassoc] theorem weightedDiagramUniverseTensorIso_zero_fst (W : I ⥤ SSet.{u}) :
+    ((weightedDiagramUniverse.{u,v} I).obj W ◁ (Functor.const (AsSmall.{v} I)).map
+      (uliftStdSimplexIso.{u,max u v} 0).inv) ≫
+        (weightedDiagramUniverseTensorIso I W (Δ[0] : SSet.{u})).inv ≫
+          (weightedDiagramUniverse I).map (fst W ((Functor.const I).obj (Δ[0] : SSet.{u}))) =
+      fst ((weightedDiagramUniverse.{u,v} I).obj W)
+        ((Functor.const (AsSmall.{v} I)).obj (Δ[0] : SSet.{max u v}))
+
+theorem weightedSectionsUniverseComparison_point {W H : I ⥤ SSet.{u}} (s : W ⟶ H) :
+    ((weightedSectionsUniverseComparison.{u,v} I W H).app (Opposite.op ⦋0⦌))
+      (ULift.up (SSet.yonedaEquiv (weightedSectionsLift
+        (fst W ((Functor.const I).obj (Δ[0] : SSet.{u})) ≫ s)))) =
+        SSet.yonedaEquiv (weightedSectionsLift
+          (fst ((weightedDiagramUniverse.{u,v} I).obj W)
+            ((Functor.const (AsSmall.{v} I)).obj (Δ[0] : SSet.{max u v})) ≫
+              (weightedDiagramUniverse.{u,v} I).map s))
+```
+
+## 175. 分類比較から同じ切断模型への接続 R03b（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 3／全体 15（うち追加 3）。
+
+IS-W2 §19の同じまとまり・1,500行以下の枠で、次の中間項目 **R03b** を追加する。R02〜R03の、元のBK係数のweighted nerveと同じ頂点のcosliceの引き戻しの分類比較から、その二つの射影の切断空間へ戻す段である。全分類同型だけをnative切断や錐そのものと取り違えないために、元の二つの射影を型に指定する。
+
+```lean
+universe u
+open CategoryTheory SSet
+open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
+open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations
+open SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations
+open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces
+
+def classifiedLeftFibrationSectionsEquivalence
+    {E F B : SSet.{u}} [Quasicategory B]
+    (p : E ⟶ B) (q : F ⟶ B) [LeftFibration p] [LeftFibration q]
+    (η : FunctorIso (leftStraighteningInfinityDiagram p)
+      (leftStraighteningInfinityDiagram q)) :
+    QCatEquivalence (simplicialSections p) (simplicialSections q)
+```
+
+見込みは250〜500行（同じ底を厳密に保つ復元の比較80〜160行、相対関手空間と元の切断模型の照合100〜180行、合成・BEへの適用70〜160行）。既存 `leftStraighteningInfinityReconstruction`、`smallLeftUnstraighteningComparisonOfFunctorIso` と、底上の前合成同値による `relativeFunctorPost_isQCatEquivalence_of_precompositionEquivalence` を使う。共通の復元を頂点とする二本の実写像で比較し、元の切断空間の同型を通して戻す。新しいstrictificationやBE模型は作らない。
+
+これは固定された射影の中間比較であり、R02の全図式射の錐族・R03の極限判定のa・ha・heは残す。元の指定BK点の像と、元の図式の標準脚の一致も後で明記する。この比較だけでnative join錐族を完成と数えない。外枠15,000行・⑤aの既存欄の型は変更しない。見込みが1,500行を超える場合や別のまとまりが必要と分かった場合は、検証済みを保存して報告する。
+
+## 176. 同じEx∞係数とnative錐射影の全分類比較（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 3／全体 15（うち追加 3）。R03bは§175で追加し個別検査中。R02/R03は未完了。
+
+元のraw right-frame Hom係数を同じAsSmall.downとULiftで運び、元のEx∞単位を合成した。Kan係数への単位が誘導する**実際のBK切断写像**のホモトピー同値を、既存BK係数不変性から証明した。元の指定BK点が同じ宇宙変更と同じ単位により送られる零単体の等式も証明した。
+
+この係数図式は、既存の全frame比較の第零Kan図式を指定添字関手で引き戻したものと定義どおり等しい。そのcoherent nerveも既存の全図式の前合成と等しい。これに元の全Hom∞比較とcoslice分類の全同型を合成し、同じweighted nerveと同じ頂点のnative錐射影の**元の二つのleft fibrationの全分類同型**まで接続した。値ごとの同値だけを集めたものではない。
+
+検証：236は対象ビルド10,630 jobs・70本448宣言、237は10,639 jobs・73本482宣言、238は10,636 jobs・74本497宣言。各対象ビルドと小監査が終了0、標準三公理のみ。対象は新規2本・3本・1本を指定し、rootや公式大監査は実行していない。実ハンドル67359・21555・31411の終了0を確認。個別検査で不足していたKanインスタンスと関手的分解を明示し、計算上限は変更しなかった。
+
+今回6本415行、累計74本・4746行。各200行以下。全て既存の係数移送・全比較の合成・貼り合わせの法則で、これら6本による一覧の追加は0。新しい中間項目は別途§175のR03bだけ。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainの変更なし。
+
+次はR03bの元の切断模型への復帰、その同じ比較を通じた指定点の像と元の標準脚の照合。native join錐の全族や極限判定のa・ha・heはまだ証明したと数えない。
+
+### 176.1 今回の法則の型
+
+#### BousfieldKanExInfinityUnit（53行）
+
+```lean
+def bousfieldKanExInfinityCoefficientUnit (H : I ⥤ SSet.{u}) : H ⟶ H ⋙ exInfinity
+
+theorem bousfieldKanExInfinityUnit_homotopyEquivalence (H : I ⥤ SSet.{u})
+    [∀ i, KanComplex (H.obj i)] :
+    IsSimplicialHomotopyEquivalence
+      (weightedSectionsMap (bousfieldKanWeight I) (bousfieldKanExInfinityCoefficientUnit I H))
+
+theorem bousfieldKanExInfinityUnit_point {H : I ⥤ SSet.{u}}
+    (s : bousfieldKanWeight I ⟶ H) :
+    ((weightedSectionsMap (bousfieldKanWeight I)
+      (bousfieldKanExInfinityCoefficientUnit I H)).app (Opposite.op ⦋0⦌))
+        (nativeWeightedPoint I s) = nativeWeightedPoint I
+          (s ≫ bousfieldKanExInfinityCoefficientUnit I H)
+```
+
+#### StrictDiagramTotProbeKanCoefficients（96行）
+
+```lean
+def strictBETotProbeFrameIndex (F : K ⥤ (operad A).Algebra) :
+    AsSmall.{u+1} Kᵒᵖᵒᵖ ⥤ AsSmall.{u+1} (operad A).Algebra
+
+theorem strictBETotProbeKanCoefficients_eq (F : K ⥤ (operad A).Algebra)
+    (Y : (operad A).Algebra) :
+    (weightedDiagramUniverse.{u,u+1} Kᵒᵖᵒᵖ).obj (strictBETotProbeRightHomDiagram A K F Y) ⋙
+      exInfinity = strictBETotProbeFrameIndex A K F ⋙
+        FrameHom.rightFrameHammockKanDiagram
+          ((SimplicialLocalization.modelSourceFrameFamily (C
+
+theorem strictBETotProbeRightHomDiagram_kanComplex (F : K ⥤ (operad A).Algebra)
+    (Y : (operad A).Algebra) (i : Kᵒᵖᵒᵖ) :
+    KanComplex ((strictBETotProbeRightHomDiagram A K F Y).obj i)
+
+theorem strictBETotProbeUniverseCoefficients_kanComplex (F : K ⥤ (operad A).Algebra)
+    (Y : (operad A).Algebra) (i : AsSmall.{u+1} Kᵒᵖᵒᵖ) :
+    KanComplex (((weightedDiagramUniverse.{u,u+1} Kᵒᵖᵒᵖ).obj
+      (strictBETotProbeRightHomDiagram A K F Y)).obj i)
+
+theorem strictBETotProbeBKExInfinityUnit_homotopyEquivalence
+    (F : K ⥤ (operad A).Algebra) (Y : (operad A).Algebra) :
+    IsSimplicialHomotopyEquivalence (weightedSectionsMap
+      (bousfieldKanWeight (AsSmall.{u+1} Kᵒᵖᵒᵖ))
+      (HomotopyWeight.bousfieldKanExInfinityCoefficientUnit (AsSmall.{u+1} Kᵒᵖᵒᵖ)
+        ((weightedDiagramUniverse.{u,u+1} Kᵒᵖᵒᵖ).obj
+          (strictBETotProbeRightHomDiagram A K F Y))))
+
+def strictBETotUniversalBKExInfinityCone (F : K ⥤ (operad A).Algebra) :
+    bousfieldKanWeight (AsSmall.{u+1} Kᵒᵖᵒᵖ) ⟶
+      (weightedDiagramUniverse.{u,u+1} Kᵒᵖᵒᵖ).obj
+        (strictBETotProbeRightHomDiagram A K F ((framedLimitFunctor A K).obj F)) ⋙ exInfinity
+
+theorem strictBETotUniversalBKExInfinityCone_point (F : K ⥤ (operad A).Algebra) :
+    ((weightedSectionsMap (bousfieldKanWeight (AsSmall.{u+1} Kᵒᵖᵒᵖ))
+      (HomotopyWeight.bousfieldKanExInfinityCoefficientUnit _
+        ((weightedDiagramUniverse.{u,u+1} Kᵒᵖᵒᵖ).obj
+          (strictBETotProbeRightHomDiagram A K F ((framedLimitFunctor A K).obj F))))).app (op ⦋0⦌))
+        (((bousfieldKanUniverseSectionsIso.{u,u+1} Kᵒᵖᵒᵖ
+          (strictBETotProbeRightHomDiagram A K F ((framedLimitFunctor A K).obj F))).hom).app (op ⦋0⦌)
+            (ULift.up (strictBETotUniversalBKRightHomPoint A K F))) =
+      HomotopyWeight.nativeWeightedPoint _ (strictBETotUniversalBKExInfinityCone A K F)
+```
+
+#### StrictDiagramTotProbeCosliceClassification（63行）
+
+```lean
+def strictBEAlgebraProbeCosliceClassificationIso (X : (operad A).Algebra) :
+    FunctorIso
+      ((SSet.uliftFunctor.{u+2,u+1}).map (strictBETotModelUpNerve A) ≫
+        FrameHom.rightFrameHammockCoherentDiagram
+          ((SimplicialLocalization.modelSourceFrameFamily (C
+
+def strictBETotDiagramProbeCosliceClassificationIso
+    (F : AsSmall.{u} SimplexCategory ⥤ (operad A).Algebra) (X : (operad A).Algebra) :
+    FunctorIso
+      ((SSet.uliftFunctor.{u+2,u+1}).map (strictBECosimplicialNerve A F) ≫
+        (SSet.uliftFunctor.{u+2,u+1}).map (strictBETotModelUpNerve A) ≫
+          FrameHom.rightFrameHammockCoherentDiagram
+            ((SimplicialLocalization.modelSourceFrameFamily (C
+```
+
+#### StrictDiagramTotProbeKanDiagram（53行）
+
+```lean
+def strictBETotProbeKanDiagram (F : K ⥤ (operad A).Algebra) (Y : (operad A).Algebra) :
+    AsSmall.{u+1} Kᵒᵖᵒᵖ ⥤ KanObject.{u+1}
+
+theorem strictBETotProbeKanDiagram_frame (F : K ⥤ (operad A).Algebra)
+    (Y : (operad A).Algebra) :
+    strictBETotProbeKanDiagram A K F Y = strictBETotProbeFrameIndex A K F ⋙
+      FrameHom.rightFrameHammockKanDiagram
+        ((SimplicialLocalization.modelSourceFrameFamily (C
+
+theorem strictBETotProbeKanDiagram_coherent (F : K ⥤ (operad A).Algebra)
+    (Y : (operad A).Algebra) :
+    kanDiagramCoherentNerve (strictBETotProbeKanDiagram A K F Y) =
+      (SSet.uliftFunctor.{u+2,u+1}).map (nerveMap (strictBETotProbeFrameIndex A K F)) ≫
+        FrameHom.rightFrameHammockCoherentDiagram
+          ((SimplicialLocalization.modelSourceFrameFamily (C
+```
+
+#### StrictDiagramTotBKClassification（74行）
+
+```lean
+def strictBETotUniverseDiagram (F : K ⥤ (operad A).Algebra) :
+    (SSet.uliftFunctor.{u+2,u+1}).obj (nerve (AsSmall.{u+1} Kᵒᵖᵒᵖ)) ⟶
+      (SSet.uliftFunctor.{u+2,u+1}).obj (CAlg_R A)
+
+def strictBETotKanDiagramCosliceIso (F : K ⥤ (operad A).Algebra)
+    (Y : (operad A).Algebra) :
+    FunctorIso (kanDiagramCoherentNerve (strictBETotProbeKanDiagram A K F Y))
+      (strictBETotUniverseDiagram A K F ≫
+        leftStraighteningInfinityDiagram (sliceUnderProjection (SSet.yonedaEquiv.symm
+          ((algebraCAlgSource A).app (Opposite.op ⦋0⦌) (nerveVertex Y)))))
+
+def strictBETotBKClassificationIso (F : K ⥤ (operad A).Algebra)
+    (Y : (operad A).Algebra) :
+    FunctorIso
+      (leftStraighteningCandidate ((weightedNerveKanEnriched (AsSmall.{u+1} Kᵒᵖᵒᵖ)).obj
+        ⟨strictBETotProbeKanDiagram A K F Y, trivial⟩).val.hom)
+      (strictBETotUniverseDiagram A K F ≫
+        leftStraighteningInfinityDiagram (sliceUnderProjection (SSet.yonedaEquiv.symm
+          ((algebraCAlgSource A).app (Opposite.op ⦋0⦌) (nerveVertex Y)))))
+```
+
+#### StrictDiagramTotBKNativeClassification（76行）
+
+```lean
+def strictBETotUniverseSourceDiagram (F : K ⥤ (operad A).Algebra) :
+    nerve (AsSmall.{u+1} Kᵒᵖᵒᵖ) ⟶ CAlg_R A
+
+theorem strictBETotUniverseSourceDiagram_lift (F : K ⥤ (operad A).Algebra) :
+    (SSet.uliftFunctor.{u+2,u+1}).map (strictBETotUniverseSourceDiagram A K F) =
+      strictBETotUniverseDiagram A K F
+
+def strictBETotBKNativeClassificationIso (F : K ⥤ (operad A).Algebra)
+    (Y : (operad A).Algebra) :
+    FunctorIso
+      (leftStraighteningInfinityDiagram (weightedNerveProjection
+        (strictBETotProbeKanDiagram A K F Y ⋙ kanObjectForget)))
+      (leftStraighteningInfinityDiagram (coherentConeProjection
+        (strictBETotUniverseSourceDiagram A K F)
+        ((algebraCAlgSource A).app (Opposite.op ⦋0⦌)
+          (SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex Y))))
+```
+
+## 177. R03b完了と元のΔ図式上の一つの指定native錐（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 4／全体 15（うち追加 3）。済みはR01・R03a・R03a.1・R03b。R02の全錐族、R03の極限性は未完了。
+
+§175の型のまま `classifiedLeftFibrationSectionsEquivalence` を証明した。元の二つの射影から共通の小さいunstraighteningへの底上の二本の比較を使い、元の切断空間の実際の同値へ戻した。BEでは、同じBK係数の切断から、元のCAlg図式と同じ頂点のnative錐の切断模型への同値を得た。
+
+この比較による**元の普遍BK点の像**を指定頂点の錐との既存全単射で戻して、実際のjoin錐を作った。左境界は元のTot頂点のYoneda射に等しく、同じ切断模型へ戻した点は元のBK点の同じ像に等しい。さらに元のAsSmall・二重反対の指定同型で元のΔ添字に戻した。同型に沿う全図式は `strictBECosimplicialDiagram A F` と厳密に等しく、戻したnative錐 `strictBETotNativeConeAt` の頂点も元のTot頂点そのものである。
+
+**まだ示していないもの**：この一図式の錐の全図式射についての族、元の標準脚の最終照合、元の同じ錐の極限性。そのため `strictBETotNativeConeAt` はR02の全族を完成と数える代用にしない。特にR03の判定のa・ha・heを省略せず、Uの極限保存から逆向きに元のBEの極限性を推論しない。
+
+### 177.1 検証と行数
+
+239：三本の対象ビルド10,639 jobs・終了0、小監査77本527宣言。240：二本の対象ビルド10,642 jobs・終了0、小監査79本539宣言。いずれも標準三公理のみ。実ハンドル35625・74011の終了0を確認、鍵は返却済み。個別検査で元の切断空間のKan性を局所に明示し、計算上限の変更なし。sorry・独自公理0。
+
+今回5本298行、累計79本・5044行（外枠15,000）。各200行以下。R03bの一般形・BEへの適用・元の指定BK点からの錐の組立ては199行で、§175の250〜500行の見込みを51〜301行下回った。添字移送と元のΔ上の錐の照合は別に99行の既存の構成の法則・証明分割で、追加項目には数えない。R03b以外の新しい項目は追加していない。⑤a・既存FramedLimit*・CAlgUnderlyingDerivedComparison・共通入口・公式監査・mainは変更していない。
+
+### 177.2 見込みの半分での追記
+
+§170で初期見込みの下端5,700行の半分を報告済み。今回、初期上端9,800行の半分4,900行も超えた。現在5044行。元の重み比較を作り直す必要はなくなり、元の指定BK点から実際の同じ頂点の錐へ到達した。一方、全族の高次自然性と標準脚の照合の部分には未実測の幅が残る。
+
+残りの見込み：R02〜R03の標準脚・全錐族・極限判定の接続1,000〜2,000行、R04〜R05の台のTotと局所化1,000〜1,800行、実現R06〜R10が2,800〜4,800行、R11〜R12が500〜900行。残り約5,300〜9,500行、累計約10,300〜14,500行。外枠15,000は維持するが上側の余裕は小さく、次の接続の実測で更新する。型・範囲を弱めたり、点ごとの錐を全族と読み替えたりしない。
+
+次は、同じ錐の脚の評価と、既存の全自然比較を使った全族の接続。R03bの切断の逆の選択だけで図式射について厳密な自然性が自動的に得られるとは主張しない。指定された全比較に戻して両境界を照合する。
+
+### 177.3 今回の型
+
+#### ClassifiedSectionsComparison（62行）
+
+```lean
+theorem simplicialSectionsMap_isQCatEquivalence_of_precompositionEquivalence
+    {E F B : SSet.{u}} [Quasicategory B]
+    (p : E ⟶ B) (q : F ⟶ B) [LeftFibration p] [LeftFibration q]
+    (f : E ⟶ F) (hf : f ≫ q = p) (ef : IsPrecompositionEquivalence f) :
+    IsQCatEquivalence (simplicialSectionsMap f hf)
+
+def classifiedLeftFibrationSectionsEquivalence
+    {E F B : SSet.{u}} [Quasicategory B]
+    (p : E ⟶ B) (q : F ⟶ B) [LeftFibration p] [LeftFibration q]
+    (η : FunctorIso (leftStraighteningInfinityDiagram p)
+      (leftStraighteningInfinityDiagram q)) :
+    QCatEquivalence (simplicialSections p) (simplicialSections q)
+```
+
+#### StrictDiagramTotBKNativeSections（55行）
+
+```lean
+def strictBETotBKNativeSectionsEquivalence (F : K ⥤ (operad A).Algebra)
+    (Y : (operad A).Algebra) :
+    QCatEquivalence
+      (bousfieldKanHolim (strictBETotProbeKanDiagram A K F Y ⋙ kanObjectForget))
+      (coherentConeSectionSpace (strictBETotUniverseSourceDiagram A K F)
+        ((algebraCAlgSource A).app (Opposite.op ⦋0⦌) (nerveVertex Y)))
+```
+
+#### StrictDiagramTotUniverseNativeCone（77行）
+
+```lean
+def strictBETotUniverseNativeConePoint (F : K ⥤ (operad A).Algebra) :
+    (coherentConeSectionSpace (strictBETotUniverseSourceDiagram A K F)
+      ((algebraCAlgSource A).app (Opposite.op ⦋0⦌)
+        (nerveVertex ((framedLimitFunctor A K).obj F)))) _⦋0⦌
+
+def strictBETotUniverseNativeCone (F : K ⥤ (operad A).Algebra) :
+    JoinCone (strictBETotUniverseSourceDiagram A K F)
+
+theorem strictBETotUniverseNativeCone_vertexMap (F : K ⥤ (operad A).Algebra) :
+    joinInl (Δ[0] : SSet.{u+1}) _ ≫ (strictBETotUniverseNativeCone A K F).val =
+      SSet.yonedaEquiv.symm ((algebraCAlgSource A).app (Opposite.op ⦋0⦌)
+        (nerveVertex ((framedLimitFunctor A K).obj F)))
+
+theorem strictBETotUniverseNativeCone_section (F : K ⥤ (operad A).Algebra) :
+    fixedVertexConeSpaceEquiv (strictBETotUniverseSourceDiagram A K F)
+      ((algebraCAlgSource A).app (Opposite.op ⦋0⦌)
+        (nerveVertex ((framedLimitFunctor A K).obj F)))
+      ⟨strictBETotUniverseNativeCone A K F, strictBETotUniverseNativeCone_vertexMap A K F⟩ =
+        strictBETotUniverseNativeConePoint A K F
+```
+
+#### StrictDiagramTotUniverseIndex（44行）
+
+```lean
+def strictBETotOpOpNerveIso (K : Type u) [SmallCategory K] : nerve Kᵒᵖᵒᵖ ≅ nerve K
+
+def strictBETotUniverseIndexIso (K : Type u) [SmallCategory K] :
+    nerve (AsSmall.{u+1} Kᵒᵖᵒᵖ) ≅ (SSet.uliftFunctor.{u+1,u}).obj (nerve K)
+
+theorem strictBETotUniverseSourceDiagram_index (A : Type u) [CommRing A]
+    (F : AsSmall.{u} SimplexCategory ⥤ (operad A).Algebra) :
+    strictBETotUniverseSourceDiagram A (AsSmall.{u} SimplexCategory) F =
+      (strictBETotUniverseIndexIso (AsSmall.{u} SimplexCategory)).hom ≫
+        strictBECosimplicialDiagram A F
+```
+
+#### StrictDiagramTotNativeConeAt（55行）
+
+```lean
+def strictBETotNativeConeAt (F : AsSmall.{u} SimplexCategory ⥤ (operad A).Algebra) :
+    JoinCone (strictBECosimplicialDiagram A F)
+
+theorem strictBETotNativeConeAt_vertexMap
+    (F : AsSmall.{u} SimplexCategory ⥤ (operad A).Algebra) :
+    joinInl (Δ[0] : SSet.{u+1}) _ ≫ (strictBETotNativeConeAt A F).val =
+      SSet.yonedaEquiv.symm ((algebraCAlgSource A).app (Opposite.op ⦋0⦌)
+        (nerveVertex ((framedLimitFunctor A (AsSmall.{u} SimplexCategory)).obj F)))
+
+theorem strictBETotNativeConeAt_vertex
+    (F : AsSmall.{u} SimplexCategory ⥤ (operad A).Algebra) :
+    (strictBETotNativeConeAt A F).vertex = (algebraCAlgSource A).app (Opposite.op ⦋0⦌)
+      (nerveVertex ((framedLimitFunctor A (AsSmall.{u} SimplexCategory)).obj F))
+```
+
+## 178. 指定分類変換を回収する全切断の三角形（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 4／全体 15（うち追加 3）。R02/R03の全錐族・標準脚・極限性は未完了。
+
+R03bの型は保ち、証明に用いる共通の復元への写像を明示した。従来の `smallLeftUnstraighteningComparisonOfFunctorIso` の公開仕様は底上の比較と前合成同値を与える。指定した分類同型の変換そのものを回収して次の評価を追跡するため、既存 `smallUnstraighteningFunctorHom η.hom` による同じ復元への合成を使用した。代表辺の類が元のη.homに等しい既存回収則を明示している。新しいBE模型・strictification・型の変更はない。
+
+`classifiedLeftFibrationSectionsEquivalence_triangle` は、同じ切断比較を標的の復元へ送ると、元の指定ηを使用する復元射による切断と全関手同型で一致することを証明する。元の後合成の同値の余単位を、同じ元の切断写像で前合成したもの。これをBEのBK切断同型とnative錐切断同型を通して運んだ `strictBETotBKNativeSections_reconstruction` も証明した。零単体・π₀の一致だけで代用していない。
+
+三本166行追加、R03b本体は67→62行。累計82本・5,205行。全て既存構成の回収・余単位・合成の法則と、R03bの証明分割で、追加の一覧項目は0。200行超の新規ファイルなし。main・⑤a・既存FramedLimit*・CAlgUnderlyingDerivedComparison・入口・公式監査は変更していない。修正したR03bはこの枝で追加した未取り込みの宣言であり、型は§175のまま。
+
+検証：依存一本の対象ビルド241は2,561 jobsで終了0。242は新規共通二本と直接importerの指定native錐を再ビルドして10,648 jobs・終了0、小監査81本548宣言。243はBEの回収三角形一本を対象ビルドして10,645 jobs・終了0、小監査82本568宣言。全て標準三公理のみ、sorry・独自公理0。実ハンドル93037・5489・31459の終了0を確認し、鍵は返却済み。既存の回収APIの未ビルド依存で止まった個別検査は成功に数えず、241の後に個別検査と対象ビルドを通した。計算上限は変更していない。
+
+次は元の切断のfiber評価と後合成の厳密な自然性を使い、同じ共通の復元のfiberでこの全三角形を評価する。まだ標準脚そのものとの一致や全図式射の錐族を得たとは数えない。
+
+### 178.1 今回の法則・証明分割の型
+
+#### ClassifiedFibrationTransport（49行）
+
+```lean
+def classifiedFibrationTransport :
+    E ⟶ smallLeftUnstraightening (leftStraighteningInfinityDiagram q)
+
+theorem classifiedFibrationTransport_projection :
+    classifiedFibrationTransport p q η ≫
+      smallLeftUnstraighteningProjection (leftStraighteningInfinityDiagram q) = p
+
+theorem classifiedFibrationTransport_isPrecompositionEquivalence :
+    IsPrecompositionEquivalence (classifiedFibrationTransport p q η)
+
+theorem classifiedFibrationTransport_edge_hom :
+    SSet.Truncated.HomotopyCategory.homMk
+      (smallUnstraighteningHomEdge η.hom).toTruncated = η.hom
+```
+
+#### ClassifiedSectionsTriangle（45行）
+
+```lean
+def classifiedLeftFibrationSectionsEquivalence_triangle :
+    FunctorIso
+      ((classifiedLeftFibrationSectionsEquivalence p q η).hom ≫
+        simplicialSectionsMap (leftStraighteningInfinityReconstruction q)
+          (leftStraighteningInfinityReconstruction_projection q))
+      (simplicialSectionsMap (classifiedFibrationTransport p q η)
+        (classifiedFibrationTransport_projection p q η))
+```
+
+#### StrictDiagramTotNativeSectionsRecovery（72行）
+
+```lean
+def strictBETotBKNativeSections_reconstruction
+    (F : K ⥤ (operad A).Algebra) (Y : (operad A).Algebra) :
+    let H := strictBETotProbeKanDiagram A K F Y ⋙ kanObjectForget
+    let p := weightedNerveProjection H
+    let q := coherentConeProjection (strictBETotUniverseSourceDiagram A K F)
+      ((algebraCAlgSource A).app (Opposite.op ⦋0⦌) (nerveVertex Y))
+    let η := strictBETotBKNativeClassificationIso A K F Y
+    FunctorIso
+      (((strictBETotBKNativeSectionsEquivalence A K F Y).hom ≫
+        (coherentConeSectionsIso (strictBETotUniverseSourceDiagram A K F)
+          ((algebraCAlgSource A).app (Opposite.op ⦋0⦌) (nerveVertex Y))).inv) ≫
+            simplicialSectionsMap (leftStraighteningInfinityReconstruction q)
+              (leftStraighteningInfinityReconstruction_projection q))
+      ((bousfieldKanSectionsIso H).hom ≫
+        simplicialSectionsMap (classifiedFibrationTransport p q η)
+          (classifiedFibrationTransport_projection p q η))
+```
+
+## 179. 同じ全切断比較の各次数のfiberでの評価（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 4／全体 15（うち追加 3）。R02/R03の標準脚・全錐族・極限性は未完了。
+
+元の普遍切断を底の指定頂点で制限し、同じ射影のfiberへ持ち上げる `simplicialSectionsFiberEvaluation` を構成した。充填性を仮定せず、元の底上の後合成とこの評価が厳密に可換であることを示した。既存の普遍評価とfiberへの持ち上げの評価・自然性の法則である。
+
+これにより、§178の同じ全切断三角形は各fiberの間の全単体的写像についても関手同型で可換となる。BEへの適用 `strictBETotBKNativeSections_fiber_reconstruction` では、元のBK係数・同じ元の図式・同じ頂点・同じ分類同型を指定した。元のBK切断の像を、native錐の切断へ送ってから共通の復元のfiberへ送る写像と、同じ元の指定分類変換を使って先に共通の復元へ送る写像を全次数で比較する。π₀・零単体だけの比較で代用していない。
+
+検証：244は二本の対象ビルド3,122 jobs・終了0、小監査84本580宣言。245はBEの一本の対象ビルド10,647 jobs・終了0、小監査85本599宣言。いずれも標準三公理のみ、実ハンドル15467・13905の終了0を確認し鍵は返却済み。個別検査で標準単体記法と結合済みの自然性を明示した後に対象ビルドを行った。sorry・独自公理0、計算上限の変更なし。
+
+今回三本177行、累計85本・5,382行。全て既存の評価・後合成・余単位の法則で、追加の一覧項目は0。各200行以下。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainの変更なし。これは標準脚そのものや全図式射のnative錐族・極限性の完了ではない。
+
+### 179.1 次の元の係数での照合
+
+weighted nerveのfiber同型で元の係数H.obj iへ戻し、同じBK重みの恒等射の零単体での評価と合わせる。次は元の構成の評価・単位則として以下を検査する（見込み100〜250行）。まだ証明・検証済みとは数えない。
+
+```lean
+universe u
+open CategoryTheory SSet
+open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits
+open SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories
+open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions
+open scoped Simplicial
+variable (I : Type u) [SmallCategory I] (H : I ⥤ SSet.{u})
+
+-- namespace SerrePositivity.EInfinity.HomotopyWeight
+-- 元の指定sの零単体を、元の同じ係数へ厳密に戻す。
+theorem bousfieldKanSectionsIso_nativeWeightedPoint_fiber
+    (s : bousfieldKanWeight I ⟶ H) (i : I) :
+    ((weightedNerveFiberIso H i).inv.app (Opposite.op ⦋0⦌))
+      ((simplicialSectionsFiberEvaluation (weightedNerveProjection H) (nerveVertex i)).app
+        (Opposite.op ⦋0⦌)
+        (((bousfieldKanSectionsIso H).hom.app (Opposite.op ⦋0⦌))
+          (nativeWeightedPoint I s))) =
+      (s.app i).app (Opposite.op ⦋0⦌) (nerveVertex (Over.mk (𝟙 i)))
+```
+
+その後、BEの同じEx∞係数単位と指定BK重み比較へ特殊化し、元の標準脚への正規化を追う。ここでも、R03bの切断同値の逆の選択だけから全図式射の厳密な自然性が自動で出るとは主張しない。
+
+### 179.2 今回の法則の型
+
+#### SectionFiberEvaluation（48行）
+
+```lean
+def simplicialSectionsFiberEvaluation (p : E ⟶ B) (b : B _⦋0⦌) :
+    simplicialSections p ⟶ vertexFiber p b
+
+@[reassoc] theorem simplicialSectionsFiberEvaluation_ι (p : E ⟶ B) (b : B _⦋0⦌) :
+    simplicialSectionsFiberEvaluation p b ≫ vertexFiberι p b =
+      lift (SSet.const b) (𝟙 (simplicialSections p)) ≫ simplicialSectionsEvaluation p
+
+theorem simplicialSectionsFiberEvaluation_naturality
+    (p : E ⟶ B) (q : F ⟶ B) (f : E ⟶ F) (hf : f ≫ q = p) (b : B _⦋0⦌) :
+    simplicialSectionsMap f hf ≫ simplicialSectionsFiberEvaluation q b =
+      simplicialSectionsFiberEvaluation p b ≫ vertexFiberMap p q f hf b
+```
+
+#### ClassifiedSectionsFiberTriangle（50行）
+
+```lean
+def classifiedLeftFibrationSectionsEquivalence_fiber_triangle (b : B _⦋0⦌) :
+    let r := smallLeftUnstraighteningProjection (leftStraighteningInfinityDiagram q)
+    FunctorIso
+      ((classifiedLeftFibrationSectionsEquivalence p q η).hom ≫
+        simplicialSectionsFiberEvaluation q b ≫
+          vertexFiberMap q r (leftStraighteningInfinityReconstruction q)
+            (leftStraighteningInfinityReconstruction_projection q) b)
+      (simplicialSectionsFiberEvaluation p b ≫
+        vertexFiberMap p r (classifiedFibrationTransport p q η)
+          (classifiedFibrationTransport_projection p q η) b)
+```
+
+#### StrictDiagramTotNativeFiberRecovery（79行）
+
+```lean
+def strictBETotBKNativeSections_fiber_reconstruction
+    (F : K ⥤ (operad A).Algebra) (Y : (operad A).Algebra)
+    (b : (nerve (AsSmall.{u+1} Kᵒᵖᵒᵖ)) _⦋0⦌) :
+    let H := strictBETotProbeKanDiagram A K F Y ⋙ kanObjectForget
+    let p := weightedNerveProjection H
+    let q := coherentConeProjection (strictBETotUniverseSourceDiagram A K F)
+      ((algebraCAlgSource A).app (Opposite.op ⦋0⦌) (nerveVertex Y))
+    let r := smallLeftUnstraighteningProjection (leftStraighteningInfinityDiagram q)
+    let η := strictBETotBKNativeClassificationIso A K F Y
+    FunctorIso
+      (((strictBETotBKNativeSectionsEquivalence A K F Y).hom ≫
+        (coherentConeSectionsIso (strictBETotUniverseSourceDiagram A K F)
+          ((algebraCAlgSource A).app (Opposite.op ⦋0⦌) (nerveVertex Y))).inv) ≫
+            simplicialSectionsFiberEvaluation q b ≫
+              vertexFiberMap q r (leftStraighteningInfinityReconstruction q)
+                (leftStraighteningInfinityReconstruction_projection q) b)
+      ((bousfieldKanSectionsIso H).hom ≫ simplicialSectionsFiberEvaluation p b ≫
+        vertexFiberMap p r (classifiedFibrationTransport p q η)
+          (classifiedFibrationTransport_projection p q η) b)
+```
+
+## 180. 元のBK指定点の係数への厳密な回収と宇宙変更・係数単位（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 4／全体 15（うち追加 3）。R02/R03の標準脚・全錐族・極限性は未完了。
+
+§179.1の型のまま `bousfieldKanSectionsIso_nativeWeightedPoint_fiber` を証明した。元の指定BK点を切断模型に送り、元の次数のfiberで評価して元の係数へ戻した値は、元の自然変換の恒等射のBK零単体での値に**厳密に等しい**。Kan性・モデル構造の追加なし。
+
+証明は、元のliftとBK切断比較を合成した普遍評価の等式、零次のweighted nerveの初区間の係数計算、元のfiber同型による打ち消しに分割した。不透明なendを展開せず、元の普遍評価・パラメーター自然性・Yonedaの評価・直積の第一射影の法則を使った。
+
+さらに同じAsSmall.down・ULiftで宇宙変更した自然変換と、同じEx∞係数単位を合成した自然変換についても、fiberから回収した値が元の恒等射の値の指定像に等しいことを証明した。BE Totで用いた同じ `strictBETotUniversalBKExInfinityCone` に適用するための一般の係数移送則で、新しい係数・重み・単位を選んでいない。
+
+検証：246は一本の対象ビルド2,606 jobs・終了0、小監査86本602宣言。247は一本の対象ビルド3,376 jobs・終了0、小監査87本605宣言。標準三公理のみ。実ハンドル20536・21339の終了0を確認し、鍵は返却済み。個別検査で零次の係数計算を元の自然変換の型で保持し、AsSmallのup/downを明示してから対象ビルドを通した。sorry・独自公理0、計算上限の変更なし。
+
+二本164行追加、累計87本・5,546行。§179.1の元のfiber回収則は99行で、100〜250行の見込みを1〜151行下回った。宇宙変更と係数単位の評価則は別に65行。全て既存構成の評価・単位・係数移送の法則で、今回の追加の一覧項目は0。200行超の新規ファイルなし。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainの変更なし。
+
+次は§179の共通の復元のfiberでの全三角形から、元のnative錐のfiberでの比較へ戻す。これはまだ元の標準脚の最終一致・全錐族・極限性の完成ではない。
+
+### 180.1 今回の法則の型
+
+#### BousfieldKanNativeFiberPoint（99行）
+
+```lean
+theorem bousfieldKanSectionsMap_lift_evaluation {A : SSet.{u}}
+    (η : bousfieldKanWeight I ⊗ (Functor.const I).obj A ⟶ H) :
+    (nerve I ◁ (weightedSectionsLift η ≫ bousfieldKanSectionsMap H)) ≫
+      simplicialSectionsEvaluation (weightedNerveProjection H) =
+        weightedNerveSectionFromTransform η
+
+theorem weightedNerveSectionFromTransform_zero_point
+    (s : bousfieldKanWeight I ⟶ H) (i : I) :
+    (weightedNerveSectionFromTransform
+      (fst (bousfieldKanWeight I) ((Functor.const I).obj (Δ[0] : SSet.{u})) ≫ s)).app
+        (Opposite.op ⦋0⦌) (nerveVertex i, SSet.yonedaEquiv (𝟙 (Δ[0] : SSet.{u}))) =
+    (weightedNerveConstantLift H i).app (Opposite.op ⦋0⦌)
+      ((s.app i).app (Opposite.op ⦋0⦌) (nerveVertex (Over.mk (𝟙 i))))
+
+theorem bousfieldKanSectionsIso_nativeWeightedPoint_fiber
+    (s : bousfieldKanWeight I ⟶ H) (i : I) :
+    ((weightedNerveFiberIso H i).inv.app (Opposite.op ⦋0⦌))
+      ((simplicialSectionsFiberEvaluation (weightedNerveProjection H) (nerveVertex i)).app
+        (Opposite.op ⦋0⦌)
+        (((bousfieldKanSectionsIso H).hom.app (Opposite.op ⦋0⦌))
+          (nativeWeightedPoint I s))) =
+      (s.app i).app (Opposite.op ⦋0⦌) (nerveVertex (Over.mk (𝟙 i)))
+```
+
+#### BousfieldKanUniverseCoefficientPoint（65行）
+
+```lean
+theorem bousfieldKanUniverseCone_identityVertex (s : bousfieldKanWeight I ⟶ H) (i : I) :
+    ((bousfieldKanUniverseCone.{u,v} I s).app (AsSmall.up.obj i)).app (Opposite.op ⦋0⦌)
+      (nerveVertex (Over.mk (𝟙 (((AsSmall.up : I ⥤ AsSmall.{v} I).obj i))))) =
+        ULift.up ((s.app i).app (Opposite.op ⦋0⦌) (nerveVertex (Over.mk (𝟙 i))))
+
+theorem bousfieldKanUniverseExInfinityCone_identityVertex
+    (s : bousfieldKanWeight I ⟶ H) (i : I) :
+    ((bousfieldKanUniverseCone.{u,v} I s ≫ bousfieldKanExInfinityCoefficientUnit _ _).app
+      (AsSmall.up.obj i)).app (Opposite.op ⦋0⦌)
+        (nerveVertex (Over.mk (𝟙 (((AsSmall.up : I ⥤ AsSmall.{v} I).obj i))))) =
+      (exInfinityUnit.app ((SSet.uliftFunctor.{max u v,u}).obj (H.obj i))).app (Opposite.op ⦋0⦌)
+        (ULift.up ((s.app i).app (Opposite.op ⦋0⦌) (nerveVertex (Over.mk (𝟙 i)))))
+
+theorem bousfieldKanUniverseExInfinityPoint_fiber
+    (s : bousfieldKanWeight I ⟶ H) (i : I) :
+    let H' := (weightedDiagramUniverse.{u,v} I).obj H ⋙ exInfinity
+    let s' := bousfieldKanUniverseCone.{u,v} I s ≫ bousfieldKanExInfinityCoefficientUnit _ _
+    ((weightedNerveFiberIso H' (AsSmall.up.obj i)).inv.app (Opposite.op ⦋0⦌))
+      ((simplicialSectionsFiberEvaluation (weightedNerveProjection H')
+        (nerveVertex (AsSmall.up.obj i))).app (Opposite.op ⦋0⦌)
+          (((bousfieldKanSectionsIso H').hom.app (Opposite.op ⦋0⦌))
+            (nativeWeightedPoint (AsSmall.{v} I) s'))) =
+      (exInfinityUnit.app ((SSet.uliftFunctor.{max u v,u}).obj (H.obj i))).app (Opposite.op ⦋0⦌)
+        (ULift.up ((s.app i).app (Opposite.op ⦋0⦌) (nerveVertex (Over.mk (𝟙 i)))))
+```
+
+## 181. 元のfiberへ戻す全切断比較 R03c の追加（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 4／全体 16（うち追加 4）。
+
+IS-W2 §19の、同じまとまり・中間定理一つの見込み1,500行以下の枠で、R02〜R03の中間項目 **R03c** を追加する。§179の三角形は共通の復元のfiberを標的とする。元のnative錐のfiberで同じ脚を比較するため、この共通の復元をfiberの同値で消し、元の切断比較の各次数での作用を保つ。
+
+```lean
+universe u
+open CategoryTheory SSet
+open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
+open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations
+open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations
+open SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations
+open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits
+open scoped Simplicial
+
+-- 元の射影の切断・fiberの既存Kan性を局所インスタンスにする。
+theorem exists_classifiedFibrationFiberComparison
+    {E F B : SSet.{u}} [Quasicategory B]
+    (p : E ⟶ B) (q : F ⟶ B) [LeftFibration p] [LeftFibration q]
+    (η : FunctorIso (leftStraighteningInfinityDiagram p)
+      (leftStraighteningInfinityDiagram q)) (b : B _⦋0⦌) :
+    ∃ e : QCatEquivalence (vertexFiber p b) (vertexFiber q b),
+      Nonempty (FunctorIso
+        ((classifiedLeftFibrationSectionsEquivalence p q η).hom ≫
+          simplicialSectionsFiberEvaluation q b)
+        (simplicialSectionsFiberEvaluation p b ≫ e.hom))
+```
+
+見込み140〜280行：元の二本の復元のfiber同値の合成40〜80行、§179の全三角形を同じ同値の逆で後合成して余単位で消す40〜80行、BEへの特殊化と同じBK指定点の像の照合60〜120行。既存 `CartesianFibrations.vertexFiberMap_isQCatEquivalence_of_precompositionEquivalence` を使う。fibersが同値であるだけで終わらず、元の全切断比較との同じ四角形を型に含める。新しいBE模型・重み・係数・strictificationや⑤aの欄の型に触れない。
+
+この項目を足してそのまま証明へ進む。全図式射の錐族や極限性を完成とは数えない。見込みが1,500行を超える場合・別のまとまりが必要な場合・外枠15,000行に届く場合は、検証済みを保存して報告する。
+
+## 182. R03c完了：元のnative錐のfiberと元のraw BK係数の指定点（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 5／全体 16（うち追加 4）。済みはR01・R03a・R03a.1・R03b・R03c。R02/R03の標準脚・全錐族・極限性は未完了。
+
+§181の型のまま `exists_classifiedFibrationFiberComparison` を証明した。同じ分類変換を使用する共通の復元への二本の実写像を各fiberで同値にし、一方の逆で戻した。元の切断比較の全三角形も同じ逆で後合成し、余単位で消して、元の二つのfiberの同値と**元の全切断比較の同じ四角形**を得た。fiberが同値であるだけで終わらせていない。
+
+BEでは、元のweighted nerveのfiber同型を合成して、元のBK係数から同じ元の図式・頂点のnative錐のfiberへの `strictBETotNativeFiberEquivalence` を得た。全切断比較との四角形、同じ普遍BK指定点の像も照合した。さらに§180の係数移送の評価則を使い、このnative錐のfiberの指定点と、元のraw BK係数の恒等射での値をULift・Ex∞単位で送った指定像との `VertexIso` を得た。
+
+最後の点の比較は `VertexIso` であり、元の二つの零単体が文字どおり等しいと主張していない。一方、§180の係数回収と宇宙変更・単位の値の計算は厳密な等式である。両者を区別する。これを元の標準脚の最終同定や全図式射の錐族、同じ錐の極限性の完了と数えない。
+
+### 182.1 検証と実測
+
+一般形とBEへの適用を合わせて二本224行。§181の140〜280行の見込みの範囲内（下端より84行増、上端より56行減）。個別検査の後、248で二本の対象ビルド10,651 jobs・終了0、小監査89本651宣言・標準三公理のみ。実ハンドル39993の終了0を確認し、鍵は返却済み。sorry・独自公理0、計算上限の変更なし。累計89本・5,770行、外枠15,000行。各200行以下。
+
+追加の一覧項目は§181のR03cだけで、ここに含まれるfiber同値の合成・余単位の四角形・同じBK点での評価・raw係数への正規化はその証明分割または既存構成の法則。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainの変更なし。
+
+### 182.2 次の接続の注意
+
+元のnative錐の脚を、元のraw frame Homと指定BK重み比較の評価へ戻す接続が具体化した。次は既存のframeから正本Homへの単位の正規化と、元の指定weighted普遍錐の評価に合わせる。元の一点重みへの比較とBK比較の可換式だけから、全ての零次の選択が文字どおり同じだとは推論しない。
+
+極限判定のa・haは、既存 `Project.HomotopyDiagramComparison.coherentConeSourceFamily` と `coherentConeSourceFamily_evaluation` が、同じ錐・同じ頂点について候補を与える。CAlgの既存のcoherent nerve表示との照合はこれからであり、ここでは特殊化済みとは数えない。残るheは、この同じ族の制限写像と元のweighted Hom比較の同値性を結ぶこと。固定した始域ごとの全標的のHom比較を、始域にも自然な全比較と自動的に読み替えない。必要な始域の作用・元のframeの単位との両立を既存APIから明示して進める。
+
+### 182.3 今回の型
+
+#### ClassifiedFibrationFiberComparison（80行）
+
+```lean
+def classifiedFibrationFiberEquivalence (b : B _⦋0⦌) :
+    QCatEquivalence (vertexFiber p b) (vertexFiber q b)
+
+def classifiedFibrationFiberEquivalence_sectionsIso (b : B _⦋0⦌) :
+    FunctorIso
+      ((classifiedLeftFibrationSectionsEquivalence p q η).hom ≫
+        simplicialSectionsFiberEvaluation q b)
+      (simplicialSectionsFiberEvaluation p b ≫ (classifiedFibrationFiberEquivalence p q η b).hom)
+
+theorem exists_classifiedFibrationFiberComparison (b : B _⦋0⦌) :
+    ∃ e : QCatEquivalence (vertexFiber p b) (vertexFiber q b),
+      Nonempty (FunctorIso
+        ((classifiedLeftFibrationSectionsEquivalence p q η).hom ≫
+          simplicialSectionsFiberEvaluation q b)
+        (simplicialSectionsFiberEvaluation p b ≫ e.hom))
+```
+
+#### StrictDiagramTotNativeFiberComparison（144行）
+
+```lean
+def strictBETotNativeFiberEquivalence (F : K ⥤ (operad A).Algebra)
+    (Y : (operad A).Algebra) (i : AsSmall.{u+1} Kᵒᵖᵒᵖ) :
+    QCatEquivalence ((strictBETotProbeKanDiagram A K F Y ⋙ kanObjectForget).obj i)
+      (vertexFiber (coherentConeProjection (strictBETotUniverseSourceDiagram A K F)
+        ((algebraCAlgSource A).app (Opposite.op ⦋0⦌) (nerveVertex Y))) (nerveVertex i))
+
+def strictBETotNativeFiberEquivalence_sectionsIso (F : K ⥤ (operad A).Algebra)
+    (Y : (operad A).Algebra) (i : AsSmall.{u+1} Kᵒᵖᵒᵖ) :
+    let H := strictBETotProbeKanDiagram A K F Y ⋙ kanObjectForget
+    FunctorIso
+      ((strictBETotBKNativeSectionsEquivalence A K F Y).hom ≫
+        (coherentConeSectionsIso (strictBETotUniverseSourceDiagram A K F)
+          ((algebraCAlgSource A).app (Opposite.op ⦋0⦌) (nerveVertex Y))).inv ≫
+            simplicialSectionsFiberEvaluation _ (nerveVertex i))
+      ((bousfieldKanSectionsIso H).hom ≫
+        simplicialSectionsFiberEvaluation (weightedNerveProjection H) (nerveVertex i) ≫
+          (weightedNerveFiberIso H i).inv ≫ (strictBETotNativeFiberEquivalence A K F Y i).hom)
+
+def strictBETotNativeFiberEquivalence_universalPointIso
+    (F : K ⥤ (operad A).Algebra) (i : AsSmall.{u+1} Kᵒᵖᵒᵖ) :
+    VertexIso
+      ((simplicialSectionsFiberEvaluation _ (nerveVertex i)).app (Opposite.op ⦋0⦌)
+        (((coherentConeSectionsIso (strictBETotUniverseSourceDiagram A K F)
+          ((algebraCAlgSource A).app (Opposite.op ⦋0⦌)
+            (nerveVertex ((framedLimitFunctor A K).obj F)))).inv.app (Opposite.op ⦋0⦌))
+              (strictBETotUniverseNativeConePoint A K F)))
+      (((strictBETotNativeFiberEquivalence A K F ((framedLimitFunctor A K).obj F) i).hom.app
+        (Opposite.op ⦋0⦌)) (((strictBETotUniversalBKExInfinityCone A K F).app i).app
+          (Opposite.op ⦋0⦌) (nerveVertex (Over.mk (𝟙 i)))))
+
+def strictBETotNativeFiberEquivalence_rawPointIso
+    (F : K ⥤ (operad A).Algebra) (i : Kᵒᵖᵒᵖ) :
+    let Y := (framedLimitFunctor A K).obj F
+    let j : AsSmall.{u+1} Kᵒᵖᵒᵖ := AsSmall.up.obj i
+    VertexIso
+      ((simplicialSectionsFiberEvaluation _ (nerveVertex j)).app (Opposite.op ⦋0⦌)
+        (((coherentConeSectionsIso (strictBETotUniverseSourceDiagram A K F)
+          ((algebraCAlgSource A).app (Opposite.op ⦋0⦌) (nerveVertex Y))).inv.app
+            (Opposite.op ⦋0⦌)) (strictBETotUniverseNativeConePoint A K F)))
+      (((strictBETotNativeFiberEquivalence A K F Y j).hom.app (Opposite.op ⦋0⦌))
+        ((exInfinityUnit.app ((SSet.uliftFunctor.{u+1,u}).obj
+          ((strictBETotProbeRightHomDiagram A K F Y).obj i))).app (Opposite.op ⦋0⦌)
+            (ULift.up (((strictBETotUniversalBKRightHomCone A K F).app i).app
+              (Opposite.op ⦋0⦌) (nerveVertex (Over.mk (𝟙 i)))))))
+```
+
+
+## 183. 元の同じnative錐の始域族aと頂点評価ha（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 5／全体 16（うち追加 4）。R03のhe・極限性、R02の全錐族は未完了。
+
+既存のCAlgの頂点全単射で、元の同じnative錐の頂点を表示する対象を指定し、その頂点の厳密な等式を証明した。この対象と同じ元の錐に、既存 `coherentConeSourceFamily` と `coherentConeSourceFamily_evaluation` を代入して、全始域Homの族aと標準coslice fiber比較に一致する頂点評価haを接続した。
+
+`strictBETotNativeConeAt_isLimit_of_sourceRestriction` は**残りのheを仮定した既存判定の特殊化**であり、R03の無条件の極限性を証明したとは数えない。同じ族の制限写像と、元のweighted Homの同値を比較してheを閉じる仕事が残る。既存のCAlgSimplicialCategory・cAlgVertexEquivだけを使い、新しいCAlg模型や代表の選択を作っていない。
+
+検証：249で新規一本の対象ビルド10,662 jobs・終了0、小監査90本659宣言、標準三公理のみ。実ハンドル45305の終了0を確認、鍵は返却済み。sorry・独自公理0、計算上限の変更なし。
+
+新規一本75行、累計90本・5,845行。既存の始域族と判定の特殊化・証明分割で、一覧への追加は0。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。
+
+文書の補正：型の抽出で `let H := ...` の代入を宣言本体の始まりと誤認し、一部の再掲が `let H` の途中で切れていた。§177.3・§178.1・§179.2・§180.1・§182.3を現行のソースの完全な型から再掲し直した。これらの再掲のファイル行数は現行版の値で、各節本文の当時の検証・実測とは区別する。数学的な型やこれまでの監査結果は変更していない。
+
+次は元のright frame Homの始域作用を全関手として明示し、元のprobeつき係数の同型の始域自然性を照合する。固定始域ごとの全標的比較を、始域にも自然と仮定してheを閉じない。
+
+### 183.1 今回の既存構成の特殊化の型
+
+```lean
+def strictBETotNativeConeSourceObject
+    (F : AsSmall.{u} SimplexCategory ⥤ (operad A).Algebra) : CAlgSimplicialCategory A
+
+theorem strictBETotNativeConeSourceObject_vertex
+    (F : AsSmall.{u} SimplexCategory ⥤ (operad A).Algebra) :
+    (strictBETotNativeConeAt A F).vertex =
+      coherentNerveVertex (strictBETotNativeConeSourceObject A F)
+
+def strictBETotNativeConeSourceFamily
+    (F : AsSmall.{u} SimplexCategory ⥤ (operad A).Algebra) (X : CAlgSimplicialCategory A) :
+    (SSet.uliftFunctor.{u+1,u+1}).obj
+      (SimplicialCategory.sHom X (strictBETotNativeConeSourceObject A F)).op ⟶
+        coherentConeSectionSpace (strictBETotNativeConeAt A F).val (coherentNerveVertex X)
+
+theorem strictBETotNativeConeSourceFamily_evaluation
+    (F : AsSmall.{u} SimplexCategory ⥤ (operad A).Algebra) (X : CAlgSimplicialCategory A) :
+    strictBETotNativeConeSourceFamily A F X ≫
+      coherentConeApexEvaluation (strictBETotNativeConeAt A F) (strictBETotNativeConeSourceObject A F)
+        (strictBETotNativeConeSourceObject_vertex A F) X =
+      coherentCosliceFiberComparison X (strictBETotNativeConeSourceObject A F)
+
+theorem strictBETotNativeConeAt_isLimit_of_sourceRestriction
+    (F : AsSmall.{u} SimplexCategory ⥤ (operad A).Algebra)
+    (he : ∀ X : CAlgSimplicialCategory A,
+      IsSimplicialHomotopyEquivalence (strictBETotNativeConeSourceFamily A F X ≫
+        coneSectionRestriction (strictBETotNativeConeAt A F) (coherentNerveVertex X))) :
+    IsLimitCone (strictBETotNativeConeAt A F)
+```
+
+## 184. 元のright frame Homの全始域作用と普遍BK錐の射での正規化（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 5／全体 16（うち追加 4）。R03のhe・無条件の極限性、R02の全錐族は未完了。
+
+既存のcoyonedaを同じright frame図式へwhiskeringすることで、`rightFrameHomBifunctor` を二変数の全関手としてまとめた。固定始域での値は元のrightFrameHomそのもの。始域の作用は既存 `MixedFrame.rightSourceMap` の前合成そのものであり、元のrightFrameHomUnitもこの始域の作用について厳密に自然である。
+
+BEでは既存probe関手を前合成し、元のraw Hom係数とweighted Hom係数を全始域で束ねた。元の `strictBETotProbeCoefficientsIso` は全始域の自然同型としても両立する。元のprobe・frame・係数・射を変更していない。
+
+さらに元の射 f : Y → Tot(F) による同じ普遍BK錐の始域作用を、元のweighted Hom同値の同じ射 `framedLimitProbeComparison A Y ≫ f` の像へ正規化した。`strictBETotBKProbeArrowCone_comparison` は元の重み・添字図式間の**自然変換の厳密な等式**。係数同型の始域自然性、既存weightedCotensorHomEquiv_precomp、既存probe比較自然変換の自然性を合成した。新しい数学の項目ではなく、既存構成の係数移送・単位・前合成の法則である。
+
+### 184.1 検証と実測
+
+250：再利用する既存MixedFrameSource一本の依存ビルド1,723 jobs・終了0。251：新規二本と既存FramedLimitComparisonの依存を対象ビルドして5,113 jobs・終了0、小監査92本673宣言。252：普遍BK錐の始域正規化一本を対象ビルドして5,114 jobs・終了0、小監査93本678宣言。全て標準三公理のみ、実ハンドル43038・47206・83040の終了0を確認し、鍵は返却済み。sorry・独自公理0、計算上限の変更なし。
+
+新規三本178行、累計93本・6,023行（外枠15,000）。各200行以下。既存構成の全係数の表示と自然性・単位則なので、追加の一覧項目は0。既存FramedLimit*はimportで使うだけで変更していない。CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainも変更していない。
+
+個別検査では未ビルドの既存API依存を250・251でビルドし、probe自然変換の成分を一般の対象で先に照合した。計算対象の不透明なendを展開して計算上限を上げる方法は取っていない。
+
+### 184.2 まだ必要なcoherentな接続
+
+ここで示したのは元の通常圏の**全始域関手と厳密な自然変換の法則**であり、固定始域ごとの全Hom∞比較を始域にも自然とした結果ではない。nativeな標準族aの制限と元のweighted Hom同値を結ぶheには、同じ単位で正規化された両変数の比較か、それと同等な全パラメーターの評価則が必要である。
+
+次の紙の確認では、今回の二変数raw Hom関手を同じAsSmall・ULift・Ex∞でKan図式にした全coherent入力と、同じCAlg源の二変数 `twistedArrowHomInfinity` の入力を同じ底で揃える。固定始域の制限が既存 `strictBETotProbeFrameHomInfinityIso` とどう一致するかも型に含めて検討する。点ごとのHom同値やπ₀の自然性だけで、全joint比較やheを閉じたと主張しない。新しい中間定理が要ると分かった段階で、§19に従い実際の型と1,500行以内かどうかの見込みを記録する。
+
+### 184.3 今回の既存構成の法則の型
+
+#### RightFrameHomBifunctor（56行）
+
+```lean
+def rightFrameHomBifunctor : Cᵒᵖ ⥤ C ⥤ SSet.{v}
+
+theorem rightFrameHomBifunctor_obj (X : C) :
+    (rightFrameHomBifunctor r).obj (Opposite.op X) = rightFrameHom r X
+
+theorem rightFrameHomBifunctor_map {X Y : C} (f : X ⟶ Y) :
+    (rightFrameHomBifunctor r).map f.op =
+      Functor.whiskerLeft (rightFrameDiagram r) (MixedFrame.rightSourceMap f)
+
+def ordinaryHomBifunctor : Cᵒᵖ ⥤ C ⥤ SSet.{v}
+
+theorem rightFrameHomUnit_source {X Y : C} (f : X ⟶ Y) :
+    ordinaryHomBifunctor.map f.op ≫ rightFrameHomUnit r X =
+      rightFrameHomUnit r Y ≫ (rightFrameHomBifunctor r).map f.op
+```
+
+#### StrictDiagramTotProbeSourceFunctor（60行）
+
+```lean
+def strictBETotProbeRightHomBifunctor :
+    (operad A).Algebraᵒᵖ ⥤ (operad A).Algebra ⥤ SSet.{u}
+
+def strictBETotProbeRightHomSourceFunctor (F : K ⥤ (operad A).Algebra) :
+    (operad A).Algebraᵒᵖ ⥤ Kᵒᵖᵒᵖ ⥤ SSet.{u}
+
+theorem strictBETotProbeRightHomSourceFunctor_obj (F : K ⥤ (operad A).Algebra)
+    (Y : (operad A).Algebra) :
+    (strictBETotProbeRightHomSourceFunctor A K F).obj (Opposite.op Y) =
+      strictBETotProbeRightHomDiagram A K F Y
+
+def strictBETotProbeCoefficientsSourceFunctor (F : K ⥤ (operad A).Algebra) :
+    (operad A).Algebraᵒᵖ ⥤ Kᵒᵖᵒᵖ ⥤ SSet.{u}
+
+def strictBETotProbeCoefficientsSourceIso (F : K ⥤ (operad A).Algebra) :
+    strictBETotProbeRightHomSourceFunctor A K F ≅ strictBETotProbeCoefficientsSourceFunctor A K F
+```
+
+#### StrictDiagramTotUniversalSourceNaturality（62行）
+
+```lean
+def strictBETotBKProbeArrowCone (F : K ⥤ (operad A).Algebra)
+    {Y : (operad A).Algebra} (f : Y ⟶ (framedLimitFunctor A K).obj F) :
+    SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight
+      Kᵒᵖᵒᵖ ⟶ strictBETotProbeRightHomDiagram A K F Y
+
+theorem strictBETotBKProbeArrowCone_comparison (F : K ⥤ (operad A).Algebra)
+    {Y : (operad A).Algebra} (f : Y ⟶ (framedLimitFunctor A K).obj F) :
+    strictBETotBKProbeArrowCone A K F f ≫ (strictBETotProbeCoefficientsIso A K F Y).hom =
+      HomotopyWeight.bkFramedWeightComparison K ≫
+        weightedCotensorHomEquiv A K F (HomotopyWeight.weight K) (framedLimitProbe A Y)
+          (framedLimitProbeComparison A Y ≫ f)
+```
+
+## 185. 両変数の入力と固定始域の制限の厳密な照合（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 5／全体 16（うち追加 4）。R02の全錐族・標準脚の最終正規化、R03の無条件の極限性は未完了。
+
+元のprobeつきright frame Homの二変数関手をuncurryし、同じAsSmall・ULift・Ex∞による全Kan図式とcoherentな入力を作った。正本側は同じCAlg源の両射影をtwistedArrowHomInfinityの底へ送る。始域の反変性には、同じnerveOppositeIsoの逆を使う。
+
+両入力の始域を固定すると、それぞれ既存の第零frame比較の入力と同じ共変Hom∞に**全単体で厳密に等しい**。反転同型の逆と定値写像の可換則を一般の小圏で証明し、これを使って正本側を照合した。これは既存構成の係数移送・前合成則で、一覧への新規定理の追加は0。二入力を結ぶ全FunctorIsoはまだ証明していない。固定始域ごとの比較をそのまま両変数の比較と見なさない。
+
+### 185.1 検証と実測
+
+253：JointHomInput一本の対象ビルド10,624 jobs・終了0、小監査94本693宣言。254：NerveOppositeConstantとJointHomRestriction二本の対象ビルド10,626 jobs・終了0、小監査96本698宣言。全て標準三公理のみ。実ハンドル91462・76154の終了0を確認し、鍵は返却済み。sorry・独自公理0、計算上限の変更なし。
+
+今回三本の行数は下の型一覧に記載。累計96本・6,170行（外枠15,000）。登録予定一覧を更新した。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。
+
+### 185.2 残る接続の位置
+
+同じ普遍単位で正規化されたjoint比較、または同等の全パラメーター評価則がheへの残る接続である。今回の制限等式は、その比較を構成するときに既存の固定始域比較との両立を明記するための型の照合である。既存の豊穣Yoneda比較とframe比較のどこで始域のcoherenceを作るかを先に確認する。
+
+### 185.3 既存構成の法則と入力の型
+
+#### StrictDiagramTotJointHomInput（119行）
+
+```lean
+abbrev strictBETotJointHomIndex
+
+def strictBETotJointRawHom :
+    ((operad A).Algebraᵒᵖ × (operad A).Algebra) ⥤ SSet.{u}
+
+def strictBETotJointRawHomKan : strictBETotJointHomIndex A ⥤ KanObject.{u+1}
+
+def strictBETotJointRawHomCoherent :
+    (SSet.uliftFunctor.{u+2,u+1}).obj (nerve (strictBETotJointHomIndex A)) ⟶ SpaceInfinity.{u+1}
+
+def strictBETotJointHomSourceIndex :
+    strictBETotJointHomIndex A ⥤ (AsSmall.{u+1} (operad A).Algebra)ᵒᵖ
+
+def strictBETotJointHomTargetIndex :
+    strictBETotJointHomIndex A ⥤ AsSmall.{u+1} (operad A).Algebra
+
+def strictBETotJointNativeHomInput :
+    nerve (strictBETotJointHomIndex A) ⟶ (CAlg_R A).op ⊗ CAlg_R A
+
+def strictBETotJointNativeHomCoherent :
+    (SSet.uliftFunctor.{u+2,u+1}).obj (nerve (strictBETotJointHomIndex A)) ⟶ SpaceInfinity.{u+1}
+
+def strictBETotJointHomFixSource (X : (operad A).Algebra) :
+    AsSmall.{u+1} (operad A).Algebra ⥤ strictBETotJointHomIndex A
+
+theorem strictBETotJointRawHom_fixSource (X : (operad A).Algebra) :
+    CategoryTheory.Prod.sectR (Opposite.op X) (operad A).Algebra ⋙ strictBETotJointRawHom A =
+      rightFrameHom (rightFrameFamily A) (framedLimitProbe A X)
+
+theorem strictBETotJointRawHomKan_fixSource (X : (operad A).Algebra) :
+    strictBETotJointHomFixSource A X ⋙ strictBETotJointRawHomKan A =
+      FrameHom.rightFrameHammockKanDiagram
+        ((SimplicialLocalization.modelSourceFrameFamily (C
+
+theorem strictBETotJointRawHomCoherent_fixSource (X : (operad A).Algebra) :
+    (SSet.uliftFunctor.{u+2,u+1}).map (nerveMap (strictBETotJointHomFixSource A X)) ≫
+      strictBETotJointRawHomCoherent A =
+    FrameHom.rightFrameHammockCoherentDiagram
+      ((SimplicialLocalization.modelSourceFrameFamily (C
+
+```
+
+#### NerveOppositeConstant（52行）
+
+```lean
+theorem nerveOppositeIso_inv_constant (c : C) (n : ℕ) :
+    ((nerveOppositeIso (C
+
+theorem nerveOppositeIso_inv_const {K : SSet.{u}} (c : C) :
+    SSet.const (X
+
+```
+
+#### StrictDiagramTotJointHomRestriction（76行）
+
+```lean
+theorem strictBETotJointNativeHomInput_fixSource (X : (operad A).Algebra) :
+    nerveMap (strictBETotJointHomFixSource A X) ≫ strictBETotJointNativeHomInput A =
+      lift (SSet.const (SSet.opObjEquiv.symm
+        ((algebraCAlgSource A).app (Opposite.op ⦋0⦌) (nerveVertex X))))
+          (strictBETotModelSource A)
+
+theorem strictBETotJointNativeHomCoherent_fixSource (X : (operad A).Algebra) :
+    (SSet.uliftFunctor.{u+2,u+1}).map (nerveMap (strictBETotJointHomFixSource A X)) ≫
+      strictBETotJointNativeHomCoherent A =
+    (SSet.uliftFunctor.{u+2,u+1}).map (strictBETotModelSource A) ≫
+      homInfinityCovariant ((algebraCAlgSource A).app (Opposite.op ⦋0⦌) (nerveVertex X))
+
+```
+
+## 186. 最初の三辺の両変数の全関手同型（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 5／全体 16（うち追加 4）。R02・R03の未完了部分は§185と同じ。
+
+元の関手的source frame・right frameの混合Homを始域にも反変な全関手として束ねた。左右の混合比較の始域自然性は、同じaugmentationの自然性と圏の結合則そのものである。BEでは同じprobe関手・標的の次数零置換・uncurry・ULiftを使い、六辺のうち最初の三辺を全両変数の自然変換にした。
+
+各辺の弱同値性には既存のrightFrameHammockFamilyEdge_weakを同じ入力で代入した。全自然変換自身をKan化して全関手圏で反転し、`strictBETotJointFirstSpanComparison` を得た。元の両変数raw Homとsource frame Homの**全関手同型**であり、点ごとの同値の選択ではない。ただし終点はsource frame Homであり、正本Hom∞との全同型はまだ含まない。
+
+### 186.1 検証・実測と累計の訂正
+
+255：二本の対象ビルド10,626 jobs・終了0、小監査98本739宣言・標準三公理のみ。実ハンドル13255の終了0を確認し、鍵を返却した。sorry・独自公理0、計算上限変更なし。
+
+今回二本242行（83＋159）、manifestの全ファイルを再集計した累計98本・6,412行（外枠15,000）。§185の三本は247行（119＋52＋76）、その時点の再集計6,170行は正しい。§184の累計6,023行には100行の過大計上があり、正しくは5,923行だった。以後はmanifestから再集計した値を用いる。過去の報告の検証結果と宣言数は変わらない。
+
+今回の二本は既存比較の自然性・係数移送・合成の法則で、一覧の新規定理の追加には数えない。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。
+
+### 186.2 既存構成の法則の型
+
+#### RightMixedBifunctor（83行）
+
+```lean
+def rightMixedBifunctor : Cᵒᵖ ⥤ C ⥤ SSet.{v}
+
+theorem rightMixedBifunctor_obj (X : C) :
+    (rightMixedBifunctor q r).obj (Opposite.op X) = rightMixedFamily (q.atObject X) r
+
+def sourceFrameHomBifunctor : Cᵒᵖ ⥤ C ⥤ SSet.{v}
+
+def rightMixedLeftBifunctorMap : sourceFrameHomBifunctor q ⟶ rightMixedBifunctor q r
+
+def rightMixedRightBifunctorMap : rightFrameHomBifunctor r ⟶ rightMixedBifunctor q r
+
+theorem rightMixedLeftBifunctorMap_app (X : C) :
+    (rightMixedLeftBifunctorMap q r).app (Opposite.op X) =
+      rightMixedLeft (q.atObject X) r
+
+theorem rightMixedRightBifunctorMap_app (X : C) :
+    (rightMixedRightBifunctorMap q r).app (Opposite.op X) =
+      rightMixedRight (q.atObject X) r
+```
+
+#### StrictDiagramTotJointFirstSpan（159行）
+
+```lean
+def strictBETotJointFirstSpanBifunctor :
+    Fin 4 → ((operad A).Algebraᵒᵖ ⥤ (operad A).Algebra ⥤ SSet.{u})
+
+def strictBETotJointFirstSpanUnit :
+    strictBETotJointFirstSpanBifunctor A 0 ⟶ strictBETotJointFirstSpanBifunctor A 1
+
+def strictBETotJointFirstSpanRight :
+    strictBETotJointFirstSpanBifunctor A 1 ⟶ strictBETotJointFirstSpanBifunctor A 2
+
+def strictBETotJointFirstSpanLeft :
+    strictBETotJointFirstSpanBifunctor A 3 ⟶ strictBETotJointFirstSpanBifunctor A 2
+
+def strictBETotJointFirstSpanDiagram (i : Fin 4) :
+    ((operad A).Algebraᵒᵖ × (operad A).Algebra) ⥤ SSet.{u+1}
+
+def strictBETotJointFirstSpanEdgeSource : Fin 3 → Fin 4
+
+def strictBETotJointFirstSpanEdgeTarget : Fin 3 → Fin 4
+
+def strictBETotJointFirstSpanEdge (i : Fin 3) :
+    strictBETotJointFirstSpanDiagram A (strictBETotJointFirstSpanEdgeSource i) ⟶
+      strictBETotJointFirstSpanDiagram A (strictBETotJointFirstSpanEdgeTarget i)
+
+theorem strictBETotJointFirstSpanEdge_weak (i : Fin 3)
+    (P : (operad A).Algebraᵒᵖ × (operad A).Algebra) :
+    IsWeakHomotopyEquivalence ((strictBETotJointFirstSpanEdge A i).app P)
+
+def strictBETotJointFirstSpanKanDiagram (i : Fin 4) :
+    strictBETotJointHomIndex A ⥤ KanObject.{u+1}
+
+def strictBETotJointFirstSpanKanEdge (i : Fin 3) :
+    strictBETotJointFirstSpanKanDiagram A (strictBETotJointFirstSpanEdgeSource i) ⋙ kanObjectForget ⟶
+      strictBETotJointFirstSpanKanDiagram A (strictBETotJointFirstSpanEdgeTarget i) ⋙ kanObjectForget
+
+def strictBETotJointFirstSpanCoherent (i : Fin 4) :
+    (SSet.uliftFunctor.{u+2,u+1}).obj (nerve (strictBETotJointHomIndex A)) ⟶ SpaceInfinity.{u+1}
+
+def strictBETotJointFirstSpanEdgeIso (i : Fin 3) :
+    FunctorIso (strictBETotJointFirstSpanCoherent A (strictBETotJointFirstSpanEdgeSource i))
+      (strictBETotJointFirstSpanCoherent A (strictBETotJointFirstSpanEdgeTarget i))
+
+theorem strictBETotJointFirstSpanCoherent_zero :
+    strictBETotJointFirstSpanCoherent A 0 = strictBETotJointRawHomCoherent A
+
+def strictBETotJointFirstSpanComparison :
+    FunctorIso (strictBETotJointRawHomCoherent A) (strictBETotJointFirstSpanCoherent A 3)
+```
+
+## 187. R03d：同じ固定始域比較で正規化された両変数比較の追加（紙、11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 5／全体 17（うち追加 5）。R03dは未証明。
+
+IS-W2 §19の承認済みの中間定理の枠により、R01〜R03のまとまりにR03dを追加する。型は次のとおり。両変数の同じ入力の全FunctorIsoを要求し、始域を固定した制限は既存の同じ `strictBETotProbeFrameHomInfinityIso` と一致させる。HEqは§185の二つの制限等式による型の移送を記すためのもので、点ごとの同値や可換性への弱化ではない。
+
+```lean
+theorem exists_strictBETotJointHomComparison (A : Type u) [CommRing A] :
+  ∃ e : FunctorIso (strictBETotJointRawHomCoherent A) (strictBETotJointNativeHomCoherent A),
+    ∀ X : (operad A).Algebra,
+      HEq (e.precomp ((SSet.uliftFunctor.{u+2,u+1}).map
+        (nerveMap (strictBETotJointHomFixSource A X))))
+        (strictBETotProbeFrameHomInfinityIso A X)
+```
+
+この主張の型を一時ファイル `/private/tmp/CheckStrictBEJointComparisonType.lean` のPropとして検査し、実ハンドル58644の終了0を確認した。定理の証明や本体への登録はまだしていない。
+
+残りの見込みは950〜1,450行：全パラメーターのaugmentationとroofを同じ底上に置く450〜700行、元の豊穣Yoneda・指定局所化比較へ運ぶ300〜450行、同じ固定始域比較との正規化200〜300行。今回の既存法則242行はこの残りに含めない。全体の外枠は15,000行のまま。
+
+短い経路を先に試す。source frameのaugmentationを全始域と全次数の自然変換として同じ局所化へ送り、弱辺を全関手圏で反転する。その同じ逆と元の射から、両端を変数とする一つの表示された比較を作り、分類に送る。固定始域では既存のframe・Yoneda・同じ局所化二胞体に戻ることを照合する。`FrameLeftRoofPrecompose` の各射の局所化内の等式だけを、全高次の自然性の証明として使わない。
+
+まとまり外の定理、1,500行を超える見込み、⑤aの欄の型への変更が必要と分かった場合は、検証済みをコミットして報告する。今回は同じR03のまとまりで上端1,450行なので、承認を待たずR03dの証明へ進む。
+
+## 188. 全始域・全次数の同じaugmentationの一つの逆（R03dの前半、11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 5／全体 17（うち追加 5）。R03dは未完了。
+
+同じ関手的source frameのaugmentationを、全始域と全source次数の積添字でuncurryし、元のprobe比較自然変換と合成した。同じCAlgの指定モデル源へ送った全円柱について、全ての成分の辺の可逆性から円柱自身を全関手圏で反転した。逆を対象・次数ごとに選んでいない。
+
+共通部分はKerodon 4.8の `NerveTransformationInversion` に置いた。既存のnerve円柱と既存の指定辺の点ごとの反転判定を合成した、通常の自然変換の係数移送・反転の法則である。BEの各成分の弱同値性は、元の解消のaugmentationと元のprobe比較の合成則から従う。局所化の反転辺の集合と指定された辺の型は、同じ一単体の一致で合わせた。
+
+### 188.1 検証と実測
+
+256：新規二本の対象ビルド10,628 jobs・終了0、小監査100本754宣言・標準三公理のみ。実ハンドル21505の終了0を確認し、鍵を返却した。sorry・独自公理0、計算上限変更なし。今回143行、累計100本・6,555行（外枠15,000）。R03dの残るjoint表示と分類・固定始域との正規化はまだ証明していない。
+
+この二本はR03dの既存の自然変換・反転則であり、新しい一覧項目は増やさない。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。
+
+### 188.2 型
+
+#### NerveTransformationInversion（52行）
+
+```lean
+def nerveTransformationPostHomotopy : SSet.Homotopy (nerveMap F ≫ L) (nerveMap G ≫ L)
+
+def nerveTransformationPostIso
+    (hη : ∀ i, IsInvertibleEdge ((nerve.edgeMk (η.app i)).map L).toTruncated) :
+    FunctorIso (nerveMap F ≫ L) (nerveMap G ≫ L)
+
+theorem nerveTransformationPostIso_hom
+    (hη : ∀ i, IsInvertibleEdge ((nerve.edgeMk (η.app i)).map L).toTruncated) :
+    (nerveTransformationPostIso η L hη).hom =
+      SSet.Truncated.HomotopyCategory.homMk
+        (functorEdgeOfSimplicialHomotopy (nerveTransformationPostHomotopy η L))
+
+```
+
+#### StrictDiagramTotJointAugmentation（91行）
+
+```lean
+abbrev strictBETotJointSourceFrameIndex
+
+def strictBETotJointSourceFrameEvaluation :
+    strictBETotJointSourceFrameIndex A ⥤ AsSmall.{u+1} (operad A).Algebra
+
+def strictBETotJointSourceFrameConstant :
+    strictBETotJointSourceFrameIndex A ⥤ AsSmall.{u+1} (operad A).Algebra
+
+def strictBETotJointSourceFrameAugmentation :
+    strictBETotJointSourceFrameEvaluation A ⟶ strictBETotJointSourceFrameConstant A
+
+theorem strictBETotJointSourceFrameAugmentation_weak (P : strictBETotJointSourceFrameIndex A) :
+    weakEquivalences (operad A).Algebra
+      (AsSmall.down.map ((strictBETotJointSourceFrameAugmentation A).app P))
+
+theorem strictBETotJointSourceFrameAugmentation_inverted (P : strictBETotJointSourceFrameIndex A) :
+    IsInvertibleEdge ((nerve.edgeMk ((strictBETotJointSourceFrameAugmentation A).app P)).map
+      (strictBETotModelSource A)).toTruncated
+
+def strictBETotJointSourceFrameAugmentationIso :
+    FunctorIso (nerveMap (strictBETotJointSourceFrameEvaluation A) ≫ strictBETotModelSource A)
+      (nerveMap (strictBETotJointSourceFrameConstant A) ≫ strictBETotModelSource A)
+
+```
+
+## 189. 元の全source frame射の要素圏と両端の四角形（R03d、11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 5／全体 17（うち追加 5）。R03dは未完了。
+
+既存のresolutionHomを二度uncurryし、全始域・全標的・全単体次数のHom係数の要素圏を取った。元の各射の始域を反変な関手、標的を共変な関手として記録した。要素圏の全射について、同じ実際の射が与える可換四角形を証明した。始域のframeの自然性と元の要素圏のmap_valの合成であり、新しい比較射やframeは選んでいない。
+
+257：新規一本の対象ビルド1,126 jobs・終了0、小監査101本761宣言・標準三公理のみ。実ハンドル35588の終了0を確認し、鍵を返却済み。sorry・独自公理0、計算上限変更なし。今回65行、累計101本・6,620行（外枠15,000）。R03dに関係する§188以降の検証済みは208行。
+
+この要素圏は元の係数の表示と自然性の法則なので、新しい一覧項目には数えない。R03dの残りは、同じ全要素圏と同じaugmentationの大域的な逆から正本Hom∞への比較を作り、分類と固定始域の既存比較との一致を示すこと。始域が反変なので、今回の四角形を通常の二つの共変関手の自然変換として扱わない。点ごとのroofのホモトピーだけで全高次自然性を済ませることもしない。
+
+次は同じ両端を持つ全要素の射をtwisted arrowへ送る全写像を組み立てる。厳密なtwisted arrowの同型全体を新たに作る必要があるとはまだ判断していない。まず既存のedgewise重みの標準単体表示と元の可換四角形で必要な写像を作る短い経路を試す。R03dの型と§187の見込みの範囲で進め、追加の中間定理が必要な場合は§19の枠に従って型と見込みを記録する。
+
+既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。
+
+### 189.1 既存構成の表示・自然性の型（65行）
+
+```lean
+def sourceFrameArrowCoefficients :
+    ((Cᵒᵖ × C) × SimplexCategoryᵒᵖ) ⥤ Type v
+
+abbrev SourceFrameArrowElements
+
+def sourceFrameArrowParameters : SourceFrameArrowElements Q R ⥤
+    ((Cᵒᵖ × C) × SimplexCategoryᵒᵖ)
+
+def sourceFrameArrowDomain : SourceFrameArrowElements Q R ⥤ Cᵒᵖ
+
+def sourceFrameArrowCodomain : SourceFrameArrowElements Q R ⥤ C
+
+def sourceFrameArrowValue (s : SourceFrameArrowElements Q R) :
+    ((sourceFrameArrowDomain Q R).obj s).unop ⟶ (sourceFrameArrowCodomain Q R).obj s
+
+theorem sourceFrameArrowValue_naturality {s t : SourceFrameArrowElements Q R} (f : s ⟶ t) :
+    ((sourceFrameArrowDomain Q R).map f).unop ≫ sourceFrameArrowValue Q R s ≫
+      (sourceFrameArrowCodomain Q R).map f = sourceFrameArrowValue Q R t
+
+```
+
+## 190. 指定された射列の長い単体と交差射の全自然性（R03d、11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 5／全体 17（うち追加 5）。R03dは未完了。
+
+全要素圏の反変・共変の両端と元の射から、同じ「始域の逆順・零番の射・標的の順序」の長い通常nerveの単体を作った。恒等射と合成を元の両端の関手と圏の合成則で確認した。左右の型の移送はeqToHomによる同じ共役として明示し、元の射を保持する異種等式も証明した。新しい充填・逆・頂点ごとの同値は選んでいない。
+
+元の可換四角形を仮定すると、対角の交差射は元の射であり、基点を零番以外へ移しても同じ交差射になる。この等式から交差射の任意の順序射による再添字付けの厳密な自然性を得た。面・退化の両方を含む。両半分の対象の座標も元の同じedgewiseの座標で照合した。
+
+258：三本の対象ビルド1,556 jobs・終了0、小監査104本808宣言・標準三公理のみ。実ハンドル36320の終了0を確認し、鍵返却済み。sorry・独自公理0、計算上限変更なし。今回294行（151＋50＋93）、累計104本・6,914行（外枠15,000）。R03dの§188以降の検証済みは502行。既存構成の合成・自然性・係数移送則なので一覧項目の追加は0。
+
+射列全体を実際のedgewise重みの再添字付けと照合する `TwistedPairingReindex` は個別検査中で、今回のコミットと検証済みの数には含めない。R03dの全FunctorIso、固定始域の既存比較との一致、he、R03の無条件の極限性はまだ未完了。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。
+
+### 190.1 共通の入力と既存構成の法則の型
+
+以下でI・Cは同じ宇宙の小圏、A : I ⥤ Cᵒᵖ、B : I ⥤ C、h : ∀ i, (A.obj i).unop ⟶ B.obj i。hhは元の可換四角形 `∀ {i j} (f : i ⟶ j), (A.map f).unop ≫ h i ≫ B.map f = h j`。σ : Fin (n+1) ⥤ I。CrossNaturalityの三つの補題はhhを明示的な入力に持つ。
+
+#### TwistedPairingSimplex（151行）
+
+```lean
+def twistedPairingLeftIndex {n : ℕ} (i : Fin (n+n+1+1)) (hi : i.val < n+1) : Fin (n+1)
+
+def twistedPairingRightIndex {n : ℕ} (i : Fin (n+n+1+1)) (hi : ¬ i.val < n+1) : Fin (n+1)
+
+def twistedPairingCross (a b : Fin (n+1)) :
+    (A.obj (σ.obj a)).unop ⟶ B.obj (σ.obj b)
+
+theorem twistedPairingCross_left (a b c : Fin (n+1)) (hab : b ≤ a) :
+    (A.map (σ.map (homOfLE hab))).unop ≫ twistedPairingCross A B h σ b c =
+      twistedPairingCross A B h σ a c
+
+theorem twistedPairingCross_right (a b c : Fin (n+1)) (hbc : b ≤ c) :
+    twistedPairingCross A B h σ a b ≫ B.map (σ.map (homOfLE hbc)) =
+      twistedPairingCross A B h σ a c
+
+def twistedPairingSimplexObj (i : Fin (n+n+1+1)) : C
+
+theorem twistedPairingSimplexObj_left (i : Fin (n+n+1+1)) (hi : i.val < n+1) :
+    twistedPairingSimplexObj A B σ i = (A.obj (σ.obj (twistedPairingLeftIndex i hi))).unop
+
+theorem twistedPairingSimplexObj_right (i : Fin (n+n+1+1)) (hi : ¬ i.val < n+1) :
+    twistedPairingSimplexObj A B σ i = B.obj (σ.obj (twistedPairingRightIndex i hi))
+
+theorem twistedPairingTransport_comp {X Y Z U V W : C} (p : X = U) (q : Y = V) (r : Z = W)
+    {f : U ⟶ V} {g : V ⟶ W} {k : U ⟶ W} (hk : k = f ≫ g) :
+    eqToHom p ≫ k ≫ eqToHom r.symm =
+      (eqToHom p ≫ f ≫ eqToHom q.symm) ≫ (eqToHom q ≫ g ≫ eqToHom r.symm)
+
+theorem twistedPairingTransport_heq {X Y U V : C} (p : X = U) (q : Y = V) (f : U ⟶ V) :
+    HEq (eqToHom p ≫ f ≫ eqToHom q.symm) f
+
+def twistedPairingSimplexMap (i j : Fin (n+n+1+1)) (hij : i ≤ j) :
+    twistedPairingSimplexObj A B σ i ⟶ twistedPairingSimplexObj A B σ j
+
+theorem twistedPairingSimplexMap_id (i : Fin (n+n+1+1)) :
+    twistedPairingSimplexMap A B h σ i i le_rfl = 𝟙 _
+
+theorem twistedPairingSimplexMap_comp (i j k : Fin (n+n+1+1))
+    (hij : i ≤ j) (hjk : j ≤ k) :
+    twistedPairingSimplexMap A B h σ i k (hij.trans hjk) =
+      twistedPairingSimplexMap A B h σ i j hij ≫ twistedPairingSimplexMap A B h σ j k hjk
+
+def twistedPairingSimplex : Fin (n+n+1+1) ⥤ C
+```
+
+#### TwistedPairingCrossNaturality（50行）
+
+```lean
+theorem twistedPairingCross_diagonal (i : Fin (n+1)) :
+    twistedPairingCross A B h σ i i = h (σ.obj i)
+
+theorem twistedPairingCross_changeBase (p a b : Fin (n+1)) (hpa : p ≤ a) (hpb : p ≤ b) :
+    twistedPairingCross A B h σ a b =
+      (A.map (σ.map (homOfLE hpa))).unop ≫ h (σ.obj p) ≫ B.map (σ.map (homOfLE hpb))
+
+theorem twistedPairingCross_reindex {m : ℕ} (α : Fin (m+1) →o Fin (n+1))
+    (a b : Fin (m+1)) :
+    twistedPairingCross A B h (α.monotone.functor ⋙ σ) a b =
+      twistedPairingCross A B h σ (α a) (α b)
+```
+
+#### TwistedPairingCoordinates（93行）
+
+```lean
+theorem twistedPairingLeftVertex_lt (n : ℕ) (i : Fin (n+1)) :
+    (edgewiseLeftVertex n i).val < n+1
+
+theorem twistedPairingRightVertex_not_lt (n : ℕ) (i : Fin (n+1)) :
+    ¬ (edgewiseRightVertex n i).val < n+1
+
+theorem twistedPairingLeftIndex_vertex (n : ℕ) (i : Fin (n+1))
+    (hi : (edgewiseLeftVertex n i).val < n+1) :
+    twistedPairingLeftIndex (edgewiseLeftVertex n i) hi = i
+
+theorem twistedPairingRightIndex_vertex (n : ℕ) (i : Fin (n+1))
+    (hi : ¬ (edgewiseRightVertex n i).val < n+1) :
+    twistedPairingRightIndex (edgewiseRightVertex n i) hi = i
+
+theorem twistedPairingSimplex_obj_left (i : Fin (n+1)) :
+    (twistedPairingSimplex A B h σ).obj (edgewiseLeftVertex n i) = (A.obj (σ.obj i)).unop
+
+theorem twistedPairingSimplex_obj_right (i : Fin (n+1)) :
+    (twistedPairingSimplex A B h σ).obj (edgewiseRightVertex n i) = B.obj (σ.obj i)
+
+theorem twistedPairingSimplexMap_left_heq (i j : Fin (n+n+1+1)) (hij : i ≤ j)
+    (hi : i.val < n+1) (hj : j.val < n+1) :
+    HEq (twistedPairingSimplexMap A B h σ i j hij)
+      (A.map (σ.map (homOfLE (show twistedPairingLeftIndex j hj ≤ twistedPairingLeftIndex i hi
+        by dsimp [twistedPairingLeftIndex]; exact Nat.sub_le_sub_left hij _)))).unop
+
+theorem twistedPairingSimplexMap_cross_heq (i j : Fin (n+n+1+1)) (hij : i ≤ j)
+    (hi : i.val < n+1) (hj : ¬ j.val < n+1) :
+    HEq (twistedPairingSimplexMap A B h σ i j hij)
+      (twistedPairingCross A B h σ (twistedPairingLeftIndex i hi) (twistedPairingRightIndex j hj))
+
+theorem twistedPairingSimplexMap_right_heq (i j : Fin (n+n+1+1)) (hij : i ≤ j)
+    (hi : ¬ i.val < n+1) (hj : ¬ j.val < n+1) :
+    HEq (twistedPairingSimplexMap A B h σ i j hij)
+      (B.map (σ.map (homOfLE (show twistedPairingRightIndex i hi ≤ twistedPairingRightIndex j hj
+        by dsimp [twistedPairingRightIndex]; exact Nat.sub_le_sub_right hij _))))
+```
+
+## 191. 同じtwisted arrowへの全写像と二射影、R03dの半分での実測（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 5／全体 17（うち追加 5）。R03d・R02・R03は未完了。
+
+### 191.1 今回の検証済み
+
+元の長い射列が実際のedgewise重みの全順序射と厳密に両立することを証明し、`twistedPairingNerveMap` として一つの全単体写像にした。元の射の四角形を使うのは交差射の基点変更・再添字付けであり、面・退化をすべて含む。
+
+同じ射列の左右の標準区間への全制限も証明した。右は元の標的の射列、左は元の反変の始域の逆反転そのもの。同じnerve反転同型の逆の一般の評価則を合わせ、全写像の右射影がnerveMap B、左射影がnerveMap Aと同じnerveOppositeIso.invの合成であることを、**全写像の厳密な等式**として得た。元の両端の指定底を保つ `twistedPairingNerveMap_projection` が今回の終点。正本Hom∞への全FunctorIsoではまだない。
+
+259：TwistedPairingReindex・TwistedPairingNerve二本、対象ビルド1,559 jobs・終了0、小監査106本821宣言・標準三公理のみ。260：NerveOppositeEvaluation・TwistedPairingRestrictions・TwistedPairingProjections三本、対象ビルド1,572 jobs・終了0、小監査109本829宣言・標準三公理のみ。実ハンドル27277・63636の終了0を確認し、鍵を返却した。sorry・独自公理0、計算上限変更なし。
+
+今回五本375行（159＋48＋32＋69＋67）、累計109本・7,289行（外枠15,000）。R03dの§188以降の検証済みは877行で、§187の見込み950〜1,450行の半分を越えた。既存構成の係数移送・自然性の法則とR03dの証明の分割であり、追加の一覧項目は0。全五本200行以下。
+
+### 191.2 残りの見込みと、先に紙で確認する接続
+
+残りは、全要素圏上で作った同じ射を、全パラメーターを保ってKan係数の分類へ運び、元の固定始域の比較へ正規化すること。次の三点をソースで確認した。
+
+1. `leftStraighteningInfinityDiagram p` は `[LeftFibration p]` を要求する。全source frame Homの要素圏の射影にはこの仮定はないので、そのまま分類に代入できない。
+2. `sourceFrameElementsFamily` の元のaugmentationは `nerve (Elementsᵒᵖ)` からHomへ向かう。今回の全要素圏のfiberは `Elements` である。この反対の違いを同一視してaugmentationを使えない。Kan化・反転との全自然性を含む比較が必要。
+3. `weightedNerve F` は初区間の重み付き係数の族を持つ。全要素圏のnerveと定義上同じものではない。既存の `Thomason.map_isWeakHomotopyEquivalence` は全空間の弱同値であり、それだけでは同じ底上の全分類比較や指定点の正規化を証明しない。
+
+型の移送・BEへの適用・元の固定始域比較との正規化の残りは、比較の橋を本体の定理として参照できれば350〜550行の暫定見込み。一方、上の1〜3を結ぶ数学的な橋には別に700〜1,100行程度を見込むが、まだ同じ底上の必要な型を確定していない。橋も含めた同じ一まとまりの合計見込みは1,927〜2,527行となり、§187の950〜1,450行は小さかった。
+
+したがって、この線の新しいLeanはここでいったん増やさず、必要な橋の主張を紙で型にする。同じR03のまとまりの**独立した中間定理**として切り出すのが数学的に妥当で、その一つの見込みが1,500行以下なら、IS-W2 §19に従い型と見込みを一覧の追加として記録して進める。単に行数を分けるための補題の分割では、この規則を回避しない。1,500行を超える型、まとまりの外、⑤aの欄の型に関わるものが必要と分かった場合は、検証済みのこのコミットを取り込み点にして型と理由を報告する。
+
+この確認でG10へ戻ったり、R03dの型を点ごとのHom同値・π₀の自然性へ弱めたりしない。無条件のnative極限性を得たとは主張しない。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。
+
+### 191.3 今回の型
+
+共通の入力は§190.1のI・C・A・B・h・hh・σ。再添字付けの入力αはSimplexCategory.mk m ⟶ SimplexCategory.mk n。
+
+#### TwistedPairingReindex（159行）
+
+```lean
+theorem twistedPairingLeftVertex_index {n : ℕ} (i : Fin (n+n+1+1)) (hi : i.val < n+1) :
+    edgewiseLeftVertex n (twistedPairingLeftIndex i hi) = i
+
+theorem twistedPairingRightVertex_index {n : ℕ} (i : Fin (n+n+1+1)) (hi : ¬ i.val < n+1) :
+    edgewiseRightVertex n (twistedPairingRightIndex i hi) = i
+
+theorem twistedPairingReindex_left (i : Fin (m+m+1+1)) (hi : i.val < m+1) :
+    edgewiseWeightReindexOrderHom.{u} α i =
+      edgewiseLeftVertex n (α.toOrderHom (twistedPairingLeftIndex i hi))
+
+theorem twistedPairingReindex_right (i : Fin (m+m+1+1)) (hi : ¬ i.val < m+1) :
+    edgewiseWeightReindexOrderHom.{u} α i =
+      edgewiseRightVertex n (α.toOrderHom (twistedPairingRightIndex i hi))
+
+theorem twistedPairingReindex_leftIndex (i : Fin (m+m+1+1)) (hi : i.val < m+1)
+    (hbi : (edgewiseWeightReindexOrderHom.{u} α i).val < n+1) :
+    twistedPairingLeftIndex (edgewiseWeightReindexOrderHom.{u} α i) hbi =
+      α.toOrderHom (twistedPairingLeftIndex i hi)
+
+theorem twistedPairingReindex_rightIndex (i : Fin (m+m+1+1)) (hi : ¬ i.val < m+1)
+    (hbi : ¬ (edgewiseWeightReindexOrderHom.{u} α i).val < n+1) :
+    twistedPairingRightIndex (edgewiseWeightReindexOrderHom.{u} α i) hbi =
+      α.toOrderHom (twistedPairingRightIndex i hi)
+
+theorem twistedPairingThinMap_heq {D : Type u} [Category.{u} D] {N : ℕ}
+    (F : Fin N ⥤ D) {a b c d : Fin N} (ha : a = c) (hb : b = d)
+    {f : a ⟶ b} {g : c ⟶ d} : HEq (F.map f) (F.map g)
+
+theorem twistedPairingThinUnopMap_heq {D : Type u} [Category.{u} D] {N : ℕ}
+    (F : Fin N ⥤ Dᵒᵖ) {a b c d : Fin N} (ha : a = c) (hb : b = d)
+    {f : a ⟶ b} {g : c ⟶ d} : HEq (F.map f).unop (F.map g).unop
+
+theorem twistedPairingCross_heq {a b c d : Fin (n+1)} (ha : a = c) (hb : b = d) :
+    HEq (twistedPairingCross A B h σ a b) (twistedPairingCross A B h σ c d)
+
+theorem twistedPairingSimplex_reindex :
+    (edgewiseWeightReindexOrderHom.{u} α).monotone.functor ⋙ twistedPairingSimplex A B h σ =
+      twistedPairingSimplex A B h (α.toOrderHom.monotone.functor ⋙ σ)
+```
+
+#### TwistedPairingNerve（48行）
+
+```lean
+theorem twistedPairingWeightIso_reindex {m n : ℕ} (α : ⦋m⦌ ⟶ ⦋n⦌) :
+    edgewiseWeight.{u}.map α ≫ (edgewiseWeightIso n).hom =
+      (edgewiseWeightIso m).hom ≫ stdSimplex.map
+        (SimplexCategory.mkHom (edgewiseWeightReindexOrderHom.{u} α))
+
+def twistedPairingNerveMap : nerve I ⟶ TwistedArrow (nerve C)
+```
+
+#### NerveOppositeEvaluation（32行）
+
+```lean
+theorem nerveOppositeIso_inv_apply {n : ℕ} (σ : ComposableArrows Cᵒᵖ n) :
+    (nerveOppositeIso (C := C)).inv.app (Opposite.op ⦋n⦌) σ =
+      SSet.opObjEquiv.symm (nerveUnreverseChain σ)
+```
+
+#### TwistedPairingRestrictions（69行）
+
+```lean
+theorem twistedPairingLeftOrder_lt (n : ℕ) (i : Fin (n+1)) :
+    (joinLeftOrderHom n n i).val < n+1
+
+theorem twistedPairingLeftIndex_order (n : ℕ) (i : Fin (n+1))
+    (hi : (joinLeftOrderHom n n i).val < n+1) :
+    twistedPairingLeftIndex (joinLeftOrderHom n n i) hi = i.rev
+
+theorem twistedPairingSimplex_restrict_right :
+    (joinRightOrderHom n n).monotone.functor ⋙ twistedPairingSimplex A B h σ = σ ⋙ B
+
+theorem twistedPairingSimplex_restrict_left :
+    (joinLeftOrderHom n n).monotone.functor ⋙ twistedPairingSimplex A B h σ =
+      nerveUnreverseChain (σ ⋙ A)
+```
+
+#### TwistedPairingProjections（67行）
+
+```lean
+theorem twistedPairingNerveMap_right :
+    twistedPairingNerveMap A B h hh ≫ edgewiseRight (nerve C) = nerveMap B
+
+theorem twistedPairingNerveMap_left :
+    twistedPairingNerveMap A B h hh ≫ edgewiseLeft (nerve C) =
+      nerveMap A ≫ (nerveOppositeIso (C := C)).inv
+
+theorem twistedPairingNerveMap_projection :
+    twistedPairingNerveMap A B h hh ≫ twistedArrowProjection (nerve C) =
+      lift (nerveMap A ≫ (nerveOppositeIso (C := C)).inv) (nerveMap B)
+```
+
+## 192. R03e：通常のGrothendieck構成の厳密なweighted nerve比較（紙、11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 5／全体 18（うち追加 6）。R03eは未証明。
+
+§191.2の橋を紙で分けて確認した。最初に、任意の通常のCat値図式のGrothendieck構成のnerveと、各fiberのnerveからなる図式のweighted nerveとの厳密な同型を、**独立した数学的な中間定理R03e**として追加する。元の底の射影と元のfiberの指定頂点を保つ。IS-W2 §19の同じR01〜R03のまとまりの中の中間定理であり、見込みは500〜900行（1,500行以下）なので、承認を待たず進める。
+
+これはR03dの行数だけを分割するための補題ではない。任意の通常のCat値図式に対する二つの既存の全構成を、底上の厳密な単体集合同型と指定頂点の等式で結ぶ、一つの独立した比較定理。全要素圏の射影を既存のweighted nerveの分類へ接続する最初の段に使う。単なる全空間の弱同値とは区別する。
+
+```lean
+theorem exists_grothendieckWeightedNerveIso
+    {I : Type u} [SmallCategory I] (F : I ⥤ Cat.{u,u}) :
+  ∃ e : nerve (Grothendieck F) ≅ weightedNerve (F ⋙ nerveFunctor),
+    e.hom ≫ weightedNerveProjection (F ⋙ nerveFunctor) =
+      nerveMap (Grothendieck.forget F) ∧
+    ∀ (i : I) (x : F.obj i),
+      e.hom.app (Opposite.op ⦋0⦌) (nerveVertex (⟨i,x⟩ : Grothendieck F)) =
+        (weightedNerveConstantLift (F ⋙ nerveFunctor) i).app
+          (Opposite.op ⦋0⦌) (nerveVertex x)
+```
+
+この型を `/private/tmp/CheckISW2GrothWeightedNerveType.lean` のPropとしてLeanで確認し、実ハンドル74299の終了0を確認した。定理の証明を仮定にしたり本体に未証明で登録したりしていない。
+
+置き場所は `InfinityCategories/Kerodon/FibrationsOfInfinityCategories/FibrationsOverOrdinaryCategories/GrothendieckWeightedNerve*.lean`。既存の同名ファイルはない。前向きの単体と自然性150〜250行、逆向きの重み係数からのGrothendieck射列150〜250行、両往復150〜250行、射影・指定点の照合50〜150行、計500〜900行。見込みの半分で実測と残りを報告する。
+
+短い経路として、既存の `SliceTransport/GrothendieckCommaTransport.transport` を再利用する。Grothendieck射列の各初区間を同じ最終基底へのCostructuredArrowに送り、その既存のtransportでfiberへ移す。このprefixのnerveが前向きの重み係数になる。逆は各prefixの最終対象と元の係数の自然性から実射を回収する。元のCat関手の合成の型の移送は、既存のtransportが処理する。
+
+### 192.1 後半にまだ必要な判定
+
+別途、全単体集合値図式Fについて、`Grothendieck (F ⋙ Functor.elementsFunctor)` の同じ底上の射影のcontinuousLeftFibrationReplacementを分類すると、元のFのEx∞のKan図式に全関手同型となる、という候補の型も一時ファイルで確認した。261で既存のContinuousLeftFibrationFilling一本を対象ビルド（1,503 jobs・終了0）してから `/private/tmp/CheckISW2ElementsLeftStraighteningType.lean` を通し、実ハンドル62729の終了0を確認した。この候補はまだ一覧に追加しておらず、証明も存在も主張しない。
+
+R03eだけで後半の相対Kan比較が済むとは扱わない。要素圏の反対と元のaugmentation、同じ底上のKan化、元の指定点の回収を、どの既存の全比較で示すかを別に確認する。必要な独立の中間定理があれば、同じく型と見込みで§19を判定する。R03dの元の全FunctorIsoと固定始域の同じ比較への一致という型は保つ。R03eの証明に進む。
+
+## 193. R03eの前向きprefixと元の最終対象の回収（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 5／全体 18（うち追加 6）。R03eは未完了。
+
+元のGrothendieck射列の各初区間を、同じ最終基底への脚を持つCostructuredArrowの関手へ送った。各射の三角形は元の射列の合成則そのものであり、恒等射・合成も保持する。この関手に既存の `GrothendieckCommaTransport.transport` を後合成してfiberに値を持つprefixを得た。
+
+各対象が元の脚で元のfiber対象を送ったものとなる評価式と、prefixの最終対象が元の同じfiber対象そのものになる厳密な等式を確認した。前向きの指定点の正規化の最初の部分であり、weighted nerveの全係数の自然変換と同型の両往復はまだ作っていない。
+
+262：新規一本の対象ビルド1,168 jobs・終了0、小監査110本840宣言・標準三公理のみ。実ハンドル25109の終了0を確認し、鍵返却済み。sorry・独自公理0、計算上限変更なし。今回65行、累計110本・7,354行（外枠15,000）。R03eは65行／見込み500〜900行であり、まだ半分には達していない。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。
+
+次は同じ初区間の包含と既存transport_naturalityを使い、全prefixをsimplexPrefixWeightからの自然変換として束ねる。逆向きはweighted係数の最終対象と元の係数の自然性からGrothendieck射列を回収する。R03dとnative極限性は引き続き未完了。
+
+### 193.1 型（65行）
+
+共通の入力は `{I : Type u} [SmallCategory I] (F : I ⥤ Cat.{u,u}) {n : ℕ} (σ : ComposableArrows (Grothendieck F) n)`。PrefixIndexはF・σを使わない有限添字の包含。
+
+```lean
+def grothWeightedPrefixIndex (i : Fin (n+1)) (k : Fin (i.val+1)) : Fin (n+1)
+
+def grothWeightedPrefixArrow (i : Fin (n+1)) :
+    Fin (i.val+1) ⥤ CostructuredArrow (Grothendieck.forget F) (σ.obj i).base
+
+def grothWeightedPrefixFiber (i : Fin (n+1)) : Fin (i.val+1) ⥤ F.obj (σ.obj i).base
+
+theorem grothWeightedPrefixFiber_obj (i : Fin (n+1)) (k : Fin (i.val+1)) :
+    (grothWeightedPrefixFiber F σ i).obj k =
+      (F.map ((σ.map (homOfLE
+        (show grothWeightedPrefixIndex i k ≤ i from Nat.le_of_lt_succ k.isLt))).base)).toFunctor.obj
+          (σ.obj (grothWeightedPrefixIndex i k)).fiber
+
+theorem grothWeightedPrefixFiber_last (i : Fin (n+1)) :
+    (grothWeightedPrefixFiber F σ i).obj (Fin.last i.val) = (σ.obj i).fiber
+```
+
+## 194. R03eの全prefix係数と順向きの単体写像（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 5／全体 18（うち追加 6）。R03eは未完了。
+
+prefixの包含に対する自然性を、既存transportの自然性から示した。これをYonedaで元の重み係数の自然変換にし、任意の面・退化への自然性を保つ順向きの単体集合写像に束ねた。元の基底への射影との等式も厳密に成立する。逆向きの単体の関手性と両往復はまだ残る。
+
+263：新規三本の対象ビルド1,172 jobs・終了0、小監査113本852宣言・標準三公理のみ。実ハンドル66924の終了0を確認し、鍵返却済み。今回164行、累計113本・7,518行（外枠15,000）。R03eは229行／見込み500〜900行。sorry・独自公理0、計算上限変更なし。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。
+
+併せて直近の報告の型抜粋で、`where`で始まる構成の本体まで入っていた箇所を型のみへ直した。宣言や型の変更ではない。R03d・R02の指定錐の族・無条件のnative極限性は未完了のまま。次は元のweighted係数から回収した逆向きの射列と両往復を示す。
+
+### 194.1 型
+
+#### GrothendieckWeightedNervePrefixNaturality（55行）
+
+```lean
+theorem grothWeightedPrefixArrow_naturality {i j : Fin (n+1)} (f : i ⟶ j) :
+    grothWeightedPrefixArrow F σ i ⋙ CostructuredArrow.map (S := Grothendieck.forget F) (σ.map f).base =
+      (simplexPrefixInclusion i.val j.val (leOfHom f)).toOrderHom.monotone.functor ⋙
+        grothWeightedPrefixArrow F σ j
+
+theorem grothWeightedPrefixFiber_naturality {i j : Fin (n+1)} (f : i ⟶ j) :
+    (simplexPrefixInclusion i.val j.val (leOfHom f)).toOrderHom.monotone.functor ⋙
+        grothWeightedPrefixFiber F σ j =
+      grothWeightedPrefixFiber F σ i ⋙ (F.map (σ.map f).base).toFunctor
+```
+
+#### GrothendieckWeightedNerveCoefficients（43行）
+
+```lean
+def grothWeightedNerveCoefficients :
+    simplexPrefixWeight n ⟶ (σ ⋙ Grothendieck.forget F) ⋙ (F ⋙ nerveFunctor)
+
+def grothWeightedNerveSimplex : weightedNerveSimplex (F ⋙ nerveFunctor) n
+
+theorem grothWeightedNerveSimplex_base :
+    (grothWeightedNerveSimplex F σ).1 = σ ⋙ Grothendieck.forget F
+```
+
+#### GrothendieckWeightedNerveForward（66行）
+
+```lean
+theorem grothWeightedPrefixArrow_reindex {m n : SimplexCategory} (α : m ⟶ n)
+    (σ : ComposableArrows (Grothendieck F) n.len) (i : Fin (m.len+1)) :
+    grothWeightedPrefixArrow F (α.toOrderHom.monotone.functor ⋙ σ) i =
+      (simplexPrefixRestriction α i).toOrderHom.monotone.functor ⋙
+        grothWeightedPrefixArrow F σ (α.toOrderHom i)
+
+theorem grothWeightedPrefixFiber_reindex {m n : SimplexCategory} (α : m ⟶ n)
+    (σ : ComposableArrows (Grothendieck F) n.len) (i : Fin (m.len+1)) :
+    grothWeightedPrefixFiber F (α.toOrderHom.monotone.functor ⋙ σ) i =
+      (simplexPrefixRestriction α i).toOrderHom.monotone.functor ⋙
+        grothWeightedPrefixFiber F σ (α.toOrderHom i)
+
+theorem grothWeightedNerveSimplex_reindex {m n : SimplexCategory} (α : m ⟶ n)
+    (σ : ComposableArrows (Grothendieck F) n.len) :
+    grothWeightedNerveSimplex F (α.toOrderHom.monotone.functor ⋙ σ) =
+      weightedNerveSimplexMap (F ⋙ nerveFunctor) α (grothWeightedNerveSimplex F σ)
+
+def grothWeightedNerveForward : nerve (Grothendieck F) ⟶ weightedNerve (F ⋙ nerveFunctor)
+
+theorem grothWeightedNerveForward_projection :
+    grothWeightedNerveForward F ≫ weightedNerveProjection (F ⋙ nerveFunctor) =
+      nerveMap (Grothendieck.forget F)
+```
+
+## 195. R03eの逆向きの射列（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 5／全体 18（うち追加 6）。R03eは未完了。
+
+各weighted係数のYoneda表示を取り、prefixの最終対象を逆向きのGrothendieck対象とした。係数の自然性は、包含で制限した射列と基底の射に沿って送った射列の厳密な等式である。その最終対象への評価を型の移送に使い、同じ底を持つGrothendieck射を回収した。恒等射・合成則もこの自然性の射への評価と有限順序上の射の一意性から示し、逆向きの全射列に束ねた。
+
+264：新規二本の対象ビルド1,168 jobs・終了0、小監査115本866宣言・標準三公理のみ。実ハンドル19367の終了0を確認し、鍵返却済み。今回118行、累計115本・7,636行（外枠15,000）。R03eは347行／見込み500〜900行。sorry・独自公理0、計算上限変更なし。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。
+
+残りは、両往復と順向き写像の各次数での全単射性、そこからの同じ写像を前向きに持つ単体集合の同型、指定点の等式である。逆向き写像の面・退化との自然性を別に作り直さず、検証済みの順向き自然変換の各成分が可逆であることから全同型を得る。見込みの半分450行に達する前だが、現時点の残りは200〜450行と見積もる。R03d・R02・無条件のnative極限性はまだ閉じていない。
+
+### 195.1 型
+
+#### GrothendieckWeightedNerveInverseData（65行）
+
+```lean
+def grothWeightedNerveFiberChain (i : Fin (n+1)) : ComposableArrows (F.obj (s.1.obj i)) i.val
+
+theorem grothWeightedNerveFiberChain_naturality {i j : Fin (n+1)} (f : i ⟶ j) :
+    (simplexPrefixInclusion i.val j.val (leOfHom f)).toOrderHom.monotone.functor ⋙
+      grothWeightedNerveFiberChain F s j =
+        grothWeightedNerveFiberChain F s i ⋙ (F.map (s.1.map f)).toFunctor
+
+def grothWeightedNerveInverseObj (i : Fin (n+1)) : Grothendieck F
+
+def grothWeightedNerveInverseIndex {i j : Fin (n+1)} (f : i ⟶ j) : Fin (j.val+1)
+
+theorem grothWeightedNerveInverse_source {i j : Fin (n+1)} (f : i ⟶ j) :
+    (F.map (s.1.map f)).toFunctor.obj (grothWeightedNerveInverseObj F s i).fiber =
+      (grothWeightedNerveFiberChain F s j).obj (grothWeightedNerveInverseIndex f)
+
+def grothWeightedNerveInverseMap {i j : Fin (n+1)} (f : i ⟶ j) :
+    grothWeightedNerveInverseObj F s i ⟶ grothWeightedNerveInverseObj F s j
+
+theorem grothWeightedNerveInverseMap_base {i j : Fin (n+1)} (f : i ⟶ j) :
+    (grothWeightedNerveInverseMap F s f).base = s.1.map f
+```
+
+#### GrothendieckWeightedNerveInverseFunctor（53行）
+
+```lean
+theorem grothWeightedNerveInverseMap_id (i : Fin (n+1)) :
+    grothWeightedNerveInverseMap F s (𝟙 i) = 𝟙 (grothWeightedNerveInverseObj F s i)
+
+theorem grothWeightedNerveInverseMap_comp {i j k : Fin (n+1)} (f : i ⟶ j) (g : j ⟶ k) :
+    grothWeightedNerveInverseMap F s (f ≫ g) =
+      grothWeightedNerveInverseMap F s f ≫ grothWeightedNerveInverseMap F s g
+
+def grothWeightedNerveInverseSimplex : ComposableArrows (Grothendieck F) n
+
+theorem grothWeightedNerveInverseSimplex_base :
+    grothWeightedNerveInverseSimplex F s ⋙ Grothendieck.forget F = s.1
+```
+
+## 196. R03eの半分での実測（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 5／全体 18（うち追加 6）。R03eは対象ビルド前で未完了。
+
+検証済み347行に、両往復・全同型・指定頂点の作業木の四本259行を加えて606行となり、当初見込み500〜900行の半分450行を超えた。作業木を含む累計は7895行／外枠15,000行。両往復と全同型はまとめた個別検査の実ハンドル11719で終了0。指定頂点はまだ個別検査中であり、四本の対象ビルド・小監査は未実施。この時点で未検証分をコミットしない。
+
+残りは指定頂点の次数零の計算、四本の対象ビルドと小監査である。型は§192のR03eを保持しており、見込み500〜900行以内で閉じる見通し。R03dの後半は、同じ底上のKan分類と元のaugmentationの指定点の照合が引き続き必要であり、R03eだけでnative極限性が得られたとは扱わない。
+
+## 197. R03e完了：同じ射影と指定点を持つ厳密なweighted nerve同型（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 6／全体 18（うち追加 6）。今回R03eが完了。R02・R03・R03dは未完了。
+
+元のweighted係数から回収した射列のprefixは、元の同じ係数の全射列に一致する。対象は係数の自然性の対象への評価、射は同じ関手等式の射への評価で示し、Yonedaの往復で元のweighted単体へ戻した。逆方向の往復も、元のprefixの最終対象と最終射の評価から、元のGrothendieck射列そのものへ戻る等式として示した。
+
+これらの両往復から順向きの既存全写像の各次数が全単射となり、その同じ全写像を前向きに持つ単体集合の同型を得た。元の底への射影の厳密な等式と、元の各fiber対象の指定頂点が同じconstant liftになる等式を併記し、§192のR03eの型をそのまま閉じた。逆写像の自然性を仮定したり、対象ごとの同値で代用したりしていない。
+
+265：四本の対象ビルド1,570 jobs・終了0、小監査119本885宣言・標準三公理のみ。実ハンドル23927の終了0を確認し、鍵返却済み。直前の全個別検査は実ハンドル32248の終了0。今回260行、累計119本・7,896行／外枠15,000。R03eは607行で、当初見込み500〜900行の範囲内（上端との差−293行）。モジュール実ファイルの再集計で§195・196の二行の誤算も修正した。sorry・独自公理0、計算上限変更なし。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。
+
+R03dの後半へ進むにあたり、`weightedNerveMap_isPrecompositionEquivalence` の入力には両係数のKan性が要ることを確認した。したがって、一般の `nerve (F.obj i)` からKan化への射にそのまま適用することはできない。continuousLeftFibrationReplacementの単位はleft anodyneで、`continuousLeftFibrationHomIso` は同じ底上の全相対Homを保つが、これだけで元の係数の全分類との同型や指定点の正規化が得られたとはしない。次はR03eを同じ底のOverの同型へ持ち上げる既存構成の法則を使い、相対Kan比較の残りを確認する。§192.1の候補はまだ一覧に加えず、未証明のまま使わない。
+
+### 197.1 型
+
+共通入力は `{I : Type u} [SmallCategory I] (F : I ⥤ Cat.{u,u})`。単体の法則ではさらに `{n : ℕ}` と `s : weightedNerveSimplex (F ⋙ nerveFunctor) n` または `σ : ComposableArrows (Grothendieck F) n` を用いる。
+
+#### GrothendieckWeightedNerveRecovery（63行）
+
+```lean
+theorem grothWeightedPrefixFiber_inverse_obj (i : Fin (n+1)) (k : Fin (i.val+1)) :
+    (grothWeightedPrefixFiber F (grothWeightedNerveInverseSimplex F s) i).obj k =
+      (grothWeightedNerveFiberChain F s i).obj k
+
+theorem grothWeightedPrefixFiber_inverse (i : Fin (n+1)) :
+    grothWeightedPrefixFiber F (grothWeightedNerveInverseSimplex F s) i =
+      grothWeightedNerveFiberChain F s i
+
+theorem grothWeightedNerveSimplex_inverse :
+    grothWeightedNerveSimplex F (grothWeightedNerveInverseSimplex F s) = s
+```
+
+#### GrothendieckWeightedNerveRetraction（82行）
+
+```lean
+theorem grothWeightedNerveFiberChain_forward (i : Fin (n+1)) :
+    grothWeightedNerveFiberChain F (grothWeightedNerveSimplex F σ) i =
+      grothWeightedPrefixFiber F σ i
+
+theorem grothWeightedNerveInverseObj_forward (i : Fin (n+1)) :
+    grothWeightedNerveInverseObj F (grothWeightedNerveSimplex F σ) i = σ.obj i
+
+theorem grothWeightedPrefixFiber_last_map {i j : Fin (n+1)} (f : i ⟶ j) :
+    (grothWeightedPrefixFiber F σ j).map (homOfLE
+      (show grothWeightedNerveInverseIndex f ≤ Fin.last j.val from leOfHom f)) =
+        eqToHom (by
+          rw [grothWeightedPrefixFiber_obj]
+          rfl) ≫ (σ.map f).fiber ≫
+            eqToHom (grothWeightedPrefixFiber_last F σ j).symm
+
+theorem grothWeightedNerveInverseSimplex_forward :
+    grothWeightedNerveInverseSimplex F (grothWeightedNerveSimplex F σ) = σ
+```
+
+#### GrothendieckWeightedNerveIso（40行）
+
+```lean
+theorem grothWeightedNerveForward_bijective (n : ℕ) :
+    Function.Bijective (grothWeightedNerveSimplex F (n := n))
+
+def grothendieckWeightedNerveIso : nerve (Grothendieck F) ≅ weightedNerve (F ⋙ nerveFunctor)
+
+theorem grothendieckWeightedNerveIso_projection :
+    (grothendieckWeightedNerveIso F).hom ≫ weightedNerveProjection (F ⋙ nerveFunctor) =
+      nerveMap (Grothendieck.forget F)
+```
+
+#### GrothendieckWeightedNerveVertex（75行）
+
+```lean
+theorem grothWeightedNerveForward_vertex (i : I) (x : F.obj i) :
+    (grothWeightedNerveForward F).app (Opposite.op ⦋0⦌)
+      (nerveVertex (⟨i,x⟩ : Grothendieck F)) =
+        (weightedNerveConstantLift (F ⋙ nerveFunctor) i).app
+          (Opposite.op ⦋0⦌) (nerveVertex x)
+
+theorem exists_grothendieckWeightedNerveIso :
+    ∃ e : nerve (Grothendieck F) ≅ weightedNerve (F ⋙ nerveFunctor),
+      e.hom ≫ weightedNerveProjection (F ⋙ nerveFunctor) =
+        nerveMap (Grothendieck.forget F) ∧
+      ∀ (i : I) (x : F.obj i),
+        e.hom.app (Opposite.op ⦋0⦌) (nerveVertex (⟨i,x⟩ : Grothendieck F)) =
+          (weightedNerveConstantLift (F ⋙ nerveFunctor) i).app
+            (Opposite.op ⦋0⦌) (nerveVertex x)
+```
+
+## 198. 同じ底上の置換同型と元の単位の照合（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 6／全体 18（うち追加 6）。R03e完了、R03d・R02・R03は未完了。
+
+検証済みの同じ射影の等式をOver.isoMkに渡し、R03eを元の同じ底のOverの同型にした。この同型を既存のcontinuousLeftFibrationReplacementに送り、元の指定された置換の単位との厳密な可換性を単位の自然性から示した。いずれも既存構成の同型保存・自然性の法則であり、新しい中間の定理の追加ではない。元の係数からの相対Kan分類が成立したとは主張しない。
+
+266：新規一本の対象ビルド1,517 jobs・終了0、小監査120本888宣言・標準三公理のみ。実ハンドル70589の終了0を確認し、鍵返却済み。個別検査も実ハンドル61213の終了0。今回45行、累計120本・7,941行／外枠15,000。sorry・独自公理0、計算上限変更なし。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。
+
+残りは§197のとおり、同じ底上のKan分類と元のaugmentationの指定点の回収、それを全共同Hom比較へ接続することである。Kan係数を仮定するweightedNerveMapの既存の前合成同値判定を、一般の非Kanなnerve係数へ適用しない。候補§192.1はなお未証明・未登録。R03dの型・固定始域への一致・元の標準脚の型を保って続ける。
+
+### 198.1 型
+
+共通入力は `{I : Type u} [SmallCategory I] (F : I ⥤ Cat.{u,u})`。
+
+#### GrothendieckWeightedNerveOver（45行）
+
+```lean
+def grothendieckWeightedNerveOverIso :
+    Over.mk (nerveMap (Grothendieck.forget F)) ≅ Over.mk (weightedNerveProjection (F ⋙ nerveFunctor))
+
+def grothendieckWeightedNerveReplacementIso :
+    (continuousLeftFibrationReplacement (nerve I)).obj
+      (Over.mk (nerveMap (Grothendieck.forget F))) ≅
+    (continuousLeftFibrationReplacement (nerve I)).obj
+      (Over.mk (weightedNerveProjection (F ⋙ nerveFunctor)))
+
+theorem grothendieckWeightedNerveReplacementIso_unit :
+    ((continuousLeftFibrationReplacementUnit (nerve I)).app
+      (Over.mk (nerveMap (Grothendieck.forget F)))).left ≫
+        (grothendieckWeightedNerveReplacementIso F).hom.left =
+      (grothendieckWeightedNerveOverIso F).hom.left ≫
+        ((continuousLeftFibrationReplacementUnit (nerve I)).app
+          (Over.mk (weightedNerveProjection (F ⋙ nerveFunctor)))).left
+```
+
+## 199. 底上の同じ置換同型を全分類へ運ぶ（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 6／全体 18（うち追加 6）。R03d・R02・R03は未完了。
+
+前のターンはR03eの完成とOver・置換単位の照合まで進んだため、進捗あり。今回は作業木がcleanであることとコミット4baf71306を確認して継続した。既存の `leftClassification_overIso` を、検証済みの同じ底上の二つの置換同型に適用した。比較は底全体のFunctorIsoであり、fiberごとの同型による代用ではない。同型保存の既存の法則で、一覧の中間の定理の追加ではない。
+
+267：新規一本の対象ビルド3,125 jobs・終了0、小監査121本892宣言・標準三公理のみ。実ハンドル26874の終了0を確認し、鍵返却済み。個別検査は実ハンドル40480の終了0。今回36行、累計121本・7,977行／外枠15,000。sorry・独自公理0、計算上限変更なし。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。
+
+次に必要なCat値図式の相対Kan比較の分類側の候補を一時ファイル `/private/tmp/CheckISW2CatLeftStraighteningType.lean` のPropとして確認した（実ハンドル60059・終了0）。元の置換単位と元の前向きweighted mapの厳密な等式も保持する、より強い全空間の比較の候補は `/private/tmp/CheckISW2GrothKanLiftType.lean` のPropとして確認した（実ハンドル2743・終了0）。いずれもこの時点では未証明で一覧に追加せず、仮定として使わない。まず既存のleft-anodyne単位に沿う相対延長を使い、元の比較を保持する全空間の射を構成する。射の存在だけでは前合成同値性は得られないことを区別する。
+
+### 199.1 型（共通入力は `{I : Type u} [SmallCategory I] (F : I ⥤ Cat.{u,u})`）
+
+#### GrothendieckWeightedNerveClassification（36行）
+
+```lean
+def grothendieckWeightedNerveReplacementClassificationIso :
+    FunctorIso
+      (leftStraighteningInfinityDiagram
+        ((continuousLeftFibrationReplacement (nerve I)).obj
+          (Over.mk (nerveMap (Grothendieck.forget F)))).hom)
+      (leftStraighteningInfinityDiagram
+        ((continuousLeftFibrationReplacement (nerve I)).obj
+          (Over.mk (weightedNerveProjection (F ⋙ nerveFunctor)))).hom)
+```
+
+## 200. R03f：元の単位を固定する相対Kan比較（紙、11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 6／全体 19（うち追加 7）。R03fを追加、未証明。R03d・R02・R03も未完了。
+
+IS-W2 §19の「同じまとまりで一つの見込み1,500行以下」の枠で、次の独立の中間定理R03fを一覧に加える。Cat値図式の各fiberのnerveをKan化することと、そのGrothendieck射影の同じ底上のleft fibration置換を比較する相対版のgroupoid completionである。R03eは厳密な二模型の同型のみで、この相対Kan化を含まないため、既存の構成の法則として数えない。
+
+### 200.1 型
+
+共通の名前空間はGrothendieckWeightedNerveOverと同じ。`exInfinity`・`exInfinityUnit` はTheExInfinityFunctor、`IsPrecompositionEquivalence` はTheHomotopyTheoryOfInfinityCategories.Equivalenceの既存の宣言。
+
+```lean
+theorem exists_grothendieckKanCoefficientComparison
+    {I : Type u} [SmallCategory I] (F : I ⥤ Cat.{u,u}) :
+  let G := (F ⋙ nerveFunctor) ⋙ exInfinity
+  let P : Over (nerve I) := Over.mk (nerveMap (Grothendieck.forget F))
+  let R := (continuousLeftFibrationReplacement (nerve I)).obj P
+  let η : F ⋙ nerveFunctor ⟶ G :=
+    Functor.whiskerLeft (F ⋙ nerveFunctor) exInfinityUnit
+  ∃ f : R.left ⟶ weightedNerve G,
+    f ≫ weightedNerveProjection G = R.hom ∧
+    ((continuousLeftFibrationReplacementUnit (nerve I)).app P).left ≫ f =
+      grothWeightedNerveForward F ≫ weightedNerveMap η ∧
+    IsPrecompositionEquivalence f
+```
+
+このPropの型は一時ファイルCheckISW2GrothKanLiftType.leanで確認済み（実ハンドル2743、終了0）。本体に未証明の定理や仮定として入れない。元の全空間の射・同じ底・指定された元の単位との等式を保持する。単なる分類像の存在より強い型であり、後で元の指定点への回収を追える形にする。R03dの固定始域比較との一致の型は変えない。
+
+### 200.2 見込みと経路
+
+置き場所は同じFibrationsOverOrdinaryCategories/GrothendieckKan*.lean。見込み900〜1,450行。元の係数の単位からの射と相対延長（約70〜150行）、bar/scaffoldと元のGrothendieck比較の照合（100〜200行）、同じ底上でfiberの全辺を可逆化する比較の検証（500〜750行）、全空間の前合成同値と元の単位の正規化を束ねる部分（150〜350行）を想定する。独立の中間定理としての上端1,450行であり、任意の細分で§19の枠を回避しない。半分の725行で止まらずに実測と残りを報告する。
+
+短縮の候補：元のnerve係数はquasicategoryであるため、`tautScaffold_isPrecompositionEquivalence_of_quasicategory` を使える。前の一般のweightedNerveMapのKan係数用判定との違いはここにある。R03eとこのscaffoldを介して元の射を保持し、各fiberのEx∞単位が全辺を可逆にすることを同じ底の比較として示す。全空間の通常の弱ホモトピー同値だけで相対版を代用しない。相対延長の存在の既存の法則はすでに個別検査を通ったが、それだけでは最後のIsPrecompositionEquivalenceは得られない。fiberごとの可逆化と同じ底上の比較を示す数学が残る。
+
+⑤aの欄、既存FramedLimit*・CAlgUnderlyingDerivedComparison、点つきKanのTot、[ModelCategory SSet]を追加・変更しない。R03fが閉じた後も、元の要素圏の反対・augmentationとの照合とR03dへの接続を別に検収する。
+
+## 201. 元の置換単位を固定したKan係数への相対延長（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 6／全体 19（うち追加 7）。R03f・R03d・R02・R03は未完了。
+
+元の全Cat図式のnerveに同じEx∞単位を後合成し、R03eの前向き全写像とweightedNerveMapで、同じ底のKan係数への実射を構成した。元の射影との厳密な等式を確認し、既存のleft-anodyne単位に対する相対延長の定理で、その元の単位との合成が元の実射そのものである延長を得た。この存在と二つの等式は既存構成の法則であり、R03fの最後の前合成同値性はまだ証明していない。
+
+268は不足していた既存ContinuousLeftFibrationAnodyneの対象ビルド1,506 jobsまでは成功したが、その後の個別検査でOver対象の暗黙引数の推論に失敗した（実ハンドル95897・終了1）。対象を明示して個別検査16203・終了0を確認し、269で新規一本の対象ビルド1,866 jobs・終了0と小監査122本899宣言・標準三公理のみを確認した。実ハンドル94522の終了0を確認し、鍵返却済み。
+
+今回69行、累計122本・8,046行／外枠15,000。R03fは69行／見込み900〜1,450行。sorry・独自公理0、計算上限変更なし。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。次はquasicategory値nerve係数のtaut scaffoldをR03eへ接続し、元の射を保つbar/scaffold比較を作る。
+
+### 201.1 型
+
+共通入力は `{I : Type u} [SmallCategory I] (F : I ⥤ Cat.{u,u})`。各係数のKan性は同じEx∞の既存のinstanceにより明示した。
+
+#### GrothendieckKanCoefficientLift（69行）
+
+```lean
+abbrev grothendieckKanCoefficients : I ⥤ SSet.{u}
+
+def grothendieckKanCoefficientUnit : F ⋙ nerveFunctor ⟶ grothendieckKanCoefficients F
+
+def grothendieckKanCoefficientMap :
+    nerve (Grothendieck F) ⟶ weightedNerve (grothendieckKanCoefficients F)
+
+theorem grothendieckKanCoefficientMap_projection :
+    grothendieckKanCoefficientMap F ≫ weightedNerveProjection (grothendieckKanCoefficients F) =
+      nerveMap (Grothendieck.forget F)
+
+theorem exists_grothendieckKanCoefficientLift :
+    let P : Over (nerve I) := Over.mk (nerveMap (Grothendieck.forget F))
+    let R := (continuousLeftFibrationReplacement (nerve I)).obj P
+    ∃ f : R.left ⟶ weightedNerve (grothendieckKanCoefficients F),
+      f ≫ weightedNerveProjection (grothendieckKanCoefficients F) = R.hom ∧
+      ((continuousLeftFibrationReplacementUnit (nerve I)).app P).left ≫ f =
+        grothendieckKanCoefficientMap F
+```
+
+## 202. 元のbar/scaffoldとKan係数への射の照合（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 6／全体 19（うち追加 7）。R03f・R03d・R02・R03は未完了。
+
+元のCat図式のnerve係数にtaut scaffoldを取り、R03eの同じ逆射を後合成して、barから元のGrothendieck射列への全空間の射を得た。同じ基底への射影を保ち、元のKan係数への実射との合成は、barの元の係数単位の自然変換の後にKan係数のtaut scaffoldを続けた射と厳密に一致する。quasicategory係数用の既存のscaffold定理から、この元のbar→Grothendieck射列の射自身の前合成同値性も得た。Kan性を非Kanなnerve係数へ仮定していない。
+
+270：新規一本の対象ビルド2,389 jobs・終了0、小監査123本904宣言・標準三公理のみ。実ハンドル89697の終了0を確認し、鍵返却済み。個別検査66223も終了0。今回59行、累計123本・8,105行／外枠15,000。R03fは128行／見込み900〜1,450行。sorry・独自公理0、計算上限変更なし。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。
+
+残りは、係数のEx∞単位のbar上の相対的な性質から、元の単位を固定する延長の前合成同値性を得る部分である。対象ごとの通常の弱同値から全空間の圏同値を直接主張しない。
+
+### 202.1 型
+
+共通入力は `{I : Type u} [SmallCategory I] (F : I ⥤ Cat.{u,u})`。
+
+#### GrothendieckKanScaffold（59行）
+
+```lean
+def grothendieckNerveScaffold :
+    simplicialReplacement (F ⋙ nerveFunctor) ⟶ nerve (Grothendieck F)
+
+theorem grothendieckNerveScaffold_projection :
+    grothendieckNerveScaffold F ≫ nerveMap (Grothendieck.forget F) =
+      simplicialReplacementProjection (F ⋙ nerveFunctor)
+
+theorem grothendieckNerveScaffold_isPrecompositionEquivalence :
+    IsPrecompositionEquivalence (grothendieckNerveScaffold F)
+
+theorem grothendieckNerveScaffold_kanCoefficientMap :
+    grothendieckNerveScaffold F ≫ grothendieckKanCoefficientMap F =
+      simplicialReplacementMap (grothendieckKanCoefficientUnit F) ≫
+        tautScaffold (grothendieckKanCoefficients F)
+```
+
+## 203. R03f.1：Kan標的へのanodyne射のleft anodyne性（紙、11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 6／全体 20（うち追加 8）。R03f.1を追加、未証明。
+
+§19の同じまとまり・見込み1,500行以下の枠で、次の一般補題をR03f.1として加える。R03fのEx∞単位の相対的な持ち上げ性に使う数学的な中間定理であり、既存構成の自然性の法則と混同しない。
+
+```lean
+theorem anodyneExtensions_leftAnodyne_of_kanTarget
+    {X Y : SSet.{u}} [KanComplex Y] (f : X ⟶ Y)
+    (hf : SSet.anodyneExtensions f) :
+  leftAnodyneExtensions f
+```
+
+`leftAnodyneExtensions` はTheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrationsの既存の定義。このPropの型は一時ファイルCheckISW2AnodyneKanTargetLeftType.leanで確認済み（実ハンドル37011・終了0）。未証明の宣言や仮定として本体に入れない。
+
+置き場所はKerodon/TheHomotopyTheoryOfInfinityCategories/LeftAndRightFibrations/AnodyneKanTarget.leanを想定する。同名の既存ファイルはない。見込み150〜300行。左ホーンの持ち上げによって、Kan基底上のleft fibrationの全空間もKanであることを既存のkanComplex_of_leftHornFillersに渡せる。一般の持ち上げ問題をY上へ引き戻すと、その射影はKan複体間のleft fibrationであり、既存leftFibration_fibration_of_kanComplexから全ホーンを持ち上げる。hfのanodyne性でその引き戻した射影への持ち上げを得て、元の問題へ戻す。これをleftHornInclusions.rlp.llpとして束ねる。モデル構造の仮定は使わない。
+
+この補題が得られてもbarが係数のleft anodyne射をどのように保つかの検証と、元のR03fの前合成同値性は残る。R03f.1だけをもってR03fまたはR03dの完成とは扱わない。R03f.1の実測は独立に記録し、外枠15,000行にも含める。次はこの型の証明に進む。
+
+## 204. R03f.1完了：Kan標的へのanodyne射はleft anodyne（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 7／全体 20（うち追加 8）。R03f.1完了。R03f・R03d・R02・R03は未完了。
+
+Kan基底上のleft fibrationについて、基底の左ホーンをKan性で充填し、その充填をleft fibrationで持ち上げた。既存kanComplex_of_leftHornFillersにより全空間もKanとなる。次に任意のleft fibrationへの元の持ち上げ問題をKan標的へ引き戻し、その射影の全ホーン持ち上げ性へanodyne性を適用して元へ戻した。元の射そのものがleftHornInclusions.rlp.llpに属することを証明した。
+
+271：新規一本の対象ビルド1,608 jobs・終了0、小監査124本906宣言・標準三公理のみ。実ハンドル74994の終了0を確認し、鍵返却済み。個別検査66431も終了0。今回61行、累計124本・8,166行／外枠15,000。R03f.1は見込み150〜300行に対して61行（上端との差−239行）。既存のkanComplex_of_leftHornFillersとleftFibration_fibration_of_kanComplexで短縮できた。R03f本体の128行とは独立に記録する。
+
+SSet.modelCategoryQuillenのスコープは、fibrationを全ホーンの右持ち上げ性として読むためにだけ用いる。[ModelCategory SSet]は追加していない。sorry・独自公理0、計算上限変更なし。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。次は同じEx∞単位のleft anodyne性へ適用し、bar上への移送を検討する。
+
+### 204.1 型
+
+#### AnodyneKanTarget（61行）
+
+```lean
+theorem leftFibration_total_kanComplex {E B : SSet.{u}} [KanComplex B]
+    (p : E ⟶ B) [LeftFibration p] : KanComplex E
+
+theorem anodyneExtensions_leftAnodyne_of_kanTarget
+    {X Y : SSet.{u}} [KanComplex Y] (f : X ⟶ Y)
+    (hf : SSet.anodyneExtensions f) : leftAnodyneExtensions f
+```
+
+## 205. 元のEx∞単位のleft anodyne性への適用（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 7／全体 20（うち追加 8）。R03f・R03d・R02・R03は未完了。
+
+R03f.1を元の同じexInfinityUnitと既存exInfinityUnit_anodyneへ適用し、その単位自身のleft anodyne性を得た。既存構成の性質の適用であり、一覧の新しい数学的定理には数えない。関手・単位の変更や別のKan模型への置き換えはしていない。
+
+272：新規一本の対象ビルド1,670 jobs・終了0、小監査125本907宣言・標準三公理のみ。実ハンドル72538の終了0を確認し、鍵返却済み。個別検査15355も終了0。今回23行、累計125本・8,189行／外枠15,000。R03f本体の作業は151行、独立のR03f.1は61行。sorry・独自公理0、計算上限変更なし。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。
+
+### 205.1 型
+
+#### ExInfinityUnitLeftAnodyne（23行）
+
+```lean
+theorem exInfinityUnit_leftAnodyne (X : SSet.{u}) :
+    leftAnodyneExtensions (exInfinityUnit.app X)
+```
+
+## 206. R03f.2：barが各成分のleft anodyne性を保つ（紙、11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 7／全体 21（うち追加 9）。R03f.2を追加、未証明。
+
+同じR03fのまとまりで、§19の見込み1,500行以下の枠により次の独立の中間定理を加える。全ての自然変換に対する一般のbarの保存定理であり、既存の単位の自然性の法則として処理しない。R03f.1のKan標的への判定とは異なる数学である。
+
+```lean
+theorem simplicialReplacementMap_leftAnodyne
+    {I : Type u} [SmallCategory I] {F G : I ⥤ SSet.{u}}
+    (η : F ⟶ G) (hη : ∀ i, leftAnodyneExtensions (η.app i)) :
+  leftAnodyneExtensions (simplicialReplacementMap η)
+```
+
+名前空間はFibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories。`leftAnodyneExtensions` はTheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrationsの既存の性質。型は `/private/tmp/CheckISW2ReplacementLeftType.lean` のPropで確認した（実ハンドル31074・終了0）。未証明の宣言や仮定を本体に登録しない。
+
+見込み650〜1,200行。置き場所は一般の対角の道具がHomotopicalAlgebra/Simplicial/DiagonalLeftAnodyne.lean、bar固有がFibrationsOverOrdinaryCategories/SimplicialReplacementLeftAnodyne*.lean。一般の対角の相対持ち上げ80〜180行、barの行の余積表示と退化のlatchingの相対表示350〜650行、既存のsimplicialReplacementMapへの同定・全移送150〜300行を見込む。半分600行で実測と残りを報告する。独立のbarの保存定理の全体として見積もり、細分で§19の枠を回避しない。
+
+短い経路：既存DiagonalAnodyne.diagonal_map_anodyneは全ホーン用の射の性質を固定しているため、その結論をleft anodyneへ読み替えない。同じ対角の右随伴とrelativeMatchingArrowIsoの証明を、left fibrationと境界内部Homへ適用する。必要なleftAnodyneExtensions_pushoutObjObj_left/rightとleftFibration_pullbackObjObjπは既存のLeftAnodynePushoutProductにある。barの各行は元の基底射列で添字づけた係数の余積であり、BarRowsCoproductの既存の余積表示を再利用する。退化の分裂により相対latchingの非退化部分を係数の同じη.app iの余積へ同定し、left anodyne性を渡す。これをReedy持ち上げと対角の随伴で元の全写像へ戻す。
+
+R03f.2が得られれば、元の係数のEx∞単位に適用し、§202の同じscaffold正方形と§201の元の単位を固定した延長へ接続する。ただし、この時点ではR03fの延長の前合成同値性もR03dの両変数比較も未証明。元の指定点・固定始域の比較の一致という型を保って進める。
+
+## 207. R03f.2の対角の持ち上げと元のbarの行（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 7／全体 21（うち追加 9）。R03f.2・R03f・R03d・R02・R03は未完了。
+
+前のターンではR03f.1とEx∞単位への適用が検証済みでコミットされていたため、進捗あり。開始時にcleanな作業木とd4bf795eeを確認した。今回は対角の右随伴の相対matching射を、既存の同じrelativeMatchingArrowIsoで境界内部Homへ同定し、left fibration性を移した。Reedyの持ち上げと元の対角の随伴により、Reedy left anodyneな射の対角そのものがleft anodyneであることを示した。
+
+barの各行は、元の基底射列σで添字づけた同じ係数F(σ(0))の単体集合として構成し、指定された同じ包含を持つ実際の余積であることを確認した。各行の任意の面・退化の写像は、元の基底射列の始点から新たな始点への射による係数の輸送で定義した。恒等射・合成則も元のIとFの関手則から示し、一つの二重単体集合の図式へ束ねた。BarRowsCoproductと同じ余積による考え方を使うが、一般のKerodon側からEInfinityへの依存を追加しないため、同じ宇宙の依存和で直接示した。
+
+273：対角の新規一本の対象ビルド1,635 jobs・終了0、小監査126本909宣言・標準三公理のみ（実ハンドル71484・終了0）。274：行の新規二本の対象ビルド1,172 jobs・終了0、小監査128本931宣言・標準三公理のみ（実ハンドル8005・終了0）。両方とも鍵返却済み。個別検査は10567・74674・68021の終了0を確認した。
+
+今回47＋71＋69＝187行、累計128本・8,376行／外枠15,000。R03f.2は187行／見込み650〜1,200行、まだ半分600行前。元のsimplicialReplacementMapへの対角の同定と、相対latchingが元の各η.app iのleft anodyne性を持つことが残る。sorry・独自公理0、計算上限変更なし。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。
+
+### 207.1 型
+
+行の共通入力は `{I : Type u} [SmallCategory I] (F : I ⥤ SSet.{u})`、固定した行ではさらに `(n : ℕ)`。
+
+#### DiagonalLeftAnodyne（47行）
+
+```lean
+theorem relativeMatching_leftFibrations {E B : SSet.{u}} (p : E ⟶ B)
+    (hp : leftFibrations p) (n : ℕ) :
+    leftFibrations (relativeMatchingMap simplexOp (Opposite.op (SimplexCategory.mk n))
+      (internalHomRight.map p))
+
+theorem diagonal_map_leftAnodyne {A B : SimplexCategoryᵒᵖ ⥤ SSet.{u}} (f : A ⟶ B)
+    (hf : reedyLeft simplexOp leftAnodyneExtensions f) :
+    leftAnodyneExtensions (diagonal.map f)
+```
+
+#### SimplicialReplacementRows（71行）
+
+```lean
+def simplicialReplacementRow : SSet.{u}
+
+def simplicialReplacementRowInclusion (σ : ComposableArrows I n) :
+    F.obj (σ.obj 0) ⟶ simplicialReplacementRow F n
+
+def simplicialReplacementRowCofan : Cofan (fun σ : ComposableArrows I n => F.obj (σ.obj 0))
+
+def simplicialReplacementRowDesc
+    (s : Cofan (fun σ : ComposableArrows I n => F.obj (σ.obj 0))) :
+    simplicialReplacementRow F n ⟶ s.pt
+
+def simplicialReplacementRowIsColimit : IsColimit (simplicialReplacementRowCofan F n)
+```
+
+#### SimplicialReplacementRowReindex（69行）
+
+```lean
+def simplicialReplacementRowReindex {m n : SimplexCategory} (α : m ⟶ n) :
+    simplicialReplacementRow F n.len ⟶ simplicialReplacementRow F m.len
+
+theorem simplicialReplacementRowReindex_id (n : SimplexCategory) :
+    simplicialReplacementRowReindex F (𝟙 n) = 𝟙 (simplicialReplacementRow F n.len)
+
+theorem simplicialReplacementRowReindex_comp {l m n : SimplexCategory}
+    (α : l ⟶ m) (β : m ⟶ n) :
+    simplicialReplacementRowReindex F (α ≫ β) =
+      simplicialReplacementRowReindex F β ≫ simplicialReplacementRowReindex F α
+
+def simplicialReplacementRows : SimplexCategoryᵒᵖ ⥤ SSet.{u}
+```
+
+## 208. 元の係数射・対角同型・退化部分の照合（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 7／全体 21（うち追加 9）。R03f.2・R03f・R03d・R02・R03は未完了。
+
+元の係数の自然変換を同じ基底射列の全行に適用し、全ての面・退化との可換性を元の自然性から示した。二重単体集合の対角は、同じ基底射列の係数のYoneda表示だけを変える全同型で元のsimplicial replacementと同定した。元の係数射の対角が、その全同型と指定されたsimplicialReplacementMapを通る同じ射に厳密に一致する等式も示した。
+
+任意の全射作用素が零を零へ送ることから、退化作用素の係数の輸送は同じ始点の等式に沿うeqToHomそのものとなる。各行の任意の基底部分集合を部分複体とし、基底の退化・非退化の二部分が交わらず元の行全体を覆うことを確認した。係数の自然変換は同じ部分を保ち、元の包含と厳密に可換する。この時点では実際の外側のlatchingとの同型性をまだ主張しない。
+
+275：三本の対象ビルド1,296 jobs・終了0、小監査131本947宣言・標準三公理のみ（実ハンドル97624・終了0）。276：部分複体一本の対象ビルド1,174 jobs・終了0、小監査132本956宣言・標準三公理のみ（実ハンドル27094・終了0）。両方とも鍵返却済み。個別検査82533・99836・13226・16512の終了0を確認した。
+
+今回47＋69＋42＋64＝222行、累計132本・8,598行／外枠15,000。R03f.2は409行／見込み650〜1,200行。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。sorry・独自公理0、計算上限変更なし。次は元のlatching図式を同じ退化部分への余錐として読み、その余極限性から相対latchingを非退化成分の同じ係数射へ分離する。
+
+### 208.1 型
+
+共通の入力は `{I : Type u} [SmallCategory I]`。係数は `F G : I ⥤ SSet.{u}`、その射は `η : F ⟶ G`。固定した行では `(n : ℕ)` を用いる。
+
+#### SimplicialReplacementRowMaps（47行）
+
+```lean
+def simplicialReplacementRowMap (n : ℕ) :
+    simplicialReplacementRow F n ⟶ simplicialReplacementRow G n
+
+theorem simplicialReplacementRowMap_reindex {m n : SimplexCategory} (α : m ⟶ n) :
+    simplicialReplacementRowReindex F α ≫ simplicialReplacementRowMap η m.len =
+      simplicialReplacementRowMap η n.len ≫ simplicialReplacementRowReindex G α
+
+def simplicialReplacementRowsMap : simplicialReplacementRows F ⟶ simplicialReplacementRows G
+```
+
+#### SimplicialReplacementDiagonal（69行）
+
+```lean
+def simplicialReplacementDiagonalHom (F : I ⥤ SSet.{u}) :
+    diagonal.obj (simplicialReplacementRows F) ⟶ simplicialReplacement F
+
+def simplicialReplacementDiagonalIso (F : I ⥤ SSet.{u}) :
+    diagonal.obj (simplicialReplacementRows F) ≅ simplicialReplacement F
+
+theorem simplicialReplacementDiagonalIso_naturality {F G : I ⥤ SSet.{u}} (η : F ⟶ G) :
+    diagonal.map (simplicialReplacementRowsMap η) ≫ (simplicialReplacementDiagonalIso G).hom =
+      (simplicialReplacementDiagonalIso F).hom ≫ simplicialReplacementMap η
+```
+
+#### SimplicialReplacementRowDegeneracies（42行）
+
+```lean
+theorem simplicialReplacement_epi_zero {m n : SimplexCategory} (α : m ⟶ n) [Epi α] :
+    α.toOrderHom 0 = 0
+
+theorem simplicialReplacement_epi_first {m n : SimplexCategory} (α : m ⟶ n) [Epi α]
+    (σ : ComposableArrows I n.len) :
+    (α.toOrderHom.monotone.functor ⋙ σ).obj 0 = σ.obj 0
+
+theorem simplicialReplacement_epi_coefficient {m n : SimplexCategory} (α : m ⟶ n) [Epi α]
+    (σ : ComposableArrows I n.len) :
+    F.map (σ.map (homOfLE (Fin.zero_le (α.toOrderHom 0)))) =
+      eqToHom (congrArg (fun i => F.obj (σ.obj i)) (simplicialReplacement_epi_zero α).symm)
+```
+
+#### SimplicialReplacementRowParts（64行）
+
+```lean
+def simplicialReplacementRowPart (F : I ⥤ SSet.{u}) (n : ℕ)
+    (P : Set (ComposableArrows I n)) : (simplicialReplacementRow F n).Subcomplex
+
+abbrev simplicialReplacementDegenerateRow (F : I ⥤ SSet.{u}) (n : ℕ)
+
+abbrev simplicialReplacementNondegenerateRow (F : I ⥤ SSet.{u}) (n : ℕ)
+
+theorem simplicialReplacementRowParts_sup (F : I ⥤ SSet.{u}) (n : ℕ) :
+    simplicialReplacementDegenerateRow F n ⊔ simplicialReplacementNondegenerateRow F n = ⊤
+
+theorem simplicialReplacementRowParts_inf (F : I ⥤ SSet.{u}) (n : ℕ) :
+    simplicialReplacementDegenerateRow F n ⊓ simplicialReplacementNondegenerateRow F n = ⊥
+
+def simplicialReplacementRowPartMap {F G : I ⥤ SSet.{u}} (η : F ⟶ G) (n : ℕ)
+    (P : Set (ComposableArrows I n)) :
+    (simplicialReplacementRowPart F n P : SSet.{u}) ⟶ simplicialReplacementRowPart G n P
+
+theorem simplicialReplacementRowPartMap_inclusion {F G : I ⥤ SSet.{u}} (η : F ⟶ G)
+    (n : ℕ) (P : Set (ComposableArrows I n)) :
+    simplicialReplacementRowPartMap η n P ≫ (simplicialReplacementRowPart G n P).ι =
+      (simplicialReplacementRowPart F n P).ι ≫ simplicialReplacementRowMap η n
+```
+
+## 209. 実際のlatching余錐と元の全単体の回収（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 7／全体 21（うち追加 9）。R03f.2・R03f・R03d・R02・R03は未完了。
+
+元の外側のlatching図式の各脚は、真に低い次数からの基底射列の像を持つため、同じ行の退化部分に厳密に因子分解する。これらの全脚が元の作用素の合成則で自然な余錐となることを示し、実際のlatchingの余極限から同じ退化部分への比較射を得た。
+
+退化基底の既存の非退化表示は、元と同じ次数の全射が恒等射であることにより、真に低い次数の表示へできる。この同じ全射を元のlatchingの対象に戻した。係数は始点の同じ等式に沿って移送し、latchingの脚との合成でその逆の移送と打ち消される。これにより余錐の脚が退化行の元の各単体を係数も含めて厳密に回収することを示した。被覆性だけで余極限性を主張しない。
+
+277：latching余錐一本の対象ビルド1,646 jobs・終了0、小監査133本966宣言・標準三公理のみ（実ハンドル38799・終了0）。この回は夜の共有鍵の順番待ちを同じ一枚の整理券のまま待ち、終了まで確認した。278：表示とlatching対象一本の対象ビルド1,648 jobs・終了0、小監査134本974宣言・標準三公理のみ（実ハンドル7754・終了0）。279：全射性一本の対象ビルド1,649 jobs・終了0、小監査135本975宣言・標準三公理のみ（実ハンドル28495・終了0）。すべて鍵返却済み。個別検査82141・16898・69787の終了0を確認した。
+
+今回64＋50＋46＝160行、累計135本・8,758行／外枠15,000。R03f.2は569行／見込み650〜1,200行。sorry・独自公理0、計算上限変更なし。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。次は元の二つの表示を同じ非退化表示へ戻す一意性を使い、余錐の余極限性を示す。
+
+### 209.1 型
+
+共通入力は `{I : Type u} [SmallCategory I]`。余錐ではさらに `F : I ⥤ SSet.{u}` と `n : ℕ` を用いる。
+
+#### SimplicialReplacementRowLatchingCocone（64行）
+
+```lean
+def simplicialReplacementRowLatchingLeg (s : LatchingIndex simplexOp (Opposite.op ⦋n⦌)) :
+    (simplicialReplacementRows F).obj s.obj.left ⟶ simplicialReplacementDegenerateRow F n
+
+theorem simplicialReplacementRowLatchingLeg_inclusion
+    (s : LatchingIndex simplexOp (Opposite.op ⦋n⦌)) :
+    simplicialReplacementRowLatchingLeg F n s ≫ (simplicialReplacementDegenerateRow F n).ι =
+      (simplicialReplacementRows F).map s.obj.hom
+
+def simplicialReplacementRowLatchingCocone :
+    Cocone (latchingSource simplexOp (Opposite.op ⦋n⦌) ⋙ simplicialReplacementRows F)
+
+def simplicialReplacementLatchingToDegenerate :
+    colimit (latchingSource simplexOp (Opposite.op ⦋n⦌) ⋙ simplicialReplacementRows F) ⟶
+      simplicialReplacementDegenerateRow F n
+
+theorem simplicialReplacementLatchingToDegenerate_fac
+    (s : LatchingIndex simplexOp (Opposite.op ⦋n⦌)) :
+    colimit.ι (latchingSource simplexOp (Opposite.op ⦋n⦌) ⋙ simplicialReplacementRows F) s ≫
+      simplicialReplacementLatchingToDegenerate F n = simplicialReplacementRowLatchingLeg F n s
+```
+
+#### SimplicialReplacementRowNormalization（50行）
+
+```lean
+theorem simplicialReplacement_degenerate_presentation {n : ℕ}
+    (σ : ComposableArrows I n) (hσ : σ ∈ (nerve I).degenerate n) :
+    ∃ (m : ℕ) (_ : m < n) (α : ⦋n⦌ ⟶ ⦋m⦌) (_ : Epi α)
+      (τ : (nerve I).nonDegenerate m), σ = (nerve I).map α.op τ
+
+def simplicialReplacementLatchingIndexOfEpi {m n : ℕ} (hm : m < n)
+    (α : ⦋n⦌ ⟶ ⦋m⦌) [Epi α] : LatchingIndex simplexOp (Opposite.op ⦋n⦌)
+
+theorem simplicialReplacementLatchingIndexOfEpi_hom {m n : ℕ} (hm : m < n)
+    (α : ⦋n⦌ ⟶ ⦋m⦌) [Epi α] :
+    (simplicialReplacementLatchingIndexOfEpi hm α).obj.hom = α.op
+```
+
+#### SimplicialReplacementRowLatchingSurjective（46行）
+
+```lean
+theorem simplicialReplacementRowLatching_jointly_surjective (q : SimplexCategoryᵒᵖ)
+    (s : (simplicialReplacementDegenerateRow F n : SSet.{u}).obj q) :
+    ∃ (j : LatchingIndex simplexOp (Opposite.op ⦋n⦌))
+      (x : ((simplicialReplacementRows F).obj j.obj.left).obj q),
+      (simplicialReplacementRowLatchingLeg F n j).app q x = s
+```
+
+## 210. R03f.2の半分での実測（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 7／全体 21（うち追加 9）。R03f.2は未完了。
+
+対象ビルド・小監査済み569行に、既存の非退化表示の次元・単体・全射の一意性を接続した個別検査済み38行を加えて607行となり、上端1,200行の半分600行に達した。38行の個別検査36596は終了0、対象ビルド・小監査280はまだ進行中であり、その分のLeanは未コミットに保つ。作業木を含む累計は8,796行／外枠15,000。
+
+残りは余錐の余極限性、相対latchingの退化・非退化による分離、成分のleft anodyne性と対角への束ね。残り350〜600行、完成時957〜1,207行程度を見込む。元の見込み650〜1,200行の上端付近だが、§19の中間定理一つの1,500行と外枠にはまだ達しない。元の全写像のleft anodyne性を目標のままに保ち、弱同値性や条件つきの判定へ弱めない。新しい型・まとまりの変更はない。
+
+## 211. 同じ非退化表示への因子分解の照合（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 7／全体 21（うち追加 9）。R03f.2・R03f・R03d・R02・R03は未完了。
+
+任意の全射表示の元の単体を既存の非退化表示へ戻し、その二つの合成表示へ既存の次元・単体・全射の一意性を順に適用した。同じ元の非退化表示へ向かう全射γを得て、元の二つの全射についてβ≫γ＝α、元の表示された単体についてX.map γ.op τ＝υという二つの厳密な等式を併記した。既存の非退化表示の一意性の合成・照合であり、R03f.2の同じ証明の分割として扱う。新しい独立の数学的まとまりや仮定を足していない。
+
+280：新規一本の対象ビルド1,649 jobs・終了0、小監査136本976宣言・標準三公理のみ。実ハンドル24681の終了0を確認し、鍵返却済み。個別検査36596も終了0。今回38行、累計136本・8,796行／外枠15,000。R03f.2は607行／見込み650〜1,200行。§210の半分の報告時に未検証だった分も、対象ビルドと小監査まで通った。sorry・独自公理0、計算上限変更なし。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。
+
+次の順序は、元の退化行の余錐の余極限性、相対latchingの分離、各係数のleft anodyne性と元の対角への輸送である。具体的には元のlatching余錐がIsColimitとなることを、§209の全射性と今回の二表示の共通表示で検証する。その後、相対latchingの始域を「標的Gの退化部分と始域Fの非退化部分の余積」へ同定する。相対latching射は、その表示では退化部分上の恒等射と非退化基底射列ごとの同じη.app iの余積となる。ここまでの一意性が全係数も含めて可換することを検収してから、left anodyne性と§207の対角の定理を適用する。余錐の被覆性や基底だけの一意性で余極限性を代用しない。
+
+### 211.1 型（38行）
+
+#### SimplicialReplacementRowCommonPresentation（38行）
+
+```lean
+theorem simplicialReplacement_common_nondegenerate_presentation {X : SSet.{u}} {n m k : ℕ}
+    (α : ⦋n⦌ ⟶ ⦋m⦌) [Epi α] (τ : X.nonDegenerate m)
+    (β : ⦋n⦌ ⟶ ⦋k⦌) [Epi β] (υ : X.obj (Opposite.op ⦋k⦌))
+    (h : X.map α.op τ = X.map β.op υ) :
+    ∃ (γ : ⦋k⦌ ⟶ ⦋m⦌) (_ : Epi γ), β ≫ γ = α ∧ X.map γ.op τ = υ
+```
+
+## 212. 元のlatching余錐の余極限性と同じ退化部分の同型（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 7／全体 21（うち追加 9）。R03f.2・R03f・R03d・R02・R03は未完了。
+
+前のターンは共通の非退化表示まで検証・コミット済みで進捗あり。開始時にcleanな作業木とe36070d9eを確認した。元の退化作用素が分裂単射であることと、同じ全射表示へ元の係数を回収する法則を示した。共通表示の全射を元のlatchingの射とし、その作用素で元の係数の単体を厳密に回収した。
+
+任意の余錐の二つの表示を、同じ非退化基底表示へ係数ごと戻した。その退化作用素の単射性から、元の係数を含む同じ二つの単体が一致する。余錐の自然性により、任意の余錐で元の二表示の値が同じことを示した。元の被覆する脚から各単体の値を取り、この一致を使って自然な降下射・全脚での一致・一意性を構成した。元のlatching余錐のIsColimitと、実際のlatchingの余極限から同じ退化部分への全同型が得られた。
+
+281：二本の対象ビルド1,652 jobs・終了0、小監査138本983宣言・標準三公理のみ（実ハンドル73674・終了0）。282：余錐の値と余極限の二本の対象ビルド1,654 jobs・終了0、小監査140本997宣言・標準三公理のみ（実ハンドル72177・終了0）。両方とも鍵返却済み。個別検査6095・87431・35572・30108の終了0を確認した。
+
+今回49＋46＋70＋97＝262行、累計140本・9,058行／外枠15,000。R03f.2は869行。現状の残りは境界付きの各係数の持ち上げを行全体へ束ねる部分、元の相対latchingへの適用と対角への移送で300〜450行、完成時1,169〜1,319行程度と再見積もりする。当初の上端1,200行より増える可能性があるが、§19の中間定理一つ1,500行以内の見込みである。外枠も保持する。sorry・独自公理0、計算上限変更なし。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。
+
+残りの短い経路は、相対latchingの大きな射の同型を別に作り直す代わりに、元の相対latchingの持ち上げ問題を直接解く方法である。退化基底成分では指定されたlatching境界の値を保持し、それ以外の成分では元のη.app iのleft anodyne性で持ち上げ、元の余積から行全体へ降下する。境界の制限と両脚が厳密に一致することを検収し、元の相対latching射のleft anodyne性へ戻す。R03f.2の型・範囲を変えず、条件つきの判定へ弱めない。
+
+### 212.1 型
+
+共通入力は `{I : Type u} [SmallCategory I] (F : I ⥤ SSet.{u})`。余錐の法則ではさらに `(n : ℕ)` を用いる。`c` は元のlatching図式の任意の余錐。
+
+#### SimplicialReplacementRowEpiLifts（49行）
+
+```lean
+theorem simplicialReplacementRowReindex_mono {m n : SimplexCategory} (α : m ⟶ n) [Epi α] :
+    Mono (simplicialReplacementRowReindex F α)
+
+theorem simplicialReplacementRowReindex_lift {m n : SimplexCategory} (α : m ⟶ n) [Epi α]
+    (τ : ComposableArrows I n.len) (q : SimplexCategoryᵒᵖ)
+    (x : (simplicialReplacementRow F m.len).obj q)
+    (h : (nerve I).map α.op τ = x.1) :
+    ∃ y : (F.obj (τ.obj 0)).obj q,
+      (simplicialReplacementRowReindex F α).app q ⟨τ,y⟩ = x
+```
+
+#### SimplicialReplacementRowLatchingRefinement（46行）
+
+```lean
+def simplicialReplacementLatchingRefinement (hm : m < n) (α : ⦋n⦌ ⟶ ⦋m⦌) [Epi α]
+    (j : LatchingIndex simplexOp (Opposite.op ⦋n⦌)) (γ : j.obj.left.unop ⟶ ⦋m⦌)
+    (h : j.obj.hom.unop ≫ γ = α) : simplicialReplacementLatchingIndexOfEpi hm α ⟶ j
+
+theorem simplicialReplacementRowLatching_refine (q : SimplexCategoryᵒᵖ)
+    (hm : m < n) (α : ⦋n⦌ ⟶ ⦋m⦌) [Epi α] (τ : (nerve I).nonDegenerate m)
+    (j : LatchingIndex simplexOp (Opposite.op ⦋n⦌))
+    (x : ((simplicialReplacementRows F).obj j.obj.left).obj q)
+    (h : (nerve I).map α.op τ =
+      (((simplicialReplacementRows F).map j.obj.hom).app q x).1) :
+    ∃ (f : simplicialReplacementLatchingIndexOfEpi hm α ⟶ j)
+      (y : (F.obj (τ.val.obj 0)).obj q),
+      ((simplicialReplacementRows F).map f.hom.left).app q ⟨τ.val,y⟩ = x
+```
+
+#### SimplicialReplacementRowLatchingValues（70行）
+
+```lean
+theorem simplicialReplacementRowLatching_value_map
+    (c : Cocone (latchingSource simplexOp (Opposite.op ⦋n⦌) ⋙ simplicialReplacementRows F))
+    (q : SimplexCategoryᵒᵖ) {j k : LatchingIndex simplexOp (Opposite.op ⦋n⦌)} (f : j ⟶ k)
+    (x : ((simplicialReplacementRows F).obj j.obj.left).obj q)
+    (y : ((simplicialReplacementRows F).obj k.obj.left).obj q)
+    (h : ((simplicialReplacementRows F).map f.hom.left).app q x = y) :
+    (c.ι.app j).app q x = (c.ι.app k).app q y
+
+theorem simplicialReplacementRowLatching_values_eq
+    (c : Cocone (latchingSource simplexOp (Opposite.op ⦋n⦌) ⋙ simplicialReplacementRows F))
+    (q : SimplexCategoryᵒᵖ) (j k : LatchingIndex simplexOp (Opposite.op ⦋n⦌))
+    (x : ((simplicialReplacementRows F).obj j.obj.left).obj q)
+    (y : ((simplicialReplacementRows F).obj k.obj.left).obj q)
+    (h : (simplicialReplacementRowLatchingLeg F n j).app q x =
+      (simplicialReplacementRowLatchingLeg F n k).app q y) :
+    (c.ι.app j).app q x = (c.ι.app k).app q y
+```
+
+#### SimplicialReplacementRowLatchingColimit（97行）
+
+```lean
+theorem simplicialReplacementRowLatching_exists_value
+    (c : Cocone (latchingSource simplexOp (Opposite.op ⦋n⦌) ⋙ simplicialReplacementRows F))
+    (q : SimplexCategoryᵒᵖ) (s : (simplicialReplacementDegenerateRow F n : SSet.{u}).obj q) :
+    ∃ v : c.pt.obj q, ∀ (j : LatchingIndex simplexOp (Opposite.op ⦋n⦌))
+      (x : ((simplicialReplacementRows F).obj j.obj.left).obj q),
+      (simplicialReplacementRowLatchingLeg F n j).app q x = s → (c.ι.app j).app q x = v
+
+def simplicialReplacementRowLatchingValue
+    (c : Cocone (latchingSource simplexOp (Opposite.op ⦋n⦌) ⋙ simplicialReplacementRows F))
+    (q : SimplexCategoryᵒᵖ) (s : (simplicialReplacementDegenerateRow F n : SSet.{u}).obj q) :
+    c.pt.obj q
+
+theorem simplicialReplacementRowLatchingValue_fac
+    (c : Cocone (latchingSource simplexOp (Opposite.op ⦋n⦌) ⋙ simplicialReplacementRows F))
+    (q : SimplexCategoryᵒᵖ) (j : LatchingIndex simplexOp (Opposite.op ⦋n⦌))
+    (x : ((simplicialReplacementRows F).obj j.obj.left).obj q) :
+    simplicialReplacementRowLatchingValue F n c q
+      ((simplicialReplacementRowLatchingLeg F n j).app q x) = (c.ι.app j).app q x
+
+def simplicialReplacementRowLatchingDesc
+    (c : Cocone (latchingSource simplexOp (Opposite.op ⦋n⦌) ⋙ simplicialReplacementRows F)) :
+    (simplicialReplacementDegenerateRow F n : SSet.{u}) ⟶ c.pt
+
+def simplicialReplacementRowLatchingIsColimit :
+    IsColimit (simplicialReplacementRowLatchingCocone F n)
+
+def simplicialReplacementRowLatchingIso :
+    colimit (latchingSource simplexOp (Opposite.op ⦋n⦌) ⋙ simplicialReplacementRows F) ≅
+      simplicialReplacementDegenerateRow F n
+```
+
+## 213. R03f.2完了：元のsimplicial replacementのleft anodyne性（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 8／全体 21（うち追加 9）。R03f.2完了。R03f・R03d・R02・R03は未完了。
+
+元の各行と指定部分の包含・係数射・降下の法則を明示した。退化基底成分では元の指定境界の値を固定し、それ以外の成分では元の同じη.app iのleft anodyne性で持ち上げた。元の余積から行全体へ降下させ、元の二つの脚と退化境界の値を厳密な等式で保持する持ち上げを得た。
+
+実際のlatchingと退化部分の同型が、元の係数射と境界比較を厳密に保つことも全ての脚で照合した。元の相対latchingのpushoutの持ち上げ問題では、その逆同型で指定境界を取り出し、行全体の境界付き持ち上げを適用した。pushoutの二つの包含で元の脚を回収することを検収し、元の相対latching射そのもののleft anodyne性を得た。
+
+このReedy left anodyne性を§207の対角の定理へ送り、同じ係数射についての対角同型の自然性で、元のsimplicialReplacementMapそのものへ移した。§206の型を変更せずに閉じた。相対latchingの別の大きな射の同型を作り直す部分は、同じ元のpushoutの直接の持ち上げに置き換えた。元の標的の性質や主張の型を弱める変更ではない。
+
+283：包含の法則・境界の成分・境界付きの行全体の持ち上げ・latching自然性の四本の対象ビルド1,658 jobs・終了0、小監査144本1,014宣言・標準三公理のみ（実ハンドル81758・終了0）。284：元の相対latchingの持ち上げと最後のR03f.2の二本の対象ビルド1,661 jobs・終了0、小監査146本1,017宣言・標準三公理のみ（実ハンドル64724・終了0）。両方とも鍵返却済み。個別検査29337・4919・25258の終了0を確認した。
+
+今回85＋56＋60＋82＋95＋30＝408行、累計146本・9,466行／外枠15,000。R03f.2は1,277行。§206の当初見込み650〜1,200行の上端との差＋77行、§212の再見積もり1,169〜1,319行の範囲内。§19の中間定理一つ1,500行との差−223行である。計算上限の変更なし、sorry・独自公理0。[ModelCategory SSet]を追加せず、既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。
+
+次は元のEx∞単位のbar上のleft anodyne性に適用し、元のscaffoldの同じ正方形と元の置換単位を固定した延長をつなぐ。延長の前合成同値性（R03f）と元の共同Hom比較（R03d）はなお別の未完了項目であり、R03f.2だけでnative極限性が得られたとは扱わない。
+
+### 213.1 型
+
+共通入力は `{I : Type u} [SmallCategory I] {F G : I ⥤ SSet.{u}}`。境界付きの持ち上げの共通入力は以下のとおり。証明でのみ用いる `hη sq hd ha` もincludeで宣言の前提に明示的に含めている。
+
+```lean
+(η : F ⟶ G) (hη : ∀ i, leftAnodyneExtensions (η.app i)) (n : ℕ)
+{E B : SSet.{u}} (p : E ⟶ B) [LeftFibration p]
+(a : simplicialReplacementRow F n ⟶ E) (b : simplicialReplacementRow G n ⟶ B)
+(d : (simplicialReplacementDegenerateRow G n : SSet.{u}) ⟶ E)
+(sq : CommSq a (simplicialReplacementRowMap η n) p b)
+(hd : d ≫ p = (simplicialReplacementDegenerateRow G n).ι ≫ b)
+(ha : simplicialReplacementRowPartMap η n ((nerve I).degenerate n) ≫ d =
+  (simplicialReplacementDegenerateRow F n).ι ≫ a)
+```
+
+#### SimplicialReplacementRowInclusionLaws（85行）
+
+```lean
+def simplicialReplacementRowPartInclusion (F : I ⥤ SSet.{u}) (P : Set (ComposableArrows I n))
+    (σ : ComposableArrows I n) (hσ : σ ∈ P) :
+    F.obj (σ.obj 0) ⟶ simplicialReplacementRowPart F n P
+
+theorem simplicialReplacementRowPartInclusion_inclusion (F : I ⥤ SSet.{u})
+    (P : Set (ComposableArrows I n)) (σ : ComposableArrows I n) (hσ : σ ∈ P) :
+    simplicialReplacementRowPartInclusion n F P σ hσ ≫ (simplicialReplacementRowPart F n P).ι =
+      simplicialReplacementRowInclusion F n σ
+
+theorem simplicialReplacementRowPartInclusion_map (η : F ⟶ G)
+    (P : Set (ComposableArrows I n)) (σ : ComposableArrows I n) (hσ : σ ∈ P) :
+    η.app (σ.obj 0) ≫ simplicialReplacementRowPartInclusion n G P σ hσ =
+      simplicialReplacementRowPartInclusion n F P σ hσ ≫ simplicialReplacementRowPartMap η n P
+
+theorem simplicialReplacementRowInclusion_map (η : F ⟶ G) (σ : ComposableArrows I n) :
+    simplicialReplacementRowInclusion F n σ ≫ simplicialReplacementRowMap η n =
+      η.app (σ.obj 0) ≫ simplicialReplacementRowInclusion G n σ
+
+theorem simplicialReplacementRow_hom_ext {E : SSet.{u}}
+    (f g : simplicialReplacementRow F n ⟶ E)
+    (h : ∀ σ, simplicialReplacementRowInclusion F n σ ≫ f =
+      simplicialReplacementRowInclusion F n σ ≫ g) : f = g
+
+theorem simplicialReplacementRowDesc_inclusion
+    (s : Cofan (fun σ : ComposableArrows I n => F.obj (σ.obj 0))) (σ : ComposableArrows I n) :
+    simplicialReplacementRowInclusion F n σ ≫ simplicialReplacementRowDesc F n s = s.inj σ
+
+theorem simplicialReplacementRowPart_hom_ext (P : Set (ComposableArrows I n)) {E : SSet.{u}}
+    (f g : (simplicialReplacementRowPart F n P : SSet.{u}) ⟶ E)
+    (h : ∀ σ hσ, simplicialReplacementRowPartInclusion n F P σ hσ ≫ f =
+      simplicialReplacementRowPartInclusion n F P σ hσ ≫ g) : f = g
+```
+
+#### SimplicialReplacementRowBoundaryComponents（56行）
+
+```lean
+theorem simplicialReplacementRowBoundary_component (σ : ComposableArrows I n) :
+    ∃ l : G.obj (σ.obj 0) ⟶ E,
+      η.app (σ.obj 0) ≫ l = simplicialReplacementRowInclusion F n σ ≫ a ∧
+      l ≫ p = simplicialReplacementRowInclusion G n σ ≫ b ∧
+      ∀ hσ : σ ∈ (nerve I).degenerate n,
+        l = simplicialReplacementRowPartInclusion n G ((nerve I).degenerate n) σ hσ ≫ d
+```
+
+#### SimplicialReplacementRowBoundaryLift（60行）
+
+```lean
+theorem simplicialReplacementRowBoundary_lift :
+    ∃ l : simplicialReplacementRow G n ⟶ E,
+      simplicialReplacementRowMap η n ≫ l = a ∧ l ≫ p = b ∧
+      (simplicialReplacementDegenerateRow G n).ι ≫ l = d
+```
+
+#### SimplicialReplacementRowLatchingNaturality（82行）
+
+```lean
+theorem simplicialReplacementRowLatchingIso_hom (F : I ⥤ SSet.{u}) :
+    (simplicialReplacementRowLatchingIso F n).hom = simplicialReplacementLatchingToDegenerate F n
+
+theorem simplicialReplacementRowLatchingIso_inclusion (F : I ⥤ SSet.{u}) :
+    (simplicialReplacementRowLatchingIso F n).hom ≫ (simplicialReplacementDegenerateRow F n).ι =
+      (latchingComparison simplexOp (Opposite.op ⦋n⦌)).app (simplicialReplacementRows F)
+
+theorem simplicialReplacementRowLatchingLeg_map {F G : I ⥤ SSet.{u}} (η : F ⟶ G)
+    (j : LatchingIndex simplexOp (Opposite.op ⦋n⦌)) :
+    simplicialReplacementRowMap η j.obj.left.unop.len ≫ simplicialReplacementRowLatchingLeg G n j =
+      simplicialReplacementRowLatchingLeg F n j ≫
+        simplicialReplacementRowPartMap η n ((nerve I).degenerate n)
+
+theorem simplicialReplacementRowLatchingIso_naturality {F G : I ⥤ SSet.{u}} (η : F ⟶ G) :
+    (latchingEvaluation simplexOp (Opposite.op ⦋n⦌)).map (simplicialReplacementRowsMap η) ≫
+      (simplicialReplacementRowLatchingIso G n).hom =
+    (simplicialReplacementRowLatchingIso F n).hom ≫
+      simplicialReplacementRowPartMap η n ((nerve I).degenerate n)
+
+theorem simplicialReplacementRowLatchingIso_inv_naturality {F G : I ⥤ SSet.{u}} (η : F ⟶ G) :
+    simplicialReplacementRowPartMap η n ((nerve I).degenerate n) ≫
+      (simplicialReplacementRowLatchingIso G n).inv =
+    (simplicialReplacementRowLatchingIso F n).inv ≫
+      (latchingEvaluation simplexOp (Opposite.op ⦋n⦌)).map (simplicialReplacementRowsMap η)
+
+theorem simplicialReplacementRowLatchingIso_inv_inclusion (F : I ⥤ SSet.{u}) :
+    (simplicialReplacementRowLatchingIso F n).inv ≫
+      (latchingComparison simplexOp (Opposite.op ⦋n⦌)).app (simplicialReplacementRows F) =
+      (simplicialReplacementDegenerateRow F n).ι
+```
+
+#### SimplicialReplacementReedyLeftAnodyne（95行）
+
+```lean
+theorem simplicialReplacementRowsMap_relative_leftAnodyne (n : ℕ) :
+    leftAnodyneExtensions (relativeLatchingMap simplexOp (Opposite.op ⦋n⦌)
+      (simplicialReplacementRowsMap η))
+
+theorem simplicialReplacementRowsMap_reedy_leftAnodyne :
+    reedyLeft simplexOp leftAnodyneExtensions (simplicialReplacementRowsMap η)
+```
+
+#### SimplicialReplacementLeftAnodyne（30行）
+
+```lean
+theorem simplicialReplacementMap_leftAnodyne
+    {I : Type u} [SmallCategory I] {F G : I ⥤ SSet.{u}}
+    (η : F ⟶ G) (hη : ∀ i, leftAnodyneExtensions (η.app i)) :
+    leftAnodyneExtensions (simplicialReplacementMap η)
+```
+
+## 214. 元のEx∞係数単位のbar上のleft anodyne性（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 8／全体 21（うち追加 9）。R03f・R03d・R02・R03は未完了。
+
+R03f.2を元のgrothendieckKanCoefficientUnitと元のexInfinityUnit_leftAnodyneへ適用した。同じCat図式の同じEx∞単位からのsimplicialReplacementMapそのものがleft anodyneである。既存の単位の性質の適用であり、新しい中間の数学的定理の追加ではない。
+
+285：新規一本の対象ビルド1,948 jobs・終了0、小監査147本1,018宣言・標準三公理のみ。実ハンドル4709の終了0を確認し、鍵返却済み。個別検査99542も終了0。今回29行、累計147本・9,495行／外枠15,000。実ファイルの機械的な再集計で、§213のBoundaryComponentsの一行の誤算を修正した。R03f.2は21本1,277行、§213までの累計は9,466行。主張や型の変更ではない。
+
+元のscaffoldの同じ正方形へこのleft anodyne性をつなぐため、既存のRelativeFunctorOverEquivalence.relativeFunctorPre_isQCatEquivalence_of_precompositionEquivalenceを確認した。標的がquasicategoryなら、定義域の充填性や比較射の単射性を課さず、任意のleft fibrationへの同じ相対関手空間の制限が同値である。cofinalFunctorSpace/cofinalFunctorPreは同じfiberと前合成で定義されているため、この既存の定理を同じ構成の定義の照合でcofinal性の検査へ移す短い経路を試す。未検証の照合を仮定として使わない。
+
+sorry・独自公理0、計算上限変更なし。[ModelCategory SSet]を追加せず、既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。
+
+### 214.1 型（29行）
+
+#### GrothendieckKanBarLeftAnodyne（29行）
+
+```lean
+theorem grothendieckKanCoefficientBarMap_leftAnodyne
+    {I : Type u} [SmallCategory I] (F : I ⥤ Cat.{u,u}) :
+    leftAnodyneExtensions (simplicialReplacementMap (grothendieckKanCoefficientUnit F))
+```
+
+## 215. 元の比較射と指定単位を固定する延長のcofinal性（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 8／全体 21（うち追加 9）。R03f・R03d・R02・R03は未完了。
+
+既存のRelativeFunctorOverEquivalence.relativeFunctorPre_isQCatEquivalence_of_precompositionEquivalenceを、同じfiberと前合成で定義されたcofinalFunctorPreへ照合した。quasicategoryを標的とする元の前合成同値が、その同じ射のleft cofinal性の検査を満たすことを、定義の照合と既存のKan相対関手空間の同値の検出だけで得た。新しい数学的な検出条件を仮定していない。
+
+これを元のbar/scaffold正方形へ適用した。元のEx∞単位のbarの射のleft anodyne性、その後のKan係数のscaffoldの前合成同値性、元のCat係数からGrothendieck射列へのscaffoldの前合成同値性を、同じ厳密な正方形の等式と既存のleft cofinalな射の合成・消去則へ渡した。元のgrothendieckKanCoefficientMapそのもののleft cofinal性が得られた。さらに元の置換単位はleft anodyneなので、その同じ単位との合成が元の比較射に等しい任意の延長もleft cofinalとなる。元の比較の射や単位を取り替えていない。
+
+286：定義の照合一本の対象ビルド1,794 jobs・終了0、小監査148本1,019宣言・標準三公理のみ（実ハンドル97086・終了0）。287：元の比較と延長のcofinal性一本の対象ビルド2,492 jobs・終了0、小監査149本1,021宣言・標準三公理のみ（実ハンドル14853・終了0）。両方とも鍵返却済み。個別検査34355・14467の終了0を確認した。
+
+今回28＋57＝85行、累計149本・9,580行／外枠15,000。sorry・独自公理0、計算上限変更なし。[ModelCategory SSet]を追加せず、既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。cofinal性だけから任意の射の前合成同値性を主張しない。残りは、同じ底上のleft fibration間の射としてその検出を行う部分である。
+
+### 215.1 型
+
+Grothendieck側の共通入力は `{I : Type u} [SmallCategory I] (F : I ⥤ Cat.{u,u})`。
+
+#### PrecompositionCofinality（28行）
+
+```lean
+theorem isLeftCofinal_of_precompositionEquivalence
+    {X Y : SSet.{u}} [Quasicategory Y] (f : X ⟶ Y) (hf : IsPrecompositionEquivalence f) :
+    IsLeftCofinal f
+```
+
+#### GrothendieckKanComparisonCofinality（57行）
+
+```lean
+theorem grothendieckKanCoefficientMap_isLeftCofinal :
+    IsLeftCofinal (grothendieckKanCoefficientMap F)
+
+theorem grothendieckKanCoefficientLift_isLeftCofinal :
+    let P : Over (nerve I) := Over.mk (nerveMap (Grothendieck.forget F))
+    let R := (continuousLeftFibrationReplacement (nerve I)).obj P
+    ∀ f : R.left ⟶ weightedNerve (grothendieckKanCoefficients F),
+      ((continuousLeftFibrationReplacementUnit (nerve I)).app P).left ≫ f =
+        grothendieckKanCoefficientMap F → IsLeftCofinal f
+```
+
+## 216. R03f.3：同じ底上のleft fibration間のcofinal射の検出（紙、11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 8／全体 22（うち追加 10）。R03f.3を追加、未証明。
+
+§19の同じまとまり・一つの見込み1,500行以内の枠により、次の独立の中間定理を加える。任意のcofinal射が圏同値だと主張するものではない。同じ底への二つの射が両方ともleft fibrationであり、元の比較射がその底を厳密に保つことを型に持つ。
+
+```lean
+theorem isPrecompositionEquivalence_of_leftCofinal_overLeftFibrations
+    {E F B : SSet.{u}} [Quasicategory B]
+    (p : E ⟶ B) (q : F ⟶ B) [LeftFibration p] [LeftFibration q]
+    (f : E ⟶ F) (hf : f ≫ q = p) (hc : IsLeftCofinal f) :
+  IsPrecompositionEquivalence f
+```
+
+このPropの型は `/private/tmp/CheckISW2CofinalLeftFibComparisonType.lean` で確認した（実ハンドル83289・終了0）。未証明の宣言や仮定を本体へ入れない。置き場所はKerodon/LimitsAndColimits/Cofinality/LeftFibrationComparison.leanなど、一般の同じ底上の検出の節とする。
+
+見込み250〜650行。既存IsLeftCofinal.restrictDiagramを任意の試験left fibrationと同じ底図式qへ適用すると、同じ底上の相対Homの前合成がホモトピー同値となる。試験標的pで恒等射を戻し、逆向きの実射を取る。試験標的qでの同じ前合成の忠実性を使い、二つの合成を同じ恒等射へ結ぶ。相対HomはKanなので、同じ底上の同値の二つの三角形として扱える。元の底がquasicategoryであるため、二つの全空間もquasicategoryである。相対Homから通常の関手空間への同じ包含で三角形を送り、既存の前合成同値のホモトピー逆の判定へ戻す。必要ならisPrecompositionEquivalence_of_homotopyInverseと、各頂点での垂直な辺の可逆性の既存の判定を使う。
+
+これは同じモデルのままcofinal性を前合成同値へ検出する数学的な部分であり、§215の定義の照合の法則として数えない。独立の定理として一つに見積もり、§19の枠を細分で回避しない。半分325行で実測と残りを報告する。
+
+R03f.3が証明できた後に限り、§201の元の単位を固定する延長へ、元の同じ射影の等式と§215のcofinal性を代入し、R03fの全空間の前合成同値を検収する。これがまだ未証明の間はR03f・R03d・native極限性を完了と扱わない。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤aの欄を変更しない。
+
+## 217. R03f.3とR03fの完了：同じ底と指定単位を保つ比較（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 10／全体 22（うち追加 10）。R03f.3・R03fを完了。R03d・R02・R03とnative極限性は未完了。
+
+R03f.3は74行で閉じた（見込み250〜650行、上端との差−576行）。相対Homの前合成を既存のcofinal性の検査へ定義どおり照合し、Kan空間の同値に戻した。試験標的pで恒等射を戻して元の底上の逆向きの射gを取り、単位の同型を得る。この同型を通常の関手空間へ忘れる前に、元の底上の後合成relativeFunctorPostでqへの相対Homへ送った。そこで同じ前合成の充満忠実性から余単位を戻す。最後に二つの相対Homの包含で通常のFunctorIsoへ送り、既存のQCatEquivalenceと前合成同値の判定へ渡した。一般のcofinalな射を同値と扱わず、同じ底上の二つのleft fibrationという仮定を使っている。新しいホモトピーの構成や計算上限の引き上げは不要だった。325行の途中報告点に達する前に全証明が閉じた。
+
+元のgrothendieckKanCoefficientLiftへこの検出を適用し、同じ元の射影と置換単位を固定する任意の延長が前合成同値であることを示した。exists_grothendieckKanCoefficientComparisonは§200のR03fの型どおり、元の比較射を延長し、二つの厳密な等式と元の射自身の前合成同値性を同時に持つ。grothendieckKanCoefficientMapは元のgrothWeightedNerveForwardと元のEx∞係数単位のweightedNerveMapの合成を定義に持ち、取り替えていない。
+
+個別検査LeftFibrationComparison（実ハンドル93403）とGrothendieckKanCoefficientComparison（47447）は終了0。288：検出補題の対象ビルド2,208 jobs・終了0、小監査150本1,023宣言・標準三公理のみ（実ハンドル92698・終了0）。289：元の比較と検出補題の対象ビルド2,636 jobs・終了0、小監査151本1,025宣言・標準三公理のみ（実ハンドル67835・終了0）。鍵は返却済み。今回74＋50＝124行、累計151本・9,704行／外枠15,000。証明のコミットは893ee7a94。
+
+sorry・独自公理0、計算上限変更なし。[ModelCategory SSet]を追加せず、既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。次は同じ比較を既存のleftClassification_of_precompositionEquivalenceへ渡し、底全体の分類比較を組み立てる。R03dで要求される元の固定始域比較との等式と、native極限性を先取りして完了としない。
+
+### 217.1 型
+
+補助の相対前合成の照合とR03f.3の適用は既存構成の法則・適用であり、別の数学的な一覧項目は増やしていない。Grothendieck側の共通入力は `{I : Type u} [SmallCategory I] (F : I ⥤ Cat.{u,u})`。
+
+#### LeftFibrationComparison（74行）
+
+```lean
+lemma IsLeftCofinal.relativeFunctorOverPre_isQCatEquivalence
+    {T E F B : SSet.{u}} (r : T ⟶ B) [LeftFibration r]
+    (p : E ⟶ B) (q : F ⟶ B) (f : E ⟶ F) (hf : f ≫ q = p)
+    (hc : IsLeftCofinal f) :
+    IsQCatEquivalence (relativeFunctorOverPre r (show Over.mk p ⟶ Over.mk q from Over.homMk f hf))
+
+theorem isPrecompositionEquivalence_of_leftCofinal_overLeftFibrations
+    {E F B : SSet.{u}} [Quasicategory B]
+    (p : E ⟶ B) (q : F ⟶ B) [LeftFibration p] [LeftFibration q]
+    (f : E ⟶ F) (hf : f ≫ q = p) (hc : IsLeftCofinal f) :
+    IsPrecompositionEquivalence f
+```
+
+#### GrothendieckKanCoefficientComparison（50行）
+
+```lean
+theorem grothendieckKanCoefficientLift_isPrecompositionEquivalence :
+    let P : Over (nerve I) := Over.mk (nerveMap (Grothendieck.forget F))
+    let R := (continuousLeftFibrationReplacement (nerve I)).obj P
+    ∀ f : R.left ⟶ weightedNerve (grothendieckKanCoefficients F),
+      f ≫ weightedNerveProjection (grothendieckKanCoefficients F) = R.hom →
+      ((continuousLeftFibrationReplacementUnit (nerve I)).app P).left ≫ f =
+        grothendieckKanCoefficientMap F → IsPrecompositionEquivalence f
+
+theorem exists_grothendieckKanCoefficientComparison :
+    let P : Over (nerve I) := Over.mk (nerveMap (Grothendieck.forget F))
+    let R := (continuousLeftFibrationReplacement (nerve I)).obj P
+    ∃ f : R.left ⟶ weightedNerve (grothendieckKanCoefficients F),
+      f ≫ weightedNerveProjection (grothendieckKanCoefficients F) = R.hom ∧
+      ((continuousLeftFibrationReplacementUnit (nerve I)).app P).left ≫ f =
+        grothendieckKanCoefficientMap F ∧ IsPrecompositionEquivalence f
+```
+
+## 218. 同じKan係数の全図式と元のnative全分類の接続（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 10／全体 22（うち追加 10）。R03d・R02・R03は未完了。
+
+元のR03fの存在から一つの底上の比較射を選び、同じ射について射影・単位の二つの厳密な等式と前合成同値性を記録した。これを既存のleftClassification_of_precompositionEquivalenceへ渡し、底全体のnative分類のFunctorIsoを得た。対象ごとに同型を選んだものではない。
+
+native分類とstrict transportの分類の接続には短い既存の経路があった。同じnerve上の射影pに対して、leftStraighteningInfinityDiagram_representationIsoとnerveStraighteningRepresentationIsoの両方を、同じnerveLeftTransportRepresentation pへ適用する。二つの全関手同型の合成だけでnative分類と候補を比較できる。その後、元のweightedNerveStraighteningUnitIsoを合成する。同じEx∞係数をKanObject値へ記録し直してこれを適用し、その同じ全係数図式から元のGrothendieck置換のnative分類への全FunctorIsoができた。この部分は既存の分類移送・単位・合成の法則であり、新しい独立の数学的な一覧項目は増やしていない。
+
+個別検査：GrothendieckKanClassificationの最初の版96770・終了0、native/strict分類の接続61750・終了0、二本を結合した最終版17493・終了0。290：最初の版の対象ビルド3,328 jobs・終了0、小監査152本1,033宣言・標準三公理のみ（実ハンドル79144・終了0）。291：最終版の二本と直接importerの対象ビルド3,329 jobs・終了0、小監査153本1,045宣言・標準三公理のみ（実ハンドル61295・終了0）。鍵返却済み。今回87＋41＝128行、累計153本・9,832行／外枠15,000。
+
+sorry・独自公理0、計算上限変更なし。[ModelCategory SSet]を追加せず、既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。残る正規化では、sourceFrameElementsFamilyのfiberが元のElementsの反対圏であることと、全SourceFrameArrowElementsのfiberの向きを区別する。次に既存のKan係数のedgewise反転比較・Ex∞単位・反転の弱同値保存を全図式へ合成する係数移送の法則を試す。型の案は次のとおり（見込み100〜220行）。
+
+```lean
+def kanHomFamilyOppositeComparisonIso
+    {C : Type u} [Category.{u} C] (F : C ⥤ SSet.{u}) :
+    FunctorIso (kanHomFamilyCoherent F)
+      (kanHomFamilyCoherent (F ⋙ SSet.opFunctor))
+```
+
+ここで反転するのは値の単体集合のみで、底Cとその全射は保つ。元の係数FへEx∞単位を適用し、その反転と同じEx∞によるKan化を取る。Kan化後の値とその反転の比較には既存kanDiagramOppositeComparisonIsoを使い、同じ二つの自然変換の反転可能性を全関手圏で合成する。単純にFとF.opが厳密に同じとはしない。元のroof比較との等式が証明できるまでR03dを完了と扱わない。
+
+### 218.1 型
+
+Grothendieck側の共通入力は `{I : Type u} [SmallCategory I] (F : I ⥤ Cat.{u,u})`。
+
+#### GrothendieckKanClassification（87行）
+
+```lean
+def grothendieckKanCoefficientComparison :
+    ((continuousLeftFibrationReplacement (nerve I)).obj
+      (Over.mk (nerveMap (Grothendieck.forget F)))).left ⟶
+        weightedNerve (grothendieckKanCoefficients F)
+
+theorem grothendieckKanCoefficientComparison_projection :
+    grothendieckKanCoefficientComparison F ≫
+      weightedNerveProjection (grothendieckKanCoefficients F) =
+        ((continuousLeftFibrationReplacement (nerve I)).obj
+          (Over.mk (nerveMap (Grothendieck.forget F)))).hom
+
+theorem grothendieckKanCoefficientComparison_unit :
+    ((continuousLeftFibrationReplacementUnit (nerve I)).app
+      (Over.mk (nerveMap (Grothendieck.forget F)))).left ≫
+        grothendieckKanCoefficientComparison F = grothendieckKanCoefficientMap F
+
+theorem grothendieckKanCoefficientComparison_isPrecompositionEquivalence :
+    IsPrecompositionEquivalence (grothendieckKanCoefficientComparison F)
+
+def grothendieckKanReplacementClassificationIso :
+    FunctorIso
+      (leftStraighteningInfinityDiagram
+        ((continuousLeftFibrationReplacement (nerve I)).obj
+          (Over.mk (nerveMap (Grothendieck.forget F)))).hom)
+      (leftStraighteningInfinityDiagram
+        (weightedNerveProjection (grothendieckKanCoefficients F)))
+
+def grothendieckKanCoefficientDiagram : I ⥤ KanObject.{u}
+
+def grothendieckKanNativeClassificationUnitIso :
+    FunctorIso (kanDiagramCoherentNerve (grothendieckKanCoefficientDiagram F))
+      (leftStraighteningInfinityDiagram
+        ((continuousLeftFibrationReplacement (nerve I)).obj
+          (Over.mk (nerveMap (Grothendieck.forget F)))).hom)
+```
+
+#### NativeNerveStraighteningComparison（41行）
+
+```lean
+def leftStraighteningInfinityDiagram_nerveCandidateIso
+    {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) [LeftFibration p] :
+    FunctorIso (leftStraighteningInfinityDiagram p) (leftStraighteningCandidate p)
+
+def weightedNerveNativeStraighteningUnitIso
+    {C : Type u} [Category.{u} C] (F : C ⥤ KanObject.{u}) :
+    FunctorIso (kanDiagramCoherentNerve F)
+      (leftStraighteningInfinityDiagram (weightedNerveProjection (F ⋙ kanObjectForget)))
+```
+
+## 219. 全係数の反転と元の反対要素nerveの終端augmentationの接続（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 10／全体 22（うち追加 10）。R03d・R02・R03は未完了。
+
+§218の係数移送の法則を75行で閉じた（見込み100〜220行）。既存kanDiagramOppositeComparisonIsoでKan化後の値だけを反転し、元のEx∞単位とその反転の全自然変換をKan化した全関手同型を合成した。反転した単位の弱同値性は既存opposite_map_isWeakHomotopyEquivalenceを使う。底の圏や全作用素を変えず、値ごとに逆射を選ばない。
+
+次に、既存nerveOppositeMap_naturalityと同じnerveOppositeIsoを全Cat図式に適用し、元のnerveと反対圏のnerveのKan化の全FunctorIsoを50行で記録した。元の全要素nerveの比較では、既存SimplexNerve.functorとSimplexTerminalNerve.functor、同じoppositeIsoをそのまま使う。これらに同じ全係数図式Fを前合成し、元のaugmentationの自然変換と既存augmentation_localized_isIsoをKan化して、元の全要素nerveの係数から元のFの係数への全FunctorIsoを76行で得た。新しい要素圏や反転模型を構成しておらず、既存構成の単位・自然性・係数移送・合成の法則として記録する。一覧の独立の数学的な項目は増やしていない。
+
+この同型が元の固定始域のroof比較と同じものになるという等式はまだ証明していない。全要素圏のfiberと元の反対要素圏を取り違えず、元の単位・augmentation・roofへ戻る正規化はR03dの残りとして保つ。底全体のFunctorIsoは得られたが、これだけでR03d・R02・R03とnative極限性を完了とは扱わない。
+
+個別検査：KanHomFamilyOpposite70713・終了0、KanNerveOppositeFamily90441・終了0、KanElementsFamily28433・終了0。292は必要な既存二モジュールだけの対象ビルド2,729 jobs・終了0（実ハンドル58640）。293：反転係数の対象ビルド2,802 jobs・終了0、小監査154本1,056宣言・標準三公理のみ（86257・終了0）。294：全Cat図式の反転の対象ビルド2,804 jobs・終了0、小監査155本1,064宣言・標準三公理のみ（85024・終了0）。295：全要素nerveの係数移送の対象ビルド2,934 jobs・終了0、小監査156本1,078宣言・標準三公理のみ（33179・終了0）。いずれも鍵をビルド・小監査の間だけ取り、終了と返却を確認した。
+
+今回75＋50＋76＝201行、累計156本・10,033行／外枠15,000。sorry・独自公理0、計算上限変更なし。[ModelCategory SSet]を追加せず、既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。今後は元の全source frameの要素圏をR03fの同じ底の分類へ接続し、同じ全augmentationの逆からのtwisted pairingと照合する。
+
+### 219.1 型
+
+全係数の共通入力は `{I : Type u} [SmallCategory I] (F : I ⥤ SSet.{u})`、全Cat図式の共通入力は `{I : Type u} [SmallCategory I] (F : I ⥤ Cat.{u,u})`。
+
+#### KanHomFamilyOpposite（75行）
+
+```lean
+lemma kanHomFamilyUnit_isWeakHomotopyEquivalence (X : SSet.{u}) :
+    IsWeakHomotopyEquivalence (exInfinityUnit.app X)
+
+def kanDiagramExInfinityUnitIso {C : Type u} [Category.{u} C]
+    (F : C ⥤ KanObject.{u}) :
+    FunctorIso (kanDiagramCoherentNerve F)
+      (kanHomFamilyCoherent (F ⋙ kanObjectForget))
+
+def kanHomFamilyOppositeUnit {C : Type u} [Category.{u} C] (F : C ⥤ SSet.{u}) :
+    F ⋙ SSet.opFunctor ⟶ (kanHomFamily F ⋙ kanObjectOpFunctor) ⋙ kanObjectForget
+
+def kanHomFamilyOppositeUnitIso {C : Type u} [Category.{u} C] (F : C ⥤ SSet.{u}) :
+    FunctorIso (kanHomFamilyCoherent (F ⋙ SSet.opFunctor))
+      (kanHomFamilyCoherent ((kanHomFamily F ⋙ kanObjectOpFunctor) ⋙ kanObjectForget))
+
+def kanHomFamilyOppositeComparisonIso
+    {C : Type u} [Category.{u} C] (F : C ⥤ SSet.{u}) :
+    FunctorIso (kanHomFamilyCoherent F)
+      (kanHomFamilyCoherent (F ⋙ SSet.opFunctor))
+```
+
+#### KanNerveOppositeFamily（50行）
+
+```lean
+def catNerveOppositeFamilyMap :
+    (F ⋙ nerveFunctor) ⋙ SSet.opFunctor ⟶ (F ⋙ Cat.opFunctor) ⋙ nerveFunctor
+
+lemma catNerveOppositeFamilyMap_weak (i : I) :
+    IsWeakHomotopyEquivalence ((catNerveOppositeFamilyMap F).app i)
+
+def catNerveOppositeFamilyUnitIso :
+    FunctorIso (kanHomFamilyCoherent ((F ⋙ nerveFunctor) ⋙ SSet.opFunctor))
+      (kanHomFamilyCoherent ((F ⋙ Cat.opFunctor) ⋙ nerveFunctor))
+
+def catNerveOppositeFamilyIso :
+    FunctorIso (kanHomFamilyCoherent (F ⋙ nerveFunctor))
+      (kanHomFamilyCoherent ((F ⋙ Cat.opFunctor) ⋙ nerveFunctor))
+```
+
+#### KanElementsFamily（76行）
+
+```lean
+abbrev simplexElementsNerveDiagram : I ⥤ SSet.{u}
+
+def simplexElementsOppositeNerveIso :
+    (simplexElementsNerveDiagram F) ⋙ SSet.opFunctor ≅ F ⋙ SimplexTerminalNerve.functor
+
+def simplexElementsOppositeNerveKanIso :
+    FunctorIso (kanHomFamilyCoherent ((simplexElementsNerveDiagram F) ⋙ SSet.opFunctor))
+      (kanHomFamilyCoherent (F ⋙ SimplexTerminalNerve.functor))
+
+def simplexElementsOppositeAugmentation : F ⋙ SimplexTerminalNerve.functor ⟶ F
+
+lemma simplexElementsOppositeAugmentation_weak (i : I) :
+    IsWeakHomotopyEquivalence ((simplexElementsOppositeAugmentation F).app i)
+
+def simplexElementsOppositeAugmentationIso :
+    FunctorIso (kanHomFamilyCoherent (F ⋙ SimplexTerminalNerve.functor))
+      (kanHomFamilyCoherent F)
+
+def simplexElementsKanAugmentationIso :
+    FunctorIso (kanHomFamilyCoherent (simplexElementsNerveDiagram F))
+      (kanHomFamilyCoherent F)
+```
+
+## 220. 全要素圏の同じGrothendieck表示と、元の置換の係数移送則（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 10／全体 22（うち追加 10）。R03d・R02・R03は未完了。
+
+元の全係数Fの各要素圏を、Homだけ同じ宇宙へ持ち上げてCat値図式にした。そのGrothendieck構成と、Fをuncurryした全二重添字の要素圏は、同じ底・単体次数・ラベルと同じ元の射を並べ直す圏同値である。順方向・逆方向、単位・余単位の全自然性、元の底への二つの射影の厳密な等式を148行で示した。比較を自由な圏同値として選んだものではなく、両方向とも元のラベルと元の底の射・単体作用素を保つ。Grothendieckの合成に含まれる等式輸送は、元の単体次数への射影関手のmap_comp・eqToHom_mapで計算した。同じ二つの既存の構成の表示の照合であり、新しい数学的な一覧項目は増やしていない。
+
+次に、既存の連続left-fibration置換が元のcofinalな底上の射を前合成同値へ送ることを46行で記録した。元の置換単位の自然性を同じ全空間の射の等式として使い、元の単位のleft anodyne性、cofinal性の合成・消去則、検証済みR03f.3の同じ底上の検出を合成した。置換も単位も選び直していない。標的の全空間が準圏である場合の、元の底上の前合成同値を移す版も付けた。この仮定は型に明記し、任意の非準圏の標的で同じ検出ができるとは主張していない。これは元の置換関手・単位の自然性と同じ底上の移送の法則であり、独立の数学的な一覧項目は増やしていない。
+
+個別検査：全要素圏の圏同値と射影の最終版13688・終了0、元の置換の移送則79822・終了0。296：全要素圏のGrothendieck表示の対象ビルド1,125 jobs・終了0、小監査157本1,102宣言・標準三公理のみ（実ハンドル89214・終了0）。297：元の置換の移送則の対象ビルド2,219 jobs・終了0、小監査158本1,104宣言・標準三公理のみ（実ハンドル88369・終了0）。鍵返却済み。
+
+今回148＋46＝194行、累計158本・10,227行／外枠15,000。sorry・独自公理0、計算上限変更なし。[ModelCategory SSet]を追加せず、既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。次は、この同じ圏同値のnerveを同じ底のOverの射とし、元の置換へ送ってR03fの全分類へ接続する。元の固定始域のroof比較との等式は依然R03dの残りであり、native極限性の完了は主張しない。
+
+### 220.1 型
+
+全係数の共通入力は `{I : Type u} [SmallCategory I] (F : I ⥤ SSet.{u})`。
+
+#### SimplicialElementsGrothendieck（148行）
+
+```lean
+def simplicialElementsCatDiagram : I ⥤ Cat.{u,u}
+
+abbrev SimplicialTotalElements
+
+def simplicialTotalElementsProjection : SimplicialTotalElements F ⥤ I
+
+lemma uliftElements_eqToHom_hom {K : SSet.{u}} {x y : ULiftHom.{u} K.Elements}
+    (h : x = y) : (eqToHom h).down.hom = eqToHom (congrArg (fun z => z.obj) h)
+
+def simplicialElementsGrothendieckForward :
+    Grothendieck (simplicialElementsCatDiagram F) ⥤ SimplicialTotalElements F
+
+def simplicialElementsGrothendieckObject (X : SimplicialTotalElements F) :
+    Grothendieck (simplicialElementsCatDiagram F)
+
+def simplicialElementsGrothendieckHom {X Y : SimplicialTotalElements F} (f : X ⟶ Y) :
+    simplicialElementsGrothendieckObject F X ⟶ simplicialElementsGrothendieckObject F Y
+
+def simplicialElementsGrothendieckInverse :
+    SimplicialTotalElements F ⥤ Grothendieck (simplicialElementsCatDiagram F)
+
+def simplicialElementsGrothendieckEquivalence :
+    Grothendieck (simplicialElementsCatDiagram F) ≌ SimplicialTotalElements F
+
+theorem simplicialElementsGrothendieckForward_projection :
+    simplicialElementsGrothendieckForward F ⋙ simplicialTotalElementsProjection F =
+      Grothendieck.forget (simplicialElementsCatDiagram F)
+
+theorem simplicialElementsGrothendieckInverse_projection :
+    simplicialElementsGrothendieckInverse F ⋙ Grothendieck.forget (simplicialElementsCatDiagram F) =
+      simplicialTotalElementsProjection F
+```
+
+#### ContinuousLeftFibrationEquivalenceMap（46行）
+
+```lean
+theorem continuousLeftFibrationReplacement_map_isPrecompositionEquivalence_of_leftCofinal
+    {B : SSet.{u}} [Quasicategory B] {X Y : Over B} (f : X ⟶ Y)
+    (hc : IsLeftCofinal f.left) :
+    IsPrecompositionEquivalence ((continuousLeftFibrationReplacement B).map f).left
+
+theorem continuousLeftFibrationReplacement_map_isPrecompositionEquivalence
+    {B : SSet.{u}} [Quasicategory B] {X Y : Over B} [Quasicategory Y.left]
+    (f : X ⟶ Y) (hf : IsPrecompositionEquivalence f.left) :
+    IsPrecompositionEquivalence ((continuousLeftFibrationReplacement B).map f).left
+```
+
+## 221. 元の全要素圏の置換単位を保つnative全分類への接続（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 10／全体 22（うち追加 10）。R03d・R02・R03は未完了。
+
+§220の同じ圏同値の逆方向のnerveを、同じ底nerve I上のOverの射にした。元の射そのものの前合成同値性は既存nerveQCatEquivalenceに同じ圏同値を渡して得た。次に元のcontinuousLeftFibrationReplacementでこの同じOverの射を送り、元の二つの置換単位との厳密な正方形を、その同じ単位の自然性から得た。§220の置換の移送則と既存leftClassification_of_precompositionEquivalenceを適用し、全要素圏の元の置換のnative分類と同じGrothendieck表示の元の置換のnative分類を、底全体のFunctorIsoで比較した。
+
+これにR03fから得た同じGrothendieck係数の全分類単位を合成した。得られたsimplicialElementsNativeClassificationUnitIsoの始域は、各要素圏のHomを持ち上げた同じCat図式から来るgrothendieckKanCoefficientDiagramであり、終域は元の全二重添字の要素圏の元の置換のnativeな全分類である。元のFそのもののKan化と厳密に同じとは主張していない。Homの宇宙持ち上げを既存の全nerve同型で外し、§219の反対要素nerveの同じaugmentationへつなぐ照合は、次の接続として残す。
+
+同じ底上の圏同値・nerve・置換・分類移送・R03fの既存の構成を合成したものであり、独立の数学的な一覧項目は増やしていない。元の固定始域のroof比較との全FunctorIsoの等式は、依然R03dの残り。元の全augmentationの逆を使ったtwisted pairingと、この同じ全要素分類の単位を同じ底上で照合してから、その制限を元の固定始域比較へ戻す必要がある。各fiberの同値や底全体のFunctorIsoの存在だけで、その正規化の等式まで証明した扱いにはしない。
+
+個別検査の最終版8707・終了0。298：対象ビルド3,336 jobs・終了0、小監査159本1,115宣言・標準三公理のみ（実ハンドル40611・終了0）。鍵返却済み。今回90行、累計159本・10,317行／外枠15,000。sorry・独自公理0、計算上限変更なし。[ModelCategory SSet]を追加せず、既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。
+
+### 221.1 型
+
+共通入力は `{I : Type u} [SmallCategory I] (F : I ⥤ SSet.{u})`。
+
+#### SimplicialElementsClassification（90行）
+
+```lean
+def simplicialElementsGrothendieckOverMap :
+    Over.mk (nerveMap (simplicialTotalElementsProjection F)) ⟶
+      Over.mk (nerveMap (Grothendieck.forget (simplicialElementsCatDiagram F)))
+
+theorem simplicialElementsGrothendieckOverMap_isPrecompositionEquivalence :
+    IsPrecompositionEquivalence (simplicialElementsGrothendieckOverMap F).left
+
+def simplicialElementsGrothendieckReplacementMap
+
+theorem simplicialElementsGrothendieckReplacementMap_unit :
+    ((continuousLeftFibrationReplacementUnit (nerve I)).app
+      (Over.mk (nerveMap (simplicialTotalElementsProjection F)))).left ≫
+        (simplicialElementsGrothendieckReplacementMap F).left =
+      (simplicialElementsGrothendieckOverMap F).left ≫
+        ((continuousLeftFibrationReplacementUnit (nerve I)).app
+          (Over.mk (nerveMap (Grothendieck.forget (simplicialElementsCatDiagram F))))).left
+
+theorem simplicialElementsGrothendieckReplacementMap_isPrecompositionEquivalence :
+    IsPrecompositionEquivalence (simplicialElementsGrothendieckReplacementMap F).left
+
+def simplicialElementsGrothendieckReplacementClassificationIso :
+    FunctorIso
+      (leftStraighteningInfinityDiagram
+        ((continuousLeftFibrationReplacement (nerve I)).obj
+          (Over.mk (nerveMap (simplicialTotalElementsProjection F)))).hom)
+      (leftStraighteningInfinityDiagram
+        ((continuousLeftFibrationReplacement (nerve I)).obj
+          (Over.mk (nerveMap (Grothendieck.forget (simplicialElementsCatDiagram F))))).hom)
+
+def simplicialElementsNativeClassificationUnitIso :
+    FunctorIso
+      (kanDiagramCoherentNerve (grothendieckKanCoefficientDiagram (simplicialElementsCatDiagram F)))
+      (leftStraighteningInfinityDiagram
+        ((continuousLeftFibrationReplacement (nerve I)).obj
+          (Over.mk (nerveMap (simplicialTotalElementsProjection F)))).hom)
+```
+
+## 222. 元の全係数図式へ戻したnative全要素分類（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 10／全体 22（うち追加 10）。R03d・R02・R03は未完了。
+
+§221の始域に残っていたHomの持ち上げを、元の同じ全射列へup・downを適用する実同型で外した。元の圏の関手への自然性も同じ射列で計算している。元のnerveと同じ宇宙で比較できるため、係数に新たな外側のULiftは入れない。既存のMixedNerveやNerveULiftHomは変更せず、一般の宇宙の表記で同じup・downの法則を56行で記録した。
+
+この同じ実同型を全係数の要素圏に自然に適用し、Kan化の全関手同型へ送った。§219の元の全要素nerveから反対要素nerveの元の終端augmentationへの比較と、§221の元の単位を保つnative全分類比較を合成した。totalElementsNativeClassificationIsoの始域は元のFのkanHomFamilyCoherentそのものであり、終域は同じFをuncurryした全要素圏の元の連続left-fibration置換のnative全分類である。型つきの定義は60行。点ごとの比較への弱化や、異なる置換・augmentationの選択はしていない。既存構成の宇宙・係数移送と合成の法則として記録し、独立の数学的な一覧項目は増やしていない。
+
+元の単位と元の反対要素augmentationを使っているが、その比較が元の固定始域のroof比較の全FunctorIsoと同じになるというR03dの正規化は、まだ証明していない。今回の全分類の接続の存在を、その等式の代用にはしない。
+
+個別検査：Homの宇宙比較24895・終了0、二本を結合した全係数比較76861・終了0。299：二本と直接importerの対象ビルド3,564 jobs・終了0、小監査161本1,131宣言・標準三公理のみ（実ハンドル75950・終了0）。鍵返却済み。今回56＋60＝116行、累計161本・10,433行／外枠15,000。sorry・独自公理0、計算上限変更なし。[ModelCategory SSet]を追加せず、既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。
+
+### 222.1 型
+
+全係数の共通入力は `{I : Type u} [SmallCategory I] (F : I ⥤ SSet.{u})`。
+
+#### NerveHomUniverseIso（55行）
+
+```lean
+def nerveHomUniverseIso : nerve (ULiftHom.{max u v} C) ≅ nerve C
+
+theorem nerveHomUniverseIso_naturality {D : Type u} [Category.{v} D] (F : C ⥤ D) :
+    nerveMap (ULiftHom.down.{v,u,max u v} ⋙ F ⋙ ULiftHom.up) ≫
+      (nerveHomUniverseIso D).hom = (nerveHomUniverseIso C).hom ≫ nerveMap F
+```
+
+#### TotalElementsNativeClassification（61行）
+
+```lean
+def totalElementsNerveCoefficientIso :
+    simplicialElementsCatDiagram F ⋙ nerveFunctor ≅ simplexElementsNerveDiagram F
+
+def totalElementsNerveCoefficientKanIso :
+    FunctorIso (kanHomFamilyCoherent (simplicialElementsCatDiagram F ⋙ nerveFunctor))
+      (kanHomFamilyCoherent (simplexElementsNerveDiagram F))
+
+def totalElementsNativeClassificationIso :
+    FunctorIso (kanHomFamilyCoherent F)
+      (leftStraighteningInfinityDiagram
+        ((continuousLeftFibrationReplacement (nerve I)).obj
+          (Over.mk (nerveMap (simplicialTotalElementsProjection F)))).hom)
+```
+
+## 223. BEの元の第三図式への適用と同じ全実射の回収（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 10／全体 22（うち追加 10）。R03d・R02・R03は未完了。
+
+全source-frame Homの両変数の添字をAsSmallで、係数だけをULiftで同じ宇宙に持ち上げた全図式から、同じ元のSourceFrameArrowElementsへのdownを52行で記録した。対象では元の両変数・単体次数とラベルのdownを取り、射では元の両変数の射・単体作用素を保つ。元のパラメーターへの射影の厳密な等式と、回収する実射が元のULiftされたラベルのdownそのものという等式を付けた。新しい全要素や射の模型は選んでいない。
+
+これをBEの元のprobeに関手的source frameを適用した図式と、元の標的置換へ適用した。strictBETotJointSourceCoefficientsは元のstrictBETotJointFirstSpanDiagram A 3のAsSmall.downによる前合成そのものであり、その等式はrflである。元の第三図式から、同じ全要素圏の元の置換のnativeな全分類への全FunctorIsoができた。さらに元のstrictBETotJointFirstSpanComparisonを合成し、両変数raw Homから同じnative全分類への全FunctorIsoを得た。BE固有の適用は72行。既存構成の全係数表示・単位・移送と合成の法則として記録し、独立の数学的な一覧項目は増やしていない。
+
+この比較の終域は元の全source-frame要素圏のnativeな全分類であり、正本の二変数Hom∞そのものへの比較はまだ組み立てていない。次は、回収した同じ実射の全pairingと同じ両端を既存twistedPairingNerveMapへ渡し、元の全augmentationの逆による両端の移送へ進む。元の固定始域のroof比較との全FunctorIsoの等式が閉じるまでR03dの完了としない。
+
+個別検査：全要素のdown11509・終了0、BEへの適用を二本結合した検査67659・終了0。300：対象ビルド10,697 jobs・終了0、小監査163本1,153宣言・標準三公理のみ（実ハンドル11457・終了0）。対象とその依存だけのビルドでありrootビルドや公式の大監査は実行していない。鍵はビルド・小監査の間だけ取り、終了と返却を確認した。
+
+今回52＋72＝124行、累計163本・10,557行／外枠15,000。sorry・独自公理0、計算上限変更なし。[ModelCategory SSet]を追加せず、既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。
+
+### 223.1 型
+
+全source-frame係数の共通入力は `{C : Type u} [Category.{v} C] (Q : C ⥤ SimplexCategory ⥤ C) (R : C ⥤ C)`。BE側は `(A : Type u) [CommRing A]`、元のmodelCategory AとmappingCofibrantFactorization Aを局所的に使う。
+
+#### LiftedSourceFrameElements（52行）
+
+```lean
+abbrev liftedSourceFrameIndex
+
+def liftedSourceFrameCoefficients : liftedSourceFrameIndex (C := C) ⥤ SSet.{max u v}
+
+def liftedSourceFrameElementsDown :
+    SimplicialTotalElements (liftedSourceFrameCoefficients Q R) ⥤ SourceFrameArrowElements Q R
+
+theorem liftedSourceFrameElementsDown_parameters :
+    liftedSourceFrameElementsDown Q R ⋙ sourceFrameArrowParameters Q R =
+      Functor.Elements.π (Functor.uncurry.obj (liftedSourceFrameCoefficients Q R)) ⋙
+        (AsSmall.down.prod (𝟭 SimplexCategoryᵒᵖ))
+
+theorem liftedSourceFrameElementsDown_value
+    (X : SimplicialTotalElements (liftedSourceFrameCoefficients Q R)) :
+    sourceFrameArrowValue Q R ((liftedSourceFrameElementsDown Q R).obj X) = X.val.down
+```
+
+#### StrictDiagramTotJointSourceElements（72行）
+
+```lean
+def strictBETotJointSourceFrame :
+    (operad A).Algebra ⥤ SimplexCategory ⥤ (operad A).Algebra
+
+def strictBETotJointSourceCoefficients : strictBETotJointHomIndex A ⥤ SSet.{u+1}
+
+theorem strictBETotJointSourceCoefficients_eq :
+    strictBETotJointSourceCoefficients A =
+      AsSmall.down ⋙ strictBETotJointFirstSpanDiagram A 3
+
+abbrev StrictBETotJointSourceElements
+
+def strictBETotJointSourceElementsProjection :
+    StrictBETotJointSourceElements A ⥤ strictBETotJointHomIndex A
+
+def strictBETotJointSourceElementsDown
+
+def strictBETotJointSourceElementsClassificationIso :
+    FunctorIso (strictBETotJointFirstSpanCoherent A 3)
+      (leftStraighteningInfinityDiagram
+        ((continuousLeftFibrationReplacement (nerve (strictBETotJointHomIndex A))).obj
+          (Over.mk (nerveMap (strictBETotJointSourceElementsProjection A)))).hom)
+
+def strictBETotJointRawSourceElementsClassificationIso :
+    FunctorIso (strictBETotJointRawHomCoherent A)
+      (leftStraighteningInfinityDiagram
+        ((continuousLeftFibrationReplacement (nerve (strictBETotJointHomIndex A))).obj
+          (Over.mk (nerveMap (strictBETotJointSourceElementsProjection A)))).hom)
+```
+
+## 224. 同じ全source-frame実射のnative twisted pairingと厳密な両端（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 10／全体 22（うち追加 10）。R03d・R02・R03は未完了。
+
+§223で回収した同じ全実射の始域・標的をAsSmallの同じ宇宙へ持ち上げ、任意の全要素の射における同じ反変・共変の四角形を元のsourceFrameArrowValue_naturalityで検証した。元の射の全pairingに既存twistedPairingNerveMapを適用した。同じpairingの二射影は元の始域・標的の全nerve写像そのものであり、既存の全射影式を適用して厳密な等式を得た。64行。
+
+これをBEの同じ元の全source-frame実射へ適用し、元のstrictBETotModelSourceのedgewiseSubdivisionMapを合成した。得られたstrictBETotJointSourceNativePairingは、同じ全要素圏のnerveからTwistedArrow (CAlg_R A)への全単体に自然な写像である。元の始域・標的を同じモデル源へ送った二変数の底への厳密な射影式を、既存twistedArrowProjection_naturalityと元の全pairingの射影式を合成して得た。BE固有の適用は60行。模型の中身を新しく使う構成ではなく、既存の同じモデル源とtwisted pairingの全自然性・係数移送の法則の適用であり、独立の数学的な一覧項目は増やしていない。
+
+このpairingの始域端点は元のsource-frameの各次数の対象であり、まだ元の試験対象Xへ変更していない。§188の元の全augmentationの同じ逆を全要素のパラメーターへ引き戻し、その端点の変更を行う。元の両変数のnative入力への厳密化と元の固定始域のroof比較との等式は、R03dの残りとして保つ。今回のpairingの存在と厳密な射影式だけからR03dやnative極限性の完了を主張しない。
+
+個別検査：元の全pairing5427・終了0、BEへの適用を二本結合した検査1985・終了0。301：対象ビルド10,708 jobs・終了0、小監査165本1,166宣言・標準三公理のみ（実ハンドル18475・終了0）。対象とその依存のみで、rootビルドや公式の大監査は実行していない。鍵返却済み。
+
+今回64＋60＝124行、累計165本・10,681行／外枠15,000。sorry・独自公理0、計算上限変更なし。[ModelCategory SSet]を追加せず、既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。
+
+### 224.1 型
+
+一般側の共通入力は `{C : Type u} [Category.{v} C] (Q : C ⥤ SimplexCategory ⥤ C) (R : C ⥤ C)`。BE側は `(A : Type u) [CommRing A]`、元のmodelCategory AとmappingCofibrantFactorization Aを局所的に使う。
+
+#### LiftedSourceFramePairing（64行）
+
+```lean
+def liftedSourceFrameArrowDomain :
+    SimplicialTotalElements (liftedSourceFrameCoefficients Q R) ⥤ (AsSmall.{max u v} C)ᵒᵖ
+
+def liftedSourceFrameArrowCodomain :
+    SimplicialTotalElements (liftedSourceFrameCoefficients Q R) ⥤ AsSmall.{max u v} C
+
+def liftedSourceFrameArrowValue
+    (X : SimplicialTotalElements (liftedSourceFrameCoefficients Q R)) :
+    ((liftedSourceFrameArrowDomain Q R).obj X).unop ⟶
+      (liftedSourceFrameArrowCodomain Q R).obj X
+
+theorem liftedSourceFrameArrowValue_naturality
+    {X Y : SimplicialTotalElements (liftedSourceFrameCoefficients Q R)} (f : X ⟶ Y) :
+    ((liftedSourceFrameArrowDomain Q R).map f).unop ≫ liftedSourceFrameArrowValue Q R X ≫
+      (liftedSourceFrameArrowCodomain Q R).map f = liftedSourceFrameArrowValue Q R Y
+
+def liftedSourceFramePairing :
+    nerve (SimplicialTotalElements (liftedSourceFrameCoefficients Q R)) ⟶
+      TwistedArrow (nerve (AsSmall.{max u v} C))
+
+theorem liftedSourceFramePairing_projection :
+    liftedSourceFramePairing Q R ≫ twistedArrowProjection (nerve (AsSmall.{max u v} C)) =
+      CartesianMonoidalCategory.lift
+        (nerveMap (liftedSourceFrameArrowDomain Q R) ≫
+          (nerveOppositeIso (C := AsSmall.{max u v} C)).inv)
+        (nerveMap (liftedSourceFrameArrowCodomain Q R))
+```
+
+#### StrictDiagramTotJointSourcePairing（60行）
+
+```lean
+def strictBETotJointSourcePairing :
+    nerve (StrictBETotJointSourceElements A) ⟶
+      TwistedArrow (nerve (AsSmall.{u+1} (operad A).Algebra))
+
+def strictBETotJointSourceNativePairing :
+    nerve (StrictBETotJointSourceElements A) ⟶ TwistedArrow (CAlg_R A)
+
+def strictBETotJointSourceNativePairingBase :
+    nerve (StrictBETotJointSourceElements A) ⟶ (CAlg_R A).op ⊗ CAlg_R A
+
+theorem strictBETotJointSourceNativePairing_projection :
+    strictBETotJointSourceNativePairing A ≫ twistedArrowProjection (CAlg_R A) =
+      strictBETotJointSourceNativePairingBase A
+```
+
+## 225. 元の全augmentationの同じ比較を全実射の始域へ引き戻す（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 10／全体 22（うち追加 10）。R03d・R02・R03は未完了。
+
+元のnerve反転同型の逆の自然性を、元の順写像の自然性と同じ二つの逆を合成する法則として30行で記録した（reassoc生成の同じ末尾付きの等式を含む）。元の全実射の始域と単体次数を、§188の全augmentationの反対添字へ送る同じ関手を53行で記録した。その添字への評価の引き戻しは元の実射の始域そのものでrfl、定値端の引き戻しは元の試験対象の射影へ戻り、元の定値図式の恒等射の合成則で示した。頂点の同一視だけではなく、全関手の等式である。
+
+同じ反対添字のnerveと元のnerve反転同型の逆を、元の全augmentationのFunctorIsoのopへの前合成に使った。両端は同じ評価・定値の全関手の等式と反転同型の全自然性で、それぞれ元の実射の始域と元の試験対象のnativeな反変の全図式へ厳密に戻る。strictBETotJointSourceAugmentationDomainIsoは元の一つの全augmentationの比較をそのまま引き戻したものであり、逆を各対象や各単体で独立に選ばない。端点比較の適用は89行。既存構成の自然性・単位・反転・係数移送・合成の法則として記録し、独立の数学的な一覧項目は増やしていない。
+
+この同型の逆を元の全pairingへ作用させ、元の試験対象を始域とする同じ正本Hom∞の全比較へ戻す部分はまだ残る。またpairingの標的は元のright-frame置換後なので、元の全標的置換単位の同じ逆による端点比較も必要。元の固定始域のroof比較との全FunctorIsoの等式と、同じ底上のnative Homへの比較の同値性は未証明であり、R03d・R02・R03の完了とは扱わない。
+
+個別検査：反転同型の逆の自然性33516・終了0、元の全augmentationの添字と両端55221・終了0、三本を結合した最終の端点比較79466・終了0。302：対象ビルド10,713 jobs・終了0、小監査168本1,183宣言・標準三公理のみ（実ハンドル77879・終了0）。鍵返却済み。今回30＋53＋89＝172行、累計168本・10,853行／外枠15,000。sorry・独自公理0、計算上限変更なし。[ModelCategory SSet]を追加せず、既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。
+
+### 225.1 型
+
+BE側の共通入力は `(A : Type u) [CommRing A]`、元のmodelCategory AとmappingCofibrantFactorization Aを局所的に使う。反転同型の逆の自然性にはreassoc生成の同じ末尾付きの等式もある。
+
+#### NerveOppositeInverseNaturality（30行）
+
+```lean
+theorem nerveOppositeIso_inv_naturality
+    {C D : Type u} [SmallCategory C] [SmallCategory D] (F : C ⥤ D) :
+    nerveMap F.op ≫ (nerveOppositeIso (C := D)).inv =
+      (nerveOppositeIso (C := C)).inv ≫ SSet.opFunctor.map (nerveMap F)
+```
+
+#### StrictDiagramTotJointSourceParameters（53行）
+
+```lean
+def strictBETotJointSourceParameterIndex :
+    StrictBETotJointSourceElements A ⥤ (strictBETotJointSourceFrameIndex A)ᵒᵖ
+
+theorem strictBETotJointSourceParameterIndex_evaluation :
+    strictBETotJointSourceParameterIndex A ⋙ (strictBETotJointSourceFrameEvaluation A).op =
+      FrameHom.liftedSourceFrameArrowDomain (strictBETotJointSourceFrame A)
+        (rightFrameReplacement (rightFrameFamily A))
+
+theorem strictBETotJointSourceParameterIndex_constant :
+    strictBETotJointSourceParameterIndex A ⋙ (strictBETotJointSourceFrameConstant A).op =
+      strictBETotJointSourceElementsProjection A ⋙ strictBETotJointHomSourceIndex A
+```
+
+#### StrictDiagramTotJointSourceAugmentationComparison（89行）
+
+```lean
+def strictBETotJointSourceNativeDomain :
+    nerve (StrictBETotJointSourceElements A) ⟶ (CAlg_R A).op
+
+def strictBETotJointSourceOriginalNativeDomain :
+    nerve (StrictBETotJointSourceElements A) ⟶ (CAlg_R A).op
+
+def strictBETotJointSourceAugmentationInput :
+    nerve (StrictBETotJointSourceElements A) ⟶ (nerve (strictBETotJointSourceFrameIndex A)).op
+
+theorem strictBETotJointSourceAugmentationInput_evaluation :
+    strictBETotJointSourceAugmentationInput A ≫
+      SSet.opFunctor.map (nerveMap (strictBETotJointSourceFrameEvaluation A) ≫
+        strictBETotModelSource A) = strictBETotJointSourceNativeDomain A
+
+theorem strictBETotJointSourceAugmentationInput_constant :
+    strictBETotJointSourceAugmentationInput A ≫
+      SSet.opFunctor.map (nerveMap (strictBETotJointSourceFrameConstant A) ≫
+        strictBETotModelSource A) = strictBETotJointSourceOriginalNativeDomain A
+
+def strictBETotJointSourceAugmentationDomainIso :
+    FunctorIso (strictBETotJointSourceNativeDomain A)
+      (strictBETotJointSourceOriginalNativeDomain A)
+```
+
+## 226. 元の全標的置換単位の同じ逆による端点の回収（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 10／全体 22（うち追加 10）。R03d・R02・R03は未完了。
+
+元のstrictBETotModelSourceが全弱自然変換を全FunctorIsoへ送る法則を41行で記録した。元の局所化の弱辺反転と既存nerveTransformationPostIsoをその同じ自然変換へ適用する。元の全自然変換を別の辺や成分に取り替えず、元のモデル源を保つ。§188の全augmentationで用いた同じ既存の反転手順を、一般の全自然変換に記す係数移送の法則である。
+
+元のrightFrameReplacementと元のrightFrameReplacementUnitを、同じAsSmallのモデル源の添字に記録した。各成分が元のモデル弱同値であることは、同じrightFrameReplacementUnit_trivialCofibrationの第二成分を使う。これを上の同じモデル源の全弱自然変換の反転へ渡し、全標的置換単位自身の全FunctorIsoを得た。元の全実射の標的の関手は、元の全標的射影へこの同じ置換を合成したものとrflで一致する。その同じ全標的単位の比較を元の全標的射影へ前合成し、逆を取ることで、実射の置換後の標的から元の標的への全FunctorIsoを得た。83行。
+
+§225の始域比較と今回の標的比較がそろったが、二つを同じ二変数のnativeな底の比較へまとめる部分と、その比較を元の全pairingの同じ底への射へ厳密化する部分はまだ残る。元の固定始域のroof比較との全FunctorIsoの等式と、同じ底上の比較の同値性も未証明。既存の全単位・弱辺反転・係数移送・合成の法則として記録し、独立の数学的な一覧項目は増やしていない。型に関する既存の仮定や範囲は弱めていない。
+
+個別検査：全弱自然変換の移送5039・終了0、二本を結合した最終の標的比較11777・終了0。303：対象ビルド10,712 jobs・終了0、小監査170本1,200宣言・標準三公理のみ（実ハンドル58672・終了0）。鍵返却済み。今回41＋83＝124行、累計170本・10,977行／外枠15,000。sorry・独自公理0、計算上限変更なし。[ModelCategory SSet]を追加せず、既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。
+
+### 226.1 型
+
+共通入力は `(A : Type u) [CommRing A]`、元のmodelCategory Aを局所的に使う。全標的置換側は元のmappingCofibrantFactorization Aも局所的に使う。
+
+#### StrictDiagramTotModelWeakTransformation（41行）
+
+```lean
+def strictBETotModelWeakTransformationIso
+    {J : Type (u+1)} [SmallCategory J]
+    {F G : J ⥤ AsSmall.{u+1} (operad A).Algebra} (η : F ⟶ G)
+    (hη : ∀ j, weakEquivalences (operad A).Algebra (AsSmall.down.map (η.app j))) :
+    FunctorIso (nerveMap F ≫ strictBETotModelSource A) (nerveMap G ≫ strictBETotModelSource A)
+```
+
+#### StrictDiagramTotJointTargetReplacement（83行）
+
+```lean
+def strictBETotTargetReplacement :
+    AsSmall.{u+1} (operad A).Algebra ⥤ AsSmall.{u+1} (operad A).Algebra
+
+def strictBETotTargetReplacementUnit :
+    𝟭 (AsSmall.{u+1} (operad A).Algebra) ⟶ strictBETotTargetReplacement A
+
+theorem strictBETotTargetReplacementUnit_weak (Y : AsSmall.{u+1} (operad A).Algebra) :
+    weakEquivalences (operad A).Algebra
+      (AsSmall.down.map ((strictBETotTargetReplacementUnit A).app Y))
+
+def strictBETotTargetReplacementNativeIso :
+    FunctorIso (strictBETotModelSource A)
+      (nerveMap (strictBETotTargetReplacement A) ≫ strictBETotModelSource A)
+
+theorem strictBETotJointSourceCodomain_replacement :
+    FrameHom.liftedSourceFrameArrowCodomain (strictBETotJointSourceFrame A)
+      (rightFrameReplacement (rightFrameFamily A)) =
+    strictBETotJointSourceElementsProjection A ⋙ strictBETotJointHomTargetIndex A ⋙
+      strictBETotTargetReplacement A
+
+def strictBETotJointSourceNativeCodomain :
+    nerve (StrictBETotJointSourceElements A) ⟶ CAlg_R A
+
+def strictBETotJointSourceOriginalNativeCodomain :
+    nerve (StrictBETotJointSourceElements A) ⟶ CAlg_R A
+
+def strictBETotJointSourceTargetReplacementIso :
+    FunctorIso (strictBETotJointSourceNativeCodomain A)
+      (strictBETotJointSourceOriginalNativeCodomain A)
+```
+
+## 227. 元の二つの全端点比較を元の二変数native入力へまとめる（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 10／全体 22（うち追加 10）。R03d・R02・R03は未完了。
+
+既存functorHomTensorEquivとその合成則により、二つの全FunctorIsoの同じ順方向・逆方向を直積の二成分として戻し、直積値の全FunctorIsoにする法則を46行で記録した。順逆条件は元の二つの同型の順逆条件と元の二つの射影関手のmap_idへ帰着する。パラメーターの準圏性は要求せず、二つの元の同型を保持する。既存のh Funの直積分解を合成する法則であり、別の数学的な比較の存在を仮定していない。
+
+同じ元のnative pairingの底は、§225・§226の元の始域・標的の全図式の組に厳密に等しい。元の試験対象と元の標的の組は、元の全要素圏からの同じ射影でstrictBETotJointNativeHomInputを前合成したものに厳密に等しい。いずれも全写像の等式を示し、この二つの等式で上の積の同型を移送した。strictBETotJointSourceNativePairingBaseIsoは元の全pairingの底から元の二変数native入力の引き戻しへの全FunctorIsoである。BE固有の適用は60行。既存構成の同じ二つの端点比較・自然性・係数移送・合成の法則として記録し、独立の数学的な一覧項目は増やしていない。
+
+同じ底上の射への補正には既存pathCorrectedFunctorSquareを使えることを確認した。これは指定した元の底のFunctorIsoのpathと、元の成分へのexactComponentIso、およびそのpostcompが元の同型へ戻る等式を保持する。元の二つの端点の逆から作った同じ底の同型をこの既存の補正へ渡し、同じ底上のnative Homの全空間への射を作る。補正後の射の同値性、元の固定始域のroof比較との全FunctorIsoの等式はまだ残る。
+
+個別検査：二同型の積3906・終了0、二本を結合したBEの底の比較29830・終了0。304：必要な既存FunctorHomTensorのみの対象ビルド5,931 jobs・終了0（実ハンドル52371・終了0）。305：二本と直接importerの対象ビルド12,210 jobs・終了0、小監査172本1,217宣言・標準三公理のみ（実ハンドル34181・終了0）。対象とその依存のみで、rootビルドや公式の大監査は実行していない。鍵返却済み。
+
+今回46＋60＝106行、累計172本・11,083行／外枠15,000。sorry・独自公理0、計算上限変更なし。[ModelCategory SSet]を追加せず、既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。
+
+### 227.1 型
+
+BE側の共通入力は `(A : Type u) [CommRing A]`、元のmodelCategory AとmappingCofibrantFactorization Aを局所的に使う。
+
+#### FunctorIsoPairing（46行）
+
+```lean
+def functorIsoPair {T X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
+    {f g : T ⟶ X} {h k : T ⟶ Y} (e : FunctorIso f g) (d : FunctorIso h k) :
+    FunctorIso (lift f h) (lift g k)
+```
+
+#### StrictDiagramTotJointPairingBaseComparison（60行）
+
+```lean
+theorem strictBETotJointSourceNativePairingBase_eq_lift :
+    strictBETotJointSourceNativePairingBase A =
+      lift (strictBETotJointSourceNativeDomain A) (strictBETotJointSourceNativeCodomain A)
+
+theorem strictBETotJointSourceOriginalNativeEndpoints_eq :
+    lift (strictBETotJointSourceOriginalNativeDomain A)
+      (strictBETotJointSourceOriginalNativeCodomain A) =
+        nerveMap (strictBETotJointSourceElementsProjection A) ≫ strictBETotJointNativeHomInput A
+
+def strictBETotJointSourceNativePairingBaseIso :
+    FunctorIso (strictBETotJointSourceNativePairingBase A)
+      (nerveMap (strictBETotJointSourceElementsProjection A) ≫ strictBETotJointNativeHomInput A)
+```
+
+## 228. 指定された元の端点比較を保つ、同じ底上のnative Homへの実射（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 10／全体 22（うち追加 10）。R03d・R02・R03は未完了。
+
+§227の元の全端点比較の同じ逆を、元のnative pairingの射影へfunctorIsoOfEqで移送し、同じ底のFunctorIsoを指定した。これを既存pathCorrectedFunctorSquareへ渡した。twistedArrowProjectionのleft-fibration性と既存leftFibration_equivalenceLiftingだけを使い、元のpairingを同じ元の二変数native入力の上へ補正した。補正後の射影は元のnative入力の同じ全要素射影による引き戻しに厳密に等しい。
+
+補正後と元のpairingの比較には、指定pathから来る既存exactComponentIsoを使った。そのpostcompは、元の端点比較の逆自身を、同じ厳密な射影の等式のeqToIsoと合成したものに等しい。別の同型を選んだものではなく、この等式をstrictBETotJointSourceCorrectedPairingIso_postcompとして保持する。同じ正本Homの全空間を元のnative入力によるtwistedArrowProjectionのpullbackとして記し、補正後のpairingと元の全要素圏の射影をpullback.liftへ渡した。得られたstrictBETotJointSourceNativeHomMapは、元の全要素圏から同じ元の二変数の底上のnative Hom全空間への実際の全写像である。元の底への射影と補正後のpairingの回収の両方が厳密な等式として成立する。103行。
+
+既存の全端点比較、指定pathの相対持ち上げとpullbackの合成・自然性の法則の適用として記録し、独立の数学的な一覧項目は増やしていない。この全写像がcofinalか、元の置換からの延長が前合成同値かは、今回の存在やpathの等式から先取りしていない。元の固定始域のroof比較との全FunctorIsoの等式もR03dの残り。
+
+個別検査の最終版30336・終了0。306：必要な既存二モジュールのみの対象ビルド1,873 jobs・終了0（実ハンドル82144・終了0）。307：元の指定pathを保つ全写像の対象ビルド12,222 jobs・終了0、小監査173本1,236宣言・標準三公理のみ（実ハンドル30168・終了0）。鍵返却済み。§228までの累計173本・11,186行／外枠15,000。
+
+### 228.1 型
+
+共通入力は `(A : Type u) [CommRing A]`。元のmodelCategory AとmappingCofibrantFactorization Aを局所的に使い、nativeな積の準圏性には既存quasicategory_tensorを適用する。
+
+#### StrictDiagramTotJointPairingCorrection（103行）
+
+```lean
+def strictBETotJointSourcePairingBasePathIso :
+    FunctorIso
+      (nerveMap (strictBETotJointSourceElementsProjection A) ≫ strictBETotJointNativeHomInput A)
+      (strictBETotJointSourceNativePairing A ≫ twistedArrowProjection (CAlg_R A))
+
+def strictBETotJointSourcePairingCorrection :
+    PathCorrectedFunctorSquare (twistedArrowProjection (CAlg_R A))
+      (strictBETotJointSourceNativePairing A)
+      (nerveMap (strictBETotJointSourceElementsProjection A) ≫ strictBETotJointNativeHomInput A)
+      (strictBETotJointSourcePairingBasePathIso A)
+
+def strictBETotJointSourceCorrectedPairing :
+    nerve (StrictBETotJointSourceElements A) ⟶ TwistedArrow (CAlg_R A)
+
+theorem strictBETotJointSourceCorrectedPairing_projection :
+    strictBETotJointSourceCorrectedPairing A ≫ twistedArrowProjection (CAlg_R A) =
+      nerveMap (strictBETotJointSourceElementsProjection A) ≫ strictBETotJointNativeHomInput A
+
+def strictBETotJointSourceCorrectedPairingIso :
+    FunctorIso (strictBETotJointSourceCorrectedPairing A) (strictBETotJointSourceNativePairing A)
+
+theorem strictBETotJointSourceCorrectedPairingIso_postcomp :
+    (strictBETotJointSourceCorrectedPairingIso A).postcomp (twistedArrowProjection (CAlg_R A)) =
+      eqToIso (congrArg (fun v => HomotopyCategory.mk (functorVertex v))
+        (strictBETotJointSourceCorrectedPairing_projection A)) ≪≫
+          strictBETotJointSourcePairingBasePathIso A
+
+def strictBETotJointNativeHomTotalSpace : SSet.{u+1}
+
+def strictBETotJointNativeHomProjection :
+    strictBETotJointNativeHomTotalSpace A ⟶ nerve (strictBETotJointHomIndex A)
+
+def strictBETotJointSourceNativeHomMap :
+    nerve (StrictBETotJointSourceElements A) ⟶ strictBETotJointNativeHomTotalSpace A
+
+theorem strictBETotJointSourceNativeHomMap_projection :
+    strictBETotJointSourceNativeHomMap A ≫ strictBETotJointNativeHomProjection A =
+      nerveMap (strictBETotJointSourceElementsProjection A)
+
+theorem strictBETotJointSourceNativeHomMap_pairing :
+    strictBETotJointSourceNativeHomMap A ≫
+      pullback.fst (twistedArrowProjection (CAlg_R A)) (strictBETotJointNativeHomInput A) =
+        strictBETotJointSourceCorrectedPairing A
+```
+
+## 229. 元の置換単位を固定したnative Homへの延長と終域の全分類（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 10／全体 22（うち追加 10）。R03d・R02・R03は未完了。
+
+同じ正本Hom全空間の射影のleft-fibration性を、元のtwistedArrowProjectionのleft-fibration性の同じpullbackとして記録した。元の全要素圏のnerveからのstrictBETotJointSourceNativeHomMapを、元の連続left-fibration置換の同じ単位に沿い、既存exists_relativeFunctorExtension_of_leftAnodyneで延長した。exists_strictBETotJointSourceNativeLiftは、元の同じ底への射影の厳密な等式と、元の同じ置換単位との合成がstrictBETotJointSourceNativeHomMapそのものに等しいという厳密な三角形を同時に要求する。別の全写像の存在に取り替えていない。
+
+また同じ正本Hom全空間のnative全分類を、元のstrictBETotJointNativeHomCoherentへつなぐ全FunctorIsoを付けた。既存leftStraighteningInfinityDiagram_baseChangeIsoを元のtwistedArrowProjectionと元の二変数native入力へ適用するだけであり、twistedArrowHomInfinityの定義そのものに戻る。延長と終域の比較を合わせて66行。既存の相対延長・単位・引き戻し・全分類の底変換の法則の適用として記録し、独立の数学的な一覧項目は増やしていない。
+
+これで、raw Homから元の全要素置換の全分類への比較、元のnative Homの全空間の分類から元のnative Hom図式への比較、そしてその間の元の単位を固定した実射が、同じ全二変数の底の上で揃った。ただし中間のこの実射の同値性は未証明。次は元の固定始域の同じ全roof比較を使い、この同じ実射の同値性と、合成した全FunctorIsoの元の固定始域比較との一致を検収する。任意の別の全同型の存在、pointwiseな比較だけ、またはcofinal性を未証明の仮定として置く形へ弱めない。R03d・R02・R03とnative極限性の完了は主張しない。
+
+個別検査：元の単位を固定する延長28513・終了0、終域の底変換比較を含む最終版49885・終了0。308：延長の最初の版の対象ビルド12,223 jobs・終了0、小監査174本1,240宣言・標準三公理のみ（実ハンドル93277・終了0）。309：終域の底変換比較を含む最終版の対象ビルド12,223 jobs・終了0、小監査174本1,245宣言・標準三公理のみ（実ハンドル26554・終了0）。対象とその依存のみで、rootビルドや公式の大監査は実行していない。鍵返却済み。
+
+§228・§229で今回103＋66＝169行、累計174本・11,252行／外枠15,000。sorry・独自公理0、計算上限変更なし。[ModelCategory SSet]を追加せず、既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。
+
+### 229.1 型
+
+共通入力は `(A : Type u) [CommRing A]`。元のmodelCategory AとmappingCofibrantFactorization Aを局所的に使う。strictBETotJointNativeHomProjection_leftFibrationは同じファイル内で局所instanceとして使う。
+
+#### StrictDiagramTotJointSourceNativeLift（66行）
+
+```lean
+lemma strictBETotJointNativeHomProjection_leftFibration :
+    LeftFibration (strictBETotJointNativeHomProjection A)
+
+theorem exists_strictBETotJointSourceNativeLift :
+    let P : Over (nerve (strictBETotJointHomIndex A)) :=
+      Over.mk (nerveMap (strictBETotJointSourceElementsProjection A))
+    let R := (continuousLeftFibrationReplacement (nerve (strictBETotJointHomIndex A))).obj P
+    ∃ f : R.left ⟶ strictBETotJointNativeHomTotalSpace A,
+      f ≫ strictBETotJointNativeHomProjection A = R.hom ∧
+      ((continuousLeftFibrationReplacementUnit (nerve (strictBETotJointHomIndex A))).app P).left ≫ f =
+        strictBETotJointSourceNativeHomMap A
+
+def strictBETotJointNativeHomClassificationIso :
+    FunctorIso (leftStraighteningInfinityDiagram (strictBETotJointNativeHomProjection A))
+      (strictBETotJointNativeHomCoherent A)
+```
+
+## 230. R03g：元のGrothendieck単位のfiber制限の弱同値判定（紙、11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 10／全体 23（うち追加 11）。R03gを追加、未証明。
+
+IS-W2 §19の同じR01〜R03のまとまり・一つの見込み1,500行以内の枠により、元の単位のfiber制限の弱同値判定をR03gとして追加する。共通入力は `{I : Type u} [SmallCategory I] (F : I ⥤ Cat.{u,u})`。
+
+```lean
+theorem grothendieckFiberUnit_isWeakHomotopyEquivalence (i : I) :
+  IsWeakHomotopyEquivalence (grothendieckFiberUnit F i)
+```
+
+採用する元のfiber包含を明記する。weightedNerveConstantLift (F ⋙ nerveFunctor) iに、元のstrictなgrothendieckWeightedNerveIso Fのinvを合成したものをgrothendieckFiberInclusion F iとする。この包含に元のcontinuousLeftFibrationReplacementUnitを合成し、同じ底の指定頂点のfiberへvertexFiberLiftした元の実写像がgrothendieckFiberUnit F iである。元の単位・比較・包含を保持し、弱同値になる別の写像の存在への変更はしない。後のroof比較との照合もこの明記した同じ包含と単位を通す。
+
+同じR03fの比較をそのfiberへ制限したgrothendieckFiberComparison F iとの合成が、元のgrothendieckKanCoefficientUnit Fのi成分と元のweightedNerveFiberMapの合成そのものに等しいことを、全単体の厳密な等式grothendieckFiberUnit_comparisonとして個別検査した（実ハンドル16869・終了0）。型だけの一時検査CheckGrothendieckFiberUnitWeakType.leanも終了0（7258）。R03gの証明はまだ仮定にも宣言にもしていない。
+
+見込み150〜350行。元のR03fの同じ比較は前合成同値なので、既存vertexFiberMap_isQCatEquivalence_of_precompositionEquivalenceで同じfiberの比較を同値と検出する。元のEx∞単位はanodyneで弱同値、元のweightedNerveFiberMapはstrictな同型である。上の全単体の厳密な等式を弱同値の合成・消去則へ渡して、元のgrothendieckFiberUnit自身の弱同値性を得る。新しい数学的なfiberの判定として一つに見積もり、既存の構成の法則だけとは数えない。半分175行で実測と残りを報告する。
+
+置き場所はKerodon/FibrationsOfInfinityCategories/FibrationsOverOrdinaryCategories/GrothendieckFiberUnit.lean。R03gの後に、この同じfiberの単位と、元の同じnative Hom写像の合成を元の固定始域のroof比較へ照合する。R03gだけでnative Hom写像の同値性やR03dの全FunctorIsoの正規化が済んだとはしない。検証済み本体の累計は引き続き174本・11,252行／外枠15,000。今回の未検収のLeanは一時ファイル内である。
+
+### 230.1 同じ包含・単位と比較の型（個別検査済み、対象ビルド前）
+
+```lean
+abbrev grothendieckReplacement : Over (nerve I)
+
+def grothendieckFiberInclusion (i : I) : nerve (F.obj i) ⟶ nerve (Grothendieck F)
+
+theorem grothendieckFiberInclusion_projection (i : I) :
+    grothendieckFiberInclusion F i ≫ nerveMap (Grothendieck.forget F) = SSet.const (nerveVertex i)
+
+def grothendieckFiberUnit (i : I) :
+    nerve (F.obj i) ⟶ vertexFiber (grothendieckReplacement F).hom (nerveVertex i)
+
+def grothendieckFiberComparison (i : I) :
+    vertexFiber (grothendieckReplacement F).hom (nerveVertex i) ⟶
+      vertexFiber (weightedNerveProjection (grothendieckKanCoefficients F)) (nerveVertex i)
+
+theorem grothendieckFiberUnit_comparison (i : I) :
+    grothendieckFiberUnit F i ≫ grothendieckFiberComparison F i =
+      (grothendieckKanCoefficientUnit F).app i ≫
+        weightedNerveFiberMap (grothendieckKanCoefficients F) i
+```
+
+## 231. R03g完了：同じ元のGrothendieck単位の指定fiber制限は弱同値（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 23（うち追加 11）。R03gを完了。R03d・R02・R03は未完了。
+
+R03gを111行で閉じた（見込み150〜350行、上端との差−239行）。元のstrictなgrothendieckWeightedNerveIsoのinvを通した同じ定値fiberの包含に、元の置換単位を合成し、指定fiberへの元の実写像grothendieckFiberUnitを取った。同じR03fの全比較からのfiber比較grothendieckFiberComparisonは、既存の前合成同値のfiberへの制限によって同値となる。
+
+元の単位のfiber制限とこの同じfiber比較の合成は、元のEx∞係数単位と元のweightedNerveFiberMapの合成そのものに厳密に等しい。この等式は元の全単位の厳密な三角形、元のstrict同型の逆条件、weightedNerveConstantLift_mapの全自然性だけで示した。元のEx∞単位はanodyneであり、既存homotopyEquivalence_pre_of_anodyneとπ₀の全単射で弱同値と検査できる。元のweightedNerveFiberMapはstrictな同型である。弱同値の合成と同じfiber比較の消去により、元のgrothendieckFiberUnit自身の弱同値性が得られた。充填性や弱同値性を新しい仮定として追加していない。途中報告点175行に達する前に全証明が閉じた。
+
+個別検査の最終版59023・終了0。310：対象ビルド3,412 jobs・終了0、小監査175本1,258宣言・標準三公理のみ（実ハンドル51386・終了0）。鍵返却済み。今回111行、累計175本・11,363行／外枠15,000。sorry・独自公理0、計算上限変更なし。[ModelCategory SSet]を追加せず、既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。
+
+次は§220・§221の同じ全要素圏とGrothendieck表示の厳密な係数移送と元の置換単位の自然性を使い、この同じfiber単位の弱同値を元の全要素圏のfiberへ戻す。その後に、元の同じnative Hom写像を合成した写像と元の固定始域のroof比較を照合する。R03gだけでnative Hom写像の同値性やR03dの全FunctorIsoの正規化が済んだとはしない。
+
+### 231.1 型
+
+共通入力は `{I : Type u} [SmallCategory I] (F : I ⥤ Cat.{u,u})`。fiberのKan性は既存のleft-fibrationのfiberのKan性と元のEx∞係数のKan性を局所instanceとして使う。
+
+#### GrothendieckFiberUnit（111行）
+
+```lean
+abbrev grothendieckReplacement : Over (nerve I)
+
+def grothendieckFiberInclusion (i : I) : nerve (F.obj i) ⟶ nerve (Grothendieck F)
+
+theorem grothendieckFiberInclusion_projection (i : I) :
+    grothendieckFiberInclusion F i ≫ nerveMap (Grothendieck.forget F) = SSet.const (nerveVertex i)
+
+def grothendieckFiberUnit (i : I) :
+    nerve (F.obj i) ⟶ vertexFiber (grothendieckReplacement F).hom (nerveVertex i)
+
+def grothendieckFiberComparison (i : I) :
+    vertexFiber (grothendieckReplacement F).hom (nerveVertex i) ⟶
+      vertexFiber (weightedNerveProjection (grothendieckKanCoefficients F)) (nerveVertex i)
+
+theorem grothendieckFiberUnit_comparison (i : I) :
+    grothendieckFiberUnit F i ≫ grothendieckFiberComparison F i =
+      (grothendieckKanCoefficientUnit F).app i ≫
+        weightedNerveFiberMap (grothendieckKanCoefficients F) i
+
+theorem grothendieckFiberComparison_isQCatEquivalence (i : I) :
+    IsQCatEquivalence (grothendieckFiberComparison F i)
+
+theorem grothendieckFiberUnit_isWeakHomotopyEquivalence (i : I) :
+    IsWeakHomotopyEquivalence (grothendieckFiberUnit F i)
+```
+
+## 232. R03gを元の全要素圏の同じfiber単位へ係数移送する（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 23（うち追加 11）。R03d・R02・R03は未完了。
+
+元のstrictなGrothendieck表示から元の全要素圏への順写像を、§231の同じ指定fiber包含へ合成した。元の全要素射影への射影は同じ頂点で定値となる。この同じ包含に元の全要素圏の置換単位を合成し、同じ指定fiberへの実写像simplicialElementsFiberUnitを取った。
+
+§221の同じ二つの表示の元の置換比較をそのfiberへ制限し、その同じ比較の前合成同値性からfiberの同値性を得た。元の全要素の単位のfiber制限とこの同じfiber比較の合成は、R03gの元のGrothendieck単位のfiber制限そのものに厳密に等しい。等式は、元の置換単位の自然性、元の同じ全要素とGrothendieck表示の厳密な往復、およびfiberの包含後の射の計算だけで示した。この等式と弱同値の消去則で、R03gを元のsimplicialElementsFiberUnit自身の弱同値性へ移した。100行。
+
+R03gの同じ元の写像を既存の厳密な係数表示と元の単位の自然性で移送する法則として記録し、独立の数学的な一覧項目は増やしていない。元のfiber包含は定義で明記し、写像を別の同値の存在へ変更していない。次は元のnative Hom写像と元の単位を固定する延長を、その同じfiber包含へ制限する厳密な三角形を追跡する。元のnative Hom写像のfiber制限の弱同値性と、元の固定始域のroof比較との全同型の一致はまだ残る。
+
+個別検査の最終版86234・終了0。311：対象ビルド3,420 jobs・終了0、小監査176本1,271宣言・標準三公理のみ（実ハンドル97632・終了0）。鍵返却済み。今回100行、累計176本・11,463行／外枠15,000。sorry・独自公理0、計算上限変更なし。[ModelCategory SSet]を追加せず、既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainは変更していない。
+
+### 232.1 型
+
+共通入力は `{I : Type u} [SmallCategory I] (F : I ⥤ SSet.{u})`。fiberのKan性は既存のleft-fibrationのfiberのKan性を局所instanceとして使う。
+
+#### SimplicialElementsFiberUnit（100行）
+
+```lean
+abbrev simplicialElementsReplacement : Over (nerve I)
+
+def simplicialElementsFiberInclusion (i : I) :
+    nerve ((simplicialElementsCatDiagram F).obj i) ⟶ nerve (SimplicialTotalElements F)
+
+theorem simplicialElementsFiberInclusion_projection (i : I) :
+    simplicialElementsFiberInclusion F i ≫ nerveMap (simplicialTotalElementsProjection F) =
+      SSet.const (nerveVertex i)
+
+def simplicialElementsFiberUnit (i : I) :
+    nerve ((simplicialElementsCatDiagram F).obj i) ⟶
+      vertexFiber (simplicialElementsReplacement F).hom (nerveVertex i)
+
+def simplicialElementsFiberComparison (i : I) :
+    vertexFiber (simplicialElementsReplacement F).hom (nerveVertex i) ⟶
+      vertexFiber (grothendieckReplacement (simplicialElementsCatDiagram F)).hom (nerveVertex i)
+
+theorem simplicialElementsFiberUnit_comparison (i : I) :
+    simplicialElementsFiberUnit F i ≫ simplicialElementsFiberComparison F i =
+      grothendieckFiberUnit (simplicialElementsCatDiagram F) i
+
+theorem simplicialElementsFiberComparison_isQCatEquivalence (i : I) :
+    IsQCatEquivalence (simplicialElementsFiberComparison F i)
+
+theorem simplicialElementsFiberUnit_isWeakHomotopyEquivalence (i : I) :
+    IsWeakHomotopyEquivalence (simplicialElementsFiberUnit F i)
+```
+
+## 233. 元のnative Hom写像と単位を固定する延長のfiber制限（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 23（うち追加 11）。R03d・R02・R03は未完了。
+
+元の全要素圏から底上への写像を、既存の同じfiber包含へ制限するsimplicialElementsFiberMapを定義した。元の置換単位を固定する延長について、そのfiberへの制限と元のfiber単位の合成がこの写像に厳密に等しいことを示した。既存の包含・単位・延長の合成則であり、新しい数学的な一覧項目は増やしていない。
+
+BEへの特殊化では同じ全パラメータのstrictBETotJointSourceNativeHomMapを制限した。fiber単位自体の弱同値性はR03gの係数移送から得た。hm・huは元の底射影と元の単位を固定する条件で、§229の実際の延長が満たすものを使う。native Hom写像のfiber制限自身の弱同値性、延長自身の同値性、元の固定始域のroof比較との全FunctorIsoの一致はまだ証明していない。
+
+個別検査は一般版23702・BE版31608とも終了0。312の対象ビルドは12,227 jobsで成功（既存依存を含む対象ビルドでありrootビルドではない）。続く小監査は178本・1,280宣言、標準三公理のみ。ログ/private/tmp/isw2-build312.logの両成功と該当プロセスの終了を確認した。元の実行ハンドルは会話圧縮後に復元できなかったため終了コードを推測して記載しない。鍵を重複取得せず、ビルドを再実行していない。
+
+今回2本101行、累計178本・11,564行／外枠15,000。sorry・独自公理0、計算上限変更なし。[ModelCategory SSet]、既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainの変更なし。
+
+### 233.1 型
+
+一般版の共通入力は `{I : Type u} [SmallCategory I] (F : I ⥤ SSet.{u})`、BE版は `(A : Type u) [CommRing A]`。BEのmodel構造とfunctorial factorizationは既存の指定された局所instanceを使う。
+
+#### SimplicialElementsFiberMap（43行）
+
+```lean
+def simplicialElementsFiberMap {E : SSet.{u}} (p : E ⟶ nerve I)
+    (h : nerve (SimplicialTotalElements F) ⟶ E)
+    (hh : h ≫ p = nerveMap (simplicialTotalElementsProjection F)) (i : I) :
+    nerve ((simplicialElementsCatDiagram F).obj i) ⟶ vertexFiber p (nerveVertex i)
+
+theorem simplicialElementsFiberUnit_map {E : SSet.{u}} (p : E ⟶ nerve I)
+    (h : nerve (SimplicialTotalElements F) ⟶ E)
+    (hh : h ≫ p = nerveMap (simplicialTotalElementsProjection F))
+    (m : (simplicialElementsReplacement F).left ⟶ E)
+    (hm : m ≫ p = (simplicialElementsReplacement F).hom)
+    (hu : ((continuousLeftFibrationReplacementUnit (nerve I)).app
+      (Over.mk (nerveMap (simplicialTotalElementsProjection F)))).left ≫ m = h) (i : I) :
+    simplicialElementsFiberUnit F i ≫ vertexFiberMap _ p m hm (nerveVertex i) =
+      simplicialElementsFiberMap F p h hh i
+```
+
+#### StrictDiagramTotJointSourceNativeFiber（58行）
+
+```lean
+def strictBETotJointSourceNativeFiberMap (P : strictBETotJointHomIndex A) :
+    nerve ((simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P) ⟶
+      vertexFiber (strictBETotJointNativeHomProjection A) (nerveVertex P)
+
+theorem strictBETotJointSourceFiberUnit_isWeakHomotopyEquivalence (P : strictBETotJointHomIndex A) :
+    IsWeakHomotopyEquivalence (simplicialElementsFiberUnit (strictBETotJointSourceCoefficients A) P)
+
+theorem strictBETotJointSourceNativeFiberUnit_map
+    (m : (simplicialElementsReplacement (strictBETotJointSourceCoefficients A)).left ⟶
+      strictBETotJointNativeHomTotalSpace A)
+    (hm : m ≫ strictBETotJointNativeHomProjection A =
+      (simplicialElementsReplacement (strictBETotJointSourceCoefficients A)).hom)
+    (hu : ((continuousLeftFibrationReplacementUnit (nerve (strictBETotJointHomIndex A))).app
+      (Over.mk (nerveMap (strictBETotJointSourceElementsProjection A)))).left ≫ m =
+        strictBETotJointSourceNativeHomMap A) (P : strictBETotJointHomIndex A) :
+    simplicialElementsFiberUnit (strictBETotJointSourceCoefficients A) P ≫
+      vertexFiberMap _ (strictBETotJointNativeHomProjection A) m hm (nerveVertex P) =
+        strictBETotJointSourceNativeFiberMap A P
+```
+
+## 234. 外枠の再見積もりと次の判断点（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 23（うち追加 11）。検証済み213e2858e、178本・11,564行。残り枠は3,436行。
+
+### 234.1 残りの規模
+
+§152.4のR04〜R12だけの当初見込みでも下端4,300行で、残り枠を864行超える。さらにR02・R03のnative比較と標準脚が未完了である。これまでのfiber単位の比較を作ったことでその未完箇所を具体化できたが、これをもって全native Hom比較や標準脚の全自然性が済んだとは扱わない。以下は相互に重複しない残りの仕事の紙の見込みであり、新規Lean項目の無条件な追加承認とはしない。
+
+| 残り | 見込み（行） | 再利用と未検証点 |
+|---|---:|---|
+| R03d内：指定native fiber写像の弱同値 | 600〜1,400 | R03gと§233の厳密な三角形を使用。元の固定始域roofとの照合は未証明 |
+| R03d内：全FunctorIsoと固定始域への制限の等式 | 400〜900 | 全要素の同じ延長を使用。点ごとの同値だけでは閉じない |
+| R02・R03：指定native錐族と極限性 | 600〜1,200 | 元の重みの比較と指定Hom同型を接続。脚を作り替えない |
+| R04・R05：UのTot比較と局所化への輸送 | 500〜1,100 | G10の全図式射と指定錐族、既存forgetの極限保存を再利用 |
+| R06〜R08：strict実現の模型と同じ余錐族 | 1,600〜2,800 | §152の見込みを維持。台の通常colimだけで導来実現とはしない |
+| R09・R10：実現のU比較と全関手比較 | 1,000〜1,800 | ③-aの全族と指定輸送を使用。まだ実測していない |
+| R11・R12：離散制限と既存入口・係数変更 | 500〜900 | ⑤aの欄を変更せず照合。Totと実現の両部分を含む |
+| 合計 | **5,200〜10,100** | 完成時 **16,764〜21,664** |
+
+当初§152の全体5,700〜9,800行に対し、現在の完成見込みは下端で+11,064、上端で+11,864行。主な差は、二変数の指定native Homへの全自然性と、元の固定始域roof比較への正規化を、点ごとの同値の存在に弱めず証明するための一般の分類・fiber単位の道具にある。完成時の新しい外枠の提案は22,000行。上端に対する余裕は336行しかなく、再度の上振れを吸収できると保証しない。Tot側の停止点3b-4aと実現側3b-4bの分割は維持する。
+
+### 234.2 止める根拠と現在の状態
+
+coordination.md §2：『上限を超えそうなときは報告して止める（止まる前に、それまでの検証済みの分をコミット）』、夜の進め方も『その線の Lean は止めて決めておいた代わりの紙の作業へ』と指定している。IS-W2 §18は3b-4の外枠15,000行、§19も『外枠15,000行は変えない』。同じまとまり内の1,500行以下の中間定理の追加許可は、この外枠を変更する許可ではない。
+
+したがって、検証済みを213e2858eに保存した上で、この線のLeanの追加を止める。範囲、型、指定脚、全族、固定始域の同型の等式を弱めない。外枠の変更はユーザー判断を要する。停止点3b-4aに達したとの報告ではない。代わりの紙の作業を次節に記録する。
+
+### 234.3 紙：元のnative fiberから元のroofへの未完の橋
+
+次に必要な主張の候補は、既存の指定された写像そのものについての次の型である（ここではLean宣言を追加していない）。
+
+```lean
+theorem strictBETotJointSourceNativeFiberMap_isWeakHomotopyEquivalence
+    (A : Type u) [CommRing A] (P : strictBETotJointHomIndex A) :
+    IsWeakHomotopyEquivalence (strictBETotJointSourceNativeFiberMap A P)
+```
+
+この型を示す際、元のsource coefficientの通常の要素圏のnerveと、元のroofで使う逆向きの要素圏のnerveを同一視してはならない。既存のedgewise/opposite比較とterminal augmentationを通した同じ写像で比較し、その上で元のroofの弱同値性とKanHammockHomInfinityの指定Yoneda比較へ接続する。native Homのpullbackのfiberは、同じ元の頂点のtwisted-arrow fiberへ移す。経路修正のexactComponentIso_postcompで指定された底のpathを追跡する必要があり、任意の同型への置換では固定始域の最終等式を保証できない。
+
+この弱同値が示されれば、§233の等式とR03gの同じfiber単位の弱同値から、元の単位を固定する延長のfiber写像を弱同値と判定できる。両側のleft fibrationのKan fiber上で同値に移し、既存isPrecompositionEquivalence_of_leftFibration_nerve_fibersで同じ全延長の前合成同値性を得る。分類の全同型へ移しても、R03dの固定始域へ制限した全FunctorIsoが元のstrictBETotProbeFrameHomInfinityIsoに等しいことは別途残る。
+
+### 234.4 紙：3b-3との境目を維持する
+
+Totのstrict入力の模型、同じHom分類、指定native錐とその極限性は③-bで閉じる。R05でstrict複体図式の局所化上へ全評価・全指定錐族を輸送する部分は③-aの3b-3の指定された比較を使う。実現側R09・R10も、図式ごとの余錐だけではなく③-aの全パラメータの余錐族とその輸送を使う。任意のcoherentなBE図式の厳密化は今回の実装に含めない。既存FramedLimit*とCAlgUnderlyingDerivedComparisonを作り直さず、無条件cAlgForgetDerived_mapJoinCone_isLimitの保存方向を使う。Uが極限を保存することからBE値の極限性を逆に推論しない。
+
+## 235. 外枠判断待ちの紙：既存APIの証明境界を確認（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 23（うち追加 11）。Lean追加なし、実測178本・11,564行のまま。前のターンは検証済み保存と再見積もりの進捗であり、検証待ちではない。現mainのIS-W2末尾も§19・外枠15,000行のままで、外枠変更の承認を確認できていない。
+
+次の既存ソースを読み、§234.3の経路のうち使える結論と不足を分けた。
+
+| 既存ソース（SerrePositivity以下） | 実際の結論 | 接続時の注意 |
+|---|---|---|
+| EInfinity/FrameHom/FrameLeftRoofPrecompose.lean：frameLeftRoofColimitMap_precompose | 指定された始域射・frame比較に沿うanodyneQ.map後の等式 | 生の二変数の自然変換として使わない。定理はinclude hαも要求する |
+| InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/VertexFiberPullback.lean：vertexFiberPullbackIso_hom_ι | fiber同型の順射を包含すると元の第一射影になる厳密な等式 | native total spaceの第一射影を元のcorrected pairingへ戻す際の指定された方向が使える |
+| EInfinity/FrameHom/RightFrameHomInfinityNormalization.lean：rightFrameTerminalHomIso_hom | 終端の実現比較、原本kanHammockHomInfinityIso、指定homInfinityTransportの順の合成に等しい | 比較二胞体c.triangleも同じ入力として保持する。零単体の共役式だけで全同型の等式を結論しない |
+| EInfinity/BarrattEccles/StrictDiagramTotProbeHomInfinityComparison.lean：strictBETotProbeFrameHomInfinityIso | 元のframe比較と、同じprobe源の頂点同型をco-Yonedaで写した全標的同型の合成 | 固定始域への最終制限をこの同じ合成へ合わせる必要がある |
+| InfinityCategories/Kerodon/FibrationsOfInfinityCategories/FibrationsOverOrdinaryCategories/F1FibrationsLeftFibrationNerveComparison.lean：isPrecompositionEquivalence_of_leftFibration_nerve_fibers | 両射影がleft fibration、底を厳密に保つ全写像について、各対象の指定fiber射がQCat同値なら全射は前合成同値 | native fiber射の弱同値性が未完なのでまだ適用の前提が揃わない |
+
+従って再開時は、元のnative fiber射にvertexFiberPullbackIsoを合成し、包含後の厳密な等式で同じcorrected pairingへの制限を回収する所を最初の検査単位とする。その後、元の指定された底のpathを保持したまま、元のroofとterminal augmentationに沿う比較を組み立てる。anodyneQ上の既存の始域自然性だけで済むと仮定せず、固定始域の全標的同型の合成まで追跡する。この不足を解決したとの数学的主張も、新しい仮定付きのLean入口も追加していない。
+
+今回の紙の整理は§234で指定した代わりの作業。対象ビルド・監査の新しい実行は不要で、鍵は取得していない。外枠変更の質問は一件のまま維持し、重複して送らない。
+
+## 236. §20の承認による再開：同じnative fiber射と同じcorrected pairing（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 23（うち追加 11）。
+
+ユーザーはIS-W2 §20として外枠22,000行を承認した。/goalの範囲と型は維持し、Tot側R03d・R02〜R05とR11/R12のTot部分を先に閉じて停止点3b-4a、その後は止める指示がなければ実現側へ進む。§19の中間定理の枠も維持する。判断待ちを解いてLeanを再開した。
+
+最初の検査単位は§235のとおり。元のstrictBETotJointSourceNativeFiberMapに、同じnative Hom入力によるvertexFiberPullbackIsoの順射を合成する。包含後の等式は、既存のvertexFiberPullbackIso_hom_ι、元のfiberLiftの包含後の等式、元のnative Hom写像の第一射影の等式を順に合成する。これにより元の同じcorrected pairingへの制限を回収する。既存のpullback・fiber・合成則の照合であり、追加の数学項目としては数えない。native fiber射の弱同値性はこの段では主張しない。
+
+### 236.1 型（既存構成の合成則、共通入力 `(A : Type u) [CommRing A]`）
+
+#### StrictDiagramTotJointSourceNativeFiberPairing（66行）
+
+```lean
+def strictBETotJointSourceNativeTwistedFiberMap (P : strictBETotJointHomIndex A) :
+    nerve ((simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P) ⟶
+      vertexFiber (twistedArrowProjection (CAlg_R A))
+        ((strictBETotJointNativeHomInput A).app (Opposite.op ⦋0⦌) (nerveVertex P))
+
+theorem strictBETotJointSourceNativeFiberMap_ι (P : strictBETotJointHomIndex A) :
+    strictBETotJointSourceNativeFiberMap A P ≫
+      vertexFiberι (strictBETotJointNativeHomProjection A) (nerveVertex P) =
+        simplicialElementsFiberInclusion (strictBETotJointSourceCoefficients A) P ≫
+          strictBETotJointSourceNativeHomMap A
+
+theorem strictBETotJointSourceNativeTwistedFiberMap_ι (P : strictBETotJointHomIndex A) :
+    strictBETotJointSourceNativeTwistedFiberMap A P ≫
+      vertexFiberι (twistedArrowProjection (CAlg_R A))
+        ((strictBETotJointNativeHomInput A).app (Opposite.op ⦋0⦌) (nerveVertex P)) =
+      simplicialElementsFiberInclusion (strictBETotJointSourceCoefficients A) P ≫
+        strictBETotJointSourceCorrectedPairing A
+```
+
+## 237. 同じfiber制限による指定pathの保持（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 23（うち追加 11）。
+
+元のstrictBETotJointSourceCorrectedPairingIsoそのものを同じfiber包含へ前合成する。その射影は、元の指定されたstrictBETotJointSourcePairingBasePathIsoと厳密な射影等式の同じ合成を、同じfiber包含へ前合成したものに等しい。既存functorIso_precomp_postcompと元の全同型の射影等式だけによる全同型の合成則であり、新しい数学の項目を増やさない。native fiber射の弱同値性やR03dの最終等式が済んだとは扱わない。
+
+### 237.1 型（共通入力 `(A : Type u) [CommRing A]`）
+
+#### StrictDiagramTotJointSourceNativeFiberPath（56行）
+
+```lean
+def strictBETotJointSourceFiberPairingIso (P : strictBETotJointHomIndex A) :
+    FunctorIso
+      (simplicialElementsFiberInclusion (strictBETotJointSourceCoefficients A) P ≫
+        strictBETotJointSourceCorrectedPairing A)
+      (simplicialElementsFiberInclusion (strictBETotJointSourceCoefficients A) P ≫
+        strictBETotJointSourceNativePairing A)
+
+theorem strictBETotJointSourceFiberPairingIso_postcomp (P : strictBETotJointHomIndex A) :
+    (strictBETotJointSourceFiberPairingIso A P).postcomp
+      (twistedArrowProjection (CAlg_R A)) =
+      FunctorIso.precomp (eqToIso (congrArg (fun v => HomotopyCategory.mk (functorVertex v))
+        (strictBETotJointSourceCorrectedPairing_projection A)) ≪≫
+          strictBETotJointSourcePairingBasePathIso A)
+            (simplicialElementsFiberInclusion (strictBETotJointSourceCoefficients A) P)
+```
+
+## 238. 再開の最初の検査単位の検収（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 23（うち追加 11）。R03d・R02・R03は引き続き未完了。
+
+§236・§237の二本を検証した。元のnative fiber射へ同じvertexFiberPullbackIsoを合成し、包含後に同じ元のcorrected pairingへの制限を厳密に回収する。さらに、そのcorrected pairingと元のpairingの同じ全同型を同じfiber包含へ制限し、射影が元の指定pathをそのまま制限したものと全同型として等しいことを確認した。native fiber射自身の弱同値性、同じ延長の全同値性、固定始域の元の全FunctorIsoへの最終正規化はまだ残る。
+
+検査経過：最初の個別検査では単体記法のscopeとfiberLiftの包含後の簡約を直した。二度目の等式ではpullback.sndと元のnative射影の定義展開を明示した。最終個別検査9358は終了0。313の対象ビルドは12,228 jobsで成功したが、一時監査の先頭で私がimportをmoduleより前に置いて構文エラーを起こした。314ではその先頭を修正し既存交換則の依存も生成したが、合成同型へのprecompの型推論が失敗した。FunctorIso.precompを明示した最終個別検査64620は終了0。
+
+最終315：鍵付き対象ビルド12,233 jobs、小監査180本・1,291宣言、標準三公理のみ。実ハンドル90235・終了0、鍵返却済み。コマンドはwith_build_lock.sh --class impl --wait 3600と1700秒のguardを使用し、一度に一枚の整理券のみ。rootビルドや公式監査の登録は行っていない。既存依存を含む対象ビルドである。名前空間の長いopen行についてstyle警告はあるが、エラーはない。
+
+今回122行（66行・56行）、累計180本・11,686行／承認済み外枠22,000行、残り10,314行。sorry・独自公理0、計算上限変更なし。[ModelCategory SSet]を追加せず、既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainを変更していない。追加する数学の一覧項目は増やさず、既存のfiber・pullback・全同型の合成則として型を§236・§237に記載した。
+
+登録候補（調整役の取り込み時用、今回はこちらで登録しない）：
+
+- SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceNativeFiberPairing
+- SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceNativeFiberPath
+
+次は§234.3・§235のとおり、同じnative fiber射を元の固定始域のroof比較と照合し、その実射自身の弱同値性へ接続する。Tot側の停止点3b-4aはまだ未到達であり、この検収を停止点の完成とはしない。
+
+## 239. R03dの次の接続：同じfiber包含の通常圏での表示（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 23（うち追加 11）。
+
+前ターンは§236〜§238を検証して1c8716f15へ保存した進捗。今回も§238の次から続ける。mainにIS-W2 §20の追記は入ったが、この確認時点では57705f223はmainの祖先ではないので、取り込み完了後のmergeはまだ行わない（ユーザーはmerge前の続行を承認済み）。
+
+元のroofは固定始域の実際のHom単体のラベルで定義される。§238のfiber包含をこの通常圏のラベルに照合するため、元のGrothendieck表示を経由するfiber包含が通常のGrothendieck.ιと同じnerve射であることを示す。元のweighted nerve同型の逆を別の逆で置き換えず、同じ順射を合成して確認する。既存構成の単位・係数表示の法則であり、数学的な一覧項目は増やさない。見込み80〜180行。共通入力は `{I : Type u} [SmallCategory I] (F : I ⥤ Cat.{u,u})`。
+
+```lean
+theorem grothWeightedNerveForward_fiberInclusion (i : I) :
+    nerveMap (Grothendieck.ι F i) ≫ grothWeightedNerveForward F =
+      weightedNerveConstantLift (F ⋙ nerveFunctor) i
+
+theorem grothendieckFiberInclusion_eq_nerveMap (i : I) :
+    grothendieckFiberInclusion F i = nerveMap (Grothendieck.ι F i)
+```
+
+この照合だけでnative fiber射自身の弱同値性は結論しない。元の通常の要素圏とroofの反対要素圏の規約、同じcorrected pairingの指定path、固定始域の元の全Hom比較の合成順序を、引き続き追跡する。
+
+## 240. 元のfiber包含から元のsource-frameのラベルへ（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 23（うち追加 11）。
+
+§239の順射のprefix計算は個別検査90750で終了0。その同じ順射を合成して元の逆を消去し、grothendieckFiberInclusionが通常のGrothendieck.ιのnerveと厳密に等しいことを示した。これを元の全要素圏へ移すと、同じsimplicialElementsFiberInclusionは同じ通常の要素圏の包含のnerveとなる。通常の包含を元のsource-frameのdownへ合成し、同じ底・単体次数と元のHom単体のラベルを厳密に回収する。元のnative pairingへの制限も同じ通常の包含のnerveを通る。
+
+全て、元のfiber包含・係数表示・合成則の照合であり、新しい数学の一覧項目は増やさない。通常の要素圏をroofの反対要素圏と同一視しておらず、弱同値性やR03dの全同型の正規化を完了と数えない。一般版は116行（見込み80〜180行、上端との差−64行）、BEの係数表示の特殊化は62行。一般版の完成形の個別検査31293は終了0。BEの合成検査と対象ビルド・監査は別途以下へ記録する。
+
+### 240.1 型
+
+一般版の共通入力は `{I : Type u} [SmallCategory I] (F : I ⥤ Cat.{u,u})`。Gは同じI上のSSet値の図式。BE版は `(A : Type u) [CommRing A]`。Gを使う宣言には未使用のFは入らない。
+
+#### SimplicialElementsFiberInclusion（116行）
+
+```lean
+theorem grothWeightedNerveForward_fiberInclusion (i : I) :
+    nerveMap (Grothendieck.ι F i) ≫ grothWeightedNerveForward F =
+      weightedNerveConstantLift (F ⋙ nerveFunctor) i
+
+theorem grothendieckFiberInclusion_eq_nerveMap (i : I) :
+    grothendieckFiberInclusion F i = nerveMap (Grothendieck.ι F i)
+
+def simplicialElementsFiberFunctor (G : I ⥤ SSet.{u}) (i : I) :
+    (simplicialElementsCatDiagram G).obj i ⥤ SimplicialTotalElements G
+
+theorem simplicialElementsFiberInclusion_eq_nerveMap (G : I ⥤ SSet.{u}) (i : I) :
+    simplicialElementsFiberInclusion G i = nerveMap (simplicialElementsFiberFunctor G i)
+
+theorem simplicialElementsFiberFunctor_obj (G : I ⥤ SSet.{u}) (i : I)
+    (s : (simplicialElementsCatDiagram G).obj i) :
+    ((simplicialElementsFiberFunctor G i).obj s).obj = (i, s.obj)
+
+theorem simplicialElementsFiberFunctor_value (G : I ⥤ SSet.{u}) (i : I)
+    (s : (simplicialElementsCatDiagram G).obj i) :
+    ((simplicialElementsFiberFunctor G i).obj s).val = s.val
+```
+
+#### StrictDiagramTotJointSourceFiberElements（62行）
+
+```lean
+def strictBETotJointSourceFiberElements (P : strictBETotJointHomIndex A) :
+    (simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P ⥤
+      FrameHom.SourceFrameArrowElements (strictBETotJointSourceFrame A)
+        (rightFrameReplacement (rightFrameFamily A))
+
+theorem strictBETotJointSourceFiberElements_parameters (P : strictBETotJointHomIndex A)
+    (s : (simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P) :
+    ((strictBETotJointSourceFiberElements A P).obj s).obj = (AsSmall.down.obj P, s.obj)
+
+theorem strictBETotJointSourceFiberElements_value (P : strictBETotJointHomIndex A)
+    (s : (simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P) :
+    FrameHom.sourceFrameArrowValue (strictBETotJointSourceFrame A)
+      (rightFrameReplacement (rightFrameFamily A))
+      ((strictBETotJointSourceFiberElements A P).obj s) = s.val.down
+
+theorem strictBETotJointSourceFiberPairing_eq (P : strictBETotJointHomIndex A) :
+    simplicialElementsFiberInclusion (strictBETotJointSourceCoefficients A) P ≫
+      strictBETotJointSourceNativePairing A =
+    nerveMap (simplicialElementsFiberFunctor (strictBETotJointSourceCoefficients A) P) ≫
+      strictBETotJointSourceNativePairing A
+```
+
+## 241. 対象ビルドの順番待ち中の照合：roofの余終性の入力範囲（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 23（うち追加 11）。
+
+316の対象ビルドと小監査を、一枚の整理券で--class impl --wait 3600により待機中。一般版の個別検査は通過したが、一時的な結合検査ではBE側の全importを先に読み込んだ文脈でprefix証明が200,000 heartbeatsに達した。計算上限は上げず、実際のモジュール分割で一般版を先にビルドしてからBEの特殊化を検査する。結合検査の失敗を対象ビルドの成功と扱わない。最終結果は次の検収欄へ記す。
+
+待機中に既存のroof側のAPIを確認した。CofibrantSourceFrameRightKanCofinalityのcofibrantSourceFrameRawRoofMap_isLeftCofinalは、X・YともCofibrantAlgebra Aであり、cofibrantAlgebraRelativeCategoryのhammockを使う。ModelBifibrantFrameRightKanCofinalityのmodelBifibrantSourceFrameRawRoofMap_isLeftCofinalは、X・YともBifibrantObjectであり、modelBifibrantRelativeCategoryのhammockを使う。今回の元の右置換RYを、そのままこれらの入力に読み替えることはできない。元のnative Homの入力と全局所化の比較を保ち、必要な係数移送と端点同型を明示する必要がある。
+
+またcosliceTwistedHomMap_isQCatEquivalenceは任意のquasicategoryの同じ端点での同値で、cosliceTwistedHomMap_ιは元のcosliceからtwisted-arrowへの包含後の等式を与える。ただし今回のroof評価のpinched Homとcoslice fiberの規約を合わせる工程が残る。この同値を引用するだけで§238の実射自身が弱同値になったとはしない。今回のラベル回収と、元のroofとの正規化を接続してから判定する。
+
+## 242. 元のfiber包含とラベルの対象ビルド検収（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 23（うち追加 11）。
+
+316が終了した。同じ整理券で共有鍵を待ち、対象ビルド12,230 jobs成功、小監査182本・1,303宣言、標準三公理のみ。実ハンドル88366・終了0、鍵返却済み。一般版とBE特殊化を実際の二モジュールに分けたビルドで通し、一時結合ファイルのtimeoutを解消した。計算上限は変更していない。
+
+今回178行、累計182本・11,864行／外枠22,000行。一般版116行とBE版62行。sorry・独自公理0。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・入口・公式監査・mainの変更なし。R03dのnative fiber射自身の弱同値性はまだ未完了。
+
+登録候補：SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.SimplicialElementsFiberInclusion、およびSerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceFiberElements。
+
+この検収直後に調整役からtensorFrameHomIso_pointの集約時の重複を通知された。316の小監査は両定義を同時importする検査ではなかったため、これを検出できていない。次の修正ではmainの既存の定義と同時にimportし、宣言名の突合も行う。316の成功を集約での重複不存在の根拠としては使わない。
+
+## 243. 集約時の重複定理の修正と宣言名の突合（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 23（うち追加 11）。
+
+調整役から通知されたtensorFrameHomIso_pointの重複を修正した。TensorConeUnitPointでの宣言を削除し、FrameConeClassesの既存lemmaを再公開する互換入口だけを残した。StrictDiagramTotUniversalProbePointComparisonはFrameConeClassesを直接importし、既存lemmaの暗黙引数Yを呼び出し側で明示する。既存FrameConeClasses側は変更していない。互換入口には宣言がないので、小監査ではこのモジュールの宣言数0を明示的に要求し、補題の実際の定義元がFrameConeClassesであることも検査する。
+
+宣言名の突合は、自分のIS-W2のモジュール一覧と枝で追加したLeanファイル548本（1,728個の名前付き宣言）を対象に、main 7e03e17a7 のEInfinity配下3,749本・13,399個の名前付き宣言と行った。namespace・section・endを追跡し、コメントを除いてdef・lemma・theorem・abbrev等と名前付きinstanceを走査し、同じ完全名が異なるファイルにあるものを検出した。同一ファイルでmainと共通の宣言は重複と数えない。この修正後の対main EInfinityの衝突は0件。
+
+自分のファイル同士にも同じ走査を行い、HAのnormalizedMooreReverse_zero_inclusionをもう1件検出した。NormalizedMooreReverseZeroとNormalizedMooreReverseEvaluationに同じ完全名・同じ型の定理があった。Zero側をEvaluationの再公開だけの互換入口にし、既存Evaluation側は変更しない。直接importerのNormalizedMooreReverseExtendZeroも対象ビルドに含める。修正後の自分の新規ファイル同士の衝突は0件。HAの補題の定義元がNormalizedMooreReverseEvaluationであり、Zero側の宣言数が0であることも小監査で検査する。走査結果は/private/tmp/isw2-declaration-collision-scan.jsonと/private/tmp/isw2-declaration-collision-scan-after-fix.jsonに保存した。
+
+これは名前付き宣言をテキスト走査する確認であり、全importの同時ビルドやLeanの生成する内部名の検査とは区別する。小監査には既存の定義元を明示的にimportして、通知された二つの名前について実際の同時importと定義元も検証する。既存の公式入口・監査、⑤a、mainは変更しない。
+
+317の対象ビルド・小監査は--class impl --wait 3600で同じ整理券のまま待機する。待機中でpayloadのzshがまだ起動していないことをpsで確認してから、追加で見つかったHAの直接importerも同じジョブへまとめた。追加の整理券や鍵の取り直しは行っていない。結果が通るまではこの修正コードをコミットしない。
+
+## 244. R03dの係数移送の下書き：元の固定標的roofの反対圏へ（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 23（うち追加 11）。この下書きは対象ビルド前なので検証済みの行数・モジュール数には加えない。
+
+重複修正の対象ビルドを待つ間に、既存のULiftHom.equiv、宇宙持ち上げのelementsEquivalence、固定標的のelementsCostructuredEquivalence.rightOpを合成した。元の通常の要素圏は固定標的のroofの反対圏に移る。次数・元の実射のラベル・単体作用素を、同じ関手の厳密な式で回収する。既存の同値と係数移送の合成則であり、数学的な一覧項目を増やさない。見込み80〜150行。元のnative fiber射の弱同値性はまだ結論しない。
+
+UniverseLiftElementsのoleanが未生成だったので、その既存ソースを一時検査へ含めた。別モジュールの宇宙変数vの再宣言が一時結合ファイルだけで重なったため、その一時ファイルの宣言を整理した。最終個別検査37848は終了0。対象ビルドと小監査は、優先する重複修正を検収した後に行う。このLean下書きは重複修正のコミットに含めない。
+
+### 244.1 型
+
+共通入力は `{C : Type u} [Category.{v} C] (Q : C ⥤ SimplexCategory ⥤ C) (R : C ⥤ C)`。
+
+#### LiftedSourceFrameFiberRoof（53行）
+
+```lean
+def liftedSourceFrameFiberRoofEquivalence (P : liftedSourceFrameIndex (C := C)) :
+    (simplicialElementsCatDiagram (liftedSourceFrameCoefficients Q R)).obj P ≌
+      (CostructuredArrow (Q.obj (AsSmall.down.obj P).1.unop)
+        (R.obj (AsSmall.down.obj P).2))ᵒᵖ
+
+theorem liftedSourceFrameFiberRoofEquivalence_degree (P : liftedSourceFrameIndex (C := C))
+    (s : (simplicialElementsCatDiagram (liftedSourceFrameCoefficients Q R)).obj P) :
+    (((liftedSourceFrameFiberRoofEquivalence Q R P).functor.obj s).unop).left =
+      s.obj.unop
+
+theorem liftedSourceFrameFiberRoofEquivalence_value (P : liftedSourceFrameIndex (C := C))
+    (s : (simplicialElementsCatDiagram (liftedSourceFrameCoefficients Q R)).obj P) :
+    (((liftedSourceFrameFiberRoofEquivalence Q R P).functor.obj s).unop).hom =
+      s.val.down
+
+theorem liftedSourceFrameFiberRoofEquivalence_operator (P : liftedSourceFrameIndex (C := C))
+    {s t : (simplicialElementsCatDiagram (liftedSourceFrameCoefficients Q R)).obj P}
+    (f : s ⟶ t) :
+    (((liftedSourceFrameFiberRoofEquivalence Q R P).functor.map f).unop).left =
+      f.down.hom.unop
+```
+
+## 245. 同じroofのラベルと元のnative pairingのラベルを照合（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 23（うち追加 11）。
+
+§244の同じ既存同値の合成をBEの同じ全パラメータへ特殊化した。同じroofの射のラベルが、元のstrictBETotJointSourceFiberElementsを経由してnative pairingへ渡したsourceFrameArrowValueと厳密に等しい。次数も同じ元のHom単体の次数である。既存の係数移送・同値の合成則の照合として型を記録し、数学的な一覧項目を増やさない。一般版と合わせた一時個別検査81098は終了0。元のnative fiber射自身の弱同値性はなお未完了。
+
+優先する重複修正の318はまだ鍵の順番待ちで、psによりpayload未起動を確認した。同じジョブへこの二本の対象と小監査を追加した（整理券の追加・取り直しなし）。対象ビルドと監査が通るまでは、この二本もコミットしない。重複修正とこの係数移送は別コミットにする。追加の宣言名はgit grepでもmainのEInfinity配下に存在しないことを確認した。
+
+### 245.1 型（共通入力 `(A : Type u) [CommRing A]`）
+
+#### StrictDiagramTotJointSourceFiberRoof（58行）
+
+```lean
+def strictBETotJointSourceFiberRoofEquivalence (P : strictBETotJointHomIndex A) :
+    (simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P ≌
+      (CostructuredArrow ((strictBETotJointSourceFrame A).obj (AsSmall.down.obj P).1.unop)
+        ((rightFrameReplacement (rightFrameFamily A)).obj (AsSmall.down.obj P).2))ᵒᵖ
+
+theorem strictBETotJointSourceFiberRoofEquivalence_degree (P : strictBETotJointHomIndex A)
+    (s : (simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P) :
+    (((strictBETotJointSourceFiberRoofEquivalence A P).functor.obj s).unop).left =
+      s.obj.unop
+
+theorem strictBETotJointSourceFiberRoofEquivalence_pairingValue
+    (P : strictBETotJointHomIndex A)
+    (s : (simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P) :
+    (((strictBETotJointSourceFiberRoofEquivalence A P).functor.obj s).unop).hom =
+      FrameHom.sourceFrameArrowValue (strictBETotJointSourceFrame A)
+        (rightFrameReplacement (rightFrameFamily A))
+        ((strictBETotJointSourceFiberElements A P).obj s)
+```
+
+## 246. 調整役への重複修正の検収報告（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 23（うち追加 11）。
+
+依頼されたtensorFrameHomIso_pointの重複を削除した。TensorConeUnitPointはFrameConeClassesを再公開する宣言0の互換入口になり、StrictDiagramTotUniversalProbePointComparisonは既存lemmaを直接使う。Kᵒᵖ・重み・frame・元の比較射と暗黙のYを明示して既存lemmaを取り、その成分表示をIso.app_homで合わせた。既存FrameConeClassesは変更していない。途中の317ではYだけを明示した呼び出しでSmallCategoryの推論に失敗し、引数を明示した後は成分表示の差も修正した。最終個別検査7586は終了0。
+
+同名宣言の追加の確認で見つけたHAのnormalizedMooreReverse_zero_inclusionも同様に修正した。NormalizedMooreReverseZeroはNormalizedMooreReverseEvaluationを再公開する宣言0の互換入口となり、既存Evaluation側の証明を使う。直接importerのNormalizedMooreReverseExtendZeroも対象ビルドに含めた。一時結合検査48967は終了0。既存補題の型と内容は維持し、G10の完了項目を弱めていない。
+
+最終の全宣言名走査はmain 7f52c5cd1を対象とし、検査時点の自分の549本・1,732個の名前と、main EInfinityの3,745本・13,373個の名前を照合して、異なるファイル間の衝突0件。その後に追加したBEのroof特殊化の3宣言もgit grepでmainに存在しないことを確認した。自分の550本・1,735個の名前の最終の内部照合も衝突0件。これらはテキストによる名前付き宣言の確認であり、生成される内部名を含むrootの全ビルドとは区別する。
+
+318の最終結果：鍵付き対象ビルド12,245 jobs成功、小監査188モジュール・1,318宣言、標準三公理のみ。実ハンドル88868・終了0、鍵返却済み。--class impl --wait 3600、1700秒guardで同じ一枚の整理券を使った。待機中に個別検査を通過したR03dの二本も同じ対象と監査へまとめた。BEの自分の184本は1,311宣言、残りは既存FrameConeClassesとHAの既存・直接importerの4本である。
+
+小監査は二つの互換入口の宣言数が0であることに加え、tensorFrameHomIso_pointの定義元がFrameConeClasses、normalizedMooreReverse_zero_inclusionの定義元がNormalizedMooreReverseEvaluationであることを明示的に要求して成功した。従って旧い重複宣言の定義元を取り違えた結果を成功としていない。sorry・独自公理0、計算上限の変更なし。既存の定義元二本・公式入口・公式監査・mainは変更していない。
+
+修正対象（この修正のコミットに含む）：
+
+- SerrePositivity/EInfinity/HomotopyWeight/TensorConeUnitPoint.lean
+- SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotUniversalProbePointComparison.lean
+- SerrePositivity/HomologicalAlgebra/NormalizedMooreReverseZero.lean
+
+rootとEInfinity集約の全ビルドは実行していない。取り込みの再検収を調整役にお願いする。二つの互換入口は登録済み・登録予定の経路を維持するが、自身の宣言数は0となる。R03dで追加した二本は次節の別コミットとして記録する。
+
+## 247. 同じfiberから元のroofへの係数移送を保存（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 23（うち追加 11）。R03d・R02・R03は未完了。
+
+重複修正は専用コミットe0c5190ecに保存した。その修正と別に、§244・§245の二本を同じ318の対象ビルドと小監査で検収して保存する。一般版53行、BE版58行、計111行。一般版は見込み80〜150行に対して53行（上端との差−97行）。既存の三つの同値の合成で元の通常のfiber要素圏を元の固定標的roofの反対圏へ移し、元の次数・実射ラベル・単体作用素を保持した。同じroofの射のラベルは、元のnative pairingへ渡したsourceFrameArrowValueに厳密に等しい。
+
+検証は§246に記載した318（対象ビルド12,245 jobs、188モジュール1,318宣言、標準三公理のみ、実ハンドル88868・終了0）による。個別検査37848・81098も終了0。BEの自分のモジュール一覧は184本・1,311宣言で、TensorConeUnitPointは既存補題の再公開のみのため自身の宣言0を含む。検証済みの累計は11,953行／外枠22,000行。sorry・独自公理0、計算上限変更なし、[ModelCategory SSet]なし、既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・公式入口・公式監査・mainの変更なし。
+
+今回の登録候補：
+
+- SerrePositivity.EInfinity.FrameHom.LiftedSourceFrameFiberRoof
+- SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceFiberRoof
+
+57705f223以後の検証済み新規ファイルは上記二本に加え、§238のStrictDiagramTotJointSourceNativeFiberPairing・StrictDiagramTotJointSourceNativeFiberPath、§242のSimplicialElementsFiberInclusion・StrictDiagramTotJointSourceFiberElementsの計6本。各節の完全なモジュール名を使って登録できる。こちらで公式入口・監査には登録していない。
+
+次は同じ元のfiberの反対要素圏を既存resolutionLeftRoofColimitMapへ送る。この既存の実射の弱同値性には右置換のfibrancyと指定right frame・第一分解が使える（FibrantSourceReducedFirst）。その後に§238の同じnative fiber射と指定pathを、この同じroofの全族の比較へ照合する。ラベルが一致するだけで実射の弱同値性や全FunctorIsoの正規化が済んだとはしない。Tot側の停止点3b-4aは引き続き未到達。
+
+## 248. 元の反対要素圏を同じ実left-roof比較へ移す（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 23（うち追加 11）。
+
+§247の次の検査単位。元の持ち上げたHomの要素圏の反対nerveから、元のsourceFrameElementsFamilyの入力nerveへ、同じULiftの上下だけを使う厳密な同型を取る。その順射を元のresolutionLeftRoofColimitMapに合成する。標的のfibrancy・指定right frame・第一分解は既存の弱同値定理と同じ入力として明示し、その実射の弱同値性を同じ係数同型で移す。新しい弱同値の仮定や[ModelCategory SSet]を置かない。
+
+既存の係数移送と既存の実射の弱同値定理を同じ同型で前合成する法則であり、新しい数学的な一覧項目は増やさない。二本合わせて見込み100〜200行。元のnative fiber射自体の弱同値性をまだ結論していない。元のsame corrected pairingとこの基準roof比較の照合が残る。
+
+### 248.1 型
+
+第一のファイルの共通入力は `(K : SSet.{v})`、wは指定された宇宙の持ち上げ。第二のファイルは `{C : Type u} [Category.{v} C] [ModelCategory C] {X : C} (q : CofibrantResolution (C := C) simplex X) (Y : C)`。弱同値定理のYのfibrancy、r、cofを全て明示している。
+
+#### ElementsOppositeUniverseIso（63行）
+
+```lean
+def elementsOppositeUniverseIndex :
+    (ULiftHom.{max w v} ((SSet.uliftFunctor.{w,v}).obj K).Elements)ᵒᵖ ⥤
+      ULiftHom.{max w v} K.Elementsᵒᵖ
+
+def elementsOppositeUniverseIndexInverse :
+    ULiftHom.{max w v} K.Elementsᵒᵖ ⥤
+      (ULiftHom.{max w v} ((SSet.uliftFunctor.{w,v}).obj K).Elements)ᵒᵖ
+
+def elementsOppositeUniverseNerveIso :
+    nerve (ULiftHom.{max w v} ((SSet.uliftFunctor.{w,v}).obj K).Elements)ᵒᵖ ≅
+      nerve (ULiftHom.{max w v} K.Elementsᵒᵖ)
+```
+
+#### LiftedResolutionLeftRoof（43行）
+
+```lean
+def liftedResolutionLeftRoofColimitMap :
+    nerve (ULiftHom.{max u v}
+      ((SSet.uliftFunctor.{max u v,v}).obj ((cosimplicialHom q.obj).obj Y)).Elements)ᵒᵖ ⟶
+      SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph
+        (weakEquivalences C) X Y
+
+theorem liftedResolutionLeftRoofColimitMap_isWeakHomotopyEquivalence [IsFibrant Y]
+    (r : CofibrantResolutionFamily (C := Cᵒᵖ) simplex)
+    (cof : MorphismProperty.FunctorialFactorizationData (cofibrations C)
+      (trivialFibrations C)) :
+    IsWeakHomotopyEquivalence (liftedResolutionLeftRoofColimitMap q Y)
+```
+
+## 249. 同じBEの反対fiberから元の実roof比較への弱同値（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 23（うち追加 11）。
+
+厳密な係数同型は最終個別検査46841で終了0。元の実left-roof比較とその弱同値性の係数移送は、一時結合検査10774で終了0。nerveMapの既存の補助入口は対象宇宙を共有する圏の関手を要求するため、今回の同じ上下の関手を全射列へ直接合成して、異なる対象宇宙のnerve間の同じ実写像を定義した。両往復の厳密な等式も各射列で確認した。計算上限は変更しない。
+
+その元の実射をBEの同じ全パラメータPへ特殊化する。元のsource frameはmodelSourceFrameFamilyを同じframedLimitProbeへ適用したもの、標的は同じrightFrameReplacement。元の右置換のfibrancyとrightFrameFamily・mappingCofibrantFactorizationを、既存の弱同値定理の入力へそのまま使う。新しいfibrancyや弱同値性を仮定として追加しない。既存の係数移送・特殊化の法則として型を記録し、数学的な一覧項目は増やさない。特殊化の見込み80〜150行。
+
+これは元のnormal fiberの反対要素圏から同じhammock余極限への基準射についての弱同値性である。元のnative fiber射とこの基準射が同じ比較を表すこと、元の指定pathを保った正規化、固定始域の元の全FunctorIsoとの一致は引き続き残る。R03dを完了とは数えない。
+
+### 249.1 型（共通入力 `(A : Type u) [CommRing A]`）
+
+#### StrictDiagramTotJointSourceRoofComparison（59行）
+
+```lean
+def strictBETotJointSourceRoofComparison (P : strictBETotJointHomIndex A) :
+    nerve ((simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P)ᵒᵖ ⟶
+      SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph
+        (weakEquivalences (operad A).Algebra)
+        (framedLimitProbe A (AsSmall.down.obj P).1.unop)
+        ((rightFrameReplacement (rightFrameFamily A)).obj (AsSmall.down.obj P).2)
+
+theorem strictBETotJointSourceRoofComparison_isWeakHomotopyEquivalence
+    (P : strictBETotJointHomIndex A) :
+    IsWeakHomotopyEquivalence (strictBETotJointSourceRoofComparison A P)
+```
+
+## 250. 同じ反対fiberから元の実roof比較への弱同値の検収（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 23（うち追加 11）。R03dは未完了。
+
+§248の厳密な同型は最終個別検査46841・終了0、元の実roof比較への係数移送と弱同値性は10774・終了0、BEへの特殊化は21507・終了0。319の鍵付き対象ビルド12,236 jobsと小監査191モジュール・1,336宣言が成功し、標準三公理のみ。実ハンドル16462・終了0、鍵返却済み。--class impl --wait 3600と1700秒guardを使った。二つの互換入口の宣言数0と既存補題の正しい定義元を確認する条件も引き続き検査した。
+
+今回三本165行。一般の厳密な同型63行、既存のroof比較への移送43行、BEへの特殊化59行。§248の二本は見込み100〜200行に対して106行（上端との差−94行）、§249の特殊化は見込み80〜150行に対して59行（上端との差−91行）。検証済みは187本・12,118行／外枠22,000行。自分の187本の宣言数は1,329で、互換入口TensorConeUnitPointの宣言0を含む。小監査全体には既存定義元とHAの直接importer等の4本も加えている。
+
+元のnative fiberの反対要素圏から、同じsource frame・右置換・第一分解を使う元のhammock余極限への実射を回収し、その実射が弱同値であることを既存定理から移した。native fiber射の弱同値性や、元の固定始域の全FunctorIsoへの正規化を完了とはしていない。既存の係数移送の法則として数学的な一覧の項目数は変えない。sorry・独自公理0、計算上限変更なし、[ModelCategory SSet]なし、既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・公式入口・公式監査・mainの変更なし。
+
+登録候補：
+
+- SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.ElementsOppositeUniverseIso
+- SerrePositivity.EInfinity.FrameHom.LiftedResolutionLeftRoof
+- SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRoofComparison
+
+次の照合では、normal要素圏のnerveから出る元のnative fiber射そのものをopFunctorで反対向きに写し、nerveOppositeIsoで§249の同じ反対要素圏の始域へ合わせる。この係数移送の元の写像を追跡した上で、元の指定pathと同じroofの全族との照合に進む。opによる表示の変更だけで弱同値性が証明されたとはしない。
+
+## 251. 元のnative fiber射そのものの反対表示と弱同値性の反映（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 23（うち追加 11）。
+
+§250の基準roof射と始域の向きを合わせるため、元のstrictBETotJointSourceNativeTwistedFiberMapそのものをopFunctorで写し、元のnerveOppositeIsoの逆を前合成する。同じnerve反転を戻すと元の実射のop反転を厳密に回収する。この表示を別の同値の存在へ変更しない。
+
+op反転による弱同値保存の既存定理を二度使い、同じop自己同値の単位の自然性と弱同値の消去則で元の射の弱同値性へ戻す。始域・終域のKan性を新しい入力にしない。その反映則と同じnerve反転同型により、反対表示の弱同値性は元のtwisted fiber射の弱同値性と同値となる。さらに元のvertexFiberPullbackIsoの弱同値性を消去し、元のpullbackのnative fiber射自身との同値に戻す。
+
+既存のop保存則・自己同値の単位・pullbackのfiber同型による係数移送の法則であり、新しい数学的な一覧項目は増やさない。二本で見込み100〜180行。反対表示を定義しただけで弱同値と主張せず、§249の同じ基準roof比較との指定pathを保つ照合は引き続き残る。
+
+### 251.1 型
+
+一般版は任意の `{X Y : SSet.{u}} (f : X ⟶ Y)`。BE版の共通入力は `(A : Type u) [CommRing A]`。
+
+#### OppositeWeakHomotopyReflection（36行）
+
+```lean
+theorem opposite_map_isWeakHomotopyEquivalence_iff {X Y : SSet.{u}} (f : X ⟶ Y) :
+    IsWeakHomotopyEquivalence (SSet.opFunctor.map f) ↔ IsWeakHomotopyEquivalence f
+```
+
+#### StrictDiagramTotJointSourceNativeOppositeFiber（84行）
+
+```lean
+def strictBETotJointSourceNativeOppositeFiberMap (P : strictBETotJointHomIndex A) :
+    nerve ((simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P)ᵒᵖ ⟶
+      (vertexFiber (twistedArrowProjection (CAlg_R A))
+        ((strictBETotJointNativeHomInput A).app (Opposite.op ⦋0⦌) (nerveVertex P))).op
+
+theorem strictBETotJointSourceNativeOppositeFiberMap_recover (P : strictBETotJointHomIndex A) :
+    (nerveOppositeIso
+      (C := (simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P)).hom ≫
+        strictBETotJointSourceNativeOppositeFiberMap A P =
+      SSet.opFunctor.map (strictBETotJointSourceNativeTwistedFiberMap A P)
+
+theorem strictBETotJointSourceNativeOppositeFiberMap_weak_iff (P : strictBETotJointHomIndex A) :
+    IsWeakHomotopyEquivalence (strictBETotJointSourceNativeOppositeFiberMap A P) ↔
+      IsWeakHomotopyEquivalence (strictBETotJointSourceNativeTwistedFiberMap A P)
+
+theorem strictBETotJointSourceNativeOppositeFiberMap_weak_iff_original
+    (P : strictBETotJointHomIndex A) :
+    IsWeakHomotopyEquivalence (strictBETotJointSourceNativeOppositeFiberMap A P) ↔
+      IsWeakHomotopyEquivalence (strictBETotJointSourceNativeFiberMap A P)
+```
+
+## 252. 元のnative fiber射の反対表示と弱同値性の同値を検収（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 23（うち追加 11）。R03dは未完了。
+
+§251の最終個別検査42295は終了0。op自己同値の単位の成分はIso.app_homで表示を合わせ、その自然性を元のfとopFunctor.mapの二重適用の等式として明記して既存保存則を反映した。元のnative fiberの反対表示と元のtwisted fiber射の弱同値性の同値、さらに同じvertexFiberPullbackIsoを消去して元のpullbackのnative fiber射自身との同値まで示した。
+
+320の鍵付き対象ビルド12,230 jobs成功、小監査193モジュール・1,344宣言、標準三公理のみ。実ハンドル1058・終了0、鍵返却済み。--class impl --wait 3600と1700秒guardを使った。二つの互換入口の宣言数0と既存補題の定義元の検査も維持した。新しい宣言名はgit grepでmainのSerrePositivity全体に存在しないことを確認した。
+
+今回二本120行（一般版36行、BE版84行）、見込み100〜180行に対し上端との差−60行。検証済み189本・12,238行／外枠22,000行。自分の宣言数は1,337で、互換入口の宣言0を含む。小監査全体には既存定義元とHAの直接importer等4本を加えている。既存のop・自己同値の単位・pullbackのfiber同型による係数移送の法則として、数学的な一覧項目は増やさない。
+
+sorry・独自公理0、計算上限変更なし、[ModelCategory SSet]なし、既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・公式入口・公式監査・mainの変更なし。今回の同値は実射の弱同値性を別の射の存在へ弱めていない。反対表示の射自体が弱同値であることを結論するには、§250の同じ実roof比較との指定pathを保つ照合がなお必要である。
+
+登録候補：
+
+- SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.OppositeWeakHomotopyReflection
+- SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceNativeOppositeFiber
+
+次に使う既存のAPIはKanHammockHomPinchedMap_weakとKanHammockHomPinchedMap_app_valで、元のEx∞ hammock Homから同じ局所化頂点のpinched Homへの実射と、その全単体の値を保持している。元の同じ局所化比較・端点の指定pathを追跡し、§250の実roof射と今回のnative射の反対表示を全単体・全族として照合する。零単体の回収やπ₀だけの一致ではR03dの全同型の正規化が済んだとはしない。Tot側の停止点3b-4aはまだ未到達。
+
+## 253. 同じroofから同じ局所化頂点のpinched Homへの比較（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 23（うち追加 11）。
+
+元のstrictBETotJointSourceRoofComparisonを、元のAsSmallComparison.colimitIso、同じEx∞単位、元のkanHammockHomPinchedMapへ合成した。元の全モデル相対圏modelRelativeCategoryを使い、cofibrant/bifibrant相対圏へ置き換えていない。この実射の弱同値性は既存の三つの比較の弱同値性を合成して得る。また元の全標的比較asSmallKanHammockHomFamilyMapの同じ成分を使った構成と厳密に等しいことを、元のEx∞単位の自然性で示した。
+
+全単体の値の既存式をBEへ直接展開するとwhnfの200,000 heartbeatsに達したため、上限を変更せず、一般の相対圏で同じ値と同じ全パラメータの式に名前を付けて分割した。最終個別検査1450は終了0。これは証明・elaborationの分割であり、元の全次数・全単体の主張を保持する。二本合わせて見込み150〜260行。既存比較・係数移送・Ex∞単位・同じ評価式の前合成則なので、数学的な一覧項目は増やさない。
+
+### 253.1 名前付き評価式の意味
+
+C・X・Y・T・fは下記の型の通り。名前付き命題の定義は次の全次数・全単体の等式そのものである。
+
+```lean
+def KanHammockPinchedValueFormula {T : SSet.{u}}
+    (f : T ⟶ exInfinity.obj (colimitGraph C.weakEquivalences X Y)) : Prop :=
+  ∀ {n : ℕ} (s : T _⦋n⦌),
+    (((f ≫ kanHammockHomPinchedMap C X Y).app (Opposite.op ⦋n⦌)) s).val =
+      kanHammockPinchedSimplexValue C X Y (f.app (Opposite.op ⦋n⦌) s)
+```
+
+BEではfに同じstrictBETotJointSourceRoofKanComparisonを代入する。native fiber射との同一視はまだ残る。
+
+### 253.2 型
+
+一般版の共通入力は `(C : RelativeCategory.{u}) (X Y : C.category)`。BE版は `(A : Type u) [CommRing A]`。
+
+#### KanHammockPinchedSimplexValue（49行）
+
+```lean
+def kanHammockPinchedSimplexValue {n : ℕ}
+    (s : (exInfinity.obj (colimitGraph C.weakEquivalences X Y)) _⦋n⦌) :
+    (kanHammockNerve C) _⦋n + 1⦌
+
+theorem kanHammockHomPinchedMap_value {n : ℕ}
+    (s : (exInfinity.obj (colimitGraph C.weakEquivalences X Y)) _⦋n⦌) :
+    ((kanHammockHomPinchedMap C X Y).app (Opposite.op ⦋n⦌) s).val =
+      kanHammockPinchedSimplexValue C X Y s
+
+def KanHammockPinchedValueFormula {T : SSet.{u}}
+    (f : T ⟶ exInfinity.obj (colimitGraph C.weakEquivalences X Y)) : Prop
+
+theorem kanHammockHomPinchedMap_value_family {T : SSet.{u}}
+    (f : T ⟶ exInfinity.obj (colimitGraph C.weakEquivalences X Y)) :
+    KanHammockPinchedValueFormula C X Y f
+```
+
+#### StrictDiagramTotJointSourceRoofPinched（116行）
+
+```lean
+abbrev strictBETotJointRoofSourceObject (P : strictBETotJointHomIndex A) :
+    (modelRelativeCategory (operad A).Algebra).category
+
+abbrev strictBETotJointRoofTargetObject (P : strictBETotJointHomIndex A) :
+    (modelRelativeCategory (operad A).Algebra).category
+
+def strictBETotJointSourceRoofKanComparison (P : strictBETotJointHomIndex A) :
+    nerve ((simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P)ᵒᵖ ⟶
+      exInfinity.obj
+        (SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph
+          (modelRelativeCategory (operad A).Algebra).weakEquivalences
+          (strictBETotJointRoofSourceObject A P) (strictBETotJointRoofTargetObject A P))
+
+theorem strictBETotJointSourceRoofKanComparison_weak (P : strictBETotJointHomIndex A) :
+    IsWeakHomotopyEquivalence (strictBETotJointSourceRoofKanComparison A P)
+
+theorem strictBETotJointSourceRoofKanComparison_unit (P : strictBETotJointHomIndex A) :
+    strictBETotJointSourceRoofComparison A P ≫ exInfinityUnit.app _ ≫
+      (FrameHom.asSmallKanHammockHomFamilyMap (weakEquivalences (operad A).Algebra)
+        (framedLimitProbe A (AsSmall.down.obj P).1.unop)).app
+          (strictBETotJointRoofTargetObject A P) =
+      strictBETotJointSourceRoofKanComparison A P
+
+def strictBETotJointSourceRoofPinchedComparison (P : strictBETotJointHomIndex A) :
+    nerve ((simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P)ᵒᵖ ⟶
+      Basic.pinchedHom
+        ((SimplicialLocalization.hammockLocalizationNerveMap
+          (modelRelativeCategory (operad A).Algebra)).app (Opposite.op ⦋0⦌)
+            (nerveVertex (strictBETotJointRoofSourceObject A P)))
+        ((SimplicialLocalization.hammockLocalizationNerveMap
+          (modelRelativeCategory (operad A).Algebra)).app (Opposite.op ⦋0⦌)
+            (nerveVertex (strictBETotJointRoofTargetObject A P)))
+
+theorem strictBETotJointSourceRoofPinchedComparison_weak (P : strictBETotJointHomIndex A) :
+    IsWeakHomotopyEquivalence (strictBETotJointSourceRoofPinchedComparison A P)
+
+theorem strictBETotJointSourceRoofPinchedComparison_app_val (P : strictBETotJointHomIndex A) :
+    SimplicialLocalization.KanHammockPinchedValueFormula
+      (modelRelativeCategory (operad A).Algebra)
+      (strictBETotJointRoofSourceObject A P) (strictBETotJointRoofTargetObject A P)
+      (strictBETotJointSourceRoofKanComparison A P)
+```
+
+## 254. 同じ局所化頂点のpinched Homへの基準射の検収（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 23（うち追加 11）。R03dは未完了。
+
+§253の最終個別検査1450は終了0。321の鍵付き対象ビルド12,238 jobs、小監査195モジュール・1,363宣言が成功し、標準三公理のみ。実ハンドル73896・終了0、鍵返却済み。--class impl --wait 3600・1700秒guardを使った。新しい宣言名はmainのSerrePositivity全体にないことをgit grepで確認した。二つの互換入口の宣言0と既存補題の定義元の検査も維持している。
+
+今回二本165行（一般の全単体の値の分割49行、BEの基準射116行）。見込み150〜260行に対し上端との差−95行。検証済み191本・12,403行／外枠22,000行。自分の宣言数は1,356で、互換入口の宣言0を含む。監査全体には既存定義元・HAの直接importer等4本も含む。
+
+元の実roof比較から同じ全モデル相対圏のKan hammock Hom・同じ局所化頂点のpinched Homへの実射と、その弱同値性、元の全標的AsSmall比較と同じEx∞単位の厳密な三角形を保存した。全次数・全単体の値の式は名前付き命題の定義でそのまま保持し、elaborationの分割によって計算上限を上げずに検査した。sorry・独自公理0、[ModelCategory SSet]なし、既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・公式入口・公式監査・mainの変更なし。既存の合成・係数移送・証明の分割として一覧の項目数は増やさない。
+
+登録候補：
+
+- SerrePositivity.EInfinity.SimplicialLocalization.KanHammockPinchedSimplexValue
+- SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRoofPinched
+
+次は既存CoherentLocalizationComparison.pinchedEquivalenceを、元のstrictBETotRightFrameCoherentComparisonの同じ第二成分に適用し、同じ指定二胞体の両端の共役として元のCAlg源へ輸送する。probe始域と右置換標的を元のnative fiberの両端へ合わせること、元のnative射と基準roof射との全単体での照合、R03dの元の固定始域の全FunctorIsoへの正規化はなお残る。
+
+## 255. 同じ指定局所化比較と端点同型によるroof基準射の輸送（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 23（うち追加 11）。R03dは未完了。
+
+既存のCoherentLocalizationComparison.pinchedEquivalenceを元のstrictBETotRightFrameCoherentComparisonの同じ第二成分に適用する。比較関手と指定二胞体の両端成分への分解は既存の厳密な等式から得る。さらに元のprobe比較と元の全標的右置換単位を使い、基準roof射の両端を元のモデル源の頂点へ合わせる。新しい比較同値や指定経路は選び直さない。既存の合成・係数移送の法則として項目数は増やさない。二本183行。対象ビルド・監査はこれから実行し、成功前にコードをコミットしない。
+
+これは弱同値である基準射の端点を揃える段であり、元のnative fiber射そのものの弱同値性はまだ主張しない。同じnative射との全単体の照合と元の固定始域の全FunctorIsoへの正規化が残る。
+
+共通入力は `(A : Type u) [CommRing A]`。型は以下のとおり。
+
+#### StrictDiagramTotJointSourceRoofNativePinched（84行）
+
+```lean
+def strictBETotJointRoofLocalizationComparison (P : strictBETotJointHomIndex A) :
+    FrameHom.CoherentLocalizationComparison
+      (SimplicialLocalization.hammockLocalizationNerveMap
+        (modelRelativeCategory (operad A).Algebra)) (strictBETotModelSource A)
+
+def strictBETotJointSourceRoofNativePinchedComparison (P : strictBETotJointHomIndex A) :
+    nerve ((simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P)ᵒᵖ ⟶
+      Basic.pinchedHom
+        ((strictBETotModelSource A).app (Opposite.op ⦋0⦌)
+          (nerveVertex (strictBETotJointRoofSourceObject A P)))
+        ((strictBETotModelSource A).app (Opposite.op ⦋0⦌)
+          (nerveVertex (strictBETotJointRoofTargetObject A P)))
+
+theorem strictBETotJointSourceRoofNativePinchedComparison_weak (P : strictBETotJointHomIndex A) :
+    IsWeakHomotopyEquivalence (strictBETotJointSourceRoofNativePinchedComparison A P)
+
+theorem strictBETotJointSourceRoofNativePinchedComparison_normalization
+    (P : strictBETotJointHomIndex A) :
+    strictBETotJointSourceRoofNativePinchedComparison A P =
+      strictBETotJointSourceRoofPinchedComparison A P ≫
+        SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.pinchedHomMap
+          (strictBETotJointRoofLocalizationComparison A P).equivalence.hom _ _ ≫
+        (SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.pinchedEndpointEquivalence
+          ((strictBETotJointRoofLocalizationComparison A P).triangle.toNatIso.app
+            (HomotopyCategory.mk (nerveVertex (strictBETotJointRoofSourceObject A P))))
+          ((strictBETotJointRoofLocalizationComparison A P).triangle.toNatIso.app
+            (HomotopyCategory.mk (nerveVertex (strictBETotJointRoofTargetObject A P))))).hom
+```
+
+#### StrictDiagramTotJointSourceRoofEndpointTransport（99行）
+
+```lean
+def strictBETotJointRoofProbeEndpointIso (P : strictBETotJointHomIndex A) :
+    VertexIso
+      ((strictBETotModelSource A).app (Opposite.op ⦋0⦌)
+        (nerveVertex (strictBETotJointRoofSourceObject A P)))
+      ((strictBETotModelSource A).app (Opposite.op ⦋0⦌)
+        (nerveVertex (((strictBETotJointHomSourceIndex A).obj P).unop)))
+
+theorem strictBETotJointRoofTargetReplacement_vertex (P : strictBETotJointHomIndex A) :
+    ((nerveMap (strictBETotTargetReplacement A) ≫ strictBETotModelSource A).app
+      (Opposite.op ⦋0⦌)) (nerveVertex ((strictBETotJointHomTargetIndex A).obj P)) =
+      (strictBETotModelSource A).app (Opposite.op ⦋0⦌)
+        (nerveVertex (strictBETotJointRoofTargetObject A P))
+
+def strictBETotJointRoofTargetEndpointUnitIso (P : strictBETotJointHomIndex A) :
+    VertexIso
+      ((strictBETotModelSource A).app (Opposite.op ⦋0⦌)
+        (nerveVertex ((strictBETotJointHomTargetIndex A).obj P)))
+      ((strictBETotModelSource A).app (Opposite.op ⦋0⦌)
+        (nerveVertex (strictBETotJointRoofTargetObject A P)))
+
+def strictBETotJointSourceRoofNormalizedPinchedComparison (P : strictBETotJointHomIndex A) :
+    nerve ((simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P)ᵒᵖ ⟶
+      Basic.pinchedHom
+        ((strictBETotModelSource A).app (Opposite.op ⦋0⦌)
+          (nerveVertex (((strictBETotJointHomSourceIndex A).obj P).unop)))
+        ((strictBETotModelSource A).app (Opposite.op ⦋0⦌)
+          (nerveVertex ((strictBETotJointHomTargetIndex A).obj P)))
+
+theorem strictBETotJointSourceRoofNormalizedPinchedComparison_weak
+    (P : strictBETotJointHomIndex A) :
+    IsWeakHomotopyEquivalence (strictBETotJointSourceRoofNormalizedPinchedComparison A P)
+```
+
+## 256. 同じ指定比較と端点輸送の検収（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 23（うち追加 11）。R03dは未完了。
+
+322の鍵付き対象ビルド12,241 jobsと小監査197モジュール・1,391宣言が成功し、標準三公理のみ。実ハンドル80601・終了0、鍵返却済み。--class impl --wait 3600、1700秒guardを使用。二つの互換入口の宣言0と既存補題の定義元の検査を維持した。二本の新規宣言名はmain EInfinityとのgit grepで重複なし。sorry・独自公理0、計算上限変更なし。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・公式入口・公式監査・mainを変更していない。
+
+今回二本183行。検証済み193本・12,586行／外枠22,000行、自分の宣言は1,384。監査には既存定義元等の4モジュールも含む。既存の合成・係数移送の法則で項目数は増やさない。
+
+登録候補：
+
+- SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRoofNativePinched
+- SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRoofEndpointTransport
+
+元のnative fiber射との全単体の比較と、その実射の弱同値性はなお残る。次は元のnative Hom入力の頂点を元のモデル源の二頂点と厳密に合わせ、twisted-arrow fiberの比較の両端を明示する。
+
+## 257. 同じnative入力の端点と既存twisted・pinched比較の単位則（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 23（うち追加 11）。R03dは未完了。
+
+元の固定始域則を零単体へ評価して、元のnative Hom入力が元の二つのCAlg源の頂点の対であることを示す。nerveMapの頂点、直積の射影則、零次の定値則を型を分けて適用する。一般のtwisted Homからpinched Homへの比較は、既存のcoslice比較の同じ指定逆とcosliceの右写像空間比較の合成とする。反転したtwisted Homは同じedgewise二射影の同じ指定逆で戻す。元のcoslice・edgewise比較との二つの単位三角形は全FunctorIsoとして保持する。既存比較の合成・単位・係数移送の法則であり、新しい数学の項目は足さない。見込み二本150〜220行。対象ビルド・監査の前にはコードをコミットしない。
+
+既存RoofPrefixFamilyTriangle.native_family_eq_roof_arrowは一般の同じ宇宙の相対圏で、全roof族の区間評価を同じaugmentationの逆と評価の合成と同定する。両端のbifibrancyを追加せず使える。この全族則を、同じfiber要素圏へ運んだroof族に適用し、元の補正pairingが保存する同じ底のpathと合わせるのが次の接続点。いまの二本だけから元のnative射の弱同値性は結論しない。
+
+BEの共通入力は `(A : Type u) [CommRing A]`。一般版は `{C : SSet.{u}} [Quasicategory C] (x y : C _⦋0⦌)`。
+
+#### StrictDiagramTotJointHomInputVertex（73行）
+
+```lean
+theorem strictBETotJointNativeHomInput_vertex (P : strictBETotJointHomIndex A) :
+    (strictBETotJointNativeHomInput A).app (Opposite.op ⦋0⦌) (nerveVertex P) =
+      (SSet.opObjEquiv.symm ((algebraCAlgSource A).app (Opposite.op ⦋0⦌)
+        (nerveVertex (AsSmall.down.obj P).1.unop)),
+       (algebraCAlgSource A).app (Opposite.op ⦋0⦌)
+        (nerveVertex (AsSmall.down.obj P).2))
+
+theorem strictBETotJointNativeHomInput_model_vertex (P : strictBETotJointHomIndex A) :
+    (strictBETotJointNativeHomInput A).app (Opposite.op ⦋0⦌) (nerveVertex P) =
+      (SSet.opObjEquiv.symm ((strictBETotModelSource A).app (Opposite.op ⦋0⦌)
+        (nerveVertex (SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject
+          (operad A).Algebra (AsSmall.down.obj P).1.unop))),
+       (strictBETotModelSource A).app (Opposite.op ⦋0⦌)
+        (nerveVertex (SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject
+          (operad A).Algebra (AsSmall.down.obj P).2)))
+```
+
+#### TwistedHomPinchedComparison（73行）
+
+```lean
+def twistedArrowHomPinchedEquivalence :
+    QCatEquivalence (twistedArrowHomSpace x y) (Basic.pinchedHom x y)
+
+def twistedArrowHomOppositePinchedEquivalence :
+    QCatEquivalence (twistedArrowHomSpace x y).op (Basic.pinchedHom x y)
+
+theorem twistedArrowHomOppositePinchedEquivalence_hom :
+    (twistedArrowHomOppositePinchedEquivalence x y).hom =
+      (isQCatEquivalence_of_trivialKanFibration
+        (edgewiseLeft (twistedArrowHomSpace x y))).choose.inv ≫
+      edgewiseRight (twistedArrowHomSpace x y) ≫
+      (cosliceTwistedHomMap_isQCatEquivalence x y).choose.inv ≫
+      (cosliceFiberRightMappingEquivalence x y).hom
+
+def twistedArrowHomPinchedEquivalence_coslice :
+    FunctorIso (cosliceTwistedHomMap x y ≫ (twistedArrowHomPinchedEquivalence x y).hom)
+      (cosliceFiberRightMappingEquivalence x y).hom
+
+def twistedArrowHomOppositePinchedEquivalence_edgewise :
+    FunctorIso
+      (edgewiseLeft (twistedArrowHomSpace x y) ≫
+        (twistedArrowHomOppositePinchedEquivalence x y).hom)
+      (edgewiseRight (twistedArrowHomSpace x y) ≫
+        (twistedArrowHomPinchedEquivalence x y).hom)
+```
+
+## 258. 元のnative実射を元のroofと同じpinched Homへ運ぶ（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 23（うち追加 11）。R03dは未完了。
+
+§257の端点の等式で元のnative twisted fiberの反転を元の両端のtwisted Homに合わせ、§257の一般比較を合成する。その同値に元のstrictBETotJointSourceNativeOppositeFiberMapを合成した実射を定義する。新しい弱同値性の前提を置かず、この実射の弱同値性と元のstrictBETotJointSourceNativeFiberMapの弱同値性が同値であることを、既存の反転則と比較の弱同値性の消去則で示す。見込み80〜130行に対し81行の下書き。既存の合成・係数移送・消去則の分割で、項目数は増やさない。
+
+個別の一時結合検査26130は終了0。対象ビルド・小監査はまだなのでコミットしない。323は端点のモデル源表示に既存BEのモデル構造をlocal instanceで明示する前のソースを読み、失敗した。固有名のlocal instanceを追加し、元のジョブの終了を確認して324を一枚の整理券で実行中。計算上限は変更していない。
+
+共通入力は `(A : Type u) [CommRing A]`。
+
+#### StrictDiagramTotJointSourceNativePinched（81行）
+
+```lean
+def strictBETotJointNativeFiberPinchedEquivalence (P : strictBETotJointHomIndex A) :
+    QCatEquivalence
+      (vertexFiber (twistedArrowProjection (CAlg_R A))
+        ((strictBETotJointNativeHomInput A).app (Opposite.op ⦋0⦌) (nerveVertex P))).op
+      (Basic.pinchedHom
+        ((strictBETotModelSource A).app (Opposite.op ⦋0⦌)
+          (nerveVertex (((strictBETotJointHomSourceIndex A).obj P).unop)))
+        ((strictBETotModelSource A).app (Opposite.op ⦋0⦌)
+          (nerveVertex ((strictBETotJointHomTargetIndex A).obj P))))
+
+def strictBETotJointSourceNativePinchedMap (P : strictBETotJointHomIndex A) :
+    nerve ((simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P)ᵒᵖ ⟶
+      Basic.pinchedHom
+        ((strictBETotModelSource A).app (Opposite.op ⦋0⦌)
+          (nerveVertex (((strictBETotJointHomSourceIndex A).obj P).unop)))
+        ((strictBETotModelSource A).app (Opposite.op ⦋0⦌)
+          (nerveVertex ((strictBETotJointHomTargetIndex A).obj P)))
+
+theorem strictBETotJointSourceNativePinchedMap_weak_iff_original
+    (P : strictBETotJointHomIndex A) :
+    IsWeakHomotopyEquivalence (strictBETotJointSourceNativePinchedMap A P) ↔
+      IsWeakHomotopyEquivalence (strictBETotJointSourceNativeFiberMap A P)
+```
+
+この実射とstrictBETotJointSourceRoofNormalizedPinchedComparisonは同じ始域・標的を持つ。残る中核は、元の補正pairingの指定された底のpathと、元のroof全族のaugmentationを、全パラメータの区間評価で照合すること。既存intervalFamilyHom_eq_imp_homotopyは任意のパラメータに対してこの全評価の等式からホモトピーを与えるので、π₀のみへの弱化を避けられる。現時点ではその等式を示していない。
+
+## 259. 元のnative射を同じpinched標的へ運ぶ既存則の検収（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 23（うち追加 11）。R03dは未完了。
+
+324の対象ビルド10,628 jobs・小監査199モジュール1,409宣言が成功（実ハンドル31286・終了0）。325は元のnative実射の対象ビルド12,248 jobs・小監査200モジュール1,418宣言が成功（実ハンドル30857・終了0）。いずれも標準三公理のみ、鍵返却済み。--class impl --wait 3600、1700秒guardで各一枚の整理券を使い、前のジョブの終了を確認して次へ進めた。既存補題の定義元と二つの互換入口の宣言0の検査も維持。今回の全新規宣言名についてmain SerrePositivity全体とのgit grepで重複がないことを確認した。
+
+今回三本229行（端点75、一般比較と全単位三角形73、同じnative実射81）。前二本の見込み150〜220行に対し148行、第三の見込み80〜130行に対し81行。検証済み196本・12,815行／外枠22,000行、自分の宣言は1,411。sorry・独自公理0、計算上限変更なし、[ModelCategory SSet]なし。既存FramedLimit*・CAlgUnderlyingDerivedComparison・⑤a・公式入口・公式監査・mainを変更していない。
+
+登録候補：
+
+- SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointHomInputVertex
+- SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.TwistedHomPinchedComparison
+- SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceNativePinched
+
+元の実射と基準roof射の始域・標的が揃い、元の実射の弱同値性を厳密に反映する比較まで検証した。両実射の全族の同定自体は未証明であり、R03d・3b-4aの完了とはしない。次の最小の主張は、両実射を区間写像空間へ送ったintervalFamilyHomの等式。既存RoofPrefixFamilyTriangleの全roof族の式と、元の補正pairingの同じ底のpathとの照合が必要である。
+
+## 260. R03dの同じ実射の全族照合をR03hとして追加（11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 24（うち追加 12）。R03d・R03hは未完了。
+
+§19の「同じまとまり・一つの見込み1,500行以下」の枠により、元のnative実射と元のroof基準射の全族の照合をR03hとして追加する。新しいまとまりではなくR03dの元のfiber射自身の弱同値性と固定始域の全比較の正規化に必要な中間の定理。⑤aの欄の型を変えない。型を弱めず、追加の弱同値性・充填性を前提にしない。
+
+型（共通入力 `(A : Type u) [CommRing A]`、`intervalFamilyHom`はKerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories、`pinchedHomToIntervalMappingSpace`はKerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces）：
+
+```lean
+theorem strictBETotJointSourceNativePinchedMap_interval_family
+    (P : strictBETotJointHomIndex A) :
+    intervalFamilyHom
+      (strictBETotJointSourceNativePinchedMap A P ≫
+        pinchedHomToIntervalMappingSpace _ _) =
+    intervalFamilyHom
+      (strictBETotJointSourceRoofNormalizedPinchedComparison A P ≫
+        pinchedHomToIntervalMappingSpace _ _)
+```
+
+この全称命題を/private/tmp/isw2-nativepinched-family-type.leanで#checkし、実ハンドル67282・終了0。これは型の検査であり証明ではない。Lean本体に未証明の宣言・sorryを置いていない。
+
+見込み850〜1,400行。内訳：元のfiber要素圏のroof族をRoofPrefixの同じ族へ運ぶ係数・自然性の照合250〜400行、元の補正pairingを同じcoslice・edgewise比較で区間評価し、保存された底のpathを使う全族の照合300〜600行、同じ局所化三角形・probe・右置換単位での共役と既存roof全族則の合成150〜250行、まとめ150行以内。未確定の中心は二番目であり、1,500行を超える新しい中間定理やまとまりの外のものが要ると分かった場合は、§19どおり検証済みを保存して報告する。
+
+使用する既存の入口：RoofPrefixFamilyTriangle.native_family_eq_roof_arrow（一般の同じ宇宙の相対圏での全roof族）、CoherentLocalizationComparison.pinchedEquivalence_homとtriangle_naturality、pinchedEndpointEquivalence_family、今回のtwistedArrowHomPinchedEquivalence_cosliceとtwistedArrowHomOppositePinchedEquivalence_edgewise、元のstrictBETotJointSourceFiberPairingIso_postcomp（同じ底のpathの保存）。全族の評価の等式を得た後はintervalFamilyHom_eq_imp_homotopyとpinched・区間比較の弱同値性で、元の実射自身の弱同値性に戻す。以降も元の固定始域の全FunctorIsoへの正規化を省かない。
+
+§255〜256のコードは3693013ba、§257〜259のコードは7edd92b76に保存済み。検証済み196本・12,815行／外枠22,000行。停止点3b-4aの完成報告ではない。
+
+## 261. B4′の取り込み前採取を開始（11-15、途中）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 24（うち追加 12）。R03d・R03hは未完了。B4′もまだ完了ではない。
+
+検証済みLeanは670ef9d75までの履歴に保存済み。B4′開始時の作業木はクリーン。基準391b2a0d2から追加・変更されたLean（drafts除外、存在するソース）は197本。原ソースを/private/tmp/isw2-b4prime-20261115/original-sources.tar.gz、一覧を同ディレクトリfiles.json、元HEADとmainの記録をprovenance.jsonへ保存した。元HEADは670ef9d75、開始時mainはb29addabd。公式指示はmainのcitation-attributes.md §15とbulk-b3prime/B4/README.mdを読んだ。
+
+最初の三本と次の八本、計11本のcollectと指定rewrite.pyによるプレビューが成功。確認済みのreview.jsonは全て空、追加import0、現ソースとの差分0本。自分の検証済み196モジュールのパスにはmodule-map.jsonとの一致0。これは残りの短名束縛の確認の代用にはせず、残りも採取する。
+
+残りは8本以下ずつの組で採取・プレビューする単一の実行ハンドル41644へまとめた。各組で--class impl --wait 3600、鍵取得後280秒guard。前の組の終了・鍵返却の後に次の組を一度だけ出し、失敗や保留で停止する。複数の整理券を同時に出さず、同じ採取の時間切れを取り直すループも使わない。現在は第2組を実行中。mainのmerge・プレビュー反映・取り込み後の対象ビルドと小監査はまだ。古い索引を取り込み後のソースへ流用しない。
+
+R03hの並行する紙と一時検査：元のfiber上の同じroof図式・augmentation・評価、同じ全単体の二列図式、元のAsSmall比較を通した実roof比較とRoofPrefix.familyMapの厳密な等式を一時ファイル/private/tmp/isw2-rooffiberprefix.leanで検査し、ハンドル47381・終了0。既存依存RoofPrefixColumnRoofの326対象ビルド7,211 jobsも成功（ハンドル57972・終了0）。新規本体モジュールを追加・コミットした検収ではないため、検証済み196本・12,815行の数は増やさない。B4′の参照採取中の原ソースも変更していない。B4′完了後にこの同じ型の法則を本体で検査し直し、元のnative pairingが保存する指定された底のpathとの全族照合へ戻る。
+
+## 262. B4′採取19本の検収と、取り込み取り消しに由来する削除の事前確認（11-15、途中）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 24（うち追加 12）。R03d・R03h・B4′は未完了。
+
+第2組の8本もcollect・プレビュー成功。19／197本が保留0・追加import0・差分0。第2組は待ち込み660.1秒で成功し鍵を返却した。採取そのものの実測は8本で約2分なので、以降は12本以下の約3〜4分の組、280秒guardを維持する形へまとめ直した。178本を15組へ分け、既済19本との重複・漏れがないことを集合で検査した。
+
+切り替え時には、完了した第2組の次の第3組がまだ鍵待ちで、子のpayloadが起動していないことをpsで確認した。待ちのwrapper96924にだけSIGTERMを送り、既存のsignal handler・finallyによる整理券の片付けを経て、旧runner41644が終了143になった。採取の失敗や時間切れではなく、未起動の待ちだけの意図した取り消しである。その終了を確認してから、新しい単一runner38504を起動した。同時に複数の整理券は出していない。新しい進捗は/private/tmp/isw2-b4prime-20261115/progress-12.json、before-rXX・preview-rXXに記録する。新しい実行も各組一回ずつで、保留や失敗で停止する。mainはまだmergeしていない。
+
+作業木を変えないgit merge-treeの事前確認では、共通祖先57705f223からmain側の取り込み取り消しedf81f92eが効くため、検証済みの自分の176本が削除扱いになった。対象一覧は/private/tmp/isw2-b4prime-20261115/merge-preview-absent-own-files.json。重複修正済みのStrictDiagramTotUniversalProbePointComparison・TensorConeUnitPointとモジュール一覧はmodify/delete、報告は内容競合の候補。最終のmergeでは、取り消しの目的だった重複が既に修正されている元の自分のソースを、検査済みプレビューから保持する必要がある。B3′で移動した別の本体ソース全体へ上書きせず、今回の197本と宣言の所有元表・module-mapに従う。公式入口や監査の取り消された登録は勝手に戻さず、調整役への登録候補に残す。mainの独立した変更は保持する。
+
+鍵待ち中の一時検査では、同じ実roof全族の任意の後合成を、元の全augmentationの逆と評価の像へ戻す式まで検査できた（/private/tmp/isw2-rooffibercolumn.lean、199行、ハンドル26704・終了0）。同じ全FunctorIsoの定値族が元の指定成分に一致する法則も、既存の未ビルドの評価補題を一時結合して検査した（/private/tmp/isw2-constantisofamily-combined.lean、ハンドル53401・終了0）。どちらもプロジェクトのソースは変更しておらず、B4′後の本体の対象ビルド・小監査はまだ。検証済み196本・12,815行の数は維持する。
+
+## 263. B4′採取55本と、同じ全augmentationの一時照合（11-15、途中）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 24（うち追加 12）。R03d・R03h・B4′は未完了。
+
+B4′は55／197本の参照採取・プレビューが成功。全てreview.jsonは空、追加import0、原ソースとの差分0本。12本の組r00・r01・r02も280秒guardの範囲内で成功した（待ちを含む経過748.5秒・759.6秒・483.6秒）。同じ単一runner38504を継続し、これから第r03組。mainの実際のmergeはまだ行っていない。
+
+取り込み前の全索引とプレビューをまとめる/private/tmp/isw2-b4prime-20261115/assemble-before.pyを準備した。全197本が重複・欠落なく揃い、全captureのsourceが現原ソースと一致することを検査してから、before-allと新しいpreview-allを作る。MERGE_HEADがあるとき、またはmain取り込み後には動かせないガードを置き、旧索引を取り込み後のソースへ流用しない。事前mergeで消える176本については、全てがedf81f92eの削除対象に含まれることもgit diff-treeと照合した。
+
+R03hの一時検査では、同じroof図式・同じ全単体の二列図式・元のroof比較とRoofPrefix全族の一致・任意の後合成の全roof公式に続き、同じfull augmentationが元の全パラメータのaugmentation自身の引き戻しであることまで検査した。最初の全関手の照合は200,000 heartbeatに達したため上限を変えず、対象・射・一般のfiber包含の単体作用素の法則へ分割した。後者の等式輸送はGrothendieck.ιの元のeqToHomを射影して処理し、別の包含や別のpathに替えていない。最終/private/tmp/isw2-roofparameter2.lean（355行、一時入力全体）は実ハンドル3044・終了0。一般のfiber作用素の独立検査36768も終了0。
+
+同じ元のnerveTransformationPostIsoの順射を元の全自然変換のNerveColumn.homへ戻す法則も/private/tmp/isw2-nervepostisocolumn.leanで検査し、実ハンドル80148・終了0。定値族の法則の検査53401も終了0。全て一時ファイルの個別検査で、プロジェクトには追加・変更していない。検証済み196本・12,815行／外枠22,000行の計数は維持。本体モジュールへの配置と対象ビルド・小監査はB4′後に行う。
+
+以下は通過した一時の型（名称は本体反映時に新規宣言名との重複を確認する）。BE側の共通入力は `(A : Type u) [CommRing A]`、canonicalな既存modelCategory AとmappingCofibrantFactorization Aのlocal instanceのみを使う。既存構成の合成・単位・係数移送・証明分割の法則として一覧の項目数は増やさない。元のnative射とroof射の全族の等式、すなわちR03hそのものはなお未証明。
+
+```lean
+abbrev strictBETotJointRoofResolution (P : strictBETotJointHomIndex A)
+
+def strictBETotJointSourceRoofFrameDiagram (P : strictBETotJointHomIndex A) :
+    ((simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P)ᵒᵖ ⥤
+      (modelRelativeCategory (operad A).Algebra).category
+
+def strictBETotJointSourceRoofFrameAugmentation (P : strictBETotJointHomIndex A) :
+    strictBETotJointSourceRoofFrameDiagram A P ⟶
+      (CategoryTheory.Functor.const _).obj
+        (modelRelativeObject (operad A).Algebra
+          (framedLimitProbe A (AsSmall.down.obj P).1.unop))
+
+def strictBETotJointSourceRoofFrameEvaluation (P : strictBETotJointHomIndex A) :
+    strictBETotJointSourceRoofFrameDiagram A P ⟶
+      (CategoryTheory.Functor.const _).obj
+        (modelRelativeObject (operad A).Algebra
+          ((rightFrameReplacement (rightFrameFamily A)).obj (AsSmall.down.obj P).2))
+
+lemma strictBETotJointSourceRoofFrameAugmentation_weak
+    (P : strictBETotJointHomIndex A)
+    (s : ((simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P)ᵒᵖ) :
+    (modelRelativeCategory (operad A).Algebra).weakEquivalences
+      ((strictBETotJointSourceRoofFrameAugmentation A P).app s)
+
+lemma strictBETotJointSourceRoofFrameDiagram_weak
+    (P : strictBETotJointHomIndex A)
+    {s t : ((simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P)ᵒᵖ}
+    (f : s ⟶ t) :
+    (modelRelativeCategory (operad A).Algebra).weakEquivalences
+      ((strictBETotJointSourceRoofFrameDiagram A P).map f)
+
+def strictBETotJointSourceRoofFrameZigzag (P : strictBETotJointHomIndex A)
+
+theorem strictBETotJointSourceRoofFrameZigzag_nerve
+    (P : strictBETotJointHomIndex A) :
+    (elementsOppositeUniverseNerveIso.{u+1,u}
+      ((SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom
+        (strictBETotJointRoofResolution A P).obj).obj
+          ((rightFrameReplacement (rightFrameFamily A)).obj (AsSmall.down.obj P).2))).hom ≫
+      FrameHom.frameLeftRoofNerveMap (weakEquivalences (operad A).Algebra)
+        (strictBETotJointRoofResolution A P).obj
+        (strictBETotJointRoofResolution A P).augmentation
+        (strictBETotJointRoofResolution A P).augmentation_weakEquivalence
+        (fun f => (strictBETotJointRoofResolution A P).homotopicallyConstant f) ≫
+      (Hammock.AsSmallComparison.graphIso (weakEquivalences (operad A).Algebra)
+        (framedLimitProbe A (AsSmall.down.obj P).1.unop)
+        ((rightFrameReplacement (rightFrameFamily A)).obj (AsSmall.down.obj P).2)
+        LeftRoof.word).hom =
+      nerveMap (strictBETotJointSourceRoofFrameZigzag A P)
+
+theorem strictBETotJointSourceRoofKanComparison_prefix
+    (P : strictBETotJointHomIndex A) :
+    strictBETotJointSourceRoofKanComparison A P =
+      SimplicialLocalization.RoofPrefix.familyMap
+        (modelRelativeCategory (operad A).Algebra)
+        (strictBETotJointSourceRoofFrameDiagram A P)
+        (strictBETotJointSourceRoofFrameAugmentation A P)
+        (strictBETotJointSourceRoofFrameAugmentation_weak A P)
+        (strictBETotJointSourceRoofFrameEvaluation A P)
+        (strictBETotJointSourceRoofFrameDiagram_weak A P)
+
+theorem strictBETotJointSourceRoofPinchedComparison_column_roof
+    {E : SSet.{u+1}} [Quasicategory E] (P : strictBETotJointHomIndex A)
+    (F : SimplicialLocalization.kanHammockNerve
+      (modelRelativeCategory (operad A).Algebra) ⟶ E) :
+    let R := modelRelativeCategory (operad A).Algebra
+    let V := strictBETotJointSourceRoofFrameDiagram A P
+    let p := strictBETotJointSourceRoofFrameAugmentation A P
+    let hp := strictBETotJointSourceRoofFrameAugmentation_weak A P
+    Arrow.mk
+      (SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom
+        ((strictBETotJointSourceRoofPinchedComparison A P ≫
+          SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.pinchedHomMap F _ _) ≫
+          SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace _ _)) =
+    Arrow.mk
+      ((FrameHom.NerveColumn.augmentationIso
+        (SimplicialLocalization.hammockLocalizationNerveMap R ≫ F) V p
+        (SimplicialLocalization.RoofPrefix.postcomp_augmentation_invertible R V p hp F)).inv ≫
+        FrameHom.NerveColumn.hom
+          (SimplicialLocalization.hammockLocalizationNerveMap R ≫ F)
+          (strictBETotJointSourceRoofFrameEvaluation A P))
+
+def strictBETotJointSourceRoofFullAugmentation (P : strictBETotJointHomIndex A) :
+    strictBETotJointSourceRoofFrameDiagram A P ⟶
+      (CategoryTheory.Functor.const _).obj
+        (modelRelativeObject (operad A).Algebra (AsSmall.down.obj P).1.unop)
+
+theorem strictBETotJointSourceRoofFullAugmentation_app
+    (P : strictBETotJointHomIndex A)
+    (s : ((simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P)ᵒᵖ) :
+    (strictBETotJointSourceRoofFullAugmentation A P).app s =
+      (AsSmall.up : (operad A).Algebra ⥤ AsSmall.{u+1} (operad A).Algebra).map
+        ((strictBETotJointRoofResolution A P).augmentation.app s.unop.obj.unop ≫
+          framedLimitProbeComparison A (AsSmall.down.obj P).1.unop)
+
+theorem strictBETotJointSourceRoofFullAugmentation_original
+    (P : strictBETotJointHomIndex A)
+    (s : ((simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P)ᵒᵖ) :
+    (strictBETotJointSourceRoofFullAugmentation A P).app s =
+      (strictBETotJointSourceFrameAugmentation A).app
+        ((AsSmall.up : (operad A).Algebra × SimplexCategory ⥤
+          strictBETotJointSourceFrameIndex A).obj
+            ((AsSmall.down.obj P).1.unop, s.unop.obj.unop))
+
+theorem strictBETotJointSourceRoofFullAugmentation_weak
+    (P : strictBETotJointHomIndex A)
+    (s : ((simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P)ᵒᵖ) :
+    (modelRelativeCategory (operad A).Algebra).weakEquivalences
+      ((strictBETotJointSourceRoofFullAugmentation A P).app s)
+
+def strictBETotJointRoofParameterIndex (P : strictBETotJointHomIndex A) :
+    ((simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P)ᵒᵖ ⥤
+      strictBETotJointSourceFrameIndex A
+
+theorem strictBETotJointRoofParameterIndex_obj (P : strictBETotJointHomIndex A)
+    (s : ((simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P)ᵒᵖ) :
+    (strictBETotJointRoofParameterIndex A P).obj s =
+      (AsSmall.up : (operad A).Algebra × SimplexCategory ⥤ strictBETotJointSourceFrameIndex A).obj
+        ((AsSmall.down.obj P).1.unop, s.unop.obj.unop)
+
+lemma sameSimplicialElementsFiberFunctor_degree {I : Type u} [SmallCategory I]
+    (G : I ⥤ SSet.{u}) (i : I)
+    {s t : (simplicialElementsCatDiagram G).obj i} (f : s ⟶ t) :
+    ((simplicialElementsFiberFunctor G i).map f).hom.2 = f.down.hom
+
+theorem strictBETotJointRoofParameterIndex_map (P : strictBETotJointHomIndex A)
+    {s t : ((simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P)ᵒᵖ}
+    (f : s ⟶ t) :
+    HEq ((strictBETotJointRoofParameterIndex A P).map f)
+      ((AsSmall.up : (operad A).Algebra × SimplexCategory ⥤ strictBETotJointSourceFrameIndex A).map
+        ((𝟙 (AsSmall.down.obj P).1.unop, f.unop.down.hom.unop) :
+          ((AsSmall.down.obj P).1.unop, s.unop.obj.unop) ⟶
+            ((AsSmall.down.obj P).1.unop, t.unop.obj.unop)))
+
+theorem strictBETotJointRoofParameterIndex_evaluation (P : strictBETotJointHomIndex A) :
+    strictBETotJointRoofParameterIndex A P ⋙ strictBETotJointSourceFrameEvaluation A =
+      strictBETotJointSourceRoofFrameDiagram A P
+
+theorem strictBETotJointRoofParameterIndex_constant (P : strictBETotJointHomIndex A) :
+    strictBETotJointRoofParameterIndex A P ⋙ strictBETotJointSourceFrameConstant A =
+      (CategoryTheory.Functor.const _).obj
+        (modelRelativeObject (operad A).Algebra (AsSmall.down.obj P).1.unop)
+
+theorem strictBETotJointRoofParameterIndex_augmentation
+    (P : strictBETotJointHomIndex A) :
+    HEq (CategoryTheory.Functor.whiskerLeft (strictBETotJointRoofParameterIndex A P)
+      (strictBETotJointSourceFrameAugmentation A))
+      (strictBETotJointSourceRoofFullAugmentation A P)
+
+private theorem sameFunctor_map_heq {C D : Type*} [Category C] [Category D]
+    (F : C ⥤ D) {x y x' y' : C} (hx : x = x') (hy : y = y')
+    (f : x ⟶ y) (g : x' ⟶ y') (h : HEq f g) : HEq (F.map f) (F.map g)
+
+private theorem sameNatTrans_heq {I C : Type*} [Category I] [Category C]
+    {F G F' G' : I ⥤ C} (hF : F = F') (hG : G = G')
+    (η : F ⟶ G) (η' : F' ⟶ G')
+    (ha : ∀ i, HEq (η.app i) (η'.app i)) : HEq η η'
+```
+
+定値族の法則（一般の準圏K・X、任意のT）と元の全augmentation同型の順射の法則：
+
+```lean
+lemma sameFunctorIso_constant_family {K X : SSet.{u}} [Quasicategory K] [Quasicategory X]
+    (T : SSet.{u}) {f g : K ⟶ X} (e : FunctorIso f g) (x : K _⦋0⦌) :
+    (constantFunctorCompIso T x f).inv ≫
+      (e.precomp (SSet.const x : T ⟶ K)).hom ≫
+      (constantFunctorCompIso T x g).hom =
+        constantFunctorHomMap T (e.app x).hom
+
+lemma sameNerveTransformationPostIso_column
+    {I C : Type u} [Category.{u} I] [Category.{u} C]
+    {F G : I ⥤ C} (η : F ⟶ G) {Q : SSet.{u}} [Quasicategory Q]
+    (L : nerve C ⟶ Q)
+    (hη : ∀ i, IsInvertibleEdge ((nerve.edgeMk (η.app i)).map L).toTruncated) :
+    (nerveTransformationPostIso η L hη).hom = NerveColumn.hom L η
+```
+
+## 264. B4′採取67本と、元の指定augmentation同型の全制限の一時検査（11-15、途中）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 24（うち追加 12）。R03d・R03h・B4′は未完了。
+
+B4′は67／197本のcollect・プレビューが成功し、review.jsonは全て空、追加import0、原ソースとの差分0本。r03は待ちを含め720.4秒で成功した。単一runner38504は第r04組を継続中。mainの実際のmerge、プレビュー反映、取り込み後の対象ビルド・小監査はまだ。取り込み前のソースは変えていない。
+
+R03hの一時検査を、元の指定された全augmentationのFunctorIso自身の制限まで進めた。一般のnerve自然変換の全引き戻しが同じ反転同型を保つこと、全自然変換の表示変更がその同型を保つことを先に示し、元のstrictBETotJointSourceFrameAugmentationIsoを同じroofパラメータへ前合成した値が、同じfull augmentationのNerveColumn.augmentationIsoそのものであることをHEqで示した。対象ごとの同型へ置き換えず、同じ全関手同型の値を保存する。
+
+/private/tmp/isw2-nervecolumnprecomp.leanはハンドル61860・終了0、一般の表示変更を含む/private/tmp/isw2-nervepostisoheq.leanは77461・終了0、BEの全制限を結合した/private/tmp/isw2-roofnativeaug.leanは45906・終了0。同じfiber上の全標的入力が元の同じ標的の定値図式・定値nerve写像であることも/private/tmp/isw2-rooftarget.leanで検査し94919・終了0。これらも一時検査だけで本体には未反映。元のnative射と基準roof射の全族の等式（R03h）と、元の固定始域の全FunctorIsoへの正規化は引き続き残る。検証済み196本・12,815行／外枠22,000行の計数は維持する。
+
+使用する取り込み後の小監査の範囲も確認した。現在のAuditISW2BKCells325.leanは自分のモジュール一覧196本を全て含み、追加の既存4本（FrameConeClasses・NormalizedMooreReverseEvaluation・NormalizedMooreReverseExtendZero・NormalizedMooreReverseZero）と合わせて200本である。二つの互換入口の宣言0と既存補題の定義元の検査を維持する。新しい本体の証明分割を反映する際は、その変更後に改めて対象ビルドと小監査を行う。
+
+追加した一時の型は以下のとおり。既存構成の反転・単位・合成・係数移送の法則と証明分割なので一覧の項目数は増やさない。一般版の共通openはNerveColumn・FunctorIso等の既存の定義元に対応し、BE版の共通入力は `(A : Type u) [CommRing A]` と既存のcanonical model/factorizationのみ。
+
+```lean
+lemma sameNerveColumn_whiskerLeft
+    {I J C : Type u} [Category.{u} I] [Category.{u} J] [Category.{u} C]
+    (R : J ⥤ I) {F G : I ⥤ C} (η : F ⟶ G)
+    {Q : SSet.{u}} [Quasicategory Q] (L : nerve C ⟶ Q) :
+    (hoFunctor.map ((MonoidalClosed.pre (nerveMap R)).app Q)).toFunctor.map
+      (NerveColumn.hom L η) = NerveColumn.hom L (CategoryTheory.Functor.whiskerLeft R η)
+
+lemma sameNerveTransformationPostIso_precomp
+    {I J C : Type u} [Category.{u} I] [Category.{u} J] [Category.{u} C]
+    (R : J ⥤ I) {F G : I ⥤ C} (η : F ⟶ G)
+    {Q : SSet.{u}} [Quasicategory Q] (L : nerve C ⟶ Q)
+    (hη : ∀ i, IsInvertibleEdge ((nerve.edgeMk (η.app i)).map L).toTruncated) :
+    HEq ((nerveTransformationPostIso η L hη).precomp (nerveMap R))
+      (nerveTransformationPostIso (CategoryTheory.Functor.whiskerLeft R η) L
+        (fun j => hη (R.obj j)))
+
+lemma sameNerveTransformationPostIso_heq
+    {I C : Type u} [Category.{u} I] [Category.{u} C]
+    {F G F' G' : I ⥤ C} (hF : F = F') (hG : G = G')
+    (η : F ⟶ G) (η' : F' ⟶ G') (he : HEq η η')
+    {Q : SSet.{u}} [Quasicategory Q] (L : nerve C ⟶ Q)
+    (hη : ∀ i, IsInvertibleEdge ((nerve.edgeMk (η.app i)).map L).toTruncated)
+    (hη' : ∀ i, IsInvertibleEdge ((nerve.edgeMk (η'.app i)).map L).toTruncated) :
+    HEq (nerveTransformationPostIso η L hη) (nerveTransformationPostIso η' L hη')
+
+lemma sameNerveTransformationPostIso_augmentation
+    {I C : Type u} [Category.{u} I] [Category.{u} C]
+    (V : I ⥤ C) {X : C} (p : V ⟶ (CategoryTheory.Functor.const I).obj X)
+    {Q : SSet.{u}} [Quasicategory Q] (L : nerve C ⟶ Q)
+    (hp : ∀ i, IsInvertibleEdge ((nerve.edgeMk (p.app i)).map L).toTruncated) :
+    nerveTransformationPostIso p L hp = NerveColumn.augmentationIso L V p hp
+
+theorem strictBETotJointSourceRoofFullAugmentation_inverted
+    (P : strictBETotJointHomIndex A)
+    (s : ((simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P)ᵒᵖ) :
+    IsInvertibleEdge ((nerve.edgeMk
+      ((strictBETotJointSourceRoofFullAugmentation A P).app s)).map
+      (strictBETotModelSource A)).toTruncated
+
+theorem strictBETotJointSourceFrameAugmentationIso_roof_restriction
+    (P : strictBETotJointHomIndex A) :
+    HEq ((strictBETotJointSourceFrameAugmentationIso A).precomp
+      (nerveMap (strictBETotJointRoofParameterIndex A P)))
+      (FrameHom.NerveColumn.augmentationIso (strictBETotModelSource A)
+        (strictBETotJointSourceRoofFrameDiagram A P)
+        (strictBETotJointSourceRoofFullAugmentation A P)
+        (strictBETotJointSourceRoofFullAugmentation_inverted A P))
+
+lemma sameSimplicialElementsFiberFunctor_projection {I : Type u} [SmallCategory I]
+    (G : I ⥤ SSet.{u}) (i : I) :
+    simplicialElementsFiberFunctor G i ⋙ simplicialTotalElementsProjection G =
+      (CategoryTheory.Functor.const _).obj i
+
+theorem strictBETotJointSourceTargetIndex_fiber (P : strictBETotJointHomIndex A) :
+    simplicialElementsFiberFunctor (strictBETotJointSourceCoefficients A) P ⋙
+      strictBETotJointSourceElementsProjection A ⋙ strictBETotJointHomTargetIndex A =
+    (CategoryTheory.Functor.const _).obj ((strictBETotJointHomTargetIndex A).obj P)
+
+theorem strictBETotJointSourceTargetIndex_nerve_fiber
+    (P : strictBETotJointHomIndex A) :
+    nerveMap (simplicialElementsFiberFunctor (strictBETotJointSourceCoefficients A) P) ≫
+      nerveMap (strictBETotJointSourceElementsProjection A ⋙ strictBETotJointHomTargetIndex A) =
+    SSet.const (nerveVertex ((strictBETotJointHomTargetIndex A).obj P))
+
+```
+
+## 265. B4′ の採取の組の調整と、元の同じ標的置換の全制限則（2026-11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 24（うち追加 12）。
+
+### 265.1 B4′ の現況
+
+採取・プレビュー済みは 91／197 ファイル、各 review は空。12 本の組の鍵の実保持は直近で約134〜144秒だったため、未開始の r06 の整理券だけを取り下げ、残り106本を最大20本の6組（s00〜s05）にした。一回の実処理は引き続き gtimeout 280秒、待ちは --class impl --wait 3600、一枚だけ。旧 runner の143はこの未開始の取り下げの終了値で、採取や証明の検証失敗ではない。完了済み91本の索引は保持する。現在の runner は run-remaining-20.py、状況は progress-20.json。197本の全採取後に同じ元ソースから最終の preview-all を作り、それから main を取り込む。元の Lean ソースは変更していない。
+
+### 265.2 同じ元の標的置換を、全関手同型として制限する
+
+B4′ の待ち時間に、一時 Lean ファイルだけで次の既存構成の制限・単位の法則を確認した。元の全標的置換の逆を、同じ fiber 上で同じ標的頂点へ引き戻す全 FunctorIso として同定し、その hom を元の頂点成分の逆の定値族へ同定する。点ごとの同型の存在への置き換えはしていない。依存型の書換えは前合成則と HEq の合成に分け、計算上限は変更していない。
+
+個別検査：isw2-rooftargetiso.lean（最終ログ rooftargetiso4、exit 0）、isw2-rooftargetconstant.lean（最終ログ rooftargetconstant2、exit 0）。既存の未ビルドの共通補題のソースを一時的に結合して検査したもので、本体の新規モジュールの対象ビルド・監査ではない。B4′ 完了後に共通の既存モジュールを import し、新規の法則だけを本体に分割して対象ビルドと小監査を行う。
+
+R03h の本体、すなわち同じ corrected pairing の native fiber 射と元の roof の全 interval 族との等式はまだ残る。今回の二法則を R03h の完了とは数えない。
+
+```lean
+theorem strictBETotJointSourceTargetReplacementIso_fiber
+    (P : strictBETotJointHomIndex A) :
+    HEq ((strictBETotJointSourceTargetReplacementIso A).precomp
+      (nerveMap (simplicialElementsFiberFunctor (strictBETotJointSourceCoefficients A) P)))
+      (((strictBETotTargetReplacementNativeIso A).precomp
+        (SSet.const (X := nerve ((simplicialElementsCatDiagram
+          (strictBETotJointSourceCoefficients A)).obj P))
+          (nerveVertex ((strictBETotJointHomTargetIndex A).obj P))))).symm
+
+theorem strictBETotTargetReplacementNativeIso_symm_constant_family
+    (P : strictBETotJointHomIndex A) :
+    (constantFunctorCompIso
+      (nerve ((simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P))
+      (nerveVertex ((strictBETotJointHomTargetIndex A).obj P))
+      (nerveMap (strictBETotTargetReplacement A) ≫ strictBETotModelSource A)).inv ≫
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.precomp (strictBETotTargetReplacementNativeIso A).symm
+        (SSet.const (X := nerve ((simplicialElementsCatDiagram
+          (strictBETotJointSourceCoefficients A)).obj P))
+            (nerveVertex ((strictBETotJointHomTargetIndex A).obj P)))).hom ≫
+      (constantFunctorCompIso
+        (nerve ((simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P))
+        (nerveVertex ((strictBETotJointHomTargetIndex A).obj P))
+        (strictBETotModelSource A)).hom =
+      constantFunctorHomMap
+        (nerve ((simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P))
+        ((strictBETotTargetReplacementNativeIso A).app
+          (nerveVertex ((strictBETotJointHomTargetIndex A).obj P))).inv
+```
+
+## 266. B4′ の151本までの照合と、同じ全関手同型の反転・制限則（2026-11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 24（うち追加 12）。
+
+### 266.1 B4′
+
+現在の採取・プレビュー済みは 151／197。完了した各組の review は空、元のソースとの差分は0。各 compiler capture の source と元ファイルのバイト列も照合した。670ef9d75 以降の枝のコミットに Lean の変更はない。s02 までの採取を終え、同じ runner が s03 の一枚の整理券で継続中（--class impl --wait 3600、実処理280秒）。main の取り込みはまだ行っていない。残りの全採取、同じ原環境での最終プレビューの後に統合する。
+
+取り込み後の検査の準備は、自レーン196本と既存の直接の確認対象4本（FrameConeClasses、NormalizedMooreReverseEvaluation、NormalizedMooreReverseExtendZero、NormalizedMooreReverseZero）の計200本。小監査も同じ200本を対象とし、互換用の二ファイルの宣言数0、および tensorFrameHomIso_point と normalizedMooreReverse_zero_inclusion の元の定義元を確認する。root や公式の監査は変更・実行しない。main 側の revert に由来する自レーンの削除を保持して統合する理由と対象は §262 のとおりで、統合直前に再照合する。
+
+### 266.2 既存の反転と前合成の法則
+
+isw2-opisoprecomp.lean（84行、一時ファイル）を lake env lean で検査し、最終ログ isw2-opisoprecomp13 は exit 0。元の FunctorIso.op の値を、同じ内部 Hom の反転同型による元の像へ端点だけ輸送したものとして同定した。逆射を既存の functorOppositeHomEquiv と合わせ、その既存の前合成則から、同じ全関手同型の反転と制限の両立を HEq で得た。単体ごとの、または点ごとの同型の存在への置き換えではない。
+
+端点の Eq.mp の簡約と同型の共役式を別の小補題に分けた。計算上限は上げていない。以下は既存構成の輸送・前合成の法則とその証明の分割であり、一覧の新しい数学の項目には数えない。B4′ の元のソースには追加しておらず、追従後に本体の新規モジュールへ分けて対象ビルドと小監査を通す。R03h の同じ native 射と roof の全 interval 族の最終等式は未完である。
+
+```lean
+private lemma sameEqMp_heq_iff {α β γ : Sort u} (h : α = β) (a : α) (b : γ) :
+    HEq (Eq.mp h a) b ↔ HEq a b
+
+lemma sameVertexIso_op_inv {X : SSet.{u}} [Quasicategory X] {x y : X _⦋0⦌}
+    (e : VertexIso x y) :
+    e.op.inv = homotopyCategoryOpHomEquiv x y e.hom
+
+lemma sameFunctorIso_op_heq {X Y : SSet.{u}} [Quasicategory Y] {f g : X ⟶ Y}
+    (e : FunctorIso f g) :
+    HEq e.op (VertexIso.map (VertexIso.op e)
+      (SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.OppositeInternalHom.oppositeInternalHomIso X Y).hom)
+
+lemma sameVertexIso_conjugate_heq {Z : SSet.{u}} {a b a' b' : Z _⦋0⦌}
+    (e : VertexIso a b) (ha : a = a') (hb : b = b') :
+    HEq ((eqToIso (congrArg HomotopyCategory.mk ha)).symm ≪≫ e ≪≫
+        eqToIso (congrArg HomotopyCategory.mk hb)) e
+
+lemma sameFunctorIso_op_conjugate {X Y : SSet.{u}} [Quasicategory Y] {f g : X ⟶ Y}
+    (e : FunctorIso f g) :
+    e.op = (eqToIso (congrArg HomotopyCategory.mk
+      (SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.oppositeInternalHomIso_vertex f))).symm ≪≫
+      VertexIso.map (VertexIso.op e)
+        (SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.OppositeInternalHom.oppositeInternalHomIso X Y).hom ≪≫
+      eqToIso (congrArg HomotopyCategory.mk
+        (SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.oppositeInternalHomIso_vertex g))
+
+lemma sameFunctorIso_op_inv {X Y : SSet.{u}} [Quasicategory Y] {f g : X ⟶ Y}
+    (e : FunctorIso f g) :
+    e.op.inv = functorOppositeHomEquiv f g e.hom
+
+lemma sameFunctorIso_precomp_inv {A X Y : SSet.{u}} {f g : X ⟶ Y}
+    (e : FunctorIso f g) (p : A ⟶ X) :
+    (e.precomp p).inv = (SSet.mapHomotopyCategory ((pre p).app Y)).map e.inv
+
+lemma sameFunctorIso_op_precomp {A X Y : SSet.{u}} [Quasicategory Y]
+    {f g : X ⟶ Y} (e : FunctorIso f g) (p : A ⟶ X) :
+    HEq (e.precomp p).op (e.op.precomp (SSet.opFunctor.map p))
+```
+
+## 267. B4′ の191本までの確認と、同じnative augmentationのroofへの制限（2026-11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 24（うち追加 12）。
+
+### 267.1 B4′
+
+採取とプレビューは 191／197。完了分の review は空、プレビューと元ソースのバイト列の差分は0。最後の s05（6本）を同じ一枚の整理券で継続中。実処理の上限280秒、--class impl --wait 3600を維持している。main はまだ取り込んでいない。統合直前の merge-tree も再確認した（main 58d6a0de9）。予覧で欠ける自レーン176本は全て以前の revert edf81f92e の削除であり、二つの修正済みLeanのmodify/delete、一覧JSON、報告の競合も前回と同じ。main の報告への独立した追記は0。B3′の新配置の変更を保持し、この自レーンの検証済みソースを落とさずに統合する。
+
+### 267.2 元のnative側の全同型を同じroofへ合わせる法則
+
+一時ファイル isw2-nerveleftop.lean と isw2-roofopaugmentation.lean を lake env lean で検査した。最終ログ nerveleftop と roofopaugmentation2 はともに exit 0。後者は検査用に既存の定義・以前の検証済み補題を結合した 821 行で、新しいnative側の部分は 118 行。これは本体の対象ビルドや監査の代用ではない。原環境のLeanソースには変更を入れておらず、本体へ分けた後に対象ビルドと小監査を行う。
+
+元のfiberの反変入力を、同じ leftOp パラメータと既存の nerve 反転で表し、元の strictBETotJointSourceAugmentationDomainIso の全値を保持して制限した。§266の反転・前合成の法則と§264の全augmentationの制限則をつなぎ、同じ全 FunctorIso の fiber 制限が、同じroofのaugmentationIsoを反転して同じ入力へ引き戻したものに HEq で一致するところまで確認した。任意に別の同型を選んだり、点ごとの同値で代用していない。
+
+以下は既存構成の反転・制限・端点輸送の法則と証明の分割であり、一覧の新しい数学には数えない。R03h の最終の interval 族の等式、元のnative fiber射自身の弱同値性、R03d は未完である。
+
+```lean
+lemma sameNerveLeftOp_input {C D : Type u} [SmallCategory C] [SmallCategory D]
+    (F : C ⥤ Dᵒᵖ) :
+    nerveMap F ≫ (nerveOppositeIso (C := D)).inv =
+      (nerveMap (opOp C) ≫ (nerveOppositeIso (C := Cᵒᵖ)).inv) ≫
+        SSet.opFunctor.map (nerveMap F.leftOp)
+
+lemma sameFunctorIso_precomp_of_heq {K X Y : SSet.{u}} {f g f' g' : X ⟶ Y}
+    (e : FunctorIso f g) (e' : FunctorIso f' g') (hf : f = f') (hg : g = g')
+    (he : HEq e e') (p : K ⟶ X) : HEq (e.precomp p) (e'.precomp p)
+
+lemma sameFunctorIso_op_of_heq {X Y : SSet.{u}} [Quasicategory Y]
+    {f g f' g' : X ⟶ Y} (e : FunctorIso f g) (e' : FunctorIso f' g')
+    (hf : f = f') (hg : g = g') (he : HEq e e') : HEq e.op e'.op
+
+theorem strictBETotJointSourceAugmentationInput_fiber
+    (P : strictBETotJointHomIndex A) :
+    nerveMap (simplicialElementsFiberFunctor (strictBETotJointSourceCoefficients A) P) ≫
+      strictBETotJointSourceAugmentationInput A =
+    (nerveMap (opOp ((simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P)) ≫
+      (nerveOppositeIso (C := ((simplicialElementsCatDiagram
+        (strictBETotJointSourceCoefficients A)).obj P)ᵒᵖ)).inv) ≫
+      SSet.opFunctor.map (nerveMap (strictBETotJointRoofParameterIndex A P))
+
+theorem strictBETotJointSourceAugmentationDomainIso_value :
+    HEq (strictBETotJointSourceAugmentationDomainIso A)
+      ((strictBETotJointSourceFrameAugmentationIso A).op.precomp
+        (strictBETotJointSourceAugmentationInput A))
+
+theorem strictBETotJointSourceAugmentationDomainIso_fiber_value
+    (P : strictBETotJointHomIndex A) :
+    HEq ((strictBETotJointSourceAugmentationDomainIso A).precomp
+      (nerveMap (simplicialElementsFiberFunctor (strictBETotJointSourceCoefficients A) P)))
+      ((strictBETotJointSourceFrameAugmentationIso A).op.precomp
+        (nerveMap (simplicialElementsFiberFunctor (strictBETotJointSourceCoefficients A) P) ≫
+          strictBETotJointSourceAugmentationInput A))
+
+theorem strictBETotJointSourceAugmentationDomainIso_fiber_parameter
+    (P : strictBETotJointHomIndex A) :
+    HEq ((strictBETotJointSourceAugmentationDomainIso A).precomp
+      (nerveMap (simplicialElementsFiberFunctor (strictBETotJointSourceCoefficients A) P)))
+      (((strictBETotJointSourceFrameAugmentationIso A).precomp
+        (nerveMap (strictBETotJointRoofParameterIndex A P))).op.precomp
+          (nerveMap (opOp ((simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P)) ≫
+            (nerveOppositeIso (C := ((simplicialElementsCatDiagram
+              (strictBETotJointSourceCoefficients A)).obj P)ᵒᵖ)).inv))
+
+theorem strictBETotJointSourceAugmentationDomainIso_roof_restriction
+    (P : strictBETotJointHomIndex A) :
+    HEq ((strictBETotJointSourceAugmentationDomainIso A).precomp
+      (nerveMap (simplicialElementsFiberFunctor (strictBETotJointSourceCoefficients A) P)))
+      ((FrameHom.NerveColumn.augmentationIso (strictBETotModelSource A)
+        (strictBETotJointSourceRoofFrameDiagram A P)
+        (strictBETotJointSourceRoofFullAugmentation A P)
+        (strictBETotJointSourceRoofFullAugmentation_inverted A P)).op.precomp
+          (nerveMap (opOp ((simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P)) ≫
+            (nerveOppositeIso (C := ((simplicialElementsCatDiagram
+              (strictBETotJointSourceCoefficients A)).obj P)ᵒᵖ)).inv))
+```
+
+## 268. B4′ 完了：B3′ の追従と重複修正後の統合検証（2026-11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 24（うち追加 12）。
+
+### 268.1 原環境の採取・プレビュー
+
+基準391b2a0d2より後の自レーンの追加・変更Lean（draftsを除く）197本を、main取り込み前にcompilerで採取した。Leanの元ソースを固定し、各組のcollectは --class impl --wait 3600、実処理は280秒以内、一枚の整理券で順に実行した。元の検証済みコードのHEADは670ef9d75、最終プレビューのHEADは4723dc1ad（この間は報告だけの変更）。採取済みJSONのsourceと実ソースのバイト列を全件照合した。
+
+最後に197本の索引をまとめ、同じ原環境のソースからmainの bulk-b3prime/B4/rewrite.py と namespace-rewrite-map.json・所有元表を使って preview-all を作り直した。結果は保留0、追加import0、書換え0ファイル・0行。openの個別解消を要する保留も0。古い索引で取り込み後のソースを再採取・再書換えする操作は行っていない。証跡は /private/tmp/isw2-b4prime-20261115/ の before-all、preview-all、preview-all-summary.json。
+
+### 268.2 main の統合
+
+main 58d6a0de9 を自レーンへ統合した。統合コミットは **81683a2ab**。以前の57705f223の取り込みを戻したrevert edf81f92eにより、通常のmerge予覧では自レーンの検証済み176本が削除されるため、削除の由来を全件照合して元の検証済みソースを保持した。二つの修正済みLean（StrictDiagramTotUniversalProbePointComparison、TensorConeUnitPoint）のmodify/delete、一覧JSON、報告の計4競合も解消した。main側の報告・一覧への独立した追記は0と確認した。
+
+最終プレビューと統合後の自レーン197本は全件バイト一致。B3′の配置の変更はmainから入り、自レーンの書換えは0ファイル・0行である。登録候補は既存の **formalization-plans/stage-ii/is-w2-be-20261114-modules.json（196本）** を使用する。
+
+### 268.3 対象ビルド・小監査・重複照合
+
+共有鍵を --class impl --wait 3600 で一回取り、gtimeout 1700秒の中で200モジュールの対象ビルドと小監査を実行した。200本は自レーン196本に、FrameConeClasses・NormalizedMooreReverseEvaluation・NormalizedMooreReverseExtendZero・NormalizedMooreReverseZeroの既存4本を加えたもの。対象モジュールの一覧は一時ディレクトリの postmerge-targets.json。
+
+- 対象ビルド：成功（依存を含む12,346 jobs）。rootのビルドではない。
+- 小監査：/private/tmp/AuditISW2BKCells325.lean、200モジュール・**1,418宣言、propext・Classical.choice・Quot.soundのみ**。sorryAx・追加公理なし。
+- TensorConeUnitPoint・NormalizedMooreReverseZeroは宣言数0。tensorFrameHomIso_pointの定義元はFrameConeClasses、normalizedMooreReverse_zero_inclusionの定義元はNormalizedMooreReverseEvaluationと実環境で確認した。既存の定理を使う修正e0c5190ecを含む状態で成功している。
+- 宣言名の照合：自レーンのmanifest群等から562ファイル・1778個の名前を取り、mainのEInfinity/3745ファイル・13373個の名前と照合。異なるファイル間の同名宣言は0、自レーン内部も0。これは名前付きのソース宣言の照合で、上の実環境での監査と分けて記録する。
+- 自レーン対象のgit diff --check：通過。
+
+ビルドと監査のログは /private/tmp/isw2-b4prime-20261115/build327.log、統合の検収記録は merge-result.json、重複照合は /private/tmp/isw2-b4prime-20261115/declaration-collision-scan.json。
+
+### 268.4 /goal の続き
+
+B4′は完了。R03hの単位・反転・全augmentation制限の個別検査済みの法則を本体の新規ファイルへ分けて検証し、同じnative fiber射と元のroofの全interval族の照合を続ける。R03dの全関手同型と元の固定始域の同型との照合、3b-4aの残りは未完。点ごとの同値で置き換えず、外枠22,000行と型つき一覧の規則を維持する。
+
+## 269. 同じroof・native augmentationの照合則の本体化と、同じ全変換の射（2026-11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 24（うち追加 12）。
+
+### 269.1 検収
+
+§263〜267の個別検査済みの法則を本体の新規15モジュールへ分けた。元の同じroofのラベル・全augmentation・標的置換単位を保持したまま、元の全関手同型のfiber制限まで照合する。既存のMapHomotopyCategoryComp・FunctorIsoWhiskerCancellation・FunctorIsoVertexEvaluation等はimportして使い、再定義していない。公開importの不足と名前空間のopenを補い、最終の鍵付き対象ビルド330で確認した。
+
+さらに、既存の全straightening関手で同じ底上の射を写す共通1本と、その値を元のraw/native Homの両変数の全変換にするBE1本を追加した。これはR03dの同じ射の定義の部分であり、元の実射を別の射へ置き換えていない。mの弱同値性を仮定していない。元の単位を保つ延長を後で適用し、可逆性と固定始域の元の指定同型との一致を証明する必要が残る。
+
+コードのコミット：**e879e4d7f**。新規17本（共通6・BE11）、**1,345行・90宣言**。既存のLeanの変更は0。登録候補JSONは is-w2-be-20261114-modules.json の **213本**に更新した。入口と公式監査への登録は調整役の取り込み時の対象。
+
+- 鍵：--class impl --wait 3600、一枚の整理券、実処理gtimeout 1700秒。
+- 対象ビルド：新規17本、成功（依存を含む12,266 jobs）。
+- 小監査：AuditISW2BKCells330.lean、**217モジュール・1,508宣言、propext・Classical.choice・Quot.soundのみ**。sorryAx・追加公理なし。二つの互換モジュールの宣言数0と既存定理の定義元の検査も継続して成功。
+- 宣言名の照合：main d2354cf40に固定し、自レーン579ファイル・1,829個の名前と、mainのEInfinity/3,745ファイル・13,373個の名前を照合。異なるファイル間の重複0、自レーン内部も0。
+- git diff --check：通過。
+
+証跡：/private/tmp/isw2-build330.log、isw2-validation330.json、isw2-declaration-collision-scan330.json。§268の重複照合の証跡はB4′ディレクトリに固定したコピーへリンクを揃えた。
+
+### 269.2 規模と残り
+
+3b-4の実測は **213モジュール・14,160行・1,501宣言**（小監査の既存確認対象4本はこの実測に含めない）。外枠22,000行まで7,840行。既存構成の単位・反転・制限の法則と証明の分割なので、今回の追加を一覧の新しい数学のIDとしては数えない。
+
+§260のR03hの850〜1,400行という見込みは、前提の法則・照合データだけで15本・1,262行になったため、完成までの総増分の見込みとしては低かった。残る主等式の証明は、同じcorrected pairingの全族を同じroofの全族へ合わせる部分で、見込み450〜850行。前提の実測とこの主等式を合わせるとR03hの一群は1,712〜2,112行程度になる。新しい数学の中間の主張自体が1,500行を超える見込みや、別のまとまりが必要になった場合は§19の条件で報告する。
+
+R03hの最終interval族の等式、同じnative fiber射自身の弱同値性、R03dの全関手同型と元の固定始域の指定同型との一致は未完である。R02・R03・R04・R05、R11・R12のTotの分も引き続き残る。今回の全変換の射を可逆とみなしたり、対象ごとの同値で置き換えたりはしていない。
+
+### 269.3 今回の新しい射の定義の型
+
+以下はR03dの射の定義の分割。§263〜267に記録した法則の型は同じで、今回本体の名前空間へ配置した。privateな端点輸送の補題の型も§263・§266に記録済み。
+
+#### LeftStraighteningDiagramHom
+
+```lean
+def leftStraighteningInfinityDiagramHom {E F B : SSet.{u}}
+    (p : E ⟶ B) (q : F ⟶ B) [LeftFibration p] [LeftFibration q]
+    (f : E ⟶ F) (hf : f ≫ q = p) :
+    FunctorHom (leftStraighteningInfinityDiagram p) (leftStraighteningInfinityDiagram q)
+```
+
+#### StrictDiagramTotJointNativeTransformation
+
+```lean
+def strictBETotJointSourceNativeTransformation
+    (m : (simplicialElementsReplacement (strictBETotJointSourceCoefficients A)).left ⟶
+      strictBETotJointNativeHomTotalSpace A)
+    (hm : m ≫ strictBETotJointNativeHomProjection A =
+      (simplicialElementsReplacement (strictBETotJointSourceCoefficients A)).hom) :
+    FunctorHom (strictBETotJointRawHomCoherent A) (strictBETotJointNativeHomCoherent A)
+```
+
+### 269.4 新規の登録候補
+
+- `SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.OppositeFunctorIsoWhisker`（120行）
+- `SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.NerveLeftOpInput`（31行）
+- `SerrePositivity.EInfinity.FrameHom.NerveColumnWhiskering`（102行）
+- `SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRoofFrame`（108行）
+- `SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRoofGraph`（76行）
+- `SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRoofPrefix`（75行）
+- `SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRoofColumn`（66行）
+- `SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRoofAugmentation`（75行）
+- `SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.SimplicialElementsFiberFunctorLaws`（41行）
+- `SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRoofParameter`（136行）
+- `SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRoofNativeAugmentation`（75行）
+- `SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceTargetFiber`（91行）
+- `SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceOppositeAugmentation`（157行）
+- `SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.FunctorIsoConstantFamily`（46行）
+- `SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceTargetUnit`（64行）
+- `SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftStraighteningDiagramHom`（38行）
+- `SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointNativeTransformation`（44行）
+
+## 270. 元の twisted-arrow の三単体の四辺の座標（2026-11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 24（うち追加 12）。
+
+### 270.1 既存構成の法則の分割
+
+B4′は§268で完了し、§269の検証済み17本も枝に保存済み。/goalの続きとして、元のcorrected pairingの単位を調べるための座標計算を新規1本に分けた。標準三単体の二つの三角形の合成則、既存の同じedgewiseWeightIsoと左右包含・面の式を使う。新しい数学のIDの追加ではなく、既存構成の合成・射影の前提計算である。
+
+同じtwisted-arrowの辺の始点は三単体の内側の辺（1,2）、終点は外側の辺（0,3）。左射影を反転表示から戻すと（0,1）、右射影は（2,3）になる。したがって同じ三単体の合成則を、元のcorrected pairingの代表辺へ適用できる。任意の単体集合についての法則で、[ModelCategory SSet]・Kan性・計算上限の変更はない。
+
+これは元の単位の評価を調べる前提の計算である。R03hの全interval族の等式やR03dの全関手同型はまだ証明していない。個々の頂点での射の等式だけから全変換の一致を結論しない。今後は元の全straightening変換と元の固定始域の同型を、同じ局所化・Yonedaの単位で照合する必要がある。
+
+### 270.2 型
+
+以下は新規ファイルの全13宣言の型。既存の辺・三角形を端点つきで読むdefも含めて記録する。
+
+#### TwistedArrowThreeSimplexCoordinates（183行）
+
+```lean
+def twistedSquareStdEdge (n : ℕ) (i j : Fin (n + 1)) (h : i ≤ j) :
+    SSet.Edge (X := (Δ[n] : SSet.{u}))
+      (stdSimplex.obj₀Equiv.symm i) (stdSimplex.obj₀Equiv.symm j)
+
+def twistedSquareStdTriangle (n : ℕ) (i j k : Fin (n + 1)) (hij : i ≤ j) (hjk : j ≤ k) :
+    SSet.Edge.CompStruct (twistedSquareStdEdge n i j hij)
+      (twistedSquareStdEdge n j k hjk) (twistedSquareStdEdge n i k (hij.trans hjk))
+
+lemma twistedSquareStd_three_composite :
+    HomotopyCategory.homMk (twistedSquareStdEdge.{u} 3 0 1 (by decide)) ≫
+      HomotopyCategory.homMk (twistedSquareStdEdge 3 1 2 (by decide)) ≫
+        HomotopyCategory.homMk (twistedSquareStdEdge 3 2 3 (by decide)) =
+      HomotopyCategory.homMk (twistedSquareStdEdge 3 0 3 (by decide))
+
+lemma twistedSquare_three_composite {C : SSet.{u}} (σ : (Δ[3] : SSet.{u}) ⟶ C) :
+    HomotopyCategory.homMk ((twistedSquareStdEdge 3 0 1 (by decide)).map σ) ≫
+      HomotopyCategory.homMk ((twistedSquareStdEdge 3 1 2 (by decide)).map σ) ≫
+        HomotopyCategory.homMk ((twistedSquareStdEdge 3 2 3 (by decide)).map σ) =
+      HomotopyCategory.homMk ((twistedSquareStdEdge 3 0 3 (by decide)).map σ)
+
+lemma twistedSquare_source_order :
+    edgewiseWeightReindexOrderHom.{u} (SimplexCategory.δ (n := 0) (1 : Fin 2)) =
+      (stdSimplex.edge 3 1 2 (by decide)).down.toOrderHom
+
+lemma twistedSquare_target_order :
+    edgewiseWeightReindexOrderHom.{u} (SimplexCategory.δ (n := 0) (0 : Fin 2)) =
+      (stdSimplex.edge 3 0 3 (by decide)).down.toOrderHom
+
+def twistedSquareThreeSimplex {C : SSet.{u}} (s : (TwistedArrow C) _⦋1⦌) :
+    (Δ[3] : SSet.{u}) ⟶ C
+
+lemma twistedSquare_source_simplex {C : SSet.{u}} (s : (TwistedArrow C) _⦋1⦌) :
+    (edgewiseWeightIso 0).inv ≫ (TwistedArrow C).δ 1 s =
+      stdSimplex.map (stdSimplex.edge 3 1 2 (by decide)).down ≫ twistedSquareThreeSimplex s
+
+lemma twistedSquare_target_simplex {C : SSet.{u}} (s : (TwistedArrow C) _⦋1⦌) :
+    (edgewiseWeightIso 0).inv ≫ (TwistedArrow C).δ 0 s =
+      stdSimplex.map (stdSimplex.edge 3 0 3 (by decide)).down ≫ twistedSquareThreeSimplex s
+
+lemma twistedSquare_left_inclusion :
+    (stdSimplex.opIso ⦋1⦌).inv ≫ joinInl (Δ[1] : SSet.{u}).op Δ[1] =
+      stdSimplex.map (stdSimplex.edge 3 0 1 (by decide)).down ≫ (edgewiseWeightIso 1).inv
+
+lemma twistedSquare_right_inclusion :
+    joinInr (Δ[1] : SSet.{u}).op Δ[1] =
+      stdSimplex.map (stdSimplex.edge 3 2 3 (by decide)).down ≫ (edgewiseWeightIso 1).inv
+
+lemma twistedSquare_left_simplex {C : SSet.{u}} (s : (TwistedArrow C) _⦋1⦌) :
+    SSet.yonedaEquiv.symm (SSet.opObjEquiv ((edgewiseLeft C).app _ s)) =
+      stdSimplex.map (stdSimplex.edge 3 0 1 (by decide)).down ≫ twistedSquareThreeSimplex s
+
+lemma twistedSquare_right_simplex {C : SSet.{u}} (s : (TwistedArrow C) _⦋1⦌) :
+    SSet.yonedaEquiv.symm ((edgewiseRight C).app _ s) =
+      stdSimplex.map (stdSimplex.edge 3 2 3 (by decide)).down ≫ twistedSquareThreeSimplex s
+```
+
+### 270.3 検証
+
+コードのコミット：**b528ea6a1**。新規1本・183行、型を上に記録した名前付き13宣言（生成された定数を含む実環境26宣言）。既存のLeanの変更は0。
+
+- 鍵：--class impl --wait 3600、一枚の整理券、取得後の処理はgtimeout 1700秒。処理終了とともに返却済み。
+- 対象ビルド331：新規1本、成功（依存を含む1,555 jobs）。longLineのスタイル警告のみ。計算上限・linterの設定を上げたり無効にしたりしていない。
+- 小監査：AuditISW2BKCells331.lean、218モジュール・**1,534宣言、propext・Classical.choice・Quot.soundのみ**。sorryAx・追加公理なし。二つの互換モジュールの宣言数0と既存の定理の定義元の検査も成功。
+- 宣言名：main d2354cf40に固定し、自レーン580ファイル・1,842個の名前と、mainのEInfinity/3,745ファイル・13,373個の名前を照合。異なるファイル間の重複0、自レーン内部も0。
+- git diff --check：通過。
+
+証跡：/private/tmp/isw2-build331.log、isw2-validation331.json、isw2-declaration-collision-scan331.json。
+
+3b-4の実測は**214モジュール・14,343行・1,527宣言**。外枠22,000行まで7,657行。今回は既存の合成則の分割で、一覧のIDの完了数と追加数は変わらない。登録候補は自レーンのJSONだけに追記し、共通の入口と公式監査は変更していない。
+
+登録候補：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.TwistedArrowThreeSimplexCoordinates`。R03h・R03dの未完の範囲は270.1のとおりで、/goalは継続。
+
+## 271. 元の射影の合成則と、元の単位ラベルの pairing の像（2026-11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 24（うち追加 12）。
+
+### 271.1 既存の構成の法則の分割
+
+§270の座標計算を、実際の左右射影の辺に接続した。twisted-arrowの頂点を同じ重みの逆で元の辺へ戻し、同じ辺の左射影（反転を戻したもの）、始点の辺、右射影の合成は終点の辺になることを証明する。これは任意の単体集合についての既存の合成則で、Kan性や[ModelCategory SSet]を仮定しない。両端の辺の類が可逆で、外側の辺が元の単位の合成なら、内側の辺の類は恒等射になるという相殺則も分けた。
+
+さらに元の全twisted pairingの零単体は元のラベルの実射そのものであることを計算した。その同じ全pairingを元のモデル源へ後合成する値も保持する。BEの元の単位ラベルを全要素圏の同じ次数0の要素として読み、そのnative pairingの像が、元のsource-frame増大写像・probe比較・標的置換単位の同じ合成になることを照合した。新しい単位や逆は選んでいない。
+
+これはR03d/R03hの証明の前提の合成・単位・射影の法則であり、一覧の新しい数学のIDは追加しない。新規3本（共通2・BE1）、312行。各ファイルは200行以下。既存のLeanの変更は0。
+
+### 271.2 型
+
+全17個の名前付きdef/lemmaの型を記録する。BEのlocal instanceは同じmodelCategory AとmappingCofibrantFactorization Aを使う従来の二つ（代数のModelCategoryと、cofibrations/trivialFibrationsの関手的因子分解）で、SSetの模型構造は足さない。
+
+#### TwistedArrowEdgeComposition（170行）
+
+```lean
+lemma twistedSquare_composite_of_edge_coordinates {C : SSet.{u}}
+    (σ : (Δ[3] : SSet.{u}) ⟶ C)
+    {q x y z : C _⦋0⦌} (p : SSet.Edge q x) (a : SSet.Edge x y)
+    (r : SSet.Edge y z) (b : SSet.Edge q z)
+    (hp : ((twistedSquareStdEdge 3 0 1 (by decide)).map σ).edge = p.edge)
+    (ha : ((twistedSquareStdEdge 3 1 2 (by decide)).map σ).edge = a.edge)
+    (hr : ((twistedSquareStdEdge 3 2 3 (by decide)).map σ).edge = r.edge)
+    (hb : ((twistedSquareStdEdge 3 0 3 (by decide)).map σ).edge = b.edge) :
+    HomotopyCategory.homMk p ≫ HomotopyCategory.homMk a ≫
+      HomotopyCategory.homMk r = HomotopyCategory.homMk b
+
+lemma twistedSquare_mapped_edge_yoneda {C : SSet.{u}} (σ : (Δ[3] : SSet.{u}) ⟶ C)
+    (i j : Fin 4) (h : i ≤ j) :
+    SSet.yonedaEquiv.symm (((twistedSquareStdEdge 3 i j h).map σ).edge) =
+      stdSimplex.map (stdSimplex.edge.{u} 3 i j h).down ≫ σ
+
+lemma twistedSquare_composite_of_projections {C : SSet.{u}}
+    (s : (TwistedArrow C) _⦋1⦌)
+    {q x y z : C _⦋0⦌} (p : SSet.Edge q x) (a : SSet.Edge x y)
+    (r : SSet.Edge y z) (b : SSet.Edge q z)
+    (hp : SSet.opObjEquiv ((edgewiseLeft C).app _ s) = p.edge)
+    (ha : (TwistedArrow C).δ 1 s = (edgewiseWeightIso 0).hom ≫ SSet.yonedaEquiv.symm a.edge)
+    (hr : (edgewiseRight C).app _ s = r.edge)
+    (hb : (TwistedArrow C).δ 0 s = (edgewiseWeightIso 0).hom ≫ SSet.yonedaEquiv.symm b.edge) :
+    HomotopyCategory.homMk p ≫ HomotopyCategory.homMk a ≫
+      HomotopyCategory.homMk r = HomotopyCategory.homMk b
+
+lemma twistedSquare_unit_of_projections {C : SSet.{u}}
+    (s : (TwistedArrow C) _⦋1⦌)
+    {q x z : C _⦋0⦌} (p : SSet.Edge q x) (a : SSet.Edge x x)
+    (r : SSet.Edge x z) (b : SSet.Edge q z)
+    [IsIso (HomotopyCategory.homMk p)] [IsIso (HomotopyCategory.homMk r)]
+    (hp : SSet.opObjEquiv ((edgewiseLeft C).app _ s) = p.edge)
+    (ha : (TwistedArrow C).δ 1 s = (edgewiseWeightIso 0).hom ≫ SSet.yonedaEquiv.symm a.edge)
+    (hr : (edgewiseRight C).app _ s = r.edge)
+    (hb : (TwistedArrow C).δ 0 s = (edgewiseWeightIso 0).hom ≫ SSet.yonedaEquiv.symm b.edge)
+    (hu : HomotopyCategory.homMk b = HomotopyCategory.homMk p ≫ HomotopyCategory.homMk r) :
+    HomotopyCategory.homMk a = 𝟙 (HomotopyCategory.mk x)
+
+lemma twistedSquare_zero_left_inclusion :
+    (stdSimplex.opIso ⦋0⦌).inv ≫ joinInl (Δ[0] : SSet.{u}).op Δ[0] =
+      stdSimplex.δ 1 ≫ (edgewiseWeightIso 0).inv
+
+lemma twistedSquare_zero_right_inclusion :
+    joinInr (Δ[0] : SSet.{u}).op Δ[0] =
+      stdSimplex.δ 0 ≫ (edgewiseWeightIso 0).inv
+
+def twistedArrowVertexEdge {C : SSet.{u}} (a : (TwistedArrow C) _⦋0⦌) :
+    SSet.Edge (SSet.opObjEquiv ((edgewiseLeft C).app _ a)) ((edgewiseRight C).app _ a)
+
+lemma twistedArrowVertexEdge_inverse {C : SSet.{u}} (a : (TwistedArrow C) _⦋0⦌) :
+    (edgewiseWeightIso 0).hom ≫ SSet.yonedaEquiv.symm (twistedArrowVertexEdge a).edge = a
+
+lemma twistedArrowEdge_composition {C : SSet.{u}} {a b : (TwistedArrow C) _⦋0⦌}
+    (s : SSet.Edge a b) :
+    HomotopyCategory.homMk (SSet.Edge.ofTruncated (edgeUnop (s.map (edgewiseLeft C)).toTruncated)) ≫
+      HomotopyCategory.homMk (twistedArrowVertexEdge a) ≫
+        HomotopyCategory.homMk (s.map (edgewiseRight C)) =
+      HomotopyCategory.homMk (twistedArrowVertexEdge b)
+```
+
+#### TwistedPairingZero（60行）
+
+```lean
+lemma twistedPairingSimplex_zero (i : I) :
+    twistedPairingSimplex A B h (nerveVertex i) = ComposableArrows.mk₁ (h i)
+
+lemma twistedPairingNerveMap_zero
+    (hh : ∀ {i j} (f : i ⟶ j), (A.map f).unop ≫ h i ≫ B.map f = h j) (i : I) :
+    (twistedPairingNerveMap A B h hh).app (Opposite.op ⦋0⦌) (nerveVertex i) =
+      (edgewiseWeightIso 0).hom ≫ (SSet.yonedaEquiv (X := nerve C)).symm (ComposableArrows.mk₁ (h i))
+
+lemma twistedPairingNerveMap_zero_postcomp {D : SSet.{u}} (G : nerve C ⟶ D)
+    (hh : ∀ {i j} (f : i ⟶ j), (A.map f).unop ≫ h i ≫ B.map f = h j) (i : I) :
+    (twistedPairingNerveMap A B h hh ≫ edgewiseSubdivisionMap G).app
+      (Opposite.op ⦋0⦌) (nerveVertex i) =
+      (edgewiseWeightIso 0).hom ≫ (SSet.yonedaEquiv (X := nerve C)).symm (ComposableArrows.mk₁ (h i)) ≫ G
+```
+
+#### StrictDiagramTotJointSourceUnitLabel（82行）
+
+```lean
+def strictBETotJointUnitIndex (X : (operad A).Algebra) : strictBETotJointHomIndex A
+
+def strictBETotJointSourceUnitLabel (X : (operad A).Algebra) : StrictBETotJointSourceElements A
+
+lemma strictBETotJointSourceNativePairing_vertex (t : StrictBETotJointSourceElements A) :
+    (strictBETotJointSourceNativePairing A).app (Opposite.op ⦋0⦌)
+      (SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex t) =
+      (edgewiseWeightIso 0).hom ≫ SSet.yonedaEquiv.symm
+        (ComposableArrows.mk₁ (SerrePositivity.EInfinity.FrameHom.liftedSourceFrameArrowValue
+          (strictBETotJointSourceFrame A) (rightFrameReplacement (rightFrameFamily A)) t)) ≫
+            strictBETotModelSource A
+
+lemma strictBETotJointSourceUnitLabel_value (X : (operad A).Algebra) :
+    SerrePositivity.EInfinity.FrameHom.liftedSourceFrameArrowValue
+      (strictBETotJointSourceFrame A) (rightFrameReplacement (rightFrameFamily A))
+      (strictBETotJointSourceUnitLabel A X) =
+      (AsSmall.up : (operad A).Algebra ⥤ AsSmall.{u+1} (operad A).Algebra).map
+        (((strictBETotJointRoofResolution A (strictBETotJointUnitIndex A X)).augmentation.app ⦋0⦌ ≫
+          framedLimitProbeComparison A X) ≫
+          ((rightFrameUnit (rightFrameFamily A)).app X).app (Opposite.op ⦋0⦌))
+
+lemma strictBETotJointSourceUnitLabel_native_pairing (X : (operad A).Algebra) :
+    (strictBETotJointSourceNativePairing A).app (Opposite.op ⦋0⦌)
+      (SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex
+        (strictBETotJointSourceUnitLabel A X)) =
+      (edgewiseWeightIso 0).hom ≫ SSet.yonedaEquiv.symm
+        (ComposableArrows.mk₁ ((AsSmall.up : (operad A).Algebra ⥤ AsSmall.{u+1} (operad A).Algebra).map
+          (((strictBETotJointRoofResolution A (strictBETotJointUnitIndex A X)).augmentation.app ⦋0⦌ ≫
+            framedLimitProbeComparison A X) ≫
+            ((rightFrameUnit (rightFrameFamily A)).app X).app (Opposite.op ⦋0⦌)))) ≫
+              strictBETotModelSource A
+```
+
+### 271.3 残る照合と検証
+
+今回の相殺則の仮定を、元のcorrectedPairingIsoの成分の左右射影の式から回収する必要がある。今回のBEの単位ラベルの像は元のoriginal pairingについての式であり、corrected pairingの像が既に恒等射だとみなさない。その後に同じ全straightening変換の単位の像へ接続し、全Yoneda評価による全変換の照合が必要である。頂点ごとの等式を全族の等式として扱わない。
+
+R03hの全interval族の等式、元のnative fiber射自身の弱同値性、R03dの全関手同型と元の固定始域の同型との一致は引き続き未完。今回はこれらの完了を報告する段階ではない。§269の残り450〜850行の見込みには、今回の前提の分割312行も増えた。全族の照合の主証明の検証はまだなく、その見込みで完成を保証しない。外枠22,000行と§19の停止条件を維持する。
+
+コードのコミット：**c9dda3e9d**。新規3本・312行、名前付きdef/lemma17個。実環境の新規3本は15・6・9宣言（生成された定数とlocal instanceを含む）。既存のLeanの変更は0。
+
+- 鍵：--class impl --wait 3600、一枚の整理券、取得後gtimeout 1700秒。検査終了とともに返却済み。
+- 対象ビルド333：新規3本、成功（依存を含む12,249 jobs）。332では本体化の際の二つの有限の場合分けへのrflの適用が欠けていたため失敗し、元の個別検査済みの形へ戻して333で成功した。計算上限を変更していない。
+- 小監査：AuditISW2BKCells332.lean、**221モジュール・1,563宣言、propext・Classical.choice・Quot.soundのみ**。sorryAx・追加公理なし。互換二モジュールの宣言数0と、既存の定理の定義元の検査も成功。
+- 宣言名の照合：main a4388efc9に固定し、自レーン583ファイル・1,859個の名前と、mainのEInfinity/3,745ファイル・13,373個の名前を照合。異なるファイル間の重複0、自レーン内部も0。
+- git diff --check：通過。
+
+証跡：/private/tmp/isw2-build333.log、isw2-validation333.json、isw2-declaration-collision-scan332.json。
+
+今回までの検証済みの実測は**217モジュール・14,655行・1,556宣言**。外枠22,000行まで7,345行。監査の生成定数を含む実環境の数は単純加算せず、今回のimport後の集計を用いた（既存OppositeFunctorIsoWhiskerは12→11、ソース変更0。公開宣言の追加・変更ではない）。登録候補JSONだけを更新し、共通の入口と公式監査は変更していない。
+
+登録候補は上記三本。今回の検証の後、同じ成分の合成則をホモトピー圏の元の射へ移す分割を続ける。R03h・R03dは未完で、一覧の完了数は増やしていない。
+
+## 272. 同じ corrected pairing の元の成分に対する合成則（2026-11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 24（うち追加 12）。
+
+### 272.1 同じ射への接続
+
+§271の左右射影の合成則を、twisted-arrowのホモトピー圏の任意の元の射について述べる形にした。元の射の代表辺を取って同じ三単体の計算を適用し、既存のhomotopyOppositeEquivalenceの同じ関手で反変の辺の類へ戻す。結論には選んだ代表辺を残さず、元の射そのものの左右射影と両端の元の辺だけを使う。既存の構成の合成則の証明の分割であり、一覧の新しい数学のIDは追加しない。
+
+BEでは、元のstrictBETotJointSourceCorrectedPairingIsoの同じ全関手同型の成分を代入した。これにより、同じcorrected pairingの頂点の元の辺に、元の成分の左射影と右射影を合成すると、同じoriginal pairingの頂点の元の辺になる。存在だけの成分へ置き換えていない。全要素の任意のtに対する成分の等式であり、tについての全関手の族の一致を証明したものではない。
+
+次に元の成分の二射影を、既存の全augmentation同型と標的の置換単位の同じ成分へ合わせる必要がある。元の単位ラベルのoriginal pairingの像は§271で検証したが、その像と今回の合成則だけで、まだcorrected pairingの単位の像の恒等性を完了したとしない。元の全straightening変換の単位の評価と、全Yoneda評価による全変換の一致も残る。R03hの全interval族の等式とR03dは引き続き未完。
+
+### 272.2 型
+
+新規2本（共通1・BE1）、96行。名前付きdef/lemmaは2個。BEのlocal instanceは元の代数のModelCategoryと関手的因子分解の同じ二つである。既存のLeanの変更は0。
+
+#### TwistedArrowHomComposition（52行）
+
+```lean
+lemma twistedArrowHom_composition {C : SSet.{u}} [Quasicategory C]
+    {a b : (TwistedArrow C) _⦋0⦌}
+    (f : HomotopyCategory.mk a ⟶ HomotopyCategory.mk b) :
+    ((homotopyOppositeEquivalence C).functor.map
+      ((SSet.mapHomotopyCategory (edgewiseLeft C)).map f)).unop ≫
+        HomotopyCategory.homMk (twistedArrowVertexEdge a) ≫
+          (SSet.mapHomotopyCategory (edgewiseRight C)).map f =
+            HomotopyCategory.homMk (twistedArrowVertexEdge b)
+```
+
+#### StrictDiagramTotJointCorrectionComponent（44行）
+
+```lean
+theorem strictBETotJointSourceCorrection_component_composition
+    (t : StrictBETotJointSourceElements A) :
+    let a := (strictBETotJointSourceCorrectedPairing A).app (Opposite.op ⦋0⦌) (nerveVertex t)
+    let b := (strictBETotJointSourceNativePairing A).app (Opposite.op ⦋0⦌) (nerveVertex t)
+    let f := ((strictBETotJointSourceCorrectedPairingIso A).app (nerveVertex t)).hom
+    ((homotopyOppositeEquivalence (CAlg_R A)).functor.map
+      ((SSet.mapHomotopyCategory (edgewiseLeft (CAlg_R A))).map f)).unop ≫
+        HomotopyCategory.homMk (twistedArrowVertexEdge a) ≫
+          (SSet.mapHomotopyCategory (edgewiseRight (CAlg_R A))).map f =
+            HomotopyCategory.homMk (twistedArrowVertexEdge b)
+```
+
+### 272.3 検証
+
+コードのコミット：**6d1362deb**。新規2本・96行、公開定理2個。実環境の新規二本は1・3宣言（BEのlocal instance二つを含む）。既存のLeanの変更は0。
+
+- 個別検査は両方とも成功。鍵付き対象ビルド334はBE側の単体表記のscopeが欠けていたため失敗した。open scoped Simplicialを補って個別検査を通し、335で対象ビルドと小監査を成功させた。計算上限の変更はない。
+- 鍵：--class impl --wait 3600、一枚の整理券、取得後gtimeout 1700秒。検査終了とともに返却済み。
+- 対象ビルド335：新規二本、成功（依存を含む12,226 jobs）。
+- 小監査：AuditISW2BKCells334Names.lean、**223モジュール・1,567宣言、propext・Classical.choice・Quot.soundのみ**。sorryAx・追加公理なし。互換二モジュールの宣言数0と既存定理の定義元の確認も成功。
+- §271の一件の数の差を調べるため、同じ鍵の中で元の218モジュールのimportの組も小監査で再検査した。**1,534宣言・標準三公理のみ**と元の数を再現した。OppositeFunctorIsoWhisker由来として列挙される12個と11個の名前の差は、`VertexIso.map.eq_1`という生成補題一件だけだった。手書きの公開宣言の名前の差は0。実測は今回の実環境の数を使う。
+- 宣言名の照合：main a4388efc9に固定し、自レーン585ファイル・1,861個の名前と、mainのEInfinity/3,745ファイル・13,373個の名前を照合。異なるファイル間の重複0、自レーン内部も0。
+- git diff --check：通過。
+
+証跡：/private/tmp/isw2-build335.log、isw2-validation335.json、isw2-opposite-name-difference335.json、isw2-declaration-collision-scan335.json。
+
+3b-4の検証済みの実測は**219モジュール・14,751行・1,560宣言**。外枠22,000行まで7,249行。登録候補は272.2の二本を自レーンのJSONへ追記した。共通の入口・公式監査は変更していない。
+
+元の成分の射影を同じ全augmentation・標的単位の成分へ合わせる所から続ける。全interval族の等式と全関手同型の照合はまだなく、R03h・R03dおよび3b-4aを完了とはしていない。
+
+## 273. 元の補正比較の二射影の全同型と、その同じ成分（2026-11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 24（うち追加 12）。
+
+### 273.1 全同型の指定値の回収
+
+元のfunctorIsoPairの二射影が、元の二つの全関手同型そのものを回収する法則を証明した。それをBEの元の端点比較へ適用し、端点の型の等式を外して同じ組の値へ照合した。元の補正比較の指定pathを射影すると元の全端点比較を回収する既存の厳密な等式を使い、次を全関手同型のHEqとして得た。
+
+- strictBETotJointSourceCorrectedPairingIsoの左射影は、元のstrictBETotJointSourceAugmentationDomainIsoの同じ逆。
+- 同じ補正比較の右射影は、元のstrictBETotJointSourceTargetReplacementIsoの同じ逆。
+
+HEqは端点の図式の表示の等式を扱うために使い、値を点ごとに新たに選んでいない。全パラメータの高次単体を持つ元の同型の値の照合である。さらに元の補正前後のpairingの射影の厳密な等式を四つに分け、それを成分評価に使って、元の同じ補正比較の成分を左右へ写した像も、元の全端点比較の逆の同じ成分にHEqで一致させた。
+
+これは既存の構成の合成・射影・端点輸送・成分評価の法則の分割であり、新しい数学の一覧IDは追加しない。新規4本（共通1・BE3）、347行。全ファイル200行以下。既存のLeanの変更は0。[ModelCategory SSet]や計算上限の変更はない。モデルのinstanceはBE代数の元のものだけを使う。
+
+### 273.2 型
+
+公開def/lemma14個の全型と、privateなEq.mpの輸送の法則を記録する。各BEファイルのlocal instanceは元のmodelCategory A、mappingCofibrantFactorization A、および底の(CAlg_R A).op ⊗ CAlg_R Aの既存のquasicategory_tensorの三つで、ファイルごとに異なる名前にしている。
+
+```lean
+private lemma jointPairingProjectionEqMpHeq {α β γ : Sort _} (h : α = β) (a : α) (b : γ) :
+    HEq (Eq.mp h a) b ↔ HEq a b
+```
+
+#### FunctorIsoPairingProjections（55行）
+
+```lean
+lemma functorIsoPair_postcomp_fst {T X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
+    {f g : T ⟶ X} {h k : T ⟶ Y} (e : FunctorIso f g) (d : FunctorIso h k) :
+    (functorIsoPair e d).postcomp (fst X Y) = e
+
+lemma functorIsoPair_postcomp_snd {T X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
+    {f g : T ⟶ X} {h k : T ⟶ Y} (e : FunctorIso f g) (d : FunctorIso h k) :
+    (functorIsoPair e d).postcomp (snd X Y) = d
+```
+
+#### StrictDiagramTotJointPairingProjectionValues（98行）
+
+```lean
+lemma strictBETotJointSourceNativePairingBaseIso_pair_value :
+    HEq (strictBETotJointSourceNativePairingBaseIso A)
+      (functorIsoPair (strictBETotJointSourceAugmentationDomainIso A)
+        (strictBETotJointSourceTargetReplacementIso A))
+
+lemma strictBETotJointSourceNativePairingBaseIso_symm_fst :
+    HEq (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.postcomp (strictBETotJointSourceNativePairingBaseIso A).symm
+      (fst (CAlg_R A).op (CAlg_R A)))
+      (strictBETotJointSourceAugmentationDomainIso A).symm
+
+lemma strictBETotJointSourceNativePairingBaseIso_symm_snd :
+    HEq (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.postcomp (strictBETotJointSourceNativePairingBaseIso A).symm
+      (snd (CAlg_R A).op (CAlg_R A)))
+      (strictBETotJointSourceTargetReplacementIso A).symm
+```
+
+#### StrictDiagramTotJointCorrectionProjectionValues（120行）
+
+```lean
+lemma strictBETotJointSourceCorrectionIso_projection_value {E : SSet.{u+1}}
+    (q : (CAlg_R A).op ⊗ CAlg_R A ⟶ E) :
+    HEq (((strictBETotJointSourceCorrectedPairingIso A).postcomp
+      (twistedArrowProjection (CAlg_R A))).postcomp q)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.postcomp (strictBETotJointSourceNativePairingBaseIso A).symm q)
+
+lemma strictBETotJointSourceCorrectionIso_left_value :
+    HEq ((strictBETotJointSourceCorrectedPairingIso A).postcomp (edgewiseLeft (CAlg_R A)))
+      (strictBETotJointSourceAugmentationDomainIso A).symm
+
+lemma strictBETotJointSourceCorrectionIso_right_value :
+    HEq ((strictBETotJointSourceCorrectedPairingIso A).postcomp (edgewiseRight (CAlg_R A)))
+      (strictBETotJointSourceTargetReplacementIso A).symm
+
+lemma strictBETotJointSourceCorrectedPairing_left :
+    strictBETotJointSourceCorrectedPairing A ≫ edgewiseLeft (CAlg_R A) =
+      strictBETotJointSourceOriginalNativeDomain A
+
+lemma strictBETotJointSourceNativePairing_left :
+    strictBETotJointSourceNativePairing A ≫ edgewiseLeft (CAlg_R A) =
+      strictBETotJointSourceNativeDomain A
+
+lemma strictBETotJointSourceCorrectedPairing_right :
+    strictBETotJointSourceCorrectedPairing A ≫ edgewiseRight (CAlg_R A) =
+      strictBETotJointSourceOriginalNativeCodomain A
+
+lemma strictBETotJointSourceNativePairing_right :
+    strictBETotJointSourceNativePairing A ≫ edgewiseRight (CAlg_R A) =
+      strictBETotJointSourceNativeCodomain A
+```
+
+#### StrictDiagramTotJointCorrectionProjectionComponents（74行）
+
+```lean
+lemma strictBETotJointSourceCorrectionIso_left_component (t : StrictBETotJointSourceElements A) :
+    HEq (VertexIso.map ((strictBETotJointSourceCorrectedPairingIso A).app (nerveVertex t))
+      (edgewiseLeft (CAlg_R A)))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.FunctorIso.app
+        (strictBETotJointSourceAugmentationDomainIso A).symm (nerveVertex t))
+
+lemma strictBETotJointSourceCorrectionIso_right_component (t : StrictBETotJointSourceElements A) :
+    HEq (VertexIso.map ((strictBETotJointSourceCorrectedPairingIso A).app (nerveVertex t))
+      (edgewiseRight (CAlg_R A)))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.FunctorIso.app
+        (strictBETotJointSourceTargetReplacementIso A).symm (nerveVertex t))
+```
+
+### 273.3 検収と残り
+
+コードのコミット：**37c38f755**。新規4本・347行。公開def/lemma14個、privateな輸送の法則1個、BEのlocal instance9個。実環境の新規四本は2・7・10・5宣言。既存のLeanの変更は0。
+
+個別検査では全型・証明が通った。既存の端点輸送と成分評価の九モジュールを再利用し、必要な依存の対象ビルド336（1,885 jobs）・337（3,392 jobs）を共有鍵で通した。本体化の338では、一時ファイルで共有していたopenの不足を検出し、新規三ファイルで名前空間を明示した。計算上限は変更していない。
+
+- 鍵：--class impl --wait 3600、一枚の整理券、取得後gtimeout 1700秒。検査終了とともに返却済み。
+- 対象ビルド339：新規四本、成功（依存を含む12,244 jobs）。
+- 小監査：AuditISW2BKCells338.lean、**227モジュール・1,591宣言、propext・Classical.choice・Quot.soundのみ**。sorryAx・追加公理なし。互換二モジュールの宣言数0と既存の定理の定義元の確認も成功。
+- 宣言名の照合：main a4388efc9に固定し、自レーン589ファイル・1,875個の名前と、mainのEInfinity/3,745ファイル・13,373個の名前を照合。異なるファイル間の重複0、自レーン内部も0。
+- git diff --check：通過。
+
+証跡：/private/tmp/isw2-build339.log、isw2-validation339.json、isw2-declaration-collision-scan339.json。
+
+3b-4の検証済みの実測は**223モジュール・15,098行・1,584宣言**。外枠22,000行まで6,902行。登録候補は273.2の四本を自レーンのJSONへ追記した。共通の入口と公式監査は変更していない。
+
+これで元のcorrected pairingの成分の左右射影が、元の全augmentationと標的単位の同じ成分であることまで接続できた。元の単位ラベルで、それらの成分の像を元の増大写像・probe比較・置換単位の実射の類へ計算する部分が残る。さらに、元の全straightening変換の単位の評価、全Yoneda評価による全変換の一致、R03hの全interval族の等式を閉じる必要がある。成分の一致だけを全族の等式とみなさない。R03h・R03d・3b-4aはまだ完了していない。
+
+## 274. 同じ全同型の反転した逆成分の評価（2026-11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 24（うち追加 12）。
+
+### 274.1 反転と同じ評価の両立
+
+元のホモトピーHの反転の頂点の辺を元の向きへ戻すと、同じHの元の頂点の辺になることを、恒等辺の反転の既存の式と区間の二頂点の計算で示した。これを元の二胞体の同じホモトピー代表へ適用し、functorOppositeHomEquivで反転してから頂点評価し、元のhomotopyOppositeEquivalenceで戻す作用は、元の頂点評価の反対射になるという等式を得た。始域は任意の単体集合で、標的だけをquasicategoryとする。
+
+さらに元の全関手同型eの反転e.opの逆成分を同じ点で評価し、反転ホモトピー圏から戻すと、元のeの同じ順成分の反対射になることを示した。成分と二胞体評価の橋は、既存のFunctorIso.app_eq_evaluateを直接使うprivateな二行の帰結である。元の同型、反転Hom対応、同じ成分の選択を保持している。新しい数学の一覧IDは追加しない。既存の係数移送・単位・成分評価の法則の分割である。
+
+新規1本・86行、公開lemma3個・private lemma1個。既存のLeanの変更は0。[ModelCategory SSet]・計算上限の変更はない。
+
+### 274.2 型
+
+privateな評価の帰結と、公開三補題の全型を記録する。
+
+```lean
+private lemma oppositeEvaluationAppHom {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
+    {f g : X ⟶ Y} (e : FunctorIso f g) (x : X _⦋0⦌) :
+    (e.app x).hom = functorHomEvaluate e.hom x
+```
+
+#### OppositeFunctorIsoEvaluation（86行）
+
+```lean
+lemma oppositeHomotopyVertexEdge_unop {A D : SSet.{u}} {F G : A ⟶ D}
+    (H : SSet.Homotopy F G) (x : A _⦋0⦌) :
+    edgeUnop (X := D) (simplicialHomotopyVertexEdge (homotopyOpposite H)
+      (SSet.opObjEquiv.symm x)).toTruncated =
+        (simplicialHomotopyVertexEdge H x).toTruncated
+
+lemma functorHomEvaluate_opposite {A D : SSet.{u}} [Quasicategory D]
+    {F G : A ⟶ D} (α : FunctorHom F G) (x : A _⦋0⦌) :
+    (homotopyOppositeEquivalence D).functor.map
+      (functorHomEvaluate (functorOppositeHomEquiv F G α) (SSet.opObjEquiv.symm x)) =
+        (functorHomEvaluate α x).op
+
+lemma functorIso_op_app_inv {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
+    {f g : X ⟶ Y} (e : FunctorIso f g) (x : X _⦋0⦌) :
+    (homotopyOppositeEquivalence Y).functor.map
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.FunctorIso.app
+        e.op (SSet.opObjEquiv.symm x)).inv) = (e.app x).hom.op
+```
+
+### 274.3 検証と次の照合
+
+コードのコミット：**166682a6b**。新規1本・86行、公開lemma3個・private lemma1個。既存のLeanの変更は0。
+
+- 全補題の個別検査は成功。成分と二胞体評価の橋は既存のFunctorIso.app_eq_evaluateの直接の二行の帰結へ短縮してから、本体の検査を行った。
+- 鍵：--class impl --wait 3600、一枚の整理券、取得後gtimeout 1700秒。検査終了とともに返却済み。
+- 対象ビルド340：新規1本、成功（依存を含む2,244 jobs）。
+- 小監査：AuditISW2BKCells340.lean、**228モジュール・1,595宣言、propext・Classical.choice・Quot.soundのみ**。sorryAx・追加公理なし。互換二モジュールの宣言数0と、既存の定理の定義元の確認も成功。
+- 新規ファイル由来として実環境で数えた定数は3個。既存OppositeFunctorIsoWhiskerの生成補題を含む数は11→12に戻ったため、今回も単純な加算ではなく現在のimport後の実環境で集計する（§272の同じimport構成による宣言名の照合を参照）。
+- 宣言名の照合：main a4388efc9に固定し、自レーン590ファイル・1,878個の名前と、mainのEInfinity/3,745ファイル・13,373個の名前を照合。異なるファイル間の重複0、自レーン内部も0。
+- git diff --check：通過。
+
+証跡：/private/tmp/isw2-build340.log、isw2-validation340.json、isw2-declaration-collision-scan340.json。
+
+3b-4の検証済みの実測は**224モジュール・15,184行・1,588宣言**。外枠22,000行まで6,816行。登録候補は274.2の一ファイルを自レーンのJSONへ追記した。共通の入口と公式監査は変更していない。
+
+次は273の同じ成分の左射影の像へ今回の公式を適用し、元のsource-frame全augmentationの成分の射の類へ戻す。前合成の成分は既存のfunctorIso_app_precomp_heqを使う。入力のnerveの零単体の表示はComposableArrows.ext₀で同じ元のparameterの点へ合わせ、同じnerveTransformationPostIsoの成分はNerveColumn.hom_component_arrowで元の実射の類へ合わせる。元の単位ラベルについて、元の増大写像・probe比較・標的単位の合成との相殺へ進む。
+
+ここまでは成分評価の計算である。R03hの全interval族の等式、元のnative fiber射自身の弱同値性、R03dの全関手同型と元の固定始域の同型の一致、3b-4aは引き続き未完。今回の等式を全パラメータの族の一致の代わりにはしない。
+
+## 275. 元の augmentation と標的単位の同じ成分の実射への照合（2026-11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 24（うち追加 12）。
+
+### 275.1 元の実射の類の回収
+
+§274の反転評価と、既存の前合成・成分評価の法則を使い、元の反変augmentation同型の逆成分を反転ホモトピー圏から戻した射が、元の増大写像とprobe比較の同じ合成の実射の類になることを、端点込みのArrowの等式で照合した。入力の零単体は、同じnerve反転の式を使って元のparameterの同じ点へ合わせた。元の全augmentationの成分の式は、NerveColumn.hom_component_arrowへ元の同じ全円柱を入れている。
+
+標的についても、元の全弱自然変換の同型の順成分のArrowの式を示し、元の同じ標的置換同型と全実射の標的への引き戻しへ適用した。元の標的比較の逆成分は、元の同じ置換単位の実射の類になる。新たな置換や成分の選択は行っていない。
+
+全要素の任意のtについての元の成分の計算であり、tについての全族の等式を得たとはしていない。これらを元の補正比較の成分の二射影へ代入し、§272の同じ合成則へ接続する所から進む。R03h・R03dは未完。
+
+既存の構成の係数移送・前合成・単位・成分評価の法則の分割で、新しい数学の一覧IDは追加しない。新規2本・221行、公開lemma8個・private lemma1個。各ファイル200行以下。既存のLeanの変更は0。[ModelCategory SSet]・計算上限の変更はない。
+
+### 275.2 型
+
+全公開8補題と、privateな端点輸送の法則の型を記録する。local instanceは各ファイルで元のBE代数のmodelCategory AとmappingCofibrantFactorization Aの二つだけを使い、ファイル間で名前を分けている。
+
+```lean
+private lemma jointAugmentationAppInvArrowOfHEq {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
+    {f g f' g' : X ⟶ Y} (e : FunctorIso f g) (e' : FunctorIso f' g')
+    (hf : f = f') (hg : g = g') (he : HEq e e') (x : X _⦋0⦌) :
+    Arrow.mk (e.app x).inv = Arrow.mk (e'.app x).inv
+```
+
+#### StrictDiagramTotJointSourceAugmentationPointValues（125行）
+
+```lean
+lemma strictBETotJointSourceAugmentationInput_vertex (t : StrictBETotJointSourceElements A) :
+    SSet.opObjEquiv ((strictBETotJointSourceAugmentationInput A).app
+      (Opposite.op ⦋0⦌) (nerveVertex t)) =
+      nerveVertex (((strictBETotJointSourceParameterIndex A).obj t).unop)
+
+lemma strictBETotJointSourceFrameAugmentation_parameter_component (t : StrictBETotJointSourceElements A) :
+    (strictBETotJointSourceFrameAugmentation A).app
+      (((strictBETotJointSourceParameterIndex A).obj t).unop) =
+    (AsSmall.up : (operad A).Algebra ⥤ AsSmall.{u+1} (operad A).Algebra).map
+      (((strictBETotJointRoofResolution A t.obj.1).augmentation.app t.obj.2.unop) ≫
+        framedLimitProbeComparison A (AsSmall.down.obj t.obj.1).1.unop)
+
+lemma strictBETotJointSourceFrameAugmentation_component_arrow (t : StrictBETotJointSourceElements A) :
+    Arrow.mk ((strictBETotJointSourceFrameAugmentationIso A).app
+      (nerveVertex (((strictBETotJointSourceParameterIndex A).obj t).unop))).hom =
+      Arrow.mk (HomotopyCategory.homMk
+        ((nerve.edgeMk ((strictBETotJointSourceFrameAugmentation A).app
+          (((strictBETotJointSourceParameterIndex A).obj t).unop))).map
+            (strictBETotModelSource A)))
+
+lemma strictBETotJointSourceAugmentationDomainIso_inv_component_arrow (t : StrictBETotJointSourceElements A) :
+    Arrow.mk (((homotopyOppositeEquivalence (CAlg_R A)).functor.map
+      ((strictBETotJointSourceAugmentationDomainIso A).app (nerveVertex t)).inv).unop) =
+      Arrow.mk (HomotopyCategory.homMk
+        ((nerve.edgeMk ((strictBETotJointSourceFrameAugmentation A).app
+          (((strictBETotJointSourceParameterIndex A).obj t).unop))).map
+            (strictBETotModelSource A)))
+```
+
+#### StrictDiagramTotJointSourceTargetPointValues（96行）
+
+```lean
+lemma strictBETotModelWeakTransformationIso_component_arrow {J : Type (u+1)} [SmallCategory J]
+    {F G : J ⥤ AsSmall.{u+1} (operad A).Algebra} (η : F ⟶ G)
+    (hη : ∀ j, weakEquivalences (operad A).Algebra (AsSmall.down.map (η.app j))) (j : J) :
+    Arrow.mk ((strictBETotModelWeakTransformationIso A η hη).app (nerveVertex j)).hom =
+      Arrow.mk (HomotopyCategory.homMk ((nerve.edgeMk (η.app j)).map (strictBETotModelSource A)))
+
+lemma strictBETotTargetReplacementNativeIso_component_arrow (Y : AsSmall.{u+1} (operad A).Algebra) :
+    Arrow.mk ((strictBETotTargetReplacementNativeIso A).app (nerveVertex Y)).hom =
+      Arrow.mk (HomotopyCategory.homMk
+        ((nerve.edgeMk ((strictBETotTargetReplacementUnit A).app Y)).map (strictBETotModelSource A)))
+
+lemma strictBETotJointSourceTargetReplacementIso_inv_component_arrow (t : StrictBETotJointSourceElements A) :
+    Arrow.mk ((strictBETotJointSourceTargetReplacementIso A).app (nerveVertex t)).inv =
+      Arrow.mk (HomotopyCategory.homMk
+        ((nerve.edgeMk ((strictBETotTargetReplacementUnit A).app
+          ((strictBETotJointSourceElementsProjection A ⋙ strictBETotJointHomTargetIndex A).obj t))).map
+            (strictBETotModelSource A)))
+
+lemma strictBETotJointSourceTargetReplacementUnit_parameter_component (t : StrictBETotJointSourceElements A) :
+    (strictBETotTargetReplacementUnit A).app
+      ((strictBETotJointSourceElementsProjection A ⋙ strictBETotJointHomTargetIndex A).obj t) =
+    (AsSmall.up : (operad A).Algebra ⥤ AsSmall.{u+1} (operad A).Algebra).map
+      ((rightFrameReplacementUnit (rightFrameFamily A)).app (AsSmall.down.obj t.obj.1).2)
+```
+
+### 275.3 検証
+
+コードのコミット：**fd55d35ec**。新規2本・221行、公開lemma8個・private lemma1個、local instance4個。実環境で新規二本は6・6宣言。既存のLeanの変更は0。
+
+- 個別検査で全型・証明が通った。再利用する既存NerveColumnComponentArrowとFunctorIsoComponentPreの対象ビルド341（5,713 jobs）も共有鍵で成功。
+- 鍵：--class impl --wait 3600、一枚の整理券、取得後gtimeout 1700秒。検査終了とともに返却済み。
+- 対象ビルド342：新規二本、成功（依存を含む12,284 jobs）。
+- 小監査：AuditISW2BKCells342.lean、**230モジュール・1,606宣言、propext・Classical.choice・Quot.soundのみ**。sorryAx・追加公理なし。互換二モジュールの宣言数0と既存の定理の定義元の確認も成功。
+- 宣言名の照合：main a4388efc9に固定し、自レーン592ファイル・1,886個の名前と、mainのEInfinity/3,745ファイル・13,373個の名前を照合。異なるファイル間の重複0、自レーン内部も0。
+- git diff --check：通過。
+
+証跡：/private/tmp/isw2-build342.log、isw2-validation342.json、isw2-declaration-collision-scan342.json。
+
+今回までの検証済みの実測は**226モジュール・15,405行・1,599宣言**。外枠22,000行まで6,595行。生成補題を含む数は今回のimport後の実環境で集計した。登録候補は275.2の二本を自レーンのJSONへ追記した。共通の入口と公式監査は変更していない。
+
+## 276. 元の補正比較の同じ成分の実際の左右像の実射への照合（2026-11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 24（うち追加 12）。
+
+### 276.1 同じ成分の像を代入する
+
+§273の元の全射影の値の照合を同じ点で読み、§275の同じaugmentationと標的単位の実射の類の計算を代入した。結論に現れるfは、元のstrictBETotJointSourceCorrectedPairingIsoの同じ成分の順射そのものである。元のfを左へ写して反転ホモトピー圏から戻すと、元の増大写像とprobe比較の同じ合成の実射の類になる。右へ写すと、元の標的置換単位の同じ実射の類になる。両方とも端点を保持したArrowの等式で述べる。
+
+存在だけの射へ置き換えず、§272の同じ成分の合成則で実際に使う二つの射を同定した。全要素の任意のtに対する成分の計算であり、tについての全interval族の一致を得たとはしていない。元の単位ラベルで両端を相殺する所へ進む。R03h・R03dは未完。
+
+既存の構成の単位・係数移送・成分評価・合成則の分割で、新しい数学の一覧IDは追加しない。新規1本・99行、公開lemma2個・private lemma1個。既存のLeanの変更は0。計算上限は変更していない。
+
+### 276.2 型
+
+公開二補題とprivateな成分の型の輸送の法則の全型を記録する。local instanceは元のBE代数のmodelCategory AとmappingCofibrantFactorization Aの二つのみ。
+
+```lean
+private lemma jointCorrectionAppHomArrowOfHEq {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
+    {f g f' g' : X ⟶ Y} (e : FunctorIso f g) (e' : FunctorIso f' g')
+    (hf : f = f') (hg : g = g') (he : HEq e e') (x : X _⦋0⦌) :
+    Arrow.mk (e.app x).hom = Arrow.mk (e'.app x).hom
+```
+
+#### StrictDiagramTotJointCorrectionComponentArrows（99行）
+
+```lean
+lemma strictBETotJointSourceCorrection_left_component_arrow (t : StrictBETotJointSourceElements A) :
+    let f := ((strictBETotJointSourceCorrectedPairingIso A).app (nerveVertex t)).hom
+    Arrow.mk (((homotopyOppositeEquivalence (CAlg_R A)).functor.map
+      ((SSet.mapHomotopyCategory (edgewiseLeft (CAlg_R A))).map f)).unop) =
+      Arrow.mk (HomotopyCategory.homMk ((nerve.edgeMk
+        ((AsSmall.up : (operad A).Algebra ⥤ AsSmall.{u+1} (operad A).Algebra).map
+          ((strictBETotJointRoofResolution A t.obj.1).augmentation.app t.obj.2.unop ≫
+            framedLimitProbeComparison A (AsSmall.down.obj t.obj.1).1.unop))).map
+              (strictBETotModelSource A)))
+
+lemma strictBETotJointSourceCorrection_right_component_arrow (t : StrictBETotJointSourceElements A) :
+    let f := ((strictBETotJointSourceCorrectedPairingIso A).app (nerveVertex t)).hom
+    Arrow.mk ((SSet.mapHomotopyCategory (edgewiseRight (CAlg_R A))).map f) =
+      Arrow.mk (HomotopyCategory.homMk ((nerve.edgeMk
+        ((AsSmall.up : (operad A).Algebra ⥤ AsSmall.{u+1} (operad A).Algebra).map
+          ((rightFrameReplacementUnit (rightFrameFamily A)).app (AsSmall.down.obj t.obj.1).2))).map
+            (strictBETotModelSource A)))
+```
+
+### 276.3 検証
+
+コードのコミット：**cdd6b0af0**。新規1本・99行、公開lemma2個・private lemma1個、local instance2個。実環境で新規一ファイルは4宣言。既存のLeanの変更は0。
+
+- 個別検査で全型・証明が通った。
+- 鍵：--class impl --wait 3600、一枚の整理券、取得後gtimeout 1700秒。検査終了とともに返却済み。
+- 対象ビルド343：新規一ファイル、成功（依存を含む12,289 jobs）。
+- 小監査：AuditISW2BKCells343.lean、**231モジュール・1,610宣言、propext・Classical.choice・Quot.soundのみ**。sorryAx・追加公理なし。互換二モジュールの宣言数0と既存の定理の定義元の確認も成功。
+- 宣言名の照合：main a4388efc9に固定し、自レーン593ファイル・1,888個の名前と、mainのEInfinity/3,745ファイル・13,373個の名前を照合。異なるファイル間の重複0、自レーン内部も0。
+- git diff --check：通過。
+
+証跡：/private/tmp/isw2-build343.log、isw2-validation343.json、isw2-declaration-collision-scan343.json。
+
+3b-4の検証済みの実測は**227モジュール・15,504行・1,603宣言**。外枠22,000行まで6,496行。登録候補は276.2の一ファイルを自レーンのJSONへ追記した。共通の入口と公式監査は変更していない。
+
+## 277. 元の補正単位の辺の類と native 恒等射の照合（2026-11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 24（うち追加 12）。
+
+### 277.1 同じ単位ラベルの相殺
+
+元のstrictBETotJointSourceUnitLabel A Xを、同じstrictBETotJointSourceCorrectedPairingで送った頂点の辺の類が、元のnative試験対象の恒等射のArrowに一致することを証明した。結論の恒等射は、元のstrictBETotModelSourceでmodelRelativeObject Xを送った同じ頂点上のものである。
+
+証明では元のstrictBETotJointSourceCorrectedPairingIsoの同じ成分の順射fを使う。§272の同じ成分の三辺の合成則へ、§276の同じfの左右射影の元の実射の類の同定を代入する。original pairingの同じ単位ラベルの像は§271の式であり、その像の二射の合成を同じnerveの合成三角形で計算した。f自身は同型の順射なので、左右の射影と反転ホモトピー圏の同じ比較の像も可逆である。この同じ二射を相殺して、中央の元の補正単位の辺の類を元の恒等射へ戻す。標的置換がcofibrantだという仮定や[ModelCategory SSet]を足していない。
+
+端点込みのArrowの等式で述べ、元の同型や射を再選択していない。恒等射に一致するのはホモトピー圏の射の類であり、元の単体集合の一単体が退化辺と厳密に等しいとはしていない。
+
+既存の構成の単位・合成・係数移送の法則の証明の分割として、端点を保持した相殺則、同じ実射のtwisted頂点の辺の式、同じnerveの合成の像の式を分けた。新しい数学の一覧IDは追加しない。新規3本（共通2・BE1）、170行、公開lemma4個。各ファイル200行以下。既存のLeanの変更は0。計算上限は変更していない。
+
+### 277.2 型
+
+四つの公開補題の全型を記録する。BEのlocal instanceは元のmodelCategory AとmappingCofibrantFactorization Aの二つのみである。
+
+#### ArrowMiddleUnit（43行）
+
+```lean
+lemma arrow_middle_unit_of_outer_arrow_equalities {D : Type u} [Category.{v} D]
+    {q x y z q₀ x₀ z₀ : D} (p : q ⟶ x) (a : x ⟶ y) (r : y ⟶ z) (b : q ⟶ z)
+    (p₀ : q₀ ⟶ x₀) (r₀ : x₀ ⟶ z₀) [IsIso p] [IsIso r]
+    (hp : Arrow.mk p = Arrow.mk p₀) (hr : Arrow.mk r = Arrow.mk r₀)
+    (hb : Arrow.mk b = Arrow.mk (p₀ ≫ r₀)) (h : p ≫ a ≫ r = b) :
+    Arrow.mk a = Arrow.mk (𝟙 x₀)
+```
+
+#### TwistedArrowVertexEdgeNerve（47行）
+
+```lean
+lemma twistedArrowVertexEdge_nerve_arrow {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (F : nerve C ⟶ E) {x y : C} (g : x ⟶ y) :
+    Arrow.mk (HomotopyCategory.homMk (twistedArrowVertexEdge
+      ((edgewiseWeightIso 0).hom ≫ SSet.yonedaEquiv.symm (ComposableArrows.mk₁ g) ≫ F))) =
+      Arrow.mk (HomotopyCategory.homMk ((nerve.edgeMk g).map F))
+
+lemma mappedNerveEdgeHom_comp {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (F : nerve C ⟶ E) {x y z : C} (g : x ⟶ y) (h : y ⟶ z) :
+    HomotopyCategory.homMk ((nerve.edgeMk (g ≫ h)).map F) =
+      HomotopyCategory.homMk ((nerve.edgeMk g).map F) ≫
+        HomotopyCategory.homMk ((nerve.edgeMk h).map F)
+```
+
+#### StrictDiagramTotJointCorrectedUnitArrow（80行）
+
+```lean
+lemma strictBETotJointSourceCorrectedPairing_unit_arrow (X : (operad A).Algebra) :
+    Arrow.mk (HomotopyCategory.homMk (twistedArrowVertexEdge
+      ((strictBETotJointSourceCorrectedPairing A).app (Opposite.op ⦋0⦌)
+        (nerveVertex (strictBETotJointSourceUnitLabel A X))))) =
+      Arrow.mk (𝟙 (HomotopyCategory.mk ((strictBETotModelSource A).app
+        (Opposite.op ⦋0⦌) (nerveVertex (modelRelativeObject (operad A).Algebra X)))))
+```
+
+### 277.3 検証
+
+四補題の個別検査は成功。単位ラベルの合成の係数移送は、外側のFunctor.map_compを一回だけ使い、元のsource-frame増大写像とprobe比較の合成のまとまりを保持した。新規三本の対象ビルド344と小監査も成功（--class impl --wait 3600、一枚の整理券、gtimeout 1700秒）。対象ビルドは依存を含む12,292 jobsで成功。小監査は234モジュール・1,616宣言、propext・Classical.choice・Quot.soundのみで、sorryAx・追加公理なし。新規三本170行、公開四補題と局所instance二つ。自レーン累計230本・15,674行（外枠まで6,326行）、実環境の自レーン宣言1,609。main a4388efc9のEInfinity/3,745ファイル・13,373個の名前と、自レーン596ファイル・1,892個の名前を照合し、異なるファイル間の重複0、内部も0。git diff --checkも通過。証跡は /private/tmp/isw2-build344.log、isw2-validation344.json、isw2-declaration-collision-scan344.json。共通の入口と公式監査は変更していない。
+
+コードは30887c8aeに保存した。
+
+### 277.4 残る範囲
+
+今回の補正単位の辺の類の等式は、元の全要素の同じ単位ラベルの像についてのもの。次に元のnative fiber点をこの同じラベルへ合わせ、その同じHom空間内の単位点の比較へ戻す必要がある。既存のcosliceFiberVertexIsoOfHomEqとcosliceTwistedHomMapの同じ比較・単位三角形が候補になるが、この移送はまだ検証していない。元の全straightening比較と単位条件を通した単位の評価、全Yoneda評価・局所化の前合成の充満忠実性による全変換の一致も残る。
+
+R03hの全interval族の等式、元のnative fiber射自身の弱同値性、R03dの全関手同型と元の固定始域の同型の一致、および3b-4aはまだ未完。今回の一点の辺の類の等式を、全パラメータの族の一致の代わりにはしない。/goalは元の全範囲のまま継続する。
+
+## 278. 同じnative fiber射の元の単位ラベルへの制限（2026-11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 24（うち追加 12）。
+
+### 278.1 範囲と型
+
+§277の三本は30887c8aeに保存した。元のnative fiber射に元のpullbackのfiber同型を合成した同じ射を、同じ係数の単位ラベルで評価する。元の包含後の厳密な等式を評価する既存構成の法則と証明の分割であり、新しい数学のIDの追加はない。個別検査 /private/tmp/isw2-native-unit-fiber.lean は終了コード0、出力なし。以下の型を本体へ切り出し、対象ビルドと小監査を行う。
+
+#### StrictDiagramTotJointNativeUnitFiber（84行）
+
+```lean
+def strictBETotJointSourceNativeUnitFiberElement (X : (operad A).Algebra) :
+    (simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj
+      (strictBETotJointUnitIndex A X)
+
+lemma strictBETotJointSourceNativeUnitFiberElement_value (X : (operad A).Algebra) :
+    (simplicialElementsFiberFunctor (strictBETotJointSourceCoefficients A)
+      (strictBETotJointUnitIndex A X)).obj (strictBETotJointSourceNativeUnitFiberElement A X) =
+        strictBETotJointSourceUnitLabel A X
+
+lemma strictBETotJointSourceNativeTwistedFiberMap_unit_value (X : (operad A).Algebra) :
+    ((strictBETotJointSourceNativeTwistedFiberMap A (strictBETotJointUnitIndex A X)).app
+      (Opposite.op ⦋0⦌) (nerveVertex (strictBETotJointSourceNativeUnitFiberElement A X))).val =
+      (strictBETotJointSourceCorrectedPairing A).app (Opposite.op ⦋0⦌)
+        (nerveVertex (strictBETotJointSourceUnitLabel A X))
+
+lemma strictBETotJointSourceNativeTwistedFiberMap_unit_arrow (X : (operad A).Algebra) :
+    Arrow.mk (HomotopyCategory.homMk (twistedArrowVertexEdge
+      (((strictBETotJointSourceNativeTwistedFiberMap A (strictBETotJointUnitIndex A X)).app
+        (Opposite.op ⦋0⦌) (nerveVertex (strictBETotJointSourceNativeUnitFiberElement A X))).val))) =
+      Arrow.mk (𝟙 (HomotopyCategory.mk ((strictBETotModelSource A).app
+        (Opposite.op ⦋0⦌) (nerveVertex (modelRelativeObject (operad A).Algebra X)))))
+```
+
+### 278.2 検収と残り
+
+対象ビルド345は依存を含む12,293 jobsで成功。--class impl --wait 3600、一枚の整理券、gtimeout 1700秒で対象ビルドと小監査を実行し、終了コード0。小監査は235モジュール・1,622宣言、propext・Classical.choice・Quot.soundのみ、sorryAx・追加公理なし。新規一本84行、公開定義一つ・公開補題三つ・局所instance二つ。自レーン累計231本・15,758行（外枠まで6,242行）、自レーン実環境1,615宣言。main a4388efc9のEInfinity/3,745ファイル・13,373個の名前と、自レーン597ファイル・1,896個の名前を照合し、異なるファイル間の重複0、内部も0。git diff --check通過。証跡は /private/tmp/isw2-build345.log、isw2-validation345.json、isw2-declaration-collision-scan345.json。コードは413230b6dに保存した。元のnative fiber射そのものについて同じ単位の辺の類を回収する範囲であり、Hom空間の点の同型・全straightening比較の単位評価・全変換の一致はまだ主張しない。R03h・R03d・3b-4aも未完。
+
+## 279. 元の単位条件を満たす同じ全空間の射の単位への接続（2026-11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 24（うち追加 12）。
+
+### 279.1 型と範囲
+
+§277〜278の結果・型・コミットは4d59e83eaに報告した。既存のstrictBETotJointSourceNativeFiberUnit_mapを同じpullback同型で後合成し、その同じ写像の元の単位点での値を§278へ接続する。既存の単位・合成・係数移送の法則と証明の分割であり、新しい数学のIDの追加はない。
+
+個別検査の一時ファイルでvertexFiberMap・nerveVertexの名前空間が欠け、未知の短名が暗黙の変数として推論されていたため、型推論が既定上限に達した。必要なEquivalence・TheSliceAndJoinConstructionsを明示し、autoImplicit falseで再検査した9回目は終了コード0、出力なし。計算上限は上げていない。元の等式の型を保ち、HEqへの型の変更は採用していない。以下を本体へ分けて対象ビルド346と小監査を行う。
+
+#### StrictDiagramTotJointNativeLiftUnit（95行）
+
+```lean
+lemma strictBETotJointSourceNativeLiftUnit_twistedFiberMap
+    (m : (simplicialElementsReplacement (strictBETotJointSourceCoefficients A)).left ⟶
+      strictBETotJointNativeHomTotalSpace A)
+    (hm : m ≫ strictBETotJointNativeHomProjection A =
+      (simplicialElementsReplacement (strictBETotJointSourceCoefficients A)).hom)
+    (hu : ((continuousLeftFibrationReplacementUnit (nerve (strictBETotJointHomIndex A))).app
+      (Over.mk (nerveMap (strictBETotJointSourceElementsProjection A)))).left ≫ m =
+        strictBETotJointSourceNativeHomMap A) (P : strictBETotJointHomIndex A) :
+    simplicialElementsFiberUnit (strictBETotJointSourceCoefficients A) P ≫
+      vertexFiberMap (simplicialElementsReplacement (strictBETotJointSourceCoefficients A)).hom
+        (strictBETotJointNativeHomProjection A) m hm (nerveVertex P) ≫
+        (vertexFiberPullbackIso (twistedArrowProjection (CAlg_R A))
+          (strictBETotJointNativeHomInput A) (nerveVertex P)).hom =
+            strictBETotJointSourceNativeTwistedFiberMap A P
+
+lemma strictBETotJointSourceNativeLiftUnit_unit_arrow
+    (m : (simplicialElementsReplacement (strictBETotJointSourceCoefficients A)).left ⟶
+      strictBETotJointNativeHomTotalSpace A)
+    (hm : m ≫ strictBETotJointNativeHomProjection A =
+      (simplicialElementsReplacement (strictBETotJointSourceCoefficients A)).hom)
+    (hu : ((continuousLeftFibrationReplacementUnit (nerve (strictBETotJointHomIndex A))).app
+      (Over.mk (nerveMap (strictBETotJointSourceElementsProjection A)))).left ≫ m =
+        strictBETotJointSourceNativeHomMap A) (X : (operad A).Algebra) :
+    Arrow.mk (HomotopyCategory.homMk (twistedArrowVertexEdge
+      (((simplicialElementsFiberUnit (strictBETotJointSourceCoefficients A)
+          (strictBETotJointUnitIndex A X) ≫
+        vertexFiberMap (simplicialElementsReplacement (strictBETotJointSourceCoefficients A)).hom
+          (strictBETotJointNativeHomProjection A) m hm (nerveVertex (strictBETotJointUnitIndex A X)) ≫
+        (vertexFiberPullbackIso (twistedArrowProjection (CAlg_R A))
+          (strictBETotJointNativeHomInput A) (nerveVertex (strictBETotJointUnitIndex A X))).hom).app
+          (Opposite.op ⦋0⦌) (nerveVertex (strictBETotJointSourceNativeUnitFiberElement A X))).val))) =
+      Arrow.mk (𝟙 (HomotopyCategory.mk ((strictBETotModelSource A).app
+        (Opposite.op ⦋0⦌) (nerveVertex (modelRelativeObject (operad A).Algebra X)))))
+```
+
+### 279.2 検収と残り
+
+対象ビルド346は依存を含む12,294 jobsで成功。--class impl --wait 3600、一枚の整理券で順番を待ち、gtimeout 1700秒の中で対象ビルドと小監査を実行した。小監査は236モジュール・1,626宣言、propext・Classical.choice・Quot.soundのみ、sorryAx・追加公理なし。新規一本95行、公開二補題・局所instance二つ。自レーン累計232本・15,853行（外枠まで6,147行）、自レーン実環境1,619宣言。main a4388efc9のEInfinity/3,745ファイル・13,373個の名前と、自レーン598ファイル・1,898個の名前を照合し、異なるファイル間の重複0、内部も0。git diff --check通過。証跡は /private/tmp/isw2-build346.log、isw2-validation346.json、isw2-declaration-collision-scan346.json。共通の入口・公式監査・⑤aのファイル・既存Leanは変更していない。コードは7d9e0ebb2に保存した。全空間の射には元の底の等式と元の単位条件だけを仮定した。実射自身の弱同値性・全straightening比較の単位の評価・全関手同型の一致はまだ未完であり、今回の単位点の辺の類で代用しない。R03h・R03d・3b-4aは未完のまま。
+
+### 279.3 次の確認箇所
+
+元のnative fiberの単位の辺の類の一致から、同じHom空間の点の同型へ戻す際に、既存のcosliceTwistedHomMapとcosliceFiberVertexToEdgeが同じ辺を表す次の構成の法則を調べた。
+
+```lean
+lemma cosliceTwistedHomMap_vertex_edge_arrow {C : SSet.{u}} {x y : C _⦋0⦌}
+    (v : (vertexFiber (sliceUnderProjection (yonedaEquiv.symm x)) y) _⦋0⦌) :
+    Arrow.mk (HomotopyCategory.homMk (twistedArrowVertexEdge
+      (((cosliceTwistedHomMap x y).app (Opposite.op ⦋0⦌) v).val))) =
+      Arrow.mk (HomotopyCategory.homMk (cosliceFiberVertexToEdge v))
+```
+
+これは未検証の候補で、本体・manifest・監査・済みの数には入れていない。同じedgewiseWeightIsoの逆とcosliceEdgewiseCollapseの零次元の式を合わせれば足りる見込みだが、一時ファイルの一点の証明でSubsingletonの推論が通らず、未解決のままの大きい証明はkernelの既定上限にも達した。計算上限は上げず、小さい重みの等式と辺の等式に分割する検査用ファイル /private/tmp/isw2-coslice-twisted-unit-split.lean に残した。次はFin 1の座標を明示して小さい補題ごとに検査する。既存のcosliceFiberVertexIsoOfHomEqへ実際の単位点を戻す照合、元のstraightening評価の全自然性による全変換の一致をさらに示す必要があり、今回の結果で全関手同型を得たとはしない。
+
+B4′自体は§268で完了。統合81683a2ab・報告8c7971003、書換え0・保留0を維持し、§277〜279は/goal再開後の追加の検証である。
+
+## 280. 元のcoslice比較が表す同じ辺の零次元の式（2026-11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 24（うち追加 12）。
+
+### 280.1 範囲と型
+
+前回は元の単位条件と元のnative fiberの単位の辺の類の照合を検証し、81e99bcecまで保存したため、進捗あり。作業木はクリーン、共有鍵も持っていない状態から再開した。§279.3の零次元のcoslice比較の法則を三つの小補題へ分割した。Fin 1の座標はFin.eq_zeroで明示し、同じ逆則は括弧の位置を合わせて適用した。個別検査 /private/tmp/isw2-coslice-twisted-unit-split.lean は終了コード0、出力なし。計算上限・既存の型は変更していない。以下は既存構成の単位・係数移送の法則と証明の分割であり、新しい数学のIDには数えない。
+
+#### CosliceTwistedHomVertexEdge（68行）
+
+```lean
+lemma cosliceEdgewiseCollapse_zero :
+    cosliceEdgewiseCollapse.{u} ⦋0⦌ =
+      (joinIso (stdSimplex.opIso ⦋0⦌) (Iso.refl (Δ[0] : SSet.{u}))).hom
+
+lemma edgewiseWeightIso_zero_inv_comp_cosliceCollapse :
+    (edgewiseWeightIso.{u} 0).inv ≫ cosliceEdgewiseCollapse ⦋0⦌ =
+      (joinStdSimplexIso 0 0).inv
+
+lemma cosliceTwistedHomMap_vertex_edge_arrow {C : SSet.{u}} {x y : C _⦋0⦌}
+    (v : (vertexFiber (sliceUnderProjection (yonedaEquiv.symm x)) y) _⦋0⦌) :
+    Arrow.mk (HomotopyCategory.homMk (twistedArrowVertexEdge
+      (((cosliceTwistedHomMap x y).app (Opposite.op ⦋0⦌) v).val))) =
+      Arrow.mk (HomotopyCategory.homMk (cosliceFiberVertexToEdge v))
+```
+
+### 280.2 検収と残り
+
+新規一本の対象ビルド347と、既存の次の入力cosliceFiberVertexIsoOfHomEqの定義元CosliceFiberHomClassのビルドは成功（依存を含む2,268 jobs）。--class impl --wait 3600、一枚の整理券、gtimeout 1700秒で対象ビルドと小監査を行い、終了コード0。小監査は237モジュール・1,629宣言、標準三公理propext・Classical.choice・Quot.soundのみ、sorryAx・追加公理なし。新規一本68行・公開三補題。自レーン233本・15,921行（外枠まで6,079行）、自レーン実環境1,622宣言。main a4388efc9のEInfinity/3,745ファイル・13,373個の名前と自レーン599ファイル・1,901個の名前を照合し、異なるファイル間の重複0、内部も0。git diff --check通過。証跡は /private/tmp/isw2-build347.log、isw2-validation347.json、isw2-declaration-collision-scan347.json。元のnative fiber射の弱同値性、R03hの全interval族、R03dの全関手同型、3b-4aはまだ未完。
+
+## 281. R03d内の点の比較の中間の定理R03i（型と見込み、2026-11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 11／全体 25（うち追加 13）。
+
+### 281.1 追加する型
+
+指示書§19の枠で、R01〜R03の同じまとまりの中間の定理としてR03iを足す。§277〜279で示した元の単位の辺の類を、元のtwisted-arrowの同じ両端固定のHom空間の点の同型へ戻すために使う。見込みは450〜950行（既存構成の法則・証明の分割・native単位への適用を含む）、1,500行以内。既存のcosliceFiberVertexIsoOfHomEqの判定を、元のcosliceTwistedHomMapの同じ比較と同じ単位三角形で移すもので、⑤aの欄の型には触れない。
+
+```lean
+theorem nonempty_twistedArrowHomSpace_vertexIso_of_arrow_eq
+    {C : SSet.{u}} [Quasicategory C] {x y : C _⦋0⦌}
+    {v w : (twistedArrowHomSpace x y) _⦋0⦌}
+    (h : Arrow.mk (HomotopyCategory.homMk (twistedArrowVertexEdge v.val)) =
+      Arrow.mk (HomotopyCategory.homMk (twistedArrowVertexEdge w.val))) :
+    Nonempty (VertexIso v w)
+```
+
+### 281.2 証明の順序
+
+1. 元のfiber内の辺を元のtwisted-arrow全空間へ含めると、左右射影は元の底の頂点の恒等射の類になることを、包含後の厳密な定値の等式で示す。
+2. 既存のtwistedArrowHom_compositionを同じ辺へ適用し、左右の恒等射を相殺する。これにより同じfiber内のVertexIsoで辺のArrowの類が変わらないことが分かる。
+3. 既存のcosliceTwistedHomMap_isQCatEquivalenceの同じ指定逆で元の二点を戻す。元のinvHomIsoの成分と2を使い、§280の辺の式を通して、戻した二つのcoslice点の元の矢印の類を一致させる。
+4. 既存のcosliceFiberVertexIsoOfHomEqを使い、その同じ同型を元のcosliceTwistedHomMapで写す。元のinvHomIsoの二つの成分で元の二点へ戻す。
+
+ここまでが同じ点の同型の中間定理であり、それだけでR03dの全関手同型を主張しない。元の全straightening・指定単位・全パラメータの同じ変換への照合、R03hの全interval族、R03d以下の残りは維持する。
+
+### 281.3 分割した法則の型と個別検査
+
+/private/tmp/isw2-fiber-edge-constant.leanの五つの主張は個別検査5で終了コード0、出力なし。最初の四つは元の包含・射影・合成・恒等の法則の分割で、一覧のIDには数えない。最後の一つが上に追加したR03iそのもの。以下の新規四本へ分け、対象ビルド348と小監査で本体を確認する。いずれも200行未満、計算上限は変更していない。
+
+#### VertexFiberEdgeProjectedArrow（40行）
+
+```lean
+lemma vertexFiber_edge_projected_arrow {E B D : SSet.{u}} (p : E ⟶ B) (g : B ⟶ D)
+    {b : B _⦋0⦌} {v w : (vertexFiber p b) _⦋0⦌} (e : SSet.Edge v w) :
+    Arrow.mk (HomotopyCategory.homMk ((e.map (vertexFiberι p b)).map (p ≫ g))) =
+      Arrow.mk (𝟙 (HomotopyCategory.mk (g.app (Opposite.op ⦋0⦌) b)))
+```
+
+#### ArrowMiddleIdentity（37行）
+
+```lean
+lemma arrow_middle_eq_of_outer_identity_arrows {D : Type u} [Category.{v} D]
+    {q x y z x₀ y₀ : D} (p : q ⟶ x) (a : x ⟶ y) (r : y ⟶ z) (b : q ⟶ z)
+    (hp : Arrow.mk p = Arrow.mk (𝟙 x₀)) (hr : Arrow.mk r = Arrow.mk (𝟙 y₀))
+    (h : p ≫ a ≫ r = b) : Arrow.mk a = Arrow.mk b
+```
+
+#### TwistedHomVertexEdgeClasses（70行）
+
+```lean
+lemma twistedArrowHomSpace_edge_arrow_eq {C : SSet.{u}} [Quasicategory C]
+    {x y : C _⦋0⦌} {v w : (twistedArrowHomSpace x y) _⦋0⦌}
+    (e : SSet.Edge v w) :
+    Arrow.mk (HomotopyCategory.homMk (twistedArrowVertexEdge v.val)) =
+      Arrow.mk (HomotopyCategory.homMk (twistedArrowVertexEdge w.val))
+
+lemma twistedArrowHomSpace_vertexIso_arrow_eq {C : SSet.{u}} [Quasicategory C]
+    {x y : C _⦋0⦌} {v w : (twistedArrowHomSpace x y) _⦋0⦌}
+    (e : VertexIso v w) :
+    Arrow.mk (HomotopyCategory.homMk (twistedArrowVertexEdge v.val)) =
+      Arrow.mk (HomotopyCategory.homMk (twistedArrowVertexEdge w.val))
+```
+
+#### TwistedHomVertexIsoOfArrowEq（55行）
+
+```lean
+lemma nonempty_twistedArrowHomSpace_vertexIso_of_arrow_eq {C : SSet.{u}} [Quasicategory C]
+    {x y : C _⦋0⦌} {v w : (twistedArrowHomSpace x y) _⦋0⦌}
+    (h : Arrow.mk (HomotopyCategory.homMk (twistedArrowVertexEdge v.val)) =
+      Arrow.mk (HomotopyCategory.homMk (twistedArrowVertexEdge w.val))) :
+    Nonempty (VertexIso v w)
+```
+
+### 281.4 R03iの検収
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+新規四本202行の対象ビルド349は成功（依存を含む2,683 jobs）。初回348は新規ファイルの補助補題の名前空間が一つ不足して停止し、同じ新規ファイルで明示して再実行した。--class impl --wait 3600、一枚の整理券、gtimeout 1700秒。小監査は241モジュール・1,634宣言、propext・Classical.choice・Quot.soundのみ、sorryAx・追加公理なし。自レーン累計237本・16,123行（外枠まで5,877行）、自レーン実環境1,627宣言。main a4388efc9のEInfinity/3,745ファイル・13,373個の名前と、自レーン603ファイル・1,906個の名前を照合し、異なるファイル間の重複0、内部も0。名前空間のopenの追記で宣言名は変えていない。git diff --check通過。証跡は /private/tmp/isw2-build349.log、isw2-validation349.json、isw2-declaration-collision-scan349.json。既存のLean・⑤aのファイル・公式入口・公式監査には変更なし。
+
+R03iの追加した型は本体のnonempty_twistedArrowHomSpace_vertexIso_of_arrow_eqとして閉じたため、済みを一つ増やした。今回の四本202行は、R03iの見込み450〜950行のうち一般の判定の部分。§280の68行を含めた関連する前提計算は270行、元のnative単位点への適用はこの次に行う。この二点を同じHom空間で結べる判定は、まだ全パラメータの同じ変換の一致やnative fiber射自身の弱同値性を証明するものではない。R03h・R03d・3b-4aは未完のまま続ける。
+
+## 282. 元のnative単位点と、元の恒等点の同じHom空間での同型（2026-11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+### 282.1 型と範囲
+
+§280の零次元の式はfcf587ecd、R03iと既存の四法則は078318c2bに保存した。次に元のnative fiber射の単位点を、strictBETotJointNativeHomInput_model_vertexの同じ底の等式だけで移し、R03iを適用する。比較先は既存のtwistedArrowSourceIdentityそのものを、既存のtwistedArrowSourceFiberIsoで制限した点であり、別の恒等点を選び直していない。
+
+以下はR03iへの適用と既存の係数移送・制限・単位の法則の分割で、新しい数学のIDは追加しない。個別検査 /private/tmp/isw2-native-unit-points.lean は3回目で終了コード0、出力なし。最初の試みで定義上の一致とした箇所は、元のtwistedArrowSourceFiberIso_ιによる厳密な式へ直した。計算上限は変更していない。
+
+#### TwistedHomIdentityPoint（68行）
+
+```lean
+def twistedArrowHomSpaceIdentityPoint {C : SSet.{u}} (x : C _⦋0⦌) :
+    (twistedArrowHomSpace x x) _⦋0⦌
+
+lemma twistedArrowHomSpaceIdentityPoint_value {C : SSet.{u}} (x : C _⦋0⦌) :
+    (twistedArrowHomSpaceIdentityPoint x).val = SSet.const x
+
+lemma twistedArrowVertexEdge_const_arrow {C : SSet.{u}} (x : C _⦋0⦌) :
+    Arrow.mk (HomotopyCategory.homMk (twistedArrowVertexEdge (SSet.const x))) =
+      Arrow.mk (𝟙 (HomotopyCategory.mk x))
+
+lemma twistedArrowHomSpaceIdentityPoint_arrow {C : SSet.{u}} (x : C _⦋0⦌) :
+    Arrow.mk (HomotopyCategory.homMk (twistedArrowVertexEdge (twistedArrowHomSpaceIdentityPoint x).val)) =
+      Arrow.mk (𝟙 (HomotopyCategory.mk x))
+```
+
+#### StrictDiagramTotJointNativeUnitPoint（92行）
+
+```lean
+def strictBETotJointNativeUnitFiberIso (X : (operad A).Algebra) :
+    vertexFiber (twistedArrowProjection (CAlg_R A))
+      ((strictBETotJointNativeHomInput A).app (Opposite.op ⦋0⦌)
+        (nerveVertex (strictBETotJointUnitIndex A X))) ≅
+      twistedArrowHomSpace
+        ((strictBETotModelSource A).app (Opposite.op ⦋0⦌)
+          (nerveVertex (modelRelativeObject (operad A).Algebra X)))
+        ((strictBETotModelSource A).app (Opposite.op ⦋0⦌)
+          (nerveVertex (modelRelativeObject (operad A).Algebra X)))
+
+def strictBETotJointNativeUnitPoint (X : (operad A).Algebra) :
+    (twistedArrowHomSpace
+      ((strictBETotModelSource A).app (Opposite.op ⦋0⦌)
+        (nerveVertex (modelRelativeObject (operad A).Algebra X)))
+      ((strictBETotModelSource A).app (Opposite.op ⦋0⦌)
+        (nerveVertex (modelRelativeObject (operad A).Algebra X)))) _⦋0⦌
+
+lemma strictBETotJointNativeUnitPoint_value (X : (operad A).Algebra) :
+    (strictBETotJointNativeUnitPoint A X).val =
+      ((strictBETotJointSourceNativeTwistedFiberMap A (strictBETotJointUnitIndex A X)).app
+        (Opposite.op ⦋0⦌) (nerveVertex (strictBETotJointSourceNativeUnitFiberElement A X))).val
+
+lemma strictBETotJointNativeUnitPoint_identityIso (X : (operad A).Algebra) :
+    Nonempty (VertexIso (strictBETotJointNativeUnitPoint A X)
+      (twistedArrowHomSpaceIdentityPoint ((strictBETotModelSource A).app (Opposite.op ⦋0⦌)
+        (nerveVertex (modelRelativeObject (operad A).Algebra X)))))
+```
+
+係数移送の値のprivate補題も型を記録する（同じhで場合分けする既存の等式の係数移送）。
+
+```lean
+private lemma jointNativeUnitPointTransport_value {E B : SSet.{u}} (p : E ⟶ B)
+    {b b' : B _⦋0⦌} (h : b = b') (n : SimplexCategoryᵒᵖ)
+    (v : (vertexFiber p b).obj n) :
+    ((eqToHom (congrArg (vertexFiber p) h)).app n v).val = v.val
+```
+
+### 282.2 検収と残り
+
+新規二本160行の対象ビルド350は成功（依存を含む12,307 jobs）。--class impl --wait 3600、一枚の整理券、gtimeout 1700秒で対象ビルドと小監査を行い、終了コード0。小監査は243モジュール・1,646宣言、propext・Classical.choice・Quot.soundのみ、sorryAx・追加公理なし。公開定義三つ・公開補題五つ・private補題一つ・局所instance二つ。自レーン累計239本・16,283行（外枠まで5,717行）、自レーン実環境1,639宣言。main a4388efc9のEInfinity/3,745ファイル・13,373個の名前と、自レーン605ファイル・1,914個の名前を照合し、異なるファイル間の重複0、内部も0。git diff --check通過。証跡は /private/tmp/isw2-build350.log、isw2-validation350.json、isw2-declaration-collision-scan350.json。既存Lean・⑤aのファイル・公式入口・公式監査は変更していない。コードは87305debaに保存した。元の単位点の同じHom空間での同型までは本体で検証したが、この同型を元の全straighteningの評価と指定単位を通して全変換の一致へ接続する部分はまだ未完。R03h・R03d・3b-4aは未完のまま。
+
+R03iの見込み450〜950行に対し、一般の判定202行・元のcosliceの零次元の式68行・元のnative単位点への適用160行の実測は計430行（下端より20行少ない）。この範囲の中間定理は閉じた。元の単位条件を満たす全空間の射を同じfiberへ戻す§279の95行は前回の検証済みで、この差分へ重ねて数えていない。
+
+## 283. 同じ全straighteningの射と指定fiber評価の全自然性の照合（2026-11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+### 283.1 型と範囲
+
+§282の同じnative単位点の比較は87305deba、§280〜282の報告は720c1893fに保存した。次に、元のleftStraighteningInfinityDiagramHomと元のleftStraighteningInfinityMapの同じ射の像の端点正規化を照合し、任意の底上の射について元のleftStraighteningInfinityMap_evaluateIsoの自然性を適用する。定義のidと二つのEq.mpの処理を分割し、同じ両端の等式をArrowの式で保持した。自然性は既存のNatIso.naturality_2を使い、元の指定評価同型を選び直していない。
+
+以下は既存構成の係数移送・評価・自然性・合成則と証明の分割で、新しい数学のIDは追加しない。個別検査 /private/tmp/isw2-straightening-map-arrow.lean は9回目で終了コード0、出力なし。既存の型・計算上限は変更していない。新規三本はすべて200行未満。
+
+#### FunctorHomEvaluationArrow（35行）
+
+```lean
+lemma functorHomEvaluate_arrow {K X : SSet.{u}} {U V : K ⟶ X}
+    (a : FunctorHom U V) (x : K _⦋0⦌) :
+    Arrow.mk (functorHomEvaluate a x) =
+      Arrow.mk ((hoFunctor.map (evaluateFunctorAt (Y := X) x)).toFunctor.map a)
+```
+
+#### LeftStraighteningDiagramHomArrow（60行）
+
+```lean
+lemma leftStraighteningInfinityDiagramHom_heq {E F B : SSet.{u}}
+    (p : E ⟶ B) (q : F ⟶ B) [LeftFibration p] [LeftFibration q]
+    (f : E ⟶ F) (hf : f ≫ q = p) :
+    HEq (leftStraighteningInfinityDiagramHom p q f hf)
+      ((hoFunctor.map (leftStraighteningInfinityMap B)).toFunctor.map
+        (SSet.Truncated.HomotopyCategory.homMk (leftFibrationInfinityEdge p q f hf).toTruncated))
+
+lemma leftStraighteningInfinityDiagramHom_arrow {E F B : SSet.{u}}
+    (p : E ⟶ B) (q : F ⟶ B) [LeftFibration p] [LeftFibration q]
+    (f : E ⟶ F) (hf : f ≫ q = p) :
+    Arrow.mk (leftStraighteningInfinityDiagramHom p q f hf) =
+      Arrow.mk ((hoFunctor.map (leftStraighteningInfinityMap B)).toFunctor.map
+        (SSet.Truncated.HomotopyCategory.homMk (leftFibrationInfinityEdge p q f hf).toTruncated))
+```
+
+#### LeftStraighteningDiagramHomEvaluation（84行）
+
+```lean
+lemma leftStraighteningInfinityDiagramHom_evaluate_arrow {E F B : SSet.{u}}
+    (p : E ⟶ B) (q : F ⟶ B) [LeftFibration p] [LeftFibration q]
+    (f : E ⟶ F) (hf : f ≫ q = p) (b : B _⦋0⦌) :
+    Arrow.mk (functorHomEvaluate (leftStraighteningInfinityDiagramHom p q f hf) (ULift.up b)) =
+      Arrow.mk ((hoFunctor.map (evaluateFunctorAt (Y := SpaceInfinity.{u}) (ULift.up b))).toFunctor.map
+        ((hoFunctor.map (leftStraighteningInfinityMap B)).toFunctor.map
+          (SSet.Truncated.HomotopyCategory.homMk (leftFibrationInfinityEdge p q f hf).toTruncated)))
+
+lemma leftStraighteningInfinityMap_fiberEvaluate_arrow {E F B : SSet.{u}}
+    (p : E ⟶ B) (q : F ⟶ B) [LeftFibration p] [LeftFibration q]
+    (f : E ⟶ F) (hf : f ≫ q = p) (b : B _⦋0⦌) :
+    Arrow.mk ((hoFunctor.map
+      (leftStraighteningInfinityMap B ≫ evaluateFunctorAt (Y := SpaceInfinity.{u}) (ULift.up b))).toFunctor.map
+        (SSet.Truncated.HomotopyCategory.homMk (leftFibrationInfinityEdge p q f hf).toTruncated)) =
+      Arrow.mk (((leftStraighteningInfinityMap_evaluateIso b).app (leftFibrationInfinityVertex p)).hom ≫
+        (hoFunctor.map (leftFibrationInfinityFiberEvaluation b)).toFunctor.map
+          (SSet.Truncated.HomotopyCategory.homMk (leftFibrationInfinityEdge p q f hf).toTruncated) ≫
+        ((leftStraighteningInfinityMap_evaluateIso b).app (leftFibrationInfinityVertex q)).inv)
+
+lemma leftStraighteningInfinityDiagramHom_fiber_arrow {E F B : SSet.{u}}
+    (p : E ⟶ B) (q : F ⟶ B) [LeftFibration p] [LeftFibration q]
+    (f : E ⟶ F) (hf : f ≫ q = p) (b : B _⦋0⦌) :
+    Arrow.mk (functorHomEvaluate (leftStraighteningInfinityDiagramHom p q f hf) (ULift.up b)) =
+      Arrow.mk (((leftStraighteningInfinityMap_evaluateIso b).app (leftFibrationInfinityVertex p)).hom ≫
+        (hoFunctor.map (leftFibrationInfinityFiberEvaluation b)).toFunctor.map
+          (SSet.Truncated.HomotopyCategory.homMk (leftFibrationInfinityEdge p q f hf).toTruncated) ≫
+        ((leftStraighteningInfinityMap_evaluateIso b).app (leftFibrationInfinityVertex q)).inv)
+```
+
+privateの係数移送の二補題の型：
+
+```lean
+private lemma straighteningHomEqMp_heq_iff {α β : Sort u} (h : α = β) (a : α)
+    {γ : Sort _} (b : γ) : HEq (Eq.mp h a) b ↔ HEq a b
+
+private lemma straighteningHomArrow_of_heq {D : Type u} [Category.{v} D]
+    {a b a' b' : D} (ha : a = a') (hb : b = b')
+    {f : a ⟶ b} {g : a' ⟶ b'} (h : HEq f g) : Arrow.mk f = Arrow.mk g
+```
+
+### 283.2 検収と残り
+
+新規三本179行の対象ビルド351は成功（依存を含む3,107 jobs）。--class impl --wait 3600、一枚の整理券、gtimeout 1700秒で順番を待ち、対象ビルドと小監査を実行した。小監査は246モジュール・1,654宣言、propext・Classical.choice・Quot.soundのみ、sorryAx・追加公理なし。公開六補題・private二補題。自レーン累計242本・16,462行（外枠まで5,538行）、自レーン実環境1,647宣言。main a4388efc9のEInfinity/3,745ファイル・13,373個の名前と自レーン608ファイル・1,920個の名前を照合し、異なるファイル間の重複0、内部も0。git diff --check通過。証跡は /private/tmp/isw2-build351.log、isw2-validation351.json、isw2-declaration-collision-scan351.json。既存のLean・⑤aのファイル・公式入口・公式監査は変更していない。今回の結論は同じ全図式の射の評価について、元の指定評価同型とfiber評価の同じ射の像を結ぶ自然性の式。fiber評価の像を実際のvertexFiberMapへさらに合わせ、元の全native変換の分類同型の成分と指定単位を通す必要がある。これだけで全変換の一致やR03h・R03d・3b-4aを閉じたとはしない。
+
+## 284. 元の全straighteningの射の評価と、同じ実際のfiber射の厳密な等式（2026-11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+### 284.1 型と範囲
+
+§283の同じ全射の評価はf49a6d017に保存した。さらに元のleftFibrationInfinityFiberEvaluationの同じcoherentな辺の像を、実際のvertexFiberMapの同じcoherentな辺へ一致させた。元のleftStraighteningInfinityMap_evaluateIsoの同じ成分を既存の頂点の等式だけで正規化し、同じホモトピー圏の射の厳密な等式を回収する。
+
+以下は既存の豊穣作用・評価・全自然性・係数移送・合成則と証明の分割であり、新しい数学のIDは足さない。個別検査 /private/tmp/isw2-fiber-evaluation-edge.lean は4回目で終了コード0、出力なし。頂点の等式の直接の項がwhnfの既定上限に達した箇所は、既存の評価の法則と元の頂点の等式へ分割し、評価の始域も明記して通した。計算上限・既存の型は変更していない。
+
+#### LeftFibrationFiberEvaluationEdge（61行）
+
+```lean
+lemma leftFibrationInfinityFiberEvaluation_edge {E F B : SSet.{u}}
+    (p : E ⟶ B) (q : F ⟶ B) [LeftFibration p] [LeftFibration q]
+    (f : E ⟶ F) (hf : f ≫ q = p) (b : B _⦋0⦌) :
+    (leftFibrationInfinityFiberEvaluation b).app (Opposite.op ⦋1⦌)
+        (leftFibrationInfinityEdge p q f hf).edge =
+      (coherentNerveEdge (show leftFibrationFiberObject b (leftFibrationObjectOf p) ⟶
+          leftFibrationFiberObject b (leftFibrationObjectOf q) from vertexFiberMap p q f hf b)).edge
+
+lemma leftFibrationInfinityFiberEvaluation_hom_arrow {E F B : SSet.{u}}
+    (p : E ⟶ B) (q : F ⟶ B) [LeftFibration p] [LeftFibration q]
+    (f : E ⟶ F) (hf : f ≫ q = p) (b : B _⦋0⦌) :
+    Arrow.mk ((hoFunctor.map (leftFibrationInfinityFiberEvaluation b)).toFunctor.map
+      (SSet.Truncated.HomotopyCategory.homMk (leftFibrationInfinityEdge p q f hf).toTruncated)) =
+      Arrow.mk (HomotopyCategory.homMk (coherentNerveEdge
+        (show leftFibrationFiberObject b (leftFibrationObjectOf p) ⟶
+          leftFibrationFiberObject b (leftFibrationObjectOf q) from vertexFiberMap p q f hf b)))
+```
+
+#### LeftStraighteningDiagramFiberComparison（55行）
+
+```lean
+lemma leftStraighteningInfinityDiagram_fiber_vertex {E B : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p] (b : B _⦋0⦌) :
+    (leftStraighteningInfinityDiagram p).app (Opposite.op ⦋0⦌) (ULift.up b) =
+      (leftStraighteningInfinityMap B ≫ evaluateFunctorAt (Y := SpaceInfinity.{u}) (ULift.up b)).app
+        (Opposite.op ⦋0⦌) (leftFibrationInfinityVertex p)
+
+def leftStraighteningInfinityDiagram_fiberIso {E B : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p] (b : B _⦋0⦌) :
+    VertexIso ((leftStraighteningInfinityDiagram p).app (Opposite.op ⦋0⦌) (ULift.up b))
+      (coherentNerveVertex (leftFibrationFiberObject b (leftFibrationObjectOf p)))
+```
+
+#### LeftStraighteningDiagramFiberNaturality（79行）
+
+```lean
+lemma leftStraighteningInfinityDiagramHom_actualFiber_arrow {E F B : SSet.{u}}
+    (p : E ⟶ B) (q : F ⟶ B) [LeftFibration p] [LeftFibration q]
+    (f : E ⟶ F) (hf : f ≫ q = p) (b : B _⦋0⦌) :
+    Arrow.mk (functorHomEvaluate (leftStraighteningInfinityDiagramHom p q f hf) (ULift.up b)) =
+      Arrow.mk ((leftStraighteningInfinityDiagram_fiberIso p b).hom ≫
+        HomotopyCategory.homMk (coherentNerveEdge
+          (show leftFibrationFiberObject b (leftFibrationObjectOf p) ⟶
+            leftFibrationFiberObject b (leftFibrationObjectOf q) from vertexFiberMap p q f hf b)) ≫
+        (leftStraighteningInfinityDiagram_fiberIso q b).inv)
+
+lemma leftStraighteningInfinityDiagramHom_actualFiber_value {E F B : SSet.{u}}
+    (p : E ⟶ B) (q : F ⟶ B) [LeftFibration p] [LeftFibration q]
+    (f : E ⟶ F) (hf : f ≫ q = p) (b : B _⦋0⦌) :
+    functorHomEvaluate (leftStraighteningInfinityDiagramHom p q f hf) (ULift.up b) =
+      (leftStraighteningInfinityDiagram_fiberIso p b).hom ≫
+        HomotopyCategory.homMk (coherentNerveEdge
+          (show leftFibrationFiberObject b (leftFibrationObjectOf p) ⟶
+            leftFibrationFiberObject b (leftFibrationObjectOf q) from vertexFiberMap p q f hf b)) ≫
+        (leftStraighteningInfinityDiagram_fiberIso q b).inv
+```
+
+privateの同じ合成の係数移送の型：
+
+```lean
+private lemma straighteningFiberArrow_conjugation {D : Type u} [Category.{v} D]
+    {a b x y x' y' : D} (hx : x = x') (hy : y = y')
+    (l : a ⟶ x) (r : y ⟶ b) (f : x ⟶ y) (g : x' ⟶ y')
+    (h : Arrow.mk f = Arrow.mk g) :
+    Arrow.mk (l ≫ f ≫ r) =
+      Arrow.mk ((l ≫ eqToHom hx) ≫ g ≫ (eqToHom hy.symm ≫ r))
+```
+
+### 284.2 検収と残り
+
+新規三本195行の対象ビルド352は成功（依存を含む3,111 jobs）。--class impl --wait 3600、一枚の整理券、gtimeout 1700秒。小監査は249モジュール・1,662宣言、propext・Classical.choice・Quot.soundのみ、sorryAx・追加公理なし。公開定義一つ・公開補題五つ・private補題一つ。自レーン累計245本・16,657行（外枠まで5,343行）、自レーン実環境1,655宣言。main a4388efc9のEInfinity/3,745ファイル・13,373個の名前と、自レーン611ファイル・1,926個の名前を照合し、異なるファイル間の重複0、内部も0。git diff --check通過。証跡は /private/tmp/isw2-build352.log、isw2-validation352.json、isw2-declaration-collision-scan352.json。既存Lean・⑤aのファイル・公式入口・公式監査は変更していない。次は元のstrictBETotJointSourceNativeTransformationの両側の元の分類同型を、この同じ評価の等式へ合成する。その分類同型の指定単位での実際の作用、局所化に沿う全前合成の充満忠実性とYoneda評価を通した全変換の一致はまだ未完。今回の任意の射についての評価の式を、その全変換の一致の代わりにはしない。R03h・R03d・3b-4aは未完のまま続ける。
+
+## 285. 元の二変数native全変換の評価の式と、同じ全射の単位点の像（2026-11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+### 285.1 型と範囲
+
+§284の元の全射の評価と実fiber射の厳密な等式は6f9d939f7に保存した。元のstrictBETotJointSourceNativeTransformationの定義へ、既存のfunctorHomEvaluate_compと同じ全straighteningの評価の等式を代入し、元の両側の分類同型を含む式を得る。さらに元の置換単位を保つ同じ全空間の射について、同じfiber単位・pullback同型・底の等式を通した元の単位点の像が、元の恒等点と同型になることを得た。
+
+前者は任意のmとhmだけを扱う。後者のhuは元のexists_strictBETotJointSourceNativeLiftで保証される元の置換単位の条件そのもので、弱同値性や新しい単位保存条件を前提には足していない。これらは既存の評価・合成・単位・係数移送の法則とR03iの適用の分割であり、新しい数学のIDは追加しない。
+
+個別検査は/private/tmp/isw2-native-transform-eval.leanが初回、/private/tmp/isw2-native-lift-unit-point.leanが2回目で終了コード0、出力なし。後者の初回は一時ファイルでcontinuousLeftFibrationReplacementUnitの名前空間が不足しており、明示して直した。計算上限・既存の型を変えていない。新規二本は200行未満。
+
+#### StrictDiagramTotJointNativeTransformationEvaluation（68行）
+
+```lean
+lemma strictBETotJointSourceNativeTransformation_evaluate
+    (m : (simplicialElementsReplacement (strictBETotJointSourceCoefficients A)).left ⟶
+      strictBETotJointNativeHomTotalSpace A)
+    (hm : m ≫ strictBETotJointNativeHomProjection A =
+      (simplicialElementsReplacement (strictBETotJointSourceCoefficients A)).hom)
+    (P : strictBETotJointHomIndex A) :
+    let p := (simplicialElementsReplacement (strictBETotJointSourceCoefficients A)).hom
+    let q := strictBETotJointNativeHomProjection A
+    let b := nerveVertex P
+    functorHomEvaluate (strictBETotJointSourceNativeTransformation A m hm) (ULift.up b) =
+      functorHomEvaluate (strictBETotJointRawSourceElementsClassificationIso A).hom (ULift.up b) ≫
+        (leftStraighteningInfinityDiagram_fiberIso p b).hom ≫
+        HomotopyCategory.homMk (coherentNerveEdge
+          (show leftFibrationFiberObject b (leftFibrationObjectOf p) ⟶
+            leftFibrationFiberObject b (leftFibrationObjectOf q) from vertexFiberMap p q m hm b)) ≫
+        (leftStraighteningInfinityDiagram_fiberIso q b).inv ≫
+        functorHomEvaluate (strictBETotJointNativeHomClassificationIso A).hom (ULift.up b)
+```
+
+#### StrictDiagramTotJointNativeLiftUnitPoint（77行）
+
+```lean
+lemma strictBETotJointSourceNativeLiftUnit_identityPoint
+    (m : (simplicialElementsReplacement (strictBETotJointSourceCoefficients A)).left ⟶
+      strictBETotJointNativeHomTotalSpace A)
+    (hm : m ≫ strictBETotJointNativeHomProjection A =
+      (simplicialElementsReplacement (strictBETotJointSourceCoefficients A)).hom)
+    (hu : ((continuousLeftFibrationReplacementUnit (nerve (strictBETotJointHomIndex A))).app
+      (Over.mk (nerveMap (strictBETotJointSourceElementsProjection A)))).left ≫ m =
+        strictBETotJointSourceNativeHomMap A) (X : (operad A).Algebra) :
+    let P := strictBETotJointUnitIndex A X
+    Nonempty (VertexIso
+      ((strictBETotJointNativeUnitFiberIso A X).hom.app (Opposite.op ⦋0⦌)
+        (((simplicialElementsFiberUnit (strictBETotJointSourceCoefficients A) P ≫
+          vertexFiberMap (simplicialElementsReplacement (strictBETotJointSourceCoefficients A)).hom
+            (strictBETotJointNativeHomProjection A) m hm (nerveVertex P) ≫
+          (vertexFiberPullbackIso (twistedArrowProjection (CAlg_R A))
+            (strictBETotJointNativeHomInput A) (nerveVertex P)).hom).app (Opposite.op ⦋0⦌)
+              (nerveVertex (strictBETotJointSourceNativeUnitFiberElement A X)))))
+      (twistedArrowHomSpaceIdentityPoint ((strictBETotModelSource A).app (Opposite.op ⦋0⦌)
+        (nerveVertex (modelRelativeObject (operad A).Algebra X)))))
+```
+
+### 285.2 検収と残り
+
+新規二本145行の対象ビルド353は成功（依存を含む12,318 jobs）。--class impl --wait 3600、一枚の整理券、gtimeout 1700秒。小監査は251モジュール・1,669宣言、propext・Classical.choice・Quot.soundのみ、sorryAx・追加公理なし。公開二補題・局所instance五つ。自レーン累計247本・16,802行（外枠まで5,198行）、自レーン実環境1,662宣言。main a4388efc9のEInfinity/3,745ファイル・13,373個の名前と、自レーン613ファイル・1,928個の名前を照合し、異なるファイル間の重複0、内部も0。git diff --check通過。証跡は /private/tmp/isw2-build353.log、isw2-validation353.json、isw2-declaration-collision-scan353.json。既存のLean・⑤aのファイル・公式入口・公式監査は変更していない。次に残るのは、元のraw側の全分類同型が元のraw単位を同じfiber単位へ送り、元のnative側の全分類同型が同じ実fiberの恒等点へ合うことの、指定された元の成分での照合。さらに局所化に沿う全前合成の充満忠実性と既存のYoneda評価の全同値を使い、全変換の同じ射の一致へ戻す必要がある。R03hの全interval族、R03dの全関手同型と元の固定始域の同型の一致、3b-4aは未完のまま。今回の任意のmに対する式と元のmの単位点の同型を、その全変換の一致の代用にはしない。
+
+## 286. 元の分類同型の順射と、同じ元の全射の像の照合（2026-11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+### 286.1 型と範囲
+
+§285の元のnative全変換の評価と同じ全射の単位点の比較は389a5c352に保存した。raw側の全分類同型に現れるleftClassification_of_precompositionEquivalenceについて、その既存の順射が同じ元の射のleftStraighteningInfinityDiagramHomそのものであることを合わせ、同じ実fiberの評価の式へ接続した。定義が元の辺の類のasIsoを使っていることと、元の二つの頂点の等式を保持する。
+
+以下は既存構成の係数移送・合成・評価の法則と証明の分割であり、新しい数学のIDは追加しない。個別検査 /private/tmp/isw2-classification-forward-hom.lean は2回目で終了コード0（unused simp引数id_eqの警告一件）。新規本体ではその未使用引数だけを外し、対象ビルド354で確かめる。計算上限・既存の型は変えていない。
+
+#### ClassificationTransportHom（84行）
+
+```lean
+lemma leftClassification_of_precompositionEquivalence_value {E F B : SSet.{u}} [Quasicategory B]
+    (p : E ⟶ B) (q : F ⟶ B) [LeftFibration p] [LeftFibration q]
+    (f : E ⟶ F) (hf : f ≫ q = p) (ef : IsPrecompositionEquivalence f) :
+    HEq (leftClassification_of_precompositionEquivalence p q f hf ef)
+      (VertexIso.map (leftFibrationInfinityVertexIsoOfPrecompositionEquivalence p q f hf ef)
+        (leftStraighteningInfinityMap B))
+
+lemma leftClassification_of_precompositionEquivalence_hom {E F B : SSet.{u}} [Quasicategory B]
+    (p : E ⟶ B) (q : F ⟶ B) [LeftFibration p] [LeftFibration q]
+    (f : E ⟶ F) (hf : f ≫ q = p) (ef : IsPrecompositionEquivalence f) :
+    (leftClassification_of_precompositionEquivalence p q f hf ef).hom =
+      leftStraighteningInfinityDiagramHom p q f hf
+
+lemma leftClassification_of_precompositionEquivalence_fiber_value {E F B : SSet.{u}} [Quasicategory B]
+    (p : E ⟶ B) (q : F ⟶ B) [LeftFibration p] [LeftFibration q]
+    (f : E ⟶ F) (hf : f ≫ q = p) (ef : IsPrecompositionEquivalence f)
+    (b : B _⦋0⦌) :
+    functorHomEvaluate (leftClassification_of_precompositionEquivalence p q f hf ef).hom (ULift.up b) =
+      (leftStraighteningInfinityDiagram_fiberIso p b).hom ≫
+        HomotopyCategory.homMk (coherentNerveEdge
+          (show leftFibrationFiberObject b (leftFibrationObjectOf p) ⟶
+            leftFibrationFiberObject b (leftFibrationObjectOf q) from vertexFiberMap p q f hf b)) ≫
+        (leftStraighteningInfinityDiagram_fiberIso q b).inv
+```
+
+privateの係数移送の型：
+
+```lean
+private lemma classificationTransportEqMp_heq_iff {α β : Sort u} (h : α = β) (a : α)
+    {γ : Sort _} (b : γ) : HEq (Eq.mp h a) b ↔ HEq a b
+
+private lemma classificationTransportIsoHom_heq {D : Type u} [Category.{v} D]
+    {a b a' b' : D} (ha : a = a') (hb : b = b')
+    (e : a ≅ b) (e' : a' ≅ b') (h : HEq e e') : HEq e.hom e'.hom
+```
+
+### 286.2 検収と残り
+
+新規一本84行の対象ビルド354は成功（依存を含む3,117 jobs）。--class impl --wait 3600、一枚の整理券、gtimeout 1700秒。小監査は252モジュール・1,673宣言、propext・Classical.choice・Quot.soundのみ、sorryAx・追加公理なし。公開三補題・private二補題。自レーン累計248本・16,886行（外枠まで5,114行）、自レーン実環境1,666宣言。main a4388efc9のEInfinity/3,745ファイル・13,373個の名前と、自レーン614ファイル・1,931個の名前を照合し、異なるファイル間の重複0、内部も0。mainのInfinityCategories/にも今回の分類同型の追加名・actualFiber_value・functorHomEvaluate_arrowが宣言されていないことをgit grepで確認した。git diff --check通過。証跡は /private/tmp/isw2-build354.log、isw2-validation354.json、isw2-declaration-collision-scan354.json。既存Lean・⑤aのファイル・公式入口・公式監査は変更していない。コードは4139b0da4に保存した。これによりraw側のGrothendieckの二つの分類同型は、元の比較射の単位の厳密な式を使って実fiberで追える。残る重み付きnerveの標準単位とnativeな指定fiber評価との照合、native側の底変換同型の同じfiber同型への照合、全Yoneda評価・局所化の全前合成の充満忠実性による全変換の一致は、次の検査単位として維持する。R03h・R03d・3b-4aは未完。
+
+## 287. 次の重み付きnerveの元の単位の評価：型の確認と残り（2026-11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+### 287.1 次の検査単位の型（未証明）
+
+次は既存のweightedNerveNativeStraighteningUnitIsoの同じ順射と、元の指定fiber評価の同じ成分の合成を、元のweightedNerveFiberMapへ合わせる。次の型を/private/tmp/isw2-weighted-native-unit-fiber-type.leanで、等式そのものをPropとして定義して検査した。個別Leanは終了コード0、表示は関数の型だけで、証明は置いていない。本体・manifest・監査・済みの数には追加していない。
+
+以下ではKanObjectはKerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC、kanDiagramCoherentNerve_vertexとkanObjectForgetはKerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes、weightedNerveProjection・weightedNerveFiberMapはKerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategoriesの既存の宣言。Fの値のKan性は(F.obj c).isKanComplexから局所instanceで供給し、新しい仮定にはしない。
+
+```lean
+lemma weightedNerveNativeStraighteningUnitIso_fiber_value
+    {C : Type u} [Category.{u} C] (F : C ⥤ KanObject.{u}) (c : C) :
+    let p := weightedNerveProjection (F ⋙ kanObjectForget)
+    functorHomEvaluate (weightedNerveNativeStraighteningUnitIso F).hom
+        (ULift.up (nerveVertex c)) ≫
+      (leftStraighteningInfinityDiagram_fiberIso p (nerveVertex c)).hom =
+        eqToHom (congrArg HomotopyCategory.mk
+          ((kanDiagramCoherentNerve_vertex F c).trans
+            (spaceInfinityVertex_eq_coherent (F.obj c)))) ≫
+        HomotopyCategory.homMk (coherentNerveEdge
+          (show F.obj c ⟶ leftFibrationFiberObject (nerveVertex c)
+              (leftFibrationObjectOf p) from
+            weightedNerveFiberMap (F ⋙ kanObjectForget) c))
+```
+
+既存の単位・係数移送の法則の照合として、見込み250〜650行。これはこの重み付き単位の照合だけの見込みで、R03d以下の全残りの見込みではない。まだ既定の計算上限内での証明・本体化はしていない。
+
+### 287.2 使う既存の元の比較と順序
+
+1. leftStraighteningInfinityDiagram_representationIsoは、元のfirstVertex局所化の全前合成の充満忠実性で、同じ制限上の同型をpreimageVertexIsoとして戻している。まず同じpreimageの順射を制限して元の順射へ戻す法則を使い、零単体のfirstVertexで評価する。leftStraighteningInfinityMap_evaluateIsoも同じ零単体のfirstVertexFiberIsoから作られており、その同じ成分へ合わせる。
+2. 同じnerveStraighteningRepresentationIsoとnerveCoherentTransportRepresentationIsoの評価を、元のstrict transportの評価へ合わせる。最後は既存のweightedNerveTransportUnit_evaluateが、標準単位とその評価の合成を元のweightedNerveFiberMapへ厳密に一致させる。
+3. raw側ではtotalElementsNativeClassificationIsoの元の三因子を保持する。今回のleftClassification_of_precompositionEquivalence_hom・fiber_valueは、その中の二つのGrothendieckの分類同型を元の実射へ戻す入口。既存のgrothendieckKanCoefficientComparison_unitとsimplicialElementsGrothendieckReplacementMap_unitを使う。最初の三辺のmixed比較では、元の単位ラベルのaug₀・probe比較・右置換単位と、元のrightFrameReplacementUnitの自然性で同じ零単体を追う。
+4. native側のstrictBETotJointNativeHomClassificationIsoは、元のleftStraighteningInfinityDiagram_baseChangeIsoの逆。その同じ成分を、元のvertexFiberPullbackIsoと同じ底の等式へ合わせる。元のmの単位点の像と元の恒等点の比較は§285で得ており、mの弱同値性は前提にしていない。
+5. 全変換の一致には、モデル源の局所化に沿う全前合成の充満忠実性と、既存のcanonicalYonedaTransformationFiberEvaluation_isQCatEquivalenceおよび同じ指定恒等点の比較が候補になる。この既存の評価は任意の標的への全変換空間を扱う。共変のHom側へ移す際は、同じ反転・両端交換・IdentityCoordinatesの恒等点の式を保つ。ここには未検証の照合が残り、対象ごとの一致で代用しない。
+6. R03hの元の全interval族の等式を維持し、元のnative fiber射自身の弱同値性、R03dの全関手同型と元の固定始域の同型のHEqを閉じる。その後はR02・R03→R04・R05→R11・R12のTotの分、停止点3b-4aの報告、実現R06〜R10の順。点つきKanのTotは作らない。
+
+### 287.3 今回の検証済みの区切り
+
+前回81e99bcecから新規16本・1,033行を検証して保存した。R03iの型は閉じたが、R03h・R03d・3b-4aは未完であり、停止点3b-4aの完了報告ではない。自レーンは248本・16,886行／外枠22,000行、残り5,114行。登録候補一覧はformalization-plans/stage-ii/is-w2-be-20261114-modules.jsonを更新済み。公式入口・公式監査への登録とmainへの取り込みは調整役が行うため、こちらでは変更していない。鍵は全て返却済み。/goalは元の全範囲を維持する。
+
+## 288. 元の表現同型の前合成と零単体評価の法則（2026-11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。R03d・R03hは未完了。
+
+§287の単位の評価の前提として、既存のfully faithfulな前合成の逆像が同じ指定同型へ戻る法則を先に切り出す。新しい構成・数学の一覧項目ではなく、既存構成の前合成・評価の法則と証明の分割。全FunctorIsoの等式を保持し、零単体でのArrowの等式はその帰結としてのみ使う。本体の対象ビルド・監査はこれから行う。
+
+### FullyFaithfulFunctorIsoPrecomposition（59行）
+
+```lean
+lemma fullyFaithfulPreimageFunctorIso_precomp {A B X : SSet.{u}} [Quasicategory X]
+    (i : A ⟶ B) (hi : IsFullyFaithful ((pre i).app X))
+    {F G : B ⟶ X} (e : FunctorIso (i ≫ F) (i ≫ G)) :
+    FunctorIso.precomp (f := F) (g := G)
+      (hi.preimageVertexIso (x := functorVertex F) (y := functorVertex G) e) i = e
+
+lemma fullyFaithfulPreimageFunctorIso_evaluate {A B X : SSet.{u}} [Quasicategory X]
+    (i : A ⟶ B) (hi : IsFullyFaithful ((pre i).app X))
+    {F G : B ⟶ X} (e : FunctorIso (i ≫ F) (i ≫ G)) (x : A _⦋0⦌) :
+    functorHomEvaluate
+      (hi.preimageVertexIso (x := functorVertex F) (y := functorVertex G) e).hom
+      (i.app (Opposite.op ⦋0⦌) x) = functorHomEvaluate e.hom x
+
+```
+
+### TransportSimplexFirstVertexZero（48行）
+
+```lean
+lemma transportSimplexFirstVertexMap_ulift_zero_vertex {B : SSet.{u}} (b : B _⦋0⦌) :
+    ((SSet.uliftFunctor.{u+1,u}).map (transportSimplexFirstVertexMap B)).app
+      (Opposite.op ⦋0⦌) (ULift.up (nerveVertex (transportSimplexIndex b))) = ULift.up b
+
+```
+
+### LeftStraighteningRepresentationRestriction（67行）
+
+```lean
+lemma leftStraighteningInfinityDiagram_representationIso_precomp {E B : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p]
+    (R : LeftTransportRepresentation ((SSet.uliftFunctor.{u+1,u}).map p)) :
+    let k := transportSimplexFirstVertexMap B
+    (leftStraighteningInfinityDiagram_representationIso p R).precomp
+      ((SSet.uliftFunctor.{u+1,u}).map k) =
+      leftStraighteningInfinityDiagram_firstVertexTransportIso p ≪≫
+        nerveCoherentTransportRepresentationIso (pullback.snd p k) (R.nativeRestrict k)
+
+lemma leftStraighteningInfinityDiagram_representationIso_precomp_evaluate {E B : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p]
+    (R : LeftTransportRepresentation ((SSet.uliftFunctor.{u+1,u}).map p))
+    (x : ((SSet.uliftFunctor.{u+1,u}).obj (nerve (TransportSimplexCategory B))) _⦋0⦌) :
+    let k := transportSimplexFirstVertexMap B
+    functorHomEvaluate (leftStraighteningInfinityDiagram_representationIso p R).hom
+      (((SSet.uliftFunctor.{u+1,u}).map k).app (Opposite.op ⦋0⦌) x) =
+    functorHomEvaluate (leftStraighteningInfinityDiagram_firstVertexTransportIso p ≪≫
+      nerveCoherentTransportRepresentationIso (pullback.snd p k) (R.nativeRestrict k)).hom x
+
+```
+
+### LeftStraighteningRepresentationZeroEvaluation（54行）
+
+```lean
+lemma leftStraighteningInfinityDiagram_representationIso_zero_evaluate_arrow {E B : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p]
+    (R : LeftTransportRepresentation ((SSet.uliftFunctor.{u+1,u}).map p)) (b : B _⦋0⦌) :
+    let k := transportSimplexFirstVertexMap B
+    Arrow.mk (functorHomEvaluate (leftStraighteningInfinityDiagram_representationIso p R).hom
+      (ULift.up b)) =
+    Arrow.mk (functorHomEvaluate (leftStraighteningInfinityDiagram_firstVertexTransportIso p ≪≫
+      nerveCoherentTransportRepresentationIso (pullback.snd p k) (R.nativeRestrict k)).hom
+        (ULift.up (nerveVertex (transportSimplexIndex b))))
+
+```
+
+### 288.5 検収と残り
+
+4本・6補題・229行を本体に追加。初回の対象ビルド355は、分割先のProject.FibrationAuxiliaries.FunctorCategoriesのopen不足で失敗し、当該openを補った。再検査355bは共有鍵 --class impl --wait 3600 と1700秒guardを一回使用し、対象4本のビルド（依存を含む3,105 jobs）・小監査とも終了0。小監査は256モジュール・1,679宣言、propext・Classical.choice・Quot.soundのみ。sorryAx・追加公理なし。既存Lean宣言は変更していない。
+
+累計は252モジュール・17,115行（外枠22,000行まで4,885行）、自レーンの実環境宣言は1,672。公式の入口・root・監査への登録はしていない。登録対象はis-w2-be-20261114-modules.jsonに追加した4本。宣言名の照合ではmain a4388efc9のEInfinity/3,745ファイル・13,373名と、自レーン618ファイル・1,937名の間に異なるファイルの同名宣言0、自レーン内部も0。genericな新規6名は今回の元の構成の前合成・評価則である。
+
+証跡：/private/tmp/isw2-build355b.log、AuditISW2BKCells355.lean、isw2-validation355.json、isw2-declaration-collision-scan355.json。git diff --check通過。B4′の結果は§268のまま（統合81683a2ab、書換え0・保留0）。
+
+この検収で§287の重み付きnative単位の実fiber評価の等式そのものを閉じたとはしない。今回の前合成の全FunctorIso等式を使い、同じ表現空間の同じ指定同型と、元のfirstVertexFiberIso・fiber評価への輸送をつなぐ段が残る。R03hの全interval族の等式・R03dの指定全関手同型・3b-4aは未完了。型・範囲を弱めず、⑤aの既存ファイルは変更していない。
+
+## 289. 元のnative単位の自己比較の消去と、同じ全表現同型との合成（2026-11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+既存のsmallFiberTransportRepresentationVertexIso_uniqueを使い、同じ表現を自分自身と比較する同型は恒等であることを示す。それを元のnerve比較へ写し、元のnative単位を元のstrict単位・opposite比較・同じ表現同型の逆の合成へ正規化する。新しい数学の項目ではなく、既存構成の単位・合成・評価の法則と証明の分割。§287の実fiber評価の等式は、この正規化だけではまだ得られない。全FunctorIsoの等式を保つ。
+
+#### TransportRepresentationSelfComparison（62行）
+
+```lean
+lemma smallFiberTransportRepresentationVertexIso_self {E B : SSet.{u+1}} (p : E ⟶ B) [LeftFibration p]
+    (hp : HasSmallSimplexFibers p) (R : LeftTransportRepresentation p) :
+    smallFiberTransportRepresentationVertexIso p hp R R = Iso.refl (HomotopyCategory.mk (transportWitnessVertex R))
+
+lemma smallFiberTransportRepresentationDiagramIso_self {E B : SSet.{u+1}} (p : E ⟶ B) [LeftFibration p]
+    (hp : HasSmallSimplexFibers p) (R : LeftTransportRepresentation p) :
+    smallFiberTransportRepresentationDiagramIso p hp R R = Iso.refl (HomotopyCategory.mk (functorVertex R.diagram))
+
+lemma nerveCoherentTransportRepresentationIso_self {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) [LeftFibration p] :
+    nerveCoherentTransportRepresentationIso p (nerveLeftTransportRepresentation p) =
+      Iso.refl (HomotopyCategory.mk (functorVertex (leftCoherentTransport p)))
+
+lemma nerveStraighteningRepresentationIso_self {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) [LeftFibration p] :
+    nerveStraighteningRepresentationIso p (nerveLeftTransportRepresentation p) =
+      leftStraighteningCoherentMap_oppositeVertexIso p
+```
+
+#### NativeNerveUnitNormalization（85行）
+
+```lean
+lemma leftStraighteningInfinityDiagram_nerveCandidateIso_normalized {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) [LeftFibration p] :
+    leftStraighteningInfinityDiagram_nerveCandidateIso p =
+      leftStraighteningInfinityDiagram_representationIso p (nerveLeftTransportRepresentation p) ≪≫
+        (leftStraighteningCoherentMap_oppositeVertexIso p).symm
+
+lemma weightedNerveNativeStraighteningUnitIso_normalized {C : Type u} [Category.{u} C] (F : C ⥤ KanObject.{u}) :
+    weightedNerveNativeStraighteningUnitIso F =
+      weightedNerveStraighteningUnitIso F ≪≫
+        leftStraighteningCoherentMap_oppositeVertexIso (weightedNerveProjection (F ⋙ kanObjectForget)) ≪≫
+        (leftStraighteningInfinityDiagram_representationIso
+          (weightedNerveProjection (F ⋙ kanObjectForget))
+          (nerveLeftTransportRepresentation (weightedNerveProjection (F ⋙ kanObjectForget)))).symm
+
+lemma weightedNerveNativeStraighteningUnitIso_trans_representationIso {C : Type u} [Category.{u} C] (F : C ⥤ KanObject.{u}) :
+    weightedNerveNativeStraighteningUnitIso F ≪≫
+      leftStraighteningInfinityDiagram_representationIso
+        (weightedNerveProjection (F ⋙ kanObjectForget))
+        (nerveLeftTransportRepresentation (weightedNerveProjection (F ⋙ kanObjectForget))) =
+    weightedNerveStraighteningUnitIso F ≪≫
+      leftStraighteningCoherentMap_oppositeVertexIso (weightedNerveProjection (F ⋙ kanObjectForget))
+
+lemma weightedNerveNativeStraighteningUnitIso_representation_evaluate {C : Type u} [Category.{u} C] (F : C ⥤ KanObject.{u}) (c : C) :
+    functorHomEvaluate (weightedNerveNativeStraighteningUnitIso F).hom
+        (ULift.up (nerveVertex c)) ≫
+      functorHomEvaluate (leftStraighteningInfinityDiagram_representationIso
+        (weightedNerveProjection (F ⋙ kanObjectForget))
+        (nerveLeftTransportRepresentation (weightedNerveProjection (F ⋙ kanObjectForget)))).hom
+        (ULift.up (nerveVertex c)) =
+    functorHomEvaluate (weightedNerveStraighteningUnitIso F).hom (ULift.up (nerveVertex c)) ≫
+      functorHomEvaluate (leftStraighteningCoherentMap_oppositeVertexIso
+        (weightedNerveProjection (F ⋙ kanObjectForget))).hom (ULift.up (nerveVertex c))
+```
+
+### 289.3 検収と残り
+
+新規2本147行、公開8補題・局所instance一つ。対象ビルド356（依存を含む3,105 jobs）と小監査はともに終了0。鍵は --class impl --wait 3600、一枚の整理券でビルド・監査の間だけ使用、gtimeout 1700秒。小監査は258モジュール・1,688宣言、propext・Classical.choice・Quot.soundのみ、sorryAx・追加公理なし。git diff --check通過。main a4388efc9のEInfinity/3,745ファイル13,373名と、自レーン620ファイル1,945名の照合で異なるファイルの同名宣言0、内部も0。証跡は/private/tmp/isw2-build356.log、isw2-validation356.json、isw2-declaration-collision-scan356.json。
+
+累計254本・17,262行、実環境1,681宣言。外枠22,000行まで4,738行。登録候補の一覧is-w2-be-20261114-modules.jsonに2本を追加した。既存のLean宣言・⑤aのファイル・公式入口・公式監査は変更していない。§288の4本は70d5f311bに保存済み。
+
+元のnative単位に同じ表現同型を後合成すると、元のstrict単位とopposite比較の合成へ厳密に戻る。この全FunctorIsoの等式とその評価は閉じた。一方、§287の右辺にある実weightedNerveFiberMapのホモトピー類との等式は未証明。nerveLeftTransportRepresentationのcomparisonはleftCoherentTransportDirectComparisonであり、その公開の存在命題は底上の射と前合成同値性を与える。自己単位則から、この射が元のstrict transport評価と一致するとは推論しない。同じ指定された比較と同じfiber評価との両立を示す工程が残る。
+
+次は今回の正規化を使い、元のfirstVertex制限・同じ表現比較・実fiber評価の式を照合する。R03hの同じnative fiber射と元の固定始域のroofの全interval族の等式も維持する。点の同型や今回の自己単位則で全族の等式を代用しない。R03d・R03hと3b-4aは未完で、停止点3b-4aの報告ではない。新しい仮定や界面の変更は追加していない。
+
+## 290. 同じcoslice・pinched・edgewise三角形の全interval族での移送（2026-11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+R03hの全パラメータの式を進めるため、既存のcosliceFiberRightMappingEquivalenceとtwistedArrowHomPinchedEquivalence_coslice、同じedgewise三角形の指定同型を、任意のKを始域とする全interval族の等式へ移す。既存構成の単位三角形・係数移送の法則であり、新しい数学の一覧項目は増やさない。FunctorIsoから同じ実ホモトピーを取り、既存のintervalFamilyHom_eq_of_homotopyへ渡す。Kの準圏性・単体集合のモデル構造・点ごとの等式から全族への推論は使わない。
+
+#### TwistedHomIntervalFamilyComparison（70行）
+
+```lean
+lemma cosliceFiberRightMappingEquivalence_interval_family {K C : SSet.{u}} [Quasicategory C]
+    {x y : C _⦋0⦌} (f : K ⟶ vertexFiber (sliceUnderProjection (yonedaEquiv.symm x)) y) :
+    intervalFamilyHom (f ≫ (cosliceFiberRightMappingEquivalence x y).hom ≫
+      pinchedHomToIntervalMappingSpace x y) =
+      intervalFamilyHom (f ≫ cosliceFiberToIntervalMappingSpace x y)
+
+lemma twistedArrowHomPinchedEquivalence_coslice_interval_family {K C : SSet.{u}} [Quasicategory C]
+    {x y : C _⦋0⦌} (f : K ⟶ vertexFiber (sliceUnderProjection (yonedaEquiv.symm x)) y) :
+    intervalFamilyHom (f ≫ cosliceTwistedHomMap x y ≫
+      (twistedArrowHomPinchedEquivalence x y).hom ≫ pinchedHomToIntervalMappingSpace x y) =
+      intervalFamilyHom (f ≫ cosliceFiberToIntervalMappingSpace x y)
+
+lemma twistedArrowHomPinchedEquivalence_interval_family {K C : SSet.{u}} [Quasicategory C]
+    {x y : C _⦋0⦌} (g : K ⟶ twistedArrowHomSpace x y) :
+    intervalFamilyHom (g ≫ (twistedArrowHomPinchedEquivalence x y).hom ≫
+      pinchedHomToIntervalMappingSpace x y) =
+      intervalFamilyHom (g ≫ (cosliceTwistedHomMap_isQCatEquivalence x y).choose.inv ≫
+        cosliceFiberToIntervalMappingSpace x y)
+
+lemma twistedArrowHomOppositePinchedEquivalence_edgewise_interval_family {K C : SSet.{u}} [Quasicategory C]
+    {x y : C _⦋0⦌} (g : K ⟶ edgewiseSubdivision (twistedArrowHomSpace x y)) :
+    intervalFamilyHom (g ≫ edgewiseLeft (twistedArrowHomSpace x y) ≫
+      (twistedArrowHomOppositePinchedEquivalence x y).hom ≫ pinchedHomToIntervalMappingSpace x y) =
+      intervalFamilyHom (g ≫ edgewiseRight (twistedArrowHomSpace x y) ≫
+        (twistedArrowHomPinchedEquivalence x y).hom ≫ pinchedHomToIntervalMappingSpace x y)
+```
+
+今回の四式は同じ指定逆と比較射を保持する。元のnative射を同じcoslice側の全族へ送り、元のroofの全族と照合する工程はまだ残る。R03h・R03d・3b-4aの完了とはしない。
+
+### 290.2 検収と残り
+
+新規1本70行・公開4補題。対象ビルド357（依存を含む2,287 jobs）と小監査はともに終了0。共有鍵 --class impl --wait 3600、一枚の整理券、gtimeout 1700秒。小監査は259モジュール・1,697宣言、propext・Classical.choice・Quot.soundのみ、sorryAx・追加公理なし。新規モジュールの実環境宣言は8。従来モジュールTwistedHomPinchedComparisonの環境宣言はimport閉包の変化で15から16となり、ソースの追加4補題を監査の宣言増分9とは同一視していない。既存Leanのソースは変更していない。
+
+累計255本・17,332行、実環境1,690宣言。外枠22,000行まで4,668行。main a4388efc9のEInfinity/3,745ファイル13,373名と自レーン621ファイル1,949名を照合し、異なるファイルの同名宣言0、内部も0。git diff --check通過。公式入口・公式監査は変更せず、登録候補の一覧is-w2-be-20261114-modules.jsonに1本を追加した。証跡：/private/tmp/isw2-build357.log、isw2-validation357.json、isw2-declaration-collision-scan357.json。§289の2本は0c24adfd9に保存済み。
+
+元の反対twisted Homの任意の族について、同じedgewiseLeftの指定逆とedgewiseRight・同じcoslice比較の指定逆を使う一本の式へまとめる前提計算も一時ファイルで検査中。これを元のnative射へ適用し、同じcorrected pairingと元のroofの全族を比較する工程が残る。R03h・R03d・3b-4aの完成とはしない。今回の全Kの等式は点ごとの等式を代用せずに既存の三角形を移送したものである。目標の型・範囲と外枠は維持する。
+
+## 291. 元のnative射の全interval族を同じ指定逆の一本の式へ戻す次の検査単位（2026-11-15、個別検査）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+§290の次に、同じedgewiseLeftの指定逆・edgewiseRight・同じcoslice比較の指定逆を、一つの全interval族の式へ合成する。一般の反対twisted Homでの式は/private/tmp/isw2-opposite-interval-family.leanの個別検査2で終了0（名前空間Equivalenceのopenを追加して再検査）。本体のモジュールにはまだ追加しておらず、§290の検証済み255本・17,332行の数は増やさない。
+
+その式を元のstrictBETotJointSourceNativePinchedMapへ適用する型も次のとおり。新しい数学ではなく、元の既存比較射の定義と同じ指定三角形の係数移送である。元の射を別の同値へ置き換えない。モデル源の両端の定義的簡約を大きなsimpでまとめて扱うと型の照合に失敗したため、元のnative pinched射の定義からの等式hmapをrflで切り出し、その後で全族の法則を適用する形へ証明を分けた。計算上限は上げていない。
+
+以下は本体で検証済みの新規宣言ではなく、次の個別検査の型案。最後のBEへの適用は/private/tmp/isw2-native-pinched-interval-family.leanの検査4（ハンドル28748）で検査中。対象ビルド・小監査・ソースのコミットはまだであり、成功したとは記録しない。
+
+```lean
+lemma twistedArrowHomOppositePinchedEquivalence_interval_family {K C : SSet.{u}} [Quasicategory C]
+    {x y : C _⦋0⦌} (g : K ⟶ (twistedArrowHomSpace x y).op) :
+    intervalFamilyHom (g ≫ (twistedArrowHomOppositePinchedEquivalence x y).hom ≫
+      pinchedHomToIntervalMappingSpace x y) =
+      intervalFamilyHom (g ≫ (isQCatEquivalence_of_trivialKanFibration
+        (edgewiseLeft (twistedArrowHomSpace x y))).choose.inv ≫
+        edgewiseRight (twistedArrowHomSpace x y) ≫
+        (cosliceTwistedHomMap_isQCatEquivalence x y).choose.inv ≫
+        cosliceFiberToIntervalMappingSpace x y)
+
+lemma strictBETotJointSourceNativePinchedMap_interval_family_normalization (P : strictBETotJointHomIndex A) :
+    let x := (strictBETotModelSource A).app (Opposite.op ⦋0⦌)
+      (nerveVertex (((strictBETotJointHomSourceIndex A).obj P).unop))
+    let y := (strictBETotModelSource A).app (Opposite.op ⦋0⦌)
+      (nerveVertex ((strictBETotJointHomTargetIndex A).obj P))
+    let e := SSet.opFunctor.mapIso (eqToIso
+      (congrArg (fun b => vertexFiber (twistedArrowProjection (CAlg_R A)) b)
+        (strictBETotJointNativeHomInput_model_vertex A P)))
+    intervalFamilyHom (strictBETotJointSourceNativePinchedMap A P ≫
+      pinchedHomToIntervalMappingSpace x y) =
+      intervalFamilyHom (strictBETotJointSourceNativeOppositeFiberMap A P ≫ e.hom ≫
+        (isQCatEquivalence_of_trivialKanFibration (edgewiseLeft (twistedArrowHomSpace x y))).choose.inv ≫
+        edgewiseRight (twistedArrowHomSpace x y) ≫
+        (cosliceTwistedHomMap_isQCatEquivalence x y).choose.inv ≫
+        cosliceFiberToIntervalMappingSpace x y)
+```
+
+次はこの元のnative射の同じ全族を、同じcorrected pairingの全族へ戻し、§269以降の元のroofのaugmentation・評価・標的置換の全族の式と照合する。R03hの最終の全interval族の等式と、元の実射自身の弱同値性は未証明。R03dと3b-4aの残りも維持する。今回の既存構成の移送の法則を、新しい数学の完成や停止点3b-4aとは数えない。§289・§290の検証済みコードは0c24adfd9・6c1483d21に保存した。作業木に未検証のLeanは追加していない。
+
+## 292. 元の射の定義式と、反対twisted Homの全族の合成則を分割（2026-11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+§291の個別検査4は、BEへの全族の適用の宣言でkernel deterministic timeoutとなった。上限は変更していない。元のnative射の定義式だけを独立した補題へ分けた検査isw2-native-pinched-formula1は終了0。その補題を同じファイルの後続の全族の式で使う検査split1も後続の宣言でkernel deterministic timeoutとなった。
+
+次に任意の合成f≫hに対する汎用の移送則を分割した。大きなBEのimportを含む一時ファイルでは汎用のrwの証明自体がkernel deterministic timeoutになったが、BEをimportせず、等式hhをsubstで消去してから結合則だけを使う形へ分けたisw2-opposite-interval-family-composed1は終了0。BEの既存instanceを使う方も検査したが、失敗箇所は同じ旧汎用rwの補題だった。次の2モジュールに独立させて対象ビルド・小監査を行い、その検証済み汎用補題をimportしてBEへの適用を検査する。全て既存構成の係数移送・合成則と証明の分割で、新しい数学の一覧項目は追加しない。§291の元の全族の型は維持する。
+
+#### TwistedHomOppositeIntervalFamilyComparison（57行）
+
+```lean
+lemma twistedArrowHomOppositePinchedEquivalence_interval_family {K C : SSet.{u}} [Quasicategory C]
+    {x y : C _⦋0⦌} (g : K ⟶ (twistedArrowHomSpace x y).op) :
+    intervalFamilyHom (g ≫ (twistedArrowHomOppositePinchedEquivalence x y).hom ≫
+      pinchedHomToIntervalMappingSpace x y) =
+      intervalFamilyHom (g ≫ (isQCatEquivalence_of_trivialKanFibration
+        (edgewiseLeft (twistedArrowHomSpace x y))).choose.inv ≫
+        edgewiseRight (twistedArrowHomSpace x y) ≫
+        (cosliceTwistedHomMap_isQCatEquivalence x y).choose.inv ≫
+        cosliceFiberToIntervalMappingSpace x y)
+
+lemma twistedArrowHomOppositePinchedEquivalence_interval_family_comp {K T C : SSet.{u}} [Quasicategory C]
+    {x y : C _⦋0⦌} (f : K ⟶ T) (e : T ⟶ (twistedArrowHomSpace x y).op)
+    (h : T ⟶ Basic.pinchedHom x y)
+    (hh : h = e ≫ (twistedArrowHomOppositePinchedEquivalence x y).hom) :
+    intervalFamilyHom ((f ≫ h) ≫ pinchedHomToIntervalMappingSpace x y) =
+      intervalFamilyHom (f ≫ e ≫ (isQCatEquivalence_of_trivialKanFibration
+        (edgewiseLeft (twistedArrowHomSpace x y))).choose.inv ≫
+        edgewiseRight (twistedArrowHomSpace x y) ≫
+        (cosliceTwistedHomMap_isQCatEquivalence x y).choose.inv ≫
+        cosliceFiberToIntervalMappingSpace x y)
+```
+
+#### StrictDiagramTotJointSourceNativePinchedFactorization（49行）
+
+```lean
+lemma strictBETotJointSourceNativePinchedMap_factorization (P : strictBETotJointHomIndex A) : strictBETotJointSourceNativePinchedMap A P =
+      strictBETotJointSourceNativeOppositeFiberMap A P ≫
+        (SSet.opFunctor.mapIso (eqToIso
+          (congrArg (fun b => vertexFiber (twistedArrowProjection (CAlg_R A)) b)
+            (strictBETotJointNativeHomInput_model_vertex A P)))).hom ≫
+        (twistedArrowHomOppositePinchedEquivalence
+          ((strictBETotModelSource A).app (Opposite.op ⦋0⦌)
+            (nerveVertex (((strictBETotJointHomSourceIndex A).obj P).unop)))
+          ((strictBETotModelSource A).app (Opposite.op ⦋0⦌)
+            (nerveVertex ((strictBETotJointHomTargetIndex A).obj P)))).hom
+```
+
+### 292.3 検収
+
+2本106行、公開3補題・局所instance二つ。対象ビルド358は依存を含む12,251 jobsで成功、小監査も終了0。共有鍵 --class impl --wait 3600、一枚の整理券、gtimeout 1700秒でビルド・小監査の間だけ使用。小監査は261モジュール・1,703宣言、propext・Classical.choice・Quot.soundのみ、sorryAx・追加公理なし。自レーン累計257本・17,438行、実環境1,696宣言。外枠22,000行まで4,562行。git diff --check通過。main a4388efc9のEInfinity/3,745ファイル13,373名と自レーン623ファイル1,952名を照合し、異なるファイル間の重複0、内部も0。既存Lean・⑤aのファイル・公式入口・公式監査は変更していない。証跡は/private/tmp/isw2-build358.log、isw2-validation358.json、isw2-declaration-collision-scan358.json。
+
+対象ビルド済みの汎用モジュールをimportし、元のnative側の既存instanceを再利用する一時ファイルisw2-native-pinched-interval-imported1は終了0。§291の元のnative射の全interval族の正規化という同じ型が個別検査を通った。単一ファイルに汎用補題の証明も展開した検査とは区別する。計算上限は上げず、次に本体へ配置して対象ビルド・小監査を行う。R03hのroofとの最終等式・R03d・3b-4aは未完。
+
+## 293. 元のnative射自身の全interval族の正規化を本体へ（2026-11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+§291の型を弱めずに本体へ配置する。§292の検証済みの汎用合成則をimportし、元のnative pinched射を同じ因子の合成として代入する。新しい数学の項目ではなく、同じ指定比較の定義・合成・係数移送の法則。§292のコードはef0c24e9bに保存済み。
+
+#### StrictDiagramTotJointSourceNativeIntervalFamily（76行）
+
+```lean
+lemma strictBETotJointSourceNativePinchedMap_interval_family_normalization (P : strictBETotJointHomIndex A) :
+    let x := (strictBETotModelSource A).app (Opposite.op ⦋0⦌)
+      (nerveVertex (((strictBETotJointHomSourceIndex A).obj P).unop))
+    let y := (strictBETotModelSource A).app (Opposite.op ⦋0⦌)
+      (nerveVertex ((strictBETotJointHomTargetIndex A).obj P))
+    let e := SSet.opFunctor.mapIso (eqToIso
+      (congrArg (fun b => vertexFiber (twistedArrowProjection (CAlg_R A)) b)
+        (strictBETotJointNativeHomInput_model_vertex A P)))
+    intervalFamilyHom (strictBETotJointSourceNativePinchedMap A P ≫
+      pinchedHomToIntervalMappingSpace x y) =
+      intervalFamilyHom (strictBETotJointSourceNativeOppositeFiberMap A P ≫ e.hom ≫
+        (isQCatEquivalence_of_trivialKanFibration (edgewiseLeft (twistedArrowHomSpace x y))).choose.inv ≫
+        edgewiseRight (twistedArrowHomSpace x y) ≫
+        (cosliceTwistedHomMap_isQCatEquivalence x y).choose.inv ≫
+        cosliceFiberToIntervalMappingSpace x y)
+```
+
+R03hの右辺の元のroofの全族との最終等式はまだ得られていない。元の射自身の弱同値性やR03dの全関手同型の検収とは区別する。
+
+### 293.2 検収
+
+新規1本76行・公開1補題。§291の元のnative射自身についての全interval族の正規化の同じ型を閉じた。対象ビルド359（依存を含む12,251 jobs）・小監査とも終了0。共有鍵 --class impl --wait 3600、一枚の整理券、gtimeout 1700秒でビルドと小監査の間だけ使用した。カーネル・heartbeat・再帰の上限は変更していない。小監査は262モジュール・1,701宣言、propext・Classical.choice・Quot.soundのみ、sorryAx・追加公理なし。
+
+新規モジュールの実環境宣言は1。import閉包の変化によりTwistedHomIntervalFamilyComparisonの環境宣言は8→6、TwistedHomPinchedComparisonは16→15となり、監査合計は1,703→1,701。両モジュールのLeanソースは変更しておらず、新規宣言数と監査増減を同一視しない。自レーン累計258本・17,514行、実環境1,694宣言。外枠22,000行まで4,486行。main a4388efc9のEInfinity/3,745ファイル13,373名と自レーン624ファイル1,953名を照合し、異なるファイル間の同名宣言0、内部も0。git diff --check通過。
+
+既存のLean宣言・⑤aのファイル・公式入口・公式監査は変更していない。登録候補の一覧is-w2-be-20261114-modules.jsonに追加した。証跡：/private/tmp/isw2-build359.log、isw2-validation359.json、isw2-declaration-collision-scan359.json。全ての鍵は返却済み。
+
+### 293.3 R03hに残る全族の照合
+
+今回閉じた正規化の右辺は、元の反対fiber射に、同じ入力頂点の等式のop輸送、同じedgewiseLeftの指定逆、edgewiseRight、同じcoslice比較の指定逆、cosliceの区間比較を順に合成した全族である。残るR03hは、この同じ全族のintervalFamilyHomを、strictBETotJointSourceRoofNormalizedPinchedComparisonの全族のintervalFamilyHomと同定すること。既存の正規化を使って左辺を戻せるが、右辺の元のroofとの等式はまだ証明していない。
+
+次の証明では、元のstrictBETotJointSourceFiberPairingIsoとその全射影の等式を保持して、正規化されたnative全族を元のaugmentation・評価・標的置換の全族へ接続する。roof側では§269以降のNerveColumnのaugmentation逆と評価の全族の式、元の局所化の全三角形とのroof_naturality、pinchedEndpointEquivalence_familyによる同じ両端の輸送を使う。元のcorrected pairingの一つの頂点の類の一致だけで、この全族の等式を推論しない。§287のより強い重み付きnative単位のfiber値の式を、未証明のまま使用しない。
+
+局所化の全三角形の消去に使う、次の既存構成の自然性の共役式は一時ファイルisw2-column-roof-conjugation1で個別検査・終了0。まだ本体のモジュールには追加しておらず、上の累計行数には含めない。既存のNerveColumn.roof_naturalityの左端の指定同型を反転して移しただけの法則である。
+
+```lean
+lemma sameColumnRoofConjugation {I C : Type u} [Category.{u} I] [Category.{u} C]
+    {E : SSet.{u}} [Quasicategory E] {F G : nerve C ⟶ E} (e : FunctorIso F G)
+    (V : I ⥤ C) {X Y : C} (p : V ⟶ (Functor.const I).obj X)
+    (hpF : ∀ i, IsInvertibleEdge ((nerve.edgeMk (p.app i)).map F).toTruncated)
+    (hpG : ∀ i, IsInvertibleEdge ((nerve.edgeMk (p.app i)).map G).toTruncated)
+    (s : V ⟶ (Functor.const I).obj Y) :
+    (e.precomp (nerveMap ((Functor.const I).obj X))).inv ≫
+      (NerveColumn.augmentationIso F V p hpF).inv ≫ NerveColumn.hom F s ≫
+      (e.precomp (nerveMap ((Functor.const I).obj Y))).hom =
+      (NerveColumn.augmentationIso G V p hpG).inv ≫ NerveColumn.hom G s
+```
+
+R03h・R03d・3b-4aは未完。一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。停止点3b-4aの検収とはせず、R03d→R02・R03→R04・R05→R11・R12のTotの分、停止点の報告後に実現R06〜R10という元の範囲・順序を維持する。
+
+## 294. 元の全局所化三角形によるroof共役と同じ定値族の成分（2026-11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+§293.3のroof側の工程。既存のNerveColumn.roof_naturalityから元の全三角形の共役を求め、元の定値通常図式への制限を同じ指定成分の定値族へ戻す。sameFunctorIso_constant_familyの既存の合成同型はeqToIsoなので、全FunctorHomのArrowとして端点の等式を保持したまま元の成分へ正規化できる。任意のnerve I全体で述べ、一つの頂点での評価は使わない。新しい数学の一覧項目ではなく、既存構成の自然性・係数移送・合成の法則と証明の分割である。
+
+最後のroof共役則に現れるhaは、元のroofのintervalFamilyHomが既存のNerveColumnの全roofと一致するという入力。その入力には既存のstrictBETotJointSourceRoofPinchedComparison_column_roofを代入する予定で、使う側の不足する比較を仮定に移す入口ではない。型つき一覧のR03h・R03dを弱めない。個別検査isw2-column-roof-constant3は終了0（前の検査2の合成の括弧の型不一致を結合則で修正）。以下を本体へ置いて対象ビルド・小監査を行う。
+
+#### NerveColumnRoofTransport（83行）
+
+```lean
+lemma roof_conjugation {I C : Type u} [Category.{u} I] [Category.{u} C]
+    {E : SSet.{u}} [Quasicategory E] {F G : nerve C ⟶ E} (e : FunctorIso F G)
+    (V : I ⥤ C) {X Y : C} (p : V ⟶ (Functor.const I).obj X)
+    (hpF : ∀ i, IsInvertibleEdge ((nerve.edgeMk (p.app i)).map F).toTruncated)
+    (hpG : ∀ i, IsInvertibleEdge ((nerve.edgeMk (p.app i)).map G).toTruncated)
+    (s : V ⟶ (Functor.const I).obj Y) :
+    (e.precomp (nerveMap ((Functor.const I).obj X))).inv ≫
+      (NerveColumn.augmentationIso F V p hpF).inv ≫ NerveColumn.hom F s ≫
+      (e.precomp (nerveMap ((Functor.const I).obj Y))).hom =
+      (NerveColumn.augmentationIso G V p hpG).inv ≫ NerveColumn.hom G s
+
+lemma constantRestriction_iso_arrow {I C : Type u} [Category.{u} I] [Category.{u} C]
+    {E : SSet.{u}} [Quasicategory E] {F G : nerve C ⟶ E} (e : FunctorIso F G) (c : C) :
+    Arrow.mk (e.precomp (nerveMap ((Functor.const I).obj c))).hom =
+      Arrow.mk (constantFunctorHomMap (nerve I) (e.app (nerveVertex c)).hom)
+
+lemma constantRestriction_iso_inv_arrow {I C : Type u} [Category.{u} I] [Category.{u} C]
+    {E : SSet.{u}} [Quasicategory E] {F G : nerve C ⟶ E} (e : FunctorIso F G) (c : C) :
+    Arrow.mk (e.precomp (nerveMap ((Functor.const I).obj c))).inv =
+      Arrow.mk (constantFunctorHomMap (nerve I) (e.app (nerveVertex c)).inv)
+
+lemma roof_constant_conjugation_arrow {I C : Type u} [Category.{u} I] [Category.{u} C]
+    {E : SSet.{u}} [Quasicategory E] {F G : nerve C ⟶ E} (e : FunctorIso F G)
+    (V : I ⥤ C) {X Y : C} (p : V ⟶ (Functor.const I).obj X)
+    (hpF : ∀ i, IsInvertibleEdge ((nerve.edgeMk (p.app i)).map F).toTruncated)
+    (hpG : ∀ i, IsInvertibleEdge ((nerve.edgeMk (p.app i)).map G).toTruncated)
+    (s : V ⟶ (Functor.const I).obj Y)
+    (a : FunctorHom (SSet.const (F.app (Opposite.op ⦋0⦌) (nerveVertex X)) : nerve I ⟶ E)
+      (SSet.const (F.app (Opposite.op ⦋0⦌) (nerveVertex Y))))
+    (ha : Arrow.mk a = Arrow.mk ((NerveColumn.augmentationIso F V p hpF).inv ≫ NerveColumn.hom F s)) :
+    Arrow.mk (constantFunctorHomMap (nerve I) (e.app (nerveVertex X)).inv ≫ a ≫
+      constantFunctorHomMap (nerve I) (e.app (nerveVertex Y)).hom) =
+      Arrow.mk ((NerveColumn.augmentationIso G V p hpG).inv ≫ NerveColumn.hom G s)
+```
+
+この検収だけでnative側とroof側の全族の最終等式や3b-4aを完成としない。
+
+### 294.2 検収
+
+新規1本83行・公開4補題。対象ビルド360（依存を含む7,217 jobs）・小監査とも終了0。共有鍵 --class impl --wait 3600、一枚の整理券、gtimeout 1700秒。小監査は263モジュール・1,706宣言、propext・Classical.choice・Quot.soundのみ、sorryAx・追加公理なし。自レーン累計259本・17,597行、実環境1,699宣言。外枠22,000行まで4,403行。新規モジュールの実環境宣言は5。git diff --check通過。main a4388efc9のEInfinity/3,745ファイル13,373名と自レーン625ファイル1,957名を照合し、異なるファイル間の重複0、内部も0。証跡：/private/tmp/isw2-build360.log、isw2-validation360.json、isw2-declaration-collision-scan360.json。既存Lean・⑤aのファイル・公式入口・公式監査は変更していない。
+
+既存のstrictBETotJointSourceRoofPinchedComparison_column_roofを実際にhaへ代入したBEでの適用も、一時ファイルisw2-roof-native-column2で終了0。最初の検査ではpinchedEndpointEquivalence_familyの推論された終点がHoの関手値から取り出した頂点となり、元のモデル源の指定頂点との型照合に失敗した。x'・y'を元の二つの指定頂点に明示して直した。対象ビルド済みの汎用補題をimportする形で、全局所化三角形を消去して元のnativeな底の全augmentation逆・評価へ戻せた。次に本体へ配置し、対象ビルド・小監査を行う。R03hのnative射側との最終等式・R03d・3b-4aは未完。
+
+## 295. 元のroof比較の全局所化三角形の消去と指定された両端への全族の輸送（2026-11-15）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+§294の汎用則を実際に適用する。元のstrictBETotJointSourceRoofPinchedComparison_column_roofを、そのままhaへ代入する。元の全局所化三角形c.triangleと、元のpinchedEndpointEquivalence_familyを使うと、元のroofNativePinchedComparisonの全interval族は、同じnativeモデル源の元のframe augmentationの逆と元の評価の像へ戻る。さらに元のprobe・標的置換の指定同型で両端を戻す全族の等式を得る。これは既存構成の自然性・係数移送・合成の法則で、数学の一覧項目は増やさない。
+
+個別検査isw2-roof-native-column2とisw2-roof-native-normalized-family1は終了0。前者の初回の型の不一致はpinchedEndpointEquivalence_familyのx'・y'を元のモデル源の指定頂点に明示して修正。§294の検証済みコードは1bdf91594に保存した。次の三宣言を本体へ配置し、対象ビルド・小監査を行う。
+
+#### StrictDiagramTotJointSourceRoofNativeFamily（98行）
+
+```lean
+lemma strictBETotJointSourceRoofFrameAugmentation_inverted (P : strictBETotJointHomIndex A)
+    (s : ((simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P)ᵒᵖ) :
+    IsInvertibleEdge ((nerve.edgeMk
+      ((strictBETotJointSourceRoofFrameAugmentation A P).app s)).map
+      (strictBETotModelSource A)).toTruncated
+
+lemma strictBETotJointSourceRoofNativePinchedComparison_column_roof (P : strictBETotJointHomIndex A) :
+    Arrow.mk (intervalFamilyHom (strictBETotJointSourceRoofNativePinchedComparison A P ≫
+      pinchedHomToIntervalMappingSpace _ _)) =
+    Arrow.mk ((NerveColumn.augmentationIso (strictBETotModelSource A)
+      (strictBETotJointSourceRoofFrameDiagram A P)
+      (strictBETotJointSourceRoofFrameAugmentation A P)
+      (strictBETotJointSourceRoofFrameAugmentation_inverted A P)).inv ≫
+      NerveColumn.hom (strictBETotModelSource A)
+        (strictBETotJointSourceRoofFrameEvaluation A P))
+
+lemma strictBETotJointSourceRoofNormalizedPinchedComparison_interval_family (P : strictBETotJointHomIndex A) :
+    let K := nerve ((simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P)ᵒᵖ
+    intervalFamilyHom (strictBETotJointSourceRoofNormalizedPinchedComparison A P ≫
+      pinchedHomToIntervalMappingSpace _ _) =
+      constantFunctorHomMap K (strictBETotJointRoofProbeEndpointIso A P).inv ≫
+        intervalFamilyHom (strictBETotJointSourceRoofNativePinchedComparison A P ≫
+          pinchedHomToIntervalMappingSpace _ _) ≫
+        constantFunctorHomMap K (strictBETotJointRoofTargetEndpointUnitIso A P).inv
+```
+
+元のnative fiber射とこの同じroofの全族の最終等式R03hは、まだ未証明である。今回の右辺側の照合だけで元のnative射自身の弱同値性・R03d・3b-4aを完成とはしない。
+
+### 294.3 既存の同趣旨の補題を再利用し、自レーンの未取り込みの重複を撤回（§295の検査後）
+
+次の照合のため定値自然変換の既存宣言を調べたところ、mainに既存のPowerOperation/NerveColumnRoofConjugation.leanのSerrePositivity.EInfinity.PowerOperation.nerveColumnRoofConjugation_arrow、およびNerveColumnConstantRestriction.leanのnerveColumnConstantRestriction_arrowがあることを確認した。今回追加したNerveColumnRoofTransportの一般のaの版と同趣旨だが、今回のBE適用は実pinched族fを持つため、既存のfの版で足りる。発見時にチャットで報告した。⑤aの既存ファイルは変更せず、既存宣言を完全修飾名で再利用する形を検査した。
+
+このworktreeに既存のoleanがなかったため、共有鍵 --class impl --wait 3600と1700秒guardで当該既存1モジュールだけ対象ビルドし、7,224 jobsで成功（isw2-build362-existing-transport.log）。次の個別検査isw2-roof-native-existing-transport2は終了0。functorIsoEvaluate_eq_appで既存の同じ成分の表記を揃えただけで、BEの三宣言の型は全く同じまま。変更前後の主張の型の文字列も照合した。
+
+1bdf91594の自レーンの新規NerveColumnRoofTransport.leanはmainに存在せず、公式登録もないことを確認した。同ファイルを使う本体のimporterは今回の未コミットのBE新規ファイルだけ。この自レーンの83行・4補題を撤回し、登録候補一覧から外した。mainの既存宣言は一つも変更・削除していない。過去の§294の対象ビルド・監査の結果はその時点の検証の履歴であり、最終の登録候補にはこの汎用ファイルを含めない。
+
+### 295.2 最終の依存を既存の補題へ変更した検査
+
+変更前の361対象ビルド・監査はともに終了0（12,256 jobs、264モジュール・1,708宣言、標準三公理のみ）。証跡isw2-validation361.jsonは変更前のソースのSHA256を持つ。最終の依存では当該自レーン汎用ファイルを使わず、既存PowerOperationの同趣旨の宣言を直接使う。BEの三宣言の型を保ったまま、362対象ビルドと小監査を行う。登録候補の正本は更新したis-w2-be-20261114-modules.json。
+
+### 295.3 最終の依存での検収
+
+既存のPowerOperation.nerveColumnRoofConjugation_arrowを再利用する最終ソースの362対象ビルド（依存を含む12,255 jobs）・小監査はともに終了0。共有鍵 --class impl --wait 3600、一枚の整理券、gtimeout 1700秒でビルドと小監査の間だけ使用。小監査は263モジュール・1,704宣言、propext・Classical.choice・Quot.soundのみ、sorryAx・追加公理なし。最終の新規BEモジュールは98行・公開3補題・実環境宣言3。全て元の実roofと同じ指定局所化三角形・同じ両端同型を使い、全パラメータのintervalFamilyHomを扱う。
+
+未取り込みの汎用83行を撤回した最終の自レーンは259本・17,612行、実環境1,697宣言。外枠22,000行まで4,388行。登録候補のis-w2-be-20261114-modules.jsonはこの最終ソースの259本。mainの既存宣言・⑤aのファイル・公式入口・公式監査は変更していない。宣言名照合はmain a4388efc9のEInfinity/3,745ファイル13,373名と自レーン候補626ファイルからの1,956名で、異なるファイル間の重複0、内部も0。候補数は撤回された削除パスも含む索引の候補数で、本体の現存モジュール数は一覧の259本。git diff --check通過。証跡：/private/tmp/isw2-build362.log、isw2-validation362.json、isw2-declaration-collision-scan362.json。
+
+この検収で右辺の元のroofの全局所化三角形の消去と、元の指定probe・標的置換による全族の輸送を閉じた。native fiber射側から同じ全族への最終照合R03h、元の実射自身の弱同値性、R03d・3b-4aは未完のまま。§293のnative射自身の全族の正規化と今回の全roofの式を使い、その残りを詰める。
+
+次に使う、同じprobe射のモデル源の二つの宇宙表示と元のprobe頂点同型のArrowの照合は、個別検査isw2-model-source-edge1およびisw2-roof-probe-endpoint-arrow1で終了0。一時ファイルだけで、本体への対象ビルド・監査はまだ。今回はこの二補題を検収済みモジュール数・行数には含めない。未検証の新規Leanは作業木に残していない。全ての鍵は返却済み。
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。停止点3b-4aの完了報告ではない。
+
+## 296. 指定されたprobe頂点同型と、同じ元のprobe射の像を照合（2026-11-16）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+§295.3の一時検査済みの二補題を本体へ移す。strictBETotModelSourceとalgebraCAlgSourceの同じ実射の辺は、共通のcAlgLocalizationSourceへ送る元の一単体が一致する。これを元のframedLimitProbeComparisonへ適用し、strictBETotJointRoofProbeEndpointIsoの順射が同じ元のprobe射のnative像であることをArrowとして照合する。新しい数学の項目ではなく、既存の宇宙表示と指定同型の係数移送の法則。既存のprobe比較・CAlg源・局所化三角形を選び直さない。
+
+個別検査isw2-model-source-edge1・isw2-roof-probe-endpoint-arrow1は終了0。mainのEInfinityにも今回の二つの宣言名がないことをgit grepで確認した。この二補題は指定された同じ両端成分の照合であり、一般の全パラメータの等式を点での一致から推論するものではない。§293のnative全族と§295のroof全族の最終照合は、別に全族の形で維持する。
+
+#### StrictDiagramTotJointRoofProbeArrow（46行）
+
+```lean
+lemma strictBETotModelSource_edge {X Y : (operad A).Algebra} (f : X ⟶ Y) :
+    (((nerve.edgeMk ((AsSmall.up : (operad A).Algebra ⥤ AsSmall.{u+1} (operad A).Algebra).map f)).map
+      (strictBETotModelSource A)).edge) =
+      (((nerve.edgeMk f).map (algebraCAlgSource A)).edge)
+
+lemma strictBETotJointRoofProbeEndpointIso_hom_arrow (P : strictBETotJointHomIndex A) :
+    Arrow.mk (strictBETotJointRoofProbeEndpointIso A P).hom =
+      Arrow.mk (HomotopyCategory.homMk ((nerve.edgeMk
+        ((AsSmall.up : (operad A).Algebra ⥤ AsSmall.{u+1} (operad A).Algebra).map
+          (framedLimitProbeComparison A (AsSmall.down.obj P).1.unop))).map
+        (strictBETotModelSource A)))
+```
+
+対象ビルド・小監査を行ってから検収する。既存の⑤aのファイル・公式入口・公式監査は変更しない。
+
+### 296.2 検収
+
+新規1本46行・公開2補題・実環境宣言2。対象ビルド363（依存を含む12,242 jobs）・小監査とも終了0。共有鍵 --class impl --wait 3600、一枚の整理券、gtimeout 1700秒でビルドと小監査の間だけ使用した。小監査は264モジュール・1,706宣言、propext・Classical.choice・Quot.soundのみ、sorryAx・追加公理なし。自レーン累計260本・17,658行、実環境1,699宣言。外枠22,000行まで4,342行。git diff --check通過。main a4388efc9のEInfinity/3,745ファイル13,373名と自レーン候補626ファイルからの1,958名を照合し、異なるファイル間の重複0、内部も0。
+
+証跡：/private/tmp/isw2-build363.log、isw2-validation363.json、isw2-declaration-collision-scan363.json。登録候補の一覧is-w2-be-20261114-modules.jsonに追加した。mainの既存宣言・⑤aのファイル・公式入口・公式監査は変更していない。既存の原模型のinstanceをローカルに再利用し、新しい模型の仮定は追加していない。§295の最終のBE三宣言のコードは450a6f6aeに保存済み。
+
+指定probe同型の実際の元の射との照合は閉じたが、一般の全族の一致をこの二補題だけから推論しない。次は同じcoslice普遍円柱の制限・自然性の全族の法則を使い、native側のcorrected pairingの同じ全比較をroofの式へ接続する。R03hの最終の全interval族の等式、R03d・3b-4aは未完。
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+## 297. 指定coslice普遍円柱の全パラメータでの制限と自然性（2026-11-16）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+同じ普遍円柱の制限の厳密な等式を示し、任意のパラメータ準圏からcosliceへのFunctorIsoに沿う全HoFun射の自然性を証明する。既存の円柱の自然性・定値への後合成の単位則・2圏のwhisker_exchangeの法則であり、新しい数学の項目は足さない。点ごとの同値への置換ではない。R03hの同じ全族の最終照合はまだ未完である。
+
+一時ファイルisw2-point-coslice-unit-complete4の個別Lean検査は終了0。複雑な係数の前後合成をprivateな型つき略記に分割してelaborationを収めた。計算上限は上げていない。FunctorIsoの後合成の順射は既存functorIso_postcomp_homで合わせる。公開の最終型にprivate略記は露出しない。以下はprivateな証明分割も含む主張の型。各部分は200行未満。既存の⑤aのファイル、公式入口・公式監査は変更しない。
+
+```lean
+lemma pointCosliceFamilyHomotopy_precomp_h {A C : SSet.{u}} (c : C _⦋0⦌)
+    (a : A ⟶ sliceUnder (yonedaEquiv.symm c)) :
+    (a ▷ (Δ[1] : SSet.{u})) ≫ (pointCosliceFamilyHomotopy (𝟙 (sliceUnder (yonedaEquiv.symm c)))).h =
+      (pointCosliceFamilyHomotopy a).h
+
+lemma pointCosliceFamilyHomotopy_precomp_arrow {A C : SSet.{u}} (c : C _⦋0⦌)
+    (a : A ⟶ sliceUnder (yonedaEquiv.symm c)) :
+    Arrow.mk ((hoFunctor.map ((pre a).app C)).toFunctor.map
+      (Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
+        (pointCosliceFamilyHomotopy (𝟙 (sliceUnder (yonedaEquiv.symm c))))))) =
+      Arrow.mk (Truncated.HomotopyCategory.homMk
+        (functorEdgeOfSimplicialHomotopy (pointCosliceFamilyHomotopy a)))
+
+private def cosliceCoefficientPost {K J C : SSet.{u}} {a b : K ⟶ J}
+    (p : J ⟶ C) (α : FunctorHom a b) : FunctorHom (a ≫ p) (b ≫ p)
+
+private def cosliceCoefficientPre {K J C : SSet.{u}} {p q : J ⟶ C}
+    (a : K ⟶ J) (β : FunctorHom p q) : FunctorHom (a ≫ p) (a ≫ q)
+
+private lemma samePointCosliceUnitWhiskerNaturality {K C : SSet.{u}} [Quasicategory K] [Quasicategory C]
+    (c : C _⦋0⦌) {a b : K ⟶ sliceUnder (yonedaEquiv.symm c)} (α : FunctorHom a b) :
+    let J
+
+private lemma cosliceCoefficientPostConstArrow {K J C : SSet.{u}} [Quasicategory J]
+    {a b : K ⟶ J} (α : FunctorHom a b) (c : C _⦋0⦌) :
+    Arrow.mk (cosliceCoefficientPost (SSet.const c : J ⟶ C) α) =
+      Arrow.mk (𝟙 (HomotopyCategory.mk (functorVertex (SSet.const c : K ⟶ C))))
+
+private lemma cosliceCompArrow {D : Type*} [Category* D] {a b c a' b' c' : D}
+    (f : a ⟶ b) (g : b ⟶ c) (f' : a' ⟶ b') (g' : b' ⟶ c')
+    (hf : Arrow.mk f = Arrow.mk f') (hg : Arrow.mk g = Arrow.mk g') :
+    Arrow.mk (f ≫ g) = Arrow.mk (f' ≫ g')
+
+private lemma samePointCosliceUnitNaturalityArrow {K C : SSet.{u}} [Quasicategory K] [Quasicategory C]
+    (c : C _⦋0⦌) {a b : K ⟶ sliceUnder (yonedaEquiv.symm c)} (e : FunctorIso a b) :
+    Arrow.mk (Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
+        (pointCosliceFamilyHomotopy a)) ≫
+      (e.postcomp (sliceUnderProjection (yonedaEquiv.symm c))).hom) =
+      Arrow.mk (Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
+        (pointCosliceFamilyHomotopy b)))
+
+lemma pointCosliceFamilyHomotopy_naturality {K C : SSet.{u}} [Quasicategory K] [Quasicategory C]
+    (c : C _⦋0⦌) {a b : K ⟶ sliceUnder (yonedaEquiv.symm c)} (e : FunctorIso a b) :
+    Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
+        (pointCosliceFamilyHomotopy a)) ≫
+      (e.postcomp (sliceUnderProjection (yonedaEquiv.symm c))).hom =
+      Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
+        (pointCosliceFamilyHomotopy b))
+```
+
+対象ビルド364と小監査で検収する。
+
+### 297.2 検収
+
+新規1本143行、公開3補題、実環境宣言5。対象ビルド364（依存を含む1,954 jobs）・小監査とも終了0。共有鍵 --class impl --wait 3600、一枚の整理券、gtimeout 1700秒でビルドと小監査の間だけ使用した。小監査265モジュール・1,711宣言、propext・Classical.choice・Quot.soundのみ、sorryAx・追加公理なし。自レーン累計261本・17,801行、実環境1,704宣言。外枠22,000行まで4,199行。名前照合の異なるファイル間の重複0、内部も0。git diff --check通過。証跡isw2-build364.log・isw2-validation364.json・isw2-declaration-collision-scan364.json。登録候補一覧に追加した。
+
+既存の円柱の全HoFun射について自然性を閉じた。元のnative fiber射とroofの全interval族の照合R03h・R03d・3b-4aは未完。次に、この同じ円柱をfiberへ制限した射と既存intervalFamilyHomの厳密な対応を照合し、同じcoslice比較の全族へ接続する。
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+## 298. 同じcoslice fiberのinterval族を同じ普遍円柱へ厳密に接続（2026-11-16）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+既存のcosliceFiberToIntervalMappingSpaceのuncurry則で、同じfiber族のintervalFamilyHomが、包含後の同じpointCosliceFamilyHomotopyのHoFun射に一致することをArrowとして照合する。任意のパラメータ単体集合を扱い、準圏・Kanの追加仮定を要しない。円柱の終点の厳密な射影と定値表示の差だけをArrowで保持する。既存構成の係数表示の法則で、新しい数学の項目ではない。
+
+```lean
+lemma cosliceFiber_intervalFamilyHom_arrow {K C : SSet.{u}} {x y : C _⦋0⦌}
+    (f : K ⟶ vertexFiber (sliceUnderProjection (yonedaEquiv.symm x)) y) :
+    Arrow.mk (intervalFamilyHom (f ≫ cosliceFiberToIntervalMappingSpace x y)) =
+      Arrow.mk (Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
+        (pointCosliceFamilyHomotopy (f ≫ vertexFiberι _ y))))
+```
+
+一時ファイルisw2-coslice-fiber-interval-family2の個別検査は終了0。対象ビルド365と小監査を行う。これにより§293の同じnative族のcoslice正規化を§297の全関手圏の自然性へ渡せるが、元のcorrected pairingの比較の全射影を使ったR03hの最後の等式は、まだ別に必要。⑤a・公式入口・公式監査は変更しない。
+
+### 298.2 検収
+
+新規1本47行・公開1補題・実環境宣言1。対象ビルド365（依存を含む1,954 jobs）・小監査とも終了0。共有鍵 --class impl --wait 3600、一枚の整理券、gtimeout 1700秒でビルドと小監査の間だけ使用。小監査266モジュール・1,712宣言、標準三公理のみ、sorryAx・追加公理なし。自レーン累計262本・17,848行、実環境1,705宣言。外枠まで4,152行。宣言名の照合で異なるファイル間の重複0、内部も0、git diff --check通過。証跡isw2-build365.log・isw2-validation365.json・isw2-declaration-collision-scan365.json。登録候補の一覧に追加。既存宣言・⑤a・公式入口・公式監査は変更していない。R03h・R03d・3b-4aは未完。
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+### 298.3 次の厳密な通常圏の表示の照合（未検証）
+
+元のraw pairingの標的を固定して反対表示にすると、通常圏のUnderの同じ射の族となる。その全次数のcoslice表示には、本体に既存のNerveComparison.nerveUnderMap・nerveUnderChain・cosliceTwistedArrowMapが使える。次の既存構成同士の照合を一時ファイルisw2-under-coslice-twisted.leanで検討した。
+
+```lean
+lemma nerveUnderMap_comp_cosliceTwistedArrowMap
+    {C : Type u} [Category.{u} C] (c : C) :
+    nerveUnderMap c ≫ cosliceTwistedArrowMap (nervePoint c) =
+      twistedPairingNerveMap ((Functor.const (Under c)).obj (Opposite.op c))
+        (Under.forget c) (fun i => i.hom)
+        (fun {_ _} f => by simpa using Under.w f)
+```
+
+同じ既存の構成の表示・自然性の法則であり、新しい数学の項目は増やさない。型のelaborationと全単体への展開は確認したが、証明は未完。最後の個別検査isw2-under-coslice-twisted3は終了1（以下の未解決の等式）。検証済み本数・行数・宣言数には含めず、一時ファイルだけに残した。
+
+```lean
+cosliceEdgewiseCollapse ⦋n⦌ ≫ (pointJoinStdSimplexIso n).hom ≫
+    (SSet.yonedaEquiv (X := nerve C)).symm (nerveUnderChain c σ) =
+  (edgewiseWeightIso n).hom ≫
+    (SSet.yonedaEquiv (X := nerve C)).symm
+      (twistedPairingSimplex ((Functor.const (Under c)).obj (Opposite.op c))
+        (Under.forget c) (fun i => i.hom) σ)
+```
+
+残りは、同じedgewise重みの左半分を最初の点に潰し右半分の順序を保持する式と、Under.wを使った交差射の合成則。その後も元のcorrected pairingの指定全同型・同じ底のpathとの照合が必要で、通常圏の表示のこの補題だけからR03hの全族の最終等式を推論しない。元のnative fiber射自身の弱同値性・R03d・3b-4aは未完。共有鍵は返却済み、起動中の自レーンのビルドなし。
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+## 299. Underの同じ全射族のcoslice表示とtwisted pairingの厳密な一致（2026-11-16）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+§298.3の未完の照合を証明した。元のedgewise重みを標準単体で読み、同じ崩壊の左半分を零、右半分を元の順序の後続頂点に送る式を証明した。同じ長い射列の全対象・全射を照合し、交差ブロックにはUnder.wを使った。自然性や原射の選択を置き換えていない。既存構成同士の表示の法則・証明分割で、数学の一覧は増やさない。
+
+一時ファイルisw2-collapse-standard5の個別Lean検査は終了0。最初の型の展開ではYonedaの対象をnerve Cに明示した。交差射の反対圏の恒等射はchangeで元の通常圏の恒等射と明示してから既存のid_compを使った。計算上限は変更しない。以下はprivateな証明分割も含む主張の型。各部分200行未満。
+
+```lean
+private def collapseStandard (n : ℕ) : (Δ[n+n+1] : SSet.{u}) ⟶ Δ[n+1]
+
+private def collapseOrder (n : ℕ) : Fin (n+n+1+1) →o Fin (n+2)
+
+private lemma collapseOrder_map (n : ℕ) :
+    stdSimplex.map (SimplexCategory.mkHom (collapseOrder.{u} n)) = collapseStandard.{u} n
+
+private lemma collapseStandard_left (n : ℕ) :
+    stdSimplex.map (SimplexCategory.mkHom (joinLeftOrderHom n n)) ≫ collapseStandard.{u} n =
+      (SSet.const (SSet.yonedaEquiv (𝟙 (Δ[0] : SSet.{u}))) : Δ[n] ⟶ Δ[0]) ≫
+        joinInl Δ[0] Δ[n] ≫ (pointJoinStdSimplexIso n).hom
+
+private lemma collapseStandard_right (n : ℕ) :
+    stdSimplex.map (SimplexCategory.mkHom (joinRightOrderHom n n)) ≫ collapseStandard.{u} n =
+      stdSimplex.δ (0 : Fin (n+2))
+
+private lemma collapseOrder_left (n : ℕ) (i : Fin (n+1)) :
+    collapseOrder.{u} n (joinLeftOrderHom n n i) = 0
+
+private lemma collapseOrder_right (n : ℕ) (i : Fin (n+1)) :
+    collapseOrder.{u} n (joinRightOrderHom n n i) = i.succ
+
+private lemma collapseOrder_left_val (n : ℕ) (i : Fin (n+n+1+1)) (hi : i.val < n+1) :
+    collapseOrder.{u} n i = 0
+
+private lemma collapseOrder_right_val (n : ℕ) (i : Fin (n+n+1+1)) (hi : ¬ i.val < n+1) :
+    collapseOrder.{u} n i = (twistedPairingRightIndex i hi).succ
+
+private lemma collapseUnderChain {C : Type u} [Category.{u} C] (c : C)
+    {n : ℕ} (σ : Fin (n+1) ⥤ Under c) :
+    (collapseOrder.{u} n).monotone.functor ⋙ nerveUnderChain c σ =
+      twistedPairingSimplex ((Functor.const (Under c)).obj (Opposite.op c))
+        (Under.forget c) (fun i => i.hom) σ
+
+lemma nerveUnderMap_comp_cosliceTwistedArrowMap {C : Type u} [Category.{u} C] (c : C) :
+    nerveUnderMap c ≫ cosliceTwistedArrowMap (nervePoint c) =
+      twistedPairingNerveMap ((Functor.const (Under c)).obj (Opposite.op c)) (Under.forget c)
+        (fun i => i.hom) (fun {_ _} f => by simp)
+```
+
+対象ビルド366・小監査で検収する。これは元のraw pairingの全次数のcoslice表示に用いる照合であり、同じcorrected pairingの指定pathを通じた全族の最終等式R03hは別に残る。⑤a・公式入口・公式監査は変更しない。
+
+### 299.2 検収
+
+新規1本148行、公開1補題・実環境宣言3。対象ビルド366（依存を含む1,586 jobs）・小監査とも終了0。共有鍵 --class impl --wait 3600、一枚の整理券、gtimeout 1700秒でビルドと小監査の間だけ使用。小監査267モジュール・1,715宣言、propext・Classical.choice・Quot.soundのみ、sorryAx・追加公理なし。自レーン累計263本・17,996行、実環境1,708宣言。外枠まで4,004行。宣言名の照合で異なるファイル間の重複0、内部も0。git diff --check通過。証跡isw2-build366.log・isw2-validation366.json・isw2-declaration-collision-scan366.json。登録候補一覧に追加。元の構成・既存宣言・⑤a・公式入口・公式監査は変更しない。
+
+Underの同じ全射族の二つの表示の厳密な一致は閉じた。これを局所化後の同じ全円柱へ送り、元のcorrected pairingの指定全同型と同じpathに接続する段は残る。R03h・R03d・3b-4aは未完。
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+### 299.3 次の同じ円柱と通常変換の照合の型（未検証）
+
+次は同じUnderの普遍射の円柱を、既存nerveNatTransHomotopyの全円柱に照合する。型は次の形（underUnitは同じ通常圏の普遍射のprivateな略記）。既存構成の単位・表示・自然性の法則であり、数学の一覧は増やさない。
+
+```lean
+private def underUnit {C : Type u} [Category.{u} C] (c : C) :
+    (Functor.const (Under c)).obj c ⟶ Under.forget c where
+  app x := x.hom
+  naturality {_ _} f := by simpa using (Under.w f).symm
+
+lemma underCosliceCylinder {C : Type u} [Category.{u} C] (c : C) :
+    (pointCosliceFamilyHomotopy (nerveUnderMap c)).h =
+      (nerveNatTransHomotopy (underUnit c)).h
+```
+
+一時ファイルisw2-under-coslice-cylinder1は型のelaboration後、証明の三つの義務で終了1。型の検査と証明の完了を区別し、検証済みの本数・行数・宣言数には含めていない。本体の新規Leanは全て検証済みでコミットした。
+
+使える既存の法則：NerveComparison.nerve_hom_ext_oneは任意の始域から通常圏のnerveへの全写像を一次単体上の厳密な一致で判定する。JoinCylinderSimplex.joinCylinderMap_stdSimplex_valは区間の各頂点の値が零か一かにより、円柱の左・右の値を計算する。nerveNatTransHomotopy_componentは元の通常自然変換の成分を回収する。必要なのは通常圏のnerveへの円柱全体の等式であり、一般の準圏へのHoFun射について成分の一致のみから全族の等式を推論するものではない。
+
+この照合を元のモデル源で後合成し、§299の同じtwisted pairing表示、§297の全HoFun自然性、§298の同じfiberのinterval表示へ接続する。さらに元のcorrected pairingの指定全同型とその同じ全射影のpathを保つ照合が残る。R03h・R03d・3b-4aは未完、目標は継続中。共有鍵返却済み、起動中の自レーンの検査なし。
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+## 300. 同じUnderの全coslice円柱と元の通常自然変換の全像の一致（2026-11-16）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+§299.3の全円柱の照合を証明し、任意の通常図式Vと元の指定自然変換ηへ一般化した。指定モデル源Fへの後合成でも、同じ全HoFun射が元のnerveNatTransHom ηの像に一致することをArrowとして示す。元の自然変換・円柱・モデル源を選び直さない。既存構成の単位・自然性・表示の法則で、数学の一覧は増やさない。
+
+通常圏のnerveへの二つの全円柱にnerve_hom_ext_oneを適用し、区間の一次単体を二つの端点と恒等辺に分けた。端点は同じh₀・h₁、混合辺は同じjoin円柱の切断1の式とcosliceの直接評価で回収した。通常自然変換側は既存の関手圏nerve比較の評価式で同じ構造射を回収した。その後、§297の同じ普遍円柱の前合成則と既存の通常自然変換の前合成則を使って全図式へ移す。一般の準圏へのHoFun射について点ごとの一致から全族を推論していない。
+
+一時ファイルisw2-under-coslice-cylinder18の個別Lean検査は終了0。elaborationのため零単体の二つの表示とnerveの恒等作用を明示し、計算上限は変更していない。以下はprivateな証明分割も含む型（全ファイル209行、各部分200行未満）。
+
+```lean
+private def underUnit {C : Type u} [Category.{u} C] (c : C) :
+    (Functor.const (Under c)).obj c ⟶ Under.forget c
+
+private lemma interval_one_cases (t : (Δ[1] : SSet.{u}) _⦋1⦌) :
+    t = (Δ[1] : SSet.{u}).σ 0 (stdSimplex.obj₀Equiv.symm 0) ∨
+      t = stdSimplex.objEquiv.symm (𝟙 ⦋1⦌) ∨
+        t = (Δ[1] : SSet.{u}).σ 0 (stdSimplex.obj₀Equiv.symm 1)
+
+private lemma leftPrism_mixed {A : SSet.{u}} (σ : A _⦋1⦌) :
+    (leftMappingSpacePrism A).app (Opposite.op ⦋1⦌)
+      (stdSimplex.objEquiv.symm (𝟙 ⦋1⦌), σ) =
+      Join.mkOfSum (n
+
+private lemma underUnitCylinder_mixed {C : Type u} [Category.{u} C] (c : C)
+    (σ : (nerve (Under c)) _⦋1⦌) :
+    (nerveNatTransHomotopy (underUnit c)).h.app (Opposite.op ⦋1⦌)
+      (σ, stdSimplex.objEquiv.symm (𝟙 ⦋1⦌)) = ComposableArrows.mk₁ (σ.obj 1).hom
+
+private lemma underCosliceCylinder {C : Type u} [Category.{u} C] (c : C) :
+    (pointCosliceFamilyHomotopy (nerveUnderMap c)).h =
+      (nerveNatTransHomotopy (underUnit c)).h
+
+lemma nerveUnderLift_pointCosliceFamilyHomotopy {I C : Type u} [Category.{u} I]
+    [Category.{u} C] {c : C} {V : I ⥤ C} (η : (Functor.const I).obj c ⟶ V) :
+    (pointCosliceFamilyHomotopy (nerveMap (Under.lift V η) ≫ nerveUnderMap c)).h =
+      (nerveNatTransHomotopy η).h
+
+lemma nerveUnderLift_pointCosliceFamilyHomotopy_postcomp_arrow {I C : Type u}
+    [Category.{u} I] [Category.{u} C] {c : C} {V : I ⥤ C}
+    (η : (Functor.const I).obj c ⟶ V) {D : SSet.{u}} (F : nerve C ⟶ D) :
+    Arrow.mk (Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
+      (functorHomotopyPostcomp (pointCosliceFamilyHomotopy
+        (nerveMap (Under.lift V η) ≫ nerveUnderMap c)) F))) =
+      Arrow.mk ((hoFunctor.map ((ihom (nerve I)).map F)).toFunctor.map
+        (nerveNatTransHom η))
+```
+
+対象ビルド367・小監査で検収する。mainの既存宣言・⑤a・公式入口・公式監査は変更しない。R03hの同じnative fiber射とroofの最終の全族の照合、R03d・3b-4aは未完。
+
+### 300.2 検収
+
+新規1本209行、公開2補題・実環境宣言2。対象ビルド367（依存を含む2,054 jobs）・小監査とも終了0。共有鍵 --class impl --wait 3600、一枚の整理券、gtimeout 1700秒でビルドと小監査の間だけ使用。小監査268モジュール・1,717宣言、propext・Classical.choice・Quot.soundのみ、sorryAx・追加公理なし。自レーン累計264本・18,205行、実環境1,710宣言。外枠まで3,795行。宣言名の照合で異なるファイル間の重複0、内部も0。mainのInfinityCategoriesについても公開の二宣言名をgit grepし、既存宣言との重複なし。git diff --check通過。証跡isw2-build367.log・isw2-validation367.json・isw2-declaration-collision-scan367.json。登録候補の一覧に追加。既存宣言・⑤a・公式入口・公式監査は変更していない。
+
+任意の通常図式と元の自然変換の同じcoslice円柱、指定モデル源の後合成後の全HoFun射の像の一致は閉じた。元のcorrected pairingの同じ指定pathを通じたnative fiber射とroofの最終全族の等式R03h・R03d・3b-4aは未完。
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+## 301. 同じ指定自然変換の全twisted pairingと、その指定モデル源の像の厳密な一致（2026-11-16）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+§299のUnderの普遍族の厳密な等式を、元のUnder.lift V ηで前合成し、任意の指定自然変換ηの同じ全pairingへ移した。さらに既存cosliceTwistedArrowMap_postcompを使い、同じ指定モデル源Fで後合成した全写像も厳密に照合する。§300の同じ円柱の全HoFun射と今回のtwisted-arrowの全写像は、両方とも元の同じηを使う。新しい族や逆は選ばず、既存構成の前合成・後合成・自然性の法則として数学の一覧は増やさない。
+
+一時ファイルisw2-under-lift-twisted4の個別Lean検査は終了0。当初、既存のCosliceTwistedArrowNaturalityのoleanがなかったため、共有鍵 --class impl --wait 3600・1700秒guardで当該既存1モジュールだけをビルドし、3,848 jobsで成功。既存のファイルを変更・複製せず、既存の補題を完全修飾で使う。結合順序だけの差はCategory.assocで合わせた。
+
+```lean
+lemma nerveUnderLift_comp_cosliceTwistedArrowMap {I C : Type u} [Category.{u} I]
+    [Category.{u} C] {c : C} {V : I ⥤ C} (η : (Functor.const I).obj c ⟶ V) :
+    nerveMap (Under.lift V η) ≫ nerveUnderMap c ≫ cosliceTwistedArrowMap (nervePoint c) =
+      twistedPairingNerveMap ((Functor.const I).obj (Opposite.op c)) V (fun i => η.app i)
+        (fun {_ _} f => by simpa using (η.naturality f).symm)
+
+lemma nerveUnderLift_comp_cosliceTwistedArrowMap_postcomp {I C : Type u}
+    [Category.{u} I] [Category.{u} C] {c : C} {V : I ⥤ C}
+    (η : (Functor.const I).obj c ⟶ V) {D : SSet.{u}} (F : nerve C ⟶ D) :
+    nerveMap (Under.lift V η) ≫ nerveUnderMap c ≫ sliceUnderPostcomp (nervePoint c) F ≫
+      cosliceTwistedArrowMap (nervePoint c ≫ F) =
+      twistedPairingNerveMap ((Functor.const I).obj (Opposite.op c)) V (fun i => η.app i)
+        (fun {_ _} f => by simpa using (η.naturality f).symm) ≫ edgewiseSubdivisionMap F
+```
+
+対象ビルド368と小監査で検収する。§300.2の数値はisw2-validation367.jsonの実集計に訂正済み（公開2補題・実環境2宣言、2,054 jobs、監査1,717宣言、自レーン実環境1,710宣言）。この表示の一致だけでR03hの同じcorrected pairingを通じる最終等式、R03d・3b-4aを完了とはしない。⑤a・公式入口・公式監査は変更しない。
+
+### 301.2 検収
+
+新規1本46行、公開2補題・実環境宣言4。対象ビルド368（依存を含む3,858 jobs）・小監査とも終了0。共有鍵 --class impl --wait 3600、一枚の整理券、gtimeout 1700秒でビルドと小監査の間だけ使用。小監査269モジュール・1,721宣言、propext・Classical.choice・Quot.soundのみ、sorryAx・追加公理なし。自レーン累計265本・18,251行、実環境1,714宣言。外枠まで3,749行。宣言名の照合で異なるファイル間の重複0、内部も0。git diff --check通過。証跡isw2-build368.log・isw2-validation368.json・isw2-declaration-collision-scan368.json。登録候補一覧に追加。既存宣言・⑤a・公式入口・公式監査は変更していない。
+
+同じ元の指定自然変換から、円柱側とtwisted-arrow側の全像を厳密に照合する法則は閉じた。元の固定標的のpairingを反対圏のcosliceとして表示する際の両端交換、および元のcorrected pairingの全同型と同じ底のpathを保つ最終照合が残る。R03h・R03d・3b-4aは未完。
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+### 301.3 次の両端交換の型と、同じ重みの反転の検査
+
+固定標的の元のpairingを、反対圏で始点を固定したcosliceとして読むため、同じtwisted pairingの両端交換の法則を調べている。二重反対同値はC→Cᵒᵖᵒᵖの向きなので(opOpEquivalence C).inverseを使う。次の型はいずれも既存の構成の自然性・反転の表示の法則で、数学の一覧は増やさない。
+
+```lean
+private lemma standardIso_end_hom (n : ℕ) (e : (Δ[n] : SSet.{u}) ≅ Δ[n]) :
+    e.hom = 𝟙 _
+
+lemma edgewiseWeightReverse_standard (n : ℕ) :
+    (edgewiseWeightReverseIso.{u} ⦋n⦌).inv ≫
+      SSet.opFunctor.map (edgewiseWeightIso n).hom ≫ (stdSimplex.opIso ⦋n+n+1⦌).hom =
+        (edgewiseWeightIso n).hom
+
+private lemma oppositePairing_naturality {I C : Type u} [Category.{u} I] [Category.{u} C]
+    (A : I ⥤ Cᵒᵖ) (B : I ⥤ C) (h : ∀ i, (A.obj i).unop ⟶ B.obj i)
+    (hh : ∀ {i j} (f : i ⟶ j), (A.map f).unop ≫ h i ≫ B.map f = h j)
+    {i j : I} (f : i ⟶ j) :
+    (((B ⋙ (opOpEquivalence C).inverse).map f).unop) ≫ (h i).op ≫ A.map f = (h j).op
+
+lemma twistedPairingNerveMap_opposite_swap {I C : Type u} [Category.{u} I] [Category.{u} C]
+    (A : I ⥤ Cᵒᵖ) (B : I ⥤ C) (h : ∀ i, (A.obj i).unop ⟶ B.obj i)
+    (hh : ∀ {i j} (f : i ⟶ j), (A.map f).unop ≫ h i ≫ B.map f = h j) :
+    twistedPairingNerveMap (B ⋙ (opOpEquivalence C).inverse) A (fun i => (h i).op)
+      (oppositePairing_naturality A B h hh) ≫
+      edgewiseSubdivisionMap (nerveOppositeIso (C := C)).inv ≫
+        twistedArrowOppositeSwap (nerve C) = twistedPairingNerveMap A B h hh
+```
+
+standardIso_end_homとedgewiseWeightReverse_standardを含む一時ファイルisw2-twisted-weight-reversal2の個別Lean検査は終了0。標準単体の自己同型の射が恒等である既存Mathlibのiso_eq_iso_reflを、stdSimplexの充満忠実性で移して使った。これにより、同じ重みの反転と同じ標準単体同型を組み合わせた式は、座標の新しい選択なしに一致する。まだ本体の対象ビルド・監査をしていないため、検収済みの本数・行数・宣言数には含めない。
+
+oppositePairing_naturalityの型と証明は一時ファイルisw2-twisted-pairing-opposite3でelaborateされ、残ったのはtwistedPairingNerveMap_opposite_swapの各次数の全射の等式（検査全体は未解決の義務で終了1）。その全写像の等式はまだ未証明。新しいモデル仮定は足さない。通常圏のnerveの反転は既存nerveOppositeIsoとnerveUnreverseChain、重みの反転は上の同じ比較を使って進める。
+
+R03h・R03d・3b-4aは未完。検収済みの本体は全てコミット済み、未完の次の検査は一時ファイルだけ。共有鍵は返却済みで、起動中の自レーンの検査はない。
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+## 302. 元の同じpairingの反対表示と両端交換の全単体での厳密な一致（2026-11-16）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+§301.3の同じtwisted pairingの両端交換の法則を証明した。重みの同じ反転と標準単体表示を、標準単体の自己同型の既存の一意性で照合する。通常のnerveの反転とYoneda表示の整合性を同じnerveOppositeIsoで示し、元の長い射列の全対象・全射を反転したpairingと厳密に照合した。左・交差・右の三ブロックを扱い、元の入力の自然性から反対側の同じ自然性を導く。全パラメータの写像の等式であり、各点の同値に弱めていない。
+
+一時ファイルisw2-twisted-swap-reverse2、isw2-pairing-reverse-chain2、全体のisw2-twisted-pairing-opposite-complete1の個別Lean検査は全て終了0。§301.3の独立のedgewiseWeightReverse_standardは全swapの証明内で同じ同型の一意性を直接使えるため、本体の独立の公開宣言にはせず、一時の検査記録のままとした。新しい選択・数学の項目・模型仮定・計算上限は追加しない。全て既存の反転・自然性・合成則の法則と証明の分割。以下はprivateな分割も含む主張の型。ファイルの行数は検収で記す。各部分は200行未満。
+
+```lean
+private lemma standardIso_end_hom (n : ℕ) (e : (Δ[n] : SSet.{u}) ≅ Δ[n]) :
+    e.hom = 𝟙 _
+
+private lemma nerveReverseChain_yoneda {C : Type u} [Category.{u} C] {n : ℕ}
+    (τ : (nerve C) _⦋n⦌) :
+    (stdSimplex.opIso ⦋n⦌).inv ≫ SSet.opFunctor.map (SSet.yonedaEquiv.symm τ) ≫
+      (nerveOppositeIso (C
+
+lemma twistedArrowOppositeSwap_nerve_reverse {C : Type u} [Category.{u} C] (n : ℕ)
+    (τ : (nerve C) _⦋n+n+1⦌) :
+    (twistedArrowOppositeSwap (nerve C)).app (Opposite.op ⦋n⦌)
+      ((edgewiseWeightIso n).hom ≫ SSet.yonedaEquiv.symm (nerveReverseChain τ) ≫
+        (nerveOppositeIso (C
+
+private lemma rev_left_index {n : ℕ} (i : Fin (n+n+1+1))
+    (hi : i.val < n+1) (hr : ¬ i.rev.val < n+1) :
+    twistedPairingRightIndex i.rev hr = twistedPairingLeftIndex i hi
+
+private lemma rev_right_index {n : ℕ} (i : Fin (n+n+1+1))
+    (hi : ¬ i.val < n+1) (hr : i.rev.val < n+1) :
+    twistedPairingLeftIndex i.rev hr = twistedPairingRightIndex i hi
+
+private lemma op_heq_of_endpoints {C : Type u} [Category.{u} C]
+    {X Y X' Y' : C} (hx : X = X') (hy : Y = Y') {f : X ⟶ Y} {g : X' ⟶ Y'}
+    (h : HEq f g) : HEq f.op g.op
+
+private lemma thin_op_heq {C : Type u} [Category.{u} C] {N : ℕ}
+    (F : Fin N ⥤ C) {a b c d : Fin N} (ha : a = c) (hb : b = d)
+    {f : a ⟶ b} {g : c ⟶ d} : HEq (F.map f).op (F.map g).op
+
+private lemma cross_op {I C : Type u} [Category.{u} I] [Category.{u} C]
+    (A : I ⥤ Cᵒᵖ) (B : I ⥤ C) (h : ∀ i, (A.obj i).unop ⟶ B.obj i)
+    {n : ℕ} (σ : Fin (n+1) ⥤ I) (a b : Fin (n+1)) :
+    twistedPairingCross (B ⋙ (opOpEquivalence C).inverse) A (fun i => (h i).op) σ a b =
+      (twistedPairingCross A B h σ b a).op
+
+private lemma cross_op_heq {I C : Type u} [Category.{u} I] [Category.{u} C]
+    (A : I ⥤ Cᵒᵖ) (B : I ⥤ C) (h : ∀ i, (A.obj i).unop ⟶ B.obj i)
+    {n : ℕ} (σ : Fin (n+1) ⥤ I) {a b c d : Fin (n+1)} (ha : a = c) (hb : b = d) :
+    HEq (twistedPairingCross A B h σ a b).op (twistedPairingCross A B h σ c d).op
+
+lemma twistedPairingSimplex_reverse {I C : Type u} [Category.{u} I] [Category.{u} C]
+    (A : I ⥤ Cᵒᵖ) (B : I ⥤ C) (h : ∀ i, (A.obj i).unop ⟶ B.obj i)
+    {n : ℕ} (σ : Fin (n+1) ⥤ I) :
+    twistedPairingSimplex (B ⋙ (opOpEquivalence C).inverse) A (fun i => (h i).op) σ =
+      nerveReverseChain (twistedPairingSimplex A B h σ)
+
+private lemma oppositePairing_naturality {I C : Type u} [Category.{u} I] [Category.{u} C]
+    (A : I ⥤ Cᵒᵖ) (B : I ⥤ C) (h : ∀ i, (A.obj i).unop ⟶ B.obj i)
+    (hh : ∀ {i j} (f : i ⟶ j), (A.map f).unop ≫ h i ≫ B.map f = h j)
+    {i j : I} (f : i ⟶ j) :
+    (((B ⋙ (opOpEquivalence C).inverse).map f).unop) ≫ (h i).op ≫ A.map f = (h j).op
+
+lemma twistedPairingNerveMap_opposite_swap {I C : Type u} [Category.{u} I] [Category.{u} C]
+    (A : I ⥤ Cᵒᵖ) (B : I ⥤ C) (h : ∀ i, (A.obj i).unop ⟶ B.obj i)
+    (hh : ∀ {i j} (f : i ⟶ j), (A.map f).unop ≫ h i ≫ B.map f = h j) :
+    twistedPairingNerveMap (B ⋙ (opOpEquivalence C).inverse) A (fun i => (h i).op)
+      (oppositePairing_naturality A B h hh) ≫
+      edgewiseSubdivisionMap (nerveOppositeIso (C
+```
+
+対象ビルド369と小監査で検収する。R03h・R03d・3b-4aは未完。⑤a・公式入口・公式監査は変更しない。
+
+### 302.2 本体の公開宣言の検査での修正
+
+369対象ビルドではTwistedNerveOppositeSimplexは通ったが、TwistedPairingOppositeの公開定理の型にprivateなoppositePairing_naturalityを使っており、公開型からアクセスできないため失敗した。監査には到達していない。通常の一時ファイルの個別検査が通ったことだけを、公開モジュールの検収とはしない。
+
+最終の公開型では、この自然性の証明を同じHHの引数へ直接書く。privateな仮定や略記を公開型へ露出させず、元のhhから同じ自然性を導くだけで、主張を弱めない。同じ数学の型はproof irrelevanceで変わらない。unusedとなったprivateな自然性の補題は本体から除き、§302の上の型の表示は一時ファイルの分割の記録として残す。370で同じ二本の対象ビルドと小監査を行う。
+
+### 302.3 検収
+
+最終の新規2本は181行・46行、計227行。公開3補題・実環境宣言4。公開型の自然性の証明を元のhhから直接導く形へ直した370対象ビルド（依存を含む3,148 jobs）・小監査とも終了0。共有鍵 --class impl --wait 3600、一枚の整理券、gtimeout 1700秒でビルドと小監査の間だけ使用。小監査271モジュール・1,725宣言、propext・Classical.choice・Quot.soundのみ、sorryAx・追加公理なし。自レーン累計267本・18,478行、実環境1,718宣言。外枠まで3,522行。宣言名の照合で異なるファイル間の重複0、内部も0。git diff --check通過。証跡isw2-build370.log・isw2-validation370.json・isw2-declaration-collision-scan370.json。登録候補一覧に追加。既存宣言・⑤a・公式入口・公式監査は変更していない。
+
+元の同じtwisted pairingの両端交換と反対表示の全写像の等式は閉じた。これを元の固定標的の自然変換へ適用し、同じモデル源の後合成と厳密に可換にする法則の検査を続ける。R03hの同じcorrected pairingの指定pathを通じた全族の最終等式、R03d・3b-4aは未完。
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+## 303. 元の固定標的の全pairingを、同じ反対cosliceの指定モデル源での像として回収（2026-11-16）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+§302の全両端交換の法則を、任意の元の自然変換η : V→const cへ適用した。既存のNatTrans.op ηを同じUnder.liftで読み、元の同じ固定標的の全pairingを厳密に回収する。さらに、同じ反対モデル源Fop = nerveOppositeIso.inv ≫ opFunctor.map Fで後合成し、cosliceOppositeTwistedArrowMapを通すと、元のpairingを指定モデル源Fへ送った全写像に一致する。新しい逆・別のpath・置換の選択は足さない。既存の反転・前後合成・自然性・単位の法則で、数学の一覧は増やさない。
+
+同じ両端交換が任意の元の関手Fと厳密に可換である法則は、一般の準圏の部分なのでKerodonの元のcosliceと両端交換の隣に置く。Underと通常の自然変換の二つの照合は既存NerveComparisonの隣に置く。固定点をOpposite.op cに明示し、自然変換の反対はQuiver.Hom.opでなくNatTrans.opと明記する。元の自然性と単位則は型を明示して直接合成し、計算上限は変更しない。
+
+一時ファイルisw2-under-fixed-target-pairing5と、検証済み本体のTwistedPairingOppositeを実際にimportしたisw2-under-fixed-target-compiled1の個別Lean検査はともに終了0。以下が公開の型。追加仮定はなく、元のη・Fだけを使う。
+
+```lean
+lemma twistedArrowOppositeSwap_naturality {C D : SSet.{u}} (F : C ⟶ D) :
+    edgewiseSubdivisionMap (SSet.opFunctor.map F) ≫ twistedArrowOppositeSwap D =
+      twistedArrowOppositeSwap C ≫ edgewiseSubdivisionMap F
+
+lemma nerveUnderLift_opposite_pairing {I C : Type u} [Category.{u} I] [Category.{u} C]
+    {c : C} {V : I ⥤ C} (η : V ⟶ (Functor.const I).obj c) :
+    nerveMap (Under.lift (X := Opposite.op c) V.op (NatTrans.op η)) ≫ nerveUnderMap (Opposite.op c) ≫
+      cosliceTwistedArrowMap (nervePoint (Opposite.op c)) ≫
+        edgewiseSubdivisionMap (nerveOppositeIso (C := C)).inv ≫
+          twistedArrowOppositeSwap (nerve C) =
+      twistedPairingNerveMap V.op ((Functor.const Iᵒᵖ).obj c)
+        (fun i => η.app i.unop) (by
+          intro i j f
+          change V.map f.unop ≫ η.app i.unop ≫ 𝟙 c = η.app j.unop
+          calc
+            _ = V.map f.unop ≫ η.app i.unop := congrArg (fun g => V.map f.unop ≫ g)
+              (Category.comp_id (η.app i.unop))
+            _ = η.app j.unop := (η.naturality f.unop).trans (Category.comp_id _))
+
+lemma nerveUnderLift_opposite_native_pairing {I C : Type u} [Category.{u} I] [Category.{u} C]
+    {c : C} {V : I ⥤ C} (η : V ⟶ (Functor.const I).obj c) {D : SSet.{u}}
+    (F : nerve C ⟶ D) :
+    let Fop := (nerveOppositeIso (C := C)).inv ≫ SSet.opFunctor.map F
+    nerveMap (Under.lift (X := Opposite.op c) V.op (NatTrans.op η)) ≫
+      nerveUnderMap (Opposite.op c) ≫ sliceUnderPostcomp (nervePoint (Opposite.op c)) Fop ≫
+        cosliceOppositeTwistedArrowMap (nervePoint (Opposite.op c) ≫ Fop) =
+      twistedPairingNerveMap V.op ((Functor.const Iᵒᵖ).obj c)
+        (fun i => η.app i.unop) (by
+          intro i j f
+          change V.map f.unop ≫ η.app i.unop ≫ 𝟙 c = η.app j.unop
+          calc
+            _ = V.map f.unop ≫ η.app i.unop := congrArg (fun g => V.map f.unop ≫ g)
+              (Category.comp_id (η.app i.unop))
+            _ = η.app j.unop := (η.naturality f.unop).trans (Category.comp_id _)) ≫
+        edgewiseSubdivisionMap F
+```
+
+対象ビルド371と小監査で検収する。元のcorrected pairingの全同型とその同じ指定pathを通じたR03hの最終照合、R03d・3b-4aは未完。⑤a・公式入口・公式監査は変更しない。
+
+### 303.2 切り出した一般部分のimportの検査
+
+371対象ビルドは、一般部分へコピーした不要なopen NerveComparisonが、その一般部分のimportには存在せず失敗した。監査には到達していない。一般部分はNerveComparisonを使わないため、importを増やさず不要なopenを削除した。主張・証明の計算・仮定は変えない。372で同じ二本の対象ビルドと小監査を再実行する。
+
+### 303.3 検収
+
+最終の新規2本は42行・92行、計134行。公開3補題・実環境宣言4。372対象ビルド（依存を含む3,862 jobs）・小監査とも終了0。共有鍵 --class impl --wait 3600、一枚の整理券、gtimeout 1700秒でビルドと小監査の間だけ使用。小監査273モジュール・1,729宣言、propext・Classical.choice・Quot.soundのみ、sorryAx・追加公理なし。自レーン累計269本・18,612行、実環境1,722宣言。外枠まで3,388行。宣言名の照合で異なるファイル間の重複0、内部も0。git diff --check通過。証跡isw2-build372.log・isw2-validation372.json・isw2-declaration-collision-scan372.json。登録候補一覧に追加。既存宣言・⑤a・公式入口・公式監査は変更していない。
+
+固定標的の元の同じ全族と、その指定モデル源でのnative pairingの厳密な一致は閉じた。次は元のBEのfiber包含とsource-frame評価へ同じ全写像の式を適用する。R03h・R03d・3b-4aは未完。
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+## 304. 同じfiberの添字を保つrightOp表示と、元の全pairingの前合成・係数移送（2026-11-16）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+BEの元のsource-frame評価VはDᵒᵖ→Cなので、元のfiber Dからの表示には既存Functor.rightOpとNatTrans.rightOpを使う。同じデータのこの係数表示に§303の証明を適用し、二重反対の新しい添字への輸送を追加せず、元のDそのものの全写像の等式にした。元のη・Fからの同じ族で、仮定を追加しない。元のpairingの通常関手Hによる前合成と、両端と同じ実射の等式による係数移送の法則も明記した。いずれも既存構成の表示・前後合成・自然性の法則、数学の一覧は増やさない。
+
+一時ファイルisw2-under-rightop-pairing1・isw2-pairing-precomp1の個別Lean検査は終了0。計算上限・既存の宣言・⑤aのファイルは変更しない。以下が型。
+
+```lean
+lemma twistedPairingNerveMap_precomp {J I C : Type u} [Category.{u} J] [Category.{u} I]
+    [Category.{u} C] (H : J ⥤ I) (A : I ⥤ Cᵒᵖ) (B : I ⥤ C)
+    (h : ∀ i, (A.obj i).unop ⟶ B.obj i)
+    (hh : ∀ {i j} (f : i ⟶ j), (A.map f).unop ≫ h i ≫ B.map f = h j) :
+    nerveMap H ≫ twistedPairingNerveMap A B h hh =
+      twistedPairingNerveMap (H ⋙ A) (H ⋙ B) (fun i => h (H.obj i))
+        (fun {_ _} f => hh (H.map f))
+
+lemma twistedPairingNerveMap_congr {I C : Type u} [Category.{u} I] [Category.{u} C]
+    {A A' : I ⥤ Cᵒᵖ} {B B' : I ⥤ C} (ha : A = A') (hb : B = B')
+    (h : ∀ i, (A.obj i).unop ⟶ B.obj i) (h' : ∀ i, (A'.obj i).unop ⟶ B'.obj i)
+    (hh : ∀ {i j} (f : i ⟶ j), (A.map f).unop ≫ h i ≫ B.map f = h j)
+    (hh' : ∀ {i j} (f : i ⟶ j), (A'.map f).unop ≫ h' i ≫ B'.map f = h' j)
+    (hv : ∀ i, HEq (h i) (h' i)) :
+    twistedPairingNerveMap A B h hh = twistedPairingNerveMap A' B' h' hh'
+
+lemma nerveUnderLift_rightOp_pairing {I C : Type u} [Category.{u} I] [Category.{u} C]
+    {c : C} {V : Iᵒᵖ ⥤ C} (η : V ⟶ (Functor.const Iᵒᵖ).obj c) :
+    nerveMap (Under.lift (X := Opposite.op c) V.rightOp (NatTrans.rightOp η)) ≫ nerveUnderMap (Opposite.op c) ≫
+      cosliceTwistedArrowMap (nervePoint (Opposite.op c)) ≫
+        edgewiseSubdivisionMap (nerveOppositeIso (C := C)).inv ≫
+          twistedArrowOppositeSwap (nerve C) =
+      twistedPairingNerveMap V.rightOp ((Functor.const I).obj c)
+        (fun i => η.app (Opposite.op i)) (by
+          intro i j f
+          change V.map f.op ≫ η.app (Opposite.op i) ≫ 𝟙 c = η.app (Opposite.op j)
+          calc
+            _ = V.map f.op ≫ η.app (Opposite.op i) := congrArg (fun g => V.map f.op ≫ g)
+              (Category.comp_id (η.app (Opposite.op i)))
+            _ = η.app (Opposite.op j) := (η.naturality f.op).trans (Category.comp_id _))
+
+lemma nerveUnderLift_rightOp_native_pairing {I C : Type u} [Category.{u} I] [Category.{u} C]
+    {c : C} {V : Iᵒᵖ ⥤ C} (η : V ⟶ (Functor.const Iᵒᵖ).obj c) {D : SSet.{u}}
+    (F : nerve C ⟶ D) :
+    let Fop := (nerveOppositeIso (C := C)).inv ≫ SSet.opFunctor.map F
+    nerveMap (Under.lift (X := Opposite.op c) V.rightOp (NatTrans.rightOp η)) ≫
+      nerveUnderMap (Opposite.op c) ≫ sliceUnderPostcomp (nervePoint (Opposite.op c)) Fop ≫
+        cosliceOppositeTwistedArrowMap (nervePoint (Opposite.op c) ≫ Fop) =
+      twistedPairingNerveMap V.rightOp ((Functor.const I).obj c)
+        (fun i => η.app (Opposite.op i)) (by
+          intro i j f
+          change V.map f.op ≫ η.app (Opposite.op i) ≫ 𝟙 c = η.app (Opposite.op j)
+          calc
+            _ = V.map f.op ≫ η.app (Opposite.op i) := congrArg (fun g => V.map f.op ≫ g)
+              (Category.comp_id (η.app (Opposite.op i)))
+            _ = η.app (Opposite.op j) := (η.naturality f.op).trans (Category.comp_id _)) ≫
+        edgewiseSubdivisionMap F
+```
+
+対象ビルド373と小監査で検収する。元のBEのfiber包含と同じsource-frame評価への適用、および元のcorrected pairingの全同型と指定pathの最終照合を続ける。R03h・R03d・3b-4aは未完。公式入口・公式監査は変更しない。
+
+### 304.2 検収
+
+新規2本は41行・87行、計128行。公開4補題・実環境宣言5。373対象ビルド（依存を含む3,864 jobs）・小監査とも終了0。共有鍵 --class impl --wait 3600、一枚の整理券、gtimeout 1700秒でビルドと小監査の間だけ使用。小監査275モジュール・1,734宣言、propext・Classical.choice・Quot.soundのみ、sorryAx・追加公理なし。自レーン累計271本・18,740行、実環境1,727宣言。外枠まで3,260行。宣言名の照合で異なるファイル間の重複0、内部も0。git diff --check通過。証跡isw2-build373.log・isw2-validation373.json・isw2-declaration-collision-scan373.json。登録候補一覧に追加。既存宣言・⑤a・公式入口・公式監査は変更していない。
+
+同じ添字のrightOp表示と、同じ全pairingの前合成・係数移送は閉じた。BEの実際のfiber包含の両端の全関手と、元のsource-frame評価の直接の照合を続ける。R03h・R03d・3b-4aは未完。
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+## 305 同じBE fiberの全pairingと同じ指定pathの表示の照合（11-16）
+
+既存の同じfiber包含の両端の関手をroof-frame表示と等号で合わせ、元の評価のpairingを全単体上で回収する。そこから同じraw coslice familyを表示し、元のcorrected pairingの全同型を端点の等号だけで移す。最後に射影後の元の全pathを保持する。新しい数学の項目は追加せず、既存構成の再添字・係数移送・等号による表示変更の法則と証明の分割である。
+
+一つの検査ファイルでは射影のHEqのkernel検査が時間制限に達した。計算上限は変えず、三つのモジュールへ分割する。次の型を対象ビルド374と小監査で検収する（未検収）。
+
+```lean
+lemma strictBETotJointSourceFiberDomain_roof_eq (A : Type u) [CommRing A] (P : strictBETotJointHomIndex A) :
+    simplicialElementsFiberFunctor (strictBETotJointSourceCoefficients A) P ⋙
+      FrameHom.liftedSourceFrameArrowDomain (strictBETotJointSourceFrame A)
+        (rightFrameReplacement (rightFrameFamily A)) =
+      (strictBETotJointSourceRoofFrameDiagram A P).rightOp
+
+lemma strictBETotJointSourceFiberCodomain_roof_eq (A : Type u) [CommRing A] (P : strictBETotJointHomIndex A) :
+    simplicialElementsFiberFunctor (strictBETotJointSourceCoefficients A) P ⋙
+      FrameHom.liftedSourceFrameArrowCodomain (strictBETotJointSourceFrame A)
+        (rightFrameReplacement (rightFrameFamily A)) =
+      (Functor.const _).obj (modelRelativeObject (operad A).Algebra
+        ((rightFrameReplacement (rightFrameFamily A)).obj (AsSmall.down.obj P).2))
+
+lemma strictBETotJointSourceFiberPairing_roof_eq (A : Type u) [CommRing A] (P : strictBETotJointHomIndex A) :
+    nerveMap (simplicialElementsFiberFunctor (strictBETotJointSourceCoefficients A) P) ≫
+      strictBETotJointSourcePairing A =
+    twistedPairingNerveMap (strictBETotJointSourceRoofFrameDiagram A P).rightOp
+      ((Functor.const _).obj (modelRelativeObject (operad A).Algebra
+        ((rightFrameReplacement (rightFrameFamily A)).obj (AsSmall.down.obj P).2)))
+      (fun s => (strictBETotJointSourceRoofFrameEvaluation A P).app (Opposite.op s)) (by
+        intro s t f
+        change (strictBETotJointSourceRoofFrameDiagram A P).map f.op ≫
+          (strictBETotJointSourceRoofFrameEvaluation A P).app (Opposite.op s) ≫ 𝟙 _ = _
+        calc
+          _ = (strictBETotJointSourceRoofFrameDiagram A P).map f.op ≫
+            (strictBETotJointSourceRoofFrameEvaluation A P).app (Opposite.op s)
+
+def strictBETotJointSourceRawCosliceFamily (A : Type u) [CommRing A] (P : strictBETotJointHomIndex A) :
+    let c := modelRelativeObject (operad A).Algebra
+      ((rightFrameReplacement (rightFrameFamily A)).obj (AsSmall.down.obj P).2)
+    let Fop := (nerveOppositeIso (C := (modelRelativeCategory (operad A).Algebra).category)).inv ≫
+      SSet.opFunctor.map (strictBETotModelSource A)
+    nerve ((simplicialElementsCatDiagram (strictBETotJointSourceCoefficients A)).obj P) ⟶
+      sliceUnder (nervePoint (Opposite.op c) ≫ Fop)
+
+lemma strictBETotJointSourceRawCosliceFamily_pairing (A : Type u) [CommRing A] (P : strictBETotJointHomIndex A) :
+    let c := modelRelativeObject (operad A).Algebra
+      ((rightFrameReplacement (rightFrameFamily A)).obj (AsSmall.down.obj P).2)
+    let Fop := (nerveOppositeIso (C := (modelRelativeCategory (operad A).Algebra).category)).inv ≫
+      SSet.opFunctor.map (strictBETotModelSource A)
+    strictBETotJointSourceRawCosliceFamily A P ≫ cosliceOppositeTwistedArrowMap (nervePoint (Opposite.op c) ≫ Fop) =
+      simplicialElementsFiberInclusion (strictBETotJointSourceCoefficients A) P ≫
+        strictBETotJointSourceNativePairing A
+
+def strictBETotJointSourceCorrectedRawCosliceIso (A : Type u) [CommRing A] (P : strictBETotJointHomIndex A) :
+    let c := modelRelativeObject (operad A).Algebra
+      ((rightFrameReplacement (rightFrameFamily A)).obj (AsSmall.down.obj P).2)
+    let Fop := (nerveOppositeIso (C := (modelRelativeCategory (operad A).Algebra).category)).inv ≫
+      SSet.opFunctor.map (strictBETotModelSource A)
+    FunctorIso
+      (simplicialElementsFiberInclusion (strictBETotJointSourceCoefficients A) P ≫
+        strictBETotJointSourceCorrectedPairing A)
+      (strictBETotJointSourceRawCosliceFamily A P ≫ cosliceOppositeTwistedArrowMap (nervePoint (Opposite.op c) ≫ Fop))
+
+lemma strictBETotJointSourceCorrectedRawCosliceIso_postcomp (A : Type u) [CommRing A] (P : strictBETotJointHomIndex A) :
+    HEq ((strictBETotJointSourceCorrectedRawCosliceIso A P).postcomp (twistedArrowProjection (CAlg_R A)))
+      ((strictBETotJointSourceFiberPairingIso A P).postcomp (twistedArrowProjection (CAlg_R A)))
+
+lemma strictBETotJointSourceCorrectedRawCosliceIso_original_path (A : Type u) [CommRing A]
+    (P : strictBETotJointHomIndex A) :
+    HEq ((strictBETotJointSourceCorrectedRawCosliceIso A P).postcomp (twistedArrowProjection (CAlg_R A)))
+      (FunctorIso.precomp (eqToIso (congrArg (fun v => HomotopyCategory.mk (functorVertex v))
+        (strictBETotJointSourceCorrectedPairing_projection A)) ≪≫
+          strictBETotJointSourcePairingBasePathIso A)
+            (simplicialElementsFiberInclusion (strictBETotJointSourceCoefficients A) P))
+```
+
+R03h・R03d・3b-4aは未完。公式入口・公式監査・⑤aは変更しない。
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+### 305.1 kernel検査の分割
+
+余錐familyの定義までの二本の対象ビルドは終了0（12,262 jobs）。公開モジュールの自然性の証明引数を明記した。射影のHEqは、分割後も定義の展開の照合でkernel時間制限に達した。同じ値である次の定義等式を独立に検査し、既存の `functorIsoOfEq_postcomp_heq_of_eq` に渡す。型・上限・指定された比較の値は変えない。これは同じ定義の展開の分割である。
+
+```lean
+lemma strictBETotJointSourceCorrectedRawCosliceIso_eq (A : Type u) [CommRing A]
+    (P : strictBETotJointHomIndex A) :
+    strictBETotJointSourceCorrectedRawCosliceIso A P =
+      functorIsoOfEq (strictBETotJointSourceFiberPairingIso A P) rfl
+        (strictBETotJointSourceRawCosliceFamily_pairing A P).symm
+```
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+### 305.2 指定値を直接書く分割
+
+定義等式だけの追加もkernelの展開で時間制限に達したため、その未検証の補題は採用しない。射影の型に、同じ `functorIsoOfEq` の移送済みの値を直接書き、既存の法則をそのまま適用する。元の全同型と元の底のpathを保持する内容は同一であり、条件や結論は弱めない。最終の検査対象の二つの型は次のとおり（305冒頭の別名表示を置き換える）。
+
+```lean
+lemma strictBETotJointSourceCorrectedRawCosliceIso_postcomp (A : Type u) [CommRing A] (P : strictBETotJointHomIndex A) :
+    HEq ((functorIsoOfEq (strictBETotJointSourceFiberPairingIso A P) rfl
+      (strictBETotJointSourceRawCosliceFamily_pairing A P).symm).postcomp (twistedArrowProjection (CAlg_R A)))
+      ((strictBETotJointSourceFiberPairingIso A P).postcomp (twistedArrowProjection (CAlg_R A)))
+
+lemma strictBETotJointSourceCorrectedRawCosliceIso_original_path (A : Type u) [CommRing A]
+    (P : strictBETotJointHomIndex A) :
+    HEq ((functorIsoOfEq (strictBETotJointSourceFiberPairingIso A P) rfl
+      (strictBETotJointSourceRawCosliceFamily_pairing A P).symm).postcomp (twistedArrowProjection (CAlg_R A)))
+      (FunctorIso.precomp (eqToIso (congrArg (fun v => HomotopyCategory.mk (functorVertex v))
+        (strictBETotJointSourceCorrectedPairing_projection A)) ≪≫
+          strictBETotJointSourcePairingBasePathIso A)
+            (simplicialElementsFiberInclusion (strictBETotJointSourceCoefficients A) P))
+
+```
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+### 305.3 検収
+
+新規3本は110行・83行・51行、計244行。公開6補題と2定義、実環境宣言12。374対象ビルド（依存を含む12,263 jobs）・小監査とも終了0。共有鍵 --class impl --wait 3600、一枚の整理券、gtimeout 1700秒でビルドと小監査の間だけ使用。小監査278モジュール・1,746宣言、propext・Classical.choice・Quot.soundのみ、sorryAx・追加公理なし。自レーン累計274本・18,984行、実環境1,739宣言。外枠まで3,016行。宣言名の照合でmainのEInfinityとの異なるファイル間の重複0、内部も0。git diff --check通過。証跡isw2-build374.log・isw2-validation374.json・isw2-declaration-collision-scan374.json。登録候補一覧に追加。既存宣言・⑤a・公式入口・公式監査は変更していない。
+
+元のfiber包含の全pairingを同じsource-frame評価の全pairingと厳密に同定し、同じraw coslice familyとして回収した。同じcorrected pairingの全同型を端点の等号で移した値の射影は、元の指定された全pathそのものの制限を保持する。別名の定義を展開して照合する検査はkernel時間制限に達したが、最終の二つの型は同じ端点移送の項を直接書く305.2の形で通過した。計算上限は上げていない。
+
+残りは、この全同型と同じ両端のpathから、元のnative fiber自身の全interval族を、元のroofの全interval族へ照合する部分である。全pairingの同定や指定pathの保持だけからその最終等式を主張してはいない。pointCosliceFamilyHomotopyの全族の自然性と、同じsource-frame評価の全円柱の照合を次に用いる。R03h・R03d・3b-4aは未完。
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+## 306 D81による停止と、3b-4全25項目の用途・行数の棚卸し（2026-11-16）
+
+### 306.1 指示の受領・現在の検査単位の終了
+
+mainのIS-W2 §21（b8c8f47a5）とdesign-statusのD81をgit showで確認した。CAlgをHA 2〜3章の方向で作る決定に従う。R06〜R10のLeanの追加は開始しない。以下の紙の報告だけをコミットし、このチャットの作業を止める。Tot側を含めて、この報告後に独自に次のLean検査へ進まない。外枠は**22,000行のまま**。D81で未決のBE整流・EInfinityTheory・D79/D80の扱いをこちらで決めない。
+
+最後に本体へ入れた検査単位は§305の三本。対象ビルド374・小監査とも終了0、コードと報告は**bc48da8f4**へコミット済み。274モジュール・18,984行、担当モジュールの実環境1,739宣言。小監査は既存の照合用四本を加えた278モジュール・1,746宣言、propext・Classical.choice・Quot.soundのみ。sorryAx・追加公理なし。宣言名の異なるファイル間の重複0。公式入口・公式監査・⑤aは変更していない。これは対象ビルドでありrootビルドではない。
+
+その直後の検査は /private/tmp/isw2-raw-coslice-cylinder.lean だけで、同じraw cosliceの全円柱と元のsource-frame評価の全円柱の等式の個別検査。最後のログisw2-raw-coslice-cylinder3.logは型の照合で終了1。検査プロセスは終了しており、この下書きは本体・登録候補・コミット・検証済み行数に入れていない。この検査単位を未検証として閉じ、追加の証明試行やビルドは行わない。作業木のLean変更は0。共有鍵も保持していない。
+
+R03h・R03dと停止点3b-4aは未完。R06〜R10は未着手。G10（3b-2）は完了済みで、この停止によってその型や実装を変更しない。ユーザーによる/goal解除を受け、以前の自動継続の目標を再作成しない。
+
+### 306.2 aとbの区別
+
+- **a：D(A)を係数にしても使える共有基盤と、D(A)値の実現・Totの供給。** 後者の本体は既に3b-1・3b-2と③-aの3b-3に分かれている。HAのCAlg(D(A))でも、D(A)の実現・Tot・図式射・指定錐族が入力になる。追加のR03系には、Kan係数・任意のleft fibration・一般の模型圏／相対圏について証明した前者がある。これらはBEのCAlgを定義しなくても主張できるので共有部品として残す。
+- **b：BEの模型の値を指定した構成・比較。** `operad A`の代数、指定されたBE frame、`algebraCAlgSource`、現行`CAlg_R`、`cAlgForgetDerived`を主張に固定した部分。HAのCAlg(D(A))そのものを構成しただけでは、このBE模型との比較は得られない。D81でBEを計算模型として整流して残す決定があれば、改めて必要性を判断する部分である。
+
+R01〜R12の最終型は全てbである。R04・R05・R09・R10の右辺がD(A)値でも、比較の左辺・U・strict BE図式を含む主張全体はb。**その右辺に用いるD(A)の供給だけはaとして必要**であり、BEの実現を作るR06〜R10を進める理由にはならない。R11・R12も既存BE実例・界面への照合であり、HAの新しい実例への照合は別途の型の検討になる。
+
+一般の追加項目をaとしたのは、その**主張がBEを要求せずD(A)にも適用できる共有基盤**だからである。下のa欄の全行をHA経路で必ず使うと確定したものとは数えない。HAの対称モノイダルD(A)・∞オペラッドの基盤がどの補題を直接使うかは、その界面の決定後に選ぶ。特にBK重み・通常模型圏・hammockを用いる計算の補題は再利用候補であり、HAのCAlgの定義の前提に追加しない。
+
+### 306.3 全項目の分類・検証済み行数と残り
+
+「済みa／済みb」は**現在の実ソースの行数（import・説明込み）**。未完の項目にも検証済みの前提・法則・証明分割があるため、その行数を示す。完了した主定理だけの証明行数とは区別する。同じファイルを複数項目に重ねて数えず、共通準備は下の帰属規約で一項目へ計上した。小さな法則・分割を独立の一覧項目に増やさない。
+
+「残り」は旧BE経路を仮に継続するときの**追加費用の紙の見込み**。aの完成済み一般定理には残り0。bの残りをHA実装の費用へ流用しない。R06〜R10の値は未実装の見積りで、実施予定ではない。
+
+| 項目 | 最終の主張の分類 | 状態 | 内容 | 済みa（行） | 済みb（行） | 残りの旧経路見込み（行） |
+|---|---|---|---|---:|---:|---:|
+| R01 | b | 済 | 既存BE framedLimitの全関手とTot頂点 | 35 | 752 | 0 |
+| R02 | b | 未完 | BEの指定join錐の全族・標準脚 | 0 | 447 | 300〜600 |
+| R03 | b | 未完 | 同じBE錐自身のnative極限性 | 0 | 0 | 300〜600 |
+| R04 | b（右辺にa） | 未完 | BE TotのU像とD(A) Tot・同じ錐族の比較 | 0 | 44 | 250〜550 |
+| R05 | b（右辺にa） | 未完 | strict BE図式の∞局所化上の全関手比較 | 0 | 287 | 250〜550 |
+| R06 | b | 未着手・停止 | BEの左frameと図式置換による実現模型 | 0 | 0 | 600〜1,000 |
+| R07 | b | 未着手・停止 | BEの指定実現余錐の全族と両境界 | 0 | 0 | 500〜900 |
+| R08 | b | 未着手・停止 | 同じBE実現余錐自身のnative余極限性 | 0 | 0 | 500〜900 |
+| R09 | b（右辺にa） | 未着手・停止 | BE実現のU像とD(A)実現・余錐族の比較 | 0 | 0 | 500〜900 |
+| R10 | b（右辺にa） | 未着手・停止 | strict BE実現の局所化上の全関手比較 | 0 | 0 | 500〜900 |
+| R11 | b（照合先にa） | 未完 | 離散BE埋め込み・⑤aの同じ既存入口への制限 | 0 | 0 | 250〜450 |
+| R12 | b（照合先にa） | 未完 | BE係数変更と指定錐族の制限の両立 | 0 | 0 | 250〜450 |
+| R03a | a＋b適用 | 済 | 同じcofibrant重みとBK重みの比較・BEへの特殊化 | 1,145 | 41 | 0 |
+| R03a.1 | a・一般基盤 | 済 | 射影cofibrant重み間の弱同値によるKan係数のHom不変性 | 839 | 0 | 0 |
+| R03b | a＋b適用 | 済 | 同じ底上のleft fibrationの分類同型から切断空間の同値 | 699 | 628 | 0 |
+| R03c | a＋b適用 | 済 | 同じ全切断比較とfiber比較の全四角形 | 436 | 295 | 0 |
+| R03d | b | 未完 | BE両変数Homの全FunctorIsoと元の固定始域比較への制限 | 2,346 | 2,167 | 400〜900（R03h完了後） |
+| R03e | a・一般基盤 | 済 | 通常Grothendieck構成の厳密なweighted nerve同型と射影・指定点 | 688 | 0 | 0 |
+| R03f | a・一般基盤 | 済 | 元のEx∞単位を固定した相対Kan比較・元の実射の同値性 | 443 | 0 | 0 |
+| R03f.1 | a・一般基盤 | 済 | Kan標的へのanodyne射はleft anodyne | 61 | 0 | 0 |
+| R03f.2 | a・一般基盤 | 済 | 成分ごとのleft anodyne性をsimplicial replacementへ移す | 1,277 | 0 | 0 |
+| R03f.3 | a・一般基盤 | 済 | 同じ底上のleft fibration間のcofinal射の同値検出 | 74 | 0 | 0 |
+| R03g | a・一般基盤 | 済 | 元のGrothendieck単位の同じfiber制限の弱同値性 | 111 | 0 | 0 |
+| R03h | b（前提にa） | 未完 | 元のBE native fiber射と元のroofの全interval族の厳密な一致 | 3,117 | 2,622 | 1,000〜2,000 |
+| R03i | a＋b適用 | 済 | twisted Homの同じ両端固定の点を全Arrowの等号から同定 | 338 | 92 | 0 |
+
+合計の検証済みは **a系の共有部品175本・11,609行、bのBE固有99本・7,375行、計274本・18,984行**。全てbc48da8f4の登録候補JSONと実ファイルから再集計した。a系のファイルは、ディレクトリ名がEInfinityでもBarrattEcclesへの特殊化を持たないものを含む。実際に175本のソースを照合し、BEの`operad A`・`CAlg_R`・`strictBETot`への直接の参照がないことを確認した。bはBarrattEccles配下の99本。aのうちBEに適用した部分は別のbファイルへ計上した。共有部品の保持・将来の配置替えは、この紙の報告で新たな移動や登録を行う意味ではない。
+
+帰属の再現方法：`is-w2-be-20261114-modules.json` の現在の順序（1始まり、274本）を用いる。次の集合で全274本を重複なく一度ずつ分けた。各集合内でBarrattEccles配下をb、その他の一般の主張をaとした。R03eなどの完了時に記録した単独の主定理の行数より、この表はその後の同じ構成の法則・係数移送まで含む分だけ増えている。R03d・R03hは配下の前提計算も合算している。
+
+- R01：1〜2, 4〜10, 15〜16, 22〜25。
+- R02：17〜21, 77〜79。
+- R04：3。
+- R05：11〜14。
+- R03a：26〜40, 53〜54。
+- R03a.1：41〜52。
+- R03b：55〜76。
+- R03c：80〜89。
+- R03d：90〜109, 154〜174, 176〜196。
+- R03e：110〜121。
+- R03f：122〜123, 125, 147〜149, 151〜153。
+- R03f.1：124。
+- R03f.2：126〜146。
+- R03f.3：150。
+- R03g：175。
+- R03h：197〜232, 240〜274。
+- R03i：233〜239。
+
+### 306.4 残りの見込みと外枠・停止
+
+旧BE経路の残りは、R03hが1,000〜2,000行、R03hの後のR03dが400〜900行、R02・R03が合計600〜1,200行、R04・R05が合計500〜1,100行、R06〜R08が合計1,600〜2,800行、R09・R10が合計1,000〜1,800行、R11・R12が合計500〜900行、**計5,600〜10,700行**と見直した。R03hは§269の残り450〜850行という旧見込みの後にも前提計算が増え、同じ元のnative射とroofの最終の全族の等式が閉じていないため、その旧値を維持しない。今回の1,000〜2,000行も未検証の中心部分を含む紙の見込みで、上限内で証明できる保証ではない。新しい中間定理や補題の型をここで承認済みに追加していない。
+
+仮に全部を継続すると完成時24,584〜29,684行で、現行22,000行の外枠には収まらない。現時点の余地は**3,016行**。外枠の増額は提案せず、指示どおり停止する。R06〜R10だけの旧BEの実現の側は済み0・残り2,600〜4,600行であり、ここを止めることでこの新規BE実装を追加しない。R11・R12にはTot／実現の両部分を含むため、この2,600〜4,600行へ重ねて含めていない。Tot側の残りも、外枠・型つき一覧・D81の扱いの判断を経ずに自動再開しない。
+
+HAのCAlg(D(A))、対称モノイダルD(A)、∞オペラッドの新規基盤の費用はこの表の外。この報告はそれらを完了扱い・見積り0扱いにしない。D(A)値の供給は既存の3b-1/G10/3b-3の入口を再利用し、BEのR06〜R10の型を名前だけHAのCAlgへ置換することはしない。
+
+最後の検収の証跡はisw2-validation374.json・isw2-build374.log・isw2-declaration-collision-scan374.json。今回の紙の集計はisw2-d81-classification.json・isw2-d81-classify.py。報告の差分はgit diff --checkで確認し、報告ファイルだけをコミットして停止する。
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
