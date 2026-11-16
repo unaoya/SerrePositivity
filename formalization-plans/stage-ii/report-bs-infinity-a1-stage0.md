@@ -5366,3 +5366,117 @@ S8の固定された射の自然性やS1を完成したという報告ではな�
 外枠26,000行の中。約24,000行での中間報告を保持する。
 mainは取り込まず、S7・R2・R3も再開していない。
 一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+
+### 再開後の(A)の残りの型（検証待ちの下書き）
+
+以下7本・約500行（現在の作業木。未検証・未コミット）の型を記録する。
+いずれも既存の構成の前合成・係数移送・自然性・合成の法則または証明分割であり、追加IDなし。
+各宣言200行未満。検証済みの20,168行・317本にはまだ加えていない。
+以下ではq := rightKanCanonicalShape δ c、j := joinInr Δ[0] (rightKanShape δ c)、
+π := rightKanProjection δ c、P := coneRestriction (rightKanShape δ c) Dと略す。
+
+1. `RightKanCanonicalHomEvaluation` の `rightKanCanonicalShape_hom_apex`：全二胞体ηの
+   同じ標準錐による前合成を、元の指定頂点で評価する。
+
+```lean
+functorHomEvaluate ((Ho.map ((pre q).app D)).toFunctor.map η) apex ≫
+  eqToHom (congrArg (fun x => mk (G.app _ x)) (rightKanCanonicalShape_apex δ c)) =
+  eqToHom (congrArg (fun x => mk (F.app _ x)) (rightKanCanonicalShape_apex δ c)) ≫
+    functorHomEvaluate η c
+```
+
+実ソースではfunctorHomEvaluateのU・Vをq ≫ F・q ≫ Gとして明示し、mkの模型もDに固定する。
+2. `RightKanCanonicalHomRestriction` の `rightKanCanonicalShape_hom_restriction`：
+   hF : j ≫ (q ≫ F) = π ≫ (δ ≫ F)、hGも同様とし、型は
+
+```lean
+kanFunctorHomCongr hF hG
+  ((Ho.map ((pre j).app D)).toFunctor.map
+    ((Ho.map ((pre q).app D)).toFunctor.map η)) =
+  (Ho.map ((pre π).app D)).toFunctor.map
+    ((Ho.map ((pre δ).app D)).toFunctor.map η)
+```
+
+3. `RightKanTransportDiagramHom` の `RightKanConeTransport.diagram_hom`：
+   t : RightKanConeTransport δ O F α cに対し、元のdiagram条件を二胞体の類として評価する。
+
+```lean
+kanFunctorHomCongr (rightKanCanonicalCone δ F c).property t.cone.property
+  ((Ho.map P).toFunctor.map (homMk t.edge)) =
+    (Ho.map ((pre π).app D)).toFunctor.map (homMk (functorEdgeOfSimplicialHomotopy α))
+```
+
+4. `RightKanTransportCounitRestriction` の `rightKanTransport_counit_restriction`：
+   η : FunctorHom F G、hη : rightKanHomMap δ [β] F η = [α]、s : RightKanConeTransport δ O G β c、
+   ηq := (Ho.map ((pre q).app D)).toFunctor.map ηとして、型は
+
+```lean
+kanFunctorHomCongr (rightKanCanonicalCone δ F c).property s.cone.property
+  ((Ho.map P).toFunctor.map (ηq ≫ homMk s.edge)) =
+    (Ho.map ((pre π).app D)).toFunctor.map [α]
+```
+
+[α]・[β]は元の指定ホモトピーをfunctorEdgeOfSimplicialHomotopyで辺にして取るhomMk。
+hηは既存の大域Kan比較のhom_facから入れる入力であり、自然性を新たに仮定する最終定理ではない。
+5. `RightKanTransportComparisonFactorization` の `rightKanTransport_comparison_factorization`：
+   ηをFunctorIso F Gとし、同じhη、t・sの両指定輸送に対して、型は
+
+```lean
+∃ i : VertexIso (coneFamilyVertexEquiv _ t.cone) (coneFamilyVertexEquiv _ s.cone),
+  homMk t.edge ≫ (Ho.map (vertexFiberι P (functorVertex (rightKanDiagram δ O c)))).toFunctor.map i.hom =
+    (Ho.map ((pre q).app D)).toFunctor.map η.hom ≫ homMk s.edge
+```
+
+既存のηの前合成の辺代表、同じs.edgeとの合成、既存の終点比較の因子分解式を使う。
+新しい大域関手や、その同型を点ごとに組み立てる構成にはしていない。
+6. `LimitConeFamilyProjectionArrow` の `limitVertexIso_coneFamily_arrow`：
+   c₁・c₂は同じ図式pの指定極限錐、mはconeFamilyVertexEquiv p c₁からc₂への任意の射として、
+
+```lean
+Arrow.mk ((Ho.map (coneFamilyApex p)).toFunctor.map m) =
+  Arrow.mk (limitVertexIso c₁ c₂ hc₁ hc₂).hom
+```
+
+7. `RightKanTransportComparisonVertex` の `rightKanTransport_comparison_vertex`：
+   上のη・hη・t・sに元の両錐の極限性ht・hsを追加し、(A)の元の型そのものを結論にする。
+
+```lean
+eqToHom (congrArg mk t.cone_vertex.symm) ≫
+  (limitVertexIso t.cone s.cone ht hs).hom ≫ eqToHom (congrArg mk s.cone_vertex) =
+    functorHomEvaluate η.hom c
+```
+
+7のprivateな正方形の正規化の法則は、通常の圏でf≫b.hom=a.hom、g≫d.hom=c.hom、
+f≫μ=ν≫gのとき、b.inv≫μ≫d.hom=a.inv≫ν≫c.homを結論にする。前後の4つは指定同型。
+既存の同型の消去と結合則だけを使う。
+
+この段階の(A)は同じ添字写像δに関する法則。(B)で元の指定添字同型・分類・底変換へ戻す際は、
+既存のrightKanHomUniversalIso・hom_facと同じ指定余単位を使う。
+RightKanHomUniversal.indexIsoのπ₀の結論を、未証明の点ごとの右Kan条件として流用しない。
+そのため、(B)には指定した点ごとの比較と余単位の両立の照合が依然残る。
+元のweightedSections_discrete_map・一般の局所同値・同じ層化比較・S1の完成は未完。
+S7・R2・R3を再開せず、mainも取り込んでいない。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+
+### (A)の基礎4本を検証・保存（11-17 未明）
+
+前節の1・2・3・6（RightKanCanonicalHomEvaluation、RightKanCanonicalHomRestriction、
+RightKanTransportDiagramHom、LimitConeFamilyProjectionArrow）の4本・203行・10所有宣言の
+対象ビルドと小監査が完了した。基礎段の監視子プロセス終了コード0、成功JSON、全対象SHA一致、
+標準三公理のみ。証拠：`/tmp/is-w1/s8-right-kan-comparison-2/primitive/target-audit-result.json`・
+`process-result.json`。一回の鍵で基礎段を監査してから後段へ進む方式で、鍵は編集時には保持しない。
+後段はRightKanTransportCounitRestrictionの書き換えに失敗し、組全体の終了コードは1。
+組全体の成功とは扱わず、通った基礎4本だけを保存する。
+
+主な修正は、頂点評価のletと前合成する全関手を明示したこと、
+最後の二つの等式の射をeqToHom_transで相殺したこと、
+元のHoFunctorでの辺の像をSSet.mapHomotopyCategoryと既存の辺の写像の法則で表示したこと、
+実在するeqToHom_mapを使ってArrow上の端点移送を消したこと。
+主張の型・範囲、既存の宣言、計算上限は変えていない。
+全て既存構成の法則・証明分割、各200行未満、追加IDなし。
+外枠用累計は **20,371行・321本**。
+後段の同じ制限写像の別名coneRestrictionを明示して再検証を続ける。
+(A)の最終成分照合、S8全体、S1は依然未完。S7・R2・R3は再開せず、mainも取り込まない。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
