@@ -106,3 +106,5 @@
 - 整理の結果：DG 1,592 → 126 本、論文の層の区切りはすべて完了、∞ は中核層間の順序違反 0・直接の禁止辺 0・中核の閉包の KST とモデル圏 150 → 74（残りは M16）、F-2 で KST から移した 730 モジュールの名前空間をディレクトリに合わせた（改名表 `../scripts/refactor/targets/f-namespace-map.json`、旧名は deprecated alias で段 G の最初の区切りまで残す）。
 - 主定理の閉包の sorry は 3 つ（E3、`theorem_3_1_K0`、`Section4.supportedRankK0_descent`）。
 - 調整役の引き継ぎは [coordinator-handover-2026-11.md](coordinator-handover-2026-11.md)。
+
+- **11-16 16:23 の中断の記録**：DAG XIII・NS の取り込み（cd79e9cc5）の後の root ビルドを 16:23 に止めた（ユーザー判断。略号表の変更でほぼ全体の再ビルドになり、四レーンが約 1 時間待ったため）。それまでに作り直した 12,070 本は共有のキャッシュに残る。**root ビルドは今夜（23 時以降）に coord が続きから流す**。それまで main は「取り込み済み・root 未確認」。各レーンは停止点まで main を取り込まない。
