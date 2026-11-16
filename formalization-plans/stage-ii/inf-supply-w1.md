@@ -197,3 +197,11 @@ S3 の逆向きの型は、段 0 の表の「`restrictJoinCone c (cechShape d) =
 ## 追記（2026-11-16、調整役）：5∞-1 の外枠を 22,000 行に
 
 ユーザー承認（11-16）。`report-bs-infinity-a1-stage0.md` の停止（検証済み 13,391 行、見込み 17,691〜20,891 行、済み S2〜S6）を受けて、S1〜S6・S8 の外枠を 18,600 行から **22,000 行**に変更する。右 Kan の大域的な比較は既存の `kanRightKanExtensionIso`・`kanRightKanExtensionIso_hom_fac` を使い、点ごとの同型を集める構成を新しく作らない。S7・R2・R3 は再開しない。約 18,000 行で止まらずに途中報告。22,000 行を超えそうなら検証済みの分をコミットして報告して止まる。5∞-1（S7 を除く）の完成が停止点。P⁰ の作り方の見直しとは独立（S7 だけが CAlg の模型に触れる）。
+
+## 追記（2026-11-16、調整役）：5∞-1 の取り込みの前に文献の属性を付ける
+
+`InfinityCategories/Sheaves/`（枝のみ、112 本）は HTT・Kerodon の番号を docstring に書いているが、`@[cite …]`・`@[kerodon …]` の属性が 0 本。HTT の対応表では 6.2.2.6・6.2.2.7 が none のまま。B5 で地図を属性から作るので、5∞-1 の停止点の取り込みの前に次を行う（`citation-attributes.md` の規則、構文は `SerrePositivity/Util/Citation.lean`）。
+1. 主な宣言に属性を付ける：`IsSheaf`（HTT 6.2.2.6）、層化の反射（HTT 6.2.2.7、5.5.4.15）、SheafStability、Čech の共終性、重み付き切断（HTT 4.1.3.1・5.1.5.6 など、実際に対応する番号）、Kerodon の Tag に当たるもの（`@[kerodon XXXX]`）。
+2. 原典より狭いもの（Čech 層に限る、小さい通常の site に限る など）は `@[cite HTT "番号" (partial := special) "理由"]` で理由を書く。Kerodon の partial は属性を付けない（-c の見直しまで、規則どおり）。docstring に書くだけにする。
+3. 出典の番号が docstring の「使われ方」に入っているファイルは、規約（README の Conventions）どおり概要か方針の側に移す。
+属性・docstring だけの変更で、主張・証明は変えない。行数は外枠に数えない。対象ビルドと小監査を通してから停止点の報告に入れる。
