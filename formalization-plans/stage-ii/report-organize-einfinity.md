@@ -558,3 +558,7 @@ B3のsnapshot・fingerprint・比較器を一切変えず、前後の実所有�
 検証済みの数学ソースの移動・参照と、監査の局所変数修正をコミットしてから、通常の`verify.sh`を実行する。VERIFY_JOBS=4、VERIFY_MEMORY_GB=32、VERIFY_CACHE=0、対象の除外・buildのskipなし。監査ごとの今回のRSSと時間を順序とメモリ計画にだけ使い、**全106監査を改めて実行**する。各Leanは今回の測定と同じ1 threadとし、監査間の並列を4へ増やす。verifyは未検収のため、まだ段1の完成とはしない。
 
 一覧：済み 0／全体 5（うち追加 0）。
+
+### 17.1 verify前段の出力先の準備
+
+数学ソースと全独立ゲートをコミット`6678d6a9a`へ記録した。通常verifyの最初の試行は、その前段の実測stats保存で`.lake/verify`がまだ存在せず停止した。verify本体と106監査の再実行はこの試行では開始していない。実行補助に出力先のmkdirを加え、再試行する。数学library・監査本体・通常verify・fingerprint／比較器の変更はない。失敗ログとresource receiptも保持する。
