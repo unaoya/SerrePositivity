@@ -17956,3 +17956,26 @@ lemma nerveUnderMap_comp_cosliceTwistedArrowMap {C : Type u} [Category.{u} C] (c
 Underの同じ全射族の二つの表示の厳密な一致は閉じた。これを局所化後の同じ全円柱へ送り、元のcorrected pairingの指定全同型と同じpathに接続する段は残る。R03h・R03d・3b-4aは未完。
 
 一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+### 299.3 次の同じ円柱と通常変換の照合の型（未検証）
+
+次は同じUnderの普遍射の円柱を、既存nerveNatTransHomotopyの全円柱に照合する。型は次の形（underUnitは同じ通常圏の普遍射のprivateな略記）。既存構成の単位・表示・自然性の法則であり、数学の一覧は増やさない。
+
+```lean
+private def underUnit {C : Type u} [Category.{u} C] (c : C) :
+    (Functor.const (Under c)).obj c ⟶ Under.forget c where
+  app x := x.hom
+  naturality {_ _} f := by simpa using (Under.w f).symm
+
+lemma underCosliceCylinder {C : Type u} [Category.{u} C] (c : C) :
+    (pointCosliceFamilyHomotopy (nerveUnderMap c)).h =
+      (nerveNatTransHomotopy (underUnit c)).h
+```
+
+一時ファイルisw2-under-coslice-cylinder1は型のelaboration後、証明の三つの義務で終了1。型の検査と証明の完了を区別し、検証済みの本数・行数・宣言数には含めていない。本体の新規Leanは全て検証済みでコミットした。
+
+使える既存の法則：NerveComparison.nerve_hom_ext_oneは任意の始域から通常圏のnerveへの全写像を一次単体上の厳密な一致で判定する。JoinCylinderSimplex.joinCylinderMap_stdSimplex_valは区間の各頂点の値が零か一かにより、円柱の左・右の値を計算する。nerveNatTransHomotopy_componentは元の通常自然変換の成分を回収する。必要なのは通常圏のnerveへの円柱全体の等式であり、一般の準圏へのHoFun射について成分の一致のみから全族の等式を推論するものではない。
+
+この照合を元のモデル源で後合成し、§299の同じtwisted pairing表示、§297の全HoFun自然性、§298の同じfiberのinterval表示へ接続する。さらに元のcorrected pairingの指定全同型とその同じ全射影のpathを保つ照合が残る。R03h・R03d・3b-4aは未完、目標は継続中。共有鍵返却済み、起動中の自レーンの検査なし。
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
