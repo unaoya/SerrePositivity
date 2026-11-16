@@ -303,3 +303,19 @@ main cd79e9cc5でDAG XIII・NSの対応表とCitationの略号表が更新され
 実装・型・proofの変更や、heartbeat／elaborationの上限変更はしない。短くした末尾枠だけのtimeoutは次の整理券へ回し、190秒を使った検査の失敗やLeanの実エラーと区別する。
 
 一覧：済み 0／全体 5（うち追加 0）。
+
+### 8.2 原 ILean の個別参照による利用側一件の予覧（19:50）
+
+FreeProbeRelativeUnitWeak.lean は通常190秒でも二reader・一readerとも原InfoTree採取が完了しなかった。型・証明・elaborationの設定は変えず、既にビルド済みの元の `.ilean` の実参照を個別に点検した。移動する宣言の使用はMixedNerve.down三箇所とunitComparison_weak_of_probe_family一箇所だけで、元の原文の各位置・綴りと完全名を照合した。四箇所を新しい完全名にし、import一箇所を移送し、openは移動しないComplexLimitsの完全な名前空間だけに限定する。ComplexLimitsの実参照五宣言も元の完全名を確認した。
+
+`reviewed-ilean-previews.json`にsource・ILean・plan・previewのSHAと全六編集を記録した。この一件はInfoTree採取済みとは数えず「原ILeanによる個別照合」として別集計する。未完JSONを成功へ変更していない。全956本の対象ビルド・v3bの範囲は維持する。残る利用側の通常採取を継続する。
+
+一覧：済み 0／全体 5（うち追加 0）。
+
+### 8.2 利用側一件の採取方法を個別に分ける（19:48）
+
+FreeProbeRelativeUnitWeak.leanは通常190秒でも、二readerと一readerのどちらも採取が完了しなかった。計算上限や元の型・証明は変えない。この一件だけは原コンパイラの既存の`.ilean`で実際の完全名と四つの使用位置を個別照合し、import一箇所・open一箇所と合わせて六箇所の書き換えを記録した。全termの変更はMixedNerve.down三箇所とunitComparison_weak_of_probe_family一箇所だけである。ComplexLimitsの五つの参照先が元の完全名のままであることも確認した。
+
+`reviewed-ilean-previews.json`に原source・原ilean・改名表・予覧のSHAと全変更位置を保存した。これはInfoTreeの成功採取とは数えず、個別のilean照合として別計上する。未完のcaptureを成功に昇格しない。全956本の対象ビルド・原／後のnative所有先の照合・変更しないv3b保存比較からは除かない。残りの利用側の通常採取を再開した。
+
+一覧：済み 0／全体 5（うち追加 0）。

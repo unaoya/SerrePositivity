@@ -1,0 +1,95 @@
+[
+  {
+    "kind": "individually-reviewed-original-ilean-spans",
+    "source": "SerrePositivity/EInfinity/BarrattEccles/FreeProbeRelativeUnitWeak.lean",
+    "source_sha256": "acd6acba9551cabbfbc67b720f3f115f40fd36c3f01221a2524b4589ae5c57f0",
+    "ilean_path": ".lake/build/lib/lean/SerrePositivity/EInfinity/BarrattEccles/FreeProbeRelativeUnitWeak.ilean",
+    "ilean_sha256": "6bee2a16ab795d00821edc9047bee8273f50650437dc2e2bd5f6f0a93a6d808b",
+    "plan_sha256": "bffb2434b00941a5031a1a82aa16f090f36949332c706dc37873e3ad8e454232",
+    "preview_sha256": "f9bf8169fcc0a42c85a0dbe5b10a45c69427b62f3a9177731f94339193361621",
+    "edits": [
+      {
+        "start": 3800,
+        "end": 3815,
+        "old": "MixedNerve.down",
+        "new": "_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.down",
+        "native_name": "SerrePositivity.EInfinity.FrameHom.MixedNerve.down",
+        "native_module": "SerrePositivity.EInfinity.FrameHom.MixedNerveNatTrans",
+        "ilean_usage": [
+          58,
+          13,
+          58,
+          28,
+          "SerrePositivity.EInfinity.BarrattEccles.freeProbeRelativeUnderlyingRoofFamily_unit_triangle"
+        ]
+      },
+      {
+        "start": 4803,
+        "end": 4818,
+        "old": "MixedNerve.down",
+        "new": "_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.down",
+        "native_name": "SerrePositivity.EInfinity.FrameHom.MixedNerve.down",
+        "native_module": "SerrePositivity.EInfinity.FrameHom.MixedNerveNatTrans",
+        "ilean_usage": [
+          67,
+          11,
+          67,
+          26,
+          "SerrePositivity.EInfinity.BarrattEccles.freeProbeRelativeUnderlyingRoofFamily_unit_triangle"
+        ]
+      },
+      {
+        "start": 6951,
+        "end": 6966,
+        "old": "MixedNerve.down",
+        "new": "_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.down",
+        "native_name": "SerrePositivity.EInfinity.FrameHom.MixedNerve.down",
+        "native_module": "SerrePositivity.EInfinity.FrameHom.MixedNerveNatTrans",
+        "ilean_usage": [
+          90,
+          11,
+          90,
+          26,
+          "SerrePositivity.EInfinity.BarrattEccles.freeProbeRelativeUnitIntervalMap_family"
+        ]
+      },
+      {
+        "start": 9350,
+        "end": 9385,
+        "old": "unitComparison_weak_of_probe_family",
+        "new": "_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.unitComparison_weak_of_probe_family",
+        "native_name": "SerrePositivity.EInfinity.FrameHom.unitComparison_weak_of_probe_family",
+        "native_module": "SerrePositivity.EInfinity.FrameHom.UnitComparisonWeakDetection",
+        "ilean_usage": [
+          112,
+          8,
+          112,
+          43,
+          "SerrePositivity.EInfinity.BarrattEccles.freeProbeRelativeUnitIntervalMap_weak"
+        ]
+      },
+      {
+        "start": 189,
+        "end": 251,
+        "old": "SerrePositivity.EInfinity.FrameHom.UnitComparisonWeakDetection",
+        "new": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.UnitComparisonWeakDetection",
+        "kind": "import"
+      },
+      {
+        "start": 726,
+        "end": 779,
+        "old": "open SerrePositivity.EInfinity.FrameHom ComplexLimits",
+        "new": "open SerrePositivity.EInfinity.ComplexLimits",
+        "kind": "open"
+      }
+    ],
+    "unmoved_complex_limits": [
+      "SerrePositivity.EInfinity.ComplexLimits.complexOrdinaryDerivedSource",
+      "SerrePositivity.EInfinity.ComplexLimits.complexSemifreeResolutionValue",
+      "SerrePositivity.EInfinity.ComplexLimits.complexSemifreeResolutionValueAugmentation",
+      "SerrePositivity.EInfinity.ComplexLimits.framedLimitProbeFunctor",
+      "SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementDerivedRoofFamily"
+    ],
+    "reason": "Original InfoTree capture timed out at 190 seconds with both two readers and one reader. This is not an InfoTree capture; all four changed term usages are authenticated by original compiler ILean spans. Full target build and v3b remain required."
+  }
+]

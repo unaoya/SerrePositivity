@@ -1,7 +1,7 @@
 """Resume original compiler reference capture in one bounded build-lock lease."""
 from pathlib import Path
 import argparse,hashlib,json,os,shutil,subprocess,sys,tempfile,time,concurrent.futures,re
-p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True);p.add_argument('--tools',type=Path,required=True);p.add_argument('--files',type=Path,required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--budget',type=int,default=265);p.add_argument('--stable-files',type=Path);a=p.parse_args();started=time.monotonic();root=a.root.resolve();tools=a.tools.resolve();out=a.output.resolve();out.mkdir(parents=True,exist_ok=True);caps=out/'captures';caps.mkdir(exist_ok=True)
+p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True);p.add_argument('--tools',type=Path,required=True);p.add_argument('--files',type=Path,required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--budget',type=int,default=265);p.add_argument('--stable-files',type=Path);p.add_argument('--max-readers',type=int,choices=[1,2],default=2);a=p.parse_args();started=time.monotonic();root=a.root.resolve();tools=a.tools.resolve();out=a.output.resolve();out.mkdir(parents=True,exist_ok=True);caps=out/'captures';caps.mkdir(exist_ok=True)
 sys.path.insert(0,str(tools));import bulk_collect as B;from klw1_namespace import checked_capture,module_name
 helper_sha=hashlib.sha256(B.patched_helper((tools/'klw1_collect_refs.lean').read_text()).encode()).hexdigest();base=subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip();assert base=='30ae8948f339beec42d9340feb02f2031c22c72b';files=json.loads(a.files.read_text());fingerprint={p:hashlib.sha256((root/p).read_bytes()).hexdigest() for p in files}
 stable=json.loads(a.stable_files.read_text()) if a.stable_files else {}
@@ -24,10 +24,12 @@ def available_memory():
   raw=subprocess.check_output(['vm_stat'],text=True);size=int(re.search(r'page size of (\d+) bytes',raw)[1])
   return size*sum(int(re.search(r'Pages '+label+r':\s+(\d+)',raw)[1]) for label in ['free','inactive','speculative'])
  except (OSError,ValueError,TypeError,subprocess.SubprocessError):return 0
-available=available_memory();workers=2 if available>=20*1024**3 else 1
+available=available_memory();workers=min(a.max_readers,2 if available>=20*1024**3 else 1)
 os.environ['LEAN_NUM_THREADS']='1'
+from reviewed_ilean import previews as reviewed_previews
+reviewed=reviewed_previews(root);assert set(reviewed)<=set(required)
 new=[];failure=None;deferred=[]
-pending=iter(f for f in required if not valid(f))
+pending=iter(f for f in required if not valid(f) and f not in reviewed)
 def capture(path):
  remaining=a.budget-(time.monotonic()-started)
  if remaining<80:return None
@@ -56,7 +58,7 @@ with concurrent.futures.ThreadPoolExecutor(max_workers=workers) as pool:
    elif rec:
     new.append(rec);print('Captured',path,round(rec['seconds'],2),flush=True)
    submit()
-completed=[f for f in required if valid(f)];(out/'completed-files.json').write_text(json.dumps(completed,indent=2)+'\n');summary=dict(signature=sig,base=base,completed_files=len(completed),total_files=len(required),unchanged_scope_files=len(stable),candidate_files=len(files),new_captures=new,failure=failure,deferred_captures=deferred,workers=workers,available_memory_bytes=available,seconds=time.monotonic()-started,complete=len(completed)==len(required));(out/'progress.json').write_text(json.dumps(summary,indent=2)+'\n');print(json.dumps(summary))
+completed=[f for f in required if valid(f) or f in reviewed];(out/'completed-files.json').write_text(json.dumps(completed,indent=2)+'\n');summary=dict(signature=sig,base=base,completed_files=len(completed),total_files=len(required),compiler_captured_files=sum(valid(f) for f in required),individually_reviewed_ilean_files=len(reviewed),unchanged_scope_files=len(stable),candidate_files=len(files),new_captures=new,failure=failure,deferred_captures=deferred,workers=workers,available_memory_bytes=available,seconds=time.monotonic()-started,complete=len(completed)==len(required));(out/'progress.json').write_text(json.dumps(summary,indent=2)+'\n');print(json.dumps(summary))
 if not failure and (out/'pause-after-batch').exists() and not summary['complete']:
  print('Requested orchestration pause after successful capture and lease release',flush=True);raise SystemExit(76)
 raise SystemExit(1 if failure else 0)
