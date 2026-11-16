@@ -3,7 +3,7 @@
   "complete": 3,
   "total": 6,
   "added": 0,
-  "verified_head": "this commit: base e1869b1691fca7117e04392a3776c5632b3fb183",
+  "verified_head": "this commit: base 9f9a989df6f3cd888546aecd1da4a0e0f2d4c611",
   "items": {
     "HT01": "complete",
     "HT02": "complete",
@@ -12,10 +12,10 @@
     "HT05": "not-started",
     "HT06": "not-started"
   },
-  "latest_complete_audit_checkpoint": "oriented-standard-classes-checkpoint.json",
-  "latest_complete_audit_declarations": 1598,
+  "latest_complete_audit_checkpoint": "affine-cover-totalization-checkpoint.json",
+  "latest_complete_audit_declarations": 1602,
   "working_changes_unverified": [],
-  "pending_check": "bundle-155 terminal; all prepared modules passed",
+  "pending_check": "bundle-156 terminal; all prepared modules passed",
   "next_proof_route": "ht04-next-proof-route.md",
   "initial_record": {
     "stage": "5inf3a",
