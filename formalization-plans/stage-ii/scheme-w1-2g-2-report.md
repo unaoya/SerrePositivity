@@ -2338,3 +2338,41 @@ G4・G5は未完。検証済みの数学の先端は `415b27a9b` のまま。未
 完成見込み14,600〜17,300行、承認済み外枠18,000行は不変。残る主要な接続はG4の行の係数比較・相対proper fppf・F8・元の中心を保持するNoether帰納、およびG5の模型の極限・Frobeniusとの交換・元のv被覆への移送。G4・G5は未完で、停止点2g-2ではない。最終のAugmentedRingCechExactと利用側の型は不変。mainは取り込んでいない。
 
 一覧：済み1／全体3（うち追加0）。
+
+Γ–Specの同じ基底のスカラー移送（既存G4の係数移送の内数、45〜85行）：`schemeScalarPerfectRestriction_cancel` はN→Spec Rと開Wに対し、元のRのスカラーをWへ制限したFrobenius写像にΓSpecIso.homのFrobenius写像を合成すると、元の構造射のappLE ⊤ WのFrobenius写像になる式。元のΓ–Specの単位・余単位と環準同型の合成則だけを用い、基底の係数を同じものへ戻す。
+
+同じ増大行の基底を含む係数比較（既存G4の同型・増大の内数、70〜140行）：`rectangularPerfectAugmentedRowIso` は有限交叉族の余積のアフィン性の下で、元の幾何的nerveのΓの増大係数と、元の矩形の増大行との同型。右では検証済みのrectangularPerfectRowFunctorIso、左では同じΓSpecIsoのFrobenius比較を使い、増大はrectangularPerfectRowEquiv_augmentationとschemeScalarPerfectRestriction_cancelで照合する。交叉族の幾何の仮定は既存の有限アフィン族の部品から後で供給し、この同型だけを一般のproper fppfの完全性と呼ばない。
+
+元の有限アフィン被覆の平坦全射への代入（既存G4の行の完全性への代入、75〜150行）：`schemePerfectCechTupleDouble_acyclic_of_augmented_rows` は同じ増大行の完全性を、検証済みの行の評価とretractに渡す。`schemePerfectCechTupleDouble_acyclic_of_flat_surjective` はアフィン対角を持つ源と元の有限アフィン開被覆に対し、平坦全射の同じタプル二重Čechのtotalの完全性を結論する。各非空有限交叉の余積のアフィン性を既存部品で供給し、既存のfiniteAffineOpenIntersectionFamilyFrobeniusCech_exactを前記の同じ増大行の比較に渡す。proper fppfの場合は有限アフィン被覆とアフィン対角を既存の幾何から選ぶ。最終型・被覆によらないことの条件を変えず、非アフィン源のΓの平坦性を仮定しない。
+
+
+## G4：元の幾何的nerveのΓと同じ増大行
+
+検証済みの三本を追加した。
+
+`AffineGammaPerfectAugmentedCoefficients`（85行）：
+- `affineGammaPerfectCoefficientIso`：元の環のconerveと幾何的nerveのΓを、既存の自然同型で同じFrobenius係数へ比較する。
+- `affineGammaPerfectAugmentedCoefficients`：同じ基底の係数を保ち、元の幾何的nerveのΓへ移した増大余単体図式。
+- `affineGammaPerfectAugmentedCoefficientsIso`：元の環の増大係数との、基底で恒等の標準同型。
+- `affineGammaPerfectAugmentedCoefficients_hom_app_apply`：各増大成分は、元の幾何的nerveの基底への射のΓのFrobenius順極限。
+- `affineGammaPerfectAugmentedCoefficients_acyclic`：アフィン間の元の平坦全射は、同じ幾何的nerveのΓの増大係数を完全にする。
+
+`CechAugmentedDoubleRows`（43行）：
+- `cechAugmentedDoubleRowIso`：同じ縦次数の評価をB1の増大複体と交換し、元の二重複体の各行へ比較する。
+- `cechIntegerAugmentedDouble_acyclic_of_rows`：元の各行の完全性を、既存HAの行の判定で同じtotalの完全性へ渡す。
+
+`RectangularPerfectAugmentedRow`（59行）：
+- `rectangularPerfectAugmentedRow`：元の定数増大図式を同じ縦次数で評価した、実際の矩形の増大行。
+- `rectangularPerfectAugmentedRow_left`：同じ増大行の基底項は、元の基底環のFrobenius順極限。
+- `rectangularPerfectAugmentedRow_right`：同じ増大行の右の関手は、元の矩形の行の係数関手。
+- `rectangularPerfectAugmentedRow_hom_app_apply`：各増大成分は、元の大域スカラーと実際の交叉への制限の合成のFrobenius写像。
+
+検証：下書きは `2g-g4-affine-gamma-perfect-augmentation-check-1.log`、`2g-g4-augmented-double-rows-check-1.log`、`2g-g4-rectangular-augmented-row-check-1.log` が全て終了0。二本と入口の対象ビルドは **5,287ジョブ・終了0**（`2g-g4-affine-gamma-and-rows-native.log`）、後続の増大行と入口は **5,288ジョブ・終了0**（`2g-g4-rectangular-augmented-row-native.log`）。三本の固定manifest・下書き・本体のSHA256と全バイト一致を再確認した。対象ビルドと別の共有鍵で非公開・生成分も含む実際の所有宣言を小監査し、**25宣言・標準三公理のみ・終了0**（`2g-g4-actual-augmented-rows-audit.log`）。順に11、8、6宣言。追加公理・sorry・既存宣言の型変更・資源上限の引き上げ・200行超の宣言なし。letI・長行等のstyle警告は残る。鍵 --class impl --wait 3600、一件ずつ。root・下流全ビルド・AlgebraicGeometry全体監査なし。
+
+今回187行＋登録3行＝190行。基準56ea849a3からの外枠計数は **13,969行**（新規195モジュール本体13,728行、既存追加25行、入口216行）。新規所有宣言の小監査累計 **1,401**、既存15宣言は別計上。実測と残る接続に合わせ、完成見込みの下端を更新し **15,400〜17,300行** とした。承認済み外枠18,000行は不変。
+
+後続のΓ–Specの同じ基底の係数移送は単独の下書き検証 `2g-g4-scalar-perfect-restriction-check-1.log` が終了0。三本をまとめた後続の下書き検証 `2g-g4-augmented-row-total-check-1.log` は、行の増大を含む同型の型の展開で既定の200,000 heartbeatsに達した。後続の平坦全射のtotalの宣言はその未登録の名前に依存するため、検証済みとは数えない。上限を上げず、同じ係数加群と関手の型を明示して分割する。後続三本は本体未登録・未コミット。
+
+到達点は、元のアフィンnerveのΓの増大係数の完全性と、同じ増大二重複体の各行の自然な比較まで。増大を保つ矩形の行の同型・相対proper fppfへの代入・F8全複体・元の中心を保持するNoether帰納・G5は未完。最終のAugmentedRingCechExactと利用側の型は不変。mainは取り込んでいない。停止点2g-2ではない。
+
+一覧：済み1／全体3（うち追加0）。
