@@ -4695,3 +4695,102 @@ sectionsConeMap_limitVertexIso_hom (φ : P ⟶ Q) (O : ULiftNerveI ⟶ E)
 上限は上げず、合成の圏と3頂点を明示して再検証する。
 いずれも200行を超える法則ではない。元の値の同型・主張は変更していない。
 一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+
+### 11-16：固定値の比較で、指定余単位との両立を失う選択についての確認点
+
+`weightedSections_discrete_map`の固定値比較を調べ直したところ、時間切れとは別に、
+指定余単位との両立を補題で回収する前に確認すべき選択が3箇所ある。
+これは元の固定値比較の反例をLeanで証明したという報告ではない。
+
+* `WeightedSectionsLocalComparison.lean:33`：
+  `Classical.choose (weightedSections_limitValue O hE P)`。
+* `NativeWeightedSectionsLeftLimit.lean:71`：
+  `Classical.choose (nativeWeightedSections_limitValue O hE v)`。
+* `WeightedSectionsLeftLimit.lean:44`：
+  `Classical.choose (nativeWeightedSections_limitValue O' hE v)`。
+
+`IsRightKanExtension.limitValue`（KanExtensions/Definition.lean:167）の結論は
+次の存在命題だけで、選んだ余単位αと錐を結ぶデータは含まない。
+
+```lean
+∃ c : JoinCone (rightKanDiagram δ O v), IsLimitCone c ∧ c.vertex = G.app _ v
+```
+
+この命題からの`Classical.choose`は、αに沿う`RightKanConeTransport`を選ぶ操作とは違う。
+命題の証明の無関係性があるため、`limitValue`の証明中でαの輸送を使っていることだけを
+根拠に、選ばれたcがその輸送の終端だとは言えない。元の定理のdocstringも
+「自然性の組み立て…は主張しない」と明記している。
+
+一般に、指定頂点を持つ極限錐という条件だけから、元の関手の射と両立する比較は出ない。
+通常の圏の例では、[1]上の定値図式を一対象の非自明な群のgroupoidへ取り、二つの
+頂点で極限錐の脚をそれぞれ恒等と非自明な自己同型にすれば、どちらも指定頂点を持つ
+極限錐だが、それらの頂点比較は定値図式の恒等射と自然にはならない。
+この例は不足する条件の説明であり、現在の`Classical.choose`の値を計算した反例ではない。
+
+検討する差分案は次のとおり（まだ既存宣言には反映しない）。新規ファイルに、
+元の同じ`weightedSectionsData`と`nativeWeightedSectionsData`の余単位の
+輸送を選ぶdefとその2法則を置く。
+
+```lean
+-- δ、G、αは元の同じデータ。hαも既存のIsRightKanExtensionの証明。
+def valueTransport (v : K _⦋0⦌) : RightKanConeTransport δ O G α v :=
+  Classical.choose (hα v)
+-- IsLimitCone (valueTransport v).cone := Classical.choose_spec (hα v)
+-- (valueTransport v).cone.vertex = G.app _ v := (valueTransport v).cone_vertex
+```
+
+その後、上の3箇所だけ、`let c := (valueTransport ...).cone`、極限性と頂点等式は
+この同じ輸送の法則から取る形へ置き換える。全関手・元の余単位・sectionsOfの選択、
+公開の名前・型は保つ。元の`weightedSections_discrete`の本文自体も保つが、参照する
+比較の本文が変わるため、その定義を展開した値は変わりうる。rflによる旧値との一致は
+主張しない。この点は単なる計算法則の追加ではなく、既存本文の変更の承認が要る。
+
+この差分なら、自然性を任意の点ごとの同型から組み立てず、同じ指定余単位に両立する
+大域的な`rightKanHomUniversalIso`とその`hom_fac`に照合する道を保てる。
+その後の照合の証明はなお必要で、この提案だけで自然性が完成したとはしない。
+輸送のdefと3箇所の差分は80〜140行程度を見込む。前節の見込みの上端22,950行と
+合わせても24,000行の中だが、実装・検証前の見込みである。
+
+指示書§2の「既存の宣言の本文・型・名前は変えない（どうしても要るときは止めて報告）」
+により、既存の3本文は変更していない。この判断の間は、既にコンパイルを通過した
+Čechの極限性と比較の法則の小監査を閉じる。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+
+### 11-16：Čech増大の極限性と比較の法則を検証、3本文の修正の承認
+
+`/tmp/is-w1/s8-cech-and-comparison-laws-3/target-audit-result.json`で追加4本・6宣言の
+対象ビルドと小監査が完了し、監視していたプロセスも終了コード0を確認した。
+新鮮な環境のモジュール所有権、標準三公理のみ、対象ソースのSHA一致を確認。
+
+| 新規ファイル | 行数 | 宣言数 | 検証した内容 |
+| --- | ---: | ---: | --- |
+| DiagramEqLimitVertexComposition | 39 | 2 | 図式等式による頂点比較と標準極限比較の前後の合成則 |
+| EquivalentRestrictionLimitComposition | 36 | 1 | 同値な添字への比較の前に標準極限比較を合成する法則 |
+| WeightedSectionsRelativeCech | 45 | 2 | 元の点ごとに全射な射と像への全射の全Čech増大を、元のweightedSectionsで極限に送る |
+| FunctorHomEdgeNaturality | 32 | 1 | 元の全関手間の二胞体の成分と、指定辺の像の類の自然性 |
+
+既存の構成の法則・承認済み一覧の証明分割で、追加IDはない。
+各法則は200行未満。既にコミットした51行・2宣言と合わせて、この再開の検証済みは
+5本・203行・8宣言。通算は289本・18,443行・1,588宣言。
+Čechの同じ全余錐の余極限反転までは閉じたが、局所同値の結論をまだ主張しない。
+
+`NativeWeightedSectionsLeftLimitComposition`は未検証でコミットに含めない。
+通常の合成記号、圏と端点の明示、Iso.homの明示引数、同型の合成、型つきletによる
+固定を試したが、いずれも型の推論中のwhnfで200,000 heartbeatに達した。
+最後のログは`/tmp/is-w1/s8-cech-and-comparison-laws-2/build.log`。
+計算上限は変更していない。旧値の選択への同じ法則を証明し続ける前に、
+上で見つけた指定余単位との両立の確認点を調整役へ報告した。
+
+調整役の11-16の承認（main b54686dae、mainそのものは未取り込み）により、
+上記3本文の選択を同じ指定余単位に沿う`valueTransport`の終端に置き換える。
+公開の名前・型、全関手、元の余単位、sectionsOfの選択は保持。新しい仮定は置かない。
+旧値とのrflは要求されない。差分は24,000行の外枠に数える。
+Sheaves全体とその下流の枝のモジュールを全部、対象ビルドし直す。
+
+新規の2ファイル`WeightedSectionsValueTransport`・`NativeWeightedSectionsValueTransport`
+に指定輸送のdef・極限性・頂点等式を記述し、承認された3本文の選択箇所だけを変更した。
+まず直接importerを含む対象ビルド・小監査・v3bの公開型/属性/公理の保存比較を実行中。
+その後、全対象の再ビルドを分割して実施する。S7・R2・R3は再開しない。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
