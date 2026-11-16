@@ -111,3 +111,5 @@ G4の必要な出口は、任意のNoether環R上の固有全射と、その任�
 このため、任意のT=Spec A→Yを扱う際に、まず非アフィンなYを新たにアフィン開へ分割する必要はない。Y.isoSpec.invを モジュール `BlowupAffineProjectiveModel` の `nonempty_blowupAffinePullbackProjectiveModel` の開埋め込みjへ入れ、元のblowupのΓ(Y)上の次数一表示を得る。T→Yを同じisoSpecでSpec間の射へ戻し、未検証の `DegreeOneProjectiveModel.baseChange` の法則と実際のpullbackの同型を用いる。任意の係数移送のProjのCartesian性は、既存の `isPullback_projectiveCoefficientMap` を使う。逆像イデアルのblowupと任意の底変換を同一視する工程はない。
 
 中心Z→Sの閉像はCの真部分集合で、ZはSの閉部分スキームである。中心のTへの底変換はAのイデアルによる商のSpecとして扱い、IH(C')を同じ元の中心上の固有射とそのアフィン基底変更に適用する。TのKrull次元の減少を仮定しない。この整理はG4で必要な任意のNoetherアフィン基底上の主張を保ち、一般の非アフィン基底の降下を追加の定理として作らないという内部の証明の選択である。中間のblowup B上の相対proper fppfは依然として非アフィン基底を含むので、前節の相対比較の不足は残る。
+
+G5の再利用の補足（2026-11-17）：既存の `FrobeniusArrowMapLaws` を再確認し、`frobeniusArrowSmallDiagramMap_id`・`frobeniusArrowSmallDiagramMap_comp` と、実際の順極限の `frobeniusDirectLimitArrowMap_id`・`frobeniusDirectLimitArrowMap_comp` も既に供給されていることを確認した。模型からの二変数図式を作る際はこれらをそのまま用い、同じ恒等・合成の証明を新しく作り直さない。G5の元の模型への自然なcolimit比較と一般のv被覆の完全性は依然として未完である。
