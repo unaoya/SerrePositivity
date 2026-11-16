@@ -3092,3 +3092,36 @@ mainの取り込みは11-16 16:25の指示どおり保留したまま。検証�
 
 
 同じ被覆余単体変数を残したtotal射影の法則（G4の既存射影・自然性の法則、着手前の型、80〜140行見込み）：D:J→HomologicalComplex₂(Module ℤ,up,up)に対し、`cechIntegerRowZeroProjection D : D⋙cechIntegerLiftTotalFunctor ⟶ D⋙((eval ℤ up 0).mapHomologicalComplex up)` と `cechIntegerColumnZeroProjection D : D⋙cechIntegerLiftTotalFunctor ⟶ D⋙eval(CochainComplex(Module ℤ) ℕ) up 0` は、同じ零次行・列射影を成分に取る自然変換。DをSimplexCategory上に取り、正の各行（列）が完全なら、この自然変換の交代余面複体を取った二重複体の同じtotalの射は擬同型（それぞれ `cechIntegerCosimplicialRowZero_quasiIso`、`cechIntegerCosimplicialColumnZero_quasiIso`）。各成分の既存の全射擬同型と `cechIntegerLiftTotal_quasiIso_of_columns` を合成するだけで、totalの結合則や新しい対角線消去を作らない。元の被覆変数と各軸を保持する。相対比較の内数。
+
+
+### 二重環Čechの係数移送と、被覆変数を残した同じtotal射影
+
+`CechTensorDiagramNaturality`（122行）：
+
+- `cechUnderArrowMap`：同じ基底の恒等射と元の係数の射を持つ四角形。
+- `cechUnderArrowMap_id`：同じ四角形は恒等射を保つ。
+- `cechUnderArrowMap_comp`：同じ四角形は合成を保つ。
+- `cechUnderConerveMap`：既存のconerveの自然変換を元のUnderへ持ち上げ、増大項を恒等に保つ。
+- `cechUnderConerveMap_id`：同じ増大conerveの係数移送は恒等射を保つ。
+- `cechUnderConerveMap_comp`：同じ増大conerveの係数移送は合成を保つ。
+- `cechUnderDiagramMap`：既存の増大単体との同値による同じ係数移送。
+- `cechUnderDiagramMap_id`：同じ増大単体図式の移送は恒等射を保つ。
+- `cechUnderDiagramMap_comp`：同じ増大単体図式の移送は合成を保つ。
+- `cechTensorDiagramMap`：B1の同じ項ごとのテンソル積を、二つの元の係数移送で写す。
+- `cechTensorDiagramMap_id`：同じ二重図式の移送は恒等射を保つ。
+- `cechTensorDiagramMap_comp`：同じ二重図式の移送は合成を保つ。
+- `cechTensorDiagramFunctor`：元の被覆変数を残したB1の同じ二重環図式の関手。
+
+`CechIntegerCosimplicialTotalProjections`（84行）：
+
+- `cechIntegerRowZeroProjection`：元の二重複体の図式に自然な零次行射影。
+- `cechIntegerColumnZeroProjection`：元の二重複体の図式に自然な零次列射影。
+- `cechIntegerCosimplicialTotal_quasiIso_of_objectwise`：同じ余単体変数ごとの全射擬同型を、既存の列の判定で同じtotalの擬同型へ渡す。
+- `cechIntegerCosimplicialRowZero_quasiIso`：各余単体で正の行が完全なら、同じ共通totalから元の零次行の軸への射は擬同型。
+- `cechIntegerCosimplicialColumnZero_quasiIso`：各余単体で正の列が完全なら、同じ共通totalから元の零次列の軸への射は擬同型。
+
+検証：tensor-naturalityのcheck-3とcosimplicial-projectionsのcheck-2は終了0。固定manifest・下書き・本体のSHA256と全バイト一致を確認。二本と直接importerの入口の対象ビルド5,358ジョブ・成功、別の共有鍵による所有宣言監査40宣言（26、14）、非公開・生成分を含め標準三公理のみ・終了0。ログは `2g-g4-tensor-projections-{native,audit}.log`。追加公理・sorry・既存宣言の型変更・資源上限の引き上げ・200行超の宣言なし。style警告は残る。
+
+今回本体206行＋入口2行＝208行。基準56ea849a3から検証済み19,163行（新規259モジュール18,858行、既存追加25行、入口280行。既存削除14行を差し引かない）。新規所有宣言の監査累計2,138、既存15宣言は別計上。外枠21,000行。G4・G5未完。実際のアフィン交叉の忠実平坦性、同じFrobenius係数の正の軸の完全性とタプル比較、nil閉厚化、Noether帰納、G5が残る。現時点の完成見込み約19,600〜20,500行の内数だが、残りの接続ごとに積み直し、21,000行を超える見込みになれば規則に従って止める。main未取り込み、最終型・仮定は同じ、root・下流全ビルド・全体監査・2hのLeanなし。共有鍵--class impl --wait 3600、待ちは一件、対象ビルドと監査は別リース。
+
+一覧：済み1／全体3（うち追加0）。
