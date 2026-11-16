@@ -4966,3 +4966,44 @@ uses-sorry警告なし、元ソースのSHA不変を確認した。
 次の係数図式の等式による同じ比較の移送は、新規ファイルの下書きにあり未検証。
 この段階では固定された`weightedSections_discrete_map`の全体やS8の完成は主張しない。
 一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+
+### 11-16：係数移送と元のweightedSections_leftLimitIsoの合成則
+
+追加2本・129行・7所有宣言の対象ビルド・小監査が完了、各プロセス終了コード0。
+標準三公理のみ、対象SHA一致。外枠用累計は**18,884行**、296本。
+
+* `NativeLeftSectionsCoefficientTransport`（60行・6宣言）：元の同じ値比較を係数図式の
+  等式で移すdefと、指定極限比較との合成則（同型・順射の両方）。
+  証拠：`/tmp/is-w1/s8-native-left-coefficient-1/target-audit-result.json`。
+* `WeightedSectionsLeftLimitComposition`（69行・1宣言）：元の同じ
+  `weightedSections_leftLimitIso`の順射の後合成則。
+  証拠：`/tmp/is-w1/s8-weighted-left-composition-2/target-audit-result.json`。
+
+```lean
+nativeLeftSectionsValueIsoOfDiagramEq P O hE
+  (hD : D = nativeLeftSectionsDiagram P O) (d : JoinCone D) (hd : IsLimitCone d) :
+  VertexIso (nativeLeftSectionsValue P O hE) d.vertex
+nativeLeftSectionsValueIsoOfDiagramEq_comp P O hE hD d e hd he :
+  nativeLeftSectionsValueIsoOfDiagramEq P O hE hD d hd ≪≫ limitVertexIso d e hd he =
+    nativeLeftSectionsValueIsoOfDiagramEq P O hE hD e he
+nativeLeftSectionsValueIsoOfDiagramEq_hom_comp P O hE hD d e hd he :
+  (nativeLeftSectionsValueIsoOfDiagramEq P O hE hD d hd).hom ≫
+    (limitVertexIso d e hd he).hom =
+      (nativeLeftSectionsValueIsoOfDiagramEq P O hE hD e he).hom
+weightedSections_leftLimitIso_hom_comp O hE F d e hd he :
+  (weightedSections_leftLimitIso O hE F d hd).hom ≫ (limitVertexIso d e hd he).hom =
+    (weightedSections_leftLimitIso O hE F e he).hom
+```
+
+最後のd・eは元の`WeightedSectionsLeftLimit`と同じ形状・係数の錐。
+元の本文と同じP、O'、同じ指定輸送の錐c、同じ値比較ewを局所的に固定した。
+係数の等式hDも元の式と同じ式で示し、元の値比較の順射をその固定部分と上の
+係数移送の比較の合成へ分解した。この現本文の分解の等式はrflで確認できた。
+これは修正前の旧値とのrflではない。途中の頂点の別名に対して▸の型が見えなかった
+初回の候補は、元の頂点の式をchangeで明示してから同じhvで移送する形に直した。
+新しい比較や新しい仮定は導入していない。既存構成の法則・証明分割で追加IDはなく、
+いずれも200行未満。既存の宣言をさらに変更していない。
+次は制限した標準極限比較の頂点射と、元の圏への同じ比較を結ぶ法則。
+固定されたweightedSections_discrete_mapの全体とS8の完成は未完のまま。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
