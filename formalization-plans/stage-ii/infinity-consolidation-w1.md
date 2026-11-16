@@ -51,3 +51,11 @@ IC-0 の完成（OE-W1 の段 1 の停止点）で ③-b は止まる。取り�
 - **`HomotopicalAlgebra/`** は IC-4 で 2,415 本を受け入れて 3,500 本を超える。IC-4 の段 0 で、移す前に**下位ディレクトリの設計**（今の主題 Simplicial・Diagram・HomotopyFunctionComplex・Reedy・Rectification・Quillen・Smith・Localization などを基に、受け入れる分をどこに置くか）を決める。
 - **名前空間**：`SerrePositivity.HomotopicalAlgebra` は使わない（Mathlib の `HomotopicalAlgebra` 名前空間を `SerrePositivity` の中で隠す）。今の主題ごとの名前空間（`SerrePositivity.SimplicialModel`・`SerrePositivity.HomotopyFunctionComplex`・`SerrePositivity.DiagramModel` など）に揃える案を基本に、段 0 で表にする。`HomologicalAlgebra/` の名前空間（IC-5）も同じ考え方で、Mathlib の名前空間と衝突・隠蔽しない形に揃える。
 - 名前空間を変える宣言は改名表に入れ、他のレーンの枝の追従（B4 の資料）を作る。
+
+## 6. 未決：DifferentialGraded/・Checks/・スペクトルの模型（IC-1 の段 0 の前に決める、11-17）
+
+DifferentialGraded/（473 本。本体 164 本・約 13.6 万行、Checks/ 309 本）は分類表（`research/infinity-outside-map/files.csv`）に入っていない。InfinityCategories の 464 本と KST の 367 本が import している。調整役の案：
+- **(a) を推す**：dg 理論そのもの（dg 圏・dg 加群・Morita・Verdier・perfect・分解など。Keller・Toën・Drinfeld などの dg の文献の主題）は `DifferentialGraded/` に残す。∞ との接点だけを外へ出す：dg nerve とその性質は Kerodon 2.5 の項目なので `InfinityCategories/Kerodon/ExamplesOfInfinityCategories/DifferentialGradedCategories/`、∞ の対象を dg で作る模型（D(A) の dg の模型、半自由な模型など）は `InfinityCategories/Models/DGCategories/`。どれをどちらに出すかは、IC-1 の段 0 で DifferentialGraded/ の分類表（同じ形）を作って決める。
+- (b) 全部を移すと IC-W1 で最大級の移動になり、dg の文献の主題と ∞ の模型が混ざる。
+- **Checks/**（270 本＋Morita 31 本など、example 約 1,280 個の検査。root からは import されず、`scripts/audit/dg.lean` などから使う）は本体と分ける：置き場所の案は最上位の `Checks/<主題>/` に別の lean_lib として置き、verify・監査で回す。lakefile と verify の変更が要るので段 0 で確かめる。
+- **スペクトルの模型の二系統**は目録に関係を書く：`Spectra/` の対称スペクトル（1 圏の smash 積、`StableModelPresentation` は `[ModelCategory SSet]` を仮定）と、`KST/Spectra/` の Ω スペクトル（BF、coherent nerve の `Sp`、安定性は条件つき）。どちらも HA の Sp の模型で、互いの比較・HA の定義との比較は今ない。置き場所は `InfinityCategories/Models/Spectra/Symmetric/`・`Models/Spectra/OmegaSpectra/`（§0）。
