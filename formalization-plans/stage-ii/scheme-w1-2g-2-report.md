@@ -3089,3 +3089,6 @@ mainの取り込みは11-16 16:25の指示どおり保留したまま。検証�
 
 
 同じ二重環Čech図式の係数移送の法則（G4の既存conerveの自然性、着手前の型、100〜180行見込み）：Aを可換環、B,CをUnder Aの対象とする。`cechUnderArrowMap (f : B ⟶ C)` は恒等な基底とf.rightの元の四角形。`cechUnderConerveMap f : Cech.underCech B ⟶ Cech.underCech C` は同じ既存のArrow.mapCechConerveをUnder Aへ持ち上げた射で、増大項は恒等。恒等・合成を保つ。`cechUnderDiagramMap f : Cech.asDiagram B ⟶ Cech.asDiagram C` は既存の増大単体との同値による同じ射。`cechTensorDiagramMap (f : B ⟶ B') (g : C ⟶ C') : Cech.tensorCech B C ⟶ Cech.tensorCech B' C'` はその二つの射を既存のringTensorで写した自然変換で、恒等・合成を保つ。最終に `cechTensorDiagramFunctor (B C : J ⥤ Under A) : J ⥤ (AugmentedSimplexCategory × AugmentedSimplexCategory ⥤ CommRingCat)` として元の被覆変数を残す。B1のtensorCechそのものを使用し、HA・B1の宣言は変更しない。新しい平坦性の仮定や新しい降下定理は導入しない。相対比較の内数。
+
+
+同じ被覆余単体変数を残したtotal射影の法則（G4の既存射影・自然性の法則、着手前の型、80〜140行見込み）：D:J→HomologicalComplex₂(Module ℤ,up,up)に対し、`cechIntegerRowZeroProjection D : D⋙cechIntegerLiftTotalFunctor ⟶ D⋙((eval ℤ up 0).mapHomologicalComplex up)` と `cechIntegerColumnZeroProjection D : D⋙cechIntegerLiftTotalFunctor ⟶ D⋙eval(CochainComplex(Module ℤ) ℕ) up 0` は、同じ零次行・列射影を成分に取る自然変換。DをSimplexCategory上に取り、正の各行（列）が完全なら、この自然変換の交代余面複体を取った二重複体の同じtotalの射は擬同型（それぞれ `cechIntegerCosimplicialRowZero_quasiIso`、`cechIntegerCosimplicialColumnZero_quasiIso`）。各成分の既存の全射擬同型と `cechIntegerLiftTotal_quasiIso_of_columns` を合成するだけで、totalの結合則や新しい対角線消去を作らない。元の被覆変数と各軸を保持する。相対比較の内数。
