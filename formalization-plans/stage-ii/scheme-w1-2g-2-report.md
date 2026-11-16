@@ -2625,3 +2625,88 @@ mainの取り込みは11-16 16:25の指示どおり保留したまま。検証�
 今回の短完全列は実際のF8の同じ正方向の図式のもの。正の定数基底列を除いた核同士の短完全列と元のY側・中心側の比較はまだ未実装である。一般のproper降下・最終のv被覆の完全性を完成扱いにしない。G4・G5は未完で、停止点2g-2ではない。最終のAugmentedRingCechExactと利用側の型は不変。mainは取り込んでいない。
 
 一覧：済み1／全体3（うち追加0）。
+
+正の定数基底列の射・自然性・短完全性（既存G4の単位・合成・係数移送・有限cone比較の法則、着手前の型、三本計150〜260行）：`cechConstantPositiveDoubleMap f` は外零次に明示的零複体の恒等、正次数に同じ複体の射fを置く。id・comp・zeroを保ち、`cechConstantPositiveDoubleFunctor` とそのPreservesZeroMorphismsを与える。`cechConstantPositiveDoubleProjection_naturality` は元の定数図式から同じ商への射影の自然性。`cechConstantPositiveDouble_shortExact` は元の複体の短完全性を同じ正次数の商へ渡す。外零次では零複体、正次数では元の短完全性を使い、対角線の境界消去や新しい降下の判定は作り直さない。
+
+左右へ取った同じ基底射影（既存G4の自然性・係数移送の法則、着手前の型、二本計170〜270行）：`baseProjection_onLeftSquare_totalComplexMap_surjective`・`…onRightSquare…` は、元のMap.baseProjectionへonLeftSquare/onRightSquareを適用した同じtotalの射の全成分の全射性。`schemePerfectCechTupleSquareBaseLeftComplex`・`…BaseRightComplex` は、第0項の同じbaseSquareの左右の全複体。`…BaseLeftProjection`・`…BaseRightProjection` は、実際の左右の余単体図式からこれらの同じ定数図式への自然変換。元のMapレベルの可換性とonLeft/onRightの合成則を使い、別の零複体への無説明な同定をしない。各項の全射性も同じgenericな法則から供給する。
+
+実際の左右と基底列の短完全列の射（既存G4の自然性・有限cone比較の法則、着手前の型、二本計140〜240行）：`schemePerfectCechTupleSquarePositiveBaseLeftProjection`・`…RightProjection` は、元の左右の余単体の射影を交代余面複体と同じ正次数の商へ渡した射。全成分の全射性を保持する。`schemePerfectCechTupleSquareBaseLeftRightShortComplex` は、第0項の同じbaseSquareの左右の短完全列を、正次数の商の関手へ渡した短複体で、同じ短完全性を持つ。`schemePerfectCechTupleSquareBaseComparison` は、実際のF8の左右の短完全列からこの基底列への射。三つの成分を既存の中央と今回の左右の射影に取り、二つの四角の可換性は元のleftProjection_naturality/rightInclusion_naturalityをbaseProjectionへ適用して得る。
+
+既存snake lemmaの同じ核への代入（G4の有限cone比較の証明分割、着手前の型、60〜110行）：Abelianな圏Cの短複体の射φ:S→Tについて、S・Tが短完全でφがepiなら、ShortComplex Cでの同じkernel φは短完全（`cechShortComplexKernel_shortExact`）。MathlibのSnakeInputのL₀_exact・mono_L₀_f・L₁'_exactと、epiのcokernelが零であることだけを使う。`cechShortComplexKernelMiddleIso` は、π₂の既存の核保存による `(kernel φ).X₂ ≅ kernel φ.τ₂`。そのhomと元の核の包含の式も同じkernelComparison_comp_ιから取る。新しいsnake lemmaや一般の9補題の証明を作り直さず、元の中央の核を別のものへ無説明に置き換えない。
+
+同じ核の左右の比較（既存G4の核保存・係数移送の法則、着手前の型、追加20〜35行）：π₁・π₃についても同じ既存のkernelComparisonで `(kernel φ).X₁ ≅ kernel φ.τ₁`、`(kernel φ).X₃ ≅ kernel φ.τ₃` を取る。中央の式と合わせ、選ばれた三つの元の核を保持する。
+
+実際の核の短完全列とF8の消去（既存G4の有限cone比較の証明分割、着手前の型、130〜220行）：`schemePerfectCechTupleSquareKernelSequence` は実際の基底比較の射のShortComplexでの核。三成分の全射性から同じ比較の射のepiを示し、前記の既存snake lemmaへの代入で短完全性を得る。中項は元の `schemePerfectCechTupleSquareReducedDouble` と標準同型で、元の核の包含を保つ。`DegreeOneProjectiveModel.perfectCechTupleSquareLeftKernelTotal_acyclic_of_right` は、元の射影F8の仮定と、同じ中心側の射影の核のtotalの完全性から、同じY側の核のtotalの完全性を得る条件付きのČech版。既存のtotal.mapIso・totalの短完全性・HomologySequenceLemmasを使う。中心側の完全性をNoether帰納から供給する部分はなお未完で、この条件付きの消去を一般の降下の完成と呼ばない。
+
+同じ左右の核の型注釈（既存G4の証明分割、着手前の型、追加15〜30行）：`schemePerfectCechTupleSquareRightKernel`・`…LeftKernel` は、既存の実際の左右の正次数基底射影のkernelそのものにHomologicalComplex₂の型を明示した値。構成・射・仮定を変更せず、totalの入力の型の照合で選ばれた極限の内部を展開しないための分割に使う。
+
+
+## G4：実際の三つの基底射影の核の短完全列と条件付きの消去
+
+同じ正次数の基底列を射・短完全列に自然にする法則を整え、実際の左右と中央の射影を一つの可換な短複体の射へ束ねた。その三成分は全射で、既存snake lemmaを同じ核へ適用し、実際の核の短完全列を得た。中項は元のschemePerfectCechTupleSquareReducedDoubleと標準同型で、元の包含を保つ。射影F8の仮定の下で、中心側の同じ核のtotalの完全性からY側へ戻す条件付きの消去まで検証した。
+
+`CechConstantPositiveDoubleMap`（54行）：
+- `cechConstantPositiveDoubleMapComponent`：外零次の明示的零複体の恒等と、正次数の元の複体の射を成分に取る。
+- `cechConstantPositiveDoubleMap`：元の定数図式の射の可換性により、同じ正次数の商の二重複体の射を得る。
+
+`CechConstantPositiveDoubleFunctor`（57行）：
+- `cechConstantPositiveDoubleMap_id`：同じ正次数の商の射は単位を保つ。
+- `cechConstantPositiveDoubleMap_comp`：同じ正次数の商の射は合成を保つ。
+- `cechConstantPositiveDoubleMap_zero`：外零次の零複体の性質と正次数の元の零写像により、零を保つ。
+- `cechConstantPositiveDoubleFunctor`：元の複体と射を同じ正次数の商へ送る関手。
+- `cechConstantPositiveDoubleFunctor_preservesZeroMorphisms`：同じ関手の零写像保存。
+
+`CechConstantPositiveDoubleExact`（56行）：
+- `cechConstantPositiveDoubleProjection_naturality`：元の定数図式から同じ正次数の商への射影は、元の射に自然。
+- `cechConstantPositiveDouble_shortExact`：外零次は零複体、正次数は元の短完全列として、同じ関手が短完全性を保つ。
+
+`CechAugmentedSquareBaseLeftRightSurjective`（66行）：
+- `CechAugmentedSquare.baseProjection_onLeftSquare_totalComplexMap_surjective`：元のbaseProjectionのY側の同じtotalComplexMapは全次数の成分で全射。
+- `CechAugmentedSquare.baseProjection_onRightSquare_totalComplexMap_surjective`：元のbaseProjectionの中心側の同じtotalComplexMapは全次数の成分で全射。
+
+`SchemePerfectCechTupleSquareBaseLeftRight`（97行）：
+- private `schemeSquareBaseMap_comm`：実際の単体の射の後に元の基底射影を合成すると、元の射影と一致するMapレベルの式。
+- `schemePerfectCechTupleSquareBaseLeftComplex`：元の第0項の同じbaseSquareのY側の全複体。
+- `schemePerfectCechTupleSquareBaseRightComplex`：元の第0項の同じbaseSquareの中心側の全複体。
+- `schemePerfectCechTupleSquareBaseLeftProjection`：実際のY側の図式から同じ定数基底図式への自然変換。
+- `schemePerfectCechTupleSquareBaseRightProjection`：実際の中心側の図式から同じ定数基底図式への自然変換。
+- `schemePerfectCechTupleSquareBaseLeftProjection_surjective`：同じY側の自然変換の全成分は全射。
+- `schemePerfectCechTupleSquareBaseRightProjection_surjective`：同じ中心側の自然変換の全成分は全射。
+
+`SchemePerfectCechTupleSquarePositiveBaseLeftRight`（67行）：
+- `schemePerfectCechTupleSquarePositiveBaseLeftProjection`：実際のY側の自然変換を同じ交代余面複体と正次数の商へ渡した射影。
+- `schemePerfectCechTupleSquarePositiveBaseRightProjection`：実際の中心側の自然変換を同じ交代余面複体と正次数の商へ渡した射影。
+- `schemePerfectCechTupleSquarePositiveBaseLeftProjection_surjective`：同じY側の射影は全ての外次数・縦次数の成分で全射。
+- `schemePerfectCechTupleSquarePositiveBaseRightProjection_surjective`：同じ中心側の射影は全ての外次数・縦次数の成分で全射。
+
+`SchemePerfectCechTupleSquareBaseComparison`（82行）：
+- `schemePerfectCechTupleSquareBaseLeftRightShortComplex`：元の第0項のbaseSquareの左右の短複体を、同じ正次数の商の関手へ渡す。
+- `schemePerfectCechTupleSquareBaseLeftRight_shortExact`：同じ正次数の基底列は短完全。
+- `schemePerfectCechTupleSquareBaseComparison`：実際のF8の左右の短完全列から、同じ基底列への可換な短複体の射。
+
+`CechShortComplexKernelExact`（73行）：
+- private `cechKernelSnakeInput`：既存の核・余核をそのままMathlibのSnakeInputへ代入する。
+- `cechShortComplexKernel_shortExact`：短完全列間のepiの同じ核は、既存snake lemmaの完全性・単射性と余核の零性により短完全。
+- `cechShortComplexKernelLeftIso`：π₁の既存の核保存による、同じ左項と元の左成分の核の標準比較。
+- `cechShortComplexKernelRightIso`：π₃の既存の核保存による、同じ右項と元の右成分の核の標準比較。
+- `cechShortComplexKernelMiddleIso`：π₂の既存の核保存による、同じ中項と元の中央成分の核の標準比較。
+- `cechShortComplexKernelMiddleIso_hom_ι`：同じ中項の比較は元の核の包含を保つ。
+
+`SchemePerfectCechTupleSquareKernelSequence`（148行）：
+- `schemePerfectCechTupleSquareKernelSequence`：実際のF8から基底列への射の、ShortComplexでの同じ核の列。
+- `schemePerfectCechTupleSquareKernelSequence_shortExact`：元の三成分の全射性と既存snake lemmaの同じ核への代入から得る短完全性。
+- `schemePerfectCechTupleSquareKernelSequenceMiddleIso`：同じ列の中項は、元の実際の中央の射影の核schemePerfectCechTupleSquareReducedDoubleと標準同型。
+- `schemePerfectCechTupleSquareKernelSequenceMiddleIso_hom_ι`：同じ中項の比較は元の実際の核の包含を保つ。
+- `schemePerfectCechTupleSquareRightKernel`：元の実際の中心側の射影のkernelそのものに二重複体の型を明示する。
+- `schemePerfectCechTupleSquareLeftKernel`：元の実際のY側の射影のkernelそのものに二重複体の型を明示する。
+- `DegreeOneProjectiveModel.perfectCechTupleSquareLeftKernelTotal_acyclic_of_right`：元の射影F8の仮定と同じ中心側の核のtotalの完全性から、同じY側の核のtotalの完全性を得る条件付きのČech版。既存のtotal.mapIso・totalの短完全性・HomologySequenceLemmasを使用し、docstringにBST13 Lemma 3.9・BS17 Lemma 4.6(i)、Stacks 30.2.6の比較を形式化しないことを明記した。
+
+検証：九本をまとめたmodule形式の下書き検証 `2g-g4-square-kernel-sequence-check-4.log` は終了0。九本と直接importerの入口の対象ビルドは **5,322ジョブ・終了0**（`2g-g4-square-kernel-sequence-native.log`、依存のキャッシュ再生を含む）。固定manifest・下書き・本体のSHA256と全バイト一致を九本とも確認した。対象ビルドと別の共有鍵で非公開・生成分も含む実際の全所有宣言を小監査し、**81宣言・標準三公理のみ・終了0**（`2g-g4-square-kernel-sequence-audit.log`）。上の順に6、6、2、2、10、5、10、23、17宣言。大きいkernelの期待型から射を推測する照合を避け、圏・短複体・射を明示し、標準同型とそのtotalを先に型の確定した値へ分割することで、既定200,000 heartbeatsのまま通した。追加公理・sorry・既存宣言の型変更・資源上限の引き上げ・200行超の宣言なし。haveI等のstyle警告は残る。共有鍵 --class impl --wait 3600、待ちは一件。root・下流全ビルド・AlgebraicGeometry全体監査なし。
+
+今回700行＋登録9行＝709行。基準56ea849a3からの外枠計数は **16,275行**（新規227モジュール本体16,002行、既存追加25行、入口248行）。新規所有宣言の小監査累計 **1,673**、既存15宣言は別計上。外枠はユーザー承認済みの20,000行。
+
+残りは、左右の同じ核のtotalと元の増大二重Čechの比較450〜850行、Noether帰納の組み立て（nil不変性、相対proper fppf・合成の消去を含む）400〜700行、元のアフィン環のČechへの出口250〜500行、G5の模型・Frobenius・filtered余極限の移送600〜1,000行。残り合計 **1,700〜3,050行**、完成見込み **17,975〜19,325行（約18,000〜19,400行）** と再計測した。前の約17,200〜18,800行を更新する。
+
+残る主要な接続は **元の増大複体との比較、相対proper fppfと合成を含む元の閉像のNoether帰納、アフィン環のČechへの出口、G5の自然な移送（4接続）**。今回の条件付きの消去のhRightをNoether帰納から供給する部分は未完。相対proper fppfの非アフィン中間基底の接続もこの帰納の組み立てに含め、Spec R上の平坦全射の既存の結果だけで完了扱いにしない。G4・G5は未完、停止点2g-2ではない。最終のAugmentedRingCechExactと利用側の型は不変。mainは取り込んでいない。
+
+一覧：済み1／全体3（うち追加0）。
