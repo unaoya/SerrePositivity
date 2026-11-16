@@ -5959,3 +5959,25 @@ PresheafElementsSiteLiftは80行・1本・16所有宣言。
 と同じIsLocallyInjective版。200行未満の係数移送として扱う。
 S1・S8は未完。mainは取り込まず、S7・R2・R3は再開しない。
 一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+
+### 同じ局所同値の宇宙移送まで検証（11-17 未明）
+
+- LocalBijectivityUniverseLift：79行・1本・4所有宣言。
+  `/tmp/is-w1/s8-local-bijectivity-lift-3/`の対象ビルド・小監査が終了0。
+  不在のimportを既存のElementsUniverseLiftに直し、逆向きでは指定した篩等式でgoalを直接rwした。
+- SiteLiftLocalEquivalence：42行・1本・1所有宣言。
+  `/tmp/is-w1/s8-site-local-equivalence-1/`の対象ビルド・小監査が終了0。
+  型：`IsLocalEquivSet J φ → IsLocalEquivSet (AsSmall.down.inducedTopology J)
+  (siteLiftPresheafMap φ)`。既存の同値siteの局所全単射性の保存と、
+  同じULiftの像篩・等化篩の保存・反映を合成した。
+
+両方とも成功JSON・対象SHA一致、標準三公理のみ。既存の本文・計算上限は変更しない。
+既存構成の係数移送の法則で、200行未満、追加IDなし。
+LocalBijectivityUniverseLiftの保存時には行数assertを80として79行で失敗したため、
+直前のコミット6c35d20feにはLeanだけが入った。本節で検証証拠と実測79行を補記する。
+外枠用の検証済み累計は **21,379行・新規337本＋承認された既存2本の差分**。
+S8の同じ指定大域比較と局所比較の照合、Čechの局所同値、任意係数への反映、
+同じ通常の層化との比較、S1の一般Coverageは未完。
+mainは取り込まず、S7・R2・R3は再開しない。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
