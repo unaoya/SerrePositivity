@@ -26,7 +26,7 @@
     "ResolvedOrdinaryCompleteAugmentation",
     "SingleRowsOrdinaryTotal"
   ],
-  "pending_check": "bundle-208 rc75 after --wait 3600; body never ran; bundle-209 queued",
+  "pending_check": "bundle-209 terminal: 8 failed, 2 dependency-blocked, existing186 audited; bundle-210 queued; main cd79e9cc5 not merged per coordinator",
   "next_proof_route": "remaining-20000-plan.md",
   "initial_record": {
     "stage": "5inf3a",
