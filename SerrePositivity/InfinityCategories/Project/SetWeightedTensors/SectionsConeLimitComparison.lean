@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Project.SetWeightedTensors.SectionsConeComposition
+public import SerrePositivity.InfinityCategories.Project.SetWeightedTensors.SetSectionsRestriction
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.LimitVertexIsoComposition
 
 /-!

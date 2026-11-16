@@ -4832,3 +4832,39 @@ Sheaves全体とその下流の枝のモジュールを全部、対象ビルド�
 この後は同じ指定余単位のstart・diagram・fixedVertexを使って大域比較のhom_facへ照合する。
 元の`weightedSections_discrete_map`と残る4宣言の完成はまだ主張しない。
 一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+
+### 11-16：既存の制限APIへの統一と、枝の全追加モジュールの同時import監査
+
+既存`SetSectionsRestriction`（9e7b918c2）は、制限の全関手と合成則を既に持っていた。
+前回の`SectionsConeComposition`は、その`elementsMap_comp`と
+`restrictSectionsCone_comp`の2名を重複して新設していた。見落としだった。
+既存側の対象ビルドと9宣言の小監査を改めて通し（終了コード0、標準三公理のみ）、
+新設してしまった46行のモジュールを撤回して、
+`SectionsConeLimitComparison`のimportを既存`SetSectionsRestriction`へ変更した。
+同ファイルの宣言の型・本文、既存`SetSectionsRestriction`の9宣言は一切変更していない。
+撤回したソースは`/tmp/is-w1/retired-duplicate/SectionsConeComposition.lean`に保全。
+削除46行を外枠から控除せず、外枠用の累計は18,549行のままにする。
+
+個別の対象ビルドではこの種の別モジュール間の重複を検出できないため、
+整理後の枝の全追加290モジュールを同時にimportする検証へ広げた。
+対象ビルド・新鮮な環境の1,578宣言の公理監査・対象SHA一致が全て通り、
+監視プロセスの終了コード0を確認した。証拠は
+`/tmp/is-w1/s8-all-branch-import-audit-1/files.json`・`target-audit-result.json`。
+全体の宣言数はこの同時importのモジュール所有権による1,578を正本とする。
+個別採取の単純合算とは、上流のeq_1・congr_simp等の生成宣言の所有環境が異なる。
+（照合資料：`/tmp/is-w1/s8-current-inventory-delta.json`。）
+
+さらに全290ファイルの名前つき公開宣言952個を、元ソースを変更せず字句解析して
+照合し、同名の重複0、未対応ファイル0を確認した。
+この字句検査では文献属性をメモリ上だけで除去し、匿名instanceには検査用の仮名を
+付けて名前の集計から除いている。これは型検査の代用ではなく、上記の同時importと
+小監査を補う検査。結果は`/tmp/is-w1/s8-source-duplicate-review-after.json`。
+
+指定余単位を保持する修正後も、旧補助則
+`nativeWeightedSections_leftLimitIso_comp`の型をそのまま比較すると
+isDefEqの200,000 heartbeatに達した。計算上限は上げず、候補は
+`/tmp/is-w1/unverified-after-value-transport/NativeWeightedSectionsLeftLimitComposition.lean`
+に保全し、productionソースから外した。これは元のS8の結論が偽という判定ではない。
+次は既存の制限APIを使い、元の切断射と全錐の普遍辺の射影・合成の計算法則を先に検証する。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
