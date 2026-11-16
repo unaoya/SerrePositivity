@@ -4656,3 +4656,42 @@ R2を再開したり、その新しい部分を作る予定ではない。
 停止中R2の4下書きは未変更。main cd79e9cc5 は未取り込み。
 これは完成停止点ではなく、外枠の指示による中間停止。目標は未完のまま保持する。
 一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+
+### 11-16：外枠24,000行で再開、指定極限の比較の合成則
+
+ユーザー承認により外枠を24,000行に変更。0cde9bbd3の残り5群を元の型のまま進める。
+約22,000行で止まらずに中間報告、上端が24,000行を超える見込みになったら検証済みを
+コミットして停止する。S7・R2・R3は再開しない。mainは引き続き取り込まない。
+
+`SectionsConeLimitComparison`（新規1本）の次の2法則を検証した。
+これは既存の錐・指定極限の比較の合成則で、追加IDではない。
+
+```lean
+sectionsConeMap_limitConeIso_hom (φ : P ⟶ Q) (O : ULiftNerveI ⟶ E)
+  (c d : JoinCone (SetWeight.diagram P O)) (hc : IsLimitCone c) (hd : IsLimitCone d)
+  (q : JoinCone (SetWeight.diagram Q O)) :
+  homMk (sectionsConeMap φ O c hc q).toTruncated ≫ (limitConeIso c d hc hd).hom =
+    homMk (sectionsConeMap φ O d hd q).toTruncated
+sectionsConeMap_limitVertexIso_hom (φ : P ⟶ Q) (O : ULiftNerveI ⟶ E)
+  (c d : JoinCone (SetWeight.diagram P O)) (hc : IsLimitCone c) (hd : IsLimitCone d)
+  (q : JoinCone (SetWeight.diagram Q O)) :
+  (hoFunctor.map (sliceOverProjection (SetWeight.diagram P O))).toFunctor.map
+    (homMk (sectionsConeMap φ O c hc q).toTruncated) ≫ (limitVertexIso c d hc hd).hom =
+  (hoFunctor.map (sliceOverProjection (SetWeight.diagram P O))).toFunctor.map
+    (homMk (sectionsConeMap φ O d hd q).toTruncated)
+```
+
+ここで `ULiftNerveI := (SSet.uliftFunctor.{u+1,u}).obj (nerve I)`、`homMk`は
+`Truncated.HomotopyCategory.homMk` の略記。完全な型は新規ファイルにある。
+終対象への射の一意性を同じ頂点射影に写し、指定された辺を変更していない。
+対象ビルド・新鮮な環境の所有モジュール別2宣言の小監査が完了、終了コード0。
+証拠：`/tmp/is-w1/s8-sections-limit-comparison-1/target-audit-result.json`。
+標準三公理のみ、対象ソースのSHA一致を確認した。
+
+続いて、図式等式と指定極限比較の合成則、および
+`nativeWeightedSections_leftLimitIso`の標的比較との可換性を新規ファイルで検証中。
+最初の後者の型の推論は合成記号の箇所で `whnf` の200,000 heartbeat上限に達した。
+上限は上げず、合成の圏と3頂点を明示して再検証する。
+いずれも200行を超える法則ではない。元の値の同型・主張は変更していない。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
