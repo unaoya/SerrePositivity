@@ -241,3 +241,9 @@ main cd79e9cc5でDAG XIII・NSの対応表とCitationの略号表が更新され
 共有書換器のguardは変更せず、個別記録と全条件が一致するbinderに限って、keywordを `instance _root_.<同じ宣言の新名>` にする準備用adapterを使う。他のbinderや他の曖昧な構文は元のguardで保留する。全137本のプレビューは保留0になった。匿名の綴りと明示名のkernel上の一致は、実適用後の対象ビルド・v3bで検収する。
 
 一覧：済み 0／全体 5（うち追加 0）。
+
+### 5.1 同じ個別確認の追加（17:58）
+
+152本目でStrictDiagramTotRightFrameComparison.lean:25–26の匿名local instance二件が同じguardに当たった。元native名は `…instModelCategoryAlgebraOperad_1` と `…instHasFunctorialFactorizationAlgebraOperadCofibrationsTrivialFibrations`。前者は既存のBEモデル構造、後者は既存のcofibration／trivial fibrationの関手的分解を指定している。同じ根拠・source SHA・正確なbinder span・原native表で個別確認し、輸送後の名前のみを明示する記録を追加した（計3件）。型・値・localな属性を変更しない。152本のプレビューは保留0。
+
+一覧：済み 0／全体 5（うち追加 0）。

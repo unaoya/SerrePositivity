@@ -9,5 +9,27 @@
     "source_line": "local instance : ModelCategory (operad A).Algebra := modelCategory A",
     "source_context": "variable (A : Type u) [CommRing A]",
     "review": "Original compiler binder resolves the keyword instance to this exact existing native constant. Make only its transported name explicit; keep local scope, type, value, and priority. Final target build and v3b still mandatory."
+  },
+  {
+    "module": "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotRightFrameComparison",
+    "old": "SerrePositivity.EInfinity.BarrattEccles.instModelCategoryAlgebraOperad_1",
+    "new": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.instModelCategoryAlgebraOperad_1",
+    "start": 1404,
+    "stop": 1412,
+    "source_sha256": "c42dc06d0a43f7ad25c7540c86141aefb1949e794f69a5a824e8233731baf4d9",
+    "source_line": "local instance : ModelCategory (operad A).Algebra := modelCategory A",
+    "source_context": "variable (A : Type u) [CommRing A]",
+    "review": "Exact original compiler binder and native name verified. Retain local scope, complete original type/value/priority; make only the existing transported name explicit. Final target build/v3b required."
+  },
+  {
+    "module": "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotRightFrameComparison",
+    "old": "SerrePositivity.EInfinity.BarrattEccles.instHasFunctorialFactorizationAlgebraOperadCofibrationsTrivialFibrations",
+    "new": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.instHasFunctorialFactorizationAlgebraOperadCofibrationsTrivialFibrations",
+    "start": 1473,
+    "stop": 1481,
+    "source_sha256": "c42dc06d0a43f7ad25c7540c86141aefb1949e794f69a5a824e8233731baf4d9",
+    "source_line": "local instance : (cofibrations (operad A).Algebra).HasFunctorialFactorization",
+    "source_context": "variable (A : Type u) [CommRing A]",
+    "review": "Exact original compiler binder and native name verified. Retain local scope, complete original type/value/priority; make only the existing transported name explicit. Final target build/v3b required."
   }
 ]
