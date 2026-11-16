@@ -8,7 +8,7 @@
     "HT01": "complete",
     "HT02": "complete",
     "HT03": "complete",
-    "HT04": "incomplete; stopped at 23000-line forecast cap",
+    "HT04": "in-progress",
     "HT05": "not-started",
     "HT06": "not-started"
   },
@@ -425,8 +425,8 @@
   },
   "HT02_complete": true,
   "scope_review": {
-    "reason": "corrected upper forecast exceeds 23000; actual source count has not reached cap",
-    "outer_limit_lines": 23000,
+    "reason": "User authorization 4e7e81a43; finish HT04 only",
+    "outer_limit_lines": 26000,
     "verified_head": "589061d1b0c48f27f7083c7034e4bdd65b634650",
     "verified_lines": 18021,
     "prepared_lines_before_isolation": 18673,
@@ -439,12 +439,12 @@
       22223,
       25443
     ],
-    "gate_passed": false,
+    "gate_passed": true,
     "complete": 3,
     "total": 6,
     "added": 0,
     "report": "ht04-cap23000-review.md",
-    "no_new_math_bundle_after_report": true
+    "no_new_math_bundle_after_report": false
   },
   "scope_review_history": [
     {
@@ -504,10 +504,32 @@
       "report": "remaining-20000-plan.md",
       "authorization": "resume-23000.json",
       "no_new_math_bundle_after_report": false
+    },
+    {
+      "reason": "User authorization 4e7e81a43; finish HT04 only",
+      "outer_limit_lines": 26000,
+      "verified_head": "589061d1b0c48f27f7083c7034e4bdd65b634650",
+      "verified_lines": 18021,
+      "prepared_lines_before_isolation": 18673,
+      "private_prototype_lines": 150,
+      "corrected_remaining": [
+        3400,
+        6620
+      ],
+      "projected_corrected_total_lines": [
+        22223,
+        25443
+      ],
+      "gate_passed": true,
+      "complete": 3,
+      "total": 6,
+      "added": 0,
+      "report": "ht04-cap23000-review.md",
+      "no_new_math_bundle_after_report": false
     }
   ],
   "provisional_total_source_lines_basis": "retained and archived work plus factor-two remaining estimate; forecast upper exceeds cap",
-  "terminal_stop": "23000-line forecast cap; HT04 incomplete; no follow-on work",
+  "terminal_stop": "HT04 completion; no HT05/HT06 or other follow-on work",
   "no_follow_on_5inf7a": true,
   "stop_instruction_commit": "75e22977f",
   "HT05_HT06_on_hold": true,
