@@ -1591,3 +1591,17 @@ Frobenius の既存の矢印の図式の端点の照合（着手前、既存の�
 今回1モジュール61行＋入口1行。新規125モジュール本体8,367行、既存追加25行を含む本体8,392行。登録125行・入口の追加空行21行を全て含む外枠計数 **8,538行**。新規小監査累計845宣言、既存15宣言は別計上。次数に対する自然性と余極限への同じ比較は下書きで、この束には含めない。G4・G5は未完。見込み約10,000〜13,500行・外枠16,000行は不変。
 
 一覧：済み1／全体3（うち追加0）。
+
+
+同じ実際の矢印の conerve への余極限の比較（着手前、既存の conerve の余極限保存と標準比較の法則の内数、100〜220行）：`frobeniusConerveCocone n` は検証済みの実際の矢印の余錐を、既存の cechConerve と n 次の評価で写した余錐。`frobeniusConerveIsColimit n` は同じ増大 conerve の随伴と既存の忘却・評価の余極限保存からその普遍性を供給する。`frobeniusConervePerfectIso n` は同じ環の Frobenius 順極限から、実際の frobeniusDirectLimitMap の conerve の n 次の環への標準同型。`…_ι`・`…_of` は元の矢印の有限段の標準脚を保つ式、`…_naturality` と `…_augmentation` は元の次数の射と基底からの実際の増大写像を保つ式。既存の写像の自然性の分割であり、出力型や幾何学的仮定は変更しない。反復図式から実際の conerve への比較全体は、これらの分割を合わせ約300〜500行の見込みへ具体化する。段全体の見込み・外枠は変えない。
+
+
+## G4：同じ反復図式の比較の、conerve の次数に対する自然性
+
+`FrobeniusConerveRingNaturality`（47行）：`frobeniusConerveRingSystemMap` は元の conerve の環準同型を、既存の ringDirectSystemNatTrans に渡した同じ有向系の射。`frobeniusConerveRingDiagramIso_naturality` は、元の次数の射と、同じ評価関手の自然変換が、前記の恒等成分の標準比較と可換なこと。元の面・退化写像を保ち、既存の図式や型は変更しない。
+
+単独検証、本体とのソース完全一致、対象と入口のビルド5,211ジョブ成功、小監査5宣言（実際の所有元による生成・非公開宣言込み）・標準三公理のみ、終了状態0。ログ `2g-frobenius-conerve-ring-naturality-check-1.log`・`2g-frobenius-conerve-ring-naturality-native.log`・`2g-frobenius-conerve-ring-naturality-audit.log`。局所的な backward.isDefEq.respectTransparency false、既定の資源制限。letIの style 警告あり。追加公理・sorry・既存の型変更・200行超の宣言なし。共有鍵 --class impl --wait 3600、待ちは一つ、対象ビルドと小監査は別枠。root・下流全ビルド・全体監査なし。
+
+今回1モジュール47行＋入口1行。新規126モジュール本体8,414行、既存追加25行を含む本体8,439行。登録126行・入口の追加空行21行を全て含む外枠計数 **8,586行**。新規小監査累計850宣言、既存15宣言は別計上。余極限と実際の conerve への比較は下書きで、この束には含めない。G4・G5は未完。見込み約10,000〜13,500行・外枠16,000行は不変。
+
+一覧：済み1／全体3（うち追加0）。

@@ -1773,3 +1773,4 @@ public import SerrePositivity.AlgebraicGeometry.FrobeniusAugmentedConerveCompari
 public import SerrePositivity.AlgebraicGeometry.SchemePerfectCechTupleDouble
 public import SerrePositivity.AlgebraicGeometry.FrobeniusConerveStep
 public import SerrePositivity.AlgebraicGeometry.FrobeniusConerveRingDiagram
+public import SerrePositivity.AlgebraicGeometry.FrobeniusConerveRingNaturality
