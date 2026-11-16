@@ -3,7 +3,7 @@
   "complete": 3,
   "total": 6,
   "added": 0,
-  "verified_head": "this commit: base 207a9805c3f334be97155499fabf1bbba114c199",
+  "verified_head": "this commit: base 7950f65bd024822bab48fc643e713dff70aec5ef",
   "items": {
     "HT01": "complete",
     "HT02": "complete",
@@ -12,22 +12,17 @@
     "HT05": "not-started",
     "HT06": "not-started"
   },
-  "latest_complete_audit_checkpoint": "completed-augmentation-and-row-units-checkpoint.json",
-  "latest_complete_audit_declarations": 1928,
+  "latest_complete_audit_checkpoint": "canonical-naturality-and-oriented-classes-checkpoint.json",
+  "latest_complete_audit_declarations": 1946,
   "working_changes_unverified": [
-    "HomologyIsoComposition",
+    "AffineCanonicalSingleRows",
+    "AffineCoverTargetAugmentation",
+    "CompletedFormsZeroBaseChange",
     "AffineOrientedFormsBaseChange",
     "BaseChangeHomologyZeroDifferential",
-    "AffineOrientedRawBasis",
-    "AffineOrdinarySingleTotal",
-    "ResolvedOrdinaryCompleteAugmentation",
-    "CompletedFormsZeroBaseChange",
-    "AffineCanonicalSingleRows",
-    "CanonicalCompletedNaturality",
-    "AffineCoverTargetAugmentation",
-    "AffineOrdinaryRowsCompletion"
+    "AffineOrdinarySingleTotal"
   ],
-  "pending_check": "bundle-211 terminal rc1; see audit module inventory; failed dependencies await next batch",
+  "pending_check": "bundle-212 terminal rc1; see audit module inventory; failed dependencies await next batch",
   "next_proof_route": "remaining-20000-plan.md",
   "initial_record": {
     "stage": "5inf3a",
