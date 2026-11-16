@@ -1773,3 +1773,21 @@ G4・G5と停止点2g-2は未完。最終の AugmentedRingCechExact と利用側
 今回1モジュール73行＋入口1行。新規139モジュール本体9,311行、既存追加25行を含む本体9,336行。登録139行・入口の追加空行21行を全て含む外枠計数 **9,496行**。新規小監査累計920宣言、既存15宣言は別計上。各次数の標準同型と自然性・増大の保存は下書きで、この束には含めない。G4・G5と停止点2g-2は未完。見込み約12,000〜15,500行・外枠16,000行は不変。
 
 一覧：済み1／全体3（うち追加0）。
+
+
+同じ比較を元の基底環へ戻す分割（着手前、前記200〜500行の内数、45〜100行）：`schemeScalarArrowGammaIso Y f` は元の schemeScalarHom Y f の環の矢印から Γ(f) の矢印への、基底に ΓSpecIso の逆、先に恒等を使う標準同型。`affineScalarCechConerveIso f` はその conerve と上の同じ Γ 比較の合成。`affineScalarCechConerveIso_augmentation f n` は元の R からの増大写像を、ΓSpecIso の逆と同じ幾何的増大の Γ の合成へ移す式。元の R と Γ(Spec R) を黙って同一視しない。
+
+
+## G4：同じアフィン nerve の Γ の自然な比較と元の基底環への移送
+
+`AffineGammaCechComponent`（45行）：`affineGammaCechComponentIso f n` は同じアフィン nerve の n 次の大域切断と Γ(f) の環の conerve の標準同型。`…_ι`・`…_head` は各脚と head が元の射影・基底への射の Γ に移る式。
+
+`AffineGammaCechNaturality`（84行）：`affineGammaCechComponentIso_naturality` は元の全ての単体の射に対する自然性。`affineGammaCechConerveIso` は同じ各次数の同型を自然同型にまとめる。`…_augmentation` は同じ増大写像を保つ式。元の有限広義ファイバー積の射影と基底への射の公式を使い、反対圏の合成を明示して照合した。
+
+`AffineScalarCechConerve`（57行）：`schemeScalarArrowGammaIso Y f` は f:Y→Spec R の元のスカラー R→Γ(Y) の矢印と Γ(f) の矢印を ΓSpec の標準同型で結ぶ。`affineScalarCechConerveIso` は Y がアフィンの場合、元のスカラーの環の conerve と同じ幾何的 nerve の Γ の自然同型。`…_augmentation` は元の R からの増大が ΓSpec の逆と同じ幾何的増大の Γ の合成に移る式。R と Γ(Spec R) を黙って同一視せず、元の射を保持する。
+
+三つをまとめた下書き検証成功、各本体は下書きと全バイト一致。新規三本と直接 importer の入口の対象ビルド5,227ジョブ成功、別の共有鍵の小監査は4＋5＋8＝17宣言・標準三公理のみ。非公開・生成宣言も実際の所有モジュールで全件走査した。終了状態は全て0。ログ `2g-affine-scalar-cech-comparison-check-2.log`・`2g-affine-gamma-scalar-cech-comparison-native.log`・`2g-affine-gamma-scalar-cech-comparison-audit.log`。自然性とスカラー移送の一部の証明に局所的な backward.isDefEq.respectTransparency false、資源上限は既定のまま。追加公理・sorry・既存の型変更・200行超の宣言なし。鍵 --class impl --wait 3600、同時の待ちは一つ、ビルドと監査は別枠。root・下流全ビルド・全体監査なし。
+
+今回三本186行＋入口3行。基準56ea849a3から再計数し、新規142モジュール本体9,497行、既存ファイルへの追加25行（削除14行は相殺しない）、入口追加163行（登録142・空行21）を含む外枠計数 **9,685行**。新規小監査累計937宣言、既存15宣言は別計上。アフィン nerve の全ての次数と増大を保つ環の標準比較まで検証した。Frobenius 係数への同じ比較の接続、非アフィン基底での相対 proper fppf の二重 Čech、F8 の全複体と元のブローアップを保つ Noether 帰納、G5は未完。最終の AugmentedRingCechExact と利用側の型は変更していない。見込み約12,000〜15,500行・外枠16,000行は不変。停止点2g-2ではない。
+
+一覧：済み1／全体3（うち追加0）。
