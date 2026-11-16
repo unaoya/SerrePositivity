@@ -103,3 +103,11 @@ Mathlib `Morphisms/Separated.lean` の `IsAffineHom.of_comp` は、k:A→B、q:B
 2dのproper fppf g:W→Bのqcな始域に有限アフィン開被覆𝒰を取り、既存の有限直和T=∐𝒰.Xとm=Sigma.desc 𝒰.fを使う。m≫gの平坦性と局所有限表示性は、元のsigmaOpenCoverの各項で𝒰.f i≫gとなることとIsZariskiLocalAtSourceから得られる。全射性は同じ開被覆とgの全射性から得る。Tは有限なアフィンの直和なのでアフィンで、上のof_compを使えばT→Bはアフィンである。この同じTのisoSpecを用いる手順はG1の `exists_affine_finitePresentation_vCover_refinement` と同じ選択で、別の模型を作る必要はない。
 
 この結果、TのB上の相対Čech nerveの正次数は、アフィン射の底変換とTのアフィン性によりアフィンになる。Bの各アフィン開に制限すれば、平坦全射の実際の環写像へのB1の入力が得られる。ただしこれだけでは、B自体が非アフィンな場合のΓのČech列の完全性や、B→Spec Rとの合成の消去を証明したことにはならない。元のBのアフィン被覆との比較と、元の増大二重図式へ渡す自然性が残る。G4の相対proper fppf・合成の束でこれらを照合する。
+
+## Noether帰納の固定基底をアフィンに取る整理（2026-11-17、紙）
+
+G4の必要な出口は、任意のNoether環R上の固有全射と、その任意のNoetherアフィン基底変更についての元の増大totalの完全性である。そこで帰納の固定基底SをSpec Rに取り、P(C)ではSへの閉埋め込みj:Y→Sとrange j=C、その上の固定した固有全射を量化する。Yは閉埋め込みがアフィン射であることからアフィンであり、Γ(Y)のSpecとの実際のisoSpecを使える。被約化後のYと、真に小さい閉中心Zもアフィンである。
+
+このため、任意のT=Spec A→Yを扱う際に、まず非アフィンなYを新たにアフィン開へ分割する必要はない。Y.isoSpec.invを `BlowupAffineProjectiveModel.nonempty_blowupAffinePullbackProjectiveModel` の開埋め込みjへ入れ、元のblowupのΓ(Y)上の次数一表示を得る。T→Yを同じisoSpecでSpec間の射へ戻し、未検証の `DegreeOneProjectiveModel.baseChange` の法則と実際のpullbackの同型を用いる。任意の係数移送のProjのCartesian性は、既存の `isPullback_projectiveCoefficientMap` を使う。逆像イデアルのblowupと任意の底変換を同一視する工程はない。
+
+中心Z→Sの閉像はCの真部分集合で、ZはSの閉部分スキームである。中心のTへの底変換はAのイデアルによる商のSpecとして扱い、IH(C')を同じ元の中心上の固有射とそのアフィン基底変更に適用する。TのKrull次元の減少を仮定しない。この整理はG4で必要な任意のNoetherアフィン基底上の主張を保ち、一般の非アフィン基底の降下を追加の定理として作らないという内部の証明の選択である。中間のblowup B上の相対proper fppfは依然として非アフィン基底を含むので、前節の相対比較の不足は残る。
