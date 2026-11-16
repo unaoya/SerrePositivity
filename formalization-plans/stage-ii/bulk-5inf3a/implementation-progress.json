@@ -390,7 +390,7 @@
     }
   ],
   "working_written_lines": 5185,
-  "source_inventory_scope": "Only HT01\u2013HT06 source additions/changes against 336942ab0, plus untracked files; excludes pre-existing Comparison modules.",
+  "source_inventory_scope": "Only HT01–HT06 source additions/changes against 336942ab0, plus untracked files; excludes pre-existing Comparison modules.",
   "static_check": "static-pending-check.json; not Lean validation",
   "build_wait_history": [
     {
@@ -448,7 +448,7 @@
   },
   "scope_review_history": [
     {
-      "reason": "remaining HT04\u2013HT06 cannot be forecast within 659 remaining lines; coordination section 2 scale rule",
+      "reason": "remaining HT04–HT06 cannot be forecast within 659 remaining lines; coordination section 2 scale rule",
       "verified_math_head": "28763cb06d93b4d5c007cd928f65065873e39623",
       "verified_modules": 157,
       "verified_lines": 13341,
@@ -485,7 +485,8 @@
     }
   ],
   "provisional_total_source_lines_basis": "verified 13341 + factor-two corrected remaining estimate; conditional gate failed",
-  "terminal_stop": "HT06 complete: commit completion report and stop",
+  "terminal_stop": "HT04.R1-R3 complete: commit measured report and stop",
   "no_follow_on_5inf7a": true,
-  "stop_instruction_commit": "2f16435f0"
+  "stop_instruction_commit": "75e22977f",
+  "HT05_HT06_on_hold": true
 }

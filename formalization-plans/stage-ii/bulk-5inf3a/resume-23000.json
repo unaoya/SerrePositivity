@@ -14,7 +14,7 @@
     "about 18000 lines"
   ],
   "stop_if": "verified work committed and forecast exceeds 23000 lines",
-  "after_HT06": "commit completion report and stop; do not start 5inf7a stage0",
+  "after_HT06": "not authorized in this run",
   "scope_complete": 3,
   "scope_total": 6,
   "scope_added": 0,
@@ -29,11 +29,20 @@
   "mathematical_terminal_types_unchanged": true,
   "general_crystalline_input_for_HT04_HT05": false,
   "normal_bulk_lock_required": true,
-  "stop_instruction_commit": "2f16435f0",
+  "stop_instruction_commit": "75e22977f",
   "do_not_start": [
+    "HT05",
+    "HT06",
     "5inf7a stage0",
     "B2",
     "B5",
     "B6"
-  ]
+  ],
+  "active_order": [
+    "HT04.R1",
+    "HT04.R2",
+    "HT04.R3"
+  ],
+  "stop_at": "HT04 complete; commit measured report and stop",
+  "after_HT04": "stop; HT05 and HT06 require literature-fidelity review"
 }
