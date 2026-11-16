@@ -2785,3 +2785,39 @@ ordinaryHomJointRealizationIso C :
 
 検証済み全体181本11,956行・1,051宣言。この後の固定 Yoneda の全族の実現の照合は別記する。
 一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
+
+
+### S8 続報：固定した元の Yoneda 射と実際の Yoneda の全族比較
+
+`SpacePresheafYonedaRealization`（62行5宣言）、`SpacePresheafYonedaJointHom`（63行3宣言）、
+`SpacePresheafYonedaComparison`（68行7宣言）の対象ビルド・小監査が成功した。
+標準三公理のみ、source SHA 一致。
+記録：`/tmp/is-w1/s8-set-yoneda-realization-1/`、`/tmp/is-w1/s8-set-yoneda-joint-hom-2/`、
+`/tmp/is-w1/s8-set-yoneda-comparison-1/`。
+
+```lean
+liftedSetYoneda C ≫ (discretePresheafInclusion C).val =
+  curry (ordinaryHomFamilyBase C ≫ spaceDiagram (ordinaryHomBifunctor C))
+
+nativeSetShapeYoneda C := yonedaInfinityMap (nerve C) ≫
+  (pre ((SSet.uliftFunctor.map (nerveOppositeIso (C := C)).inv))).app SpaceInfinity
+
+fixedSetYoneda_nativeIso C :
+  FunctorIso (nativeSetShapeYoneda C)
+    (liftedSetYoneda C ≫ (discretePresheafInclusion C).val)
+```
+
+元の射を既存の `kanFamily_realization_curry` により全族の実現に戻し、Hom の変数交換を
+同じ通常の二変数関手の等式として照合した。共同 Hom の指定同型を底の移送で制限して curry したので、
+全対象・全射・全高次を含む関手同型である。表現可能値だけの比較で代用していない。
+新しい数学の ID は追加せず、既存構成の係数移送・curry・合成則の証明分割のみ。
+
+残り：この指定同型を反転し、前層形状の指定同型とともに右 Kan 拡張へ運んで、
+元の `oppositeSpaceYoneda` を使う `weightedSectionsData` を作る。
+その後、離散重みの比較と射の自然性、一般の余極限から極限、層化・局所同値への接続が必要。
+S1 の残りも維持し、S7 は後続とする。今回の Yoneda 比較だけで S8 完成とは数えない。
+検証済み全体184本12,149行・1,066宣言。外枠18,600行を維持する。
+
+運用記録：先行する小監査のプロセス終了確認前に次の待ちを一度出した。
+先行の終了コード0を確認後は待ちを一つに戻した。以後は終了コードを確認してから次を出す。
+一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
