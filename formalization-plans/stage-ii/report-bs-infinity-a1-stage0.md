@@ -5721,3 +5721,96 @@ smallLeftUnstraighteningComparisonOfFunctorIsoだけ。承認された二つの�
 **20,446行・新規322本＋承認された既存1本の本文差分**。
 S1・S8は未完。S7・R2・R3は再開せず、mainも取り込まない。
 一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+
+### 直接importerの再ビルドでの既存証明の簡約深さ（11-17 未明）
+
+`/tmp/is-w1/s8-right-kan-comparison-5/` の検証で、旧本文の式の独立性と新本文の指定射のrfl検査は
+両方終了0・標準三公理のみ。新しい実装の検査を、旧compiled環境の二つ目の検査と混同しない。
+今回通った旧側は、保存した旧本文の `Classical.choose (exists_… η)` という式そのもの。
+
+直接importer13本の組は7100ジョブのうち一つ、既存の
+`DensityFiberYonedaValue.lean:47` の `presheafElementsYonedaSliceValue_interval` の末尾の
+`rfl` で `maximum recursion depth has been reached`、終了1。
+記録：同ディレクトリの `direct-importers.log`・`direct-importers-result.json`。
+計算上限は上げていない。既存Sheavesの統合再検証や新規補題の段は、この組ではまだ実行されていない。
+
+元の証明は二つのrwの後、全体の定義上の比較をrflへ任せていた。
+`presheafElementsYonedaSliceInterval` の定義は同じMappingと同じ区間比較の合成なので、
+次の既存の定義二つと既証の等式・結合則だけに展開を局所化する差分案を用意した。
+
+```lean
+-- 主張の型・名前は同じ。以下だけへ証明を置換する案。
+rw [presheafElementsYonedaSliceValue, yonedaPresheafEvaluation_interval,
+  presheafElementsYonedaSliceInterval, Category.assoc]
+```
+
+前のrwとrflの2行をこのrwの2行にするだけ。新しい定理、構成、仮定、計算上限は置かない。
+一時ファイル `/tmp/is-w1/s8-density-value-local-proof/check.lean` に同じ型の検査を用意した。
+本体の既存証明はまだ変更していない。§2.1の例外として、この一証明の局所化の承認が必要。
+承認時は公開型・属性・公理の保存比較と、同じ直接importer・Sheaves・枝の下流を再検証する。
+S1・S8は未完。検証済み累計20,446行のまま。mainを取り込まず、S7・R2・R3も再開しない。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+
+#### 一証明の局所化の承認と適用（11-17 未明）
+
+調整役から承認（指示書追記430b0c87f）を受領した。
+presheafElementsYonedaSliceValue_intervalの証明2行だけを、上記の指定rwの2行に置き換えた。
+主張の型・名前、他の既存の本文、maxRecDepth・heartbeatsは変更していない。
+同じ一枚の待機中の整理券の先頭へ、DensityFiberYonedaValueと直接のimporter
+DensityCanonicalValueCriterionの対象ビルド・小監査を追加した。
+その通過後に(A)と依存する宇宙移送・元の大域比較への特殊化を検証する。
+旧証明の全文は `/tmp/is-w1/s8-density-value-local-proof/before-source.lean` に保存した。
+旧モジュールのoleanは失敗後に存在しないため、この一証明について旧compiled環境との
+完全なv3b前後比較が得られたとは扱わない。公開の型・名前・属性は、承認差分が証明2行だけで
+あるソース比較で保持を確認し、新しい環境の公理は小監査で確認する。
+承認されたSmallLeftUnstraighteningFunctorIsoの8宣言のv3b前後比較とは分けて記録する。
+この差分もまだ検証前で、累計20,446行には未算入。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+
+15. `NativeSheafRepresentableCoefficients`（新規44行・未検証）の型は、
+C : Type u、E : SSet uが準圏、F : nerve Cᵒᵖ ⟶ Eとして
+
+```lean
+NativeIsSheaf J F → ∀ x : E _⦋0⦌,
+  IsSheaf J ((SSet.uliftFunctor.{u + 1, u}).map F ≫ covariantRepresentableInfinity x)
+```
+
+11の元の全被覆錐の値の等式と、既存のcovariantRepresentableInfinity_isLimitを使う。
+ULift Eの任意の大きな図式に対する極限保存を仮定せず、元の被覆錐自体を持ち上げて写す。
+この違いで元の係数にpresentable性や宇宙を超える完全性を追加しない。
+任意の係数への最終のsection射の比較・反映は未完。既存構成の係数移送の法則、追加IDなし。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+
+### 承認された一証明と、指定比較の因子分解・係数移送の検証（11-17 未明）
+
+次の各段の対象ビルド・小監査が終了0、成功JSON、ソースSHA一致、標準三公理のみ。
+証拠は `/tmp/is-w1/s8-right-kan-comparison-6/` の各段のtarget-audit-result.json・process-result.json。
+
+- density：DensityFiberYonedaValueと直接のimporter DensityCanonicalValueCriterion、2本・6所有宣言。
+  主張・名前・属性を含む元のソースは、承認された証明2行以外に変更がないことを保存ソースと照合した。
+  計算上限は変更しない。
+- factor：RightKanTransportComparisonFactorization、1本・135行・1所有宣言。
+- transfer：RightKanFunctorIsoTransfer・RightKanHomRepresentativeTransfer、2本・79行・3所有宣言。
+
+新規3本214行と承認された既存証明の2挿入行を外枠に加え、削除2行は返金しない。
+外枠用の検証済み累計は **20,662行・新規325本＋承認された既存2本の差分**。
+
+一時ファイルの局所化の検査は、implicit transparencyの下での型の表示の不一致により終了1。
+これを成功とは扱わない。実際の元のモジュールでは承認どおりの証明が対象ビルドを通り、
+その直接のimporterも同じ新しい環境で通り、全6宣言を小監査したことを正本の検証結果とする。
+旧compiled環境とのv3b前後比較が得られたとは主張しない。
+
+vertex段は新規RightKanTransportComparisonVertexの最後の評価の表示をそろえるsimpaで失敗。
+同じ関数functorHomEvaluateを目標側にも展開する法則を明示して再検証する。
+universe段は依存の再コンパイル中に外側の280秒のguardで終了124。
+kernelの時間切れではなく、計算上限を上げたわけでもない。
+witness・nativeRep・nativeVertexはこの組では未検証。組全体を成功とはしない。
+
+次は短い独立の検査を先にし、その後に直接importer13本と既存Sheaves165本の統合再検証を
+一枚の整理券で行う（外側guardは15分、一回30分以内の規則内。数学の計算上限は同じ）。
+S1・S8は未完。mainは取り込まず、S7・R2・R3は再開しない。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
