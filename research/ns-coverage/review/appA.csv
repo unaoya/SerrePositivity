@@ -1,0 +1,18 @@
+number,status,declarations,reason,axioms,check,partial_kind
+A.1,none,,原典 p.132 の「対称モノイダル ∞ 圏」を照合。対称モノイダル ∞ 圏の Segal/coCartesian 条件と相対導来局所化の比較が不足。通常のモノイダル局所化・Quillen 導来関手を、それらの全 operadic 普遍性とは数えない。,,not_found,
+A.2,partial,SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.InnerFibrations.cocartesianRelativeFunctorSpace @ SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/InnerFibrations/RelativeFunctor.lean:47 | SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.InnerFibrations.cocartesianRelativeFunctorPredicate_vertex @ SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/InnerFibrations/RelativeFunctor.lean:37,"仮定：同じ底への二つの単体集合の射 p,q（Lean が弱い：モノイダルな Segal 条件は不要）。結論：底上で全 coCartesian 辺を保つ写像の条件と、その全部分関手圏（強モノイダル関手の定義のこの条件・全部分圏の部分）。N(Fin*) 上の対称モノイダル構造との同定、inert のみを保つ lax 条件は含まれない。",,found,component
+A.3,none,,原典 p.133 の「∞ operad の代数と lax 関手」を照合。対称モノイダル ∞ 圏の Segal/coCartesian 条件と相対導来局所化の比較が不足。通常のモノイダル局所化・Quillen 導来関手を、それらの全 operadic 普遍性とは数えない。（注意・問題提起も番号付きの原項目として保持し、計画中という理由では充足に数えない。）,,not_found,
+A.4,none,,原典 p.133 の「モノイダル Dwyer–Kan 局所化」を照合。対称モノイダル ∞ 圏の Segal/coCartesian 条件と相対導来局所化の比較が不足。通常のモノイダル局所化・Quillen 導来関手を、それらの全 operadic 普遍性とは数えない。,,not_found,
+A.5,none,,原典 p.133 の「弱同値を保つ tensor の局所化」を照合。対称モノイダル ∞ 圏の Segal/coCartesian 条件と相対導来局所化の比較が不足。通常のモノイダル局所化・Quillen 導来関手を、それらの全 operadic 普遍性とは数えない。,,not_found,
+A.6,none,,原典 p.134 の「HA の局所化との比較」を照合。対称モノイダル ∞ 圏の Segal/coCartesian 条件と相対導来局所化の比較が不足。通常のモノイダル局所化・Quillen 導来関手を、それらの全 operadic 普遍性とは数えない。（注意・問題提起も番号付きの原項目として保持し、計画中という理由では充足に数えない。）,,not_found,
+A.7,none,,原典 p.134 の「モノイダルモデル圏の ∞ 局所化」を照合。対称モノイダル ∞ 圏の Segal/coCartesian 条件と相対導来局所化の比較が不足。通常のモノイダル局所化・Quillen 導来関手を、それらの全 operadic 普遍性とは数えない。,,not_found,
+A.8,none,,原典 p.135 の「左導来可能な coCartesian fibration」を照合。対称モノイダル ∞ 圏の Segal/coCartesian 条件と相対導来局所化の比較が不足。通常のモノイダル局所化・Quillen 導来関手を、それらの全 operadic 普遍性とは数えない。,,not_found,
+A.9,none,,原典 p.136 の「弱同値保存輸送の左導来可能性」を照合。対称モノイダル ∞ 圏の Segal/coCartesian 条件と相対導来局所化の比較が不足。通常のモノイダル局所化・Quillen 導来関手を、それらの全 operadic 普遍性とは数えない。,,not_found,
+A.10,none,,原典 p.136 の「Quillen 関手の絶対導来性」を照合。Quillen adjunction の導来・局所化はあるが、N(F) の coCartesian 全空間を相対局所化した絶対右 Kan 延長の比較はない。,,not_found,
+A.11,none,,原典 p.137 の「Quillen 双関手の絶対導来性」を照合。対称モノイダル ∞ 圏の Segal/coCartesian 条件と相対導来局所化の比較が不足。通常のモノイダル局所化・Quillen 導来関手を、それらの全 operadic 普遍性とは数えない。,,not_found,
+A.12,none,,原典 p.137 の「Quillen 関手の合成の導来可能性」を照合。対称モノイダル ∞ 圏の Segal/coCartesian 条件と相対導来局所化の比較が不足。通常のモノイダル局所化・Quillen 導来関手を、それらの全 operadic 普遍性とは数えない。,,not_found,
+A.13,none,,原典 p.137 の「モノイダルモデルの導来可能性」を照合。対称モノイダル ∞ 圏の Segal/coCartesian 条件と相対導来局所化の比較が不足。通常のモノイダル局所化・Quillen 導来関手を、それらの全 operadic 普遍性とは数えない。,,not_found,
+A.14,none,,原典 p.138 の「fiber ごとの導来局所化と coCartesian 性」を照合。対称モノイダル ∞ 圏の Segal/coCartesian 条件と相対導来局所化の比較が不足。通常のモノイダル局所化・Quillen 導来関手を、それらの全 operadic 普遍性とは数えない。,,not_found,
+A.15,none,,原典 p.138 の「左導来可能局所化の底変換」を照合。対称モノイダル ∞ 圏の Segal/coCartesian 条件と相対導来局所化の比較が不足。通常のモノイダル局所化・Quillen 導来関手を、それらの全 operadic 普遍性とは数えない。,,not_found,
+A.16,none,,原典 p.140 の「coCartesian fibration と基底の余極限」を照合。通常図式の coCartesian fibration・pullback の一般論だけでは、任意の Cat∞ の基底余極限に対する全空間の余極限の同定と逆の二条件を直接結論しない。,,not_found,
+A.17,none,,原典 p.140 の「Δ⁰・Δ¹ による Cat∞ の余極限生成」を照合。Δⁿ の spine の inner anodyne 性と一般の単体表示はあるが、Cat∞ の小余極限で Δ⁰・Δ¹ から全準圏が生成されるという包含同値への比較は未確認。,,not_found,
