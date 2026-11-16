@@ -3843,3 +3843,49 @@ cofanGeneratedSieve_eq_bot {ι : Type u} [IsEmpty ι] {B : ι → C} (c : Cofan 
 次の未実行一覧は全14対象。現セッション18673は整理券一枚で生存中。
 検証済み232本15,034行・1,301宣言は変わらない。
 一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+### 対象ビルド再開と S1 の恒等余単位の簡約の分割（11-16 夕）
+
+調整役の16:25の伝達に従い、停止点までは main を取り込まない。
+Citation の略号表の変更による再コンパイルを、この作業木へ導入していない。
+旧セッション18673は終了1で終端を確認した。前の6対象のビルドが実行され、
+`MonoLocalRightKanRestriction`・`MonoLocalSections`・`CechCommaLocalContraction` が通った。
+その後の束で `SetSectionsRestriction`・`LocalInjectiveDiagonal` も通った。
+小監査がまだなので、検証済み行数とコミット済み本数には加算しない。
+
+S1は `ExtensiveSieveIndex`・`ExtensiveSieveCofinality`・`ExtensiveTerminalComma`・
+`ExtensiveCofanDuality`・`ExtensiveLegRightCone`・`ExtensiveEmptySieve` が対象ビルドを通った。
+`ExtensiveSieveCone` の Functor の外延性は、型クラス Functor との名前の混同と
+外延性の引数の順序を直した。`ExtensiveIndexRightKan` は、実際の指定輸送の
+`nerveMap (𝟭 _) ≫ H` を H と直接定義上比較するところで whnf が時間切れになった。
+上限を上げず、113行の同じ新規ファイルの中で次に分割した（未検証）：
+
+```lean
+extensiveIndexRightKanCounit I H :
+  SSet.Homotopy
+    (nerveMap (WithTerminal.incl : I ⥤ WithTerminal I) ≫ nerveMap (𝟭 (WithTerminal I)) ≫ H)
+    (nerveMap (WithTerminal.incl : I ⥤ WithTerminal I) ≫ H)
+extensiveIndexRightKanCounit_h I H :
+  (extensiveIndexRightKanCounit I H).h =
+    fst _ _ ≫ (nerveMap (WithTerminal.incl : I ⥤ WithTerminal I) ≫ H)
+extensiveIndexRightKan_data I H hH :
+  IsRightKanExtension (nerveMap (WithTerminal.incl : I ⥤ WithTerminal I))
+    (nerveMap (WithTerminal.incl : I ⥤ WithTerminal I) ≫ H)
+    (nerveMap (𝟭 (WithTerminal I)) ≫ H) (extensiveIndexRightKanCounit I H)
+-- 以下は同じファイルの private な移送の法則。
+rightKan_refl_of_counit {δ : A ⟶ B} {p q : B ⟶ X} (hp : p = q)
+  (α : SSet.Homotopy (δ ≫ p) (δ ≫ q)) (hα : α.h = fst _ _ ≫ (δ ≫ q))
+  (hk : IsRightKanExtension δ (δ ≫ q) p α) :
+  IsRightKanExtension δ (δ ≫ q) q
+    (SSet.RelativeMorphism.Homotopy.refl (SSet.RelativeMorphism.botEquiv.symm (δ ≫ q)))
+```
+
+最後の元の型への接続は `nerveFunctor.map_id (Cat.of (WithTerminal I))` から得た
+命題的な等式を使う。新しいIDは足さず、既存の構成の法則・証明の分割として扱う。
+200行超の補題なし。元の右 Kan 条件を仮定にせず、局所輸送から証明する。
+
+現在の再検証は `/tmp/is-w1/s8-all-local-sections-next-6/`、セッション25070。
+同じ14対象でビルド後に新しい環境からの所有宣言の小監査・SHA確認を行う束。
+待ちは一枚。実行中の対象と依存は変更しない。未検証の Lean は作業木に残す。
+検証済み232本・15,034行・1,301宣言は変わらない。S1・S8は未完。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
