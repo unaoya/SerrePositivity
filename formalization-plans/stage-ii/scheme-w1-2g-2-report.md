@@ -1577,3 +1577,17 @@ Frobenius の既存の矢印の図式の端点の照合（着手前、既存の�
 今回1モジュール59行＋入口1行。新規124モジュール本体8,306行。既存追加25行を含む外枠計数は本体8,331行・登録124行と入口の追加空行21行を全て含めて **8,476行**。新規小監査累計838宣言、既存15宣言は別計上。次の同じ反復図式への標準比較は型を前節に記録したが、未実装。G4の実際のアフィン比較・二重 Čech の完全性の判定・Noether帰納、G5は残る。見込み約10,000〜13,500行・外枠16,000行は不変。停止点2g-2の完成とは呼ばない。
 
 一覧：済み1／全体3（うち追加0）。
+
+
+同じ反復図式の次数に対する自然性の分割（着手前、前記120〜300行の内数）：`frobeniusConerveRingSystemMap a` は実際の conerve の射の環準同型を既存の ringDirectSystemNatTrans に渡したもの。`frobeniusConerveRingDiagramIso_naturality a` はその射と、元の conerve の n 次の評価関手の自然変換が上の恒等成分の標準比較と可換なこと。`frobeniusConerveRingColimitIso n` は同じ実際の環の順極限と、元の矢印から評価した図式の余極限の標準同型。有限段の脚を保つ式 `…_ι`・`…_of` と、実際の Frobenius 順極限の写像に対する `…_naturality` を、同じ標準脚と既存の colimit.ι_map で示す。
+
+
+## G4：同じ conerve の反復図式の標準比較
+
+`FrobeniusConerveRingDiagram`（61行）：`frobeniusConerveRingDiagramIso` は各 conerve の同じ環の Frobenius 有向系と、元の矢印の反復図式を同じ次数で評価した環の図式の標準同型。成分は全て元の環の恒等射。後続射は検証済みの frobeniusConerve_step と実際の冪の式で照合し、任意の段へは NatTrans.ofSequence の自然性で渡す。`frobeniusConerveRingDiagramIso_hom_app` はその恒等成分との一致。
+
+単独検証、本体とのソース完全一致、対象と入口のビルド5,210ジョブ成功、小監査7宣言（実際の所有元による生成・非公開宣言込み）・標準三公理のみ、終了状態0。ログ `2g-frobenius-conerve-ring-diagram-check-3.log`・`2g-frobenius-conerve-ring-diagram-native.log`・`2g-frobenius-conerve-ring-diagram-audit.log`。局所的な backward.isDefEq.respectTransparency false、既定の資源制限。unused simp の style 警告あり。追加公理・sorry・既存の型変更・200行超の宣言なし。共有鍵 --class impl --wait 3600、待ちは一つ、対象ビルドと小監査は別枠。root・下流全ビルド・全体監査なし。
+
+今回1モジュール61行＋入口1行。新規125モジュール本体8,367行、既存追加25行を含む本体8,392行。登録125行・入口の追加空行21行を全て含む外枠計数 **8,538行**。新規小監査累計845宣言、既存15宣言は別計上。次数に対する自然性と余極限への同じ比較は下書きで、この束には含めない。G4・G5は未完。見込み約10,000〜13,500行・外枠16,000行は不変。
+
+一覧：済み1／全体3（うち追加0）。
