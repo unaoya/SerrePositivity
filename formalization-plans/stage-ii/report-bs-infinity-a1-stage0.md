@@ -4072,3 +4072,38 @@ isSheaf_extensive_iff_preservesFiniteProducts (F : Presheaf C E) :
 検証済みコミットの実測250本16,387行・1,421宣言は、まだ増やしていない。
 S1の一般coverageとS8の元の一般の局所同値・指定比較は残る。
 一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+### S1-E の元の両方向の検証完了、S8 の反転重みへの接続（11-16 夕）
+
+数学：`065539cb0`、新規2本169行・17宣言。
+`/tmp/is-w1/s1-extensive-descent-1/target-audit-result.json` で、2対象のビルド、
+新しい環境の所有17宣言の小監査（標準三公理のみ）、全ソースのSHA一致を確認した。
+セッション61077の終了0も確認した。検証済み全体252本16,556行・1,438宣言。
+`isSheaf_extensive_iff_preservesFiniteProducts` は元の型で両方向が完了し、文献属性も通った。
+S1は元の一般 `Coverage` の判定が残るので、一覧全体の完了数は増やさない。
+
+S8 の非単射の場合のČech解消をつなぐための追加の照合：
+既存の `SetWeightedTensors.elementsToReplacement P` は、
+`nerve P.Elements` と `simplicialReplacement (coefficients P)` の同型であり、
+`elementsToReplacement_naturality` もある。同じ元の圏の比較を新しく作り直さない。
+native BK余極限は **反転した重み** のcoendを使うので、未反転の模型と混同しない。
+まず新規 `Project/HomotopyDiagramComparison/KanExtensions/ReflectedBousfieldKanUnderWeight` に
+既存のOver・Under反転と `nerveUnopIso` の係数移送の法則を書いた：
+
+```lean
+overUnderOppositeCatIso (I : Type u) [SmallCategory I] (i : I) :
+  Cat.of (Over (Opposite.op i)) ≅ Cat.of ((Under i)ᵒᵖ)
+reflectedBousfieldKanUnderIso (I : Type u) [SmallCategory I] (i : I) :
+  ((bousfieldKanWeight Iᵒᵖ).obj (Opposite.op i)).op ≅ nerve (Under i)
+reflectedBousfieldKanUnderWeightIso (I : Type u) [SmallCategory I] :
+  bousfieldKanWeight Iᵒᵖ ⋙ SSet.opFunctor ≅ Under.mapFunctor I ⋙ nerveFunctor
+```
+
+Overの後合成とUnderの前合成の同じ四角形の法則も明示する。
+Mathlib の `Over.opEquivOpUnder` の単位・余単位が `Iso.refl` であることを使い、
+その既存の通常圏の同型をnerveと反転に移す。任意の点ごとの頂点同型を集めない。
+追加IDなし。既存模型の係数移送の法則、200行超の補題なし。
+この1本を `/tmp/is-w1/s8-reflected-under-weight-1/` で対象ビルド・小監査する。
+S8の元の一般の局所同値、指定離散比較の射の自然性、同じ層化単位の比較はまだ残る。
+mainは停止点まで取り込まない。S7・R2・R3は再開しない。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
