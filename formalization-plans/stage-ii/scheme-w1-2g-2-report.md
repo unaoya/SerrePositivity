@@ -1986,3 +1986,16 @@ G4・G5と停止点2g-2は未完。最終の AugmentedRingCechExact と利用側
 今回293行＋登録2行＝295行。外枠計数は **11,495行**（新規162モジュール本体11,287行、既存追加25行、入口183行）。新規所有宣言の小監査累計1,109、既存15宣言は別計上。タプル開との標準同型と元の単体の射への自然性、同じ矩形の開の等号と同じ交叉族への平坦な行の代入まで到達した。構造層のappLEとの同じ係数比較は下書き検証成功・本体ビルド前。相対proper fppfの二重複体への代入、F8全複体・Noether帰納、G5は未完。外枠18,000行、完成見込み約13,800〜17,100行。最終出力と利用側の型は不変。
 
 一覧：済み1／全体3（うち追加0）。
+
+
+## G4：元の構造層の係数と混合積の Γ
+
+`OpenFamilyCechCoefficients`（68行）：`openFamilyCechOpenMap_eq_resLE` は同じタプル開への制限の射が元の nerve の射の Mathlib の resLE と一致する式。`openFamilyCechSectionsIso` は元の nerve のタプル開上の実際の構造層の切断環と、同じ混合積の Γ の環同型。Mathlib の Opens.topIso と元の混合積の標準同型を合成する。`…_naturality` は元の構造層の appLE と全ての単体の射を同じ環同型で保つこと。resLE_app_top と元のスキームの同型の自然性を使い、独立な H の同型を選ばない。
+
+下書き単独検証成功（`2g-open-family-cech-coefficients-check-1.log`）、本体と下書きは全バイト一致。対象と直接importerの入口のビルド5,248ジョブ成功（`2g-open-family-cech-coefficients-native.log`）。別の共有鍵で非公開・生成分を含む実際の所有宣言を全件監査し、5宣言・標準三公理のみ（`2g-open-family-cech-coefficients-audit.log`）。全て終了0。局所的なbackward.isDefEq.respectTransparency false、資源上限は既定。追加公理・sorry・既存宣言の型変更・200行超の宣言なし。入口のビルドでは既存のhaveIのstyle警告が再掲される。鍵 --class impl --wait 3600、待ちは一つ、ビルドと監査は別枠。root・下流全ビルド・全体監査なし。
+
+今回68行＋登録1行＝69行。基準56ea849a3から再計数し、新規163モジュール本体11,355行、既存追加25行、入口184行を含む外枠計数 **11,564行**。新規所有宣言の小監査累計1,114、既存15宣言は別計上。再開後の六本は641行＋登録6行＝647行、監査51＋32＋5＝88宣言。外枠18,000行、完成見込み約13,800〜17,100行。
+
+次は同じ開の構造層の増大の式、同じFrobenius係数への移送、実際の矩形タプルの二重 Čech の行への代入。非アフィンな中間基底の相対proper fppf、F8全複体と元のブローアップを保持するNoether帰納、G2の模型と二つのfiltered colimitの代入、G5は未完。最終のAugmentedRingCechExactと利用側の型は不変。停止点2g-2ではない。
+
+一覧：済み1／全体3（うち追加0）。

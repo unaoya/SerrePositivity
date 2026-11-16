@@ -1810,3 +1810,4 @@ public import SerrePositivity.AlgebraicGeometry.FrobeniusDirectLimitRingIso
 public import SerrePositivity.AlgebraicGeometry.FiniteFamilyCechFrobenius
 public import SerrePositivity.AlgebraicGeometry.OpenFamilyCechComparison
 public import SerrePositivity.AlgebraicGeometry.RectangularCechOpenRows
+public import SerrePositivity.AlgebraicGeometry.OpenFamilyCechCoefficients
