@@ -3,7 +3,7 @@
   "complete": 3,
   "total": 6,
   "added": 0,
-  "verified_head": "this commit: base 4c6179dd1072b3f0c4c122937f2d170ac8633827",
+  "verified_head": "this commit: base 45e66145beb7f7bad8bb9fb6dd070d919ac00448",
   "items": {
     "HT01": "complete",
     "HT02": "complete",
@@ -12,20 +12,19 @@
     "HT05": "not-started",
     "HT06": "not-started"
   },
-  "latest_complete_audit_checkpoint": "resumed-extend-degree-and-homology-values-checkpoint.json",
-  "latest_complete_audit_declarations": 2052,
+  "latest_complete_audit_checkpoint": "original-ordinary-extended-unit-checkpoint.json",
+  "latest_complete_audit_declarations": 2053,
   "working_changes_unverified": [
     "AffineLineOrdinaryBaseHomology",
-    "AffineLineBaseRealization",
     "MapExtendHomologyCompatibility",
-    "OrdinaryExtendedHomology",
-    "AffineAnyOrdinaryTargetUnit",
-    "OrdinaryExtendedUnit",
+    "AffineLineBaseRealization",
     "AffineOriginalHomologyCoordinates",
     "AffineRestrictedHTCoordinates",
-    "AffineAnyExtendedHomology"
+    "AffineAnyOrdinaryTargetUnit",
+    "AffineAnyExtendedHomology",
+    "OrdinaryExtendedHomology"
   ],
-  "pending_check": "bundle-228 terminal rc1; see audit module inventory; failed dependencies await next batch",
+  "pending_check": "bundle-230 terminal rc1; see audit module inventory; failed dependencies await next batch",
   "next_proof_route": "remaining-20000-plan.md",
   "initial_record": {
     "stage": "5inf3a",
