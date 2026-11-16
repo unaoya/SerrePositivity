@@ -383,3 +383,32 @@ adapterは生のNameだけを個別metadata編集として登録する。二重b
 `preparation/audit-einfinity-before-preview-review.json`に原検査と予覧のSHA・件数を保存した。数学のソースへの実適用と、移送後のビルド・保存比較・正式全監査はまだ行っていない。
 
 一覧：済み 0／全体 5（うち追加 0）。
+
+## 10 初回の適用と静的な照合（11-16 23:35）
+
+全source／preview／overlay SHAと条件付き承認を再確認して適用した。**456本を物理移動、書込み805パス（数学ソースと二監査804、層の設定1）**。old own artifact 5,044個だけを掃除し、mainと元環境のartifactは触れていない。実ソースのグラフは33,254モジュール・127,836辺。元グラフの厳密なmodule対応に対し、明示したCrossRefAttributeの二辺だけが増え、プロジェクト内import欠落0・循環0。rootの到達集合28,642モジュールと、元から到達しないOE01九本も保存された。実際の層のreportは既存86件のまま（新規0、消滅0、例外の追加なし）。
+
+比較対象956本と、その間で無効化される依存先を含む1,656本の対象ビルドを開始した。まだ数学ソースはコミットしていない。mainのCitationの変更も取り込んでいない。
+
+### 10.1 新しく可視になったnamespaceによる衝突
+
+最初の40モジュールは成功。次の束で、ThreeArrowEquivalence.leanの`open HomotopicalAlgebra`が新しい`SerrePositivity.HomotopicalAlgebra`を指し、Mathlib側のModelCategory等が見つからなくなった。元コンパイラの記録は同じoperandをglobalな`HomotopicalAlgebra`へ解決している。型や証明を変える問題ではなく、元の名前解決を`_root_.HomotopicalAlgebra`と明示して保存する必要がある。
+
+既存の採取から412 open operandを確認した（simple 311、local-simple 101、いずれも元の解決先はglobalなHomotopicalAlgebra一つ）。同じ根を明記した定数参照78件も元の解決情報で認証し、計317ファイル・490箇所の記録を準備した。既に普通の書換器が絶対名にしている箇所は追加の変更にならない。実際に補正する差は、元の語の前に`_root_.`を挿入したものだけに制限する。失敗した呼び出し元の再プレビューは保留0で、その限定した差だけであることを確認した。
+
+### 10.2 追加の原参照と比較範囲
+
+新しいHomotopicalAlgebraのnamespaceを導入する203モジュールの逆依存閉包は1,476本。そこから未採取の関連候補115本と、元のscope-onlyで当該語を持つ二本を加え、**117本の原参照**を追加で採っている。既存823本の成功記録を採り直したり、別の集合の成功記録へ偽装したりしない。元の独立worktreeで不足していた五本は13.23秒・終了0で先にビルドした。
+
+追加の原参照から実際のnamespace／定数の解決先を認証し、初回適用のSHAを保った別の補正receiptを作る。現在の数学ソースはまだ補正前。本文の原参照、statement／proofの保存比較と最終ビルド範囲は追加分を含めて更新する。移動するファイルの表・456本という範囲・数学的な主張は変更しない。
+
+### 10.3 他レーンの影響の再評価
+
+旧名に加え、unrootedなHomotopicalAlgebraの語も含めて保守的な文字列照合を行った。候補は**math/inf-supplyの二ファイル、他の四枝0、計2ファイル**で、30ファイル以内の条件を満たす。元の0という集計は旧名だけの照合だったため、今後はこの語も含める。
+
+- Kerodon/KanComplexes/HomotopyPullbackAndHomotopyPushoutSquares/KanPushoutCocones.lean
+- Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/DiscreteAnodyneExtensions.lean
+
+他レーンをこちらから編集せず、B4の資料に、元の採取でMathlib側へ解決するopenを絶対名に固定する注意を加える。実際の失敗の件数と保守的な文字列候補の件数を混同しない。
+
+一覧：済み 0／全体 5（うち追加 0）。

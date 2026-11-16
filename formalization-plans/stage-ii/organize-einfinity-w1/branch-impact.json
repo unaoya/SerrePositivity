@@ -3,32 +3,32 @@
   "policy": "Exact old module/namespace strings, BE module basenames, plus bare namespace tokens; original branch HEAD and dirty/untracked Lean sources read-only, drafts included. Candidate matches are conservative; compiler checks determine actual bindings.",
   "branches": {
     "math/inf-supply": {
-      "head": "0cde9bbd3b7e99b98ad71c56a911297bbd9cf843",
-      "touched_lean_files": 284,
+      "head": "287a524a4fd6b6935c6b21cdd35fd79186b1f2e3",
+      "touched_lean_files": 307,
       "affected_files": 0,
       "files": [],
       "worktree": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-classical",
-      "uncommitted_checked": 4,
+      "uncommitted_checked": 10,
       "uncommitted_matches": [],
       "affected_files_with_worktree": 0
     },
     "codex/bulk-5inf3a": {
-      "head": "baf6a9d525e42ef14b3764c02035b369f899166f",
-      "touched_lean_files": 227,
+      "head": "9e2a84f12842646a477a1bb3eb042403ee5078ad",
+      "touched_lean_files": 269,
       "affected_files": 0,
       "files": [],
       "worktree": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout",
-      "uncommitted_checked": 3,
+      "uncommitted_checked": 5,
       "uncommitted_matches": [],
       "affected_files_with_worktree": 0
     },
     "math/scheme": {
-      "head": "41a1a85dc5d225b48450a6d129ac533e2326b991",
-      "touched_lean_files": 177,
+      "head": "a7ce39b10c7e9e53084e33c369f70528b5a26384",
+      "touched_lean_files": 214,
       "affected_files": 0,
       "files": [],
       "worktree": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-scheme",
-      "uncommitted_checked": 2676,
+      "uncommitted_checked": 2733,
       "uncommitted_matches": [],
       "affected_files_with_worktree": 0
     },

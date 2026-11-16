@@ -42,3 +42,9 @@ collectは元のソースがビルド済みの原環境で行う。昼は3〜5�
 今回の移送後もEInfinity監査は、元の3,887モジュールをmodule-mapで運んだ集合を保持する。一般部品357本がEInfinity接頭辞の外へ出ることを理由に公理監査の対象から落とさない。これらの最終結果と、基準側の層の未登録348本・既存違反86件を区別した照合はreport-organize-einfinity.mdへ記録する。
 
 `../preparation/compiler-child-parent-review.json`には、直接のソース宣言を持たない179件の生成された等式・合同補題を記録した。ファイルのnamespaceとは別に改名される親へ追従するものが2件ある。これらの実providerを移送後のnativeで確認するまでは、source-owned API用のimport所有元として自動登録しない。
+
+## Mathlib の HomotopicalAlgebra の open（11-17 追記、検証中）
+
+この整理で `SerrePositivity.HomotopicalAlgebra` が新しく可視になる import 文脈がある。元のコンパイラの記録で `open HomotopicalAlgebra` が Mathlib の global な名前空間一つへ解決していたときは、`open _root_.HomotopicalAlgebra` と明示して元の解決を保存する。project 側へ解決していた open を Mathlib 側へ変えない。既に `_root_.` があるものも変更しない。元の定数参照における同じ global prefix の明記も、元の解決情報で認証した位置だけを絶対名にする。
+
+plain な共有書換器は、宣言のnamespaceを変えない呼び出し側でこの open をそのままにすることがある。module の対応表を反映しただけで終えず、元の採取の open operand と対象ビルドを確認する。現在の他レーンの保守的な文字列候補は③-aのKanPushoutCocones.leanとDiscreteAnodyneExtensions.leanの二本。これは二本とも実際に失敗するという判定ではない。元の意味参照とビルドで確かめる。

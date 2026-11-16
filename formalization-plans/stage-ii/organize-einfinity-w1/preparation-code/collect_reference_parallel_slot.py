@@ -27,7 +27,7 @@ def available_memory():
 available=available_memory();workers=min(a.max_readers,2 if available>=20*1024**3 else 1)
 os.environ['LEAN_NUM_THREADS']='1'
 from reviewed_ilean import previews as reviewed_previews
-reviewed=reviewed_previews(root);assert set(reviewed)<=set(required)
+reviewed={path:value for path,value in reviewed_previews(root).items() if path in required}
 new=[];failure=None;deferred=[]
 pending=iter(f for f in required if not valid(f) and f not in reviewed)
 def capture(path):

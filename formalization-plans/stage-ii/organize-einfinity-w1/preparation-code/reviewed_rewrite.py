@@ -21,7 +21,9 @@ def rewrite(data,migration):
  qualified=[r for r in json.loads(qualified_path.read_text()) if r['module']==data['module']] if qualified_path.exists() else []
  audit_path=HERE/'reviewed-audit-name-literals.json'
  audit_literals=[r for r in json.loads(audit_path.read_text()) if r['module']==data['module']] if audit_path.exists() else []
- if not selected and not qualified and not audit_literals:return B.rewrite(data,migration)
+ root_path=HERE/'reviewed-global-root-spellings.json'
+ root_records=[r for r in json.loads(root_path.read_text())['records'] if r['module']==data['module']] if root_path.exists() else []
+ if not selected and not qualified and not audit_literals and not root_records:return B.rewrite(data,migration)
  inventory=json.loads(gzip.open(HERE/'preparation/native-owners-full-before.json.gz','rt').read())
  native={(r['module'],r['kernel_name']):r for r in inventory['declarations']}
  verified=set();source=data['source'].encode()
@@ -68,6 +70,29 @@ def rewrite(data,migration):
     # A raw single-backtick Name literal is registry data, not a constant reference.
     assert not semantic
     verified_audit_literals.append((a,b,row['new']))
+ verified_global_root_edits=[]
+ wanted_root_spans={(row['start'],row['stop']) for record in root_records for row in record['rows']}
+ root_refs={};root_commands={}
+ for ref in data['refs']:
+  span=(ref['start'],ref['stop'])
+  if span in wanted_root_spans:root_refs.setdefault(span,[]).append(ref)
+ for cmd in data['commands']:
+  span=(cmd.get('start'),cmd.get('stop'))
+  if span in wanted_root_spans:root_commands.setdefault(span,[]).append(cmd)
+ for record in root_records:
+  assert hashlib.sha256(source).hexdigest()==record['source_sha256']
+  for row in record['rows']:
+   a,b=row['start'],row['stop'];assert source[a:b].decode()==row['old']
+   assert row['new']=='_root_.'+row['old'] and (row['old']=='HomotopicalAlgebra' or row['old'].startswith('HomotopicalAlgebra.'))
+   if row['kind']=='open':
+    candidates=[c for c in root_commands.get((a,b),[]) if c['kind']=='open' and c['mode'] in ['simple','local-simple'] and c['names']==[row['old']]]
+    assert len(candidates)==1
+   else:
+    assert row['kind']=='term' and source[max(0,a-1):a]!=b'.'
+    refs=root_refs.get((a,b),[]);assert refs and any(r['kind']=='term' for r in refs)
+    assert all(r['name']==row['old'] and r['kind'] in ['term','syntax'] and migration.target(r) is None for r in refs)
+    assert sorted({(r['module'],r['name'],r['kind']) for r in refs})==[tuple(x) for x in row['resolutions']]
+   verified_global_root_edits.append((a,b,row['new']))
  code=inspect.getsource(K.rewrite);assert code.count(B.OLD)==1 and code.count(OLD)==1
  code=code.replace(B.OLD,B.NEW).replace(OLD,NEW)
  marker='''        for ref in candidates:
@@ -77,6 +102,6 @@ def rewrite(data,migration):
             # The command elaborator may also record a local at the position''';assert code.count(marker)==1;code=code.replace(marker,replacement)
  meta_marker="    # A qualified name in quoted or custom syntax can lack a semantic reference."
  assert code.count(meta_marker)==1
- code=code.replace(meta_marker,'    for a, b, name in reviewed_audit_name_literals:\n        edit({"start": a, "stop": b}, name)\n\n'+meta_marker)
- scope=dict(vars(K));scope['reviewed_audit_name_literals']=verified_audit_literals;scope['reviewed_anonymous_binders']=verified;scope['reviewed_qualified_binders']=verified_qualified;scope['reviewed_qualified_spans']={(m,a,b) for m,n,a,b in verified_qualified};exec(compile(code,'<OE-W1 individually reviewed instance binder>','exec'),scope)
+ code=code.replace(meta_marker,'    for a, b, name in reviewed_audit_name_literals + reviewed_global_root_edits:\n        edit({"start": a, "stop": b}, name)\n\n'+meta_marker)
+ scope=dict(vars(K));scope['reviewed_audit_name_literals']=verified_audit_literals;scope['reviewed_global_root_edits']=verified_global_root_edits;scope['reviewed_anonymous_binders']=verified;scope['reviewed_qualified_binders']=verified_qualified;scope['reviewed_qualified_spans']={(m,a,b) for m,n,a,b in verified_qualified};exec(compile(code,'<OE-W1 individually reviewed instance binder>','exec'),scope)
  return scope['rewrite'](data,migration)

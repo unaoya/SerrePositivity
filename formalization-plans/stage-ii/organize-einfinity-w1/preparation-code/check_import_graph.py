@@ -34,7 +34,7 @@ if a.before:
  targets={rename(m) for m in json.loads(Path('/private/tmp/oe-w1-reference-candidates/preservation-modules.json').read_text())};assert targets<=g.keys();needed=closure(targets,g)&g.keys();rev=defaultdict(set)
  for m,ds in g.items():
   for d in ds:rev[d].add(m)
- application=json.loads(Path('/private/tmp/oe-w1-application/application.json').read_text());dirty={p[:-5].replace('/','.') for p in application['paths_to_write'] if p.endswith('.lean') and p[:-5].replace('/','.') in g};affected=closure(dirty,rev)&needed;build_order=[m for m in order if m in targets|affected]
+ application_path=Path('/private/tmp/oe-w1-application/application-amended.json');application_path=application_path if application_path.exists() else application_path.with_name('application.json');application=json.loads(application_path.read_text());dirty={p[:-5].replace('/','.') for p in application['paths_to_write'] if p.endswith('.lean') and p[:-5].replace('/','.') in g};affected=closure(dirty,rev)&needed;build_order=[m for m in order if m in targets|affected]
  (a.output/'target-build-order.json').write_text(json.dumps(build_order,indent=2)+'\n');summary.update(selected_targets=len(targets),invalidated_needed_modules=len(affected),ordered_build_modules=len(build_order))
  old_root=closure({'SerrePositivity'},old)&old.keys();root_reachable=closure({'SerrePositivity'},g)&g.keys();assert root_reachable=={rename(m) for m in old_root}
  summary.update(root_reachability_preserved=True,root_reachable_project_modules=len(root_reachable),baseline_stage1_not_root_reachable=sorted(set(mm)-old_root),after_stage1_not_root_reachable=sorted({rename(m) for m in mm}-root_reachable))
