@@ -226,7 +226,7 @@ main cd79e9cc5でDAG XIII・NSの対応表とCitationの略号表が更新され
 
 文献表の14対応を実metadataと全件照合し、既存12件は各1件、追加予定のKerodon 02P3・039Nは各0件で一致した。追加を含む最終の期待値は既存61件の輸送と新規2件で63件となる。実metadataのgz、receipt、14対応の照合をpreparation/に保存した。
 
-588本だけをimportしたときと956本をimportしたときでは、7件の公開compiler生成補題のproviderが異なり、588本の所有元に属する行は4,160から4,155になった。全て生成された等式・合同補題であり、明示したAPI宣言の移動ではない。元の両contextを `compiler-provider-before-contexts.json` に保存した。最終比較は全域956本の原nativeを正本とし、移送後の実providerを改めて照合する。これらをsource-owned APIの確定したimport元と扱わない。
+588本だけをimportしたときと956本をimportしたときでは、公開compiler生成補題5件のprovider差を観測し、別の2件は956本の選択領域には現れなかった（選択領域外の実providerは未照会）。588本の所有元に属する行は4,160から4,155になった。全て生成された等式・合同補題であり、明示したAPI宣言の移動ではない。元の両contextを `compiler-provider-before-contexts.json` に保存した。最終比較は全域956本の原nativeを正本とし、移送後の実providerを改めて照合する。これらをsource-owned APIの確定したimport元と扱わない。
 
 原参照は66／824本、66本のプレビュー保留0。対象集合とsource／helper署名は変えず、移動する456本を先に採取する順へ整えた。昼280秒、夜は取得時刻で最大1,680秒、各ファイルの上限190秒は変更しない。夜の長い待ちの塊へ切り替えるため、成功した塊の返却後に一度だけcontrollerを区切った（終了76、数学の検査失敗ではない）。重複整理券なしで再開済み。
 

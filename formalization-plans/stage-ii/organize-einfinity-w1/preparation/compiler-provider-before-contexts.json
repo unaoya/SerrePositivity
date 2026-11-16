@@ -36,5 +36,19 @@
       "classification": "Source-free compiler equation/congruence; provider depends on imported context, not an authored API binding"
     }
   ],
-  "policy": "Both original environments recorded; do not infer source import owners from context-dependent compiler helpers"
+  "policy": "Both original environments recorded; do not infer source import owners from context-dependent compiler helpers",
+  "not_observed_in_full_selected_scope": [
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.OppositeFunctorIsoWhisker",
+      "kernel_name": "SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorOppositeHomEquiv.congr_simp",
+      "name": "SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorOppositeHomEquiv.congr_simp",
+      "classification": "Source-free compiler congruence; not observed among the selected 956 defining modules. Actual provider outside this selected scope has not been queried."
+    },
+    {
+      "module": "SerrePositivity.EInfinity.SimplicialLocalization.KanHammockArrowNormalization",
+      "kernel_name": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Roof.pinchedEndpointIso.congr_simp",
+      "name": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Roof.pinchedEndpointIso.congr_simp",
+      "classification": "Source-free compiler congruence; not observed among the selected 956 defining modules. Actual provider outside this selected scope has not been queried."
+    }
+  ]
 }
