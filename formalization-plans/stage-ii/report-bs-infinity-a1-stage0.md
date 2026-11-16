@@ -3023,3 +3023,49 @@ sectionsOf_eq_limit_elements (P : Cᵒᵖ ⥤ Type u) (O : Presheaf C E)
 ```
 
 一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
+
+### 停止後の照合：右 Kan の大域的一意性の再利用（紙、11-16）
+
+作業枝 `142826a1a` と main `a4388efc9` の現状を確認した。
+main の指示書でも S1〜S6・S8 の外枠18,600行は変更されていない。
+共通規則の正しい場所は `formalization-plans/coordination.md` §2。
+「上限を超えそうなときは報告して止める（止まる前に、それまでの検証済みの分をコミット）」
+に従い、Lean の追加・ビルドは行っていない。直前の22本は全てコミット済み。
+
+`Kerodon/LimitsAndColimits/KanExtensions/RightHomUniversal.lean` には、点ごとの値の一意性より強い、
+指定変換を保つ大域的な比較がすでにある。再開時に点ごとの同型を集める構成を新しく作らない。
+
+```lean
+-- [Quasicategory K] [Quasicategory C] [Quasicategory D]
+-- δ : K ⟶ C, F₀ : K ⟶ D, F G : C ⟶ D
+-- α : SSet.Homotopy (δ ≫ F) F₀, β : SSet.Homotopy (δ ≫ G) F₀
+-- hα : IsRightKanExtension δ F₀ F α
+-- hβ : IsRightKanExtension δ F₀ G β
+kanRightKanExtensionIso δ α β hα hβ : FunctorIso F G
+
+kanRightKanExtensionIso_hom_fac δ α β hα hβ :
+  rightKanHomMap δ
+    (SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy β)) F
+    (kanRightKanExtensionIso δ α β hα hβ).hom =
+      SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy α)
+```
+
+再利用の境目：
+
+- **自然性**：全関手・指定変換を持つ第二の模型を用意できれば、上の同型と射の一意性を使う。
+  現在の `sectionsOf`・`sectionsOf_map` の値と辺だけを、その第二の全関手とみなしてはいけない。
+  もう一つの候補は G8 の `SetWeight.tensorSpaceFunctor_setWeightHomNatural` の全パラメータの比較で
+  元の指定射を検出し、今回の `weightedSections_discrete` の評価と照合する道。
+  いずれも今回の比較の頂点成分だけから自然性が自動で出るとは数えない。
+- **一般余極限**：`kanRightKanExtensionIso` は全関手の比較を与えるが、右 Kan 条件の入力自体は
+  余極限を極限に送ることを仮定・結論にしていない。任意の小さい形状での同じ全余錐の保存の証明は残る。
+- **離散層化**：既存の `Sheafification` は反射の型。集合値層化の単位と同じ指定単位の比較、
+  または0切り捨て保存の証明を別に要する。一般の反射の一意性だけではその入力を置き換えられない。
+- **main の再利用**：最終の未完宣言名（`weightedSections_discrete_map`、`sectionsOf_colimit`、
+  `is0Truncated_iff_pointwise`、`sheafify_discrete_eq`、`sections_localEquiv_iso`、
+  `isSheaf_toGrothendieck_iff`）について、本体の供給済みの宣言を main から拾うことはできなかった。
+  これは別名の定理がないことの証明ではなく、上の具体的 API の型の確認と合わせた現状の照合である。
+
+この再利用を考慮しても、前節の残りの上端を外枠内まで下げる根拠は得ていない。
+見込み17,691〜20,891行、検証済み13,391行は維持する。R2・R3・S7 は再開しない。
+一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
