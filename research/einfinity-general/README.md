@@ -12,7 +12,7 @@ OE-W1、2026-11-16。基準main `30ae8948f339beec42d9340feb02f2031c22c72b`。
 
 ## 読み方・原典・入力
 
-各ファイルの概要・方針・規約・利用箇所はmodule docstringから抜き出した。原典番号は利用箇所の説明であり、その一般定理の完成を意味しない。型は最初の名前つき公開宣言から証明本体を除いた抜粋。局所のuniverse・variable文脈を併記するが、open・記法・local instance・import・sectionの範囲はリンク先を参照する。ここを連結してLeanへ貼る用途ではない。
+各ファイルの概要・方針・規約・利用箇所はmodule docstringから抜き出した。原典番号は利用箇所の説明であり、その一般定理の完成を意味しない。型はnative所有元と名前の実在を確認できた公開ソース宣言から証明本体を除いた抜粋。局所のuniverse・variable文脈を併記するが、open・記法・local instance・import・sectionの範囲はリンク先を参照する。ここを連結してLeanへ貼る用途ではない。
 
 配置上の対応：Kerodonはタグに対応する章・節、HA §1.3.4は模型圏の局所化、HomotopicalAlgebraは図式の重みとホモトピー関数複体。HA Monadsの179本は今回移動せず、既存の research/g12-monad-route/README.md を参照する。
 
@@ -3855,7 +3855,7 @@ OE02、9原行。配置：`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWe
 規約：このファイルでは同名の宣言を追加しない。標的Yは既存補題の暗黙引数。
 使われ方：IS-W2で既に記録したモジュール経路を維持する。
 
-名前つき公開宣言のないimport／補助用モジュール。native所有元表で全宣言の有無を照合する。
+native所有元表には0宣言。抜粋対象の名前つき公開ソース宣言なし（import用、匿名instance、生成宣言など）。原ソースと全native表を参照。
 
 ### [TensorPiZero.lean](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/SerrePositivity/EInfinity/HomotopyWeight/TensorPiZero.lean)
 
