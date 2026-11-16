@@ -3,7 +3,7 @@
   "complete": 3,
   "total": 6,
   "added": 0,
-  "verified_head": "this commit: base ad7d848ad746ea6b622a7d48e7051f24e1a3b164",
+  "verified_head": "this commit: base 4127677c3c549d3539ca4bda00a3ea0421264b83",
   "items": {
     "HT01": "complete",
     "HT02": "complete",
@@ -12,23 +12,22 @@
     "HT05": "not-started",
     "HT06": "not-started"
   },
-  "latest_complete_audit_checkpoint": "bounded-scalar-cone-unit-laws-checkpoint.json",
-  "latest_complete_audit_declarations": 2147,
+  "latest_complete_audit_checkpoint": "coefficient-rows-model-units-checkpoint.json",
+  "latest_complete_audit_declarations": 2165,
   "working_changes_unverified": [
-    "AffineEnvelopeTargetH0Unit",
-    "AffineReducedCoverProjectionEpi",
-    "AffineFullRowComplete",
-    "AffineEnvelopeCompletedTensorUnit",
-    "PairScalarConeRightLeg",
     "AffineReducedConeRightLeg",
-    "AffineReducedCoverProjection",
-    "PairCompletedH0Unit",
     "AffineFullTensorCoefficients",
-    "NativeCompletedModelUnit",
-    "AffineFullCoefficientRows",
-    "AffineFullCoverUnit"
+    "PairCompletedH0Unit",
+    "AffineReducedCoverProjectionEpi",
+    "AffineReducedCoverProjection",
+    "AffineFullRowComplete",
+    "AffineResolvedRowSourceUnit",
+    "PairScalarConeRightLeg",
+    "AffineEnvelopeTargetH0Unit",
+    "AffineFullCoverUnit",
+    "AffineFullCoverUnitMap"
   ],
-  "pending_check": "bundle-248 terminal rc1; see audit module inventory; failed dependencies await next batch",
+  "pending_check": "bundle-249 terminal rc1; see audit module inventory; failed dependencies await next batch",
   "next_proof_route": "remaining-20000-plan.md",
   "initial_record": {
     "stage": "5inf3a",
@@ -402,7 +401,7 @@
       "lines": 74
     }
   ],
-  "working_written_lines": 20929,
+  "working_written_lines": 21169,
   "source_inventory_scope": "Only HT01\u2013HT06 source additions/changes against 336942ab0, plus untracked files; excludes pre-existing Comparison modules.",
   "static_check": "static-pending-check.json; not Lean validation",
   "build_wait_history": [
@@ -421,9 +420,9 @@
   ],
   "current_request_last_confirmed_live_utc": "2026-11-15 04:52:28 UTC",
   "HT02_remaining": "complete; see ht02-complete.json",
-  "prepared_source_lines": 20929,
-  "prepared_modules": 254,
-  "verified_source_lines": 19947,
+  "prepared_source_lines": 21169,
+  "prepared_modules": 257,
+  "verified_source_lines": 20263,
   "provisional_total_source_lines": [
     22223,
     25443
