@@ -2752,3 +2752,30 @@ mainの取り込みは11-16 16:25の指示どおり保留したまま。検証�
 検証：単射の場合のtotal比較の下書き `2g-g4-mono-total-check-2.log` と、実際のΓ増大への代入 `2g-g4-affine-global-total-check-3.log` は終了0。各対象と直接importerの入口の小ビルドはそれぞれ5,325、5,326ジョブ・終了0（`2g-g4-mono-total-native.log`、`2g-g4-affine-global-total-native.log`、依存のキャッシュ再生を含む）。各成分のmonoを明示した補題へ分割し、曖昧な宇宙のインスタンス推論を回避した。既存宣言の型は変更していない。固定manifestのSHA256と下書き・本体の全バイト一致を二本とも確認。対象ビルドと別の共有鍵による小監査は20宣言（8、12）、非公開・生成分も含め標準三公理のみ・終了0（`2g-g4-affine-global-total-audit.log`）。追加公理・sorry・資源上限の引き上げ・200行超の宣言なし。letI/haveIのstyle警告は残る。
 
 今回151行＋入口2行＝153行。基準56ea849a3からの外枠計数は16,524行（新規231モジュール本体16,247行、既存追加25行、入口252行）。新規所有宣言の小監査累計1,713、既存15宣言は別計上。承認済み20,000行の外枠内。完成見込み約18,000〜19,400行を維持する。アフィン環の出口のうち、増大項を除く実際のΓ図式のtotal比較が閉じた。基底環の増大項を含む出口はなお未完。F8の元の増大複体との比較、相対proper fppfと合成を含むNoether帰納、G5の自然な模型・Frobenius・filtered余極限の移送も残る。G4・G5は未完、停止点2g-2ではない。mainは取り込んでいない。共有鍵 --class impl --wait 3600、待ちは一件、ビルドの間だけ保持し監査前に解放。root・下流全ビルド・AlgebraicGeometry全体監査なし。一覧：済み1／全体3（うち追加0）。
+
+
+増大項を含む同じΓの比較（G4の既存の係数移送・因子分解の法則、着手前の型、二本計140〜240行見込み）：`schemePerfectCechGlobalAugmented f p hp hR` は同じ基底のFrobenius順極限と同じ実際のnerveのΓ係数の増大図式をまとめる。`schemePerfectCechGlobalSingleAugmented` はこれを既存のsingle関手でwhiskerした値。`schemePerfectCechTupleAugmentedGlobalMap` は零次id・正次数の元のΓ増大からなる同じ増大余単体図式の射で、可換性はschemePerfectCechTupleAugmentationHom_factor_globalそのもの。既存のaugmentedCochainで二重複体の同じ射へ移し、アフィンなY上の有限アフィン被覆なら、各列の既存のΓ増大の擬同型と単射性を直前のtotal比較へ代入する。元のRの増大と全写像を保ち、原典と異なる追加の模型仮定は入れない。
+
+
+Γのsingleの同じtotalを零次行へ戻す比較（G4の同じ全複体の法則、着手前の型、二本計100〜200行見込み）：`cechIntegerTotalToRowZero_isIso (K : HomologicalComplex₂ (ModuleCat ℤ) up up) (hz : ∀ a b, b ≠ 0 → IsZero ((K.X a).X b)) : IsIso (HomologicalAlgebra.totalToRowZero K)` を元の各ιTotalの式から取る。新しいtotalは作らない。Γのsingleの増大二重複体へ代入し、既存のsingleCompEvalIsoSelfとB1.mapAugmentedCochainIsoを使って、元のModuleCat係数のΓ増大複体との同型を取る。この法則と直前の擬同型により元のタプルtotalの完全性をΓ増大の完全性へ戻す。Γ–Spec・環のconerveへの移送はその後に既存の自然同型で行う。
+
+
+### 元の基底環の増大を含むΓのtotal比較
+
+`SchemePerfectCechGlobalAugmented`（66行）：
+- `schemePerfectCechGlobalScalar`：元の基底環から実際のnerveのΓへのFrobenius係数写像。
+- `schemePerfectCechGlobalScalar_naturality`：同じ大域スカラーの係数写像は実際のnerveの射に自然。
+- `schemePerfectCechGlobalAugmented`：元の基底項と同じ実際のΓ係数の増大余単体図式。
+- `schemePerfectCechGlobalSingleAugmented`：同じ増大図式を既存のsingle関手でwhiskerした値。
+
+`SchemePerfectCechTupleAugmentedGlobal`（89行）：
+- `schemePerfectCechTupleAugmentedGlobalMap`：基底項の恒等射と元のΓ増大からなる同じ増大図式の射。既存の増大の因子分解で可換性を取る。
+- `schemePerfectCechGlobalAugmentedDouble`：同じΓのsingleの増大図式をB1の既存の複体関手へ渡す。
+- `schemePerfectCechTupleAugmentedGlobalDoubleMap`：元の基底の増大を含む、同じ二重複体の実際の比較射。
+- `schemePerfectCechTupleAugmentedGlobalDoubleMap_zero`：元の基底項での比較は恒等射。
+- `schemePerfectCechTupleAugmentedGlobalDoubleMap_succ`：元の各nerve項の比較は同じΓ増大。
+- `affineCechNerveTupleAugmentedGlobalTotal_quasiIso`：アフィンY上の有限アフィン被覆では、元の増大項を含む比較のtotalも擬同型であるČech版。分離的なスキームの準連接層のHとの比較は形式化しないことをdocstringに明記。
+
+検証：個別のΓ図式 `2g-g4-global-augmented-check-1.log` と、二本をまとめたmodule形式 `2g-g4-augmented-global-check-2.log` は終了0。二本と直接importerの入口の対象ビルドは5,328ジョブ・終了0（`2g-g4-augmented-global-native.log`、依存のキャッシュ再生を含む）。固定manifest・下書き・本体のSHA256と全バイト一致を確認。別の共有鍵による所有宣言の小監査は28宣言（15、13）、非公開・生成分も含め標準三公理のみ、終了0（`2g-g4-augmented-global-audit.log`）。既存APIの型変更・追加公理・sorry・資源上限の引き上げ・200行超の宣言なし。
+
+今回155行＋入口2行＝157行。基準56ea849a3からの外枠計数は16,681行（新規233モジュール本体16,402行、既存追加25行、入口254行）。新規所有宣言の小監査累計1,741、既存15宣言は別計上。外枠20,000行、完成見込み約18,000〜19,400行を維持。元の増大Γ複体へtotalから戻す比較は下書きを検証中で、まだ完成扱いにしない。元の環のconerveへの移送、F8の核と元の増大複体の比較、Noether帰納（相対proper fppf・合成を含む）、G5の自然な移送も残る。G4・G5は未完。mainを取り込んでいない。共有鍵 --class impl --wait 3600、待ちは一件。root・下流全ビルド・AlgebraicGeometry全体監査なし。一覧：済み1／全体3（うち追加0）。
