@@ -2729,3 +2729,26 @@ mainの取り込みは11-16 16:25の指示どおり保留したまま。検証�
 検証：module形式の二本の下書き検証 `2g-g4-total-kernel-check-1.log` は終了0。二本と直接importerの入口の対象ビルドは5,324ジョブ・終了0（`2g-g4-total-kernel-native.log`、依存のキャッシュ再生を含む）。固定manifestのSHA256と下書き・本体の全バイト一致を確認。対象ビルドと別の共有鍵による所有宣言の小監査は20宣言（8、12）、非公開・生成分も含め標準三公理のみ、終了0（`2g-g4-total-kernel-audit.log`）。新しい核の元の持ち上げや直和の境界消去は作っていない。追加公理・sorry・既存APIの型変更・資源上限の引き上げ・200行超の宣言なし。
 
 今回94行＋入口2行＝96行。基準56ea849a3からの外枠計数は16,371行（新規229モジュール本体16,096行、既存追加25行、入口250行）。新規所有宣言の小監査累計1,693、既存15宣言は別計上。20,000行の外枠内。完成見込み約18,000〜19,400行を維持する。元の増大二重Čechとの比較は未完で、この標準比較だけでG4を完了扱いにしない。残りは元の増大複体との比較、相対proper fppfと合成を含むNoether帰納、元のアフィン環のČechへの出口、G5の模型・Frobenius・filtered余極限の自然な移送。mainを取り込んでいない。共有鍵 --class impl --wait 3600、待ちは一件、ビルドと監査の間で解放。root・下流全ビルド・AlgebraicGeometry全体監査なし。一覧：済み1／全体3（うち追加0）。
+
+
+アフィン環の出口に使う既存比較の片側単射の場合（G4の同じtotal比較の証明分割、着手前の型、80〜160行見込み）：`cechShortExact_quasiIso_f_of_acyclic_X₃ (S : ShortComplex (CochainComplex (ModuleCat ℤ) ℕ)) (hS : S.ShortExact) (h₃ : S.X₃.Acyclic) : QuasiIso S.f` を既存の長完全列と零次の単射から示す。`cechIntegerLiftTotal_quasiIso_of_mono_columns (f : K ⟶ L) (hf : ∀ a, QuasiIso (f.f a)) (hm : ∀ a b, Function.Injective (((f.f a).f b).hom)) : QuasiIso (HomologicalComplex₂.total.map f up)` は同じcokernelの短完全列を各列・元のtotalへ渡して取る。Γのsingleからの増大は正次数で全射でないため、既存の全射判定を誤って適用しない。同じ各項・射・totalと最終型は保つ。
+
+
+同じΓ増大への代入（G4の同じ各列比較の法則、着手前の型、70〜140行見込み）：アフィンなY,Sとf:Y⟶Sに対し `schemePerfectCechTupleGlobalAugmentationHom f U p hp h n` のmonoを、既存の零次増大の単射性と正次数のsingleの零性で示す。元のΓ図式をsingle関手・交代余面関手へ渡した同じ二重複体と同じ増大の射を固定し、そのtotal.mapのQuasiIsoを直前の単射の場合の列比較へ代入して取る。有限アフィン被覆Uの仮定は変えない。この段階では元の基底環の増大項を含む出口は未完とする。
+
+
+### アフィンnerveの実際のΓ増大のtotal比較
+
+`CechIntegerLiftTotalMonoQuasiIso`（73行）：
+- `cechShortExact_quasiIso_f_of_acyclic_X₃`：同じ自然数次数の短完全列の第三項の完全性から第一射の擬同型性を得る。正次数の単射・全射は既存の長完全列、零次の単射はmono_homologyMap_of_mono_of_not_relを使う。
+- `cechIntegerLiftTotal_quasiIso_of_mono_columns`：元の二重複体の各列の擬同型と各成分の単射性から、元の同じtotal.mapの擬同型性を得る。余核の短完全列を各列と元のtotalへ渡すだけで、対角線の消去を作り直さない。
+
+`AffineCechNerveTupleGlobalTotal`（78行）：
+- `affineCechNerveTupleGlobalAugmentation_mono_f`：アフィンnerveの同じΓ増大の各成分はmono。零次は元のアフィン増大の単射性、正次数はsingleの零性を使う。
+- `schemePerfectCechTupleGlobalDouble`：実際のΓのFrobenius係数図式を、同じsingle関手と交代余面関手へ渡した二重複体。
+- `schemePerfectCechTupleGlobalDoubleMap`：元の自然なΓ増大を交代余面関手へ渡した実際の二重複体の射。
+- `affineCechNerveTupleGlobalTotal_quasiIso`：同じ実際のΓ増大のtotalは擬同型であるČech版。原典の比較と形式化しないStacks 30.2.6の一致をdocstringで明記する。
+
+検証：単射の場合のtotal比較の下書き `2g-g4-mono-total-check-2.log` と、実際のΓ増大への代入 `2g-g4-affine-global-total-check-3.log` は終了0。各対象と直接importerの入口の小ビルドはそれぞれ5,325、5,326ジョブ・終了0（`2g-g4-mono-total-native.log`、`2g-g4-affine-global-total-native.log`、依存のキャッシュ再生を含む）。各成分のmonoを明示した補題へ分割し、曖昧な宇宙のインスタンス推論を回避した。既存宣言の型は変更していない。固定manifestのSHA256と下書き・本体の全バイト一致を二本とも確認。対象ビルドと別の共有鍵による小監査は20宣言（8、12）、非公開・生成分も含め標準三公理のみ・終了0（`2g-g4-affine-global-total-audit.log`）。追加公理・sorry・資源上限の引き上げ・200行超の宣言なし。letI/haveIのstyle警告は残る。
+
+今回151行＋入口2行＝153行。基準56ea849a3からの外枠計数は16,524行（新規231モジュール本体16,247行、既存追加25行、入口252行）。新規所有宣言の小監査累計1,713、既存15宣言は別計上。承認済み20,000行の外枠内。完成見込み約18,000〜19,400行を維持する。アフィン環の出口のうち、増大項を除く実際のΓ図式のtotal比較が閉じた。基底環の増大項を含む出口はなお未完。F8の元の増大複体との比較、相対proper fppfと合成を含むNoether帰納、G5の自然な模型・Frobenius・filtered余極限の移送も残る。G4・G5は未完、停止点2g-2ではない。mainは取り込んでいない。共有鍵 --class impl --wait 3600、待ちは一件、ビルドの間だけ保持し監査前に解放。root・下流全ビルド・AlgebraicGeometry全体監査なし。一覧：済み1／全体3（うち追加0）。
