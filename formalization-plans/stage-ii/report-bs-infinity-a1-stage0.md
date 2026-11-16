@@ -2698,3 +2698,32 @@ ordinaryHomTwistedRead f ⋙ ordinaryHomElementsProjection C ⋙
 まだ往復の逆関係・可逆性は未完成。零次の単位則と各対象の全再添字則は検証待ち。
 検証済み全体171本11,320行・988宣言。S1・S8 は未完成。
 一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
+
+
+### S8 続報：全次数の単位と比較の単射性
+
+`OrdinaryHomTwistedReadPoint`（31行）、`OrdinaryHomTwistedReadReindex`（81行）は合わせて6宣言、
+`OrdinaryHomTwistedUnit`（71行）は4宣言の対象ビルド・小監査が成功した。
+標準三公理のみ、source SHA 一致。
+記録：`/tmp/is-w1/s8-hom-twisted-point-reindex-3/`、`/tmp/is-w1/s8-hom-twisted-unit-1/`。
+
+```lean
+(ordinaryHomTwistedRead (ordinaryHomTwistedSimplex (ComposableArrows.mk₀ x))).obj 0 = x
+
+(ordinaryHomTwistedRead (edgewiseWeight.map α ≫ f)).obj i =
+  (ordinaryHomTwistedRead f).obj (α.toOrderHom i)
+
+ordinaryHomTwistedRead (ordinaryHomTwistedSimplex s) = s
+Function.Injective ((ordinaryHomTwistedComparison C).app (Opposite.op ⦋n⦌))
+```
+
+各対象の単位を零次と全再添字から出し、射の二成分は既に検証した両端射影の一致で比較した。
+単位は全対象・全射を含む。零次では Hom 関手の恒等射の法則を先に書き換えた。
+計算上限は変更していない。全て既存構成の法則・証明分割で、追加 ID はない。
+
+逆向きの往復（余単位）、比較射の可逆性、指定分類図式と固定 Yoneda の全族比較は残る。
+余単位は、長い射列の左右の制限と中央の隣接射で全射列を比較する筋を次に進める。
+単位や単射性だけで可逆性・S8 の完成を代用しない。
+検証済み全体174本11,503行・998宣言。S1・S8 は未完成、S7 は後続。
+外枠18,600行を維持する。
+一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
