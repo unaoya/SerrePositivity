@@ -1,0 +1,53 @@
+{
+  "base": "30ae8948f339beec42d9340feb02f2031c22c72b",
+  "policy": "immutable branch HEAD source files touched by commits not reachable from baseline; exact old module/qualified or partially-qualified namespace/unique BE module basename strings; includes drafts; unqualified declaration references require compiler collection",
+  "branches": {
+    "math/inf-supply": {
+      "head": "620448c3d6aac110576898a2a9ca677ac75a498d",
+      "touched_lean_files": 216,
+      "affected_files": 0,
+      "files": [],
+      "worktree": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-classical",
+      "uncommitted_matches": [],
+      "affected_files_with_worktree": 0
+    },
+    "codex/bulk-5inf3a": {
+      "head": "2d9b5db5cf50f4ebf92b66ef4ca43b750a2d96ac",
+      "touched_lean_files": 167,
+      "affected_files": 0,
+      "files": [],
+      "worktree": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout",
+      "uncommitted_matches": [],
+      "affected_files_with_worktree": 0
+    },
+    "math/scheme": {
+      "head": "53071369aacc6a9d978a78c96f04a9a61b61cda0",
+      "touched_lean_files": 133,
+      "affected_files": 0,
+      "files": [],
+      "worktree": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-scheme",
+      "uncommitted_matches": [],
+      "affected_files_with_worktree": 0
+    },
+    "math/bs-impl": {
+      "head": "a7f43e7c3a7528dfe16b92b5520cd3ef0358c737",
+      "touched_lean_files": 0,
+      "affected_files": 0,
+      "files": [],
+      "worktree": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-impl",
+      "uncommitted_matches": [],
+      "affected_files_with_worktree": 0
+    },
+    "codex/g12-monad-catalog": {
+      "head": "706f0d39782e91182492aad8dc188c02e7b15a0c",
+      "touched_lean_files": 0,
+      "affected_files": 0,
+      "files": [],
+      "worktree": null,
+      "uncommitted_matches": [],
+      "affected_files_with_worktree": 0
+    }
+  },
+  "total_affected_files": 0,
+  "total_affected_files_with_worktree": 0
+}
