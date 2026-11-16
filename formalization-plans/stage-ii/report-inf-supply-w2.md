@@ -18193,3 +18193,65 @@ lemma twistedPairingNerveMap_opposite_swap {I C : Type u} [Category.{u} I] [Cate
 元の同じtwisted pairingの両端交換と反対表示の全写像の等式は閉じた。これを元の固定標的の自然変換へ適用し、同じモデル源の後合成と厳密に可換にする法則の検査を続ける。R03hの同じcorrected pairingの指定pathを通じた全族の最終等式、R03d・3b-4aは未完。
 
 一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+## 303. 元の固定標的の全pairingを、同じ反対cosliceの指定モデル源での像として回収（2026-11-16）
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
+
+§302の全両端交換の法則を、任意の元の自然変換η : V→const cへ適用した。既存のNatTrans.op ηを同じUnder.liftで読み、元の同じ固定標的の全pairingを厳密に回収する。さらに、同じ反対モデル源Fop = nerveOppositeIso.inv ≫ opFunctor.map Fで後合成し、cosliceOppositeTwistedArrowMapを通すと、元のpairingを指定モデル源Fへ送った全写像に一致する。新しい逆・別のpath・置換の選択は足さない。既存の反転・前後合成・自然性・単位の法則で、数学の一覧は増やさない。
+
+同じ両端交換が任意の元の関手Fと厳密に可換である法則は、一般の準圏の部分なのでKerodonの元のcosliceと両端交換の隣に置く。Underと通常の自然変換の二つの照合は既存NerveComparisonの隣に置く。固定点をOpposite.op cに明示し、自然変換の反対はQuiver.Hom.opでなくNatTrans.opと明記する。元の自然性と単位則は型を明示して直接合成し、計算上限は変更しない。
+
+一時ファイルisw2-under-fixed-target-pairing5と、検証済み本体のTwistedPairingOppositeを実際にimportしたisw2-under-fixed-target-compiled1の個別Lean検査はともに終了0。以下が公開の型。追加仮定はなく、元のη・Fだけを使う。
+
+```lean
+lemma twistedArrowOppositeSwap_naturality {C D : SSet.{u}} (F : C ⟶ D) :
+    edgewiseSubdivisionMap (SSet.opFunctor.map F) ≫ twistedArrowOppositeSwap D =
+      twistedArrowOppositeSwap C ≫ edgewiseSubdivisionMap F
+
+lemma nerveUnderLift_opposite_pairing {I C : Type u} [Category.{u} I] [Category.{u} C]
+    {c : C} {V : I ⥤ C} (η : V ⟶ (Functor.const I).obj c) :
+    nerveMap (Under.lift (X := Opposite.op c) V.op (NatTrans.op η)) ≫ nerveUnderMap (Opposite.op c) ≫
+      cosliceTwistedArrowMap (nervePoint (Opposite.op c)) ≫
+        edgewiseSubdivisionMap (nerveOppositeIso (C := C)).inv ≫
+          twistedArrowOppositeSwap (nerve C) =
+      twistedPairingNerveMap V.op ((Functor.const Iᵒᵖ).obj c)
+        (fun i => η.app i.unop) (by
+          intro i j f
+          change V.map f.unop ≫ η.app i.unop ≫ 𝟙 c = η.app j.unop
+          calc
+            _ = V.map f.unop ≫ η.app i.unop := congrArg (fun g => V.map f.unop ≫ g)
+              (Category.comp_id (η.app i.unop))
+            _ = η.app j.unop := (η.naturality f.unop).trans (Category.comp_id _))
+
+lemma nerveUnderLift_opposite_native_pairing {I C : Type u} [Category.{u} I] [Category.{u} C]
+    {c : C} {V : I ⥤ C} (η : V ⟶ (Functor.const I).obj c) {D : SSet.{u}}
+    (F : nerve C ⟶ D) :
+    let Fop := (nerveOppositeIso (C := C)).inv ≫ SSet.opFunctor.map F
+    nerveMap (Under.lift (X := Opposite.op c) V.op (NatTrans.op η)) ≫
+      nerveUnderMap (Opposite.op c) ≫ sliceUnderPostcomp (nervePoint (Opposite.op c)) Fop ≫
+        cosliceOppositeTwistedArrowMap (nervePoint (Opposite.op c) ≫ Fop) =
+      twistedPairingNerveMap V.op ((Functor.const Iᵒᵖ).obj c)
+        (fun i => η.app i.unop) (by
+          intro i j f
+          change V.map f.unop ≫ η.app i.unop ≫ 𝟙 c = η.app j.unop
+          calc
+            _ = V.map f.unop ≫ η.app i.unop := congrArg (fun g => V.map f.unop ≫ g)
+              (Category.comp_id (η.app i.unop))
+            _ = η.app j.unop := (η.naturality f.unop).trans (Category.comp_id _)) ≫
+        edgewiseSubdivisionMap F
+```
+
+対象ビルド371と小監査で検収する。元のcorrected pairingの全同型とその同じ指定pathを通じたR03hの最終照合、R03d・3b-4aは未完。⑤a・公式入口・公式監査は変更しない。
+
+### 303.2 切り出した一般部分のimportの検査
+
+371対象ビルドは、一般部分へコピーした不要なopen NerveComparisonが、その一般部分のimportには存在せず失敗した。監査には到達していない。一般部分はNerveComparisonを使わないため、importを増やさず不要なopenを削除した。主張・証明の計算・仮定は変えない。372で同じ二本の対象ビルドと小監査を再実行する。
+
+### 303.3 検収
+
+最終の新規2本は42行・92行、計134行。公開3補題・実環境宣言4。372対象ビルド（依存を含む3,862 jobs）・小監査とも終了0。共有鍵 --class impl --wait 3600、一枚の整理券、gtimeout 1700秒でビルドと小監査の間だけ使用。小監査273モジュール・1,729宣言、propext・Classical.choice・Quot.soundのみ、sorryAx・追加公理なし。自レーン累計269本・18,612行、実環境1,722宣言。外枠まで3,388行。宣言名の照合で異なるファイル間の重複0、内部も0。git diff --check通過。証跡isw2-build372.log・isw2-validation372.json・isw2-declaration-collision-scan372.json。登録候補一覧に追加。既存宣言・⑤a・公式入口・公式監査は変更していない。
+
+固定標的の元の同じ全族と、その指定モデル源でのnative pairingの厳密な一致は閉じた。次は元のBEのfiber包含とsource-frame評価へ同じ全写像の式を適用する。R03h・R03d・3b-4aは未完。
+
+一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）。
