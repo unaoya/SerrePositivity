@@ -4203,3 +4203,158 @@ reflectedBousfieldKanElementsIso (P : I ⥤ Type u) :
 現在 `/tmp/is-w1/s8-reflected-elements-1/`、セッション43321で2対象を検証中。
 S8 の元の一般の局所同値と指定自然性・層化の同じ単位への接続はまだ残る。
 一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+### S8 の反転 BK と元の圏の比較を保存（11-16 夕）
+
+`a051e090a`：2本76行・6宣言。対象ビルド、小監査（新しい環境、標準三公理のみ）、
+SHA一致とセッション43321の終了0を確認した。
+証拠 `/tmp/is-w1/s8-reflected-elements-1/target-audit-result.json`。
+検証済み全体257本16,867行・1,466宣言。元の coend から先に作った同じ大域比較の同型性を使う。
+11-16 16:25の指示どおり、main cd79e9cc5 は取り込んでいない。
+
+次の既存構成の自然性・評価の法則を下書きし、順に検証中（追加IDなし、200行超なし）：
+```lean
+underWeightedColimitLeg_naturality (η : F ⟶ G) (i : I) :
+  η.app i ▷ nerve (Under i) ≫ underWeightedColimitLeg G i =
+    underWeightedColimitLeg F i ≫ simplicialReplacementMap η
+underWeightedColimitToReplacement_naturality (η : F ⟶ G) :
+  weightedColimitMap (underNerveWeight I) η ≫ underWeightedColimitToReplacement G =
+    underWeightedColimitToReplacement F ≫ simplicialReplacementMap η
+weightedColimitWeightIso_naturality (e : W ≅ V) (η : F ⟶ G) :
+  weightedColimitMap W η ≫ (weightedColimitWeightIso e G).hom =
+    (weightedColimitWeightIso e F).hom ≫ weightedColimitMap V η
+reflectedBousfieldKanReplacementIso_naturality (η : F ⟶ G) :
+  weightedColimitMap (bousfieldKanWeight Iᵒᵖ ⋙ SSet.opFunctor) η ≫
+    (reflectedBousfieldKanReplacementIso G).hom =
+    (reflectedBousfieldKanReplacementIso F).hom ≫ simplicialReplacementMap η
+reflectedBousfieldKanElementsIso_comp_elements (P : I ⥤ Type u) :
+  (reflectedBousfieldKanElementsIso P).hom ≫ elementsToReplacement P =
+    (reflectedBousfieldKanReplacementIso (coefficients P)).hom
+reflectedBousfieldKanElementsIso_naturality (φ : P ⟶ Q) :
+  weightedColimitMap (bousfieldKanWeight Iᵒᵖ ⋙ SSet.opFunctor) (SetWeight.coefficientsMap φ) ≫
+    (reflectedBousfieldKanElementsIso Q).hom =
+    (reflectedBousfieldKanElementsIso P).hom ≫ nerveMap φ.mapElements
+weightedColimitWeightIso_augmentation (e : W ≅ V) (c : Cocone F) :
+  (weightedColimitWeightIso e F).hom ≫ weightedColimitAugmentation V c =
+    weightedColimitAugmentation W c
+replacementCoconeAugmentation (c : Cocone F) : simplicialReplacement F ⟶ c.pt
+underWeightedColimitLeg_augmentation (c : Cocone F) (i : I) :
+  underWeightedColimitLeg F i ≫ replacementCoconeAugmentation c =
+    fst (F.obj i) (nerve (Under i)) ≫ c.ι.app i
+underWeightedColimitToReplacement_augmentation (c : Cocone F) :
+  underWeightedColimitToReplacement F ≫ replacementCoconeAugmentation c =
+    weightedColimitAugmentation (underNerveWeight I) c
+reflectedBousfieldKanReplacementIso_augmentation (c : Cocone F) :
+  (reflectedBousfieldKanReplacementIso F).hom ≫ replacementCoconeAugmentation c =
+    weightedColimitAugmentation (bousfieldKanWeight Iᵒᵖ ⋙ SSet.opFunctor) c
+setCoconeCoefficients (c : Cocone P) : Cocone (coefficients P)
+elementsCoconeFunctor (c : Cocone P) : P.Elements ⥤ Discrete c.pt
+elementsCoconeAugmentation (c : Cocone P) :
+  nerve P.Elements ⟶ (setCoconeCoefficients c).pt
+elementsToReplacement_augmentation (c : Cocone P) :
+  elementsToReplacement P ≫ replacementCoconeAugmentation (setCoconeCoefficients c) =
+    elementsCoconeAugmentation c
+reflectedBousfieldKanElementsIso_augmentation (c : Cocone P) :
+  (reflectedBousfieldKanElementsIso P).hom ≫ elementsCoconeAugmentation c =
+    weightedColimitAugmentation (bousfieldKanWeight Iᵒᵖ ⋙ SSet.opFunctor)
+      (setCoconeCoefficients c)
+```
+
+`elementsCoconeFunctor c` は (i,x) を c.ι_i(x) へ送る元の関手。
+replacement の評価は (σ,x) を yonedaEquiv(x ≫ c.ι_(σ0)) へ送るだけ。
+元の Čech 増大を別の頂点や別の射へ取り替えていない。
+セッション34045・74044・92350は対象ビルドの書き換えの失敗で終了1。
+現在セッション83986、`/tmp/is-w1/s8-elements-naturality-4/` の9対象で検証中。
+計算上限を変更していない。未検証分はコミットしない。
+一般の局所同値、同じ離散比較の射の自然性、同じ層化単位への接続は引き続き未完。
+S1の一般Coverageの判定も未完。S7・R2・R3は停止を保持する。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+### 同じ増大の照合の検証完了（11-16 夕）
+
+`39b6088a2`：7本340行・23宣言。9対象（既存2本を含む）の対象ビルドと
+新しい環境の29宣言の小監査、SHA一致、セッション83986の終了0を確認。
+証拠 `/tmp/is-w1/s8-elements-naturality-4/target-audit-result.json`。
+上の自然性・元の増大の型はすべてこの束で検証済み。
+検証済み全体264本17,207行・1,489宣言。main未取り込みを保持する。
+S8全体や一般Coverageの完成を意味しない。
+
+次の同じ表示の法則を `CechPointElements` に書いた（未検証、追加IDなし）：
+```lean
+cechPointDiagram (d : CategoryTheory.CechNerveData U) (V : C) :
+  AsSmall.{v} SimplexCategoryᵒᵖ ⥤ Type v
+cechPointElementsToComma d V :
+  (cechPointDiagram d V).Elementsᵒᵖ ⥤ CechCommaLocal d V
+cechPointElementsFromComma d V :
+  CechCommaLocal d V ⥤ (cechPointDiagram d V).Elementsᵒᵖ
+cechPointElementsCommaEquivalence d V :
+  (cechPointDiagram d V).Elementsᵒᵖ ≌ CechCommaLocal d V
+cechPointElements_isWeaklyContractible (d : CategoryTheory.CechNerveData U) (r : V ⟶ U) :
+  IsWeaklyContractible (nerve (cechPointDiagram d V).Elements)
+```
+同じ Hom 値を同じ次数と射として取り出す順逆だけ。大きい C の Hom 宇宙 v で計算し、
+既存 `cechCommaLocal_isWeaklyContractible` の収縮を再利用する。200行超なし。
+根一本は各評価で使い、関手に自然な根の選択を要求しない。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+### 同じ Čech 収縮から native 余錐判定への接続（11-16 夕、検証中）
+
+`CechPointElements` 単独は対象ビルド、小監査17宣言（標準三公理のみ）、SHA一致、
+セッション85424の終了0を確認。証拠 `/tmp/is-w1/s8-cech-point-elements-2/target-audit-result.json`。
+この次の束にまとめるため、この時点では未コミット。
+
+既存構成の法則の型（追加IDなし、200行超の補題なし）：
+```lean
+cechPoint_reflectedBousfieldKan_isWeaklyContractible
+  (d : CategoryTheory.CechNerveData U) (r : V ⟶ U) :
+  IsWeaklyContractible (reflectedBousfieldKanColimit (coefficients (cechPointDiagram d V)))
+cechPoint_kanReflectedBousfieldKan_isWeaklyContractible
+  (d : CategoryTheory.CechNerveData U) (r : V ⟶ U) :
+  IsWeaklyContractible
+    (kanReflectedBousfieldKanColimitObject (cechPointDiagram d V ⋙ setsToKan)).obj
+strictSetCocone_isColimit_of_elementsAugmentation_weak (c : Cocone P)
+  (hc : IsWeakHomotopyEquivalence (elementsCoconeAugmentation c)) :
+  IsColimitCone (strictNativeCocone (setsToKan.mapCocone c))
+strictSetCocone_isColimit_of_contractible_comma (c : Cocone P)
+  (hc : ∀ q : Discrete c.pt,
+    IsWeaklyContractible (nerve (CostructuredArrow (elementsCoconeFunctor c) q))) :
+  IsColimitCone (strictNativeCocone (setsToKan.mapCocone c))
+CategoryTheory.CechNerveData.ofFiniteProducts (U : C) [HasFiniteProducts C] : CechNerveData U
+```
+
+ここで native の判定は、既存の
+`strictNativeCocone_isColimit_of_reflectedAugmentation_weak` と
+`nerveMap_isLeftCofinal_of_weaklyContractible_comma` を合成するだけ。
+同じ全余錐の普遍性を使い、頂点の同値や余極限の存在だけで済ませない。
+`ofFiniteProducts` は Mathlib `cechNerveTerminalFrom` の同じ有限冪・射影・単体作用素を
+既存 `CechNerveData` に包むだけ。新しい Čech 構成を重ねて作らない。
+
+セッション76859は coend に準圏性の instance がないこと、94464は積の計算則名と
+定値単体集合の準圏性の推論の失敗により終了1。準圏性を追加仮定にせず、既存
+`isPrecompositionEquivalence_of_iso` の弱ホモトピー同値性で修正した。
+現在セッション79847、`/tmp/is-w1/s8-cech-point-native-2/` の4対象を検証中。
+計算上限を変更せず、mainも取り込んでいない。
+
+次は P→Q の同じ相対Čech図式を Over Q の有限冪で読み、各評価 q の上の comma を
+同じ Hom 値図式の要素圏へ移す。局所的な根ではなく、各点の像への全射の根で
+収縮を使う。P→Q の像の包含は既証の局所単射の判定へつなぐ。
+この全余錐の各点での照合が終わるまでは、一般の `sections_localEquiv_iso` を完了扱いしない。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+### Čech の収縮と native 判定への接続の検証完了（11-16 夕）
+
+`ab9a40aec`：4本189行・24宣言。対象ビルド、新しい環境の所有宣言の小監査
+（標準三公理のみ）、SHA一致、セッション79847の終了0を確認。
+証拠 `/tmp/is-w1/s8-cech-point-native-2/target-audit-result.json`。
+直前の型つき一覧はすべてこの束で検証済み。
+検証済み全体268本17,396行・1,513宣言。追加IDなし、計算上限変更なし。
+
+main cd79e9cc5 は未取り込み。現在の停止点までは取り込まず、取り込む場合は
+調整役の夜のrootビルドの成功を待つ。自レーンの対象検証と小監査だけを行った。
+自分の鍵の待ちはすべて終了し、未検証のS8ソースは残っていない。
+R2の停止中の4本の未追跡下書きは変更していない。
+
+これは5∞-1の完成停止点ではない。S8の元の一般局所同値と同じ離散比較の射の自然性、
+同じ層化単位の比較、およびS1の一般Coverage判定は未完。
+次は上記の相対Čech図式の同じ各点のcommaの比較から続ける。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
