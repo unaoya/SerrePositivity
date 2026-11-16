@@ -3,7 +3,7 @@
   "complete": 3,
   "total": 6,
   "added": 0,
-  "verified_head": "this commit: base 05e66e6a36a53a3cd3fcc0ba95eebe4cda168b53",
+  "verified_head": "this commit: base 71e30d7e9fce34c573d7befff7849f2d6d5336b1",
   "items": {
     "HT01": "complete",
     "HT02": "complete",
@@ -12,10 +12,13 @@
     "HT05": "not-started",
     "HT06": "not-started"
   },
-  "latest_complete_audit_checkpoint": "universal-crystalline-ht-complete-checkpoint.json",
-  "latest_complete_audit_declarations": 1490,
-  "working_changes_unverified": [],
-  "pending_check": "bundle-136 terminal; all 129 owned targets passed and audited; HT03 complete",
+  "latest_complete_audit_checkpoint": "projective-homology-lift-checkpoint.json",
+  "latest_complete_audit_declarations": 1491,
+  "working_changes_unverified": [
+    "AffineFormsProjective",
+    "AffineHTHomologyLift"
+  ],
+  "pending_check": "bundle-138 terminal rc1; see audit module inventory; failed dependencies await next batch",
   "next_proof_route": "ht04-next-proof-route.md",
   "initial_record": {
     "stage": "5inf3a",
@@ -390,7 +393,7 @@
     }
   ],
   "working_written_lines": 5185,
-  "source_inventory_scope": "Only HT01–HT06 source additions/changes against 336942ab0, plus untracked files; excludes pre-existing Comparison modules.",
+  "source_inventory_scope": "Only HT01\u2013HT06 source additions/changes against 336942ab0, plus untracked files; excludes pre-existing Comparison modules.",
   "static_check": "static-pending-check.json; not Lean validation",
   "build_wait_history": [
     {
