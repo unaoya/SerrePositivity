@@ -3115,3 +3115,25 @@ sifted 性を追加していない。これを元の反対 Yoneda に沿う `wei
 残り：元の離散比較の射の自然性、元の全切断関手の一般余極限の反転・押し出し、離散層化・局所同値、
 S1 coverage・extensive。承認された同じ範囲で続ける。
 一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
+
+### 反対 Yoneda の全関手を保つ接続（11-16）
+
+新規3本189行17宣言を対象ビルド・小監査で確認した。
+記録 `/tmp/is-w1/s8-kan-shape-data-2/target-audit-result.json`、runner 終了0、
+標準三公理のみ、source SHA 一致。検証済み全体214本13,896行・1,235宣言。
+
+```lean
+-- a : K ≅ K', b : C ≅ C', hw : δ ≫ b.hom = a.hom ≫ δ'
+kanRightKanExtension_of_isoSquare a b hw α hα :
+  IsRightKanExtension δ (a.hom ≫ O) (b.hom ≫ F)
+    (rightKanCounitIsoSquare a b hw α)
+
+-- hU は同じ rightKanDiagram の各極限錐の保存
+kanRightKanExtension_postcomp_of_localLimits δ α hα U hU :
+  IsRightKanExtension δ (F₀ ≫ U) (F ≫ U) (kanRightCounitPostcomp α U)
+```
+
+これらは既存の構成の同型移送・後合成の法則。指定変換と全輸送族を保存し、
+点ごとの頂点同型を集める大域比較を作っていない。追加 ID なし、200行超の補題なし。
+反転した実 Yoneda からの任意小余極限の極限への変換を次に検証中。
+一覧：済み 5／全体 8（うち追加 0、済み：S2・S3・S4・S5・S6、S7 は後続）。
