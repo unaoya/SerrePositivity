@@ -3156,3 +3156,6 @@ mainの取り込みは11-16 16:25の指示どおり保留したまま。検証�
 
 
 同じ有限アフィン開被覆による相対fppfの細分の法則（G4のG1の被覆構成の法則、着手前の型、50〜100行見込み）：`exists_affine_flatSurjective_refinement (f : W ⟶ B) [CompactSpace W] [B.IsSeparated] [Flat f] [Surjective f] [LocallyOfFinitePresentation f]` は、G1と同じ有限アフィン開被覆の余積Aと同じm:A→Wを選び、IsAffine A、Flat(m≫f)、Surjective(m≫f)、LocallyOfFinitePresentation(m≫f)、IsAffineHom(m≫f)を保つ形の証人を返す。平坦性・局所有限表示性は同じsigmaOpenCoverの各脚で、全射性は同じ被覆とfで、アフィン射性は既存のIsAffineHom.of_compと分離性で得る。新しいNoether模型や別の平坦化を作らない。元のproper fppfから相対の実際のアフィン射への入口の内数。
+
+
+実際のnil閉厚化のアフィン係数の法則（G4の既存閉厚化・係数移送の法則、着手前の型、60〜110行見込み）：`affineNilImmersion_appTop_universalHomeomorphism (f : X ⟶ Y) [IsAffine X] [IsAffine Y] [IsClosedImmersion f] [Surjective f]` は元のf.appTop.homの環の普遍同相性を返す。元の切断写像の全射性と、同じSpecの全射性から核がnilradicalに入ることを示し、既存のisUniversalHomeomorphism_of_nil_kernelへ渡す。`affineNilImmersion_restrict_appTop_universalHomeomorphism` は任意のアフィン開Vへの元の制限のappTopに同じ結論を返す。`affineNilImmersion_frobeniusEquiv` とそのtoRingHomの式は、既存のcanonicalなFrobenius順極限の環同型へ渡し、その順方向が元のf.appTopの実際のFrobenius写像であることを保つ。Noether性や冪零指数の一様性は仮定しない。全てのnerveの実際の制限への適用と被覆の自然性の接続は別途残る。
