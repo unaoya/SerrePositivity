@@ -4000,3 +4000,35 @@ IsSheaf.preservesFiniteProductsOnSite [FinitaryExtensive C]
 逆向きは元の有限余積被覆の引き戻しと descentTopology への接続が残る。
 一般coverageとS8の元の残りも保持する。mainは停止点まで取り込まない。
 一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+### 有限被覆比較と有限積保存への方向の検証完了（11-16 夕）
+
+数学：`5d0c7990c`。新規5本416行・27宣言。
+`/tmp/is-w1/s1-extensive-products-2/target-audit-result.json` で5対象のビルド成功、
+新しい環境の所有27宣言が標準三公理のみ、全ソースのSHA一致を確認。
+セッション72071の終了0も確認した。検証済み全体250本16,387行・1,421宣言。
+元の `PreservesFiniteProductsOnSite` の型と、空族を含む元の fan での
+`IsSheaf.preservesFiniteProductsOnSite` まで通った。S1全体の完成とは数えない。
+
+逆向きに、新規 `ExtensiveCofanPullback` に既存の底変換の法則を下書きした：
+```lean
+cofanPullbackHasPullback [FinitaryPreExtensive C] [Finite ι]
+  (c : Cofan B) (hc : IsColimit c) {V : C} (f : V ⟶ c.pt) (i : ι) :
+  HasPullback f (c.inj i)
+cofanPullback (c : Cofan B) {V : C} (f : V ⟶ c.pt)
+  [∀ i, HasPullback f (c.inj i)] : Cofan (fun i => pullback f (c.inj i))
+cofanPullback_isColimit [FinitaryPreExtensive C] [Finite ι]
+  (c : Cofan B) (hc : IsColimit c) {V : C} (f : V ⟶ c.pt)
+  [∀ i, HasPullback f (c.inj i)] : IsColimit (cofanPullback c f)
+cofanPullback_generatedSieve (c : Cofan B) {V : C} (f : V ⟶ c.pt)
+  [∀ i, HasPullback f (c.inj i)] :
+  cofanGeneratedSieve (cofanPullback c f) = (cofanGeneratedSieve c).pullback f
+```
+
+普遍性は `FinitaryPreExtensive.isUniversal_finiteCoproducts hc` と
+`nonempty_isColimit_of_pullbackCone_left`、生成篩の等式は
+`Sieve.ofArrows_eq_pullback_of_isPullback` を再利用する。
+追加IDなし、200行超の補題なし。元の一般coverageの未完の型を仮定に置かない。
+この1本を次に対象ビルド・小監査する。停止中のR2下書き・S7・R3は触らない。
+mainは停止点まで取り込まない。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
