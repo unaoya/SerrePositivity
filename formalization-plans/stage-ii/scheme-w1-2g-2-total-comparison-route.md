@@ -113,3 +113,15 @@ G4の必要な出口は、任意のNoether環R上の固有全射と、その任�
 中心Z→Sの閉像はCの真部分集合で、ZはSの閉部分スキームである。中心のTへの底変換はAのイデアルによる商のSpecとして扱い、IH(C')を同じ元の中心上の固有射とそのアフィン基底変更に適用する。TのKrull次元の減少を仮定しない。この整理はG4で必要な任意のNoetherアフィン基底上の主張を保ち、一般の非アフィン基底の降下を追加の定理として作らないという内部の証明の選択である。中間のblowup B上の相対proper fppfは依然として非アフィン基底を含むので、前節の相対比較の不足は残る。
 
 G5の再利用の補足（2026-11-17）：既存の `FrobeniusArrowMapLaws` を再確認し、`frobeniusArrowSmallDiagramMap_id`・`frobeniusArrowSmallDiagramMap_comp` と、実際の順極限の `frobeniusDirectLimitArrowMap_id`・`frobeniusDirectLimitArrowMap_comp` も既に供給されていることを確認した。模型からの二変数図式を作る際はこれらをそのまま用い、同じ恒等・合成の証明を新しく作り直さない。G5の元の模型への自然なcolimit比較と一般のv被覆の完全性は依然として未完である。
+
+## 相対比較の具体化：被覆次数ごとの二つの環conerve（2026-11-17、紙・未検証）
+
+B→Spec Rを分離的とし、アフィンA→Bをaffine flat surjectiveとして取る。Bの有限アフィン被覆Uを固定し、Aには同じ添字のV=h⁻¹Uを取る。hはアフィンなのでVとその有限交叉はアフィン。各被覆のČech次数bで、C_b=∏_{t:Fin(b+1)→ι}Γ(⋂U_t)、D_b=∏_{t:Fin(b+1)→ι}Γ(⋂V_t)という元のRの下の環を取る。C_b→D_bは元の環で忠実平坦であり、全ての被覆の余面・退化の射と可換である。この「元の環で」を、perfection後の平坦性の未供給のクラスと取り違えない。
+
+固定したbで、B1のtensorCechをR→C_b、R→D_bに適用する。D_bの正のconerve項上でC_bからの写像がある側は、B1.isCechExact_baseChange_of_mapによる切断の完全性。もう一方はC_bの正のconerve項C_b^{⊗(i+1)}上のD_bへの底変換で、D_b^{⊗(i+1)}への元の忠実平坦な細分がある。原点の環と各底変換の忠実平坦な完全性を、既存のFrobeniusDirectLimitCechExactの二つの入口とB1.isCechExact_of_compへ渡す。Frobeniusのテンソル・conerveの標準比較を各実際の射に自然に使うことは、まだ証明が要る。
+
+被覆次数bも余単体の変数として残す。各bの二方向の増大複体のtotalから零次行・零次列への射影を、同じ被覆の射に自然に取る。正の行・列の完全性でこの射影は擬同型となり、各成分は軸入射を右逆として全射。次に被覆の余面の交代和を外側へ取り、既存のcechIntegerLiftTotal_quasiIso_of_columnsで同じ共通のtotalとの比較を得る。この順なら、三方向のtotalの結合則を新しく先に作らず、両方に同じ「被覆次数が外、二つのconerveのtotalが内」のtotalを使える。元の両軸との順序の交換はMathlibのtotalFlipIsoで行う。HAにはbicomplexTotal_quasiIso_of_rowsも既存なので、必要なら同じ整数係数の移送で使い、対角線消去を作り直さない。
+
+両軸は元のA、Bのタプル被覆を持つcomplexに、アフィンな積とΓのテンソル比較で戻す。角のRは被覆の変数で一元の被覆の定数Čech複体となるため、元のsingle(R)を暗黙に同一視しない。singleからその定数Čech複体への標準増大の擬同型と、tailの恒等を、元の増大doubleの比較と既存のmono-columnsのtotal判定へ渡す。これで元のschemePerfectCechTupleDoubleの型を保持する。
+
+以上は相対proper fppf・合成の束の実装候補である。未検証の零次行射影の整数係数の法則、零次列の対応、bに自然なtensorCechの図式、正の軸の実際のFrobeniusの完全性、矩形のタプルのΓとの比較、singleの角の比較が残る。型を弱めた別の降下定理として提出しない。
