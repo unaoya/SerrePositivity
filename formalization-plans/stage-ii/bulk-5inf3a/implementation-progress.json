@@ -3,7 +3,7 @@
   "complete": 3,
   "total": 6,
   "added": 0,
-  "verified_head": "this commit: base 4d4f630c7384295948963f9ef969eb061b68e2bb",
+  "verified_head": "this commit: base 27ee2b545c7d71546d76b16432ff323cdb189b68",
   "items": {
     "HT01": "complete",
     "HT02": "complete",
@@ -12,12 +12,16 @@
     "HT05": "not-started",
     "HT06": "not-started"
   },
-  "latest_complete_audit_checkpoint": "reduced-cover-complete-tor-checkpoint.json",
-  "latest_complete_audit_declarations": 1743,
+  "latest_complete_audit_checkpoint": "oriented-scalar-and-finite-units-checkpoint.json",
+  "latest_complete_audit_declarations": 1757,
   "working_changes_unverified": [
-    "TensorScalarQuotient"
+    "AffineOrientedRowBaseChange",
+    "AffineCoverResolvedTotal",
+    "AffineOriginalCoverTarget",
+    "AffineOrientedOrdinaryRows",
+    "TorAcyclicResolvedRows"
   ],
-  "pending_check": "bundle-180 terminal rc1; see audit module inventory; failed dependencies await next batch",
+  "pending_check": "bundle-182 terminal rc1; see audit module inventory; failed dependencies await next batch",
   "next_proof_route": "remaining-20000-plan.md",
   "initial_record": {
     "stage": "5inf3a",
