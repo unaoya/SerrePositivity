@@ -3,7 +3,7 @@
   "source_head": "7e9743b30",
   "scope": "今回の再開範囲：元の残り1〜17項を署名へ展開。S2〜S6の過去の検収済み出力は再採番しない。",
   "count_rule": "署名のidごとに数える。200行超の照合・合成則は独立署名。小さい証明分割の法則は親署名のnoteに記録する。旧5/8はこの台帳の分母には用いない。",
-  "verified_lean_lines": 24082,
+  "verified_lean_lines": 24335,
   "final_cap": 29000,
   "checkpoint_report_lines": 28500,
   "factor": 2,
@@ -1627,7 +1627,10 @@
         "P3-B2e",
         "P3-C0",
         "P3-C1PNV",
-        "P3-C1PNH"
+        "P3-C1PNH",
+        "P3-C1PNO",
+        "P3-C1PNON",
+        "P3-C1PNG"
       ],
       "existing": [
         {
@@ -1909,6 +1912,166 @@
           "SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/KanDiagramNaturalTransformationPrecomposition.lean": "9c9a327176e9b89339e64999702cffc3d563de606439d2016a71680ace2b183c"
         }
       }
+    },
+    {
+      "id": "P3-C1PNO",
+      "name": "kanEnrichedOppositeValueIso_factor",
+      "full_type": "∀ {C : Type (u+1)} [Category.{u} C] [SimplicialCategory C]\n    {J : Type u} [Category.{u} J] (D : KanEnrichedDiagram C J) (X : C),\n  let Z := edgewiseOrdinaryObject X\n  let z := coherentNerveVertex Z\n  let j := edgewiseEnrichedInfinityMap C\n  let hf : (j ≫ D.realization).app _ z =\n      functorVertex (kanDiagramCoherentNerve (D.evaluate X)) := by\n    change D.realization.app _ ((coherentNerveMap (edgewiseEnrichedRight C)).app _ z) = _\n    rw [coherentNerveMap_vertex]\n    exact D.realization_vertex X\n  let hR := fun j (Y : SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.ConjugateAndDualFibrations.EdgewiseEnrichedObject C) =>\n    isQCatEquivalence_of_trivialKanFibration (edgewiseRight ((D.obj j).obj Y.val).obj)\n  let hL := fun j (Y : SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.ConjugateAndDualFibrations.EdgewiseEnrichedObject C) =>\n    isQCatEquivalence_of_trivialKanFibration (edgewiseLeft ((D.obj j).obj Y.val).obj)\n  (eqToIso (congrArg (fun v => HomotopyCategory.mk v) hf)).symm ≪≫\n    functorIsoValue D.oppositeRealizationIso z ≪≫\n    eqToIso (congrArg (fun v => HomotopyCategory.mk v) (D.opposite.realization_vertex Z)) =\n  (kanEnrichedRealizationValueIso D.edgewiseRightComparison hR Z).symm ≪≫\n    kanEnrichedRealizationValueIso D.edgewiseLeftComparison hL Z",
+      "dependencies": [],
+      "existing": [
+        {
+          "name": "KanEnrichedDiagram.oppositeRealizationIso",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/KanEnrichedDiagramOppositeComparison.lean",
+          "line": 42
+        },
+        {
+          "name": "kanEnrichedRealizationValueIso",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/KanEnrichedRealizationValue.lean",
+          "line": 58
+        },
+        {
+          "name": "functorIsoValue_trans",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/FunctorIsoValueComposition.lean",
+          "line": 24
+        },
+        {
+          "name": "iso_endpoints_heq",
+          "path": "SerrePositivity/InfinityCategories/Project/LocalizationAndKanExtensionAuxiliaries/FunctorIsoPointEvaluation.lean",
+          "line": 24
+        }
+      ],
+      "bare_lines": [
+        160,
+        250
+      ],
+      "corrected_lines": [
+        320,
+        500
+      ],
+      "status": "verified",
+      "placement": "SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/KanEnrichedOppositeValueFactorization.lean",
+      "literature": "HTT §1.1.5、Kerodon §3.1・§5.6（Tag 028T）の既存の反転比較の成分の分解則。特殊化として記載。",
+      "note": "11-17夕の既存構成の照合・合成則の追加の事前承認。元の反転比較を保つ端点正規化の法則。",
+      "additional_mathematics": true,
+      "choose_replacements": [],
+      "new_assumptions": [],
+      "actual_lines_conservative": 115,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 5,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/KanEnrichedOppositeValueFactorization.lean": "161c1ac5327f3b6ed8c35900151ae3daa5d24fffc7e68ec2aff3d1320670ce97"
+        }
+      }
+    },
+    {
+      "id": "P3-C1PNON",
+      "name": "kanDiagramOppositeValue_naturality",
+      "full_type": "∀ {J : Type u} [SmallCategory J] {F G : KanDiagramObject J}\n    (η : F.val ⋙ kanObjectForget ⟶ G.val ⋙ kanObjectForget),\n  let D := kanDiagramUniversalEnriched J\n  let hR := fun j (Y : SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.ConjugateAndDualFibrations.EdgewiseEnrichedObject (KanDiagramObject J)) =>\n    isQCatEquivalence_of_trivialKanFibration (edgewiseRight ((D.obj j).obj Y.val).obj)\n  let hL := fun j (Y : SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.ConjugateAndDualFibrations.EdgewiseEnrichedObject (KanDiagramObject J)) =>\n    isQCatEquivalence_of_trivialKanFibration (edgewiseLeft ((D.obj j).obj Y.val).obj)\n  let o := fun P : KanDiagramObject J =>\n    (kanEnrichedRealizationValueIso D.edgewiseRightComparison hR (edgewiseOrdinaryObject P)).symm ≪≫\n      kanEnrichedRealizationValueIso D.edgewiseLeftComparison hL (edgewiseOrdinaryObject P)\n  Truncated.HomotopyCategory.homMk (kanDiagramNaturalTransformationEdge η).toTruncated ≫\n    (o G).hom = (o F).hom ≫\n      Truncated.HomotopyCategory.homMk (kanDiagramNaturalTransformationEdge\n        (F := ⟨F.val ⋙ kanObjectOpFunctor, trivial⟩)\n        (G := ⟨G.val ⋙ kanObjectOpFunctor, trivial⟩)\n        (Functor.whiskerRight η SSet.opFunctor)).toTruncated",
+      "dependencies": [],
+      "existing": [
+        {
+          "name": "kanEnrichedRealizationValueIso_hom",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/KanEnrichedRealizationValueHom.lean",
+          "line": 31
+        },
+        {
+          "name": "kanDiagramNaturalTransformationHom_comp",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/KanDiagramNaturalTransformationComposition.lean",
+          "line": 43
+        },
+        {
+          "name": "edgewiseRight_naturality",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/TwistedArrowsAndCospans/EdgewiseEndpoints.lean",
+          "line": 87
+        },
+        {
+          "name": "edgewiseLeft_naturality",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/TwistedArrowsAndCospans/EdgewiseEndpoints.lean",
+          "line": 99
+        }
+      ],
+      "bare_lines": [
+        160,
+        250
+      ],
+      "corrected_lines": [
+        320,
+        500
+      ],
+      "status": "verified",
+      "placement": "SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/KanDiagramOppositeValueNaturality.lean",
+      "literature": "HTT §1.1.5、Kerodon §3.1・§5.6（Tag 028T）の係数反転比較の指定自然変換に関する構成の自然性。通常の小さい図式への特殊化。",
+      "note": "11-17夕の追加の事前承認に従う既存構成の照合・自然性の法則。新しい数学ではない。 対象ビルド・所有13宣言の小監査成功。実測138行。",
+      "additional_mathematics": true,
+      "choose_replacements": [],
+      "new_assumptions": [],
+      "actual_lines_conservative": 138,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 13,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/KanDiagramOppositeValueNaturality.lean": "10d2d2c3345d21bdb9291d8df6dae30f4ab85dcb74a5c62c5d6af0d9afed8698"
+        }
+      }
+    },
+    {
+      "id": "P3-C1PNG",
+      "name": "leftStraightening_firstVertexTransport_nativeCoefficients",
+      "full_type": "∀ {E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [LeftFibration p],\n  (leftClassificationSimplexIso p).symm ≪≫\n    leftStraighteningInfinityDiagram_firstVertexTransportIso p = firstVertexNativeCoefficientIso p",
+      "dependencies": [
+        "P3-C1PNV",
+        "P3-C1PNO",
+        "P3-C1PNON"
+      ],
+      "existing": [
+        {
+          "name": "leftStraightening_firstVertexTransport_underValue",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningFirstVertexTransportValue.lean",
+          "line": 91
+        },
+        {
+          "name": "relativeSectionBaseChangeRealizationIso_normalized",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/PresentableInfinityCategories/SectionBaseChangeReindex.lean",
+          "line": 35
+        },
+        {
+          "name": "kanEnrichedOppositeValueIso_factor",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/KanEnrichedOppositeValueFactorization.lean",
+          "line": 51
+        }
+      ],
+      "bare_lines": [
+        200,
+        350
+      ],
+      "corrected_lines": [
+        400,
+        700
+      ],
+      "status": "pending",
+      "placement": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningNativeCoefficientComparison.lean",
+      "literature": "HTT §3.3.2、Kerodon §5.6（Tag 028T）の元のunder・底変換・係数反転の指定比較の成分の照合。",
+      "note": "11-17夕の既存構成の照合追加の事前承認を適用。補正上端700。構成の既存の成分の略記を含めた見込み。main本文・型・仮定を変更しない。",
+      "additional_mathematics": true,
+      "choose_replacements": [],
+      "new_assumptions": []
     }
   ],
   "common_typeclass_setup": "local instance signaturePullbackLeft {E B D : SSet.{u}}\n    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) : LeftFibration (pullback.snd p k) :=\n  ⟨leftFibrations.pullback_snd p k (LeftFibration.mem (p := p))⟩",

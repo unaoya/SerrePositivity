@@ -5,8 +5,8 @@
 再採番せず、ここにある各署名IDを一つずつ数える。旧「5／8」は以後この台帳の進捗に使わない。
 小さい既存構成の法則・証明の分割は親署名内に記録するが、上端200行超は独立署名。
 
-署名41本＝検証済み20本＋未完19本＋別停止点へ切り離す2本。
-一覧：済み 20／全体 41（うち追加 6、別停止点 2）。
+署名44本＝検証済み22本＋未完20本＋別停止点へ切り離す2本。
+一覧：済み 22／全体 44（うち追加 9、別停止点 2）。
 追加1は11-17夕承認のP3-C1P。着手判定22,975＋800＝23,775行。以前の35署名の表は履歴として保持。
 
 ## 最新の検証記録（P3-B1）
@@ -1288,3 +1288,68 @@ P3-C1PNV：対象ビルド・9宣言の小監査成功、標準三公理のみ�
 
 
 P3-C1PNH：実測78行、対象ビルドと3宣言の小監査成功（標準三公理のみ）。累計24,082行。
+
+
+## P3-C1PNO（既存の係数反転の成分分解）
+
+```lean
+∀ {C : Type (u+1)} [Category.{u} C] [SimplicialCategory C]
+    {J : Type u} [Category.{u} J] (D : KanEnrichedDiagram C J) (X : C),
+  let Z := edgewiseOrdinaryObject X
+  let z := coherentNerveVertex Z
+  let j := edgewiseEnrichedInfinityMap C
+  let hf : (j ≫ D.realization).app _ z =
+      functorVertex (kanDiagramCoherentNerve (D.evaluate X)) := by
+    change D.realization.app _ ((coherentNerveMap (edgewiseEnrichedRight C)).app _ z) = _
+    rw [coherentNerveMap_vertex]
+    exact D.realization_vertex X
+  let hR := fun j (Y : SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.ConjugateAndDualFibrations.EdgewiseEnrichedObject C) =>
+    isQCatEquivalence_of_trivialKanFibration (edgewiseRight ((D.obj j).obj Y.val).obj)
+  let hL := fun j (Y : SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.ConjugateAndDualFibrations.EdgewiseEnrichedObject C) =>
+    isQCatEquivalence_of_trivialKanFibration (edgewiseLeft ((D.obj j).obj Y.val).obj)
+  (eqToIso (congrArg (fun v => HomotopyCategory.mk v) hf)).symm ≪≫
+    functorIsoValue D.oppositeRealizationIso z ≪≫
+    eqToIso (congrArg (fun v => HomotopyCategory.mk v) (D.opposite.realization_vertex Z)) =
+  (kanEnrichedRealizationValueIso D.edgewiseRightComparison hR Z).symm ≪≫
+    kanEnrichedRealizationValueIso D.edgewiseLeftComparison hL Z
+```
+
+依存なし。素160〜250行、補正320〜500行。既存参照と原典はJSONと報告。
+
+
+## P3-C1PNON（指定された反転比較の自然性）
+
+```lean
+∀ {J : Type u} [SmallCategory J] {F G : KanDiagramObject J}
+    (η : F.val ⋙ kanObjectForget ⟶ G.val ⋙ kanObjectForget),
+  let D := kanDiagramUniversalEnriched J
+  let hR := fun j (Y : SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.ConjugateAndDualFibrations.EdgewiseEnrichedObject (KanDiagramObject J)) =>
+    isQCatEquivalence_of_trivialKanFibration (edgewiseRight ((D.obj j).obj Y.val).obj)
+  let hL := fun j (Y : SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.ConjugateAndDualFibrations.EdgewiseEnrichedObject (KanDiagramObject J)) =>
+    isQCatEquivalence_of_trivialKanFibration (edgewiseLeft ((D.obj j).obj Y.val).obj)
+  let o := fun P : KanDiagramObject J =>
+    (kanEnrichedRealizationValueIso D.edgewiseRightComparison hR (edgewiseOrdinaryObject P)).symm ≪≫
+      kanEnrichedRealizationValueIso D.edgewiseLeftComparison hL (edgewiseOrdinaryObject P)
+  Truncated.HomotopyCategory.homMk (kanDiagramNaturalTransformationEdge η).toTruncated ≫
+    (o G).hom = (o F).hom ≫
+      Truncated.HomotopyCategory.homMk (kanDiagramNaturalTransformationEdge
+        (F := ⟨F.val ⋙ kanObjectOpFunctor, trivial⟩)
+        (G := ⟨G.val ⋙ kanObjectOpFunctor, trivial⟩)
+        (Functor.whiskerRight η SSet.opFunctor)).toTruncated
+```
+
+依存なし。素160〜250行、補正320〜500行。既存参照はJSONと報告。
+
+
+## P3-C1PNG（指定三成分の合成の照合）
+
+```lean
+∀ {E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [LeftFibration p],
+  (leftClassificationSimplexIso p).symm ≪≫
+    leftStraighteningInfinityDiagram_firstVertexTransportIso p = firstVertexNativeCoefficientIso p
+```
+
+依存P3-C1PNV・P3-C1PNO・P3-C1PNON。素200〜350行、補正400〜700行（成分の略記も含む）。
+
+
+P3-C1PNO・P3-C1PNON：実測115・138行、対象ビルドと5・13宣言の小監査成功。累計24,335行。

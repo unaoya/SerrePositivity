@@ -8848,3 +8848,137 @@ normalized_map_congr : ∀ {X Y : SSet.{u}} {f g : X ⟶ Y}
 次のP3-C1PNの残り補正300を足して24,382行で、着手条件内。
 
 一覧：済み 20／全体 41（うち追加 6、別停止点 2）。
+
+
+### P3-C1PNOの登録（11-17夕、既存反転比較の同じ値の分解）
+
+元の係数反転の指定比較の値を、同じ共通解像の左右の比較の値へ分解する既存構成の法則を登録。
+新しい反転関手は作らず、main本文・一覧の他の型や仮定は変えない。P3-C1PNが依存する。
+完全な型：
+
+```lean
+∀ {C : Type (u+1)} [Category.{u} C] [SimplicialCategory C]
+    {J : Type u} [Category.{u} J] (D : KanEnrichedDiagram C J) (X : C),
+  let Z := edgewiseOrdinaryObject X
+  let z := coherentNerveVertex Z
+  let j := edgewiseEnrichedInfinityMap C
+  let hf : (j ≫ D.realization).app _ z =
+      functorVertex (kanDiagramCoherentNerve (D.evaluate X)) := by
+    change D.realization.app _ ((coherentNerveMap (edgewiseEnrichedRight C)).app _ z) = _
+    rw [coherentNerveMap_vertex]
+    exact D.realization_vertex X
+  let hR := fun j (Y : SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.ConjugateAndDualFibrations.EdgewiseEnrichedObject C) =>
+    isQCatEquivalence_of_trivialKanFibration (edgewiseRight ((D.obj j).obj Y.val).obj)
+  let hL := fun j (Y : SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.ConjugateAndDualFibrations.EdgewiseEnrichedObject C) =>
+    isQCatEquivalence_of_trivialKanFibration (edgewiseLeft ((D.obj j).obj Y.val).obj)
+  (eqToIso (congrArg (fun v => HomotopyCategory.mk v) hf)).symm ≪≫
+    functorIsoValue D.oppositeRealizationIso z ≪≫
+    eqToIso (congrArg (fun v => HomotopyCategory.mk v) (D.opposite.realization_vertex Z)) =
+  (kanEnrichedRealizationValueIso D.edgewiseRightComparison hR Z).symm ≪≫
+    kanEnrichedRealizationValueIso D.edgewiseLeftComparison hL Z
+```
+
+依存：なし。既存宣言と場所は `KanEnrichedDiagram.oppositeRealizationIso` @
+`SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/KanEnrichedDiagramOppositeComparison.lean:42`、
+`kanEnrichedRealizationValueIso` @同ディレクトリ `KanEnrichedRealizationValue.lean:58`、
+`functorIsoValue_trans` @ `SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/FunctorIsoValueComposition.lean:24`、
+`iso_endpoints_heq` @ `SerrePositivity/InfinityCategories/Project/LocalizationAndKanExtensionAuxiliaries/FunctorIsoPointEvaluation.lean:24`。
+原典：HTT §1.1.5・Kerodon §3.1・§5.6（Tag 028T）の構成の特殊な照合。
+素160〜250行、補正320〜500行。24,082＋500＝24,582で着手条件内。
+
+一覧：済み 20／全体 42（うち追加 7、別停止点 2）。
+
+
+### P3-C1PNO完成・P3-C1PNON登録（11-17夕）
+
+P3-C1PNOは対象ビルド・所有5宣言の小監査成功、標準三公理のみ。
+素160〜250行、補正320〜500行に対し実測115行。累計24,082 → **24,197行**。
+証拠は `evidence/inf-supply/c1pn-opposite-factor-1117/manifest.json` にまとめる。
+次に、同じ係数反転比較の指定自然変換に関する自然性をP3-C1PNONとして追加。既存構成の照合で新しい数学ではない。
+完全な型：
+
+```lean
+∀ {J : Type u} [SmallCategory J] {F G : KanDiagramObject J}
+    (η : F.val ⋙ kanObjectForget ⟶ G.val ⋙ kanObjectForget),
+  let D := kanDiagramUniversalEnriched J
+  let hR := fun j (Y : SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.ConjugateAndDualFibrations.EdgewiseEnrichedObject (KanDiagramObject J)) =>
+    isQCatEquivalence_of_trivialKanFibration (edgewiseRight ((D.obj j).obj Y.val).obj)
+  let hL := fun j (Y : SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.ConjugateAndDualFibrations.EdgewiseEnrichedObject (KanDiagramObject J)) =>
+    isQCatEquivalence_of_trivialKanFibration (edgewiseLeft ((D.obj j).obj Y.val).obj)
+  let o := fun P : KanDiagramObject J =>
+    (kanEnrichedRealizationValueIso D.edgewiseRightComparison hR (edgewiseOrdinaryObject P)).symm ≪≫
+      kanEnrichedRealizationValueIso D.edgewiseLeftComparison hL (edgewiseOrdinaryObject P)
+  Truncated.HomotopyCategory.homMk (kanDiagramNaturalTransformationEdge η).toTruncated ≫
+    (o G).hom = (o F).hom ≫
+      Truncated.HomotopyCategory.homMk (kanDiagramNaturalTransformationEdge
+        (F := ⟨F.val ⋙ kanObjectOpFunctor, trivial⟩)
+        (G := ⟨G.val ⋙ kanObjectOpFunctor, trivial⟩)
+        (Functor.whiskerRight η SSet.opFunctor)).toTruncated
+```
+
+依存：なし。使用する既存宣言：`kanEnrichedRealizationValueIso_hom` @
+`SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/KanEnrichedRealizationValueHom.lean:31`、
+`kanDiagramNaturalTransformationHom_comp` @同ディレクトリ `KanDiagramNaturalTransformationComposition.lean:43`、
+`edgewiseRight_naturality`・`edgewiseLeft_naturality` @
+`SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/TwistedArrowsAndCospans/EdgewiseEndpoints.lean:87`・`:99`。
+原典：HTT §1.1.5、Kerodon §3.1・§5.6（Tag 028T）の既存の係数反転比較の自然性の特殊化。
+素160〜250行、補正320〜500行。24,197＋500＝24,697で着手条件内。mainの既存本文と元の署名の型・仮定は変えない。
+
+一覧：済み 21／全体 43（うち追加 8、別停止点 2）。
+
+
+### P3-C1PNGの登録（11-17夕、三つの既存成分の合成の照合）
+
+元のσを、同じunder制限・初頂点底変換・係数反転の三成分の値の合成へ照合する既存構成の法則を追加する。
+型：
+
+```lean
+∀ {E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [LeftFibration p],
+  (leftClassificationSimplexIso p).symm ≪≫
+    leftStraighteningInfinityDiagram_firstVertexTransportIso p = firstVertexNativeCoefficientIso p
+```
+
+`firstVertexNativeCoefficientIso` は、新規 `LeftStraighteningNativeCoefficients.lean` で
+既存の `kanEnrichedRealizationValueIso` を同じ対象に適用した三成分を合成するだけの略記。
+その型は `∀ {E B : SSet.{u}} (p : E ⟶ B) [LeftFibration p], FunctorIso (simplexSectionValue p)
+(leftCoherentTransport (pullback.snd p (transportSimplexFirstVertexMap B)))`。
+右辺は `nativeUnderCoefficientIso p ≪≫ (nativeBaseChangeCoefficientIso p).symm ≪≫
+nativeOppositeCoefficientIso (pullback.snd p (transportSimplexFirstVertexMap B))`。
+各成分はそれぞれ既存のunder比較、`relativeSectionBaseChangeComparison`、左右のedgewise比較の同じ指定対象での値。
+chooseの置き換え・新しい同型の選択・新しい数学はない。
+依存P3-C1PNV・P3-C1PNO・P3-C1PNON。使用宣言・完全な場所はJSONのexisting欄。
+原典：HTT §3.3.2・Kerodon §5.6（Tag 028T）の構成の特殊な照合。
+素200〜350行、補正400〜700行（成分の略記も含む）。補正上端700は800以内。
+先行PNONの補正500を全て残した保守的な判定でも24,197＋500＋700＝25,397で29,000以内。
+新規ファイルで成分の型を先に確認し、その後に既存のσとの比較を閉じる。mainの既存本文・他レーンの枝は触らない。
+
+一覧：済み 21／全体 44（うち追加 9、別停止点 2）。
+
+
+### P3-C1PNONの完成（11-17夜）
+
+元の自然変換に対する、指定された同じ係数反転比較の自然性を証明した。
+左右の射影の自然性を同じcoherent実現に送り、右比較を相殺した全図式の射の等式。
+型・仮定・main本文・計算上限の変更なし。追加のchooseはない。
+素160〜250行、補正320〜500行に対し実測138行。対象ビルドと所有13宣言の小監査成功、標準三公理のみ。
+P3-C1PNOの実測115行と合わせ、累計は24,082＋115＋138＝ **24,335行**。
+引用の属性はどちらもHTT §1.1.5のspecial、Kerodon側はdocstringに構成の特殊化として記載。
+
+再利用する短い法則も公開した（P3-C1PNON内の証明分割、署名数に追加しない）：
+
+```lean
+kanEnrichedRealizationValueIso_eq_native :
+  ∀ {C : Type (u+1)} [Category.{u} C] [SimplicialCategory C]
+    {J : Type u} [Category.{u} J] {D E : KanEnrichedDiagram C J}
+    (η : KanEnrichedDiagramComparison D E)
+    (hη : ∀ j (X : C), IsQCatEquivalence ((η.component j).val X)) (X : C),
+    kanEnrichedRealizationValueIso η hη X =
+      kanDiagramFunctorIsoOfPointwise (F := ⟨D.evaluate X, trivial⟩)
+        (G := ⟨E.evaluate X, trivial⟩) (η.app X) (fun j => hη j X)
+```
+
+P3-C1PNOの証拠：`evidence/inf-supply/c1pn-opposite-factor-1117/manifest.json`。
+P3-C1PNONの証拠：`evidence/inf-supply/c1pn-opposite-naturality-1117/manifest.json`。
+次のP3-C1PNGは補正上端700なので24,335＋700＝25,035行、着手条件内。止まらず続行。
+
+一覧：済み 22／全体 44（うち追加 9、別停止点 2）。

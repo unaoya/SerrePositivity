@@ -1,0 +1,64 @@
+{
+ "directory": "/Users/sugakubunka/serre-evidence/inf-supply/c1pn-opposite-factor-1117",
+ "commit": "0b6fd49f4",
+ "made_by": "target build, fresh five-declaration axiom audit",
+ "note": "Specified opposite coefficient value factorization, no new assumptions or main body changes",
+ "files": [
+  {
+   "path": "audit-after.lean",
+   "sha256": "07a6afe3d7f159b89751b65810f37996cd4da97e45cab9b793e8c9bca29b7331",
+   "bytes": 3555
+  },
+  {
+   "path": "audit-after.log",
+   "sha256": "021c96d4d6dbce25447c4f1432c8b5ab30fd1a62249027dd248e842e7278689a",
+   "bytes": 23
+  },
+  {
+   "path": "build-1.log",
+   "sha256": "fe4bd0fb2592dd64b27ce98a99e6ff5b3bf0c730466de37f10f036e65b1fa184",
+   "bytes": 68643
+  },
+  {
+   "path": "build-2.log",
+   "sha256": "427e4dbffc777a5f3d1871e4cea10df5af9d0c95c3c9812a4741d80ffadd514f",
+   "bytes": 65308
+  },
+  {
+   "path": "catalog-after.json",
+   "sha256": "328fd0cbe4db7a66f6df5bcd3d933ee12b101648f50f00b4eda9d2e04f9e9acc",
+   "bytes": 2105
+  },
+  {
+   "path": "catalog-after.lean",
+   "sha256": "fe4ba36a35f880a3b4214f1f6bbf4997ad6f73578ce6650f1c76a32db2a1af80",
+   "bytes": 1343
+  },
+  {
+   "path": "catalog-after.log",
+   "sha256": "174e079e88c23787b45e4a7de4618a7d0e9249a7f85d7cd93c969da293282d8d",
+   "bytes": 61
+  },
+  {
+   "path": "files.json",
+   "sha256": "71ac61cb73f10be0589f544f9327ab71af7715e690e7785a2ac7f38c7abe97f9",
+   "bytes": 134
+  },
+  {
+   "path": "signature-check-before.json",
+   "sha256": "30ec92ff985d594680242526d787020396f466fae00b6ed340b0b70e8f334216",
+   "bytes": 11304
+  },
+  {
+   "path": "target-audit-result.json",
+   "sha256": "a03d5f1e1a284356d149c450736044d76c4afaa1e8ac455011dd38844e85a024",
+   "bytes": 514
+  },
+  {
+   "path": "verify.py",
+   "sha256": "aac77d3914a2be1ad5da6fc6abeb8e72cab44a3599b4fe7eda483cd17ca83b90",
+   "bytes": 4013
+  }
+ ],
+ "total_bytes": 157003
+}
