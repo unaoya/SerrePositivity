@@ -5,8 +5,8 @@
 再採番せず、ここにある各署名IDを一つずつ数える。旧「5／8」は以後この台帳の進捗に使わない。
 小さい既存構成の法則・証明の分割は親署名内に記録するが、上端200行超は独立署名。
 
-署名35本＝検証済み12本＋未完21本＋別停止点へ切り離す2本。
-一覧：済み 12／全体 35（うち追加 0、別停止点 2）。
+署名35本＝検証済み17本＋未完16本＋別停止点へ切り離す2本。
+一覧：済み 17／全体 35（うち追加 0、別停止点 2）。
 「追加0」は元の承認済み範囲の外の新しい数学を足していない、という意味。
 
 ## 最新の検証記録（P3-B1）
@@ -14,6 +14,12 @@
 この検証組は107行。検証済み累計22,686行。
 対象ビルド・小監査：1モジュール・6宣言、標準三公理のみ。
 証拠：`/tmp/is-w1/p3-b1/production/target-audit-result.json`（ソースSHAを照合）。元の見込みはJSONのoriginal欄にも保持。
+
+## 最新の検証記録（P3-B2a,P3-B2b,P3-B2c,P3-B2d,P3-C0）
+
+この検証組は199行。検証済み累計22,885行。
+対象ビルド・小監査：2モジュール・18宣言、標準三公理のみ。
+証拠：`/tmp/is-w1/p3-b2/production/target-audit-result.json`（ソースSHAを照合）。元の見込みはJSONのoriginal欄にも保持。
 
 ## 型の共通環境
 
@@ -240,9 +246,9 @@ let q := smallLeftUnstraighteningProjection (leftStraighteningInfinityDiagram p)
 
 ### P3-B2a — `transportSimplexUnderDomainMap_baseChange`
 
-状態：pending。依存署名：なし。
+状態：verified。依存署名：なし。
 
-素の残り：20〜30行。係数2の残り：40〜60行。
+素の残り：0〜0行。係数2の残り：0〜0行。元の見込み：[20, 30]、補正[40, 60]。実測は同じ検証組P3-B2a,P3-B2b,P3-B2c,P3-B2d,P3-C0で199行。
 
 原典：HTT §3.3.2（特に3.3.2.8）、Kerodon Corollary 5.6.0.6（Tag 028T）。指定構成の法則で、独立した原典の補題番号はない。
 
@@ -255,15 +261,16 @@ let q := smallLeftUnstraighteningProjection (leftStraighteningInfinityDiagram p)
 
 使う既存の宣言：
 
+- `transportSimplexUnderDomainMap_baseChange` @ `SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/SimplexUnderBaseChangeNaturality.lean:33`（今回検証済み）
 - `transportSimplexUnderDomainMap` @ `SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/SimplexUnderDomains.lean:53`
 
-置き場所（新規の場合の案）：`SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/SimplexUnderBaseChangeNaturality.lean`。
+置き場所：`SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/SimplexUnderBaseChangeNaturality.lean`。
 
 ### P3-B2b — `transportSimplexUnderBaseChangeTransformation`
 
-状態：pending。依存署名：`P3-B2a`。
+状態：verified。依存署名：`P3-B2a`。
 
-素の残り：20〜40行。係数2の残り：40〜80行。
+素の残り：0〜0行。係数2の残り：0〜0行。元の見込み：[20, 40]、補正[40, 80]。実測は同じ検証組P3-B2a,P3-B2b,P3-B2c,P3-B2d,P3-C0で199行。
 
 原典：HTT §3.3.2（特に3.3.2.8）、Kerodon Corollary 5.6.0.6（Tag 028T）。指定構成の法則で、独立した原典の補題番号はない。
 
@@ -275,17 +282,18 @@ let q := smallLeftUnstraighteningProjection (leftStraighteningInfinityDiagram p)
 
 使う既存の宣言：
 
+- `transportSimplexUnderBaseChangeTransformation` @ `SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/SimplexUnderBaseChangeNaturality.lean:48`（今回検証済み）
 - `transportSimplexUnderDomainTransformation` @ `SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/SimplexUnderDomains.lean:164`
 
 ρのs成分のleftはnerveMap (Under.post (X := s) (transportSimplexFunctor k))。NatTransをこの式で直接定義し、存在命題からchooseしない。小さい成分の等式の法則もここで保持。
 
-置き場所（新規の場合の案）：`SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/SimplexUnderBaseChangeNaturality.lean`。
+置き場所：`SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/SimplexUnderBaseChangeNaturality.lean`。
 
 ### P3-B2c — `transportSimplexUnderTransformation_baseChange`
 
-状態：pending。依存署名：`P3-B2a`, `P3-B2b`。
+状態：verified。依存署名：`P3-B2a`, `P3-B2b`。
 
-素の残り：20〜40行。係数2の残り：40〜80行。
+素の残り：0〜0行。係数2の残り：0〜0行。元の見込み：[20, 40]、補正[40, 80]。実測は同じ検証組P3-B2a,P3-B2b,P3-B2c,P3-B2d,P3-C0で199行。
 
 原典：HTT §3.3.2（特に3.3.2.8）、Kerodon Corollary 5.6.0.6（Tag 028T）。指定構成の法則で、独立した原典の補題番号はない。
 
@@ -300,15 +308,16 @@ let q := smallLeftUnstraighteningProjection (leftStraighteningInfinityDiagram p)
 
 使う既存の宣言：
 
+- `transportSimplexUnderTransformation_baseChange` @ `SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/SimplexUnderBaseChangeNaturality.lean:88`（今回検証済み）
 - `transportSimplexUnderDomainTransformation` @ `SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/SimplexUnderDomains.lean:164`
 
-置き場所（新規の場合の案）：`SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/SimplexUnderBaseChangeNaturality.lean`。
+置き場所：`SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/SimplexUnderBaseChangeNaturality.lean`。
 
 ### P3-B2d — `transportSimplexUnderBaseChangeComparison_isQCatEquivalence`
 
-状態：pending。依存署名：`P3-B2b`。
+状態：verified。依存署名：`P3-B2b`。
 
-素の残り：30〜50行。係数2の残り：60〜100行。
+素の残り：0〜0行。係数2の残り：0〜0行。元の見込み：[30, 50]、補正[60, 100]。実測は同じ検証組P3-B2a,P3-B2b,P3-B2c,P3-B2d,P3-C0で199行。
 
 原典：HTT §3.3.2（特に3.3.2.8）、Kerodon Corollary 5.6.0.6（Tag 028T）。指定構成の法則で、独立した原典の補題番号はない。
 
@@ -321,9 +330,10 @@ let q := smallLeftUnstraighteningProjection (leftStraighteningInfinityDiagram p)
 
 使う既存の宣言：
 
+- `transportSimplexUnderBaseChangeComparison_isQCatEquivalence` @ `SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/SimplexUnderBaseChangeNaturality.lean:107`（今回検証済み）
 - `relativeFunctorOverPre_isQCatEquivalence_of_initialComparison` @ `SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/RelativeSectionInitialRestriction.lean:43`
 
-置き場所（新規の場合の案）：`SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/SimplexUnderBaseChangeNaturality.lean`。
+置き場所：`SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/SimplexUnderBaseChangeNaturality.lean`。
 
 ### P3-B2e — `transportSimplexUnderRealization_baseChange_composition`
 
@@ -360,9 +370,9 @@ hηB/hηDは適用で既存の初頂点の制限・係数移送から証明す�
 
 ### P3-C0 — `leftStraighteningBaseChangePullbackData`
 
-状態：pending。依存署名：なし。
+状態：verified。依存署名：なし。
 
-素の残り：40〜80行。係数2の残り：80〜160行。
+素の残り：0〜0行。係数2の残り：0〜0行。元の見込み：[40, 80]、補正[80, 160]。実測は同じ検証組P3-B2a,P3-B2b,P3-B2c,P3-B2d,P3-C0で199行。
 
 原典：HTT §3.3.2（特に3.3.2.8）、Kerodon Corollary 5.6.0.6（Tag 028T）。指定構成の法則で、独立した原典の補題番号はない。
 
@@ -385,11 +395,12 @@ hηB/hηDは適用で既存の初頂点の制限・係数移送から証明す�
 
 使う既存の宣言：
 
+- `leftStraighteningBaseChangePullbackData` @ `SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePullbackData.lean:27`（今回検証済み）
 - `cartesianRestrict_diagramIso` @ `SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/RepresentationComparisonRestriction.lean:27`
 
 P3-Cの標準pullbackの前提計算を独立に明示した。tは指定二座標のpullback.liftで構成する。htUも証明する。任意のtやhtUを最終型に仮定しない。
 
-置き場所（新規の場合の案）：`SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/leftStraighteningBaseChangePullbackData.lean`。
+置き場所：`SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePullbackData.lean`。
 
 ### P3-C1 — `leftStraighteningBaseChange_transportWitness`
 
@@ -1033,4 +1044,4 @@ FunctorHom (discretePresheaf P) (discretePresheaf Q)
 
 置き場所（新規の場合の案）：`SerrePositivity/InfinityCategories/Sheaves/isSheaf_toGrothendieck_iff.lean`。
 
-一覧：済み 12／全体 35（うち追加 0、別停止点 2）。
+一覧：済み 17／全体 35（うち追加 0、別停止点 2）。

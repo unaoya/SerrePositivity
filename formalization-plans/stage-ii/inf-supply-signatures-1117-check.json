@@ -3,7 +3,7 @@
   "validation": "JSON structure / rendered complete signatures / reference name at source line / Kahn topological sort",
   "lean_type_elaboration": "not run; paper signatures, unimplemented signatures not certified",
   "signature_count": 35,
-  "verified_count": 12,
+  "verified_count": 17,
   "additional_count": 0,
   "deferred_count": 2,
   "edge_count": 50,
@@ -46,22 +46,22 @@
     "R15c"
   ],
   "active_bare_lines": [
-    2090,
-    3810
+    1960,
+    3570
   ],
   "active_corrected_lines": [
-    4180,
-    7620
+    3920,
+    7140
   ],
   "deferred_corrected_lines": [
     1400,
     2600
   ],
   "active_completion_corrected_lines": [
-    26866,
-    30306
+    26805,
+    30025
   ],
-  "ledger_sha256": "3b496b78e83fa531a8e1ca22a8c415cb67d0122b6aeab12f140fb56a5e3bf3e7",
+  "ledger_sha256": "7cb20df6e2ff189646a61ba2a7848fa57d0d79e90c8c91a9cb7597593d4abcd3",
   "reference_source_sha256": {
     "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/ScaffoldCoherentComparisonRestriction.lean": "18834ad39c22579d2c7160c905dd6a3090d8724b90e4fe3c4d1c7b7c8a6eb0f3",
     "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/StraighteningReconstructionRepresentationComparison.lean": "1871c7f62ab1a71d8bab1e8805db41303bb07ec49fd71bb39f02d612949e74a7",
@@ -72,8 +72,10 @@
     "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/RelativeSectionBaseChangeComparison.lean": "0268da450b9144a1957631de71dc10b7cf86924f0fcd692748fa664e38a67252",
     "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/RelativeSectionJointComparison.lean": "61faaa90e446ec8faa5790a2ff1c94f95d70f22c151a0326be7c49ba7f19360d",
     "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/SimplexUnderDomains.lean": "bb4f8acfcfe85a5f3ab24a3374a64ac7574d75c49897dd94f6da5beef42bd8c5",
+    "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/SimplexUnderBaseChangeNaturality.lean": "f599e32ccbf4ac4a236ff8ee92f991af6feccd063e2dc952cb46ef4fcae0f7f0",
     "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/RelativeSectionInitialRestriction.lean": "dfa3a089fd46218de50d4c03866aa1fa3e83efff5ae2e311bc93d8976b98d06e",
     "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/RepresentationComparisonRestriction.lean": "978cdc7c251699a08157a7482637678d5b370a678007fdcb37efc6c179c3eaa6",
+    "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePullbackData.lean": "7ac4b715fe12339cc8a02d4a49883f6c8287d7a8f8e3f7e0c651d68d610acd46",
     "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/RepresentationComparisonCoherence.lean": "a3529de2269f3e7f3c8b9e2d1e49660c9330f023654898775f4b5c7cdc1a3211",
     "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/NerveRepresentationComparisonLaw.lean": "e3de933383d4625eff455610a59ddae4c5dcc7256ae3be6fc4dc4ece8142c14c",
     "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/PresentableInfinityCategories/StraighteningBaseChangeRestriction.lean": "eb3a2b61702108ceab6037e2a78d0cc93eaa6c87b7513070c123fb9b5d3454b8",

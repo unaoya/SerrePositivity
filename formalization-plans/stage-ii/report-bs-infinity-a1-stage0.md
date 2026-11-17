@@ -7309,3 +7309,48 @@ mainの取り込み・既存本文の変更・計算上限の変更はなし。
 証拠：/tmp/is-w1/p3-b1/production/target-audit-result.json（ソースSHA照合済み）。
 新しいchoose、既存本文の変更、型・仮定の変更、計算上限の変更はなし。mainは取り込まない。
 一覧：済み 12／全体 35（うち追加 0、別停止点 2）。
+
+P3-B1内の小さい証明分割（独立署名を増やさない既存構成の束ね直しと法則）：
+
+```lean
+private def overPreJoint {B : SSet.{u}} {J : Type u} [Category.{u} J]
+    {A T : Jᵒᵖ ⥤ Over B} (η : A ⟶ T) :
+    KanEnrichedDiagramComparison (relativeSectionEnrichedDiagram T)
+      (relativeSectionEnrichedDiagram A)
+
+private lemma overPreJoint_iso {B : SSet.{u}} {J : Type u} [Category.{u} J]
+    {A T : Jᵒᵖ ⥤ Over B} (η : A ⟶ T)
+    (hη : ∀ j (p : LeftFibrationObject B),
+      IsQCatEquivalence (relativeFunctorOverPre p.val.hom (η.app (Opposite.op j)))) :
+    relativeSectionRealizationComparisonIso η hη = (overPreJoint η).realizationIso hη
+
+private lemma overPreJoint_baseChange {B D : SSet.{u}} {J : Type u} [Category.{u} J]
+    (k : D ⟶ B) {A T : Jᵒᵖ ⥤ Over D} (η : A ⟶ T) :
+    jointComparisonTrans (relativeSectionBaseChangeComparison k T)
+        (overPreJoint (Functor.whiskerRight η (Over.map k))) =
+      jointComparisonTrans
+        (jointComparisonPrecompose (overPreJoint η) (leftFibrationBaseChangeEnriched k))
+        (relativeSectionBaseChangeComparison k A)
+```
+
+比較の成分は既存relativeFunctorOverPreComparison、添字の自然性も既存のもの。
+新しい数学的な比較を選ばず、元のrelativeSectionRealizationComparisonIsoとの一致はrflで検証した。
+最後の法則は既存relativeFunctorBaseChangeForward_overPreの全成分の等式。
+三つとも200行以下、親署名P3-B1の証明分割として記録する。
+
+次の着手判定：P3-B2a〜dの補正上端320行を22,686行へ足して23,006行で枠内。
+この組が130行で検証された場合のP3-C0は22,816＋160＝22,976行で枠内。
+P3-B2eの補正上端は120行で、C0を含めた検証見込み22,885行へ足して23,005行。
+いずれも29,000行を超えない。B2eの具体的なcongrArgはwhnfの既定上限に達したため、
+一般の自然変換の合成則を先に証明し、同じ指定自然変換へ適用する分割を検証する。
+計算上限は上げず、元の型・仮定も保つ。
+一覧：済み 12／全体 35（うち追加 0、別停止点 2）。
+
+### P3-B2a,P3-B2b,P3-B2c,P3-B2d,P3-C0の対象検証（11-17午後）
+
+対象ビルド・小監査exit 0。2モジュール・18宣言、標準三公理のみ。
+今回199行、検証済み累計22,885行。
+文献属性はHTTの構成の照合法則としてpartial := special。Kerodonの特殊化はdocstringに記す。
+証拠：/tmp/is-w1/p3-b2/production/target-audit-result.json（ソースSHA照合済み）。
+新しいchoose、既存本文の変更、型・仮定の変更、計算上限の変更はなし。mainは取り込まない。
+一覧：済み 17／全体 35（うち追加 0、別停止点 2）。
