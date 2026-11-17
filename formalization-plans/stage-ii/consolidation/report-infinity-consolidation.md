@@ -1,5 +1,21 @@
 # IC-W1 ∞ コード整理報告
 
+## 現在地（2026-11-17 18時、IC-1適用前で停止）
+
+**IC-1は未適用。root外の直接importerである既存下書きが、凍結した原ソースのまま19エラーで型検査に失敗した。証明変更なしで追従の検査を満たす扱いが未確定のため、§11の停止指示に従って適用前で停止する。IC-1完了の報告ではない。**
+
+- 検証済みの数学ソースのmain：`35988dd08b05d27a263fc210bafdadd0b1fc4c11`。root・全監査・sorry閉包通過は調整役の11-17夕の連絡に基づく。最新main `adc221d19c22ce2063690b1daff999b03cb70452` はその後の文書差分だけで、merge `7101c0da6` で追従した。
+- main追従：`414be0de2d7c125167e4ed77505c8de44cddfe31`。承認済み2,264本のソースSHAは全件一致。本体・検査スクリプトはこのmainと同一。
+- 移動前の独立環境：`/private/tmp/ic-w1-before-414be0de2`（同じHEADのdetached worktree）。mainのビルド済み成果物をCOW複製し、projectのoleanを共有せず保持する。第三者packagesのみ参照共有。
+- 採取：native所有元（private/生成宣言を含む）→原compiler参照/openの束縛→正式な改名案→他枝の影響を再集計。影響30ファイル以下なら11-17夕の追加承認により昼から適用してよい。適用直前に一行連絡する。昼のbulkは3〜5分、夜は30分以内。静的→対象build→v3b→引用/タグ→rootまで確認し、root成功で報告をコミットして停止。正式全監査は調整役が実行する。影響30本超、または直せない移動が出た場合は停止・報告する。
+- §10（BR56）：Archiveを追従対象と外部importer数から除外。復帰時に改名表で直す。
+- BR55不明356件は据置。B1/B4はIC-1移動後の別amendment（B1最初4本/400行、B4最初1節/50本）。
+
+移動適用一覧：済み **0／全体26（うち追加0）**。原環境の正式採取と検査は進捗に応じて以下へ記録する。
+
+<details>
+<summary>承認済み段0の停止時点（履歴）</summary>
+
 ## 現在地（2026-11-17、レーン⑦）
 
 **IC-1 段0（紙）を提出し、適用前の停止点。Lean変更・ビルド・native宣言採取は実行していない。ユーザーの11-17の指示に従い、この紙をコミットして止まる。§3の条件付き事前承認による準備・適用への自動続行はしない。**
@@ -11,6 +27,11 @@
 
 段0一覧：済み **5／全体5（うち追加0）**：IC1-0a 移動/改名・層/他枝、IC1-0b BR55、IC1-0c B1、IC1-0d B4、IC1-0e §6のDG分類。
 移動適用一覧：済み **0／全体26（うち追加0）**。単位IDは下表のIC1-族名。IC-2〜IC-5には進まない。
+
+
+</details>
+
+以下の§1〜§6は承認済み段0の紙を履歴として保持する。再開後の実測は先頭と§7以降を参照。
 
 ## 1. IC-1の範囲・全件の移動と改名の案
 
@@ -177,3 +198,106 @@ A3/A4は同じ領域単位に合わせ、全対象を一回importし、moduleDat
 資料の入口は [research/infinity-consolidation-w1/README.md](../../../research/infinity-consolidation-w1/README.md)。gitへ入れるのは紙、全件の移動/改名案、分類/候補の表、静的集計を再現する研究用Pythonのみ。raw source captureとsource graphのcacheは `/private/tmp/ic-w1-*` に置き、既存のOE-W1証拠本体は再追加しない。
 
 紙の形式/件数/参照先/ソースSHA/移動先の単射性と、層の移送予覧を静的に確認した。Lean build、対象build、v3b、引用属性のnative照合、root、正式全監査、verifyは**全てこのレーンでは未実行**。紙をコミットしたら停止し、ユーザーの紙の確認と今夜のroot後の原環境の準備を待つ。他枝も進むので、再開時にmainをmergeし、表・分岐影響・原環境のHEADを取り直す。
+
+## 7. 正式採取の再開（11-17 夕、準備中）
+
+### 7.1 検証済みmainと独立した原環境
+
+調整役の11-17夕の連絡を受け、main `35988dd08` を merge `414be0de2` で取り込み、同HEADの独立した `/private/tmp/ic-w1-before-414be0de2` を保持した。承認済み2,264ソースのSHAは全件一致。本体・検査スクリプトも検証済みmainと同一。その後のmain追従 `94b28b53b` は昼適用・root後停止の§11等の文書だけで、原環境の数学ソースは変わらない。
+
+mainのbuild treeの広いCOW複製は、今回の依存閉包にないPointwiseColimitCoconeFamilyの成果物で待機したため中断。実際の対象のproject依存閉包 **9,222モジュール**について必要なolean/private/server/ilean/irを独立保持し、代表6本はSHA一致・inode相違を確認した。追加の5,726成果物をCOW複製。第三者packagesだけを共有し、projectのbuild directoryは共有していない。
+
+最初のcompiler参照採取は `lake --no-build setup-file` のキャッシュ復元で、複製先のreadonly成果物を上書きできず停止した（sourceの型エラーではない）。リンク共有されたinodeは先に独立COWへ置き換えてから、複製先だけに書込み権限を付けた。355,155ファイル、うち新たにリンクを分離した5,949本。元cache/main/他worktreeのinodeの権限を変更していない。依存のno-build再確認は成功し、失敗ログもgit外に保持した。
+
+### 7.2 native所有元と正式な改名案
+
+`oe_native_owners.lean` の実環境で、**2,264モジュール、18,305宣言、private4,335**を採取。module・ユーザー名・privateフラグの組に重複0。宣言0のmoduleは3本（ComplexLimits/ExtendTruncationHom、ExtendTruncationHomNaturality、TruncationInclusionNaturality）で、module/importの移動対象から落とさない。
+
+移送名を持つ実宣言は **18,254**。ソースの候補表では判断できなかった、他の移動型への拡張は、その型の実際の新namespaceへ揃えた。source-free compiler equation/congruenceは655件を別に調べ、所有ファイルの接頭辞だけでは誤る2件を親に合わせた：
+
+- IdentityCoconeHomの `coconeIdentityProjectionNullhomotopy.eq_1` は実際の親に従いProjectiveHomotopyInverseへ。
+- Surjection/CompositeRecoveryLabelsで需要生成された `BarrattEccles.insertedPosition.eq_1` は、非移動のBE本体の親名を保持。
+
+opensの曖昧な宛先は0。移動しないBarrattEccles/StoppedRoutes/Interface/Modules/PowerOperationとroot EInfinityは明示的に元のopenを保持する。型・本体・公理を変える対応ではない。正式表はgit外の `preparation/namespace-rewrite-map.json`、`public-owner-map.json`、`compiler-children.json` に保持し、privateの移動後kernel名は移動後の実観測で対応する。ordinalで対応づけない。
+
+既存の補助の名前検証が、実在する13件の`?`を含む名前を拒否したため、git外に置いた補助のコピーだけを当該識別子構文に対応させた。共有のrewriter・snapshot・比較器は変更していない。v3b専用binaryは既存と同じSHA `044d36482e16a0708bdb58e6b3f5cdbf1f53b5deec92e5921d07b290109d45b9`。
+
+最初の所有元採取とv3b toolのコンパイルは84.80秒、RSS最大7,626,047,488 bytes、終了0、bulk鍵返却済み。
+
+### 7.3 compiler参照・openの束縛（継続中）
+
+nativeの実所有元、実ileanの参照、source importの閉包とliteralを合わせ、**3,858ファイル**を原ソースの採取候補にした（対象2,264本と利用側・監査）。Archiveは§10/BR56により除外。ileanの欠落を参照0と扱わず、依存閉包から保守的な候補を補った。
+
+採取器のsource-exactness/configured options/async=falseと元のガードを維持する。native化した同じ採取器は、AW/BoundaryCutsとProjectiveModelで、元の方式とのsource/module/refs/commands/optionsの完全一致を確認した。Lake設定も、公式 `setupServerModule` API・同じno-build条件でまとめて読み出し、通常CLIの3ライブラリ例とaudit_einfinityの全JSON欄・出力バイトが一致した。visibility・importArts・dynlibs・plugins・package・optionsを省略しない。
+
+最初の実採取は **92／3,858成功**、231.36秒、RSS最大5,915,787,264 bytes、2 reader、失敗0。設定採取は **3,682／3,858**まで完了。残りの原環境依存に既存Compatibility/Legacy群があり、同じbulk制限で順にキャッシュを用意している（Legacy19まで成功、数学ソースの変更なし）。92ファイルのdry previewは全て生成可・保留0、本体への適用0。匿名instanceの6 binderは、元のnative定義とcompilerのkeyword spanを確認し、local/private/型/値/priorityを保って同じ移送名を明示する案として記録。移動しないBE namespaceの3 openも元の束縛を保持する方針を明示した。以後の全件採取・previewは継続中で、対象build/v3b/rootの成功を意味しない。18時時点ではnative参照/open採取 **430／3,858**、プレビュー430本・変更218本・保留0。元ソースFreeProbeRelativeUnitWeakは190秒の期限切れ後、単独250秒枠で196.84秒・RSS5.31GBで成功した（OE-W1でも同じファイルに原環境の採取時間の問題があり、今回は原ソースそのままのInfoTree採取まで完了）。期限切れログも保存し、未完了を成功に数えていない。
+
+### 7.4 他枝と停止条件
+
+最初のnative所有元に基づく再照合は、math/inf-supply・math/scheme・research/cited-coverageの**合計0ファイル**。各枝と作業木が触るソースを読み、移動providerへ届くimport閉包と修飾参照を照合した。unqualified/open経由の利用も、providerがimport閉包にないことから排除する。作業中の枝なので、適用直前にもう一度取り直す。
+
+証拠本体の正本は **`~/serre-evidence/ic-w1/ic-1/`**。既存の実行コマンドの `/private/tmp/ic-w1-evidence` はそこへの別名。リポジトリへは目録だけを追加する。source/context/configuration、実所有元、両採取器の同一性、各bulk枠の時間/RSS/失敗を保持する。
+
+§11に従い、採取と影響確認が完了し30ファイル以下なら、開始前に一行知らせて昼から適用する。以後は静的→対象build→v3b未説明0→引用/タグ→root。root成功で報告をコミットして停止し、正式全監査は調整役へ。直せない移動または他枝30本超は停止・報告。BR55の356件・B1・B4には進んでいない。
+
+移動適用一覧：済み **0／全体26（うち追加0）**。
+
+### 7.5 適用前の静的照合（継続中）
+
+現時点の全体graph 34,087モジュールに対し、移送したKL-W1設定で既存違反172件の像が完全一致し、追加・消失0。全モジュールのW1/W2a/W2b禁止判定と実装境界の判定、移動宣言を持つモジュールのtierを保存した。W1の移送禁止リストは、全モジュールの判定同値を確認した30接頭辞へまとめる案（適用なし）。既存の違反を解消したとの判定ではない。
+
+監査の対象選択もArchiveを除く33,542 projectモジュールで、元の述語と移送後の述語が全件一致。新しい15ディレクトリの接頭辞と11単独モジュールを加える案で、対象の追加・欠落は0。数学的な監査やv3bの代替ではない。
+
+17時台の他枝再照合では、③-aの364ソースと⑥の3,143ソースは影響0。新しい調整役BR54枝の `scripts/audit_citations.lean` がroot経由で移動providerに届くため保守的に1本を数え、合計1本（直接import変更0）。依然30本以内。各枝のHEAD前後一致を確認した。適用直前に再採取する。
+
+## 8. 適用前の停止（11-17 18時）
+
+### 8.1 原環境で失敗した直接importer
+
+全tracked非Archive import辺の追加照合で、初期採取候補（library/scripts限定）に漏れていた [CrystallineInput.lean](../../bhatt-scholze/drafts/A1/CrystallineInput.lean) を発見した。移動対象 `SerrePositivity.EInfinity.Operad.CommutativeAlgebraFunctor` の直接importerで、採取候補を3,858から**3,859本**へ補った。移動2,264本・26単位の追加ではない。
+
+同じ凍結原環境 `414be0de2`、**ソース無変更**で公式Lake設定を採取し、原native frontendを実行。ハイフンを含むmodule名の引用表記を直した後、18.60秒、終了1。エラー19件、先頭は81行の `SerrePositivity.EInfinity.EInfinityTheory` 不明、89行の `SerrePositivity.BhattScholze.PerfectoidizationInterface` 不明。そのほか `polyNerve`、`Cosimplicial.strictShapeNerve`、`discreteAlgebraModule` 等の不明名と型不一致がある。これは**移動後の失敗ではなく、現在の原環境の失敗**。root・全監査が通ったという調整役の連絡と矛盾するものではなく、当該下書きはroot外にある。
+
+§11の「直せない移動が出たら止まって報告」に従い、当該下書きを黙って除外したり、数学的な定義・主張・証明を直したりして採取完了とせず、適用の前で停止する。原環境で型検査できない下書きの追従を、どの検査条件で扱うかが未確定。移動そのものによる不具合が見つかった、との判定ではない。
+
+native所有元で分かる追従候補は以下の3箇所。ただし下書き全体の束縛・保存比較を確認したパッチではなく、**未適用の案**である。
+
+|箇所|旧名／旧module|候補の新名／新module|
+|---|---|---|
+|34行 import|`SerrePositivity.EInfinity.Operad.CommutativeAlgebraFunctor`|`SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.CommutativeAlgebraFunctor`|
+|130行 関手|`SerrePositivity.EInfinity.commutativeAlgebraFunctor`|`SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.commutativeAlgebraFunctor`|
+|130行 制限|`SerrePositivity.EInfinity.Operad.restrictAlgebra`|`SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.restrictAlgebra`|
+
+### 8.2 停止時点の結果
+
+|項目|結果|
+|---|---|
+|原native所有元|2,264 module・18,305宣言（private4,335）、採取済み|
+|正式参照/open|**650／3,859成功**、未完了。原ソースの失敗を成功に数えていない|
+|dry preview|650本、変更289本、ガード保留0。本体へ適用0|
+|正式Lake設定|3,683／3,859、未完了|
+|原環境の依存準備|既存Compatibility/Legacy01〜30のビルド成功、30／51。移動後の対象ビルドではない|
+|KL-W1の層|移送予覧172→172、追加・消失0。既存違反あり|
+|もう一方の層|DGAlgebra26本がDG基礎に自動分類されると新しい制約18辺。実装側の `DGAlgebras` 行（rank11、KL-W1はConsumersのまま）を置く案で、全140,967辺の直接規則が元と一致。既存DGの規則・core集合は不変。適用なし|
+|禁止・実装判定|全34,087 moduleの元と移送先で一致|
+|監査の対象範囲|非Archive project33,542 moduleで元の述語の像と一致。監査の実行・統合を完了した意味ではない|
+|他枝影響の最新観測|③-a0、⑥0、cited0、調整役BR54のroot経由1本、合計1本。直接import変更0。適用前に再観測が必要|
+|移動後の検査|対象build・v3b・引用/タグ比較・root **すべて未実行**|
+|本体の変更|Lean・層設定・監査・rootへの適用なし。移動0／2,264本、済み0／26単位|
+
+source・oleanの独立性の準備、同じ採取器のnative化、公式Lake設定APIの同一性確認、全chunkの時間/RSS、成功・期限切れ・原環境エラーのログを保持した。650本は同じ原ソースのInfoTree採取であり、エラーのある下書きを別方式で成功扱いに置き換えていない。A3/A4の監査統合も未実施。BR55不明356件・B1・B4、Archiveには変更なし。
+
+### 8.3 証拠と再開点
+
+正本は `~/serre-evidence/ic-w1/ic-1/`。リポジトリへは [目録](../../../evidence/ic-w1/ic-1/manifest.json) だけを置く。対象HEADは `7101c0da6`（main `adc221d19` を取り込み済み）、凍結した数学ソースは `414be0de2`／検証済みmain `35988dd08` と一致する。
+
+- `preparation/draft-stop-review.json`：停止理由・原ソースSHA・native所有元に基づく3箇所の案。
+- `preparation/references-native/formalization-plans.bhatt-scholze.drafts.A1.CrystallineInput.log`：原環境の19エラー。
+- `preparation/draft-native-002-controller.log.json`：単独枠20.64秒、最大RSS2.54GB、終了1、鍵返却。
+- `preparation/owners-before.json`・`public-owner-map.json`・`namespace-rewrite-map.json`：native所有元と改名案（B4の材料、後で移動後の実所有元を対応させる）。
+- `preparation/preview-progress.json`・`reference-native-progress.json`・`setup-progress.json`：未完了件数。
+- `preparation/layers-transport.json`・`layer-prefix-compaction.json`・`dg-layer-review.json`：層の移送案と同値性。DG分類を直す前の18辺も `top-layer-direct-transport.json` に保持。
+- `preparation/branch-impact-native.json`：枝のHEAD前後一致付きの観測。再開後に更新する。
+- `IC1_STATE.md`：原環境と再開手順。追加の採取を自動で走らせる処理は停止済みで、現在のbulk ticketはない。
+
+下書きの扱いが確定したら、全採取・原環境準備を完了し、他枝影響を再取得する。30本以内を再確認し、開始前の一行連絡後に初めて適用する。以後は静的→対象build→v3b未説明0→引用/タグ→root。root成功で完了報告をコミットし停止する、という§11の停止点は未到達である。
