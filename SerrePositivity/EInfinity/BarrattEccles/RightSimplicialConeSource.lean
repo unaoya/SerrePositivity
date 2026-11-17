@@ -33,7 +33,7 @@ variable (A : Type u) [CommRing A] (K : Type u) [SmallCategory K]
 使われ方：錐関手へ移す前の反対射表示の自然性。 -/
 lemma rightSimplicialHomDiagramIso_source {Y Z : (operad A).Algebra} (f : Y ⟶ Z)
     (F : K ⥤ (operad A).Algebra) :
-    (SerrePositivity.EInfinity.HomotopyWeight.doubleOpWeights K).map (rightSimplicialHomSourceMap A K f F) ≫
+    (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.doubleOpWeights K).map (rightSimplicialHomSourceMap A K f F) ≫
         (rightSimplicialHomDiagramIso A K Y F).hom =
       (rightSimplicialHomDiagramIso A K Z F).hom ≫
         (FrameWeightRealization.hom Kᵒᵖ (rightFrameDiagram A K F)).map
@@ -47,19 +47,19 @@ lemma rightSimplicialHomDiagramIso_source {Y Z : (operad A).Algebra} (f : Y ⟶ 
 使われ方：混合 Hom から具体的な右錐へ始域自然性を移す。 -/
 lemma rightSimplicialConeIso_source {Y Z : (operad A).Algebra} (f : Y ⟶ Z)
     (F : K ⥤ (operad A).Algebra) :
-    (WeightedCones.coneSpace K (HomotopyWeight.weight K)).map
+    (WeightedCones.coneSpace K (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K)).map
         (rightSimplicialHomSourceMap A K f F) ≫ (rightSimplicialConeIso A K Y F).hom =
       (rightSimplicialConeIso A K Z F).hom ≫ (framedLimitConeSourceMap A K f).app F := by
-  let T := WeightedCones.coneSpace K (HomotopyWeight.weight K)
-  let D := WeightedCones.coneSpace Kᵒᵖᵒᵖ (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K)
-  let e := HomotopyWeight.coneSpaceReindexIso (opOpEquivalence K) (HomotopyWeight.weight K)
+  let T := WeightedCones.coneSpace K (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K)
+  let D := WeightedCones.coneSpace Kᵒᵖᵒᵖ (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.framedLimitWeight K)
+  let e := _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.coneSpaceReindexIso (opOpEquivalence K) (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K)
   let m := rightSimplicialHomSourceMap A K f F
   let d := (FrameWeightRealization.hom Kᵒᵖ (rightFrameDiagram A K F)).map
     ((framedLimitProbeFunctor A).map f).op
   have hn : T.map m ≫ (e.app (rightSimplicialHomDiagram A K Y F)).inv =
-      (e.app (rightSimplicialHomDiagram A K Z F)).inv ≫ D.map ((SerrePositivity.EInfinity.HomotopyWeight.doubleOpWeights K).map m) :=
+      (e.app (rightSimplicialHomDiagram A K Z F)).inv ≫ D.map ((_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.doubleOpWeights K).map m) :=
     e.inv.naturality m
-  have hm : D.map ((SerrePositivity.EInfinity.HomotopyWeight.doubleOpWeights K).map m) ≫
+  have hm : D.map ((_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.doubleOpWeights K).map m) ≫
         D.map (rightSimplicialHomDiagramIso A K Y F).hom =
       D.map (rightSimplicialHomDiagramIso A K Z F).hom ≫ D.map d := by
     rw [← D.map_comp, rightSimplicialHomDiagramIso_source, D.map_comp]

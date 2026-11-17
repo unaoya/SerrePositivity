@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.MiddleBackwardRebuildMaps
 public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.MiddleBackwardFamilyColumnProperty
-public import SerrePositivity.EInfinity.FrameHom.FullyFaithfulNerveRetraction
-public import SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FullyFaithfulNerveRetraction
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection
 public import Mathlib.CategoryTheory.ObjectProperty.FullSubcategory
 
 /-!
@@ -21,7 +21,7 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 namespace SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardTrivialCofibration
-open CategoryTheory CategoryTheory.Limits HomotopicalAlgebra
+open CategoryTheory CategoryTheory.Limits _root_.HomotopicalAlgebra
 open _root_.SerrePositivity.SimplicialModel
 
 variable {C : Type u} [Category.{v} C] [ModelCategory C] {n m : ℕ} {X Y : C}
@@ -50,12 +50,12 @@ include cof in
 lemma inclusion_localized_isIso :
     IsIso (AnodyneHomotopy.anodyneQ.map
       (nerveMap (inclusion (C := C) (n := n) (m := m) (X := X) (Y := Y)))) :=
-  _root_.SerrePositivity.EInfinity.FrameHom.FullyFaithfulNerveRetraction.of_counit inclusion (replacement cof) (counit cof)
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FullyFaithfulNerveRetraction.of_counit inclusion (replacement cof) (counit cof)
 
 include cof in
 lemma inclusion_isWeakHomotopyEquivalence :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
       (nerveMap (inclusion (C := C) (n := n) (m := m) (X := X) (Y := Y))) :=
-  _root_.SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _ (inclusion_localized_isIso cof)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.isWeakHomotopyEquivalence _ (inclusion_localized_isIso cof)
 
 end SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardTrivialCofibration

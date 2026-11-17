@@ -17,7 +17,7 @@ universe u
 namespace SerrePositivity.EInfinity.PowerOperation
 open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded
-open SerrePositivity.EInfinity.FrameHom SerrePositivity.EInfinity.SimplicialLocalization
+open _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison
 open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories
 open FullFaithfulAndEssentiallySurjectiveFunctors (pinchedHomMap)
@@ -45,7 +45,7 @@ lemma complexRelativeElementDerivedPinchedMap_roof_arrow :
       (complexRelativeElementDerivedPinchedMap A X Y ≫
         MorphismSpaces.pinchedHomToIntervalMappingSpace _ _)) =
       Arrow.mk ((complexRelativeElementDerivedAugmentationIso A X Y).inv ≫
-        NerveColumn.hom (complexRelativeDerivedSource A)
+        _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveColumn.hom (complexRelativeDerivedSource A)
           (complexRelativeElementEvaluation A X Y)) := by
   let V := complexRelativeElementColumn A X Y
   let p := complexRelativeElementAugmentation A X Y
@@ -58,7 +58,7 @@ lemma complexRelativeElementDerivedPinchedMap_roof_arrow :
     (functorIsoEvaluate e (ComposableArrows.mk₀ ((complexRelativeUp A).obj X)))
     (functorIsoEvaluate e (ComposableArrows.mk₀ ((complexRelativeUp A).obj Y))) f
   have hn := nerveColumnRoofConjugation_arrow e V p
-    (RoofPrefix.postcomp_augmentation_invertible (complexRelativeCategory A) V p hp K)
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.postcomp_augmentation_invertible (complexRelativeCategory A) V p hp K)
     (complexRelativeElementDerivedAugmentation_invertible A X Y) s f
     (complexRelativeElementPinchedFamily_comparison_arrow A X Y)
   exact (congrArg Arrow.mk ht).trans hn

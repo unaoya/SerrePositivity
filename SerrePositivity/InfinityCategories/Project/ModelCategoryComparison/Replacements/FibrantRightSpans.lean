@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Frames.RightFrameReplacement
-public import SerrePositivity.EInfinity.FrameHom.FullyFaithfulNerveRetraction
-public import SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FullyFaithfulNerveRetraction
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection
 
 /-!
 概要：一般モデル圏の特殊三本矢を fibrant な右終域の全図式へ制限できる。
@@ -16,7 +16,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.FibrantRightSpans
-open CategoryTheory HomotopicalAlgebra Opposite
+open CategoryTheory _root_.HomotopicalAlgebra Opposite
 open _root_.SerrePositivity.Reedy _root_.SerrePositivity.SimplicialModel
 open _root_.SerrePositivity.InfinityCategories
 variable {C : Type u} [Category.{v} C] [ModelCategory C]
@@ -115,7 +115,7 @@ include r in
 規約：全対象の fibrancy を仮定しない。使われ方：一般モデルの frame 比較。 -/
 lemma inclusion_localized_isIso :
     IsIso (AnodyneHomotopy.anodyneQ.map (nerveMap (inclusion X Y))) :=
-  _root_.SerrePositivity.EInfinity.FrameHom.FullyFaithfulNerveRetraction.of_unit (inclusion X Y) (retraction r X Y) (unit r X Y)
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FullyFaithfulNerveRetraction.of_unit (inclusion X Y) (retraction r X Y) (unit r X Y)
 
 include r in
 /-- 概要：同じ fibrant 制限の包含の nerve 自身は弱ホモトピー同値。
@@ -123,6 +123,6 @@ include r in
 規約：単体集合モデルを使わない。使われ方：元の三本矢との弱比較。 -/
 lemma inclusion_isWeakHomotopyEquivalence :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (nerveMap (inclusion X Y)) :=
-  _root_.SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _ (inclusion_localized_isIso r X Y)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.isWeakHomotopyEquivalence _ (inclusion_localized_isIso r X Y)
 
 end SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.FibrantRightSpans

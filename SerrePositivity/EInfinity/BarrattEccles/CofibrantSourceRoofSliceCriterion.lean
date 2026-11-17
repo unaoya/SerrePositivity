@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantSourceRoofSliceFibration
-public import SerrePositivity.EInfinity.FrameHom.FrameRoofSliceWeakContractibility
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameRoofSliceWeakContractibility
 
 /-!
 # 元の積単体からの全錐比較による屋根 cofinality の還元
@@ -19,7 +19,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory Limits Opposite SSet
-open SerrePositivity.EInfinity.FrameHom.FrameArrows SerrePositivity.InfinityCategories
+open _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows SerrePositivity.InfinityCategories
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : CofibrantAlgebra A)
   (b : (cofibrantSourceRoofTarget A X Y) _⦋0⦌)
@@ -28,9 +28,9 @@ def cofibrantSourceRoofProductCornerMap : nerve (cofibrantSourceRoofProductEleme
     _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.sliceOverCorner (SSet.yonedaEquiv.symm b) (cofibrantSourceRoofProjection A X Y) :=
   (cofibrantSourceRoofProductIso A X Y b).hom ≫
     (cofibrantSourceRoofDegreeTransportIso A X Y b).inv ≫
-      roofQuillenDegreeCornerMap (cofibrantDKSourceFrame A X)
+      _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofQuillenDegreeCornerMap (cofibrantDKSourceFrame A X)
         (show (cofibrantAlgebraRelativeCategory A).category from Y)
-        (SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
         b (cofibrantSourceFrameRoofMap A X Y)
 
 lemma cofibrantSourceRoofSlice_weaklyContractible_of_productCorner_weak
@@ -40,9 +40,9 @@ lemma cofibrantSourceRoofSlice_weaklyContractible_of_productCorner_weak
   let e := cofibrantSourceRoofProductIso A X Y b ≪≫
     (cofibrantSourceRoofDegreeTransportIso A X Y b).symm
   have he := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso e).isWeakHomotopyEquivalence
-  apply roofQuillenSlice_weaklyContractible_of_corner_weak (cofibrantDKSourceFrame A X)
+  apply _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofQuillenSlice_weaklyContractible_of_corner_weak (cofibrantDKSourceFrame A X)
     (show (cofibrantAlgebraRelativeCategory A).category from Y)
-    (SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
     b (cofibrantSourceFrameRoofMap A X Y)
   exact he.cancel_left h
 

@@ -2045,89 +2045,89 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.BarrattEccles.cotensorCarrierIso,
       `SerrePositivity.EInfinity.BarrattEccles.cotensorCarrierIso_naturality,
       `SerrePositivity.EInfinity.BarrattEccles.rightFrameDiagram,
-      `SerrePositivity.EInfinity.HomotopyWeight.doubleOpWeights,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.doubleOpWeights,
       `SerrePositivity.EInfinity.BarrattEccles.weightedCotensor,
       `SerrePositivity.EInfinity.BarrattEccles.weightedCotensorHomEquiv,
       `SerrePositivity.EInfinity.BarrattEccles.carrierRightFrameDiagram,
       `SerrePositivity.EInfinity.BarrattEccles.carrierWeightedCotensor,
       `SerrePositivity.EInfinity.BarrattEccles.weightedCotensorCarrierIso,
-      `SerrePositivity.EInfinity.HomotopyWeight.free,
-      `SerrePositivity.EInfinity.HomotopyWeight.evaluation,
-      `SerrePositivity.EInfinity.HomotopyWeight.adjunction,
-      `SerrePositivity.EInfinity.HomotopyWeight.boundaries,
-      `SerrePositivity.EInfinity.HomotopyWeight.boundaries_smallObjectArgument,
-      `SerrePositivity.EInfinity.HomotopyWeight.boundaries_rlp,
-      `SerrePositivity.EInfinity.HomotopyWeight.point,
-      `SerrePositivity.EInfinity.HomotopyWeight.pointFactorization,
-      `SerrePositivity.EInfinity.HomotopyWeight.weight,
-      `SerrePositivity.EInfinity.HomotopyWeight.comparison,
-      `SerrePositivity.EInfinity.HomotopyWeight.weight_cofibrant,
-      `SerrePositivity.EInfinity.HomotopyWeight.comparison_rlp,
-      `SerrePositivity.EInfinity.HomotopyWeight.reindex_cofibration,
-      `SerrePositivity.EInfinity.HomotopyWeight.realization_map_cofibration,
-      `SerrePositivity.EInfinity.HomotopyWeight.coneSpace_map_boundary_rlp,
-      `SerrePositivity.EInfinity.HomotopyWeight.coneSpace_map_fibration,
-      `SerrePositivity.EInfinity.HomotopyWeight.coneSpace_kanComplex,
-      `SerrePositivity.EInfinity.HomotopyWeight.coneSpace_map_isIso_of_boundary_rlp,
-      `SerrePositivity.EInfinity.HomotopyWeight.frameCone,
-      `SerrePositivity.EInfinity.HomotopyWeight.frameCone_target_boundary_rlp,
-      `SerrePositivity.EInfinity.HomotopyWeight.frameCone_kanComplex,
-      `SerrePositivity.EInfinity.HomotopyWeight.frameCone_source_boundary_rlp,
-      `SerrePositivity.EInfinity.HomotopyWeight.frameCone_target_weakEquivalence_isIso,
-      `SerrePositivity.EInfinity.HomotopyWeight.frameCone_source_trivialCofibration_isIso,
-      `SerrePositivity.EInfinity.HomotopyWeight.frameCone_source_weakEquivalence_isIso,
-      `SerrePositivity.EInfinity.HomotopyWeight.tensorRealization,
-      `SerrePositivity.EInfinity.HomotopyWeight.tensorRealizationAdjunction,
-      `SerrePositivity.EInfinity.HomotopyWeight.tensorRealization_map_mono,
-      `SerrePositivity.EInfinity.HomotopyWeight.tensorRealization_map_anodyne,
-      `SerrePositivity.EInfinity.HomotopyWeight.tensorFrame,
-      `SerrePositivity.EInfinity.HomotopyWeight.tensorFrame_reedyCofibrant,
-      `SerrePositivity.EInfinity.HomotopyWeight.tensorFrame_homotopicallyConstant,
-      `SerrePositivity.EInfinity.HomotopyWeight.tensorFrameHomIso,
-      `SerrePositivity.EInfinity.HomotopyWeight.unitTensorWeightIso,
-      `SerrePositivity.EInfinity.HomotopyWeight.zeroTensorWeightIso,
-      `SerrePositivity.EInfinity.HomotopyWeight.tensorFrameZeroIso,
-      `SerrePositivity.EInfinity.HomotopyWeight.frameConePiZeroLocalizationEquiv]
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.free,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.evaluation,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.adjunction,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.boundaries,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.boundaries_smallObjectArgument,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.boundaries_rlp,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.point,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointFactorization,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.comparison,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight_cofibrant,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.comparison_rlp,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.reindex_cofibration,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.realization_map_cofibration,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.coneSpace_map_boundary_rlp,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.coneSpace_map_fibration,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.coneSpace_kanComplex,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.coneSpace_map_isIso_of_boundary_rlp,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.frameCone,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.frameCone_target_boundary_rlp,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.frameCone_kanComplex,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.frameCone_source_boundary_rlp,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.frameCone_target_weakEquivalence_isIso,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.frameCone_source_trivialCofibration_isIso,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.frameCone_source_weakEquivalence_isIso,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.tensorRealization,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.tensorRealizationAdjunction,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.tensorRealization_map_mono,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.tensorRealization_map_anodyne,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.tensorFrame,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.tensorFrame_reedyCofibrant,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.tensorFrame_homotopicallyConstant,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.tensorFrameHomIso,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.unitTensorWeightIso,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.zeroTensorWeightIso,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.tensorFrameZeroIso,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.frameConePiZeroLocalizationEquiv]
 
 @[noinline] private def e2RequiredBatch16 : Array Lean.Name :=
-  #[`SerrePositivity.EInfinity.HomotopyWeight.frameConePiZeroLocalizationEquiv_mk,
-      `SerrePositivity.EInfinity.HomotopyWeight.tensorRealization_homEquiv_frame_naturality,
-      `SerrePositivity.EInfinity.HomotopyWeight.tensorFrameHomIso_source_naturality,
-      `SerrePositivity.EInfinity.HomotopyWeight.frameConePiZeroLocalizationEquiv_source,
-      `SerrePositivity.EInfinity.HomotopyWeight.realization_map_frame_weakEquivalence,
+  #[`SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.frameConePiZeroLocalizationEquiv_mk,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.tensorRealization_homEquiv_frame_naturality,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.tensorFrameHomIso_source_naturality,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.frameConePiZeroLocalizationEquiv_source,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.realization_map_frame_weakEquivalence,
       `SerrePositivity.EInfinity.FrameRealizationLifting.map_boundary_rlp_weakEquivalence,
-      `SerrePositivity.EInfinity.HomotopyWeight.pointwiseRealization,
-      `SerrePositivity.EInfinity.HomotopyWeight.pointwiseFrameHom,
-      `SerrePositivity.EInfinity.HomotopyWeight.pointwiseRealizationAdjunction,
-      `SerrePositivity.EInfinity.HomotopyWeight.pointwiseRealization_map_cofibration,
-      `SerrePositivity.EInfinity.HomotopyWeight.pointwiseRealization_isCofibrant,
-      `SerrePositivity.EInfinity.HomotopyWeight.liftedZeroPointIso,
-      `SerrePositivity.EInfinity.HomotopyWeight.realizationPointIso,
-      `SerrePositivity.EInfinity.HomotopyWeight.pointwiseFrameComparison,
-      `SerrePositivity.EInfinity.HomotopyWeight.pointwiseFrameComparison_weakEquivalence,
-      `SerrePositivity.EInfinity.HomotopyWeight.realizationPointIso_naturality,
-      `SerrePositivity.EInfinity.HomotopyWeight.pointwiseFrameComparison_app,
-      `SerrePositivity.EInfinity.HomotopyWeight.pointwiseFrameComparison_naturality,
-      `SerrePositivity.EInfinity.HomotopyWeight.pointwiseTensorRealization,
-      `SerrePositivity.EInfinity.HomotopyWeight.pointwiseWeightedHom,
-      `SerrePositivity.EInfinity.HomotopyWeight.pointwiseTensorAdjunction,
-      `SerrePositivity.EInfinity.HomotopyWeight.pointwiseTensorFrame,
-      `SerrePositivity.EInfinity.HomotopyWeight.pointwiseTensorFrameHomIso,
-      `SerrePositivity.EInfinity.HomotopyWeight.pointwiseTensorFrameZeroIso,
-      `SerrePositivity.EInfinity.HomotopyWeight.pointwiseTensorRealization_map_mono,
-      `SerrePositivity.EInfinity.HomotopyWeight.pointwiseTensorFrame_reedyCofibrant,
-      `SerrePositivity.EInfinity.HomotopyWeight.pointwiseTensorRealization_map_anodyne,
-      `SerrePositivity.EInfinity.HomotopyWeight.pointwiseTensorFrame_homotopicallyConstant,
-      `SerrePositivity.EInfinity.HomotopyWeight.pointwiseWeightedHomPiZeroEquiv,
-      `SerrePositivity.EInfinity.HomotopyWeight.pointwiseWeightedHomPiZeroEquiv_mk,
-      `SerrePositivity.EInfinity.HomotopyWeight.pointwiseWeightedHomPiZeroEquiv_target,
-      `SerrePositivity.EInfinity.HomotopyWeight.comparison_mono_rlp,
-      `SerrePositivity.EInfinity.HomotopyWeight.weight_kanComplex,
-      `SerrePositivity.EInfinity.HomotopyWeight.valueSection,
-      `SerrePositivity.EInfinity.HomotopyWeight.valueSection_comparison,
-      `SerrePositivity.EInfinity.HomotopyWeight.valueContraction,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseRealization,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseFrameHom,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseRealizationAdjunction,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseRealization_map_cofibration,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseRealization_isCofibrant,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.liftedZeroPointIso,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.realizationPointIso,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseFrameComparison,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseFrameComparison_weakEquivalence,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.realizationPointIso_naturality,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseFrameComparison_app,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseFrameComparison_naturality,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseTensorRealization,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseWeightedHom,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseTensorAdjunction,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseTensorFrame,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseTensorFrameHomIso,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseTensorFrameZeroIso,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseTensorRealization_map_mono,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseTensorFrame_reedyCofibrant,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseTensorRealization_map_anodyne,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseTensorFrame_homotopicallyConstant,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseWeightedHomPiZeroEquiv,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseWeightedHomPiZeroEquiv_mk,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseWeightedHomPiZeroEquiv_target,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.comparison_mono_rlp,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight_kanComplex,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.valueSection,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.valueSection_comparison,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.valueContraction,
       `SerrePositivity.EInfinity.BarrattEccles.weightedCotensor_map_fibration,
-      `SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.framedLimitWeight,
       `SerrePositivity.EInfinity.BarrattEccles.framedLimitOpFunctor,
       `SerrePositivity.EInfinity.BarrattEccles.framedLimitFunctor,
       `SerrePositivity.EInfinity.BarrattEccles.framedLimitFunctor_obj,
@@ -2144,7 +2144,7 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.BarrattEccles.limitComparisonNatTrans,
       `SerrePositivity.EInfinity.BarrattEccles.framedLimitProbe,
       `SerrePositivity.EInfinity.BarrattEccles.framedLimitConeSpace,
-      `SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight_cofibrant,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.framedLimitWeight_cofibrant,
       `SerrePositivity.EInfinity.BarrattEccles.framedLimitFunctor_map_quasiIso,
       `SerrePositivity.EInfinity.BarrattEccles.constantDiagramReplacement,
       `SerrePositivity.EInfinity.BarrattEccles.constantDiagramComparison,
@@ -2198,29 +2198,29 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.comparison_left_isIso,
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.comparison_right_isIso,
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.frameChoiceIso,
-      `SerrePositivity.EInfinity.HomotopyWeight.map_isIso_of_pointwiseKan,
-      `SerrePositivity.EInfinity.HomotopyWeight.coneSpace_map_isIso_of_pointwiseKan,
-      `SerrePositivity.EInfinity.HomotopyWeight.kanReplacement_map_isIso,
-      `SerrePositivity.EInfinity.HomotopyWeight.kanDiagram,
-      `SerrePositivity.EInfinity.HomotopyWeight.kanDiagramUnit,
-      `SerrePositivity.EInfinity.HomotopyWeight.kanDiagramMap,
-      `SerrePositivity.EInfinity.HomotopyWeight.kanDiagram_kanComplex,
-      `SerrePositivity.EInfinity.HomotopyWeight.coneSpace_kanDiagramUnit_isIso,
-      `SerrePositivity.EInfinity.HomotopyWeight.coneSpace_kanDiagramMap_isIso,
-      `SerrePositivity.EInfinity.HomotopyWeight.coneComparisonArrow,
-      `SerrePositivity.EInfinity.HomotopyWeight.coneComparisonArrow_isIso,
-      `SerrePositivity.EInfinity.HomotopyWeight.kanConeComparisonIso,
-      `SerrePositivity.EInfinity.HomotopyWeight.kanConeComparisonIso_fac,
-      `SerrePositivity.EInfinity.HomotopyWeight.coneComparisonArrow_naturality,
-      `SerrePositivity.EInfinity.HomotopyWeight.kanConeComparisonIso_naturality,
-      `SerrePositivity.EInfinity.FrameHom.MixedFrame.mixedFunctor,
-      `SerrePositivity.EInfinity.FrameHom.MixedFrame.rightHomFunctor,
-      `SerrePositivity.EInfinity.FrameHom.MixedFrame.leftComparison,
-      `SerrePositivity.EInfinity.FrameHom.MixedFrame.rightComparison,
-      `SerrePositivity.EInfinity.FrameHom.MixedFrame.rightHomIso]
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.map_isIso_of_pointwiseKan,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.coneSpace_map_isIso_of_pointwiseKan,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.kanReplacement_map_isIso,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.kanDiagram,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.kanDiagramUnit,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.kanDiagramMap,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.kanDiagram_kanComplex,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.coneSpace_kanDiagramUnit_isIso,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.coneSpace_kanDiagramMap_isIso,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.coneComparisonArrow,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.coneComparisonArrow_isIso,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.kanConeComparisonIso,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.kanConeComparisonIso_fac,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.coneComparisonArrow_naturality,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.kanConeComparisonIso_naturality,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedFrame.mixedFunctor,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedFrame.rightHomFunctor,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedFrame.leftComparison,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedFrame.rightComparison,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedFrame.rightHomIso]
 
 @[noinline] private def e2RequiredBatch17 : Array Lean.Name :=
-  #[`SerrePositivity.EInfinity.FrameHom.MixedFrame.flipIso,
+  #[`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedFrame.flipIso,
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.fibrantOp_of_cofibrant,
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.leftComparison_isIso,
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightComparison_isIso,
@@ -2234,8 +2234,8 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MixedFrameDiagrams.leftDiagramComparison_isIso,
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MixedFrameDiagrams.rightDiagramComparison_isIso,
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.mixedConeComparisonIso,
-      `SerrePositivity.EInfinity.HomotopyWeight.coneSpaceReindexAuxIso,
-      `SerrePositivity.EInfinity.HomotopyWeight.coneSpaceReindexIso,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.coneSpaceReindexAuxIso,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.coneSpaceReindexIso,
       `SerrePositivity.EInfinity.BarrattEccles.rightSimplicialFrameFamily,
       `SerrePositivity.EInfinity.BarrattEccles.rightSimplicialFrameAugmentation,
       `SerrePositivity.EInfinity.BarrattEccles.rightSimplicialFrameAugmentation_quasiIso,
@@ -2266,10 +2266,10 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.BarrattEccles.framedLimitProbeFunctor_obj,
       `SerrePositivity.EInfinity.BarrattEccles.framedLimitProbeComparisonNatTrans,
       `SerrePositivity.EInfinity.BarrattEccles.framedLimitProbeFunctor_map_quasiIso,
-      `SerrePositivity.EInfinity.FrameHom.MixedFrame.mixedSourceMap,
-      `SerrePositivity.EInfinity.FrameHom.MixedFrame.rightSourceMap,
-      `SerrePositivity.EInfinity.FrameHom.MixedFrame.leftDiagramComparison_source,
-      `SerrePositivity.EInfinity.FrameHom.MixedFrame.rightDiagramComparison_source,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedFrame.mixedSourceMap,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedFrame.rightSourceMap,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedFrame.leftDiagramComparison_source,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedFrame.rightDiagramComparison_source,
       `SerrePositivity.EInfinity.BarrattEccles.framedLimitConeBifunctor,
       `SerrePositivity.EInfinity.BarrattEccles.framedLimitConeBifunctor_obj,
       `SerrePositivity.EInfinity.BarrattEccles.framedLimitConeSourceMap,
@@ -2282,15 +2282,15 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.BarrattEccles.constantDiagramSourceMap,
       `SerrePositivity.EInfinity.BarrattEccles.constantDiagramSourceMap_app,
       `SerrePositivity.EInfinity.BarrattEccles.framedLimitProbeLocalizedIso,
-      `SerrePositivity.EInfinity.HomotopyWeight.frameConePiZeroLocalizationEquiv_target,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.frameConePiZeroLocalizationEquiv_target,
       `SerrePositivity.EInfinity.BarrattEccles.sourceRightConeComparisonIso_source,
       `SerrePositivity.EInfinity.BarrattEccles.sourceRightConeComparisonIso_source_inv,
       `SerrePositivity.EInfinity.BarrattEccles.framedLimitHomPiZeroEquiv_source,
-      `SerrePositivity.EInfinity.FrameHom.realizationHomEquiv_app,
-      `SerrePositivity.EInfinity.FrameHom.realizationHomEquiv_source,
-      `SerrePositivity.EInfinity.HomotopyWeight.pointwiseRealization_homEquiv_source,
-      `SerrePositivity.EInfinity.HomotopyWeight.pointwiseTensorAdjunction_source,
-      `SerrePositivity.EInfinity.HomotopyWeight.pointwiseTensorFrameHomIso_source,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.realizationHomEquiv_app,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.realizationHomEquiv_source,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseRealization_homEquiv_source,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseTensorAdjunction_source,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseTensorFrameHomIso_source,
       `SerrePositivity.EInfinity.BarrattEccles.constantDiagramFrameHomIso_source,
       `SerrePositivity.EInfinity.BarrattEccles.constantDiagramSourcePiZeroEquiv_source,
       `SerrePositivity.EInfinity.BarrattEccles.constantProbeLocalizedNatIso,
@@ -2318,17 +2318,17 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.BarrattEccles.framedLimitAdjunction,
       `SerrePositivity.EInfinity.BarrattEccles.framedLimitAdjunction_homEquiv,
       `SerrePositivity.EInfinity.BarrattEccles.framedLimitAdjunction_homEquiv_comparison,
-      `SerrePositivity.EInfinity.HomotopyWeight.conePoint,
-      `SerrePositivity.EInfinity.HomotopyWeight.coneClass,
-      `SerrePositivity.EInfinity.HomotopyWeight.conePoint_map,
-      `SerrePositivity.EInfinity.HomotopyWeight.coneClass_map,
-      `SerrePositivity.EInfinity.HomotopyWeight.tensorFrameHomIso_point,
-      `SerrePositivity.EInfinity.HomotopyWeight.frameConePiZeroLocalizationEquiv_class,
-      `SerrePositivity.EInfinity.HomotopyWeight.realizationAugmentation_homEquiv,
-      `SerrePositivity.EInfinity.HomotopyWeight.pointwiseTensorFrameHomIso_point,
-      `SerrePositivity.EInfinity.HomotopyWeight.kanDiagramUnit_naturality,
-      `SerrePositivity.EInfinity.HomotopyWeight.coneComparisonArrow_class,
-      `SerrePositivity.EInfinity.HomotopyWeight.kanConeComparisonIso_class,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.conePoint,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.coneClass,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.conePoint_map,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.coneClass_map,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.tensorFrameHomIso_point,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.frameConePiZeroLocalizationEquiv_class,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.realizationAugmentation_homEquiv,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseTensorFrameHomIso_point,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.kanDiagramUnit_naturality,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.coneComparisonArrow_class,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.kanConeComparisonIso_class,
       `SerrePositivity.EInfinity.BarrattEccles.constantDiagramSourceClass_eq_coneClass,
       `SerrePositivity.EInfinity.BarrattEccles.constantDiagramHomEquiv_comparison_app,
       `SerrePositivity.EInfinity.BarrattEccles.framedLimitConeClass,
@@ -2337,9 +2337,9 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.BarrattEccles.strictSimplicialConeFamily_app,
       `SerrePositivity.EInfinity.BarrattEccles.strictConeFamilies_mixed,
       `SerrePositivity.EInfinity.BarrattEccles.sourceRightConeComparisonIso_strictClass,
-      `SerrePositivity.EInfinity.HomotopyWeight.coneSpaceReindexIso_homEquiv,
-      `SerrePositivity.EInfinity.HomotopyWeight.coneSpaceReindexIso_point,
-      `SerrePositivity.EInfinity.HomotopyWeight.coneSpaceReindexIso_class,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.coneSpaceReindexIso_homEquiv,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.coneSpaceReindexIso_point,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.coneSpaceReindexIso_class,
       `SerrePositivity.EInfinity.BarrattEccles.rightSimplicialConeIso_coneClass,
       `SerrePositivity.EInfinity.BarrattEccles.sourceRightConeComparisonIso_coneClass,
       `SerrePositivity.EInfinity.BarrattEccles.framedLimitConePiZeroEquiv_coneClass,
@@ -2444,9 +2444,9 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.BarrattEccles.carrierFramedLimitConePiZeroEquiv,
       `SerrePositivity.EInfinity.BarrattEccles.carrierFramedLimitConePiZeroEquiv_target,
       `SerrePositivity.EInfinity.BarrattEccles.carrierFramedLimitDerivedHomEquiv,
-      `SerrePositivity.EInfinity.HomotopyWeight.realizationHomEquiv_app,
-      `SerrePositivity.EInfinity.HomotopyWeight.realizationHomEquiv_lan_source,
-      `SerrePositivity.EInfinity.HomotopyWeight.realizationMap_eq_lan,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.realizationHomEquiv_app,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.realizationHomEquiv_lan_source,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.realizationMap_eq_lan,
       `SerrePositivity.EInfinity.BarrattEccles.carrierFramedLimitOpFunctor,
       `SerrePositivity.EInfinity.BarrattEccles.carrierFramedLimitFunctor,
       `SerrePositivity.EInfinity.BarrattEccles.framedLimitCarrierIso_naturality,
@@ -2497,7 +2497,7 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.ComplexLimits.rightFrame_cofibrant,
       `SerrePositivity.EInfinity.ComplexLimits.weightedCotensorHomEquiv,
       `SerrePositivity.EInfinity.ComplexLimits.framedLimitFunctor,
-      `SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight_cofibrant,
+      `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.framedLimitWeight_cofibrant,
       `SerrePositivity.EInfinity.ComplexLimits.coneToFramedLimit,
       `SerrePositivity.EInfinity.ComplexLimits.limitComparisonNatTrans,
       `SerrePositivity.EInfinity.ComplexLimits.framedLimitFunctor_map_quasiIso,
@@ -2527,48 +2527,48 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.BarrattEccles.complexLocalizationNerve_quasicategory,
       `SerrePositivity.EInfinity.BarrattEccles.cAlgForgetLocalization,
       `SerrePositivity.EInfinity.BarrattEccles.cAlgForgetLocalization_vertex,
-      `SerrePositivity.EInfinity.FrameHom.ComonadResolution.powerMap,
-      `SerrePositivity.EInfinity.FrameHom.ComonadResolution.powerMap_id,
-      `SerrePositivity.EInfinity.FrameHom.ComonadResolution.powerMap_comp,
-      `SerrePositivity.EInfinity.FrameHom.ComonadResolution.face_naturality,
-      `SerrePositivity.EInfinity.FrameHom.ComonadResolution.degeneracy_naturality,
-      `SerrePositivity.EInfinity.FrameHom.ComonadResolution.augmentation_naturality,
-      `SerrePositivity.EInfinity.FrameHom.ComonadResolution.oppositeMap_naturality,
-      `SerrePositivity.EInfinity.FrameHom.ComonadResolution.oppositeMap,
-      `SerrePositivity.EInfinity.FrameHom.ComonadResolution.presentationMap,
-      `SerrePositivity.EInfinity.FrameHom.ComonadResolution.resolutionMap,
-      `SerrePositivity.EInfinity.FrameHom.ComonadResolution.resolutionMap_app,
-      `SerrePositivity.EInfinity.FrameHom.ComonadResolution.resolutionMap_id,
-      `SerrePositivity.EInfinity.FrameHom.ComonadResolution.resolutionMap_comp,
-      `SerrePositivity.EInfinity.FrameHom.ComonadResolution.resolutionMap_augmentation,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationHomEdgeComposition,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationComponentsComposition,
-      `SerrePositivity.EInfinity.SimplicialLocalization.LocalizationComponents,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationComponentsCategory,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationComponentsAugmentation,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizedFreeResolutionAugmentation_object,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationHomConstant,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationHomAugmentation,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationHomAugmentation_identity,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationHomAugmentation_composition,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationHomAugmentation_edge,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationHomPiZeroToHom,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationHomPiZeroToHom_mk,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationHomMap_id,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationHomMap_comp,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationEnrichedMap_id,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationEnrichedMap_comp,
-      `SerrePositivity.EInfinity.SimplicialLocalization.kanLocalizationEnrichedMap_id,
-      `SerrePositivity.EInfinity.SimplicialLocalization.kanLocalizationEnrichedMap_comp,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationHomKanUnit_naturality,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationNerveMap_id,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationNerveMap_comp,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationNerveFunctor,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizedFreeResolutionObject_zero,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationArrowZero,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationArrowClass,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationHomAugmentation_arrow,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationComponentsAugmentation_arrow,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ComonadResolution.powerMap,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ComonadResolution.powerMap_id,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ComonadResolution.powerMap_comp,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ComonadResolution.face_naturality,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ComonadResolution.degeneracy_naturality,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ComonadResolution.augmentation_naturality,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ComonadResolution.oppositeMap_naturality,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ComonadResolution.oppositeMap,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ComonadResolution.presentationMap,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ComonadResolution.resolutionMap,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ComonadResolution.resolutionMap_app,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ComonadResolution.resolutionMap_id,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ComonadResolution.resolutionMap_comp,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ComonadResolution.resolutionMap_augmentation,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHomEdgeComposition,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationComponentsComposition,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.LocalizationComponents,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationComponentsCategory,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationComponentsAugmentation,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizedFreeResolutionAugmentation_object,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHomConstant,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHomAugmentation,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHomAugmentation_identity,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHomAugmentation_composition,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHomAugmentation_edge,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHomPiZeroToHom,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHomPiZeroToHom_mk,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHomMap_id,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHomMap_comp,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationEnrichedMap_id,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationEnrichedMap_comp,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanLocalizationEnrichedMap_id,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanLocalizationEnrichedMap_comp,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHomKanUnit_naturality,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap_id,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap_comp,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveFunctor,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizedFreeResolutionObject_zero,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationArrowZero,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationArrowClass,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHomAugmentation_arrow,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationComponentsAugmentation_arrow,
       `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraDKObject,
       `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraDKPiZeroEquiv,
       `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraDKPiZeroEquiv_class,
@@ -2582,44 +2582,44 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ULiftRelativeLocalization.equivalence,
       `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ULiftRelativeLocalization.homEquiv,
       `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ULiftRelativeLocalization.homEquiv_map,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationZeroHom_augmentation,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationComponentsLift_augmentation_zero,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationComponentsAugmentation_comp_lift,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationComponentsEquivalence,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationComponentsQ_isLocalization,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationHomPiZeroEquiv,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationHomPiZeroEquiv_arrow,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationComponentsQ_inverts,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationComponentsLift,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationComponentsLift_fac,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationComponentsQ_comp_augmentation,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationComponentsLift_comp_augmentation,
-      `SerrePositivity.EInfinity.SimplicialLocalization.strictLocalizationCounit_comp_componentsLift,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationHomKanUnitPiZeroEquiv,
-      `SerrePositivity.EInfinity.SimplicialLocalization.kanLocalizationHomPiZeroEquiv,
-      `SerrePositivity.EInfinity.SimplicialLocalization.kanLocalizationHomPiZeroEquiv_arrow,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationResolutionHom_delta_zero,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationResolutionHom_delta_one,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionGeneratorObject,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionGeneratorObject_augmentation,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizedFreeResolutionObject_generator,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationResolutionHom,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationResolutionHom_id,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationResolutionHom_comp,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationResolutionHom_zero_arrow,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationResolutionWordEdge]
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationZeroHom_augmentation,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationComponentsLift_augmentation_zero,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationComponentsAugmentation_comp_lift,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationComponentsEquivalence,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationComponentsQ_isLocalization,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHomPiZeroEquiv,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHomPiZeroEquiv_arrow,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationComponentsQ_inverts,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationComponentsLift,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationComponentsLift_fac,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationComponentsQ_comp_augmentation,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationComponentsLift_comp_augmentation,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.strictLocalizationCounit_comp_componentsLift,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHomKanUnitPiZeroEquiv,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanLocalizationHomPiZeroEquiv,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanLocalizationHomPiZeroEquiv_arrow,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationResolutionHom_delta_zero,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationResolutionHom_delta_one,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorObject,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorObject_augmentation,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizedFreeResolutionObject_generator,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationResolutionHom,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationResolutionHom_id,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationResolutionHom_comp,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationResolutionHom_zero_arrow,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationResolutionWordEdge]
 
 @[noinline] private def e2RequiredBatch20 : Array Lean.Name :=
-  #[`SerrePositivity.EInfinity.SimplicialLocalization.localizationResolutionWordClass,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationArrowClass_id,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationArrowClass_comp,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationComponentsQ,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationZeroHom,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationZeroHom_id,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationZeroHom_comp,
-      `SerrePositivity.EInfinity.SimplicialLocalization.zeroLevelComponentsFunctor,
-      `SerrePositivity.EInfinity.SimplicialLocalization.zeroLevelComponentsFunctor_arrow,
-      `SerrePositivity.EInfinity.SimplicialLocalization.zeroLevelComponentsFunctor_fac,
+  #[`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationResolutionWordClass,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationArrowClass_id,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationArrowClass_comp,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationComponentsQ,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationZeroHom,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationZeroHom_id,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationZeroHom_comp,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.zeroLevelComponentsFunctor,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.zeroLevelComponentsFunctor_arrow,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.zeroLevelComponentsFunctor_fac,
       `SerrePositivity.EInfinity.BarrattEccles.algebraSpecialHammock,
       `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceSpecialHammockFunctor,
       `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceSpecialHammockFunctor_left_quasiIso,
@@ -2633,10 +2633,10 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.WeakThreeArrow.leftInclusion,
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.WeakThreeArrow.left_weakEquivalence,
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.WeakThreeArrow.right_weakEquivalence,
-      `SerrePositivity.EInfinity.FrameHom.FullyFaithfulNerveRetraction.liftUnit,
-      `SerrePositivity.EInfinity.FrameHom.FullyFaithfulNerveRetraction.liftCounit,
-      `SerrePositivity.EInfinity.FrameHom.FullyFaithfulNerveRetraction.of_unit,
-      `SerrePositivity.EInfinity.FrameHom.FullyFaithfulNerveRetraction.of_counit,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FullyFaithfulNerveRetraction.liftUnit,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FullyFaithfulNerveRetraction.liftCounit,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FullyFaithfulNerveRetraction.of_unit,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FullyFaithfulNerveRetraction.of_counit,
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.ThreeArrowLeftReplacement.arrow,
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.ThreeArrowLeftReplacement.arrowMap,
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.ThreeArrowLeftReplacement.arrowMap_id,
@@ -2701,16 +2701,16 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceWeakThreeArrowNerveMap_isWeakHomotopyEquivalence,
       `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceWeakThreeArrowComparisonIso,
       `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceWeakThreeArrowComparisonIso_fac,
-      `SerrePositivity.EInfinity.FrameHom.SmallCommaGrothendieck.smallFunctor,
-      `SerrePositivity.EInfinity.FrameHom.SmallCommaGrothendieck.diagram,
-      `SerrePositivity.EInfinity.FrameHom.SmallCommaGrothendieck.commaDown,
-      `SerrePositivity.EInfinity.FrameHom.SmallCommaGrothendieck.commaUp,
-      `SerrePositivity.EInfinity.FrameHom.SmallCommaGrothendieck.commaDown_commaUp,
-      `SerrePositivity.EInfinity.FrameHom.SmallCommaGrothendieck.commaUp_commaDown,
-      `SerrePositivity.EInfinity.FrameHom.SmallCommaGrothendieck.commaEquivalence,
-      `SerrePositivity.EInfinity.FrameHom.SmallCommaGrothendieck.equivalence,
-      `SerrePositivity.EInfinity.FrameHom.SmallCommaGrothendieck.recoveryNerveMap,
-      `SerrePositivity.EInfinity.FrameHom.SmallCommaGrothendieck.recoveryNerveMap_localized_isIso,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.SmallCommaGrothendieck.smallFunctor,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.SmallCommaGrothendieck.diagram,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.SmallCommaGrothendieck.commaDown,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.SmallCommaGrothendieck.commaUp,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.SmallCommaGrothendieck.commaDown_commaUp,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.SmallCommaGrothendieck.commaUp_commaDown,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.SmallCommaGrothendieck.commaEquivalence,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.SmallCommaGrothendieck.equivalence,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.SmallCommaGrothendieck.recoveryNerveMap,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.SmallCommaGrothendieck.recoveryNerveMap_localized_isIso,
       `SerrePositivity.EInfinity.BarrattEccles.mappingSmallSpanRecoveryNerveMap,
       `SerrePositivity.EInfinity.BarrattEccles.mappingSmallSpanRecoveryNerveMap_middle,
       `SerrePositivity.EInfinity.BarrattEccles.mappingSmallSpanRecoveryNerveMap_localized_isIso,
@@ -2721,28 +2721,28 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceIndexAugmentation_isWeakHomotopyEquivalence,
       `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceSpecialHammockComparisonIso,
       `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceSpecialHammockComparisonIso_fac,
-      `SerrePositivity.EInfinity.FrameHom.Thomason.fiberNerveMap_localized_isIso,
-      `SerrePositivity.EInfinity.FrameHom.CosimplicialHomElements.toComma,
-      `SerrePositivity.EInfinity.FrameHom.CosimplicialHomElements.fromComma,
-      `SerrePositivity.EInfinity.FrameHom.CosimplicialHomElements.toComma_fromComma,
-      `SerrePositivity.EInfinity.FrameHom.CosimplicialHomElements.fromComma_toComma,
-      `SerrePositivity.EInfinity.FrameHom.CosimplicialHomElements.equivalence,
-      `SerrePositivity.EInfinity.FrameHom.CosimplicialHomElements.toComma_naturality,
-      `SerrePositivity.EInfinity.FrameHom.SimplexTerminalNerve.map_localized_isIso,
-      `SerrePositivity.EInfinity.FrameHom.CosimplicialHomElements.smallDiagram,
-      `SerrePositivity.EInfinity.FrameHom.CosimplicialHomElements.smallToComma,
-      `SerrePositivity.EInfinity.FrameHom.CosimplicialHomElements.smallFromComma,
-      `SerrePositivity.EInfinity.FrameHom.CosimplicialHomElements.smallToComma_smallFromComma,
-      `SerrePositivity.EInfinity.FrameHom.CosimplicialHomElements.smallFromComma_smallToComma,
-      `SerrePositivity.EInfinity.FrameHom.CosimplicialHomElements.smallEquivalence,
-      `SerrePositivity.EInfinity.FrameHom.CosimplicialHomElements.smallElementsMap,
-      `SerrePositivity.EInfinity.FrameHom.CosimplicialHomElements.smallToComma_naturality,
-      `SerrePositivity.EInfinity.FrameHom.SmallNerve.functor]
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.fiberNerveMap_localized_isIso,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CosimplicialHomElements.toComma,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CosimplicialHomElements.fromComma,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CosimplicialHomElements.toComma_fromComma,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CosimplicialHomElements.fromComma_toComma,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CosimplicialHomElements.equivalence,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CosimplicialHomElements.toComma_naturality,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.SimplexTerminalNerve.map_localized_isIso,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CosimplicialHomElements.smallDiagram,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CosimplicialHomElements.smallToComma,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CosimplicialHomElements.smallFromComma,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CosimplicialHomElements.smallToComma_smallFromComma,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CosimplicialHomElements.smallFromComma_smallToComma,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CosimplicialHomElements.smallEquivalence,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CosimplicialHomElements.smallElementsMap,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CosimplicialHomElements.smallToComma_naturality,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.SmallNerve.functor]
 
 @[noinline] private def e2RequiredBatch21 : Array Lean.Name :=
-  #[`SerrePositivity.EInfinity.FrameHom.SmallNerve.naturality,
-      `SerrePositivity.EInfinity.FrameHom.SmallNerve.map_localized_isIso,
-      `SerrePositivity.EInfinity.FrameHom.CosimplicialHomElements.smallCommaMap_localized_isIso,
+  #[`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.SmallNerve.naturality,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.SmallNerve.map_localized_isIso,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CosimplicialHomElements.smallCommaMap_localized_isIso,
       `SerrePositivity.EInfinity.BarrattEccles.mappingSmallRightSpanInitial,
       `SerrePositivity.EInfinity.BarrattEccles.mappingSmallRightSpanInitial_isInitial,
       `SerrePositivity.EInfinity.BarrattEccles.mappingSmallResolutionRightDiagram_map_localized_isIso,
@@ -2761,77 +2761,77 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.transport,
       `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.transport_naturality,
       `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.transportComparison,
-      `SerrePositivity.EInfinity.FrameHom.Thomason.fiberIntoComma,
-      `SerrePositivity.EInfinity.FrameHom.Thomason.fiberIntoComma_transport,
-      `SerrePositivity.EInfinity.FrameHom.Thomason.transportUnit,
-      `SerrePositivity.EInfinity.FrameHom.Thomason.transport_localized_isIso,
-      `SerrePositivity.EInfinity.FrameHom.Thomason.commaTotalForget,
-      `SerrePositivity.EInfinity.FrameHom.Thomason.commaTotalTransport,
-      `SerrePositivity.EInfinity.FrameHom.Thomason.selfLiftIso,
-      `SerrePositivity.EInfinity.FrameHom.Thomason.commaSimplex_forget,
-      `SerrePositivity.EInfinity.FrameHom.Thomason.commaMap_forget,
-      `SerrePositivity.EInfinity.FrameHom.Thomason.commaMap_forget_localized_isIso,
-      `SerrePositivity.EInfinity.FrameHom.Thomason.map_localized_isIso,
-      `SerrePositivity.EInfinity.FrameHom.Thomason.map_isWeakHomotopyEquivalence,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.fiberIntoComma,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.fiberIntoComma_transport,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.transportUnit,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.transport_localized_isIso,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.commaTotalForget,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.commaTotalTransport,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.selfLiftIso,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.commaSimplex_forget,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.commaMap_forget,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.commaMap_forget_localized_isIso,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.map_localized_isIso,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.map_isWeakHomotopyEquivalence,
       `SerrePositivity.EInfinity.BarrattEccles.mappingResolutionThomason_localized_isIso,
       `SerrePositivity.EInfinity.BarrattEccles.mappingSpanThomason_localized_isIso,
-      `SerrePositivity.EInfinity.FrameHom.Thomason.nerveDiagram,
-      `SerrePositivity.EInfinity.FrameHom.Thomason.values,
-      `SerrePositivity.EInfinity.FrameHom.Thomason.simplex,
-      `SerrePositivity.EInfinity.FrameHom.Thomason.simplex_operator,
-      `SerrePositivity.EInfinity.FrameHom.Thomason.map,
-      `SerrePositivity.EInfinity.FrameHom.Thomason.fiberNerveMap,
-      `SerrePositivity.EInfinity.FrameHom.Thomason.valueInclusion_map,
-      `SerrePositivity.EInfinity.FrameHom.Thomason.simplex_base,
-      `SerrePositivity.EInfinity.FrameHom.Thomason.map_vertex,
-      `SerrePositivity.EInfinity.FrameHom.Thomason.nerveComparison,
-      `SerrePositivity.EInfinity.FrameHom.Thomason.simplex_naturality,
-      `SerrePositivity.EInfinity.FrameHom.Thomason.map_naturality,
-      `SerrePositivity.EInfinity.FrameHom.CommaNerve.values,
-      `SerrePositivity.EInfinity.FrameHom.CommaNerve.chain,
-      `SerrePositivity.EInfinity.FrameHom.CommaNerve.chain_map,
-      `SerrePositivity.EInfinity.FrameHom.CommaNerve.lift,
-      `SerrePositivity.EInfinity.FrameHom.CommaNerve.initial,
-      `SerrePositivity.EInfinity.FrameHom.CommaNerve.lift_reconstruct,
-      `SerrePositivity.EInfinity.FrameHom.CommaNerve.retraction,
-      `SerrePositivity.EInfinity.FrameHom.CommaNerve.contraction,
-      `SerrePositivity.EInfinity.FrameHom.CommaNerve.projection,
-      `SerrePositivity.EInfinity.FrameHom.CommaNerve.inclusion,
-      `SerrePositivity.EInfinity.FrameHom.CommaNerve.inclusion_projection,
-      `SerrePositivity.EInfinity.FrameHom.CommaNerve.projection_inclusion,
-      `SerrePositivity.EInfinity.FrameHom.CommaNerve.projection_localized_isIso,
-      `SerrePositivity.EInfinity.FrameHom.CommaNerve.projectionRows,
-      `SerrePositivity.EInfinity.FrameHom.CommaNerve.barProjection,
-      `SerrePositivity.EInfinity.FrameHom.CommaNerve.barProjection_app,
-      `SerrePositivity.EInfinity.FrameHom.CommaNerve.barProjection_localized_isIso,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.nerveDiagram,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.values,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.simplex,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.simplex_operator,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.map,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.fiberNerveMap,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.valueInclusion_map,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.simplex_base,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.map_vertex,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.nerveComparison,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.simplex_naturality,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.map_naturality,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CommaNerve.values,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CommaNerve.chain,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CommaNerve.chain_map,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CommaNerve.lift,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CommaNerve.initial,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CommaNerve.lift_reconstruct,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CommaNerve.retraction,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CommaNerve.contraction,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CommaNerve.projection,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CommaNerve.inclusion,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CommaNerve.inclusion_projection,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CommaNerve.projection_inclusion,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CommaNerve.projection_localized_isIso,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CommaNerve.projectionRows,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CommaNerve.barProjection,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CommaNerve.barProjection_app,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CommaNerve.barProjection_localized_isIso,
       `SerrePositivity.EInfinity.BarrattEccles.mappingSmallResolutionRightDiagram,
       `SerrePositivity.EInfinity.BarrattEccles.mappingSmallSpanRightDiagram,
       `SerrePositivity.EInfinity.BarrattEccles.mappingResolutionBarComparison,
       `SerrePositivity.EInfinity.BarrattEccles.mappingResolutionBarComparison_localized_isIso,
       `SerrePositivity.EInfinity.BarrattEccles.mappingResolutionThomasonSquare,
-      `SerrePositivity.EInfinity.FrameHom.ConstantBar.values,
-      `SerrePositivity.EInfinity.FrameHom.ConstantBar.first_label,
-      `SerrePositivity.EInfinity.FrameHom.ConstantBar.projection,
-      `SerrePositivity.EInfinity.FrameHom.ConstantBar.inclusion,
-      `SerrePositivity.EInfinity.FrameHom.ConstantBar.inclusion_projection,
-      `SerrePositivity.EInfinity.FrameHom.ConstantBar.retraction,
-      `SerrePositivity.EInfinity.FrameHom.ConstantBar.projection_inclusion,
-      `SerrePositivity.EInfinity.FrameHom.ConstantBar.contraction,
-      `SerrePositivity.EInfinity.FrameHom.ConstantBar.projection_localized_isIso,
-      `SerrePositivity.EInfinity.FrameHom.ConstantBar.labels,
-      `SerrePositivity.EInfinity.FrameHom.ConstantBar.projectionRows,
-      `SerrePositivity.EInfinity.FrameHom.ConstantBar.inclusionRows,
-      `SerrePositivity.EInfinity.FrameHom.ConstantBar.inclusionRows_projectionRows,
-      `SerrePositivity.EInfinity.FrameHom.ConstantBar.labelsDiagonalIso,
-      `SerrePositivity.EInfinity.FrameHom.ConstantBar.augmentation,
-      `SerrePositivity.EInfinity.FrameHom.ConstantBar.augmentation_app,
-      `SerrePositivity.EInfinity.FrameHom.ConstantBar.valueInclusion,
-      `SerrePositivity.EInfinity.FrameHom.ConstantBar.valueInclusion_augmentation,
-      `SerrePositivity.EInfinity.FrameHom.ConstantBar.augmentation_localized_isIso,
-      `SerrePositivity.EInfinity.FrameHom.ConstantBar.valueInclusion_localized_isIso,
-      `SerrePositivity.EInfinity.FrameHom.BarRows.valueInclusion,
-      `SerrePositivity.EInfinity.FrameHom.BarRows.constantInclusion_naturality,
-      `SerrePositivity.EInfinity.FrameHom.BarRows.valueInclusion_localized_isIso,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ConstantBar.values,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ConstantBar.first_label,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ConstantBar.projection,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ConstantBar.inclusion,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ConstantBar.inclusion_projection,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ConstantBar.retraction,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ConstantBar.projection_inclusion,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ConstantBar.contraction,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ConstantBar.projection_localized_isIso,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ConstantBar.labels,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ConstantBar.projectionRows,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ConstantBar.inclusionRows,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ConstantBar.inclusionRows_projectionRows,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ConstantBar.labelsDiagonalIso,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ConstantBar.augmentation,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ConstantBar.augmentation_app,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ConstantBar.valueInclusion,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ConstantBar.valueInclusion_augmentation,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ConstantBar.augmentation_localized_isIso,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ConstantBar.valueInclusion_localized_isIso,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.BarRows.valueInclusion,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.BarRows.constantInclusion_naturality,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.BarRows.valueInclusion_localized_isIso,
       `SerrePositivity.EInfinity.BarrattEccles.mappingRightHomBarInclusion,
       `SerrePositivity.EInfinity.BarrattEccles.mappingRightHomBarInclusion_app,
       `SerrePositivity.EInfinity.BarrattEccles.mappingRightHomBarInclusion_localized_isIso,
@@ -2841,37 +2841,37 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceBarInclusion_localized_isIso,
       `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceIndexBarMap,
       `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceIndexBarMap_localized_isIso,
-      `SerrePositivity.EInfinity.FrameHom.BarRows.row,
-      `SerrePositivity.EInfinity.FrameHom.BarRows.inclusion,
-      `SerrePositivity.EInfinity.FrameHom.BarRows.cofan,
-      `SerrePositivity.EInfinity.FrameHom.BarRows.desc,
-      `SerrePositivity.EInfinity.FrameHom.BarRows.isColimit,
-      `SerrePositivity.EInfinity.FrameHom.BarRows.rowMap,
-      `SerrePositivity.EInfinity.FrameHom.BarRows.inclusion_rowMap,
-      `SerrePositivity.EInfinity.FrameHom.BarRows.rowMap_localized_isIso,
-      `SerrePositivity.EInfinity.FrameHom.BarRows.diagonalFlipIso,
-      `SerrePositivity.EInfinity.FrameHom.BarRows.diagonalFlipIso_naturality,
-      `SerrePositivity.EInfinity.FrameHom.BarRows.map_localized_isIso,
-      `SerrePositivity.EInfinity.FrameHom.BarRows.fromInitial,
-      `SerrePositivity.EInfinity.FrameHom.BarRows.fromInitial_localized_isIso,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.BarRows.row,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.BarRows.inclusion,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.BarRows.cofan,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.BarRows.desc,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.BarRows.isColimit,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.BarRows.rowMap,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.BarRows.inclusion_rowMap,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.BarRows.rowMap_localized_isIso,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.BarRows.diagonalFlipIso,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.BarRows.diagonalFlipIso_naturality,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.BarRows.map_localized_isIso,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.BarRows.fromInitial,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.BarRows.fromInitial_localized_isIso,
       `SerrePositivity.EInfinity.BarrattEccles.mappingRightHomFromIdentity,
       `SerrePositivity.EInfinity.BarrattEccles.mappingRightHomFromIdentity_app,
       `SerrePositivity.EInfinity.BarrattEccles.mappingRightHomFromIdentity_bar_localized_isIso,
       `SerrePositivity.EInfinity.BarrattEccles.mappingFixedRightGrothendieckComparison_localized_isIso,
       `SerrePositivity.EInfinity.BarrattEccles.mappingFixedRightGrothendieckComparison_isWeakHomotopyEquivalence,
-      `SerrePositivity.EInfinity.FrameHom.CommaPreLeft.projection_localized_isIso,
-      `SerrePositivity.EInfinity.FrameHom.CommaPreLeft.comparison_isLeftCofinal,
-      `SerrePositivity.EInfinity.FrameHom.CommaPreLeft.comparison_localized_isIso,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CommaPreLeft.projection_localized_isIso,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CommaPreLeft.comparison_isLeftCofinal,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CommaPreLeft.comparison_localized_isIso,
       `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CommaPreLeftRetraction.projection,
       `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CommaPreLeftRetraction.canonicalSection,
       `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CommaPreLeftRetraction.canonicalSection_projection,
       `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CommaPreLeftRetraction.contraction,
-      `SerrePositivity.EInfinity.FrameHom.fixedRightGrothendieckComparison_toComma,
-      `SerrePositivity.EInfinity.FrameHom.fixedRightGrothendieckComparison_localized_isIso]
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.fixedRightGrothendieckComparison_toComma,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.fixedRightGrothendieckComparison_localized_isIso]
 
 @[noinline] private def e2RequiredBatch22 : Array Lean.Name :=
-  #[`SerrePositivity.EInfinity.FrameHom.NerveQuillenA.nerveMap_isLeftCofinal_of_weaklyContractible_comma,
-      `SerrePositivity.EInfinity.FrameHom.NerveQuillenA.comma_isWeaklyContractible,
+  #[`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveQuillenA.nerveMap_isLeftCofinal_of_weaklyContractible_comma,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveQuillenA.comma_isWeaklyContractible,
       `SerrePositivity.EInfinity.BarrattEccles.mappingResolutionFixedRightComparison,
       `SerrePositivity.EInfinity.BarrattEccles.mappingResolutionFixedRightComparison_isLeftCofinal,
       `SerrePositivity.EInfinity.BarrattEccles.mappingResolutionFixedRightComparison_isWeakHomotopyEquivalence,
@@ -2881,21 +2881,21 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.BarrattEccles.mappingFixedRightDiagramComparison_isLeftCofinal,
       `SerrePositivity.EInfinity.BarrattEccles.mappingFixedRightDiagramComparison_localized_isIso,
       `SerrePositivity.EInfinity.BarrattEccles.mappingFixedRightGrothendieckComparison,
-      `SerrePositivity.EInfinity.FrameHom.leftAnodyne_anodyne,
-      `SerrePositivity.EInfinity.FrameHom.leftCofinal_image_isIso,
-      `SerrePositivity.EInfinity.FrameHom.leftCofinal_localized_isIso,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.leftAnodyne_anodyne,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.leftCofinal_image_isIso,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.leftCofinal_localized_isIso,
       `SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.costructuredArrowProjection_rightFibration,
       `SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.costructuredArrowPre_isPullback,
       `SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.costructuredArrowPre_isLeftCofinal,
       `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.costructuredArrowDiagramPre,
       `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.costructuredArrowDiagramPre_isLeftCofinal,
       `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.fixedRightGrothendieckComparison,
-      `SerrePositivity.EInfinity.FrameHom.smallResolutionLeftForget,
-      `SerrePositivity.EInfinity.FrameHom.smallResolutionOverFunctor_leftForget,
-      `SerrePositivity.EInfinity.FrameHom.resolutionFixedRightComparison,
-      `SerrePositivity.EInfinity.FrameHom.resolutionFixedRightComparison_isLeftCofinal,
-      `SerrePositivity.EInfinity.FrameHom.resolutionFixedRightComparison_isWeakHomotopyEquivalence,
-      `SerrePositivity.EInfinity.FrameHom.resolutionFixedRightComparison_localized_isIso,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.smallResolutionLeftForget,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.smallResolutionOverFunctor_leftForget,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.resolutionFixedRightComparison,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.resolutionFixedRightComparison_isLeftCofinal,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.resolutionFixedRightComparison_isWeakHomotopyEquivalence,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.resolutionFixedRightComparison_localized_isIso,
       `SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.rightFibration_pullback_isLeftCofinal,
       `SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.rightFibration_isPullback_isLeftCofinal,
       `SerrePositivity.EInfinity.BarrattEccles.algebraRightSpanBase,
@@ -2917,17 +2917,17 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ArrowSpanComma.fromComma,
       `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ArrowSpanComma.toComma_fromComma,
       `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ArrowSpanComma.commaEquivalence,
-      `SerrePositivity.EInfinity.FrameHom.ArrowSpan.rightDiagram,
-      `SerrePositivity.EInfinity.FrameHom.ArrowSpan.toGrothendieck,
-      `SerrePositivity.EInfinity.FrameHom.ArrowSpan.fromGrothendieck,
-      `SerrePositivity.EInfinity.FrameHom.ArrowSpan.toGrothendieck_fromGrothendieck,
-      `SerrePositivity.EInfinity.FrameHom.ArrowSpan.grothendieckEquivalence,
-      `SerrePositivity.EInfinity.FrameHom.ArrowSpan.frameGrothendieckFunctor,
-      `SerrePositivity.EInfinity.FrameHom.ArrowSpan.frameGrothendieckFunctor_fac,
-      `SerrePositivity.EInfinity.FrameHom.ArrowSpan.frameGrothendieckFunctor_base,
-      `SerrePositivity.EInfinity.FrameHom.ArrowSpan.frameGrothendieckFunctor_middle,
-      `SerrePositivity.EInfinity.FrameHom.ArrowSpan.rightSliceInitial,
-      `SerrePositivity.EInfinity.FrameHom.ArrowSpan.rightSliceInitial_isInitial,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ArrowSpan.rightDiagram,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ArrowSpan.toGrothendieck,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ArrowSpan.fromGrothendieck,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ArrowSpan.toGrothendieck_fromGrothendieck,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ArrowSpan.grothendieckEquivalence,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ArrowSpan.frameGrothendieckFunctor,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ArrowSpan.frameGrothendieckFunctor_fac,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ArrowSpan.frameGrothendieckFunctor_base,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ArrowSpan.frameGrothendieckFunctor_middle,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ArrowSpan.rightSliceInitial,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ArrowSpan.rightSliceInitial_isInitial,
       `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CommaGrothendieck.diagram,
       `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CommaGrothendieck.toComma,
       `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CommaGrothendieck.toComma_faithful,
@@ -2939,10 +2939,10 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.BarrattEccles.mappingSmallResolutionOverFunctor,
       `SerrePositivity.EInfinity.BarrattEccles.mappingSmallResolutionOverFunctor_isLeftCofinal,
       `SerrePositivity.EInfinity.BarrattEccles.mappingSmallResolutionOverFunctor_isWeakHomotopyEquivalence,
-      `SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection.homComponents,
-      `SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection.homComponents_inverts,
-      `SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence,
-      `SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection.isWeaklyContractible,
+      `SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.homComponents,
+      `SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.homComponents_inverts,
+      `SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.isWeakHomotopyEquivalence,
+      `SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.isWeaklyContractible,
       `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.AsSmallComma.smallFunctor,
       `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.AsSmallComma.smallFunctor_up,
       `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.AsSmallComma.comparison,
@@ -2950,50 +2950,50 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.AsSmallComma.comparison_full,
       `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.AsSmallComma.comparison_essSurj,
       `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.AsSmallComma.equivalence,
-      `SerrePositivity.EInfinity.FrameHom.NerveAsSmall.up_down,
-      `SerrePositivity.EInfinity.FrameHom.NerveAsSmall.down_up,
-      `SerrePositivity.EInfinity.FrameHom.NerveAsSmall.iso,
-      `SerrePositivity.EInfinity.FrameHom.NerveAsSmall.terminal_localized_isIso,
-      `SerrePositivity.EInfinity.FrameHom.NerveQuillenA.nerveMap_isLeftCofinal,
-      `SerrePositivity.EInfinity.FrameHom.smallResolutionOverFunctor,
-      `SerrePositivity.EInfinity.FrameHom.smallResolutionOverFunctor_isLeftCofinal,
-      `SerrePositivity.EInfinity.FrameHom.smallResolutionOverFunctor_isWeakHomotopyEquivalence,
-      `SerrePositivity.EInfinity.FrameHom.AsSmallComma.terminal_localized_isIso,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveAsSmall.up_down,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveAsSmall.down_up,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveAsSmall.iso,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveAsSmall.terminal_localized_isIso,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveQuillenA.nerveMap_isLeftCofinal,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.smallResolutionOverFunctor,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.smallResolutionOverFunctor_isLeftCofinal,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.smallResolutionOverFunctor_isWeakHomotopyEquivalence,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.AsSmallComma.terminal_localized_isIso,
       `SerrePositivity.EInfinity.BarrattEccles.algebraTrivialFibrationOver,
       `SerrePositivity.EInfinity.BarrattEccles.mappingResolutionOverFunctor,
       `SerrePositivity.EInfinity.BarrattEccles.mappingResolutionCommaTerminal_localized_isIso,
-      `SerrePositivity.EInfinity.FrameHom.FrameLift.overFunctor,
-      `SerrePositivity.EInfinity.FrameHom.FrameLift.toComma,
-      `SerrePositivity.EInfinity.FrameHom.FrameLift.toComma_faithful,
-      `SerrePositivity.EInfinity.FrameHom.FrameLift.toComma_full,
-      `SerrePositivity.EInfinity.FrameHom.FrameLift.toComma_essSurj,
-      `SerrePositivity.EInfinity.FrameHom.FrameLift.commaEquivalence,
-      `SerrePositivity.EInfinity.FrameHom.FrameLift.projection_mono_rlp,
-      `SerrePositivity.EInfinity.FrameHom.FrameLift.projection_image_isIso,
-      `SerrePositivity.EInfinity.FrameHom.FrameLift.elementsTerminal_image_isIso,
-      `SerrePositivity.EInfinity.FrameHom.FrameLift.evaluationPullback,
-      `SerrePositivity.EInfinity.FrameHom.FrameLift.pointSimplex_unique,
-      `SerrePositivity.EInfinity.FrameHom.FrameLift.inclusion_injective,
-      `SerrePositivity.EInfinity.FrameHom.FrameLift.simplexEquiv,
-      `SerrePositivity.EInfinity.FrameHom.FrameLift.simplexEquiv_naturality,
-      `SerrePositivity.EInfinity.FrameHom.NerveEquivalenceImage.imageIso,
-      `SerrePositivity.EInfinity.FrameHom.TrivialFibrationOver,
-      `SerrePositivity.EInfinity.FrameHom.resolutionOverFunctor,
-      `SerrePositivity.EInfinity.FrameHom.resolutionOverFunctor_forget,
-      `SerrePositivity.EInfinity.FrameHom.resolutionOverComma_image_isIso,
-      `SerrePositivity.EInfinity.FrameHom.resolutionCommaTerminal_image_isIso,
-      `SerrePositivity.EInfinity.FrameHom.FrameLift.commaTerminal_image_isIso,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameLift.overFunctor,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameLift.toComma,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameLift.toComma_faithful,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameLift.toComma_full,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameLift.toComma_essSurj,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameLift.commaEquivalence,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameLift.projection_mono_rlp,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameLift.projection_image_isIso,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameLift.elementsTerminal_image_isIso,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameLift.evaluationPullback,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameLift.pointSimplex_unique,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameLift.inclusion_injective,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameLift.simplexEquiv,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameLift.simplexEquiv_naturality,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveEquivalenceImage.imageIso,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.TrivialFibrationOver,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.resolutionOverFunctor,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.resolutionOverFunctor_forget,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.resolutionOverComma_image_isIso,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.resolutionCommaTerminal_image_isIso,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameLift.commaTerminal_image_isIso,
       `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceIndexAugmentation,
       `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceIndexAugmentation_localized_isIso,
       `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceIndexAugmentation_zero,
       `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceSpanComparison_vertex,
-      `SerrePositivity.EInfinity.FrameHom.SimplexTerminalNerve.liftedAugmentation,
-      `SerrePositivity.EInfinity.FrameHom.SimplexTerminalNerve.liftedAugmentation_localized_isIso,
-      `SerrePositivity.EInfinity.FrameHom.SimplexTerminalNerve.liftedAugmentation_zero,
-      `SerrePositivity.EInfinity.FrameHom.SimplexTerminalNerve.liftedAugmentation_naturality,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.SimplexTerminalNerve.liftedAugmentation,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.SimplexTerminalNerve.liftedAugmentation_localized_isIso,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.SimplexTerminalNerve.liftedAugmentation_zero,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.SimplexTerminalNerve.liftedAugmentation_naturality,
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.chosenResolutionSpanValue_augmentation,
-      `SerrePositivity.EInfinity.FrameHom.NerveTerminalImage.contraction,
-      `SerrePositivity.EInfinity.FrameHom.NerveTerminalImage.terminalImageIso,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveTerminalImage.contraction,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveTerminalImage.terminalImageIso,
       `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.NerveULiftHom.up_down,
       `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.NerveULiftHom.down_up,
       `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.NerveULiftHom.iso,
@@ -3006,12 +3006,12 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SimplexTerminalAugmentation.augmentation,
       `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SimplexTerminalAugmentation.augmentation_zero,
       `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SimplexTerminalAugmentation.naturality,
-      `SerrePositivity.EInfinity.FrameHom.SimplexTerminalNerve.augmentation_localized_isIso,
-      `SerrePositivity.EInfinity.FrameHom.SimplexTerminalNerve.augmentation_image_isIso,
-      `SerrePositivity.EInfinity.FrameHom.SimplexTerminalNerve.augmentationImageIso,
-      `SerrePositivity.EInfinity.FrameHom.SimplexTerminalNerve.functor,
-      `SerrePositivity.EInfinity.FrameHom.SimplexTerminalNerve.oppositeIso,
-      `SerrePositivity.EInfinity.FrameHom.SimplexTerminalNerve.augmentation,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.SimplexTerminalNerve.augmentation_localized_isIso,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.SimplexTerminalNerve.augmentation_image_isIso,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.SimplexTerminalNerve.augmentationImageIso,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.SimplexTerminalNerve.functor,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.SimplexTerminalNerve.oppositeIso,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.SimplexTerminalNerve.augmentation,
       `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SimplexTerminalParameter.tail_comp,
       `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SimplexTerminalParameter.vertex,
       `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SimplexTerminalParameter.monotone,
@@ -3019,8 +3019,8 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SimplexTerminalParameter.parameter_apply,
       `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SimplexTerminalParameter.parameter_last,
       `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SimplexTerminalParameter.reindex,
-      `SerrePositivity.EInfinity.FrameHom.SimplexTerminalNerve.standardIsTerminal,
-      `SerrePositivity.EInfinity.FrameHom.SimplexTerminalNerve.standardAugmentation_isIso,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.SimplexTerminalNerve.standardIsTerminal,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.SimplexTerminalNerve.standardAugmentation_isIso,
       `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Object,
       `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Hom,
       `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.hom_ext,
@@ -3030,11 +3030,11 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.leftAugmentation,
       `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.rightAugmentation,
       `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.middleTransformation,
-      `SerrePositivity.EInfinity.FrameHom.frameElementSpan,
-      `SerrePositivity.EInfinity.FrameHom.frameElementSpanMap,
-      `SerrePositivity.EInfinity.FrameHom.frameElementSpanFunctor,
-      `SerrePositivity.EInfinity.FrameHom.frameSpanSourceComparison,
-      `SerrePositivity.EInfinity.FrameHom.frameSpanTargetComparison,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameElementSpan,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameElementSpanMap,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameElementSpanFunctor,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameSpanSourceComparison,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameSpanTargetComparison,
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.frameElementSpanNerveMap,
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.chosenResolutionSpanNerveMap,
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.chosenResolutionSpanValue_zero,
@@ -3049,49 +3049,49 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.value,
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.value_eq,
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.valueFunctor,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationHomMap,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationEnrichedMap,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationFunctor,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHomMap,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationEnrichedMap,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationFunctor,
       `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHomFunctoriality.coefficientMap,
       `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHomFunctoriality.coefficientMap_naturality,
       `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHomFunctoriality.coefficientMap_identity,
       `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHomFunctoriality.coefficientMap_composition,
       `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHomFunctoriality.coefficientNatTrans,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionMap,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionFunctor,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionMap_augmentation,
-      `SerrePositivity.EInfinity.SimplicialLocalization.kanLocalizationEnrichedMap,
-      `SerrePositivity.EInfinity.SimplicialLocalization.kanLocalizationFunctor,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizedFreeResolutionMap,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizedFreeResolutionFunctor,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizedFreeResolutionMap_augmentation,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizedFreeResolutionMap_object,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationNerveMap,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationNerveMap_vertex,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionMap,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionFunctor,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionMap_augmentation,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanLocalizationEnrichedMap,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanLocalizationFunctor,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizedFreeResolutionMap,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizedFreeResolutionFunctor,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizedFreeResolutionMap_augmentation,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizedFreeResolutionMap_object,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap_vertex,
       `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHom.map,
       `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHom.map_id,
       `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHom.map_comp,
       `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHom.map_identity,
       `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHom.map_composition,
       `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHom.functor,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationHom,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationIdentity,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationComposition,
-      `SerrePositivity.EInfinity.SimplicialLocalization.LocalizationObjects,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationEnrichedCategory,
-      `SerrePositivity.EInfinity.SimplicialLocalization.LocalizationCategory,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationSimplicialCategory,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationCategory_sHom,
-      `SerrePositivity.EInfinity.SimplicialLocalization.KanLocalizationObjects,
-      `SerrePositivity.EInfinity.SimplicialLocalization.KanLocalizationCategory,
-      `SerrePositivity.EInfinity.SimplicialLocalization.kanLocalizationCategory_sHom,
-      `SerrePositivity.EInfinity.SimplicialLocalization.kanLocalizationHom_kanComplex,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationHomKanUnit_anodyne,
-      `SerrePositivity.EInfinity.SimplicialLocalization.kanLocalizationUnit,
-      `SerrePositivity.EInfinity.SimplicialLocalization.kanLocalizationUnitFunctor,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationNerve,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationNerve_quasicategory,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationNerveVertexEquiv,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHom,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationIdentity,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationComposition,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.LocalizationObjects,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationEnrichedCategory,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.LocalizationCategory,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationSimplicialCategory,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationCategory_sHom,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanLocalizationObjects,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanLocalizationCategory,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanLocalizationCategory_sHom,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanLocalizationHom_kanComplex,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHomKanUnit_anodyne,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanLocalizationUnit,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanLocalizationUnitFunctor,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerve,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerve_quasicategory,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveVertexEquiv,
       `SerrePositivity.EInfinity.BarrattEccles.CAlgSimplicialCategory,
       `SerrePositivity.EInfinity.BarrattEccles.CAlg_R,
       `SerrePositivity.EInfinity.BarrattEccles.cAlg_R_quasicategory,
@@ -3100,22 +3100,22 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.BarrattEccles.cAlgVertexEquiv,
       `SerrePositivity.EInfinity.BarrattEccles.cAlgVertex,
       `SerrePositivity.EInfinity.BarrattEccles.discreteCAlgVertex,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeRelativeCounit_obj_bijective,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeComonadAugmentation_obj_bijective,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionAugmentation_obj_bijective,
-      `SerrePositivity.EInfinity.SimplicialLocalization.strictLocalizationMap_obj_bijective,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizedFreeResolutionAugmentation_obj_bijective,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizedFreeResolutionObjectEquiv,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizedFreeResolutionObject,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizedFreeResolutionObject_naturality,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeComonadPower_eq,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolution_obj,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolution_face,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolution_degeneracy,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionAugmentationNatTrans,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionAugmentationNatTrans_app,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizedFreeResolution,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizedFreeResolutionAugmentation,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeRelativeCounit_obj_bijective,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeComonadAugmentation_obj_bijective,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionAugmentation_obj_bijective,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.strictLocalizationMap_obj_bijective,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizedFreeResolutionAugmentation_obj_bijective,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizedFreeResolutionObjectEquiv,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizedFreeResolutionObject,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizedFreeResolutionObject_naturality,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeComonadPower_eq,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution_obj,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution_face,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution_degeneracy,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionAugmentationNatTrans,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionAugmentationNatTrans_app,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizedFreeResolution,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizedFreeResolutionAugmentation,
       `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.strictLocalizationMap,
       `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.strictLocalizationMap_fac,
       `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.strictLocalizationMap_id,
@@ -4438,23 +4438,23 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor_obj_map,
       `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor_map_app,
       `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalConstantIso,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionObjectEquiv,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionObject,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionObject_augmentation,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionObject_naturality,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionObject_generator,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockWordDiagram,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockResolution,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockResolution_obj,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockGraphAugmentation,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockAugmentation,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockAugmentation_fac,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockDiagonal,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockDiagonalAugmentation,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockDiagonal_obj,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockDiagonalAugmentation_app,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockDiagonalReduction,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockDiagonalReduction_fac]
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObjectEquiv,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject_augmentation,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject_naturality,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject_generator,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockWordDiagram,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockResolution,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockResolution_obj,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockGraphAugmentation,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockAugmentation,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockAugmentation_fac,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonal,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalAugmentation,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonal_obj,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalAugmentation_app,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalReduction,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalReduction_fac]
 
 @[noinline] private def e2RequiredBatch53 : Array Lean.Name :=
   #[`SerrePositivity.EInfinity.Hammock.FixedObjectDiagram.LocalizationObjects.homTransport,
@@ -4519,20 +4519,20 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.wordAction_edge,
       `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cutFunctor,
       `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.path_wordAction,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockHomComparison,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockHomComparison_fac,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockDiagonalComparison,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockDiagonalComparison_app,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionObject_localized,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockLocalizationObjects,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockHomComparison,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockHomComparison_fac,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalComparison,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalComparison_app,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject_localized,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockLocalizationObjects,
       `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalDiscreteIso]
 
 @[noinline] private def e2RequiredBatch54 : Array Lean.Name :=
-  #[`SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionGeneratorBase,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolution_eq_freeGeneratorBase,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionMarkedEquivalence,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionMarkedEquivalence_inclusion,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolution_existsUnique_extension,
+  #[`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution_eq_freeGeneratorBase,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionMarkedEquivalence,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionMarkedEquivalence_inclusion,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution_existsUnique_extension,
       `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.unmarked,
       `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.extendPrefunctor,
       `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.extendFunctor,
@@ -4561,11 +4561,11 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.inclusion_range]
 
 @[noinline] private def e2RequiredBatch55 : Array Lean.Name :=
-  #[`SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionBlockEquiv,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionBlockCategoryEquivalence,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionBlockEquiv_symm_apply,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionBlockEquiv_id,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionBlockEquiv_comp,
+  #[`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionBlockEquiv,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionBlockCategoryEquivalence,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionBlockEquiv_symm_apply,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionBlockEquiv_id,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionBlockEquiv_comp,
       `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.appendLetterForm,
       `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.appendLetter,
       `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.flatten_appendLetter,
@@ -4631,8 +4631,8 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.colimitNormalization_reducedValue,
       `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.edge_forward,
       `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.edge_backward,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockGeneratorWordValue,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockGeneratorWordValue_fac,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockGeneratorWordValue,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockGeneratorWordValue_fac,
       `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorFunctor.WordObject,
       `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorFunctor.wordCategory,
       `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorFunctor.functor,
@@ -6402,55 +6402,55 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.path_append_right,
       `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.path_append_left_hom,
       `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.path_append_right_hom,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockHomComparison_app_isWeakHomotopyEquivalence]
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockHomComparison_app_isWeakHomotopyEquivalence]
 
 @[noinline] private def e2RequiredBatch98 : Array Lean.Name :=
   #[`SerrePositivity.EInfinity.Hammock.DoubleSimplicial.diagonalFunctor_map_weak,
       `SerrePositivity.EInfinity.Hammock.anodyneQ_map_isIso_of_homotopyEquivalence,
       `SerrePositivity.EInfinity.Hammock.anodyneQ_map_isIso_of_weak,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockDiagonalComparison_isWeakHomotopyEquivalence]
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalComparison_isWeakHomotopyEquivalence]
 
 @[noinline] private def e2RequiredBatch99 : Array Lean.Name :=
-  #[`SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionHomObject,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionObject_eq_homObject,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionHomObject_naturality,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionGeneratorHom,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionHomObject_augmentation,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionGeneratorHomAugmentation,
-      `SerrePositivity.EInfinity.SimplicialLocalization.generatorHom_face_heq,
-      `SerrePositivity.EInfinity.SimplicialLocalization.generatorHom_degeneracy_heq,
-      `SerrePositivity.EInfinity.SimplicialLocalization.generatorHom_augmentation_heq,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionGeneratorHomAugmented,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionGeneratorHomExtraDegeneracy,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionGeneratorHomAugmentation_isWeakHomotopyEquivalence,
-      `SerrePositivity.EInfinity.SimplicialLocalization.generatorHomSection,
-      `SerrePositivity.EInfinity.SimplicialLocalization.generatorHomExtra,
-      `SerrePositivity.EInfinity.SimplicialLocalization.generatorHomSection_augmentation,
-      `SerrePositivity.EInfinity.SimplicialLocalization.generatorHomExtra_face_zero,
-      `SerrePositivity.EInfinity.SimplicialLocalization.singlePath_conjugate_heq,
-      `SerrePositivity.EInfinity.SimplicialLocalization.singlePath_map_heq,
-      `SerrePositivity.EInfinity.SimplicialLocalization.generatorHomExtra_face_lift_heq,
-      `SerrePositivity.EInfinity.SimplicialLocalization.generatorHomExtra_degeneracy_lift_heq,
-      `SerrePositivity.EInfinity.SimplicialLocalization.generatorHomSection_augmentation_lift_heq,
-      `SerrePositivity.EInfinity.SimplicialLocalization.generatorHomExtra_face_succ,
-      `SerrePositivity.EInfinity.SimplicialLocalization.generatorHomExtra_degeneracy_succ,
-      `SerrePositivity.EInfinity.SimplicialLocalization.generatorHomExtra_face_one,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionHomRepresentationIso,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionHomRepresentationIso_augmentation,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionHomAugmentation_isWeakHomotopyEquivalence,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionMarkedHomSubcomplex,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionMarkedHom,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionMarkedHomAugmentation,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionMarkedHomSection,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionMarkedHomExtra,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionMarkedHomAugmented,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionMarkedHomExtraDegeneracy,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionMarkedHomAugmentation_isWeakHomotopyEquivalence,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionUnderlyingDiagram,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionUnderlyingAugmentation,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionHom,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionHomAugmentation,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionHomAugmentation_app,
+  #[`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionHomObject,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject_eq_homObject,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionHomObject_naturality,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorHom,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionHomObject_augmentation,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorHomAugmentation,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.generatorHom_face_heq,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.generatorHom_degeneracy_heq,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.generatorHom_augmentation_heq,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorHomAugmented,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorHomExtraDegeneracy,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorHomAugmentation_isWeakHomotopyEquivalence,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.generatorHomSection,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.generatorHomExtra,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.generatorHomSection_augmentation,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.generatorHomExtra_face_zero,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.singlePath_conjugate_heq,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.singlePath_map_heq,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.generatorHomExtra_face_lift_heq,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.generatorHomExtra_degeneracy_lift_heq,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.generatorHomSection_augmentation_lift_heq,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.generatorHomExtra_face_succ,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.generatorHomExtra_degeneracy_succ,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.generatorHomExtra_face_one,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionHomRepresentationIso,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionHomRepresentationIso_augmentation,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionHomAugmentation_isWeakHomotopyEquivalence,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionMarkedHomSubcomplex,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionMarkedHom,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionMarkedHomAugmentation,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionMarkedHomSection,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionMarkedHomExtra,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionMarkedHomAugmented,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionMarkedHomExtraDegeneracy,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionMarkedHomAugmentation_isWeakHomotopyEquivalence,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionUnderlyingDiagram,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionUnderlyingAugmentation,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionHom,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionHomAugmentation,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionHomAugmentation_app,
       `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.underlyingCategoryFunctor]
 
 @[noinline] private def e2RequiredBatch100 : Array Lean.Name :=
@@ -6495,19 +6495,19 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.Hammock.TwoSidedGrothendieck.rightCoefficientMap,
       `SerrePositivity.EInfinity.Hammock.TwoSidedGrothendieck.rightCoefficientMap_projection,
       `SerrePositivity.EInfinity.Hammock.TwoSidedGrothendieck.rightCoefficientMap_isWeakHomotopyEquivalence,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionMarkedDiagram,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionMarkedObject,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionMarkedObject_naturality,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionNativeMarkedHom,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionMarkedAugmentation,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionMarkedObject_augmentation,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionNativeMarkedHomAugmentation,
-      `SerrePositivity.EInfinity.SimplicialLocalization.marked_eqToHom_hom,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionNativeMarkedHomIso,
-      `SerrePositivity.EInfinity.SimplicialLocalization.markedHomSubtypeEquiv,
-      `SerrePositivity.EInfinity.SimplicialLocalization.markedHomSubtypeIso,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionNativeMarkedHomIso_augmentation,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionNativeMarkedHomAugmentation_isWeakHomotopyEquivalence,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionMarkedDiagram,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionMarkedObject,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionMarkedObject_naturality,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionNativeMarkedHom,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionMarkedAugmentation,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionMarkedObject_augmentation,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionNativeMarkedHomAugmentation,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.marked_eqToHom_hom,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionNativeMarkedHomIso,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.markedHomSubtypeEquiv,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.markedHomSubtypeIso,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionNativeMarkedHomIso_augmentation,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionNativeMarkedHomAugmentation_isWeakHomotopyEquivalence,
       `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.markedCategoryMap,
       `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.markedCategoryFunctor]
 
@@ -6916,16 +6916,16 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.wordDiagonalTargetIso,
       `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.wordDiagonalAugmentation,
       `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.wordDiagonalAugmentation_app,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionCanonicalMarkedHom,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionCanonicalMarkedObject_eq,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionCanonicalMarkedHomIso,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionCanonicalMarkedHomAugmentation,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionCanonicalMarkedHomAugmentation_weak,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeWordDiagonalAugmentation_backward_square,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeWordDiagonalAugmentation_backward_weak,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeWordDiagonalAugmentation,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeWordDiagonalAugmentation_forward_square,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeWordDiagonalAugmentation_forward_weak]
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionCanonicalMarkedHom,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionCanonicalMarkedObject_eq,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionCanonicalMarkedHomIso,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionCanonicalMarkedHomAugmentation,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionCanonicalMarkedHomAugmentation_weak,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeWordDiagonalAugmentation_backward_square,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeWordDiagonalAugmentation_backward_weak,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeWordDiagonalAugmentation,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeWordDiagonalAugmentation_forward_square,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeWordDiagonalAugmentation_forward_weak]
 
 @[noinline] private def e2RequiredBatch109 : Array Lean.Name :=
   #[`SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.forwardForwardFunctor_map_injective,
@@ -7220,7 +7220,7 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.empty_fixed_full,
       `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.empty_fixed_essSurj,
       `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.empty_fixed_isEquivalence,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeWordDiagonalAugmentation_empty_weak]
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeWordDiagonalAugmentation_empty_weak]
 
 @[noinline] private def e2RequiredBatch116 : Array Lean.Name :=
   #[`SerrePositivity.EInfinity.Hammock.CoefficientProduct.diagonalNerveIso,
@@ -7357,12 +7357,12 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.SimplicialLocalization.freeWordDiagonalAugmentation_cons_backwardForward_weak,
       `SerrePositivity.EInfinity.SimplicialLocalization.freeWordDiagonalAugmentation_twoBackwardForward_weak,
       `SerrePositivity.EInfinity.Hammock.FixedObjectDiagram.wordDiagonalDiagram_proper,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockDiagonalColimitIso,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockDiagonalAugmentation_inclusion,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockDiagonalColimitIso_augmentation,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockDiagonalAugmentation_isWeakHomotopyEquivalence,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockDiagonalReduction_isWeakHomotopyEquivalence,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeWordDiagonalAugmentation_weak]
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalColimitIso,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalAugmentation_inclusion,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalColimitIso_augmentation,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalAugmentation_isWeakHomotopyEquivalence,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalReduction_isWeakHomotopyEquivalence,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeWordDiagonalAugmentation_weak]
 
 @[noinline] private def e2RequiredBatch118 : Array Lean.Name :=
   #[`SerrePositivity.EInfinity.BarrattEccles.algebraRelativeCategory,
@@ -7417,24 +7417,24 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectCategoryMap.graphWordMap,
       `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.hammockMap,
       `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.hammockMap_inclusion,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionMap_object,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockWordMap,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockMap,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockDiagonalMap,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockMap_inclusion,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockDiagonalMap_inclusion,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockFixedFunctor_augmentation,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockGraphMap_augmentation,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockMap_augmentation,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockDiagonalMap_augmentation,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockDiagonalMap_reduction,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockValue_map,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockGraphMap_comparison,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockMap_comparison,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockDiagonalMap_comparison,
-      `SerrePositivity.EInfinity.SimplicialLocalization.dkHammockComparisonIso,
-      `SerrePositivity.EInfinity.SimplicialLocalization.dkHammockComparisonIso_fac,
-      `SerrePositivity.EInfinity.SimplicialLocalization.dkHammockComparisonIso_coefficient,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionMap_object,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockWordMap,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockMap,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalMap,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockMap_inclusion,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalMap_inclusion,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockFixedFunctor_augmentation,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockGraphMap_augmentation,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockMap_augmentation,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalMap_augmentation,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalMap_reduction,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockValue_map,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockGraphMap_comparison,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockMap_comparison,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalMap_comparison,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.dkHammockComparisonIso,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.dkHammockComparisonIso_fac,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.dkHammockComparisonIso_coefficient,
       `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraDKHammockComparisonIso_factorization]
 
 @[noinline] private def e2RequiredBatch120 : Array Lean.Name :=
@@ -7447,21 +7447,21 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.Hammock.FixedObjectDiagram.hammockOperator_eq,
       `SerrePositivity.EInfinity.Hammock.FixedObjectDiagram.hammockComposition,
       `SerrePositivity.EInfinity.Hammock.FixedObjectDiagram.LocalizationObjects.colimitValue_composePoint,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockResolutionComposition,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockDiagonalTensorIso,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockDiagonalComposition,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockDiagonalComposition_app,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockAugmentation_fixedColimitMap,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockDiagonalAugmentation_composePoint,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockDiagonalComparison_composePoint,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockDiagonalComposition_augmentation,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockDiagonalComposition_comparison,
-      `SerrePositivity.EInfinity.SimplicialLocalization.dkHammockColimitComparisonIso,
-      `SerrePositivity.EInfinity.SimplicialLocalization.dkHammockColimitComparisonIso_fac,
-      `SerrePositivity.EInfinity.SimplicialLocalization.dkHammockProductComparisonIso,
-      `SerrePositivity.EInfinity.SimplicialLocalization.dkHammockProductComparisonIso_fac,
-      `SerrePositivity.EInfinity.SimplicialLocalization.dkHammockComparison_composition,
-      `SerrePositivity.EInfinity.SimplicialLocalization.dkHammockComparisonIso_reduction]
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockResolutionComposition,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalTensorIso,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalComposition,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalComposition_app,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockAugmentation_fixedColimitMap,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalAugmentation_composePoint,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalComparison_composePoint,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalComposition_augmentation,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalComposition_comparison,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.dkHammockColimitComparisonIso,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.dkHammockColimitComparisonIso_fac,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.dkHammockProductComparisonIso,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.dkHammockProductComparisonIso_fac,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.dkHammockComparison_composition,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.dkHammockComparisonIso_reduction]
 
 @[noinline] private def e2RequiredBatch121 : Array Lean.Name :=
   #[
@@ -7471,36 +7471,36 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.Hammock.reducedPrecomposeMap,
       `SerrePositivity.EInfinity.Hammock.reducedColimitIso_postcompose,
       `SerrePositivity.EInfinity.Hammock.reducedColimitIso_precompose,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionArrowZero,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockArrowZero,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockArrowZero_comparison,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionArrowZero_augmentation,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockArrowZero_augmentation,
-      `SerrePositivity.EInfinity.SimplicialLocalization.unitPointMap_comp,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockArrowPoint,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationArrowPoint,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockArrowPoint_comparison,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockArrowPoint_augmentation,
-      `SerrePositivity.EInfinity.SimplicialLocalization.dkHammockColimitComparisonIso_arrow,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockPostcompose,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationPostcompose,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockPostcompose_comparison,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockPostcompose_augmentation,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockPrecompose,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationPrecompose,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockPrecompose_comparison,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockPrecompose_augmentation,
-      `SerrePositivity.EInfinity.SimplicialLocalization.dkHammockColimitComparisonIso_postcompose,
-      `SerrePositivity.EInfinity.SimplicialLocalization.dkHammockColimitComparisonIso_precompose,
-      `SerrePositivity.EInfinity.SimplicialLocalization.dkHammockComparisonIso_postcompose,
-      `SerrePositivity.EInfinity.SimplicialLocalization.dkHammockComparisonIso_precompose,
-      `SerrePositivity.EInfinity.SimplicialLocalization.dkHammockComparisonIso_arrow]
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionArrowZero,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockArrowZero,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockArrowZero_comparison,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionArrowZero_augmentation,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockArrowZero_augmentation,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.unitPointMap_comp,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockArrowPoint,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationArrowPoint,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockArrowPoint_comparison,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockArrowPoint_augmentation,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.dkHammockColimitComparisonIso_arrow,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockPostcompose,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationPostcompose,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockPostcompose_comparison,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockPostcompose_augmentation,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockPrecompose,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationPrecompose,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockPrecompose_comparison,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockPrecompose_augmentation,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.dkHammockColimitComparisonIso_postcompose,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.dkHammockColimitComparisonIso_precompose,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.dkHammockComparisonIso_postcompose,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.dkHammockComparisonIso_precompose,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.dkHammockComparisonIso_arrow]
 
 @[noinline] private def e2RequiredBatch122 : Array Lean.Name :=
   #[
-      `SerrePositivity.EInfinity.FrameHom.frameSpanTargetIndexMap,
-      `SerrePositivity.EInfinity.FrameHom.frameSpanTargetHomotopyMap,
-      `SerrePositivity.EInfinity.FrameHom.frameSpanTargetHomotopy,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameSpanTargetIndexMap,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameSpanTargetHomotopyMap,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameSpanTargetHomotopy,
       `SerrePositivity.EInfinity.BarrattEccles.sourceFrameSpecialHammockNerveMap,
       `SerrePositivity.EInfinity.BarrattEccles.sourceFrameMappingSpaceIndexMap,
       `SerrePositivity.EInfinity.BarrattEccles.sourceFrameSpecialHammockHomotopy,
@@ -7532,16 +7532,16 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.postCollapse,
       `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.postCollapse_cut,
       `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.postCollapse_obj,
-      `SerrePositivity.EInfinity.FrameHom.frameLeftRoofFunctor,
-      `SerrePositivity.EInfinity.FrameHom.frameLeftRoofNerveMap,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameLeftRoofFunctor,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameLeftRoofNerveMap,
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.resolutionLeftRoofFunctor,
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.resolutionLeftRoofFunctor_insert,
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.resolutionLeftRoofNerveMap,
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.resolutionLeftRoofNerveMap_insert,
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.resolutionLeftRoofNerveMap_normalization,
-      `SerrePositivity.EInfinity.FrameHom.frameLeftRoofFunctor_postcompose,
-      `SerrePositivity.EInfinity.FrameHom.frameLeftRoofColimitMap,
-      `SerrePositivity.EInfinity.FrameHom.frameLeftRoofColimitMap_postcompose,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameLeftRoofFunctor_postcompose,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameLeftRoofColimitMap,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameLeftRoofColimitMap_postcompose,
       `SerrePositivity.EInfinity.BarrattEccles.sourceFrameLeftRoofNerveMap,
       `SerrePositivity.EInfinity.BarrattEccles.sourceFrameLeftRoofNerveMap_normalization,
       `SerrePositivity.EInfinity.BarrattEccles.sourceFramePostcomposeIndexMap,
@@ -7581,8 +7581,8 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.Hammock.LeftRoof.Precompose.diagramHomotopy,
       `SerrePositivity.EInfinity.Hammock.LeftRoof.Precompose.diagramColimitMap_component,
       `SerrePositivity.EInfinity.Hammock.LeftRoof.Precompose.diagramColimitMap_sourceComparison,
-      `SerrePositivity.EInfinity.FrameHom.frameSpanSourceIndexMap,
-      `SerrePositivity.EInfinity.FrameHom.frameLeftRoofColimitMap_precompose,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameSpanSourceIndexMap,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameLeftRoofColimitMap_precompose,
       `SerrePositivity.EInfinity.BarrattEccles.sourceFramePrecomposeIndexMap,
       `SerrePositivity.EInfinity.BarrattEccles.algebraReducedHammockPrecompose,
       `SerrePositivity.EInfinity.BarrattEccles.sourceFrameReducedHammockNerveMap_precompose,
@@ -7658,10 +7658,10 @@ import Mathlib.Tactic.Ring
 
 @[noinline] private def e2RequiredBatch127 : Array Lean.Name :=
   #[
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockValue_augmentation,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockDiagonalComparison_augmentation_value,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockDiagonalReduction_value,
-      `SerrePositivity.EInfinity.SimplicialLocalization.dkHammockComparisonIso_components_value,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockValue_augmentation,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalComparison_augmentation_value,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalReduction_value,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.dkHammockComparisonIso_components_value,
       `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.edge_naturality,
       `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.pathNatTrans,
       `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.value_naturality]
@@ -7686,50 +7686,50 @@ import Mathlib.Tactic.Ring
 @[noinline] private def e2RequiredBatch129 : Array Lean.Name :=
   #[
       `SerrePositivity.EInfinity.Hammock.Relative.fixedColimitMap_unit_point,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockResolution_map,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockDiagonalUnit,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockDiagonalUnit_augmentation,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockDiagonalUnit_comparison,
-      `SerrePositivity.EInfinity.SimplicialLocalization.HammockObjects,
-      `SerrePositivity.EInfinity.SimplicialLocalization.hammockEnrichedCategory,
-      `SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockObjects,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockEnrichedCategory,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockAugmentationEnriched,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockComparisonEnriched,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockAugmentationEnriched_map,
-      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockComparisonEnriched_map,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockResolution_map,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalUnit,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalUnit_augmentation,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalUnit_comparison,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.HammockObjects,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockEnrichedCategory,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeHammockObjects,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockEnrichedCategory,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockAugmentationEnriched,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockComparisonEnriched,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockAugmentationEnriched_map,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockComparisonEnriched_map,
       `SerrePositivity.EInfinity.Hammock.exInfinityEnrichedFunctor,
       `SerrePositivity.EInfinity.Hammock.exInfinityEnrichedFunctor_map,
       `SerrePositivity.EInfinity.Hammock.exInfinityTransportHom_kanComplex,
-      `SerrePositivity.EInfinity.SimplicialLocalization.KanHammockObjects,
-      `SerrePositivity.EInfinity.SimplicialLocalization.KanFreeHammockObjects,
-      `SerrePositivity.EInfinity.SimplicialLocalization.kanFreeHammockAugmentationEnriched,
-      `SerrePositivity.EInfinity.SimplicialLocalization.kanFreeHammockComparisonEnriched,
-      `SerrePositivity.EInfinity.SimplicialLocalization.kanFreeHammockAugmentationEnriched_map,
-      `SerrePositivity.EInfinity.SimplicialLocalization.kanFreeHammockComparisonEnriched_map,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanHammockObjects,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanFreeHammockObjects,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanFreeHammockAugmentationEnriched,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanFreeHammockComparisonEnriched,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanFreeHammockAugmentationEnriched_map,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanFreeHammockComparisonEnriched_map,
       `SerrePositivity.EInfinity.Hammock.exInfinity_map_weak,
-      `SerrePositivity.EInfinity.SimplicialLocalization.kanFreeHammockAugmentationEnriched_map_weak,
-      `SerrePositivity.EInfinity.SimplicialLocalization.kanFreeHammockComparisonEnriched_map_weak,
-      `SerrePositivity.EInfinity.SimplicialLocalization.kanFreeHammockAugmentationEnriched_map_equivalence,
-      `SerrePositivity.EInfinity.SimplicialLocalization.kanFreeHammockComparisonEnriched_map_equivalence,
-      `SerrePositivity.EInfinity.SimplicialLocalization.KanHammockCategory,
-      `SerrePositivity.EInfinity.SimplicialLocalization.KanFreeHammockCategory,
-      `SerrePositivity.EInfinity.SimplicialLocalization.kanHammockSimplicialCategory,
-      `SerrePositivity.EInfinity.SimplicialLocalization.kanFreeHammockSimplicialCategory,
-      `SerrePositivity.EInfinity.SimplicialLocalization.kanHammockHom_kanComplex,
-      `SerrePositivity.EInfinity.SimplicialLocalization.kanFreeHammockHom_kanComplex,
-      `SerrePositivity.EInfinity.SimplicialLocalization.kanFreeHammockAugmentationFunctor,
-      `SerrePositivity.EInfinity.SimplicialLocalization.kanFreeHammockComparisonFunctor,
-      `SerrePositivity.EInfinity.SimplicialLocalization.kanHammockNerve,
-      `SerrePositivity.EInfinity.SimplicialLocalization.kanFreeHammockNerve,
-      `SerrePositivity.EInfinity.SimplicialLocalization.kanHammockNerve_quasicategory,
-      `SerrePositivity.EInfinity.SimplicialLocalization.kanFreeHammockNerve_quasicategory,
-      `SerrePositivity.EInfinity.SimplicialLocalization.kanFreeHammockAugmentationNerve,
-      `SerrePositivity.EInfinity.SimplicialLocalization.kanFreeHammockComparisonNerve,
-      `SerrePositivity.EInfinity.SimplicialLocalization.kanFreeHammockAugmentationNerve_fullyFaithful,
-      `SerrePositivity.EInfinity.SimplicialLocalization.kanFreeHammockComparisonNerve_fullyFaithful,
-      `SerrePositivity.EInfinity.SimplicialLocalization.kanFreeHammockAugmentationNerve_equivalence,
-      `SerrePositivity.EInfinity.SimplicialLocalization.kanFreeHammockComparisonNerve_equivalence]
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanFreeHammockAugmentationEnriched_map_weak,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanFreeHammockComparisonEnriched_map_weak,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanFreeHammockAugmentationEnriched_map_equivalence,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanFreeHammockComparisonEnriched_map_equivalence,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanHammockCategory,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanFreeHammockCategory,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockSimplicialCategory,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanFreeHammockSimplicialCategory,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockHom_kanComplex,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanFreeHammockHom_kanComplex,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanFreeHammockAugmentationFunctor,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanFreeHammockComparisonFunctor,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockNerve,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanFreeHammockNerve,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockNerve_quasicategory,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanFreeHammockNerve_quasicategory,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanFreeHammockAugmentationNerve,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanFreeHammockComparisonNerve,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanFreeHammockAugmentationNerve_fullyFaithful,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanFreeHammockComparisonNerve_fullyFaithful,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanFreeHammockAugmentationNerve_equivalence,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanFreeHammockComparisonNerve_equivalence]
 
 @[noinline] private def e2RequiredBatch130 : Array Lean.Name :=
   #[
@@ -7744,20 +7744,20 @@ import Mathlib.Tactic.Ring
     `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ForwardPairComposition.collapse_obj,
     `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ForwardPairComposition.collapse_simplex,
     `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ForwardPairComposition.composePoint_arrowPoint,
-    `SerrePositivity.EInfinity.SimplicialLocalization.weakNerveEdges,
-    `SerrePositivity.EInfinity.SimplicialLocalization.hammockLocalizationNerveMap_inverts,
-    `SerrePositivity.EInfinity.SimplicialLocalization.HammockCategory,
-    `SerrePositivity.EInfinity.SimplicialLocalization.hammockSourceFunctor,
-    `SerrePositivity.EInfinity.SimplicialLocalization.hammockSourceFunctor_homTo,
-    `SerrePositivity.EInfinity.SimplicialLocalization.kanHammockSourceFunctor,
-    `SerrePositivity.EInfinity.SimplicialLocalization.kanHammockSourceFunctor_homTo,
-    `SerrePositivity.EInfinity.SimplicialLocalization.hammockLocalizationNerveMap,
-    `SerrePositivity.EInfinity.SimplicialLocalization.hammockLocalizationNerveMap_vertex,
-    `SerrePositivity.EInfinity.SimplicialLocalization.hammockLocalizationNerveMap_arrow,
-    `SerrePositivity.EInfinity.SimplicialLocalization.kanHammockBackward,
-    `SerrePositivity.EInfinity.SimplicialLocalization.kanHammock_source_homotopy,
-    `SerrePositivity.EInfinity.SimplicialLocalization.kanHammock_target_homotopy,
-    `SerrePositivity.EInfinity.SimplicialLocalization.kanHammockSourceFunctor_weak_invertible]
+    `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges,
+    `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap_inverts,
+    `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.HammockCategory,
+    `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockSourceFunctor,
+    `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockSourceFunctor_homTo,
+    `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockSourceFunctor,
+    `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockSourceFunctor_homTo,
+    `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap,
+    `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap_vertex,
+    `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap_arrow,
+    `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockBackward,
+    `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammock_source_homotopy,
+    `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammock_target_homotopy,
+    `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockSourceFunctor_weak_invertible]
 
 @[noinline] private def e2RequiredBatch131 : Array Lean.Name :=
   #[
@@ -7767,15 +7767,15 @@ import Mathlib.Tactic.Ring
     `SerrePositivity.EInfinity.BarrattEccles.cAlgLocalizationSource_isLocalization_iff,
     `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.localizationPrecomposition_comp_equivalence,
     `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.isLocalization_comp_equivalence_iff,
-    `SerrePositivity.EInfinity.SimplicialLocalization.localizationNerveSourceMap_precomposition,
-    `SerrePositivity.EInfinity.SimplicialLocalization.localizationNerveSourceMap_isLocalization_iff,
-    `SerrePositivity.EInfinity.SimplicialLocalization.kanHammockLocalizationEquivalence,
-    `SerrePositivity.EInfinity.SimplicialLocalization.kanHammockLocalizationEquivalence_hom,
-    `SerrePositivity.EInfinity.SimplicialLocalization.kanHammockLocalizationComparison,
-    `SerrePositivity.EInfinity.SimplicialLocalization.localizationNerveSourceMap,
-    `SerrePositivity.EInfinity.SimplicialLocalization.localizationNerveSourceMap_inverts,
-    `SerrePositivity.EInfinity.SimplicialLocalization.kanHammockLocalization_vertexIso,
-    `SerrePositivity.EInfinity.SimplicialLocalization.localizationNerveSourceMap_vertexIso]
+    `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveSourceMap_precomposition,
+    `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveSourceMap_isLocalization_iff,
+    `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockLocalizationEquivalence,
+    `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockLocalizationEquivalence_hom,
+    `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockLocalizationComparison,
+    `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveSourceMap,
+    `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveSourceMap_inverts,
+    `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockLocalization_vertexIso,
+    `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveSourceMap_vertexIso]
 
 @[noinline] private def e2RequiredBatch132 : Array Lean.Name :=
   #[
@@ -7792,8 +7792,8 @@ import Mathlib.Tactic.Ring
     `SerrePositivity.EInfinity.BarrattEccles.cofibrantDKSourceFrameAugmentation_weak,
     `SerrePositivity.EInfinity.BarrattEccles.sourceFrameIndex_weaklyContractible,
     `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceFrameTotal_hasLimit,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.augmentationFunctorIso,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.target_hasLimit_of_inverting_augmentation,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.augmentationFunctorIso,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.target_hasLimit_of_inverting_augmentation,
     `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FrameArrowCategory.Total,
     `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FrameArrowCategory.degree,
     `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FrameArrowCategory.target,
@@ -7806,20 +7806,20 @@ import Mathlib.Tactic.Ring
     `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FrameArrowCategory.identityCounit,
     `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FrameArrowCategory.identityCounit_left,
     `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FrameArrowCategory.identityCounit_right,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.nerveMap_leftAdjoint_isLeftCofinal,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.identityInclusion_nerve_isLeftCofinal,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.elementsToCostructured,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.costructuredToElements,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.elementsCostructuredEquivalence,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.fixedTargetInclusion,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.fixedTargetInclusion_degree,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.fixedTargetInclusion_target,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.elementsTotal,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.elementsTotal_degree,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.elementsTotal_target,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.elementsTotal_rightLeg,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.identityInclusion_nerve_target,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.target_hasLimit_iff]
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.nerveMap_leftAdjoint_isLeftCofinal,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.identityInclusion_nerve_isLeftCofinal,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.elementsToCostructured,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.costructuredToElements,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.elementsCostructuredEquivalence,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.fixedTargetInclusion,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.fixedTargetInclusion_degree,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.fixedTargetInclusion_target,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.elementsTotal,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.elementsTotal_degree,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.elementsTotal_target,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.elementsTotal_rightLeg,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.identityInclusion_nerve_target,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.target_hasLimit_iff]
 
 @[noinline] private def e2RequiredBatch133 : Array Lean.Name :=
   #[
@@ -7846,29 +7846,29 @@ import Mathlib.Tactic.Ring
     `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceFrameRoofMap,
     `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceFrameRoofMap_degree,
     `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceFrameRoofMap_isLeftCofinal_iff_raw,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.totalAugmentation,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.rightKanComparisonCell,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.rightKanComparisonHomotopy,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.rightKanComparisonHomotopy_hom,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.rightKanCosliceRealization,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.rightKanMap,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.rightKanMap_projection,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.rightKanMap_coslice,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.rightKanMap_diagram,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.frameRightKanHomotopy,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.frameRightKanCosliceRealization,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.frameRightKanMap,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.frameRightKanMap_projection,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.frameRightKanMap_coslice,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.frameRightKanMap_coslice_initial,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.frameRightKanMap_diagram,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofSource,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofSourceIso,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofSourceIso_degree,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofSourceIso_over,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.frameRoofMap,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.frameRoofMap_degree,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.frameRoofMap_isLeftCofinal_iff_raw]
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.totalAugmentation,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.rightKanComparisonCell,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.rightKanComparisonHomotopy,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.rightKanComparisonHomotopy_hom,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.rightKanCosliceRealization,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.rightKanMap,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.rightKanMap_projection,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.rightKanMap_coslice,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.rightKanMap_diagram,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.frameRightKanHomotopy,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.frameRightKanCosliceRealization,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.frameRightKanMap,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.frameRightKanMap_projection,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.frameRightKanMap_coslice,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.frameRightKanMap_coslice_initial,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.frameRightKanMap_diagram,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofSource,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofSourceIso,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofSourceIso_degree,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofSourceIso_over,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.frameRoofMap,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.frameRoofMap_degree,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.frameRoofMap_isLeftCofinal_iff_raw]
 
 @[noinline] private def e2RequiredBatch134 : Array Lean.Name :=
   #[`SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductElements,
@@ -7893,22 +7893,22 @@ import Mathlib.Tactic.Ring
     `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofSliceDegreeMap,
     `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofSliceDegreeMap_source,
     `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofMap_isLeftCofinal_iff_slices,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofTargetOverBaseMap,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofTargetOverBaseMap_projection,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofQuillenSlice,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofQuillenSliceOver,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofQuillenSliceOver_projection,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofQuillenSliceDegreeMap,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofQuillenSliceDegreeMap_source,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofQuillenSliceDegreeMap_over,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofTarget,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofTargetProjection,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofTargetProjection_rightFibration,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofTarget_quasicategory,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofTargetProjection_leftFibration,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofTargetDegree,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofTargetDegree_vertex,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofTargetPoint_projection,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofTargetOverBaseMap,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofTargetOverBaseMap_projection,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofQuillenSlice,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofQuillenSliceOver,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofQuillenSliceOver_projection,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofQuillenSliceDegreeMap,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofQuillenSliceDegreeMap_source,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofQuillenSliceDegreeMap_over,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofTarget,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofTargetProjection,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofTargetProjection_rightFibration,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofTarget_quasicategory,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofTargetProjection_leftFibration,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofTargetDegree,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofTargetDegree_vertex,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofTargetPoint_projection,
     `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.MixedNerveCostructuredPullback.lifted,
     `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.MixedNerveCostructuredPullback.toLifted,
     `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.MixedNerveCostructuredPullback.fromLifted,
@@ -7962,21 +7962,21 @@ import Mathlib.Tactic.Ring
     `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofSliceProductMap_over,
     `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofSliceProductMap_rightFibration,
     `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofSliceProductMap_fiber_kanComplex,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofTargetDegreeSliceIso,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofTargetDegreeSliceIso_projection,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofQuillenDegreeNormalizationMap,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofQuillenDegreeNormalizationMap_isIso,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofQuillenDegreeNormalizationMap_source,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofQuillenDegreeNormalizationMap_over,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofQuillenSliceDegreeMap_eq_native,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofQuillenSliceDegreeMap_fibration,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofQuillenDegreeCornerMap,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofQuillenDegreeCorner_isPullback,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofQuillenSlice_weaklyContractible_of_corner_weak,
-    `SerrePositivity.EInfinity.FrameHom.joinHorn_point_leftAnodyne,
-    `SerrePositivity.EInfinity.FrameHom.relativePointSlice_fibration,
-    `SerrePositivity.EInfinity.FrameHom.pointSliceCornerMap_fibration,
-    `SerrePositivity.EInfinity.FrameHom.pointSliceRoofTriangleMap_fibration]
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofTargetDegreeSliceIso,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofTargetDegreeSliceIso_projection,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofQuillenDegreeNormalizationMap,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofQuillenDegreeNormalizationMap_isIso,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofQuillenDegreeNormalizationMap_source,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofQuillenDegreeNormalizationMap_over,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofQuillenSliceDegreeMap_eq_native,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofQuillenSliceDegreeMap_fibration,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofQuillenDegreeCornerMap,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofQuillenDegreeCorner_isPullback,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofQuillenSlice_weaklyContractible_of_corner_weak,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.joinHorn_point_leftAnodyne,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.relativePointSlice_fibration,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.pointSliceCornerMap_fibration,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.pointSliceRoofTriangleMap_fibration]
 
 @[noinline] private def e2RequiredBatch136 : Array Lean.Name :=
   #[`SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofDegreeAlgebra,
@@ -7986,24 +7986,24 @@ import Mathlib.Tactic.Ring
     `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductCorner_weak_iff_hom,
     `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofSlice_weaklyContractible_of_productHom_weak,
     `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofMap_isLeftCofinal_of_productHom_weak,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofCornerTerminalEvaluation,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofCornerEvaluation,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofCornerEvaluation_weak,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofCornerEvaluation_weak_iff,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofCornerNormalized,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofCornerNormalizedProjection,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofCornerNormalizationMap,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofCornerNormalizationMap_isIso,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofCornerNormalizationMap_source,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofCornerNormalizationMap_over,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofCornerNormalizedProjection_leftFibration,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofCornerTerminal,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofCornerTerminal_isTerminal,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofCornerTerminalFiberIso,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofCornerTerminalFiberIso_source,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofTargetFrameVertex,
-    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofTargetFiberPinchedIso,
-    `SerrePositivity.EInfinity.FrameHom.terminalFiberEvaluation_weak]
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofCornerTerminalEvaluation,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofCornerEvaluation,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofCornerEvaluation_weak,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofCornerEvaluation_weak_iff,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofCornerNormalized,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofCornerNormalizedProjection,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofCornerNormalizationMap,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofCornerNormalizationMap_isIso,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofCornerNormalizationMap_source,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofCornerNormalizationMap_over,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofCornerNormalizedProjection_leftFibration,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofCornerTerminal,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofCornerTerminal_isTerminal,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofCornerTerminalFiberIso,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofCornerTerminalFiberIso_source,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofTargetFrameVertex,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofTargetFiberPinchedIso,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.terminalFiberEvaluation_weak]
 
 @[noinline] private def e2RequiredBatch137 : Array Lean.Name :=
   #[`SerrePositivity.EInfinity.BarrattEccles.cofibrantKanHammockInclusionMap,
@@ -8024,20 +8024,20 @@ import Mathlib.Tactic.Ring
     `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofDegreePrecompose_weak,
     `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductDegreeHammockMap,
     `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductDegreeHammockMap_weak,
-    `SerrePositivity.EInfinity.FrameHom.ProductSimplexLiftedOver.firstNerveMap,
-    `SerrePositivity.EInfinity.FrameHom.ProductSimplexLiftedOver.firstComponent_eq_mapElements,
-    `SerrePositivity.EInfinity.FrameHom.ProductSimplexLiftedOver.firstNerveMap_augmentation,
-    `SerrePositivity.EInfinity.FrameHom.ProductSimplexLiftedOver.firstNerveMap_localized_isIso,
-    `SerrePositivity.EInfinity.FrameHom.ProductSimplexLiftedOver.firstNerveMap_weak,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ProductSimplexLiftedOver.firstNerveMap,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ProductSimplexLiftedOver.firstComponent_eq_mapElements,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ProductSimplexLiftedOver.firstNerveMap_augmentation,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ProductSimplexLiftedOver.firstNerveMap_localized_isIso,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ProductSimplexLiftedOver.firstNerveMap_weak,
     `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ProductSimplexProjection.projection,
     `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ProductSimplexProjection.sectionMap,
     `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ProductSimplexProjection.sectionMap_projection,
     `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ProductSimplexProjection.contractionMap,
     `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ProductSimplexProjection.contraction,
     `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ProductSimplexProjection.projection_weak,
-    `SerrePositivity.EInfinity.SimplicialLocalization.kanHammockHomLiftIso,
-    `SerrePositivity.EInfinity.SimplicialLocalization.kanHammockHomPinchedMap,
-    `SerrePositivity.EInfinity.SimplicialLocalization.kanHammockHomPinchedMap_weak]
+    `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockHomLiftIso,
+    `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockHomPinchedMap,
+    `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockHomPinchedMap_weak]
 
 @[noinline] private def e2RequiredBatch138 : Array Lean.Name :=
   #[`SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductComma,
@@ -8069,7 +8069,7 @@ import Mathlib.Tactic.Ring
     `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductHomMap_weak_of_intervalCell_eq,
     `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductHomMap_weak_of_interval_triangles,
     `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofMap_isLeftCofinal_of_interval_triangles,
-    `SerrePositivity.EInfinity.FrameHom.pinchedFamily_weak_of_intervalFamilyHom_eq]
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.pinchedFamily_weak_of_intervalFamilyHom_eq]
 
 @[noinline] private def e2RequiredBatch139 : Array Lean.Name :=
   #[`SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofDegreeTransportIso_inv_source,
@@ -8082,21 +8082,21 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductGeometricLeftCell,
       `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductGeometricRightCell,
       `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductGeometric_triangle,
-      `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofTargetSlicePointIso_projection,
-      `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofCornerSourceSliceMap,
-      `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofCornerEvaluation_slice,
-      `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofCornerEvaluationSliceHomotopy,
-      `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofCornerEvaluationSliceHomotopy_h,
-      `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofCornerEvaluationRightHomotopy,
-      `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofCornerEvaluationLeftHomotopy,
-      `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofCornerEvaluation_triangle,
-      `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofCornerEvaluation_triangle_retarget,
-      `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofCornerSourceSliceMap_projection,
-      `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofQuillenDegreeNormalizationMap_inv_source,
-      `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofQuillenDegreeCornerMap_source,
-      `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofSliceFiberPointTransport_ι,
-      `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofTargetSlicePointIso,
-      `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofTargetFiberPinchedIso_slice]
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofTargetSlicePointIso_projection,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofCornerSourceSliceMap,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofCornerEvaluation_slice,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofCornerEvaluationSliceHomotopy,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofCornerEvaluationSliceHomotopy_h,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofCornerEvaluationRightHomotopy,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofCornerEvaluationLeftHomotopy,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofCornerEvaluation_triangle,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofCornerEvaluation_triangle_retarget,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofCornerSourceSliceMap_projection,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofQuillenDegreeNormalizationMap_inv_source,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofQuillenDegreeCornerMap_source,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofSliceFiberPointTransport_ι,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofTargetSlicePointIso,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofTargetFiberPinchedIso_slice]
 
 @[noinline] private def e2RequiredBatch140 : Array Lean.Name :=
   #[`SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductGeometricRightHomotopy_h,
@@ -8107,17 +8107,17 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductCommaRightOver,
       `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductCommaRightOver_nerve,
       `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductCommaRightSlice,
-      `SerrePositivity.EInfinity.FrameHom.FrameArrows.frameRoofMap_over,
-      `SerrePositivity.EInfinity.FrameHom.FrameArrows.frameRoofRightSliceMap,
-      `SerrePositivity.EInfinity.FrameHom.FrameArrows.frameRoofMap_normalizedOver,
-      `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofCornerSourceSliceMap_eq_source,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.frameRoofMap_over,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.frameRoofRightSliceMap,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.frameRoofMap_normalizedOver,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofCornerSourceSliceMap_eq_source,
       `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.nerveNatTransHomotopy_mixed,
       `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.rightMappingSpacePrism_mixed,
       `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.nerveCoconePrism_eq_natTrans,
-      `SerrePositivity.EInfinity.FrameHom.sliceOverUncurry_pointTransport,
-      `SerrePositivity.EInfinity.FrameHom.nerveOverRightSliceMap,
-      `SerrePositivity.EInfinity.FrameHom.nerveOverRightSliceMap_uncurry,
-      `SerrePositivity.EInfinity.FrameHom.nerveOverRightSliceMap_evaluation_h]
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.sliceOverUncurry_pointTransport,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.nerveOverRightSliceMap,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.nerveOverRightSliceMap_uncurry,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.nerveOverRightSliceMap_evaluation_h]
 
 @[noinline] private def e2RequiredBatch141 : Array Lean.Name :=
   #[`SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductCommaOver,
@@ -8138,20 +8138,20 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductActualIntervalCell_eq_comparison,
       `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductHomMap_weak_of_reference_triangle,
       `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofMap_isLeftCofinal_of_reference_triangle,
-      `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofQuillenDegreeNormalizationMap_inv_over,
-      `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofQuillenDegreeCornerMap_normalizedOver,
-      `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofCornerEvaluationLeftHomotopy_h_base,
-      `SerrePositivity.EInfinity.FrameHom.overTerminalTransformation,
-      `SerrePositivity.EInfinity.FrameHom.overTerminalHomotopy,
-      `SerrePositivity.EInfinity.FrameHom.overTerminalTransformation_forget,
-      `SerrePositivity.EInfinity.FrameHom.overTerminalHomotopy_forget_h,
-      `SerrePositivity.EInfinity.FrameHom.overTerminalHomotopy_map_forget_h,
-      `SerrePositivity.EInfinity.FrameHom.terminalFiberBaseHomotopy,
-      `SerrePositivity.EInfinity.FrameHom.terminalFiberBaseHomotopy_h,
-      `SerrePositivity.EInfinity.FrameHom.terminalFiberBaseHomotopy_hom_eq,
-      `SerrePositivity.EInfinity.FrameHom.terminalFiberBaseHomotopy_hom_eq_retarget,
-      `SerrePositivity.EInfinity.FrameHom.FrameArrows.augmentationHomotopy,
-      `SerrePositivity.EInfinity.FrameHom.FrameArrows.augmentationFunctorIso_hom]
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofQuillenDegreeNormalizationMap_inv_over,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofQuillenDegreeCornerMap_normalizedOver,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofCornerEvaluationLeftHomotopy_h_base,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.overTerminalTransformation,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.overTerminalHomotopy,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.overTerminalTransformation_forget,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.overTerminalHomotopy_forget_h,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.overTerminalHomotopy_map_forget_h,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.terminalFiberBaseHomotopy,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.terminalFiberBaseHomotopy_h,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.terminalFiberBaseHomotopy_hom_eq,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.terminalFiberBaseHomotopy_hom_eq_retarget,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.augmentationHomotopy,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.augmentationFunctorIso_hom]
 
 @[noinline] private def e2RequiredBatch142 : Array Lean.Name :=
   #[`SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraHammockColimitInclusionMap,
@@ -8173,9 +8173,9 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductCommaAugmentationRoofMap,
       `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductCommaEvaluationRoofMap,
       `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductCommaEvaluationRoofMap_sourceComparison,
-      `SerrePositivity.EInfinity.FrameHom.map_eq_of_anodyneQ_eq,
-      `SerrePositivity.EInfinity.FrameHom.homotopy_of_anodyneQ_map_eq,
-      `SerrePositivity.EInfinity.FrameHom.pinchedFamily_intervalHom_eq_of_anodyneQ_eq,
+      `SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.map_eq_of_anodyneQ_eq,
+      `SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.homotopy_of_anodyneQ_map_eq,
+      `SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedFamily_intervalHom_eq_of_anodyneQ_eq,
       `SerrePositivity.EInfinity.Hammock.LeftRoof.Precompose.SameUniverse.diagramGraphMap,
       `SerrePositivity.EInfinity.Hammock.LeftRoof.Precompose.SameUniverse.diagramColimitMap,
       `SerrePositivity.EInfinity.Hammock.LeftRoof.Precompose.SameUniverse.diagramColimitMap_wordAction,
@@ -8272,17 +8272,17 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.Hammock.LeftRoof.Prefix.pathMap_comp,
       `SerrePositivity.EInfinity.Hammock.LeftRoof.Prefix.pathMap_zero,
       `SerrePositivity.EInfinity.Hammock.LeftRoof.Prefix.pathMap_one_of_source,
-      `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.familyMap,
-      `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.pathMap,
-      `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.pathMap_reindex,
-      `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.pathMap_comp,
-      `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.pathMap_zero,
-      `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.pathMap_one_of_source,
-      `SerrePositivity.EInfinity.SimplicialLocalization.kanHammockSource_precompose,
-      `SerrePositivity.EInfinity.SimplicialLocalization.kanHammockSource_precompose_family,
-      `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.pathMap_comp_enriched,
-      `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.pathMap_comp_one_of_target,
-      `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.pathMap_comp_one_enriched,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.familyMap,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.pathMap,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.pathMap_reindex,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.pathMap_comp,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.pathMap_zero,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.pathMap_one_of_source,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockSource_precompose,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockSource_precompose_family,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.pathMap_comp_enriched,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.pathMap_comp_one_of_target,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.pathMap_comp_one_enriched,
       `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductCommaNativeFamilyMap,
       `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductCommaNativeFamilyMap_eq,
       `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductCommaNativeFamilyMap_pinched,
@@ -8306,21 +8306,21 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CoherentRightConeFunctor.diagram,
       `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.lift_const_tensor,
       `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.unitHom_transport,
-      `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.frontRaw,
-      `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.frontDiagram,
-      `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.frontDiagram_obj_zero,
-      `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.frontDiagram_obj_one,
-      `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.frontDiagram_map_zero_zero,
-      `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.frontDiagram_map_zero_one,
-      `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.frontDiagram_map_one_one,
-      `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.lastHom,
-      `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.lastHom_zero,
-      `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.lastHom_one,
-      `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.lastHom_comp,
-      `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.mixedDiagram,
-      `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.simplex,
-      `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.simplex_target,
-      `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.sliceSimplex,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.frontRaw,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.frontDiagram,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.frontDiagram_obj_zero,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.frontDiagram_obj_one,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.frontDiagram_map_zero_zero,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.frontDiagram_map_zero_one,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.frontDiagram_map_one_one,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.lastHom,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.lastHom_zero,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.lastHom_one,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.lastHom_comp,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.mixedDiagram,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.simplex,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.simplex_target,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.sliceSimplex,
       `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductCommaNativeSimplex,
       `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductCommaNativeSimplex_target,
       `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductCommaNativeSliceSimplex]
@@ -8332,13 +8332,13 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.hom_reindex_of_normalized,
       `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.hom_reindex,
       `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.diagram_front,
-      `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.frontDiagram_reindex,
-      `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.lastHom_reindex,
-      `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.simplex_naturality,
-      `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.sliceSimplex_naturality,
-      `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.prism,
-      `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.simplex_front,
-      `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.prism_projection,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.frontDiagram_reindex,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.lastHom_reindex,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.simplex_naturality,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.sliceSimplex_naturality,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.prism,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.simplex_front,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.prism_projection,
       `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductCommaNativeSimplex_naturality,
       `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductCommaNativeSliceSimplex_naturality,
       `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductCommaNativePrism,
@@ -8350,8 +8350,8 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.hom_cast_cast_normalized,
       `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.frontHom_fixed,
       `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.diagram_eq_comparison,
-      `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.simplex_one,
-      `SerrePositivity.EInfinity.SimplicialLocalization.kanHammockHomPinchedMap_app_val,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.simplex_one,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockHomPinchedMap_app_val,
       `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductCommaNativeSimplex_one,
       `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductCommaNativePinchedMap_app_val,
       `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductCommaNativePrism_one,
@@ -8378,13 +8378,13 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.diagram_join,
       `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.orderHom_const,
       `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.diagram_eq_order,
-      `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.rightCocone,
-      `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.simplex_zero,
-      `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.simplex_zero_join,
-      `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.rightSlice,
-      `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.prism_zero,
-      `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.prism_zero_uncurry,
-      `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.prism_zero_evaluation,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.rightCocone,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.simplex_zero,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.simplex_zero_join,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.rightSlice,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.prism_zero,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.prism_zero_uncurry,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.prism_zero_evaluation,
       `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductCommaNativePrism_zero_uncurry,
       `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductCommaNativePrism_zero_evaluation,
       `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductCommaNative_triangle,
@@ -8399,13 +8399,13 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRightKanDiagram_hasLimit,
       `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRightKanDiagram_hasLimit_all,
       `SerrePositivity.EInfinity.BarrattEccles.cofibrantInvertingFunctor_rightKanExtension_exists,
-      `SerrePositivity.EInfinity.FrameHom.FrameArrows.frameRightKanCanonicalCone_isLimit,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.frameRightKanCanonicalCone_isLimit,
       `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRightKanCanonicalCone_isLimit,
       `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRightKanCanonicalCone_isLimit_all,
       `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRightKanExtension_refl,
       `SerrePositivity.EInfinity.BarrattEccles.cofibrantHammockLocalizationPrecomposition_isFullyFaithful,
-      `SerrePositivity.EInfinity.FrameHom.FrameArrows.augmentationLimitConeFunctorIso,
-      `SerrePositivity.EInfinity.FrameHom.FrameArrows.augmentationLimitCone_leg_isInvertible,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.augmentationLimitConeFunctorIso,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.augmentationLimitCone_leg_isInvertible,
       `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceFrameAugmentation_image_invertible,
       `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRightKanLimitCone_leg_isInvertible,
       `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.homotopyComponent_target_isInvertible,
@@ -8426,7 +8426,7 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.ComplexLimits.complexToClosed_map,
       `SerrePositivity.EInfinity.ComplexLimits.complexOrdinaryDerivedSource,
       `SerrePositivity.EInfinity.ComplexLimits.complexOrdinaryDerivedSource_map_weak,
-      `SerrePositivity.EInfinity.SimplicialLocalization.weakNerveEdges_inverts_of_arrows,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges_inverts_of_arrows,
       `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraForgetNerve,
       `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraForgetNerve_mk₁,
       `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraUnderlyingDerivedSource,
@@ -8460,15 +8460,15 @@ import Mathlib.Tactic.Ring
     `SerrePositivity.EInfinity.BarrattEccles.discreteCAlgEmbedding,
     `SerrePositivity.EInfinity.BarrattEccles.discreteCAlgEmbedding_vertexIso,
     `SerrePositivity.EInfinity.BarrattEccles.discreteCAlgEmbedding_forgetIso,
-    `SerrePositivity.EInfinity.FrameHom.MixedNerve.up,
-    `SerrePositivity.EInfinity.FrameHom.MixedNerve.down,
-    `SerrePositivity.EInfinity.FrameHom.MixedNerve.lifted,
-    `SerrePositivity.EInfinity.FrameHom.MixedNerve.liftedNatTrans,
-    `SerrePositivity.EInfinity.FrameHom.MixedNerve.recover,
-    `SerrePositivity.EInfinity.FrameHom.MixedNerve.homotopy,
-    `SerrePositivity.EInfinity.FrameHom.MixedNerve.up_vertex,
-    `SerrePositivity.EInfinity.FrameHom.MixedNerve.down_mk₁,
-    `SerrePositivity.EInfinity.FrameHom.MixedNerve.homotopy_component,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.up,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.down,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.lifted,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.liftedNatTrans,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.recover,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.homotopy,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.up_vertex,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.down_mk₁,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.homotopy_component,
     `SerrePositivity.EInfinity.ComplexLimits.complexOrdinaryDerivedNatTransHomotopy,
     `SerrePositivity.EInfinity.ComplexLimits.complexOrdinaryDerivedNatTransHomotopy_component,
     `SerrePositivity.EInfinity.ComplexLimits.complexOrdinaryDerivedNatTransIso,
@@ -8599,7 +8599,7 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.BarrattEccles.cAlgVertexRepresentative,
       `SerrePositivity.EInfinity.BarrattEccles.cAlgVertexRepresentativeIso,
       `SerrePositivity.EInfinity.BarrattEccles.cAlgZeroDegreeDiscreteIso,
-      `SerrePositivity.EInfinity.SimplicialLocalization.localizationNerveVertexIsoOfWeak]
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveVertexIsoOfWeak]
 
 @[noinline] private def e2RequiredBatch158 : Array Lean.Name :=
   #[`SerrePositivity.EInfinity.BarrattEccles.freeHomFromLeft,
@@ -9028,7 +9028,7 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementPinchedMap_localized_isIso,
       `SerrePositivity.EInfinity.ComplexLimits.complexOrdinaryDerivedConstant_eq,
       `SerrePositivity.EInfinity.ComplexLimits.complexOrdinaryDerivedConstantIso,
-      `SerrePositivity.EInfinity.FrameHom.MixedNerve.nerveMap_const]
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.nerveMap_const]
 
 @[noinline] private def e2RequiredBatch175 : Array Lean.Name :=
   #[`SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementParameterMap_app,
@@ -9345,10 +9345,10 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementAugmentedColumn_map_cast_cast,
       `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementAugmentedColumn_map_cast_last,
       `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementAugmentedColumn_hom_last,
-      `SerrePositivity.EInfinity.FrameHom.MixedNerve.coconeJoin_inr,
-      `SerrePositivity.EInfinity.FrameHom.MixedNerve.liftedCocone,
-      `SerrePositivity.EInfinity.FrameHom.MixedNerve.coconeJoin,
-      `SerrePositivity.EInfinity.FrameHom.MixedNerve.coconePrism_eq_homotopy]
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.coconeJoin_inr,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.liftedCocone,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.coconeJoin,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.coconePrism_eq_homotopy]
 
 @[noinline] private def e2RequiredBatch188 : Array Lean.Name :=
   #[`SerrePositivity.EInfinity.ComplexLimits.normalizedTensorConeDerivedFamilyHom_heq_mapped,
@@ -9571,14 +9571,14 @@ import Mathlib.Tactic.Ring
     `SerrePositivity.EInfinity.BarrattEccles.freeProbeRelativeElementPinchedMap]
 
 @[noinline] private def e2RequiredBatch210 : Array Lean.Name :=
-  #[`SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.coherentPinchedFamily,
-    `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.prism_one,
-    `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.prism_one_evaluation,
-    `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.coherentAugmentationHomotopy,
-    `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.family_comp,
-    `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.coherentAugmentationIso,
-    `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.family_eq_roof,
-    `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.native_family_eq_roof_arrow,
+  #[`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.coherentPinchedFamily,
+    `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.prism_one,
+    `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.prism_one_evaluation,
+    `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.coherentAugmentationHomotopy,
+    `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.family_comp,
+    `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.coherentAugmentationIso,
+    `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.family_eq_roof,
+    `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.native_family_eq_roof_arrow,
     `SerrePositivity.EInfinity.BarrattEccles.freeProbeRelativeElementHammockPinchedMap,
     `SerrePositivity.EInfinity.BarrattEccles.freeProbeRelativeElementPinchedMap_eq_hammock,
     `SerrePositivity.EInfinity.BarrattEccles.freeProbeRelativeElementHammockFamily_postcomp_arrow,
@@ -9588,11 +9588,11 @@ import Mathlib.Tactic.Ring
     `SerrePositivity.EInfinity.BarrattEccles.freeProbeElementUnitColumn_evaluation]
 
 @[noinline] private def e2RequiredBatch211 : Array Lean.Name :=
-  #[`SerrePositivity.EInfinity.FrameHom.MixedNerve.liftedFunctor,
-    `SerrePositivity.EInfinity.FrameHom.MixedNerve.rawHomFunctor,
-    `SerrePositivity.EInfinity.FrameHom.MixedNerve.homFunctor,
-    `SerrePositivity.EInfinity.FrameHom.MixedNerve.homFunctor_map,
-    `SerrePositivity.EInfinity.FrameHom.MixedNerve.homotopy_hom_comp,
+  #[`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.liftedFunctor,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.rawHomFunctor,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.homFunctor,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.homFunctor_map,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.homotopy_hom_comp,
     `SerrePositivity.EInfinity.ComplexLimits.complexOrdinaryDerivedNatTransHom_comp,
     `SerrePositivity.EInfinity.ComplexLimits.complexOrdinaryDerivedNatTransHom_square,
     `SerrePositivity.EInfinity.BarrattEccles.freeProbeElementUnitColumn_derived_augmentation,
@@ -9602,23 +9602,23 @@ import Mathlib.Tactic.Ring
     `SerrePositivity.EInfinity.BarrattEccles.freeProbeElementUnderlyingRoof_unit_triangle]
 
 @[noinline] private def e2RequiredBatch212 : Array Lean.Name :=
-  #[`SerrePositivity.EInfinity.SimplicialLocalization.weakNerveEdges_inverts_arrows]
+  #[`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges_inverts_arrows]
 
 @[noinline] private def e2RequiredBatch213 : Array Lean.Name :=
-  #[`SerrePositivity.EInfinity.FrameHom.NerveColumn.hom,
-    `SerrePositivity.EInfinity.FrameHom.NerveColumn.hom_whiskerRight,
-    `SerrePositivity.EInfinity.FrameHom.NerveColumn.augmentationIso,
-    `SerrePositivity.EInfinity.FrameHom.NerveColumn.augmentationIso_hom,
-    `SerrePositivity.EInfinity.FrameHom.NerveColumn.hom_naturality,
-    `SerrePositivity.EInfinity.FrameHom.NerveColumn.roof_naturality,
-    `SerrePositivity.EInfinity.FrameHom.MixedNerve.down_up,
-    `SerrePositivity.EInfinity.FrameHom.MixedNerve.homotopy_down_h,
-    `SerrePositivity.EInfinity.FrameHom.MixedNerve.liftedHom_postcomp_arrow,
-    `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.inv_arrow_eq,
-    `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.comp_arrow_eq,
-    `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.postcomp_augmentation_invertible,
-    `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.coherentAugmentation_postcomp_arrow,
-    `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.native_family_postcomp_column_roof_arrow,
+  #[`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveColumn.hom,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveColumn.hom_whiskerRight,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveColumn.augmentationIso,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveColumn.augmentationIso_hom,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveColumn.hom_naturality,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveColumn.roof_naturality,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.down_up,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.homotopy_down_h,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.liftedHom_postcomp_arrow,
+    `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.inv_arrow_eq,
+    `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.comp_arrow_eq,
+    `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.postcomp_augmentation_invertible,
+    `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.coherentAugmentation_postcomp_arrow,
+    `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.native_family_postcomp_column_roof_arrow,
     `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraOrdinaryForget,
     `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraUnderlyingDerivedSource_eq_lifted,
     `SerrePositivity.EInfinity.BarrattEccles.cofibrantColumnUnderlyingHom_arrow,
@@ -9643,8 +9643,8 @@ import Mathlib.Tactic.Ring
     `SerrePositivity.EInfinity.BarrattEccles.freeNormalizedCommonFrame_cofibrant,
     `SerrePositivity.EInfinity.BarrattEccles.freeNormalizedCommonFrame_map_weak,
     `SerrePositivity.EInfinity.BarrattEccles.freeNormalizedCommonFrame_obj_cofibrant,
-    `SerrePositivity.EInfinity.FrameHom.frameSpanSourceIndexMap_localized_isIso,
-    `SerrePositivity.EInfinity.FrameHom.frameLeftRoofColimitMap_comparison,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameSpanSourceIndexMap_localized_isIso,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameLeftRoofColimitMap_comparison,
     `SerrePositivity.EInfinity.BarrattEccles.freeNormalizedCommonLeftIndex,
     `SerrePositivity.EInfinity.BarrattEccles.freeNormalizedCommonRightIndex,
     `SerrePositivity.EInfinity.BarrattEccles.freeNormalizedCommonReducedRoof,
@@ -9655,8 +9655,8 @@ import Mathlib.Tactic.Ring
     `SerrePositivity.EInfinity.BarrattEccles.freeNormalizedCommonReducedRoof_right_comparison,
     `SerrePositivity.EInfinity.BarrattEccles.freeNormalizedCommonReducedRoof_weak,
     `SerrePositivity.EInfinity.BarrattEccles.freeNormalizedTensorReducedRoof_weak,
-    `SerrePositivity.EInfinity.FrameHom.MixedNerve.up_down,
-    `SerrePositivity.EInfinity.FrameHom.MixedNerve.homLiftIso,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.up_down,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.homLiftIso,
     `SerrePositivity.EInfinity.BarrattEccles.freeProbeElementNormalizedHomMap,
     `SerrePositivity.EInfinity.BarrattEccles.freeProbeElementNormalizedHomMap_homotopyEquivalence,
     `SerrePositivity.EInfinity.BarrattEccles.freeProbeElementNormalizedHomMap_apply,
@@ -9670,14 +9670,14 @@ import Mathlib.Tactic.Ring
     `SerrePositivity.EInfinity.BarrattEccles.freeProbeRelativeElementNormalizedIndexMap_localized_isIso,
     `SerrePositivity.EInfinity.BarrattEccles.freeProbeRelativeElementRoof_graph_image,
     `SerrePositivity.EInfinity.BarrattEccles.freeProbeRelativeElementRoofMap_image,
-    `SerrePositivity.EInfinity.FrameHom.unitComparison_weak_of_probe_family,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.unitComparison_weak_of_probe_family,
     `SerrePositivity.EInfinity.BarrattEccles.freeProbeRelativeElementRoofMap_weak,
     `SerrePositivity.EInfinity.BarrattEccles.freeProbeRelativeElementPinchedMap_weak]
 
 @[noinline] private def e2RequiredBatch215 : Array Lean.Name :=
-  #[`SerrePositivity.EInfinity.FrameHom.MixedNerve.homotopy_const_h,
-    `SerrePositivity.EInfinity.FrameHom.constantFamilyHom_arrow_of_h_eq,
-    `SerrePositivity.EInfinity.FrameHom.mixedNerve_const_postcomp_arrow,
+  #[`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.homotopy_const_h,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.constantFamilyHom_arrow_of_h_eq,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.mixedNerve_const_postcomp_arrow,
     `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.functorIsoEvaluate,
     `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.functorIsoEvaluate_eq_app,
     `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.constantVertexIso,
@@ -9719,9 +9719,9 @@ import Mathlib.Tactic.Ring
     `SerrePositivity.EInfinity.BarrattEccles.freeProbeDerivedUnitComponent_recovery]
 
 @[noinline] private def e2RequiredBatch217 : Array Lean.Name :=
-  #[`SerrePositivity.EInfinity.FrameHom.NerveColumn.hom_component_arrow,
-    `SerrePositivity.EInfinity.FrameHom.NerveColumn.constRestriction_component_arrow,
-    `SerrePositivity.EInfinity.FrameHom.NerveColumn.hom_naturality_const_component,
+  #[`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveColumn.hom_component_arrow,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveColumn.constRestriction_component_arrow,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveColumn.hom_naturality_const_component,
     `SerrePositivity.EInfinity.BarrattEccles.cofibrantForgetSource_component_square,
     `SerrePositivity.EInfinity.BarrattEccles.cofibrantUnderlying_component_transport,
     `SerrePositivity.EInfinity.BarrattEccles.cofibrantForgetOrdinary_component_square,
@@ -9741,7 +9741,7 @@ import Mathlib.Tactic.Ring
     `SerrePositivity.EInfinity.ComplexLimits.pinchedTransport_forget_family]
 
 @[noinline] private def e2RequiredBatch218 : Array Lean.Name :=
-  #[`SerrePositivity.EInfinity.FrameHom.unitComparisonTransport_weak,
+  #[`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.unitComparisonTransport_weak,
     `SerrePositivity.EInfinity.BarrattEccles.freeProbeRelativeUnit_forget_family_triangle]
 
 @[noinline] private def e2RequiredBatch219 : Array Lean.Name :=
@@ -10026,9 +10026,9 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameElementSpan,
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameElementSpanFunctor,
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameElementSpan_unit_middle,
-      `SerrePositivity.EInfinity.FrameHom.localizationComparison_pinchedHom_isQCatEquivalence,
-      `SerrePositivity.EInfinity.FrameHom.localizationPinchedComparison,
-      `SerrePositivity.EInfinity.FrameHom.localizationPinchedComparison_isQCatEquivalence]
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.localizationComparison_pinchedHom_isQCatEquivalence,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.localizationPinchedComparison,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.localizationPinchedComparison_isQCatEquivalence]
 
 @[noinline] private def e2RequiredBatch232 : Array Lean.Name :=
   #[`SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.pinchedPrecomposeEquivalence,
@@ -10047,12 +10047,12 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.FibrantRightSpans.unit,
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.FibrantRightSpans.inclusion_localized_isIso,
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.FibrantRightSpans.inclusion_isWeakHomotopyEquivalence,
-      `SerrePositivity.EInfinity.FrameHom.CoherentLocalizationComparison,
-      `SerrePositivity.EInfinity.FrameHom.localizationComparisonData,
-      `SerrePositivity.EInfinity.FrameHom.localizationComparisonData_triangle,
-      `SerrePositivity.EInfinity.FrameHom.CoherentLocalizationComparison.pinchedEquivalence,
-      `SerrePositivity.EInfinity.FrameHom.CoherentLocalizationComparison.pinchedEquivalence_hom,
-      `SerrePositivity.EInfinity.FrameHom.CoherentLocalizationComparison.triangle_naturality,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CoherentLocalizationComparison,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.localizationComparisonData,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.localizationComparisonData_triangle,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CoherentLocalizationComparison.pinchedEquivalence,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CoherentLocalizationComparison.pinchedEquivalence_hom,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CoherentLocalizationComparison.triangle_naturality,
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameDiagram_isFibrant,
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameReplacement,
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameReplacementUnit,
@@ -10060,10 +10060,10 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameReplacement_isFibrant,
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameReplacement_isCofibrant,
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameReplacement_map_weak,
-      `SerrePositivity.EInfinity.FrameHom.rightFrameRoofCategory,
-      `SerrePositivity.EInfinity.FrameHom.rightFrameRoofComparison,
-      `SerrePositivity.EInfinity.FrameHom.rightFrameRoofComparison_isWeakHomotopyEquivalence,
-      `SerrePositivity.EInfinity.FrameHom.rightFrameRoofComparison_middle,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameRoofCategory,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameRoofComparison,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameRoofComparison_isWeakHomotopyEquivalence,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameRoofComparison_middle,
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantFrame,
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantFrame_inclusion,
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantFrameAugmentation,
@@ -10078,39 +10078,39 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.modelCofibrantRelativeCategory_weak_iff,
       `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.modelCofibrantObject,
       `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.modelCofibrantInclusionRelative,
-      `SerrePositivity.EInfinity.SimplicialLocalization.modelFrameIndex_weaklyContractible,
-      `SerrePositivity.EInfinity.SimplicialLocalization.modelCofibrantHammockVertex,
-      `SerrePositivity.EInfinity.SimplicialLocalization.modelCofibrantFrameAugmentation_invertible,
-      `SerrePositivity.EInfinity.SimplicialLocalization.modelCofibrantFrameRightKanMap,
-      `SerrePositivity.EInfinity.SimplicialLocalization.modelCofibrantFrameRightKanMap_projection,
-      `SerrePositivity.EInfinity.SimplicialLocalization.modelCofibrantFrameRightKanMap_diagram,
-      `SerrePositivity.EInfinity.SimplicialLocalization.modelCofibrantFrame_hasLimit]
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelFrameIndex_weaklyContractible,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelCofibrantHammockVertex,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelCofibrantFrameAugmentation_invertible,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelCofibrantFrameRightKanMap,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelCofibrantFrameRightKanMap_projection,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelCofibrantFrameRightKanMap_diagram,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelCofibrantFrame_hasLimit]
 
 @[noinline] private def e2RequiredBatch233 : Array Lean.Name :=
-  #[`SerrePositivity.EInfinity.FrameHom.FibrantFrameSpanComparison.fiberNerveMap,
-      `SerrePositivity.EInfinity.FrameHom.FibrantFrameSpanComparison.fiberNerveMap_localized_isIso,
-      `SerrePositivity.EInfinity.FrameHom.FibrantFrameSpanComparison.resolutionNerveMap,
-      `SerrePositivity.EInfinity.FrameHom.FibrantFrameSpanComparison.resolutionNerveMap_localized_isIso,
-      `SerrePositivity.EInfinity.FrameHom.FibrantFrameSpanComparison.spanDiagramNerveMap,
-      `SerrePositivity.EInfinity.FrameHom.FibrantFrameSpanComparison.spanDiagramNerveMap_localized_isIso,
-      `SerrePositivity.EInfinity.FrameHom.FibrantFrameSpanComparison.recoveryNerveMap,
-      `SerrePositivity.EInfinity.FrameHom.FibrantFrameSpanComparison.recoveryNerveMap_localized_isIso,
-      `SerrePositivity.EInfinity.FrameHom.FibrantFrameSpanComparison.fibrantSpanNerveMap,
-      `SerrePositivity.EInfinity.FrameHom.FibrantFrameSpanComparison.fibrantSpanNerveMap_isWeakHomotopyEquivalence,
-      `SerrePositivity.EInfinity.FrameHom.FibrantFrameSpanNormalization.comparisonFunctor,
-      `SerrePositivity.EInfinity.FrameHom.FibrantFrameSpanNormalization.comparisonNerveMap,
-      `SerrePositivity.EInfinity.FrameHom.FibrantFrameSpanNormalization.comparisonNerveMap_fac,
-      `SerrePositivity.EInfinity.FrameHom.FibrantFrameSpanNormalization.comparisonNerveMap_isWeakHomotopyEquivalence,
-      `SerrePositivity.EInfinity.FrameHom.FibrantRightResolutionDiagram.smallRightForget,
-      `SerrePositivity.EInfinity.FrameHom.FibrantRightResolutionDiagram.resolutionDiagram,
-      `SerrePositivity.EInfinity.FrameHom.FibrantRightResolutionDiagram.spanDiagram,
-      `SerrePositivity.EInfinity.FrameHom.FibrantRightResolutionDiagram.comparison,
-      `SerrePositivity.EInfinity.FrameHom.FibrantRightResolutionDiagram.comparison_localized_isIso,
-      `SerrePositivity.EInfinity.FrameHom.FibrantRightResolutionDiagram.hom_map_localized_isIso,
-      `SerrePositivity.EInfinity.FrameHom.FibrantRightResolutionDiagram.resolutionDiagram_map_localized_isIso,
-      `SerrePositivity.EInfinity.FrameHom.FibrantRightResolutionDiagram.smallInitial,
-      `SerrePositivity.EInfinity.FrameHom.FibrantRightResolutionDiagram.smallInitial_isInitial,
-      `SerrePositivity.EInfinity.FrameHom.FibrantRightResolutionDiagram.fiberNerveMap_localized_isIso,
+  #[`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FibrantFrameSpanComparison.fiberNerveMap,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FibrantFrameSpanComparison.fiberNerveMap_localized_isIso,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FibrantFrameSpanComparison.resolutionNerveMap,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FibrantFrameSpanComparison.resolutionNerveMap_localized_isIso,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FibrantFrameSpanComparison.spanDiagramNerveMap,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FibrantFrameSpanComparison.spanDiagramNerveMap_localized_isIso,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FibrantFrameSpanComparison.recoveryNerveMap,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FibrantFrameSpanComparison.recoveryNerveMap_localized_isIso,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FibrantFrameSpanComparison.fibrantSpanNerveMap,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FibrantFrameSpanComparison.fibrantSpanNerveMap_isWeakHomotopyEquivalence,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FibrantFrameSpanNormalization.comparisonFunctor,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FibrantFrameSpanNormalization.comparisonNerveMap,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FibrantFrameSpanNormalization.comparisonNerveMap_fac,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FibrantFrameSpanNormalization.comparisonNerveMap_isWeakHomotopyEquivalence,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FibrantRightResolutionDiagram.smallRightForget,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FibrantRightResolutionDiagram.resolutionDiagram,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FibrantRightResolutionDiagram.spanDiagram,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FibrantRightResolutionDiagram.comparison,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FibrantRightResolutionDiagram.comparison_localized_isIso,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FibrantRightResolutionDiagram.hom_map_localized_isIso,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FibrantRightResolutionDiagram.resolutionDiagram_map_localized_isIso,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FibrantRightResolutionDiagram.smallInitial,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FibrantRightResolutionDiagram.smallInitial_isInitial,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FibrantRightResolutionDiagram.fiberNerveMap_localized_isIso,
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.baseProperty,
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Base,
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.forget,
@@ -10123,20 +10123,20 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.grothendieckEquivalence,
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.initial,
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.initial_isInitial,
-      `SerrePositivity.EInfinity.FrameHom.frameElementSmallIso,
-      `SerrePositivity.EInfinity.FrameHom.frameElementSmallIso_comparison,
-      `SerrePositivity.EInfinity.FrameHom.frameElementSpanNerveMap_isWeakHomotopyEquivalence_of_fibrant,
-      `SerrePositivity.EInfinity.FrameHom.resolutionLeftRoofNerveMap_normalized_isWeakHomotopyEquivalence_of_fibrant,
-      `SerrePositivity.EInfinity.FrameHom.HeterogeneousSmallComma.liftFunctor,
-      `SerrePositivity.EInfinity.FrameHom.HeterogeneousSmallComma.SmallComma,
-      `SerrePositivity.EInfinity.FrameHom.HeterogeneousSmallComma.down,
-      `SerrePositivity.EInfinity.FrameHom.HeterogeneousSmallComma.up,
-      `SerrePositivity.EInfinity.FrameHom.HeterogeneousSmallComma.down_up,
-      `SerrePositivity.EInfinity.FrameHom.HeterogeneousSmallComma.up_down,
-      `SerrePositivity.EInfinity.FrameHom.HeterogeneousSmallComma.equivalence,
-      `SerrePositivity.EInfinity.FrameHom.HeterogeneousSmallComma.grothendieckEquivalence,
-      `SerrePositivity.EInfinity.FrameHom.HeterogeneousSmallComma.recoveryNerveMap,
-      `SerrePositivity.EInfinity.FrameHom.HeterogeneousSmallComma.recoveryNerveMap_localized_isIso,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameElementSmallIso,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameElementSmallIso_comparison,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameElementSpanNerveMap_isWeakHomotopyEquivalence_of_fibrant,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.resolutionLeftRoofNerveMap_normalized_isWeakHomotopyEquivalence_of_fibrant,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.HeterogeneousSmallComma.liftFunctor,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.HeterogeneousSmallComma.SmallComma,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.HeterogeneousSmallComma.down,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.HeterogeneousSmallComma.up,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.HeterogeneousSmallComma.down_up,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.HeterogeneousSmallComma.up_down,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.HeterogeneousSmallComma.equivalence,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.HeterogeneousSmallComma.grothendieckEquivalence,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.HeterogeneousSmallComma.recoveryNerveMap,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.HeterogeneousSmallComma.recoveryNerveMap_localized_isIso,
       `SerrePositivity.EInfinity.Hammock.RelativeEquivalence.colimitMap_weak_of_units,
       `SerrePositivity.EInfinity.Hammock.RelativeEquivalence.reducedMap_weak_of_units,
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.cofibrantBifibrantUnit,
@@ -10171,28 +10171,28 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantToCofibrant,
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantToBifibrant_map_weak,
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantToCofibrant_map_weak,
-      `SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantHammockObject,
-      `SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantHammockVertex_object,
-      `SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRightKanDiagram_hasLimit,
-      `SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRightKanDiagram_hasLimit_all_of_frameCofinality,
-      `SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantInvertingFunctor_rightKanExtension_exists,
-      `SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRightKanCanonicalCone_isLimit,
-      `SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRightKanCanonicalCone_isLimit_all,
-      `SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRightKanExtension_refl_of_frameCofinality,
-      `SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantHammockLocalizationPrecomposition_isFullyFaithful,
-      `SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceFrameAugmentation_image_invertible,
-      `SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRightKanLimitCone_leg_isInvertible,
-      `SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceFrameRightKanMap_frame_projection,
-      `SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRightKanUnit_frame_isInvertible,
-      `SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRightKanUnit_vertex_isInvertible,
-      `SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRightKanUnit_isInvertible_of_frameCofinality,
-      `SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantHammock_isLocalization_of_frameCofinality,
-      `SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantHammockVertex,
-      `SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantFrameAugmentation_invertible,
-      `SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantFrameRightKanMap,
-      `SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantFrameRightKanMap_projection,
-      `SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantFrameRightKanMap_diagram,
-      `SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantFrame_hasLimit,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantHammockObject,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantHammockVertex_object,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRightKanDiagram_hasLimit,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRightKanDiagram_hasLimit_all_of_frameCofinality,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantInvertingFunctor_rightKanExtension_exists,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRightKanCanonicalCone_isLimit,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRightKanCanonicalCone_isLimit_all,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRightKanExtension_refl_of_frameCofinality,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantHammockLocalizationPrecomposition_isFullyFaithful,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceFrameAugmentation_image_invertible,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRightKanLimitCone_leg_isInvertible,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceFrameRightKanMap_frame_projection,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRightKanUnit_frame_isInvertible,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRightKanUnit_vertex_isInvertible,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRightKanUnit_isInvertible_of_frameCofinality,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantHammock_isLocalization_of_frameCofinality,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantHammockVertex,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantFrameAugmentation_invertible,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantFrameRightKanMap,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantFrameRightKanMap_projection,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantFrameRightKanMap_diagram,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantFrame_hasLimit,
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantReplacement,
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantReplacement_map_weak,
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelToCofibrant,
@@ -10213,12 +10213,12 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantToModelRelative]
 
 @[noinline] private def e2RequiredBatch234 : Array Lean.Name :=
-  #[`SerrePositivity.EInfinity.SimplicialLocalization.relativeHammockEnriched,
-      `SerrePositivity.EInfinity.SimplicialLocalization.relativeKanHammockEnriched,
-      `SerrePositivity.EInfinity.SimplicialLocalization.relativeKanHammockFunctor,
-      `SerrePositivity.EInfinity.SimplicialLocalization.relativeKanHammockNerve,
-      `SerrePositivity.EInfinity.SimplicialLocalization.relativeKanHammockEnriched_map,
-      `SerrePositivity.EInfinity.SimplicialLocalization.relativeKanHammockNerve_fullyFaithful]
+  #[`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.relativeHammockEnriched,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.relativeKanHammockEnriched,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.relativeKanHammockFunctor,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.relativeKanHammockNerve,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.relativeKanHammockEnriched_map,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.relativeKanHammockNerve_fullyFaithful]
 
 @[noinline] private def e2RequiredBatch236 : Array Lean.Name :=
   #[
@@ -10236,11 +10236,11 @@ import Mathlib.Tactic.Ring
     ``SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ProductSimplexUniverseOver.over_projection,
     ``SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ProductSimplexUniverseOver.over_arrow,
     ``SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ProductSimplexUniverseOver.nerveIso,
-    ``SerrePositivity.EInfinity.FrameHom.ProductSimplexUniverseOver.firstNerveMap,
-    ``SerrePositivity.EInfinity.FrameHom.ProductSimplexUniverseOver.firstComponent_eq_mapElements,
-    ``SerrePositivity.EInfinity.FrameHom.ProductSimplexUniverseOver.firstNerveMap_augmentation,
-    ``SerrePositivity.EInfinity.FrameHom.ProductSimplexUniverseOver.firstNerveMap_localized_isIso,
-    ``SerrePositivity.EInfinity.FrameHom.ProductSimplexUniverseOver.firstNerveMap_weak,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ProductSimplexUniverseOver.firstNerveMap,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ProductSimplexUniverseOver.firstComponent_eq_mapElements,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ProductSimplexUniverseOver.firstNerveMap_augmentation,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ProductSimplexUniverseOver.firstNerveMap_localized_isIso,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ProductSimplexUniverseOver.firstNerveMap_weak,
     ``SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.UniverseNerveCostructuredPullback.lifted,
     ``SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.UniverseNerveCostructuredPullback.toLifted,
     ``SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.UniverseNerveCostructuredPullback.fromLifted,
@@ -10271,143 +10271,143 @@ import Mathlib.Tactic.Ring
     ``SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantSourceFrameElementDegree,
     ``SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantSourceFrameElementsDKNerveIso,
     ``SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantSourceFrameElementDegreeNerve,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceFrameIndexIso,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceFrameRawColimitMap,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceFrameColimitMap,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceFramePinchedMap,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceFrameRawColimitMap_weak,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceFrameColimitMap_weak,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceFramePinchedMap_weak,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceFrameRawRoofMap_isLeftCofinal,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantFrameRightKanMap_isLeftCofinal,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceFrameRoofMap,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceFrameRoofMap_degree,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceFrameRoofMap_isLeftCofinal_iff_raw,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelSourceFrameFamily,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantFrameRightKanMap_cofinal,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRightKanExtension_refl,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRightKanDiagram_hasLimit_all,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRightKanUnit_isInvertible,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantHammock_isLocalization,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceFrameGraphMap,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceFrameGraphMap_colimit,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaAugmentationRoofGraphMap_image,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaAugmentationRoofMap_image,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaOver,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductNormalizedMap,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductNormalizedMap_over,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductBaseHomotopy,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductBaseHomotopy_hom_eq,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductGeometricLeftHomotopy_h_base,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofDegreeObject,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofCornerEvaluation,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofCornerEvaluation_weak,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductHomMap,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCorner_weak_iff_hom,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofSlice_weaklyContractible_of_productHom_weak,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofMap_isLeftCofinal_of_productHom_weak,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofDegreeTransportIso_inv_over,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCornerMap_normalizedOver,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaCornerMap_normalizedOver,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductElements,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductFirst,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductFirstNerve,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductOver,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductOverNerve,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductIso,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductIso_source,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductIso_over,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaEvaluationHomotopy,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaEvaluationHomotopy_h,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaEvaluationHomotopy_hom,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductOverTerminalHomotopy_evaluation_h,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductGeometricLeftCell_eq,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductActual_triangle,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductActualIntervalCell_eq_comparison,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductHomMap_weak_of_reference_triangle,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofMap_isLeftCofinal_of_reference_triangle,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductGeometricRightHomotopy_h,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductGeometricRightCell_eq,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductGeometric_triangle_right_standard,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductActual_triangle_of_left_eq,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaDegreeHammockMap_transport,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaEvaluationRoofMap_reference_Q,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativePinchedMap,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativePinchedMap_reference_Q,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativeIntervalCell,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativeIntervalCell_eq_reference,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativePinchedMap_weak,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativeSimplex_naturality,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativeSliceSimplex_naturality,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativePrism,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativePrism_app,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativeSimplex_one,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativePinchedMap_app_val,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativePrism_one,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativePrism_one_evaluation,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativePrism_projection,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativePrism_zero_uncurry,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativePrism_zero_evaluation,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaDiagram_map_weak,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaAugmentationRoofGraphMap]
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceFrameIndexIso,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceFrameRawColimitMap,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceFrameColimitMap,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceFramePinchedMap,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceFrameRawColimitMap_weak,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceFrameColimitMap_weak,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceFramePinchedMap_weak,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceFrameRawRoofMap_isLeftCofinal,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantFrameRightKanMap_isLeftCofinal,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceFrameRoofMap,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceFrameRoofMap_degree,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceFrameRoofMap_isLeftCofinal_iff_raw,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelSourceFrameFamily,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantFrameRightKanMap_cofinal,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRightKanExtension_refl,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRightKanDiagram_hasLimit_all,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRightKanUnit_isInvertible,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantHammock_isLocalization,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceFrameGraphMap,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceFrameGraphMap_colimit,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaAugmentationRoofGraphMap_image,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaAugmentationRoofMap_image,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaOver,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductNormalizedMap,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductNormalizedMap_over,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductBaseHomotopy,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductBaseHomotopy_hom_eq,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductGeometricLeftHomotopy_h_base,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofDegreeObject,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofCornerEvaluation,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofCornerEvaluation_weak,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductHomMap,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCorner_weak_iff_hom,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofSlice_weaklyContractible_of_productHom_weak,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofMap_isLeftCofinal_of_productHom_weak,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofDegreeTransportIso_inv_over,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCornerMap_normalizedOver,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaCornerMap_normalizedOver,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductElements,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductFirst,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductFirstNerve,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductOver,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductOverNerve,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductIso,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductIso_source,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductIso_over,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaEvaluationHomotopy,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaEvaluationHomotopy_h,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaEvaluationHomotopy_hom,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductOverTerminalHomotopy_evaluation_h,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductGeometricLeftCell_eq,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductActual_triangle,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductActualIntervalCell_eq_comparison,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductHomMap_weak_of_reference_triangle,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofMap_isLeftCofinal_of_reference_triangle,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductGeometricRightHomotopy_h,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductGeometricRightCell_eq,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductGeometric_triangle_right_standard,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductActual_triangle_of_left_eq,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaDegreeHammockMap_transport,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaEvaluationRoofMap_reference_Q,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativePinchedMap,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativePinchedMap_reference_Q,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativeIntervalCell,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativeIntervalCell_eq_reference,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativePinchedMap_weak,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativeSimplex_naturality,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativeSliceSimplex_naturality,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativePrism,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativePrism_app,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativeSimplex_one,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativePinchedMap_app_val,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativePrism_one,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativePrism_one_evaluation,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativePrism_projection,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativePrism_zero_uncurry,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativePrism_zero_evaluation,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaDiagram_map_weak,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaAugmentationRoofGraphMap]
 
 @[noinline] private def e2RequiredBatch242 : Array Lean.Name :=
   #[
-    ``SerrePositivity.EInfinity.SimplicialLocalization.kanHammockYonedaFiberActionIso,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockYonedaFiberActionIso,
     ``SerrePositivity.EInfinity.DGAlgebra.frameTerminalHomIso,
     ``SerrePositivity.EInfinity.DGAlgebra.frameCoherentHomIso,
-    ``SerrePositivity.EInfinity.FrameHom.enrichedHomFunctor_eq_representableHomFunctor,
-    ``SerrePositivity.EInfinity.FrameHom.enrichedHomCoherent_eq_representableHomCoherent,
-    ``SerrePositivity.EInfinity.FrameHom.enrichedHomYonedaIso,
-    ``SerrePositivity.EInfinity.FrameHom.rightFrameTerminalHomIso,
-    ``SerrePositivity.EInfinity.FrameHom.rightFrameTerminalHomIso_precomp,
-    ``SerrePositivity.EInfinity.FrameHom.rightFrameTerminalHomIso_hom,
-    ``SerrePositivity.EInfinity.FrameHom.rightFrameTerminalHomComparison,
-    ``SerrePositivity.EInfinity.FrameHom.rightFrameTerminalHomComparison_triangle,
-    ``SerrePositivity.EInfinity.FrameHom.rightFrameTerminalHomComparison_originalArrow,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.kanHammockHomInfinityIso,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.kanHammockYonedaIdentity_zero,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.kanHammockYonedaCosliceIdentity_zero]
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.enrichedHomFunctor_eq_representableHomFunctor,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.enrichedHomCoherent_eq_representableHomCoherent,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.enrichedHomYonedaIso,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameTerminalHomIso,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameTerminalHomIso_precomp,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameTerminalHomIso_hom,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameTerminalHomComparison,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameTerminalHomComparison_triangle,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameTerminalHomComparison_originalArrow,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockHomInfinityIso,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockYonedaIdentity_zero,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockYonedaCosliceIdentity_zero]
 
 @[noinline] private def e2RequiredBatch241 : Array Lean.Name :=
   #[
-    ``SerrePositivity.EInfinity.FrameHom.asSmallKanHammockHomFamilyMap_app,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.asSmallKanHammockHomFamilyMap_app,
     ``SerrePositivity.EInfinity.DGAlgebra.frameTerminalHomIso_of_yonedaIso,
     ``SerrePositivity.EInfinity.DGAlgebra.frameCoherentHomIso_of_yonedaIso,
-    ``SerrePositivity.EInfinity.FrameHom.asSmallHammockHomCoherentIso_hom,
-    ``SerrePositivity.EInfinity.FrameHom.asSmallHammockHomCoherentEdge_at,
-    ``SerrePositivity.EInfinity.FrameHom.asSmallKanHammockHomFamilyMap_arrow,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.asSmallHammockHomCoherentIso_hom,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.asSmallHammockHomCoherentEdge_at,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.asSmallKanHammockHomFamilyMap_arrow,
     ``SerrePositivity.EInfinity.Hammock.AsSmallComparison.arrowMap_exInfinity_colimitIso]
 
 @[noinline] private def e2RequiredBatch240 : Array Lean.Name :=
   #[
-    ``SerrePositivity.EInfinity.FrameHom.asSmallHammockHomFamilyIso,
-    ``SerrePositivity.EInfinity.FrameHom.asSmallKanHammockHomFamilyMap,
-    ``SerrePositivity.EInfinity.FrameHom.asSmallKanHammockHomFamilyMap_isIso,
-    ``SerrePositivity.EInfinity.FrameHom.asSmallHammockHomCoherentIso,
-    ``SerrePositivity.EInfinity.FrameHom.enrichedHomFunctor,
-    ``SerrePositivity.EInfinity.FrameHom.enrichedHomFunctor_obj,
-    ``SerrePositivity.EInfinity.FrameHom.enrichedHomFunctor_map,
-    ``SerrePositivity.EInfinity.FrameHom.enrichedHomCoherent,
-    ``SerrePositivity.EInfinity.FrameHom.enrichedHomOrdinaryFamily,
-    ``SerrePositivity.EInfinity.FrameHom.enrichedHomOrdinaryFamily_map,
-    ``SerrePositivity.EInfinity.FrameHom.enrichedHomCoherent_ordinary,
-    ``SerrePositivity.EInfinity.FrameHom.homInfinityEquivalenceTransport,
-    ``SerrePositivity.EInfinity.FrameHom.homInfinityTriangleSourceIso,
-    ``SerrePositivity.EInfinity.FrameHom.homInfinityTriangleDiagramIso,
-    ``SerrePositivity.EInfinity.FrameHom.CoherentLocalizationComparison.homInfinityTransport,
-    ``SerrePositivity.EInfinity.FrameHom.rightFrameTerminalHomIso_of_yonedaIso,
-    ``SerrePositivity.EInfinity.FrameHom.rightFrameHammockTerminalRealizationIso,
-    ``SerrePositivity.EInfinity.FrameHom.rightFrameHammockTerminalRealizationIso_precomp,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.asSmallHammockHomFamilyIso,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.asSmallKanHammockHomFamilyMap,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.asSmallKanHammockHomFamilyMap_isIso,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.asSmallHammockHomCoherentIso,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.enrichedHomFunctor,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.enrichedHomFunctor_obj,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.enrichedHomFunctor_map,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.enrichedHomCoherent,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.enrichedHomOrdinaryFamily,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.enrichedHomOrdinaryFamily_map,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.enrichedHomCoherent_ordinary,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.homInfinityEquivalenceTransport,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.homInfinityTriangleSourceIso,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.homInfinityTriangleDiagramIso,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CoherentLocalizationComparison.homInfinityTransport,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameTerminalHomIso_of_yonedaIso,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockTerminalRealizationIso,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockTerminalRealizationIso_precomp,
     ``SerrePositivity.EInfinity.Hammock.AsSmallComparison.colimitIso_graph_point,
     ``SerrePositivity.EInfinity.Hammock.AsSmallComparison.colimitIso_composePoint,
     ``SerrePositivity.EInfinity.Hammock.AsSmallComparison.colimitIso_postcompose,
     ``SerrePositivity.EInfinity.Hammock.exInfinityUnit_point,
     ``SerrePositivity.EInfinity.Hammock.exInfinity_postcompose_point,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.kanHammock_sHomWhiskerLeft,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.kanHammockHomCoherent,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.kanHammockHomOrdinaryFamily_eq,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.kanHammockHomCoherent_source]
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammock_sHomWhiskerLeft,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockHomCoherent,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockHomOrdinaryFamily_eq,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockHomCoherent_source]
 
 @[noinline] private def e2RequiredBatch239 : Array Lean.Name :=
   #[
@@ -10417,49 +10417,49 @@ import Mathlib.Tactic.Ring
     ``SerrePositivity.EInfinity.DGAlgebra.framePinchedEquivalence,
     ``SerrePositivity.EInfinity.DGAlgebra.frameCoherentComparison,
     ``SerrePositivity.EInfinity.DGAlgebra.framePinchedEquivalence_unit_Q,
-    ``SerrePositivity.EInfinity.FrameHom.rightFrameHammockKanEdgeEquivalence,
-    ``SerrePositivity.EInfinity.FrameHom.rightFrameHammockKanEdgeEquivalence_hom,
-    ``SerrePositivity.EInfinity.FrameHom.rightFrameHammockKanComponentEquivalence,
-    ``SerrePositivity.EInfinity.FrameHom.rightFrameHomExUnitEquivalence,
-    ``SerrePositivity.EInfinity.FrameHom.rightFrameHammockPinchedEquivalence,
-    ``SerrePositivity.EInfinity.FrameHom.rightFrameHammockPinchedEquivalence_factor,
-    ``SerrePositivity.EInfinity.FrameHom.qCatEquivalence_hom_inv_Q,
-    ``SerrePositivity.EInfinity.FrameHom.qCatEquivalence_inv_hom_Q,
-    ``SerrePositivity.EInfinity.FrameHom.rightFrameHammockKanEdge_Q_isIso,
-    ``SerrePositivity.EInfinity.FrameHom.rightFrameHammockKanEdgeEquivalence_inv_Q,
-    ``SerrePositivity.EInfinity.FrameHom.point_inverse_Q,
-    ``SerrePositivity.EInfinity.FrameHom.rightFrameHammockKanUnitPoint_edge_Q,
-    ``SerrePositivity.EInfinity.FrameHom.rightFrameHammockKanComponentEquivalence_unit_Q,
-    ``SerrePositivity.EInfinity.FrameHom.rightFrameHammockPinchedEquivalence_unit_Q,
-    ``SerrePositivity.EInfinity.FrameHom.unitHom_eq_const,
-    ``SerrePositivity.EInfinity.FrameHom.rightFrameHammockUnitPoint,
-    ``SerrePositivity.EInfinity.FrameHom.rightFrameHammockUnitPoint_edge0,
-    ``SerrePositivity.EInfinity.FrameHom.rightFrameHammockUnitPoint_edge1,
-    ``SerrePositivity.EInfinity.FrameHom.rightFrameHammockUnitPoint_edge2,
-    ``SerrePositivity.EInfinity.FrameHom.rightFrameHammockUnitPoint_edge3,
-    ``SerrePositivity.EInfinity.FrameHom.rightFrameHammockUnitPoint_edge4_Q,
-    ``SerrePositivity.EInfinity.FrameHom.rightFrameHammockUnitPoint_edge5,
-    ``SerrePositivity.EInfinity.FrameHom.rightFrameHammockUnitPoint_edge_Q,
-    ``SerrePositivity.EInfinity.FrameHom.rightFrameSpecifiedLocalizationData,
-    ``SerrePositivity.EInfinity.FrameHom.rightFrameSpecifiedLocalizationData_triangle,
-    ``SerrePositivity.EInfinity.FrameHom.rightFrameSpecifiedPinchedEquivalence,
-    ``SerrePositivity.EInfinity.FrameHom.rightFrameSpecifiedPinchedEquivalence_hom,
-    ``SerrePositivity.EInfinity.FrameHom.rightFrameHammockPinchedEquivalence_unit_arrow_Q,
-    ``SerrePositivity.EInfinity.FrameHom.rightFrameSpecifiedPinchedEquivalence_unit_Q,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockKanEdgeEquivalence,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockKanEdgeEquivalence_hom,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockKanComponentEquivalence,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHomExUnitEquivalence,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockPinchedEquivalence,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockPinchedEquivalence_factor,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.qCatEquivalence_hom_inv_Q,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.qCatEquivalence_inv_hom_Q,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockKanEdge_Q_isIso,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockKanEdgeEquivalence_inv_Q,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.point_inverse_Q,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockKanUnitPoint_edge_Q,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockKanComponentEquivalence_unit_Q,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockPinchedEquivalence_unit_Q,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.unitHom_eq_const,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockUnitPoint,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockUnitPoint_edge0,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockUnitPoint_edge1,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockUnitPoint_edge2,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockUnitPoint_edge3,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockUnitPoint_edge4_Q,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockUnitPoint_edge5,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockUnitPoint_edge_Q,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameSpecifiedLocalizationData,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameSpecifiedLocalizationData_triangle,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameSpecifiedPinchedEquivalence,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameSpecifiedPinchedEquivalence_hom,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockPinchedEquivalence_unit_arrow_Q,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameSpecifiedPinchedEquivalence_unit_Q,
     ``SerrePositivity.EInfinity.Hammock.AsSmallComparison.arrowMap_colimitIso,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.kanHammockHomPinchedMap_arrow_zero,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.relativeNerve_mapsWeak,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.relativeNerve_homotopy_component_weak,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelCofibrantHammock_isLocalization,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelHammock_isLocalization,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelRightFrameLocalizationComparison,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelRightFramePinchedEquivalence,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelRightFrameCoherentComparison,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelRightFramePinchedEquivalenceWithComparison,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelRightFrameOriginalArrow_conjugation,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelRightFramePinchedEquivalenceWithComparison_unit_Q,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelRightFrameHammockCoherentComparison,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelRightFrameSpecifiedPinchedEquivalence]
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockHomPinchedMap_arrow_zero,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.relativeNerve_mapsWeak,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.relativeNerve_homotopy_component_weak,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelCofibrantHammock_isLocalization,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelHammock_isLocalization,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelRightFrameLocalizationComparison,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelRightFramePinchedEquivalence,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelRightFrameCoherentComparison,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelRightFramePinchedEquivalenceWithComparison,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelRightFrameOriginalArrow_conjugation,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelRightFramePinchedEquivalenceWithComparison_unit_Q,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelRightFrameHammockCoherentComparison,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelRightFrameSpecifiedPinchedEquivalence]
 
 @[noinline] private def e2RequiredBatch238 : Array Lean.Name :=
   #[
@@ -10469,33 +10469,33 @@ import Mathlib.Tactic.Ring
     ``SerrePositivity.EInfinity.DGAlgebra.rightFrameFamily,
     ``SerrePositivity.EInfinity.DGAlgebra.bifibrantHammock_isLocalization,
     ``SerrePositivity.EInfinity.DGAlgebra.rightFrameHammockFamilyIso,
-    ``SerrePositivity.EInfinity.FrameHom.kanHomFamily,
-    ``SerrePositivity.EInfinity.FrameHom.kanHomFamilyMap,
-    ``SerrePositivity.EInfinity.FrameHom.kanHomFamily_kanComplex,
-    ``SerrePositivity.EInfinity.FrameHom.kanHomFamilyMap_isQCatEquivalence,
-    ``SerrePositivity.EInfinity.FrameHom.kanHomFamilyCoherent,
-    ``SerrePositivity.EInfinity.FrameHom.rightFrameHammockCoherentDiagram,
-    ``SerrePositivity.EInfinity.FrameHom.rightFrameHammockCoherentEdgeIso,
-    ``SerrePositivity.EInfinity.FrameHom.rightFrameHammockCoherentEdge_at,
-    ``SerrePositivity.EInfinity.FrameHom.rightFrameHammockCoherentComparison,
-    ``SerrePositivity.EInfinity.FrameHom.rightFrameHammockCoherentComparison_precomp,
-    ``SerrePositivity.EInfinity.FrameHom.rightFrameReplacementHomImageIso,
-    ``SerrePositivity.EInfinity.FrameHom.rightMixedReplacedRightImageIso,
-    ``SerrePositivity.EInfinity.FrameHom.rightMixedReplacedLeftImageIso,
-    ``SerrePositivity.EInfinity.FrameHom.rightFrameToSourceImageIso,
-    ``SerrePositivity.EInfinity.FrameHom.sourceFrameReplacedAugmentationIso,
-    ``SerrePositivity.EInfinity.FrameHom.sourceRoofReplacedIso,
-    ``SerrePositivity.EInfinity.FrameHom.hammockReplacementFamilyIso,
-    ``SerrePositivity.EInfinity.FrameHom.rightFrameHammockFamilyIso,
-    ``SerrePositivity.EInfinity.FrameHom.rightFrameHammockFamilyDiagram,
-    ``SerrePositivity.EInfinity.FrameHom.rightFrameHammockEdgeSource,
-    ``SerrePositivity.EInfinity.FrameHom.rightFrameHammockEdgeTarget,
-    ``SerrePositivity.EInfinity.FrameHom.rightFrameHammockFamilyEdge,
-    ``SerrePositivity.EInfinity.FrameHom.rightFrameHammockFamilyEdge_weak,
-    ``SerrePositivity.EInfinity.FrameHom.rightFrameHammockKanDiagram,
-    ``SerrePositivity.EInfinity.FrameHom.rightFrameHammockKanEdge,
-    ``SerrePositivity.EInfinity.FrameHom.rightFrameHammockKanDiagram_kanComplex,
-    ``SerrePositivity.EInfinity.FrameHom.rightFrameHammockKanEdge_isQCatEquivalence,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.kanHomFamily,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.kanHomFamilyMap,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.kanHomFamily_kanComplex,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.kanHomFamilyMap_isQCatEquivalence,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.kanHomFamilyCoherent,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockCoherentDiagram,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockCoherentEdgeIso,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockCoherentEdge_at,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockCoherentComparison,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockCoherentComparison_precomp,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameReplacementHomImageIso,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightMixedReplacedRightImageIso,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightMixedReplacedLeftImageIso,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameToSourceImageIso,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.sourceFrameReplacedAugmentationIso,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.sourceRoofReplacedIso,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.hammockReplacementFamilyIso,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockFamilyIso,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockFamilyDiagram,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockEdgeSource,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockEdgeTarget,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockFamilyEdge,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockFamilyEdge_weak,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockKanDiagram,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockKanEdge,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockKanDiagram_kanComplex,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockKanEdge_isQCatEquivalence,
     ``SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.sourceFrameOrdinaryHomUnit,
     ``SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.sourceFrameOrdinaryHomUnit_app,
     ``SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightMixed_unit_triangle,
@@ -10508,117 +10508,117 @@ import Mathlib.Tactic.Ring
     ``SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightMixedReplacedRightIso,
     ``SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameReplacementHomIso,
     ``SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameToSourceFamilyIso,
-    ``SerrePositivity.EInfinity.FrameHom.hammockHomFamily,
-    ``SerrePositivity.EInfinity.FrameHom.sourceFrameElementsFamily,
-    ``SerrePositivity.EInfinity.FrameHom.sourceRoofFamily,
-    ``SerrePositivity.EInfinity.FrameHom.sourceFrameElementsAugmentation,
-    ``SerrePositivity.EInfinity.FrameHom.sourceFrameUnitElement,
-    ``SerrePositivity.EInfinity.FrameHom.sourceFrameUnitElement_roof_zero,
-    ``SerrePositivity.EInfinity.FrameHom.sourceFrameUnitRoofHomotopy,
-    ``SerrePositivity.EInfinity.FrameHom.sourceFrameUnitRoof_Q,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSpecifiedLocalizationComparison,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSpecifiedLocalizationComparison_triangle,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSpecifiedPinchedEquivalence]
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.hammockHomFamily,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.sourceFrameElementsFamily,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.sourceRoofFamily,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.sourceFrameElementsAugmentation,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.sourceFrameUnitElement,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.sourceFrameUnitElement_roof_zero,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.sourceFrameUnitRoofHomotopy,
+    ``_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.sourceFrameUnitRoof_Q,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSpecifiedLocalizationComparison,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSpecifiedLocalizationComparison_triangle,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSpecifiedPinchedEquivalence]
 
 @[noinline] private def e2RequiredBatch237 : Array Lean.Name :=
   #[
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaAugmentationRoofMap,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaEvaluationRoofMap,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaEvaluationRoofMap_sourceComparison,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativeSimplex,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativeSimplex_target,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativeSliceSimplex,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNative_triangle,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductReference_triangle,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofMap_isLeftCofinal,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaPrefixHomotopy,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaPrefixHomotopy_h,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaPrefixHomotopy_underMap,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativeFamilyMap,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativeFamilyMap_eq,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativeFamilyMap_pinched,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaPrefixPathMap,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductComma,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaIso,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaFirstNerve,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaIso_first,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaIso_over,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaDegree,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaDiagram,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaEvaluation,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaRightLeg,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaAugmentation,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaAugmentation_triangle,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaEvaluation_weak,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaAugmentation_weak,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofDegreeTransportIso_inv_source,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCornerMap_source,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaCornerMap,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaCornerMap_source,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaCornerMap_diagram,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaEvaluationIso,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaRightHomotopy,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaRightCell,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaComparisonCell,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaComparisonCell_triangle,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaComparisonCell_unique,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaComparisonHomotopy,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaComparisonHomotopy_hom,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductGeometricLeftHomotopy,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductGeometricRightHomotopy,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductGeometricLeftCell,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductGeometricRightCell,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductGeometric_triangle,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaHomMap,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductActualIntervalCell,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductReferenceIntervalCell,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductHomMap_weak_of_intervalCell_eq,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductHomMap_weak_of_interval_triangles,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofMap_isLeftCofinal_of_interval_triangles,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductFirstNerve_weak,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductHammockMap,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofDegreePrecompose,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofDegreePrecompose_weak,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductDegreeHammockMap,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductPinchedReferenceMap,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaReferenceMap,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductHammockMap_weak,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductDegreeHammockMap_weak,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductPinchedReferenceMap_weak,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaReferenceMap_weak,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceFrameRoofMap_normalizedOver,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaRightOver,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaRightOver_nerve,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaRightSlice,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCornerMap,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofSlice_weaklyContractible_of_productCorner_weak,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofMap_isLeftCofinal_of_productCorner_weak,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofDegreeTransportIso,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofDegreeTransportIso_source,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofDegreeTransportIso_over,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofSliceDegreeMap_eq_generic,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofSliceDegreeMap_fibration,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofSliceProductMap,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofSliceProductMap_degree,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofSliceProductMap_fibration,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofSliceProductMap_source,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofSliceProductMap_over,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofSliceProductMap_rightFibration,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofSliceProductMap_fiber_kanComplex,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofTarget,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProjection,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceFrameArrow_invertible,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProjection_rightFibration,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProjection_leftFibration,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofTarget_quasicategory,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofSlice,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofDegree,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofSliceOver,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofSliceOver_projection,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofDegreeModel,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofSliceDegreeMap,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofSliceDegreeMap_source,
-    ``SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofMap_isLeftCofinal_iff_slices]
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaAugmentationRoofMap,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaEvaluationRoofMap,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaEvaluationRoofMap_sourceComparison,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativeSimplex,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativeSimplex_target,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativeSliceSimplex,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNative_triangle,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductReference_triangle,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofMap_isLeftCofinal,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaPrefixHomotopy,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaPrefixHomotopy_h,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaPrefixHomotopy_underMap,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativeFamilyMap,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativeFamilyMap_eq,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativeFamilyMap_pinched,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaPrefixPathMap,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductComma,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaIso,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaFirstNerve,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaIso_first,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaIso_over,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaDegree,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaDiagram,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaEvaluation,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaRightLeg,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaAugmentation,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaAugmentation_triangle,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaEvaluation_weak,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaAugmentation_weak,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofDegreeTransportIso_inv_source,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCornerMap_source,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaCornerMap,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaCornerMap_source,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaCornerMap_diagram,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaEvaluationIso,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaRightHomotopy,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaRightCell,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaComparisonCell,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaComparisonCell_triangle,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaComparisonCell_unique,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaComparisonHomotopy,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaComparisonHomotopy_hom,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductGeometricLeftHomotopy,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductGeometricRightHomotopy,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductGeometricLeftCell,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductGeometricRightCell,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductGeometric_triangle,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaHomMap,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductActualIntervalCell,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductReferenceIntervalCell,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductHomMap_weak_of_intervalCell_eq,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductHomMap_weak_of_interval_triangles,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofMap_isLeftCofinal_of_interval_triangles,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductFirstNerve_weak,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductHammockMap,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofDegreePrecompose,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofDegreePrecompose_weak,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductDegreeHammockMap,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductPinchedReferenceMap,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaReferenceMap,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductHammockMap_weak,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductDegreeHammockMap_weak,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductPinchedReferenceMap_weak,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaReferenceMap_weak,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceFrameRoofMap_normalizedOver,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaRightOver,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaRightOver_nerve,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaRightSlice,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCornerMap,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofSlice_weaklyContractible_of_productCorner_weak,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofMap_isLeftCofinal_of_productCorner_weak,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofDegreeTransportIso,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofDegreeTransportIso_source,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofDegreeTransportIso_over,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofSliceDegreeMap_eq_generic,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofSliceDegreeMap_fibration,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofSliceProductMap,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofSliceProductMap_degree,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofSliceProductMap_fibration,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofSliceProductMap_source,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofSliceProductMap_over,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofSliceProductMap_rightFibration,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofSliceProductMap_fiber_kanComplex,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofTarget,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProjection,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceFrameArrow_invertible,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProjection_rightFibration,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProjection_leftFibration,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofTarget_quasicategory,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofSlice,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofDegree,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofSliceOver,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofSliceOver_projection,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofDegreeModel,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofSliceDegreeMap,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofSliceDegreeMap_source,
+    ``_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofMap_isLeftCofinal_iff_slices]
 
 @[noinline] private def e2RequiredBatch235 : Array Lean.Name :=
   #[`SerrePositivity.EInfinity.DGAlgebra.cofibrantToBifibrant,
@@ -10630,18 +10630,18 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.DGAlgebra.fibrantFactorization,
       `SerrePositivity.EInfinity.DGAlgebra.cofibrantHammockInclusion_weak,
       `SerrePositivity.EInfinity.DGAlgebra.cofibrantHammockNerveInclusion_isQCatEquivalence,
-      `SerrePositivity.EInfinity.FrameHom.resolutionLeftRoofColimitMap,
-      `SerrePositivity.EInfinity.FrameHom.resolutionLeftRoofNerveMap_normalized_isWeakHomotopyEquivalence_of_first,
-      `SerrePositivity.EInfinity.FrameHom.resolutionLeftRoofColimitMap_isWeakHomotopyEquivalence_of_first,
-      `SerrePositivity.EInfinity.FrameHom.frameFunctorImageHom,
-      `SerrePositivity.EInfinity.FrameHom.frameFunctorImageHom_isIso,
-      `SerrePositivity.EInfinity.FrameHom.frameFunctorImageAugmentation,
-      `SerrePositivity.EInfinity.FrameHom.frameLeftRoofFunctor_functorImage,
-      `SerrePositivity.EInfinity.FrameHom.frameFunctorImageIndex,
-      `SerrePositivity.EInfinity.FrameHom.frameLeftRoofNerveMap_functorImage,
-      `SerrePositivity.EInfinity.FrameHom.frameLeftRoofColimitMap_functorImage,
-      `SerrePositivity.EInfinity.FrameHom.frameFunctorImageIndex_localized_isIso,
-      `SerrePositivity.EInfinity.FrameHom.frameFunctorImageIndex_isWeakHomotopyEquivalence,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.resolutionLeftRoofColimitMap,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.resolutionLeftRoofNerveMap_normalized_isWeakHomotopyEquivalence_of_first,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.resolutionLeftRoofColimitMap_isWeakHomotopyEquivalence_of_first,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameFunctorImageHom,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameFunctorImageHom_isIso,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameFunctorImageAugmentation,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameLeftRoofFunctor_functorImage,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameFunctorImageIndex,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameLeftRoofNerveMap_functorImage,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameLeftRoofColimitMap_functorImage,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameFunctorImageIndex_localized_isIso,
+      `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameFunctorImageIndex_isWeakHomotopyEquivalence,
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.RightReplacementOfFirst.intermediate,
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.RightReplacementOfFirst.first,
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.RightReplacementOfFirst.last,
@@ -10667,13 +10667,13 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.RightReplacementOfFirst.inclusion_localized_isIso,
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.inclusion_localized_isIso_of_first,
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.inclusion_isWeakHomotopyEquivalence_of_first,
-      `SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantFrameLeftRoofColimitMap,
-      `SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantFrameLeftRoofColimitMap_image,
-      `SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantFrameLeftRoofColimitMap_weak,
-      `SerrePositivity.EInfinity.SimplicialLocalization.modelCofibrantToBifibrant_nerve_isQCatEquivalence,
-      `SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantToCofibrant_nerve_isQCatEquivalence,
-      `SerrePositivity.EInfinity.SimplicialLocalization.modelCofibrantToModel_nerve_isQCatEquivalence,
-      `SerrePositivity.EInfinity.SimplicialLocalization.modelToCofibrant_nerve_isQCatEquivalence,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantFrameLeftRoofColimitMap,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantFrameLeftRoofColimitMap_image,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantFrameLeftRoofColimitMap_weak,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelCofibrantToBifibrant_nerve_isQCatEquivalence,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantToCofibrant_nerve_isQCatEquivalence,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelCofibrantToModel_nerve_isQCatEquivalence,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelToCofibrant_nerve_isQCatEquivalence,
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRawCofibrantWeak,
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRawBifibrantWeak,
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRawBifibrantToCofibrant,
@@ -10684,13 +10684,13 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRawCofibrantToModel_colimitMap_weak,
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRawBifibrantToModel,
       `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRawBifibrantToModel_colimitMap_weak,
-      `SerrePositivity.EInfinity.SimplicialLocalization.relativeKanHammockNerve_essentiallySurjective,
-      `SerrePositivity.EInfinity.SimplicialLocalization.relativeKanHammockNerve_isQCatEquivalence,
-      `SerrePositivity.EInfinity.SimplicialLocalization.relativeKanHammockNerve_essentiallySurjective_of_counit,
-      `SerrePositivity.EInfinity.SimplicialLocalization.relativeKanHammockNerve_isQCatEquivalence_of_counit,
-      `SerrePositivity.EInfinity.SimplicialLocalization.relativeHammockEnriched_arrowMap,
-      `SerrePositivity.EInfinity.SimplicialLocalization.relativeKanHammockSourceFunctor,
-      `SerrePositivity.EInfinity.SimplicialLocalization.relativeKanHammockNerve_source]
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.relativeKanHammockNerve_essentiallySurjective,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.relativeKanHammockNerve_isQCatEquivalence,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.relativeKanHammockNerve_essentiallySurjective_of_counit,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.relativeKanHammockNerve_isQCatEquivalence_of_counit,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.relativeHammockEnriched_arrowMap,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.relativeKanHammockSourceFunctor,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.relativeKanHammockNerve_source]
 
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
@@ -10702,7 +10702,14 @@ run_cmd do
   for (name, _) in env.constants.toList do
     let some idx := env.getModuleIdxFor? name | continue
     let mod := env.header.modules[idx.toNat]!.module
-    unless (`SerrePositivity.EInfinity).isPrefixOf mod do continue
+    unless (#[
+        `SerrePositivity.EInfinity,
+        `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight,
+        `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom,
+        `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization] : Array Name).any (fun scopePrefix ↦ scopePrefix.isPrefixOf mod) ||
+      (#[
+        `SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection,
+        `SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.AnodyneFamilyHomotopy] : Array Name).contains mod do continue
     let axioms ← collectAxioms name
     let unexpected := axioms.filter fun ax ↦
       !(#[``propext, ``Classical.choice, ``Quot.sound].contains ax)
@@ -13355,7 +13362,7 @@ example : (SerrePositivity.EInfinity.projectiveGeneratingCofibrations ℤ).rlp.l
 example (A : Type) [CommRing A] :
     (coalgebraInterval A).coalgebra.carrier = interval A := rfl
 example (A : Type) [CommRing A] :
-    HomotopicalAlgebra.ModelCategory
+    _root_.HomotopicalAlgebra.ModelCategory
       (SerrePositivity.EInfinity.BarrattEccles.operad A).Algebra :=
   SerrePositivity.EInfinity.BarrattEccles.modelCategory A
 example (A : Type) [CommRing A] :
@@ -13378,7 +13385,7 @@ example : SerrePositivity.EInfinity.Surjection.zeroAugmentation ℤ 0
 example (A : Type) [CommRing A]
     (X : (SerrePositivity.EInfinity.BarrattEccles.operad A).Algebra) :
     let := SerrePositivity.EInfinity.BarrattEccles.modelCategory A
-    HomotopicalAlgebra.IsFibrant X :=
+    _root_.HomotopicalAlgebra.IsFibrant X :=
   SerrePositivity.EInfinity.BarrattEccles.isFibrant A X
 
 -- 任意の可換環上の任意の cospan で、同じ置換を底の複体の引き戻しに使える。
@@ -13394,9 +13401,9 @@ open SerrePositivity.EInfinity.BarrattEccles in
 example (A : Type) [CommRing A] {Y Z : (BarrattEccles.operad A).Algebra} (g : Y ⟶ Z) :
     let := modelCategory A
     (pullbackFunctor A g ⋙
-      (HomotopicalAlgebra.weakEquivalences
+      (_root_.HomotopicalAlgebra.weakEquivalences
         (BarrattEccles.operad A).Algebra).Q).HasPointwiseRightDerivedFunctor
-      (HomotopicalAlgebra.weakEquivalences (Over Z)) := by
+      (_root_.HomotopicalAlgebra.weakEquivalences (Over Z)) := by
   let := modelCategory A
   change (pullbackFunctor A g ⋙ _).HasPointwiseRightDerivedFunctor _
   exact pullbackFunctor_hasPointwiseRightDerivedFunctor A g _ inferInstance
@@ -13554,7 +13561,7 @@ example (F G : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra) (n : ℕ) (i : Fin (n
   exact SSet.KanComplex.hornFilling a
 
 -- 元の定値図式の射の合成を、始域 frame の錐の実際の連結成分で回収する。
-open HomotopicalAlgebra SerrePositivity.EInfinity.BarrattEccles in
+open _root_.HomotopicalAlgebra SerrePositivity.EInfinity.BarrattEccles in
 example (Y : (BarrattEccles.operad ℤ).Algebra)
     {F G : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra}
     (f : (Functor.const ℕ).obj Y ⟶ F) (g : F ⟶ G) :
@@ -13568,7 +13575,7 @@ example (Y : (BarrattEccles.operad ℤ).Algebra)
   exact (Q.map_comp f g).symm
 
 -- 局所化後の任意の射は、構成した Kan 錐の実際の零単体で表せる。
-open HomotopicalAlgebra SerrePositivity.EInfinity.BarrattEccles in
+open _root_.HomotopicalAlgebra SerrePositivity.EInfinity.BarrattEccles in
 example (Y : (BarrattEccles.operad ℤ).Algebra) (F : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra) :
     let := Diagram.projectiveModelCategory ℤ ℕ
     let Q := (weakEquivalences (ℕ ⥤ (BarrattEccles.operad ℤ).Algebra)).Q
@@ -13600,11 +13607,11 @@ example (Y : (BarrattEccles.operad ℤ).Algebra)
 
 
 -- 選んだ重みの各値への任意の部分写像は、すべての単射に沿って延長できる。
-open SerrePositivity.EInfinity.HomotopyWeight in
+open _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight in
 example (k : ℕ) {X Y : SSet} (i : X ⟶ Y) [Mono i]
-    (a : X ⟶ (weight ℕ).obj k) : ∃ b : Y ⟶ (weight ℕ).obj k, i ≫ b = a := by
-  have : HasLiftingProperty i ((comparison ℕ).app k) := comparison_mono_rlp ℕ k i inferInstance
-  let sq : CommSq a i ((comparison ℕ).app k) (CategoryTheory.Limits.terminal.from Y) :=
+    (a : X ⟶ (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight ℕ).obj k) : ∃ b : Y ⟶ (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight ℕ).obj k, i ≫ b = a := by
+  have : HasLiftingProperty i ((_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.comparison ℕ).app k) := _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.comparison_mono_rlp ℕ k i inferInstance
+  let sq : CommSq a i ((_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.comparison ℕ).app k) (CategoryTheory.Limits.terminal.from Y) :=
     ⟨CategoryTheory.Limits.terminal.hom_ext _ _⟩
   exact ⟨sq.lift, sq.fac_left⟩
 
@@ -13613,16 +13620,16 @@ open CategoryTheory.Limits SerrePositivity.EInfinity.BarrattEccles in
 example (F : PEmpty ⥤ (BarrattEccles.operad ℤ).Algebra) :
     IsTerminal ((framedLimitFunctor ℤ PEmpty).obj F) := by
   let a (Y : (BarrattEccles.operad ℤ).Algebra) :
-      (SerrePositivity.EInfinity.HomotopyWeight.doubleOpWeights PEmpty).obj (HomotopyWeight.weight PEmpty) ⟶
+      (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.doubleOpWeights PEmpty).obj (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight PEmpty) ⟶
         (SerrePositivity.DiagramModel.FrameWeightRealization.hom PEmptyᵒᵖ
           (rightFrameDiagram ℤ PEmpty F)).obj (Opposite.op Y) :=
     { app k := PEmpty.elim k.unop.unop
       naturality := by intro k l f; cases k.unop.unop }
   refine IsTerminal.ofUniqueHom
-    (fun Y => (weightedCotensorHomEquiv ℤ PEmpty F (HomotopyWeight.weight PEmpty) Y).symm
+    (fun Y => (weightedCotensorHomEquiv ℤ PEmpty F (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight PEmpty) Y).symm
       (a Y)) ?_
   intro Y m
-  apply (weightedCotensorHomEquiv ℤ PEmpty F (HomotopyWeight.weight PEmpty) Y).injective
+  apply (weightedCotensorHomEquiv ℤ PEmpty F (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight PEmpty) Y).injective
   apply NatTrans.ext
   funext k
   exact PEmpty.elim k.unop.unop
@@ -13638,7 +13645,7 @@ example (X Y : (BarrattEccles.operad ℤ).Algebra) (n : ℕ) (i : Fin (n + 2))
   exact SSet.KanComplex.hornFilling a
 
 -- 元の二つの代数射の合成は、Map^h の実際の π₀ の後合成で回収される。
-open HomotopicalAlgebra SerrePositivity.EInfinity.BarrattEccles in
+open _root_.HomotopicalAlgebra SerrePositivity.EInfinity.BarrattEccles in
 example {X Y Z : (BarrattEccles.operad ℤ).Algebra} (f : X ⟶ Y) (g : Y ⟶ Z) :
     SSet.mapπ₀ (((mappingSpace ℤ).obj (Opposite.op X)).map g) (mappingSpaceClass ℤ f) =
       mappingSpaceClass ℤ (f ≫ g) := by
@@ -13650,7 +13657,7 @@ example {X Y Z : (BarrattEccles.operad ℤ).Algebra} (f : X ⟶ Y) (g : Y ⟶ Z)
   exact (Q.map_comp f g).symm
 
 -- 元の擬同型の導来的な逆は、逆向きの実際の写像空間の連結成分で表せる。
-open HomotopicalAlgebra SerrePositivity.EInfinity.BarrattEccles in
+open _root_.HomotopicalAlgebra SerrePositivity.EInfinity.BarrattEccles in
 example {X Y : (BarrattEccles.operad ℤ).Algebra} (f : X ⟶ Y) (hf : QuasiIso f.hom) :
     let := BarrattEccles.modelCategory ℤ
     let Q := (weakEquivalences (BarrattEccles.operad ℤ).Algebra).Q
@@ -13669,31 +13676,31 @@ example {X Y : (BarrattEccles.operad ℤ).Algebra} (f : X ⟶ Y) (hf : QuasiIso 
     rw [e.apply_symm_apply, IsIso.inv_hom_id]
 
 -- 選んだ射影重みの錐は頂点ごとに充填するだけでなく、図式全体に自然な充填を持つ。
-open CategoryTheory.Limits SerrePositivity.EInfinity.HomotopyWeight
+open CategoryTheory.Limits _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight
   SerrePositivity.DiagramModel.WeightedCones in
 example {F G : ℕ ⥤ SSet} (p : F ⟶ G)
     (hp : ∀ k, SSet.modelCategoryQuillen.I.rlp (p.app k))
     {X Y : SSet} (i : X ⟶ Y) [Mono i]
-    (a : X ⟶ (coneSpace ℕ (weight ℕ)).obj F)
-    (b : Y ⟶ (coneSpace ℕ (weight ℕ)).obj G)
-    (h : a ≫ (coneSpace ℕ (weight ℕ)).map p = i ≫ b) :
-    ∃ l : Y ⟶ (coneSpace ℕ (weight ℕ)).obj F,
-      i ≫ l = a ∧ l ≫ (coneSpace ℕ (weight ℕ)).map p = b := by
-  have : HasLiftingProperty i ((coneSpace ℕ (weight ℕ)).map p) :=
+    (a : X ⟶ (coneSpace ℕ (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight ℕ)).obj F)
+    (b : Y ⟶ (coneSpace ℕ (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight ℕ)).obj G)
+    (h : a ≫ (coneSpace ℕ (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight ℕ)).map p = i ≫ b) :
+    ∃ l : Y ⟶ (coneSpace ℕ (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight ℕ)).obj F,
+      i ≫ l = a ∧ l ≫ (coneSpace ℕ (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight ℕ)).map p = b := by
+  have : HasLiftingProperty i ((coneSpace ℕ (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight ℕ)).map p) :=
     SSet.rlp_monomorphisms.ge _
-      (coneSpace_map_boundary_rlp ℕ (weight ℕ) (weight_cofibrant ℕ) p hp) i inferInstance
-  let sq : CommSq a i ((coneSpace ℕ (weight ℕ)).map p) b := ⟨h⟩
+      (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.coneSpace_map_boundary_rlp ℕ (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight ℕ) (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight_cofibrant ℕ) p hp) i inferInstance
+  let sq : CommSq a i ((coneSpace ℕ (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight ℕ)).map p) b := ⟨h⟩
   exact ⟨sq.lift, sq.fac_left, sq.fac_right⟩
 
 -- Kan 値図式の実際の重み付き錐空間は全次元のホーンを充填する。
-open SerrePositivity.EInfinity.HomotopyWeight
+open _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight
   SerrePositivity.DiagramModel.WeightedCones in
 example (F : ℕ ⥤ SSet) (hF : ∀ k, SSet.KanComplex (F.obj k))
     (n : ℕ) (i : Fin (n + 2))
-    (a : (SSet.horn (n + 1) i : SSet) ⟶ (coneSpace ℕ (weight ℕ)).obj F) :
+    (a : (SSet.horn (n + 1) i : SSet) ⟶ (coneSpace ℕ (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight ℕ)).obj F) :
     ∃ b : SSet.stdSimplex.obj (SimplexCategory.mk (n + 1)) ⟶
-      (coneSpace ℕ (weight ℕ)).obj F, a = (SSet.horn (n + 1) i).ι ≫ b := by
-  have := coneSpace_kanComplex ℕ (weight ℕ) (weight_cofibrant ℕ) F hF
+      (coneSpace ℕ (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight ℕ)).obj F, a = (SSet.horn (n + 1) i).ι ≫ b := by
+  have := _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.coneSpace_kanComplex ℕ (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight ℕ) (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight_cofibrant ℕ) F hF
   exact SSet.KanComplex.hornFilling a
 
 -- 元の E 代数に cofibrancy を仮定せず、右 frame の錐の全次元のホーンを充填する。
@@ -13727,7 +13734,7 @@ example {F G : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra} (f : F ⟶ G)
   infer_instance
 
 -- 元の図式の頂点ごとの擬同型は、計算対象の局所化後の実際の二側逆を持つ。
-open HomotopicalAlgebra SerrePositivity.EInfinity.BarrattEccles in
+open _root_.HomotopicalAlgebra SerrePositivity.EInfinity.BarrattEccles in
 example {F G : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra} (f : F ⟶ G)
     (hf : ∀ k, QuasiIso (f.app k).hom) :
     let := BarrattEccles.modelCategory ℤ
@@ -13744,7 +13751,7 @@ example {F G : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra} (f : F ⟶ G)
   exact ⟨inv _, IsIso.hom_inv_id _, IsIso.inv_hom_id _⟩
 
 -- 定値図式の具体的な置換は、図式全体で自明 fibration に沿って持ち上がる。
-open CategoryTheory.Limits HomotopicalAlgebra SerrePositivity.EInfinity.BarrattEccles in
+open CategoryTheory.Limits _root_.HomotopicalAlgebra SerrePositivity.EInfinity.BarrattEccles in
 example (Y : (BarrattEccles.operad ℤ).Algebra)
     {F G : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra} (p : F ⟶ G)
     (hp : ∀ k n, Function.Surjective ((p.app k).hom.f n))
@@ -13775,38 +13782,38 @@ example (Y : (BarrattEccles.operad ℤ).Algebra) (F : ℕ ⥤ (BarrattEccles.ope
   exact h k n
 
 -- Kan 値図式の各値の局所化同値は、同じ錐の連結成分を一意に戻す。
-open SerrePositivity.EInfinity.HomotopyWeight
+open _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight
   SerrePositivity.DiagramModel.WeightedCones SerrePositivity.SimplicialModel in
 example {F G : ℕ ⥤ SSet} (f : F ⟶ G)
     (hF : ∀ k, SSet.KanComplex (F.obj k)) (hG : ∀ k, SSet.KanComplex (G.obj k))
     (hf : ∀ k, IsIso (AnodyneHomotopy.anodyneQ.map (f.app k)))
-    (z : SSet.π₀ ((coneSpace ℕ (weight ℕ)).obj G)) :
-    ∃! w : SSet.π₀ ((coneSpace ℕ (weight ℕ)).obj F),
-      SSet.mapπ₀ ((coneSpace ℕ (weight ℕ)).map f) w = z := by
-  have := coneSpace_map_isIso_of_pointwiseKan ℕ (weight ℕ) (weight_cofibrant ℕ)
+    (z : SSet.π₀ ((coneSpace ℕ (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight ℕ)).obj G)) :
+    ∃! w : SSet.π₀ ((coneSpace ℕ (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight ℕ)).obj F),
+      SSet.mapπ₀ ((coneSpace ℕ (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight ℕ)).map f) w = z := by
+  have := _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.coneSpace_map_isIso_of_pointwiseKan ℕ (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight ℕ) (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight_cofibrant ℕ)
     f hF hG hf SSet.π₀Functor PiZeroLocalization.inverts_anodyne
   obtain ⟨hinj, hsurj⟩ := (CategoryTheory.isIso_iff_bijective _).mp this
   obtain ⟨w, hw⟩ := hsurj z
   exact ⟨w, hw, fun w' hw' => hinj (hw'.trans hw.symm)⟩
 
 -- 共通図式は Kan でなくても、元の二つの比較射の像は同じ類になる。
-open CategoryTheory.Limits SerrePositivity.EInfinity.HomotopyWeight
+open CategoryTheory.Limits _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight
   SerrePositivity.DiagramModel.WeightedCones SerrePositivity.SimplicialModel in
 example {F G H : ℕ ⥤ SSet} (f : F ⟶ H) (g : G ⟶ H)
     (hF : ∀ k, SSet.KanComplex (F.obj k)) (hG : ∀ k, SSet.KanComplex (G.obj k))
     (hf : ∀ k, IsIso (AnodyneHomotopy.anodyneQ.map (f.app k)))
     (hg : ∀ k, IsIso (AnodyneHomotopy.anodyneQ.map (g.app k)))
-    (z : SSet.π₀ ((coneSpace ℕ (weight ℕ)).obj F)) :
-    let e := kanConeComparisonIso ℕ (weight ℕ) (weight_cofibrant ℕ)
+    (z : SSet.π₀ ((coneSpace ℕ (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight ℕ)).obj F)) :
+    let e := _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.kanConeComparisonIso ℕ (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight ℕ) (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight_cofibrant ℕ)
       SSet.π₀Functor PiZeroLocalization.inverts_anodyne f g hF hG hf hg
-    (coneComparisonArrow ℕ (weight ℕ) SSet.π₀Functor g) (e.hom z) =
-      (coneComparisonArrow ℕ (weight ℕ) SSet.π₀Functor f) z := by
+    (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.coneComparisonArrow ℕ (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight ℕ) SSet.π₀Functor g) (e.hom z) =
+      (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.coneComparisonArrow ℕ (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight ℕ) SSet.π₀Functor f) z := by
   exact ConcreteCategory.congr_hom
-    (kanConeComparisonIso_fac ℕ (weight ℕ) (weight_cofibrant ℕ)
+    (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.kanConeComparisonIso_fac ℕ (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight ℕ) (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight_cofibrant ℕ)
       SSet.π₀Functor PiZeroLocalization.inverts_anodyne f g hF hG hf hg) z
 
 -- 元の定値図式の局所化射は、計算した同じ極限対象への射で一意に表せる。
-open HomotopicalAlgebra SerrePositivity.EInfinity.BarrattEccles in
+open _root_.HomotopicalAlgebra SerrePositivity.EInfinity.BarrattEccles in
 example (Y : (BarrattEccles.operad ℤ).Algebra) (F : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra)
     (f : (CategoryTheory.Functor.const ℕ).obj Y ⟶ F) :
     let := BarrattEccles.modelCategory ℤ
@@ -13825,7 +13832,7 @@ example (Y : (BarrattEccles.operad ℤ).Algebra) (F : ℕ ⥤ (BarrattEccles.ope
   exact (e.apply_symm_apply g).symm.trans (congrArg e hg)
 
 -- 右 frame の同じ錐は元の図式射の後合成を正しい局所化像へ送る。
-open HomotopicalAlgebra SerrePositivity.EInfinity.BarrattEccles in
+open _root_.HomotopicalAlgebra SerrePositivity.EInfinity.BarrattEccles in
 example (Y : (BarrattEccles.operad ℤ).Algebra)
     {F G : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra} (g : F ⟶ G)
     (z : SSet.π₀ ((framedLimitConeSpace ℤ ℕ Y).obj F)) :
@@ -13841,7 +13848,7 @@ example (Y : (BarrattEccles.operad ℤ).Algebra)
     (e.symm_apply_apply _)
 
 -- 元の錐と図式射の合成は、計算対象への導来射の同じ後合成を回収する。
-open HomotopicalAlgebra SerrePositivity.EInfinity.BarrattEccles in
+open _root_.HomotopicalAlgebra SerrePositivity.EInfinity.BarrattEccles in
 example (Y : (BarrattEccles.operad ℤ).Algebra)
     {F G : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra}
     (f : (CategoryTheory.Functor.const ℕ).obj Y ⟶ F) (g : F ⟶ G) :
@@ -13859,7 +13866,7 @@ example (Y : (BarrattEccles.operad ℤ).Algebra)
     (framedLimitDerivedHomEquiv_target ℤ ℕ Y g (QD.map f))
 
 -- 元の始域射・錐・図式射の合成は、導来射の前合成・後合成に一致する。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.EInfinity
   SerrePositivity.EInfinity.BarrattEccles in
 example {Y Z : (BarrattEccles.operad ℤ).Algebra} (f : Y ⟶ Z)
     {F G : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra}
@@ -13887,7 +13894,7 @@ example {Y Z : (BarrattEccles.operad ℤ).Algebra} (f : Y ⟶ Z)
   simpa only [Category.assoc] using he
 
 -- 始域の元の射に沿った右錐の前合成は、同じ局所化 Hom の前合成で回収される。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.EInfinity
   SerrePositivity.EInfinity.BarrattEccles in
 example {Y Z : (BarrattEccles.operad ℤ).Algebra} (f : Y ⟶ Z)
     (F : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra)
@@ -13904,7 +13911,7 @@ example {Y Z : (BarrattEccles.operad ℤ).Algebra} (f : Y ⟶ Z)
     (e.symm_apply_apply _)
 
 -- 元の普通の錐の局所化像を、局所化圏上の随伴の Hom 同値で同じ類へ戻せる。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.EInfinity
   SerrePositivity.EInfinity.BarrattEccles in
 example (Y : (BarrattEccles.operad ℤ).Algebra) (F : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra)
     (f : (Functor.const ℕ).obj Y ⟶ F) :
@@ -13922,7 +13929,7 @@ example (Y : (BarrattEccles.operad ℤ).Algebra) (F : ℕ ⥤ (BarrattEccles.ope
   exact framedLimitAdjunction_homEquiv_comparison ℤ ℕ Y F (QD.map f)
 
 -- 元の対象の像に限らず、局所化圏の任意の二対象で実際の Hom の普遍性を使える。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.EInfinity
   SerrePositivity.EInfinity.BarrattEccles in
 example :
     let := BarrattEccles.modelCategory ℤ
@@ -13942,7 +13949,7 @@ example :
   exact (e.symm_apply_apply g).symm.trans (congrArg e.symm hg)
 
 -- 元の錐の射で右錐の類を前合成すると、元の同じ錐の普遍射を回収する。
-open CategoryTheory CategoryTheory.Limits HomotopicalAlgebra SerrePositivity.EInfinity
+open CategoryTheory CategoryTheory.Limits _root_.HomotopicalAlgebra SerrePositivity.EInfinity
   SerrePositivity.EInfinity.BarrattEccles in
 example (F : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra) {c d : Cone F} (h : c ⟶ d) :
     let := BarrattEccles.modelCategory ℤ
@@ -13962,14 +13969,14 @@ example (F : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra) {c d : Cone F} (h : c �
   exact he.trans hc
 
 -- 同じ定値図式比較の随伴族で作る零単体も元の図式射の局所化像となる。
-open CategoryTheory CategoryTheory.Limits HomotopicalAlgebra SerrePositivity.EInfinity
+open CategoryTheory CategoryTheory.Limits _root_.HomotopicalAlgebra SerrePositivity.EInfinity
   SerrePositivity.EInfinity.BarrattEccles in
 example {Y : (BarrattEccles.operad ℤ).Algebra} {F : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra}
     (f : (Functor.const ℕ).obj Y ⟶ F) :
     let := Diagram.projectiveModelCategory ℤ ℕ
     let QD := (weakEquivalences (ℕ ⥤ (BarrattEccles.operad ℤ).Algebra)).Q
     constantDiagramSourcePiZeroEquiv ℤ ℕ Y F
-        (HomotopyWeight.coneClass ℕ (HomotopyWeight.weight ℕ)
+        (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.coneClass ℕ (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight ℕ)
           ((constantDiagramHomEquiv ℤ ℕ Y F) ((constantDiagramComparison ℤ ℕ).app Y ≫ f))) =
       QD.map f := by
   let := Diagram.projectiveModelCategory ℤ ℕ
@@ -13978,7 +13985,7 @@ example {Y : (BarrattEccles.operad ℤ).Algebra} {F : ℕ ⥤ (BarrattEccles.ope
       (constantDiagramSourcePiZeroEquiv_class ℤ ℕ f)
 
 -- 元の通常錐の比較を、局所化圏全体の随伴の Hom 対応から回収する。
-open CategoryTheory CategoryTheory.Limits HomotopicalAlgebra SerrePositivity.EInfinity
+open CategoryTheory CategoryTheory.Limits _root_.HomotopicalAlgebra SerrePositivity.EInfinity
   SerrePositivity.EInfinity.BarrattEccles in
 example (F : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra) (c : Cone F) :
     let := BarrattEccles.modelCategory ℤ
@@ -13991,7 +13998,7 @@ example (F : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra) (c : Cone F) :
   exact framedLimitAdjunction_homEquiv_cone ℤ ℕ F c
 
 -- 通常の極限錐を代入すると、構成済みの同じ limitComparison を得る。
-open CategoryTheory CategoryTheory.Limits HomotopicalAlgebra SerrePositivity.EInfinity
+open CategoryTheory CategoryTheory.Limits _root_.HomotopicalAlgebra SerrePositivity.EInfinity
   SerrePositivity.EInfinity.BarrattEccles in
 example (F : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra) :
     let := BarrattEccles.modelCategory ℤ
@@ -14003,7 +14010,7 @@ example (F : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra) :
   exact framedLimitDerivedHomEquiv_cone ℤ ℕ F (limit.cone F)
 
 -- 右導来普遍性は任意の候補関手への自然変換の一意な因子化を与える。
-open CategoryTheory CategoryTheory.Limits HomotopicalAlgebra SerrePositivity.EInfinity
+open CategoryTheory CategoryTheory.Limits _root_.HomotopicalAlgebra SerrePositivity.EInfinity
   SerrePositivity.EInfinity.BarrattEccles in
 example :
     let := BarrattEccles.modelCategory ℤ
@@ -14028,7 +14035,7 @@ example :
   exact hγ.trans (RF.rightDerived_fac α W T β).symm
 
 -- 実際の重み付き end は選択済みの通常右導来関手の値にも同型になる。
-open CategoryTheory CategoryTheory.Limits HomotopicalAlgebra SerrePositivity.EInfinity
+open CategoryTheory CategoryTheory.Limits _root_.HomotopicalAlgebra SerrePositivity.EInfinity
   SerrePositivity.EInfinity.BarrattEccles in
 example (F : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra) :
     let := BarrattEccles.modelCategory ℤ
@@ -14047,14 +14054,14 @@ example (F : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra) :
     ((lim ⋙ Q).totalRightDerivedUnit W.Q W) inferInstance
 
 -- 元の代数の底とは限らない任意の複体を試験始域に使える。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.DifferentialGraded
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.DifferentialGraded
   SerrePositivity.EInfinity SerrePositivity.EInfinity.BarrattEccles in
 example (F : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra) (Y : Complex ℤ) :
     SSet.KanComplex ((carrierFramedLimitConeSpace ℤ ℕ Y).obj F) :=
   carrierFramedLimitConeSpace_kanComplex ℤ ℕ F Y
 
 -- 元の通常錐から計算対象への射を忘却した場合にも同じ局所化像になる。
-open CategoryTheory CategoryTheory.Limits HomotopicalAlgebra SerrePositivity.DifferentialGraded
+open CategoryTheory CategoryTheory.Limits _root_.HomotopicalAlgebra SerrePositivity.DifferentialGraded
   SerrePositivity.EInfinity SerrePositivity.EInfinity.BarrattEccles in
 example (F : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra) (c : Cone F) :
     let := projectiveModelCategory ℤ
@@ -14065,7 +14072,7 @@ example (F : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra) (c : Cone F) :
   exact carrierFramedLimitHomPiZeroEquiv_mapClass ℤ ℕ F (coneToFramedLimit ℤ ℕ F c).hom
 
 -- 任意の複体から計算対象の底への局所化射は、同じ右錐の類で一意に表示される。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.DifferentialGraded
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.DifferentialGraded
   SerrePositivity.EInfinity SerrePositivity.EInfinity.BarrattEccles in
 example (F : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra) (Y : Complex ℤ) :
     let := projectiveModelCategory ℤ
@@ -14081,14 +14088,14 @@ example (F : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra) (Y : Complex ℤ) :
   exact (e.symm_apply_apply z).symm.trans (congrArg e.symm hz)
 
 -- 底の任意の複体図式も実際の射影モデルで fibrant。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.DifferentialGraded
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.DifferentialGraded
   SerrePositivity.EInfinity.BarrattEccles in
 example (F : ℕ ⥤ Complex ℤ) :
     let := CarrierDiagram.projectiveModelCategory ℤ ℕ
     IsFibrant F := CarrierDiagram.isFibrant ℤ ℕ F
 
 -- 元の定値複体図式の射は、錐の類の比較で同じ局所化像になる。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.DifferentialGraded
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.DifferentialGraded
   SerrePositivity.EInfinity.BarrattEccles in
 example {Y : Complex ℤ} {F : ℕ ⥤ Complex ℤ} (f : (Functor.const ℕ).obj Y ⟶ F) :
     let := CarrierDiagram.projectiveModelCategory ℤ ℕ
@@ -14098,7 +14105,7 @@ example {Y : Complex ℤ} {F : ℕ ⥤ Complex ℤ} (f : (Functor.const ℕ).obj
   exact CarrierDiagram.constantDiagramSourcePiZeroEquiv_class ℤ ℕ f
 
 -- 元の図式射による後合成は同じ局所化射の合成と一致する。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.DifferentialGraded
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.DifferentialGraded
   SerrePositivity.EInfinity.BarrattEccles in
 example {Y : Complex ℤ} {F G : ℕ ⥤ Complex ℤ}
     (f : (Functor.const ℕ).obj Y ⟶ F) (g : F ⟶ G) :
@@ -14115,7 +14122,7 @@ example {Y : Complex ℤ} {F G : ℕ ⥤ Complex ℤ}
   exact (QD.map_comp f g).symm
 
 -- 図式忘却の右 Quillen 性は、両図式モデルの存在を仮定せず使用できる。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.BarrattEccles in
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.EInfinity.BarrattEccles in
 example :
     let := Diagram.projectiveModelCategory ℤ ℕ
     let := CarrierDiagram.projectiveModelCategory ℤ ℕ
@@ -14123,7 +14130,7 @@ example :
   Diagram.forget_isRightQuillen ℤ ℕ
 
 -- 底の右錐の π₀ の比較は元の代数図式の射を忘却した後合成に自然。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.DifferentialGraded
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.DifferentialGraded
   SerrePositivity.EInfinity SerrePositivity.EInfinity.BarrattEccles in
 example (Y : Complex ℤ) {F G : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra} (g : F ⟶ G)
     (z : SSet.π₀ ((carrierFramedLimitConeSpace ℤ ℕ Y).obj F)) :
@@ -14135,7 +14142,7 @@ example (Y : Complex ℤ) {F G : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra} (g 
   exact carrierFramedLimitConePiZeroEquiv_target ℤ ℕ Y g z
 
 -- 底の同じ右錐の類を、二つの局所化 Hom の比較で厳密に回収する。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.DifferentialGraded
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.DifferentialGraded
   SerrePositivity.EInfinity SerrePositivity.EInfinity.BarrattEccles in
 example (Y : Complex ℤ) (F : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra)
     (z : SSet.π₀ ((carrierFramedLimitConeSpace ℤ ℕ Y).obj F)) :
@@ -14151,7 +14158,7 @@ example (Y : Complex ℤ) (F : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra)
   rw [Equiv.symm_apply_apply]
 
 -- 任意の複体から元の計算対象の底への局所化射に、底の定値図式の射が一意に対応。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.DifferentialGraded
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.DifferentialGraded
   SerrePositivity.EInfinity SerrePositivity.EInfinity.BarrattEccles in
 example (Y : Complex ℤ) (F : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra) :
     let := projectiveModelCategory ℤ
@@ -14178,7 +14185,7 @@ example {F G : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra} (g : F ⟶ G) :
   exact framedLimitCarrierIso_naturality ℤ ℕ g
 
 -- 底の導来 Hom 同値は元の忘却図式の局所化射による後合成に自然。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.DifferentialGraded
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.DifferentialGraded
   SerrePositivity.EInfinity SerrePositivity.EInfinity.BarrattEccles in
 example (Y : Complex ℤ) {F G : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra} (g : F ⟶ G) :
     let := projectiveModelCategory ℤ
@@ -14191,7 +14198,7 @@ example (Y : Complex ℤ) {F G : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra} (g 
   exact carrierFramedLimitDerivedHomEquiv_target ℤ ℕ Y g
 
 -- 元の複体射のクラスを図式射で送ると、元の複体射の後合成の局所化像になる。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.DifferentialGraded
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.DifferentialGraded
   SerrePositivity.EInfinity SerrePositivity.EInfinity.BarrattEccles in
 example {Y : Complex ℤ} {F G : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra} (g : F ⟶ G)
     (h : Y ⟶ ((framedLimitFunctor ℤ ℕ).obj F).carrier) :
@@ -14207,7 +14214,7 @@ example {Y : Complex ℤ} {F G : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra} (g 
   exact (Q.map_comp _ _).symm
 
 -- 任意の元の複体射の前合成は、実際の計算対象の底への同じ射の局所化になる。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.DifferentialGraded
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.DifferentialGraded
   SerrePositivity.EInfinity SerrePositivity.EInfinity.BarrattEccles in
 example {Y Z : Complex ℤ} (f : Y ⟶ Z) (F : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra)
     (h : Z ⟶ ((framedLimitFunctor ℤ ℕ).obj F).carrier) :
@@ -14223,7 +14230,7 @@ example {Y Z : Complex ℤ} (f : Y ⟶ Z) (F : ℕ ⥤ (BarrattEccles.operad ℤ
   exact (Q.map_comp _ _).symm
 
 -- 底の同じ右錐の類の前合成は、元の定値複体図式の局所化射による前合成。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.DifferentialGraded
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.DifferentialGraded
   SerrePositivity.EInfinity SerrePositivity.EInfinity.BarrattEccles in
 example {Y Z : Complex ℤ} (f : Y ⟶ Z) (F : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra)
     (z : SSet.π₀ ((carrierFramedLimitConeSpace ℤ ℕ Z).obj F)) :
@@ -14235,7 +14242,7 @@ example {Y Z : Complex ℤ} (f : Y ⟶ Z) (F : ℕ ⥤ (BarrattEccles.operad ℤ
   exact carrierFramedLimitConePiZeroEquiv_source ℤ ℕ f F z
 
 -- 局所化 Hom の任意の射に対し、元の始域・終域の射の両方に同時に自然。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.DifferentialGraded
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.DifferentialGraded
   SerrePositivity.EInfinity SerrePositivity.EInfinity.BarrattEccles in
 example {Y Z : Complex ℤ} (f : Y ⟶ Z)
     {F G : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra} (g : F ⟶ G) :
@@ -14252,7 +14259,7 @@ example {Y Z : Complex ℤ} (f : Y ⟶ Z)
 
 
 -- 任意の複体を頂点とする通常錐は、実際の底の比較射の局所化像へ移る。
-open CategoryTheory Limits HomotopicalAlgebra SerrePositivity.DifferentialGraded
+open CategoryTheory Limits _root_.HomotopicalAlgebra SerrePositivity.DifferentialGraded
   SerrePositivity.EInfinity SerrePositivity.EInfinity.BarrattEccles in
 example (F : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra)
     (c : Cone ((Diagram.forget ℤ ℕ).obj F)) :
@@ -14265,7 +14272,7 @@ example (F : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra)
   exact carrierFramedLimitDerivedHomEquiv_cone ℤ ℕ F c
 
 -- 元の E 代数錐では既存の代数比較射の底そのものを回収する。
-open CategoryTheory Limits HomotopicalAlgebra SerrePositivity.DifferentialGraded
+open CategoryTheory Limits _root_.HomotopicalAlgebra SerrePositivity.DifferentialGraded
   SerrePositivity.EInfinity SerrePositivity.EInfinity.BarrattEccles in
 example (F : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra) (c : Cone F) :
     let := projectiveModelCategory ℤ
@@ -14281,7 +14288,7 @@ example (F : ℕ ⥤ (BarrattEccles.operad ℤ).Algebra) (c : Cone F) :
 universe e2ComplexLimitUniverse
 
 -- 任意の可換環と小圏で、元の複体極限比較が右導来普遍性を持つ。
-open CategoryTheory Limits HomotopicalAlgebra SerrePositivity.DifferentialGraded
+open CategoryTheory Limits _root_.HomotopicalAlgebra SerrePositivity.DifferentialGraded
   SerrePositivity.EInfinity in
 example (A : Type e2ComplexLimitUniverse) [CommRing A]
     (K : Type e2ComplexLimitUniverse) [SmallCategory K] :
@@ -14292,7 +14299,7 @@ example (A : Type e2ComplexLimitUniverse) [CommRing A]
   exact ComplexLimits.localizedFramedLimit_isRightDerivedFunctor A K
 
 -- 同じ底の比較同型は元の E 代数錐の通常比較射を保持する。
-open CategoryTheory Limits HomotopicalAlgebra SerrePositivity.DifferentialGraded
+open CategoryTheory Limits _root_.HomotopicalAlgebra SerrePositivity.DifferentialGraded
   SerrePositivity.EInfinity SerrePositivity.EInfinity.BarrattEccles in
 example (A : Type e2ComplexLimitUniverse) [CommRing A]
     (K : Type e2ComplexLimitUniverse) [SmallCategory K]
@@ -14305,7 +14312,7 @@ example (A : Type e2ComplexLimitUniverse) [CommRing A]
   exact carrierFramedLimitComparisonIso_forgetCone A K F c
 
 -- 底の比較同型はすべての元の図式射に自然。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.DifferentialGraded
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.DifferentialGraded
   SerrePositivity.EInfinity SerrePositivity.EInfinity.BarrattEccles in
 example (A : Type e2ComplexLimitUniverse) [CommRing A]
     (K : Type e2ComplexLimitUniverse) [SmallCategory K]
@@ -14319,7 +14326,7 @@ example (A : Type e2ComplexLimitUniverse) [CommRing A]
   exact carrierFramedLimitComparisonIso_naturality A K g
 
 -- 任意の底の右導来極限の値として、元の E 代数計算対象の底を使える。
-open CategoryTheory Limits HomotopicalAlgebra SerrePositivity.DifferentialGraded
+open CategoryTheory Limits _root_.HomotopicalAlgebra SerrePositivity.DifferentialGraded
   SerrePositivity.EInfinity SerrePositivity.EInfinity.BarrattEccles in
 example (A : Type e2ComplexLimitUniverse) [CommRing A]
     (K : Type e2ComplexLimitUniverse) [SmallCategory K]
@@ -14338,7 +14345,7 @@ example (A : Type e2ComplexLimitUniverse) [CommRing A]
 
 
 -- 任意の E 代数に同じ具体的な cofibrant 置換と元への擬同型を供給できる。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.EInfinity
   SerrePositivity.EInfinity.BarrattEccles in
 example (A : Type e2ComplexLimitUniverse) [CommRing A]
     (X : (BarrattEccles.operad A).Algebra) :
@@ -14358,7 +14365,7 @@ example (A : Type e2ComplexLimitUniverse) [CommRing A]
   exact cofibrantAlgebraMappingSpacePiZeroEquiv_class A f
 
 -- 自由解像の全次数の外側の面退化則を、具体的な E 代数相対圏で評価できる。
-open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization
+open CategoryTheory _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
   SerrePositivity.EInfinity.BarrattEccles in
 example (A : Type e2ComplexLimitUniverse) [CommRing A] (n : ℕ) :
     (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.freeResolutionOuterDegeneracy n).app (cofibrantAlgebraRelativeCategory A) ≫
@@ -14367,7 +14374,7 @@ example (A : Type e2ComplexLimitUniverse) [CommRing A] (n : ℕ) :
   exact congr_app (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.freeResolutionOuterDegeneracy_face n) (cofibrantAlgebraRelativeCategory A)
 
 -- 離散可換代数からの同じ cofibrant 模型は、元の離散 E 代数へ擬同型で比較できる。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.EInfinity
   SerrePositivity.EInfinity.BarrattEccles in
 example (A : Type e2ComplexLimitUniverse) [CommRing A] (B : CommAlgCat A) :
     QuasiIso ((discreteCofibrantAlgebraComparison A).app B).hom := by
@@ -14376,7 +14383,7 @@ example (A : Type e2ComplexLimitUniverse) [CommRing A] (B : CommAlgCat A) :
 
 
 -- 同じ構成的な局所化は全相対関手の合成を厳密に保つ。
-open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization in
+open CategoryTheory _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example {C D E : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory} (F : C ⟶ D) (G : D ⟶ E) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.strictLocalizationMap (F ≫ G) = _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.strictLocalizationMap F ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.strictLocalizationMap G := by
   exact _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.strictLocalizationMap_comp F G
@@ -14392,35 +14399,35 @@ example (A : Type e2ComplexLimitUniverse) [CommRing A]
 
 
 -- 対象の表示は全単体作用素で保たれ、cofibrant E 代数へそのまま代入できる。
-open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization
+open CategoryTheory _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
   SerrePositivity.EInfinity.BarrattEccles in
 example (A : Type e2ComplexLimitUniverse) [CommRing A]
     {n m : SimplexCategoryᵒᵖ} (θ : n ⟶ m)
     (X : (cofibrantAlgebraRelativeCategory A).category) :
     ((cofibrantAlgebraLocalizedFreeResolution A).map θ).toFunctor.obj
-        (localizedFreeResolutionObject (cofibrantAlgebraRelativeCategory A) n X) =
-      localizedFreeResolutionObject (cofibrantAlgebraRelativeCategory A) m X := by
-  exact localizedFreeResolutionObject_naturality (cofibrantAlgebraRelativeCategory A) θ X
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizedFreeResolutionObject (cofibrantAlgebraRelativeCategory A) n X) =
+      _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizedFreeResolutionObject (cofibrantAlgebraRelativeCategory A) m X := by
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizedFreeResolutionObject_naturality (cofibrantAlgebraRelativeCategory A) θ X
 
 
 -- 固定 Hom の全単体作用素は元の厳密な合成則を保つ。
-open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization in
+open CategoryTheory _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory) (X Y : C.category) {n m k : SimplexCategoryᵒᵖ}
-    (θ : n ⟶ m) (φ : m ⟶ k) (f : (localizationHom C X Y).obj n) :
-    (localizationHom C X Y).map (θ ≫ φ) f =
-      (localizationHom C X Y).map φ ((localizationHom C X Y).map θ f) := by
-  exact ConcreteCategory.congr_hom ((localizationHom C X Y).map_comp θ φ) f
+    (θ : n ⟶ m) (φ : m ⟶ k) (f : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHom C X Y).obj n) :
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHom C X Y).map (θ ≫ φ) f =
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHom C X Y).map φ ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHom C X Y).map θ f) := by
+  exact ConcreteCategory.congr_hom ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHom C X Y).map_comp θ φ) f
 
 -- Kan 化への同じ単位は元の豊穣合成を厳密に保つ。
-open CategoryTheory MonoidalCategory SerrePositivity.EInfinity.SimplicialLocalization in
+open CategoryTheory MonoidalCategory _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory) (X Y Z : C.category) :
-    localizationComposition C X Y Z ≫
-        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (localizationHom C X Z) =
-      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (localizationHom C X Y) ⊗ₘ
-        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (localizationHom C Y Z)) ≫
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationComposition C X Y Z ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHom C X Z) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHom C X Y) ⊗ₘ
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHom C Y Z)) ≫
           Functor.LaxMonoidal.μ SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity _ _ ≫
-            _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (localizationComposition C X Y Z) := by
-  exact (kanLocalizationUnit C).map_comp X Y Z
+            _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationComposition C X Y Z) := by
+  exact (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanLocalizationUnit C).map_comp X Y Z
 
 -- 任意の可換環で CAlg_R の quasicategory 性に追加のモデル入力は不要。
 open SerrePositivity.EInfinity.BarrattEccles in
@@ -14440,22 +14447,22 @@ example (A : Type e2ComplexLimitUniverse) [CommRing A] (X : (BarrattEccles.opera
   exact (cAlgVertexEquiv A).symm_apply_apply _
 
 -- 全解像の係数射は具体的な E 代数相対関手に対しても元の augmentation を保つ。
-open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization
+open CategoryTheory _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
   SerrePositivity.EInfinity.BarrattEccles in
 example (A : Type e2ComplexLimitUniverse) [CommRing A] (n : SimplexCategoryᵒᵖ) :
-    (localizedFreeResolutionMap (cAlgForgetRelative A)).app n ≫
-        (localizedFreeResolutionAugmentation (complexRelativeCategory A)).app n =
-      (localizedFreeResolutionAugmentation (cofibrantAlgebraRelativeCategory A)).app n ≫
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizedFreeResolutionMap (cAlgForgetRelative A)).app n ≫
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizedFreeResolutionAugmentation (complexRelativeCategory A)).app n =
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizedFreeResolutionAugmentation (cofibrantAlgebraRelativeCategory A)).app n ≫
         _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.strictLocalizationFunctor.map (cAlgForgetRelative A) := by
-  exact localizedFreeResolutionMap_augmentation (cAlgForgetRelative A) n
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizedFreeResolutionMap_augmentation (cAlgForgetRelative A) n
 
 -- 全複体の局所化への忘却射に底の cofibrancy やモデル構造の入力仮定は不要。
-open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization
+open CategoryTheory _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
   SerrePositivity.EInfinity.BarrattEccles in
 example (A : Type e2ComplexLimitUniverse) [CommRing A]
     (X : (SerrePositivity.EInfinity.BarrattEccles.operad A).Algebra) :
     (cAlgForgetLocalization A).app (Opposite.op (SimplexCategory.mk 0)) (cAlgVertex A X) =
-      localizationNerveVertexEquiv (complexRelativeCategory A)
+      _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveVertexEquiv (complexRelativeCategory A)
         ((cofibrantAlgebraDKForget A).obj ((cofibrantAlgebraDKReplacement A).obj X)) := by
   exact cAlgForgetLocalization_vertex A X
 
@@ -14465,39 +14472,39 @@ example (A : Type e2ComplexLimitUniverse) [CommRing A] :
   infer_instance
 
 -- 局所化 nerve の係数作用は厳密に恒等と合成を保つ。
-open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization in
+open CategoryTheory _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example {C D E : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory} (F : C ⟶ D) (G : D ⟶ E) :
-    localizationNerveMap (F ≫ G) = localizationNerveMap F ≫ localizationNerveMap G := by
-  exact localizationNerveMap_comp F G
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap (F ≫ G) = _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap F ≫ _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap G := by
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap_comp F G
 
-open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization in
-example (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory) : localizationNerveMap (𝟙 C) = 𝟙 (localizationNerve C) := by
-  exact localizationNerveMap_id C
+open CategoryTheory _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
+example (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory) : _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap (𝟙 C) = 𝟙 (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerve C) := by
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap_id C
 
 -- 元の具体的な E 代数射の DK 成分を戻すと、同じ相対圏の Q の射になる。
-open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization
+open CategoryTheory _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
   SerrePositivity.EInfinity.BarrattEccles in
 example (A : Type e2ComplexLimitUniverse) [CommRing A]
     {X Y : (cofibrantAlgebraRelativeCategory A).category} (f : X ⟶ Y) :
-    (localizationComponentsAugmentation (cofibrantAlgebraRelativeCategory A)).map
-        (localizationArrowClass (cofibrantAlgebraRelativeCategory A) f) =
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationComponentsAugmentation (cofibrantAlgebraRelativeCategory A)).map
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationArrowClass (cofibrantAlgebraRelativeCategory A) f) =
       (cofibrantAlgebraRelativeCategory A).weakEquivalences.Q.map f := by
-  exact localizationComponentsAugmentation_arrow (cofibrantAlgebraRelativeCategory A) f
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationComponentsAugmentation_arrow (cofibrantAlgebraRelativeCategory A) f
 
 -- DK Hom の π₀ の圏は、任意の相対圏の元の指定矢の普通の局所化となる。
-open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization in
-example (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory) : (localizationComponentsQ C).IsLocalization C.weakEquivalences := by
-  exact localizationComponentsQ_isLocalization C
+open CategoryTheory _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
+example (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory) : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationComponentsQ C).IsLocalization C.weakEquivalences := by
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationComponentsQ_isLocalization C
 
 -- CAlg_R の実際の Kan Hom と元の Map^h の π₀ 比較は、同じ元の代数射の類を回収する。
-open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization
+open CategoryTheory _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
   SerrePositivity.EInfinity.BarrattEccles in
 example (A : Type e2ComplexLimitUniverse) [CommRing A] {X Y : CofibrantAlgebra A} (f : X ⟶ Y) :
     cofibrantAlgebraKanDKPiZeroEquiv A X Y
         (SSet.mapπ₀ (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app
-          (localizationHom (cofibrantAlgebraRelativeCategory A)
+          (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHom (cofibrantAlgebraRelativeCategory A)
             (cofibrantAlgebraDKObject A X) (cofibrantAlgebraDKObject A Y)))
-          (localizationArrowClass (cofibrantAlgebraRelativeCategory A)
+          (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationArrowClass (cofibrantAlgebraRelativeCategory A)
             ((ULiftHom.up.{e2ComplexLimitUniverse, e2ComplexLimitUniverse + 1,
               e2ComplexLimitUniverse + 1} (C := CofibrantAlgebra A)).map f))) =
       mappingSpaceClass A ((cofibrantAlgebraInclusion A).map f) := by
@@ -14528,7 +14535,7 @@ example (A : Type e2ComplexLimitUniverse) [CommRing A]
   mappingSpaceIndexAugmentation_localized_isIso A X Y
 
 -- 任意の次数の単体を表す頂点で、左射と三本矢への右射は同じ局所化射を与える。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.EInfinity
   SerrePositivity.EInfinity.BarrattEccles in
 example (A : Type e2ComplexLimitUniverse) [CommRing A]
     (X Y : (BarrattEccles.operad A).Algebra)
@@ -14626,13 +14633,13 @@ example (A : Type e2ComplexLimitUniverse) [CommRing A]
   mappingFixedRightGrothendieckComparison_localized_isIso A X Y
 
 -- 全図式の元の比較は comma の左変数の比較と全対象・全射で厳密に可換。
-open CategoryTheory SerrePositivity.EInfinity.FrameHom in
+open CategoryTheory _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom in
 example {K L C J : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} K]
     [Category.{e2ComplexLimitUniverse} L] [Category.{e2ComplexLimitUniverse} C]
     [Category.{e2ComplexLimitUniverse} J] (P : K ⥤ L) (Q : L ⥤ C) (R : J ⥤ C) :
     _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.fixedRightGrothendieckComparison P Q R ⋙ _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CommaGrothendieck.toComma Q R =
       _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CommaGrothendieck.toComma (P ⋙ Q) R ⋙ Comma.preLeft P Q R :=
-  fixedRightGrothendieckComparison_toComma P Q R
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.fixedRightGrothendieckComparison_toComma P Q R
 
 -- 元の全右脚の bar 比較は、任意の可換環で同じ自然変換そのものに適用される。
 open CategoryTheory SerrePositivity.EInfinity.BarrattEccles in
@@ -14655,12 +14662,12 @@ example (A : Type e2ComplexLimitUniverse) [CommRing A]
   mappingRightHomFromIdentity_app A X Y t
 
 -- 元の定値 bar の射は、値と添字の独立した宇宙で最初のラベルを返し、反転される。
-open CategoryTheory CategoryTheory.Limits SerrePositivity.EInfinity.FrameHom in
+open CategoryTheory CategoryTheory.Limits _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom in
 example {D : Type e2ComplexLimitUniverse} [Category.{0} D] (K : SSet.{0})
     {i : D} (hi : IsInitial i) :
     IsIso (SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.map
-      (ConstantBar.augmentation D K)) :=
-  ConstantBar.augmentation_localized_isIso D K hi
+      (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ConstantBar.augmentation D K)) :=
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ConstantBar.augmentation_localized_isIso D K hi
 
 -- 元の Map^h と同じ fibrant 置換の右脚を使う包含そのものは、任意の可換環で反転。
 open CategoryTheory SerrePositivity.EInfinity.BarrattEccles in
@@ -14690,21 +14697,21 @@ example (A : Type e2ComplexLimitUniverse) [CommRing A]
 
 -- 元の Cat 値の右脚図式にも、同じ fiber 包含を回収する厳密な比較を適用できる。
 open CategoryTheory SerrePositivity.EInfinity.BarrattEccles
-  SerrePositivity.EInfinity.FrameHom in
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom in
 example (A : Type e2ComplexLimitUniverse) [CommRing A]
     (X Y : (BarrattEccles.operad A).Algebra) (t : algebraRightSpanBase A Y) :
-    BarRows.valueInclusion (Thomason.nerveDiagram (algebraSpanRightDiagram A X Y)) t ≫
-        Thomason.map (algebraSpanRightDiagram A X Y) =
-      Thomason.fiberNerveMap (algebraSpanRightDiagram A X Y) t :=
-  Thomason.valueInclusion_map (algebraSpanRightDiagram A X Y) t
+    _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.BarRows.valueInclusion (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.nerveDiagram (algebraSpanRightDiagram A X Y)) t ≫
+        _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.map (algebraSpanRightDiagram A X Y) =
+      _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.fiberNerveMap (algebraSpanRightDiagram A X Y) t :=
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.valueInclusion_map (algebraSpanRightDiagram A X Y) t
 
 -- 任意の関手の comma 図式の射影は、独立した値と添字の宇宙で反転される。
-open CategoryTheory SerrePositivity.EInfinity.FrameHom in
+open CategoryTheory _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom in
 example {E : Type} [Category.{0} E] {D : Type e2ComplexLimitUniverse} [Category.{0} D]
     (p : E ⥤ D) :
     IsIso (SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.map
-      (CommaNerve.barProjection p)) :=
-  CommaNerve.barProjection_localized_isIso p
+      (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CommaNerve.barProjection p)) :=
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CommaNerve.barProjection_localized_isIso p
 
 -- 同じ全右脚の比較は bar でも反転される。Thomason 射の反転性は仮定しない。
 open CategoryTheory SerrePositivity.EInfinity.BarrattEccles in
@@ -14716,50 +14723,50 @@ example (A : Type e2ComplexLimitUniverse) [CommRing A]
 
 -- 元の全図式の比較そのものと bar の比較は、同じ二つの Thomason 射で厳密に可換。
 open CategoryTheory SerrePositivity.EInfinity.BarrattEccles
-  SerrePositivity.EInfinity.FrameHom in
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom in
 example (A : Type e2ComplexLimitUniverse) [CommRing A]
     (X Y : (BarrattEccles.operad A).Algebra) :
-    Thomason.map (mappingSmallResolutionRightDiagram A X Y) ≫
+    _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.map (mappingSmallResolutionRightDiagram A X Y) ≫
         nerveMap (mappingFixedRightGrothendieckComparison A X Y) =
       mappingResolutionBarComparison A X Y ≫
-        Thomason.map (mappingSmallSpanRightDiagram A X Y) :=
+        _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.map (mappingSmallSpanRightDiagram A X Y) :=
   mappingResolutionThomasonSquare A X Y
 
 -- 任意の小さい Cat 値図式の元の Thomason 射に反転性を適用できる。
 -- 単体集合モデルや fiber の Kan 性の入力は不要。
-open CategoryTheory SerrePositivity.EInfinity.FrameHom in
+open CategoryTheory _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom in
 example {D : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} D]
     (G : D ⥤ Cat.{e2ComplexLimitUniverse, e2ComplexLimitUniverse}) :
-    IsIso (SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.map (Thomason.map G)) :=
-  Thomason.map_localized_isIso G
+    IsIso (SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.map (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.map G)) :=
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.map_localized_isIso G
 
 -- 同じ元の射は F1b の弱ホモトピー同値にもなる。
-open CategoryTheory SerrePositivity.EInfinity.FrameHom in
+open CategoryTheory _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom in
 example {D : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} D]
     (G : D ⥤ Cat.{e2ComplexLimitUniverse, e2ComplexLimitUniverse}) :
-    SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (Thomason.map G) :=
-  Thomason.map_isWeakHomotopyEquivalence G
+    SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.map G) :=
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.map_isWeakHomotopyEquivalence G
 
 -- 任意の可換環で、全右脚上の元の分解の Thomason 射が反転される。
 open CategoryTheory SerrePositivity.EInfinity.BarrattEccles
-  SerrePositivity.EInfinity.FrameHom in
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom in
 example (A : Type e2ComplexLimitUniverse) [CommRing A]
     (X Y : (BarrattEccles.operad A).Algebra) :
     IsIso (SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.map
-      (Thomason.map (mappingSmallResolutionRightDiagram A X Y))) :=
+      (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.map (mappingSmallResolutionRightDiagram A X Y))) :=
   mappingResolutionThomason_localized_isIso A X Y
 
 -- 同じ全右脚上の全左脚側の Thomason 射も、元の代数の cofibrancy なしで反転。
 open CategoryTheory SerrePositivity.EInfinity.BarrattEccles
-  SerrePositivity.EInfinity.FrameHom in
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom in
 example (A : Type e2ComplexLimitUniverse) [CommRing A]
     (X Y : (BarrattEccles.operad A).Algebra) :
     IsIso (SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.map
-      (Thomason.map (mappingSmallSpanRightDiagram A X Y))) :=
+      (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.map (mappingSmallSpanRightDiagram A X Y))) :=
   mappingSpanThomason_localized_isIso A X Y
 
 -- 元の固定 fiber の nerve の包含は、始対象と全遷移の不変性だけから反転される。
-open CategoryTheory CategoryTheory.Limits SerrePositivity.EInfinity.FrameHom in
+open CategoryTheory CategoryTheory.Limits _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom in
 example {D : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} D]
     (G : D ⥤ Cat.{e2ComplexLimitUniverse, e2ComplexLimitUniverse})
     {i : D} (hi : IsInitial i)
@@ -14767,8 +14774,8 @@ example {D : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} D]
       IsIso (SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.map
         (nerveMap (G.map f).toFunctor))) (d : D) :
     IsIso (SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.map
-      (Thomason.fiberNerveMap G d)) :=
-  Thomason.fiberNerveMap_localized_isIso G hi hG d
+      (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.fiberNerveMap G d)) :=
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.fiberNerveMap_localized_isIso G hi hG d
 
 -- 任意の可換環で、元の全右脚の各遷移そのものを反転できる。
 open CategoryTheory SerrePositivity.EInfinity.BarrattEccles in
@@ -14874,7 +14881,7 @@ example {a b c : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFuncto
     (f ≫ g).orderHom i = g.orderHom (f.orderHom i) := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.comp_apply f g i
 
 -- 元の三本矢の包含そのものが三列の zigzag 圏の同値を与える。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity in
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.EInfinity in
 example {C : Type e2ComplexLimitUniverse} [Category C] [ModelCategory C] (X Y : C) :
     (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.ThreeArrow.functor (X := X) (Y := Y)).IsEquivalence := inferInstance
 
@@ -15898,7 +15905,7 @@ example {C : Type e2ComplexLimitUniverse} [SmallCategory C] (W : MorphismPropert
   _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.paddedForwardColimit_comparison_recovery (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram W X Y)
 
 -- 中間配置の動く縦射は同じ元の右脚と左脚である。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.FrameHom
+open CategoryTheory _root_.HomotopicalAlgebra _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom
     in
 example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
     {X Y : C} (S : _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.WeakThreeArrow X Y) :
@@ -15906,20 +15913,20 @@ example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
   ⟨rfl, rfl⟩
 
 -- 元の外側の語の作用は全対象・全縦射で同じ配置関手に一致する。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.Hammock
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.EInfinity.Hammock
     in
 example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C] (X Y : C) :
     _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.ThreeArrow.functor (X := X) (Y := Y) ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAction.functor _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.outerWordMap = _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.outerFunctor :=
   _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.outer_action_functor
 
 -- 二つの自然変換からのホモトピー。nerve の Kan 性は不要。
-open CategoryTheory HomotopicalAlgebra in
+open CategoryTheory _root_.HomotopicalAlgebra in
 example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C] (X Y : C) :
     SSet.Homotopy (nerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.middleFunctor (X := X) (Y := Y))) (nerveMap _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.innerFunctor) :=
   _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.toInnerHomotopy
 
 -- 元の graph の二つの語の写像自身を比較する。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.Hammock
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.EInfinity.Hammock
     in
 example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C] (X Y : C)
     {D : Type e2ComplexLimitUniverse} [SmallCategory D] (L : SSet.{e2ComplexLimitUniverse} ⥤ D)
@@ -15929,7 +15936,7 @@ example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C] (X
   _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.original_maps_image_eq X Y L hL
 
 -- 元の全語の標準射と元の padding 比較の anodyne 反転後の一致。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.Hammock
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.EInfinity.Hammock
     in
 example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C] (X Y : C)
     {D : Type e2ComplexLimitUniverse} [SmallCategory D] (L : SSet.{e2ComplexLimitUniverse} ⥤ D)
@@ -15940,34 +15947,34 @@ example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C] (X
   _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.colimit_comparison_image_eq X Y L hL
 
 -- 終点の元の射影は同じ指定置換対象を回収し、元の置換射に一致する。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.Hammock.ForwardPath in
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.EInfinity.Hammock.ForwardPath in
 example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
     {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TerminalReplacement C n) :
     (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.pullbackEndpointIso s).hom ≫ s.hom = (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.pullbackProjection s).app (Fin.last n) :=
   _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.pullbackEndpointIso_fac s
 
 -- 始点の元の包含も同じ置換射を回収する。長さの正値性は不要。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.Hammock.ForwardPath in
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.EInfinity.Hammock.ForwardPath in
 example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
     {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InitialReplacement C n) :
     s.hom ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.pushoutEndpointIso s).hom = (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.pushoutInclusion s).app 0 := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.pushoutEndpointIso_fac s
 
 -- 自明な置換は元の全頂点へ伝播する。proper 性や cofibrancy の入力はない。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.Hammock.ForwardPath in
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.EInfinity.Hammock.ForwardPath in
 example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
     {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TerminalReplacement C n) (hs : trivialFibrations C s.hom) :
     ∀ i, trivialFibrations C ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.pullbackProjection s).app i) :=
   _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.pullbackProjection_trivialFibration s hs
 
 -- 置換対象と終点を同時に動かす元の比較が端点の同型と可換する。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.Hammock.ForwardPath in
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.EInfinity.Hammock.ForwardPath in
 example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
     {n : ℕ} {s t : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TerminalReplacement C n} (m : s ⟶ t) :
     (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.pullbackComparison m).app (Fin.last n) ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.pullbackEndpointIso t).hom =
       (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.pullbackEndpointIso s).hom ≫ m.left := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.pullbackEndpointIso_naturality m
 
 -- 実際の元の zigzag の区間の全縦弱同値も、同じ pullback 比較で保存される。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.Hammock
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.EInfinity.Hammock
     SerrePositivity.EInfinity.Hammock.ForwardPath in
 example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
     {w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} {X Y : C} (p q : Fin (w.length + 1)) (hpq : p ≤ q)
@@ -15980,7 +15987,7 @@ example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
       i) := _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.terminalBlockComparison_weakEquivalence p q hpq hd f e e' g h he he' i
 
 -- 任意可換環の元の E 代数への適用。モデル構造を入力仮定にせず局所的に代入する。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.EInfinity
     SerrePositivity.EInfinity.Hammock.ForwardPath in
 example (A : Type e2ComplexLimitUniverse) [CommRing A] (n : ℕ)
     (s : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InitialReplacement (BarrattEccles.operad A).Algebra n) :
@@ -15991,33 +15998,33 @@ example (A : Type e2ComplexLimitUniverse) [CommRing A] (n : ℕ)
   exact _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.pushoutInclusion_trivialCofibration s
 
 -- 正規化した終点成分は指定置換射そのものを端点の等式で移す。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.Hammock.ForwardPath in
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.EInfinity.Hammock.ForwardPath in
 example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
     {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TerminalReplacement C n) :
     (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.normalizedPullbackProjection s).app (Fin.last n) =
       eqToHom (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.normalizedPullbackObj_last s) ≫ s.hom := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.normalizedPullbackProjection_last s
 
 -- 動く始点の比較も元の指定対象間の射に厳密に一致する。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.Hammock.ForwardPath in
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.EInfinity.Hammock.ForwardPath in
 example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
     {n : ℕ} {s t : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InitialReplacement C n} (m : s ⟶ t) :
     (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.normalizedPushoutComparison m).app 0 = m.right := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.normalizedPushoutComparison_zero m
 
 -- 正規化後の全縦射の自然性は、元の射影に対して成り立つ。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.Hammock.ForwardPath in
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.EInfinity.Hammock.ForwardPath in
 example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
     {n : ℕ} {s t : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TerminalReplacement C n} (m : s ⟶ t) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.normalizedPullbackComparison m ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.normalizedPullbackProjection t =
       _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.normalizedPullbackProjection s ≫ m.right := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.normalizedPullbackProjection_naturality m
 
 -- 長さ零でも正規化した区間の包含は同じ置換射である。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.Hammock.ForwardPath in
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.EInfinity.Hammock.ForwardPath in
 example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
     (s : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InitialReplacement C 0) :
     (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.normalizedPushoutInclusion s).app 0 = s.hom := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.normalizedPushoutInclusion_zero s
 
 -- 動く端点の全縦弱同値を正規化後も保持。proper 性・cofibrancy は不要。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.Hammock.ForwardPath in
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.EInfinity.Hammock.ForwardPath in
 example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
     {n : ℕ} {s t : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TerminalReplacement C n} (m : s ⟶ t)
     (hs : trivialFibrations C s.hom) (ht : trivialFibrations C t.hom)
@@ -16026,7 +16033,7 @@ example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
   _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.normalizedPullbackComparison_weakEquivalence m hs ht hm
 
 -- 任意可換環の実際の E 代数への適用。モデル構造は既存の構成を局所的に代入。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.EInfinity
     SerrePositivity.EInfinity.Hammock.ForwardPath in
 example (A : Type e2ComplexLimitUniverse) [CommRing A] (n : ℕ)
     (s : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InitialReplacement (BarrattEccles.operad A).Algebra n) :
@@ -16038,7 +16045,7 @@ example (A : Type e2ComplexLimitUniverse) [CommRing A] (n : ℕ)
   exact _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.normalizedPushoutInclusion_trivialCofibration s
 
 -- 外側の端点 X は固定し、内側の射は元の置換射のまま回収する。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.Hammock.ForwardPath in
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.EInfinity.Hammock.ForwardPath in
 example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
     {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TerminalReplacement C n) (hs : trivialFibrations C s.hom)
     {X : C} (a : s.right.obj 0 ⟶ X) (ha : weakEquivalences C a) :
@@ -16047,7 +16054,7 @@ example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
   _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.pullbackLeftBoundaryProjection_last s hs a ha
 
 -- 動く接合点を貼っても全体の X,Y の元の縦射を構成できる。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.Hammock
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.EInfinity.Hammock
     SerrePositivity.EInfinity.Hammock.ForwardPath
     SerrePositivity.EInfinity.Hammock.MiddleBackward in
 example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
@@ -16061,7 +16068,7 @@ example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
   _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardPullback.pullbackProjection s hs R a ha u hu c h b hb
 
 -- 左右とも長さ零でも、中央の自明 cofibration を恒等列にする実際の射。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.Hammock
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.EInfinity.Hammock
     SerrePositivity.EInfinity.Hammock.MiddleBackward in
 example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
     {X Y : C} (L R : ComposableArrows C 0)
@@ -16073,7 +16080,7 @@ example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
   _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.pushoutInclusion L R a ha c hc b hb
 
 -- 一般のモデル圏では分解を明示し、その同じ第一因子を自明 cofibration と判定。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.Hammock.MiddleBackward in
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.EInfinity.Hammock.MiddleBackward in
 example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
     (cof : MorphismProperty.FunctorialFactorizationData
       (cofibrations C) (trivialFibrations C)) {B D : C} (u : D ⟶ B)
@@ -16081,7 +16088,7 @@ example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
   _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardFactorization.first_trivialCofibration cof u hu
 
 -- 原点側も動く比較は、右の外側の backward 射まで全頂点で弱同値を保つ。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.Hammock
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.EInfinity.Hammock
     SerrePositivity.EInfinity.Hammock.ForwardPath in
 example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
     {m : ℕ} {s t : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InitialReplacement C m} (f : s ⟶ t)
@@ -16094,7 +16101,7 @@ example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
   _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.pushoutRightBoundaryComparison f hs ht hf b b' hb hb' y hy h
 
 -- 任意可換環の元の E 代数に、構成済みの同じ関手的分解を代入する。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.EInfinity
     SerrePositivity.EInfinity.Hammock SerrePositivity.EInfinity.Hammock.MiddleBackward in
 example (A : Type e2ComplexLimitUniverse) [CommRing A] (n m : ℕ)
     (L : ComposableArrows (BarrattEccles.operad A).Algebra n)
@@ -16112,14 +16119,14 @@ example (A : Type e2ComplexLimitUniverse) [CommRing A] (n m : ℕ)
   exact _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardFactorization.projection (BarrattEccles.mappingCofibrantFactorization A) L R a ha u hu b hb
 
 -- 元の左右射列の図式は、全体の同じ語の zigzag 関手を与える。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.Hammock
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.EInfinity.Hammock
     SerrePositivity.EInfinity.Hammock.MiddleBackward in
 example {D C : Type e2ComplexLimitUniverse} [SmallCategory D] [SmallCategory C]
     [ModelCategory C] {n m : ℕ} {X Y : C} (F : _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Family D C n m X Y) :
     D ⥤ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag (weakEquivalences C) (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardPullback.word n m) X Y := F.zigzagFunctor
 
 -- 同じ元の分解を使った、全体の counit の自然性。局所端点は動いてよい。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.Hammock.MiddleBackward in
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.EInfinity.Hammock.MiddleBackward in
 example {D C : Type e2ComplexLimitUniverse} [SmallCategory D] [SmallCategory C]
     [ModelCategory C] {n m : ℕ} {X Y : C} (F : _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Family D C n m X Y)
     (cof : MorphismProperty.FunctorialFactorizationData
@@ -16129,7 +16136,7 @@ example {D C : Type e2ComplexLimitUniverse} [SmallCategory D] [SmallCategory C]
   (F.pullbackCounit cof).naturality f
 
 -- 置換された中央の実際の自然な脚は全て自明 cofibration。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.Hammock.MiddleBackward in
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.EInfinity.Hammock.MiddleBackward in
 example {D C : Type e2ComplexLimitUniverse} [SmallCategory D] [SmallCategory C]
     [ModelCategory C] {n m : ℕ} {X Y : C} (F : _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Family D C n m X Y)
     (cof : MorphismProperty.FunctorialFactorizationData
@@ -16138,7 +16145,7 @@ example {D C : Type e2ComplexLimitUniverse} [SmallCategory D] [SmallCategory C]
   F.pullbackMiddle_trivialCofibration cof d
 
 -- 中央が自明 cofibration の図式では、元の全体の unit が自然である。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.Hammock.MiddleBackward in
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.EInfinity.Hammock.MiddleBackward in
 example {D C : Type e2ComplexLimitUniverse} [SmallCategory D] [SmallCategory C]
     [ModelCategory C] {n m : ℕ} {X Y : C} (F : _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Family D C n m X Y)
     (hc : ∀ d, trivialCofibrations C (F.middle.app d)) {d d' : D} (f : d ⟶ d') :
@@ -16146,7 +16153,7 @@ example {D C : Type e2ComplexLimitUniverse} [SmallCategory D] [SmallCategory C]
       (F.pushoutUnit hc).app d ≫ (F.pushoutFunctor hc).map f := (F.pushoutUnit hc).naturality f
 
 -- 左右とも長さ零でも、左置換の図式を右へ置換する自然変換が使える。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.Hammock.MiddleBackward in
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.EInfinity.Hammock.MiddleBackward in
 example {D C : Type e2ComplexLimitUniverse} [SmallCategory D] [SmallCategory C]
     [ModelCategory C] {X Y : C} (F : _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Family D C 0 0 X Y)
     (cof : MorphismProperty.FunctorialFactorizationData
@@ -16156,7 +16163,7 @@ example {D C : Type e2ComplexLimitUniverse} [SmallCategory D] [SmallCategory C]
   (F.pullbackFamily cof).pushoutUnit (F.pullbackMiddle_trivialCofibration cof)
 
 -- 任意可換環の元の E 代数の具体的モデルと同じ構成済み分解への代入。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.EInfinity
     SerrePositivity.EInfinity.Hammock.MiddleBackward in
 example (A : Type e2ComplexLimitUniverse) [CommRing A] (n m : ℕ)
     (D : Type e2ComplexLimitUniverse) [SmallCategory D]
@@ -16170,7 +16177,7 @@ example (A : Type e2ComplexLimitUniverse) [CommRing A] (n m : ℕ)
   exact F.pullbackCounit (BarrattEccles.mappingCofibrantFactorization A)
 
 -- 元の固定語の全対象・全縦射を抽出し再構成した関手は、元の恒等関手と等しい。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.Hammock
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.EInfinity.Hammock
     SerrePositivity.EInfinity.Hammock.MiddleBackward in
 example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
     (n m : ℕ) (X Y : C) :
@@ -16178,7 +16185,7 @@ example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
   _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardRebuildMaps.rebuildFunctor_eq
 
 -- 置換は中央の実際の列が自明 cofibration の全部分圏に着地する。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.Hammock
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.EInfinity.Hammock
     SerrePositivity.EInfinity.Hammock.MiddleBackward in
 example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
     {n m : ℕ} {X Y : C} (S : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag (weakEquivalences C) (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardPullback.word n m) X Y)
@@ -16188,7 +16195,7 @@ example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
       (Positions.middleColumn n m)) := ((_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardTrivialCofibration.replacement cof).obj S).property
 
 -- counit は元の恒等図式へ向かう自然変換であり、元の全縦射に自然。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.Hammock
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.EInfinity.Hammock
     SerrePositivity.EInfinity.Hammock.MiddleBackward in
 example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
     {n m : ℕ} {X Y : C} {S T : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag (weakEquivalences C) (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardPullback.word n m) X Y} (f : S ⟶ T)
@@ -16199,7 +16206,7 @@ example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
   (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardTrivialCofibration.counit cof).naturality f
 
 -- 元の包含の nerve 自身が anodyne 局所化で反転される。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.SimplicialModel
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.SimplicialModel
     SerrePositivity.EInfinity.Hammock.MiddleBackward in
 example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
     (n m : ℕ) (X Y : C) (cof : MorphismProperty.FunctorialFactorizationData
@@ -16209,7 +16216,7 @@ example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
   _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardTrivialCofibration.inclusion_localized_isIso cof
 
 -- 左右とも長さ零でも元の包含の nerve が弱ホモトピー同値である。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.InfinityCategories
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.InfinityCategories
     SerrePositivity.EInfinity.Hammock.MiddleBackward in
 example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
     (X Y : C) (cof : MorphismProperty.FunctorialFactorizationData
@@ -16219,7 +16226,7 @@ example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
   _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardTrivialCofibration.inclusion_isWeakHomotopyEquivalence cof
 
 -- 任意可換環の実モデルと既存の同じ分解から元の包含の弱同値性を得る。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.InfinityCategories
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.InfinityCategories
     SerrePositivity.EInfinity SerrePositivity.EInfinity.Hammock.MiddleBackward in
 example (A : Type e2ComplexLimitUniverse) [CommRing A] (n m : ℕ)
     (X Y : (BarrattEccles.operad A).Algebra) :
@@ -16232,7 +16239,7 @@ example (A : Type e2ComplexLimitUniverse) [CommRing A] (n m : ℕ)
     (BarrattEccles.mappingCofibrantFactorization A)
 
 -- 元の WordAction の全対象は、同じ左右の zigzag と中央恒等列の連結に一致する。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.Hammock in
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.EInfinity.Hammock in
 example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
     {a b : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} {X E Y : C} (S : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag (weakEquivalences C) a X E)
     (T : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag (weakEquivalences C) b E Y) :
@@ -16240,7 +16247,7 @@ example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
       _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InsertBetweenObjects.obj S T := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.action_obj_eq S T
 
 -- 元の第二の包含の nerve は、右置換と実際の unit から弱同値になる。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.InfinityCategories
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.InfinityCategories
     SerrePositivity.EInfinity.Hammock.MiddleBackward in
 example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
     (n m : ℕ) (X Y : C) :
@@ -16249,7 +16256,7 @@ example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
   _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardIdentityInsertionComparison.functor_isWeakHomotopyEquivalence
 
 -- 第一の包含との合成は、元の同じ語の標準 graph 写像自身の弱同値性を与える。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.InfinityCategories
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.InfinityCategories
     SerrePositivity.EInfinity.Hammock SerrePositivity.EInfinity.Hammock.MiddleBackward in
 example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
     (n m : ℕ) (X Y : C) (cof : MorphismProperty.FunctorialFactorizationData
@@ -16266,7 +16273,7 @@ example (n m : ℕ) : (IdentityInsertion.eraseIso n m).hom ≫
   IdentityInsertion.eraseIso_hom_fac n m
 
 -- 左右とも長さ零でも、元の削除語の標準 graph 写像自身が弱同値である。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.InfinityCategories
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.InfinityCategories
     SerrePositivity.EInfinity.Hammock SerrePositivity.EInfinity.Hammock.MiddleBackward in
 example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
     (X Y : C) (cof : MorphismProperty.FunctorialFactorizationData
@@ -16276,7 +16283,7 @@ example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
   _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.erasedGraphMap_isWeakHomotopyEquivalence cof
 
 -- 任意可換環の実際のモデルと同じ既存の分解から、元の eraseInclusion の結論を得る。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.InfinityCategories
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.InfinityCategories
     SerrePositivity.EInfinity SerrePositivity.EInfinity.Hammock
     SerrePositivity.EInfinity.Hammock.MiddleBackward in
 example (A : Type e2ComplexLimitUniverse) [CommRing A] (n m : ℕ)
@@ -16290,7 +16297,7 @@ example (A : Type e2ComplexLimitUniverse) [CommRing A] (n m : ℕ)
     (BarrattEccles.mappingCofibrantFactorization A)
 
 -- 動く端点を持つ局所図式は、抽出後に全対象・全縦射を含めて元の図式へ戻る。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.Hammock in
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.EInfinity.Hammock in
 example {D : Type e2ComplexLimitUniverse} [SmallCategory D]
     {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
     {n m : ℕ} {A B : D ⥤ C}
@@ -16299,7 +16306,7 @@ example {D : Type e2ComplexLimitUniverse} [SmallCategory D]
   _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardMovingExtractMapRecovery.rebuildDiagram_eq F
 
 -- 任意の前後の語を持つ元の全体の再構成は、恒等関手そのものに等しい。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.Hammock
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.EInfinity.Hammock
     SerrePositivity.EInfinity.Hammock.MiddleBackward in
 example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
     (a b : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (n m : ℕ) (X Y : C) :
@@ -16308,7 +16315,7 @@ example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
   _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rebuiltFunctor_eq a b n m X Y
 
 -- 左置換の比較は、動く接合点を保って元の全体の恒等図式を値域とする。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.Hammock
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.EInfinity.Hammock
     SerrePositivity.EInfinity.Hammock.MiddleBackward in
 example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
     (a b : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (n m : ℕ) (X Y : C) (cof : MorphismProperty.FunctorialFactorizationData
@@ -16318,7 +16325,7 @@ example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
   _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.pullbackOriginalCounit a b n m X Y cof
 
 -- 元の任意の前後の語の中の、中央列が自明 cofibration の包含自身は弱同値。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.InfinityCategories
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.InfinityCategories
     SerrePositivity.EInfinity.Hammock SerrePositivity.EInfinity.Hammock.MiddleBackward in
 example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
     (a b : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (n m : ℕ) (X Y : C) (cof : MorphismProperty.FunctorialFactorizationData
@@ -16328,7 +16335,7 @@ example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
   _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardContextTrivialCofibration.inclusion_isWeakHomotopyEquivalence a b n m X Y cof
 
 -- 左右とも長さ零でも、任意の前後の語を保持した元の包含は弱同値。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.InfinityCategories
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.InfinityCategories
     SerrePositivity.EInfinity.Hammock SerrePositivity.EInfinity.Hammock.MiddleBackward in
 example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
     (a b : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (X Y : C) (cof : MorphismProperty.FunctorialFactorizationData
@@ -16338,7 +16345,7 @@ example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
   _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardContextTrivialCofibration.inclusion_isWeakHomotopyEquivalence a b 0 0 X Y cof
 
 -- 任意可換環の実際のモデルと同じ既存の分解を任意の前後の語の場合へ代入する。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.InfinityCategories
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.InfinityCategories
     SerrePositivity.EInfinity SerrePositivity.EInfinity.Hammock
     SerrePositivity.EInfinity.Hammock.MiddleBackward in
 example (R : Type e2ComplexLimitUniverse) [CommRing R] (a b : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (n m : ℕ)
@@ -16352,7 +16359,7 @@ example (R : Type e2ComplexLimitUniverse) [CommRing R] (a b : _root_.SerrePositi
     (BarrattEccles.mappingCofibrantFactorization R)
 
 -- 元の全体の右置換の中央列は、実際の対象と射の意味で恒等列である。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.Hammock
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.EInfinity.Hammock
     SerrePositivity.EInfinity.Hammock.MiddleBackward in
 example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
     (a b : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (n m : ℕ) (X Y : C) (S : _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardContextTrivialCofibration.Objects a b n m X Y) :
@@ -16361,7 +16368,7 @@ example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
   _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightReplacement_identity a b n m X Y S
 
 -- 元の削除語の実際の前像は、右置換の同じ対象を厳密に回収する。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.Hammock
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.EInfinity.Hammock
     SerrePositivity.EInfinity.Hammock.MiddleBackward in
 example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
     (a b : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (n m : ℕ) (X Y : C) (S : _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardContextTrivialCofibration.Objects a b n m X Y) :
@@ -16371,7 +16378,7 @@ example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
   _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardContextEssentialImage.originalFunctor_obj_preimage a b n m X Y S
 
 -- 第二の包含自身の nerve を、元の unit と本質像の持ち上げで反転する。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.InfinityCategories
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.InfinityCategories
     SerrePositivity.EInfinity.Hammock SerrePositivity.EInfinity.Hammock.MiddleBackward in
 example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
     (a b : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (n m : ℕ) (X Y : C) :
@@ -16379,7 +16386,7 @@ example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
   _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardContextErasureComparison.functor_isWeakHomotopyEquivalence a b n m X Y
 
 -- 任意の前後の語を持つ元の eraseInclusion の graph 写像自身が弱同値。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.InfinityCategories
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.InfinityCategories
     SerrePositivity.EInfinity.Hammock SerrePositivity.EInfinity.Hammock.MiddleBackward in
 example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
     (a b : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (n m : ℕ) (X Y : C) (cof : MorphismProperty.FunctorialFactorizationData
@@ -16389,7 +16396,7 @@ example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
   _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardContextErasureComparison.graphMap_isWeakHomotopyEquivalence a b n m X Y cof
 
 -- 左右の forward ブロックがともに長さ零でも、元の挿入の結論を得る。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.InfinityCategories
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.InfinityCategories
     SerrePositivity.EInfinity.Hammock SerrePositivity.EInfinity.Hammock.MiddleBackward in
 example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
     (a b : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (X Y : C) (cof : MorphismProperty.FunctorialFactorizationData
@@ -16399,7 +16406,7 @@ example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
   _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardContextErasureComparison.graphMap_isWeakHomotopyEquivalence a b 0 0 X Y cof
 
 -- 任意可換環の実際のモデルと既存の分解から、元の任意の前後の語の結論を得る。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.InfinityCategories
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.InfinityCategories
     SerrePositivity.EInfinity SerrePositivity.EInfinity.Hammock
     SerrePositivity.EInfinity.Hammock.MiddleBackward in
 example (R : Type e2ComplexLimitUniverse) [CommRing R] (a b : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (n m : ℕ)
@@ -16419,7 +16426,7 @@ example {w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.L
   (_root_.SerrePositivity.EInfinity.Hammock.Word.BackwardBounds.whole_eq h)
 
 -- 元の一列の削除語を padding した写像自身の graph 比較。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.InfinityCategories
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.InfinityCategories
     SerrePositivity.EInfinity.Hammock in
 example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
     (X Y : C) (cof : MorphismProperty.FunctorialFactorizationData
@@ -16430,7 +16437,7 @@ example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
   _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.paddedBackwardInsertion_isWeakHomotopyEquivalence X Y cof w p hp
 
 -- 元の自然変換は空の forward 部分語でも、各語の実際の成分で弱同値となる。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.InfinityCategories
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.InfinityCategories
     SerrePositivity.EInfinity.Hammock in
 example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
     (X Y : C) (cof : MorphismProperty.FunctorialFactorizationData
@@ -16440,7 +16447,7 @@ example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
   _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.paddedForwardDiagramMap_isWeakHomotopyEquivalence X Y cof w
 
 -- 元の語が空でも、同じ元の自然変換の成分を扱う。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.InfinityCategories
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.InfinityCategories
     SerrePositivity.EInfinity.Hammock in
 example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
     (X Y : C) (cof : MorphismProperty.FunctorialFactorizationData
@@ -16450,7 +16457,7 @@ example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
   _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.paddedForwardDiagramMap_isWeakHomotopyEquivalence X Y cof _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.empty
 
 -- 元の三列から元の全語の余極限への標準射自身は弱同値となる。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.InfinityCategories
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.InfinityCategories
     SerrePositivity.EInfinity.Hammock in
 example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
     (X Y : C) (cof : MorphismProperty.FunctorialFactorizationData
@@ -16494,7 +16501,7 @@ example {C D : Type e2ComplexLimitUniverse} [SmallCategory C] [SmallCategory D]
   Relative.graphNormalization_reducedMap F X Y w
 
 -- 元の三列の正規化自体はモデル圏の元の分解から弱同値となる。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.InfinityCategories
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.InfinityCategories
     SerrePositivity.EInfinity.Hammock in
 example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
     (X Y : C) (cof : MorphismProperty.FunctorialFactorizationData
@@ -16519,114 +16526,114 @@ example (R : Type e2ComplexLimitUniverse) [CommRing R]
   BarrattEccles.mappingSpaceReducedHammockNerveMap_augmentation R X Y
 
 -- 元の自由相対解像の全作用素は、選んだ対象を元の等式で保存する。
-open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization in
+open CategoryTheory _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{e2ComplexLimitUniverse}) {n m : SimplexCategoryᵒᵖ}
     (θ : n ⟶ m) (X : C.category) :
-    ((freeResolution C).map θ).functor.obj (freeResolutionObject C n X) =
-      freeResolutionObject C m X := freeResolutionObject_naturality C θ X
+    ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution C).map θ).functor.obj (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject C n X) =
+      _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject C m X := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject_naturality C θ X
 
 -- 局所化前の標準生成対象と同じ元の対象を全自由次数で回収する。
-open CategoryTheory Opposite SerrePositivity.EInfinity.SimplicialLocalization in
+open CategoryTheory Opposite _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{e2ComplexLimitUniverse}) (n : ℕ) (X : C.category) :
-    freeResolutionObject C (op (SimplexCategory.mk n)) X =
-      freeResolutionGeneratorObject C (n + 1) X := freeResolutionObject_generator C n X
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject C (op (SimplexCategory.mk n)) X =
+      _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorObject C (n + 1) X := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject_generator C n X
 
 -- 元の全語の図式は空語の graph も各自由次数でそのまま保持する。
-open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization in
+open CategoryTheory SerrePositivity.EInfinity _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{e2ComplexLimitUniverse}) (X Y : C.category)
     (n : SimplexCategoryᵒᵖ) :
-    ((freeHammockWordDiagram C X Y).obj _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.empty).obj n =
-      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph ((freeResolution C).obj n).weakEquivalences _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.empty
-        (freeResolutionObject C n X) (freeResolutionObject C n Y) := rfl
+    ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockWordDiagram C X Y).obj _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.empty).obj n =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution C).obj n).weakEquivalences _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.empty
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject C n X) (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject C n Y) := rfl
 
 -- 対角の左射の各成分は、元の二重単体的 augmentation の同じ対角成分。
-open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization in
+open CategoryTheory _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{e2ComplexLimitUniverse}) (X Y : C.category)
     (n : SimplexCategoryᵒᵖ) :
-    (freeHammockDiagonalAugmentation C X Y).app n =
-      ((freeHammockAugmentation C X Y).app n).app n :=
-  freeHammockDiagonalAugmentation_app C X Y n
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalAugmentation C X Y).app n =
+      ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockAugmentation C X Y).app n).app n :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalAugmentation_app C X Y n
 
 -- augmentation は元の任意の単体作用素に自然な、元の hammock への比較。
-open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization in
+open CategoryTheory SerrePositivity.EInfinity _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{e2ComplexLimitUniverse}) (X Y : C.category)
     {n m : SimplexCategoryᵒᵖ} (θ : n ⟶ m) :
-    (freeHammockResolution C X Y).map θ ≫ (freeHammockAugmentation C X Y).app m =
-      (freeHammockAugmentation C X Y).app n ≫
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockResolution C X Y).map θ ≫ (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockAugmentation C X Y).app m =
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockAugmentation C X Y).app n ≫
         ((Functor.const SimplexCategoryᵒᵖ).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph C.weakEquivalences X Y)).map θ :=
-  (freeHammockAugmentation C X Y).naturality θ
+  (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockAugmentation C X Y).naturality θ
 
 -- 任意可換環の実際の既存の DK 入力に、同じ対角と reduced hammock への左射を代入。
-open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization in
+open CategoryTheory SerrePositivity.EInfinity _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example (R : Type e2ComplexLimitUniverse) [CommRing R]
     (X Y : (BarrattEccles.cofibrantAlgebraRelativeCategory R).category) :
-    freeHammockDiagonal (BarrattEccles.cofibrantAlgebraRelativeCategory R) X Y ⟶
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonal (BarrattEccles.cofibrantAlgebraRelativeCategory R) X Y ⟶
       Hammock.reducedSimplicialSet
         (BarrattEccles.cofibrantAlgebraRelativeCategory R).weakEquivalences X Y :=
-  freeHammockDiagonalReduction (BarrattEccles.cofibrantAlgebraRelativeCategory R) X Y
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalReduction (BarrattEccles.cofibrantAlgebraRelativeCategory R) X Y
 
 -- 全自由次数で、元の自由対象の局所化像は既存 DK Hom の対象と一致する。
-open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization in
+open CategoryTheory _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{e2ComplexLimitUniverse}) (n : SimplexCategoryᵒᵖ)
     (X : C.category) :
-    ((freeResolution C).obj n).weakEquivalences.Q.obj (freeResolutionObject C n X) =
-      localizedFreeResolutionObject C n X := freeResolutionObject_localized C n X
+    ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution C).obj n).weakEquivalences.Q.obj (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject C n X) =
+      _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizedFreeResolutionObject C n X := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject_localized C n X
 
 -- 右比較は空語を含む全語の元の余極限の標準射で同じ評価を回収する。
-open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization in
+open CategoryTheory SerrePositivity.EInfinity _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{e2ComplexLimitUniverse}) (X Y : C.category)
     (n : SimplexCategoryᵒᵖ) (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion ((freeResolution C).obj n).weakEquivalences
-      (freeResolutionObject C n X) (freeResolutionObject C n Y) w ≫
-        (freeHammockHomComparison C X Y).app n =
-          (freeHammockLocalizationObjects C).graphValue n w X Y :=
-  freeHammockHomComparison_fac C X Y n w
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution C).obj n).weakEquivalences
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject C n X) (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject C n Y) w ≫
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockHomComparison C X Y).app n =
+          (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockLocalizationObjects C).graphValue n w X Y :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockHomComparison_fac C X Y n w
 
 -- 元の全単体作用素に対し、局所化 Hom への評価が厳密に自然である。
-open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization in
+open CategoryTheory _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{e2ComplexLimitUniverse}) (X Y : C.category)
     {n m : SimplexCategoryᵒᵖ} (θ : n ⟶ m) :
-    (freeHammockResolution C X Y).map θ ≫ (freeHammockHomComparison C X Y).app m =
-      (freeHammockHomComparison C X Y).app n ≫
-        (localizationHom C X Y ⋙ Functor.const SimplexCategoryᵒᵖ).map θ :=
-  (freeHammockHomComparison C X Y).naturality θ
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockResolution C X Y).map θ ≫ (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockHomComparison C X Y).app m =
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockHomComparison C X Y).app n ≫
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHom C X Y ⋙ Functor.const SimplexCategoryᵒᵖ).map θ :=
+  (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockHomComparison C X Y).naturality θ
 
 -- 右比較の対角成分は元の各次数の評価そのもの。
-open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization in
+open CategoryTheory _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{e2ComplexLimitUniverse}) (X Y : C.category)
     (n : SimplexCategoryᵒᵖ) :
-    (freeHammockDiagonalComparison C X Y).app n =
-      ((freeHammockHomComparison C X Y).app n).app n :=
-  freeHammockDiagonalComparison_app C X Y n
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalComparison C X Y).app n =
+      ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockHomComparison C X Y).app n).app n :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalComparison_app C X Y n
 
 -- 任意可換環の既存の cofibrant 代数の DK 入力に、元の右比較を代入する。
-open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization in
+open CategoryTheory SerrePositivity.EInfinity _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example (R : Type e2ComplexLimitUniverse) [CommRing R]
     (X Y : (BarrattEccles.cofibrantAlgebraRelativeCategory R).category) :
-    freeHammockDiagonal (BarrattEccles.cofibrantAlgebraRelativeCategory R) X Y ⟶
-      localizationHom (BarrattEccles.cofibrantAlgebraRelativeCategory R) X Y :=
-  freeHammockDiagonalComparison (BarrattEccles.cofibrantAlgebraRelativeCategory R) X Y
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonal (BarrattEccles.cofibrantAlgebraRelativeCategory R) X Y ⟶
+      _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHom (BarrattEccles.cofibrantAlgebraRelativeCategory R) X Y :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalComparison (BarrattEccles.cofibrantAlgebraRelativeCategory R) X Y
 
 -- 同じ入力の左比較と右比較は、同じ元の自由 hammock の対角を共通始域に持つ。
-open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization in
+open CategoryTheory SerrePositivity.EInfinity _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example (R : Type e2ComplexLimitUniverse) [CommRing R]
     (X Y : (BarrattEccles.cofibrantAlgebraRelativeCategory R).category) :
-    (freeHammockDiagonal (BarrattEccles.cofibrantAlgebraRelativeCategory R) X Y ⟶
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonal (BarrattEccles.cofibrantAlgebraRelativeCategory R) X Y ⟶
       Hammock.reducedSimplicialSet
         (BarrattEccles.cofibrantAlgebraRelativeCategory R).weakEquivalences X Y) ×
-    (freeHammockDiagonal (BarrattEccles.cofibrantAlgebraRelativeCategory R) X Y ⟶
-      localizationHom (BarrattEccles.cofibrantAlgebraRelativeCategory R) X Y) :=
-  ⟨freeHammockDiagonalReduction _ X Y, freeHammockDiagonalComparison _ X Y⟩
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonal (BarrattEccles.cofibrantAlgebraRelativeCategory R) X Y ⟶
+      _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHom (BarrattEccles.cofibrantAlgebraRelativeCategory R) X Y) :=
+  ⟨_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalReduction _ X Y, _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalComparison _ X Y⟩
 
 -- 元の指定射列は、指定生成矢の自由射列に移して戻すと同じ射列になる。
-open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization in
+open CategoryTheory _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
     (W : MorphismProperty C) {X Y : C} (p : Quiver.Path X Y) (hp : W.paths p) :
     (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.inclusion W).map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.lift W p hp) = p :=
   _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.inclusion_lift W p hp
 
 -- 元の恒等射も指定生成矢の一文字として残り、空列には潰れない。
-open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization in
+open CategoryTheory _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
     (W : MorphismProperty C) [W.IsMultiplicative] (X : C) :
     ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.inclusion W).map (Quiver.Hom.toPath
@@ -16634,29 +16641,29 @@ example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
         ⟨𝟙 X, W.id_mem X⟩))).length = 1 := rfl
 
 -- 元の自由次数の指定部分圏との圏同値は、元の包含の同じ因子化を持つ。
-open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization in
+open CategoryTheory _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{e2ComplexLimitUniverse}) (n : SimplexCategoryᵒᵖ) :
-    (freeResolutionMarkedEquivalence C n).functor ⋙
-      wideSubcategoryInclusion ((freeResolution C).obj n).weakEquivalences =
-        _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.inclusion (freeResolutionGeneratorBase C n).weakEquivalences :=
-  freeResolutionMarkedEquivalence_inclusion C n
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionMarkedEquivalence C n).functor ⋙
+      wideSubcategoryInclusion ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution C).obj n).weakEquivalences =
+        _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.inclusion (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase C n).weakEquivalences :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionMarkedEquivalence_inclusion C n
 
 -- 自由解像の全次数で、共通対象表示を持つ二つの生成部分から一意に貼り合わせる。
-open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization in
+open CategoryTheory _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{e2ComplexLimitUniverse}) (n : SimplexCategoryᵒᵖ)
     {D : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} D]
-    (F : Paths (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver (freeResolutionGeneratorBase C n).weakEquivalences) ⥤ D)
+    (F : Paths (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase C n).weakEquivalences) ⥤ D)
     (G : Paths (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver
-      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.unmarked (freeResolutionGeneratorBase C n).weakEquivalences)) ⥤ D)
-    (h : ∀ X : (freeResolutionGeneratorBase C n).category, F.obj X = G.obj X) :
-    ∃! H : ((freeResolution C).obj n).category ⥤ D,
-      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.inclusion (freeResolutionGeneratorBase C n).weakEquivalences ⋙ H = F ∧
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.unmarked (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase C n).weakEquivalences)) ⥤ D)
+    (h : ∀ X : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase C n).category, F.obj X = G.obj X) :
+    ∃! H : ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution C).obj n).category ⥤ D,
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.inclusion (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase C n).weakEquivalences ⋙ H = F ∧
         _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.inclusion
-          (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.unmarked (freeResolutionGeneratorBase C n).weakEquivalences) ⋙ H =
-            G := freeResolution_existsUnique_extension C n F G h
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.unmarked (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase C n).weakEquivalences) ⋙ H =
+            G := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution_existsUnique_extension C n F G h
 
 -- 局所化への入力の全指定射列の反転は、指定生成部分の全射の反転と同値。
-open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization in
+open CategoryTheory _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example {C D : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
     [Category.{e2ComplexLimitUniverse} D] (W : MorphismProperty C) (L : Paths C ⥤ D) :
     W.paths.IsInvertedBy L ↔
@@ -16665,23 +16672,23 @@ example {C D : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C
   _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.inverts_iff_markedRestriction W L
 
 -- 任意可換環の実際の DK 入力の全自由次数に、指定部分圏との圏同値を代入する。
-open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization in
+open CategoryTheory SerrePositivity.EInfinity _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒᵖ) :
-    Paths (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver (freeResolutionGeneratorBase
+    Paths (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences) ≌
-        WideSubcategory ((freeResolution
+        WideSubcategory ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution
           (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).weakEquivalences :=
-  freeResolutionMarkedEquivalence (BarrattEccles.cofibrantAlgebraRelativeCategory R) n
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionMarkedEquivalence (BarrattEccles.cofibrantAlgebraRelativeCategory R) n
 
 -- 元の射列には、元の端点と全生成文字を保つ交互標準形が一意に存在する。
-open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization in
+open CategoryTheory _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
     (W : MorphismProperty C) {X Y : C} (p : Quiver.Path X Y) :
     ∃! N : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Normal W X Y, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.flattenNormal W N = p :=
   _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.GeneratorBlockEquivalence.existsUnique_normal W p
 
 -- 圏としても元の自由圏を回収し、元の連結に同じ flatten を与える。
-open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization in
+open CategoryTheory _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
     (W : MorphismProperty C) {X Y Z : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.GeneratorBlockCategory.BlockCategory W}
     (f : X ⟶ Y) (g : Y ⟶ Z) :
@@ -16691,14 +16698,14 @@ example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
   (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.GeneratorBlockCategory.categoryEquivalence W).functor.map_comp f g
 
 -- 元の恒等射の一文字を空射列に潰すことはしない。
-open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization in
+open CategoryTheory _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
     (W : MorphismProperty C) (X : C) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.normalize W (𝟙 X).toPath ≠ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.empty W X :=
   _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.normalize_letter_ne_empty W (𝟙 X)
 
 -- 各単色ブロックは同じ指定・非指定の自由因子の射となり、包含で元の列に戻る。
-open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization in
+open CategoryTheory _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
     (W : MorphismProperty C) {X Y : C} (c : Bool) (p : Quiver.Path X Y)
     (hp : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.monochrome W c).paths p) :
@@ -16707,26 +16714,26 @@ example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
   _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.inclusion_typedBlock W c p hp
 
 -- 元の全自由次数の合成が同じ交互標準形の合成に対応する。
-open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization in
+open CategoryTheory _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{e2ComplexLimitUniverse}) (n : SimplexCategoryᵒᵖ)
-    {X Y Z : ((freeResolution C).obj n).category} (f : X ⟶ Y) (g : Y ⟶ Z) :
-    freeResolutionBlockEquiv C n X Z (f ≫ g) =
-      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.GeneratorBlockComposition.comp (freeResolutionGeneratorBase C n).weakEquivalences
-        (freeResolutionBlockEquiv C n X Y f) (freeResolutionBlockEquiv C n Y Z g) :=
-  freeResolutionBlockEquiv_comp C n f g
+    {X Y Z : ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution C).obj n).category} (f : X ⟶ Y) (g : Y ⟶ Z) :
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionBlockEquiv C n X Z (f ≫ g) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.GeneratorBlockComposition.comp (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase C n).weakEquivalences
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionBlockEquiv C n X Y f) (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionBlockEquiv C n Y Z g) :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionBlockEquiv_comp C n f g
 
 -- 任意可換環の実際の DK 入力と既存の固定端点で、元の射自身を回収する。
-open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization in
+open CategoryTheory SerrePositivity.EInfinity _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒᵖ)
     (X Y : (BarrattEccles.cofibrantAlgebraRelativeCategory R).category)
-    (f : freeResolutionObject (BarrattEccles.cofibrantAlgebraRelativeCategory R) n X ⟶
-      freeResolutionObject (BarrattEccles.cofibrantAlgebraRelativeCategory R) n Y) :
-    (freeResolutionBlockEquiv (BarrattEccles.cofibrantAlgebraRelativeCategory R) n _ _).symm
-      (freeResolutionBlockEquiv (BarrattEccles.cofibrantAlgebraRelativeCategory R) n _ _ f) = f :=
-  (freeResolutionBlockEquiv (BarrattEccles.cofibrantAlgebraRelativeCategory R) n _ _).symm_apply_apply f
+    (f : _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject (BarrattEccles.cofibrantAlgebraRelativeCategory R) n X ⟶
+      _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject (BarrattEccles.cofibrantAlgebraRelativeCategory R) n Y) :
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionBlockEquiv (BarrattEccles.cofibrantAlgebraRelativeCategory R) n _ _).symm
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionBlockEquiv (BarrattEccles.cofibrantAlgebraRelativeCategory R) n _ _ f) = f :=
+  (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionBlockEquiv (BarrattEccles.cofibrantAlgebraRelativeCategory R) n _ _).symm_apply_apply f
 
 -- 元の指定縦射の可換正方形は、非指定生成矢の同じ文字列を保つ。
-open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization in
+open CategoryTheory _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
     (W : MorphismProperty C) {X Y X' Y' : C}
     (p : Quiver.Path X Y) (q : Quiver.Path X' Y')
@@ -16762,7 +16769,7 @@ example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
       Hammock.UnmarkedGenerators.value W S := Hammock.UnmarkedGenerators.value_wordAction W f S
 
 -- 非空の非指定文字列は、元の指定接頭列・最初の非指定矢・残りに切れる。
-open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization in
+open CategoryTheory _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
     (W : MorphismProperty C) {X Y : C} (p : Quiver.Path X Y)
     (hp : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.erase W p ≠ []) :
@@ -16771,22 +16778,22 @@ example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
   _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.exists_first_of_erase_ne_nil W p hp
 
 -- 任意可換環の既存 DK 入力の各次数で、元の全語の余極限から評価できる。
-open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization in
+open CategoryTheory SerrePositivity.EInfinity _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒᵖ)
     (X Y : (BarrattEccles.cofibrantAlgebraRelativeCategory R).category) :
-    (freeHammockResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R) X Y).obj n ⟶
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R) X Y).obj n ⟶
       (Functor.const SimplexCategoryᵒᵖ).obj (List (Quiver.Total
-        (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category)) :=
-  freeHammockGeneratorWordValue (BarrattEccles.cofibrantAlgebraRelativeCategory R) X Y n
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category)) :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockGeneratorWordValue (BarrattEccles.cofibrantAlgebraRelativeCategory R) X Y n
 
 -- 最初の切断の全データは元の射列だけから一意に決まる。
-open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization in
+open CategoryTheory _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
     (W : MorphismProperty C) {X Y : C} {p : Quiver.Path X Y}
     (P Q : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FirstCut W p) : P = Q := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.firstCut_ext W P Q
 
 -- 同じ非指定矢で両表示を揃えると、元の正方形から通常の等式で両側を回収する。
-open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization in
+open CategoryTheory _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
     (W : MorphismProperty C) {X Y X' Y' A B : C}
     (p : Quiver.Path X Y) (q : Quiver.Path X' Y')
@@ -16810,7 +16817,7 @@ example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
   _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.rowFirstCut W τ i h k
 
 -- 元の全縦射は、同じ非指定矢と両側の射列の正方形を同時に保持する。
-open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization in
+open CategoryTheory SerrePositivity.EInfinity _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
     (W : MorphismProperty C) {w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} {X Y : Paths C}
     {S T : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag W.paths w X Y} (f : S ⟶ T) (i : Fin w.length)
@@ -16821,7 +16828,7 @@ example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
   _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.column_firstCut_square W f i P Q
 
 -- 選んだ切断でも、元の消去文字列の先頭と残りをそのまま回収する。
-open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization in
+open CategoryTheory _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
     (W : MorphismProperty C) {X Y : C} (p : Quiver.Path X Y)
     (hp : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.erase W p ≠ []) :
@@ -16832,18 +16839,18 @@ example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
   _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.firstCut_erasure W (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.firstCut W p hp)
 
 -- 任意可換環の実際の DK 入力の元の全自由次数で、切断を構成できる。
-open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization in
+open CategoryTheory SerrePositivity.EInfinity _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒᵖ)
-    {X Y : ((freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).category}
+    {X Y : ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).category}
     (p : X ⟶ Y) (hp : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.erase
-      (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
         p ≠ []) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FirstCut
-      (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
         p := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.firstCut _ p hp
 
 -- Total 等式だけから固定生成矢での表示へ戻し、元の射列の因子化を保持する。
-open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization in
+open CategoryTheory _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
     (W : MorphismProperty C) {X Y : C} {p : Quiver.Path X Y} (P : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FirstCut W p)
     {a : Quiver.Total C} (h : (⟨P.source, P.target, P.arrow⟩ : Quiver.Total C) = a) :
@@ -16895,32 +16902,32 @@ example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
       _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.rowTarget_map_mem W τ i h f⟩
 
 -- 任意可換環の元の全自由次数で、全行の元の列を同じ自然変換で回収する。
-open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization in
+open CategoryTheory SerrePositivity.EInfinity _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example (R : Type e2ComplexLimitUniverse) [CommRing R] (n m : SimplexCategoryᵒᵖ)
     {w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word}
-    {X Y : ((freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).category}
-    (τ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph ((freeResolution
+    {X Y : ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).category}
+    (τ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution
       (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).weakEquivalences w X Y).obj m)
     (i : Fin w.length) (h : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorColumns.column
-      (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
         (τ.obj 0) i ≠ []) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.rowPrefix
-      (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
         τ i h ≫
     _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.rowGeneratorMap
-      (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
         τ i h ≫
     _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.rowResidual
-      (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
         τ i h =
     _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.rowColumn
-      (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
         τ i h := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.rowColumn_factorization
-          (freeResolutionGeneratorBase
+          (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
             (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences τ i h
 
 -- 任意の添字圏の持ち上げは元の全射を保って前合成に両立する。
-open CategoryTheory SerrePositivity.EInfinity.Hammock SerrePositivity.EInfinity.SimplicialLocalization in
+open CategoryTheory SerrePositivity.EInfinity.Hammock _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example {C I J : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
     [Category.{e2ComplexLimitUniverse} I] [Category.{e2ComplexLimitUniverse} J]
     (W : MorphismProperty C) (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (X Y : Paths C) (i : Fin w.length) (a : Quiver.Total C)
@@ -16931,7 +16938,7 @@ example {C I J : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse}
   _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedColumnLift.lift_precomp W w X Y i a K F P
 
 -- 各対象で選んだ切断が違っても同じ持ち上げの関手になる。
-open CategoryTheory SerrePositivity.EInfinity.Hammock SerrePositivity.EInfinity.SimplicialLocalization in
+open CategoryTheory SerrePositivity.EInfinity.Hammock _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example {C I : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
     [Category.{e2ComplexLimitUniverse} I] (W : MorphismProperty C) (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (X Y : Paths C)
     (i : Fin w.length) (a : Quiver.Total C) (F : I ⥤ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag W.paths w X Y)
@@ -16986,30 +16993,30 @@ example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
       _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.rowColumn_simplex W τ i h θ hθ⟩
 
 -- 任意可換環の元の各自由次数に、全単体作用素への同じ自然性を代入する。
-open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization in
+open CategoryTheory SerrePositivity.EInfinity _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example (R : Type e2ComplexLimitUniverse) [CommRing R] (n m k : SimplexCategoryᵒᵖ)
     {w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word}
-    {X Y : ((freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).category}
-    (τ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph ((freeResolution
+    {X Y : ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).category}
+    (τ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution
       (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).weakEquivalences w X Y).obj m)
     (i : Fin w.length) (h : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorColumns.column
-      (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
         (τ.obj 0) i ≠ []) (θ : m ⟶ k)
     (hθ : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorColumns.column
-      (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
-        (((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph ((freeResolution
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
+        (((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution
           (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).weakEquivalences w X Y).map θ τ).obj 0)
             i ≠ []) :
     HEq (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.rowColumn
-      (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
-        ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph ((freeResolution
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
+        ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution
           (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).weakEquivalences w X Y).map θ τ) i hθ)
       (Functor.whiskerLeft (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.rowIndex θ)
         (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.rowColumn
-          (freeResolutionGeneratorBase
+          (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
             (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences τ i h)) :=
   _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.rowColumn_simplex
-    (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
       τ i h θ hθ
 
 -- 任意の列の元の番号と向きを保持して、元の語そのものに貼り戻す。
@@ -17057,11 +17064,11 @@ example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
     _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.beforeFirstColumn_map_mem W τ h f j.castSucc⟩
 
 -- 任意可換環の元の全自由次数で、元の全行の関手を任意の列で切って回収する。
-open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization in
+open CategoryTheory SerrePositivity.EInfinity _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example (R : Type e2ComplexLimitUniverse) [CommRing R] (n m : SimplexCategoryᵒᵖ)
     {w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word}
-    {X Y : ((freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).category}
-    (τ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph ((freeResolution
+    {X Y : ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).category}
+    (τ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution
       (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).weakEquivalences w X Y).obj m)
     (p : Fin w.length) : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ColumnSplit.recombinedFunctor p τ = τ :=
   _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ColumnSplit.recombinedFunctor_eq p τ
@@ -17122,25 +17129,25 @@ example {C D : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C
   _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedZigzagLift.liftFunctor_inclusion W F hF
 
 -- 任意可換環の元の全自由次数で、同じ指定部分圏からの prefix の回収を検証する。
-open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization in
+open CategoryTheory SerrePositivity.EInfinity _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example (R : Type e2ComplexLimitUniverse) [CommRing R] (n m : SimplexCategoryᵒᵖ)
     {w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word}
-    {X Y : ((freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).category}
-    (τ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph ((freeResolution
+    {X Y : ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).category}
+    (τ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution
       (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).weakEquivalences w X Y).obj m)
     (h : ∃ j, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorColumns.column
-      (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
         (τ.obj 0) j ≠ []) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.markedFunctor
-      (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
         τ h ⋙
       _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeZigzagFunctor.functor (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedZigzagLift.inclusion
-        (freeResolutionGeneratorBase
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
           (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences.paths) =
     _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedAttachedPrefix.functor
-      (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
         τ h := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.markedFunctor_inclusion
-          (freeResolutionGeneratorBase
+          (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
             (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences τ h
 
 
@@ -17191,17 +17198,17 @@ example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
   _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.collapse_blocks W τ i h
 
 -- 任意可換環の実際の自由解像の各次数にも、同じ局所回収を適用する。
-open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization in
+open CategoryTheory SerrePositivity.EInfinity _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example (R : Type e2ComplexLimitUniverse) [CommRing R] (n m : SimplexCategoryᵒᵖ)
     {w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word}
-    {X Y : ((freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).category}
-    (τ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph ((freeResolution
+    {X Y : ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).category}
+    (τ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution
       (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).weakEquivalences w X Y).obj m)
     (i : Fin w.length)
     (h : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorColumns.column
-      (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
         (τ.obj 0) i ≠ []) :
-    let W := (freeResolutionGeneratorBase
+    let W := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
     _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.wordAction _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordForwardTripleCollapse.collapse
       (((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedCutAttachmentDiagrams.leftBlock W τ i h).append
@@ -17209,7 +17216,7 @@ example (R : Type e2ComplexLimitUniverse) [CommRing R] (n m : SimplexCategoryᵒ
           (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedCutAttachmentDiagrams.rightBlock W τ i h)) =
       _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.collapsedColumnDiagram W τ i h :=
   _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.collapse_blocks
-    (freeResolutionGeneratorBase
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences τ i h
 
 
@@ -17265,22 +17272,22 @@ example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
   _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.refinedSimplex_inclusion W τ i h
 
 -- 任意可換環の実際の全自由次数で元の全図式の回収を検証する。
-open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization in
+open CategoryTheory SerrePositivity.EInfinity _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example (R : Type e2ComplexLimitUniverse) [CommRing R] (n m : SimplexCategoryᵒᵖ)
     {w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word}
-    {X Y : ((freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).category}
-    (τ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph ((freeResolution
+    {X Y : ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).category}
+    (τ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution
       (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).weakEquivalences w X Y).obj m)
     (i : Fin w.length)
     (h : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorColumns.column
-      (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
         (τ.obj 0) i ≠ []) :
-    let W := (freeResolutionGeneratorBase
+    let W := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
     _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedCutAttachmentDiagrams.refinedFunctor W τ i h ⋙
       _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAction.functor (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.refinementMap W τ i h) = τ :=
   _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.refinedFunctor_recovery
-    (freeResolutionGeneratorBase
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences τ i h
 
 
@@ -17342,28 +17349,28 @@ example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
   _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.markedFunctor_simplex W τ h θ hθ
 
 -- 任意可換環の実際の全自由次数で、同じ指定部分圏の単体的整合を検証する。
-open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization in
+open CategoryTheory SerrePositivity.EInfinity _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example (R : Type e2ComplexLimitUniverse) [CommRing R] (n m l : SimplexCategoryᵒᵖ)
     {w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word}
-    {X Y : ((freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).category}
-    (τ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph ((freeResolution
+    {X Y : ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).category}
+    (τ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution
       (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).weakEquivalences w X Y).obj m)
     (h : ∃ j, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorColumns.column
-      (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
         (τ.obj 0) j ≠ []) (θ : m ⟶ l)
     (hθ : ∃ j, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorColumns.column
-      (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
-        (((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph ((freeResolution
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
+        (((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution
           (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).weakEquivalences
             w X Y).map θ τ).obj 0) j ≠ []) :
-    let W := (freeResolutionGeneratorBase
+    let W := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
     HEq (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.markedFunctor W
       ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph W.paths w X Y).map θ τ) hθ)
       (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.rowIndex θ ⋙
         _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.markedFunctor W τ h) :=
   _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.markedFunctor_simplex
-    (freeResolutionGeneratorBase
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences τ h θ hθ
 
 
@@ -17423,20 +17430,20 @@ example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
   _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.rowGenerator_wordAction W f τ hS hT
 
 -- 任意可換環の実際の全自由次数にも元の最小列の像の回収を適用する。
-open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization in
+open CategoryTheory SerrePositivity.EInfinity _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒᵖ)
     {a b : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} (f : a ⟶ b)
-    {X Y : ((freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).category}
-    (S : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag ((freeResolution
+    {X Y : ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).category}
+    (S : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution
       (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).weakEquivalences a X Y)
     (hS : ∃ i, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorColumns.column
-      (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
         S i ≠ []) :
-    let W := (freeResolutionGeneratorBase
+    let W := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
     ∃ j, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorColumns.column W (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAction.obj f S) j ≠ [] :=
   _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.nonemptyColumns_wordAction
-    (freeResolutionGeneratorBase
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences f S hS
 
 
@@ -17497,20 +17504,20 @@ example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
   _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFirstFiberCuts.cut_right W f S h P Q
 
 -- 任意可換環の実際の全自由次数で同じ前置区間の指定性を検証する。
-open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization in
+open CategoryTheory SerrePositivity.EInfinity _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒᵖ)
     {a b : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} (f : a ⟶ b)
-    {X Y : ((freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).category}
-    (S : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag ((freeResolution
+    {X Y : ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).category}
+    (S : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution
       (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).weakEquivalences a X Y)
     (hS : ∃ i, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorColumns.column
-      (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
         S i ≠ []) :
-    let W := (freeResolutionGeneratorBase
+    let W := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
     W.paths (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFirstFiberCuts.prefixMap W f S hS) :=
   _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFirstFiberCuts.prefixMap_mem
-    (freeResolutionGeneratorBase
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences f S hS
 
 
@@ -17584,20 +17591,20 @@ example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
   _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.residual_apps W f τ h hT g k
 
 -- 任意可換環の実際の全自由次数の切断端点にも同じ生成矢の回収を適用する。
-open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization in
+open CategoryTheory SerrePositivity.EInfinity _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example (R : Type e2ComplexLimitUniverse) [CommRing R] (n m : SimplexCategoryᵒᵖ)
     {a b : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} (f : a ⟶ b)
-    {X Y : ((freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).category}
-    (τ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph ((freeResolution
+    {X Y : ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).category}
+    (τ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution
       (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).weakEquivalences a X Y).obj m)
     (h : ∃ i, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorColumns.column
-      (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
         (τ.obj 0) i ≠ [])
-    (hT : let W := (freeResolutionGeneratorBase
+    (hT : let W := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
         (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
       _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorColumns.column W ((τ ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAction.functor f).obj 0)
         (f.orderHom (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.firstColumn W (τ.obj 0) h)) ≠ []) :
-    let W := (freeResolutionGeneratorBase
+    let W := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
     _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.rowGenerator W (τ ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAction.functor f)
       (f.orderHom (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.firstColumn W (τ.obj 0) h)) hT =
@@ -17605,7 +17612,7 @@ example (R : Type e2ComplexLimitUniverse) [CommRing R] (n m : SimplexCategoryᵒ
       (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.firstColumn W (τ.obj 0) h)
       (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.firstColumn_nonempty W (τ.obj 0) h) :=
   _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.generator_eq
-    (freeResolutionGeneratorBase
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences f τ h hT
 
 
@@ -17677,29 +17684,29 @@ example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
   _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.residual_outer_arrow W f τ i h hi hT d k
 
 -- 任意可換環の実際の全自由次数でも同じ元の横列を検証する。
-open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization in
+open CategoryTheory SerrePositivity.EInfinity _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example (R : Type e2ComplexLimitUniverse) [CommRing R] (n m : SimplexCategoryᵒᵖ)
     {a b : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} (f : a ⟶ b)
-    {X Y : ((freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).category}
-    (τ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph ((freeResolution
+    {X Y : ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).category}
+    (τ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution
       (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).weakEquivalences a X Y).obj m)
     (i : Fin a.length)
     (h : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorColumns.column
-      (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
         (τ.obj 0) i ≠ []) (hi : a.direction i = .forward)
-    (hT : let W := (freeResolutionGeneratorBase
+    (hT : let W := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
         (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
       _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorColumns.column W ((τ ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAction.functor f).obj 0)
         (f.orderHom i) ≠ [])
     (d : Fin (m.unop.len + 1)) (k : Fin (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordColumnSplit.before b (f.orderHom i)).length) :
-    let W := (freeResolutionGeneratorBase
+    let W := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
     HEq ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAction.obj (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordCutFactorMaps.prefixMap f i hi)
       ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedCutAttachmentDiagrams.prefixDiagram W τ i h).obj d)).arrow (k.castAdd 1))
       (((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedCutAttachmentDiagrams.prefixDiagram W (τ ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAction.functor f)
         (f.orderHom i) hT).obj d).arrow (k.castAdd 1)) :=
   _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.prefix_outer_arrow
-    (freeResolutionGeneratorBase
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences f τ i h hi hT d k
 
 
@@ -17805,25 +17812,25 @@ example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
   _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.marked_prefix_colimit_image W f τ h hT
 
 -- 任意可換環の実際の全自由次数で、指定 prefix の全関手の回収を検証する。
-open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization
+open CategoryTheory SerrePositivity.EInfinity _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
   SerrePositivity.EInfinity.Hammock
   SerrePositivity.EInfinity.Hammock.UnmarkedGenerators
   in
 example (R : Type e2ComplexLimitUniverse) [CommRing R] (n m : SimplexCategoryᵒᵖ)
     {a b : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} (f : a ⟶ b)
-    {X Y : ((freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).category}
-    (τ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph ((freeResolution
+    {X Y : ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).category}
+    (τ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution
       (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).weakEquivalences a X Y).obj m)
     (h : ∃ i, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorColumns.column
-      (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
         (τ.obj 0) i ≠ [])
-    (hT : let W := (freeResolutionGeneratorBase
+    (hT : let W := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
         (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
       _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorColumns.column W ((τ ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAction.functor f).obj 0)
         (f.orderHom (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedAttachedPrefix.index W τ h)) ≠ []) :
-    let C := (freeResolutionGeneratorBase
+    let C := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category
-    let W := (freeResolutionGeneratorBase
+    let W := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
     _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.markedFunctor W τ h ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAction.functor
           (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordCutFactorMaps.prefixMap f (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedAttachedPrefix.index W τ h) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.firstColumn_forward W (τ.obj 0) h)) ⋙
@@ -17832,7 +17839,7 @@ example (R : Type e2ComplexLimitUniverse) [CommRing R] (n m : SimplexCategoryᵒ
               (congrArg (fun g : Quiver.Total C => (show Paths C from g.left))
                 (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.generator_eq W f τ h hT)).symm) = _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.markedImagePrefixFunctor W f τ h hT :=
   _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.marked_prefix_functor
-    (freeResolutionGeneratorBase
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences f τ h hT
 
 
@@ -17875,37 +17882,37 @@ example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
   _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorColimit.inclusion_ambientMap W X Y w
 
 -- 任意可換環の実際の全自由次数でも、元の切断点の語への整合を検証する。
-open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization
+open CategoryTheory SerrePositivity.EInfinity _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
   SerrePositivity.EInfinity.Hammock SerrePositivity.EInfinity.Hammock.UnmarkedGenerators in
 example (R : Type e2ComplexLimitUniverse) [CommRing R] (n m : SimplexCategoryᵒᵖ)
     {a b : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} (f : a ⟶ b)
-    {X Y : ((freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).category}
-    (τ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph ((freeResolution
+    {X Y : ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).category}
+    (τ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution
       (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).weakEquivalences a X Y).obj m)
     (h : ∃ j, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorColumns.column
-      (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
         (τ.obj 0) j ≠ [])
-    (hf : let W := (freeResolutionGeneratorBase
+    (hf : let W := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
         (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
       ∃ j, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorColumns.column W ((τ ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAction.functor f).obj 0) j ≠ []) :
-    let W := (freeResolutionGeneratorBase
+    let W := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
     _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorPoint.point W τ h = _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorPoint.point W (τ ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAction.functor f) hf :=
   _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.point_wordAction
-    (freeResolutionGeneratorBase
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences f τ h hf
 
 -- 実際の cofibrant 代数の自由次数の端点でも余極限からの切断を回収する。
-open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization
+open CategoryTheory SerrePositivity.EInfinity _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
   SerrePositivity.EInfinity.Hammock SerrePositivity.EInfinity.Hammock.UnmarkedGenerators in
 example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒᵖ)
-    (X Y : ((freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).category)
+    (X Y : ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).category)
     (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) :
-    let W := (freeResolutionGeneratorBase
+    let W := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
     _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorColimit.inclusion W X Y w ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorColimit.colimitCut W X Y = _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cutMap W w X Y :=
   _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorColimit.inclusion_colimitCut
-    (freeResolutionGeneratorBase
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences X Y w
 
 
@@ -17950,17 +17957,17 @@ example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
   FirstFactor.inclusion_nonemptyCut W X Y w
 
 -- 任意可換環の実際の全自由次数の同じ端点でも元の切断を回収する。
-open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization
+open CategoryTheory SerrePositivity.EInfinity _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
   SerrePositivity.EInfinity.Hammock SerrePositivity.EInfinity.Hammock.UnmarkedGenerators in
 example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒᵖ)
-    (X Y : ((freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).category)
+    (X Y : ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).category)
     (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) :
-    let W := (freeResolutionGeneratorBase
+    let W := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
     (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorColimit.inclusion W X Y w ≫ (FirstFactor.nonemptyIso W X Y).hom) ≫
       FirstFactor.nonemptyCut W X Y = _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cutMap W w X Y :=
   FirstFactor.inclusion_nonemptyCut
-    (freeResolutionGeneratorBase
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences X Y w
 
 
@@ -18016,16 +18023,16 @@ example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
         ((FirstFactor.nonemptyCut W X Y).app n x).2.2) := FirstFactor.spine_nonempty W Y n X x
 
 -- 任意可換環の実際の全自由次数で反復した元の生成文字列を回収する。
-open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization
+open CategoryTheory SerrePositivity.EInfinity _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
   SerrePositivity.EInfinity.Hammock SerrePositivity.EInfinity.Hammock.UnmarkedGenerators in
 example (R : Type e2ComplexLimitUniverse) [CommRing R] (n m : SimplexCategoryᵒᵖ)
-    (X Y : ((freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).category)
-    (x : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph ((freeResolution
+    (X Y : ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).category)
+    (x : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution
       (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).weakEquivalences X Y).obj m) :
-    let W := (freeResolutionGeneratorBase
+    let W := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
     (FirstFactor.spine W Y m X x).word = (colimitValue W X Y).app m x :=
-  FirstFactor.spine_word (freeResolutionGeneratorBase
+  FirstFactor.spine_word (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
     (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences Y m X x
 
 
@@ -18072,14 +18079,14 @@ example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
   FirstFactor.extraction_wordValue W Y X
 
 -- 任意可換環の実際の全自由次数で抽出射と元の非指定文字列を照合する。
-open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization
+open CategoryTheory SerrePositivity.EInfinity _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
   SerrePositivity.EInfinity.Hammock SerrePositivity.EInfinity.Hammock.UnmarkedGenerators in
 example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒᵖ)
-    (X Y : ((freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).category) :
-    let W := (freeResolutionGeneratorBase
+    (X Y : ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).category) :
+    let W := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
     FirstFactor.extraction W Y X ≫ FirstFactor.MarkedSpine.wordValue W Y X = colimitValue W X Y :=
-  FirstFactor.extraction_wordValue (freeResolutionGeneratorBase
+  FirstFactor.extraction_wordValue (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
     (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences Y X
 
 
@@ -18127,15 +18134,15 @@ example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
   FirstFactor.extraction_injective W Y X n
 
 -- 任意可換環の実際の全自由次数で同じ元の恒等射を回収する。
-open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization
+open CategoryTheory SerrePositivity.EInfinity _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
   SerrePositivity.EInfinity.Hammock SerrePositivity.EInfinity.Hammock.UnmarkedGenerators in
 example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒᵖ)
-    (X Y : ((freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).category) :
-    let W := (freeResolutionGeneratorBase
+    (X Y : ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).category) :
+    let W := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
     FirstFactor.extraction W Y X ≫ FirstFactor.MarkedSpine.gluing W Y X =
       𝟙 (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W.paths X Y) :=
-  FirstFactor.extraction_gluing (freeResolutionGeneratorBase
+  FirstFactor.extraction_gluing (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
     (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences Y X
 
 
@@ -18189,17 +18196,17 @@ example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
   FactorTarget.pasteNonempty_residual_value W X Y s
 
 -- 任意可換環の実際の全自由次数でも同じ生成矢を回収する。
-open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization
+open CategoryTheory SerrePositivity.EInfinity _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
   SerrePositivity.EInfinity.Hammock SerrePositivity.EInfinity.Hammock.UnmarkedGenerators in
 example (R : Type e2ComplexLimitUniverse) [CommRing R] (n m : SimplexCategoryᵒᵖ)
-    (X Y : ((freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).category)
-    (s : let W := (freeResolutionGeneratorBase
+    (X Y : ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).category)
+    (s : let W := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
         (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
       (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.space W X Y).obj m) :
-    let W := (freeResolutionGeneratorBase
+    let W := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
     ((FirstFactor.nonemptyCut W X Y).app m ((FactorTarget.pasteNonempty W X Y).app m s)).1 = s.1 :=
-  FactorTarget.pasteNonempty_generator_index (freeResolutionGeneratorBase
+  FactorTarget.pasteNonempty_generator_index (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
     (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences X Y s
 
 
@@ -18253,25 +18260,25 @@ example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
       (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ofFunctor τ) := Pasted.after_diagram W g σ τ
 
 -- 任意可換環の実際の全自由次数でも元の prefix の全図式を回収する。
-open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization
+open CategoryTheory SerrePositivity.EInfinity _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
   SerrePositivity.EInfinity.Hammock SerrePositivity.EInfinity.Hammock.UnmarkedGenerators in
 example (R : Type e2ComplexLimitUniverse) [CommRing R] (n m : SimplexCategoryᵒᵖ)
     {a b : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word}
-    (X Y : ((freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).category)
-    (g : let W := (freeResolutionGeneratorBase
+    (X Y : ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).category)
+    (g : let W := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
         (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
       _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.Index W)
-    (σ : let W := (freeResolutionGeneratorBase
+    (σ : let W := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
         (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
       (AllMarked.nativeGraph W X g.val.left a).obj m)
-    (τ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph ((freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).weakEquivalences
+    (τ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).weakEquivalences
       b g.val.right Y).obj m) :
-    let W := (freeResolutionGeneratorBase
+    let W := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
     HEq (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.changeWord (Pasted.before_word a b)
       (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedCutAttachments.beforeDiagram W (Pasted.simplex W g σ τ) (Pasted.columnIndex a b)))
       (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ofFunctor ((AllMarked.graphMap W X g.val.left a).app m σ)) :=
-  Pasted.before_diagram (freeResolutionGeneratorBase
+  Pasted.before_diagram (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
     (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences g σ τ
 
 
@@ -18318,16 +18325,16 @@ example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
       (FirstFactor.markedSpineIso W Y X).inv = FirstFactor.MarkedSpine.gluing W Y X := ⟨rfl, rfl⟩
 
 -- 任意可換環の実際の全自由次数の hammock に同じ同型を代入する。
-open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization
+open CategoryTheory SerrePositivity.EInfinity _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
   SerrePositivity.EInfinity.Hammock SerrePositivity.EInfinity.Hammock.UnmarkedGenerators in
 example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒᵖ)
-    (X Y : ((freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).category) :
-    let C := (freeResolutionGeneratorBase
+    (X Y : ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).category) :
+    let C := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category
-    let W : MorphismProperty C := (freeResolutionGeneratorBase
+    let W : MorphismProperty C := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
     _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W.paths X Y ≅ FirstFactor.MarkedSpine.space W Y X :=
-  FirstFactor.markedSpineIso (freeResolutionGeneratorBase
+  FirstFactor.markedSpineIso (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
     (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences Y X
 
 
@@ -18389,13 +18396,13 @@ example {C D : Type e2ComplexLimitUniverse}
     (F.precompSimplex θ).fold t = F.fold (MarkedSpine.map θ t) := F.fold_simplex θ t
 
 -- 任意可換環の元の全自由次数に明示的な全因子列の豊穣圏を代入する。
-open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization
+open CategoryTheory SerrePositivity.EInfinity _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
   SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor in
 example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒᵖ) :
-    let C := (freeResolutionGeneratorBase
+    let C := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category
     EnrichedCategory SSet.{e2ComplexLimitUniverse + 1} (Paths C) :=
-  MarkedSpine.enrichedCategory (freeResolutionGeneratorBase
+  MarkedSpine.enrichedCategory (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
     (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
 
 
@@ -18451,24 +18458,24 @@ example {C D : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C
   MarkedSpine.restrict_hammock_extend F
 
 -- 任意可換環の実際の全自由次数から任意の豊穣目標への同じ拡張を代入する。
-open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization
+open CategoryTheory SerrePositivity.EInfinity _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
   SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor in
 example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒᵖ)
     (D : Type (e2ComplexLimitUniverse + 1)) [EnrichedCategory SSet.{e2ComplexLimitUniverse + 1} D]
-    (F : let W := (freeResolutionGeneratorBase
+    (F : let W := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
         (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
       MarkedSpine.EnrichedFoldData W D) :
-    let C := (freeResolutionGeneratorBase
+    let C := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category
-    let W : MorphismProperty C := (freeResolutionGeneratorBase
+    let W : MorphismProperty C := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
     letI : EnrichedCategory SSet.{e2ComplexLimitUniverse + 1}
-        ((freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).category :=
+        ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).category :=
       show EnrichedCategory SSet.{e2ComplexLimitUniverse + 1} (Paths C) from
         _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EnrichedCategory.enrichedCategory W.paths
     EnrichedFunctor SSet.{e2ComplexLimitUniverse + 1}
-      ((freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).category D :=
-  F.hammockEnrichedFunctor (freeResolutionGeneratorBase
+      ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).category D :=
+  F.hammockEnrichedFunctor (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
     (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
 
 
@@ -18484,7 +18491,7 @@ example {C D : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C
 open CategoryTheory SerrePositivity.EInfinity.Hammock
   SerrePositivity.EInfinity.Hammock.UnmarkedGenerators
   SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor
-  SerrePositivity.EInfinity.SimplicialLocalization in
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example {C D : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
     [EnrichedCategory SSet.{e2ComplexLimitUniverse} D] {W : MorphismProperty C}
     (F : MarkedSpine.EnrichedFoldData W D) (g : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.Index W) :
@@ -18521,25 +18528,25 @@ example {C D : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C
       MarkedSpine.restrictParts W F = P := MarkedSpine.existsUnique_freeProductExtension W P
 
 -- 任意可換環の実際の全自由次数の元の二つの部分について同じ普遍性を代入する。
-open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization
+open CategoryTheory SerrePositivity.EInfinity _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
   SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor in
 example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒᵖ)
     (D : Type (e2ComplexLimitUniverse + 1)) [EnrichedCategory SSet.{e2ComplexLimitUniverse + 1} D]
-    (P : let W := (freeResolutionGeneratorBase
+    (P : let W := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
         (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
       MarkedSpine.EnrichedParts W D) :
-    let C := (freeResolutionGeneratorBase
+    let C := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category
-    let W : MorphismProperty C := (freeResolutionGeneratorBase
+    let W : MorphismProperty C := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
     letI : EnrichedCategory SSet.{e2ComplexLimitUniverse + 1}
-        ((freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).category :=
+        ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).category :=
       show EnrichedCategory SSet.{e2ComplexLimitUniverse + 1} (Paths C) from
         _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EnrichedCategory.enrichedCategory W.paths
     ∃! F : EnrichedFunctor SSet.{e2ComplexLimitUniverse + 1}
-      ((freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).category D,
+      ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).category D,
       MarkedSpine.restrictParts W F = P :=
-  MarkedSpine.existsUnique_freeProductExtension (freeResolutionGeneratorBase
+  MarkedSpine.existsUnique_freeProductExtension (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
     (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences P
 
 
@@ -18582,18 +18589,18 @@ example {Q : Type e2ComplexLimitUniverse} [Quiver.{e2ComplexLimitUniverse} Q] (A
     (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.pathProjection A).Faithful := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.pathProjection_faithful A
 
 -- 任意可換環の実際の全自由次数の指定生成 quiver へ同じ根付き被覆を代入する。
-open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization
+open CategoryTheory SerrePositivity.EInfinity _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
   SerrePositivity.EInfinity.Hammock in
 example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒᵖ)
-    (A : (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category) :
-    let C := (freeResolutionGeneratorBase
+    (A : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category) :
+    let C := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category
-    let W : MorphismProperty C := (freeResolutionGeneratorBase
+    let W : MorphismProperty C := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
     letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FreeQuiverCover.quiver (Q := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver W) A
     (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FreeQuiverCover.projection (Q := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver W) A).IsCovering :=
   _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FreeQuiverCoverCostars.projection_isCovering (Q := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver
-    (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences) A
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences) A
 
 -- 逆射を含む元の自由 groupoid の射影自身が忠実である。
 open CategoryTheory SerrePositivity.EInfinity.Hammock in
@@ -18634,18 +18641,18 @@ example {Q : Type e2ComplexLimitUniverse} [Quiver.{e2ComplexLimitUniverse} Q] (A
   _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.groupoidHomUnique A
 
 -- 任意可換環の実際の全自由次数の指定生成 quiver での忠実性。
-open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization
+open CategoryTheory SerrePositivity.EInfinity _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
   SerrePositivity.EInfinity.Hammock in
 example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒᵖ)
-    (A : (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category) :
-    let C := (freeResolutionGeneratorBase
+    (A : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category) :
+    let C := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category
-    let W : MorphismProperty C := (freeResolutionGeneratorBase
+    let W : MorphismProperty C := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
     letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FreeQuiverCover.quiver (Q := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver W) A
     (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.groupoidProjection (Q := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver W) A).Faithful :=
   _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.groupoidProjection_faithful (Q := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver
-    (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences) A
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences) A
 
 -- 元の被覆の全生成辺が正逆どちらかで測地木に属する。
 open CategoryTheory SerrePositivity.EInfinity.Hammock in
@@ -18688,20 +18695,20 @@ example {Q : Type e2ComplexLimitUniverse} [Quiver.{e2ComplexLimitUniverse} Q] (A
     _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FreeQuiverCoverTreeHeight.treeHeight A (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FreeQuiverCover.root A) = 0 := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FreeQuiverCoverFiniteLeaf.treeHeight_root A
 
 -- 任意可換環の実際の全自由次数の指定生成 quiver の全辺へ代入する。
-open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization
+open CategoryTheory SerrePositivity.EInfinity _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
   SerrePositivity.EInfinity.Hammock in
 example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒᵖ)
-    (A : (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category) :
-    let C := (freeResolutionGeneratorBase
+    (A : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category) :
+    let C := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category
-    let W : MorphismProperty C := (freeResolutionGeneratorBase
+    let W : MorphismProperty C := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
     letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FreeQuiverCover.quiver (Q := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver W) A
     ∀ {x y : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FreeQuiverCover.Vertex (Q := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver W) A} (f : x ⟶ y),
       f.toPos ∈ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.spanningTree (Q := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver W) A x y ∨
         f.toNeg ∈ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.spanningTree (Q := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver W) A y x :=
   _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.every_edge_in_spanningTree (Q := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver
-    (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences) A
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences) A
 
 -- 指定両端のラベルが整合すれば元の正向き射列は一意に持ち上がる。
 open CategoryTheory SerrePositivity.EInfinity.Hammock in
@@ -18751,14 +18758,14 @@ example {Q : Type e2ComplexLimitUniverse} [Quiver.{e2ComplexLimitUniverse} Q] (A
   _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.zigzagLiftFunctor_projection A
 
 -- 任意可換環の実際の全自由次数の指定生成 quiver へ持ち上げ関手を代入する。
-open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization
+open CategoryTheory SerrePositivity.EInfinity _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
   SerrePositivity.EInfinity.Hammock in
 example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒᵖ)
-    (A B : (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category)
+    (A B : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category)
     (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) :
-    let C := (freeResolutionGeneratorBase
+    let C := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category
-    let W : MorphismProperty C := (freeResolutionGeneratorBase
+    let W : MorphismProperty C := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
     let Q := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver W
     ∀ β : (Quiver.FreeGroupoid.of Q).obj A ⟶ (Quiver.FreeGroupoid.of Q).obj B,
@@ -18830,12 +18837,12 @@ example {Q : Type e2ComplexLimitUniverse} [Quiver.{e2ComplexLimitUniverse} Q] (A
 
 -- 任意可換環の実際の全自由次数の指定生成 quiver の全語の余極限へ代入する。
 open CategoryTheory CategoryTheory.Limits SerrePositivity.EInfinity
-  SerrePositivity.EInfinity.SimplicialLocalization SerrePositivity.EInfinity.Hammock in
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization SerrePositivity.EInfinity.Hammock in
 example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒᵖ)
-    (A B : (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category) :
-    let C := (freeResolutionGeneratorBase
+    (A B : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category) :
+    let C := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category
-    let W : MorphismProperty C := (freeResolutionGeneratorBase
+    let W : MorphismProperty C := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
     let Q := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver W
     ∀ β : (Quiver.FreeGroupoid.of Q).obj A ⟶ (Quiver.FreeGroupoid.of Q).obj B,
@@ -18901,13 +18908,13 @@ example {Q : Type e2ComplexLimitUniverse} [Quiver.{e2ComplexLimitUniverse} Q] (A
   FreeQuiverCover.fiberGraphIso A _ _ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.empty
 
 -- 任意可換環の実際の全自由次数でも既存の評価の同じ fiber を同定する。
-open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization
+open CategoryTheory SerrePositivity.EInfinity _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
   SerrePositivity.EInfinity.Hammock in
 example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒᵖ)
-    (A B : (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category) :
-    let C := (freeResolutionGeneratorBase
+    (A B : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category) :
+    let C := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category
-    let W : MorphismProperty C := (freeResolutionGeneratorBase
+    let W : MorphismProperty C := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
     let Q := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver W
     ∀ β : (Quiver.FreeGroupoid.of Q).obj A ⟶ (Quiver.FreeGroupoid.of Q).obj B,
@@ -18964,13 +18971,13 @@ example {Q : Type e2ComplexLimitUniverse} [Quiver.{e2ComplexLimitUniverse} Q] (A
     _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.finiteHull A ∅ = {_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FreeQuiverCover.root A} := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.finiteHull_empty A
 
 -- 任意可換環の実際の全自由次数で葉を選び元の同じ関手の左逆を回収する。
-open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization
+open CategoryTheory SerrePositivity.EInfinity _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
   SerrePositivity.EInfinity.Hammock in
 example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒᵖ)
-    (A : (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category) :
-    let C := (freeResolutionGeneratorBase
+    (A : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category) :
+    let C := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category
-    let W : MorphismProperty C := (freeResolutionGeneratorBase
+    let W : MorphismProperty C := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
     let Q := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver W
     ∀ (S : Finset (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FreeQuiverCover.Vertex (Q := Q) A))
@@ -19058,13 +19065,13 @@ example {Q : Type e2ComplexLimitUniverse} [Quiver.{e2ComplexLimitUniverse} Q]
       eqToHom (D.collapse_obj_of_ne x hx) := D.positiveComponent_of_ne g x hx
 
 -- 任意可換環の実際の全自由次数で元の有限木の自然変形を使う。
-open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization
+open CategoryTheory SerrePositivity.EInfinity _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
   SerrePositivity.EInfinity.Hammock in
 example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒᵖ)
-    (A : (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category) :
-    let C := (freeResolutionGeneratorBase
+    (A : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category) :
+    let C := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category
-    let W : MorphismProperty C := (freeResolutionGeneratorBase
+    let W : MorphismProperty C := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
     let Q := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver W
     ∀ (S : Finset (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FreeQuiverCover.Vertex (Q := Q) A))
@@ -19125,9 +19132,9 @@ example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
 
 -- 任意可換環の実際の自由解像の全次数で元の指定射の四つの作用を検査。
 open CategoryTheory SerrePositivity.InfinityCategories SerrePositivity.EInfinity
-  SerrePositivity.EInfinity.SimplicialLocalization SerrePositivity.EInfinity.Hammock in
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization SerrePositivity.EInfinity.Hammock in
 example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒᵖ) :
-    let B := (freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n
+    let B := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n
     ∀ {X Y : B.category} (g : X ⟶ Y) (hg : B.weakEquivalences g) (A : B.category),
       _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.postcomposePointMap A (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap B.weakEquivalences g)) ∧
       _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.postcomposePointMap A (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ColimitRowComposition.backwardMap g hg)) ∧
@@ -19195,12 +19202,12 @@ example {Q : Type e2ComplexLimitUniverse} [Quiver.{e2ComplexLimitUniverse} Q]
 
 -- 任意可換環の実際の全自由次数で同じ葉の合成の弱同値性を検査。
 open CategoryTheory SerrePositivity.InfinityCategories SerrePositivity.EInfinity
-  SerrePositivity.EInfinity.SimplicialLocalization SerrePositivity.EInfinity.Hammock in
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization SerrePositivity.EInfinity.Hammock in
 example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒᵖ)
-    (A : (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category) :
-    let C := (freeResolutionGeneratorBase
+    (A : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category) :
+    let C := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category
-    let W : MorphismProperty C := (freeResolutionGeneratorBase
+    let W : MorphismProperty C := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
     let Q := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver W
     ∀ (S : Finset (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FreeQuiverCover.Vertex (Q := Q) A))
@@ -19273,12 +19280,12 @@ example {Q : Type e2ComplexLimitUniverse} [Quiver.{e2ComplexLimitUniverse} Q] (A
 
 -- 任意可換環の実際の全自由次数で全ての元の有限包を検査。
 open CategoryTheory SerrePositivity.InfinityCategories SerrePositivity.EInfinity
-  SerrePositivity.EInfinity.SimplicialLocalization SerrePositivity.EInfinity.Hammock in
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization SerrePositivity.EInfinity.Hammock in
 example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒᵖ)
-    (A : (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category) :
-    let C := (freeResolutionGeneratorBase
+    (A : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category) :
+    let C := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category
-    let W : MorphismProperty C := (freeResolutionGeneratorBase
+    let W : MorphismProperty C := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
     let Q := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver W
     ∀ S : Finset (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FreeQuiverCover.Vertex (Q := Q) A),
@@ -19343,13 +19350,13 @@ example {Q I : Type e2ComplexLimitUniverse} [Quiver.{e2ComplexLimitUniverse} Q]
   FiniteGrid.rootedHammock_isWeaklyContractible T F
 
 -- 任意可換環の実際の全自由次数・全 hammock 次数で元の grid の回収を検査。
-open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization
+open CategoryTheory SerrePositivity.EInfinity _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
   SerrePositivity.EInfinity.Hammock in
 example (R : Type e2ComplexLimitUniverse) [CommRing R] (n m : SimplexCategoryᵒᵖ)
-    (A : (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category) :
-    let C := (freeResolutionGeneratorBase
+    (A : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category) :
+    let C := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category
-    let W : MorphismProperty C := (freeResolutionGeneratorBase
+    let W : MorphismProperty C := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
     let Q := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver W
     letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FreeQuiverCover.quiver (Q := Q) A
@@ -19411,12 +19418,12 @@ example {Q : Type e2ComplexLimitUniverse}
 
 -- 任意可換環の実際の全自由次数で被覆全体へ代入する。
 open CategoryTheory SerrePositivity.InfinityCategories SerrePositivity.EInfinity
-  SerrePositivity.EInfinity.SimplicialLocalization SerrePositivity.EInfinity.Hammock in
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization SerrePositivity.EInfinity.Hammock in
 example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒᵖ)
-    (A : (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category) :
-    let C := (freeResolutionGeneratorBase
+    (A : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category) :
+    let C := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category
-    let W : MorphismProperty C := (freeResolutionGeneratorBase
+    let W : MorphismProperty C := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
     let Q := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver W
     letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FreeQuiverCover.quiver (Q := Q) A
@@ -19464,11 +19471,11 @@ example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
 
 -- 任意可換環の実際の全自由次数の指定部分圏の評価へ代入する。
 open CategoryTheory SerrePositivity.InfinityCategories SerrePositivity.EInfinity
-  SerrePositivity.EInfinity.SimplicialLocalization SerrePositivity.EInfinity.Hammock in
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization SerrePositivity.EInfinity.Hammock in
 example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒᵖ) :
-    let C := (freeResolutionGeneratorBase
+    let C := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category
-    let W : MorphismProperty C := (freeResolutionGeneratorBase
+    let W : MorphismProperty C := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
     ∀ X Y : Paths C,
       _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (UnmarkedGenerators.AllMarked.nativeValue W X Y) := by
@@ -19506,7 +19513,7 @@ example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
   MarkedSpine.hammockEvaluation_isWeakHomotopyEquivalence W Y X
 
 -- 値の因子列の圏への元の指定部分の矢は実際に反転される。
-open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization
+open CategoryTheory _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
   SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor in
 example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
     (W : MorphismProperty C) {X Y : Quiver.FreeGroupoid (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver W)} (p : X ⟶ Y) :
@@ -19516,12 +19523,12 @@ example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
 
 -- 任意可換環の全自由次数の元の全因子列の評価へ代入する。
 open CategoryTheory SerrePositivity.InfinityCategories SerrePositivity.EInfinity
-  SerrePositivity.EInfinity.SimplicialLocalization SerrePositivity.EInfinity.Hammock
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization SerrePositivity.EInfinity.Hammock
   SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor in
 example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒᵖ) :
-    let C := (freeResolutionGeneratorBase
+    let C := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category
-    let W : MorphismProperty C := (freeResolutionGeneratorBase
+    let W : MorphismProperty C := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
     ∀ X Y : Paths C, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (MarkedSpine.hammockEvaluation W Y X) := by
   intro C W X Y
@@ -19571,12 +19578,12 @@ example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
   MarkedSpine.nativeValue_localizationValue W X Y
 
 -- 任意可換環の元の全自由次数で同じ通常の局所化 Hom を回収する。
-open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization
+open CategoryTheory SerrePositivity.EInfinity _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
   SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor in
 example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒᵖ) :
-    let C := (freeResolutionGeneratorBase
+    let C := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category
-    let W : MorphismProperty C := (freeResolutionGeneratorBase
+    let W : MorphismProperty C := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
     ∀ X Y : Paths C, MarkedSpine.valueSpace W Y X ≅
       (Functor.const SimplexCategoryᵒᵖ).obj (W.paths.Q.obj X ⟶ W.paths.Q.obj Y) := by
@@ -19620,21 +19627,21 @@ example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
 
 -- 既存 DK Hom への元の右比較射の各自由次数の成分自身を検証する。
 open CategoryTheory SerrePositivity.InfinityCategories
-  SerrePositivity.EInfinity.SimplicialLocalization in
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{e2ComplexLimitUniverse}) (X Y : C.category)
     (n : SimplexCategoryᵒᵖ) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((freeHammockHomComparison C X Y).app n) :=
-  freeHammockHomComparison_app_isWeakHomotopyEquivalence C X Y n
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockHomComparison C X Y).app n) :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockHomComparison_app_isWeakHomotopyEquivalence C X Y n
 
 -- 任意可換環の実際の全自由次数・全 cofibrant 代数の元の同じ右射に代入する。
 open CategoryTheory SerrePositivity.InfinityCategories SerrePositivity.EInfinity
-  SerrePositivity.EInfinity.SimplicialLocalization in
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒᵖ) :
     let C := BarrattEccles.cofibrantAlgebraRelativeCategory R
     ∀ X Y : C.category,
-      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((freeHammockHomComparison C X Y).app n) := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockHomComparison C X Y).app n) := by
   intro C X Y
-  exact freeHammockHomComparison_app_isWeakHomotopyEquivalence C X Y n
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockHomComparison_app_isWeakHomotopyEquivalence C X Y n
 
 -- 任意の二重単体集合で、同じ対角写像の弱同値をモデル構造なしで得る。
 open CategoryTheory SerrePositivity.InfinityCategories SerrePositivity.EInfinity.Hammock in
@@ -19645,83 +19652,83 @@ example {B D : SimplicialObject SSet.{e2ComplexLimitUniverse}} (f : B ⟶ D)
 
 -- 任意可換環の実際の全 cofibrant 代数で元の対角の右比較射自身へ適用。
 open CategoryTheory SerrePositivity.InfinityCategories SerrePositivity.EInfinity
-  SerrePositivity.EInfinity.SimplicialLocalization in
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example (R : Type e2ComplexLimitUniverse) [CommRing R] :
     let C := BarrattEccles.cofibrantAlgebraRelativeCategory R
-    ∀ X Y : C.category, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (freeHammockDiagonalComparison C X Y) := by
+    ∀ X Y : C.category, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalComparison C X Y) := by
   intro C X Y
-  exact freeHammockDiagonalComparison_isWeakHomotopyEquivalence C X Y
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalComparison_isWeakHomotopyEquivalence C X Y
 
 -- 元の選択対象による底の Hom augmentation 自身を、一般の相対圏で検査する。
 open CategoryTheory SerrePositivity.InfinityCategories
-  SerrePositivity.EInfinity.SimplicialLocalization in
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{e2ComplexLimitUniverse}) (X Y : C.category) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (freeResolutionHomAugmentation C X Y) :=
-  freeResolutionHomAugmentation_isWeakHomotopyEquivalence C X Y
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionHomAugmentation C X Y) :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionHomAugmentation_isWeakHomotopyEquivalence C X Y
 
 -- 対象表示の同型は元の augmentation の可換式を保つ。
-open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization in
+open CategoryTheory _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{e2ComplexLimitUniverse}) (X Y : C.category) :
-    (freeResolutionHomRepresentationIso C X Y).hom ≫
-      freeResolutionGeneratorHomAugmentation C X Y = freeResolutionHomAugmentation C X Y :=
-  freeResolutionHomRepresentationIso_augmentation C X Y
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionHomRepresentationIso C X Y).hom ≫
+      _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorHomAugmentation C X Y = _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionHomAugmentation C X Y :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionHomRepresentationIso_augmentation C X Y
 
 -- 指定射の類に飽和性を仮定せず、同じ指定 Hom の augmentation を検査する。
 open CategoryTheory SerrePositivity.InfinityCategories
-  SerrePositivity.EInfinity.SimplicialLocalization in
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{e2ComplexLimitUniverse}) (X Y : C.category) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (freeResolutionMarkedHomAugmentation C X Y) :=
-  freeResolutionMarkedHomAugmentation_isWeakHomotopyEquivalence C X Y
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionMarkedHomAugmentation C X Y) :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionMarkedHomAugmentation_isWeakHomotopyEquivalence C X Y
 
 -- 任意可換環の全 cofibrant 代数で、元の選択対象による底の Hom へ代入する。
 open CategoryTheory SerrePositivity.InfinityCategories SerrePositivity.EInfinity
-  SerrePositivity.EInfinity.SimplicialLocalization in
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example (R : Type e2ComplexLimitUniverse) [CommRing R] :
     let C := BarrattEccles.cofibrantAlgebraRelativeCategory R
-    ∀ X Y : C.category, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (freeResolutionHomAugmentation C X Y) := by
+    ∀ X Y : C.category, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionHomAugmentation C X Y) := by
   intro C X Y
-  exact freeResolutionHomAugmentation_isWeakHomotopyEquivalence C X Y
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionHomAugmentation_isWeakHomotopyEquivalence C X Y
 
 -- 任意可換環の同じ指定射に対する Hom augmentation の弱比較。
 open CategoryTheory SerrePositivity.InfinityCategories SerrePositivity.EInfinity
-  SerrePositivity.EInfinity.SimplicialLocalization in
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example (R : Type e2ComplexLimitUniverse) [CommRing R] :
     let C := BarrattEccles.cofibrantAlgebraRelativeCategory R
-    ∀ X Y : C.category, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (freeResolutionMarkedHomAugmentation C X Y) := by
+    ∀ X Y : C.category, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionMarkedHomAugmentation C X Y) := by
   intro C X Y
-  exact freeResolutionMarkedHomAugmentation_isWeakHomotopyEquivalence C X Y
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionMarkedHomAugmentation_isWeakHomotopyEquivalence C X Y
 
 -- 同じ指定 Hom augmentation の反転性も、単体集合モデルを仮定せず回収する。
-open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization
+open CategoryTheory _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
   SerrePositivity.SimplicialModel in
 example (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{e2ComplexLimitUniverse}) (X Y : C.category) :
-    IsIso (AnodyneHomotopy.anodyneQ.map (freeResolutionMarkedHomAugmentation C X Y)) :=
+    IsIso (AnodyneHomotopy.anodyneQ.map (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionMarkedHomAugmentation C X Y)) :=
   ExtraDegeneracyContraction.localized_augmentation_isIso
-    (freeResolutionMarkedHomExtraDegeneracy C X Y)
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionMarkedHomExtraDegeneracy C X Y)
 
 -- 元の wide 部分圏の Hom augmentation 自身の弱同値性。
 open CategoryTheory SerrePositivity.InfinityCategories
-  SerrePositivity.EInfinity.SimplicialLocalization in
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{e2ComplexLimitUniverse}) (X Y : C.category) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (freeResolutionNativeMarkedHomAugmentation C X Y) :=
-  freeResolutionNativeMarkedHomAugmentation_isWeakHomotopyEquivalence C X Y
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionNativeMarkedHomAugmentation C X Y) :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionNativeMarkedHomAugmentation_isWeakHomotopyEquivalence C X Y
 
 -- 任意可換環の全 cofibrant 代数の元の指定部分圏へ代入する。
 open CategoryTheory SerrePositivity.InfinityCategories SerrePositivity.EInfinity
-  SerrePositivity.EInfinity.SimplicialLocalization in
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example (R : Type e2ComplexLimitUniverse) [CommRing R] :
     let C := BarrattEccles.cofibrantAlgebraRelativeCategory R
     ∀ X Y : C.category,
-      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (freeResolutionNativeMarkedHomAugmentation C X Y) := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionNativeMarkedHomAugmentation C X Y) := by
   intro C X Y
-  exact freeResolutionNativeMarkedHomAugmentation_isWeakHomotopyEquivalence C X Y
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionNativeMarkedHomAugmentation_isWeakHomotopyEquivalence C X Y
 
 -- 元の部分圏の Hom と指定射の部分集合の同型は同じ augmentation を保持する。
-open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization in
+open CategoryTheory _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{e2ComplexLimitUniverse}) (X Y : C.category) :
-    (freeResolutionNativeMarkedHomIso C X Y).hom ≫ freeResolutionMarkedHomAugmentation C X Y =
-      freeResolutionNativeMarkedHomAugmentation C X Y ≫ (markedHomSubtypeIso C X Y).hom :=
-  freeResolutionNativeMarkedHomIso_augmentation C X Y
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionNativeMarkedHomIso C X Y).hom ≫ _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionMarkedHomAugmentation C X Y =
+      _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionNativeMarkedHomAugmentation C X Y ≫ (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.markedHomSubtypeIso C X Y).hom :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionNativeMarkedHomIso_augmentation C X Y
 
 -- 任意の Cat 値図式の実際の Grothendieck 比較関手を検証する。
 open CategoryTheory SerrePositivity.InfinityCategories SerrePositivity.EInfinity.Hammock in
@@ -19830,13 +19837,13 @@ example (R : Type e2ComplexLimitUniverse) [CommRing R] :
 
 -- 既存の元の指定部分圏の Hom 弱比較も任意可換環で引き続き利用可能。
 open CategoryTheory SerrePositivity.InfinityCategories SerrePositivity.EInfinity
-  SerrePositivity.EInfinity.SimplicialLocalization in
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example (R : Type e2ComplexLimitUniverse) [CommRing R] :
     let C := BarrattEccles.cofibrantAlgebraRelativeCategory R
     ∀ X Y : C.category,
-      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (freeResolutionNativeMarkedHomAugmentation C X Y) := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionNativeMarkedHomAugmentation C X Y) := by
   intro C X Y
-  exact freeResolutionNativeMarkedHomAugmentation_isWeakHomotopyEquivalence C X Y
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionNativeMarkedHomAugmentation_isWeakHomotopyEquivalence C X Y
 
 noncomputable section
 
@@ -19885,7 +19892,7 @@ example {W : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} W]
     (G : W ⥤ Cat.{e2ComplexLimitUniverse, e2ComplexLimitUniverse}) :
     TwoSidedThomason.map F G ≫ nerveMap (TwoSidedThomason.forgetLeftTotal F G) =
       TwoSidedThomason.forgetLeftBar (F ⋙ nerveFunctor) (G ⋙ nerveFunctor) ≫
-        SerrePositivity.EInfinity.FrameHom.Thomason.map G :=
+        _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.map G :=
   TwoSidedThomason.map_forgetLeft F G
 
 -- 元の両ラベルの対角頂点を全次数でそのまま保持する。
@@ -19911,13 +19918,13 @@ example (R : Type e2ComplexLimitUniverse) [CommRing R] :
 
 -- 任意可換環の元の全自由次数の augmentation の底の関手へ代入する。
 open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.Hammock
-  SerrePositivity.EInfinity.SimplicialLocalization in
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example (R : Type e2ComplexLimitUniverse) [CommRing R] :
     let C := BarrattEccles.cofibrantAlgebraRelativeCategory R
     ∀ (n : SimplexCategoryᵒᵖ)
       (F : C.categoryᵒᵖ ⥤ Cat.{e2ComplexLimitUniverse + 1, e2ComplexLimitUniverse + 1})
       (G : C.category ⥤ Cat.{e2ComplexLimitUniverse + 1, e2ComplexLimitUniverse + 1}),
-      let H := ((freeResolutionAugmentationNatTrans C).app n).functor
+      let H := ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionAugmentationNatTrans C).app n).functor
       TwoSidedThomason.map (H.op ⋙ F) (H ⋙ G) ≫
         nerveMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieckFunctoriality.baseChange H F G) =
           _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedBarBaseChange.baseChange H (F ⋙ nerveFunctor) (G ⋙ nerveFunctor) ≫
@@ -19952,7 +19959,7 @@ example {W : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} W]
     (S : W ⥤ Type e2ComplexLimitUniverse) :
     TwoSidedWeightedLeft.map F S = (TwoSidedWeightedLeftSource.spaceIso F S).hom ≫
       SSet.opFunctor.map
-        (SerrePositivity.EInfinity.FrameHom.Thomason.map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedMixedLabel.pulledDiagram F S)) ≫
+        (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedMixedLabel.pulledDiagram F S)) ≫
       (nerveOppositeIso (Grothendieck (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedMixedLabel.pulledDiagram F S))).inv ≫
       nerveMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedMixedLabel.toMixed F S) := TwoSidedWeightedLeft.map_eq_transport F S
 
@@ -19969,7 +19976,7 @@ open CategoryTheory SerrePositivity.EInfinity.Hammock in
 example {W : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} W]
     (F : Wᵒᵖ ⥤ Cat.{e2ComplexLimitUniverse, e2ComplexLimitUniverse})
     (G : W ⥤ Cat.{e2ComplexLimitUniverse, e2ComplexLimitUniverse}) :
-    TwoSidedWeightedLeft.diagonalMap F G ≫ SerrePositivity.EInfinity.FrameHom.Thomason.map
+    TwoSidedWeightedLeft.diagonalMap F G ≫ _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.map
       (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieck.contravariantProjection F ⋙ G) = TwoSidedThomason.map F G :=
   TwoSidedThomason.weightedLeft_map_factorization F G
 
@@ -19996,13 +20003,13 @@ example (R : Type e2ComplexLimitUniverse) [CommRing R] :
 
 -- 元の自由分解の各底へ引いた図式にも同じ定理を適用する。
 open CategoryTheory SerrePositivity.InfinityCategories SerrePositivity.EInfinity
-  SerrePositivity.EInfinity.Hammock SerrePositivity.EInfinity.SimplicialLocalization in
+  SerrePositivity.EInfinity.Hammock _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example (R : Type e2ComplexLimitUniverse) [CommRing R] :
     let C := BarrattEccles.cofibrantAlgebraRelativeCategory R
     ∀ (n : SimplexCategoryᵒᵖ)
       (F : C.categoryᵒᵖ ⥤ Cat.{e2ComplexLimitUniverse + 1, e2ComplexLimitUniverse + 1})
       (G : C.category ⥤ Cat.{e2ComplexLimitUniverse + 1, e2ComplexLimitUniverse + 1}),
-      let H := ((freeResolutionAugmentationNatTrans C).app n).functor
+      let H := ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionAugmentationNatTrans C).app n).functor
       _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (TwoSidedThomason.map (H.op ⋙ F) (H ⋙ G)) := by
   intro C n F G H
   exact TwoSidedThomason.map_isWeakHomotopyEquivalence (H.op ⋙ F) (H ⋙ G)
@@ -20068,10 +20075,10 @@ example (B : SimplicialObject Cat.{e2ComplexLimitUniverse, e2ComplexLimitUnivers
 
 -- 任意可換環の実際の自由相対解像の底に全次数の比較を代入する。
 open CategoryTheory SerrePositivity.InfinityCategories SerrePositivity.EInfinity
-  SerrePositivity.EInfinity.SimplicialLocalization SerrePositivity.EInfinity.Hammock in
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization SerrePositivity.EInfinity.Hammock in
 example (R : Type e2ComplexLimitUniverse) [CommRing R] :
     let C := BarrattEccles.cofibrantAlgebraRelativeCategory R
-    let B := freeResolutionUnderlyingDiagram C
+    let B := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionUnderlyingDiagram C
     ∀ (L : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Transfunctor.Covariant (B ⋙ Cat.opFunctor)) (T : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Transfunctor.Covariant B),
       _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
         (TwoSidedDiagram.diagonalThomasonMap (Transfunctor.twoSidedDiagram B L T)) := by
@@ -20150,16 +20157,16 @@ example (D : SimplicialObject _root_.SerrePositivity.InfinityCategories.Kerodon.
   TwoSidedDiagram.FixedVertices.productIso D p hp k x
 
 -- 任意可換環の実際の自由相対解像と標準の対象表示をそのまま代入する。
-open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization
+open CategoryTheory SerrePositivity.EInfinity _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
   SerrePositivity.EInfinity.Hammock in
 example (R : Type e2ComplexLimitUniverse) [CommRing R] :
     let C := BarrattEccles.cofibrantAlgebraRelativeCategory R
-    let B := freeResolutionUnderlyingDiagram C
+    let B := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionUnderlyingDiagram C
     ∀ (L : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Transfunctor.Covariant (B ⋙ Cat.opFunctor)) (T : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Transfunctor.Covariant B)
       (k : SimplexCategoryᵒᵖ),
       let D := Transfunctor.twoSidedDiagram B L T
-      let p := fun n => (freeResolutionObjectEquiv C n).symm
-      let hp := fun {n m} (θ : n ⟶ m) o => freeResolutionObject_naturality C θ o
+      let p := fun n => (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObjectEquiv C n).symm
+      let hp := fun {n m} (θ : n ⟶ m) o => _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject_naturality C θ o
       TwoSidedDiagram.chainRow D k ≅
         IndexedSum.space (TwoSidedDiagram.FixedVertices.product D p hp k) := by
   intro C B L T k D p hp
@@ -20235,20 +20242,20 @@ end e2TwoSidedWeakFixtures
 
 -- 任意可換環の実際の自由解像で、元の全係数自然変換を固定底定理へ代入する。
 open CategoryTheory SerrePositivity.InfinityCategories SerrePositivity.EInfinity
-  SerrePositivity.EInfinity.SimplicialLocalization SerrePositivity.EInfinity.Hammock in
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization SerrePositivity.EInfinity.Hammock in
 example (R : Type e2ComplexLimitUniverse) [CommRing R] :
     let C := BarrattEccles.cofibrantAlgebraRelativeCategory R
-    let B := freeResolutionUnderlyingDiagram C
+    let B := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionUnderlyingDiagram C
     ∀ {L L' : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Transfunctor.Covariant (B ⋙ Cat.opFunctor)} {T T' : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Transfunctor.Covariant B}
       (α : L ⟶ L') (β : T ⟶ T'),
       let D := Transfunctor.twoSidedDiagram B L T
       let E := Transfunctor.twoSidedDiagram B L' T'
       let τ : D ⟶ E := Transfunctor.twoSidedDiagramMap α β
       let p : (n : SimplexCategoryᵒᵖ) → C.category ≃ B.obj n :=
-        fun n => (freeResolutionObjectEquiv C n).symm
+        fun n => (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObjectEquiv C n).symm
       let hp : ∀ {n m : SimplexCategoryᵒᵖ} (θ : n ⟶ m) o,
           (B.map θ).toFunctor.obj (p n o) = p m o :=
-        fun θ o => freeResolutionObject_naturality C θ o
+        fun θ o => _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject_naturality C θ o
       (∀ X, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
         (TwoSidedDiagram.FixedVertices.leftSpaceMap p p hp hp τ (fun _ _ => rfl) X)) →
       (∀ X, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
@@ -20308,7 +20315,7 @@ end e2FirstBoundaryFixtures
 
 -- 全相対作用素と元の指定射を持つ両 transfunctor を構成する。
 open CategoryTheory SerrePositivity.EInfinity.Hammock
-  SerrePositivity.EInfinity.SimplicialLocalization
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
   in
 example (D : SimplicialObject _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{e2ComplexLimitUniverse}) (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word)
     (Y : (n : SimplexCategoryᵒᵖ) → (D.obj n).category)
@@ -20319,24 +20326,24 @@ example (D : SimplicialObject _root_.SerrePositivity.InfinityCategories.Kerodon.
 
 -- 任意可換環の元の自由解像の係数を、既存の同じ固定語の圏へ全次数で回収する。
 open CategoryTheory Opposite SerrePositivity.EInfinity SerrePositivity.EInfinity.Hammock
-  SerrePositivity.EInfinity.SimplicialLocalization
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
   in
 example (R : Type e2ComplexLimitUniverse) [CommRing R] :
     let C := BarrattEccles.cofibrantAlgebraRelativeCategory R
-    let D := freeResolution C
+    let D := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution C
     ∀ (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (X Y : C.category),
       let Yf : (n : SimplexCategoryᵒᵖ) → (D.obj n).category :=
-        fun n => freeResolutionObject C n Y
+        fun n => _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject C n Y
       let hY : ∀ {n m : SimplexCategoryᵒᵖ} (θ : n ⟶ m),
           (D.map θ).functor.obj (Yf n) = Yf m :=
-        fun θ => freeResolutionObject_naturality C θ Y
+        fun θ => _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject_naturality C θ Y
       ∀ n : SimplexCategoryᵒᵖ,
-        (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.forwardTransfunctor D w Yf hY).obj ⟨n, op ⟨freeResolutionObject C n X⟩⟩ =
-          (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectZigzagDiagram.zigzagDiagram D (freeResolutionObject C)
-            (fun θ Z => freeResolutionObject_naturality C θ Z) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .forward w) X Y).obj n ∧
-        (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.backwardTransfunctor D w Yf hY).obj ⟨n, ⟨freeResolutionObject C n X⟩⟩ =
-          (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectZigzagDiagram.zigzagDiagram D (freeResolutionObject C)
-            (fun θ Z => freeResolutionObject_naturality C θ Z) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .backward w) X Y).obj n := by
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.forwardTransfunctor D w Yf hY).obj ⟨n, op ⟨_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject C n X⟩⟩ =
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectZigzagDiagram.zigzagDiagram D (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject C)
+            (fun θ Z => _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject_naturality C θ Z) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .forward w) X Y).obj n ∧
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.backwardTransfunctor D w Yf hY).obj ⟨n, ⟨_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject C n X⟩⟩ =
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectZigzagDiagram.zigzagDiagram D (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject C)
+            (fun θ Z => _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject_naturality C θ Z) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .backward w) X Y).obj n := by
   intro C D w X Y Yf hY n
   exact ⟨rfl, rfl⟩
 
@@ -20348,7 +20355,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 section e2SingleColumnFixtures
 open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.Hammock
-open SerrePositivity.EInfinity.SimplicialLocalization
+open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.InfinityCategories
 
 -- 元の離散 Hom への比較を、両方向とも全縦射で持つ。
@@ -20374,30 +20381,30 @@ example (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.L
 -- 元の全自由次数の単一列の左比較そのものを両方向で検証する。
 example (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{e2ComplexLimitUniverse}) (X Y : C.category) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
-      ((freeWordDiagonalAugmentation C X Y).app (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .forward)) :=
-  freeWordDiagonalAugmentation_forward_weak C X Y
+      ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeWordDiagonalAugmentation C X Y).app (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .forward)) :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeWordDiagonalAugmentation_forward_weak C X Y
 
 example (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{e2ComplexLimitUniverse}) (X Y : C.category) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
-      ((freeWordDiagonalAugmentation C X Y).app (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .backward)) :=
-  freeWordDiagonalAugmentation_backward_weak C X Y
+      ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeWordDiagonalAugmentation C X Y).app (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .backward)) :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeWordDiagonalAugmentation_backward_weak C X Y
 
 -- 任意可換環の実際の cofibrant 代数の同じ比較へ代入する。
 example (R : Type e2ComplexLimitUniverse) [CommRing R] :
     let C := BarrattEccles.cofibrantAlgebraRelativeCategory R
     ∀ X Y : C.category,
       _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
-        ((freeWordDiagonalAugmentation C X Y).app (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .forward)) := by
+        ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeWordDiagonalAugmentation C X Y).app (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .forward)) := by
   intro C X Y
-  exact freeWordDiagonalAugmentation_forward_weak C X Y
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeWordDiagonalAugmentation_forward_weak C X Y
 
 example (R : Type e2ComplexLimitUniverse) [CommRing R] :
     let C := BarrattEccles.cofibrantAlgebraRelativeCategory R
     ∀ X Y : C.category,
       _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
-        ((freeWordDiagonalAugmentation C X Y).app (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .backward)) := by
+        ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeWordDiagonalAugmentation C X Y).app (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .backward)) := by
   intro C X Y
-  exact freeWordDiagonalAugmentation_backward_weak C X Y
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeWordDiagonalAugmentation_backward_weak C X Y
 end e2SingleColumnFixtures
 end
 
@@ -20407,7 +20414,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 section e2MovingBoundaryFixtures
 open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.Hammock
-open SerrePositivity.EInfinity.SimplicialLocalization
+open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 
 variable {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
   {W : MorphismProperty C} [W.IsMultiplicative] {w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} {X X' X'' Y : C}
@@ -20454,12 +20461,12 @@ end e2MovingBoundaryFixtures
 
 -- 任意可換環の元の自由次数の実際の係数圏・元の対象表示に代入する。
 open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.Hammock
-  SerrePositivity.EInfinity.SimplicialLocalization in
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example (R : Type e2ComplexLimitUniverse) [CommRing R] :
     let C := BarrattEccles.cofibrantAlgebraRelativeCategory R
     ∀ (n : SimplexCategoryᵒᵖ) (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (X Y : C.category),
-      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.forwardForwardFunctor ((freeResolution C).obj n).weakEquivalences w
-        (freeResolutionObject C n X) (freeResolutionObject C n Y)).Faithful := by
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.forwardForwardFunctor ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution C).obj n).weakEquivalences w
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject C n X) (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject C n Y)).Faithful := by
   intro C n w X Y
   exact _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.forwardForwardFunctor_faithful _ _ _ _
 end
@@ -20470,7 +20477,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 section e2FirstColumnEquivalenceFixtures
 open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.Hammock
-open SerrePositivity.EInfinity.SimplicialLocalization
+open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.InfinityCategories FirstColumn
 variable {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
   {W : MorphismProperty C} [W.IsMultiplicative] (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (X Y : C)
@@ -20496,7 +20503,7 @@ end e2FirstColumnEquivalenceFixtures
 
 section e2FirstColumnRelativeFixtures
 open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.Hammock
-open SerrePositivity.EInfinity.SimplicialLocalization FirstColumn
+open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization FirstColumn
 variable {C D : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{e2ComplexLimitUniverse}} {X Y : C.category}
   {X' Y' : D.category} (F : C ⟶ D)
   (hX : F.functor.obj X = X') (hY : F.functor.obj Y = Y')
@@ -20517,31 +20524,31 @@ end e2FirstColumnRelativeFixtures
 
 open CategoryTheory SerrePositivity.InfinityCategories SerrePositivity.EInfinity
   SerrePositivity.EInfinity.Hammock SerrePositivity.EInfinity.Hammock.FirstColumn
-  SerrePositivity.EInfinity.SimplicialLocalization in
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example (R : Type e2ComplexLimitUniverse) [CommRing R] :
     let C := BarrattEccles.cofibrantAlgebraRelativeCategory R
     ∀ (n : SimplexCategoryᵒᵖ) (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (X Y : C.category),
       _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (nerveMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.forwardForwardFunctor
-        ((freeResolution C).obj n).weakEquivalences w (freeResolutionObject C n X)
-          (freeResolutionObject C n Y))) := by
+        ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution C).obj n).weakEquivalences w (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject C n X)
+          (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject C n Y))) := by
   intro C n w X Y
   exact forwardForwardFunctor_weak _ _ _ _
 
 -- 元の自由解像の augmentation と元の対象表示を全次数で照合する。
 open CategoryTheory SerrePositivity.EInfinity.Hammock
   SerrePositivity.EInfinity.Hammock.FirstColumn
-  SerrePositivity.EInfinity.SimplicialLocalization in
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{e2ComplexLimitUniverse}) (n : SimplexCategoryᵒᵖ)
     (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (X Y : C.category)
-    (S : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.forwardForwardSource ((freeResolution C).obj n).weakEquivalences w
-      (freeResolutionObject C n X) (freeResolutionObject C n Y)) :
+    (S : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.forwardForwardSource ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution C).obj n).weakEquivalences w
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject C n X) (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject C n Y)) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.forwardForwardObject C.weakEquivalences w X Y
-      ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeFixedZigzagFunctor.fixedFunctor ((freeResolutionAugmentationNatTrans C).app n)
-        (freeResolutionObject_augmentation C n X) (freeResolutionObject_augmentation C n Y)).obj S) =
-    (forwardForwardRelativeFunctor w ((freeResolutionAugmentationNatTrans C).app n)
-      (freeResolutionObject_augmentation C n X) (freeResolutionObject_augmentation C n Y)).obj
-        (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.forwardForwardObject ((freeResolution C).obj n).weakEquivalences w
-          (freeResolutionObject C n X) (freeResolutionObject C n Y) S) :=
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeFixedZigzagFunctor.fixedFunctor ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionAugmentationNatTrans C).app n)
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject_augmentation C n X) (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject_augmentation C n Y)).obj S) =
+    (forwardForwardRelativeFunctor w ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionAugmentationNatTrans C).app n)
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject_augmentation C n X) (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject_augmentation C n Y)).obj
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.forwardForwardObject ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution C).obj n).weakEquivalences w
+          (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject C n X) (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject C n Y) S) :=
   forwardForward_relative_obj w _ _ _ S
 end
 
@@ -20551,7 +20558,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 open CategoryTheory SerrePositivity.EInfinity.Hammock
   SerrePositivity.EInfinity.Hammock.FirstColumn
-  SerrePositivity.EInfinity.SimplicialLocalization in
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example {C D : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{e2ComplexLimitUniverse}} (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word)
     {X Y : C.category} {X' Y' : D.category} (F : C ⟶ D)
     (hX : F.functor.obj X = X') (hY : F.functor.obj Y = Y') :
@@ -20575,7 +20582,7 @@ set_option backward.isDefEq.respectTransparency.types false
 section e2FirstColumnDiagramFixtures
 open CategoryTheory SerrePositivity.EInfinity.Hammock
 open SerrePositivity.EInfinity.Hammock.FirstColumn
-open SerrePositivity.EInfinity.SimplicialLocalization
+open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.InfinityCategories
 variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{e2ComplexLimitUniverse})
   (D : SimplicialObject _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{e2ComplexLimitUniverse})
@@ -20619,13 +20626,13 @@ example : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomo
   forwardForwardDiagonalAugmentation_weak_iff C w X Y D p hp A ha
 
 -- 元の自由解像の同じ Word augmentation へ代入する。
-example : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((freeWordDiagonalAugmentation C X Y).app
+example : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeWordDiagonalAugmentation C X Y).app
       (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAppend.append (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .forward) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .forward w))) ↔
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
       (TwoSidedDiagram.diagonalTotalMap (freeForwardForwardAugmentation C w X Y)) :=
-  forwardForwardDiagonalAugmentation_weak_iff C w X Y (freeResolution C)
-    (freeResolutionObject C) (fun θ X => freeResolutionObject_naturality C θ X)
-    (freeResolutionAugmentationNatTrans C) (freeResolutionObject_augmentation C)
+  forwardForwardDiagonalAugmentation_weak_iff C w X Y (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution C)
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject C) (fun θ X => _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject_naturality C θ X)
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionAugmentationNatTrans C) (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject_augmentation C)
 
 -- 底の元の Hom 比較自身の弱同値性は既存の native augmentation から得る。
 example (U V : C.category) :
@@ -20634,7 +20641,7 @@ example (U V : C.category) :
 
 example (U V : C.category) :
     (freeFirstSourceHomIso C w X Y U V).hom ≫
-        freeResolutionCanonicalMarkedHomAugmentation C U V =
+        _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionCanonicalMarkedHomAugmentation C U V =
       freeFirstHomSpaceMap C w X Y U V ≫ (freeFirstTargetHomIso C w X Y U V).hom :=
   freeFirstSourceHomIso_augmentation C w X Y U V
 end e2FirstColumnDiagramFixtures
@@ -20642,13 +20649,13 @@ end e2FirstColumnDiagramFixtures
 -- 任意可換環の元の cofibrant 代数とその全自由次数への適用。
 open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.Hammock
   SerrePositivity.EInfinity.Hammock.FirstColumn
-  SerrePositivity.EInfinity.SimplicialLocalization in
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example (R : Type e2ComplexLimitUniverse) [CommRing R] :
     let C := BarrattEccles.cofibrantAlgebraRelativeCategory R
     ∀ (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (X Y : C.category),
       _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor.obj (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectZigzagDiagram.graphDiagram
-        (freeResolution C) (freeResolutionObject C)
-        (fun θ X => freeResolutionObject_naturality C θ X)
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution C) (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject C)
+        (fun θ X => _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject_naturality C θ X)
         (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAppend.append (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .forward) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .forward w)) X Y) ≅
       TwoSidedDiagram.diagonalTotalNerve (freeForwardForwardDiagram C w X Y) := by
   intro C w X Y
@@ -20671,14 +20678,14 @@ set_option backward.isDefEq.respectTransparency.types false
 section e2FirstForwardStepFixtures
 open CategoryTheory SerrePositivity.EInfinity.Hammock
 open SerrePositivity.EInfinity.Hammock.FirstColumn
-open SerrePositivity.EInfinity.SimplicialLocalization SerrePositivity.InfinityCategories
+open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization SerrePositivity.InfinityCategories
 variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{e2ComplexLimitUniverse}) (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (X Y Z : C.category)
 
 -- 右係数の元の対角比較自身の弱同値性は通常の Hom augmentation から得る。
 example : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (freeFirstRightSpaceMap C w X Y Z) :=
   freeFirstRightSpaceMap_weak C w X Y Z
 
-example : (freeFirstRightSpaceIso C w X Y Z).hom ≫ freeResolutionHomAugmentation C X Z =
+example : (freeFirstRightSpaceIso C w X Y Z).hom ≫ _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionHomAugmentation C X Z =
     freeFirstRightSpaceMap C w X Y Z ≫ (freeFirstTargetRightSpaceIso C w X Y Z).hom :=
   freeFirstRightSpaceIso_augmentation C w X Y Z
 
@@ -20686,60 +20693,60 @@ example : (freeFirstRightSpaceIso C w X Y Z).hom ≫ freeResolutionHomAugmentati
 example : TwoSidedDiagram.FixedVertices.leftDiagram
     (D := freeForwardForwardDiagram C w X Y) (freeFirstMarkedObjectEquiv C)
       (freeFirstMarkedObjectEquiv_naturality C w X Y) Z ≅
-    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectZigzagDiagram.zigzagDiagram (freeResolution C) (freeResolutionObject C)
-      (fun θ X => freeResolutionObject_naturality C θ X) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .forward w) Z Y :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectZigzagDiagram.zigzagDiagram (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution C) (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject C)
+      (fun θ X => _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject_naturality C θ X) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .forward w) Z Y :=
   freeFirstLeftCategoryDiagramIso C w X Y Z
 
 -- 元の残りの Word augmentation 自身と可換。
 example : (freeFirstLeftSpaceIso C w X Y Z).hom ≫
-      (freeWordDiagonalAugmentation C Z Y).app (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .forward w) =
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeWordDiagonalAugmentation C Z Y).app (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .forward w) =
     freeFirstLeftSpaceMap C w X Y Z ≫ (freeFirstTargetLeftSpaceIso C w X Y Z).hom :=
   freeFirstLeftSpaceIso_augmentation C w X Y Z
 
 example (h : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
-    ((freeWordDiagonalAugmentation C Z Y).app (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .forward w))) :
+    ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeWordDiagonalAugmentation C Z Y).app (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .forward w))) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (freeFirstLeftSpaceMap C w X Y Z) :=
   freeFirstLeftSpaceMap_weak C w X Y Z h
 
 -- 底・右の追加の弱同値仮定を使わず、元の長さ帰納の一段を閉じる。
 example (h : ∀ T : C.category, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
-    ((freeWordDiagonalAugmentation C T Y).app (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .forward w))) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((freeWordDiagonalAugmentation C X Y).app
+    ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeWordDiagonalAugmentation C T Y).app (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .forward w))) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeWordDiagonalAugmentation C X Y).app
       (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAppend.append (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .forward) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .forward w))) :=
-  freeWordDiagonalAugmentation_forwardForward_weak C w X Y h
+  _root_.SerrePositivity.EInfinity.SimplicialLocalization.freeWordDiagonalAugmentation_forwardForward_weak C w X Y h
 
 example (h : ∀ T : C.category, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
-    ((freeWordDiagonalAugmentation C T Y).app (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .forward w))) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((freeWordDiagonalAugmentation C X Y).app
+    ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeWordDiagonalAugmentation C T Y).app (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .forward w))) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeWordDiagonalAugmentation C X Y).app
       (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .forward (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .forward w))) :=
-  freeWordDiagonalAugmentation_cons_forwardForward_weak C w X Y h
+  _root_.SerrePositivity.EInfinity.SimplicialLocalization.freeWordDiagonalAugmentation_cons_forwardForward_weak C w X Y h
 
 -- 空の残りの語から得られる二列の元の射は無条件に弱同値。
-example : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((freeWordDiagonalAugmentation C X Y).app
+example : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeWordDiagonalAugmentation C X Y).app
     (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .forward (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .forward))) :=
-  freeWordDiagonalAugmentation_twoForward_weak C X Y
+  _root_.SerrePositivity.EInfinity.SimplicialLocalization.freeWordDiagonalAugmentation_twoForward_weak C X Y
 end e2FirstForwardStepFixtures
 
 -- 任意可換環の実際の cofibrant 代数の同じ自由解像・同じ射へ代入する。
 open CategoryTheory SerrePositivity.EInfinity SerrePositivity.InfinityCategories
-  SerrePositivity.EInfinity.Hammock SerrePositivity.EInfinity.SimplicialLocalization in
+  SerrePositivity.EInfinity.Hammock _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example (R : Type e2ComplexLimitUniverse) [CommRing R] :
     let C := BarrattEccles.cofibrantAlgebraRelativeCategory R
-    ∀ X Y : C.category, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((freeWordDiagonalAugmentation C X Y).app
+    ∀ X Y : C.category, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeWordDiagonalAugmentation C X Y).app
       (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .forward (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .forward))) := by
   intro C X Y
-  exact freeWordDiagonalAugmentation_twoForward_weak C X Y
+  exact _root_.SerrePositivity.EInfinity.SimplicialLocalization.freeWordDiagonalAugmentation_twoForward_weak C X Y
 
 -- 同じ実モデルで帰納の一段をもう一度適用し、三列の射も無条件に検証する。
 open CategoryTheory SerrePositivity.EInfinity SerrePositivity.InfinityCategories
-  SerrePositivity.EInfinity.Hammock SerrePositivity.EInfinity.SimplicialLocalization in
+  SerrePositivity.EInfinity.Hammock _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example (R : Type e2ComplexLimitUniverse) [CommRing R] :
     let C := BarrattEccles.cofibrantAlgebraRelativeCategory R
-    ∀ X Y : C.category, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((freeWordDiagonalAugmentation C X Y).app
+    ∀ X Y : C.category, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeWordDiagonalAugmentation C X Y).app
       (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .forward (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .forward (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .forward)))) := by
   intro C X Y
-  exact freeWordDiagonalAugmentation_cons_forwardForward_weak C (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .forward) X Y
-    (fun Z => freeWordDiagonalAugmentation_twoForward_weak C Z Y)
+  exact _root_.SerrePositivity.EInfinity.SimplicialLocalization.freeWordDiagonalAugmentation_cons_forwardForward_weak C (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .forward) X Y
+    (fun Z => _root_.SerrePositivity.EInfinity.SimplicialLocalization.freeWordDiagonalAugmentation_twoForward_weak C Z Y)
 end
 
 
@@ -20786,7 +20793,7 @@ end e2BackwardStructureFixtures
 section e2BackwardRelativeFixtures
 open CategoryTheory SerrePositivity.EInfinity.Hammock
 open SerrePositivity.EInfinity.Hammock.FirstColumn
-open SerrePositivity.EInfinity.SimplicialLocalization
+open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 variable {C D : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{e2ComplexLimitUniverse}} (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word)
     {X Y : C.category} {X' Y' : D.category}
     (F : C ⟶ D) (hX : F.functor.obj X = X') (hY : F.functor.obj Y = Y')
@@ -20804,29 +20811,29 @@ end e2BackwardRelativeFixtures
 -- 任意可換環の実際の全自由次数の元の graph の分解へ代入する。
 open CategoryTheory SerrePositivity.EInfinity SerrePositivity.InfinityCategories
   SerrePositivity.EInfinity.Hammock SerrePositivity.EInfinity.Hammock.FirstColumn
-  SerrePositivity.EInfinity.SimplicialLocalization in
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example (R : Type e2ComplexLimitUniverse) [CommRing R] :
     let C := BarrattEccles.cofibrantAlgebraRelativeCategory R
     ∀ (n : SimplexCategoryᵒᵖ) (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (X Y : C.category),
       _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (nerveMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.backwardBackwardFunctor
-        ((freeResolution C).obj n).weakEquivalences w
-          (freeResolutionObject C n X) (freeResolutionObject C n Y))) := by
+        ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution C).obj n).weakEquivalences w
+          (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject C n X) (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject C n Y))) := by
   intro C n w X Y
   exact backwardBackwardFunctor_weak _ _ _ _
 
 open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.Hammock
   SerrePositivity.EInfinity.Hammock.FirstColumn
-  SerrePositivity.EInfinity.SimplicialLocalization in
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization in
 example (R : Type e2ComplexLimitUniverse) [CommRing R] :
     let C := BarrattEccles.cofibrantAlgebraRelativeCategory R
     ∀ (n : SimplexCategoryᵒᵖ) (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (X Y : C.category),
-      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeFixedZigzagFunctor.fixedFunctor ((freeResolutionAugmentationNatTrans C).app n)
-          (freeResolutionObject_augmentation C n X) (freeResolutionObject_augmentation C n Y) ⋙
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeFixedZigzagFunctor.fixedFunctor ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionAugmentationNatTrans C).app n)
+          (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject_augmentation C n X) (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject_augmentation C n Y) ⋙
         _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.backwardBackwardFunctor C.weakEquivalences w X Y =
-      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.backwardBackwardFunctor ((freeResolution C).obj n).weakEquivalences w
-          (freeResolutionObject C n X) (freeResolutionObject C n Y) ⋙
-        backwardBackwardRelativeFunctor w ((freeResolutionAugmentationNatTrans C).app n)
-          (freeResolutionObject_augmentation C n X) (freeResolutionObject_augmentation C n Y) := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.backwardBackwardFunctor ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution C).obj n).weakEquivalences w
+          (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject C n X) (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject C n Y) ⋙
+        backwardBackwardRelativeFunctor w ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionAugmentationNatTrans C).app n)
+          (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject_augmentation C n X) (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject_augmentation C n Y) := by
   intro C n w X Y
   exact backwardBackward_relative_functor _ _ _ _
 end
@@ -20835,10 +20842,10 @@ end
 section e2BackwardStepFixtures
 open CategoryTheory SerrePositivity.EInfinity SerrePositivity.InfinityCategories
 open SerrePositivity.EInfinity.Hammock SerrePositivity.EInfinity.Hammock.FirstColumn
-open SerrePositivity.EInfinity.SimplicialLocalization
+open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{e2ComplexLimitUniverse}) (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (X Y : C.category)
-example : IsIso (backwardBackwardDiagonalIso (freeResolution C) (freeResolutionObject C)
-    (fun θ X => freeResolutionObject_naturality C θ X) w X Y).hom := by infer_instance
+example : IsIso (backwardBackwardDiagonalIso (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution C) (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject C)
+    (fun θ X => _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject_naturality C θ X) w X Y).hom := by infer_instance
 
 example : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (freeBackwardFirstHomSpaceMap C w X Y X Y) :=
   freeBackwardFirstHomSpaceMap_weak C w X Y X Y
@@ -20848,50 +20855,50 @@ example (Z : C.category) :
   freeBackwardFirstLeftSpaceMap_weak C w X Y Z
 
 example (Z : C.category) (h : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
-    ((freeWordDiagonalAugmentation C Z Y).app (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .backward w))) :
+    ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeWordDiagonalAugmentation C Z Y).app (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .backward w))) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (freeBackwardFirstRightSpaceMap C w X Y Z) :=
   freeBackwardFirstRightSpaceMap_weak C w X Y Z h
 
-example : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((freeWordDiagonalAugmentation C X Y).app
+example : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeWordDiagonalAugmentation C X Y).app
     (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .backward (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .backward))) :=
-  freeWordDiagonalAugmentation_twoBackward_weak C X Y
+  _root_.SerrePositivity.EInfinity.SimplicialLocalization.freeWordDiagonalAugmentation_twoBackward_weak C X Y
 
 example (h : ∀ Z, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
-    ((freeWordDiagonalAugmentation C Z Y).app (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .backward w))) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((freeWordDiagonalAugmentation C X Y).app
+    ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeWordDiagonalAugmentation C Z Y).app (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .backward w))) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeWordDiagonalAugmentation C X Y).app
       (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .backward (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .backward w))) :=
-  freeWordDiagonalAugmentation_cons_backwardBackward_weak C w X Y h
+  _root_.SerrePositivity.EInfinity.SimplicialLocalization.freeWordDiagonalAugmentation_cons_backwardBackward_weak C w X Y h
 
-example : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((freeWordDiagonalAugmentation C X Y).app
+example : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeWordDiagonalAugmentation C X Y).app
     (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .backward (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .backward (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .backward)))) := by
-  apply freeWordDiagonalAugmentation_cons_backwardBackward_weak
+  apply _root_.SerrePositivity.EInfinity.SimplicialLocalization.freeWordDiagonalAugmentation_cons_backwardBackward_weak
   intro Z
-  exact freeWordDiagonalAugmentation_twoBackward_weak C Z Y
+  exact _root_.SerrePositivity.EInfinity.SimplicialLocalization.freeWordDiagonalAugmentation_twoBackward_weak C Z Y
 
 example (R : Type e2ComplexLimitUniverse) [CommRing R] :
     let C := BarrattEccles.cofibrantAlgebraRelativeCategory R
     ∀ X Y : C.category, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
-      ((freeWordDiagonalAugmentation C X Y).app
+      ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeWordDiagonalAugmentation C X Y).app
         (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .backward (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .backward))) := by
   intro C X Y
-  exact freeWordDiagonalAugmentation_twoBackward_weak C X Y
+  exact _root_.SerrePositivity.EInfinity.SimplicialLocalization.freeWordDiagonalAugmentation_twoBackward_weak C X Y
 
 example (R : Type e2ComplexLimitUniverse) [CommRing R] :
     let C := BarrattEccles.cofibrantAlgebraRelativeCategory R
     ∀ X Y : C.category, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
-      ((freeWordDiagonalAugmentation C X Y).app
+      ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeWordDiagonalAugmentation C X Y).app
         (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .backward (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .backward (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .backward)))) := by
   intro C X Y
-  apply freeWordDiagonalAugmentation_cons_backwardBackward_weak
+  apply _root_.SerrePositivity.EInfinity.SimplicialLocalization.freeWordDiagonalAugmentation_cons_backwardBackward_weak
   intro Z
-  exact freeWordDiagonalAugmentation_twoBackward_weak C Z Y
+  exact _root_.SerrePositivity.EInfinity.SimplicialLocalization.freeWordDiagonalAugmentation_twoBackward_weak C Z Y
 end e2BackwardStepFixtures
 
 -- 空語の基底と混合二方向の元の切断・貼り戻しを実モデルでも検証する。
 section e2EmptyMixedFixtures
 open CategoryTheory SerrePositivity.EInfinity SerrePositivity.InfinityCategories
 open SerrePositivity.EInfinity.Hammock SerrePositivity.EInfinity.Hammock.FirstColumn
-open SerrePositivity.EInfinity.SimplicialLocalization
+open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 variable {B : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} B]
   (W : MorphismProperty B) [W.IsMultiplicative] (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (X Y : B)
 example : Subsingleton (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag W _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.empty X Y) := inferInstance
@@ -20916,8 +20923,8 @@ example : IsIso (nerveMap (_root_.SerrePositivity.InfinityCategories.Kerodon.Adj
   infer_instance
 
 example (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{e2ComplexLimitUniverse}) (X Y : C.category) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((freeWordDiagonalAugmentation C X Y).app _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.empty) :=
-  freeWordDiagonalAugmentation_empty_weak C X Y
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeWordDiagonalAugmentation C X Y).app _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.empty) :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeWordDiagonalAugmentation_empty_weak C X Y
 
 example (C D : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{e2ComplexLimitUniverse}) (F : C ⟶ D)
     (hF : Function.Injective F.functor.obj) (X Y : C.category) :
@@ -20929,16 +20936,16 @@ example (C D : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors
 example (R : Type e2ComplexLimitUniverse) [CommRing R] :
     let C := BarrattEccles.cofibrantAlgebraRelativeCategory R
     ∀ X Y : C.category,
-      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((freeWordDiagonalAugmentation C X Y).app _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.empty) := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeWordDiagonalAugmentation C X Y).app _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.empty) := by
   intro C X Y
-  exact freeWordDiagonalAugmentation_empty_weak C X Y
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeWordDiagonalAugmentation_empty_weak C X Y
 
 example (R : Type e2ComplexLimitUniverse) [CommRing R] :
     let C := BarrattEccles.cofibrantAlgebraRelativeCategory R
     ∀ (n : SimplexCategoryᵒᵖ) (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (X Y : C.category),
       _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (nerveMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.forwardBackwardFunctor
-        ((freeResolution C).obj n).weakEquivalences w
-          (freeResolutionObject C n X) (freeResolutionObject C n Y))) := by
+        ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution C).obj n).weakEquivalences w
+          (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject C n X) (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject C n Y))) := by
   intro C n w X Y
   exact forwardBackwardFunctor_weak _ _ _ _
 end e2EmptyMixedFixtures
@@ -20947,7 +20954,7 @@ end e2EmptyMixedFixtures
 section e2MixedStepFixtures
 open CategoryTheory SerrePositivity.EInfinity SerrePositivity.InfinityCategories
 open SerrePositivity.EInfinity.Hammock SerrePositivity.EInfinity.Hammock.FirstColumn
-open SerrePositivity.EInfinity.SimplicialLocalization
+open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{e2ComplexLimitUniverse}) (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (X Y : C.category)
 example (D : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{e2ComplexLimitUniverse}) (F : C ⟶ D)
     (X' Y' : D.category) (hX : F.functor.obj X = X') (hY : F.functor.obj Y = Y') :
@@ -20955,8 +20962,8 @@ example (D : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.L
       _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.forwardBackwardFunctor C.weakEquivalences w X Y ⋙ forwardBackwardRelativeFunctor w F hX hY :=
   forwardBackward_relative_functor w F hX hY
 
-example : IsIso (forwardBackwardDiagonalIso (freeResolution C) (freeResolutionObject C)
-    (fun θ X => freeResolutionObject_naturality C θ X) w X Y).hom := by infer_instance
+example : IsIso (forwardBackwardDiagonalIso (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution C) (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject C)
+    (fun θ X => _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject_naturality C θ X) w X Y).hom := by infer_instance
 
 example : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (freeMixedFirstHomSpaceMap C w X Y X Y) :=
   freeMixedFirstHomSpaceMap_weak C w X Y X Y
@@ -20965,47 +20972,47 @@ example (Z : C.category) : _root_.SerrePositivity.InfinityCategories.Kerodon.Kan
   freeMixedFirstLeftSpaceMap_weak C w X Y Z
 
 example (Z : C.category) (h : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
-    ((freeWordDiagonalAugmentation C Z Y).app (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .backward w))) :
+    ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeWordDiagonalAugmentation C Z Y).app (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .backward w))) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (freeMixedFirstRightSpaceMap C w X Y Z) :=
   freeMixedFirstRightSpaceMap_weak C w X Y Z h
 
 example (h : ∀ Z, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
-    ((freeWordDiagonalAugmentation C Z Y).app (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .backward w))) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((freeWordDiagonalAugmentation C X Y).app
+    ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeWordDiagonalAugmentation C Z Y).app (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .backward w))) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeWordDiagonalAugmentation C X Y).app
       (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .forward (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .backward w))) :=
-  freeWordDiagonalAugmentation_cons_forwardBackward_weak C w X Y h
+  _root_.SerrePositivity.EInfinity.SimplicialLocalization.freeWordDiagonalAugmentation_cons_forwardBackward_weak C w X Y h
 
-example : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((freeWordDiagonalAugmentation C X Y).app
+example : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeWordDiagonalAugmentation C X Y).app
     (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .forward (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .backward))) :=
-  freeWordDiagonalAugmentation_twoForwardBackward_weak C X Y
+  _root_.SerrePositivity.EInfinity.SimplicialLocalization.freeWordDiagonalAugmentation_twoForwardBackward_weak C X Y
 
-example : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((freeWordDiagonalAugmentation C X Y).app
+example : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeWordDiagonalAugmentation C X Y).app
     (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .forward (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .backward (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .backward)))) := by
-  apply freeWordDiagonalAugmentation_cons_forwardBackward_weak
+  apply _root_.SerrePositivity.EInfinity.SimplicialLocalization.freeWordDiagonalAugmentation_cons_forwardBackward_weak
   intro Z
-  exact freeWordDiagonalAugmentation_twoBackward_weak C Z Y
+  exact _root_.SerrePositivity.EInfinity.SimplicialLocalization.freeWordDiagonalAugmentation_twoBackward_weak C Z Y
 
-example : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((freeWordDiagonalAugmentation C X Y).app
+example : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeWordDiagonalAugmentation C X Y).app
     (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .forward (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .forward (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .backward)))) := by
-  apply freeWordDiagonalAugmentation_cons_forwardForward_weak
+  apply _root_.SerrePositivity.EInfinity.SimplicialLocalization.freeWordDiagonalAugmentation_cons_forwardForward_weak
   intro Z
-  exact freeWordDiagonalAugmentation_twoForwardBackward_weak C Z Y
+  exact _root_.SerrePositivity.EInfinity.SimplicialLocalization.freeWordDiagonalAugmentation_twoForwardBackward_weak C Z Y
 
 example (R : Type e2ComplexLimitUniverse) [CommRing R] :
     let C := BarrattEccles.cofibrantAlgebraRelativeCategory R
-    ∀ X Y : C.category, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((freeWordDiagonalAugmentation C X Y).app
+    ∀ X Y : C.category, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeWordDiagonalAugmentation C X Y).app
       (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .forward (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .backward))) := by
   intro C X Y
-  exact freeWordDiagonalAugmentation_twoForwardBackward_weak C X Y
+  exact _root_.SerrePositivity.EInfinity.SimplicialLocalization.freeWordDiagonalAugmentation_twoForwardBackward_weak C X Y
 
 example (R : Type e2ComplexLimitUniverse) [CommRing R] :
     let C := BarrattEccles.cofibrantAlgebraRelativeCategory R
-    ∀ X Y : C.category, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((freeWordDiagonalAugmentation C X Y).app
+    ∀ X Y : C.category, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeWordDiagonalAugmentation C X Y).app
       (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .forward (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .backward (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .backward)))) := by
   intro C X Y
-  apply freeWordDiagonalAugmentation_cons_forwardBackward_weak
+  apply _root_.SerrePositivity.EInfinity.SimplicialLocalization.freeWordDiagonalAugmentation_cons_forwardBackward_weak
   intro Z
-  exact freeWordDiagonalAugmentation_twoBackward_weak C Z Y
+  exact _root_.SerrePositivity.EInfinity.SimplicialLocalization.freeWordDiagonalAugmentation_twoBackward_weak C Z Y
 
 -- 小さい単体添字と、任意の値の宇宙を分離した係数積の比較。
 example {P Q P' Q' : SimplicialObject Cat.{e2ComplexLimitUniverse, e2ComplexLimitUniverse}}
@@ -21024,7 +21031,7 @@ section e2LeftComparisonFixtures
 open CategoryTheory CategoryTheory.Limits SerrePositivity.EInfinity
 open SerrePositivity.InfinityCategories SerrePositivity.EInfinity.Hammock
 open SerrePositivity.EInfinity.Hammock.FirstColumn
-open SerrePositivity.EInfinity.SimplicialLocalization
+open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{e2ComplexLimitUniverse}) (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (X Y : C.category)
 example (Z : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.backwardForwardTarget C.weakEquivalences w X Y) :
     (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.backwardForwardFunctor C.weakEquivalences w X Y).obj
@@ -21044,51 +21051,51 @@ example (D : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.L
       _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.backwardForwardFunctor C.weakEquivalences w X Y ⋙ backwardForwardRelativeFunctor w F hX hY :=
   backwardForward_relative_functor w F hX hY
 
-example : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((freeWordDiagonalAugmentation C X Y).app
+example : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeWordDiagonalAugmentation C X Y).app
     (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .backward (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .forward))) :=
-  freeWordDiagonalAugmentation_twoBackwardForward_weak C X Y
+  _root_.SerrePositivity.EInfinity.SimplicialLocalization.freeWordDiagonalAugmentation_twoBackwardForward_weak C X Y
 
-example : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((freeWordDiagonalAugmentation C X Y).app w) :=
-  freeWordDiagonalAugmentation_weak C w X Y
+example : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeWordDiagonalAugmentation C X Y).app w) :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeWordDiagonalAugmentation_weak C w X Y
 
-example : ProperDiagram (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.wordDiagonalDiagram (freeResolution C) C
-    (freeResolutionObject C) (fun θ X => freeResolutionObject_naturality C θ X) X Y) :=
+example : ProperDiagram (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.wordDiagonalDiagram (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution C) C
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject C) (fun θ X => _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject_naturality C θ X) X Y) :=
   FixedObjectDiagram.wordDiagonalDiagram_proper _ _ _ _ _ _
 
-example : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (freeHammockDiagonalAugmentation C X Y) :=
-  freeHammockDiagonalAugmentation_isWeakHomotopyEquivalence C X Y
+example : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalAugmentation C X Y) :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalAugmentation_isWeakHomotopyEquivalence C X Y
 
-example : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (freeHammockDiagonalReduction C X Y) :=
-  freeHammockDiagonalReduction_isWeakHomotopyEquivalence C X Y
+example : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalReduction C X Y) :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalReduction_isWeakHomotopyEquivalence C X Y
 
-example : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (freeHammockDiagonalComparison C X Y) :=
-  freeHammockDiagonalComparison_isWeakHomotopyEquivalence C X Y
+example : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalComparison C X Y) :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalComparison_isWeakHomotopyEquivalence C X Y
 
-example : (freeHammockDiagonalColimitIso C X Y).hom ≫
-    freeHammockDiagonalAugmentation C X Y = colim.map (freeWordDiagonalAugmentation C X Y) :=
-  freeHammockDiagonalColimitIso_augmentation C X Y
+example : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalColimitIso C X Y).hom ≫
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalAugmentation C X Y = colim.map (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeWordDiagonalAugmentation C X Y) :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalColimitIso_augmentation C X Y
 
 example (R : Type e2ComplexLimitUniverse) [CommRing R] :
     let C := BarrattEccles.cofibrantAlgebraRelativeCategory R
     ∀ (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (X Y : C.category),
-      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((freeWordDiagonalAugmentation C X Y).app w) := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeWordDiagonalAugmentation C X Y).app w) := by
   intro C w X Y
-  exact freeWordDiagonalAugmentation_weak C w X Y
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeWordDiagonalAugmentation_weak C w X Y
 
 example (R : Type e2ComplexLimitUniverse) [CommRing R] :
     let C := BarrattEccles.cofibrantAlgebraRelativeCategory R
     ∀ X Y : C.category,
-      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (freeHammockDiagonalReduction C X Y) ∧
-        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (freeHammockDiagonalComparison C X Y) := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalReduction C X Y) ∧
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalComparison C X Y) := by
   intro C X Y
-  exact ⟨freeHammockDiagonalReduction_isWeakHomotopyEquivalence C X Y,
-    freeHammockDiagonalComparison_isWeakHomotopyEquivalence C X Y⟩
+  exact ⟨_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalReduction_isWeakHomotopyEquivalence C X Y,
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalComparison_isWeakHomotopyEquivalence C X Y⟩
 end e2LeftComparisonFixtures
 
 -- 元の相対逆・ULift・cofibrant 包含と実際の CAlg Hom の比較を検証する。
 section e2DKMappingFixtures
 open CategoryTheory SerrePositivity.EInfinity SerrePositivity.InfinityCategories
-open SerrePositivity.EInfinity.Hammock SerrePositivity.EInfinity.SimplicialLocalization
+open SerrePositivity.EInfinity.Hammock _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.EInfinity.BarrattEccles SerrePositivity.SimplicialModel
 example {C D : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
     [Category.{e2ComplexLimitUniverse} D] {W : MorphismProperty C} [W.IsMultiplicative]
@@ -21129,7 +21136,7 @@ example (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.L
 example : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (cofibrantAlgebraDiagonalHammockMap A X Y) :=
   cofibrantAlgebraDiagonalHammockMap_weak A X Y
 
-example : AnodyneHomotopy.anodyneQ.obj (localizationHom (cofibrantAlgebraRelativeCategory A) X Y) ≅
+example : AnodyneHomotopy.anodyneQ.obj (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHom (cofibrantAlgebraRelativeCategory A) X Y) ≅
     AnodyneHomotopy.anodyneQ.obj (SSet.uliftFunctor.{e2ComplexLimitUniverse + 1,
       e2ComplexLimitUniverse}.obj (((mappingSpace A).obj
         (Opposite.op ((cofibrantAlgebraDKInclusion A).obj X))).obj
@@ -21151,7 +21158,7 @@ example (X Y : CAlgSimplicialCategory A) :
   cAlgMappingSpaceComparisonIso A X Y
 
 example (X Y : CAlgSimplicialCategory A) :
-    AnodyneHomotopy.anodyneQ.map ((kanLocalizationUnit
+    AnodyneHomotopy.anodyneQ.map ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanLocalizationUnit
         (cofibrantAlgebraRelativeCategory A)).map X Y) ≫
       (cAlgMappingSpaceComparisonIso A X Y).hom =
         (cofibrantAlgebraDKMappingSpaceComparisonIso A X Y).hom :=
@@ -21166,53 +21173,53 @@ end e2DKMappingFixtures
 -- 元の全語の係数写像と左右の比較正方形を実際の任意の相対関手で検証する。
 section e2DKCoefficientFixtures
 open CategoryTheory CategoryTheory.Limits SerrePositivity.EInfinity
-open SerrePositivity.EInfinity.Hammock SerrePositivity.EInfinity.SimplicialLocalization
+open SerrePositivity.EInfinity.Hammock _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.InfinityCategories SerrePositivity.SimplicialModel
 variable {C D : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{e2ComplexLimitUniverse}} (F : C ⟶ D) (X Y : C.category)
 example (n : SimplexCategoryᵒᵖ) :
-    ((freeResolutionMap F).app n).functor.obj (freeResolutionObject C n X) =
-      freeResolutionObject D n (F.functor.obj X) := freeResolutionMap_object F n X
+    ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionMap F).app n).functor.obj (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject C n X) =
+      _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject D n (F.functor.obj X) := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionMap_object F n X
 
 example (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) :
-    (freeHammockWordMap F X Y).app w ≫
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockWordMap F X Y).app w ≫
         (pointwiseCocone
-          (freeHammockWordDiagram D (F.functor.obj X) (F.functor.obj Y))).ι.app w =
-      (pointwiseCocone (freeHammockWordDiagram C X Y)).ι.app w ≫ freeHammockMap F X Y :=
-  freeHammockMap_inclusion F X Y w
+          (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockWordDiagram D (F.functor.obj X) (F.functor.obj Y))).ι.app w =
+      (pointwiseCocone (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockWordDiagram C X Y)).ι.app w ≫ _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockMap F X Y :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockMap_inclusion F X Y w
 
-example : freeHammockDiagonalMap F X Y ≫
-        freeHammockDiagonalAugmentation D (F.functor.obj X) (F.functor.obj Y) =
-      freeHammockDiagonalAugmentation C X Y ≫ Relative.colimitMap F X Y :=
-  freeHammockDiagonalMap_augmentation F X Y
+example : _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalMap F X Y ≫
+        _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalAugmentation D (F.functor.obj X) (F.functor.obj Y) =
+      _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalAugmentation C X Y ≫ Relative.colimitMap F X Y :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalMap_augmentation F X Y
 
-example : freeHammockDiagonalMap F X Y ≫
-        freeHammockDiagonalReduction D (F.functor.obj X) (F.functor.obj Y) =
-      freeHammockDiagonalReduction C X Y ≫ Relative.reducedMap F X Y :=
-  freeHammockDiagonalMap_reduction F X Y
+example : _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalMap F X Y ≫
+        _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalReduction D (F.functor.obj X) (F.functor.obj Y) =
+      _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalReduction C X Y ≫ Relative.reducedMap F X Y :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalMap_reduction F X Y
 
 example (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (n : SimplexCategoryᵒᵖ) :
-    ((freeHammockWordMap F X Y).app w).app n ≫
-        (freeHammockLocalizationObjects D).graphValue n w (F.functor.obj X) (F.functor.obj Y) =
-      (freeHammockLocalizationObjects C).graphValue n w X Y ≫
-        (Functor.const SimplexCategoryᵒᵖ).map ((localizationHomMap F X Y).app n) :=
-  freeHammockGraphMap_comparison F X Y w n
+    ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockWordMap F X Y).app w).app n ≫
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockLocalizationObjects D).graphValue n w (F.functor.obj X) (F.functor.obj Y) =
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockLocalizationObjects C).graphValue n w X Y ≫
+        (Functor.const SimplexCategoryᵒᵖ).map ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHomMap F X Y).app n) :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockGraphMap_comparison F X Y w n
 
-example : freeHammockDiagonalMap F X Y ≫
-        freeHammockDiagonalComparison D (F.functor.obj X) (F.functor.obj Y) =
-      freeHammockDiagonalComparison C X Y ≫ localizationHomMap F X Y :=
-  freeHammockDiagonalMap_comparison F X Y
+example : _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalMap F X Y ≫
+        _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalComparison D (F.functor.obj X) (F.functor.obj Y) =
+      _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalComparison C X Y ≫ _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHomMap F X Y :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalMap_comparison F X Y
 
-example : AnodyneHomotopy.anodyneQ.map (localizationHomMap F X Y) ≫
-        (dkHammockComparisonIso D (F.functor.obj X) (F.functor.obj Y)).hom =
-      (dkHammockComparisonIso C X Y).hom ≫
+example : AnodyneHomotopy.anodyneQ.map (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHomMap F X Y) ≫
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.dkHammockComparisonIso D (F.functor.obj X) (F.functor.obj Y)).hom =
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.dkHammockComparisonIso C X Y).hom ≫
         AnodyneHomotopy.anodyneQ.map (Relative.reducedMap F X Y) :=
-  dkHammockComparisonIso_coefficient F X Y
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.dkHammockComparisonIso_coefficient F X Y
 
 open SerrePositivity.EInfinity.BarrattEccles in
 example (A : Type e2ComplexLimitUniverse) [CommRing A]
     (X Y : (cofibrantAlgebraRelativeCategory A).category) :
     (cofibrantAlgebraDKHammockComparisonIso A X Y).hom =
-      (dkHammockComparisonIso (cofibrantAlgebraRelativeCategory A) X Y).hom ≫
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.dkHammockComparisonIso (cofibrantAlgebraRelativeCategory A) X Y).hom ≫
         AnodyneHomotopy.anodyneQ.map (cofibrantAlgebraHammockInclusionMap A X Y) :=
   cofibrantAlgebraDKHammockComparisonIso_factorization A X Y
 end e2DKCoefficientFixtures
@@ -21220,117 +21227,117 @@ end e2DKCoefficientFixtures
 -- 元の自由対角の合成と左右比較の正方形、同じ span の積の比較を検証する。
 section e2DKCompositionFixtures
 open CategoryTheory MonoidalCategory SerrePositivity.EInfinity
-open SerrePositivity.EInfinity.Hammock SerrePositivity.EInfinity.SimplicialLocalization
+open SerrePositivity.EInfinity.Hammock _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.InfinityCategories SerrePositivity.SimplicialModel
 variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{e2ComplexLimitUniverse}) (X Y Z : C.category)
-example : freeHammockDiagonalComposition C X Y Z ≫ freeHammockDiagonalAugmentation C X Z =
-    (freeHammockDiagonalAugmentation C X Y ⊗ₘ
-      freeHammockDiagonalAugmentation C Y Z) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitComposition C.weakEquivalences X Y Z :=
-  freeHammockDiagonalComposition_augmentation C X Y Z
+example : _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalComposition C X Y Z ≫ _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalAugmentation C X Z =
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalAugmentation C X Y ⊗ₘ
+      _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalAugmentation C Y Z) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitComposition C.weakEquivalences X Y Z :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalComposition_augmentation C X Y Z
 
-example : freeHammockDiagonalComposition C X Y Z ≫ freeHammockDiagonalComparison C X Z =
-    (freeHammockDiagonalComparison C X Y ⊗ₘ
-      freeHammockDiagonalComparison C Y Z) ≫ localizationComposition C X Y Z :=
-  freeHammockDiagonalComposition_comparison C X Y Z
+example : _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalComposition C X Y Z ≫ _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalComparison C X Z =
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalComparison C X Y ⊗ₘ
+      _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalComparison C Y Z) ≫ _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationComposition C X Y Z :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalComposition_comparison C X Y Z
 
-example : AnodyneHomotopy.anodyneQ.map (localizationComposition C X Y Z) ≫
-      (dkHammockColimitComparisonIso C X Z).hom =
-    (dkHammockProductComparisonIso C X Y Z).hom ≫
+example : AnodyneHomotopy.anodyneQ.map (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationComposition C X Y Z) ≫
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.dkHammockColimitComparisonIso C X Z).hom =
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.dkHammockProductComparisonIso C X Y Z).hom ≫
       AnodyneHomotopy.anodyneQ.map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitComposition C.weakEquivalences X Y Z) :=
-  dkHammockComparison_composition C X Y Z
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.dkHammockComparison_composition C X Y Z
 
-example : (dkHammockColimitComparisonIso C X Y).hom ≫
+example : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.dkHammockColimitComparisonIso C X Y).hom ≫
       AnodyneHomotopy.anodyneQ.map (reducedColimitIso C.weakEquivalences X Y).hom =
-    (dkHammockComparisonIso C X Y).hom := dkHammockComparisonIso_reduction C X Y
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.dkHammockComparisonIso C X Y).hom := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.dkHammockComparisonIso_reduction C X Y
 
-example (n : SimplexCategoryᵒᵖ) (p : (freeHammockDiagonal C X Y).obj n)
-    (q : (freeHammockDiagonal C Y Z).obj n) :
-    (freeHammockDiagonalComparison C X Z).app n
-      ((freeHammockDiagonalComposition C X Y Z).app n (p, q)) =
-    (freeHammockDiagonalComparison C X Y).app n p ≫
-      (freeHammockDiagonalComparison C Y Z).app n q :=
-  freeHammockDiagonalComparison_composePoint C X Y Z n p q
+example (n : SimplexCategoryᵒᵖ) (p : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonal C X Y).obj n)
+    (q : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonal C Y Z).obj n) :
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalComparison C X Z).app n
+      ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalComposition C X Y Z).app n (p, q)) =
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalComparison C X Y).app n p ≫
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalComparison C Y Z).app n q :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalComparison_composePoint C X Y Z n p q
 
 open SerrePositivity.EInfinity.BarrattEccles in
 example (A : Type e2ComplexLimitUniverse) [CommRing A]
     (X Y Z : (cofibrantAlgebraRelativeCategory A).category) :
-    freeHammockDiagonalComposition (cofibrantAlgebraRelativeCategory A) X Y Z ≫
-        freeHammockDiagonalComparison (cofibrantAlgebraRelativeCategory A) X Z =
-      (freeHammockDiagonalComparison (cofibrantAlgebraRelativeCategory A) X Y ⊗ₘ
-        freeHammockDiagonalComparison (cofibrantAlgebraRelativeCategory A) Y Z) ≫
-          localizationComposition (cofibrantAlgebraRelativeCategory A) X Y Z :=
-  freeHammockDiagonalComposition_comparison (cofibrantAlgebraRelativeCategory A) X Y Z
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalComposition (cofibrantAlgebraRelativeCategory A) X Y Z ≫
+        _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalComparison (cofibrantAlgebraRelativeCategory A) X Z =
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalComparison (cofibrantAlgebraRelativeCategory A) X Y ⊗ₘ
+        _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalComparison (cofibrantAlgebraRelativeCategory A) Y Z) ≫
+          _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationComposition (cofibrantAlgebraRelativeCategory A) X Y Z :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalComposition_comparison (cofibrantAlgebraRelativeCategory A) X Y Z
 end e2DKCompositionFixtures
 
 -- 元の射を持つ共通始域の点と、同じ射による両端点作用を検証する。
 section e2DKEndpointFixtures
 open CategoryTheory MonoidalCategory Opposite SerrePositivity.EInfinity
-open SerrePositivity.EInfinity.Hammock SerrePositivity.EInfinity.SimplicialLocalization
+open SerrePositivity.EInfinity.Hammock _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.InfinityCategories SerrePositivity.SimplicialModel
 open scoped Simplicial
 variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{e2ComplexLimitUniverse}) {X Y Z : C.category}
 example (f : X ⟶ Y) :
-    (freeHammockDiagonalComparison C X Y).app (op ⦋0⦌) (freeHammockArrowZero C f) =
-      localizationArrowZero C f := freeHammockArrowZero_comparison C f
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalComparison C X Y).app (op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockArrowZero C f) =
+      _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationArrowZero C f := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockArrowZero_comparison C f
 
 example (f : X ⟶ Y) :
-    (freeHammockDiagonalAugmentation C X Y).app (op ⦋0⦌) (freeHammockArrowZero C f) =
-      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowPoint C.weakEquivalences f (op ⦋0⦌) := freeHammockArrowZero_augmentation C f
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalAugmentation C X Y).app (op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockArrowZero C f) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowPoint C.weakEquivalences f (op ⦋0⦌) := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockArrowZero_augmentation C f
 
 example (f : X ⟶ Y) :
-    freeHammockArrowPoint C f ≫ freeHammockDiagonalComparison C X Y =
-      localizationArrowPoint C f := freeHammockArrowPoint_comparison C f
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockArrowPoint C f ≫ _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalComparison C X Y =
+      _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationArrowPoint C f := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockArrowPoint_comparison C f
 
 example (f : X ⟶ Y) :
-    freeHammockArrowPoint C f ≫ freeHammockDiagonalAugmentation C X Y =
-      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap C.weakEquivalences f := freeHammockArrowPoint_augmentation C f
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockArrowPoint C f ≫ _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalAugmentation C X Y =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap C.weakEquivalences f := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockArrowPoint_augmentation C f
 
 example (f : X ⟶ Y) :
-    AnodyneHomotopy.anodyneQ.map (localizationArrowPoint C f) ≫
-        (dkHammockComparisonIso C X Y).hom =
+    AnodyneHomotopy.anodyneQ.map (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationArrowPoint C f) ≫
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.dkHammockComparisonIso C X Y).hom =
       AnodyneHomotopy.anodyneQ.map (reducedArrowMap C.weakEquivalences f) :=
-  dkHammockComparisonIso_arrow C f
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.dkHammockComparisonIso_arrow C f
 
 example (X : C.category) (g : Y ⟶ Z) :
-    AnodyneHomotopy.anodyneQ.map (localizationPostcompose C X g) ≫
-        (dkHammockComparisonIso C X Z).hom =
-      (dkHammockComparisonIso C X Y).hom ≫
+    AnodyneHomotopy.anodyneQ.map (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationPostcompose C X g) ≫
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.dkHammockComparisonIso C X Z).hom =
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.dkHammockComparisonIso C X Y).hom ≫
         AnodyneHomotopy.anodyneQ.map (reducedPostcomposeMap C.weakEquivalences X g) :=
-  dkHammockComparisonIso_postcompose C X g
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.dkHammockComparisonIso_postcompose C X g
 
 example (Z : C.category) (f : X ⟶ Y) :
-    AnodyneHomotopy.anodyneQ.map (localizationPrecompose C Z f) ≫
-        (dkHammockComparisonIso C X Z).hom =
-      (dkHammockComparisonIso C Y Z).hom ≫
+    AnodyneHomotopy.anodyneQ.map (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationPrecompose C Z f) ≫
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.dkHammockComparisonIso C X Z).hom =
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.dkHammockComparisonIso C Y Z).hom ≫
         AnodyneHomotopy.anodyneQ.map (reducedPrecomposeMap C.weakEquivalences Z f) :=
-  dkHammockComparisonIso_precompose C Z f
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.dkHammockComparisonIso_precompose C Z f
 
 open SerrePositivity.EInfinity.BarrattEccles in
 example (A : Type e2ComplexLimitUniverse) [CommRing A]
     (X Y Z : (cofibrantAlgebraRelativeCategory A).category) (g : Y ⟶ Z) :
     AnodyneHomotopy.anodyneQ.map
-        (localizationPostcompose (cofibrantAlgebraRelativeCategory A) X g) ≫
-      (dkHammockComparisonIso (cofibrantAlgebraRelativeCategory A) X Z).hom =
-    (dkHammockComparisonIso (cofibrantAlgebraRelativeCategory A) X Y).hom ≫
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationPostcompose (cofibrantAlgebraRelativeCategory A) X g) ≫
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.dkHammockComparisonIso (cofibrantAlgebraRelativeCategory A) X Z).hom =
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.dkHammockComparisonIso (cofibrantAlgebraRelativeCategory A) X Y).hom ≫
       AnodyneHomotopy.anodyneQ.map
         (reducedPostcomposeMap (cofibrantAlgebraRelativeCategory A).weakEquivalences X g) :=
-  dkHammockComparisonIso_postcompose (cofibrantAlgebraRelativeCategory A) X g
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.dkHammockComparisonIso_postcompose (cofibrantAlgebraRelativeCategory A) X g
 
 open SerrePositivity.EInfinity.BarrattEccles in
 example (A : Type e2ComplexLimitUniverse) [CommRing A]
     (X Y : (cofibrantAlgebraRelativeCategory A).category) (f : X ⟶ Y) :
     AnodyneHomotopy.anodyneQ.map
-        (localizationArrowPoint (cofibrantAlgebraRelativeCategory A) f) ≫
-      (dkHammockComparisonIso (cofibrantAlgebraRelativeCategory A) X Y).hom =
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationArrowPoint (cofibrantAlgebraRelativeCategory A) f) ≫
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.dkHammockComparisonIso (cofibrantAlgebraRelativeCategory A) X Y).hom =
     AnodyneHomotopy.anodyneQ.map
       (reducedArrowMap (cofibrantAlgebraRelativeCategory A).weakEquivalences f) :=
-  dkHammockComparisonIso_arrow (cofibrantAlgebraRelativeCategory A) f
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.dkHammockComparisonIso_arrow (cofibrantAlgebraRelativeCategory A) f
 end e2DKEndpointFixtures
 
 -- 元の終域への frame Hom と既存 Map^h の同じ三本矢・reduced 比較を検証する。
 section e2SourceFrameComparisonFixtures
 open CategoryTheory Opposite SerrePositivity.EInfinity
-open SerrePositivity.EInfinity.BarrattEccles SerrePositivity.EInfinity.FrameHom
+open SerrePositivity.EInfinity.BarrattEccles _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom
 open SerrePositivity.InfinityCategories SerrePositivity.SimplicialModel
 variable (A : Type e2ComplexLimitUniverse) [CommRing A] (X Y : (BarrattEccles.operad A).Algebra)
 example : SSet.Homotopy (sourceFrameSpecialHammockNerveMap A X Y)
@@ -21365,7 +21372,7 @@ end e2SourceFrameComparisonFixtures
 -- 元の roof の後合成と既存 Map^h の同じ比較同型の終域自然性を検証する。
 section e2MappingSpacePostcomposeFixtures
 open CategoryTheory Opposite SerrePositivity.EInfinity
-open SerrePositivity.EInfinity.Hammock SerrePositivity.EInfinity.FrameHom
+open SerrePositivity.EInfinity.Hammock _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom
 open SerrePositivity.EInfinity.BarrattEccles
 open SerrePositivity.InfinityCategories SerrePositivity.SimplicialModel
 example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
@@ -21379,9 +21386,9 @@ example {C : Type (e2ComplexLimitUniverse + 1)} [Category.{e2ComplexLimitUnivers
     (W : MorphismProperty C) [W.IsMultiplicative] {X Y Z : C}
     (B : SimplexCategory ⥤ C) (p : B ⟶ (Functor.const SimplexCategory).obj X)
     (hp : ∀ n, W (p.app n)) (hB : ∀ {i j} (a : i ⟶ j), W (B.map a)) (g : Y ⟶ Z) :
-    nerveMap (frameSpanTargetIndexMap B g) ≫ frameLeftRoofColimitMap W B p hp hB (Y := Z) =
-      frameLeftRoofColimitMap W B p hp hB (Y := Y) ≫
-        _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.postcomposePointMap X (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap W g) := frameLeftRoofColimitMap_postcompose W B p hp hB g
+    nerveMap (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameSpanTargetIndexMap B g) ≫ _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameLeftRoofColimitMap W B p hp hB (Y := Z) =
+      _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameLeftRoofColimitMap W B p hp hB (Y := Y) ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.postcomposePointMap X (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap W g) := _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameLeftRoofColimitMap_postcompose W B p hp hB g
 
 variable (A : Type e2ComplexLimitUniverse) [CommRing A]
   (X Y Z : (BarrattEccles.operad A).Algebra) (g : Y ⟶ Z)
@@ -21413,7 +21420,7 @@ end e2MappingSpacePostcomposeFixtures
 -- 元の四列ホモトピーと既存 Map^h の同じ比較の全両端点自然性を検証する。
 section e2MappingSpacePrecomposeFixtures
 open CategoryTheory Opposite SerrePositivity.EInfinity
-open SerrePositivity.EInfinity.Hammock SerrePositivity.EInfinity.FrameHom
+open SerrePositivity.EInfinity.Hammock _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom
 open SerrePositivity.EInfinity.BarrattEccles
 open SerrePositivity.InfinityCategories SerrePositivity.SimplicialModel
 example {C : Type (e2ComplexLimitUniverse + 1)} [Category.{e2ComplexLimitUniverse} C]
@@ -21425,10 +21432,10 @@ example {C : Type (e2ComplexLimitUniverse + 1)} [Category.{e2ComplexLimitUnivers
     (hB : ∀ {i j} (a : i ⟶ j), W (B.map a)) (α : B' ⟶ B) (f : X' ⟶ X)
     (hα : α ≫ p = p' ≫ (Functor.const SimplexCategory).map f) :
     AnodyneHomotopy.anodyneQ.map
-        (nerveMap (frameSpanSourceIndexMap B' B α) ≫ frameLeftRoofColimitMap W B' p' hp' hB') =
-      AnodyneHomotopy.anodyneQ.map (frameLeftRoofColimitMap W B p hp hB) ≫
+        (nerveMap (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameSpanSourceIndexMap B' B α) ≫ _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameLeftRoofColimitMap W B' p' hp' hB') =
+      AnodyneHomotopy.anodyneQ.map (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameLeftRoofColimitMap W B p hp hB) ≫
         AnodyneHomotopy.anodyneQ.map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.precomposePointMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap W f) Y) :=
-  frameLeftRoofColimitMap_precompose W B' B p' hp' p hp hB' hB α f hα
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameLeftRoofColimitMap_precompose W B' B p' hp' p hp hB' hB α f hα
 
 variable (A : Type e2ComplexLimitUniverse) [CommRing A]
   (X' X Y Y' : (BarrattEccles.operad A).Algebra) (f : X' ⟶ X) (g : Y ⟶ Y')
@@ -21483,14 +21490,14 @@ end e2MappingSpacePrecomposeFixtures
 section e2DKMappingSpaceNaturalityFixtures
 open CategoryTheory Opposite
 open SerrePositivity.EInfinity SerrePositivity.EInfinity.BarrattEccles
-open SerrePositivity.EInfinity.SimplicialLocalization SerrePositivity.SimplicialModel
+open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization SerrePositivity.SimplicialModel
 open SerrePositivity.KST.Comparison
 variable (A : Type e2ComplexLimitUniverse) [CommRing A]
 example
     {X' X Y Y' : (cofibrantAlgebraRelativeCategory A).category} (f : X' ⟶ X) (g : Y ⟶ Y') :
     AnodyneHomotopy.anodyneQ.map
-        (localizationPrecompose (cofibrantAlgebraRelativeCategory A) Y f ≫
-          localizationPostcompose (cofibrantAlgebraRelativeCategory A) X' g) ≫
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationPrecompose (cofibrantAlgebraRelativeCategory A) Y f ≫
+          _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationPostcompose (cofibrantAlgebraRelativeCategory A) X' g) ≫
       (cofibrantAlgebraDKMappingSpaceComparisonIso A X' Y').hom =
     (cofibrantAlgebraDKMappingSpaceComparisonIso A X Y).hom ≫
       AnodyneHomotopy.anodyneQ.map (SSet.uliftFunctor.{e2ComplexLimitUniverse + 1, e2ComplexLimitUniverse}.map
@@ -21504,7 +21511,7 @@ example
     (X : (cofibrantAlgebraRelativeCategory A).category)
     {Y Z : (cofibrantAlgebraRelativeCategory A).category} (g : Y ⟶ Z) :
     AnodyneHomotopy.anodyneQ.map
-        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (localizationPostcompose (cofibrantAlgebraRelativeCategory A) X g)) ≫
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationPostcompose (cofibrantAlgebraRelativeCategory A) X g)) ≫
       (cAlgMappingSpaceComparisonIso A X Z).hom =
     (cAlgMappingSpaceComparisonIso A X Y).hom ≫
       AnodyneHomotopy.anodyneQ.map (SSet.uliftFunctor.{e2ComplexLimitUniverse + 1, e2ComplexLimitUniverse}.map
@@ -21516,7 +21523,7 @@ example
     (Z : (cofibrantAlgebraRelativeCategory A).category)
     {X Y : (cofibrantAlgebraRelativeCategory A).category} (f : X ⟶ Y) :
     AnodyneHomotopy.anodyneQ.map
-        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (localizationPrecompose (cofibrantAlgebraRelativeCategory A) Z f)) ≫
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationPrecompose (cofibrantAlgebraRelativeCategory A) Z f)) ≫
       (cAlgMappingSpaceComparisonIso A X Z).hom =
     (cAlgMappingSpaceComparisonIso A Y Z).hom ≫
       AnodyneHomotopy.anodyneQ.map (SSet.uliftFunctor.{e2ComplexLimitUniverse + 1, e2ComplexLimitUniverse}.map
@@ -21528,9 +21535,9 @@ end e2DKMappingSpaceNaturalityFixtures
 section e2HigherComparisonComponentsFixtures
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
-open CategoryTheory HomotopicalAlgebra Opposite
+open CategoryTheory _root_.HomotopicalAlgebra Opposite
 open SerrePositivity.EInfinity SerrePositivity.EInfinity.BarrattEccles
-open SerrePositivity.EInfinity.Hammock SerrePositivity.EInfinity.SimplicialLocalization
+open SerrePositivity.EInfinity.Hammock _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.SimplicialModel SerrePositivity.KST.Comparison
 example {K L : SSet.{e2ComplexLimitUniverse}} (f : K ⟶ L) :
     AnodyneComponents.map (AnodyneHomotopy.anodyneQ.map f) = SSet.π₀Functor.map f :=
@@ -21538,7 +21545,7 @@ example {K L : SSet.{e2ComplexLimitUniverse}} (f : K ⟶ L) :
 variable (A : Type e2ComplexLimitUniverse) [CommRing A]
 example (X Y : CAlgSimplicialCategory A) :
     SSet.π₀Functor.map (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app
-        (localizationHom (cofibrantAlgebraRelativeCategory A) X Y)) ≫
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHom (cofibrantAlgebraRelativeCategory A) X Y)) ≫
       (cAlgMappingSpaceComponentsIso A X Y).hom =
     (cofibrantAlgebraDKMappingSpaceComponentsIso A X Y).hom :=
   cAlgMappingSpaceComponentsIso_unit A X Y
@@ -21563,24 +21570,24 @@ section e2NativeDKComponentsValueFixtures
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.Hammock
-open SerrePositivity.EInfinity.SimplicialLocalization SerrePositivity.EInfinity.BarrattEccles
+open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization SerrePositivity.EInfinity.BarrattEccles
 open SerrePositivity.SimplicialModel
 example (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{e2ComplexLimitUniverse}) (X Y : C.category) :
-    freeHammockDiagonalReduction C X Y ≫
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalReduction C X Y ≫
         Zigzag.Value.reducedValue C.weakEquivalences.Q C.weakEquivalences.Q_inverts X Y =
-      freeHammockDiagonalComparison C X Y ≫ localizationHomAugmentation C X Y :=
-  freeHammockDiagonalReduction_value C X Y
+      _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalComparison C X Y ≫ _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHomAugmentation C X Y :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalReduction_value C X Y
 
 example (A : Type e2ComplexLimitUniverse) [CommRing A]
     (X Y : (cofibrantAlgebraRelativeCategory A).category)
-    (z : SSet.π₀ (localizationHom (cofibrantAlgebraRelativeCategory A) X Y)) :
+    (z : SSet.π₀ (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHom (cofibrantAlgebraRelativeCategory A) X Y)) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.toComponents
         (Zigzag.Value.reducedValue (cofibrantAlgebraRelativeCategory A).weakEquivalences.Q
           (cofibrantAlgebraRelativeCategory A).weakEquivalences.Q_inverts X Y)
         ((AnodyneComponents.iso
-          (dkHammockComparisonIso (cofibrantAlgebraRelativeCategory A) X Y)).hom z) =
-      localizationHomPiZeroEquiv (cofibrantAlgebraRelativeCategory A) X Y z :=
-  dkHammockComparisonIso_components_value (cofibrantAlgebraRelativeCategory A) X Y z
+          (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.dkHammockComparisonIso (cofibrantAlgebraRelativeCategory A) X Y)).hom z) =
+      _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHomPiZeroEquiv (cofibrantAlgebraRelativeCategory A) X Y z :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.dkHammockComparisonIso_components_value (cofibrantAlgebraRelativeCategory A) X Y z
 
 example {C D : Type (e2ComplexLimitUniverse + 1)}
     [Category.{e2ComplexLimitUniverse} C] [Category.{e2ComplexLimitUniverse + 1} D]
@@ -21596,22 +21603,22 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 open CategoryTheory Opposite
 open SerrePositivity.EInfinity SerrePositivity.EInfinity.BarrattEccles
-open SerrePositivity.EInfinity.SimplicialLocalization SerrePositivity.KST.Comparison
+open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization SerrePositivity.KST.Comparison
 variable (A : Type e2ComplexLimitUniverse) [CommRing A] (X Y : CofibrantAlgebra A)
 example : cofibrantAlgebraDKHigherPiZeroEquiv A X Y = cofibrantAlgebraDKPiZeroEquiv A X Y :=
   cofibrantAlgebraDKHigherPiZeroEquiv_eq A X Y
 example : cofibrantAlgebraKanDKHigherPiZeroEquiv A X Y = cofibrantAlgebraKanDKPiZeroEquiv A X Y :=
   cofibrantAlgebraKanDKHigherPiZeroEquiv_eq A X Y
 example (f : X ⟶ Y) : cofibrantAlgebraDKHigherPiZeroEquiv A X Y
-      (localizationArrowClass (cofibrantAlgebraRelativeCategory A)
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationArrowClass (cofibrantAlgebraRelativeCategory A)
         ((ULiftHom.up.{e2ComplexLimitUniverse, e2ComplexLimitUniverse + 1,
           e2ComplexLimitUniverse + 1} (C := CofibrantAlgebra A)).map f)) =
     mappingSpaceClass A ((cofibrantAlgebraInclusion A).map f) :=
   cofibrantAlgebraDKHigherPiZeroEquiv_class A f
 example (f : X ⟶ Y) : cofibrantAlgebraKanDKHigherPiZeroEquiv A X Y
-      (SSet.mapπ₀ (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (localizationHom (cofibrantAlgebraRelativeCategory A)
+      (SSet.mapπ₀ (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHom (cofibrantAlgebraRelativeCategory A)
         (cofibrantAlgebraDKObject A X) (cofibrantAlgebraDKObject A Y)))
-        (localizationArrowClass (cofibrantAlgebraRelativeCategory A)
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationArrowClass (cofibrantAlgebraRelativeCategory A)
           ((ULiftHom.up.{e2ComplexLimitUniverse, e2ComplexLimitUniverse + 1,
             e2ComplexLimitUniverse + 1} (C := CofibrantAlgebra A)).map f))) =
     mappingSpaceClass A ((cofibrantAlgebraInclusion A).map f) :=
@@ -21621,25 +21628,25 @@ end e2DKHigherComponentsAgreementFixtures
 section e2KanHammockNerveFixtures
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
-open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization
+open CategoryTheory SerrePositivity.EInfinity _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Comparison
 variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{e2ComplexLimitUniverse})
-example (X : C.category) : freeHammockDiagonalUnit C X ≫
-    freeHammockDiagonalAugmentation C X X = _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitUnit C.weakEquivalences X :=
-  freeHammockDiagonalUnit_augmentation C X
-example (X : C.category) : freeHammockDiagonalUnit C X ≫
-    freeHammockDiagonalComparison C X X = localizationIdentity C X :=
-  freeHammockDiagonalUnit_comparison C X
-example (X Y : KanFreeHammockObjects C) : (kanFreeHammockComparisonEnriched C).map X Y =
-    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (freeHammockDiagonalComparison C X Y) :=
-  kanFreeHammockComparisonEnriched_map C X Y
-example : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (kanFreeHammockAugmentationNerve C) :=
-  kanFreeHammockAugmentationNerve_equivalence C
+example (X : C.category) : _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalUnit C X ≫
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalAugmentation C X X = _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitUnit C.weakEquivalences X :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalUnit_augmentation C X
+example (X : C.category) : _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalUnit C X ≫
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalComparison C X X = _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationIdentity C X :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalUnit_comparison C X
+example (X Y : _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanFreeHammockObjects C) : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanFreeHammockComparisonEnriched C).map X Y =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalComparison C X Y) :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanFreeHammockComparisonEnriched_map C X Y
+example : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanFreeHammockAugmentationNerve C) :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanFreeHammockAugmentationNerve_equivalence C
 example (A : Type e2ComplexLimitUniverse) [CommRing A] :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (show kanFreeHammockNerve (BarrattEccles.cofibrantAlgebraRelativeCategory A) ⟶
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (show _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanFreeHammockNerve (BarrattEccles.cofibrantAlgebraRelativeCategory A) ⟶
         BarrattEccles.CAlg_R A from
-      kanFreeHammockComparisonNerve (BarrattEccles.cofibrantAlgebraRelativeCategory A)) :=
-  kanFreeHammockComparisonNerve_equivalence (BarrattEccles.cofibrantAlgebraRelativeCategory A)
+      _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanFreeHammockComparisonNerve (BarrattEccles.cofibrantAlgebraRelativeCategory A)) :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanFreeHammockComparisonNerve_equivalence (BarrattEccles.cofibrantAlgebraRelativeCategory A)
 example {K L : SSet.{e2ComplexLimitUniverse}} (f : K ⟶ L) (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence f) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map f) := Hammock.exInfinity_map_weak f hf
 end e2KanHammockNerveFixtures
@@ -21647,54 +21654,54 @@ end e2KanHammockNerveFixtures
 section e2HammockLocalizationSourceFixtures
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
-open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization
+open CategoryTheory SerrePositivity.EInfinity _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Comparison
 open scoped Simplicial
 variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{e2ComplexLimitUniverse})
 example {X Y : C.category} (f : X ⟶ Y) :
     ForgetEnrichment.homTo SSet.{e2ComplexLimitUniverse}
-      ((kanHammockSourceFunctor C).map f) =
+      ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockSourceFunctor C).map f) =
         _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap C.weakEquivalences f ≫
           _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph C.weakEquivalences X Y) :=
-  kanHammockSourceFunctor_homTo C f
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockSourceFunctor_homTo C f
 example {X Y : C.category} (f : X ⟶ Y) (hf : C.weakEquivalences f) :
-    ComposableArrows.mk₁ f ∈ weakNerveEdges C := ⟨X, Y, f, hf, rfl⟩
-example : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InvertsEdges (hammockLocalizationNerveMap C) (weakNerveEdges C) :=
-  hammockLocalizationNerveMap_inverts C
+    ComposableArrows.mk₁ f ∈ _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges C := ⟨X, Y, f, hf, rfl⟩
+example : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InvertsEdges (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap C) (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges C) :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap_inverts C
 example (A : Type e2ComplexLimitUniverse) [CommRing A] :
     _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InvertsEdges
       (show nerve (BarrattEccles.cofibrantAlgebraRelativeCategory A).category ⟶
-        kanHammockNerve (BarrattEccles.cofibrantAlgebraRelativeCategory A) from
-          hammockLocalizationNerveMap (BarrattEccles.cofibrantAlgebraRelativeCategory A))
-      (weakNerveEdges (BarrattEccles.cofibrantAlgebraRelativeCategory A)) :=
-  hammockLocalizationNerveMap_inverts (BarrattEccles.cofibrantAlgebraRelativeCategory A)
+        _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockNerve (BarrattEccles.cofibrantAlgebraRelativeCategory A) from
+          _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (BarrattEccles.cofibrantAlgebraRelativeCategory A))
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges (BarrattEccles.cofibrantAlgebraRelativeCategory A)) :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap_inverts (BarrattEccles.cofibrantAlgebraRelativeCategory A)
 end e2HammockLocalizationSourceFixtures
 
 section e2ExistingLocalizationSourceFixtures
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 open CategoryTheory MonoidalClosed SerrePositivity.EInfinity
-open SerrePositivity.EInfinity.SimplicialLocalization SerrePositivity.InfinityCategories
+open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization SerrePositivity.InfinityCategories
 open scoped Simplicial
 variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{e2ComplexLimitUniverse})
-example : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (kanFreeHammockAugmentationNerve C ≫
-    (kanHammockLocalizationEquivalence C).hom) (kanFreeHammockComparisonNerve C) :=
-  kanHammockLocalizationComparison C
+example : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanFreeHammockAugmentationNerve C ≫
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockLocalizationEquivalence C).hom) (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanFreeHammockComparisonNerve C) :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockLocalizationComparison C
 example (X : C.category) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso ((localizationNerveSourceMap C).app (Opposite.op ⦋0⦌)
-      (ComposableArrows.mk₀ X)) (localizationNerveVertexEquiv C X) :=
-  localizationNerveSourceMap_vertexIso C X
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveSourceMap C).app (Opposite.op ⦋0⦌)
+      (ComposableArrows.mk₀ X)) (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveVertexEquiv C X) :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveSourceMap_vertexIso C X
 example (E : SSet.{e2ComplexLimitUniverse}) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.localizationPrecomposition (localizationNerveSourceMap C) (weakNerveEdges C)
-        (localizationNerveSourceMap_inverts C) E =
-      (pre (kanHammockLocalizationEquivalence C).hom).app E ≫
-        _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.localizationPrecomposition (hammockLocalizationNerveMap C) (weakNerveEdges C)
-          (hammockLocalizationNerveMap_inverts C) E :=
-  localizationNerveSourceMap_precomposition C E
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.localizationPrecomposition (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveSourceMap C) (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges C)
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveSourceMap_inverts C) E =
+      (pre (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockLocalizationEquivalence C).hom).app E ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.localizationPrecomposition (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap C) (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges C)
+          (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap_inverts C) E :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveSourceMap_precomposition C E
 example (A : Type e2ComplexLimitUniverse) [CommRing A] :
     _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InvertsEdges (show nerve (BarrattEccles.cofibrantAlgebraRelativeCategory A).category ⟶
         BarrattEccles.CAlg_R A from BarrattEccles.cAlgLocalizationSource A)
-      (weakNerveEdges (BarrattEccles.cofibrantAlgebraRelativeCategory A)) :=
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges (BarrattEccles.cofibrantAlgebraRelativeCategory A)) :=
   BarrattEccles.cAlgLocalizationSource_inverts A
 example (A : Type e2ComplexLimitUniverse) [CommRing A]
     (X : BarrattEccles.CofibrantAlgebra A) :
@@ -21708,20 +21715,20 @@ section e2SourceFrameTotalLimitFixtures
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 open CategoryTheory Opposite SerrePositivity.EInfinity
-open SerrePositivity.EInfinity.FrameHom.FrameArrows SerrePositivity.InfinityCategories
-open SerrePositivity.HomotopyFunctionComplex SerrePositivity.EInfinity.SimplicialLocalization
+open _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows SerrePositivity.InfinityCategories
+open SerrePositivity.HomotopyFunctionComplex _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open scoped Simplicial
 example {I C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} I]
     [Category.{e2ComplexLimitUniverse} C] (D : I ⥤ C) : _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FrameArrowCategory.identityInclusion D ⊣ _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FrameArrowCategory.degree D :=
   _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FrameArrowCategory.identityDegreeAdjunction D
 example {I C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} I]
     [Category.{e2ComplexLimitUniverse} C] (D : I ⥤ C) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsLeftCofinal (nerveMap (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FrameArrowCategory.identityInclusion D)) := identityInclusion_nerve_isLeftCofinal D
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsLeftCofinal (nerveMap (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FrameArrowCategory.identityInclusion D)) := _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.identityInclusion_nerve_isLeftCofinal D
 example {C : Type (e2ComplexLimitUniverse + 1)} [Category.{e2ComplexLimitUniverse} C]
     (D : SimplexCategory ⥤ C) (Y : C)
     (s : (((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom D).obj Y).Elements)ᵒᵖ) :
-    (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FrameArrowCategory.rightLeg D).app ((elementsTotal D Y).obj s) = s.unop.val :=
-  elementsTotal_rightLeg D Y s
+    (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FrameArrowCategory.rightLeg D).app ((_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.elementsTotal D Y).obj s) = s.unop.val :=
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.elementsTotal_rightLeg D Y s
 example (A : Type e2ComplexLimitUniverse) [CommRing A] (X : BarrattEccles.CofibrantAlgebra A)
     (n : AsSmall.{e2ComplexLimitUniverse + 1} SimplexCategory) :
     (BarrattEccles.cofibrantAlgebraRelativeCategory A).weakEquivalences
@@ -21730,7 +21737,7 @@ example (A : Type e2ComplexLimitUniverse) [CommRing A] (X : BarrattEccles.Cofibr
 example (A : Type e2ComplexLimitUniverse) [CommRing A] (X : BarrattEccles.CofibrantAlgebra A)
     {E : SSet.{e2ComplexLimitUniverse + 1}} [SSet.Quasicategory E]
     (F : nerve (BarrattEccles.cofibrantAlgebraRelativeCategory A).category ⟶ E)
-    (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InvertsEdges F (weakNerveEdges (BarrattEccles.cofibrantAlgebraRelativeCategory A))) :
+    (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InvertsEdges F (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges (BarrattEccles.cofibrantAlgebraRelativeCategory A))) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasLimit (nerveMap (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FrameArrowCategory.target (BarrattEccles.cofibrantDKSourceFrame A X)) ≫ F) :=
   BarrattEccles.cofibrantSourceFrameTotal_hasLimit A X F hF
 example (A : Type e2ComplexLimitUniverse) [CommRing A] (X Y : BarrattEccles.CofibrantAlgebra A)
@@ -21743,19 +21750,19 @@ section e2NativeSourceFrameRightKanFixtures
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 open CategoryTheory Limits Opposite SerrePositivity.EInfinity
-open SerrePositivity.EInfinity.BarrattEccles SerrePositivity.EInfinity.SimplicialLocalization
-open SerrePositivity.InfinityCategories SerrePositivity.EInfinity.FrameHom.FrameArrows
+open SerrePositivity.EInfinity.BarrattEccles _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
+open SerrePositivity.InfinityCategories _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows
 open scoped Simplicial
 variable (A : Type e2ComplexLimitUniverse) [CommRing A] (X Y : CofibrantAlgebra A)
 example : cofibrantSourceFrameRightKanMap A X ≫
-    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.rightKanProjection (hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.rightKanProjection (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
       (cofibrantHammockVertex A X) = nerveMap (cofibrantDKSourceFrame A X) :=
   cofibrantSourceFrameRightKanMap_projection A X
 example (n : (nerve (AsSmall.{e2ComplexLimitUniverse + 1} SimplexCategory)) _⦋0⦌) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsInitialVertex ((cofibrantSourceFrameRightKanMap A X ≫ pullback.fst _ _).app (op ⦋0⦌) n) :=
   cofibrantSourceFrameRightKanMap_initial A X n
 example : cofibrantSourceFrameRightKanTotalMap A X ≫
-    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.rightKanProjection (hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.rightKanProjection (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
       (cofibrantHammockVertex A X) = nerveMap (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FrameArrowCategory.target (cofibrantDKSourceFrame A X)) :=
   cofibrantSourceFrameRightKanTotalMap_projection A X
 example : nerve (sourceFrameElementCategory A X Y) ≅
@@ -21766,7 +21773,7 @@ example : cofibrantSourceFrameRoofMap A X Y ≫ pullback.snd _ _ =
     sourceFrameElementDegreeNerve A X Y := cofibrantSourceFrameRoofMap_degree A X Y
 example {E : SSet.{e2ComplexLimitUniverse + 1}} [SSet.Quasicategory E]
     (F : nerve (cofibrantAlgebraRelativeCategory A).category ⟶ E)
-    (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InvertsEdges F (weakNerveEdges (cofibrantAlgebraRelativeCategory A))) :
+    (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InvertsEdges F (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges (cofibrantAlgebraRelativeCategory A))) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasLimit (nerveMap (cofibrantDKSourceFrame A X) ≫ F) :=
   cofibrantSourceFrame_hasLimit A X F hF
 end e2NativeSourceFrameRightKanFixtures
@@ -21804,7 +21811,7 @@ end e2NativeRoofSliceProductFixtures
 
 section e2NativeRoofFiberFibrationFixtures
 universe e2RoofFiberUniverse
-open CategoryTheory Limits Opposite SerrePositivity.EInfinity HomotopicalAlgebra
+open CategoryTheory Limits Opposite SerrePositivity.EInfinity _root_.HomotopicalAlgebra
 open SerrePositivity.EInfinity.BarrattEccles SerrePositivity.InfinityCategories
 open SSet.modelCategoryQuillen
 open scoped Simplicial
@@ -21835,7 +21842,7 @@ example (h : ∀ b : (cofibrantSourceRoofTarget A X Y) _⦋0⦌,
   cofibrantSourceRoofMap_isLeftCofinal_of_productCorner_weak A X Y h
 example {E B : SSet.{e2RoofFiberUniverse}} (r : E ⟶ B) [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.LeftFibration r]
     (p : (Δ[0] : SSet.{e2RoofFiberUniverse}) ⟶ E) :
-    Fibration (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.sliceOverCornerMap p r) := FrameHom.pointSliceCornerMap_fibration p r
+    Fibration (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.sliceOverCornerMap p r) := _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.pointSliceCornerMap_fibration p r
 end e2NativeRoofFiberFibrationFixtures
 
 section e2NativeRoofCornerEvaluationFixtures
@@ -21866,28 +21873,28 @@ example (h : ∀ b : (cofibrantSourceRoofTarget A X Y) _⦋0⦌,
 example {E B : SSet.{e2RoofEvaluationUniverse}} [SSet.Quasicategory B]
     (p : E ⟶ B) [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.LeftFibration p] (t : B _⦋0⦌) (ht : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsTerminalVertex t)
     (R : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.RoofTerminalEvaluation p t) : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence R.evaluation :=
-  FrameHom.terminalFiberEvaluation_weak p t ht R
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.terminalFiberEvaluation_weak p t ht R
 example {I C : Type e2RoofEvaluationUniverse}
     [Category.{e2RoofEvaluationUniverse} I] [Category.{e2RoofEvaluationUniverse} C]
     (F : I ⥤ C) (Y : C) {E : SSet.{e2RoofEvaluationUniverse}} (q : nerve C ⟶ E) (n : I) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber (FrameHom.FrameArrows.roofTargetProjection F Y q) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex n) ≅
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofTargetProjection F Y q) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex n) ≅
       _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.pinchedHom (q.app (op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (F.obj n)))
-        (q.app (op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex Y)) := FrameHom.FrameArrows.roofTargetFiberPinchedIso F Y q n
+        (q.app (op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex Y)) := _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofTargetFiberPinchedIso F Y q n
 end e2NativeRoofCornerEvaluationFixtures
 
 section e2NativeRoofWeakReferenceFixtures
 universe e2RoofReferenceUniverse
 open CategoryTheory Limits Opposite SerrePositivity.EInfinity
 open SerrePositivity.EInfinity.BarrattEccles SerrePositivity.InfinityCategories
-open SerrePositivity.EInfinity.SimplicialLocalization
+open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open scoped Simplicial
 example (M : SSet.{e2RoofReferenceUniverse}) (n : ℕ) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ProductSimplexProjection.projection M n) :=
   _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ProductSimplexProjection.projection_weak M n
 example (M : SSet.{e2RoofReferenceUniverse})
     (n : AsSmall.{e2RoofReferenceUniverse + 1} SimplexCategory) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (FrameHom.ProductSimplexLiftedOver.firstNerveMap M n) :=
-  FrameHom.ProductSimplexLiftedOver.firstNerveMap_weak M n
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ProductSimplexLiftedOver.firstNerveMap M n) :=
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ProductSimplexLiftedOver.firstNerveMap_weak M n
 variable (A : Type e2RoofReferenceUniverse) [CommRing A] (X Y : CofibrantAlgebra A)
 variable (b : (cofibrantSourceRoofTarget A X Y) _⦋0⦌)
 example : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (cofibrantSourceRoofProductFirstNerve A X Y b) :=
@@ -21903,7 +21910,7 @@ example : (cofibrantKanHammockInclusionEquivalence A X Y).hom =
     cofibrantKanHammockInclusionMap A X Y := cofibrantKanHammockInclusionEquivalence_hom A X Y
 example : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
     (cofibrantKanHammockInclusionMap A X Y ≫ cofibrantHammockPinchedReferenceMap A X Y)
-    (kanHammockHomPinchedMap (cofibrantAlgebraRelativeCategory A)
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockHomPinchedMap (cofibrantAlgebraRelativeCategory A)
       (show (cofibrantAlgebraRelativeCategory A).category from X)
       (show (cofibrantAlgebraRelativeCategory A).category from Y)) :=
   cofibrantHammockPinchedReferenceMap_inclusion A X Y
@@ -21978,14 +21985,14 @@ example {K E : SSet.{e2RoofTriangleUniverse}} [SSet.Quasicategory E] {x y : E _�
     (f g : K ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.pinchedHom x y) (hg : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence g)
     (h : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom (f ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace x y) =
       _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom (g ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace x y)) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence f := FrameHom.pinchedFamily_weak_of_intervalFamilyHom_eq f g hg h
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence f := _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.pinchedFamily_weak_of_intervalFamilyHom_eq f g hg h
 end e2NativeRoofIntervalTriangleFixtures
 
 section e2NativeRoofGeometricTriangleFixtures
 universe e2RoofGeometricUniverse
 open CategoryTheory Limits Opposite SerrePositivity.EInfinity
 open SerrePositivity.EInfinity.BarrattEccles SerrePositivity.InfinityCategories
-open SerrePositivity.EInfinity.FrameHom.FrameArrows
+open _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows
 open scoped Simplicial
 variable (A : Type e2RoofGeometricUniverse) [CommRing A] (X Y : CofibrantAlgebra A)
 variable (b : (cofibrantSourceRoofTarget A X Y) _⦋0⦌)
@@ -21998,22 +22005,22 @@ example : cofibrantSourceRoofProductCommaCornerMap A X Y b ≫ pullback.snd _ _ 
     cofibrantSourceRoofProductCommaFirstNerve A X Y b ≫ cofibrantSourceFrameRoofMap A X Y :=
   cofibrantSourceRoofProductCommaCornerMap_source A X Y b
 example : (cofibrantSourceRoofProductCommaCornerMap A X Y b ≫
-    roofCornerSourceSliceMap (cofibrantDKSourceFrame A X)
+    _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofCornerSourceSliceMap (cofibrantDKSourceFrame A X)
       (show (cofibrantAlgebraRelativeCategory A).category from Y)
-      (SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A)) b) ≫
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A)) b) ≫
     _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection (SSet.yonedaEquiv.symm (cofibrantHammockVertex A Y)) =
       nerveMap (cofibrantSourceRoofProductCommaDiagram A X Y b) ≫
-        SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A) :=
+        _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A) :=
   cofibrantSourceRoofProductCommaCornerMap_diagram A X Y b
 example : SSet.Homotopy
     (nerveMap (cofibrantSourceRoofProductCommaDiagram A X Y b) ≫
-      SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
+      _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
     (SSet.const (X := nerve (cofibrantSourceRoofProductComma A X Y b))
       (cofibrantHammockVertex A (cofibrantSourceRoofDegreeAlgebra A X Y b))) :=
   cofibrantSourceRoofProductGeometricLeftHomotopy A X Y b
 example : SSet.Homotopy
     (nerveMap (cofibrantSourceRoofProductCommaDiagram A X Y b) ≫
-      SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
+      _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
     (SSet.const (X := nerve (cofibrantSourceRoofProductComma A X Y b))
       (cofibrantHammockVertex A Y)) := cofibrantSourceRoofProductGeometricRightHomotopy A X Y b
 example : cofibrantSourceRoofProductGeometricLeftCell A X Y b ≫
@@ -22025,8 +22032,8 @@ end e2NativeRoofGeometricTriangleFixtures
 section e2NativeRoofRightPrismFixtures
 universe e2RoofRightPrismUniverse
 open CategoryTheory Limits Opposite SSet MonoidalCategory
-open SerrePositivity.EInfinity SerrePositivity.EInfinity.FrameHom
-open SerrePositivity.EInfinity.FrameHom.FrameArrows
+open SerrePositivity.EInfinity _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom
+open _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows
 open SerrePositivity.EInfinity.BarrattEccles SerrePositivity.InfinityCategories
 open scoped Simplicial
 example {I C : Type e2RoofRightPrismUniverse} [Category.{e2RoofRightPrismUniverse} I]
@@ -22037,22 +22044,22 @@ example {I C : Type e2RoofRightPrismUniverse} [Category.{e2RoofRightPrismUnivers
 example {I C : Type e2RoofRightPrismUniverse} [Category.{e2RoofRightPrismUniverse} I]
     [Category.{e2RoofRightPrismUniverse} C] (F : I ⥤ C) (Y : C)
     {E : SSet.{e2RoofRightPrismUniverse}} (q : nerve C ⟶ E) :
-    frameRoofMap F Y q ≫ pullback.fst _ _ =
+    _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.frameRoofMap F Y q ≫ pullback.fst _ _ =
       nerveMap (CostructuredArrow.toOver F Y) ≫ (SerrePositivity.InfinityCategories.HTT.Section1_2_9.nerveOverIso Y).hom ≫
-        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverPostcomp (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex Y)) q := frameRoofMap_over F Y q
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverPostcomp (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex Y)) q := _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.frameRoofMap_over F Y q
 example {I C : Type e2RoofRightPrismUniverse} [Category.{e2RoofRightPrismUniverse} I]
     [Category.{e2RoofRightPrismUniverse} C] (Y : C) (T : I ⥤ Over Y)
     {E : SSet.{e2RoofRightPrismUniverse}} (q : nerve C ⟶ E) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverUncurry (nerveOverRightSliceMap Y T q) =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverUncurry (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.nerveOverRightSliceMap Y T q) =
       (SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.nerveCoconeEquiv ((SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.overForgetCocone Y).whisker T)).val ≫ q :=
-  nerveOverRightSliceMap_uncurry Y T q
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.nerveOverRightSliceMap_uncurry Y T q
 example {I C : Type e2RoofRightPrismUniverse} [Category.{e2RoofRightPrismUniverse} I]
     [Category.{e2RoofRightPrismUniverse} C] (Y : C) (T : I ⥤ Over Y)
     {E : SSet.{e2RoofRightPrismUniverse}} (q : nerve C ⟶ E) :
     (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPrecomp (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Roof.roofSliceEvaluationHomotopy
-      (q.app (op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex Y))) (nerveOverRightSliceMap Y T q)).h =
+      (q.app (op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex Y))) (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.nerveOverRightSliceMap Y T q)).h =
       (SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveNatTransHomotopy ((SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.overForgetCocone Y).whisker T).ι).h ≫ q :=
-  nerveOverRightSliceMap_evaluation_h Y T q
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.nerveOverRightSliceMap_evaluation_h Y T q
 variable (A : Type e2RoofRightPrismUniverse) [CommRing A] (X Y : CofibrantAlgebra A)
 variable (b : (cofibrantSourceRoofTarget A X Y) _⦋0⦌)
 example : (cofibrantSourceRoofProductGeometricRightHomotopy A X Y b).h =
@@ -22076,44 +22083,44 @@ end e2NativeRoofRightPrismFixtures
 section e2NativeRoofLeftCellFixtures
 universe e2RoofLeftCellUniverse
 open CategoryTheory Limits Opposite SSet
-open SerrePositivity.EInfinity SerrePositivity.EInfinity.FrameHom
-open SerrePositivity.EInfinity.FrameHom.FrameArrows
+open SerrePositivity.EInfinity _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom
+open _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows
 open SerrePositivity.EInfinity.BarrattEccles SerrePositivity.InfinityCategories
 open scoped Simplicial
 example {E B S : SSet.{e2RoofLeftCellUniverse}} [Quasicategory B] (p : E ⟶ B)
     (t : B _⦋0⦌) (R : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.RoofTerminalEvaluation p t) (g : S ⟶ E) (ht : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsTerminalVertex t)
     (H : SSet.Homotopy (g ≫ p) (SSet.const (X := S) t)) :
     SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
-      (terminalFiberBaseHomotopy p t R g)) =
+      (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.terminalFiberBaseHomotopy p t R g)) =
         SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H) :=
-  terminalFiberBaseHomotopy_hom_eq p t R g ht H
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.terminalFiberBaseHomotopy_hom_eq p t R g ht H
 example {I C : Type e2RoofLeftCellUniverse} [Category.{e2RoofLeftCellUniverse} I]
     [Category.{e2RoofLeftCellUniverse} C] (D : I ⥤ C) {x : C}
     (p : D ⟶ (Functor.const I).obj x) {E : SSet.{e2RoofLeftCellUniverse}} [Quasicategory E]
     (q : nerve C ⟶ E)
     (hp : ∀ i, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge ((nerve.edgeMk (p.app i)).map q).toTruncated) :
-    (augmentationFunctorIso D p q hp).hom =
+    (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.augmentationFunctorIso D p q hp).hom =
       SSet.Truncated.HomotopyCategory.homMk
-        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (augmentationHomotopy D p q)) :=
-  augmentationFunctorIso_hom D p q hp
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.augmentationHomotopy D p q)) :=
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.augmentationFunctorIso_hom D p q hp
 variable (A : Type e2RoofLeftCellUniverse) [CommRing A] (X Y : CofibrantAlgebra A)
 variable (b : (cofibrantSourceRoofTarget A X Y) _⦋0⦌)
 example : cofibrantSourceRoofProductNormalizedMap A X Y b ≫
-    roofCornerNormalizedProjection (cofibrantDKSourceFrame A X)
+    _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofCornerNormalizedProjection (cofibrantDKSourceFrame A X)
       (show (cofibrantAlgebraRelativeCategory A).category from Y)
-      (SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A)) b =
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A)) b =
     nerveMap (cofibrantSourceRoofProductCommaOver A X Y b) :=
   cofibrantSourceRoofProductNormalizedMap_over A X Y b
 example : (cofibrantSourceRoofProductGeometricLeftHomotopy A X Y b).h =
     (cofibrantSourceRoofProductBaseHomotopy A X Y b).h ≫
       nerveMap (Over.forget (cofibrantSourceRoofDegree A X Y b)) ≫
         nerveMap (cofibrantDKSourceFrame A X) ≫
-          SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A) :=
+          _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A) :=
   cofibrantSourceRoofProductGeometricLeftHomotopy_h_base A X Y b
 example : SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
     (cofibrantSourceRoofProductBaseHomotopy A X Y b)) =
     SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
-      (overTerminalHomotopy (cofibrantSourceRoofDegree A X Y b)
+      (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.overTerminalHomotopy (cofibrantSourceRoofDegree A X Y b)
         (cofibrantSourceRoofProductCommaOver A X Y b))) :=
   cofibrantSourceRoofProductBaseHomotopy_hom_eq A X Y b
 example : SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
@@ -22151,13 +22158,13 @@ open SerrePositivity.InfinityCategories SerrePositivity.SimplicialModel
 open scoped Simplicial
 example {K Z : SSet.{e2NativeRoofReferenceUniverse}} [KanComplex Z] (f g : K ⟶ Z)
     (h : AnodyneHomotopy.anodyneQ.map f = AnodyneHomotopy.anodyneQ.map g) :
-    Nonempty (SSet.Homotopy f g) := FrameHom.homotopy_of_anodyneQ_map_eq f g h
+    Nonempty (SSet.Homotopy f g) := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.homotopy_of_anodyneQ_map_eq f g h
 example {K E : SSet.{e2NativeRoofReferenceUniverse}} [Quasicategory E] {x y : E _⦋0⦌}
     (f g : K ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.pinchedHom x y)
     (h : AnodyneHomotopy.anodyneQ.map f = AnodyneHomotopy.anodyneQ.map g) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom (f ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace x y) =
       _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom (g ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace x y) :=
-  FrameHom.pinchedFamily_intervalHom_eq_of_anodyneQ_eq f g h
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedFamily_intervalHom_eq_of_anodyneQ_eq f g h
 variable (A : Type e2NativeRoofReferenceUniverse) [CommRing A] (X Y : CofibrantAlgebra A)
 variable (b : (cofibrantSourceRoofTarget A X Y) _⦋0⦌)
 example {s t : cofibrantSourceRoofProductComma A X Y b} (f : s ⟶ t) :
@@ -22331,8 +22338,8 @@ section e2PrefixPathFixtures
 universe e2PrefixPathUniverse
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet SimplicialThickening
 open SerrePositivity.InfinityCategories
-open SerrePositivity.EInfinity.BarrattEccles SerrePositivity.EInfinity.SimplicialLocalization
-open SerrePositivity.EInfinity.FrameHom
+open SerrePositivity.EInfinity.BarrattEccles _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
+open _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom
 open scoped Simplicial
 variable {I : Type e2PrefixPathUniverse} [Category.{e2PrefixPathUniverse} I]
 variable {n : ℕ} (Γ : Fin (n + 1) ⥤ I) (t : Fin (n + 1) →o Fin 2)
@@ -22349,7 +22356,7 @@ variable (b : (cofibrantSourceRoofTarget A X Y) _⦋0⦌)
 variable (D : Fin (n + 1) ⥤ cofibrantSourceRoofProductComma A X Y b)
 example :
     cofibrantSourceRoofProductCommaNativeFamilyMap A X Y b ≫
-      kanHammockHomPinchedMap (cofibrantAlgebraRelativeCategory A)
+      _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockHomPinchedMap (cofibrantAlgebraRelativeCategory A)
         (show (cofibrantAlgebraRelativeCategory A).category from
           cofibrantSourceRoofDegreeAlgebra A X Y b)
         (show (cofibrantAlgebraRelativeCategory A).category from Y) =
@@ -22358,9 +22365,9 @@ example :
 example :
     cofibrantSourceRoofProductCommaPrefixPathMap A X Y b D (OrderHom.const _ 0) i =
     toUnit _ ≫ ForgetEnrichment.homTo SSet.{e2PrefixPathUniverse + 1}
-      ((kanHammockSourceFunctor (cofibrantAlgebraRelativeCategory A)).map
+      ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockSourceFunctor (cofibrantAlgebraRelativeCategory A)).map
         ((cofibrantSourceRoofProductCommaRightLeg A X Y b).app (D.obj i))) :=
-  RoofPrefix.pathMap_zero (cofibrantAlgebraRelativeCategory A)
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.pathMap_zero (cofibrantAlgebraRelativeCategory A)
     (cofibrantSourceRoofProductCommaDiagram A X Y b)
     (cofibrantSourceRoofProductCommaEvaluation A X Y b)
     (cofibrantSourceRoofProductCommaEvaluation_weak A X Y b)
@@ -22372,19 +22379,19 @@ example (hj : t j = 1) :
       ⟨ULift.up j.castSucc⟩ ⟨ULift.up (Fin.last (n + 1))⟩ ≫
         cofibrantSourceRoofProductCommaPrefixPathMap A X Y b D t i =
     lift (toUnit _ ≫ ForgetEnrichment.homTo SSet.{e2PrefixPathUniverse + 1}
-      ((kanHammockSourceFunctor (cofibrantAlgebraRelativeCategory A)).map
+      ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockSourceFunctor (cofibrantAlgebraRelativeCategory A)).map
         ((cofibrantSourceRoofProductCommaEvaluation A X Y b).app (D.obj i))))
       (snd _ _ ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pathLastMaximumMap j ≫ SSet.yonedaEquiv.symm D ≫
         cofibrantSourceRoofProductCommaNativeFamilyMap A X Y b) ≫
       eComp SSet
-        ((kanHammockSourceFunctor (cofibrantAlgebraRelativeCategory A)).obj
+        ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockSourceFunctor (cofibrantAlgebraRelativeCategory A)).obj
           ((cofibrantSourceRoofProductCommaDiagram A X Y b).obj (D.obj i)))
-        ((kanHammockSourceFunctor (cofibrantAlgebraRelativeCategory A)).obj
+        ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockSourceFunctor (cofibrantAlgebraRelativeCategory A)).obj
           (show (cofibrantAlgebraRelativeCategory A).category from
             cofibrantSourceRoofDegreeAlgebra A X Y b))
-        ((kanHammockSourceFunctor (cofibrantAlgebraRelativeCategory A)).obj
+        ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockSourceFunctor (cofibrantAlgebraRelativeCategory A)).obj
           (show (cofibrantAlgebraRelativeCategory A).category from Y)) :=
-  RoofPrefix.pathMap_comp_one_enriched (cofibrantAlgebraRelativeCategory A)
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.pathMap_comp_one_enriched (cofibrantAlgebraRelativeCategory A)
     (cofibrantSourceRoofProductCommaDiagram A X Y b)
     (cofibrantSourceRoofProductCommaEvaluation A X Y b)
     (cofibrantSourceRoofProductCommaEvaluation_weak A X Y b)
@@ -22396,7 +22403,7 @@ section e2NativeSimplexFixtures
 universe e2NativeSimplexUniverse
 open CategoryTheory MonoidalCategory SSet SimplicialThickening
 open SerrePositivity.InfinityCategories
-open SerrePositivity.EInfinity.BarrattEccles SerrePositivity.EInfinity.SimplicialLocalization
+open SerrePositivity.EInfinity.BarrattEccles _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open scoped Simplicial
 variable (A : Type e2NativeSimplexUniverse) [CommRing A] (X Y : CofibrantAlgebra A)
 variable (b : (cofibrantSourceRoofTarget A X Y) _⦋0⦌)
@@ -22405,21 +22412,21 @@ variable (t : Fin (n + 1) →o Fin 2)
 example : (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOver (SSet.yonedaEquiv.symm (cofibrantHammockVertex A Y))) _⦋n⦌ :=
   cofibrantSourceRoofProductCommaNativeSliceSimplex A X Y b Γ t
 example :
-    (kanHammockNerve (cofibrantAlgebraRelativeCategory A)).map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.lastVertex n).op
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockNerve (cofibrantAlgebraRelativeCategory A)).map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.lastVertex n).op
       (cofibrantSourceRoofProductCommaNativeSimplex A X Y b Γ t) = cofibrantHammockVertex A Y :=
   cofibrantSourceRoofProductCommaNativeSimplex_target A X Y b Γ t
 variable (i j k : SimplicialThickening (ULift.{e2NativeSimplexUniverse + 1} (Fin (n + 2))))
 example :
     let T : EnrichedFunctor SSet.{e2NativeSimplexUniverse + 1}
         (SimplicialThickening (ULift.{e2NativeSimplexUniverse + 1} (Fin (n + 2))))
-        (KanHammockCategory (cofibrantAlgebraRelativeCategory A)) :=
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanHammockCategory (cofibrantAlgebraRelativeCategory A)) :=
       cofibrantSourceRoofProductCommaNativeSimplex A X Y b Γ t
     eId SSet i ≫ T.map i i = eId SSet (T.obj i) :=
   (cofibrantSourceRoofProductCommaNativeSimplex A X Y b Γ t).map_id i
 example :
     let T : EnrichedFunctor SSet.{e2NativeSimplexUniverse + 1}
         (SimplicialThickening (ULift.{e2NativeSimplexUniverse + 1} (Fin (n + 2))))
-        (KanHammockCategory (cofibrantAlgebraRelativeCategory A)) :=
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanHammockCategory (cofibrantAlgebraRelativeCategory A)) :=
       cofibrantSourceRoofProductCommaNativeSimplex A X Y b Γ t
     eComp SSet i j k ≫ T.map i k = (T.map i j ⊗ₘ T.map j k) ≫
       eComp SSet (T.obj i) (T.obj j) (T.obj k) :=
@@ -22430,7 +22437,7 @@ section e2NativePrismFixtures
 universe e2NativePrismUniverse
 open CategoryTheory MonoidalCategory SSet
 open SerrePositivity.InfinityCategories
-open SerrePositivity.EInfinity.BarrattEccles SerrePositivity.EInfinity.SimplicialLocalization
+open SerrePositivity.EInfinity.BarrattEccles _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open scoped Simplicial
 variable (A : Type e2NativePrismUniverse) [CommRing A] (X Y : CofibrantAlgebra A)
 variable (b : (cofibrantSourceRoofTarget A X Y) _⦋0⦌)
@@ -22465,7 +22472,7 @@ section e2NativePrismOneFixtures
 universe e2NativePrismOneUniverse
 open CategoryTheory MonoidalCategory SSet
 open SerrePositivity.InfinityCategories
-open SerrePositivity.EInfinity.BarrattEccles SerrePositivity.EInfinity.SimplicialLocalization
+open SerrePositivity.EInfinity.BarrattEccles _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open scoped Simplicial
 variable (A : Type e2NativePrismOneUniverse) [CommRing A] (X Y : CofibrantAlgebra A)
 variable (b : (cofibrantSourceRoofTarget A X Y) _⦋0⦌)
@@ -22473,7 +22480,7 @@ example :
     _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 1 (nerve (cofibrantSourceRoofProductComma A X Y b)) ≫
       cofibrantSourceRoofProductCommaNativePrism A X Y b =
     cofibrantSourceRoofProductCommaNativePinchedMap A X Y b ≫
-      _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.pinchedFamilySlice (kanHammockNerve (cofibrantAlgebraRelativeCategory A))
+      _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.pinchedFamilySlice (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockNerve (cofibrantAlgebraRelativeCategory A))
         (cofibrantHammockVertex A (cofibrantSourceRoofDegreeAlgebra A X Y b))
         (cofibrantHammockVertex A Y) :=
   cofibrantSourceRoofProductCommaNativePrism_one A X Y b
@@ -22521,35 +22528,35 @@ section e2LocalizationUniversalFixtures
 universe e2LocalizationUniversalUniverse
 open CategoryTheory MonoidalClosed SSet
 open SerrePositivity.InfinityCategories
-open SerrePositivity.EInfinity.BarrattEccles SerrePositivity.EInfinity.SimplicialLocalization
+open SerrePositivity.EInfinity.BarrattEccles _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open scoped Simplicial
 variable (A : Type e2LocalizationUniversalUniverse) [CommRing A] (X : CofibrantAlgebra A)
 variable (E : SSet.{e2LocalizationUniversalUniverse + 1}) [Quasicategory E]
 variable (F : nerve (cofibrantAlgebraRelativeCategory A).category ⟶ E)
-variable (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InvertsEdges F (weakNerveEdges (cofibrantAlgebraRelativeCategory A)))
-variable (G : kanHammockNerve (cofibrantAlgebraRelativeCategory A) ⟶ E)
+variable (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InvertsEdges F (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges (cofibrantAlgebraRelativeCategory A)))
+variable (G : _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockNerve (cofibrantAlgebraRelativeCategory A) ⟶ E)
 example : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsLeftCofinal (cofibrantSourceFrameRightKanMap A X) :=
   cofibrantSourceFrameRightKanMap_isLeftCofinal A X
-example (z : (kanHammockNerve (cofibrantAlgebraRelativeCategory A)) _⦋0⦌) :
+example (z : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockNerve (cofibrantAlgebraRelativeCategory A)) _⦋0⦌) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasLimit (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.rightKanDiagram
-      (hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A)) F z) :=
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A)) F z) :=
   cofibrantSourceRightKanDiagram_hasLimit_all A F hF z
-example (z : (kanHammockNerve (cofibrantAlgebraRelativeCategory A)) _⦋0⦌) :
+example (z : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockNerve (cofibrantAlgebraRelativeCategory A)) _⦋0⦌) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.rightKanCanonicalCone
-      (hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A)) G z) :=
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A)) G z) :=
   cofibrantSourceRightKanCanonicalCone_isLimit_all A G z
 example (α : SSet.Homotopy
-      (hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A) ≫ G) F)
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A) ≫ G) F)
     (hα : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.IsRightKanExtension
-      (hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A)) F G α)
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A)) F G α)
     (z : (nerve (cofibrantAlgebraRelativeCategory A).category) _⦋0⦌) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge α z).toTruncated :=
   cofibrantSourceRightKanUnit_isInvertible A F hF G α hα z
 example : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization (cAlgLocalizationSource A)
-    (weakNerveEdges (cofibrantAlgebraRelativeCategory A)) :=
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges (cofibrantAlgebraRelativeCategory A)) :=
   cAlgLocalizationSource_isLocalization A
 example : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.localizationPrecomposition (cAlgLocalizationSource A)
-    (weakNerveEdges (cofibrantAlgebraRelativeCategory A))
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges (cofibrantAlgebraRelativeCategory A))
     (cAlgLocalizationSource_inverts A) E) :=
   cAlgLocalizationPrecomposition_isQCatEquivalence A E
 end e2LocalizationUniversalFixtures
@@ -23009,7 +23016,7 @@ section e2NormalizedReedyFixtures
 universe e2NormalizedReedyUniverse
 open CategoryTheory CategoryTheory.Limits MonoidalCategory CochainComplex
 open SerrePositivity.EInfinity SerrePositivity.EInfinity.ComplexLimits
-open SerrePositivity.DifferentialGraded SerrePositivity.Reedy HomotopicalAlgebra
+open SerrePositivity.DifferentialGraded SerrePositivity.Reedy _root_.HomotopicalAlgebra
 variable (A : Type e2NormalizedReedyUniverse) [CommRing A]
 example : ((ComplexShape.embeddingUpIntLE 0).extendFunctor
     (ModuleCat.{e2NormalizedReedyUniverse} A)).IsLeftAdjoint := nonpositiveExtend_isLeftAdjoint A
@@ -23044,7 +23051,7 @@ end e2NormalizedReedyFixtures
 
 section e2ProbeTensorQuillenFixtures
 universe e2ProbeTensorUniverse
-open CategoryTheory CategoryTheory.Limits MonoidalCategory HomotopicalAlgebra
+open CategoryTheory CategoryTheory.Limits MonoidalCategory _root_.HomotopicalAlgebra
 open SerrePositivity.DifferentialGraded SerrePositivity.Reedy
 open SerrePositivity.EInfinity SerrePositivity.EInfinity.ComplexLimits
 variable (A : Type e2ProbeTensorUniverse) [CommRing A]
@@ -23097,7 +23104,7 @@ end e2ProbeTensorQuillenFixtures
 
 section e2NormalizedOriginalFixtures
 universe e2NormalizedOriginalUniverse
-open CategoryTheory HomotopicalAlgebra SSet
+open CategoryTheory _root_.HomotopicalAlgebra SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.Reedy
 open SerrePositivity.EInfinity SerrePositivity.EInfinity.ComplexLimits
 open SerrePositivity.InfinityCategories
@@ -23194,7 +23201,7 @@ end e2KProjectiveDerivedSpanFixtures
 
 section e2FreeNormalizedHomFixtures
 universe e2FreeNormalizedHomUniverse
-open CategoryTheory CategoryTheory.Limits HomotopicalAlgebra MonoidalCategory
+open CategoryTheory CategoryTheory.Limits _root_.HomotopicalAlgebra MonoidalCategory
 open SerrePositivity.DifferentialGraded SerrePositivity.Reedy
 open SerrePositivity.EInfinity SerrePositivity.EInfinity.ComplexLimits
 open SerrePositivity.InfinityCategories
@@ -25403,7 +25410,7 @@ section e2AugStandardFixtures
 open CategoryTheory CategoryTheory.Limits SSet MonoidalCategory CartesianMonoidalCategory
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open SerrePositivity.EInfinity.ComplexLimits
-open SerrePositivity.EInfinity.FrameHom.MixedNerve
+open _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve
 open scoped Simplicial
 variable (A : Type e2AugStandardU) [CommRing A] (X Y : Complex A)
 variable {I C : Type (e2AugStandardU + 1)} [Category.{e2AugStandardU} I]
@@ -25430,7 +25437,7 @@ example :
 
 example :
     (normalizedTensorDoubleConeSliceEvaluationHomotopy A X Y).h =
-      (FrameHom.MixedNerve.homotopy (normalizedTensorElementAugmentation A X Y)).h ≫
+      (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.homotopy (normalizedTensorElementAugmentation A X Y)).h ≫
         nerveMap (complexToClosed A) ≫ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (Complex A) :=
   SerrePositivity.EInfinity.ComplexLimits.normalizedTensorDoubleConeSliceEvaluationHomotopy_h_standard A X Y
 
@@ -25504,7 +25511,7 @@ example {n : ℕ}
 example :
     (β_ (nerve (normalizedTensorElementIndex A X Y)) (Δ[1] : SSet.{e2AugStandardU + 1})).hom ≫
       _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.rightMappingSpacePrism _ ≫ normalizedTensorElementAugmentationJoin A X Y =
-      (FrameHom.MixedNerve.homotopy (normalizedTensorElementAugmentation A X Y)).h ≫
+      (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.homotopy (normalizedTensorElementAugmentation A X Y)).h ≫
         nerveMap (complexToClosed A) ≫ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (Complex A) :=
   SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementAugmentationJoin_prism A X Y
 
@@ -25524,7 +25531,7 @@ example {n : ℕ}
     (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso n 0).hom ≫ (SSet.yonedaEquiv (X := nerve (Complex A))).symm
       (normalizedTensorElementAugmentedColumn A X Y c) =
       _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (SSet.yonedaEquiv.symm c) (𝟙 (Δ[0] : SSet.{e2AugStandardU + 1})) ≫
-        FrameHom.MixedNerve.coconeJoin (normalizedTensorElementAugmentationCocone A X Y) :=
+        _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.coconeJoin (normalizedTensorElementAugmentationCocone A X Y) :=
   SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementAugmentedColumn_join A X Y c
 
 example {n : ℕ}
@@ -25554,16 +25561,16 @@ example {n : ℕ}
   SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementAugmentedColumn_hom_last A X Y c I a b k hI ha hb hk hbl
 
 example (c : Cocone F) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInr (nerve I) (Δ[0] : SSet.{e2AugStandardU + 1}) ≫ coconeJoin c = _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint c.pt :=
-  SerrePositivity.EInfinity.FrameHom.MixedNerve.coconeJoin_inr c
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInr (nerve I) (Δ[0] : SSet.{e2AugStandardU + 1}) ≫ _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.coconeJoin c = _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint c.pt :=
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.coconeJoin_inr c
 
 example (c : Cocone F) :
     (β_ (nerve I) (Δ[1] : SSet.{e2AugStandardU + 1})).hom ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.rightMappingSpacePrism (nerve I) ≫
-      coconeJoin c = (homotopy c.ι).h :=
-  SerrePositivity.EInfinity.FrameHom.MixedNerve.coconePrism_eq_homotopy c
+      _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.coconeJoin c = (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.homotopy c.ι).h :=
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.coconePrism_eq_homotopy c
 
 example (c : Cocone F) : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.join (nerve I) (Δ[0] : SSet.{e2AugStandardU + 1}) ⟶ nerve C :=
-  SerrePositivity.EInfinity.FrameHom.MixedNerve.coconeJoin c
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.coconeJoin c
 
 example {n : ℕ} (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) :
     ComposableArrows (Complex A) (n + 1) := normalizedTensorElementAugmentedColumn A X Y c
@@ -25745,7 +25752,7 @@ example : Cocone (normalizedTensorElementDiagram A X Y) :=
   SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementEvaluationCocone A X Y
 
 example :
-    Cocone (FrameHom.MixedNerve.lifted (normalizedTensorElementDiagram A X Y)) :=
+    Cocone (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.lifted (normalizedTensorElementDiagram A X Y)) :=
   SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementLiftedEvaluationCocone A X Y
 
 example {n : ℕ}
@@ -25784,7 +25791,7 @@ example {n : ℕ}
     (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso n 0).hom ≫ (SSet.yonedaEquiv (X := nerve (Complex A))).symm
       (normalizedTensorElementEvaluatedColumn A X Y c) =
       _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (SSet.yonedaEquiv.symm c) (𝟙 (Δ[0] : SSet.{e2EvaluationJoinU + 1})) ≫
-        FrameHom.MixedNerve.coconeJoin (normalizedTensorElementEvaluationCocone A X Y) :=
+        _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.coconeJoin (normalizedTensorElementEvaluationCocone A X Y) :=
   SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementEvaluatedColumn_join A X Y c
 
 example :
@@ -25809,7 +25816,7 @@ example {n : ℕ}
 example :
     (β_ (nerve (normalizedTensorElementIndex A X Y)) (Δ[1] : SSet.{e2EvaluationJoinU + 1})).hom ≫
       _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.rightMappingSpacePrism _ ≫ normalizedTensorElementEvaluationJoin A X Y =
-      (FrameHom.MixedNerve.homotopy (normalizedTensorElementEvaluation A X Y)).h ≫
+      (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.homotopy (normalizedTensorElementEvaluation A X Y)).h ≫
         nerveMap (complexToClosed A) ≫ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (Complex A) :=
   SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementEvaluationJoin_prism A X Y
 
@@ -27045,7 +27052,7 @@ section e2Fixtures208
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory SerrePositivity.DifferentialGraded
 open ComplexLimits SerrePositivity.HomotopyFunctionComplex
-open CategoryTheory.Limits HomotopicalAlgebra SerrePositivity.Reedy
+open CategoryTheory.Limits _root_.HomotopicalAlgebra SerrePositivity.Reedy
 variable (A : Type e2F208U) [CommRing A] (X : Complex A) (B : (operad A).Algebra)
 
 
@@ -27509,7 +27516,7 @@ example : QuasiIso (cochainMap A (horn 2 (1 : Fin 3)).ι) :=
 end e2Fixtures227
 
 noncomputable section e2Fixtures228
-open CategoryTheory Limits HomologicalComplex HomotopicalAlgebra
+open CategoryTheory Limits HomologicalComplex _root_.HomotopicalAlgebra
 open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity
 open SerrePositivity.EInfinity.ComplexLimits
 universe e2F228U
@@ -27636,7 +27643,7 @@ example (i : P ⟶ Q) (hi : (projectiveGeneratingCofibrations A).rlp.llp i)
 end e2Fixtures229
 
 noncomputable section e2Fixtures230
-open CategoryTheory Limits MonoidalCategory HomologicalComplex HomotopicalAlgebra
+open CategoryTheory Limits MonoidalCategory HomologicalComplex _root_.HomotopicalAlgebra
 open SerrePositivity
 open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity
 open SerrePositivity.Reedy SerrePositivity.HomotopyFunctionComplex
@@ -27716,8 +27723,8 @@ example
 end e2Fixtures230
 
 noncomputable section e2Fixtures231
-open CategoryTheory Limits HomotopicalAlgebra Opposite
-open SerrePositivity SerrePositivity.EInfinity SerrePositivity.EInfinity.FrameHom
+open CategoryTheory Limits _root_.HomotopicalAlgebra Opposite
+open SerrePositivity SerrePositivity.EInfinity _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom
 open SerrePositivity.Reedy SerrePositivity.DifferentialGraded
 open SerrePositivity.InfinityCategories
 open scoped Simplicial
@@ -27761,17 +27768,17 @@ variable {A Q D : SSet.{e2F231U}} [SSet.Quasicategory Q] [SSet.Quasicategory D]
   (K : Q ⟶ D) (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (F ≫ K) G)
 
 example (x y : Q _⦋0⦌) : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.pinchedHomMap K x y) :=
-  localizationComparison_pinchedHom_isQCatEquivalence F G W hF hG K e x y
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.localizationComparison_pinchedHom_isQCatEquivalence F G W hF hG K e x y
 example (h : F ≫ K = G) (x y : A _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (localizationPinchedComparison F G K h x y) :=
-  localizationPinchedComparison_isQCatEquivalence F G W hF hG K e h x y
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.localizationPinchedComparison F G K h x y) :=
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.localizationPinchedComparison_isQCatEquivalence F G W hF hG K e h x y
 end Localization
 end e2Fixtures231
 
 noncomputable section e2Fixtures231DG
-open CategoryTheory Limits HomotopicalAlgebra HomologicalComplex
+open CategoryTheory Limits _root_.HomotopicalAlgebra HomologicalComplex
 open SerrePositivity SerrePositivity.Reedy
-open SerrePositivity.EInfinity SerrePositivity.EInfinity.FrameHom
+open SerrePositivity.EInfinity _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom
 open SerrePositivity.DifferentialGraded
 universe e2F231R
 variable (R : Type e2F231R) [CommRing R]
@@ -27804,9 +27811,9 @@ example (X : Mon (Complex R)) [IsCofibrant X] {Y Z : Mon (Complex R)}
 end e2Fixtures231DG
 
 noncomputable section e2Fixtures232
-open CategoryTheory Limits HomotopicalAlgebra Opposite
-open SerrePositivity SerrePositivity.EInfinity SerrePositivity.EInfinity.FrameHom
-open SerrePositivity.EInfinity.SimplicialLocalization
+open CategoryTheory Limits _root_.HomotopicalAlgebra Opposite
+open SerrePositivity SerrePositivity.EInfinity _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom
+open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.Reedy SerrePositivity.HomotopyFunctionComplex
 open SerrePositivity.InfinityCategories
 open scoped Simplicial
@@ -27818,8 +27825,8 @@ example (X Y : C) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (nerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.FibrantRightSpans.inclusion X Y)) :=
   _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.FibrantRightSpans.inclusion_isWeakHomotopyEquivalence r X Y
 example (X Y : C) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (nerveMap (rightFrameRoofComparison r X Y)) :=
-  rightFrameRoofComparison_isWeakHomotopyEquivalence r X Y
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (nerveMap (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameRoofComparison r X Y)) :=
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameRoofComparison_isWeakHomotopyEquivalence r X Y
 example (Y : C) : IsFibrant ((_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameReplacement r).obj Y) :=
   _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameReplacement_isFibrant r Y
 example (Y : C) [IsCofibrant Y] : IsCofibrant ((_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameReplacement r).obj Y) :=
@@ -27829,13 +27836,13 @@ example (X : CofibrantObject C) (q : CofibrantResolution (C := C) simplex X.obj)
 example (X : CofibrantObject C) (q : CofibrantResolution (C := C) simplex X.obj)
     {E : SSet.{max e2F232U e2F232V}} [SSet.Quasicategory E]
     (F : nerve (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.modelCofibrantRelativeCategory C).category ⟶ E)
-    (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InvertsEdges F (weakNerveEdges (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.modelCofibrantRelativeCategory C))) :
+    (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InvertsEdges F (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.modelCofibrantRelativeCategory C))) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasLimit (nerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantDKFrame X q) ≫ F) :=
-  modelCofibrantFrame_hasLimit X q F hF
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelCofibrantFrame_hasLimit X q F hF
 
 section Coherent
 variable {A Q D T : SSet.{e2F232U}} [SSet.Quasicategory Q] [SSet.Quasicategory D]
-  {F : A ⟶ Q} {G : A ⟶ D} (c : CoherentLocalizationComparison F G)
+  {F : A ⟶ Q} {G : A ⟶ D} (c : _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CoherentLocalizationComparison F G)
 
 example (x y : A _⦋0⦌) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.pinchedHom (F.app (op ⦋0⦌) x) (F.app (op ⦋0⦌) y))
@@ -27853,9 +27860,9 @@ end e2Fixtures232
 
 
 noncomputable section e2Fixtures233
-open CategoryTheory Limits HomotopicalAlgebra Opposite
-open SerrePositivity.EInfinity SerrePositivity.EInfinity.FrameHom
-open SerrePositivity.EInfinity.SimplicialLocalization
+open CategoryTheory Limits _root_.HomotopicalAlgebra Opposite
+open SerrePositivity.EInfinity _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom
+open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.Reedy SerrePositivity.HomotopyFunctionComplex
 open SerrePositivity.InfinityCategories
 universe e2F233U e2F233V
@@ -27874,19 +27881,19 @@ example (X Y : (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryC
       (Hammock.Relative.colimitMap _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantToCofibrantRelative X Y) :=
   _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantToCofibrant_colimitMap_weak r X Y
 example {X : C} (q : CofibrantResolution (C := C) simplex X) (Y : C) [IsFibrant Y] :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (FibrantFrameSpanNormalization.comparisonNerveMap q Y) :=
-  FibrantFrameSpanNormalization.comparisonNerveMap_isWeakHomotopyEquivalence q Y r
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FibrantFrameSpanNormalization.comparisonNerveMap q Y) :=
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FibrantFrameSpanNormalization.comparisonNerveMap_isWeakHomotopyEquivalence q Y r
 example {X : C} (q : CofibrantResolution (C := C) simplex X) (Y : C) [IsFibrant Y]
     (cof : MorphismProperty.FunctorialFactorizationData (cofibrations C) (trivialFibrations C))
     (fib : MorphismProperty.FunctorialFactorizationData (trivialCofibrations C) (fibrations C)) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.resolutionLeftRoofNerveMap q Y ≫
       Hammock.graphNormalization (weakEquivalences C) X Y _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.word) :=
-  resolutionLeftRoofNerveMap_normalized_isWeakHomotopyEquivalence_of_fibrant q Y r cof fib
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.resolutionLeftRoofNerveMap_normalized_isWeakHomotopyEquivalence_of_fibrant q Y r cof fib
 example (q : ∀ X : BifibrantObject C, CofibrantResolution (C := C) simplex X.obj)
-    (hc : ∀ X, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsLeftCofinal (modelBifibrantFrameRightKanMap X (q X))) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C))
-      (weakNerveEdges (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)) :=
-  modelBifibrantHammock_isLocalization_of_frameCofinality q hc
+    (hc : ∀ X, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsLeftCofinal (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantFrameRightKanMap X (q X))) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C))
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)) :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantHammock_isLocalization_of_frameCofinality q hc
 example [(cofibrations C).HasFunctorialFactorization (trivialFibrations C)]
     (X Y : (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C).category) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
@@ -27895,9 +27902,9 @@ example [(cofibrations C).HasFunctorialFactorization (trivialFibrations C)]
 end e2Fixtures233
 
 noncomputable section e2Fixtures235
-open CategoryTheory HomotopicalAlgebra Opposite
-open SerrePositivity.EInfinity SerrePositivity.EInfinity.FrameHom
-open SerrePositivity.EInfinity.SimplicialLocalization
+open CategoryTheory _root_.HomotopicalAlgebra Opposite
+open SerrePositivity.EInfinity _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom
+open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.Reedy SerrePositivity.HomotopyFunctionComplex
 open SerrePositivity.InfinityCategories
 universe e2F235U e2F235V
@@ -27905,32 +27912,32 @@ variable {C : Type e2F235U} [Category.{e2F235V} C] [ModelCategory C]
   (r : CofibrantResolutionFamily (C := Cᵒᵖ) simplex)
 
 example : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence
-    (relativeKanHammockNerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantToCofibrantRelative (C := C))) :=
-  modelBifibrantToCofibrant_nerve_isQCatEquivalence r
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.relativeKanHammockNerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantToCofibrantRelative (C := C))) :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantToCofibrant_nerve_isQCatEquivalence r
 example [(cofibrations C).HasFunctorialFactorization (trivialFibrations C)] :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (relativeKanHammockNerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantToModelRelative C)) :=
-  modelCofibrantToModel_nerve_isQCatEquivalence C
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.relativeKanHammockNerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantToModelRelative C)) :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelCofibrantToModel_nerve_isQCatEquivalence C
 example [(cofibrations C).HasFunctorialFactorization (trivialFibrations C)]
     (X Y : BifibrantObject C) (q : CofibrantResolution (C := C) simplex X.obj) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (modelBifibrantFrameLeftRoofColimitMap X Y q) :=
-  modelBifibrantFrameLeftRoofColimitMap_weak X Y q r
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantFrameLeftRoofColimitMap X Y q) :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantFrameLeftRoofColimitMap_weak X Y q r
 example {X : C} (q : CofibrantResolution (C := C) simplex X) (Y : C) [IsFibrant Y]
     (cof : MorphismProperty.FunctorialFactorizationData (cofibrations C) (trivialFibrations C)) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (resolutionLeftRoofColimitMap q Y) :=
-  resolutionLeftRoofColimitMap_isWeakHomotopyEquivalence_of_first q Y r cof
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.resolutionLeftRoofColimitMap q Y) :=
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.resolutionLeftRoofColimitMap_isWeakHomotopyEquivalence_of_first q Y r cof
 
 section Relative
 variable {A B : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{e2F235U}}
   (F : LocalizerMorphism A.weakEquivalences B.weakEquivalences)
-example : hammockLocalizationNerveMap A ≫ relativeKanHammockNerve F =
-    nerveMap F.functor ≫ hammockLocalizationNerveMap B := relativeKanHammockNerve_source F
+example : _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap A ≫ _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.relativeKanHammockNerve F =
+    nerveMap F.functor ≫ _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap B := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.relativeKanHammockNerve_source F
 end Relative
 end e2Fixtures235
 
 noncomputable section e2Fixtures235DG
-open CategoryTheory HomotopicalAlgebra
+open CategoryTheory _root_.HomotopicalAlgebra
 open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity
-open SerrePositivity.EInfinity.SimplicialLocalization SerrePositivity.InfinityCategories
+open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization SerrePositivity.InfinityCategories
 universe e2F235R
 variable (R : Type e2F235R) [CommRing R]
 attribute [local instance] DGAlgebra.hasFiniteLimits DGAlgebra.hasTerminal
@@ -27945,14 +27952,14 @@ example :
   DGAlgebra.cofibrantBifibrantEquivalence R
 example :
     let := DGAlgebra.modelCategory R
-    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (relativeKanHammockNerve
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.relativeKanHammockNerve
       (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantToModelRelative (Mon (Complex R)))) :=
   DGAlgebra.cofibrantHammockNerveInclusion_isQCatEquivalence R
 end e2Fixtures235DG
 
 noncomputable section e2Fixtures236
-open CategoryTheory HomotopicalAlgebra SSet
-open SerrePositivity.EInfinity.SimplicialLocalization
+open CategoryTheory _root_.HomotopicalAlgebra SSet
+open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.Reedy SerrePositivity.InfinityCategories
 open scoped Simplicial
 universe e2F236U e2F236V
@@ -27962,32 +27969,32 @@ variable {C : Type e2F236U} [Category.{e2F236V} C] [ModelCategory C]
   (X Y : BifibrantObject C)
   (q : CofibrantResolution (C := C) simplex X.obj)
 
-example : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsLeftCofinal (modelBifibrantSourceFrameRoofMap X Y q) :=
-  modelBifibrantSourceRoofMap_isLeftCofinal X Y q r
+example : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsLeftCofinal (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceFrameRoofMap X Y q) :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofMap_isLeftCofinal X Y q r
 
-example : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsLeftCofinal (modelBifibrantFrameRightKanMap X q) :=
-  modelBifibrantFrameRightKanMap_isLeftCofinal X q r
+example : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsLeftCofinal (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantFrameRightKanMap X q) :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantFrameRightKanMap_isLeftCofinal X q r
 
-example (b : (modelBifibrantSourceRoofTarget X Y q) _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (modelBifibrantSourceRoofProductCommaNativePinchedMap X Y q b) :=
-  modelBifibrantSourceRoofProductCommaNativePinchedMap_weak X Y q b r
+example (b : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofTarget X Y q) _⦋0⦌) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativePinchedMap X Y q b) :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativePinchedMap_weak X Y q b r
 
-example : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C))
-    (weakNerveEdges (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)) :=
-  modelBifibrantHammock_isLocalization r
+example : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C))
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)) :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantHammock_isLocalization r
 
 example {E : SSet.{max e2F236U e2F236V}} [Quasicategory E]
     (F : nerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C).category ⟶ E)
-    (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InvertsEdges F (weakNerveEdges (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)))
-    (z : (kanHammockNerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)) _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasLimit (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.rightKanDiagram (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C))
+    (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InvertsEdges F (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)))
+    (z : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockNerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)) _⦋0⦌) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasLimit (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.rightKanDiagram (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C))
       F z) :=
-  modelBifibrantSourceRightKanDiagram_hasLimit_all r F hF z
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRightKanDiagram_hasLimit_all r F hF z
 end e2Fixtures236
 
 noncomputable section e2Fixtures238
-open CategoryTheory HomotopicalAlgebra SSet
-open SerrePositivity.EInfinity SerrePositivity.EInfinity.FrameHom
+open CategoryTheory _root_.HomotopicalAlgebra SSet
+open SerrePositivity.EInfinity _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom
 open SerrePositivity.Reedy SerrePositivity.InfinityCategories SerrePositivity.SimplicialModel
 open scoped Simplicial
 universe e2F238U e2F238V
@@ -27996,20 +28003,20 @@ variable {C : Type e2F238U} [Category.{e2F238V} C] [ModelCategory C] {X Y : C}
   (r : CofibrantResolutionFamily (C := Cᵒᵖ) simplex)
   (cof : MorphismProperty.FunctorialFactorizationData (cofibrations C) (trivialFibrations C))
 
-example : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (rightFrameHammockCoherentDiagram q r 0)
-    (rightFrameHammockCoherentDiagram q r 6) :=
-  FrameHom.rightFrameHammockCoherentComparison q r cof
+example : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockCoherentDiagram q r 0)
+    (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockCoherentDiagram q r 6) :=
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockCoherentComparison q r cof
 
 example {K : SSet.{max e2F238U e2F238V + 1}}
     (f : K ⟶ SSet.uliftFunctor.{max e2F238U e2F238V + 1, max e2F238U e2F238V}.obj
       (nerve (AsSmall.{max e2F238U e2F238V} C))) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (f ≫ rightFrameHammockCoherentDiagram q r 0)
-      (f ≫ rightFrameHammockCoherentDiagram q r 6) :=
-  FrameHom.rightFrameHammockCoherentComparison_precomp q r cof f
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (f ≫ _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockCoherentDiagram q r 0)
+      (f ≫ _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockCoherentDiagram q r 6) :=
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockCoherentComparison_precomp q r cof f
 
 example (i : Fin 6) (Y : AsSmall.{max e2F238U e2F238V} C) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((rightFrameHammockFamilyEdge q r i).app (AsSmall.down.obj Y)) :=
-  rightFrameHammockFamilyEdge_weak q r cof i _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockFamilyEdge q r i).app (AsSmall.down.obj Y)) :=
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockFamilyEdge_weak q r cof i _
 
 example : _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.sourceFrameOrdinaryHomUnit q ≫ _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightMixedLeft q r =
     _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameHomUnit r X ≫ _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightMixedRight q r :=
@@ -28020,35 +28027,35 @@ example (n : SimplexCategory) (f : X ⟶ Y) :
       (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitRowMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.obj (weakEquivalences C) (q.augmentation.app n)
         (q.augmentation_weakEquivalence n) (q.augmentation.app n ≫ f))) =
       AnodyneHomotopy.anodyneQ.map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap (weakEquivalences C) f) :=
-  sourceFrameUnitRoof_Q q n f
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.sourceFrameUnitRoof_Q q n f
 end e2Fixtures238
 
 noncomputable section e2Fixtures238DG
-open CategoryTheory HomotopicalAlgebra
-open SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization
+open CategoryTheory _root_.HomotopicalAlgebra
+open SerrePositivity.EInfinity _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 universe e2F238R
 variable (R : Type e2F238R) [CommRing R]
 
 example : letI := DGAlgebra.modelCategory R
-    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory (Mon (Complex R))))
-      (weakNerveEdges (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory (Mon (Complex R)))) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory (Mon (Complex R))))
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory (Mon (Complex R)))) :=
   DGAlgebra.bifibrantHammock_isLocalization R
 
 example (X : Mon (Complex R)) : letI := DGAlgebra.modelCategory R
     IsCofibrant X →
       _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
-        (FrameHom.rightFrameHammockCoherentDiagram ((DGAlgebra.sourceFrameFamily R).atObject X)
+        (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockCoherentDiagram ((DGAlgebra.sourceFrameFamily R).atObject X)
           (DGAlgebra.rightFrameFamily R) 0)
-        (FrameHom.rightFrameHammockCoherentDiagram ((DGAlgebra.sourceFrameFamily R).atObject X)
+        (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockCoherentDiagram ((DGAlgebra.sourceFrameFamily R).atObject X)
           (DGAlgebra.rightFrameFamily R) 6) :=
   DGAlgebra.rightFrameHammockCoherentComparison R X
 end e2Fixtures238DG
 
 noncomputable section e2Fixtures239
-open CategoryTheory HomotopicalAlgebra SSet
-open SerrePositivity.EInfinity SerrePositivity.EInfinity.FrameHom
-open SerrePositivity.EInfinity.SimplicialLocalization
+open CategoryTheory _root_.HomotopicalAlgebra SSet
+open SerrePositivity.EInfinity _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom
+open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.Reedy SerrePositivity.InfinityCategories SerrePositivity.SimplicialModel
 open scoped Simplicial
 universe e2F239U e2F239V
@@ -28057,64 +28064,64 @@ variable {C : Type e2F239U} [Category.{e2F239V} C] [ModelCategory C]
   (r : CofibrantResolutionFamily (C := Cᵒᵖ) simplex)
   {Q : SSet.{max e2F239U e2F239V}} [Quasicategory Q]
   (G : nerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C).category ⟶ Q)
-  (hG : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization G (weakNerveEdges (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)))
+  (hG : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization G (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)))
 attribute [local instance] _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameHom_kanComplex
 
-example : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C))
-    (weakNerveEdges (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)) := modelHammock_isLocalization r
+example : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C))
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)) := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelHammock_isLocalization r
 
-example : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.modelCofibrantRelativeCategory C))
-    (weakNerveEdges (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.modelCofibrantRelativeCategory C)) := modelCofibrantHammock_isLocalization r
+example : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.modelCofibrantRelativeCategory C))
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.modelCofibrantRelativeCategory C)) := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelCofibrantHammock_isLocalization r
 
 example (X Y : C) [IsCofibrant X] : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence
     (SSet.uliftFunctor.{max e2F239U e2F239V, e2F239V}.obj ((_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameHom r X).obj Y))
     (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.pinchedHom (G.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C X)))
       (G.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C Y)))) :=
-  modelRightFramePinchedEquivalence r G hG X Y
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelRightFramePinchedEquivalence r G hG X Y
 
-example : CoherentLocalizationComparison
-    (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)) G :=
-  modelRightFrameLocalizationComparison r G hG
+example : _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CoherentLocalizationComparison
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)) G :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelRightFrameLocalizationComparison r G hG
 
 example {X Y : C} [IsCofibrant X] (q : CofibrantResolution (C := C) simplex X)
     (f : X ⟶ Y)
     (cof : MorphismProperty.FunctorialFactorizationData (cofibrations C) (trivialFibrations C)) :
-    AnodyneHomotopy.anodyneQ.map (rightFrameHammockUnitPoint q r f 0 ≫
-      (rightFrameHammockPinchedEquivalence q r cof Y).hom) =
+    AnodyneHomotopy.anodyneQ.map (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockUnitPoint q r f 0 ≫
+      (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockPinchedEquivalence q r cof Y).hom) =
     AnodyneHomotopy.anodyneQ.map
       (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C).weakEquivalences (AsSmall.up.map f) ≫
         _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app _ ≫
-          kanHammockHomPinchedMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)
+          _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockHomPinchedMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)
             (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C X) (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C Y)) :=
-  rightFrameHammockPinchedEquivalence_unit_arrow_Q q r f cof
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockPinchedEquivalence_unit_arrow_Q q r f cof
 end e2Fixtures239
 
 noncomputable section e2Fixtures239DG
-open CategoryTheory HomotopicalAlgebra SSet
-open SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization
+open CategoryTheory _root_.HomotopicalAlgebra SSet
+open SerrePositivity.EInfinity _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open scoped Simplicial
 universe e2F239R
 variable (R : Type e2F239R) [CommRing R]
 
 example : letI := DGAlgebra.modelCategory R
-    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory (Mon (Complex R))))
-      (weakNerveEdges (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory (Mon (Complex R)))) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory (Mon (Complex R))))
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory (Mon (Complex R)))) :=
   DGAlgebra.hammock_isLocalization R
 
 example {Q : SSet.{e2F239R + 1}} [Quasicategory Q] :
     letI := DGAlgebra.modelCategory R
     ∀ (G : nerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory (Mon (Complex R))).category ⟶ Q),
-      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization G (weakNerveEdges (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory (Mon (Complex R)))) →
-        FrameHom.CoherentLocalizationComparison
-          (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory (Mon (Complex R)))) G :=
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization G (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory (Mon (Complex R)))) →
+        _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CoherentLocalizationComparison
+          (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory (Mon (Complex R)))) G :=
   DGAlgebra.frameLocalizationComparison R
 end e2Fixtures239DG
 
 noncomputable section e2Fixtures240
-open CategoryTheory HomotopicalAlgebra SSet
-open SerrePositivity.EInfinity SerrePositivity.EInfinity.FrameHom
-open SerrePositivity.EInfinity.SimplicialLocalization
+open CategoryTheory _root_.HomotopicalAlgebra SSet
+open SerrePositivity.EInfinity _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom
+open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.Reedy SerrePositivity.InfinityCategories SerrePositivity.SimplicialModel
 open scoped Simplicial
 universe e2F240U e2F240V
@@ -28124,7 +28131,7 @@ example {A B : SSet.{e2F240U}} [Quasicategory A] [Quasicategory B]
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.homInfinityCovariant x)
       (SSet.uliftFunctor.{e2F240U + 1, e2F240U}.map e.hom ≫
         _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.homInfinityCovariant (e.hom.app (Opposite.op ⦋0⦌) x)) :=
-  homInfinityEquivalenceTransport e x
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.homInfinityEquivalenceTransport e x
 
 example {A B : SSet.{e2F240U}} [Quasicategory A] [Quasicategory B]
     {f g : A ⟶ B} (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso f g) (x : A _⦋0⦌) :
@@ -28133,37 +28140,37 @@ example {A B : SSet.{e2F240U}} [Quasicategory A] [Quasicategory B]
         _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.homInfinityCovariant (f.app (Opposite.op ⦋0⦌) x))
       (SSet.uliftFunctor.{e2F240U + 1, e2F240U}.map g ≫
         _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.homInfinityCovariant (g.app (Opposite.op ⦋0⦌) x)) :=
-  homInfinityTriangleDiagramIso e x
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.homInfinityTriangleDiagramIso e x
 
 example {D : Type e2F240U} [Category.{e2F240U} D] [SimplicialCategory D]
     [∀ A B : D, KanComplex (SimplicialCategory.sHom A B)] (X : D) :
     SSet.uliftFunctor.{e2F240U + 1, e2F240U}.map (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.nerveToCoherent D) ≫
-      enrichedHomCoherent X = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanDiagramCoherentNerve (enrichedHomOrdinaryFamily X) :=
-  enrichedHomCoherent_ordinary X
+      _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.enrichedHomCoherent X = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanDiagramCoherentNerve (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.enrichedHomOrdinaryFamily X) :=
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.enrichedHomCoherent_ordinary X
 
 variable {C : Type e2F240U} [Category.{e2F240V} C] [ModelCategory C] {X : C}
   (q : CofibrantResolution (C := C) simplex X)
   (r : CofibrantResolutionFamily (C := Cᵒᵖ) simplex)
 
-example : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (rightFrameHammockCoherentDiagram q r 6)
+example : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockCoherentDiagram q r 6)
     (SSet.uliftFunctor.{max e2F240U e2F240V + 1, max e2F240U e2F240V}.map
-      (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)) ≫
-        kanHammockHomCoherent (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C) (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C X)) :=
-  rightFrameHammockTerminalRealizationIso q r
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)) ≫
+        _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockHomCoherent (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C) (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C X)) :=
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockTerminalRealizationIso q r
 
 example {J : SSet.{max e2F240U e2F240V + 1}}
     (f : J ⟶ SSet.uliftFunctor.{max e2F240U e2F240V + 1, max e2F240U e2F240V}.obj
       (nerve (AsSmall.{max e2F240U e2F240V} C))) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (f ≫ rightFrameHammockCoherentDiagram q r 6)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (f ≫ _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockCoherentDiagram q r 6)
       (f ≫ SSet.uliftFunctor.{max e2F240U e2F240V + 1, max e2F240U e2F240V}.map
-        (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)) ≫
-          kanHammockHomCoherent (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C) (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C X)) :=
-  rightFrameHammockTerminalRealizationIso_precomp q r f
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)) ≫
+          _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockHomCoherent (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C) (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C X)) :=
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockTerminalRealizationIso_precomp q r f
 end e2Fixtures240
 
 noncomputable section e2Fixtures240DG
-open CategoryTheory HomotopicalAlgebra SSet
-open SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization
+open CategoryTheory _root_.HomotopicalAlgebra SSet
+open SerrePositivity.EInfinity _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open scoped Simplicial
 universe e2F240R
@@ -28171,20 +28178,20 @@ universe e2F240R
 example (R : Type e2F240R) [CommRing R] (X : Mon (Complex R)) :
     letI := DGAlgebra.modelCategory R
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
-      (FrameHom.rightFrameHammockCoherentDiagram ((DGAlgebra.sourceFrameFamily R).atObject X)
+      (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockCoherentDiagram ((DGAlgebra.sourceFrameFamily R).atObject X)
         (DGAlgebra.rightFrameFamily R) 6)
       (SSet.uliftFunctor.{e2F240R + 2, e2F240R + 1}.map
-        (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory (Mon (Complex R)))) ≫
-          kanHammockHomCoherent (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory (Mon (Complex R)))
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory (Mon (Complex R)))) ≫
+          _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockHomCoherent (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory (Mon (Complex R)))
             (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject (Mon (Complex R)) X)) := by
   letI := DGAlgebra.modelCategory R
-  exact FrameHom.rightFrameHammockTerminalRealizationIso
+  exact _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockTerminalRealizationIso
     ((DGAlgebra.sourceFrameFamily R).atObject X) (DGAlgebra.rightFrameFamily R)
 end e2Fixtures240DG
 
 noncomputable section e2Fixtures241
 open CategoryTheory SSet
-open SerrePositivity.EInfinity SerrePositivity.EInfinity.FrameHom
+open SerrePositivity.EInfinity _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom
 open SerrePositivity.KST.Comparison
 open scoped Simplicial
 universe e2F241U e2F241V
@@ -28193,22 +28200,22 @@ variable {C : Type e2F241U} [Category.{e2F241V} C]
 
 example (f : X ⟶ Y) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap W f ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W X Y) ≫
-      (asSmallKanHammockHomFamilyMap W X).app (AsSmall.up.obj Y) =
+      (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.asSmallKanHammockHomFamilyMap W X).app (AsSmall.up.obj Y) =
         _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap (Hammock.AsSmallComparison.weak W) (AsSmall.up.map f) ≫
           _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph (Hammock.AsSmallComparison.weak W)
             (AsSmall.up.obj X) (AsSmall.up.obj Y)) :=
-  asSmallKanHammockHomFamilyMap_arrow W X f
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.asSmallKanHammockHomFamilyMap_arrow W X f
 
 example (Z : AsSmall.{max e2F241U e2F241V} C) :
-    (asSmallKanHammockHomFamilyMap W X).app Z =
+    (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.asSmallKanHammockHomFamilyMap W X).app Z =
       _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (Hammock.AsSmallComparison.colimitIso W X (AsSmall.down.obj Z)).hom :=
-  asSmallKanHammockHomFamilyMap_app W X Z
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.asSmallKanHammockHomFamilyMap_app W X Z
 end e2Fixtures241
 
 noncomputable section e2Fixtures242
-open CategoryTheory HomotopicalAlgebra SSet Opposite
-open SerrePositivity.EInfinity SerrePositivity.EInfinity.FrameHom
-open SerrePositivity.EInfinity.SimplicialLocalization
+open CategoryTheory _root_.HomotopicalAlgebra SSet Opposite
+open SerrePositivity.EInfinity _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom
+open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.Reedy SerrePositivity.InfinityCategories SerrePositivity.SimplicialModel
 open scoped Simplicial
 universe e2F242U e2F242V
@@ -28217,28 +28224,28 @@ variable {C : Type e2F242U} [Category.{e2F242V} C] [ModelCategory C] {X : C}
   (r : CofibrantResolutionFamily (C := Cᵒᵖ) simplex)
   {Q : SSet.{max e2F242U e2F242V}} [Quasicategory Q]
   {G : nerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C).category ⟶ Q}
-  (c : CoherentLocalizationComparison (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)) G)
+  (c : _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CoherentLocalizationComparison (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)) G)
 
-example : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (rightFrameHammockCoherentDiagram q r 6)
+example : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockCoherentDiagram q r 6)
     (SSet.uliftFunctor.{max e2F242U e2F242V + 1, max e2F242U e2F242V}.map G ≫
       _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.homInfinityCovariant (G.app (op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C X)))) :=
-  rightFrameTerminalHomIso q r c
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameTerminalHomIso q r c
 
 example {J : SSet.{max e2F242U e2F242V + 1}}
     (f : J ⟶ SSet.uliftFunctor.{max e2F242U e2F242V + 1, max e2F242U e2F242V}.obj
       (nerve (AsSmall.{max e2F242U e2F242V} C))) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (f ≫ rightFrameHammockCoherentDiagram q r 6)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (f ≫ _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockCoherentDiagram q r 6)
       (f ≫ SSet.uliftFunctor.{max e2F242U e2F242V + 1, max e2F242U e2F242V}.map G ≫
         _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.homInfinityCovariant (G.app (op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C X)))) :=
-  rightFrameTerminalHomIso_precomp q r c f
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameTerminalHomIso_precomp q r c f
 
-example : (rightFrameTerminalHomComparison q r c).2.triangle = c.triangle :=
-  rightFrameTerminalHomComparison_triangle q r c
+example : (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameTerminalHomComparison q r c).2.triangle = c.triangle :=
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameTerminalHomComparison_triangle q r c
 end e2Fixtures242
 
 noncomputable section e2Fixtures242DG
-open CategoryTheory HomotopicalAlgebra SSet Opposite
-open SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization
+open CategoryTheory _root_.HomotopicalAlgebra SSet Opposite
+open SerrePositivity.EInfinity _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open scoped Simplicial
 universe e2F242R
@@ -28247,10 +28254,10 @@ variable (R : Type e2F242R) [CommRing R]
 example {Q : SSet.{e2F242R + 1}} [Quasicategory Q] :
     letI := DGAlgebra.modelCategory R
     ∀ (G : nerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory (Mon (Complex R))).category ⟶ Q),
-      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization G (weakNerveEdges (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory (Mon (Complex R)))) →
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization G (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory (Mon (Complex R)))) →
       ∀ X : Mon (Complex R),
       _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
-        (FrameHom.rightFrameHammockCoherentDiagram ((DGAlgebra.sourceFrameFamily R).atObject X)
+        (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockCoherentDiagram ((DGAlgebra.sourceFrameFamily R).atObject X)
           (DGAlgebra.rightFrameFamily R) 6)
         (SSet.uliftFunctor.{e2F242R + 2, e2F242R + 1}.map G ≫
           _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.homInfinityCovariant (G.app (op ⦋0⦌)
@@ -28260,10 +28267,10 @@ example {Q : SSet.{e2F242R + 1}} [Quasicategory Q] :
 example {Q : SSet.{e2F242R + 1}} [Quasicategory Q] :
     letI := DGAlgebra.modelCategory R
     ∀ (G : nerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory (Mon (Complex R))).category ⟶ Q),
-      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization G (weakNerveEdges (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory (Mon (Complex R)))) →
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization G (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory (Mon (Complex R)))) →
       ∀ X : Mon (Complex R), IsCofibrant X →
       _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
-        (FrameHom.rightFrameHammockCoherentDiagram ((DGAlgebra.sourceFrameFamily R).atObject X)
+        (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockCoherentDiagram ((DGAlgebra.sourceFrameFamily R).atObject X)
           (DGAlgebra.rightFrameFamily R) 0)
         (SSet.uliftFunctor.{e2F242R + 2, e2F242R + 1}.map G ≫
           _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.homInfinityCovariant (G.app (op ⦋0⦌)

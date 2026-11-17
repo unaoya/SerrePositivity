@@ -21,7 +21,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory SSet
-open SerrePositivity.EInfinity SimplicialLocalization
+open SerrePositivity.EInfinity _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories
 open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories
 open SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations
@@ -54,7 +54,7 @@ lemma moduleInnerCartesianLiftEdge_invertible {X Y : (operad A).Algebra} (f : X 
 lemma moduleInnerCartesianLiftEdge_projection {X Y : (operad A).Algebra} (f : X ⟶ Y)
     (M : strictRawModuleCategory A Y) :
     ((moduleInnerCartesianLiftEdge A f M).map (moduleTotalInnerProjection A)).edge =
-      (coherentNerveEdge (kanLocalizationStrictHom (cofibrantAlgebraRelativeCategory A)
+      (coherentNerveEdge (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanLocalizationStrictHom (cofibrantAlgebraRelativeCategory A)
         ((algebraToCofibrantDKRelative A).functor.map
           ((ULiftHom.up.{u,u+1,u+1} (C := (operad A).Algebra)).map f)))).edge := by
   change (moduleTotalInnerInclusion A ≫ moduleTotalInnerProjection A).app (Opposite.op ⦋1⦌)

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.ConstantDiagramReplacement
-public import SerrePositivity.EInfinity.HomotopyWeight.PointwiseTensorFrame
+public import SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.PointwiseTensorFrame
 
 /-!
 # 定値 E 代数図式の具体的な余単体的 frame
@@ -23,7 +23,7 @@ universe u
 
 namespace SerrePositivity.EInfinity.BarrattEccles
 
-open CategoryTheory Limits HomotopicalAlgebra
+open CategoryTheory Limits _root_.HomotopicalAlgebra
 open SerrePositivity.Reedy SerrePositivity.HomotopyFunctionComplex
 open SerrePositivity.DiagramModel
 
@@ -74,7 +74,7 @@ def constantDiagramFrameFamily :
   exact (cosimplicialResolutionFamily (mappingCofibrantFactorization A)).obj ⋙
     Realization.family ⋙ Functor.whiskeringRight K SSet.{u} (operad A).Algebra ⋙
       (Functor.whiskeringLeft SimplexCategory (K ⥤ SSet.{u}) (K ⥤ (operad A).Algebra)).obj
-        (SSet.stdSimplex ⋙ WeightedCones.tensorDiagram K (HomotopyWeight.weight K))
+        (SSet.stdSimplex ⋙ WeightedCones.tensorDiagram K (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K))
 
 /-- 概要：指定した E 代数の定値図式の実際の frame（Hovey §5.4）。
 方針：構成した関手族をその代数で評価する。
@@ -90,7 +90,7 @@ abbrev constantDiagramFrame (Y : (operad A).Algebra) :
 def constantDiagramSourceHom (Y : (operad A).Algebra) :
     (K ⥤ (operad A).Algebra) ⥤ SSet.{u} := by
   let := modelCategory A
-  exact HomotopyWeight.pointwiseWeightedHom K (HomotopyWeight.weight K)
+  exact _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseWeightedHom K (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K)
     ((cosimplicialResolutionFamily (mappingCofibrantFactorization A)).obj.obj Y)
 
 /-- 概要：図式の frame の Hom は元の始域 frame の錐と同型（Hovey §5.4）。
@@ -100,7 +100,7 @@ def constantDiagramSourceHom (Y : (operad A).Algebra) :
 def constantDiagramFrameHomIso (Y : (operad A).Algebra) :
     _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (constantDiagramFrame A K Y) ≅ constantDiagramSourceHom A K Y := by
   let := modelCategory A
-  exact HomotopyWeight.pointwiseTensorFrameHomIso K (HomotopyWeight.weight K)
+  exact _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseTensorFrameHomIso K (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K)
     ((cosimplicialResolutionFamily (mappingCofibrantFactorization A)).obj.obj Y)
 
 /-- 概要：図式 frame の零次は構成済みの定値図式置換（Hovey §5.4）。
@@ -111,7 +111,7 @@ def constantDiagramFrameZeroIso (Y : (operad A).Algebra) :
     (constantDiagramFrame A K Y).obj (SimplexCategory.mk 0) ≅
       (constantDiagramReplacement A K).obj Y := by
   let := modelCategory A
-  exact HomotopyWeight.pointwiseTensorFrameZeroIso K (HomotopyWeight.weight K)
+  exact _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseTensorFrameZeroIso K (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K)
     ((cosimplicialResolutionFamily (mappingCofibrantFactorization A)).obj.obj Y)
 
 /-- 概要：定値図式の frame は実際の射影図式モデルで Reedy cofibrant（Hovey §5.4）。
@@ -125,8 +125,8 @@ lemma constantDiagramFrame_reedyCofibrant (Y : (operad A).Algebra) :
   let := modelCategory A
   let := Diagram.projectiveModelCategory A K
   let q := cosimplicialResolutionFamily (mappingCofibrantFactorization A)
-  exact HomotopyWeight.pointwiseTensorFrame_reedyCofibrant K (HomotopyWeight.weight K)
-    (q.obj.obj Y) (HomotopyWeight.weight_cofibrant K) (q.cofibrant Y)
+  exact _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseTensorFrame_reedyCofibrant K (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K)
+    (q.obj.obj Y) (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight_cofibrant K) (q.cofibrant Y)
     (Diagram.trivialFibration_app A K)
 
 /-- 概要：定値図式 frame の全単体作用素は図式の弱同値（Hovey §5.4）。
@@ -140,8 +140,8 @@ lemma constantDiagramFrame_homotopicallyConstant (Y : (operad A).Algebra)
   let := modelCategory A
   let := Diagram.projectiveModelCategory A K
   let q := cosimplicialResolutionFamily (mappingCofibrantFactorization A)
-  exact HomotopyWeight.pointwiseTensorFrame_homotopicallyConstant K (HomotopyWeight.weight K)
-    (q.obj.obj Y) (HomotopyWeight.weight_cofibrant K) (q.cofibrant Y)
+  exact _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseTensorFrame_homotopicallyConstant K (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K)
+    (q.obj.obj Y) (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight_cofibrant K) (q.cofibrant Y)
     (q.atObject Y).homotopicallyConstant (Diagram.fibration_app A K) f
 
 /-- 概要：始域 frame の重み付き錐は Kan 複体（Hovey §5.4）。
@@ -152,8 +152,8 @@ lemma constantDiagramSourceHom_kanComplex (Y : (operad A).Algebra)
     (F : K ⥤ (operad A).Algebra) : SSet.KanComplex ((constantDiagramSourceHom A K Y).obj F) := by
   let := modelCategory A
   let q := cosimplicialResolutionFamily (mappingCofibrantFactorization A)
-  apply HomotopyWeight.coneSpace_kanComplex K (HomotopyWeight.weight K)
-    (HomotopyWeight.weight_cofibrant K)
+  apply _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.coneSpace_kanComplex K (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K)
+    (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight_cofibrant K)
   intro k
   have := isFibrant A (F.obj k)
   exact cosimplicialHom_kanComplex _ (q.cofibrant Y) (q.atObject Y).homotopicallyConstant (F.obj k)

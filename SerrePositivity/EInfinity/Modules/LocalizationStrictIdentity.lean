@@ -18,7 +18,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.Modules
 open CategoryTheory SSet
-open SerrePositivity.EInfinity SimplicialLocalization
+open SerrePositivity.EInfinity _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization
 open SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories
 variable (C : RelativeCategory.{u})
@@ -27,12 +27,12 @@ variable (C : RelativeCategory.{u})
 方針：源の恒等射の保存を同じ頂点比較で共役する。
 規約：別の恒等辺との厳密等号は主張しない。使われ方：弱円筒の射影の成分。 -/
 lemma localizationStrictHom_id (X : C.category) :
-    SSet.HomotopyCategory.homMk (coherentNerveEdge (kanLocalizationStrictHom C (𝟙 X))) =
+    SSet.HomotopyCategory.homMk (coherentNerveEdge (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanLocalizationStrictHom C (𝟙 X))) =
       𝟙 _ := by
-  have h := localizationStrictSourceIso_naturality C (𝟙 X)
+  have h := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationStrictSourceIso_naturality C (𝟙 X)
   rw [nerve.edgeMk_id, SSet.HomotopyCategory.homMk_id,
     CategoryTheory.Functor.map_id, Category.id_comp] at h
-  apply (cancel_epi (localizationStrictSourceIso C X).hom).mp
+  apply (cancel_epi (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationStrictSourceIso C X).hom).mp
   simpa only [Category.comp_id] using h.symm
 
 attribute [cite HTT "1.2.3" (partial := component)

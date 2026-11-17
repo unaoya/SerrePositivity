@@ -15,7 +15,7 @@ public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
-open CategoryTheory CategoryTheory.Limits HomotopicalAlgebra Opposite
+open CategoryTheory CategoryTheory.Limits _root_.HomotopicalAlgebra Opposite
 open SerrePositivity.SimplicialModel
 open SerrePositivity.InfinityCategories.Project.ModelCategoryComparison
 namespace SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison
@@ -27,14 +27,14 @@ local instance mixedFrameInitial : HasInitial (StrictComplexDiagram A d) :=
 
 /-- 元の source frame と、同じ fibrant target の right frame の混合 Hom。 -/
 def strictDiagramMixedFrame (X Y : StrictComplexDiagram A d) : SSet.{u} :=
-  (EInfinity.FrameHom.MixedFrame.mixedFunctor (strictDiagramSourceFrame A d X).obj).obj
+  (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedFrame.mixedFunctor (strictDiagramSourceFrame A d X).obj).obj
     ((rightFrameDiagram (strictDiagramRightFrameFamily A d)).obj
       (strictDiagramFibrantTarget A d Y))
 
 /-- 元の source frame Hom から、同じ right augmentation の後合成による射。 -/
 def strictDiagramMixedFrameLeft (X Y : StrictComplexDiagram A d) :
     strictDiagramFrameMapping A d X Y ⟶ strictDiagramMixedFrame A d X Y :=
-  EInfinity.FrameHom.MixedFrame.leftComparison (strictDiagramSourceFrame A d X).obj
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedFrame.leftComparison (strictDiagramSourceFrame A d X).obj
     ((rightFrameUnit (strictDiagramRightFrameFamily A d)).app
       (strictDiagramFibrantTarget A d Y))
 
@@ -42,7 +42,7 @@ def strictDiagramMixedFrameLeft (X Y : StrictComplexDiagram A d) :
 def strictDiagramMixedFrameRight (X Y : StrictComplexDiagram A d) :
     (strictDiagramRightFrameMapping A d (strictDiagramSourceFrameZero A d X)).obj
       (strictDiagramFibrantTarget A d Y) ⟶ strictDiagramMixedFrame A d X Y :=
-  EInfinity.FrameHom.MixedFrame.rightComparison (strictDiagramSourceFrame A d X).obj
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedFrame.rightComparison (strictDiagramSourceFrame A d X).obj
     (strictDiagramSourceFrameZeroAugmentation A d X)
     ((rightFrameDiagram (strictDiagramRightFrameFamily A d)).obj
       (strictDiagramFibrantTarget A d Y))

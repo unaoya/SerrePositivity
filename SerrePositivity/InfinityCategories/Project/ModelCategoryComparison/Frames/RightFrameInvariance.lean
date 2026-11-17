@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Frames.RightFrameFamily
 public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.SourceInvariance
-public import SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection
 public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.WeakWhitehead
 
 /-!
@@ -17,7 +17,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u v uD vD
 namespace SerrePositivity.InfinityCategories.Project.ModelCategoryComparison
-open CategoryTheory Limits HomotopicalAlgebra Opposite
+open CategoryTheory Limits _root_.HomotopicalAlgebra Opposite
 open _root_.SerrePositivity.Reedy _root_.SerrePositivity.HomotopyFunctionComplex
 open _root_.SerrePositivity.InfinityCategories _root_.SerrePositivity.SimplicialModel
 variable {C : Type u} [Category.{v} C] [ModelCategory C]
@@ -60,7 +60,7 @@ lemma rightFrameHom_map_isIso (X : C) [IsCofibrant X]
 lemma rightFrameHom_map_isWeakHomotopyEquivalence (X : C) [IsCofibrant X]
     {Y Z : C} (f : Y ⟶ Z) (hf : weakEquivalences C f) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameHom r X).map f) :=
-  _root_.SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.isWeakHomotopyEquivalence _
     (rightFrameHom_map_isIso r X f hf AnodyneHomotopy.anodyneQ
       (Localization.inverts _ SSet.anodyneExtensions))
 

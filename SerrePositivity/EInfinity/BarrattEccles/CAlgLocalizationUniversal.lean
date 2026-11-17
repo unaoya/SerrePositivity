@@ -19,17 +19,17 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open CategoryTheory SSet SimplicialLocalization
+open CategoryTheory SSet _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A]
 
 lemma cofibrantHammockLocalization_isLocalization :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization (hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
-      (weakNerveEdges (cofibrantAlgebraRelativeCategory A)) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges (cofibrantAlgebraRelativeCategory A)) := by
   apply _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.isLocalization_of_rightKan_local_limits
-    (hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
-    (weakNerveEdges (cofibrantAlgebraRelativeCategory A))
-    (hammockLocalizationNerveMap_inverts (cofibrantAlgebraRelativeCategory A))
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges (cofibrantAlgebraRelativeCategory A))
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap_inverts (cofibrantAlgebraRelativeCategory A))
   · intro E _ G
     exact cofibrantSourceRightKanExtension_refl A G
   · intro E _ F hF z
@@ -39,14 +39,14 @@ lemma cofibrantHammockLocalization_isLocalization :
 
 lemma cAlgLocalizationSource_isLocalization :
     _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization (cAlgLocalizationSource A)
-      (weakNerveEdges (cofibrantAlgebraRelativeCategory A)) :=
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges (cofibrantAlgebraRelativeCategory A)) :=
   (cAlgLocalizationSource_isLocalization_iff A).mpr
     (cofibrantHammockLocalization_isLocalization A)
 
 lemma cAlgLocalizationPrecomposition_isQCatEquivalence
     (E : SSet.{u + 1}) [Quasicategory E] :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.localizationPrecomposition (cAlgLocalizationSource A)
-      (weakNerveEdges (cofibrantAlgebraRelativeCategory A))
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges (cofibrantAlgebraRelativeCategory A))
       (cAlgLocalizationSource_inverts A) E) := by
   obtain ⟨h, he⟩ := cAlgLocalizationSource_isLocalization A
   exact he E

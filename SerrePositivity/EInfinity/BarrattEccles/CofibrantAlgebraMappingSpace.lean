@@ -23,7 +23,7 @@ universe u
 
 namespace SerrePositivity.EInfinity.BarrattEccles
 
-open CategoryTheory HomotopicalAlgebra Opposite
+open CategoryTheory _root_.HomotopicalAlgebra Opposite
 
 variable (A : Type u) [CommRing A]
 

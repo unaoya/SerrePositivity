@@ -1,0 +1,379 @@
+{
+  "before": {
+    "extra": [
+      [
+        "CategoryTheory.AsSmall.down.eq_1",
+        "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofProductGeometricTriangle"
+      ],
+      [
+        "CategoryTheory.ULiftHom.objUp.eq_1",
+        "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofProductGeometricTriangle"
+      ],
+      [
+        "CategoryTheory.ULiftHom.up.eq_1",
+        "SerrePositivity.EInfinity.FrameHom.MixedNerveConstantHom"
+      ],
+      [
+        "CategoryTheory.ULiftHom.up.eq_1",
+        "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofProductGeometricTriangle"
+      ],
+      [
+        "SerrePositivity.EInfinity.BarrattEccles.framedLimitDerivedHomEquiv.eq_1",
+        "SerrePositivity.EInfinity.BarrattEccles.FramedLimitDerivedHomSource"
+      ],
+      [
+        "SerrePositivity.EInfinity.BarrattEccles.instHasColimitsOfSizeAlgebraOperad_2",
+        "SerrePositivity.EInfinity.BarrattEccles.ConstantDiagramPiZero"
+      ],
+      [
+        "SerrePositivity.EInfinity.BarrattEccles.instHasColimitsOfSizeAlgebraOperad_3",
+        "SerrePositivity.EInfinity.BarrattEccles.ConstantDiagramConeClasses"
+      ],
+      [
+        "SerrePositivity.EInfinity.ComplexLimits.framedLimitDerivedHomEquiv.eq_1",
+        "SerrePositivity.EInfinity.ComplexLimits.FramedLimitHomNaturality"
+      ],
+      [
+        "SerrePositivity.EInfinity.FrameHom.frameLeftRoofColimitMap.eq_1",
+        "SerrePositivity.EInfinity.FrameHom.FrameFunctorImage"
+      ],
+      [
+        "SerrePositivity.EInfinity.FrameHom.frameLeftRoofNerveMap.congr_simp",
+        "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceFrameGraph"
+      ],
+      [
+        "SerrePositivity.EInfinity.HomotopyWeight.pointwiseTensorAdjunction.eq_1",
+        "SerrePositivity.EInfinity.HomotopyWeight.PointwiseConePoints"
+      ],
+      [
+        "SerrePositivity.EInfinity.HomotopyWeight.tensorRealizationAdjunction.eq_1",
+        "SerrePositivity.EInfinity.HomotopyWeight.FrameConeClasses"
+      ],
+      [
+        "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.coherentAugmentationIso.congr_simp",
+        "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixColumnRoof"
+      ],
+      [
+        "SerrePositivity.EInfinity.SimplicialLocalization.kanHammockHomPinchedMap.eq_1",
+        "SerrePositivity.EInfinity.SimplicialLocalization.KanHammockArrowNormalization"
+      ],
+      [
+        "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.stableHomotopyRetarget.congr_simp",
+        "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofProductGeometricTriangle"
+      ],
+      [
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftStraighteningInfinityReconstruction.congr_simp",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.ClassifiedFibrationFiberComparison"
+      ],
+      [
+        "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence.choose.eq_1",
+        "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.TwistedHomPinchedComparison"
+      ],
+      [
+        "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence.symm.eq_1",
+        "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.TwistedHomIntervalFamilyComparison"
+      ],
+      [
+        "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence.trans.eq_1",
+        "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.TwistedHomIntervalFamilyComparison"
+      ],
+      [
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.rightKanDiagram.eq_1",
+        "SerrePositivity.EInfinity.FrameHom.FrameArrowRightKan"
+      ],
+      [
+        "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.FunctorIso.app.congr_simp",
+        "SerrePositivity.EInfinity.SimplicialLocalization.SourceHom"
+      ],
+      [
+        "SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Object.mk.congr_simp",
+        "SerrePositivity.EInfinity.FrameHom.FibrantFrameSpanNormalization"
+      ],
+      [
+        "SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.functorIsoEvaluate.eq_1",
+        "SerrePositivity.EInfinity.PowerOperation.NerveColumnRoofConjugation"
+      ],
+      [
+        "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Roof.pinchedEndpointIso.congr_simp",
+        "SerrePositivity.EInfinity.SimplicialLocalization.KanHammockArrowNormalization"
+      ]
+    ],
+    "missing": [
+      [
+        "SerrePositivity.EInfinity.BarrattEccles.instHasColimitsOfSizeAlgebraOperad_2",
+        "SerrePositivity.EInfinity.BarrattEccles.ConstantDiagramFrameComparison"
+      ],
+      [
+        "SerrePositivity.EInfinity.BarrattEccles.instHasColimitsOfSizeAlgebraOperad_3",
+        "SerrePositivity.EInfinity.BarrattEccles.ConstantDiagramSourcePiZero"
+      ],
+      [
+        "SerrePositivity.EInfinity.HomotopyWeight.pointwiseTensorAdjunction.eq_1",
+        "SerrePositivity.EInfinity.HomotopyWeight.PointwiseTensorSource"
+      ],
+      [
+        "SerrePositivity.EInfinity.HomotopyWeight.tensorRealizationAdjunction.eq_1",
+        "SerrePositivity.EInfinity.HomotopyWeight.TensorPiZeroNaturality"
+      ],
+      [
+        "SerrePositivity.EInfinity.SimplicialLocalization.kanHammockHomPinchedMap.eq_1",
+        "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixFamilyTriangle"
+      ],
+      [
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.rightKanDiagram.eq_1",
+        "SerrePositivity.EInfinity.FrameHom.FrameRightKan"
+      ]
+    ],
+    "named_source_positions": [
+      {
+        "name": "SerrePositivity.EInfinity.BarrattEccles.instHasColimitsOfSizeAlgebraOperad_3",
+        "module": "SerrePositivity.EInfinity.BarrattEccles.ConstantDiagramConeClasses",
+        "range": [
+          32,
+          0,
+          33,
+          34,
+          32,
+          6,
+          32,
+          14
+        ],
+        "source": "\nlocal instance : HasColimitsOfSize.{0, u} (operad A).Algebra :=\n  hasColimitsOfSizeShrink.{0, u} _\n"
+      },
+      {
+        "name": "SerrePositivity.EInfinity.BarrattEccles.instHasColimitsOfSizeAlgebraOperad_2",
+        "module": "SerrePositivity.EInfinity.BarrattEccles.ConstantDiagramFrameComparison",
+        "range": [
+          29,
+          0,
+          30,
+          34,
+          29,
+          6,
+          29,
+          14
+        ],
+        "source": "\nlocal instance : HasColimitsOfSize.{0, u} (operad A).Algebra :=\n  hasColimitsOfSizeShrink.{0, u} _\n"
+      },
+      {
+        "name": "SerrePositivity.EInfinity.BarrattEccles.instHasColimitsOfSizeAlgebraOperad_3",
+        "module": "SerrePositivity.EInfinity.BarrattEccles.ConstantDiagramSourcePiZero",
+        "range": [
+          34,
+          0,
+          35,
+          34,
+          34,
+          6,
+          34,
+          14
+        ],
+        "source": "\nlocal instance : HasColimitsOfSize.{0, u} (operad A).Algebra :=\n  hasColimitsOfSizeShrink.{0, u} _\n"
+      },
+      {
+        "name": "SerrePositivity.EInfinity.BarrattEccles.instHasColimitsOfSizeAlgebraOperad_2",
+        "module": "SerrePositivity.EInfinity.BarrattEccles.ConstantDiagramPiZero",
+        "range": [
+          33,
+          0,
+          34,
+          34,
+          33,
+          6,
+          33,
+          14
+        ],
+        "source": "\nlocal instance : HasColimitsOfSize.{0, u} (operad A).Algebra :=\n  hasColimitsOfSizeShrink.{0, u} _\n"
+      }
+    ]
+  },
+  "after": {
+    "extra": [
+      [
+        "CategoryTheory.AsSmall.down.eq_1",
+        "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSourceRoofProductGeometricTriangle"
+      ],
+      [
+        "CategoryTheory.ULiftHom.objUp.eq_1",
+        "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSourceRoofProductGeometricTriangle"
+      ],
+      [
+        "CategoryTheory.ULiftHom.up.eq_1",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerveConstantHom"
+      ],
+      [
+        "CategoryTheory.ULiftHom.up.eq_1",
+        "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSourceRoofProductGeometricTriangle"
+      ],
+      [
+        "SerrePositivity.EInfinity.BarrattEccles.framedLimitDerivedHomEquiv.eq_1",
+        "SerrePositivity.EInfinity.BarrattEccles.FramedLimitDerivedHomSource"
+      ],
+      [
+        "SerrePositivity.EInfinity.BarrattEccles.instHasColimitsOfSizeAlgebraOperad_2",
+        "SerrePositivity.EInfinity.BarrattEccles.ConstantDiagramPiZero"
+      ],
+      [
+        "SerrePositivity.EInfinity.BarrattEccles.instHasColimitsOfSizeAlgebraOperad_3",
+        "SerrePositivity.EInfinity.BarrattEccles.ConstantDiagramConeClasses"
+      ],
+      [
+        "SerrePositivity.EInfinity.ComplexLimits.framedLimitDerivedHomEquiv.eq_1",
+        "SerrePositivity.EInfinity.ComplexLimits.FramedLimitHomNaturality"
+      ],
+      [
+        "SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseTensorAdjunction.eq_1",
+        "SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.PointwiseConePoints"
+      ],
+      [
+        "SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.tensorRealizationAdjunction.eq_1",
+        "SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.FrameConeClasses"
+      ],
+      [
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameLeftRoofColimitMap.eq_1",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameFunctorImage"
+      ],
+      [
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameLeftRoofNerveMap.congr_simp",
+        "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSourceFrameGraph"
+      ],
+      [
+        "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.coherentAugmentationIso.congr_simp",
+        "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefixColumnRoof"
+      ],
+      [
+        "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockHomPinchedMap.eq_1",
+        "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanHammockArrowNormalization"
+      ],
+      [
+        "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.stableHomotopyRetarget.congr_simp",
+        "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSourceRoofProductGeometricTriangle"
+      ],
+      [
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftStraighteningInfinityReconstruction.congr_simp",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.ClassifiedFibrationFiberComparison"
+      ],
+      [
+        "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence.choose.eq_1",
+        "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.TwistedHomPinchedComparison"
+      ],
+      [
+        "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence.symm.eq_1",
+        "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.TwistedHomIntervalFamilyComparison"
+      ],
+      [
+        "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence.trans.eq_1",
+        "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.TwistedHomIntervalFamilyComparison"
+      ],
+      [
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.rightKanDiagram.eq_1",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrowRightKan"
+      ],
+      [
+        "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.FunctorIso.app.congr_simp",
+        "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.SourceHom"
+      ],
+      [
+        "SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Object.mk.congr_simp",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FibrantFrameSpanNormalization"
+      ],
+      [
+        "SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.functorIsoEvaluate.eq_1",
+        "SerrePositivity.EInfinity.PowerOperation.NerveColumnRoofConjugation"
+      ],
+      [
+        "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Roof.pinchedEndpointIso.congr_simp",
+        "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanHammockArrowNormalization"
+      ]
+    ],
+    "missing": [
+      [
+        "SerrePositivity.EInfinity.BarrattEccles.instHasColimitsOfSizeAlgebraOperad_2",
+        "SerrePositivity.EInfinity.BarrattEccles.ConstantDiagramFrameComparison"
+      ],
+      [
+        "SerrePositivity.EInfinity.BarrattEccles.instHasColimitsOfSizeAlgebraOperad_3",
+        "SerrePositivity.EInfinity.BarrattEccles.ConstantDiagramSourcePiZero"
+      ],
+      [
+        "SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseTensorAdjunction.eq_1",
+        "SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.PointwiseTensorSource"
+      ],
+      [
+        "SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.tensorRealizationAdjunction.eq_1",
+        "SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.TensorPiZeroNaturality"
+      ],
+      [
+        "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockHomPinchedMap.eq_1",
+        "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefixFamilyTriangle"
+      ],
+      [
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.rightKanDiagram.eq_1",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameRightKan"
+      ]
+    ],
+    "named_source_positions": [
+      {
+        "name": "SerrePositivity.EInfinity.BarrattEccles.instHasColimitsOfSizeAlgebraOperad_3",
+        "module": "SerrePositivity.EInfinity.BarrattEccles.ConstantDiagramConeClasses",
+        "range": [
+          32,
+          0,
+          33,
+          34,
+          32,
+          6,
+          32,
+          14
+        ],
+        "source": "\nlocal instance : HasColimitsOfSize.{0, u} (operad A).Algebra :=\n  hasColimitsOfSizeShrink.{0, u} _\n"
+      },
+      {
+        "name": "SerrePositivity.EInfinity.BarrattEccles.instHasColimitsOfSizeAlgebraOperad_2",
+        "module": "SerrePositivity.EInfinity.BarrattEccles.ConstantDiagramFrameComparison",
+        "range": [
+          29,
+          0,
+          30,
+          34,
+          29,
+          6,
+          29,
+          14
+        ],
+        "source": "\nlocal instance : HasColimitsOfSize.{0, u} (operad A).Algebra :=\n  hasColimitsOfSizeShrink.{0, u} _\n"
+      },
+      {
+        "name": "SerrePositivity.EInfinity.BarrattEccles.instHasColimitsOfSizeAlgebraOperad_3",
+        "module": "SerrePositivity.EInfinity.BarrattEccles.ConstantDiagramSourcePiZero",
+        "range": [
+          34,
+          0,
+          35,
+          34,
+          34,
+          6,
+          34,
+          14
+        ],
+        "source": "\nlocal instance : HasColimitsOfSize.{0, u} (operad A).Algebra :=\n  hasColimitsOfSizeShrink.{0, u} _\n"
+      },
+      {
+        "name": "SerrePositivity.EInfinity.BarrattEccles.instHasColimitsOfSizeAlgebraOperad_2",
+        "module": "SerrePositivity.EInfinity.BarrattEccles.ConstantDiagramPiZero",
+        "range": [
+          33,
+          0,
+          34,
+          34,
+          33,
+          6,
+          33,
+          14
+        ],
+        "source": "\nlocal instance : HasColimitsOfSize.{0, u} (operad A).Algebra :=\n  hasColimitsOfSizeShrink.{0, u} _\n"
+      }
+    ]
+  },
+  "policy": "The full native inventory and batched snapshots use different import contexts. Both sides have identical transported context deltas (24 additional owner/name rows, 6 replaced owner/name rows); the four source-ranged rows are anonymous local instances. No row is removed from B3 captures or comparisons."
+}

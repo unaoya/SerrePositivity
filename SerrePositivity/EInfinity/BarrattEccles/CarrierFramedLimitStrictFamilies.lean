@@ -25,11 +25,11 @@ universe u
 
 namespace SerrePositivity.EInfinity.BarrattEccles
 
-open CategoryTheory Limits HomotopicalAlgebra Opposite
+open CategoryTheory Limits _root_.HomotopicalAlgebra Opposite
 open SerrePositivity.DifferentialGraded
 open SerrePositivity.Reedy
 open SerrePositivity.DiagramModel
-open SerrePositivity.EInfinity.FrameHom.MixedFrame
+open _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedFrame
 
 variable (A : Type u) [CommRing A] (K : Type u) [SmallCategory K]
 
@@ -39,9 +39,9 @@ variable (A : Type u) [CommRing A] (K : Type u) [SmallCategory K]
 使われ方：混合 Hom の右比較へ入力する通常の錐。 -/
 def carrierStrictSimplicialConeFamily (F : K ⥤ (operad A).Algebra) (c : Cone ((Diagram.forget A
   K).obj F)) :
-    HomotopyWeight.weight K ⟶ carrierRightSimplicialHomDiagram A K c.pt F :=
+    _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K ⟶ carrierRightSimplicialHomDiagram A K c.pt F :=
   Functor.whiskerLeft (opOpEquivalence K).inverse
-      (carrierStrictConeWeightedFamily A K F (HomotopyWeight.weight K) c ≫
+      (carrierStrictConeWeightedFamily A K F (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K) c ≫
         (FrameWeightRealization.hom Kᵒᵖ (carrierRightFrameDiagram A K F)).map
           ((carrierFramedLimitProbeComparison A).app c.pt).op) ≫
     Functor.whiskerLeft (opOpEquivalence K).inverse
@@ -53,7 +53,7 @@ def carrierStrictSimplicialConeFamily (F : K ⥤ (operad A).Algebra) (c : Cone (
 使われ方：始域族との混合 Hom 内での厳密な一致。 -/
 lemma carrierStrictSimplicialConeFamily_app (F : K ⥤ (operad A).Algebra) (c : Cone
   ((Diagram.forget A K).obj F))
-    (k : K) (n : SimplexCategoryᵒᵖ) (x : ((HomotopyWeight.weight K).obj k).obj n) :
+    (k : K) (n : SimplexCategoryᵒᵖ) (x : ((_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K).obj k).obj n) :
     (((carrierStrictSimplicialConeFamily A K F c).app k).app n) x =
       (carrierFramedLimitProbeComparison A).app c.pt ≫ c.π.app k ≫ (rightFrameComparison A (F.obj
         k) n.unop).hom := rfl

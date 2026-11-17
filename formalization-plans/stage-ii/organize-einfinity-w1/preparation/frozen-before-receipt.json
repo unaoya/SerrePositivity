@@ -1,0 +1,13 @@
+{
+  "base": "30ae8948f339beec42d9340feb02f2031c22c72b",
+  "root": "/private/tmp/oe-w1-before-30ae8948f",
+  "matched_source_files": 588,
+  "source_hashes_match": true,
+  "artifact_policy": "APFS copy-on-write clone of original build, separate project olean directory; unchanged dependencies share packages only",
+  "example": {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotJointSourceRawCoslicePath.olean",
+    "before_sha256": "28c62f67a05fd2467e7798d313996f26c530a58a6b29cab22a14ca5d7ab12722",
+    "current_sha256": "28c62f67a05fd2467e7798d313996f26c530a58a6b29cab22a14ca5d7ab12722",
+    "distinct_inodes": true
+  }
+}

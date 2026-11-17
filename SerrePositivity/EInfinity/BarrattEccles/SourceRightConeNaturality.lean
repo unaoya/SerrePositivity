@@ -22,10 +22,10 @@ universe u v w
 
 namespace SerrePositivity.EInfinity.BarrattEccles
 
-open CategoryTheory Limits HomotopicalAlgebra
+open CategoryTheory Limits _root_.HomotopicalAlgebra
 open SerrePositivity.Reedy
 open SerrePositivity.DiagramModel.WeightedCones
-open SerrePositivity.EInfinity.FrameHom.MixedFrame
+open _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedFrame
 
 attribute [local implicit_reducible] CofibrantResolutionFamily.atObject
 
@@ -47,8 +47,8 @@ def sourceRightConeComparisonNatIso (Y : (operad A).Algebra)
   let R (F : K ⥤ (operad A).Algebra) := F ⋙ rightSimplicialFrameFamily A
   let b (F : K ⥤ (operad A).Algebra) :=
     Functor.whiskerLeft F (rightSimplicialFrameAugmentation A)
-  let e (F : K ⥤ (operad A).Algebra) := _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.mixedConeComparisonIso K (HomotopyWeight.weight K)
-    (HomotopyWeight.weight_cofibrant K) B (q.cofibrant _)
+  let e (F : K ⥤ (operad A).Algebra) := _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.mixedConeComparisonIso K (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K)
+    (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight_cofibrant K) B (q.cofibrant _)
     (q.atObject _).homotopicallyConstant a (q.atObject _).augmentation_weakEquivalence
     F (R F) (b F) (fun k => isFibrant A (F.obj k))
     (fun k n => rightSimplicialFrame_fibrant A (F.obj k) n)
@@ -56,17 +56,17 @@ def sourceRightConeComparisonNatIso (Y : (operad A).Algebra)
     (fun k => rightSimplicialFrame_cofibrant A (F.obj k))
     (fun k _ _ f => rightSimplicialFrame_homotopicallyConstant A (F.obj k) f) L hL
   let E : constantDiagramSourceHom A K (framedLimitProbe A Y) ⋙ L ≅
-      rightSimplicialHomFamily A K Y ⋙ coneSpace K (HomotopyWeight.weight K) ⋙ L :=
+      rightSimplicialHomFamily A K Y ⋙ coneSpace K (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K) ⋙ L :=
     NatIso.ofComponents e (by
       intro F G f
       let s := Functor.whiskerRight f (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom B)
       let r := Functor.whiskerRight f (rightSimplicialFrameFamily A)
-      let t := Functor.whiskerRight r (rightHomFunctor (framedLimitProbe A Y))
-      let c := Functor.whiskerRight r (mixedFunctor B)
-      change L.map ((coneSpace K (HomotopyWeight.weight K)).map s) ≫ (e G).hom =
-        (e F).hom ≫ L.map ((coneSpace K (HomotopyWeight.weight K)).map t)
-      apply HomotopyWeight.kanConeComparisonIso_naturality K (HomotopyWeight.weight K)
-        (HomotopyWeight.weight_cofibrant K) L hL (c := c)
+      let t := Functor.whiskerRight r (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedFrame.rightHomFunctor (framedLimitProbe A Y))
+      let c := Functor.whiskerRight r (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedFrame.mixedFunctor B)
+      change L.map ((coneSpace K (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K)).map s) ≫ (e G).hom =
+        (e F).hom ≫ L.map ((coneSpace K (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K)).map t)
+      apply _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.kanConeComparisonIso_naturality K (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K)
+        (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight_cofibrant K) L hL (c := c)
       case hF =>
         exact _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MixedFrameDiagrams.leftDiagram_kanComplex K B (q.cofibrant _)
           (q.atObject _).homotopicallyConstant F (fun k => isFibrant A (F.obj k))

@@ -2,9 +2,9 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.MappingResolutionCofinality
 public import SerrePositivity.EInfinity.BarrattEccles.MappingSpaceSpanDiagram
-public import SerrePositivity.EInfinity.FrameHom.ResolutionFixedRightComparison
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ResolutionFixedRightComparison
 public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.DiagramComparisons.CostructuredArrowPreDiagram
-public import SerrePositivity.EInfinity.FrameHom.FixedRightGrothendieckInversion
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FixedRightGrothendieckInversion
 
 /-!
 # 実際の E 代数の全固定右脚の比較と右変数の自然性
@@ -26,7 +26,7 @@ universe u
 
 namespace SerrePositivity.EInfinity.BarrattEccles
 
-open CategoryTheory HomotopicalAlgebra
+open CategoryTheory _root_.HomotopicalAlgebra
 open SerrePositivity.Reedy
 open SerrePositivity.InfinityCategories
 
@@ -38,7 +38,7 @@ variable (A : Type u) [CommRing A]
 使われ方：全右脚の図式の成分ごとの比較。 -/
 abbrev mappingResolutionFixedRightComparison (X V : (operad A).Algebra) :=
   let := modelCategory A
-  FrameHom.resolutionFixedRightComparison.{u + 1, u, u + 1}
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.resolutionFixedRightComparison.{u + 1, u, u + 1}
     ((cosimplicialResolutionFamily (mappingCofibrantFactorization A)).atObject X) V
 
 /-- 概要：実際の分解の比較は全固定右対象で left cofinal（Low 命題 3.7）。
@@ -48,7 +48,7 @@ abbrev mappingResolutionFixedRightComparison (X V : (operad A).Algebra) :=
 lemma mappingResolutionFixedRightComparison_isLeftCofinal (X V : (operad A).Algebra) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsLeftCofinal (nerveMap (mappingResolutionFixedRightComparison A X V)) := by
   let := modelCategory A
-  exact FrameHom.resolutionFixedRightComparison_isLeftCofinal _ V
+  exact _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.resolutionFixedRightComparison_isLeftCofinal _ V
 
 /-- 概要：実際の各固定右対象の元の比較は弱ホモトピー同値（Low 命題 3.7）。
 方針：同じ比較射の余終性を全 Kan 標的で検査する。
@@ -66,7 +66,7 @@ lemma mappingResolutionFixedRightComparison_isWeakHomotopyEquivalence
 lemma mappingResolutionFixedRightComparison_localized_isIso (X V : (operad A).Algebra) :
     IsIso (SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.map
       (nerveMap (mappingResolutionFixedRightComparison A X V))) :=
-  FrameHom.leftCofinal_localized_isIso _ (mappingResolutionFixedRightComparison_isLeftCofinal A X V)
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.leftCofinal_localized_isIso _ (mappingResolutionFixedRightComparison_isLeftCofinal A X V)
 
 /-- 概要：全右脚の元の終域の射影を同じ小圏へ送る（Low 命題 3.7）。
 方針：元の右脚の slice の終域射影の前後で up・down を行う。
@@ -87,7 +87,7 @@ abbrev mappingFixedRightDiagramComparison (X Y : (operad A).Algebra) :=
   let := modelCategory A
   Functor.whiskerLeft (mappingSmallRightSpanForget A Y)
     (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.costructuredArrowDiagramPre (mappingSmallResolutionOverFunctor A X)
-      (FrameHom.smallResolutionLeftForget.{u + 1, u, u + 1} X))
+      (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.smallResolutionLeftForget.{u + 1, u, u + 1} X))
 
 /-- 概要：同じ全右脚の自然変換の全成分は left cofinal（Low 命題 3.7）。
 方針：元の右対象ごとの比較の余終性を同じ成分で使う。
@@ -108,7 +108,7 @@ lemma mappingFixedRightDiagramComparison_localized_isIso (X Y : (operad A).Algeb
     (t : AsSmall.{u + 1} (algebraRightSpanBase A Y)) :
     IsIso (SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.map
       (nerveMap ((mappingFixedRightDiagramComparison A X Y).app t).toFunctor)) :=
-  FrameHom.leftCofinal_localized_isIso _ (mappingFixedRightDiagramComparison_isLeftCofinal A X Y t)
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.leftCofinal_localized_isIso _ (mappingFixedRightDiagramComparison_isLeftCofinal A X Y t)
 
 /-- 概要：元の分解から全左脚への右変数の全図式の比較（Low 命題 3.7）。
 方針：同じ自然変換を Grothendieck 構成で送る。
@@ -126,9 +126,9 @@ lemma mappingFixedRightGrothendieckComparison_localized_isIso (X Y : (operad A).
     IsIso (SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.map
       (nerveMap (mappingFixedRightGrothendieckComparison A X Y))) := by
   let := modelCategory A
-  exact FrameHom.fixedRightGrothendieckComparison_localized_isIso
+  exact _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.fixedRightGrothendieckComparison_localized_isIso
     (mappingSmallResolutionOverFunctor A X)
-    (FrameHom.smallResolutionLeftForget.{u + 1, u, u + 1} X)
+    (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.smallResolutionLeftForget.{u + 1, u, u + 1} X)
     (mappingSmallRightSpanForget A Y) (mappingSmallResolutionOverFunctor_isLeftCofinal A X)
 
 /-- 概要：元の全図式の比較は弱ホモトピー同値（Low 命題 3.7）。
@@ -138,7 +138,7 @@ lemma mappingFixedRightGrothendieckComparison_localized_isIso (X Y : (operad A).
 lemma mappingFixedRightGrothendieckComparison_isWeakHomotopyEquivalence
     (X Y : (operad A).Algebra) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (nerveMap (mappingFixedRightGrothendieckComparison A X Y)) :=
-  FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.isWeakHomotopyEquivalence _
     (mappingFixedRightGrothendieckComparison_localized_isIso A X Y)
 
 end SerrePositivity.EInfinity.BarrattEccles

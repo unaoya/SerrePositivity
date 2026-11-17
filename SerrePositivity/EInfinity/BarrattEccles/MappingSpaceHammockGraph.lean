@@ -17,7 +17,7 @@ universe u
 noncomputable section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
-open CategoryTheory HomotopicalAlgebra Opposite
+open CategoryTheory _root_.HomotopicalAlgebra Opposite
 open SerrePositivity.SimplicialModel
 
 namespace SerrePositivity.EInfinity.BarrattEccles
@@ -51,7 +51,7 @@ lemma mappingSpaceHammockGraphNerveMap_isWeakHomotopyEquivalence
     (X Y : (operad A).Algebra) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
       (mappingSpaceHammockGraphNerveMap A X Y) :=
-  FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.isWeakHomotopyEquivalence _
     (mappingSpaceHammockGraphNerveMap_localized_isIso A X Y)
 
 /-- 同じ共通始域の二射による Map^h と三列の graph の局所化後の同型。 -/

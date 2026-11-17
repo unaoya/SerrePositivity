@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.MappingSpaceTargetComparison
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantAlgebraRelativeInput
-public import SerrePositivity.EInfinity.FrameHom.FrameArrowElements
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrowElements
 
 /-!
 # 元の source frame を同じ cofibrant DK 入力へ持ち上げる
@@ -19,8 +19,8 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open CategoryTheory HomotopicalAlgebra SerrePositivity.Reedy
-open SerrePositivity.EInfinity.SimplicialLocalization
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.Reedy
+open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 variable (A : Type u) [CommRing A] (X : CofibrantAlgebra A)
 
 def cofibrantSourceFrame : SimplexCategory ⥤ CofibrantAlgebra A := by

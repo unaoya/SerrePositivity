@@ -36,7 +36,7 @@ variable (A : Type u) [CommRing A] (K : Type u) [SmallCategory K]
 使われ方：実際の重み付き end への普遍射を構成する。 -/
 def carrierStrictConeWeightedFamily (F : K ⥤ (operad A).Algebra) (W : K ⥤ SSet.{u})
     (c : Cone ((Diagram.forget A K).obj F)) :
-    (SerrePositivity.EInfinity.HomotopyWeight.doubleOpWeights K).obj W ⟶
+    (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.doubleOpWeights K).obj W ⟶
       (FrameWeightRealization.hom Kᵒᵖ (carrierRightFrameDiagram A K F)).obj (op c.pt) where
   app k :=
     { app n := ↾fun _ =>
@@ -92,8 +92,8 @@ def carrierConeToFramedLimit (F : K ⥤ (operad A).Algebra)
     (c : Cone ((Diagram.forget A K).obj F)) :
     c.pt ⟶ ((framedLimitFunctor A K).obj F).carrier :=
   (((FrameWeightRealization.adjunction Kᵒᵖ (carrierRightFrameDiagram A K F)).homEquiv
-    (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K) (op c.pt)).symm
-      (carrierStrictConeWeightedFamily A K F (HomotopyWeight.weight K) c)).unop ≫
+    (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.framedLimitWeight K) (op c.pt)).symm
+      (carrierStrictConeWeightedFamily A K F (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K) c)).unop ≫
     (framedLimitCarrierIso A K F).inv
 
 end SerrePositivity.EInfinity.BarrattEccles

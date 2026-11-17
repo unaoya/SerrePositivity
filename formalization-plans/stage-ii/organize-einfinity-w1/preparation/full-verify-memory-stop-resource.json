@@ -1,0 +1,28 @@
+{
+  "command": [
+    "python3",
+    "formalization-plans/stage-ii/organize-einfinity-w1/preparation-code/full_verify_step.py",
+    "--root",
+    "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68",
+    "--v3b",
+    "/private/tmp/oe-w1-v3b-complete-parent-rules/progress.json",
+    "--citation",
+    "/private/tmp/oe-w1-citation-comparison-final-rules.json",
+    "--root-receipt",
+    "/private/tmp/oe-w1-root-build/complete.json",
+    "--audits",
+    "/private/tmp/oe-w1-official-audits/complete.json",
+    "--output",
+    "/private/tmp/oe-w1-full-verify"
+  ],
+  "cwd": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68",
+  "rc": -15,
+  "reason": "memory budget 32 GB",
+  "seconds": 1056.8122949171811,
+  "peak_process_tree_rss_bytes": 32749600768,
+  "peak_lean_or_snapshot_jobs": 4,
+  "threads": "1",
+  "heavy_job_limit": 4,
+  "started_local": "2026-11-17T05:50:29.440639",
+  "finished_local": "2026-11-17T06:08:06.246783"
+}

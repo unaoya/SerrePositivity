@@ -24,7 +24,7 @@ universe u v
 
 namespace SerrePositivity.InfinityCategories.Project.ModelCategoryComparison
 
-open CategoryTheory HomotopicalAlgebra Opposite
+open CategoryTheory _root_.HomotopicalAlgebra Opposite
 open _root_.SerrePositivity.Reedy _root_.SerrePositivity.HomotopyFunctionComplex
 open scoped _root_.Simplicial
 

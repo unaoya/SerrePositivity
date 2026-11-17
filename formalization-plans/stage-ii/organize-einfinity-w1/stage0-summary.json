@@ -1,0 +1,52 @@
+{
+  "base": "30ae8948f339beec42d9340feb02f2031c22c72b",
+  "stage1_files": 588,
+  "stage1_move": 456,
+  "stage1_keep": 132,
+  "stage1_lines": 43633,
+  "groups": {
+    "OE01": {
+      "files": 132,
+      "lines": 8821
+    },
+    "OE02": {
+      "files": 61,
+      "lines": 4697
+    },
+    "OE03": {
+      "files": 144,
+      "lines": 10729
+    },
+    "OE04": {
+      "files": 152,
+      "lines": 12011
+    },
+    "OE05": {
+      "files": 99,
+      "lines": 7375
+    }
+  },
+  "stage2_files": 2621,
+  "stage2_remaining": 2264,
+  "stage2_classes": {
+    "一般": {
+      "files": 1247,
+      "lines": 85744
+    },
+    "BE固有": {
+      "files": 1047,
+      "lines": 79571
+    },
+    "E∞の一般論": {
+      "files": 327,
+      "lines": 27658
+    }
+  },
+  "branch_affected": 0,
+  "external_importers": 203,
+  "retained_einfinity_edges": 82,
+  "source_declaration_candidates": 2314,
+  "source_declarations_renamed": 1884,
+  "citation_review_rows": 6,
+  "branch_affected_with_worktree": 0
+}

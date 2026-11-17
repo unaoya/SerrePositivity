@@ -18,7 +18,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open CategoryTheory HomotopicalAlgebra Opposite SerrePositivity.SimplicialModel
+open CategoryTheory _root_.HomotopicalAlgebra Opposite SerrePositivity.SimplicialModel
 variable (A : Type u) [CommRing A]
 
 def algebraSpecialHammockReducedMap (X Y : (operad A).Algebra) :
@@ -54,17 +54,17 @@ lemma sourceFrameReducedHammockNerveMap_targetComparison (X Y : (operad A).Algeb
 def sourceFrameIndexAugmentation (X Y : (operad A).Algebra) :
     nerve (ULiftHom.{u + 1} (((((sourceFrameHom A).obj (op X)).obj Y).Elements)ᵒᵖ)) ⟶
       SSet.uliftFunctor.{u + 1, u}.obj (((sourceFrameHom A).obj (op X)).obj Y) :=
-  FrameHom.SimplexTerminalNerve.liftedAugmentation _
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.SimplexTerminalNerve.liftedAugmentation _
 
 lemma sourceFrameIndexAugmentation_localized_isIso (X Y : (operad A).Algebra) :
     IsIso (AnodyneHomotopy.anodyneQ.map (sourceFrameIndexAugmentation A X Y)) :=
-  FrameHom.SimplexTerminalNerve.liftedAugmentation_localized_isIso _
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.SimplexTerminalNerve.liftedAugmentation_localized_isIso _
 
 lemma sourceFrameIndexAugmentation_targetComparison (X Y : (operad A).Algebra) :
     sourceFrameMappingSpaceIndexMap A X Y ≫ mappingSpaceIndexAugmentation A X Y =
       sourceFrameIndexAugmentation A X Y ≫ SSet.uliftFunctor.{u + 1, u}.map
         (((sourceFrameHomComparison A).app (op X)).app Y) :=
-  FrameHom.SimplexTerminalNerve.liftedAugmentation_naturality _
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.SimplexTerminalNerve.liftedAugmentation_naturality _
 
 def sourceFrameReducedHammockComparison (X Y : (operad A).Algebra) :
     AnodyneHomotopy.anodyneQ.obj
@@ -111,7 +111,7 @@ lemma sourceFrameReducedHammockComparison_isIso (X Y : (operad A).Algebra) :
 lemma sourceFrameReducedHammockNerveMap_weak (X Y : (operad A).Algebra) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
       (sourceFrameReducedHammockNerveMap A X Y) := by
-  apply FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.isWeakHomotopyEquivalence
   rw [← sourceFrameReducedHammockComparison_fac]
   have := sourceFrameIndexAugmentation_localized_isIso A X Y
   have := sourceFrameReducedHammockComparison_isIso A X Y

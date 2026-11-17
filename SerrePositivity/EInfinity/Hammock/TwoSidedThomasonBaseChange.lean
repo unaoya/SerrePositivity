@@ -26,7 +26,7 @@ variable {V W : Type u} [Category.{u} V] [Category.{u} W]
 lemma simplex_baseChange {n : ℕ} (e : ComposableArrows (labels (H.op ⋙ F) (H ⋙ G) n) n) :
     simplex (H.op ⋙ F) (H ⋙ G) e ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieckFunctoriality.baseChange H F G =
       simplex F G (e ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.pre H
-        (FrameHom.Thomason.values F n) (FrameHom.Thomason.values G n)) := by
+        (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.values F n) (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.values G n)) := by
   refine CategoryTheory.Functor.ext (fun _ => rfl) ?_
   intro i j h
   simp only [eqToHom_refl, Category.id_comp, Category.comp_id]

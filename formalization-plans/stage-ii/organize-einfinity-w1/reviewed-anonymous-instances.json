@@ -1,0 +1,46 @@
+[
+  {
+    "module": "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotModelSource",
+    "old": "SerrePositivity.EInfinity.BarrattEccles.instModelCategoryAlgebraOperad",
+    "new": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.instModelCategoryAlgebraOperad",
+    "start": 1434,
+    "stop": 1442,
+    "source_sha256": "23b3e7f6f818148bc541cf127a0d3e075e7b4675d96102635592a35e86aa67f6",
+    "source_line": "local instance : ModelCategory (operad A).Algebra := modelCategory A",
+    "source_context": "variable (A : Type u) [CommRing A]",
+    "review": "Original compiler binder resolves the keyword instance to this exact existing native constant. Make only its transported name explicit; keep local scope, type, value, and priority. Final target build and v3b still mandatory."
+  },
+  {
+    "module": "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotRightFrameComparison",
+    "old": "SerrePositivity.EInfinity.BarrattEccles.instModelCategoryAlgebraOperad_1",
+    "new": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.instModelCategoryAlgebraOperad_1",
+    "start": 1404,
+    "stop": 1412,
+    "source_sha256": "c42dc06d0a43f7ad25c7540c86141aefb1949e794f69a5a824e8233731baf4d9",
+    "source_line": "local instance : ModelCategory (operad A).Algebra := modelCategory A",
+    "source_context": "variable (A : Type u) [CommRing A]",
+    "review": "Exact original compiler binder and native name verified. Retain local scope, complete original type/value/priority; make only the existing transported name explicit. Final target build/v3b required."
+  },
+  {
+    "module": "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotRightFrameComparison",
+    "old": "SerrePositivity.EInfinity.BarrattEccles.instHasFunctorialFactorizationAlgebraOperadCofibrationsTrivialFibrations",
+    "new": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.instHasFunctorialFactorizationAlgebraOperadCofibrationsTrivialFibrations",
+    "start": 1473,
+    "stop": 1481,
+    "source_sha256": "c42dc06d0a43f7ad25c7540c86141aefb1949e794f69a5a824e8233731baf4d9",
+    "source_line": "local instance : (cofibrations (operad A).Algebra).HasFunctorialFactorization",
+    "source_context": "variable (A : Type u) [CommRing A]",
+    "review": "Exact original compiler binder and native name verified. Retain local scope, complete original type/value/priority; make only the existing transported name explicit. Final target build/v3b required."
+  },
+  {
+    "module": "SerrePositivity.EInfinity.HomotopyWeight.KanDiagramBrown",
+    "old": "SerrePositivity.EInfinity.HomotopyWeight.instIsStableUnderBaseChangeSSetFibrations_serrePositivity",
+    "new": "SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.instIsStableUnderBaseChangeSSetFibrations_serrePositivity",
+    "start": 1135,
+    "stop": 1143,
+    "source_sha256": "0bbb0e0640031649f9f7d1ea43be9abb8d3febd908789d35fb4ef3d2c91cb2ab",
+    "source_line": "local instance : (fibrations SSet.{u}).IsStableUnderBaseChange := by",
+    "source_context": "The original scoped SSet model and original variable context are unchanged.",
+    "review": "Actual original compiler binder/native name verified. Make only the existing transported name explicit; retain the original local stability-under-base-change instance, its type/value/priority. No model structure or new assumption added. Final v3b/target build required."
+  }
+]

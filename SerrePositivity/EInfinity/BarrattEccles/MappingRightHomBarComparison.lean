@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.MappingSpaceSpanDiagram
-public import SerrePositivity.EInfinity.FrameHom.BarInitialComparison
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.BarInitialComparison
 
 /-!
 # 元の恒等右脚から全右脚の Hom の bar への比較
@@ -17,7 +17,7 @@ universe u
 noncomputable section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
-open CategoryTheory HomotopicalAlgebra
+open CategoryTheory _root_.HomotopicalAlgebra
 open SerrePositivity.SimplicialModel
 
 namespace SerrePositivity.EInfinity.BarrattEccles
@@ -29,11 +29,11 @@ def mappingRightHomFromIdentity (X Y : (operad A).Algebra) :
     let := modelCategory A
     (Functor.const (algebraRightSpanBase A Y)).obj
         ((mappingRightHomDiagram A X Y).obj
-          (FrameHom.ArrowSpan.rightSliceInitial (trivialCofibrations _) Y)) ⟶
+          (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ArrowSpan.rightSliceInitial (trivialCofibrations _) Y)) ⟶
       mappingRightHomDiagram A X Y := by
   let := modelCategory A
-  exact FrameHom.BarRows.fromInitial (mappingRightHomDiagram A X Y)
-    (FrameHom.ArrowSpan.rightSliceInitial_isInitial (trivialCofibrations _) Y)
+  exact _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.BarRows.fromInitial (mappingRightHomDiagram A X Y)
+    (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ArrowSpan.rightSliceInitial_isInitial (trivialCofibrations _) Y)
 
 /-- 各成分は元の右脚そのものによる後合成。 -/
 lemma mappingRightHomFromIdentity_app (X Y : (operad A).Algebra)
@@ -50,8 +50,8 @@ lemma mappingRightHomFromIdentity_bar_localized_isIso (X Y : (operad A).Algebra)
       ((BarConstruction.functor (algebraRightSpanBase A Y)).map
         (mappingRightHomFromIdentity A X Y))) := by
   let := modelCategory A
-  exact FrameHom.BarRows.fromInitial_localized_isIso (mappingRightHomDiagram A X Y)
-    (FrameHom.ArrowSpan.rightSliceInitial_isInitial (trivialCofibrations _) Y)
+  exact _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.BarRows.fromInitial_localized_isIso (mappingRightHomDiagram A X Y)
+    (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ArrowSpan.rightSliceInitial_isInitial (trivialCofibrations _) Y)
     (fun f => mappingRightHomDiagram_map_localized_isIso A f)
 
 end SerrePositivity.EInfinity.BarrattEccles

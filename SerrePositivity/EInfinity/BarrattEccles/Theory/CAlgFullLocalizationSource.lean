@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.CAlgCoefficientSourceComparison
-public import SerrePositivity.EInfinity.SimplicialLocalization.ModelHammockLocalization
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelHammockLocalization
 
 /-!
 # 元の全代数の nerve を始域とする CAlg の局所化
@@ -28,7 +28,7 @@ universe u
 
 namespace SerrePositivity.EInfinity.BarrattEccles
 
-open CategoryTheory SSet SimplicialLocalization HomologicalComplex
+open CategoryTheory SSet _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization HomologicalComplex
 open SerrePositivity.InfinityCategories
 open scoped Simplicial
 
@@ -76,7 +76,7 @@ def allAlgebraCAlgSource : nerve (allAlgebraRelativeCategory A).category ⟶ CAl
 
 /-- 全代数からの源も、同じ CAlg を局所化として実現する。 -/
 lemma allAlgebraCAlgSource_isLocalization :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization (allAlgebraCAlgSource A) (weakNerveEdges (allAlgebraRelativeCategory A)) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization (allAlgebraCAlgSource A) (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges (allAlgebraRelativeCategory A)) := by
   let C := cofibrantAlgebraRelativeCategory A
   let B := allAlgebraRelativeCategory A
   let I : LocalizerMorphism C.weakEquivalences B.weakEquivalences :=
@@ -92,9 +92,9 @@ lemma allAlgebraCAlgSource_isLocalization :
     framedLimitProbeComparison_quasiIso A ((cofibrantAlgebraDKInclusion A).obj X)
   exact _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.isLocalization_of_weakDeformation
     (nerveMap I.functor) (nerveMap P.functor) (cAlgLocalizationSource A)
-    (weakNerveEdges C) (weakNerveEdges B) (relativeNerve_mapsWeak I) (relativeNerve_mapsWeak P)
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges C) (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges B) (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.relativeNerve_mapsWeak I) (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.relativeNerve_mapsWeak P)
     (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveNatTransHomotopy η) (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveNatTransHomotopy θ)
-    (relativeNerve_homotopy_component_weak η hη)
-    (relativeNerve_homotopy_component_weak θ hθ) (cAlgLocalizationSource_isLocalization A)
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.relativeNerve_homotopy_component_weak η hη)
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.relativeNerve_homotopy_component_weak θ hθ) (cAlgLocalizationSource_isLocalization A)
 
 end SerrePositivity.EInfinity.BarrattEccles

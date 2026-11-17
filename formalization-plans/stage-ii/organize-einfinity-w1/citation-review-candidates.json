@@ -1,0 +1,50 @@
+[
+  {
+    "review": "research/kerodon-coverage/review/ch3.csv",
+    "number": "3.1.7.14",
+    "status": "own",
+    "declarations": [
+      "SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence"
+    ]
+  },
+  {
+    "review": "research/kerodon-coverage/review/ch3.csv",
+    "number": "3.3.6.7",
+    "status": "own",
+    "declarations": [
+      "SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence"
+    ]
+  },
+  {
+    "review": "research/kerodon-coverage/review/ch3.csv",
+    "number": "3.3.6.8",
+    "status": "own",
+    "declarations": [
+      "SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence"
+    ]
+  },
+  {
+    "review": "research/kerodon-coverage/review/ch3.csv",
+    "number": "3.3.7.4",
+    "status": "own",
+    "declarations": [
+      "SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence"
+    ]
+  },
+  {
+    "review": "research/kerodon-coverage/review/ch7.csv",
+    "number": "7.2.3.7",
+    "status": "partial",
+    "declarations": [
+      "SerrePositivity.EInfinity.FrameHom.FrameArrows.nerveMap_leftAdjoint_isLeftCofinal"
+    ]
+  },
+  {
+    "review": "research/kerodon-coverage/review/ch7.csv",
+    "number": "7.3.1.18",
+    "status": "partial",
+    "declarations": [
+      "SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRightKanExtension_refl_of_frameCofinality"
+    ]
+  }
+]

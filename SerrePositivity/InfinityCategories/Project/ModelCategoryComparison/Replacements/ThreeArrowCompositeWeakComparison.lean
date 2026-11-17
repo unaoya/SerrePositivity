@@ -16,7 +16,7 @@ public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison
 universe u v
 noncomputable section
 namespace SerrePositivity.InfinityCategories.Project.ModelCategoryComparison
-open CategoryTheory HomotopicalAlgebra _root_.SerrePositivity.InfinityCategories
+open CategoryTheory _root_.HomotopicalAlgebra _root_.SerrePositivity.InfinityCategories
 
 variable {C : Type u} [Category.{v} C] [ModelCategory C] (X Y : C)
   (cof : MorphismProperty.FunctorialFactorizationData (cofibrations C) (trivialFibrations C))
@@ -27,15 +27,15 @@ lemma threeArrowPaddingComposite_isWeakHomotopyEquivalence : _root_.SerrePositiv
       _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.paddingColimitMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram (weakEquivalences C) X Y)) := by
   intro Z hZ
   have he := _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.colimit_comparison_image_eq X Y
-    (_root_.SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection.homComponents Z).rightOp
-    (_root_.SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection.homComponents_inverts Z)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.homComponents Z).rightOp
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.homComponents_inverts Z)
   have he' := congrArg Quiver.Hom.unop he
-  change (_root_.SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection.homComponents Z).map
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.homComponents Z).map
       (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.paddedThreeComparison (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram (weakEquivalences C) X Y)).op =
-    (_root_.SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection.homComponents Z).map
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.homComponents Z).map
       (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion (weakEquivalences C) X Y _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.threeArrow ≫
         _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.paddingColimitMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram (weakEquivalences C) X Y)).op at he'
-  change Function.Bijective ((_root_.SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection.homComponents Z).map
+  change Function.Bijective ((_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.homComponents Z).map
     (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion (weakEquivalences C) X Y _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.threeArrow ≫
       _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.paddingColimitMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram (weakEquivalences C) X Y)).op)
   rw [← he']

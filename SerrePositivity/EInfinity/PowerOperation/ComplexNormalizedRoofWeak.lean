@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.PowerOperation.ComplexNormalizedRoofMaps
 public import SerrePositivity.EInfinity.ComplexLimits.RightFrames
-public import SerrePositivity.EInfinity.FrameHom.FibrantSourceReducedFirst
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FibrantSourceReducedFirst
 public import SerrePositivity.EInfinity.Hammock.WeakAnodyneLocalization
 
 /-!
@@ -17,7 +17,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.PowerOperation
-open CategoryTheory Opposite HomotopicalAlgebra Hammock
+open CategoryTheory Opposite _root_.HomotopicalAlgebra Hammock
 open SerrePositivity.DifferentialGraded SerrePositivity.Reedy
 open SerrePositivity.HomotopyFunctionComplex SerrePositivity.EInfinity.ComplexLimits
 open SerrePositivity.SimplicialModel
@@ -32,7 +32,7 @@ lemma complexNormalizedCommonLeftIndex_localized_isIso :
   have := normalizedProbeHomMiddle_kanComplex A (op X) Y
   have hw := ulift_homotopyEquivalence
     (normalizedProbeHomFromStandard_homotopyEquivalence A (op X) Y)
-  exact FrameHom.frameSpanSourceIndexMap_localized_isIso _ _ _
+  exact _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameSpanSourceIndexMap_localized_isIso _ _ _
     (anodyneQ_map_isIso_of_weak _ hw.isQCatEquivalence.isWeakHomotopyEquivalence)
 
 lemma complexNormalizedCommonRightIndex_localized_isIso :
@@ -42,7 +42,7 @@ lemma complexNormalizedCommonRightIndex_localized_isIso :
   have := normalizedProbeHomMiddle_kanComplex A (op X) Y
   have hw := ulift_homotopyEquivalence
     (normalizedProbeHomFromTensor_homotopyEquivalence A (op X) Y)
-  exact FrameHom.frameSpanSourceIndexMap_localized_isIso _ _ _
+  exact _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameSpanSourceIndexMap_localized_isIso _ _ _
     (anodyneQ_map_isIso_of_weak _ hw.isQCatEquivalence.isWeakHomotopyEquivalence)
 
 lemma complexNormalizedCommonRoof_left_comparison :
@@ -51,9 +51,9 @@ lemma complexNormalizedCommonRoof_left_comparison :
       ((framedLimitProbeFunctor A).obj X)
     AnodyneHomotopy.anodyneQ.map (nerveMap (complexNormalizedCommonLeftIndex A X Y)) ≫
       AnodyneHomotopy.anodyneQ.map (complexNormalizedCommonRoof A X Y) =
-      AnodyneHomotopy.anodyneQ.map (FrameHom.resolutionLeftRoofColimitMap q Y) := by
+      AnodyneHomotopy.anodyneQ.map (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.resolutionLeftRoofColimitMap q Y) := by
   let := projectiveModelCategory A
-  exact FrameHom.frameLeftRoofColimitMap_comparison _ _ _ (weakEquivalences (Complex A))
+  exact _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameLeftRoofColimitMap_comparison _ _ _ (weakEquivalences (Complex A))
     _ _ _ _ (fun f => complexNormalizedCommon_map_weak A X f)
     (fun f => ((cosimplicialResolutionFamily (mappingCofibrantFactorization A)).atObject
       ((framedLimitProbeFunctor A).obj X)).homotopicallyConstant f)
@@ -64,7 +64,7 @@ lemma complexNormalizedCommonRoof_right_comparison :
       AnodyneHomotopy.anodyneQ.map (complexNormalizedCommonRoof A X Y) =
       AnodyneHomotopy.anodyneQ.map (complexNormalizedTensorRoof A X Y) := by
   let := projectiveModelCategory A
-  exact FrameHom.frameLeftRoofColimitMap_comparison _ _ _ (weakEquivalences (Complex A))
+  exact _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameLeftRoofColimitMap_comparison _ _ _ (weakEquivalences (Complex A))
     _ _ _ _ (fun f => complexNormalizedCommon_map_weak A X f)
     (fun f => normalizedSimplexTensor_homotopicallyConstant A
       ((framedLimitProbeFunctor A).obj X) f) rfl
@@ -73,20 +73,20 @@ lemma complexNormalizedCommonRoof_weak :
     IsWeakHomotopyEquivalence (complexNormalizedCommonRoof A X Y) := by
   let := projectiveModelCategory A
   have := BarrattEccles.CarrierDiagram.complex_isFibrant A Y
-  apply FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.isWeakHomotopyEquivalence
   have := complexNormalizedCommonLeftIndex_localized_isIso A X Y
   have hc : IsIso (AnodyneHomotopy.anodyneQ.map
       (nerveMap (complexNormalizedCommonLeftIndex A X Y)) ≫
       AnodyneHomotopy.anodyneQ.map (complexNormalizedCommonRoof A X Y)) := by
     rw [complexNormalizedCommonRoof_left_comparison]
     exact anodyneQ_map_isIso_of_weak _
-      (FrameHom.resolutionLeftRoofColimitMap_isWeakHomotopyEquivalence_of_first _ Y
+      (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.resolutionLeftRoofColimitMap_isWeakHomotopyEquivalence_of_first _ Y
         (rightFrameFamily A) (mappingCofibrantFactorization A))
   exact (isIso_comp_left_iff _ _).mp hc
 
 lemma complexNormalizedTensorRoof_weak :
     IsWeakHomotopyEquivalence (complexNormalizedTensorRoof A X Y) := by
-  apply FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.isWeakHomotopyEquivalence
   have := complexNormalizedCommonRightIndex_localized_isIso A X Y
   have := anodyneQ_map_isIso_of_weak _ (complexNormalizedCommonRoof_weak A X Y)
   rw [← complexNormalizedCommonRoof_right_comparison]

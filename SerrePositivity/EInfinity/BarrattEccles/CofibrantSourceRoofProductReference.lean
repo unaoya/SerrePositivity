@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantSourceRoofCornerEvaluation
-public import SerrePositivity.EInfinity.FrameHom.ProductSimplexElementProjectionWeak
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ProductSimplexElementProjectionWeak
 public import SerrePositivity.EInfinity.BarrattEccles.SourceFramePrecompose
 public import SerrePositivity.EInfinity.Hammock.WeakArrowActionEquivalences
 
@@ -20,7 +20,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open CategoryTheory Limits Opposite HomotopicalAlgebra
+open CategoryTheory Limits Opposite _root_.HomotopicalAlgebra
 open SerrePositivity.InfinityCategories
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : CofibrantAlgebra A)
@@ -28,7 +28,7 @@ variable (A : Type u) [CommRing A] (X Y : CofibrantAlgebra A)
 
 lemma cofibrantSourceRoofProductFirstNerve_weak :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (cofibrantSourceRoofProductFirstNerve A X Y b) :=
-  FrameHom.ProductSimplexLiftedOver.firstNerveMap_weak _ _
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ProductSimplexLiftedOver.firstNerveMap_weak _ _
 
 def cofibrantSourceRoofProductHammockMap :
     nerve (cofibrantSourceRoofProductElements A X Y b) ⟶ algebraReducedHammock A X.obj Y.obj :=

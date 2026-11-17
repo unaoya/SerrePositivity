@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.CAlg
-public import SerrePositivity.EInfinity.SimplicialLocalization.NerveMap
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.NerveMap
 
 /-!
 # CAlg_R から全複体の単体的局所化への忘却
@@ -25,7 +25,7 @@ namespace SerrePositivity.EInfinity.BarrattEccles
 
 open CategoryTheory
 open SerrePositivity.DifferentialGraded
-open SerrePositivity.EInfinity.SimplicialLocalization
+open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open scoped Simplicial
 
 variable (A : Type u) [CommRing A]
@@ -53,21 +53,21 @@ def cAlgForgetRelative :
 方針：同じ自由局所化・Ex∞・coherent nerve を全複体へ適用する。
 規約：既存の dg nerve の D(R) との同値は後続で証明する。
 使われ方：CAlg_R の忘却射の具体的な終域。 -/
-def complexLocalizationNerve : SSet.{u + 1} := localizationNerve (complexRelativeCategory A)
+def complexLocalizationNerve : SSet.{u + 1} := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerve (complexRelativeCategory A)
 
 /-- 概要：全複体の同じ局所化の nerve は quasicategory（HTT 1.1.5.10）。
 方針：一般の局所化の Kan Hom の定理を代入する。
 規約：複体や単体集合のモデル構造の入力仮定は不要。
 使われ方：忘却の終域の ∞ 圏構造。 -/
 instance complexLocalizationNerve_quasicategory :
-    SSet.Quasicategory (complexLocalizationNerve A) := localizationNerve_quasicategory _
+    SSet.Quasicategory (complexLocalizationNerve A) := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerve_quasicategory _
 
 /-- 概要：CAlg_R から全複体の具体的局所化への忘却射（Dwyer–Kan）。
 方針：同じ元の忘却相対関手を一般の nerve 係数射へ送る。
 規約：底の cofibrancy を要求しない。既存 D(R) への比較は後続。
 使われ方：E2b の忘却 ∞ 関手の具体的な第一段階。 -/
 def cAlgForgetLocalization : CAlg_R A ⟶ complexLocalizationNerve A :=
-  localizationNerveMap (cAlgForgetRelative A)
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap (cAlgForgetRelative A)
 
 /-- 概要：同じ忘却射の頂点は元の置換の底の複体（Dwyer–Kan）。
 方針：一般の nerve の頂点自然性に同じ置換を代入する。
@@ -75,8 +75,8 @@ def cAlgForgetLocalization : CAlg_R A ⟶ complexLocalizationNerve A :=
 使われ方：既存 D(R) の対象との比較。 -/
 lemma cAlgForgetLocalization_vertex (X : (operad A).Algebra) :
     (cAlgForgetLocalization A).app (Opposite.op ⦋0⦌) (cAlgVertex A X) =
-      localizationNerveVertexEquiv (complexRelativeCategory A)
+      _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveVertexEquiv (complexRelativeCategory A)
         ((cofibrantAlgebraDKForget A).obj ((cofibrantAlgebraDKReplacement A).obj X)) :=
-  localizationNerveMap_vertex (cAlgForgetRelative A) ((cofibrantAlgebraDKReplacement A).obj X)
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap_vertex (cAlgForgetRelative A) ((cofibrantAlgebraDKReplacement A).obj X)
 
 end SerrePositivity.EInfinity.BarrattEccles

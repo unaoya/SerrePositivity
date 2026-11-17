@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.EInfinity.BarrattEccles.FreeProbeRelativeUnitReference
 public import SerrePositivity.EInfinity.BarrattEccles.FreeProbeRelativeElementWeak
-public import SerrePositivity.EInfinity.FrameHom.UnitComparisonWeakDetection
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.UnitComparisonWeakDetection
 /-!
 概要：元の自由単位による実 U の局所化源頂点での Hom 比較を検査する。
 方針：同じ弱な全要素族と弱な複体屋根族を元の単位三角形で接続する。
@@ -16,7 +16,7 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory SSet MonoidalClosed
 open SerrePositivity.InfinityCategories SerrePositivity.DifferentialGraded
-open SerrePositivity.EInfinity.FrameHom ComplexLimits
+open SerrePositivity.EInfinity.ComplexLimits
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X : Complex A) (B : CofibrantAlgebra A)
 
@@ -56,7 +56,7 @@ def freeProbeRelativeUnitIntervalMap :
 規約：全射と同じパラメータを保持。使われ方：元の実単位比較の全族判定。 -/
 lemma freeProbeRelativeUnderlyingRoofFamily_unit_triangle :
     let K := nerve (freeProbeRelativeElementIndex A X B)
-    let d := MixedNerve.down (freeProbeElementIndex A X B.obj)
+    let d := _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.down (freeProbeElementIndex A X B.obj)
     _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap K (freeProbeUnitOrdinaryHom A X) ≫
       _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHomPrecomp d (freeProbeElementUnderlyingRoofFamily A X B.obj) =
     _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHomPrecomp d
@@ -65,7 +65,7 @@ lemma freeProbeRelativeUnderlyingRoofFamily_unit_triangle :
       _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap K (Truncated.HomotopyCategory.homMk
         ((nerve.edgeMk (complexSemifreeResolutionValueAugmentation A B.obj.carrier)).map
           (complexOrdinaryDerivedSource A)).toTruncated) := by
-  let d := MixedNerve.down (freeProbeElementIndex A X B.obj)
+  let d := _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.down (freeProbeElementIndex A X B.obj)
   let T := (hoFunctor.map ((pre d).app (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A))).toFunctor
   have h := congrArg T.map (freeProbeElementUnderlyingRoofFamily_unit_triangle A X B.obj)
   simp only [Functor.map_comp] at h
@@ -88,7 +88,7 @@ lemma freeProbeRelativeUnitIntervalMap_family :
     _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom (freeProbeRelativeUnitReference A X B ≫
       _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace _ _) := by
   let K := nerve (freeProbeRelativeElementIndex A X B)
-  let d := MixedNerve.down (freeProbeElementIndex A X B.obj)
+  let d := _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.down (freeProbeElementIndex A X B.obj)
   let e := cofibrantForgetOrdinaryVertexIso A (freeProbeElementCofibrantSource A X)
   have hf := (Arrow.mk_injective _ _) (freeProbeRelativeElementPinched_forget_family_arrow A X B)
   rw [freeProbeRelativeUnitIntervalMap, Category.assoc, ← Category.assoc
@@ -110,7 +110,7 @@ lemma freeProbeRelativeUnitIntervalMap_family :
 規約：元の実比較射を結論に残す。使われ方：標準導来単位比較への端点輸送。 -/
 lemma freeProbeRelativeUnitIntervalMap_weak :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (freeProbeRelativeUnitIntervalMap A X B) := by
-  exact unitComparison_weak_of_probe_family (freeProbeRelativeUnitIntervalMap A X B)
+  exact _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.unitComparison_weak_of_probe_family (freeProbeRelativeUnitIntervalMap A X B)
     (freeProbeRelativeElementPinchedMap A X B ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace _ _)
     (freeProbeRelativeUnitReference A X B)
     ((freeProbeRelativeElementPinchedMap_weak A X B).comp

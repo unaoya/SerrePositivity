@@ -25,10 +25,10 @@ universe u
 
 namespace SerrePositivity.EInfinity.BarrattEccles
 
-open CategoryTheory Limits HomotopicalAlgebra Opposite
+open CategoryTheory Limits _root_.HomotopicalAlgebra Opposite
 open SerrePositivity.Reedy
 open SerrePositivity.DiagramModel
-open SerrePositivity.EInfinity.FrameHom.MixedFrame
+open _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedFrame
 
 variable (A : Type u) [CommRing A] (K : Type u) [SmallCategory K]
 
@@ -37,9 +37,9 @@ variable (A : Type u) [CommRing A] (K : Type u) [SmallCategory K]
 規約：既存の strictConeWeightedFamily と同じ族。
 使われ方：混合 Hom の右比較へ入力する通常の錐。 -/
 def strictSimplicialConeFamily (F : K ⥤ (operad A).Algebra) (c : Cone F) :
-    HomotopyWeight.weight K ⟶ rightSimplicialHomDiagram A K c.pt F :=
+    _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K ⟶ rightSimplicialHomDiagram A K c.pt F :=
   Functor.whiskerLeft (opOpEquivalence K).inverse
-      (strictConeWeightedFamily A K F (HomotopyWeight.weight K) c ≫
+      (strictConeWeightedFamily A K F (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K) c ≫
         (FrameWeightRealization.hom Kᵒᵖ (rightFrameDiagram A K F)).map
           (framedLimitProbeComparison A c.pt).op) ≫
     Functor.whiskerLeft (opOpEquivalence K).inverse
@@ -50,7 +50,7 @@ def strictSimplicialConeFamily (F : K ⥤ (operad A).Algebra) (c : Cone F) :
 規約：重みの単体に依存しない同じ式。
 使われ方：始域族との混合 Hom 内での厳密な一致。 -/
 lemma strictSimplicialConeFamily_app (F : K ⥤ (operad A).Algebra) (c : Cone F)
-    (k : K) (n : SimplexCategoryᵒᵖ) (x : ((HomotopyWeight.weight K).obj k).obj n) :
+    (k : K) (n : SimplexCategoryᵒᵖ) (x : ((_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K).obj k).obj n) :
     (((strictSimplicialConeFamily A K F c).app k).app n) x =
       framedLimitProbeComparison A c.pt ≫ c.π.app k ≫ rightFrameComparison A (F.obj k) n.unop := rfl
 

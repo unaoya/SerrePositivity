@@ -21,7 +21,7 @@ universe u
 
 namespace SerrePositivity.EInfinity.BarrattEccles
 
-open CategoryTheory Limits HomotopicalAlgebra
+open CategoryTheory Limits _root_.HomotopicalAlgebra
 
 variable (A : Type u) [CommRing A] (K : Type u) [SmallCategory K]
 

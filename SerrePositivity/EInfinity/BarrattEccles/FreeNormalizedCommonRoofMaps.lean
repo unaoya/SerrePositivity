@@ -2,7 +2,7 @@ module
 public import SerrePositivity.EInfinity.BarrattEccles.FreeNormalizedCommonFrameProperties
 public import SerrePositivity.EInfinity.BarrattEccles.FreeNormalizedHomEquivalence
 public import SerrePositivity.EInfinity.BarrattEccles.SourceFrameRoofComparison
-public import SerrePositivity.EInfinity.FrameHom.FrameRoofComparisonInvariance
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameRoofComparisonInvariance
 /-! 概要：元の正規化・共通 frame の全単体を同じ代数屋根へ送る。
 方針：元の augmentation と全要素の評価を既存の二列 roof に代入する。
 規約：全作用素・同じ自由 probe と標的代数を保持する。
@@ -13,7 +13,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open CategoryTheory Opposite HomotopicalAlgebra
+open CategoryTheory Opposite _root_.HomotopicalAlgebra
 open SerrePositivity.DifferentialGraded
 open SerrePositivity.Reedy
 variable (A : Type u) [CommRing A] (X : Complex A) (B : (operad A).Algebra)
@@ -26,7 +26,7 @@ def freeNormalizedCommonLeftIndex :
       (op ((freeProbeFunctor A).obj X))).obj B).Elements)ᵒᵖ) ⥤
     ULiftHom.{u + 1} (((((freeNormalizedHomMiddle A).obj (op X)).obj B).Elements)ᵒᵖ) := by
   let := modelCategory A
-  exact FrameHom.frameSpanSourceIndexMap ((freeNormalizedCommonFrame A).obj X)
+  exact _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameSpanSourceIndexMap ((freeNormalizedCommonFrame A).obj X)
     ((cosimplicialResolutionFamily (mappingCofibrantFactorization A)).obj.obj
       ((freeProbeFunctor A).obj X)) ((freeNormalizedCommonFrameLeft A).app X)
 
@@ -36,7 +36,7 @@ def freeNormalizedCommonLeftIndex :
 def freeNormalizedCommonRightIndex :
     ULiftHom.{u + 1} (((((freeNormalizedProbeHom A).obj (op X)).obj B).Elements)ᵒᵖ) ⥤
     ULiftHom.{u + 1} (((((freeNormalizedHomMiddle A).obj (op X)).obj B).Elements)ᵒᵖ) :=
-  FrameHom.frameSpanSourceIndexMap ((freeNormalizedCommonFrame A).obj X)
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameSpanSourceIndexMap ((freeNormalizedCommonFrame A).obj X)
     ((freeNormalizedProbeFrame A).obj X) ((freeNormalizedCommonFrameRight A).app X)
 
 /-- 概要：元の共通 Hom の全族を同じ reduced 代数 hammock へ送る。
@@ -46,7 +46,7 @@ def freeNormalizedCommonReducedRoof :
     nerve (ULiftHom.{u + 1} (((((freeNormalizedHomMiddle A).obj (op X)).obj B).Elements)ᵒᵖ)) ⟶
       algebraReducedHammock A ((freeProbeFunctor A).obj X) B := by
   let := modelCategory A
-  exact FrameHom.frameLeftRoofColimitMap (weakEquivalences (operad A).Algebra)
+  exact _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameLeftRoofColimitMap (weakEquivalences (operad A).Algebra)
     ((freeNormalizedCommonFrame A).obj X) ((freeNormalizedCommonFrameAugmentation A).app X)
     (freeNormalizedCommonFrameAugmentation_weak A X)
     (fun f => freeNormalizedCommonFrame_map_weak A X f) ≫
@@ -59,7 +59,7 @@ def freeNormalizedTensorReducedRoof :
     nerve (ULiftHom.{u + 1} (((((freeNormalizedProbeHom A).obj (op X)).obj B).Elements)ᵒᵖ)) ⟶
       algebraReducedHammock A ((freeProbeFunctor A).obj X) B := by
   let := modelCategory A
-  exact FrameHom.frameLeftRoofColimitMap (weakEquivalences (operad A).Algebra)
+  exact _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameLeftRoofColimitMap (weakEquivalences (operad A).Algebra)
     ((freeNormalizedProbeFrame A).obj X) ((freeNormalizedProbeAugmentation A).app X)
     (freeNormalizedProbeAugmentation_weak A X)
     (fun f => freeNormalizedProbeFrame_homotopicallyConstant A X f) ≫

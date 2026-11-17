@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.Modules.TotalLocalization
 public import Mathlib.CategoryTheory.FiberedCategory.Grothendieck
-public import SerrePositivity.EInfinity.SimplicialLocalization.NerveFunctor
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.NerveFunctor
 
 /-!
 # 固定 BE 底の元の加群 fiber と全圏への包含
@@ -21,7 +21,7 @@ namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory CategoryTheory.Functor SSet
 open SerrePositivity.DifferentialGraded
 open SerrePositivity.InfinityCategories.Project.DerivedCategories
-open SerrePositivity.EInfinity.SimplicialLocalization
+open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization
 attribute [local implicit_reducible] strictRawModuleRestrictionPseudofunctor
 variable (A : Type u) [CommRing A]
@@ -106,16 +106,16 @@ lemma strictRawModuleFiberInclusionRelative_projection (X : (operad A).Algebra) 
 方針：同じ相対包含に既存の局所化 nerve 関手を適用する。
 規約：全単体を持つ実写像。使われ方：native fiber の比較の入口。 -/
 def moduleRawFiberInclusion (X : (operad A).Algebra) :
-    localizationNerve (strictRawModuleRelativeCategory A X) ⟶ moduleTotalInfinity A :=
-  localizationNerveMap (strictRawModuleFiberInclusionRelative A X)
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerve (strictRawModuleRelativeCategory A X) ⟶ moduleTotalInfinity A :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap (strictRawModuleFiberInclusionRelative A X)
 
 /-- 概要：局所化した包含の底は同じ相対定数関手の像（HA §4.2.3）。
 方針：相対局所化の合成則と元の射影の等式を使う。
 規約：全単体での等式。使われ方：指定した底上の native 比較。 -/
 lemma moduleRawFiberInclusion_projection (X : (operad A).Algebra) :
     moduleRawFiberInclusion A X ≫ moduleTotalProjection A =
-      localizationNerveMap (strictRawModuleFiberBaseRelative A X ≫ algebraToCofibrantDKRelative A) := by
-  rw [moduleRawFiberInclusion, moduleTotalProjection, ← localizationNerveMap_comp,
+      _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap (strictRawModuleFiberBaseRelative A X ≫ algebraToCofibrantDKRelative A) := by
+  rw [moduleRawFiberInclusion, moduleTotalProjection, ← _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap_comp,
     ← Category.assoc, strictRawModuleFiberInclusionRelative_projection]
 
 end SerrePositivity.EInfinity.BarrattEccles

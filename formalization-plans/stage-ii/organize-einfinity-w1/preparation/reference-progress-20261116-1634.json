@@ -1,0 +1,23 @@
+{
+  "signature": "851b781dfb09719b4e384014f5e69300fc4ba30769c00db42d7cf256253ed259",
+  "base": "30ae8948f339beec42d9340feb02f2031c22c72b",
+  "completed_files": 33,
+  "total_files": 824,
+  "unchanged_scope_files": 132,
+  "candidate_files": 956,
+  "failure": null,
+  "workers": 2,
+  "available_memory_bytes": 32311574528,
+  "seconds": 217.66601183079183,
+  "complete": false,
+  "new_captures": 20,
+  "preview": {
+    "captured": 33,
+    "previewed": 33,
+    "changed_sources": 33,
+    "review_files": 0,
+    "review_items": 0,
+    "plan_sha256": "bffb2434b00941a5031a1a82aa16f090f36949332c706dc37873e3ad8e454232"
+  },
+  "meaning": "Successful original source/compiler captures only. No mathematical source move/application or v3b verdict yet."
+}

@@ -23,7 +23,7 @@ universe u v
 
 namespace SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MixedFrameDiagrams
 
-open CategoryTheory Limits HomotopicalAlgebra Opposite
+open CategoryTheory Limits _root_.HomotopicalAlgebra Opposite
 open _root_.SerrePositivity.Reedy _root_.SerrePositivity.HomotopyFunctionComplex
 open _root_.SerrePositivity.SimplicialModel
 open scoped SSet.modelCategoryQuillen
@@ -41,14 +41,14 @@ abbrev leftDiagram (F : K ⥤ C) : K ⥤ SSet.{v} := F ⋙ _root_.SerrePositivit
 方針：混合 Hom 関手を右 frame の図式に後合成する。
 規約：全頂点・全射で同じ対角を取る。
 使われ方：両側の frame の比較の共通図式。 -/
-abbrev mixedDiagram (R : K ⥤ SimplexCategoryᵒᵖ ⥤ C) : K ⥤ SSet.{v} := R ⋙ _root_.SerrePositivity.EInfinity.FrameHom.MixedFrame.mixedFunctor A
+abbrev mixedDiagram (R : K ⥤ SimplexCategoryᵒᵖ ⥤ C) : K ⥤ SSet.{v} := R ⋙ _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedFrame.mixedFunctor A
 
 /-- 概要：固定した始域と右 frame 図式の Hom（Hovey §5.4）。
 方針：元の始域から各次元の右 frame への Hom を取る。
 規約：射は元の圏の同じ射として表す。
 使われ方：右 frame の重み付き錐。 -/
 abbrev rightDiagram (X : C) (R : K ⥤ SimplexCategoryᵒᵖ ⥤ C) : K ⥤ SSet.{v} :=
-  R ⋙ _root_.SerrePositivity.EInfinity.FrameHom.MixedFrame.rightHomFunctor X
+  R ⋙ _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedFrame.rightHomFunctor X
 
 /-- 概要：始域 frame の図式から混合 Hom 図式への自然変換（Hovey §5.4）。
 方針：終域 frame の augmentation の自然性を各次元の後合成へ移す。
@@ -57,7 +57,7 @@ abbrev rightDiagram (X : C) (R : K ⥤ SimplexCategoryᵒᵖ ⥤ C) : K ⥤ SSet
 def leftDiagramComparison (F : K ⥤ C) (R : K ⥤ SimplexCategoryᵒᵖ ⥤ C)
     (b : F ⋙ Functor.const SimplexCategoryᵒᵖ ⟶ R) :
     leftDiagram K A F ⟶ mixedDiagram K A R where
-  app k := _root_.SerrePositivity.EInfinity.FrameHom.MixedFrame.leftComparison A (b.app k)
+  app k := _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedFrame.leftComparison A (b.app k)
   naturality k l f := by
     ext n h
     change (h ≫ F.map f) ≫ (b.app l).app n = (h ≫ (b.app k).app n) ≫ (R.map f).app n
@@ -71,7 +71,7 @@ def leftDiagramComparison (F : K ⥤ C) (R : K ⥤ SimplexCategoryᵒᵖ ⥤ C)
 使われ方：右 frame の錐から共通図式の錐へ移る。 -/
 def rightDiagramComparison {X : C} (a : A ⟶ (Functor.const SimplexCategory).obj X)
     (R : K ⥤ SimplexCategoryᵒᵖ ⥤ C) : rightDiagram K X R ⟶ mixedDiagram K A R where
-  app k := _root_.SerrePositivity.EInfinity.FrameHom.MixedFrame.rightComparison A a (R.obj k)
+  app k := _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedFrame.rightComparison A a (R.obj k)
   naturality k l f := by
     ext n h
     change a.app n.unop ≫ (h ≫ (R.map f).app n) =
@@ -104,7 +104,7 @@ lemma rightDiagram_kanComplex (X : C) [IsCofibrant X]
     SSet.KanComplex ((rightDiagram K X R).obj k) := by
   have : IsFibrant (op X) := _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.fibrantOp_of_cofibrant X
   have := cosimplicialHom_kanComplex (R.obj k).rightOp (hR k) (hconst k) (op X)
-  exact isFibrant_of_fibration (_root_.SerrePositivity.EInfinity.FrameHom.MixedFrame.rightHomIso X (R.obj k)).hom
+  exact isFibrant_of_fibration (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedFrame.rightHomIso X (R.obj k)).hom
 
 /-- 概要：始域 frame からの図式比較は各値で局所化同値（Hovey §5）。
 方針：各値の終域の弱同値と二重 Hom の対角不変性を使う。

@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.DGAlgebra.FrameFactorization
-public import SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantLocalization
-public import SerrePositivity.EInfinity.FrameHom.RightFrameHammockFamily
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantLocalization
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.RightFrameHammockFamily
 
 /-!
 概要：実 dg 代数モデルへ一般 frame と bifibrant 局所化普遍性を実体化する。
@@ -14,10 +14,10 @@ public import SerrePositivity.EInfinity.FrameHom.RightFrameHammockFamily
 @[expose] public noncomputable section
 universe u
 namespace SerrePositivity.EInfinity.DGAlgebra
-open CategoryTheory HomotopicalAlgebra
+open CategoryTheory _root_.HomotopicalAlgebra
 open SerrePositivity.DifferentialGraded SerrePositivity.Reedy
 open SerrePositivity.InfinityCategories SerrePositivity.SimplicialModel
-open SimplicialLocalization
+open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 variable (R : Type u) [CommRing R]
 
 /-- 概要：実 dg モデルの source frame の全対象・全射の族。
@@ -45,11 +45,11 @@ def rightFrameFamily :
 lemma bifibrantHammock_isLocalization :
     letI _modelInst := modelCategory R
     _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization
-      (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory (Mon (Complex R))))
-      (weakNerveEdges (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory (Mon (Complex R)))) := by
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory (Mon (Complex R))))
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory (Mon (Complex R)))) := by
   letI _modelInst := modelCategory R
   have := modelCategory_hasFunctorialFactorization_cofibration_trivialFibration R
-  exact modelBifibrantHammock_isLocalization (rightFrameFamily R)
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantHammock_isLocalization (rightFrameFamily R)
 
 /-- 概要：実 dg right Hom と元の hammock Hom は全標的で反転後に自然同型。
 方針：実 source frame・実 right frame・実第一分解を全族比較へ代入する。
@@ -60,12 +60,12 @@ def rightFrameHammockFamilyIso (X : Mon (Complex R)) :
     IsCofibrant X →
       (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameHom (rightFrameFamily R) X ⋙
         SSet.uliftFunctor.{u + 1, u} ⋙ AnodyneHomotopy.anodyneQ ≅
-      FrameHom.hammockHomFamily (weakEquivalences (Mon (Complex R))) X ⋙
+      _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.hammockHomFamily (weakEquivalences (Mon (Complex R))) X ⋙
         AnodyneHomotopy.anodyneQ) := by
   letI _modelInst := modelCategory R
   intro hX
   letI sourceCofibrant := hX
-  exact FrameHom.rightFrameHammockFamilyIso ((sourceFrameFamily R).atObject X)
+  exact _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockFamilyIso ((sourceFrameFamily R).atObject X)
     (rightFrameFamily R) (cofibrantFactorization R)
 
 end SerrePositivity.EInfinity.DGAlgebra

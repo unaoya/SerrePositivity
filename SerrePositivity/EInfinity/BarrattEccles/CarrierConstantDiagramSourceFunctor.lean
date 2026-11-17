@@ -22,7 +22,7 @@ universe u
 
 namespace SerrePositivity.EInfinity.BarrattEccles.CarrierDiagram
 
-open CategoryTheory HomotopicalAlgebra
+open CategoryTheory _root_.HomotopicalAlgebra
 open SerrePositivity.DifferentialGraded Opposite
 open SerrePositivity.Reedy SerrePositivity.HomotopyFunctionComplex
 open SerrePositivity.DiagramModel
@@ -39,7 +39,7 @@ def constantDiagramSourceBifunctor :
   exact (cosimplicialResolutionFamily (carrierProbeFactorization A)).obj.op ⋙
     _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomBifunctor ⋙ Functor.whiskeringRight K (Complex A) SSet.{u} ⋙
       (Functor.whiskeringRight (K ⥤ (Complex A)) (K ⥤ SSet.{u}) SSet.{u}).obj
-        (WeightedCones.coneSpace K (HomotopyWeight.weight K))
+        (WeightedCones.coneSpace K (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K))
 
 /-- 概要：二変数の関手は既存の始域錐の関手（Hovey §5）。
 方針：同じ frame 族での評価を展開する。
@@ -64,7 +64,7 @@ lemma constantDiagramSourceMap_app {Y Z : (Complex A)} (f : Y ⟶ Z)
     (F : K ⥤ (Complex A)) :
     let := SerrePositivity.EInfinity.projectiveModelCategory A
     (constantDiagramSourceMap A K f).app F =
-      (WeightedCones.coneSpace K (HomotopyWeight.weight K)).map
+      (WeightedCones.coneSpace K (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K)).map
         (Functor.whiskerLeft F (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap
           ((cosimplicialResolutionFamily (carrierProbeFactorization A)).obj.map f))) := rfl
 

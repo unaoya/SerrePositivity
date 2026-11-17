@@ -1,0 +1,42 @@
+{
+  "status": "PASS",
+  "baseline": 61,
+  "reviewed_additions": [
+    {
+      "key": "Kerodon",
+      "number": "02P3",
+      "declaration": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.nerveMap_leftAdjoint_isLeftCofinal",
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrowCofinality",
+      "relation": "native",
+      "comment": "partial: 通常圏の随伴から得るnerve写像のleft cofinal性。",
+      "edition": "stable Tags"
+    },
+    {
+      "key": "Kerodon",
+      "number": "039N",
+      "declaration": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRightKanExtension_refl_of_frameCofinality",
+      "module": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantRightKanReduction",
+      "relation": "native",
+      "comment": "partial: 明示したモデル圏と指定されたbifibrant frameの下のright Kan比較。",
+      "edition": "stable Tags"
+    }
+  ],
+  "expected": 63,
+  "actual": 63,
+  "missing": [],
+  "extra": [],
+  "checked_fields": [
+    "key",
+    "number",
+    "declaration",
+    "module",
+    "relation",
+    "comment",
+    "edition"
+  ],
+  "before_sha256": "ad3b30efe8b4843651e36aedd0d1974e1204f5e24e6aa17307d865c4d2a0d450",
+  "after_sha256": "e4e13570adf23593a66e7ebadac0cd500e4920499585d7d4a917ce552ccd1c3d",
+  "name_map_sha256": "a1b4314b13ead8c77fd48279759c1f195838a666862aaebbe10b0d836afc373a",
+  "module_plan_sha256": "5da569293e32052c0976fffb5c54ccac006ec51b6161bd047f7615e0d2eecc5d",
+  "policy": "Exact metadata multiplicities after ownership/name transport and independently specified additions. Actual path/line remain in native capture receipts."
+}

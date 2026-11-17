@@ -21,7 +21,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.InfinityCategories.Project.ModelCategoryComparison
-open CategoryTheory HomotopicalAlgebra _root_.SerrePositivity.EInfinity.FrameHom
+open CategoryTheory _root_.HomotopicalAlgebra _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom
 variable {C : Type u} [Category.{v} C] [ModelCategory C] {X Y : C}
 
 lemma special_value (S : _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.SpecialHammock X Y) :

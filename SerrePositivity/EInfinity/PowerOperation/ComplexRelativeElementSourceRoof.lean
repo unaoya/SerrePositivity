@@ -16,7 +16,7 @@ universe u
 namespace SerrePositivity.EInfinity.PowerOperation
 open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded
-open SerrePositivity.EInfinity.SimplicialLocalization SerrePositivity.EInfinity.FrameHom
+open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom
 open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
 open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories
 open IsomorphismsAndIsofibrations (IsInvertibleEdge)
@@ -27,12 +27,12 @@ lemma complexRelativeElementDerivedAugmentation_invertible
     IsInvertibleEdge ((nerve.edgeMk
       ((complexRelativeElementAugmentation A X Y).app i)).map
         (complexRelativeDerivedSource A)).toTruncated :=
-  weakNerveEdges_inverts_arrows (complexRelativeCategory A) _
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges_inverts_arrows (complexRelativeCategory A) _
     (complexRelativeDerivedSource_inverts A) _ (complexRelativeElementAugmentation_weak A X Y i)
 
 /-- 元の全要素の augmentation を既存の複体導来源で反転する全関手同型。 -/
 def complexRelativeElementDerivedAugmentationIso :=
-  NerveColumn.augmentationIso (complexRelativeDerivedSource A)
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveColumn.augmentationIso (complexRelativeDerivedSource A)
     (complexRelativeElementColumn A X Y) (complexRelativeElementAugmentation A X Y)
     (complexRelativeElementDerivedAugmentation_invertible A X Y)
 
@@ -46,14 +46,14 @@ lemma complexRelativeElementSourceRoof_naturality :
     let e := complexHammockDerivedComparison_sourceIso A
     (e.precomp (nerveMap ((Functor.const _).obj ((complexRelativeUp A).obj X)))).hom ≫
       (complexRelativeElementDerivedAugmentationIso A X Y).inv ≫
-        NerveColumn.hom (complexRelativeDerivedSource A) s =
-      (NerveColumn.augmentationIso (complexHammockSource A ≫ K) V p
-        (RoofPrefix.postcomp_augmentation_invertible (complexRelativeCategory A) V p hp K)).inv ≫
-        NerveColumn.hom (complexHammockSource A ≫ K) s ≫
+        _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveColumn.hom (complexRelativeDerivedSource A) s =
+      (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveColumn.augmentationIso (complexHammockSource A ≫ K) V p
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.postcomp_augmentation_invertible (complexRelativeCategory A) V p hp K)).inv ≫
+        _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveColumn.hom (complexHammockSource A ≫ K) s ≫
           (e.precomp (nerveMap ((Functor.const _).obj ((complexRelativeUp A).obj Y)))).hom :=
-  NerveColumn.roof_naturality (complexHammockDerivedComparison_sourceIso A)
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveColumn.roof_naturality (complexHammockDerivedComparison_sourceIso A)
     (complexRelativeElementColumn A X Y) (complexRelativeElementAugmentation A X Y)
-    (RoofPrefix.postcomp_augmentation_invertible (complexRelativeCategory A)
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.postcomp_augmentation_invertible (complexRelativeCategory A)
       (complexRelativeElementColumn A X Y) (complexRelativeElementAugmentation A X Y)
       (complexRelativeElementAugmentation_weak A X Y) (complexHammockDerivedComparison A))
     (complexRelativeElementDerivedAugmentation_invertible A X Y)

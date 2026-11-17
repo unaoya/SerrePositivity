@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantAlgebraLocalization
-public import SerrePositivity.EInfinity.SimplicialLocalization.LocalizedFreeResolution
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.LocalizedFreeResolution
 public import Mathlib.CategoryTheory.Category.ULift
 
 /-!
@@ -21,9 +21,9 @@ universe u
 
 namespace SerrePositivity.EInfinity.BarrattEccles
 
-open CategoryTheory HomotopicalAlgebra
+open CategoryTheory _root_.HomotopicalAlgebra
 open SerrePositivity.DifferentialGraded
-open SerrePositivity.EInfinity.SimplicialLocalization
+open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 
 variable (A : Type u) [CommRing A]
 
@@ -131,7 +131,7 @@ abbrev cofibrantAlgebraFreeAugmentation (n : ℕ) :
 使われ方：CAlg_R の次数ごとの単体的局所化の入力。 -/
 def cofibrantAlgebraFreeResolution :
     SimplicialObject _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u + 1} :=
-  freeResolution (cofibrantAlgebraRelativeCategory A)
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution (cofibrantAlgebraRelativeCategory A)
 
 /-- 概要：全自由解像から元の E 代数相対圏への augmentation（Dwyer–Kan）。
 方針：元の汎用自由解像の同じ自然変換を使う。
@@ -140,14 +140,14 @@ def cofibrantAlgebraFreeResolution :
 def cofibrantAlgebraFreeResolutionAugmentation :
     cofibrantAlgebraFreeResolution A ⟶
       (Functor.const SimplexCategoryᵒᵖ).obj (cofibrantAlgebraRelativeCategory A) :=
-  freeResolutionAugmentationNatTrans (cofibrantAlgebraRelativeCategory A)
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionAugmentationNatTrans (cofibrantAlgebraRelativeCategory A)
 
 /-- 概要：全自由次数を厳密に局所化した E 代数の単体的図式（Dwyer–Kan）。
 方針：具体的な cofibrant 相対圏を同じ次数ごとの局所化へ代入する。
 規約：各次数の指定矢は元の擬同型だけからなる列。
 使われ方：固定対象を持つ DK 単体的圏の構成。 -/
 def cofibrantAlgebraLocalizedFreeResolution : SimplicialObject Cat.{u + 1, u + 1} :=
-  localizedFreeResolution (cofibrantAlgebraRelativeCategory A)
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizedFreeResolution (cofibrantAlgebraRelativeCategory A)
 
 /-- 概要：次数ごとの局所化から元の普通の局所化への augmentation（Dwyer–Kan）。
 方針：元の同じ全単体的 augmentation を具体的な E 代数相対圏で評価する。
@@ -157,6 +157,6 @@ def cofibrantAlgebraLocalizedFreeResolutionAugmentation :
     cofibrantAlgebraLocalizedFreeResolution A ⟶
       (Functor.const SimplexCategoryᵒᵖ).obj
         (Cat.of (cofibrantAlgebraRelativeCategory A).weakEquivalences.Localization) :=
-  localizedFreeResolutionAugmentation (cofibrantAlgebraRelativeCategory A)
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizedFreeResolutionAugmentation (cofibrantAlgebraRelativeCategory A)
 
 end SerrePositivity.EInfinity.BarrattEccles

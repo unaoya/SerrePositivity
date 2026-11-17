@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.FrameHom.FrameRoofCornerProjectionLaws
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameRoofCornerProjectionLaws
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantSourceRoofProductCone
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantSourceRoofSliceCriterion
 
@@ -20,7 +20,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory Limits Opposite SSet
-open SerrePositivity.EInfinity.FrameHom.FrameArrows SerrePositivity.InfinityCategories
+open _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows SerrePositivity.InfinityCategories
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : CofibrantAlgebra A)
   (b : (cofibrantSourceRoofTarget A X Y) _⦋0⦌)
@@ -34,9 +34,9 @@ lemma cofibrantSourceRoofDegreeTransportIso_inv_source :
 lemma cofibrantSourceRoofProductCornerMap_source :
     cofibrantSourceRoofProductCornerMap A X Y b ≫ pullback.snd _ _ =
       cofibrantSourceRoofProductFirstNerve A X Y b ≫ cofibrantSourceFrameRoofMap A X Y := by
-  have h := roofQuillenDegreeCornerMap_source (cofibrantDKSourceFrame A X)
+  have h := _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofQuillenDegreeCornerMap_source (cofibrantDKSourceFrame A X)
     (show (cofibrantAlgebraRelativeCategory A).category from Y)
-    (SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
     b (cofibrantSourceFrameRoofMap A X Y)
   simp only [cofibrantSourceRoofProductCornerMap, Category.assoc, h]
   have h₁ := cofibrantSourceRoofDegreeTransportIso_inv_source A X Y b
@@ -65,17 +65,17 @@ lemma cofibrantSourceRoofProductCommaCornerMap_source :
 
 lemma cofibrantSourceRoofProductCommaCornerMap_diagram :
     (cofibrantSourceRoofProductCommaCornerMap A X Y b ≫
-      roofCornerSourceSliceMap (cofibrantDKSourceFrame A X)
+      _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofCornerSourceSliceMap (cofibrantDKSourceFrame A X)
         (show (cofibrantAlgebraRelativeCategory A).category from Y)
-        (SimplicialLocalization.hammockLocalizationNerveMap
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap
           (cofibrantAlgebraRelativeCategory A)) b) ≫
       _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection (SSet.yonedaEquiv.symm (cofibrantHammockVertex A Y)) =
         nerveMap (cofibrantSourceRoofProductCommaDiagram A X Y b) ≫
-          SimplicialLocalization.hammockLocalizationNerveMap
+          _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap
             (cofibrantAlgebraRelativeCategory A) := by
-  have h := roofCornerSourceSliceMap_projection (cofibrantDKSourceFrame A X)
+  have h := _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofCornerSourceSliceMap_projection (cofibrantDKSourceFrame A X)
     (show (cofibrantAlgebraRelativeCategory A).category from Y)
-    (SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A)) b
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A)) b
   have h₁ := cofibrantSourceRoofProductCommaCornerMap_source A X Y b
   have h₂ := cofibrantSourceFrameRoofMap_degree A X Y
   dsimp only [cofibrantHammockVertex]
@@ -83,32 +83,32 @@ lemma cofibrantSourceRoofProductCommaCornerMap_diagram :
     _ = cofibrantSourceRoofProductCommaCornerMap A X Y b ≫
         (pullback.snd _ _ ≫ cofibrantSourceRoofProjection A X Y ≫
           (nerveMap (cofibrantDKSourceFrame A X) ≫
-            SimplicialLocalization.hammockLocalizationNerveMap
+            _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap
               (cofibrantAlgebraRelativeCategory A))) :=
       (Category.assoc _ _ _).trans (congrArg
         (fun g => cofibrantSourceRoofProductCommaCornerMap A X Y b ≫ g) h)
     _ = (cofibrantSourceRoofProductCommaFirstNerve A X Y b ≫
         cofibrantSourceFrameRoofMap A X Y) ≫ cofibrantSourceRoofProjection A X Y ≫
           (nerveMap (cofibrantDKSourceFrame A X) ≫
-            SimplicialLocalization.hammockLocalizationNerveMap
+            _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap
               (cofibrantAlgebraRelativeCategory A)) := by
       simpa only [Category.assoc] using congrArg
         (fun g => g ≫ cofibrantSourceRoofProjection A X Y ≫
           (nerveMap (cofibrantDKSourceFrame A X) ≫
-            SimplicialLocalization.hammockLocalizationNerveMap
+            _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap
               (cofibrantAlgebraRelativeCategory A))) h₁
     _ = cofibrantSourceRoofProductCommaFirstNerve A X Y b ≫
         sourceFrameElementDegreeNerve A X Y ≫ nerveMap (cofibrantDKSourceFrame A X) ≫
-          SimplicialLocalization.hammockLocalizationNerveMap
+          _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap
             (cofibrantAlgebraRelativeCategory A) := by
       simpa only [Category.assoc] using congrArg
         (fun g => cofibrantSourceRoofProductCommaFirstNerve A X Y b ≫ g ≫
           (nerveMap (cofibrantDKSourceFrame A X) ≫
-            SimplicialLocalization.hammockLocalizationNerveMap
+            _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap
               (cofibrantAlgebraRelativeCategory A))) h₂
     _ = _ := by
       simp only [← Category.assoc]
-      apply congrArg (fun g => g ≫ SimplicialLocalization.hammockLocalizationNerveMap
+      apply congrArg (fun g => g ≫ _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap
         (cofibrantAlgebraRelativeCategory A))
       apply SSet.hom_ext
       intro n

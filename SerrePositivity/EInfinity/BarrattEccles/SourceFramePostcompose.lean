@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.SourceFrameRoofComparison
-public import SerrePositivity.EInfinity.FrameHom.FrameLeftRoofPostcompose
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameLeftRoofPostcompose
 public import SerrePositivity.EInfinity.Hammock.ReducedPointActions
 
 /-!
@@ -19,7 +19,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open CategoryTheory HomotopicalAlgebra Opposite Hammock SerrePositivity.SimplicialModel
+open CategoryTheory _root_.HomotopicalAlgebra Opposite Hammock SerrePositivity.SimplicialModel
 open SerrePositivity.Reedy
 variable (A : Type u) [CommRing A] (X : (operad A).Algebra) {Y Z : (operad A).Algebra}
 
@@ -39,7 +39,7 @@ lemma sourceFrameReducedHammockNerveMap_postcompose (g : Y ⟶ Z) :
       sourceFrameReducedHammockNerveMap A X Y ≫ algebraReducedHammockPostcompose A X g := by
   let := modelCategory A
   let q := (cosimplicialResolutionFamily (mappingCofibrantFactorization A)).atObject X
-  have h := FrameHom.frameLeftRoofColimitMap_postcompose
+  have h := _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameLeftRoofColimitMap_postcompose
     (weakEquivalences (operad A).Algebra) q.obj q.augmentation q.augmentation_weakEquivalence
       (fun a => q.homotopicallyConstant a) g
   change sourceFramePostcomposeIndexMap A X g ≫
@@ -55,7 +55,7 @@ lemma sourceFramePostcomposeIndexMap_augmentation (g : Y ⟶ Z) :
     sourceFramePostcomposeIndexMap A X g ≫ sourceFrameIndexAugmentation A X Z =
       sourceFrameIndexAugmentation A X Y ≫ SSet.uliftFunctor.{u + 1, u}.map
         (((sourceFrameHom A).obj (op X)).map g) :=
-  FrameHom.SimplexTerminalNerve.liftedAugmentation_naturality _
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.SimplexTerminalNerve.liftedAugmentation_naturality _
 
 lemma sourceFrameReducedHammockComparison_postcompose (g : Y ⟶ Z) :
     AnodyneHomotopy.anodyneQ.map (SSet.uliftFunctor.{u + 1, u}.map

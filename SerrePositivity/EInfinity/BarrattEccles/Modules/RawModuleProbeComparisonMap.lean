@@ -20,7 +20,7 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory Opposite SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.Modules
-open SerrePositivity.EInfinity.SimplicialLocalization
+open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.InfinityCategories.HA.Section7_1_1
 open SerrePositivity.InfinityCategories.Project.DerivedCategories
 open SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison
@@ -45,9 +45,9 @@ def strictRawModuleProbeRelativeFunctor (X : (operad A).Algebra) :
 規約：HA §1.3.4、同じ頂点。使われ方：K の同じ Hom 射の始域端点。 -/
 def strictRawModuleProbeLocalizationVertex (X : (operad A).Algebra)
     (P : strictRawModuleProbeCategory A X) :
-    (localizationNerve (strictRawModuleRelativeCategory A X)) _⦋0⦌ :=
-  localizationNerveVertexEquiv (strictRawModuleRelativeCategory A X)
-    (show KanLocalizationCategory (strictRawModuleRelativeCategory A X) from
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerve (strictRawModuleRelativeCategory A X)) _⦋0⦌ :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveVertexEquiv (strictRawModuleRelativeCategory A X)
+    (show _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanLocalizationCategory (strictRawModuleRelativeCategory A X) from
       (strictRawModuleProbeRelativeFunctor A X).obj P)
 
 /-- 概要：元の probe の同じ通常源の値を指定半自由頂点へ戻す。
@@ -87,7 +87,7 @@ def strictRawModuleProbeComparisonVertexIso (X : (operad A).Algebra)
 規約：HA §1.3.4、元の全単体の射。使われ方：完全忠実性で検証する同じ写像。 -/
 def strictRawModuleProbeComparisonPinchedMap (X : (operad A).Algebra)
     (P Q : strictRawModuleProbeCategory A X) :
-    Basic.pinchedHom (X := localizationNerve (strictRawModuleRelativeCategory A X))
+    Basic.pinchedHom (X := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerve (strictRawModuleRelativeCategory A X))
       (strictRawModuleProbeLocalizationVertex A X P) (strictRawModuleProbeLocalizationVertex A X Q) ⟶
       PinchedHom.pinchedHom A (SemifreeDGModules A (dgAlgebraCategory A ((assocForget A).obj X)))
         (ForgetEnrichment.to (Complex A) P) (ForgetEnrichment.to (Complex A) Q) :=
@@ -100,7 +100,7 @@ def strictRawModuleProbeComparisonPinchedMap (X : (operad A).Algebra)
 規約：HA 1.3.1.13、同じ射。使われ方：frame Hom 比較との照合の対象。 -/
 def strictRawModuleProbeComparisonDoldKanMap (X : (operad A).Algebra)
     (P Q : strictRawModuleProbeCategory A X) :
-    Basic.pinchedHom (X := localizationNerve (strictRawModuleRelativeCategory A X))
+    Basic.pinchedHom (X := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerve (strictRawModuleRelativeCategory A X))
       (strictRawModuleProbeLocalizationVertex A X P) (strictRawModuleProbeLocalizationVertex A X Q) ⟶
       SSet.uliftFunctor.{u + 1, u}.obj
         (((strictRawModuleProbeDoldKanHom A X).obj (op P)).obj

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.PowerOperation.ComplexRelativeElementColumn
 public import SerrePositivity.EInfinity.ComplexLimits.FramedLimitProbeFunctor
-public import SerrePositivity.EInfinity.SimplicialLocalization.RelativeHammockNerveEquivalence
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RelativeHammockNerveEquivalence
 public import SerrePositivity.EInfinity.Hammock.RelativeNaturalWeakComparison
 public import SerrePositivity.EInfinity.Hammock.RelativeFunctorLaws
 
@@ -20,7 +20,7 @@ universe u
 namespace SerrePositivity.EInfinity.PowerOperation
 open CategoryTheory Hammock
 open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.ComplexLimits
-open SerrePositivity.EInfinity.SimplicialLocalization
+open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
 variable (A : Type u) [CommRing A]
 
@@ -51,8 +51,8 @@ lemma complexRelativeProbeMorphism_hom_weak (X Y : (complexRelativeCategory A).c
   exact isWeakHomotopyEquivalence_id _
 
 lemma complexHammockProbe_isQCatEquivalence :
-    IsQCatEquivalence (relativeKanHammockNerve (complexRelativeProbeMorphism A)) :=
-  relativeKanHammockNerve_isQCatEquivalence_of_counit (complexRelativeProbeMorphism A)
+    IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.relativeKanHammockNerve (complexRelativeProbeMorphism A)) :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.relativeKanHammockNerve_isQCatEquivalence_of_counit (complexRelativeProbeMorphism A)
     (LocalizerMorphism.id (complexRelativeCategory A).weakEquivalences)
     (complexRelativeProbeAugmentation A) (complexRelativeProbeAugmentation_weak A)
     (complexRelativeProbeMorphism_hom_weak A)

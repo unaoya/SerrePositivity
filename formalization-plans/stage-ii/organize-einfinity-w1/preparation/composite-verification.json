@@ -1,0 +1,55 @@
+{
+  "verdict": "PASS",
+  "authority": "Coordinator user instruction 2026-11-17: combine successful 106 audits and separate sorry closure on the same HEAD; machine gate remains non-gate",
+  "validated_head": "76dfccc3a93007b6bf54523b528913e87e69effa",
+  "normal_execution": {
+    "command": "normal verify.sh, no selected-out audits or build skips",
+    "cache_enabled": false,
+    "audit_count": 106,
+    "audit_success": 106,
+    "root_build_rc": 0,
+    "audit_targets_build_rc": 0,
+    "interrupted_during": "sorry closure",
+    "process_returncode": -15,
+    "machine_gate": "non-gate",
+    "runner_summary_created": false
+  },
+  "sorry": {
+    "head_before": "76dfccc3a93007b6bf54523b528913e87e69effa",
+    "head_after": "76dfccc3a93007b6bf54523b528913e87e69effa",
+    "command": [
+      "zsh",
+      "scripts/refactor/with_build_lock.sh",
+      "--class",
+      "impl",
+      "--wait",
+      "3600",
+      "--",
+      "gtimeout",
+      "--kill-after=3s",
+      "1200s",
+      "lake",
+      "env",
+      "lean",
+      "scripts/refactor/audit_sorries.lean"
+    ],
+    "returncode": 0,
+    "returncode_observed_from": "exec session 40909 completion",
+    "log_sha256": "d396ddb3b983eb2f6fd921deb3df2971128f1b7594ddef56d96578fb16e73b60",
+    "visited_constants": 102479,
+    "allowed_sorry_parents": [
+      "SerrePositivity.theorem_3_1_K0",
+      "SerrePositivity.Section4.supportedRankK0_descent",
+      "SerrePositivity.BhattScholze.Inputs.exists_perfectoidizationInterfaceE3"
+    ],
+    "forbidden_in_closure": false,
+    "result": "PASS"
+  },
+  "evidence": {
+    "audits_file": "normal-106-audits-success-evidence.json.gz",
+    "audits_decompressed_sha256": "38aec2b52e0e57f9ea411138b206d29f50f568211c9d8f505a37897f900de09e",
+    "sorry_file": "sorry-alone-success.json",
+    "sorry_receipt_sha256": "7981acf0b52bb2bff09f97a6f197bc1df104344a6707bd931e255fbc00ebcf99"
+  },
+  "policy": "Do not rewrite or synthesize .lake/verify/summary.json or runner.json; this is the explicitly approved same-HEAD composite verdict, not a machine gate PASS."
+}

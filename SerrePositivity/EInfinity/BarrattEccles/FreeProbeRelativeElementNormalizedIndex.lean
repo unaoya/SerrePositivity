@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.EInfinity.BarrattEccles.FreeProbeElementNormalizedHom
 public import SerrePositivity.EInfinity.BarrattEccles.FreeProbeRelativeElementColumn
-public import SerrePositivity.EInfinity.FrameHom.MixedNerveHomLiftIso
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerveHomLiftIso
 /-! 概要：相対自由列の元の全要素から同じ正規化自由 Hom の全要素へ送る。
 方針：元の Hom 宇宙を戻し、同じ実随伴評価の全要素写像を使う。
 規約：同じ全パラメータと元の射を保持する。
@@ -14,7 +14,7 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory Opposite
 open SerrePositivity.DifferentialGraded SerrePositivity.SimplicialModel
-open SerrePositivity.EInfinity.FrameHom
+open _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom
 variable (A : Type u) [CommRing A] (X : Complex A) (B : CofibrantAlgebra A)
 
 /-- 概要：元の相対全要素から同じ正規化自由 Hom への実要素写像。
@@ -39,7 +39,7 @@ def freeProbeRelativeElementNormalizedIndexNerveMap :
 規約：全パラメータを保持。使われ方：反転性の移送。 -/
 lemma freeProbeRelativeElementNormalizedIndexMap_nerve :
     freeProbeRelativeElementNormalizedIndexNerveMap A X B =
-      MixedNerve.down (freeProbeElementIndex A X B.obj) ≫
+      _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.down (freeProbeElementIndex A X B.obj) ≫
         freeProbeElementNormalizedIndexNerveMap A X B.obj := by
   apply SSet.hom_ext
   intro n
@@ -54,8 +54,8 @@ lemma freeProbeRelativeElementNormalizedIndexMap_nerve :
 lemma freeProbeRelativeElementNormalizedIndexMap_localized_isIso :
     IsIso (AnodyneHomotopy.anodyneQ.map
       (freeProbeRelativeElementNormalizedIndexNerveMap A X B)) := by
-  have : IsIso (MixedNerve.down (freeProbeElementIndex A X B.obj)) :=
-    (MixedNerve.homLiftIso (freeProbeElementIndex A X B.obj)).isIso_hom
+  have : IsIso (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.down (freeProbeElementIndex A X B.obj)) :=
+    (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.homLiftIso (freeProbeElementIndex A X B.obj)).isIso_hom
   have := freeProbeElementNormalizedIndexMap_localized_isIso A X B.obj
   rw [freeProbeRelativeElementNormalizedIndexMap_nerve, Functor.map_comp]
   infer_instance

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.PowerOperation.NerveColumnConstantRestriction
 public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.FunctorIsoPrecompositionCoherence
-public import SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixColumnRoof
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefixColumnRoof
 public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SliceTransport.CoherentPinchedTransport
 
 /-!
@@ -18,7 +18,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.PowerOperation
 open CategoryTheory SSet
-open SerrePositivity.EInfinity.FrameHom SerrePositivity.EInfinity.SimplicialLocalization
+open _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison
 open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
 open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories
@@ -39,27 +39,27 @@ lemma nerveColumnRoofConjugation_arrow
       (F.app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ X))
       (F.app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ Y)))
     (hf : Arrow.mk (intervalFamilyHom (f ≫ MorphismSpaces.pinchedHomToIntervalMappingSpace _ _)) =
-      Arrow.mk ((NerveColumn.augmentationIso F V p hpF).inv ≫ NerveColumn.hom F s)) :
+      Arrow.mk ((_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveColumn.augmentationIso F V p hpF).inv ≫ _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveColumn.hom F s)) :
     Arrow.mk (constantFunctorHomMap (nerve I)
         (functorIsoEvaluate e (ComposableArrows.mk₀ X)).inv ≫
       intervalFamilyHom (f ≫ MorphismSpaces.pinchedHomToIntervalMappingSpace _ _) ≫
       constantFunctorHomMap (nerve I) (functorIsoEvaluate e (ComposableArrows.mk₀ Y)).hom) =
-      Arrow.mk ((NerveColumn.augmentationIso G V p hpG).inv ≫ NerveColumn.hom G s) := by
+      Arrow.mk ((_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveColumn.augmentationIso G V p hpG).inv ≫ _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveColumn.hom G s) := by
   have hx := nerveColumnConstantRestriction_arrow I C e.symm X
   have hy := nerveColumnConstantRestriction_arrow I C e Y
-  have h₁ := RoofPrefix.comp_arrow_eq _ _ _ _ hx.symm hf
-  have h₂ := RoofPrefix.comp_arrow_eq _ _ _ _ h₁ hy.symm
+  have h₁ := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.comp_arrow_eq _ _ _ _ hx.symm hf
+  have h₂ := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.comp_arrow_eq _ _ _ _ h₁ hy.symm
   have hn : (e.precomp (nerveMap ((Functor.const I).obj X))).inv ≫
-      ((NerveColumn.augmentationIso F V p hpF).inv ≫ NerveColumn.hom F s) ≫
+      ((_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveColumn.augmentationIso F V p hpF).inv ≫ _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveColumn.hom F s) ≫
       (e.precomp (nerveMap ((Functor.const I).obj Y))).hom =
-      (NerveColumn.augmentationIso G V p hpG).inv ≫ NerveColumn.hom G s := by
+      (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveColumn.augmentationIso G V p hpG).inv ≫ _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveColumn.hom G s := by
     apply (cancel_epi (e.precomp (nerveMap ((Functor.const I).obj X))).hom).mp
     simp only [Iso.hom_inv_id_assoc]
-    simpa only [Category.assoc] using (NerveColumn.roof_naturality e V p hpF hpG s).symm
+    simpa only [Category.assoc] using (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveColumn.roof_naturality e V p hpF hpG s).symm
   have hn' : ((FunctorIso.precomp e.symm (nerveMap ((Functor.const I).obj X))).hom ≫
-      (NerveColumn.augmentationIso F V p hpF).inv ≫ NerveColumn.hom F s) ≫
+      (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveColumn.augmentationIso F V p hpF).inv ≫ _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveColumn.hom F s) ≫
       (e.precomp (nerveMap ((Functor.const I).obj Y))).hom =
-      (NerveColumn.augmentationIso G V p hpG).inv ≫ NerveColumn.hom G s := by
+      (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveColumn.augmentationIso G V p hpG).inv ≫ _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveColumn.hom G s := by
     simpa only [Category.assoc, FunctorIso.precomp_symm, Iso.symm_hom] using hn
   have h₃ := h₂.trans (congrArg Arrow.mk hn')
   simpa only [Category.assoc, functorIsoEvaluate, Iso.symm_hom] using h₃

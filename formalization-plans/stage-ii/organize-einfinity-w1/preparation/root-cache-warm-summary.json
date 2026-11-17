@@ -1,0 +1,13 @@
+{
+  "count": 13220,
+  "skipped_existing_conflicts": 0,
+  "policy": "COW absent cache files only. Source, toolchain, manifest and Citation identical. No existing file overwritten. Ordinary Lake builds must validate dependency hashes; no check result reused.",
+  "time": 1794855070.743455,
+  "files": 198300,
+  "donor_modules": {
+    "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-classical": 9036,
+    "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout": 4184
+  },
+  "full_receipt": "/private/tmp/oe-w1-root-build/cache-warm-receipt.json",
+  "full_receipt_sha256": "80e40c2e0fe98d2cf3b4b0f5612ab132dbc8b36379d5e05b9790b7f2eb2369ed"
+}

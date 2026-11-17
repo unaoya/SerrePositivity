@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.MappingSpaceTargetComparison
 public import SerrePositivity.EInfinity.BarrattEccles.MappingSpaceSpans
-public import SerrePositivity.EInfinity.FrameHom.FrameSpanTargetHomotopy
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameSpanTargetHomotopy
 
 /-!
 # 元の終域への frame Hom と同じ Map^h の三本矢比較
@@ -19,7 +19,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open CategoryTheory HomotopicalAlgebra Opposite
+open CategoryTheory _root_.HomotopicalAlgebra Opposite
 open SerrePositivity.Reedy SerrePositivity.HomotopyFunctionComplex
 variable (A : Type u) [CommRing A]
 
@@ -44,7 +44,7 @@ def sourceFrameSpecialHammockHomotopy (X Y : (operad A).Algebra) :
   let := modelCategory A
   let q := (cosimplicialResolutionFamily (mappingCofibrantFactorization A)).atObject X
   let j := (fibrantTargetComparison (mappingFibrantFactorization A)).app Y
-  exact FrameHom.frameSpanTargetHomotopy _ _ q.obj q.augmentation
+  exact _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameSpanTargetHomotopy _ _ q.obj q.augmentation
     (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.resolutionAugmentation_trivialFibration q) (𝟙 Y)
     ((trivialCofibrations (operad A).Algebra).id_mem Y) j
     (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.fibrantTargetComparison_trivialCofibration (mappingFibrantFactorization A) Y)

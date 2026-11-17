@@ -1,0 +1,13 @@
+{
+  "before_modules": 1071,
+  "after_modules": 1071,
+  "before_declarations": 10476,
+  "after_declarations": 10476,
+  "paired": 10476,
+  "private": 232,
+  "missing": [],
+  "extra": [],
+  "policy": "Observed canonical names and actual native owners; no source-line or ordinal pairing. Existing v3b snapshot and comparator remain unchanged.",
+  "before_capture_sha256": "bf9b8582badd5961dbb733e80b39a99628fcad9a73fd729349066d4914efe733",
+  "after_capture_sha256": "2a8df509b1b6914f79cf03d598cce52bcc86342bcf606bd583d4e66d93512a4c"
+}

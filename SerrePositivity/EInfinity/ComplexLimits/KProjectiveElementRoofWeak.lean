@@ -52,7 +52,7 @@ lemma complexSemifreeResolutionInfinity_pinchedMap_weak (X Y : KProjectiveComple
 規約：元の実写像を保持。使われ方：複体側の弱な全族基準射。 -/
 lemma normalizedTensorElementDerivedPinchedMap_weak (X Y : KProjectiveComplex A) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (normalizedTensorElementDerivedPinchedMap A X.val Y.val) := by
-  have hp := FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _
+  have hp := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.isWeakHomotopyEquivalence _
     (normalizedTensorElementParameterMap_localized_isIso A X.val Y.val)
   have hi := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso
     (normalizedTensorPinchedIso A X.val Y.val)).isWeakHomotopyEquivalence

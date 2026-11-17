@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.MappingResolutionThomasonSquare
-public import SerrePositivity.EInfinity.FrameHom.CosimplicialHomCommaInvariance
-public import SerrePositivity.EInfinity.FrameHom.GrothendieckFiberInvariance
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CosimplicialHomCommaInvariance
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.GrothendieckFiberInvariance
 
 /-!
 # 元の分解の全右脚の不変性と固定 fiber の包含
@@ -18,7 +18,7 @@ universe u
 noncomputable section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
-open CategoryTheory CategoryTheory.Limits HomotopicalAlgebra
+open CategoryTheory CategoryTheory.Limits _root_.HomotopicalAlgebra
 open SerrePositivity.SimplicialModel SerrePositivity.Reedy
 
 namespace SerrePositivity.EInfinity.BarrattEccles
@@ -29,13 +29,13 @@ variable (A : Type u) [CommRing A]
 def mappingSmallRightSpanInitial (Y : (operad A).Algebra) :
     AsSmall.{u + 1} (algebraRightSpanBase A Y) := by
   let := modelCategory A
-  exact AsSmall.up.obj (FrameHom.ArrowSpan.rightSliceInitial (trivialCofibrations _) Y)
+  exact AsSmall.up.obj (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ArrowSpan.rightSliceInitial (trivialCofibrations _) Y)
 
 /-- 元の恒等右脚の始対象性を同じ小圏へ移す。 -/
 def mappingSmallRightSpanInitial_isInitial (Y : (operad A).Algebra) :
     IsInitial (mappingSmallRightSpanInitial A Y) := by
   let := modelCategory A
-  let h := FrameHom.ArrowSpan.rightSliceInitial_isInitial (trivialCofibrations _) Y
+  let h := _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ArrowSpan.rightSliceInitial_isInitial (trivialCofibrations _) Y
   exact IsInitial.ofUniqueHom (fun t => AsSmall.up.map (h.to (AsSmall.down.obj t))) (by
     intro t f
     apply ULift.ext
@@ -50,17 +50,17 @@ lemma mappingSmallResolutionRightDiagram_map_localized_isIso
   let := modelCategory A
   let q := (cosimplicialResolutionFamily (mappingCofibrantFactorization A)).obj.obj X
   change IsIso (AnodyneHomotopy.anodyneQ.map (nerveMap (CostructuredArrow.map
-    (S := FrameHom.CosimplicialHomElements.smallDiagram.{u + 1, u, u + 1} q)
+    (S := _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CosimplicialHomElements.smallDiagram.{u + 1, u, u + 1} q)
     (AsSmall.up.map (AsSmall.down.map f).right))))
-  exact FrameHom.CosimplicialHomElements.smallCommaMap_localized_isIso.{u + 1, u, u + 1} q
+  exact _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CosimplicialHomElements.smallCommaMap_localized_isIso.{u + 1, u, u + 1} q
     (AsSmall.down.map f).right (mappingRightHomDiagram_map_localized_isIso A (AsSmall.down.map f))
 
 /-- 元の任意の固定右脚の fiber の包含そのものは、同じ全図式で反転される。 -/
 lemma mappingResolutionFiberNerveMap_localized_isIso (X Y : (operad A).Algebra)
     (t : AsSmall.{u + 1} (algebraRightSpanBase A Y)) :
     IsIso (AnodyneHomotopy.anodyneQ.map
-      (FrameHom.Thomason.fiberNerveMap (mappingSmallResolutionRightDiagram A X Y) t)) :=
-  FrameHom.Thomason.fiberNerveMap_localized_isIso (mappingSmallResolutionRightDiagram A X Y)
+      (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.fiberNerveMap (mappingSmallResolutionRightDiagram A X Y) t)) :=
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.fiberNerveMap_localized_isIso (mappingSmallResolutionRightDiagram A X Y)
     (mappingSmallRightSpanInitial_isInitial A Y)
     (mappingSmallResolutionRightDiagram_map_localized_isIso A) t
 

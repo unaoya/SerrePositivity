@@ -25,7 +25,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open CategoryTheory HomotopicalAlgebra DifferentialGraded SSet
+open CategoryTheory _root_.HomotopicalAlgebra DifferentialGraded SSet
 open SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A]
 

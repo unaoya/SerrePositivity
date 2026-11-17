@@ -19,7 +19,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory Limits Opposite SSet
-open SerrePositivity.EInfinity.FrameHom SerrePositivity.InfinityCategories
+open _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom SerrePositivity.InfinityCategories
 open SerrePositivity.SimplicialModel
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : CofibrantAlgebra A)
@@ -27,18 +27,18 @@ variable (A : Type u) [CommRing A] (X Y : CofibrantAlgebra A)
 
 def cofibrantSourceRoofProductCommaEvaluationHomotopy : SSet.Homotopy
     (nerveMap (cofibrantSourceRoofProductCommaDiagram A X Y b) ≫
-      SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
+      _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
     (SSet.const (X := nerve (cofibrantSourceRoofProductComma A X Y b))
       (cofibrantHammockVertex A (cofibrantSourceRoofDegreeAlgebra A X Y b))) := by
-  exact FrameHom.FrameArrows.augmentationHomotopy
+  exact _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.augmentationHomotopy
     (cofibrantSourceRoofProductCommaDiagram A X Y b)
     (cofibrantSourceRoofProductCommaEvaluation A X Y b)
-    (SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
 
 lemma cofibrantSourceRoofProductCommaEvaluationHomotopy_h :
     (cofibrantSourceRoofProductCommaEvaluationHomotopy A X Y b).h =
       (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveNatTransHomotopy (cofibrantSourceRoofProductCommaEvaluation A X Y b)).h ≫
-        SimplicialLocalization.hammockLocalizationNerveMap
+        _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap
           (cofibrantAlgebraRelativeCategory A) := rfl
 
 lemma cofibrantSourceRoofProductCommaEvaluationHomotopy_hom :
@@ -48,11 +48,11 @@ lemma cofibrantSourceRoofProductCommaEvaluationHomotopy_hom :
   rfl
 
 lemma cofibrantSourceRoofProductOverTerminalHomotopy_evaluation_h :
-    (overTerminalHomotopy (cofibrantSourceRoofDegree A X Y b)
+    (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.overTerminalHomotopy (cofibrantSourceRoofDegree A X Y b)
       (cofibrantSourceRoofProductCommaOver A X Y b)).h ≫
       nerveMap (Over.forget (cofibrantSourceRoofDegree A X Y b)) ≫
         nerveMap (cofibrantDKSourceFrame A X) ≫
-          SimplicialLocalization.hammockLocalizationNerveMap
+          _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap
             (cofibrantAlgebraRelativeCategory A) =
     (cofibrantSourceRoofProductCommaEvaluationHomotopy A X Y b).h := by
   have h : ((cofibrantDKSourceFrame A X).mapCocone
@@ -62,11 +62,11 @@ lemma cofibrantSourceRoofProductOverTerminalHomotopy_evaluation_h :
     apply NatTrans.ext
     funext s
     rfl
-  have hm := overTerminalHomotopy_map_forget_h (cofibrantSourceRoofDegree A X Y b)
+  have hm := _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.overTerminalHomotopy_map_forget_h (cofibrantSourceRoofDegree A X Y b)
     (cofibrantSourceRoofProductCommaOver A X Y b) (cofibrantDKSourceFrame A X)
   rw [h] at hm
   have hpost := congrArg (fun g => g ≫
-    SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A)) hm
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A)) hm
   rw [cofibrantSourceRoofProductCommaEvaluationHomotopy_h]
   simpa only [Category.assoc] using hpost
 

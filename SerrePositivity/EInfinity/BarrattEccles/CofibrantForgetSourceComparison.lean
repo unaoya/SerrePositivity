@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantUnderlyingConstantRestriction
-public import SerrePositivity.EInfinity.FrameHom.NerveColumnNaturalityComponent
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveColumnNaturalityComponent
 /-!
 概要：実 U の全源比較と元の cofibrant 通常射の指定正方形を回収する。
 方針：閉包内の全列自然性を同じ射の定値列に適用し、同じ成分辺を評価する。
@@ -14,7 +14,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory SSet SerrePositivity.InfinityCategories
-open SerrePositivity.EInfinity.FrameHom
+open _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom
 open scoped Simplicial
 variable (A : Type u) [CommRing A]
 
@@ -30,7 +30,7 @@ lemma cofibrantForgetSource_component_square
       Truncated.HomotopyCategory.homMk
         ((nerve.edgeMk f).map (cofibrantAlgebraUnderlyingDerivedSource A)).toTruncated := by
   exact (Arrow.mk_injective _ _)
-    (NerveColumn.hom_naturality_const_component (cAlgForgetDerived_sourceIso A) f)
+    (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveColumn.hom_naturality_const_component (cAlgForgetDerived_sourceIso A) f)
 
 /-- 概要：元の通常忘却による成分辺の導来像は同じ通常複体射の導来像。
 方針：元の零単体表示と同じ一次単体の計算で辺の類を輸送する。

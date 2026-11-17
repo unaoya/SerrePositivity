@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.Relative.ClosedKernelContraction
-public import SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection
 public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.F1BKanComplexHomotopyClasses
 public import SerrePositivity.KST.Comparison.DiagramExInfinity
 
@@ -55,7 +55,7 @@ lemma specifiedPoint_map_homotopy {E K : SSet.{u}} [KanComplex K]
     (hE : IsIso (AnodyneHomotopy.anodyneQ.map (terminal.from E))) :
     Nonempty (SSet.Homotopy (stdSimplex.isTerminalObj₀.from E ≫ z ≫ g) g) := by
   apply (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex_piZero_eq_iff_homotopy _ _).1
-  have hz := EInfinity.FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence z
+  have hz := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.isWeakHomotopyEquivalence z
     (specifiedPoint_isIso z hE)
   apply (hz K).1
   change π₀.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (z ≫ (stdSimplex.isTerminalObj₀.from E ≫ z ≫ g))) =

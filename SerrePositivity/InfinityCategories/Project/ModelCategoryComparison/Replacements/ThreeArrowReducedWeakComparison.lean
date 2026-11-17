@@ -16,7 +16,7 @@ public import SerrePositivity.EInfinity.Hammock.ReducedColimit
 universe u v
 noncomputable section
 namespace SerrePositivity.InfinityCategories.Project.ModelCategoryComparison
-open CategoryTheory HomotopicalAlgebra _root_.SerrePositivity.InfinityCategories
+open CategoryTheory _root_.HomotopicalAlgebra _root_.SerrePositivity.InfinityCategories
 
 variable {C : Type u} [Category.{v} C] [ModelCategory C] (X Y : C)
   (cof : MorphismProperty.FunctorialFactorizationData (cofibrations C) (trivialFibrations C))
@@ -25,7 +25,7 @@ include cof in
 lemma threeArrowNormalization_isWeakHomotopyEquivalence : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
     (_root_.SerrePositivity.EInfinity.Hammock.graphNormalization (weakEquivalences C) X Y _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.threeArrow) := by
   have hi : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.EInfinity.Hammock.reducedColimitIso (weakEquivalences C) X Y).hom :=
-    _root_.SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _ (by infer_instance)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.isWeakHomotopyEquivalence _ (by infer_instance)
   have h := (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.threeArrowGraphInclusion_isWeakHomotopyEquivalence X Y cof).comp hi
   rw [_root_.SerrePositivity.EInfinity.Hammock.reducedColimitIso_hom_fac] at h
   exact h

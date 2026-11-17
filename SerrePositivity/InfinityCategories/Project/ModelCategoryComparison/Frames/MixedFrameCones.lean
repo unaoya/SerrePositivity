@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Frames.MixedFrameDiagrams
-public import SerrePositivity.EInfinity.HomotopyWeight.KanConeComparison
+public import SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.KanConeComparison
 
 /-!
 # 両側の frame の重み付き錐の比較同型
@@ -20,12 +20,12 @@ universe u v uD vD
 
 namespace SerrePositivity.InfinityCategories.Project.ModelCategoryComparison
 
-open CategoryTheory Limits HomotopicalAlgebra
+open CategoryTheory Limits _root_.HomotopicalAlgebra
 open _root_.SerrePositivity.Reedy _root_.SerrePositivity.HomotopyFunctionComplex
-open _root_.SerrePositivity.DiagramModel.WeightedCones _root_.SerrePositivity.EInfinity.HomotopyWeight
+open _root_.SerrePositivity.DiagramModel.WeightedCones _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight
 
 variable (K : Type v) [SmallCategory K] {C : Type u} [Category.{v} C] [ModelCategory C]
-  (W : K ⥤ SSet.{v}) (hW : (boundaries K).rlp.llp (initial.to W))
+  (W : K ⥤ SSet.{v}) (hW : (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.boundaries K).rlp.llp (initial.to W))
   (A : SimplexCategory ⥤ C)
 
 /-- 概要：両 frame の重み付き錐は anodyne 反転後に同型（Hovey §5.4）。
@@ -54,7 +54,7 @@ def mixedConeComparisonIso
   let r := _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MixedFrameDiagrams.rightDiagramComparison K A a R
   have hS : ∀ k, SSet.KanComplex (S.obj k) := _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MixedFrameDiagrams.leftDiagram_kanComplex K A hA hconst F hF
   have hT : ∀ k, SSet.KanComplex (T.obj k) := _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MixedFrameDiagrams.rightDiagram_kanComplex K X R hRcof hRconst
-  exact kanConeComparisonIso K W hW L hL l r hS hT
+  exact _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.kanConeComparisonIso K W hW L hL l r hS hT
     (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MixedFrameDiagrams.leftDiagramComparison_isIso K A hA F R b hF hR hb)
     (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MixedFrameDiagrams.rightDiagramComparison_isIso K A hA a ha R hRcof)
 

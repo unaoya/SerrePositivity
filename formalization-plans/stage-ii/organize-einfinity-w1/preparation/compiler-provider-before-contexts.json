@@ -1,0 +1,54 @@
+{
+  "changes": [
+    {
+      "name": "SerrePositivity.EInfinity.FrameHom.frameLeftRoofColimitMap.eq_1",
+      "kernel_name": "SerrePositivity.EInfinity.FrameHom.frameLeftRoofColimitMap.eq_1",
+      "initial_588_provider": "SerrePositivity.EInfinity.FrameHom.FrameFunctorImage",
+      "full_956_provider": "SerrePositivity.EInfinity.BarrattEccles.FreeProbeRelativeElementRoofImage",
+      "classification": "Source-free compiler equation/congruence; provider depends on imported context, not an authored API binding"
+    },
+    {
+      "name": "SerrePositivity.EInfinity.FrameHom.frameLeftRoofNerveMap.congr_simp",
+      "kernel_name": "SerrePositivity.EInfinity.FrameHom.frameLeftRoofNerveMap.congr_simp",
+      "initial_588_provider": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceFrameGraph",
+      "full_956_provider": "SerrePositivity.EInfinity.BarrattEccles.FreeProbeRelativeElementRoofImage",
+      "classification": "Source-free compiler equation/congruence; provider depends on imported context, not an authored API binding"
+    },
+    {
+      "name": "SerrePositivity.EInfinity.HomotopyWeight.pointwiseTensorAdjunction.eq_1",
+      "kernel_name": "SerrePositivity.EInfinity.HomotopyWeight.pointwiseTensorAdjunction.eq_1",
+      "initial_588_provider": "SerrePositivity.EInfinity.HomotopyWeight.PointwiseConePoints",
+      "full_956_provider": "SerrePositivity.EInfinity.HomotopyWeight.PointwiseTensorSource",
+      "classification": "Source-free compiler equation/congruence; provider depends on imported context, not an authored API binding"
+    },
+    {
+      "name": "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.coherentAugmentationIso.congr_simp",
+      "kernel_name": "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.coherentAugmentationIso.congr_simp",
+      "initial_588_provider": "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixColumnRoof",
+      "full_956_provider": "SerrePositivity.EInfinity.BarrattEccles.FreeProbeRelativeElementFamilyComparison",
+      "classification": "Source-free compiler equation/congruence; provider depends on imported context, not an authored API binding"
+    },
+    {
+      "name": "SerrePositivity.EInfinity.SimplicialLocalization.kanHammockHomPinchedMap.eq_1",
+      "kernel_name": "SerrePositivity.EInfinity.SimplicialLocalization.kanHammockHomPinchedMap.eq_1",
+      "initial_588_provider": "SerrePositivity.EInfinity.SimplicialLocalization.KanHammockArrowNormalization",
+      "full_956_provider": "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixFamilyTriangle",
+      "classification": "Source-free compiler equation/congruence; provider depends on imported context, not an authored API binding"
+    }
+  ],
+  "policy": "Both original environments recorded; do not infer source import owners from context-dependent compiler helpers",
+  "not_observed_in_full_selected_scope": [
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.OppositeFunctorIsoWhisker",
+      "kernel_name": "SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorOppositeHomEquiv.congr_simp",
+      "name": "SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorOppositeHomEquiv.congr_simp",
+      "classification": "Source-free compiler congruence; not observed among the selected 956 defining modules. Actual provider outside this selected scope has not been queried."
+    },
+    {
+      "module": "SerrePositivity.EInfinity.SimplicialLocalization.KanHammockArrowNormalization",
+      "kernel_name": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Roof.pinchedEndpointIso.congr_simp",
+      "name": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Roof.pinchedEndpointIso.congr_simp",
+      "classification": "Source-free compiler congruence; not observed among the selected 956 defining modules. Actual provider outside this selected scope has not been queried."
+    }
+  ]
+}

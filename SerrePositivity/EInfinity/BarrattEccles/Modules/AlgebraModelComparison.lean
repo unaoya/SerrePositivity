@@ -17,7 +17,7 @@ public import SerrePositivity.EInfinity.BarrattEccles.Modules.StrictRegularSecti
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory SSet
-open SerrePositivity.EInfinity.Modules SimplicialLocalization
+open SerrePositivity.EInfinity.Modules _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
 variable (A : Type u) [CommRing A]
 
@@ -25,7 +25,7 @@ variable (A : Type u) [CommRing A]
 方針：元の包含・置換と指定弱比較を全 nerve の判定に渡す。
 規約：元の係数 ∞ 関手。使われ方：同じ底の模型の移送。 -/
 lemma cAlgToAlgebraLocalization_isQCatEquivalence :
-    IsQCatEquivalence (localizationNerveMap (cofibrantToAlgebraDKRelative A)) :=
+    IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap (cofibrantToAlgebraDKRelative A)) :=
   localizationNerveMap_isQCatEquivalence_of_weak_comparisons
     (cofibrantToAlgebraDKRelative A) (algebraToCofibrantDKRelative A)
     (cofibrantDKComparison A) (cofibrantDKComparison_weak A)
@@ -35,7 +35,7 @@ lemma cAlgToAlgebraLocalization_isQCatEquivalence :
 方針：元の置換・包含と指定弱比較を全 nerve の判定に渡す。
 規約：元の係数 ∞ 関手。使われ方：既存 CAlg への復帰。 -/
 lemma algebraLocalizationToCAlg_isQCatEquivalence :
-    IsQCatEquivalence (localizationNerveMap (algebraToCofibrantDKRelative A)) :=
+    IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap (algebraToCofibrantDKRelative A)) :=
   localizationNerveMap_isQCatEquivalence_of_weak_comparisons
     (algebraToCofibrantDKRelative A) (cofibrantToAlgebraDKRelative A)
     (algebraDKComparison A) (algebraDKComparison_weak A)
@@ -46,7 +46,7 @@ lemma algebraLocalizationToCAlg_isQCatEquivalence :
 規約：恒等への全関手比較の回収は別。使われ方：単位の底の模型の比較。 -/
 lemma moduleUnitSection_projection_isQCatEquivalence :
     IsQCatEquivalence (moduleUnitSection A ≫ moduleTotalProjection A) := by
-  rw [moduleUnitSection_projection, localizationNerveMap_comp]
+  rw [moduleUnitSection_projection, _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap_comp]
   exact (cAlgToAlgebraLocalization_isQCatEquivalence A).comp
     (algebraLocalizationToCAlg_isQCatEquivalence A)
 

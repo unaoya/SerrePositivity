@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.FrameHom.NerveAsSmall
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveAsSmall
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.WeightMapMono
 
 /-!
@@ -50,6 +50,6 @@ lemma nerveMap_mono_of_faithful (F : C ⥤ D) [F.Faithful]
   have ht : σ ⋙ AsSmall.up = τ ⋙ AsSmall.up :=
     CategoryTheory.injective_of_mono ((nerveMap G).app n) hs
   have hd := congrArg (fun H : Fin (n.unop.len + 1) ⥤ AsSmall.{0} C => H ⋙ AsSmall.down) ht
-  simpa only [Functor.assoc, FrameHom.NerveAsSmall.up_down, Functor.comp_id] using hd
+  simpa only [Functor.assoc, _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveAsSmall.up_down, Functor.comp_id] using hd
 
 end SerrePositivity.EInfinity.Hammock

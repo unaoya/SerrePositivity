@@ -18,7 +18,7 @@ universe u
 namespace SerrePositivity.EInfinity.PowerOperation
 open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.ComplexLimits
-open SerrePositivity.EInfinity.SimplicialLocalization
+open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
 open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories
 open FullFaithfulAndEssentiallySurjectiveFunctors
@@ -26,14 +26,14 @@ open scoped Simplicial
 variable (A : Type u) [CommRing A]
 
 lemma complexHammockDerivedComparison_afterProbe_fullyFaithful :
-    IsFullyFaithful (relativeKanHammockNerve (complexRelativeProbeMorphism A) ≫
+    IsFullyFaithful (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.relativeKanHammockNerve (complexRelativeProbeMorphism A) ≫
       complexHammockDerivedComparison A) := by
   intro x y
   rw [pinchedHomMap_comp]
   have hp := (complexHammockProbe_isQCatEquivalence A).isFullyFaithful x y
   have hk : IsWeakHomotopyEquivalence (pinchedHomMap (complexHammockDerivedComparison A)
-      ((relativeKanHammockNerve (complexRelativeProbeMorphism A)).app (Opposite.op ⦋0⦌) x)
-      ((relativeKanHammockNerve (complexRelativeProbeMorphism A)).app (Opposite.op ⦋0⦌) y)) := by
+      ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.relativeKanHammockNerve (complexRelativeProbeMorphism A)).app (Opposite.op ⦋0⦌) x)
+      ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.relativeKanHammockNerve (complexRelativeProbeMorphism A)).app (Opposite.op ⦋0⦌) y)) := by
     rw [complexHammockProbe_vertex, complexHammockProbe_vertex]
     exact complexHammockDerivedComparison_probe_pinched_weak A (complexHammockOriginalObject A x)
       (framedLimitKProjectiveProbe A (complexHammockOriginalObject A y))

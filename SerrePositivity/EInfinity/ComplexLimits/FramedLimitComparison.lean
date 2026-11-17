@@ -45,7 +45,7 @@ variable (K : Type u) [SmallCategory K]
 使われ方：実際の重み付き end への普遍射を構成する。 -/
 def strictConeWeightedFamily (F : K ⥤ (Complex A)) (W : K ⥤ SSet.{u})
     (c : Cone F) :
-    (SerrePositivity.EInfinity.HomotopyWeight.doubleOpWeights K).obj W ⟶
+    (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.doubleOpWeights K).obj W ⟶
       (FrameWeightRealization.hom Kᵒᵖ (rightFrameDiagram A K F)).obj (op c.pt) where
   app k :=
     { app n := ↾fun _ =>
@@ -91,8 +91,8 @@ def strictConeWeightedFamily (F : K ⥤ (Complex A)) (W : K ⥤ SSet.{u})
 使われ方：通常の極限から homotopy 極限の候補への比較。 -/
 def coneToFramedLimit (F : K ⥤ (Complex A)) (c : Cone F) :
     c.pt ⟶ (framedLimitFunctor A K).obj F :=
-  (weightedCotensorHomEquiv A K F (HomotopyWeight.weight K) c.pt).symm
-    (strictConeWeightedFamily A K F (HomotopyWeight.weight K) c)
+  (weightedCotensorHomEquiv A K F (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K) c.pt).symm
+    (strictConeWeightedFamily A K F (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K) c)
 
 /-- 概要：重み付き Hom の同値は始域の射に自然（Hovey §5.4）。
 方針：反対圏での実現の随伴の Hom の自然性を使う。
@@ -114,7 +114,7 @@ lemma weightedCotensorHomEquiv_precomp (F : K ⥤ (Complex A))
 lemma coneToFramedLimit_naturality (F : K ⥤ (Complex A))
     {c d : Cone F} (f : c ⟶ d) :
     f.hom ≫ coneToFramedLimit A K F d = coneToFramedLimit A K F c := by
-  apply (weightedCotensorHomEquiv A K F (HomotopyWeight.weight K) c.pt).injective
+  apply (weightedCotensorHomEquiv A K F (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K) c.pt).injective
   rw [weightedCotensorHomEquiv_precomp]
   simp only [coneToFramedLimit, Equiv.apply_symm_apply]
   apply NatTrans.ext

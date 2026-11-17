@@ -19,7 +19,7 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 namespace SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardContextErasure
-open CategoryTheory HomotopicalAlgebra
+open CategoryTheory _root_.HomotopicalAlgebra
 
 variable {C : Type u} [Category.{v} C] [ModelCategory C]
   (a b : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (n m : ℕ) (X Y : C)

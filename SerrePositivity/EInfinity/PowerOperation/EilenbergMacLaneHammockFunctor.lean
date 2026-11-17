@@ -18,7 +18,7 @@ namespace SerrePositivity.EInfinity.PowerOperation
 open CategoryTheory SSet
 open scoped Simplicial
 open SerrePositivity.DifferentialGraded
-open SerrePositivity.EInfinity.SimplicialLocalization
+open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization
 open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
 open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories
@@ -32,8 +32,8 @@ def complexRelativeSpectrumSource :
 
 lemma complexRelativeSpectrumSource_inverts :
     InvertsEdges (complexRelativeSpectrumSource A)
-      (weakNerveEdges (complexRelativeCategory A)) := by
-  apply weakNerveEdges_inverts_of_arrows (complexRelativeCategory A)
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges (complexRelativeCategory A)) := by
+  apply _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges_inverts_of_arrows (complexRelativeCategory A)
   intro X Y f hf
   let := projectiveModelCategory A
   have : QuasiIso ((complexRelativeDown A).map f) := hf

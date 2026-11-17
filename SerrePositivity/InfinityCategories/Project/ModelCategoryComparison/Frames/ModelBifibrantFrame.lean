@@ -16,7 +16,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.InfinityCategories.Project.ModelCategoryComparison
-open CategoryTheory HomotopicalAlgebra Opposite
+open CategoryTheory _root_.HomotopicalAlgebra Opposite
 open _root_.SerrePositivity.Reedy _root_.SerrePositivity.HomotopyFunctionComplex
 open scoped _root_.Simplicial
 variable {C : Type u} [Category.{v} C] [ModelCategory C]

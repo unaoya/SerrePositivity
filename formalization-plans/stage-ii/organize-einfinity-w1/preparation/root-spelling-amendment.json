@@ -1,0 +1,1992 @@
+{
+  "applied": true,
+  "initial_application_sha256": "d4b78ca25060962a12bdbf1371772b74755dda67d4aef9a48c964c1baf94197a",
+  "source_changes": [
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/AlgebraRelativeCategory.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/AlgebraRelativeCategory.lean",
+      "before_sha256": "2c77d1e4868e86b78aa4d8c35d45646eca2f62d299db1a289693b7fc915009ed",
+      "after_sha256": "7a427db85aeceb4e23579972dd70388dac7824c6e4b02923127bf318f55c5b9e",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/AlgebraRelativeComparisons.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/AlgebraRelativeComparisons.lean",
+      "before_sha256": "3a4b6c9adfa08416e11e1438f40bb91e18140e947651b237952cc4475b76121d",
+      "after_sha256": "885fdaaffef84e5541840bc056e3debc8304535f3935b4af349459c2d9f62d1c",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/CarrierConstantDiagramClasses.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/CarrierConstantDiagramClasses.lean",
+      "before_sha256": "caaf1af6c94bf7038656434cd48428a88bd4f5a2e0d1933b318f7df2adb87d76",
+      "after_sha256": "9fde489184907220ced4438643672c9d5d0564fbdcd3df5871e00c5a8c2c34c3",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/CarrierConstantProbeLocalization.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/CarrierConstantProbeLocalization.lean",
+      "before_sha256": "b6314170407bf8b7b0b7d1b7694447cd2f3f3705bb79318e6c1f62a36fd24c7c",
+      "after_sha256": "cedccd9a5b3dd0270e1945a020d96623a9c76b70e34587ccd242753ef7d7bc6f",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/CarrierFramedLimitConePiZero.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/CarrierFramedLimitConePiZero.lean",
+      "before_sha256": "2df97503afd99a25d951b09025f5af3e1c7bd1829c7b47432dcd6dedec1e169c",
+      "after_sha256": "054ece7a00942a57cf9fd4b353b96ab7d531207ea034204be109ddb83861cae8",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/CarrierFramedLimitConePiZeroSource.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/CarrierFramedLimitConePiZeroSource.lean",
+      "before_sha256": "319fabf98cc7fba1a9335976bfcbfebf041781d46512e8fee3374351eaad8067",
+      "after_sha256": "0c1a3109a8096eaab05240204e28c79189ed1fbddbff2dc71b76143f8a83680b",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/CarrierFramedLimitDerivedHomNormalization.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/CarrierFramedLimitDerivedHomNormalization.lean",
+      "before_sha256": "20b3f7caa121a50d9c235b9503712577d9af46c5be0e035527b69146e06503f7",
+      "after_sha256": "d463f975094cbf8f1a9ece4d83020ea214e51b821e884f85731fd80560add38a",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/CarrierFramedLimitDerivedHomSource.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/CarrierFramedLimitDerivedHomSource.lean",
+      "before_sha256": "1a7af0a2acd160158c398165ee2af8a56b98b7ad42064db34df8723ec3d86cc1",
+      "after_sha256": "466b45bcc52f70ef32423ea46db073f9f29fac4152775c851ed5a6ab7bb85240",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/CarrierRightFrames.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/CarrierRightFrames.lean",
+      "before_sha256": "dc0c2ceb5ef0dfde2041d188a4192ac3164c9c4ba949d3b43281e49eda94d8ce",
+      "after_sha256": "825d112391c032bd2ed94903b0fc78966d0b9619e5a1c8a9f8f0b1638778e062",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/CarrierRightSimplicialFrames.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/CarrierRightSimplicialFrames.lean",
+      "before_sha256": "963518cd08cd6f3c144a7c82648c379358cfe8f4e5df6955b422ce61e7acfc97",
+      "after_sha256": "0435650a227ba48ca5b1285b908c4e724dafe553baaf684908079a59ba42eee1",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/CofibrantAlgebraLocalization.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/CofibrantAlgebraLocalization.lean",
+      "before_sha256": "bb9a7f8458336befe34305b73fb19a71ced19c9538eaf8b7b89784c3a3ad81aa",
+      "after_sha256": "f7774bac01a5cc0aa41e201c0d95c70ee0087cbc1150ccdd20343a47d7fa9e4c",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/CofibrantAlgebraMappingClasses.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/CofibrantAlgebraMappingClasses.lean",
+      "before_sha256": "4008b6ef4e211bfdac69bb04900f732f1d12a7d16e0ec29063e05ca2a5f56767",
+      "after_sha256": "c19938ba174e13ccaba62668e1beb606fa1d91690f22126ab2b04f9f789ae9b9",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/CofibrantAlgebraMappingSpace.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/CofibrantAlgebraMappingSpace.lean",
+      "before_sha256": "41e8b77441df18af36e4062362d50e14d151d1bf40aaab0f0bb92e53e1f89160",
+      "after_sha256": "4512e0f2e24bdf21f600ce5908140bcb08da14b91a260655078c390236a4d4f9",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/CofibrantAlgebraReplacement.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/CofibrantAlgebraReplacement.lean",
+      "before_sha256": "d5af0ad4a67ef76917bde8ca5cc30622ad7eab356283fbc32f085a41cb9a4ae5",
+      "after_sha256": "bd2a8096068d7a2fb94f3c44ac53f9bbb5d8fb188033192d829ec7a5f616bb89",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/CofibrantDiscreteAlgebra.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/CofibrantDiscreteAlgebra.lean",
+      "before_sha256": "5e3dc831d8d5c0c258252e63c522aea6754eadff089f5ecc9368f5284a003175",
+      "after_sha256": "1480653cf8d63a9e134faf4eb41871c701f64db95519749d9503648541d29442",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/CofibrantHammockActions.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/CofibrantHammockActions.lean",
+      "before_sha256": "1eabae74130adf33e814cc53d411a7bdcf0fd56527f84479dd6414b8392d3aa1",
+      "after_sha256": "7747470329d8b6c4e9daf9a9b3c618727ac31cfc362bb74f7514f32767c89240",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/CofibrantHammockInclusion.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/CofibrantHammockInclusion.lean",
+      "before_sha256": "1b32263116e48272699c3ffdc383f00576ca70d2a4568b5a8d363dda19e46780",
+      "after_sha256": "65807603e696d6bbbffe7e9f549084677791a8ae628d2250352620aca941776e",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/CofibrantHammockInclusionLaws.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/CofibrantHammockInclusionLaws.lean",
+      "before_sha256": "c031a1c29ee723df303e3c451ac0a162711a73283c691091b6e3fb5fab1307bc",
+      "after_sha256": "366b9045da097eb158bfd5472733fed12c6754dd3fc2cd542086161575c50c91",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/CofibrantHammockValue.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/CofibrantHammockValue.lean",
+      "before_sha256": "e396f49a65b8d0a90eeb9f477758d56dee59d1472cb4491d8b2773ab6eef9392",
+      "after_sha256": "549401a63a8232b94aa76cd0db4734a726339f2aea4fc42bceb73900296f9f2a",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceRoofAugmentationImage.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceRoofAugmentationImage.lean",
+      "before_sha256": "433073d8af71e50a3c22b377c6f3695a3d1059d23d1687da529bcaf50c87c6fa",
+      "after_sha256": "2251c9a2920cae6bc01b6412edf2949b3d2dbfded7a82af26d306c342d9358d9",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceRoofEvaluationImage.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceRoofEvaluationImage.lean",
+      "before_sha256": "25c69eb2d52d5b1041193fec8b3b97a76828525b51bd16f9b6f713e90fad1ca1",
+      "after_sha256": "f57870af940ec54390476bcce94aa2d90fa4ea78f0268e4c6b5eb746f84f3e0c",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/CofibrantZigzagValue.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/CofibrantZigzagValue.lean",
+      "before_sha256": "86e079d07d99e1ee41182a139735b5bab0d091cd50685b2bb2c59aa4d85df783",
+      "after_sha256": "fb3ffcc699cc1f05d3648aa9a54e2060f480ca10e7b002eddeecd63073ee3b0e",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/ConstantDiagramClasses.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/ConstantDiagramClasses.lean",
+      "before_sha256": "b95eaa077a713dcfd21402a4521691a1112272eedcfd346e96801a3189d66834",
+      "after_sha256": "293f49d08ef0afedff08a4cf490f87492207478abe3167e661a6704a12a41e4c",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/ConstantDiagramMappingComparison.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/ConstantDiagramMappingComparison.lean",
+      "before_sha256": "c0686fc5f1c20ec9625096b17b23252ca39aed236fa3af12ec60e4445270de0e",
+      "after_sha256": "02e3b33fe53fefa5d312540df2911305c1e7d7b8ec54b7d1a1d19c296083059c",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/ConstantProbeLocalization.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/ConstantProbeLocalization.lean",
+      "before_sha256": "815a9b8add5bdaae31823624f0b50ec4f2c638c8a21f35c094a5d8a15cbd4882",
+      "after_sha256": "631832928806e126c2d2cc249345481f91ed8e204467c5100f209b0d1f946804",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitAdjunction.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitAdjunction.lean",
+      "before_sha256": "e7bb90d327b0cdb886a222450bac33ec76e58ce709e7dc50ee56117756ca7564",
+      "after_sha256": "ef0bc283f2a930a03899109c7322e79c27b1dc9f7a78c889e0d120c20d7e0377",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitAdjunctionNormalization.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitAdjunctionNormalization.lean",
+      "before_sha256": "01b3b8bbe0457eec09be2fba16789be9a88bc1aaf684ea052b8389a7a8282e16",
+      "after_sha256": "9c9ee1dd92083204c056cdcd3059edc66acb46a76ef3317a8c6ca2971d8fbf38",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitCarrierDerivedComparison.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitCarrierDerivedComparison.lean",
+      "before_sha256": "36d939ae1b915c4cf7d71eb2cfd4c12a56f0710aa7454402c6c423aa6dc819b9",
+      "after_sha256": "fed0929855cf63f9eaccb971e9c867d75bc963ea31dd5f39d23c388892b73481",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitCarrierDerivedNaturality.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitCarrierDerivedNaturality.lean",
+      "before_sha256": "3b8d4a84b4a983b971fd0a808b2e4e4a046848b4160384845029936b5397f0be",
+      "after_sha256": "c04c56eb606466a4ed9ec471d096659f35d14a9471b60df21809a3c7ef15c5e4",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitConePiZero.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitConePiZero.lean",
+      "before_sha256": "e266aa427de5d6d42e6a84de3d2b272f056ef30f61432863cb15e8db8cc2526c",
+      "after_sha256": "219097610b468521afa3b5427101096d51e934c5771021b4310ceaa4093b3483",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitConePiZeroSource.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitConePiZeroSource.lean",
+      "before_sha256": "c00c4e2ce2725f72c48865b1d2ecf2f7a3683affda128de6f24ab6ccd9716a6c",
+      "after_sha256": "c3122ecb98ba55522bddced94f9767810d87a33e98f52b3db73e167f8db16d8d",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitDerived.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitDerived.lean",
+      "before_sha256": "bc9d0f90099c3551c66c9e9e7f1511ca4f34af396d03dcf0ff19487c74792da3",
+      "after_sha256": "c1352a35d4f3ac18093396329fbee69359ba4b820b268083beca1d8770e929f2",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitDerivedHomNormalization.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitDerivedHomNormalization.lean",
+      "before_sha256": "ab4f44539564f064848b68edc3edb8526c66c24cc32465454ace8b0336d73fc9",
+      "after_sha256": "9610d371f1e1bc35d831b29c80cb8a659b88fd1cb9fe093a06e37f9cbfd7c9d9",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitDerivedHomSource.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitDerivedHomSource.lean",
+      "before_sha256": "60985865634961714483359619dbfaf740df38410c8924bc4298bd45b658b9a4",
+      "after_sha256": "0e558afff28024e2606dbea4ecb0e93ed6f73e6493eac395612e2713ebb022f5",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitHomIso.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitHomIso.lean",
+      "before_sha256": "a456648f4f06a186f490f03daa94caf353ba82adaf4e253879c160f3f46ea068",
+      "after_sha256": "c6bb2c3e1171c8fcb607489b34fad9c60a5a0290aaedc6d3976428274ac43ccd",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitLocalization.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitLocalization.lean",
+      "before_sha256": "6ddf07c464b78618d52b2d6ab1d52890905a92cea823d7401cbf1cf7d4ede9e9",
+      "after_sha256": "063fc746ff85a907f9e90efe93ecab8896da72f9b3ad0dbfd5636bdc825c85bd",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitProbeComparison.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitProbeComparison.lean",
+      "before_sha256": "becbee4d1c5e892ab7c58bee6a8cc6b13e9cfbbf06b67b2196e955336c9e4606",
+      "after_sha256": "16f1e7c7cef01b847678012192ea171db4d1afc2b08e87159ce8cd8907e640d2",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitProbeFunctor.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitProbeFunctor.lean",
+      "before_sha256": "164341d625b2d51d41a0b4591812e1cc6b31d506a10b8b8b107885cad67e27c1",
+      "after_sha256": "bc564364125941b66590a9c2f66e97187a1445af90051d1a1c9414be77aeba44",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitProbeLocalization.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitProbeLocalization.lean",
+      "before_sha256": "263159c849f1db95e93b3d3415c7083a480e53f07166093e5287a58690fd1046",
+      "after_sha256": "634a608fa8f36bef506a2b714a6d2f89bd10b291735cffff5ed8432391616cac",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/FreeProbeElementCofibrantColumn.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/FreeProbeElementCofibrantColumn.lean",
+      "before_sha256": "61c426bba15e2b57b873696c83ec868f317aee0484c3ba95c24a0be402edbd35",
+      "after_sha256": "240aa83a7fddecdb64b868e335395a1f54047aa74e2b3479ef1bc54a72c07ad2",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/FreeProbeRelativeElementColumn.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/FreeProbeRelativeElementColumn.lean",
+      "before_sha256": "ff6af2dd1bb21fca10b533662d43a9f44d292d1651b68b792b2d69811675019c",
+      "after_sha256": "a48bd53ee5a2047682294e05efcb3a8e126839601fadea005ba52a721beb51df",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/HammockColimitComposition.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/HammockColimitComposition.lean",
+      "before_sha256": "657cc2b3b1b35df5d3b8d1f50e37f0e7dfd30d0a4f617ce50b48b0b43bbbcbf2",
+      "after_sha256": "ca37021f60c41eaa330f75264b29367c50f9fbe1866a68a80e7b742f63b5bcb1",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/HammockColimitUnit.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/HammockColimitUnit.lean",
+      "before_sha256": "e71b613b1cb6ba08387de0f72c0716eae6a10ee2ee92c56643182b1c966d0ef5",
+      "after_sha256": "115864b306e236c560af251f5d45df49a7296da3d11ee70c2edbe4b91b9642ec",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/HammockColimitWeakComparison.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/HammockColimitWeakComparison.lean",
+      "before_sha256": "aacf04bd9d6aa77088a598df51d57e2a9df93207d79e5a7503a87f0da9374105",
+      "after_sha256": "f3563635e223ad4e611b2d83ab124704b94897c77385108d188ea5756b4db3cf",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/HammockCompositionPairing.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/HammockCompositionPairing.lean",
+      "before_sha256": "e5ed107dc49c1a888cf21ac4444186fc05075f05041c391671efa2844bcd2364",
+      "after_sha256": "3e52d61a88f5f38e6b8f2a6582db43aa664c1818142fdee496dbe14b209e0210",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/HammockEnrichedCategory.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/HammockEnrichedCategory.lean",
+      "before_sha256": "b5c56da8a6a1bc5aa6e28cd1744a10130e50ac8e2f9dd893ed916a238a8db03e",
+      "after_sha256": "0513b005d7e57bdd7e1062b3d5c1449861507e31f4919ae792f928cafe912e67",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/HammockErasureConfluence.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/HammockErasureConfluence.lean",
+      "before_sha256": "6d071c6752a1e7d1b67d32c863459aac150d781bea72dfe75564a6e186441475",
+      "after_sha256": "a577e5955257f0b7fefef0e6b064d90997d21af43062f3df3d12187d45eadfcb",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/HammockGraphColimit.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/HammockGraphColimit.lean",
+      "before_sha256": "a95b3c31b37e704ec48120ef8273645efd32a28688a0a64a64422b63ab7c0f37",
+      "after_sha256": "4ca3563b498ae6c451cf137348b9e3d3b3fc5335e35e1cdca3d122c41c721eda",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/HammockGraphComposition.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/HammockGraphComposition.lean",
+      "before_sha256": "20cffdb02f0ba28091adfb8221c618f4b813c0a6e7b0eb3f7862bc869e7eec47",
+      "after_sha256": "b5bfe4949b5459bcaca907ee77e7e238eaf16186369f04c71d89a9953748e60f",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/HammockGraphEmbedding.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/HammockGraphEmbedding.lean",
+      "before_sha256": "d2a920b96d591d1d1dc3a1eb8148075b5ddc19bd3986458f44a915d36016a6f7",
+      "after_sha256": "dd0df5e2fbb22c85e17beb5bc7866f658f268b893f63baf254d19171f9022f11",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/HammockGraphEmbeddingRange.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/HammockGraphEmbeddingRange.lean",
+      "before_sha256": "3841e88326bbdafc384e4d40bc6ff6d4e107e4e8ff95e61bb6128f7884fa7ee9",
+      "after_sha256": "3ebbe6839094a73161767d631da3087974cd8867633205e9865140152dc7d0f1",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/HammockGraphProper.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/HammockGraphProper.lean",
+      "before_sha256": "db6afa5c6ff553f0707b92c1e301d38832be41541af89ab4cca336446119a2d6",
+      "after_sha256": "5f9c6e868ee04d6e34165057893a7f305fca83cc6ef722900a4f042726636d60",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/HammockGraphTransition.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/HammockGraphTransition.lean",
+      "before_sha256": "581220bd9b4004f8d5d00fe65977b9a89c9178aa07375523bd866ea3856d8776",
+      "after_sha256": "8eec1cef9c3e8c02bd7c5fe4c6775b338c91aff6132eff3becfd9027a168c84e",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/HammockLocalizationValue.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/HammockLocalizationValue.lean",
+      "before_sha256": "27ab511ef7d37650cd59a33c1c730ffc098e794f75610edcbd0f5273323b41a8",
+      "after_sha256": "c277287ae63fd628d6805cc11a45321017476c723edd841c9a6a7a26a9f91651",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/HammockMergeConfluence.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/HammockMergeConfluence.lean",
+      "before_sha256": "6b6e62dc0cce47c342b1254a933a8cae9020affd9667a800cd637639659f7f9d",
+      "after_sha256": "58413c4f145cbd57d43100e5a1050270513886b941fbb43fffc4883a1ed7ff2d",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/HammockNormalization.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/HammockNormalization.lean",
+      "before_sha256": "68df2405bf93dfc057fd49be8ab6a046c9ec2be75a74aa4085d7d996ef4ffecb",
+      "after_sha256": "981db94739c01251647e59aadcfb263d0b6a634b0ced40ac1a1c2de635a58c95",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/HammockReducedColimit.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/HammockReducedColimit.lean",
+      "before_sha256": "492645c841155e648cf381e82162c5141328ea575493d9d53a5c5c9f7e00a2df",
+      "after_sha256": "1faf583c63ea82de1b736c46c1c25ebf9ee045eb5373709b24fd92e95bed91c1",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/HammockReduction.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/HammockReduction.lean",
+      "before_sha256": "099ebb40be9de74aba8f355c190280a259bd725c38fcbded402ef795e40d39b6",
+      "after_sha256": "d741b9111f4f10b4fb0512d945507bf5aa823b1e700cbd034014cff41b54a952",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/HammockUnit.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/HammockUnit.lean",
+      "before_sha256": "5132587e568862e98319b4e2103b71d45b522e3028e121c4c94bb815571ee172",
+      "after_sha256": "4e04a20fb656f15b4239c573efd109991b4dd875397b9bdf3a1ccb5cee842769",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/MappingSpaceBarInclusion.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/MappingSpaceBarInclusion.lean",
+      "before_sha256": "e4e2dd5bf47e0c8a701951418ec182a5b5e531f53e4f25097df5417778189512",
+      "after_sha256": "06141660468b65e09a9e86713cb6c12a86e94d558eb138784a738c3e2b2b882d",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/MappingSpaceHammockComponentsValue.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/MappingSpaceHammockComponentsValue.lean",
+      "before_sha256": "b9d5f365bca56410091b7e14271de4b6567487ffebe31e8dc4ef006ffd662e7c",
+      "after_sha256": "668f63674d682bf76355bdaa3b2b482febe680536a7303b41ec9806ab45e3acf",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/MappingSpaceSpans.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/MappingSpaceSpans.lean",
+      "before_sha256": "1cb2ff70fdc5f8c53d6628e0c8b1859989d8e073d7e2d746def6477bf8fe2a35",
+      "after_sha256": "85532ea6e40abddab5a9e2e95e94d0dff434f3d506604dd3b61e1284df18176e",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/Modules/RawModuleProbeCommonFrame.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/Modules/RawModuleProbeCommonFrame.lean",
+      "before_sha256": "11145f69997fba527ffc75a23bac5cb5a4f57554ec145989b19e4e5c230807e7",
+      "after_sha256": "b2542fdff6b3f178ff04b9d15a93c9684415776079f29b1395db825fd073f001",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/Modules/RawModuleProbeHomComparison.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/Modules/RawModuleProbeHomComparison.lean",
+      "before_sha256": "44f23f28fa9e39586b7e1c30fef9ad868aea771adbbf56cb1e614b609551c73f",
+      "after_sha256": "de23cc5a458399e2e9be200cc3231708591e431c016aa02345148495411feab2",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/Modules/RawModuleRelativeModel.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/Modules/RawModuleRelativeModel.lean",
+      "before_sha256": "8f39f76cd7c02b6da6b6b5d309c98af4176bbae2757cdb9bdf80d28731a38dda",
+      "after_sha256": "ec271df84e8b2e264da70af06c50c78217e28d545a9e5650962e8cf2f1b85a54",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/Modules/RawModuleTensorElementDiagram.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/Modules/RawModuleTensorElementDiagram.lean",
+      "before_sha256": "8f1fb9d93ebd5b3b809c07ccb3d4e218f4014c7cdf7b5f3a198f2041bb4453a4",
+      "after_sha256": "4e2bb59de3f2cdfe93eb29b005a1f17eda538b4b3b88d870c0fc18625163d26f",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRawCartesian.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRawCartesian.lean",
+      "before_sha256": "a353f5770c28c3b1975d5390afd0d3c92404e9ab65c2166dac63cc1cb739a973",
+      "after_sha256": "5e132e602866c1892f5f5805735b4af3ea79776e0e10699e37250306603f2999",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/SourceFrameRoofComparison.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/SourceFrameRoofComparison.lean",
+      "before_sha256": "668c3ea52bcaefc65da06f033a8b11abb1bad3515148eb011fa898ea61c11013",
+      "after_sha256": "d51f8a2cf3afabaaa11d93b0011d66b156a4461b460bd7d73cc96f8a3f5af7fc",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/Theory/CAlgExtensionForgetKFlat.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/Theory/CAlgExtensionForgetKFlat.lean",
+      "before_sha256": "887134ad2aaae5551bde3f04fd3888c06b00167ffc7ff0b3d20138d2ba9a861a",
+      "after_sha256": "77c4bf5972f7d93fc818e7cbf27f731b6cf12b023ed105f43a88a08b213762a1",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/Theory/CellularCarrierKFlat.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/Theory/CellularCarrierKFlat.lean",
+      "before_sha256": "837a48fe807fbf48bbcee7601a9a3d44599f0801e03dce0990e8eba2585e5552",
+      "after_sha256": "ca648c653947493aee9f497a9b4f9ddbf61ad61a115aeb5b87a4568a99f1d90b",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/Theory/CoproductFrames.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/Theory/CoproductFrames.lean",
+      "before_sha256": "3baae393a77ff63b5b9755d010d338984a68738b1c98155bc74d24b0373beb8c",
+      "after_sha256": "9b3ebc2f981b0f1c6c57409345256ec4f99e42a7d1a80941f3c88ec6c3fd5d6e",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/Theory/CoproductMappingSpace.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/Theory/CoproductMappingSpace.lean",
+      "before_sha256": "1c10b8f94f93baf84b63844fa81fdfd22619d3a04eb10c0fe15235fd8509edb2",
+      "after_sha256": "584cb998fc2f44e2f22518f961568569cc09c7a09c2d7b60d6369eb5ca4266b3",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/Theory/CoproductModel.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/Theory/CoproductModel.lean",
+      "before_sha256": "8d06d52b90b0eccd95ac88ef903010c760688cd28f7880e6340095a6ed03ef34",
+      "after_sha256": "cd618c331c757ae3daff4c3c7d051d7af426a5065c5d1327fc067911aa622114",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/Theory/DiscreteInitial.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/Theory/DiscreteInitial.lean",
+      "before_sha256": "d984412ba8849d73a5e0941f6ce6435274c1b4c53c0a34463ad90d31b064fd9c",
+      "after_sha256": "a477b91afb0dd723b5792d93519b83379fe3b1824075ae16ba51c1cf972c761d",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/ComplexLimits/ConstantProbeLocalization.lean",
+      "new_path": "SerrePositivity/EInfinity/ComplexLimits/ConstantProbeLocalization.lean",
+      "before_sha256": "5ea931b63c3d68b1cdbcaf66a7eef38a2693e543449fb9fc2eb9015e60f37a53",
+      "after_sha256": "8b6a6cab313a9b209079f7c9f6fa628b918dd71fb16cf29dedef4c0e075463c9",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/ComplexLimits/FramedLimitAdjunction.lean",
+      "new_path": "SerrePositivity/EInfinity/ComplexLimits/FramedLimitAdjunction.lean",
+      "before_sha256": "3cc8acb1d67e546882ba87b1a5c0c24acb0e1e6c73ddb6e126b436005d03ada9",
+      "after_sha256": "33f23413d4dd61d6865a73027b4f5c8efd05a99c40afd38b4f3004d9693326da",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/ComplexLimits/FramedLimitAdjunctionNormalization.lean",
+      "new_path": "SerrePositivity/EInfinity/ComplexLimits/FramedLimitAdjunctionNormalization.lean",
+      "before_sha256": "a01d0ff3823ffc9ad8f981f8f4b1b9153de92c8deaa099266b005d7fba534992",
+      "after_sha256": "3605ea7b89aaa5175e55f7bd5b46d67c4209379fa3cd0d58551e09a7d60ee153",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/ComplexLimits/FramedLimitConePiZero.lean",
+      "new_path": "SerrePositivity/EInfinity/ComplexLimits/FramedLimitConePiZero.lean",
+      "before_sha256": "c0d7f258499b08b8cad91893d46c88b6e60fafb88d9e07c712015cf95fd8dccb",
+      "after_sha256": "ee3f577edd0cef49b234721ef247b701e3e58c41211325f62c71dba4d345c2f7",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/ComplexLimits/FramedLimitConePiZeroSource.lean",
+      "new_path": "SerrePositivity/EInfinity/ComplexLimits/FramedLimitConePiZeroSource.lean",
+      "before_sha256": "902c7b8bad3c3fed67cc66b248fb74dc2b046737f21efb57a10f6f68d6eb5d87",
+      "after_sha256": "7e1ac1fd505eef769be6ade0225a7562f5862e7b7bbbbbb1f74a420cd19d3efa",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/ComplexLimits/FramedLimitDerived.lean",
+      "new_path": "SerrePositivity/EInfinity/ComplexLimits/FramedLimitDerived.lean",
+      "before_sha256": "5f2e742e84e014ae26d0327bb46c64611d3ed93e0c665b344cc2bdd790aaa996",
+      "after_sha256": "7eba8144b61fcad072ee4b04e048d1c3d9885f9d26aa6329f45d27ff9d7fd4af",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/ComplexLimits/FramedLimitDerivedHomNormalization.lean",
+      "new_path": "SerrePositivity/EInfinity/ComplexLimits/FramedLimitDerivedHomNormalization.lean",
+      "before_sha256": "d04917cb33e7f9b81ed27f5bbc4fe019ad3d6b24df70cc2b8804d525cbb31f4c",
+      "after_sha256": "a7522197266e2a460657e2a4990dfbce7f3de9db1eb3ef7e302e06a0c887e18e",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/ComplexLimits/FramedLimitDerivedHomSource.lean",
+      "new_path": "SerrePositivity/EInfinity/ComplexLimits/FramedLimitDerivedHomSource.lean",
+      "before_sha256": "893d2a2f8db43280ccc7cb68c4df4251e99382d03b3eb97268fd1fb48580b585",
+      "after_sha256": "ab0798679fbb76e82a4842cfc00d683324f8db0fa701c0ad519057b9d92608ea",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/ComplexLimits/FramedLimitHomIso.lean",
+      "new_path": "SerrePositivity/EInfinity/ComplexLimits/FramedLimitHomIso.lean",
+      "before_sha256": "efb793af93c62914e20f72b03ef4a39cac4ce9328bf62960ef73f9314a8cf673",
+      "after_sha256": "caf9dd139f6cd5a66b5b31bd93c7ff8b7f5f2113e9bd7b80e0475c3702806402",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/ComplexLimits/FramedLimitLocalization.lean",
+      "new_path": "SerrePositivity/EInfinity/ComplexLimits/FramedLimitLocalization.lean",
+      "before_sha256": "400638f46d6c2d1b2cc200eedddff4a9af34b604588c2ff7c7b4e8fdce774215",
+      "after_sha256": "e1706159b03e63c3a229f741521d21ca9a69c04e7f52ba79b977fbbe6660ebb3",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/ComplexLimits/NormalizedOrdinaryDerivedHom.lean",
+      "new_path": "SerrePositivity/EInfinity/ComplexLimits/NormalizedOrdinaryDerivedHom.lean",
+      "before_sha256": "0b7883182e0dc58aa94cbde6c1b4a90fd50caaa3ec4b4461ec3ad074a1d30ff4",
+      "after_sha256": "0fb3b004c080d82625c0e29e68c484b8ae5504fba83deecec1083dbcf72dabe5",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/DGAlgebra/BifibrantCofibrant.lean",
+      "new_path": "SerrePositivity/EInfinity/DGAlgebra/BifibrantCofibrant.lean",
+      "before_sha256": "db96d8c7dab82b101ba42aa718d6358a4b3ce67d0292b7fe27d2d2362998bb83",
+      "after_sha256": "fc0e4d8d2ca97377b7b1afa0072260279d26e5b4e442348fef5940f33fa16b7d",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/HomotopicalAlgebra/Simplicial/DiagonalLeftAnodyne.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/Simplicial/DiagonalLeftAnodyne.lean",
+      "before_sha256": "bb61be5fa3ff15ddd19b9e62fe1432b7882a42e0224d1ec6ebafeafbc9d31a05",
+      "after_sha256": "7fb27245fab53b6b99a09c96e70863b0ee9028feddb25583ef115cc3b530f8ec",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/LeftAndRightFibrations/AnodyneKanTarget.lean",
+      "new_path": "SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/LeftAndRightFibrations/AnodyneKanTarget.lean",
+      "before_sha256": "c39a2bf94687dd2cc1cf1919483cc62fa036a815a23b18372642022ee303357b",
+      "after_sha256": "4a738e490498f5ebf32783907fbd83298d0bb4d89d84d652f72a739e8efd7bbb",
+      "root_qualifiers_added": 2
+    },
+    {
+      "old_path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramCofibrantVertices.lean",
+      "new_path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramCofibrantVertices.lean",
+      "before_sha256": "22b505d6b235fae98838876c27ff23396c5f9721f90603ac3b4cc13778b2e60d",
+      "after_sha256": "90775d7fa3dd3f33855c2041eb5914a1fd66b73ef98f953ade79fcf1184a2848",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramFrameEndpointIso.lean",
+      "new_path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramFrameEndpointIso.lean",
+      "before_sha256": "eae976ecbd73c326c6824970d0d0a578326739b15cc8ae00b775d29d4da989be",
+      "after_sha256": "c8f3299254a017253985c6cdd26088d39ec3f1dd22b157c938329ab116b49c96",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramFrameSections.lean",
+      "new_path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramFrameSections.lean",
+      "before_sha256": "2f29c615fca67da01bf6263a72f48ad3b2539b5d37efcff6a6f9f6ef7d938226",
+      "after_sha256": "5a268a3a35b52c18385a57542a7f1555e76efbd660ab0fa32847127f5a59a444",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramMappingSpan.lean",
+      "new_path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramMappingSpan.lean",
+      "before_sha256": "809df7f9c0412a82c877a386c88d13fb733b02b0ded016be45b0af324f988542",
+      "after_sha256": "d0d96b8c2018c15c2ba9844965d1148fbb448795604fb76f2dea86a74071f79b",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramSourceFramePinched.lean",
+      "new_path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramSourceFramePinched.lean",
+      "before_sha256": "29c85819a359298d4bd5555c01502ba6dfbd9cced7622f23ea3d35dd7b24efdd",
+      "after_sha256": "1c8997602aeb05099bad3f32bbc55a3e86b01a791bdbb374290682dc694b485a",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Frames/FrameIndexComparison.lean",
+      "new_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Frames/FrameIndexComparison.lean",
+      "before_sha256": "244e672db4fa6f92d39f6c7d3e92f188ce2be62cb44383acc78bb10d5ca7a41e",
+      "after_sha256": "0d286cfc34679b075cc502f8df27723d5496348daba644e8b24de9d3e68547d7",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Frames/ModelBifibrantFrame.lean",
+      "new_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Frames/ModelBifibrantFrame.lean",
+      "before_sha256": "9a7d9b2e95e96be0cadf5494df46adec35fbe250a665de3ec011d5f3fab52d68",
+      "after_sha256": "1471a8ff23c0f34ccddb897fe868f370fc93a5f0ba671c8af84575499506dc3b",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Frames/ModelBifibrantFrameElements.lean",
+      "new_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Frames/ModelBifibrantFrameElements.lean",
+      "before_sha256": "3524b372f90f9d4d7cdf671eda9efaa7226859189c3e6c2508c1add5dcfc59f5",
+      "after_sha256": "5ffe03390d6fe6ce1423e0f3e7bbbe84b4c7df32ba3e1186e68c5181816ae958",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Frames/RightFrameReplacement.lean",
+      "new_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Frames/RightFrameReplacement.lean",
+      "before_sha256": "81f6781329b795868131f5da34e22ed4e03b7922078802be8d2c4db66f95d005",
+      "after_sha256": "cf79bcd15b34e826bdbd2a56d4c62cd902bf245ed2bc5833bbd144e0255d970d",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Frames/RightFrameSpans.lean",
+      "new_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Frames/RightFrameSpans.lean",
+      "before_sha256": "e24b2a906185d4ac28f8e31e7538a074cee5c6a931e011ddd23c12bcafd339ad",
+      "after_sha256": "fda71ba279ac1f1f7a932283584cdabf261aa2c469b3274b3dee0bf3c3947ed4",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Frames/RightFrameUnitFamily.lean",
+      "new_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Frames/RightFrameUnitFamily.lean",
+      "before_sha256": "d577272a29b7482b57ec867b49e599a32994105434fa30db87b843763d26ffea",
+      "after_sha256": "15cbb10a0cf8ba3f40e5a63b51d4843ae70fb183798029467f9e54f96d34df1f",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/BackwardColumnErasureComparison.lean",
+      "new_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/BackwardColumnErasureComparison.lean",
+      "before_sha256": "4eed2ac89b548b320d342c203e89f60313a8f2d2e64042cdf5e38f377ad880d3",
+      "after_sha256": "e9b872c492e222a21f59a2e60094c5eb6c6a6eff4ef77f26d9f78c05598d6823",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/MiddleBackwardContextErasure.lean",
+      "new_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/MiddleBackwardContextErasure.lean",
+      "before_sha256": "97ccd363b149a23acf64cd0a5ffe17710919d317b84c60b5dc37ab10943f8c07",
+      "after_sha256": "751a67d863e584eed95007d29a35e808fd6212a3ceaad922d2821cbbed19549f",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/MiddleBackwardContextEssentialImage.lean",
+      "new_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/MiddleBackwardContextEssentialImage.lean",
+      "before_sha256": "98237850c0e7cbf29930c2eefde056eb21eee23b74514d5bbe32511a04ea6870",
+      "after_sha256": "ef093ee6dd1ab56d427fab485d270b1679abf66b7e1d0bf6fe3577ac7680eef4",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/MiddleBackwardContextRightIdentity.lean",
+      "new_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/MiddleBackwardContextRightIdentity.lean",
+      "before_sha256": "440a322f9d8c1c33fcd8a45a8c45403ad8ab3802ed1f9ab0f6d260fcb8dbd873",
+      "after_sha256": "50cb3ea397374acbdb668475756ddbb9ced750f31eacd7f4024de3a6aceeccd1",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/MiddleBackwardContextRightReplacement.lean",
+      "new_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/MiddleBackwardContextRightReplacement.lean",
+      "before_sha256": "8e495dffc579a53a250b4756b7cffd1557a21f81c360edfeb192d9243012acc1",
+      "after_sha256": "955d2587e469ef32e14a46e074b5706aae663cf9fef5f041ffc66f58b92dca80",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/MiddleBackwardIdentityInsertion.lean",
+      "new_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/MiddleBackwardIdentityInsertion.lean",
+      "before_sha256": "e8be5178a0dcb71b5e6d1c9d3c6b95bd590cd51c0cece8dc9183139a7916ab67",
+      "after_sha256": "68888186c6a8a795982c77046ce0551877cc8c51c2bf82b339b46d3f38ef0843",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/MiddleBackwardRightEssentialImage.lean",
+      "new_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/MiddleBackwardRightEssentialImage.lean",
+      "before_sha256": "9c3d7bc285728c95eed870bb551fcc1f02ef1581738c8ce87a5b36186a832796",
+      "after_sha256": "56cb1818b4335494a45f9fc6c090751695d8e42efa448773a98fa3c0f12df305",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/MiddleBackwardTrivialRightReplacement.lean",
+      "new_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/MiddleBackwardTrivialRightReplacement.lean",
+      "before_sha256": "e322b29d07bf8fc0035abbf353def3cfd70b53ec42b915d2ac9621162f3a48ea",
+      "after_sha256": "afab4158d52ba2967861bda2047aae751d5e5fa2b2a59495831755ee7f236034",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/ModelBifibrantDeformation.lean",
+      "new_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/ModelBifibrantDeformation.lean",
+      "before_sha256": "25a54ff57cd45a4b15235ed3c5208ff0f41453da3311af006c5c34651451b7f0",
+      "after_sha256": "506c82b01160d014460041239a2cee7c0b0acafc87368988669564e803b02984",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/ModelBifibrantHammockWeak.lean",
+      "new_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/ModelBifibrantHammockWeak.lean",
+      "before_sha256": "e80bed16054d4de47eae7290c32913fb8dabde629473c2beb99fc65ea728f5f9",
+      "after_sha256": "08bbdb3cefff8419c8c90a4d220c312dac42e00a2a8c4fbb72a70dfadc5b87f0",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/ModelBifibrantRelative.lean",
+      "new_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/ModelBifibrantRelative.lean",
+      "before_sha256": "080d7ca56af5e7e32243ca35f62a5900fcbfb5567f563c52cf0c5eb00f770bcd",
+      "after_sha256": "1457c9d281d021c8271524314a43c79f08915559c86852fc558b0e0b7d572b1e",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/ModelCofibrantHammockWeak.lean",
+      "new_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/ModelCofibrantHammockWeak.lean",
+      "before_sha256": "e8c28c50393de6c5640127f3eafda3543d0d521399b97161437922d63061a43f",
+      "after_sha256": "4bba195f776ed599794e539af957559ec2a363b7f7fe81290718423ccb9a6074",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/ModelRawRelative.lean",
+      "new_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/ModelRawRelative.lean",
+      "before_sha256": "29a23ac8ff324d087ef89a4601711c8798c8ddac2f0dd210135dc15545d1248c",
+      "after_sha256": "ebaaf22b73a737f19fc08c8f51e531ad0d8694b91290a10c51f07bc8613c3c5a",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/PaddedForwardDiagramComparison.lean",
+      "new_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/PaddedForwardDiagramComparison.lean",
+      "before_sha256": "dd10b7a3f53391d0b7bbe1483e201eb7f49990a839ae9c66896e40dd0bb5a682",
+      "after_sha256": "d2c3a5c5bf69ca7cbb3139b5292aa810f28981e967edb26aa4f32dea1ecec290",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/PaddingColimitComparison.lean",
+      "new_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/PaddingColimitComparison.lean",
+      "before_sha256": "fdb5a7f371b4d509f78275c63239a67812239c8d82ae7dd588443c9c35950235",
+      "after_sha256": "66d6046754be0cf0735edeee2411c67df635b7d3533a82463be25540ac747922",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/ResolutionSpanNormalization.lean",
+      "new_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/ResolutionSpanNormalization.lean",
+      "before_sha256": "5c248ed25abfc3d654f93b7e43d21fd7d90655b31a6a7bc3206a561ceb1859d1",
+      "after_sha256": "6a40a51c6943a9d319f9df233be24e37ed568d27122df80b1f933c27ae015c72",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/KST/LocalizingInvariants/DGAlgebraNativeChosenRightFrame.lean",
+      "new_path": "SerrePositivity/KST/LocalizingInvariants/DGAlgebraNativeChosenRightFrame.lean",
+      "before_sha256": "eae842a490b6ea66a0db8f3ef271058486a3aff6eb92e72ef7d03bf1993336d0",
+      "after_sha256": "8f7ef3f860fa0f4340c6c037a73b94225ec6cd1a323f81d3b9a6c29e837924bb",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/KST/LocalizingInvariants/DGAlgebraNativeFrameKan.lean",
+      "new_path": "SerrePositivity/KST/LocalizingInvariants/DGAlgebraNativeFrameKan.lean",
+      "before_sha256": "e649f7091af3d083e4c5097a66c8ed607a8b5b8f4e6aa62c2953a13c45ca845f",
+      "after_sha256": "4c58f74945ce0f11309b087c5cca5641a8c95777781aa58ea2f985b72820cd19",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/CAlgQuasiIso.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/CAlgQuasiIso.lean",
+      "before_sha256": "06c88c5969b2f4d9f9a064e4e3c6b9c0e16d679bb8bc9e424bbed57f22296e30",
+      "after_sha256": "21bd94250900e79ce7dac97568590d63938db5eb946bc1ff8baaea35bfd3a946",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/CarrierConstantDiagramConeClasses.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/CarrierConstantDiagramConeClasses.lean",
+      "before_sha256": "a6819e4e366bea9c66b68b2d6de33ef3913130d97ba1d427007862892e87e7de",
+      "after_sha256": "ac558e8e5b471bcd4b5414da9413f2fb16a31515b2cab516a8280425316d807a",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/CarrierConstantDiagramFrame.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/CarrierConstantDiagramFrame.lean",
+      "before_sha256": "ae9223e14a5381dc46a02b02aa162b082e92855cc7dd98f75e360200adf9d2f7",
+      "after_sha256": "f9f713b50b1a8a475cdd37232848780ab3c462a8f6d73cc58d94fbd0fb2b2df6",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/CarrierConstantDiagramFrameComparison.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/CarrierConstantDiagramFrameComparison.lean",
+      "before_sha256": "da9e5d1628f3d1d6443ab487dfda30377fcd19bf79d162909ad3b598c303ed2f",
+      "after_sha256": "1304434acbf413c07ca4224280c11c892b154c922dcd481f02793555837fcc08",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/CarrierConstantDiagramPiZero.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/CarrierConstantDiagramPiZero.lean",
+      "before_sha256": "b593e8b7886b27f798053ec8aeab43557f481dd5d960aacca80ab62f4b01b918",
+      "after_sha256": "399df35282f19963829199f2cf76d43b92fdc23d6068563e5e4ecdbb7caa7750",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/CarrierConstantDiagramReplacement.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/CarrierConstantDiagramReplacement.lean",
+      "before_sha256": "ed5d67feb350c1447d388a683ba2a42b528f4993c355a0f4e488ffc29e2389ad",
+      "after_sha256": "1839fbc3a7e6633fc69fd1ab1a6c7c396f813ddea9cd669f415b78db5197c5d1",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/CarrierConstantDiagramSourceFunctor.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/CarrierConstantDiagramSourceFunctor.lean",
+      "before_sha256": "598cf9808a00c24b02bde4c4815e767c80920079b6086d5a1e92e16bcb834556",
+      "after_sha256": "cefebafcd404386d1d8f384a089ce135890457aaf3da57313848306942a866a7",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/CarrierConstantDiagramSourcePiZero.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/CarrierConstantDiagramSourcePiZero.lean",
+      "before_sha256": "30819e3013dca47cefa781deb0d99e8226f76d863a2db30c5c02ff598312fdc9",
+      "after_sha256": "9ddfc5be6a7c820328c9c28409a0e060c0364969422ce9086df205b68eec381c",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/CarrierFramedLimitClasses.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/CarrierFramedLimitClasses.lean",
+      "before_sha256": "a6ea067eeb75f3be8e82197955108766b7a160c6c6cb4e85dde4f66bcff5ce90",
+      "after_sha256": "253154e47727d0d2d1a94f5ec607fa9290e6c2edc19cede3bbb4badc6dddef5f",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/CarrierFramedLimitConeClasses.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/CarrierFramedLimitConeClasses.lean",
+      "before_sha256": "14ae155fcb2eb4e2dbeb002d3ba8c0db7b8eb6c89bc5c2833de314d1966ee21c",
+      "after_sha256": "c90e5c1f5790489d75afa0db1862bab93c46ec46c59b79520d0fc8246058b7e9",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/CarrierFramedLimitConeNormalization.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/CarrierFramedLimitConeNormalization.lean",
+      "before_sha256": "749b42f04594733c4d2883b5e8b5e92d257eb5695f159c5164d7ef007caf75f6",
+      "after_sha256": "53fc16cf5b33668ebad735a1b4abc1a25adfa898d807e2df3e7ac7035c567ad9",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/CarrierFramedLimitHom.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/CarrierFramedLimitHom.lean",
+      "before_sha256": "655812deb138ca6487a3b8176bf0c022916bf7d90f652e1916efb4107f9c1e4a",
+      "after_sha256": "c892934bb4cfd24c0dd05ace1beb20f7c541b21d30f2de5458efddce8a96f2d0",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/CarrierFramedLimitHomNaturality.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/CarrierFramedLimitHomNaturality.lean",
+      "before_sha256": "5b11bdab46ddfa6937ea531f45cb58301e198adc30ac017bc21d1cdbe29f7433",
+      "after_sha256": "50c39f2061b299c2a742020daf59620a8b7c17f6ef7e8a85410760ea3d5d3406",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/CarrierFramedLimitHomSource.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/CarrierFramedLimitHomSource.lean",
+      "before_sha256": "c0da3b48a54e3dd934b1fa2225de6e7f40c3b54849020d7cfa3e01fbac2ec698",
+      "after_sha256": "63a48c88658b589c03d9ee93423a4a2757d996296c7ff628c40688d62b49690a",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/CarrierFramedLimitMixedClasses.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/CarrierFramedLimitMixedClasses.lean",
+      "before_sha256": "b348504bd114133ef8cce191bef71e57ce585d79e43b63a07a2a0321abc60984",
+      "after_sha256": "df3a35286288b9fb45c4481293b7508c6952fae1951e79f0c17f5d3989bc06bd",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/CarrierFramedLimitStrictFamilies.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/CarrierFramedLimitStrictFamilies.lean",
+      "before_sha256": "5ab0c475a84a4f3a1abbda9541d014ba23abb423b6d0995500b3c65cad002d1e",
+      "after_sha256": "926856ab554ae0bb6c53baf6e23f36ca33bcbeb58cc58dba31d10d2cd8db8fe9",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/CarrierRightSimplicialCones.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/CarrierRightSimplicialCones.lean",
+      "before_sha256": "76951dfc0c8ec16de3fed47eacf540b37640b8f99923b3326196105af0fd15c8",
+      "after_sha256": "e81f83e11d7469f39d41abca6f92a532da2279d5005f6c2df65a1204bb61922e",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/CarrierSourceRightConeComparison.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/CarrierSourceRightConeComparison.lean",
+      "before_sha256": "bca2e4b92a94e38884299bd4e0b796e8c287a1759b8fe34725755619ca5631a1",
+      "after_sha256": "5b5429b520fc42940c2f38511bb2d4c71ccdb36bd5ada17663364f8e8d7ee46b",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/CarrierSourceRightConeNaturality.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/CarrierSourceRightConeNaturality.lean",
+      "before_sha256": "268324548dd7be3b694d3a4aeff559d0b4659d9ad800676e984ce15e548f576b",
+      "after_sha256": "6279ffa7f03fad2f64259222519d8ef30c927ccadf3bfd408d9231b50a09e6db",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/CarrierSourceRightConeSource.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/CarrierSourceRightConeSource.lean",
+      "before_sha256": "e197371c13d2a1d38abb7256169e668636ed0ba104c83f2679da46bf048a558a",
+      "after_sha256": "466c17d05a369b1aa1b039ed5fb0cfb28586e7bcfa8dabe6093d478529bd27ed",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/CofibrantAlgebraRelativeInput.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/CofibrantAlgebraRelativeInput.lean",
+      "before_sha256": "da762182d4babb0663a1769c6f55095f5c3bee54a0208a7ded63d0d87f824532",
+      "after_sha256": "d5c35a713e6c6f8ed3a48fffe7eaa67c79618c3961ef19f89013fad33b5ed5d4",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceFrame.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceFrame.lean",
+      "before_sha256": "d6c730a288ea60b603659b76dba3626387f56d26b7d0b796a1150de85b1b0a7d",
+      "after_sha256": "799acd4b5fa20e12eac3cc6eb70f932f547a62678ecf1db2d34c6879945f4823",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceFrameLimits.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceFrameLimits.lean",
+      "before_sha256": "3aea29eaef8b83122d6bb791e8e475333679028f791bf5c68e0c65a8b2bfdf12",
+      "after_sha256": "df65061debf0aef227a0862687952264decd1ab6546796a13ee3fff80b0c4862",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceRoofProductReference.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceRoofProductReference.lean",
+      "before_sha256": "d2494a905cd8c48603edace251ffdf6aaddcbbef311ee9416d1e09cfc1b4eda0",
+      "after_sha256": "3b0aead0715178ac1bb00ed1e0a4cf34870576e8c8e02b09f934ff120b898ab9",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceRoofSliceFibration.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceRoofSliceFibration.lean",
+      "before_sha256": "f7e9bc1beacc45a88978ee60ed33ce01ab66ac04b1554b25a7d14f875d4ccb3b",
+      "after_sha256": "1fb7370207adeb1292b8c7ba6f230c0409ac9c43e6de10f1916fb51c89bab0be",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/ConstantDiagramConeClasses.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/ConstantDiagramConeClasses.lean",
+      "before_sha256": "6fc7205affdc21cea0979423ff04ab89ab231c5a326f7b99238628db2190aba1",
+      "after_sha256": "fba68eaa73e4c3c21ecc173131bc8f24d1986e47ac97be3a7c4dce5828bfde9a",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/ConstantDiagramFrame.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/ConstantDiagramFrame.lean",
+      "before_sha256": "549a037f6b9075f5fb569991dca687d6ffa0f422b9e64f0157393dcf6a579f6c",
+      "after_sha256": "19570f45b6972c2aa50afcb2ea2c3e98dfdcefd78dd31169c93a3e33ef653d79",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/ConstantDiagramFrameComparison.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/ConstantDiagramFrameComparison.lean",
+      "before_sha256": "e462efb938ba94e4151dd9e135bc14cb4450d534ce18313d39042e03c35186c2",
+      "after_sha256": "4a9febce5c07449c97c07ec8a840026a643f3bce011e325ec31a74c02b9ca9d9",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/ConstantDiagramPiZero.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/ConstantDiagramPiZero.lean",
+      "before_sha256": "fcde0e7b65b99c0f993485e67aa6aacc88824d9ea2b4ce495c50890651dda8f4",
+      "after_sha256": "e85631ba4add89aa282ff567e797b9093851a85a325ac9b49d721d71d8f8c8fb",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/ConstantDiagramReplacement.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/ConstantDiagramReplacement.lean",
+      "before_sha256": "4148ecba3bd02db514fbbed82ea9ddcfd13a7a71d3a20f3c5d816b4b771d8807",
+      "after_sha256": "9211ebcf76884433eed19164f743cdfcf4ddb035c79f3c652cd32985433079a2",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/ConstantDiagramSourceFunctor.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/ConstantDiagramSourceFunctor.lean",
+      "before_sha256": "30b6976ce679d0d16fc76e1f77bee3d70f25a72f2b53dd5f56878cb428a9bade",
+      "after_sha256": "14ea3c4a8b9c89cc370b3f3c61d578ab791aba5af3975d98fc40b0243b08beb3",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/ConstantDiagramSourcePiZero.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/ConstantDiagramSourcePiZero.lean",
+      "before_sha256": "2f679c613326597140975214e239d4af8c87f1a8c95fe918d6f88d37068da0ae",
+      "after_sha256": "55f1b22371722d214c743a49fc09b058761f85e739b2563184d37a6c4752830a",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/DKHigherComponentsAgreement.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/DKHigherComponentsAgreement.lean",
+      "before_sha256": "f24d62ee199a35324ab4182f5ed9981178045639f84a66866017e5eefc81ec79",
+      "after_sha256": "890a6f7048ca136d3ff1197359ed110428f4c06a7a61f0f354f27b3a516af25c",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/DKMappingComponentsValue.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/DKMappingComponentsValue.lean",
+      "before_sha256": "e17a2119598c91e14a15008b7175ddcd41c41dce22108d9ff32c278288133118",
+      "after_sha256": "2769a84e72dd3ff0e6794e3e78ffc6cb988d3e27837675caf380de3f992c4e1f",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitConeClasses.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitConeClasses.lean",
+      "before_sha256": "c1c80cad004d3f6f8f2572edf1cc16ef05bfb96bb487bb2efa14b184cf731a83",
+      "after_sha256": "136a1f76d41d460df050808c27b340655e5a370c9521cb94b74611064393d900",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitConeNormalization.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitConeNormalization.lean",
+      "before_sha256": "932a0a42b7155860d8e5bd3405db3049330bedb5caaa00613623a68eaffa4202",
+      "after_sha256": "80c2ec0df61f6a9b5f2d7e4f1ea892cdec821556a232b836de4b9fdeb164af61",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitCones.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitCones.lean",
+      "before_sha256": "2c55100a476a8f71c27bef893f6d8045d7221c6f2debbf1e461e4191aa4b32e1",
+      "after_sha256": "02ed66386e458a9b9c1df94484faaa5b433654a62126f9d2f2f61ec4c980fd8e",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitHomNaturality.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitHomNaturality.lean",
+      "before_sha256": "ef445510b00e14545a6f71d67c25452a007a76d6274b6c3e05e5c423b57a3fba",
+      "after_sha256": "60bef20b5f807d58d3c86bff1e6ed36a5dc752da69ba4ed37a49f55d6204ac6b",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitHomPiZero.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitHomPiZero.lean",
+      "before_sha256": "101b5d263041da0ad5980804b78a3872eb463a69e3160ed48be8000529be5a97",
+      "after_sha256": "793c709180dfce0d9ca1b97b569481b8fadd028bfb3e9fae73325c14230dad94",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitHomSource.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitHomSource.lean",
+      "before_sha256": "c89c867011147b4e3c46196c8d89041ec9e5abc6d13f6501b46847030aa86bed",
+      "after_sha256": "0b2b006dd137ab9a1da7eda44c8ec71962651df833ce188d5a6433983de91f9b",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitInvariance.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitInvariance.lean",
+      "before_sha256": "0ab0add62c8a7cbf73169ee8bb36d6b62ec407ed738458c62dc2a1aaea575f3d",
+      "after_sha256": "595cad33e222e55f54f501aaae553ff178db93586b2b81060277bc36c3380013",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitMixedClasses.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitMixedClasses.lean",
+      "before_sha256": "16d62cb7a305e424f664777ad4459ce300e5baddfd4cce71a11bc76da8368d9a",
+      "after_sha256": "1c3ab8e88c808766a2763e67291a6cc1b12d547fef0b610bda45c1b6699d3c34",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitStrictFamilies.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitStrictFamilies.lean",
+      "before_sha256": "8b6e6d3dd98b32d01c62053540549698433b2bb4083c6a7a49d78856ce05adcc",
+      "after_sha256": "d80e9b2c749e97d4ca62ca8d50e8f3eeb3e6413bef52df8f0a6abced0ce06bd6",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/FreeNormalizedCommonRoofComparison.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/FreeNormalizedCommonRoofComparison.lean",
+      "before_sha256": "509c6cc58d86e4a484dab982a87efba900ad85ded1eca471dc6f9f3c9f1a1c29",
+      "after_sha256": "c9acebed280b1ddb004d15d3d6b975d9b31c307763d6890e79513bd724837ad0",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/FreeNormalizedCommonRoofMaps.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/FreeNormalizedCommonRoofMaps.lean",
+      "before_sha256": "406ceb35f0397020056f0ce51147382117255acd582c52a144f945262a331893",
+      "after_sha256": "8727145ff00602ec2510c607c62fdcccd7100c6501cf644d1f3d305854c82ca9",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/FreeProbeRelativeElementRoofImage.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/FreeProbeRelativeElementRoofImage.lean",
+      "before_sha256": "61aa9a9694d15eb32885f4ce97f4d243f2424971675664ba964af60bd6108ed0",
+      "after_sha256": "3e7077e8c6c998bdfa531a601383fe5748063f17ca1a8d9290e25f5743926726",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/MappingResolutionFixedRightComparison.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/MappingResolutionFixedRightComparison.lean",
+      "before_sha256": "dcf38444149514c00f14ab3daf49ab59eb8bc26f5530302a95b387486b02997b",
+      "after_sha256": "7f6eefcd6bc14339b5d4576827e53ef61c4f51c45dc4031fa242fa9c5bd9b184",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/MappingResolutionRightInvariance.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/MappingResolutionRightInvariance.lean",
+      "before_sha256": "986fea861f68fa688fe02cc064554201ef68be08085c916ce6b6141b92f1e8e5",
+      "after_sha256": "8b7d7dc1744035b4d637aac9ff43ecaeb121e7105011210182fb40d8d91140d6",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/MappingRightHomBarComparison.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/MappingRightHomBarComparison.lean",
+      "before_sha256": "6b52b603cb804f8cde62526c4574a5777d4fe57c1796d6c2e2d12866818fce5b",
+      "after_sha256": "3c5bd4aef3c21f8f198e6b066c3fde3cfcc1a86623000c62b98e62ba34a834e0",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/MappingRightHomBarInclusion.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/MappingRightHomBarInclusion.lean",
+      "before_sha256": "33d5be7f7f920f778b20681973e22a659d3a081d5899759fc2e07865b4baf4fd",
+      "after_sha256": "88ccfc356b5e6dcbfec92963bd0bd0d0168d0fdcea0123e622d7fb6ceb785fcb",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/MappingSmallSpanRecovery.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/MappingSmallSpanRecovery.lean",
+      "before_sha256": "fa4bdcd25520dd14c92aac8c53dcc8cb4bfc89c1ba05b2825882006dda3b410a",
+      "after_sha256": "65fa6d87a67cc632af804bac85696c9d4e77d9c4fa7b370fa6280523e8df78c8",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/MappingSpaceHammockGraph.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/MappingSpaceHammockGraph.lean",
+      "before_sha256": "d23ee3ab01d2babb0665d9459fd7632c6a5f68d0604ae664f461469d8b0f8cf1",
+      "after_sha256": "003735e88a425f83ea7ab930450e15de3af623c65e51f91add205cbdbb14ef0e",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/MappingSpaceSpanComparison.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/MappingSpaceSpanComparison.lean",
+      "before_sha256": "5f12dacdf33f69c65eed5f5d773a6da4dbbb5b235630b8759b485d2e72c79d97",
+      "after_sha256": "cf9eba276600c711fc424ef119ad6232b7ced460d5f2c90b502c4ab233ea85ff",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/MappingSpaceSpanDiagram.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/MappingSpaceSpanDiagram.lean",
+      "before_sha256": "79c07e03de088a1fa7b3da7aba6961aced18b93a2f337f186530c423c032c59e",
+      "after_sha256": "a668deb8585ea9035bbc89bf2398ee7f9eec4be8388e8ea4f29d22524b9bbff5",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/MappingSpaceSpanNerveInversion.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/MappingSpaceSpanNerveInversion.lean",
+      "before_sha256": "a03f9561eabc8bc9b2e4fe85160b5b2e1063f6196f3f5535a684a52775727fcd",
+      "after_sha256": "dbd564aa52fe2db2633b90d003a895834c235aed55d77f163e1288f5486aed69",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/MappingSpaceWeakThreeArrow.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/MappingSpaceWeakThreeArrow.lean",
+      "before_sha256": "ecc668e0d8dd22da858461d21678d519a549acb75f057666c60f897c85dd771e",
+      "after_sha256": "d3d37acbee8d2c474de132468359c635d41a20a8aed67c2d3f822873ed326d0c",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/Modules/RawModuleFrameInput.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/Modules/RawModuleFrameInput.lean",
+      "before_sha256": "f8f294da7c1c9a2830330590dde199c0b5b468af8925074f3c960cd07de0310d",
+      "after_sha256": "5a249dd872278c1b15c3c17af7091f64e022e0371c29f1b21cc493abb119460c",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/Modules/RawModuleLocalizationUniversal.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/Modules/RawModuleLocalizationUniversal.lean",
+      "before_sha256": "8c06054c2af27102bfe8b929537b36cc2c4062d871c1cfad96f4513e97fa8fa2",
+      "after_sha256": "dcbd9fa27767ba38898ea398de43d1fe3507bdb36e10c3228e1aa85da563aecf",
+      "root_qualifiers_added": 2
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRegularSection.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRegularSection.lean",
+      "before_sha256": "579c16bd4b9daa8588c6eba1e97269eb3bca6d4d4c0ee761dbdd6bdb9f219491",
+      "after_sha256": "87104df9d8988ca73a13ebb527fdcc7166e33cec7fc658ef7c40bd389597d101",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/ReducedHammockWeakComparison.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/ReducedHammockWeakComparison.lean",
+      "before_sha256": "9b85d09fd8e85c045aa97ea7cc6a7655a8f18e78524060809edf2903c11e825f",
+      "after_sha256": "7e8cb9acd987c65951a1868891b5794f10de69d61415c8dc710ce2ac788282c6",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/RightSimplicialCones.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/RightSimplicialCones.lean",
+      "before_sha256": "5b97b62be827b064bae5a44e19a4ebbc7ff5b29ddf3a9e0565c046a1776d4579",
+      "after_sha256": "efab74ca1a31baaf40e28f8404474fb49cbe25abc568858d09b52714469ca0d3",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/SourceFramePostcompose.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/SourceFramePostcompose.lean",
+      "before_sha256": "ed6df82007371a45244547e81d40a2867bf9a5e673215e9e86d35283ce6cc3b8",
+      "after_sha256": "42de84ffbd54e1f49edb8d36ceb07f62a71390b816b342b0de9829e86c565ffa",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/SourceFramePrecompose.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/SourceFramePrecompose.lean",
+      "before_sha256": "bc0b39ff3d21f37835412fb4662f0426c03b48acf76433ff798e7f7b40be817f",
+      "after_sha256": "237270c1e995f0355f669bd0d0647e1391e2c6c003c1c0823b6329a4922fbe7d",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/SourceFrameReducedComparison.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/SourceFrameReducedComparison.lean",
+      "before_sha256": "5695335eb4874a72b99390d8a8eaacd1e8bc7383e29b22c9afaa5a484f20ff3d",
+      "after_sha256": "59166fbe89ebb9323307a86f9defa2f4beba25f1f7887173170b173c9118dfff",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/SourceFrameSpanComparison.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/SourceFrameSpanComparison.lean",
+      "before_sha256": "2eec08463803f28783f74fa79d7a2b497ca622f8bed575d2f2c74f89edd73390",
+      "after_sha256": "b30969ffdd508ceea5d0abab8ae2db595e281b63f5a747acfa42aa175289280e",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/SourceRightConeComparison.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/SourceRightConeComparison.lean",
+      "before_sha256": "c56fafcbacb798e162cce9a90cedc6d5b4583e0dd25b74f2dd1cf1db6b02cc0b",
+      "after_sha256": "d6b635abab018d04fde306af9839fd2037e633d99941a575ec48ca1993b61d38",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/SourceRightConeNaturality.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/SourceRightConeNaturality.lean",
+      "before_sha256": "875e28be4f312d4c6e806347536f149b640b183104ccc193b03d1469a70a56d1",
+      "after_sha256": "8d54ed731f5c730e26e5b7fe7f200f5d8c87fc0578df558bca85506b6e74b076",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/SourceRightConeSource.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/SourceRightConeSource.lean",
+      "before_sha256": "1b1c59b7bf391f20d10f84e481ca3308239462a8327fa2a2c0f178b0098c7864",
+      "after_sha256": "3b928ee4d924bac4f5631dc424e0a6611ca85944e3290fc26084d954789f1671",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotJointHomInputVertex.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointHomInputVertex.lean",
+      "before_sha256": "95f5277e5ab09720483a6e7e9c029cdb7060e1bd99ac1e467a72b8f7dc33e40e",
+      "after_sha256": "f5236a135e78e73cb0f32d3b06818c7199d5056e985f2918e52227d71f8eeb68",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/StrictDiagramTotModelSourceComparison.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotModelSourceComparison.lean",
+      "before_sha256": "cafa278d178c891d33ca509bc070bfa340638fe03fb0ca662ead02e11c2e2a38",
+      "after_sha256": "1e2af2827600ee1134d30e945b9d3d3de6ab52a6ae42f18dfe286bcb457cb3c8",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/Theory/CAlgCoefficientExtension.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/Theory/CAlgCoefficientExtension.lean",
+      "before_sha256": "d5684c295ea4ada82af1882d1be65d09831e4c531126ba2ff649541f7b21ca1e",
+      "after_sha256": "cfd88de2f46597982f729039f8b8ed68fab8adba440eed1cf204bedfadbfb71a",
+      "root_qualifiers_added": 5
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/Theory/CAlgCoproductFunctor.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/Theory/CAlgCoproductFunctor.lean",
+      "before_sha256": "f65d3a74a8b8cb882d9089595832305baf9a1296b1a4506bd2be5295d68b1787",
+      "after_sha256": "895ea8c010b8e4d8434041ea8349574db5a655fa2dc1591c8da6ec3d0b47cb54",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/Theory/Conservative.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/Theory/Conservative.lean",
+      "before_sha256": "8deb83a0d31243f90465e5854868e41293513b7195d546e3ab301b56ce70997d",
+      "after_sha256": "123ae9a36f6841831e672ef9bc97ae869a98cca5b2e14f7c0cbacaf19f70a4d6",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/BarrattEccles/WeightedCotensorLifting.lean",
+      "new_path": "SerrePositivity/EInfinity/BarrattEccles/WeightedCotensorLifting.lean",
+      "before_sha256": "3777ab33cbfeb32c5ceea27a13d6d283e9c0f2fb94bbb4bcadcaa54c3220c34b",
+      "after_sha256": "c21568e0e4c58989175396d4f8034ede91aa5ba26d1f3defe16e0aa6e38ae325",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/ComplexLimits/FramedLimitConeClasses.lean",
+      "new_path": "SerrePositivity/EInfinity/ComplexLimits/FramedLimitConeClasses.lean",
+      "before_sha256": "c5b8f70a2684881196b41b11936b81569418b7db84e8c3de48922498179be71a",
+      "after_sha256": "96723153365209191719e7ce06c5abe5c1ad228031a88473c354ab4a2df756e1",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/ComplexLimits/FramedLimitConeNormalization.lean",
+      "new_path": "SerrePositivity/EInfinity/ComplexLimits/FramedLimitConeNormalization.lean",
+      "before_sha256": "c598382ba182abb5e492acb7cd91e78dcf7f55cfc7007c3bbcfcd9550644a303",
+      "after_sha256": "f0968df5f2d5c4a346caf835660db1ea8446c30f34153a59f5b5d00de2da5ebe",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/ComplexLimits/FramedLimitCones.lean",
+      "new_path": "SerrePositivity/EInfinity/ComplexLimits/FramedLimitCones.lean",
+      "before_sha256": "9737d2afa307500d204f97dc7d16e5c041bce9424fc2629360fc0bf4eaccf7d8",
+      "after_sha256": "e97ce4ed6c258378ad6bdb4e44aeda203cefd6564afeb1b0d8f3fb921d95ee8d",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/ComplexLimits/FramedLimitHomNaturality.lean",
+      "new_path": "SerrePositivity/EInfinity/ComplexLimits/FramedLimitHomNaturality.lean",
+      "before_sha256": "77ad9a03ff1fbf7bc24e948538a06722b41028fabc14c0664b888b3b200a8698",
+      "after_sha256": "782285d33127ecd4afc139676ae6495de5df23519dc367c8d5300d6199b9fb46",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/ComplexLimits/FramedLimitHomPiZero.lean",
+      "new_path": "SerrePositivity/EInfinity/ComplexLimits/FramedLimitHomPiZero.lean",
+      "before_sha256": "8bc3e6d10cc1ad1f1dc7f8b115fb99b630161a81f2d5e6993b496e488200c866",
+      "after_sha256": "90623321dbe31b97e13a2dd75695f9878838c9a5ee61918e0bd86954015b59a8",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/ComplexLimits/FramedLimitHomSource.lean",
+      "new_path": "SerrePositivity/EInfinity/ComplexLimits/FramedLimitHomSource.lean",
+      "before_sha256": "a3151a9997eb9742511d67a6a287525c65f89ba1b1f921cb8e3f5998f146943f",
+      "after_sha256": "87134d7e333328dcc5aa7c287f6ec0695ae548879dca0a7cff4762632316ef5a",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/ComplexLimits/FramedLimitInvariance.lean",
+      "new_path": "SerrePositivity/EInfinity/ComplexLimits/FramedLimitInvariance.lean",
+      "before_sha256": "3e6735f785ad8bdf81398e8a0a5e1c59f36221e1339ef0da34c275582937b5da",
+      "after_sha256": "2a8dfca524c407add7f443858e3357d786f607ac681fb93234c896cd93d2e3a4",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/ComplexLimits/FramedLimitMixedClasses.lean",
+      "new_path": "SerrePositivity/EInfinity/ComplexLimits/FramedLimitMixedClasses.lean",
+      "before_sha256": "0bf805b86be1b3f3fc10f84e71ea8e99bcc8d65d74784342c5625614a780b82a",
+      "after_sha256": "09187e078210af5f68997abc634c0988507b5db4bde72d85552580a7ceb95151",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/ComplexLimits/FramedLimitStrictFamilies.lean",
+      "new_path": "SerrePositivity/EInfinity/ComplexLimits/FramedLimitStrictFamilies.lean",
+      "before_sha256": "c853827bcb66e0909e6ed2c4bfcb6d1ae2b3c0825f0ca5bc43cf5e6ae339a019",
+      "after_sha256": "90500ad41f3f34d8a74e3cdd74b4d591da12cf6934cb1b90736a3f91d4979679",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/ComplexLimits/RightSimplicialCones.lean",
+      "new_path": "SerrePositivity/EInfinity/ComplexLimits/RightSimplicialCones.lean",
+      "before_sha256": "3a7eb0dcc3670202b7b7420ca9bca96337f8d1639cf304719548ebbe4b7b20ea",
+      "after_sha256": "b0bb71315518a7c24d0192844e03a3d5058f1db3462eb95dad16b52f7048996d",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/ComplexLimits/SourceRightConeComparison.lean",
+      "new_path": "SerrePositivity/EInfinity/ComplexLimits/SourceRightConeComparison.lean",
+      "before_sha256": "24e3e63d85b1ef4ddf86f8052e38f5557549d6cfb92c6dd8039b0b23e9f8fc4e",
+      "after_sha256": "6aa78b6dc8343312c753c92d487c979275865f95ba8818079f003bd10e31e116",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/ComplexLimits/SourceRightConeNaturality.lean",
+      "new_path": "SerrePositivity/EInfinity/ComplexLimits/SourceRightConeNaturality.lean",
+      "before_sha256": "0369f5436e52fe17cd4f75d3f45a795098c26a8147395af62f96ec3de3c21099",
+      "after_sha256": "96e0bd516450cdc5b0da34e98b80d97cc0ac15a3db37801ae3c9599d97429fbb",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/ComplexLimits/SourceRightConeSource.lean",
+      "new_path": "SerrePositivity/EInfinity/ComplexLimits/SourceRightConeSource.lean",
+      "before_sha256": "cfe84007a362939ef0c88a72a0ef61e385d8579516449a27da88e18eccfc2e80",
+      "after_sha256": "8364ad1c4f664d7094b1416376cd7d380629d68f03f99e844e3650f5e2128418",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/DGAlgebra/FrameComparison.lean",
+      "new_path": "SerrePositivity/EInfinity/DGAlgebra/FrameComparison.lean",
+      "before_sha256": "1daabe050ecf68846c1848c3fedb1bf9850504bd5eaea82a5725d5995fa22fbd",
+      "after_sha256": "7a3cf029123b2fab032ef92c54556076154f20719f576f940f19e78f1cbd1ae0",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/DGAlgebra/FrameFactorization.lean",
+      "new_path": "SerrePositivity/EInfinity/DGAlgebra/FrameFactorization.lean",
+      "before_sha256": "a12bf6492a2b3020cc3d9f28141e1a8a134f1c201f82e391ae78763a92dfdae2",
+      "after_sha256": "ece4c5e3a886008accc80cd0886e05ff7e4cc2404581927ba31ed57fc6773d05",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/DGAlgebra/FrameHammockCoherent.lean",
+      "new_path": "SerrePositivity/EInfinity/DGAlgebra/FrameHammockCoherent.lean",
+      "before_sha256": "92dc3a08b97e905621f3385748cc550aa11dd4153acb2ca837e7f421c3b4066a",
+      "after_sha256": "9b9d4c221f9dc8b9cf94c30dc3a0800c37d450a8d0ad9f856fdc5c19bbb01d65",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/DGAlgebra/FrameLocalizationInput.lean",
+      "new_path": "SerrePositivity/EInfinity/DGAlgebra/FrameLocalizationInput.lean",
+      "before_sha256": "c84714e787cf278788483d3c6ca4e064bc01a89fff9d0b7c28deb90d36f00246",
+      "after_sha256": "776742f12d1a1a4de1f0b2d602de4416e5d823b48ac6133b39ff242734661b03",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/DGAlgebra/HomInfinityComparison.lean",
+      "new_path": "SerrePositivity/EInfinity/DGAlgebra/HomInfinityComparison.lean",
+      "before_sha256": "f8e4b247fadb26cd7ab19a651f79dffeebdb465792e7e3e07769854ae140a6ab",
+      "after_sha256": "060bd8f01bcbab07f831371471b2895d3971321e4f7d047803c65fc1144fca3b",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/DGAlgebra/HomInfinityComparisonInput.lean",
+      "new_path": "SerrePositivity/EInfinity/DGAlgebra/HomInfinityComparisonInput.lean",
+      "before_sha256": "b7863cc5f729860c634607a6154741db8ca2cdf1587ecb40d32a6e7610e80286",
+      "after_sha256": "867f1edaa420f6560daa27ead809f2702c791cc0abefdfe115170a2494e7cc27",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/ResolutionCofinality.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/ResolutionCofinality.lean",
+      "before_sha256": "f9dc05ba80e3451f050c992ea0b68ff713bd49450ae6f9af16ed8bba28753aeb",
+      "after_sha256": "d9bff0c87891511142d97c6d76feec5041c1718391cd41c1cbd4fb98d6476591",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/FrameHom/ResolutionFixedRightComparison.lean",
+      "new_path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/ResolutionFixedRightComparison.lean",
+      "before_sha256": "7866e735737b801436a7874a1d94e74f5c559297280b06f88d08ef5f5f20d057",
+      "after_sha256": "45232e04cbcb133d837502813db5db04a22a0746d36a32aa89363681b5d3ac64",
+      "root_qualifiers_added": 2
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/PowerOperation/ComplexNormalizedRoofMaps.lean",
+      "new_path": "SerrePositivity/EInfinity/PowerOperation/ComplexNormalizedRoofMaps.lean",
+      "before_sha256": "dfbe54ce57e934e0a641b3ed021dd1508600d15f35f783b88240f32fa4223c0f",
+      "after_sha256": "87073c25ef92c27afa62ec6bf4d29db9f68c76dfe6614e84d5ac863b5b9323ea",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/PowerOperation/ComplexNormalizedRoofWeak.lean",
+      "new_path": "SerrePositivity/EInfinity/PowerOperation/ComplexNormalizedRoofWeak.lean",
+      "before_sha256": "017dc9fe35348f421ea1ef2ac375712a3744ae9d4d3a41589da9b42dc668e672",
+      "after_sha256": "683852af971306873677ae270cf9920bb94670893fe4e5982edb7e2d7dbe6a69",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/PowerOperation/ComplexRelativeElementRoofMaps.lean",
+      "new_path": "SerrePositivity/EInfinity/PowerOperation/ComplexRelativeElementRoofMaps.lean",
+      "before_sha256": "a96e7964d6d04e1f00ee2e91fc6a3a8f5e988e4c9f341d2815b413a93f4367ce",
+      "after_sha256": "c1e801977c88270dd427a98e798513a1cd1b3105d20a311ca0585e481541ce88",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/PowerOperation/ComplexRelativeElementWeak.lean",
+      "new_path": "SerrePositivity/EInfinity/PowerOperation/ComplexRelativeElementWeak.lean",
+      "before_sha256": "319d91c845ad436c41e87cb0a967514c5bfeb349824b85d08c01c36672fb0996",
+      "after_sha256": "63b435967213dd33c081deeaf0cddfdc8b21f6e7b681e91f3b151cc025c303bc",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantFrameRightKanCofinality.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantFrameRightKanCofinality.lean",
+      "before_sha256": "3147e48098c2f5f9634863b04f3835a85ea6e1469545279d4dd4fa9a99780710",
+      "after_sha256": "8034f4e375bf277ffca67d6ec90e5c89eb3b0e995c5749f96c862b323c6e3348",
+      "root_qualifiers_added": 6
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofBaseEvaluation.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofBaseEvaluation.lean",
+      "before_sha256": "dd4d8cfd19d5add3935f96020b729c6ef052ce9f284be692274471351c799f49",
+      "after_sha256": "0bf72db5f5752d0778f23cf4e58e929994dd012f521d1a3357fca6f2e5a82bcc",
+      "root_qualifiers_added": 2
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofCornerEvaluation.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofCornerEvaluation.lean",
+      "before_sha256": "fc81335e803587e9ac74f7dd28a1614eb8c27ee64d10e6fb1d3165c8f2589bb1",
+      "after_sha256": "e0c83a8fb64b4aef01655ea5c64168dddb2f67f56604314300e0d7ebd70135b5",
+      "root_qualifiers_added": 3
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofCornerOver.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofCornerOver.lean",
+      "before_sha256": "e616a63dc083b1ee4684733704ae2e2fb73c7b067fb2862074a7664b34e8c8e9",
+      "after_sha256": "cbc2d21f774926367c9df172e5dad190ff7a8394a93492e1218a3be1b39eeb92",
+      "root_qualifiers_added": 2
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofDegreeModel.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofDegreeModel.lean",
+      "before_sha256": "4ef41a852cebf47a4d898795234995909a6741e8317babbe26835e687ca78a24",
+      "after_sha256": "94d61fe026a429f96778562f4627411910dd6d6afdaa7857ea2258777467f86e",
+      "root_qualifiers_added": 2
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofEvaluationHomotopy.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofEvaluationHomotopy.lean",
+      "before_sha256": "b27320c95b5a124e458e2532797cfd63792e107c0b49f98e5edc9b0eb87629e4",
+      "after_sha256": "5ef0f23a8e5fd0a4f992905a98d4321f96f344e8bced89a7392a476b6cab33ac",
+      "root_qualifiers_added": 2
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofGeometricLeftCell.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofGeometricLeftCell.lean",
+      "before_sha256": "5559a945b5b4eeab2577494ac31df3fa93319e195997497450eb2c010f481d17",
+      "after_sha256": "4866ca5fa19cdbd6d01b2c307beb1610c4eb5c4ae56beafe2b5ea3398dc35f51",
+      "root_qualifiers_added": 2
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofGeometricRightCell.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofGeometricRightCell.lean",
+      "before_sha256": "c1d4fdc5c9cbeeacf841681c08efa2f0d260706c43f63203db9a7cbf6c6708b4",
+      "after_sha256": "b9c96f4a5206256c292de50dc7122d20cf7d59935dede103e5568f57685d74a8",
+      "root_qualifiers_added": 2
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofNativePrism.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofNativePrism.lean",
+      "before_sha256": "20ab3d02b90f1dae3d1457230bc325b01dc3af8da5bc1d1589991880ba8bdc05",
+      "after_sha256": "773791c6311504a2075fe98b07612fc75e4437cbab9f77d1647ba562606d4d1b",
+      "root_qualifiers_added": 2
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofNativePrismOne.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofNativePrismOne.lean",
+      "before_sha256": "58c03b0c7ca7c128616d87464acfa6af4de347b04f03ce77fb14c345e553c56f",
+      "after_sha256": "daa5cc5762a798383ba4e4861cc8a74054f386dcda60119246391c297266d5a7",
+      "root_qualifiers_added": 2
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofNativePrismProjection.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofNativePrismProjection.lean",
+      "before_sha256": "4e79a0c8623d65aa49bf3d691d5e91cb2bf6c8fa0496fb4c1e63276fe017ed0b",
+      "after_sha256": "8eb1afd83e602dfe11782a5deace88d1153c7ec3703552f68a6ff55dca0f9a56",
+      "root_qualifiers_added": 2
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofNativePrismZero.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofNativePrismZero.lean",
+      "before_sha256": "d5a2abbca1bc30a2cc10ff9d07d3ef1bed82aecbceb71d644e6da2988e8b3fe0",
+      "after_sha256": "914bb5748439dd5da0e47d25820010a400f0ea5b8be11ccd35fc8360aa164e00",
+      "root_qualifiers_added": 2
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofNativeRoofComparison.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofNativeRoofComparison.lean",
+      "before_sha256": "64a8d31cdfee4b3851a95f6d8ef0c230090ced056988bf2392c08055372b26ca",
+      "after_sha256": "36102a672d69ed923825656149434545ec2a478756ffa2bdb785f8dea2d8b8ae",
+      "root_qualifiers_added": 2
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofNativeSimplex.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofNativeSimplex.lean",
+      "before_sha256": "ca66f3632ebf710f4fede2b55397cb302e08e0344331611202e597b2c5299e88",
+      "after_sha256": "36f87e2cf2517e57cd35171cc705d19fbd6d21e5decb90747868a4979cab3133",
+      "root_qualifiers_added": 2
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofNativeTriangle.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofNativeTriangle.lean",
+      "before_sha256": "b24eef7ced1b5f73250b715b5e6b8a15976b8cc78995792aeb0afefe1b73c3a3",
+      "after_sha256": "f1b98664afca64dc8dccf71b37f429b6a9d8a3de32c92358cddb2baf41f729bc",
+      "root_qualifiers_added": 4
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofPrefixHomotopy.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofPrefixHomotopy.lean",
+      "before_sha256": "1bcb01b5ef9dbf43a4199acf79ae9878f017cfa86563d418990ce5755a8f2842",
+      "after_sha256": "8f3081e5af503f46d7b28faf31c9bfffb54c4bb9a8b89a8da4641eb12a5b6d3f",
+      "root_qualifiers_added": 2
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofPrefixNaturality.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofPrefixNaturality.lean",
+      "before_sha256": "de712d9b04e3abb0dc3c97fc8e5ad1ff53e8b15f7adaa791df0b2451eeb1fc7f",
+      "after_sha256": "82934cd4e306507fdab50e98c2c3b950d3c9013a0bca74ae71233132777c9701",
+      "root_qualifiers_added": 2
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofPrefixPath.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofPrefixPath.lean",
+      "before_sha256": "2d471bc84bef451cfa3456e7fc882be5e56e57fbbd9920d869105ca3f2ae4e98",
+      "after_sha256": "3214811c6dc915701a9a21b29cb3ab4f1f1e187896e14a7b9f10387a9ddfdf29",
+      "root_qualifiers_added": 2
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofProductCone.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofProductCone.lean",
+      "before_sha256": "0ec5b712924a52948ef5bd65007b994e2eb6a3aac977010d2c7310b14b25a44f",
+      "after_sha256": "b70af6b65d7c7450ff87dd833bb879bdcda04ea662649aa9d2d0fd1585a9d209",
+      "root_qualifiers_added": 2
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofProductCornerProjection.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofProductCornerProjection.lean",
+      "before_sha256": "6a4c872b91786f488227d7db66fd54e9ecee8b3a7660f10308c811a7f4577143",
+      "after_sha256": "30055de10dce498913d53ac76a224bdca9df4f59c0df502689fb0056db7e51bb",
+      "root_qualifiers_added": 2
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofProductFunctorCell.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofProductFunctorCell.lean",
+      "before_sha256": "92a25153479fff90801d3aa34f35121c11459d33bbaeb0d2e0af6104abf93197",
+      "after_sha256": "e378e0a5b4fb16b947ead68a6f0a7b82b506e533bd45cefec9446f881d0bc3b6",
+      "root_qualifiers_added": 2
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofProductGeometricTriangle.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofProductGeometricTriangle.lean",
+      "before_sha256": "80f1fe907086662a5b82762981d36240ec64a1817906719641b8ba4f2cd4dd37",
+      "after_sha256": "09c4b5d8bf92cca335b77e6984cb8a2816562b879e9eafc261de862c1c4103e1",
+      "root_qualifiers_added": 2
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofProductIntervalCriterion.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofProductIntervalCriterion.lean",
+      "before_sha256": "1d18978917a2b3e3e0a17ec6365284c9d2255236571a15c85571b7b2f128a632",
+      "after_sha256": "a8ba9c936c22e52d87ffd3c4f3b33bc9337de513b08b3554bd379abccb9ad16e",
+      "root_qualifiers_added": 2
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofRightSlice.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofRightSlice.lean",
+      "before_sha256": "53ed5f287dbd0bd9e257224780bd86d233951a7ed56ad1663b56880b0e3ca93e",
+      "after_sha256": "0e5b48ffea64404155572ab253496c13f0a7aad88504cd4908451992f032482a",
+      "root_qualifiers_added": 2
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofSliceCriterion.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofSliceCriterion.lean",
+      "before_sha256": "241b3653e790954da5258fa36b93f9de9e64de4d5149d7ec35f10544a230b7dd",
+      "after_sha256": "1db863bcd2b05321a6005cb32c89b75492b509ae5ff973914e0c4e2275d44d7e",
+      "root_qualifiers_added": 2
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofSliceFibration.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofSliceFibration.lean",
+      "before_sha256": "cfb7fd1918ab8130239e3921036a8739fb411fcfc992f36410d896178e04bc32",
+      "after_sha256": "0b12bc994dd8eb291cc76da3951f4d89b534e0b0f094a6cd526c26ed0aee0746",
+      "root_qualifiers_added": 2
+    },
+    {
+      "old_path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofSlices.lean",
+      "new_path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantSourceRoofSlices.lean",
+      "before_sha256": "ca0ae58660eecfcbb37073a381ac24f277f8d1287b07f34f8226ef0e823a98fa",
+      "after_sha256": "304308ea1c3cdca0a6dd666b6ada5984d719eceb515a0c01d7bb62beb8f0378b",
+      "root_qualifiers_added": 2
+    },
+    {
+      "old_path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramLocalizedVertices.lean",
+      "new_path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramLocalizedVertices.lean",
+      "before_sha256": "289d52eb8e3370555bdada3441eeaaa32f510ad87bf82677b16538203243c617",
+      "after_sha256": "5b6cd5cbbc9402613f84aca6adfa0c9c1abe9b7979c34a3e9e9447ea3dc5fe4a",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramMixedFrame.lean",
+      "new_path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramMixedFrame.lean",
+      "before_sha256": "f40ba77fdff4d3ca4cb01ebd50ad9ba3f01df5ae0b726218615caec337d38487",
+      "after_sha256": "45b78c29258bb1e417c80ea1480a5f7227a5306f253aa5810d3ae64289a2c805",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramMixedFrameEquivalence.lean",
+      "new_path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramMixedFrameEquivalence.lean",
+      "before_sha256": "a4abd0de955d2ba84bd0b948cf0986ba95105d5526f01de80ec218635e77c6b4",
+      "after_sha256": "410fa6c46235034f5c7b72a463cda54e72083d149c94dc7e29f99937339de52c",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramModelLocalization.lean",
+      "new_path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramModelLocalization.lean",
+      "before_sha256": "15201ba9f923514fd9a37d3a582a773111979316d5fbe1ae9283253f32ff41ba",
+      "after_sha256": "306920f5f3149c8c2487ecd2fda9eee1bbe1bdf58d01909f842fc7e3a8ce6384",
+      "root_qualifiers_added": 2
+    },
+    {
+      "old_path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramRightFrameComparison.lean",
+      "new_path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramRightFrameComparison.lean",
+      "before_sha256": "1a873c350576acf2c8d969e5ea8bfbec789101c5bfb8d8d92c4d0608c499475f",
+      "after_sha256": "7f03a0062046f0eaf0ee02a971b8fb37fcc2a1763f0780d1b64aa1e5702b718b",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Frames/FrameSpanNerve.lean",
+      "new_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Frames/FrameSpanNerve.lean",
+      "before_sha256": "438124ebc25156f6f4930851c6dd31107549e7f9c3adc86f7667b6e4ca8fb45a",
+      "after_sha256": "4a41f80c364fceb67bdcd0b0eb63709b53805dcc6d3c545262596698e99a2130",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Frames/MixedFrameComparison.lean",
+      "new_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Frames/MixedFrameComparison.lean",
+      "before_sha256": "96c8a8fc2b8322cd489f8c0efe0ac851373678337241eb2f6c54c968e1ae50b0",
+      "after_sha256": "57412cebdb1603b458e5a45ceba6cb685bce1567f04cb8afb86176b88c0d2df2",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Frames/MixedFrameCones.lean",
+      "new_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Frames/MixedFrameCones.lean",
+      "before_sha256": "da01d56b82706761a28b162088e88a55e97312074b5d75dce6054f163dc45c08",
+      "after_sha256": "d09299edc2c2062ec08182e7f3397370f1ecd0b866ba5babce8b75d4be8b2b33",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Frames/MixedFrameDiagrams.lean",
+      "new_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Frames/MixedFrameDiagrams.lean",
+      "before_sha256": "d0ebf6d9bd73807beba4ae88871e34ef20cb65982c31348546b1480968204b9b",
+      "after_sha256": "14923ab397275ff491b485fc20d3aad48bad80f9ffa68ecc4bc4dfccc31db3fc",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Frames/RightFrameFamily.lean",
+      "new_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Frames/RightFrameFamily.lean",
+      "before_sha256": "59ea436742a672ee365a0d3701bed03ce017e48a6fb8a10dcf4c41707df32104",
+      "after_sha256": "5e9a701a64899e7bbe010b0ca96aa5c6ee4a9f875ab56e882157c7c6f108b726",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Frames/RightFrameInvariance.lean",
+      "new_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Frames/RightFrameInvariance.lean",
+      "before_sha256": "ea71e4e4e6b5a02a5f1cd16cee9842f915ae6ccd111cbfeaaccc70de668d2b70",
+      "after_sha256": "24899d45891acd6201d488c040a724faba698e5cac2e1c5fd77886d80152f589",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/FibrantRightSpanDiagram.lean",
+      "new_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/FibrantRightSpanDiagram.lean",
+      "before_sha256": "30e5dbb5b6c316b40da0dde8bc45c255db1e0750872df36e94b18ccce51bb1f0",
+      "after_sha256": "38829bf801a9475d8733dab912a777d71166a57d5555e97aab8d5f6896941da5",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/FibrantRightSpans.lean",
+      "new_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/FibrantRightSpans.lean",
+      "before_sha256": "c57dc6b37d1a2e812a946bba95049709a7899681a8622379330fb63c84b57fd8",
+      "after_sha256": "4a105922ee7d3d656ee32556bba16f3c3922025aff8bac5d9de8cf6100e404d5",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/MiddleBackwardContextErasureComparison.lean",
+      "new_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/MiddleBackwardContextErasureComparison.lean",
+      "before_sha256": "bbba66bb18b52b75d393d4ddb5c6727b56cdfd3ce6c5e1205c0cc4daf33759c5",
+      "after_sha256": "a9c96613f50c57531c2db005ebd645ca6ef4e09ccc7b000bdf318a5ee2e2b79d",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/MiddleBackwardContextTrivialCofibration.lean",
+      "new_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/MiddleBackwardContextTrivialCofibration.lean",
+      "before_sha256": "7a1f38ec9a0f1c8d9f42025ec6a56814078a11c141817abc85c54fb9b8cdc2e1",
+      "after_sha256": "28fb685d7c5b102c514ab011620b176fa8a92c5ec4f54dda8e8da457905c37ff",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/MiddleBackwardErasureComparison.lean",
+      "new_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/MiddleBackwardErasureComparison.lean",
+      "before_sha256": "d2eb53e84d2ebe222b987ac3e1ff08b5adf258cf052d661fadcf7252d0bbc4d5",
+      "after_sha256": "2871fd4a5450e8b5501efff5742d18e26cbc5b152571195163baf6bc24aee85a",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/MiddleBackwardIdentityInsertionComparison.lean",
+      "new_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/MiddleBackwardIdentityInsertionComparison.lean",
+      "before_sha256": "f82dd29fa24979f7db82fd89fa3fee24df1007c3f2ee5278fef414a68ddd36a4",
+      "after_sha256": "c24abaa9275c305650a73e63ab1f702a47d8cf4b8557023640a2c451c31f663a",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/MiddleBackwardTrivialCofibration.lean",
+      "new_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/MiddleBackwardTrivialCofibration.lean",
+      "before_sha256": "bd44615b4d5bd66e4d4a23032af8c1d91f2ee8a30b08783922df4a98e95437a1",
+      "after_sha256": "68c8c421cf0f3a293773b67622bde7eeb220ebf1fbcddffe2c50562e2ffe0229",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/PaddedBackwardEmbeddingComparison.lean",
+      "new_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/PaddedBackwardEmbeddingComparison.lean",
+      "before_sha256": "2cd1b1885f038be89e4c648405a2217d5a23df0df461ba4754d11cd4a0de8676",
+      "after_sha256": "4a17dd722e2931ffc7713cf2b0254d90ad58a616b32f1b2df860a6bcba283806",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/PaddedBackwardInsertionComparison.lean",
+      "new_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/PaddedBackwardInsertionComparison.lean",
+      "before_sha256": "6ead6e81ecba18694b3a9e0e71f44f32295e75f954c6455270684ac9f81ffd4b",
+      "after_sha256": "0c6592ae3288405cd20c0821685769e51b29f2f30019cfd64b99cd9037a6c220",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/PaddedThreeWeakComparison.lean",
+      "new_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/PaddedThreeWeakComparison.lean",
+      "before_sha256": "bda89e33d04d4c27d30d937c57cd650615e10b59b2d9b4319064c7623d352348",
+      "after_sha256": "957bf79ef3d134aeafcbb62ed1870e73ff2e6e6f8d33531881997d7ab89fc493",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/ReplacementComparison.lean",
+      "new_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/ReplacementComparison.lean",
+      "before_sha256": "7b60c6eb19e6d18a49a0dbb95fb8b272f7689efcc92dbcc13cc52ba10afb8df2",
+      "after_sha256": "c3c1facb78d53d3d171690595a91070fb3d87aadc33315aa2cb4cd6e90016410",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/ResolutionLeftRoof.lean",
+      "new_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/ResolutionLeftRoof.lean",
+      "before_sha256": "c0340af3e1d341c7d85ead5108d1477bc7fe38edfdad9b885e85b5eb45d8d8bb",
+      "after_sha256": "2c272ca971b25718310222108c9817d1c1206d48581793aba3459e2aa227b80c",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/ResolutionSpecialSpans.lean",
+      "new_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/ResolutionSpecialSpans.lean",
+      "before_sha256": "76f286901460fa505cbe6e27937e7078680e70d4da2c9974fb8e77c9776407c9",
+      "after_sha256": "4e3c61214f56d2ab5c624da8a7266689fa59c7c49956e70fcf719805fd092809",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/RightMixedFamily.lean",
+      "new_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/RightMixedFamily.lean",
+      "before_sha256": "fd9dfa4ed1430de5c52dd14f6df422520e733cf25aeb36d43536bdcc1f7393c3",
+      "after_sha256": "137f8a26bba15d4c9c2d6e344b3b02575f7cd6943f295dd6a48418440f980715",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/SpecialThreeArrowComparison.lean",
+      "new_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/SpecialThreeArrowComparison.lean",
+      "before_sha256": "d4ef03ee88477fb2e9581246ddaa8d455ee63263be3b68e524f13a10f99029f5",
+      "after_sha256": "21e01a44ae073769b8b911d27567aa83d9aab7d672d1b2018f95471d1b83806f",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/ThreeArrowCompositeWeakComparison.lean",
+      "new_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/ThreeArrowCompositeWeakComparison.lean",
+      "before_sha256": "21c214703ee4d6d012772c0221ae16ee0a5a8f122108f8d288ddf6dff0238c77",
+      "after_sha256": "065fceb28bfdfc3804918226e797845ed311f4840f239a41be511e5fa1b4aa07",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/ThreeArrowEquivalence.lean",
+      "new_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/ThreeArrowEquivalence.lean",
+      "before_sha256": "2a971967966697073f57c442ade3c3e1f8ac4776a4e257a61f1894fbf6c257f1",
+      "after_sha256": "716819ecf5194f3aa570863254387f5b2978951ddf1f1b0515a357a6f2659cd4",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/ThreeArrowGraphWeakComparison.lean",
+      "new_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/ThreeArrowGraphWeakComparison.lean",
+      "before_sha256": "c7d3304994b114602da27bd2a6ca3d179a3dc219a424be32eb12b1f00352234c",
+      "after_sha256": "3f984d7a1b572e8892a00739a6c70ab733b732e7f982c77997b95915538f5950",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/ThreeArrowLeftReplacement.lean",
+      "new_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/ThreeArrowLeftReplacement.lean",
+      "before_sha256": "44144e284723a4a3101f012b44388c03802632620e90ad12e6618bb02bc7f4c8",
+      "after_sha256": "6c51d04d4c03bd86f1fd8afd7fb3a794d788c0ef47dd0040d53c902ba3d01d55",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/ThreeArrowPaddingComparison.lean",
+      "new_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/ThreeArrowPaddingComparison.lean",
+      "before_sha256": "0decfab7bd82180030423a7cac93635df2670007678cb6c16a7386debbd1fdf3",
+      "after_sha256": "c986582644ed8afe6aa1c1eea35f974e8cdc2076e7283438a0219de232d2b741",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/ThreeArrowReducedWeakComparison.lean",
+      "new_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/ThreeArrowReducedWeakComparison.lean",
+      "before_sha256": "9d19196f02dc21947a8f382916444592c172ab7ff686b089c62aabb7773a8557",
+      "after_sha256": "d69575e159d235e26f1594a37ce8608e5ddd4662e7ecb592bb0dad7659a85cf4",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/ThreeArrowRightReplacement.lean",
+      "new_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/ThreeArrowRightReplacement.lean",
+      "before_sha256": "ea88e9845929d4da904aa5317a4d84a8c31f261badc93cefefaa32dd981c07ee",
+      "after_sha256": "c2391b184c7f9a8c5854da3a637bc9e924d15654464ec258359adfbc56fc6bc8",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/ThreeArrowRightReplacementOfFirst.lean",
+      "new_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/ThreeArrowRightReplacementOfFirst.lean",
+      "before_sha256": "da1c3b1d6cc9b1321ad03ebf5c2d0b857ae0a8ba71e8c39fbba68d53e903f87c",
+      "after_sha256": "6f76d25973d1b813cec54f3ecfbe08f071489e8d52d4f3d4bb54c22ccfa2bc74",
+      "root_qualifiers_added": 2
+    },
+    {
+      "old_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/ThreeArrowValue.lean",
+      "new_path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/ThreeArrowValue.lean",
+      "before_sha256": "f22d6235ca550cc7933b8e1eb814dbc26e7210958f828684d9d0ab848e6fac8e",
+      "after_sha256": "a19bd6ca87c10b327920071e65cfdbbe9b37a2619fd69a0ee2f026270dec5a99",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/KST/LocalizingInvariants/DGAlgebraNativeChosenMixedFrame.lean",
+      "new_path": "SerrePositivity/KST/LocalizingInvariants/DGAlgebraNativeChosenMixedFrame.lean",
+      "before_sha256": "015954baf51fe850715a0645abd34af49ff5ff39ec2535fe02690103387061ea",
+      "after_sha256": "82a3b61c4917da8050ce67f5dc1e20be47a1b51bf0cbab0b0a14fdb243479ad2",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/KST/LocalizingInvariants/DGAlgebraNativeMixedFrame.lean",
+      "new_path": "SerrePositivity/KST/LocalizingInvariants/DGAlgebraNativeMixedFrame.lean",
+      "before_sha256": "b61122fbb0bbc18fc5b4c2e18c35e2add3c0e0ed3f7684abe67ab79a1a725fa4",
+      "after_sha256": "9d6d95f9fff26cb2529728c4bbd1ce6be010c1ae3321aa7c7a4561f5ce1920f5",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/KST/LocalizingInvariants/DGAlgebraNativeRightFrame.lean",
+      "new_path": "SerrePositivity/KST/LocalizingInvariants/DGAlgebraNativeRightFrame.lean",
+      "before_sha256": "863558392d72808940064c7d4ba4eff1cbebabe819e6a88f770f9caf8b5a122a",
+      "after_sha256": "1c0e65db5a5baa4f6500b3aa4c235e2dfe1cfb0933230ba917d7479adf1109ce",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "SerrePositivity/KST/LocalizingInvariants/DGAlgebraSpecifiedFrameComparison.lean",
+      "new_path": "SerrePositivity/KST/LocalizingInvariants/DGAlgebraSpecifiedFrameComparison.lean",
+      "before_sha256": "634307aac4a1b67e4c4207e5e179a59412e9f436bcddf54467d810e4d76b2e57",
+      "after_sha256": "f80c0924d5d32dd15cfc3c977434eb444d81c28136d875eecd8a02e24511f4e5",
+      "root_qualifiers_added": 1
+    },
+    {
+      "old_path": "scripts/audit_einfinity.lean",
+      "new_path": "scripts/audit_einfinity.lean",
+      "before_sha256": "a640b1c74d98e974010ef27ab18101e52b0b48af2fe1f4333425c909991d5053",
+      "after_sha256": "d07ffeb19d43f456c3c30dcca0558b374fd622f1fe6199a9eaac1060f0eb2b6a",
+      "root_qualifiers_added": 129
+    }
+  ],
+  "changed_files": 283,
+  "root_qualifiers_added": 454,
+  "global_records_sha256": "5f1295a08194c0347ba9e739da733a522b587ce2cff9be7a76c7c9e2922d9a08",
+  "preview_manifest_sha256": "b0af2b0b0a2caed4e4461b7fecd01438425d480c3605428a440cd68b18e99bb2",
+  "policy": "Only `_root_.` insertions; every edited original span has an actual compiler namespace/constant resolution. No statement or proof modification; native v3b remains required."
+}

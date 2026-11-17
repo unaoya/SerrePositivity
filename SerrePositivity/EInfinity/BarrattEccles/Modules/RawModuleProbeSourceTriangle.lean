@@ -20,7 +20,7 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory Opposite SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.Modules
-open SerrePositivity.EInfinity.SimplicialLocalization
+open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.InfinityCategories.HA.Section7_1_1
 open SerrePositivity.InfinityCategories.Project.DerivedCategories
 open SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories
@@ -104,7 +104,7 @@ def strictRawModuleLiftedProbeSourceIso (X : (operad A).Algebra) :
 def strictRawModuleLiftedProbeComparisonIso (X : (operad A).Algebra) :
     FunctorIso
       (nerveMap (strictRawModuleLiftedProbeFunctor A X) ≫
-        (localizationNerveSourceMap (strictRawModuleRelativeCategory A X) ≫
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveSourceMap (strictRawModuleRelativeCategory A X) ≫
           strictRawModuleComparison A X))
       (strictRawModuleLiftedProbeDGSource A X) :=
   (strictRawModuleComparison_sourceIso A X).precomp

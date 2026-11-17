@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.FramedLimitHomPiZero
-public import SerrePositivity.EInfinity.HomotopyWeight.TensorPiZeroNaturality
+public import SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.TensorPiZeroNaturality
 
 /-!
 # 計算した極限への導来 Hom の終域図式に関する自然性
@@ -23,7 +23,7 @@ universe u
 
 namespace SerrePositivity.EInfinity.BarrattEccles
 
-open CategoryTheory Limits HomotopicalAlgebra Opposite
+open CategoryTheory Limits _root_.HomotopicalAlgebra Opposite
 open SerrePositivity.DiagramModel
 
 variable (A : Type u) [CommRing A] (K : Type u) [SmallCategory K]
@@ -50,24 +50,24 @@ lemma framedLimitHomPiZeroEquiv_target (Y : (operad A).Algebra)
   have := framedLimitProbe_cofibrant A Y
   have : IsFibrant (op (framedLimitProbe A Y)) := _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.fibrantOp_of_cofibrant _
   let e (F : K ⥤ (operad A).Algebra) :=
-    HomotopyWeight.frameConePiZeroLocalizationEquiv Kᵒᵖ (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K)
-      (rightFrameDiagram A K F) (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight_cofibrant K)
+    _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.frameConePiZeroLocalizationEquiv Kᵒᵖ (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.framedLimitWeight K)
+      (rightFrameDiagram A K F) (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.framedLimitWeight_cofibrant K)
       (fun k => rightFrame_cofibrant A (F.obj k.unop))
       (fun k _ _ f => rightFrame_homotopicallyConstant A (F.obj k.unop) f) Q.op
       (op (framedLimitProbe A Y))
   let a : rightFrameDiagram A K G ⟶ rightFrameDiagram A K F :=
     (rightFrameDiagramFamily A K).map g.op
-  have hn' := HomotopyWeight.frameConePiZeroLocalizationEquiv_source Kᵒᵖ
-    (C := (operad A).Algebraᵒᵖ) (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K)
+  have hn' := _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.frameConePiZeroLocalizationEquiv_source Kᵒᵖ
+    (C := (operad A).Algebraᵒᵖ) (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.framedLimitWeight K)
     (B := rightFrameDiagram A K G) (B' := rightFrameDiagram A K F)
-    (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight_cofibrant K)
+    (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.framedLimitWeight_cofibrant K)
     (fun k => rightFrame_cofibrant A (G.obj k.unop))
     (fun k => rightFrame_cofibrant A (F.obj k.unop))
     (fun k _ _ f => rightFrame_homotopicallyConstant A (G.obj k.unop) f)
     (fun k _ _ f => rightFrame_homotopicallyConstant A (F.obj k.unop) f) Q.op a
     (op (framedLimitProbe A Y)) z
   have hn : e G (SSet.mapπ₀ ((framedLimitConeSpace A K Y).map g) z) =
-      Q.op.map ((FrameWeightRealization.map Kᵒᵖ a).app (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K)) ≫ e F z := hn'
+      Q.op.map ((FrameWeightRealization.map Kᵒᵖ a).app (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.framedLimitWeight K)) ≫ e F z := hn'
   have : IsIso (Q.map (framedLimitProbeComparison A Y)) :=
     Localization.inverts Q (weakEquivalences (operad A).Algebra) _
       (framedLimitProbeComparison_quasiIso A Y)
@@ -76,15 +76,15 @@ lemma framedLimitHomPiZeroEquiv_target (Y : (operad A).Algebra)
     ((asIso (Q.map (framedLimitProbeComparison A Y))).inv ≫ (e F z).unop ≫ 𝟙 _) ≫
       Q.map ((framedLimitFunctor A K).map g)
   have hu0 := congrArg (fun f : Q.op.obj ((FrameWeightRealization.functor Kᵒᵖ
-      (rightFrameDiagram A K G)).obj (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K)) ⟶
+      (rightFrameDiagram A K G)).obj (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.framedLimitWeight K)) ⟶
     Q.op.obj (op (framedLimitProbe A Y)) => f.unop) hn
-  have hmap : ((FrameWeightRealization.map Kᵒᵖ a).app (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K)).unop =
+  have hmap : ((FrameWeightRealization.map Kᵒᵖ a).app (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.framedLimitWeight K)).unop =
       (framedLimitFunctor A K).map g := by
     dsimp only [framedLimitFunctor, framedLimitOpFunctor, Functor.unop_map, Functor.comp_map,
       FrameWeightRealization.family, a, CategoryTheory.evaluation]
   have hu' : (e G (SSet.mapπ₀ ((framedLimitConeSpace A K Y).map g) z)).unop =
       (e F z).unop ≫ Q.map (((FrameWeightRealization.map Kᵒᵖ a).app
-        (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K)).unop) := by
+        (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.framedLimitWeight K)).unop) := by
     simpa only [unop_comp, Functor.op_map, Quiver.Hom.unop_op] using hu0
   have hu : (e G (SSet.mapπ₀ ((framedLimitConeSpace A K Y).map g) z)).unop =
       (e F z).unop ≫ Q.map ((framedLimitFunctor A K).map g) :=

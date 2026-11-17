@@ -3,7 +3,7 @@ module
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraNativeSourceFrame
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraNativeRightFrame
 public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Frames.MixedFrameComparison
-public import SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection
 
 /-!
 概要：元の cell 源の AW 写像模型と実始域 frame の Hom を、同じ混合 Hom で比較する。
@@ -17,7 +17,7 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
-open CategoryTheory Limits MonoidalCategory HomotopicalAlgebra
+open CategoryTheory Limits MonoidalCategory _root_.HomotopicalAlgebra
 open SerrePositivity.DifferentialGraded SerrePositivity.Reedy
 open SerrePositivity.HomotopyFunctionComplex SerrePositivity.SimplicialModel
 namespace SerrePositivity.KST.LocalizingInvariants.DGAlgebra
@@ -28,11 +28,11 @@ attribute [local instance] EInfinity.DGAlgebra.modelCategory
 
 def nativeCellMixedMappingFunctor : Mon (Complex R) ⥤ SSet.{u} :=
   multiplicativeSimplicesFunctor R ⋙
-    EInfinity.FrameHom.MixedFrame.mixedFunctor (nativeCellSourceFrame R A)
+    _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedFrame.mixedFunctor (nativeCellSourceFrame R A)
 
 def nativeCellMixedLeft :
     _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (nativeCellSourceFrame R A) ⟶ nativeCellMixedMappingFunctor R A where
-  app B := EInfinity.FrameHom.MixedFrame.leftComparison (nativeCellSourceFrame R A)
+  app B := _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedFrame.leftComparison (nativeCellSourceFrame R A)
     (multiplicativeSimplicesAugmentation R B)
   naturality B C f := by
     apply NatTrans.ext
@@ -50,7 +50,7 @@ def nativeCellMixedLeft :
 
 def nativeCellMixedRight : multiplicativeMappingFunctor R (cellResolution R A) ⟶
     nativeCellMixedMappingFunctor R A where
-  app B := EInfinity.FrameHom.MixedFrame.rightComparison (nativeCellSourceFrame R A)
+  app B := _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedFrame.rightComparison (nativeCellSourceFrame R A)
     (nativeCellSourceFrameAugmentation R A) (multiplicativeSimplices R B)
   naturality B C f := by
     apply NatTrans.ext
@@ -84,12 +84,12 @@ lemma nativeCellMixedRight_anodyneImage_isIso (B : Mon (Complex R)) :
 
 lemma nativeCellMixedLeft_weakEquivalence (B : Mon (Complex R)) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((nativeCellMixedLeft R A).app B) :=
-  EInfinity.FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.isWeakHomotopyEquivalence _
     (nativeCellMixedLeft_anodyneImage_isIso R A B)
 
 lemma nativeCellMixedRight_weakEquivalence (B : Mon (Complex R)) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((nativeCellMixedRight R A).app B) :=
-  EInfinity.FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.isWeakHomotopyEquivalence _
     (nativeCellMixedRight_anodyneImage_isIso R A B)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

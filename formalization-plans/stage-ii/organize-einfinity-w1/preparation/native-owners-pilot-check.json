@@ -1,0 +1,9 @@
+{
+  "modules": 5,
+  "declarations": 31,
+  "exact_match_v3b_inventory": true,
+  "seconds": 59.74528741650283,
+  "tool_source_sha256": "1684ee5be48907d358fff7f6c8376ad2d9f0ffe7cba4fa20b61c9406716e18b9",
+  "binary_sha256": "d2a3604b79e658af8a36d71484da0fd5989c58045902d81f8611aeeddfac4809",
+  "policy": "owner names only; final v3b unchanged and still required"
+}

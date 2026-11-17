@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.PowerOperation.ComplexRelativeElementSourceRoof
-public import SerrePositivity.EInfinity.FrameHom.MixedNerveHomLiftIso
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerveHomLiftIso
 public import SerrePositivity.EInfinity.ComplexLimits.DerivedNatTransComponent
 
 /-!
@@ -17,7 +17,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.PowerOperation
 open CategoryTheory SSet MonoidalClosed
-open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.FrameHom
+open SerrePositivity.DifferentialGraded _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom
 open SerrePositivity.EInfinity.ComplexLimits
 open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
 open SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries
@@ -32,7 +32,7 @@ def complexHomLiftToRelative : ULiftHom.{u + 1} (Complex A) ⥤
 
 lemma complexRelativeDerivedSource_onHomLift :
     nerveMap (complexHomLiftToRelative A) ≫ complexRelativeDerivedSource A =
-      MixedNerve.down (Complex A) ≫ complexOrdinaryDerivedSource A := by
+      _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.down (Complex A) ≫ complexOrdinaryDerivedSource A := by
   apply SSet.hom_ext
   intro n
   apply ConcreteCategory.hom_ext
@@ -46,17 +46,17 @@ lemma complexRelativeDerivedSource_onHomLift :
 /-- 同じ相対列の円柱の像は、元の通常複体円柱の全制限である。 -/
 lemma complexRelativeColumnHom_arrow {I : Type (u + 1)} [Category.{u} I]
     {V W : I ⥤ Complex A} (a : V ⟶ W) :
-    Arrow.mk (NerveColumn.hom (complexRelativeDerivedSource A)
-      (Functor.whiskerRight (MixedNerve.liftedNatTrans a) (complexHomLiftToRelative A))) =
-      Arrow.mk ((hoFunctor.map ((pre (MixedNerve.down I)).app
+    Arrow.mk (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveColumn.hom (complexRelativeDerivedSource A)
+      (Functor.whiskerRight (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.liftedNatTrans a) (complexHomLiftToRelative A))) =
+      Arrow.mk ((hoFunctor.map ((pre (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.down I)).app
         (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A))).toFunctor.map (complexOrdinaryDerivedNatTransHom A a)) := by
   have h₁ := congrArg Arrow.mk
-    (NerveColumn.hom_whiskerRight (complexHomLiftToRelative A)
-      (complexRelativeDerivedSource A) (MixedNerve.liftedNatTrans a)).symm
+    (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveColumn.hom_whiskerRight (complexHomLiftToRelative A)
+      (complexRelativeDerivedSource A) (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.liftedNatTrans a)).symm
   have h₂ := congrArg (fun F : nerve (ULiftHom.{u + 1} (Complex A)) ⟶
-      _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A => Arrow.mk (NerveColumn.hom F (MixedNerve.liftedNatTrans a)))
+      _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A => Arrow.mk (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveColumn.hom F (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.liftedNatTrans a)))
     (complexRelativeDerivedSource_onHomLift A)
   exact h₁.trans (h₂.trans
-    (MixedNerve.liftedHom_postcomp_arrow I a (complexOrdinaryDerivedSource A)))
+    (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.liftedHom_postcomp_arrow I a (complexOrdinaryDerivedSource A)))
 
 end SerrePositivity.EInfinity.PowerOperation

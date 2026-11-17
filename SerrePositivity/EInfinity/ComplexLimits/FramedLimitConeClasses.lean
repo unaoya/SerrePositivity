@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.ComplexLimits.FramedLimitComparison
 public import SerrePositivity.EInfinity.ComplexLimits.FramedLimitHomPiZero
-public import SerrePositivity.EInfinity.HomotopyWeight.FrameConeClasses
+public import SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.FrameConeClasses
 
 /-!
 # 通常の錐が与える実際の右 frame の錐の類
@@ -24,7 +24,7 @@ universe u
 
 namespace SerrePositivity.EInfinity.ComplexLimits
 
-open CategoryTheory Limits HomotopicalAlgebra Opposite
+open CategoryTheory Limits _root_.HomotopicalAlgebra Opposite
 open SerrePositivity.DifferentialGraded
 open SerrePositivity.DiagramModel
 
@@ -36,8 +36,8 @@ variable (A : Type u) [CommRing A] (K : Type u) [SmallCategory K]
 使われ方：元の通常の錐の具体的な右側の代表。 -/
 def framedLimitConeClass (F : K ⥤ (Complex A)) (c : Cone F) :
     SSet.π₀ ((framedLimitConeSpace A K c.pt).obj F) :=
-  HomotopyWeight.coneClass Kᵒᵖᵒᵖ (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K)
-    (strictConeWeightedFamily A K F (HomotopyWeight.weight K) c ≫
+  _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.coneClass Kᵒᵖᵒᵖ (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.framedLimitWeight K)
+    (strictConeWeightedFamily A K F (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K) c ≫
       (FrameWeightRealization.hom Kᵒᵖ (rightFrameDiagram A K F)).map
         (framedLimitProbeComparison A c.pt).op)
 
@@ -60,34 +60,34 @@ lemma framedLimitHomPiZeroEquiv_coneClass (F : K ⥤ (Complex A)) (c : Cone F) :
     _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.fibrantOp_of_cofibrant _
   let p := framedLimitProbeComparison A c.pt
   let f := p ≫ coneToFramedLimit A K F c
-  let e := HomotopyWeight.frameConePiZeroLocalizationEquiv Kᵒᵖ (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K)
-    (rightFrameDiagram A K F) (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight_cofibrant K)
+  let e := _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.frameConePiZeroLocalizationEquiv Kᵒᵖ (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.framedLimitWeight K)
+    (rightFrameDiagram A K F) (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.framedLimitWeight_cofibrant K)
     (fun k => rightFrame_cofibrant A (F.obj k.unop))
     (fun k _ _ g => rightFrame_homotopicallyConstant A (F.obj k.unop) g) Q.op
     (op (framedLimitProbe A c.pt))
-  have hfam : strictConeWeightedFamily A K F (HomotopyWeight.weight K) c ≫
+  have hfam : strictConeWeightedFamily A K F (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K) c ≫
         (FrameWeightRealization.hom Kᵒᵖ (rightFrameDiagram A K F)).map p.op =
       (FrameWeightRealization.adjunction Kᵒᵖ (rightFrameDiagram A K F)).homEquiv
-        (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K) (op (framedLimitProbe A c.pt)) f.op := by
-    have h := weightedCotensorHomEquiv_precomp A K F (HomotopyWeight.weight K) p
+        (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.framedLimitWeight K) (op (framedLimitProbe A c.pt)) f.op := by
+    have h := weightedCotensorHomEquiv_precomp A K F (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K) p
       (coneToFramedLimit A K F c)
-    have hc : weightedCotensorHomEquiv A K F (HomotopyWeight.weight K) c.pt
+    have hc : weightedCotensorHomEquiv A K F (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K) c.pt
         (coneToFramedLimit A K F c) =
-      strictConeWeightedFamily A K F (HomotopyWeight.weight K) c :=
-      (weightedCotensorHomEquiv A K F (HomotopyWeight.weight K) c.pt).apply_symm_apply _
+      strictConeWeightedFamily A K F (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K) c :=
+      (weightedCotensorHomEquiv A K F (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K) c.pt).apply_symm_apply _
     have hh := (h.trans (congrArg (fun s => s ≫
       (FrameWeightRealization.hom Kᵒᵖ (rightFrameDiagram A K F)).map p.op) hc)).symm
     simpa only [weightedCotensorHomEquiv, Equiv.trans_apply, Equiv.coe_fn_mk] using hh
   have he : e (framedLimitConeClass A K F c) = Q.op.map f.op := by
-    change e (HomotopyWeight.coneClass Kᵒᵖᵒᵖ (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K) _) = _
+    change e (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.coneClass Kᵒᵖᵒᵖ (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.framedLimitWeight K) _) = _
     rw [hfam]
-    exact HomotopyWeight.frameConePiZeroLocalizationEquiv_class Kᵒᵖ (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K)
-      (rightFrameDiagram A K F) (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight_cofibrant K)
+    exact _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.frameConePiZeroLocalizationEquiv_class Kᵒᵖ (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.framedLimitWeight K)
+      (rightFrameDiagram A K F) (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.framedLimitWeight_cofibrant K)
       (fun k => rightFrame_cofibrant A (F.obj k.unop))
       (fun k _ _ g => rightFrame_homotopicallyConstant A (F.obj k.unop) g) Q.op f.op
   have hu : (e (framedLimitConeClass A K F c)).unop = Q.map f :=
     congrArg (fun g : Q.op.obj ((FrameWeightRealization.functor Kᵒᵖ
-        (rightFrameDiagram A K F)).obj (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K)) ⟶
+        (rightFrameDiagram A K F)).obj (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.framedLimitWeight K)) ⟶
       Q.op.obj (op (framedLimitProbe A c.pt)) => g.unop) he
   have : IsIso (Q.map p) := Localization.inverts Q (weakEquivalences (Complex A)) _
     (framedLimitProbeComparison_quasiIso A c.pt)

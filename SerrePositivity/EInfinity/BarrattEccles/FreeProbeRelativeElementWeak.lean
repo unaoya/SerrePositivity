@@ -19,7 +19,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open CategoryTheory Hammock SimplicialLocalization
+open CategoryTheory Hammock _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open SerrePositivity.SimplicialModel
 variable (A : Type u) [CommRing A] (X : Complex A) (B : CofibrantAlgebra A)
@@ -35,7 +35,7 @@ lemma freeProbeRelativeElementRoofMap_weak :
       (cofibrantAlgebraHammockInclusionMap_weak A _ _)
   apply hi.cancel_right
   rw [freeProbeRelativeElementRoofMap_image]
-  exact (FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.isWeakHomotopyEquivalence _
     (freeProbeRelativeElementNormalizedIndexMap_localized_isIso A X B)).comp
       (freeNormalizedTensorReducedRoof_weak A X B.obj)
 
@@ -47,11 +47,11 @@ lemma freeProbeRelativeElementPinchedMap_weak :
   have hu : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app
       (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph (cofibrantAlgebraRelativeCategory A).weakEquivalences
         (freeProbeRelativeElementSource A X) (ULiftHom.objUp.{u + 1, u + 1} B))) :=
-    FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.isWeakHomotopyEquivalence _
       (SSet.anodyneExtensions.Q_inverts _ (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit_anodyne _))
   exact (freeProbeRelativeElementRoofMap_weak A X B).comp
-    (hu.comp ((kanHammockHomPinchedMap_weak _ _ _).comp
-      (((kanHammockLocalizationEquivalence (cofibrantAlgebraRelativeCategory A)).isFullyFaithful
+    (hu.comp ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockHomPinchedMap_weak _ _ _).comp
+      (((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockLocalizationEquivalence (cofibrantAlgebraRelativeCategory A)).isFullyFaithful
         _ _).isQCatEquivalence.isWeakHomotopyEquivalence)))
 
 end SerrePositivity.EInfinity.BarrattEccles

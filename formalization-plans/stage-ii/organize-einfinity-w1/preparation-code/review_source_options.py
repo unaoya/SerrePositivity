@@ -1,0 +1,14 @@
+"""Review source options and selected declaration, scope and proof keywords.
+Static evidence only; final native preservation remains mandatory.
+"""
+from pathlib import Path
+from collections import Counter
+import argparse,hashlib,json,re,sys
+p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True);p.add_argument('--before',type=Path,required=True);p.add_argument('--preview',type=Path,required=True);a=p.parse_args();root=a.root.resolve();before=a.before.resolve();preview=a.preview.resolve();sys.path.insert(0,str(root/'scripts/refactor'));from layer_check import code_only
+manifest=json.loads((preview/'manifest.json').read_text());keywords=set('module prelude import public private meta open namespace section end def abbrev opaque theorem lemma example instance inductive structure class variable variables universe universes noncomputable set_option attribute export initialize builtin_initialize syntax macro macro_rules elab deriving in include omit axiom constant mutual local scoped unsafe partial by fun let have show from calc if then else match with do return unless for while try catch finally sorry admit exact apply rfl'.split());rx=re.compile(r"(?<![\w.])(?:"+'|'.join(sorted(keywords))+r")(?![\w'.])");diffs=[];options=0;total=Counter();rows=[]
+for r in manifest:
+ a=(before/r['old_path']).read_bytes();b=(preview/r['new_path']).read_bytes();assert hashlib.sha256(a).hexdigest()==r['source_sha256'];assert hashlib.sha256(b).hexdigest()==r['preview_sha256'];x,y=code_only(a.decode()),code_only(b.decode());ox=re.findall(r'(?m)^\s*(?:local\s+)?set_option[^\n]*',x);oy=re.findall(r'(?m)^\s*(?:local\s+)?set_option[^\n]*',y);cx,cy=Counter(rx.findall(x)),Counter(rx.findall(y));options+=len(ox);total+=cx
+ if ox!=oy or cx!=cy:diffs.append(dict(path=r['old_path'],options_before=ox,options_after=oy,keywords_before=dict(cx),keywords_after=dict(cy)))
+ rows.append(dict(old_path=r['old_path'],new_path=r['new_path'],options=len(ox),source_sha256=r['source_sha256'],preview_sha256=r['preview_sha256']))
+record=dict(scope='824 core previews, before citation/status/audit metadata overlay',files=len(rows),set_option_commands=options,all_set_options_identical=not any(r['options_before']!=r['options_after'] for r in diffs),language_keyword_inventory_identical=not any(r['keywords_before']!=r['keywords_after'] for r in diffs),differences=diffs,keywords=dict(total),policy='Static source-shape check only; does not substitute for target compilation or native v3b preservation. Source and preview bytes are pinned by the full manifest.')
+out=root/'formalization-plans/stage-ii/organize-einfinity-w1/preparation/source-option-review-core.json';out.write_text(json.dumps(record,ensure_ascii=False,indent=2)+'\n');print(json.dumps({k:record[k] for k in ['files','set_option_commands','all_set_options_identical','language_keyword_inventory_identical']}));print('Review differences',len(diffs))

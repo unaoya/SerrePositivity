@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.DKHammockComparison
-public import SerrePositivity.EInfinity.SimplicialLocalization.DKHammockCoefficientComparison
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.DKHammockCoefficientComparison
 
 /-!
 # 元の代数 DK 比較と係数自然な比較の照合
@@ -16,23 +16,23 @@ public import SerrePositivity.EInfinity.SimplicialLocalization.DKHammockCoeffici
 noncomputable section
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open CategoryTheory SimplicialLocalization SerrePositivity.InfinityCategories
+open CategoryTheory _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization SerrePositivity.InfinityCategories
 open SerrePositivity.SimplicialModel
 variable (A : Type u) [CommRing A]
   (X Y : (cofibrantAlgebraRelativeCategory A).category)
 
 lemma cofibrantAlgebraDKHammockComparisonIso_factorization :
     (cofibrantAlgebraDKHammockComparisonIso A X Y).hom =
-      (dkHammockComparisonIso (cofibrantAlgebraRelativeCategory A) X Y).hom ≫
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.dkHammockComparisonIso (cofibrantAlgebraRelativeCategory A) X Y).hom ≫
         AnodyneHomotopy.anodyneQ.map (cofibrantAlgebraHammockInclusionMap A X Y) := by
   have := Hammock.anodyneQ_map_isIso_of_weak
-    (freeHammockDiagonalComparison (cofibrantAlgebraRelativeCategory A) X Y)
-    (freeHammockDiagonalComparison_isWeakHomotopyEquivalence
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalComparison (cofibrantAlgebraRelativeCategory A) X Y)
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalComparison_isWeakHomotopyEquivalence
       (cofibrantAlgebraRelativeCategory A) X Y)
   apply (cancel_epi (AnodyneHomotopy.anodyneQ.map
-    (freeHammockDiagonalComparison (cofibrantAlgebraRelativeCategory A) X Y))).mp
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalComparison (cofibrantAlgebraRelativeCategory A) X Y))).mp
   rw [cofibrantAlgebraDKHammockComparisonIso_fac, ← Category.assoc,
-    dkHammockComparisonIso_fac, ← Functor.map_comp]
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.dkHammockComparisonIso_fac, ← Functor.map_comp]
   rfl
 
 end SerrePositivity.EInfinity.BarrattEccles

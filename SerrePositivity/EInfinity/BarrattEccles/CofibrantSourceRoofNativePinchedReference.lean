@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantSourceRoofEvaluationImage
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantSourceRoofGeometricLeftCell
-public import SerrePositivity.EInfinity.FrameHom.AnodyneFamilyHomotopy
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.AnodyneFamilyHomotopy
 
 /-!
 # 元の指定次数 native roof の pinched 像と保存済み実基準射
@@ -21,7 +21,7 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory Limits Opposite SSet
 open SerrePositivity.InfinityCategories
-open SerrePositivity.SimplicialModel SimplicialLocalization
+open SerrePositivity.SimplicialModel _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : CofibrantAlgebra A)
   (b : (cofibrantSourceRoofTarget A X Y) _⦋0⦌)
@@ -35,7 +35,7 @@ def cofibrantSourceRoofProductCommaNativePinchedMap :
       (show (cofibrantAlgebraRelativeCategory A).category from
         cofibrantSourceRoofDegreeAlgebra A X Y b)
       (show (cofibrantAlgebraRelativeCategory A).category from Y)) ≫
-    kanHammockHomPinchedMap (cofibrantAlgebraRelativeCategory A)
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockHomPinchedMap (cofibrantAlgebraRelativeCategory A)
       (show (cofibrantAlgebraRelativeCategory A).category from
         cofibrantSourceRoofDegreeAlgebra A X Y b)
       (show (cofibrantAlgebraRelativeCategory A).category from Y)
@@ -64,7 +64,7 @@ lemma cofibrantSourceRoofProductCommaNativePinchedMap_reference_Q :
 
 lemma cofibrantSourceRoofProductCommaNativePinchedMap_weak :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (cofibrantSourceRoofProductCommaNativePinchedMap A X Y b) := by
-  apply FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.isWeakHomotopyEquivalence
   rw [cofibrantSourceRoofProductCommaNativePinchedMap_reference_Q]
   exact Hammock.anodyneQ_map_isIso_of_weak _
     (cofibrantSourceRoofProductCommaReferenceMap_weak A X Y b)
@@ -80,7 +80,7 @@ def cofibrantSourceRoofProductCommaNativeIntervalCell : _root_.SerrePositivity.I
 lemma cofibrantSourceRoofProductCommaNativeIntervalCell_eq_reference :
     cofibrantSourceRoofProductCommaNativeIntervalCell A X Y b =
       cofibrantSourceRoofProductReferenceIntervalCell A X Y b :=
-  FrameHom.pinchedFamily_intervalHom_eq_of_anodyneQ_eq _ _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedFamily_intervalHom_eq_of_anodyneQ_eq _ _
     (cofibrantSourceRoofProductCommaNativePinchedMap_reference_Q A X Y b)
 
 lemma cofibrantSourceRoofProductReference_triangle_of_native_triangle

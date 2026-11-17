@@ -18,7 +18,7 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 namespace SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardContextTrivialCofibration
-open CategoryTheory HomotopicalAlgebra
+open CategoryTheory _root_.HomotopicalAlgebra
 open _root_.SerrePositivity.SimplicialModel
 
 variable {C : Type u} [Category.{v} C] [ModelCategory C]
@@ -47,14 +47,14 @@ def counit : replacement a b n m X Y cof ⋙ inclusion a b n m X Y ⟶
 include cof in
 lemma inclusion_localized_isIso : IsIso (AnodyneHomotopy.anodyneQ.map
     (nerveMap (inclusion a b n m X Y))) :=
-  _root_.SerrePositivity.EInfinity.FrameHom.FullyFaithfulNerveRetraction.of_counit (inclusion a b n m X Y)
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FullyFaithfulNerveRetraction.of_counit (inclusion a b n m X Y)
     (replacement a b n m X Y cof) (counit a b n m X Y cof)
 
 include cof in
 lemma inclusion_isWeakHomotopyEquivalence :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
       (nerveMap (inclusion a b n m X Y)) :=
-  _root_.SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.isWeakHomotopyEquivalence _
     (inclusion_localized_isIso a b n m X Y cof)
 
 end SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardContextTrivialCofibration
