@@ -1980,3 +1980,5 @@ import SerrePositivity.AlgebraicGeometry.PairedPerfectCechBaseChangeRows
 import SerrePositivity.AlgebraicGeometry.PerfectCechUniversalAffineRefinement
 
 import SerrePositivity.AlgebraicGeometry.FppfComparisonBaseChangeDescent
+
+import SerrePositivity.AlgebraicGeometry.AffineFppfCompositeTupleTotal
