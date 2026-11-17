@@ -36,7 +36,7 @@ stage-ii/kerodon-layout-w1-stage3-reverse-imports.md,stage-ii/bulk/kerodon-layou
 stage-ii/kerodon-layout-w1.md,stage-ii/bulk/kerodon-layout-w1.md,一括（KL-W1 のチャット）,すぐ（一括は停止中）,
 stage-ii/lane-goals-2026-11-14.md,stage-ii/lane-goals-2026-11-14.md,共通（正本、動かさない）,—,
 stage-ii/lane-starts.md,stage-ii/lane-starts.md,共通（正本、動かさない）,—,
-stage-ii/organize-einfinity-general.md,stage-ii/consolidation/organize-einfinity-general.md,③-b（OE-W1）・⑦,OE-W1 の段 1 の停止点の後,
+stage-ii/organize-einfinity-general.md,stage-ii/consolidation/organize-einfinity-general.md,③-b（OE-W1）・⑦,すぐ（段 1 を 11-17 に取り込み）,
 stage-ii/p0-plan-draft.md,stage-ii/p0/p0-plan-draft.md,P⁰ と地図（⑤a・⑤d）,すぐ（紙は停止済み）,
 stage-ii/p0-section-map.md,stage-ii/p0/p0-section-map.md,P⁰ と地図（⑤a・⑤d）,すぐ（紙は停止済み）,
 stage-ii/paper-blueprint.md,stage-ii/p0/paper-blueprint.md,P⁰ と地図（⑤a・⑤d）,すぐ（紙は停止済み）,
@@ -246,3 +246,5 @@ stage-ii-plan-draft.md,stage-ii-plan-draft.md,正本（動かさない）,—,
 infinity-lanes/,archive/stage-i/infinity-lanes/,段階 I のレーン,すぐ,§5（kst-lanes は K の再開の前に k-restart-draft から参照を確かめる）
 kst-lanes/,archive/stage-i/kst-lanes/,段階 I のレーン,すぐ,§5（kst-lanes は K の再開の前に k-restart-draft から参照を確かめる）
 future/,future/,将来の課題,—,動かさない
+stage-ii/report-organize-einfinity.md,stage-ii/consolidation/report-organize-einfinity.md,③-b（OE-W1）・⑦,すぐ（段 1 を 11-17 に取り込み）,
+stage-ii/organize-einfinity-w1,evidence/consolidation/organize-einfinity-w1,③-b（OE-W1）・⑦,すぐ（段 1 を 11-17 に取り込み）,検証の証拠と移動表の json（§4）。所在の更新の道具が読むので目録に残す

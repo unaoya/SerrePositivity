@@ -3,7 +3,7 @@ from pathlib import Path
 from graphlib import TopologicalSorter
 from collections import defaultdict,deque
 import argparse,gzip,hashlib,json,subprocess,sys
-p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--before',type=Path);a=p.parse_args();root=a.root.resolve();base=root/'formalization-plans/stage-ii/organize-einfinity-w1';sys.path.insert(0,str(root/'scripts/refactor'));from layer_check import imports
+p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--before',type=Path);a=p.parse_args();root=a.root.resolve();base=root/'evidence/consolidation/organize-einfinity-w1';sys.path.insert(0,str(root/'scripts/refactor'));from layer_check import imports
 paths=subprocess.check_output(['git','ls-files','-z','--','SerrePositivity','SerrePositivity.lean'],cwd=root).decode().split('\0');g={}
 for path in paths:
  if not path.endswith('.lean') or path.startswith('SerrePositivity/Archive/'):continue

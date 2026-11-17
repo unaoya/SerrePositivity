@@ -2,7 +2,7 @@
 
 ## 現在地（2026-11-17）
 
-- レーン：③-b ∞ 供給 b（枝 `math/inf-supply-b`）。指示書：[inf-supply-w2.md](inf-supply-w2.md)。この指示書の作業は §306 で停止し、レーンは別の指示書 [OE-W1](../organize-einfinity-general.md) に移った（この報告には記載なし）。
+- レーン：③-b ∞ 供給 b（枝 `math/inf-supply-b`）。指示書：[inf-supply-w2.md](inf-supply-w2.md)。この指示書の作業は §306 で停止し、レーンは別の指示書 [OE-W1](../consolidation/organize-einfinity-general.md) に移った（この報告には記載なし）。
 - 今の段：3b-4（CAlg_A と点つき Kan 複体）。R03h・R03d と停止点 3b-4a は未完、R06〜R10 は未着手。D81（CAlg を HA 2〜3 章の方向で作る）により停止（§306.1）。
 - 一覧：済み 36／全体 36（うち追加 1）。3b-4：済み 12／全体 25（うち追加 13）（§306.4）。
 - 最新の検証済みコミット：bc48da8f4（§305 の三本まで。対象ビルド 374・小監査とも終了 0）（§306.1）。

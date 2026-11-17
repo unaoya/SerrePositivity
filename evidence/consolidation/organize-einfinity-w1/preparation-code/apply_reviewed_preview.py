@@ -2,7 +2,7 @@
 from pathlib import Path
 import argparse,csv,hashlib,json,os,subprocess
 from reviewed_ilean import previews as reviewed_ilean_previews
-p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True);p.add_argument('--before',type=Path,required=True);p.add_argument('--preview',type=Path,required=True);p.add_argument('--progress',type=Path,required=True);p.add_argument('--layers',type=Path,required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--apply',action='store_true');a=p.parse_args();root=a.root.resolve();before=a.before.resolve();base=root/'formalization-plans/stage-ii/organize-einfinity-w1';sha=lambda b:hashlib.sha256(b).hexdigest();read=lambda p:json.loads(p.read_text())
+p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True);p.add_argument('--before',type=Path,required=True);p.add_argument('--preview',type=Path,required=True);p.add_argument('--progress',type=Path,required=True);p.add_argument('--layers',type=Path,required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--apply',action='store_true');a=p.parse_args();root=a.root.resolve();before=a.before.resolve();base=root/'evidence/consolidation/organize-einfinity-w1';sha=lambda b:hashlib.sha256(b).hexdigest();read=lambda p:json.loads(p.read_text())
 assert subprocess.check_output(['git','branch','--show-current'],cwd=root,text=True).strip()=='refactor/organize-einfinity'
 assert subprocess.check_output(['git','rev-parse','HEAD'],cwd=before,text=True).strip()=='30ae8948f339beec42d9340feb02f2031c22c72b'
 core=set(read(Path('/private/tmp/oe-w1-reference-candidates/core-files.json')));stable=read(base/'preparation/unchanged-scope-files.json');required_core=len(core)-len(stable)

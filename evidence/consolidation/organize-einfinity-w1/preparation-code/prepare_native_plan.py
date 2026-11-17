@@ -2,7 +2,7 @@
 from pathlib import Path
 from collections import defaultdict,Counter
 import argparse,csv,json,sys,re
-p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True);p.add_argument('--owners',type=Path,required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--original-root',type=Path,required=True);a=p.parse_args();root=a.root.resolve();base=root/'formalization-plans/stage-ii/organize-einfinity-w1';out=a.output.resolve();out.mkdir(parents=True,exist_ok=True)
+p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True);p.add_argument('--owners',type=Path,required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--original-root',type=Path,required=True);a=p.parse_args();root=a.root.resolve();base=root/'evidence/consolidation/organize-einfinity-w1';out=a.output.resolve();out.mkdir(parents=True,exist_ok=True)
 sys.path.insert(0,str(root/'scripts/refactor'));from klw1_namespace import Migration,rename_prefix
 files=list(csv.DictReader((base/'stage1-modules.csv').open()));by={r['old_module']:r for r in files};data=json.loads(a.owners.read_text());assert set(data['modules'])==set(by) and data['count']==len(data['declarations'])
 modules={m:r['new_module'] for m,r in by.items()};namespaces={m:{r['old_namespace']:r['new_namespace']} for m,r in by.items() if r['action']=='move'};rows=[];owners=[];prefixes=defaultdict(set)

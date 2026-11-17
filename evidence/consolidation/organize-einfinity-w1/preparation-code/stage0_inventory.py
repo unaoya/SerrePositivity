@@ -1,7 +1,7 @@
 from pathlib import Path
 from collections import Counter
 import subprocess,json,csv,re,hashlib
-root=Path.cwd();out=root/'formalization-plans/stage-ii/organize-einfinity-w1'
+root=Path.cwd();out=root/'evidence/consolidation/organize-einfinity-w1'
 def git(*args):return subprocess.check_output(['git',*args],text=True).strip()
 base=json.loads((out/'stage0-summary.json').read_text())['base'] if (out/'stage0-summary.json').exists() else git('rev-parse','HEAD');manifest=json.loads((root/'formalization-plans/stage-ii/is-w2-be-20261114-modules.json').read_text());scope=set(manifest)
 groups={

@@ -3,7 +3,7 @@ from pathlib import Path
 from collections import Counter
 import argparse,csv,json,re,sys,gzip
 from source_names import declarations
-p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--applied',action='store_true');p.add_argument('--owners',type=Path);a=p.parse_args();root=a.root.resolve();base=root/'formalization-plans/stage-ii/organize-einfinity-w1';rows=list(csv.DictReader((base/'stage1-modules.csv').open()));linkroot='/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68'
+p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--applied',action='store_true');p.add_argument('--owners',type=Path);a=p.parse_args();root=a.root.resolve();base=root/'evidence/consolidation/organize-einfinity-w1';rows=list(csv.DictReader((base/'stage1-modules.csv').open()));linkroot='/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68'
 
 if a.applied and not a.owners:p.error('--applied requires observed after-owner inventory')
 owner_file=a.owners or base/'preparation/native-owners-before.json.gz'

@@ -9,7 +9,7 @@ for record in left['records']:
  row={k:record[k] for k in fields};row['module']=target_module(row['module'],row['declaration']);row['declaration']=rename(row['declaration'],rules);before.append(row)
 for record in right['records']:
  row={k:record[k] for k in fields};row['declaration']=rename(row['declaration'],rules);after.append(row)
-review=load(root/'formalization-plans/stage-ii/organize-einfinity-w1/preparation/citation-review-all-native.json')['records'];editions={r['key']:r['edition'] for r in load(root/'research/bibliography.json')['references']};additions=[]
+review=load(root/'evidence/consolidation/organize-einfinity-w1/preparation/citation-review-all-native.json')['records'];editions={r['key']:r['edition'] for r in load(root/'research/bibliography.json')['references']};additions=[]
 for item in review:
  if item['existing_source_attribute']:continue
  assert item['key']=='kerodon' and item['status']=='partial'

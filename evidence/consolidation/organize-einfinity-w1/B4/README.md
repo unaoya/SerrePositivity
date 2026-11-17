@@ -18,7 +18,7 @@
 自分の枝の検証済みをコミットし、未検証の下書きは作業木に保持してよい。mainのこの整理を取り込む**前**に、自分の枝で追加・変更したLean（draftsを除く）をJSON配列`files`へ置く。draftsの文字列影響は別に記録する。`bulk`は検収済みの整理枝の作業木、`follow`は新しい一時ディレクトリの絶対パス。
 
 ```sh
-plan="$bulk/formalization-plans/stage-ii/organize-einfinity-w1/namespace-rewrite-map.json"
+plan="$bulk/evidence/consolidation/organize-einfinity-w1/namespace-rewrite-map.json"
 zsh scripts/refactor/with_build_lock.sh --class impl --wait 3600 -- \
   python3 "$bulk/scripts/refactor/bulk_namespace.py" collect \
   --root "$PWD" --files "$files" --output "$follow/before"

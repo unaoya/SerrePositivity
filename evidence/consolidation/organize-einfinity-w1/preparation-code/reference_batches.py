@@ -1,7 +1,7 @@
 """Finite capture batches: one ticket at a time; release before preview/review."""
 from pathlib import Path
 import argparse,json,subprocess,sys,time
-p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True);p.add_argument('--slots',type=int,default=40);a=p.parse_args();root=a.root.resolve();code=root/'formalization-plans/stage-ii/organize-einfinity-w1/preparation-code';out=Path('/private/tmp/oe-w1-refs-before');plan=root/'formalization-plans/stage-ii/organize-einfinity-w1/namespace-rewrite-map.json'
+p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True);p.add_argument('--slots',type=int,default=40);a=p.parse_args();root=a.root.resolve();code=root/'evidence/consolidation/organize-einfinity-w1/preparation-code';out=Path('/private/tmp/oe-w1-refs-before');plan=root/'evidence/consolidation/organize-einfinity-w1/namespace-rewrite-map.json'
 for slot in range(a.slots):
  progress=out/'progress.json'
  if progress.exists() and json.loads(progress.read_text()).get('complete'):print('Complete',flush=True);break

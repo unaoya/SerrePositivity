@@ -29,7 +29,7 @@
 | レーン | 状態（11-17） | 指示書 | 報告 |
 | --- | --- | --- | --- |
 | ③-a ∞ 供給 a | 5∞-1（S1・S8、外枠 26,000）。choose の全列挙の紙の後に再開 | [stage-ii/inf-supply-w1.md](stage-ii/inf-supply-w1.md) | [stage-ii/report-bs-infinity-a1-stage0.md](stage-ii/report-bs-infinity-a1-stage0.md)、[stage-ii/report-inf-supply-w1.md](stage-ii/report-inf-supply-w1.md)（3b-3 まで） |
-| ③-b ∞ 供給 b | OE-W1 段 1（IS-W2 は 3b-4 で停止、D81） | [stage-ii/organize-einfinity-general.md](stage-ii/organize-einfinity-general.md)、[stage-ii/inf-supply-b/inf-supply-w2.md](stage-ii/inf-supply-b/inf-supply-w2.md) | [stage-ii/inf-supply-b/report-inf-supply-w2.md](stage-ii/inf-supply-b/report-inf-supply-w2.md) |
+| ③-b ∞ 供給 b | OE-W1 段 1（IS-W2 は 3b-4 で停止、D81） | [stage-ii/organize-einfinity-general.md](stage-ii/consolidation/organize-einfinity-general.md)、[stage-ii/inf-supply-b/inf-supply-w2.md](stage-ii/inf-supply-b/inf-supply-w2.md) | [stage-ii/inf-supply-b/report-inf-supply-w2.md](stage-ii/inf-supply-b/report-inf-supply-w2.md) |
 | ⑥ スキーム論 | 2g-2（外枠 23,000）、補題の単位の計画の紙 | [stage-ii/scheme-w1.md](stage-ii/scheme-w1.md) | [stage-ii/scheme-w1-2g-2-report.md](stage-ii/scheme-w1-2g-2-report.md) ほか（停止点の後に `stage-ii/scheme/` へ） |
 | 一括（KL-W1 のチャット） | 閉じた（11-17、HT04 まで main 取り込み済み） | [stage-ii/bulk/bulk-5inf3a.md](stage-ii/bulk/bulk-5inf3a.md)、[stage-ii/bulk/kerodon-layout-w1.md](stage-ii/bulk/kerodon-layout-w1.md) | [stage-ii/bulk/report-bulk-w1.md](stage-ii/bulk/report-bulk-w1.md) |
 | ⑤a BS 実装 | 閉じた（11-17。枝はタグ `archive/math-bs-impl-2026-11-17`） | [bhatt-scholze/instructions/bhatt-scholze-codex-w16.md](bhatt-scholze/instructions/bhatt-scholze-codex-w16.md) | [bhatt-scholze/reports/report-codex-w16.md](bhatt-scholze/reports/report-codex-w16.md) |

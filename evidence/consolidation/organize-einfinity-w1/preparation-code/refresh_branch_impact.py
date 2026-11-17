@@ -1,7 +1,7 @@
 """Read other lane refs/worktrees without changing them; refresh literal B4 impact."""
 from pathlib import Path
 import argparse,csv,json,re,subprocess,hashlib
-p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--include-active-worktrees',action='store_true');a=p.parse_args();root=a.root.resolve();base=root/'formalization-plans/stage-ii/organize-einfinity-w1';old=json.loads((base/'branch-impact.json').read_text());rows=list(csv.DictReader((base/'stage1-modules.csv').open()));needles={r['old_module'] for r in rows if r['action']=='move'};needles.update(r['old_namespace'] for r in rows if r['action']=='move');needles.update(r['old_module'].rsplit('.',1)[-1] for r in rows if r['id']=='OE05')
+p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--include-active-worktrees',action='store_true');a=p.parse_args();root=a.root.resolve();base=root/'evidence/consolidation/organize-einfinity-w1';old=json.loads((base/'branch-impact.json').read_text());rows=list(csv.DictReader((base/'stage1-modules.csv').open()));needles={r['old_module'] for r in rows if r['action']=='move'};needles.update(r['old_namespace'] for r in rows if r['action']=='move');needles.update(r['old_module'].rsplit('.',1)[-1] for r in rows if r['id']=='OE05')
 regex=re.compile('|'.join(re.escape(s) for s in sorted(needles,key=len,reverse=True))+r'|\b(?:FrameHom|FrameArrows|HomotopyWeight|SimplicialLocalization|AnodyneWeakDetection)\b|(?<![\w.])HomotopicalAlgebra\b');results={}
 def git(where,*args):return subprocess.check_output(['git',*args],cwd=where,text=True).strip()
 branches=dict(old['branches'])

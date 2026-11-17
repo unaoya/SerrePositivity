@@ -1,6 +1,6 @@
 from pathlib import Path
 import csv,json,re,subprocess,hashlib
-out=Path('formalization-plans/stage-ii/organize-einfinity-w1');rows=list(csv.DictReader((out/'stage1-modules.csv').open()))
+out=Path('evidence/consolidation/organize-einfinity-w1');rows=list(csv.DictReader((out/'stage1-modules.csv').open()))
 from source_names import declarations
 names=[]
 for r in rows:

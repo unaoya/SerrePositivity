@@ -4,7 +4,7 @@ No expression hashing/comparison logic is changed. No ordinal pairing is used.
 from pathlib import Path
 from collections import defaultdict
 import argparse,json,sys,hashlib,re
-p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True);p.add_argument('--before',type=Path,required=True);p.add_argument('--after',type=Path,required=True);p.add_argument('--before-root',type=Path,required=True);p.add_argument('--output',type=Path,required=True);a=p.parse_args();root=a.root.resolve();base=root/'formalization-plans/stage-ii/organize-einfinity-w1';a.output.mkdir(parents=True,exist_ok=True);plan=json.loads((base/'namespace-rewrite-map.json').read_text());sys.path.insert(0,str(root/'scripts/refactor'));from klw1_namespace import rename_prefix
+p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True);p.add_argument('--before',type=Path,required=True);p.add_argument('--after',type=Path,required=True);p.add_argument('--before-root',type=Path,required=True);p.add_argument('--output',type=Path,required=True);a=p.parse_args();root=a.root.resolve();base=root/'evidence/consolidation/organize-einfinity-w1';a.output.mkdir(parents=True,exist_ok=True);plan=json.loads((base/'namespace-rewrite-map.json').read_text());sys.path.insert(0,str(root/'scripts/refactor'));from klw1_namespace import rename_prefix
 before=json.loads(a.before.read_text());after=json.loads(a.after.read_text());mm={m:plan['modules'].get(m,m) for m in before['modules']};assert set(mm.values())==set(after['modules']);assert len(mm)==len(set(mm.values()))
 actual={};duplicates=[]
 for row in after['declarations']:

@@ -3,7 +3,7 @@ This does not apply anything to the working tree or alter a mathematical proof.
 """
 from pathlib import Path
 import argparse,csv,json,re,sys,hashlib
-p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True);p.add_argument('--preview',type=Path,required=True);p.add_argument('--before',type=Path,required=True);a=p.parse_args();root=a.root.resolve();base=root/'formalization-plans/stage-ii/organize-einfinity-w1';mm=json.loads((base/'module-map.json').read_text());plan=json.loads((base/'namespace-rewrite-map.json').read_text());public={r['old']:r['new'] for r in plan['rows'] if not r['old'].startswith('_private.')};sources={r['old_module']:r for r in csv.DictReader((base/'stage1-modules.csv').open())};records=[]
+p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True);p.add_argument('--preview',type=Path,required=True);p.add_argument('--before',type=Path,required=True);a=p.parse_args();root=a.root.resolve();base=root/'evidence/consolidation/organize-einfinity-w1';mm=json.loads((base/'module-map.json').read_text());plan=json.loads((base/'namespace-rewrite-map.json').read_text());public={r['old']:r['new'] for r in plan['rows'] if not r['old'].startswith('_private.')};sources={r['old_module']:r for r in csv.DictReader((base/'stage1-modules.csv').open())};records=[]
 original={str(p.relative_to(a.preview)):hashlib.sha256(p.read_bytes()).hexdigest() for p in a.preview.rglob('*.lean')}
 sys.path.insert(0,str(root/'scripts/refactor'));from layer_check import code_only
 # All 99 original module docstrings receive exactly the same stopped-route status.

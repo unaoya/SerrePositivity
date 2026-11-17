@@ -5,7 +5,7 @@ from pathlib import Path
 from collections import defaultdict,Counter
 import argparse,hashlib,json,sys
 p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True);p.add_argument('--before',type=Path,required=True);p.add_argument('--captures',type=Path,nargs='+',required=True);p.add_argument('--output',type=Path,required=True);a=p.parse_args();root=a.root.resolve();sys.path.insert(0,str(root/'scripts/refactor'));import klw1_namespace as K
-base=root/'formalization-plans/stage-ii/organize-einfinity-w1';plan=K.Migration(json.loads((base/'namespace-rewrite-map.json').read_text()));records=[];pending=[];seen=set();sha=lambda b:hashlib.sha256(b).hexdigest()
+base=root/'evidence/consolidation/organize-einfinity-w1';plan=K.Migration(json.loads((base/'namespace-rewrite-map.json').read_text()));records=[];pending=[];seen=set();sha=lambda b:hashlib.sha256(b).hexdigest()
 for folder in a.captures:
  for rp in sorted(folder.glob('*.receipt.json')):
   receipt=json.loads(rp.read_text());assert receipt['returncode']==0;path=receipt['source'];assert path not in seen;seen.add(path);cap=rp.with_name(rp.name.removesuffix('.receipt.json')+'.json');assert sha(cap.read_bytes())==receipt['capture_sha256'];data=K.checked_capture(a.before,path,cap);source=data['source'].encode();edits={}
