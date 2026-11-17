@@ -621,4 +621,72 @@ private lemma pointedIsoOfProjectedPrism {A : SSet.{u+1}}
     (l.map ((truncation 2).map ((ihom A).map pointedSpaceProjection))) = d.hom
   rw [hm,hr]
 
+
+/-- 指定pullbackの二射影による、元の相対切断の底変換の長方形。
+HTT §3.3.2・Kerodon Tag 028Tの指定構成の、この単体圏模型での特殊な照合。 -/
+@[cite HTT "3.3.2" (partial := special) "初頂点pullbackの指定二座標と相対切断の底変換の合成則。"]
+private lemma leftStraighteningBaseChange_native_pullback_square :
+    ∀ {E B D : SSet.{u}} [Quasicategory B] [Quasicategory D]
+    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B),
+    let lB := transportSimplexFirstVertexMap B
+    let lD := transportSimplexFirstVertexMap D
+    let H := transportSimplexFunctor k
+    let q := pullback.snd p k
+    let p₀ := pullback.snd p lB
+    let r := pullback.snd q lD
+    let d := leftStraighteningBaseChangePullbackData p k
+    Functor.whiskerLeft H
+      ((relativeSectionBaseChangeComparison lB (strictTransportDomains (TransportSimplexCategory B))).app
+        (leftFibrationObjectOf p)) ≫
+      relativeSectionDiagramComparison (transportSimplexUnderBaseChangeTransformation k)
+        (leftFibrationObjectOf p) =
+    pullbackStrictComparison p₀ r d.val H d.property.2.2.1 ≫
+      (relativeSectionBaseChangeComparison lD (strictTransportDomains (TransportSimplexCategory D))).app
+        (leftFibrationObjectOf q) ≫
+      (relativeSectionBaseChangeComparison k (transportSimplexUnderDomains D)).app
+        (leftFibrationObjectOf p) := by
+  intro E B D hB hD p hp k
+  dsimp only
+  let lB := transportSimplexFirstVertexMap B
+  let lD := transportSimplexFirstVertexMap D
+  let H := transportSimplexFunctor k
+  let q := pullback.snd p k
+  let p₀ := pullback.snd p lB
+  let r := pullback.snd q lD
+  let d := leftStraighteningBaseChangePullbackData p k
+  let α := pullbackStrictComparison p₀ r d.val H d.property.2.2.1
+  apply NatTrans.ext
+  funext j
+  let aB := nerveMap (Under.forget (H.obj j))
+  let aD := nerveMap (Under.forget j)
+  let f := (transportSimplexUnderBaseChangeTransformation k).app (Opposite.op j)
+  change relativeFunctorBaseChangeForward p lB aB ≫ relativeFunctorOverPre p f =
+    α.app j ≫ relativeFunctorBaseChangeForward q lD aD ≫
+      relativeFunctorBaseChangeForward p k (aD ≫ lD)
+  apply relativeFunctorUncurry_injective p ((aD ≫ lD) ≫ k)
+  have hb := relativeFunctorBaseChangeForward_uncurry p lB aB (𝟙 _)
+  simp only [Category.id_comp] at hb
+  have hpre := relativeFunctorOverPre_uncurry p f
+    (relativeFunctorBaseChangeForward p lB aB)
+  have hα := pullbackStrictComparison_uncurry p₀ r d.val H d.property.2.2.1 j (𝟙 _)
+  simp only [Category.id_comp] at hα
+  have hd : relativeFunctorUncurry (α.app j) ≫
+      pullback.fst q lD ≫ pullback.fst p k =
+      ((nerveMap (Under.post H)) ▷ relativeFunctorSpace p₀ aB) ≫
+        relativeFunctorUncurry (𝟙 _) ≫ pullback.fst p lB := by
+    calc
+      _ = (relativeFunctorUncurry (α.app j) ≫ d.val) ≫ pullback.fst p lB := by
+        rw [Category.assoc, d.property.1]
+      _ = _ := congrArg (fun z => z ≫ pullback.fst p lB) hα
+  have hrhs : relativeFunctorUncurry
+      (α.app j ≫ relativeFunctorBaseChangeForward q lD aD ≫
+        relativeFunctorBaseChangeForward p k (aD ≫ lD)) =
+      relativeFunctorUncurry (α.app j) ≫ pullback.fst q lD ≫ pullback.fst p k := by
+    rw [← Category.assoc, relativeFunctorBaseChangeForward_uncurry,
+      relativeFunctorBaseChangeForward_uncurry, Category.assoc]
+  rw [hpre, hb, hrhs]
+  have hf : f.left = nerveMap (Under.post H) := rfl
+  rw [hf]
+  simpa only [Category.assoc] using hd.symm
+
 end SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations

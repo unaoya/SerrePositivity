@@ -5,8 +5,8 @@
 再採番せず、ここにある各署名IDを一つずつ数える。旧「5／8」は以後この台帳の進捗に使わない。
 小さい既存構成の法則・証明の分割は親署名内に記録するが、上端200行超は独立署名。
 
-署名47本＝検証済み25本＋未完20本＋別停止点へ切り離す2本。
-一覧：済み 25／全体 47（うち追加 12、別停止点 2）。
+署名50本＝検証済み28本＋未完20本＋別停止点へ切り離す2本。
+一覧：済み 28／全体 50（うち追加 15、別停止点 2）。
 追加1は11-17夕承認のP3-C1P。着手判定22,975＋800＝23,775行。以前の35署名の表は履歴として保持。
 
 ## 最新の検証記録（P3-B1）
@@ -1404,3 +1404,111 @@ P3-C1PNG：二ファイル計320行、対象ビルド・所有31宣言の小監�
 ```
 
 依存P3-C1PNB。素200〜350行、補正400〜700行。完全な既存参照はJSON。
+
+
+## P3-C1PNU（元のunder制限と単体切断の底変換の長方形）
+
+```lean
+∀ {E B D : SSet.{u}} (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B),
+    simplexSectionNativeBaseChange p k ≫
+      Functor.whiskerLeft (transportSimplexFunctor k)
+        ((nativeUnderJointComparison B).app (leftFibrationObjectOf p)) ≫
+      relativeSectionDiagramComparison (transportSimplexUnderBaseChangeTransformation k)
+        (leftFibrationObjectOf p) =
+    (nativeUnderJointComparison D).app (leftFibrationObjectOf (pullback.snd p k)) ≫
+      (relativeSectionBaseChangeComparison k (transportSimplexUnderDomains D)).app
+        (leftFibrationObjectOf p)
+```
+
+依存：P3-C1PNC・P3-C1PNG・P3-B2c。素200〜350行、補正400〜700行。
+既存参照：
+- `transportSimplexUnderTransformation_baseChange` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/SimplexUnderBaseChangeNaturality.lean:88
+- `relativeFunctorBaseChangeForward_overPre` @ SerrePositivity/InfinityCategories/Project/FibrationAuxiliaries/FunctorCategories/RelativeFunctorBaseChangeNaturality.lean:89
+- `relativeFunctorOverPre_comp` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/RelativeFunctorOverPrecomposition.lean:56
+- `simplexSectionNativeTarget_eq` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SimplexSectionNativeBaseChange.lean:41
+
+HTT §3.3.2・Kerodon §5.6（Tag 028T）の指定構成の法則。元の制限と底変換の合成の特殊な照合。
+新しい数学・仮定・chooseなし。元の定義域等式による移送、既存のunder三角形、底変換と制限の可換式だけを使用する。
+
+
+## P3-C1PNL（指定pullbackの二つの底変換との長方形）
+
+```lean
+∀ {E B D : SSet.{u}} [Quasicategory B] [Quasicategory D]
+    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B),
+    let lB := transportSimplexFirstVertexMap B
+    let lD := transportSimplexFirstVertexMap D
+    let H := transportSimplexFunctor k
+    let q := pullback.snd p k
+    let p₀ := pullback.snd p lB
+    let r := pullback.snd q lD
+    let d := leftStraighteningBaseChangePullbackData p k
+    Functor.whiskerLeft H
+      ((relativeSectionBaseChangeComparison lB (strictTransportDomains (TransportSimplexCategory B))).app
+        (leftFibrationObjectOf p)) ≫
+      relativeSectionDiagramComparison (transportSimplexUnderBaseChangeTransformation k)
+        (leftFibrationObjectOf p) =
+    pullbackStrictComparison p₀ r d.val H d.property.2.2.1 ≫
+      (relativeSectionBaseChangeComparison lD (strictTransportDomains (TransportSimplexCategory D))).app
+        (leftFibrationObjectOf q) ≫
+      (relativeSectionBaseChangeComparison k (transportSimplexUnderDomains D)).app
+        (leftFibrationObjectOf p)
+```
+
+依存：P3-C0・P3-B2b。素120〜220行、補正240〜440行。
+既存参照：
+- `pullbackStrictComparison_uncurry` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePointedPrism.lean:330
+- `leftStraighteningBaseChangePullbackData` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePullbackData.lean:27
+- `relativeFunctorBaseChangeForward_uncurry` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/RelativeFunctorBaseChange.lean:58
+- `relativeFunctorOverPre_uncurry` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/RelativeFunctorSquarePost.lean:68
+
+HTT §3.3.2・Kerodon §5.6（Tag 028T）の指定構成の法則。指定pullbackの二座標と相対uncurryの既存の合成則の特殊化。
+既存のαのuncurryの公式を同じ二つの射影へ合成する照合。親ファイルはこの枝の新規ファイルでmainには存在しない。既存本文を変えずprivate補題を追記する。
+
+
+## P3-C1PNR（反転前の指定長方形の実現と相殺）
+
+```lean
+∀ {E B D : SSet.{u}} [Quasicategory B] [Quasicategory D]
+    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B),
+    let U := SSet.uliftFunctor.{u+1,u}
+    let lB := transportSimplexFirstVertexMap B
+    let lD := transportSimplexFirstVertexMap D
+    let H := transportSimplexFunctor k
+    let t := U.map (nerveMap H)
+    let q := pullback.snd p k
+    let p₀ := pullback.snd p lB
+    let r := pullback.snd q lD
+    let d := leftStraighteningBaseChangePullbackData p k
+    let Fh : KanDiagramObject (TransportSimplexCategory D) :=
+      ⟨H ⋙ leftStrictTransportFunctor p₀, trivial⟩
+    let Fr : KanDiagramObject (TransportSimplexCategory D) :=
+      ⟨leftStrictTransportFunctor r, trivial⟩
+    let α : Fh.val ⋙ kanObjectForget ⟶ Fr.val ⋙ kanObjectForget :=
+      pullbackStrictComparison p₀ r d.val H d.property.2.2.1
+    let ν₀ := (FunctorIso.precomp
+        (nativeUnderCoefficientIso p ≪≫ (nativeBaseChangeCoefficientIso p).symm) t).symm ≪≫
+      (simplexSectionBaseChangeCoefficient p k).symm ≪≫
+      nativeUnderCoefficientIso q ≪≫ (nativeBaseChangeCoefficientIso q).symm
+    let hsrc : t ≫ leftStraighteningCandidate p₀ = kanDiagramCoherentNerve Fh.val := by
+      change t ≫ kanDiagramCoherentNerve (leftStrictTransportFunctor p₀) =
+        kanDiagramCoherentNerve (H ⋙ leftStrictTransportFunctor p₀)
+      exact kanDiagramCoherentNerve_precomp H _
+    ν₀.hom = eqToHom (congrArg (fun f => HomotopyCategory.mk (functorVertex f)) hsrc) ≫
+      Truncated.HomotopyCategory.homMk (kanDiagramNaturalTransformationEdge
+        (F := Fh) (G := Fr) α).toTruncated
+```
+
+依存：P3-C1PNU・P3-C1PNL・P3-C1PNH・P3-C1PNC・P3-C1PNG。素180〜300行、補正360〜600行。
+既存参照：
+- `simplexUnderNativeBaseChange_square` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SimplexUnderNativeBaseChange.lean:78
+- `leftStraighteningBaseChange_native_pullback_square` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePointedPrism.lean:628
+- `kanDiagramNaturalTransformationHom_comp` @ SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/KanDiagramNaturalTransformationComposition.lean:43
+- `kanDiagramNaturalTransformationHom_precomp` @ SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/KanDiagramNaturalTransformationPrecomposition.lean:47
+- `simplexSectionBaseChangeCoefficient_native_hom` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SimplexSectionNativeBaseChange.lean:125
+
+HTT §3.3.2・Kerodon §5.6（Tag 028T）の指定構成の法則。上下の元の自然変換の長方形を実現し可逆な底変換を相殺する照合。
+新しい数学・choose・仮定なし。前合成と自然変換の実現の既存法則、指定長方形U/L、同型の相殺だけを使用する。private αの同じ型を保持するため親の枝だけの新規ファイルにprivate補題として追記。
+
+
+P3-C1PNC・U・L：対象3モジュール・所有53宣言の小監査成功、標準三公理のみ。実測160＋119＋68＝347行、累計25,173行。
