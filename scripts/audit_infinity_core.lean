@@ -256,6 +256,29 @@ import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacemen
 import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.AnchorCylinderCoordinates
 import SerrePositivity.InfinityCategories.Project.Entrypoints.Core
 import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.VertexTransport.UniverseEdgeTransport
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.EquivalencePathReplacementNaturality
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.SmallHullCardinal
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.SmallQuasicategoryHull
+import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.SmallHullFactorization
+import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.SmallMarkedQuasicategoryHull
+
+/-- 監査の補助：本体の環境の中で、与えたモジュールから import を辿った閉包（別環境を読み込む代わりに本体の環境で辿る。2026-11-17、A1）。 -/
+open Lean in
+def auditImportClosure (env : Environment) (roots : Array Name) : Array Import := Id.run do
+  let mut todo := roots
+  let mut visited : Std.HashSet Name := {}
+  let mut out : Array Import := #[]
+  while !todo.isEmpty do
+    let m := todo.back!
+    todo := todo.pop
+    if visited.contains m then continue
+    visited := visited.insert m
+    out := out.push { module := m }
+    if let some idx := env.getModuleIdx? m then
+      for imp in env.header.moduleData[idx.toNat]!.imports do
+        todo := todo.push imp.module
+  return out
+
 
 /-!
 概要：Core の明示的な公開宣言の型と公理を監査する。
@@ -3836,10 +3859,8 @@ end InitialCofinalityUniverses
 -- Ind-S (4): 小さい種の内ホーン充填閉包と厳密因子化。
 open Lean in
 run_cmd do
-  let saved ← getEnv
-  let env ← importModules #[{ module := `SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.SmallQuasicategoryHull },
-    { module := `Lean.Util.CollectAxioms }] {}
-  setEnv env
+  let env ← getEnv
+  let closureMods := auditImportClosure env #[`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.SmallQuasicategoryHull]
   let modules := #[`SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.SmallSubcomplexStages,
     `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.SmallInnerHornClosure,
     `SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.SmallSimplicialModel,
@@ -3852,18 +3873,15 @@ run_cmd do
     unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
       throwError "Ind-S small hull: unexpected axioms in {name}: {axioms}"
     count := count + 1
-  setEnv saved
   if count == 0 then throwError "Ind-S small hull: no declarations audited"
   logInfo m!"Ind-S small hull audit passed: {count} declarations."
 
 -- Ind-S marked hull audit
 open Lean in
 run_cmd do
-  let saved ← getEnv
-  let env ← importModules #[{ module := `SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.SmallMarkedQuasicategoryHull },
-    { module := `Lean.Util.CollectAxioms }] {}
-  setEnv env
-  for mod in env.header.modules do
+  let env ← getEnv
+  let closureMods := auditImportClosure env #[`SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.SmallMarkedQuasicategoryHull]
+  for mod in closureMods do
     unless `SerrePositivity |>.isPrefixOf mod.module do continue
     if (mod.module.toString.toLower.splitOn "straightening").length != 1 then
       throwError "Ind-S: forbidden straightening dependency: {mod.module}"
@@ -3877,19 +3895,15 @@ run_cmd do
     unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
       throwError "Ind-S: unexpected axioms in {name}: {axioms}"
     count := count + 1
-  setEnv saved
   if count == 0 then throwError "Ind-S: no declarations audited"
   logInfo m!"Ind-S marked hull audit: {count} declarations."
 
 -- Ind-S small diagram core audit
 open Lean in
 run_cmd do
-  let saved ← getEnv
-  let env ← importModules #[{ module := `SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.SmallHullFactorization },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.EquivalencePathReplacementNaturality },
-    { module := `Lean.Util.CollectAxioms }] {}
-  setEnv env
-  for mod in env.header.modules do
+  let env ← getEnv
+  let closureMods := auditImportClosure env #[`SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.SmallHullFactorization, `SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.EquivalencePathReplacementNaturality]
+  for mod in closureMods do
     unless `SerrePositivity |>.isPrefixOf mod.module do continue
     if (mod.module.toString.toLower.splitOn "straightening").length != 1 then
       throwError "Ind-S: forbidden straightening dependency: {mod.module}"
@@ -3903,18 +3917,15 @@ run_cmd do
     unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
       throwError "Ind-S: unexpected axioms in {name}: {axioms}"
     count := count + 1
-  setEnv saved
   if count == 0 then throwError "Ind-S: no declarations audited"
   logInfo m!"Ind-S small diagram core audit: {count} declarations."
 
 -- Ind-S (7): 内ホーン充填閉包・既存模型・Hull の正則非可算濃度評価。
 open Lean in
 run_cmd do
-  let saved ← getEnv
-  let env ← importModules #[{ module := `SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.SmallHullCardinal },
-    { module := `Lean.Util.CollectAxioms }] {}
-  setEnv env
-  for mod in env.header.modules do
+  let env ← getEnv
+  let closureMods := auditImportClosure env #[`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.SmallHullCardinal]
+  for mod in closureMods do
     let s := mod.module.toString
     if (s.toLower.splitOn "straightening").length != 1 then
       throwError "Ind-S (7): forbidden straightening dependency: {mod.module}"
@@ -3937,7 +3948,6 @@ run_cmd do
         (fun s => (n.toString.splitOn s).length != 1)
     if bad then throwError "Ind-S (7): unexpected extra assumption in {name}"
     count := count + 1
-  setEnv saved
   if count == 0 then throwError "Ind-S (7): no declarations audited"
   logInfo m!"Ind-S inner-horn cardinal audit passed: {count} declarations."
 

@@ -376,6 +376,113 @@ import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndCol
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.LimitConeDiagramComparison
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.ColimitCoconeDiagramComparison
 import Lean.Util.CollectAxioms
+import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.PointedFiberValueNormalization
+import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.KanWeightedUnstraighteningUnit
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CocartesianKanUnstraighteningUnitPoints
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CocartesianKanWeightedFiberRecovery
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CocartesianKanWeightedUnit
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CoherentHomFamilyVertices
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ContractibleFamilyComparison
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ContractiblePrescribedRetraction
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledCompositionDiagonalTransport
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledFactorizationTetrahedronFamily
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledNativeTriangle
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleCoherentEncoder
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleCoherentEncoderDiagonal
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleCoherentEncoderNative
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleCoherentReconstruction
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleEncoderMap
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleEncoderParameterEquality
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleFamilyComparison
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleFamilySpaces
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleFamilyVertices
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleIntervalFaithfulness
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleLongHomFamily
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleNativeReadout
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleNormalizedFamilySupply
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleNormalizedRequest
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTrianglePointParameterMono
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleReadoutMap
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleSplitReduction
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleUniversalLongHom
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleUniversalNative
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleUniversalVertices
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.FactorizationTetrahedronFaces
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.FamilyParameterEquality
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.InnerHornFamilyPrescribedVertices
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.KanIntervalEvaluation
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.KanWeightedUnitFiberRestriction
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.NativeLongHomFamilyVertices
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.SplitTriangleNormalization
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TetrahedronFamilyVertices
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TetrahedronPathFold
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TetrahedronStrictCompositionHom
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleCutMapComposition
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleDiagonalKanExtension
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleDiagonalLabels
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleFamilyHornFromFaces
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleFamilyHornPullback
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleIntervalIsoEvaluation
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleLabelBaseline
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleLabelBaselineRealization
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleLabelBaselineUnits
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleLabelCoordinateSection
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleLabelHomReplacement
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleLabelPathComposition
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleLabelPathCoordinates
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleLiftedCoordinateIdentities
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleLiftedHom
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleLongHomFamilyLift
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleLongHomReplacement
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleNativeCompositeValue
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleNativeFamilyControl
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleNativeHomControl
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleNestedSecondHom
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TrianglePathInterval
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TrianglePrismCoordinateSection
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TrianglePrismLiftedSection
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleRightIntervalHom
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedAssignedHom
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedComposition
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedConstantNative
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedCoordinateNaturality
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedDirectEvaluation
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedDirectHom
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedFamily
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedFamilyDiagonal
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedFamilyShortFaces
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedLongFaithfulness
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedLongHom
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedMiddleCoordinates
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedMiddleEnriched
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedMiddleHom
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedPrismRecovery
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedSimplex
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedSimplexData
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedSimplexDiagonal
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedSimplexNaturality
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedVertexParameter
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleTwoCutCoordinates
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.WholeDiagonalImageObstruction
+import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.RepresentableHomInfinity
+
+/-- 監査の補助：本体の環境の中で、与えたモジュールから import を辿った閉包（別環境を読み込む代わりに本体の環境で辿る。2026-11-17、A1）。 -/
+open Lean in
+def auditImportClosure (env : Environment) (roots : Array Name) : Array Import := Id.run do
+  let mut todo := roots
+  let mut visited : Std.HashSet Name := {}
+  let mut out : Array Import := #[]
+  while !todo.isEmpty do
+    let m := todo.back!
+    todo := todo.pop
+    if visited.contains m then continue
+    visited := visited.insert m
+    out := out.push { module := m }
+    if let some idx := env.getModuleIdx? m then
+      for imp in env.header.moduleData[idx.toNat]!.imports do
+        todo := todo.push imp.module
+  return out
+
 
 #check @SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.TransportIntervalSquare.precomp
 #check @SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentKanRightCompositionTransport_movingIso
@@ -9803,10 +9910,8 @@ run_cmd do
 -- Ind-S: 末尾登録。既存集約を変更せず、新規葉を別環境で監査する。
 open Lean in
 run_cmd do
-  let saved ← getEnv
-  let env ← importModules #[{ module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CocartesianKanWeightedUnit },
-    { module := `Lean.Util.CollectAxioms }] {}
-  setEnv env
+  let env ← getEnv
+  let closureMods := auditImportClosure env #[`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CocartesianKanWeightedUnit]
   let modules := #[`SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.RelativeFunctorDescentOver,
     `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CocartesianKanWeightedUnitData,
     `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CocartesianKanWeightedUnit]
@@ -9818,18 +9923,14 @@ run_cmd do
     unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
       throwError "Ind-S leaf: unexpected axioms in {name}: {axioms}"
     count := count + 1
-  setEnv saved
   if count == 0 then throwError "Ind-S leaf: no declarations audited"
   logInfo m!"Ind-S leaf audit passed: {count} declarations."
 
 -- Ind-S: 全 fiber 回収と指定 unstraightening への実全空間射。
 open Lean in
 run_cmd do
-  let saved ← getEnv
-  let env ← importModules #[{ module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CocartesianKanWeightedFiberRecovery },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.KanWeightedUnstraighteningUnit },
-    { module := `Lean.Util.CollectAxioms }] {}
-  setEnv env
+  let env ← getEnv
+  let closureMods := auditImportClosure env #[`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CocartesianKanWeightedFiberRecovery, `SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.KanWeightedUnstraighteningUnit]
   let modules := #[`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CocartesianKanWeightedFiberRecovery,
     `SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.KanWeightedUnstraighteningUnit]
   let mut count : Nat := 0
@@ -9840,17 +9941,14 @@ run_cmd do
     unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
       throwError "Ind-S leaf: unexpected axioms in {name}: {axioms}"
     count := count + 1
-  setEnv saved
   if count == 0 then throwError "Ind-S leaf: no declarations audited"
   logInfo m!"Ind-S leaf audit passed: {count} declarations."
 
 -- Ind-S: 指定値回収の比較と同じ全空間射の fiber 制限。
 open Lean in
 run_cmd do
-  let saved ← getEnv
-  let env ← importModules #[{ module := `SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.PointedFiberValueNormalization },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.KanWeightedUnitFiberRestriction }, { module := `Lean.Util.CollectAxioms }] {}
-  setEnv env
+  let env ← getEnv
+  let closureMods := auditImportClosure env #[`SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.PointedFiberValueNormalization, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.KanWeightedUnitFiberRestriction]
   let modules := #[`SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.CosliceFiberValueCommonRecovery,
     `SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.PointedFiberValueNormalization,
     `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.KanWeightedUnitFiberRestriction]
@@ -9862,17 +9960,14 @@ run_cmd do
     unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
       throwError "Ind-S leaf: unexpected axioms in {name}: {axioms}"
     count := count + 1
-  setEnv saved
   if count == 0 then throwError "Ind-S leaf: no declarations audited"
   logInfo m!"Ind-S fiber comparison audit passed: {count} declarations."
 
 -- Ind-S (5): 実全族単位・全 fiber 回収・同じ指定点の照合。
 open Lean in
 run_cmd do
-  let saved ← getEnv
-  let env ← importModules #[{ module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CocartesianKanUnstraighteningUnitPoints },
-    { module := `Lean.Util.CollectAxioms }] {}
-  setEnv env
+  let env ← getEnv
+  let closureMods := auditImportClosure env #[`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CocartesianKanUnstraighteningUnitPoints]
   let modules := #[`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.StrictKanUnstraighteningFiberRecovery,
     `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.SmallKanUnstraighteningUnitValue,
     `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CocartesianKanUnstraighteningUnit,
@@ -9885,7 +9980,6 @@ run_cmd do
     unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
       throwError "Ind-S (5): unexpected axioms in {name}: {axioms}"
     count := count + 1
-  setEnv saved
   if count == 0 then throwError "Ind-S (5): no declarations audited"
   logInfo m!"Ind-S (5) audit passed: {count} declarations."
 
@@ -9897,12 +9991,9 @@ run_cmd do
 -- 新規葉の KST 直接 import、EInfinity、F2 の依存は禁止。F1B 監査には登録しない。
 open Lean in
 run_cmd do
-  let saved ← getEnv
-  let env ← importModules #[
-    { module := `SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.RepresentableHomInfinity },
-    { module := `Lean.Util.CollectAxioms }] {}
-  setEnv env
-  for mod in env.header.modules do
+  let env ← getEnv
+  let closureMods := auditImportClosure env #[`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.RepresentableHomInfinity]
+  for mod in closureMods do
     let s := mod.module.toString
     if #["SerrePositivity.EInfinity", "SerrePositivity.InfinityCategories.F2"].any
         (s.startsWith ·) ||
@@ -9935,7 +10026,6 @@ run_cmd do
         found || (n.toString.splitOn "ModelCategory").length != 1) then
       throwError "Ind-S (8): unexpected ModelCategory assumption in {name}"
     count := count + 1
-  setEnv saved
   if count == 0 then throwError "Ind-S (8): no declarations audited"
   logInfo m!"Ind-S coherent representable comparison audit passed: {count} declarations."
 
@@ -9944,17 +10034,9 @@ run_cmd do
 -- この監査は補助葉の検証であり、両仕様命題の供給完了を表さない。
 open Lean in
 run_cmd do
-  let saved ← getEnv
-  let env ← importModules #[
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.FactorizationTetrahedronFaces },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TetrahedronPathFold },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.InnerHornFamilyPrescribedVertices },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TetrahedronStrictCompositionHom },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TetrahedronFamilyVertices },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledFactorizationTetrahedronFamily },
-    { module := `Lean.Util.CollectAxioms }] {}
-  setEnv env
-  for mod in env.header.modules do
+  let env ← getEnv
+  let closureMods := auditImportClosure env #[`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.FactorizationTetrahedronFaces, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TetrahedronPathFold, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.InnerHornFamilyPrescribedVertices, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TetrahedronStrictCompositionHom, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TetrahedronFamilyVertices, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledFactorizationTetrahedronFamily]
+  for mod in closureMods do
     if #["SerrePositivity.EInfinity", "SerrePositivity.InfinityCategories.F2",
         "SerrePositivity.KST"].any (mod.module.toString.startsWith ·) then
       throwError "Ind-S (9)/(9b): forbidden lane dependency: {mod.module}"
@@ -9980,7 +10062,6 @@ run_cmd do
         found || (n.toString.splitOn "ModelCategory").length != 1) then
       throwError "Ind-S (9)/(9b): unexpected ModelCategory assumption in {name}"
     count := count + 1
-  setEnv saved
   if count == 0 then throwError "Ind-S (9)/(9b): no declarations audited"
   logInfo m!"Ind-S fixed-horn and native-Hom coordinate audit passed: {count} declarations."
 
@@ -9988,12 +10069,9 @@ run_cmd do
 -- これらは標準像の必要条件・明示的な非像条件であり、強化仕様の存在証明ではない。
 open Lean in
 run_cmd do
-  let saved ← getEnv
-  let env ← importModules #[
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.WholeDiagonalImageObstruction },
-    { module := `Lean.Util.CollectAxioms }] {}
-  setEnv env
-  for mod in env.header.modules do
+  let env ← getEnv
+  let closureMods := auditImportClosure env #[`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.WholeDiagonalImageObstruction]
+  for mod in closureMods do
     if #["SerrePositivity.EInfinity", "SerrePositivity.InfinityCategories.F2",
         "SerrePositivity.KST"].any (mod.module.toString.startsWith ·) then
       throwError "Ind-S (9) diagonal: forbidden lane dependency: {mod.module}"
@@ -10010,7 +10088,6 @@ run_cmd do
         found || (n.toString.splitOn "ModelCategory").length != 1) then
       throwError "Ind-S (9) diagonal: unexpected ModelCategory assumption in {name}"
     count := count + 1
-  setEnv saved
   if count == 0 then throwError "Ind-S (9) diagonal: no declarations audited"
   logInfo m!"Ind-S whole-diagonal image-condition audit passed: {count} declarations."
 
@@ -10018,17 +10095,9 @@ run_cmd do
 -- encode/read の主仕様の存在は未供給。F2/KST/EInfinity の閉包禁止を継続。
 open Lean in
 run_cmd do
-  let saved ← getEnv
-  let env ← importModules #[
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.SplitTriangleNormalization },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ContractiblePrescribedRetraction },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleLongHomReplacement },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TrianglePathInterval },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.KanIntervalEvaluation },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleNativeHomControl },
-    { module := `Lean.Util.CollectAxioms }] {}
-  setEnv env
-  for mod in env.header.modules do
+  let env ← getEnv
+  let closureMods := auditImportClosure env #[`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.SplitTriangleNormalization, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ContractiblePrescribedRetraction, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleLongHomReplacement, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TrianglePathInterval, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.KanIntervalEvaluation, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleNativeHomControl]
+  for mod in closureMods do
     if #["SerrePositivity.EInfinity", "SerrePositivity.InfinityCategories.F2",
         "SerrePositivity.KST"].any (mod.module.toString.startsWith ·) then
       throwError "Ind-S (9) normalization: forbidden lane dependency: {mod.module}"
@@ -10050,25 +10119,15 @@ run_cmd do
         found || (n.toString.splitOn "ModelCategory").length != 1) then
       throwError "Ind-S (9) normalization: unexpected ModelCategory assumption in {name}"
     count := count + 1
-  setEnv saved
   if count == 0 then throwError "Ind-S (9) normalization: no declarations audited"
   logInfo m!"Ind-S normalization and native-triangle audit passed: {count} declarations."
 
 -- Ind-S (9)：長 Hom の各入力を回収する実二胞体全族（厳密切断は未供給）。
 open Lean in
 run_cmd do
-  let saved ← getEnv
-  let env ← importModules #[
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleNativeFamilyControl },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleLongHomFamilyLift },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledNativeTriangle },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CoherentHomFamilyVertices },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleFamilyVertices },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.NativeLongHomFamilyVertices },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleLongHomFamily },
-    { module := `Lean.Util.CollectAxioms }] {}
-  setEnv env
-  for mod in env.header.modules do
+  let env ← getEnv
+  let closureMods := auditImportClosure env #[`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleNativeFamilyControl, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleLongHomFamilyLift, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledNativeTriangle, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CoherentHomFamilyVertices, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleFamilyVertices, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.NativeLongHomFamilyVertices, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleLongHomFamily]
+  for mod in closureMods do
     if #["SerrePositivity.EInfinity", "SerrePositivity.InfinityCategories.F2",
         "SerrePositivity.KST"].any (mod.module.toString.startsWith ·) then
       throwError "Ind-S (9) native family: forbidden lane dependency: {mod.module}"
@@ -10091,22 +10150,15 @@ run_cmd do
         found || (n.toString.splitOn "ModelCategory").length != 1) then
       throwError "Ind-S (9) native family: unexpected ModelCategory assumption in {name}"
     count := count + 1
-  setEnv saved
   if count == 0 then throwError "Ind-S (9) native family: no declarations audited"
   logInfo m!"Ind-S native-triangle family audit passed: {count} declarations."
 
 -- Ind-S (9)：実全族空間間の longHom と全 native Hom 回収（厳密切断は未供給）。
 open Lean in
 run_cmd do
-  let saved ← getEnv
-  let env ← importModules #[
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleNativeCompositeValue },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleNativeReadout },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleFamilySpaces },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleReadoutMap },
-    { module := `Lean.Util.CollectAxioms }] {}
-  setEnv env
-  for mod in env.header.modules do
+  let env ← getEnv
+  let closureMods := auditImportClosure env #[`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleNativeCompositeValue, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleNativeReadout, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleFamilySpaces, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleReadoutMap]
+  for mod in closureMods do
     if #["SerrePositivity.EInfinity", "SerrePositivity.InfinityCategories.F2",
         "SerrePositivity.KST"].any (mod.module.toString.startsWith ·) then
       throwError "Ind-S (9) readout: forbidden lane dependency: {mod.module}"
@@ -10126,20 +10178,15 @@ run_cmd do
         found || (n.toString.splitOn "ModelCategory").length != 1) then
       throwError "Ind-S (9) readout: unexpected ModelCategory assumption in {name}"
     count := count + 1
-  setEnv saved
   if count == 0 then throwError "Ind-S (9) readout: no declarations audited"
   logInfo m!"Ind-S native-triangle readout audit passed: {count} declarations."
 
 -- Ind-S (9)：実 encoder と同じ固定ホーン内の可逆比較。厳密切断は未供給。
 open Lean in
 run_cmd do
-  let saved ← getEnv
-  let env ← importModules #[
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleEncoderMap },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleSplitReduction },
-    { module := `Lean.Util.CollectAxioms }] {}
-  setEnv env
-  for mod in env.header.modules do
+  let env ← getEnv
+  let closureMods := auditImportClosure env #[`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleEncoderMap, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleSplitReduction]
+  for mod in closureMods do
     if #["SerrePositivity.EInfinity", "SerrePositivity.InfinityCategories.F2",
         "SerrePositivity.KST"].any (mod.module.toString.startsWith ·) then
       throwError "Ind-S (9) encoder: forbidden lane dependency: {mod.module}"
@@ -10156,7 +10203,6 @@ run_cmd do
         found || (n.toString.splitOn "ModelCategory").length != 1) then
       throwError "Ind-S (9) encoder: unexpected ModelCategory assumption in {name}"
     count := count + 1
-  setEnv saved
   if count == 0 then throwError "Ind-S (9) encoder: no declarations audited"
   logInfo m!"Ind-S native-triangle encoder audit passed: {count} declarations."
 
@@ -10167,13 +10213,10 @@ run_cmd do
 -- R が第 I 段終了時に当該既存依存を Core へ移す。既存の厳しい監査項は保持する。
 open Lean in
 run_cmd do
-  let saved ← getEnv
-  let env ← importModules #[
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledCompositionDiagonalTransport },
-    { module := `Lean.Util.CollectAxioms }] {}
-  setEnv env
+  let env ← getEnv
+  let closureMods := auditImportClosure env #[`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledCompositionDiagonalTransport]
   let entry := `SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.KanEquivalenceLiftingFibration
-  unless env.header.modules.any (·.module == entry) do
+  unless closureMods.any (·.module == entry) do
     throwError "Ind-S (9) transport: missing authorized upstream entry"
   -- Removing the authorized entry must cut every path from the new leaf to F2.
   let mut todo := #[`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledCompositionDiagonalTransport]
@@ -10188,7 +10231,7 @@ run_cmd do
     let some idx := env.getModuleIdx? mod | continue
     for imp in env.header.moduleData[idx.toNat]!.imports do
       todo := todo.push imp.module
-  for mod in env.header.modules do
+  for mod in closureMods do
     let n := mod.module.toString
     if #["SerrePositivity.EInfinity", "SerrePositivity.KST"].any (n.startsWith ·) ||
         (n.startsWith "SerrePositivity.InfinityCategories.F2." &&
@@ -10206,18 +10249,14 @@ run_cmd do
         found || (n.toString.splitOn "ModelCategory").length != 1) then
       throwError "Ind-S (9) transport: unexpected ModelCategory assumption in {name}"
     count := count + 1
-  setEnv saved
   if count == 0 then throwError "Ind-S (9) transport: no declarations audited"
   logInfo m!"Ind-S controlled diagonal transport audit passed: {count} declarations."
 -- Ind-S (9)：三対象ラベルの有限 path 座標（全次数の encoder 構成用）。
 open Lean in
 run_cmd do
-  let saved ← getEnv
-  let env ← importModules #[
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleLabelPathCoordinates },
-    { module := `Lean.Util.CollectAxioms }] {}
-  setEnv env
-  for mod in env.header.modules do
+  let env ← getEnv
+  let closureMods := auditImportClosure env #[`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleLabelPathCoordinates]
+  for mod in closureMods do
     if #["SerrePositivity.EInfinity", "SerrePositivity.InfinityCategories.F2",
         "SerrePositivity.KST"].any (mod.module.toString.startsWith ·) then
       throwError "Ind-S (9) label coordinates: forbidden lane dependency: {mod.module}"
@@ -10233,7 +10272,6 @@ run_cmd do
         found || (n.toString.splitOn "ModelCategory").length != 1) then
       throwError "Ind-S (9) label coordinates: unexpected ModelCategory assumption in {name}"
     count := count + 1
-  setEnv saved
   if count == 0 then throwError "Ind-S (9) label coordinates: no declarations audited"
   logInfo m!"Ind-S triangle-label path-coordinate audit passed: {count} declarations."
 
@@ -10241,19 +10279,9 @@ run_cmd do
 -- これらは構成部品。単射 encoder と主仕様の完了は主張しない。
 open Lean in
 run_cmd do
-  let saved ← getEnv
-  let env ← importModules #[
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleLabelPathComposition },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleDiagonalKanExtension },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleTwoCutCoordinates },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedLongHom },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedDirectHom },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleLabelHomReplacement },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleNestedSecondHom },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleLabelBaseline },
-    { module := `Lean.Util.CollectAxioms }] {}
-  setEnv env
-  for mod in env.header.modules do
+  let env ← getEnv
+  let closureMods := auditImportClosure env #[`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleLabelPathComposition, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleDiagonalKanExtension, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleTwoCutCoordinates, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedLongHom, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedDirectHom, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleLabelHomReplacement, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleNestedSecondHom, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleLabelBaseline]
+  for mod in closureMods do
     if #["SerrePositivity.EInfinity", "SerrePositivity.InfinityCategories.F2",
         "SerrePositivity.KST"].any (mod.module.toString.startsWith ·) then
       throwError "Ind-S (9) separated coordinates: forbidden lane dependency: {mod.module}"
@@ -10277,7 +10305,6 @@ run_cmd do
         found || (n.toString.splitOn "ModelCategory").length != 1) then
       throwError "Ind-S (9) separated coordinates: unexpected ModelCategory assumption in {name}"
     count := count + 1
-  setEnv saved
   if count == 0 then throwError "Ind-S (9) separated coordinates: no declarations audited"
   logInfo m!"Ind-S separated triangle coordinates audit passed: {count} declarations."
 
@@ -10285,27 +10312,9 @@ run_cmd do
 -- 単射性・厳密切断・正規化後の全対角式は別途。F2 例外はこの項には使わない。
 open Lean in
 run_cmd do
-  let saved ← getEnv
-  let env ← importModules #[
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleCutMapComposition },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleLabelBaselineRealization },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleLabelBaselineUnits },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleLiftedCoordinateIdentities },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleLiftedHom },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedComposition },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedMiddleCoordinates },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedMiddleHom },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedMiddleEnriched },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedSimplexData },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedAssignedHom },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedSimplex },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedCoordinateNaturality },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedSimplexNaturality },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedFamily },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedFamilyShortFaces },
-    { module := `Lean.Util.CollectAxioms }] {}
-  setEnv env
-  for mod in env.header.modules do
+  let env ← getEnv
+  let closureMods := auditImportClosure env #[`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleCutMapComposition, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleLabelBaselineRealization, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleLabelBaselineUnits, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleLiftedCoordinateIdentities, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleLiftedHom, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedComposition, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedMiddleCoordinates, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedMiddleHom, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedMiddleEnriched, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedSimplexData, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedAssignedHom, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedSimplex, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedCoordinateNaturality, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedSimplexNaturality, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedFamily, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedFamilyShortFaces]
+  for mod in closureMods do
     if #["SerrePositivity.EInfinity", "SerrePositivity.InfinityCategories.F2",
         "SerrePositivity.KST"].any (mod.module.toString.startsWith ·) then
       throwError "Ind-S (9) reconstructed family: forbidden lane dependency: {mod.module}"
@@ -10337,7 +10346,6 @@ run_cmd do
         found || (n.toString.splitOn "ModelCategory").length != 1) then
       throwError "Ind-S (9) reconstructed family: unexpected ModelCategory assumption in {name}"
     count := count + 1
-  setEnv saved
   if count == 0 then throwError "Ind-S (9) reconstructed family: no declarations audited"
   logInfo m!"Ind-S reconstructed triangle family audit passed: {count} declarations."
 
@@ -10345,27 +10353,9 @@ run_cmd do
 -- 旧 (9) の厳密切断は未供給。この16葉では F2 例外を使わない。
 open Lean in
 run_cmd do
-  let saved ← getEnv
-  let env ← importModules #[
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleCoherentEncoder },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleCoherentEncoderDiagonal },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleCoherentEncoderNative },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleCoherentReconstruction },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleUniversalLongHom },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleUniversalNative },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleUniversalVertices },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleDiagonalLabels },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleFamilyHornFromFaces },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleFamilyHornPullback },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleIntervalIsoEvaluation },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleRightIntervalHom },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedConstantNative },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedDirectEvaluation },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedFamilyDiagonal },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedSimplexDiagonal },
-    { module := `Lean.Util.CollectAxioms }] {}
-  setEnv env
-  for mod in env.header.modules do
+  let env ← getEnv
+  let closureMods := auditImportClosure env #[`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleCoherentEncoder, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleCoherentEncoderDiagonal, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleCoherentEncoderNative, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleCoherentReconstruction, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleUniversalLongHom, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleUniversalNative, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleUniversalVertices, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleDiagonalLabels, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleFamilyHornFromFaces, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleFamilyHornPullback, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleIntervalIsoEvaluation, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleRightIntervalHom, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedConstantNative, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedDirectEvaluation, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedFamilyDiagonal, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedSimplexDiagonal]
+  for mod in closureMods do
     if #["SerrePositivity.EInfinity", "SerrePositivity.InfinityCategories.F2",
         "SerrePositivity.KST"].any (mod.module.toString.startsWith ·) then
       throwError "Ind-S (9) coherent normalization: forbidden lane dependency: {mod.module}"
@@ -10397,7 +10387,6 @@ run_cmd do
         found || (n.toString.splitOn "ModelCategory").length != 1) then
       throwError "Ind-S (9) coherent normalization: unexpected ModelCategory assumption in {name}"
     count := count + 1
-  setEnv saved
   if count == 0 then throwError "Ind-S (9) coherent normalization: no declarations audited"
   logInfo m!"Ind-S coherent triangle normalization audit passed: {count} declarations."
 
@@ -10405,12 +10394,9 @@ run_cmd do
 -- 単射性は未供給入力であり、無条件の完了とは扱わない。F2 例外は使わない。
 open Lean in
 run_cmd do
-  let saved ← getEnv
-  let env ← importModules #[
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleNormalizedRequest },
-    { module := `Lean.Util.CollectAxioms }] {}
-  setEnv env
-  for mod in env.header.modules do
+  let env ← getEnv
+  let closureMods := auditImportClosure env #[`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleNormalizedRequest]
+  for mod in closureMods do
     if #["SerrePositivity.EInfinity", "SerrePositivity.InfinityCategories.F2",
         "SerrePositivity.KST"].any (mod.module.toString.startsWith ·) then
       throwError "Ind-S (9) normalized request reduction: forbidden lane dependency: {mod.module}"
@@ -10427,7 +10413,6 @@ run_cmd do
         found || (n.toString.splitOn "ModelCategory").length != 1) then
       throwError "Ind-S (9) normalized request reduction: unexpected ModelCategory assumption in {name}"
     count := count + 1
-  setEnv saved
   if count == 0 then throwError "Ind-S (9) normalized request reduction: no declarations audited"
   logInfo m!"Ind-S normalized triangle request reduction audit passed: {count} declarations."
 
@@ -10435,21 +10420,9 @@ run_cmd do
 -- 一般 K の単射性・厳密切断は未供給。F2 例外は使わない。
 open Lean in
 run_cmd do
-  let saved ← getEnv
-  let env ← importModules #[
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleEncoderParameterEquality },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleIntervalFaithfulness },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTrianglePointParameterMono },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.FamilyParameterEquality },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleLabelCoordinateSection },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TrianglePrismCoordinateSection },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TrianglePrismLiftedSection },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedLongFaithfulness },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedPrismRecovery },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedVertexParameter },
-    { module := `Lean.Util.CollectAxioms }] {}
-  setEnv env
-  for mod in env.header.modules do
+  let env ← getEnv
+  let closureMods := auditImportClosure env #[`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleEncoderParameterEquality, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleIntervalFaithfulness, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTrianglePointParameterMono, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.FamilyParameterEquality, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleLabelCoordinateSection, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TrianglePrismCoordinateSection, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TrianglePrismLiftedSection, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedLongFaithfulness, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedPrismRecovery, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedVertexParameter]
+  for mod in closureMods do
     if #["SerrePositivity.EInfinity", "SerrePositivity.InfinityCategories.F2",
         "SerrePositivity.KST"].any (mod.module.toString.startsWith ·) then
       throwError "Ind-S (9) higher parameter recovery: forbidden lane dependency: {mod.module}"
@@ -10475,7 +10448,6 @@ run_cmd do
         found || (n.toString.splitOn "ModelCategory").length != 1) then
       throwError "Ind-S (9) higher parameter recovery: unexpected ModelCategory assumption in {name}"
     count := count + 1
-  setEnv saved
   if count == 0 then throwError "Ind-S (9) higher parameter recovery: no declarations audited"
   logInfo m!"Ind-S higher triangle parameter recovery audit passed: {count} declarations."
 
@@ -10485,14 +10457,9 @@ run_cmd do
 -- この3葉では F2 例外を使わない。
 open Lean in
 run_cmd do
-  let saved ← getEnv
-  let env ← importModules #[
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ContractibleFamilyComparison },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleFamilyComparison },
-    { module := `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleNormalizedFamilySupply },
-    { module := `Lean.Util.CollectAxioms }] {}
-  setEnv env
-  for mod in env.header.modules do
+  let env ← getEnv
+  let closureMods := auditImportClosure env #[`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ContractibleFamilyComparison, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleFamilyComparison, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleNormalizedFamilySupply]
+  for mod in closureMods do
     if #["SerrePositivity.EInfinity", "SerrePositivity.InfinityCategories.F2",
         "SerrePositivity.KST"].any (mod.module.toString.startsWith ·) then
       throwError "Ind-S (9) normalized family supply: forbidden lane dependency: {mod.module}"
@@ -10511,7 +10478,6 @@ run_cmd do
         found || (n.toString.splitOn "ModelCategory").length != 1) then
       throwError "Ind-S (9) normalized family supply: unexpected ModelCategory assumption in {name}"
     count := count + 1
-  setEnv saved
   if count == 0 then throwError "Ind-S (9) normalized family supply: no declarations audited"
   logInfo m!"Ind-S normalized triangle family supply audit passed: {count} declarations."
 
