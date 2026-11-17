@@ -3414,3 +3414,12 @@ D09・D04の監査成功を条件に既存見込みへ実測105行を代入し�
 - P20 `SerrePositivity.AlgebraicGeometry.pairedPerfectCech_zero_col_acyclic_iff`：元の二変数図式の零次列の増大totalと、同じg・被覆のタプルtotalの完全性を両方向に比較する。
 - F08 `SerrePositivity.AlgebraicGeometry.fppfComparisonRefiner`：元のnerveの第一座標に沿うqの底変換から、同じ合成q≫gの底変換への細分射を作る。
 - F09 `SerrePositivity.AlgebraicGeometry.fppfComparisonRefiner_over`：その細分射が元のnerveへの射影を保つ。
+
+## 2026-11-17：零次行の対称比較（a4ca1369b）
+
+- P21を同じ型・仮定で実装。新規130行＋入口2行＝132行、所有14宣言。原稿・本体の同一バイトとSHA、対象ビルド5,391ジョブと直接importer、別の共有鍵での所有監査を確認。標準三公理以外0。
+- 実際のpullbackSymmetryと元の二つのタプルの交換を、増大点を含む自然同型にしてP20に帰着する。零次列・零次行の両方向の比較が揃った。main既存宣言の本体変更、署名や仮定の変更、一覧の追加はない。
+- 累計21,902行（新規292モジュール21,552行、既存追加25行、入口325行）。所有宣言累計2,391件、既存15件は別。残り24署名。現下書きの上振れと登録予備にも係数2を確保した完成見込み23,934〜26,166行。28,000行以内。
+- 一覧：済み1／全体3（うち追加0）。内部署名：済み65／89（G4・G5）、追加0。F07・I01・I05〜I08は原稿検証を通過し対象ビルド中。D05・I09および後続の原稿は未検証で完了数へ含めない。
+
+- P21 `SerrePositivity.AlgebraicGeometry.pairedPerfectCech_zero_row_acyclic_iff`：実際の二因子の対称同型により、零次行の増大totalと元のh・被覆のタプルtotalの完全性を両方向に比較する。
