@@ -1920,3 +1920,5 @@ public import SerrePositivity.AlgebraicGeometry.PrimeFieldRingHom
 public import SerrePositivity.AlgebraicGeometry.AugmentedCechCoordinates
 public import SerrePositivity.AlgebraicGeometry.NilImmersionPerfectCechPullback
 public import SerrePositivity.AlgebraicGeometry.PairedCechGeometry
+public import SerrePositivity.AlgebraicGeometry.NilBaseChangePerfectCech
+public import SerrePositivity.AlgebraicGeometry.PairedCechGeometryMaps
