@@ -7940,3 +7940,591 @@ Tagの特殊化なのでkerodon属性を付ける案ではない。
 鍵はビルド終了時に返却済み。整理券の重複なし。S7・R2・R3・P⁰は再開していない。
 5∞-1の完成・今回の通常の29,000行停止点・レーン閉鎖は、いずれもまだ主張しない。
 一覧：済み 18／全体 36（うち追加 1、別停止点 2。提案P3-C1PNは分母外）。
+
+### 残る署名の一括洗い直し（11-17夕、P3-C1PN承認後）
+
+P3-C1PNを報告どおりの型・依存で登録（36→37）。その後、P3-C1・D・Eと第4〜15項の
+全ての未完署名を一度に洗い直した。200行超の照合として追加するのはR09-CechとR15-Unitの2本。
+いずれも一本の補正上端800行以内で、今回の一括事前承認の条件内。元の署名の型・仮定は変更0。
+係数2と外枠29,000は保持。P3-C1PNの記録も含めた全体は39署名（済18・未完19・別停止点2）。
+以下は紙の段階の完全な型であり、新規2本のLeanの型検査と証明は紙のコミット後に行う。
+
+#### 全行の点検結果
+
+| ID | 素の残り | 補正 | 照合の分け方・再利用 |
+|---|---:|---:|---|
+| P3-C1PN | 220〜360 | 440〜720 | 承認済み。元の指定νと、同じstrict係数のnative区間の類を比較する。途中の実現・評価の法則もこの独立署名内に計上する。 |
+| P3-C1P | 90〜150 | 180〜300 | 既計上620行の後、元のnative区間の同型、同じscaffoldの相対同型、指定辺の戻しと降下を合成する。P3-C1PN以外の残りの単独照合は200行以下。 |
+| P3-C1 | 80〜140 | 160〜280 | 指定prismを既存のtransportWitnessの頂点同型へ移し、図式射影を計算する。指定νの照合はC1PN/C1Pへ分離済み。残り80〜140行。 |
+| P3-D | 120〜220 | 240〜440 | nativeRestrict二回と同じC0正方形によるcartesianRestrictの図式・pointed射の等式（40〜70行）、既存のnerve比較とdiagramIsoの合成則（80〜150行）。D自身が独立署名で、追加の200行超の法則は見込まない。 |
+| P3-E | 50〜110 | 100〜220 | 元の初頂点局所化の充満忠実性で同型の等号を反映する。P3-Dと指定前合成・合成則を使い、新しい降下の構成はしない。 |
+| R04 | 250〜400 | 500〜800 | 独立署名R04自体に、復元・指定底変換の照合120〜180行、輸送錐の元の余単位とapexの照合90〜150行、eqToHom正規化40〜70行を計上（計250〜400）。P3-E・R02と既存のapex_homを使い、点ごとの同型を集めない。独立した200行超の法則を別に隠さない。 |
+| R05 | 80〜150 | 160〜300 | weightedSections_nativeShape_comparison_transport_vertexとR04、元のhom_facと極限比較の合成則で同じ値比較へ戻す。新しい全関手比較を作らない。 |
+| R06 | 200〜400 | 400〜800 | R05の元の固定値比較とsectionsEquivalenceNaturalの同じ全族を合わせる。既存の全自然性に加える各係数・表示の移送は一つ200行以下。R06自身は200〜400行の独立署名として保持する。 |
+| R08 | 100〜180 | 200〜360 | R06で指定対角の各成分を同定し、relativeCechDiagonal_sections_isInvertibleから元の全族の可逆性を判定する。新たなČech形状や対角を作らない。 |
+| R09-Cech | 220〜360 | 440〜720 | 200行超の追加照合。同じtoRangeのČech余錐をweightedSectionsで極限へ送り、同じ対角を用いて定値錐との同じ比較射を同定する。全有限次数と増大射の三角形を同時に保持する。 |
+| R09 | 70〜120 | 140〜240 | ČechによるtoRangeの部分をR09-Cechに分離。残りは元の像の包含（既存localMonoの結果）との合成、Subfunctor.toRange_ιと元のsectionsOf_mapの正規化70〜120行。 |
+| R12a | 100〜250 | 200〜500 | 既証R10・R11の係数・宇宙移送の法則とR09を使い、共変表現可能値で指定した同じ制限錐の極限性を反映する。100〜250行の既存独立署名で、新しい検出族を仮定しない。 |
+| R12b | 20〜50 | 40〜100 | R12aと既存のsectionsMap_isInvertible_iffで同じ指定sectionsOf_mapへ戻す。 |
+| R13b | 150〜250 | 300〜500 | 既存sectionsEquivalenceNaturalの同じ全自然性を、R09の局所同値とR13aの写像空間比較へ入れる。大きい頂点の入口は既証R11の移送を使い、新しい縮小を構成しない。 |
+| R14 | 60〜110 | 120〜220 | 同じ反射のreflective_isIso_map_iff_localHomとR13bを使う。反射やunitを選び直さない。 |
+| R15-Unit | 220〜340 | 440〜680 | 200行超の追加照合。元の通常の層化単位を、元のnerveのuncurryの全円柱として実現してηを一度構成する（resizedNatTransMapと同じ構成の混合宇宙の計算）。元の各成分の式を保持し、R14で反射後の全ηが可逆であることを示す。 |
+| R15a | 80〜140 | 160〜280 | R15-Unitの全ηを反射し、通常の集合値層の離散像の層条件と反射の単位・余単位の法則で同じ全関手の同型にする。成分ごとに同型を選んで集めない。残り80〜140行。 |
+| R15b | 20〜80 | 40〜160 | R15aを指定頂点で評価し、元のsheafifyと離散埋め込みの頂点等式で端点を揃える。 |
+| R15c | 20〜90 | 40〜180 | R15-Unitの元の単位の各成分の式と、R15aの反射の三角法則を指定頂点へ制限する。元のtoSheafifyの射の類を保持する。 |
+
+既存の署名で200行超のもの（D・R04・R06・R12a・R13b等）は既に独立の完全な署名なので、
+同じ主張を別名の法則として二度登録しない。新たに漏れていた200行超の法則だけを以下の
+R09-Cech・R15-Unitへ切り出した。元の見込みはJSONのoriginal欄に保持し、二重計上しない。
+R07・R10a/b・R11a〜d・R13aは済みで、未実装の新しい照合として数え直さない。
+
+#### 全ての未完署名の型・依存・既存宣言の所在
+
+
+##### P3-C1PN — `leftStraighteningBaseChange_nativeInterval_hom`
+
+依存：P3-B1, P3-B2e, P3-C0。素220〜360、補正440〜720行。
+配置：`SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePointedPrism.lean`。
+
+```lean
+∀ {E B D : SSet.{u}} [Quasicategory B] [Quasicategory D]
+  (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B),
+  let U := SSet.uliftFunctor.{u+1,u}
+  let lB := transportSimplexFirstVertexMap B
+  let lD := transportSimplexFirstVertexMap D
+  let H := transportSimplexFunctor k
+  let q := pullback.snd p k
+  let p₀ := pullback.snd p lB
+  let r := pullback.snd q lD
+  let d := leftStraighteningBaseChangePullbackData p k
+  let R₀ := (nerveLeftTransportRepresentation p₀).cartesianRestrict
+    (U.map d.val) (U.map (nerveMap H)) d.property.2.2.2
+  let Rr := nerveLeftTransportRepresentation r
+  let θp := leftStraighteningInfinityDiagram_firstVertexTransportIso p
+  let θq := leftStraighteningInfinityDiagram_firstVertexTransportIso q
+  let β := leftStraighteningInfinityDiagram_baseChangeIso p k
+  let ν := (θp.precomp (U.map (nerveMap H))).symm ≪≫
+    diagramIsoCongr
+      (by rw [← Category.assoc, ← transportSimplexFirstVertexMap_ulift_naturality k,
+        Category.assoc]) rfl (β.precomp (U.map lD)) ≪≫ θq
+  let Fh : KanDiagramObject (TransportSimplexCategory D) :=
+    ⟨H ⋙ leftStrictTransportFunctor p₀, trivial⟩
+  let Fr : KanDiagramObject (TransportSimplexCategory D) :=
+    ⟨leftStrictTransportFunctor r, trivial⟩
+  let α : Fh.val ⋙ kanObjectForget ⟶ Fr.val ⋙ kanObjectForget :=
+    pullbackStrictComparison p₀ r d.val H d.property.2.2.1
+  let y := (kanDiagramOppositeHomInterval Fh Fr).app _ (naturalHomVertex Fh Fr α)
+  let ε := intervalMappingEdgeOfVertex y
+  let hsrc : U.map (nerveMap H) ≫ leftCoherentTransport p₀ =
+      kanDiagramCoherentNerve (Fh.val ⋙ kanObjectOpFunctor) := by
+    change U.map (nerveMap H) ≫
+      kanDiagramCoherentNerve (leftStrictTransportFunctor p₀ ⋙ kanObjectOpFunctor) =
+      kanDiagramCoherentNerve ((H ⋙ leftStrictTransportFunctor p₀) ⋙ kanObjectOpFunctor)
+    rw [kanDiagramCoherentNerve_precomp]
+    rfl
+  ν.hom = eqToHom (congrArg (fun f => HomotopyCategory.mk (functorVertex f)) hsrc) ≫
+    SSet.Truncated.HomotopyCategory.homMk ε.toTruncated
+```
+
+- `relativeSectionBaseChangeRealizationIso_overPre` @ `SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/RelativeSectionBaseChangePasting.lean:58`
+- `transportSimplexUnderRealization_baseChange_composition` @ `SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/SimplexUnderJointComposition.lean:71`
+- `kanEnrichedRealizationValueIso_heq_precomp` @ `SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/KanEnrichedRealizationValue.lean:66`
+- `straighteningBaseChangeIso_firstVertex` @ `SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/PresentableInfinityCategories/StraighteningBaseChangeRestriction.lean:77`
+- `kanEnrichedJointEvaluation_restrict` @ `SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/KanEnrichedRealizationValue.lean:35`
+- `pullbackStrictComparison` @ `SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePointedPrism.lean:214`
+- `naturalHomVertex` @ `SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePointedPrism.lean:501`
+
+原典：HTT §3.3.2、Kerodon Corollary 5.6.0.6（Tag 028T）の指定構成の照合。独立の原典定理番号を主張しない。
+
+承認済み。元の指定νと、同じstrict係数のnative区間の類を比較する。途中の実現・評価の法則もこの独立署名内に計上する。
+
+##### P3-C1P — `leftStraighteningBaseChange_pointedPrism`
+
+依存：R01, R02, P3-B1, P3-B2e, P3-C0, P3-C1PN。素90〜150、補正180〜300行。
+配置：`SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePointedPrism.lean`。
+
+```lean
+∀ {E B D : SSet.{u}} [Quasicategory B] [Quasicategory D]
+  (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B),
+  let U := SSet.uliftFunctor.{u+1,u}
+  let lB := transportSimplexFirstVertexMap B
+  let lD := transportSimplexFirstVertexMap D
+  let H := transportSimplexFunctor k
+  let q := pullback.snd p k
+  let p₀ := pullback.snd p lB
+  let r := pullback.snd q lD
+  let d := leftStraighteningBaseChangePullbackData p k
+  let R₀ := (nerveLeftTransportRepresentation p₀).cartesianRestrict
+    (U.map d.val) (U.map (nerveMap H)) d.property.2.2.2
+  let Rr := nerveLeftTransportRepresentation r
+  let θp := leftStraighteningInfinityDiagram_firstVertexTransportIso p
+  let θq := leftStraighteningInfinityDiagram_firstVertexTransportIso q
+  let β := leftStraighteningInfinityDiagram_baseChangeIso p k
+  let ν := (θp.precomp (U.map (nerveMap H))).symm ≪≫
+    diagramIsoCongr
+      (by rw [← Category.assoc, ← transportSimplexFirstVertexMap_ulift_naturality k,
+        Category.assoc]) rfl (β.precomp (U.map lD)) ≪≫ θq
+  let e := functorEdgeOfSimplicialHomotopy (functorHomHomotopy ν.hom)
+  ∃ W : (Δ[1] : SSet.{u+1}) ⊗ U.obj (pullback q lD) ⟶ PointedSpaceInfinity.{u},
+    prismEndpoint 0 (U.obj (pullback q lD)) ≫ W = R₀.pointedMap ∧
+    prismEndpoint 1 (U.obj (pullback q lD)) ≫ W = Rr.pointedMap ∧
+    W ≫ pointedSpaceProjection = (Δ[1] ◁ U.map r) ≫ functorEdgePrism e
+```
+
+- `scaffoldCoherentComparison_scaffoldIso` @ `SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/ScaffoldCoherentComparisonRestriction.lean:30`
+- `leftStraighteningInfinityReconstruction_representationComparison` @ `SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/StraighteningReconstructionRepresentationComparison.lean:34`
+- `smallFiberTransportRepresentationVertexIso_unique` @ `SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/RepresentationComparisonCoherence.lean:26`
+
+原典：HTT §3.3.2、Kerodon Corollary 5.6.0.6（Tag 028T）。指定pointed比較の照合で、独立の原典番号はない。
+
+既計上620行の後、元のnative区間の同型、同じscaffoldの相対同型、指定辺の戻しと降下を合成する。P3-C1PN以外の残りの単独照合は200行以下。
+
+##### P3-C1 — `leftStraighteningBaseChange_transportWitness`
+
+依存：R01, R02, P3-B1, P3-B2e, P3-C0, P3-C1P。素80〜140、補正160〜280行。
+配置：`SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/leftStraighteningBaseChange_transportWitness.lean`。
+
+```lean
+∀ {E B D : SSet.{u}} [Quasicategory B] [Quasicategory D]
+  (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B),
+  let U := SSet.uliftFunctor.{u+1,u}
+  let lB := transportSimplexFirstVertexMap B
+  let lD := transportSimplexFirstVertexMap D
+  let H := transportSimplexFunctor k
+  let q := pullback.snd p k
+  let p₀ := pullback.snd p lB
+  let r := pullback.snd q lD
+  let d := leftStraighteningBaseChangePullbackData p k
+  let R₀ := (nerveLeftTransportRepresentation p₀).cartesianRestrict
+    (U.map d.val) (U.map (nerveMap H)) d.property.2.2.2
+  let Rr := nerveLeftTransportRepresentation r
+  let θp := leftStraighteningInfinityDiagram_firstVertexTransportIso p
+  let θq := leftStraighteningInfinityDiagram_firstVertexTransportIso q
+  let β := leftStraighteningInfinityDiagram_baseChangeIso p k
+  let ν := (θp.precomp (U.map (nerveMap H))).symm ≪≫
+    diagramIsoCongr
+      (by rw [← Category.assoc, ← transportSimplexFirstVertexMap_ulift_naturality k,
+        Category.assoc]) rfl (β.precomp (U.map lD)) ≪≫ θq
+  ∃ a : VertexIso (transportWitnessVertex R₀) (transportWitnessVertex Rr),
+    R₀.diagramIso Rr a = ν
+```
+
+- `scaffoldCoherentComparison_scaffoldIso` @ `SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/ScaffoldCoherentComparisonRestriction.lean:30`
+- `leftStraighteningInfinityReconstruction_representationComparison` @ `SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/StraighteningReconstructionRepresentationComparison.lean:34`
+- `smallFiberTransportRepresentationVertexIso_unique` @ `SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/RepresentationComparisonCoherence.lean:26`
+
+原典：HTT §3.3.2（特に3.3.2.8）、Kerodon Corollary 5.6.0.6（Tag 028T）。指定構成の法則で、独立した原典の補題番号はない。
+
+指定prismを既存のtransportWitnessの頂点同型へ移し、図式射影を計算する。指定νの照合はC1PN/C1Pへ分離済み。残り80〜140行。
+
+##### P3-D — `leftStraighteningRepresentation_baseChange_firstVertex`
+
+依存：P3-C1。素120〜220、補正240〜440行。
+配置：`SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/leftStraighteningRepresentation_baseChange_firstVertex.lean`。
+
+```lean
+∀ {E B D : SSet.{u}} [Quasicategory B] [Quasicategory D]
+  (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B),
+  let U := SSet.uliftFunctor.{u+1,u}
+  let lB := transportSimplexFirstVertexMap B
+  let lD := transportSimplexFirstVertexMap D
+  let H := transportSimplexFunctor k
+  let q := pullback.snd p k
+  let p₀ := pullback.snd p lB
+  let r := pullback.snd q lD
+  ∀ R : LeftTransportRepresentation ((SSet.uliftFunctor.{u+1,u}).map p),
+  (leftStraighteningInfinityDiagram_baseChangeIso p k).precomp (U.map lD) ≪≫
+    leftStraighteningInfinityDiagram_firstVertexTransportIso q ≪≫
+    nerveCoherentTransportRepresentationIso r ((R.nativeRestrict k).nativeRestrict lD) =
+  ((leftStraighteningInfinityDiagram_representationIso p R).precomp (U.map k)).precomp
+    (U.map lD)
+```
+
+- `nerveCoherentTransportRepresentationIso_comp_diagramIso` @ `SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/NerveRepresentationComparisonLaw.lean:27`
+- `cartesianRestrict_diagramIso` @ `SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/RepresentationComparisonRestriction.lean:27`
+
+原典：HTT §3.3.2（特に3.3.2.8）、Kerodon Corollary 5.6.0.6（Tag 028T）。指定構成の法則で、独立した原典の補題番号はない。
+
+nativeRestrict二回と同じC0正方形によるcartesianRestrictの図式・pointed射の等式（40〜70行）、既存のnerve比較とdiagramIsoの合成則（80〜150行）。D自身が独立署名で、追加の200行超の法則は見込まない。
+
+##### P3-E — `leftStraighteningInfinityDiagram_representationIso_baseChange`
+
+依存：P3-D。素50〜110、補正100〜220行。
+配置：`SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/leftStraighteningInfinityDiagram_representationIso_baseChange.lean`。
+
+```lean
+∀ {E B D : SSet.{u}} [Quasicategory B] [Quasicategory D]
+  (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B),
+  ∀ R : LeftTransportRepresentation ((SSet.uliftFunctor.{u+1,u}).map p),
+  leftStraighteningInfinityDiagram_baseChangeIso p k ≪≫
+    leftStraighteningInfinityDiagram_representationIso (pullback.snd p k) (R.nativeRestrict k) =
+  (leftStraighteningInfinityDiagram_representationIso p R).precomp
+    ((SSet.uliftFunctor.{u+1,u}).map k)
+```
+
+- `functorIso_precomp_injective` @ `SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/PresentableInfinityCategories/StraighteningBaseChangeRestriction.lean:101`
+- `transportSimplexFirstVertexMap_ulift_isLocalization` @ `SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/Localization/LocalizationUlift.lean:22`
+
+原典：HTT §3.3.2（特に3.3.2.8）、Kerodon Corollary 5.6.0.6（Tag 028T）。指定構成の法則で、独立した原典の補題番号はない。
+
+元の初頂点局所化の充満忠実性で同型の等号を反映する。P3-Dと指定前合成・合成則を使い、新しい降下の構成はしない。
+
+##### R04 — `rightKanIndexTransport_valueHom`
+
+依存：P3-E, R02。素250〜400、補正500〜800行。
+配置：`SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/RightKanIndexTransportValue.lean`。
+
+```lean
+∀ {K C D : SSet.{u}} [Quasicategory K] [Quasicategory C] [Quasicategory D]
+  {δ δ' : K ⟶ C} (e : FunctorIso δ δ') (O : K ⟶ D) (G : C ⟶ D)
+  (β : SSet.Homotopy (δ' ≫ G) O) (v : C _⦋0⦌),
+  let b := (e.postcomp G).hom ≫
+    Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy β)
+  ∀ (s : RightKanConeTransport δ O G (functorHomHomotopy b) v)
+    (t : RightKanConeTransport δ' O G β v)
+    (hs : IsLimitCone s.cone) (ht : IsLimitCone t.cone),
+  eqToHom (congrArg (fun x => (HomotopyCategory.mk x : hoFunctor.obj D))
+      s.cone_vertex.symm) ≫
+    (rightKanLimitVertexIsoOfFunctorIso e O v s.cone t.cone hs ht).hom ≫
+    eqToHom (congrArg (fun x => (HomotopyCategory.mk x : hoFunctor.obj D))
+      t.cone_vertex) = 𝟙 (HomotopyCategory.mk (G.app _ v))
+```
+
+- `rightKanLimitVertexIsoOfFunctorIso` @ `SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/RightKanLimitVertexTransport.lean:35`
+
+原典：HTT 5.1.5.6の双対、Kerodon Definition 7.3.1.2（Tag 02Y9）。指定余単位に沿う値の比較の法則。
+
+独立署名R04自体に、復元・指定底変換の照合120〜180行、輸送錐の元の余単位とapexの照合90〜150行、eqToHom正規化40〜70行を計上（計250〜400）。P3-E・R02と既存のapex_homを使い、点ごとの同型を集めない。独立した200行超の法則を別に隠さない。
+
+##### R05 — `weightedSections_nativeShapeLimitIso_hom_eq_globalComparison`
+
+依存：R04。素80〜150、補正160〜300行。
+配置：`SerrePositivity/InfinityCategories/Sheaves/weightedSections_nativeShapeLimitIso_hom_eq_globalComparison.lean`。
+
+```lean
+∀ {C : Type u} [SmallCategory C] {E : SSet.{u + 1}} [Quasicategory E],
+∀ (O : Presheaf C E) (hE : IsPresentable E)
+  {G : (PresheafCat C SpaceInfinity.{u}).op ⟶ E}
+  (β : SSet.Homotopy (nativeSetShapeOppositeYoneda C ≫ G) O)
+  (hβ : IsRightKanExtension (nativeSetShapeOppositeYoneda C) O G β)
+  (P : (PresheafCat C SpaceInfinity.{u}).op _⦋0⦌)
+  (t : RightKanConeTransport (nativeSetShapeOppositeYoneda C) O G β P)
+  (ht : IsLimitCone t.cone)
+  (d : JoinCone (rightKanDiagram (nativeSetShapeOppositeYoneda C) O P))
+  (hd : IsLimitCone d),
+  (weightedSections_nativeShapeLimitIso O hE P d hd).hom =
+    functorHomEvaluate (weightedSections_nativeShape_comparison O hE β hβ).hom P ≫
+    eqToHom (congrArg (fun x => (HomotopyCategory.mk x : hoFunctor.obj E))
+      t.cone_vertex.symm) ≫ (limitVertexIso t.cone d ht hd).hom
+```
+
+- `weightedSections_nativeShape_comparison_transport_vertex` @ `SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsGlobalComparisonVertex.lean:32`
+- `rightKanHomUniversalIso_hom_fac` @ `SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/UniversalProperty.lean:83`
+
+原典：HTT 5.1.5.6（双対）、Kerodon Definition 7.3.1.2（Tag 02Y9）。
+
+weightedSections_nativeShape_comparison_transport_vertexとR04、元のhom_facと極限比較の合成則で同じ値比較へ戻す。新しい全関手比較を作らない。
+
+##### R06 — `weightedSections_discrete_map`
+
+依存：R05。素200〜400、補正400〜800行。
+配置：`SerrePositivity/InfinityCategories/Sheaves/weightedSections_discrete_map.lean`。
+
+```lean
+∀ {C : Type u} [SmallCategory C] {E : SSet.{u + 1}} [Quasicategory E],
+∀ (O : Presheaf C E) (hE : IsPresentable E) {P Q : Cᵒᵖ ⥤ Type u}
+  (φ : P ⟶ Q) (hP : HasLimit (sectionsOfDiagram P O))
+  (hQ : HasLimit (sectionsOfDiagram Q O)),
+  let e := (nerve.edgeMk φ).map (discretePresheafInclusion C).val
+  let r := (edgeOp e.toTruncated).map ((truncation 2).map (weightedSections O hE))
+  Truncated.HomotopyCategory.homMk r ≫ (weightedSections_discrete O hE P hP).hom =
+    (weightedSections_discrete O hE Q hQ).hom ≫
+      Truncated.HomotopyCategory.homMk (sectionsOf_map φ O hP hQ).toTruncated
+```
+
+- `weightedSections_discrete` @ `SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsDiscrete.lean:34`
+- `sectionsEquivalenceNatural` @ `SerrePositivity/InfinityCategories/Project/SetWeightedTensors/SetSectionsNaturality.lean:78`
+
+原典：HTT 5.1.5.6（双対）。指定値比較の自然性の法則。
+
+R05の元の固定値比較とsectionsEquivalenceNaturalの同じ全族を合わせる。既存の全自然性に加える各係数・表示の移送は一つ200行以下。R06自身は200〜400行の独立署名として保持する。
+
+##### R08 — `weightedSections_relativeCechDiagonalHom_isIso`
+
+依存：R06, R07。素100〜180、補正200〜360行。
+配置：`SerrePositivity/InfinityCategories/Sheaves/weightedSections_relativeCechDiagonalHom_isIso.lean`。
+
+```lean
+∀ {C : Type u} [SmallCategory C] {E : SSet.{u + 1}} [Quasicategory E],
+∀ (J : GrothendieckTopology C) {P Q : Cᵒᵖ ⥤ Type u} (f : P ⟶ Q)
+  [CategoryTheory.Presheaf.IsLocallyInjective J f]
+  (O : Presheaf C E) (hO : IsSheaf J O) (hE : IsPresentable E),
+  IsIso (weightedSections_relativeCechDiagonalHom f O hE)
+```
+
+- `relativeCechDiagonal_sections_isInvertible` @ `SerrePositivity/InfinityCategories/Sheaves/RelativeCechLocalSections.lean:35`
+
+原典：HTT 6.2.2.6、小さい通常のsiteのČech層条件への特殊化。
+
+R06で指定対角の各成分を同定し、relativeCechDiagonal_sections_isInvertibleから元の全族の可逆性を判定する。新たなČech形状や対角を作らない。
+
+##### R09-Cech — `weightedSections_toRangeHom_isInvertible`
+
+依存：R06, R08。素220〜360、補正440〜720行。
+配置：`SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsRangeCechComparison.lean`。
+
+```lean
+∀ {C : Type u} [SmallCategory C] {E : SSet.{u+1}} [Quasicategory E]
+  (J : GrothendieckTopology C) {P Q : Cᵒᵖ ⥤ Type u} (f : P ⟶ Q)
+  [CategoryTheory.Presheaf.IsLocallyInjective J f]
+  (O : Presheaf C E) (hO : IsSheaf J O) (hE : IsPresentable E),
+  let e := (nerve.edgeMk (Subfunctor.toRange f)).map (discretePresheafInclusion C).val
+  let r := (edgeOp e.toTruncated).map ((truncation 2).map (weightedSections O hE))
+  IsInvertibleEdge r
+```
+
+- `weightedSections_rangeCech_isLimit` @ `SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsRelativeCech.lean:39`
+- `relativeCechDiagonal_sections_isInvertible` @ `SerrePositivity/InfinityCategories/Sheaves/RelativeCechLocalSections.lean:35`
+- `cechConstantCone_isLimit` @ `SerrePositivity/InfinityCategories/Sheaves/CechIndexConstantLimit.lean:55`
+
+原典：HTT 6.2.2.6 の小さい通常 site の集合値Čech解消への特殊化。全族の極限比較の照合。
+
+200行超の追加照合。同じtoRangeのČech余錐をweightedSectionsで極限へ送り、同じ対角を用いて定値錐との同じ比較射を同定する。全有限次数と増大射の三角形を同時に保持する。
+
+##### R09 — `sections_localEquiv_iso_space`
+
+依存：R06, R08, R09-Cech。素70〜120、補正140〜240行。
+配置：`SerrePositivity/InfinityCategories/Sheaves/sections_localEquiv_iso_space.lean`。
+
+```lean
+∀ {C : Type u} [SmallCategory C],
+∀ (J : GrothendieckTopology C) {P Q : Cᵒᵖ ⥤ Type u}
+  (φ : P ⟶ Q) (hφ : IsLocalEquivSet J φ)
+  (O : Presheaf C SpaceInfinity.{u}) (hO : IsSheaf J O)
+  (hP : HasLimit (sectionsOfDiagram P O)) (hQ : HasLimit (sectionsOfDiagram Q O)),
+  IsInvertibleEdge (sectionsOf_map φ O hP hQ).toTruncated
+```
+
+- `rangeCechCocone_isColimit` @ `SerrePositivity/InfinityCategories/Sheaves/LocalEquivalenceImageReduction.lean:46`
+- `cechConstantCone_isLimit` @ `SerrePositivity/InfinityCategories/Sheaves/CechIndexConstantLimit.lean:55`
+
+原典：HTT 6.2.2.6・5.5.4.20の局所対象の筋。小さい通常のsiteと離散な局所同値への特殊化。
+
+ČechによるtoRangeの部分をR09-Cechに分離。残りは元の像の包含（既存localMonoの結果）との合成、Subfunctor.toRange_ιと元のsectionsOf_mapの正規化70〜120行。
+
+##### R12a — `restrictSectionsCone_isLimit_of_localEquiv`
+
+依存：R09, R10a, R10b, R11a, R11b, R11c, R11d。素100〜250、補正200〜500行。
+配置：`SerrePositivity/InfinityCategories/Sheaves/restrictSectionsCone_isLimit_of_localEquiv.lean`。
+
+```lean
+∀ {C : Type u} [SmallCategory C] {E : SSet.{u + 1}} [Quasicategory E],
+∀ (J : GrothendieckTopology C) {P Q : Cᵒᵖ ⥤ Type u}
+  (φ : P ⟶ Q) (hφ : IsLocalEquivSet J φ)
+  (O : Presheaf C E) (hO : IsSheaf J O)
+  (c : JoinCone (sectionsOfDiagram Q O)) (hc : IsLimitCone c),
+  IsLimitCone (SetWeight.restrictSectionsCone φ O c)
+```
+
+- `isLimitCone_of_covariantRepresentableInfinity` @ `SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/TheYonedaEmbedding/RepresentableLimitCharacterization.lean:52`
+- `siteLiftSectionsCone_isLimit_iff` @ `SerrePositivity/InfinityCategories/Sheaves/SiteLiftSectionsCone.lean:76`
+
+原典：HTT 6.2.2.6、表現可能関手による極限の検出（Kerodon §7.1）。任意の準圏係数への反映。
+
+既証R10・R11の係数・宇宙移送の法則とR09を使い、共変表現可能値で指定した同じ制限錐の極限性を反映する。100〜250行の既存独立署名で、新しい検出族を仮定しない。
+
+##### R12b — `sections_localEquiv_iso`
+
+依存：R12a。素20〜50、補正40〜100行。
+配置：`SerrePositivity/InfinityCategories/Sheaves/sections_localEquiv_iso.lean`。
+
+```lean
+∀ {C : Type u} [SmallCategory C] {E : SSet.{u + 1}} [Quasicategory E],
+∀ (J : GrothendieckTopology C) {P Q : Cᵒᵖ ⥤ Type u}
+  (φ : P ⟶ Q) (hφ : IsLocalEquivSet J φ)
+  (O : Presheaf C E) (hO : IsSheaf J O)
+  (hP : HasLimit (sectionsOfDiagram P O)) (hQ : HasLimit (sectionsOfDiagram Q O)),
+  IsInvertibleEdge (sectionsOf_map φ O hP hQ).toTruncated
+```
+
+- `sectionsMap_isInvertible_iff` @ `SerrePositivity/InfinityCategories/Sheaves/SieveSectionsCriterion.lean:62`
+
+原典：HTT 6.2.2.6・5.5.4.20。draftsの元の局所同値の型。
+
+R12aと既存のsectionsMap_isInvertible_iffで同じ指定sectionsOf_mapへ戻す。
+
+##### R13b — `discreteHom_isLocalForHom_of_localEquiv`
+
+依存：R09, R13a。素150〜250、補正300〜500行。
+配置：`SerrePositivity/InfinityCategories/Sheaves/discreteHom_isLocalForHom_of_localEquiv.lean`。
+
+```lean
+∀ {C : Type u} [SmallCategory C],
+∀ (J : GrothendieckTopology C) {P Q : Cᵒᵖ ⥤ Type u}
+  (φ : P ⟶ Q) (hφ : IsLocalEquivSet J φ)
+  (O : Presheaf C SpaceInfinity.{u}) (hO : IsSheaf J O),
+  IsLocalForHom (discretePresheafHom φ) (functorVertex O)
+```
+
+- `sectionsEquivalenceNatural` @ `SerrePositivity/InfinityCategories/Project/SetWeightedTensors/SetSectionsNaturality.lean:78`
+
+原典：HTT 5.5.4.20・6.2.2.6。小さい通常のsiteの離散重みでの局所Hom。
+
+既存sectionsEquivalenceNaturalの同じ全自然性を、R09の局所同値とR13aの写像空間比較へ入れる。大きい頂点の入口は既証R11の移送を使い、新しい縮小を構成しない。
+
+##### R14 — `localEquiv_of_sheafifyIso`
+
+依存：R13b。素60〜110、補正120〜220行。
+配置：`SerrePositivity/InfinityCategories/Sheaves/localEquiv_of_sheafifyIso.lean`。
+
+```lean
+∀ {C : Type u} [SmallCategory C],
+∀ (J : GrothendieckTopology C) (hJ : Sheafification J SpaceInfinity.{u})
+  {P Q : Cᵒᵖ ⥤ Type u} (φ : P ⟶ Q) (hφ : IsLocalEquivSet J φ),
+  IsInvertibleEdge ((nerve.edgeMk φ).map
+    ((discretePresheafInclusion C).val ≫ sheafificationFunctor J hJ)).toTruncated
+```
+
+- `reflective_isIso_map_iff_localHom` @ `SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/AdjointFunctorsBetweenInfinityCategories/ReflectiveInvertedHom.lean:80`
+
+原典：HTT 5.5.4.15・6.2.2.7。指定された反射による局所同値の反転。
+
+同じ反射のreflective_isIso_map_iff_localHomとR13bを使う。反射やunitを選び直さない。
+
+##### R15-Unit — `exists_discreteSheafificationUnitHom`
+
+依存：R14, R13a。素220〜340、補正440〜680行。
+配置：`SerrePositivity/InfinityCategories/Sheaves/DiscreteSheafificationUnitComparison.lean`。
+
+```lean
+∀ {C : Type u} [SmallCategory C]
+  (J : GrothendieckTopology C) (hJ : Sheafification J SpaceInfinity.{u}),
+  let S := presheafToSheaf J (Type u) ⋙ sheafToPresheaf J (Type u)
+  let I := (discretePresheafInclusion C).val
+  ∃ η : FunctorHom I (nerveMap S ≫ I),
+    (∀ P : Cᵒᵖ ⥤ Type u,
+      let h₁ := (discretePresheafInclusion C).property.1 P
+      let h₂ : (nerveMap S ≫ I).app _ (nerveVertex P) =
+          functorVertex (discretePresheaf (S.obj P)) := by
+        change I.app _ ((nerveMap S).app _ (nerveVertex P)) = _
+        rw [nerveMap_app_mk₀]
+        exact (discretePresheafInclusion C).property.1 (S.obj P)
+      functorHomEvaluate η (nerveVertex P) =
+        eqToHom (congrArg (fun v => HomotopyCategory.mk v) h₁) ≫
+          discretePresheafHom (CategoryTheory.toSheafify J P) ≫
+          eqToHom (congrArg (fun v => HomotopyCategory.mk v) h₂.symm)) ∧
+    IsIso (functorHomPostcomp I (nerveMap S ≫ I) (sheafificationFunctor J hJ) η)
+```
+
+- `isLocalEquivSet_toSheafify` @ `SerrePositivity/InfinityCategories/Sheaves/SetLocalEquivalence.lean:38`
+- `resizedNatTransMap` @ `SerrePositivity/InfinityCategories/Project/HomotopyDiagramComparison/CatInfinity/StrictCoherentNatTrans.lean:30`
+- `kanDiscretePresheafMap_vertex` @ `SerrePositivity/InfinityCategories/Sheaves/DiscretePresheafInclusion.lean:40`
+- `sheafifyUnitHom` @ `SerrePositivity/InfinityCategories/Sheaves/SheafifyUnit.lean:35`
+
+原典：HTT 6.2.2.7・5.5.4.15 の離散係数と小さい通常siteの場合。指定したMathlibの層化単位を全関手射として実現する法則。
+
+200行超の追加照合。元の通常の層化単位を、元のnerveのuncurryの全円柱として実現してηを一度構成する（resizedNatTransMapと同じ構成の混合宇宙の計算）。元の各成分の式を保持し、R14で反射後の全ηが可逆であることを示す。
+
+##### R15a — `sheafifyDiscreteFunctorIso`
+
+依存：R14, R13a, R15-Unit。素80〜140、補正160〜280行。
+配置：`SerrePositivity/InfinityCategories/Sheaves/sheafifyDiscreteFunctorIso.lean`。
+
+```lean
+∀ {C : Type u} [SmallCategory C],
+∀ (J : GrothendieckTopology C) (hJ : Sheafification J SpaceInfinity.{u}),
+  FunctorIso
+    ((discretePresheafInclusion C).val ≫ sheafificationFunctor J hJ)
+    (nerveMap (presheafToSheaf J (Type u) ⋙ sheafToPresheaf J (Type u)) ≫
+      (discretePresheafInclusion C).val)
+```
+
+- `isSheaf_discretePresheaf_iff` @ `SerrePositivity/InfinityCategories/Sheaves/DiscreteSheafCondition.lean:48`
+- `reflective_isIso_map_iff_localHom` @ `SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/AdjointFunctorsBetweenInfinityCategories/ReflectiveInvertedHom.lean:80`
+
+原典：HTT 5.5.6.28・6.2.2.7。集合値層化と0切り捨ての層化の比較の特殊な表示。
+
+R15-Unitの全ηを反射し、通常の集合値層の離散像の層条件と反射の単位・余単位の法則で同じ全関手の同型にする。成分ごとに同型を選んで集めない。残り80〜140行。
+
+##### R15b — `sheafify_discrete_eq`
+
+依存：R15a。素20〜80、補正40〜160行。
+配置：`SerrePositivity/InfinityCategories/Sheaves/sheafify_discrete_eq.lean`。
+
+```lean
+∀ {C : Type u} [SmallCategory C],
+∀ (J : GrothendieckTopology C) (hJ : Sheafification J SpaceInfinity.{u})
+  (P : Cᵒᵖ ⥤ Type u),
+  FunctorIso (sheafify J hJ (discretePresheaf P))
+    (discretePresheaf (((presheafToSheaf J (Type u)).obj P).obj))
+```
+
+- `isSheaf_discretePresheaf_iff` @ `SerrePositivity/InfinityCategories/Sheaves/DiscreteSheafCondition.lean:48`
+
+原典：HTT 5.5.6.28、draftsの同名の型。
+
+R15aを指定頂点で評価し、元のsheafifyと離散埋め込みの頂点等式で端点を揃える。
+
+##### R15c — `sheafify_discrete_eq_hom_fac`
+
+依存：R15a, R15b, R13a。素20〜90、補正40〜180行。
+配置：`SerrePositivity/InfinityCategories/Sheaves/sheafify_discrete_eq_hom_fac.lean`。
+
+```lean
+∀ {C : Type u} [SmallCategory C],
+∀ (J : GrothendieckTopology C) (hJ : Sheafification J SpaceInfinity.{u})
+  (P : Cᵒᵖ ⥤ Type u),
+  sheafifyUnitHom J hJ (discretePresheaf P) ≫ (sheafify_discrete_eq J hJ P).hom =
+    discretePresheafHom (CategoryTheory.toSheafify J P)
+```
+
+- `sheafifyUnitHom` @ `SerrePositivity/InfinityCategories/Sheaves/SheafifyUnit.lean:35`
+- `sheafificationReindexSpecifiedMateIso_mate` @ `SerrePositivity/InfinityCategories/Sheaves/SheafificationSiteSpecifiedComparison.lean:53`
+
+原典：HTT 5.5.6.28・5.5.4.15。元の反射単位を保つ比較の法則。
+
+R15-Unitの元の単位の各成分の式と、R15aの反射の三角法則を指定頂点へ制限する。元のtoSheafifyの射の類を保持する。
+
+#### chooseと指定構成の点検
+
+| 依存する選択 | 保持する仕様と今回の扱い |
+|---|---|
+| scaffoldCoherentComparison・scaffoldTransportComparisonSpan | 指定embeddingでの相対同型と元の二脚を保持。既計上620行で同じ相対同型を使うことまで検証済み。置き換えなし。 |
+| nerveCoherentTransportRepresentationIso | 同じ可縮な表現空間内の比較。図式同型全体が一意とは使わない。C1は指定prismから証明する。 |
+| limitVertexIsoOfLeftStraighteningIsoの中間極限hp・hq | 選択条件は指定図式の極限錐。全錐を引数として扱い、極限の一意性とapexで消去する。余単位を値だけへ忘れない。置き換えなし。 |
+| weightedSections_valueTransport・nativeShape/leftLimitの比較 | 11-16/17の承認で同じ指定余単位αに沿うvalueTransportへ修正済み。R04〜06はその選択を再利用。置き換えなし。 |
+| sectionsOf/sectionsOfCone | 元の各HasLimitから同じ極限錐を使う。自然性はsectionsEquivalenceNaturalと全関手比較へ還元する。新しく対象ごとに同型を選ばない。 |
+| Classical.choice hJ・MathlibのsheafificationAdjunction | 元の二つの反射とそれぞれの指定単位をそのまま使う。R15-Unitで元の通常の単位の全族を一度実現する。置き換えなし。 |
+
+新規choose置き換え0。既存のchoose表255件は変更しない。他レーン・main既存本文の変更予定0。
+原典より狭い係数・siteの場合はspecialの文献属性を付け、partialのkerodon属性は付けない。
+
+#### 29,000行の区切りの着手判定
+
+検証済み23,595行を起点とし、各行を補正上端で積んだ保守的な仮置き：
+
+| 群 | 追加する補正上端 | 累計仮置き |
+|---|---:|---:|
+| P3-C1PN | 720 | 24315 |
+| P3-C1P | 300 | 24615 |
+| P3-C1 | 280 | 24895 |
+| P3-D | 440 | 25335 |
+| P3-E | 220 | 25555 |
+| R04 | 800 | 26355 |
+| R05 | 300 | 26655 |
+| R06 | 800 | 27455 |
+| R08 | 360 | 27815 |
+| R09-Cech | 720 | 28535 |
+| R09 | 240 | 28775 |
+| R12a | 500 | 29275（この仮置きでは着手せず区切る） |
+
+上の累計は証明できた行数ではない。各群が通るたびに実測へ置き換え、次の群の補正上端を
+足して再判定する。既計上のC1Pの620行や引用の4行を重ねて足さない。表で区切られる
+後続とR16・R17は、全ての紙は今作るが、この外枠に押し込んで着手しない。
+署名一本ごとの補正上端は全て800以内。全残りが29,000に入るとの主張ではなく、
+ユーザー指定の「超える手前で完成した署名群を区切る」を実行する。
+紙の範囲内の事前承認に従い、紙をコミットした後は止まらずP3-C1PNのLeanへ進む。
+S7・R2・R3・P⁰は再開しない。旧R2の未追跡4本は編集・ビルド・コミットしない。
+一覧：済み 18／全体 39（うち追加 4、別停止点 2）。
+
+一括点検の道具の結果：39頂点・66辺のDAGで循環なし。旧36署名の完全な型と、承認されたC1PNの型は文字列で不変。未完署名の補正上端は全て800以下。証拠は `evidence/inf-supply/rescan-1117-evening/manifest.json`。
