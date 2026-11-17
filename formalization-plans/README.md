@@ -9,7 +9,7 @@
 | 文書 | 役割 | 最終更新 |
 | --- | --- | --- |
 | [coordination.md](coordination.md) | レーン・ビルドの規則・暦・各レーンの現状 | 11-17 |
-| [stage-ii/stage-ii-second-half.md](stage-ii/stage-ii-second-half.md) | 段階 II 後半の段の表と依存 | 11-14 |
+| [stage-ii/stage-ii-second-half.md](stage-ii/stage-ii-second-half.md) | 段階 II 後半の段の表と依存。§10 に 11-17 時点の進め方と残りの課題 | 11-17 |
 | [coordinator-handover-2026-11.md](coordinator-handover-2026-11.md) | 調整役の引き継ぎ | 11-05 |
 | [stage-ii/p0/p0-plan-draft.md](stage-ii/p0/p0-plan-draft.md) | 方針：P⁰（DAG XIII 2.2.6）を第一に、文献に忠実に（P1〜P6） | 11-16 |
 | [stage-ii/p0/p0-section-map.md](stage-ii/p0/p0-section-map.md) | P⁰ の地図と項目の閉包の規則 | 11-16 |
