@@ -3632,3 +3632,15 @@ private def pairedRowEvaluationIso
 - F10 `SerrePositivity.AlgebraicGeometry.fppfComparison_baseChange_descent`：元の相対アフィンfppf射の合成の各正次数の底変換に、同じ細分の消去で普遍Čech降下性を供給する（3fb97ec24）。
 - F11 `SerrePositivity.AlgebraicGeometry.affine_fppf_composite_tupleTotal_acyclic`：Noetherアフィン基底上の固有全射の普遍降下性から、相対アフィンfppfとの合成の単位被覆の元のタプルtotalの完全性を得る（4532c6a86）。
 - D07 `SerrePositivity.AlgebraicGeometry.perfectCechUniversalDescent_affine_fppf_comp`：相対アフィンfppfと同じ固有全射の合成の普遍Čech降下性を、元の全ての試験基底・被覆で得る（d23de07cc）。
+
+## 2026-11-17：Noether閉像帰納と固有全射の普遍降下（a4e57a7b1・5d32b4127）
+
+- I10・I11・I12を同じ署名・仮定で実装。新規2モジュール139行＋入口4行＝143行、所有3宣言。各束の原稿・本体の同一バイトとSHA、対象ビルド5,408・5,409ジョブと直接importer、別の共有鍵の所有監査が成功。標準三公理以外0。
+- I10は閉像の同じ閉埋め込みの始域を被約化し、2dの許容ブローアップと固有fppfの細分を用いる。中心の真に小さい閉像へ帰納仮定を渡してI04でブローアップの降下性を得、D07・D06で元の固有全射へ戻す。空の基底も扱い、元の固有全射の滑らかさは仮定しない。被約化の反映はD09を使う。
+- I11はNoether閉集合の真の包含の整礎性でこの一段を閉じる。I12は同じ基底の恒等閉埋め込みと最大閉像に適用する。一般のNoetherアフィン基底上の固有全射について、同じ全ての試験基底・被覆の普遍降下性を得た。
+- 累計23,775行（新規310モジュール23,389行、既存追加25行、入口361行）。所有宣言累計2,515件、既存15件は別。残り3署名の素の合計105〜210行へ係数2、登録等の予備100〜250行を加えた完成見込み24,085〜24,445行。28,000行以内。
+- 一覧：済み1／全体3（うち追加0）。内部署名：済み86／89（G4・G5）、追加0。残りはI13のNoether有限表示v被覆とE16・E18の模型のfiltered移送。一般のaffine v被覆の結論はまだ未完成。
+
+- I10 `SerrePositivity.AlgebraicGeometry.noetherClosedPerfectCechProperty_step`：真に小さい閉像上の固有全射の普遍降下性から、指定した同じ閉像上の固有全射の普遍降下性を得る（a4e57a7b1）。
+- I11 `SerrePositivity.AlgebraicGeometry.noetherClosedPerfectCechProperty_all`：Noether閉像の帰納で、全ての閉像について同じ普遍降下性を得る（5d32b4127）。
+- I12 `SerrePositivity.AlgebraicGeometry.properSurjective_perfectCechUniversalDescent`：Noetherアフィン基底上の元の固有全射の完全構造層の普遍Čech降下性を得る（5d32b4127）。
