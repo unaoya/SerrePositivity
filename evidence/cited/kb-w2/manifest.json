@@ -1,0 +1,14 @@
+{
+ "directory": "/Users/sugakubunka/serre-evidence/cited/kb-w2",
+ "commit": "60fe949a7",
+ "made_by": "KB-W2 原文・型・再検索・CSV静的検証（アーカイブ内の手順）",
+ "note": "Lean・kernel・ビルドなし。原文と候補型はgit外。18章4277対象行、保護319行literal保存。",
+ "files": [
+  {
+   "path": "review-evidence.tar.gz",
+   "sha256": "c0e180b6b879cbf18b4bb23e032bba63c635c9039f954d278ac743935bafe603",
+   "bytes": 355725665
+  }
+ ],
+ "total_bytes": 355725665
+}
