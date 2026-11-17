@@ -3,7 +3,7 @@
 判定：**既存の固定入力成果は保存できるが、進捗表の数式・所有・完了表示と正本の適用範囲を改訂する必要がある。**
 対象は foundations-progress、infinity-core-* 20 本、kst-lanes 直下 16 本（計 37 計画）と foundations／KST 正本等。
 検査開始時 HEAD は `688a49e63433e06ef6eb21625cd44e30b90902a3`。稼働中 checkout の未コミット成果も区別して読んだ。
-本報告と [R2 分担表](../refactoring-infinity-r2.md) §2 の R2-E 行以外は変更していない。以下の修正・移動は提案で、未実施。
+本報告と [R2 分担表](stage-i/refactoring-infinity-r2.md) §2 の R2-E 行以外は変更していない。以下の修正・移動は提案で、未実施。
 
 ## 1. 一枚の不整合一覧・修正指示
 
@@ -31,7 +31,7 @@
 - `K∞:StableInfinity→Sp` と `θ:K∞J⇒Ω K∞JΣκ^perf` を全自然変換として構成する。指定 K-6/BF 射への回収と raw→perf 比較を保持し、θ 自体を一般の同値と仮定しない。
 - `Seqκ:S→Fun(N(ℕ),Sp)` の n 段を `Ωⁿ K∞(J(Σκ^perf)ⁿ C)`、遷移を `Ωⁿ θ((Σκ^perf)ⁿ C)` とし、`Knc=colim_ℕ∘Seqκ`。固定 A の既存 BF 図式と全反復構造射を含む FunctorIso を作って対象別比較を得る。最終登録は `ν≫P≫Knc`（perf 因子化がある場合は同値な制限）。
 - 局所化定理は別工程：Fκ/Σκ の exact 列保存、connective K の必要な比較、反復での欠損消去、Sp 余極限・fiber の交換、Morita／完備化・通常 filtered 余極限との整合を証明する。商普遍性・swindle だけで Knc の fiber 性を宣言しない。
-- [F2-St §A・追補3](../infinity-lanes/infinity-core-stability-functoriality.md) を設計仕様として参照する。一般底 Cat∞ straightening と全 Pr 双対性は未完成であり、Ind 専用の普遍性族化を使う場合も共有境界・全 n の整合を別途証明する。
+- [F2-St §A・追補3](stage-i/infinity-lanes/infinity-core-stability-functoriality.md) を設計仕様として参照する。一般底 Cat∞ straightening と全 Pr 双対性は未完成であり、Ind 専用の普遍性族化を使う場合も共有境界・全 n の整合を別途証明する。
 
 ## 3. R 候補の網羅と中継先（§3への追加はコーディネータに委ねる）
 

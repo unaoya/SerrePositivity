@@ -5,14 +5,14 @@
 ## 現状（main 4e486b413 時点）
 
 - `formalization-plans/` は 2,226 本・約 201 MB。うち `stage-ii/` が 169 MB（1,529 本）で、その 163.5 MB は検証の証拠（json 683・gz 613・py 148・log など）。大きいのは `bulk-b3prime/` 66 MB、`bulk-w1-b2/` 37 MB、`bulk-w1-b3/` 33 MB、`bulk-5inf3a/` 16 MB、`bulk-5inf0/` 4.3 MB。`archive/` 22 MB、`bhatt-scholze/` 7.7 MB（G12 の証拠 53 本を含む）。
-- 追記で大きくなった報告：`bhatt-scholze/report-codex-w16.md` 23,559 行（⑤a）、`report-codex-m15.md` 18,560 行（⑤d）、`stage-ii/report-inf-supply-w2.md` 18,539 行（③-b の IS-W2）、`report-inf-supply-w1.md` 10,150 行（③-a）、`scheme-w1-2e-declarations.md` 3,931 行、`report-bulk-w1.md` 3,031 行。
+- 追記で大きくなった報告：`bhatt-scholze/reports/report-codex-w16.md` 23,559 行（⑤a）、`report-codex-m15.md` 18,560 行（⑤d）、`stage-ii/inf-supply-b/report-inf-supply-w2.md` 18,539 行（③-b の IS-W2）、`report-inf-supply-w1.md` 10,150 行（③-a）、`scheme-w1-2e-declarations.md` 3,931 行、`report-bulk-w1.md` 3,031 行。
 - `.git` は 513 MB。すでに公開のリモートに push 済みなので、履歴を書き換えない限りリポジトリの大きさは減らない。
 
 ## (1) 正本の索引を README の先頭に
 
 `formalization-plans/README.md` の先頭に「今の正本」を一つの表で置く（文書・役割・最終更新）。候補：
 - 全体：`coordination.md`（レーン・ビルドの規則・暦）、`stage-ii/stage-ii-second-half.md`（段の表）、`coordinator-handover-2026-11.md`
-- 方針：`stage-ii/p0-plan-draft.md`（P⁰ と文献に忠実に）、`stage-ii/p0-section-map.md`（地図・閉包の規則）、`stage-ii/infinity-consolidation-w1.md`（IC-W1）、`stage-ii/citation-attributes.md`
+- 方針：`stage-ii/p0/p0-plan-draft.md`（P⁰ と文献に忠実に）、`stage-ii/p0/p0-section-map.md`（地図・閉包の規則）、`stage-ii/consolidation/infinity-consolidation-w1.md`（IC-W1）、`stage-ii/citation-attributes.md`
 - 台帳：`refactor-ledger.md`、`refactor-plan.md`（論文の層）
 - BS：`bhatt-scholze/design/design-status.md`（設計の決定 D 番号）
 - K：`k-restart-draft.md`
@@ -36,7 +36,7 @@
 
 ## (5) 段階 I の計画と infinity-lanes/ を archive へ
 
-`archive/stage-i/` へ：`infinity-codex-g1.md`・`infinity-codex-g2*.md`・`infinity-foundation-plan.md`・`infinity-g2-progress.md`・`refactoring-infinity*.md`・`refactoring-verdier.md`・`handover-ct-to-infinity-2026-10-30.md`・`dg-cleanup-plan.md`（完了）・`cleanup-list-2026-11.md`、`infinity-lanes/`（26 本）、`kst-lanes/`（28 本。K の再開の前なので、`k-restart-draft.md` からの参照を移動表で直す）。`stage-ii-plan-draft.md` は stage-ii-second-half に置き換わっているが、決定の記録として参照されるので当面は残す（段 1 で判断）。
+`archive/stage-i/` へ：`archive/stage-i/infinity-codex-g1.md`・`infinity-codex-g2*.md`・`archive/stage-i/infinity-foundation-plan.md`・`archive/stage-i/infinity-g2-progress.md`・`refactoring-infinity*.md`・`archive/stage-i/refactoring-verdier.md`・`archive/stage-i/handover-ct-to-infinity-2026-10-30.md`・`archive/stage-i/dg-cleanup-plan.md`（完了）・`archive/stage-i/cleanup-list-2026-11.md`、`infinity-lanes/`（26 本）、`kst-lanes/`（28 本。K の再開の前なので、`k-restart-draft.md` からの参照を移動表で直す）。`stage-ii-plan-draft.md` は stage-ii-second-half に置き換わっているが、決定の記録として参照されるので当面は残す（段 1 で判断）。
 
 ## (6) 手で保つ宣言の一覧を B5 の生成物に
 
@@ -53,3 +53,11 @@
 - **将来、人が読む解説は `exposition/` も含めてブループリント（`blueprint/`）に一本化する**（ユーザー 11-17）。ブループリントは対応表（`research/`）と Lean から生成し、手で書いた事実を持たない。短い日本語の主張と長い解説も、正本は `research/` の側（対応表の列、または解説の原稿）に置いて生成する形を目指す。
 - それまでのつなぎ（案 a）：Artifact で公開している地図のページを、リポジトリの `research/<文献>-coverage/map/`（`template.html`・`data.json`）に置き、`scripts/docs/coverage_map.py` で作り直せるようにした（c1 の実施、2026-11-17）。P⁰ の地図は `research/p0-lurie/map/` に移した。
 - 参照の向き：Lean は文献だけを引く。`research/` は文献と Lean を引く。`blueprint/` は `research/` と Lean から生成。`exposition/` は文献・Lean・ブループリントを引く（一本化まで）。`formalization-plans/` はどこを引いてもよいが、ほかの場所の中身は計画に頼らない。
+
+## 段 1 の実施（2026-11-17、調整役、枝 `docs/reorg-stage1`）
+
+- 移動表の「すぐ」の 197 行を `scripts/docs/apply_move_table.py` で適用（128 本・69 ディレクトリ、文書 215 本のリンクと `formalization-plans/<旧パス>` の書き方を機械的に書き換え）。`.lean` に残る参照はなし。段 0 の未分類 3 行の判断：`inf-core-w1.md` → `stage-ii/consolidation/`、`report-dag13-ns-coverage.md` → `stage-ii/p0/`、`report-inf-supply-w1.md` → ③-a の停止点の後。`bhatt-scholze/perfectoidization-interface.md` は Lean の docstring 2 本から参照されるので動かさない（規則：Lean から参照される文書は動かさない）。
+- (1) 索引を `README.md` の先頭に。(4) 既存の証拠は `evidence/`（158 MB）、これからの規則は `evidence/README.md`（git の外 `~/serre-evidence/<レーン>/<段>/`、目録 `manifest.json` だけをコミット）。(5) 段階 I の計画と `infinity-lanes/`・`kst-lanes/` は `archive/stage-i/`。(3) W16・M15・IS-W2 の報告に「現在地」、終わった段は `archive/reports/`。
+- リンク検査：`python3 scripts/check_documentation.py --links-only`（formalization-plans を再帰、evidence・exposition も対象）。移動で新しく切れたのは kst-lanes の 7 本（直した）。それ以前から切れていた約 1,900 件（archive の古い `.lean` 参照、絶対パス）はそのまま。
+- 文書の四つの場所と参照の向きの規則は `../README.md` の「Documents」に置いた（正本）。`exposition/` は凍結し、分類 A〜D と行き先を `exposition/README.md` に書いた（読み物 D もブループリントに入れる、ユーザー 11-17）。
+- 段 2（停止点ごと）：③-a（`inf-supply-a/`、報告の現在地）、⑥（`scheme/`、`scheme-w1-b4` → `evidence/scheme/`）、③-b の OE-W1（`consolidation/`）。各レーンには、取り込み後に報告の場所が変わることと「証拠は git の外」の一行を、停止点の取り込みのときに伝える。

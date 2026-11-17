@@ -2,7 +2,7 @@
 
 ⑤d、2026-11-16。基準main `616bd9a74`、枝 `codex/p0-section-closure-300`。
 前回の151節・418辺（⑤d `ce05ea53f`、main取り込み `9e08834eb`）を、
-`formalization-plans/stage-ii/p0-section-map.md` §7のユーザー承認に従って振り分け直した。
+`formalization-plans/stage-ii/p0/p0-section-map.md` §7のユーザー承認に従って振り分け直した。
 
 ## 結果と停止点
 

@@ -14,11 +14,11 @@
 
 ## 読む文書
 
-1. **本体**：`formalization-plans/infinity-foundation-plan.md`（約 290 行）。§8 に、第 1 回のレビューで変えた点がまとめてある。
+1. **本体**：`formalization-plans/archive/stage-i/infinity-foundation-plan.md`（約 290 行）。§8 に、第 1 回のレビューで変えた点がまとめてある。
 2. **最初の指示書**：`formalization-plans/infinity-codex-w0-1.md`。
 3. **根拠（必要なときだけ）**：
-   - `formalization-plans/refactoring-verdier.md`
-   - `formalization-plans/refactoring-infinity-r2.md`
+   - `formalization-plans/archive/stage-i/refactoring-verdier.md`
+   - `formalization-plans/archive/stage-i/refactoring-infinity-r2.md`
    - `formalization-plans/archive/infinity-outside-survey-2026-10-28.md`
    - `formalization-plans/archive/repository-survey-2026-10-28.md`
 

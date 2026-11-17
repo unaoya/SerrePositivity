@@ -6,9 +6,9 @@
 旧二入口は公開名・型を保って界面からの証明に置換し、CLMST の利用箇所は変更していない。
 主定理の未証明依存は、この入力と `Section4.supportedRankK0_descent`・`theorem_3_1_K0` の三件。
 界面の具体的構成・降下の証明と E2 の表示比較は別工程として残る。
-正本の計画は [infinity-categories.md](../infinity-lanes/infinity-categories.md) §0・§6、
-[derived-infinity-category.md](../infinity-lanes/derived-infinity-category.md) §0、
-モデルの工程は [e-infinity-algebras.md](../infinity-lanes/e-infinity-algebras.md)。
+正本の計画は [infinity-categories.md](../archive/stage-i/infinity-lanes/infinity-categories.md) §0・§6、
+[derived-infinity-category.md](../archive/stage-i/infinity-lanes/derived-infinity-category.md) §0、
+モデルの工程は [e-infinity-algebras.md](../archive/stage-i/infinity-lanes/e-infinity-algebras.md)。
 §4・§5 のコードは **型の草案**。既存宣言と設計用の略記を区別する。
 §7 末尾は実装した公開宣言の名前と型である。
 

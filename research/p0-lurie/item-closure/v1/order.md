@@ -1,7 +1,7 @@
 # P⁰の項目単位の閉包（⑤d、2026-11-16）
 
 基準main `51b881ee7`を取り込み（merge `99952331e`）、枝 `codex/p0-item-closure`で作業した。
-`formalization-plans/stage-ii/p0-section-map.md` §8の範囲の単位を適用する。
+`formalization-plans/stage-ii/p0/p0-section-map.md` §8の範囲の単位を適用する。
 300節の閉包（`d5d38e47c`）の4ファイルは経過資料として変更せずに残す。
 
 ## 結果

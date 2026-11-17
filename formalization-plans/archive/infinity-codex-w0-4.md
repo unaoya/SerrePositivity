@@ -1,7 +1,7 @@
 # Codex 作業指示書 IF-W0-4：基盤の層の登録と、verify runner のメモリ予算つき並列化
 
 作成：2026-11-01（∞ 基盤の整備、管理は Claude）。宛先：∞ の Codex。**開始は、W1＋W2a の束が main に入った後**（[coordination.md](../coordination.md) §3 の #3 の後）に Claude が合図する。
-計画：[infinity-foundation-plan.md](../infinity-foundation-plan.md) §6 の IF-W0-4 行（10-31 改訂）、R67（Coxeter の登録）、R77 の前提。伝達文 [handover §1・§3・§6](../handover-ct-to-infinity-2026-10-30.md)。
+計画：[infinity-foundation-plan.md](stage-i/infinity-foundation-plan.md) §6 の IF-W0-4 行（10-31 改訂）、R67（Coxeter の登録）、R77 の前提。伝達文 [handover §1・§3・§6](stage-i/handover-ct-to-infinity-2026-10-30.md)。
 **共通の前提**：[IF-W0-1](infinity-codex-w0-1.md) §0。worktree は `../SerrePositivity-ifw0-3` をそのまま使い、束の取り込み後の main から `infra/if-w0-4` を切る。
 ビルドを伴う作業はほぼない（verify の試験実行 1 回だけ。§4）。止めて報告する点は 2 か所（§5）。
 

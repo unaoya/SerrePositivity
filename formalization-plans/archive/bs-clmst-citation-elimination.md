@@ -1,6 +1,6 @@
 # BS・CLMST の引用解消計画（perfectoid 側）
 
-> **アーカイブ（2026-10-18）**：CLMST の命題と BS Lemma 10.3・Remark 10.7・Thm 7.14 は証明済み。残る引用と決定事項は [BS 主計画](../bhatt-scholze/bhatt-scholze.md)、∞ 圏による解消は [∞ 圏の計画](../infinity-lanes/infinity-categories.md)。将来は削除する予定で、以下は当時の計画と実施記録のまま。
+> **アーカイブ（2026-10-18）**：CLMST の命題と BS Lemma 10.3・Remark 10.7・Thm 7.14 は証明済み。残る引用と決定事項は [BS 主計画](../bhatt-scholze/notes/bhatt-scholze.md)、∞ 圏による解消は [∞ 圏の計画](stage-i/infinity-lanes/infinity-categories.md)。将来は削除する予定で、以下は当時の計画と実施記録のまま。
 
 
 作成日：2026-10-16。状態：計画のみ（未着手）。
@@ -9,7 +9,7 @@
 （`paper/refs/BS-prisms-author.pdf`、番号は[BS計画 §1](../bhatt-scholze/bhatt-scholze.md)に従う）。
 CLMST は arXiv:2209.04046v4（`paper/refs/CLMST-2209.04046v4.pdf`）。
 
-この計画は、[BS計画](../bhatt-scholze/bhatt-scholze.md)と[CLMST計画](clmst.md)の両方にまたがる
+この計画は、[BS計画](../bhatt-scholze/notes/bhatt-scholze.md)と[CLMST計画](clmst.md)の両方にまたがる
 「引用解消」の作業順を一つにまとめたものである。δ環・prism・perfectoid 化の原典の証明経路は
 引き続き BS 計画を正本とし、本計画は「どの引用を、どの順で、どの主張の形で外すか」だけを扱う。
 K 理論側（定理 3.1・補題 4.6）は本計画と独立であり、[k-theory.md](../k-theory.md) で扱う。
@@ -228,7 +228,7 @@ Lean の追加は D 系列と B・C 系列で合計 1.2〜2 万行。E 系列（
 
 ## 9. 既存計画との関係（変更点の明記）
 
-- [BS計画 §5](../bhatt-scholze/bhatt-scholze.md)の「B4c の経路」は B4-6 として完成した。本計画の E 系列はその延長で Thm 7.14 の完全版を扱う。
+- [BS計画 §5](../bhatt-scholze/notes/bhatt-scholze.md)の「B4c の経路」は B4-6 として完成した。本計画の E 系列はその延長で Thm 7.14 の完全版を扱う。
 - [CLMST計画](clmst.md)の D-app1〜3・KL-app1〜3（2026-10-15 の「G 系列 → KL → D」の順）は、
   本計画の D 系列（D3〜D8）に置き換わる。KL-app・D-app が前提としていた「深い入力の供給」は I2・I3 で行う。
 - B-I の扱い（BS計画 §5 項目 2「B5 の後に再検討」）は、目標 3（F 系列）として本計画に統合する。

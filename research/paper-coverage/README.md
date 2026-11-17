@@ -1,6 +1,6 @@
 # 本論文の全体対応表（⑤d、2026-11-17）
 
-ユーザー承認11-17、指示書 `formalization-plans/stage-ii/paper-blueprint.md` に従い、最新main `c499fc236` から枝 `codex/paper-coverage` を切って作成した。Leanの追加・変更・実行・ビルドはしていない。
+ユーザー承認11-17、指示書 `formalization-plans/stage-ii/p0/paper-blueprint.md` に従い、最新main `c499fc236` から枝 `codex/paper-coverage` を切って作成した。Leanの追加・変更・実行・ビルドはしていない。
 
 ## 結果
 

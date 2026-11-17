@@ -1,6 +1,6 @@
 # P⁰の項目単位の閉包 v2（⑤d、2026-11-16）
 
-基準 main `deb58367a` を枝 `codex/p0-item-closure` に fast-forward で取り込んだ。`formalization-plans/stage-ii/p0-section-map.md` §8–§10 と今回のユーザー指定を適用する。旧1,014項目の3ファイルは `v1/` にバイト単位で保存し、300節の `../section-closure/` は変更していない。
+基準 main `deb58367a` を枝 `codex/p0-item-closure` に fast-forward で取り込んだ。`formalization-plans/stage-ii/p0/p0-section-map.md` §8–§10 と今回のユーザー指定を適用する。旧1,014項目の3ファイルは `v1/` にバイト単位で保存し、300節の `../section-closure/` は変更していない。
 
 ## 停止点：2,000項目、閉包は未完成
 

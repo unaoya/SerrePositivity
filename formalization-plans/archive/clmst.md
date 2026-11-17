@@ -112,7 +112,7 @@ F5の全13公開宣言と適用監査4宣言も引き続き証明済み。
 
 ## 0.2. Bhatt–Scholzeの別計画との統合（2026-10-14）
 
-[BS計画](../bhatt-scholze/bhatt-scholze.md)を参照し、今後の順序を以下に改める。
+[BS計画](../bhatt-scholze/notes/bhatt-scholze.md)を参照し、今後の順序を以下に改める。
 BSの原典証明・δ環・prismの設計は同文書を正本とし、
 本節はCLMSTから必要になる成果物、共通部品、接続の完了条件を扱う。
 BS計画のB-I/B-S/B-Rはそれぞれ、普遍perfectoid化の存在、全射性、
@@ -4671,7 +4671,7 @@ KL6-a2-ii（2026-10-15）：`ProjectiveExtColimitExact.lean`で、実際の射�
 座標冪商への特殊化と零次の標準比較の合成、KL6-a1の再帰比較の適用は次の工程。
 
 共通基盤の追加要求受領（2026-10-15）：BS側からG3・G6・G7の公開API要求を受領した。
-正本は`formalization-plans/bhatt-scholze/bhatt-scholze.md`と`BhattScholze/B4ExecutionPlan.md`。
+正本は`formalization-plans/bhatt-scholze/notes/bhatt-scholze.md`と`BhattScholze/B4ExecutionPlan.md`。
 G3はaの基底環・加群上の正則性とmod a平坦性から既存`IsCompletelyFlat`への判定、
 G6は実導来a完備な環でのa∈Jacobson(0)、G7は任意の逐次加群図式に対する
 `(ModuleCat.extendScalars φ).leftDerived i`のcolimit保存を要求する。
@@ -4868,7 +4868,7 @@ G2-5a-ii標準写像（2026-10-15）：`DerivedDiscreteAlgebraMaps.lean`で、�
 既存の原典・深い存在入力は維持しており、この合流を三系列全体の完成とはしない。
 
 共通基盤の追加要求G4・G8受領（2026-10-15）：BSチャットから新たな共通API要求を受領した。
-正本は`formalization-plans/bhatt-scholze/bhatt-scholze.md`のG4・G8。正本の「未送信」表記と本チャットへの受領記録は区別する。
+正本は`formalization-plans/bhatt-scholze/notes/bhatt-scholze.md`のG4・G8。正本の「未送信」表記と本チャットへの受領記録は区別する。
 G4はp乗算単射の下でのWittVector.ghostMap単射であり、p可逆性・Noether性・完備性は追加しない。
 G8は任意の環射f:R→Sについて、S上のf(a)実導来完備化をRへ係数制限した関手と、
 先に係数制限してR上でa完備化する関手の自然同型、および既存標準単位との両立である。
@@ -4911,7 +4911,7 @@ augmentationをtensorし離散tensor比較を通した実cochain写像の局所�
 共通基盤の追加要求G9受領（2026-10-15）：BSチャットから、有界p冪ねじれを持つ係数環T上の
 実p導来完備な上有界対象Xについて、実T/(p)導来底変換が零次数に集中し、そのH⁰が平坦ならば、
 Xも零次数に集中し、H⁰(X)のp冪ねじれが有界となる判定を受領した。
-正本は`formalization-plans/bhatt-scholze/bhatt-scholze.md`のG9。Noether性・有限生成性・p正則性・
+正本は`formalization-plans/bhatt-scholze/notes/bhatt-scholze.md`のG9。Noether性・有限生成性・p正則性・
 古典的完備性は追加せず、既存の実導来対象・底変換・IsCompleteを使う。
 G3の既に離散な加群の完全平坦性判定、G7のcolimit交換、G8の係数制限交換とは別要求として保持する。
 未実装・未受渡しであり、今回のG2の乗法比較からこの離散性を得たとは扱わない。
@@ -4953,7 +4953,7 @@ MonObj／IsCommMonObjを構成する。その後、二因子の代数対象と�
 共通基盤の追加要求G10受領（2026-10-15）：BSチャットから冪零イデアルに沿う実導来平坦性の
 持ち上げを受領した。可換環T、I^N=0となるI、上有界の実導来対象Xについて、
 実T/I底変換が零次数に集中してH⁰が平坦なら、Xも零次数に集中しH⁰(X)がT平坦となる判定を求める。
-Noether性・有限生成性・正則性は追加しない。正本は`formalization-plans/bhatt-scholze/bhatt-scholze.md`のG10。
+Noether性・有限生成性・正則性は追加しない。正本は`formalization-plans/bhatt-scholze/notes/bhatt-scholze.md`のG10。
 BS側のT=A/(dⁿ,p)での適用からG9の剰余平坦性入力を供給するための別要求として管理する。
 冪零性、商環同型、具体的な二段底変換とn=0の零商はBS側が担当する。
 G10は本時点で未実装・未受渡し。今回のG2の実単位則や既存G3・G9とは区別する。

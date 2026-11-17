@@ -1,6 +1,6 @@
 # BS 勉強ノートにあった「形式化の課題」の原文（2026-11-12）
 
-`exposition/ja/bs/02-delta.html`・`03-prism.html` の「形式化の課題」の節（T2-n・T3-n、10-25〜11-07 に書いたもの）を、ノートから外す前に写したもの。文は変えていない。ユーザーの方針（11-12）で、作業項目もリファクタ候補と同じく形式化の側で管理し、扱いは形式化の調整役が判断する。**状態は確かめていない**（たとえば T2-1 の多変数化は BS-W15 K1、T3-3 の Ex 3.4 は BS-W15 K2 で入っている）。今の状態は地図 `research/bs-coverage/items.csv` と `formalization-plans/bhatt-scholze/design-status.md` を見る。
+`exposition/ja/bs/02-delta.html`・`03-prism.html` の「形式化の課題」の節（T2-n・T3-n、10-25〜11-07 に書いたもの）を、ノートから外す前に写したもの。文は変えていない。ユーザーの方針（11-12）で、作業項目もリファクタ候補と同じく形式化の側で管理し、扱いは形式化の調整役が判断する。**状態は確かめていない**（たとえば T2-1 の多変数化は BS-W15 K1、T3-3 の Ex 3.4 は BS-W15 K2 で入っている）。今の状態は地図 `research/bs-coverage/items.csv` と `formalization-plans/bhatt-scholze/design/design-status.md` を見る。
 
 ## 02-delta.html:399
 

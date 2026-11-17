@@ -1,6 +1,6 @@
 # P⁰の項目単位の閉包 v3：既形式化の項目で展開を止める（⑤d、2026-11-16）
 
-基準は `deb58367a` を取り込んだ枝 `codex/p0-item-closure`、直前のv2コミットは `68d0a75cc`。今回のユーザー決定11-16を、`formalization-plans/stage-ii/p0-section-map.md` §8–§10の根・項目単位・一般性・モデル圏回避の規則に追加した。
+基準は `deb58367a` を取り込んだ枝 `codex/p0-item-closure`、直前のv2コミットは `68d0a75cc`。今回のユーザー決定11-16を、`formalization-plans/stage-ii/p0/p0-section-map.md` §8–§10の根・項目単位・一般性・モデル圏回避の規則に追加した。
 
 旧1,014項目の `v1/` は変更せず、直前の2,000項目の `items.csv`・`edges.csv`・`order.md`・`excluded-model.csv` は内容そのままで `v2/` に保存した。節単位の経過資料、文献対応表、地図、Leanは変更していない。
 

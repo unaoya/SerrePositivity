@@ -1,6 +1,6 @@
 # γ1.5 の旧 API 索引
 
-更新先は [E∞ 代数の計画 §5](../infinity-lanes/e-infinity-algebras.md#5-記録)。
+更新先は [E∞ 代数の計画 §5](stage-i/infinity-lanes/e-infinity-algebras.md#5-記録)。
 数学・設計・API の詳細は [InfinityCategories/README.md](../../SerrePositivity/InfinityCategories/README.md)、
 正確な型と公理は [監査](../../scripts/audit_dold_kan_comparison.lean) に置く。
 実施の経緯と検証はコミットメッセージを参照する。以下は整理前の索引を保存したもの。

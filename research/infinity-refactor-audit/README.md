@@ -3,7 +3,7 @@
 作成：ノートのチャット（形式化の調整役ではない）。基準：main ba24dceb6。読み取りだけのエージェント 1 本で調べ、食い違いのうち R62・R50・R53 は作成者が grep で確かめた。
 
 - 目的：形式化の調整役への受け渡し。ユーザーの方針（11-12）で、リファクタ候補はノートでなく形式化の側で管理し、扱いは調整役が判断する。**ここには事実だけを書く。**
-- BS（`research/bs-refactor-audit/`）との違い：∞ の R 番号は、形式化の側にすでに索引がある（`formalization-plans/refactoring-infinity.md` §0、R1〜R79 の正本の所在）。ノートに出る 49 個（＋R49a・R49b・R56a・R61a・R61b）はすべて形式化の側の文書に番号で載っている。だから受け渡すのは「ノートにしかない内容」と「食い違い」だけ。
+- BS（`research/bs-refactor-audit/`）との違い：∞ の R 番号は、形式化の側にすでに索引がある（`formalization-plans/archive/stage-i/refactoring-infinity.md` §0、R1〜R79 の正本の所在）。ノートに出る 49 個（＋R49a・R49b・R56a・R61a・R61b）はすべて形式化の側の文書に番号で載っている。だから受け渡すのは「ノートにしかない内容」と「食い違い」だけ。
 - ノートの側の予定：調整役が必要な内容を形式化の側に取り込んだ後、`exposition/ja/infinity/` の赤い囲み（33 個）と本文・表の中の R の記述を外す（または台帳への参照にする）。囲みの原文は `box-texts.md`。
 - 略号：ri＝refactoring-infinity.md（最終更新 10-30）、r2＝refactoring-infinity-r2.md（10-28）、rv＝refactoring-verdier.md（10-28）、ifp＝infinity-foundation-plan.md（11-05）。ノートの日付は各章の基準コミット：00〜08 章・route-yoneda 10-23（R58 は 10-28 改番）、route-classification 10-24、k-nonconnective-design 10-27、f-00〜f-05 10-28。
 
