@@ -3364,3 +3364,12 @@ main `6aa6d7152` の指示書末尾を `git show` で読み、今回のユーザ
 - F01 `SerrePositivity.AlgebraicGeometry.exists_section_adapted_affine_cover`：元の切断による逆像開被覆に、元の被覆への添字写像を持つ有限アフィン細分を作る。
 - F02 `SerrePositivity.AlgebraicGeometry.section_affine_chart_retraction`：同じ切断を二つの開へ制限して、同じ切断環の構造射のretractionを作る。
 - F03 `SerrePositivity.AlgebraicGeometry.section_affine_chart_frobeniusCechExact`：その局所のretractionを実際のFrobenius順極限へ送り、B1の切断のČech完全性を適用する。
+
+## 2026-11-17：普遍Čech降下性の底変換（47e147525）
+
+- D02の同じ型で実装。新規93行＋入口2行＝95行、所有4宣言。原稿・本体の同一バイト、対象ビルド5,385ジョブと直接importer、別の共有鍵での所有監査が成功。標準三公理以外0。分離性等の仮定の追加、main既存宣言の本体変更はない。
+- 同じ反復pullbackの標準同型により元の試験基底へ戻し、各nerveの実際の係数の引き戻しの同型と等しい逆像被覆の恒等細分を合成する。増大項は同じ基底環の恒等Frobenius写像。
+- 累計21,207行（新規286モジュール20,869行、既存追加25行、入口313行）。所有宣言累計2,353件、既存15件は別。残り31署名の素の見込み1,081〜2,151行と、import・登録等の予備100〜250行。合わせて係数2で2,362〜4,802行、完成見込み23,569〜26,009行。以前の残部の数値にも、この予備100〜250行を含めている。28,000行以内。
+- 一覧：済み1／全体3（うち追加0）。内部署名：済み58／89（G4・G5）、追加0。次はD08の終域の同型での移送と、相対fppfの接続。
+
+- D02 `SerrePositivity.AlgebraicGeometry.perfectCechUniversalDescent_baseChange`：全Noetherアフィン試験基底と有限アフィン被覆についての元の完全構造層の降下性は、任意の底変換で保たれる。
