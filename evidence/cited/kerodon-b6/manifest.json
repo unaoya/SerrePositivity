@@ -1,8 +1,8 @@
 {
  "directory": "/Users/sugakubunka/serre-evidence/cited/kerodon-b6",
  "commit": "f35b01be9fdb8cf3c664b32123b6e8ebaf5d070f",
- "made_by": "KB-W1 ch7 source comparison; no Lean/build/lock",
- "note": "Completed 7 of 10 chapters",
+ "made_by": "KB-W1 ch8 source comparison; no Lean/build/lock",
+ "note": "Completed 8 of 10 chapters",
  "files": [
   {
    "path": "ch1/ch1-audit.json",
@@ -558,6 +558,106 @@
    "path": "ch7/view_partial.py",
    "sha256": "6bb2f747d9eae1978c04711c9d10bcb312e12328472c853247a4822b58e24cf3",
    "bytes": 686
+  },
+  {
+   "path": "ch8/apply_chapter.py",
+   "sha256": "367b371ecee45fe46efc6fd58f4244ed584f28ccf63d258bbdf661e276aec2ed",
+   "bytes": 4927
+  },
+  {
+   "path": "ch8/ch8-before.csv",
+   "sha256": "96a5ce47979e7a8b31f789b2c763d28b9bd74190b260f7b10fbaa3b3ace131bd",
+   "bytes": 203733
+  },
+  {
+   "path": "ch8/ch8-changes.json",
+   "sha256": "e1a1fb3af7bfe725cd268e0fb4f09b47636f801ec3a7e0ed872ec93631108b5b",
+   "bytes": 692028
+  },
+  {
+   "path": "ch8/ch8-decisions-part1.tsv",
+   "sha256": "fc07a706d7a5162845c23d43f08a434c2bc6b60e67ef832d67fbde5b21c1e69a",
+   "bytes": 10301
+  },
+  {
+   "path": "ch8/ch8-decisions-part2.tsv",
+   "sha256": "c7bec58293773aea35a60474d11770d97a3acf40bc0145393fe6fcc0a1438f1d",
+   "bytes": 5960
+  },
+  {
+   "path": "ch8/ch8-decisions-part3.tsv",
+   "sha256": "cd4af1f88286abfcd70807e0171796378e931e34422c082a5049c78e864011a2",
+   "bytes": 11376
+  },
+  {
+   "path": "ch8/ch8-decisions-part4.tsv",
+   "sha256": "6d6d3b04f1d9ff47afd84a7db5073af853dccb27fff628e023d013a1ea5aac64",
+   "bytes": 11792
+  },
+  {
+   "path": "ch8/ch8-decisions.tsv",
+   "sha256": "3c8dc0eb5c3d8ed85016a336b74e391d63dfa3309ad45a697ee2e2d6f0b619ed",
+   "bytes": 124337
+  },
+  {
+   "path": "ch8/ch8-declaration-overrides.json",
+   "sha256": "ece09b4105b5c6f9a8023d616c55937e1813af75c997d06637ab90013bc06af1",
+   "bytes": 20588
+  },
+  {
+   "path": "ch8/ch8-extra-sources.json",
+   "sha256": "fc6761e2289800e2986a371378831e40fdb4bc45c462bd8a89331d4339a8c566",
+   "bytes": 1187317
+  },
+  {
+   "path": "ch8/ch8-none-search.json",
+   "sha256": "e25a6b818ad1baaf72739355c70cda1cab6923f7f07545901e977c1f787c8cee",
+   "bytes": 24572577
+  },
+  {
+   "path": "ch8/ch8-packet.json",
+   "sha256": "b481f2e7c98e485706224da16a8acdb14ac5592a99d0a1e8a448665a29daef8d",
+   "bytes": 2976692
+  },
+  {
+   "path": "ch8/ch8-validation.json",
+   "sha256": "c123c221f4271f793f987566f25e182ce8aff0567d3e3b54f906cb87be63f650",
+   "bytes": 459
+  },
+  {
+   "path": "ch8/ch8-write-part1.py",
+   "sha256": "d55c98ca30dcf0bb7c106a29862df773f1fa82bb26db374a22ef9866230243f4",
+   "bytes": 10760
+  },
+  {
+   "path": "ch8/ch8-write-part2.py",
+   "sha256": "6c91bd52953e6f4d51f261103df3071adf2799b37d1c9d1c593783ae2c637cab",
+   "bytes": 6338
+  },
+  {
+   "path": "ch8/ch8-write-part3.py",
+   "sha256": "85230b7348f682a513f869c4caecfe5a9051bf75f545d33ada3fee60d8334556",
+   "bytes": 11863
+  },
+  {
+   "path": "ch8/ch8-write-part4.py",
+   "sha256": "df3f704ddb4c5f87ac2ea20a1a0d8dbac3e0df2bee1c36fe05e253b8ba1c5164",
+   "bytes": 12320
+  },
+  {
+   "path": "ch8/compact_none.py",
+   "sha256": "3a6cd37ceaaf2c544b7a512b33c4b9f270d783925390cce3d89af5e19cc57820",
+   "bytes": 319
+  },
+  {
+   "path": "ch8/finish_ch8.py",
+   "sha256": "3529437936e5f01ab578ec4590a0785a2b0bc86974655ab0e43c8dc4562eda23",
+   "bytes": 7410
+  },
+  {
+   "path": "ch8/search_ch8.py",
+   "sha256": "8998aa94180486fb6c6dcea1a93688198fa9bcf2b77c1d14bb62a5e89921638e",
+   "bytes": 1945
   },
   {
    "path": "shared/apply_chapter.py",
@@ -4815,5 +4915,5 @@
    "bytes": 33052
   }
  ],
- "total_bytes": 283890826
+ "total_bytes": 313763868
 }

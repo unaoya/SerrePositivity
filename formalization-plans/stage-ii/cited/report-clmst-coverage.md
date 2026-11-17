@@ -1,10 +1,10 @@
 # 現在地
 
 - 段：**KB-W1 / B6 進行中**。
-- 一覧：**済み 7／全体 10（章）**。
+- 一覧：**済み 8／全体 10（章）**。
 - 作業場所：`/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-cited`。枝：`research/cited-coverage`。pwd一致を確認し、指定の `git merge main` を実施。
 - KB-W1基準HEAD：`f35b01be9fdb8cf3c664b32123b6e8ebaf5d070f`。章ごとにコミットし、2章ごとに停止せず途中報告する。
-- 次：第8章の型と原文を再照合する。Lean・ビルド・鍵は使わない。既存 own・both・mathlib 行は変更しない。
+- 次：第9章の型と原文を再照合する。Lean・ビルド・鍵は使わない。既存 own・both・mathlib 行は変更しない。
 
 ## CC-W1 納品（停止コミット `156ac3c32`）
 
@@ -189,3 +189,13 @@ pinched→interval写像空間には現本体に自然な圏同値と作用の�
 旧noneからはrepleteを加えた反射部分圏の終対象（7.1.4.34）、monoかつstrict pushoutでのleft cofinal性（7.2.1.16）、指定comma相対余極限も入力する左Kan延長（7.3.5.10・7.3.5.11）、保存関手の頂点条件（7.6.6.5）、Spaceのfiltered余極限と有限極限の交換という条件(3)の特殊形（7.7.7.1・7.7.7.2）をpartialとした。
 
 計1,835対象行を完了（済み7／全体10章）。全件表はreview/check/b6-ch7.md。公式原文・全候補型・none全174行を含む再検索・追加ソースと決定過程はgit外の章別証拠、目録のみ更新。Lean・ビルド・kernel実行・鍵はなし。第8章へ続ける。
+
+### 第8章
+
+447行（旧partial173・none274）を再照合。旧partialは71行を種類つきで維持、92行をnone、7行をown、3行をmathlibへ更新。旧noneは8.5.6.1・8.7.5.6・8.7.5.14を仮定を限ったpartialへ変更、271行はnone。結果はpartial74・none363・own7・mathlib3。種類はcomponent34・special24・stronger-hyp12・direction4。既存own・both・mathlib36行の全既存フィールドは保存した。
+
+edgewiseの両射影と双対同型（8.1.1.7）、couplingとprofunctorの元の型（8.2.0.1・8.3.2.1）、定値一点の関手（8.3.4.11）、指定標準Kan余錐と恒等単位による密度（8.4.1.5・8.4.1.15）、一般余錐のretract閉性からの余極限保存のretract閉性（8.5.1.14）は専用名の不足だけを欠落にせずownとした。通常圏のKaroubiの対象と分裂等化子・余等化子を使う8.5.2.1・8.5.2.4・8.5.2.5はmathlib。標準Yonedaの恒等関手の左Kan性8.4.2.1は現本体の同じ型によりsmallな場合のspecialとした。
+
+数値κで切った空間圏と宇宙パラメータ、整数spineとN(Idem)、指定された相対指数と固定始域の関手空間、QC全体上の反転・随伴形成と固定二対象間の関手は、同じ対象・射への比較がなければ混同しなかった。Moritaの一般形と冪等完備化・inner fibrationを追加した場合の差、flat性とcocartesian fibrationを追加した場合の差をreasonに記した。
+
+第1〜8章の計2,282対象行を完了（済み8／全体10章）。全件表はreview/check/b6-ch8.md。原文・型・旧none274行の再検索・追加候補と判断過程はgit外へ保存し、目録だけ更新。Lean・ビルド・kernel実行・鍵はなし。停止せず第9章へ進む。
