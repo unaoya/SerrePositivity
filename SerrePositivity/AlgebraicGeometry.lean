@@ -2000,3 +2000,5 @@ import SerrePositivity.AlgebraicGeometry.PerfectFrobeniusDirectLimit
 import SerrePositivity.AlgebraicGeometry.PerfectFrobeniusCechComparison
 
 import SerrePositivity.AlgebraicGeometry.PerfectAffineVCoverCech
+
+import SerrePositivity.AlgebraicGeometry.ArcRouteB.Definitions
