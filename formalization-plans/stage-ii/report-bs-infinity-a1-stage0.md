@@ -10647,3 +10647,9 @@ R04-RIの三本は69＋62＋126＝257行（素250〜400・補正500〜800の見�
 台帳検査は55署名・107辺の依存グラフが非循環で、完全な型・参照行・状態・見積もりの表示が一致。証跡は `evidence/inf-supply/checkpoint-28221-1118/manifest.json`、外部の `~/serre-evidence/inf-supply/checkpoint-28221-1118/checkpoint-audit.json` とfinal/に置いた。入口登録・root・全監査は調整役へ渡す。
 
 chooseの表（inf-supply-choose-1117.md/.json）は枝に保持し、今回の区切り作業では新しいchooseの置き換えをしていない。未追跡の旧R2下書き4本（HomWeightYonedaUnitPointEvaluation・Square・SquareNormalized・Values）は変更・追加・削除せず、そのまま保持する。検証済みの数学はa372ab9f8までコミット済みで、今回の引用属性・台帳・引き継ぎを別コミットにまとめる。
+
+### 11-18：区切りのコミットとmainの取り込み
+
+引用属性・最終証跡・引き継ぎを78f993791にコミットした後、調整役の11-17夜の連絡に従いmainを取り込んだ（9a31cacd6、取り込んだmainは5cd32e97b）。指定の1fb2c6dccは元から祖先に含まれていた。今回の追加差分40ファイルはAlgebraicGeometryと調整文書だけで、InfinityCategoriesの変更は0。区切り対象45モジュールのSHAは全て成功証跡のままで、台帳の検査も取り込み後に成功した。そのため同じ対象ビルドの繰り返しはしていない。追跡ファイルの未コミット差分はなく、未追跡は保持指定の旧R2下書き4本だけ。今回の署名区切りとして引き渡し、次の外枠の決定を待つ。
+
+一覧：済み 39／全体 55（うち追加 20、別停止点 2）。
