@@ -3261,3 +3261,17 @@ mainの取り込みは11-16 16:25の指示どおり保留したまま。検証�
 | `AugmentedCechCoordinates.lean` | 63 | 8 |
 | `NilImmersionPerfectCechPullback.lean` | 46 | 1 |
 | `PairedCechGeometry.lean` | 71 | 10 |
+
+## 2026-11-17：nil 基底変更の増大図式・total と二重 nerve の射（8ca410d44）
+
+- 承認済み N05・N06・P08〜P10 の同じ型・仮定を実装。2モジュール213行＋入口2行＝215行。累計20,046行（新規274モジュール19,726行、既存追加25行、入口295行）。所有宣言は今回9件、累計2,211件（既存15件は別）。
+- `NilBaseChangePerfectCech.lean` は147行・2宣言。`PairedCechGeometryMaps.lean` は66行・7宣言（private・生成宣言込み）。原稿検証・同一バイトの対象ビルド5,373ジョブ・直接importerが成功し、別の共有鍵での所有監査は標準三公理以外0。
+- N05 の証明内で、既存の `arrowIsoΓSpecOfIsAffine` に沿う全射性の移送、`isPullback_finiteFiberPowerSucc` と分離性の底変換・合成、`openCoverCechRefinementMap_id` に沿う被覆の等式移送を使う。新しい外部入力・グローバル補題は追加していない。N06 は既存の増大 cochain と同じ total 関手へその同型を送る。
+- 残り63署名の素の見込み1,806〜3,625行、係数2で3,612〜7,250行。完成見込み23,658〜27,296行で、28,000行以内。2hは別計上のまま。次はP12・P19。
+- 一覧：済み1／全体3（うち追加0）。内部署名：済み26／89（G4・G5）、追加0。停止点2g-2は未到達。
+
+- N05 `SerrePositivity.AlgebraicGeometry.nilBaseChange_tupleAugmentedPullback_isIso`：nil 基底変更の、同じ基底係数・増大項・逆像タプル被覆を使う元の増大図式の射は同型。
+- N06 `SerrePositivity.AlgebraicGeometry.nilBaseChange_tupleTotal_acyclic_iff`：その同じ増大図式の同型から、元の二つの total の完全性の同値を得る。
+- P08 `SerrePositivity.AlgebraicGeometry.pairedCechSchemeMap`：二つの元の増大 nerve の射から、同じ基底上の積の反変な射を作る。
+- P09 `SerrePositivity.AlgebraicGeometry.pairedCechSchemeMap_id`：二つの恒等射は同じ積の恒等射へ移る。
+- P10 `SerrePositivity.AlgebraicGeometry.pairedCechSchemeMap_comp`：二つの増大単体圏の合成は、同じ積の射の反変な合成へ移る。
