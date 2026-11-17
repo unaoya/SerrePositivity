@@ -7210,3 +7210,38 @@ hρは直前の補題、hηB/hηDは既存のunder初頂点への制限の同値
 最後の合成はP3-Aと同じ全joint族の合成則を用いる。これにP3-B1を続け、初頂点の
 二段pullbackの指定同型を消去してP3-Cのνを得る。点ごとに独立した同型を組み立てない。
 一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+
+### 第16項の独立な前提計算を続行・検証（11-17午後）
+
+CoveragePullbackRefinement.lean、42行。第3〜5項をimportせず、第16項の
+Coverage.pullbackの因子分解を生成篩の包含に移す法則を新規ファイルに置いた。
+
+```lean
+coverageRefinement_generate_le {U V : C} (R : Presieve U) (T : Presieve V)
+  (f : V ⟶ U) (h : T.FactorsThruAlong R f) :
+  Sieve.generate T ≤ (Sieve.generate R).pullback f
+
+coveragePullbackRefinement_isLimit (K : Coverage C) (F : Presheaf C E)
+  (hF : ∀ (U : C) (R : Presieve U), R ∈ K.coverings U →
+    IsLimitCone (restrictionCone F (Sieve.generate R)))
+  {U V : C} (R : Presieve U) (hR : R ∈ K.coverings U) (f : V ⟶ U) :
+  ∃ T : Presieve V, T ∈ K.coverings V ∧
+    Sieve.generate T ≤ (Sieve.generate R).pullback f ∧
+    IsLimitCone (restrictionCone F (Sieve.generate T))
+```
+
+どちらもCoverageの既存構成の前提計算で、一覧の新しい数学IDではない。
+存在を使う側で細分を選んでも、その選択を自然な図式と仮定しない。
+残りは、これらの細分から元の全引き戻し篩の制限錐へ極限性を移す∞の比較。
+既存restrictionCone_inf_isLimit_iff_of_pullbacksは各局所引き戻しでの極限性を入力に取るため、
+この入力を今回の細分の存在だけで満たしたとは扱わない。
+第16項・第17項は未完。元の型・仮定を変更していない。
+
+対象ビルドexit 0、小監査2宣言・標準三公理のみexit 0。計算上限は変更なし。
+証拠：/tmp/is-w1/s1-coverage-refinement/production/{verify-2.log,target-audit-result.json}。
+検証済み累計22,534行、新規351モジュール＋承認された既存3ファイルの差分。
+今回の第3項の紙は87b2e1aba・c4a239f81。第3項のLeanは再開していない。
+第6・8・9・12・14・15項は紙に記した第3〜5項への依存のため保留。
+mainは取り込まず、S7・R2・R3も再開していない。共有鍵は返却済み、待ちもなし。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
