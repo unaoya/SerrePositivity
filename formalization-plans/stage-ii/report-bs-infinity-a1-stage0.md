@@ -10354,3 +10354,43 @@ lemma exists_rightKanIndexShapePrism {K C D : SSet.{u}} [Quasicategory C]
 計199行を加え、累計27,306行。R04の検証済み部分は473行。R04本体は未完：添字同型の代表ホモトピーに対して得た局所形状の射aの同値性、元の指定分類同型との一致、余単位輸送の終点の比較が残る。残り補正上端800を安全側に保持し、27,306＋800＝28,106で29,000以内。署名は済みにしない。main本文・choose・型・仮定の変更なし。旧R2の未追跡4本は触っていない。
 
 一覧：済み 36／全体 52（うち追加 17、別停止点 2）。
+
+### 11-18：R04の指定同型の持ち上げ（短い証明分割）
+
+同値性の証明では、元の底の辺の類を保つ持ち上げを使う。型：
+
+```lean
+lemma exists_leftFibration_functorIso_lift {A E B : SSet.{u}}
+    [Quasicategory E] [Quasicategory B] (p : E ⟶ B) [LeftFibration p]
+    (f : A ⟶ E) {h : A ⟶ B} (e : FunctorIso (f ≫ p) h) :
+    ∃ (g : A ⟶ E) (hg : g ≫ p = h) (i : FunctorIso f g),
+      functorIsoOfEq (i.postcomp p) rfl hg = e
+```
+
+内部の頂点版は既存の `leftFibration_liftEdge_source` @ SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/IsomorphismsAndIsofibrations/InvertibleEdgeLifting.lean:323 と `leftFibration_reflects_invertibleEdge` @ 同ファイル:274 を適用し、指定辺の類を保ったまま関手空間へ代入する。元の存在命題から違う同型を選ばず、指定eのhomの類を追跡する法則。原典HTT 2.1.1.6・Kerodon Tag 019K。素70〜110行・補正140〜220行をR04内に含む、200行未満の証明分割。仮定はこの補助の全空間の準圏性のみで、R04ではleft fibrationから導く。R04本体の型・仮定は変えない。
+
+一覧：済み 36／全体 52（うち追加 17、別停止点 2）。
+
+### 11-18：指定同型の持ち上げを同じ引き戻し間の射へ戻す法則
+
+```lean
+lemma exists_leftPullbackFunctorIsoLift {E B K : SSet.{u}}
+    [Quasicategory E] [Quasicategory B] (p : E ⟶ B) [LeftFibration p]
+    {f g : K ⟶ B} (e : FunctorIso f g) :
+    ∃ (a : pullback p f ⟶ pullback p g)
+      (ha : a ≫ pullback.snd p g = pullback.snd p f)
+      (L : FunctorIso (pullback.fst p f) (a ≫ pullback.fst p g)),
+      HEq (L.postcomp p) (e.precomp (pullback.snd p f))
+```
+
+依存は直前の `exists_leftFibration_functorIso_lift` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftFibrationFunctorIsoLift.lean と既存のpullback.lift・`functorIsoOfEq_heq` @ SerrePositivity/InfinityCategories/Project/QuasicategoryAuxiliaries/VertexTransport/FunctorIsoTransport.lean:34。HEqは射影後の端点の等式を含めた元の同型の類の一致であり、任意の同型の存在への弱めではない。素40〜70・補正80〜140行、R04内の200行未満の証明分割。元の全空間の準圏性はR04では射影から導く。原典HTT 2.1.1.6・Kerodon Tag 019Kの既存構成の法則。
+
+一覧：済み 36／全体 52（うち追加 17、別停止点 2）。
+
+### 11-18：指定同型の類を保つ持ち上げと引き戻しの接続を検証
+
+`LeftFibrationFunctorIsoLift`（素70〜110、実測87行、1,608 jobs・5宣言）と `LeftPullbackFunctorIsoLift`（素40〜70、実測53行、1,609 jobs・2宣言）の対象ビルドと小監査が成功。標準三公理のみ、開始・終了・記録時SHA一致。最初の補助では面写像の自然性とCatの包みの往復の式を明示し、計算上限は増やしていない。
+
+指定eの像は射影後の端点の等式込みの一致として保持される。これを逆同型についても使い、二つの持ち上げの合成を恒等へ戻す計算を続ける。aの同値性、元の指定分類像の一致、余単位輸送の終点の照合は未完であり、R04は済みにしない。計140行を加え、累計27,446行（R04の検証済み部分613行）。残り補正上端800を保持した次の判定は28,246行で29,000以内。台帳の型・仮定・choose・main本文は変更なし、旧R2の未追跡4本はそのまま。
+
+一覧：済み 36／全体 52（うち追加 17、別停止点 2）。

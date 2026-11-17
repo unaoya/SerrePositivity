@@ -75,10 +75,10 @@
     2600
   ],
   "active_completion_corrected_lines": [
-    30486,
-    33146
+    30626,
+    33286
   ],
-  "ledger_sha256": "834d07a7662791b46882fac0130f09a0402d26120bcadb778b61f5563b10b070",
+  "ledger_sha256": "989beac755028d49830ce9197a90693d526716c2c6640fa5541d4127151f6088",
   "reference_source_sha256": {
     "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/ScaffoldCoherentComparisonRestriction.lean": "eaca001013d2fdcb29b38a5c6652896da293437d0d827266f4ac760c591bf92c",
     "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/StraighteningReconstructionRepresentationComparison.lean": "268abe1ed9b74b9d96bb95b4fe73a9c03448c7595b6a59c9eade04a55e5af273",
@@ -112,6 +112,8 @@
     "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftPullbackHomotopyPrism.lean": "aca23a05cea0d9d283a9616b6caf2e2d3b0c4d915a2a201716f963a883d81e6d",
     "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/RightKanCanonicalIndexPrism.lean": "9d89ae6d1e023d6ea6310b1355c534c8cb23d186b97805d3ed04184e83a996f7",
     "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/RightKanIndexShapePrism.lean": "65d01f28af268fea780adf27eaa44183ec7c33b2fdc16298e045a253fc6f9596",
+    "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftFibrationFunctorIsoLift.lean": "538f9e190034b384bcf4f77bad7966465cb9389e0716f8986ec180fc718fd47b",
+    "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftPullbackFunctorIsoLift.lean": "c6fcc64e10868722ca1b561812e1885d3f2f50d4cedaf0867bf08fd7601dfa95",
     "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsGlobalComparisonVertex.lean": "ede263316bc78ad755abed825d6d690b300e1377031ee74464e91a23f376794e",
     "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/UniversalProperty.lean": "6b0c3ba6964233c305ba869464e4df349aaf88ca0d5c723700958fa3f3821489",
     "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsDiscrete.lean": "c7b47b2f4ee0ee34af4f4f68adfade8d9e714579832d6f0aa701aa90e2ad01c0",

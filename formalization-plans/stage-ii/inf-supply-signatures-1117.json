@@ -3,7 +3,7 @@
   "source_head": "7e9743b30",
   "scope": "今回の再開範囲：元の残り1〜17項を署名へ展開。S2〜S6の過去の検収済み出力は再採番しない。",
   "count_rule": "署名のidごとに数える。200行超の照合・合成則は独立署名。小さい証明分割の法則は親署名のnoteに記録する。旧5/8はこの台帳の分母には用いない。",
-  "verified_lean_lines": 27306,
+  "verified_lean_lines": 27446,
   "final_cap": 29000,
   "checkpoint_report_lines": 28500,
   "factor": 2,
@@ -980,6 +980,16 @@
           "name": "exists_rightKanIndexShapePrism",
           "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/RightKanIndexShapePrism.lean",
           "line": 27
+        },
+        {
+          "name": "exists_leftFibration_functorIso_lift",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftFibrationFunctorIsoLift.lean",
+          "line": 72
+        },
+        {
+          "name": "exists_leftPullbackFunctorIsoLift",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftPullbackFunctorIsoLift.lean",
+          "line": 33
         }
       ],
       "literature": "HTT 5.1.5.6の双対、Kerodon Definition 7.3.1.2（Tag 02Y9）。指定余単位に沿う値の比較の法則。",
@@ -993,7 +1003,7 @@
       ],
       "status": "pending",
       "placement": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/RightKanIndexTransportValue.lean",
-      "note": "200行超。指定e・元の余単位の類・同じ錐を保持。 11-17夕の一括洗い直し後の残り見込み。元の見込みはoriginal欄に保持。 内部で選んだ中間二極限は既存のOverEquivalenceLimitCompositionで消去する。型は報告に記録し、各200行未満の証明分割として二本の新規補助へ置く。choose値・元の主張・仮定・main本文は変えない。 復元・指定底変換の照合はP3-EとfunctorIso_whisker_exchangeを同じeに適用して進める。各200行未満の法則の型・既存参照は報告へ記録。 三本の補助218行が同時の対象ビルド・6宣言の小監査を通過。R04本体は未完で、署名を済みにはしない。残りの見込みは安全側に元の補正上端800を保持し、既計上218行は今後二度数えない。 相対逆射による任意の錐の移送56行を追加検証。累計部分274行、元の頂点と相対単位を保持する。R04本体は未完。 指定底ホモトピーの引き戻しprism・cosliceの全錐prism・元の右Kan局所形状への接続の三本199行を対象検証。aの同値性・元の分類像の一致・輸送終点の照合は未完。",
+      "note": "200行超。指定e・元の余単位の類・同じ錐を保持。 11-17夕の一括洗い直し後の残り見込み。元の見込みはoriginal欄に保持。 内部で選んだ中間二極限は既存のOverEquivalenceLimitCompositionで消去する。型は報告に記録し、各200行未満の証明分割として二本の新規補助へ置く。choose値・元の主張・仮定・main本文は変えない。 復元・指定底変換の照合はP3-EとfunctorIso_whisker_exchangeを同じeに適用して進める。各200行未満の法則の型・既存参照は報告へ記録。 三本の補助218行が同時の対象ビルド・6宣言の小監査を通過。R04本体は未完で、署名を済みにはしない。残りの見込みは安全側に元の補正上端800を保持し、既計上218行は今後二度数えない。 相対逆射による任意の錐の移送56行を追加検証。累計部分274行、元の頂点と相対単位を保持する。R04本体は未完。 指定底ホモトピーの引き戻しprism・cosliceの全錐prism・元の右Kan局所形状への接続の三本199行を対象検証。aの同値性・元の分類像の一致・輸送終点の照合は未完。 指定同型の類を保つ関手空間での持ち上げと引き戻しへの接続140行を検証。射aの同値性自体はまだ未完。",
       "additional_mathematics": false,
       "original_bare_lines": [
         250,
@@ -1010,9 +1020,11 @@
         "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningReconstructionConeInverse.lean",
         "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftPullbackHomotopyPrism.lean",
         "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/RightKanCanonicalIndexPrism.lean",
-        "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/RightKanIndexShapePrism.lean"
+        "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/RightKanIndexShapePrism.lean",
+        "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftFibrationFunctorIsoLift.lean",
+        "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftPullbackFunctorIsoLift.lean"
       ],
-      "partial_verified_lean_lines": 473,
+      "partial_verified_lean_lines": 613,
       "partial_citation_verification": {
         "modules": 3,
         "declarations": 6,
@@ -1038,7 +1050,9 @@
         "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningReconstructionConeInverse.lean": 56,
         "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftPullbackHomotopyPrism.lean": 72,
         "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/RightKanCanonicalIndexPrism.lean": 79,
-        "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/RightKanIndexShapePrism.lean": 48
+        "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/RightKanIndexShapePrism.lean": 48,
+        "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftFibrationFunctorIsoLift.lean": 87,
+        "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftPullbackFunctorIsoLift.lean": 53
       },
       "partial_additional_verification": [
         {
@@ -1110,6 +1124,42 @@
             "heartbeat_limit": "unchanged; one command per declaration",
             "source_sha256": {
               "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/RightKanIndexShapePrism.lean": "65d01f28af268fea780adf27eaa44183ec7c33b2fdc16298e045a253fc6f9596"
+            }
+          }
+        },
+        {
+          "receipt": "/Users/sugakubunka/serre-evidence/inf-supply/r04-iso-lift-1118/target-audit-result.json",
+          "result": {
+            "modules": 1,
+            "declarations": 5,
+            "allowed_axioms": [
+              "propext",
+              "Classical.choice",
+              "Quot.sound"
+            ],
+            "success": true,
+            "source": "fresh environment after target build; no pre-merge index reuse",
+            "heartbeat_limit": "unchanged; one command per declaration",
+            "source_sha256": {
+              "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftFibrationFunctorIsoLift.lean": "538f9e190034b384bcf4f77bad7966465cb9389e0716f8986ec180fc718fd47b"
+            }
+          }
+        },
+        {
+          "receipt": "/Users/sugakubunka/serre-evidence/inf-supply/r04-pullback-iso-lift-1118/target-audit-result.json",
+          "result": {
+            "modules": 1,
+            "declarations": 2,
+            "allowed_axioms": [
+              "propext",
+              "Classical.choice",
+              "Quot.sound"
+            ],
+            "success": true,
+            "source": "fresh environment after target build; no pre-merge index reuse",
+            "heartbeat_limit": "unchanged; one command per declaration",
+            "source_sha256": {
+              "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftPullbackFunctorIsoLift.lean": "c6fcc64e10868722ca1b561812e1885d3f2f50d4cedaf0867bf08fd7601dfa95"
             }
           }
         }
