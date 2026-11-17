@@ -1,10 +1,10 @@
 # 現在地
 
 - 段：**KB-W1 / B6 進行中**。
-- 一覧：**済み 3／全体 10（章）**。
+- 一覧：**済み 4／全体 10（章）**。
 - 作業場所：`/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-cited`。枝：`research/cited-coverage`。pwd一致を確認し、指定の `git merge main` を実施。
 - KB-W1基準HEAD：`f35b01be9fdb8cf3c664b32123b6e8ebaf5d070f`。章ごとにコミットし、2章ごとに停止せず途中報告する。
-- 次：第4章の型と原文を再照合する。Lean・ビルド・鍵は使わない。既存 own・both・mathlib 行は変更しない。
+- 次：第5章の型と原文を再照合する。Lean・ビルド・鍵は使わない。既存 own・both・mathlib 行は変更しない。
 
 ## CC-W1 納品（停止コミット `156ac3c32`）
 
@@ -147,3 +147,13 @@ Archive のパスを宣言欄に含む4行（4.3.6.12、9.1.1.18、9.1.1.20、9.
 原文が第0面を指定するincidenceと最後の面によるBoundaryLift、球面からの写像の商と独自の境界定値単体の商、全区間写像によるホモトピー引き戻しとKan置換を使う模型は、比較する宣言がないものをnoneに整理した。単に写像空間や極限のKan性を持つ候補も、原文の連結度・切断次数の結論の一部とは数えない。exInfinityの有限極限保存、同じ単位の単射性、有限部分集合圏の余極限の弱可縮性など直接の成分・特殊形はpartialを維持した。
 
 全対象行の判定はreview/check/b6-ch3.md。公式原文・型・none153行の再検索と新規候補の抜粋はgit外に保存し目録を更新。Lean・ビルド・kernel実行・鍵はなし。
+
+### 第4章
+
+454行（旧partial267・none187）を再照合。旧partialは127行を種類つきで維持、134行をnone、6行をownへ更新。旧noneのうち3行をpartialへ変更、184行はnoneを維持。結果はpartial130・none318・own6、partialの種類はspecial53・component33・stronger-hyp30・direction14。既存own・both・mathlib134行は全既存フィールドを保存した。
+
+4.3.7.13は現本体のslice側のtrivial Kan fibrationも合わせ、両側の結論がそろう。4.4.1.4・4.4.3.6・4.4.5.4・4.4.5.7は同じequivalence lifting・coreの射への既存判定を直接適用できるためown。4.8.1.11は一般のfullSubcomplexOnVerticesに頂点の本質的像の述語を代入して定義全体を直接与えられる。専用の名称の有無だけでpartialに制限しなかった。
+
+pinched→interval写像空間には現本体に自然な圏同値と作用の可換式があり、同じ射の同値性の比較には適用できる。一方、この同値だけで厳密pullbackやfibration性を移すものは数えない。4.3.6.12はArchiveのslice宣言を根拠から外し、現本体のcoslice側のcomponentのみとした。κによる数値的smallnessと宇宙版Smallの間の比較が型にない候補もnoneにした。
+
+旧noneからは4.5.7.12・4.5.7.14をKanな塔の重み付きHom・重みのanodyne制限に限ったspecial、4.8.5.15をn=0の合成本質的全射性に限ったspecialへ変更した。全対象の判定はreview/check/b6-ch4.md。第1〜4章計951行を完了（済み4／全体10章）。原文・型・検索はgit外、目録だけ更新。Lean・ビルド・kernel実行・鍵は使わず、停止せず第5章へ進む。
