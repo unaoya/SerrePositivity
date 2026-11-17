@@ -2002,3 +2002,5 @@ import SerrePositivity.AlgebraicGeometry.PerfectFrobeniusCechComparison
 import SerrePositivity.AlgebraicGeometry.PerfectAffineVCoverCech
 
 import SerrePositivity.AlgebraicGeometry.ArcRouteB.Definitions
+
+import SerrePositivity.AlgebraicGeometry.ArcRouteB.CoverLaws
