@@ -7,10 +7,10 @@ public import SerrePositivity.AlgebraicGeometry.ArcRouteB.IntervalCoefficientPer
 public import SerrePositivity.BhattScholze.Perfectoidization.Arc.Milnor.ArcCechMilnor
 
 /-!
-概要：重なる区間の三つの底変換で、任意の完全係数の増大Čech完全性を検出する。
-方針：L01/L02で同じArrowを保って係数を比較し、T上の短完全列とTor消滅をmoduleCechへ適用する。
-規約：係数Tの平坦性は仮定しない。単なる完全性を非平坦底変換へ保存したことにしない。
-使われ方：2iのO06、BM18 Proposition 4.8(5)の構造層に特殊化した普遍貼り合わせ。
+概要：三つの底変換から、全ての完全係数上のČech完全性を検出する。
+方針：L01/L02で底変換のArrowを比較し、同じT上のL05へ渡す。
+規約：非平坦底変換での完全性の保存は仮定しない。
+使われ方：2iのO06、BM18 Proposition 4.8(5)の普遍係数の段。
 -/
 
 @[expose] public noncomputable section
