@@ -1,0 +1,54 @@
+{
+ "directory": "/Users/sugakubunka/serre-evidence/inf-supply/r04-shape-prism-1118",
+ "commit": "",
+ "made_by": "/Users/sugakubunka/serre-evidence/inf-supply/r04-shape-prism-1118/verify.py",
+ "note": "",
+ "files": [
+  {
+   "path": "audit-after.lean",
+   "sha256": "4979c959ccb90db253fea4f059b3b6b072c6f0e6eb9c7785ea07507e4c0b94ac",
+   "bytes": 707
+  },
+  {
+   "path": "audit-after.log",
+   "sha256": "021c96d4d6dbce25447c4f1432c8b5ab30fd1a62249027dd248e842e7278689a",
+   "bytes": 23
+  },
+  {
+   "path": "build-1.log",
+   "sha256": "a22d1a1651655c152e442084c2c59dfc3db54e75828242a78ca01ac670ee0845",
+   "bytes": 8159
+  },
+  {
+   "path": "catalog-after.json",
+   "sha256": "6b6ec0dd0280cdb8db887a27ceb027af03a07107ac4a15e327d44ff4de8843f0",
+   "bytes": 289
+  },
+  {
+   "path": "catalog-after.lean",
+   "sha256": "566ad1ab4d484a0cfcae90e03bc92d41bbe74ffc5fee18f13eb36a3d201fdb92",
+   "bytes": 1284
+  },
+  {
+   "path": "catalog-after.log",
+   "sha256": "530dbe2e1d6b261551999ed687954bb34c8d0030a6d23e986e566f3aa19d3ee9",
+   "bytes": 61
+  },
+  {
+   "path": "files.json",
+   "sha256": "5a39649296daa09a6bc55962e2fa9115530a51df41497e271df18c15d8980c04",
+   "bytes": 112
+  },
+  {
+   "path": "target-audit-result.json",
+   "sha256": "fe77e5e4ecfd250efc3e5acc97a1b91f53a9e78ce01c278c28ccd42f4646894f",
+   "bytes": 487
+  },
+  {
+   "path": "verify.py",
+   "sha256": "aac77d3914a2be1ad5da6fc6abeb8e72cab44a3599b4fe7eda483cd17ca83b90",
+   "bytes": 4013
+  }
+ ],
+ "total_bytes": 15135
+}

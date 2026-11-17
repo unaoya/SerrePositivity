@@ -10281,3 +10281,76 @@ lemma leftStraighteningInfinityReconstruction_coneInverse
 `LeftStraighteningReconstructionConeInverse.lean` の対象ビルド（3,123 jobs）と2宣言の小監査が成功。標準三公理のみ、開始・終了・記録時のソースSHA一致。素40〜70行に対し実測56行。累計27,107行、R04の検証済み部分は274行。署名R04本体は未完で、指定余単位を保つ二つの局所錐と元の分類spanとの照合を続ける。残り補正上端800を保持し、27,107＋800＝27,907で着手条件内。main本文とchooseの変更、計算上限の増加はない。旧R2の未追跡4本はそのまま。
 
 一覧：済み 36／全体 52（うち追加 17、別停止点 2）。
+
+### 11-18：R04の指定添字ホモトピーに沿う引き戻しprism（証明分割）
+
+復元模型だけでなく、元のcosliceの射影上で底の指定ホモトピーを保持する実prismを作る。既存の `leftFibration_lift_prism` @ SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/LeftAndRightFibrations/LeftPath.lean:89 とpullbackの普遍性の適用。原典HTT 2.1.1.6・Kerodon Tag 02RBのleft fibration版の既存構成の法則。型：
+
+```lean
+lemma exists_leftPullbackHomotopyPrism {E B K : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p] {f g : K ⟶ B} (α : SSet.Homotopy f g) :
+    ∃ (a : pullback p f ⟶ pullback p g)
+      (H : SSet.Homotopy (pullback.fst p f) (a ≫ pullback.fst p g)),
+      a ≫ pullback.snd p g = pullback.snd p f ∧
+      H.h ≫ p = (pullback.snd p f ▷ (Δ[1] : SSet.{u})) ≫ α.h
+```
+
+素60〜100行・補正120〜200行、R04の部分（200行未満）として元の補正上端800に含む。添字同型eの代表αに適用するが、終点の同値性や分類像の一致はこの補助の結論ではなくR04の残りで示す。型・仮定・指定比較の取り替えはない。
+
+一覧：済み 36／全体 52（うち追加 17、別停止点 2）。
+
+### 11-18：R04の元のcosliceホモトピーを全錐prismへ戻す法則
+
+次の200行未満の証明分割を続ける。型：
+
+```lean
+lemma exists_cosliceHomotopyConePrism {A C D : SSet.{u}} (v : C _⦋0⦌)
+    {f g : A ⟶ sliceUnder (SSet.yonedaEquiv.symm v)} (H : SSet.Homotopy f g)
+    (G : C ⟶ D) :
+    ∃ Q : join (Δ[0] : SSet.{u}) A ⊗ (Δ[1] : SSet.{u}) ⟶ D,
+      SSet.ι₀ ≫ Q = sliceUnderUncurry f ≫ G ∧
+      SSet.ι₁ ≫ Q = sliceUnderUncurry g ≫ G ∧
+      (joinInr (Δ[0] : SSet.{u}) A ▷ (Δ[1] : SSet.{u})) ≫ Q =
+        H.h ≫ sliceUnderProjection (SSet.yonedaEquiv.symm v) ≫ G ∧
+      (joinInl (Δ[0] : SSet.{u}) A ▷ (Δ[1] : SSet.{u})) ≫ Q =
+        fst (Δ[0] : SSet.{u}) (Δ[1] : SSet.{u}) ≫ SSet.yonedaEquiv.symm v ≫ G
+```
+
+依存：`sliceUnderUncurry_precomp` @ SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/TheSliceAndJoinConstructions/SliceMap.lean:186、`joinTensorRight_inr` @ SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/MorphismSpaces/JoinTensorRight.lean:95、`joinTensorRight_ι₁` @ SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/TheSliceAndJoinConstructions/JoinRightShiftPrism.lean:26。時刻0の同じ境界の法則も元の時刻1の証明と同じ単位則から出す。原典HTT 5.1.5.6・Kerodon Tag 02Y9の既存局所錐の計算法則。素70〜110・補正140〜220行、R04内に含める。前の引き戻しprismをcosliceに適用し、固定頂点と余単位を照合するために使う。新しい数学・choose変更なし。
+
+一覧：済み 36／全体 52（うち追加 17、別停止点 2）。
+
+### 11-18：R04の二つのprismを元の局所形状へ接続する証明分割
+
+```lean
+lemma exists_rightKanIndexShapePrism {K C D : SSet.{u}} [Quasicategory C]
+    {f g : K ⟶ C} (α : SSet.Homotopy f g) (G : C ⟶ D) (v : C _⦋0⦌) :
+    ∃ (a : rightKanShape f v ⟶ rightKanShape g v)
+      (Q : join (Δ[0] : SSet.{u}) (rightKanShape f v) ⊗ (Δ[1] : SSet.{u}) ⟶ D),
+      a ≫ rightKanProjection g v = rightKanProjection f v ∧
+      SSet.ι₀ ≫ Q = (rightKanCanonicalCone f G v).val ∧
+      SSet.ι₁ ≫ Q = joinMap (𝟙 (Δ[0] : SSet.{u})) a ≫
+        (rightKanCanonicalCone g G v).val ∧
+      (joinInr (Δ[0] : SSet.{u}) (rightKanShape f v) ▷ (Δ[1] : SSet.{u})) ≫ Q =
+        (rightKanProjection f v ▷ (Δ[1] : SSet.{u})) ≫ α.h ≫ G ∧
+      (joinInl (Δ[0] : SSet.{u}) (rightKanShape f v) ▷ (Δ[1] : SSet.{u})) ≫ Q =
+        fst (Δ[0] : SSet.{u}) (Δ[1] : SSet.{u}) ≫ SSet.yonedaEquiv.symm v ≫ G
+```
+
+依存は直前二本 `exists_leftPullbackHomotopyPrism` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftPullbackHomotopyPrism.lean:25 と `exists_cosliceHomotopyConePrism` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/RightKanCanonicalIndexPrism.lean:52。既存 `sliceUnderUncurry_precomp` による端点計算で、素35〜60行・補正70〜120行、R04内の短い証明分割。原典HTT 5.1.5.6・Kerodon Tag 02Y9。元の局所形状・元の標準錐・元の底ホモトピーを保持する。aの同値性と元の指定分類像への照合はR04の残りであり、この段で済みにはしない。
+
+一覧：済み 36／全体 52（うち追加 17、別停止点 2）。
+
+### 11-18：R04の指定添字prismと固定頂点の全錐への接続を検証
+
+|証明分割|素の見込み|実測|対象ビルド|小監査|
+|---|---:|---:|---:|---:|
+|LeftPullbackHomotopyPrism|60〜100|72|1,609 jobs|1宣言|
+|RightKanCanonicalIndexPrism|70〜110|79|1,616 jobs|2宣言|
+|RightKanIndexShapePrism|35〜60|48|1,639 jobs|1宣言|
+
+三本とも成功。標準三公理のみ、開始・終了・記録時のソースSHA一致。時刻0・1の境界、局所射影、底の元の全ホモトピー、固定頂点を保持する。全錐の補助は最初に結合則の向きだけを修正し、計算上限を増やさず再検証した。
+
+計199行を加え、累計27,306行。R04の検証済み部分は473行。R04本体は未完：添字同型の代表ホモトピーに対して得た局所形状の射aの同値性、元の指定分類同型との一致、余単位輸送の終点の比較が残る。残り補正上端800を安全側に保持し、27,306＋800＝28,106で29,000以内。署名は済みにしない。main本文・choose・型・仮定の変更なし。旧R2の未追跡4本は触っていない。
+
+一覧：済み 36／全体 52（うち追加 17、別停止点 2）。
