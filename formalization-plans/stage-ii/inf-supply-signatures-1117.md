@@ -5,8 +5,8 @@
 再採番せず、ここにある各署名IDを一つずつ数える。旧「5／8」は以後この台帳の進捗に使わない。
 小さい既存構成の法則・証明の分割は親署名内に記録するが、上端200行超は独立署名。
 
-署名39本＝検証済み18本＋未完19本＋別停止点へ切り離す2本。
-一覧：済み 18／全体 39（うち追加 4、別停止点 2）。
+署名40本＝検証済み19本＋未完19本＋別停止点へ切り離す2本。
+一覧：済み 19／全体 40（うち追加 5、別停止点 2）。
 追加1は11-17夕承認のP3-C1P。着手判定22,975＋800＝23,775行。以前の35署名の表は履歴として保持。
 
 ## 最新の検証記録（P3-B1）
@@ -1237,3 +1237,34 @@ P3-C1PNは型と依存を保持して承認済み登録。R09-Cech・R15-Unitは
 - `sheafifyUnitHom` @ `SerrePositivity/InfinityCategories/Sheaves/SheafifyUnit.lean:35`
 
 一覧：済み 18／全体 39（うち追加 4、別停止点 2）。
+
+
+## P3-C1PNV（11-17夕承認）
+
+名前：`leftStraightening_firstVertexTransport_underValue`。依存：なし。P3-C1PNが依存する。
+
+```lean
+∀ {E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [LeftFibration p],
+  let C := TransportSimplexCategory B
+  let j := edgewiseEnrichedInfinityMap (LeftFibrationObject B)
+  let b := leftFibrationEdgewiseFirstVertexBaseChange B
+  let h : j ≫ (leftFibrationInfinityBaseChange (transportSimplexFirstVertexMap B) ≫
+      leftStraighteningCoherentMap C) =
+      b ≫ (edgewiseEnrichedInfinityMap (LeftFibrationObject (nerve C)) ≫
+        leftStraighteningCoherentMap C) := by
+    rw [← Category.assoc, ← leftFibrationEdgewiseFirstVertexBaseChange_projection,
+      Category.assoc]
+  let γ := (transportSimplexUnderRealizationIso B).precomp j ≪≫
+    ((transportSimplexUnderBaseChangeRealizationIso B).precomp j).symm ≪≫
+    eqToIso (congrArg (fun f => HomotopyCategory.mk (functorVertex f)) h) ≪≫
+    (leftStraighteningCoherentMap_oppositeIso C).precomp b
+  let X := edgewiseOrdinaryObject (leftFibrationObjectOf p)
+  HEq ((leftClassificationSimplexIso p).symm ≪≫
+      leftStraighteningInfinityDiagram_firstVertexTransportIso p)
+    (functorIsoValue γ (coherentNerveVertex X))
+```
+
+素190〜270行、係数2で380〜540行。既存宣言と場所・原典はJSONと報告末尾。
+
+
+P3-C1PNV：対象ビルド・9宣言の小監査成功、標準三公理のみ。実測171行、累計24,004行。

@@ -3,7 +3,7 @@
   "source_head": "7e9743b30",
   "scope": "今回の再開範囲：元の残り1〜17項を署名へ展開。S2〜S6の過去の検収済み出力は再採番しない。",
   "count_rule": "署名のidごとに数える。200行超の照合・合成則は独立署名。小さい証明分割の法則は親署名のnoteに記録する。旧5/8はこの台帳の分母には用いない。",
-  "verified_lean_lines": 23833,
+  "verified_lean_lines": 24004,
   "final_cap": 29000,
   "checkpoint_report_lines": 28500,
   "factor": 2,
@@ -1625,7 +1625,8 @@
       "dependencies": [
         "P3-B1",
         "P3-B2e",
-        "P3-C0"
+        "P3-C0",
+        "P3-C1PNV"
       ],
       "existing": [
         {
@@ -1677,7 +1678,7 @@
       "new_assumptions": [],
       "placement": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePointedPrism.lean",
       "additional_mathematics": true,
-      "note": "11-17夕のユーザー承認。報告の型と依存を保持。 11-17夕：元のKan値自然変換の実現Homの正規化式・合成則を新規58行に分割し対象ビルド・小監査済み。署名本体は未完。 区間評価2法則61行も対象ビルド・小監査済み。 反転区間の指定自然変換の類への特殊化62行も対象ビルド・小監査済み。 元のβの単体制限公式を再利用するν正規化57行も対象ビルド・小監査済み。累計証明分割238行。未列挙の成分分解の法則P3-C1PNVを紙で提案して停止。",
+      "note": "11-17夕のユーザー承認。報告の型と依存を保持。 11-17夕：元のKan値自然変換の実現Homの正規化式・合成則を新規58行に分割し対象ビルド・小監査済み。署名本体は未完。 区間評価2法則61行も対象ビルド・小監査済み。 反転区間の指定自然変換の類への特殊化62行も対象ビルド・小監査済み。 元のβの単体制限公式を再利用するν正規化57行も対象ビルド・小監査済み。累計証明分割238行。未列挙の成分分解の法則P3-C1PNVを紙で提案して停止。 11-17夕の追加承認により再開。",
       "proof_support_verification": {
         "mathematical_lines_conservative": 58,
         "public_declarations": 2,
@@ -1784,6 +1785,75 @@
       "status": "pending",
       "additional_mathematics": true,
       "approval": "11-17夕の一括事前承認：一本の補正上端800以内、着手群の上端を足して29000を超える前に区切る。"
+    },
+    {
+      "id": "P3-C1PNV",
+      "name": "leftStraightening_firstVertexTransport_underValue",
+      "full_type": "∀ {E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [LeftFibration p],\n  let C := TransportSimplexCategory B\n  let j := edgewiseEnrichedInfinityMap (LeftFibrationObject B)\n  let b := leftFibrationEdgewiseFirstVertexBaseChange B\n  let h : j ≫ (leftFibrationInfinityBaseChange (transportSimplexFirstVertexMap B) ≫\n      leftStraighteningCoherentMap C) =\n      b ≫ (edgewiseEnrichedInfinityMap (LeftFibrationObject (nerve C)) ≫\n        leftStraighteningCoherentMap C) := by\n    rw [← Category.assoc, ← leftFibrationEdgewiseFirstVertexBaseChange_projection,\n      Category.assoc]\n  let γ := (transportSimplexUnderRealizationIso B).precomp j ≪≫\n    ((transportSimplexUnderBaseChangeRealizationIso B).precomp j).symm ≪≫\n    eqToIso (congrArg (fun f => HomotopyCategory.mk (functorVertex f)) h) ≪≫\n    (leftStraighteningCoherentMap_oppositeIso C).precomp b\n  let X := edgewiseOrdinaryObject (leftFibrationObjectOf p)\n  HEq ((leftClassificationSimplexIso p).symm ≪≫\n      leftStraighteningInfinityDiagram_firstVertexTransportIso p)\n    (functorIsoValue γ (coherentNerveVertex X))",
+      "dependencies": [],
+      "bare_lines": [
+        190,
+        270
+      ],
+      "corrected_lines": [
+        380,
+        540
+      ],
+      "status": "verified",
+      "additional_mathematics": true,
+      "choose_replacements": [],
+      "new_assumptions": [],
+      "literature": "HTT §3.3.2、Kerodon §5.6・Corollary 5.6.0.6（Tag 028T）の指定構成の照合。特殊化の構成則。",
+      "placement": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningFirstVertexTransportValue.lean",
+      "note": "11-17夕ユーザー承認。型・仮定不変。既存構成の照合・合成則の追加は補正上端800以内なら記録して続行。 対象ビルド・所有9宣言の小監査成功。実測171行、標準三公理のみ。",
+      "existing": [
+        {
+          "name": "leftStraighteningInfinityDiagram_firstVertexTransportIso",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningRepresentation.lean",
+          "line": 79
+        },
+        {
+          "name": "leftStraighteningInfinityMap_firstVertexOppositeIso",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningOppositeRestriction.lean",
+          "line": 53
+        },
+        {
+          "name": "leftClassificationSimplexIso",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftClassificationSimplexRestriction.lean",
+          "line": 69
+        },
+        {
+          "name": "functorIsoValue_trans",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/FunctorIsoValueComposition.lean",
+          "line": 24
+        },
+        {
+          "name": "functorIsoValue_precomp",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/FunctorIsoValueCurry.lean",
+          "line": 75
+        },
+        {
+          "name": "iso_endpoints_heq",
+          "path": "SerrePositivity/InfinityCategories/Project/LocalizationAndKanExtensionAuxiliaries/FunctorIsoPointEvaluation.lean",
+          "line": 24
+        }
+      ],
+      "actual_lines_conservative": 171,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 9,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningFirstVertexTransportValue.lean": "f1b4d0bce2bbaad2058f9c7d1eb71907e8cdbd8a95f6767e04fbea4f33e77b80"
+        }
+      }
     }
   ],
   "common_typeclass_setup": "local instance signaturePullbackLeft {E B D : SSet.{u}}\n    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) : LeftFibration (pullback.snd p k) :=\n  ⟨leftFibrations.pullback_snd p k (LeftFibration.mem (p := p))⟩",

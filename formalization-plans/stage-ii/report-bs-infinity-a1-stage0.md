@@ -8749,3 +8749,49 @@ P3-C1PNがこの署名に依存する向きで、提案を加えた依存グラ�
 現在の停止は5∞-1の完成ではなく、一覧外の署名が必要になったため。
 
 一覧：済み 18／全体 39（うち追加 4、別停止点 2。P3-C1PNVは未登録）。
+
+
+### P3-C1PNVの承認後の再開（11-17夕）
+
+ユーザーの追加承認によりP3-C1PNVを登録。型・依存・既存参照・素190〜270、補正380〜540は前節のとおり。以後、既存構成の照合・合成則は、型・仮定・main本文を保ち一本の補正上端800以内なら記録して続行する。23,833＋540＝24,373なので着手。29,000を超える手前で署名群を区切る。
+
+一覧：済み 18／全体 40（うち追加 5、別停止点 2）。
+
+
+### P3-C1PNVの完成（11-17夕）
+
+`LeftStraighteningFirstVertexTransportValue.lean` の `leftStraightening_firstVertexTransport_underValue`
+を、承認された完全な型のまま証明した。mainの既存本文・仮定・計算上限の変更なし。
+元の大域比較を先に分解し、同じ対象での評価を取った後、指定された端点移送を相殺する。
+弱い存在命題からの選択や、別の自然同型への置き換えはない。
+
+対象ビルド成功、所有9宣言の小監査は標準三公理のみ。文献属性はHTT §3.3.2のspecial、
+Kerodon §5.6・Tag 028Tは構成の特殊化としてdocstringに記載。
+素の見込み190〜270行（補正380〜540行）に対し、実測は171物理行を全て保守的に数学行へ計上。
+検証済み累計は23,833 → **24,004行**。
+証拠目録：`evidence/inf-supply/c1pnv-1117/manifest.json`。
+
+内部の証明分割（いずれも200行未満、署名数には追加しない）の型：
+
+```lean
+firstVertexOpposite_factor : ∀ B : SSet.{u},
+  leftStraighteningInfinityMap_firstVertexOppositeIso B =
+    (leftStraighteningSimplexRestrictionIso B).precomp
+      (edgewiseEnrichedInfinityMap (LeftFibrationObject B)) ≪≫ underOppositeComparison B
+
+normalized_cancel : ∀ {L : Type*} [Category* L] {a b c a' b' c' : L}
+    (e : a ≅ b) (f : b ≅ c) (ha : a = a') (hb : b = b') (hc : c = c'),
+  HEq (((eqToIso ha).symm ≪≫ e ≪≫ eqToIso hb).symm ≪≫
+    ((eqToIso ha).symm ≪≫ (e ≪≫ f) ≪≫ eqToIso hc)) f
+
+normalize_of_heq : ∀ {L : Type*} [Category* L] {a b a' b' : L}
+    (e : a ≅ b) (f : a' ≅ b') (ha : a = a') (hb : b = b') (h : HEq e f),
+  (eqToIso ha).symm ≪≫ e ≪≫ eqToIso hb = f
+```
+
+`underOppositeComparison` は承認された型のlet γの右辺を同じ指定構成として固定したprivate略記。
+次はP3-C1PN。今回の24373行の着手判定に対し実測24,004行なので、残りの補正上端300を足しても24,304行。
+止まらず、既存の添字制限・実現値の法則を使って元のνと反転区間の類を照合する。
+旧R2の未追跡4本はそのまま。S7・R2・R3は再開しない。
+
+一覧：済み 19／全体 40（うち追加 5、別停止点 2）。
