@@ -435,7 +435,8 @@
       "O05",
       "L02",
       "L03",
-      "L04"
+      "L04",
+      "L05"
     ],
     "lo": 65,
     "hi": 160,
@@ -480,7 +481,8 @@
       "O02",
       "O03",
       "O06",
-      "O08"
+      "O08",
+      "L05"
     ],
     "lo": 75,
     "hi": 180,
@@ -931,6 +933,20 @@
     "ref": "既存の係数移送の法則の抽出。BM18 Prop4.8(5)の係数",
     "api": "perfectRing_interval @ SerrePositivity/CommutativeAlgebra/ValuationInterval/Basic.lean:128–151（同じ局所化の根と分母の構成）",
     "why": "既存の区間環の証明の局所化の構成を、下端の商を取らない同じ係数で使う。分母の根が同じ素イデアルの外にあるという既存の計算を保つ。",
+    "risk": false
+  },
+  {
+    "id": "L05",
+    "sig": "theorem cechExact_of_overlapTensor_coefficients (p : ℕ) [Fact p.Prime]\n    {V T : Type u} [CommRing V] [IsDomain V] [ValuationRing V]\n    [CommRing T] [Algebra V T] [PerfectRing V p] [PerfectRing T p]\n    (B : Under (CommRingCat.of T)) [PerfectRing B.right p] (hp : (p : V) = 0)\n    {a b : PrimeSpectrum V} (h : a ≤ b)\n    (hl : Cech.IsCechExact (Arrow.mk ((CommRingCat.tensorProd (CommRingCat.of T)\n      (CommRingCat.of (T ⊗[V] Localization.AtPrime b.asIdeal))).obj B).hom))\n    (hq : Cech.IsCechExact (Arrow.mk ((CommRingCat.tensorProd (CommRingCat.of T)\n      (CommRingCat.of (T ⊗[V] (V ⧸ a.asIdeal)))).obj B).hom))\n    (hr : Cech.IsCechExact (Arrow.mk ((CommRingCat.tensorProd (CommRingCat.of T)\n      (CommRingCat.of (T ⊗[V] ValuationIntervalRing h))).obj B).hom)) :\n    Cech.IsCechExact (Arrow.mk B.hom)",
+    "deps": [
+      "O05",
+      "U09"
+    ],
+    "lo": 50,
+    "hi": 120,
+    "ref": "形式化用：O06の既存moduleCechの係数検出の適用を、同じ入力で独立させる。BM18 Prop4.8(5)",
+    "api": "Arc.cechExact_of_overlapTensor @ Arc/Descent/ArcCechOverlap.lean:30、Arc.acyclic_of_tensorShortExact @ Arc/Milnor/ArcMilnorDetection.lean:92、Arc.moduleCech_tor_subsingleton @ Arc/Milnor/ArcCechMilnor.lean:52",
+    "why": "O05の同じT上の列を同じmoduleCechへtensorし、既存のTor消滅とunitの同型で戻す。O06で予定していた適用の分割で、新しい数学や仮定を足さない。",
     "risk": false
   }
 ]

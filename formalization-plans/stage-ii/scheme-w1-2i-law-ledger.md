@@ -78,3 +78,28 @@ theorem intervalCoefficient_primeLocalization_perfect (p : ℕ) [Fact p.Prime] {
 
 
 追加後は70頂点・117辺、DFSで循環0。検証済み53署名・実測1,422行を確定分とした補正後の完成見込みは2,962〜5,188行で、外枠9,000行以内。一覧：済み53／全体70（うち追加4）。
+
+
+## L05：moduleCechの同じ係数検出の分割（記録後に着手）
+
+```lean
+theorem cechExact_of_overlapTensor_coefficients (p : ℕ) [Fact p.Prime]
+    {V T : Type u} [CommRing V] [IsDomain V] [ValuationRing V]
+    [CommRing T] [Algebra V T] [PerfectRing V p] [PerfectRing T p]
+    (B : Under (CommRingCat.of T)) [PerfectRing B.right p] (hp : (p : V) = 0)
+    {a b : PrimeSpectrum V} (h : a ≤ b)
+    (hl : Cech.IsCechExact (Arrow.mk ((CommRingCat.tensorProd (CommRingCat.of T)
+      (CommRingCat.of (T ⊗[V] Localization.AtPrime b.asIdeal))).obj B).hom))
+    (hq : Cech.IsCechExact (Arrow.mk ((CommRingCat.tensorProd (CommRingCat.of T)
+      (CommRingCat.of (T ⊗[V] (V ⧸ a.asIdeal)))).obj B).hom))
+    (hr : Cech.IsCechExact (Arrow.mk ((CommRingCat.tensorProd (CommRingCat.of T)
+      (CommRingCat.of (T ⊗[V] ValuationIntervalRing h))).obj B).hom)) :
+    Cech.IsCechExact (Arrow.mk B.hom)
+```
+
+- 位置：O06で予定した、O05のT上の短完全列をmoduleCechへ適用する段を名前付きで分ける。O09の和の上の係数でも再利用する。原典はBM18 Prop4.8(5)に対応する既存の構成の適用で、別の数学を供給しない。
+- 依存：O05・U09、既存のArc.acyclic_of_tensorShortExact・moduleCech_tor_subsingleton・cechExact_baseChange_iff_tensorCochain・tensorCochain_unitIso。配置：ArcRouteB/OverlapCoefficientDetection.lean。
+- 素50〜120行、係数2：100〜240行、上端240≤800。元のO06・O09の型・仮定を変えず、mainの既存本体も変えない。Tの平坦性を要求しない。対象は同じ列と同じ複体のまま。
+- 元の66署名と照合・分割5本で71署名。DFSで71頂点・121辺、循環0。確定分53署名・1,422行だけで計算した完成見込みは3,062〜5,428行、9,000行以内。
+
+一覧：済み53／全体71（うち追加5）。記録後は事前承認に従い止まらず実装する。
