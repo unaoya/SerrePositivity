@@ -7165,3 +7165,48 @@ P3-Dの可換式を新しい仮定にせず証明して入れる。以上の合�
 第16・17項の型は元のまま。現在22,492行で、これらの上端1,300行を加えても23,792行。
 今回の続行については26,500行で停止して報告する。mainは取り込まない。
 一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+#### P3-B2の共同実現側の型を補足（同じ午後の紙）
+
+P3-B2のrawなunderの等式だけでは、共同実現の合成式の型を列挙したことにはならないため、
+次も明示する。追加の最終定理ではなくP3-B2の分割。この分を含めB2は120〜220行、
+第3項の残り計は**940〜1,550行**へ訂正する（前の900〜1,450行との差は40〜100行）。
+
+全てJ = TransportSimplexCategory D、底Bの図式として、次を固定する。
+
+```lean
+H  := transportSimplexFunctor k
+AD := transportSimplexDomainFunctor D ⋙ Over.map k
+UD := transportSimplexUnderDomains D ⋙ Over.map k
+UB := H.op ⋙ transportSimplexUnderDomains B
+hA := transportSimplexDomainFunctor_baseChange k
+ηD := Functor.whiskerRight (transportSimplexUnderDomainTransformation D) (Over.map k)
+ηB := Functor.whiskerLeft H.op (transportSimplexUnderDomainTransformation B) ≫ eqToHom hA
+```
+
+ρ : UD ⟶ UBは、sでの成分がOver.homMk (nerveMap (Under.post (X := s) H)) …
+となる実際の自然変換。底との可換性とnaturalityは初頂点の自然性とUnder.postの作用を使う。
+ここでのρは新しい任意の比較の選択ではない。
+
+```lean
+-- transportSimplexUnderTransformation_baseChange（rawな合成の式）
+{B D : SSet.{u}} (k : D ⟶ B) : ηD = ρ ≫ ηB
+
+-- transportSimplexUnderBaseChangeComparison_isQCatEquivalence
+{B D : SSet.{u}} (k : D ⟶ B)
+(s : TransportSimplexCategory D) (p : LeftFibrationObject B) :
+IsQCatEquivalence (relativeFunctorOverPre p.val.hom (ρ.app (Opposite.op s)))
+
+-- transportSimplexUnderRealization_baseChange_composition
+{B D : SSet.{u}} (k : D ⟶ B) :
+relativeSectionRealizationComparisonIso ηB hηB ≪≫
+  relativeSectionRealizationComparisonIso ρ hρ =
+relativeSectionRealizationComparisonIso ηD hηD
+```
+
+hρは直前の補題、hηB/hηDは既存のunder初頂点への制限の同値性と底変換から証明して渡す。
+型の略記であり、最終定理の未証明の仮定にはしない。hρの証明では二つのunderの初対象からの
+点包含の同じ三角形へ戻し、relativeFunctorOverPre_isQCatEquivalence_of_initialComparisonを使う。
+最後の合成はP3-Aと同じ全joint族の合成則を用いる。これにP3-B1を続け、初頂点の
+二段pullbackの指定同型を消去してP3-Cのνを得る。点ごとに独立した同型を組み立てない。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
