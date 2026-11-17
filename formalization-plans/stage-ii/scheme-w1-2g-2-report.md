@@ -3214,3 +3214,50 @@ mainの取り込みは11-16 16:25の指示どおり保留したまま。検証�
 - 鍵返却を確認し、同じ対象の残りの検証を別の1件で待機中。対象は `RelativeFppfAffineRefinement`、`AffineNilImmersionFrobeniusCoefficients` と直接のimporter `SerrePositivity.AlgebraicGeometry`。新しいLeanは、この対象ビルド成功後に追加する。
 
 - 続きの対象ビルドは `2g-28k-merge-native-2.log`、5,362ジョブ、exit 0。main取り込み後の対象検証を完了し、N01・N02からLeanを再開した。
+
+## 2026-11-17：承認済み計画の最初の21署名（55d8ab529）
+
+- 数学のコミット：`55d8ab529`。N01〜N04、D01・D03、E01〜E03・E10・E17、P01〜P07・P11・P13・P14。全て `scheme-w1-2g-2-residual-lemma-plan.md` の同じ署名で、紙だけの略記は展開し、`total` は既存の完全名で記述した。新しい仮定・未記載の宣言はない。main にある既存宣言の本体は変えていない。
+- 新規9モジュール413行＋入口9行＝422行。累計は19,831行（新規272モジュール19,513行、既存ファイルへの追加25行、入口293行。既存の削除14行は差し引かない）。今回の所有宣言は46件、累計2,202件（以前から分けて数える既存15件は別）。
+- 原稿と本体のハッシュ・バイト一致、依存元7ファイルの原稿検証、対象ビルド5,369ジョブ、依存する2ファイルの原稿検証、対象ビルド5,371ジョブが成功。直接のimporterは `SerrePositivity.AlgebraicGeometry`。所有宣言の監査は private・生成宣言を含め46件、標準三公理以外0。全体rootビルドや大きい監査は実行していない。
+- ヘルパーは作業木の `scheme-drafts/` に置き、独自の鍵・待機ループは持たない。外側の共有 `with_build_lock.sh --class impl --wait 3600` と280秒の時間区切りで実行した。監査は別の共有鍵で実行した。未検証のLeanはコミットしていない。
+- 係数2の残部見込みは3,768〜7,560行（計画の残り68署名、入口等の余裕は維持）。完成見込み23,599〜27,391行、外枠28,000行以内。2hの410〜900行は別。停止点2g-2ではなく、このままN05以降へ進む。
+- 一覧：済み1／全体3（うち追加0）。内部署名：済み21／89（G4・G5）、追加0。
+
+### 宣言と主張（署名・原典との対応は同じIDの計画欄）
+
+- N01 `SerrePositivity.AlgebraicGeometry.fullCechComplexMap_isIso_of_nonempty_support`：非空有限交叉の係数写像が同型なら、同じ全タプル Čech 複体の写像は同型。
+- N02 `SerrePositivity.AlgebraicGeometry.nilImmersion_app_universalHomeomorphism`：nil 閉厚化の任意のアフィン開 U 上の元の app U は環の普遍同相。
+- N03 `SerrePositivity.AlgebraicGeometry.nilImmersion_perfectCechPullback_isIso`：nil 閉厚化の完全構造層の、同じアフィン開族の Čech 引き戻しは同型。
+- N04 `SerrePositivity.AlgebraicGeometry.nilBaseChange_cechNerve_map`：Cartesian な Arrow の射の右辺が nil 閉厚化なら、元の nerve の各射も閉埋め込みかつ全射。
+- D01 `SerrePositivity.AlgebraicGeometry.PerfectCechUniversalDescent`：全ての Noether アフィン試験基底と有限アフィン被覆に、元のタプル二重複体の完全性を量化する中間述語。
+- D03 `SerrePositivity.AlgebraicGeometry.perfectCechUniversalDescent_flat_surjective`：分離・準コンパクト・局所有限表示の平坦全射は D01 を満たす。
+- E01 `SerrePositivity.AlgebraicGeometry.frobeniusArrowFamilyDiagram`：元の矢印の族から、Frobenius 有限段の小さい二変数図式を作る。
+- E02 `SerrePositivity.AlgebraicGeometry.frobeniusArrowFamilyLimit`：同じ矢印の族の各実際の Frobenius 順極限を関手にする。
+- E03 `SerrePositivity.AlgebraicGeometry.frobeniusArrowFamilyStandardIso`：実際の順極限の族と、有限段の圏論的余極限の族の標準比較を自然同型にする。
+- E10 `SerrePositivity.AlgebraicGeometry.frobeniusArrowFamilyFubiniIso`：同じ二変数図式の二つの順の余極限を既存 Fubini 同型で比較する。
+- E17 `SerrePositivity.AlgebraicGeometry.primeFieldRingHom`：(p : R) = 0 から ULift (ZMod p) →+* R を作り、CharP R p や非零環を仮定しない。
+- P01 `SerrePositivity.AlgebraicGeometry.augmentedNerveBase`：元の増大 nerve の各対象の基底への射を、始対象からの射の像として作る。
+- P02 `SerrePositivity.AlgebraicGeometry.augmentedTupleLength`：増大点に長さ0、通常の n 次に長さ n+1 を割り当てる。
+- P03 `SerrePositivity.AlgebraicGeometry.augmentedTupleIndexMap`：増大単体圏の射を同じタプル位置の写像へ送る。
+- P04 `SerrePositivity.AlgebraicGeometry.augmentedTupleIndexMap_id`：P03 は恒等射を位置の恒等写像へ送る。
+- P05 `SerrePositivity.AlgebraicGeometry.augmentedTupleIndexMap_comp`：P03 は合成を同じ位置写像の合成へ送る。
+- P06 `SerrePositivity.AlgebraicGeometry.augmentedTupleOpen`：増大点は全開集合、正次数は元の schemeCechTupleOpen とする。
+- P07 `SerrePositivity.AlgebraicGeometry.pairedCechScheme`：二つの元の増大 nerve の同じ基底上の積を取る。
+- P11 `SerrePositivity.AlgebraicGeometry.pairedCechOpen`：二つのタプル開の、同じ二射影による逆像の交叉を取る。
+- P13 `SerrePositivity.AlgebraicGeometry.pairedCechPrimeCast`：基底環の p の零化を、同じ積の全ての開の切断環へ送る。
+- P14 `SerrePositivity.AlgebraicGeometry.pairedPerfectCechComplex`：同じ積のタプル開と実際の Frobenius 係数から全タプル Čech 複体を作る。
+
+### 配置と監査の内訳
+
+| モジュール（SerrePositivity/AlgebraicGeometry/） | 行数 | 所有宣言 |
+| --- | ---: | ---: |
+| `FullCechNonemptySupportIso.lean` | 35 | 1 |
+| `NilImmersionAffineSectionCoefficients.lean` | 38 | 1 |
+| `NilBaseChangeCechNerve.lean` | 30 | 1 |
+| `PerfectCechUniversalDescent.lean` | 43 | 6 |
+| `FrobeniusArrowFamily.lean` | 65 | 15 |
+| `PrimeFieldRingHom.lean` | 22 | 3 |
+| `AugmentedCechCoordinates.lean` | 63 | 8 |
+| `NilImmersionPerfectCechPullback.lean` | 46 | 1 |
+| `PairedCechGeometry.lean` | 71 | 10 |
