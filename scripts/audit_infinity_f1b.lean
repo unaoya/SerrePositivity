@@ -119,7 +119,7 @@ run_cmd do
     if oldAuditPrefix1.isPrefixOf source.toName then dest.getStr?.toOption.map String.toName else none)
   let env ← getEnv
   let mut importedRepo : Nat := 0
-  for mod in closureMods do
+  for mod in env.header.modules do
     unless `SerrePositivity |>.isPrefixOf mod.module do continue
     importedRepo := importedRepo + 1
     if (mod.module.toString.toLower.splitOn "straightening").length != 1 then
