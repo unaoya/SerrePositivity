@@ -9327,3 +9327,258 @@ private lemma nativeRectangle_cancel.{v, w} {C : Type v} [Category.{w} C]
 次のP3-C1PNは補正上端720、25,353＋720＝26,073で着手条件内。
 
 一覧：済み 29／全体 50（うち追加 15、別停止点 2）。
+
+
+### P3-C1PNの短い端点移送法則（11-17夜）
+
+以下の二つは200行未満の既存構成の照合で、P3-C1PNの証明分割として含める。
+
+```lean
+private lemma normalizedIsoHom_iff {A X : SSet.{u}} {f f' g : A ⟶ X}
+    (hf : f = f') (e : FunctorIso f g) (a : FunctorHom f' g) :
+    (diagramIsoCongr hf rfl e).hom = a ↔
+      e.hom = eqToHom (congrArg (fun h => HomotopyCategory.mk (functorVertex h)) hf) ≫ a
+```
+
+`normalizedIso_rfl` の型：
+
+```lean
+∀ {A X : SSet.{u}} {f g : A ⟶ X} (e : FunctorIso f g),
+  diagramIsoCongr rfl rfl e = e
+```
+
+元の同型・辺・余単位の選択を保つ。新しい数学・仮定・chooseなし。
+一覧：済み 29／全体 50（うち追加 15、別停止点 2）。
+
+
+### P3-C1PSの追加（11-17夜、既存構成の照合）
+
+
+## P3-C1PS（同じscaffoldでの指定pointed比較）
+
+```lean
+∀ {E B D : SSet.{u}} [Quasicategory B] [Quasicategory D]
+    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B),
+    let U := SSet.uliftFunctor.{u+1,u}
+    let lB := transportSimplexFirstVertexMap B
+    let lD := transportSimplexFirstVertexMap D
+    let H := transportSimplexFunctor k
+    let q := pullback.snd p k
+    let p₀ := pullback.snd p lB
+    let r := pullback.snd q lD
+    let d := leftStraighteningBaseChangePullbackData p k
+    let s := scaffoldPullbackData p₀ r d.val H d.property.2.2.1
+    let i := U.map s.val
+    let R₀ := (nerveLeftTransportRepresentation p₀).cartesianRestrict
+      (U.map d.val) (U.map (nerveMap H)) d.property.2.2.2
+    let Rr := nerveLeftTransportRepresentation r
+    let θp := leftStraighteningInfinityDiagram_firstVertexTransportIso p
+    let θq := leftStraighteningInfinityDiagram_firstVertexTransportIso q
+    let β := leftStraighteningInfinityDiagram_baseChangeIso p k
+    let ν := (θp.precomp (U.map (nerveMap H))).symm ≪≫
+      diagramIsoCongr
+        (by rw [← Category.assoc, ← transportSimplexFirstVertexMap_ulift_naturality k,
+          Category.assoc]) rfl (β.precomp (U.map lD)) ≪≫ θq
+    ∃ e : FunctorIso (i ≫ R₀.pointedMap) (i ≫ Rr.pointedMap),
+      e.postcomp pointedSpaceProjection =
+        (functorIsoOfEq (ν.precomp (U.map r)) R₀.pointedMap_projection.symm
+          Rr.pointedMap_projection.symm).precomp i
+```
+
+依存：P3-C1PN・R01・R02・P3-C0。素200〜350行、補正400〜700行。
+既存参照：
+- `scaffoldPointedRelativeIso` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePointedPrism.lean:456
+- `oppositeHomComparison_at_natural` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePointedPrism.lean:536
+- `oppositeComparisonPointedBase` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePointedPrism.lean:141
+- `pointedIsoOfProjectedPrism` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePointedPrism.lean:581
+- `leftUnstraighteningEdgeLiftFamily_projection` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftUnstraighteningEdgeLiftFamily.lean:58
+
+HTT §3.3.2・特に3.3.2.8、Kerodon §5.6（Tag 028T）の指定構成の法則。このscaffold上での指定pointed比較への特殊化。
+既存のscaffold制限比較・反転Homの指定比較・全写像空間の持ち上げを同じ辺で合成する照合。新しい数学・仮定・choose・main既存本文の変更なし。
+
+P3-C1PNの検証後に着手判定を再計算する。現在25,353行＋PNの補正上端720＋この補正上端700＝26,773で区切りの範囲内。
+一覧：済み 29／全体 51（うち追加 16、別停止点 2）。
+
+
+### P3-C1PNのkernel検査の分割（11-17夜）
+
+P3-C1PNは戦術上は閉じたがkernel検査が既存の上限で時間切れ。計算上限は上げない。
+主張の型を保持し、証明で使わない二つの表現のletを内部の芯の補題から省いた証明分割で検査箇所を切り分ける。元の署名には元どおり二つのletを残す。
+内部の芯の完全型：
+
+```lean
+∀ {E B D : SSet.{u}} [Quasicategory B] [Quasicategory D]
+  (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B),
+  let U := SSet.uliftFunctor.{u+1,u}
+  let lB := transportSimplexFirstVertexMap B
+  let lD := transportSimplexFirstVertexMap D
+  let H := transportSimplexFunctor k
+  let q := pullback.snd p k
+  let p₀ := pullback.snd p lB
+  let r := pullback.snd q lD
+  let d := leftStraighteningBaseChangePullbackData p k
+  let θp := leftStraighteningInfinityDiagram_firstVertexTransportIso p
+  let θq := leftStraighteningInfinityDiagram_firstVertexTransportIso q
+  let β := leftStraighteningInfinityDiagram_baseChangeIso p k
+  let ν := (θp.precomp (U.map (nerveMap H))).symm ≪≫
+    diagramIsoCongr
+      (by rw [← Category.assoc, ← transportSimplexFirstVertexMap_ulift_naturality k,
+        Category.assoc]) rfl (β.precomp (U.map lD)) ≪≫ θq
+  let Fh : KanDiagramObject (TransportSimplexCategory D) :=
+    ⟨H ⋙ leftStrictTransportFunctor p₀, trivial⟩
+  let Fr : KanDiagramObject (TransportSimplexCategory D) :=
+    ⟨leftStrictTransportFunctor r, trivial⟩
+  let α : Fh.val ⋙ kanObjectForget ⟶ Fr.val ⋙ kanObjectForget :=
+    pullbackStrictComparison p₀ r d.val H d.property.2.2.1
+  let y := (kanDiagramOppositeHomInterval Fh Fr).app _ (naturalHomVertex Fh Fr α)
+  let ε := intervalMappingEdgeOfVertex y
+  let hsrc : U.map (nerveMap H) ≫ leftCoherentTransport p₀ =
+      kanDiagramCoherentNerve (Fh.val ⋙ kanObjectOpFunctor) := by
+    change U.map (nerveMap H) ≫
+      kanDiagramCoherentNerve (leftStrictTransportFunctor p₀ ⋙ kanObjectOpFunctor) =
+      kanDiagramCoherentNerve ((H ⋙ leftStrictTransportFunctor p₀) ⋙ kanObjectOpFunctor)
+    rw [kanDiagramCoherentNerve_precomp]
+    rfl
+  ν.hom = eqToHom (congrArg (fun f => HomotopyCategory.mk (functorVertex f)) hsrc) ≫
+    SSet.Truncated.HomotopyCategory.homMk ε.toTruncated
+```
+
+新しい構成・定理・仮定・chooseなし。PN内の証明分割として数える。
+一覧：済み 29／全体 51（うち追加 16、別停止点 2）。
+
+証明分割の生成が型内の `:= by` を区切りと誤認したので、完全な型と証明本体を分けて再生成した。主張の型は台帳の文字列をそのまま使用し、元のPNにも引用属性を保持した。
+一覧：済み 29／全体 51（うち追加 16、別停止点 2）。
+
+
+### P3-C1PNの分割箇所の局所化（11-17夜）
+
+未使用のletを省いた内部の芯でもkernel時間切れとなったため、指定νの因子分解を独立に検査し、逆同型と前合成の計算を一般の同型の法則で処理する。いずれも200行未満の証明分割で、元のPNの型・仮定は保持。
+
+```lean
+private lemma nativeTwistInverseChain {K J X : SSet.{u}} (t : K ⟶ J)
+    {f g h i : J ⟶ X} {fq gq hq iq : K ⟶ X}
+    (a : FunctorIso f g) (b : FunctorIso h g) (o : FunctorIso h i)
+    (c : FunctorIso fq (t ≫ f)) (aq : FunctorIso fq gq) (bq : FunctorIso hq gq)
+    (oq : FunctorIso hq iq) :
+    (FunctorIso.precomp (a ≪≫ b.symm ≪≫ o) t).symm ≪≫ c.symm ≪≫ aq ≪≫ bq.symm ≪≫ oq =
+    (o.precomp t).symm ≪≫ (FunctorIso.precomp (a ≪≫ b.symm) t).symm ≪≫
+      c.symm ≪≫ aq ≪≫ bq.symm ≪≫ oq
+```
+
+`nativeTransportIntervalFactorization`：
+
+```lean
+∀ {E B D : SSet.{u}} [Quasicategory B] [Quasicategory D]
+  (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B),
+  let U := SSet.uliftFunctor.{u+1,u}
+  let lB := transportSimplexFirstVertexMap B
+  let lD := transportSimplexFirstVertexMap D
+  let H := transportSimplexFunctor k
+  let q := pullback.snd p k
+  let p₀ := pullback.snd p lB
+  let r := pullback.snd q lD
+  let d := leftStraighteningBaseChangePullbackData p k
+  let θp := leftStraighteningInfinityDiagram_firstVertexTransportIso p
+  let θq := leftStraighteningInfinityDiagram_firstVertexTransportIso q
+  let β := leftStraighteningInfinityDiagram_baseChangeIso p k
+  let ν := (θp.precomp (U.map (nerveMap H))).symm ≪≫
+    diagramIsoCongr
+      (by rw [← Category.assoc, ← transportSimplexFirstVertexMap_ulift_naturality k,
+        Category.assoc]) rfl (β.precomp (U.map lD)) ≪≫ θq
+  let t := U.map (nerveMap H)
+  let ν₀ := (FunctorIso.precomp
+      (nativeUnderCoefficientIso p ≪≫ (nativeBaseChangeCoefficientIso p).symm) t).symm ≪≫
+    (simplexSectionBaseChangeCoefficient p k).symm ≪≫ nativeUnderCoefficientIso q ≪≫
+      (nativeBaseChangeCoefficientIso q).symm
+  ν = ((nativeOppositeCoefficientIso p₀).precomp t).symm ≪≫ ν₀ ≪≫
+    nativeOppositeCoefficientIso r
+```
+
+一覧：済み 29／全体 51（うち追加 16、別停止点 2）。
+
+
+P3-C1PSの再利用先を補記（型・依存・見込みは変更なし）：
+- `relativeFunctorVertexIsoImage_postcomp` @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/RelativeFunctorVertexIsoProjection.lean:34
+- `tautScaffold_map` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/FibrationsOverOrdinaryCategories/SimplicialReplacementFunctor.lean:97
+- `tautScaffold_baseMap` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/FibrationsOverOrdinaryCategories/SimplicialReplacementBaseChange.lean:73
+- `leftUnstraighteningEdgeLiftFamily_zero` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftUnstraighteningEdgeLiftFamily.lean:49
+- `leftUnstraighteningEdgeLiftFamily_one` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftUnstraighteningEdgeLiftFamily.lean:67
+
+全写像空間の持ち上げは元の同じ族で始点・射影を保ち、終点はその族から定義される。追加のchoose置き換えは不要。
+一覧：済み 29／全体 51（うち追加 16、別停止点 2）。
+
+
+P3-C1PNの短い係数反転の照合を一度だけ検査し、具体的な二成分の比較ではその補題を使う（200行未満、PNの証明分割）。
+
+```lean
+private lemma nativeOppositeCoefficientIso_eq_universal {C : Type u} [Category.{u} C]
+    {E : SSet.{u}} (p : E ⟶ nerve C) [LeftFibration p] :
+    nativeOppositeCoefficientIso p =
+      kanDiagramOppositeValueIso ⟨leftStrictTransportFunctor p, trivial⟩
+```
+
+引用は元の具体的なtransportの因子分解とPNに付け、一般の逆同型の内部計算法則からは外す。型・仮定・選択・計算上限は変更しない。
+一覧：済み 29／全体 51（うち追加 16、別停止点 2）。
+
+因子分解でのletの全体的な簡約もwhnf上限に達した。既存の正規化定理の同じ結論を、必要なσ二成分を露出した型で直接受け、全体へのdsimpを避ける。計算上限は変更しない。
+一覧：済み 29／全体 51（うち追加 16、別停止点 2）。
+
+
+### mainの取り込み（11-17夜）
+
+対象検証の区切りでmain 645f1dfa9（⑥の1fb2c6dccを含む）を取り込んだ。merge commit 2ce1cf7ee。未検証PNと紙の作業は保持し、旧R2の未追跡4本は触っていない。
+型を露出しても因子分解のwhnf上限に達するため、その一宣言だけ診断ログを有効にして箇所を調べる。計算上限は上げない。
+一覧：済み 29／全体 51（うち追加 16、別停止点 2）。
+
+診断では、因子分解の書換え時に `leftFibrationBaseChangeEnriched` が8,055回、`KanEnrichedDiagram.evaluate` が2,471回展開されていた。ν全体の書換えをやめ、型を付けた二引数の合成式へσ二成分の等式を `congrArg₂` で写す。診断用optionは外し、上限は既存のまま。
+一覧：済み 29／全体 51（うち追加 16、別停止点 2）。
+
+診断の短い区切りでは、正規化・合同写像・逆同型の一般則・正規化と合同写像の合成まで通り、最後の略記の定義上の照合に上限がかかることを確認。以下の定義の法則を一度だけ証明し、合成式への合同写像で接続する（200行未満のPN内の証明分割）。
+
+```lean
+private lemma firstVertexNativeCoefficientIso_factorization {E B : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p] :
+    firstVertexNativeCoefficientIso p = nativeUnderCoefficientIso p ≪≫
+      (nativeBaseChangeCoefficientIso p).symm ≪≫
+        nativeOppositeCoefficientIso (pullback.snd p (transportSimplexFirstVertexMap B))
+```
+
+計算上限・元のPNの型・仮定・選択は変更なし。
+一覧：済み 29／全体 51（うち追加 16、別停止点 2）。
+
+最後の接続の括弧を点検し、PN内部の一般則の右辺を元のν₀の四因子のまとまりに合わせた。平坦な合成との結合則は一般則の内部で証明し、実際の大きな同型の定義上の結合性は要求しない。元の署名PNの型は変更しない。修正後の内部法則：
+
+```lean
+private lemma nativeTwistInverseChain {K J X : SSet.{u}} (t : K ⟶ J)
+    {f g h i : J ⟶ X} {fq gq hq iq : K ⟶ X}
+    (a : FunctorIso f g) (b : FunctorIso h g) (o : FunctorIso h i)
+    (c : FunctorIso fq (t ≫ f)) (aq : FunctorIso fq gq) (bq : FunctorIso hq gq)
+    (oq : FunctorIso hq iq) :
+    (FunctorIso.precomp (a ≪≫ b.symm ≪≫ o) t).symm ≪≫ c.symm ≪≫ aq ≪≫ bq.symm ≪≫ oq =
+    (o.precomp t).symm ≪≫ ((FunctorIso.precomp (a ≪≫ b.symm) t).symm ≪≫
+      c.symm ≪≫ aq ≪≫ bq.symm) ≪≫ oq
+```
+
+一覧：済み 29／全体 51（うち追加 16、別停止点 2）。
+
+
+### P3-C1PNの完成（11-17夜）
+
+元の指定νの射を、同じpullbackの自然変換αの反転区間模型の指定辺の類へ同定した。
+原署名の型（未使用のR₀・Rrのletも含む）・仮定・選択は変更していない。
+元のνの正規化、三つの指定係数の同定、反転前の長方形の相殺、指定した係数反転の自然性と添字制限を順に使用した。
+型の内部では同じ指定余単位と全図式の射を保ち、点ごとの像の一致だけに置き換えていない。
+
+対象1モジュール・所有48宣言の小監査成功、標準三公理のみ。
+診断traceを除いた最終ソースを `build-final.log` で再ビルド・再監査し、SHAを照合した。
+素220〜360行・補正440〜720行に対し、実測**260行**（import・内部の小さい計算法則・型を保持する最終署名を含む）。
+累計25,353 → **25,613行**。heartbeats・maxRecDepth等は上げていない。
+大きな項の定義上の一致は要求せず、三成分の定義の等式と一般の結合則を使い、四因子のν₀のまとまりを保って接続したことで時間切れを解消した。
+主な宣言はHTT §3.3.2のspecial属性、Kerodon Tag 028T側はdocstringで構成の特殊化を記載。
+証拠：`evidence/inf-supply/c1pn-interval-native-1117/manifest.json`。
+
+mainは645f1dfa9（⑥の1fb2c6dccを含む）を2ce1cf7eeで取り込み済み。
+旧R2の未追跡4本は変更も登録もしていない。S7・R2・R3は再開しない。
+次は記録済みP3-C1PS（補正上端700）。25,613＋700＝26,313で着手条件内。
+
+一覧：済み 30／全体 51（うち追加 16、別停止点 2）。

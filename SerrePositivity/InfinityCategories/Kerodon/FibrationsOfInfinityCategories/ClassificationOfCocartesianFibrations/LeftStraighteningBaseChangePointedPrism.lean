@@ -1,5 +1,10 @@
 module
 
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftStraighteningNativeCoefficientComparison
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftStraighteningTransportBaseChangeNormalization
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanDiagramOppositeValueComparison
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanDiagramOppositeHomIntervalNatural
+
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SimplexUnderNativeBaseChange
 public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanDiagramNaturalTransformationComposition
 public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanDiagramNaturalTransformationPrecomposition
@@ -868,5 +873,260 @@ private lemma leftStraighteningBaseChange_native_nonop_hom :
     eqToIso_refl, Iso.refl_hom, Iso.refl_inv, Category.assoc, eqToHom_trans_assoc,
     eqToHom_refl, Category.id_comp, Category.comp_id]
   exact (Category.id_comp ν₀.hom).symm
+
+private lemma normalizedIsoHom_iff {A X : SSet.{u}} {f f' g : A ⟶ X}
+    (hf : f = f') (e : FunctorIso f g) (a : FunctorHom f' g) :
+    (diagramIsoCongr hf rfl e).hom = a ↔
+      e.hom = eqToHom (congrArg (fun h => HomotopyCategory.mk (functorVertex h)) hf) ≫ a := by
+  subst f'
+  simp only [diagramIsoCongr, eqToIso_refl, Iso.refl_symm, Iso.refl_trans,
+    Iso.trans_refl, eqToHom_refl, Category.id_comp]
+
+private lemma normalizedIso_rfl {A X : SSet.{u}} {f g : A ⟶ X} (e : FunctorIso f g) :
+    diagramIsoCongr rfl rfl e = e := by
+  simp only [diagramIsoCongr, eqToIso_refl, Iso.refl_symm, Iso.refl_trans, Iso.trans_refl]
+
+private lemma nativeTwistInverseChain {K J X : SSet.{u}} (t : K ⟶ J)
+    {f g h i : J ⟶ X} {fq gq hq iq : K ⟶ X}
+    (a : FunctorIso f g) (b : FunctorIso h g) (o : FunctorIso h i)
+    (c : FunctorIso fq (t ≫ f)) (aq : FunctorIso fq gq) (bq : FunctorIso hq gq)
+    (oq : FunctorIso hq iq) :
+    (FunctorIso.precomp (a ≪≫ b.symm ≪≫ o) t).symm ≪≫ c.symm ≪≫ aq ≪≫ bq.symm ≪≫ oq =
+    (o.precomp t).symm ≪≫ ((FunctorIso.precomp (a ≪≫ b.symm) t).symm ≪≫
+      c.symm ≪≫ aq ≪≫ bq.symm) ≪≫ oq := by
+  simp only [functorIso_precomp_trans, functorIso_precomp_symm, Iso.trans_symm,
+    Iso.symm_symm_eq, Iso.trans_assoc]
+
+private lemma firstVertexNativeCoefficientIso_factorization {E B : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p] :
+    firstVertexNativeCoefficientIso p = nativeUnderCoefficientIso p ≪≫
+      (nativeBaseChangeCoefficientIso p).symm ≪≫
+        nativeOppositeCoefficientIso (pullback.snd p (transportSimplexFirstVertexMap B)) := rfl
+
+/-- 元の指定transport底変換は、同じpullbackの自然変換から来る反転区間辺の類。
+HTT §3.3.2・Kerodon Tag 028Tの構成の特殊な照合。 -/
+@[cite HTT "3.3.2" (partial := special) "指定transportの底変換と元の反転区間辺の全図式での照合。"]
+private lemma nativeTransportIntervalFactorization :
+    ∀ {E B D : SSet.{u}} [Quasicategory B] [Quasicategory D]
+  (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B),
+  let U := SSet.uliftFunctor.{u+1,u}
+  let lB := transportSimplexFirstVertexMap B
+  let lD := transportSimplexFirstVertexMap D
+  let H := transportSimplexFunctor k
+  let q := pullback.snd p k
+  let p₀ := pullback.snd p lB
+  let r := pullback.snd q lD
+  let d := leftStraighteningBaseChangePullbackData p k
+  let θp := leftStraighteningInfinityDiagram_firstVertexTransportIso p
+  let θq := leftStraighteningInfinityDiagram_firstVertexTransportIso q
+  let β := leftStraighteningInfinityDiagram_baseChangeIso p k
+  let ν := (θp.precomp (U.map (nerveMap H))).symm ≪≫
+    diagramIsoCongr
+      (by rw [← Category.assoc, ← transportSimplexFirstVertexMap_ulift_naturality k,
+        Category.assoc]) rfl (β.precomp (U.map lD)) ≪≫ θq
+  let t := U.map (nerveMap H)
+  let ν₀ := (FunctorIso.precomp
+      (nativeUnderCoefficientIso p ≪≫ (nativeBaseChangeCoefficientIso p).symm) t).symm ≪≫
+    (simplexSectionBaseChangeCoefficient p k).symm ≪≫ nativeUnderCoefficientIso q ≪≫
+      (nativeBaseChangeCoefficientIso q).symm
+  ν = ((nativeOppositeCoefficientIso p₀).precomp t).symm ≪≫ ν₀ ≪≫
+    nativeOppositeCoefficientIso r := by
+  intro E B D hB hD p hp k
+  let U := SSet.uliftFunctor.{u+1,u}
+  let lB := transportSimplexFirstVertexMap B
+  let lD := transportSimplexFirstVertexMap D
+  let H := transportSimplexFunctor k
+  let t := U.map (nerveMap H)
+  let q := pullback.snd p k
+  let p₀ := pullback.snd p lB
+  let r := pullback.snd q lD
+  let d := leftStraighteningBaseChangePullbackData p k
+  let θp := leftStraighteningInfinityDiagram_firstVertexTransportIso p
+  let θq := leftStraighteningInfinityDiagram_firstVertexTransportIso q
+  let β := leftStraighteningInfinityDiagram_baseChangeIso p k
+  let ν := (θp.precomp t).symm ≪≫ diagramIsoCongr
+      (by rw [← Category.assoc, ← transportSimplexFirstVertexMap_ulift_naturality k,
+        Category.assoc]) rfl (β.precomp (U.map lD)) ≪≫ θq
+  let ν₀ := (FunctorIso.precomp
+      (nativeUnderCoefficientIso p ≪≫ (nativeBaseChangeCoefficientIso p).symm) t).symm ≪≫
+    (simplexSectionBaseChangeCoefficient p k).symm ≪≫ nativeUnderCoefficientIso q ≪≫
+      (nativeBaseChangeCoefficientIso q).symm
+  have h : ν = (FunctorIso.precomp
+      ((leftClassificationSimplexIso p).symm ≪≫ θp) t).symm ≪≫
+      (simplexSectionBaseChangeCoefficient p k).symm ≪≫
+      (leftClassificationSimplexIso q).symm ≪≫ θq :=
+    leftStraightening_baseChange_transport_normalized p k
+  let Ψ := fun (s : FunctorIso (simplexSectionValue p) (leftCoherentTransport p₀))
+      (s' : FunctorIso (simplexSectionValue q) (leftCoherentTransport r)) =>
+      (s.precomp t).symm ≪≫ (simplexSectionBaseChangeCoefficient p k).symm ≪≫ s'
+  have he := congrArg₂ Ψ (leftStraightening_firstVertexTransport_nativeCoefficients p)
+    (leftStraightening_firstVertexTransport_nativeCoefficients q)
+  have hd := congrArg₂ Ψ (firstVertexNativeCoefficientIso_factorization p)
+    (firstVertexNativeCoefficientIso_factorization q)
+  have ha := nativeTwistInverseChain t (nativeUnderCoefficientIso p)
+    (nativeBaseChangeCoefficientIso p) (nativeOppositeCoefficientIso p₀)
+    (simplexSectionBaseChangeCoefficient p k) (nativeUnderCoefficientIso q)
+    (nativeBaseChangeCoefficientIso q) (nativeOppositeCoefficientIso r)
+  have hmid := h.trans he
+  have hmid' := hmid.trans hd
+  exact hmid'.trans ha
+
+private lemma nativeOppositeCoefficientIso_eq_universal {C : Type u} [Category.{u} C]
+    {E : SSet.{u}} (p : E ⟶ nerve C) [LeftFibration p] :
+    nativeOppositeCoefficientIso p =
+      kanDiagramOppositeValueIso ⟨leftStrictTransportFunctor p, trivial⟩ :=
+  kanEnrichedOppositeValueIso_eq_universal
+    (relativeSectionEnrichedDiagram (strictTransportDomains C)) (leftFibrationObjectOf p)
+
+private lemma nativeIntervalHom_core :
+    ∀ {E B D : SSet.{u}} [Quasicategory B] [Quasicategory D]
+  (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B),
+  let U := SSet.uliftFunctor.{u+1,u}
+  let lB := transportSimplexFirstVertexMap B
+  let lD := transportSimplexFirstVertexMap D
+  let H := transportSimplexFunctor k
+  let q := pullback.snd p k
+  let p₀ := pullback.snd p lB
+  let r := pullback.snd q lD
+  let d := leftStraighteningBaseChangePullbackData p k
+  let θp := leftStraighteningInfinityDiagram_firstVertexTransportIso p
+  let θq := leftStraighteningInfinityDiagram_firstVertexTransportIso q
+  let β := leftStraighteningInfinityDiagram_baseChangeIso p k
+  let ν := (θp.precomp (U.map (nerveMap H))).symm ≪≫
+    diagramIsoCongr
+      (by rw [← Category.assoc, ← transportSimplexFirstVertexMap_ulift_naturality k,
+        Category.assoc]) rfl (β.precomp (U.map lD)) ≪≫ θq
+  let Fh : KanDiagramObject (TransportSimplexCategory D) :=
+    ⟨H ⋙ leftStrictTransportFunctor p₀, trivial⟩
+  let Fr : KanDiagramObject (TransportSimplexCategory D) :=
+    ⟨leftStrictTransportFunctor r, trivial⟩
+  let α : Fh.val ⋙ kanObjectForget ⟶ Fr.val ⋙ kanObjectForget :=
+    pullbackStrictComparison p₀ r d.val H d.property.2.2.1
+  let y := (kanDiagramOppositeHomInterval Fh Fr).app _ (naturalHomVertex Fh Fr α)
+  let ε := intervalMappingEdgeOfVertex y
+  let hsrc : U.map (nerveMap H) ≫ leftCoherentTransport p₀ =
+      kanDiagramCoherentNerve (Fh.val ⋙ kanObjectOpFunctor) := by
+    change U.map (nerveMap H) ≫
+      kanDiagramCoherentNerve (leftStrictTransportFunctor p₀ ⋙ kanObjectOpFunctor) =
+      kanDiagramCoherentNerve ((H ⋙ leftStrictTransportFunctor p₀) ⋙ kanObjectOpFunctor)
+    rw [kanDiagramCoherentNerve_precomp]
+    rfl
+  ν.hom = eqToHom (congrArg (fun f => HomotopyCategory.mk (functorVertex f)) hsrc) ≫
+    SSet.Truncated.HomotopyCategory.homMk ε.toTruncated := by
+  intro E B D hB hD p hp k
+  let U := SSet.uliftFunctor.{u+1,u}
+  let lB := transportSimplexFirstVertexMap B
+  let lD := transportSimplexFirstVertexMap D
+  let H := transportSimplexFunctor k
+  let t := U.map (nerveMap H)
+  let q := pullback.snd p k
+  let p₀ := pullback.snd p lB
+  let r := pullback.snd q lD
+  let d := leftStraighteningBaseChangePullbackData p k
+  let Fh : KanDiagramObject (TransportSimplexCategory D) := ⟨H ⋙ leftStrictTransportFunctor p₀, trivial⟩
+  let Fr : KanDiagramObject (TransportSimplexCategory D) := ⟨leftStrictTransportFunctor r, trivial⟩
+  let F₀ : KanDiagramObject (TransportSimplexCategory B) := ⟨leftStrictTransportFunctor p₀, trivial⟩
+  let α : Fh.val ⋙ kanObjectForget ⟶ Fr.val ⋙ kanObjectForget :=
+    pullbackStrictComparison p₀ r d.val H d.property.2.2.1
+  let θp := leftStraighteningInfinityDiagram_firstVertexTransportIso p
+  let θq := leftStraighteningInfinityDiagram_firstVertexTransportIso q
+  let β := leftStraighteningInfinityDiagram_baseChangeIso p k
+  let ν := (θp.precomp t).symm ≪≫ diagramIsoCongr
+      (by rw [← Category.assoc, ← transportSimplexFirstVertexMap_ulift_naturality k,
+        Category.assoc]) rfl (β.precomp (U.map lD)) ≪≫ θq
+  let ν₀ := (FunctorIso.precomp
+      (nativeUnderCoefficientIso p ≪≫ (nativeBaseChangeCoefficientIso p).symm) t).symm ≪≫
+    (simplexSectionBaseChangeCoefficient p k).symm ≪≫ nativeUnderCoefficientIso q ≪≫
+      (nativeBaseChangeCoefficientIso q).symm
+  let hs₀ := kanDiagramCoherentNerve_precomp H F₀.val
+  have hs : t ≫ leftCoherentTransport p₀ =
+      kanDiagramCoherentNerve (Fh.val ⋙ kanObjectOpFunctor) := by
+    change t ≫ kanDiagramCoherentNerve (F₀.val ⋙ kanObjectOpFunctor) =
+      kanDiagramCoherentNerve ((H ⋙ F₀.val) ⋙ kanObjectOpFunctor)
+    exact kanDiagramCoherentNerve_precomp H _
+  have hop₀ : nativeOppositeCoefficientIso p₀ = kanDiagramOppositeValueIso F₀ :=
+    nativeOppositeCoefficientIso_eq_universal p₀
+  have hopr : nativeOppositeCoefficientIso r = kanDiagramOppositeValueIso Fr :=
+    nativeOppositeCoefficientIso_eq_universal r
+  have hopH : diagramIsoCongr hs₀ hs ((nativeOppositeCoefficientIso p₀).precomp t) =
+      kanDiagramOppositeValueIso Fh := by
+    rw [hop₀]
+    exact kanDiagramOppositeValueIso_precomp H F₀
+  have hν : ν = ((nativeOppositeCoefficientIso p₀).precomp t).symm ≪≫ ν₀ ≪≫
+      nativeOppositeCoefficientIso r := nativeTransportIntervalFactorization p k
+  have hn₀ : (diagramIsoCongr hs₀ rfl ν₀).hom = nativeRectangleHom Fh Fr α := by
+    apply (normalizedIsoHom_iff hs₀ ν₀ (nativeRectangleHom Fh Fr α)).2
+    exact leftStraighteningBaseChange_native_nonop_hom p k
+  have hcast : diagramIsoCongr hs rfl ν = (kanDiagramOppositeValueIso Fh).symm ≪≫
+      diagramIsoCongr hs₀ rfl ν₀ ≪≫ kanDiagramOppositeValueIso Fr := by
+    rw [hν, diagramIsoCongr_trans_three hs hs₀ rfl rfl, diagramIsoCongr_symm hs₀ hs, hopH, hopr, normalizedIso_rfl (kanDiagramOppositeValueIso Fr)]
+  let Fhop : KanDiagramObject (TransportSimplexCategory D) := ⟨Fh.val ⋙ kanObjectOpFunctor, trivial⟩
+  let Frop : KanDiagramObject (TransportSimplexCategory D) := ⟨Fr.val ⋙ kanObjectOpFunctor, trivial⟩
+  let αop : Fhop.val ⋙ kanObjectForget ⟶ Frop.val ⋙ kanObjectForget :=
+    Functor.whiskerRight α SSet.opFunctor
+  have hn : (diagramIsoCongr hs rfl ν).hom = nativeRectangleHom Fhop Frop αop := by
+    rw [hcast]
+    simp only [Iso.trans_hom, Iso.symm_hom]
+    rw [hn₀]
+    have he : nativeRectangleHom Fh Fr α ≫ (kanDiagramOppositeValueIso Fr).hom =
+        (kanDiagramOppositeValueIso Fh).hom ≫ nativeRectangleHom Fhop Frop αop :=
+      kanDiagramOppositeValueIso_naturality α
+    rw [he]
+    simp only [Iso.inv_hom_id_assoc]
+  have hfinal : ν.hom = eqToHom
+      (congrArg (fun f => HomotopyCategory.mk (functorVertex f)) hs) ≫ nativeRectangleHom Fhop Frop αop :=
+    (normalizedIsoHom_iff hs ν (nativeRectangleHom Fhop Frop αop)).1 hn
+  have he := kanDiagramOppositeHomInterval_natural_hom Fh Fr α
+  change Truncated.HomotopyCategory.homMk
+    (intervalMappingEdgeOfVertex ((kanDiagramOppositeHomInterval Fh Fr).app _
+      (naturalHomVertex Fh Fr α))).toTruncated = nativeRectangleHom Fhop Frop αop at he
+  change ν.hom = eqToHom (congrArg (fun f => HomotopyCategory.mk (functorVertex f)) hs) ≫
+    Truncated.HomotopyCategory.homMk
+      (intervalMappingEdgeOfVertex ((kanDiagramOppositeHomInterval Fh Fr).app _
+        (naturalHomVertex Fh Fr α))).toTruncated
+  rw [he]
+  exact hfinal
+
+@[cite HTT "3.3.2" (partial := special) "指定transportの底変換と元の反転区間辺の全図式での照合。"]
+private lemma leftStraighteningBaseChange_nativeInterval_hom :
+    ∀ {E B D : SSet.{u}} [Quasicategory B] [Quasicategory D]
+  (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B),
+  let U := SSet.uliftFunctor.{u+1,u}
+  let lB := transportSimplexFirstVertexMap B
+  let lD := transportSimplexFirstVertexMap D
+  let H := transportSimplexFunctor k
+  let q := pullback.snd p k
+  let p₀ := pullback.snd p lB
+  let r := pullback.snd q lD
+  let d := leftStraighteningBaseChangePullbackData p k
+  let R₀ := (nerveLeftTransportRepresentation p₀).cartesianRestrict
+    (U.map d.val) (U.map (nerveMap H)) d.property.2.2.2
+  let Rr := nerveLeftTransportRepresentation r
+  let θp := leftStraighteningInfinityDiagram_firstVertexTransportIso p
+  let θq := leftStraighteningInfinityDiagram_firstVertexTransportIso q
+  let β := leftStraighteningInfinityDiagram_baseChangeIso p k
+  let ν := (θp.precomp (U.map (nerveMap H))).symm ≪≫
+    diagramIsoCongr
+      (by rw [← Category.assoc, ← transportSimplexFirstVertexMap_ulift_naturality k,
+        Category.assoc]) rfl (β.precomp (U.map lD)) ≪≫ θq
+  let Fh : KanDiagramObject (TransportSimplexCategory D) :=
+    ⟨H ⋙ leftStrictTransportFunctor p₀, trivial⟩
+  let Fr : KanDiagramObject (TransportSimplexCategory D) :=
+    ⟨leftStrictTransportFunctor r, trivial⟩
+  let α : Fh.val ⋙ kanObjectForget ⟶ Fr.val ⋙ kanObjectForget :=
+    pullbackStrictComparison p₀ r d.val H d.property.2.2.1
+  let y := (kanDiagramOppositeHomInterval Fh Fr).app _ (naturalHomVertex Fh Fr α)
+  let ε := intervalMappingEdgeOfVertex y
+  let hsrc : U.map (nerveMap H) ≫ leftCoherentTransport p₀ =
+      kanDiagramCoherentNerve (Fh.val ⋙ kanObjectOpFunctor) := by
+    change U.map (nerveMap H) ≫
+      kanDiagramCoherentNerve (leftStrictTransportFunctor p₀ ⋙ kanObjectOpFunctor) =
+      kanDiagramCoherentNerve ((H ⋙ leftStrictTransportFunctor p₀) ⋙ kanObjectOpFunctor)
+    rw [kanDiagramCoherentNerve_precomp]
+    rfl
+  ν.hom = eqToHom (congrArg (fun f => HomotopyCategory.mk (functorVertex f)) hsrc) ≫
+    SSet.Truncated.HomotopyCategory.homMk ε.toTruncated := by
+  intro E B D hB hD p hp k
+  exact nativeIntervalHom_core p k
 
 end SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations

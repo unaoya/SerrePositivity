@@ -5,8 +5,8 @@
 再採番せず、ここにある各署名IDを一つずつ数える。旧「5／8」は以後この台帳の進捗に使わない。
 小さい既存構成の法則・証明の分割は親署名内に記録するが、上端200行超は独立署名。
 
-署名50本＝検証済み29本＋未完19本＋別停止点へ切り離す2本。
-一覧：済み 29／全体 50（うち追加 15、別停止点 2）。
+署名51本＝検証済み30本＋未完19本＋別停止点へ切り離す2本。
+一覧：済み 30／全体 51（うち追加 16、別停止点 2）。
 追加1は11-17夕承認のP3-C1P。着手判定22,975＋800＝23,775行。以前の35署名の表は履歴として保持。
 
 ## 最新の検証記録（P3-B1）
@@ -1515,3 +1515,60 @@ P3-C1PNC・U・L：対象3モジュール・所有53宣言の小監査成功、�
 
 
 P3-C1PNR：実測180行、対象1モジュール・所有40宣言の小監査成功。標準三公理のみ。累計25,353行。
+
+
+## P3-C1PS（同じscaffoldでの指定pointed比較）
+
+```lean
+∀ {E B D : SSet.{u}} [Quasicategory B] [Quasicategory D]
+    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B),
+    let U := SSet.uliftFunctor.{u+1,u}
+    let lB := transportSimplexFirstVertexMap B
+    let lD := transportSimplexFirstVertexMap D
+    let H := transportSimplexFunctor k
+    let q := pullback.snd p k
+    let p₀ := pullback.snd p lB
+    let r := pullback.snd q lD
+    let d := leftStraighteningBaseChangePullbackData p k
+    let s := scaffoldPullbackData p₀ r d.val H d.property.2.2.1
+    let i := U.map s.val
+    let R₀ := (nerveLeftTransportRepresentation p₀).cartesianRestrict
+      (U.map d.val) (U.map (nerveMap H)) d.property.2.2.2
+    let Rr := nerveLeftTransportRepresentation r
+    let θp := leftStraighteningInfinityDiagram_firstVertexTransportIso p
+    let θq := leftStraighteningInfinityDiagram_firstVertexTransportIso q
+    let β := leftStraighteningInfinityDiagram_baseChangeIso p k
+    let ν := (θp.precomp (U.map (nerveMap H))).symm ≪≫
+      diagramIsoCongr
+        (by rw [← Category.assoc, ← transportSimplexFirstVertexMap_ulift_naturality k,
+          Category.assoc]) rfl (β.precomp (U.map lD)) ≪≫ θq
+    ∃ e : FunctorIso (i ≫ R₀.pointedMap) (i ≫ Rr.pointedMap),
+      e.postcomp pointedSpaceProjection =
+        (functorIsoOfEq (ν.precomp (U.map r)) R₀.pointedMap_projection.symm
+          Rr.pointedMap_projection.symm).precomp i
+```
+
+依存：P3-C1PN・R01・R02・P3-C0。素200〜350行、補正400〜700行。
+既存参照：
+- `scaffoldPointedRelativeIso` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePointedPrism.lean:456
+- `oppositeHomComparison_at_natural` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePointedPrism.lean:536
+- `oppositeComparisonPointedBase` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePointedPrism.lean:141
+- `pointedIsoOfProjectedPrism` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePointedPrism.lean:581
+- `leftUnstraighteningEdgeLiftFamily_projection` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftUnstraighteningEdgeLiftFamily.lean:58
+
+HTT §3.3.2・特に3.3.2.8、Kerodon §5.6（Tag 028T）の指定構成の法則。このscaffold上での指定pointed比較への特殊化。
+既存のscaffold制限比較・反転Homの指定比較・全写像空間の持ち上げを同じ辺で合成する照合。新しい数学・仮定・choose・main既存本文の変更なし。
+
+
+P3-C1PSの再利用先を補記（型・依存・見込みは変更なし）：
+- `relativeFunctorVertexIsoImage_postcomp` @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/RelativeFunctorVertexIsoProjection.lean:34
+- `tautScaffold_map` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/FibrationsOverOrdinaryCategories/SimplicialReplacementFunctor.lean:97
+- `tautScaffold_baseMap` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/FibrationsOverOrdinaryCategories/SimplicialReplacementBaseChange.lean:73
+- `leftUnstraighteningEdgeLiftFamily_zero` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftUnstraighteningEdgeLiftFamily.lean:49
+- `leftUnstraighteningEdgeLiftFamily_one` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftUnstraighteningEdgeLiftFamily.lean:67
+
+全写像空間の持ち上げは元の同じ族で始点・射影を保ち、終点はその族から定義される。追加のchoose置き換えは不要。
+一覧：済み 29／全体 51（うち追加 16、別停止点 2）。
+
+
+P3-C1PN：元の型のまま対象1モジュール・48宣言の小監査成功。標準三公理のみ。素220〜360／補正440〜720に対し実測260行。累計25,613行。
