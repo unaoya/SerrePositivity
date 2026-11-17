@@ -64,3 +64,10 @@ D82（M14 の BE 線を L22 で凍結）に伴い、⑤a の報告 §405 が挙�
 - (c) coherent な P⁰ の不可欠性：(a) が Lurie の構成で済むなら問いは消える。済まない場合だけ D79 の前提に戻って報告。
 BE 模型の May 演算（M14、L22 まで）は §6 の「既存の忠実でないもの」として `Models/` に置き、HA 流の P⁰ との比較の定理は A5 の中身を書くときに要否を判断する。
 
+
+## 8. 追記（2026-11-17、調整役）：モデル圏を通る項目（excluded-model 383、未解決 30＋2）の準備
+
+決定は 11-16 のまま（整理と他の形式化が済んでから、項目ごとに (i) 原典のモデル圏の証明を形式化／(ii) モデル圏なしの別証明／(iv) 最後に残す一覧、を選ぶ。(iii) 一般性の妥協はしない）。P⁰ の段 0 に次の二つの紙の準備を入れる（Lean は触らない）。
+1. 未解決 30 項目（`research/p0-lurie/item-closure/unresolved-sources.csv` の「なし」）と §11 で根に足した HA 3.2.3.1・3.2.3.5 の計 32 項目を、「P⁰ の根の経路上で主張として直接要る／証明の部品として要るだけ／他の経路（Kerodon の対応する節、HTT・HA の別の項目）で代替できる見込み」に分類し、各項目に Kerodon の対応する節（あれば）を書く。
+2. (i) の費用の目安：Mathlib の `HomotopicalAlgebra`（モデル圏の基礎）と当リポジトリの `InfinityCategories/Project/ModelCategoryComparison/` に、HTT 4.3.3.10・HA 7.1.2.13 系の証明に要る部品がどれだけあるかを一覧にする。
+出力は `research/p0-lurie/item-closure/` に `unresolved-classification.csv` と `model-route-cost.md`。
