@@ -3275,3 +3275,21 @@ mainの取り込みは11-16 16:25の指示どおり保留したまま。検証�
 - P08 `SerrePositivity.AlgebraicGeometry.pairedCechSchemeMap`：二つの元の増大 nerve の射から、同じ基底上の積の反変な射を作る。
 - P09 `SerrePositivity.AlgebraicGeometry.pairedCechSchemeMap_id`：二つの恒等射は同じ積の恒等射へ移る。
 - P10 `SerrePositivity.AlgebraicGeometry.pairedCechSchemeMap_comp`：二つの増大単体圏の合成は、同じ積の射の反変な合成へ移る。
+
+## 2026-11-17：実際の開の自然性・被覆と二変数の係数関手（72dd36a88・e11f586df）
+
+- `72dd36a88`：P12・P19、1モジュール124行＋入口1行、所有2宣言。`e11f586df`：P15〜P18、1モジュール107行＋入口1行、所有7宣言（private・生成宣言込み）。全て承認済みの同じ型・仮定。
+- 原稿・本体の同一バイトを確認。対象ビルドは各5,374・5,375ジョブ、直接importerも成功。各束の所有監査を別の共有鍵で行い、標準三公理以外0。mainの既存宣言の本体は変更していない。
+- 累計20,279行（新規276モジュール19,957行、既存追加25行、入口297行）。所有宣言累計2,220件、既存15件は別。残り57署名の素の見込み1,713〜3,440行、係数2で3,426〜6,880行。完成見込み23,705〜27,159行、外枠28,000行以内。
+- 一覧：済み1／全体3（うち追加0）。内部署名：済み32／89（G4・G5）、追加0。
+
+- P12 `SerrePositivity.AlgebraicGeometry.pairedCechOpen_map_le`：元の二つの位置写像で作るタプル開は、同じ幾何的な射の逆像に含まれる。
+- P19 `SerrePositivity.AlgebraicGeometry.pairedCechOpen_isAffineOpen_cover`：同じ有限アフィン被覆から、増大点を含む全ての積の次数の同じアフィン被覆を得る。
+- P15 `SerrePositivity.AlgebraicGeometry.pairedPerfectCechMap`：同じ幾何的な射の完全構造層の引き戻しを、元の二つのタプルの位置写像で細分する。
+- P16 `SerrePositivity.AlgebraicGeometry.pairedPerfectCechMap_id`：二つの恒等射を、同じ係数複体の恒等射へ送る。
+- P17 `SerrePositivity.AlgebraicGeometry.pairedPerfectCechMap_comp`：元の二つの増大単体圏の合成を、同じ係数・細分の射の合成へ送る。
+- P18 `SerrePositivity.AlgebraicGeometry.pairedPerfectCech`：同じ積・タプル・実際の完全構造層の複体を、増大単体圏二つの積からの関手へまとめる。
+
+## 2026-11-17：2hの事前承認と2iの段0への引継ぎ
+
+main `6aa6d7152` の指示書末尾を `git show` で読み、今回のユーザー指示を確認した。新たなmainの取り込みは行っていない（指定された取り込みは31b811097で完了済み）。2g-2の89署名の検証・報告後は止まらず、H01〜H04の16署名を別枠1,200行で実装する。出口はG-A6-1aの既定の型。2h後は2i（G-A6-1、a6-design §4 経路B）の段0の紙を作り、型つき一覧・見込み・置き場所・解消するdraftsのsorryを報告して止まる。2iの正本は `formalization-plans/bhatt-scholze/drafts/A6/ArcRouteB.lean`。BM18 Thm 1.7・∞・一般のW_n・有限射影E・非affineへの一般化はこのレーンに追加しない。現在は2g-2を継続する。
