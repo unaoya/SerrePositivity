@@ -1,6 +1,6 @@
-# FilteredExchange：群分けと主要宣言（AR-W1 途中版）
+# FilteredExchange：群分けと主要宣言（AR-W1 最終の群分け）
 
-各ファイルを一つの主題群へ割り当てた。接頭辞を主に用い、同一の F2 名前空間・import の結び付きで小さい接頭辞群をまとめた。群の全ファイルとハッシュ・全importは git 外の inventory.json。ここでは群ごとに主な宣言と出典位置を残す。これは数学的な評価を終えた表ではない。
+各ファイルを一つの主題群へ割り当てた。接頭辞を主に用い、同一の F2 名前空間・import の結び付きで小さい接頭辞群をまとめた。群の全ファイルとハッシュ・全importは git 外の inventory.json。ここでは群ごとに主な宣言と出典位置を残す。数学的な主張・対応・推奨は groups.csv を参照。初回68群から復帰候補を分離し、最終70群とした。
 
 ## FE/CoherentColimit（67本・3987行）
 
@@ -170,14 +170,13 @@
 - `SerrePositivity.InfinityCategories.F2.appendEdgeConeCoordinatesInverse_front` @ `SerrePositivity/Archive/InfinityCategories/FilteredExchange/AppendEdgeConeInverse.lean:25`
 - `SerrePositivity.InfinityCategories.F2.coherentCosliceEdgeComponent_coordinates` @ `SerrePositivity/Archive/InfinityCategories/FilteredExchange/SpaceCosliceEdgeComponent.lean:32`
 
-## FE/ConeLimit（28本・1390行）
+## FE/ConeLimit（27本・1340行）
 
-- `SerrePositivity.InfinityCategories.F2.sliceOverRestrict_rightFibration_of_mono` @ `SerrePositivity/Archive/InfinityCategories/FilteredExchange/ConeMappingRestriction.lean:25`
 - `SerrePositivity.InfinityCategories.F2.augHom_braiding_tensor` @ `SerrePositivity/Archive/InfinityCategories/FilteredExchange/RightConeCoefficient.lean:22`
 - `SerrePositivity.InfinityCategories.F2.triangleRightConeParameter_comp` @ `SerrePositivity/Archive/InfinityCategories/FilteredExchange/ConeTetrahedronParameter.lean:29`
 - `SerrePositivity.InfinityCategories.F2.coherentRightSliceAppendEdge_back` @ `SerrePositivity/Archive/InfinityCategories/FilteredExchange/RightSliceAppendBack.lean:26`
 - `SerrePositivity.InfinityCategories.F2.coneFamilyReindex_restriction` @ `SerrePositivity/Archive/InfinityCategories/FilteredExchange/LimitConeFamilyReindex.lean:23`
-- `SerrePositivity.InfinityCategories.F2.coneMappingSpace_restrict_fibration` @ `SerrePositivity/Archive/InfinityCategories/FilteredExchange/ConeMappingRestriction.lean:43`
+- `SerrePositivity.InfinityCategories.F2.coneMappingKanObject` @ `SerrePositivity/Archive/InfinityCategories/FilteredExchange/ConeMappingKanObjects.lean:22`
 
 ## FE/Constant（24本・1294行）
 
@@ -227,13 +226,19 @@
 - `SerrePositivity.InfinityCategories.F2.fiberwisePullbackValueKanComparison_point` @ `SerrePositivity/Archive/InfinityCategories/FilteredExchange/FiberwisePullbackValueKanPoint.lean:53`
 - `SerrePositivity.InfinityCategories.F2.fiberwisePullbackComparisonApexPrism_zero` @ `SerrePositivity/Archive/InfinityCategories/FilteredExchange/FiberwisePullbackComparisonApex.lean:31`
 
-## FE/FilteredCriteria（17本・971行）
+## FE/FilteredCriteria（14本・772行）
+
+- `SerrePositivity.InfinityCategories.F2.vertexIso_map_eq_contractible` @ `SerrePositivity/Archive/InfinityCategories/FilteredExchange/ContractibleVertexIsoNaturality.lean:24`
+- `SerrePositivity.InfinityCategories.F2.filteredKanLeftMap` @ `SerrePositivity/Archive/InfinityCategories/FilteredExchange/FilteredPullbackKan.lean:44`
+- `SerrePositivity.InfinityCategories.F2.contractibleVertexIso_trans` @ `SerrePositivity/Archive/InfinityCategories/FilteredExchange/ContractibleIsoComposition.lean:22`
+- `SerrePositivity.InfinityCategories.F2.intervalColimitIso_endpoint` @ `SerrePositivity/Archive/InfinityCategories/FilteredExchange/FilteredIntervalColimit.lean:34`
+- `SerrePositivity.InfinityCategories.F2.spacePullbackCone_vertex` @ `SerrePositivity/Archive/InfinityCategories/FilteredExchange/FilteredPullbackNative.lean:26`
+
+## FE/FilteredCriterionCore（3本・199行）
 
 - `SerrePositivity.InfinityCategories.F2.isFilteredInfinity_iff_weaklyContractible_coslices` @ `SerrePositivity/Archive/InfinityCategories/FilteredExchange/FilteredDiagonalCriterion.lean:24`
 - `SerrePositivity.InfinityCategories.F2.kanComplex_of_not_nonempty` @ `SerrePositivity/Archive/InfinityCategories/FilteredExchange/WeakContractibilityNonempty.lean:24`
 - `SerrePositivity.InfinityCategories.F2.isContractibleKan_of_isFilteredInfinity` @ `SerrePositivity/Archive/InfinityCategories/FilteredExchange/FilteredKanContractibility.lean:29`
-- `SerrePositivity.InfinityCategories.F2.vertexIso_map_eq_contractible` @ `SerrePositivity/Archive/InfinityCategories/FilteredExchange/ContractibleVertexIsoNaturality.lean:24`
-- `SerrePositivity.InfinityCategories.F2.filteredKanLeftMap` @ `SerrePositivity/Archive/InfinityCategories/FilteredExchange/FilteredPullbackKan.lean:44`
 - `SerrePositivity.InfinityCategories.F2.isKappaFiltered_iff_weaklyContractible_coslices` @ `SerrePositivity/Archive/InfinityCategories/FilteredExchange/FilteredDiagonalCriterion.lean:36`
 - `SerrePositivity.InfinityCategories.F2.isFilteredInfinity_iff_constantDiagram_rightCofinal` @ `SerrePositivity/Archive/InfinityCategories/FilteredExchange/FilteredDiagonalCriterion.lean:49`
 - `SerrePositivity.InfinityCategories.F2.isKappaFiltered_iff_constantDiagram_rightCofinal` @ `SerrePositivity/Archive/InfinityCategories/FilteredExchange/FilteredDiagonalCriterion.lean:62`
@@ -455,13 +460,20 @@
 - `SerrePositivity.InfinityCategories.F2.simplexConeParameter_front` @ `SerrePositivity/Archive/InfinityCategories/FilteredExchange/SimplexConeParameter.lean:27`
 - `SerrePositivity.InfinityCategories.F2.thickeningSelf_eId_epi` @ `SerrePositivity/Archive/InfinityCategories/FilteredExchange/ThickeningSelfHomComparison.lean:19`
 
-## FE/SliceOpposite（12本・558行）
+## FE/SliceOpposite（11本・487行）
 
-- `SerrePositivity.InfinityCategories.F2.sliceOverRestrict_subcomplex_rightFibration` @ `SerrePositivity/Archive/InfinityCategories/FilteredExchange/SliceRestrictionRightFibration.lean:62`
 - `SerrePositivity.InfinityCategories.F2.sliceShapePushout_isPullback` @ `SerrePositivity/Archive/InfinityCategories/FilteredExchange/SliceShapePushout.lean:23`
 - `SerrePositivity.InfinityCategories.F2.doubleRightPointCoordinates_front` @ `SerrePositivity/Archive/InfinityCategories/FilteredExchange/DoubleRightPointFaces.lean:19`
 - `SerrePositivity.InfinityCategories.F2.doubleRightPointCoordinates_middle` @ `SerrePositivity/Archive/InfinityCategories/FilteredExchange/DoubleRightPointMiddle.lean:20`
 - `SerrePositivity.InfinityCategories.F2.sliceShapePushout_comm` @ `SerrePositivity/Archive/InfinityCategories/FilteredExchange/SliceShapePushoutGluing.lean:22`
+- `SerrePositivity.InfinityCategories.F2.weightedConePrecompositionMap_constant` @ `SerrePositivity/Archive/InfinityCategories/FilteredExchange/OppositeHomPrecomposition.lean:32`
+
+## FE/SliceRestriction（2本・121行）
+
+- `SerrePositivity.InfinityCategories.F2.sliceOverRestrict_rightFibration_of_mono` @ `SerrePositivity/Archive/InfinityCategories/FilteredExchange/ConeMappingRestriction.lean:25`
+- `SerrePositivity.InfinityCategories.F2.sliceOverRestrict_subcomplex_rightFibration` @ `SerrePositivity/Archive/InfinityCategories/FilteredExchange/SliceRestrictionRightFibration.lean:62`
+- `SerrePositivity.InfinityCategories.F2.coneMappingSpace_restrict_rightFibration` @ `SerrePositivity/Archive/InfinityCategories/FilteredExchange/ConeMappingRestriction.lean:37`
+- `SerrePositivity.InfinityCategories.F2.coneMappingSpace_restrict_fibration` @ `SerrePositivity/Archive/InfinityCategories/FilteredExchange/ConeMappingRestriction.lean:43`
 
 ## FE/SmallFiber（11本・737行）
 
