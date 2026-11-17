@@ -131,6 +131,8 @@
 
 **⑧ 引用文献（11-17 新設、ユーザー決定）**：本論文が引用する文献の対応表とブループリント。最初は CLMST（指示書 `stage-ii/cited/clmst-coverage.md`、worktree `SerrePositivity-cited`、枝 `research/cited-coverage`）。紙だけでビルドなし。
 
+**⑥ スキーム論は閉じた（11-18 0 時）**：2g-2（89 署名）・2h（16）・2i（71、G-A6-1 の組み立て `cech_exact_of_arcCover_perfect`、`AlgebraicGeometry/ArcRouteB/`）を main に入れた（1fb2c6dcc・72bc75e8b）。作業木と枝は削除。BS17 Thm 4.1 の残りの一般性は作らない（BS17 の対応表で partial）。drafts の G-A6-1 の引用の置き換えは BS の整理のレーンで。
+
 **⑦ IC-W1（11-17 開始）**：worktree `SerrePositivity-ic`、枝 `refactor/infinity-consolidation`（今夜取り込む `merge/night-2026-11-17` から）。指示書 `stage-ii/consolidation/infinity-consolidation-w1.md`。IC-1 の段 0（紙）から。Lean の適用は夜。
 
 **Codex のチャットの開き方（11-17、ユーザー決定）**：新しいレーンの Codex チャットは、調整役が worktree と枝を作った後、**その worktree をカレントディレクトリにして開く**（main の作業木では開かない。11-11 の `writable_roots` は効かず、全アクセスは使わない）。指示書の冒頭に worktree のパスを書き、開始文に「`pwd` が `../SerrePositivity-<レーン>` であることを確かめてから始める」を入れる。main で開いてしまったら閉じて開き直す。動いている三つのレーンは停止点まで今のまま。
