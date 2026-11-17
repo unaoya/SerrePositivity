@@ -23,3 +23,8 @@
 - 検証の証拠（採取の json など大きいもの）は git の外 `~/serre-evidence/cited/clmst/` に置き、目録だけを `scripts/docs/evidence_manifest.py` で `evidence/cited/clmst/manifest.json` に（`evidence/README.md`）。
 - 報告は `formalization-plans/stage-ii/cited/report-clmst-coverage.md`。先頭に「現在地」（今の段・停止点・最新のコミット・残り）。宣言の一覧は報告に書かない（対応表にある）。
 - 対応表をコミットしたら止まって報告する（停止点）。調整役が取り込んで、ブループリントの章を生成する。
+
+## 3. 次の段（CC-W2、CLMST の停止点の後）：本論文が引用した結果の表（ユーザー承認 11-17）
+
+本論文の対応表に `research/paper-coverage/external.csv` を足す。列 `source,number,statement_ja,status,declarations,reason`（状態の語は review と同じ）。対象は `edges.csv` の external の辺の先のすべて（Skalit15・Ma17・Roberts89・Roberts85・Monsky・KuranoShimomoto・Faltings・Serre・Jannsen・Goodwillie・BalmerSchlichting・GilletSoule・Stacks、および CLMST・BS19・LT・BGT・TT・Drinfeld）。CLMST は CC-W1 の表の状態を写す（二重管理にしないため `status` は空にして `research/clmst-coverage/` から読む、と README に書く）。BS19・K の文献は、それぞれの対応表（`research/bs-coverage/`・`research/k-coverage/maps/`）に行があればその番号を `reason` に書き、`status` は空。生成器では、引用された結果ごとに「引用した結果」の節にノード（`ext_<source>_<number>`）を立て、本論文の項目から `uses` で張る（調整役が `gen_paper.py` を直す）。
+紙だけ、停止点は表のコミット。
