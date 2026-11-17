@@ -81,9 +81,9 @@ Kerodon [Tag 003L](https://kerodon.net/tag/003L)
 :::definition "kerodon_1_4_2_1"
 Kerodon Notation 1.4.2.1（[Tag 003M](https://kerodon.net/tag/003M)）。対応表の状態：一部。
 
-NonemptyFinLinOrdの双対は非空な有限線形順序だけ。原文のLinは空の順序も含む。
+原文には有限線形順序の双対と、Δ上のOp(\[n\])=\[n\], Op(α)(i)=n−α(m−i)の構成がある。SimplexCategory.rev は Fin.rev による同じΔ上の関手を直接定義するのでこの成分に対応する。空の順序も含むLin全体の比較同値は含めない。
 
-宣言：`NonemptyFinLinOrd`、`NonemptyFinLinOrd.dual`
+宣言：`SimplexCategory.rev`、`SimplexCategory.rev_map_apply`
 
 :::
 
@@ -143,7 +143,7 @@ Kerodon Proposition 1.4.3.6（[Tag 0040](https://kerodon.net/tag/0040)）。対�
 :::corollary "kerodon_1_4_3_7"
 Kerodon Corollary 1.4.3.7（[Tag 00V0](https://kerodon.net/tag/00V0)）。対応表の状態：一部。
 
-引用先はホモトピー圏での四辺の可換性から指定辺を保つ正方形ホモトピーを得る方向。原文の両方向の同値としての宣言ではない。完全名を補正。
+原文は辺のホモトピーと両側が恒等辺の正方形の存在の iff。exists\_arrowHomotopy\_of\_homMk\_comm に a,b を恒等辺として適用すると、同じ辺のホモトピー圏での一致から指定した両側を保つ正方形ホモトピーが直接得られる。逆向きを含む iff の宣言ではない。
 
 宣言：`SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.exists_arrowHomotopy_of_homMk_comm`
 
@@ -228,9 +228,9 @@ Kerodon Example 1.4.5.4（[Tag 004D](https://kerodon.net/tag/004D)）。対応�
 :::definition "kerodon_1_4_5_6"
 Kerodon Construction 1.4.5.6（[Tag 004G](https://kerodon.net/tag/004G)）。対応表の状態：一部。
 
-2単体の合成関係はnonempty\_iffが表す。原文の全n単体に対する標準写像u:C→N(hC)そのものの構成は引用されていない。
+原文は各n単体をホモトピー類の射列へ送るu:C→N(hC)を構成する。nerveAdjunction の単位成分の型はまさにこの始域・終域の単体写像を直接与える。2切断の homToNerveMk の式は頂点と辺を同じ類へ送る。全nの指定座標の式を照合済みとせず、標準写像と0・1成分に限定する。
 
-宣言：`SSet.Truncated.Edge.CompStruct.nonempty_iff`、`SSet.stdSimplex.isoNerve`
+宣言：`CategoryTheory.nerveAdjunction`、`SSet.Truncated.HomotopyCategory.homToNerveMk`、`SSet.Truncated.HomotopyCategory.homToNerveMk_app_zero`、`SSet.Truncated.HomotopyCategory.homToNerveMk_app_edge`
 
 :::
 

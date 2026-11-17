@@ -67,14 +67,14 @@ Kerodon Definition 1.5.2.1（[Tag 005J](https://kerodon.net/tag/005J)）。対�
 :::definition "kerodon_1_5_2_5"
 Kerodon Definition 1.5.2.5（[Tag 005N](https://kerodon.net/tag/005N)）。対応表の状態：なし。
 
-確認済み・なし（対象ソースの探索範囲内）。commutative diagram・acyclic graphおよびFreeQuiverCoverを検索。自由圏上の図式や鎖複体のacyclicityは別物で、原文の次元1の図式の可換性の述語は見つからない。
+原文は薄い非巡回の有向グラフ上の圏値図式で全ての道の合成が等しいという可換性の述語。acyclic graph/commutative graph/FreeQuiverCoverで再検索。自由quiver被覆の図式やhomotopy fiberは別の構成で、この述語ではない。
 
 :::
 
 :::proposition "kerodon_1_5_2_6"
 Kerodon Proposition 1.5.2.6（[Tag 005P](https://kerodon.net/tag/005P)）。対応表の状態：なし。
 
-確認済み・なし（対象ソースの探索範囲内）。前項の可換性・acyclic graphからのposet・nerveへの一意延長を検索。指定されたグラフについて3条件を述べる定理は見つからない。
+原文は指定された薄い非巡回グラフの頂点の順序・標準包含・可換図式の一意延長。acyclic graph/FreeQuiverCoverを再検索。特定scaffoldのbridgeやfree quiver coverのnerveは元の任意グラフの同じ包含ではなく、3結論の成分を直接返さない。
 
 :::
 
@@ -158,7 +158,7 @@ Kerodon Corollary 1.5.3.4（[Tag 0063](https://kerodon.net/tag/0063)）。対応
 :::corollary "kerodon_1_5_3_5"
 Kerodon Corollary 1.5.3.5（[Tag 0064](https://kerodon.net/tag/0064)）。対応表の状態：一部。
 
-nerveAdjunctionは0単体のHom全単射。原文の全次数の単体的集合の同型は引用先の型ではない。完全名を補正。
+原文のρSは全次数の単体集合の同型。nerveAdjunction.homEquiv はhS→Dの関手とS→N(D)の全単射で、ρSの0単体（次数0に限定）の同じHom対応を直接与える。全次数・面退化の可換性までは含まない。
 
 宣言：`CategoryTheory.nerveAdjunction`
 
@@ -268,7 +268,7 @@ Kerodon Proposition 1.5.4.12（[Tag 006R](https://kerodon.net/tag/006R)）。対
 :::definition "kerodon_1_5_4_13"
 Kerodon Definition 1.5.4.13（[Tag 006S](https://kerodon.net/tag/006S)）。対応表の状態：一部。
 
-押し出し・レトラクト・超限合成の各安定性クラスはある。三つをまとめたweakly saturatedの命名された定義は引用されていない。
+原文のweakly saturatedの条件は押し出し・retract・超限合成で閉じること。三つの IsStableUnder… の型はこの各条件を直接表し、弱飽和性の述語の成分に対応する。三条件をまとめた名前付きの述語や生成閉包そのものと同一視しない。
 
 宣言：`CategoryTheory.MorphismProperty.IsStableUnderCobaseChange`、`CategoryTheory.MorphismProperty.IsStableUnderRetracts`、`CategoryTheory.MorphismProperty.IsStableUnderTransfiniteComposition`
 
@@ -312,18 +312,18 @@ Kerodon Proposition 1.5.5.4（[Tag 006Y](https://kerodon.net/tag/006Y)）。対�
 :::corollary "kerodon_1_5_5_5"
 Kerodon Corollary 1.5.5.5（[Tag 006Z](https://kerodon.net/tag/006Z)）。対応表の状態：一部。
 
-切断の存在は一致。引用するホモトピーの型はid→s∘pで、原文の指定するs∘p→idとは端点順序が逆。そのまま同じ主張とは判定しない。
+原文(a)の切断の存在はexists\_sectionの型の結論そのもの（TrivialKanFibrationの全単射RLPを適用）。(b)の指定向きのfiberwise収縮について、引用のexists\_vertical\_contractionはid→p≫sと逆端点順なので一致としない。(a)だけを数える。
 
 宣言：`SerrePositivity.SimplicialModel.MonoRightLiftingContraction.exists_section`、`SerrePositivity.SimplicialModel.MonoRightLiftingContraction.exists_vertical_contraction`
 
 :::
 
 :::corollary "kerodon_1_5_5_6"
-Kerodon Corollary 1.5.5.6（[Tag 0070](https://kerodon.net/tag/0070)）。対応表の状態：一部。
+Kerodon Corollary 1.5.5.6（[Tag 0070](https://kerodon.net/tag/0070)）。対応表の状態：本体にある。
 
-ihomMap\_trivialKanFibrationはAが空の場合だけ。一般の制限と後合成のpullback-power射に対する宣言ではない。
+仮定：単射i:A→Bとtrivial Kan fibration p:E→Y（原文と一致）。結論：trivialKanFibration\_pullbackObjObjπ は internalHom.PullbackObjObj i p の標準比較射πがtrivial Kan fibration（原文のθと一致）。引き戻しの選択をデータとして明示し、A=空に限定しない。模型圏の追加仮定なし。
 
-宣言：`SerrePositivity.KST.SConstruction.ihomMap_trivialKanFibration`
+宣言：`SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.trivialKanFibration_pullbackObjObjπ`
 
 :::
 
@@ -346,9 +346,9 @@ Kerodon Definition 1.5.5.8（[Tag 0072](https://kerodon.net/tag/0072)）。対�
 :::
 
 :::proposition "kerodon_1_5_5_11"
-Kerodon Proposition 1.5.5.11（[Tag 050J](https://kerodon.net/tag/050J)）。対応表の状態：一部。
+Kerodon Proposition 1.5.5.11（[Tag 050J](https://kerodon.net/tag/050J)）。対応表の状態：なし。
 
-引用先の型は終域のKan性・可縮性から始域への遷移で、原文の始域から終域への三つの遷移と逆。対応する方向の別宣言は未確認。KanMonoArrowFactorization側の名前空間も補正が必要。
+原文は始域XのKan・可縮Kan・準圏性を終域Yへ移す3結論。候補の二型は終域の性質を始域へ移す逆の主張で、同じpに対するいずれの結論成分も直接返さない。反対向きに使うには別の議論が必要。
 
 宣言：`SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.isContractibleKan_of_trivialKanFibration`、`SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.kanComplex_of_trivialKanFibration_target`
 
@@ -387,7 +387,7 @@ Kerodon [Tag 0078](https://kerodon.net/tag/0078)
 :::theorem "kerodon_1_5_6_1"
 Kerodon Theorem 1.5.6.1（[Tag 0079](https://kerodon.net/tag/0079)）。対応表の状態：一部。
 
-quasicategoryならΛ²₁の包含に沿う制限が自明Kanである方向。単一の制限射の自明Kan性からquasicategory性を得る逆向きは未対応。
+原文の(1)⇒(2)は、innerAnodyneExtensions.horn\_ι でΛ²₁の包含を指定し trivialKanFibration\_pre\_of\_innerAnodyne に適用して直接得られる。単一の制限射の自明Kan性⇒準圏性の逆向きはこの型に含まない。
 
 宣言：`SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.trivialKanFibration_pre_of_innerAnodyne`、`SSet.innerAnodyneExtensions.horn_ι`
 
@@ -417,14 +417,14 @@ Kerodon Proposition 1.5.6.7（[Tag 007E](https://kerodon.net/tag/007E)）。対�
 :::definition "kerodon_1_5_6_8"
 Kerodon Variant 1.5.6.8（[Tag 00J2](https://kerodon.net/tag/00J2)）。対応表の状態：なし。
 
-確認済み・なし（対象ソースの探索範囲内）。inner anodyne・一意延長・nerveを検索。特殊なscaffoldやspineのinner anodyne性はあるが、全inner anodyneに沿う一意延長とnerveの同値は見つからない。
+原文はnerveであることと全inner anodyneに沿う一意延長の iff。innerAnodyne/unique/nerveを再検索。scaffoldやsequential telescopeの特定の包含のinner anodyne性は、一意延長を全inner anodyneで結論する型ではなく、別の射の類似としてのみ記録する。
 
 :::
 
 :::lemma_ "kerodon_1_5_6_9"
 Kerodon Lemma 1.5.6.9（[Tag 007F](https://kerodon.net/tag/007F)）。対応表の状態：一部。
 
-pushout-productのinner anodyne性は(a)を覆う。(b)のΛ²₁だけを用いる生成系の等式は引用されていない。
+原文(a)の単射とΛ²₁包含のpushout-productのinner anodyne性は、innerAnodyneExtensions\_pushoutObjObjι に horn\_ι を渡した同じ比較射について直接得られる。(b)のこの生成系だけによる弱飽和生成は含めない。
 
 宣言：`SSet.innerAnodyneExtensions_pushoutObjObjι`、`SSet.innerAnodyneExtensions.horn_ι`
 
@@ -440,18 +440,18 @@ tag := "kerodon-1-5-7"
 Kerodon [Tag 00J3](https://kerodon.net/tag/00J3)
 
 :::theorem "kerodon_1_5_7_1"
-Kerodon Theorem 1.5.7.1（[Tag 00J4](https://kerodon.net/tag/00J4)）。対応表の状態：一部。
+Kerodon Theorem 1.5.7.1（[Tag 00J4](https://kerodon.net/tag/00J4)）。対応表の状態：なし。
 
-引用先のIsPrecompositionEquivalenceだけではtrivial Kan fibrationの型ではない。可算spineのinnerAnodyne性とtrivialKanFibration\_pre\_of\_innerAnodyneを併記すれば、その特例に対応。一般グラフ版は未確認。
+原文は任意のGの指定射G\_•→N(Path\[G\])による制限。候補はsequentialSpine⊂N(ℕ)という別の明示された射のinner anodyne性と一般の前合成定理。これを原文の鎖グラフの指定射と同定する比較は引用型にない。単に可算の類似としてspecialにしない。
 
 宣言：`SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.sequentialSpine_inclusion_innerAnodyne`、`SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.trivialKanFibration_pre_of_innerAnodyne`
 
 :::
 
 :::proposition "kerodon_1_5_7_3"
-Kerodon Proposition 1.5.7.3（[Tag 00J6](https://kerodon.net/tag/00J6)）。対応表の状態：一部。
+Kerodon Proposition 1.5.7.3（[Tag 00J6](https://kerodon.net/tag/00J6)）。対応表の状態：なし。
 
-sequentialSpineの包含のinner anodyne性。一般の有向グラフの道の圏への包含には限定を外せない。
+原文はグラフの標準射G\_•→N(Path\[G\])のinner anodyne性。sequentialSpineの包含は始域の部分複体と標的が別に定義された射で、同じグラフの標準射との同定が未提示。別の射についての類似の結論は§8.1ではnone。
 
 宣言：`SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.sequentialSpine_inclusion_innerAnodyne`
 
@@ -476,7 +476,7 @@ Kerodon Proposition 1.5.7.6（[Tag 00J9](https://kerodon.net/tag/00J9)）。対�
 :::corollary "kerodon_1_5_7_9"
 Kerodon Corollary 1.5.7.9（[Tag 05HU](https://kerodon.net/tag/05HU)）。対応表の状態：一部。
 
-nerveの全次数spine写像の全単射性は確認。strict Segalからnerveの同型への逆方向はMathlibのTODO。
+原文の必要方向について、Nerve.strictSegal/IsStrictSegalはnerveのn単体からn本の可合成辺列（spineの射）への全単射を直接与える。Sの一般の再構成はTODOなので、spineの一意延長条件からnerveとの同型を作る逆方向は含めない。
 
 宣言：`CategoryTheory.Nerve.strictSegal`、`CategoryTheory.Nerve.isStrictSegal`
 
