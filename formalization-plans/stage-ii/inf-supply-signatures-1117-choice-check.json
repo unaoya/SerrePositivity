@@ -1,0 +1,97 @@
+{
+  "scope": "今回の署名が直接照合する指定構成。先の255候補の全列挙は別台帳を保持。",
+  "method": "現ソースの指定構成の式を確認しSHA256を記録。Leanによる新しい保存比較ではない。",
+  "replacements_needed": [],
+  "checks": [
+    {
+      "id": "N1",
+      "name": "leftCoherentTransportDirectComparison",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftCoherentTransportDirectComparison.lean",
+      "checked_source_contains": "scaffoldCoherentComparison p",
+      "sha256": "643d6b6702512019cf0e2996061e5c007a11d4bbd422cf0dfc9519a90e41db7d",
+      "replacement_needed": false,
+      "reason": "指定scaffoldの相対制限同型を含む強い存在から選択。済み第1項と接続。"
+    },
+    {
+      "id": "N2",
+      "name": "smallLeftUnstraighteningComparisonOfFunctorIso",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SmallLeftUnstraighteningFunctorIso.lean",
+      "checked_source_contains": "smallUnstraighteningFunctorHom η.hom",
+      "sha256": "9057afcd7aca9d17782ffc55f2949453e8b4a7d8bdd377e47d4faa412886e914",
+      "replacement_needed": false,
+      "reason": "η.homそのものを使い、指定同型の射を保持する。"
+    },
+    {
+      "id": "N3",
+      "name": "weightedSections_nativeShapeLimitIso",
+      "path": "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsLocalComparison.lean",
+      "checked_source_contains": "weightedSections_valueTransport O hE P",
+      "sha256": "07308cebbbe3fc63cf8f0ea9a9cdb44a5e1516e68e709499d908db65a5a29b16",
+      "replacement_needed": false,
+      "reason": "同じ元の余単位に沿うvalueTransportの錐。"
+    },
+    {
+      "id": "N4",
+      "name": "nativeWeightedSections_leftLimitIso",
+      "path": "SerrePositivity/InfinityCategories/Sheaves/NativeWeightedSectionsLeftLimit.lean",
+      "checked_source_contains": "nativeWeightedSections_valueTransport",
+      "sha256": "c4fb604059ccae127c8362b883cb84d31a56b74dae6235a8a90b113fd1f27ad8",
+      "replacement_needed": false,
+      "reason": "同じ元の余単位に沿うvalueTransportの錐。"
+    },
+    {
+      "id": "N5",
+      "name": "weightedSections_leftLimitIso",
+      "path": "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsLeftLimit.lean",
+      "checked_source_contains": "nativeWeightedSections_valueTransport",
+      "sha256": "dcabd9dc1c0212a5121b4439226ff8887c0bfac076704a52490bc00cd0aa2d28",
+      "replacement_needed": false,
+      "reason": "同じ元の余単位に沿うvalueTransportの錐。"
+    },
+    {
+      "id": "C6",
+      "name": "leftStraighteningInfinityDiagram_representationIso",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningRepresentation.lean",
+      "checked_source_contains": "preimageVertexIso e",
+      "sha256": "6ab8e84d9cda9e0392b1e1f3526a0cc5bca9982b087d623f6726ea67481fc8e1",
+      "replacement_needed": false,
+      "reason": "FFによる指定eの逆像。map_preimageで元のeとの両立が仕様に残る。"
+    },
+    {
+      "id": "C7",
+      "name": "leftStraighteningSectionJointDiagram_baseChangeIso",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChange.lean",
+      "checked_source_contains": "preimageVertexIso e",
+      "sha256": "bf081840c52fad1a8e89bb614306e640dc9656a8a186c002d32b661261c94e91",
+      "replacement_needed": false,
+      "reason": "同じjoint比較の逆像。既存firstVertex照合法則が指定比較との一致を保持。"
+    },
+    {
+      "id": "C8",
+      "name": "weightedSections_discrete",
+      "path": "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsDiscrete.lean",
+      "checked_source_contains": "Classical.choose hd",
+      "sha256": "c7b47b2f4ee0ee34af4f4f68adfade8d9e714579832d6f0aa701aa90e2ad01c0",
+      "replacement_needed": false,
+      "reason": "中間極限は元の値定義の選択を保つ。P3・R04〜R06で同じ錐の一意性による相殺を証明する。"
+    },
+    {
+      "id": "C9",
+      "name": "sheafifyUnitHom",
+      "path": "SerrePositivity/InfinityCategories/Sheaves/SheafifyUnit.lean",
+      "checked_source_contains": "(Classical.choice hJ).unit",
+      "sha256": "8fdf43d7d6f93551eedecd7036b93880ed4dcc45556ba8b673ed73cfa0acfabe",
+      "replacement_needed": false,
+      "reason": "同じhJから同じ反射・単位を使う。別の反射を選んで同一視しない。"
+    },
+    {
+      "id": "C10",
+      "name": "KanEnrichedDiagramComparison.realizationIso",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/KanEnrichedDiagramJointComparison.lean",
+      "checked_source_contains": "jointComparisonIso",
+      "sha256": "6ac22e1d2b215381b390476ef71e34892cc7717fcfcb0e18e7d3522654188e9e",
+      "replacement_needed": false,
+      "reason": "jointComparisonIsoは実際の辺の類のasIso。curryして同じ族を保持。P3-Aはその合成則を証明する。"
+    }
+  ]
+}
