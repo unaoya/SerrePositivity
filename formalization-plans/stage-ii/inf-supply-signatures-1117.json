@@ -3,7 +3,7 @@
   "source_head": "7e9743b30",
   "scope": "今回の再開範囲：元の残り1〜17項を署名へ展開。S2〜S6の過去の検収済み出力は再採番しない。",
   "count_rule": "署名のidごとに数える。200行超の照合・合成則は独立署名。小さい証明分割の法則は親署名のnoteに記録する。旧5/8はこの台帳の分母には用いない。",
-  "verified_lean_lines": 26781,
+  "verified_lean_lines": 26833,
   "final_cap": 29000,
   "checkpoint_report_lines": 28500,
   "factor": 2,
@@ -910,10 +910,27 @@
         100,
         220
       ],
-      "status": "pending",
-      "placement": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/leftStraighteningInfinityDiagram_representationIso_baseChange.lean",
-      "note": "",
-      "additional_mathematics": false
+      "status": "verified",
+      "placement": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningRepresentationBaseChangeLaw.lean",
+      "note": " build-3で対象ビルド・1宣言の小監査成功。初頂点制限の充満忠実性でDを反映し、型・仮定・元の全同型を保持。",
+      "additional_mathematics": false,
+      "actual_lines": 52,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 1,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningRepresentationBaseChangeLaw.lean": "46305582bb376eee658ef55aede9ed5b6a9f2b73f450e776e8ea578228dbaa8e"
+        }
+      },
+      "verification_receipt": "/Users/sugakubunka/serre-evidence/inf-supply/e-global-1117/target-audit-result.json"
     },
     {
       "id": "R04",
