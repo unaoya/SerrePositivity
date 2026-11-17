@@ -1,9 +1,10 @@
 # 現在地
 
-- 段：**AR-W1 の紙を納品する停止点。85群の所見を記載し、うち67群は判断できないと明示**。
-- 作業場所：`/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-cited`。枝：`research/cited-coverage`。pwd 一致を確認し、指定の `git merge main` を実施した。
-- 基準HEAD：`7c2528f6594b63074e7955f2f0c57db15ace4e2e`（main 取り込み後）。群分けの途中コミット：`258ca0023`。最終コミットは本報告を含む `HEAD`（件名 `docs: review archived claims and restoration candidates`）。ハッシュは最終応答に記録する。
-- 次：調整役とユーザーによる復帰・材料保存・削除の判断。推奨を実行する Lean の移設や削除には進まず、全部の紙と証拠目録をコミットして停止する。
+- 段：**KB-W1 / B6 進行中**。
+- 一覧：**済み 1／全体 10（章）**。
+- 作業場所：`/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-cited`。枝：`research/cited-coverage`。pwd一致を確認し、指定の `git merge main` を実施。
+- KB-W1基準HEAD：`f35b01be9fdb8cf3c664b32123b6e8ebaf5d070f`。章ごとにコミットし、2章ごとに停止せず途中報告する。
+- 次：第2章の型と原文を再照合する。Lean・ビルド・鍵は使わない。既存 own・both・mathlib 行は変更しない。
 
 ## CC-W1 納品（停止コミット `156ac3c32`）
 
@@ -116,3 +117,17 @@ Archive のパスを宣言欄に含む4行（4.3.6.12、9.1.1.18、9.1.1.20、9.
 85群の列・全1,871本の一意な割当て・行数・420個の主要宣言のソース位置・本体の比較宣言の位置・原典番号/P⁰閉包の該当番号・5つの対応表参照行を検査した。Archive 全ソースのハッシュと基準HEADからの変更なしを確認し、本体・exposition・blueprint・対応表・lake設定・toolchain も変更していない。Lean の変更・実行・ビルド・kernel 確認なし。
 
 証拠は `~/serre-evidence/cited/archive-review/`。途中時点の5ファイルを上書きせず保持し、最終の抽出・型比較・import・DG特殊化比較・原典取得・検証は `final/` に追加した。コミットするのは `evidence/cited/archive-review/manifest.json` の目録だけ。目録の commit は基準HEAD `7c2528f6594b63074e7955f2f0c57db15ace4e2e`。この最終の紙をコミットして停止する。
+
+## KB-W1
+
+指示書と codex-review.md §6・§8.1 を読み、partial 1,574・none 1,417の全2,991行を対象とした。原文はKerodon公式の小節ページから項目Tagごとに取得。現在の本体とロックした隣接Mathlibの宣言をソースから索引化し、KL-W1・B3・B3′・OE-W1後の場所も検索範囲に含む。原文・型・検索結果の大きい証拠はgit外 `~/serre-evidence/cited/kerodon-b6/`、目録だけをコミットする。
+
+### 第1章
+
+69行（旧partial40・none29）を全件照合した。旧partialのうち21をnone、18をpartialとして種類を付記、1をownへ更新。旧none29は全て再検索後もnone。保持したpartialの種類はcomponent12・direction3・special2・stronger-hyp1。
+
+代表例：1.1.4.8の候補は「X全体を非退化単体で表示する余極限」で、原文の「次数≤kに制限した全単体圏からの骨格表示」という別の射ではないためnone。1.5.7.1・1.5.7.3も、sequentialSpineの包含をグラフの指定射と同定する橋が引用型になく、別の射の類似だけをspecialとしない。1.1.4.13は境界からの面制限の単射性がhom_extから直接得られる結論成分としてpartialを維持した。
+
+1.5.5.6は現在の RelativeInternalHomTrivialFibration.lean:24 に、任意の単射iとtrivial Kan fibration pの相対内部Hom比較πがtrivial Kan fibrationとなる型があり、原文の同じ比較射を扱うのでownへ更新した。模型圏の追加仮定はない。
+
+第1章だけ末尾にpartial_kind列を追加し、元のown・both・mathlib111行は全既存フィールドを保って新列を空にした。verdict・axioms・check、区切り・改行と対象外行の引用符も維持。新たなkernel確認という意味を付けていない。全対象行の一覧は `review/check/b6-ch1.md`。この章のコミット後も停止せず第2章へ進む。
