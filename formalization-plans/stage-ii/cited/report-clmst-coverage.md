@@ -1,10 +1,10 @@
 # 現在地
 
 - 段：**KB-W1 / B6 進行中**。
-- 一覧：**済み 1／全体 10（章）**。
+- 一覧：**済み 2／全体 10（章）**。
 - 作業場所：`/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-cited`。枝：`research/cited-coverage`。pwd一致を確認し、指定の `git merge main` を実施。
 - KB-W1基準HEAD：`f35b01be9fdb8cf3c664b32123b6e8ebaf5d070f`。章ごとにコミットし、2章ごとに停止せず途中報告する。
-- 次：第2章の型と原文を再照合する。Lean・ビルド・鍵は使わない。既存 own・both・mathlib 行は変更しない。
+- 次：第3章の型と原文を再照合する。Lean・ビルド・鍵は使わない。既存 own・both・mathlib 行は変更しない。
 
 ## CC-W1 納品（停止コミット `156ac3c32`）
 
@@ -131,3 +131,11 @@ Archive のパスを宣言欄に含む4行（4.3.6.12、9.1.1.18、9.1.1.20、9.
 1.5.5.6は現在の RelativeInternalHomTrivialFibration.lean:24 に、任意の単射iとtrivial Kan fibration pの相対内部Hom比較πがtrivial Kan fibrationとなる型があり、原文の同じ比較射を扱うのでownへ更新した。模型圏の追加仮定はない。
 
 第1章だけ末尾にpartial_kind列を追加し、元のown・both・mathlib111行は全既存フィールドを保って新列を空にした。verdict・axioms・check、区切り・改行と対象外行の引用符も維持。新たなkernel確認という意味を付けていない。全対象行の一覧は `review/check/b6-ch1.md`。この章のコミット後も停止せず第2章へ進む。
+
+### 第2章
+
+154行（旧partial80・none74）を再照合。partial48行をnoneへ、32行は種類を付して維持。旧noneのうち2.1.1.5を、単位つきモノイダル圏から非単位部分を直接忘却できるstronger-hypとしてpartialに変更し、73行は再検索後もnone。結果はpartial33・none121、種類はcomponent18・stronger-hyp8・special6・direction1。
+
+原文の逆包含のPathと現行包含順模型、原文のdg符号とHA符号、商型正規化と核型正規化を比較する宣言がない候補は、類似の構成だけでpartialにしなかった。2.4.5.11はKan性から両端点評価が自明Kan fibrationとなる方向、2.5.6.21は核型正規化の包含のホモロジー同型という結論成分を直接持つ。既存own・both・mathlib59行は全既存フィールドを保存。
+
+第1〜2章の計223対象行を完了（済み2／全体10章）。章別全件表はreview/check/b6-ch1.md・b6-ch2.md、ソースの型と公式原文の比較・検索記録はgit外。Lean・ビルド・kernel実行・鍵は使用していない。そのまま第3章へ進む。

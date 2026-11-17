@@ -1,8 +1,8 @@
 {
  "directory": "/Users/sugakubunka/serre-evidence/cited/kerodon-b6",
  "commit": "f35b01be9fdb8cf3c664b32123b6e8ebaf5d070f",
- "made_by": "KB-W1 ch1: official item-tag source comparison; source index; manual decisions; no Lean/build/lock",
- "note": "Completed 1 of 10 chapters. Ch1 all 69 target rows, 111 protected rows preserved. Shared original-source collection does not imply later chapters reviewed.",
+ "made_by": "KB-W1 ch2 source comparison; no Lean/build/lock",
+ "note": "Completed 2 of 10 chapters; official originals and source-only searches outside git",
  "files": [
   {
    "path": "ch1/ch1-audit.json",
@@ -58,6 +58,51 @@
    "path": "ch1/search_ch1.py",
    "sha256": "cbbc2d19483b9bf147167f7e22ee8f71cedd5b05487aab09b4a0ee3f9bc1517c",
    "bytes": 2673
+  },
+  {
+   "path": "ch2/ch2-before.csv",
+   "sha256": "3410627b1a78ee435ba678b1ccb59060cc3c7bb0c227f7664d730a210c02b171",
+   "bytes": 79366
+  },
+  {
+   "path": "ch2/ch2-changes.json",
+   "sha256": "1db1575b2190b321755707b3f7b0367b5966b48695646ea0a6cb8b2e3de55cba",
+   "bytes": 215718
+  },
+  {
+   "path": "ch2/ch2-decisions.tsv",
+   "sha256": "9fe5ff23322a6dd32b96b280e8bbdb8bfa5736253cb6be315b966f995a941433",
+   "bytes": 38241
+  },
+  {
+   "path": "ch2/ch2-declaration-overrides.json",
+   "sha256": "482b7b196e85ff36eb1b9d3ecd55c21257e70443604ff2116d58a2c2574f7176",
+   "bytes": 102
+  },
+  {
+   "path": "ch2/ch2-none-search.json",
+   "sha256": "bcda0686373a1a48e0631ba8acb3a7eebb5d779d93936759e7ad9741740a6515",
+   "bytes": 8695043
+  },
+  {
+   "path": "ch2/ch2-packet.json",
+   "sha256": "533b26b84d221f99decb7ddbcb43e127b955abde8541b7d4537b5d81eaa397da",
+   "bytes": 1317254
+  },
+  {
+   "path": "ch2/ch2-validation.json",
+   "sha256": "4108dc464d3bba5cb8b95bdeec710a70834d69293f0cd7132274ddcacbbbb8dc",
+   "bytes": 378
+  },
+  {
+   "path": "ch2/ch2-write-decisions.py",
+   "sha256": "dd4ee3afd170f05ea686b9c010e8b8e79e4fb082a7807ccf3488dccc327e4047",
+   "bytes": 18658
+  },
+  {
+   "path": "ch2/search_ch2.py",
+   "sha256": "ea888ee6a292194ebd384fc5bf390af0e62a5206c2082a4a5f943cde2b7b1361",
+   "bytes": 1535
   },
   {
    "path": "shared/apply_chapter.py",
@@ -4315,5 +4360,5 @@
    "bytes": 33052
   }
  ],
- "total_bytes": 94020008
+ "total_bytes": 104386303
 }
