@@ -6671,3 +6671,33 @@ let g := leftUnstraighteningMappingVertexMap R.diagram S.diagram (intervalMappin
 検証済み累計21,726行、新規341モジュール＋承認された既存3ファイルの差分。
 次は同じ射作用の合成則と宇宙の縮小を使い、元の第2項へ渡す。
 一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+
+### 残り第2項の証明分割：指定Homの作用の合成（11-17）
+
+新規UnstraighteningFunctorHomComposition.lean（91行）。
+既存のcompStruct_nonempty_of_homMk_facで三つの指定辺を保つ三角形を取り、
+leftUnstraighteningEdgeMap_compositionIsoへ渡し、元の全写像空間の指定頂点へ戻す。
+前後合成の既存の頂点計算で端点を明示し、本文やchooseの選択を変更しない。
+第2項に必要な既存構成の合成法則の証明分割で、新しい数学的目標の追加なし。
+
+型（既存namespaceをopenした表記）：
+```lean
+{B : SSet.{u}}
+{F G J : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}}
+(a : FunctorHom F G) (b : FunctorHom G J) :
+Nonempty (VertexIso
+  (relativeFunctorVertex (leftUnstraighteningProjection J) (leftUnstraighteningProjection F)
+    (unstraighteningFunctorHom (a ≫ b)) (unstraighteningFunctorHom_projection _))
+  (relativeFunctorVertex (leftUnstraighteningProjection J) (leftUnstraighteningProjection F)
+    (unstraighteningFunctorHom a ≫ unstraighteningFunctorHom b)
+    (by rw [Category.assoc, unstraighteningFunctorHom_projection,
+      unstraighteningFunctorHom_projection])))
+```
+対象ビルドexit 0、現環境からの小監査2宣言は標準三公理のみ、exit 0。
+記録：/tmp/is-w1/s8-reconstruction-2/composition-production/{verify.log,target-audit-result.json}。
+同じ鍵の塊で続けた宇宙移送の仮検証は、Overの表示の下の準圏インスタンスで失敗。
+既存の相対写像空間のKan性を局所に明示して再検証しており、入力の仮定は足さない。
+検証済み累計21,817行、新規342モジュール＋承認された既存3ファイルの差分。
+元の第2項は未完、一覧の外の補題・chooseの置換なし、計算上限は不変。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
