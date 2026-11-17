@@ -3402,3 +3402,15 @@ D09・D04の監査成功を条件に既存見込みへ実測105行を代入し�
 
 - D09 `SerrePositivity.AlgebraicGeometry.perfectCechUniversalDescent_of_nil_baseChange`：全射な有限表示の閉厚化の底変換後の普遍Čech降下性から、元の射の同じ降下性を反映する。
 - D04 `SerrePositivity.AlgebraicGeometry.perfectCechUniversalDescent_nilImmersion`：全射な有限表示の閉埋め込みに、元の完全構造層の普遍Čech降下性を供給する。
+
+## 2026-11-17：零次列と相対fppfの細分射（2ceed75e9）
+
+- P20・F08・F09を同じ型・仮定で実装。新規2モジュール341行＋入口4行＝345行、所有14宣言（P20が6、F08・F09が8）。原稿・本体の同一バイトとSHAを確認し、対象ビルド5,389・5,390ジョブと直接importer、別の共有鍵での所有監査が成功。標準三公理以外0。
+- P20は空タプルの角の係数同型、射影の同型、元の増大正方形を照合する。singleからconstantへの完全性は既存の単射版total比較を使い、余核の議論を作り直していない。F08・F09は同じnerveの第一射影に沿う細分射と、その元のnerveへの可換性。
+- 累計21,770行（新規291モジュール21,422行、既存追加25行、入口323行）。所有宣言累計2,377件、既存15件は別。残り25署名。登録等の予備と現下書きの上振れにも係数2を確保した完成見込み23,842〜26,282行。外枠28,000行以内。
+- 一覧：済み1／全体3（うち追加0）。内部署名：済み64／89（G4・G5）、追加0。P21は原稿検証を通過し対象ビルド待ち。F07・D05、閉像I05〜I08、I01は未検証の下書きで、完了数へ含めない。mainは取り込んでいない。
+- F07の証明順序は元の署名を保ち、各有限交叉のアフィン余積へ切断に適合する基底の有限アフィン被覆を写す形に整理した。既存の `isCechExact_baseChange_of_map` と忠実平坦な反映、同じFrobenius反復系のfiltered colimitを代入する。非アフィンな始域のΓの平坦性は用いない。検証後にD05を閉じ、正次数の軸へ接続する。
+
+- P20 `SerrePositivity.AlgebraicGeometry.pairedPerfectCech_zero_col_acyclic_iff`：元の二変数図式の零次列の増大totalと、同じg・被覆のタプルtotalの完全性を両方向に比較する。
+- F08 `SerrePositivity.AlgebraicGeometry.fppfComparisonRefiner`：元のnerveの第一座標に沿うqの底変換から、同じ合成q≫gの底変換への細分射を作る。
+- F09 `SerrePositivity.AlgebraicGeometry.fppfComparisonRefiner_over`：その細分射が元のnerveへの射影を保つ。
