@@ -1572,3 +1572,44 @@ P3-C1PSの再利用先を補記（型・依存・見込みは変更なし）：
 
 
 P3-C1PN：元の型のまま対象1モジュール・48宣言の小監査成功。標準三公理のみ。素220〜360／補正440〜720に対し実測260行。累計25,613行。
+
+
+### P3-C1PSの短い射影の計算法則（11-17夜）
+
+新規補助ファイル `SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/RelativeFunctorIsoImageTransport.lean`。既存の `relativeFunctorVertexIsoImage_postcomp` を再利用し、同じ指定同型を前合成・端点移送したときの射影を計算する。200行未満で、Sの証明分割として数え、署名の型・見込みは変えない。新しい選択・仮定はない。
+
+```lean
+lemma functorIsoEq_precomp {A D X : SSet.{u}} {f g : A ⟶ X}
+    (h : f = g) (i : D ⟶ A) :
+    FunctorIso.precomp (eqToIso (congrArg (fun k => HomotopyCategory.mk (functorVertex k)) h)) i =
+      eqToIso (congrArg (fun k => HomotopyCategory.mk (functorVertex k))
+        (congrArg (fun k => i ≫ k) h))
+```
+
+```lean
+lemma relativeFunctorVertexIsoImage_transport_projection
+    {A D E B : SSet.{u}} (p : E ⟶ B) (a : A ⟶ B)
+    (f g : A ⟶ E) (hf : f ≫ p = a) (hg : g ≫ p = a)
+    (e : VertexIso (relativeFunctorVertex p a f hf) (relativeFunctorVertex p a g hg))
+    (i : D ⟶ A) {f' g' : D ⟶ E} (hf' : i ≫ f = f') (hg' : i ≫ g = g')
+    (hp : f' ≫ p = g' ≫ p) :
+    (functorIsoOfEq ((relativeFunctorVertexIsoImage p a f g hf hg e).precomp i) hf' hg').postcomp p =
+      eqToIso (congrArg (fun k => HomotopyCategory.mk (functorVertex k)) hp)
+```
+
+一覧：済み 30／全体 51（うち追加 16、別停止点 2）。
+
+
+### P3-C1PSの補助部分の検証（11-17夜）
+
+新規補助ファイル `CartesianFibrations/RelativeFunctorIsoImageTransport.lean` の5宣言の対象ビルド・小監査成功、標準三公理のみ。
+相対同型の射影の本体の宣言と、前合成・底変換・端点移送・prismの既存の構成の法則を再利用した。
+新しい選択・仮定はなく、mainの既存の本文は変更していない。
+実測**100行**。Sは未完のまま、検証済みの証明分割として累計に一度だけ加算する。
+累計25,613 → **25,713行**。
+Sの残りは素150〜300行・補正300〜600行とする。元の補正上端700に対し、検証済み100＋残り補正600＝700で着手枠を保っている。
+次の判定25,713＋600＝26,313で今回の区切りの範囲内。補助ファイル全体は200行未満なので署名の数は増やさない。
+主な射影公式にはHTT §3.3.2 special属性、Kerodon Tag 028Tはdocstringに特殊化として記載。
+証拠：`evidence/inf-supply/c1ps-projection-1117/manifest.json`。
+
+一覧：済み 30／全体 51（うち追加 16、別停止点 2）。

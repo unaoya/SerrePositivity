@@ -3,7 +3,7 @@
   "source_head": "7e9743b30",
   "scope": "今回の再開範囲：元の残り1〜17項を署名へ展開。S2〜S6の過去の検収済み出力は再採番しない。",
   "count_rule": "署名のidごとに数える。200行超の照合・合成則は独立署名。小さい証明分割の法則は親署名のnoteに記録する。旧5/8はこの台帳の分母には用いない。",
-  "verified_lean_lines": 25613,
+  "verified_lean_lines": 25713,
   "final_cap": 29000,
   "checkpoint_report_lines": 28500,
   "factor": 2,
@@ -2549,20 +2549,47 @@
         }
       ],
       "bare_lines": [
-        200,
-        350
+        150,
+        300
       ],
       "corrected_lines": [
-        400,
-        700
+        300,
+        600
       ],
       "status": "pending",
       "placement": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePointedPrism.lean",
       "literature": "HTT §3.3.2・特に3.3.2.8、Kerodon §5.6（Tag 028T）の指定構成の法則。このscaffold上での指定pointed比較への特殊化。",
-      "note": "既存のscaffold制限比較・反転Homの指定比較・全写像空間の持ち上げを同じ辺で合成する照合。新しい数学・仮定・choose・main既存本文の変更なし。",
+      "note": "既存のscaffold制限比較・反転Homの指定比較・全写像空間の持ち上げを同じ辺で合成する照合。新しい数学・仮定・choose・main既存本文の変更なし。 前合成と端点移送の射影公式を200行未満の証明分割として新規の補助ファイルに置く。 補助100行は検証済み。残りは素150〜300・補正300〜600。元の補正上端700に対し、検証済み100＋残り補正600＝700で着手の枠を保つ。",
       "additional_mathematics": true,
       "choose_replacements": [],
-      "new_assumptions": []
+      "new_assumptions": [],
+      "support_files": [
+        "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/RelativeFunctorIsoImageTransport.lean"
+      ],
+      "original_bare_lines": [
+        200,
+        350
+      ],
+      "original_corrected_lines": [
+        400,
+        700
+      ],
+      "partial_verified_lean_lines": 100,
+      "partial_citation_verification": {
+        "modules": 1,
+        "declarations": 5,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/RelativeFunctorIsoImageTransport.lean": "c380fa0d4d3451e6a8074f36fe9c06baf61cd319de86a37f7022ea4c024a27f8"
+        }
+      }
     }
   ],
   "common_typeclass_setup": "local instance signaturePullbackLeft {E B D : SSet.{u}}\n    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) : LeftFibration (pullback.snd p k) :=\n  ⟨leftFibrations.pullback_snd p k (LeftFibration.mem (p := p))⟩",
