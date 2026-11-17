@@ -10564,3 +10564,61 @@ R04の短い証明分割 `NativePullbackRepresentationArrowComparison` は素60�
 194行を追加し、累計27,964行。R04の部分計上は753行で、R04-PRの254行・R04-NPの124行とは重複しない。R04本体は未完：元の復元spanとの照合、同じ全空間側Lの元の宇宙への下降と指定余単位の比較が残る。既存の構成の法則として200行を超えるまとまりは、完全な型と見込みを台帳に追加してから進める。現在のR04の残り補正上端800による着手判定は27,964＋800＝28,764で29,000以内であり、ここは正式な停止点ではない。S7・R2・R3を再開せず、mainを取り込まず、旧R2の未追跡4本はそのまま。
 
 一覧：済み 38／全体 54（うち追加 19、別停止点 2）。
+
+### 11-18：R04-RIの型と着手判定
+
+### R04-RI — 底を固定した相対同型による極限比較の自然性（11-18追加）
+
+状態pending、依存なし（既存の構成の法則のみ）。素250〜400、補正500〜800。着手判定27,964＋800＝28,764で29,000以内。元のR04の型・仮定を変えない。
+
+```lean
+∀ {A B K X : SSet.{u}} [Quasicategory A] [Quasicategory B] [Quasicategory X]
+    (p : A ⟶ K) (q : B ⟶ K) (f g : A ⟶ B)
+    (hf : f ≫ q = p) (hg : g ≫ q = p)
+    (h : VertexIso (relativeFunctorVertex q p f hf) (relativeFunctorVertex q p g hg))
+    (ef : IsQCatEquivalence f) (eg : IsQCatEquivalence g)
+    (O : K ⟶ X) (c : JoinCone (p ≫ O)) (d : JoinCone (q ≫ O))
+    (hc : IsLimitCone c) (hd : IsLimitCone d),
+    (limitVertexIsoOfOverEquivalence f ef hf O c d hc hd).hom =
+      (limitVertexIsoOfOverEquivalence g eg hg O c d hc hd).hom
+```
+
+- `relativeFunctorSquarePost_vertex` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/RelativeFunctorSquarePost.lean:54
+- `sectionConeFamilyMap_apex` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/HomotopyLimitsAndColimits/SectionConeFamily.lean:68
+- `limitVertexIso_hom_comp` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/LimitVertexIsoComposition.lean:43
+
+原典：HTT §1.2.13、Kerodon §7.1（Tag 02H1）。既存の極限比較・錐の制限の相対自然性の法則。
+
+指定した元の錐をcosliceの切断として読み、既存のrelativeFunctorSquarePostとsectionConeFamilyMapで相対写像空間の全族を固定頂点の錐へ送る。相対同型の像のapexは恒等射なので、元の極限比較の合成則で同じ射へ戻す。新しい数学・chooseの置き換え・mainの既存本文の変更なし。依存グラフに循環がないことを検査する。
+
+一覧：済み 38／全体 55（うち追加 20、別停止点 2）。
+
+### 11-18：R04-RIの元の制限錐への計算の分割
+
+```lean
+lemma limitVertexIsoOfOverEquivalence_hom_restriction {A B K X : SSet.{u}}
+    [Quasicategory A] [Quasicategory B] [Quasicategory X]
+    (p : A ⟶ K) (q : B ⟶ K) (f : A ⟶ B) (hf : f ≫ q = p)
+    (ef : IsQCatEquivalence f) (O : K ⟶ X)
+    (c : JoinCone (p ≫ O)) (d : JoinCone (q ≫ O))
+    (hc : IsLimitCone c) (hd : IsLimitCone d) :
+    let he : p ≫ O = f ≫ (q ≫ O) := by rw [← Category.assoc, hf]
+    let df := (restrictJoinCone d f).cast he.symm
+    ∀ hdf : IsLimitCone df,
+    (limitVertexIsoOfOverEquivalence f ef hf O c d hc hd).hom =
+      (limitVertexIso c df hc hdf).hom ≫
+        eqToHom (congrArg HomotopyCategory.mk
+          ((JoinCone.vertex_cast _ he.symm).trans (restrictJoinCone_vertex d f)))
+```
+
+既存 `limitVertexIsoOfEquivalentRestriction_hom` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/EquivalentShapeLimitVertexComputations.lean:47 を同じ図式等式に適用するだけで、元の比較の値を変更しない。素50〜80行・補正100〜160、R04-RIの内数。HTT §1.2.13・Kerodon Tag 02H1の既存構成の法則。
+
+一覧：済み 38／全体 55（うち追加 20、別停止点 2）。
+
+### 11-18：R04-RIを完成、29,000行の区切りの最終検査へ
+
+R04-RIの三本は69＋62＋126＝257行（素250〜400・補正500〜800の見込み）。対象ビルド2,480 jobs・11宣言の小監査と元の署名の完全な型への代入が成功した。標準三公理のみ、開始・終了・記録時のソースSHA一致。相対同型を元の錐の固定頂点の全族へ送り、定値射影の計算と標準極限比較の合成則だけで、元の比較の同じ射を回収する。元の型・仮定・choose値・main本文・計算上限は変えていない。文献属性付き。
+
+累計27,964＋257＝28,221行。次の依存順の未完署名はR04本体で、その残り補正上端800行を足すと29,021行になり、29,000を21行超える。11-17午後の「超える手前の署名のまとまりで区切る」に到達したので、R04のLeanをここから進めず、引用属性と検証証跡の最終確認・引き継ぎを整える。これは5∞-1全体の完成ではない。
+
+一覧：済み 39／全体 55（うち追加 20、別停止点 2）。

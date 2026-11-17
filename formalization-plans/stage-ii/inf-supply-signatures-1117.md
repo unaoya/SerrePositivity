@@ -3,7 +3,7 @@
 <!-- current-signature-state:begin -->
 ## 最新の進行状態と停止判定
 
-既計上の累計：27,964行。外枠：29,000行。係数：2。
+既計上の累計：28,221行。外枠：29,000行。係数：2。
 行別の実測は既計上の補助・共有検証組を含みうるため、合計して累計を作り直さない。
 この表が進行状態・残り見込みの現在値。後の各節は署名の型・設計・検証履歴を保持する。
 
@@ -63,6 +63,7 @@
 |P3-C1PSG|verified|224|0〜0|0〜0|
 |R04-PR|verified|254|0〜0|0〜0|
 |R04-NP|verified|124|0〜0|0〜0|
+|R04-RI|verified|257|0〜0|0〜0|
 
 <!-- current-signature-state:end -->
 
@@ -1844,3 +1845,27 @@ build-3：対象ビルド5,611 jobs成功、小監査1モジュール1宣言、�
 原典：HTT §3.3.2、Kerodon Remark 5.6.2.18（Tag 0271）、HTT 2.1.1.6の既存持ち上げと底変換の比較の法則。
 
 元の同型をuliftした後、U.mapした元の第一射影から持ち上げ、U.mapした引き戻しの普遍性で終点を同じ小さい引き戻しへ戻す。既存の完全忠実性で射aを小さい宇宙へ戻し、元のpointedMapで後合成する。射影の一致は既存の前後合成則と端点の移送で示す。新しい数学・chooseの変更・既存本文の変更なし。
+
+### R04-RI — 底を固定した相対同型による極限比較の自然性（11-18追加）
+
+状態verified（実測257行）、依存なし（既存の構成の法則のみ）。素250〜400、補正500〜800。着手判定27,964＋800＝28,764で29,000以内。元のR04の型・仮定を変えない。
+
+```lean
+∀ {A B K X : SSet.{u}} [Quasicategory A] [Quasicategory B] [Quasicategory X]
+    (p : A ⟶ K) (q : B ⟶ K) (f g : A ⟶ B)
+    (hf : f ≫ q = p) (hg : g ≫ q = p)
+    (h : VertexIso (relativeFunctorVertex q p f hf) (relativeFunctorVertex q p g hg))
+    (ef : IsQCatEquivalence f) (eg : IsQCatEquivalence g)
+    (O : K ⟶ X) (c : JoinCone (p ≫ O)) (d : JoinCone (q ≫ O))
+    (hc : IsLimitCone c) (hd : IsLimitCone d),
+    (limitVertexIsoOfOverEquivalence f ef hf O c d hc hd).hom =
+      (limitVertexIsoOfOverEquivalence g eg hg O c d hc hd).hom
+```
+
+- `relativeFunctorSquarePost_vertex` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/RelativeFunctorSquarePost.lean:54
+- `sectionConeFamilyMap_apex` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/HomotopyLimitsAndColimits/SectionConeFamily.lean:68
+- `limitVertexIso_hom_comp` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/LimitVertexIsoComposition.lean:43
+
+原典：HTT §1.2.13、Kerodon §7.1（Tag 02H1）。既存の極限比較・錐の制限の相対自然性の法則。
+
+指定した元の錐をcosliceの切断として読み、既存のrelativeFunctorSquarePostとsectionConeFamilyMapで相対写像空間の全族を固定頂点の錐へ送る。相対同型の像のapexは恒等射なので、元の極限比較の合成則で同じ射へ戻す。新しい数学・chooseの置き換え・mainの既存本文の変更なし。依存グラフに循環がないことを検査する。

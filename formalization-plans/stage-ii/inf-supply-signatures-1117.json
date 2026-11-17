@@ -3,7 +3,7 @@
   "source_head": "7e9743b30",
   "scope": "今回の再開範囲：元の残り1〜17項を署名へ展開。S2〜S6の過去の検収済み出力は再採番しない。",
   "count_rule": "署名のidごとに数える。200行超の照合・合成則は独立署名。小さい証明分割の法則は親署名のnoteに記録する。旧5/8はこの台帳の分母には用いない。",
-  "verified_lean_lines": 27964,
+  "verified_lean_lines": 28221,
   "final_cap": 29000,
   "checkpoint_report_lines": 28500,
   "factor": 2,
@@ -940,7 +940,8 @@
         "P3-E",
         "R02",
         "R04-PR",
-        "R04-NP"
+        "R04-NP",
+        "R04-RI"
       ],
       "existing": [
         {
@@ -3257,6 +3258,87 @@
         "sha256": "6ecd7e8a952918cfb7e2a928dcb7b083ad2e1a28e9d9620ee71cf4db4180d48a",
         "method": "台帳の完全な型へ元の公開宣言を代入。追加のData版とsame-a接続も型検査。"
       }
+    },
+    {
+      "id": "R04-RI",
+      "name": "limitVertexIsoOfOverEquivalence_hom_eq_of_relativeIso",
+      "full_type": "∀ {A B K X : SSet.{u}} [Quasicategory A] [Quasicategory B] [Quasicategory X]\n    (p : A ⟶ K) (q : B ⟶ K) (f g : A ⟶ B)\n    (hf : f ≫ q = p) (hg : g ≫ q = p)\n    (h : VertexIso (relativeFunctorVertex q p f hf) (relativeFunctorVertex q p g hg))\n    (ef : IsQCatEquivalence f) (eg : IsQCatEquivalence g)\n    (O : K ⟶ X) (c : JoinCone (p ≫ O)) (d : JoinCone (q ≫ O))\n    (hc : IsLimitCone c) (hd : IsLimitCone d),\n    (limitVertexIsoOfOverEquivalence f ef hf O c d hc hd).hom =\n      (limitVertexIsoOfOverEquivalence g eg hg O c d hc hd).hom",
+      "dependencies": [],
+      "existing": [
+        {
+          "name": "relativeFunctorSquarePost_vertex",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/RelativeFunctorSquarePost.lean",
+          "line": 54
+        },
+        {
+          "name": "sectionConeFamilyMap_apex",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/HomotopyLimitsAndColimits/SectionConeFamily.lean",
+          "line": 68
+        },
+        {
+          "name": "limitVertexIso_hom_comp",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/LimitVertexIsoComposition.lean",
+          "line": 43
+        },
+        {
+          "name": "sectionConeFamilyMap_section_vertex",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/HomotopyLimitsAndColimits/SectionConeFamilyVertex.lean",
+          "line": 37
+        },
+        {
+          "name": "limitVertexIsoOfOverEquivalence_hom_restriction",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/OverEquivalenceLimitRestrictionValue.lean",
+          "line": 45
+        },
+        {
+          "name": "limitVertexIsoOfOverEquivalence_hom_eq_of_relativeIso",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/OverEquivalenceLimitRelativeIso.lean",
+          "line": 39
+        }
+      ],
+      "literature": "HTT §1.2.13、Kerodon §7.1（Tag 02H1）。既存の極限比較・錐の制限の相対自然性の法則。",
+      "bare_lines": [
+        250,
+        400
+      ],
+      "corrected_lines": [
+        500,
+        800
+      ],
+      "status": "verified",
+      "placement": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/OverEquivalenceLimitRelativeIso.lean",
+      "additional_mathematics": true,
+      "note": "既存の構成の照合の追加ID。底を固定した相対同型から、同じ係数の錐の固定頂点の比較を作り、既存の終対象の一意性と合成則で反映する。R04の型・仮定を変更しない。 実測257行（三本69・62・126）。固定頂点の全族の射影が定値なので元の比較を保つ。対象ビルド2480 jobs・11宣言の小監査・台帳の完全な型への代入が成功。",
+      "actual_lines": 257,
+      "support_files": [
+        "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/HomotopyLimitsAndColimits/SectionConeFamilyVertex.lean",
+        "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/OverEquivalenceLimitRestrictionValue.lean",
+        "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/OverEquivalenceLimitRelativeIso.lean"
+      ],
+      "citation_verification": {
+        "modules": 3,
+        "declarations": 11,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/HomotopyLimitsAndColimits/SectionConeFamilyVertex.lean": "3de13fbecba5fc4642edf6e3f86386fa6d5ae434c1e64a42d7e119b882e92115",
+          "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/OverEquivalenceLimitRestrictionValue.lean": "3393112bec06a686329b9ba0495da5c4382216455f23e1e68024eb673bc68de8",
+          "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/OverEquivalenceLimitRelativeIso.lean": "de3883a6b370d73d4b47ccb5a54b93d7445cb96c5e8a3e218861f868cc74e758"
+        }
+      },
+      "verification_receipt": "/Users/sugakubunka/serre-evidence/inf-supply/r04-ri-final-1118/target-audit-result.json",
+      "approved_type_check": {
+        "success": true,
+        "source": "/Users/sugakubunka/serre-evidence/inf-supply/r04-ri-final-1118/expected-type.lean",
+        "sha256": "c8565806256c6b6d0439d779231248e2d2810c47c0e7ff90ddd83d3cfd41b0f9",
+        "method": "署名台帳の完全な型へ公開宣言を代入してLeanで検証。"
+      }
     }
   ],
   "common_typeclass_setup": "local instance signaturePullbackLeft {E B D : SSet.{u}}\n    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) : LeftFibration (pullback.snd p k) :=\n  ⟨leftFibrations.pullback_snd p k (LeftFibration.mem (p := p))⟩",
@@ -3324,5 +3406,14 @@
     "no_statement_changes": true,
     "choose_replacements": [],
     "large_law_estimates_only": true
+  },
+  "cap_checkpoint_1118": {
+    "state": "preparing final citation and receipt audit",
+    "verified_lines": 28221,
+    "next_signature": "R04",
+    "next_corrected_upper": 800,
+    "projected": 29021,
+    "cap": 29000,
+    "rule": "次の署名のまとまりの補正後の上端を足すと超える手前で区切る。R04のLeanはここから進めない。"
   }
 }
