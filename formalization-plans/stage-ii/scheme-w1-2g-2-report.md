@@ -3620,3 +3620,15 @@ private def pairedRowEvaluationIso
 - 一覧：済み1／全体3（うち追加0）。内部署名：済み80／89（G4・G5）、追加0。次はF10・F11・D07の相対fppfの合成の消去。一般の固有・v降下は未完成。
 
 - D06 `SerrePositivity.AlgebraicGeometry.perfectCechUniversalDescent_of_affine_refinement`：アフィンな合成の普遍Čech降下性から、元の射の普遍Čech降下性を同じ全ての試験基底・被覆で得る。
+
+## 2026-11-17：相対fppfと固有全射の合成の普遍降下（3fb97ec24・4532c6a86・d23de07cc）
+
+- F10・F11・D07を同じ署名・仮定で実装。新規3モジュール173行＋入口6行＝179行、所有4宣言。各束の原稿・本体の同一バイトとSHA、対象ビルド5,405・5,406・5,407ジョブと直接importer、各束ごとの別の共有鍵の所有監査が成功。標準三公理以外0。
+- F10は元の第一座標に沿うqの底変換をF08・F09の細分とD06で消去する。F11は元のBの有限アフィン被覆で、gの普遍降下性を列、F10を行へ渡して両軸を比較する。gやq≫gに平坦性を仮定せず、Γ(B)への平坦性も用いない。
+- D07は同じ反復pullbackの標準同型でF11を各Noether試験基底に適用し、アフィン始域のΓとの既存の同値で元の任意の有限アフィン被覆へ戻す。公開署名の変更はない。実際の依存はF11・D02（および既存のアフィンΓの比較）で、D06をD07に依存させる循環はない。
+- 累計23,632行（新規308モジュール23,250行、既存追加25行、入口357行）。所有宣言累計2,512件、既存15件は別。残り6署名の素の合計203〜406行へ係数2、登録等の予備100〜250行を加えた完成見込み24,138〜24,694行。28,000行以内。
+- 一覧：済み1／全体3（うち追加0）。内部署名：済み83／89（G4・G5）、追加0。残りはI10〜I13のNoether閉像帰納とRydh細分の消去、E16・E18の模型のfiltered移送。一般の固有・v降下はまだ未完成。
+
+- F10 `SerrePositivity.AlgebraicGeometry.fppfComparison_baseChange_descent`：元の相対アフィンfppf射の合成の各正次数の底変換に、同じ細分の消去で普遍Čech降下性を供給する（3fb97ec24）。
+- F11 `SerrePositivity.AlgebraicGeometry.affine_fppf_composite_tupleTotal_acyclic`：Noetherアフィン基底上の固有全射の普遍降下性から、相対アフィンfppfとの合成の単位被覆の元のタプルtotalの完全性を得る（4532c6a86）。
+- D07 `SerrePositivity.AlgebraicGeometry.perfectCechUniversalDescent_affine_fppf_comp`：相対アフィンfppfと同じ固有全射の合成の普遍Čech降下性を、元の全ての試験基底・被覆で得る（d23de07cc）。
