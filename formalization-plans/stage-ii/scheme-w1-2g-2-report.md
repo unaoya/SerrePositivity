@@ -3344,3 +3344,13 @@ main `6aa6d7152` の指示書末尾を `git show` で読み、今回のユーザ
 - C08 `SerrePositivity.AlgebraicGeometry.complexValuedAugmentedDouble_columnIso`：固定列のtotalは元の列の増大totalと同型である。
 - C09 `SerrePositivity.AlgebraicGeometry.complexValuedAugmentedDouble_columnZeroProjection`：三重totalから元の零次列の増大totalへの射影を作る。
 - C10 `SerrePositivity.AlgebraicGeometry.complexValuedAugmentedDouble_columnZeroProjection_quasiIso`：正の各列の増大totalが完全なら同じ零次列射影は擬同型である。
+
+## 2026-11-17：複体値の二重Čechの二方向の交換と軸比較（07b1cac59）
+
+- C07・C11の同じ型・仮定で実装。新規124行＋入口2行＝126行、所有17宣言。原稿・本体の同一バイト、対象ビルド5,382ジョブと直接importer、別の共有鍵での所有監査が成功。標準三公理以外0。
+- C07は各次数で既存mapAugmentedCochainIsoを使い、増大次数0では元の写像を、正次数では評価の加法準同型による有限和と整数倍の保存を照合した。既存の符号付きtotalFlipIsoを係数複体で適用する。C11はC04・C07と既存の零次列の擬同型を合成し、各次数のexactAtを移送する。
+- 累計20,991行（新規283モジュール20,659行、既存追加25行、入口307行）。所有宣言累計2,345件、既存15件は別。残り35署名の素の見込み1,281〜2,596行、係数2で2,562〜5,192行。完成見込み23,553〜26,183行、28,000行以内。
+- 一覧：済み1／全体3（うち追加0）。内部署名：済み54／89（G4・G5）、追加0。C01〜C11の全11署名は完了。G4の相対fppfの照合とNoether閉像の帰納は未完成。現在F01・F02の原稿を検証中。共有鍵は--class impl --wait 3600、同じworktreeの待ちは一つ。調整役の13時からの鍵の利用を確認済み。
+
+- C07 `SerrePositivity.AlgebraicGeometry.complexValuedAugmentedDouble_swapIso`：二つの増大方向の交換を元の三重totalの同型にする。
+- C11 `SerrePositivity.AlgebraicGeometry.complexValuedDoubleCech_axes_acyclic_iff`：正次数の行と列の増大totalが完全なら、二つの零次軸の増大totalの完全性は同値。
