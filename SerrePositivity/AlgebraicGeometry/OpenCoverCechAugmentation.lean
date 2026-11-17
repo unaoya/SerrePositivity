@@ -15,8 +15,9 @@ set_option backward.isDefEq.respectTransparency false
 namespace SerrePositivity.AlgebraicGeometry
 open CategoryTheory TopologicalSpace Opposite
 open scoped BigOperators
-universe u v
-variable {X : Type u} [TopologicalSpace X] {R : Type v} [CommRing R]
+section Basic
+universe u v w
+variable {X : Type u} [TopologicalSpace X] {R : Type w} [CommRing R]
 variable (P : (Opens X)ᵒᵖ ⥤ ModuleCat.{v} R) {ι κ : Type} [LinearOrder ι] [LinearOrder κ]
 variable (U : ι → Opens X)
 
@@ -79,6 +80,27 @@ theorem openCoverCechAugmentation_squared :
   rw [← openCoverCechAugmentation_eq, ← LinearMap.comp_assoc,
     fullCechAugmentedDifferential_squared, LinearMap.zero_comp]
 
+variable (V : κ → Opens X) (ρ : κ → ι) (hρ : ∀ i, V i ≤ U (ρ i))
+
+/-- 細分の写像は、共通の大域切断からの増大写像を保つ。 -/
+theorem openCoverCechRefinement_augmentation :
+    (openCoverCechRefinementCochains P U V ρ hρ 1).comp
+      (openCoverCechAugmentation P U) = openCoverCechAugmentation P V := by
+  apply LinearMap.ext
+  intro x
+  funext t
+  change (P.map _ ≫ P.map _).hom x = (P.map _).hom x
+  rw [← P.map_comp]
+  congr 2
+
+end Basic
+
+section Acyclic
+universe u v
+variable {X : Type u} [TopologicalSpace X] {R : Type v} [CommRing R]
+variable {ι : Type} [LinearOrder ι]
+variable (P : (Opens X)ᵒᵖ ⥤ ModuleCat.{v} R) (U : ι → Opens X)
+
 /-- 増大 Čech が完全なら、大域切断からの対角の制限は単射。 -/
 theorem openCoverCechAugmentation_injective (h : OpenCoverCechAcyclic P U) :
     Function.Injective (openCoverCechAugmentation P U) := by
@@ -92,17 +114,6 @@ theorem openCoverCechAugmentation_exact (h : OpenCoverCechAcyclic P U) :
   rw [← openCoverCechAugmentation_eq]
   exact (openCoverCechZeroEquiv P U).symm.surjective.comp_exact_iff_exact.mpr (h.exact 0)
 
-variable (V : κ → Opens X) (ρ : κ → ι) (hρ : ∀ i, V i ≤ U (ρ i))
-
-/-- 細分の写像は、共通の大域切断からの増大写像を保つ。 -/
-theorem openCoverCechRefinement_augmentation :
-    (openCoverCechRefinementCochains P U V ρ hρ 1).comp
-      (openCoverCechAugmentation P U) = openCoverCechAugmentation P V := by
-  apply LinearMap.ext
-  intro x
-  funext t
-  change (P.map _ ≫ P.map _).hom x = (P.map _).hom x
-  rw [← P.map_comp]
-  congr 2
+end Acyclic
 
 end SerrePositivity.AlgebraicGeometry

@@ -1,0 +1,400 @@
+{
+  "main_head": "02c77c041e8565d3263d208536788f544b021177",
+  "actual_merge": false,
+  "mapped_modules": 70,
+  "destination_modules": 78,
+  "destinations": [
+    {
+      "module": "SerrePositivity.BhattScholze.Almost.IntegralClosureCompletion",
+      "path": "SerrePositivity/BhattScholze/Almost/IntegralClosureCompletion.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Andre.Envelope.DivisionResidue",
+      "path": "SerrePositivity/BhattScholze/Andre/Envelope/DivisionResidue.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Delta.Division.AdjoinResidue",
+      "path": "SerrePositivity/BhattScholze/Delta/Division/AdjoinResidue.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Perfectoidization.Construction.RootAdjunction",
+      "path": "SerrePositivity/BhattScholze/Perfectoidization/Construction/RootAdjunction.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Perfectoidization.Interface.CAlg.Comparison",
+      "path": "SerrePositivity/BhattScholze/Perfectoidization/Interface/CAlg/Comparison.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Perfectoidization.Interface.CAlg.Definition",
+      "path": "SerrePositivity/BhattScholze/Perfectoidization/Interface/CAlg/Definition.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Perfectoidization.Interface.CAlg.DerivedCorollary",
+      "path": "SerrePositivity/BhattScholze/Perfectoidization/Interface/CAlg/DerivedCorollary.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Perfectoidization.Interface.Derived",
+      "path": "SerrePositivity/BhattScholze/Perfectoidization/Interface/Derived.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Perfectoidization.Interface.Excision",
+      "path": "SerrePositivity/BhattScholze/Perfectoidization/Interface/Excision.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Perfectoidization.Interface.InitialBridge",
+      "path": "SerrePositivity/BhattScholze/Perfectoidization/Interface/InitialBridge.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Perfectoidization.Interface.IntegralExistence",
+      "path": "SerrePositivity/BhattScholze/Perfectoidization/Interface/IntegralExistence.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Perfectoidization.Interface.TheoryInterface",
+      "path": "SerrePositivity/BhattScholze/Perfectoidization/Interface/TheoryInterface.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Perfectoidization.SupportedQuotient",
+      "path": "SerrePositivity/BhattScholze/Perfectoidization/SupportedQuotient.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Prism.Perfectoid.FiniteProduct",
+      "path": "SerrePositivity/BhattScholze/Prism/Perfectoid/FiniteProduct.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.Discrete.DiscreteDelta",
+      "path": "SerrePositivity/BhattScholze/Semiperfectoid/Discrete/DiscreteDelta.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.Discrete.DiscretePrism",
+      "path": "SerrePositivity/BhattScholze/Semiperfectoid/Discrete/DiscretePrism.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.Discrete.PrismRetract",
+      "path": "SerrePositivity/BhattScholze/Semiperfectoid/Discrete/PrismRetract.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.Lci.CompletedTensorFaithful",
+      "path": "SerrePositivity/BhattScholze/Semiperfectoid/Lci/CompletedTensorFaithful.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.Lci.CompletedTensorFlat",
+      "path": "SerrePositivity/BhattScholze/Semiperfectoid/Lci/CompletedTensorFlat.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.Lci.CompletedTensorRelationFaithful",
+      "path": "SerrePositivity/BhattScholze/Semiperfectoid/Lci/CompletedTensorRelationFaithful.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.Lci.CompletedTensorRelationResidue",
+      "path": "SerrePositivity/BhattScholze/Semiperfectoid/Lci/CompletedTensorRelationResidue.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.Lci.PDCompletionPrism",
+      "path": "SerrePositivity/BhattScholze/Semiperfectoid/Lci/PDCompletionPrism.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.Lci.PerfectEnvelopeInitial",
+      "path": "SerrePositivity/BhattScholze/Semiperfectoid/Lci/PerfectEnvelopeInitial.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.Lci.PrismRelationQuotient",
+      "path": "SerrePositivity/BhattScholze/Semiperfectoid/Lci/PrismRelationQuotient.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.Lci.RawVariableEnvelope",
+      "path": "SerrePositivity/BhattScholze/Semiperfectoid/Lci/RawVariableEnvelope.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.Lci.RawVariableEnvelopeFaithful",
+      "path": "SerrePositivity/BhattScholze/Semiperfectoid/Lci/RawVariableEnvelopeFaithful.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.Perfection.CharacteristicP",
+      "path": "SerrePositivity/BhattScholze/Semiperfectoid/Perfection/CharacteristicP.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.Perfection.Cor73PrismComparison",
+      "path": "SerrePositivity/BhattScholze/Semiperfectoid/Perfection/Cor73PrismComparison.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.Perfection.InitialPrismPerfection",
+      "path": "SerrePositivity/BhattScholze/Semiperfectoid/Perfection/InitialPrismPerfection.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.Perfection.PerfectPrismDivision",
+      "path": "SerrePositivity/BhattScholze/Semiperfectoid/Perfection/PerfectPrismDivision.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.Perfection.PerfectPrismDivisionComparison",
+      "path": "SerrePositivity/BhattScholze/Semiperfectoid/Perfection/PerfectPrismDivisionComparison.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.Perfection.Perfectoidization",
+      "path": "SerrePositivity/BhattScholze/Semiperfectoid/Perfection/Perfectoidization.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.Perfection.Product",
+      "path": "SerrePositivity/BhattScholze/Semiperfectoid/Perfection/Product.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.Perfection.SurjectiveQuotientPerfectoidization",
+      "path": "SerrePositivity/BhattScholze/Semiperfectoid/Perfection/SurjectiveQuotientPerfectoidization.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.AinfClassicalMaps",
+      "path": "SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/AinfClassicalMaps.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.FiniteEnvelopes.FiniteEnvelopeCompletion",
+      "path": "SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/FiniteEnvelopes/FiniteEnvelopeCompletion.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.FiniteEnvelopes.FiniteEnvelopeDiagram",
+      "path": "SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/FiniteEnvelopes/FiniteEnvelopeDiagram.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.FiniteEnvelopes.FiniteEnvelopeRawColimit",
+      "path": "SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/FiniteEnvelopes/FiniteEnvelopeRawColimit.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.PerfectoidRelationEnvelope",
+      "path": "SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/PerfectoidRelationEnvelope.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.PerfectoidRelationEnvelopeFaithful",
+      "path": "SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/PerfectoidRelationEnvelopeFaithful.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.PrismInitialCompletion",
+      "path": "SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/PrismInitialCompletion.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.PrismInitialTransport",
+      "path": "SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/PrismInitialTransport.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootFamilies.PowerRootPolynomial",
+      "path": "SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/RootFamilies/PowerRootPolynomial.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootFamilyBase",
+      "path": "SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/RootFamilyBase.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootFamilyFractionBasis",
+      "path": "SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/RootFamilyFractionBasis.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootFamilyPerfectoid",
+      "path": "SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/RootFamilyPerfectoid.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootFamilyReindex",
+      "path": "SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/RootFamilyReindex.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootFamilySparseBasis",
+      "path": "SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/RootFamilySparseBasis.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationAinfEnvelope",
+      "path": "SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/RootRelationAinfEnvelope.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationBounded",
+      "path": "SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/RootRelationBounded.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationCompletedInitial",
+      "path": "SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/RootRelationCompletedInitial.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationCompletedSurjective",
+      "path": "SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/RootRelationCompletedSurjective.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationCompletion",
+      "path": "SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/RootRelationCompletion.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationCoordinates",
+      "path": "SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/RootRelationCoordinates.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationEnvelope",
+      "path": "SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/RootRelationEnvelope.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationEnvelopeFaithful",
+      "path": "SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/RootRelationEnvelopeFaithful.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationFiniteAmbient",
+      "path": "SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/RootRelationFiniteAmbient.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationFiniteEnvelopeDiagram",
+      "path": "SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/RootRelationFiniteEnvelopeDiagram.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationLift",
+      "path": "SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/RootRelationLift.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationLiftInitial",
+      "path": "SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/RootRelationLiftInitial.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationPerfection",
+      "path": "SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/RootRelationPerfection.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationPolynomial",
+      "path": "SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/RootRelationPolynomial.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationRawBasis",
+      "path": "SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/RootRelationRawBasis.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationRawRegular",
+      "path": "SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/RootRelationRawRegular.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.Quasiregular.RootRelationSubsetRaw",
+      "path": "SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/RootRelationSubsetRaw.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.AbsolutelyIntegrallyClosedQuotient",
+      "path": "SerrePositivity/BhattScholze/Semiperfectoid/Surjectivity/AbsolutelyIntegrallyClosedQuotient.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.CompatibleRoot",
+      "path": "SerrePositivity/BhattScholze/Semiperfectoid/Surjectivity/CompatibleRoot.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.CompatibleRootPerfectoid",
+      "path": "SerrePositivity/BhattScholze/Semiperfectoid/Surjectivity/CompatibleRootPerfectoid.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.RootEnvelope.PerfectPrism",
+      "path": "SerrePositivity/BhattScholze/Semiperfectoid/Surjectivity/RootEnvelope/PerfectPrism.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.RootEnvelope.RawCompletion",
+      "path": "SerrePositivity/BhattScholze/Semiperfectoid/Surjectivity/RootEnvelope/RawCompletion.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.RootEnvelope.Source",
+      "path": "SerrePositivity/BhattScholze/Semiperfectoid/Surjectivity/RootEnvelope/Source.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.Surjectivity",
+      "path": "SerrePositivity/BhattScholze/Semiperfectoid/Surjectivity/Surjectivity.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.CommutativeAlgebra.IntegralApproximation.FilteredAlgebra",
+      "path": "SerrePositivity/CommutativeAlgebra/IntegralApproximation/FilteredAlgebra.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.CommutativeAlgebra.Reduced.PowerAnnihilator",
+      "path": "SerrePositivity/CommutativeAlgebra/Reduced/PowerAnnihilator.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.IteratedPDH0",
+      "path": "SerrePositivity/HomologicalAlgebra/DerivedCompletion/IteratedPDH0.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingCategories",
+      "path": "SerrePositivity/HomologicalAlgebra/DerivedCompletion/RingCategories.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.RingInterface",
+      "path": "SerrePositivity/HomologicalAlgebra/DerivedCompletion/RingInterface.lean",
+      "exists_as_blob": true
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.InitialValueCone",
+      "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/Cofinality/InitialValueCone.lean",
+      "exists_as_blob": true
+    }
+  ],
+  "incoming_algebraic_geometry_paths": [],
+  "source_presence_only": true
+}
