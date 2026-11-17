@@ -8607,3 +8607,38 @@ P3-C1PN本体の残りは、元のνの指定Homとの照合。既存の全体�
 任意の同型へのすり替えや点ごとの像の一致の仮定はしない。
 
 一覧：済み 18／全体 39（うち追加 4、別停止点 2）。
+
+
+### P3-C1PN の反転区間の類（11-17夕、第三組）
+
+新規 `KanDiagramOppositeHomIntervalNatural.lean`（62物理行、引用も含め保守的に62数学行）。
+反転区間の定値頂点は、元の自然変換を反転した同じ通常の自然変換の実現の射の類と一致する。
+これはP3-C1PNの200行未満の評価法則の分割で、別の同型の存在を選んでいない。
+完全な型：
+
+```lean
+lemma kanDiagramOppositeHomInterval_natural_hom {I : Type u} [SmallCategory I]
+    (F G : KanDiagramObject I) (η : F.val ⋙ kanObjectForget ⟶ G.val ⋙ kanObjectForget) :
+    let τ : (F.val ⋙ kanObjectOpFunctor) ⋙ kanObjectForget ⟶
+        (G.val ⋙ kanObjectOpFunctor) ⋙ kanObjectForget := Functor.whiskerRight η SSet.opFunctor
+    Truncated.HomotopyCategory.homMk
+      (intervalMappingEdgeOfVertex ((kanDiagramOppositeHomInterval F G).app _
+        (ULift.up (SSet.const (strictDiagramMappingVertex η))))).toTruncated =
+      Truncated.HomotopyCategory.homMk (kanDiagramNaturalTransformationEdge
+        (F := ⟨F.val ⋙ kanObjectOpFunctor, trivial⟩)
+        (G := ⟨G.val ⋙ kanObjectOpFunctor, trivial⟩) τ).toTruncated
+```
+
+暗黙の二つの端点を明示するだけで、前の時間切れを通常の計算上限で解消した。
+対象ビルド成功、所有1宣言の小監査は標準三公理のみ。
+数学行数は23,714 → **23,776**。C1PNの新規の証明分割は累計181行。
+証拠目録：`evidence/inf-supply/c1pn-opposite-verified-1117/manifest.json`。
+
+接続の確認として、既存の `leftStraightening_baseChange_simplex_normalized`
+（`LeftStraighteningSimplexPastingInputs.lean:36`）が、元のβの初頂点制限を
+`leftClassificationSimplexIso` と `simplexSectionBaseChangeCoefficient` の共役へ既に同定している。
+この宣言は作り直さず、P3-B1・P3-B2eと実現値の元のHomの評価を組み合わせる。
+区間の右辺の計算は今回の法則で閉じたが、νそのもののHomの照合はまだ未完。
+残りを証明済みとは報告しない。S7・R2・R3は停止のまま。
+
+一覧：済み 18／全体 39（うち追加 4、別停止点 2）。
