@@ -1,9 +1,9 @@
 # 現在地
 
-- 段：**NB-W1 完了、Kerodon 第1章の本文原稿の試しをコミットする停止点**。
-- 作業場所：`/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-cited`（最初の pwd で一致を確認）。枝：`research/cited-coverage`。
-- 最新コミット：本報告を含む停止コミット `HEAD`（件名 `docs: trial Kerodon chapter 1 note fragments`）。NB-W1 の基準 HEAD は `02fd6ba06408721b5fa593a56ea5eebcfa31f2ae`。指定の `git merge main` は Already up to date（CC-W2 取り込み済み）。停止コミットのハッシュは最終応答に記録する。
-- 残り：調整役による原稿配置・章外の扱い・Verso 変換の設計判断。生成器は未変更。今回の原稿と所見をコミットして停止し、次段の実装には進まない。
+- 段：**AR-W1 の紙を納品する停止点。85群の所見を記載し、うち67群は判断できないと明示**。
+- 作業場所：`/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-cited`。枝：`research/cited-coverage`。pwd 一致を確認し、指定の `git merge main` を実施した。
+- 基準HEAD：`7c2528f6594b63074e7955f2f0c57db15ace4e2e`（main 取り込み後）。群分けの途中コミット：`258ca0023`。最終コミットは本報告を含む `HEAD`（件名 `docs: review archived claims and restoration candidates`）。ハッシュは最終応答に記録する。
+- 次：調整役とユーザーによる復帰・材料保存・削除の判断。推奨を実行する Lean の移設や削除には進まず、全部の紙と証拠目録をコミットして停止する。
 
 ## CC-W1 納品（停止コミット `156ac3c32`）
 
@@ -73,3 +73,46 @@ issues.md には表・囲み（env）・cases等の数式・リンク・来歴�
 88ブロックの表示テキストを転記後と照合し、本文中の295数式片（区切り・内部TeX）を逐一比較した。88個のブロックIDは重複・欠落なし。README の全行と原稿内リンクの実在アンカーを照合した。入力HTML5ファイル・対応表3ファイル・生成器の計9ファイルは基準HEADと同じハッシュで、変更していない。Lean の変更・実行、Verso・Lean のビルド、ブラウザーでの描画確認はしていない。
 
 証拠は `~/serre-evidence/cited/notes-kerodon1/`。段落対応・元リンクと移設先・入力と出力のハッシュ・検査結果・段限りの転記/検査スクリプトを保存した。コミットするのは `evidence/cited/notes-kerodon1/manifest.json` の目録だけ。目録の commit は基準HEAD `02fd6ba06408721b5fa593a56ea5eebcfa31f2ae`。今回の原稿は生成器に接続せず、このコミットで停止する。
+
+## AR-W1
+
+### 途中コミット：群分けと主要宣言
+
+Archive 全体を83群に分け、`research/archive-review/groups.csv` と `filtered-exchange-inventory.md` に主要宣言の一覧を置いた。FilteredExchange は68群・1,726本・96,551行。全体では1,871本・109,913行。大きい CoherentColimit と CoherentCospan は細分し、小さい接頭辞は名前空間・import と共通の操作を見てまとめた。
+
+これは途中版で、主張・文献・対応・目標・推奨はまだ空欄。各群3〜9個の主要宣言を抽出し、その型と周囲の変数を次に読む。抽出の全結果は git 外 `~/serre-evidence/cited/archive-review/`、目録は `evidence/cited/archive-review/manifest.json`。このコミット後も停止せず、照合を続ける。Archive・本体・対応表・Lean は未変更、ビルドしていない。
+
+### 最終の紙と集計
+
+`research/archive-review/` の groups.csv（指定12列）・FilteredExchange の群別主要宣言一覧・README・kerodon-rows.md を完成させた。全1,871本・109,913行を85群へ一度ずつ割り当て、各群3〜7個、計420個の主要宣言または匿名 example の型・文脈・定義の右辺を読んで主張を書いた。最初の68群から復帰候補の小群を分離し、FilteredExchange は最終70群・1,726本・96,551行。
+
+| 推奨 | 群 | 本数 | 行数 |
+| --- | ---: | ---: | ---: |
+| 戻す | 2 | 5 | 320 |
+| 材料として残す | 10 | 161 | 13,171 |
+| 消してよい | 6 | 69 | 5,780 |
+| 判断できない | 67 | 1,636 | 90,642 |
+
+大半について削除可能と結論したものではない。主要型を読めても、旧モデルの比較式を現 API に完全に置き換えられるか、P⁰・BS・K の主張の証明に独自の部品として要るかは確定できず、その範囲を判断できないとした。全文の全証明を逐行査読したとは報告しない。
+
+### 数学の中身からの推奨
+
+復帰候補は FilteredDiagonalCriterion・FilteredKanContractibility・WeakContractibilityNonempty の3本と、ConeMappingRestriction・SliceRestrictionRightFibration の2本。本体の必要方向だけに対して、filtered 性の coslice 弱可縮性/対角 cofinality による逆判定がある。後2本は slice/right fibration 側を補い、本体の coslice/left 側と同一視していない。対応先と復帰先の案は groups.csv と README に記載。P⁰ 閉包の Kerodon 9.1.1.18・9.1.5.7・4.3.6.12 に根拠がある。Kan 同値9.1.1.20は閉包外だが既存表の own の根拠を是正する対象。
+
+旧余極限経路には座標補助だけでなく、filtered な底の有限族を同じ fiber へ移す、境界を固定する、元の余極限頂点の cospan 極限錐を輸送する数学がある。4群94本は Kerodon 9.1.5.7 の証明材料として残す案。ただし一般の有限極限交換の本体は既に `smallSpaceFilteredColimit_map_isLimit_finite` と `coherentFilteredLimitExchangeShape_finite` にあり、1,726本を一般交換のため一括復帰する根拠にはしていない。
+
+DG の68本は匿名 example 261個、名前付き17個の標数2/特定次数・成分への検査を含む。名前付き17個についても本体の一般定理の型・適用を並べて確認した。5群は数学を失わずに消してよい案だが、検査資産としての価値は別。WIP RelativeFiller 1本も、本体の一般の相対ホモトピーを pushout-product に適用する wrapper と確認した。合計69本を数学的な削除可の候補とした。
+
+DescentConditional 67本はKの地図 maps/paper/items.csv の required な3.2・3.3の計算材料として残す案。ModelCategory・cofibrant generation・Quillen 条件や既存の Čech 降下/転送階数式を仮定した型であり、係数 L 自身への適用の不足を解消してはいない。既存の型クラス合成失敗の記録を、仮定の論理的矛盾と取り違えていない。BS の個別の必須項目との対応は確定しなかった。
+
+### Kerodon 行・sorry・import
+
+Archive のパスを宣言欄に含む4行（4.3.6.12、9.1.1.18、9.1.1.20、9.1.5.7）と、理由欄だけの9.1.8.11を記録。9.1.1.20は型の主張は原典と一致するが Archive だけの宣言を own に数えられない。本体の filtered⇒弱可縮⇒可縮Kan という一方向を根拠に partial とする案を示した。他の行は partial 維持。原典を Tag で照合し、02PJ の単独取得タイムアウトは同じ命題の小節02P8で補った。対応表は未変更。
+
+コメント・文字列を除く直接 sorry と新規 axiom 宣言の検出は全群0。ただし依存先までの kernel 公理検査はしていない。各群の本体/Mathlib の現名あり・改名候補・所在未確定をユニークなモジュール数で記録した。改名候補は末尾の名前だけの一致で、互換性確定とはしない。現本体33,542ファイルには Archive の直接 import が見つからなかったが、DGκと条件付き降下にはそれぞれ専用の監査スクリプトから import がある。
+
+### 最終検証と証拠
+
+85群の列・全1,871本の一意な割当て・行数・420個の主要宣言のソース位置・本体の比較宣言の位置・原典番号/P⁰閉包の該当番号・5つの対応表参照行を検査した。Archive 全ソースのハッシュと基準HEADからの変更なしを確認し、本体・exposition・blueprint・対応表・lake設定・toolchain も変更していない。Lean の変更・実行・ビルド・kernel 確認なし。
+
+証拠は `~/serre-evidence/cited/archive-review/`。途中時点の5ファイルを上書きせず保持し、最終の抽出・型比較・import・DG特殊化比較・原典取得・検証は `final/` に追加した。コミットするのは `evidence/cited/archive-review/manifest.json` の目録だけ。目録の commit は基準HEAD `7c2528f6594b63074e7955f2f0c57db15ace4e2e`。この最終の紙をコミットして停止する。
