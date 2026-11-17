@@ -3,7 +3,7 @@
   "source_head": "7e9743b30",
   "scope": "今回の再開範囲：元の残り1〜17項を署名へ展開。S2〜S6の過去の検収済み出力は再採番しない。",
   "count_rule": "署名のidごとに数える。200行超の照合・合成則は独立署名。小さい証明分割の法則は親署名のnoteに記録する。旧5/8はこの台帳の分母には用いない。",
-  "verified_lean_lines": 24004,
+  "verified_lean_lines": 24082,
   "final_cap": 29000,
   "checkpoint_report_lines": 28500,
   "factor": 2,
@@ -1626,7 +1626,8 @@
         "P3-B1",
         "P3-B2e",
         "P3-C0",
-        "P3-C1PNV"
+        "P3-C1PNV",
+        "P3-C1PNH"
       ],
       "existing": [
         {
@@ -1852,6 +1853,60 @@
         "heartbeat_limit": "unchanged; one command per declaration",
         "source_sha256": {
           "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningFirstVertexTransportValue.lean": "f1b4d0bce2bbaad2058f9c7d1eb71907e8cdbd8a95f6767e04fbea4f33e77b80"
+        }
+      }
+    },
+    {
+      "id": "P3-C1PNH",
+      "name": "kanDiagramNaturalTransformationHom_precomp",
+      "full_type": "∀ {I J : Type u} [SmallCategory I] [SmallCategory J] (H : I ⥤ J)\n    {F G : KanDiagramObject J} (η : F.val ⋙ kanObjectForget ⟶ G.val ⋙ kanObjectForget),\n    kanFunctorHomCongr (kanDiagramCoherentNerve_precomp H F.val)\n      (kanDiagramCoherentNerve_precomp H G.val)\n      (precomposeFunctorHom ((SSet.uliftFunctor.{u+1,u}).map (nerveMap H))\n        (Truncated.HomotopyCategory.homMk (kanDiagramNaturalTransformationEdge η).toTruncated)) =\n      Truncated.HomotopyCategory.homMk (kanDiagramNaturalTransformationEdge\n        (F := ⟨H ⋙ F.val, trivial⟩) (G := ⟨H ⋙ G.val, trivial⟩)\n        (Functor.whiskerLeft H η)).toTruncated",
+      "dependencies": [],
+      "existing": [
+        {
+          "name": "kanDiagramNaturalTransformationHom_eq_normalized",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/KanDiagramNaturalTransformationComposition.lean",
+          "line": 31
+        },
+        {
+          "name": "KanEnrichedDiagram.realization_reindex",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/KanEnrichedDiagram.lean",
+          "line": 195
+        },
+        {
+          "name": "KanEnrichedDiagram.realization_homMk_of_homEquiv",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/KanEnrichedDiagramOrdinaryAction.lean",
+          "line": 32
+        }
+      ],
+      "bare_lines": [
+        60,
+        100
+      ],
+      "corrected_lines": [
+        120,
+        200
+      ],
+      "status": "verified",
+      "placement": "SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/KanDiagramNaturalTransformationPrecomposition.lean",
+      "literature": "HTT §1.1.5、Kerodon §2.4.3のcoherent実現の指定添字制限の法則。通常の小さい添字圏に特殊化。",
+      "note": "11-17夕の照合・合成則の追加の事前承認を適用。新しい数学ではなく同じ実現構成の制限則。 対象ビルド・所有3宣言の小監査成功、標準三公理のみ。実測78行。",
+      "additional_mathematics": true,
+      "choose_replacements": [],
+      "new_assumptions": [],
+      "actual_lines_conservative": 78,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 3,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/KanDiagramNaturalTransformationPrecomposition.lean": "9c9a327176e9b89339e64999702cffc3d563de606439d2016a71680ace2b183c"
         }
       }
     }

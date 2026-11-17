@@ -8795,3 +8795,56 @@ normalize_of_heq : ∀ {L : Type*} [Category* L] {a b a' b' : L}
 旧R2の未追跡4本はそのまま。S7・R2・R3は再開しない。
 
 一覧：済み 19／全体 40（うち追加 5、別停止点 2）。
+
+
+### P3-C1PNHの登録（11-17夕、指定実現の添字制限）
+
+事前承認に従い、既存構成の法則 `kanDiagramNaturalTransformationHom_precomp` を独立に登録する。
+元の自然変換の全図式の射を、同じ指定添字関手で制限した射と比較する。新しい数学・仮定・chooseの置き換えはなし。
+P3-C1PNが依存する。再利用できる一般の計算法則なので独立した署名とし、小さい内部の合同則だけは証明分割として扱う。
+
+```lean
+∀ {I J : Type u} [SmallCategory I] [SmallCategory J] (H : I ⥤ J)
+    {F G : KanDiagramObject J} (η : F.val ⋙ kanObjectForget ⟶ G.val ⋙ kanObjectForget),
+    kanFunctorHomCongr (kanDiagramCoherentNerve_precomp H F.val)
+      (kanDiagramCoherentNerve_precomp H G.val)
+      (precomposeFunctorHom ((SSet.uliftFunctor.{u+1,u}).map (nerveMap H))
+        (Truncated.HomotopyCategory.homMk (kanDiagramNaturalTransformationEdge η).toTruncated)) =
+      Truncated.HomotopyCategory.homMk (kanDiagramNaturalTransformationEdge
+        (F := ⟨H ⋙ F.val, trivial⟩) (G := ⟨H ⋙ G.val, trivial⟩)
+        (Functor.whiskerLeft H η)).toTruncated
+```
+
+既存宣言：`kanDiagramNaturalTransformationHom_eq_normalized` @
+`SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/KanDiagramNaturalTransformationComposition.lean:31`、
+`KanEnrichedDiagram.realization_reindex` @同ディレクトリ`KanEnrichedDiagram.lean:195`、
+`KanEnrichedDiagram.realization_homMk_of_homEquiv` @同ディレクトリ`KanEnrichedDiagramOrdinaryAction.lean:32`。
+原典：HTT §1.1.5、Kerodon §2.4.3の構成の法則の特殊化（通常の小さい添字圏）。
+素60〜100行、補正120〜200行。現在24,004＋200＝24,204行で着手条件内。mainの既存本文は変えない。
+
+一覧：済み 19／全体 41（うち追加 6、別停止点 2）。
+
+
+### P3-C1PNHの完成（11-17夕）
+
+指定自然変換の全図式の射の添字制限則を証明した。対象ビルド・所有3宣言の小監査は成功し、標準三公理のみ。
+素60〜100行・補正120〜200行に対し、実測78行（引用・見出しを含む物理行を全て保守的に計上）。
+累計24,004 → **24,082行**。P3-C1PNの既計上238行とは別に一度だけ数える。
+文献属性はHTT §1.1.5のspecial。主張・仮定・既存本文・計算上限の変更なし。
+依存する端点証明のため関手の等式を直接rwできない箇所は、同じ関手と端点を保つ合同則へ局所化した。
+
+内部の短い法則の型（署名数に含めない）：
+
+```lean
+normalized_map_congr : ∀ {X Y : SSet.{u}} {f g : X ⟶ Y}
+    (h : f = g) {x y : X _⦋0⦌} {x' y' : Y _⦋0⦌}
+    (hf : x' = f.app _ x) (hf' : y' = f.app _ y)
+    (hg : x' = g.app _ x) (hg' : y' = g.app _ y)
+    (a : (HomotopyCategory.mk x : hoFunctor.obj X) ⟶ HomotopyCategory.mk y),
+    normalizedVertexHomMap f hf hf' a = normalizedVertexHomMap g hg hg' a
+```
+
+証拠：`evidence/inf-supply/c1pn-native-precomp-1117/manifest.json`。
+次のP3-C1PNの残り補正300を足して24,382行で、着手条件内。
+
+一覧：済み 20／全体 41（うち追加 6、別停止点 2）。

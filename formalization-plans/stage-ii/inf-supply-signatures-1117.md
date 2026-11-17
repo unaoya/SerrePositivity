@@ -5,8 +5,8 @@
 再採番せず、ここにある各署名IDを一つずつ数える。旧「5／8」は以後この台帳の進捗に使わない。
 小さい既存構成の法則・証明の分割は親署名内に記録するが、上端200行超は独立署名。
 
-署名40本＝検証済み19本＋未完19本＋別停止点へ切り離す2本。
-一覧：済み 19／全体 40（うち追加 5、別停止点 2）。
+署名41本＝検証済み20本＋未完19本＋別停止点へ切り離す2本。
+一覧：済み 20／全体 41（うち追加 6、別停止点 2）。
 追加1は11-17夕承認のP3-C1P。着手判定22,975＋800＝23,775行。以前の35署名の表は履歴として保持。
 
 ## 最新の検証記録（P3-B1）
@@ -1268,3 +1268,23 @@ P3-C1PNは型と依存を保持して承認済み登録。R09-Cech・R15-Unitは
 
 
 P3-C1PNV：対象ビルド・9宣言の小監査成功、標準三公理のみ。実測171行、累計24,004行。
+
+
+## P3-C1PNH（11-17夕、構成の制限則）
+
+```lean
+∀ {I J : Type u} [SmallCategory I] [SmallCategory J] (H : I ⥤ J)
+    {F G : KanDiagramObject J} (η : F.val ⋙ kanObjectForget ⟶ G.val ⋙ kanObjectForget),
+    kanFunctorHomCongr (kanDiagramCoherentNerve_precomp H F.val)
+      (kanDiagramCoherentNerve_precomp H G.val)
+      (precomposeFunctorHom ((SSet.uliftFunctor.{u+1,u}).map (nerveMap H))
+        (Truncated.HomotopyCategory.homMk (kanDiagramNaturalTransformationEdge η).toTruncated)) =
+      Truncated.HomotopyCategory.homMk (kanDiagramNaturalTransformationEdge
+        (F := ⟨H ⋙ F.val, trivial⟩) (G := ⟨H ⋙ G.val, trivial⟩)
+        (Functor.whiskerLeft H η)).toTruncated
+```
+
+依存：なし。素60〜100行、補正120〜200行。既存参照・原典はJSONと報告。
+
+
+P3-C1PNH：実測78行、対象ビルドと3宣言の小監査成功（標準三公理のみ）。累計24,082行。
