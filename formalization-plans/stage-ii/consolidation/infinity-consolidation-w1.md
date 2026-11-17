@@ -64,3 +64,9 @@ DifferentialGraded/（473 本。本体 164 本・約 13.6 万行、Checks/ 309 �
 
 IC-1 の段 0（紙）で、InfinityCategories の全ファイルを内容ごとに並べるのと同じ回に、**弱い存在命題から `Classical.choose` でデータを選んで作った定義**を全部列挙する（概数 23〜28 個。例：`exists_colimitCoconeFamily`・`exists_quasicategory_localization`・`trivialKanFibration_exists_section`・`exists_chosenColimitSection`・`presheafElementsYonedaDiagram_exists_colimitCone`・dg gluing の零対象・正規化の存在から選んだもの）。表の列：宣言名・ファイル・選ぶ存在命題・利用側が後で要る指定構成との両立（要る／要らない／不明。利用側を読んで判定）・直し方（同じ名前・型・仮定で、指定構成に沿う選び方に替える）・推移的な importer の数・他のレーンの枝が触るか。③-a が 5∞-1 のために出した列挙（`inf-supply-w1.md` 11-17 の追記）と重なる分は、その判定を写す。
 「要る」と判定したものは IC-W1 の移動と同じ再ビルドの夜にまとめて直す（事前承認の型は `inf-supply-w1.md` 11-17 朝の追記と同じ）。「要らない」はそのまま残す。
+
+## 8. IC-W1 に入れる費用の対策（`stage-ii/build-cost-plan.md`、ユーザー承認 11-17）
+
+- **A3**：∞ の監査（レーン時代の `scripts/audit_infinity_*.lean` など）を、移動と同じ回に**領域ごとの監査**（Kerodon の章・HA・Models）に統合する。形は `scripts/make_area_audits.py`：領域の全モジュールを一度 import し、宣言ごとに公理・sorry・native_decide を一回ずつ（訪問済みを共有）。各レーンの `#check` の目印は「宣言名の存在の一覧」（生成物）に、禁止 import の規則は `scripts/refactor/audit_imports.py`＋`layers.json` に移す。**A4**：`env.constants` 全体を舐めず、モジュールの定数表を使う。
+- **B1**：同じ章の小さい葉（中央値 70 行）を章のファイルにまとめる案を段 0 で出す（R8 の重複 275 群も同時に）。elaboration の drift に注意し、保存比較 v3b を通す。統合の単位と上限は段 0 で決めてから。
+- **B4**：root の外にある監査用の 2,794 本と未使用の 60 本（BR8）を、root の閉包に揃えるか消す。
