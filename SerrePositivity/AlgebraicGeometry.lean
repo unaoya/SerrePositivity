@@ -1990,3 +1990,5 @@ import SerrePositivity.AlgebraicGeometry.NoetherClosedPerfectCechStep
 import SerrePositivity.AlgebraicGeometry.ProperSurjectivePerfectCechUniversalDescent
 
 import SerrePositivity.AlgebraicGeometry.NoetherianAffineVCoverFrobeniusCechExact
+
+import SerrePositivity.AlgebraicGeometry.CoefficientVCoverFrobeniusCechExact
