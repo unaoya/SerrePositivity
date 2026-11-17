@@ -1677,7 +1677,7 @@
       "new_assumptions": [],
       "placement": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePointedPrism.lean",
       "additional_mathematics": true,
-      "note": "11-17夕のユーザー承認。報告の型と依存を保持。 11-17夕：元のKan値自然変換の実現Homの正規化式・合成則を新規58行に分割し対象ビルド・小監査済み。署名本体は未完。 区間評価2法則61行も対象ビルド・小監査済み。 反転区間の指定自然変換の類への特殊化62行も対象ビルド・小監査済み。 元のβの単体制限公式を再利用するν正規化57行も対象ビルド・小監査済み。累計証明分割243行。未列挙の成分分解の法則P3-C1PNVを紙で提案して停止。",
+      "note": "11-17夕のユーザー承認。報告の型と依存を保持。 11-17夕：元のKan値自然変換の実現Homの正規化式・合成則を新規58行に分割し対象ビルド・小監査済み。署名本体は未完。 区間評価2法則61行も対象ビルド・小監査済み。 反転区間の指定自然変換の類への特殊化62行も対象ビルド・小監査済み。 元のβの単体制限公式を再利用するν正規化57行も対象ビルド・小監査済み。累計証明分割238行。未列挙の成分分解の法則P3-C1PNVを紙で提案して停止。",
       "proof_support_verification": {
         "mathematical_lines_conservative": 58,
         "public_declarations": 2,
