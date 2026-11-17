@@ -1934,3 +1934,7 @@ import SerrePositivity.AlgebraicGeometry.CechTripleTotalDifferential
 import SerrePositivity.AlgebraicGeometry.ComplexValuedAugmentedDouble
 
 import SerrePositivity.AlgebraicGeometry.ComplexValuedDoubleCechSymmetry
+
+import SerrePositivity.AlgebraicGeometry.SectionAdaptedAffineCover
+
+import SerrePositivity.AlgebraicGeometry.SectionAffineChartRetraction
