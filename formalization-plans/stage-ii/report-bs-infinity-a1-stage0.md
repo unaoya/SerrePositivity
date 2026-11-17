@@ -9193,7 +9193,7 @@ HTT §3.3.2・Kerodon §5.6（Tag 028T）の指定構成の法則。元の制限
 
 依存：P3-C0・P3-B2b。素120〜220行、補正240〜440行。
 既存参照：
-- `pullbackStrictComparison_uncurry` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePointedPrism.lean:330
+- `pullbackStrictComparison_uncurry` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePointedPrism.lean:334
 - `leftStraighteningBaseChangePullbackData` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePullbackData.lean:27
 - `relativeFunctorBaseChangeForward_uncurry` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/RelativeFunctorBaseChange.lean:58
 - `relativeFunctorOverPre_uncurry` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/RelativeFunctorSquarePost.lean:68
@@ -9243,7 +9243,7 @@ HTT §3.3.2・Kerodon §5.6（Tag 028T）の指定構成の法則。指定pullba
 依存：P3-C1PNU・P3-C1PNL・P3-C1PNH・P3-C1PNC・P3-C1PNG。素180〜300行、補正360〜600行。
 既存参照：
 - `simplexUnderNativeBaseChange_square` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SimplexUnderNativeBaseChange.lean:78
-- `leftStraighteningBaseChange_native_pullback_square` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePointedPrism.lean:628
+- `leftStraighteningBaseChange_native_pullback_square` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePointedPrism.lean:632
 - `kanDiagramNaturalTransformationHom_comp` @ SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/KanDiagramNaturalTransformationComposition.lean:43
 - `kanDiagramNaturalTransformationHom_precomp` @ SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/KanDiagramNaturalTransformationPrecomposition.lean:47
 - `simplexSectionBaseChangeCoefficient_native_hom` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SimplexSectionNativeBaseChange.lean:125
@@ -9277,3 +9277,53 @@ heartbeats・maxRecDepthなどの計算上限、mainの既存本文、元の型�
 旧R2の未追跡4本は触っていない。署名50頂点の依存グラフは循環なし（Leanの型検査は済み署名のみ）。
 
 一覧：済み 28／全体 50（うち追加 15、別停止点 2）。
+
+
+### P3-C1PNR内の短い法則の証明分割（11-17夜）
+
+以下はいずれも200行未満で、元の実現の合成・前合成・同型相殺の法則。独立署名として数えずP3-C1PNRに含める。
+
+```lean
+private lemma nativeRectangleHom_comp {J : Type u} [SmallCategory J]
+    (F G K : KanDiagramObject J)
+    (η : F.val ⋙ kanObjectForget ⟶ G.val ⋙ kanObjectForget)
+    (θ : G.val ⋙ kanObjectForget ⟶ K.val ⋙ kanObjectForget) :
+    nativeRectangleHom F K (η ≫ θ) = nativeRectangleHom F G η ≫ nativeRectangleHom G K θ
+```
+
+```lean
+private lemma nativeRectangleHom_precomp {I J : Type u} [SmallCategory I] [SmallCategory J]
+    (H : I ⥤ J) (F G : KanDiagramObject J)
+    (η : F.val ⋙ kanObjectForget ⟶ G.val ⋙ kanObjectForget)
+    (e : FunctorIso (kanDiagramCoherentNerve F.val) (kanDiagramCoherentNerve G.val))
+    (he : e.hom = nativeRectangleHom F G η) :
+    (diagramIsoCongr (kanDiagramCoherentNerve_precomp H F.val)
+      (kanDiagramCoherentNerve_precomp H G.val)
+      (e.precomp ((SSet.uliftFunctor.{u+1,u}).map (nerveMap H)))).hom =
+      nativeRectangleHom ⟨H ⋙ F.val, trivial⟩ ⟨H ⋙ G.val, trivial⟩ (Functor.whiskerLeft H η)
+```
+
+```lean
+private lemma nativeRectangle_cancel.{v, w} {C : Type v} [Category.{w} C]
+    {a b c d e f g : C} (x : a ≅ b) (u : b ≅ c) (v : d ≅ c)
+    (s : a ≅ e) (t : f ≅ e) (z : e ≅ g) (w : c ⟶ g) (r : d ⟶ f)
+    (h₁ : x.hom ≫ u.hom ≫ w = s.hom ≫ z.hom)
+    (h₂ : v.hom ≫ w = r ≫ t.hom ≫ z.hom) :
+    (v ≪≫ u.symm ≪≫ x.symm ≪≫ s ≪≫ t.symm).hom = r
+```
+
+`nativeRectangleHom F G η` は既存の `kanDiagramNaturalTransformationEdge η` の `homMk` の略記で、新しい選択はない。
+一覧：済み 28／全体 50（うち追加 15、別停止点 2）。
+
+
+### P3-C1PNRの完成（11-17夜）
+
+上下の元の自然変換の長方形を全図式の射へ写し、同じ底変換の可逆な成分を相殺して、登録した反転前の共役の型を証明した。
+対象1モジュール・所有40宣言の小監査成功、標準三公理のみ。
+素180〜300行・補正360〜600行に対し実測**180行**（元の枝だけの新規ファイルへのimportと追記を含む）。
+累計25,173 → **25,353行**。既存の本体・型・仮定・choose・計算上限は変更していない。
+主な宣言はHTT §3.3.2 special属性つき、Kerodon Tag 028Tはdocstringで特殊化を記載。
+証拠：`evidence/inf-supply/c1pn-native-rectangle-1117/manifest.json`。
+次のP3-C1PNは補正上端720、25,353＋720＝26,073で着手条件内。
+
+一覧：済み 29／全体 50（うち追加 15、別停止点 2）。

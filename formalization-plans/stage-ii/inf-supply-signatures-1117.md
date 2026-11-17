@@ -5,8 +5,8 @@
 再採番せず、ここにある各署名IDを一つずつ数える。旧「5／8」は以後この台帳の進捗に使わない。
 小さい既存構成の法則・証明の分割は親署名内に記録するが、上端200行超は独立署名。
 
-署名50本＝検証済み28本＋未完20本＋別停止点へ切り離す2本。
-一覧：済み 28／全体 50（うち追加 15、別停止点 2）。
+署名50本＝検証済み29本＋未完19本＋別停止点へ切り離す2本。
+一覧：済み 29／全体 50（うち追加 15、別停止点 2）。
 追加1は11-17夕承認のP3-C1P。着手判定22,975＋800＝23,775行。以前の35署名の表は履歴として保持。
 
 ## 最新の検証記録（P3-B1）
@@ -1457,7 +1457,7 @@ HTT §3.3.2・Kerodon §5.6（Tag 028T）の指定構成の法則。元の制限
 
 依存：P3-C0・P3-B2b。素120〜220行、補正240〜440行。
 既存参照：
-- `pullbackStrictComparison_uncurry` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePointedPrism.lean:330
+- `pullbackStrictComparison_uncurry` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePointedPrism.lean:334
 - `leftStraighteningBaseChangePullbackData` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePullbackData.lean:27
 - `relativeFunctorBaseChangeForward_uncurry` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/RelativeFunctorBaseChange.lean:58
 - `relativeFunctorOverPre_uncurry` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/RelativeFunctorSquarePost.lean:68
@@ -1502,7 +1502,7 @@ HTT §3.3.2・Kerodon §5.6（Tag 028T）の指定構成の法則。指定pullba
 依存：P3-C1PNU・P3-C1PNL・P3-C1PNH・P3-C1PNC・P3-C1PNG。素180〜300行、補正360〜600行。
 既存参照：
 - `simplexUnderNativeBaseChange_square` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SimplexUnderNativeBaseChange.lean:78
-- `leftStraighteningBaseChange_native_pullback_square` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePointedPrism.lean:628
+- `leftStraighteningBaseChange_native_pullback_square` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePointedPrism.lean:632
 - `kanDiagramNaturalTransformationHom_comp` @ SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/KanDiagramNaturalTransformationComposition.lean:43
 - `kanDiagramNaturalTransformationHom_precomp` @ SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/KanDiagramNaturalTransformationPrecomposition.lean:47
 - `simplexSectionBaseChangeCoefficient_native_hom` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SimplexSectionNativeBaseChange.lean:125
@@ -1512,3 +1512,6 @@ HTT §3.3.2・Kerodon §5.6（Tag 028T）の指定構成の法則。上下の元
 
 
 P3-C1PNC・U・L：対象3モジュール・所有53宣言の小監査成功、標準三公理のみ。実測160＋119＋68＝347行、累計25,173行。
+
+
+P3-C1PNR：実測180行、対象1モジュール・所有40宣言の小監査成功。標準三公理のみ。累計25,353行。

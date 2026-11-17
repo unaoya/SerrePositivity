@@ -1,5 +1,9 @@
 module
 
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SimplexUnderNativeBaseChange
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanDiagramNaturalTransformationComposition
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanDiagramNaturalTransformationPrecomposition
+
 public meta import SerrePositivity.Util.Citation
 
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.StraighteningBaseChangeRestriction
@@ -688,5 +692,181 @@ private lemma leftStraighteningBaseChange_native_pullback_square :
   have hf : f.left = nerveMap (Under.post H) := rfl
   rw [hf]
   simpa only [Category.assoc] using hd.symm
+
+private def nativeRectangleHom {J : Type u} [SmallCategory J]
+    (F G : KanDiagramObject J) (η : F.val ⋙ kanObjectForget ⟶ G.val ⋙ kanObjectForget) :
+    FunctorHom (kanDiagramCoherentNerve F.val) (kanDiagramCoherentNerve G.val) :=
+  Truncated.HomotopyCategory.homMk
+    (kanDiagramNaturalTransformationEdge (F := F) (G := G) η).toTruncated
+
+private lemma nativeRectangleHom_comp {J : Type u} [SmallCategory J]
+    (F G K : KanDiagramObject J)
+    (η : F.val ⋙ kanObjectForget ⟶ G.val ⋙ kanObjectForget)
+    (θ : G.val ⋙ kanObjectForget ⟶ K.val ⋙ kanObjectForget) :
+    nativeRectangleHom F K (η ≫ θ) = nativeRectangleHom F G η ≫ nativeRectangleHom G K θ :=
+  kanDiagramNaturalTransformationHom_comp η θ
+
+private lemma nativeRectangleHom_precomp {I J : Type u} [SmallCategory I] [SmallCategory J]
+    (H : I ⥤ J) (F G : KanDiagramObject J)
+    (η : F.val ⋙ kanObjectForget ⟶ G.val ⋙ kanObjectForget)
+    (e : FunctorIso (kanDiagramCoherentNerve F.val) (kanDiagramCoherentNerve G.val))
+    (he : e.hom = nativeRectangleHom F G η) :
+    (diagramIsoCongr (kanDiagramCoherentNerve_precomp H F.val)
+      (kanDiagramCoherentNerve_precomp H G.val)
+      (e.precomp ((SSet.uliftFunctor.{u+1,u}).map (nerveMap H)))).hom =
+      nativeRectangleHom ⟨H ⋙ F.val, trivial⟩ ⟨H ⋙ G.val, trivial⟩ (Functor.whiskerLeft H η) := by
+  rw [diagramIsoCongr_hom, functorIsoPrecomp_hom, he]
+  exact kanDiagramNaturalTransformationHom_precomp H η
+
+private lemma nativeRectangle_cancel.{v, w} {C : Type v} [Category.{w} C]
+    {a b c d e f g : C} (x : a ≅ b) (u : b ≅ c) (v : d ≅ c)
+    (s : a ≅ e) (t : f ≅ e) (z : e ≅ g) (w : c ⟶ g) (r : d ⟶ f)
+    (h₁ : x.hom ≫ u.hom ≫ w = s.hom ≫ z.hom)
+    (h₂ : v.hom ≫ w = r ≫ t.hom ≫ z.hom) :
+    (v ≪≫ u.symm ≪≫ x.symm ≪≫ s ≪≫ t.symm).hom = r := by
+  apply (cancel_mono (t.hom ≫ z.hom)).mp
+  simp only [Iso.trans_hom, Iso.symm_hom, Category.assoc]
+  rw [Iso.inv_hom_id_assoc, ← h₁]
+  simpa only [Category.assoc, Iso.inv_hom_id_assoc] using h₂
+
+/-- 反転前の指定係数の共役は、元のpullbackの自然変換の実現。
+HTT §3.3.2・Kerodon Tag 028Tの構成の特殊な照合。 -/
+@[cite HTT "3.3.2" (partial := special) "指定長方形の実現と可逆な底変換の相殺。"]
+private lemma leftStraighteningBaseChange_native_nonop_hom :
+    ∀ {E B D : SSet.{u}} [Quasicategory B] [Quasicategory D]
+    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B),
+    let U := SSet.uliftFunctor.{u+1,u}
+    let lB := transportSimplexFirstVertexMap B
+    let lD := transportSimplexFirstVertexMap D
+    let H := transportSimplexFunctor k
+    let t := U.map (nerveMap H)
+    let q := pullback.snd p k
+    let p₀ := pullback.snd p lB
+    let r := pullback.snd q lD
+    let d := leftStraighteningBaseChangePullbackData p k
+    let Fh : KanDiagramObject (TransportSimplexCategory D) :=
+      ⟨H ⋙ leftStrictTransportFunctor p₀, trivial⟩
+    let Fr : KanDiagramObject (TransportSimplexCategory D) :=
+      ⟨leftStrictTransportFunctor r, trivial⟩
+    let α : Fh.val ⋙ kanObjectForget ⟶ Fr.val ⋙ kanObjectForget :=
+      pullbackStrictComparison p₀ r d.val H d.property.2.2.1
+    let ν₀ := (FunctorIso.precomp
+        (nativeUnderCoefficientIso p ≪≫ (nativeBaseChangeCoefficientIso p).symm) t).symm ≪≫
+      (simplexSectionBaseChangeCoefficient p k).symm ≪≫
+      nativeUnderCoefficientIso q ≪≫ (nativeBaseChangeCoefficientIso q).symm
+    let hsrc : t ≫ leftStraighteningCandidate p₀ = kanDiagramCoherentNerve Fh.val := by
+      change t ≫ kanDiagramCoherentNerve (leftStrictTransportFunctor p₀) =
+        kanDiagramCoherentNerve (H ⋙ leftStrictTransportFunctor p₀)
+      exact kanDiagramCoherentNerve_precomp H _
+    ν₀.hom = eqToHom (congrArg (fun f => HomotopyCategory.mk (functorVertex f)) hsrc) ≫
+      Truncated.HomotopyCategory.homMk (kanDiagramNaturalTransformationEdge
+        (F := Fh) (G := Fr) α).toTruncated := by
+  intro E B D hB hD p hp k
+  let U := SSet.uliftFunctor.{u+1,u}
+  let lB := transportSimplexFirstVertexMap B
+  let lD := transportSimplexFirstVertexMap D
+  let H := transportSimplexFunctor k
+  let t := U.map (nerveMap H)
+  let q := pullback.snd p k
+  let p₀ := pullback.snd p lB
+  let r := pullback.snd q lD
+  let d := leftStraighteningBaseChangePullbackData p k
+  let Fh : KanDiagramObject (TransportSimplexCategory D) := ⟨H ⋙ leftStrictTransportFunctor p₀, trivial⟩
+  let Fr : KanDiagramObject (TransportSimplexCategory D) := ⟨leftStrictTransportFunctor r, trivial⟩
+  let α : Fh.val ⋙ kanObjectForget ⟶ Fr.val ⋙ kanObjectForget :=
+    pullbackStrictComparison p₀ r d.val H d.property.2.2.1
+  let FP : KanDiagramObject (TransportSimplexCategory B) :=
+    ⟨(relativeSectionEnrichedDiagram (transportSimplexDomainFunctor B)).evaluate (leftFibrationObjectOf p), trivial⟩
+  let UP : KanDiagramObject (TransportSimplexCategory B) :=
+    ⟨(relativeSectionEnrichedDiagram (transportSimplexUnderDomains B)).evaluate (leftFibrationObjectOf p), trivial⟩
+  let FPH : KanDiagramObject (TransportSimplexCategory D) := ⟨H ⋙ FP.val, trivial⟩
+  let UPH : KanDiagramObject (TransportSimplexCategory D) := ⟨H ⋙ UP.val, trivial⟩
+  let FQ : KanDiagramObject (TransportSimplexCategory D) :=
+    ⟨(relativeSectionEnrichedDiagram (transportSimplexDomainFunctor D)).evaluate (leftFibrationObjectOf q), trivial⟩
+  let UQ : KanDiagramObject (TransportSimplexCategory D) :=
+    ⟨(relativeSectionEnrichedDiagram (transportSimplexUnderDomains D)).evaluate (leftFibrationObjectOf q), trivial⟩
+  let Z : KanDiagramObject (TransportSimplexCategory D) :=
+    ⟨(relativeSectionEnrichedDiagram (transportSimplexUnderDomains D ⋙ Over.map k)).evaluate
+      (leftFibrationObjectOf p), trivial⟩
+  let cn := simplexSectionNativeBaseChange p k
+  let un := Functor.whiskerLeft H ((nativeUnderJointComparison B).app (leftFibrationObjectOf p))
+  let bn := Functor.whiskerLeft H
+    ((relativeSectionBaseChangeComparison lB (strictTransportDomains (TransportSimplexCategory B))).app
+      (leftFibrationObjectOf p))
+  let uq := (nativeUnderJointComparison D).app (leftFibrationObjectOf q)
+  let bq := (relativeSectionBaseChangeComparison lD (strictTransportDomains (TransportSimplexCategory D))).app
+    (leftFibrationObjectOf q)
+  let zn := (relativeSectionBaseChangeComparison k (transportSimplexUnderDomains D)).app (leftFibrationObjectOf p)
+  let wn := relativeSectionDiagramComparison (transportSimplexUnderBaseChangeTransformation k) (leftFibrationObjectOf p)
+  let hf := kanDiagramCoherentNerve_precomp H FP.val
+  let hu := kanDiagramCoherentNerve_precomp H UP.val
+  let hs := kanDiagramCoherentNerve_precomp H (leftStrictTransportFunctor p₀)
+  let c := diagramIsoCongr rfl hf (simplexSectionBaseChangeCoefficient p k)
+  let a := diagramIsoCongr hf hu ((nativeUnderCoefficientIso p).precomp t)
+  let b := diagramIsoCongr hs hu ((nativeBaseChangeCoefficientIso p).precomp t)
+  let a' := nativeUnderCoefficientIso q
+  let b' := nativeBaseChangeCoefficientIso q
+  let z := kanEnrichedRealizationValueIso (relativeSectionBaseChangeComparison k (transportSimplexUnderDomains D))
+    (relativeSectionBaseChangeComparison_isQCatEquivalence k (transportSimplexUnderDomains D)) (leftFibrationObjectOf p)
+  have hc : c.hom = nativeRectangleHom FQ FPH cn := by
+    rw [diagramIsoCongr_hom]
+    exact eq_of_heq ((kanFunctorHomCongr_heq rfl hf (simplexSectionBaseChangeCoefficient p k).hom).trans
+      (simplexSectionBaseChangeCoefficient_native_hom p k))
+  have ha : a.hom = nativeRectangleHom FPH UPH un := by
+    apply nativeRectangleHom_precomp H FP UP
+      ((nativeUnderJointComparison B).app (leftFibrationObjectOf p)) (nativeUnderCoefficientIso p)
+    exact kanEnrichedRealizationValueIso_hom (nativeUnderJointComparison B)
+      (fun j q => transportSimplexUnderPre_isQCatEquivalence q.val.hom j) (leftFibrationObjectOf p)
+  have hb : b.hom = nativeRectangleHom Fh UPH bn := by
+    apply nativeRectangleHom_precomp H ⟨leftStrictTransportFunctor p₀, trivial⟩ UP
+      ((relativeSectionBaseChangeComparison lB (strictTransportDomains (TransportSimplexCategory B))).app
+        (leftFibrationObjectOf p)) (nativeBaseChangeCoefficientIso p)
+    exact kanEnrichedRealizationValueIso_hom
+      (relativeSectionBaseChangeComparison lB (strictTransportDomains (TransportSimplexCategory B)))
+      (relativeSectionBaseChangeComparison_isQCatEquivalence lB (strictTransportDomains (TransportSimplexCategory B)))
+      (leftFibrationObjectOf p)
+  have ha' : a'.hom = nativeRectangleHom FQ UQ uq :=
+    kanEnrichedRealizationValueIso_hom (nativeUnderJointComparison D)
+      (fun j q => transportSimplexUnderPre_isQCatEquivalence q.val.hom j) (leftFibrationObjectOf q)
+  have hb' : b'.hom = nativeRectangleHom Fr UQ bq :=
+    kanEnrichedRealizationValueIso_hom
+      (relativeSectionBaseChangeComparison lD (strictTransportDomains (TransportSimplexCategory D)))
+      (relativeSectionBaseChangeComparison_isQCatEquivalence lD (strictTransportDomains (TransportSimplexCategory D)))
+      (leftFibrationObjectOf q)
+  have hz : z.hom = nativeRectangleHom UQ Z zn :=
+    kanEnrichedRealizationValueIso_hom _ _ _
+  have upper : c.hom ≫ a.hom ≫ nativeRectangleHom UPH Z wn = a'.hom ≫ z.hom := by
+    rw [hc, ha, ha', hz, ← nativeRectangleHom_comp, ← nativeRectangleHom_comp,
+      ← nativeRectangleHom_comp]
+    exact congrArg (nativeRectangleHom FQ Z) (simplexUnderNativeBaseChange_square p k)
+  have lower : b.hom ≫ nativeRectangleHom UPH Z wn = nativeRectangleHom Fh Fr α ≫ b'.hom ≫ z.hom := by
+    rw [hb, hb', hz, ← nativeRectangleHom_comp, ← nativeRectangleHom_comp,
+      ← nativeRectangleHom_comp]
+    exact congrArg (nativeRectangleHom Fh Z) (leftStraighteningBaseChange_native_pullback_square p k)
+  have hrect : (b ≪≫ a.symm ≪≫ c.symm ≪≫ a' ≪≫ b'.symm).hom = nativeRectangleHom Fh Fr α :=
+    nativeRectangle_cancel c a b a' b' z (nativeRectangleHom UPH Z wn) (nativeRectangleHom Fh Fr α) upper lower
+  let ν₀ := (FunctorIso.precomp
+      (nativeUnderCoefficientIso p ≪≫ (nativeBaseChangeCoefficientIso p).symm) t).symm ≪≫
+    (simplexSectionBaseChangeCoefficient p k).symm ≪≫ nativeUnderCoefficientIso q ≪≫
+      (nativeBaseChangeCoefficientIso q).symm
+  have hnorm : diagramIsoCongr hs rfl ν₀ = b ≪≫ a.symm ≪≫ c.symm ≪≫ a' ≪≫ b'.symm := by
+    dsimp only [ν₀]
+    rw [functorIso_precomp_trans, functorIso_precomp_symm, Iso.trans_symm, Iso.symm_symm_eq]
+    rw [diagramIsoCongr_trans hs hf rfl]
+    rw [diagramIsoCongr_trans hs hu hf, diagramIsoCongr_symm hf hu]
+    rw [diagramIsoCongr_trans hf rfl rfl, diagramIsoCongr_symm rfl hf]
+    simp only [a, b, c, a', b', diagramIsoCongr, eqToIso_refl, Iso.refl_symm,
+      Iso.refl_trans, Iso.trans_refl]
+    exact Iso.trans_assoc _ _ _
+  have hn : (diagramIsoCongr hs rfl ν₀).hom = nativeRectangleHom Fh Fr α := by
+    rw [hnorm]
+    exact hrect
+  change ν₀.hom = eqToHom (congrArg (fun f => HomotopyCategory.mk (functorVertex f)) hs) ≫
+    nativeRectangleHom Fh Fr α
+  rw [← hn]
+  simp only [diagramIsoCongr, Iso.trans_hom, Iso.symm_hom, eqToIso.hom, eqToIso.inv,
+    eqToIso_refl, Iso.refl_hom, Iso.refl_inv, Category.assoc, eqToHom_trans_assoc,
+    eqToHom_refl, Category.id_comp, Category.comp_id]
+  exact (Category.id_comp ν₀.hom).symm
 
 end SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations

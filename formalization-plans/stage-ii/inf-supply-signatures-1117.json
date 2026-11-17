@@ -3,7 +3,7 @@
   "source_head": "7e9743b30",
   "scope": "今回の再開範囲：元の残り1〜17項を署名へ展開。S2〜S6の過去の検収済み出力は再採番しない。",
   "count_rule": "署名のidごとに数える。200行超の照合・合成則は独立署名。小さい証明分割の法則は親署名のnoteに記録する。旧5/8はこの台帳の分母には用いない。",
-  "verified_lean_lines": 25173,
+  "verified_lean_lines": 25353,
   "final_cap": 29000,
   "checkpoint_report_lines": 28500,
   "factor": 2,
@@ -1666,12 +1666,12 @@
         {
           "name": "pullbackStrictComparison",
           "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePointedPrism.lean",
-          "line": 214
+          "line": 218
         },
         {
           "name": "naturalHomVertex",
           "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePointedPrism.lean",
-          "line": 501
+          "line": 505
         }
       ],
       "bare_lines": [
@@ -2347,7 +2347,7 @@
         {
           "name": "pullbackStrictComparison_uncurry",
           "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePointedPrism.lean",
-          "line": 330
+          "line": 334
         },
         {
           "name": "leftStraighteningBaseChangePullbackData",
@@ -2419,7 +2419,7 @@
         {
           "name": "leftStraighteningBaseChange_native_pullback_square",
           "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePointedPrism.lean",
-          "line": 628
+          "line": 632
         },
         {
           "name": "kanDiagramNaturalTransformationHom_comp",
@@ -2445,13 +2445,29 @@
         360,
         600
       ],
-      "status": "pending",
+      "status": "verified",
       "placement": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePointedPrism.lean",
       "literature": "HTT §3.3.2・Kerodon §5.6（Tag 028T）の指定構成の法則。上下の元の自然変換の長方形を実現し可逆な底変換を相殺する照合。",
       "note": "新しい数学・choose・仮定なし。前合成と自然変換の実現の既存法則、指定長方形U/L、同型の相殺だけを使用する。private αの同じ型を保持するため親の枝だけの新規ファイルにprivate補題として追記。",
       "additional_mathematics": true,
       "choose_replacements": [],
-      "new_assumptions": []
+      "new_assumptions": [],
+      "actual_lean_lines": 180,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 40,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePointedPrism.lean": "3fd18ee50d13774f3f1682858c142302c5f953cd071ad98087a46a5d567bdbe7"
+        }
+      }
     }
   ],
   "common_typeclass_setup": "local instance signaturePullbackLeft {E B D : SSet.{u}}\n    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) : LeftFibration (pullback.snd p k) :=\n  ⟨leftFibrations.pullback_snd p k (LeftFibration.mem (p := p))⟩",
