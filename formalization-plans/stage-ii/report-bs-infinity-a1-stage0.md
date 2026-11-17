@@ -6982,3 +6982,186 @@ mainは取り込まず、S7・R2・R3は再開していない。
 対象ビルド・小監査exit 0、標準三公理のみ。共有鍵の待ちは残っておらず、鍵も放している。
 未追跡の旧R2下書き4本は従前のまま、今回の検証・コミットに含めていない。
 一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+### 第3項の残りを補題の単位へ分解する紙（11-17午後）
+
+調整役の11-17午後の指示による紙。以下は型案・証明計画で、Leanの実装・検証済みという
+意味ではない。第3項のLeanはまだ再開していない。元の17項目の第3項を六つに分割する。
+構成の法則・証明の分割であり、最終の型・仮定・同型の選択は変更しない。
+
+#### P3-A：全添字・全係数を保持する実現の合成則（200〜350行）
+
+```lean
+{C : Type (u + 1)} [Category.{u} C] [SimplicialCategory C]
+{J : Type u} [Category.{u} J]
+{D E F : KanEnrichedDiagram C J}
+(η : KanEnrichedDiagramComparison D E)
+(θ : KanEnrichedDiagramComparison E F)
+(χ : KanEnrichedDiagramComparison D F)
+(hχ : ∀ j, χ.component j =
+  KanEnrichedComparison.trans (η.component j) (θ.component j))
+(hη : ∀ j (X : C), IsQCatEquivalence ((η.component j).val X))
+(hθ : ∀ j (X : C), IsQCatEquivalence ((θ.component j).val X))
+(hχe : ∀ j (X : C), IsQCatEquivalence ((χ.component j).val X)) :
+η.realizationIso hη ≪≫ θ.realizationIso hθ = χ.realizationIso hχe
+```
+
+名前案：kanEnrichedDiagramRealizationIso_trans。
+KanEnrichedComparisonTriangle・Faces・EdgeCompositionの三辺の構成を、同じ添字全体の
+jointArrowで使う。既存のKanEnrichedComparisonだけの合成則を、点ごとの等式として
+並べて結論することはしない。χの成分には既存transを使い、naturalityの証明は合成則。
+置き場所はKerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/の新規ファイル。
+
+#### P3-B1：係数の底変換と定義域の制限の可換式（100〜150行）
+
+```lean
+{B D : SSet.{u}} {J : Type u} [Category.{u} J]
+(k : D ⟶ B) {A T : Jᵒᵖ ⥤ Over D} (η : A ⟶ T)
+(hη : ∀ j (p : LeftFibrationObject D),
+  IsQCatEquivalence (relativeFunctorOverPre p.val.hom (η.app (Opposite.op j))))
+(hηk : ∀ j (p : LeftFibrationObject B),
+  IsQCatEquivalence (relativeFunctorOverPre p.val.hom
+    ((Functor.whiskerRight η (Over.map k)).app (Opposite.op j)))) :
+relativeSectionBaseChangeRealizationIso k T ≪≫
+  relativeSectionRealizationComparisonIso (Functor.whiskerRight η (Over.map k)) hηk =
+(relativeSectionRealizationComparisonIso η hη).precomp
+    (leftFibrationInfinityBaseChange k) ≪≫
+  relativeSectionBaseChangeRealizationIso k A
+```
+
+名前案：relativeSectionBaseChangeRealizationIso_overPre。
+向きは制限に関して反変（TからA）。同じrelativeFunctorBaseChangeForwardとoverPreの
+可換式を全joint族へ送り、P3-Aで合成を照合する。hη/hηkはこの法則の入力であり、
+最終の第3項への仮定ではない。適用ではtransportSimplexUnderPre_isQCatEquivalenceと
+既存の底変換同型から証明する。置き場所はKerodon/LimitsAndColimits/LimitsAndColimits/。
+
+#### P3-B2：underへの指定制限と底の写像との合成（80〜120行）
+
+まず元の全単体での式を固定する。
+
+```lean
+{B D : SSet.{u}} (k : D ⟶ B) (s : TransportSimplexCategory D) :
+nerveMap (Under.post (X := s) (transportSimplexFunctor k)) ≫
+  transportSimplexUnderDomainMap ((transportSimplexFunctor k).obj s) =
+transportSimplexUnderDomainMap s
+```
+
+名前案：transportSimplexUnderDomainMap_baseChange。
+両辺の終域stdSimplexは、transportSimplexFunctorが単体の次数を変えないため同じ型。
+射列のunder構造射の下の単体作用素が不変であることを全次数で計算する。
+これをP3-B1へ入れ、transportSimplexUnderRealizationIsoと
+transportSimplexUnderBaseChangeRealizationIsoの同じ合成を照合する。
+この二つの既存同型を別の存在同型で置換しない。置き場所はCartesianFibrations/の新規ファイル。
+
+#### P3-C：指定底変換が同じscaffoldの表現比較を保つこと（350〜500行）
+
+以下の略記をすべて元の指定構成で固定する。
+
+```lean
+U   := SSet.uliftFunctor.{u+1,u}
+lB  := transportSimplexFirstVertexMap B
+lD  := transportSimplexFirstVertexMap D
+H   := transportSimplexFunctor k
+q   := pullback.snd p k
+p₀  := pullback.snd p lB
+r   := pullback.snd q lD
+θp  := leftStraighteningInfinityDiagram_firstVertexTransportIso p
+θq  := leftStraighteningInfinityDiagram_firstVertexTransportIso q
+β   := leftStraighteningInfinityDiagram_baseChangeIso p k
+ν   := (θp.precomp (U.map (nerveMap H))).symm ≪≫
+  diagramIsoCongr
+    (by rw [← Category.assoc, ← transportSimplexFirstVertexMap_ulift_naturality k,
+      Category.assoc]) rfl (β.precomp (U.map lD)) ≪≫ θq
+```
+
+νの型はFunctorIso (U.map (nerveMap H) ≫ leftCoherentTransport p₀)
+(leftCoherentTransport r)。νを新しく選ばず、この式のまま使う。
+標準の引き戻しの比較tを固定する（pullback.liftで作り、IsPullbackの証拠も証明する）。
+
+```lean
+t : pullback q lD ⟶ pullback p lB
+ht : IsPullback t r p₀ (nerveMap H)
+R₀ := (nerveLeftTransportRepresentation p₀).cartesianRestrict
+  (U.map t) (U.map (nerveMap H))
+  -- htをuliftしたIsPullbackの証拠
+Rr := nerveLeftTransportRepresentation r
+```
+
+残る校正の型は次。
+
+```lean
+{E B D : SSet.{u}} [Quasicategory B] [Quasicategory D]
+(p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) :
+∃ a : VertexIso (transportWitnessVertex R₀) (transportWitnessVertex Rr),
+  R₀.diagramIso Rr a = ν
+```
+
+名前案：leftStraighteningBaseChange_transportWitness。
+略記のt/ht/R₀はこの補題の入力仮定に足さず、標準pullbackから作る局所構成。
+これは「何らかの図式同型の存在」ではなく、指定されたνそのものが同じ全空間の
+表現比較に由来する、という等式を含む。
+
+証明では、P3-B1/B2でνのjoint-section側を同じ制限の合成へ戻す。
+第1項scaffoldCoherentComparison_scaffoldIsoでuniversalScaffoldへの制限を固定し、
+第2項leftStraighteningInfinityReconstruction_representationComparisonで、同じηの逆を
+unstraighteningした射と復元射を相対VertexIsoで照合する。
+この二つを経由する全空間の比較をrelativeFunctorOverPreで読み、相対表現の点aを得る。
+指定の同じscaffoldの前合成同値で比較を反映する。aの存在を無根拠に可縮性だけから出さない。
+可縮性は、aが実際にνを表すことを示した後、既存の標準aとの一意性にだけ使う。
+置き場所はClassificationOfCocartesianFibrations/の新規ファイル。
+
+#### P3-D：任意の表現での初頂点上の可換式（120〜220行）
+
+```lean
+{E B D : SSet.{u}} [Quasicategory B] [Quasicategory D]
+(p : E ⟶ B) [LeftFibration p] (k : D ⟶ B)
+(R : LeftTransportRepresentation ((SSet.uliftFunctor.{u+1,u}).map p)) :
+(leftStraighteningInfinityDiagram_baseChangeIso p k).precomp (U.map lD) ≪≫
+  leftStraighteningInfinityDiagram_firstVertexTransportIso q ≪≫
+  nerveCoherentTransportRepresentationIso r ((R.nativeRestrict k).nativeRestrict lD) =
+((leftStraighteningInfinityDiagram_representationIso p R).precomp (U.map k)).precomp
+  (U.map lD)
+```
+
+名前案：leftStraighteningRepresentation_baseChange_firstVertex。
+P3-Cでνの同じ表現の点を得た後、smallFiberTransportRepresentationVertexIso_unique、
+nerveCoherentTransportRepresentationIso_comp_diagramIso、cartesianRestrict_diagramIsoで
+標準比較と合成する。二段pullbackの同型・端点の等式の移送もこの行数に含む。
+済みのbaseChange_transferは、必要なら一つの表現から任意のRへの移送に再利用する。
+同じηの初頂点制限がfirstVertexTransportIsoとnerveCoherentTransportRepresentationIsoの
+合成に等しいことは、既存のFF.preimageVertexIso_mapからの法則として使う。
+
+#### P3-E：初頂点の充満忠実性での反映・第3項そのもの（50〜110行）
+
+```lean
+{E B D : SSet.{u}} [Quasicategory B] [Quasicategory D]
+(p : E ⟶ B) [LeftFibration p] (k : D ⟶ B)
+(R : LeftTransportRepresentation ((SSet.uliftFunctor.{u+1,u}).map p)) :
+leftStraighteningInfinityDiagram_baseChangeIso p k ≪≫
+  leftStraighteningInfinityDiagram_representationIso q (R.nativeRestrict k) =
+(leftStraighteningInfinityDiagram_representationIso p R).precomp (U.map k)
+```
+
+元の型。左辺をU.map lDで前合成すると、既存FFの逆像の像の式でP3-Dの左辺となる。
+functorIso_precomp_injectiveとtransportSimplexFirstVertexMap_ulift_isLocalizationで反映する。
+P3-Dの可換式を新しい仮定にせず証明して入れる。以上の合計は900〜1,450行。
+この紙の型はLean未検証であり、特にP3-Cが数学的な芯。P3-Aだけで閉じるという見込みにはしない。
+
+#### 続行対象の依存を再確認（第3〜5項の代用はしない）
+
+| 項目 | 確認できた依存 | 今回の扱い |
+|---|---|---|
+| 6 | 5（同じ固定値比較と指定大域比較の成分の一致）→4→3 | 依存があるためLeanは保留 |
+| 8 | 6で同じ指定辺へ移し、済み7の全族の可逆性を検出 | 同上 |
+| 9 | 6・8と元のrange Čech増大 | 同上 |
+| 12 | 9と済み10・11、既存全Homの反映 | 同上 |
+| 14 | 13後半が9に依存 | 同上 |
+| 15 | 14と元のordinary単位 | 同上 |
+| 16 | 篩・Coverageのrefinementと既存の極限合成。3〜5への依存なし | 続行する |
+| 17 | 16と既存CoverageUniversalDescent | 16の後に続行する |
+
+第6項の依存は11-17の元の計画にも明記されていた。点ごとに新しい同型を選ぶことで
+この依存を外すことはしない。今回、他の経路でこれを除けたという証明はまだない。
+第16・17項の型は元のまま。現在22,492行で、これらの上端1,300行を加えても23,792行。
+今回の続行については26,500行で停止して報告する。mainは取り込まない。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
