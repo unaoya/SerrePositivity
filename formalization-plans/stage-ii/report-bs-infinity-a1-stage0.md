@@ -6731,3 +6731,41 @@ let f := smallLeftUnstraighteningLift R.diagram R.comparison ≫ smallUnstraight
 第2項の証明分割で、数学的な一覧の追加・chooseの置換はない。
 元の復元射の第2項全体はまだ未完。main・S7・R2・R3は触れていない。
 一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+
+## 残り第2項の完成：元の復元射と任意の表現の比較（11-17）
+
+新規SmallUnstraighteningFunctorHomComposition.lean（100行）と
+StraighteningReconstructionRepresentationComparison.lean（120行）。
+前者は前節の指定Homの合成則を同じ縮小同型で元の相対写像空間へ反映する法則。
+型は前節のunstraighteningFunctorHom_comp_isoの全てのunstraighteningFunctorHom・
+leftUnstraighteningProjectionを、それぞれsmallUnstraighteningFunctorHom・
+smallLeftUnstraighteningProjectionへ置き換えたNonempty (VertexIso …)。
+新しいchooseの置換や入力の仮定の追加なし。
+
+後者の公開宣言は承認された第2項の型そのもの：
+```lean
+{E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [LeftFibration p]
+(R : LeftTransportRepresentation ((SSet.uliftFunctor.{u + 1, u}).map p)) :
+let q := smallLeftUnstraighteningProjection (leftStraighteningInfinityDiagram p)
+let a := leftStraighteningInfinityDiagram_representationIso p R
+let f := smallLeftUnstraighteningLift R.diagram R.comparison ≫ smallUnstraighteningFunctorHom a.inv
+∃ hf : f ≫ q = p,
+  Nonempty (VertexIso
+    (relativeFunctorVertex q p (leftStraighteningInfinityReconstruction p)
+      (leftStraighteningInfinityReconstruction_projection p))
+    (relativeFunctorVertex q p f hf))
+```
+同じ表現空間でnative表現との比較を取り、既検証のrepresentationIsoの合成則で
+元の指定逆同型を分解し、同じ射作用の合成と元の復元射の定義へ戻す。
+strictな図式に狭めず、任意のcoherentなRと、元の底上の二射を保つ。
+元の小さい全空間から従うULiftの小ささを局所に明示しただけで、型の仮定は不変。
+
+それぞれ対象ビルドexit 0、小監査2宣言・1宣言は標準三公理のみ、exit 0。
+記録：/tmp/is-w1/s8-reconstruction-2/{small-composition-production,final-production}/
+のverify.log・target-audit-result.json。ソースSHAも照合済み。
+第2項の証明分割の実測は159+91+120+100+120=590行。第1項と合わせて647行。
+検証済み累計22,157行、新規345モジュール＋承認された既存3ファイルの差分。
+残り17項目は第1・2項まで検証済み。数学的な一覧の追加はない。
+次は第3項の底変換の同じ全分類比較との両立。mainは取り込まず、S7・R2・R3も再開しない。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
