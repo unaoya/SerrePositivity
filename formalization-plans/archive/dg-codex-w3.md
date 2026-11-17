@@ -1,7 +1,7 @@
 # Codex 作業指示書 DG-W3：土台 5 ディレクトリの統合（D4 の残り）＋ D5 の残り＋ 層の仕上げ
 
 作成：2026-11-02（DG の整理、管理は Claude）。宛先：DG の Codex。**開始は、論文の層の区切り 1-4 が main に入った後**（[coordination.md](../coordination.md) §3 の #6 の後）に Claude が合図する。
-計画：[dg-cleanup-plan.md](../dg-cleanup-plan.md) §3 D4・D5、§4 DG-W3、§5a。草案：`infra/dg-w2` の `targets/dg-w3-merge-plan.json`（48 統合先・608 元、命名 9 件は承認済み）、`dg-w3-merge-dryrun.md`、`dg-w3-names.md`。
+計画：[dg-cleanup-plan.md](stage-i/dg-cleanup-plan.md) §3 D4・D5、§4 DG-W3、§5a。草案：`infra/dg-w2` の `targets/dg-w3-merge-plan.json`（48 統合先・608 元、命名 9 件は承認済み）、`dg-w3-merge-dryrun.md`、`dg-w3-names.md`。
 **共通の前提**：[IF-W0-1](infinity-codex-w0-1.md) §0、[DG-W2 §12〜§16](dg-codex-w2.md)（Lake キャッシュ、判断表、名前の隠蔽、universe）、[IF-W0-3 §10.31・§10.34〜10.37](infinity-codex-w0-3.md)（判断表、保存比較の個別照合、証明無関係なハッシュ）。
 worktree は `../SerrePositivity-dgw1` をそのまま使い、1-4 の取り込み後の main から `infra/dg-w3` を切る。
 

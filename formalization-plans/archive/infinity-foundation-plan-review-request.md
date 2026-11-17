@@ -11,13 +11,13 @@
 
 ## 読む文書
 
-1. **本体**：`formalization-plans/infinity-foundation-plan.md`。
+1. **本体**：`formalization-plans/archive/stage-i/infinity-foundation-plan.md`。
 2. **根拠**：
-   - `formalization-plans/refactoring-verdier.md`（Verdier 列の二つの定義、R48〜R57、新しい数学 M1〜M7）
-   - `formalization-plans/refactoring-infinity-r2.md` §3（R26〜R47・R59〜R67）
+   - `formalization-plans/archive/stage-i/refactoring-verdier.md`（Verdier 列の二つの定義、R48〜R57、新しい数学 M1〜M7）
+   - `formalization-plans/archive/stage-i/refactoring-infinity-r2.md` §3（R26〜R47・R59〜R67）
    - `formalization-plans/archive/infinity-outside-survey-2026-10-28.md`（∞ 層の外にある一般論）
    - `formalization-plans/archive/repository-survey-2026-10-28.md`（全体の地図）
-3. **運用の前提**：`formalization-plans/refactoring-infinity.md` の §2（不変条件）と §8（第 1 窓の分担）。`scripts/move_module.py` と `scripts/refactor/verify.sh` が何をするか。
+3. **運用の前提**：`formalization-plans/archive/stage-i/refactoring-infinity.md` の §2（不変条件）と §8（第 1 窓の分担）。`scripts/move_module.py` と `scripts/refactor/verify.sh` が何をするか。
 
 計画の要旨：
 

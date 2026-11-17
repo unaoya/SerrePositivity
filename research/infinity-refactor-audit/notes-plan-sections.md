@@ -1,6 +1,6 @@
 # ∞ 圏ノート第 II 部（f-00〜f-05）の計画の記述の原文（2026-11-12）
 
-`exposition/ja/infinity/f-0*.html`（基準 91d8dc9cd、2026-10-28）のうち、整備の計画そのもの（窓の工程、進める順序、R 番号による処置、移し先の表）を、ノートから外す前に写したもの。文は変えていない。計画と状態の正本は `formalization-plans/infinity-foundation-plan.md` と台帳 `formalization-plans/refactor-ledger.md`。ここにある記述の状態は確かめていない（11-12 の照合は `README.md`）。
+`exposition/ja/infinity/f-0*.html`（基準 91d8dc9cd、2026-10-28）のうち、整備の計画そのもの（窓の工程、進める順序、R 番号による処置、移し先の表）を、ノートから外す前に写したもの。文は変えていない。計画と状態の正本は `formalization-plans/archive/stage-i/infinity-foundation-plan.md` と台帳 `formalization-plans/refactor-ledger.md`。ここにある記述の状態は確かめていない（11-12 の照合は `README.md`）。
 
 ## f-00-map.html:117（§4 の表（「いまの入り込み」「処置」の列を含む））
 

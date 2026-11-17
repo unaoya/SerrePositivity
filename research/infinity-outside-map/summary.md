@@ -1,6 +1,6 @@
 # InfinityCategoriesの外にある一般論のファイル分類（⑤d、2026-11-16）
 
-指示書：`formalization-plans/stage-ii/infinity-outside-map.md`。最新main **`8c75c2ee8`** から枝 **`codex/infinity-outside-map`** を切った。対象はKST・HomotopicalAlgebra・SpectraのLeanファイル全体。EInfinityおよびArchiveは分類対象に含めない。
+指示書：`formalization-plans/stage-ii/consolidation/infinity-outside-map.md`。最新main **`8c75c2ee8`** から枝 **`codex/infinity-outside-map`** を切った。対象はKST・HomotopicalAlgebra・SpectraのLeanファイル全体。EInfinityおよびArchiveは分類対象に含めない。
 
 ## 結果
 

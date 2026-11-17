@@ -5,7 +5,7 @@
 この台帳が**リファクタ候補の状態の正本**。勉強ノート（`exposition/ja/bs/` の BR、`exposition/ja/infinity/` の R）には今後リファクタ候補を書かない。ノートを書いていてコードの問題に気づいたら、事実を `research/` にまとめ、ユーザーから調整役へ伝える。
 
 - 取り込み元：`research/bs-refactor-audit/`（BR1〜BR33、ba24dceb6）、`research/infinity-refactor-audit/`（R 番号、同）。囲みの原文はそれぞれの `box-texts.md`。ノートにしかなかった調査（R8 の重複、R58 の Yoneda の閉包）は `research/infinity-refactor-audit/r8-duplication.html`・`route-yoneda.html` に写した。
-- ∞ の R 番号の**中身**の正本は従来どおり `refactoring-infinity.md` §0 の索引から辿れる文書（R1〜R79）。ただし §0 の状態欄とパスは 10-30 のままで古い。**状態はこの台帳を正とする**。
+- ∞ の R 番号の**中身**の正本は従来どおり `archive/stage-i/refactoring-infinity.md` §0 の索引から辿れる文書（R1〜R79）。ただし §0 の状態欄とパスは 10-30 のままで古い。**状態はこの台帳を正とする**。
 - 扱いの語：**閉**（実施済み、または前提が変わり不要）／**B3**（一括レーンの凍結の一晩で行う、`stage-ii/citation-attributes.md`）／**計画**（指定の段・束で行う）／**保守**（段階 II の E3 の sorry 0 の後の保守の束。主定理の経路に乗らないコードの整理）。新しい候補は R80 以降・BR34 以降の番号で足す。
 
 ## 1. BS（BR1〜BR33）
@@ -41,7 +41,7 @@
 
 ## 2. ∞ 圏（R 番号）
 
-中身の正本は `refactoring-infinity.md` §0 の索引。ここには状態と扱いだけを書く。§0 の「中身が正本と同じ」R（監査 README §1 の列挙）は、下の表に挙げないものは §0 の状態のまま。
+中身の正本は `archive/stage-i/refactoring-infinity.md` §0 の索引。ここには状態と扱いだけを書く。§0 の「中身が正本と同じ」R（監査 README §1 の列挙）は、下の表に挙げないものは §0 の状態のまま。
 
 | R | 扱い | 理由・行き先 |
 | --- | --- | --- |

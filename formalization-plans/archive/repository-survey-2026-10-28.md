@@ -8,7 +8,7 @@
 
 方法：機械集計（ファイル数・行数・宣言数・本文の sorry・import 行列・git の更新日）と、範囲を 4 つに分けたエージェントの読解による。
 状態の根拠は各 README・formalization-plans の計画・docstring。数値は集計時点の概数。
-使われ方：リファクタ（[refactoring-infinity.md](../refactoring-infinity.md) §0）と、第 II 段の計画を立てるときの地図として使う。
+使われ方：リファクタ（[refactoring-infinity.md](stage-i/refactoring-infinity.md) §0）と、第 II 段の計画を立てるときの地図として使う。
 
 ## 1. 主定理と残る穴
 

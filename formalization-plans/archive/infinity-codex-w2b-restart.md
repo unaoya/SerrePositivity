@@ -4,7 +4,7 @@
 
 ## 1. あなたの役割と場所
 
-- ∞ 基盤の整備レーン（[infinity-foundation-plan.md](../infinity-foundation-plan.md)）の Codex。管理は Claude（暦・合図・取り込みは Claude が行う）。
+- ∞ 基盤の整備レーン（[infinity-foundation-plan.md](stage-i/infinity-foundation-plan.md)）の Codex。管理は Claude（暦・合図・取り込みは Claude が行う）。
 - worktree：`../SerrePositivity-ifw0-3`、ブランチ `infra/if-w2b`（main の d135a715f を取り込み済み）。**main の作業木では作業もビルドもしない。**
 - 共通の前提：[IF-W0-1 §0](infinity-codex-w0-1.md)、[coordination.md §2](../coordination.md)（ビルドの規則：全ビルドは暦と合図、小さなビルドは §2-4a、Lake キャッシュ、鍵 `with_build_lock.sh`）。
 

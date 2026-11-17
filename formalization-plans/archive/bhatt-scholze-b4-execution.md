@@ -1,9 +1,9 @@
 # B4：semiperfectoid環のperfectoid化の全射性
 
-> **アーカイブ（2026-10-18）**：B4（Thm 7.4 の全射性）は 2026-10-16 に引用なしで完了。数学は解説の `par:bs-thm74`、原典の依存関係と経路の差は [BS 主計画](../bhatt-scholze/bhatt-scholze.md)。将来は削除する予定で、以下は当時の計画と実施記録のまま。
+> **アーカイブ（2026-10-18）**：B4（Thm 7.4 の全射性）は 2026-10-16 に引用なしで完了。数学は解説の `par:bs-thm74`、原典の依存関係と経路の差は [BS 主計画](../bhatt-scholze/notes/bhatt-scholze.md)。将来は削除する予定で、以下は当時の計画と実施記録のまま。
 
 
-2026-10-16。B4は引用なしで完成。正本は`formalization-plans/bhatt-scholze/bhatt-scholze.md`、
+2026-10-16。B4は引用なしで完成。正本は`formalization-plans/bhatt-scholze/notes/bhatt-scholze.md`、
 担当・待合せは`clmst.md` §0.2。B3の一般存在・普遍性も証明済み。
 後半の各記録は各時点の検証結果であり、過去の未完成・待合せ状況を含む。
 

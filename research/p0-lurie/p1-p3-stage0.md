@@ -1,7 +1,7 @@
 # P⁰のためのP1〜P3：段0（紙、⑤d、2026-11-16）
 
 基準main：`79c1315e7`。枝：`codex/p0-p1-p3-stage0`。
-[p0-plan-draft.md](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity/formalization-plans/stage-ii/p0-plan-draft.md)とD81、ユーザー方針11-16に従う。
+[p0-plan-draft.md](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity/formalization-plans/stage-ii/p0/p0-plan-draft.md)とD81、ユーザー方針11-16に従う。
 Leanの追加・変更・移動・ビルドはしない。以下は主出力の**候補一覧30項目**であり、実装・外枠の承認ではない。
 打ち切ったG12のモナド経路は再開しない。M15も停止を維持する。
 

@@ -1,7 +1,7 @@
 # IS-W1 段0：G8 の四角形・G14・G9 の洗い出し
 
 2026-11-12、③-a。**停止点0。実装・ビルド・監査は未実施。**
-main `ef145b288`（指定の `52682962c` を含む）から、既存 worktree `SerrePositivity-bs-classical` で枝 `math/inf-supply` を切った。準備メモ `inf-supply-w1-bs-classical-preparation.md`（0850731ff）を使い、IS-W1 §0〜§1、IF-G2-finish §1、IF-G2 §1・§3・§4、`infinity-g2-progress.md` の末尾二節、BS の SheafGenerators・SpaceValued と入口表 §4・§4.1 を現行ソースに照合した。
+main `ef145b288`（指定の `52682962c` を含む）から、既存 worktree `SerrePositivity-bs-classical` で枝 `math/inf-supply` を切った。準備メモ `inf-supply-w1-bs-classical-preparation.md`（0850731ff）を使い、IS-W1 §0〜§1、IF-G2-finish §1、IF-G2 §1・§3・§4、`archive/stage-i/infinity-g2-progress.md` の末尾二節、BS の SheafGenerators・SpaceValued と入口表 §4・§4.1 を現行ソースに照合した。
 
 以下の型は紙の案で、名前空間・標準的な端点移送を省略している。Lean の型検査済みとは扱わない。新規ファイル・宣言名も案。既存 G1・G2 の宣言や drafts の型は変えず、必要な比較を入力の仮定に足さない。
 
@@ -6037,7 +6037,7 @@ lemma leftClassificationSquareHom_pullback {A B H : SSet.{u}}
 一覧：済み 0／全体 13（うち追加 11）
 
 ③-b の専用 worktree `../SerrePositivity-bs-d68` の
-`formalization-plans/stage-ii/report-inf-supply-w2.md` に §38.1〜§38.4 があることを
+`formalization-plans/stage-ii/inf-supply-b/report-inf-supply-w2.md` に §38.1〜§38.4 があることを
 読み取りだけで確認した（当該ファイルの最終コミット fe5555f64）。
 他枝を merge せず、未取り込みコードを import していない。
 §56.3 の「今回再確認できていない」は、この読み取りで解消した。

@@ -1,7 +1,7 @@
 # F1 の規約
 
 概要：fibration・straightening・Yoneda の実装を配置する。
-方針：`formalization-plans/infinity-lanes/infinity-core-F1.md` §1 の順に進める。
+方針：`formalization-plans/archive/stage-i/infinity-lanes/infinity-core-F1.md` §1 の順に進める。
 規約：namespace は `SerrePositivity.InfinityCategories`。Core・Coherent・DGNerve・Derived は参照のみ。
 使われ方：Kerodon 第 5・6・7.3・8 章に対応する一般論。
 

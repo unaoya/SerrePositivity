@@ -1,7 +1,7 @@
 # NS の項目と Lean の宣言の対応表
 
 2026-11-16、`research/dag13-ns-coverage`。基準 main `55f6cfbea`。
-[指示書](../../formalization-plans/stage-ii/p0-section-map.md) §1、P⁰ の節単位の地図の資料。
+[指示書](../../formalization-plans/stage-ii/p0/p0-section-map.md) §1、P⁰ の節単位の地図の資料。
 全篇 253 項目を採取・照合。版と全見出しは [toc.md](toc.md)、集計は [review/summary.md](review/summary.md)。
 
 ## 形式と正本
@@ -44,4 +44,4 @@ citations.csv は SerrePositivity/**/*.lean、plan-citations.csv は formalizati
 BS;inf は依頼された P⁰ の先行照合の節全体、inf は Pro・モノイダルの一般基盤、その他は -。
 全原項目の保持とは独立の計画上の印で、今後の節の閉包の正本を複製しない。
 
-既存の HA・HTT・Kerodon の対応表・既存 P⁰ 地図は変更しない。差は [今回の報告](../../formalization-plans/stage-ii/report-dag13-ns-coverage.md)へ。
+既存の HA・HTT・Kerodon の対応表・既存 P⁰ 地図は変更しない。差は [今回の報告](../../formalization-plans/stage-ii/p0/report-dag13-ns-coverage.md)へ。

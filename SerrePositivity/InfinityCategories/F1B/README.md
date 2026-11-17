@@ -22,7 +22,7 @@
 | Equivalences | 同値の補助 |
 
 Kan 拡張と Kan 複体の数学的な語としての Kan は残す。旧レーンに由来する `kan`／`Kan` 接頭辞の整理と、
-重複側の原本への置換は [リファクタリング計画](../../../formalization-plans/refactoring-infinity.md) §5 の対応表を参照。
+重複側の原本への置換は [リファクタリング計画](../../../formalization-plans/archive/stage-i/refactoring-infinity.md) §5 の対応表を参照。
 旧モジュールの互換シムはない。
 
 PinchedInterval の重複6モジュールは F1/MappingSpaces の原本を使う。scaffold の共通部は

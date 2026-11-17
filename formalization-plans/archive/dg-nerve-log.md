@@ -1,6 +1,6 @@
 # dg nerve の実施記録（旧計画 §5）
 
-2026-10-18 に [計画本文](../infinity-lanes/dg-nerve.md) から分離した過去の実施記録。
+2026-10-18 に [計画本文](stage-i/infinity-lanes/dg-nerve.md) から分離した過去の実施記録。
 現在地・受入範囲は本文、数学の規約と方針は
 [InfinityCategories/README.md](../../SerrePositivity/InfinityCategories/README.md) と Lean の docstring、
 正確な型と依存公理は Lean ソースと `scripts/audit_dg_nerve.lean` が正本。

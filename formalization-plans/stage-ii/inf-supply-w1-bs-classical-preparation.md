@@ -4,7 +4,7 @@
 
 ## 読んだものと現在地
 
-- `inf-supply-w1.md` §0〜§1、`infinity-g2-progress.md` 末尾二節、`infinity-codex-g2-finish.md` §1、`infinity-codex-g2.md` §1・§3・§4。
+- `inf-supply-w1.md` §0〜§1、`archive/stage-i/infinity-g2-progress.md` 末尾二節、`archive/stage-i/infinity-codex-g2-finish.md` §1、`archive/stage-i/infinity-codex-g2.md` §1・§3・§4。
 - BS の `drafts/Sheaves/SheafGenerators.lean`・`SpaceValued.lean`、`foundation-entry-points.md` §4・§4.1。
 - KL-W1 後の main の下表の宣言・型・関連する本文を `git show` で閲覧した。作業枝へ main はまだ取り込んでいない。以下の配置は旧 F2 のパスからの推測ではなく、main の実ソースに基づく。
 

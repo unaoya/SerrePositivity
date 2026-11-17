@@ -29,7 +29,7 @@
 
 ## 引用番号の照合
 
-11-06 の調査で、Lean の引用は 9,711 件・1,851 ファイルだった。段階 II の KL-W1 では、項目の Tag を項目表から、節・小節の Tag を目次から照合して既存の docstring に加えた。[当時の引用集計](citations-summary.md)、[KL-W1 の報告](../../formalization-plans/stage-ii/kerodon-layout-w1-report.md)
+11-06 の調査で、Lean の引用は 9,711 件・1,851 ファイルだった。段階 II の KL-W1 では、項目の Tag を項目表から、節・小節の Tag を目次から照合して既存の docstring に加えた。[当時の引用集計](citations-summary.md)、[KL-W1 の報告](../../formalization-plans/stage-ii/bulk/kerodon-layout-w1-report.md)
 
 | 旧引用 | 照合後の参照先 |
 | --- | --- |

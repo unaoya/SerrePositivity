@@ -7,7 +7,7 @@
 
 1. main（f3fcefe8e 以降）から worktree `../SerrePositivity-inf-supply`（`LEAN_Projects.nosync/` の下）と枝 `math/inf-supply` を切る。`source ~/.zshenv` の後、`lake env | grep LAKE_ARTIFACT_CACHE` でキャッシュが効いていることを確かめ、`lake build SerrePositivity.InfinityCategories.F2` で温める。
 2. F-2 で名前空間が変わった宣言は、改名表 `scripts/refactor/targets/f-namespace-map.json` の新しい名前を使う（旧名は deprecated alias で残っているが、新しいファイルでは使わない）。旧 G8（`tensorSpaceFunctor_setWeightHom` 系）は deprecated。正本は `tensorSpaceFunctor_setWeightHomNatural`。
-3. 読むもの：[infinity-g2-progress.md](../infinity-g2-progress.md) の末尾の二節（段 1・段 2 の途中の宣言の一覧と「残る数学的な一歩」）、[IF-G2-finish](../infinity-codex-g2-finish.md) §1（数学の位置）、[IF-G2](../infinity-codex-g2.md) §1・§3・§4（項目の型と順序）。使う側の型は BS の drafts（`formalization-plans/bhatt-scholze/drafts/Sheaves/SheafGenerators.lean`・`SpaceValued.lean`）と入口表 `bhatt-scholze/foundation-entry-points.md` §4・§4.1。
+3. 読むもの：[infinity-g2-progress.md](../archive/stage-i/infinity-g2-progress.md) の末尾の二節（段 1・段 2 の途中の宣言の一覧と「残る数学的な一歩」）、[IF-G2-finish](../archive/stage-i/infinity-codex-g2-finish.md) §1（数学の位置）、[IF-G2](../archive/stage-i/infinity-codex-g2.md) §1・§3・§4（項目の型と順序）。使う側の型は BS の drafts（`formalization-plans/bhatt-scholze/drafts/Sheaves/SheafGenerators.lean`・`SpaceValued.lean`）と入口表 `bhatt-scholze/design/foundation-entry-points.md` §4・§4.1。
 4. main の大きな束が入るたびに main を `math/inf-supply` に取り込む（調整役が知らせる。衝突は main 側を正に）。
 
 ## 1. 項目（この順）
@@ -39,7 +39,7 @@
 
 ## 追記（2026-11-10、調整役）：G10 の範囲の注意（③ の開始前の記録）
 
-BS-W16（⑤a、`bhatt-scholze/bhatt-scholze-codex-w16.md` §3 の 2）の Tot の欄 `ofCosimplicial_forget` は、G10（余単体的 A 加群の D(A) での Δ 上の極限は交代余面複体）を**頂点・各次数ごとではなく全関手の形で、射と指定錐まで**比べた版を要る。③ を再開するときに G10 の型をこの形にそろえる（調整役が段 4 の後の追記で範囲を確かめる）。非有界な余単体的 cdga の全比較までは G10 に含めない。
+BS-W16（⑤a、`bhatt-scholze/instructions/bhatt-scholze-codex-w16.md` §3 の 2）の Tot の欄 `ofCosimplicial_forget` は、G10（余単体的 A 加群の D(A) での Δ 上の極限は交代余面複体）を**頂点・各次数ごとではなく全関手の形で、射と指定錐まで**比べた版を要る。③ を再開するときに G10 の型をこの形にそろえる（調整役が段 4 の後の追記で範囲を確かめる）。非有界な余単体的 cdga の全比較までは G10 に含めない。
 
 ## 追記（2026-11-11、調整役）：K 理論からの使い所の注記（③ の範囲は変えない）
 

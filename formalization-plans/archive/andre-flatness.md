@@ -1,6 +1,6 @@
 # André の平坦性補題の引用解消
 
-> **アーカイブ（2026-10-18）**：André の平坦性補題（BS Thm 7.14）は証明済み。数学は解説の `par:bs-andre`・`par:bs-andre-envelope` と `BhattScholze/Inputs/AndreFlatness.lean` の docstring、経路の差は [BS 主計画](../bhatt-scholze/bhatt-scholze.md)。将来は削除する予定で、以下は当時の計画と実施記録のまま。
+> **アーカイブ（2026-10-18）**：André の平坦性補題（BS Thm 7.14）は証明済み。数学は解説の `par:bs-andre`・`par:bs-andre-envelope` と `BhattScholze/Inputs/AndreFlatness.lean` の docstring、経路の差は [BS 主計画](../bhatt-scholze/notes/bhatt-scholze.md)。将来は削除する予定で、以下は当時の計画と実施記録のまま。
 
 
 ## E3：超限反復（2026-10-17）

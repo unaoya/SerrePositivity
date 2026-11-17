@@ -4,8 +4,8 @@
 
 作成日：2026-10-18。
 レーン名：K-L8（論文 §3 の降下）。
-正本は [KST 経路](../kst-lanes/k-theory-kst-route.md)。
-基盤の正本は [foundations](../infinity-lanes/foundations.md)。
+正本は [KST 経路](stage-i/kst-lanes/k-theory-kst-route.md)。
+基盤の正本は [foundations](stage-i/infinity-lanes/foundations.md)。
 特に KST 経路 §2.2、§3、§5 E、§13 の決定 4・5 を優先する。
 本計画は L8 の設計、工程、現在地、宣言の対応を管理する。
 実施の経緯はコミットメッセージに記録する。
