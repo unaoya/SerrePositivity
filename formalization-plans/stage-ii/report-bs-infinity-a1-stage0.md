@@ -6883,3 +6883,30 @@ leftStraighteningInfinityDiagram_representationIso_baseChange_transfer
 検証済み累計22,452行、新規349モジュール＋承認された既存3ファイルの差分。
 残り17項目の済みは1・2・7・10・11のまま。mainは取り込んでいない。
 一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+
+### 第13項の前半：元の離散埋め込みによる実射（11-17）
+
+DiscretePresheafHom.lean、40行。第13項の最初の構成は検証済み。
+元の discretePresheafInclusion の実射を頂点の仕様の等式だけで移す。
+
+```lean
+discretePresheafHom {P Q : Cᵒᵖ ⥤ Type u} (φ : P ⟶ Q) :
+  FunctorHom (discretePresheaf P) (discretePresheaf Q)
+
+discretePresheafHom_eq_normalized (φ : P ⟶ Q) :
+  discretePresheafHom φ =
+    eqToHom (congrArg HomotopyCategory.mk ((discretePresheafInclusion C).property.1 P).symm) ≫
+    Truncated.HomotopyCategory.homMk
+      (((nerve.edgeMk φ).map (discretePresheafInclusion C).val).toTruncated) ≫
+    eqToHom (congrArg HomotopyCategory.mk ((discretePresheafInclusion C).property.1 Q))
+```
+
+後半の discreteHom_isLocalForHom_of_localEquiv は第9項に依存するため未完。
+この構成・正規化則はその代わりの局所性仮定を置くものではない。
+対象ビルドexit 0、小監査3宣言・標準三公理のみexit 0。
+証拠：/tmp/is-w1/s8-discrete-hom/production/{verify.log,target-audit-result.json}。
+検証済み累計22,492行、新規350モジュール＋承認された既存3ファイルの差分。
+残り17項目の済みは1・2・7・10・11（第13項は前半のみ）。
+mainは取り込まず、S7・R2・R3も再開していない。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
