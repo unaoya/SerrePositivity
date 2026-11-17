@@ -62,7 +62,7 @@ DifferentialGraded/（473 本。本体 164 本・約 13.6 万行、Checks/ 309 �
 
 ## 7. IC-1 の段 0 に含める：弱い存在命題からの choose の洗い出し（BR55、ユーザー決定 11-17 案 A）
 
-IC-1 の段 0（紙）で、InfinityCategories の全ファイルを内容ごとに並べるのと同じ回に、**弱い存在命題から `Classical.choose` でデータを選んで作った定義**を全部列挙する（概数 23〜28 個。例：`exists_colimitCoconeFamily`・`exists_quasicategory_localization`・`trivialKanFibration_exists_section`・`exists_chosenColimitSection`・`presheafElementsYonedaDiagram_exists_colimitCone`・dg gluing の零対象・正規化の存在から選んだもの）。表の列：宣言名・ファイル・選ぶ存在命題・利用側が後で要る指定構成との両立（要る／要らない／不明。利用側を読んで判定）・直し方（同じ名前・型・仮定で、指定構成に沿う選び方に替える）・推移的な importer の数・他のレーンの枝が触るか。③-a が 5∞-1 のために出した列挙（`inf-supply-w1.md` 11-17 の追記）と重なる分は、その判定を写す。
+IC-1 の段 0（紙）で、InfinityCategories の全ファイルを内容ごとに並べるのと同じ回に、**弱い存在命題から `Classical.choose` でデータを選んで作った定義**を全部列挙する（概数 23〜28 個。例：`exists_colimitCoconeFamily`・`exists_quasicategory_localization`・`trivialKanFibration_exists_section`・`exists_chosenColimitSection`・`presheafElementsYonedaDiagram_exists_colimitCone`・dg gluing の零対象・正規化の存在から選んだもの）。表の列：宣言名・ファイル・選ぶ存在命題・利用側が後で要る指定構成との両立（要る／要らない／不明。利用側を読んで判定）・直し方（同じ名前・型・仮定で、指定構成に沿う選び方に替える）・推移的な importer の数・他のレーンの枝が触るか。③-a が 5∞-1 のために出した列挙（候補 255 本、`research/infinity-refactor-audit/inf-supply-choose-1117.md`・`.json`、取り込み後）を写し、そこに入らない範囲だけを新しく調べる。
 「要る」と判定したものは IC-W1 の移動と同じ再ビルドの夜にまとめて直す（事前承認の型は `inf-supply-w1.md` 11-17 朝の追記と同じ）。「要らない」はそのまま残す。
 
 ## 8. IC-W1 に入れる費用の対策（`stage-ii/build-cost-plan.md`、ユーザー承認 11-17）
