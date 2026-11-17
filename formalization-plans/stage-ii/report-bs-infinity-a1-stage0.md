@@ -6853,3 +6853,33 @@ docstring のみに記載。第8項の可逆性は、第6項の指定離散値�
 検証済み累計22,400行、新規348モジュール＋承認された既存3ファイルの差分。
 残り17項目のうち1・2・7・10・11が検証済み。mainは取り込んでいない。
 一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+
+### 第3項の証明の分割：同じ表現空間内の移送（11-17）
+
+StraighteningRepresentationBaseChangeTransfer.lean、52行。第3項の追加の数学ではなく、
+既存の representationIso_comp_diagramIso と cartesianRestrict_diagramIso の合成則。
+
+```lean
+leftStraighteningInfinityDiagram_representationIso_baseChange_transfer
+  {E B D : SSet.{u}} [Quasicategory B] [Quasicategory D]
+  (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B)
+  (R S : LeftTransportRepresentation ((SSet.uliftFunctor.{u+1,u}).map p))
+  (a : VertexIso (transportWitnessVertex R) (transportWitnessVertex S))
+  (h : leftStraighteningInfinityDiagram_baseChangeIso p k ≪≫
+      leftStraighteningInfinityDiagram_representationIso (pullback.snd p k) (R.nativeRestrict k) =
+    (leftStraighteningInfinityDiagram_representationIso p R).precomp
+      ((SSet.uliftFunctor.{u+1,u}).map k)) :
+  leftStraighteningInfinityDiagram_baseChangeIso p k ≪≫
+      leftStraighteningInfinityDiagram_representationIso (pullback.snd p k) (S.nativeRestrict k) =
+    (leftStraighteningInfinityDiagram_representationIso p S).precomp
+      ((SSet.uliftFunctor.{u+1,u}).map k)
+```
+
+条件hは第3項全体への追加仮定ではなく、同じ可換式を表現RからSへ移す中間補題の入力。
+無条件の第3項は未完。指定 joint-section 比較と初頂点・scaffold 比較との照合を続ける。
+対象ビルドexit 0、小監査2宣言・標準三公理のみexit 0。
+証拠：/tmp/is-w1/s8-representation-basechange/transfer-production/{verify.log,target-audit-result.json}。
+検証済み累計22,452行、新規349モジュール＋承認された既存3ファイルの差分。
+残り17項目の済みは1・2・7・10・11のまま。mainは取り込んでいない。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
