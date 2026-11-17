@@ -1,10 +1,10 @@
 # 現在地
 
 - 段：**KB-W1 / B6 進行中**。
-- 一覧：**済み 5／全体 10（章）**。
+- 一覧：**済み 6／全体 10（章）**。
 - 作業場所：`/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-cited`。枝：`research/cited-coverage`。pwd一致を確認し、指定の `git merge main` を実施。
 - KB-W1基準HEAD：`f35b01be9fdb8cf3c664b32123b6e8ebaf5d070f`。章ごとにコミットし、2章ごとに停止せず途中報告する。
-- 次：第6章の型と原文を再照合する。Lean・ビルド・鍵は使わない。既存 own・both・mathlib 行は変更しない。
+- 次：第7章の型と原文を再照合する。Lean・ビルド・鍵は使わない。既存 own・both・mathlib 行は変更しない。
 
 ## CC-W1 納品（停止コミット `156ac3c32`）
 
@@ -167,3 +167,13 @@ pinched→interval写像空間には現本体に自然な圏同値と作用の�
 通常圏のcartesian射とnerveの辺の比較、hQCat値の輸送とSet値の輸送、豊穣sliceの全coherent nerveと単一fiber、QC_Objによる積分とpointed-spaceによる積分、QC値の全表現のTWと空間値left transport witness空間は、それぞれ同じ対象・射である比較がない候補をnoneとした。特にUがleft fibrationでも任意QC値表現が同じ空間値データになるわけではなく、後者のKan性や可縮性をそのまま原文TWの特殊形とは数えない。準圏性だけを返す型も、薄い2面と指定外hornを含む∞-bicategory性の全体の代用にしなかった。
 
 全対象行の判定はreview/check/b6-ch5.md。原文・型・再検索・追加候補のソースはgit外に保存し、目録だけ更新した。Lean・ビルド・kernel実行・鍵はなし。次は第6章。
+
+### 第6章
+
+114行（旧partial62・none52）を再照合。旧partialは43行を種類つきで維持、14行をnone、4行をmathlib、1行をownへ更新。旧noneは6.2.1.21をD=Δ⁰・n=−2の右随伴による終対象保存のspecialに変更、51行はnone。結果はpartial44・none65・mathlib4・own1、種類はcomponent22・direction8・special8・stronger-hyp6。既存own・both・mathlib31行は全既存フィールドを保存した。
+
+専用の述語名や合成補題の不足だけはpartialの理由にしなかった。6.1.2.14はAdjunctionのcounitを指定した存在量化、6.1.6.6・6.1.6.8はExactPairingの評価／余評価を指定した存在量化で定義全体を表せるためmathlib。6.1.5.6もAdjunction.compに存在する随伴の証人を代入すれば両側の合成の存在が直接得られるのでmathlib。6.3.3.1はIsLocalizationを辺集合で存在量化した原文の定義全体でown。
+
+同じ原文の一方向・結論成分を返さない候補はnoneとした。例は、6.2.2.16のreflectorによる反転判定とcoslice制限の五条件、6.3.2.9のwalking equivalenceを貼る模型と指定Qを貼る模型、6.3.6.4〜6.3.6.5の初頂点射と最終頂点を経由する指定射。模型圏由来の6.2.5.4・6.2.5.7は指定cf collageと輸送の型も読み、§6に従いModelCategory・SM7等の入力と具体例のinstanceなしを明記した条件つきpartialのまま。
+
+第1〜6章の計1,362対象行を完了（済み6／全体10章）。全件表はreview/check/b6-ch6.md、原文・全候補型・再検索と追加ソースはgit外に保存し目録だけ更新。Lean・ビルド・kernel実行・鍵はなし。そのまま第7章へ進む。
