@@ -3,7 +3,7 @@
   "source_head": "7e9743b30",
   "scope": "今回の再開範囲：元の残り1〜17項を署名へ展開。S2〜S6の過去の検収済み出力は再採番しない。",
   "count_rule": "署名のidごとに数える。200行超の照合・合成則は独立署名。小さい証明分割の法則は親署名のnoteに記録する。旧5/8はこの台帳の分母には用いない。",
-  "verified_lean_lines": 23468,
+  "verified_lean_lines": 23595,
   "final_cap": 29000,
   "checkpoint_report_lines": 28500,
   "factor": 2,
@@ -659,17 +659,18 @@
       "placement": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePointedPrism.lean",
       "note": "11-17夕、調整役・ユーザー承認。報告66ad88611の型をそのまま登録。元のνとその指定辺を保つ。",
       "additional_mathematics": true,
-      "partial_verified_lean_lines": 493,
+      "partial_verified_lean_lines": 620,
       "partial_verification": {
         "success": true,
         "modules": 1,
-        "declarations": 30,
-        "receipt": "/Users/sugakubunka/serre-evidence/inf-supply/c1p-scaffold-relative-20261117/target-audit-result.json",
-        "scope": "親署名は未完。scaffoldの同じ相対同型をpointedへ移す証明分割まで。"
+        "declarations": 34,
+        "receipt": "/Users/sugakubunka/serre-evidence/inf-supply/c1p-stop-signature-20261117/target-audit-result.json",
+        "scope": "親署名は未完。native全Hom比較の指定頂点での相対照合と、指定prismから同じ射影同型を戻す法則まで。"
       },
       "partial_accounted_file_lines": {
-        "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePointedPrism.lean": 493
-      }
+        "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePointedPrism.lean": 624
+      },
+      "partial_citation_only_lines_excluded": 4
     },
     {
       "id": "P3-C1",

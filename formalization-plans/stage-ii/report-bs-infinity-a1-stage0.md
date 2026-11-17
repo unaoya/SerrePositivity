@@ -7765,3 +7765,178 @@ C1Pの部分実測493行、前回から169行増、検証済み累計23468行。
 残りの見込みは既存の全Homのnative比較の再利用で確認する。
 証拠：`evidence/inf-supply/c1p-scaffold-relative-20261117/manifest.json`。
 一覧：済み 18／全体 36（うち追加 1、別停止点 2）。
+
+### 指定native比較の頂点評価と、追加署名の判断点（11-17夕）
+
+検証済みを区切って報告する。今回の停止理由は29,000行の境界ではなく、
+下記の指定νとの照合に200行を超す見込みが出て、独立の署名が要ること。
+coordination.md §2.1 (2)「法則・照合の補題でも、200行を超えそうなものは署名として書き出す」、
+同 (4)「止まるのは、一覧にない署名が要るとき」に従う。
+承認済みP3-C1Pの型を変えず、補助の自然性を仮定せず、未完の照合を結論として使わない。
+
+#### 検証できたところ
+
+既存のoppositeUnstraighteningHomComparisonIsoを、指定自然変換に対応する定値の
+edgewise頂点で評価し、同じweighted射と同じunstraighteningの終点写像との相対同型を得た。
+源のHom空間に準圏性を足さず、既存のfunctorIsoValueを使った。
+さらに、指定prismの射影が指定した辺そのものであれば、その同型の射影も元の指定同型と
+厳密に一致することを、内部Homのleft fibrationと可逆性の反映から示した。
+以下の4本は200行以下の既存構成の法則・証明分割。親署名の完成とは数えていない。
+
+```lean
+private def naturalHomVertex {I : Type u} [SmallCategory I] (F G : KanDiagramObject I)
+    (η : F.val ⋙ kanObjectForget ⟶ G.val ⋙ kanObjectForget) :
+    ((SSet.uliftFunctor.{u+1,u}).obj (edgewiseSubdivision (SimplicialCategory.sHom F G))) _⦋0⦌
+```
+
+```lean
+private lemma oppositeHomLeft_at_natural {I : Type u} [SmallCategory I]
+    (F G : KanDiagramObject I) (η : F.val ⋙ kanObjectForget ⟶ G.val ⋙ kanObjectForget) :
+    let U := SSet.uliftFunctor.{u+1,u}
+    let q := leftUnstraighteningProjection (kanDiagramCoherentNerve (G.val ⋙ kanObjectOpFunctor))
+    let a := U.map (weightedNerveProjection (F.val ⋙ kanObjectForget))
+    let f := U.map (weightedNerveMap η) ≫ oppositeKanUnstraighteningComparison G.val
+    ∃ hf : f ≫ q = a,
+      (oppositeUnstraighteningHomLeft F G).app _ (naturalHomVertex F G η) =
+        relativeFunctorVertex q a f hf
+```
+
+```lean
+private lemma oppositeHomComparison_at_natural {I : Type u} [SmallCategory I]
+    (F G : KanDiagramObject I) (η : F.val ⋙ kanObjectForget ⟶ G.val ⋙ kanObjectForget) :
+    let U := SSet.uliftFunctor.{u+1,u}
+    let F' := kanDiagramCoherentNerve (F.val ⋙ kanObjectOpFunctor)
+    let G' := kanDiagramCoherentNerve (G.val ⋙ kanObjectOpFunctor)
+    let y := (kanDiagramOppositeHomInterval F G).app _ (naturalHomVertex F G η)
+    let m := CartesianMonoidalCategory.lift (𝟙 (leftUnstraightening F')) (SSet.const y) ≫
+      leftUnstraighteningMappingFamily F' G'
+    let g := oppositeKanUnstraighteningComparison F.val ≫ m
+    let f := U.map (weightedNerveMap η) ≫ oppositeKanUnstraighteningComparison G.val
+    let a := U.map (weightedNerveProjection (F.val ⋙ kanObjectForget))
+    let q := leftUnstraighteningProjection G'
+    ∃ (hg : g ≫ q = a) (hf : f ≫ q = a),
+      Nonempty (VertexIso (relativeFunctorVertex q a g hg) (relativeFunctorVertex q a f hf))
+```
+
+```lean
+private lemma pointedIsoOfProjectedPrism {A : SSet.{u+1}}
+    {f g : A ⟶ PointedSpaceInfinity.{u}}
+    (d : FunctorIso (f ≫ pointedSpaceProjection) (g ≫ pointedSpaceProjection))
+    (r : SSet.Truncated.Edge
+      (X := (truncation 2).obj ((ihom A).obj SpaceInfinity.{u}))
+      (functorVertex (f ≫ pointedSpaceProjection)) (functorVertex (g ≫ pointedSpaceProjection)))
+    (hr : SSet.Truncated.HomotopyCategory.homMk r = d.hom)
+    (W : (Δ[1] : SSet.{u+1}) ⊗ A ⟶ PointedSpaceInfinity.{u})
+    (h₀ : prismEndpoint 0 A ≫ W = f) (h₁ : prismEndpoint 1 A ≫ W = g)
+    (hp : W ≫ pointedSpaceProjection = functorEdgePrism r) :
+    ∃ a : FunctorIso f g, a.postcomp pointedSpaceProjection = d
+```
+
+P3-C1Pの部分実測は数学620行（物理624行）、前回から127行増。
+検証済み累計23595行。対象ビルド・小監査は1モジュール・34所有宣言、標準三公理のみ。
+公開の主張・仮定や既存の本文は変えていない。計算上限は不変。
+主な相対照合2本にHTT §3.3.2のspecial属性を付けた。Kerodon Tag 028Tへの特殊化は
+docstringの規約に保持し、partialのkerodon属性は付けていない。文献のみの4行は外枠から除外。
+今回のsource SHAは検証receiptと一致。新規ファイルの推移的importerは0（入口未登録）。
+chooseの置き換えは0。他レーンのファイルの編集は0。R2の既存本体部品を再利用しただけで、
+旧R2の証明や下書きは再開していない。
+
+#### 提案P3-C1PN：元の指定νとnative区間の類の照合
+
+名前：`leftStraighteningBaseChange_nativeInterval_hom`。
+配置：P3-C1Pと同じ新規ファイル（privateの同じpullbackStrictComparison・naturalHomVertexを使う）。
+依存署名：P3-B1・P3-B2e・P3-C0。P3-C1Pからこの署名へ依存を追加する案。
+P3-C1Pの結論を前提にしない。元の指定νと、既存の元の全Hom上の区間の類の等号である。
+別の同型を存在から選んだり、成分ごとの同型の存在へ弱めたりしない。
+
+```lean
+∀ {E B D : SSet.{u}} [Quasicategory B] [Quasicategory D]
+  (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B),
+  let U := SSet.uliftFunctor.{u+1,u}
+  let lB := transportSimplexFirstVertexMap B
+  let lD := transportSimplexFirstVertexMap D
+  let H := transportSimplexFunctor k
+  let q := pullback.snd p k
+  let p₀ := pullback.snd p lB
+  let r := pullback.snd q lD
+  let d := leftStraighteningBaseChangePullbackData p k
+  let R₀ := (nerveLeftTransportRepresentation p₀).cartesianRestrict
+    (U.map d.val) (U.map (nerveMap H)) d.property.2.2.2
+  let Rr := nerveLeftTransportRepresentation r
+  let θp := leftStraighteningInfinityDiagram_firstVertexTransportIso p
+  let θq := leftStraighteningInfinityDiagram_firstVertexTransportIso q
+  let β := leftStraighteningInfinityDiagram_baseChangeIso p k
+  let ν := (θp.precomp (U.map (nerveMap H))).symm ≪≫
+    diagramIsoCongr
+      (by rw [← Category.assoc, ← transportSimplexFirstVertexMap_ulift_naturality k,
+        Category.assoc]) rfl (β.precomp (U.map lD)) ≪≫ θq
+  let Fh : KanDiagramObject (TransportSimplexCategory D) :=
+    ⟨H ⋙ leftStrictTransportFunctor p₀, trivial⟩
+  let Fr : KanDiagramObject (TransportSimplexCategory D) :=
+    ⟨leftStrictTransportFunctor r, trivial⟩
+  let α : Fh.val ⋙ kanObjectForget ⟶ Fr.val ⋙ kanObjectForget :=
+    pullbackStrictComparison p₀ r d.val H d.property.2.2.1
+  let y := (kanDiagramOppositeHomInterval Fh Fr).app _ (naturalHomVertex Fh Fr α)
+  let ε := intervalMappingEdgeOfVertex y
+  let hsrc : U.map (nerveMap H) ≫ leftCoherentTransport p₀ =
+      kanDiagramCoherentNerve (Fh.val ⋙ kanObjectOpFunctor) := by
+    change U.map (nerveMap H) ≫
+      kanDiagramCoherentNerve (leftStrictTransportFunctor p₀ ⋙ kanObjectOpFunctor) =
+      kanDiagramCoherentNerve ((H ⋙ leftStrictTransportFunctor p₀) ⋙ kanObjectOpFunctor)
+    rw [kanDiagramCoherentNerve_precomp]
+    rfl
+  ν.hom = eqToHom (congrArg (fun f => HomotopyCategory.mk (functorVertex f)) hsrc) ≫
+    SSet.Truncated.HomotopyCategory.homMk ε.toTruncated
+```
+
+上の主張の型は、同じソースの新しい出力先で#checkが成功（これは証明ではない）。
+公開の仮定は増えない。元の存在命題からの新しいchooseも使わない。
+原典の対応：HTT §3.3.2、Kerodon Corollary 5.6.0.6（Tag 028T）の指定構成の照合。独立の原典定理番号を主張しない。
+Tagの特殊化なのでkerodon属性を付ける案ではない。
+
+使う宣言と所在：
+
+- `relativeSectionBaseChangeRealizationIso_overPre` @ `SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/RelativeSectionBaseChangePasting.lean:58`
+- `transportSimplexUnderRealization_baseChange_composition` @ `SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/SimplexUnderJointComposition.lean:71`
+- `kanEnrichedRealizationValueIso_heq_precomp` @ `SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/KanEnrichedRealizationValue.lean:66`
+- `straighteningBaseChangeIso_firstVertex` @ `SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/PresentableInfinityCategories/StraighteningBaseChangeRestriction.lean:77`
+- `kanEnrichedJointEvaluation_restrict` @ `SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/KanEnrichedRealizationValue.lean:35`
+- `pullbackStrictComparison` @ `SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePointedPrism.lean:214`
+- `naturalHomVertex` @ `SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePointedPrism.lean:501`
+
+| 内訳 | 素の見込み | 係数2 |
+|---|---:|---:|
+| pullbackのstrict係数とunder比較・底変換の同じ成分の照合 | 40〜70 | 80〜140 |
+| 同じ実現値とnative区間の類の照合 | 40〜70 | 80〜140 |
+| P3-B1・B2eと指定初頂点・底変換同型の像の計算・相殺 | 100〜150 | 200〜300 |
+| 始点と終点の指定表示の正規化 | 40〜70 | 80〜140 |
+| **提案署名P3-C1PN** | **220〜360** | **440〜720** |
+
+当初のC1Pは指定pointed比較全体を素250〜400行と見たが、scaffoldの相対性を保つ移送と
+元の全Hom比較の評価だけで620行となった。指定νの類を保つ部分をこの中へ隠して
+「小さな同定」として続けると、200行の署名規則から外れるためここで分ける。
+既存のkanEnrichedRealizationValueIso_heq_precompは同じ共同比較への制限を与えるが、
+原典の指定νとnative全Homの指定頂点の類との等号そのものを結論してはいない。
+それが残りであり、新たな数学の仮定で埋めない。
+
+仮に承認されれば、提案署名とP3-C1Pの残りの合成・降下（素90〜150、補正180〜300）を合わせ、
+現在23,595＋補正上端720＋300＝24,615行で、29,000行の外枠内。
+後続を全て29,000行に入るとは主張せず、次の署名群の補正上端を足す着手判定は継続する。
+提案を仮に加えたDAGも道具で検査：37頂点・60辺、循環なし。
+承認済みの台帳は36署名のまま。新規の提案は分母にも完了数にも入れていない。
+
+#### 引き継ぎ用の現在値（レーンの閉鎖はまだ）
+
+- 済み18：R01・R02・P3-A・B1・B2a〜e・C0・R07・R10a/b・R11a〜d・R13a。
+- 未完16：P3-C1P・C1・D・E・R04・R05・R06・R08・R09・R12a/b・R13b・R14・R15a〜c。
+- 別停止点2：R16・R17。提案P3-C1PNは未承認。
+- 実測：P3-A〜B2eの前回の441行、C1Pの今回までの部分620行。見込みの元の数字は台帳に保持。
+- 旧R2の未追跡下書き4本は編集・ビルド・コミットせず保持。SHAつきの読み取りコピーは
+  外部legacy-r2-drafts-20261117に保存。削除や本体への混入をしていない。
+- 今回の検証済みをコミット後、作業木の残りは上の旧R2未追跡4本だけと照合する。
+  未検証の試行と採取物は外部evidenceに置いてあり、本体にsorryはない。
+
+証拠は `evidence/inf-supply/c1p-stop-signature-20261117/manifest.json`。
+鍵はビルド終了時に返却済み。整理券の重複なし。S7・R2・R3・P⁰は再開していない。
+5∞-1の完成・今回の通常の29,000行停止点・レーン閉鎖は、いずれもまだ主張しない。
+一覧：済み 18／全体 36（うち追加 1、別停止点 2。提案P3-C1PNは分母外）。

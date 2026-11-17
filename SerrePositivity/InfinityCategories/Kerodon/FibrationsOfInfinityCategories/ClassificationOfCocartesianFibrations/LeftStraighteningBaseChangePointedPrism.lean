@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.Util.Citation
+
 public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.StraighteningBaseChangeRestriction
 public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.FunctorIsoWhiskerComposition
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.TransportRepresentationUnstraighteningComparison
@@ -17,6 +19,9 @@ public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCat
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.SimplexUnderJointComposition
 
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.RelativeFunctorBaseChangeVertices
+
+public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.OppositeUnstraighteningHomComparison
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.FunctorIsoValue
 
 /-!
 概要：P3-C1Pの証明分割。scaffold上の指定pointed比較を全空間と指定辺へ移す。
@@ -438,6 +443,7 @@ private lemma scaffoldRelativeIso {C : Type u} [Category.{u} C] {E : SSet.{u}}
   exact ⟨hf,hg,⟨(eqToIso (congrArg HomotopyCategory.mk hL)).symm ≪≫ e ≪≫
     eqToIso (congrArg HomotopyCategory.mk hR)⟩⟩
 
+@[cite HTT "3.3.2" (partial := special) "通常の小さい底のscaffoldに沿う、同じ指定比較の相対pointed移送。"]
 private lemma scaffoldPointedRelativeIso {C : Type u} [Category.{u} C] {E : SSet.{u}}
     (p : E ⟶ nerve C) [LeftFibration p] :
     let U := SSet.uliftFunctor.{u+1,u}
@@ -489,5 +495,130 @@ private lemma scaffoldPointedRelativeIso {C : Type u} [Category.{u} C] {E : SSet
   · cases hfa
     cases hga
     exact ⟨e'⟩
+open SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories
+open SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans
+
+private def naturalHomVertex {I : Type u} [SmallCategory I] (F G : KanDiagramObject I)
+    (η : F.val ⋙ kanObjectForget ⟶ G.val ⋙ kanObjectForget) :
+    ((SSet.uliftFunctor.{u+1,u}).obj (edgewiseSubdivision (SimplicialCategory.sHom F G))) _⦋0⦌ :=
+  ULift.up (SSet.const (strictDiagramMappingVertex η))
+
+private lemma oppositeHomLeft_at_natural {I : Type u} [SmallCategory I]
+    (F G : KanDiagramObject I) (η : F.val ⋙ kanObjectForget ⟶ G.val ⋙ kanObjectForget) :
+    let U := SSet.uliftFunctor.{u+1,u}
+    let q := leftUnstraighteningProjection (kanDiagramCoherentNerve (G.val ⋙ kanObjectOpFunctor))
+    let a := U.map (weightedNerveProjection (F.val ⋙ kanObjectForget))
+    let f := U.map (weightedNerveMap η) ≫ oppositeKanUnstraighteningComparison G.val
+    ∃ hf : f ≫ q = a,
+      (oppositeUnstraighteningHomLeft F G).app _ (naturalHomVertex F G η) =
+        relativeFunctorVertex q a f hf := by
+  dsimp only
+  let U := SSet.uliftFunctor.{u+1,u}
+  have hf : (U.map (weightedNerveMap η) ≫ oppositeKanUnstraighteningComparison G.val) ≫
+      leftUnstraighteningProjection (kanDiagramCoherentNerve (G.val ⋙ kanObjectOpFunctor)) =
+      U.map (weightedNerveProjection (F.val ⋙ kanObjectForget)) := by
+    rw [Category.assoc, oppositeKanUnstraighteningComparison_projection, ← U.map_comp,
+      weightedNerveMap_projection]
+  refine ⟨hf, ?_⟩
+  apply Subtype.ext
+  rfl
+
+@[cite HTT "3.3.2" (partial := special) "通常の小さい添字圏で、元の全Homの反転比較を指定自然変換で評価する照合。"]
+private lemma oppositeHomComparison_at_natural {I : Type u} [SmallCategory I]
+    (F G : KanDiagramObject I) (η : F.val ⋙ kanObjectForget ⟶ G.val ⋙ kanObjectForget) :
+    let U := SSet.uliftFunctor.{u+1,u}
+    let F' := kanDiagramCoherentNerve (F.val ⋙ kanObjectOpFunctor)
+    let G' := kanDiagramCoherentNerve (G.val ⋙ kanObjectOpFunctor)
+    let y := (kanDiagramOppositeHomInterval F G).app _ (naturalHomVertex F G η)
+    let m := CartesianMonoidalCategory.lift (𝟙 (leftUnstraightening F')) (SSet.const y) ≫
+      leftUnstraighteningMappingFamily F' G'
+    let g := oppositeKanUnstraighteningComparison F.val ≫ m
+    let f := U.map (weightedNerveMap η) ≫ oppositeKanUnstraighteningComparison G.val
+    let a := U.map (weightedNerveProjection (F.val ⋙ kanObjectForget))
+    let q := leftUnstraighteningProjection G'
+    ∃ (hg : g ≫ q = a) (hf : f ≫ q = a),
+      Nonempty (VertexIso (relativeFunctorVertex q a g hg) (relativeFunctorVertex q a f hf)) := by
+  dsimp only
+  let U := SSet.uliftFunctor.{u+1,u}
+  let F' := kanDiagramCoherentNerve (F.val ⋙ kanObjectOpFunctor)
+  let G' := kanDiagramCoherentNerve (G.val ⋙ kanObjectOpFunctor)
+  let x := naturalHomVertex F G η
+  let y := (kanDiagramOppositeHomInterval F G).app _ x
+  let m := CartesianMonoidalCategory.lift (𝟙 (leftUnstraightening F')) (SSet.const y) ≫
+    leftUnstraighteningMappingFamily F' G'
+  have hm : m ≫ leftUnstraighteningProjection G' = leftUnstraighteningProjection F' := by
+    have hp : leftUnstraighteningMappingFamily F' G' ≫ leftUnstraighteningProjection G' =
+        CartesianMonoidalCategory.fst _ _ ≫ leftUnstraighteningProjection F' := pullback.lift_snd _ _ _
+    dsimp only [m]
+    rw [Category.assoc,hp,← Category.assoc,CartesianMonoidalCategory.lift_fst,Category.id_comp]
+  have hg : (oppositeKanUnstraighteningComparison F.val ≫ m) ≫ leftUnstraighteningProjection G' =
+      U.map (weightedNerveProjection (F.val ⋙ kanObjectForget)) := by
+    rw [Category.assoc,hm]
+    exact oppositeKanUnstraighteningComparison_projection F.val
+  obtain ⟨hf,hL⟩ := oppositeHomLeft_at_natural F G η
+  have hR : (oppositeUnstraighteningHomRight F G).app _ x =
+      relativeFunctorVertex (leftUnstraighteningProjection G')
+        (U.map (weightedNerveProjection (F.val ⋙ kanObjectForget)))
+        (oppositeKanUnstraighteningComparison F.val ≫ m) hg := by
+    change (relativeFunctorOverPre (leftUnstraighteningProjection G')
+      (oppositeKanUnstraighteningOverMap F)).app _
+        ((leftUnstraighteningMappingSpaceMap F' G').app _ y) = _
+    rw [leftUnstraighteningMappingSpaceMap_vertex]
+    exact relativeFunctorOverPre_vertex (leftUnstraighteningProjection G')
+      (oppositeKanUnstraighteningOverMap F) m hm
+  have e := functorIsoValue (oppositeUnstraighteningHomComparisonIso F G) x
+  exact ⟨hg,hf,⟨(eqToIso (congrArg HomotopyCategory.mk hR)).symm ≪≫ e ≪≫
+    eqToIso (congrArg HomotopyCategory.mk hL)⟩⟩
+private lemma pointedIsoOfProjectedPrism {A : SSet.{u+1}}
+    {f g : A ⟶ PointedSpaceInfinity.{u}}
+    (d : FunctorIso (f ≫ pointedSpaceProjection) (g ≫ pointedSpaceProjection))
+    (r : SSet.Truncated.Edge
+      (X := (truncation 2).obj ((ihom A).obj SpaceInfinity.{u}))
+      (functorVertex (f ≫ pointedSpaceProjection)) (functorVertex (g ≫ pointedSpaceProjection)))
+    (hr : SSet.Truncated.HomotopyCategory.homMk r = d.hom)
+    (W : (Δ[1] : SSet.{u+1}) ⊗ A ⟶ PointedSpaceInfinity.{u})
+    (h₀ : prismEndpoint 0 A ≫ W = f) (h₁ : prismEndpoint 1 A ≫ W = g)
+    (hp : W ≫ pointedSpaceProjection = functorEdgePrism r) :
+    ∃ a : FunctorIso f g, a.postcomp pointedSpaceProjection = d := by
+  let H : SSet.Homotopy f g := {
+    h := (β_ A (Δ[1] : SSet.{u+1})).hom ≫ W
+    h₀ := by change prismEndpoint 0 A ≫ W = f; exact h₀
+    h₁ := by change prismEndpoint 1 A ≫ W = g; exact h₁
+    rel := by
+      apply SSet.hom_ext
+      intro n
+      apply ConcreteCategory.hom_ext
+      intro s
+      exact False.elim s.1.property }
+  let l := functorEdgeOfSimplicialHomotopy H
+  have hl : functorFamilyPrism (SSet.yonedaEquiv.symm l.edge) = W := by
+    change (β_ (Δ[1] : SSet.{u+1}) A).hom ≫
+      uncurry (SSet.yonedaEquiv.symm (SSet.yonedaEquiv (curry H.h))) = W
+    rw [Equiv.symm_apply_apply, uncurry_curry]
+    change (β_ (Δ[1] : SSet.{u+1}) A).hom ≫
+      (β_ A (Δ[1] : SSet.{u+1})).hom ≫ W = W
+    rw [← Category.assoc, SymmetricCategory.symmetry, Category.id_comp]
+  have hm : l.map ((truncation 2).map ((ihom A).map pointedSpaceProjection)) = r := by
+    apply SSet.Truncated.Edge.ext
+    apply (SSet.yonedaEquiv (X := ((ihom A).obj SpaceInfinity.{u})) (n := ⦋1⦌)).symm.injective
+    change SSet.yonedaEquiv.symm (((ihom A).map pointedSpaceProjection).app
+      (Opposite.op ⦋1⦌) l.edge) = SSet.yonedaEquiv.symm r.edge
+    rw [← SSet.yonedaEquiv_symm_comp]
+    apply functorFamilyPrism_injective (Δ[1] : SSet.{u+1}) A SpaceInfinity.{u}
+    rw [functorFamilyPrism_post]
+    exact (congrArg (fun z => z ≫ pointedSpaceProjection) hl).trans hp
+  have he : IsInvertibleEdge r := by
+    change IsIso (SSet.Truncated.HomotopyCategory.homMk r)
+    rw [hr]
+    infer_instance
+  have : IsIso (SSet.Truncated.HomotopyCategory.homMk l) :=
+    leftFibration_reflects_invertibleEdge ((ihom A).map pointedSpaceProjection) l
+      (by rw [hm]; exact he)
+  refine ⟨asIso (SSet.Truncated.HomotopyCategory.homMk l), ?_⟩
+  apply Iso.ext
+  rw [functorIso_postcomp_hom]
+  change SSet.Truncated.HomotopyCategory.homMk
+    (l.map ((truncation 2).map ((ihom A).map pointedSpaceProjection))) = d.hom
+  rw [hm,hr]
 
 end SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations
