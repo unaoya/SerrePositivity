@@ -1,10 +1,10 @@
 # 現在地
 
 - 段：**KB-W1 / B6 進行中**。
-- 一覧：**済み 8／全体 10（章）**。
+- 一覧：**済み 9／全体 10（章）**。
 - 作業場所：`/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-cited`。枝：`research/cited-coverage`。pwd一致を確認し、指定の `git merge main` を実施。
 - KB-W1基準HEAD：`f35b01be9fdb8cf3c664b32123b6e8ebaf5d070f`。章ごとにコミットし、2章ごとに停止せず途中報告する。
-- 次：第9章の型と原文を再照合する。Lean・ビルド・鍵は使わない。既存 own・both・mathlib 行は変更しない。
+- 次：第10章の型と原文を再照合する。Lean・ビルド・鍵は使わない。既存 own・both・mathlib 行は変更しない。
 
 ## CC-W1 納品（停止コミット `156ac3c32`）
 
@@ -199,3 +199,13 @@ edgewiseの両射影と双対同型（8.1.1.7）、couplingとprofunctorの元�
 数値κで切った空間圏と宇宙パラメータ、整数spineとN(Idem)、指定された相対指数と固定始域の関手空間、QC全体上の反転・随伴形成と固定二対象間の関手は、同じ対象・射への比較がなければ混同しなかった。Moritaの一般形と冪等完備化・inner fibrationを追加した場合の差、flat性とcocartesian fibrationを追加した場合の差をreasonに記した。
 
 第1〜8章の計2,282対象行を完了（済み8／全体10章）。全件表はreview/check/b6-ch8.md。原文・型・旧none274行の再検索・追加候補と判断過程はgit外へ保存し、目録だけ更新。Lean・ビルド・kernel実行・鍵はなし。停止せず第9章へ進む。
+
+### 第9章
+
+567行（旧partial304・none263）を原文と宣言の型で再照合。旧partialは136行を種類つきで維持、166行をnone、2行をownへ更新。旧noneは1行をpartial、5行をownへ更新し、257行をnoneに維持。結果はpartial137・none423・own7、種類はcomponent48・stronger-hyp34・special33・direction22。既存own・both・mathlib30行の全既存フィールドは保存した。
+
+9.2.1.12は同じκ-filtered形状のcofinal poset、universe liftでのcofinal性、制限からの余極限存在の回収を合成できるためown。9.5.5.1はpresentable性とκ-accessible性の論理積が定義全体に一致する。旧noneの9.1.4.1、9.2.6.1、9.2.7.1、9.4.9.16、9.4.9.19も既存のEdge・有限性・同値・pullback・accessibilityの型を原文どおり量化すれば定義全体を直接表すためown。専用の述語名の欠如だけをnoneの理由にしなかった。9.1.3.8はfiltered性の余錐から同じ図式の自然変換を返す(1)⇒(2)のcomponentへ変更した。
+
+Indの標準模型の結果を指定数値λのIndκλへ、全関手準圏を指定section準圏へ、通常圏の因数分解を準圏の指定高次単体へ移す比較がない候補はnone。filteredから弱可縮の現本体の片方向は保持し、Archiveにだけある逆向きは根拠から外した。siftedの実装は非空性と二項対角のright cofinal性をfieldsに持つので、任意有限集合による定義全体と区別して理由に記した。
+
+第1〜9章の計2,849対象行を完了（済み9／全体10章）。全件表はreview/check/b6-ch9.md。原文・型・旧none263行の14群での現本体/ロックMathlib再検索・追加候補と決定過程はgit外に保存し、目録だけ更新。検索結果の全ヒットを検証し尽くしたという意味ではなく、原文ごとの候補の型を再判定したもの。Lean・ビルド・kernel実行・鍵はなし。第10章へ続ける。
