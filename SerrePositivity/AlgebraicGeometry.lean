@@ -1986,3 +1986,5 @@ import SerrePositivity.AlgebraicGeometry.AffineFppfCompositeTupleTotal
 import SerrePositivity.AlgebraicGeometry.PerfectCechUniversalFppfComposite
 
 import SerrePositivity.AlgebraicGeometry.NoetherClosedPerfectCechStep
+
+import SerrePositivity.AlgebraicGeometry.ProperSurjectivePerfectCechUniversalDescent
