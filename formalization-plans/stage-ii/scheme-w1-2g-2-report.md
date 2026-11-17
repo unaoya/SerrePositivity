@@ -3423,3 +3423,17 @@ D09・D04の監査成功を条件に既存見込みへ実測105行を代入し�
 - 一覧：済み1／全体3（うち追加0）。内部署名：済み65／89（G4・G5）、追加0。F07・I01・I05〜I08は原稿検証を通過し対象ビルド中。D05・I09および後続の原稿は未検証で完了数へ含めない。
 
 - P21 `SerrePositivity.AlgebraicGeometry.pairedPerfectCech_zero_row_acyclic_iff`：実際の二因子の対称同型により、零次行の増大totalと元のh・被覆のタプルtotalの完全性を両方向に比較する。
+
+## 2026-11-17：切断を持つ射の完全性と閉像帰納の基本部品（02c961fdc）
+
+- F07・I01・I05〜I08を同じ型・仮定で実装。新規4モジュール212行＋入口8行＝220行、所有26宣言（F07が1、I07・I08が2、I01が20、I05・I06が3）。原稿・本体の同一バイトとSHA、対象ビルド5,395ジョブと直接importer、別の共有鍵での所有監査を確認。標準三公理以外0。
+- F07は有限交叉のアフィン余積へ切断に適合する基底のアフィン余積から写す。既存B1の `isCechExact_baseChange_of_map`、忠実平坦な反映、Frobenius反復系のfiltered colimitを使い、元の矩形の増大行とtotalへ戻す。非アフィンなΓの平坦性は仮定しない。I01は同じpullbackの表示データであり、任意の底変換が別のブローアップになるとは主張しない。
+- 累計22,122行（新規296モジュール21,764行、既存追加25行、入口333行）。所有宣言累計2,417件、既存15件は別。残り18署名。現下書きの上振れと登録予備にも係数2を確保した完成見込み23,958〜25,906行。28,000行以内。
+- 一覧：済み1／全体3（うち追加0）。内部署名：済み71／89（G4・G5）、追加0。D05・I09・I03は原稿検証を通過し対象ビルドへ移した。I02は構文と既存APIの代入の修正後の再検証待ち。一般の固有降下・v降下の完成とは呼ばない。
+
+- F07 `SerrePositivity.AlgebraicGeometry.section_perfectCechTupleTotal_acyclic`：元の切断を持つ射の、指定した有限アフィン被覆の同じタプルtotalは完全。
+- I01 `SerrePositivity.AlgebraicGeometry.BlowupPerfectCechBaseChangeData`：固定したブローアップの同じpullbackの中心の商環表示・次数一射影表示・中心外の同型のデータ。
+- I05 `SerrePositivity.AlgebraicGeometry.closedCenterImage`：元の閉埋め込みによる中心の支持の閉像。
+- I06 `SerrePositivity.AlgebraicGeometry.closedCenterImage_lt`：非空な閉部分の中心外が稠密なら、その中心像は元の閉像より真に小さい。
+- I07 `SerrePositivity.AlgebraicGeometry.NoetherClosedPerfectCechProperty`：同じ閉像を持つ全ての閉埋め込み上の固有全射の普遍Čech降下性。
+- I08 `SerrePositivity.AlgebraicGeometry.noetherClosedPerfectCechProperty_empty`：空の閉像では終域が空のため同型に帰着し、同じ普遍Čech降下性を持つ。
