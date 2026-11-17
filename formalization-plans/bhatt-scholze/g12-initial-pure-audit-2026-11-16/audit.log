@@ -1,0 +1,15 @@
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionMinusHom_target_card_one' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionMinusChain_eq_identity_of_first_card_one' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionMinusChain_dimension_zero_of_second_card_one' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionTarget_minus_of_first_index_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionInitialPureBoundary_control' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

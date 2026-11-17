@@ -1,0 +1,15 @@
+import SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionFactorOrder
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionCut
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionCutCoordinate
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionCutRank
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionCutTransport
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionCutRank_transport
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionCutRank_total
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionFactorization
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionFactorization.sourceCut
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionFactorization.cut
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionFactorization.sourceCut_rank
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionFactorization.cut_rank
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionFactorization.prefix_total
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionFactorization.middle_eq_of_length
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionFactorization.ext_prefix_length

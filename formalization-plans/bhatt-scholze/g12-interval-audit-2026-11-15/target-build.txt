@@ -1,0 +1,3 @@
+✔ [802/803] Built SerrePositivity.InfinityCategories.HA.Monads.OrdinalAdjoinTop (1.2s)
+✔ [803/803] Built SerrePositivity.InfinityCategories.HA.Monads.OrdinalIntervalHom (1.2s)
+Build completed successfully (803 jobs).

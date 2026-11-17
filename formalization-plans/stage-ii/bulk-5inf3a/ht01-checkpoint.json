@@ -1,0 +1,102 @@
+{
+  "complete": 1,
+  "total": 6,
+  "added": 0,
+  "items": {
+    "HT01": "complete",
+    "HT02": "in-progress",
+    "HT03": "not-started",
+    "HT04": "not-started",
+    "HT05": "not-started",
+    "HT06": "not-started"
+  },
+  "checked_sources": [
+    {
+      "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.AffineCochainModel",
+      "source_sha256": "927aa630bf106feba3cb34399eb21407e10bc19ab91181ddd15644a9ccac2158",
+      "rc": 0,
+      "seconds": 5.550522124394774,
+      "log": "AffineCochainModel.log"
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.AffineCochainMap",
+      "source_sha256": "e1387bf360d3d08bb58e918c6fbc190985554d81f36acf35491f772406251348",
+      "rc": 0,
+      "seconds": 3.864000415429473,
+      "log": "AffineCochainMap.log"
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.AffineTotalModel",
+      "source_sha256": "f20de8abd8f645fe9c3ff084b564510e5206b9c13b3e0a34e266df5e415cf2d6",
+      "rc": 0,
+      "seconds": 10.503882290795445,
+      "log": "AffineTotalModel.log"
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Totalization.Components",
+      "source_sha256": "b30ee4c6b6a42cb79f5a2fb108ef8a939ce88e1105d65e5c4952db8879664adb",
+      "rc": 0,
+      "seconds": 3.4037275817245245,
+      "log": "Totalization.Components.log"
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Totalization.CompletionBounds",
+      "source_sha256": "31cef13bca00b8b9a50fde621a44170cefd7b01a619bc2afc1274b248918349c",
+      "rc": 0,
+      "seconds": 3.5021161660552025,
+      "log": "Totalization.CompletionBounds.log"
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Totalization.ResolvedScalarExtension",
+      "source_sha256": "e07c6ad322b3c34b68e286779b04816522c9d818feb5c84eb9fb7d3786d9d7ed",
+      "rc": 0,
+      "seconds": 3.311238292604685,
+      "log": "Totalization.ResolvedScalarExtension.log"
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Totalization.ColumnPrimitive",
+      "source_sha256": "3596155e530b0545aaf7ef92d8fb5a412469afd7b25287d7194b5ada6c95c596",
+      "rc": 0,
+      "seconds": 3.305122748017311,
+      "log": "Totalization.ColumnPrimitive.log"
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Totalization.LowerBound",
+      "source_sha256": "2048d9f1aadd31b886c3e7a0fcdccece73bc91b92a02115ec22d0c94aa3f0d20",
+      "rc": 0,
+      "seconds": 3.2939122077077627,
+      "log": "Totalization.LowerBound.log"
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Totalization.FixedTorBounds",
+      "source_sha256": "e921cf2285c2c977168de34ec0e4ac19bfae3710edbcbdcec2cea0c9db513112",
+      "rc": 0,
+      "seconds": 3.5210497062653303,
+      "log": "Totalization.FixedTorBounds.log"
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Totalization.TensorComponents",
+      "source_sha256": "b7a436c8de476805e089ca5e752903a2799bad71203abd2baef479b0c2e8c60b",
+      "rc": 0,
+      "seconds": 3.3329358752816916,
+      "log": "Totalization.TensorComponents.log"
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Totalization.FixedTorTotalBounds",
+      "source_sha256": "ea30e7bf33d0cbb16a949bbce104411e0aa29516d97cccb1bd9e8159eb38887d",
+      "rc": 0,
+      "seconds": 3.604914916679263,
+      "log": "Totalization.FixedTorTotalBounds.log"
+    }
+  ],
+  "axiom_audit": {
+    "rc": 0,
+    "declarations": 232
+  },
+  "ht01_exit": [
+    "same affine coefficient action and alternating cochain complex",
+    "same cohomology and standard eta, degrees zero/one and cup",
+    "specified product total complex via singleRowIso and zero-extension homology iso",
+    "equivalence with original HodgeTateIsoStatement, no HT isomorphism assumed"
+  ]
+}

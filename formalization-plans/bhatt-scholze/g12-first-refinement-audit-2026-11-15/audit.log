@@ -1,0 +1,51 @@
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionConst_of_card_one' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionHomShape_degenerate_of_card_one' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionHomShape_exists_large_vertex' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionBottomMergeAt' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.ordinalReflectsZero_of_no_one' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionCard_one_of_no_bottom_merge' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionExists_bottom_merge' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionBottomMergeAt.card_two_le' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionBottomMergeAt.one_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionFirstBottomMergeData' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionFirstBottomMergeIndex' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionFirstBottomMergeIndex_spec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionFirstBottomMergeIndex_minimal' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionFirstRefinement' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionFirstRefinement_atomic' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionFirstRefinement_face' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionFirstRefinement_nerve_face' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

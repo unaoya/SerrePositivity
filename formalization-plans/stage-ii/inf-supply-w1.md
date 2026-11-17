@@ -193,3 +193,56 @@ R6（U01〜U41、b54bb5e12、報告 §39）を main に取り込んだ（719de6c
 ## 追記（2026-11-15、調整役）：5∞-1 の S3 の型は drafts に合わせる
 
 S3 の逆向きの型は、段 0 の表の「`restrictJoinCone c (cechShape d) = c₀`（厳密な等号）」ではなく、drafts の `∃ c, IsLimitCone c ∧ c.vertex = t.vertex` に訂正する。制限した錐と t の比較は**指定した同値**として保つ（存在だけにしない）。頂点の等号は保つ。docstring に「制限の厳密な等号は要求しない」と一行。型の正本は drafts/Sheaves なので、承認した一覧の弱めではない。
+
+## 追記（2026-11-16、調整役）：5∞-1 の外枠を 22,000 行に
+
+ユーザー承認（11-16）。`report-bs-infinity-a1-stage0.md` の停止（検証済み 13,391 行、見込み 17,691〜20,891 行、済み S2〜S6）を受けて、S1〜S6・S8 の外枠を 18,600 行から **22,000 行**に変更する。右 Kan の大域的な比較は既存の `kanRightKanExtensionIso`・`kanRightKanExtensionIso_hom_fac` を使い、点ごとの同型を集める構成を新しく作らない。S7・R2・R3 は再開しない。約 18,000 行で止まらずに途中報告。22,000 行を超えそうなら検証済みの分をコミットして報告して止まる。5∞-1（S7 を除く）の完成が停止点。P⁰ の作り方の見直しとは独立（S7 だけが CAlg の模型に触れる）。
+
+## 追記（2026-11-16、調整役）：5∞-1 の取り込みの前に文献の属性を付ける
+
+`InfinityCategories/Sheaves/`（枝のみ、112 本）は HTT・Kerodon の番号を docstring に書いているが、`@[cite …]`・`@[kerodon …]` の属性が 0 本。HTT の対応表では 6.2.2.6・6.2.2.7 が none のまま。B5 で地図を属性から作るので、5∞-1 の停止点の取り込みの前に次を行う（`citation-attributes.md` の規則、構文は `SerrePositivity/Util/Citation.lean`）。
+1. 主な宣言に属性を付ける：`IsSheaf`（HTT 6.2.2.6）、層化の反射（HTT 6.2.2.7、5.5.4.15）、SheafStability、Čech の共終性、重み付き切断（HTT 4.1.3.1・5.1.5.6 など、実際に対応する番号）、Kerodon の Tag に当たるもの（`@[kerodon XXXX]`）。
+2. 原典より狭いもの（Čech 層に限る、小さい通常の site に限る など）は `@[cite HTT "番号" (partial := special) "理由"]` で理由を書く。Kerodon の partial は属性を付けない（-c の見直しまで、規則どおり）。docstring に書くだけにする。
+3. 出典の番号が docstring の「使われ方」に入っているファイルは、規約（README の Conventions）どおり概要か方針の側に移す。
+属性・docstring だけの変更で、主張・証明は変えない。行数は外枠に数えない。対象ビルドと小監査を通してから停止点の報告に入れる。
+
+## 追記（2026-11-16 午後、調整役）：大域比較は rightKanHomUniversalIso を直接使ってよい
+
+`kanRightKanExtensionIso`（RightHomUniversal.lean:93）は `rightKanHomUniversalIso`（UniversalProperty.lean:61）を `kanRightKanExtension_homUniversal` で包んだだけなので、一般の版 `rightKanHomUniversalIso`・`rightKanHomUniversalIso_hom_fac` を直接使い、添字の同型で移した Hom 普遍性と組み合わせる経路を認める。条件：`RightKanHomUniversal` は仮定として置かず証明する（既存の Kan 拡張から、または添字の同型での移送で）。元の主張の型は変えない。点ごとの同型の組み立てはしない。添字の同型での移送は既存の構成の法則として数える。外枠 22,000 行は変えない。
+
+## 追記（2026-11-16 夜、調整役）：5∞-1 の外枠を 24,000 行に（ユーザー承認）
+
+報告（0cde9bbd3、検証済み 18,240 行、残り 2,740〜4,710 行、全体 20,980〜22,950 行）を受けて、外枠を 22,000 行から **24,000 行**に変更する。残り（`weightedSections_discrete_map`、Čech の局所同値、`sections_localEquiv_iso`、`sheafify_discrete_eq`・`localEquiv_of_sheafifyIso`、S1 の一般の Coverage の判定）は報告どおり短縮せずに。停止点は 5∞-1 の完成（S7 を除く）のまま。約 22,000 行で止まらずに途中報告。24,000 行を超えそうなら検証済みをコミットして報告して止まる。S7・R2・R3 は再開しない。main は root の確認まで取り込まない。
+
+## 追記（2026-11-16 夜、調整役）：S8 の固定値比較の錐の選び方を直してよい
+
+報告（作業木の report-bs-infinity-a1-stage0.md 末尾、11-16「固定値の比較で、指定余単位との両立を失う選択」）を受けて承認する。`WeightedSectionsLocalComparison`・`NativeWeightedSectionsLeftLimit`・`WeightedSectionsLeftLimit` の三本文の `Classical.choose (… limitValue …)` を、元の同じ指定余単位 α に沿う `RightKanConeTransport` の終端（`valueTransport`）の錐に置き換えてよい。三本とも 5∞-1 で ③-a が新しく作った枝だけのファイルで、main・他レーンからの利用はない。条件：公開の名前・型、全関手、元の余単位、`sectionsOf` の選択は変えない。新しい仮定を置かない。展開した値が変わるので、`Sheaves/` とその下流の枝のモジュールを全部対象ビルドし直して確かめる（旧値との rfl の一致は求めない）。差分は外枠 24,000 行に数える。
+
+## 追記（2026-11-16 夜、調整役）：5∞-1 の外枠を 26,000 行に（ユーザー承認）
+
+報告（287a524a4、保守的な累計 19,570 行、完成見込みの上端 24,220 行）を受けて、外枠を 24,000 行から **26,000 行**に変更する。残り（S1・S8）は報告の型と見積もりどおり、短縮せずに。停止点は 5∞-1 の完成（S7 を除く）のまま。約 24,000 行で止まらずに途中報告。26,000 行を超えそうなら検証済みをコミットして報告して止まる。S7・R2・R3 は再開しない。main は root の確認まで取り込まない。
+
+## 追記（2026-11-17 未明、調整役）：既存の補題の証明を一つ書き換えてよい
+
+`Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/DensityFiberYonedaValue.lean` の既存の補題 `presheafElementsYonedaSliceValue_interval`（main にある）の証明だけを、`rfl` から `rw [presheafElementsYonedaSliceValue, yonedaPresheafEvaluation_interval, presheafElementsYonedaSliceInterval, Category.assoc]` に置き換えてよい（承認した三本文の変更で、直接の importer の再ビルドで `rfl` が maxRecDepth に達したため）。条件：補題の主張・名前は変えない。maxRecDepth・heartbeats は上げない。補題なので下流には影響しない（証明は無関係）。OE-W1 の移動の対象には入っていない。取り込みのときに、この一か所の差分を確かめる。
+
+## 追記（2026-11-17 未明、調整役）：LeftCoherentTransportDirectComparison の三本文を直してよい
+
+報告（作業木の report-bs-infinity-a1-stage0.md 6001 行目以降、8f06e1bcd）を受けて承認する。`Kerodon/.../ClassificationOfCocartesianFibrations/LeftCoherentTransportDirectComparison.lean`（main にある）の三本文 `leftCoherentTransportDirectComparison`・`_projection`・`_isPrecompositionEquivalence` を、新しい `ScaffoldCoherentComparison` の同じ名前の構成に置き換えてよい（弱い存在命題からの choose を、同じ span に沿う相対同型を保つ選び方に替える。先に承認した錐の選び方と同じ考え方）。条件：公開の名前・型・仮定を変えない。`exists_leftCoherentTransport_directComparison` と QCatEquivalence の証明は変えない。適用の前後で保存比較 v3b。旧値との rfl の一致は求めない。
+**影響**：このファイルを推移的に import するのは main で 3,959 本（OE-W1・⑥・一括の枝は触っていない）。レーンでの確かめは、直接の importer（NerveTransportRepresentation・SmallLeftCoherentTransportReconstruction・F1）と Sheaves の全部で足りる。下流の全体は取り込みのときに調整役が夜に root と全監査で確かめる。
+
+## 追記（2026-11-17 朝、調整役）：同じ型の choose の置き換えは事前承認
+
+これまでの三件（S8 の錐の選び方、`smallLeftUnstraighteningComparisonOfFunctorIso`、`leftCoherentTransportDirectComparison`）と同じ型、つまり**既存の定義が弱い存在命題から `Classical.choose` で選んでいて、指定構成との両立を保つ選び方に置き換えるもの**は、止まらずに進めてよい（夜中に一件ずつ止まるのを避ける、ユーザー 11-17）。条件：公開の名前・型・仮定を変えない、新しい仮定を置かない、計算上限を上げない、適用の前後で保存比較 v3b、直接の importer と Sheaves を対象ビルド、置き換えた箇所と推移的な importer の数を報告に一行ずつ。**止まって報告するのは**：主張・型を変える必要があるとき、推移的な importer が 5,000 本を超えるとき、他のレーンの枝が触っているファイルのとき。下流の全体は取り込みの夜に調整役が root と全監査で確かめる。洗い出しは台帳 BR55。
+
+## 追記（2026-11-17、調整役）：choose の全列挙と型つきの一覧の紙（ユーザー指示）
+
+この一日半で三回、既存の定義が存在命題からの `Classical.choose` で作られていて指定構成と両立しないことが証明の途中で見つかり、夜中に承認待ちで止まった。⑥ と同じく、Lean の前に計画の精度を上げる紙を出す。重点は規模ではなく **既存の定義の choose**。`InfinityCategories` には `(exists_…).choose` で作った定義が概数で 23 個（22 ファイル）ある。
+
+**手順**：`leftCoherentTransportDirectComparison` の置き換え（11-17 未明の追記）を適用し、直接の importer と Sheaves の対象ビルドで確かめたら、Lean を止めて次の三つを紙で出す（`report-bs-infinity-a1-stage0.md` の末尾に節として。見出しは「5∞-1 の残りの計画（11-17）」）。
+
+1. **choose の全列挙と置き換え案**：残りの (B)・(C)・S8・S1 が依存する既存の定義のうち、弱い存在命題からの choose で作られていて、指定構成との両立が要るものを**全部**列挙する（宣言名・ファイル・何の存在命題から選んでいるか・どの指定構成と両立が要るか・推移的な importer の数・他のレーンの枝が触るか）。それぞれに置き換え案（同じ名前・型・仮定で、指定構成に沿う選び方に替える）と見込みの行数。依存しているが両立が要らないもの（そのままでよいもの）も、短く一行で挙げて理由を書く。この一覧を**一括で承認**する。
+2. **残りの補題の単位の一覧**：名前と Lean の型（`typed-lemma-list` の形）。S8 は小項目に分ける。各項目に、1 のどの置き換えに依存するかを書く。
+3. **外枠 26,000 行に対する見込みの出し直し**：1・2 を合わせた累計の見込み（下端・上端）。
+
+**紙の後の条件付きの事前承認**：1 の一覧と 2 の一覧の範囲内なら、止まらずに Lean に戻ってよい（承認を待たない）。11-17 朝の追記の条件（名前・型・仮定を変えない、新しい仮定を置かない、計算上限を上げない、保存比較 v3b、対象ビルド、報告に一行ずつ）はそのまま。**止まって報告するのは**：一覧にない choose の置き換えが要るとき、主張・型を変える必要があるとき、推移的な importer が 5,000 本を超えるとき、他のレーンの枝が触っているファイルのとき、見込みの上端が 26,000 行を超えるとき。

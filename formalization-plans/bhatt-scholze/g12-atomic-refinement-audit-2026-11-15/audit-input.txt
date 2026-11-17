@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionAtomicRefinement
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.composableArrowRefinementData
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.composableArrowRefinement
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.composableArrowRefinement_first
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.composableArrowRefinement_last
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionRefinement_atomic
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionBottomMergeRefinement
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionBottomMergeRefinement_atomic

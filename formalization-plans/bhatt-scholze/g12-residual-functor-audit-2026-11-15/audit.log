@@ -1,0 +1,78 @@
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionOrderHom_id' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionOrderHom_comp' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionCutIntervalInclusion' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionCutIntervalInclusion_injective' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionCutInterval_square' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionCutInterval_square_apply' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionCutIntervalMap_id' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionCutIntervalMap_comp' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionCutIntervalMap_boundary' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.ordinalOrderHomTransport' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.ordinalOrderHomTransport_heq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.ordinalOrderHomTransport_boundary' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.ordinalOrderHomTransport_id' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.ordinalOrderHomTransport_comp' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionFactorization.rank_le_of_prefix_le' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionFactorization.cut_coordinate' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionFactorization.residualObject_card' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionFactorization.residualMap' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionFactorization.residualMap_profile' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionFactorization.residualFunctor' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.ordinalOrderHom_heq_val' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionHorizontal_prefix_card_le' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionHorizontal_prefix_val' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionFactorization.prefix_card_le' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionFactorization.prefixInclusion' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionFactorization.prefix_square' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

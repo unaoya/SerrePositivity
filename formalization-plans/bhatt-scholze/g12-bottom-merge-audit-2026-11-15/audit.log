@@ -1,0 +1,63 @@
+'SerrePositivity.InfinityCategories.HA.Monads.ordinalBottomMerge' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.ordinalBottomMergeSection' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.ordinalBottomMerge_val' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.ordinalBottomMerge_section' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.ordinalBottomMerge_factor' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.ordinalBottomMerge_boundary' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.ordinalBottomMerge_residual_boundary' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionBottomMergeObject' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionBottomMergeObject_card' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionBottomMergeArrow' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionBottomMergeArrow_profile' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionBottomMerge_raw_one' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionBottomMergeResidual' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionBottomMergeResidual_profile' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionBottomMerge_factor' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.ordinalBottomMerge_surjective' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.ordinalOrderHomTransport_surjective' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionBottomMergeArrow_surjective' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionBottomMergeObject_ne' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionBottomMergeArrow_cancel' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionBottomMergeResidual_unique' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

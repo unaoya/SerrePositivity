@@ -1,0 +1,1015 @@
+source,number,kind,reached_from,reason
+DAGXIII,2.2.6,Construction,ROOT | DAGXIII 2.2.7,starting-item
+DAGXIII,2.2.7,Remark,ROOT,starting-item
+HA,1.4.3.1,Definition,DAGXIII 2.2.6 | DAGXIII 2.2.7 | DAGXIII 2.2.5 | HA 1.4.2.8 | HA 7.1.0.1 | HA 7.1.3.5 | HA 7.1.3.15 | HA 4.8.2.19 | HA 7.1.1.16 | HA 1.4.2.17,implicit-definition: 主張に使う定義・記法：spectrum
+DAGXIII,2.2.1,Construction,DAGXIII 2.2.6 | DAGXIII 2.2.7 | DAGXIII 2.2.2,implicit-definition: X^tensor n、Sym^nとその乗法への射
+DAGXIII,2.2.2,Construction,DAGXIII 2.2.6 | DAGXIII 2.2.7 | DAGXIII 2.2.3,implicit-definition: T-hat_pの記法と構成
+DAGXIII,2.2.4,Remark,DAGXIII 2.2.6 | DAGXIII 2.2.7,implicit-definition: CAlgからの自然変換T-hat[-1]→forgetful
+DAGXIII,2.2.5,Example,DAGXIII 2.2.6 | DAGXIII 2.2.7,implicit-definition: T_pとbimodule B、T_p→T-hat_pの記法
+DAGXIII,2.1.23,Definition,DAGXIII 2.2.6 | DAGXIII 2.2.7 | DAGXIII 2.2.2,implicit-definition: Tate構成(-)^tGの定義
+HA,7.1.3.8,Variant,DAGXIII 2.2.6 | DAGXIII 2.2.7 | DAGXIII 2.2.4 | DAGXIII 2.2.5,implicit-definition: CAlg_k・E∞-algebra over k の定義（一般のE∞基礎環）
+HA,7.1.3.18,Proposition,DAGXIII 2.2.6 | DAGXIII 2.2.7,implicit-definition: 通常のcommutative ring kをdiscrete E∞-ringとして扱う比較
+HA,2.1.3.1,Definition,DAGXIII 2.2.7 | DAGXIII 2.2.1 | DAGXIII 2.2.4 | HA 7.1.3.8 | HA 7.1.0.1 | HA 4.5.2.1 | HA 7.1.3.5 | HA 7.1.3.15 | HA 5.1.0.7,implicit-definition: 主張に使う定義・記法：Ek-algebra（一般のoperadic algebra）
+HA,5.1.0.2,Definition,DAGXIII 2.2.7 | HA 7.1.3.8 | HA 7.1.0.1 | HA 7.1.3.5 | HA 7.1.3.15 | HA 5.1.0.7,implicit-definition: 主張に使う定義・記法：Ek-algebraの入力operad Ek
+HA,1.4.2.8,Definition,HA 1.4.3.1 | HA 1.2.1.17 | HA 1.4.2.17,implicit-definition: 主張に使う定義・記法：spectrum object
+HTT,1.1.2.4,Definition,HA 1.4.3.1 | DAGXIII 2.2.1 | DAGXIII 2.2.2 | DAGXIII 2.2.4 | DAGXIII 2.2.5 | DAGXIII 2.1.23 | HA 7.1.3.8 | HA 2.1.3.1 | HA 5.1.0.2 | HA 1.4.2.8 | HA 2.0.0.7 | HA 2.4.2.6 | HA 4.8.4.1 | HA 7.1.0.1 | HA 4.5.2.1 | HA 7.2.4.2 | DAGXIII 2.2.3 | HA 1.1.1.9 | DAGXIII 2.1.21 | DAGXIII 2.1.16 | HA 7.1.3.5 | HA 5.1.4.10 | HA 3.4.1.4 | HA 7.1.3.15 | HA 5.1.1.7 | HA 3.2.2.5 | HA 2.1.1.10 | HTT 1.1.5.12 | HTT 2.4.2.1 | HA 2.4.2.5 | HA 2.4.2.4 | HA 4.1.1.10 | HA 4.6.2.9 | HA 4.8.4.10 | HA 4.2.4.8 | HA 4.7.3.16 | HA 4.8.4.13 | HA 4.2.3.5 | HA 4.2.3.2 | HA 4.7.3.14 | HA 4.2.1.13 | HA 4.6.2.7 | HA 4.8.1.1 | HA 4.8.2.19 | HA 2.1.1.18 | HA 4.5.1.2 | HA 4.4.3.12 | HA 3.4.4.3 | HTT 5.3.5.11 | HTT 5.5.1.9 | HA 1.4.4.11 | HA 4.8.4.8 | DAGXIII 2.1.25 | DAGXIII 2.1.18 | DAGXIII 2.1.2 | HA 1.1.2.9 | DAGXIII 2.1.15 | DAGXIII 2.1.14 | HA 4.8.3.15 | HA 3.3.1.9 | HA B.3.15 | HTT 4.1.3.1 | HTT 4.3.2.13 | HA 2.2.1.8 | HA 7.1.2.13 | HTT 2.3.4.1 | HTT 2.3.4.18 | HA 4.2.3.3 | HA 1.2.1.19 | HA 1.2.1.4 | HTT 1.2.13.4 | HTT 1.1.5.10 | HA 2.4.1.9 | HA 2.4.1.7 | HA 7.3.2.2 | HTT 5.5.2.3 | HA 4.8.4.12 | HTT 5.4.7.11 | HA 4.8.4.6 | HA 4.2.2.16 | HA 3.2.2.9 | HA 4.2.3.1 | HA 4.7.3.5 | HA 2.3.2.1 | HA 4.4.1.28 | HA B.3.2 | HA 3.1.2.5 | HA 2.4.4.6 | HTT 4.3.1.5 | HA 3.1.1.16 | HA 4.1.2.5 | HA 2.4.2.1 | HA 2.2.4.8 | HA 3.1.1.18 | HA 4.3.1.12 | HTT 5.1.6.10 | HTT 5.3.5.5 | HTT 5.1.3.2 | HTT 5.3.5.4 | HTT 4.2.3.11 | HTT 5.3.1.7 | HTT 5.3.4.5 | HTT 5.5.1.1 | HTT 5.1.5.6 | HTT 5.3.5.10 | HTT 5.3.4.17 | HTT 5.5.3.12 | HTT 5.2.7.8 | HA 1.2.1.16 | HTT 5.1.2.2 | HTT 5.3.5.8 | HTT 5.3.1.20 | HA 4.8.1.4 | HA 4.8.5.2 | HA 4.6.2.18 | DAGXIII 2.1.7 | DAGXIII 1.1.5 | DAGXIII 2.1.12 | DAGXIII 2.1.1 | HA 1.1.1.1 | HA 5.1.0.7 | HA 5.1.3.7 | HA 4.8.3.13 | HA 4.6.2.17 | HTT 4.3.2.15 | HTT 5.2.8.18 | HA 3.4.1.11 | HTT 2.4.7.12 | HTT 2.4.4.4 | HTT 4.2.1.5 | HTT 4.3.2.7 | HTT 4.3.2.12 | HA 2.2.1.3 | HTT 2.4.4.2 | HA 2.2.1.11 | HA 7.1.2.12 | HA 1.3.4.22 | HA 7.1.2.9 | HA 7.1.2.7 | HA 1.3.2.10 | HA 1.2.1.17 | HA 1.1.2.5 | HA 2.4.1.5 | HA 2.4.1.8 | HA 7.3.2.1 | HTT 5.2.2.1 | HTT 4.3.2.9 | HA 4.1.2.10 | HA 4.2.2.9 | HTT 5.4.7.15 | HA 4.2.2.8 | HA 4.8.4.3 | HA 4.2.2.12 | HA 3.2.2.8 | HTT 4.3.1.15 | HA 3.3.3.16 | HA 4.4.1.17 | HA 4.4.1.11 | HA 3.1.1.14 | HTT 4.3.1.9 | HTT 4.3.1.10 | HTT 2.4.4.6 | HTT 1.2.13.8 | HA B.3.7 | HA B.3.1 | HA 3.1.2.4 | HA 2.1.1.7 | HA 3.1.1.2 | HA 2.1.2.16 | HTT 5.3.5.3 | HTT 4.2.4.7 | HTT 5.3.5.2 | HTT 5.3.3.3 | HTT 4.2.3.4 | HTT 4.2.3.10 | HTT 5.3.4.15 | HTT 5.5.1.3 | HTT 5.3.4.18 | HTT 5.3.5.12 | HTT 5.2.7.5 | HTT 5.5.1.4 | HTT 5.4.2.2 | HTT 4.3.2.16 | HTT 5.1.5.5 | HTT 5.3.4.16 | HTT 5.4.6.6 | HTT 5.4.5.2 | HTT 5.4.5.5 | HTT 5.5.0.1 | HTT 3.3.3.2 | HTT 4.2.2.7 | HTT 5.1.2.1 | HTT 5.3.5.7 | HTT 5.3.5.9 | HA 4.2.4.9 | HA 4.6.2.1 | DAGXIII 2.1.3 | DAGXIII 2.1.6 | DAGXIII 2.1.11 | HTT 5.2.3.5 | HTT 1.2.12.9 | HA 3.4.4.2 | HA 2.4.4.1 | HA 4.6.2.13 | HTT 5.2.8.17 | HA 3.4.1.10 | HTT 2.4.7.11 | HTT 2.4.7.5 | HTT 1.2.4.3 | HTT 2.4.4.5 | HTT 4.3.1.14 | HTT 5.2.7.4 | HTT 2.4.4.3 | HA 4.1.7.6 | HA 7.1.1.16 | HA 1.3.1.17 | HA 1.4.2.27 | HA A.3.8 | HA 1.4.2.24 | HA 1.4.2.17 | HA 1.1.4.1 | HA 2.1.2.6 | HA 2.4.1.6 | HA 2.1.3.8 | HA 2.1.4.13 | HA 2.4.2.8 | HA 2.4.2.11 | HA 4.2.2.2 | HA 4.8.4.4 | HA 3.2.2.7 | HA 2.3.3.23 | HTT 1.2.9.3 | HA 4.4.1.1 | HTT 5.1.6.4 | HTT 3.3.4.5 | HTT 5.1.1.1 | HTT 5.3.1.18 | HTT 4.1.1.8 | HTT 4.2.4.3 | HTT 4.4.4.5 | HTT 5.3.1.17 | HTT 3.3.2.6 | HTT 5.3.4.14 | HTT 5.2.4.2 | HTT 5.4.1.8 | HTT 5.4.2.4 | HTT 4.3.3.10 | HTT 5.1.5.4 | HTT 4.1.2.18 | HTT 5.1.6.3 | HTT 5.4.2.9 | HTT 5.4.5.7 | HTT 5.4.6.1 | HTT 5.4.6.5 | HTT 5.4.5.12 | HTT 5.4.2.1 | HTT 5.4.2.5 | HTT 2.4.4.1 | HTT 5.4.5.4 | HTT 3.3.3.1 | HTT 2.4.4.9 | HA 4.8.1.2 | HTT 5.3.6.2 | HTT 5.3.6.11 | HTT 5.3.6.1 | HA 4.1.1.18 | HA 4.8.3.21 | DAGXIII 2.1.5 | DAGXIII 2.1.10 | DAGXIII 2.1.9 | HTT 5.2.3.1 | HA 3.4.1.5 | HA 3.4.4.6 | HTT 5.4.7.17 | HA 2.2.5.3 | HA 2.3.1.4 | HA 2.3.3.11 | HA 2.3.3.14 | HA 4.6.2.12 | HA 4.6.2.10 | HTT 5.2.8.19 | HTT 5.2.8.22 | HA B.3.20 | HTT 2.1.2.2 | HTT 2.1.1.5 | HTT 2.1.1.6 | HA 2.3.2.11 | HTT 4.3.1.13 | HTT 2.4.4.7 | HA 7.1.1.15 | HA 1.3.5.8 | HA 1.3.5.21 | HA 1.3.1.16 | HA 1.3.1.12 | HTT 5.5.3.18 | HA 1.4.2.11 | HA 1.4.2.26 | HA 1.1.3.3 | HA 1.4.2.23 | HA 1.4.2.16 | HA 1.1.3.4 | HTT 4.4.3.2 | HA 2.1.3.5 | HA 2.3.3.6 | HTT 4.4.4.10 | HTT 2.4.5.1 | HTT 2.4.1.4 | HA 2.2.4.11 | HA 2.2.4.5 | HTT 4.1.1.7 | HTT 4.2.4.8 | HTT 4.1.1.5 | HTT 3.3.2.3 | HTT 4.2.1.8 | HTT 5.4.4.3 | HTT 5.3.4.13 | HTT 5.3.4.8 | HTT 5.3.1.9 | HTT 4.4.5.15 | HTT 4.3.2.6 | HTT 4.3.3.9 | HTT 3.3.3.4 | HTT 4.1.2.17 | HTT 5.4.5.15 | HTT 5.3.1.21 | HTT 5.4.6.4 | HTT 5.4.6.3 | HTT 5.4.5.11 | HTT 5.4.5.3 | HTT 2.4.4.8 | HTT 3.1.3.3 | HA 4.3.2.1 | HA 4.8.3.19 | DAGXIII 2.1.4 | HA 2.3.1.5 | HA 4.7.4.13 | HTT 5.2.7.6 | HA 2.3.2.10 | HTT 4.3.2.8 | HA 1.3.5.15 | HA 1.3.5.18 | HA 1.3.4.24 | HA 1.3.4.25 | HTT 5.5.3.17 | HA 1.4.2.13 | HTT 5.5.4.20 | HTT 5.5.7.3 | HA 1.1.2.14 | HA 1.4.2.10 | HA 1.4.2.4 | HTT 4.4.2.6 | HTT 4.4.3.1 | HA B.2.4 | HA B.4.2 | HA B.2.11 | HA B.0.26 | HTT 4.4.4.9 | HTT 5.2.8.6 | HA 3.3.1.13 | HA 2.2.4.13 | HTT 1.2.2.3 | HTT 2.2.4.1 | HTT 4.2.1.7 | HTT 1.2.2.5 | HTT 5.4.4.2 | HTT 5.3.4.9 | HTT 5.3.4.10 | HTT 5.3.4.12 | HTT 4.4.5.9 | HTT 3.2.5.21 | HTT 4.3.2.5 | HTT 5.4.5.14 | HTT 5.4.5.13 | HTT 5.4.5.9 | HTT 3.1.3.2 | HA 4.8.3.9 | HTT 5.2.3.2 | HA B.3.18 | HTT 4.3.1.7 | HA 1.3.4.5 | HA 1.3.4.16 | HTT 5.5.4.18 | HTT 5.5.4.17 | HTT 5.5.3.16 | HA 1.4.2.1 | HA 1.4.2.12 | HA 1.4.2.15 | HTT 5.2.7.7 | HTT 5.5.4.11 | HTT 5.5.4.15 | HA 1.1.2.7 | HA 1.1.2.11 | HA 1.4.2.3 | HTT 5.5.4.19 | HTT 4.4.2.4 | HTT 4.4.2.2 | HA B.4.1 | HA 3.3.1.2 | HTT 3.2.1.10 | HTT 2.2.0.1 | HTT 1.2.5.1 | HTT 5.4.1.2 | HA 5.3.1.19 | HA B.3.17 | HA 1.3.4.15 | HA 1.3.4.20 | HTT 5.5.3.15 | HTT 5.5.4.10 | HTT 5.5.4.5 | HTT 5.5.5.14 | HTT 5.5.4.6 | HTT 5.5.4.2 | HA B.4.12 | HA 1.3.4.10 | HTT 5.5.5.9 | HTT 5.5.5.11 | HTT 5.5.5.12 | HTT 5.5.5.13 | HTT 4.4.5.12 | HTT 5.5.4.4 | HTT 5.4.7.2 | HA B.4.9 | HA 1.3.4.18 | HA 4.1.7.1 | HTT 5.3.5.15 | HTT 5.5.4.13 | HTT 4.4.2.9 | HTT 5.4.7.1 | HA B.4.8 | HA 4.1.8.4 | HTT 5.3.1.12 | HTT 4.4.2.8 | HTT 4.4.5.10 | HA 4.1.8.8 | HA 3.2.3.5 | HA 3.2.3.1 | HTT 5.5.8.6 | HA 2.1.2.12 | HTT 4.4.2.7 | HA 1.3.3.10 | HA 3.2.3.2 | HTT 5.2.2.12 | HA 3.2.3.6 | HTT 5.3.5.14 | HA 3.1.3.15 | HTT 5.2.1.3 | HTT 5.3.2.9 | HTT 5.5.6.28 | HTT 5.2.2.10 | HTT 5.3.2.8 | HTT 5.2.2.6 | HTT 5.3.2.5 | HTT 6.1.1.6 | HTT 5.5.6.15 | HTT 5.2.1.5 | HTT 5.3.1.19,implicit-definition: 主張に使う定義・記法：∞-category
+HA,2.0.0.7,Definition,DAGXIII 2.2.1 | DAGXIII 2.2.2 | DAGXIII 2.2.4 | HA 4.5.2.1 | DAGXIII 2.2.3 | HA 5.1.1.7 | HA 2.4.2.5 | HA 4.8.2.19 | HA 4.8.4.8 | HA 7.1.2.13 | HA 2.4.1.7 | HA 5.1.0.7 | HA 7.1.2.7 | HA 2.4.1.5 | HA 2.4.1.8 | HA 2.4.1.6 | HA 2.1.4.13 | HA 3.2.3.2,implicit-definition: 主張に使う定義・記法：symmetric monoidal ∞-category
+HTT,1.1.2.1,Definition,DAGXIII 2.2.1 | HTT 1.1.2.4 | HTT 1.1.2.2 | HA 4.8.2.19 | DAGXIII 2.1.18 | DAGXIII 2.1.2 | HA 3.3.1.9 | HTT 1.1.5.10 | DAGXIII 2.1.7 | DAGXIII 1.1.5 | DAGXIII 2.1.17 | DAGXIII 2.1.1 | HA 1.1.1.1 | HA 5.1.3.7 | HTT 3.1.1.1 | HTT 4.3.2.16 | HTT 4.2.2.7 | DAGXIII 2.1.3 | DAGXIII 2.1.6 | DAGXIII 2.1.11 | HTT 1.2.12.9 | HTT 2.1.3.3 | HA 2.3.3.23 | DAGXIII 2.1.5 | HTT 5.2.8.22 | HTT 2.1.3.2 | HTT 2.4.5.1 | HTT 4.1.1.7 | HTT 4.1.1.5 | HTT 4.2.1.8 | HTT 3.1.3.3 | DAGXIII 2.1.4 | HA B.1.14 | HA 3.3.1.13 | HTT 1.2.2.3 | HTT 4.2.1.7 | HTT 2.2.3.6 | HTT 3.1.3.2 | HTT 2.2.0.1 | HTT 1.2.5.1 | HTT 2.2.2.10 | HTT 5.5.4.3 | HTT 5.3.2.6,implicit-definition: 主張に使う定義・記法：Kan complex
+HA,2.4.2.6,Remark,DAGXIII 2.2.1,reused-named-prerequisite: 番号つき項目の名前つき前提／版対応（order.md参照）（旧採取の名前つき前提を当該項目の本文位置へ照合）
+HA,2.0.0.2,Notation,DAGXIII 2.2.1 | HA 2.0.0.7 | HA 2.1.1.10 | HA 2.1.1.7,implicit-definition: Fin_*の記法
+HA,4.8.4.1,Theorem,DAGXIII 2.2.5 | HA 4.8.4.14 | HA 4.8.4.8 | HA 4.6.2.10,edition-correspondence: 旧Higher Algebra A.7.1.2.4の名前つき内容に対応する現行項目。番号の文字列一致ではない
+HA,7.2.4.1,Definition,DAGXIII 2.2.5,implicit-definition: 主張に使う定義・記法：perfect module
+HA,7.1.0.1,Definition,DAGXIII 2.2.5 | HA 7.1.3.8 | HA 7.2.4.1 | HA 7.2.4.2 | HA 7.1.1.13 | HA 7.1.2.13 | HA 7.1.2.7 | HA 7.1.1.15,implicit-definition: 主張に使う定義・記法：Ek-ring / E∞-ring
+HA,4.5.2.1,Theorem,DAGXIII 2.2.5,reused-named-prerequisite: 番号つき項目の名前つき前提／版対応（order.md参照）（旧採取の名前つき前提を当該項目の本文位置へ照合）
+HA,7.2.4.2,Proposition,DAGXIII 2.2.5,reused-named-prerequisite: 番号つき項目の名前つき前提／版対応（order.md参照）（旧採取の名前つき前提を当該項目の本文位置へ照合）
+DAGXIII,2.2.3,Proposition,DAGXIII 2.2.5,implicit-definition: T_pのexcisive/colimit-preserving延長の前提となるexactness（Example 2.2.5と併せて）
+HA,1.1.1.9,Definition,DAGXIII 2.1.23 | DAGXIII 2.1.16 | HA 1.4.4.11 | HA 1.2.1.19 | HA 1.2.1.4 | HA 1.2.1.16 | HA 1.2.1.17 | HA 1.1.4.1 | HA 1.1.3.3 | HA 1.4.2.23 | HA 1.3.5.18 | HA 1.1.2.7,implicit-definition: 主張に使う定義・記法：stable ∞-category
+DAGXIII,2.1.21,Example,DAGXIII 2.1.23,implicit-definition: norm N m : M_G→M^G の構成を使う
+DAGXIII,2.1.16,Example,DAGXIII 2.1.23,implicit-definition: stable ∞-categoryからsemiadditiveなnormの入力を得る
+HA,7.1.3.5,Definition,HA 7.1.3.8,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,5.1.4.10,Theorem,HA 7.1.3.8,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.4.1.4,Proposition,HA 7.1.3.8,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,7.1.3.15,Proposition,HA 7.1.3.18,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,7.1.3.16,Remark,HA 7.1.3.18,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,5.1.1.7,Corollary,HA 7.1.3.18,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,7.1.1.13,Proposition,HA 7.1.3.18 | HA 7.1.3.10 | HA 7.1.1.16,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.2.2.5,Corollary,HA 7.1.3.18,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,2.1.1.10,Definition,HA 2.1.3.1 | HA 2.4.2.6 | HA 7.1.0.1 | HA 4.5.2.1 | HA 5.1.4.10 | HA 3.4.1.4 | HA 3.2.2.5 | HA 2.1.2.10 | HA 2.4.2.5 | HA 2.4.2.4 | HA 4.1.1.10 | HA 4.2.1.19 | HA 4.2.1.13 | HA 5.1.1.5 | HA 2.1.1.18 | HA 4.5.1.2 | HA 4.5.2.2 | HA 3.4.4.5 | HA 3.4.4.3 | HA 3.1.1.20 | HA 3.4.4.4 | HA 3.1.1.15 | HA 4.4.2.8 | HA 5.1.3.2 | HA 3.4.1.3 | HA 3.3.1.9 | HA 3.3.3.7 | HA 3.3.3.3 | HA 3.4.3.15 | HA 2.2.1.6 | HA 2.2.1.8 | HA 2.2.1.9 | HA 5.1.1.1 | HA 5.1.1.11 | HA 4.2.1.17 | HA 3.2.2.1 | HA 2.4.1.7 | HA 4.2.2.17 | HA 4.2.2.16 | HA 2.3.2.1 | HA 4.4.1.28 | HA 4.4.2.10 | HA 3.2.1.1 | HA 3.1.1.13 | HA 3.1.1.10 | HA 3.1.2.3 | HA 3.1.1.7 | HA 3.1.1.16 | HA 4.1.1.3 | HA 2.4.2.1 | HA 2.2.4.8 | HA 3.1.1.18 | HA 4.4.2.5 | HA 4.3.1.12 | HA 5.1.3.1 | HA 3.4.4.7 | HA 5.1.0.7 | HA 5.1.2.11 | HA 3.4.1.12 | HA 2.3.1.1 | HA 3.3.3.11 | HA 3.4.3.13 | HA 3.4.3.14 | HA 2.2.1.3 | HA 2.2.1.1 | HA 5.1.1.9 | HA 4.2.1.9 | HA 2.1.2.11 | HA 2.1.2.9 | HA 4.2.2.9 | HA 4.2.2.8 | HA 4.2.2.12 | HA 4.1.3.19 | HA 3.3.3.16 | HA 4.4.1.27 | HA 4.4.1.11 | HA 3.3.3.5 | HA 3.3.3.8 | HA 3.1.1.14 | HA 2.1.2.4 | HA 3.1.1.8 | HA 3.1.1.12 | HA 2.1.1.21 | HA 2.2.4.4 | HA 3.1.1.2 | HA 2.1.2.16 | HA 4.4.1.9 | HA 3.3.2.1 | HA 3.4.1.7 | HA 3.4.4.2 | HA 5.1.2.2 | HA 2.4.4.2 | HA 2.4.4.1 | HA 2.3.2.5 | HA 2.1.2.6 | HA 2.1.2.7 | HA 2.1.3.8 | HA 4.1.2.11 | HA 2.4.2.8 | HA 2.4.2.11 | HA 4.8.4.4 | HA 4.2.2.26 | HA 2.1.4.6 | HA 2.3.3.23 | HA 3.3.3.10 | HA 2.1.4.5 | HA 2.1.2.2 | HA 3.1.1.9 | HA 3.1.1.11 | HA 2.1.1.19 | HA 2.1.1.20 | HA 2.2.4.15 | HA 2.2.4.6 | HA 4.4.1.8 | HA 3.4.1.5 | HA 3.4.4.6 | HA 5.1.2.1 | HA 2.2.5.3 | HA 2.3.1.4 | HA 2.4.4.3 | HA 2.3.3.11 | HA 2.3.3.14 | HA 2.4.3.5 | HA 2.3.2.11 | HA 2.1.3.5 | HA 2.3.3.6 | HA 2.1.3.4 | HA 4.3.2.2 | HA 3.3.3.18 | HA 3.3.3.9 | HA 2.2.4.14 | HA 2.2.4.5 | HA 4.3.2.6 | HA 3.1.1.21 | HA 2.3.1.5 | HA 2.3.2.10 | HA 3.3.1.3 | HA 3.3.3.17 | HA 3.3.1.13 | HA 3.3.1.2 | HA 3.3.3.14 | HA 5.3.1.19 | HA 3.3.3.4 | HA 3.2.3.5 | HA 3.1.3.5 | HA 3.2.3.1 | HA 3.2.2.6 | HA 3.2.3.4 | HA 3.2.3.3 | HA 3.1.1.19 | HA 3.1.3.4 | HA 3.2.3.7 | HA 2.1.2.12 | HA 3.1.3.6 | HA 3.1.3.3 | HA 3.1.3.2 | HA 3.1.3.15 | HA 3.1.3.16 | HA 3.1.2.2,implicit-definition: 主張に使う定義・記法：∞-operad
+HA,2.1.2.10,Definition,HA 2.1.3.1 | HA 5.1.4.10 | HA 3.4.1.4 | HA 3.2.2.5 | HA 4.1.1.10 | HA 4.2.1.19 | HA 4.2.1.13 | HA 3.4.4.5 | HA 3.4.4.3 | HA 3.4.4.4 | HA 3.1.1.15 | HA 4.4.2.8 | HA 5.1.3.2 | HA 3.4.3.15 | HA 2.2.1.6 | HA 2.2.1.8 | HA 2.2.1.9 | HA 4.2.1.17 | HA 3.2.2.1 | HA 4.2.2.17 | HA 4.2.2.16 | HA 4.4.1.28 | HA 4.4.2.10 | HA 3.2.1.1 | HA 3.1.1.13 | HA 3.1.1.10 | HA 3.1.2.3 | HA 3.1.1.7 | HA 3.1.1.16 | HA 2.2.4.8 | HA 3.1.1.18 | HA 4.4.2.5 | HA 4.3.1.12 | HA 5.1.3.1 | HA 3.4.4.7 | HA 3.4.1.12 | HA 3.4.3.13 | HA 3.4.3.14 | HA 2.2.1.3 | HA 2.2.1.1 | HA 4.2.1.9 | HA 2.1.2.11 | HA 4.2.2.12 | HA 4.1.3.19 | HA 4.4.1.27 | HA 3.1.1.8 | HA 3.1.1.12 | HA 2.2.4.4 | HA 3.1.1.2 | HA 3.4.1.7 | HA 4.8.4.4 | HA 4.2.2.26 | HA 2.1.4.6 | HA 3.1.1.9 | HA 3.1.1.11 | HA 2.2.4.15 | HA 3.4.1.5 | HA 3.4.4.6 | HA 2.1.3.4 | HA 4.3.2.2 | HA 3.3.3.9 | HA 2.2.4.14 | HA 4.3.2.6 | HA 3.1.1.21 | HA 3.2.3.5 | HA 3.1.3.5 | HA 3.2.3.1 | HA 3.2.2.6 | HA 3.2.3.4 | HA 3.2.3.3 | HA 3.1.3.4 | HA 3.2.3.7 | HA 3.1.3.3 | HA 3.1.3.2 | HA 3.1.3.16 | HA 3.1.2.2,implicit-definition: 主張に使う定義・記法：fibration of ∞-operads
+HTT,1.1.5.12,Corollary,HA 5.1.0.2,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,1.1.2.2,Proposition,HTT 1.1.2.4,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.4.2.1,Definition,HA 2.0.0.7 | HA 5.1.4.10 | HA 3.2.2.5 | HA 2.4.2.4 | HA 4.1.1.10 | HA 4.2.1.19 | HA 4.2.3.2 | HA 4.6.2.7 | HA 4.5.2.2 | HA 3.1.1.20 | HA 3.1.1.15 | HA 4.4.2.8 | HA 5.1.3.2 | HA 4.8.3.15 | HA 3.4.2.2 | HA 2.2.1.6 | HA 2.2.1.8 | HA 2.2.1.9 | HTT 5.4.7.11 | HA 4.4.2.10 | HA 3.1.1.13 | HA 3.1.1.16 | HA 3.1.1.18 | HA 4.8.3.13 | HTT 5.2.2.4 | HA 3.4.1.11 | HTT 2.4.7.12 | HTT 2.4.4.4 | HTT 3.3.1.3 | HTT 4.1.2.15 | HTT 4.1.3.2 | HA 2.2.1.3 | HA 2.2.1.1 | HA 2.2.1.11 | HA 2.4.1.5 | HTT 5.2.2.1 | HTT 5.4.7.15 | HTT 4.3.1.15 | HTT 4.3.1.10 | HTT 2.4.4.6 | HTT 3.2.2.7 | HA 2.2.4.4 | HA 2.1.2.16 | HTT 3.3.3.2 | HTT 4.2.2.7 | HTT 5.1.2.1 | HA 4.8.1.3 | HTT 2.4.2.8 | HA 3.4.1.10 | HTT 2.4.7.5 | HTT 3.3.1.2 | HTT 2.4.4.5 | HTT 3.3.1.7 | HTT 4.2.2.4 | HTT 4.3.1.14 | HTT 3.2.2.13 | HA 4.8.4.4 | HTT 2.4.2.4 | HA 2.2.4.15 | HTT 3.3.2.2 | HTT 3.3.3.1 | HTT 2.4.4.9 | HTT 3.3.1.5 | HTT 5.2.3.4 | HA 3.4.4.6 | HTT 5.4.7.17 | HTT 2.4.2.7 | HTT 4.2.2.3 | HTT 2.4.4.7 | HTT 3.2.2.12 | HA 2.1.3.4 | HA 2.2.4.11 | HTT 3.3.2.3 | HTT 5.2.4.1 | HTT 4.3.3.9 | HTT 2.4.4.8 | HTT 3.1.3.5 | HTT 3.1.3.3 | HA 4.8.3.19 | HA 3.1.1.21 | HA 2.4.4.4 | HTT 3.1.2.1 | HA B.4.2 | HA B.0.19 | HA B.0.26 | HTT 5.4.4.2 | HTT 3.2.5.21 | HTT 3.2.2.4 | HTT 3.2.4.2 | HTT 2.4.3.2 | HTT 3.1.3.6 | HTT 3.1.1.10 | HTT 5.5.3.16 | HTT 2.4.2.10 | HA B.4.1 | HTT 5.4.4.1 | HTT 4.3.1.11 | HTT 3.1.4.1 | HTT 3.1.1.8 | HTT 3.2.2.14 | HTT 5.5.3.15 | HA B.4.12 | HA 1.3.4.19 | HA B.4.10 | HA 4.1.7.1 | HA 3.2.3.5 | HA 3.1.3.5 | HA 3.2.3.3 | HA 3.1.1.19 | HA 3.2.3.7 | HA 2.1.2.12 | HA 3.1.3.6 | HTT 3.3.1.4 | HTT 5.2.1.3 | HTT 5.2.2.11 | HTT 3.2.2.10 | HTT 5.3.2.6 | HTT 3.2.2.11 | HTT 5.2.2.3 | HTT 5.2.1.5,implicit-definition: 主張に使う定義・記法：coCartesian fibration（oppositeの規約）
+HA,2.0.0.3,Remark,HA 2.0.0.7,implicit-definition: Fin_*の有限集合の圏
+HA,2.4.2.5,Proposition,HA 2.4.2.6 | HA 4.2.2.9,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,2.4.2.4,Example,HA 2.4.2.6 | HA 4.1.7.3,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.1.1.10,Definition,HA 2.4.2.6 | HA 4.8.4.1 | HA 7.1.3.5 | HA 2.4.2.4 | HA 4.6.2.9 | HA 4.8.4.10 | HA 4.2.4.8 | HA 4.8.4.13 | HA 4.2.3.5 | HA 4.2.3.2 | HA 4.6.2.7 | HA 4.4.3.12 | HA 4.8.3.15 | HA 4.2.3.3 | HA 4.8.4.12 | HA 4.8.4.6 | HA 4.2.3.1 | HA 4.7.3.5 | HA 2.2.4.8 | HA 4.8.1.4 | HA 4.8.5.2 | HA 4.6.2.18 | HA 4.8.3.13 | HA 4.6.2.17 | HA 3.1.1.14 | HA 4.2.4.9 | HA 4.6.2.1 | HA 3.4.4.2 | HA 4.6.2.13 | HA 4.1.7.6 | HA 2.1.3.8 | HA 4.8.4.4 | HA 4.1.1.18 | HA 4.8.3.21 | HA 3.4.4.6 | HA 4.6.2.12 | HA 4.6.2.10 | HA 2.1.3.5 | HA 4.8.3.9,implicit-definition: 主張に使う定義・記法：monoidal ∞-category
+HA,4.6.2.9,Remark,HA 4.8.4.1,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.2.1.19,Definition,HA 4.8.4.1 | HA 4.6.2.9 | HA 4.8.4.10 | HA 4.8.4.13 | HA 4.2.3.5 | HA 4.2.3.2 | HA 4.6.2.7 | HA 4.8.3.15 | HA 4.2.3.3 | HA 4.8.4.12 | HA 4.8.4.6 | HA 4.2.3.1 | HA 4.8.3.13 | HA 4.6.2.17 | HA 4.6.2.1 | HA 4.8.4.4 | HA 4.6.2.10 | HA 4.8.3.19 | HA 4.8.3.9,implicit-definition: 主張に使う定義・記法：left-tensored ∞-category
+HA,4.8.4.10,Lemma,HA 4.8.4.1,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.2.4.8,Corollary,HA 4.8.4.1 | HA 7.2.4.2 | HA 7.1.1.13 | HA 4.8.4.6 | HA 4.2.4.9,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.7.3.16,Corollary,HA 4.8.4.1 | HA 4.8.4.6 | HA 4.1.8.4,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.8.4.13,Lemma,HA 4.8.4.1 | HA 4.8.4.14,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.8.4.14,Remark,HA 4.8.4.1,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.2.3.5,Corollary,HA 4.8.4.1 | HA 7.1.1.13 | HA 4.8.4.6 | HA 4.6.2.13,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.2.3.2,Corollary,HA 4.8.4.1 | HA 4.2.3.5 | HA 4.8.3.15 | HA 4.8.4.6 | HA 4.2.4.9,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.7.3.14,Proposition,HA 4.8.4.1 | HA 4.6.2.13 | HA 3.2.3.3,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.2.1.13,Definition,HA 4.8.4.1 | HA 4.2.2.9,implicit-definition: RMod/LModをoppositeで定める加群対象の定義
+HA,4.6.2.7,Definition,HA 4.8.4.1 | HA 4.6.2.10,implicit-definition: C-linear functorの定義
+HA,4.8.1.1,Definition,HA 4.8.4.1,implicit-definition: Cat∞(K)の記法
+HA,5.1.1.5,Corollary,HA 7.1.0.1,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.8.2.19,Corollary,HA 7.1.0.1,section-reference-resolution: 節参照 HA §4.8.2 の構成・定義・証明の項目への内容対応。節全体は追加しない
+HA,2.1.1.18,Example,HA 7.1.0.1 | HA 5.1.1.5 | HA 2.1.1.21 | HA 2.2.4.4 | HA 2.4.3.5,implicit-definition: 主張に使う定義・記法：commutative ∞-operad
+HA,4.5.1.2,Remark,HA 4.5.2.1,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.4.3.12,Proposition,HA 4.5.2.1,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.5.2.2,Proposition,HA 4.5.2.1,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.4.4.5,Example,HA 4.5.2.1,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.4.4.3,Theorem,HA 4.5.2.1 | HA 3.4.4.4 | HA 5.1.3.2 | HA 3.4.4.7 | HA 3.4.4.2 | HA 3.4.4.6,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.1.1.20,Proposition,HA 4.5.2.1 | HA 5.1.3.2 | HA 3.1.1.21 | HA 3.1.3.5,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.1.2.9,Construction,HA 4.5.2.1 | HA 4.2.2.17 | HA 4.4.1.28 | HA 4.1.2.10 | HA 4.2.2.8 | HA 4.1.3.19 | HA 4.4.1.27 | HA 4.8.4.4 | HA 4.4.1.12,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.4.4.4,Corollary,HA 4.5.2.1 | HA 3.4.4.5,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.1.1.15,Proposition,HA 4.5.2.1 | HA 3.1.1.20 | HA 4.4.2.8,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.4.2.8,Theorem,HA 4.5.2.1,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.3.5.11,Proposition,HA 7.2.4.2 | HTT 5.5.1.1 | HTT 5.5.1.3 | HTT 5.3.5.12 | HTT 5.4.2.2 | HTT 5.4.5.15 | HTT 5.5.5.9 | HTT 5.3.5.15,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.5.1.9,Proposition,HA 7.2.4.2 | HTT 5.5.5.9,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.4.4.11,Proposition,HA 7.2.4.2 | HA 7.1.1.13,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.8.4.8,Remark,HA 7.2.4.2,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+DAGXIII,2.1.25,Example,DAGXIII 2.2.3,explicit-citation: itemの論文内番号参照
+DAGXIII,2.1.18,Construction,DAGXIII 2.1.21,explicit-citation: itemの論文内番号参照
+DAGXIII,2.1.2,Example,DAGXIII 2.1.21,implicit-definition: G-equivariant object、homotopy orbit/fixed pointsの記法
+HA,1.1.2.9,Lemma,DAGXIII 2.1.16 | HA 1.1.4.1 | HA 1.1.3.4,edition-correspondence: 旧Higher Algebra A.1.1.2.8の名前つき内容に対応する現行項目。番号の文字列一致ではない
+DAGXIII,2.1.15,Example,DAGXIII 2.1.16,explicit-citation: itemの論文内番号参照
+DAGXIII,2.1.14,Remark,DAGXIII 2.1.16,explicit-citation: itemの論文内番号参照
+HA,5.1.3.2,Theorem,HA 5.1.4.10,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.8.3.15,Lemma,HA 5.1.4.10 | HA 4.8.3.21,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.5.8.4,Lemma,HA 5.1.4.10,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,5.1.4.12,Lemma,HA 5.1.4.10,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.4.1.3,Proposition,HA 3.4.1.4 | HA 3.4.1.5,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.3.1.9,Definition,HA 3.4.1.4 | HA 4.5.1.2 | HA 3.4.1.3 | HA 5.1.1.11 | HA 5.1.3.1 | HA 3.4.1.7 | HA 3.4.4.2 | HA 3.3.3.10 | HA 3.4.1.5 | HA 3.3.3.18 | HA 3.3.3.14,implicit-definition: 主張に使う定義・記法：coherent ∞-operad
+HA,3.3.3.7,Remark,HA 3.4.1.4 | HA 3.3.3.16,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,B.4.5,Proposition,HA 3.4.1.4 | HA B.4.1 | HA B.4.11 | HA B.4.10,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,B.3.16,Corollary,HA 3.4.1.4,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.3.3.3,Lemma,HA 3.4.1.4 | HA 3.3.3.7,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,B.3.15,Corollary,HA 3.4.1.4 | HA B.4.5 | HA B.3.16 | HA 3.2.2.8 | HA 3.3.3.14,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.4.2.2,Lemma,HA 3.4.1.4,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.1.3.1,Theorem,HA 3.4.1.4 | HA 1.4.4.11 | HA 5.1.3.2 | HTT 5.5.8.4 | HA 5.1.4.12 | HA 3.4.1.11 | HA A.3.2 | HA 2.4.2.11 | HA 2.3.3.23 | HTT 5.4.5.12 | HA 2.3.2.11 | HTT 5.4.4.2 | HA B.4.12 | HTT 5.3.5.15 | HTT 4.4.5.11 | HTT 4.2.3.15 | HTT 4.2.3.16 | HTT 6.5.3.7,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.4.3.15,Lemma,HA 3.4.1.4 | HA 3.4.1.12,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.3.2.13,Lemma,HA 3.4.1.4 | HA 3.4.1.3 | HA 3.4.2.2 | HA 3.2.2.1 | HA 3.2.2.9 | HA 4.4.1.28 | HA 4.4.1.17 | HA 4.4.1.11 | HTT 5.1.5.5 | HA 2.4.1.6 | HA 2.4.2.11 | HA 2.3.3.23 | HA 2.3.2.11 | HA 2.4.4.4 | HTT 5.4.4.2 | HA B.4.12,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,2.2.1.6,Definition,HA 7.1.3.15 | HA 2.2.1.8,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,2.2.1.8,Proposition,HA 7.1.3.15,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,7.1.3.10,Lemma,HA 7.1.3.15,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,2.2.1.9,Proposition,HA 7.1.3.15 | HA 4.1.7.3,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,7.1.2.13,Theorem,HA 7.1.3.16,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,5.1.1.4,Proposition,HA 5.1.1.7,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,5.1.1.1,Theorem,HA 5.1.1.7,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,5.1.1.11,Proposition,HA 5.1.1.7 | HA 5.1.1.1,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.3.4.1,Definition,HA 5.1.1.7 | HTT 2.3.4.18 | HTT 2.3.4.2,section-reference-resolution: 節参照 HTT §2.3.4 の構成・定義・証明の項目への内容対応。節全体は追加しない
+HTT,2.3.4.18,Proposition,HA 5.1.1.7,section-reference-resolution: 節参照 HTT §2.3.4 の構成・定義・証明の項目への内容対応。節全体は追加しない
+HA,4.2.1.17,Example,HA 7.1.1.13,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.2.3.3,Corollary,HA 7.1.1.13,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.2.1.19,Proposition,HA 7.1.1.13 | HA 1.3.5.21,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.2.1.4,Definition,HA 7.1.1.13 | HA 1.4.4.11 | HA 2.2.1.8 | HA 7.1.3.10 | HA 1.2.1.19 | HA 1.2.1.16 | HA 2.2.1.3 | HA 1.2.1.17 | HA 1.3.5.21 | HA 1.3.5.18 | HA 1.3.2.19,section-reference-resolution: 節参照 HA §1.2.1 の構成・定義・証明の項目への内容対応。節全体は追加しない
+HA,3.2.2.1,Proposition,HA 3.2.2.5,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,1.2.13.4,Definition,HA 3.2.2.5 | HA 4.8.4.13 | HA 4.2.3.5 | HA 4.5.2.2 | HA 3.4.4.3 | HA 3.1.1.20 | HA 3.4.4.4 | HA 3.1.1.15 | HA 3.4.3.15 | HA 4.2.3.3 | HA 3.2.2.1 | HTT 5.5.2.3 | HA 3.2.2.9 | HA 4.2.3.1 | HA 2.3.2.1 | HA 3.2.1.1 | HA 3.1.1.13 | HA 3.1.1.10 | HA 3.1.2.3 | HA 3.1.1.7 | HA 3.1.1.16 | HA 4.4.2.5 | HTT 5.1.2.2 | HA 3.4.4.7 | HA 3.4.1.12 | HTT 4.2.1.5 | HA 2.1.2.11 | HTT 4.3.1.15 | HA 3.1.1.14 | HTT 4.3.1.9 | HTT 4.3.1.10 | HA 3.1.1.8 | HA 3.1.1.12 | HA 2.2.4.16 | HA 3.1.1.2 | HTT 5.2.7.5 | HTT 5.4.5.5 | HA 3.1.1.4 | HA 3.4.4.2 | HA 2.1.2.6 | HTT 4.3.1.2 | HA 3.1.1.6 | HA 3.1.1.9 | HA 3.1.1.11 | HTT 5.3.1.17 | HTT 5.1.5.4 | HTT 5.1.6.3 | HTT 5.3.6.2 | HTT 5.3.6.11 | HTT 5.3.6.1 | HA 3.4.4.6 | HTT 4.3.1.1 | HTT 5.4.5.6 | HA 3.1.1.21 | HA 2.3.2.10 | HA 1.3.4.24 | HA B.0.19 | HA B.0.26 | HA B.4.12 | HA B.4.9 | HTT 4.4.2.8 | HA 3.2.3.1 | HA 3.1.3.4 | HA 3.2.3.2 | HA 3.1.3.3 | HA 3.1.3.1 | HA 3.1.2.2,implicit-definition: 主張に使う定義・記法：limit diagram
+HTT,2.4.1.1,Definition,HA 2.1.1.10 | HTT 2.4.2.1 | HA 4.6.2.7 | HA 3.1.1.15 | HA 4.4.2.8 | HA 4.8.4.12 | HTT 5.4.7.11 | HA 2.3.2.1 | HA 2.4.4.6 | HA 2.2.4.8 | HA 4.8.3.13 | HA 3.4.1.11 | HTT 2.4.4.4 | HTT 2.4.4.2 | HA 2.2.1.11 | HA 2.4.1.5 | HA 4.8.4.3 | HTT 4.3.1.15 | HA 3.1.1.14 | HA 3.1.2.4 | HA 2.2.4.16 | HTT 2.4.2.8 | HA 3.4.1.10 | HTT 4.3.1.14 | HTT 3.2.2.13 | HTT 4.3.3.10 | HTT 3.3.1.5 | HA 2.3.3.11 | HTT 4.2.2.3 | HTT 3.2.2.12 | HTT 2.4.1.6 | HA 2.3.3.6 | HTT 5.2.4.1 | HTT 4.3.3.9 | HA 2.4.4.4 | HA 2.3.2.10 | HA B.4.2 | HA B.0.19 | HA B.1.7 | HA 3.3.3.17 | HA 2.2.4.13 | HTT 5.2.3.2 | HA B.4.1 | HTT 3.1.1.8 | HA 5.3.1.19 | HA B.4.11 | HA B.4.12 | HA B.4.10 | HA B.3.4 | HA B.4.8 | HTT 5.2.2.10 | HTT 5.2.2.3,implicit-definition: 主張に使う定義・記法：Cartesian/coCartesian edge
+HA,2.1.1.8,Definition,HA 2.1.1.10,implicit-definition: inert morphismの定義
+HTT,1.1.5.10,Proposition,HTT 1.1.5.12,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.0.0.3,Definition,HTT 2.4.2.1 | HA 3.4.2.2 | HTT 2.4.1.1 | HTT 2.4.1.7 | HTT 4.3.1.5 | HA 3.1.1.5 | HTT 3.1.1.11 | HTT 5.3.4.5 | HA B.3.14 | HTT 2.1.3.4 | HTT 4.2.1.5 | HTT 2.4.4.2 | HTT 4.3.1.15 | HTT 2.4.1.3 | HTT 4.3.1.9 | HTT 2.1.2.1 | HTT 2.1.2.5 | HA B.3.7 | HA 3.1.2.4 | HTT 5.1.5.2 | HTT 3.3.2.7 | HA B.3.21 | HTT 4.1.1.1 | HTT 4.3.2.2 | HTT 4.3.2.11 | HTT 4.3.1.14 | HTT 4.3.2.10 | HTT 2.1.3.3 | HTT 2.4.4.3 | HTT 2.4.1.8 | HA 3.2.2.7 | HTT 4.3.1.2 | HTT 2.1.2.9 | HTT 2.4.2.4 | HTT 3.3.4.5 | HTT 4.4.4.5 | HTT 3.3.2.6 | HTT 5.3.4.14 | HTT 5.2.4.2 | HTT 2.4.4.1 | HA B.3.20 | HTT 2.4.7.10 | HTT 2.4.7.2 | HTT 2.1.2.2 | HTT 2.1.1.5 | HTT 2.1.1.6 | HTT 4.3.1.13 | HTT 2.1.3.2 | HTT 2.4.1.6 | HTT 4.3.1.1 | HTT 2.4.1.4 | HTT 2.2.3.12 | HTT 4.1.1.7 | HTT 3.3.2.8 | HTT 4.2.1.6 | HTT 2.1.4.9 | HTT 5.3.4.8 | HTT 5.2.4.1 | HTT 4.3.2.6 | HTT 3.3.3.4 | HTT 3.3.1.6 | HA 2.4.4.5 | HA B.3.19 | HTT 4.1.1.11 | HA B.0.19 | HA B.1.7 | HA 2.2.4.13 | HTT 2.2.5.1 | HTT 2.2.3.6 | HTT 4.3.1.6 | HTT 2.2.3.13 | HTT 2.1.3.1 | HTT 3.1.1.6 | HTT 2.1.1.4 | HA B.3.18 | HTT 4.3.1.7 | HTT 2.4.2.10 | HTT 2.4.1.5 | HTT 2.2.3.4 | HTT 2.2.0.1 | HTT 2.2.3.15 | HTT 5.3.4.11 | HTT 2.1.2.10 | HA B.3.5 | HTT 2.2.3.7 | HA B.3.4 | HTT 4.4.2.9 | HTT 3.2.5.5 | HTT 4.4.2.8 | HTT 4.2.3.15 | HTT 4.4.2.7 | HTT 5.2.2.11 | HA 3.1.3.1 | HTT 5.2.2.10,implicit-definition: 主張に使う定義・記法：inner fibration
+HA,2.4.1.9,Corollary,HA 2.4.2.5,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,2.4.1.7,Proposition,HA 2.4.2.5 | HA 2.4.1.8 | HA 4.1.7.10,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,7.3.2.2,Definition,HA 4.8.4.10,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,7.3.2.3,Remark,HA 4.8.4.10,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.5.2.3,Lemma,HA 4.8.4.14 | HA 3.2.2.1 | HTT 5.5.5.9 | HA 3.2.3.3 | HTT 5.5.8.6,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.8.4.12,Lemma,HA 4.8.4.14,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.4.7.11,Proposition,HA 4.8.4.14 | HA 3.2.3.5,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.2.2.17,Notation,HA 4.8.4.14 | HA 4.2.3.5 | HA 4.8.4.12 | HA 4.2.3.1 | HA 4.8.4.4,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.8.4.6,Theorem,HA 4.8.4.14 | HA 4.8.4.8,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.2.2.16,Corollary,HA 4.2.3.5,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.2.2.9,Lemma,HA 4.2.3.5 | HA 3.2.2.1 | HA 4.2.3.1 | HA 2.2.4.4 | HA 3.3.3.17 | HA 3.2.3.1,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.2.3.1,Proposition,HA 4.2.3.2,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.7.3.5,Theorem,HA 4.7.3.14,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,2.3.2.1,Definition,HA 4.5.1.2 | HA 4.4.2.8 | HA 4.4.2.10 | HA 3.1.2.3 | HA 4.4.2.5 | HA 4.2.2.9 | HA 3.3.3.16 | HA 4.4.1.11 | HA 2.3.2.5 | HA 3.3.3.10 | HA 2.3.2.11 | HA 3.1.3.16 | HA 3.1.2.2,implicit-definition: 主張に使う定義・記法：generalized ∞-operad
+HA,4.4.1.28,Theorem,HA 4.4.3.12,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.4.2.10,Definition,HA 4.4.3.12,section-reference-resolution: 節参照 HA §4.4.2 の構成・定義・証明の項目への内容対応。節全体は追加しない
+HA,3.2.1.1,Definition,HA 4.5.2.2,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.1.1.13,Proposition,HA 4.5.2.2 | HA 3.1.1.21,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.4.1.7,Proposition,HA 4.5.2.2 | HA 4.8.3.15 | HA 3.1.1.13 | HTT 2.4.2.7 | HA B.1.6 | HA 3.3.3.17 | HTT 3.1.1.6 | HA B.1.11 | HA B.1.12 | HA B.4.1 | HTT 3.1.1.7,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.1.1.10,Proposition,HA 4.5.2.2 | HA 3.1.1.13,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,B.3.2,Proposition,HA 3.4.4.3 | HA B.3.17 | HA B.3.5,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.1.2.3,Theorem,HA 3.4.4.3 | HA 4.4.2.5 | HA 3.4.4.2 | HA 3.1.3.3 | HA 3.1.3.16,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.1.2.5,Lemma,HA 3.4.4.3 | HA 3.1.2.3,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.1.1.7,Proposition,HA 3.4.4.3 | HA 3.1.2.3,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,2.4.4.6,Lemma,HA 3.4.4.3 | HA 3.1.2.3 | HA 2.4.4.3 | HA 3.1.3.16,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.3.1.5,Proposition,HA 3.4.4.3 | HA 3.1.2.3 | HA 3.4.3.13 | HA 2.1.2.11 | HA 2.2.4.4 | HA 2.3.3.23 | HA 3.1.1.11 | HA B.2.7 | HTT 4.3.2.6 | HTT 4.3.2.5,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.1.1.16,Proposition,HA 3.1.1.20 | HA 4.4.2.8 | HA 3.1.1.21,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.1.1.3,Definition,HA 4.1.2.9 | HA 5.1.0.7 | HA 4.4.1.1,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.1.2.5,Definition,HA 4.1.2.9 | HA 4.2.2.2,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,2.4.2.1,Definition,HA 4.1.2.9,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,2.2.4.8,Remark,HA 3.1.1.15 | HA 3.1.1.14,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.1.1.5,Remark,HA 3.1.1.15,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.1.1.11,Proposition,HA 3.1.1.15 | HTT 4.3.1.9 | HTT 4.3.1.10,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.1.1.18,Definition,HA 4.4.2.8 | HA 3.2.3.7,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.4.2.5,Proposition,HA 4.4.2.8,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.3.1.12,Definition,HA 4.4.2.8 | HA 4.4.2.5 | HA 4.6.2.1,implicit-definition: 主張に使う定義・記法：bimodule object
+HTT,5.1.6.10,Proposition,HTT 5.3.5.11,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.3.5.5,Proposition,HTT 5.3.5.11 | HTT 5.4.2.2,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.1.3.2,Proposition,HTT 5.3.5.11 | HTT 5.1.6.10 | HTT 5.3.5.4 | HTT 5.3.4.18 | HTT 5.3.5.7 | HTT 5.1.5.4 | HA 1.4.2.26 | HTT 5.3.5.14,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.1.3.1,Proposition,HTT 5.3.5.11 | HTT 5.5.1.1 | HTT 5.1.5.3 | HTT 5.4.2.4 | HA 1.3.3.10,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.3.5.4,Corollary,HTT 5.3.5.11 | HTT 5.3.5.8 | HTT 5.4.2.2,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.2.3.11,Corollary,HTT 5.3.5.11 | HTT 5.5.1.1 | HTT 5.3.4.17 | HTT 5.3.5.12 | HTT 5.5.5.11 | HA 3.2.3.3,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.3.1.7,Definition,HTT 5.3.5.11 | HTT 5.3.5.4 | HTT 5.3.4.5 | HTT 5.3.5.10 | HTT 5.3.5.8 | HTT 5.3.1.20 | HTT 5.3.5.3 | HTT 5.3.5.2 | HTT 5.3.3.3 | HTT 5.3.4.15 | HTT 5.5.1.4 | HTT 5.4.2.2 | HTT 5.3.4.16 | HTT 5.3.5.9 | HTT 5.3.1.18 | HTT 5.3.1.17 | HTT 5.3.4.14 | HTT 5.3.1.10 | HTT 5.4.5.7 | HTT 5.4.6.5 | HTT 5.4.5.12 | HTT 5.3.4.13 | HTT 5.3.4.8 | HTT 5.3.1.9 | HTT 5.4.2.8 | HTT 5.3.1.21 | HTT 5.4.6.4 | HTT 5.4.6.3 | HTT 5.4.5.11 | HTT A.1.2.5 | HTT 5.5.7.3 | HTT 5.4.4.2 | HTT 5.3.4.9 | HTT 5.3.4.10 | HTT 5.3.4.12 | HTT 5.4.5.13 | HTT 5.4.5.9 | HTT 5.5.7.2 | HTT A.2.6.7 | HTT A.2.6.5 | HTT A.2.6.2 | HTT A.2.6.6 | HTT 5.5.4.4 | HTT A.1.5.10 | HTT 5.3.5.15 | HTT 5.5.4.13 | HTT 5.5.4.3 | HTT 5.3.1.12 | HA 3.2.3.5 | HA 3.2.3.4 | HTT 5.3.2.5 | HTT 5.3.1.19,implicit-definition: 主張に使う定義・記法：filtered ∞-category
+HTT,5.3.4.5,Definition,HTT 5.3.5.11 | HTT 5.3.5.5 | HTT 5.5.1.1 | HTT 5.3.4.17 | HTT 5.3.4.15 | HTT 5.3.5.12 | HTT 5.5.1.4 | HTT 5.4.2.2 | HTT 5.3.4.16 | HTT 5.3.4.14 | HTT 5.4.2.4 | HTT 5.4.5.7 | HTT 5.4.6.1 | HTT 5.3.4.13 | HTT 5.3.4.8 | HTT 5.5.7.3 | HTT 5.3.4.9 | HTT 5.3.4.10 | HTT 5.3.4.12 | HTT 5.4.5.13 | HTT 5.5.7.2 | HTT A.2.6.5 | HTT A.1.5.11 | HTT 5.4.1.2 | HTT A.1.5.12 | HTT A.1.5.7 | HTT A.1.5.10,implicit-definition: 主張に使う定義・記法：compact object
+HTT,5.5.1.1,Theorem,HTT 5.5.1.9 | HA 1.3.3.10,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.1.5.6,Theorem,HTT 5.5.1.9 | HA A.3.8 | HA 1.4.2.26,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.3.5.10,Proposition,HTT 5.5.1.9 | HTT 5.3.5.12 | HTT 5.4.2.2 | HTT 5.4.5.15 | HTT 5.5.4.2 | HTT 5.5.5.9,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.3.4.17,Proposition,HTT 5.5.1.9 | HTT 5.3.4.18 | HTT 5.3.5.12,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.5.3.12,Proposition,HA 1.4.4.11,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.2.7.8,Proposition,HA 1.4.4.11 | HA 1.2.1.17 | HTT 5.2.8.19 | HA 2.2.4.12 | HA 2.2.4.13 | HTT 5.5.3.16 | HTT 5.5.4.15,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.2.1.16,Proposition,HA 1.4.4.11,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.1.2.2,Proposition,HA 1.4.4.11 | HA 1.1.2.9 | HTT 5.3.5.5 | HTT 5.1.3.2 | HTT 5.3.5.4 | HTT 5.1.6.8 | HTT 5.1.5.3 | HTT 5.3.3.3 | HTT 5.3.4.18 | HTT 5.1.5.5 | HTT 5.3.5.7 | HTT 5.3.4.14 | HTT 5.1.5.4 | HTT 5.5.3.18 | HTT 5.4.4.3 | HTT 5.3.4.13 | HTT 5.5.3.17 | HTT 5.4.5.13 | HTT 5.5.7.2 | HTT 5.5.5.11 | HTT 5.4.7.7,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.3.5.8,Lemma,HA 1.4.4.11 | HTT 5.3.5.10 | HTT 5.3.5.9,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.3.1.20,Lemma,HA 1.4.4.11 | HTT 5.4.5.12 | HTT 5.4.5.15 | HTT 5.3.5.15 | HTT 5.3.2.6,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.8.1.4,Corollary,HA 4.8.4.8,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.8.5.2,Notation,HA 4.8.4.8,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.6.2.18,Proposition,HA 4.8.4.8,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+DAGXIII,2.1.7,Construction,DAGXIII 2.1.18,explicit-citation: itemの論文内番号参照
+DAGXIII,1.1.5,Lemma,DAGXIII 2.1.18 | DAGXIII 2.1.7 | DAGXIII 2.1.3 | DAGXIII 2.1.9,explicit-citation: itemの論文内番号参照
+DAGXIII,2.1.12,Definition,DAGXIII 2.1.18,implicit-definition: semiadditiveの定義
+DAGXIII,2.1.17,Definition,DAGXIII 2.1.18,implicit-definition: relative finite groupoidの定義
+DAGXIII,2.1.1,Notation,DAGXIII 2.1.18 | DAGXIII 2.1.7 | DAGXIII 2.1.3,implicit-definition: pullbackと左右Kan extensionの記法
+HA,1.1.1.8,Remark,HA 1.1.2.9,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.1.1.1,Definition,HA 1.1.2.9 | HA 1.1.2.5 | DAGXIII 2.1.11 | HA 1.4.2.27 | HA 1.4.2.24 | DAGXIII 2.1.10 | HA 1.4.2.11 | HA 1.4.2.26 | HA 1.4.2.16 | HA 1.1.3.4 | HA 1.4.2.13 | HA 1.1.2.14 | HA 1.4.2.10 | HA 1.4.2.4 | HA 1.4.2.15 | HA 1.1.2.11,implicit-definition: 主張に使う定義・記法：pointed ∞-category
+HA,1.1.2.1,Definition,DAGXIII 2.1.15,edition-correspondence: 旧Higher Algebra A.1.1.2.1の名前つき内容に対応する現行項目。番号の文字列一致ではない
+HA,5.1.3.1,Construction,HA 5.1.3.2,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.4.4.7,Example,HA 5.1.3.2,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,5.1.0.7,Example,HA 5.1.3.2,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,5.1.2.10,Construction,HA 5.1.3.2,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,5.1.2.11,Proposition,HA 5.1.3.2 | HA 5.1.2.2 | HA 5.1.2.12,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,5.1.3.7,Remark,HA 5.1.3.2,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,5.1.3.6,Proposition,HA 5.1.3.2 | HA 5.1.3.7,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,5.1.1.3,Lemma,HA 5.1.3.2 | HA 5.1.1.4 | HA 5.1.1.1,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.8.3.13,Lemma,HA 4.8.3.15,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.6.2.17,Proposition,HA 4.8.3.15,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.2.2.4,Corollary,HA 4.8.3.15,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,1.1.5.14,Definition,HA 3.4.1.3 | HA 3.3.3.7 | HA B.3.15 | HTT 2.3.4.18 | HA 2.4.4.6 | HA 3.1.1.5 | HA B.3.14 | HTT 2.4.4.4 | HTT 4.1.1.10 | HTT 3.3.1.3 | HA 3.3.3.16 | HTT 2.4.4.6 | HA B.3.7 | HA B.3.1 | HTT 3.2.2.7 | HA 3.1.2.4 | HTT 4.2.4.7 | HTT 4.2.4.4 | HA 3.4.1.7 | HTT 4.1.1.9 | HTT 3.3.1.2 | HTT 2.4.4.5 | HA 2.4.2.8 | HA 4.8.4.4 | HTT 4.3.1.2 | HTT 1.2.9.3 | HTT 3.3.1.5 | HA 4.8.3.21 | HA 3.4.1.6 | HTT 5.2.8.22 | HTT 3.3.1.1 | HTT 2.2.5.3 | HTT 4.2.1.1 | HA 2.3.3.6 | HTT 2.1.4.5 | HTT 4.3.2.6 | HTT 3.1.3.5 | HTT 3.2.2.8 | HA 2.4.4.4 | HTT 2.2.5.1 | HTT 1.2.2.1 | HTT 4.3.1.6 | HTT 5.4.6.2 | HTT 5.4.5.10 | HTT 3.2.2.5 | HTT 3.1.3.2 | HTT 4.2.1.2 | HTT 2.2.5.2 | HTT 5.4.1.2 | HA B.3.17 | HA 3.1.3.15 | HTT 5.2.1.3 | HTT 3.2.2.10 | HTT 5.3.1.19,implicit-definition: 主張に使う定義・記法：categorical equivalence
+HTT,4.3.2.15,Proposition,HA 3.4.1.3 | HA 3.4.2.2 | HA 2.4.1.7 | HA 4.4.1.28 | HA 3.4.3.14 | HA 1.1.2.5 | HA 2.4.1.5 | HA 4.4.1.17 | HA 4.4.1.11 | HTT 4.3.2.16 | HTT 5.2.8.17 | HA 2.4.1.6 | HA 2.4.2.11 | HA 2.3.3.23 | HA 2.1.3.5 | HA 4.3.2.6 | HA 2.4.4.4 | HA 2.4.4.5 | HTT 5.5.4.20 | HA 3.1.3.2,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.2.8.18,Corollary,HA 3.4.1.3,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.4.1.11,Lemma,HA 3.4.1.3,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.4.1.12,Lemma,HA 3.4.1.3,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,2.3.1.1,Definition,HA 3.3.3.7 | HA 3.3.3.3 | HA 3.2.1.1 | HA 3.3.3.11 | HA 3.3.3.8 | HA 3.3.2.1 | HA 3.3.1.2 | HA 3.3.3.4,implicit-definition: 主張に使う定義・記法：unital ∞-operad
+HA,B.3.14,Proposition,HA B.3.16 | HA B.3.15,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.4.7.12,Corollary,HA 3.3.3.3 | HTT 4.1.3.1 | HTT 5.1.5.5 | HA 2.2.4.15 | HA 3.3.3.18 | HTT 5.4.5.13 | HA B.3.18,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.4.4.4,Corollary,HA 3.3.3.3 | HA 2.1.3.8 | HTT 1.2.9.3 | HTT 4.1.1.8 | HTT 3.3.1.5 | HTT 3.1.3.5 | HA B.2.4 | HTT 3.3.1.4,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.3.3.11,Lemma,HA 3.3.3.3,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.1.3.4,Lemma,HA 3.3.3.3 | HTT 2.4.1.7 | HA 3.1.1.10 | HA 2.2.1.1 | HTT 2.4.1.3 | HA 3.1.1.12 | HTT 2.4.4.6 | HTT 5.1.2.1 | HTT 4.2.4.3 | HTT 4.4.4.5 | HTT 4.1.1.11 | HTT 2.1.3.1 | HTT 4.4.2.9,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.2.4.4,Proposition,HA B.3.15 | HTT A.3.4.8,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.1.1.10,Corollary,HTT 4.1.3.1,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.3.1.3,Proposition,HTT 4.1.3.1 | HA B.3.2 | HA 3.4.1.7 | HTT 4.2.2.4 | HTT 4.3.1.2 | HTT 4.3.3.10 | HTT 3.3.1.5 | HTT 4.3.1.6 | HTT 5.4.5.13 | HTT 5.5.5.14 | HTT 3.3.1.4,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.1.2.15,Proposition,HTT 4.1.3.1 | HA 3.4.1.11 | HTT 3.3.4.6 | HTT 3.3.4.5 | HTT 4.1.2.16 | HTT 4.1.2.18 | HTT 4.3.3.9 | HTT 4.1.2.17 | HTT 4.2.3.15 | HTT 5.3.2.6,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.1.2.10,Remark,HTT 4.1.3.1,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.1.1.3,Proposition,HTT 4.1.3.1 | HTT 4.1.1.10 | HTT 4.1.2.15 | HTT 4.1.1.12 | HTT 5.4.5.15 | HA B.4.8 | HTT 5.5.8.7,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.1.2.11,Proposition,HTT 4.1.3.1,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.2.1.5,Proposition,HTT 4.1.3.1 | HA B.3.18,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.1.3.2,Lemma,HTT 4.1.3.1 | HA B.3.18,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.3.2.7,Lemma,HA 3.4.3.15 | HTT 4.3.2.13 | HA 4.4.1.28 | HA 3.4.3.13 | HTT 4.3.2.12 | HA 4.4.1.17 | HA 4.4.1.11 | HA 2.1.2.6 | HA 2.4.1.6 | HA 2.4.2.11 | HA 2.3.3.23 | HA 2.3.2.11 | HTT 4.3.2.8,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.4.3.13,Lemma,HA 3.4.3.15 | HA 3.4.3.14,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.4.3.14,Corollary,HA 3.4.3.15,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.3.2.12,Lemma,HTT 4.3.2.13,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,2.2.1.3,Example,HA 2.2.1.8,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,2.2.1.1,Proposition,HA 2.2.1.9 | HA 2.2.1.3,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.4.4.2,Proposition,HA 2.2.1.9 | HA B.3.2 | HTT 2.4.4.4 | HA 2.2.1.1 | HTT 2.4.4.6 | HTT 2.4.4.5 | HTT 2.4.4.7 | HA 2.2.4.12 | HA 2.2.4.11 | HA 2.1.2.12,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,2.2.1.11,Lemma,HA 2.2.1.9,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,7.1.2.12,Remark,HA 7.1.2.13,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.3.4.22,Proposition,HA 7.1.2.13 | HA 1.3.5.21 | HA 4.1.8.4,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,7.1.2.9,Remark,HA 7.1.2.13,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,7.1.2.7,Proposition,HA 7.1.2.13,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.3.2.10,Proposition,HA 7.1.2.13 | HA 1.3.2.19,section-reference-resolution: 節参照 HA §1.3.2 の構成・定義・証明の項目への内容対応。節全体は追加しない
+HA,A.3.1,Theorem,HA 5.1.1.1 | HA A.3.8,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,5.1.1.10,Remark,HA 5.1.1.11,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,5.1.1.9,Construction,HA 5.1.1.11 | HA 5.1.1.10,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.3.4.2,Example,HTT 2.3.4.18,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.2.3.1,Proposition,HTT 2.3.4.18 | HA 3.2.2.1 | HA 3.1.2.3 | HTT 4.3.2.12 | HTT 4.2.2.4 | HTT 3.2.2.12 | HTT 3.1.3.5 | HTT 5.4.4.1 | HTT A.3.5.5 | HA B.4.10 | HTT A.3.2.24 | HTT A.3.2.10 | HTT 5.2.1.3,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.2.1.9,Remark,HA 4.2.1.17,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.2.1.17,Proposition,HA 1.2.1.19,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.1.2.5,Definition,HA 1.2.1.19,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,2.1.2.11,Remark,HA 3.2.2.1 | HA 2.2.4.4 | HA 4.3.2.6,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,2.1.2.9,Remark,HA 3.2.2.1 | HA 4.4.1.28 | HA 4.4.1.17 | HA 2.3.3.23 | HA 5.1.2.12 | HA 2.4.4.3 | HA 4.3.2.6,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,1.1.5.5,Definition,HTT 1.1.5.10 | HTT 4.2.4.1 | HA 2.1.1.23,implicit-definition: 主張に使う定義・記法：simplicial nerve
+HA,2.4.1.5,Proposition,HA 2.4.1.9 | HA 2.4.1.7,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,2.4.1.8,Corollary,HA 2.4.1.9,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,7.3.2.1,Proposition,HA 7.3.2.2 | HA 7.3.2.3,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.2.2.1,Definition,HA 7.3.2.3 | HTT 4.1.2.8 | HTT A.3.1.10 | HTT 3.2.0.1 | HTT A.3.3.7,implicit-definition: 主張に使う定義・記法：adjunction
+HTT,4.3.2.9,Proposition,HTT 5.5.2.3,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.1.2.10,Proposition,HA 4.8.4.12,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.2.2.9,Proposition,HA 4.8.4.12,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.4.7.15,Lemma,HTT 5.4.7.11,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.2.2.8,Remark,HA 4.2.2.17 | HA 4.2.2.16 | HA 4.2.2.12 | HA 4.8.4.4 | HA 4.2.2.26,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.8.4.5,Remark,HA 4.8.4.6,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.8.4.3,Lemma,HA 4.8.4.6 | HA 4.8.4.5,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.2.2.12,Proposition,HA 4.2.2.16 | HA 4.2.3.1,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.2.2.8,Lemma,HA 3.2.2.9,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.1.3.19,Proposition,HA 4.2.3.1,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.3.1.15,Corollary,HA 4.2.3.1,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.3.3.16,Remark,HA 4.4.1.28 | HA 3.4.1.5 | HA 3.3.3.9,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.4.1.27,Construction,HA 4.4.1.28,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.4.1.17,Proposition,HA 4.4.1.28 | HA 4.4.1.11,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.4.1.11,Proposition,HA 4.4.1.28 | HA 4.4.1.17 | HA 4.4.1.9,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.3.3.5,Notation,HA 4.4.1.28,section-reference-resolution: 節参照 HA §3.3.3 の構成・定義・証明の項目への内容対応。節全体は追加しない
+HA,3.3.3.8,Definition,HA 4.4.1.28 | HA 3.3.3.16,section-reference-resolution: 節参照 HA §3.3.3 の構成・定義・証明の項目への内容対応。節全体は追加しない
+HA,3.1.1.14,Lemma,HA 3.1.1.13,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,2.1.2.4,Proposition,HA 3.1.1.13 | HA 3.3.3.18 | HA 2.2.4.14,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.4.1.3,Proposition,HA 3.1.1.13 | HA 7.3.2.1 | HA 2.3.2.11 | HA B.2.7 | HA 3.3.3.17 | HTT 2.4.1.5 | HA 2.1.2.12,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.3.1.9,Proposition,HA 3.1.1.13 | HTT 4.3.1.11,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.3.1.10,Proposition,HA 3.1.1.13 | HTT 4.3.1.11,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.1.2.1,Proposition,HTT 2.4.1.7 | HA 3.1.1.10 | HA 3.1.1.16 | HA 3.1.1.5 | HTT 4.2.1.5 | HA 2.2.1.1 | HTT 2.4.1.3 | HTT 4.3.1.10 | HA 3.1.1.12 | HTT 1.2.4.3 | HTT 2.4.4.3 | HTT 4.3.1.2 | HA 3.1.1.9 | HTT 5.4.5.7 | HTT 2.4.4.1 | HTT 2.1.2.2 | HTT 2.4.5.1 | HTT 5.3.4.12 | HTT 2.4.3.2 | HTT 5.5.5.12 | HTT 5.5.4.13,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.1.2.5,Proposition,HTT 2.4.1.7 | HA B.3.2 | HTT 5.2.3.5 | HA 3.2.2.7 | HTT 2.4.4.1 | HTT 2.4.5.1,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.1.1.8,Proposition,HA 3.1.1.10 | HA 3.1.2.3,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.1.1.12,Lemma,HA 3.1.1.10,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.4.4.6,Corollary,HA 3.1.1.10 | HA 3.1.1.5 | HA 3.1.1.9 | HTT 5.1.6.3,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,1.2.13.8,Proposition,HA B.3.2 | HA B.3.4 | HTT 6.2.3.4,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,B.3.7,Lemma,HA B.3.2,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,B.3.1,Definition,HA B.3.2,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.2.2.7,Proposition,HA 2.4.4.6 | HTT 3.3.1.3 | HTT 4.1.2.15 | HTT 4.1.3.2 | HTT 4.2.2.4 | HTT 4.3.3.10 | HTT 3.2.2.12 | HTT 3.2.2.8 | HTT 3.2.3.4 | HA B.4.10 | HTT 3.2.2.10,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.1.2.4,Lemma,HA 2.4.4.6,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,2.1.1.7,Construction,HA 4.1.1.3 | HA 2.1.1.21,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,2.1.1.21,Example,HA 4.1.1.3,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,2.1.1.1,Definition,HA 4.1.1.3 | HA 4.2.1.9 | HA 2.1.1.7 | HA 2.1.1.21 | HA 4.3.1.1 | HA 2.1.1.23 | HA 4.2.1.5 | HA 4.2.1.10 | HA 4.1.1.1 | HA 4.2.1.2,implicit-definition: 主張に使う定義・記法：colored operad
+HA,2.2.4.4,Proposition,HA 2.2.4.8,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,2.2.4.16,Lemma,HA 2.2.4.8 | HA 2.2.4.4,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.1.1.2,Definition,HA 3.1.1.5 | HA 3.1.1.4 | HA 3.1.1.6,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.1.1.1,Definition,HTT 3.1.1.11 | HTT 3.1.3.7 | HTT 3.2.1.11 | HTT 3.1.1.5 | HTT 3.1.1.6 | HTT 3.1.2.3 | HTT 3.1.1.10 | HTT 3.2.1.9 | HTT 3.1.1.7 | HTT 3.1.1.4 | HTT 3.2.1.8 | HTT 5.2.1.3,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,2.1.2.16,Remark,HA 3.1.1.18 | HA 2.2.1.1 | HA 2.1.3.4,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.4.1.9,Notation,HA 4.4.2.5,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.3.1.1,Definition,HA 4.4.2.5,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.4.2.4,Notation,HA 4.4.2.5,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.1.6.8,Proposition,HTT 5.1.6.10 | HTT 5.3.4.17,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.1.5.3,Lemma,HTT 5.1.6.10 | HTT 5.3.5.4 | HTT 5.3.4.17 | HTT 5.1.6.8 | HTT 5.3.5.12 | HTT 5.1.5.5 | HTT 5.4.2.4 | HTT 5.4.4.3 | HTT 5.5.4.2,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.3.5.3,Proposition,HTT 5.3.5.5 | HTT 5.3.5.4 | HTT 5.4.2.2,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.2.3.14,Proposition,HTT 5.1.3.2 | HTT 3.3.4.5 | HTT 3.3.3.1 | HTT 4.2.4.8 | HTT 4.2.3.15 | HTT 4.2.3.16,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.2.4.7,Corollary,HTT 5.1.3.2 | HTT 3.3.4.5 | HTT 3.3.3.1 | HTT 5.5.5.13,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.2.4.1,Theorem,HTT 5.1.3.2 | HA 1.3.4.22 | HA 1.3.2.10 | HA A.3.1 | HA 4.4.1.11 | HA B.3.7 | HTT 5.3.5.3 | HTT 4.2.4.7 | HTT 5.3.3.3 | HA A.3.2 | HTT 3.3.4.5 | HTT 4.2.4.3 | HTT 5.4.5.7 | HTT 3.3.3.1 | HTT 4.2.4.8 | HTT 5.4.1.2 | HTT 5.5.5.13 | HTT 5.5.4.4 | HTT 6.5.3.10 | HTT 5.5.6.15,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.2.4.4,Proposition,HTT 5.1.3.1 | HTT 5.3.5.3 | HTT 4.2.4.7 | HTT 5.3.3.3 | HTT 5.1.1.1 | HTT 4.2.4.8 | HA 1.3.4.24 | HTT 5.4.1.2 | HTT 5.5.4.4 | HTT 6.5.3.10,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.3.3.1,Definition,HTT 5.1.3.1 | HTT 5.3.3.3 | HTT A.2.8.3 | HTT 3.3.3.1 | HA 4.1.8.13,section-reference-resolution: 節参照 HTT §A.3.3 の構成・定義・証明の項目への内容対応。節全体は追加しない
+HTT,A.3.3.2,Proposition,HTT 5.1.3.1 | HTT 5.3.3.3 | HTT A.2.8.3 | HTT 3.3.3.1 | HA 4.1.8.13,section-reference-resolution: 節参照 HTT §A.3.3 の構成・定義・証明の項目への内容対応。節全体は追加しない
+HTT,5.1.5.2,Lemma,HTT 5.3.5.4 | HTT 5.1.6.8 | HTT 5.1.5.3 | HTT 5.3.5.2 | HTT 5.3.3.3 | HTT 5.1.5.5 | HTT 5.4.1.2 | HTT 5.4.7.7,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.3.5.2,Remark,HTT 5.3.5.4,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.3.3.3,Proposition,HTT 5.3.5.4,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.3.2.7,Corollary,HTT 5.3.5.4 | HTT 3.3.2.8,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.2.3.8,Proposition,HTT 4.2.3.11 | HTT 4.2.3.14 | HTT 4.2.3.10 | HTT 5.3.1.18 | HTT 5.4.2.9 | HTT 5.5.4.2,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.2.3.4,Proposition,HTT 4.2.3.11 | HTT 4.2.3.14 | HTT 4.2.3.10 | HTT 5.3.1.18 | HTT 5.4.2.9 | HTT 5.5.5.9,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.2.3.10,Corollary,HTT 4.2.3.11 | HTT 4.4.2.6 | HTT 5.5.4.2 | HTT 5.5.5.9,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.3.4.15,Corollary,HTT 5.5.1.1 | HTT 5.3.4.17 | HTT 5.3.4.18 | HTT 5.3.5.12 | HTT 5.4.2.9,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.5.1.3,Lemma,HTT 5.5.1.1,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.3.4.18,Proposition,HTT 5.5.1.1,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.3.5.12,Proposition,HTT 5.5.1.1,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.2.7.5,Remark,HTT 5.5.1.1 | HTT 5.5.4.15,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.5.1.4,Lemma,HTT 5.5.1.1,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.4.2.2,Proposition,HTT 5.5.1.1 | HTT 5.4.6.6 | HTT 5.4.2.9 | HTT 5.4.4.3 | HTT 5.5.4.2,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.3.2.16,Corollary,HTT 5.1.5.6 | HTT 5.3.5.10,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.1.5.5,Lemma,HTT 5.1.5.6 | HTT 5.3.5.8 | HTT 5.3.5.7 | HTT 5.3.5.9,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.3.4.16,Remark,HTT 5.3.4.17,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.4.6.6,Proposition,HTT 5.5.3.12 | HA 3.4.4.2 | HA 1.3.5.21 | HTT 5.5.5.14 | HTT 5.4.7.10,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.4.5.2,Lemma,HTT 5.5.3.12 | HTT 5.4.5.5,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.4.5.5,Lemma,HTT 5.5.3.12 | HTT 5.4.6.6 | HTT 5.4.5.7,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.5.0.1,Definition,HTT 5.5.3.12 | HTT 5.5.4.20 | HA 1.4.2.4 | HTT 5.5.4.18 | HTT 5.5.4.17 | HTT 5.5.4.15 | HTT 5.5.4.19 | HTT 5.5.5.14 | HTT 5.5.5.9 | HTT 5.5.5.11 | HA 3.2.3.5 | HTT 5.5.6.28,implicit-definition: 主張に使う定義・記法：presentable ∞-category
+HA,1.2.1.1,Definition,HA 1.2.1.16,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.3.3.2,Corollary,HA 1.2.1.16 | HTT 5.5.3.18 | HTT 3.3.3.4,section-reference-resolution: 節参照 HTT §3.3.3 の構成・定義・証明の項目への内容対応。節全体は追加しない
+HTT,4.2.2.7,Proposition,HTT 5.1.2.2,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.1.2.1,Lemma,HTT 5.1.2.2,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.3.5.7,Lemma,HTT 5.3.5.8,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.8.1.3,Proposition,HA 4.8.1.4,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.3.5.9,Remark,HA 4.8.5.2,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.2.4.9,Proposition,HA 4.8.5.2,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.6.2.1,Proposition,HA 4.6.2.18 | HA 4.6.2.17 | HA 4.6.2.2 | HA 4.6.2.12 | HA 4.6.2.10,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.6.2.2,Remark,HA 4.6.2.18,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+DAGXIII,2.1.3,Construction,DAGXIII 2.1.7 | DAGXIII 2.1.6 | DAGXIII 2.1.4,explicit-citation: itemの論文内番号参照
+DAGXIII,2.1.6,Proposition,DAGXIII 2.1.7,explicit-citation: itemの論文内番号参照
+DAGXIII,2.1.11,Proposition,DAGXIII 2.1.12,explicit-citation: itemの論文内番号参照
+HTT,5.2.3.5,Proposition,HA 1.1.1.8 | HA 3.2.3.3,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,1.2.12.9,Proposition,HA 1.1.1.1,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.3.2.1,Notation,HA 5.1.3.1 | HA 4.4.1.27,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.4.1.7,Corollary,HA 3.4.4.7,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.1.1.4,Remark,HA 3.4.4.7 | HA 3.1.1.8,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.4.4.2,Theorem,HA 3.4.4.7,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,5.1.2.2,Theorem,HA 5.1.0.7 | HA 5.1.2.10,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,2.4.4.2,Remark,HA 5.1.2.10 | HA 2.4.4.3,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,2.4.4.1,Construction,HA 5.1.2.10 | HA 5.1.2.12,section-reference-resolution: 節参照 HA §2.4.4 の構成・定義・証明の項目への内容対応。節全体は追加しない
+HA,4.6.2.13,Proposition,HA 4.6.2.17,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.4.2.8,Proposition,HTT 5.2.2.4 | HA 4.8.1.3,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,1.1.4.1,Definition,HTT 1.1.5.14,section-reference-resolution: 節参照 HTT §1.1.4 の構成・定義・証明の項目への内容対応。節全体は追加しない
+HTT,5.2.8.17,Proposition,HTT 5.2.8.18,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.4.1.10,Lemma,HA 3.4.1.11,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.1.2.2,Definition,HA B.3.14 | HTT 3.1.1.1 | HTT 2.1.2.6 | HTT A.2.6.1 | HA 1.3.5.3 | HTT A.2.8.3 | HTT A.2.6.10 | HTT A.3.3.3 | HTT A.1.2.5 | HA B.1.1 | HTT A.2.6.9 | HTT 3.1.1.5 | HTT 2.2.5.2 | HTT A.3.2.4 | HTT A.1.5.6 | HTT A.3.2.3 | HTT A.1.5.12 | HTT A.1.5.10 | HA 4.1.8.3 | HTT A.1.2.7 | HA 4.1.8.1,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.3.2.1,Proposition,HA B.3.14 | HTT 2.3.2.4 | HTT 2.2.5.1,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,B.3.21,Lemma,HA B.3.14,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.4.7.11,Corollary,HTT 2.4.7.12,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.4.7.5,Lemma,HTT 2.4.7.12 | HTT 4.1.2.16,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.1.2.6,Proposition,HTT 2.1.3.4 | HTT 2.3.2.1 | HTT 2.4.1.8 | HTT 2.4.7.10 | HTT 4.2.2.3 | HTT 2.2.3.12 | HTT 2.1.2.7 | HTT 3.1.1.5,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,1.2.4.3,Proposition,HTT 2.1.3.4 | HTT 2.4.7.10 | HTT 2.1.2.2 | HTT 2.4.1.4 | HTT 2.1.1.4 | HTT 1.2.5.1,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.2.1.1,Definition,HTT A.2.4.4 | HA 1.3.4.22 | HTT A.2.3.1 | HTT 4.2.4.4 | HTT A.3.3.1 | HTT A.3.3.2 | HTT 4.1.2.8 | HA 7.1.2.11 | HA 4.1.7.6 | HTT A.2.6.1 | HA 2.1.4.13 | HTT A.2.9.27 | HTT A.3.4.9 | HTT A.2.8.2 | HTT A.3.2.16 | HA 4.8.1.2 | HTT A.3.1.10 | HTT 4.2.4.8 | HTT A.3.1.7 | HTT A.3.3.8 | HA 1.3.5.15 | HA 1.3.4.24 | HA 1.3.4.25 | HTT A.3.7.3 | HTT A.3.1.1 | HTT A.3.2.1 | HTT A.2.4.2 | HTT A.3.6.17 | HTT A.3.6.18 | HTT A.3.2.28 | HTT A.3.3.7 | HA 1.3.4.16 | HTT A.3.7.1 | HTT A.2.6.8 | HTT A.2.5.1 | HTT A.3.2.4 | HTT A.3.4.11 | HTT A.3.4.15 | HTT A.3.6.16 | HTT A.3.2.27 | HA 1.3.4.15 | HA 1.3.4.20 | HA 1.3.5.4 | HTT A.3.2.3 | HTT A.3.4.6 | HTT A.3.4.10 | HTT A.3.4.13 | HTT A.3.6.15 | HTT A.3.4.14 | HA 1.3.4.19 | HTT A.3.1.5 | HTT A.3.4.8 | HTT A.3.4.12 | HTT A.3.3.12 | HTT A.3.6.14 | HA 1.3.4.18 | HA 4.1.8.3 | HA 4.1.8.13 | HTT A.2.9.30 | HTT A.3.2.24 | HTT A.2.8.9 | HTT A.3.6.12 | HTT A.3.6.13 | HA 4.1.8.11 | HA 4.1.8.12 | HA 4.1.8.4 | HTT A.2.9.29 | HTT A.3.2.15 | HTT A.3.2.26 | HTT A.3.5.2 | HA 4.1.8.8 | HTT A.3.2.9,implicit-definition: 主張に使う定義・記法：model category
+HTT,4.1.1.9,Corollary,HTT 4.1.1.10 | HTT 4.1.1.11,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.3.1.2,Corollary,HTT 3.3.1.3 | HTT 3.3.1.7 | HTT 5.4.4.2,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.4.4.5,Corollary,HTT 3.3.1.3 | HTT 1.2.9.3,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.1.2.8,Proposition,HTT 4.1.2.10 | HTT 4.1.2.14 | HTT 4.1.2.13,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.1.2.5,Proposition,HTT 4.1.2.10 | HTT 4.1.2.17 | HTT 4.1.2.7,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.1.1.1,Definition,HTT 4.1.1.3 | HTT 4.2.3.14 | HA 3.1.1.4 | HTT 5.3.1.18 | HTT 5.4.6.1 | HTT 5.4.6.5 | HTT 5.4.5.12 | HTT 4.1.1.7 | HTT 5.4.6.4 | HTT 5.4.5.11 | HTT 4.3.1.7 | HTT 4.4.5.11 | HTT 5.3.1.12 | HTT 4.2.3.15 | HTT 4.2.3.16,implicit-definition: 主張に使う定義・記法：cofinal map
+HTT,3.3.1.7,Proposition,HTT 4.1.3.2 | HTT 4.3.1.10 | HTT 4.2.2.4 | HTT 4.3.1.2 | HTT 4.3.1.13 | HTT 3.2.2.12,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.3.2.2,Definition,HTT 4.3.2.7 | HTT 4.3.2.5,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,2.3.2.5,Proposition,HA 3.4.3.13 | HA 3.3.3.9,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.2.2.4,Proposition,HTT 4.3.2.12 | HTT 5.1.2.1 | HTT 5.4.4.3,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.3.2.11,Lemma,HTT 4.3.2.12,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.3.1.14,Proposition,HTT 4.3.2.12 | HTT 4.3.1.15,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.3.2.10,Lemma,HTT 4.3.2.12,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.2.2.1,Definition,HTT 4.3.2.12 | HTT 4.3.2.11,section-reference-resolution: 節参照 HTT §4.2.2 の構成・定義・証明の項目への内容対応。節全体は追加しない
+HTT,5.2.7.4,Proposition,HA 2.2.1.1 | HTT 5.5.4.20 | HTT 5.5.4.2,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.1.3.3,Lemma,HA 2.2.1.1 | HTT 4.2.4.3 | HTT 2.4.4.1 | HTT 2.4.5.1 | HA B.1.14 | HTT 2.1.3.1 | HTT 3.1.3.6 | HTT 2.2.3.4 | HTT 5.3.4.11 | HTT 5.5.5.12,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.4.4.3,Proposition,HA 2.2.1.11 | HA 2.2.4.11 | HA 2.2.4.13 | HA B.4.12 | HA 1.3.4.19 | HTT 5.2.2.10 | HTT 5.2.2.3,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,7.1.2.11,Proposition,HA 7.1.2.12,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.1.7.6,Example,HA 7.1.2.12,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,7.1.2.8,Proposition,HA 7.1.2.12 | HA 7.1.2.9 | HA 7.1.2.11,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.2.6.1,Definition,HA 1.3.4.22 | HTT A.2.9.27 | HTT A.2.8.2 | HTT 4.2.4.8 | HA 1.3.4.24 | HA 1.3.4.25 | HTT A.2.6.8 | HA 1.3.4.20 | HTT A.3.2.3 | HTT A.3.6.15 | HTT A.3.3.12 | HTT A.3.6.14 | HTT A.2.9.30 | HTT A.2.8.9 | HTT A.3.6.12 | HTT A.3.6.13,implicit-definition: 主張に使う定義・記法：combinatorial model category
+HA,1.3.5.3,Proposition,HA 7.1.2.9 | HA 7.1.2.8 | HA 1.3.5.6,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,7.1.1.16,Remark,HA 7.1.2.7,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.3.1.17,Proposition,HA 1.3.2.10 | HA 1.3.4.5,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.3.2.16,Corollary,HA 1.3.2.10,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.3.2.11,Proposition,HA 1.3.2.10,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.4.2.27,Corollary,HA 1.3.2.10,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,A.3.8,Remark,HA A.3.1 | HA A.3.10,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,A.3.2,Proposition,HA A.3.1 | HA A.3.8 | HA A.3.3,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,A.3.10,Lemma,HA A.3.1 | HA A.3.8,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,2.1.1.23,Definition,HA 5.1.1.9,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.2.1.5,Remark,HA 4.2.1.9,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.4.2.24,Proposition,HA 1.2.1.17 | HA 1.4.2.27,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.4.2.17,Corollary,HA 1.2.1.17 | HA 1.4.2.27,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.1.4.1,Proposition,HA 1.2.1.17 | HA 1.1.3.4,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,2.1.2.6,Remark,HA 2.1.2.11 | HA 2.2.4.4,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,2.1.2.7,Definition,HA 2.1.2.9,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,2.4.1.3,Remark,HA 2.4.1.5,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.2.2.13,Corollary,HA 2.4.1.5,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,2.4.1.6,Proposition,HA 2.4.1.8 | HA 4.1.7.10,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,2.1.3.8,Remark,HA 2.4.1.8,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,2.1.4.13,Variant,HA 2.4.1.8,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.4.1.8,Proposition,HA 7.3.2.1 | HTT 5.2.3.3 | HTT 3.2.1.8,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.1.2.11,Proposition,HA 4.1.2.10 | HA 4.2.2.8 | HA 4.1.3.19,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,2.4.2.8,Definition,HA 4.1.2.10,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,2.4.2.11,Proposition,HA 4.1.2.10 | HA 4.2.2.8,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.2.2.2,Definition,HA 4.2.2.9,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.2.1.10,Remark,HA 4.2.2.8,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.8.4.4,Construction,HA 4.8.4.5,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.2.2.26,Remark,HA 4.2.2.12,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,2.1.4.6,Proposition,HA 4.2.2.12 | HA 2.1.4.13,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.2.2.7,Lemma,HA 3.2.2.8,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,2.3.3.23,Theorem,HA 4.1.3.19 | HA 4.4.1.17 | HA 2.4.2.11 | HA 5.1.2.12,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.3.3.10,Proposition,HA 3.3.3.16 | HA 3.3.3.9 | HA 3.3.3.17,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.4.1.12,Definition,HA 4.4.1.17 | HA 4.4.1.11 | HA 4.4.2.4,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,2.1.4.5,Notation,HA 4.4.1.11,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,2.1.2.2,Remark,HA 2.1.2.4,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.3.1.2,Remark,HTT 4.3.1.9 | HTT 4.3.1.6 | HTT 4.3.1.7,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,1.2.9.3,Proposition,HTT 2.1.2.1 | HTT 4.3.2.6 | HTT 4.3.1.6,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.1.2.3,Lemma,HTT 2.1.2.1 | HTT 4.2.3.5 | HTT 4.1.1.5 | HTT 4.2.1.6 | HA B.1.9 | HA B.4.8,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.1.2.4,Lemma,HTT 2.1.2.1,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.1.2.9,Corollary,HTT 2.1.2.5 | HTT 2.1.3.1,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.1.1.6,Example,HA 3.1.1.8,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.1.1.9,Lemma,HA 3.1.1.8,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.1.1.11,Lemma,HA 3.1.1.12,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.4.2.4,Proposition,HTT 2.4.4.6,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,B.3.6,Lemma,HA B.3.7,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.2.9.27,Remark,HA B.3.7 | HTT A.2.9.30,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.3.4.6,Corollary,HA B.3.7 | HTT 5.3.3.2,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,2.1.1.19,Example,HA 2.1.1.21 | HA 2.1.3.8 | HA 2.3.1.4 | HA 3.3.3.18,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,2.1.1.20,Example,HA 2.1.1.21 | HA 4.3.2.6,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,2.2.4.15,Lemma,HA 2.2.4.4,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,2.2.4.6,Remark,HA 3.1.1.2,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.4.1.8,Remark,HA 4.4.1.9,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.4.1.1,Definition,HA 4.4.1.9,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.1.1.1,Definition,HA 4.3.1.1 | HA 4.2.1.2,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.1.6.4,Lemma,HTT 5.1.6.8,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.3.4.5,Proposition,HTT 5.1.5.3 | HTT 5.1.5.5 | HTT 3.3.4.6 | HTT 5.4.2.4 | HTT 5.5.4.13,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.1.1.1,Proposition,HTT 5.3.5.3 | HTT 5.1.5.2,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.3.1.18,Proposition,HTT 5.3.5.3 | HTT 5.3.3.3 | HTT 5.4.2.9 | HTT 5.4.5.7 | HTT 5.3.4.8 | HTT 5.4.1.2 | HTT 5.5.4.2 | HTT 5.3.1.19,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.2.3.13,Lemma,HTT 4.2.3.14,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.1.1.8,Proposition,HTT 4.2.3.14 | HTT 4.2.3.10 | HTT 4.1.1.9 | HTT 5.4.5.7 | HTT 4.3.1.6,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.2.4.3,Lemma,HTT 4.2.4.7,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.3.4.9,Definition,HTT 4.2.4.4,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.2.8.2,Proposition,HTT A.3.3.2 | HTT A.2.9.27 | HTT A.3.6.18,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.2.8.3,Lemma,HTT A.3.3.2,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.3.2.16,Definition,HTT A.3.3.2 | HTT A.3.4.9 | HTT A.3.3.8 | HTT A.3.6.17 | HTT A.3.6.18 | HTT A.3.2.28 | HTT A.3.3.7 | HTT A.3.4.11 | HTT A.3.4.15 | HTT A.3.6.16 | HTT A.3.2.27 | HTT A.3.4.6 | HTT A.3.4.10 | HTT A.3.4.13 | HTT A.3.4.14 | HTT A.3.4.8 | HTT A.3.4.12 | HTT A.3.3.12 | HTT A.3.2.24 | HTT A.3.2.26,implicit-definition: 主張に使う定義・記法：excellent model category
+HTT,4.4.4.5,Proposition,HTT 5.1.5.2 | HTT 3.3.2.7,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.1.4.8,Proposition,HTT 5.1.5.2 | HTT 5.1.1.1 | HTT 2.1.4.12,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.3.2.2,Definition,HTT 5.1.5.2 | HTT 4.1.1.8 | HTT 4.4.4.5 | HTT 3.2.5.21,section-reference-resolution: 節参照 HTT §3.3.2 の構成・定義・証明の項目への内容対応。節全体は追加しない
+HTT,5.3.1.17,Remark,HTT 5.3.5.2,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.3.3.2,Lemma,HTT 5.3.3.3,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.3.2.6,Proposition,HTT 3.3.2.7,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.2.3.1,Notation,HTT 4.2.3.8 | HTT 5.3.1.18,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.2.3.6,Lemma,HTT 4.2.3.8 | HTT 5.4.5.15 | HTT 5.4.6.4 | HTT 5.4.5.11 | HTT 5.4.5.9 | HTT 4.4.2.9,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.2.3.5,Lemma,HTT 4.2.3.8 | HTT 4.2.3.6 | HTT 4.4.2.8,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.2.6.3,Definition,HTT 4.2.3.10,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.3.4.14,Corollary,HTT 5.3.4.15 | HTT 5.5.4.13,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.3.1.10,Remark,HTT 5.5.1.3 | HTT 5.4.2.4 | HTT A.2.6.10,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.2.4.2,Proposition,HTT 5.3.4.18,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.4.1.8,Example,HTT 5.4.2.2,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.4.2.4,Lemma,HTT 5.4.2.2,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.3.3.10,Proposition,HTT 5.1.5.5,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.1.5.4,Lemma,HTT 5.1.5.5,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.1.2.16,Proposition,HTT 5.1.5.5,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.1.2.18,Proposition,HTT 5.1.5.5,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.1.6.3,Lemma,HTT 5.3.4.16 | HTT 5.1.6.4,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.4.2.9,Proposition,HTT 5.4.6.6,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.4.5.7,Lemma,HTT 5.4.6.6 | HTT 5.3.4.13 | HTT 5.4.5.13,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.4.6.1,Lemma,HTT 5.4.6.6,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.4.6.5,Lemma,HTT 5.4.6.6,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.4.5.12,Lemma,HTT 5.4.6.6 | HTT 5.4.5.15,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.4.2.1,Definition,HTT 5.4.6.6 | HTT 5.4.2.9 | HTT 5.4.6.1 | HTT 5.4.2.5 | HTT 5.4.7.17 | HTT 5.4.4.3 | HTT 5.4.7.2 | HTT A.1.5.10,implicit-definition: 主張に使う定義・記法：accessible ∞-category
+HTT,5.4.2.5,Definition,HTT 5.4.6.6,implicit-definition: 主張に使う定義・記法：accessible functor
+HTT,2.4.4.1,Lemma,HTT 5.4.5.2 | HTT 2.4.4.3,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.4.5.4,Lemma,HTT 5.4.5.5,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.3.3.1,Proposition,HTT 3.3.3.2 | HA B.0.26,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.4.4.9,Proposition,HTT 4.2.2.7,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.3.1.5,Proposition,HTT 5.1.2.1 | HTT 4.3.3.10 | HA 4.8.3.21 | HTT 4.2.1.7,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.8.1.2,Notation,HA 4.8.1.3,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.3.6.2,Proposition,HA 4.8.1.3 | HTT 5.3.6.11,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.3.6.11,Proposition,HA 4.8.1.3,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.3.6.1,Notation,HA 4.8.1.3,section-reference-resolution: 節参照 HTT §5.3.6 の構成・定義・証明の項目への内容対応。節全体は追加しない
+HA,4.1.1.18,Proposition,HA 4.2.4.9 | HA 4.1.8.4,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.8.3.21,Construction,HA 4.6.2.1,section-reference-resolution: 節参照 HA §4.8.3 の構成・定義・証明の項目への内容対応。節全体は追加しない
+DAGXIII,2.1.5,Example,DAGXIII 2.1.6,explicit-citation: itemの論文内番号参照
+DAGXIII,2.1.10,Example,DAGXIII 2.1.11,explicit-citation: itemの論文内番号参照
+DAGXIII,2.1.9,Remark,DAGXIII 2.1.11,explicit-citation: itemの論文内番号参照
+HTT,5.2.3.1,Lemma,HTT 5.2.3.5,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.2.3.4,Lemma,HTT 5.2.3.5,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.4.1.5,Corollary,HA 3.4.1.7 | HA 3.4.1.6,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.4.1.6,Remark,HA 3.4.1.7,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.4.4.6,Corollary,HA 3.4.4.2,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.4.7.17,Corollary,HA 3.4.4.2 | HTT 5.5.3.17,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,5.1.2.1,Construction,HA 5.1.2.2,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,2.2.5.3,Definition,HA 5.1.2.2 | HA 5.1.2.1 | HA 2.3.1.4,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,2.3.1.4,Proposition,HA 5.1.2.2,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,5.1.2.12,Corollary,HA 5.1.2.2,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,2.4.4.3,Theorem,HA 5.1.2.2,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,2.3.3.11,Proposition,HA 5.1.2.2 | HA 2.3.3.14,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,2.3.3.14,Proposition,HA 5.1.2.2,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,2.4.3.5,Example,HA 2.4.4.2,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,2.4.3.1,Construction,HA 2.4.4.1,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.6.2.12,Remark,HA 4.6.2.13,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.6.2.10,Proposition,HA 4.6.2.13 | HA 4.6.2.12,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.4.2.7,Lemma,HTT 2.4.2.8,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.2.8.19,Lemma,HTT 5.2.8.17 | HA 2.2.4.14,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.2.8.22,Lemma,HTT 5.2.8.17,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,B.3.20,Lemma,HA B.3.21,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.4.7.10,Proposition,HTT 2.4.7.11,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.4.7.2,Definition,HTT 2.4.7.5,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.1.2.2,Corollary,HTT 1.2.4.3 | HTT 1.2.9.3,section-reference-resolution: 節参照 HTT §2.1.2 の構成・定義・証明の項目への内容対応。節全体は追加しない
+HTT,2.1.1.5,Proposition,HTT 1.2.4.3 | HTT 2.1.1.6,explicit-citation: postponed-proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.1.1.6,Proposition,HTT 1.2.4.3,explicit-citation: postponed-proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.3.1.1,Proposition,HTT 3.3.1.2 | HTT 3.3.1.5 | HTT 3.3.1.4,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.2.5.3,Remark,HTT 3.3.1.2,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.1.2.1,Proposition,HTT 4.1.2.8 | HTT 4.1.2.5 | HTT 4.4.4.5 | HTT 4.1.2.4 | HTT 4.1.2.3,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.1.1.12,Corollary,HTT 4.1.2.5,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,2.3.2.11,Proposition,HA 2.3.2.5,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.2.2.3,Lemma,HTT 4.2.2.4,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.3.2.4,Corollary,HTT 4.3.2.11 | HA B.1.9,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.3.1.13,Lemma,HTT 4.3.1.14,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.4.4.7,Lemma,HTT 4.3.1.14 | HTT 2.4.4.8,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.2.1.1,Definition,HTT 4.2.2.1,section-reference-resolution: 節参照 HTT §4.2.1 の構成・定義・証明の項目への内容対応。節全体は追加しない
+HTT,2.1.3.2,Lemma,HTT 2.1.3.3,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.2.3.21,Remark,HA 7.1.2.11 | HA 1.2.3.26,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.2.6.15,Proposition,HA 7.1.2.8 | HA 1.3.5.3 | HA B.0.20 | HTT 2.1.4.7 | HTT 3.1.3.7 | HTT 2.2.5.1 | HTT A.3.2.4 | HTT A.2.7.3,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.3.2.1,Definition,HA 7.1.2.8,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.2.6.14,Corollary,HA 1.3.5.3 | HA B.0.20 | HTT 2.1.4.7 | HTT 3.1.3.7 | HTT 2.2.5.1,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,7.1.1.15,Proposition,HA 7.1.1.16,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.3.5.8,Definition,HA 7.1.1.16,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.3.5.24,Proposition,HA 7.1.1.16,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.3.5.21,Proposition,HA 7.1.1.16,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.3.1.16,Construction,HA 1.3.1.17,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.2.2.13,Proposition,HA 1.3.1.17,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.3.1.12,Remark,HA 1.3.1.17 | HA 1.3.2.21,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.2.2.7,Proposition,HA 1.3.1.17 | HTT 2.2.2.9 | HTT 3.2.1.13 | HTT 4.1.1.5 | HTT 2.2.5.1 | HTT 5.4.5.10 | HTT 2.2.0.1 | HTT 2.2.3.1 | HTT 2.2.3.7,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.2.2.9,Proposition,HA 1.3.1.17 | HTT 2.2.3.15 | HTT 2.2.3.7,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.2.2.6,Remark,HA 1.3.1.17 | HTT 3.2.1.13 | HTT 2.2.0.1 | HTT 2.2.3.1 | HTT 2.2.3.7,section-reference-resolution: 節参照 HTT §2.2.2 の構成・定義・証明の項目への内容対応。節全体は追加しない
+HA,1.3.2.15,Remark,HA 1.3.2.16,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.3.2.14,Corollary,HA 1.3.2.16 | HA 1.3.2.15,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,A.3.3,Lemma,HA A.3.2 | HA A.3.5,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.5.3.18,Theorem,HA 1.4.2.24,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.4.2.11,Proposition,HA 1.4.2.24 | HA 1.4.2.16 | HA 1.4.2.13,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.4.2.26,Lemma,HA 1.4.2.24,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.1.3.3,Lemma,HA 1.4.2.24 | HA 1.4.2.16 | HA 1.1.3.4,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.4.2.23,Corollary,HA 1.4.2.24,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.4.2.16,Proposition,HA 1.4.2.24,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.1.3.4,Proposition,HA 1.1.4.1,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.4.3.2,Proposition,HA 1.1.4.1 | HA 1.1.3.4 | HA 1.3.3.10,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.3.2.10,Remark,HA 1.1.4.1 | HTT 5.5.6.28 | HTT 6.5.1.5 | HTT 5.5.6.16,implicit-definition: 主張に使う定義・記法：left exact functor（right exactの双対）
+HTT,3.2.2.12,Corollary,HTT 3.2.2.13 | HA B.4.10,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,2.1.3.5,Example,HA 2.1.3.8 | HA 4.3.2.6 | HA 3.1.3.6,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,B.0.20,Theorem,HA 2.1.4.13 | HA 2.1.4.6 | HA 3.3.3.17 | HA B.4.1 | HA B.1.5,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.4.1.6,Corollary,HTT 2.4.1.8,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,2.3.3.6,Definition,HA 4.1.2.11 | HA 2.4.2.8,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.2.1.2,Remark,HA 4.2.1.10,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.2.2.6,Construction,HA 4.8.4.4,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,2.1.3.4,Remark,HA 4.8.4.4,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.3.2.2,Construction,HA 4.8.4.4,section-reference-resolution: 節参照 HA §4.3.2 の構成・定義・証明の項目への内容対応。節全体は追加しない
+HA,2.1.4.4,Remark,HA 2.1.4.6,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,B.2.7,Proposition,HA 2.1.4.6 | HA B.4.1,section-reference-resolution: 節参照 HA §B.4 の構成・定義・証明の項目への内容対応。節全体は追加しない
+HTT,4.4.4.10,Corollary,HA 2.3.3.23 | HTT 5.4.5.13 | HA 3.2.3.6,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.3.3.18,Proposition,HA 3.3.3.10,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.3.3.9,Theorem,HA 3.3.3.10,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.3.1.1,Definition,HTT 4.3.1.2,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.4.5.1,Lemma,HTT 1.2.9.3,section-reference-resolution: 節参照 HTT §2.4.5 の構成・定義・証明の項目への内容対応。節全体は追加しない
+HTT,2.4.1.4,Remark,HTT 2.4.2.4,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.2.9.26,Proposition,HTT A.2.9.27 | HTT A.2.9.30,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,2.2.4.14,Lemma,HA 2.2.4.15,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,2.2.4.12,Remark,HA 2.2.4.15,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,2.2.4.11,Lemma,HA 2.2.4.15 | HA 2.2.4.12,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,2.2.4.5,Corollary,HA 2.2.4.6,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.2.1.2,Theorem,HTT 3.3.4.5 | HTT 5.1.1.1 | HTT 5.4.5.7 | HTT 5.3.4.8 | HTT 2.2.3.11 | HTT 2.1.1.4 | HTT 2.2.0.1 | HTT 2.2.3.15,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.2.3.12,Corollary,HTT 5.1.1.1 | HTT 2.1.4.8 | HTT 4.1.2.1 | HTT 4.1.2.17 | HTT 2.2.3.13 | HTT 2.2.3.15,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.2.1.13,Proposition,HTT 5.1.1.1 | HTT 3.3.3.1 | HTT 3.2.3.3 | HTT 3.2.1.14,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.3.1.10,Proposition,HTT 5.1.1.1 | HTT 2.2.3.11 | HTT 2.2.3.10,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.1.4.5,Definition,HTT 5.1.1.1 | HTT 2.1.1.4 | HTT 4.1.2.7,section-reference-resolution: 節参照 HTT §2.1.4 の構成・定義・証明の項目への内容対応。節全体は追加しない
+HTT,2.1.4.7,Proposition,HTT 5.1.1.1 | HTT 2.1.4.8 | HTT 2.1.1.4 | HTT 4.1.2.7,section-reference-resolution: 節参照 HTT §2.1.4 の構成・定義・証明の項目への内容対応。節全体は追加しない
+HTT,2.1.4.12,Remark,HTT 5.1.1.1 | HTT 2.1.1.4 | HTT 4.1.2.7,section-reference-resolution: 節参照 HTT §2.1.4 の構成・定義・証明の項目への内容対応。節全体は追加しない
+HTT,4.1.1.7,Proposition,HTT 4.1.1.8,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.3.2.8,Corollary,HTT 4.1.1.8,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.2.4.8,Corollary,HTT 4.1.1.8,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.1.1.5,Lemma,HTT 4.1.1.8 | HTT 4.1.1.7 | HTT 4.1.1.6,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.3.2.3,Remark,HTT 4.1.1.8 | HTT 3.3.2.8,section-reference-resolution: 節参照 HTT §3.3.2 の構成・定義・証明の項目への内容対応。節全体は追加しない
+HTT,4.2.1.8,Corollary,HTT 4.2.4.3 | HTT 1.2.2.5,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.2.1.6,Proposition,HTT 4.2.4.3,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.2.6.10,Proposition,HTT A.2.8.2 | HTT A.2.6.15 | HTT A.3.7.3,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.3.3.3,Lemma,HTT A.2.8.2 | HTT A.2.8.3,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.4.4.3,Proposition,HTT A.2.8.2 | HTT 5.4.7.10 | HTT 5.4.7.2,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.3.1.7,Proposition,HTT 2.1.4.8 | HA B.0.20 | HTT A.3.7.3,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.1.4.9,Proposition,HTT 2.1.4.8 | HTT 4.1.2.1 | HTT 2.2.3.12 | HTT 2.1.4.12 | HTT 2.2.4.1 | HTT 2.2.3.1,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.3.4.13,Proposition,HTT 5.3.4.14 | HTT 5.4.4.3 | HTT 5.3.4.8 | HTT 5.4.5.13 | HTT 5.3.5.15,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.3.4.8,Lemma,HTT 5.3.4.14 | HTT 5.3.4.9 | HTT 5.3.4.10 | HTT 5.3.4.12,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.3.1.9,Example,HTT 5.3.1.10,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.4.5.15,Corollary,HTT 5.3.1.10,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.2.4.1,Lemma,HTT 5.2.4.2,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.2.0.1,Theorem,HTT 4.3.3.10 | HTT 3.3.3.1 | HTT 3.3.1.1 | HTT 3.2.5.18 | HTT 3.2.4.1 | HTT 3.2.3.2,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.3.2.6,Lemma,HTT 4.3.3.10,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.3.3.9,Lemma,HTT 4.3.3.10,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.2.1.1,Notation,HTT 4.3.3.10 | HTT 3.2.3.1,section-reference-resolution: 節参照 HTT §3.2.1 の構成・定義・証明の項目への内容対応。節全体は追加しない
+HTT,3.2.1.2,Definition,HTT 4.3.3.10 | HTT 3.2.0.1 | HTT 3.2.3.1,section-reference-resolution: 節参照 HTT §3.2.1 の構成・定義・証明の項目への内容対応。節全体は追加しない
+HTT,3.2.1.5,Corollary,HTT 4.3.3.10 | HTT 3.2.0.1 | HTT 3.2.3.1,section-reference-resolution: 節参照 HTT §3.2.1 の構成・定義・証明の項目への内容対応。節全体は追加しない
+HTT,3.3.3.4,Corollary,HTT 5.1.5.4,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.1.2.14,Proposition,HTT 4.1.2.16,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.1.2.13,Proposition,HTT 4.1.2.16,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.1.2.17,Lemma,HTT 4.1.2.18,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.4.2.8,Lemma,HTT 5.4.2.9 | HTT 5.5.4.3,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.3.1.6,Corollary,HTT 5.4.5.7,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.4.5.6,Lemma,HTT 5.4.5.7,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.4.5.15,Proposition,HTT 5.4.6.1,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.3.1.21,Lemma,HTT 5.4.6.5,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.4.6.4,Lemma,HTT 5.4.6.5,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.4.6.3,Lemma,HTT 5.4.6.5 | HTT A.2.6.6,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.4.5.11,Lemma,HTT 5.4.6.5 | HTT 5.4.5.12,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.4.5.3,Lemma,HTT 5.4.5.4,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.4.4.8,Lemma,HTT 2.4.4.9,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.1.3.5,Proposition,HTT 3.3.1.5 | HTT 3.1.3.7 | HTT 3.2.3.2 | HTT 3.1.4.2,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.2.2.8,Proposition,HTT 3.3.1.5,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.1.3.3,Proposition,HTT 3.3.1.5 | HTT 3.1.3.5 | HTT 3.1.3.7 | HTT 3.2.5.17 | HTT 3.2.1.16 | HTT 3.2.2.14 | HTT 3.2.3.2 | HTT 3.2.3.3 | HTT 3.2.1.14 | HTT 3.1.4.2,implicit-definition: 主張に使う定義・記法：Cartesian equivalence
+HA,4.1.7.10,Proposition,HA 4.8.1.2,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.1.0.1,Definition,HA 4.8.1.2 | HA B.4.2 | HA B.0.19 | HTT 3.2.2.4 | HTT 3.1.1.8 | HTT 3.2.2.3 | HA 1.3.4.7 | HTT 3.2.1.14 | HTT 3.2.2.11,section-reference-resolution: 節参照 HTT §3.1 の構成・定義・証明の項目への内容対応。節全体は追加しない
+HTT,3.1.3.7,Proposition,HA 4.8.1.2,section-reference-resolution: 節参照 HTT §3.1 の構成・定義・証明の項目への内容対応。節全体は追加しない
+HA,4.3.2.1,Construction,HA 4.8.3.21,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.8.3.19,Variant,HA 4.8.3.21,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.3.2.6,Proposition,HA 4.8.3.21,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+DAGXIII,2.1.4,Example,DAGXIII 2.1.5,explicit-citation: itemの論文内番号参照
+HTT,5.2.3.3,Lemma,HTT 5.2.3.4,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.1.1.21,Corollary,HA 3.4.4.6,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,2.2.5.1,Notation,HA 5.1.2.1 | HA 2.3.1.4,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,2.3.1.5,Lemma,HA 2.3.1.4,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,2.4.4.4,Lemma,HA 2.4.4.3 | HA 2.4.4.5,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,2.4.4.5,Lemma,HA 2.4.4.3,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.7.4.13,Definition,HA 4.6.2.10,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.2.7.6,Definition,HTT 5.2.8.19 | HTT 5.2.7.7,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.2.8.20,Lemma,HTT 5.2.8.22,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,B.3.19,Lemma,HA B.3.20,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.2.1.4,Proposition,HTT 3.3.1.1 | HTT 3.2.1.13 | HTT 3.2.1.5 | HTT 3.2.1.11 | HTT 3.2.3.2 | HTT 3.2.3.3 | HTT 3.2.1.7,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.3.3.8,Proposition,HTT 3.3.1.1 | HTT 2.2.3.11 | HTT 2.2.3.10 | HTT A.3.4.12,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.1.2.5,Proposition,HTT 4.1.1.12 | HTT 3.1.3.7 | HTT A.3.7.3 | HTT A.2.6.8 | HTT A.1.2.8 | HTT A.1.2.7,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.1.1.11,Corollary,HTT 4.1.1.12,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,2.3.2.10,Definition,HA 2.3.2.11 | HA 5.3.1.19,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.3.2.8,Proposition,HA 2.3.2.11,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.1.2.1,Proposition,HTT 4.2.2.3 | HTT 3.2.2.12 | HTT 3.1.3.3 | HA B.4.10,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.2.6.12,Definition,HTT A.2.6.15 | HA B.0.20 | HTT 3.1.3.7 | HTT A.3.2.3,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.2.3.1,Definition,HA 1.3.2.1,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.3.2.20,Lemma,HA 1.3.5.24 | HA 1.3.2.21,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.3.5.15,Proposition,HA 1.3.5.21,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.3.5.18,Proposition,HA 1.3.5.21,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.3.4.24,Proposition,HA 1.3.5.21 | HA 4.1.8.13 | HA 1.3.4.26,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.3.4.25,Proposition,HA 1.3.5.21 | HA 4.1.8.13 | HA 1.3.4.26,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.3.1.15,Notation,HA 1.3.1.16,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.2.3.12,Lemma,HA 1.3.1.12,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.2.3.5,Construction,HA 1.3.1.12,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.3.1.6,Construction,HA 1.3.1.12,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,A.3.5,Lemma,HA A.3.3,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,A.3.6,Notation,HA A.3.3,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.5.3.17,Proposition,HTT 5.5.3.18,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.4.2.13,Proposition,HA 1.4.2.11,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.5.4.20,Proposition,HA 1.4.2.26,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.5.7.3,Corollary,HA 1.4.2.26,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.1.2.14,Theorem,HA 1.1.3.3,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.4.2.10,Lemma,HA 1.4.2.16,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.4.2.4,Remark,HA 1.4.2.16,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.4.2.6,Proposition,HTT 4.4.3.2,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.4.3.1,Proposition,HTT 4.4.3.2,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,B.1.6,Proposition,HA B.0.20 | HA B.1.14 | HA B.1.11 | HA B.1.12,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,B.2.2,Example,HA B.0.20 | HA B.2.4,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,B.2.4,Lemma,HA B.0.20,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,B.2.3,Lemma,HA B.0.20,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,B.1.13,Lemma,HA B.0.20 | HA B.1.14,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,B.1.9,Proposition,HA B.0.20 | HA B.2.7 | HA B.1.14,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,B.1.1,Definition,HA B.0.20 | HA B.1.6 | HA B.1.13 | HA B.1.9 | HA B.1.5,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.3.7.3,Proposition,HA B.0.20,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,B.1.14,Proposition,HA B.0.20 | HA B.2.2 | HA B.2.4 | HA B.2.3,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,B.4.2,Theorem,HA B.2.7 | HA 3.3.3.18,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,B.2.9,Proposition,HA B.2.7 | HA B.4.2 | HA B.4.1,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,B.2.11,Lemma,HA B.2.7,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,B.0.19,Definition,HA B.2.7 | HA B.1.6 | HA B.0.26 | HA B.4.1,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,B.0.26,Remark,HA B.2.7 | HA B.1.6 | HA B.4.1,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,B.1.7,Lemma,HA B.2.7 | HA B.1.6 | HA B.2.11 | HA B.4.1,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.4.4.9,Corollary,HTT 4.4.4.10,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.3.1.3,Remark,HA 3.3.3.18,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.3.3.17,Lemma,HA 3.3.3.18,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.2.8.6,Proposition,HA 3.3.3.18,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.3.1.13,Example,HA 3.3.3.18,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.3.3.15,Remark,HA 3.3.3.9,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.3.1.1,Definition,HTT A.2.9.26,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,2.2.4.13,Lemma,HA 2.2.4.14,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.2.3.11,Proposition,HTT 2.2.1.2 | HTT 2.2.3.12,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.2.1.11,Proposition,HTT 3.2.1.13 | HTT 3.2.5.17 | HTT 3.2.1.16,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.3.2.1,Definition,HTT A.3.1.10 | HTT A.3.2.4,section-reference-resolution: 節参照 HTT §A.3.2 の構成・定義・証明の項目への内容対応。節全体は追加しない
+HTT,2.2.5.1,Theorem,HTT 2.1.4.7 | HTT 2.1.4.10 | HTT 5.4.1.1 | HTT 2.2.5.6,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.1.2.7,Corollary,HTT 2.1.4.7 | HTT 4.1.1.5 | HA B.1.9 | HTT 2.2.4.1 | HTT 2.1.1.4 | HTT 2.2.3.4,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.1.4.6,Lemma,HTT 2.1.4.7 | HTT 2.1.4.9,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.1.4.10,Proposition,HTT 2.1.4.12,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.1.1.6,Remark,HTT 4.1.1.7,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,1.2.2.3,Proposition,HTT 4.1.1.5 | HTT 4.2.1.8 | HTT 2.2.0.1,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.2.4.1,Proposition,HTT 4.1.1.5 | HTT 2.2.5.1 | HTT 2.2.0.1,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.2.1.7,Corollary,HTT 4.2.1.8,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,1.2.2.1,Definition,HTT 4.2.1.8 | HTT 2.2.0.1,section-reference-resolution: 節参照 HTT §1.2.2 の構成・定義・証明の項目への内容対応。節全体は追加しない
+HTT,1.2.2.5,Remark,HTT 4.2.1.8 | HTT 2.2.0.1,section-reference-resolution: 節参照 HTT §1.2.2 の構成・定義・証明の項目への内容対応。節全体は追加しない
+HTT,A.2.6.9,Lemma,HTT A.2.6.10,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.4.4.2,Lemma,HTT 5.4.4.3,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.2.4.2,Proposition,HTT A.3.1.7 | HTT 2.2.5.1,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.3.4.9,Lemma,HTT 5.3.4.13 | HTT 5.5.5.9,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.3.4.10,Lemma,HTT 5.3.4.13,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.3.4.12,Lemma,HTT 5.3.4.13,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.4.5.2,Definition,HTT 5.3.1.9,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.4.5.9,Lemma,HTT 5.3.1.9 | HTT 4.4.5.10,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.2.5.18,Proposition,HTT 3.2.0.1 | HTT 3.2.5.21 | HTT 3.2.5.5,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.2.5.21,Proposition,HTT 3.2.0.1,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.2.2.4,Remark,HTT 3.2.0.1 | HTT 5.2.1.3,section-reference-resolution: 節参照 HTT §3.2.2 の構成・定義・証明の項目への内容対応。節全体は追加しない
+HTT,3.2.3.4,Proposition,HTT 3.2.0.1,section-reference-resolution: 節参照 HTT §3.2.3 の構成・定義・証明の項目への内容対応。節全体は追加しない
+HTT,3.2.4.1,Lemma,HTT 3.2.0.1,section-reference-resolution: 節参照 HTT §3.2.4 の構成・定義・証明の項目への内容対応。節全体は追加しない
+HTT,3.2.4.2,Lemma,HTT 3.2.0.1,section-reference-resolution: 節参照 HTT §3.2.4 の構成・定義・証明の項目への内容対応。節全体は追加しない
+HTT,A.3.5.1,Notation,HTT 3.2.0.1 | HTT 2.2.3.11,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.3.6.17,Lemma,HTT 3.2.0.1 | HTT 2.2.3.11,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.2.3.6,Lemma,HTT 3.2.0.1 | HTT 2.2.3.11 | HTT 2.2.3.13 | HTT 2.2.3.9,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.3.2.14,Remark,HTT 3.2.0.1 | HTT 2.2.3.11 | HTT A.3.2.24 | HTT A.3.2.15,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.2.3.5,Lemma,HTT 3.2.0.1 | HTT 2.2.3.11 | HTT 2.2.3.6,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.3.6.18,Corollary,HTT 3.2.0.1 | HTT 2.2.3.11,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.3.2.28,Corollary,HTT 3.2.0.1 | HTT 2.2.3.11,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.3.1.6,Proposition,HTT 4.3.2.6,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.3.2.5,Lemma,HTT 4.3.2.6,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.4.3.2,Proposition,HTT 4.3.3.9 | HA B.4.12,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.1.2.4,Corollary,HTT 4.1.2.14,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.1.2.3,Corollary,HTT 4.1.2.13,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.2.3.13,Corollary,HTT 3.3.1.6,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.1.3.1,Proposition,HTT 3.3.1.6,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.4.5.14,Lemma,HTT 5.4.5.15,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.4.5.13,Lemma,HTT 5.4.5.15,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.4.5.9,Example,HTT 5.4.5.15,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.4.6.2,Lemma,HTT 5.4.6.3,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.4.5.10,Lemma,HTT 5.4.5.11,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.1.1.5,Proposition,HTT 3.1.3.5 | HTT 3.1.2.3,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.2.2.5,Remark,HTT 3.2.2.8 | HTT 3.2.2.9,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.1.3.2,Lemma,HTT 3.1.3.3,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.1.1.6,Proposition,HTT 3.1.3.7 | HTT 3.1.1.10 | HTT 3.1.1.7 | HTT 3.2.1.8 | HTT 5.2.1.3,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.1.3.6,Lemma,HTT 3.1.3.7,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.8.3.9,Definition,HA 4.8.3.19,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.1.1.4,Lemma,HTT 5.2.3.3,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.2.3.2,Lemma,HTT 5.2.3.3,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.2.1.2,Proposition,HTT 5.2.8.20,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,B.3.18,Lemma,HA B.3.19,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.3.3.7,Proposition,HTT 3.2.1.4,section-reference-resolution: 節参照 HTT §A.3.3 の構成・定義・証明の項目への内容対応。節全体は追加しない
+HTT,4.3.1.7,Proposition,HTT 4.3.2.8 | HTT 4.3.2.5,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.1.2.3,Proposition,HTT 3.1.2.1 | HTT 3.1.3.6 | HTT 3.1.4.1 | HTT 3.1.4.2 | HTT 3.2.2.11,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.1.1.10,Remark,HTT 3.1.2.1,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.3.5.14,Proposition,HA 1.3.5.15,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.3.4.5,Proposition,HA 1.3.5.15 | HA 1.3.4.7,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.3.4.16,Remark,HA 1.3.5.15,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.3.5.17,Remark,HA 1.3.5.18,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.3.5.12,Lemma,HA 1.3.5.18 | HA 1.3.5.14,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.2.3.11,Remark,HA 1.2.3.12,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.5.4.18,Lemma,HTT 5.5.3.17 | HA 1.4.2.4,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.5.4.17,Lemma,HTT 5.5.3.17,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.5.3.16,Lemma,HTT 5.5.3.17,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.4.2.1,Definition,HA 1.4.2.13,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.4.2.12,Notation,HA 1.4.2.13 | HA 1.4.2.15,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.4.2.15,Lemma,HA 1.4.2.13,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.2.7.7,Remark,HTT 5.5.4.20,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.5.4.11,Lemma,HTT 5.5.4.20 | HTT 5.5.4.15,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.5.4.15,Proposition,HTT 5.5.4.20,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.5.7.2,Proposition,HTT 5.5.7.3,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.1.2.7,Notation,HA 1.1.2.14,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.1.2.11,Definition,HA 1.1.2.14,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.4.2.3,Remark,HA 1.4.2.10,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.5.4.19,Lemma,HA 1.4.2.4,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.4.2.4,Corollary,HTT 4.4.2.6 | HTT 5.5.5.11,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.4.2.2,Proposition,HTT 4.4.2.6 | HTT 4.4.2.4,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.4.2.10,Corollary,HA B.1.6,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,B.1.11,Lemma,HA B.1.13 | HA B.1.9,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,B.1.12,Lemma,HA B.1.9,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,B.1.2,Example,HA B.1.9,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,B.1.10,Lemma,HA B.1.9,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,B.1.4,Example,HA B.1.9,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.3.7.1,Lemma,HTT A.3.7.3,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.2.6.7,Corollary,HTT A.3.7.3 | HTT A.2.6.8,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.2.6.8,Corollary,HTT A.3.7.3,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,B.4.1,Proposition,HA B.4.2,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.4.1.5,Proposition,HA B.2.11,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.3.1.2,Remark,HA 3.3.1.3,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.3.3.14,Lemma,HA 3.3.3.15,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.2.3.10,Lemma,HTT 2.2.3.11,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.2.3.4,Lemma,HTT 2.2.3.11 | HTT 2.2.3.6,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.2.1.9,Lemma,HTT 3.2.1.11,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.1.1.7,Corollary,HTT 3.2.1.11 | HTT 3.1.2.3,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.2.1.10,Lemma,HTT 3.2.1.11,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.2.5.2,Lemma,HTT 2.2.5.1,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.2.5.1,Proposition,HTT 2.2.5.1,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.2.0.1,Theorem,HTT 2.2.5.1,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.3.2.4,Proposition,HTT 2.2.5.1 | HTT 2.2.5.2 | HTT A.3.2.12,section-reference-resolution: 節参照 HTT §A.3.2 の構成・定義・証明の項目への内容対応。節全体は追加しない
+HTT,1.2.5.1,Proposition,HTT 1.2.2.3 | HTT 2.2.3.4,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.2.3.15,Proposition,HTT 2.2.4.1,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.2.6.5,Proposition,HTT A.2.6.9,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.1.5.13,Corollary,HTT A.2.6.9,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.1.5.6,Lemma,HTT A.2.6.9,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.1.5.5,Remark,HTT A.2.6.9 | HTT A.1.5.6 | HTT A.1.5.12,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.1.5.11,Lemma,HTT A.2.6.9 | HTT A.1.5.12,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.4.1.2,Proposition,HTT 5.4.4.2,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.4.4.1,Lemma,HTT 5.4.4.2,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.3.1.11,Corollary,HTT 5.4.4.2,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.3.4.11,Lemma,HTT 5.3.4.12,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.2.5.15,Lemma,HTT 3.2.5.18 | HTT 3.2.5.17,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.2.5.17,Lemma,HTT 3.2.5.18 | HTT 3.2.5.20,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.2.1.16,Corollary,HTT 3.2.5.18,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.1.4.1,Proposition,HTT 3.2.5.21 | HTT 3.2.4.2,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.2.5.20,Corollary,HTT 3.2.5.21,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.1.1.8,Definition,HTT 3.2.2.4,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.2.2.3,Notation,HTT 3.2.2.4,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.2.2.14,Proposition,HTT 3.2.3.4,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.2.3.2,Lemma,HTT 3.2.3.4,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.2.3.1,Lemma,HTT 3.2.3.4 | HTT 3.2.3.2,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.2.3.3,Lemma,HTT 3.2.3.4,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.3.4.11,Corollary,HTT A.3.6.17 | HTT A.3.5.14 | HTT A.3.4.14 | HTT A.3.5.6,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.3.5.14,Lemma,HTT A.3.6.17 | HTT A.3.6.16 | HTT A.3.5.15,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,1.2.4.1,Proposition,HTT 2.2.3.6,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.3.2.12,Definition,HTT A.3.2.14,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.3.4.15,Lemma,HTT A.3.6.18 | HTT A.3.4.11 | HTT A.3.4.6,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.3.6.16,Proposition,HTT A.3.6.18,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.3.2.27,Proposition,HTT A.3.2.28,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.1.2.10,Corollary,HTT 2.1.3.1,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,5.3.1.19,Definition,HA 4.8.3.9,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,B.3.17,Proposition,HA B.3.18,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.1.1.4,Remark,HTT 3.1.2.3,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.3.4.15,Definition,HA 1.3.5.14 | HA 1.3.4.16 | HA 1.3.4.20,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.3.4.20,Theorem,HA 1.3.5.14 | HA 1.3.4.16,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.3.5.4,Warning,HA 1.3.5.14,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.3.1.9,Remark,HA 1.3.4.5,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.1.7.3,Notation,HA 1.3.4.5,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.3.4.7,Proposition,HA 1.3.4.5 | HA 1.3.4.20,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.3.4.11,Notation,HA 1.3.4.5,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.3.4.14,Proposition,HA 1.3.4.5 | HA 1.3.4.7,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.3.5.16,Definition,HA 1.3.5.17,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.3.5.7,Corollary,HA 1.3.5.17,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.3.2.19,Proposition,HA 1.3.5.17,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.3.5.6,Proposition,HA 1.3.5.17 | HA 1.3.5.12 | HA 1.3.5.7,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.3.5.11,Lemma,HA 1.3.5.12,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.5.3.15,Lemma,HTT 5.5.3.16,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.5.4.10,Remark,HTT 5.5.4.11,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.5.4.5,Definition,HTT 5.5.4.11 | HTT 5.5.4.15 | HTT 5.5.4.10 | HTT 5.5.4.6,implicit-definition: 主張に使う定義・記法：strongly saturated class
+HTT,5.5.5.14,Lemma,HTT 5.5.4.15,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.5.4.6,Remark,HTT 5.5.4.15,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.5.4.2,Proposition,HTT 5.5.4.15,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,B.1.5,Remark,HA B.1.11 | HA B.1.12,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.4.7.10,Proposition,HTT A.2.6.8,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,B.4.11,Corollary,HA B.4.1,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,B.4.12,Proposition,HA B.4.1,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.3.3.4,Corollary,HA 3.3.3.14,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.2.3.9,Lemma,HTT 2.2.3.10,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.2.3.1,Lemma,HTT 2.2.3.10 | HTT 2.2.3.9 | HTT 2.2.3.7,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.2.1.8,Lemma,HTT 3.2.1.9,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.2.1.1,Proposition,HTT 2.2.0.1 | HTT 3.2.5.10,section-reference-resolution: 節参照 HTT §2.2.1 の構成・定義・証明の項目への内容対応。節全体は追加しない
+HTT,A.3.2.3,Remark,HTT A.3.2.4,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.2.6.2,Definition,HTT A.2.6.5,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.2.6.6,Lemma,HTT A.2.6.5,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.1.5.12,Proposition,HTT A.1.5.13,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.1.5.7,Lemma,HTT A.1.5.13 | HTT A.1.5.12,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.1.5.3,Remark,HTT A.1.5.6 | HTT A.1.5.11,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.4.1.1,Lemma,HTT 5.4.1.2,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.2.5.10,Remark,HTT 3.2.5.17 | HTT 3.2.5.16,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.2.5.16,Remark,HTT 3.2.5.17 | HTT 3.2.5.20,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.2.1.7,Proposition,HTT 3.2.5.17,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.2.5.14,Remark,HTT 3.2.5.17,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.2.1.15,Corollary,HTT 3.2.1.16,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.2.1.14,Proposition,HTT 3.2.3.1 | HTT 3.2.1.15,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.3.4.6,Lemma,HTT A.3.4.11 | HTT A.3.5.14 | HTT A.3.5.6,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.3.4.10,Lemma,HTT A.3.4.11 | HTT A.3.4.12,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.3.4.13,Proposition,HTT A.3.5.14 | HTT A.3.4.14,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.3.5.5,Proposition,HTT A.3.5.14 | HTT A.3.5.6,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.3.6.15,Proposition,HTT A.3.6.16,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.3.5.15,Theorem,HTT A.3.6.16,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.3.4.14,Corollary,HTT A.3.6.16,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,B.3.5,Example,HA B.3.17,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.3.4.19,Lemma,HA 1.3.4.20,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.3.1.13,Construction,HA 1.3.5.4,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.3.1.5,Definition,HA 1.3.5.4,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.3.1.4,Remark,HA 1.3.1.9,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.1.7.2,Proposition,HA 4.1.7.3,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.1.4.2,Proposition,HA 4.1.7.3,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.3.4.12,Lemma,HA 1.3.4.14 | HA 1.3.4.13,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.3.4.10,Lemma,HA 1.3.4.14,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.3.4.13,Lemma,HA 1.3.4.14,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.3.2.21,Lemma,HA 1.3.2.19,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.5.5.9,Lemma,HTT 5.5.5.14,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.5.5.11,Lemma,HTT 5.5.5.14,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.5.5.12,Lemma,HTT 5.5.5.14 | HTT 5.5.5.13,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.5.5.13,Lemma,HTT 5.5.5.14,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.4.5.12,Proposition,HTT 5.5.4.6,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.4.7.7,Proposition,HTT 5.5.4.2,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.5.4.4,Lemma,HTT 5.5.4.2,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.4.7.2,Lemma,HTT 5.4.7.10 | HA 3.2.3.4,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,B.4.10,Proposition,HA B.4.11,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,B.4.9,Proposition,HA B.4.11 | HA B.4.12,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.2.3.7,Lemma,HTT 2.2.3.9,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.2.2.11,Remark,HTT 2.2.3.1 | HTT 2.2.3.7,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.2.2.10,Corollary,HTT 2.2.3.1,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.1.2.8,Remark,HTT A.1.5.12,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.1.5.9,Lemma,HTT A.1.5.12,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.1.5.10,Lemma,HTT A.1.5.12,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.2.5.8,Remark,HTT 3.2.5.10 | HTT 3.2.5.14,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.2.5.6,Example,HTT 3.2.5.10,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.3.4.8,Theorem,HTT A.3.4.10,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.3.4.12,Proposition,HTT A.3.4.13 | HTT A.3.5.6,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.3.5.4,Lemma,HTT A.3.5.5,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.3.6.4,Remark,HTT A.3.6.15,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.3.3.12,Proposition,HTT A.3.6.15,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.3.6.14,Lemma,HTT A.3.6.15,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.3.5.13,Lemma,HTT A.3.5.15,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,B.3.4,Example,HA B.3.5,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.3.4.18,Construction,HA 1.3.4.19,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.2.3.26,Example,HA 1.3.1.13,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.3.1.4,Example,HTT A.3.1.5,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.1.7.1,Construction,HA 4.1.7.2,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.1.8.3,Proposition,HA 1.3.4.10 | HA 4.1.8.13,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.1.8.13,Lemma,HA 1.3.4.10 | HA 4.1.8.4,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.2.9.30,Corollary,HA 1.3.4.13,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.3.5.15,Proposition,HTT 5.5.5.9,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.5.4.13,Lemma,HTT 5.5.5.9,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.4.2.9,Proposition,HTT 5.5.5.11,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.4.5.11,Lemma,HTT 4.4.5.12,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.5.4.3,Lemma,HTT 5.5.4.4,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.4.7.1,Lemma,HTT 5.4.7.2,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,B.4.8,Lemma,HA B.4.9,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.1.2.7,Corollary,HTT A.1.2.8,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.1.5.8,Lemma,HTT A.1.5.9,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.2.5.5,Remark,HTT 3.2.5.8,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.2.5.7,Remark,HTT 3.2.5.8,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.3.2.24,Theorem,HTT A.3.4.8,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.2.8.9,Proposition,HTT A.3.6.14,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.3.6.12,Lemma,HTT A.3.6.14,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.3.6.13,Lemma,HTT A.3.6.14,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.3.5.11,Definition,HTT A.3.5.13 | HTT A.3.5.12,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.3.5.12,Lemma,HTT A.3.5.13,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.3.5.10,Proposition,HTT A.3.5.13,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.2.3.25,Remark,HA 1.2.3.26,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.1.3.5,Definition,HA 1.2.3.26,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.2.7.3,Example,HTT A.3.1.4,section-reference-resolution: 節参照 HTT §A.2.7 の構成・定義・証明の項目への内容対応。節全体は追加しない
+HA,4.1.8.1,Definition,HA 4.1.8.3 | HA 4.1.8.11,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.1.8.11,Lemma,HA 4.1.8.3,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.1.8.12,Lemma,HA 4.1.8.3,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.1.8.4,Theorem,HA 4.1.8.3,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.5.8.1,Definition,HA 4.1.8.13,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.5.8.7,Proposition,HA 4.1.8.13 | HA 3.2.3.6,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.2.9.29,Example,HTT A.2.9.30,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.3.1.12,Remark,HTT 5.3.5.15,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.4.2.8,Lemma,HTT 4.4.2.9,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.4.5.10,Lemma,HTT 4.4.5.11,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.3.2.10,Remark,HTT A.3.2.24,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.3.2.15,Remark,HTT A.3.2.24,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.3.2.26,Lemma,HTT A.3.2.24,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.3.5.8,Remark,HTT A.3.5.11 | HTT A.3.5.10,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.3.5.6,Lemma,HTT A.3.5.12,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.3.5.9,Lemma,HTT A.3.5.10,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.3.5.2,Remark,HTT A.3.5.10,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,4.1.8.8,Lemma,HA 4.1.8.4,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.2.3.5,Corollary,HA 4.1.8.4,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.1.3.5,Corollary,HA 4.1.8.4 | HA 3.1.3.6,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.2.3.1,Proposition,HA 4.1.8.4 | HA 3.2.3.5 | HA 3.2.3.2,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.2.2.6,Lemma,HA 4.1.8.4 | HA 3.2.3.3,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.2.3.15,Variant,HTT 5.3.1.12 | HTT 4.2.3.16,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.2.3.16,Variant,HTT 5.3.1.12,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,A.3.2.9,Definition,HTT A.3.2.10,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.3.4.26,Corollary,HA 4.1.8.8,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.2.3.4,Lemma,HA 3.2.3.5,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.2.3.3,Corollary,HA 3.2.3.5,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.5.8.6,Proposition,HA 3.2.3.5 | HA 3.2.3.6,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.1.1.19,Variant,HA 3.1.3.5,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.1.3.4,Corollary,HA 3.1.3.5,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.2.3.7,Lemma,HA 3.2.3.1 | HA 3.2.3.4,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,2.1.2.12,Proposition,HA 3.2.3.1 | HA 3.2.3.4 | HA 3.2.3.7,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,6.5.3.7,Lemma,HTT 4.2.3.15,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.1.2.7,Corollary,HTT 4.2.3.16,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,4.4.2.7,Proposition,HA 1.3.4.26,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,1.3.3.10,Lemma,HA 3.2.3.3,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.2.3.2,Corollary,HA 3.2.3.3,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.1.3.6,Example,HA 3.2.3.3,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.1.3.3,Proposition,HA 3.1.3.4,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.1.3.2,Proposition,HA 3.1.3.4 | HA 3.1.3.3,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.2.2.12,Proposition,HA 3.1.3.4,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.2.3.6,Lemma,HA 3.2.3.7,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.3.1.4,Corollary,HA 2.1.2.12,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.3.5.14,Proposition,HA 1.3.3.10,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,6.5.1.10,Definition,HA 1.3.3.10,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,6.5.3.10,Lemma,HA 1.3.3.10,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.1.3.15,Remark,HA 3.1.3.3 | HA 3.1.3.2,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.1.3.16,Lemma,HA 3.1.3.2,explicit-citation: proofの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.2.1.3,Proposition,HTT 5.2.2.12,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.2.2.11,Lemma,HTT 5.2.2.12,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.3.2.9,Proposition,HTT 5.3.5.14 | HTT 5.3.2.5,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,6.5.1.16,Proposition,HTT 6.5.3.10 | HTT 7.2.1.13,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,6.5.1.12,Proposition,HTT 6.5.3.10 | HTT 6.5.1.16,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.5.6.28,Proposition,HTT 6.5.3.10 | HTT 6.5.1.16 | HTT 6.5.1.4 | HTT 6.5.1.9 | HTT 7.2.1.13 | HTT 6.5.1.2,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.1.3.1,Definition,HA 3.1.3.15,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HA,3.1.2.2,Definition,HA 3.1.3.15,implicit-definition: 主張に使う定義・記法：operadic Kan extension
+HTT,3.2.2.10,Proposition,HTT 5.2.1.3,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.2.2.10,Lemma,HTT 5.2.2.11,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.3.2.8,Lemma,HTT 5.3.2.9,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.3.2.7,Lemma,HTT 5.3.2.9,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,6.2.3.12,Corollary,HTT 6.5.1.16 | HTT 6.2.3.15 | HTT 6.5.1.20,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,6.5.1.5,Remark,HTT 6.5.1.16 | HTT 6.5.1.20,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,6.2.3.16,Lemma,HTT 6.5.1.16 | HTT 6.5.1.12 | HTT 6.5.1.20,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,6.2.3.15,Proposition,HTT 6.5.1.16 | HTT 6.2.3.16,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,6.5.1.4,Remark,HTT 6.5.1.16 | HTT 6.5.1.5 | HTT 6.5.1.9,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,6.2.3.4,Proposition,HTT 6.5.1.12,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,6.5.1.9,Lemma,HTT 6.5.1.12,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,7.2.1.14,Proposition,HTT 6.5.1.12 | HTT 6.5.1.20,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,6.5.1.7,Proposition,HTT 6.5.1.12,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.5.6.16,Proposition,HTT 5.5.6.28,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.2.2.6,Proposition,HTT 5.5.6.28,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.2.2.9,Lemma,HTT 3.2.2.10,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.3.2.5,Proposition,HTT 5.3.2.8 | HTT 5.3.2.7,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.3.2.6,Lemma,HTT 5.3.2.7,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,6.2.3.10,Proposition,HTT 6.2.3.12 | HTT 7.2.1.14,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,7.2.1.13,Lemma,HTT 7.2.1.14,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,6.1.1.6,Fact,HTT 7.2.1.14,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.5.6.15,Lemma,HTT 6.5.1.7 | HTT 5.5.6.16,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,6.5.1.3,Remark,HTT 6.5.1.7,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,3.2.2.11,Proposition,HTT 5.2.2.6,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.2.2.3,Lemma,HTT 5.2.2.6,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.2.1.5,Proposition,HTT 5.2.2.6,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,2.2.5.6,Corollary,HTT 3.2.2.9,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,5.3.1.19,Proposition,HTT 5.3.2.5,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,6.5.1.2,Lemma,HTT 7.2.1.13,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,6.5.1.19,Proposition,HTT 7.2.1.13 | HTT 6.5.1.20,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）
+HTT,6.5.1.20,Proposition,HTT 7.2.1.13,explicit-citation: itemの番号参照（同様の議論・前方参照も選別せず採る）

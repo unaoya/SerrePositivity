@@ -1,0 +1,7 @@
+import SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionBoundaryFactorWidth
+
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionAtomicPath_atomic_of_length_one
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionAtomicFactor_width_sum
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionAtomicFactor_width_lt
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionLastFace_atomicFactor_width_lt
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionFirstFace_atomicFactor_width_lt

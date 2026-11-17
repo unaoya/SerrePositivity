@@ -1,0 +1,95 @@
+'SerrePositivity.InfinityCategories.HA.Monads.augmentedOrdinalOfCard_card' does not depend on any axioms
+'SerrePositivity.InfinityCategories.HA.Monads.augmentedOrdinalCard_injective' does not depend on any axioms
+'SerrePositivity.InfinityCategories.HA.Monads.augmentedIso_obj_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.augmentedIso_hom_eqToHom' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.augmentedOpIso_obj_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.augmentedOpIso_hom_eqToHom' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.intervalIso_obj_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.intervalIso_hom_eqToHom' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.ordinalInterval_source_roundtrip' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.ordinalInterval_target_roundtrip' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.ordinalInterval_inverse_card' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.ordinalInterval_inverse_obj' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.mixedBottomTopOrdinal_card' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.mixedBottomTopOrdinal_obj' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.mixedTopBottomOrdinal_card' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.mixedTopBottomOrdinal_obj' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionPoint' does not depend on any axioms
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionHom' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionHom_category' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionHorizontal' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionIdentity' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionWeight' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionWeight_injective' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.augmentedOrdinalCard_tensor' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.topOrdinalAction_len' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.bottomOrdinalAction_len' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.bottomOppositeOrdinalAction_len' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.topOppositeOrdinalAction_len' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionHorizontal_weight' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionIdentity_weight' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionHorizontal_obj_assoc' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionHorizontal_obj_id_left' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionHorizontal_obj_id_right' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionPoint.plus' does not depend on any axioms
+'SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionPoint.minus' does not depend on any axioms

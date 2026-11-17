@@ -1,0 +1,18 @@
+import SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionPlusParent
+
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.composableArrowAppendData
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.composableArrowAppend
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.composableArrowAppend_first
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.composableArrowAppend_last
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.composableArrowAppend_zero
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.composableArrowAppend_succ
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.composableArrowAppend_face_last
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.composableArrowAppend_last_edge
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.composableArrowAppend_before_obj
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.composableArrowAppend_before_edge
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionPlusParentPrefix
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionPlusParentPrefix_card
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionPlusParentPrefix_last_card
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionPlusParent
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionPlusParent_face_last
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionPlusParent_atomic

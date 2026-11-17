@@ -1,0 +1,263 @@
+number,depends_on,evidence_location,kind
+1.1,Stacks 03QH,PDF p.23; text L1235; statement/proof reference; bibliography [28],external
+1.1,Stacks 0BRI,PDF p.23; text L1252; statement/proof reference; bibliography [28],external
+1.1,Stacks 0BRJ,PDF p.23; text L1252; statement/proof reference; bibliography [28],external
+1.1,(5.10),PDF p.27; text L1460; explicit equation reference,internal
+1.1,(5.11),PDF p.27; text L1457; explicit equation reference,internal
+1.1,(5.11),PDF p.28; text L1522; explicit equation reference,internal
+1.1,2.2,PDF p.23; text L1227; explicit numbered-item reference,internal
+1.1,2.3,PDF p.26; text L1379; explicit numbered-item reference,internal
+1.1,2.5,PDF p.24; text L1254; explicit numbered-item reference,internal
+1.1,2.5,PDF p.25; text L1314; explicit numbered-item reference,internal
+1.1,2.5,PDF p.26; text L1376; explicit numbered-item reference,internal
+1.1,2.6,PDF p.28; text L1523; explicit numbered-item reference,internal
+1.1,3.1,PDF p.24; text L1253; explicit numbered-item reference,internal
+1.1,4.7,PDF p.29; text L1573; explicit numbered-item reference,internal
+1.1,5.1,PDF p.23; text L1227; explicit numbered-item reference,internal
+1.1,5.1,PDF p.29; text L1572; explicit numbered-item reference,internal
+1.1,5.2,PDF p.29; text L1580; explicit numbered-item reference,internal
+1.1,5.5,PDF p.29; text L1574; explicit numbered-item reference,internal
+1.1,5.6,PDF p.29; text L1580; explicit numbered-item reference,internal
+Figure 1,(5.18),PDF p.3; text L128; explicit equation reference,internal
+Figure 1,5.2,PDF p.3; text L127; explicit numbered-item reference,internal
+Figure 1,5.6,PDF p.3; text L129; explicit numbered-item reference,internal
+1.2,Jannsen A.4(1),PDF p.4; text L182; statement/proof reference; bibliography [14],external
+1.2,Skalit15 3.10,PDF p.4; text L171–172; statement/proof reference; bibliography [27],external
+1.2,Skalit15 3.10,PDF p.4; text L185; statement/proof reference; bibliography [27],external
+1.2,Skalit15 3.4,PDF p.4; text L171–172; statement/proof reference; bibliography [27],external
+1.2,Skalit15 3.5,PDF p.4; text L169; statement/proof reference; bibliography [27],external
+1.2,Skalit15 3.8,PDF p.4; text L185; statement/proof reference; bibliography [27],external
+1.2,1.1,PDF p.4; text L186; explicit numbered-item reference,internal
+2.1,Ma17 2.2,PDF p.5; text L248; statement/proof reference; bibliography [19],external
+2.2,KuranoShimomoto,PDF p.6; text L271; statement/proof reference; bibliography [17],external
+2.2,KuranoShimomoto 1.1,PDF p.31; text L1654–1656; bibliography [17] explicitly identifies Theorem 1.1; proof text L268,external
+(2.1),2.2,PDF p.6; text L278; explicit numbered-item reference,internal
+2.3,CLMST 2.2.1,PDF p.6; text L317–318; statement/proof reference; bibliography [6],external
+2.3,CLMST 2.2.3,PDF p.6; text L317–318; statement/proof reference; bibliography [6],external
+2.3,CLMST 2.2.6(a),PDF p.6; text L317–318; statement/proof reference; bibliography [6],external
+2.3,Faltings Appendix 2,PDF p.6; text L317; statement/proof reference; bibliography [9],external
+2.3,(2.2),PDF p.6; text L313; explicit equation reference,internal
+(2.3),CLMST 2.2.1,PDF p.6; text L317–318; statement/proof reference; bibliography [6],external
+(2.3),CLMST 2.2.3,PDF p.6; text L317–318; statement/proof reference; bibliography [6],external
+(2.3),CLMST 2.2.6(a),PDF p.6; text L317–318; statement/proof reference; bibliography [6],external
+(2.3),Faltings Appendix 2,PDF p.6; text L317; statement/proof reference; bibliography [9],external
+2.4,(2.3),PDF p.7; text L336; explicit equation reference,internal
+2.4,(2.3),PDF p.7; text L340; explicit equation reference,internal
+2.5,BS19 8.5,PDF p.9; text L440; statement/proof reference; bibliography [4],external
+2.5,CLMST 4.0.1,PDF p.9; text L440; statement/proof reference; bibliography [6],external
+2.5,CLMST 4.0.10,PDF p.9; text L445; anaphoric reference to [6],external
+2.5,CLMST 4.0.14,PDF p.9; text L446; anaphoric reference to [6],external
+2.5,CLMST 4.0.4,PDF p.9; text L441; anaphoric reference to [6],external
+2.5,CLMST 4.0.4,PDF p.9; text L443; statement/proof reference; bibliography [6],external
+2.5,Ma17 2.2,PDF p.8; text L412; statement/proof reference; bibliography [19],external
+2.5,Ma17 2.4,PDF p.8; text L420; statement/proof reference; bibliography [19],external
+2.5,Monsky,PDF p.8; text L412; statement/proof reference; bibliography [20],external
+2.5,Roberts89,PDF p.8; text L421; statement/proof reference; bibliography [24],external
+2.5,(2.1),PDF p.7; text L353; explicit equation reference,internal
+2.5,(2.4),PDF p.8; text L426; explicit equation reference,internal
+2.5,(2.4),PDF p.9; text L448; explicit equation reference,internal
+2.5,(2.5),PDF p.9; text L435; explicit equation reference,internal
+2.5,(2.5),PDF p.9; text L448; explicit equation reference,internal
+2.5,(2.6),PDF p.9; text L453; explicit equation reference,internal
+2.5,(2.7),PDF p.8; text L398; explicit equation reference,internal
+2.5,(2.7),PDF p.8; text L400; explicit equation reference,internal
+2.5,(2.8),PDF p.9; text L434; explicit equation reference,internal
+2.5,2.2,PDF p.7; text L353; explicit numbered-item reference,internal
+2.5,2.3,PDF p.7; text L366; explicit numbered-item reference,internal
+2.5,2.3,PDF p.9; text L448; explicit numbered-item reference,internal
+2.5,2.4,PDF p.8; text L408; explicit numbered-item reference,internal
+2.5,2.4,PDF p.8; text L426; explicit numbered-item reference,internal
+(2.4),CLMST 4.0.10,PDF p.9; text L445; anaphoric reference to [6],external
+(2.4),CLMST 4.0.4,PDF p.9; text L441; anaphoric reference to [6],external
+(2.4),CLMST 4.0.4,PDF p.9; text L443; statement/proof reference; bibliography [6],external
+(2.4),Ma17 2.4,PDF p.8; text L420; statement/proof reference; bibliography [19],external
+(2.4),Roberts89,PDF p.8; text L421; statement/proof reference; bibliography [24],external
+(2.4),(2.5),PDF p.9; text L448; explicit equation reference,internal
+(2.4),2.3,PDF p.9; text L448; explicit numbered-item reference,internal
+(2.4),2.4,PDF p.8; text L426; explicit numbered-item reference,internal
+(2.5),CLMST 4.0.14,PDF p.9; text L446; anaphoric reference to [6],external
+(2.5),CLMST 4.0.4,PDF p.9; text L443; statement/proof reference; bibliography [6],external
+(2.5),(2.4),PDF p.8; text L426; explicit equation reference,internal
+(2.5),(2.4),PDF p.9; text L448; explicit equation reference,internal
+(2.5),(2.8),PDF p.9; text L434; explicit equation reference,internal
+(2.5),2.3,PDF p.9; text L448; explicit numbered-item reference,internal
+(2.5),2.4,PDF p.8; text L426; explicit numbered-item reference,internal
+(2.8),Ma17 2.2,PDF p.8; text L412; statement/proof reference; bibliography [19],external
+(2.8),Monsky,PDF p.8; text L412; statement/proof reference; bibliography [20],external
+(2.8),(2.7),PDF p.8; text L400; explicit equation reference,internal
+(2.8),2.4,PDF p.8; text L408; explicit numbered-item reference,internal
+2.6,(2.4),PDF p.9; text L467; explicit equation reference,internal
+2.6,(2.6),PDF p.9; text L467; explicit equation reference,internal
+2.6,2.5,PDF p.9; text L459; explicit numbered-item reference,internal
+3.1,BGT 8.1,PDF p.11; text L577–578; statement/proof reference; bibliography [5],external
+3.1,BGT 8.7,PDF p.11; text L577–578; statement/proof reference; bibliography [5],external
+3.1,BGT 9.3,PDF p.11; text L577–578; statement/proof reference; bibliography [5],external
+3.1,BGT 9.8,PDF p.11; text L577–578; statement/proof reference; bibliography [5],external
+3.1,Goodwillie Main Theorem,PDF p.10; text L529; statement/proof reference; bibliography [12],external
+3.1,LT 3.10,PDF p.10; text L530–531; statement/proof reference; bibliography [18],external
+3.1,LT 3.12,PDF p.11; text L576; statement/proof reference; bibliography [18],external
+3.1,LT 3.9,PDF p.10; text L530–531; statement/proof reference; bibliography [18],external
+3.1,LT A.2,PDF p.10; text L532–536; statement/proof reference; bibliography [18],external
+3.1,LT Appendix B,PDF p.10; text L532–536; statement/proof reference; bibliography [18],external
+3.1,LT B.2,PDF p.11; text L576; statement/proof reference; bibliography [18],external
+3.1,LT B.3,PDF p.10; text L532–536; statement/proof reference; bibliography [18],external
+3.1,TT 5.2.2,PDF p.11; text L574–575; statement/proof reference; bibliography [29],external
+3.1,TT 5.2.3,PDF p.11; text L574–575; statement/proof reference; bibliography [29],external
+3.1,TT 5.2.4,PDF p.11; text L574–575; statement/proof reference; bibliography [29],external
+3.1,TT 7.4,PDF p.11; text L574–575; statement/proof reference; bibliography [29],external
+3.1,(3.1),PDF p.14; text L707; explicit equation reference,internal
+3.1,(3.2),PDF p.14; text L713; explicit equation reference,internal
+3.1,(3.5),PDF p.11; text L561; explicit equation reference,internal
+3.1,(3.6),PDF p.11; text L573; explicit equation reference,internal
+3.1,(3.6),PDF p.14; text L707; explicit equation reference,internal
+3.1,(3.7),PDF p.13; text L650; explicit equation reference,internal
+3.1,(3.7),PDF p.13; text L656; explicit equation reference,internal
+3.1,(3.7),PDF p.14; text L706; explicit equation reference,internal
+3.1,(3.8),PDF p.14; text L699; explicit equation reference,internal
+3.1,3.3,PDF p.13; text L648; explicit numbered-item reference,internal
+3.1,3.3,PDF p.13; text L655; explicit numbered-item reference,internal
+(3.1),(3.2),PDF p.14; text L713; explicit equation reference,internal
+(3.1),(3.6),PDF p.14; text L707; explicit equation reference,internal
+(3.1),(3.7),PDF p.13; text L650; explicit equation reference,internal
+(3.1),(3.7),PDF p.13; text L656; explicit equation reference,internal
+(3.1),(3.7),PDF p.14; text L706; explicit equation reference,internal
+(3.1),(3.8),PDF p.14; text L699; explicit equation reference,internal
+(3.1),3.3,PDF p.13; text L648; explicit numbered-item reference,internal
+(3.1),3.3,PDF p.13; text L655; explicit numbered-item reference,internal
+(3.2),(3.1),PDF p.14; text L707; explicit equation reference,internal
+(3.2),(3.6),PDF p.14; text L707; explicit equation reference,internal
+(3.6),BGT 8.1,PDF p.11; text L577–578; statement/proof reference; bibliography [5],external
+(3.6),BGT 8.7,PDF p.11; text L577–578; statement/proof reference; bibliography [5],external
+(3.6),BGT 9.3,PDF p.11; text L577–578; statement/proof reference; bibliography [5],external
+(3.6),BGT 9.8,PDF p.11; text L577–578; statement/proof reference; bibliography [5],external
+(3.6),LT 3.12,PDF p.11; text L576; statement/proof reference; bibliography [18],external
+(3.6),LT B.2,PDF p.11; text L576; statement/proof reference; bibliography [18],external
+(3.6),TT 5.2.2,PDF p.11; text L574–575; statement/proof reference; bibliography [29],external
+(3.6),TT 5.2.3,PDF p.11; text L574–575; statement/proof reference; bibliography [29],external
+(3.6),TT 5.2.4,PDF p.11; text L574–575; statement/proof reference; bibliography [29],external
+(3.6),TT 7.4,PDF p.11; text L574–575; statement/proof reference; bibliography [29],external
+(3.6),(3.5),PDF p.11; text L561; explicit equation reference,internal
+3.3,Stacks 0815,PDF p.12; text L623; statement/proof reference; bibliography [28],external
+3.3,3.2,PDF p.12; text L613; explicit numbered-item reference,internal
+(3.7),(3.1),PDF p.14; text L707; explicit equation reference,internal
+(3.7),(3.6),PDF p.14; text L707; explicit equation reference,internal
+(3.7),(3.8),PDF p.14; text L699; explicit equation reference,internal
+(3.7),3.3,PDF p.13; text L648; explicit numbered-item reference,internal
+(3.7),3.3,PDF p.13; text L655; explicit numbered-item reference,internal
+(3.8),(3.7),PDF p.14; text L706; explicit equation reference,internal
+(3.9),2.5,PDF p.14; text L727; explicit numbered-item reference,internal
+(3.9),2.6,PDF p.14; text L729; explicit numbered-item reference,internal
+3.4,(3.9),PDF p.14; text L736; explicit equation reference,internal
+(3.10),(3.9),PDF p.14; text L736; explicit equation reference,internal
+3.5,(3.11),PDF p.16; text L819; explicit equation reference,internal
+3.5,(3.12),PDF p.15; text L784; explicit equation reference,internal
+3.5,(3.13),PDF p.15; text L814; explicit equation reference,internal
+3.5,(3.14),PDF p.15; text L814; explicit equation reference,internal
+3.5,(3.9),PDF p.15; text L783; explicit equation reference,internal
+3.5,3.1,PDF p.15; text L817; explicit numbered-item reference,internal
+3.5,3.4,PDF p.15; text L789; explicit numbered-item reference,internal
+(3.11),(3.13),PDF p.15; text L814; explicit equation reference,internal
+(3.11),(3.14),PDF p.15; text L814; explicit equation reference,internal
+(3.11),3.1,PDF p.15; text L817; explicit numbered-item reference,internal
+(3.12),(3.9),PDF p.15; text L783; explicit equation reference,internal
+(3.13),3.4,PDF p.15; text L789; explicit numbered-item reference,internal
+(3.14),(3.13),PDF p.15; text L814; explicit equation reference,internal
+(4.1),2.5,PDF p.16; text L846; explicit numbered-item reference,internal
+4.3,BalmerSchlichting 1.10,PDF p.19; text L998–999; statement/proof reference; bibliography [1],external
+4.3,BalmerSchlichting 1.12,PDF p.19; text L998–999; statement/proof reference; bibliography [1],external
+4.3,(4.1),PDF p.18; text L977; explicit equation reference,internal
+4.3,(4.2),PDF p.19; text L1007; explicit equation reference,internal
+4.3,(4.2),PDF p.19; text L1010; explicit equation reference,internal
+4.3,(4.3),PDF p.18; text L978; explicit equation reference,internal
+4.3,(4.3),PDF p.19; text L1005; explicit equation reference,internal
+4.3,4.1,PDF p.19; text L1010; explicit numbered-item reference,internal
+4.3,4.2,PDF p.19; text L995; explicit numbered-item reference,internal
+(4.2),(4.3),PDF p.19; text L1005; explicit equation reference,internal
+(4.2),4.1,PDF p.19; text L1010; explicit numbered-item reference,internal
+(4.3),(4.1),PDF p.18; text L977; explicit equation reference,internal
+4.4,3.4,PDF p.19; text L1033; explicit numbered-item reference,internal
+4.5,(4.4),PDF p.20; text L1069; explicit equation reference,internal
+4.5,(4.5),PDF p.21; text L1112; explicit equation reference,internal
+4.5,(4.6),PDF p.21; text L1109; explicit equation reference,internal
+4.5,4.2,PDF p.20; text L1051; explicit numbered-item reference,internal
+4.5,4.4,PDF p.21; text L1099; explicit numbered-item reference,internal
+(4.5),(4.6),PDF p.21; text L1109; explicit equation reference,internal
+(4.6),(4.5),PDF p.21; text L1112; explicit equation reference,internal
+(4.6),4.4,PDF p.21; text L1099; explicit numbered-item reference,internal
+4.6,Drinfeld 3.1,PDF p.21; text L1147; statement/proof reference; bibliography [7],external
+4.6,Drinfeld 3.4,PDF p.21; text L1147; statement/proof reference; bibliography [7],external
+4.6,LT 3.12,PDF p.22; text L1159; statement/proof reference; bibliography [18],external
+4.6,3.1,PDF p.22; text L1163; explicit numbered-item reference,internal
+(4.7),Drinfeld 3.1,PDF p.21; text L1147; statement/proof reference; bibliography [7],external
+(4.7),Drinfeld 3.4,PDF p.21; text L1147; statement/proof reference; bibliography [7],external
+4.7,(4.1),PDF p.22; text L1172; explicit equation reference,internal
+4.7,3.1,PDF p.22; text L1181; explicit numbered-item reference,internal
+4.7,4.5,PDF p.22; text L1188; explicit numbered-item reference,internal
+4.7,4.6,PDF p.22; text L1179; explicit numbered-item reference,internal
+5.1,GilletSoule,"PDF p.23; text L1216; bibliography list [22, 11]",external
+5.1,Roberts85,"PDF p.23; text L1216; bibliography list [22, 11]",external
+5.1,Serre,PDF p.23; text L1207; statement/proof reference; bibliography [25],external
+5.1,(5.1),PDF p.23; text L1220; explicit equation reference,internal
+5.1,1.1,PDF p.23; text L1200; explicit numbered-item reference,internal
+5.1,2.1,PDF p.23; text L1208; explicit numbered-item reference,internal
+(5.1),GilletSoule,"PDF p.23; text L1216; bibliography list [22, 11]",external
+(5.1),Roberts85,"PDF p.23; text L1216; bibliography list [22, 11]",external
+(5.2),2.5,PDF p.24; text L1254; explicit numbered-item reference,internal
+5.2,(5.1),PDF p.24; text L1288; explicit equation reference,internal
+5.2,3.5,PDF p.24; text L1281; explicit numbered-item reference,internal
+(5.3),(5.1),PDF p.24; text L1288; explicit equation reference,internal
+(5.3),3.5,PDF p.24; text L1281; explicit numbered-item reference,internal
+(5.4),2.5,PDF p.25; text L1314; explicit numbered-item reference,internal
+(5.5),2.5,PDF p.25; text L1314; explicit numbered-item reference,internal
+5.3,(5.5),PDF p.25; text L1334; explicit equation reference,internal
+(5.7),(5.5),PDF p.25; text L1334; explicit equation reference,internal
+(5.8),2.3,PDF p.26; text L1379; explicit numbered-item reference,internal
+(5.8),2.5,PDF p.26; text L1376; explicit numbered-item reference,internal
+5.4,(5.10),PDF p.27; text L1445; explicit equation reference,internal
+5.4,(5.11),PDF p.27; text L1446; explicit equation reference,internal
+5.4,(5.12),PDF p.27; text L1442; explicit equation reference,internal
+5.4,(5.6),PDF p.26; text L1400; explicit equation reference,internal
+5.4,(5.9),PDF p.27; text L1445; explicit equation reference,internal
+5.4,2.5,PDF p.27; text L1432; explicit numbered-item reference,internal
+(5.9),(5.10),PDF p.27; text L1445; explicit equation reference,internal
+(5.9),(5.11),PDF p.27; text L1446; explicit equation reference,internal
+(5.9),(5.12),PDF p.27; text L1442; explicit equation reference,internal
+(5.9),(5.6),PDF p.26; text L1400; explicit equation reference,internal
+(5.9),2.5,PDF p.27; text L1432; explicit numbered-item reference,internal
+(5.10),(5.11),PDF p.27; text L1446; explicit equation reference,internal
+(5.10),(5.12),PDF p.27; text L1442; explicit equation reference,internal
+(5.10),(5.6),PDF p.26; text L1400; explicit equation reference,internal
+(5.10),(5.9),PDF p.27; text L1445; explicit equation reference,internal
+(5.10),2.5,PDF p.27; text L1432; explicit numbered-item reference,internal
+(5.12),(5.10),PDF p.27; text L1445; explicit equation reference,internal
+(5.12),(5.9),PDF p.27; text L1445; explicit equation reference,internal
+(5.13),(5.10),PDF p.27; text L1460; explicit equation reference,internal
+(5.13),(5.11),PDF p.27; text L1457; explicit equation reference,internal
+5.5,(4.2),PDF p.28; text L1497; explicit equation reference,internal
+5.5,(4.2),PDF p.28; text L1513; explicit equation reference,internal
+5.5,(5.10),PDF p.28; text L1512; explicit equation reference,internal
+5.5,(5.13),PDF p.28; text L1489; explicit equation reference,internal
+5.5,(5.7),PDF p.28; text L1512; explicit equation reference,internal
+(5.14),(5.13),PDF p.28; text L1489; explicit equation reference,internal
+(5.15),(5.11),PDF p.28; text L1522; explicit equation reference,internal
+(5.15),2.6,PDF p.28; text L1523; explicit numbered-item reference,internal
+5.6,(4.2),PDF p.29; text L1541; explicit equation reference,internal
+5.6,(4.2),PDF p.29; text L1550; explicit equation reference,internal
+5.6,(4.2),PDF p.29; text L1568; explicit equation reference,internal
+5.6,(5.11),PDF p.29; text L1569; explicit equation reference,internal
+5.6,(5.11),PDF p.29; text L1570; explicit equation reference,internal
+5.6,(5.16),PDF p.29; text L1570; explicit equation reference,internal
+5.6,(5.17),PDF p.29; text L1570; explicit equation reference,internal
+5.6,2.5,PDF p.29; text L1548; explicit numbered-item reference,internal
+(5.17),(4.2),PDF p.29; text L1541; explicit equation reference,internal
+(5.17),(4.2),PDF p.29; text L1550; explicit equation reference,internal
+(5.17),(4.2),PDF p.29; text L1568; explicit equation reference,internal
+(5.17),(5.11),PDF p.29; text L1569; explicit equation reference,internal
+(5.17),(5.11),PDF p.29; text L1570; explicit equation reference,internal
+(5.17),(5.16),PDF p.29; text L1570; explicit equation reference,internal
+(5.17),2.5,PDF p.29; text L1548; explicit numbered-item reference,internal
+(5.18),4.7,PDF p.29; text L1573; explicit numbered-item reference,internal
+(5.18),5.1,PDF p.29; text L1572; explicit numbered-item reference,internal
+(5.18),5.2,PDF p.29; text L1580; explicit numbered-item reference,internal
+(5.18),5.5,PDF p.29; text L1574; explicit numbered-item reference,internal
+(5.18),5.6,PDF p.29; text L1580; explicit numbered-item reference,internal

@@ -1,0 +1,24 @@
+'SerrePositivity.InfinityCategories.HA.Monads.nerve_sigma_delta_of_eqToHom_edge' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.uliftNerve_degenerate_of_eqToHom_edge' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionIsIso_eqToHom' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionHomShape_degenerate_of_isIso' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionHomShape_nondegenerate_iff_no_isIso' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionBottomMergeResidual_not_isIso_of_nondegenerate' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionBottomMergeRefinement_nondegenerate_iff_not_pure' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionFirstRefinement_nondegenerate_iff_not_pure' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

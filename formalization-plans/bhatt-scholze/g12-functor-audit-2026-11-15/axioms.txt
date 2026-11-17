@@ -1,0 +1,64 @@
+warning: existing lake build (possibly unguarded):
+/Users/sugakubunka/.elan/toolchains/leanprover--lean4---v4.35.0-rc4/bin/lake build SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRoofEndpointTransport
+waiting for build lock [impl] position 2: [{"pid": 72530, "worktree": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68", "started": "2026-11-15T02:13:56.463705+00:00", "queued": "2026-11-15T02:13:12.080178+00:00", "command": ["/opt/homebrew/bin/gtimeout", "--kill-after=5s", "1700s", "zsh", "/private/tmp/isw2-build322.sh"], "token": "995a8b25a67346eea7db9e586fa06399", "class": "impl", "slot": 0}]
+waiting for build lock [impl] position 2: [{"pid": 72530, "worktree": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68", "started": "2026-11-15T02:13:56.463705+00:00", "queued": "2026-11-15T02:13:12.080178+00:00", "command": ["/opt/homebrew/bin/gtimeout", "--kill-after=5s", "1700s", "zsh", "/private/tmp/isw2-build322.sh"], "token": "995a8b25a67346eea7db9e586fa06399", "class": "impl", "slot": 0}]
+'SerrePositivity.InfinityCategories.HA.Monads.augmentedOrdinalCard' does not depend on any axioms
+'SerrePositivity.InfinityCategories.HA.Monads.augmentedOrdinalOfCard' does not depend on any axioms
+'SerrePositivity.InfinityCategories.HA.Monads.augmentedOrdinalCard_ofCard' does not depend on any axioms
+'SerrePositivity.InfinityCategories.HA.Monads.augmentedOrderHom' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.augmentedHomOfOrder' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.augmentedHomOfOrder_order' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.augmentedOrderHom_ofOrder' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.augmentedOrderHomEquiv' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.augmentedOrderHom_id' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.augmentedOrderHom_comp' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.simplexPreservesEndpoints' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.simplexPreservesEndpoints_multiplicative' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.IntervalSimplexCategory' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.ordinalIntervalRepresentation' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.ordinalIntervalRepresentation_faithful' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.ordinalIntervalRepresentation_full' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.ordinalIntervalRepresentation_essSurj' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.ordinalIntervalRepresentation_isEquivalence' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.ordinalIntervalEquivalence' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.bottomTopIntervalSum' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.mixedBottomTopOrdinal' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.mixedTopBottomOrdinal' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

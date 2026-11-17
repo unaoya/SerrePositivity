@@ -1,0 +1,36 @@
+'SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionAtomicCell.pure_at_of_nativeFillable' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionAtomicCell.lastChild' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionAtomicCell.innerChild' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionAtomicCell.ext_chain' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionAtomicCell.child' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionAtomicCell.child_of_last' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionAtomicCell.child_of_not_last' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionAtomicCell.lastChild_parent' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionAtomicCell.innerChild_parent' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionAtomicCell.child_parent' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionAtomicCell.parent_child' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionAtomicCellParentEquiv' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

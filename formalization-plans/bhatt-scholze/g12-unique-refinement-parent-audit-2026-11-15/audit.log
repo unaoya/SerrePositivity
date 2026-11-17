@@ -1,0 +1,28 @@
+'SerrePositivity.InfinityCategories.HA.Monads.finiteChainFace_obj_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.finiteChainFace_map_heq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.composableArrow_eq_of_face_and_incident_edges' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.rightFactor_heq_of_epi_comp_heq' does not depend on any axioms
+'SerrePositivity.InfinityCategories.HA.Monads.composableArrow_eq_of_face_and_epi_left' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionPureBottomMerge_rigidity' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionBottomMergeArrow_epi' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionPureBottomMerge_epi' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionBottomMergeRefinement_unique' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionBottomMergeRefinement_existsUnique_nondegenerate_iff' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

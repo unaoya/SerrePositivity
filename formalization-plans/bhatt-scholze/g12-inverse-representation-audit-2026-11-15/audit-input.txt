@@ -1,0 +1,25 @@
+import SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionMapRepresentation
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.intervalOrderHom_functor_map_heq
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalIntervalInverse_map_heq
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.augmentedInterval_tensor_heq
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.mixedBottomTopInterval_map_heq
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.mixedTopBottomOrdinal_map_heq
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionOrdinalCard
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionOrderHom
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionIncomingDim
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionOutgoingDim
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionIncomingMap
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionOutgoingMap
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionTargetCorrection
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionOrdinalCard_weight
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionIncomingDim_weight
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionIncoming_card
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionOutgoing_card
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionIncomingMap_heq
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionOutgoingMap_heq
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionOrdinalCard_injective
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionOrdinalCard_comp_plus
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionOrdinalCard_comp_minus
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionOrderHom_hext
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionOrderHom_comp_plus
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionOrderHom_comp_minus

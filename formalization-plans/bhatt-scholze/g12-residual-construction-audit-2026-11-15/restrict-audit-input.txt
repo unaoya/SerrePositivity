@@ -1,0 +1,22 @@
+import SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionCutIntervals
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionObjectOfWeight
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionObjectOfWeight_weight
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionPrefix_weight_le
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionPrefix_difference_admissible
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionResidualObject
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionResidualObject_weight
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionResidualObject_prefix
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionResidualObject_suffix
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalSegmentInclusion
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalRestrict
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalRestrict_val
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalRestrict_square
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalRestrict_id
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalRestrict_comp
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionCut_bound
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionCutCoordinate_le
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionCut_lower
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionCut_upper
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionCutIntervalSize
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionCutInterval_bound
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionCutIntervalMap

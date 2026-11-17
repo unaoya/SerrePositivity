@@ -1,0 +1,161 @@
+{
+  "date_jst": "2026-11-16T18:37:59.593191+09:00",
+  "branch": "codex/bulk-5inf3a",
+  "verified_math_head": "589061d1b0c48f27f7083c7034e4bdd65b634650",
+  "baseline": "336942ab0",
+  "outer_limit": 23000,
+  "verified_modules": 215,
+  "verified_lines": 18021,
+  "verified_declarations": 2049,
+  "prepared_modules_before_isolation": 224,
+  "prepared_lines_before_isolation": 18673,
+  "unverified_worktree_candidates": [
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/OrdinaryExtendedUnit.lean",
+      "sha256": "c574363fd5ee9b2df62ab0d65ce9bad8a56e61ad3d5b6d1d39405418abe071fe",
+      "lines": 69,
+      "status": "unverified; failed or blocked in bundle-227",
+      "archive_path": "worktree/SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/OrdinaryExtendedUnit.lean"
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineRestrictedHTCoordinates.lean",
+      "sha256": "115f9121c82449b656f89197cf70a3716ffaabddcc9658d8933e14a95bf0859e",
+      "lines": 71,
+      "status": "unverified; failed or blocked in bundle-227",
+      "archive_path": "worktree/SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineRestrictedHTCoordinates.lean"
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineOriginalHomologyCoordinates.lean",
+      "sha256": "79dfc22c647cbafb55686c989ec728db2adf1a52caed7247a4296c67b76f6cfb",
+      "lines": 77,
+      "status": "unverified; failed or blocked in bundle-227",
+      "archive_path": "worktree/SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineOriginalHomologyCoordinates.lean"
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineLineBaseRealization.lean",
+      "sha256": "280bed908b6a2d9c0aec36cbfe44d4d0c6364c29a10dfeed82064894807dac99",
+      "lines": 88,
+      "status": "unverified; failed or blocked in bundle-227",
+      "archive_path": "worktree/SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineLineBaseRealization.lean"
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/MapExtendHomologyCompatibility.lean",
+      "sha256": "74723e20866a363f813dfa5c575b30c998fa650cc5865ed00ca72cc897bfca9e",
+      "lines": 75,
+      "status": "unverified; failed or blocked in bundle-227",
+      "archive_path": "worktree/SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/MapExtendHomologyCompatibility.lean"
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/MapExtendDegreeNormalization.lean",
+      "sha256": "d352038dc7604cbac6c9b9f01331edf46606959a359ea557f11ff16d12c77e99",
+      "lines": 57,
+      "status": "unverified; failed or blocked in bundle-227",
+      "archive_path": "worktree/SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/MapExtendDegreeNormalization.lean"
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/OrdinaryExtendedHomology.lean",
+      "sha256": "27729c4b4af397e296b1c70a4cdfc2bd47a05e0c6b57dbdfe3af6c5e13652df4",
+      "lines": 83,
+      "status": "unverified; failed or blocked in bundle-227",
+      "archive_path": "worktree/SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/OrdinaryExtendedHomology.lean"
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineAnyOrdinaryTargetUnit.lean",
+      "sha256": "7650da366b65278bdc07b756264dae87c23bf2132a252479d46eef676f6bc166",
+      "lines": 73,
+      "status": "unverified; failed or blocked in bundle-227",
+      "archive_path": "worktree/SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineAnyOrdinaryTargetUnit.lean"
+    },
+    {
+      "path": "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineAnyExtendedHomology.lean",
+      "sha256": "91e989bf5f0d0c7ac4e2f91b35509df608a48c84024021702e8546109bff8631",
+      "lines": 59,
+      "status": "unverified; failed or blocked in bundle-227",
+      "archive_path": "worktree/SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineAnyExtendedHomology.lean"
+    }
+  ],
+  "never_checked_private_prototypes": [
+    {
+      "path": "/tmp/bulk-5inf3a/HomologyUnitNaturalityValue.lean",
+      "sha256": "2d0220dd5df8145f84d17982b11df70aa0152d066e06572d283c32e2430c8a32",
+      "lines": 44,
+      "status": "private prototype; never run through Lean",
+      "archive_path": "private-prototypes/HomologyUnitNaturalityValue.lean"
+    },
+    {
+      "path": "/tmp/bulk-5inf3a/AffineLineOrdinaryBaseHomology.lean",
+      "sha256": "9df3b81991007772372909a165258a38a03763cea45a0fcadd4e74a2af397394",
+      "lines": 106,
+      "status": "private prototype; never run through Lean",
+      "archive_path": "private-prototypes/AffineLineOrdinaryBaseHomology.lean"
+    }
+  ],
+  "private_prototype_lines": 150,
+  "conservative_estimate_base_including_unverified_and_private": 18823,
+  "remaining_blocks": [
+    {
+      "id": "type-check remaining candidates",
+      "raw": [
+        50,
+        180
+      ],
+      "reason": "9 failed/blocked modules, plus 2 private prototypes; no success assumed"
+    },
+    {
+      "id": "R1 specified point-law and unit normalization",
+      "raw": [
+        900,
+        1700
+      ],
+      "reason": "bounded base-change scalar-cone right leg; two completions and H0 tensor units; full envelope coefficient legs; quotient and bounded/unbounded source model"
+    },
+    {
+      "id": "R2 eta squares and ordinary quasi-isomorphism",
+      "raw": [
+        400,
+        750
+      ],
+      "reason": "actual zero/one basis values, quotient basis extensionality, forms isomorphism, other-degree vanishing"
+    },
+    {
+      "id": "R2 specified e_target compatibility",
+      "raw": [
+        250,
+        500
+      ],
+      "reason": "identify original completed total comparison with the ordinary target through the original augmentation/unit square"
+    },
+    {
+      "id": "R3 universal reflection and endpoint",
+      "raw": [
+        100,
+        180
+      ],
+      "reason": "supply native universal flatness/regularity and HT03 specific cover input; endpoint unchanged"
+    }
+  ],
+  "remaining_raw": [
+    1700,
+    3310
+  ],
+  "remaining_factor": 2,
+  "remaining_corrected": [
+    3400,
+    6620
+  ],
+  "corrected_total_forecast": [
+    22223,
+    25443
+  ],
+  "gate_passed": false,
+  "stop_reason": "corrected upper forecast exceeds 23000; actual source count has not reached cap",
+  "scope_complete": 3,
+  "scope_total": 6,
+  "scope_added": 0,
+  "HT04_complete": false,
+  "HT05_HT06_started": false,
+  "main_merged_after_2026_11_16_1625": false,
+  "build_request_running": false,
+  "checkpoint": "oriented-base-hodge-tate-basis-checkpoint.json",
+  "archive": "ht04-cap23000-unverified-candidates.tar.gz"
+}

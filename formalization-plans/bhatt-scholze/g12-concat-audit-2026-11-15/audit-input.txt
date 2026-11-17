@@ -1,0 +1,21 @@
+import SerrePositivity.InfinityCategories.HA.Monads.OrdinalGlueGalois
+
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalAppend
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalAppend_castAdd
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalAppend_natAdd
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalAppend_val_left
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalAppend_val_right
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalGlue
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalGlue_val_left
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalGlue_val_right
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalHom_hext
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalAppendNonempty
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalAppendNonempty_val
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalGlue_val_of_le
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalGlue_val_of_lt
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalAppend_glue_assoc
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalGlue_append_assoc
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalGlue_interval_gc
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalGlue_interval_gc_right
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalAdjoinTop_gc
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalIntervalMap_rightAdjoint

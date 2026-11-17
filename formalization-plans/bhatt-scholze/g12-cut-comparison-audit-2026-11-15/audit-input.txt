@@ -1,0 +1,23 @@
+import SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionFactorCuts
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalCut_ext
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalIntervalMap_cut_iff
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalIntervalMap_cut_unique
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalAppend_cut
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalGlue_shared
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalCut_of_append_profile
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalCut_of_glue_profile
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionPlusCut
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionMinusCut
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionPlusCut.le
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionPlusCut.last_injective
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionPlusCut.total
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionMinusCut.le
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionMinusCut.first_injective
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionMinusCut.total
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionCut_mixed_iff
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionCut_mixed_total
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionPlusCut.ext
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionMinusCut.ext
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionIncomingMap_last
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionPlusFactorCut
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionMinusFactorCut

@@ -1,0 +1,40 @@
+{
+  "stage": "HT01-HT02-in-progress",
+  "complete": 0,
+  "total": 6,
+  "added": 0,
+  "checked_sources": [
+    {
+      "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.AffineCochainModel",
+      "source_sha256": "927aa630bf106feba3cb34399eb21407e10bc19ab91181ddd15644a9ccac2158",
+      "rc": 0,
+      "seconds": 14.22390983439982,
+      "log": "AffineCochainModel.log"
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Totalization.Components",
+      "source_sha256": "b30ee4c6b6a42cb79f5a2fb108ef8a939ce88e1105d65e5c4952db8879664adb",
+      "rc": 0,
+      "seconds": 3.366567499935627,
+      "log": "Totalization.Components.log"
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Totalization.ResolvedScalarExtension",
+      "source_sha256": "e07c6ad322b3c34b68e286779b04816522c9d818feb5c84eb9fb7d3786d9d7ed",
+      "rc": 0,
+      "seconds": 6.41128733381629,
+      "log": "Totalization.ResolvedScalarExtension.log"
+    },
+    {
+      "module": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Totalization.ColumnPrimitive",
+      "source_sha256": "3596155e530b0545aaf7ef92d8fb5a412469afd7b25287d7194b5ada6c95c596",
+      "rc": 0,
+      "seconds": 5.37781329266727,
+      "log": "Totalization.ColumnPrimitive.log"
+    }
+  ],
+  "not_claimed": [
+    "HT02 completed base-change/Tot comparison",
+    "HT03-HT06"
+  ]
+}
