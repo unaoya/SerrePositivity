@@ -10252,3 +10252,32 @@ CH067の選択条件を変えていない。新しい計算補助の証明内の
 自分の枝だけにある台帳検査器へ状態表の一致検査と--syncを加え、今後は古い状態・停止判定の見込みの表示では検査が失敗する。これはLeanの未実装の型の検証や成功を意味しない。R04本体は未完、累計27,051と残り補正上端800による27,851の着手判定は変わらない。
 
 一覧：済み 36／全体 52（うち追加 17、別停止点 2）。
+
+### 11-18：R04の相対逆射による普遍錐の移送（短い証明分割）
+
+元の復元射を変えず、既存の相対逆射に沿って任意の錐を制限する。新しい数学の入力・chooseの置き換えはない。型は次のとおり。
+
+```lean
+lemma leftStraighteningInfinityReconstruction_coneInverse
+    {E B D : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [LeftFibration p]
+    (O : B ⟶ D) (c : JoinCone (p ≫ O)) :
+    let q := smallLeftUnstraighteningProjection (leftStraighteningInfinityDiagram p)
+    let r := leftStraighteningInfinityReconstruction p
+    ∃ (g : smallLeftUnstraightening (leftStraighteningInfinityDiagram p) ⟶ E)
+      (hg : g ≫ p = q),
+      Nonempty (VertexIso
+        (relativeFunctorVertex p p (r ≫ g)
+          (by rw [Category.assoc, hg, leftStraighteningInfinityReconstruction_projection]))
+        (relativeFunctorVertex p p (𝟙 E) (Category.id_comp p))) ∧
+      ∃ d : JoinCone (q ≫ O), d.vertex = c.vertex
+```
+
+依存はR02と既存の `exists_relativeFunctorInverse_of_precompositionEquivalence` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/RelativeFunctorInverse.lean:31、`restrictJoinCone` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/LimitConeExtension.lean:28、`JoinCone.vertex_cast` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/TerminalMap.lean:115。原典HTT §3.3.2、Kerodon Tag 028Tの既存構成の法則。素40〜70行・補正80〜140行で、R04全体の補正上端800内に含む。200行未満の証明分割なのでIDは増やさない。まだ未検証であり、R04の完了ではない。
+
+一覧：済み 36／全体 52（うち追加 17、別停止点 2）。
+
+### 11-18：R04の相対逆射による錐の移送を検証
+
+`LeftStraighteningReconstructionConeInverse.lean` の対象ビルド（3,123 jobs）と2宣言の小監査が成功。標準三公理のみ、開始・終了・記録時のソースSHA一致。素40〜70行に対し実測56行。累計27,107行、R04の検証済み部分は274行。署名R04本体は未完で、指定余単位を保つ二つの局所錐と元の分類spanとの照合を続ける。残り補正上端800を保持し、27,107＋800＝27,907で着手条件内。main本文とchooseの変更、計算上限の増加はない。旧R2の未追跡4本はそのまま。
+
+一覧：済み 36／全体 52（うち追加 17、別停止点 2）。
