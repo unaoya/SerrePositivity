@@ -6065,3 +6065,555 @@ leftCoherentTransportDirectComparison_isPrecompositionEquivalence p :=
 
 S1・S8は未完。S7・R2・R3は再開せず、mainも取り込んでいない。
 外枠26,000行は据え置き。上の既存本文の適用は止め、検証済みと差分案を保存して報告する。
+
+
+## 承認された三本文の適用前の採取（11-17 朝）
+
+調整役の承認（指示書末尾0ca1ae558、チャット）を受けた。
+LeftCoherentTransportDirectComparison・_projection・_isPrecompositionEquivalenceの三本文と
+新規ScaffoldCoherentComparisonのimport1行だけを適用対象とする。
+公開の名前・型・仮定、exists_leftCoherentTransport_directComparison、
+QCatEquivalenceの証明は保つ。旧値とのrflの一致は求めない、という承認も確認した。
+mainは引き続き取り込まない。
+
+`/tmp/is-w1/s8-scaffold-choice-approved/`に適用前ソースとSHA、検証プログラムを保存した。
+v3bの適用前採取は `--class impl --wait 3600` の整理券一枚で待っている。
+採取の完了後に本文を置換し、鍵を取り直して、直接importer3本
+（NerveTransportRepresentation・SmallLeftCoherentTransportReconstruction・F1）、
+Sheaves全172本と変更モジュールの対象ビルド・小監査、適用後v3bと比較を順に行う。
+下流全体のビルド・監査は調整役の取り込み時に残す。
+
+待ちの間、同じ指定比較を元のscaffoldへ制限する法則
+ScaffoldCoherentComparisonRestriction（57行、未検証）を新規ファイルに準備した。
+型：`FunctorIso (ulift.map (universalScaffold p) ≫ scaffoldCoherentComparison p)
+(ulift.map (tautScaffold (leftStrictTransportDiagram p)) ≫ leftCoherentTransportComparison p)`。
+元のrestrictionIsoを忘却して同じembeddingで前合成し、既存のsource_restriction・
+weighted_restrictionで端点を正規化する法則である。200行未満、追加IDなし。
+未検証のためコミットしない。検証済み累計21,506行、外枠26,000行。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+
+### 同じ型の置換の事前承認と依存本数（11-17 朝）
+
+追加承認c709577a2（チャット）を確認した。弱い存在命題からのchooseを、
+指定構成との両立を保持する選択へ替える場合に限り、同じ条件で事前承認。
+公開の型・名前・仮定の保持、v3b、直接importerと全Sheavesの対象検証、
+新しい仮定なし・計算上限不変を守る。主張・型の変更、5,000本超、他レーンの枝の対象なら止まる。
+今回の三本文は既に個別承認0ca1ae558の対象である。
+
+置換箇所：LeftCoherentTransportDirectComparison.leanのcomparison・projection・isPrecompositionEquivalenceの三本文（未適用、採取待ち）。
+推移的importer：現枝8f06e1bcd、ソース35,015本のimportグラフで **4,874本**（直接3本、対象自身を除く）。
+
+現ソースから数え、古い索引は使っていない。採取結果は
+`/tmp/is-w1/s8-scaffold-choice-approved/importers-current-branch.json`。
+5,000本の基準内なので、この承認変更の適用・検証は続ける。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+
+## 指定scaffoldを保持する三本文の検証（11-17）
+
+承認0ca1ae558の三本文とimport一行を適用し、直接importer3本
+（NerveTransportRepresentation・SmallLeftCoherentTransportReconstruction・F1）の対象ビルド、
+Sheaves全172本と変更モジュールの対象ビルド、小監査を通した。
+適用前v3bはbefore-attempt2（exit 0）、適用後v3bを含む三段階は全てexit 0。
+途中の10:31の待ち時間切れはexit 75で終了を確認し、調整役の指示で一枚だけ並び直した。
+一回の検証のguardは1,600秒、計算上限は変更していない。
+
+v3bは元の所有宣言5本でkind・型のhash・属性・公理が一致（証明行の除外0）。
+データ本文のhashの変更はleftCoherentTransportDirectComparisonだけ。
+exists_leftCoherentTransport_directComparisonとQCatEquivalenceの証明のソースは変更なし。
+小監査は173モジュール・1030宣言、標準三公理のみ。
+現ソースのSHAも照合した。[検証記録](inf-supply-scaffold-choice-1117-verification.json)。
+ログ・適用前後v3bは`/tmp/is-w1/s8-scaffold-choice-approved/`。
+下流全体のroot・全監査は調整役の取り込み時に残す。
+
+置換箇所：LeftCoherentTransportDirectComparison.leanのcomparison・projection・isPrecompositionEquivalenceの三本文、+4/-3行。
+推移的importer：現枝の現ソースで4,874本（対象自身を除く、直接3本）。他レーンの該当変更なし。
+旧値とのrflは要求しない承認に従った。mainは取り込んでいない。
+検証済み累計は保守的に21,510行・新規339モジュール＋承認された既存3ファイルの差分。
+未検証57行のScaffoldCoherentComparisonRestrictionは作業木に残し、今回の対象ビルドとコミットから外す。
+ここでLeanを止め、以下の紙をまとめた。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+
+## 5∞-1 の残りの計画（11-17）
+
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+S2〜S6は検証済み、S1・S8は未完。以下は残る(B)・(C)と元のS1・S8の証明の計画。
+公開の最終型はdrafts/Sheavesを正本とし、指定した余単位・形状同型・層化単位を保持する。
+S7・R2・R3は再開しない。mainは取り込んでいない。
+
+### 1. choose の全列挙と置き換え案
+
+対象は現枝の残る17のrootからのimport閉包6,855本。
+コメントを除いて`Classical.choose`・`Classical.choice`・`.choose`を含むデータ宣言を洗い、
+255候補を[全列挙表](inf-supply-choose-1117.md)と
+[選択元の原文を含むJSON](inf-supply-choose-1117.json)に保存した。
+各行に宣言のソース名・ファイル・存在命題または選択元・処置の理由・推移的importer数・他レーンの照合結果を付した。
+Sheaves全体を起点とする広い予備調査では87ファイルが汎用parser未対応だった。
+残る範囲の255候補・221ファイルのうち53ファイルは宣言境界で再抽出し、原文を保持した。
+これはソースの保守的な候補の全列挙であり、kernelによる完全修飾名の採取ではない。
+表のソース名とファイルで特定する。型の検証済みの一覧と混同しない。
+
+残る証明で実際に指定構成との両立が必要な弱い選択の修正は次のN1〜N5。
+N1は今回、N2〜N5は前の承認で適用済み。追加の弱いchooseの本文変更は計画に置かない。
+この五つの旧選択は公開の型としては正しく、別の指定構成との両立を結論に含まないことが問題である。
+
+|ID|宣言・ファイル|元の存在命題|保持する指定構成・置換案|行数・状態|推移的importer|他レーンの枝|
+|---|---|---|---|---|---:|---|
+|N1|`leftCoherentTransportDirectComparison`、`ClassificationOfCocartesianFibrations/LeftCoherentTransportDirectComparison.lean`|`exists_leftCoherentTransport_directComparison p : ∃ f, f ≫ projection = ulift.map p ∧ IsPrecompositionEquivalence f`|元の`scaffoldTransportComparisonSpan p`への相対制限同型を含む`ScaffoldCoherentComparison`で三本文を置換。元の存在定理とQCatEquivalence証明は保持|+4/-3行。結果は直前の検証節|4,874（直接3）|なし|
+|N2|`smallLeftUnstraighteningComparisonOfFunctorIso`、同節`SmallLeftUnstraighteningFunctorIso.lean`|`exists_smallLeftUnstraighteningComparison_of_functorIso η : ∃ f, f ≫ projection G = projection F ∧ IsPrecompositionEquivalence f`|ηの端点だけでなく、同じ`η.hom`の`smallUnstraighteningFunctorHom`を使い射影・同値性もその法則にする|承認a568132bfで適用検証済み。三本文の差分+4/-3行、docstringを含む当時のファイル差分+8/-7行（既計上）|3,802（直接15）|なし|
+|N3|`weightedSections_nativeShapeLimitIso`、`Sheaves/WeightedSectionsLocalComparison.lean`|`weightedSections_limitValue … : ∃ c, IsLimitCone c ∧ c.vertex = W(P)`|元の同じ指定余単位の`weightedSections_valueTransport`の錐を使用|e14e7b479で適用検証済み（+4/-2行）。今後の追加0行|9（直接1）|なし|
+|N4|`nativeWeightedSections_leftLimitIso`、`Sheaves/NativeWeightedSectionsLeftLimit.lean`|`nativeWeightedSections_limitValue … : ∃ c, IsLimitCone c ∧ c.vertex = W_native(P)`|元の同じnative余単位の`nativeWeightedSections_valueTransport`の錐を使用|同上（+6/-3行）。今後の追加0行|11（直接2）|なし|
+|N5|`weightedSections_leftLimitIso`、`Sheaves/WeightedSectionsLeftLimit.lean`|元のnativeの`limitValue`から選ぶ中間錐|指定した形状同型で運んだ同じ余単位の`nativeWeightedSections_valueTransport`を使用|同上（+4/-2行）。今後の追加0行|7（直接2）|なし|
+
+N1・N2のファイルは`SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/`下、
+N3〜N5は`SerrePositivity/InfinityCategories/`下。
+数は現枝の35,015本のソースのimportグラフで対象自身を除いて数えた。
+mainの先の3,959本とは枝・採取時点が異なる。他レーンは現在残る4枝
+`fix/audit-reimport`・`refactor/organize-einfinity`・`research/cited-coverage`・`math/scheme`について、
+mainとのmerge-base以後のコミット差分と作業木を照合した（候補245ファイル、該当なし）。
+N2〜N5の追加確認も本文適用済みファイルの差分がないことを確認する。
+
+依存していても追加の両立を要求しない／既に指定構成を保持している主なもの：
+
+|宣言・ファイル|選択元・指定構成との関係|処置|
+|---|---|---|
+|`directKanUnstraighteningComparison`、`ClassificationOfCocartesianFibrations/DirectKanUnstraightening.lean`|`exists_directKanUnstraighteningComparison F`は底の等式と前合成同値性だけ。指定分類との追加の一致は含まない。推移的8,054本|変更0行。今回の(B)では明示的な`oppositeKanUnstraighteningComparison`と同じscaffoldを使用。この弱い比較との照合が要れば5,000本超の停止条件|
+|`IsRightKanExtension.valueIso`・`IsLeftKanExtension.valueIso`、`KanExtensions/Definition.lean`|二つの`limitValue`／`colimitValue`。点ごとの任意の極限であり元の余単位との両立は含まない。推移的2,626本|変更0行。大域比較は既存`rightKanHomUniversalIso`・`hom_fac`から出し、この点同型を集めない|
+|`colimitCoconeOfFunctorIso`、`HomotopyLimitsAndColimits/KanDiagramColimitTransport.lean`|`exists_colimitCocone_functorIso_sameVertex e c hc`。頂点と余極限性は保持するが指定増大余錐との比較を保持しない。推移的2,190本|変更0行。元の`presheafRelativeCechCocone_isColimit`と指定余錐の射を使い、選択余錐を元の余錐と同一視しない|
+|`sectionsEquivalence`・`tensorSpaceFunctor_setWeightHom`、`Project/SetWeightedTensors/SetSections.lean`|旧経路のelements比較に弱いdirectKan比較が入る。推移的144本|変更0行。指定射の照合には既存`sectionsEquivalenceNatural`・`tensorSpaceFunctor_setWeightHomNatural`を使用|
+|同上の`…Natural`、`SetSectionsNaturality.lean`|指定した係数の反転同型とweighted比較の合成`elementsComparisonNatural`。全前合成の比較を既に持つ。推移的140本|同じ全族のAPIを再利用。置換0行|
+|`weightedSectionsData`・`nativeWeightedSectionsData`、`Sheaves/*Data.lean`|全関手Gと同じε、`IsRightKanExtension … G ε`の一組|その同じεのvalueTransport・hom_facを使う。置換0行|
+|`weightedSections_valueTransport`・`nativeWeightedSections_valueTransport`、`Sheaves/*ValueTransport.lean`|同じεの`RightKanConeTransport`と極限性|辺・射影・頂点を保持済み。置換0行|
+|`rightKanHomUniversalIso`・`leftKanHomUniversalIso`、`KanExtensions/UniversalProperty.lean`|指定α・βのHom像を満たす逆像。全単射のため一意|同じ指定余単位を保持する`hom_fac`を使用。置換0行|
+|`sectionsOfCone`・`globalSectionsCone`、`Sheaves/SectionsOf.lean`・`GlobalSections.lean`|固定図式の全極限錐|元の選択を保持し、同じ射影の一意性で比較。置換0行|
+|`weightedSections_discrete`、`Sheaves/WeightedSectionsDiscrete.lean`|同じ図式の中間極限d|元の固定比較を保持し、検証済み合成則でdを相殺。置換0行|
+|`weightedSections_nativeLimitIso`、`Sheaves/WeightedSectionsNativeLimitComparison.lean`|最初の極限選択はHasLimitの証明。中間sも同じ極限射影の比較に使用|sを比較の合成則で相殺。別の余単位と同一視しない。置換0行|
+|`specifiedLimitConeTransport`・`specifiedApexLimitConeTransport`|同じ指定prismの錐・頂点・全比較円柱と両端条件を同時に選ぶ|構造の同じ円柱を使用。置換0行|
+|`limitVertexIsoOfLeftStraighteningIso`|内部のs,tは全極限錐。元の復元射・指定同型eに沿う三つの比較を合成|N1・N2の射を固定し、s,tは極限比較の合成則で相殺。追加置換0行|
+|`smallLeftStraighteningRepresentation`・`smallFiberLeftStraighteningRepresentation`・`essentiallySmallLeftStraighteningRepresentation`|分類図式、全空間の比較、底条件、fiber同値性を保持する`LeftTransportRepresentation`の非空性|R全体と既存witnessIsoを使い、図式だけの弱い存在へ落とさない。置換0行|
+|`scaffoldTransportComparisonSpan`・`strictTransportComparisonSpan`|元の二脚・射影・制限の等式を含む全spanの非空性|同じspanを再利用。置換0行|
+|`leftUnstraighteningTransformationChoice`・`…FamilyLift`|固定した全H・初期値・射影を保つ持ち上げ空間の非空性|既存の可縮性・witnessIsoの全パラメータの法則を使う。置換0行|
+|`functorHomotopyComposite`・`relativeFunctorHomotopyComposite`・`unstraighteningPrecompositionIso`・`…PostcompositionIso`|同じ指定辺を含む三角形の三面／相対三面|三面を保持した既存全族比較を使う。置換0行|
+|`FunctorIso.edge`・`functorHomHomotopy`・`spaceValueEquivalence`|指定homMkの逆像|homMkとの一致を保持済み。端点だけの辺に替えない。置換0行|
+|`coherentResolutionFaceExtensionIsoAll`・`cosliceUniversalPrismLift`|前者は元の面包含との可換性、後者は同じ普遍prismの射影と初期値を保持|指定条件の法則を使用。置換0行|
+|`sheafificationFunctor`・`sheafifyUnitHom`、`Sheaves/Sheafify.lean`・`SheafifyUnit.lean`|同じhJから選ぶ反射データとそのunit|外から任意のunitを足さず、その同じ反射の全Hom普遍性でmateを作る。置換0行|
+|Mathlibの`presheafToSheaf`・`sheafificationAdjunction`・`toSheafify`、`Mathlib/CategoryTheory/Sites/Sheafification.lean`|選んだ同じ左随伴と随伴のunit。元のordinary単位を固定|`toSheafify`そのものの全自然変換を使用。Mathlibは変更しない（本枝の推移的本数の集計対象外）|
+
+`discretePresheafInclusion`の実体も確認した。元の`kanDiscretePresheafMap`は
+全通常関手・nerveToCoherent・同じ実現の明示的な合成であり、頂点と辺の仕様を持つ。
+Dの射作用を正規化するときに新たなchooseを足す必要はない。
+
+上の要点表以外も含む255候補の各行の理由は別表に一行ずつある。import閉包に入ることと、
+残る証明で選択値を展開して別の指定構成に同一視することは区別した。
+候補全てをcanonicalとする主張ではない。列挙外の弱い選択の修正が必要と判明した場合は止める。
+
+### 2. 残る補題の単位（型案）
+
+以下は既存のS1・S8の証明分割と、指定構成の法則であり、独立の数学的目標を追加しない。
+同じ指定射・余単位・ordinary層化単位を使う。`S7`・`R2`・`R3`は対象外。
+型案はLeanでの検証前であり、存在だけへの弱化や新しい仮定の追加を許すものではない。
+namespaceは各既存ファイルのものを使う。`FunctorHom`・`FunctorIso`・`JoinCone`等は既存の略記。
+(B)は各ブロックで文脈を束縛する。(C)以降の共通文脈は次で、型中で使わない変数は含めない。
+
+```lean
+universe u
+open CategoryTheory SSet
+open scoped Simplicial
+variable {C : Type u} [SmallCategory C]
+variable {E : SSet.{u + 1}} [Quasicategory E]
+variable {P Q : Cᵒᵖ ⥤ Type u}
+```
+
+`IsPresentable`は既存HTT.PresentableInfinityCategoriesのもの。
+Kan・極限・同型・SetWeightの略記も対応する既存namespaceをopenした形で記す。
+
+依存表のN1〜N5は前節の置換ID。各番号は元のS1・S8の証明分割／既存構成の法則で、
+共通規則の数学的目標数には加えない。以下の各項目の型は端点・指定射を明示した案であり、
+自由変数は共通文脈または同じ項目の前行で束縛する。段階的にLeanで型検証する。
+
+|番号|位置づけ|choose置換への依存|先行する項目|
+|---|---|---|---|
+|1|B：同じscaffoldへの制限|N1|なし|
+|2|B：元の復元射の全空間比較|N1・N2|1、検証済みwitness・合成則|
+|3|B：同じ表現の底変換|N1・N2|1・2|
+|4|B：同じ添字同型の局所頂点作用|N1・N2|2・3|
+|5|B：元の大域比較の成分|N3|4、検証済みA|
+|6|C：固定離散値比較の自然性|N1〜N5|1〜5|
+|7|S8：同じ全Čech対角射|なし（射の構成だけ）|既存の全自然変換の実現|
+|8|S8：その全射の可逆性|N1〜N5を6経由|6・7|
+|9|S8：空間値で元の局所同値|N1〜N5を6・8経由|6〜8、既存の指定Čech極限|
+|10|S8：同じ元の圏の宇宙移送|なし|検証済みsite/value lift|
+|11|S8：同じ錐・制限の宇宙移送|なし|10|
+|12|S8：任意Eへの反映と元の切断写像|N1〜N5を9経由|9〜11、既存の全Homによる反映|
+|13|S8：同じDのHom作用の局所性|N1〜N5を9経由|9、既存のNaturalなG8比較|
+|14|S8：元の反射による可逆性|同上|13、同じhJの反射|
+|15|S8：同じordinary単位の全関手比較|同上|14、既存の離散層判定|
+|16|S1：一般Coverageの全引き戻し|なし|既存の篩の極限合成・refinement|
+|17|S1：元のCoverage判定|なし|16、既存の普遍降下性つき判定|
+
+置き場所：1〜3は既存のKerodonのClassificationOfCocartesianFibrations節、
+4は同KanExtensions節、5〜17はInfinityCategories/Sheaves/の新規ファイル。
+旧F2/・HomotopyLimits/の下には作らない。既存の公開の主張・仮定は変えない。
+
+#### (B)：同じ指定分類・復元から同じ添字同型の比較へ
+
+Bの依存：今回修正した`leftCoherentTransportDirectComparison`、修正済みの
+`smallLeftUnstraighteningComparisonOfFunctorIso`。`directKanUnstraighteningComparison`の
+弱い比較射は指定比較の照合に使わない。元の`oppositeKanUnstraighteningComparison`と
+同じscaffoldの制限の証拠を使う。
+
+1. `scaffoldCoherentComparison_scaffoldIso`（57行の未検証下書きあり）。
+
+```lean
+{C : Type u} [Category.{u} C] {E : SSet.{u}}
+(p : E ⟶ nerve C) [LeftFibration p] :
+FunctorIso
+  ((SSet.uliftFunctor.{u + 1, u}).map (universalScaffold p) ≫
+    scaffoldCoherentComparison p)
+  ((SSet.uliftFunctor.{u + 1, u}).map
+      (tautScaffold (leftStrictTransportDiagram p)) ≫
+    leftCoherentTransportComparison p)
+```
+
+同じ相対制限同型を`vertexFiberι`で忘却し、同じembeddingで前合成する。
+元の`source_restriction`・`weighted_restriction`を使う。新しいspanは作らない。
+
+2. `leftStraighteningInfinityReconstruction_representationComparison`。
+
+```lean
+{E B : SSet.{u}} [Quasicategory B]
+(p : E ⟶ B) [LeftFibration p]
+(R : LeftTransportRepresentation ((SSet.uliftFunctor.{u + 1, u}).map p)) :
+let q := smallLeftUnstraighteningProjection (leftStraighteningInfinityDiagram p)
+let a := leftStraighteningInfinityDiagram_representationIso p R
+let f := smallLeftUnstraighteningLift R.diagram R.comparison ≫
+  smallUnstraighteningFunctorHom a.inv
+∃ hf : f ≫ q = p,
+  Nonempty (VertexIso
+    (relativeFunctorVertex q p (leftStraighteningInfinityReconstruction p)
+      (leftStraighteningInfinityReconstruction_projection p))
+    (relativeFunctorVertex q p f hf))
+```
+
+これは全空間の底上の射を比較する型で、頂点の値だけの同型ではない。
+既存の表現空間の比較・`WitnessPointedDiagramIso`・検証済みのrepresentationIso合成則を使う。
+`R`を選び直さず、native表現との中間比較を相殺する。
+
+3. `leftStraighteningInfinityDiagram_representationIso_baseChange`。
+
+```lean
+{E B D : SSet.{u}} [Quasicategory B] [Quasicategory D]
+(p : E ⟶ B) [LeftFibration p] (k : D ⟶ B)
+(R : LeftTransportRepresentation ((SSet.uliftFunctor.{u + 1, u}).map p)) :
+letI : LeftFibration (pullback.snd p k) :=
+  ⟨leftFibrations.pullback_snd p k (LeftFibration.mem (p := p))⟩
+leftStraighteningInfinityDiagram_baseChangeIso p k ≪≫
+  leftStraighteningInfinityDiagram_representationIso (pullback.snd p k)
+    (R.nativeRestrict k) =
+  (leftStraighteningInfinityDiagram_representationIso p R).precomp
+    ((SSet.uliftFunctor.{u + 1, u}).map k)
+```
+
+同じ初頂点の制限で、元のjoint sectionの係数比較とscaffoldの制限を照合する。
+`RepresentationComparisonRestriction`・`StraighteningCounitRestriction`・
+`StraighteningCounitNaturality`・既検証の元の底変換の貼り合わせを再利用する。
+最後は`functorIso_precomp_injective`。任意の別の底変換同型を作らない。
+
+4. `rightKanIndexTransport_valueHom`。
+
+```lean
+{K C D : SSet.{u}} [Quasicategory K] [Quasicategory C] [Quasicategory D]
+{δ δ' : K ⟶ C} (e : FunctorIso δ δ') (O : K ⟶ D) (G : C ⟶ D)
+(β : SSet.Homotopy (δ' ≫ G) O) (v : C _⦋0⦌) :
+let b := (e.postcomp G).hom ≫
+  Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy β)
+∀ s : RightKanConeTransport δ O G (functorHomHomotopy b) v,
+∀ t : RightKanConeTransport δ' O G β v,
+∀ hs : IsLimitCone s.cone, ∀ ht : IsLimitCone t.cone,
+  eqToHom (congrArg (fun x => (HomotopyCategory.mk x : hoFunctor.obj D))
+    s.cone_vertex.symm) ≫
+  (rightKanLimitVertexIsoOfFunctorIso e O v s.cone t.cone hs ht).hom ≫
+  eqToHom (congrArg (fun x => (HomotopyCategory.mk x : hoFunctor.obj D))
+    t.cone_vertex) = 𝟙 (HomotopyCategory.mk (G.app _ v))
+```
+
+指定`e`に沿う同じ余単位の類であることを型に残す。
+上の全分類の法則を元のcoslice射影に適用し、実際の`smallUnstraighteningFunctorHom`
+の作用と同じ再添字・同じ錐の脚を照合する。中間極限は指定射影の一意性で消去する。
+`IsRightKanExtension.valueIso`の点ごとの選択から大域同型を組み立てない。
+
+5. `weightedSections_nativeShapeLimitIso_hom_eq_globalComparison`。
+
+```lean
+{C : Type u} [SmallCategory C] {E : SSet.{u + 1}} [Quasicategory E]
+(O : Presheaf C E) (hE : IsPresentable E)
+{G : (PresheafCat C SpaceInfinity.{u}).op ⟶ E}
+(β : SSet.Homotopy (nativeSetShapeOppositeYoneda C ≫ G) O)
+(hβ : IsRightKanExtension (nativeSetShapeOppositeYoneda C) O G β)
+(P : (PresheafCat C SpaceInfinity.{u}).op _⦋0⦌)
+(t : RightKanConeTransport (nativeSetShapeOppositeYoneda C) O G β P)
+(ht : IsLimitCone t.cone)
+(d : JoinCone (rightKanDiagram (nativeSetShapeOppositeYoneda C) O P))
+(hd : IsLimitCone d) :
+(weightedSections_nativeShapeLimitIso O hE P d hd).hom =
+  functorHomEvaluate (weightedSections_nativeShape_comparison O hE β hβ).hom P ≫
+  eqToHom (congrArg (fun x => (HomotopyCategory.mk x : hoFunctor.obj E))
+    t.cone_vertex.symm) ≫
+  (limitVertexIso t.cone d ht hd).hom
+```
+
+既検証の`weightedSections_nativeShape_comparison_transport_vertex`（A）と4を合成する。
+右辺の大域比較は元の`rightKanHomUniversalIso`・hom_facのもの。
+両方のHom普遍性は実際のKan条件から証明済みのものを入れる。
+
+#### (C)：元の固定された離散値比較の自然性
+
+6. `weightedSections_discrete_map`。draftsの元の固定された型をそのまま回収する。
+
+```lean
+(O : Presheaf C E) (hE : IsPresentable E) {P Q : Cᵒᵖ ⥤ Type u}
+(φ : P ⟶ Q) (hP : HasLimit (sectionsOfDiagram P O))
+(hQ : HasLimit (sectionsOfDiagram Q O)) :
+let e := (nerve.edgeMk φ).map (discretePresheafInclusion C).val
+let r := (edgeOp e.toTruncated).map ((truncation 2).map (weightedSections O hE))
+Truncated.HomotopyCategory.homMk r ≫
+  (weightedSections_discrete O hE P hP).hom =
+(weightedSections_discrete O hE Q hQ).hom ≫
+  Truncated.HomotopyCategory.homMk (sectionsOf_map φ O hP hQ).toTruncated
+```
+
+5、元の形状・係数の指定同型、`WeightedSectionsOriginalLeftLimitComposition`、
+`DiscreteSectionsLeftComparison`、G8の全族の指定辺の比較を使う。
+`weightedSections_discrete`の中間極限dと`sectionsOf`の選択は変えない。
+
+#### S8：Čechの全族と局所同値
+
+7. `weightedSections_relativeCechDiagonalHom`。
+
+```lean
+{P Q : Cᵒᵖ ⥤ Type u} (f : P ⟶ Q) (O : Presheaf C E)
+(hE : IsPresentable E) :
+FunctorHom
+  (SSet.opFunctor.map
+      (strictCoherentDiagram (relativeCechDiagram f ⋙ kanDiscretePresheafFunctor C) ≫
+        kanDiagramRealization Cᵒᵖ) ≫ weightedSections O hE)
+  (SSet.const ((weightedSections O hE).app _
+    (SSet.opObjEquiv.symm (functorVertex (discretePresheaf P)))))
+```
+
+`relativeCechDiagonal f`を`strictCoherentNatTransMap`で全族のまま実現し、反対とWを適用する。
+同じ普通の対角と増大余錐の射の三角形も保持する。各jでの評価は6の同じ指定射である。
+
+8. `weightedSections_relativeCechDiagonalHom_isIso`。
+
+```lean
+(J : GrothendieckTopology C) (f : P ⟶ Q)
+[CategoryTheory.Presheaf.IsLocallyInjective J f]
+(O : Presheaf C E) (hO : IsSheaf J O) (hE : IsPresentable E) :
+IsIso (weightedSections_relativeCechDiagonalHom f O hE)
+```
+
+既存の`relativeCechDiagonal_sections_isInvertible`は零次を含む全jで使える。
+6で同じ辺へ移し、先に構成した一つの全自然変換7の可逆性を成分で検出する。
+独立に選んだ点ごとの同型を集める構成ではない。
+
+9. `sections_localEquiv_iso_space`。
+
+```lean
+(J : GrothendieckTopology C) {P Q : Cᵒᵖ ⥤ Type u}
+(φ : P ⟶ Q) (hφ : IsLocalEquivSet J φ)
+(O : Presheaf C SpaceInfinity.{u}) (hO : IsSheaf J O)
+(hP : HasLimit (sectionsOfDiagram P O)) (hQ : HasLimit (sectionsOfDiagram Q O)) :
+IsInvertibleEdge (sectionsOf_map φ O hP hQ).toTruncated
+```
+
+同じtoRangeのČech増大の余極限、`weightedSections_rangeCech_isLimit`、7・8、
+`cechConstantCone_isLimit`を使う。全増大余錐の射の頂点作用が元のφであることを照合する。
+`ColimitHomotopyPointwise`・`ColimitHomotopyInvertible`の双対で、
+両側の極限性と底図式上の可逆性から同じ頂点の辺の可逆性を回収する。
+像の包含では既存の`sections_localMono_iso`を使い、最後は`Subfunctor.toRange_ι`と
+指定切断写像の合成則で元のφに戻す。局所全射を点ごとの全射と仮定しない。
+
+#### S8：任意の係数、同じ宇宙移送、元の切断錐
+
+10. `siteLiftElementsShapeIso`・`siteLiftElementsShapeIso_naturality`。
+
+```lean
+(P : Cᵒᵖ ⥤ Type u) :
+(SSet.uliftFunctor.{u + 1, u}).obj (nerve P.Elements) ≅
+  nerve (siteLiftPresheaf P).Elements
+
+{P Q : Cᵒᵖ ⥤ Type u} (φ : P ⟶ Q) :
+(siteLiftElementsShapeIso P).hom ≫ nerveMap ((siteLiftPresheafMap φ).mapElements) =
+  (SSet.uliftFunctor.{u + 1, u}).map (nerveMap φ.mapElements) ≫
+    (siteLiftElementsShapeIso Q).hom
+```
+
+検証済み`PresheafElementsSiteLift`の同じup/downを各単体へ適用する。
+既存の`AsSmall`の形状同型と同じ方式で、任意の小さい模型を選ばない。
+
+11. `siteLiftSectionsCone`とその指定頂点・制限・極限性の法則。
+ここで`nativeSetSectionsDiagram P' O' := nerveMap (Functor.Elements.π P') ≫ O'`。
+
+```lean
+(P : Cᵒᵖ ⥤ Type u) (O : Presheaf C E)
+(c : JoinCone (sectionsOfDiagram P O)) :
+JoinCone (nativeSetSectionsDiagram (siteLiftPresheaf P)
+  ((asSmallSiteShapeIso C).inv ≫ O))
+
+(P : Cᵒᵖ ⥤ Type u) (O : Presheaf C E)
+(c : JoinCone (sectionsOfDiagram P O)) :
+(siteLiftSectionsCone P O c).vertex = c.vertex
+
+(φ : P ⟶ Q) (O : Presheaf C E)
+(c : JoinCone (sectionsOfDiagram Q O)) :
+joinMap (𝟙 _) (nerveMap ((siteLiftPresheafMap φ).mapElements)) ≫
+  (siteLiftSectionsCone Q O c).val =
+(siteLiftSectionsCone P O (SetWeight.restrictSectionsCone φ O c)).val
+
+(P : Cᵒᵖ ⥤ Type u) (O : Presheaf C E)
+(c : JoinCone (sectionsOfDiagram P O)) :
+IsLimitCone (siteLiftSectionsCone P O c) ↔ IsLimitCone c
+```
+
+同じ形状同型で全錐を再添字し、図式の同じ等式でcastするだけ。
+`NativeSheafRepresentableCoefficients`・`SiteLiftLocalEquivalence`は検証済み。
+
+12. `restrictSectionsCone_isLimit_of_localEquiv`と元の`sections_localEquiv_iso`。
+
+```lean
+(J : GrothendieckTopology C) (φ : P ⟶ Q) (hφ : IsLocalEquivSet J φ)
+(O : Presheaf C E) (hO : IsSheaf J O)
+(c : JoinCone (sectionsOfDiagram Q O)) (hc : IsLimitCone c) :
+IsLimitCone (SetWeight.restrictSectionsCone φ O c)
+
+(J : GrothendieckTopology C) (φ : P ⟶ Q) (hφ : IsLocalEquivSet J φ)
+(O : Presheaf C E) (hO : IsSheaf J O)
+(hP : HasLimit (sectionsOfDiagram P O)) (hQ : HasLimit (sectionsOfDiagram Q O)) :
+IsInvertibleEdge (sectionsOf_map φ O hP hQ).toTruncated
+```
+
+Eのpresentabilityは仮定しない。同じcを11で運び、全Hom(x,−)へ写し、
+9を一段上のsiteで用いる。反映は既存の`isLimitCone_of_covariantRepresentableInfinity`。
+最後の行は`sectionsMap_isInvertible_iff`と同じ選択済みの錐で回収する。
+像への分解は空間値の9でのみ行うので、一般Eにおける中間のrangeの極限を追加仮定にしない。
+
+#### S8：同じordinary層化と反射単位
+
+13. `discretePresheafHom`と`discreteHom_isLocalForHom_of_localEquiv`。
+
+```lean
+{P Q : Cᵒᵖ ⥤ Type u} (φ : P ⟶ Q) :
+FunctorHom (discretePresheaf P) (discretePresheaf Q)
+
+(J : GrothendieckTopology C) {P Q : Cᵒᵖ ⥤ Type u}
+(φ : P ⟶ Q) (hφ : IsLocalEquivSet J φ)
+(O : Presheaf C SpaceInfinity.{u}) (hO : IsSheaf J O) :
+IsLocalForHom (discretePresheafHom φ) (functorVertex O)
+```
+
+最初の射は元のDのHom作用をD.property.1のeqToHomだけで正規化する。新しい辺を選ばない。
+二つ目は9とG8の`sectionsEquivalenceNatural`・全族の指定前合成の比較から出す。
+
+14. 元の`localEquiv_of_sheafifyIso`（draftsの型）。
+
+```lean
+(J : GrothendieckTopology C) (hJ : Sheafification J SpaceInfinity.{u})
+{P Q : Cᵒᵖ ⥤ Type u} (φ : P ⟶ Q) (hφ : IsLocalEquivSet J φ) :
+IsInvertibleEdge ((nerve.edgeMk φ).map
+  ((discretePresheafInclusion C).val ≫ sheafificationFunctor J hJ)).toTruncated
+```
+
+既存の`reflective_isIso_map_iff_localHom`へ13を入れる。
+指定の同じhJを使い、τ₀や別の反射に取り替えない。
+
+15. 同じordinary単位に沿う全関手比較`sheafifyDiscreteFunctorIso`、
+元の`sheafify_discrete_eq`とその`_hom_fac`。
+
+```lean
+(J : GrothendieckTopology C) (hJ : Sheafification J SpaceInfinity.{u}) :
+FunctorIso
+  ((discretePresheafInclusion C).val ≫ sheafificationFunctor J hJ)
+  (nerveMap (presheafToSheaf J (Type u) ⋙ sheafToPresheaf J (Type u)) ≫
+    (discretePresheafInclusion C).val)
+
+(J : GrothendieckTopology C) (hJ : Sheafification J SpaceInfinity.{u})
+(P : Cᵒᵖ ⥤ Type u) :
+FunctorIso (sheafify J hJ (discretePresheaf P))
+  (discretePresheaf (((presheafToSheaf J (Type u)).obj P).obj))
+
+(J : GrothendieckTopology C) (hJ : Sheafification J SpaceInfinity.{u})
+(P : Cᵒᵖ ⥤ Type u) :
+sheafifyUnitHom J hJ (discretePresheaf P) ≫
+  (sheafify_discrete_eq J hJ P).hom =
+  discretePresheafHom (CategoryTheory.toSheafify J P)
+```
+
+ordinary単位をまず全自然変換としてDで写す。その標的が層であることは
+`isSheaf_discretePresheaf_iff`で証明する。同じhJの随伴の全関手Hom普遍性でmateを作り、
+14をordinary単位に適用して、その同じmateが同型であることを示す。
+成分ごとの任意の同型を組み立てず、全mateの可逆性を検出する。
+
+#### S1：元の一般Coverage判定
+
+16. `coverage_basis_pullback_isLimit`。
+
+```lean
+(K : Coverage C) (F : Presheaf C E)
+(hF : ∀ (U : C) (R : Presieve U), R ∈ K.coverings U →
+  IsLimitCone (restrictionCone F (Sieve.generate R)))
+{U V : C} (R : Presieve U) (hR : R ∈ K.coverings U) (f : V ⟶ U) :
+IsLimitCone (restrictionCone F ((Sieve.generate R).pullback f))
+```
+
+ここが残る数学。単なるrefinementの選択だけでは極限性は出ない。
+Coverageのrefinementの条件から、元の係数の全図式・全制限錐を比較する必要がある。
+既存の`SieveFactorizationLimitComparison`・`SieveIntersectionDescent`による極限合成を再利用し、
+refinementを一つずつ選んで自然性を仮定するのでなく、分解の全添字で比較する。
+この∞版のrefinementの比較は未供給であり、規模の再見積もりに独立に含める。
+
+17. 元の`isSheaf_toGrothendieck_iff`。
+
+```lean
+(K : Coverage C) (F : Presheaf C E) :
+IsSheaf K.toGrothendieck F ↔
+  ∀ (U : C) (R : Presieve U), R ∈ K.coverings U →
+    IsLimitCone (restrictionCone F (Sieve.generate R))
+```
+
+16で既存の`isSheaf_toGrothendieck_iff_universallyDescending`への入力を証明して結ぶ。
+全引き戻しでの降下を仮定には足さず、KをGrothendieckTopologyのcovering全体に制限しない。
+空の被覆・空のsiteも除外しない。
+
+### 3. 外枠の再見積もり（原型を保持）
+
+承認された三本文とimportの差分は+4/-3行。削除の戻しを数えず4行を加える。
+適用検証後の基準は21,510行・新規339本＋承認された既存3本の差分となる。
+下の(B)には未検証の57行を含め、二重に加算しない。
+
+| 群 | 型つき一覧 | 残りの下端 | 残りの上端 |
+|---|---|---:|---:|
+| (B) 指定scaffold・表現・底変換・添字同型・大域比較の同じ成分 | 1〜5 | 800 | 1,500 |
+| (C) 元の固定離散値比較の全射の自然性 | 6 | 200 | 400 |
+| Čechの全対角・増大の全族・元の局所同値への回収 | 7〜9 | 400 | 700 |
+| 任意Eへの同じ形状・錐・制限の移送と全Homでの反映 | 10〜12 | 220 | 420 |
+| 同じordinary単位、全反射のmate、元の層化比較 | 13〜15 | 500 | 900 |
+| 一般Coverageのrefinementの∞降下比較と元の判定 | 16〜17 | 700 | 1,300 |
+| **残り計** | | **2,820** | **5,220** |
+| **累計見込み** | | **24,330** | **26,730** |
+
+(B)の以前の400〜650行には、指定scaffoldの制限条件を回収して元の分類底変換へ
+照合する部分が十分に入っていなかった。既検証の合成則・pointed比較を再利用しても、
+復元の全空間比較・初頂点の係数比較・同じ添字同型の全作用の三つの接続が残る。
+S1ではMathlibの集合値のrefinementの証明をそのまま∞係数に適用できず、
+全図式と指定制限錐の比較が未供給である。この不足を独立に見積もった。
+任意Eについては、検証済みの201行の宇宙移送と既存の
+isLimitCone_of_covariantRepresentableInfinityを再利用し、追加を220〜420行へ抑える。
+
+上端26,730行は外枠26,000行を730行超える。上端を都合よく切り詰めず、
+この紙を保存したらLeanを再開せず止まって報告する。
+S7・R2・R3は再開しない。S1を普遍降下性つきへ弱めず、S8をpresentable係数だけへ縮めない。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
