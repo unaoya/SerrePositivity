@@ -1,0 +1,148 @@
+number,kind,title,section,status,declarations,reason,confidence,lean_citations,plan_citations,kerodon,goal
+(*),Equation,F signature の非分裂イデアル I_e による極限表示,1,,,,high,,,,CLMST
+A,Theorem,perfectoid 不変量の基本不等式,1,,,,high,,,,CLMST
+B,Theorem,BCM 正則性と正の perfectoid signature,1,,,,high,,,,CLMST
+C,Theorem,有限準エタール分裂拡大の変換則,1,,,,high,,,,CLMST
+D,Theorem,局所基本群と類群の捩れの有限性,1,,,,high,,,,CLMST
+E,Theorem,perfectoid 不変量による正則性の特徴づけ,1,,,,high,,,,CLMST
+F,Theorem,perfectoid HK 重複度による BCM 閉包と extended plus closure の検出,1,,,,high,,,,CLMST
+G,Theorem,BCM 有理性と有理 signature の正値性,1,,,,high,,,,CLMST
+2.1.1,Lemma,近似 Gorenstein 環での非分裂元と colon イデアル,2.1,,,,high,,,,CLMST
+2.1.2,Remark,colon 部分加群の単調性と合併,2.1,,,,high,,,,CLMST
+2.1.3,Lemma,平坦加群での非分裂元の mM による記述,2.1,,,,high,,,,CLMST
+2.1.4,Lemma,有限正規拡大の trace と Hom の生成元,2.1,,,,high,,,,CLMST
+2.2.1,Definition,Faltings の正規化長さの三段階の定義,2.2,,,,high,,,,CLMST
+2.2.2,Remark,正規化長さのより一般の設定,2.2,,,,high,,,,CLMST
+2.2.3,Proposition,正規化長さの良定義性と有限生成・有限表示での一致,2.2,,,,high,,,,CLMST
+2.2.4,Lemma,有限生成元から作る有限段長さの極限,2.2,,,,high,,,,CLMST
+2.2.5,Corollary,全射な有限生成系の colimit と長さの下限,2.2,,,,high,,,,CLMST
+2.2.6,Proposition,短完全列の加法性と単射・全射な filtered colimit,2.2,,,,high,,,,CLMST
+2.3.1,Definition,導来 I 完備性,2.3,,,,high,,,,CLMST
+2.3.2,Proposition,単項イデアルの導来完備化の反映と逆極限表示,2.3,,,,high,,,,CLMST
+2.3.3,Proposition,有界冪捩れ加群の pro 比較と古典的完備化,2.3,,,,high,,,,CLMST
+2.3.4,Definition,導来 I 完全平坦性と忠実平坦性,2.3,,,,high,,,,CLMST
+2.3.5,Lemma,完全平坦底変換の完備テンソル積の古典的表示,2.3,,,,high,,,,CLMST
+2.3.6,Convention,導来 p 完備化と完備テンソル積の記号規約,2.3,,,,high,,,,CLMST
+2.4.1,Definition,perfectoid 環の四条件,2.4,,,,high,,,,CLMST
+2.4.2,Example,根の塔と絶対整閉包の完備化の例,2.4,,,,high,,,,CLMST
+2.4.3,Lemma,compatible roots を持つ perfectoid イデアルと閉包の比較,2.4,,,,high,,,,CLMST
+2.4.4,Caution,almost 数学で導来 p 完備を暗黙に課す規約,2.4,,,,high,,,,CLMST
+2.4.5,Theorem,有限エタール開集合に対する almost purity,2.4,,,,high,,,,CLMST
+2.4.6,Remark,絶対整閉基底での対称群 Galois 閉包の分裂,2.4,,,,high,,,,CLMST
+2.4.7,Proposition,有限 perfectoid 化への比較写像の J 同種性,2.4,,,,high,,,,CLMST
+2.4.8,Claim,分裂積への比較写像の錐の一様冪零化,2.4,,,,high,,,,CLMST
+2.4.9,Proposition,p 完全 almost 平坦性・忠実性・純性,2.4,,,,high,,,,CLMST
+2.5.1,Lemma,付値が零へ近づく元を可逆化する BCM 拡大,2.5,,,,high,,,,CLMST
+2.5.2,Claim,完備絶対整閉包の元の付値を保つ近似,2.5,,,,high,,,,CLMST
+2.5.3,Corollary,BCM 拡大におけるイデアル所属と局所コホモロジーの消滅,2.5,,,,high,,,,CLMST
+(3.0.0.1),Equation,正標数での有限段と p 冪根拡大の挟み込み,3,,,,high,,,,CLMST
+3.0.1,Definition,Frobenius 非分裂イデアル I_e,3,,,,high,,,,CLMST
+3.0.2,Proposition,I_e の Frobenius 遷移と colon の関係,3,,,,high,,,,CLMST
+3.0.3,Definition,完全化の非分裂イデアル I_infty,3,,,,high,,,,CLMST
+3.0.4,Proposition,I_infty と I_e の比較,3,,,,high,,,,CLMST
+3.0.5,Definition,F signature と Hilbert–Kunz 重複度,3,,,,high,,,,CLMST
+3.0.6,Lemma,I_infty の有限段への縮約と colon イデアルによる包含,3,,,,high,,,,CLMST
+3.0.7,Theorem,完全化による F signature と HK 重複度の表示,3,,,,high,,,,CLMST
+4.0.1,Notation,Noether–Cohen 正規化・根の塔・R_perfd の設定,4,,,,high,,,,CLMST
+4.0.2,Caution,R_perfd の基底とパラメータの選択への依存,4,,,,high,,,,CLMST
+4.0.3,Theorem,R_perfd の全加群 almost 平坦性と忠実性,4,,,,high,,,,CLMST
+4.0.4,Corollary,局所コホモロジーと全有限段パラメータ Koszul の零化,4,,,,high,,,,CLMST
+4.0.5,Remark,パラメータ商から最上局所コホモロジーへの almost 単射性,4,,,,high,,,,CLMST
+4.0.6,Definition,R_perfd の非分裂イデアル I_infty,4,,,,high,,,,CLMST
+4.0.7,Lemma,I_infty のイデアル性と入射包による表示,4,,,,high,,,,CLMST
+4.0.8,Definition,perfectoid signature と perfectoid HK 重複度,4,,,,high,,,,CLMST
+4.0.9,Example,非分岐正則環で不変量が 1 になる例,4,,,,high,,,,CLMST
+4.0.10,Proposition,almost 同型に対する正規化長さの不変性,4,,,,high,,,,CLMST
+(4.0.10.1),Equation,mod p 冪根での g の根と perfectoid イデアル,4,,,,high,,,,CLMST
+4.0.11,Definition,m 進付値と v almost zero の定義,4,,,,high,,,,CLMST
+4.0.12,Remark,付値の完備絶対整閉包への延長,4,,,,high,,,,CLMST
+4.0.13,Lemma,正規化長さ零なら v almost zero,4,,,,high,,,,CLMST
+4.0.14,Proposition,全有限段パラメータ商の長さ・重複度公式,4,,,,high,,,,CLMST
+4.0.15,Claim,最後のパラメータの冪と商の長さ,4,,,,high,,,,CLMST
+(4.0.15.1),Equation,perfectoid 比較の余核の Koszul 長完全列,4,,,,high,,,,CLMST
+(4.0.15.2),Equation,余核と有限段の正 Koszul 長さの一致と有限性,4,,,,high,,,,CLMST
+(4.0.15.3),Equation,余核の H1 の長さの上界,4,,,,high,,,,CLMST
+(4.0.15.4),Equation,Koszul H0 と余核 H1 の長さの加法公式,4,,,,high,,,,CLMST
+(4.0.15.5),Equation,最後のパラメータの乗法による Koszul 長完全列,4,,,,high,,,,CLMST
+4.0.16,Proposition,基底の有限生成準素イデアル商の階数公式,4,,,,high,,,,CLMST
+4.0.17,Lemma,有限剰余体上でパラメータによる reduction を得る拡大,4,,,,high,,,,CLMST
+4.0.18,Corollary,perfectoid HK 重複度の Hilbert–Samuel 上界とパラメータでの等号,4,,,,high,,,,CLMST
+4.0.19,Question,perfectoid HK 重複度の e(I)/d! 下界の問い,4,,,,high,,,,CLMST
+4.0.20,Proposition,perfectoid HK 重複度の下界 1 と等号の必要条件,4,,,,high,,,,CLMST
+(4.0.20.1),Equation,limit closure からの組成列,4,,,,high,,,,CLMST
+(4.0.20.2),Equation,limit closure の R_perfd 上での colon 包含,4,,,,high,,,,CLMST
+4.0.21,Lemma,イデアル商の長さ差と生成元数による評価,4,,,,high,,,,CLMST
+4.0.22,Proposition,perfectoid signature と HK 重複度の基本不等式,4,,,,high,,,,CLMST
+4.0.23,Proposition,近似 Gorenstein 系による signature の上限表示,4,,,,high,,,,CLMST
+4.1.1,Theorem,almost 平坦性・二不変量による正則性の特徴づけ,4.1,,,,high,,,,CLMST
+4.1.2,Lemma,R_perfd と剰余体の全高次 Tor の長さ零から正則性,4.1,,,,high,,,,CLMST
+(4.1.2.1),Equation,Tor の長さと自由分解の長さの比較,4.1,,,,high,,,,CLMST
+4.1.3,Proposition,R_perfd の almost 平坦性・忠実性による正則性,4.1,,,,high,,,,CLMST
+4.1.4,Proposition,perfectoid HK 重複度 1 による正則性,4.1,,,,high,,,,CLMST
+4.1.5,Corollary,perfectoid signature 1 による正則性,4.1,,,,high,,,,CLMST
+4.1.6,Remark,R_perfd を絶対整閉包内の像で置き換えることへの反例,4.1,,,,high,,,,CLMST
+5.1.1,Definition,弱 BCM 正則性と Q Gorenstein BCM 正則性,5.1,,,,high,,,,CLMST
+5.1.2,Remark,正標数の弱 F 正則性との一致,5.1,,,,high,,,,CLMST
+5.1.3,Definition,因子対の BCM 正則性,5.1,,,,high,,,,CLMST
+5.1.4,Remark,balanced BCM 代数と極大イデアル完備化への帰着,5.1,,,,high,,,,CLMST
+5.1.5,Lemma,Galois 共役のテンソル積と共通 BCM 代数,5.1,,,,high,,,,CLMST
+5.1.6,Lemma,p 冪捩れ加群の消滅部分加群の比較と有限生成時の一致,5.1,,,,high,,,,CLMST
+5.1.7,Proposition,純性を与える小さい元の存在の同値,5.1,,,,high,,,,CLMST
+(5.1.7.1),Equation,入射包の almost 消滅部分加群が零になる条件,5.1,,,,high,,,,CLMST
+5.2.1,Proposition,BCM 正則な因子対なら signature が正,5.2,,,,high,,,,CLMST
+5.2.2,Proposition,正の signature から根による一様な純性,5.2,,,,high,,,,CLMST
+5.2.3,Proposition,有限正規拡大のトレース条件による BCM 正則性,5.2,,,,high,,,,CLMST
+5.2.4,Remark,正標数の F signature 正値性の別証明,5.2,,,,high,,,,CLMST
+5.2.5,Proposition,HK 重複度の一致・BCM 閉包・extended plus closure の同値,5.2,,,,high,,,,CLMST
+5.3.1,Definition,四種類の強 BCM 正則性,5.3,,,,high,,,,CLMST
+(5.3.1.1),Equation,BCM 正則性の諸概念と splinter の含意列,5.3,,,,high,,,,CLMST
+5.3.2,Example,BCM 正則性の超曲面・klt 対・直和因子の例,5.3,,,,high,,,,CLMST
+5.3.3,Definition,モノイドの単元群と群完備化,5.3,,,,high,,,,CLMST
+5.3.4,Definition,強凸・整・飽和・正規・full モノイド,5.3,,,,high,,,,CLMST
+5.3.5,Proposition,Witt モノイド環の超曲面の BCM 正則性,5.3,,,,high,,,,CLMST
+5.4.1,Definition,BCM 有理性,5.4,,,,high,,,,CLMST
+5.4.2,Definition,perfectoid 有理・相対有理 signature の定義,5.4,,,,high,,,,CLMST
+5.4.3,Proposition,非 Cohen–Macaulay 環での有理 signature の消滅,5.4,,,,high,,,,CLMST
+5.4.4,Lemma,socle へ移す HK 長さ差の比の評価,5.4,,,,high,,,,CLMST
+5.4.5,Proposition,有理 signature の socle 上の下限表示,5.4,,,,high,,,,CLMST
+5.4.6,Corollary,三種の signature と Cohen–Macaulay type の比較,5.4,,,,high,,,,CLMST
+5.4.7,Proposition,相対有理 signature の上界と正則性,5.4,,,,high,,,,CLMST
+5.4.8,Lemma,HK 長さ差の局所コホモロジー像による表示,5.4,,,,high,,,,CLMST
+5.4.9,Proposition,固定パラメータと局所コホモロジーによる下限表示,5.4,,,,high,,,,CLMST
+5.4.10,Theorem,BCM 有理環の小付値元による局所コホモロジーの単射性,5.4,,,,high,,,,CLMST
+5.4.11,Theorem,BCM 有理性と二種の有理 signature の正値性,5.4,,,,high,,,,CLMST
+6.0.1,Theorem,有限準エタール分裂拡大の signature 変換則,6,,,,high,,,,CLMST
+6.0.2,Remark,剰余体拡大と基底別の正規化長さの尺度,6,,,,high,,,,CLMST
+(6.0.2.1),Equation,剰余体拡大の前後の S_perfd の同型,6,,,,high,,,,CLMST
+(6.0.2.2),Equation,剰余体次数による正規化長さの尺度変換,6,,,,high,,,,CLMST
+6.0.3,Corollary,有限エタール拡大での perfectoid 不変量の不変性,6,,,,high,,,,CLMST
+6.0.4,Corollary,S2・重複度 2 の環での二不変量の和,6,,,,high,,,,CLMST
+6.1.1,Lemma,almost 射影加群からの射のスカラー倍の lift,6.1,,,,high,,,,CLMST
+6.1.2,Lemma,almost 有限生成射影加群の有限自由近似,6.1,,,,high,,,,CLMST
+6.1.3,Definition,almost 有限自由性と一様階数,6.1,,,,high,,,,CLMST
+6.1.4,Lemma,完全環の有限エタール開集合から一様 almost 射影性,6.1,,,,high,,,,CLMST
+6.1.5,Corollary,perfectoid 環の mod p の一様 almost 有限自由性,6.1,,,,high,,,,CLMST
+6.2.1,Lemma,mod 根イデアルでの根の lift の正規化長さ,6.2,,,,high,,,,CLMST
+6.2.2,Lemma,Hom 生成元条件と非分裂イデアルの移送,6.2,,,,high,,,,CLMST
+(6.0.1.1),Equation,有限自由近似写像の像と p 冪根による被覆,6,,,,high,,,,CLMST
+6.3.1,Proposition,一般の有限拡大に対する適合パラメータと変換則,6.3,,,,high,,,,CLMST
+(6.3.1.1),Equation,一般変換則の有限自由近似の像の被覆,6.3,,,,high,,,,CLMST
+6.3.2,Corollary,二次元 Gorenstein 有理特異点の ADE 計算,6.3,,,,high,,,,CLMST
+7.0.1,Lemma,弱 BCM 正則性の有限準エタール拡大への移送,7,,,,high,,,,CLMST
+7.0.2,Theorem,BCM 正則環の局所エタール基本群の位数上界,7,,,,high,,,,CLMST
+7.0.3,Remark,基点の選択と特異閉集合の除去,7,,,,high,,,,CLMST
+7.0.4,Theorem,大域的 plus 正則な log Fano 型スキームの基本群,7,,,,high,,,,CLMST
+7.0.5,Claim,切断環の BCM 正則性と signature の正値性,7,,,,high,,,,CLMST
+7.0.6,Remark,大域的 plus 正則性を課す因子の条件の緩和,7,,,,high,,,,CLMST
+7.0.7,Theorem,混標数スキーム上の準エタール被覆塔の安定性,7,,,,high,,,,CLMST
+7.0.8,Claim,完備底変換後の剰余環が体であること,7,,,,high,,,,CLMST
+7.0.9,Lemma,有限分裂準エタール拡大の剰余体拡大の分離性,7,,,,high,,,,CLMST
+7.0.10,Remark,被覆塔定理の拡張の可能性,7,,,,high,,,,CLMST
+7.0.11,Lemma,完備局所環における可算個の素イデアルの回避,7,,,,high,,,,CLMST
+7.0.12,Theorem,BCM 正則環の類群の捩れ部分の位数上界,7,,,,high,,,,CLMST
+7.0.13,Claim,可算個の階数一加群に共通なパラメータの選択,7,,,,high,,,,CLMST
+8.1,Conjecture,Noether–Cohen 正規化とパラメータ選択の独立性予想,8,,,,high,,,,CLMST
+8.2,Conjecture,局所化に対する perfectoid 不変量の不等式予想,8,,,,high,,,,CLMST
+8.3,Conjecture,忠実平坦局所拡大に対する不等式予想,8,,,,high,,,,CLMST
+8.4,Conjecture,perfectoid 不変量の半連続性予想,8,,,,high,,,,CLMST
+8.5,Definition,有効 Q Cartier 因子対の perfectoid signature,8,,,,high,,,,CLMST
