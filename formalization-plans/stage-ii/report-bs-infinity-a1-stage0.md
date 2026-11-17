@@ -8642,3 +8642,110 @@ lemma kanDiagramOppositeHomInterval_natural_hom {I : Type u} [SmallCategory I]
 残りを証明済みとは報告しない。S7・R2・R3は停止のまま。
 
 一覧：済み 18／全体 39（うち追加 4、別停止点 2）。
+
+
+### P3-C1PN のνの正規化と、未列挙の成分分解（11-17夕）
+
+#### 検証済み
+
+新規 `LeftStraighteningTransportBaseChangeNormalization.lean`（57物理行、引用も含め保守的に57数学行）。
+元の `leftStraightening_baseChange_simplex_normalized` を再利用し、指定νを単体切断の係数比較で正規化した。
+P3-C1PN内の200行未満の構成の法則で、独立した完了署名には数えない。型：
+
+```lean
+lemma leftStraightening_baseChange_transport_normalized {E B D : SSet.{u}} [Quasicategory B] [Quasicategory D]
+    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) :
+    let U := SSet.uliftFunctor.{u+1,u}
+    let t := U.map (nerveMap (transportSimplexFunctor k))
+    let q := pullback.snd p k
+    let θp := leftStraighteningInfinityDiagram_firstVertexTransportIso p
+    let θq := leftStraighteningInfinityDiagram_firstVertexTransportIso q
+    let β := leftStraighteningInfinityDiagram_baseChangeIso p k
+    let σp := (leftClassificationSimplexIso p).symm ≪≫ θp
+    let σq := (leftClassificationSimplexIso q).symm ≪≫ θq
+    (θp.precomp t).symm ≪≫
+      diagramIsoCongr
+        (by rw [← Category.assoc, ← transportSimplexFirstVertexMap_ulift_naturality k,
+          Category.assoc]) rfl
+        (β.precomp (U.map (transportSimplexFirstVertexMap D))) ≪≫ θq =
+    (FunctorIso.precomp σp t).symm ≪≫ (simplexSectionBaseChangeCoefficient p k).symm ≪≫ σq
+```
+
+対象ビルド成功、所有3宣言（主補題と内部のinstance等）の小監査は標準三公理のみ。
+文献属性はHTT §3.3.2の構成の特殊な法則として付けた。
+数学行数は23,776 → **23,833**。今回のP3-C1PNの証明分割の実測は **243行**（58+61+62+57）。
+既計上のC1Pの620行は重ねて数えない。
+証拠：`evidence/inf-supply/c1pn-transport-normalization-3-1117/manifest.json`。
+
+#### 未列挙の署名の提案：P3-C1PNV
+
+一括点検では、θの成分の正規化をP3-C1PN内の小さい計算と見ていた。
+元のβを既存の共役公式へ戻した結果、その次に必要なσの成分分解は、
+coherentな対象での評価・二つの端点移送・同じ初頂点pullbackの射影をまとめて照合するため、
+200行を超える見込みになった。独立した署名として以下を提案する。
+**現在の39署名には未登録で、証明には入っていない。**
+
+名前：`leftStraightening_firstVertexTransport_underValue`。
+完全な型（`#check`成功。証明成功を意味しない）：
+
+```lean
+∀ {E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [LeftFibration p],
+  let C := TransportSimplexCategory B
+  let j := edgewiseEnrichedInfinityMap (LeftFibrationObject B)
+  let b := leftFibrationEdgewiseFirstVertexBaseChange B
+  let h : j ≫ (leftFibrationInfinityBaseChange (transportSimplexFirstVertexMap B) ≫
+      leftStraighteningCoherentMap C) =
+      b ≫ (edgewiseEnrichedInfinityMap (LeftFibrationObject (nerve C)) ≫
+        leftStraighteningCoherentMap C) := by
+    rw [← Category.assoc, ← leftFibrationEdgewiseFirstVertexBaseChange_projection,
+      Category.assoc]
+  let γ := (transportSimplexUnderRealizationIso B).precomp j ≪≫
+    ((transportSimplexUnderBaseChangeRealizationIso B).precomp j).symm ≪≫
+    eqToIso (congrArg (fun f => HomotopyCategory.mk (functorVertex f)) h) ≪≫
+    (leftStraighteningCoherentMap_oppositeIso C).precomp b
+  let X := edgewiseOrdinaryObject (leftFibrationObjectOf p)
+  HEq ((leftClassificationSimplexIso p).symm ≪≫
+      leftStraighteningInfinityDiagram_firstVertexTransportIso p)
+    (functorIsoValue γ (coherentNerveVertex X))
+```
+
+依存先（台帳の他の署名）：なし。既存の指定構成の法則だけから作る。
+P3-C1PNがこの署名に依存する向きで、提案を加えた依存グラフも道具で検査：40頂点・67辺、循環なし。
+このHEqは元の全関手の同型そのものの成分比較で、各値の像の一致だけを仮定するものではない。
+新しい仮定・chooseの置き換えは要らない。
+
+| 使う既存の宣言 | 場所 |
+|---|---|
+| leftStraighteningInfinityDiagram_firstVertexTransportIso | `SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningRepresentation.lean:79` |
+| leftStraighteningInfinityMap_firstVertexOppositeIso | `SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningOppositeRestriction.lean:53` |
+| leftClassificationSimplexIso | `SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftClassificationSimplexRestriction.lean:69` |
+| functorIsoValue_trans | `SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/FunctorIsoValueComposition.lean:24` |
+| functorIsoValue_precomp | `SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/FunctorIsoValueCurry.lean:75` |
+| normalizedFunctorIsoComponent_heq_app | `SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/PresentableInfinityCategories/NormalizedFunctorIsoComponentRestriction.lean:31` |
+| iso_endpoints_heq | `SerrePositivity/InfinityCategories/Project/LocalizationAndKanExtensionAuxiliaries/FunctorIsoPointEvaluation.lean:24` |
+
+原典：HTT §3.3.2、Kerodon §5.6・Corollary 5.6.0.6（Tag 028T）の指定構成の照合法則。
+独立した原典の定理番号に対応する一般定理とはしない。属性はHTTのspecial、Kerodon側はdocstringに特殊化を書く。
+
+| 証明の分割 | 素の見込み | 係数2の見込み |
+|---|---:|---:|
+| 元の初頂点比較の全体の合成の分解 | 35〜55 | 70〜110 |
+| 同じcoherent対象での成分と前合成の評価 | 60〜85 | 120〜170 |
+| 単体切断値とpullbackの射影での端点正規化 | 60〜85 | 120〜170 |
+| 指定した中間成分の相殺とHEqの接続 | 35〜45 | 70〜90 |
+| **P3-C1PNV合計** | **190〜270** | **380〜540** |
+
+一本の補正上端540は800以内だが、一覧にない署名なので、11-17夕の
+「一覧にない署名が要るとき」に従い**ここでLeanを止める**。
+この提案が通る場合、P3-C1PN本体の残り（既存P3-B1・B2eとの接続）は素80〜150・補正160〜300と見直す。
+今回の実測243を含めるとC1PN本体は素323〜393・補正646〜786の見込み。
+現在23,833に次の提案群540と本体残りの補正300を足して24,673で、29,000行の着手判定内。
+これは承認や完了の主張ではない。29,000を超える手前で署名群を区切る規則は維持する。
+
+補助試験として任意の源に対する自然性の端点正規化も試したが、公開モジュールには採用していない。
+存在する元の全体の同型を使う道を保ち、計算上限は上げていない。
+既存の本体の変更なし、他レーンのファイルの変更なし。
+旧R2の未追跡4本はそのまま。S7・R2・R3・P⁰は再開していない。
+現在の停止は5∞-1の完成ではなく、一覧外の署名が必要になったため。
+
+一覧：済み 18／全体 39（うち追加 4、別停止点 2。P3-C1PNVは未登録）。
