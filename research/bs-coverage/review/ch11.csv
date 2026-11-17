@@ -1,0 +1,2 @@
+number,status,declarations,reason,axioms,check,partial_kind
+11.1,none,,原文を再読し、現本体とロックMathlibを節の対象語で再検索したが、同じ対象・指定射の主張を直接与える宣言は未同定。Spec R[1/p] の F_p エタールコホモロジー次元 ≤ 1。本体・drafts・Mathlib に該当なし（HilbertSamuel の Thm 11.1 は Atiyah–Macdonald で無関係）,,not_found,

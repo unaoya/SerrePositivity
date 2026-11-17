@@ -1,0 +1,510 @@
+# KB-W2 HA 第5章
+
+原典の版を目次記載SHA-256と照合したPDFの本文と、現在のソースの宣言の型を読み比べた。kernel実行・Lean変更・ビルド・鍵はなし。
+
+対象494行。旧状態：{'none': 459, 'partial': 35}。新状態：{'none': 469, 'partial': 24, 'own': 1}。partial_kind：{'component': 16, 'special': 1, 'stronger-hyp': 5, 'direction': 2}。
+
+既存own・mathlibなど対象外6行は全フィールド・引用符・改行をそのまま保存。対象行でもstatus/declarations/reason/partial_kind以外は不変。axioms/checkは旧記録であり今回のkernel確認結果ではない。
+
+## 全対象行
+
+| 番号 | 旧→新 | partial_kind | 理由 |
+| --- | --- | --- | --- |
+| 5.1.0.1 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：正の対角アフィン式を持つ開立方体の rectilinear embedding と、その互いに素な有限族の空間 Rect の定義は見つからない。通常の開埋め込みや複体上の dg オペラッドは、この立方体の係数・非交差条件を持たない。 |
+| 5.1.0.2 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：有限基点付き集合と Rect の積で Hom を持つ位相的作用素圏とその nerve は見つからない。一般の enriched category の nerve はあるが、この位相的 Hom の作用素圏を構成していない。 |
+| 5.1.0.3 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：little cubes の作用素圏から N(Fin∗) への射が ∞ オペラッドとなる結果は見つからない。厳密 dg オペラッドの定義は inert lift と operadic Segal 条件を持つこの射を与えない。 |
+| 5.1.0.4 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：little cubes ∞ オペラッド Eₖ の定義は見つからない。複体上の単色オペラッドと実 BE オペラッドは、位相的 Rect の operadic nerve ではない。 |
+| 5.1.0.5 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：little cubes の対称モノイダル envelope を立方体の非交和と rectilinear embedding で記述する構成は見つからない。通常の dg オペラッドはこの envelope と非交和の比較を持たない。 |
+| 5.1.0.6 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：零次元 little cubes の作用素圏を Fin∗ の単射部分と同定する同型は見つからない。零次元の通常の空間や単射はあるが、Rect と当該作用素圏を構成していない。 |
+| 5.1.0.7 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：一次元 Rect の線形順序ごとの可縮性と Assoc への operadic 同値は見つからない。凸集合の可縮性だけでは、Rect の各成分と作用素圏を作ってこの同値を得ることはできない。 |
+| 5.1.0.8 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：群的 little cubes 空間の反復ループ空間としての認識定理は見つからない。通常のループ・ホモトピー群の構成は、little cubes の作用と群的条件による逆構成を与えない。 |
+| 5.1.1.1 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：little cubes ∞ オペラッドの coherent 性は見つからない。dg オペラッドの結合則は、活性射の拡張空間の homotopy pushout 条件を意味しない。 |
+| 5.1.1.2 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：有限集合から多様体への単射全体を積位相の部分空間とする Conf の定義は見つからない。Mathlib の Configuration は点と直線の抽象的な incidence 構造であり、この位相空間ではない。 |
+| 5.1.1.3 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：指定点を各 cube の像に含む Rect の開部分から punctured cube の Conf への原点評価のホモトピー同値は見つからない。開埋め込みの一般論は、この Rect と評価 fiber の可縮性を計算していない。 |
+| 5.1.1.4 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：little cubes 作用素圏の Hom→Fin∗ の Hom の (k−1)-connectivity は見つからない。通常空間の connectivity の述語はあるが、当該 Hom の配置空間としての計算がない。 |
+| 5.1.1.5 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：E₀→E₁→… の ∞ オペラッドの余極限を Comm と同定する結果は見つからない。dg Com は構成されるが、次元別 little cubes の列とその operadic 余極限を備えない。 |
+| 5.1.1.6 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：E∞=Comm と置いた上で CAlg を AlgEₖ の塔の homotopy limit と同定する結果は見つからない。実 BE オペラッドはあるが、little cubes の全 k の列の当該比較ではない。 |
+| 5.1.1.7 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：n-category に値を取る代数の k>n での Eₖ と可換構造の一致は見つからない。通常の可換内部代数の構成は、Eₖ の演算空間の連結度によるこの安定化同値を与えない。 |
+| 5.1.1.8 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：単体オペラッドの作用素圏の active 射と、入力を一つ加える写像の厳密 fiber ExtΔ(f) は見つからない。dg の arity と挿入はあるが、単体的作用素圏上のこの fiber を作っていない。 |
+| 5.1.1.9 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：厳密拡張から coherent nerve 内の Ext(σ,S) へ送る全鎖上の写像 θ は見つからない。一般の simplicial nerve はあるが、作用素圏の拡張を用いるこの写像を構成していない。 |
+| 5.1.1.10 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：ExtΔ(f) と Ext(σ,S) を actual fiber と homotopy fiber として比較する同定は見つからない。一般の fiber 模型は、当該拡張空間をこの写像 β の fiber に同定しない。 |
+| 5.1.1.11 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：四つの厳密拡張の homotopy fiber 条件と pushout から operadic nerve の coherence を得る定理は見つからない。厳密 dg の合成則は、この ExtΔ の正方形と coherence を比較していない。 |
+| 5.1.2.1 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：立方体埋め込みの直積による Eₖ×Eₖ′→Eₖ₊ₖ′ の bifunctor は見つからない。通常のテンソル積や dg operad の合成は、Rect の直積と Fin∗ の smash によるこの射を持たない。 |
+| 5.1.2.2 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Dunn の Eₖ⊗Eₖ′≃Eₖ₊ₖ′ という ∞ オペラッドの普遍性は見つからない。dg オペラッドと通常のモノイダル構造には、little cubes の二変数作用と operadic tensor の比較がない。 |
+| 5.1.2.3 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：n-category 上の Eₖ モノイダル構造が k≥n+2 で対称構造に安定化する結果は見つからない。通常の対称モノイダル圏のクラスは、この全 Eₖ 構造の同値を与えない。 |
+| 5.1.2.4 | partial → partial | component | KB-W2型再照合：仮定：通常のモノイダル圏 C（HA と一致）。結論：自然な braiding と二つの六角式による braided category を定義する（原典が明示する通常圏の構造の部分に一致）。N(C) の E₂ モノイダル構造との同値と Eckmann–Hilton の比較は含まれない。 |
+| 5.1.2.5 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：braiding によるテンソル対象への純粋 braid 群の作用と配置空間の π₁ による幾何的同定は見つからない。通常の braiding の六角式はあるが、Conf の基本群とこの作用を構成していない。 |
+| 5.1.2.6 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：A↦RModA を Eₖ₋₁ 代数値の全充満関手とする結果は見つからない。通常の厳密 dg 代数のモナド性は、全加群 ∞ 圏から代数を回復する当該全充満性を与えない。 |
+| 5.1.2.7 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Eₖ 代数を基礎結合代数とその右加群圏の Eₖ₋₁ 構造で記述する同値は見つからない。通常内部加群のモノイダル構造は、この全 Eₖ 作用と基礎代数の回復を比較しない。 |
+| 5.1.2.8 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Eₖ モノイダルな基礎圏における右加群圏による全充満な認識は見つからない。対称な通常の内部加群のテンソルは、一般 k のモノイダル ∞ 圏の作用と比較されていない。 |
+| 5.1.2.9 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Eₖ′ 代数の弱可縮余極限の存在と Eₖ テンソルによる保存は見つからない。厳密 dg 代数の sifted 余極限はあるが、局所化後の当該弱可縮余極限と多重作用の tensor を比較していない。 |
+| 5.1.2.10 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Rect の Hom で作る位相的 wreath 作用素圏 W と Eₖ×Eₖ′→N(W)→Eₖ₊ₖ′ の因数分解は見つからない。一般の関手空間は、この有限列と little cubes の Hom を持つ圏を構成しない。 |
+| 5.1.2.11 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：E₁ と Eₖ の wreath product から Eₖ₊₁ への weak approximation は見つからない。一般の左 Kan 拡張はあるが、この θ と operadic approximation の条件を持たない。 |
+| 5.1.2.12 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：wreath product の inert marking による θ の ∞ preoperad 弱同値は見つからない。一般の marked simplicial set の語は、この作用素圏と指定 marking の比較を与えない。 |
+| 5.1.2.13 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：θ のスライスと Tupₙ の引き戻しとの弱ホモトピー同値は見つからない。一般の slice と余終性は、little cubes の θ と有限順序分解の当該図式を比較していない。 |
+| 5.1.2.14 | partial → partial | component | KB-W2型再照合：仮定：TopCat 上の enriched category C と Sing の実モノイダル構造（HA と一致する位相的圏の場合。Sing の instance は Mathlib の SimplicialSet.TopAdj で構成済み）。結論：全 Hom に Sing を施し、同じ対象を持つ SSet 豊穣圏とその合成を与える（冒頭の Sing(C) の部分に一致）。little cubes 由来の W・T・U と、指定 functor への Sing の比較は含まれない。 |
+| 5.1.2.15 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：開区間の有限和と連結成分の凸な同値関係の半順序 P、および Rect の T(I,∼)・U(I,∼) は見つからない。一般の区間や同値関係は、この非交差配置と subfunctor の図式を構成しない。 |
+| 5.1.2.16 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Sing(T) が区間配置 P 上の Sing(TI,∼) の homotopy colimit となる結果は見つからない。通常の特異単体集合は、この Rect に由来する開被覆の全図式を持たない。 |
+| 5.1.2.17 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Sing(U) が区間配置 P 上の Sing(UI,∼) の homotopy colimit となる結果は見つからない。一般の余極限は、未構成の配置空間の部分関手とその homotopy colimit 比較を与えない。 |
+| 5.1.2.18 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：各区間配置に制限した T・U の unstraightening の間の弱ホモトピー同値は見つからない。一般の直線化はあるが、この位相的配置の θ を比較する宣言がない。 |
+| 5.1.3.1 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：coherent operad の変更に沿う Mod と基礎代数の制限関手の正方形は見つからない。通常のスカラー制限はあるが、全 ∞ オペラッド上の module section の制限を構成しない。 |
+| 5.1.3.2 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Eₖ 加群の Eₖ モノイダル構造と E₁ 双加群への忘却のモノイダル性は見つからない。通常内部加群の相対 tensor はあるが、little cubes の全 module section と比較されていない。 |
+| 5.1.3.3 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：k=∞ を Theorem 4.5.2.1 の極限の場合として比較する結果は見つからない。通常の対称内部加群の tensor には、有限 k の列との同一視がない。 |
+| 5.1.3.4 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：単射を持つ有限基点付き集合の圏 Ja・J′a と配置空間の Tᵃ・Uᵃ の定義は見つからない。一般の有限集合圏は、この arity に印を付けた Rect の族を構成しない。 |
+| 5.1.3.5 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Tᵃ・Uᵃ を T・U の合成で表し、それらの unstraightening の正方形を作る構成は見つからない。一般の Sing と直線化は、当該位相的 diagram の比較を持たない。 |
+| 5.1.3.6 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：配置空間から作った指定の unstraightening 正方形の通常模型での homotopy pullback 性は見つからない。一般の homotopy pullback は、この Tᵃ・Uᵃ の全 square を与えない。 |
+| 5.1.3.7 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：同じ square が Joyal の homotopy pullback でなく、比較射の Joyal fiber が弱可縮となる判定は見つからない。一般の fiber の Kan 性は、この異なる二つの模型の具体的 square を比較しない。 |
+| 5.1.3.8 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：a=0 の配置 square を additivity の slice の弱同値に同定する結果は見つからない。通常の零 arity は、当該 T・U の square の比較を持たない。 |
+| 5.1.3.9 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：互いに異なる第一座標を持つ配置点 p の fiber における T と U の unstraightening の弱同値は見つからない。通常の単射や fiber は、Rect の評価から来るこの二つの図式を与えない。 |
+| 5.1.3.10 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：指定点を埋め込み像に含む開部分として T̂・Û を記述する同定は見つからない。一般の開埋め込みの型は、当該 Rect と fiber の具体的比較を持たない。 |
+| 5.1.3.11 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：区間配置 P による T̂・Û の部分関手 T̂I,∼・ÛI,∼ の構成は見つからない。一般の pullback はあるが、元の Rect の部分関手を構成していない。 |
+| 5.1.3.12 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Sing(T̂) の区間配置による homotopy colimit 表示は見つからない。一般の特異単体集合は、当該点を含む Rect の開被覆図式を持たない。 |
+| 5.1.3.13 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Sing(Û) の区間配置による homotopy colimit 表示は見つからない。通常の余極限計算は、この配置空間の全開被覆の同値を述べていない。 |
+| 5.1.3.14 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：各区間配置に対する T̂ と Û の unstraightening の間の弱同値は見つからない。一般の直線化の比較は、未構成のこの有限配置の二つの図式を同定しない。 |
+| 5.1.4.1 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：E₁ と Assoc の pullback で作る Assoc²・LM² と trivial Kan fibration は見つからない。一般の pullback はあるが、未構成の little intervals の operadic 同値からこの二圏を得る構成はない。 |
+| 5.1.4.2 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：S 族の inert 保存関手による Alg²・RMod² の全部分圏は見つからない。相対 functor space はあるが、Assoc²・LM² と operadic inert 条件を備えた部分圏ではない。 |
+| 5.1.4.3 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Alg²・RMod² の S 上の coCartesian 性と忘却の coCartesian 辺保存は見つからない。一般の相対関手空間の fibration は、この二つの inert 部分への制限を構成しない。 |
+| 5.1.4.4 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：通常の operadic Alg・RMod と Alg²・RMod² の間の categorical equivalence は見つからない。通常内部加群の忘却は、Assoc²・LM² による二模型の比較を持たない。 |
+| 5.1.4.5 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：E₁ 上の任意の族を Assoc 上の族からの引き戻しとして回復する比較は見つからない。一般の base change は、E₁≃Assoc と全 family の降下を構成していない。 |
+| 5.1.4.6 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Eₖ₋₁ 族の RMod²A を Alg² の section に沿う pullback とする構成は見つからない。通常の内部加群圏は、little cubes 上のこの族と代数 section を備えない。 |
+| 5.1.4.7 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：RMod²A→Eₖ₋₁ が coCartesian な ∞ オペラッドとなる結果は見つからない。通常の相対 tensor はあるが、全 k の族の inert lift と Segal 条件を与えない。 |
+| 5.1.4.8 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：RMod²A と基礎結合代数 A₀ の右加群 ∞ 圏の標準同値は見つからない。通常のスカラー制限は、この二つの operadic module 模型と比較されていない。 |
+| 5.1.4.9 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：LM²×Eₖ₋₁→KEₖ の半 inert arrow を通す Eₖ 加群の忘却の構成は見つからない。一般の arrow 関手空間は、当該 LM² と多重 cube の作用を構成しない。 |
+| 5.1.4.10 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Eₖ 加群から RMod²A への Eₖ₋₁ モノイダル忘却は見つからない。通常の内部加群の braiding は、little cubes 上のこの忘却関手の全 inert・tensor 比較を持たない。 |
+| 5.1.4.11 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：可換代数 A の ModA と CAlg(Alg) 内の A₀ の RMod の対称モノイダル ∞ 同値は見つからない。通常の内部可換加群はあるが、反復した operadic Alg の加群を比較しない。 |
+| 5.1.4.12 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Δ×Δ→Δ の ordinal join による nerve の right cofinal 性は見つからない。増強単体圏の ordinal sum と、弱可縮圏への始点付加の join の余終性はあるが、この二変数 join 関手自体の comma の弱可縮性を述べていない。 |
+| 5.2.1.2 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：通常圏の射と逆向きの可換正方形で作る TwArr(C) の圏、その nerve と TwArr(NC) の同型は見つからない。単体集合の edgewise と一般の Grothendieck 構成はあるが、この通常の射の圏を同定する宣言を持たない。 |
+| 5.2.1.4 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：twisted arrow の頂点 f の coslice と TwArr(CC//D) の単体集合の標準同型は見つからない。coslice から始点固定 Tw の空間への比較はあるが、任意の f で固定した中間因数分解の圏全体の同型ではない。 |
+| 5.2.1.5 | none → own |  | 原文が与えた準圏C,Dと同じλ:M→C×DにRightFibration λを課せば、pairingの定義全体と一致する。λ以外の同じ対象の構成や選択は追加しない。 |
+| 5.2.1.6 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：pairing の三つ組を射 λ のみで呼ぶ用語上の省略に対応する定義は見つからない。Tw の典型射影と right fibration の一般的な述語はあるが、一般の pairing の対象を名づける型はない。 |
+| 5.2.1.8 | none → partial | component | 同じ射影M→CのvertexFiberとそのIsTerminalVertexは、原文のleft universal object条件そのものを直接表す。M→Dについても同様。CPair内での関手の分類・representabilityを保証する定理ではない。 |
+| 5.2.1.9 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：一般の representable pairing から両側の duality functor を作り随伴にする構成は見つからない。具体的 Yoneda の分類図式はあるが、任意の λ の各 fiber の final object から全自然な Dλ を組み立ててはいない。 |
+| 5.2.1.10 | partial → partial | special | 同じCの恒等射id_xに制限すると、twistedArrowSourceIdentity_isInitialVertexとprojectionが（原文との反対の規約で）該当fiberの普遍対象を与える。任意の射の(a)⇔(b)⇔(c)や両側の全representabilityは含まない。 |
+| 5.2.1.11 | partial → partial | stronger-hyp | KB-W2型再照合：仮定：準圏 C と、本体が Tw の射影を straighten して選んだ分類図式 χ（Lean が強い：この指定 χ の場合。HA と左右双対の規約）。結論：χ の共同評価を curry した写像が構成済み Yoneda 写像であり、uncurry の等式が成立する（この選択での HA の比較の部分に一致）。任意の別の分類図式 χ に対する比較の独立性は含まれない。 |
+| 5.2.1.12 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Tw の pairing が誘導する二つの duality functor が恒等にホモトピックとなる結果は見つからない。Tw から Yoneda の全図式は作られるが、CPair の representability から得る Dλ・D′λ の比較としては実装されていない。 |
+| 5.2.1.13 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：一般の pairing 間の三つの射と可換平方を morphism とする圏 CPairΔ は見つからない。通常の arrow 圏はあるが、二つの可変な底への right fibration の三つ組をまとめていない。 |
+| 5.2.1.14 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：底の二つの射が core に値を取る三つ組の simplicial Hom と、その coherent nerve CPair の構成は見つからない。固定した底の right fibration の相対関手空間はあるが、可変な両底を含むこの enriched 圏ではない。 |
+| 5.2.1.15 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：CPair を Cat∞ の cospan の局所化部分圏と同定し全極限閉性を得る結果は見つからない。固定底上の right fibration の ∞ 圏はあるが、両底を動かす cospan ∞ 圏内の reflection を構成しない。 |
+| 5.2.1.16 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：左右 universal 頂点を保つ射を持つ CPairL・CPairR の定義は見つからない。一般の Cartesian 辺の保存条件は、pairing と universal fiber object の保存を対象にするものではない。 |
+| 5.2.1.17 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：representable な pairing の射による duality functor の平方の全自然なホモトピーは見つからない。具体的 Yoneda の底変換はあるが、任意 λ・λ′ の Dλ を比較する射を作っていない。 |
+| 5.2.1.18 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Tw pairing との CPairR の mapping space を両底の関手空間と比較する二つのホモトピー同値は見つからない。Tw の各 fiber と Hom の比較はあるが、可変な pairing 間の全 Hom を構成していない。 |
+| 5.2.1.19 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：CPairR の二つの底の忘却の左右随伴を TwArr で与える結果は見つからない。通常の Yoneda 随伴や個別の Tw 構成は、全 pairing の ∞ 圏からの忘却随伴ではない。 |
+| 5.2.1.20 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：perfect pairing の全体を Cat∞ と同値にし、局所化・余局所化から反対圏自己同値を回復する結果は見つからない。単体集合の op 関手はあるが、この CPair の全 perfect 部分を比較していない。 |
+| 5.2.1.21 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：任意の右 representable pairing から Tw へ送る射の homotopy Cartesian な正方形は見つからない。Tw の個々の coslice 比較はあるが、任意 pairing の全族をこの引き戻しとして復元する宣言ではない。 |
+| 5.2.1.22 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：perfect 性、左右の universal 頂点の一致、duality functor の随伴同値の三条件の同値は見つからない。恒等 Tw 頂点の普遍性はあるが、一般の pairing の duality functor を構成していない。 |
+| 5.2.1.23 | partial → none |  | relativeFunctorSpaceのKan性はθの底の一点を固定したfiberについての主張である。原文のθ自体のKan fibration性とその全写像空間のKan性を導くには、底が動く持ち上げの議論が別途必要であり、その結論の成分ではない。 |
+| 5.2.1.24 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：一般の pairing λ の前層による comma 型 Cλ と相対 twisted arrow TwArrλ(C) の構成は見つからない。通常の関手空間・Yoneda はあるが、この全可変 pairing からの相対圏と射をまとめていない。 |
+| 5.2.1.25 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：D=Δ0・λ=id の場合の Cλ≃C と相対 Tw と通常 Tw の pairing の同値は見つからない。通常 Tw の構成はあるが、比較の始域である相対 TwArrλ の構成がない。 |
+| 5.2.1.26 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：相対 TwArrλ の右 representability と CPairR からの射の普遍性は見つからない。具体的 Yoneda の表現可能前層はあるが、任意 pairing を入力とするこの CPair の右随伴の普遍性ではない。 |
+| 5.2.1.27 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：CPairR→CPair の包含の右随伴を相対 Tw で与える構成は見つからない。固定底の right fibration の分類はあるが、両底可変の representable pairing への coreflection を作っていない。 |
+| 5.2.1.28 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：左 representable λ の Cλ の comma 表示、忘却の全充満左随伴と指定本質像の局所化は見つからない。通常の comma の随伴の材料はあるが、当該 Cλ と Dλ を構成してこの射の判定を与えてはいない。 |
+| 5.2.1.29 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：相対 twisted arrow の関手性と左 representable のときの指定本質像上の通常 Tw への同値は見つからない。通常の edgewise の関手性はあるが、任意 λ の相対圏と本質像を備えない。 |
+| 5.2.2.1 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：増大代数 A の Bar を A 双加群からの Map の普遍性で定める型は見つからない。図式の要素圏を使う Bousfield–Kan bar と DK の二方向 bar はあるが、増大代数と ρ の当該普遍性を持たない。 |
+| 5.2.2.2 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：この普遍性を持つ Bar(A) の一意性と対象の記法は見つからない。一般の表現可能対象の一意性は材料になるが、A 双加群の増大制限に対する Bar の型・比較を構成していない。 |
+| 5.2.2.3 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：増大代数に対する 1⊗A1 の Bar の普遍性と、両側のスカラー拡大の左随伴による同定は見つからない。dg 核の導来 tensor と通常の単位則はあるが、この増大制限の双加群 Map の表現として比較していない。 |
+| 5.2.2.4 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：余 Cartesian モノイダル構造上の Bar(A) を懸垂 ΣA と同定する結果は見つからない。準圏の懸垂と通常の余積はあるが、CAlg の全代数構造・相対 tensor の当該比較を持たない。 |
+| 5.2.2.5 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：geometric realization を持つ任意のモノイダル ∞ 圏での Bar の存在は見つからない。BK の bar 関手は構成されるが、A 双加群の Map を表現する対象の存在定理ではない。 |
+| 5.2.2.6 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：A 双加群の simplicial な自由 tensor 冪の図式と、その realization が A となる分解は見つからない。図式の要素圏の bar や dg の複体の解消は、この全単体作用素を持つ双加群の増強図式を構成しない。 |
+| 5.2.2.7 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：乗法を face、単位を degeneracy とする A⊗(n+2) の simplicial A 双加群の実現による A の回復は見つからない。BK bar の要素圏の face は、この代数の tensor 冪の乗法ではない。 |
+| 5.2.2.8 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Bar(A) が A⊗n を項とする両側 simplicial bar の realization となる同定は見つからない。DK の二方向 bar は単体集合値の反変・共変図式を入力とし、この増大代数の Bar との比較を持たない。 |
+| 5.2.2.9 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：全 A 双加群が good となり増大制限に左随伴が存在する結果は見つからない。通常の dg 核の adjunction はあるが、tensor の realization 保存を仮定しないこの全双加群圏での存在を与えない。 |
+| 5.2.2.10 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：単位からの射を指定した対象の自由結合代数 Fr∗ の左随伴は見つからない。厳密 dg の自由代数はあるが、指定点を単位と同一視する pointed 入力の関係を持たない。 |
+| 5.2.2.11 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：pointed 自由代数の作用 m と増大から canonical homotopy を持つ左加群の正方形を作る構成は見つからない。通常の free dg 代数の作用は、この pointed 自由性と指定二胞体を含まない。 |
+| 5.2.2.12 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：pointed 自由代数の作用と増大の正方形が左加群 ∞ 圏で pushout となる結果は見つからない。通常の自由代数とテンソル積は、この導来 pushout square を与えない。 |
+| 5.2.2.13 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：pointed 自由代数の Bar が 1⊔C1 となる関手的同値は見つからない。準圏の pushout の存在はあるが、未構成の Fr∗ と増大双加群の Bar を比較しない。 |
+| 5.2.2.14 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：単位が零対象のとき Bar(Fr(C))≃ΣC となる同値は見つからない。懸垂と自由 dg 代数はあるが、増大代数の普遍的 Bar とそれらの合成を同定していない。 |
+| 5.2.2.15 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：自由 pointed 代数の Bar との同値を、二つの pushout と相対 tensor の比較射の合成で与える結果は見つからない。通常の tensor の単位則は、この二つの導来 pushout の canonical map を構成しない。 |
+| 5.2.2.16 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Bar と Cobar を tensor の realization・totalization 保存なしで扱う注意に対応する一般論は見つからない。通常の bar はあるが、非保存下の導来 tensor の非結合性とこの二構成を比較しない。 |
+| 5.2.2.17 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：モノイダル twisted arrow の代数の pairing と Bar・Cobar の両 representability は見つからない。通常の twisted arrow 射影はあるが、モノイダル ∞ 構造とその全代数の pairing を構成していない。 |
+| 5.2.2.18 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Cobar の主張を反対モノイダル圏の Bar から得る比較は見つからない。単体的 op はあるが、当該全 Bar の representability とモノイダルな反転を構成していない。 |
+| 5.2.2.19 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：増大代数と増大余代数の Bar–Cobar 随伴は見つからない。DK の二方向 bar と通常の dg tensor の随伴は、この代数・余代数の ∞ 圏間の随伴ではない。 |
+| 5.2.2.20 | none → partial | component | 原文が既に与えた同じλ⊗について、EquivalenceLiftingはcategorical fibrationという条件を直接表す。各色のfiberでのRightFibrationも同じ述語で表す。O-monoidal functor構造の構成・辺保存の比較は含まない。 |
+| 5.2.2.21 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：O=Assoc・Comm の monoidal pairing の用語と構造の特殊化は見つからない。通常のモノイダル関手は、可変底上の fiberwise pairing を定義していない。 |
+| 5.2.2.22 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：O モノイダル圏の pairing と CPair の O モノイド対象の同値は見つからない。通常のモノイド対象はあるが、CPair の ∞ 圏とその O 作用の比較を持たない。 |
+| 5.2.2.23 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：TwArr(C) の O モノイダル構造と両端射影の O モノイダル pairing の構成は見つからない。edgewise の単体集合はあるが、任意 O に沿う tensor と pairing の整合性を構成していない。 |
+| 5.2.2.24 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：相対 TwArrλ の O モノイダル構造と三つの pairing の全 O 関手は見つからない。通常の相対関手空間はあるが、CPairR への右随伴を O 作用に持ち上げる比較がない。 |
+| 5.2.2.25 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：representable なモノイダル pairing の duality functor の lax Eₖ 構造は見つからない。通常のモノイダル随伴の lax 構造はあるが、任意 λ の Dλ とその相対局所化を構成しない。 |
+| 5.2.2.26 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：O モノイダル pairing の全代数に誘導される射が right fibration となる結果は見つからない。一般の right fibration の相対関手空間はあるが、O-inert を保つ代数 section への制限を比較していない。 |
+| 5.2.2.27 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：単位 fiber の同値、基礎 pairing の representability と totalization から Alg(λ) の representability を得る定理は見つからない。具体的な Yoneda の分類は、全代数 section の普遍対象を構成しない。 |
+| 5.2.2.28 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：自明代数上の Alg pairing の左 universal 対象の存在と基礎対象による判定は見つからない。通常の自明モノイドと Tw の恒等頂点は、未構成の monoidal pairing の代数上の fiber を比較しない。 |
+| 5.2.2.29 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：モノイダル pairing の代数 M に付随する Mod の O 上の射が再び pairing となる結果は見つからない。通常の内部加群と相対 functor は、この O-mod section の両端射影を構成しない。 |
+| 5.2.2.30 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：自明な B と fiber の可縮性の下で、Mod の代数の忘却が左 universal 対象を保つ定理は見つからない。一般の可縮 fiber の判定は、当該 Alg(Mod) の universal 対象を構成しない。 |
+| 5.2.2.31 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：代数 M の module pairing λM の定義は見つからない。通常の双加群圏はあるが、monoidal pairing の二つの基底代数の Mod への相対射を持たない。 |
+| 5.2.2.32 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：自由双加群 M⊗V⊗M が monoidal pairing の左 universal 対象を保つ結果は見つからない。通常内部加群の自由性はあるが、任意 pairing の fiber に対する universal 性の保存ではない。 |
+| 5.2.2.33 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：augmentation によるスカラー制限が pairing の右 universal 対象を保つ結果は見つからない。通常のスカラー制限の随伴は、この monoidal pairing の fiber の終対象を比較しない。 |
+| 5.2.2.34 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：augmentation の下の module pairing の右 representability と duality functor の合成表示は見つからない。通常の双加群と忘却は、λM の全 fiber の普遍対象を構成していない。 |
+| 5.2.2.35 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Tw の増大代数から得る module pairing の右 duality が augmentation 制限と同定される結果は見つからない。Tw の単体集合と通常加群の制限は、この monoidal Alg の pairing を構成しない。 |
+| 5.2.2.36 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Cat∞ 値の錐の極限性を transport の共同保守性と coCartesian section の相対極限延長で特徴づける定理は見つからない。通常の単体集合の厳密余極限に沿う section の貼り合わせは、この Cat∞ の任意の錐の判定ではない。 |
+| 5.2.2.37 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：保守的な fiber 関手と右随伴可能な全 square による Cat∞ の錐の極限性の移送は見つからない。固定した圏内の保守的関手による極限反映はあるが、可変な圏の全 diagram の limit を判定していない。 |
+| 5.2.2.38 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Cartesian な分類族と Cartesian 辺保存から、錐頂点の関手の極限保存条件を扱う比較は見つからない。一般の Cartesian fiber の pullback は、当該 Cat∞ の全錐と ρ(v) の極限保存の比較を構成しない。 |
+| 5.2.2.39 | partial → partial | direction | KB-W2型再照合：仮定：準圏 B、空間値 F:B→S と指定した小さい left unstraightening、底の極限錐と F による像の極限性（Lean が強い：この選択した分類模型と底で極限となる場合）。結論：任意の持ち上げた始域図式に、底の同じ錐を厳密に保つ全空間の極限錐が存在する。反対を取ると HA の right fibration の (2)⇒(3) の向きに一致する。一般の f への比較と (1)・(2) の同値の逆向きは含まれない。 |
+| 5.2.2.40 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：自明 B、左 representable pairing と totalization から λM の左 representability を得る定理は見つからない。通常の自由内部双加群は、全 module pairing の fiber の universal object を与えない。 |
+| 5.2.2.41 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：増大代数の module pairing の左 duality が augmentation 制限の左随伴で、A を Bar(A) へ送る結果は見つからない。dg の通常 tensor 随伴は、この monoidal twisted arrow の代数から構成した全 ∞ 随伴と比較されていない。 |
+| 5.2.3.1 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Eₖ モノイダル pairing の単位 fiber の同値・representability・totalization から全 Eₖ 代数 pairing の representability を得る結果は見つからない。厳密 dg の代数は、この有限 k の pairing の universal object を構成しない。 |
+| 5.2.3.2 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：単位が始対象なら k=0 でも成立するという monoidal pairing の representability の拡張は見つからない。通常の始対象は、AlgE₀ の全 fiber の普遍対象を与えない。 |
+| 5.2.3.3 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Tw の Eₖ 代数 pairing の左 representability は見つからない。通常の Tw 射影の right fibration 性は双対にあるが、Eₖ モノイダル構造とその代数 section の pairing を構成しない。 |
+| 5.2.3.4 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Eₖ 代数 pairing の duality functor としての k 回 Bar の定義は見つからない。要素圏の BK bar は、この AlgEₖ と余代数への duality ではない。 |
+| 5.2.3.5 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：反復 Bar の途中の pairing が一般には perfect でないという注意に対応する主張は見つからない。通常 Tw はあるが、反復 Alg の pairing とその perfect 性を比較していない。 |
+| 5.2.3.6 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：k 回 Cobar と k 回 Bar の随伴は見つからない。通常の bar の対角とテンソルの随伴はあるが、全 Eₖ 代数と余代数の間の反復構成ではない。 |
+| 5.2.3.7 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：reduced pairing を通じて単位 fiber の仮定を外した Eₖ 代数の左 representability は見つからない。通常の右ファイブレーションは、reduction と Eₖ 代数への普遍対象の移送を持たない。 |
+| 5.2.3.8 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Eₖ 代数の三つ組 (A,B,η) による reduced pairing の記述は見つからない。通常の diagram の要素圏はあるが、当該 Eₖ duality functor と η の ∞ 写像を構成しない。 |
+| 5.2.3.9 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：一般の単位を持つ圏を C1//1 に換えた増大 Eₖ 代数の Bar・Cobar の構成は見つからない。通常の under・over の圏と bar は、このモノイダルな reduction と全代数の比較を持たない。 |
+| 5.2.3.10 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：lax Eₖ モノイダルな pairing の射が全 AlgEₖ の左 universal 対象を保つ判定は見つからない。通常の lax monoidal 関手は、可変な両底の全 pairing の普遍性を扱っていない。 |
+| 5.2.3.11 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：geometric realization を保つ Eₖ モノイダル関手と反復 Bar、双対に Cobar の全自然な可換性は見つからない。通常の BK bar の自然性は、この Eₖ 代数・余代数間の構成と比較されていない。 |
+| 5.2.3.12 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Dunn の反復代数として Eₖ₊ₖ′ 代数を扱った k′ 回 Bar の Eₖ 余代数構造は見つからない。通常の bar の二重単体図式は、Dunn の作用と全代数の比較を持たない。 |
+| 5.2.3.13 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：monoidal pairing の duality が Eₖ Bar と lax Eₖ functor の合成で与えられる判定は見つからない。通常 Yoneda の共同分類図式は、当該 monoidal pairing の Dλ と全 Alg を構成しない。 |
+| 5.2.3.14 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：(k+k′) 回 Bar を k′ 回と k 回の Bar の合成として記述する同値は見つからない。BK bar の反復対角は、Eₖ 代数・余代数の作用と同定されていない。 |
+| 5.2.3.15 | partial → none |  | 指定された∞-operadのAlg/Mod・∞余極限・空間値層の対象と射への比較が候補の通常圏・厳密単体/dg模型の型にない。原文の同じ主張を直接得る特殊例としては数えない。仮定：通常可換環 R の複体と厳密な結合的 dg 代数（Lean が強い：k=1 の通常圏の自由性の場合）。結論：tensor algebra による freeFunctor が忘却の左随伴となる（(1) の通常圏模型の自由性の部分に一致）。HA の局所化後の AlgEₖ との比較、全 k の自由性、(2) の反復 Bar と懸垂の同値は含まれない。 |
+| 5.2.4.1 | none → partial | component | 原文の同じM→C,M→Dの単位点でのvertexFiberの射影にTrivialKanFibrationを適用すると、reduced条件(b)の二つの自明Kan条件を直接表す。weakly reduced条件の全体・CPair上の構成は含まない。 |
+| 5.2.4.2 | partial → partial | component | KB-W2型再照合：仮定：reduced pairing の片側の単位 fiber の射影が trivial Kan fibration（HA の仮定 (b) と一致）。結論：その射影のもう一方の単位点での fiber が可縮 Kan となる（原典冒頭の二つの単位を固定した fiber の可縮性に一致する部分）。全空間 M におけるその点の始対象性と weakly reduced 性は含まれない。 |
+| 5.2.4.3 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：始対象を保つ pairing の射と CPairwred・CPairred の定義は見つからない。一般の始対象保存だけでは、pairing を対象・射とするこの ∞ 圏を構成しない。 |
+| 5.2.4.4 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：始対象 X と終対象 Y の射 X→Y が TwArr(C) 全体の始対象となり両単位 fiber が trivial Kan となる結果は見つからない。始点固定 Tw の恒等頂点の始対象性はあるが、任意の X→Y と全 Tw の当該判定ではない。 |
+| 5.2.4.5 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：一点 pairing の終対象性と CPairwred・CPairred の pointed 性、pointed 忘却の同値は見つからない。単体的一点と初期頂点はあるが、この全 pairing の Hom の可縮性を与えない。 |
+| 5.2.4.6 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：weakly reduced・reduced pairing の pointed 圏から全 pointed pairing への全充満性は見つからない。一般の充満部分複体は、この未構成の二つの pointed pairing 圏の包含ではない。 |
+| 5.2.4.7 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：reduced pairing の単位 fiber の逆から底の射影の左随伴と left cofinal 性を得る結果は見つからない。始点固定 Tw の比較と一般の随伴はあるが、任意 reduced λ のこの逆と随伴を構成しない。 |
+| 5.2.4.8 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：pointed pairing から reduced pairing への coreflection は見つからない。一般の relative functor space は、この二つの全 pairing ∞ 圏と右随伴の普遍性を与えない。 |
+| 5.2.4.9 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：pointed pairing の weakly reduced 部分への包含の右随伴は見つからない。通常の coslice の構成はあるが、両底と全空間の始対象を同時に選ぶこの全圏の随伴ではない。 |
+| 5.2.4.10 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：weakly reduced から reduced pairing への coreflection は見つからない。一般の右ファイブレーションは、三つの圏を同時に変える reduction の関手と普遍性を構成しない。 |
+| 5.2.4.11 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Cat∞ の点付き圏の初期頂点部分への coreflection を coslice で与える随伴は見つからない。coslice の恒等錐の始対象性はあるが、可変な全点付き ∞ 圏間のこの右随伴を構成していない。 |
+| 5.2.4.12 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：λ の両単位の逆像の充満部分と二つの退化辺を持つ span による M?・C?・D? の構成は見つからない。一般の充満部分複体と pullback は、当該 pairing の全三つの部分圏の比較をまとめていない。 |
+| 5.2.4.13 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：span による λ? の pairing 性、M?→M の trivial Kan 性、reduced 性と全射の普遍性は見つからない。一般の trivial Kan fiber はあるが、この未構成の span の三圏に対して条件を証明するものではない。 |
+| 5.2.4.14 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：pointed pairing の右随伴による λred と coslice span の明示表示は見つからない。一般の coslice は、pairing の reduction とその全関手の比較を持たない。 |
+| 5.2.4.15 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：reduced pairing の三つの圏を M の coslice と二つの fiber で表示する同値は見つからない。Tw の固定 fiber の比較は、任意 pairing の reduction の三圏を構成していない。 |
+| 5.2.4.16 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Cred の弱可縮極限の存在と C への忘却の極限保存は見つからない。指定した分類関手が極限を保つ場合の全空間の極限の持ち上げはあるが、任意の reduced pairing の Cred とその忘却を構成しない。 |
+| 5.2.4.17 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：TwArr(CC//D) の pairing が (TwArr(C),f) の universal な reduction となる同値は見つからない。始点固定の Tw 比較はあるが、任意 f での全 coslice Tw の同型と pairing の普遍性がない。 |
+| 5.2.4.18 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：reduction の右随伴の積保存と unital O の作用への持ち上げは見つからない。通常のモノイドと right adjoint の極限保存は、CPair の reduction と O の作用を比較していない。 |
+| 5.2.4.19 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Alg(λred) の reduced 性と全代数圏の fiber・忘却の同値は見つからない。通常の代数の忘却はあるが、未構成の reduction と O-inert section の全体を比較していない。 |
+| 5.2.4.20 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：reduction による左 universal 対象の lift と射の左 representability は見つからない。Tw の恒等頂点の universal 性はあるが、任意 λ の reduced 全空間への指定 lift を与えない。 |
+| 5.2.4.21 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：representable な λ の reduction の duality と Dλ を比較する可換正方形は見つからない。通常 Yoneda の自然性は、CPair の reduction と任意の duality functor を構成しない。 |
+| 5.2.4.22 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：reduced Eₖ モノイダル pairing の全 AlgEₖ の左 representability は見つからない。厳密 dg オペラッドの代数は、この有限 k の reduction と全 pairing の普遍対象を持たない。 |
+| 5.2.5.1 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：対称モノイダル ∞ 圏の totalization と双対の表現可能性から、任意の増大 Eₖ 代数の Koszul 双対を得る定理は見つからない。通常の内部 Hom の随伴は、増大 Eₖ 代数の Pair の表現対象を与えない。 |
+| 5.2.5.2 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：単位の A–B 双加群構造を二つの自明作用で fiber 化した Pair’¹ の定義は見つからない。dg 双加群はあるが、当該増大と指定作用の写像空間の fiber を定義していない。 |
+| 5.2.5.3 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：対称構造により Pair¹(A,B) と Pair’¹(A,Brev) を同定する同値は見つからない。通常の braiding は、二つの未構成の代数 pairing の写像空間を比較しない。 |
+| 5.2.5.4 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：一般の monoidal 圏で Pair’¹ が対称でないという主張は見つからない。通常の左右双加群の区別はあるが、この pairing と二変数反転の比較ではない。 |
+| 5.2.5.5 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Map(C⊗D,1) に分類される right fibration D(C) の定義は見つからない。Tw の right fibration は任意射の分類であり、tensor と単位評価に沿うこの pullback の族を構成していない。 |
+| 5.2.5.6 | partial → none |  | 指定された∞-operadのAlg/Mod・∞余極限・空間値層の対象と射への比較が候補の通常圏・厳密単体/dg模型の型にない。原文の同じ主張を直接得る特殊例としては数えない。仮定：通常のモノイダル圏で C⊗- に右随伴を指定（Lean が強い：通常圏の閉対象の場合）。結論：D=ihom(C)(1) の評価と自然な Hom(D′,D)≃Hom(C⊗D′,1) を与える（弱左双対の普遍性の通常圏の場合に一致）。D(C) の全 pairing、任意の ∞ 写像空間、右側の普遍性の特徴づけは含まれない。 |
+| 5.2.5.7 | partial → none |  | 候補は通常圏の完全対に関するHom全単射で、原文の∞写像空間の比較も、明示的なVectの反例・有限次元の必要十分条件も直接与えない。左閉構造の一般的な部品として理由にだけ残す。 |
+| 5.2.5.8 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：presentable monoidal ∞ 圏で tensor が余極限を保つことから左右の弱双対を得る結果は見つからない。通常の Closed は右随伴を仮定しており、この presentability からの存在を証明しない。 |
+| 5.2.5.9 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：C×Crev の bitensor 構造と単位の endomorphism による D(C) の monoidal pairing は見つからない。通常の閉モノイダル圏の評価は、全 pairing のこの作用と monoidal 構造を構成しない。 |
+| 5.2.5.10 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：全弱双対の反変 lax monoidal 関手と、一因子が実双対可能なら比較射が同値となる結果は見つからない。実双対同士の逆順 tensor 同型はあるが、全弱双対とこの混合条件の比較射を与えない。 |
+| 5.2.5.11 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：D(C) の tensor を逆順の二つの評価の合成として記述する結果は見つからない。通常の tensor の評価式は、未構成の D(C) の monoidal pairing の射と比較されていない。 |
+| 5.2.5.12 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Alg(D(C)) と単位上の双加群構造の ∞ 圏の同値は見つからない。厳密 dg 双加群は、この duality pairing の inert section との全関手の同値を与えない。 |
+| 5.2.5.13 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：D(C) の reduction の底を C1//1 と同定し Pair’¹ で分類する結果は見つからない。coslice と閉 Hom はあるが、reduced pairing と全増大代数の fiber を構成しない。 |
+| 5.2.5.14 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：totalization と弱右双対から任意の増大結合代数の Pair’¹(-,B) の表現対象を作る定理は見つからない。通常の閉 Hom の随伴は、当該代数の作用を持つ普遍対象を与えない。 |
+| 5.2.5.15 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Koszul 双対を Bar(B) の弱双対で計算する同値は見つからない。要素圏の BK bar と閉 Hom はあるが、増大代数の普遍的 Bar とその代数 pairing との比較がない。 |
+| 5.2.5.16 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：単位右 B 加群の内部 endomorphism が増大代数 Pair’¹ の普遍対象となる同値は見つからない。dg の指定加群 E の導来 Hom と End(E) はあるが、単位の増大作用とこの Pair’¹ の写像空間を同定していない。 |
+| 5.2.5.17 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：弱左双対を使う反対側の Bar の表現可能性と、左右の Koszul 双対の区別を扱う結果は見つからない。通常の左右双対はあるが、二つの増大代数 pairing の普遍対象を構成しない。 |
+| 5.2.5.18 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：cube の最終座標の反射による Eₖ の involution と reverse algebra の同値は見つからない。厳密結合代数の opposite は、この little cubes の反射作用と比較されていない。 |
+| 5.2.5.19 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：signed permutation の O(k) 作用と同一連結成分の自己同値の homotopy は見つからない。通常の有限置換の作用は、Eₖ の位相的演算空間と O(k) の連結成分を扱わない。 |
+| 5.2.5.20 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：対称圏でも Eₖ 代数への反射の pullback が一般に恒等でないという主張は見つからない。通常の symmetric monoidal 圏は、未構成の little cubes の代数反転を分類しない。 |
+| 5.2.5.21 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Cat∞ の Eₖ 代数として monoidal category の反転を定める構成は見つからない。通常の monoidal opposite は、Cat∞ 内の Eₖ 構造と当該反射を比較しない。 |
+| 5.2.5.22 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：E₁→Assoc と反転を両立させる可換正方形は見つからない。通常の反対積はあるが、little intervals の同値と全代数の反転を備えない。 |
+| 5.2.5.23 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Dunn の積と二つの反射による reverse の反復の整合性は見つからない。通常の二重反対圏は、この cube の直積と Eₖ₊ₖ′ 代数の比較を持たない。 |
+| 5.2.5.24 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Eₖ→Eₖ₊₁ の二つの埋め込みと反射の可換性は見つからない。dg オペラッドの合成は、次元の異なる cube のこの幾何的作用を構成しない。 |
+| 5.2.5.25 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：E∞ の反射が Comm の恒等と homotopic になる比較は見つからない。終 dg オペラッド Com はあるが、Eₖ の余極限と反射の整合性の証明ではない。 |
+| 5.2.5.26 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：反復 Alg と Dunn を用いる Eₖ モノイダル圏の reverse の定義は見つからない。通常の反対 tensor は、全有限 k の operadic 作用の反転を与えない。 |
+| 5.2.5.27 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：D(C) を Alg(Cat∞) から Alg(CPair) への積保存関手として作る結果は見つからない。通常の内部 Hom は、未構成の全 pairing の圏に値を取るこの関手ではない。 |
+| 5.2.5.28 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Eₖ duality pairing の北極の選択への依存は見つからない。通常の左右双対の選択の一意性は、cube の二項演算空間の点によるこの族を構成しない。 |
+| 5.2.5.29 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：AlgEₖ(D(C)) と単位の Eₖ₋₁ 双加群構造との同値は見つからない。厳密 dg 双加群は、反復した operadic Alg と単位の当該比較を持たない。 |
+| 5.2.5.30 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Eₖ₋₁ を経由する O の代数 pairing を Map(A⊗Brev,1) で分類する結果は見つからない。通常の tensor–Hom 随伴は、O 代数 section の右ファイブレーションを与えない。 |
+| 5.2.5.31 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：E₀ の Koszul 双対を増大・余増大対象の弱双対の図式として記述する結果は見つからない。通常の評価はあるが、E₀ pairing の普遍対象と二つの単位射を比較しない。 |
+| 5.2.5.32 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Eₖ₋₁ 代数の単位上の双加群構造の fiber としての Pair’ᵏ の定義は見つからない。通常の dg 双加群圏は、この Eₖ 代数の全作用と二つの制限を含まない。 |
+| 5.2.5.33 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：totalization と弱右双対を持つ任意 Eₖ モノイダル圏で増大 Eₖ 代数の Koszul 双対が存在する定理は見つからない。厳密 dg の End の構成は、全 k の Pair’ᵏ を表現する普遍性ではない。 |
+| 5.2.5.34 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：k>1 で左右の弱双対が非標準に同値となる結果は見つからない。braided な通常圏での実双対の移送はあるが、全弱双対と Eₖ の北極の選択の比較ではない。 |
+| 5.2.5.35 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：自由 Eₖ 代数の Koszul 双対を k 回懸垂の弱双対、または弱双対の k 回 loop と同定する結果は見つからない。自由 dg 代数と閉 Hom は、反復 Bar を介するこの同値を持たない。 |
+| 5.2.5.36 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：対称 Eₖ pairing の Pairᵏ(A,Brev) と Pair’ᵏ(A,B) の関手的同値は見つからない。通常の braiding は、当該 Eₖ の二つの写像空間を構成しない。 |
+| 5.2.5.37 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Eₖ₊₁ 構造と SO(k+1) 内の道の選択による二つの Koszul pairing の比較は見つからない。通常の symmetric tensor は、回転による全高次比較の族を持たない。 |
+| 5.2.5.38 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Pair’ᵏ の universal 対象による左・右 Koszul 双対の定義は見つからない。dg End や通常の弱双対は、増大 Eₖ 代数のこの普遍的型を与えない。 |
+| 5.2.6.1 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：空間の E₀ 代数・E₀ monoid と点付き空間の同値は見つからない。通常の点付き単体集合はあるが、E₀ の inert section の圏との比較を持たない。 |
+| 5.2.6.2 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：二つの shear 射の同値性で associative monoid の群的性を定める型は見つからない。単体的モノイドの IsGrouplike は π₀ の単元性で定義され、shear 条件との同値はこの定義に含まれない。 |
+| 5.2.6.3 | none → partial | direction | 原文が明示する通常のmonoid Gについて、群の場合はprodCongrRight (fun x↦Equiv.mulLeft x)とprodCongrLeft (fun y↦Equiv.mulRight y)が同じ二写像(x,y)↦(x,xy),(xy,y)の全単射を直接与える。二写像の全単射性から群の逆元を作る逆向きは含まない。 |
+| 5.2.6.4 | partial → none |  | 指定された∞-operadのAlg/Mod・∞余極限・空間値層の対象と射への比較が候補の通常圏・厳密単体/dg模型の型にない。原文の同じ主張を直接得る特殊例としては数えない。仮定：厳密単体的モノイド M の π₀ の全成分が単元（Lean が強い：厳密模型と π₀ による条件を指定）。結論：π₀ に誘導乗法を保つ群構造が付き、各頂点の左平行移動は anodyne 局所化で可逆となる（原典の π₀ の群性と左平行移動の同値という部分に一致）。全 E₁ 空間の shear 判定の両方向と右側は含まれない。 |
+| 5.2.6.5 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Assoc の Cut に沿う simplicial object が groupoid object となることと群的性の同値は見つからない。各次数の一対象圏の nerve はあるが、この Segal groupoid 条件と一般 ∞ 圏の monoid の比較がない。 |
+| 5.2.6.6 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：E₁→Eₖ の制限で全 k の群的 monoid の部分圏を定める型は見つからない。厳密単体的モノイドの π₀ 条件は、little cubes の全制限関手を備えない。 |
+| 5.2.6.7 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：k≥2 の可換性により片方の shear だけで群的性を判定する結果は見つからない。通常の可換群はあるが、Eₖ の homotopy 可換性と shear の空間的同値を比較しない。 |
+| 5.2.6.8 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：群的性が E₁→Eₖ の埋め込みの選択によらない結果は見つからない。厳密単体的モノイドの π₀ の単元性は、この埋め込みの空間と同値の比較を持たない。 |
+| 5.2.6.9 | partial → none |  | 指定された∞-operadのAlg/Mod・∞余極限・空間値層の対象と射への比較が候補の通常圏・厳密単体/dg模型の型にない。原文の同じ主張を直接得る特殊例としては数えない。仮定：厳密単体的モノイドの自然数順序列の実際の余極限で各項の π₀ が群（Lean が強い：k=1 の厳密模型の順序列）。結論：余極限も π₀ が群で、成分モノイド関手は定数関手の左随伴となる（順序列での閉性と π₀ の余極限保存の通常模型の部分）。全 k の空間の ∞ 余極限との比較と任意小余極限の閉性は含まれない。 |
+| 5.2.6.10 | partial → none |  | 指定された∞-operadのAlg/Mod・∞余極限・空間値層の対象と射への比較が候補の通常圏・厳密単体/dg模型の型にない。原文の同じ主張を直接得る特殊例としては数えない。仮定：π₀ が群の厳密単体的モノイド M（Lean が強い：k=1 の厳密模型の場合）。結論：標準写像 M→Ω(BM の Kan 置換) は anodyne 局所化で同型となる（(3) の一回 Bar と loop の一方の逆比較に一致する部分）。全 E₁ 代数との模型比較、全充満性・本質像の分類、k>1 は含まれない。 |
+| 5.2.6.11 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：任意の ∞ トポスの群的 Eₖ monoid と点付き対象の反復 Bar–Cobar 随伴の記法・構成は見つからない。単体的モノイドの一回の bar は、トポス内の全 Eₖ 代数の随伴ではない。 |
+| 5.2.6.12 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：全 ∞ トポスで反復 Cobar の基礎対象が Ωᵏ となる比較は見つからない。単体集合の円からの loop はあるが、未構成の Cobar の全 k での基礎対象を同定しない。 |
+| 5.2.6.13 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：∞ トポスで一回の Bar が monoid の realization となり群的 monoid を連結点付き対象に全充満に埋め込む結果は見つからない。厳密単体的モノイドの nerve の対角と M→ΩBM の同値はあるが、任意の Segal monoid の Bar の同定と全関手の全充満性は構成されていない。 |
+| 5.2.6.14 | partial → partial | component | KB-W2型再照合：仮定：離散群 G を定数単体的モノイドとして与える（HA と一致する離散群）。結論：各次数の一対象圏の nerve の対角とその唯一の零単体を使うので、通常の BG とその基点を得る（原典の通常の分類空間という対象の構成に一致）。HA の E₁ 代数の普遍的 Bar との比較宣言は含まれない。 |
+| 5.2.6.15 | partial → none |  | 指定された∞-operadのAlg/Mod・∞余極限・空間値層の対象と射への比較が候補の通常圏・厳密単体/dg模型の型にない。原文の同じ主張を直接得る特殊例としては数えない。仮定：空間の厳密単体的モノイド M で π₀ が群（Lean が強い：X=S、k=1 のこの模型）。結論：M→ΩBM が局所化で同型となる（Bar と Cobar の逆比較のうち単体的 monoid 側の部分に一致）。任意 ∞ トポス、全 k、Cobar の全関手の本質像・全充満性は含まれない。 |
+| 5.2.6.16 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：1-connective monoid が群的となる任意 ∞ トポスでの結果は見つからない。単体的モノイドの π₀ の単元性はあるが、トポスの connectivity と全 groupoid object の shear 同値を比較しない。 |
+| 5.2.6.17 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：反復 Cobar が高い connectivity の部分圏にも制限される同値は見つからない。通常の loop のホモトピー群の次数移動は、この全 monoid 圏の同値とトポスの connectivity の判定を与えない。 |
+| 5.2.6.18 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：k-connective 対象で Ωᵏ が保守的で sifted 余極限を保つ結果は見つからない。通常の点付き単体集合で円からの内部 Hom は filtered 余極限を保つが、局所化後の sifted 余極限や連結対象における保守性を比較していない。 |
+| 5.2.6.19 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：有限自由群の分類空間 BF の連結点付き空間圏での compact projective 性は見つからない。通常の自由群と nerve はあるが、この局所化後の写像空間の sifted 余極限保存を証明しない。 |
+| 5.2.6.20 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：有限自由群の PΣ と単体的群のモデル圏の underlying ∞ 圏の同値は見つからない。通常の単体的モノイドと bar は、この PΣ と simplicial group の模型の比較を持たない。 |
+| 5.2.6.21 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：有限自由群からの sifted 完備化 PΣ が連結点付き空間圏と同値となる定理は見つからない。群的単体的モノイドの M→ΩBM の個別の同値は、全 PΣ の普遍性と全関手の同値ではない。 |
+| 5.2.6.22 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：連結点付き空間と単体的群の homotopy theory の同値は見つからない。単体的モノイドの群完備化の局所化同型はあるが、全単体的群への strictification と圏の同値を与えない。 |
+| 5.2.6.23 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：幾何的 little cubes の loop の βₖ と反復 Cobar の同値は見つからない。単体的モノイドの標準写像は、二つの Eₖ 作用を備えた関手の比較ではない。 |
+| 5.2.6.24 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：二重 loop と Dunn の積の下で βₖ の反復が βₖ₊ₖ′ と両立する結果は見つからない。円の loop の構成はあるが、二つの little cubes 作用と counit の同値を比較しない。 |
+| 5.2.6.25 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：点付き写像空間と立方体の one-point compactification による βₖ→Cobarᵏ の具体的比較は見つからない。通常の loop と bar の辺写像は、rectilinear embedding の全作用に沿うこの pairing を持たない。 |
+| 5.2.6.26 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：群的 E∞ 空間の塔を連結スペクトルと同定する同値は見つからない。Ω スペクトルの段と loop 遷移はあるが、全 Eₖ monoid の制限の塔とその limit の比較を構成しない。 |
+| 5.2.6.27 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：連結スペクトルの Ω∞ が保守的で sifted 余極限を保つ結果は見つからない。厳密 Ω スペクトルの filtered な段別模型はあるが、そのソースは ∞ 余極限の普遍性を主張しないと明記しており、Spcn の全 sifted 余極限と比較していない。 |
+| 5.2.6.28 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：連結点付き X 上の slice トポスと ΩX の加群 ∞ 圏の同値は見つからない。正則 bar の基点 fiber の homotopy pullback はあるが、全 X 上の対象と全加群の圏の比較ではない。 |
+| 5.2.6.29 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：slice と群的 monoid の加群の同値の下で、忘却を基点 fiber、自由加群を基点の後合成と同定する結果は見つからない。単体的正則 bar の一つの fiber 比較は、全加群の関手的な同値とこの両関手を持たない。 |
+| 5.3.1.1 | partial → partial | component | KB-W2型再照合：仮定：体 k 上の通常の結合代数 A（HA と一致。Lean は可換係数半環にまで一般化）。結論：全元と可換な元からなる中心を部分代数として構成する（冒頭の通常の中心の構成に一致する部分）。全代数の A への作用の普遍性と、一般には endomorphism object でないという写像集合の主張は含まれない。 |
+| 5.3.1.2 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：1⊗M→N の centralizer を、単位下の対象と M の相対 slice の fiber product の終対象として定める型は見つからない。通常の中心部分代数や dg End は、この三つの ∞ 圏と指定射の条件を構成しない。 |
+| 5.3.1.3 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：centralizer と 1→Z(f) から評価 Z(f)⊗M→N への可換三角形の構成は見つからない。通常の End の評価は、指定した f の centralizer の普遍対象ではない。 |
+| 5.3.1.4 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：自明代数の加群 M を用い、centralizer を LM の slice 内の morphism object と同定する結果は見つからない。dg Hom はあるが、LM の当該 slice と全作用の比較がない。 |
+| 5.3.1.5 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：増大 Eₖ 代数の augmentation の centralizer を Koszul 双対と同定する結果は見つからない。dg End は、増大代数の tensor pairing の普遍性と比較されていない。 |
+| 5.3.1.6 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：LMod(M) の指定基礎対象 M 上の fiber の終対象による center の定義は見つからない。通常の環の中心や閉 Hom は、この全作用の ∞ 圏の終対象を定めない。 |
+| 5.3.1.7 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：center を Alg(C) の対象とみなす忘却の同定は見つからない。dg End は代数になるが、未構成の全 LMod fiber の終対象からの当該忘却ではない。 |
+| 5.3.1.8 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：単位作用の centralizer と center の存在・普遍性の同値は見つからない。通常の中心部分代数はあるが、全代数の作用の終対象と単位射の centralizer の fiber を比較しない。 |
+| 5.3.1.9 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：自明作用を付ける L⊣LMod(M)→M とその本質像への trivial Kan 忘却は見つからない。通常の単位加群はあるが、任意 weakly enriched な LM 作用と全 fiber の比較を備えない。 |
+| 5.3.1.10 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：自明代数の加群 M の slice の作用と元の M の作用を比較する trivial Kan fibration は見つからない。通常の slice は、全 LMod の二つの対象固定 fiber を構成しない。 |
+| 5.3.1.11 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：endomorphism object の存在と全代数作用の center の存在・同値判定は見つからない。dg End(E) と評価はあるが、LMod(M) の全作用の fiber の終対象として比較していない。 |
+| 5.3.1.12 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：bifunctor O×LM→D に沿う O 代数の center・centralizer の定義は見つからない。厳密 dg オペラッドの代数は、この相対 LM の slice による全普遍対象を備えない。 |
+| 5.3.1.13 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Eₖ 代数の center が Dunn により Eₖ₊₁ 代数となる結果は見つからない。通常の Drinfeld center の braiding はあるが、little cubes と全 Alg の反復の比較を与えない。 |
+| 5.3.1.14 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：coherent O と presentable D-monoidal 圏で任意 O 代数射の centralizer が存在する定理は見つからない。通常の中心と dg End は、O の coherent な module の全写像空間を表現しない。 |
+| 5.3.1.15 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：presentable symmetric monoidal ∞ 圏の全 Eₖ 代数射の centralizer と Eₖ₊₁ center の存在は見つからない。通常の中心の構成はあるが、全有限 k の operadic 普遍性と比較していない。 |
+| 5.3.1.16 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：coherent O の代数の tensor が弱可縮添字の余極限を各変数で保つ結果は見つからない。複体の tensor の余極限保存は、O の inert section の圏のこの余極限判定を与えない。 |
+| 5.3.1.17 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Eₖ 代数の compact generation とその tensor の compact 対象保存は見つからない。dg perfect の compact 性はあるが、任意の presentable symmetric monoidal ∞ 圏の全 Eₖ 代数の生成とは別の対象である。 |
+| 5.3.1.18 | partial → partial | component | KB-W2型再照合：仮定：通常のモノイダル圏 C（Lean が強い：k=1 の通常圏の場合）。結論：half-braiding を持つ対象の Drinfeld center とその braided monoidal 構造を構成する（原典の通常圏の場合の中心の構成と braiding に一致する部分）。Cat∞ 内の普遍的 Z_E₁(C) の nerve との同値と一般の k の Eₖ₊₁ 構造は含まれない。 |
+| 5.3.1.19 | none → partial | component | 同じq:C⊗→O⊗×SにEquivalenceLifting qを課すことは原文の条件(i)categorical fibrationそのもの。∞-operad familyの条件(ii)と指定方向の持ち上げ(iii)は含まない。 |
+| 5.3.1.20 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：coCartesian S-family の O-operad と S→(Op∞)/O の分類の対応は見つからない。通常の直線化はあるが、Op∞ 自体と fiberwise operad 条件を持つ部分への比較がない。 |
+| 5.3.1.21 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：S-family の全 O-inert section を表す AlgS/O(C) の相対普遍性の定義は見つからない。相対関手空間はあるが、fiber ごとの operadic algebra 条件を持つ部分を構成しない。 |
+| 5.3.1.22 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：AlgS/O(C) の S 上の coCartesian 性と coCartesian algebra family の定義は見つからない。一般の相対関手空間の fibration は、この O-inert 部分の全輸送を比較しない。 |
+| 5.3.1.23 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：S-family の O 代数 A に対する ModO,S_A(C) の二つの fiber product の定義は見つからない。通常の dg module 圏は、可変 O-operad と基礎 S-family の当該 pullback を持たない。 |
+| 5.3.1.24 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：ModO,S_A の S 上の各 fiber が通常の operadic ModO_As(Cs) となる同型は見つからない。一般の fiber の結合則は材料だが、比較すべき二つの module-family を構成していない。 |
+| 5.3.1.25 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：coCartesian 代数族の ModO,S_A が再び coCartesian operad family となり、退化 O 成分の辺を C の coCartesian 性で判定する結果は見つからない。通常の module の制限は、この可変な operadic family の輸送を持たない。 |
+| 5.3.1.26 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：O=E₀ の family の Mod の忘却が trivial Kan fibration となる結果は見つからない。通常の点付き対象の忘却は、この E₀-module の全高次作用を比較しない。 |
+| 5.3.1.27 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：coCartesian family で Alg(ModA) の A 下の圏から Alg(C) の A 下の圏への同値は見つからない。通常の dg 双加群は、この相対 O 代数と全 S-family の比較を持たない。 |
+| 5.3.1.28 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Hom の表現対象が存在するとき指定 f の centralizer と一致し単位射が持ち上がる判定は見つからない。dg Hom の評価はあるが、centralizer を定義する slice の終対象との比較を持たない。 |
+| 5.3.1.29 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：自明 O 代数 A₀ と各 fiber の morphism object から centralizer を作る結果は見つからない。通常の内部 Hom の存在は、O 上の全作用を備えた普遍対象の条件を与えない。 |
+| 5.3.1.30 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：coherent O の全 centralizer の存在と、Mod 内の各 fiber の morphism object による iff 判定は見つからない。dg End の局所化は、O 代数の centralizer の全写像空間と比較されていない。 |
+| 5.3.1.31 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：E₀ 代数射の centralizer が基礎圏の morphism object と一致する結果は見つからない。通常の内部 Hom の随伴は、未構成の E₀ 代数の相対 slice の普遍対象と比較していない。 |
+| 5.3.1.32 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：A を自分自身の加群とした endomorphism algebra が center となる同定は見つからない。通常の dg End(A) と Hom はあるが、Eₖ 代数の全作用による center とその module の比較がない。 |
+| 5.3.1.33 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Δⁿ 上の inner fibration C と先頭辺上の相対 left Kan 条件から Λⁿ₀×ΔⁿC の lift を全 C へ延ばす定理は見つからない。相対余錐の充填判定と充満忠実包含に沿う Kan 制限定理はあるが、この外ホーンの pullback と任意 inner q の全延長を与えない。 |
+| 5.3.2.1 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：operad の点付き対象の射影を分類する χO の定義は見つからない。一般の left fibration の分類はあるが、O⊗ の nullary operations の全点付き対象とこの射影を構成しない。 |
+| 5.3.2.2 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：χO が O-monoid object となる結果は見つからない。一般の分類関手の存在は、O の全 active・inert 射と積の比較を与えない。 |
+| 5.3.2.3 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：O の unital 性と χO が一点の定数関手に同値となることの同値は見つからない。厳密 dg operad の nullary 項は、∞ operad の点付き射影の fiber の可縮性と比較されていない。 |
+| 5.3.2.4 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：全 Eₖ monoid の群的部分への右随伴と χC の合成で GL₁ を定める型は見つからない。通常の単元群や単体的モノイドの π₀ の単元条件は、この全 Eₖ 空間への coreflection を構成しない。 |
+| 5.3.2.5 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Eₖ 代数の Map→X と全引き戻し正方形、ΩᵏX≃centralizer の単元空間を同時に与える結果は見つからない。通常の Yoneda と bar のループ比較は、未構成の Eₖ centralizer とこの二変数 X を持たない。 |
+| 5.3.2.6 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：始対象からの場合の X の引き戻し性から全 A₀→A の場合へ移す判定は見つからない。一般の引き戻しの貼り合わせはあるが、当該 Map→X と始対象での比較を構成しない。 |
+| 5.3.2.7 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Eₖ centralizer の単元と B の単元から MapAlg(A,B) の反復 loop へ至る fiber sequence は見つからない。通常の群的 monoid の M→ΩBM は、この指定代数射の centralizer と fiber を同定しない。 |
+| 5.3.2.8 | partial → none |  | 指定された∞-operadのAlg/Mod・∞余極限・空間値層の対象と射への比較が候補の通常圏・厳密単体/dg模型の型にない。原文の同じ主張を直接得る特殊例としては数えない。仮定：通常圏の随伴 F⊣G、正則 κ、G が κ-filtered 余極限を保つ（Lean が強い：通常圏の場合）。結論：F は κ-presentable 対象を κ-presentable 対象に送る（κ-good の同値判定のうち右随伴の κ-filtered 保存なら左随伴が compact 対象を保つ方向の通常圏の場合に一致）。逆方向、一般準圏と全 PrLκ の構成は含まれない。 |
+| 5.3.2.9 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Indκ による全 Cat∞(K) と PrLκ の同値、PrLκ の presentability と包含の余極限保存は見つからない。個別の idempotent complete C と Indκ(C) の compact 部分の同値はあるが、全可変圏と全 κ-good 関手の ∞ 圏を構成しない。 |
+| 5.3.2.10 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：非可算 κ の κ-small 余極限から idempotent complete 性が従う結果は見つからない。通常圏の恒等と冪等射の equalizer による分裂判定はあるが、一般準圏の coherent Idem の余極限と split diagram の比較を与えない。 |
+| 5.3.2.11 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：PrLκ の tensor の compact generation と対称 monoidal 構造、Indκ の monoidal 同値、各変数の余極限保存は見つからない。本体の tensor_isPresentable の ⊗ は SSet の Cartesian な二項積であり、PrL の双線形余極限を表す tensor ではない。 |
+| 5.3.2.12 | partial → partial | component | KB-W2型再照合：仮定：presentable な準圏 C の accessibility（HA の仮定から従う）。結論：σ=ℵ₀ を指定すると、ある非可算正則 μ に関して C は μ-compact 生成となる（(1) の存在部分に一致）。同じ μ における tensor・単位と全代数の加群の compact 条件 (2)〜(4) は含まれない。 |
+| 5.3.2.13 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：証明中の濃度に依存する X を Map→X の本質像へ置き換える構成は見つからない。一般の全部分圏はあるが、centralizer の単元空間を分類する二変数 X 自体が未構成である。 |
+| 5.3.2.14 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：ΩᵏX(A,B) と centralizer の単元の比較を k 重 loop 空間の関手的同値にする結果は見つからない。通常の monoid の bar–loop 比較は、全 A,B のこの Eₖ centralizer の作用を持たない。 |
+| 5.3.3.1 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：活性二項演算の空間 Bin(O) と各点による tensor の関手的な族は見つからない。dg operad の arity 2 はあるが、∞ operad の active mapping space と coCartesian tensor の族を構成しない。 |
+| 5.3.3.2 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Bin(Eₖ)≃Sᵏ⁻¹ と零次・一次・無限次の各場合の同定は見つからない。通常の対称構造と左右の tensor は、little cubes の配置空間のホモトピー型の計算ではない。 |
+| 5.3.3.3 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：自由 O 代数二つの tensor を Bin(O) の演算による自由代数の pushout で与える定理は見つからない。通常の free product と tensor の可換な二つの像による普遍性はあるが、全 Bin(O) と自由 O 代数の当該 square を構成しない。 |
+| 5.3.3.4 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：κ-small または可算余極限だけに仮定を弱めた自由代数 tensor の pushout は見つからない。通常の有限 tensor と free product は、coherent O のこの濃度別の図式の比較ではない。 |
+| 5.3.3.5 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：E₀ の自由対象 1⊔C による square の pushout と四項の分配計算は見つからない。通常の tensor の有限直和の distributor はあるが、E₀ の自由代数の square とその四項同型としてまとめていない。 |
+| 5.3.3.6 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：自由結合代数の二つの積の順序から作る平行射の coequalizer が tensor となる結果は見つからない。free product の普遍性と tensor の可換な像の普遍性はあるが、生成対象 C⊗D の二射による coequalizer との比較宣言がない。 |
+| 5.3.3.7 | partial → none |  | 指定された∞-operadのAlg/Mod・∞余極限・空間値層の対象と射への比較が候補の通常圏・厳密単体/dg模型の型にない。原文の同じ主張を直接得る特殊例としては数えない。仮定：通常の可換環 R 上の可換代数二つ（Lean が強い：通常の可換代数の場合。自由なものに限らない）。結論：実際の tensor A⊗R B とその二つの包含が二項余積となる（原典の自由可換代数の場合の右縦射が同値という結論の通常圏の場合に一致）。一般の CAlg(C) とこの通常模型の比較、Bin(Comm) を含む全 pushout square は含まれない。 |
+| 5.3.3.8 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：二つの基点付き部分集合 S,T の和が全体となる三色作用素圏 J とその nerve Q⊗ は見つからない。dg operad の arity は、この三色と inert 制限を持つ圏を構成しない。 |
+| 5.3.3.9 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Q(O) の三つの可縮成分と唯一の非恒等演算の Bin(O) による記述は見つからない。単色 dg operad の二項演算は、この三色 operadic pullback の fiber を持たない。 |
+| 5.3.3.10 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：O 代数から Q(O) 代数への二項演算の制限関手は見つからない。厳密 dg 代数の乗法は、Bin(O) 全体の可変な tensor と三色対象の全 coherence を記録しない。 |
+| 5.3.3.11 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Q(O) 代数を二対象と Bin(O) 上の射の図式の fiber product で記述する ∞ 圏同値は見つからない。通常の arrow 圏は、この三色 operad の全 inert section と比較されていない。 |
+| 5.3.3.12 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：二つの Q(O) 代数間の Map の homotopy pullback の計算は見つからない。通常の関手間の射の可換性は、全 Bin(O) 上の極限と当該 operadic Map の同定ではない。 |
+| 5.3.3.13 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Q(O) 代数から O 代数への Map を、三つの基礎 Map と Bin(O) の極限の pullback で計算する結果は見つからない。dg Hom の成分は、この三色作用と全 homotopy pullback を構成しない。 |
+| 5.3.3.14 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Q(O) から自由 O 代数を作る左随伴 ρ と Bin(O) 上の自由代数の pushout 表示は見つからない。厳密 dg の自由代数は、三色からの作用素圏の変更の左随伴ではない。 |
+| 5.3.3.15 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Λ²₂ の図式と Fin∗ の部分集合による Qbar(O) の構成・Q(O) への trivial Kan 性は見つからない。一般の horn 充填は、未構成の二つの operadic 型のこの射を与えない。 |
+| 5.3.3.16 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Qbar(O) の対象を部分添字の包含の span として記述し像の部分集合を取る忘却は見つからない。通常の像や span は、この全作用素圏上の指定の三色の比較を持たない。 |
+| 5.3.3.17 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Triv(O) の envelope と二つの包含による ψ±、単位を挟む Q(O) 代数の構成は見つからない。通常の単位則は、任意 O の envelope 上の inert section を構成しない。 |
+| 5.3.3.18 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：envelope 内で二つの包含と恒等を結ぶ自然変換から ψ−A→A←ψ+A を作る結果は見つからない。通常の代数の単位射は、この Q(O) 制限と全作用素の自然変換を備えない。 |
+| 5.3.3.19 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：自由 O 代数 A,B の tensor が ψ−C⊗ψ+D 上の自由代数となる結果は見つからない。通常の tensor の可換な二つの像の普遍性は、Q(O) 代数から自由 O 代数へのこの左随伴を与えない。 |
+| 5.3.3.20 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：自由 Eₖ 代数の tensor の普遍性に Eₖ₊₁ monoidal 構造だけで足りるという一般化は見つからない。通常の braided tensor は、Dunn の Eₖ と Eₖ₊₁ の比較を持たない。 |
+| 5.3.3.21 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Qbar(O) の active slice から Triv(O) の active slice の二乗への弱同値は見つからない。一般の horn や cofinal 性の結果は、この未構成の operadic slice の写像を与えない。 |
+| 5.3.3.22 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Q(O) 代数の全二項構造射が同値である commutativity datum の型は見つからない。通常の braiding は一つの可逆射を与えるが、Bin(O) の全演算に関する当該条件を構成しない。 |
+| 5.3.3.23 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：E₀ の Bin が空なので全 Q(E₀) 代数が commutativity datum となる結果は見つからない。通常の空添字の命題は、この E₀ と Q(E₀) の代数の型を持たない。 |
+| 5.3.3.24 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：ψ−C と ψ+C が commutativity datum となる結果は見つからない。通常の左右単位同型は、Q(O) の全二項演算の当該構造射として比較されていない。 |
+| 5.3.3.25 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：commutativity datum を Bin(O) 上の基点固定の同値の族と同定する結果は見つからない。通常の対象の自己同型群は、この Q(O) の全代数の写像空間と比較されていない。 |
+| 5.3.3.26 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Comm の commutativity datum を任意の二対象と同定する結果は見つからない。通常の可換代数の tensor はあるが、Q(Comm) と三色の当該型の比較ではない。 |
+| 5.3.3.27 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Assoc の commutativity datum を二対象と D⊗C≃C⊗D と同定する結果は見つからない。通常の braiding は一つの候補を与えるだけで、任意の同値 α と Q(Assoc) 代数の全体の比較を持たない。 |
+| 5.3.3.28 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Bin(O)→C の同値 core の nullhomotopy と commutativity datum の存在の iff、および Eₖ の πₖ₋₂ obstruction は見つからない。一般の Kan ホモトピー群は、この tensor の族の obstruction class を作っていない。 |
+| 5.3.3.29 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：対称圏の二対象上の commutativity datum の πₖ₋₁ Map≃(C⊗D,C⊗D) による分類は見つからない。通常の自己同型は、この Eₖ の演算空間と全 datum の比較を持たない。 |
+| 5.3.3.30 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：commutativity datum からの自由 O 代数 A の基礎対象が Free(M−)⊗ηFree(M+) となる同値は見つからない。厳密 dg の自由代数は、この三色の関係を課した自由 O 代数と比較していない。原典の命題文は述語を欠くが、直後の証明と5.3.3.31が当該射の同値性を述べる。 |
+| 5.3.3.31 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：自由代数の基礎対象の比較 ψ が一般に代数射でなく η に依存し、E₀ では tensor と一致しないという三つの注意は見つからない。通常の自由代数はあるが、未構成の Q(O) datum に沿うこの比較射を持たない。 |
+| 5.3.3.32 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Assoc の datum で一方向の乗法だけが同値なら、Free(M−)⊗Free(M+)→A が同値となる結果は見つからない。通常の free product は、指定の二方向の混合積の関係を課す自由対象の normal form を与えない。 |
+| 5.3.3.33 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：混合積の逆順では Free(M+)⊗Free(M−)→A が同値にならない場合があるという主張は見つからない。通常の非可換 free product はあるが、当該 Q(Assoc) datum の一方向のみの同値の比較ではない。 |
+| 5.3.3.34 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：当該自由代数 A の基礎対象を M−のm乗とM+のn乗の全二重余積で与える normal form は見つからない。通常の tensor algebra の全語の表示は、この二項関係で順序を揃えた商の表示とは異なる。 |
+| 5.4.1.1 | partial → partial | stronger-hyp | KB-W2型再照合：仮定：X が一点、M=N=ℝ^k とし、連続単射 f が各点で可逆な strict Fréchet 微分を持つ（Lean が強い：全点で可逆微分を仮定）。結論：f は開写像（この仮定の下で HA の結論と一致）。任意のパラメータ X、任意の多様体と単なる連続単射の領域不変性は含まれない。 |
+| 5.4.1.2 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：X が一点の場合の領域不変性の証明を Brouwer の文献に帰属させる記述に対応する宣言は見つからない。解析的な逆関数定理はあるが、この連続単射一般の歴史的帰属を形式化していない。 |
+| 5.4.1.3 | partial → partial | stronger-hyp | KB-W2型再照合：仮定：X が一点で M は compact、N は Hausdorff、f は連続全単射（Lean が強い：M の compact 性）。結論：f とその逆が連続な同相を与える（この仮定で HA の結論と一致）。非 compact な多様体や任意パラメータ X での逆の同時連続性は含まれない。 |
+| 5.4.1.4 | partial → partial | component | KB-W2型再照合：仮定：M は局所 compact、X,N は任意の位相空間（HA の多様体の局所 compact 性と一致）。結論：compact-open な C(M,N) への連続写像 X→C(M,N) と X×M→N を curry・uncurry で相互に移す（原典冒頭の分類に積の交換を除き一致する部分）。Emb・Homeo 部分への制限と位相的 monoid・group 構造の比較は含まれない。 |
+| 5.4.1.5 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Top(k)→Emb(ℝᵏ,ℝᵏ) の Kister–Mazur ホモトピー同値は見つからない。通常の同相と連続写像の compact-open 位相はあるが、全開埋め込みを自己同相へ変形する族を構成しない。 |
+| 5.4.1.6 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：縮む球の有限族の埋め込みの Sing の順序余極限として Germ(S,M) を定める型は見つからない。Mathlib の一般の関数 germ は、この埋め込み空間の全次数の余極限とは異なる。 |
+| 5.4.1.7 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：球を縮める Emb(B(t)×S,M)→Emb(B(s)×S,M) のホモトピー同値は見つからない。通常の球の拡縮同相は材料だが、全埋め込みのパラメータ付きの逆と homotopy を構成しない。 |
+| 5.4.1.8 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Sing Emb(ℝᵏ×S,M)→Germ(S,M) の Kan ホモトピー同値は見つからない。Sing と順序余極限はあるが、未構成の埋め込み germ の制限写像を比較しない。 |
+| 5.4.1.9 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：埋め込みと germ の原点評価が Serre・Kan fibration となる fiber sequence と Germ₀(ℝᵏ) の Top(k) 模型は見つからない。一般の特異単体集合は、当該パラメータ付き埋め込みの持ち上げを与えない。 |
+| 5.4.1.10 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Germ₀(ℝᵏ) の Germ(M) への自由作用と商が Sing M となる同型は見つからない。通常の群作用の商は、埋め込み germ と原点評価のこの群・全空間を構成しない。 |
+| 5.4.1.11 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：開部分 U⊂M における Emb の配置空間評価の homotopy Cartesian 性と全埋め込みから Sing M への fiber sequence は見つからない。一般の pullback 判定は、未構成の Emb と germ の principal bundle の比較を持たない。 |
+| 5.4.1.12 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：連続単射の ℝᵏ のパラメータ族を全単射へ変形し、既存の全単射を各時点で保つ isotopy は見つからない。逆関数定理や単独の homotopy の型は、この Kister–Mazur の全族の構成を与えない。 |
+| 5.4.2.1 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：全次元 k の開埋め込みの空間を Hom とする tE_BTop(k) の作用素圏とその nerve は見つからない。一般の ChartedSpace と豊穣 nerve は、この全 Hom の非交和・積を構成しない。 |
+| 5.4.2.2 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：BTop(k)⊗ の ∞ operad 性は見つからない。厳密 dg operad の合成は、開埋め込みの Hom を持つこの作用素圏の inert lift と Segal 条件ではない。 |
+| 5.4.2.3 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：ℝᵏ と cube の同相からの Eₖ→BTop(k) の operadic 包含は見つからない。通常の開球の同相は、この二つの未構成の作用素圏の射を作らない。 |
+| 5.4.2.4 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：BTop(k)⊗ の零対象が始対象となることによる unital 性は見つからない。通常の空埋め込みは材料だが、この作用素圏と nullary operation の空間を構成しない。 |
+| 5.4.2.5 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：一次元埋め込みを線形順序と向きの符号で分類し、反転付き結合代数の operad と同定する結果は見つからない。通常の単調性は、この全埋め込み空間の homotopy 同値を与えない。 |
+| 5.4.2.6 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：BTop(k) の Kan 性と位相群 Top(k) の分類空間としての同定は見つからない。離散モノイドの bar はあるが、Emb(ℝᵏ,ℝᵏ) の群的性と位相的 nerve のこの比較ではない。 |
+| 5.4.2.7 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：BTop(k) の Cartesian completion を埋め込みの単独成分の積に置き換えた作用素圏と同定する結果は見つからない。通常の積は、非交差条件を外した当該 Hom の全作用素を構成しない。 |
+| 5.4.2.8 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Eₖ→BTop(k) が operad の approximation となる結果は見つからない。一般の開埋め込みは、この多入力空間と operadic approximation の持ち上げを比較しない。 |
+| 5.4.2.9 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：BTop(k)⊗ を Top(k) の Eₖ への作用による semidirect product とする assembly の記述は見つからない。dg Com はあるが、little cubes の縮約 family と当該位相群の作用を構成しない。 |
+| 5.4.2.10 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：B→BTop(k) に沿う BTop(k)⊗ と Cartesian completion の pullback としての E_B は見つからない。一般の Kan pullback は、元になる二つの operad の比較を持たない。 |
+| 5.4.2.11 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：E_B の unital 性と BTop(k) への approximation は見つからない。通常の底変換の fibration 性は、この operadic approximation の条件を与えない。 |
+| 5.4.2.12 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：E_B が B だけでなく次元 k と束の分類写像 θ に依存する記述は見つからない。通常の fiber bundle は、E_B の operadic pullback と比較されていない。 |
+| 5.4.2.13 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：B-parametrized Eₖ family の assembly と E_B 代数の twisted family としての記述は見つからない。一般の分類関手は、little cubes の全代数を fiber とするこの family を構成しない。 |
+| 5.4.2.14 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：束の直和からの E_B×E_B′→E_B×B′ が operadic tensor となる結果は見つからない。通常の線形直和と空間の積は、BTop の族と Dunn の比較を持たない。 |
+| 5.4.2.15 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：B が可縮なとき E_B≃Eₖ となる operad 同値は見つからない。一般の可縮 Kan fiber の比較は、BTop(k) 上のこの未構成の族の operadic 同値を与えない。 |
+| 5.4.2.16 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：向きを保つ projective isometry の framed disks operad と BSO(k) による E_B の同値は見つからない。通常の直交群は、この埋め込み空間と三色・多入力の作用素圏を構成しない。 |
+| 5.4.2.17 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：向きを保つ条件を外した全 O(k) の framed disks operad と E_BO(k) の同値は見つからない。通常の直交行列群は、この全多入力の projective isometry の空間の operad ではない。 |
+| 5.4.2.18 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Whitney 位相の smooth embedding operad と O(k) の framed disks operad の同値は見つからない。通常の可逆微分による局所逆はあるが、全 smooth embedding の直交群への homotopy retraction と operadic 比較を与えない。 |
+| 5.4.3.1 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：非単位 A∞ 代数の単位からの射について左右乗法が恒等と homotopic となる quasi-unit の定義は見つからない。通常の Monoid の厳密単位則は、非単位 A∞ 構造上のこの写像と homotopy の型を持たない。 |
+| 5.4.3.2 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：非単位 A∞ 代数の左・右単位の homotopy による一致と quasi-unit の存在・一意性は見つからない。通常の単位則はあるが、二つの指定された非単位 A∞ 作用の左右 homotopy を比較していない。 |
+| 5.4.3.3 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：quasi-unit を保つ非単位 A∞ 代数射とその ∞ 部分圏 Algqu の定義は見つからない。NonUnitalAlgHom と単位を保つ AlgHom はあるが、homotopy 単位を持つ operadic section の部分圏ではない。 |
+| 5.4.3.4 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：quasi-unital 性を homotopy category で検出する全 Alg の pullback square は見つからない。通常の非単位代数射は、A∞ の homotopy category への全制限とその部分圏の比較を持たない。 |
+| 5.4.3.5 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：単位 A∞ 代数から quasi-unital A∞ 代数への忘却が trivial Kan fibration となる定理は見つからない。通常の Monoid の単位データは、指定 homotopy 単位からの全高次単位 coherence の可縮な延長を構成しない。 |
+| 5.4.3.6 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：単位・非単位 A∞ 代数を homotopy category への制限と比較する pullback square は見つからない。通常の AlgHom の単位を忘れる写像は、四つの operadic section の ∞ 圏と比較されていない。 |
+| 5.4.3.7 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Δ¹×N(Δs)op→LMnu が approximation となる結果は見つからない。通常の半単体添字は、この非単位 LM の作用素圏と approximation の持ち上げを構成しない。 |
+| 5.4.3.8 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Δ¹×N(Δs)op 上の inert 射とその保存 section による非単位 A∞ 加群の定義は見つからない。通常の内部 module は、この半単体的全作用と inert 条件を持たない。 |
+| 5.4.3.9 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：LMnu の operadic module と半単体的 A∞ module の ∞ 圏同値は見つからない。通常の非単位環上の射は、二つの高次作用の section の模型を比較しない。 |
+| 5.4.3.10 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：非単位 A∞ 加群から基礎対象と代数への忘却および代数固定 fiber の定義は見つからない。通常の内部 module の忘却は、当該半単体的 inert section の全圏の fiber ではない。 |
+| 5.4.3.11 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：非単位 A∞ 加群の基礎代数の quasi-unit が加群上で恒等と homotopic に作用する条件は見つからない。通常の単位的 module の one_smul はあるが、この非単位高次作用から quasi-unital 部分を構成していない。 |
+| 5.4.3.12 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：非単位 A∞ 加群の quasi-unital 性が quasi-unit の選択によらない結果は見つからない。通常の単位的 module の単位作用は、異なる homotopy 単位と作用の比較を持たない。 |
+| 5.4.3.13 | none → partial | component | 原文末尾が明示するhMでの「可逆な冪等自己射は恒等」という成分に、End(hM)のモノイドと同じ[ψ]を入れたIsIdempotentElem.iff_eq_one_of_isUnitが直接一致する。quasi-unitからψ²=ψを導く前半の議論と∞-moduleの構成は含まない。 |
+| 5.4.3.14 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：固定単位代数の単位 module から quasi-unital A∞ module への trivial Kan fibration は見つからない。通常の module はあるが、非単位高次作用に全単位 coherence を可縮に付加する結果ではない。 |
+| 5.4.3.15 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：quasi-unital A∞ 代数 A を、ある左 tensor 圏の対象 M の morphism object として実現する結果は見つからない。通常の dg End の構成は、任意の quasi-unital 高次代数を入力とするこの実現ではない。 |
+| 5.4.3.16 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：非単位 enriched string の全代数と対象固定非単位 A∞ module の同値は見つからない。通常の内部 module と End は、Po の string の全図式とこの section の比較を持たない。 |
+| 5.4.3.17 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：対象固定の豊穣 endomorphism の非単位 A∞ 代数の忘却が right fibration となる結果は見つからない。一般の relative functor space は、この非単位 string からの operadic 忘却を構成しない。 |
+| 5.4.3.18 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：対象固定の非単位 A∞ module から非単位 A∞ 代数への right fibration は見つからない。通常の module 忘却は、この全高次作用の section の写像空間の持ち上げを与えない。 |
+| 5.4.3.19 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：morphism object の終対象に非単位 A∞ 構造を付け、下の代数圏を全 module の fiber と同定する結果は見つからない。dg End と評価はあるが、この非単位 operadic 全圏の同値を持たない。 |
+| 5.4.3.20 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：非単位 A∞ 代数 B から End(M) への Map が M の B-module 構造の空間となる同定は見つからない。通常の非単位代数射と dg Hom は、この高次作用全体の fiber の homotopy 型を表現していない。 |
+| 5.4.4.1 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Fin∗ の全射だけへの制限 O_nu と、その全 inert section による非単位 O 代数の定義は見つからない。通常の非単位代数と NonUnitalAlgHom は、この operadic pullback と全 section の型を備えない。 |
+| 5.4.4.2 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：E₁ への制限の pullback による quasi-unital Eₖ 代数の ∞ 部分圏は見つからない。通常の単位的代数は、全 k の高次非単位構造とその部分圏の比較を持たない。 |
+| 5.4.4.3 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Eₖ 代数の quasi-unit の homotopy による一意性と quasi-unital 射の明示判定は見つからない。通常の単位の唯一性は、この非単位 operadic 作用と写像空間を比較しない。 |
+| 5.4.4.4 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：k>1 の homotopy 可換性により片側の単位条件だけでよいという判定は見つからない。通常の可換非単位代数はあるが、Eₖ の tensor と乗法の二つの homotopy を持たない。 |
+| 5.4.4.5 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：単位 Eₖ 代数と quasi-unital Eₖ 代数の忘却の ∞ 圏同値は見つからない。通常の単位化は元を加える自由構成であり、既存の homotopy 単位に全 coherence を付加する同値ではない。 |
+| 5.4.4.6 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：presentable Eₖ monoidal 圏への全充満な埋め込みにより quasi-unital 化の同値を還元する結果は見つからない。通常の前層埋め込みは、この Eₖ 代数の本質像を基礎対象で判定する square と比較されていない。 |
+| 5.4.4.7 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：CAlg(C) と quasi-unital CAlg の ∞ 圏同値は見つからない。通常可換環の単位化と単位を保つ射は、非単位 E∞ 代数の全高次の単位の回復を与えない。 |
+| 5.4.4.8 | partial → none |  | 指定された∞-operadのAlg/Mod・∞余極限・空間値層の対象と射への比較が候補の通常圏・厳密単体/dg模型の型にない。原文の同じ主張を直接得る特殊例としては数えない。仮定：通常可換環 R 上の非単位結合代数 A（Lean が強い：通常の非単位 R 代数の場合）。結論：R⊕A の単位化への射が A からの非単位代数射と自然に一対一対応し、基礎加群は R×A に線形同型（(1) と(3)の自由単位化、および(2)の基礎対象の余積の通常圏の場合に一致）。任意の O と ∞ 写像空間の普遍性の比較は含まれない。 |
+| 5.4.4.9 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：自明 O 代数への射全体の充満部分圏による増大 O 代数の定義は見つからない。通常の単位化の射影 fstHom は一つの具体的増大であり、任意 O の全 arrow ∞ 圏の型を構成しない。 |
+| 5.4.4.10 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：stable O-monoidal 圏の非単位代数と増大代数を自由単位化で同値にする結果は見つからない。通常の Unitization とその増大はあるが、安定圏での増大の fiber を逆とする全 O 代数の圏同値を持たない。 |
+| 5.4.4.11 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：単位下の u が可逆になる Map の和成分と、その Map に関する u-equivalence の定義は見つからない。通常の可換環の局所化は、この全 Eₖ 代数の写像空間の部分を構成しない。 |
+| 5.4.4.12 | partial → partial | component | KB-W2型再照合：仮定：通常の結合的 monoid M で可換な二元 x,y（HA 冒頭の仮定と一致）。結論：xy が単元であることと x,y が共に単元であることが同値（原典冒頭の結論と一致）。Eₖ 代数の Map の和成分の交わりと u-equivalence の結論は含まれない。 |
+| 5.4.4.13 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：既存単位の自由単位化 A+→A が e+-equivalence となる判定は見つからない。通常の単位化の Hom 同値はあるが、元の A∞ の quasi-unit の可逆成分と全 Map の比較を持たない。 |
+| 5.4.4.14 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Eₖ₊₁ 圏で u-equivalence が任意 v と tensor しても u⊗v-equivalence となる結果は見つからない。通常の tensor は、Dunn による全 Eₖ 代数の写像空間の可逆成分を比較しない。 |
+| 5.4.4.15 | partial → none |  | 指定された∞-operadのAlg/Mod・∞余極限・空間値層の対象と射への比較が候補の通常圏・厳密単体/dg模型の型にない。原文の同じ主張を直接得る特殊例としては数えない。仮定：通常の可換環 A と一元 u、A[u⁻¹]=Localization.Away u（Lean が強い：通常可換環の一元局所化の場合）。結論：u の像は単元となり、通常可換環 B へ u を単元に送る各環準同型が局所化から一意に延長される（(2) と、(1)のうち通常可換環を試験対象にする部分に一致）。任意の結合的代数を試験対象とする普遍性、全 Eₖ 代数の比較と ∞ 写像空間の高次成分は含まれない。 |
+| 5.4.4.16 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：f の u-equivalence 性を二つの Eₖ 代数局所化間の同値で判定する iff は見つからない。通常可換環の一元局所化の個別の lift はあるが、全 Eₖ 代数の u-equivalence の述語とこの比較を構成しない。 |
+| 5.4.4.17 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：quasi-unital 代数を自由単位化後に既存の単位の像を反転して回復する Eₖ 代数の同値は見つからない。通常の Unitization と可換環局所化はあるが、非可換な全有限 k の作用とこの射の比較を持たない。 |
+| 5.4.4.18 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：非単位射の圏 D から quasi-unital 射の D₀ への反射で、同値性を始域の同値と終域の f(e)-equivalence で判定する結果は見つからない。通常の局所化の lift は、この可変な両端の反射関手を構成しない。 |
+| 5.4.4.19 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：D の局所化が E₁ monoidal 構造と両変数で両立する結果は見つからない。通常の可換環の局所化と tensor の比較は、この非単位 Eₖ 射の圏 D の反射と比較されていない。 |
+| 5.4.5.1 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：ℝᵏ と M の二対象の埋め込み圏から BM と多様体の operad E_M を定める構成は見つからない。通常の多様体 atlas は、埋め込みの Hom を持つ豊穣圏と BTop(k) 上の slice を構成しない。 |
+| 5.4.5.2 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：BM≃Sing(M) の三段の比較と tangent bundle で捩れた Eₖ family の記述は見つからない。通常の ChartedSpace と Sing はあるが、原点固定埋め込みの三つの豊穣圏と fiber sequence の比較を持たない。 |
+| 5.4.5.3 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：M=ℝᵏ の E_M≃Eₖ と Top(k) の homotopy 作用は見つからない。ℝᵏ の通常の可縮性は、未構成の BM と operadic assembly を比較しない。 |
+| 5.4.5.4 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：多様体の非交和が E_M の operadic 直和となり、その代数圏が積となる同型は見つからない。通常の開集合の和は、この E_M の全多入力作用と代数 section の比較を持たない。 |
+| 5.4.5.5 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：多様体の直積が E_M の operadic tensor となる結果は見つからない。通常の多様体の積と SSet の Cartesian tensor は、Dunn の二変数作用と当該 E_M の tensor ではない。 |
+| 5.4.5.6 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Euclidean な開部分の順序集合 Disk(M) と、互いに素な入力だけを許す N(Disk(M))⊗ の定義は見つからない。通常の Opens と ChartedSpace は、この円盤条件と全多入力 operad をまとめた型を構成しない。 |
+| 5.4.5.7 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：円盤の互いに素な有限族の包含を唯一の演算とする colored operad とその ∞ operad 性は見つからない。dg の単色 operad は、この開集合を色とする零点または一点の演算空間を持たない。 |
+| 5.4.5.8 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：埋め込みを対象とする Disk(M)′ と像の開集合による Disk(M) の同値および E_M への operadic 射は見つからない。通常の開埋め込みの像は、この二圏の全関手と同値の選択を構成しない。 |
+| 5.4.5.9 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Disk(M) の代数から局所定数部分へ E_M の代数が全充満に入る局所化定理は見つからない。一般の ∞ 局所化はあるが、円盤 operad の全一項射を反転するこの比較を持たない。 |
+| 5.4.5.10 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：N(Disk(M))→BM の弱ホモトピー同値は見つからない。posetNerve_maximal_cover は極大点を持つ順序集合の二つの部分 nerve の被覆であり、Euclidean 開集合の基底と多様体の Sing を同定する定理ではない。 |
+| 5.4.5.11 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Disk(M)⊗→E_M が weak approximation となる結果は見つからない。一般の余終関手の判定は、この幾何的な多入力埋め込みの持ち上げと比較していない。 |
+| 5.4.5.12 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：E_M の各 Eₖ fiber の quasi-unital 性で全代数と射の部分圏を定める型は見つからない。通常の非単位代数は、BM 上の捩れた全 operadic family の fiber を備えない。 |
+| 5.4.5.13 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：E_M の quasi-unit を二入力作用で判定し連結多様体なら一点でよいとする結果は見つからない。通常の module の単位作用は、この可変円盤の isotopy と E_M の射を構成しない。 |
+| 5.4.5.14 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：E_M の単位代数と quasi-unital 代数の ∞ 圏同値は見つからない。通常の単位化は自由に元を加える関手であり、多様体の各 fiber の高次単位の回復ではない。 |
+| 5.4.5.15 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：非単位 E_M 代数から局所定数な非単位 Disk(M) 代数への全充満埋め込みと本質像の記述は見つからない。通常の非単位代数射は、この二つの幾何的 operad の section の比較を持たない。 |
+| 5.4.5.16 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：局所定数な非単位円盤代数の quasi-unital 性と射を E_M 経由で定める部分圏は見つからない。通常の局所定数な前層は、この多入力の積と quasi-unit の型を持たない。 |
+| 5.4.5.17 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：U の閉包が W 内で compact な円盤対に対して非交円盤 V の作用で quasi-unit を判定する結果は見つからない。通常の開集合・compactness は、この円盤代数の作用と連結成分ごとの一対による判定を構成しない。 |
+| 5.4.5.18 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：局所定数円盤代数から非単位 quasi-unital 円盤代数への制限が ∞ 圏同値となる結果は見つからない。通常の単位化と一般の局所化は、未構成の二つの円盤代数の全高次写像を比較しない。 |
+| 5.5.1.2 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：互いに素な非空有限開族を使う Ran 位相の定義は見つからない。Vietoris の有限開族による基底はあるが、非空有限部分への制限と互いに素な円盤族の基底との比較がない。 |
+| 5.5.1.3 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：互いに素な開部分の Ran の積から Ran の対応開部分への同相は見つからない。Vietoris の union の連続性はあるが、この有限部分上の分解の逆と部分空間の積の同相を構成していない。 |
+| 5.5.1.4 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Ran の各有限点の近傍をその点ごとの互いに素な Euclidean 開集合で生成する基底は見つからない。一般 Vietoris 基底と多様体 atlas は、有限部分上の互いに素な円盤族へのこの精密化を比較していない。 |
+| 5.5.1.5 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：二つの有向距離の和 D が Ran の指定位相を与え paracompact となる結果は見つからない。通常の Hausdorff 距離はあるが、有限非空部分上の和の距離と円盤族で定めた Ran 位相の一致を証明していない。 |
+| 5.5.1.6 | partial → none |  | 候補はVietoris位相を持つ非空有限部分集合空間のpreconnected性である。原文の指定するRan位相との比較がなく、同じ位相空間の弱可縮性の連結性成分とは直接言えない。 |
+| 5.5.1.7 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：指定有限集合 S を含む Ran(M)_S を閉部分空間として定める型と閉性は見つからない。通常の有限集合の包含は、この未構成の Ran 位相上の閉集合の比較を持たない。 |
+| 5.5.1.8 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：非空有限 S を含む Ran(M)_S の弱可縮性は見つからない。Vietoris の有限部分全体の preconnected 性は、S を含む条件を固定した部分の全高次ホモトピーの消滅ではない。 |
+| 5.5.1.9 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Ran の cardinality が高々 n・正確に n の二つの部分空間の定義は見つからない。Finset の card はあるが、Ran の指定位相とその相対部分空間の型を構成していない。 |
+| 5.5.1.10 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：cardinality が高々 n の Ran が閉で、ちょうど n の層が相対開となる結果は見つからない。通常の Finset の濃度や Vietoris 基底は、この二つの層の閉性・相対開性の宣言を持たない。 |
+| 5.5.1.11 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Ran 上の空間値層の cardinality 切断の逆極限への一致と各層での局所定数性による constructible 性は見つからない。通常の層複体の導来圏は、この空間値 ∞ 層と切断の逆極限条件を定めない。 |
+| 5.5.1.12 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Ran の constructible 性で整数成層に関する条件だけでは不足し、逆極限条件を要する結果は見つからない。通常の層の定義は、非 ACC の成層と当該逆極限の比較を持たない。 |
+| 5.5.1.13 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：各 cardinality 切断への交わりで開性を判定する Ran の別位相では層の逆極限条件が自動となる結果は見つからない。通常の位相生成と層複体は、この二つの Ran 位相と空間値層の制限を比較していない。 |
+| 5.5.1.14 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：hypercomplete 性と互いに素な円盤族への制限の同値性による Ran の constructible 層の iff 判定は見つからない。通常の sheaf と層複体は、この cardinality 成層と全 hypercomplete 空間値層を構成しない。 |
+| 5.5.1.15 | partial → none |  | 指定された∞-operadのAlg/Mod・∞余極限・空間値層の対象と射への比較が候補の通常圏・厳密単体/dg模型の型にない。原文の同じ主張を直接得る特殊例としては数えない。仮定：通常の集合値 sheaf F と開被覆 Ui、添字 C を Ui のどれかに入る全開部分の圏 OpensLeCover とする（Lean が強い：0-truncated 値のこの被覆添字の場合）。結論：F(⋃Ui) はこの開部分図式の極限となる（(1)から(2)への被覆の場合の結論に一致する部分）。任意の局所弱可縮な C、全空間値層と hypercomplete 性の逆向きの判定は含まれない。 |
+| 5.5.1.16 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：点ごとの filtered な開集合添字での極限条件を持つ ∞-connective 層の大域切断が非空となる定理は見つからない。通常の層の切断と層複体の導来像は、この空間値の ∞-connective 条件による非空性を与えない。 |
+| 5.5.2.1 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：全開集合の有限列と非交な入力族の包含で N(U(M))⊗ を作る定義は見つからない。通常の Opens の圏と積は、この多入力の作用素圏と円盤 operad の全充満包含を持たない。 |
+| 5.5.2.2 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：小 sifted 余極限の存在と二変数 tensor の保存を同時に課す symmetric monoidal ∞ 圏の sifted-complete の型は見つからない。通常の colimit の tensor の判定は、この全準圏の monoidal operadic 構造を定義しない。 |
+| 5.5.2.3 | partial → none |  | 指定された∞-operadのAlg/Mod・∞余極限・空間値層の対象と射への比較が候補の通常圏・厳密単体/dg模型の型にない。原文の同じ主張を直接得る特殊例としては数えない。仮定：通常の monoidal 圏 C、sifted な通常添字 J と二つの図式について tensor が各変数の余極限を保つ（Lean が強い：通常圏の余極限を扱う場合）。結論：二つの余極限錐の対角 tensor も余極限錐となる（各変数での保存から二変数同時の保存への方向に通常圏の場合で一致）。一般準圏と任意の ∞ 図式の比較、および逆方向は含まれない。 |
+| 5.5.2.4 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：全 O 代数の pointwise tensor が sifted 余極限を保ち sifted-complete となる結果は見つからない。通常の dg 自由代数や SSet の積の保存は、全 O-inert section の余極限とこの tensor を比較しない。 |
+| 5.5.2.5 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：任意の E_M 代数の Disk(M)⊗ から全開集合の operad への左 Kan 延長の存在は見つからない。通常の Kan 延長と sifted 対角の余終性は、円盤の全多入力作用と当該部分添字を構成しない。 |
+| 5.5.2.6 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Disk への制限と operadic left Kan 延長で定める topological chiral homology 関手は見つからない。通常の bar や開集合上の層は、この局所係数の E_M 代数と全開集合への延長を持たない。 |
+| 5.5.2.7 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：有限非交円盤の順序集合 Disj(M) とその tensor 係数の colimit による積分の計算は見つからない。通常の colimit は、この幾何的添字と operadic 左 Kan 延長の比較を持たない。 |
+| 5.5.2.8 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Euclidean な開集合 U の chiral homology が A(U) と同値となる結果は見つからない。一般の Kan 延長の包含上の回復は材料だが、Disk(M) の operadic 延長とこの係数を構成しない。 |
+| 5.5.2.9 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：E_M→O に沿う係数制限の積分と開部分 EU への制限の整合性は見つからない。通常の関手の制限は、この多様体別の operad と積分を比較していない。 |
+| 5.5.2.10 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：BTop(k)・smooth・G 構造に沿う全多様体の係数付き chiral homology は見つからない。通常の多様体 atlas は、この群の tangent 構造の縮約と全 E_M 係数を持たない。 |
+| 5.5.2.11 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：開埋め込み空間を Hom とする Man(k) の豊穣圏と、有限円盤和の M 上の slice D(M) は見つからない。通常の ChartedSpace と ContinuousMap は、この isotopy を持つ ∞ 圏の全対象・射を構成しない。 |
+| 5.5.2.12 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：円盤和の包含の圏と isotopy による D(M) の違い、およびパラメータ化の選択による γ の構成は見つからない。通常の開部分の poset は、isotopy で可換な埋め込みの三角形を構成しない。 |
+| 5.5.2.13 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：N(Disj(M))→D(M) と連結 M の非単位版の左余終性は見つからない。一般の対角の余終性は、未構成のこの有限円盤の二つの圏の比較ではない。 |
+| 5.5.2.14 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：指定有限 S を含む非空円盤和と成分全射な包含の nerve の弱可縮性は見つからない。有限部分集合の Vietoris preconnected 性は、この円盤和 poset の全ホモトピー型を計算しない。 |
+| 5.5.2.15 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：各多様体の動く有限円盤の ∞ 圏 D(M) が sifted となる結果は見つからない。一般の sifted 対角の判定は、この幾何的添字の存在と対角の余終性を証明しない。 |
+| 5.5.2.16 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：有限被覆の円盤和の逆像 D(M)→D(Mtilde) の左余終性は見つからない。通常の covering map と開集合の逆像は、動く円盤の ∞ 圏の全 slice を比較しない。 |
+| 5.5.2.17 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：sifted 余極限を保つ symmetric monoidal 関手の chiral homology との可換性は見つからない。通常の colimit の保存は、未構成の多様体の operadic Kan 延長と積分の自然な比較を与えない。 |
+| 5.5.3.1 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：非交な開部分の chiral homology の tensor が和集合の積分となる同値は見つからない。通常の colimit の tensor は、この E_M 係数と全開集合への operadic 延長を構成しない。 |
+| 5.5.3.2 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：chiral homology が二つの局所定数 E_M 代数の tensor を保つ結果は見つからない。通常の sifted な余極限錐の tensor の判定は、有限円盤の添字と当該積分の二変数比較を持たない。 |
+| 5.5.3.3 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：有限被覆の円盤の逆像と coCartesian tensor による E_M 代数の π∗ の構成は見つからない。通常の開集合の逆像は、この有限 fiber の operadic tensor の輸送を与えない。 |
+| 5.5.3.4 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：π∗ 係数を被覆の各有限 fiber の Eₖ 代数の tensor と同定する結果は見つからない。通常の有限 tensor は、動く円盤の族と monodromy を備えた E_M の係数を構成しない。 |
+| 5.5.3.5 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：自明有限被覆 M×S の係数の π∗ が各コピーの tensor となる同値は見つからない。通常の関手圏の有限積は、この E_M の非交和と pushforward 係数を比較していない。 |
+| 5.5.3.6 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：有限被覆の π∗ 係数の M 上の chiral homology と全被覆空間での積分の同値は見つからない。一般の余終関手による colimit 計算は、この被覆と円盤の ∞ 圏の余終性を構成しない。 |
+| 5.5.3.7 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：余Cartesian な monoidal ∞ 圏で chiral homology を単独円盤の図式の colimit で計算する結果は見つからない。通常の余積は、この多入力 E_M 代数からの基礎図式と積分を同定しない。 |
+| 5.5.3.8 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：BM 上の可換代数の族の CAlg colimit の基礎対象として積分を計算する結果は見つからない。通常可換代数の tensor 余積は、この BM の homotopy 型と全局所係数の colimit を持たない。 |
+| 5.5.3.9 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：BM≃Sing M 上の可換代数の族で chiral homology がその族の colimit となる記述は見つからない。通常の可換代数の余積は、多様体の全 homotopy 型に沿う係数と積分を構成しない。 |
+| 5.5.3.10 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：円 S¹ で固定円盤 ψ の上の D(S¹) の slice が N(Δop) と同値となる結果は見つからない。通常の単体圏とその nerve は、この円の動く円盤の slice を構成していない。 |
+| 5.5.3.11 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：円の chiral homology を指定の D(S¹) の slice に沿う simplicial object の realization と同定する結果は見つからない。通常の bar と dg tensor は、この円盤の ∞ 圏の同値と幾何的積分の比較を持たない。 |
+| 5.5.3.12 | partial → partial | stronger-hyp | KB-W2型再照合：仮定：C は filtered な準圏（Lean が強い：sifted より強い filtered 性）。結論：有限図式 p の coslice の射影が余極限を計算する向きに cofinal となる。特に p を一点 C に取ると CC/→C の cofinal 性を与える（この仮定で原典の sifted なら全 coslice 射影が left cofinal という方向に一致）。一般 sifted C と逆方向の判定は含まれない。 |
+| 5.5.3.13 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：自己同型で捩れた円の係数の Bn=A⊗(n+1) と、乗法と巡回移動で face を定める simplicial object の記述は見つからない。BK bar は図式の要素圏を入力とし、この代数の tensor 冪の循環 face を構成しない。 |
+| 5.5.3.14 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：通常結合代数の円の積分を cyclic bar の realization から Hochschild homology と同定する結果は見つからない。dg 双加群の tensor と Hom はあるが、円の E_M 代数・cyclic object・その積分の比較を持たない。 |
+| 5.5.4.1 | partial → none |  | 指定された∞-operadのAlg/Mod・∞余極限・空間値層の対象と射への比較が候補の通常圏・厳密単体/dg模型の型にない。原文の同じ主張を直接得る特殊例としては数えない。仮定：通常圏 C、位相空間 X、共変関手 F:Opens(X)→C（Lean が強い：通常圏値の場合）。結論：F.op を Cᵒᵖ 値の sheaf とする条件は、各 E に対する U↦HomC(F(U),E) が集合値 sheaf となる条件そのもの（原典の cosheaf の定義の通常圏の場合に一致）。一般 ∞ 圏値、hypercomplete・constructible の追加条件は含まれない。 |
+| 5.5.4.2 | partial → none |  | 指定された∞-operadのAlg/Mod・∞余極限・空間値層の対象と射への比較が候補の通常圏・厳密単体/dg模型の型にない。原文の同じ主張を直接得る特殊例としては数えない。仮定：通常圏 C,D、通常圏値 cosheaf F、colimit を保つ G:C→D（Lean が強い：通常圏の場合。G.op は必要な極限を保つ）。結論：F.op の sheaf 性は G.op の後合成で保たれ、G∘F も通常圏値 cosheaf となる（後半の colimit 保存関手での保存の通常圏の場合に一致する部分）。一般 ∞ 圏の hypercomplete descent の iff と前層圏での各点判定は含まれない。 |
+| 5.5.4.3 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Ran の部分 U の support と二部分の独立性を定める型は見つからない。通常の集合の和と Disjoint は材料だが、Ran の有限部分集合上の support と対応する幾何的述語を構成しない。 |
+| 5.5.4.4 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Ran の部分 U,V の要素の有限和 S∪T を集めた U⋆V の構成は見つからない。通常の Finset.union と Set.image2 は、この Ran の非空部分の型と演算をまとめていない。 |
+| 5.5.4.5 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Ran の開部分 U の support が元の多様体で開となる結果は見つからない。Vietoris の union の連続性は、円盤基底の Ran の support の開性と比較されていない。 |
+| 5.5.4.6 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：非交開族の Ran(Ui) の ⋆ の反復が Ran({Ui}) となる同定は見つからない。通常の有限集合の和の分配則は、この二つの Ran の開部分の演算の型を構成しない。 |
+| 5.5.4.7 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Ran の開部分の ⋆ が開となる結果は見つからない。Vietoris の union の連続性は像の開性を意味せず、当該 Ran の基底での開写像性の宣言がない。 |
+| 5.5.4.8 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：独立な開部分 U,V の積から U⋆V への有限和が同相となる結果は見つからない。Vietoris の union の連続性だけでは、support に沿う逆分解と開性を与えない。 |
+| 5.5.4.9 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：独立な Ran の開族と surjective な作用素による Fact(M)⊗、円盤からの Ψ の定義は見つからない。通常の sheaf の開集合添字は、この多入力の support の独立性と operad を構成しない。 |
+| 5.5.4.10 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Ψ に沿う operadic left Kan 延長の全充満性と、constructible かつ factorization 同値を持つ cosheaf による本質像の分類は見つからない。通常の sheaf と Kan 延長は、この Ran の二つの多入力作用素圏と比較されていない。 |
+| 5.5.4.11 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：非単位 E_M 代数と factorizable constructible cosheaf の ∞ 圏同値は見つからない。通常圏値の cosheaf は反対圏の sheaf として扱えるが、円盤上の全作用と Ran 上の factorization の比較を持たない。 |
+| 5.5.4.12 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：空集合を加え上方の Ran+(U) 基底を与えた Ran+ と、単位円盤代数の factorizable cosheaf への全充満埋め込みは見つからない。通常の Finset は空集合を含むが、この別位相と operadic Kan 延長を構成しない。 |
+| 5.5.4.13 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：円盤 D の active slice を分類する係数の左 Kan 延長が hypercomplete cosheaf となる結果は見つからない。通常の sheaf の極限条件は、非単位 E_M の active slice の分類関手を持たない。 |
+| 5.5.4.14 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：連結多様体の局所定数係数の chiral homology と Ran の cosheaf の積分が同値となる結果は見つからない。通常の大域切断と colimit は、この二つの幾何的な積分の自然な比較を持たない。 |
+| 5.5.4.15 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：閉部分多様体の tubular neighborhood の自明化への積分の依存と、分離 hypersurface に沿う相対 tensor による切除の同値は見つからない。dg 双加群の導来 tensor はあるが、これらの多様体の積分と interface の代数を構成しない。 |
+| 5.5.4.16 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：球面 Sᵏ⁻¹ の積分 B により Eₖ module を LMod_B と同定し、標準自由 module を B に対応させる結果は見つからない。通常の双加群 tensor は、球面の E₁ 積分と全 operadic module の比較を持たない。 |
+| 5.5.5.1 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：局所 compact Hausdorff X と任意 stable ∞ 圏 C の Shv(X;C)op≃Shv(X;Cop) という Verdier 双対は見つからない。本体の台つき Verdier 商は層複体の開制限の局所化であり、compact support による層と余層の双対ではない。 |
+| 5.5.5.2 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：複体の線形双対を stable sheaf の反対圏の値へ適用した反変 Verdier 関手 D′ は見つからない。通常の線形 Hom と層複体の導来圏はあるが、前項の D と可換する全層の比較を持たない。 |
+| 5.5.5.3 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：局所 compact Hausdorff X 上の stable 圏値の層を compact 部分の K-sheaf と同定する ∞ 圏同値は見つからない。通常の compact 部分の型と sheaf は、この近傍の filtered colimit 条件を持つ K-sheaf の型を構成しない。 |
+| 5.5.5.4 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：K-sheaf の反対圏と反対 stable 圏値の K-sheaf の同値は見つからない。通常の層複体の Verdier 商は、この compact 近傍に沿う pullback・pushout の双対比較を持たない。 |
+| 5.5.5.5 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：compact・任意部分・co-compact の三層を持つ poset M と特別な0→2の全比較を定める型は見つからない。一般の Compacts と集合の順序は、この三層の順序構造をまとめていない。 |
+| 5.5.5.6 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：poset M の射影と両端 fiber の K(X)・K(X)op、中間の全部分集合への同型は見つからない。通常の集合の補集合の反単調性は、この三つの fiber の型との比較を持たない。 |
+| 5.5.5.7 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：K-sheaf 条件と中間零条件の下で、両側からの left Kan・right Kan 延長条件が同値となる定理は見つからない。通常の相対 Kan 制限はあるが、この三層 poset と stable な pullback–pushout の比較を構成しない。 |
+| 5.5.5.8 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：補集合と添字反転の involution により Verdier の同値が C と Cop で対称となる結果は見つからない。通常の集合補集合は、この K-sheaf と三層の延長の全関手を比較しない。 |
+| 5.5.5.9 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：compact K に台を持つ切断の fiber と、K⊂U に沿う filtered colimit で Γc(U;F) を定める関手は見つからない。台を持つ層複体の部分圏は、各大域切断の fiber と compact support の全関手ではない。 |
+| 5.5.5.10 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Verdier 双対 D(F)(U) を Γc(U;F) と同定する結果は見つからない。台つき Verdier 商からの開制限は、この層と余層の duality の U ごとの値の計算を持たない。 |
+| 5.5.5.11 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Verdier 双対による共役が通常コホモロジーと compact support コホモロジーを交換する結果は見つからない。層複体の導来圏と台つき商は、この二つの切断関手と duality を構成しない。 |
+| 5.5.5.12 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：stable 圏値層の compact support 切断 Γc が cosheaf となる定理は見つからない。通常圏値の cosheaf の定義は反対圏の sheaf で表せるが、Γc の構成と全 compact support codescent の証明がない。 |
+| 5.5.5.13 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：多様体上の spectra 値層の Γc(M;F) を円盤または有限円盤和の Γc の colimit で計算する結果は見つからない。通常の開被覆の層の極限は、この spectra の compact support と二つの円盤添字の colimit を比較しない。 |
+| 5.5.6.1 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：配置空間の Segal・McDuff・Salvatore の結果への文献案内に対応する宣言は見つからない。通常の compact support 写像や群的 bar の比較はあるが、この先行結果の帰属を形式化していない。 |
+| 5.5.6.2 | partial → partial | component | KB-W2型再照合：仮定：U=M、E=M×K は自明な fibration、基準 section は K の指定零点とし、零単体だけを扱う（Lean が強い：自明束の零次の部分）。結論：C_c(M,K) は基準点から外れる support の閉包が compact な連続写像の型となる（Γc(M;E) の零単体の部分に一致）。Δn の幾何的実現の全パラメータ、非自明 Serre fibration、Kan 性と N(U(M))⊗ の作用は含まれない。 |
+| 5.5.6.3 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：円盤の包含で compact support section が homotopy 同値となり、E! が局所定数 E_M 代数へ延びる結果は見つからない。通常の C_c 写像は、この isotopy に沿う全 section の Kan 複体と operadic 比較を持たない。 |
+| 5.5.6.4 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：Serre fibration の section の空間値層と二つの compact support Γc の同定は見つからない。通常の fiber bundle の section と C_c は、空間値 ∞ 層の homotopy fiber の全単体と比較されていない。 |
+| 5.5.6.5 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：円盤内の compact support section の複体を fiber の k 回 loop と同定する結果は見つからない。通常の based loop と C_c は、Serre fibration の局所自明化と支持球の変形を構成しない。 |
+| 5.5.6.6 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：k-connective な fiber を持つ Serre fibration の Γc(M;E) が有限非交円盤の Γc の colimit となる非可換 Poincare 双対は見つからない。通常の compact support と bar–loop は、この全係数・円盤の chiral homology の比較ではない。 |
+| 5.5.6.7 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：M⊔M の例で fiber の connectivity がないと compact support section が小さい開部分から来ないという反例は見つからない。通常の support はあるが、非可換 Poincare 双対のこの section の本質像を比較していない。 |
+| 5.5.6.8 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：十分連結な fiber の compact support section を disjoint disks の中へ homotopy で動かす結果は見つからない。通常の C_c の support は、三角形分割の骨格上で section を基準 section に変形する操作を持たない。 |
+| 5.5.6.9 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：compact support の precosheaf が円盤数別の polynomial Kan 近似の homotopy colimit で回復する結果は見つからない。一般の Kan 延長は、Weiss の円盤添字とこの embedding calculus の近似を構成しない。 |
+| 5.5.6.10 | partial → partial | component | KB-W2型再照合：仮定：M=S¹ は compact、E=X×S¹ は自明束、X の基準点を零とし零単体を扱う（Lean が強い：零次の通常写像の場合）。結論：全連続写像 S¹→X と compact support を持つ写像 S¹→X は同じ台の全単射で対応する（compact な M の Γc の零単体が通常の free loop の点となる部分に一致）。Sing の全単体と Hochschild homology・E₁ loop algebra の同定は含まれない。 |
+| 5.5.6.11 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：群的 E_M 代数を k-connective な fiber の Serre fibration と section により一意に分類する ∞ 圏同値は見つからない。単体的モノイドの M→ΩBM の比較は、この多様体上の全局所係数と descent の同値を与えない。 |
+| 5.5.6.12 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：非可換 Poincare 双対の連結な M への還元を有限成分の積と filtered colimit で行う結果は見つからない。通常の有限積と filtered な Kan 比較は、この E_M の積分と compact support section の比較射を構成しない。 |
+| 5.5.6.13 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：compact K の外で nullhomotopy を指定した全単体から ΓK(M;E) を作る型と Γc からその filtered colimit への標準射は見つからない。一般の path pullback はあるが、Serre fibration の section の外部 nullhomotopy の全次数と比較されていない。 |
+| 5.5.6.14 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：ΓK(M;E) が section の制限 F(M)→F(M−K) の homotopy fiber となる同定は見つからない。Kan な cospan の path pullback はあるが、この section と nullhomotopy による ΓK の模型は構成されていない。 |
+| 5.5.6.15 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：実際の compact support section から外部 nullhomotopy を指定した ΓK の filtered colimit への homotopy 同値は見つからない。通常の C_c はあるが、支持を compact 近傍へ拡張して nullhomotopy を実際の零化へ変える操作を持たない。 |
+| 5.5.6.16 | none → none |  | KB-W2再検索（現本体・ロックMathlib、KL-W1/B3/B3′/OE-W1移動後を含む）：k-connective な spectra の局所定数層の Ω∞∗ による compact support section が円盤和の colimit で回復する結果は見つからない。厳密 Ω スペクトルの filtered な段別模型は、この層と k-connective な sifted codescent の比較を持たない。 |
+| 5.5.6.17 | partial → partial | stronger-hyp | KB-W2型再照合：仮定：X=S の場合で添字 B は filtered、coherent な cospan の三つの族を B 上の left fibration で指定（Lean が強い：sifted より強い filtered 性とこの unstraightening 模型）。結論：fiberwise な path pullback の全空間の Kan 模型から、三全空間の Kan 模型の path pullback への標準比較が単体的ホモトピー同値となり、path pullback の錐は元の空間の ∞ 極限となる（filtered な空間値の場合の pullback と余極限の交換に一致する部分）。一般 sifted 添字と任意 ∞ トポスは含まれない。 |
+
+## 読取りと再検索
+
+原文・候補の型・現在の引用番号索引・小節ごとの現本体とロックMathlibの再検索はgit外の章別証拠。OE-W1 module-mapと宣言索引を使って移動後の名前・所在・行を確認した。ArchiveとBS draftsの宣言は正の根拠にしない。検索の全ヒットを形式検証したという意味ではない。

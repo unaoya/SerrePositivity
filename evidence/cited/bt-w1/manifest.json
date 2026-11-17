@@ -1,0 +1,14 @@
+{
+ "directory": "/Users/sugakubunka/serre-evidence/cited/bt-w1",
+ "commit": "bdd71d205",
+ "made_by": "BT-W1 原文・型・現所在・import閉包の静的照合（アーカイブ内の手順）",
+ "note": "18節211項目。Lean・kernel・ビルドなし。状態正本をreviewに移し、目録6列を保存。",
+ "files": [
+  {
+   "path": "review-evidence.tar.gz",
+   "sha256": "04815e797abb085ccfa24257e2634567065deadf384cc6b92503f71ab684a582",
+   "bytes": 4925827
+  }
+ ],
+ "total_bytes": 4925827
+}

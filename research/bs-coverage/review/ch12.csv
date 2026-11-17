@@ -1,0 +1,12 @@
+number,status,declarations,reason,axioms,check,partial_kind
+12.1,none,,原文を再読し、現本体とロックMathlibを節の対象語で再検索したが、同じ対象・指定射の主張を直接与える宣言は未同定。Nygaard filtration の定義。Lean・drafts・設計書に Nygaard の語なし。qrsp の定義（A3 の IsQuasiregularSemiperfectoid）はあるが Fil_N は無い,,not_found,
+12.2,none,,原文を再読し、現本体とロックMathlibを節の対象語で再検索したが、同じ対象・指定射の主張を直接与える宣言は未同定。Nygaard の主定理（gr_N ≅ Fil_i^conj{i}）。E3 の経路（A0〜A9）で未使用,,not_found,
+12.3,none,,原文を再読し、現本体とロックMathlibを節の対象語で再検索したが、同じ対象・指定射の主張を直接与える宣言は未同定。共役フィルトレーションが選択に依存する例。未形式化,,not_found,
+12.4,none,,原文を再読し、現本体とロックMathlibを節の対象語で再検索したが、同じ対象・指定射の主張を直接与える宣言は未同定。q 階乗 [n]_q! と q 類似の計算。q 類似は Lean にも Mathlib にもない,,not_found,
+12.5,none,,原文を再読し、現本体とロックMathlibを節の対象語で再検索したが、同じ対象・指定射の主張を直接与える宣言は未同定。q 類似の補題（Z_p[[q−1]] 上平坦な D）。未形式化,,not_found,
+12.6,none,,原文を再読し、現本体とロックMathlibを節の対象語で再検索したが、同じ対象・指定射の主張を直接与える宣言は未同定。Z_p[[q−1]] の q 階乗の恒等式。未形式化,,not_found,
+12.7,none,,原文を再読し、現本体とロックMathlibを節の対象語で再検索したが、同じ対象・指定射の主張を直接与える宣言は未同定。S = R⟨X^{1/p^∞}⟩/X の場合の Thm 12.2。未形式化,,not_found,
+12.8,none,,原文を再読し、現本体とロックMathlibを節の対象語で再検索したが、同じ対象・指定射の主張を直接与える宣言は未同定。正則列の商の場合の Thm 12.2。同じ形の S は A3 に出てくる（X_i − f_i の商）が Nygaard の主張は使わない,,not_found,
+12.9,none,,原文を再読し、現本体とロックMathlibを節の対象語で再検索したが、同じ対象・指定射の主張を直接与える宣言は未同定。滑らかな場合の Nygaard filtration（Čech の総体化）。未形式化,,not_found,
+12.10,none,,原文を再読し、現本体とロックMathlibを節の対象語で再検索したが、同じ対象・指定射の主張を直接与える宣言は未同定。φ/d^i で gr_N ≅ τ^{≤i}。未形式化,,not_found,
+12.11,none,,原文を再読し、現本体とロックMathlibを節の対象語で再検索したが、同じ対象・指定射の主張を直接与える宣言は未同定。導来 Nygaard filtration が qrsp で一致。未形式化,,not_found,

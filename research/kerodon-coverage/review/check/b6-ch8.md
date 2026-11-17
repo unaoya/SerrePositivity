@@ -1,0 +1,465 @@
+# KB-W1 / B6 第8章
+
+原文の項目と現在のソースの型による紙の再照合。Lean・ビルド・鍵は使っていない。
+
+対象 447行。partial 173、none 274。判定後：partial 74、own 7、none 363、mathlib 3。
+
+既存 own・both・mathlib 36行の全既存フィールドは変更なし。既存7列の末尾に partial_kind を追加し、対象外行は空欄とした。区切り・改行と対象外行の既存引用符を保存した。verdict・axioms・check も変更していない。古いcheck欄は今回のkernel検査結果ではない。
+
+## 全対象行の判定・変更一覧
+
+状態不変でも型/原文の再判定を記録した。各 reason の詳細はCSVと同じ。原文全文・候補の型・検索はgit外の章別証拠。
+
+| 番号 | 旧→新 | partial_kind | 理由 |
+| --- | --- | --- | --- |
+| 8.1.1.2 | partial → partial | component | edgewiseSimplexEquivは同じTw(C)のn単体をCの(2n+1)単体へ同定する原文の成分を直接与える。全ての面・退化の二重合成式は引用に含まない。 |
+| 8.1.1.4 | partial → partial | component | edgewiseSubdivisionFunctorは原文の同じC↦Tw(C)の関手性を直接構成する。全極限・全余極限保存はその型に含まない。 |
+| 8.1.1.7 | partial → own |  | edgewiseDualityIsoに現本体のedgewiseDuality_rightとedgewiseDuality_leftを合わせると、原文の同じ双対同型と左右射影の交換を直接得る。左側では二重opの標準同型も式に含まれる。 |
+| 8.1.1.10 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：任意の単体集合の Tw は edgewiseSubdivision として定義され、射影は単体写像に自然。通常圏の twisted arrow 圏の nerve との同型と、対象上恒等・底の四角形による一意性は見つからない。 |
+| 8.1.1.14 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：Cᵒᵖ×C への射影および始点を固定した C への射影は左ファイブレーション。元の Tw(C) からの二つの射影の cocartesian 性と、反対側射影の像が同型である辺の iff は見つからない。 |
+| 8.1.1.15 | partial → none |  | twistedArrowFunctorComparisonは同じ比較射を作るが、結論のleft fibration性は含まない。充満忠実な場合の前合成同値性もleft fibration性を結論せず、この命題の一部の代用にしない。 |
+| 8.1.1.16 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：各準圏の Tw が準圏になり U が比較写像を誘導する。U の inner fibration または isofibration の性質が Tw(U) に移る型は見つからない。 |
+| 8.1.2.1 | partial → partial | special | fを恒等辺id_Xに限るとtwistedArrowSourceIdentity_isInitialVertexは同じ始点fiber内のfの始対象性を直接返す。任意の可逆辺は含まない。 |
+| 8.1.2.4 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：標準単体の右半分への制限で target 射影を定める。辺の局所化の述語はあるが、この射影のすべての基底変換に局所化を与える型は見つからない。 |
+| 8.1.2.5 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：標準 target 射影はある。終点固定の twisted arrow の再構成の同値は別の写像で、任意の C に対する Tw(C)→C の弱ホモトピー同値は見つからない。 |
+| 8.1.2.6 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：任意の f の edgewiseSubdivisionMap と、充満忠実な f の固定二端点 Hom の同値を確認した。全空間の Tw(f) の弱ホモトピー同値を f と比較する iff は見つからない。 |
+| 8.1.2.7 | partial → partial | special | K=Δ⁰、fを頂点Xに限るとcosliceToTwistedArrowSourceは原文の同じι_Xの構成を直接与える。一般のKの二変数Tの構成は含まない。 |
+| 8.1.2.12 | partial → none |  | twistedArrowHomPinchedEquivalenceとcoslice比較の同型は候補だが、原文で指定された実際の二辺f,f′の成分とhCの類を同じ射で同定する型をまだ含まない。空間の同値だけをその指定比較のiffと数えない。 |
+| 8.1.2.15 | partial → partial | component | twistedArrowHomSpaceとそのKan性は原文の右辺の同じ二重fiberを直接構成する。左向き・右向きの指定包含を反転して作るα_X,Yそのものはこの引用に含まない。 |
+| 8.1.2.16 | partial → partial | direction | twistedArrowFunctorComparison_isPrecompositionEquivalenceは同じ四角のstrict pullbackへの比較が同値となる向き（充満忠実⇒categorical pullback）を直接与える。逆向きは含まない。 |
+| 8.1.2.17 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：充満忠実な f に対し Tw(C) から Tw(D) の引き戻しへの前合成同値、および固定端点での同値はある。f が同値の場合の Tw(f) 全体の同値を直接述べた型は見つからない。 |
+| 8.1.2.18 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：各次元の Tw の単体を edgewiseWeight からの写像とする定義はある。非可算 κ で C の本質的 κ-small 性から Tw(C) の本質的小性を導く型は見つからない。 |
+| 8.1.2.19 | partial → partial | component | twistedArrowIdentityHomTransport_isQCatEquivalenceは各x,yで同じTw fiberと左pinchedHomとの比較同値を直接返す。原文の二変数のhC上での自然性と指定αの全同定は含まない。 |
+| 8.1.2.21 | partial → partial | special | K=Δ⁰では原文の対象は始点Xを固定したTw fiberとなり、cosliceToTwistedArrowSource_isQCatEquivalenceは同じcoslice包含ι_Xの同値を直接返す。一般Kは含まない。 |
+| 8.1.2.22 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：相対始頂点の Hom 比較条件と終点固定側のファイバー同型を確認した。与えた f が U-(co)cartesian であることを誘導ファイバー写像に関する相対始性で判定する iff は見つからない。 |
+| 8.1.2.23 | partial → partial | special | fを恒等辺に限ればtwistedArrowSourceIdentity_isInitialVertexは原文の(1)⇒(2)の同じ恒等頂点の結論を直接返す。(3)と任意の辺の逆向きは含まない。 |
+| 8.1.3.1 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：Tw 自体は Δ[n]ᵒᵖ ⋆ Δ[n] からの射で定義される。重みをさらに Tw(Δ[n]) に替えて各次数を組む Cospan(C) と、面・退化での前合成を与える宣言は見つからない。 |
+| 8.1.3.5 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：Tw の写像上の作用と一般の右 Kan 延長随伴の単位はある。σ を Tw(σ) に移して Cospan(Tw(D)) の単体にする写像は確認できない。 |
+| 8.1.3.7 | partial → none |  | ranAdjunctionは通常圏の前合成と右Kan拡張の随伴。原文のCospan自己関手・指定単位u・Tw上の射による同じ合成写像との比較を持たない。 |
+| 8.1.3.8 | partial → none |  | 一般のranAdjunctionはTwをその前合成と同定せず、右随伴の値を原文のCospanと比較もしない。同じ自己関手の随伴の結論には直接適用できない。 |
+| 8.1.3.10 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：Tw(C)→Cᵒᵖ×C のホーン持ち上げを調べる型と前合成の一般の随伴はある。任意の Kan ファイブレーションを Cospan に適用した射で、Tw を施したホーンの持ち上げを解く型は見つからない。 |
+| 8.1.3.11 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：Tw(K) が Kan になるインスタンスはある。K が Kan のとき、右側の Cospan(K) のホーンを埋める型は見つからない。 |
+| 8.1.3.12 | partial → none |  | 通常のSpanBicatの双対は原文のTw(D)からの指定Fを入力に取らず、同じF⁺の対象・射・合成制約を構成しない。 |
+| 8.1.3.14 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：Mathlib の双対の通常 span 双圏には pullback 合成がある。Tw(D)→C の関手と pushout 合成の cospan への strictly unital lax 関手を対応づける全単射は見つからない。 |
+| 8.1.3.15 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：通常の span 双圏と単体豊穣圏の coherent nerve を確認した。pushout を持つ C の Cospan(N(C)) と cospan 双圏の Duskin nerve を全次数で結ぶ同型は見つからない。 |
+| 8.1.4.1 | partial → none |  | 通常圏のspan双圏の構造は原文のCospan(C)という単体集合の∞-bicategory性を結論しない。両者のcoherent nerveと薄い2面の比較がない。 |
+| 8.1.4.2 | partial → none |  | IsPushoutDiagramVertexは四角のpushout性の述語。原文のCospanの2単体とTw(Δ²)図式、そのthin条件と同定する型を持たない。 |
+| 8.1.4.3 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：通常 span の単位子は退化した合成の候補になる。任意の準圏の Cospan で s₀ または s₁ の像の内側の四角形を pushout と判定する型は見つからない。 |
+| 8.1.4.4 | partial → none |  | exists_relative_pushoutFamilyはspanから普遍余錐を作る。原文の指定Λ²₁→Cospanから同じTw(Δ²)図式を復元する型がなく、thinな延長とは結論していない。 |
+| 8.1.4.6 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：Tw の射影のホーン条件とその標準拡張領域の内 anodyne 性を調べた。任意の U で指定した二辺が U-cocartesian と U-cartesian のとき、Tw(Λⁿ₀) 上の相対延長を与える型は見つからない。 |
+| 8.1.4.7 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：一つの可逆辺の cocartesian ホーン条件と Tw 射影の充填はある。Tw(Λⁿ₀) 図式の二つの指定辺の可逆性から、Tw(Δⁿ) まで図式を延長する型は見つからない。 |
+| 8.1.4.8 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：押し出し頂点の述語と全小余極限保存の定義はある。Cospan(F) の薄い単体保存と元の F の pushout 保存を往復する型は見つからない。 |
+| 8.1.5.1 | partial → none |  | 四角とspan余錐の比較は、原文のTw(Δ²)全図式の同じφの余極限性を結論しない。残りの頂点を含む形状比較が不足。 |
+| 8.1.5.2 | partial → none |  | pushoutDiagramsCoconesIsoは原文の全Tw(Δ²)図式の余極限性を入力としない。指定内部四角のthin条件への制限の比較がない。 |
+| 8.1.6.1 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：通常の span の両脚には個別の射の性質を課せる。すべての 0≤i≤j≤n の二脚を検査して Cospan の n 単体を切り出す部分単体集合は見つからない。 |
+| 8.1.6.5 | partial → none |  | SpanBicatの通常圏のpullback安定性の入力は、原文の∞圏でL,Rに沿う指定pushoutの存在と両脚の所属条件への比較を欠く。 |
+| 8.1.6.7 | partial → none |  | 通常のspan双圏は原文のCospan^{L,R}(C)の同じ単体集合と薄い面を比較する型を持たず、∞-bicategoryという結論に直接適用できない。 |
+| 8.1.6.8 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：押し出し頂点と脚を制限した通常 span の宣言はある。Cospan の部分単体集合と全体で同じ指定 2 単体の薄さを比較する iff は見つからない。 |
+| 8.1.6.10 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：Mathlib で apexIso を作る入力は同じ二端点の span 間の可逆な 2 射。準圏の cospan 自体が可逆な 1 射であることを両脚の可逆性で判定する型は見つからない。 |
+| 8.1.6.12 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：通常 span の固定両端点での 2 同型の構成はある。制限付き Cospan の二対象の同型を元の準圏内の同型に反映し、逆に同型から両脚の条件を得る型は見つからない。 |
+| 8.1.7.1 | partial → partial | component | edgewiseRightは原文の転置前の同じλ₊の構成を直接与える。C→Cospan(C)のρ₊、次数ごとの表示とそのmono性は含まない。 |
+| 8.1.7.2 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：片脚の射の性質を指定する通常 span と頂点で絞る部分複体はある。各次数で全左向き辺が可逆である cospan 図式だけを取る部分単体集合は見つからない。 |
+| 8.1.7.4 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：通常 span の二脚にはそれぞれ制約を付けられる。単体集合の二つの片側制限 Cospan^{L,all} と Cospan^{all,R} の共通部分が両側制限と等しい型は見つからない。 |
+| 8.1.7.5 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：通常 span の脚を射の性質で制限した双圏はある。右脚に可逆性を課した Cospan の内ホーンを埋める型は見つからない。 |
+| 8.1.7.6 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：標的射影と Tw の Kan 性はある。右脚が可逆な Cospan へ移した ρ₊ の充満忠実性と本質的全射性は確認できない。 |
+| 8.1.7.8 | partial → none |  | HasOfPostcompPropertyは通常圏の射の性質。原文の単体集合の各指定2単体とその三辺の集合Wへの所属のiffと比較する型がない。 |
+| 8.1.7.9 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：通常圏の後合成での消去性と Tw の二射影はある。二射影の各ファイバーで F が指定の辺の族を保つ条件を、転置 f の制限付き Cospan 経由と結ぶ iff は見つからない。 |
+| 8.1.7.12 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：通常圏での前合成の随伴と相対関手空間を調べた。内部 Hom の比較同型を L'・R' の射の条件と両脚制限の両側に制限する型は見つからない。 |
+| 8.1.7.13 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：元の Tw の関手性と標的射影はある。右脚可逆の Cospan への二図式が関手圏で同型であることを、それぞれの Tw(D) 上の転置の同型に移す iff は見つからない。 |
+| 8.1.7.14 | partial → partial | component | edgewiseLeftは原文の転置前の同じλ₋を直接構成する。ρ₋とCospanの指定部分複体への同値までは含まない。 |
+| 8.1.8.2 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：通常双圏の lax 関手のデータはある。Tw(A)→Hom_C(X,Y) から、両端で定値となる [1]×A 上の lax 関手を、Tw の射から合成制約も含めて作る型は見つからない。 |
+| 8.1.8.4 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：lax 関手と通常の随伴による Hom 全単射はある。F↦U_F の単射性と、その像が両端定値の strictly unital lax 関手からなるという型は見つからない。 |
+| 8.1.8.6 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：単体豊穣圏の nerve と lax 関手の構造はある。双圏の Duskin nerve の Hom と Cospan(N(Hom_C(X,Y))) の同型を全次数で与える型は見つからない。 |
+| 8.1.9.1 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：E 内の一辺の cocartesian ホーン条件と Tw 射影の持ち上げはある。U-cocartesian な右脚で制限した Cospan(E)→Cospan(C) が内ファイブレーションである型は見つからない。 |
+| 8.1.9.5 | partial → partial | component | 各始点xについてNonempty(CocartesianEdgeLift U e x)を量化すれば、原文のeがU-cocartesian liftsを持つという定義を直接表す。専用名の欠如は不足としないがcartesian側はこの構造に含まない。 |
+| 8.1.9.9 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：一つの辺の cocartesian 持ち上げのデータはある。R に属する辺だけへの持ち上げを仮定し、二つの Cospan 部分単体集合間で全内ホーンを解く型は見つからない。 |
+| 8.1.9.10 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：相対的な押し出し図式の構成と、基底変更での cocartesian 辺の扱いはある。L の逆像と R の cocartesian 持ち上げが全空間で pushout-compatible になる型は見つからない。 |
+| 8.1.10.1 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：個別の (co)cartesian 辺の判定と pushout 述語はある。基底の pushout に乗る四角形について、指定の二辺を仮定し残り二辺の (co)cartesian 性を同値にする公理を含むファイブレーションの型は見つからない。 |
+| 8.1.10.3 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：Mathlib の Pith は通常双圏の 2 射を可逆なものに絞る。準圏の Cospan の Pith 間の射が cartesian で、指定した二脚の性質で cartesian 辺を判定する型は見つからない。 |
+| 8.1.10.5 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：通常双圏の Pith と cocartesian 辺の個別判定はある。両脚を U-(co)cartesian に制限した Cospan の ∞-双圏性と、その Pith の右ファイブレーションは見つからない。 |
+| 8.1.10.6 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：辺ごとの cocartesian 持ち上げと pushout 述語はある。L と R だけへの別々の持ち上げを要求し、その二クラスに属する辺の pushout に混合条件を課す相対述語は見つからない。 |
+| 8.1.10.9 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：通常双圏の Pith と一辺の持ち上げはある。持ち上げた L・R による Cospan の Pith 間で、cartesian ファイブレーションの構成と cartesian 辺の両脚判定は見つからない。 |
+| 8.1.10.12 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：通常双圏の Pith と span 双圏はある。両脚を (co)cartesian に制限した全空間の高次双圏性、Pith 上の右ファイブレーション、底が準圏の場合の Cospan 自体の右ファイブレーションの三結論は見つからない。 |
+| 8.2.0.1 | partial → own |  | 準圏Cとλ:C→C₋ᵒᵖ⊗C₊にLeftFibration λを指定した組が原文のcouplingの定義そのもの。LeftFibrationと積の型を追記し、専用のCouplingという構造名の欠如だけはpartialの理由にしない。 |
+| 8.2.0.3 | partial → partial | component | twistedArrowProjection C₋をid⊗Gに沿って引き戻すと、leftFibration_pullback_sndは原文の同じpullback couplingのleft fibration性を直接与える。Tw(C₋)×_{C₋}C₊への別表示の同型まではこの引用に含まない。 |
+| 8.2.0.4 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：Yoneda の充満忠実性と一つの終点における表現可能ファイブレーションの比較はある。全代表可能 coupling の同値類を関手の同型類と対応させる全単射は見つからない。 |
+| 8.2.1.1 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：準圏の初期頂点と Tw の特定の始域ファイバーでの恒等射の初期性はある。任意の coupling で片方の射影のファイバーに初期性を課す二つの定義は見つからない。 |
+| 8.2.1.3 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：始域固定の Tw で初期対象を得る補題と終点固定の表現可能模型はある。任意の左ファイブレーションで、片方の座標の各頂点のファイバーに初期対象があることを要求する二つの述語は見つからない。 |
+| 8.2.1.6 | partial → none |  | 固定終点のTw fiberと反転sliceの比較、および恒等射の終対象性はあるが、原文の任意Gのcouplingで普遍対象がeの可逆性と同値という判定を直接返さない。 |
+| 8.2.1.7 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：単一の左ファイブレーションを全辺 cocartesian の条件で判定する iff はある。二射影のそれぞれの cocartesian 辺を反対側の座標の可逆性で判定し、joint な isofibration と組み合わせる iff は見つからない。 |
+| 8.2.1.8 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：単独の初期頂点の評価から全辺で cocartesian な図式を延ばせる。corepresentable coupling 上の相対関手圏で初期対象を作り、全 couniversal 頂点の像と辺保存で初期性を判定する型は見つからない。 |
+| 8.2.1.10 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：Tw の始域ファイバーでの恒等射の初期性と、初期頂点からの cocartesian 延長はある。Tw(C) 全体上の相対関手圏での初期対象と、全恒等射および指定辺による特徴づけは見つからない。 |
+| 8.2.2.1 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：固定した一つの底写像への相対関手空間はある。負側と正側の底関手も動かす三つ組を、二つの制限の引き戻しで表す構成は見つからない。 |
+| 8.2.2.2 | partial → none |  | 内部HomのpullbackObjObjπのleft fibration性は、両側可変のFun±から二関手空間への指定射と同じ射にするpullback比較がない。 |
+| 8.2.2.5 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：一つの左ファイブレーションの固定底の相対関手空間には Kan 性がある。両側の底関手を動かす Fun±(C,D) の準圏性を述べる型は見つからない。 |
+| 8.2.2.9 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：同じ底上の左ファイブレーション間の同値をファイバーで判定する型と余終性の基底変更はある。一方または両方の座標ファイバーが弱可縮のとき、指定の忘却関手を辺保存の全部分圏への同値とする三結論は見つからない。 |
+| 8.2.2.10 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：固定底で (co)cartesian な辺の保存を要求する構成と左 straightening の相対比較はある。正側の F₊ を固定したときの Fun± からの忘却の充満忠実性と、辺保存による像の特徴づけは見つからない。 |
+| 8.2.2.11 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：個別の Tw ファイバーの初期頂点と相対内部 Hom の左ファイブレーション性はある。表現可能な λ と余表現可能な μ に対する Fun± の余表現可能性、および普遍対象から余普遍対象への移送での判定は見つからない。 |
+| 8.2.2.13 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：Tw の関手性は同じ F を両端に適用した四角形を与える。異なる F₋ と F₊ を端点に持ち可逆射を可逆射へ送る写像の存在と F₋≅F₊ の iff は見つからない。 |
+| 8.2.3.1 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：指定した終点の表現可能左ファイブレーションの比較はある。G を任意の正側準圏上で動かし、λ が joint な底上で λ_G と同値であるとする述語は見つからない。 |
+| 8.2.3.4 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：単独の終点での表現可能比較と Yoneda の充満忠実性はある。初期対象が各ファイバーにあるという入力から全体の G を構成して、その同型を除いた一意性を結論する型は見つからない。 |
+| 8.2.3.5 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：左 straightening の基底変更と一つの終点の Tw への底上の比較を確認した。任意の G の id×G に沿う指定正方形の categorical pullback 性と λ の表現可能性を比較する型は見つからない。 |
+| 8.2.3.6 | partial → none |  | 全ての二端点のfiberの同値による判定は原文の正側だけを固定したfiber全体の同値とは異なる。普遍対象保存という第三条件への比較もない。 |
+| 8.2.3.7 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：終点固定の Tw の表現可能模型と左ファイブレーションの同値のファイバー判定はある。指定 λ の普遍対象が可逆射へ移ること、および (id,G̃,G) の初期性まで含む四条件は見つからない。 |
+| 8.2.3.8 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：Tw の両端交換は反対圏との指定の底変換を保つ。Fᵒᵖ×id への任意の categorical pullback による余表現可能性と F の同型を除いた一意性は見つからない。 |
+| 8.2.3.9 | partial → none |  | relativeFunctorIsPullbackIsoは底写像を一つ固定した相対関手空間の型。原文のFun±で負側も可変な条件(3)やcouplingの表現可能性への比較を含まない。 |
+| 8.2.4.1 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：特定の Tw ファイバーで恒等射が初期となる型と底を保つ表現可能比較はある。Gᵒᵖ×id の上の Tw(C₊) からの写像について、全恒等頂点の像に普遍性を要求する述語は見つからない。 |
+| 8.2.4.3 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：底を固定した引き戻しから相対関手空間を比較する型と一つの終点での Tw の表現可能比較はある。λ_G との同値を、全恒等頂点に条件を課す witness の存在に置き換える iff は見つからない。 |
+| 8.2.4.4 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：同じ関手を Tw の両端に適用する自然性と Yoneda の充満忠実性はある。H∘F₊≅F₋∘G と、普遍対象を保つ coupling 写像の存在を往復する型は見つからない。 |
+| 8.2.4.5 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：Tw の両端交換と始域固定ファイバー内の恒等射の初期性はある。id×F の上の写像の恒等頂点の像で余表現を定義し、反対圏の表現条件と同定する型は見つからない。 |
+| 8.2.4.6 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：一つの随伴に対する自然な Hom 比較と相対内部 Hom の左ファイブレーション性はある。Fun± の表現関手を T₊↦G∘T₊∘F とし、余普遍対象から普遍対象への移送で特徴づける型は見つからない。 |
+| 8.2.4.9 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：任意の写像の左余終性は slice の弱可縮性で判定でき、Tw の始域ファイバーの恒等射は初期となる。指定された Tw(C₊)→C の左余終性を恒等頂点または可逆頂点の像の普遍性で判定する型は見つからない。 |
+| 8.2.5.1 | partial → none |  | 随伴から得る各xでの共変HomのFunctorIsoは、原文の指定coupling λを同じFがcorepresentする条件への比較を欠く。Homの同型だけをcouplingの結論と数えない。 |
+| 8.2.5.2 | partial → none |  | exists_leftAdjoint_iff_covariantHom_representableは共変Hom関手の各xでの余表現可能性を判定する。原文の同じλのcorepresentabilityとの比較がないため、λ_Gの場合も別の条件の類似だけと判定する。 |
+| 8.2.6.1 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：随伴による二変数の表現比較と個別 Tw ファイバーの初期頂点はある。任意の coupling で両側の初期対象の存在と、その二種類の頂点条件の一致をまとめた述語は見つからない。 |
+| 8.2.6.6 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：準圏の同値から随伴を作り、その随伴から Hom の自然同型を取れる。balanced 条件を、表現関手 G または余表現関手 F が準圏同値であることと往復する型は見つからない。 |
+| 8.2.6.7 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：準圏同値から随伴を作る型と Tw の左ファイブレーションはある。任意の二準圏の同値を、それらを結ぶ balanced coupling の存在で判定する型は見つからない。 |
+| 8.2.6.8 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：Tw(Cᵒᵖ) と Tw(C) の底交換による引き戻しの同型はある。任意の balanced coupling を、両側の底同値と共に一つの Tw(D) へ移す iff は見つからない。 |
+| 8.2.6.9 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：随伴を追加し h Fun での後合成を充満忠実と仮定すると余単位の可逆性が得られる。λ が表現可能という仮定だけで、全普遍対象の余普遍性と G の充満忠実性を往復する型は見つからない。 |
+| 8.3.1.2 | partial → none |  | SpaceInfinityの定義は原文の指定F,G,X,ηを入力に取らず、評価とηの前合成による同じ比較射を構成しない。値圏があるだけは構成成分としない。 |
+| 8.3.1.3 | partial → partial | special | 原文の圏を小準圏の反対圏、Fを標準representablePresheafInfinity、ηを恒等射の頂点に指定すると、yonedaPresheafEvaluation_isQCatEquivalenceは同じ標準Yoneda評価の同値を直接返す。任意の(F,η)へは広げない。 |
+| 8.3.1.6 | partial → none |  | leftFibration_exists_initial_of_covariantRepresentationの結論は全空間の始対象の存在。原文の同じ指定ηによる三つの比較条件のいずれでもなく、必要十分条件の一部と数えない。 |
+| 8.3.1.7 | partial → none |  | 通常圏のYonedaMapの左Kan性は、原文の準圏の同じ指定ηのcorepresentationと一点からの左Kan性の比較を含まない。 |
+| 8.3.1.8 | partial → none |  | MathlibのYonedaMapの指定左Kan変換は、原文の任意のβに沿う指定ηの像の余表現性との比較を欠く。 |
+| 8.3.1.9 | partial → none |  | 通常圏の表現可能前層の左Kan性は、原文の同じ空間値Gが余表現可能であることとのiffへ移すnerve比較を含まない。 |
+| 8.3.2.1 | partial → own |  | 任意のC₋ᵒᵖ⊗C₊からSpaceInfinityへの単体射の型が原文のprofunctorそのもの。SpaceInfinityとfunctorVertexEquivによりこの全型を表せ、専用のProfunctor名の欠如はpartial理由にしない。Mathlibの通常圏のProfunctorは根拠にしない。 |
+| 8.3.2.6 | partial → none |  | 固定宇宙のleft straighteningの同値は、原文の任意の非可算κで切った空間と本質的κ-smallなfiberという像の条件を型に含まない。宇宙をκの代用にしない。 |
+| 8.3.2.7 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：ある頂点による余表現の存在述語と、余表現があるときの全空間の初期頂点の存在はある。K(X,Y) の指定 η が二つの部分評価のいずれを表現するかを定める一対の述語は見つからない。 |
+| 8.3.2.9 | partial → partial | special | 小空間値の図式については、各yで制限した図式にIsRepresentableSmallSpaceFunctor、各xでIsCorepresentableSmallSpaceFunctorを課すことが同じ二つの点ごとの定義を直接表す。型にある宇宙持ち上げを用いる範囲に限定し、任意の大きさの図式へは広げない。 |
+| 8.3.2.17 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：標準の co-Yoneda の充満忠実性と個別関手の余表現可能性はある。任意の余表現可能 profunctor のカリー化した関手の充満忠実性を、全余普遍頂点の普遍性で判定する iff は見つからない。 |
+| 8.3.2.18 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：個々の空間値関手の表現可能・余表現可能の述語はある。二変数 K の各側の部分評価への存在条件と、同じ指定頂点での二つの普遍性の一致をまとめる述語は見つからない。 |
+| 8.3.2.20 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：標準の二つの Yoneda 写像は充満忠実で、個別の表現可能性も定義される。任意の K に対して balanced、二つの currying の充満忠実性とそれぞれの本質像を結ぶ三条件の同値は見つからない。 |
+| 8.3.2.21 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：元の C の二変数 Hom の評価と co-Yoneda の充満忠実性はある。余表現可能なすべての空間値関手の全部分圏との評価写像について balanced 条件を証明する型は見つからない。 |
+| 8.3.3.1 | partial → partial | component | twistedArrowHomInfinityは原文のTw couplingの標準left straighteningを実際に構成し、一つのHom-functorの構成成分を直接与える。任意のHの輸送表現性という条件の全定義はこの宣言だけに含まない。 |
+| 8.3.3.2 | partial → partial | special | Cを宇宙で小さく標準Hom-functorを指定するとtwistedArrowHomInfinityはその存在を直接与える。一般の局所小性からのiffと任意のHの一意性は含まない。 |
+| 8.3.3.5 | partial → none |  | SpaceInfinityの宇宙パラメータだけでは、原文の特定κで切ったS_<κ値Hom-functorの存在と局所κ-small性の同じiffを直接与えない。 |
+| 8.3.3.7 | partial → partial | component | Cを宇宙で小さく取るとhomInfinityJointEvaluationは原文のHom(-,-)という同じ二変数の標準空間値関手を直接構成する。任意に選んだHの値とoriented fiber productの自然比較全体は含まない。 |
+| 8.3.3.8 | partial → none |  | 二変数Homを各片側で制限した関手があるだけでは、原文の同じ指定頂点ηの普遍性と余普遍性が一致するbalanced条件を直接結論しない。 |
+| 8.3.3.9 | partial → partial | component | 小さいCではyonedaInfinityMapとcoyonedaInfinityMapは同じ標準Hom関手をcurryした共変・反変のYoneda関手を直接構成する。任意の指定hがYonedaであるという述語の全定義は含まない。 |
+| 8.3.3.12 | partial → none |  | SpaceInfinityの宇宙指定は原文の特定κで切ったS_<κではなく、局所κ-small性と二種のYoneda存在のiffへの比較もない。 |
+| 8.3.3.13 | partial → partial | component | Cを宇宙で小さく標準Yonedaに指定すれば、yonedaInfinityMap_isFullyFaithfulとcoyonedaInfinityMap_isFullyFaithfulは原文の両方の充満忠実性を直接返す。本質的像の全特徴付けと任意に選んだYoneda関手は含まない。 |
+| 8.3.3.14 | partial → partial | special | Cを宇宙で小さくhをyonedaInfinityMapとした場合、yonedaInfinityMap_isLimitは同じ錐の極限性の保存を直接返す。反映もyonedaInfinityMapの充満忠実性と極限の写像空間判定から得る範囲で、任意のYonedaの選択へは広げない。 |
+| 8.3.3.15 | partial → none |  | 宇宙内のSpaceInfinity値の保存・検出は、原文の指定λで切ったS_<λとecf(λ)-小形状の同じiffへの比較を含まない。 |
+| 8.3.3.17 | partial → partial | component | Cを宇宙で小さく取るとyonedaInfinityMap_isFullyFaithfulとyonedaInfinityMap_isLimitは同じ前層圏への充満忠実なFの存在と小形状の極限保存を直接返す。任意の数値κについて標的がκ完備・κ余完備という大きさの比較は含まない。 |
+| 8.3.4.1 | partial → partial | component | C,Dを宇宙で小さく標準Homに指定すると、Yonedaの充満忠実性をIsFullyFaithful.postcomposeへ渡しcurryすれば同じG↦Hom(-,G-)の充満忠実性を直接得る。本質的像が全表現可能profunctorで尽きる部分と指定κの大きさの比較は含まない。 |
+| 8.3.4.2 | partial → none |  | 対象ごとのHom(x,G-)の余表現可能性は原文の全二変数profunctor Kが同じHom(-,G-)にFunctorIsoで同型という条件ではない。その二変数の同型・選択不変性の型を引用に含まない。 |
+| 8.3.4.4 | partial → none |  | 各yのHom(-,y)の表現可能性と随伴の存在は、原文の同じKとHom(F-,-)との全二変数の同型を定義しない。 |
+| 8.3.4.9 | partial → partial | component | Kを標準Hom(-,G-)とし小さい準圏を用いると、exists_leftAdjoint_iff_covariantHom_representableは原文末尾の「Kが各xで余表現可能⇔Gに左随伴が存在する」を直接返す。固定Fによる二変数のcorepresentationの全判定は含まない。 |
+| 8.3.4.10 | partial → partial | stronger-hyp | 両圏をpresentableに強めるとpresentableAdjointFunctorEquivalenceとそのadjunctionフィールドは原文(3)の同じ左右随伴関手の全準圏の反転同値と対応を直接返す。profunctorの部分圏Eを経る指定合成ρ⁻¹λとの同定は含まない。 |
+| 8.3.4.11 | partial → own |  | pointSpaceVertexをSSet.constで任意E上の定値射にすれば、原文の同じΔ⁰を値とする定値関手全体を直接構成する。値圏の型だけという旧引用を補った。 |
+| 8.3.4.12 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：Tw の始域固定の恒等頂点と個別前層の表現可能述語はある。任意の G と K について定値一点からの β を Tw(D) の各恒等射で評価し、指定された G(D) による表現を要求する述語は見つからない。 |
+| 8.3.4.15 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：充満忠実な関手による前層の制限比較と随伴の Hom 比較はある。G を固定した profunctor の表現可能性を Tw(D) 上で条件を満たす β の存在へ移す iff は見つからない。 |
+| 8.3.4.16 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：Tw の両端交換の式と個別関手の余表現可能性はある。Tw(C) の各恒等射で β を評価して F(X) の余表現性を要求し、反対圏での表現条件と同定する型は見つからない。 |
+| 8.3.4.19 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：任意の写像の左余終性の slice 判定と固定底の関手空間の引き戻し比較はある。β が誘導する Tw(D)→{Δ⁰}×⃗_S(Cᵒᵖ×D) の左余終性を β の表現性と結ぶ型は見つからない。 |
+| 8.3.4.20 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：一般の左 Kan 延長述語と、別の Yoneda 重みの左 Kan 延長はある。表現を与える β により、Tw(D) の定値一点から Gᵒᵖ×id を介して K を左 Kan 延長する型は見つからない。 |
+| 8.3.4.21 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：左 Kan 延長の一般の Hom 比較は h Fun の Hom 集合を扱い、固定底の相対関手空間の Kan 性もある。表現を与える β に対し、指定された二つの Kan 写像空間の間でホモトピー同値となる型は見つからない。 |
+| 8.3.5.1 | partial → partial | special | Hとαを標準twistedArrowHomInfinityのpointed displayに指定すると、twistedArrowPointedDisplayFiberとその同値性は原文の同じ各(X,Y)のfiber比較を構成する。任意の指定H,αの述語全体は含まない。 |
+| 8.3.5.5 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：標準 Hom の pointed 比較の各ファイバーでの同値と始域固定の恒等頂点の初期性はある。任意の α について、両端ファイバーでの同値を恒等関手による左右いずれかの表現性へ置き換える三条件は見つからない。 |
+| 8.3.5.6 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：左 Kan 延長と h Fun の Hom 比較、および標準 Hom のファイバー比較はある。任意の H,α のファイバー条件を Tw 射影に沿う一点の左 Kan 延長および向き付き引き戻しの初期性と同定する型は見つからない。 |
+| 8.3.5.7 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：一つの宇宙での標準 Tw 分類と、小空間の余極限を宇宙変更から反映する型はある。局所 κ-small の条件で指定 H と α の三つの同値を S_{<κ} へ制限する型は見つからない。 |
+| 8.3.5.8 | partial → none |  | 引用は充満忠実Fに沿う標準Yonedaの関手同型。原文の任意に指定したα,βを保つ三角形のγと同一視する可換式がなく、同型があるだけは指定γの存在と数えない。 |
+| 8.3.6.1 | partial → partial | component | representableHomCoherent xは原文の同じ豊穣Homを第一変数xで固定したcoherent実現を直接構成する。両変数が動く豊穣関手の全構成は含まない。 |
+| 8.3.6.2 | partial → partial | component | representableHomCoherentIso xは各固定xで同じ豊穣Homの実現と標準Homの片変数のFunctorIsoを直接与える。全二変数でTw couplingを分類することへの比較は含まない。 |
+| 8.3.6.5 | partial → none |  | 標準left straighteningによるpointed displayは、原文のPathとI↦Ī∪Iから指定された豊穣Homのdisplayとは異なる構成。底H_Cまで含めた同じ射への比較がない。 |
+| 8.3.6.7 | partial → none |  | 標準Homのpointed displayのfiber同値性は、原文の豊穣Path構成の同じ(8.57)のcategorical pullback性を結論する型ではない。 |
+| 8.3.7.1 | partial → partial | component | laxPullbackMappingSpaceCone_isLimitは各固定二頂点x,yで、原文の同じ四つのHom空間と成分による極限錐を直接返す。全(x,y)で自然に組み立てた関手準圏内の指定squareの存在までは含まない。 |
+| 8.3.7.3 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：元の lax pullback の固定二頂点の写像空間図式と Tw 射影の自然性はある。Tw(α) の三つの頂点を用いて E₋・E₊ と Q₋・Q₊ の指定の可換四角形を作る宣言は見つからない。 |
+| 8.3.7.4 | partial → none |  | leftFibration_pullback_sndと分類図式のbaseChangeIsoは一般のpullbackについてで、原文のE_±と指定U_±がそのpullbackである同定を含まない。 |
+| 8.3.7.6 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：固定二頂点の写像空間の極限と、一般の unstraightening の厳密な基底変換はある。Tw(C_{±}) を左上とし E₋・E₊ を用いる指定正方形自体の categorical pullback 性は見つからない。 |
+| 8.3.7.7 | partial → partial | special | 四つの底D_ijを同じ小準圏X、全底射を恒等、上面をleft fibrationsのstrict pullbackとした場合、leftFibrationPullbackClassifiedCone_isLimitは同じ四分類図式の関手準圏内のpullbackを直接返す。可変底の一般のcubeは含まない。 |
+| 8.4.0.1 | partial → partial | special | hを小準圏の標準Yoneda、ĈをPresheafInfinityに指定するとpresheafInfinity_hasColimitは原文の条件(1)の小余完備性を直接与える。任意のh,Ĉの定義全体、全保存関手の制限同値(2)は含まない。 |
+| 8.4.0.3 | partial → partial | component | 小さいCの標準Yonedaに限るとpresheafInfinity_hasColimitはcocompletionの小余完備性という同じ結論成分を直接返す。presheaf_exists_yonedaLeftKanは延長を構成するが、その小余極限保存と全準圏の制限同値まではこの引用から数えない。 |
+| 8.4.1.5 | partial → own |  | leftKanCanonicalCocone i (𝟙 D) Xに全XでIsColimitConeを課すことが、原文の指定したC×_D D_/Xからの標準余錐によるdenseの定義そのもの。標準余錐の構成を追記し、専用のDense名の有無でpartialにしない。 |
+| 8.4.1.8 | partial → none |  | 通常圏の制限Yonedaの充満忠実性は原文のSpace値の制限Yonedaへの比較を持たない。通常の密度のiffだけを直接の特殊形としない。 |
+| 8.4.1.9 | partial → partial | special | C,Dを同じ宇宙の小さい通常圏に限ると、isDense_iff_nonempty_isPointwiseLeftKanExtension、nerve_isLeftKanExtensionHom_iff_pointwise、恒等変換の標準Kan余錐の判定を合わせ、同じ包含と恒等単位の密度のiffを直接得る。任意の局所小で大きい圏は含まない。 |
+| 8.4.1.15 | partial → own |  | IsLeftKanExtension F F (𝟙 D) (functorHomotopyRefl F)を課すことが原文の同じFのdenseの定義そのもの。一般の指定変換の型と恒等変換を追記し、専用のDense名の欠如は不足にしない。 |
+| 8.4.1.22 | partial → none |  | 通常圏のrestrictedULiftYonedaの充満忠実性は、原文の指定λのSpace値Yonedaと任意単体図式Fへの比較を含まない。 |
+| 8.4.1.23 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：通常圏の充満関手では密性を制限 Yoneda の充満忠実性で判定できる。任意の単体写像の密性から像を含む充満∞部分圏の密性へ移す型は見つからない。 |
+| 8.4.2.1 | partial → partial | special | Cを小準圏、hを標準Yonedaに限ると現本体presheafIdentity_isLeftKanExtensionは同じhに沿う恒等関手の恒等単位の左Kan性、すなわち原文のdensityそのものを直接返す。elements図式の類似の密度だけでなく標準Kan余錐の型を追記した。 |
+| 8.4.2.2 | partial → none |  | elements-Yoneda図式の余極限性は、全表現可能前層の充満部分圏の包含に沿う全標準Kan余錐の余極限性ではない。その形状変更の比較を引用に持たない。 |
+| 8.4.2.4 | partial → none |  | 固定宇宙の標準densityは、原文の指定κで切った前層圏における同じYonedaの密度への大きさの比較がない。 |
+| 8.4.2.5 | partial → none |  | 各F,yでのYoneda評価の同値は、原文の指定κ値のevという全二変数profunctorのcorepresentationを与える自然同型との比較を持たない。 |
+| 8.4.2.7 | partial → none |  | 標準elementsとYoneda sliceの比較は原文の任意の指定right fibration Uに対する表現Fの条件とのiffではない。底上で同じUと同一視する比較が必要。 |
+| 8.4.2.8 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：元の図式が C で極限を持つ場合にその表現可能前層の極限を扱う。一般の f の前層極限が反対スライスの輸送を表すという同定は、ecf(κ) の形状制限を含めて見つからない。 |
+| 8.4.3.1 | partial → none |  | 固定宇宙のYoneda左Kan延長は、原文の任意のhと正則κについてのκ余完備性・κ保存関手の全準圏の制限同値の定義に一致しない。 |
+| 8.4.3.2 | partial → none |  | 全小余完備な標的への左Kan延長存在だけでは、原文のS_<κ値の前層圏がκ-cocompletionであるという同じ結論の条件を直接返さない。 |
+| 8.4.3.4 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：小さい標準 right unstraightening から表現可能前層への図式がある。表現可能前層の充満部分圏と F 上のスライスの引き戻し自体の本質的 κ-small 性を示す型は見つからない。 |
+| 8.4.3.5 | partial → none |  | presheafYonedaLeftKan_canonicalColimitsは既に左Kan拡張を仮定する。原文のκ余極限保存との逆向きは型になく、P_Σの保存判定も全前層圏とは異なる対象。 |
+| 8.4.3.8 | partial → none |  | 小さいelements図式の密度表示はあるが、原文の指定κで切った値圏とκ-smallなKを同時に満たす型への大きさの比較がない。宇宙で小さいというだけを数値κの特殊形にしない。 |
+| 8.4.3.9 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：前層の表現可能生成と、通常圏で極限が誘導する表現可能データはある。T の制限の κ-small 性・極限保存から T をその制限前層で表現する iff は見つからない。 |
+| 8.4.4.1 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：一般の小さい準圏の前層圏からの左 Kan 延長と、空間圏の小余極限存在を確認した。S_{<κ} を一点の自由 κ-余完備化として、任意の可縮な X での評価が κ-余連続関手の圏との同値になる型は見つからない。 |
+| 8.4.4.3 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：0-truncated 空間の述語と空間圏の小余極限はある。任意の n の κ-small 切断空間上での評価の充満忠実性と、像を n-cotruncated 対象とする条件は見つからない。 |
+| 8.4.4.5 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：0-truncated 空間の述語と、切断制限のない前層上の Yoneda 左 Kan 延長はある。任意の整数 n に対する S^{≤n} からの余連続関手を n-cotruncated 対象と対応させる評価の型は見つからない。 |
+| 8.4.5.1 | partial → partial | component | Cを小準圏、標準Yonedaに限ればpresheaf_exists_yonedaLeftKanとunit_isIsoは同じfについてFとF∘h≅fという原文の延長・回収の結論成分を直接作る。そのFが指定Gの左随伴という条件は含まない。 |
+| 8.4.5.2 | partial → partial | direction | 原文(2)の同じFに右随伴があるとき、小形状の余極限を左随伴が保存する本体の定理を適用すれば(1)を直接得る。P_Σの別の保存判定は根拠とせず、(1)⇒(2)は含まない。 |
+| 8.4.5.3 | partial → partial | direction | 本体のQCatAdjunctionの右随伴による極限保存は、原文の同じFについて(1)⇒(3)を直接与える。Mathlibの通常圏の保存だけを根拠とはしない。表現可能性(2)と逆向きは含まない。 |
+| 8.4.5.4 | partial → none |  | 固定宇宙の前層上のYoneda左Kan延長は、原文のS_<κ値の同じ指定Gの左随伴への比較を持たない。unitの可逆性だけはその随伴と同じ結論ではない。 |
+| 8.4.5.6 | partial → none |  | reflectionMappingEquivalenceは同じ単位の前合成による写像空間同値で、原文のF自身による後合成θとは異なる射。isLocalForHomの表現可能反転も、そのθと同定する型がない。 |
+| 8.4.6.1 | partial → partial | special | 𝕂を小κ-filtered形状、hを小準圏CのindYonedaに指定すると、Indのκ-filtered余完備性とindKappaContinuousRestrictionEquivalenceが同じ二条件を直接与える。任意𝕂と任意hを判定する定義全体は含まない。 |
+| 8.4.6.3 | partial → partial | component | 𝕂を小κ-filtered形状、Cを小準圏に限ると、Indの余完備性・制限同値とindYoneda_isFullyFaithfulは同じK-cocompletionの存在と充満忠実性を直接返す。任意𝕂、densityと全既存極限保存の成分は含まない。 |
+| 8.4.6.6 | partial → none |  | Indの最小κ-filtered閉包は固定宇宙の前層圏内の構成。原文の指定したS_<κ内での任意の形状族の最小閉包との型の比較がなく、単なる最小性の類似だけは数えない。 |
+| 8.4.6.8 | partial → partial | special | 𝕂を小κ-filtered形状とし、閉包を標準Indで表示する場合、Indのκ-filtered余完備性とindKappaContinuousRestriction_isQCatEquivalenceは同じYoneda制限の普遍性を直接返す。指定濃度で切った別の閉包模型への比較と任意𝕂は含まない。 |
+| 8.4.6.9 | partial → partial | special | 𝕂を小κ-filtered形状、閉包を標準Indに限ると、ind_exists_leftKanExtension_with_recoveryとindLeftKanExtension_preservesSmallKappaFilteredColimitsは同じfの拡張と回収同型およびκ-filtered保存を直接返す。任意𝕂の閉包は含まない。 |
+| 8.4.6.10 | partial → partial | special | 𝕂を小κ-filtered形状、閉包を標準Indに限ると、indLeftKanExtension_preservesSmallKappaFilteredColimitsは同じ指定Fについて左Kan拡張⇒κ-cocontinuousの向きを直接返す。任意𝕂と逆向きは含まない。 |
+| 8.4.6.11 | partial → partial | special | hをindYoneda、𝕂を小κ-filtered形状に限ると、指定αの左Kan性からunit_isIsoとpreservesSmallKappaFilteredColimitsが同じαの(2)⇒(1)を直接与える。任意のcocompletionと逆向きは含まない。 |
+| 8.4.6.12 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：左ファイブレーションの分類の基底変更と左余終性の slice 判定はある。K-余完備化への制限ファイバー積の射影の左余終性を輸送表現の K-余連続性で判定する型は見つからない。 |
+| 8.4.6.13 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：Ind-Yoneda 上の恒等関手の延長に使える型と、前層圏から Ind 部分圏への反射随伴はある。任意の K-余完備化 h の左随伴存在を C の K-余完備性と比較し、恒等関手の延長だとする型は見つからない。 |
+| 8.4.7.1 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：各 C での Ind-Yoneda と関手の制限同値はある。QC の自己関手 T の単位の全頂点が K-余完備化であり、T の全辺が K-余連続となる定義は見つからない。 |
+| 8.4.7.2 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：κ-filtered と sifted の場合に、個々の始域に対する制限同値を構成する。任意の小さい形状族に対して QC 全体の自己関手を作り、その同型を除いた一意性を示す型は見つからない。 |
+| 8.4.7.3 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：個別の Ind に対する制限同値と presentable 圏上の余連続射の準圏模型はある。λ-small 準圏全体の自己関手と単位に K-余完備化および K-余連続性を課す述語は見つからない。 |
+| 8.4.7.5 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：濃度変更の条件と一つの κ の Ind に対する普遍性はある。指数余終性で任意の形状族の余完備化が λ-small に収まり、QC_{<λ} の自己関手として同型を除き一意となる型は見つからない。 |
+| 8.4.7.7 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：特定の Ind の制限同値と、左 Kan 延長を h Fun の Hom 集合で比較する型はある。任意の K と λ で余完備化、λ-small 標的の関手圏、core、h QC の四判定を往復する型は見つからない。 |
+| 8.4.7.8 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：固定 C の前層圏から Ind または Σ 部分圏への反射随伴はある。QC_{<λ} の K-余完備部分の包含への左随伴と、任意の η をその単位とする判定は見つからない。 |
+| 8.4.7.9 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：固定 C の Ind の普遍性と、別の前層包含に対する随伴はある。全 λ-small C での存在から一つの自己関手 T を作り、その K-余完備部分圏への因数分解で特徴づける型は見つからない。 |
+| 8.4.7.10 | partial → none |  | indInfinity_isLocallySmallは固定宇宙の局所小性。原文の特定λでの局所λ-small性とecf(λ)-小形状の閉包への大きさ比較がなく、同じ結論とはしない。 |
+| 8.4.7.12 | partial → partial | special | Cを小準圏、𝕂を小κ-filtered形状、cocompletionを標準Indに限るとindInfinity_isLocallySmallは原文の同じ余完備化の局所小性を直接返す。任意𝕂と任意の局所小Cは含まない。 |
+| 8.4.7.14 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：Ind の局所小ささは写像空間についての型で、濃度変更の条件も定義される。κ-small 形状族の自由閉包全体が本質的 λ-small になるという対象も含む濃度評価は見つからない。 |
+| 8.4.8.1 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：全小余極限保存の述語と、前層評価が κ-filtered 余極限を保つ型はある。局所小かつ余完備な任意の D の対象に対し、全 Hom 関手の全小余極限保存を要求する atomic 述語は見つからない。 |
+| 8.4.8.3 | partial → none |  | IsDetectingは通常圏のHom集合の全単射で可逆性を判定する。原文の同じ準圏のKan写像空間の同値による検出条件との比較がない。 |
+| 8.4.8.6 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：標準 Yoneda の充満忠実性と各前層の正準余錐の余極限性はある。任意の f で像の atomic 性と弱密度から余完備化を復元する判定は見つからない。 |
+| 8.4.8.7 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：個別の Ind の局所小ささと、前層圏で表現可能対象からの生成はある。局所小余完備な任意の D が小さい atomic 弱密族を持つことと自由余完備化の存在を結ぶ iff は見つからない。 |
+| 8.4.8.8 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：充満忠実性の後合成への移送と Ind の Yoneda 自体の充満忠実性はある。f=F∘h とその像の Hom の K-余連続性だけから拡張 F が充満忠実となる型は見つからない。 |
+| 8.4.8.9 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：Ind の特定の制限同値と κ-filtered 余極限での閉性はある。任意の形状族について、K-余完備性・充満忠実性・像の Hom 保存・生成という四条件で f を判定する型は見つからない。 |
+| 8.4.8.10 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：Ind の閉性と、通常圏で生成対象の包含を形状族の閉包へ移す単調性はある。元の K-余完備化 f を全部分圏へ制限し、生成部分への新たな余完備化とする型は見つからない。 |
+| 8.4.9.1 | partial → none |  | elementsとYoneda sliceの同値は特定の底上の比較。原文のĈ,Êの余完備化の条件(b)(c)を同時に満たす図式ではなく、pullbackだけの別図式は直接の成分としない。 |
+| 8.4.9.6 | partial → none |  | 元のelements準圏とYoneda commaの比較は、原文の全前層圏P(E)とP(C)_/Fの間の同じTの圏同値ではない。対象と射影の比較が不足。 |
+| 8.4.9.7 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：右ファイブレーションと表現可能 Hom の比較、および厳密 filtered 図式のファイバー余極限はある。K-余連続な右ファイブレーションで h^{U(X)} の K-余連続性から h^X の保存性を導く型は見つからない。 |
+| 8.5.1.3 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：指定した二端点の retract から関手圏内で何らかの辺への retract を作る型と、通常圏の射の retract はある。あらかじめ指定した f と g に対する h C の可換四角形から同じ二辺の coherent retract を戻す iff は見つからない。 |
+| 8.5.1.7 | partial → none |  | 通常圏のisomorphismsのretract閉性を原文のh Fun(Δ¹,C)内のretractへ移す、同じ矢を保つArrow(hC)への比較関手を引用に持たない。 |
+| 8.5.1.8 | partial → partial | component | 包含δがさらにIsIdempotentCompletion（標的の冪等完備性も含む）を満たす場合、canonicalCocones_isColimitは同じFの全標準左Kan余錐の余極限性を直接返す。右Kan側と単なるretract生成だけの一般形は含まない。 |
+| 8.5.1.9 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：局所の comma 余錐の相対判定と、固定形状の図式間の retract による絶対余極限の移送はある。入力頂点 X からその retract Y に移るときの二つの comma 形状と相対普遍性を比較する型は見つからない。 |
+| 8.5.1.10 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：相対始頂点が retract に閉じ、標準相対左 Kan 性は局所相対余錐の条件である。関手圏で与えた retract が各標準余錐に誘導する比較を含む閉性の型は見つからない。 |
+| 8.5.1.11 | partial → partial | special | Uを終対象への射に限ると相対余極限は絶対余極限。isColimitCone_of_functorRetractionは同じ全余錐の関手準圏内のretractへ余極限性を直接移す。一般Uは含まない。 |
+| 8.5.1.13 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：通常圏の射の lifting property の retract 閉性と、個別辺の cocartesian ホーン判定はある。Fun(Δ¹,D) の coherent retract からホーン条件を移し、任意の U について同じ辺の cocartesian 性を得る型は見つからない。 |
+| 8.5.1.14 | partial → own |  | 同じFからGへの全関手準圏内のVertexRetractionを、指定K余錐へのprecompositionで写すと全余錐のVertexRetractionになる。isColimitCone_of_functorRetractionを適用すれば同じ余錐のG像が余極限。全Kでこの型を使え、κ-filteredだけに限る必要はない。 |
+| 8.5.1.15 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：空間の 0-truncated 性の述語と、Kan 複体の可縮性のホモトピー retract への移送はある。任意の準圏で一般の n に関し対象と射の truncation をそれぞれ retract に移す型は見つからない。 |
+| 8.5.1.18 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：本質的小性は左ファイブレーションのファイバーに対して定義され、充満忠実像内の対象の retract に別の結果がある。QC の対象の retract による本質的 κ-small 性の閉性は見つからない。 |
+| 8.5.1.20 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：左ファイブレーションの各 Kan ファイバーが小さい模型を持つ述語はある。空間圏で本質的 κ-small な Kan 複体の retract に同じ濃度の模型を与える型は見つからない。 |
+| 8.5.1.27 | partial → none |  | WalkingSplitとSplitShapeは原文の特定の三角形σとそのimage Rを構成しない。Retという添字があるだけをこの記法の構成成分と数えない。 |
+| 8.5.1.33 | partial → none |  | weakComparisonRestrictionの余域は長辺を恒等に潰したWeakShapeの関手空間。原文の全Fun(Δ²,C)への同じ制限の充満忠実性と本質的像への比較がない。 |
+| 8.5.1.35 | partial → none |  | finiteInternalHomのfiltered余極限保存は有限形状だけ。原文のN(Ret)全体の同じθへの移送の可換式と、filtered余極限での比較の同値性は引用にない。 |
+| 8.5.2.1 | partial → mathlib |  | Karoubi Cの対象はX:Cとp:X→Xとp≫p=pというデータそのもの。原文の個別冪等射(X,e)の全型を直接表せるため、圏全体のIsIdempotentCompleteだけという旧引用を置き換える。 |
+| 8.5.2.4 | partial → mathlib |  | 与えたi,rにi≫r=id、r≫i=eを用いればIsSplitEqualizer e id iとその双対のsplit coequalizerのフィールドを直接満たす。isEqualizerとisCoequalizerは原文の同じiとrの普遍性を直接返す。 |
+| 8.5.2.5 | partial → mathlib |  | 分裂からはsplit equalizer/coequalizerの普遍性を用いる。逆に(e,id)のequalizer ιがあればequalizer.lift eでrを作り、lift_ιとequalizerの単射性でι≫r=id、r≫ι=eを得る。coequalizerは双対。この同じeの三条件のiffを直接得る。 |
+| 8.5.3.8 | partial → partial | component | splittingCanonicalCocones_isColimitは原文の同じN(Idem)包含とF̄について全標準左Kan余錐の余極限性、すなわち左Kan側を直接返す。右Kan側はsplittingDiagramConeの別の極限錐だけで代用しない。 |
+| 8.5.4.3 | partial → none |  | 通常圏の冪等完備性の判定と、全N(Idem)図式の極限による準圏の判定はあるが、原文の有限極限と局所n-truncationだけから同じ準圏の冪等完備性を返す型はない。 |
+| 8.5.4.10 | partial → partial | stronger-hyp | 部分圏の頂点述語をretractに厳密に閉じると強めればfullSubcomplex_isIdempotentCompleteは同じ全部分準圏の冪等完備性を直接返す。同型な代表だけが含まれる一般形は含まない。 |
+| 8.5.4.15 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：WalkingSplit の有限交互列と WalkingIdem の指定冪等射はある。両方向に無限な整数の spine 上で各辺を同じ冪等射に送る単体写像 Q は見つからない。 |
+| 8.5.4.19 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：Idem の nerve から WalkingSplit の nerve への包含が両向きに余終となる型はある。始域が整数 spine で終域が Idem の Q に対する両余終性は見つからない。 |
+| 8.5.4.20 | partial → none |  | N(Idem)のκ-filtered性は自然数列の極限・余極限の存在からN(Idem)図式の存在を直接与えない。sequentialな形状との比較が引用にない。 |
+| 8.5.4.25 | partial → none |  | functor_isIdempotentCompleteは全関手準圏の型。原文の指定oriented fiber productとの比較同型を引用で確認していない。恒等への特殊化だけで同じ対象と数えない。 |
+| 8.5.4.27 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：冪等完備な底から左または右ファイブレーションで全空間へ移す型と同値不変性はある。底を冪等完備とせず二脚の始域だけを仮定する任意のホモトピー引き戻しの型は見つからない。 |
+| 8.5.4.28 | partial → partial | stronger-hyp | 同じG₁:C₀₁→C₁がrightまたはleft fibrationでもあると強めると、isIdempotentComplete_of_right/leftFibrationは同じC₀₁の冪等完備性を直接返す。任意のcategorical pullbackだけの場合は含まない。 |
+| 8.5.4.29 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：冪等完備な X を値域とする関手準圏の完備性がある。QC の充満部分圏で非定値の任意の小図式に対して極限閉性を述べる型は見つからない。 |
+| 8.5.5.3 | partial → partial | direction | IsIdempotentCompletion.pre_isQCatEquivalenceは原文の同じHについて(a)⇒(b)を直接返す。普遍性から充満忠実性とretract生成を回収する逆向きは含まない。 |
+| 8.5.5.5 | partial → none |  | Idem Cはretract presheafを張る部分圏。原文の全小余極限をHom(F,−)が保存するatomを張る部分圏との同定を引用型に持たないため、別の部分圏への冪等完備化だけは数えない。 |
+| 8.5.5.6 | partial → none |  | κ-filtered余極限に関するcompact性は、原文のκ-small余極限すべてをHomが保存するatomic性とは異なる条件。idemToCompactの充満忠実性だけから同じ全部分圏への分解は得られない。 |
+| 8.5.5.7 | partial → none |  | IsLocallySmall.of_fullyFaithfulの宇宙による局所小性は、原文の指定κにおける本質的κ-small性とのiffへの大きさの比較を含まない。 |
+| 8.5.5.8 | partial → none |  | idemYonedaの対象ごとの存在と前合成普遍性はあるが、原文の指定したQC全体の包含に対する左随伴関手を与える型ではない。対象ごとの普遍性からその全関手を組む比較は引用にない。 |
+| 8.5.5.9 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：同じ冪等完備な値域を持つ関手準圏は完備になる。各頂点が異なる準圏を取り得る小図式の QC 内の極限へ完備性を移す型は見つからない。 |
+| 8.5.5.10 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：完備な準圏の適切な充満像の retract closure の完備性と、準圏同値による保存はある。h QCat の対象としての任意の retract に完備性を移す型は見つからない。 |
+| 8.5.6.1 | none → partial | special | Fを準圏間の冪等完備化に限ると、pre_isQCatEquivalenceは任意の冪等完備Eについて同じ前合成同値を直接返し、原文のMorita条件を満たす。任意の単体写像を判定する定義全体は含まない。 |
+| 8.5.6.10 | partial → none |  | 小左ファイブレーションの分類と冪等完備化の制限同値は候補だが、原文の任意Morita射と全左ファイブレーションの引戻し写像を同じ分類上の前合成と結ぶ型は引用にない。 |
+| 8.5.6.11 | partial → partial | stronger-hyp | 標的Dの冪等完備性を加えると、原文(a)(b)はIsIdempotentCompletion Fを与え、pre_isQCatEquivalenceが任意の冪等完備Eに対して同じ前合成同値を返す。これはMorita定義の同じテストを満たす向き。逆向きと任意Dは含まない。 |
+| 8.5.6.12 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：任意の標的への前合成同値の述語と冪等完備化に対する制限同値はある。任意の単体写像について、Morita 条件に hF の本質的全射性を足すと通常の categorical equivalence になる iff は見つからない。 |
+| 8.5.6.13 | partial → partial | stronger-hyp | C,Dを準圏、Fを冪等完備化にも強めるとop_generalと前合成普遍性からFopも任意冪等完備標的への前合成同値を与える。(1)⇒(2)のこの場合に一致し、κ値前層の条件(3)(4)は含まない。 |
+| 8.5.6.14 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：cartesian 辺保存の判定と、冪等完備化に沿う右ファイブレーションの引き戻しを確認した。底写像と各ファイバー写像が Morita のとき、任意の cartesian ファイブレーションの全空間写像に Morita を移す型は見つからない。 |
+| 8.5.6.15 | partial → partial | stronger-hyp | 底のFを準圏間のinner fibrationかつ冪等完備化に強めると、pullback_rightFibrationは同じpullback射を冪等完備化とし、その前合成普遍性が同じ射のMorita条件を返す。任意のMorita射は含まない。 |
+| 8.5.6.16 | partial → partial | stronger-hyp | Fを準圏間のinner fibrationかつ冪等完備化に強めるとisRightCofinalとcofinalな射の合成から、同じGが右余終ならGFが右余終という向きを直接得る。任意Morita射の場合と反映の向きは含まない。 |
+| 8.5.6.17 | partial → partial | stronger-hyp | Fを準圏間の冪等完備化かつinner fibrationに強めるとIsIdempotentCompletion.isRightCofinalは原文の同じFがright cofinalという結論を直接返す。任意Morita射は含まない。 |
+| 8.5.6.18 | partial → partial | stronger-hyp | 底の同じ冪等完備化Fにinner fibrationを追加すると、pullback_rightFibrationは指定pullbackの同じ射が冪等完備化となる結論を直接返す。 |
+| 8.5.6.20 | partial → none |  | 既にある終頂点を完備化へ送る型は、原文のN(Idem)からの右余終図式の存在とのiffではない。idemInclusionも指定Cへの図式とは別の射。 |
+| 8.5.7.1 | partial → partial | component | S1の平行対の余等化子と一般の内部Homから原文のFun(S1,C)というEnd準圏自体を構成できる。対象の自己射データとの全単射の型までは引用しない。 |
+| 8.5.7.3 | partial → none |  | CoherentIdempotent.endomorphismの値はhCの射であり、原文の固定された実際の辺eとの等式ではない。N(Idem)図式だけではその辺を固定した部分圏の条件を直接返さない。 |
+| 8.5.7.4 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：弱 retract 図式からの強い分裂の延長と、coherent idempotent の一辺の評価はある。End_C^{idm} へ制限する関手自体の左ホモトピー逆写像は見つからない。 |
+| 8.5.7.5 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：coherent idempotent を指定辺で評価でき、弱 retract 図式を固定した強い分裂の空間は可縮である。分裂のデータを固定せずに End_C^{idm} と両 core の π₀ を比較する全単射は見つからない。 |
+| 8.5.7.8 | partial → none |  | WeakRetractionDiagramは指定単体形状からの写像で、原文の固定された[e]の分裂そのものを型に含まない。StrongSplittingもN(Idem)図式を固定する別の入力。専用述語名の有無ではなく同じ[e]への比較の不足。 |
+| 8.5.7.10 | partial → none |  | weakDiagram_strongSplitting_existsは弱retract図式を固定する。原文の固定された実際の辺eを同じ分裂に延長する型への比較を含まず、形状の延長だけを同じeのiffとしない。 |
+| 8.5.7.11 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：単体円と WalkingSplit の有限交互列および通常圏の可算余積の telescope はある。整数 spine から単体円への被覆で前合成し、任意の endomorphism を両方向に繰り返す関手は見つからない。 |
+| 8.5.7.12 | partial → none |  | N(Idem)図式の極限・余極限と分裂のiffは、原文の整数spine上の指定T_eの極限と異なる図式。制限による極限の同値への比較が引用にない。 |
+| 8.5.7.14 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：coherent idempotent の強い分裂を Idem の nerve の極限または余極限で判定する型はある。任意の e の整数 spine 上の極限・余極限と指定の合成の可逆性を要求する弱分裂の述語は見つからない。 |
+| 8.5.7.15 | partial → none |  | WalkingSplitとSplitShapeはRetの模型だが、整数spine上の指定Qを延長する同じQ±とその一意性を返さない。形状自体だけは延長という結論の成分に数えない。 |
+| 8.5.7.16 | partial → none |  | 分裂図式のN(Idem)上の制限錐・余錐の普遍性はあるが、原文の整数spine上の指定Q±Fとは異なる図式。 |
+| 8.5.7.17 | partial → none |  | StrongSplittingのN(Idem)錐・余錐は、原文の整数spineによるweak split条件とその比較合成の可逆性を返さない。 |
+| 8.5.7.19 | partial → none |  | pre weakComparisonの標的は弱retract図式の全空間であり、原文のweakly splitな自己射のEnd^wとは別の空間。同じ制限射に対する逆は引用にない。 |
+| 8.5.8.1 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：coherent idempotent の指定辺の h 圏での冪等性は得られる。任意の一辺 e に対して、そのホモトピー類の冪等性だけを要求する独立の述語は見つからない。 |
+| 8.5.8.4 | partial → none |  | 弱retract図式の延長は、指定eの整数spine図式と比較していない。(1)(2)の定義上の言い換えを除き、引用型から同じeのhomotopy idempotence・弱分裂・指定極限との含意を直接得られない。 |
+| 8.5.8.5 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：特定の coherent 冪等図式の極限・余極限の存在を冪等完備性で判定する。単一の homotopy idempotent を入力に、二つの逐次（余）極限の指定合成の可逆性から coherent 冪等性を判定する型は見つからない。 |
+| 8.5.8.6 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：coherent splitting から頂点 retract を得る型と空間の小極限はある。連結な基点つき Kan 複体の homotopy idempotent に split 冪等性を与える型は見つからない。 |
+| 8.5.8.7 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：coherent splitting の頂点 retract は構成される。指定基点への lift の存在と unpointed 冪等性を比較する iff は見つからない。 |
+| 8.5.8.9 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：二進有理数の実数への変換と一般の同相写像はある。有限の折点を二進有理数に限り、傾きがすべて 2 の整数冪となる区分線形同相写像の定義は見つからない。 |
+| 8.5.8.12 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：同相写像の通常の合成と二進有理数の実数表示はある。[0,1] の同相写像のうち二進折点と指定傾きの条件を満たすものを群にする型は見つからない。 |
+| 8.5.8.13 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：単位区間の宇宙持ち上げとの同相はある。二進有理数を保つ区間の自己同相の群と、左半区間への縮小と右半区間の恒等を貼る自己準同型の宣言は見つからない。 |
+| 8.5.8.14 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：coherent な場合の h 圏の冪等性と通常圏の nerve 写像はある。Thompson 群の指定 α から BAut_Dy 上のホモトピー冪等な e を作る型は見つからない。 |
+| 8.5.8.15 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：coherent idempotent の辺評価と弱 retract 図式からの強い分裂の延長はある。指定した BAut_Dy 上の e が coherent idempotent に由来しないことを示す型は見つからない。 |
+| 8.5.9.4 | partial → partial | component | exists_innerAnodyne_innerFibration_factorizationを指定骨格包含に適用すると、同じ射のinner anodyneとinner fibrationへの分解を直接得る。N(Idem)が準圏なので中間も準圏。低次数の全単射と右逆Vは含まない。 |
+| 8.5.9.6 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：骨格と、retract を含む弱い図式を強い分裂へ延長する型はある。Idem の (n−1) 骨格の写像について n 骨格への延長だけで全 Idem への延長が得られる iff は見つからない。 |
+| 8.5.9.8 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：coherent idempotent の指定辺と弱い retract 図式の強い延長はある。任意の辺について Idem の 3 骨格への延長と全 coherent idempotent への延長を結ぶ iff は見つからない。 |
+| 8.5.9.9 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：有限形状の内部 Hom は通常の filtered 余極限を保ち、Idem の全形状での余極限による完備性の判定はある。無限の N(Idem) に対する指定比較 θ が準圏同値となる型は見つからない。 |
+| 8.5.9.10 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：単独の準圏で Idem の余極限により冪等完備性を判定し、厳密な filtered 余極限が準圏であることは確認できる。その頂点で冪等完備性を保存する型は見つからない。 |
+| 8.5.9.11 | partial → partial | special | n=1に限ると終対象へのinner anodyne/inner fibration分解から同じKの準圏置換を得て、innerAnodyne_vertex_bijectiveが必要な全次数<1の全単射を返す。一般nでの低次数保存は含まない。 |
+| 8.5.9.13 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：coherent idempotent の辺の h 圏での冪等性と、内 anodyne の頂点での全単射性はある。指定された 3 骨格写像の 2 次以下の全単射性からその辺の coherent idempotent 性を得る型は見つからない。 |
+| 8.5.10.1 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：二進有理数の実数表示と一般の同相写像はある。[0,s] を対象とし二進折点と傾きを制限した同相写像を射とする Thompson 亜群の定義は見つからない。 |
+| 8.5.10.3 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：単位を備えるモノイド圏の構造と二進有理数の実数での加法はある。二つの区間同相写像を指定の平行移動で貼り、零区間を厳密単位とする結合関手は見つからない。 |
+| 8.5.10.4 | partial → none |  | MonoidalSingleObjは任意のモノイド圏からの通常の構成で、原文の具体的Dy、指定射x↦2x、豊穣からDuskinへの同じ写像Fを返す型ではない。 |
+| 8.5.10.5 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：前合成同値の一般述語とモノイド圏の delooping はある。Idem の 2 骨格から BDy の Duskin nerve への指定写像の categorical equivalence は見つからない。 |
+| 8.5.10.6 | partial → none |  | 一般の前合成のtrivial Kan判定は、原文の具体的BDyの2骨格包含に対する前合成同値の仮定を供給しない。 |
+| 8.5.10.7 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：coherent idempotent の辺の h 圏での冪等性と一対象双圏はある。任意のホモトピー冪等 e を BDy の Duskin nerve からの関手の指定辺の像として特徴づける型は見つからない。 |
+| 8.5.10.9 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：一般の単体豊穣圏の coherent nerve と通常のモノイド圏の delooping はある。2 骨格の path category から N(Dy) への単体モノイド準同型で e と h の像を指定する型は見つからない。 |
+| 8.5.10.11 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：弱ホモトピー同値の述語と coherent nerve はある。2 骨格の path category の自己射から Thompson 亜群の nerve への指定準同型 φ が弱ホモトピー同値となる型は見つからない。 |
+| 8.5.10.12 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：二進有理数の実数表示と区間同相に使える一般の型はある。整数長区間の各単位区間で x↦(x+a)/2^b の形を要求する射と、Dy₊ の部分圏は見つからない。 |
+| 8.5.10.15 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：内 anodyne の一般的な超限合成による判定と coherent nerve はある。指定 φ を N(Dy₊) 経由で因数分解し、その第一因子を内 anodyne とする型は見つからない。 |
+| 8.5.10.16 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：同相写像の逆と二進有理数の加法はある。有限集合 J が指定する単位区間だけ傾きを 2 とする b_J およびその逆を elementary contraction とする型は見つからない。 |
+| 8.5.10.18 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：内 anodyne の一般の生成条件と coherent nerve はある。N(Dy₊) で elementary contraction を指定し、短い射のクラスの条件を検証する型は見つからない。 |
+| 8.6.1.1 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：逆圏の辺・持ち上げと Tw の二射影を確認した。原文は全空間を反転せず、Tw(C) 上の T が恒等射のファイバーで同値かつカルテシアン辺を余カルテシアン辺に送るという三条件を課す。この述語に達する宣言は未確認。 |
+| 8.6.1.5 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：既存の一意性は同じ余カルテシアン・ファイブレーション上の二つの輸送関手を比較する。原文にある別々のファイブレーションの T_C を縦辺とする輸送正方形の同型は未確認。 |
+| 8.6.1.6 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：既存の輸送の一意性は同一射上で選んだ輸送表示を比較する。原文では共役 T の各 T_C を成分として異なる二つの表示の自然同型を作る。この成分を持つ比較は未確認。 |
+| 8.6.1.7 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：輸送表示の一意性と右ファイブレーションを逆圏で左に移す圏同値を確認した。一般の共役なカルテシアン・余カルテシアン対について hC 上の輸送表示が同型になる結論は未確認。 |
+| 8.6.1.8 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：Tw(E) の積への左ファイブレーション性、射影の自然性、左ファイブレーションの逆圏を確認した。Tw(E) から Eᵒᵖ×_{Cᵒᵖ}Tw(C) への特定の比較の自明 Kan 性と、その切断による共役は未確認。 |
+| 8.6.1.9 | partial → partial | component | Grothendieck/CoGrothendieckの構成は同じ通常圏値Fのint±という二つの入力圏の対象・射を直接与える。原文のそれらを合わせるTの全構成は含まない。 |
+| 8.6.1.10 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：両 Grothendieck 構成の忘却関手と、別模型である重み付き神経の余カルテシアン性はある。原文の T の神経がファイバー同値と辺保存を満たす結論は未確認。 |
+| 8.6.1.11 | partial → partial | component | weightedNerveとその射影は同じ通常圏値FのE側の加重脈体と底への射影を直接与える。反対側を併せたTという全構成は含まない。 |
+| 8.6.1.12 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：重み付き神経の射影の余カルテシアン性と辺を逆圏に送る比較はある。原文の点ごとに逆圏を取った重みを使う T が共役を与える結論は確認できない。 |
+| 8.6.1.13 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：余カルテシアン辺の三角形での合成・消去を確認した。任意の T の辺保存と、Tw(C) の e_L に対する余カルテシアン性および e_R に対するファイバー内同型性との同値は未確認。 |
+| 8.6.2.1 | partial → partial | component | fiberwiseHomとfiberwiseHomEquivはλ−とEの同じ相対指数対象およびその写像の普遍性を直接与える。追加のD+上の条件で切る部分全体は含まない。 |
+| 8.6.2.2 | partial → none |  | markedCocartesianFunctorSpaceは固定始域の関手空間。原文の底の頂点ごとに始域が変わる全相対指数対象の同じ部分圏との比較を引用に持たない。 |
+| 8.6.2.3 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：固定標的へのファイバーごとの Hom はカルテシアン、固定形状の切断の始点評価には圏同値がある。Tw 上で指定した全部分圏の射影とその評価が同時に共役を与える結論は未確認。 |
+| 8.6.2.4 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：逆圏を取ると全空間の各ファイバーも反転する。固定標的を持つファイバーごとの Hom がカルテシアンになる宣言も調べたが、任意の U のファイバーと同値になる共役を構成する結果は未確認。 |
+| 8.6.2.6 | partial → none |  | 固定標的のfiberwiseHomProjectionのcartesian性は原文のD+上で制約した相対指数対象の射影ではない。D+を点に限る場合も同じ制約付き対象への比較同型を引用で確認できていない。 |
+| 8.6.2.7 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：指定辺を送る全部分圏の準圏性と、別模型であるファイバーごとの Hom の辺に関する結果はある。原文の Tw の切断をカルテシアン辺で移した際の閉性、射影の制限、辺の反映は確認できない。 |
+| 8.6.2.8 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：引戻しを用いるカリー化と、固定形状で指定辺を送る条件を確認した。原文の共役条件と Cᵒᵖ 上の変動するマーク付き相対指数への圏同値の同値は未確認。 |
+| 8.6.2.9 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：固定した図式へのマーク付き相対関手と、edgewise subdivision を使う別の相対関手の逆圏比較を確認した。共役 T との合成の充満忠実性、および各 Tw ファイバーで辺保存を課す本質像は未確認。 |
+| 8.6.3.1 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：既存の edgewise subdivision とマーク付き相対関手は別の構成。右脚が余カルテシアンな Cospan(E) を Cᵒᵖ に引き戻す対象を確認できなかった。 |
+| 8.6.3.5 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：逆圏の持ち上げとファイバーごとの Hom のカルテシアン性を確認した。原文の脚に条件を課した Cospan 引戻しのカルテシアン性と共役性は未確認。 |
+| 8.6.3.6 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：Mathlib の普通の span の双圏と、単体的集合の逆圏での辺の比較を調べた。Cospan(U) の制限がカルテシアンで、辺が左脚同型かつ右脚余カルテシアンと同値になる主張は未確認。 |
+| 8.6.3.8 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：既存の辺判定はファイバーごとの Hom のホーン持ち上げ、または逆圏の辺の比較。引き戻した Cospan の辺の二脚と、その一方がファイバー内で同型という判定は未確認。 |
+| 8.6.3.9 | partial → partial | component | twistedArrowOppositeSwapとその二射影との可換性から、原文の8.87の最初のTw(E†)からの射と底との可換図式を直接構成できる。全相対指数への転置Ψとその比較までは含まない。 |
+| 8.6.3.11 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：Tw の逆圏比較と別の相対指数のカルテシアン性はある。Ψ がマーク付き Cospan を経由しカルテシアン・ファイブレーションの同値を与えることとの必要十分条件は未確認。 |
+| 8.6.3.14 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：輸送表示の一意性は表示の選択を変える結果で、逆圏の同値は右・左ファイブレーション用。任意の余カルテシアン・ファイブレーションに対する共役の存在と、底上のファイブレーションとしての一意性は確認できない。 |
+| 8.6.3.15 | partial → partial | component | edgewiseSubdivisionMapを評価射evに適用したTw(ev)は原文の指定合成の最後の射そのもの。先行するΞと、そのΞを含む合成全体の同値は含まない。 |
+| 8.6.3.17 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：edgewise の圏同値は別の enriched nerve 比較。原文の Ξ の標的は Tw(C) から作った脚条件付き Cospan であり、その特定の比較の圏同値は未確認。 |
+| 8.6.3.18 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：両端評価の内ファイブレーション性、Tw(C) の積への射影および固定始点からの左ファイブレーション性を確認した。原文の始点評価を共役として特徴付ける比較は未確認。 |
+| 8.6.4.1 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：Tw の左ファイブレーション、余カルテシアン辺の合成と輸送を確認した。原文は任意の二つの射の引戻し上の左ファイブレーションに、各ファイバーの balanced coupling と普遍頂点の輸送保存を課す。この述語は未確認。 |
+| 8.6.4.7 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：同一射上の輸送関手の一意性と余米田の充満忠実性はある。Δ¹ 上の二つの輸送を両端の coupling の表示関手で結ぶ可換同型正方形は未確認。 |
+| 8.6.4.8 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：輸送表示の辺成分・一意性と余米田の頂点評価を確認した。各 coupling の表示 G_C の同型類を成分とする二つの輸送の自然変換は未確認。 |
+| 8.6.4.9 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：同一の余カルテシアン射の輸送表示の一意性と、左・右ファイブレーションの逆圏同値はある。balanced coupling の表示を成分とする、別々の二つの輸送の自然同型は未確認。 |
+| 8.6.4.10 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：既存の輸送の対象計算は一つの射を扱い、逆圏同値は底も逆にする。原文の同じ底で各ファイバーだけを逆にした輸送表示と双対側の同型は未確認。 |
+| 8.6.4.12 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：Hom の空間値双関手と単独の余表現可能性を確認した。二つのファイブレーションの同じ底上の辺に対し、全てのファイバーでの balanced 性と普遍頂点の保存を同時に述べる定義は未確認。 |
+| 8.6.4.13 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：小さい空間値の余表現可能性と空間の宇宙変更はある。任意の非可算 κ で局所 κ-小なファイバーを許し、S_{<κ} に値を取る相対 balanced pairing の条件は未確認。 |
+| 8.6.4.15 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：左ファイブレーションの底変換、Tw の左ファイブレーション性、単一関手の余表現可能性を確認した。原文の左ファイブレーションの双対データと S_{<κ} 値 pairing の存在の同値は未確認。 |
+| 8.6.4.16 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：全空間の端点対は内ファイブレーションで、左ファイブレーションは引戻しで保存される。底で恒等な矢印だけを取った相対経路の E×_C E への射影の左ファイブレーション性と自己双対性は未確認。 |
+| 8.6.4.17 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：Kan 複体の両端評価のファイブレーション性と左ファイブレーションの逆圏を確認した。原文の同じ底・同じ全空間に対する自己双対性は未確認。 |
+| 8.6.4.19 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：擬関手の Grothendieck 射影と重み付き神経の余カルテシアン射影はある。F と点ごとの Fᵒᵖ の二つの Grothendieck 射影の神経を双対として比較する宣言は未確認。 |
+| 8.6.4.20 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：Grothendieck 構成の射と通常の二変数関手のカリー化を調べた。二つの Grothendieck 全空間を底上で引き戻し、射に対して F(u) と二つのファイバー射を合成する Set 値 K は未確認。 |
+| 8.6.4.21 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：通常圏の忘却関手、集合の神経の空間への埋め込みを確認した。指定のファイバー Hom 関手の神経が二つの射影の余カルテシアン双対を与える型は未確認。 |
+| 8.6.4.22 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：重み付き神経の射影は余カルテシアンで、係数変換は余カルテシアン辺を保存する。点ごとの逆圏を重みとした射影との双対性は未確認。 |
+| 8.6.4.23 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：重みの自然変換から底上の射を作る宣言と、Tw の積への射影の自然性を確認した。原文の二つの重み付き神経の引戻しを標的にした pairing の双対性は未確認。 |
+| 8.6.5.1 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：左ファイブレーションの通常圏上の再構成の逆圏比較と、重み付き神経の余カルテシアン性を確認した。任意の底上で各ファイバーを反転する双対の存在と底上の同値による一意性は未確認。 |
+| 8.6.5.2 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：左右のファイブレーションを底ごと反転する既存の圏同値はある。余カルテシアン射を同じ底のまま保つ双対化で同値類に全単射を作る宣言は確認できない。 |
+| 8.6.5.3 | partial → none |  | cartesian fibrationの全反転で得るcocartesian fibrationは、原文の底を固定してファイバーだけ反転するdualityとは異なる構成。 |
+| 8.6.5.6 | partial → none |  | 固定宇宙の空間値分類は、原文の指定された数値κのS_<κ値関手の相対指数と比較する型を含まない。一般の相対指数の補題だけをその同値としない。 |
+| 8.6.5.8 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：単独の準圏の余米田の評価と相対指数の転置はある。S_{<κ} に値を取り、相対指数の余表現可能な部分の評価がファイブレーションの双対となる結果は未確認。 |
+| 8.6.5.9 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：余カルテシアンな U と準圏 D から、原文と同じ射影のカルテシアン性と内ファイブレーション性は得られる。κ-小ささと D の κ-余完備性から逆向きの余カルテシアン性を示す宣言は未確認。 |
+| 8.6.5.11 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：左 Kan 拡張の局所判定と相対指数のカルテシアン辺のホーン判定を確認した。指数可能な U での余カルテシアン性と、Δ¹ 上の射の始点ファイバーからの左 Kan 拡張による余カルテシアン辺判定は未確認。 |
+| 8.6.5.12 | partial → none |  | 同じ指定κ値の相対指数とEのファイバーの比較は引用にない。固定宇宙の分類と混同しない。 |
+| 8.6.5.13 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：余表現可能性を同値な全定義域へ移す宣言と左 Kan 拡張判定を確認した。任意の全部分圏への制限が同じ頂点 η により余表現され、かつ全域が左 Kan 拡張であることとの同値は未確認。 |
+| 8.6.5.14 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：余米田の頂点、輸送の一意性、左 Kan 拡張判定を確認した。U の余カルテシアン辺で η を送る操作が二つのファイバーの余表現と全域の左 Kan 拡張を結ぶ三条件は未確認。 |
+| 8.6.5.15 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：既存の相対指数の辺判定はカルテシアン辺用。原文の余カルテシアン辺を、U の持ち上げによる余普遍頂点保存の存在条件・全称条件で判定する宣言は確認できない。 |
+| 8.6.5.16 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：一つの空間値関手の余表現可能性と一般の余カルテシアン輸送はある。二つの射のファイバー積で余表現可能な pairing を作り、同じ底辺上の二つの持ち上げで余普遍頂点を保存する定義は未確認。 |
+| 8.6.5.18 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：相対指数の転置と固定した指定辺の保存述語はある。Fun^{corep} への因子化、辺保存、底上での圏同値をそれぞれ弱い族・族・双対性に対応させる三つの同値は未確認。 |
+| 8.6.5.19 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：単独の準圏の余米田の充満忠実性と相対指数の転置はある。K との合成の充満忠実性・弱い族による本質像・辺保存および同値の判定をまとめた原文の結果は確認できない。 |
+| 8.6.6.1 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：逆圏で辺の向きとカルテシアン性を変える型、および相対 Tw の射を確認した。balanced coupling を使う双対と T を使う共役の必要十分条件は未確認。 |
+| 8.6.6.2 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：逆圏で Tw の両射影が交換されることと、各辺のカルテシアン・余カルテシアン性の比較はある。二つのファイブレーションの共役を同時反転で交換する iff は未確認。 |
+| 8.6.6.3 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：既存の逆圏同値は左と右のファイブレーション用。任意の余カルテシアン射と Cᵒᵖ 上のカルテシアン射の同値類の間に、ファイバーを保持する共役で全単射を作る結果は未確認。 |
+| 8.6.6.5 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：通常の span の双圏と、指定辺を余カルテシアン辺に送る関手の部分圏はある。左脚を U-余カルテシアン辺に制限した Cospan の C への引戻しのファイブレーション性と双対性は未確認。 |
+| 8.6.6.7 | partial → partial | component | twistedArrowFunctorComparison Uは、Tw(E)からTw(C)をEop×Eへ引き戻した対象への同じ比較λを直接構成する。指定Hの左輸送表現という条件全体は含まない。 |
+| 8.6.6.12 | partial → partial | component | 一般のfiberwiseHomEquivを同じ評価射の引戻し図式へ適用すると、原文の相対指数への転置Tという射の構成を直接与える。Hが空間値Homの場合のYonedaという追加同定は含まない。 |
+| 8.6.6.14 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：単独の準圏での余米田の充満忠実性と相対指数の転置はある。相対余米田の像が各ファイバーで余表現可能で、かつ Uᵒᵖ の共役を与える二結論は未確認。 |
+| 8.6.7.4 | partial → partial | component | QCatとCatInfinityは原文の最初の入力である小準圏の豊穣圏とその脈体を直接構成する。twisted Homを使うQCat^asympと比較πは含まない。 |
+| 8.6.7.6 | partial → none |  | Kan複体だけのedgewise反転は、原文の全準圏を対象とするQCat^asympの指定自己同型ではない。Spaceへの制限であっても指定σとの比較がない。 |
+| 8.6.7.7 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：通常圏の Kan 対象の反転と、Kan の coherent な反転図式はある。QCat 全体の通常の神経から CatInfinity への縦辺を持つ反転の可換正方形は未確認。 |
+| 8.6.7.9 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：単体的集合の射を逆圏で移したときの同値性と、Kan の反転図式の同値はある。CatInfinity 自己関手 σ の二乗が恒等と関手同型になる型は未確認。 |
+| 8.6.7.11 | partial → none |  | 空間のedgewise共通解像上の比較はあるが、原文のCatInfinity上の指定σを制限した関手との同一視を含まない。別の射同士の同型としてnone。 |
+| 8.6.7.12 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：空間値図式の反転と、左・右ファイブレーションの比較はある。任意の余カルテシアン双対を、CatInfinity 値の coherent 輸送表示の σ との後合成で特徴付ける iff は未確認。 |
+| 8.6.8.1 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：反変の辺輸送はカルテシアン射から構成される。全体の表示は左・右ファイブレーションと空間値について確認した。一般の E→C を Cᵒᵖ 上の CatInfinity 値図式の共役として表す述語は未確認。 |
+| 8.6.8.3 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：空間値の右ファイブレーションの逆圏比較と有限単体上の余カルテシアン straightening がある。ファイル名の cartesian extension は左ファイブレーションの引戻し正方形による表示の延長であり、一般のカルテシアン射の存在・一意性・全単射は未確認。 |
+| 8.6.8.4 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：固定した宇宙の CatInfinity と、小ささを使う空間値左ファイブレーションの表示を確認した。任意の非可算 κ で QC_{<κ} 値の表示が存在する条件および同値類の全単射は未確認。 |
+| 8.6.8.5 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：CatInfinity 値の関手圏と辺の反変輸送はある。一般のカルテシアン射を Fun(Cᵒᵖ,QC) の関手同型類として割り当てる全体の表示は未確認。 |
+| 8.6.8.11 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：反変辺輸送の証拠、余カルテシアン側の straightening の頂点、および共変輸送の確認を行った。任意の T で両端のファイバーと F の値を結ぶ二つの関手同型正方形は未確認。 |
+| 8.6.8.12 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：共変のホモトピー輸送とカルテシアン射の各辺の反変輸送はある。Cᵒᵖ→QC をホモトピー圏に降ろすと指定された反変ホモトピー輸送と同型になる型は未確認。 |
+| 8.6.8.13 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：切断の core の厳密な極限比較と、左ファイブレーションの切断の同定を確認した。一般のカルテシアン切断の全準圏が CatInfinity における反変輸送図式の極限になる結論は未確認。 |
+| 8.6.8.15 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：単体添字の局所化と、特定の輸送模型の亜群化を確認した。一般のカルテシアン辺だけを反転した全空間を CatInfinity における反変輸送図式の余極限とする型は未確認。 |
+| 8.6.8.16 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：余カルテシアン切断の制限、左ファイブレーションの切断、および初期頂点評価の同値を確認した。C▷ 上の反変輸送が極限であることとカルテシアン切断の制限の同値との iff は未確認。 |
+| 8.6.8.17 | partial → none |  | CatInfinityだけでは原文の左右随伴の辺を選ぶ二つの非充満部分圏を構成しない。 |
+| 8.6.8.19 | partial → none |  | 固定したpresentable二対象間のFunL(C,D)opとFunR(D,C)の同値は、原文のQC_LAdj全体上で対象と射を動かす指定Ψではない。固定対象でのmatesを全体の関手と数えない。 |
+| 8.6.8.22 | partial → none |  | 固定二対象間の随伴関手の同値と自然変換のmatesは、原文の準圏そのものを対象とする全QC_LAdjop→QC_RAdjのΨの同値とは別の射。 |
+| 8.6.9.1 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：一般の局所化述語と、単体添字圏からの特定の射の局所化、および内アノダイン底変換の比較はある。任意の C′ 上でカルテシアンかつ C′ への像が退化する辺を反転する T′ の普遍性は未確認。 |
+| 8.6.9.2 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：指定した W について局所化を定義する構成と相対 Tw の射はある。カルテシアン脚と退化した終点を持つ W の局所化で T を共役として特徴付ける二方向は未確認。 |
+| 8.6.9.3 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：余カルテシアン辺を保つ相対関手の全部分圏はある。二つの共役 T₀,T を使う前・後合成の充満忠実性と、両側の辺保存による像の比較は未確認。 |
+| 8.6.9.5 | partial → none |  | 通常圏のmulticoequalizerで定義するcoendは原文のTw(C)opを添字とする∞圏の余極限とは異なる図式。比較を引用に持たない。 |
+| 8.6.9.6 | partial → none |  | 通常圏添字のcoendFunctorは原文の∞圏の指定coendの高次関手性を返さない。 |
+| 8.6.9.9 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：通常圏添字の単体集合の重み付き coend と辺の局所化はある。二つの輸送の CatInfinity 値 coend を、両脚が指定の持ち上げ辺である W で全空間の引戻しを局所化して求める型は未確認。 |
+| 8.6.9.11 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：厳密な重み付き模型の引戻しの同型と通常圏添字の coend の普遍性、亜群化比較を確認した。任意の左・右ファイブレーションの引戻しと空間 coend との弱ホモトピー同値による必要十分条件は未確認。 |
+| 8.6.9.12 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：単体添字模型の局所化は始点を保つ辺を使い、重み付き余極限は通常圏添字の厳密な構成。原文の Δ 上のカルテシアン射で最終頂点を保つ辺を反転して CatInfinity 値の coend を得る比較は未確認。 |
+| 8.7.0.1 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：絶対的な前層の左 Kan 延長と大域的カルテシアン射の反変輸送を確認した。各ファイバーの余完備化・H の充満忠実性・局所カルテシアン性・反変輸送の小余極限保存を束ねる定義は未確認。 |
+| 8.7.0.2 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：単独の前層圏の余極限、米田に沿う延長、固定標的の相対指数のカルテシアン性を確認した。任意の本質的小さい内ファイブレーションから必要な全空間を構成し、その底上の一意性を示す型は未確認。 |
+| 8.7.1.1 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：κ-filtered 余完備化の絶対的制限同値と、共変表現可能関手はある。Δ¹ の両ファイバーでの余完備化と、始点から終点への全空間 Hom の K-余極限保存を含む四条件の定義は未確認。 |
+| 8.7.1.4 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：大域的カルテシアン射の反変辺輸送と絶対的 Ind の制限同値を確認した。Δ¹ 上で余完備化条件を、カルテシアン性と反変輸送の κ-小余極限保存に置き換える iff は未確認。 |
+| 8.7.1.5 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：底変換と絶対的な κ-filtered 余完備化を確認した。任意の底の全辺に量化し、引戻しがそれぞれファイバーごとの K-余完備化であるという定義は未確認。 |
+| 8.7.1.11 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：単独の準圏の冪等完備化と前合成の充満忠実性はある。底上の二つの内ファイブレーションを比較し、各ファイバーの冪等完備化と H の充満忠実性で原文の条件を特徴付ける iff は未確認。 |
+| 8.7.1.12 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：絶対的な余完備化の候補と大域的反変輸送を確認した。任意の底で局所カルテシアン性と各輸送の κ-余連続性を用いる、原文の四条件による特徴付けは未確認。 |
+| 8.7.1.13 | partial → none |  | 全小余極限保存の固定二圏間の全部分圏と辺を保存する相対関手は候補だが、原文の全ファイバーで指定K-余極限を保存する条件を持つ同じ部分圏とは比較していない。 |
+| 8.7.1.14 | partial → none |  | 局所余錐を追加する相対Kan制限の型は、原文のfiberwise K-cocompletionからその局所条件とK-cocontinuousな部分圏を同定する型を持たない。絶対Indの制限同値は別の射。 |
+| 8.7.1.17 | partial → partial | special | 底を終対象、完備化を小準圏のIndκ、Kを小κ-filtered形状に限るとindLeftKanExtension_preservesSmallKappaFilteredColimitsは同じFについて(2)⇒(1)を直接返す。(3)との同値と任意Kは含まない。 |
+| 8.7.1.18 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：左 Kan 形状の comma との前合成同値と、右共終性を slice に運ぶ補題はある。原文の E_{/X} の底の恒等射上にある部分の包含が右共終になる型は未確認。 |
+| 8.7.1.19 | partial → none |  | comma余錐ごとの相対余極限判定は、原文の底の各ファイバーでのK-cocontinuityの判定ではない。原文の指定Hに沿う同じ相対Kan条件への比較を引用に持たない。 |
+| 8.7.1.20 | partial → partial | stronger-hyp | 同じ包含をmonoかつinner fibration、同じU′をequivalence liftingとし全標準comma余錐の相対余極限も追加するとexists_kanRelativeLeftCanonical_strict_extension_of_local_relative_colimitsが同じ持ち上げ問題の相対左Kan解を直接返す。K-余完備性だけの場合は含まない。 |
+| 8.7.1.21 | partial → none |  | 全相対左Kan拡張の制限のtrivial Kan性は、原文のファイバーごとK-cocontinuousな全関手の同じ制限との比較がなく別の部分圏。 |
+| 8.7.2.1 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：共変輸送、余カルテシアン辺を保つ相対関手、および絶対的 Ind の制限同値はある。余カルテシアン射のファイバーごとの K-余完備化の四条件による特徴付けと存在は未確認。 |
+| 8.7.2.2 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：指定辺の保存判定と絶対的 Ind の余極限保存はある。原文の各ファイバーと各輸送の条件から、Δ¹ 上の全空間 Hom が K-余極限を保つことを導く向きは未確認。 |
+| 8.7.2.3 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：底上の相対指数へのカリー化と個別の前層の延長はある。余カルテシアン双対を表す K の転置が、指定した相対指数で余完備化条件と余カルテシアン性を満たす結果は未確認。 |
+| 8.7.2.5 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：一つの準圏の Ind・前層側の構成を確認した。一般の K で、任意の余カルテシアン射の各ファイバーの完備化を底上にまとめる存在は未確認。 |
+| 8.7.3.1 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：反変輸送と逆圏でのカルテシアン辺の判定、絶対的 Ind の制限同値を確認した。各反変輸送の K-余連続性を含む四条件の iff と、そのような全空間の存在は未確認。 |
+| 8.7.3.2 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：持ち上げ辺の反変輸送と相対左 Kan 延長の局所判定を確認した。カルテシアン性とファイバーの完備化から原文の全空間 Hom の K-余極限保存まで導く片方向は未確認。 |
+| 8.7.3.3 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：逆圏での Tw 比較と反変輸送はある。二つの共役の Tw 引戻しの正方形を相対関手同型で可換にする H† と、その H† が K-余完備化になる結果は未確認。 |
+| 8.7.3.4 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：カルテシアン射の逆圏での持ち上げと、固定圏の絶対的な余完備化の候補はある。任意の K で、カルテシアン辺を保つ H† が底上の各ファイバーを余完備化する存在は未確認。 |
+| 8.7.4.1 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：固定圏の余完備化と底上での相対指数を確認した。任意の内ファイブレーションで、各辺上の K-余完備化をまとめた全空間の存在は未確認。 |
+| 8.7.4.2 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：前層の Ind 頂点の閉性と、一般の全部分圏の準圏性はある。大きい完備化の各ファイバー内で指定部分圏の最小 K-余極限閉包を取り、底上で制限して再び完備化を得る結果は未確認。 |
+| 8.7.4.3 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：固定標的への相対指数のカルテシアン性と固定圏の余完備化はある。元が isofibration のとき全空間の K-余完備化を isofibration として選べる結論は未確認。 |
+| 8.7.4.4 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：底変換の引戻しと、既存の標的への関手の相対左 Kan 延長を確認した。指定した部分底上の完備化自体を固定し、全底で完備化を作って制限の同型を与える結論は未確認。 |
+| 8.7.5.1 | partial → partial | special | Uをcocartesian fibrationに限り同じ2単体に沿って引き戻すとcocartesianFibration_innerHorn_pullback_isPrecompositionEquivalenceのn=2,k=1が原文の同じhorn引戻しのcategorical equivalenceを返す。一般inner fibrationのflat条件の判定は含まない。 |
+| 8.7.5.6 | none → partial | stronger-hyp | 底写像を準圏間のinner fibrationかつ冪等完備化、Uをright fibrationに強めると、pullback_rightFibrationと前合成普遍性は同じ引戻し射のMorita条件を直接返す。任意flat Uと任意Morita射は含まない。 |
+| 8.7.5.7 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：内アノダインでの頂点全単射と余カルテシアン底変換での前合成同値はある。一般の内ファイブレーションの底変換で、Morita、圏同値、頂点全射の圏同値の三条件が対応する結果は未確認。 |
+| 8.7.5.8 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：前合成同値の合成と、余カルテシアン射に沿う内ホーンの比較はある。二つの flat 内ファイブレーションの合成が再び flat となる閉性は確認できない。 |
+| 8.7.5.9 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：カルテシアン射の辺輸送と絶対的な Ind、余カルテシアン射のホーン比較はある。本質的 κ-小な U の flat 性と κ-余完備化した射のカルテシアン性を比較する iff は未確認。 |
+| 8.7.5.11 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：固定した始域からの二関手の全自然な retract では κ-filtered 余極限保存を移せる。原文は底 hC の頂点間の retract から、異なるファイバーへの制限が指定 K-余極限を保つことを移す。この比較は未確認。 |
+| 8.7.5.12 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：冪等完備化の絶対的な制限と内アノダイン底変換を確認した。完備化側がカルテシアンという仮定から元の E で任意の Morita 射の底変換を示す結果は未確認。 |
+| 8.7.5.13 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：内ホーン引戻しの同値には既存の余カルテシアン性が必要。原文は Δ² 上のホーン引戻しの同値でファイバーごとの完備化後のカルテシアン性を判定する。この iff は未確認。 |
+| 8.7.5.14 | none → partial | stronger-hyp | Uにcocartesian fibrationを追加すると、各2単体でのinner hornの引戻し同値から原文の同じUのflat条件を直接得る。任意のΔ1への関手の場合は含まない。 |
+| 8.7.5.16 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：任意の引戻しの構成と余カルテシアン射での内ホーン引戻しを確認した。Δ² 上で非退化な 2 単体だけを調べれば flat の全条件が従う iff は未確認。 |
+| 8.7.5.17 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：厳密な単体集合の slice での底変換の右随伴と、ファイバーごとの相対指数を確認した。準圏の圏における指数可能性を flat isofibration と同値にする型は未確認。 |
+| 8.7.5.19 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：厳密な単体集合の slice の随伴と特定のファイブレーションのホーン比較はある。全 Δⁿ 上の準圏論的指数可能性との同値および n=2 による判定は未確認。 |
+| 8.7.5.20 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：左ファイブレーション間で全体の同値をファイバーに移す比較と、冪等完備化の制限を調べた。flat 内ファイブレーションを全空間の同値で移し、各ファイバーが Morita 同値になる結論は未確認。 |
+| 8.7.5.22 | partial → partial | component | 同じUのinner anodyne/inner fibration分解とinner anodyneのcategorical equivalence性から、中間準圏への同値Fとinner fibration U′という結論成分を直接得る。U′のflat/isofibration性と各ファイバーのMorita条件は含まない。 |
+| 8.7.5.23 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：冪等完備性、同値持ち上げ、大域的カルテシアン輸送は個別にある。flat 性と冪等完備なファイバーから同値持ち上げを回収し指数可能にする結論は未確認。 |
+| 8.7.5.24 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：内アノダインの前合成同値、既存の射の底変換、左ファイブレーションの部分複体上の比較はある。頂点を全て含む圏同値に沿い、指定の flat 射が厳密に引戻しとなる延長の存在は未確認。 |
+| 8.7.5.26 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：底を準圏にする内アノダイン分解と既存の射の引戻しは確認した。その底拡大に沿って flat 内ファイブレーションを延長し、元の射を引戻しで回収する型は未確認。 |
+| 8.7.5.27 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：同値持ち上げの述語と冪等完備性、およびカルテシアン辺を逆圏で扱う補題はある。任意の底上で flat 性とファイバーの冪等完備性から isofibration を得る結論は未確認。 |
+| 8.7.5.28 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：一つの準圏を冪等完備化する型と同値持ち上げの述語はある。元の flat 射のファイバーごとの冪等完備化が同時に flat かつ isofibration になる定理は未確認。 |
+| 8.7.5.29 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：底の内アノダイン準圏置換と引戻しは個別にある。拡大した底で同値持ち上げと flat 性を両方保つ延長の存在は確認できない。 |
+| 8.7.5.30 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：厳密な単体集合の slice の右随伴と、余カルテシアンな定義域を持つ相対指数のカルテシアン性を確認した。flat isofibration が準圏の圏で指数可能になる型は未確認。 |
+| 8.7.6.1 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：合成可能な二辺を固定した三角形充填の空間は Kan 可縮。原文は長辺 f と底の中間頂点を固定して中間対象を動かす二重 slice の弱可縮性を、flat 性と同値にする。この比較は未確認。 |
+| 8.7.6.2 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：余表現関手と左 Kan 拡張の comma 模型を確認した。flat 性を使い、終点側二頂点上の余表現関手が中央ファイバーから左 Kan 拡張される結論は未確認。 |
+| 8.7.6.3 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：余米田の充満忠実性と左 Kan 判定、固定二辺の充填可縮性はある。始点ファイバーの各 X の余表現関手が中央から左 Kan 拡張されれば U が flat になる向きは未確認。 |
+| 8.7.6.4 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：左共終性の判定と別の coslice 射の右共終性を確認した。始点対象 X の coslice で、中央ファイバーから後半辺の引戻しへの包含が左共終となることと flat 性の同値は未確認。 |
+| 8.7.7.1 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：固定標的相対指数の既存の射影は余カルテシアンな定義域のもとでカルテシアン。原文の flat な定義域における余カルテシアン性、およびその共役が逆圏側の余完備化となる結論は未確認。 |
+| 8.7.7.2 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：相対指数の各ファイバーの同定と、余カルテシアン射に付随する輸送の一般論はある。原文の指数の余カルテシアン射影と、その輸送の κ-小余極限保存は未確認。 |
+| 8.7.7.3 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：固定形状のマーク付き相対関手とその切断の評価はある。変動する Tw ファイバーの指定辺を保つ切断を全底でまとめ、その評価を共役とする構成は未確認。 |
+| 8.7.7.4 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：相対 Tw と相対指数のカリー化、および固定圏の米田延長はある。相対 Hom の転置が共役の部分圏を経由し、さらに Eᵒᵖ のファイバーごとの余完備化になる二結論は未確認。 |
+| 8.7.7.6 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：底変換付きのカリー化と指定辺の保存述語はある。転置が、全ての Tw 始点ファイバーで余カルテシアン辺を保つという共役の部分圏に入る補題は未確認。 |
+| 8.7.7.7 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：絶対的な余完備化の延長と相対指数はある。相対 Hom の特定の転置から、逆圏の底上で κ-余完備化の条件を得る型は未確認。 |
+| 8.7.7.8 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：単独の小準圏の余米田の充満忠実性はある。相対 Tw の既存比較は元の射の充満忠実性を仮定する。flat 性から共役の部分圏への相対米田が全空間で充満忠実になる結果は未確認。 |
+
+## 検査
+
+原文は Kerodon 公式小節の各項目Tagで照合。none は現本体・ロックしたMathlibを再検索し、近隣項目のソース・双対/限定版の候補も照合した。Archiveの宣言をown・partialの根拠にはしていない。宣言の存在と型はソースでの確認で、kernel確認ではない。
