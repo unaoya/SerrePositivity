@@ -3,7 +3,7 @@
   "source_head": "7e9743b30",
   "scope": "今回の再開範囲：元の残り1〜17項を署名へ展開。S2〜S6の過去の検収済み出力は再採番しない。",
   "count_rule": "署名のidごとに数える。200行超の照合・合成則は独立署名。小さい証明分割の法則は親署名のnoteに記録する。旧5/8はこの台帳の分母には用いない。",
-  "verified_lean_lines": 24335,
+  "verified_lean_lines": 24388,
   "final_cap": 29000,
   "checkpoint_report_lines": 28500,
   "factor": 2,
@@ -2038,7 +2038,8 @@
       "dependencies": [
         "P3-C1PNV",
         "P3-C1PNO",
-        "P3-C1PNON"
+        "P3-C1PNON",
+        "P3-C1PNB"
       ],
       "existing": [
         {
@@ -2072,6 +2073,60 @@
       "additional_mathematics": true,
       "choose_replacements": [],
       "new_assumptions": []
+    },
+    {
+      "id": "P3-C1PNB",
+      "name": "relativeSectionBaseChangeValue_heq",
+      "full_type": "∀ {B D : SSet.{u}} {J : Type u} [Category.{u} J]\n      (k : D ⟶ B) (A : Jᵒᵖ ⥤ Over D) (p : LeftFibrationObject B),\n    HEq (kanEnrichedRealizationValueIso (relativeSectionBaseChangeComparison k A)\n      (relativeSectionBaseChangeComparison_isQCatEquivalence k A) p)\n      (functorIsoValue (relativeSectionBaseChangeRealizationIso k A) (coherentNerveVertex p))",
+      "dependencies": [],
+      "existing": [
+        {
+          "name": "relativeSectionBaseChangeRealizationIso_normalized",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/PresentableInfinityCategories/SectionBaseChangeReindex.lean",
+          "line": 35
+        },
+        {
+          "name": "kanEnrichedRealizationValueIso",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/KanEnrichedRealizationValue.lean",
+          "line": 58
+        },
+        {
+          "name": "functorIsoValue_heq_of_heq",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/FunctorIsoValueCurry.lean",
+          "line": 26
+        }
+      ],
+      "bare_lines": [
+        60,
+        120
+      ],
+      "corrected_lines": [
+        120,
+        240
+      ],
+      "status": "verified",
+      "placement": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/RelativeSectionBaseChangeValue.lean",
+      "literature": "HTT §3.3.2・Kerodon §5.6（Tag 028T）の既存の相対切断底変換の指定成分の照合。",
+      "note": "11-17夕の追加の事前承認。具体的な初頂点を展開せず、既存の底変換の法則を一般のまま評価する。新しい数学でない。 対象ビルド・所有1宣言の小監査成功。実測53行、標準三公理のみ。",
+      "additional_mathematics": true,
+      "choose_replacements": [],
+      "new_assumptions": [],
+      "actual_lines_conservative": 53,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 1,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/RelativeSectionBaseChangeValue.lean": "0f84124cbd29ed63fb75c3f3c1e935e3f90412f51c42e9b76eae8d2b828fc45b"
+        }
+      }
     }
   ],
   "common_typeclass_setup": "local instance signaturePullbackLeft {E B D : SSet.{u}}\n    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) : LeftFibration (pullback.snd p k) :=\n  ⟨leftFibrations.pullback_snd p k (LeftFibration.mem (p := p))⟩",

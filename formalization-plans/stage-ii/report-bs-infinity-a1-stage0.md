@@ -8982,3 +8982,40 @@ P3-C1PNONの証拠：`evidence/inf-supply/c1pn-opposite-naturality-1117/manifest
 次のP3-C1PNGは補正上端700なので24,335＋700＝25,035行、着手条件内。止まらず続行。
 
 一覧：済み 22／全体 44（うち追加 9、別停止点 2）。
+
+
+### P3-C1PNBの登録（11-17夜、底変換の値の照合を一般形へ分離）
+
+P3-C1PNGの初頂点底変換の値でkernelの決定的時間切れ。計算上限は上げず、任意の底変換の既存の指定成分の照合をP3-C1PNBへ分離する。新しい数学でなく、同じ `relativeSectionBaseChangeRealizationIso` の値の法則。
+型：
+
+```lean
+∀ {B D : SSet.{u}} {J : Type u} [Category.{u} J]
+      (k : D ⟶ B) (A : Jᵒᵖ ⥤ Over D) (p : LeftFibrationObject B),
+    HEq (kanEnrichedRealizationValueIso (relativeSectionBaseChangeComparison k A)
+      (relativeSectionBaseChangeComparison_isQCatEquivalence k A) p)
+      (functorIsoValue (relativeSectionBaseChangeRealizationIso k A) (coherentNerveVertex p))
+```
+
+依存なし。使用する既存宣言：`relativeSectionBaseChangeRealizationIso_normalized` @
+`SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/PresentableInfinityCategories/SectionBaseChangeReindex.lean:35`、
+`kanEnrichedRealizationValueIso` @
+`SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/KanEnrichedRealizationValue.lean:58`、
+`functorIsoValue_heq_of_heq` @
+`SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/FunctorIsoValueCurry.lean:26`。
+原典：HTT §3.3.2、Kerodon §5.6（Tag 028T）の構成の特殊な照合。
+素60〜120行、補正120〜240行。P3-C1PNGが依存する。
+24,335＋240＋700＝25,275で、Gの残りを全て残しても29,000以内。型・仮定・main本文は変更しない。
+
+一覧：済み 22／全体 45（うち追加 10、別停止点 2）。
+
+
+### P3-C1PNBの完成（11-17夜）
+
+底変換の指定成分の値を一般のパラメータのまま照合する法則が通った。
+対象ビルドと所有1宣言の小監査成功、標準三公理のみ。計算上限・元の型と仮定・main本文の変更なし。
+素60〜120行、補正120〜240行に対し実測53行。累計24,335 → **24,388行**。
+P3-C1PNGの下書きはこの一般の法則を使うように分割し直して対象検証中。
+証拠：`evidence/inf-supply/c1pn-basechange-value-1117/manifest.json`。
+
+一覧：済み 23／全体 45（うち追加 10、別停止点 2）。

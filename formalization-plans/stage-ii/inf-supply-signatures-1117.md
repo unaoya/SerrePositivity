@@ -5,8 +5,8 @@
 再採番せず、ここにある各署名IDを一つずつ数える。旧「5／8」は以後この台帳の進捗に使わない。
 小さい既存構成の法則・証明の分割は親署名内に記録するが、上端200行超は独立署名。
 
-署名44本＝検証済み22本＋未完20本＋別停止点へ切り離す2本。
-一覧：済み 22／全体 44（うち追加 9、別停止点 2）。
+署名45本＝検証済み23本＋未完20本＋別停止点へ切り離す2本。
+一覧：済み 23／全体 45（うち追加 10、別停止点 2）。
 追加1は11-17夕承認のP3-C1P。着手判定22,975＋800＝23,775行。以前の35署名の表は履歴として保持。
 
 ## 最新の検証記録（P3-B1）
@@ -1353,3 +1353,19 @@ P3-C1PNH：実測78行、対象ビルドと3宣言の小監査成功（標準三
 
 
 P3-C1PNO・P3-C1PNON：実測115・138行、対象ビルドと5・13宣言の小監査成功。累計24,335行。
+
+
+## P3-C1PNB（元の底変換比較の値の照合）
+
+```lean
+∀ {B D : SSet.{u}} {J : Type u} [Category.{u} J]
+      (k : D ⟶ B) (A : Jᵒᵖ ⥤ Over D) (p : LeftFibrationObject B),
+    HEq (kanEnrichedRealizationValueIso (relativeSectionBaseChangeComparison k A)
+      (relativeSectionBaseChangeComparison_isQCatEquivalence k A) p)
+      (functorIsoValue (relativeSectionBaseChangeRealizationIso k A) (coherentNerveVertex p))
+```
+
+依存なし。素60〜120行、補正120〜240行。既存宣言と場所はJSONと報告。
+
+
+P3-C1PNB：対象ビルド・1宣言の小監査成功、標準三公理のみ。実測53行、累計24,388行。
