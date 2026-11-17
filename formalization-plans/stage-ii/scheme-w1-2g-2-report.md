@@ -3354,3 +3354,13 @@ main `6aa6d7152` の指示書末尾を `git show` で読み、今回のユーザ
 
 - C07 `SerrePositivity.AlgebraicGeometry.complexValuedAugmentedDouble_swapIso`：二つの増大方向の交換を元の三重totalの同型にする。
 - C11 `SerrePositivity.AlgebraicGeometry.complexValuedDoubleCech_axes_acyclic_iff`：正次数の行と列の増大totalが完全なら、二つの零次軸の増大totalの完全性は同値。
+
+## 2026-11-17：切断に適合する有限アフィン細分と局所の完全性（9e8790338）
+
+- F01〜F03を同じ署名で実装。新規2モジュール117行＋入口4行＝121行、所有4宣言。原稿・本体の同一バイト、対象ビルド5,384ジョブと直接importer、別の共有鍵での所有監査が成功。標準三公理以外0。
+- 累計21,112行（新規285モジュール20,776行、既存追加25行、入口311行）。所有宣言累計2,349件、既存15件は別。残り32署名の素の見込み1,216〜2,466行、係数2で2,432〜4,932行。完成見込み23,544〜26,044行、28,000行以内。
+- 一覧：済み1／全体3（うち追加0）。内部署名：済み57／89（G4・G5）、追加0。次は普遍降下性の底変換D02と、相対fppfへの局所から全体の接続。2g-2・2hは未完成。
+
+- F01 `SerrePositivity.AlgebraicGeometry.exists_section_adapted_affine_cover`：元の切断による逆像開被覆に、元の被覆への添字写像を持つ有限アフィン細分を作る。
+- F02 `SerrePositivity.AlgebraicGeometry.section_affine_chart_retraction`：同じ切断を二つの開へ制限して、同じ切断環の構造射のretractionを作る。
+- F03 `SerrePositivity.AlgebraicGeometry.section_affine_chart_frobeniusCechExact`：その局所のretractionを実際のFrobenius順極限へ送り、B1の切断のČech完全性を適用する。
