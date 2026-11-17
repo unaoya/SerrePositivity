@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.CarrierConstantDiagramFrame
-public import SerrePositivity.EInfinity.HomotopyWeight.PointwisePiZero
+public import SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.PointwisePiZero
 
 /-!
 # 定値 複体図式からの局所化 Hom の重み付き錐表示
@@ -23,7 +23,7 @@ universe u
 
 namespace SerrePositivity.EInfinity.BarrattEccles.CarrierDiagram
 
-open CategoryTheory Limits HomotopicalAlgebra
+open CategoryTheory Limits _root_.HomotopicalAlgebra
 open SerrePositivity.DifferentialGraded
 open SerrePositivity.Reedy SerrePositivity.HomotopyFunctionComplex
 
@@ -52,8 +52,8 @@ def constantDiagramSourcePiZeroEquiv (Y : (Complex A))
   let q := cosimplicialResolutionFamily (carrierProbeFactorization A)
   let Q := (weakEquivalences (K ⥤ (Complex A))).Q
   have := isFibrant A K F
-  exact (HomotopyWeight.pointwiseWeightedHomPiZeroEquiv K (HomotopyWeight.weight K)
-    (q.obj.obj Y) (HomotopyWeight.weight_cofibrant K) (q.cofibrant Y)
+  exact (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseWeightedHomPiZeroEquiv K (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K)
+    (q.obj.obj Y) (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight_cofibrant K) (q.cofibrant Y)
     (trivialFibration_app A K) (q.atObject Y).homotopicallyConstant
     (fibration_app A K) Q F).trans
     (Iso.homCongr ((constantDiagramLocalizedIso A K).app Y) (Iso.refl _))
@@ -77,18 +77,18 @@ lemma constantDiagramSourcePiZeroEquiv_mk (Y : (Complex A))
   let Q := (weakEquivalences (K ⥤ (Complex A))).Q
   have := isFibrant A K F
   change ((constantDiagramLocalizedIso A K).app Y).inv ≫
-    HomotopyWeight.pointwiseWeightedHomPiZeroEquiv K (HomotopyWeight.weight K)
-      (q.obj.obj Y) (HomotopyWeight.weight_cofibrant K) (q.cofibrant Y)
+    _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseWeightedHomPiZeroEquiv K (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K)
+      (q.obj.obj Y) (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight_cofibrant K) (q.cofibrant Y)
       (trivialFibration_app A K) (q.atObject Y).homotopicallyConstant
       (fibration_app A K) Q F _ ≫ 𝟙 _ = _
-  have hm : HomotopyWeight.pointwiseWeightedHomPiZeroEquiv K (HomotopyWeight.weight K)
-      (q.obj.obj Y) (HomotopyWeight.weight_cofibrant K) (q.cofibrant Y)
+  have hm : _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseWeightedHomPiZeroEquiv K (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K)
+      (q.obj.obj Y) (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight_cofibrant K) (q.cofibrant Y)
       (trivialFibration_app A K) (q.atObject Y).homotopicallyConstant
       (fibration_app A K) Q F
       (SSet.mapπ₀ ((constantDiagramFrameHomIso A K Y).app F).hom (SSet.π₀.mk f)) =
     Q.map (constantDiagramFrameZeroIso A K Y).inv ≫ Q.map f :=
-    HomotopyWeight.pointwiseWeightedHomPiZeroEquiv_mk K (HomotopyWeight.weight K)
-      (q.obj.obj Y) (HomotopyWeight.weight_cofibrant K) (q.cofibrant Y)
+    _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseWeightedHomPiZeroEquiv_mk K (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K)
+      (q.obj.obj Y) (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight_cofibrant K) (q.cofibrant Y)
       (trivialFibration_app A K) (q.atObject Y).homotopicallyConstant
       (fibration_app A K) Q f
   exact (congrArg (fun t : Q.obj ((constantDiagramReplacement A K).obj Y) ⟶ Q.obj F =>
@@ -114,25 +114,25 @@ lemma constantDiagramSourcePiZeroEquiv_target (Y : (Complex A))
   have := isFibrant A K F
   have := isFibrant A K G
   change ((constantDiagramLocalizedIso A K).app Y).inv ≫
-      HomotopyWeight.pointwiseWeightedHomPiZeroEquiv K (HomotopyWeight.weight K)
-        (q.obj.obj Y) (HomotopyWeight.weight_cofibrant K) (q.cofibrant Y)
+      _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseWeightedHomPiZeroEquiv K (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K)
+        (q.obj.obj Y) (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight_cofibrant K) (q.cofibrant Y)
         (trivialFibration_app A K) (q.atObject Y).homotopicallyConstant
         (fibration_app A K) Q G _ ≫ 𝟙 _ =
     (((constantDiagramLocalizedIso A K).app Y).inv ≫
-      HomotopyWeight.pointwiseWeightedHomPiZeroEquiv K (HomotopyWeight.weight K)
-        (q.obj.obj Y) (HomotopyWeight.weight_cofibrant K) (q.cofibrant Y)
+      _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseWeightedHomPiZeroEquiv K (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K)
+        (q.obj.obj Y) (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight_cofibrant K) (q.cofibrant Y)
         (trivialFibration_app A K) (q.atObject Y).homotopicallyConstant
         (fibration_app A K) Q F z ≫ 𝟙 _) ≫ Q.map g
-  have hn : HomotopyWeight.pointwiseWeightedHomPiZeroEquiv K (HomotopyWeight.weight K)
-      (q.obj.obj Y) (HomotopyWeight.weight_cofibrant K) (q.cofibrant Y)
+  have hn : _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseWeightedHomPiZeroEquiv K (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K)
+      (q.obj.obj Y) (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight_cofibrant K) (q.cofibrant Y)
       (trivialFibration_app A K) (q.atObject Y).homotopicallyConstant
       (fibration_app A K) Q G (SSet.mapπ₀ ((constantDiagramSourceHom A K Y).map g) z) =
-    HomotopyWeight.pointwiseWeightedHomPiZeroEquiv K (HomotopyWeight.weight K)
-      (q.obj.obj Y) (HomotopyWeight.weight_cofibrant K) (q.cofibrant Y)
+    _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseWeightedHomPiZeroEquiv K (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K)
+      (q.obj.obj Y) (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight_cofibrant K) (q.cofibrant Y)
       (trivialFibration_app A K) (q.atObject Y).homotopicallyConstant
       (fibration_app A K) Q F z ≫ Q.map g :=
-    HomotopyWeight.pointwiseWeightedHomPiZeroEquiv_target K (HomotopyWeight.weight K)
-      (q.obj.obj Y) (HomotopyWeight.weight_cofibrant K) (q.cofibrant Y)
+    _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseWeightedHomPiZeroEquiv_target K (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K)
+      (q.obj.obj Y) (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight_cofibrant K) (q.cofibrant Y)
       (trivialFibration_app A K) (q.atObject Y).homotopicallyConstant
       (fibration_app A K) Q g z
   exact (congrArg (fun t : Q.obj ((constantDiagramReplacement A K).obj Y) ⟶ Q.obj G =>

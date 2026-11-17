@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection
 
 /-!
 # 元の弱ホモトピー同値の二対六則と可縮な因子
@@ -24,7 +24,7 @@ lemma weak_middle_of_composites {A B C D : SSet.{u}}
     (hfg : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (f ≫ g))
     (hgh : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (g ≫ h)) : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence g := by
   intro Z hZ
-  let K := FrameHom.AnodyneWeakDetection.homComponents Z
+  let K := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.homComponents Z
   have h₁ : Function.Bijective (fun x => (K.map f.op) ((K.map g.op) x)) := by
     change Function.Bijective (K.map g.op ≫ K.map f.op)
     rw [← K.map_comp]

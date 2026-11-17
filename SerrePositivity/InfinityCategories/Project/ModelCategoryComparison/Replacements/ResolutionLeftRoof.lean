@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.FrameHom.FrameLeftRoof
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameLeftRoof
 public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Frames.FrameSpanNerve
 public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.ResolutionSpecialSpans
 public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.ThreeArrow
@@ -22,14 +22,14 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.InfinityCategories.Project.ModelCategoryComparison
-open CategoryTheory HomotopicalAlgebra
+open CategoryTheory _root_.HomotopicalAlgebra
 open _root_.SerrePositivity.Reedy _root_.SerrePositivity.HomotopyFunctionComplex
 variable {C : Type u} [Category.{v} C] [ModelCategory C] {X : C}
   (q : CofibrantResolution (C := C) simplex X) (Y : C)
 
 def resolutionLeftRoofFunctor : (((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom q.obj).obj Y).Elements)ᵒᵖ ⥤
     _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag (weakEquivalences C) _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.word X Y :=
-  _root_.SerrePositivity.EInfinity.FrameHom.frameLeftRoofFunctor (weakEquivalences C) q.obj q.augmentation q.augmentation_weakEquivalence
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameLeftRoofFunctor (weakEquivalences C) q.obj q.augmentation q.augmentation_weakEquivalence
     (fun a => q.homotopicallyConstant a)
 
 lemma resolutionLeftRoofFunctor_insert :
@@ -54,7 +54,7 @@ lemma resolutionLeftRoofFunctor_insert :
 def resolutionLeftRoofNerveMap :
     nerve (ULiftHom.{max u v} (((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom q.obj).obj Y).Elements)ᵒᵖ) ⟶
       _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph (weakEquivalences C) _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.word X Y :=
-  _root_.SerrePositivity.EInfinity.FrameHom.frameLeftRoofNerveMap (weakEquivalences C) q.obj q.augmentation q.augmentation_weakEquivalence
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameLeftRoofNerveMap (weakEquivalences C) q.obj q.augmentation q.augmentation_weakEquivalence
     (fun a => q.homotopicallyConstant a)
 
 lemma resolutionLeftRoofNerveMap_insert :

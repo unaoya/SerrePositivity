@@ -1,0 +1,140 @@
+{
+  "stage": "5inf3a-remaining-20000-paper-gate",
+  "date_jst": "2026-11-16",
+  "instruction_commit": "cae591fa414d34db6e908369dc3d4b4c9bec9c3c",
+  "report_base_head": "f7b7b44c185405d73b6e3bfcb0fe371edaf46263",
+  "verified_math_head": "28763cb06d93b4d5c007cd928f65065873e39623",
+  "complete": 3,
+  "total": 6,
+  "added": 0,
+  "subitems_are_proof_and_verification_breakdown_only": true,
+  "baseline": {
+    "modules": 157,
+    "lines": 13341,
+    "audited_declarations": 1708,
+    "source_hashes_match": true
+  },
+  "correction_factor": 2,
+  "outer_limit_lines": 20000,
+  "interim_report_near_lines": 17000,
+  "rows": [
+    {
+      "id": "HT04.R1",
+      "parent": "HT04",
+      "raw_additional_lines": [
+        600,
+        1000
+      ],
+      "corrected_additional_lines": [
+        1200,
+        2000
+      ],
+      "typed_specification": "remaining-20000-plan.md"
+    },
+    {
+      "id": "HT04.R2",
+      "parent": "HT04",
+      "raw_additional_lines": [
+        500,
+        850
+      ],
+      "corrected_additional_lines": [
+        1000,
+        1700
+      ],
+      "typed_specification": "remaining-20000-plan.md"
+    },
+    {
+      "id": "HT04.R3",
+      "parent": "HT04",
+      "raw_additional_lines": [
+        100,
+        200
+      ],
+      "corrected_additional_lines": [
+        200,
+        400
+      ],
+      "typed_specification": "remaining-20000-plan.md"
+    },
+    {
+      "id": "HT05.R1",
+      "parent": "HT05",
+      "raw_additional_lines": [
+        250,
+        450
+      ],
+      "corrected_additional_lines": [
+        500,
+        900
+      ],
+      "typed_specification": "remaining-20000-plan.md"
+    },
+    {
+      "id": "HT05.R2",
+      "parent": "HT05",
+      "raw_additional_lines": [
+        550,
+        1000
+      ],
+      "corrected_additional_lines": [
+        1100,
+        2000
+      ],
+      "typed_specification": "remaining-20000-plan.md"
+    },
+    {
+      "id": "HT05.R3",
+      "parent": "HT05",
+      "raw_additional_lines": [
+        400,
+        750
+      ],
+      "corrected_additional_lines": [
+        800,
+        1500
+      ],
+      "typed_specification": "remaining-20000-plan.md"
+    },
+    {
+      "id": "HT06.R1",
+      "parent": "HT06",
+      "raw_additional_lines": [
+        150,
+        300
+      ],
+      "corrected_additional_lines": [
+        300,
+        600
+      ],
+      "typed_specification": "remaining-20000-plan.md"
+    }
+  ],
+  "raw_additional_lines": [
+    2550,
+    4550
+  ],
+  "corrected_additional_lines": [
+    5100,
+    9100
+  ],
+  "projected_raw_total_lines": [
+    15891,
+    17891
+  ],
+  "projected_corrected_total_lines": [
+    18441,
+    22441
+  ],
+  "gate": {
+    "continue_lean_iff": "projected_corrected_total_lines[1] <= outer_limit_lines",
+    "passed": false,
+    "excess_upper_lines": 2441,
+    "action": "commit paper and stop before Lean per explicit conditional instruction"
+  },
+  "lean_changes": 0,
+  "build_or_audit_runs": 0,
+  "shared_build_lock_uses": 0,
+  "scope_and_terminal_types_unchanged": true,
+  "general_crystalline_input_in_HT04_or_HT05": false
+}

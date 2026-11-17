@@ -1,0 +1,2193 @@
+{
+  "external_importers": [
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/CAlg.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.SimplicialLocalization.Nerve"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/CAlgDerivedForgetSource.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.SimplicialLocalization.WeakNerveInverts"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/CAlgForget.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.SimplicialLocalization.NerveMap"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/CAlgLocalizationSource.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.SimplicialLocalization.LocalizationNervePrecomposition"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/CAlgVertexPresentation.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.SimplicialLocalization.NerveWeakVertexIso"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/CarrierConstantDiagramConeClasses.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.HomotopyWeight.ConstantNaturality",
+        "SerrePositivity.EInfinity.HomotopyWeight.PointwiseConePoints",
+        "SerrePositivity.EInfinity.HomotopyWeight.RealizationAugmentation"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/CarrierConstantDiagramFrame.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.HomotopyWeight.PointwiseTensorFrame"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/CarrierConstantDiagramPiZero.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.HomotopyWeight.PointwisePiZero"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/CarrierConstantDiagramReplacement.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.HomotopyWeight.ConstantNaturality"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/CarrierConstantDiagramSourcePiZero.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.HomotopyWeight.PointwiseTensorSource"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/CarrierFramedLimitClasses.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.HomotopyWeight.FrameConeClasses"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/CarrierFramedLimitConeClasses.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.HomotopyWeight.FrameConeClasses"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/CarrierFramedLimitConeNormalization.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.HomotopyWeight.ConeReindexPoints"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/CarrierFramedLimitConeSource.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.MixedFrameSource"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/CarrierFramedLimitForgetComparison.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.HomotopyWeight.RealizationCoefficientMap"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/CarrierFramedLimitHom.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.HomotopyWeight.TensorPiZero"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/CarrierFramedLimitHomNaturality.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.HomotopyWeight.TensorPiZeroNaturality"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/CarrierFramedLimitHomSource.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.HomotopyWeight.TensorPiZeroTarget"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/CarrierFramedLimitMixedClasses.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.HomotopyWeight.KanConeClasses"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/CarrierFramedLimitNaturality.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.HomotopyWeight.RealizationCoefficientMap"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/CarrierRightSimplicialCones.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.HomotopyWeight.ConeReindex"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/CofibrantAlgebraRelativeInput.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.SimplicialLocalization.LocalizedFreeResolution"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/CofibrantColumnUnderlyingHom.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.MixedNerveHomRecovery"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/CofibrantForgetSourceComparison.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.NerveColumnNaturalityComponent"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/CofibrantKanHammockPinched.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.SimplicialLocalization.KanHammockHomPinched"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceFrame.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.FrameArrowElements"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceFrameLimits.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.FrameArrowAugmentationLimits",
+        "SerrePositivity.EInfinity.SimplicialLocalization.HammockInvertsEdges"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceFrameRightKan.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.FrameArrowRightKan",
+        "SerrePositivity.EInfinity.FrameHom.FrameRightKan"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceFrameRoof.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.FrameRoofSource"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceRightKanCanonical.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.FrameRightKanCanonical"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceRightKanLegs.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.FrameAugmentationLimitLegs"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceRoofBaseEvaluation.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.FrameRoofCornerLeftBase",
+        "SerrePositivity.EInfinity.FrameHom.OverTerminalEvaluation"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceRoofCornerEvaluation.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.FrameRoofCornerEvaluation"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceRoofCornerOver.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.FrameRoofCornerBaseProjection"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceRoofGeometricRightCell.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.NerveOverRightPrism"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceRoofNativePinchedReference.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.AnodyneFamilyHomotopy"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceRoofNativePrism.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixPrismNaturality"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceRoofNativePrismOne.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.SimplicialLocalization.KanHammockHomPinchedValue",
+        "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixPrismOne"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceRoofNativePrismProjection.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixPrismProjection"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceRoofNativePrismZero.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixPrismZeroSlice"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceRoofNativeSimplex.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixPrismSimplex"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceRoofPrefixPath.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixPathComposition"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceRoofProductCornerProjection.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.FrameRoofCornerProjectionLaws"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceRoofProductFunctorCell.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.FrameArrowAugmentationLimits"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceRoofProductGeometricTriangle.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.FrameRoofCornerEvaluationTriangle"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceRoofProductIntervalCriterion.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.PinchedFamilyWeakDetection"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceRoofProductReference.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.ProductSimplexElementProjectionWeak"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceRoofRightSlice.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.FrameRoofSourceProjection"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceRoofSliceCriterion.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.FrameRoofSliceWeakContractibility"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceRoofSliceFibration.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.FrameRoofSliceFibration"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceRoofSlices.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.FrameRoofQuillenSlice"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/ConstantDiagramConeClasses.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.HomotopyWeight.ConstantNaturality",
+        "SerrePositivity.EInfinity.HomotopyWeight.PointwiseConePoints",
+        "SerrePositivity.EInfinity.HomotopyWeight.RealizationAugmentation"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/ConstantDiagramFrame.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.HomotopyWeight.PointwiseTensorFrame"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/ConstantDiagramPiZero.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.HomotopyWeight.PointwisePiZero"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/ConstantDiagramReplacement.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.HomotopyWeight.ConstantNaturality"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/ConstantDiagramSourcePiZero.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.HomotopyWeight.PointwiseTensorSource"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/DKHammockComparison.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockDiagonalComparisonWeak",
+        "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockDiagonalReductionWeak"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/DKHammockComparisonFactorization.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.SimplicialLocalization.DKHammockCoefficientComparison"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/DKHammockEndpointNaturality.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.SimplicialLocalization.DKReducedHammockEndpointNaturality"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/DKHigherComponentsAgreement.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.SimplicialLocalization.DKHammockComponentsValue"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/DKMappingComponents.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.SimplicialLocalization.KanComponents"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/FramedLimit.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.HomotopyWeight.PointReplacement"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitConeClasses.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.HomotopyWeight.FrameConeClasses"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitConeNormalization.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.HomotopyWeight.ConeReindexPoints"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitConeSource.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.MixedFrameSource"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitCones.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.HomotopyWeight.FrameCones",
+        "SerrePositivity.EInfinity.HomotopyWeight.Reindex"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitHomNaturality.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.HomotopyWeight.TensorPiZeroNaturality"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitHomPiZero.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.HomotopyWeight.TensorPiZero"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitHomSource.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.HomotopyWeight.TensorPiZeroTarget"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitInvariance.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.HomotopyWeight.RealizationInvariance"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitMixedClasses.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.HomotopyWeight.KanConeClasses"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/FreeNormalizedCommonRoofMaps.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.FrameRoofComparisonInvariance"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/FreeProbeRelativeElementFamilyComparison.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixFamilyTriangle"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/FreeProbeRelativeElementNormalizedIndex.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.MixedNerveHomLiftIso"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/FreeProbeRelativeElementPinched.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.SimplicialLocalization.KanHammockHomPinched"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/FreeProbeRelativeElementSourceRoof.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.NerveColumnRoofNaturality",
+        "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixColumnRoof"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/FreeProbeRelativeSourceComparison.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.SimplicialLocalization.WeakNerveInverts"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/FreeProbeRelativeUnitReference.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.MixedNerveHomLiftIso"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/FreeProbeRelativeUnitWeak.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.UnitComparisonWeakDetection"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/FreeProbeUnitStandardFamily.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.UnitComparisonTransport"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/MappingResolutionAsphericity.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.ResolutionAsphericity"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/MappingResolutionCofinality.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.ResolutionCofinality"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/MappingResolutionFixedRightComparison.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.FixedRightGrothendieckInversion",
+        "SerrePositivity.EInfinity.FrameHom.ResolutionFixedRightComparison"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/MappingResolutionRightInvariance.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.CosimplicialHomCommaInvariance",
+        "SerrePositivity.EInfinity.FrameHom.GrothendieckFiberInvariance"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/MappingResolutionThomasonInversion.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.ThomasonInversion"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/MappingResolutionThomasonSquare.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.ThomasonNaturality"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/MappingRightHomBarComparison.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.BarInitialComparison"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/MappingRightHomBarInclusion.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.BarValueInclusion"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/MappingSmallSpanRecovery.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.SmallCommaGrothendieck"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/MappingSpaceSpanComparison.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.FrameIndexAugmentation"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/MappingSpaceSpanDiagram.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.ArrowSpanGrothendieck",
+        "SerrePositivity.EInfinity.FrameHom.NerveEquivalenceImage"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/Modules/RawModuleDerivedSource.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.SimplicialLocalization.LocalizationNerveSource"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/Modules/RawModuleFrameInput.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.SimplicialLocalization.ModelHammockLocalization"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/Modules/RawModuleLocalizationUniversal.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.SimplicialLocalization.LocalizationNervePrecomposition"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/Modules/RawModuleTensorElementParameter.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.FrameIndexAugmentation"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/Modules/StrictRawFiber.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.SimplicialLocalization.NerveFunctor"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/Modules/TotalLocalization.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.SimplicialLocalization.NerveMap"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/RightSimplicialCones.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.HomotopyWeight.ConeReindex"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/SourceFramePostcompose.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.FrameLeftRoofPostcompose"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/SourceFramePrecompose.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.FrameLeftRoofPrecompose"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/SourceFrameSpanComparison.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.FrameSpanTargetHomotopy"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/Theory/CAlgCoefficientExtension.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.SimplicialLocalization.WeakNerveInverts"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/Theory/CAlgCoefficientRestriction.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.MixedNerveNatTrans"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/Theory/CAlgCoefficientSourceComparison.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.SimplicialLocalization.WeakNerveInverts"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/Theory/CAlgCoproductFunctor.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.SimplicialLocalization.NerveMap"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/Theory/CAlgFullLocalizationSource.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.SimplicialLocalization.ModelHammockLocalization"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/Theory/Conservative.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.SimplicialLocalization.SourceHom"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/Theory/CoproductNativeUniversal.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/Theory/EnrichedPointPrecomposition.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockPrecompose",
+        "SerrePositivity.EInfinity.SimplicialLocalization.SourceHom"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/Theory/NativeCoproductCocone.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockArrowPoint"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/WeightedCotensor.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.HomotopyWeight.DoubleOpposite"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/WeightedCotensorLifting.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.HomotopyWeight.FrameLifting",
+        "SerrePositivity.EInfinity.HomotopyWeight.Reindex"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/ComplexLimits/DerivedConstantNatTrans.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.MixedNerveConstantHom"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/ComplexLimits/DerivedNatTransComposition.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.MixedNerveNatTransFunctor"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/ComplexLimits/DerivedNatTransIso.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.MixedNerveNatTrans"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/ComplexLimits/FramedLimit.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.HomotopyWeight.PointReplacement",
+        "SerrePositivity.EInfinity.HomotopyWeight.Reindex"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/ComplexLimits/FramedLimitConeClasses.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.HomotopyWeight.FrameConeClasses"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/ComplexLimits/FramedLimitConeNormalization.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.HomotopyWeight.ConeReindexPoints"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/ComplexLimits/FramedLimitConeSource.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.MixedFrameSource"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/ComplexLimits/FramedLimitCones.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.HomotopyWeight.FrameCones",
+        "SerrePositivity.EInfinity.HomotopyWeight.Reindex"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/ComplexLimits/FramedLimitHomNaturality.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.HomotopyWeight.TensorPiZeroNaturality"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/ComplexLimits/FramedLimitHomPiZero.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.HomotopyWeight.TensorPiZero"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/ComplexLimits/FramedLimitHomSource.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.HomotopyWeight.TensorPiZeroTarget"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/ComplexLimits/FramedLimitInvariance.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.HomotopyWeight.RealizationInvariance"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/ComplexLimits/FramedLimitMixedClasses.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.HomotopyWeight.KanConeClasses"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/ComplexLimits/NormalizedTensorElementAugmentationJoin.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.MixedNerveCoconePoint"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/ComplexLimits/NormalizedTensorElementAugmentedColumn.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.MixedNerveCoconePrism"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/ComplexLimits/NormalizedTensorElementEvaluatedColumn.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.MixedNerveCoconePrism"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/ComplexLimits/NormalizedTensorElementEvaluationJoin.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.MixedNerveCoconePoint"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/ComplexLimits/NormalizedTensorElementParameter.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.FrameIndexAugmentation"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/ComplexLimits/NormalizedTensorEvaluationHomotopy.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.MixedNerveConstant"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/ComplexLimits/OrdinaryDerivedConstant.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.MixedNerveConstant"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/ComplexLimits/RightSimplicialCones.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.HomotopyWeight.ConeReindex"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/ComplexLimits/WeightedCotensor.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.HomotopyWeight.DoubleOpposite"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/DGAlgebra/FrameComparison.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.SimplicialLocalization.ModelRightFrameComparison"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/DGAlgebra/FrameFactorization.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.SimplicialLocalization.ModelHammockNerveEquivalence"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/DGAlgebra/FrameHammockCoherent.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.RightFrameHammockCoherent"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/DGAlgebra/FrameLocalizationInput.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.RightFrameHammockFamily",
+        "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantLocalization"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/DGAlgebra/HomInfinityComparison.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.RightFrameHomInfinity"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/DGAlgebra/HomInfinityComparisonInput.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.RightFrameTerminalHomReduction"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/Hammock/AsSmallComparison.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/Hammock/ContravariantThomasonArrows.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.ThomasonSimplex"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/Hammock/DoubleSimplicialColumnWeak.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.BarPointwiseInvariance"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/Hammock/ExInfinityWeakMap.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/Hammock/FreeFirstColumnBackwardLeftWeak.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.SimplicialLocalization.FreeResolutionHomRepresentation"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/Hammock/FreeFirstColumnBackwardRightWeak.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.SimplicialLocalization.FreeWordDiagonalBackwardWeak"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/Hammock/FreeFirstColumnLeftWeak.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.SimplicialLocalization.FreeWordDiagonalForwardWeak"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/Hammock/FreeFirstColumnObjects.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockObjects",
+        "SerrePositivity.EInfinity.SimplicialLocalization.FreeResolutionCanonicalMarkedHom"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/Hammock/FreeFirstColumnRightWeak.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.SimplicialLocalization.FreeResolutionHomRepresentation"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/Hammock/GrothendieckPointwiseWeak.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.ThomasonInversion"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/Hammock/HomotopyWeakComparison.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/Hammock/NerveEmbedding.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.NerveAsSmall"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/Hammock/SubsingletonCategoryContractible.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/Hammock/TwoSidedThomasonArrows.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.ThomasonSimplex"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/Hammock/TwoSidedThomasonRightForget.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.ThomasonNerveMap"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/Hammock/TwoSidedWeightedLeftRows.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.ThomasonNerveMap"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/Hammock/TwoSidedWeightedLeftSourceCalculation.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.ThomasonNerveMap"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/Hammock/TwoSidedWeightedLeftWeak.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.ThomasonInversion"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/Hammock/WeakAnodyneLocalization.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/Hammock/WeakArrowActionEquivalences.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/Hammock/WeakTwoOfSix.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/Modules/FreeHammockCoefficientLaws.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockMapAugmentation",
+        "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockMapComparison",
+        "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockUnit"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/Modules/FreeHammockCoefficientNerve.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.SimplicialLocalization.NerveFunctor",
+        "SerrePositivity.EInfinity.SimplicialLocalization.RelativeHammockEnriched"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/Modules/LocalizationArrowCoefficients.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.SimplicialLocalization.SourceHom"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/Modules/LocalizationSourceNaturality.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.SimplicialLocalization.LocalizationNerveSource",
+        "SerrePositivity.EInfinity.SimplicialLocalization.RelativeHammockSourceComparison"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/Modules/LocalizationStrictWeak.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.SimplicialLocalization.SourceHom"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/Modules/RelativeLocalizationEquivalence.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockDiagonalComparisonWeak",
+        "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockDiagonalReductionWeak",
+        "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockMapAugmentation",
+        "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockMapComparison",
+        "SerrePositivity.EInfinity.SimplicialLocalization.NerveMap",
+        "SerrePositivity.EInfinity.SimplicialLocalization.NerveWeakVertexIso"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/Modules/RelativeNaturalComparison.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.SimplicialLocalization.NerveFunctor"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/PowerOperation/BoundedCyclicSpectrum.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.SimplicialLocalization.RelativeHammockSourceComparison"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/PowerOperation/ComplexHammockPinchedComparison.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.PinchedFamilyWeakDetection"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/PowerOperation/ComplexHammockProbeFunctor.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.SimplicialLocalization.RelativeHammockNerveEquivalence"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/PowerOperation/ComplexHammockSource.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.SimplicialLocalization.ModelHammockLocalization",
+        "SerrePositivity.EInfinity.SimplicialLocalization.WeakNerveInverts"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/PowerOperation/ComplexNormalizedRoofMaps.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.FrameRoofComparisonInvariance"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/PowerOperation/ComplexNormalizedRoofWeak.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.FibrantSourceReducedFirst"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/PowerOperation/ComplexRelativeColumnHom.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.MixedNerveHomLiftIso"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/PowerOperation/ComplexRelativeElementPinchedFamily.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixColumnRoof"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/PowerOperation/ComplexRelativeElementReference.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.MixedNerveHomLiftIso"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/PowerOperation/NerveColumnConstantRestriction.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.NerveColumnRoofNaturality"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/PowerOperation/NerveColumnRoofConjugation.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixColumnRoof"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity/PowerOperation/RelativeComplexSpectrum.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.SimplicialLocalization.RelativeHammockSourceComparison"
+      ]
+    },
+    {
+      "path": "SerrePositivity/EInfinity.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotAlgebraHomInfinityComparison",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotBKClassification",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotBKNativeClassification",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotBKNativeSections",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotBKSections",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotEvaluationLocalization",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotFrameHomComparison",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotFrameHomInfinity",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointAugmentation",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointCorrectedUnitArrow",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointCorrectionComponent",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointCorrectionComponentArrows",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointCorrectionProjectionComponents",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointCorrectionProjectionValues",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointFirstSpan",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointHomInput",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointHomInputVertex",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointHomRestriction",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointNativeLiftUnit",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointNativeLiftUnitPoint",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointNativeTransformation",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointNativeTransformationEvaluation",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointNativeUnitFiber",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointNativeUnitPoint",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointPairingBaseComparison",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointPairingCorrection",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointPairingProjectionValues",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointRoofProbeArrow",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceAugmentationComparison",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceAugmentationPointValues",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceElements",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceFiberElements",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceFiberPairingRoof",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceFiberRoof",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceNativeFiber",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceNativeFiberPairing",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceNativeFiberPath",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceNativeIntervalFamily",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceNativeLift",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceNativeOppositeFiber",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceNativePinched",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceNativePinchedFactorization",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceOppositeAugmentation",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourcePairing",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceParameters",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRawCosliceFamily",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRawCoslicePath",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRoofAugmentation",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRoofColumn",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRoofComparison",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRoofEndpointTransport",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRoofFrame",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRoofGraph",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRoofNativeAugmentation",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRoofNativeFamily",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRoofNativePinched",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRoofParameter",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRoofPinched",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRoofPrefix",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceTargetFiber",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceTargetPointValues",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceTargetUnit",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceUnitLabel",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointTargetReplacement",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotLocalization",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotModelSource",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotModelSourceComparison",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotModelWeakTransformation",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotNativeConeAt",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotNativeFiberComparison",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotNativeFiberRecovery",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotNativeSectionsRecovery",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotNativeSourceFamily",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotProbeCoefficientsComparison",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotProbeCosliceClassification",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotProbeFrameComparison",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotProbeHomInfinityComparison",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotProbeKanCoefficients",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotProbeKanDiagram",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotProbeNativeHomComparison",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotProbeSourceFunctor",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotRightFrameCoherent",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotRightFrameComparison",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotTensorFrame",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotTensorFrameProperties",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotUnderlyingLocalization",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotUnderlyingSource",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotUniversalBKProbeCone",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotUniversalProbeCone",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotUniversalProbePointComparison",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotUniversalSourceNaturality",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotUniversalWeightedCone",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotUniversalWeightedConeNaturality",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotUniverseIndex",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotUniverseNativeCone",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotVertexLocalization",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotWeightComparison",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotalizationComparison",
+        "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotalizationInput",
+        "SerrePositivity.EInfinity.FrameHom.AnodyneFamilyHomotopy",
+        "SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection",
+        "SerrePositivity.EInfinity.FrameHom.ArrowSpanGrothendieck",
+        "SerrePositivity.EInfinity.FrameHom.AsSmallHammockHomFamily",
+        "SerrePositivity.EInfinity.FrameHom.AsSmallHammockHomNormalization",
+        "SerrePositivity.EInfinity.FrameHom.BarInitialComparison",
+        "SerrePositivity.EInfinity.FrameHom.BarPointwiseInvariance",
+        "SerrePositivity.EInfinity.FrameHom.BarRowsCoproduct",
+        "SerrePositivity.EInfinity.FrameHom.BarValueInclusion",
+        "SerrePositivity.EInfinity.FrameHom.CofinalAnodyneImage",
+        "SerrePositivity.EInfinity.FrameHom.CommaNerveBarProjection",
+        "SerrePositivity.EInfinity.FrameHom.CommaNerveContraction",
+        "SerrePositivity.EInfinity.FrameHom.CommaPreLeftCofinality",
+        "SerrePositivity.EInfinity.FrameHom.ComonadResolutionFunctoriality",
+        "SerrePositivity.EInfinity.FrameHom.ComonadResolutionMap",
+        "SerrePositivity.EInfinity.FrameHom.ConstantBarAugmentation",
+        "SerrePositivity.EInfinity.FrameHom.ConstantBarRows",
+        "SerrePositivity.EInfinity.FrameHom.CosimplicialHomCommaInvariance",
+        "SerrePositivity.EInfinity.FrameHom.CosimplicialHomElements",
+        "SerrePositivity.EInfinity.FrameHom.EnrichedHomFunctor",
+        "SerrePositivity.EInfinity.FrameHom.EnrichedHomRealization",
+        "SerrePositivity.EInfinity.FrameHom.EnrichedHomYoneda",
+        "SerrePositivity.EInfinity.FrameHom.FibrantSourceReducedComparison",
+        "SerrePositivity.EInfinity.FrameHom.FixedRightGrothendieckInversion",
+        "SerrePositivity.EInfinity.FrameHom.FrameArrowAugmentationLimits",
+        "SerrePositivity.EInfinity.FrameHom.FrameArrowCofinality",
+        "SerrePositivity.EInfinity.FrameHom.FrameArrowElements",
+        "SerrePositivity.EInfinity.FrameHom.FrameArrowLimits",
+        "SerrePositivity.EInfinity.FrameHom.FrameArrowRightKan",
+        "SerrePositivity.EInfinity.FrameHom.FrameAugmentationLimitLegs",
+        "SerrePositivity.EInfinity.FrameHom.FrameElementSpans",
+        "SerrePositivity.EInfinity.FrameHom.FrameIndexAugmentation",
+        "SerrePositivity.EInfinity.FrameHom.FrameLeftRoof",
+        "SerrePositivity.EInfinity.FrameHom.FrameLeftRoofPostcompose",
+        "SerrePositivity.EInfinity.FrameHom.FrameLeftRoofPrecompose",
+        "SerrePositivity.EInfinity.FrameHom.FrameLiftComma",
+        "SerrePositivity.EInfinity.FrameHom.FrameLiftContraction",
+        "SerrePositivity.EInfinity.FrameHom.FrameLiftSimplices",
+        "SerrePositivity.EInfinity.FrameHom.FrameRightKan",
+        "SerrePositivity.EInfinity.FrameHom.FrameRightKanCanonical",
+        "SerrePositivity.EInfinity.FrameHom.FrameRoofComparisonInvariance",
+        "SerrePositivity.EInfinity.FrameHom.FrameRoofCornerBaseProjection",
+        "SerrePositivity.EInfinity.FrameHom.FrameRoofCornerEvaluation",
+        "SerrePositivity.EInfinity.FrameHom.FrameRoofCornerEvaluationPrism",
+        "SerrePositivity.EInfinity.FrameHom.FrameRoofCornerEvaluationTriangle",
+        "SerrePositivity.EInfinity.FrameHom.FrameRoofCornerLeftBase",
+        "SerrePositivity.EInfinity.FrameHom.FrameRoofCornerNormalization",
+        "SerrePositivity.EInfinity.FrameHom.FrameRoofCornerProjectionLaws",
+        "SerrePositivity.EInfinity.FrameHom.FrameRoofFiberPinched",
+        "SerrePositivity.EInfinity.FrameHom.FrameRoofFiberPinchedProjection",
+        "SerrePositivity.EInfinity.FrameHom.FrameRoofQuillenSlice",
+        "SerrePositivity.EInfinity.FrameHom.FrameRoofSliceFibration",
+        "SerrePositivity.EInfinity.FrameHom.FrameRoofSliceWeakContractibility",
+        "SerrePositivity.EInfinity.FrameHom.FrameRoofSource",
+        "SerrePositivity.EInfinity.FrameHom.FrameRoofSourceProjection",
+        "SerrePositivity.EInfinity.FrameHom.FrameRoofTarget",
+        "SerrePositivity.EInfinity.FrameHom.FrameSpanNaturality",
+        "SerrePositivity.EInfinity.FrameHom.FrameSpanTargetHomotopy",
+        "SerrePositivity.EInfinity.FrameHom.FullyFaithfulNerveRetraction",
+        "SerrePositivity.EInfinity.FrameHom.GrothendieckCommaComparison",
+        "SerrePositivity.EInfinity.FrameHom.GrothendieckCommaRetraction",
+        "SerrePositivity.EInfinity.FrameHom.GrothendieckFiberInvariance",
+        "SerrePositivity.EInfinity.FrameHom.HomInfinityEquivalenceTransport",
+        "SerrePositivity.EInfinity.FrameHom.HomInfinityLocalizationTransport",
+        "SerrePositivity.EInfinity.FrameHom.KanElementsFamily",
+        "SerrePositivity.EInfinity.FrameHom.KanHomFamily",
+        "SerrePositivity.EInfinity.FrameHom.KanHomFamilyOpposite",
+        "SerrePositivity.EInfinity.FrameHom.KanNerveOppositeFamily",
+        "SerrePositivity.EInfinity.FrameHom.LiftedResolutionLeftRoof",
+        "SerrePositivity.EInfinity.FrameHom.LiftedSourceFrameElements",
+        "SerrePositivity.EInfinity.FrameHom.LiftedSourceFrameFiberRoof",
+        "SerrePositivity.EInfinity.FrameHom.LiftedSourceFramePairing",
+        "SerrePositivity.EInfinity.FrameHom.LocalizationComparison",
+        "SerrePositivity.EInfinity.FrameHom.MixedFrame",
+        "SerrePositivity.EInfinity.FrameHom.MixedFrameSource",
+        "SerrePositivity.EInfinity.FrameHom.MixedNerveCoconePoint",
+        "SerrePositivity.EInfinity.FrameHom.MixedNerveCoconePrism",
+        "SerrePositivity.EInfinity.FrameHom.MixedNerveConstant",
+        "SerrePositivity.EInfinity.FrameHom.MixedNerveConstantHom",
+        "SerrePositivity.EInfinity.FrameHom.MixedNerveHomLiftIso",
+        "SerrePositivity.EInfinity.FrameHom.MixedNerveHomRecovery",
+        "SerrePositivity.EInfinity.FrameHom.MixedNerveNatTrans",
+        "SerrePositivity.EInfinity.FrameHom.MixedNerveNatTransFunctor",
+        "SerrePositivity.EInfinity.FrameHom.NerveAsSmall",
+        "SerrePositivity.EInfinity.FrameHom.NerveColumnComponentArrow",
+        "SerrePositivity.EInfinity.FrameHom.NerveColumnNaturalityComponent",
+        "SerrePositivity.EInfinity.FrameHom.NerveColumnRoofNaturality",
+        "SerrePositivity.EInfinity.FrameHom.NerveColumnWhiskering",
+        "SerrePositivity.EInfinity.FrameHom.NerveEquivalenceImage",
+        "SerrePositivity.EInfinity.FrameHom.NerveOverRightPrism",
+        "SerrePositivity.EInfinity.FrameHom.NerveQuillenA",
+        "SerrePositivity.EInfinity.FrameHom.NerveTerminalImage",
+        "SerrePositivity.EInfinity.FrameHom.OppositeElementsInvariance",
+        "SerrePositivity.EInfinity.FrameHom.OverTerminalEvaluation",
+        "SerrePositivity.EInfinity.FrameHom.PinchedFamilyWeakDetection",
+        "SerrePositivity.EInfinity.FrameHom.PointSliceCornerFibration",
+        "SerrePositivity.EInfinity.FrameHom.ProductSimplexElementProjectionWeak",
+        "SerrePositivity.EInfinity.FrameHom.ProductSimplexUniverseProjectionWeak",
+        "SerrePositivity.EInfinity.FrameHom.RealizationHomNaturality",
+        "SerrePositivity.EInfinity.FrameHom.ResolutionAsphericity",
+        "SerrePositivity.EInfinity.FrameHom.ResolutionCofinality",
+        "SerrePositivity.EInfinity.FrameHom.ResolutionCommaContraction",
+        "SerrePositivity.EInfinity.FrameHom.ResolutionFixedRightComparison",
+        "SerrePositivity.EInfinity.FrameHom.RightFrameHammockCoherent",
+        "SerrePositivity.EInfinity.FrameHom.RightFrameHammockComponent",
+        "SerrePositivity.EInfinity.FrameHom.RightFrameHammockComponentImage",
+        "SerrePositivity.EInfinity.FrameHom.RightFrameHammockFamily",
+        "SerrePositivity.EInfinity.FrameHom.RightFrameHammockKanSpan",
+        "SerrePositivity.EInfinity.FrameHom.RightFrameHammockUnitComparison",
+        "SerrePositivity.EInfinity.FrameHom.RightFrameHammockUnitPoints",
+        "SerrePositivity.EInfinity.FrameHom.RightFrameHomBifunctor",
+        "SerrePositivity.EInfinity.FrameHom.RightFrameHomInfinity",
+        "SerrePositivity.EInfinity.FrameHom.RightFrameHomInfinityNormalization",
+        "SerrePositivity.EInfinity.FrameHom.RightFrameRoofComparison",
+        "SerrePositivity.EInfinity.FrameHom.RightFrameSpecifiedLocalization",
+        "SerrePositivity.EInfinity.FrameHom.RightFrameSpecifiedUnit",
+        "SerrePositivity.EInfinity.FrameHom.RightFrameTerminalHomReduction",
+        "SerrePositivity.EInfinity.FrameHom.RightFrameTerminalRealization",
+        "SerrePositivity.EInfinity.FrameHom.RightMixedBifunctor",
+        "SerrePositivity.EInfinity.FrameHom.SimplexTerminalEquivalence",
+        "SerrePositivity.EInfinity.FrameHom.SimplexTerminalFunctor",
+        "SerrePositivity.EInfinity.FrameHom.SimplexTerminalStandard",
+        "SerrePositivity.EInfinity.FrameHom.SmallCommaContraction",
+        "SerrePositivity.EInfinity.FrameHom.SmallCommaGrothendieck",
+        "SerrePositivity.EInfinity.FrameHom.SmallCosimplicialHomElements",
+        "SerrePositivity.EInfinity.FrameHom.SmallNerveInvariance",
+        "SerrePositivity.EInfinity.FrameHom.SourceFrameArrowElements",
+        "SerrePositivity.EInfinity.FrameHom.SourceRoofFamily",
+        "SerrePositivity.EInfinity.FrameHom.SourceRoofUnitNormalization",
+        "SerrePositivity.EInfinity.FrameHom.TerminalFiberBaseHomotopy",
+        "SerrePositivity.EInfinity.FrameHom.TerminalFiberEvaluationWeak",
+        "SerrePositivity.EInfinity.FrameHom.ThomasonInversion",
+        "SerrePositivity.EInfinity.FrameHom.ThomasonNaturality",
+        "SerrePositivity.EInfinity.FrameHom.ThomasonNerveMap",
+        "SerrePositivity.EInfinity.FrameHom.ThomasonSimplex",
+        "SerrePositivity.EInfinity.FrameHom.TotalElementsNativeClassification",
+        "SerrePositivity.EInfinity.FrameHom.UnitComparisonTransport",
+        "SerrePositivity.EInfinity.FrameHom.UnitComparisonWeakDetection",
+        "SerrePositivity.EInfinity.HomotopyWeight.BousfieldKanCellAttachment",
+        "SerrePositivity.EInfinity.HomotopyWeight.BousfieldKanCellCoproduct",
+        "SerrePositivity.EInfinity.HomotopyWeight.BousfieldKanCellEvaluation",
+        "SerrePositivity.EInfinity.HomotopyWeight.BousfieldKanCellLifting",
+        "SerrePositivity.EInfinity.HomotopyWeight.BousfieldKanCellReindex",
+        "SerrePositivity.EInfinity.HomotopyWeight.BousfieldKanCellTensor",
+        "SerrePositivity.EInfinity.HomotopyWeight.BousfieldKanChosenComparison",
+        "SerrePositivity.EInfinity.HomotopyWeight.BousfieldKanCofibrant",
+        "SerrePositivity.EInfinity.HomotopyWeight.BousfieldKanComparisonValues",
+        "SerrePositivity.EInfinity.HomotopyWeight.BousfieldKanExInfinityUnit",
+        "SerrePositivity.EInfinity.HomotopyWeight.BousfieldKanNativeFiberPoint",
+        "SerrePositivity.EInfinity.HomotopyWeight.BousfieldKanSkeletonPushout",
+        "SerrePositivity.EInfinity.HomotopyWeight.BousfieldKanUniverseCoefficientPoint",
+        "SerrePositivity.EInfinity.HomotopyWeight.BousfieldKanUniversePoints",
+        "SerrePositivity.EInfinity.HomotopyWeight.ConeInvariance",
+        "SerrePositivity.EInfinity.HomotopyWeight.ConeLifting",
+        "SerrePositivity.EInfinity.HomotopyWeight.ConePoints",
+        "SerrePositivity.EInfinity.HomotopyWeight.ConeReindex",
+        "SerrePositivity.EInfinity.HomotopyWeight.ConeReindexPoints",
+        "SerrePositivity.EInfinity.HomotopyWeight.ConstantComparison",
+        "SerrePositivity.EInfinity.HomotopyWeight.ConstantNaturality",
+        "SerrePositivity.EInfinity.HomotopyWeight.FrameConeClasses",
+        "SerrePositivity.EInfinity.HomotopyWeight.FrameCones",
+        "SerrePositivity.EInfinity.HomotopyWeight.FrameLifting",
+        "SerrePositivity.EInfinity.HomotopyWeight.Generators",
+        "SerrePositivity.EInfinity.HomotopyWeight.KanConeClasses",
+        "SerrePositivity.EInfinity.HomotopyWeight.KanConeComparison",
+        "SerrePositivity.EInfinity.HomotopyWeight.KanDiagramBrown",
+        "SerrePositivity.EInfinity.HomotopyWeight.KanDiagramReplacement",
+        "SerrePositivity.EInfinity.HomotopyWeight.NativeWeightedPointMap",
+        "SerrePositivity.EInfinity.HomotopyWeight.NativeWeightedPointRestriction",
+        "SerrePositivity.EInfinity.HomotopyWeight.NativeWeightedSectionPoints",
+        "SerrePositivity.EInfinity.HomotopyWeight.NativeWeightedSections",
+        "SerrePositivity.EInfinity.HomotopyWeight.PointReplacement",
+        "SerrePositivity.EInfinity.HomotopyWeight.PointwiseConePoints",
+        "SerrePositivity.EInfinity.HomotopyWeight.PointwisePiZero",
+        "SerrePositivity.EInfinity.HomotopyWeight.PointwiseRealization",
+        "SerrePositivity.EInfinity.HomotopyWeight.PointwiseTensorFrame",
+        "SerrePositivity.EInfinity.HomotopyWeight.PointwiseTensorSource",
+        "SerrePositivity.EInfinity.HomotopyWeight.ProjectiveBoundaryContraction",
+        "SerrePositivity.EInfinity.HomotopyWeight.ProjectiveHornCorner",
+        "SerrePositivity.EInfinity.HomotopyWeight.ProjectiveHornFactorization",
+        "SerrePositivity.EInfinity.HomotopyWeight.ProjectiveHornGenerators",
+        "SerrePositivity.EInfinity.HomotopyWeight.ProjectiveHornValues",
+        "SerrePositivity.EInfinity.HomotopyWeight.ProjectiveHornWeakFactorization",
+        "SerrePositivity.EInfinity.HomotopyWeight.ProjectiveWeightComparison",
+        "SerrePositivity.EInfinity.HomotopyWeight.ProjectiveWeightRestriction",
+        "SerrePositivity.EInfinity.HomotopyWeight.ProjectiveWeightTensorLifting",
+        "SerrePositivity.EInfinity.HomotopyWeight.RealizationAugmentation",
+        "SerrePositivity.EInfinity.HomotopyWeight.RealizationCoefficientMap",
+        "SerrePositivity.EInfinity.HomotopyWeight.RealizationInvariance",
+        "SerrePositivity.EInfinity.HomotopyWeight.Reindex",
+        "SerrePositivity.EInfinity.HomotopyWeight.TensorConeUnitPoint",
+        "SerrePositivity.EInfinity.HomotopyWeight.TensorPiZero",
+        "SerrePositivity.EInfinity.HomotopyWeight.TensorPiZeroNaturality",
+        "SerrePositivity.EInfinity.HomotopyWeight.TensorPiZeroTarget",
+        "SerrePositivity.EInfinity.HomotopyWeight.TensorRealization",
+        "SerrePositivity.EInfinity.HomotopyWeight.Values",
+        "SerrePositivity.EInfinity.HomotopyWeight.WeightIntervalBoundary",
+        "SerrePositivity.EInfinity.HomotopyWeight.WeightedSourceHomotopy",
+        "SerrePositivity.EInfinity.SimplicialLocalization.ComparisonEnrichedFunctors",
+        "SerrePositivity.EInfinity.SimplicialLocalization.ComparisonEnrichment",
+        "SerrePositivity.EInfinity.SimplicialLocalization.ComponentCategory",
+        "SerrePositivity.EInfinity.SimplicialLocalization.ComponentsEquivalence",
+        "SerrePositivity.EInfinity.SimplicialLocalization.ComponentsLocalizationLift",
+        "SerrePositivity.EInfinity.SimplicialLocalization.DKHammockCoefficientComparison",
+        "SerrePositivity.EInfinity.SimplicialLocalization.DKHammockComponentsValue",
+        "SerrePositivity.EInfinity.SimplicialLocalization.DKHammockCompositionComparison",
+        "SerrePositivity.EInfinity.SimplicialLocalization.DKHammockEndpointNaturality",
+        "SerrePositivity.EInfinity.SimplicialLocalization.DKReducedHammockEndpointNaturality",
+        "SerrePositivity.EInfinity.SimplicialLocalization.EnrichedMap",
+        "SerrePositivity.EInfinity.SimplicialLocalization.Enrichment",
+        "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockArrowAugmentation",
+        "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockArrowPoint",
+        "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockArrowZero",
+        "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockAugmentation",
+        "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockAugmentationValue",
+        "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockComparison",
+        "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockComparisonWeak",
+        "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockComposition",
+        "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockDiagonal",
+        "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockDiagonalComparisonWeak",
+        "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockDiagonalReductionWeak",
+        "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockDiagram",
+        "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockGeneratorWords",
+        "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockLocalizedObjects",
+        "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockMap",
+        "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockMapAugmentation",
+        "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockMapComparison",
+        "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockObjectMap",
+        "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockObjects",
+        "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockPostcompose",
+        "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockPrecompose",
+        "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockUnit",
+        "SerrePositivity.EInfinity.SimplicialLocalization.FreeResolution",
+        "SerrePositivity.EInfinity.SimplicialLocalization.FreeResolutionCanonicalMarkedHom",
+        "SerrePositivity.EInfinity.SimplicialLocalization.FreeResolutionFunctoriality",
+        "SerrePositivity.EInfinity.SimplicialLocalization.FreeResolutionGeneratorBlocks",
+        "SerrePositivity.EInfinity.SimplicialLocalization.FreeResolutionGeneratorHom",
+        "SerrePositivity.EInfinity.SimplicialLocalization.FreeResolutionGeneratorHomOperators",
+        "SerrePositivity.EInfinity.SimplicialLocalization.FreeResolutionGeneratorPartition",
+        "SerrePositivity.EInfinity.SimplicialLocalization.FreeResolutionHomContraction",
+        "SerrePositivity.EInfinity.SimplicialLocalization.FreeResolutionHomExtra",
+        "SerrePositivity.EInfinity.SimplicialLocalization.FreeResolutionHomExtraNaturality",
+        "SerrePositivity.EInfinity.SimplicialLocalization.FreeResolutionHomRepresentation",
+        "SerrePositivity.EInfinity.SimplicialLocalization.FreeResolutionMarkedHom",
+        "SerrePositivity.EInfinity.SimplicialLocalization.FreeResolutionMarkedHomContraction",
+        "SerrePositivity.EInfinity.SimplicialLocalization.FreeResolutionNativeMarkedHom",
+        "SerrePositivity.EInfinity.SimplicialLocalization.FreeResolutionNativeMarkedHomWeak",
+        "SerrePositivity.EInfinity.SimplicialLocalization.FreeResolutionUnderlyingHom",
+        "SerrePositivity.EInfinity.SimplicialLocalization.FreeWordDiagonalBackwardWeak",
+        "SerrePositivity.EInfinity.SimplicialLocalization.FreeWordDiagonalEmptyWeak",
+        "SerrePositivity.EInfinity.SimplicialLocalization.FreeWordDiagonalForwardWeak",
+        "SerrePositivity.EInfinity.SimplicialLocalization.FreeWordDiagonalWeak",
+        "SerrePositivity.EInfinity.SimplicialLocalization.HammockInvertsEdges",
+        "SerrePositivity.EInfinity.SimplicialLocalization.HammockSourceFunctor",
+        "SerrePositivity.EInfinity.SimplicialLocalization.Hom",
+        "SerrePositivity.EInfinity.SimplicialLocalization.HomAugmentation",
+        "SerrePositivity.EInfinity.SimplicialLocalization.HomMapLaws",
+        "SerrePositivity.EInfinity.SimplicialLocalization.KanComparisonEnrichedFunctors",
+        "SerrePositivity.EInfinity.SimplicialLocalization.KanComparisonNerves",
+        "SerrePositivity.EInfinity.SimplicialLocalization.KanComparisonWeak",
+        "SerrePositivity.EInfinity.SimplicialLocalization.KanComponents",
+        "SerrePositivity.EInfinity.SimplicialLocalization.KanEnrichedMap",
+        "SerrePositivity.EInfinity.SimplicialLocalization.KanEnrichment",
+        "SerrePositivity.EInfinity.SimplicialLocalization.KanHammockArrowNormalization",
+        "SerrePositivity.EInfinity.SimplicialLocalization.KanHammockHomCoherent",
+        "SerrePositivity.EInfinity.SimplicialLocalization.KanHammockHomInfinity",
+        "SerrePositivity.EInfinity.SimplicialLocalization.KanHammockHomPinched",
+        "SerrePositivity.EInfinity.SimplicialLocalization.KanHammockHomPinchedValue",
+        "SerrePositivity.EInfinity.SimplicialLocalization.KanHammockPinchedSimplexValue",
+        "SerrePositivity.EInfinity.SimplicialLocalization.KanHammockPrecompose",
+        "SerrePositivity.EInfinity.SimplicialLocalization.KanHammockSourceFunctor",
+        "SerrePositivity.EInfinity.SimplicialLocalization.KanHammockWeakArrows",
+        "SerrePositivity.EInfinity.SimplicialLocalization.KanHammockYonedaNormalization",
+        "SerrePositivity.EInfinity.SimplicialLocalization.KanMapLaws",
+        "SerrePositivity.EInfinity.SimplicialLocalization.LocalizationNervePrecomposition",
+        "SerrePositivity.EInfinity.SimplicialLocalization.LocalizationNerveSource",
+        "SerrePositivity.EInfinity.SimplicialLocalization.LocalizedFreeResolution",
+        "SerrePositivity.EInfinity.SimplicialLocalization.LocalizedResolutionFunctoriality",
+        "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantFramePinchedWeak",
+        "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantFrameRightKanCofinality",
+        "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantFrameRoof",
+        "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantFrameRoofWeak",
+        "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantLocalization",
+        "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantRightKanReduction",
+        "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceFrameGraph",
+        "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofAugmentationImage",
+        "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofBaseEvaluation",
+        "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofCornerEvaluation",
+        "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofCornerOver",
+        "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofDegreeModel",
+        "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofEvaluationHomotopy",
+        "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofGeometricLeftCell",
+        "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofGeometricRightCell",
+        "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofNativePinchedReference",
+        "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofNativePrism",
+        "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofNativePrismOne",
+        "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofNativePrismProjection",
+        "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofNativePrismZero",
+        "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofNativeRoofComparison",
+        "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofNativeSimplex",
+        "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofNativeTriangle",
+        "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofPrefixHomotopy",
+        "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofPrefixNaturality",
+        "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofPrefixPath",
+        "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofProductCone",
+        "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofProductCornerProjection",
+        "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofProductFunctorCell",
+        "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofProductGeometricTriangle",
+        "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofProductIntervalCriterion",
+        "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofProductReference",
+        "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofRightSlice",
+        "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofSliceCriterion",
+        "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofSliceFibration",
+        "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofSlices",
+        "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSpecifiedLocalization",
+        "SerrePositivity.EInfinity.SimplicialLocalization.ModelCofibrantRightKanShape",
+        "SerrePositivity.EInfinity.SimplicialLocalization.ModelHammockLocalization",
+        "SerrePositivity.EInfinity.SimplicialLocalization.ModelRightFrameComparison",
+        "SerrePositivity.EInfinity.SimplicialLocalization.ModelRightFrameSpecifiedInput",
+        "SerrePositivity.EInfinity.SimplicialLocalization.Nerve",
+        "SerrePositivity.EInfinity.SimplicialLocalization.NerveFunctor",
+        "SerrePositivity.EInfinity.SimplicialLocalization.NerveMap",
+        "SerrePositivity.EInfinity.SimplicialLocalization.NerveWeakVertexIso",
+        "SerrePositivity.EInfinity.SimplicialLocalization.RelativeHammockEnriched",
+        "SerrePositivity.EInfinity.SimplicialLocalization.RelativeHammockSourceComparison",
+        "SerrePositivity.EInfinity.SimplicialLocalization.ResolutionFaces",
+        "SerrePositivity.EInfinity.SimplicialLocalization.ResolutionGenerators",
+        "SerrePositivity.EInfinity.SimplicialLocalization.ResolutionObjects",
+        "SerrePositivity.EInfinity.SimplicialLocalization.ResolutionRepresentatives",
+        "SerrePositivity.EInfinity.SimplicialLocalization.ResolutionWordEdge",
+        "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixColumnRoof",
+        "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixFamilyTriangle",
+        "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixPath",
+        "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixPathComposition",
+        "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixPrismCompatibility",
+        "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixPrismFront",
+        "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixPrismLast",
+        "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixPrismNaturality",
+        "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixPrismOne",
+        "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixPrismProjection",
+        "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixPrismReindex",
+        "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixPrismSimplex",
+        "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixPrismZero",
+        "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixPrismZeroSlice",
+        "SerrePositivity.EInfinity.SimplicialLocalization.SourceHom",
+        "SerrePositivity.EInfinity.SimplicialLocalization.WeakNerveInverts",
+        "SerrePositivity.EInfinity.SimplicialLocalization.ZeroLevelComponents"
+      ]
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramModelLocalization.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.SimplicialLocalization.WeakNerveInverts"
+      ]
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramRightFrameComparison.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.SimplicialLocalization.ModelRightFrameComparison"
+      ]
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Frames/MixedFrameComparison.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.MixedFrame"
+      ]
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Frames/MixedFrameCones.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.HomotopyWeight.KanConeComparison"
+      ]
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Frames/RightFrameInvariance.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection"
+      ]
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/FibrantRightSpanDiagram.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.ArrowSpanGrothendieck"
+      ]
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/FibrantRightSpans.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection",
+        "SerrePositivity.EInfinity.FrameHom.FullyFaithfulNerveRetraction"
+      ]
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/MiddleBackwardTrivialCofibration.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection",
+        "SerrePositivity.EInfinity.FrameHom.FullyFaithfulNerveRetraction"
+      ]
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/ReplacementComparison.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection"
+      ]
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/ResolutionLeftRoof.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.FrameLeftRoof"
+      ]
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/ResolutionSpecialSpans.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.FrameElementSpans"
+      ]
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/SpecialThreeArrowComparison.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection"
+      ]
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/ThreeArrowEquivalence.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.NerveEquivalenceImage"
+      ]
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/ThreeArrowLeftReplacement.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.FullyFaithfulNerveRetraction"
+      ]
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/ThreeArrowRightReplacement.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.FullyFaithfulNerveRetraction"
+      ]
+    },
+    {
+      "path": "SerrePositivity/KST/Fibration/Relative/ClosedZeroFlag.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection"
+      ]
+    },
+    {
+      "path": "SerrePositivity/KST/LocalizingInvariants/DGAlgebraCellMappingTargetInvariance.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection"
+      ]
+    },
+    {
+      "path": "SerrePositivity/KST/LocalizingInvariants/DGAlgebraNativeChosenMixedFrame.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection"
+      ]
+    },
+    {
+      "path": "SerrePositivity/KST/LocalizingInvariants/DGAlgebraNativeMixedFrame.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection"
+      ]
+    },
+    {
+      "path": "SerrePositivity/KST/LocalizingInvariants/DGAlgebraNativeRightFrame.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.MixedFrame"
+      ]
+    },
+    {
+      "path": "SerrePositivity/KST/LocalizingInvariants/DGAlgebraSpecifiedFrameComparison.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.NerveAsSmall"
+      ]
+    },
+    {
+      "path": "SerrePositivity/KST/SConstruction/Cofinality/ClosedRelativeExInfinityVanishing.lean",
+      "imports": [
+        "SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection"
+      ]
+    }
+  ],
+  "retained_einfinity_imports": [
+    {
+      "source": "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotEvaluationLocalization",
+      "target": "SerrePositivity.EInfinity.BarrattEccles.CAlgQuasiIso",
+      "new_source": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.StrictDiagramTotEvaluationLocalization",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRoofGraph",
+      "target": "SerrePositivity.EInfinity.Hammock.AsSmallComposition",
+      "new_source": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.StrictDiagramTotJointSourceRoofGraph",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRoofNativeFamily",
+      "target": "SerrePositivity.EInfinity.PowerOperation.NerveColumnRoofConjugation",
+      "new_source": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.StrictDiagramTotJointSourceRoofNativeFamily",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotModelSource",
+      "target": "SerrePositivity.EInfinity.BarrattEccles.Theory.CAlgFullLocalizationSource",
+      "new_source": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.StrictDiagramTotModelSource",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotProbeFrameComparison",
+      "target": "SerrePositivity.EInfinity.BarrattEccles.FramedLimitProbeComparison",
+      "new_source": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.StrictDiagramTotProbeFrameComparison",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotProbeNativeHomComparison",
+      "target": "SerrePositivity.EInfinity.BarrattEccles.FramedLimitProbeComparison",
+      "new_source": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.StrictDiagramTotProbeNativeHomComparison",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotProbeNativeHomComparison",
+      "target": "SerrePositivity.EInfinity.BarrattEccles.CAlgQuasiIso",
+      "new_source": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.StrictDiagramTotProbeNativeHomComparison",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotProbeSourceFunctor",
+      "target": "SerrePositivity.EInfinity.BarrattEccles.FramedLimitProbeFunctor",
+      "new_source": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.StrictDiagramTotProbeSourceFunctor",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotRightFrameComparison",
+      "target": "SerrePositivity.EInfinity.BarrattEccles.RightFrames",
+      "new_source": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.StrictDiagramTotRightFrameComparison",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotRightFrameComparison",
+      "target": "SerrePositivity.EInfinity.BarrattEccles.MappingFactorizations",
+      "new_source": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.StrictDiagramTotRightFrameComparison",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotTensorFrame",
+      "target": "SerrePositivity.EInfinity.BarrattEccles.FramedLimit",
+      "new_source": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.StrictDiagramTotTensorFrame",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotTensorFrameProperties",
+      "target": "SerrePositivity.EInfinity.BarrattEccles.FramedLimitCones",
+      "new_source": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.StrictDiagramTotTensorFrameProperties",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotUnderlyingSource",
+      "target": "SerrePositivity.EInfinity.BarrattEccles.CAlgUnderlyingDerivedComparison",
+      "new_source": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.StrictDiagramTotUnderlyingSource",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotUniversalProbeCone",
+      "target": "SerrePositivity.EInfinity.BarrattEccles.FramedLimitProbeComparison",
+      "new_source": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.StrictDiagramTotUniversalProbeCone",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotUniversalSourceNaturality",
+      "target": "SerrePositivity.EInfinity.BarrattEccles.FramedLimitComparison",
+      "new_source": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.StrictDiagramTotUniversalSourceNaturality",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotUniversalWeightedCone",
+      "target": "SerrePositivity.EInfinity.BarrattEccles.FramedLimit",
+      "new_source": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.StrictDiagramTotUniversalWeightedCone",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotVertexLocalization",
+      "target": "SerrePositivity.EInfinity.BarrattEccles.FramedLimitInvariance",
+      "new_source": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.StrictDiagramTotVertexLocalization",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotalizationComparison",
+      "target": "SerrePositivity.EInfinity.BarrattEccles.FramedLimit",
+      "new_source": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.StrictDiagramTotalizationComparison",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotalizationComparison",
+      "target": "SerrePositivity.EInfinity.BarrattEccles.CAlgAlgebraSource",
+      "new_source": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.StrictDiagramTotalizationComparison",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotalizationInput",
+      "target": "SerrePositivity.EInfinity.BarrattEccles.CAlgAlgebraSource",
+      "new_source": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.StrictDiagramTotalizationInput",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.FrameHom.AsSmallHammockHomFamily",
+      "target": "SerrePositivity.EInfinity.Hammock.AsSmallComposition",
+      "new_source": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.AsSmallHammockHomFamily",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.FrameHom.AsSmallHammockHomNormalization",
+      "target": "SerrePositivity.EInfinity.Hammock.AsSmallKanArrow",
+      "new_source": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.AsSmallHammockHomNormalization",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.FrameHom.FrameFunctorImage",
+      "target": "SerrePositivity.EInfinity.Hammock.RelativeColimitMap",
+      "new_source": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameFunctorImage",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.FrameHom.FrameLeftRoofPrecompose",
+      "target": "SerrePositivity.EInfinity.Hammock.LeftRoofPrecomposeHomotopy",
+      "new_source": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameLeftRoofPrecompose",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.FrameHom.FrameRoofSliceWeakContractibility",
+      "target": "SerrePositivity.EInfinity.Hammock.WeakAnodyneLocalization",
+      "new_source": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameRoofSliceWeakContractibility",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.FrameHom.KanHomFamily",
+      "target": "SerrePositivity.EInfinity.Hammock.ExInfinityWeakMap",
+      "new_source": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.KanHomFamily",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.FrameHom.PinchedFamilyWeakDetection",
+      "target": "SerrePositivity.EInfinity.Hammock.WeakAnodyneLocalization",
+      "new_source": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.PinchedFamilyWeakDetection",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.FrameHom.ProductSimplexElementProjectionWeak",
+      "target": "SerrePositivity.EInfinity.Hammock.WeakAnodyneLocalization",
+      "new_source": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ProductSimplexElementProjectionWeak",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.FrameHom.ProductSimplexUniverseProjectionWeak",
+      "target": "SerrePositivity.EInfinity.Hammock.WeakAnodyneLocalization",
+      "new_source": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ProductSimplexUniverseProjectionWeak",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.FrameHom.RightFrameHammockComponent",
+      "target": "SerrePositivity.EInfinity.Hammock.AsSmallComparison",
+      "new_source": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.RightFrameHammockComponent",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.FrameHom.RightFrameHammockFamily",
+      "target": "SerrePositivity.EInfinity.Hammock.WeakArrowActionEquivalences",
+      "new_source": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.RightFrameHammockFamily",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.FrameHom.RightFrameHammockFamily",
+      "target": "SerrePositivity.EInfinity.Hammock.WeakAnodyneLocalization",
+      "new_source": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.RightFrameHammockFamily",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.FrameHom.RightFrameSpecifiedUnit",
+      "target": "SerrePositivity.EInfinity.Hammock.AsSmallArrow",
+      "new_source": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.RightFrameSpecifiedUnit",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.FrameHom.TerminalFiberEvaluationWeak",
+      "target": "SerrePositivity.EInfinity.Hammock.WeakAnodyneLocalization",
+      "new_source": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.TerminalFiberEvaluationWeak",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.FrameHom.UnitComparisonTransport",
+      "target": "SerrePositivity.EInfinity.ComplexLimits.PinchedTransportFamily",
+      "new_source": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.UnitComparisonTransport",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.HomotopyWeight.PointwiseRealization",
+      "target": "SerrePositivity.EInfinity.FrameRealizationLifting",
+      "new_source": "SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.PointwiseRealization",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.SimplicialLocalization.DKHammockCoefficientComparison",
+      "target": "SerrePositivity.EInfinity.Hammock.WeakAnodyneLocalization",
+      "new_source": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.DKHammockCoefficientComparison",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.SimplicialLocalization.DKHammockComponentsValue",
+      "target": "SerrePositivity.EInfinity.Hammock.AnodyneComponents",
+      "new_source": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.DKHammockComponentsValue",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.SimplicialLocalization.DKHammockCompositionComparison",
+      "target": "SerrePositivity.EInfinity.Hammock.WeakTensor",
+      "new_source": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.DKHammockCompositionComparison",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.SimplicialLocalization.DKReducedHammockEndpointNaturality",
+      "target": "SerrePositivity.EInfinity.Hammock.ReducedPointActions",
+      "new_source": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.DKReducedHammockEndpointNaturality",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockArrowAugmentation",
+      "target": "SerrePositivity.EInfinity.Hammock.RelativeFixedArrow",
+      "new_source": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.FreeHammockArrowAugmentation",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockArrowZero",
+      "target": "SerrePositivity.EInfinity.Hammock.HammockValueForward",
+      "new_source": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.FreeHammockArrowZero",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockAugmentationValue",
+      "target": "SerrePositivity.EInfinity.Hammock.HammockValueComposition",
+      "new_source": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.FreeHammockAugmentationValue",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockComparison",
+      "target": "SerrePositivity.EInfinity.Hammock.FixedObjectLocalizationEvaluation",
+      "new_source": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.FreeHammockComparison",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockComparisonWeak",
+      "target": "SerrePositivity.EInfinity.Hammock.FreeHammockLocalizationWeak",
+      "new_source": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.FreeHammockComparisonWeak",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockComparisonWeak",
+      "target": "SerrePositivity.EInfinity.Hammock.FixedObjectHomTransportIso",
+      "new_source": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.FreeHammockComparisonWeak",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockComposition",
+      "target": "SerrePositivity.EInfinity.Hammock.FixedObjectComposition",
+      "new_source": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.FreeHammockComposition",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockComposition",
+      "target": "SerrePositivity.EInfinity.Hammock.FixedObjectEvaluationComposition",
+      "new_source": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.FreeHammockComposition",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockDiagonal",
+      "target": "SerrePositivity.EInfinity.Hammock.ReducedColimit",
+      "new_source": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.FreeHammockDiagonal",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockDiagonalComparisonWeak",
+      "target": "SerrePositivity.EInfinity.Hammock.DoubleSimplicialWeak",
+      "new_source": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.FreeHammockDiagonalComparisonWeak",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockDiagonalReductionWeak",
+      "target": "SerrePositivity.EInfinity.Hammock.WordDiagonalProper",
+      "new_source": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.FreeHammockDiagonalReductionWeak",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockDiagonalReductionWeak",
+      "target": "SerrePositivity.EInfinity.Hammock.WeakProperColimit",
+      "new_source": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.FreeHammockDiagonalReductionWeak",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockGeneratorWords",
+      "target": "SerrePositivity.EInfinity.Hammock.UnmarkedGeneratorValue",
+      "new_source": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.FreeHammockGeneratorWords",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockLocalizedObjects",
+      "target": "SerrePositivity.EInfinity.Hammock.FixedObjectLocalizationValue",
+      "new_source": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.FreeHammockLocalizedObjects",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockMapAugmentation",
+      "target": "SerrePositivity.EInfinity.Hammock.RelativeColimitMap",
+      "new_source": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.FreeHammockMapAugmentation",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockUnit",
+      "target": "SerrePositivity.EInfinity.Hammock.RelativeFixedUnit",
+      "new_source": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.FreeHammockUnit",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockUnit",
+      "target": "SerrePositivity.EInfinity.Hammock.HammockValueForward",
+      "new_source": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.FreeHammockUnit",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.SimplicialLocalization.FreeResolutionCanonicalMarkedHom",
+      "target": "SerrePositivity.EInfinity.Hammock.SingleZigzagHomDiagram",
+      "new_source": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.FreeResolutionCanonicalMarkedHom",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.SimplicialLocalization.FreeWordDiagonalEmptyWeak",
+      "target": "SerrePositivity.EInfinity.Hammock.EmptyWordDiagonalWeak",
+      "new_source": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.FreeWordDiagonalEmptyWeak",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.SimplicialLocalization.FreeWordDiagonalForwardWeak",
+      "target": "SerrePositivity.EInfinity.Hammock.SingleZigzagDiagonalEvaluation",
+      "new_source": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.FreeWordDiagonalForwardWeak",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.SimplicialLocalization.FreeWordDiagonalWeak",
+      "target": "SerrePositivity.EInfinity.Hammock.FreeFirstColumnForwardStep",
+      "new_source": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.FreeWordDiagonalWeak",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.SimplicialLocalization.FreeWordDiagonalWeak",
+      "target": "SerrePositivity.EInfinity.Hammock.FreeFirstColumnBackwardStep",
+      "new_source": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.FreeWordDiagonalWeak",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.SimplicialLocalization.FreeWordDiagonalWeak",
+      "target": "SerrePositivity.EInfinity.Hammock.FreeFirstColumnMixedStep",
+      "new_source": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.FreeWordDiagonalWeak",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.SimplicialLocalization.FreeWordDiagonalWeak",
+      "target": "SerrePositivity.EInfinity.Hammock.FreeFirstColumnReverseStep",
+      "new_source": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.FreeWordDiagonalWeak",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.SimplicialLocalization.KanComparisonEnrichedFunctors",
+      "target": "SerrePositivity.EInfinity.Hammock.ExInfinityEnrichedFunctor",
+      "new_source": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.KanComparisonEnrichedFunctors",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.SimplicialLocalization.KanComparisonWeak",
+      "target": "SerrePositivity.EInfinity.Hammock.ExInfinityWeakMap",
+      "new_source": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.KanComparisonWeak",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.SimplicialLocalization.KanHammockHomCoherent",
+      "target": "SerrePositivity.EInfinity.Hammock.ExInfinityPointActions",
+      "new_source": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.KanHammockHomCoherent",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.SimplicialLocalization.KanHammockSourceFunctor",
+      "target": "SerrePositivity.EInfinity.Hammock.ExInfinityEnrichedUnit",
+      "new_source": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.KanHammockSourceFunctor",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.SimplicialLocalization.KanHammockWeakArrows",
+      "target": "SerrePositivity.EInfinity.Hammock.CoherentComponents",
+      "new_source": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.KanHammockWeakArrows",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantFramePinchedWeak",
+      "target": "SerrePositivity.EInfinity.Hammock.AsSmallComparison",
+      "new_source": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.ModelBifibrantFramePinchedWeak",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofNativeRoofComparison",
+      "target": "SerrePositivity.EInfinity.Hammock.LeftRoofSameUniverseComparison",
+      "new_source": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.ModelBifibrantSourceRoofNativeRoofComparison",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofPrefixHomotopy",
+      "target": "SerrePositivity.EInfinity.Hammock.LeftRoofPrefixEndpoints",
+      "new_source": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.ModelBifibrantSourceRoofPrefixHomotopy",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofPrefixNaturality",
+      "target": "SerrePositivity.EInfinity.Hammock.LeftRoofPrefixNaturality",
+      "new_source": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.ModelBifibrantSourceRoofPrefixNaturality",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofProductCone",
+      "target": "SerrePositivity.EInfinity.BarrattEccles.CofibrantSourceFrameLimits",
+      "new_source": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.ModelBifibrantSourceRoofProductCone",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofProductReference",
+      "target": "SerrePositivity.EInfinity.Hammock.WeakArrowActionEquivalences",
+      "new_source": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.ModelBifibrantSourceRoofProductReference",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.SimplicialLocalization.RelativeHammockEnriched",
+      "target": "SerrePositivity.EInfinity.Hammock.RelativeCompositionPoints",
+      "new_source": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.RelativeHammockEnriched",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.SimplicialLocalization.RelativeHammockEnriched",
+      "target": "SerrePositivity.EInfinity.Hammock.RelativeForwardSimplex",
+      "new_source": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.RelativeHammockEnriched",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.SimplicialLocalization.RelativeHammockEnriched",
+      "target": "SerrePositivity.EInfinity.Hammock.ExInfinityWeakMap",
+      "new_source": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.RelativeHammockEnriched",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixColumnRoof",
+      "target": "SerrePositivity.EInfinity.ComplexLimits.PinchedFamilyPostcompArrow",
+      "new_source": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.RoofPrefixColumnRoof",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixPath",
+      "target": "SerrePositivity.EInfinity.Hammock.LeftRoofPrefixPath",
+      "new_source": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.RoofPrefixPath",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.SimplicialLocalization.SourceHom",
+      "target": "SerrePositivity.EInfinity.Interface.Core",
+      "new_source": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.SourceHom",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    },
+    {
+      "source": "SerrePositivity.EInfinity.SimplicialLocalization.SourceHom",
+      "target": "SerrePositivity.EInfinity.Hammock.CoherentComponents",
+      "new_source": "SerrePositivity.InfinityCategories.HTT.ModelCategoryLocalization.SimplicialLocalization.SourceHom",
+      "note": "outside move set; keep existing dependency and compare layer baseline"
+    }
+  ]
+}

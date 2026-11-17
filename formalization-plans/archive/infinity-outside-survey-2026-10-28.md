@@ -6,7 +6,7 @@ InfinityCategories に置くべき一般論がどれだけあるかを数えた�
 次に、3 つのエージェントがファイル名の接頭辞で群に分け、群ごとに見本を読んで分類した。
 分類：G は一般論、M は一般の核と K・スペクトル固有の包装が混在、S は語彙判定をすり抜けただけの固有の内容。
 数は群の境界の取り方による概数である。
-使われ方：[refactoring-verdier.md](../refactoring-verdier.md) と R 第 2 窓の候補選定に使う。
+使われ方：[refactoring-verdier.md](stage-i/refactoring-verdier.md) と R 第 2 窓の候補選定に使う。
 
 ## 1. 総計
 

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.TwoSidedWeightedLeftMap
-public import SerrePositivity.EInfinity.FrameHom.ThomasonNerveMap
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ThomasonNerveMap
 
 /-!
 # 元の右ラベル次数を動かす重み付き左比較
@@ -60,7 +60,7 @@ def diagonalSourceIso (G : W ⥤ Cat.{u, u}) :
 def diagonalMap (G : W ⥤ Cat.{u, u}) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedBar.space (F ⋙ nerveFunctor) (G ⋙ nerveFunctor) ⟶
       (BarConstruction.functor (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieck.contravariantTotal F)).obj
-        (FrameHom.Thomason.nerveDiagram (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieck.contravariantProjection F ⋙ G)) :=
+        (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.nerveDiagram (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieck.contravariantProjection F ⋙ G)) :=
   (diagonalSourceIso F G).inv ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor.map (rowMap F G)
 
 end SerrePositivity.EInfinity.Hammock.TwoSidedWeightedLeft

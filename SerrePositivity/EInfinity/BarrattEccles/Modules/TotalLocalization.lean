@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.BarrattEccles.Modules.StrictRawFamily
 public import SerrePositivity.EInfinity.BarrattEccles.AlgebraRelativeCategory
 public import SerrePositivity.EInfinity.BarrattEccles.CAlg
-public import SerrePositivity.EInfinity.SimplicialLocalization.NerveMap
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.NerveMap
 
 /-!
 # BE 全加群圏の同じ台と相対局所化の射影
@@ -21,7 +21,7 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded
-open SerrePositivity.EInfinity.SimplicialLocalization
+open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization
 attribute [local implicit_reducible] strictRawModuleRestrictionPseudofunctor
 variable (A : Type u) [CommRing A]
@@ -77,18 +77,18 @@ def strictRawModuleTotalProjectionRelative :
 /-- 概要：同じ元の全加群相対圏の局所化準圏（HA §4.2.3）。
 方針：構成済みの Kan 局所化の coherent nerve を取る。
 規約：fiber の同定は別に検証する。使われ方：全加群族の全空間。 -/
-abbrev moduleTotalInfinity : SSet.{u+1} := localizationNerve (strictRawModuleTotalRelative A)
+abbrev moduleTotalInfinity : SSet.{u+1} := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerve (strictRawModuleTotalRelative A)
 
 /-- 概要：同じ全加群の局所化は準圏（HTT 1.1.5.10）。
 方針：同じ相対圏の Kan 局所化 nerve の準圏性を使う。
 規約：新しいモデル圏の仮定なし。使われ方：全加群族の全空間。 -/
 instance moduleTotalInfinity_quasicategory : Quasicategory (moduleTotalInfinity A) :=
-  localizationNerve_quasicategory _
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerve_quasicategory _
 
 /-- 概要：同じ局所化全加群準圏から CAlg への実射影（HA §4.2.3）。
 方針：元の射影と同じ cofibrant 置換を相対局所化の実関手へ送る。
 規約：全単体を持つ射。cocartesian 性は別に証明する。使われ方：全加群族の底。 -/
 def moduleTotalProjection : moduleTotalInfinity A ⟶ CAlg_R A :=
-  localizationNerveMap ((strictRawModuleTotalProjectionRelative A) ≫ algebraToCofibrantDKRelative A)
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap ((strictRawModuleTotalProjectionRelative A) ≫ algebraToCofibrantDKRelative A)
 
 end SerrePositivity.EInfinity.BarrattEccles

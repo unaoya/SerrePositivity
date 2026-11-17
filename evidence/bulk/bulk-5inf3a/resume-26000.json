@@ -1,0 +1,26 @@
+{
+  "instruction_commit": "4e7e81a43",
+  "outer_limit_lines": 26000,
+  "previous_stop": "21ec48977",
+  "scope": "finish HT04.R1-R3 only",
+  "order": [
+    "type-check unverified candidates",
+    "R1",
+    "R2",
+    "R3"
+  ],
+  "report_without_stopping_near": 24000,
+  "stop_if_forecast_exceeds": 26000,
+  "endpoint_type_unchanged": true,
+  "general_crystalline_comparison_as_input": false,
+  "merge_main": false,
+  "HT05_HT06_5inf7a_B2_B5_B6": "do not start",
+  "previous_corrected_forecast": [
+    22223,
+    25443
+  ],
+  "forecast_gate_passed": true,
+  "complete": 3,
+  "total": 6,
+  "added": 0
+}

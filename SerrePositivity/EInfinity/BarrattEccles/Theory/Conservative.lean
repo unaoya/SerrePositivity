@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.BarrattEccles.Theory
 public import SerrePositivity.EInfinity.BarrattEccles.Fibrancy
 public import SerrePositivity.EInfinity.ComplexLimits.StrictHomology
-public import SerrePositivity.EInfinity.SimplicialLocalization.SourceHom
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.SourceHom
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantAlgebraLocalization
 public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.DiagramComparisons.ULiftRelativeLocalization
 public import Mathlib.AlgebraicTopology.ModelCategory.FundamentalLemma
@@ -34,9 +34,9 @@ universe u
 
 namespace SerrePositivity.EInfinity.BarrattEccles
 
-open CategoryTheory HomotopicalAlgebra SSet
+open CategoryTheory _root_.HomotopicalAlgebra SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open ComplexLimits SimplicialLocalization
+open ComplexLimits _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open scoped Simplicial
 
 variable (A : Type u) [CommRing A]
@@ -136,14 +136,14 @@ lemma cAlgForgetDerived_conservative {x y : (CAlg_R A) _⦋0⦌}
     _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (X := CAlg_R A) e.toTruncated := by
   obtain ⟨X, rfl⟩ := (cAlgVertexEquiv A).surjective x
   obtain ⟨Y, rfl⟩ := (cAlgVertexEquiv A).surjective y
-  obtain ⟨f, hf⟩ := localizationStrictHom_represent (cofibrantAlgebraRelativeCategory A)
+  obtain ⟨f, hf⟩ := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationStrictHom_represent (cofibrantAlgebraRelativeCategory A)
     (cofibrantAlgebraDK_Q_map_surjective A X Y) (SSet.HomotopyCategory.homMk e)
   let F := hoMap (cAlgForgetDerived A)
   let L := hoMap (cAlgLocalizationSource A)
   let a := SSet.HomotopyCategory.homMk (nerve.edgeMk f)
-  let i := localizationStrictSourceIso (cofibrantAlgebraRelativeCategory A)
+  let i := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationStrictSourceIso (cofibrantAlgebraRelativeCategory A)
   have hn : L.map a ≫ (i Y).hom = (i X).hom ≫ SSet.HomotopyCategory.homMk e :=
-    (localizationStrictSourceIso_naturality _ f).trans
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationStrictSourceIso_naturality _ f).trans
       (congrArg (fun k => (i X).hom ≫ k) hf)
   have hn' := congrArg F.map hn
   simp only [Functor.map_comp] at hn'
@@ -155,7 +155,7 @@ lemma cAlgForgetDerived_conservative {x y : (CAlg_R A) _⦋0⦌}
     exact IsIso.of_isIso_comp_right _ (F.map (i Y).hom)
   have hw := cAlgLocalizationSource_map_reflects_weak A f hh
   have hweak := cAlgLocalizationSource_inverts A
-    (show ComposableArrows.mk₁ f ∈ weakNerveEdges _ from ⟨_, _, f, hw, rfl⟩)
+    (show ComposableArrows.mk₁ f ∈ _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges _ from ⟨_, _, f, hw, rfl⟩)
   change _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (X := CAlg_R A) ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex (ComposableArrows.mk₁ f)).map
     ((truncation 2).map (cAlgLocalizationSource A))) at hweak
   have hu : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (X := CAlg_R A)

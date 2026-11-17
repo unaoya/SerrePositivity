@@ -1,0 +1,50 @@
+[
+  {
+    "policy": "Original formal audit executed at night; not a small daytime mathematical-source capture",
+    "source": "scripts/audit_einfinity.lean",
+    "source_sha256": "abb5ddc488eabbca1d53ecfcf11922a38f775378b6dd5f8d4acb580a99029225",
+    "helper_sha": "45da217652c32acf13f15578fce8264ad7c3dba1caac67895bd2c6b5f5dcfeb8",
+    "returncode": 0,
+    "seconds": 403.99549887515604,
+    "started_jst": "2026-11-16T23:01:41.563217+09:00",
+    "budget": 1600,
+    "command": [
+      "/opt/homebrew/opt/python@3.14/bin/python3.14",
+      "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/scripts/refactor/bulk_namespace.py",
+      "collect",
+      "--root",
+      "/private/tmp/oe-w1-before-30ae8948f",
+      "--files",
+      "/var/folders/6w/x0bg4xd53252p34tyr5g_hgh0000gn/T/oe-audit-original-hf0qpijf/files.json",
+      "--output",
+      "/var/folders/6w/x0bg4xd53252p34tyr5g_hgh0000gn/T/oe-audit-original-hf0qpijf/output"
+    ],
+    "capture_sha256": "3ae9e0b090b81c17c7ef83c54b88affeb854b163e2d018b2249d00248ff40fcc",
+    "refs": 151722,
+    "commands": 4900
+  },
+  {
+    "policy": "Original formal audit executed at night; not a small daytime mathematical-source capture",
+    "source": "scripts/audit_bhatt_scholze_stage2.lean",
+    "source_sha256": "3efcb20ec89898d95ece89f8cc0d824a7269dafd2751bfe70a3535366cc7b1ac",
+    "helper_sha": "45da217652c32acf13f15578fce8264ad7c3dba1caac67895bd2c6b5f5dcfeb8",
+    "returncode": 0,
+    "seconds": 607.9162389189005,
+    "started_jst": "2026-11-16T23:10:41.594486+09:00",
+    "budget": 1600,
+    "command": [
+      "/opt/homebrew/opt/python@3.14/bin/python3.14",
+      "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/scripts/refactor/bulk_namespace.py",
+      "collect",
+      "--root",
+      "/private/tmp/oe-w1-before-30ae8948f",
+      "--files",
+      "/var/folders/6w/x0bg4xd53252p34tyr5g_hgh0000gn/T/oe-audit-original-_9jroaj_/files.json",
+      "--output",
+      "/var/folders/6w/x0bg4xd53252p34tyr5g_hgh0000gn/T/oe-audit-original-_9jroaj_/output"
+    ],
+    "capture_sha256": "ff98fde6638f4034ff293b56e9b3ae6913c2e1364bff17205341276bd70eed42",
+    "refs": 61,
+    "commands": 1
+  }
+]

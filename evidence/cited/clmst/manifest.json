@@ -1,0 +1,94 @@
+{
+ "directory": "/Users/sugakubunka/serre-evidence/cited/clmst",
+ "commit": "9bfb015051ee96dd2b3d24c6e63801aa61de4a07",
+ "made_by": "CC-W1: pdftotext -layout; clmst_extract.py; clmst_build.py; clmst_audit.py; source and PDF review (no Lean execution)",
+ "note": "arXiv 2209.04046v4; 147 items; 572 edges; 36 selected declarations; static source inspection only; PDF not copied",
+ "files": [
+  {
+   "path": "CLMST-layout.txt",
+   "sha256": "7c1642cf397fc137cc1c4def8df67bcf46d6deb740dfc5c01b002eb32a8206cd",
+   "bytes": 352367
+  },
+  {
+   "path": "clmst_audit.py",
+   "sha256": "d827934a707464a5af9ab478112a2003f395195b7adecf2a47503f95931a1cda",
+   "bytes": 4261
+  },
+  {
+   "path": "clmst_build.py",
+   "sha256": "1b0a088928a2e3b8111d1a648fa31681b11a085e62956fe1408e2dee8727458f",
+   "bytes": 31300
+  },
+  {
+   "path": "clmst_extract.py",
+   "sha256": "dfa261270d8fd0b50785b3ce2f785e15722dedfd7d3dc9aede131ef0fb94ec19",
+   "bytes": 1242
+  },
+  {
+   "path": "clmst_titles.tsv",
+   "sha256": "4b16653525a8ad7f7f604c03ce0ff82c148dabf5cedcd69d9707c475b399a40f",
+   "bytes": 13379
+  },
+  {
+   "path": "declarations.json",
+   "sha256": "6769c853525d3937638c7121c8411fb5bc72f312e71dad7448cd873309b2caba",
+   "bytes": 55490
+  },
+  {
+   "path": "deliverable-hashes.json",
+   "sha256": "a2d1d9f621f2bc3c004d4da73002260488ac6b658eec8bacaaac57eaa959c338",
+   "bytes": 2415
+  },
+  {
+   "path": "e3-source-path.json",
+   "sha256": "400af3e05e9377639b4e684d341948932020f569743dc690a3f190fd6407455b",
+   "bytes": 3141
+  },
+  {
+   "path": "page-33.png",
+   "sha256": "285f86a960210387c9d4eb35fe28248ce90bd70087a827e1b297e9eb559bcf67",
+   "bytes": 219394
+  },
+  {
+   "path": "page-68.png",
+   "sha256": "84b8ede916e4f4d2ffd074403e4e847fbebcbed3942d8f48fbe3de0471e9dfd6",
+   "bytes": 297363
+  },
+  {
+   "path": "pdf-destinations-and-links.json",
+   "sha256": "cd486b9f8e0e0d96adc1f6e69b8fbbee6557caa1db2a774b50c9d6ce2bc1d5c7",
+   "bytes": 137420
+  },
+  {
+   "path": "raw-extracted-items.json",
+   "sha256": "31847b9da24261a095ccc33b44607983821c290c9ddae9ab91ea826c15929cda",
+   "bytes": 329183
+  },
+  {
+   "path": "search-hits.json",
+   "sha256": "d39ba114b77f883977d2afb407ba79af022b01cb1fcab874d0fe5b6523435180",
+   "bytes": 326591317
+  },
+  {
+   "path": "source-files.json",
+   "sha256": "9c6083419197062c2c8442510dee612bb140ddf5d3a029d91b457d58f27ea1e1",
+   "bytes": 8416029
+  },
+  {
+   "path": "source-items.json",
+   "sha256": "fe855e544693beb648b35fa3e683920563e9cc96232f1877e1a35236b3906f24",
+   "bytes": 303662
+  },
+  {
+   "path": "summary.json",
+   "sha256": "a6de1c64eebc3e02535c47b5bf1b2dfc98176abc0ec043441d9f3f5dc8dd927c",
+   "bytes": 282
+  },
+  {
+   "path": "validation.json",
+   "sha256": "769cf6e7f1e3712b7027dc964433f931c0680056013a0f573a657c2f34a1d43f",
+   "bytes": 584
+  }
+ ],
+ "total_bytes": 336758829
+}

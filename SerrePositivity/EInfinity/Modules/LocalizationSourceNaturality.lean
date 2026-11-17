@@ -2,8 +2,8 @@ module
 
 public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.EInfinity.Modules.FreeHammockCoefficientNerve
-public import SerrePositivity.EInfinity.SimplicialLocalization.LocalizationNerveSource
-public import SerrePositivity.EInfinity.SimplicialLocalization.RelativeHammockSourceComparison
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.LocalizationNerveSource
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RelativeHammockSourceComparison
 
 /-!
 # 同じ局所化の源の写像の全係数自然性
@@ -20,7 +20,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.Modules
 open CategoryTheory SSet
-open SerrePositivity.EInfinity SimplicialLocalization
+open SerrePositivity.EInfinity _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization
 open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
 variable {C D : RelativeCategory.{u}} (F : C ⟶ D)
@@ -29,21 +29,21 @@ variable {C D : RelativeCategory.{u}} (F : C ⟶ D)
 方針：元の二つの正方形と同じ augmentation の可逆比較を貼り合わせる。
 規約：元の既存の模型比較。使われ方：同じ局所化の源の自然性。 -/
 def kanHammockLocalizationCoefficientIso :
-    FunctorIso (relativeKanHammockNerve F ≫ (kanHammockLocalizationEquivalence D).hom)
-      ((kanHammockLocalizationEquivalence C).hom ≫ localizationNerveMap F) := by
-  let a := (kanFreeHammockAugmentationNerve_equivalence C).choose
-  let f := relativeKanHammockNerve F ≫ (kanHammockLocalizationEquivalence D).hom
-  let g := (kanHammockLocalizationEquivalence C).hom ≫ localizationNerveMap F
-  have hD := (kanHammockLocalizationComparison D).precomp (kanFreeHammockCoefficientNerve F)
+    FunctorIso (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.relativeKanHammockNerve F ≫ (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockLocalizationEquivalence D).hom)
+      ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockLocalizationEquivalence C).hom ≫ _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap F) := by
+  let a := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanFreeHammockAugmentationNerve_equivalence C).choose
+  let f := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.relativeKanHammockNerve F ≫ (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockLocalizationEquivalence D).hom
+  let g := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockLocalizationEquivalence C).hom ≫ _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap F
+  have hD := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockLocalizationComparison D).precomp (kanFreeHammockCoefficientNerve F)
   rw [← Category.assoc, kanFreeHammockCoefficientNerve_augmentation,
     Category.assoc, kanFreeHammockCoefficientNerve_comparison] at hD
-  have hC := (kanHammockLocalizationComparison C).postcomp (localizationNerveMap F)
+  have hC := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockLocalizationComparison C).postcomp (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap F)
   have hC' : FunctorIso (a.hom ≫ g)
-      (kanFreeHammockComparisonNerve C ≫ localizationNerveMap F) := by
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanFreeHammockComparisonNerve C ≫ _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap F) := by
     change FunctorIso
-      (kanFreeHammockAugmentationNerve C ≫
-        ((kanHammockLocalizationEquivalence C).hom ≫ localizationNerveMap F))
-      (kanFreeHammockComparisonNerve C ≫ localizationNerveMap F)
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanFreeHammockAugmentationNerve C ≫
+        ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockLocalizationEquivalence C).hom ≫ _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap F))
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanFreeHammockComparisonNerve C ≫ _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap F)
     simpa only [Category.assoc] using hC
   have h : FunctorIso (a.hom ≫ f) (a.hom ≫ g) := hD ≪≫ hC'.symm
   have h' := h.precomp a.inv
@@ -59,11 +59,11 @@ def kanHammockLocalizationCoefficientIso :
 方針：元の hammock 側の厳密な自然性と同じ模型比較の自然性を貼る。
 規約：源の写像を選び直さない。使われ方：指定弱辺の比較の入口。 -/
 def localizationNerveSourceNaturalityIso :
-    FunctorIso (localizationNerveSourceMap C ≫ localizationNerveMap F)
-      (nerveMap F.functor ≫ localizationNerveSourceMap D) := by
-  have h := (kanHammockLocalizationCoefficientIso F).precomp (hammockLocalizationNerveMap C)
-  rw [← Category.assoc, relativeKanHammockNerve_source, Category.assoc] at h
-  simpa only [localizationNerveSourceMap, Category.assoc] using h.symm
+    FunctorIso (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveSourceMap C ≫ _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap F)
+      (nerveMap F.functor ≫ _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveSourceMap D) := by
+  have h := (kanHammockLocalizationCoefficientIso F).precomp (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap C)
+  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.relativeKanHammockNerve_source, Category.assoc] at h
+  simpa only [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveSourceMap, Category.assoc] using h.symm
 
 attribute [cite HTT "1.2.7" (partial := component) "同じ相対局所化の係数関手について、関手準圏のホモトピー圏での可逆比較を構成する部分。任意の関手圏の存在や局所化の普遍性は主張しない。"] kanHammockLocalizationCoefficientIso
 attribute [cite HTT "1.2.7" (partial := component) "同じ相対局所化の係数関手について、関手準圏のホモトピー圏での可逆比較を構成する部分。任意の関手圏の存在や局所化の普遍性は主張しない。"] localizationNerveSourceNaturalityIso

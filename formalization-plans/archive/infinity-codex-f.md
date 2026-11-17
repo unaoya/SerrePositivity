@@ -1,7 +1,7 @@
 # Codex 作業指示書 IF-F：段 F（台帳と整理、R54 の名前空間）― 整理の最後の束
 
 作成：2026-11-04 夜（管理は Claude）。宛先：∞ の整理レーンの Codex（W2c と同じチャット、worktree `../SerrePositivity-ifw0-3`、main 8878743e3 以降から `infra/if-f` を切る）。
-計画：[infinity-foundation-plan.md](../infinity-foundation-plan.md) §5 段 F（R60・R32・R33・R36・R42・R43・R54）。前提の判断表・停止条件・保存比較 v3b・層検査の 3 条件は W2b・W2c の最終形をそのまま使う。
+計画：[infinity-foundation-plan.md](stage-i/infinity-foundation-plan.md) §5 段 F（R60・R32・R33・R36・R42・R43・R54）。前提の判断表・停止条件・保存比較 v3b・層検査の 3 条件は W2b・W2c の最終形をそのまま使う。
 **二つの段に分ける**：F-1（台帳と小さな整理。下流は小さい）を先に、F-2（R54 の名前空間。∞ の閉包ほぼ全部の再ビルド）を後に。**F-2 の適用はユーザーの判断（§3）の後**。
 
 ## 1. F-1：台帳と小さな整理（草案はビルドなし、**停止点 1**）

@@ -1,6 +1,6 @@
 # K 理論の再開に向けた紙の作業（たたき台、2026-11-11）
 
-作成：段階 II の調整役。決定：ユーザー（11-11、「K は ∞ 圏の基盤が整ってから着手。それまでに紙の作業 1〜3 を進める」）。材料：K の地図の要約（`research/k-coverage/maps/summary.md`、全 17 文献 688 項目を Lean の型で確認）、K の経路（`kst-lanes/k-theory-kst-route.md`、計画 v2 と決定 1〜16）、段階 II の計画 §2（B-1〜B-6）。
+作成：段階 II の調整役。決定：ユーザー（11-11、「K は ∞ 圏の基盤が整ってから着手。それまでに紙の作業 1〜3 を進める」）。材料：K の地図の要約（`research/k-coverage/maps/summary.md`、全 17 文献 688 項目を Lean の型で確認）、K の経路（`archive/stage-i/kst-lanes/k-theory-kst-route.md`、計画 v2 と決定 1〜16）、段階 II の計画 §2（B-1〜B-6）。
 
 本書は相談用のたたき台。確定したものは K の経路の §13 に決定として足し、本書は残りの論点だけを残す。
 
@@ -103,7 +103,7 @@
 
 ### 2.2 何を作り直すか
 
-L8 の引き継ぎ（`kst-lanes/L8-descent.md`）の「残り」がそのまま作り直しの一覧。主経路の Tot・homotopy 極限は L9 の実構成（`CosimplicialTotalization`、`PointedHomotopyLimit`・`PointedWeightedEnd`）と整数次数の π_* で述べる（決定 15）。
+L8 の引き継ぎ（`archive/stage-i/kst-lanes/L8-descent.md`）の「残り」がそのまま作り直しの一覧。主経路の Tot・homotopy 極限は L9 の実構成（`CosimplicialTotalization`、`PointedHomotopyLimit`・`PointedWeightedEnd`）と整数次数の π_* で述べる（決定 15）。
 
 | 残り（L8 の見積もり） | 補助側（ModelCategory SSet）でどう示していたか | 主経路での置き換え |
 | --- | --- | --- |

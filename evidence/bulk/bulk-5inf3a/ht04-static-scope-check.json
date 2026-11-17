@@ -1,0 +1,20 @@
+{
+  "source_files": 289,
+  "source_lines": 24050,
+  "outside_scope": [],
+  "project_import_closure": 994,
+  "missing_project_imports": [],
+  "cycles": [],
+  "EInfinity_imports": [
+    "SerrePositivity.EInfinity.NatTensor.Symmetry",
+    "SerrePositivity.EInfinity.AlexanderWhitney.TensorComponents"
+  ],
+  "CAlg_named_imports": [],
+  "frozen_source_differences": {
+    "ht02": [],
+    "ht03": []
+  },
+  "direct_EInfinity_imports": [],
+  "introduced_EInfinity_imports": [],
+  "inherited_utility_note": "HT03以前からCupCommutativityを通して使う古典的な鎖テンソルの対称性と有限成分。E∞比較・CAlgの入力を新しく使わない。"
+}

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.MappingRightHomBarComparison
-public import SerrePositivity.EInfinity.FrameHom.BarValueInclusion
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.BarValueInclusion
 
 /-!
 # 元の固定右脚の Hom から全右脚の bar への包含
@@ -17,7 +17,7 @@ universe u
 noncomputable section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
-open CategoryTheory HomotopicalAlgebra
+open CategoryTheory _root_.HomotopicalAlgebra
 open SerrePositivity.SimplicialModel
 
 namespace SerrePositivity.EInfinity.BarrattEccles
@@ -30,7 +30,7 @@ def mappingRightHomBarInclusion (X Y : (operad A).Algebra)
     SSet.uliftFunctor.{u + 1, u}.obj ((mappingRightHomDiagram A X Y).obj t) ⟶
       (BarConstruction.functor (algebraRightSpanBase A Y)).obj
         (mappingRightHomDiagram A X Y) :=
-  FrameHom.BarRows.valueInclusion (mappingRightHomDiagram A X Y) t
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.BarRows.valueInclusion (mappingRightHomDiagram A X Y) t
 
 /-- 全次数で同じ指定右脚と元の Hom の単体を一定の射列にする。 -/
 lemma mappingRightHomBarInclusion_app (X Y : (operad A).Algebra)
@@ -45,8 +45,8 @@ lemma mappingRightHomBarInclusion_localized_isIso (X Y : (operad A).Algebra)
     (t : algebraRightSpanBase A Y) :
     IsIso (AnodyneHomotopy.anodyneQ.map (mappingRightHomBarInclusion A X Y t)) := by
   let := modelCategory A
-  exact FrameHom.BarRows.valueInclusion_localized_isIso (mappingRightHomDiagram A X Y)
-    (FrameHom.ArrowSpan.rightSliceInitial_isInitial (trivialCofibrations _) Y)
+  exact _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.BarRows.valueInclusion_localized_isIso (mappingRightHomDiagram A X Y)
+    (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ArrowSpan.rightSliceInitial_isInitial (trivialCofibrations _) Y)
     (fun f => mappingRightHomDiagram_map_localized_isIso A f) t
 
 end SerrePositivity.EInfinity.BarrattEccles

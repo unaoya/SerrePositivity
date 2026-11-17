@@ -1,7 +1,7 @@
 # Codex 指示書 SC-W1：スキーム論の土台（公理 (3) の再確認、平坦化、BS17 Thm 4.1 (i)）
 
 作成：2026-11-05 夜（段階 II の調整役）。宛先：⑥ スキーム論レーンの Codex（新しいチャット）。検収：調整役（設計判断はユーザーと決める）。
-正本：[段階 II の計画](../stage-ii-plan-draft.md) §1.5（スキーム論の土台）・§2（B-5）・§5.1。BS17 の調査は [citations-survey-2026-11-05.md](../bhatt-scholze/citations-survey-2026-11-05.md) §3。K の経路は [infinity-lanes/foundations.md](../infinity-lanes/foundations.md) §3 と [kst-lanes/k-theory-kst-route.md](../kst-lanes/k-theory-kst-route.md)。規則は [coordination.md](../coordination.md) §2 と計画 §4。
+正本：[段階 II の計画](../stage-ii-plan-draft.md) §1.5（スキーム論の土台）・§2（B-5）・§5.1。BS17 の調査は [citations-survey-2026-11-05.md](../bhatt-scholze/notes/citations-survey-2026-11-05.md) §3。K の経路は [infinity-lanes/foundations.md](../archive/stage-i/infinity-lanes/foundations.md) §3 と [kst-lanes/k-theory-kst-route.md](../archive/stage-i/kst-lanes/k-theory-kst-route.md)。規則は [coordination.md](../coordination.md) §2 と計画 §4。
 
 ## 0. 目的
 
@@ -31,7 +31,7 @@ BS（目標 A）と K（目標 B）の両方が使う代数幾何の土台を作
 
 ## 3. 段 2：スキーム論の土台（Lean）
 
-前半は休止中の K-L7 の残り（[kst-lanes/L7-scheme-lemmas.md](../kst-lanes/L7-scheme-lemmas.md) の「残り」）。既存のコードは `KST/SchemeLemmas/`（例：`NoetherianFiniteModuleFlattening.lean`）と `KST/Descent/GenericFiniteFlattening.lean`。後半は BS17 の証明（arXiv:1507.06490 の §2〜§4）と、その芯の [BST13, Lemma 3.9]（Gabber、arXiv:1307.3763 §3）。
+前半は休止中の K-L7 の残り（[kst-lanes/L7-scheme-lemmas.md](../archive/stage-i/kst-lanes/L7-scheme-lemmas.md) の「残り」）。既存のコードは `KST/SchemeLemmas/`（例：`NoetherianFiniteModuleFlattening.lean`）と `KST/Descent/GenericFiniteFlattening.lean`。後半は BS17 の証明（arXiv:1507.06490 の §2〜§4）と、その芯の [BST13, Lemma 3.9]（Gabber、arXiv:1307.3763 §3）。
 
 | 段 | 内容 | 止めて報告 |
 | --- | --- | --- |
@@ -151,3 +151,24 @@ C01 に入る前に、紙で原典を照らす：BS17 の Lemma 2.12・Cor 2.14�
 `scheme-w1-2g-1-fp-envelope-boundary.md`（85507998e）を受けて。**C02（有限表示の閉包絡、境界報告の型のまま、一般の固有・局所有限表示の Y）を G1 の一覧に足す**。Stacks 01PF・01PG・01TV の標準の議論。用途の限定（ブローアップの模型だけ）は部品が同じで縮む根拠がなく、Proj の極限の経路は極限のスキームの構成から要るので採らない。外枠（2g-1 で 25,000 行）は変えない。
 
 ⑥ の枠：G1・G2（Rydh 3.10 の非 Noether への帰着と Noether 近似）の中で要る、**Stacks・EGA にある標準の代数幾何の存在の補題**（近似・有限型の部分イデアル・極限・包絡など）は、一つの見込みが 4,000 行以下なら止まらずに一覧に足してよい。型と原典の Tag・番号を報告に書く。4,000 行を超えるもの、原典に当たるものがないもの、最終の主張を変えるものは止まって報告する。
+
+## 追記（2026-11-17、調整役）：2g-2 の外枠の経緯と 23,000 行、残りの補題の紙
+
+- 経緯の記録：2g-2 の外枠は 16,000 行（B4′ の時点）から、ユーザーが ⑥ のチャットで直接承認して 20,000 行、21,000 行へ上げた（`scheme-w1-2h-route.md` §12・§13 の記録）。main の指示書に書いていなかったのでここに残す。
+- **2g-2 の外枠を 23,000 行に**（ユーザー承認 11-17）。規模の報告 `scheme-w1-2g-2-size-boundary-21000.md`（c59842f90、検証済み 19,409 行、完成見込み 20,609〜21,759 行）を受けて。
+- **ただし Lean に戻る前に、残りの証明の組み立てを補題の単位まで細かくした紙**を作る（ユーザー 11-17「証明の組み立ての精度をもう少し上げて」）：(1) G4 の残り・G5・2h の H01〜H04 を一本ずつの補題に分け、名前の案と Lean の主張の完全な型。規模の報告の四つの接続（nil 閉厚化、相対 fppf の照合、Noether 閉像の帰納、G5 の二変数図式と余極限の交換）も中の照合を一本ずつ。(2) 依存の順と使う既存の宣言（名前と場所）、最終の `cech_exact_of_vCover_perfect` までの道筋。(3) BS17・Rydh・Stacks のどの番号の主張・証明の段に当たるか。(4) 補題ごとの見込み（素と係数 2）、膨らみそうなものに印。(5) 既存の法則の代入で済むと見るものはその理由を一行。
+- 紙の補正後の上端が 23,000 行以内なら止まらずに Lean へ。超えるならそこで報告して止まる。2h の外枠は 2g-2 の完成時に、この紙と実測を見て決める。
+
+## 追記（2026-11-17、調整役）：2g-2 の外枠を 28,000 行に、補題の一覧の範囲内は事前承認（ユーザー承認）
+
+補題単位の計画 `scheme-w1-2g-2-residual-lemma-plan.md`（3d89d7e5f、105 署名、★ 24 本、係数 2 の完成見込み 23,665〜27,935 行）を受けて。
+1. **2g-2 の外枠を 23,000 行から 28,000 行に**変更する（ユーザー承認 11-17）。素の見込み 21,537〜23,672 行はほぼ旧枠に収まるので、増やす分は ★ 24 本の余裕。
+2. **条件付きの事前承認**：この紙の 105 署名（N・D・P・C・F・I・E・H）の範囲内なら、承認を待たずに Lean に戻って進めてよい。約 26,000 行で止まらずに途中報告。**止まって報告するのは**：一覧にない照合・補題が要るとき、一覧の署名の型・仮定を変える必要があるとき、見込みの上端が 28,000 行を超えるとき、既存の宣言（main にあるもの）の本体を変えるとき。
+3. 2h（410〜900 行）は別計上のまま。外枠は 2g-2 の完成時に、この紙と実測で決める。
+4. 2g-2 の完成（H04d を除く G4・G5 の完成と検証）が停止点。main は root の確認まで取り込まない。先に `git merge main` をして（11-17 の HT04 の登録と文書の移動が入る。Lean の衝突はないはず）、対象ビルドで確かめてから再開する。
+
+## 追記（2026-11-17、調整役）：2h を事前承認、2i（G-A6-1 の組み立て）を足してレーンの終わりに（ユーザー決定）
+
+1. **2h は事前承認**：2g-2 の完成（G4・G5 の 89 署名、検証済み）を報告したら、止まらずに 2h（H01〜H04、16 署名、紙の見込み 410〜900 行）に進んでよい。**2h の外枠は 1,200 行**（2g-2 の 28,000 行とは別に数える）。2h の一覧の範囲内は止まらない。止まるのは一覧にない補題・型の変更・外枠の超過のとき。出口 `cech_exact_of_vCover_perfect` の型は drafts/A6/ArcSheafProperty.lean の G-A6-1a と同じ（§5 の利用側の接続）。
+2. **2i を足す（ユーザー決定 11-17、案 (i)）**：G-A6-1（完全 F_p 代数の有限族の arc 被覆の Čech 完全性）の組み立て B6。a6-design §4 の経路 B（BM18 Prop 4.8 の議論を O の場合に 1 圏で）で、1a（2h の出口）・1c（本体の `valuationRing_milnorSquare_perfect`）・B1〜B5（本体の `HomologicalAlgebra/Cech/`、`BhattScholze/Perfectoidization/Derived/Arc*`、`CommutativeAlgebra/ValuationInterval/`）をつなぐ。型の正本は `formalization-plans/bhatt-scholze/drafts/A6/ArcRouteB.lean`。**先に段 0 の紙**（型つきの補題の一覧と見込み、置き場所、BS 側のどの drafts の sorry が消えるか）を出して止まる。BM18 Thm 1.7（G-A6-1b）は使わない。∞ は使わない。
+3. **2i の完成でこのレーンを閉じる**。BS17 Thm 4.1 の残りの一般性（一般の n の W_n、有限射影の E、非 affine の v 位相）は作らない。BS17 の対応表（ブループリントの章を作るときに ⑧ で）で Thm 4.1 を partial とし、差を記録する（ユーザー決定 11-17、案 A）。

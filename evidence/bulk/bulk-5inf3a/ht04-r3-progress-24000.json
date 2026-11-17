@@ -1,0 +1,18 @@
+{
+  "recorded_at": "2026-11-17T07:48:27.551797+09:00",
+  "complete": 3,
+  "total": 6,
+  "added": 0,
+  "R1_complete": true,
+  "R2_complete": true,
+  "R3_complete": false,
+  "verified_commit": "11e4dbfe3",
+  "verified_modules": 287,
+  "verified_lines": 23927,
+  "verified_declarations": 2337,
+  "R3_unverified_lines": 72,
+  "prepared_lines": 23999,
+  "outer_limit": 26000,
+  "final_target_unchanged": true,
+  "main_merged": false
+}

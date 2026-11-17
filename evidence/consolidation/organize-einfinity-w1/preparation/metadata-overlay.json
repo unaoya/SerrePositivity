@@ -1,0 +1,427 @@
+[
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotAlgebraHomInfinityComparison.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotBKClassification.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotBKNativeClassification.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotBKNativeSections.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotBKSections.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotEvaluationLocalization.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotFrameHomComparison.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotFrameHomInfinity.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointAugmentation.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointCorrectedUnitArrow.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointCorrectionComponent.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointCorrectionComponentArrows.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointCorrectionProjectionComponents.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointCorrectionProjectionValues.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointFirstSpan.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointHomInput.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointHomInputVertex.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointHomRestriction.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointNativeLiftUnit.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointNativeLiftUnitPoint.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointNativeTransformation.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointNativeTransformationEvaluation.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointNativeUnitFiber.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointNativeUnitPoint.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointPairingBaseComparison.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointPairingCorrection.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointPairingProjectionValues.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointRoofProbeArrow.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceAugmentationComparison.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceAugmentationPointValues.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceElements.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceFiberElements.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceFiberPairingRoof.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceFiberRoof.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceNativeFiber.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceNativeFiberPairing.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceNativeFiberPath.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceNativeIntervalFamily.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceNativeLift.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceNativeOppositeFiber.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceNativePinched.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceNativePinchedFactorization.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceOppositeAugmentation.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourcePairing.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceParameters.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceRawCosliceFamily.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceRawCoslicePath.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceRoofAugmentation.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceRoofColumn.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceRoofComparison.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceRoofEndpointTransport.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceRoofFrame.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceRoofGraph.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceRoofNativeAugmentation.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceRoofNativeFamily.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceRoofNativePinched.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceRoofParameter.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceRoofPinched.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceRoofPrefix.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceTargetFiber.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceTargetPointValues.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceTargetUnit.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceUnitLabel.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointTargetReplacement.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotLocalization.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotModelSource.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotModelSourceComparison.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotModelWeakTransformation.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotNativeConeAt.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotNativeFiberComparison.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotNativeFiberRecovery.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotNativeSectionsRecovery.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotNativeSourceFamily.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotProbeCoefficientsComparison.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotProbeCosliceClassification.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotProbeFrameComparison.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotProbeHomInfinityComparison.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotProbeKanCoefficients.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotProbeKanDiagram.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotProbeNativeHomComparison.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotProbeSourceFunctor.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotRightFrameCoherent.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotRightFrameComparison.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotTensorFrame.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotTensorFrameProperties.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotUnderlyingLocalization.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotUnderlyingSource.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotUniversalBKProbeCone.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotUniversalProbeCone.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotUniversalProbePointComparison.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotUniversalSourceNaturality.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotUniversalWeightedCone.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotUniversalWeightedConeNaturality.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotUniverseIndex.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotUniverseNativeCone.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotVertexLocalization.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotWeightComparison.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotalizationComparison.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotalizationInput.lean",
+    "change": "D81 stopped route status in module docstring"
+  },
+  {
+    "path": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameArrowCofinality.lean",
+    "change": "native Kerodon tag with explicit partial comment",
+    "tag": "02P3",
+    "declaration": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.nerveMap_leftAdjoint_isLeftCofinal"
+  },
+  {
+    "path": "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantRightKanReduction.lean",
+    "change": "native Kerodon tag with explicit partial comment",
+    "tag": "039N",
+    "declaration": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRightKanExtension_refl_of_frameCofinality"
+  },
+  {
+    "path": "scripts/audit_einfinity.lean",
+    "change": "native-owned quoted Name literals",
+    "occurrences": 0
+  },
+  {
+    "path": "scripts/audit_einfinity.lean",
+    "change": "preserve original axiom-audit scope under module map",
+    "original_modules": 3887,
+    "transported_modules": 3887,
+    "unexpected": []
+  },
+  {
+    "path": "scripts/audit_bhatt_scholze_stage2.lean",
+    "change": "native-owned quoted Name literals",
+    "occurrences": 0
+  }
+]

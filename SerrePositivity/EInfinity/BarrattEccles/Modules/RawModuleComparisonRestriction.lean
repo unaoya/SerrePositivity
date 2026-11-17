@@ -20,7 +20,7 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory SSet MonoidalClosed
 open SerrePositivity.EInfinity.Modules
-open SerrePositivity.EInfinity.SimplicialLocalization
+open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization
 open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
 open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories
@@ -33,12 +33,12 @@ variable (A : Type u) [CommRing A]
 規約：HA 1.3.4.1 の成分。使われ方：同じ制限比較の全単体の降下。 -/
 def strictRawModuleLocalization_descendIso (X : (operad A).Algebra)
     {Y : SSet.{u+1}} [Quasicategory Y]
-    {F G : localizationNerve (strictRawModuleRelativeCategory A X) ⟶ Y}
+    {F G : _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerve (strictRawModuleRelativeCategory A X) ⟶ Y}
     (e : FunctorIso
-      (localizationNerveSourceMap (strictRawModuleRelativeCategory A X) ≫ F)
-      (localizationNerveSourceMap (strictRawModuleRelativeCategory A X) ≫ G)) :
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveSourceMap (strictRawModuleRelativeCategory A X) ≫ F)
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveSourceMap (strictRawModuleRelativeCategory A X) ≫ G)) :
     FunctorIso F G := by
-  let q := localizationNerveSourceMap (strictRawModuleRelativeCategory A X)
+  let q := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveSourceMap (strictRawModuleRelativeCategory A X)
   let ff := (UniversalConsequences.IsLocalization.precomposition_isFullyFaithful
     (strictRawModuleLocalization_isLocalization A X) Y).toHoFullyFaithful
   apply ff.preimageIso
@@ -53,9 +53,9 @@ def strictRawModuleLocalization_descendIso (X : (operad A).Algebra)
 規約：HA §4.2.3、元の全厳密 BE 代数射。使われ方：同じ比較の局所化への降下。 -/
 def strictRawModuleComparison_restrictSourceIso {X Y : (operad A).Algebra} (f : X ⟶ Y) :
     FunctorIso
-      (localizationNerveSourceMap (strictRawModuleRelativeCategory A Y) ≫
-        localizationNerveMap (strictRawModuleRestrictRelative f) ≫ strictRawModuleComparison A X)
-      (localizationNerveSourceMap (strictRawModuleRelativeCategory A Y) ≫
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveSourceMap (strictRawModuleRelativeCategory A Y) ≫
+        _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap (strictRawModuleRestrictRelative f) ≫ strictRawModuleComparison A X)
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveSourceMap (strictRawModuleRelativeCategory A Y) ≫
         strictRawModuleComparison A Y ≫ strictModuleRestrict f) := by
   let N := nerveMap (strictRawModuleRestrictRelative f).functor
   have e₀ := (localizationNerveSourceNaturalityIso (strictRawModuleRestrictRelative f)).postcomp
@@ -70,7 +70,7 @@ def strictRawModuleComparison_restrictSourceIso {X Y : (operad A).Algebra} (f : 
 規約：HA §4.2.3、別の制限を選び直さない。使われ方：C02 の全係数自然性。 -/
 def strictRawModuleComparison_restrictIso {X Y : (operad A).Algebra} (f : X ⟶ Y) :
     FunctorIso
-      (localizationNerveMap (strictRawModuleRestrictRelative f) ≫ strictRawModuleComparison A X)
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap (strictRawModuleRestrictRelative f) ≫ strictRawModuleComparison A X)
       (strictRawModuleComparison A Y ≫ strictModuleRestrict f) :=
   strictRawModuleLocalization_descendIso A Y (strictRawModuleComparison_restrictSourceIso A f)
 

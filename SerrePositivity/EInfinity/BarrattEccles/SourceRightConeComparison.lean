@@ -25,9 +25,9 @@ universe u v w
 
 namespace SerrePositivity.EInfinity.BarrattEccles
 
-open CategoryTheory Limits HomotopicalAlgebra
+open CategoryTheory Limits _root_.HomotopicalAlgebra
 open SerrePositivity.Reedy
-open SerrePositivity.EInfinity.FrameHom.MixedFrame
+open _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedFrame
 
 attribute [local implicit_reducible] CofibrantResolutionFamily.atObject
 
@@ -48,8 +48,8 @@ def sourceRightConeComparisonIso (Y : (operad A).Algebra) (F : K ⥤ (operad A).
   let R := F ⋙ rightSimplicialFrameFamily A
   let b : F ⋙ Functor.const SimplexCategoryᵒᵖ ⟶ R :=
     Functor.whiskerLeft F (rightSimplicialFrameAugmentation A)
-  exact _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.mixedConeComparisonIso K (HomotopyWeight.weight K)
-    (HomotopyWeight.weight_cofibrant K) (q.obj.obj (framedLimitProbe A Y))
+  exact _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.mixedConeComparisonIso K (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K)
+    (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight_cofibrant K) (q.obj.obj (framedLimitProbe A Y))
     (q.cofibrant _) (q.atObject _).homotopicallyConstant (q.augmentation.app _)
     (q.atObject _).augmentation_weakEquivalence F R b
     (fun k => isFibrant A (F.obj k))

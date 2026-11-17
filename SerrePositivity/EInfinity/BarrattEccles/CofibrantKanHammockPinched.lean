@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantHammockInclusion
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantSourceFrameRightKan
-public import SerrePositivity.EInfinity.SimplicialLocalization.KanHammockHomPinched
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanHammockHomPinched
 public import SerrePositivity.EInfinity.Hammock.ExInfinityWeakMap
 
 /-!
@@ -20,7 +20,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open CategoryTheory Opposite SimplicialLocalization Hammock
+open CategoryTheory Opposite _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization Hammock
 open SerrePositivity.InfinityCategories
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : CofibrantAlgebra A)
@@ -60,7 +60,7 @@ def cofibrantHammockPinchedReferenceMap :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (algebraReducedHammock A X.obj Y.obj) ⟶
       _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.pinchedHom (cofibrantHammockVertex A X) (cofibrantHammockVertex A Y) :=
   (cofibrantKanHammockInclusionEquivalence A X Y).inv ≫
-    kanHammockHomPinchedMap (cofibrantAlgebraRelativeCategory A)
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockHomPinchedMap (cofibrantAlgebraRelativeCategory A)
       (show (cofibrantAlgebraRelativeCategory A).category from X)
       (show (cofibrantAlgebraRelativeCategory A).category from Y)
 
@@ -68,19 +68,19 @@ lemma cofibrantHammockPinchedReferenceMap_weak :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (cofibrantHammockPinchedReferenceMap A X Y) := by
   have hi := (cofibrantKanHammockInclusionEquivalence A X Y).symm.isQCatEquivalence
   exact hi.isWeakHomotopyEquivalence.comp
-    (kanHammockHomPinchedMap_weak (cofibrantAlgebraRelativeCategory A)
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockHomPinchedMap_weak (cofibrantAlgebraRelativeCategory A)
       (show (cofibrantAlgebraRelativeCategory A).category from X)
       (show (cofibrantAlgebraRelativeCategory A).category from Y))
 
 def cofibrantHammockPinchedReferenceMap_inclusion : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
     (cofibrantKanHammockInclusionMap A X Y ≫ cofibrantHammockPinchedReferenceMap A X Y)
-    (kanHammockHomPinchedMap (cofibrantAlgebraRelativeCategory A)
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockHomPinchedMap (cofibrantAlgebraRelativeCategory A)
       (show (cofibrantAlgebraRelativeCategory A).category from X)
       (show (cofibrantAlgebraRelativeCategory A).category from Y)) := by
   simpa only [cofibrantHammockPinchedReferenceMap,
     ← cofibrantKanHammockInclusionEquivalence_hom, Category.assoc, Category.id_comp] using
       (cofibrantKanHammockInclusionEquivalence A X Y).homInvIso.postcomp
-        (kanHammockHomPinchedMap (cofibrantAlgebraRelativeCategory A)
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockHomPinchedMap (cofibrantAlgebraRelativeCategory A)
           (show (cofibrantAlgebraRelativeCategory A).category from X)
           (show (cofibrantAlgebraRelativeCategory A).category from Y))
 

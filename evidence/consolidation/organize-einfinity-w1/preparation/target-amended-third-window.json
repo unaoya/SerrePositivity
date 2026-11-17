@@ -1,0 +1,24 @@
+{
+  "command": [
+    "python3",
+    "formalization-plans/stage-ii/organize-einfinity-w1/preparation-code/target_build_slot.py",
+    "--root",
+    "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68",
+    "--modules",
+    "/private/tmp/oe-w1-full-import-after-amendment/target-build-order.json",
+    "--output",
+    "/private/tmp/oe-w1-target-after-amendment",
+    "--budget",
+    "1600"
+  ],
+  "cwd": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68",
+  "rc": 75,
+  "reason": null,
+  "seconds": 1591.190162083134,
+  "peak_process_tree_rss_bytes": 8674017280,
+  "peak_lean_or_snapshot_jobs": 3,
+  "threads": "3",
+  "heavy_job_limit": 8,
+  "started_local": "2026-11-17T02:04:22.837258",
+  "finished_local": "2026-11-17T02:30:54.008004"
+}

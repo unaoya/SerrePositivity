@@ -22,7 +22,7 @@ universe u
 
 namespace SerrePositivity.EInfinity.BarrattEccles
 
-open CategoryTheory Limits HomotopicalAlgebra
+open CategoryTheory Limits _root_.HomotopicalAlgebra
 open SerrePositivity.HomotopyFunctionComplex
 
 variable (A : Type u) [CommRing A] (K : Type u) [SmallCategory K]
@@ -87,7 +87,7 @@ lemma constantDiagramFrameZeroIso_naturality {Y Z : (operad A).Algebra} (f : Y �
   apply NatTrans.ext
   funext k
   exact ((Realization.family.map (q.obj.map f)).naturality
-    ((HomotopyWeight.zeroTensorWeightIso K (HomotopyWeight.weight K)).hom.app k)).symm
+    ((_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.zeroTensorWeightIso K (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K)).hom.app k)).symm
 
 /-- 概要：元の定値図式への全次元の比較は始域代数にも自然（Hovey §5.4）。
 方針：frame の縮退の自然性、零次同型の自然性、置換比較の自然性を合成する。

@@ -15,7 +15,7 @@ public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotop
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
-open CategoryTheory CategoryTheory.Limits HomotopicalAlgebra SSet
+open CategoryTheory CategoryTheory.Limits _root_.HomotopicalAlgebra SSet
 open SerrePositivity.SimplicialModel
 open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor
 open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
@@ -39,19 +39,19 @@ def strictDiagramMixedKanRight (X Y : StrictComplexDiagram A d) :
 
 private lemma mixedUnitWeak (X Y : StrictComplexDiagram A d) :
     IsWeakHomotopyEquivalence (exInfinityUnit.app (strictDiagramMixedFrame A d X Y)) :=
-  EInfinity.FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.isWeakHomotopyEquivalence _
     (SSet.anodyneExtensions.Q_inverts _ (exInfinityUnit_anodyne _))
 
 /-- 元の左脚は Kan 置換後も弱同値。 -/
 lemma strictDiagramMixedKanLeft_weak (X Y : StrictComplexDiagram A d) :
     IsWeakHomotopyEquivalence (strictDiagramMixedKanLeft A d X Y) :=
-  (EInfinity.FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.isWeakHomotopyEquivalence _
     (strictDiagramMixedFrameLeft_isIso A d X Y)).comp (mixedUnitWeak A d X Y)
 
 /-- 元の右脚は Kan 置換後も弱同値。 -/
 lemma strictDiagramMixedKanRight_weak (X Y : StrictComplexDiagram A d) :
     IsWeakHomotopyEquivalence (strictDiagramMixedKanRight A d X Y) :=
-  (EInfinity.FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.isWeakHomotopyEquivalence _
     (strictDiagramMixedFrameRight_isIso A d X Y)).comp (mixedUnitWeak A d X Y)
 
 local instance mixedEquivSourceKan (X Y : StrictComplexDiagram A d) :

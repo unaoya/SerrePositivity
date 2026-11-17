@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.ComplexLimits.FramedLimit
-public import SerrePositivity.EInfinity.HomotopyWeight.RealizationInvariance
+public import SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.RealizationInvariance
 
 /-!
 # 複体の一般 homotopy 極限の計算関手の擬同型不変性
@@ -20,7 +20,7 @@ universe u
 
 namespace SerrePositivity.EInfinity.ComplexLimits
 
-open CategoryTheory HomotopicalAlgebra
+open CategoryTheory _root_.HomotopicalAlgebra
 open SerrePositivity.DifferentialGraded
 
 attribute [local irreducible] rightFrameFamily
@@ -36,8 +36,8 @@ lemma framedLimitFunctor_map_quasiIso {F G : K ⥤ (Complex A)} (f : F ⟶ G)
     (hf : ∀ k, QuasiIso (f.app k)) :
     QuasiIso ((framedLimitFunctor A K).map f) := by
   let := projectiveModelCategory A
-  exact HomotopyWeight.realization_map_frame_weakEquivalence Kᵒᵖ (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K)
-    (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight_cofibrant K) (rightFrameFactorization A)
+  exact _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.realization_map_frame_weakEquivalence Kᵒᵖ (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.framedLimitWeight K)
+    (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.framedLimitWeight_cofibrant K) (rightFrameFactorization A)
     ((rightFrameDiagramFamily A K).map f.op)
     (fun k => rightFrame_cofibrant A (G.obj k.unop))
     (fun k => rightFrame_cofibrant A (F.obj k.unop))

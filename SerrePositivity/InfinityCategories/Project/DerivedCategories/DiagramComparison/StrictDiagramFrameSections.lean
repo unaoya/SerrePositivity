@@ -12,7 +12,7 @@ public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Diagr
 @[expose] public noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
-open CategoryTheory HomotopicalAlgebra SSet
+open CategoryTheory _root_.HomotopicalAlgebra SSet
 open SerrePositivity.InfinityCategories.Project.ModelCategoryComparison
 namespace SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison
 variable (A : Type u) [CommRing A] (d : StrictDiagramDirection)

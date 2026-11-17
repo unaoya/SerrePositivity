@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.BarrattEccles.CarrierConstantDiagramPiZero
 public import SerrePositivity.EInfinity.BarrattEccles.CarrierConstantDiagramFrameComparison
 public import SerrePositivity.EInfinity.BarrattEccles.CarrierConstantDiagramSourceFunctor
-public import SerrePositivity.EInfinity.HomotopyWeight.PointwiseTensorSource
+public import SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.PointwiseTensorSource
 
 /-!
 # 定値図式からの局所化 Hom 比較の始域自然性
@@ -25,7 +25,7 @@ universe u
 
 namespace SerrePositivity.EInfinity.BarrattEccles.CarrierDiagram
 
-open CategoryTheory Limits HomotopicalAlgebra
+open CategoryTheory Limits _root_.HomotopicalAlgebra
 open SerrePositivity.DifferentialGraded
 open SerrePositivity.Reedy SerrePositivity.HomotopyFunctionComplex
 
@@ -49,8 +49,8 @@ lemma constantDiagramFrameHomIso_source {Y Z : (Complex A)} (f : Y ⟶ Z)
       ((constantDiagramFrameHomIso A K Z).app F).hom ≫ (constantDiagramSourceMap A K f).app F := by
   let := SerrePositivity.EInfinity.projectiveModelCategory A
   let q := cosimplicialResolutionFamily (carrierProbeFactorization A)
-  exact HomotopyWeight.pointwiseTensorFrameHomIso_source K (q.obj.map f)
-    (HomotopyWeight.weight K) F
+  exact _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseTensorFrameHomIso_source K (q.obj.map f)
+    (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K) F
 
 private lemma prefix_source {Y Z : (Complex A)} (f : Y ⟶ Z) :
     let := projectiveModelCategory A K

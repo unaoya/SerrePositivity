@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.FramedLimitProbeFunctor
 public import SerrePositivity.EInfinity.BarrattEccles.RightSimplicialCones
-public import SerrePositivity.EInfinity.FrameHom.MixedFrameSource
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedFrameSource
 
 /-!
 # 右 frame の錐の始域の射と二変数の関手
@@ -26,7 +26,7 @@ namespace SerrePositivity.EInfinity.BarrattEccles
 
 open CategoryTheory Opposite
 open SerrePositivity.DiagramModel
-open SerrePositivity.EInfinity.FrameHom.MixedFrame
+open _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedFrame
 
 variable (A : Type u) [CommRing A] (K : Type u) [SmallCategory K]
 
@@ -39,7 +39,7 @@ def framedLimitConeBifunctor :
   (framedLimitProbeFunctor A).op ⋙
     ((rightFrameDiagramFamily A K).rightOp ⋙ FrameWeightRealization.homFamily Kᵒᵖ).flip ⋙
       (Functor.whiskeringRight (K ⥤ (operad A).Algebra) (Kᵒᵖᵒᵖ ⥤ SSet.{u}) SSet.{u}).obj
-        (WeightedCones.coneSpace Kᵒᵖᵒᵖ (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K))
+        (WeightedCones.coneSpace Kᵒᵖᵒᵖ (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.framedLimitWeight K))
 
 /-- 概要：二変数の関手は既存の同じ右錐を回収する（Hovey §5）。
 方針：反転した Hom 族の評価を展開する。
@@ -63,7 +63,7 @@ abbrev framedLimitConeSourceMap {Y Z : (operad A).Algebra} (f : Y ⟶ Z) :
 lemma framedLimitConeSourceMap_app {Y Z : (operad A).Algebra} (f : Y ⟶ Z)
     (F : K ⥤ (operad A).Algebra) :
     (framedLimitConeSourceMap A K f).app F =
-      (WeightedCones.coneSpace Kᵒᵖᵒᵖ (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K)).map
+      (WeightedCones.coneSpace Kᵒᵖᵒᵖ (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.framedLimitWeight K)).map
         ((FrameWeightRealization.hom Kᵒᵖ (rightFrameDiagram A K F)).map
           ((framedLimitProbeFunctor A).map f).op) := rfl
 
@@ -75,6 +75,6 @@ abbrev rightSimplicialHomSourceMap {Y Z : (operad A).Algebra} (f : Y ⟶ Z)
     (F : K ⥤ (operad A).Algebra) :
     rightSimplicialHomDiagram A K Z F ⟶ rightSimplicialHomDiagram A K Y F :=
   Functor.whiskerLeft (F ⋙ rightSimplicialFrameFamily A)
-    (rightSourceMap ((framedLimitProbeFunctor A).map f))
+    (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedFrame.rightSourceMap ((framedLimitProbeFunctor A).map f))
 
 end SerrePositivity.EInfinity.BarrattEccles

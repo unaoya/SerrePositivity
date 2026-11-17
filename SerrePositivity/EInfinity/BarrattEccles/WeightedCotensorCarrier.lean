@@ -40,7 +40,7 @@ def carrierRightFrameDiagram (F : K ⥤ (operad A).Algebra) :
 使われ方：E 代数の重み付き end の実際の底の対象。 -/
 def carrierWeightedCotensor (F : K ⥤ (operad A).Algebra) :
     (K ⥤ SSet.{u})ᵒᵖ ⥤ Complex A :=
-  (SerrePositivity.EInfinity.HomotopyWeight.doubleOpWeights K ⋙
+  (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.doubleOpWeights K ⋙
     FrameWeightRealization.functor Kᵒᵖ (carrierRightFrameDiagram A K F)).leftOp
 
 /-- 概要：重み付き E 代数の end の底は同じ複体の end（BM §1、Hovey §5.4）。
@@ -56,6 +56,6 @@ def weightedCotensorCarrierIso (F : K ⥤ (operad A).Algebra) (W : K ⥤ SSet.{u
     (FrameWeightRealization.source Kᵒᵖ (rightFrameDiagram A K F))
     uliftYoneda.{u,u,u}).app
       ((FrameWeightRealization.weightsEquivalence Kᵒᵖ).functor.obj
-        ((SerrePositivity.EInfinity.HomotopyWeight.doubleOpWeights K).obj W))).unop.symm
+        ((_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.doubleOpWeights K).obj W))).unop.symm
 
 end SerrePositivity.EInfinity.BarrattEccles

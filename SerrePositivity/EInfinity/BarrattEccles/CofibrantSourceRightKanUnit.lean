@@ -19,14 +19,14 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open CategoryTheory SSet SimplicialLocalization
+open CategoryTheory SSet _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.InfinityCategories
 open scoped Simplicial
 variable (A : Type u) [CommRing A]
 
 lemma cofibrantSourceFrameRightKanMap_frame_projection (X : CofibrantAlgebra A)
     (n : AsSmall.{u + 1} SimplexCategory) :
-    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.rightKanProjection (hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.rightKanProjection (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
       (cofibrantHammockVertex A X)).app (Opposite.op ⦋0⦌)
       ((cofibrantSourceFrameRightKanMap A X).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex n)) =
     _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex ((cofibrantDKSourceFrame A X).obj n) := by
@@ -38,20 +38,20 @@ lemma cofibrantSourceFrameRightKanMap_frame_projection (X : CofibrantAlgebra A)
 lemma cofibrantSourceRightKanUnit_frame_isInvertible (X : CofibrantAlgebra A)
     {E : SSet.{u + 1}} [Quasicategory E]
     (F : nerve (cofibrantAlgebraRelativeCategory A).category ⟶ E)
-    (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InvertsEdges F (weakNerveEdges (cofibrantAlgebraRelativeCategory A)))
-    (G : kanHammockNerve (cofibrantAlgebraRelativeCategory A) ⟶ E)
+    (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InvertsEdges F (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges (cofibrantAlgebraRelativeCategory A)))
+    (G : _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockNerve (cofibrantAlgebraRelativeCategory A) ⟶ E)
     (α : SSet.Homotopy
-      (hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A) ≫ G) F)
-    (hα : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.IsRightKanExtension (hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A) ≫ G) F)
+    (hα : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.IsRightKanExtension (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
       F G α) (n : AsSmall.{u + 1} SimplexCategory) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge α
       (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex ((cofibrantDKSourceFrame A X).obj n))).toTruncated := by
   obtain ⟨t, ht⟩ := hα (cofibrantHammockVertex A X)
   let i := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex n
   let v := (cofibrantSourceFrameRightKanMap A X).app (Opposite.op ⦋0⦌) i
-  have hqG := (hammockLocalizationNerveMap_inverts (cofibrantAlgebraRelativeCategory A)).comp G
+  have hqG := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap_inverts (cofibrantAlgebraRelativeCategory A)).comp G
   have h₀ := cofibrantSourceRightKanLimitCone_leg_isInvertible A X _ hqG
-    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.rightKanCanonicalCone (hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.rightKanCanonicalCone (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
       G (cofibrantHammockVertex A X))
     (cofibrantSourceRightKanCanonicalCone_isLimit A X G) i
   have h₁ := cofibrantSourceRightKanLimitCone_leg_isInvertible A X F hF t.cone ht i
@@ -63,11 +63,11 @@ lemma cofibrantSourceRightKanUnit_frame_isInvertible (X : CofibrantAlgebra A)
 lemma cofibrantSourceRightKanUnit_vertex_isInvertible (X : CofibrantAlgebra A)
     {E : SSet.{u + 1}} [Quasicategory E]
     (F : nerve (cofibrantAlgebraRelativeCategory A).category ⟶ E)
-    (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InvertsEdges F (weakNerveEdges (cofibrantAlgebraRelativeCategory A)))
-    (G : kanHammockNerve (cofibrantAlgebraRelativeCategory A) ⟶ E)
+    (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InvertsEdges F (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges (cofibrantAlgebraRelativeCategory A)))
+    (G : _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockNerve (cofibrantAlgebraRelativeCategory A) ⟶ E)
     (α : SSet.Homotopy
-      (hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A) ≫ G) F)
-    (hα : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.IsRightKanExtension (hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A) ≫ G) F)
+    (hα : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.IsRightKanExtension (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
       F G α) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge α
       (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (show (cofibrantAlgebraRelativeCategory A).category from X))).toTruncated := by
@@ -76,11 +76,11 @@ lemma cofibrantSourceRightKanUnit_vertex_isInvertible (X : CofibrantAlgebra A)
   apply _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.homotopyComponent_target_isInvertible α e
     (cofibrantSourceRightKanUnit_frame_isInvertible A X F hF G α hα n)
   · exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr (e := e.map ((truncation 2).map
-        (hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A) ≫ G)))
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A) ≫ G)))
       (f := ((nerve.edgeMk ((cofibrantDKSourceFrameAugmentation A X).app n)).map
-        (hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A) ≫ G)).toTruncated)
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A) ≫ G)).toTruncated)
       rfl).mpr (cofibrantSourceFrameAugmentation_image_invertible A X _
-        ((hammockLocalizationNerveMap_inverts (cofibrantAlgebraRelativeCategory A)).comp G) n)
+        ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap_inverts (cofibrantAlgebraRelativeCategory A)).comp G) n)
   · exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr (e := e.map ((truncation 2).map F))
       (f := ((nerve.edgeMk ((cofibrantDKSourceFrameAugmentation A X).app n)).map F).toTruncated)
       rfl).mpr (cofibrantSourceFrameAugmentation_image_invertible A X F hF n)
@@ -88,11 +88,11 @@ lemma cofibrantSourceRightKanUnit_vertex_isInvertible (X : CofibrantAlgebra A)
 lemma cofibrantSourceRightKanUnit_isInvertible
     {E : SSet.{u + 1}} [Quasicategory E]
     (F : nerve (cofibrantAlgebraRelativeCategory A).category ⟶ E)
-    (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InvertsEdges F (weakNerveEdges (cofibrantAlgebraRelativeCategory A)))
-    (G : kanHammockNerve (cofibrantAlgebraRelativeCategory A) ⟶ E)
+    (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InvertsEdges F (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges (cofibrantAlgebraRelativeCategory A)))
+    (G : _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockNerve (cofibrantAlgebraRelativeCategory A) ⟶ E)
     (α : SSet.Homotopy
-      (hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A) ≫ G) F)
-    (hα : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.IsRightKanExtension (hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A) ≫ G) F)
+    (hα : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.IsRightKanExtension (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
       F G α) (z : (nerve (cofibrantAlgebraRelativeCategory A).category) _⦋0⦌) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge α z).toTruncated := by
   let X : CofibrantAlgebra A := z.obj 0

@@ -18,7 +18,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.PowerOperation
 open CategoryTheory SSet
-open SerrePositivity.EInfinity.SimplicialLocalization
+open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization
 open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
 variable (p : ℕ) [NeZero p] (k : Type u) [CommRing k]
@@ -44,20 +44,20 @@ def boundedProjectivePowerHomMorphism : LocalizerMorphism
 
 /-- 射影入力の同じ指定係数構成から native Sp への実関手。 -/
 def projectivePowerSpectrum :
-    kanHammockNerve (boundedProjectiveRelativeCategory k) ⟶ KST.Spectra.Sp.{u} :=
-  relativeKanHammockNerve (boundedProjectivePowerHomMorphism p k) ≫
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockNerve (boundedProjectiveRelativeCategory k) ⟶ KST.Spectra.Sp.{u} :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.relativeKanHammockNerve (boundedProjectivePowerHomMorphism p k) ≫
     eilenbergMacLaneHammockFunctor k
 
 /-- 同じ厳密な p 入力・周期 Hom・スペクトル化との全 sourceIso。 -/
 def projectivePowerSpectrum_sourceIso :
-    FunctorIso (hammockLocalizationNerveMap (boundedProjectiveRelativeCategory k) ≫
+    FunctorIso (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (boundedProjectiveRelativeCategory k) ≫
       projectivePowerSpectrum p k)
       (nerveMap (boundedProjectivePowerHomMorphism p k).functor ≫
         complexRelativeSpectrumSource k) := by
-  change FunctorIso (hammockLocalizationNerveMap (boundedProjectiveRelativeCategory k) ≫
-    (relativeKanHammockNerve (boundedProjectivePowerHomMorphism p k) ≫
+  change FunctorIso (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (boundedProjectiveRelativeCategory k) ≫
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.relativeKanHammockNerve (boundedProjectivePowerHomMorphism p k) ≫
       eilenbergMacLaneHammockFunctor k)) _
-  rw [← Category.assoc, relativeKanHammockNerve_source]
+  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.relativeKanHammockNerve_source]
   simpa only [Category.assoc, complexHammockSource] using
     FunctorIso.precomp (eilenbergMacLaneHammockFunctor_sourceIso k)
       (nerveMap (boundedProjectivePowerHomMorphism p k).functor)

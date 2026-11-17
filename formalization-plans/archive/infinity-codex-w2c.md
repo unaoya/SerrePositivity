@@ -2,7 +2,7 @@
 
 作成：2026-11-03 深夜（∞ 基盤の整備、管理は Claude）。宛先：∞ の Codex（新チャット）。
 **開始**：草案（§3.0、ビルドなし）は今すぐ。適用と内部検証（§3.1、小さなビルド）は草案の承認後。**下流の一回ビルドと verify（§3.2）は暦の合図**（論文の層 2a・2b の全ビルドの後。見込み 11-06）。
-計画：[infinity-foundation-plan.md](../infinity-foundation-plan.md) §5 段 E（R51・R52・R68・R69・R70・R56b・R45）、§4 の辺の表（R27・R64・R71・R72 の残り）、§6 の W2c 行。決定 10-28「局所化・分数・Verdier 商の API の正本を KST/LocalizingInvariants から ∞ 層へ移す」。
+計画：[infinity-foundation-plan.md](stage-i/infinity-foundation-plan.md) §5 段 E（R51・R52・R68・R69・R70・R56b・R45）、§4 の辺の表（R27・R64・R71・R72 の残り）、§6 の W2c 行。決定 10-28「局所化・分数・Verdier 商の API の正本を KST/LocalizingInvariants から ∞ 層へ移す」。
 **共通の前提**：[IF-W0-1 §0](infinity-codex-w0-1.md)、[IF-W2b](infinity-codex-w2b.md) の §12（enforce の 3 条件）・§14（配置は宣言単位の依存で）・§16（進捗は未検証の根で）・§18（F1B は straightening 非依存）、[IF-W2a-2 §7〜§9](infinity-codex-w2a-2.md)、[DG-W3 §9・§11](dg-codex-w3.md)。判断表（補充の import・完全修飾・宇宙の明示・名前付き引数・束縛子の型の明示・局所 instance・heartbeat、いずれも v3b で一致を証明）と停止条件は W2b の最終形をそのまま使う。
 worktree は `../SerrePositivity-ifw0-3`、main（3e27dda00 以降）から `infra/if-w2c` を切る。
 

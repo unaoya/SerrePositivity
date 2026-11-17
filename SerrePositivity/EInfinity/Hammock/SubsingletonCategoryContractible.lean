@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.SubsingletonCategoryRows
-public import SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection
 
 /-!
 # 一対象で薄い元の圏の hammock の終対象性
@@ -42,6 +42,6 @@ lemma colimit_isWeaklyContractible (X Y : C) : _root_.SerrePositivity.InfinityCa
   let e := (colimit_isTerminal W X Y).uniqueUpToIso terminalIsTerminal
   have he : e.hom = terminal.from (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W X Y) := terminal.hom_ext _ _
   have hi : IsIso (terminal.from (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W X Y)) := he ▸ e.isIso_hom
-  exact FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _ (by infer_instance)
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.isWeakHomotopyEquivalence _ (by infer_instance)
 
 end SerrePositivity.EInfinity.Hammock.SubsingletonCategory

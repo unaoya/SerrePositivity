@@ -54,7 +54,7 @@
   <li><b>存在</b>：E3 の integral と universal から <code>exists_perfectoidization_of_integral</code>（任意の整代数の環としての perfectoid 化、<a href="../../../SerrePositivity/BhattScholze/Perfectoidization/Derived/IntegralExistence.lean">Perfectoidization/Derived/IntegralExistence</a>）→ 有限代数版 <code>exists_perfectoidization_of_finite</code>（同じファイル、互換の入口 <a href="../../../SerrePositivity/Inputs/Perfectoidization.lean">Inputs/Perfectoidization</a>）→ CLMST の \(R_{\mathrm{perfd}}\)。使われる \(S=R\otimes_A D\) は有限だが、\(R\) の全射商でも有限エタールでもない。</li>
   <li><b>excision</b>：E3 の excision から <code>perfectoidization_excision_isPullback</code>（環の引き戻し、<a href="../../../SerrePositivity/BhattScholze/Perfectoidization/Derived/Excision.lean">Perfectoidization/Derived/Excision</a>）→ <code>klCanonicalExcisionSquare_of_excision</code>（<a href="../../../SerrePositivity/BhattScholze/Perfectoidization/Excision.lean">Perfectoidization/Excision</a>）→ CLMST Prop 2.4.7 の有限比較と rank 四角形、Cor 4.0.4。</li>
 </ul>
-<p>既証の部品だけでこの二つを迂回する道は閉じない。どちらも Cor 8.12／Thm 10.9 の「almost 比較」そのものを要する（<a href="../../../formalization-plans/bhatt-scholze/bhatt-scholze-stage2.md">bhatt-scholze-stage2.md</a> §2）。</p>
+<p>既証の部品だけでこの二つを迂回する道は閉じない。どちらも Cor 8.12／Thm 10.9 の「almost 比較」そのものを要する（<a href="../../../formalization-plans/bhatt-scholze/notes/bhatt-scholze-stage2.md">bhatt-scholze-stage2.md</a> §2）。</p>
 
 <h2>3. 到達点</h2>
 <p>原典の項目ごとの状況は §4 の表（地図から生成）にある。目標に要る 105 項目のうち、本体に原典どおり・特別な場合・部品のあるものが合わせて 87 項目（8 割強）。BS の本体（<code>SerrePositivity/BhattScholze/</code>）に残る sorry は E3 の存在の一件だけ。2026-10-25 以降に本体に入った主な結果：</p>
@@ -95,7 +95,7 @@
 <!-- sections:end -->
 
 <h2>5. E3 を消すための最小部分集合 A0〜A9</h2>
-<p>BS-0 調査（<a href="../../../formalization-plans/bhatt-scholze/bhatt-scholze-stage2.md">bhatt-scholze-stage2.md</a> §3）が原典の証明から切り出した依存順の単位。後段を前段へ逆流させない。</p>
+<p>BS-0 調査（<a href="../../../formalization-plans/bhatt-scholze/notes/bhatt-scholze-stage2.md">bhatt-scholze-stage2.md</a> §3）が原典の証明から切り出した依存順の単位。後段を前段へ逆流させない。</p>
 <div class="table-wrap"><table>
 <tr><th>単位</th><th>原典</th><th>供給する欄・役割</th><th>章</th></tr>
 <tr><td>A0</td><td>§4.1、Rem 4.6、Lemma 4.8、Construction 4.17〜18、Lemma 4.20〜21</td><td>prismatic site、完全試験 prism、Čech 計算と自然性</td><td>4</td></tr>

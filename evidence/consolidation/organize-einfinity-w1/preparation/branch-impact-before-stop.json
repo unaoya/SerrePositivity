@@ -1,0 +1,136 @@
+{
+  "base": "30ae8948f339beec42d9340feb02f2031c22c72b",
+  "includes_active_worktrees": true,
+  "policy": "Exact old module/namespace strings, BE module basenames, plus bare namespace tokens and unrooted Mathlib HomotopicalAlgebra candidates; original branch HEAD and dirty/untracked Lean sources read-only, drafts included. Candidate matches are conservative; compiler checks determine actual bindings.",
+  "branches": {
+    "math/inf-supply": {
+      "head": "8f06e1bcdd76b72c865599adc3328d9771210470",
+      "touched_lean_files": 342,
+      "affected_files": 2,
+      "files": [
+        {
+          "path": "SerrePositivity/InfinityCategories/Kerodon/KanComplexes/HomotopyPullbackAndHomotopyPushoutSquares/KanPushoutCocones.lean",
+          "matches": [
+            "HomotopicalAlgebra"
+          ],
+          "source_sha256": "db951af4db7a2bf51039ee08f44989fc7890bffab74fb39436bdb4ffcf39c04e",
+          "is_draft": false
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/DiscreteAnodyneExtensions.lean",
+          "matches": [
+            "HomotopicalAlgebra"
+          ],
+          "source_sha256": "82ed30b8590d0de61dd80e90945da7a88d88710bf57907529fdf7def7ea7f8a0",
+          "is_draft": false
+        }
+      ],
+      "worktree": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-classical",
+      "uncommitted_checked": 4,
+      "uncommitted_matches": [],
+      "affected_files_with_worktree": 2
+    },
+    "codex/bulk-5inf3a": {
+      "head": "828fbb82668c21c5a6aea1ca469c9e3159527843",
+      "touched_lean_files": 281,
+      "affected_files": 0,
+      "files": [],
+      "worktree": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout",
+      "uncommitted_checked": 6,
+      "uncommitted_matches": [],
+      "affected_files_with_worktree": 0
+    },
+    "math/scheme": {
+      "head": "d9466c9a2f7c50571daf5e9db4d8f2a0d9b3dde1",
+      "touched_lean_files": 240,
+      "affected_files": 0,
+      "files": [],
+      "worktree": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-scheme",
+      "uncommitted_checked": 2773,
+      "uncommitted_matches": [],
+      "affected_files_with_worktree": 0
+    },
+    "math/bs-impl": {
+      "head": "a7f43e7c3a7528dfe16b92b5520cd3ef0358c737",
+      "touched_lean_files": 0,
+      "affected_files": 0,
+      "files": [],
+      "worktree": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-impl",
+      "uncommitted_checked": 1,
+      "uncommitted_matches": [],
+      "affected_files_with_worktree": 0
+    },
+    "codex/g12-monad-catalog": {
+      "head": "706f0d39782e91182492aad8dc188c02e7b15a0c",
+      "touched_lean_files": 0,
+      "affected_files": 0,
+      "files": [],
+      "worktree": null,
+      "uncommitted_checked": 0,
+      "uncommitted_matches": [],
+      "affected_files_with_worktree": 0
+    },
+    "docs/kerodon-blueprint": {
+      "head": "2ddfffdd013f7d47056f08d4a96a87103f778591",
+      "touched_lean_files": 10,
+      "affected_files": 0,
+      "files": [],
+      "worktree": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-blueprint",
+      "uncommitted_checked": 0,
+      "uncommitted_matches": [],
+      "affected_files_with_worktree": 0
+    },
+    "codex/paper-coverage": {
+      "head": "45584d2f6062c857c46666873b49b9e73923fa6b",
+      "touched_lean_files": 1,
+      "affected_files": 0,
+      "files": [],
+      "worktree": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-m15",
+      "uncommitted_checked": 0,
+      "uncommitted_matches": [],
+      "affected_files_with_worktree": 0
+    },
+    "research/dag13-ns-coverage": {
+      "head": "267cbe665457c8363891dbb87c26ecb26765bd75",
+      "touched_lean_files": 1,
+      "affected_files": 0,
+      "files": [],
+      "worktree": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-dag13-ns-coverage",
+      "uncommitted_checked": 0,
+      "uncommitted_matches": [],
+      "affected_files_with_worktree": 0
+    },
+    "research/kerodon-review-c": {
+      "head": "72858a30edef41e6b22b79fe3dff47e1cdfccc2f",
+      "touched_lean_files": 0,
+      "affected_files": 0,
+      "files": [],
+      "worktree": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-review-c",
+      "uncommitted_checked": 0,
+      "uncommitted_matches": [],
+      "affected_files_with_worktree": 0
+    },
+    "math/p0-p4-p6": {
+      "head": "bb44969b2dc808a914487010f209cf75cbd2d740",
+      "touched_lean_files": 0,
+      "affected_files": 0,
+      "files": [],
+      "worktree": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-p0-p4-p6",
+      "uncommitted_checked": 0,
+      "uncommitted_matches": [],
+      "affected_files_with_worktree": 0
+    },
+    "codex/p0-unresolved-sources": {
+      "head": "a04dcb9e2ee64774fe2081972f104073c2f82226",
+      "touched_lean_files": 1,
+      "affected_files": 0,
+      "files": [],
+      "worktree": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-p0-unresolved-sources",
+      "uncommitted_checked": 0,
+      "uncommitted_matches": [],
+      "affected_files_with_worktree": 0
+    }
+  },
+  "total_affected_files": 2,
+  "total_affected_with_worktree": 2
+}

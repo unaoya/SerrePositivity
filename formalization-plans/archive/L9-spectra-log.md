@@ -3343,8 +3343,8 @@ Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整�
 `relativeFunctorVertex` 重複。K-L9 の import 閉包と対象ビルドは成功。
 最後に成功した全体ビルドは L9c、9543 jobs。
 L9c の BF cofibrant–fibrant 方式への改訂を承認済み。
-正本：[KST 経路](../kst-lanes/k-theory-kst-route.md) §5、§13 決定 3・4。
-基盤の正本：[foundations](../infinity-lanes/foundations.md) §1 の F3・γ。
+正本：[KST 経路](stage-i/kst-lanes/k-theory-kst-route.md) §5、§13 決定 3・4。
+基盤の正本：[foundations](stage-i/infinity-lanes/foundations.md) §1 の F3・γ。
 本文は実装順と検証状態を管理する。
 実施の経緯はコミットメッセージに記録する。
 証明できた宣言だけを完了表に記載する。

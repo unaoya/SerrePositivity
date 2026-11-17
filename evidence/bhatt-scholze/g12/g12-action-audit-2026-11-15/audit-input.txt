@@ -1,0 +1,24 @@
+import SerrePositivity.InfinityCategories.HA.Monads.EndpointOrdinalActions
+
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.simplexOrdinalSum
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.simplexOrdinalSum_inl
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.simplexOrdinalSum_inr
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.simplexOrdinalSum_inl_zero
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.simplexOrdinalSum_inr_last
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.simplexOrdinalSum_preservesBottom
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.simplexOrdinalSum_preservesTop
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.topOrdinalPrefix
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.topOrdinalPrefixInclusion
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.topOrdinalPrefixInclusion_naturality
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.topOrdinalPrefixExtended
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.topOrdinalAction
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.topOrdinalPrefixExtended_empty
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.bottomOrdinalSuffix
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.bottomOrdinalSuffixInclusion
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.bottomOrdinalSuffixInclusion_naturality
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.bottomOrdinalSuffixExtended
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.bottomOrdinalAction
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.bottomOrdinalSuffixExtended_empty
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.topToBottomOpEquivalence
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.bottomOppositeOrdinalAction
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.topOppositeOrdinalAction

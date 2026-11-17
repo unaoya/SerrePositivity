@@ -16,7 +16,7 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory SSet MonoidalClosed
 open SerrePositivity.InfinityCategories SerrePositivity.DifferentialGraded
-open SerrePositivity.EInfinity.FrameHom
+open _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (B : CofibrantAlgebra A)
 

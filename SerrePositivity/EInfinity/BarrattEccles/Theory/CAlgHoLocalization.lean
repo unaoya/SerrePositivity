@@ -34,7 +34,7 @@ universe u
 
 namespace SerrePositivity.EInfinity.BarrattEccles
 
-open CategoryTheory SSet SimplicialLocalization
+open CategoryTheory SSet _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.InfinityCategories SerrePositivity.KST.LocalizingInvariants
 open scoped Simplicial
 
@@ -57,7 +57,7 @@ lemma allAlgebraCAlgSource_hoIsLocalization :
   obtain ⟨g, rfl⟩ := nerve.edgeMk_surjective e
   change (allAlgebraRelativeCategory A).weakEquivalences
     ((_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveHomotopyEvaluation _).map (HomotopyCategory.homMk (nerve.edgeMk g))) ↔
-    ComposableArrows.mk₁ g ∈ weakNerveEdges (allAlgebraRelativeCategory A)
+    ComposableArrows.mk₁ g ∈ _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges (allAlgebraRelativeCategory A)
   rw [_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveHomotopyEvaluation_map_homMk]
   constructor
   · exact fun h => ⟨_, _, g, h, rfl⟩

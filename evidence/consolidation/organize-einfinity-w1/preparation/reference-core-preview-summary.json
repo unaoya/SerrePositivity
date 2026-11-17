@@ -1,0 +1,15 @@
+{
+  "captured": 823,
+  "individually_reviewed_ilean_files": 1,
+  "previewed": 824,
+  "changed_sources": 802,
+  "review_files": 0,
+  "review_items": 0,
+  "plan_sha256": "bffb2434b00941a5031a1a82aa16f090f36949332c706dc37873e3ad8e454232",
+  "unchanged_scope_files": 132,
+  "comparison_modules": 956,
+  "ordinary_capture_receipts_sha256": "32f05ac7ddd6f58b2b7f3614438384c4aec2d2494d37d5e51bf084fdc5088f21",
+  "preview_manifest_sha256": "005b8d849d6c0cf67743d3a78a7e5607e12466fcd4e6c551264746836526468c",
+  "original_formal_audit_captures_pending": 2,
+  "applied": false
+}

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.SourceFramePostcompose
-public import SerrePositivity.EInfinity.FrameHom.FrameLeftRoofPrecompose
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameLeftRoofPrecompose
 
 /-!
 # 元の source frame 比較の始域自然性
@@ -18,7 +18,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open CategoryTheory HomotopicalAlgebra Opposite Hammock SerrePositivity.SimplicialModel
+open CategoryTheory _root_.HomotopicalAlgebra Opposite Hammock SerrePositivity.SimplicialModel
 open SerrePositivity.Reedy
 variable (A : Type u) [CommRing A] (Y : (operad A).Algebra) {X' X : (operad A).Algebra}
 
@@ -43,7 +43,7 @@ lemma sourceFrameReducedHammockNerveMap_precompose (f : X' ⟶ X) :
   let F := cosimplicialResolutionFamily (mappingCofibrantFactorization A)
   let q' := F.atObject X'
   let q := F.atObject X
-  have h := FrameHom.frameLeftRoofColimitMap_precompose (Y := Y)
+  have h := _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameLeftRoofColimitMap_precompose (Y := Y)
     (weakEquivalences (operad A).Algebra) q'.obj q.obj
     q'.augmentation q'.augmentation_weakEquivalence q.augmentation q.augmentation_weakEquivalence
     (fun a => q'.homotopicallyConstant a) (fun a => q.homotopicallyConstant a)
@@ -68,7 +68,7 @@ lemma sourceFramePrecomposeIndexMap_augmentation (f : X' ⟶ X) :
     sourceFramePrecomposeIndexMap A Y f ≫ sourceFrameIndexAugmentation A X' Y =
       sourceFrameIndexAugmentation A X Y ≫ SSet.uliftFunctor.{u + 1, u}.map
         (((sourceFrameHom A).map f.op).app Y) :=
-  FrameHom.SimplexTerminalNerve.liftedAugmentation_naturality _
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.SimplexTerminalNerve.liftedAugmentation_naturality _
 
 lemma sourceFrameReducedHammockComparison_precompose (f : X' ⟶ X) :
     AnodyneHomotopy.anodyneQ.map (SSet.uliftFunctor.{u + 1, u}.map

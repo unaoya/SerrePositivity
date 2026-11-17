@@ -3,7 +3,7 @@
 ## 概要
 
 Mathlib の `SSet.Quasicategory` をそのまま用いる。
-正本は [計画](../../../formalization-plans/infinity-lanes/infinity-core.md) §1〜§4。
+正本は [計画](../../../formalization-plans/archive/stage-i/infinity-lanes/infinity-core.md) §1〜§4。
 HTT §1.2.3、Kerodon [Construction 1.4.5.1](https://kerodon.net/tag/004A) と
 [Proposition 1.4.5.7](https://kerodon.net/tag/004H) に沿って、
 辺のホモトピー類と道の商という二つのホモトピー圏を比較する。

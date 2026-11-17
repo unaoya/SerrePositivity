@@ -58,7 +58,7 @@ lemma normalizedOrdinaryDerivedHomMap_homotopyEquivalence (X Y : Complex A) :
   have : KanComplex (SSet.uliftFunctor.{u + 1, u}.obj
       (((normalizedProbeTensorHom A).obj (Opposite.op X)).obj
         (complexSemifreeResolutionValue A Y).val)) :=
-    HomotopicalAlgebra.isFibrant_of_fibration
+    _root_.HomotopicalAlgebra.isFibrant_of_fibration
       (normalizedKProjectiveHomIso A (framedLimitKProjectiveProbe A X)
         (semifreeKProjectiveTarget A Y)).hom
   have h₀ := normalizedProbeDerivedHomMap_homotopyEquivalence A X Y

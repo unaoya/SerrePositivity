@@ -1,7 +1,7 @@
 # Codex 作業指示書 IF-W0-2：整備の道具一式（R40a・R74・R64a・verify.sh の短縮）
 
 作成：2026-10-28（∞ 基盤の整備、管理は Claude）。宛先：Codex。
-計画：[infinity-foundation-plan.md](../infinity-foundation-plan.md) の段 0（R40a・R74・R64a）と §6「指示書の単位」の IF-W0-2。
+計画：[infinity-foundation-plan.md](stage-i/infinity-foundation-plan.md) の段 0（R40a・R74・R64a）と §6「指示書の単位」の IF-W0-2。
 **前提**：IF-W0-1（verify.sh を合否の関門にする）は main に取り込み済み（コミット `88c477612`、2026-10-28）。
 **共通の前提**：[IF-W0-1](infinity-codex-w0-1.md) の §0（使い捨ての worktree、所有範囲、`git commit --only`、失敗したら止めて報告）に従う。
 worktree は `../SerrePositivity-ifw0-2`、ブランチは `infra/if-w0-2`。main の作業木では作業もビルドもしない。

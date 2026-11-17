@@ -20,7 +20,7 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded
-open SerrePositivity.EInfinity.SimplicialLocalization
+open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
 open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories
 open FullFaithfulAndEssentiallySurjectiveFunctors
@@ -31,10 +31,10 @@ variable (A : Type u) [CommRing A]
 方針：同じ通常源の擬同型反転を、証明済み局所化普遍性へ渡す。
 規約：HA §4.2.3、全単体を保持。使われ方：M10/C02 の fiber 比較。 -/
 def strictRawModuleComparison (X : (operad A).Algebra) :
-    localizationNerve (strictRawModuleRelativeCategory A X) ⟶ strictModuleInfinity A X :=
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerve (strictRawModuleRelativeCategory A X) ⟶ strictModuleInfinity A X :=
   SerrePositivity.KST.LocalizingInvariants.localizationDescend
-    (localizationNerveSourceMap (strictRawModuleRelativeCategory A X))
-    (weakNerveEdges (strictRawModuleRelativeCategory A X))
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveSourceMap (strictRawModuleRelativeCategory A X))
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges (strictRawModuleRelativeCategory A X))
     (strictRawModuleLocalization_isLocalization A X) (strictRawModuleSource A X)
     (strictRawModuleSource_inverts A X)
 
@@ -43,12 +43,12 @@ def strictRawModuleComparison (X : (operad A).Algebra) :
 規約：HA §4.2.3、対象ごとの比較に弱めない。使われ方：U・単位・制限との照合。 -/
 def strictRawModuleComparison_sourceIso (X : (operad A).Algebra) :
     FunctorIso
-      (localizationNerveSourceMap (strictRawModuleRelativeCategory A X) ≫
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveSourceMap (strictRawModuleRelativeCategory A X) ≫
         strictRawModuleComparison A X)
       (strictRawModuleSource A X) :=
   SerrePositivity.KST.LocalizingInvariants.localizationDescendIso
-    (localizationNerveSourceMap (strictRawModuleRelativeCategory A X))
-    (weakNerveEdges (strictRawModuleRelativeCategory A X))
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveSourceMap (strictRawModuleRelativeCategory A X))
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges (strictRawModuleRelativeCategory A X))
     (strictRawModuleLocalization_isLocalization A X) (strictRawModuleSource A X)
     (strictRawModuleSource_inverts A X)
 
@@ -59,10 +59,10 @@ def strictRawModuleComparison_vertexIso (X : (operad A).Algebra)
     (M : (strictRawModuleRelativeCategory A X).category) :
     VertexIso
       ((strictRawModuleComparison A X).app (Opposite.op ⦋0⦌)
-        (localizationNerveVertexEquiv (strictRawModuleRelativeCategory A X)
-          (show KanLocalizationCategory (strictRawModuleRelativeCategory A X) from M)))
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveVertexEquiv (strictRawModuleRelativeCategory A X)
+          (show _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanLocalizationCategory (strictRawModuleRelativeCategory A X) from M)))
       ((strictRawModuleSource A X).app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ M)) :=
-  ((localizationNerveSourceMap_vertexIso (strictRawModuleRelativeCategory A X) M).map
+  ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveSourceMap_vertexIso (strictRawModuleRelativeCategory A X) M).map
     (strictRawModuleComparison A X)).symm ≪≫
       (strictRawModuleComparison_sourceIso A X).app (ComposableArrows.mk₀ M)
 
@@ -73,7 +73,7 @@ lemma strictRawModuleComparison_essentiallySurjective (X : (operad A).Algebra) :
     IsEssentiallySurjective (strictRawModuleComparison A X) := by
   intro y
   obtain ⟨x, ⟨e⟩⟩ := strictRawModuleSource_essentiallySurjective A X y
-  refine ⟨(localizationNerveSourceMap (strictRawModuleRelativeCategory A X)).app
+  refine ⟨(_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveSourceMap (strictRawModuleRelativeCategory A X)).app
     (Opposite.op ⦋0⦌) x, ⟨?_⟩⟩
   exact (strictRawModuleComparison_sourceIso A X).app x ≪≫ e
 
@@ -83,8 +83,8 @@ lemma strictRawModuleComparison_essentiallySurjective (X : (operad A).Algebra) :
 def strictRawModuleComparison_regularIso (X : (operad A).Algebra) :
     VertexIso
       ((strictRawModuleComparison A X).app (Opposite.op ⦋0⦌)
-        (localizationNerveVertexEquiv (strictRawModuleRelativeCategory A X)
-          (show KanLocalizationCategory (strictRawModuleRelativeCategory A X) from
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveVertexEquiv (strictRawModuleRelativeCategory A X)
+          (show _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanLocalizationCategory (strictRawModuleRelativeCategory A X) from
             (ULiftHom.up.{u,u+1,u+1} (C := strictRawModuleCategory A X)).obj
               (strictRawRegularObject A X).fiber)))
       (strictModuleUnit A X) := by
@@ -99,7 +99,7 @@ def strictRawModuleComparison_regularIso (X : (operad A).Algebra) :
 規約：HA §4.2.1、全関手間の比較。使われ方：C02 の同じ台の比較。 -/
 def strictRawModuleComparison_sourceUnderlyingIso (X : (operad A).Algebra) :
     FunctorIso
-      (localizationNerveSourceMap (strictRawModuleRelativeCategory A X) ≫
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveSourceMap (strictRawModuleRelativeCategory A X) ≫
         strictRawModuleComparison A X ≫ strictModuleUnderlying A X)
       (strictRawModuleSource A X ≫ strictModuleUnderlying A X) :=
   (strictRawModuleComparison_sourceIso A X).postcomp (strictModuleUnderlying A X)

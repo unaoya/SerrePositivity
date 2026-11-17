@@ -1,0 +1,10 @@
+import SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionPlusParentPositions
+
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionPrefix_reflectsIsIso
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionPlusParentPrefix_nondegenerate
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionPlusParent_nondegenerate
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionPlusParentPrefix_no_bottom_merge
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionPlusParent_no_before_merge
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionPlusParent_last_pure
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionPlusParent_last_merge
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionPlusParent_first_index

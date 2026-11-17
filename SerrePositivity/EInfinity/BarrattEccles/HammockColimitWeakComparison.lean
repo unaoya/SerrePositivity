@@ -16,7 +16,7 @@ public import SerrePositivity.EInfinity.BarrattEccles.HammockGraphColimit
 universe u
 noncomputable section
 namespace SerrePositivity.EInfinity.BarrattEccles
-open CategoryTheory HomotopicalAlgebra SerrePositivity.InfinityCategories
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.InfinityCategories
 
 variable (A : Type u) [CommRing A]
 

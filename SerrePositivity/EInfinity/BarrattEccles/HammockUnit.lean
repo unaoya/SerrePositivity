@@ -15,7 +15,7 @@ public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localiz
 @[expose] public section
 universe u
 noncomputable section
-open CategoryTheory HomotopicalAlgebra MonoidalCategory
+open CategoryTheory _root_.HomotopicalAlgebra MonoidalCategory
 
 namespace SerrePositivity.EInfinity.BarrattEccles
 

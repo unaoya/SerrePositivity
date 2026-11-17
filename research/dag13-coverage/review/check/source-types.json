@@ -1,0 +1,425 @@
+{
+  "SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.nerveFunctorCategoryIso": {
+    "name": "SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.nerveFunctorCategoryIso",
+    "file": "SerrePositivity/InfinityCategories/Kerodon/TheLanguageOfInfinityCategories/FunctorsOfInfinityCategories/FunctorCategory.lean",
+    "line": 42,
+    "source_sha256": "7b8c254ebb1a768cf0e45e8949944221d3893ef3576b41b74176215e58e7abe7",
+    "source_signature": "def nerveFunctorCategoryIso (C D : Type u) [Category.{u} C] [Category.{u} D] :\n    nerve (C ⥤ D) ≅ (ihom (nerve C)).obj (nerve D)",
+    "source_excerpt": "def nerveFunctorCategoryIso (C D : Type u) [Category.{u} C] [Category.{u} D] :\n    nerve (C ⥤ D) ≅ (ihom (nerve C)).obj (nerve D) :=\n  asIso ((expComparison nerveFunctor (Cat.of C)).natTrans.app (Cat.of D))\n\n/-- 概要：関手圏の nerve の比較同型は後合成に自然。\n方針：指数比較の自然変換の自然性を読む。\n規約：通常の後合成関手と nerve の射を指定する。\n使われ方：古典自然変換の後合成と元の関手圏の作用の一致。 -/\nlemma nerveFunctorCategoryIso_postcomp {C D E : Type u}\n    [Category.{u} C] [Category.{u} D] [Category.{u} E] (F : D ⥤ E) :\n    nerveMap ((whiskeringRight C D E).obj F) ≫ (nerveFunctorCategoryIso C E).hom =\n      (nerveFunctorCategoryIso C D).hom ≫ (ihom (nerve C)).map (nerveMap F) :=\n  ((expComparison nerveFunctor (Cat.of C)).natTrans.naturality F.toCatHom)\n\n/-- 概要：関手圏の指数比較の評価は通常の関手評価の nerve と一致する。\n方針：指数比較の uncurry 公式の積比較の逆を消去する。\n規約：nerve の積比較を明示して始域を揃える。\n使われ方：通常の関手頂点と自然変換の単体ごとの計算。 -/\n@[kerodon 0062]\nlemma nerveFunctorCategoryIso_uncurry (C D : Type u) [Category.{u} C] [Category.{u} D] :\n    CartesianMonoidalCategory.prodComparison nerveFunctor (Cat.of C) (Cat.of (C ⥤ D)) ≫\n      uncurry (nerveFunctorCategoryIso C D).hom =\n        nerveFunctor.map ((ihom.ev (Cat.of C)).app (Cat.of D)) := by\n  change CartesianMonoidalCategory.prodComparison nerveFunctor (Cat.of C)",
+    "section_context": [
+      "open CategoryTheory CategoryTheory.Functor MonoidalCategory MonoidalClosed SSet",
+      "open scoped Simplicial",
+      "namespace SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories"
+    ],
+    "validation": "source inspection; no new kernel probe (paper task)"
+  },
+  "SerrePositivity.KST.Spectra.homotopyFixedPointsInfinityCone_isLimit": {
+    "name": "SerrePositivity.KST.Spectra.homotopyFixedPointsInfinityCone_isLimit",
+    "file": "SerrePositivity/KST/Spectra/FixedPointInfinityLimits.lean",
+    "line": 35,
+    "source_sha256": "733d62b808acdde34910b27acad87628e95c5d4cb44072eeddb2b2559939f678",
+    "source_signature": "lemma homotopyFixedPointsInfinityCone_isLimit {G : Type u} [Group G] (A : GroupAction.{u} G) :\n    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (homotopyFixedPointsInfinityCone A)",
+    "source_excerpt": "lemma homotopyFixedPointsInfinityCone_isLimit {G : Type u} [Group G] (A : GroupAction.{u} G) :\n    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (homotopyFixedPointsInfinityCone A) :=\n  OmegaSpectrum.homotopyLimitCoherentCone_isLimit _\n\n/-- 元の余単体図式上の、元の homotopy Tot を頂点とする coherent な錐。 -/\ndef homotopyTotalizationInfinityCone (D : CosimplicialObject OmegaSpectrum.{u}) :\n    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram (AsSmall.down ⋙ D)) :=\n  OmegaSpectrum.homotopyLimitCoherentCone _\n\n/-- Tot の錐の頂点は、元の BF homotopy Tot 対象そのもの。 -/\nlemma homotopyTotalizationInfinityCone_vertex (D : CosimplicialObject OmegaSpectrum.{u}) :\n    (homotopyTotalizationInfinityCone D).vertex = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (homotopyTotalization D) :=\n  OmegaSpectrum.homotopyLimitCoherentCone_vertex _\n\n/-- 元の homotopy Tot 対象の coherent な錐は、Sp 内の実際の ∞ 極限錐。 -/\nlemma homotopyTotalizationInfinityCone_isLimit (D : CosimplicialObject OmegaSpectrum.{u}) :\n    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (homotopyTotalizationInfinityCone D) :=\n  OmegaSpectrum.homotopyLimitCoherentCone_isLimit _\n\nend SerrePositivity.KST.Spectra",
+    "section_context": [
+      "open CategoryTheory SSet",
+      "open SerrePositivity.InfinityCategories",
+      "namespace SerrePositivity.KST.Spectra",
+      "local instance fixedPointInfinitySimplicialCategory : SimplicialCategory OmegaSpectrum.{u} :="
+    ],
+    "validation": "source inspection; no new kernel probe (paper task)"
+  },
+  "CategoryTheory.Limits.biproduct.isoProduct": {
+    "name": "CategoryTheory.Limits.biproduct.isoProduct",
+    "file": "Mathlib/CategoryTheory/Limits/Shapes/Biproducts.lean",
+    "line": 515,
+    "source_sha256": "a2a564401e9b66dc2ff74bccd9cb3f94bbeaca9613934c03e1da5c2adb444905",
+    "source_signature": "def biproduct.isoProduct (f : J → C) [HasBiproduct f] : ⨁ f ≅ ∏ᶜ f",
+    "source_excerpt": "def biproduct.isoProduct (f : J → C) [HasBiproduct f] : ⨁ f ≅ ∏ᶜ f :=\n  IsLimit.conePointUniqueUpToIso (biproduct.isLimit f) (limit.isLimit _)\n\n@[simp]\ntheorem biproduct.isoProduct_hom {f : J → C} [HasBiproduct f] :\n    (biproduct.isoProduct f).hom = Pi.lift (biproduct.π f) :=\n  limit.hom_ext fun j => by simp [biproduct.isoProduct]\n\n@[simp]\ntheorem biproduct.isoProduct_inv {f : J → C} [HasBiproduct f] :\n    (biproduct.isoProduct f).inv = biproduct.lift (Pi.π f) :=\n  biproduct.hom_ext _ _ fun j => by simp [Iso.inv_comp_eq]\n\n/-- The canonical isomorphism between the chosen biproduct and the chosen coproduct. -/\ndef biproduct.isoCoproduct (f : J → C) [HasBiproduct f] : ⨁ f ≅ ∐ f :=\n  IsColimit.coconePointUniqueUpToIso (biproduct.isColimit f) (colimit.isColimit _)\n\n@[simp]\ntheorem biproduct.isoCoproduct_inv {f : J → C} [HasBiproduct f] :\n    (biproduct.isoCoproduct f).inv = Sigma.desc (biproduct.ι f) :=\n  colimit.hom_ext fun j => by simp [biproduct.isoCoproduct]\n\n@[simp]\ntheorem biproduct.isoCoproduct_hom {f : J → C} [HasBiproduct f] :",
+    "section_context": [
+      "open CategoryTheory",
+      "namespace CategoryTheory.Limits",
+      "variable {J : Type w}",
+      "variable {C : Type uC} [Category.{uC'} C] [HasZeroMorphisms C]",
+      "variable {D : Type uD} [Category.{uD'} D] [HasZeroMorphisms D]",
+      "open scoped Classical in",
+      "variable {F : J → C}",
+      "namespace Bicones",
+      "variable (F) in",
+      "variable (G : C ⥤ D)",
+      "namespace Bicone",
+      "open scoped Classical in",
+      "open scoped Classical in",
+      "open scoped Classical in",
+      "open scoped Classical in",
+      "variable {K : Type w'}",
+      "variable (J C)",
+      "variable {J}",
+      "variable {C}",
+      "variable {J : Type w} {K : Type*}",
+      "variable {C : Type u} [Category.{v} C] [HasZeroMorphisms C]"
+    ],
+    "validation": "source inspection; no new kernel probe (paper task)"
+  },
+  "CategoryTheory.Limits.biproduct.isoCoproduct": {
+    "name": "CategoryTheory.Limits.biproduct.isoCoproduct",
+    "file": "Mathlib/CategoryTheory/Limits/Shapes/Biproducts.lean",
+    "line": 529,
+    "source_sha256": "a2a564401e9b66dc2ff74bccd9cb3f94bbeaca9613934c03e1da5c2adb444905",
+    "source_signature": "def biproduct.isoCoproduct (f : J → C) [HasBiproduct f] : ⨁ f ≅ ∐ f",
+    "source_excerpt": "def biproduct.isoCoproduct (f : J → C) [HasBiproduct f] : ⨁ f ≅ ∐ f :=\n  IsColimit.coconePointUniqueUpToIso (biproduct.isColimit f) (colimit.isColimit _)\n\n@[simp]\ntheorem biproduct.isoCoproduct_inv {f : J → C} [HasBiproduct f] :\n    (biproduct.isoCoproduct f).inv = Sigma.desc (biproduct.ι f) :=\n  colimit.hom_ext fun j => by simp [biproduct.isoCoproduct]\n\n@[simp]\ntheorem biproduct.isoCoproduct_hom {f : J → C} [HasBiproduct f] :\n    (biproduct.isoCoproduct f).hom = biproduct.desc (Sigma.ι f) :=\n  biproduct.hom_ext' _ _ fun j => by simp [← Iso.eq_comp_inv]\n\n/-- If a category has biproducts of a shape `J`, its `colim` and `lim` functor on diagrams over `J`\nare isomorphic. -/\n@[simps!]\ndef HasBiproductsOfShape.colimIsoLim [HasBiproductsOfShape J C] :\n    colim (J := Discrete J) (C := C) ≅ lim :=\n  NatIso.ofComponents (fun F => (Sigma.isoColimit F).symm ≪≫\n      (biproduct.isoCoproduct _).symm ≪≫ biproduct.isoProduct _ ≪≫ Pi.isoLimit F)\n    fun η => colimit.hom_ext fun ⟨i⟩ => limit.hom_ext fun ⟨j⟩ => by\n      classical\n      by_cases h : i = j <;>\n       simp_all [Sigma.isoColimit, Pi.isoLimit, biproduct.ι_π, biproduct.ι_π_assoc]",
+    "section_context": [
+      "open CategoryTheory",
+      "namespace CategoryTheory.Limits",
+      "variable {J : Type w}",
+      "variable {C : Type uC} [Category.{uC'} C] [HasZeroMorphisms C]",
+      "variable {D : Type uD} [Category.{uD'} D] [HasZeroMorphisms D]",
+      "open scoped Classical in",
+      "variable {F : J → C}",
+      "namespace Bicones",
+      "variable (F) in",
+      "variable (G : C ⥤ D)",
+      "namespace Bicone",
+      "open scoped Classical in",
+      "open scoped Classical in",
+      "open scoped Classical in",
+      "open scoped Classical in",
+      "variable {K : Type w'}",
+      "variable (J C)",
+      "variable {J}",
+      "variable {C}",
+      "variable {J : Type w} {K : Type*}",
+      "variable {C : Type u} [Category.{v} C] [HasZeroMorphisms C]"
+    ],
+    "validation": "source inspection; no new kernel probe (paper task)"
+  },
+  "CategoryTheory.Limits.biproduct.lift_desc": {
+    "name": "CategoryTheory.Limits.biproduct.lift_desc",
+    "file": "Mathlib/CategoryTheory/Preadditive/Biproducts.lean",
+    "line": 222,
+    "source_sha256": "7876f61d11b643d832171f0c93dadbdba4f03b5cf2d02d3ca33da390bfcc7225",
+    "source_signature": "theorem biproduct.lift_desc {T U : C} {g : ∀ j, T ⟶ f j} {h : ∀ j, f j ⟶ U} :\n    biproduct.lift g ≫ biproduct.desc h = ∑ j : J, g j ≫ h j",
+    "source_excerpt": "theorem biproduct.lift_desc {T U : C} {g : ∀ j, T ⟶ f j} {h : ∀ j, f j ⟶ U} :\n    biproduct.lift g ≫ biproduct.desc h = ∑ j : J, g j ≫ h j := by\n  classical\n  simp [biproduct.lift_eq, biproduct.desc_eq, comp_sum, sum_comp, biproduct.ι_π_assoc, comp_dite,\n    dite_comp]\n\ntheorem biproduct.map_eq [HasFiniteBiproducts C] {f g : J → C} {h : ∀ j, f j ⟶ g j} :\n    biproduct.map h = ∑ j : J, biproduct.π f j ≫ h j ≫ biproduct.ι g j := by\n  classical\n  ext\n  simp [biproduct.ι_π, biproduct.ι_π_assoc, sum_comp, comp_dite, dite_comp]\n\n@[reassoc]\ntheorem biproduct.lift_matrix {K : Type} [Finite K] [HasFiniteBiproducts C] {f : J → C} {g : K → C}\n    {P} (x : ∀ j, P ⟶ f j) (m : ∀ j k, f j ⟶ g k) :\n    biproduct.lift x ≫ biproduct.matrix m = biproduct.lift fun k => ∑ j, x j ≫ m j k := by\n  ext\n  simp [biproduct.lift_desc]\n\nend HasBiproduct\n\nsection HasFiniteBiproducts\n\nvariable {J K : Type} [Finite J] {f : J → C} [HasFiniteBiproducts C]",
+    "section_context": [
+      "open CategoryTheory",
+      "open CategoryTheory.Preadditive",
+      "open CategoryTheory.Limits",
+      "open CategoryTheory.Functor",
+      "open CategoryTheory.Preadditive",
+      "namespace CategoryTheory",
+      "variable {C : Type u} [Category.{v} C] [Preadditive C]",
+      "namespace Limits",
+      "variable {J : Type*} [Fintype J]",
+      "variable {J : Type*} [Finite J]",
+      "variable {J : Type*} [Fintype J] {f : J → C} [HasBiproduct f]"
+    ],
+    "validation": "source inspection; no new kernel probe (paper task)"
+  },
+  "CategoryTheory.Limits.HasFiniteBiproducts.of_hasFiniteProducts": {
+    "name": "CategoryTheory.Limits.HasFiniteBiproducts.of_hasFiniteProducts",
+    "file": "Mathlib/CategoryTheory/Preadditive/Biproducts.lean",
+    "line": 189,
+    "source_sha256": "7876f61d11b643d832171f0c93dadbdba4f03b5cf2d02d3ca33da390bfcc7225",
+    "source_signature": "theorem HasFiniteBiproducts.of_hasFiniteProducts [HasFiniteProducts C] : HasFiniteBiproducts C",
+    "source_excerpt": "theorem HasFiniteBiproducts.of_hasFiniteProducts [HasFiniteProducts C] : HasFiniteBiproducts C :=\n  ⟨fun _ => { has_biproduct := fun _ => HasBiproduct.of_hasProduct _ }⟩\n\n/-- A preadditive category with finite coproducts has finite biproducts. -/\ntheorem HasFiniteBiproducts.of_hasFiniteCoproducts [HasFiniteCoproducts C] :\n    HasFiniteBiproducts C :=\n  ⟨fun _ => { has_biproduct := fun _ => HasBiproduct.of_hasCoproduct _ }⟩\n\nsection HasBiproduct\n\nvariable {J : Type*} [Fintype J] {f : J → C} [HasBiproduct f]\n\n/-- In any preadditive category, any biproduct satisfies\n`∑ j : J, biproduct.π f j ≫ biproduct.ι f j = 𝟙 (⨁ f)`\n-/\n@[simp]\ntheorem biproduct.total : ∑ j : J, biproduct.π f j ≫ biproduct.ι f j = 𝟙 (⨁ f) :=\n  IsBilimit.total (biproduct.isBilimit _)\n\ntheorem biproduct.lift_eq {T : C} {g : ∀ j, T ⟶ f j} :\n    biproduct.lift g = ∑ j, g j ≫ biproduct.ι f j := by\n  classical\n  ext j\n  simp only [sum_comp, biproduct.ι_π, comp_dite, biproduct.lift_π, Category.assoc, comp_zero,",
+    "section_context": [
+      "open CategoryTheory",
+      "open CategoryTheory.Preadditive",
+      "open CategoryTheory.Limits",
+      "open CategoryTheory.Functor",
+      "open CategoryTheory.Preadditive",
+      "namespace CategoryTheory",
+      "variable {C : Type u} [Category.{v} C] [Preadditive C]",
+      "namespace Limits",
+      "variable {J : Type*} [Fintype J]",
+      "variable {J : Type*} [Finite J]"
+    ],
+    "validation": "source inspection; no new kernel probe (paper task)"
+  },
+  "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.preadditive_ho": {
+    "name": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.preadditive_ho",
+    "file": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/HomotopyPreadditive.lean",
+    "line": 37,
+    "source_sha256": "9125b01a72c524f00ffdfb6385fe4ca53e818a5eacc91a3f33521274df90a7a4",
+    "source_signature": "instance preadditive_ho {X : SSet.{u}} [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable X] :\n    Preadditive (hoFunctor.obj X)",
+    "source_excerpt": "instance preadditive_ho {X : SSet.{u}} [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable X] :\n    Preadditive (hoFunctor.obj X) where\n  homGroup := stableHomAddCommGroup\n  add_comp _ _ _ := SemiadditiveOfBinaryBiproducts.add_comp\n  comp_add _ _ _ := SemiadditiveOfBinaryBiproducts.comp_add\n\nend SerrePositivity.InfinityCategories.HA.StableInfinityCategories\n\n/-! Literature correspondences from the reviewed coverage tables. -/\n\n/-! Reviewed literature correspondences. -/\nattribute [cite HA \"1.1.2.9\" (partial := stronger-hyp) \"仮定：安定準圏 X（Lean は IsStable で仮定をまとめる。HA は点付き性・余ファイバー・懸垂同値で述べる）。結論：hX の前加法構造と有限双積（一致）。HA の仮定から IsStable への直接の比較宣言は採用した型にない。\"] _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.preadditive_ho\nattribute [cite HA \"1.4.1.3\" (partial := component) \"仮定：安定準圏（Lean が弱い：presentable 性は不要）。結論：ホモトピー圏の前加法性と双積があり、原典冒頭の加法性に対応する（Lean が弱い：各対象の余群構造と compactly generated な場合の Brown の全仮定の確認は含まれない）。\"] _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.preadditive_ho\nattribute [cite HA \"6.1.6.17\" (partial := component) \"仮定：安定な準圏 C（HA と一致）。結論：hC は前加法圏で全有限双積を持つ（本文で明記された hC の additive 性に一致する部分）。C の全相対 norm の可逆性を束ねる semiadditive 述語への比較は含まれない。\"] _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.preadditive_ho",
+    "section_context": [
+      "open CategoryTheory Limits SSet",
+      "namespace SerrePositivity.InfinityCategories.HA.StableInfinityCategories"
+    ],
+    "validation": "source inspection; no new kernel probe (paper task)"
+  },
+  "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.hasFiniteBiproducts_ho": {
+    "name": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.hasFiniteBiproducts_ho",
+    "file": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/HomotopyFiniteBiproduct.lean",
+    "line": 30,
+    "source_sha256": "f81a5bb18e214321c6e2b41d24e421043fa57c5332ba0aa8b36dbdf797b56afe",
+    "source_signature": "instance hasFiniteBiproducts_ho {X : SSet.{u}} [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable X] :\n    HasFiniteBiproducts (hoFunctor.obj X)",
+    "source_excerpt": "instance hasFiniteBiproducts_ho {X : SSet.{u}} [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable X] :\n    HasFiniteBiproducts (hoFunctor.obj X) :=\n  HasFiniteBiproducts.of_hasFiniteProducts\n\nend SerrePositivity.InfinityCategories.HA.StableInfinityCategories\n\n/-! Literature correspondences from the reviewed coverage tables. -/\n\n/-! Reviewed literature correspondences. -/\nattribute [cite HA \"1.1.2.9\" (partial := stronger-hyp) \"仮定：安定準圏 X（Lean は IsStable で仮定をまとめる。HA は点付き性・余ファイバー・懸垂同値で述べる）。結論：hX の前加法構造と有限双積（一致）。HA の仮定から IsStable への直接の比較宣言は採用した型にない。\"] _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.hasFiniteBiproducts_ho\nattribute [cite HA \"6.1.6.17\" (partial := component) \"仮定：安定な準圏 C（HA と一致）。結論：hC は前加法圏で全有限双積を持つ（本文で明記された hC の additive 性に一致する部分）。C の全相対 norm の可逆性を束ねる semiadditive 述語への比較は含まれない。\"] _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.hasFiniteBiproducts_ho",
+    "section_context": [
+      "open CategoryTheory Limits SSet",
+      "namespace SerrePositivity.InfinityCategories.HA.StableInfinityCategories"
+    ],
+    "validation": "source inspection; no new kernel probe (paper task)"
+  },
+  "Representation.norm": {
+    "name": "Representation.norm",
+    "file": "Mathlib/RepresentationTheory/Basic.lean",
+    "line": 283,
+    "source_sha256": "337032ff8584d9ec0a208cb91c45cb1ebbf77ef5748ecd0ce5a20983d2c70a21",
+    "source_signature": "def norm : Module.End k V",
+    "source_excerpt": "def norm : Module.End k V := ∑ g : G, ρ g\n\n@[simp]\nlemma norm_comp_self (g : G) : norm ρ ∘ₗ ρ g = norm ρ := by\n  ext\n  simpa [norm] using Fintype.sum_bijective (· * g) (Group.mulRight_bijective g) _ _ <| by simp\n\n@[simp]\nlemma norm_self_apply (g : G) (x : V) : norm ρ (ρ g x) = norm ρ x :=\n  LinearMap.ext_iff.1 (norm_comp_self _ _) x\n\n@[simp]\nlemma self_comp_norm (g : G) : ρ g ∘ₗ norm ρ = norm ρ := by\n  ext\n  simpa [norm] using Fintype.sum_bijective (g * ·) (Group.mulLeft_bijective g) _ _ <| by simp\n\n@[simp]\nlemma self_norm_apply (g : G) (x : V) : ρ g (norm ρ x) = norm ρ x :=\n  LinearMap.ext_iff.1 (self_comp_norm _ _) x\n\nend Norm\n\nsection Subrepresentation\n",
+    "section_context": [
+      "open MonoidAlgebra",
+      "open LinearMap Module",
+      "variable (k G V : Type*) [Semiring k] [Monoid G] [AddCommMonoid V] [Module k V]",
+      "namespace Representation",
+      "variable (k G V : Type*) [Semiring k] [Monoid G] [AddCommMonoid V] [Module k V]",
+      "variable {G V}",
+      "variable {k}",
+      "variable {k G V : Type*} [Semiring k] [Group G] [AddCommMonoid V] [Module k V]",
+      "variable {k G V : Type*} [CommSemiring k] [Monoid G] [AddCommMonoid V] [Module k V]",
+      "variable (ρ : Representation k G V)",
+      "variable {k G V : Type*} [Semiring k] [Monoid G] [AddCommMonoid V] [Module k V]",
+      "variable (M : Type*) [AddCommMonoid M] [Module k[G] M]",
+      "variable {k G V : Type*} [Semiring k] [Group G] [Fintype G] [AddCommMonoid V] [Module k V]",
+      "variable (ρ : Representation k G V)"
+    ],
+    "validation": "source inspection; no new kernel probe (paper task)"
+  },
+  "Representation.norm_comp_self": {
+    "name": "Representation.norm_comp_self",
+    "file": "Mathlib/RepresentationTheory/Basic.lean",
+    "line": 286,
+    "source_sha256": "337032ff8584d9ec0a208cb91c45cb1ebbf77ef5748ecd0ce5a20983d2c70a21",
+    "source_signature": "lemma norm_comp_self (g : G) : norm ρ ∘ₗ ρ g = norm ρ",
+    "source_excerpt": "lemma norm_comp_self (g : G) : norm ρ ∘ₗ ρ g = norm ρ := by\n  ext\n  simpa [norm] using Fintype.sum_bijective (· * g) (Group.mulRight_bijective g) _ _ <| by simp\n\n@[simp]\nlemma norm_self_apply (g : G) (x : V) : norm ρ (ρ g x) = norm ρ x :=\n  LinearMap.ext_iff.1 (norm_comp_self _ _) x\n\n@[simp]\nlemma self_comp_norm (g : G) : ρ g ∘ₗ norm ρ = norm ρ := by\n  ext\n  simpa [norm] using Fintype.sum_bijective (g * ·) (Group.mulLeft_bijective g) _ _ <| by simp\n\n@[simp]\nlemma self_norm_apply (g : G) (x : V) : ρ g (norm ρ x) = norm ρ x :=\n  LinearMap.ext_iff.1 (self_comp_norm _ _) x\n\nend Norm\n\nsection Subrepresentation\n\nvariable {k G V : Type*} [Semiring k] [Monoid G] [AddCommMonoid V] [Module k V]\n  (ρ : Representation k G V)\n",
+    "section_context": [
+      "open MonoidAlgebra",
+      "open LinearMap Module",
+      "variable (k G V : Type*) [Semiring k] [Monoid G] [AddCommMonoid V] [Module k V]",
+      "namespace Representation",
+      "variable (k G V : Type*) [Semiring k] [Monoid G] [AddCommMonoid V] [Module k V]",
+      "variable {G V}",
+      "variable {k}",
+      "variable {k G V : Type*} [Semiring k] [Group G] [AddCommMonoid V] [Module k V]",
+      "variable {k G V : Type*} [CommSemiring k] [Monoid G] [AddCommMonoid V] [Module k V]",
+      "variable (ρ : Representation k G V)",
+      "variable {k G V : Type*} [Semiring k] [Monoid G] [AddCommMonoid V] [Module k V]",
+      "variable (M : Type*) [AddCommMonoid M] [Module k[G] M]",
+      "variable {k G V : Type*} [Semiring k] [Group G] [Fintype G] [AddCommMonoid V] [Module k V]",
+      "variable (ρ : Representation k G V)"
+    ],
+    "validation": "source inspection; no new kernel probe (paper task)"
+  },
+  "Representation.self_comp_norm": {
+    "name": "Representation.self_comp_norm",
+    "file": "Mathlib/RepresentationTheory/Basic.lean",
+    "line": 295,
+    "source_sha256": "337032ff8584d9ec0a208cb91c45cb1ebbf77ef5748ecd0ce5a20983d2c70a21",
+    "source_signature": "lemma self_comp_norm (g : G) : ρ g ∘ₗ norm ρ = norm ρ",
+    "source_excerpt": "lemma self_comp_norm (g : G) : ρ g ∘ₗ norm ρ = norm ρ := by\n  ext\n  simpa [norm] using Fintype.sum_bijective (g * ·) (Group.mulLeft_bijective g) _ _ <| by simp\n\n@[simp]\nlemma self_norm_apply (g : G) (x : V) : ρ g (norm ρ x) = norm ρ x :=\n  LinearMap.ext_iff.1 (self_comp_norm _ _) x\n\nend Norm\n\nsection Subrepresentation\n\nvariable {k G V : Type*} [Semiring k] [Monoid G] [AddCommMonoid V] [Module k V]\n  (ρ : Representation k G V)\n\n/-- Given a `k`-linear `G`-representation `(V, ρ)`, this is the representation defined by\nrestricting `ρ` to a `G`-invariant `k`-submodule of `V`. -/\n@[simps]\ndef subrepresentation (W : Submodule k V) (le_comap : ∀ g, W ≤ W.comap (ρ g)) :\n    Representation k G W where\n  toFun g := (ρ g).restrict <| le_comap g\n  map_one' := by ext; simp\n  map_mul' _ _ := by ext; simp\n",
+    "section_context": [
+      "open MonoidAlgebra",
+      "open LinearMap Module",
+      "variable (k G V : Type*) [Semiring k] [Monoid G] [AddCommMonoid V] [Module k V]",
+      "namespace Representation",
+      "variable (k G V : Type*) [Semiring k] [Monoid G] [AddCommMonoid V] [Module k V]",
+      "variable {G V}",
+      "variable {k}",
+      "variable {k G V : Type*} [Semiring k] [Group G] [AddCommMonoid V] [Module k V]",
+      "variable {k G V : Type*} [CommSemiring k] [Monoid G] [AddCommMonoid V] [Module k V]",
+      "variable (ρ : Representation k G V)",
+      "variable {k G V : Type*} [Semiring k] [Monoid G] [AddCommMonoid V] [Module k V]",
+      "variable (M : Type*) [AddCommMonoid M] [Module k[G] M]",
+      "variable {k G V : Type*} [Semiring k] [Group G] [Fintype G] [AddCommMonoid V] [Module k V]",
+      "variable (ρ : Representation k G V)"
+    ],
+    "validation": "source inspection; no new kernel probe (paper task)"
+  },
+  "CategoryTheory.cechNerveTerminalFrom": {
+    "name": "CategoryTheory.cechNerveTerminalFrom",
+    "file": "Mathlib/AlgebraicTopology/CechNerve.lean",
+    "line": 327,
+    "source_sha256": "28ef0584cf723bccba11fe786c2b1e88a74306ddcd6444a1b62a640c0b20885d",
+    "source_signature": "def cechNerveTerminalFrom {C : Type u} [Category.{v} C] [HasFiniteProducts C] (X : C) :\n    SimplicialObject C",
+    "source_excerpt": "def cechNerveTerminalFrom {C : Type u} [Category.{v} C] [HasFiniteProducts C] (X : C) :\n    SimplicialObject C where\n  obj n := ∏ᶜ fun _ : Fin (n.unop.len + 1) => X\n  map f := Limits.Pi.lift fun i => Limits.Pi.π _ (f.unop.toOrderHom i)\n\nnamespace CechNerveTerminalFrom\n\nvariable [HasTerminal C] (ι : Type w)\n\n/-- The diagram `Option ι ⥤ C` sending `none` to the terminal object and `some j` to `X`. -/\n@[implicit_reducible]\ndef wideCospan (X : C) : WidePullbackShape ι ⥤ C :=\n  WidePullbackShape.wideCospan (terminal C) (fun _ : ι => X) fun _ => terminal.from X\n\ninstance uniqueToWideCospanNone (X Y : C) : Unique (Y ⟶ (wideCospan ι X).obj none) := by\n  dsimp [wideCospan]\n  infer_instance\n\nvariable [HasFiniteProducts C]\n\n/-- The product `Xᶥ` is the vertex of a limit cone on `wideCospan ι X`. -/\ndef wideCospan.limitCone [Finite ι] (X : C) : LimitCone (wideCospan ι X) where\n  cone :=\n    { pt := ∏ᶜ fun _ : ι => X",
+    "section_context": [
+      "open CategoryTheory Limits",
+      "open scoped Simplicial",
+      "variable {C : Type u} [Category.{v} C]",
+      "namespace CategoryTheory.Arrow",
+      "variable (f : Arrow C)",
+      "variable [∀ n : ℕ, HasWidePullback.{0} f.right (fun _ : Fin (n + 1) => f.left) fun _ => f.hom]",
+      "namespace CategoryTheory",
+      "namespace SimplicialObject",
+      "namespace CategoryTheory.Arrow",
+      "variable (f : Arrow C)",
+      "variable [∀ n : ℕ, HasWidePushout f.left (fun _ : Fin (n + 1) => f.right) fun _ => f.hom]",
+      "namespace CategoryTheory",
+      "namespace CosimplicialObject"
+    ],
+    "validation": "source inspection; no new kernel probe (paper task)"
+  },
+  "CategoryTheory.CechNerveTerminalFrom.iso": {
+    "name": "CategoryTheory.CechNerveTerminalFrom.iso",
+    "file": "Mathlib/AlgebraicTopology/CechNerve.lean",
+    "line": 404,
+    "source_sha256": "28ef0584cf723bccba11fe786c2b1e88a74306ddcd6444a1b62a640c0b20885d",
+    "source_signature": "def iso (X : C) : (Arrow.mk (terminal.from X)).cechNerve ≅ cechNerveTerminalFrom X",
+    "source_excerpt": "def iso (X : C) : (Arrow.mk (terminal.from X)).cechNerve ≅ cechNerveTerminalFrom X :=\n  NatIso.ofComponents (fun _ => wideCospan.limitIsoPi _ _) (fun {m n} f => by\n    dsimp only [cechNerveTerminalFrom, Arrow.cechNerve]\n    ext ⟨j⟩\n    simp)\n\nend CechNerveTerminalFrom\n\nend CategoryTheory",
+    "section_context": [
+      "open CategoryTheory Limits",
+      "open scoped Simplicial",
+      "variable {C : Type u} [Category.{v} C]",
+      "namespace CategoryTheory.Arrow",
+      "variable (f : Arrow C)",
+      "variable [∀ n : ℕ, HasWidePullback.{0} f.right (fun _ : Fin (n + 1) => f.left) fun _ => f.hom]",
+      "namespace CategoryTheory",
+      "namespace SimplicialObject",
+      "namespace CategoryTheory.Arrow",
+      "variable (f : Arrow C)",
+      "variable [∀ n : ℕ, HasWidePushout f.left (fun _ : Fin (n + 1) => f.right) fun _ => f.hom]",
+      "namespace CategoryTheory",
+      "namespace CosimplicialObject",
+      "namespace CechNerveTerminalFrom",
+      "variable [HasTerminal C] (ι : Type w)",
+      "variable [HasFiniteProducts C]"
+    ],
+    "validation": "source inspection; no new kernel probe (paper task)"
+  },
+  "IsPGroup.exists_fixed_point_of_prime_dvd_card_of_fixed_point": {
+    "name": "IsPGroup.exists_fixed_point_of_prime_dvd_card_of_fixed_point",
+    "file": "Mathlib/GroupTheory/PGroup.lean",
+    "line": 313,
+    "source_sha256": "729315c3885d26aae831b3dc18575b823891728d6e0cd7cae6788d15af72337f",
+    "source_signature": "theorem exists_fixed_point_of_prime_dvd_card_of_fixed_point (hpα : p ∣ Nat.card α) {a : α}\n    (ha : a ∈ fixedPoints G α) : ∃ b, b ∈ fixedPoints G α ∧ a ≠ b",
+    "source_excerpt": "theorem exists_fixed_point_of_prime_dvd_card_of_fixed_point (hpα : p ∣ Nat.card α) {a : α}\n    (ha : a ∈ fixedPoints G α) : ∃ b, b ∈ fixedPoints G α ∧ a ≠ b := by\n  have hpf : p ∣ Nat.card (fixedPoints G α) :=\n    Nat.modEq_zero_iff_dvd.mp ((hG.card_modEq_card_fixedPoints α).symm.trans hpα.modEq_zero_nat)\n  have hα : 1 < Nat.card (fixedPoints G α) :=\n    (Fact.out (p := p.Prime)).one_lt.trans_le (Nat.le_of_dvd (Finite.card_pos_iff.2 ⟨⟨a, ha⟩⟩) hpf)\n  rw [Finite.one_lt_card_iff_nontrivial] at hα\n  exact\n    let ⟨⟨b, hb⟩, hba⟩ := exists_ne (⟨a, ha⟩ : fixedPoints G α)\n    ⟨b, hb, fun hab => hba (by simp_rw [hab])⟩\n\ntheorem center_nontrivial [Nontrivial G] [Finite G] : Nontrivial (Subgroup.center G) := by\n  have := (hG.of_equiv ConjAct.toConjAct).exists_fixed_point_of_prime_dvd_card_of_fixed_point G\n  rw [ConjAct.fixedPoints_eq_center] at this\n  have dvd : p ∣ Nat.card G := by\n    obtain ⟨n, hn0, hn⟩ := hG.nontrivial_iff_card.mp inferInstance\n    exact hn.symm ▸ dvd_pow_self _ (ne_of_gt hn0)\n  obtain ⟨g, hg⟩ := this dvd (Subgroup.center G).one_mem\n  exact ⟨⟨1, ⟨g, hg.1⟩, mt Subtype.ext_iff.mp hg.2⟩⟩\n\ntheorem bot_lt_center [Nontrivial G] [Finite G] : ⊥ < Subgroup.center G := by\n  have := center_nontrivial hG\n  exact\n      bot_lt_iff_ne_bot.mpr ((Subgroup.center G).one_lt_card_iff_ne_bot.mp Finite.one_lt_card)",
+    "section_context": [
+      "open Fintype MulAction",
+      "variable (p : ℕ) (G : Type*) [Group G]",
+      "variable {p} {G}",
+      "namespace IsPGroup",
+      "variable (p G) in",
+      "variable (G) in",
+      "variable (hG : IsPGroup p G)",
+      "variable [hp : Fact p.Prime]",
+      "variable {α : Type*} [MulAction G α]",
+      "variable (α) [Finite α]"
+    ],
+    "validation": "source inspection; no new kernel probe (paper task)"
+  },
+  "ProfiniteGrp": {
+    "name": "ProfiniteGrp",
+    "file": "Mathlib/Topology/Algebra/Category/ProfiniteGrp/Basic.lean",
+    "line": 43,
+    "source_sha256": "c5a166cfcbbf14487940decb350fba054f20a7e759d966412fb8ba5de0238f99",
+    "source_signature": "structure ProfiniteGrp",
+    "source_excerpt": "structure ProfiniteGrp where\n  /-- The underlying profinite topological space. -/\n  toProfinite : Profinite.{u}\n  /-- The group structure. -/\n  [group : Group toProfinite]\n  /-- The above data together form a topological group. -/\n  [isTopologicalGroup : IsTopologicalGroup toProfinite]\n\n/--\nThe category of profinite additive groups. A term of this type consists of a profinite\nset with a topological additive group structure.\n-/\n@[pp_with_univ]\nstructure ProfiniteAddGrp where\n  /-- The underlying profinite topological space. -/\n  toProfinite : Profinite.{u}\n  /-- The additive group structure. -/\n  [addGroup : AddGroup toProfinite]\n  /-- The above data together form a topological additive group. -/\n  [topologicalAddGroup : IsTopologicalAddGroup toProfinite]\n\nattribute [to_additive] ProfiniteGrp\n\n@[to_additive]",
+    "section_context": [
+      "open CategoryTheory"
+    ],
+    "validation": "source inspection; no new kernel probe (paper task)"
+  },
+  "ProfiniteGrp.Hom": {
+    "name": "ProfiniteGrp.Hom",
+    "file": "Mathlib/Topology/Algebra/Category/ProfiniteGrp/Basic.lean",
+    "line": 101,
+    "source_sha256": "c5a166cfcbbf14487940decb350fba054f20a7e759d966412fb8ba5de0238f99",
+    "source_signature": "structure ProfiniteGrp.Hom (A B : ProfiniteGrp.{u})",
+    "source_excerpt": "structure ProfiniteGrp.Hom (A B : ProfiniteGrp.{u}) where\n  _mkInternal ::\n  /-- The underlying `ContinuousMonoidHom`. -/\n  hom' : A →ₜ* B\n\n@[to_additive]\ninstance : Category ProfiniteGrp where\n  Hom A B := ProfiniteGrp.Hom A B\n  id A := ⟨ContinuousMonoidHom.id A⟩\n  comp f g := ⟨g.hom'.comp f.hom'⟩\n\n@[to_additive]\ninstance : ConcreteCategory ProfiniteGrp (fun X Y => X →ₜ* Y) where\n  hom f := f.hom'\n  ofHom f := ⟨f⟩\n\n/-- The underlying `ContinuousMonoidHom`. -/\n@[to_additive /-- The underlying `ContinuousAddMonoidHom`. -/]\nabbrev ProfiniteGrp.Hom.hom {M N : ProfiniteGrp.{u}} (f : ProfiniteGrp.Hom M N) :\n    M →ₜ* N :=\n  ConcreteCategory.hom (C := ProfiniteGrp) f\n\n/-- Typecheck a `ContinuousMonoidHom` as a morphism in `ProfiniteGrp`. -/\n@[to_additive /-- Typecheck a `ContinuousAddMonoidHom` as a morphism in `ProfiniteAddGrp`. -/]",
+    "section_context": [
+      "open CategoryTheory"
+    ],
+    "validation": "source inspection; no new kernel probe (paper task)"
+  },
+  "ProfiniteGrp.ofFiniteGrp": {
+    "name": "ProfiniteGrp.ofFiniteGrp",
+    "file": "Mathlib/Topology/Algebra/Category/ProfiniteGrp/Basic.lean",
+    "line": 219,
+    "source_sha256": "c5a166cfcbbf14487940decb350fba054f20a7e759d966412fb8ba5de0238f99",
+    "source_signature": "def ofFiniteGrp (G : FiniteGrp) : ProfiniteGrp",
+    "source_excerpt": "def ofFiniteGrp (G : FiniteGrp) : ProfiniteGrp :=\n  letI : TopologicalSpace G := ⊥\n  letI : DiscreteTopology G := ⟨rfl⟩\n  letI : IsTopologicalGroup G := {}\n  of G\n\n/-- A morphism of `FiniteGrp` induces a morphism of the associated profinite groups. -/\n@[to_additive /-- A morphism of `FiniteAddGrp` induces a morphism of the associated profinite\nadditive groups. -/]\ndef ofFiniteGrpHom {G H : FiniteGrp.{u}} (f : G ⟶ H) : ofFiniteGrp G ⟶ ofFiniteGrp H :=\n  ConcreteCategory.ofHom ⟨f.hom.hom, by fun_prop⟩\n\n@[to_additive]\ninstance : HasForget₂ FiniteGrp ProfiniteGrp where\n  forget₂ :=\n  { obj := ofFiniteGrp\n    map := ofFiniteGrpHom }\n\n@[to_additive]\ninstance : HasForget₂ ProfiniteGrp GrpCat where\n  forget₂.obj P := ↧P\n  forget₂.map f := GrpCat.ofHom f.hom.toMonoidHom\n\n/-- A closed subgroup of a profinite group is profinite. -/",
+    "section_context": [
+      "open CategoryTheory",
+      "namespace ProfiniteGrp",
+      "variable {X Y Z : Type u} [Group X] [TopologicalSpace X] [IsTopologicalGroup X]"
+    ],
+    "validation": "source inspection; no new kernel probe (paper task)"
+  },
+  "ProfiniteGrp.ofFiniteGrpHom": {
+    "name": "ProfiniteGrp.ofFiniteGrpHom",
+    "file": "Mathlib/Topology/Algebra/Category/ProfiniteGrp/Basic.lean",
+    "line": 228,
+    "source_sha256": "c5a166cfcbbf14487940decb350fba054f20a7e759d966412fb8ba5de0238f99",
+    "source_signature": "def ofFiniteGrpHom {G H : FiniteGrp.{u}} (f : G ⟶ H) : ofFiniteGrp G ⟶ ofFiniteGrp H",
+    "source_excerpt": "def ofFiniteGrpHom {G H : FiniteGrp.{u}} (f : G ⟶ H) : ofFiniteGrp G ⟶ ofFiniteGrp H :=\n  ConcreteCategory.ofHom ⟨f.hom.hom, by fun_prop⟩\n\n@[to_additive]\ninstance : HasForget₂ FiniteGrp ProfiniteGrp where\n  forget₂ :=\n  { obj := ofFiniteGrp\n    map := ofFiniteGrpHom }\n\n@[to_additive]\ninstance : HasForget₂ ProfiniteGrp GrpCat where\n  forget₂.obj P := ↧P\n  forget₂.map f := GrpCat.ofHom f.hom.toMonoidHom\n\n/-- A closed subgroup of a profinite group is profinite. -/\n@[to_additive /-- A closed additive subgroup of a profinite additive group is profinite. -/]\ndef ofClosedSubgroup {G : ProfiniteGrp} (H : ClosedSubgroup G) : ProfiniteGrp :=\n  letI : CompactSpace H := inferInstance\n  of H.1\n\n/-- A topological group that has a `ContinuousMulEquiv` to a profinite group is profinite. -/\n@[to_additive /-- A topological additive group that has a `ContinuousAddEquiv` to a\nprofinite additive group is profinite. -/]\ndef ofContinuousMulEquiv {G : ProfiniteGrp.{u}} {H : Type v} [TopologicalSpace H]",
+    "section_context": [
+      "open CategoryTheory",
+      "namespace ProfiniteGrp",
+      "variable {X Y Z : Type u} [Group X] [TopologicalSpace X] [IsTopologicalGroup X]"
+    ],
+    "validation": "source inspection; no new kernel probe (paper task)"
+  },
+  "ProfiniteGrp.isoLimittoFiniteQuotientFunctor": {
+    "name": "ProfiniteGrp.isoLimittoFiniteQuotientFunctor",
+    "file": "Mathlib/Topology/Algebra/Category/ProfiniteGrp/Limits.lean",
+    "line": 152,
+    "source_sha256": "61f56006c37af3ffa7ea670b2ac3b47430134433feba940d1b2dab7e4e5f826d",
+    "source_signature": "noncomputable def isoLimittoFiniteQuotientFunctor (P : ProfiniteGrp.{u}) :\n    P ≅ (limit <| diagram P)",
+    "source_excerpt": "noncomputable def isoLimittoFiniteQuotientFunctor (P : ProfiniteGrp.{u}) :\n    P ≅ (limit <| diagram P) :=\n  ContinuousMulEquiv.toProfiniteGrpIso (continuousMulEquivLimittoFiniteQuotientFunctor P)\n\nset_option backward.isDefEq.respectTransparency.types false in\n/-- The projection from `P` to the quotient by an open normal subgroup. -/\n@[to_additive /-- The projection from `P` to the quotient by an open normal subgroup. -/]\ndef proj {P : ProfiniteGrp.{u}} (U : OpenNormalSubgroup P) : P ⟶ (diagram P).obj U :=\n  ProfiniteGrp.ofHom (Y := (diagram P).obj U) {\n    toFun := QuotientGroup.mk\n    map_one' := rfl\n    map_mul' _ _ := rfl\n    continuous_toFun := show Continuous ((limitCone <| diagram P).π.app U ∘ toLimit P) by\n      fun_prop\n  }\n\n/-- The canonical cone over `diagram P` with point `P`. -/\n@[to_additive (attr := simps) /-- The canonical cone over `diagram P` with point `P`. -/]\ndef cone (P : ProfiniteGrp.{u}) : Limits.Cone (diagram P) where\n  pt := P\n  π := { app := proj }\n\n/-- The canonical cone over `diagram P` is a limit cone. -/\nnoncomputable def isLimitCone (P : ProfiniteGrp.{u}) : Limits.IsLimit P.cone :=",
+    "section_context": [
+      "open CategoryTheory IsTopologicalGroup",
+      "namespace ProfiniteGrp",
+      "open normal subgroups ordered by inclusion -/"
+    ],
+    "validation": "source inspection; no new kernel probe (paper task)"
+  },
+  "LinearMap": {
+    "name": "LinearMap",
+    "file": "Mathlib/Algebra/Module/LinearMap/Defs.lean",
+    "line": 84,
+    "source_sha256": "5090cac4b5a20a6e5c5e8c86ccf5b88e1d207bfab05ba8889ff3b9c7aab8b87f",
+    "source_signature": "structure LinearMap {R S : Type*} [Semiring R] [Semiring S] (σ : R →+* S) (M : Type*)\n    (M₂ : Type*) [AddCommMonoid M] [AddCommMonoid M₂] [Module R M] [Module S M₂] extends\n    AddHom M M₂, MulActionHom σ M M₂",
+    "source_excerpt": "structure LinearMap {R S : Type*} [Semiring R] [Semiring S] (σ : R →+* S) (M : Type*)\n    (M₂ : Type*) [AddCommMonoid M] [AddCommMonoid M₂] [Module R M] [Module S M₂] extends\n    AddHom M M₂, MulActionHom σ M M₂\n\n/-- The `MulActionHom` underlying a `LinearMap`. -/\nadd_decl_doc LinearMap.toMulActionHom\n\n/-- The `AddHom` underlying a `LinearMap`. -/\nadd_decl_doc LinearMap.toAddHom\n\n/-- `M →ₛₗ[σ] N` is the type of `σ`-semilinear maps from `M` to `N`. -/\nnotation:25 M \" →ₛₗ[\" σ:25 \"] \" M₂:0 => LinearMap σ M M₂\n\n/-- `M →ₗ[R] N` is the type of `R`-linear maps from `M` to `N`. -/\nnotation:25 M \" →ₗ[\" R:25 \"] \" M₂:0 => LinearMap (RingHom.id R) M M₂\n\n/-- `SemilinearMapClass F σ M M₂` asserts `F` is a type of bundled `σ`-semilinear maps `M → M₂`.\n\nSee also `LinearMapClass F R M M₂` for the case where `σ` is the identity map on `R`.\n\nA map `f` between an `R`-module and an `S`-module over a ring homomorphism `σ : R →+* S`\nis semilinear if it satisfies the two properties `f (x + y) = f x + f y` and\n`f (c • x) = (σ c) • f x`. -/\nclass SemilinearMapClass (F : Type*) {R S : outParam Type*} [Semiring R] [Semiring S]",
+    "section_context": [
+      "open Function",
+      "variable {R R₁ R₂ R₃ S S₃ T M M₁ M₂ M₃ N₂ N₃ : Type*}"
+    ],
+    "validation": "source inspection; no new kernel probe (paper task)"
+  },
+  "frobenius": {
+    "name": "frobenius",
+    "file": "Mathlib/Algebra/CharP/Lemmas.lean",
+    "line": 322,
+    "source_sha256": "beea065dd16ffc9e16015c26bce170486c95dd12ef3bec5c98bd430b47aecc79",
+    "source_signature": "def frobenius : R →+* R",
+    "source_excerpt": "def frobenius : R →+* R where\n  __ := powMonoidHom p\n  map_zero' := zero_pow (expChar_pos R p).ne'\n  map_add' _ _ := add_pow_expChar ..\n\n/-- The iterated Frobenius map `x ↦ x ^ p ^ n`. -/\ndef iterateFrobenius : R →+* R where\n  __ := powMonoidHom (p ^ n)\n  map_zero' := zero_pow (expChar_pow_pos R p n).ne'\n  map_add' _ _ := add_pow_expChar_pow ..\n\nvariable {R}\n\nlemma list_sum_pow_char (l : List R) : l.sum ^ p = (l.map (· ^ p : R → R)).sum :=\n  map_list_sum (frobenius R p) _\n\nlemma multiset_sum_pow_char (s : Multiset R) : s.sum ^ p = (s.map (· ^ p : R → R)).sum :=\n  map_multiset_sum (frobenius R p) _\n\nlemma sum_pow_char {ι : Type*} (s : Finset ι) (f : ι → R) : (∑ i ∈ s, f i) ^ p = ∑ i ∈ s, f i ^ p :=\n  map_sum (frobenius R p) _ _\n\nlemma list_sum_pow_char_pow (l : List R) : l.sum ^ p ^ n = (l.map (· ^ p ^ n : R → R)).sum :=\n  map_list_sum (iterateFrobenius R p n) _",
+    "section_context": [
+      "open Finset",
+      "variable {R : Type*}",
+      "namespace Commute",
+      "variable [Semiring R] {p : ℕ} (hp : p.Prime) {x y : R}",
+      "variable [CommSemiring R] {p : ℕ} (hp : p.Prime) (x y : R) (n : ℕ)",
+      "variable [Semiring R] {x y : R} (p n : ℕ)",
+      "variable [hR : ExpChar R p]",
+      "variable [hp : Fact p.Prime] [CharP R p]",
+      "variable [CommSemiring R] (x y : R) (p n : ℕ)",
+      "variable [hR : ExpChar R p]",
+      "variable [hp : Fact p.Prime] [CharP R p]",
+      "variable [Ring R] {x y : R} (p n : ℕ)",
+      "variable [hR : ExpChar R p]",
+      "variable (R)",
+      "variable [hp : Fact p.Prime] [CharP R p]",
+      "variable (R)",
+      "variable [CommRing R] (x y : R) (n : ℕ) {p : ℕ}",
+      "variable [hR : ExpChar R p]",
+      "variable [hp : Fact p.Prime] [CharP R p]",
+      "namespace CharP",
+      "variable (R) [NonAssocRing R]",
+      "variable (R) [Ring R] [NoZeroDivisors R] [Nontrivial R] [Finite R]",
+      "variable (R : Type*) [CommSemiring R]",
+      "variable (p n : ℕ) [ExpChar R p]"
+    ],
+    "validation": "source inspection; no new kernel probe (paper task)"
+  }
+}

@@ -38,7 +38,7 @@
   全依存ビルドが通る、shared の sorryAx が許可された引用経由の 59 から増えない、audit_axioms で主定理の公理が変わらない、消した・改名した
   宣言を監査が参照していない、ファイル数と行数の前後を記録する（F）。
 - 提出候補の転記：区切りを閉じるたびに、その区切りで扱った章の「提出候補」を mathlib-upstream.md の G 番号の表へ移す。
-- ∞ 基盤との境界：区切りに入る前に、触るファイルと ∞ 基盤の側（[handover-ct-to-infinity-2026-10-30.md](handover-ct-to-infinity-2026-10-30.md) の対象、
+- ∞ 基盤との境界：区切りに入る前に、触るファイルと ∞ 基盤の側（[handover-ct-to-infinity-2026-10-30.md](archive/stage-i/handover-ct-to-infinity-2026-10-30.md) の対象、
   InfinityCategories・HomotopicalAlgebra・KST・EInfinity・Spectra・DifferentialGraded）が import し合っていないかを確かめ、あれば先に伝える。
 - コミットとプッシュ：`git commit --only` か慎重な stage。広い `git add SerrePositivity` はしない。並行セッションの未追跡ファイル・exposition/
   の変更は含めない。プッシュはユーザーの判断。

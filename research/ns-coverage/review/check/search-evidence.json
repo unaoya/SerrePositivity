@@ -1,0 +1,1060 @@
+{
+  "bokstedt": {
+    "regex": "Bökstedt|Boekstedt|Bokstedt|OrthogonalSpectrum|orthogonal spectra",
+    "scope": [
+      "SerrePositivity/**/*.lean",
+      "Mathlib/**/*.lean"
+    ],
+    "exit_code": 1,
+    "hit_lines": 0,
+    "sample": [],
+    "inspected_candidates": [
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyColimit.lean",
+        "sha256": "498ed7c0eedfe0a41a9b1946ab0a85e9a7d241afd9b1256d177cfab2ba649b2d",
+        "candidate_type_excerpts": [
+          {
+            "line": 25,
+            "excerpt": "def cofibrantFactorization :\n    let := Projective.modelCategory K I J\n    MorphismProperty.FunctorialFactorizationData\n      (cofibrations (K ⥤ C)) (trivialFibrations (K ⥤ C)) := by\n  let := Projective.modelCategory K I J\n  have : (cofibrations (K ⥤ C)).HasFunctorialFactorization (trivialFibrations (K ⥤ C)) :=\n    (Projective.functorialFactorizations K I J).1\n  exact MorphismProperty.functorialFactorizationData _ _\n"
+          },
+          {
+            "line": 34,
+            "excerpt": "def replacement : (K ⥤ C) ⥤ (K ⥤ C) := by\n  let := Projective.modelCategory K I J\n  exact ModelReplacement.initialArrows (K ⥤ C) ⋙ (cofibrantFactorization K I J).Z\n\ndef replacementComparison : replacement K I J ⟶ 𝟭 (K ⥤ C) := by\n  let := Projective.modelCategory K I J\n  exact\n    { app F := (cofibrantFactorization K I J).p.app (Arrow.mk (initial.to F))\n      naturality {_ _} f := (cofibrantFactorization K I J).p.naturality"
+          },
+          {
+            "line": 38,
+            "excerpt": "def replacementComparison : replacement K I J ⟶ 𝟭 (K ⥤ C) := by\n  let := Projective.modelCategory K I J\n  exact\n    { app F := (cofibrantFactorization K I J).p.app (Arrow.mk (initial.to F))\n      naturality {_ _} f := (cofibrantFactorization K I J).p.naturality\n        ((ModelReplacement.initialArrows (K ⥤ C)).map f) }\n\nlemma replacement_isCofibrant (F : K ⥤ C) :\n    let := Projective.modelCategory K I J"
+          },
+          {
+            "line": 45,
+            "excerpt": "lemma replacement_isCofibrant (F : K ⥤ C) :\n    let := Projective.modelCategory K I J\n    IsCofibrant ((replacement K I J).obj F) := by\n  let := Projective.modelCategory K I J\n  let d := cofibrantFactorization K I J\n  exact (isCofibrant_iff_of_isInitial (d.i.app (Arrow.mk (initial.to F))) initialIsInitial).mpr\n    ⟨d.hi _⟩\n\nlemma replacementComparison_trivialFibration (F : K ⥤ C) :"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/KST/Spectra/FixedPointSpectra.lean",
+        "sha256": "c6e5ef9220b0788346e37fad02aaec6e38c910e6fb6fac451b4c8b0d11ff52dc",
+        "candidate_type_excerpts": [
+          {
+            "line": 30,
+            "excerpt": "def homotopyFixedPointsKan {G : Type u} [Group G] (A : GroupAction.{u} G) : KanSequence.{u} :=\n  KanSequence.homotopyLimit\n    ((AsSmall.down ⋙ (GroupAction.diagramFunctor G).obj A) ⋙ OmegaSpectrum.forgetToKan)\n\n/-- 概要：群作用の homotopy fixed points の実際の BF 対象。\n方針：段ごとの Kan end の Ω 条件を移し、単射構造射へ置換する。\n規約：通常の fixed points の厳密極限と区別する。\n使われ方：HA §1.4.2、BF 1978 §2、HTT A.3.3。有限群作用に対する hG の対象。 -/\ndef homotopyFixedPoints {G : Type u} [Group G] (A : GroupAction.{u} G) : OmegaSpectrum.{u} :="
+          },
+          {
+            "line": 38,
+            "excerpt": "def homotopyFixedPoints {G : Type u} [Group G] (A : GroupAction.{u} G) : OmegaSpectrum.{u} :=\n  OmegaSpectrum.homotopyLimit (AsSmall.down ⋙ (GroupAction.diagramFunctor G).obj A)\n\n/-- 概要：hG の BF 対象から段ごとの Kan end への比較。\n方針：Kan Ω 列の単射置換の比較射を使う。\n規約：対象の構成に有限性を使わない。\n使われ方：HA §1.4.2、BF 1978 §2。有理比較の π_* を各段へ移す射。 -/\ndef homotopyFixedPointsProjection {G : Type u} [Group G] (A : GroupAction.{u} G) :\n    KanSequence.Hom (homotopyFixedPoints A).toKanSequence (homotopyFixedPointsKan A) :="
+          },
+          {
+            "line": 45,
+            "excerpt": "def homotopyFixedPointsProjection {G : Type u} [Group G] (A : GroupAction.{u} G) :\n    KanSequence.Hom (homotopyFixedPoints A).toKanSequence (homotopyFixedPointsKan A) :=\n  KanSequence.homotopyLimitProjection\n    ((AsSmall.down ⋙ (GroupAction.diagramFunctor G).obj A) ⋙ OmegaSpectrum.forgetToKan)\n    (fun i ↦ ((AsSmall.down ⋙ (GroupAction.diagramFunctor G).obj A).obj i).toKanSequence_omega)\n\n/-- 概要：hG の BF 比較射は各段で全基点 π_* 同型。\n方針：単射置換の比較の同型性を使う。\n規約：零次数を含む。"
+          },
+          {
+            "line": 55,
+            "excerpt": "theorem homotopyFixedPointsProjection_levelwise {G : Type u} [Group G]\n    (A : GroupAction.{u} G) (n : ℕ) :\n    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((homotopyFixedPointsProjection A).app n).right :=\n  KanSequence.replacementProjection_piIsomorphism (homotopyFixedPointsKan A) n\n\n/-- 概要：余単体 BF 対象の homotopy totalization の実際の BF 対象。\n方針：余単体図式の段ごとの Kan end と Ω 条件を単射置換する。\n規約：通常の Reedy Tot との比較と Sp の ∞ 極限性はここでは主張しない。\n使われ方：HA §1.4.2、BF 1978 §2。L9e の Tot の Kan 模型。 -/"
+          }
+        ]
+      }
+    ]
+  },
+  "coalgebra": {
+    "regex": "CoAlgF|FixF|coalgebra|Coalgebra|Comonad",
+    "scope": [
+      "SerrePositivity/**/*.lean",
+      "Mathlib/**/*.lean"
+    ],
+    "exit_code": 0,
+    "hit_lines": 3263,
+    "sample": [
+      "SerrePositivity/InfinityCategories/Project/DerivedCategories/Verdier/Fractions/VerdierRecoveredCoconeCylinder.lean:102:    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.pullbackSourcePrefixFamily (parametricPullbackDiagramFamily endSquare endSquare_pullback)",
+      "SerrePositivity/InfinityCategories/Project/DerivedCategories/Verdier/Fractions/VerdierRecoveredCoconeCylinder.lean:120:    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.pullbackSourcePrefixFamily pullbacks",
+      "SerrePositivity/InfinityCategories/Project/DerivedCategories/Verdier/Fractions/VerdierRecoveredCoconeCylinder.lean:176:      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.pullbackSourcePrefixFamily FS := by",
+      "SerrePositivity/InfinityCategories/Project/DerivedCategories/Verdier/Fractions/VerdierRecoveredCoconeCylinder.lean:177:    rw [Category.assoc, hWp, ← pullbackSourcePrefixFamily_pre, hj]",
+      "SerrePositivity/InfinityCategories/Project/DerivedCategories/Verdier/Fractions/VerdierRecoveredPullbackComparison.lean:60:      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.pullbackSourcePrefixFamily r.cylinder.pullbacks))",
+      "SerrePositivity/InfinityCategories/Project/DerivedCategories/Verdier/Fractions/VerdierRecoveredPullbackComparison.lean:61:      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.pullbackSourcePrefixFamily",
+      "SerrePositivity/InfinityCategories/Project/DerivedCategories/Verdier/Fractions/VerdierRecoveredPullbackComparison.lean:78:    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.pullbackSourcePrefixFamily r.cylinder.pullbacks)",
+      "SerrePositivity/InfinityCategories/Project/DerivedCategories/Verdier/Fractions/VerdierRecoveredPullbackComparison.lean:79:      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.pullbackSourcePrefixFamily",
+      "SerrePositivity/InfinityCategories/Project/DerivedCategories/Verdier/Fractions/VerdierRecoveredPullbackComparison.lean:89:      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.pullbackSourcePrefixFamily",
+      "SerrePositivity/InfinityCategories/Project/DerivedCategories/Verdier/Fractions/VerdierRecoveredPullbackComparison.lean:104:      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.pullbackSourcePrefixFamily (parametricPullbackDiagramFamily r.square r.square_pullback) ≫",
+      "SerrePositivity/InfinityCategories/Project/DerivedCategories/Verdier/Fractions/VerdierUniformTerminalRefinement.lean:125:    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.pullbackSourcePrefixFamily (parametricPullbackDiagramFamily",
+      "SerrePositivity/InfinityCategories/Project/DerivedCategories/Verdier/Fractions/VerdierUniformTerminalRefinement.lean:130:  rw [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.uniformTerminalRefinementSquare_family, _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.pullbackSourcePrefixFamily, SSet.const_comp]"
+    ],
+    "inspected_candidates": [
+      {
+        "file": "Mathlib/CategoryTheory/Monad/Algebra.lean",
+        "sha256": "2260fa156b6ab8d3e0005d2cfd9a439cd719f25c889beeb9b801fa6dae5930d6",
+        "candidate_type_excerpts": [
+          {
+            "line": 43,
+            "excerpt": "structure Algebra (T : Monad C) : Type max u₁ v₁ where\n  /-- The underlying object associated to an algebra. -/\n  A : C\n  /-- The structure morphism associated to an algebra. -/\n  a : (T : C ⥤ C).obj A ⟶ A\n  /-- The unit axiom associated to an algebra. -/\n  unit : T.η.app A ≫ a = 𝟙 A := by cat_disch\n  /-- The associativity axiom associated to an algebra. -/\n  assoc : T.μ.app A ≫ a = (T : C ⥤ C).map a ≫ a := by cat_disch"
+          },
+          {
+            "line": 61,
+            "excerpt": "structure Hom (A B : Algebra T) where\n  /-- The underlying morphism associated to a morphism of algebras. -/\n  f : A.A ⟶ B.A\n  /-- Compatibility with the structure morphism, for a morphism of algebras. -/\n  h : (T : C ⥤ C).map f ≫ B.a = A.a ≫ f := by cat_disch\n\nattribute [reassoc (attr := simp)] Hom.h\n\nnamespace Hom"
+          },
+          {
+            "line": 72,
+            "excerpt": "def id (A : Algebra T) : Hom A A where f := 𝟙 A.A\n\ninstance (A : Algebra T) : Inhabited (Hom A A) :=\n  ⟨{ f := 𝟙 _ }⟩\n\n/-- Composition of Eilenberg–Moore algebra homomorphisms. -/\ndef comp {P Q R : Algebra T} (f : Hom P Q) (g : Hom Q R) : Hom P R where f := f.f ≫ g.f\n\nend Hom"
+          },
+          {
+            "line": 74,
+            "excerpt": "instance (A : Algebra T) : Inhabited (Hom A A) :=\n  ⟨{ f := 𝟙 _ }⟩\n\n/-- Composition of Eilenberg–Moore algebra homomorphisms. -/\ndef comp {P Q R : Algebra T} (f : Hom P Q) (g : Hom Q R) : Hom P R where f := f.f ≫ g.f\n\nend Hom\n\ninstance : CategoryStruct (Algebra T) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Descent/DescentDataAsCoalgebra.lean",
+        "sha256": "45b3d412f1227ec1757992bbe304b7c9b087f4c484a71c1447c775908c076100",
+        "candidate_type_excerpts": [
+          {
+            "line": 60,
+            "excerpt": "structure DescentDataAsCoalgebra\n    {ι : Type t} {S : C} {X : ι → C} (f : ∀ i, X i ⟶ S) where\n  /-- The objects over `X i` for all `i` -/\n  obj (i : ι) : (F.obj (.mk (op (X i)))).obj\n  /-- The compatibility morphisms. -/\n  hom (i₁ i₂ : ι) : obj i₁ ⟶\n    (F.map (f i₁).op.toLoc).l.toFunctor.obj\n      ((F.map (f i₂).op.toLoc).r.toFunctor.obj (obj i₂))\n  counit (i : ι) : hom i i ≫ (F.map (f i).op.toLoc).adj.counit.toNatTrans.app _ = 𝟙 _ := by"
+          },
+          {
+            "line": 90,
+            "excerpt": "structure Hom (D₁ D₂ : F.DescentDataAsCoalgebra f) where\n  /-- The morphisms between the `obj` fields of descent data. -/\n  hom (i : ι) : D₁.obj i ⟶ D₂.obj i\n  comm (i₁ i₂ : ι) :\n    D₁.hom i₁ i₂ ≫\n      (F.map (f i₁).op.toLoc).l.toFunctor.map\n        ((F.map (f i₂).op.toLoc).r.toFunctor.map (hom i₂)) =\n    hom i₁ ≫ D₂.hom i₁ i₂ := by cat_disch\n"
+          },
+          {
+            "line": 101,
+            "excerpt": "instance : Category (F.DescentDataAsCoalgebra f) where\n  Hom := Hom\n  id _ := { hom _ := 𝟙 _ }\n  comp f g := { hom i := f.hom i ≫ g.hom i }\n\n@[ext]\nlemma hom_ext {D₁ D₂ : F.DescentDataAsCoalgebra f} {φ φ' : D₁ ⟶ D₂}\n    (h : ∀ i, φ.hom i = φ'.hom i) : φ = φ' :=\n  Hom.ext (funext h)"
+          },
+          {
+            "line": 107,
+            "excerpt": "lemma hom_ext {D₁ D₂ : F.DescentDataAsCoalgebra f} {φ φ' : D₁ ⟶ D₂}\n    (h : ∀ i, φ.hom i = φ'.hom i) : φ = φ' :=\n  Hom.ext (funext h)\n\n@[simp]\nlemma id_hom (D : F.DescentDataAsCoalgebra f) (i : ι) :\n    Hom.hom (𝟙 D) i = 𝟙 _ := rfl\n\n@[reassoc, simp]"
+          }
+        ]
+      }
+    ]
+  },
+  "cyclic": {
+    "regex": "Paracyclic|paracyclic|CyclicCategory|cyclic bar|cyclicBar|circle.*action|Circle.*Action",
+    "scope": [
+      "SerrePositivity/**/*.lean",
+      "Mathlib/**/*.lean"
+    ],
+    "exit_code": 0,
+    "hit_lines": 20,
+    "sample": [
+      ".lake/packages/mathlib/Mathlib/MeasureTheory/Integral/CircleAverage.lean:376:/-- Circle averages commute with subtraction. -/",
+      ".lake/packages/mathlib/Mathlib/MeasureTheory/Integral/CircleAverage.lean:383:/-- Circle averages commute with subtraction. -/",
+      "SerrePositivity/KST/Spectra.lean:640:public import SerrePositivity.KST.Spectra.SpectrumCircleComparisonDifferenceAction",
+      "SerrePositivity/KST/Spectra/GroupActionCochainAdjoint.lean:35:  let L := ((ihom PointedSimplicialSet.circle.{u}).mapAction G).obj C",
+      "SerrePositivity/KST/Spectra/GroupActionCochainAdjoint.lean:54:  let L := ((ihom PointedSimplicialSet.circle.{u}).mapAction G).obj C",
+      "SerrePositivity/KST/Spectra/GroupActionAdjoint.lean:32:      ((ihom PointedSimplicialSet.circle.{u}).mapAction G).obj ((levelFunctor G (n + 1)).obj A) where",
+      "SerrePositivity/KST/Spectra/GroupActionAdjoint.lean:52:      ((ihom PointedSimplicialSet.circle.{u}).mapAction G).map ((levelFunctor G (n + 1)).map f) := by",
+      "SerrePositivity/KST/Spectra/SpectrumCircleComparisonDifferenceAction.lean:21:local instance circleComparisonActionHomKan (z : Sp.{u} _⦋0⦌) :",
+      "SerrePositivity/KST/Spectra/SpectrumCircleComparisonDifferenceAction.lean:27:local instance circleComparisonActionEdgeIso (z : Sp.{u} _⦋0⦌)",
+      "SerrePositivity/KST/Spectra/SpectrumCircleComparisonDifferenceAction.lean:34:lemma circleCompanionComparisonRightEdge_action (z : Sp.{u} _⦋0⦌)",
+      "SerrePositivity/KST/Spectra/SpectrumCircleComparisonDifferenceAction.lean:50:lemma circleCompanionComparisonDifference_action (z : Sp.{u} _⦋0⦌) :",
+      "SerrePositivity/KST/Spectra/SpectrumCircleComparisonDifferenceAction.lean:69:    (circleCompanionComparisonRightEdge_action z .right)"
+    ],
+    "inspected_candidates": [
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplexCategory/Basic.lean",
+        "sha256": "00dc75a50cc37f6aa33e4492b224b2325381eaf935cdb0578f51be38dd7d28e8",
+        "candidate_type_excerpts": [
+          {
+            "line": 35,
+            "excerpt": "instance {a b : SimplexCategory} : Finite (a ⟶ b) :=\n  Finite.of_injective (fun f ↦ f.toOrderHom.toFun)\n    (fun _ _ _ ↦ by aesop)\n\ninstance {n m : SimplexCategory} : DecidableEq (n ⟶ m) := fun a b =>\n  decidable_of_iff (a.toOrderHom = b.toOrderHom) SimplexCategory.Hom.ext_iff.symm\n\nsection Init\n"
+          },
+          {
+            "line": 39,
+            "excerpt": "instance {n m : SimplexCategory} : DecidableEq (n ⟶ m) := fun a b =>\n  decidable_of_iff (a.toOrderHom = b.toOrderHom) SimplexCategory.Hom.ext_iff.symm\n\nsection Init\n\nlemma congr_toOrderHom_apply {a b : SimplexCategory} {f g : a ⟶ b} (h : f = g)\n    (x : Fin (a.len + 1)) : f.toOrderHom x = g.toOrderHom x := by rw [h]\n\n/-- The constant morphism from ⦋0⦌. -/"
+          },
+          {
+            "line": 44,
+            "excerpt": "lemma congr_toOrderHom_apply {a b : SimplexCategory} {f g : a ⟶ b} (h : f = g)\n    (x : Fin (a.len + 1)) : f.toOrderHom x = g.toOrderHom x := by rw [h]\n\n/-- The constant morphism from ⦋0⦌. -/\ndef const (x y : SimplexCategory) (i : Fin (y.len + 1)) : x ⟶ y :=\n  Hom.mk ⟨fun _ => i, by tauto⟩\n\n@[simp]\nlemma const_eq_id : const ⦋0⦌ ⦋0⦌ 0 = 𝟙 _ := by aesop"
+          },
+          {
+            "line": 48,
+            "excerpt": "def const (x y : SimplexCategory) (i : Fin (y.len + 1)) : x ⟶ y :=\n  Hom.mk ⟨fun _ => i, by tauto⟩\n\n@[simp]\nlemma const_eq_id : const ⦋0⦌ ⦋0⦌ 0 = 𝟙 _ := by aesop\n\n@[simp]\nlemma const_apply (x y : SimplexCategory) (i : Fin (y.len + 1)) (a : Fin (x.len + 1)) :\n    (const x y i).toOrderHom a = i := rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/BousfieldKanRealizationHom.lean",
+        "sha256": "7687f2845fdb80384219d41db89eedffc295987dabc322d02b50dfee8032148e",
+        "candidate_type_excerpts": [
+          {
+            "line": 26,
+            "excerpt": "def bousfieldKanRealizationHomIso :\n    cosimplicialHom (SSet.stdSimplex ⋙ bousfieldKanParameterRealization K A) ≅\n      hom K A ⋙ weightedSectionsFunctor (bousfieldKanWeight Kᵒᵖ) :=\n  adjunctionHomIsoSameUniverse (bousfieldKanParameterAdjunction K A) SSet.stdSimplex ≪≫\n    Functor.isoWhiskerLeft _ QuillenStandardFrame.homIso ≪≫ Functor.rightUnitor _\n\n/-- 全次数の値は、指定随伴による転置のYoneda評価そのもの。 -/\nlemma bousfieldKanRealizationHomIso_hom_app (Y : C) (n : SimplexCategoryᵒᵖ)\n    (f : (bousfieldKanParameterRealization K A).obj (SSet.stdSimplex.obj n.unop) ⟶ Y) :"
+          },
+          {
+            "line": 33,
+            "excerpt": "lemma bousfieldKanRealizationHomIso_hom_app (Y : C) (n : SimplexCategoryᵒᵖ)\n    (f : (bousfieldKanParameterRealization K A).obj (SSet.stdSimplex.obj n.unop) ⟶ Y) :\n    (((bousfieldKanRealizationHomIso K A).hom.app Y).app n) f =\n      SSet.yonedaEquiv ((bousfieldKanParameterAdjunction K A).homEquiv _ Y f) := rfl\n\nend SerrePositivity.DiagramModel.FrameWeightRealization"
+          }
+        ]
+      }
+    ]
+  },
+  "cyclotomic": {
+    "regex": "CycSp|cyclotomic spectrum|CyclotomicSpectrum|laxEqualizer|LaxEqualizer|cyclotomicTrace|topological cyclic",
+    "scope": [
+      "SerrePositivity/**/*.lean",
+      "Mathlib/**/*.lean"
+    ],
+    "exit_code": 1,
+    "hit_lines": 0,
+    "sample": [],
+    "inspected_candidates": [
+      {
+        "file": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/Lax/IdentityLaxVerdier.lean",
+        "sha256": "0b563f35164e8eb7a2a599976797be3185340ef92d40fde61dbd6212b3654f6b",
+        "candidate_type_excerpts": [
+          {
+            "line": 38,
+            "excerpt": "def identityAdjunction : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.QCatAdjunction (𝟙 Q.obj) (𝟙 Q.obj) :=\n  Bicategory.Adjunction.id (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.qcatOf Q.obj)\n\nend SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Lax\n\n/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/\npublic section\n\n@[deprecated _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Lax.identityAdjunction (since := \"2026-11-05\")]"
+          }
+        ]
+      }
+    ]
+  },
+  "dualizing": {
+    "regex": "Spivak|Farrell|dualizingSpectrum|Klein|homotopyFixedPoints",
+    "scope": [
+      "SerrePositivity/**/*.lean",
+      "Mathlib/**/*.lean"
+    ],
+    "exit_code": 0,
+    "hit_lines": 193,
+    "sample": [
+      ".lake/packages/mathlib/Mathlib/Algebra/HierarchyDesign.lean:276:instance {G : Type*} [Group G] [IsKleinFour G] : IsAddKleinFour (Additive G)",
+      ".lake/packages/mathlib/Mathlib/Algebra/HierarchyDesign.lean:278:where the `Group G` instance appears in `IsKleinFour G`. Future work may be done to improve the",
+      ".lake/packages/mathlib/Mathlib/GroupTheory/SpecificGroups/KleinFour.lean:11:# Klein Four Group",
+      ".lake/packages/mathlib/Mathlib/GroupTheory/SpecificGroups/KleinFour.lean:13:The Klein (Vierergruppe) four-group is a non-cyclic abelian group with four elements, in which",
+      ".lake/packages/mathlib/Mathlib/GroupTheory/SpecificGroups/KleinFour.lean:19:* `IsKleinFour` : A mixin class which states that the group has order four and exponent two.",
+      ".lake/packages/mathlib/Mathlib/GroupTheory/SpecificGroups/KleinFour.lean:20:* `mulEquiv'` : An equivalence between a Klein four-group and a group of exponent two which",
+      ".lake/packages/mathlib/Mathlib/GroupTheory/SpecificGroups/KleinFour.lean:22:* `mulEquiv`: Any two Klein four-groups are isomorphic via any identity-preserving equivalence.",
+      ".lake/packages/mathlib/Mathlib/GroupTheory/SpecificGroups/KleinFour.lean:26:* https://en.wikipedia.org/wiki/Klein_four-group",
+      ".lake/packages/mathlib/Mathlib/GroupTheory/SpecificGroups/KleinFour.lean:31:* Prove an `IsKleinFour` group is isomorphic to the normal subgroup of `alternatingGroup (Fin 4)`",
+      ".lake/packages/mathlib/Mathlib/GroupTheory/SpecificGroups/KleinFour.lean:36:* The outer automorphism group of `A₆` is the Klein four-group `V = (ZMod 2) × (ZMod 2)`,",
+      ".lake/packages/mathlib/Mathlib/GroupTheory/SpecificGroups/KleinFour.lean:46:/-! ### Klein four-groups as a mixin class -/",
+      ".lake/packages/mathlib/Mathlib/GroupTheory/SpecificGroups/KleinFour.lean:48:/-- An (additive) Klein four-group is an (additive) group of cardinality four and exponent two. -/"
+    ],
+    "inspected_candidates": [
+      {
+        "file": "SerrePositivity/KST/Spectra/FixedPointInfinityLimits.lean",
+        "sha256": "733d62b808acdde34910b27acad87628e95c5d4cb44072eeddb2b2559939f678",
+        "candidate_type_excerpts": [
+          {
+            "line": 25,
+            "excerpt": "def homotopyFixedPointsInfinityCone {G : Type u} [Group G] (A : GroupAction.{u} G) :\n    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram (AsSmall.down ⋙ (GroupAction.diagramFunctor G).obj A)) :=\n  OmegaSpectrum.homotopyLimitCoherentCone _\n\n/-- hG の錐の頂点は、元の BF hG 対象そのもの。 -/\nlemma homotopyFixedPointsInfinityCone_vertex {G : Type u} [Group G] (A : GroupAction.{u} G) :\n    (homotopyFixedPointsInfinityCone A).vertex = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (homotopyFixedPoints A) :=\n  OmegaSpectrum.homotopyLimitCoherentCone_vertex _\n"
+          },
+          {
+            "line": 30,
+            "excerpt": "lemma homotopyFixedPointsInfinityCone_vertex {G : Type u} [Group G] (A : GroupAction.{u} G) :\n    (homotopyFixedPointsInfinityCone A).vertex = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (homotopyFixedPoints A) :=\n  OmegaSpectrum.homotopyLimitCoherentCone_vertex _\n\n/-- 元の hG 対象の coherent な錐は、Sp 内の実際の ∞ 極限錐。 -/\nlemma homotopyFixedPointsInfinityCone_isLimit {G : Type u} [Group G] (A : GroupAction.{u} G) :\n    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (homotopyFixedPointsInfinityCone A) :=\n  OmegaSpectrum.homotopyLimitCoherentCone_isLimit _\n"
+          },
+          {
+            "line": 35,
+            "excerpt": "lemma homotopyFixedPointsInfinityCone_isLimit {G : Type u} [Group G] (A : GroupAction.{u} G) :\n    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (homotopyFixedPointsInfinityCone A) :=\n  OmegaSpectrum.homotopyLimitCoherentCone_isLimit _\n\n/-- 元の余単体図式上の、元の homotopy Tot を頂点とする coherent な錐。 -/\ndef homotopyTotalizationInfinityCone (D : CosimplicialObject OmegaSpectrum.{u}) :\n    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram (AsSmall.down ⋙ D)) :=\n  OmegaSpectrum.homotopyLimitCoherentCone _\n"
+          },
+          {
+            "line": 40,
+            "excerpt": "def homotopyTotalizationInfinityCone (D : CosimplicialObject OmegaSpectrum.{u}) :\n    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram (AsSmall.down ⋙ D)) :=\n  OmegaSpectrum.homotopyLimitCoherentCone _\n\n/-- Tot の錐の頂点は、元の BF homotopy Tot 対象そのもの。 -/\nlemma homotopyTotalizationInfinityCone_vertex (D : CosimplicialObject OmegaSpectrum.{u}) :\n    (homotopyTotalizationInfinityCone D).vertex = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (homotopyTotalization D) :=\n  OmegaSpectrum.homotopyLimitCoherentCone_vertex _\n"
+          }
+        ]
+      }
+    ]
+  },
+  "equivariant": {
+    "regex": "OrthogonalSpectrum|orthogonal spectrum|GenuineSpectrum|genuine.*spectr|geometricFixedPoint|Borel.complete",
+    "scope": [
+      "SerrePositivity/**/*.lean",
+      "Mathlib/**/*.lean"
+    ],
+    "exit_code": 1,
+    "hit_lines": 0,
+    "sample": [],
+    "inspected_candidates": [
+      {
+        "file": "SerrePositivity/KST/Spectra/GroupAction.lean",
+        "sha256": "707fa529b683606561a44db6d542eab7e92241a6842337a3f6b81abc5abb9d1f",
+        "candidate_type_excerpts": [
+          {
+            "line": 26,
+            "excerpt": "abbrev GroupAction (G : Type v) [Group G] := Action OmegaSpectrum.{u} G\n\nnamespace GroupAction\n\nnoncomputable section\n\nvariable (G : Type v) [Group G]\n\n/-- 概要：厳密な群作用を一対象の群圏上の実際の作用図式へ送る。"
+          },
+          {
+            "line": 38,
+            "excerpt": "def diagramFunctor : GroupAction.{u} G ⥤ (SingleObj G ⥤ OmegaSpectrum.{u}) :=\n  Action.FunctorCategoryEquivalence.functor\n\n/-- 概要：群作用を各段の点つき Kan 複体の作用へ評価する。\n方針：段評価関手を作用の圏へ移す。\n規約：各段の作用の法則も厳密。\n使われ方：BF 1978 §2、HTT A.3.3。レベルごとの hG の入力。 -/\ndef levelFunctor (n : ℕ) : GroupAction.{u} G ⥤ Action PointedSimplicialSet.{u} G :=\n  (OmegaSpectrum.levelEvaluation n).mapAction G"
+          },
+          {
+            "line": 45,
+            "excerpt": "def levelFunctor (n : ℕ) : GroupAction.{u} G ⥤ Action PointedSimplicialSet.{u} G :=\n  (OmegaSpectrum.levelEvaluation n).mapAction G\n\n/-- 概要：群作用を単射性を忘れた Kan 列の作用へ移す。\n方針：BF 忘却関手の作用への拡張を使う。\n規約：各段と構造射の同変性を保持する。\n使われ方：BF 1978 §2。Tot の後での単射置換を分離する。 -/\ndef kanSequenceFunctor : GroupAction.{u} G ⥤ Action KanSequence.{u} G :=\n  OmegaSpectrum.forgetToKan.mapAction G"
+          },
+          {
+            "line": 52,
+            "excerpt": "def kanSequenceFunctor : GroupAction.{u} G ⥤ Action KanSequence.{u} G :=\n  OmegaSpectrum.forgetToKan.mapAction G\n\n/-- 概要：群作用は全整数次数の可換ホモトピー群に作用する。\n方針：実際の BF 射から構成した π_j の関手を作用の圏へ移す。\n規約：整数次数の群は乗法記法。\n使われ方：BF 1978 §2、HA §1.4.2。有理群コホモロジーに用いる係数の作用。 -/\ndef homotopyFunctor (j : ℤ) : GroupAction.{u} G ⥤ Action CommGrpCat.{u} G :=\n  (OmegaSpectrum.homotopyFunctor j).mapAction G"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/KST/Spectra/FixedPointSpectra.lean",
+        "sha256": "c6e5ef9220b0788346e37fad02aaec6e38c910e6fb6fac451b4c8b0d11ff52dc",
+        "candidate_type_excerpts": [
+          {
+            "line": 30,
+            "excerpt": "def homotopyFixedPointsKan {G : Type u} [Group G] (A : GroupAction.{u} G) : KanSequence.{u} :=\n  KanSequence.homotopyLimit\n    ((AsSmall.down ⋙ (GroupAction.diagramFunctor G).obj A) ⋙ OmegaSpectrum.forgetToKan)\n\n/-- 概要：群作用の homotopy fixed points の実際の BF 対象。\n方針：段ごとの Kan end の Ω 条件を移し、単射構造射へ置換する。\n規約：通常の fixed points の厳密極限と区別する。\n使われ方：HA §1.4.2、BF 1978 §2、HTT A.3.3。有限群作用に対する hG の対象。 -/\ndef homotopyFixedPoints {G : Type u} [Group G] (A : GroupAction.{u} G) : OmegaSpectrum.{u} :="
+          },
+          {
+            "line": 38,
+            "excerpt": "def homotopyFixedPoints {G : Type u} [Group G] (A : GroupAction.{u} G) : OmegaSpectrum.{u} :=\n  OmegaSpectrum.homotopyLimit (AsSmall.down ⋙ (GroupAction.diagramFunctor G).obj A)\n\n/-- 概要：hG の BF 対象から段ごとの Kan end への比較。\n方針：Kan Ω 列の単射置換の比較射を使う。\n規約：対象の構成に有限性を使わない。\n使われ方：HA §1.4.2、BF 1978 §2。有理比較の π_* を各段へ移す射。 -/\ndef homotopyFixedPointsProjection {G : Type u} [Group G] (A : GroupAction.{u} G) :\n    KanSequence.Hom (homotopyFixedPoints A).toKanSequence (homotopyFixedPointsKan A) :="
+          },
+          {
+            "line": 45,
+            "excerpt": "def homotopyFixedPointsProjection {G : Type u} [Group G] (A : GroupAction.{u} G) :\n    KanSequence.Hom (homotopyFixedPoints A).toKanSequence (homotopyFixedPointsKan A) :=\n  KanSequence.homotopyLimitProjection\n    ((AsSmall.down ⋙ (GroupAction.diagramFunctor G).obj A) ⋙ OmegaSpectrum.forgetToKan)\n    (fun i ↦ ((AsSmall.down ⋙ (GroupAction.diagramFunctor G).obj A).obj i).toKanSequence_omega)\n\n/-- 概要：hG の BF 比較射は各段で全基点 π_* 同型。\n方針：単射置換の比較の同型性を使う。\n規約：零次数を含む。"
+          },
+          {
+            "line": 55,
+            "excerpt": "theorem homotopyFixedPointsProjection_levelwise {G : Type u} [Group G]\n    (A : GroupAction.{u} G) (n : ℕ) :\n    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((homotopyFixedPointsProjection A).app n).right :=\n  KanSequence.replacementProjection_piIsomorphism (homotopyFixedPointsKan A) n\n\n/-- 概要：余単体 BF 対象の homotopy totalization の実際の BF 対象。\n方針：余単体図式の段ごとの Kan end と Ω 条件を単射置換する。\n規約：通常の Reedy Tot との比較と Sp の ∞ 極限性はここでは主張しない。\n使われ方：HA §1.4.2、BF 1978 §2。L9e の Tot の Kan 模型。 -/"
+          }
+        ]
+      }
+    ]
+  },
+  "frobenius": {
+    "regex": "Tate.*Frobenius|tate.*Frobenius|Steenrod|mayLocalizedPowerZero|Adams.operation|AdamsOperation",
+    "scope": [
+      "SerrePositivity/**/*.lean",
+      "Mathlib/**/*.lean"
+    ],
+    "exit_code": 0,
+    "hit_lines": 64,
+    "sample": [
+      "SerrePositivity/EInfinity.lean:3079:public import SerrePositivity.EInfinity.PowerOperation.MayLocalizedPowerZero",
+      "SerrePositivity/KTheory/CoefficientExtension.lean:8:G₀ and K₀, independently of localization, perfect complexes, or Adams operations.",
+      "SerrePositivity/KTheory/Adams/CyclicTwo.lean:47:/-- The cyclic Adams operation on the closed-support Grothendieck group. -/",
+      "SerrePositivity/KTheory/Adams/Family.lean:6:/-! # The common contract for supported Adams operations -/",
+      "SerrePositivity/BhattScholze.lean:245:public import SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.CrystallineCover.Construction61Frobenius",
+      "SerrePositivity/BhattScholze.lean:316:public import SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.Comparison.PDFrobeniusLift",
+      ".lake/packages/mathlib/Mathlib/AlgebraicTopology/EilenbergSteenrod.lean:13:# Eilenberg-Steenrod homology theories",
+      ".lake/packages/mathlib/Mathlib/AlgebraicTopology/EilenbergSteenrod.lean:15:In this file we introduce the Eilenberg-Steenrod axioms for homology theories.",
+      ".lake/packages/mathlib/Mathlib/AlgebraicTopology/EilenbergSteenrod.lean:34:/-- A `HomologyPretheory` is the data of an Eilenberg-Steenrod homology theory. -/",
+      ".lake/packages/mathlib/Mathlib/RingTheory/Binomial.lean:59:* A CommRing is binomial if and only if it admits a λ-ring structure with trivial Adams operations.",
+      "SerrePositivity/PerfectComplex/KoszulClasses.lean:5:/-! # Supported Koszul and unit classes independent of an Adams operation -/",
+      "SerrePositivity/PerfectComplex/KoszulClasses.lean:20:/-- A single shift negates the Koszul class, independently of an Adams operation. -/"
+    ],
+    "inspected_candidates": [
+      {
+        "file": "SerrePositivity/EInfinity/PowerOperation/MayLocalizedPowerZero.lean",
+        "sha256": "36621f34e7bc1c9e093d3ef4cf7a6a73897604f19c4755e6977d0146d35c3f71",
+        "candidate_type_excerpts": [
+          {
+            "line": 22,
+            "excerpt": "abbrev mayLocalizedHomology (p : ℕ) [Fact p.Prime] (n : ℤ) :=\n  hoMap (cAlgForgetDerived (ZMod p)) ⋙ additiveCohomologyOnHo (ZMod p) (-n)\n\n/-- May の同じ P⁰ を ho(CAlg F_p) の全射に自然な演算へ降ろしたもの。 -/\ndef mayLocalizedPowerZero (p : ℕ) [Fact p.Prime] (n : ℤ) :\n    mayLocalizedHomology p n ⟶ mayLocalizedHomology p n := by\n  let L := ordinaryAlgebraHoSource (ZMod p)\n  let W := ordinaryAlgebraWeak (ZMod p)\n  letI := ordinaryAlgebraHoSource_isLocalization (ZMod p)"
+          },
+          {
+            "line": 26,
+            "excerpt": "def mayLocalizedPowerZero (p : ℕ) [Fact p.Prime] (n : ℤ) :\n    mayLocalizedHomology p n ⟶ mayLocalizedHomology p n := by\n  let L := ordinaryAlgebraHoSource (ZMod p)\n  let W := ordinaryAlgebraWeak (ZMod p)\n  letI := ordinaryAlgebraHoSource_isLocalization (ZMod p)\n  let e := mayHomologySourceIso p n\n  exact (Localization.fullyFaithfulWhiskeringLeft L W AddCommGrpCat).preimage\n    (e.hom ≫ mayStrictPowerZero p n ≫ e.inv)\n"
+          },
+          {
+            "line": 36,
+            "excerpt": "lemma mayLocalizedPowerZero_source (p : ℕ) [Fact p.Prime] (n : ℤ) :\n    Functor.whiskerLeft (ordinaryAlgebraHoSource (ZMod p)) (mayLocalizedPowerZero p n) =\n      (mayHomologySourceIso p n).hom ≫ mayStrictPowerZero p n ≫\n        (mayHomologySourceIso p n).inv := by\n  let _ := ordinaryAlgebraHoSource_isLocalization (ZMod p)\n  exact (Localization.fullyFaithfulWhiskeringLeft (ordinaryAlgebraHoSource (ZMod p))\n    (ordinaryAlgebraWeak (ZMod p)) AddCommGrpCat).map_preimage _\n\nend SerrePositivity.EInfinity.PowerOperation"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/EInfinity/PowerOperation/MayZeroHomology.lean",
+        "sha256": "36253a9c808cd6bd3ee8f7c693e904de30f5b7933123cdfb73dfc554dc88fd02",
+        "candidate_type_excerpts": [
+          {
+            "line": 32,
+            "excerpt": "def mayDZeroHomology (x : X.carrier.homology 0) : X.carrier.homology 0 :=\n  mayDZeroRepresentative X p (representative X.carrier x)\n\nlemma mayDZeroHomology_value (x : X.carrier.homology 0) :\n    mayDZeroHomology X p x = x ^ p := by\n  rw [mayDZeroHomology, mayDZeroRepresentative_value, representative_class]\n\n/-- 選び直した代表射にも、同じ係数を使った値が一致する。 -/\nlemma mayDZeroRepresentative_independent"
+          },
+          {
+            "line": 35,
+            "excerpt": "lemma mayDZeroHomology_value (x : X.carrier.homology 0) :\n    mayDZeroHomology X p x = x ^ p := by\n  rw [mayDZeroHomology, mayDZeroRepresentative_value, representative_class]\n\n/-- 選び直した代表射にも、同じ係数を使った値が一致する。 -/\nlemma mayDZeroRepresentative_independent\n    (f g : 𝟙_ (Complex k) ⟶ X.carrier)\n    (h : unitClass X.carrier f = unitClass X.carrier g) :\n    mayDZeroRepresentative X p f = mayDZeroRepresentative X p g := by"
+          },
+          {
+            "line": 40,
+            "excerpt": "lemma mayDZeroRepresentative_independent\n    (f g : 𝟙_ (Complex k) ⟶ X.carrier)\n    (h : unitClass X.carrier f = unitClass X.carrier g) :\n    mayDZeroRepresentative X p f = mayDZeroRepresentative X p g := by\n  rw [mayDZeroRepresentative_value, mayDZeroRepresentative_value, h]\n\nlemma mayDZeroHomology_representative (f : 𝟙_ (Complex k) ⟶ X.carrier) :\n    mayDZeroHomology X p (unitClass X.carrier f) = mayDZeroRepresentative X p f := by\n  rw [mayDZeroHomology_value, mayDZeroRepresentative_value]"
+          },
+          {
+            "line": 46,
+            "excerpt": "lemma mayDZeroHomology_representative (f : 𝟙_ (Complex k) ⟶ X.carrier) :\n    mayDZeroHomology X p (unitClass X.carrier f) = mayDZeroRepresentative X p f := by\n  rw [mayDZeroHomology_value, mayDZeroRepresentative_value]\n\n/-- May Proposition 2.3(iii) の零次の値は全厳密 BE 射に自然。 -/\nlemma mayDZeroHomology_naturality {Y : (operad k).Algebra} (f : X ⟶ Y)\n    (x : X.carrier.homology 0) :\n    homologyMap f.hom 0 (mayDZeroHomology X p x) =\n      mayDZeroHomology Y p (homologyMap f.hom 0 x) := by"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Algebra/CharP/Frobenius.lean",
+        "sha256": "4c3c522955a60fcd52045aab9f010a55660170fbdc70aa80518cf392084a7f14",
+        "candidate_type_excerpts": [
+          {
+            "line": 32,
+            "excerpt": "lemma frobenius_def : frobenius R p x = x ^ p := rfl\n\nlemma iterateFrobenius_def : iterateFrobenius R p n x = x ^ p ^ n := rfl\n\nlemma iterate_frobenius : (frobenius R p)^[n] x = x ^ p ^ n := congr($(pow_iterate p n) x)\n\nvariable (R)\n\nlemma iterateFrobenius_eq_pow : iterateFrobenius R p n = frobenius R p ^ n := by"
+          },
+          {
+            "line": 34,
+            "excerpt": "lemma iterateFrobenius_def : iterateFrobenius R p n x = x ^ p ^ n := rfl\n\nlemma iterate_frobenius : (frobenius R p)^[n] x = x ^ p ^ n := congr($(pow_iterate p n) x)\n\nvariable (R)\n\nlemma iterateFrobenius_eq_pow : iterateFrobenius R p n = frobenius R p ^ n := by\n  ext; simp [iterateFrobenius_def, iterate_frobenius]\n"
+          },
+          {
+            "line": 36,
+            "excerpt": "lemma iterate_frobenius : (frobenius R p)^[n] x = x ^ p ^ n := congr($(pow_iterate p n) x)\n\nvariable (R)\n\nlemma iterateFrobenius_eq_pow : iterateFrobenius R p n = frobenius R p ^ n := by\n  ext; simp [iterateFrobenius_def, iterate_frobenius]\n\nlemma coe_iterateFrobenius : iterateFrobenius R p n = (frobenius R p)^[n] :=\n  (pow_iterate p n).symm"
+          },
+          {
+            "line": 40,
+            "excerpt": "lemma iterateFrobenius_eq_pow : iterateFrobenius R p n = frobenius R p ^ n := by\n  ext; simp [iterateFrobenius_def, iterate_frobenius]\n\nlemma coe_iterateFrobenius : iterateFrobenius R p n = (frobenius R p)^[n] :=\n  (pow_iterate p n).symm\n\nlemma iterateFrobenius_one_apply : iterateFrobenius R p 1 x = x ^ p := by\n  rw [iterateFrobenius_def, pow_one]\n"
+          }
+        ]
+      }
+    ]
+  },
+  "monoidal": {
+    "regex": "SymmetricMonoidalInfinity|MonoidalInfinity|InfinityOperad|LocalizedMonoidal|leftDerivable|absolute.*Kan|Absolute.*Kan",
+    "scope": [
+      "SerrePositivity/**/*.lean",
+      "Mathlib/**/*.lean"
+    ],
+    "exit_code": 0,
+    "hit_lines": 65,
+    "sample": [
+      ".lake/packages/mathlib/Mathlib/CategoryTheory/Localization/Monoidal/Braided.lean:44:    (LocalizedMonoidal L W ε)).obj L') (tensorBifunctor L W ε).flip :=",
+      ".lake/packages/mathlib/Mathlib/CategoryTheory/Localization/Monoidal/Braided.lean:46:    (LocalizedMonoidal L W ε)).obj L')).flip (tensorBifunctor L W ε).flip)",
+      ".lake/packages/mathlib/Mathlib/CategoryTheory/Localization/Monoidal/Braided.lean:52:      (LocalizedMonoidal L W ε)).obj L')",
+      ".lake/packages/mathlib/Mathlib/CategoryTheory/Localization/Monoidal/Braided.lean:54:      (LocalizedMonoidal L W ε)).obj L'))",
+      ".lake/packages/mathlib/Mathlib/CategoryTheory/Localization/Monoidal/Braided.lean:122:noncomputable instance : BraidedCategory (LocalizedMonoidal L W ε) := by",
+      ".lake/packages/mathlib/Mathlib/CategoryTheory/Localization/Monoidal/Braided.lean:146:noncomputable instance : SymmetricCategory (LocalizedMonoidal L W ε) := by",
+      ".lake/packages/mathlib/Mathlib/CategoryTheory/Localization/Monoidal/Basic.lean:20:is actually defined on a type synonym `LocalizedMonoidal L W ε`.",
+      ".lake/packages/mathlib/Mathlib/CategoryTheory/Localization/Monoidal/Basic.lean:43:category can be equipped with a monoidal category structure, see `LocalizedMonoidal`. -/",
+      ".lake/packages/mathlib/Mathlib/CategoryTheory/Localization/Monoidal/Basic.lean:86:def LocalizedMonoidal (L : C ⥤ D) (W : MorphismProperty C)",
+      ".lake/packages/mathlib/Mathlib/CategoryTheory/Localization/Monoidal/Basic.lean:94:instance : Category (LocalizedMonoidal L W ε) :=",
+      ".lake/packages/mathlib/Mathlib/CategoryTheory/Localization/Monoidal/Basic.lean:100:its localization `LocalizedMonoidal L W ε`. -/",
+      ".lake/packages/mathlib/Mathlib/CategoryTheory/Localization/Monoidal/Basic.lean:101:def toMonoidalCategory : C ⥤ LocalizedMonoidal L W ε := L"
+    ],
+    "inspected_candidates": [
+      {
+        "file": "Mathlib/CategoryTheory/Localization/Monoidal/Basic.lean",
+        "sha256": "e749cbbf0137ff1814cae3349d6f5521bd4edb919c05816aceadb6f527bdb82c",
+        "candidate_type_excerpts": [
+          {
+            "line": 44,
+            "excerpt": "class IsMonoidal : Prop extends W.IsMultiplicative where\n  whiskerLeft (X : C) {Y₁ Y₂ : C} (g : Y₁ ⟶ Y₂) (hg : W g) : W (X ◁ g)\n  whiskerRight {X₁ X₂ : C} (f : X₁ ⟶ X₂) (hf : W f) (Y : C) : W (f ▷ Y)\n\n/-- Alternative constructor for `W.IsMonoidal` given that `W` is multiplicative and stable under\ntensoring morphisms. -/\nlemma IsMonoidal.mk' [W.IsMultiplicative]\n    (h : ∀ {X₁ X₂ Y₁ Y₂ : C} (f : X₁ ⟶ X₂) (g : Y₁ ⟶ Y₂) (_ : W f) (_ : W g), W (f ⊗ₘ g)) :\n    W.IsMonoidal where"
+          },
+          {
+            "line": 50,
+            "excerpt": "lemma IsMonoidal.mk' [W.IsMultiplicative]\n    (h : ∀ {X₁ X₂ Y₁ Y₂ : C} (f : X₁ ⟶ X₂) (g : Y₁ ⟶ Y₂) (_ : W f) (_ : W g), W (f ⊗ₘ g)) :\n    W.IsMonoidal where\n  whiskerLeft X _ _ g hg := by simpa using h (𝟙 X) g (W.id_mem _) hg\n  whiskerRight f hf Y := by simpa using h f (𝟙 Y) hf (W.id_mem _)\n\nvariable [W.IsMonoidal]\n\nlemma whiskerLeft_mem (X : C) {Y₁ Y₂ : C} (g : Y₁ ⟶ Y₂) (hg : W g) : W (X ◁ g) :="
+          },
+          {
+            "line": 58,
+            "excerpt": "lemma whiskerLeft_mem (X : C) {Y₁ Y₂ : C} (g : Y₁ ⟶ Y₂) (hg : W g) : W (X ◁ g) :=\n  IsMonoidal.whiskerLeft _ _ hg\n\nlemma whiskerRight_mem {X₁ X₂ : C} (f : X₁ ⟶ X₂) (hf : W f) (Y : C) : W (f ▷ Y) :=\n  IsMonoidal.whiskerRight _ hf Y\n\nlemma tensorHom_mem {X₁ X₂ : C} (f : X₁ ⟶ X₂) {Y₁ Y₂ : C} (g : Y₁ ⟶ Y₂)\n    (hf : W f) (hg : W g) : W (f ⊗ₘ g) := by\n  rw [tensorHom_def]"
+          },
+          {
+            "line": 61,
+            "excerpt": "lemma whiskerRight_mem {X₁ X₂ : C} (f : X₁ ⟶ X₂) (hf : W f) (Y : C) : W (f ▷ Y) :=\n  IsMonoidal.whiskerRight _ hf Y\n\nlemma tensorHom_mem {X₁ X₂ : C} (f : X₁ ⟶ X₂) {Y₁ Y₂ : C} (g : Y₁ ⟶ Y₂)\n    (hf : W f) (hg : W g) : W (f ⊗ₘ g) := by\n  rw [tensorHom_def]\n  exact comp_mem _ _ _ (whiskerRight_mem _ _ hf _) (whiskerLeft_mem _ _ _ hg)\n\n/-- The inverse image under a monoidal functor of a monoidal morphism property which respects"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Quillen/Adjunction.lean",
+        "sha256": "b860446c6943dae9708f5f891a38a441b9103bfd7ffc8dc053f0559c6b8253d3",
+        "candidate_type_excerpts": [
+          {
+            "line": 29,
+            "excerpt": "theorem preserves_left_iff_preserves_right {L : C ⥤ D} {R : D ⥤ C} (adj : L ⊣ R)\n    (W₁ W₂ : MorphismProperty C) (V₁ V₂ : MorphismProperty D)\n    [MorphismProperty.IsWeakFactorizationSystem W₁ W₂]\n    [MorphismProperty.IsWeakFactorizationSystem V₁ V₂] :\n    W₁ ≤ V₁.inverseImage L ↔ V₂ ≤ W₂.inverseImage R := by\n  constructor\n  · intro h X Y p hp\n    change W₂ (R.map p)\n    rw [← MorphismProperty.rlp_eq_of_wfs W₁ W₂]"
+          },
+          {
+            "line": 58,
+            "excerpt": "class IsLeftQuillen (L : C ⥤ D) : Prop where\n  map_cofibrations : cofibrations C ≤ (cofibrations D).inverseImage L\n  map_trivialCofibrations : trivialCofibrations C ≤ (trivialCofibrations D).inverseImage L\n\n/-- Preservation of fibrations and trivial fibrations. Existence of a left\nadjoint is supplied separately by an ordinary `Adjunction`. -/\nclass IsRightQuillen (R : D ⥤ C) : Prop where\n  map_fibrations : fibrations D ≤ (fibrations C).inverseImage R\n  map_trivialFibrations : trivialFibrations D ≤ (trivialFibrations C).inverseImage R"
+          },
+          {
+            "line": 64,
+            "excerpt": "class IsRightQuillen (R : D ⥤ C) : Prop where\n  map_fibrations : fibrations D ≤ (fibrations C).inverseImage R\n  map_trivialFibrations : trivialFibrations D ≤ (trivialFibrations C).inverseImage R\n\ninstance isLeftQuillen_id : IsLeftQuillen (𝟭 C) where\n  map_cofibrations := fun _ _ _ h ↦ h\n  map_trivialCofibrations := fun _ _ _ h ↦ h\n\ninstance isRightQuillen_id : IsRightQuillen (𝟭 C) where"
+          },
+          {
+            "line": 68,
+            "excerpt": "instance isLeftQuillen_id : IsLeftQuillen (𝟭 C) where\n  map_cofibrations := fun _ _ _ h ↦ h\n  map_trivialCofibrations := fun _ _ _ h ↦ h\n\ninstance isRightQuillen_id : IsRightQuillen (𝟭 C) where\n  map_fibrations := fun _ _ _ h ↦ h\n  map_trivialFibrations := fun _ _ _ h ↦ h\n\ninstance isLeftQuillen_comp (L : C ⥤ D) (L' : D ⥤ E)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/CocartesianFibration.lean",
+        "sha256": "26a88462c5dcdd4522a2d1cd1f806b67794ecd5c43fe62dc7cd3b013077eccbd",
+        "candidate_type_excerpts": [
+          {
+            "line": 27,
+            "excerpt": "class CocartesianHornFibration {E B : SSet.{u}} (p : E ⟶ B) : Prop extends InnerFibration p where\n  /-- 始点を指定した基底の辺の cocartesian な持ち上げ。 -/\n  exists_lift : ∀ (x : E _⦋0⦌) (b : B _⦋0⦌)\n    (a : SSet.Truncated.Edge (X := (truncation 2).obj B) (p.app (Opposite.op ⦋0⦌) x) b),\n    ∃ (y : E _⦋0⦌) (e : SSet.Truncated.Edge (X := (truncation 2).obj E) x y),\n      p.app (Opposite.op ⦋1⦌) e.edge = a.edge ∧ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.HasCocartesianHornLifting p e\n\n/-- 概要：恒等射に対して全ての辺は cocartesian。\n方針：指定された基底の単体をそのまま充填にする。"
+          },
+          {
+            "line": 38,
+            "excerpt": "lemma hasCocartesianHornLifting_id {E : SSet.{u}} {x y : E _⦋0⦌}\n    (e : SSet.Truncated.Edge (X := (truncation 2).obj E) x y) : _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.HasCocartesianHornLifting (𝟙 E) e := by\n  intro n σ β _ hw\n  exact ⟨β, by simpa only [Category.comp_id] using hw.symm, Category.comp_id _⟩\n\n/-- 概要：恒等射は cocartesian fibration。\n方針：基底の辺をそのまま持ち上げる。\n規約：quasicategory 性は不要。\n使われ方：Kerodon §5.1.4（Tag 01U9） の cocartesian fibration の基本例。 -/"
+          },
+          {
+            "line": 47,
+            "excerpt": "instance cocartesianHornFibration_id (E : SSet.{u}) : CocartesianHornFibration (𝟙 E) where\n  mem := by\n    intro A B i hi\n    exact HasLiftingProperty.of_right_iso _ _\n  exists_lift x b a := ⟨b, a, rfl, hasCocartesianHornLifting_id a⟩\n\nend SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations"
+          }
+        ]
+      }
+    ]
+  },
+  "norm": {
+    "regex": "semiadditive|Semiadditive|relative finite groupoid|normNatTrans|tateNorm|homotopyFixedPointsInfinityCone",
+    "scope": [
+      "SerrePositivity/**/*.lean",
+      "Mathlib/**/*.lean"
+    ],
+    "exit_code": 0,
+    "hit_lines": 31,
+    "sample": [
+      ".lake/packages/mathlib/Mathlib/Algebra/Category/ModuleCat/Semi.lean:309:instance : Presemiadditive (SemimoduleCat.{v} R) where",
+      ".lake/packages/mathlib/Mathlib/CategoryTheory/Preadditive/OfBiproducts.lean:11:# Constructing a semiadditive structure from binary biproducts",
+      ".lake/packages/mathlib/Mathlib/CategoryTheory/Preadditive/OfBiproducts.lean:29:namespace CategoryTheory.SemiadditiveOfBinaryBiproducts",
+      ".lake/packages/mathlib/Mathlib/CategoryTheory/Preadditive/OfBiproducts.lean:134:end CategoryTheory.SemiadditiveOfBinaryBiproducts",
+      ".lake/packages/mathlib/Mathlib/RepresentationTheory/Rep/Basic.lean:897:def normNatTrans : End (𝟭 (Rep k G)) :=",
+      ".lake/packages/mathlib/Mathlib/RepresentationTheory/Homological/TateCohomology/Basic.lean:24:* `Rep.tateNorm`: the map induced by the norm map from the zeroth term of the inhomogeneous chain",
+      ".lake/packages/mathlib/Mathlib/RepresentationTheory/Homological/TateCohomology/Basic.lean:64:def Rep.tateNorm : (inhomogeneousChains M).X 0 ⟶ (inhomogeneousCochains M).X 0 :=",
+      ".lake/packages/mathlib/Mathlib/RepresentationTheory/Homological/TateCohomology/Basic.lean:67:lemma Rep.tateNorm_eq :",
+      ".lake/packages/mathlib/Mathlib/RepresentationTheory/Homological/TateCohomology/Basic.lean:68:    M.tateNorm = ModuleCat.ofHom (Finsupp.lsum R fun _ ↦ LinearMap.pi fun _ ↦ M.ρ.norm) := by",
+      ".lake/packages/mathlib/Mathlib/RepresentationTheory/Homological/TateCohomology/Basic.lean:70:  simp_all [tateNorm, chainsIso₀, cochainsIso₀, Unique.eq_default]",
+      ".lake/packages/mathlib/Mathlib/RepresentationTheory/Homological/TateCohomology/Basic.lean:77:lemma Rep.tateNorm_comp_d : tateNorm M ≫ (inhomogeneousCochains M).d 0 1 = 0 := by",
+      ".lake/packages/mathlib/Mathlib/RepresentationTheory/Homological/TateCohomology/Basic.lean:78:  simp [tateNorm, eq_d₀₁_comp_inv M]"
+    ],
+    "inspected_candidates": [
+      {
+        "file": "Mathlib/RepresentationTheory/Homological/TateCohomology/Basic.lean",
+        "sha256": "ab27e2dded5c1bb711150cb29ec9c6bb6131835e5199dc9c1a93c44ed4d8662a",
+        "candidate_type_excerpts": [
+          {
+            "line": 64,
+            "excerpt": "def Rep.tateNorm : (inhomogeneousChains M).X 0 ⟶ (inhomogeneousCochains M).X 0 :=\n  (chainsIso₀ M).hom ≫ M.norm.asHom.toModuleCatHom ≫ (cochainsIso₀ M).inv\n\nlemma Rep.tateNorm_eq :\n    M.tateNorm = ModuleCat.ofHom (Finsupp.lsum R fun _ ↦ LinearMap.pi fun _ ↦ M.ρ.norm) := by\n  ext\n  simp_all [tateNorm, chainsIso₀, cochainsIso₀, Unique.eq_default]\n\n@[reassoc (attr := simp), elementwise]"
+          },
+          {
+            "line": 67,
+            "excerpt": "lemma Rep.tateNorm_eq :\n    M.tateNorm = ModuleCat.ofHom (Finsupp.lsum R fun _ ↦ LinearMap.pi fun _ ↦ M.ρ.norm) := by\n  ext\n  simp_all [tateNorm, chainsIso₀, cochainsIso₀, Unique.eq_default]\n\n@[reassoc (attr := simp), elementwise]\nlemma Rep.norm_comp_d_eq_zero : M.norm.asHom.toModuleCatHom ≫ d₀₁ M = 0 := by\n  ext\n  simp [Pi.zero_apply _]"
+          },
+          {
+            "line": 73,
+            "excerpt": "lemma Rep.norm_comp_d_eq_zero : M.norm.asHom.toModuleCatHom ≫ d₀₁ M = 0 := by\n  ext\n  simp [Pi.zero_apply _]\n\nlemma Rep.tateNorm_comp_d : tateNorm M ≫ (inhomogeneousCochains M).d 0 1 = 0 := by\n  simp [tateNorm, eq_d₀₁_comp_inv M]\n\n@[simp]\nlemma Rep.comp_eq_zero : d₁₀ M ≫ M.norm.asHom.toModuleCatHom = 0 := by"
+          },
+          {
+            "line": 77,
+            "excerpt": "lemma Rep.tateNorm_comp_d : tateNorm M ≫ (inhomogeneousCochains M).d 0 1 = 0 := by\n  simp [tateNorm, eq_d₀₁_comp_inv M]\n\n@[simp]\nlemma Rep.comp_eq_zero : d₁₀ M ≫ M.norm.asHom.toModuleCatHom = 0 := by\n  ext\n  simp [d₁₀_single M]\n\nlemma Rep.d_comp_tateNorm : (inhomogeneousChains M).d 1 0 ≫ M.tateNorm = 0 := by"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/RepresentationTheory/Rep/Basic.lean",
+        "sha256": "738e45ca6e375760efbb11b5c67ac40248448bfd13179f658fc03b5a3e19dfe0",
+        "candidate_type_excerpts": [
+          {
+            "line": 30,
+            "excerpt": "structure Rep (k : Type u) (G : Type v) [Semiring k] [Monoid G] where\n  _mkInternal ::\n  /-- the underlying type of an object in `Rep k G` -/\n  V : Type w\n  [hV1 : AddCommGroup V]\n  [hV2 : Module k V]\n  /-- the underlying representation of an object in `Rep k G` -/\n  ρ : Representation k G V\n"
+          },
+          {
+            "line": 55,
+            "excerpt": "instance : CoeSort (Rep k G) (Type w) := ⟨Rep.V⟩\n\nattribute [coe] V\n\nvariable (ρ) in\n/-- The object in the category of representations associated to a type equipped a representation.\nThis is the preferred way to construct a term of `Rep k G`. -/\nabbrev of : Rep.{w} k G := ⟨X, ρ⟩\n"
+          },
+          {
+            "line": 62,
+            "excerpt": "abbrev of : Rep.{w} k G := ⟨X, ρ⟩\n\nvariable (X ρ) in\nlemma of_V : (of ρ).V = X := by with_reducible rfl\n\nvariable (X ρ) in\nlemma of_ρ : (of ρ).ρ = ρ := by with_reducible rfl\n\n/-- The type of morphisms in `Rep.{w} k G`. -/"
+          },
+          {
+            "line": 65,
+            "excerpt": "lemma of_V : (of ρ).V = X := by with_reducible rfl\n\nvariable (X ρ) in\nlemma of_ρ : (of ρ).ρ = ρ := by with_reducible rfl\n\n/-- The type of morphisms in `Rep.{w} k G`. -/\n@[ext]\nstructure Hom where\n  _mkInternal ::"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/KST/Spectra/FixedPointInfinityLimits.lean",
+        "sha256": "733d62b808acdde34910b27acad87628e95c5d4cb44072eeddb2b2559939f678",
+        "candidate_type_excerpts": [
+          {
+            "line": 25,
+            "excerpt": "def homotopyFixedPointsInfinityCone {G : Type u} [Group G] (A : GroupAction.{u} G) :\n    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram (AsSmall.down ⋙ (GroupAction.diagramFunctor G).obj A)) :=\n  OmegaSpectrum.homotopyLimitCoherentCone _\n\n/-- hG の錐の頂点は、元の BF hG 対象そのもの。 -/\nlemma homotopyFixedPointsInfinityCone_vertex {G : Type u} [Group G] (A : GroupAction.{u} G) :\n    (homotopyFixedPointsInfinityCone A).vertex = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (homotopyFixedPoints A) :=\n  OmegaSpectrum.homotopyLimitCoherentCone_vertex _\n"
+          },
+          {
+            "line": 30,
+            "excerpt": "lemma homotopyFixedPointsInfinityCone_vertex {G : Type u} [Group G] (A : GroupAction.{u} G) :\n    (homotopyFixedPointsInfinityCone A).vertex = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (homotopyFixedPoints A) :=\n  OmegaSpectrum.homotopyLimitCoherentCone_vertex _\n\n/-- 元の hG 対象の coherent な錐は、Sp 内の実際の ∞ 極限錐。 -/\nlemma homotopyFixedPointsInfinityCone_isLimit {G : Type u} [Group G] (A : GroupAction.{u} G) :\n    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (homotopyFixedPointsInfinityCone A) :=\n  OmegaSpectrum.homotopyLimitCoherentCone_isLimit _\n"
+          },
+          {
+            "line": 35,
+            "excerpt": "lemma homotopyFixedPointsInfinityCone_isLimit {G : Type u} [Group G] (A : GroupAction.{u} G) :\n    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (homotopyFixedPointsInfinityCone A) :=\n  OmegaSpectrum.homotopyLimitCoherentCone_isLimit _\n\n/-- 元の余単体図式上の、元の homotopy Tot を頂点とする coherent な錐。 -/\ndef homotopyTotalizationInfinityCone (D : CosimplicialObject OmegaSpectrum.{u}) :\n    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram (AsSmall.down ⋙ D)) :=\n  OmegaSpectrum.homotopyLimitCoherentCone _\n"
+          },
+          {
+            "line": 40,
+            "excerpt": "def homotopyTotalizationInfinityCone (D : CosimplicialObject OmegaSpectrum.{u}) :\n    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram (AsSmall.down ⋙ D)) :=\n  OmegaSpectrum.homotopyLimitCoherentCone _\n\n/-- Tot の錐の頂点は、元の BF homotopy Tot 対象そのもの。 -/\nlemma homotopyTotalizationInfinityCone_vertex (D : CosimplicialObject OmegaSpectrum.{u}) :\n    (homotopyTotalizationInfinityCone D).vertex = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (homotopyTotalization D) :=\n  OmegaSpectrum.homotopyLimitCoherentCone_vertex _\n"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/KST/Spectra/GroupAction.lean",
+        "sha256": "707fa529b683606561a44db6d542eab7e92241a6842337a3f6b81abc5abb9d1f",
+        "candidate_type_excerpts": [
+          {
+            "line": 26,
+            "excerpt": "abbrev GroupAction (G : Type v) [Group G] := Action OmegaSpectrum.{u} G\n\nnamespace GroupAction\n\nnoncomputable section\n\nvariable (G : Type v) [Group G]\n\n/-- 概要：厳密な群作用を一対象の群圏上の実際の作用図式へ送る。"
+          },
+          {
+            "line": 38,
+            "excerpt": "def diagramFunctor : GroupAction.{u} G ⥤ (SingleObj G ⥤ OmegaSpectrum.{u}) :=\n  Action.FunctorCategoryEquivalence.functor\n\n/-- 概要：群作用を各段の点つき Kan 複体の作用へ評価する。\n方針：段評価関手を作用の圏へ移す。\n規約：各段の作用の法則も厳密。\n使われ方：BF 1978 §2、HTT A.3.3。レベルごとの hG の入力。 -/\ndef levelFunctor (n : ℕ) : GroupAction.{u} G ⥤ Action PointedSimplicialSet.{u} G :=\n  (OmegaSpectrum.levelEvaluation n).mapAction G"
+          },
+          {
+            "line": 45,
+            "excerpt": "def levelFunctor (n : ℕ) : GroupAction.{u} G ⥤ Action PointedSimplicialSet.{u} G :=\n  (OmegaSpectrum.levelEvaluation n).mapAction G\n\n/-- 概要：群作用を単射性を忘れた Kan 列の作用へ移す。\n方針：BF 忘却関手の作用への拡張を使う。\n規約：各段と構造射の同変性を保持する。\n使われ方：BF 1978 §2。Tot の後での単射置換を分離する。 -/\ndef kanSequenceFunctor : GroupAction.{u} G ⥤ Action KanSequence.{u} G :=\n  OmegaSpectrum.forgetToKan.mapAction G"
+          },
+          {
+            "line": 52,
+            "excerpt": "def kanSequenceFunctor : GroupAction.{u} G ⥤ Action KanSequence.{u} G :=\n  OmegaSpectrum.forgetToKan.mapAction G\n\n/-- 概要：群作用は全整数次数の可換ホモトピー群に作用する。\n方針：実際の BF 射から構成した π_j の関手を作用の圏へ移す。\n規約：整数次数の群は乗法記法。\n使われ方：BF 1978 §2、HA §1.4.2。有理群コホモロジーに用いる係数の作用。 -/\ndef homotopyFunctor (j : ℤ) : GroupAction.{u} G ⥤ Action CommGrpCat.{u} G :=\n  (OmegaSpectrum.homotopyFunctor j).mapAction G"
+          }
+        ]
+      }
+    ]
+  },
+  "operadic": {
+    "regex": "E1Algebra|AlgE1|MonoidalInfinity|InfinityOperad|ofCosimplicial|ComonadSimplicial",
+    "scope": [
+      "SerrePositivity/**/*.lean",
+      "Mathlib/**/*.lean"
+    ],
+    "exit_code": 0,
+    "hit_lines": 73,
+    "sample": [
+      "SerrePositivity/EInfinity/StrictAdjunctionBar.lean:3:public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ComonadSimplicialResolution",
+      "SerrePositivity/EInfinity/StrictAdjunctionBar.lean:28:  ComonadSimplicialResolution.diagram",
+      "SerrePositivity/EInfinity/StrictAdjunctionBar.lean:120:    ComonadSimplicialResolution.diagram G X ⟶ ComonadSimplicialResolution.diagram G Y where",
+      "SerrePositivity/EInfinity/StrictAdjunctionBar.lean:127:  obj := ComonadSimplicialResolution.diagram G",
+      "SerrePositivity/EInfinity/StrictAdjunctionBar.lean:134:  left := ComonadSimplicialResolution.diagram G X",
+      "SerrePositivity/EInfinity/StrictAdjunctionBar.lean:136:  hom := ComonadSimplicialResolution.augmentation G X",
+      "SerrePositivity/EInfinity/StrictAdjunctionBar.lean:171:  left := ComonadSimplicialResolution.diagram h.toComonad X ⋙ U",
+      "SerrePositivity/EInfinity/StrictAdjunctionBar.lean:174:    { app n := U.map ((ComonadSimplicialResolution.augmentation h.toComonad X).app n)",
+      "SerrePositivity/EInfinity/StrictAdjunctionBar.lean:176:        change U.map ((ComonadSimplicialResolution.diagram h.toComonad X).map θ) ≫",
+      "SerrePositivity/EInfinity/StrictAdjunctionBar.lean:177:          U.map ((ComonadSimplicialResolution.augmentation h.toComonad X).app m) =",
+      "SerrePositivity/EInfinity/StrictAdjunctionBar.lean:178:            U.map ((ComonadSimplicialResolution.augmentation h.toComonad X).app n) ≫ 𝟙 _",
+      "SerrePositivity/EInfinity/StrictAdjunctionBar.lean:181:        have ht := (ComonadSimplicialResolution.augmentation h.toComonad X).naturality θ"
+    ],
+    "inspected_candidates": [
+      {
+        "file": "SerrePositivity/EInfinity/Interface/Theory.lean",
+        "sha256": "257ca13e467e46aa111d54684fc69e76e001f65f66103aee4b900dd333d28087",
+        "candidate_type_excerpts": [
+          {
+            "line": 55,
+            "excerpt": "abbrev hoMap {X Y : SSet.{u}} (F : X ⟶ Y) := (hoFunctor.map F).toFunctor\n\n/-- 余鎖次数 i のホモロジーを通常のホモトピー圏上で取る。 -/\nabbrev cohomologyOnHo (S : Type u) [CommRing S] (i : ℤ) :=\n  (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyCategoryBridge (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory S)).inverse ⋙\n    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomologyFunctor S i\n\n/-- 係数制限で比較するホモロジーの台の可換群。 -/\nabbrev additiveCohomologyOnHo (S : Type u) [CommRing S] (i : ℤ) :="
+          },
+          {
+            "line": 58,
+            "excerpt": "abbrev cohomologyOnHo (S : Type u) [CommRing S] (i : ℤ) :=\n  (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyCategoryBridge (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory S)).inverse ⋙\n    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomologyFunctor S i\n\n/-- 係数制限で比較するホモロジーの台の可換群。 -/\nabbrev additiveCohomologyOnHo (S : Type u) [CommRing S] (i : ℤ) :=\n  cohomologyOnHo S i ⋙ forget₂ (ModuleCat S) AddCommGrpCat\n\n/-- 通常の代数の係数制限。 -/"
+          },
+          {
+            "line": 63,
+            "excerpt": "abbrev additiveCohomologyOnHo (S : Type u) [CommRing S] (i : ℤ) :=\n  cohomologyOnHo S i ⋙ forget₂ (ModuleCat S) AddCommGrpCat\n\n/-- 通常の代数の係数制限。 -/\nabbrev restrictRingAlgebra {S T : Type u} [CommRing S] [CommRing T] (f : S →+* T) :\n    RingAlgebra T ⥤ RingAlgebra S :=\n  Under.map (CommRingCat.ofHom f)\n\n/-- 忘却した導来複体の H^{-n} を、ホモトピー次数 n の可換群として読む。 -/"
+          },
+          {
+            "line": 67,
+            "excerpt": "abbrev restrictRingAlgebra {S T : Type u} [CommRing S] [CommRing T] (f : S →+* T) :\n    RingAlgebra T ⥤ RingAlgebra S :=\n  Under.map (CommRingCat.ofHom f)\n\n/-- 忘却した導来複体の H^{-n} を、ホモトピー次数 n の可換群として読む。 -/\nabbrev homotopyGroupsOnHo (k : Type u) [CommRing k] {C : SSet.{u + 1}}\n    (U : C ⟶ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory k)\n    (n : ℤ) :=\n  hoMap U ⋙ additiveCohomologyOnHo k (-n)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Monoidal/Mon.lean",
+        "sha256": "9aa0a7fc1f65b706e81f4bad36d24a4bb2c5717da5468dac552919c237983483",
+        "candidate_type_excerpts": [
+          {
+            "line": 54,
+            "excerpt": "class AddMonObj (X : C) where\n  /-- The zero morphism of an additive monoid object. -/\n  zero : 𝟙_ C ⟶ X\n  /-- The addition morphism of an additive monoid object. -/\n  add : X ⊗ X ⟶ X\n  zero_add (X) : zero ▷ X ≫ add = (λ_ X).hom := by cat_disch\n  add_zero (X) : X ◁ zero ≫ add = (ρ_ X).hom := by cat_disch\n  -- Obviously there is some flexibility stating this axiom.\n  -- This one has left- and right-hand sides matching the statement of `_root_.add_assoc`,"
+          },
+          {
+            "line": 72,
+            "excerpt": "class MonObj (X : C) where\n  /-- The unit morphism of a monoid object. -/\n  one : 𝟙_ C ⟶ X\n  /-- The multiplication morphism of a monoid object. -/\n  mul : X ⊗ X ⟶ X\n  one_mul (X) : one ▷ X ≫ mul = (λ_ X).hom := by cat_disch\n  mul_one (X) : X ◁ one ≫ mul = (ρ_ X).hom := by cat_disch\n  -- Obviously there is some flexibility stating this axiom.\n  -- This one has left- and right-hand sides matching the statement of `_root_.mul_assoc`,"
+          },
+          {
+            "line": 111,
+            "excerpt": "def ofIso (e : M ≅ X) : MonObj X where\n  one := η[M] ≫ e.hom\n  mul := (e.inv ⊗ₘ e.inv) ≫ μ[M] ≫ e.hom\n  one_mul := by\n    rw [← cancel_epi (λ_ X).inv]\n    simp only [comp_whiskerRight, tensorHom_def, Category.assoc,\n      hom_inv_whiskerRight_assoc]\n    simp [← tensorHom_def_assoc, leftUnitor_inv_comp_tensorHom_assoc]\n  mul_one := by"
+          },
+          {
+            "line": 129,
+            "excerpt": "instance : MonObj (𝟙_ C) where\n  one := 𝟙 _\n  mul := (λ_ _).hom\n  mul_assoc := by monoidal_coherence\n  mul_one := by monoidal_coherence\n\n@[to_additive (attr := ext)]\ntheorem ext {X : C} (h₁ h₂ : MonObj X) (H : h₁.mul = h₂.mul) : h₁ = h₂ := by\n  suffices h₁.one = h₂.one by cases h₁; cases h₂; subst H this; rfl"
+          }
+        ]
+      }
+    ]
+  },
+  "tate-diagonal": {
+    "regex": "TateDiagonal|tateDiagonal|Tate.diagonal|Segal conjecture|cyclicTateComplex|CyclicPermutation_mixed_free",
+    "scope": [
+      "SerrePositivity/**/*.lean",
+      "Mathlib/**/*.lean"
+    ],
+    "exit_code": 0,
+    "hit_lines": 40,
+    "sample": [
+      "SerrePositivity/EInfinity.lean:2929:public import SerrePositivity.EInfinity.PowerOperation.CyclicTateComplex",
+      "SerrePositivity/EInfinity/PowerOperation/CyclicResolutionBoundedAcyclic.lean:26:    cyclicTateComplex_leftRegular_projective k (powerOperationCyclicGenerator p) i",
+      "SerrePositivity/EInfinity/PowerOperation/CyclicResolutionHomComplex.lean:25:  cyclicTateComplex (Rep.leftRegular k (PowerOperationCyclicGroup.{u} p))",
+      "SerrePositivity/EInfinity/PowerOperation/CyclicTensorInput.lean:55:    (cyclicTateComplex (Rep.leftRegular k (PowerOperationCyclicGroup.{u} p))",
+      "SerrePositivity/EInfinity/PowerOperation/CyclicTensorInput.lean:57:  cyclicTateComplex_leftRegular_exactAt k _ (powerOperationCyclicGenerator_generates p) i",
+      "SerrePositivity/EInfinity/PowerOperation/CyclicInducedAcyclic.lean:24:lemma cyclicTateComplex_regularTensor_exactAt (B : Rep.{u} k G) [B.IsTrivial]",
+      "SerrePositivity/EInfinity/PowerOperation/CyclicInducedAcyclic.lean:26:    (cyclicTateComplex (Rep.leftRegular k G ⊗ B) g).ExactAt i := by",
+      "SerrePositivity/EInfinity/PowerOperation/CyclicInducedAcyclic.lean:27:  let P := cyclicTateComplex (Rep.leftRegular k G) g",
+      "SerrePositivity/EInfinity/PowerOperation/CyclicInducedAcyclic.lean:31:      (cyclicTateComplex_leftRegular_exactAt k g hg i)",
+      "SerrePositivity/EInfinity/PowerOperation/CyclicInducedAcyclic.lean:37:  exact h.of_iso (cyclicTateComplex_tensorTrivialIso (Rep.leftRegular k G) B g)",
+      "SerrePositivity/EInfinity/PowerOperation/CyclicInducedAcyclic.lean:40:lemma cyclicTateComplex_regularTensor_acyclic (B : Rep.{u} k G) [B.IsTrivial]",
+      "SerrePositivity/EInfinity/PowerOperation/CyclicInducedAcyclic.lean:42:    (cyclicTateComplex (Rep.leftRegular k G ⊗ B) g).Acyclic :="
+    ],
+    "inspected_candidates": [
+      {
+        "file": "SerrePositivity/EInfinity/PowerOperation/CyclicMixedOrbit.lean",
+        "sha256": "02b51fe08eb5d6319fefdd349408a91c23101ef385bf4832b2c4d6b1749bf98e",
+        "candidate_type_excerpts": [
+          {
+            "line": 20,
+            "excerpt": "lemma powerOperationCyclicPermutation_transitive (i j : Fin p) :\n    ∃ g : PowerOperationCyclicGroup.{u} p, powerOperationCyclicPermutation p g i = j := by\n  refine ⟨ULift.up (Multiplicative.ofAdd (ZMod.finEquiv p j - ZMod.finEquiv p i)), ?_⟩\n  simp [powerOperationCyclicPermutation]\n\n/-- 同じ指定巡回作用で色付けを固定する部分群。 -/\ndef cyclicColorStabilizer {B : Type v} (w : Fin p → B) :\n    Subgroup (PowerOperationCyclicGroup.{u} p) where\n  carrier := {g | ∀ i, w (powerOperationCyclicPermutation p g i) = w i}"
+          },
+          {
+            "line": 26,
+            "excerpt": "def cyclicColorStabilizer {B : Type v} (w : Fin p → B) :\n    Subgroup (PowerOperationCyclicGroup.{u} p) where\n  carrier := {g | ∀ i, w (powerOperationCyclicPermutation p g i) = w i}\n  one_mem' := by intro i; simp\n  mul_mem' ha hb := by\n    intro i\n    simp only [Set.mem_ofPred_eq] at ha hb\n    simpa only [map_mul, Equiv.Perm.mul_apply] using (ha _).trans (hb i)\n  inv_mem' := by"
+          },
+          {
+            "line": 41,
+            "excerpt": "lemma cyclicColorStabilizer_eq_bot [Fact p.Prime] {B : Type v} (w : Fin p → B)\n    (hw : ∃ i j, w i ≠ w j) : cyclicColorStabilizer.{u} p w = ⊥ := by\n  have hcard : Nat.card (PowerOperationCyclicGroup.{u} p) = p := by\n    rw [Nat.card_eq_fintype_card]\n    exact powerOperationCyclicGroup_card p\n  have : Fact (Nat.card (PowerOperationCyclicGroup.{u} p)).Prime := ⟨hcard.symm ▸ Fact.out⟩\n  rcases (cyclicColorStabilizer.{u} p w).eq_bot_or_eq_top_of_prime_card with h | h\n  · exact h\n  · obtain ⟨i, j, hij⟩ := hw"
+          },
+          {
+            "line": 55,
+            "excerpt": "lemma powerOperationCyclicPermutation_mixed_free [Fact p.Prime] {B : Type v}\n    (w : Fin p → B) (hw : ∃ i j, w i ≠ w j) (g : PowerOperationCyclicGroup.{u} p)\n    (hg : ∀ i, w (powerOperationCyclicPermutation p g i) = w i) : g = 1 := by\n  have hm : g ∈ cyclicColorStabilizer p w := hg\n  rw [cyclicColorStabilizer_eq_bot p w hw, Subgroup.mem_bot] at hm\n  exact hm\n\nend SerrePositivity.EInfinity.PowerOperation"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/EInfinity/PowerOperation/CyclicTateComplex.lean",
+        "sha256": "045949b0af85a56664873ef1eb0f62c1db5b4669043333b62e687f4884de2070",
+        "candidate_type_excerpts": [
+          {
+            "line": 22,
+            "excerpt": "def cyclicTateDifferential (A : Rep k G) (g : G) (i : ℤ) : A ⟶ A :=\n  if Even i then A.applyAsHom g - 𝟙 A else A.norm.asHom\n\nlemma cyclicTateDifferential_sq (A : Rep k G) (g : G) (i : ℤ) :\n    cyclicTateDifferential A g i ≫ cyclicTateDifferential A g (i + 1) = 0 := by\n  by_cases hi : Even i\n  · have hn : ¬Even (i + 1) := Int.not_even_iff_odd.mpr hi.add_one\n    simp only [cyclicTateDifferential, ite_eq_left hi, ite_eq_right hn]\n    ext"
+          },
+          {
+            "line": 25,
+            "excerpt": "lemma cyclicTateDifferential_sq (A : Rep k G) (g : G) (i : ℤ) :\n    cyclicTateDifferential A g i ≫ cyclicTateDifferential A g (i + 1) = 0 := by\n  by_cases hi : Even i\n  · have hn : ¬Even (i + 1) := Int.not_even_iff_odd.mpr hi.add_one\n    simp only [cyclicTateDifferential, ite_eq_left hi, ite_eq_right hn]\n    ext\n    simp [Rep.sub_hom, Rep.applyAsHom, Rep.norm]\n  · have hn : Even (i + 1) := (Int.not_even_iff_odd.mp hi).add_one\n    simp only [cyclicTateDifferential, ite_eq_right hi, ite_eq_left hn]"
+          },
+          {
+            "line": 38,
+            "excerpt": "lemma cyclicTateDifferential_natural {A B : Rep k G} (f : A ⟶ B) (g : G) (i : ℤ) :\n    cyclicTateDifferential A g i ≫ f = f ≫ cyclicTateDifferential B g i := by\n  by_cases hi : Even i\n  · simp only [cyclicTateDifferential, ite_eq_left hi, Preadditive.sub_comp,\n      Preadditive.comp_sub, Category.id_comp, Category.comp_id]\n    rw [Rep.applyAsHom_comm]\n  · simpa only [cyclicTateDifferential, ite_eq_right hi] using (Rep.norm_comm f).symm\n\n/-- 整数全次数にわたる、ノルムと作用差による係数複体。 -/"
+          },
+          {
+            "line": 47,
+            "excerpt": "def cyclicTateComplex (A : Rep k G) (g : G) : CochainComplex (Rep k G) ℤ :=\n  CochainComplex.of (fun _ => A) (cyclicTateDifferential A g)\n    (cyclicTateDifferential_sq A g)\n\n/-- 同じ微分を用いる係数複体の全関手。 -/\ndef cyclicTateComplexFunctor (g : G) : Rep k G ⥤ CochainComplex (Rep k G) ℤ where\n  obj A := cyclicTateComplex A g\n  map f := {\n    f _ := f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/KST/Spectra/FixedPointInfinityLimits.lean",
+        "sha256": "733d62b808acdde34910b27acad87628e95c5d4cb44072eeddb2b2559939f678",
+        "candidate_type_excerpts": [
+          {
+            "line": 25,
+            "excerpt": "def homotopyFixedPointsInfinityCone {G : Type u} [Group G] (A : GroupAction.{u} G) :\n    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram (AsSmall.down ⋙ (GroupAction.diagramFunctor G).obj A)) :=\n  OmegaSpectrum.homotopyLimitCoherentCone _\n\n/-- hG の錐の頂点は、元の BF hG 対象そのもの。 -/\nlemma homotopyFixedPointsInfinityCone_vertex {G : Type u} [Group G] (A : GroupAction.{u} G) :\n    (homotopyFixedPointsInfinityCone A).vertex = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (homotopyFixedPoints A) :=\n  OmegaSpectrum.homotopyLimitCoherentCone_vertex _\n"
+          },
+          {
+            "line": 30,
+            "excerpt": "lemma homotopyFixedPointsInfinityCone_vertex {G : Type u} [Group G] (A : GroupAction.{u} G) :\n    (homotopyFixedPointsInfinityCone A).vertex = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (homotopyFixedPoints A) :=\n  OmegaSpectrum.homotopyLimitCoherentCone_vertex _\n\n/-- 元の hG 対象の coherent な錐は、Sp 内の実際の ∞ 極限錐。 -/\nlemma homotopyFixedPointsInfinityCone_isLimit {G : Type u} [Group G] (A : GroupAction.{u} G) :\n    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (homotopyFixedPointsInfinityCone A) :=\n  OmegaSpectrum.homotopyLimitCoherentCone_isLimit _\n"
+          },
+          {
+            "line": 35,
+            "excerpt": "lemma homotopyFixedPointsInfinityCone_isLimit {G : Type u} [Group G] (A : GroupAction.{u} G) :\n    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (homotopyFixedPointsInfinityCone A) :=\n  OmegaSpectrum.homotopyLimitCoherentCone_isLimit _\n\n/-- 元の余単体図式上の、元の homotopy Tot を頂点とする coherent な錐。 -/\ndef homotopyTotalizationInfinityCone (D : CosimplicialObject OmegaSpectrum.{u}) :\n    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram (AsSmall.down ⋙ D)) :=\n  OmegaSpectrum.homotopyLimitCoherentCone _\n"
+          },
+          {
+            "line": 40,
+            "excerpt": "def homotopyTotalizationInfinityCone (D : CosimplicialObject OmegaSpectrum.{u}) :\n    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram (AsSmall.down ⋙ D)) :=\n  OmegaSpectrum.homotopyLimitCoherentCone _\n\n/-- Tot の錐の頂点は、元の BF homotopy Tot 対象そのもの。 -/\nlemma homotopyTotalizationInfinityCone_vertex (D : CosimplicialObject OmegaSpectrum.{u}) :\n    (homotopyTotalizationInfinityCone D).vertex = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (homotopyTotalization D) :=\n  OmegaSpectrum.homotopyLimitCoherentCone_vertex _\n"
+          }
+        ]
+      }
+    ]
+  },
+  "tate-orbit": {
+    "regex": "Tate.orbit|Tate.fixpoint|tateNorm|cyclicTateComplex|regularTensor_acyclic",
+    "scope": [
+      "SerrePositivity/**/*.lean",
+      "Mathlib/**/*.lean"
+    ],
+    "exit_code": 0,
+    "hit_lines": 52,
+    "sample": [
+      "SerrePositivity/EInfinity/PowerOperation/CyclicResolutionBoundedAcyclic.lean:26:    cyclicTateComplex_leftRegular_projective k (powerOperationCyclicGenerator p) i",
+      "SerrePositivity/EInfinity/PowerOperation/CyclicResolutionHomComplex.lean:25:  cyclicTateComplex (Rep.leftRegular k (PowerOperationCyclicGroup.{u} p))",
+      "SerrePositivity/EInfinity/PowerOperation/CyclicTensorInput.lean:55:    (cyclicTateComplex (Rep.leftRegular k (PowerOperationCyclicGroup.{u} p))",
+      "SerrePositivity/EInfinity/PowerOperation/CyclicTensorInput.lean:57:  cyclicTateComplex_leftRegular_exactAt k _ (powerOperationCyclicGenerator_generates p) i",
+      "SerrePositivity/EInfinity/PowerOperation/CyclicInducedAcyclic.lean:24:lemma cyclicTateComplex_regularTensor_exactAt (B : Rep.{u} k G) [B.IsTrivial]",
+      "SerrePositivity/EInfinity/PowerOperation/CyclicInducedAcyclic.lean:26:    (cyclicTateComplex (Rep.leftRegular k G ⊗ B) g).ExactAt i := by",
+      "SerrePositivity/EInfinity/PowerOperation/CyclicInducedAcyclic.lean:27:  let P := cyclicTateComplex (Rep.leftRegular k G) g",
+      "SerrePositivity/EInfinity/PowerOperation/CyclicInducedAcyclic.lean:31:      (cyclicTateComplex_leftRegular_exactAt k g hg i)",
+      "SerrePositivity/EInfinity/PowerOperation/CyclicInducedAcyclic.lean:37:  exact h.of_iso (cyclicTateComplex_tensorTrivialIso (Rep.leftRegular k G) B g)",
+      "SerrePositivity/EInfinity/PowerOperation/CyclicInducedAcyclic.lean:40:lemma cyclicTateComplex_regularTensor_acyclic (B : Rep.{u} k G) [B.IsTrivial]",
+      "SerrePositivity/EInfinity/PowerOperation/CyclicInducedAcyclic.lean:42:    (cyclicTateComplex (Rep.leftRegular k G ⊗ B) g).Acyclic :=",
+      "SerrePositivity/EInfinity/PowerOperation/CyclicInducedAcyclic.lean:43:  cyclicTateComplex_regularTensor_exactAt B g hg"
+    ],
+    "inspected_candidates": [
+      {
+        "file": "SerrePositivity/EInfinity/PowerOperation/CyclicInducedAcyclic.lean",
+        "sha256": "e5600eb9fb4b545f4c1f0831e24caa44eebb3b49c46b7197938f4b7cea3869c1",
+        "candidate_type_excerpts": [
+          {
+            "line": 24,
+            "excerpt": "lemma cyclicTateComplex_regularTensor_exactAt (B : Rep.{u} k G) [B.IsTrivial]\n    [Module.Flat k B] (g : G) (hg : ∀ x, x ∈ Subgroup.zpowers g) (i : ℤ) :\n    (cyclicTateComplex (Rep.leftRegular k G ⊗ B) g).ExactAt i := by\n  let P := cyclicTateComplex (Rep.leftRegular k G) g\n  let J := forget₂ (Rep.{u} k G) (ModuleCat k)\n  have hP : (P.sc' (i - 1) i (i + 1)).Exact :=\n    (HomologicalComplex.exactAt_iff' _ _ i _ (by simp) (by simp)).mp\n      (cyclicTateComplex_leftRegular_exactAt k g hg i)\n  have h : (((tensorRight B).mapHomologicalComplex (.up ℤ)).obj P).ExactAt i := by"
+          },
+          {
+            "line": 40,
+            "excerpt": "lemma cyclicTateComplex_regularTensor_acyclic (B : Rep.{u} k G) [B.IsTrivial]\n    [Module.Flat k B] (g : G) (hg : ∀ x, x ∈ Subgroup.zpowers g) :\n    (cyclicTateComplex (Rep.leftRegular k G ⊗ B) g).Acyclic :=\n  cyclicTateComplex_regularTensor_exactAt B g hg\n\n/-- 体上では自明係数に平坦性の追加入力を置かずに適用できる。 -/\nlemma cyclicTateComplex_regularTensor_acyclic_field {F : Type u} [Field F]\n    (B : Rep.{u} F G) [B.IsTrivial] (g : G) (hg : ∀ x, x ∈ Subgroup.zpowers g) :\n    (cyclicTateComplex (Rep.leftRegular F G ⊗ B) g).Acyclic :="
+          },
+          {
+            "line": 46,
+            "excerpt": "lemma cyclicTateComplex_regularTensor_acyclic_field {F : Type u} [Field F]\n    (B : Rep.{u} F G) [B.IsTrivial] (g : G) (hg : ∀ x, x ∈ Subgroup.zpowers g) :\n    (cyclicTateComplex (Rep.leftRegular F G ⊗ B) g).Acyclic :=\n  cyclicTateComplex_regularTensor_acyclic B g hg\n\nend SerrePositivity.EInfinity.PowerOperation"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/RepresentationTheory/Homological/TateCohomology/Basic.lean",
+        "sha256": "ab27e2dded5c1bb711150cb29ec9c6bb6131835e5199dc9c1a93c44ed4d8662a",
+        "candidate_type_excerpts": [
+          {
+            "line": 64,
+            "excerpt": "def Rep.tateNorm : (inhomogeneousChains M).X 0 ⟶ (inhomogeneousCochains M).X 0 :=\n  (chainsIso₀ M).hom ≫ M.norm.asHom.toModuleCatHom ≫ (cochainsIso₀ M).inv\n\nlemma Rep.tateNorm_eq :\n    M.tateNorm = ModuleCat.ofHom (Finsupp.lsum R fun _ ↦ LinearMap.pi fun _ ↦ M.ρ.norm) := by\n  ext\n  simp_all [tateNorm, chainsIso₀, cochainsIso₀, Unique.eq_default]\n\n@[reassoc (attr := simp), elementwise]"
+          },
+          {
+            "line": 67,
+            "excerpt": "lemma Rep.tateNorm_eq :\n    M.tateNorm = ModuleCat.ofHom (Finsupp.lsum R fun _ ↦ LinearMap.pi fun _ ↦ M.ρ.norm) := by\n  ext\n  simp_all [tateNorm, chainsIso₀, cochainsIso₀, Unique.eq_default]\n\n@[reassoc (attr := simp), elementwise]\nlemma Rep.norm_comp_d_eq_zero : M.norm.asHom.toModuleCatHom ≫ d₀₁ M = 0 := by\n  ext\n  simp [Pi.zero_apply _]"
+          },
+          {
+            "line": 73,
+            "excerpt": "lemma Rep.norm_comp_d_eq_zero : M.norm.asHom.toModuleCatHom ≫ d₀₁ M = 0 := by\n  ext\n  simp [Pi.zero_apply _]\n\nlemma Rep.tateNorm_comp_d : tateNorm M ≫ (inhomogeneousCochains M).d 0 1 = 0 := by\n  simp [tateNorm, eq_d₀₁_comp_inv M]\n\n@[simp]\nlemma Rep.comp_eq_zero : d₁₀ M ≫ M.norm.asHom.toModuleCatHom = 0 := by"
+          },
+          {
+            "line": 77,
+            "excerpt": "lemma Rep.tateNorm_comp_d : tateNorm M ≫ (inhomogeneousCochains M).d 0 1 = 0 := by\n  simp [tateNorm, eq_d₀₁_comp_inv M]\n\n@[simp]\nlemma Rep.comp_eq_zero : d₁₀ M ≫ M.norm.asHom.toModuleCatHom = 0 := by\n  ext\n  simp [d₁₀_single M]\n\nlemma Rep.d_comp_tateNorm : (inhomogeneousChains M).d 1 0 ≫ M.tateNorm = 0 := by"
+          }
+        ]
+      }
+    ]
+  },
+  "thh-calculation": {
+    "regex": "TopologicalHochschild|topological Hochschild|THH|dividedPower|DividedPower|Hochschild",
+    "scope": [
+      "SerrePositivity/**/*.lean",
+      "Mathlib/**/*.lean"
+    ],
+    "exit_code": 0,
+    "hit_lines": 3227,
+    "sample": [
+      "SerrePositivity/BhattScholze/Andre/OrdinaryRoots/Adjoin.lean:34:`Envelope/JetRegularity`、`Envelope/MonicCandidate`、`Envelope/Normalized`、`Envelope/RootRelation`、`OrdinaryRoots/Family`、`PowerRootEnvelope/DividedPowerPrime`、`PowerRootEnvelope/Varpi`、`Variants/MonicRootedExtension`、`Variants/RootedExtension`。",
+      "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/FrobeniusPullback.lean:1062:def powerRootPrismMonicFullFrobeniusDividedPowersOfMonic :",
+      "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/FrobeniusPullback.lean:1068:    DividedPowers (powerRootPrismMonicFullFrobeniusPDIdeal W hW f hf) := by",
+      "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/FrobeniusPullback.lean:1074:  exact principalPDSourceDividedPowers zp Ein",
+      "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/FrobeniusPullback.lean:1075:    (powerRootPrimeFrobeniusDividedPowersOfMonic W hW f hf)",
+      "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/FrobeniusPullback.lean:1087:    (powerRootPrismMonicFullFrobeniusDividedPowersOfMonic W hW f hf).IsDPMorphism",
+      "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/FrobeniusPullback.lean:1088:      (powerRootPrimeFrobeniusDividedPowersOfMonic W hW f hf) (Ein).toRingHom := by",
+      "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/FrobeniusPullback.lean:1095:    (powerRootPrimeFrobeniusDividedPowersOfMonic W hW f hf)",
+      "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/FrobeniusPullback.lean:1101:theorem powerRootPrismMonicFullFrobeniusDividedPowersOfMonic_input_apply",
+      "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/FrobeniusPullback.lean:1108:    (powerRootPrismMonicFullFrobeniusDividedPowersOfMonic W hW f hf).dpow n",
+      "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/FrobeniusPullback.lean:1115:  exact principalPDSourceDividedPowers_base_apply zp Ein",
+      "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/FrobeniusPullback.lean:1116:    (powerRootPrimeFrobeniusDividedPowersOfMonic W hW f hf)"
+    ],
+    "inspected_candidates": [
+      {
+        "file": "Mathlib/RingTheory/DividedPowers/Basic.lean",
+        "sha256": "bde3dc99eaee5a121b2f187f8fae53d79d5f66c8acd2e9b893032110aa5531fd",
+        "candidate_type_excerpts": [
+          {
+            "line": 77,
+            "excerpt": "structure DividedPowers where\n  /-- The divided power function underlying a divided power structure -/\n  dpow : ℕ → A → A\n  dpow_null : ∀ {n x} (_ : x ∉ I), dpow n x = 0\n  dpow_zero : ∀ {x} (_ : x ∈ I), dpow 0 x = 1\n  dpow_one : ∀ {x} (_ : x ∈ I), dpow 1 x = x\n  dpow_mem : ∀ {n x} (_ : n ≠ 0) (_ : x ∈ I), dpow n x ∈ I\n  dpow_add : ∀ {n} {x y} (_ : x ∈ I) (_ : y ∈ I),\n    dpow n (x + y) = (antidiagonal n).sum fun k ↦ dpow k.1 x * dpow k.2 y"
+          },
+          {
+            "line": 95,
+            "excerpt": "noncomputable def dividedPowersBot : DividedPowers (⊥ : Ideal A) where\n  dpow n a := open scoped Classical in ite (a = 0 ∧ n = 0) 1 0\n  dpow_null {n a} ha := by\n    simp only [mem_bot] at ha\n    rw [ite_eq_right]\n    exact not_and_of_not_left (n = 0) ha\n  dpow_zero ha := by\n    rw [mem_bot.mp ha]\n    simp only [and_self, ite_true]"
+          },
+          {
+            "line": 137,
+            "excerpt": "lemma dividedPowersBot_dpow_eq [DecidableEq A] (n : ℕ) (a : A) :\n    (dividedPowersBot A).dpow n a =\n      if a = 0 ∧ n = 0 then 1 else 0 := by\n  simp [dividedPowersBot]\n\nnoncomputable instance : Inhabited (DividedPowers (⊥ : Ideal A)) :=\n  ⟨dividedPowersBot A⟩\n\n/-- The coercion from the divided powers structures to functions -/"
+          },
+          {
+            "line": 142,
+            "excerpt": "noncomputable instance : Inhabited (DividedPowers (⊥ : Ideal A)) :=\n  ⟨dividedPowersBot A⟩\n\n/-- The coercion from the divided powers structures to functions -/\ninstance : CoeFun (DividedPowers I) fun _ ↦ ℕ → A → A := ⟨fun hI ↦ hI.dpow⟩\n\nvariable {I} in\n@[ext]\ntheorem DividedPowers.ext (hI : DividedPowers I) (hI' : DividedPowers I)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/EInfinity/PowerOperation/CyclicTateComplex.lean",
+        "sha256": "045949b0af85a56664873ef1eb0f62c1db5b4669043333b62e687f4884de2070",
+        "candidate_type_excerpts": [
+          {
+            "line": 22,
+            "excerpt": "def cyclicTateDifferential (A : Rep k G) (g : G) (i : ℤ) : A ⟶ A :=\n  if Even i then A.applyAsHom g - 𝟙 A else A.norm.asHom\n\nlemma cyclicTateDifferential_sq (A : Rep k G) (g : G) (i : ℤ) :\n    cyclicTateDifferential A g i ≫ cyclicTateDifferential A g (i + 1) = 0 := by\n  by_cases hi : Even i\n  · have hn : ¬Even (i + 1) := Int.not_even_iff_odd.mpr hi.add_one\n    simp only [cyclicTateDifferential, ite_eq_left hi, ite_eq_right hn]\n    ext"
+          },
+          {
+            "line": 25,
+            "excerpt": "lemma cyclicTateDifferential_sq (A : Rep k G) (g : G) (i : ℤ) :\n    cyclicTateDifferential A g i ≫ cyclicTateDifferential A g (i + 1) = 0 := by\n  by_cases hi : Even i\n  · have hn : ¬Even (i + 1) := Int.not_even_iff_odd.mpr hi.add_one\n    simp only [cyclicTateDifferential, ite_eq_left hi, ite_eq_right hn]\n    ext\n    simp [Rep.sub_hom, Rep.applyAsHom, Rep.norm]\n  · have hn : Even (i + 1) := (Int.not_even_iff_odd.mp hi).add_one\n    simp only [cyclicTateDifferential, ite_eq_right hi, ite_eq_left hn]"
+          },
+          {
+            "line": 38,
+            "excerpt": "lemma cyclicTateDifferential_natural {A B : Rep k G} (f : A ⟶ B) (g : G) (i : ℤ) :\n    cyclicTateDifferential A g i ≫ f = f ≫ cyclicTateDifferential B g i := by\n  by_cases hi : Even i\n  · simp only [cyclicTateDifferential, ite_eq_left hi, Preadditive.sub_comp,\n      Preadditive.comp_sub, Category.id_comp, Category.comp_id]\n    rw [Rep.applyAsHom_comm]\n  · simpa only [cyclicTateDifferential, ite_eq_right hi] using (Rep.norm_comm f).symm\n\n/-- 整数全次数にわたる、ノルムと作用差による係数複体。 -/"
+          },
+          {
+            "line": 47,
+            "excerpt": "def cyclicTateComplex (A : Rep k G) (g : G) : CochainComplex (Rep k G) ℤ :=\n  CochainComplex.of (fun _ => A) (cyclicTateDifferential A g)\n    (cyclicTateDifferential_sq A g)\n\n/-- 同じ微分を用いる係数複体の全関手。 -/\ndef cyclicTateComplexFunctor (g : G) : Rep k G ⥤ CochainComplex (Rep k G) ℤ where\n  obj A := cyclicTateComplex A g\n  map f := {\n    f _ := f"
+          }
+        ]
+      }
+    ]
+  },
+  "topological-colimit": {
+    "regex": "h.cofibration|Hurewicz|CGWH|Bousfield.Kan|weakHomotopyEquivalences|homotopyColimit",
+    "scope": [
+      "SerrePositivity/**/*.lean",
+      "Mathlib/**/*.lean"
+    ],
+    "exit_code": 0,
+    "hit_lines": 458,
+    "sample": [
+      ".lake/packages/mathlib/Mathlib/AlgebraicTopology/ModelCategory/CategoryWithCofibrations.lean:35:/-- A category with cofibrations is a category equipped with",
+      ".lake/packages/mathlib/Mathlib/AlgebraicTopology/ModelCategory/CategoryWithCofibrations.lean:71:/-- The class of cofibrations in a category with cofibrations. -/",
+      "SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/Equivalence/WeightedTowerKan.lean:100:/-- 概要：零段が Kan で遷移が fibration の塔の Bousfield–Kan 型の end は Kan 複体。",
+      "SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/Equivalence/WeightedTowerKan.lean:101:方針：添字を AsSmall で持ち上げ、Bousfield–Kan の重みに一般の重み付き塔の充填を適用する。",
+      "SerrePositivity/EInfinity/Hammock/WeakUnderPushout.lean:74:def monoWeakHomotopyEquivalences : MorphismProperty SSet.{u} :=",
+      "SerrePositivity/EInfinity/Hammock/WeakUnderPushout.lean:77:lemma monoWeakHomotopyEquivalences_cobase :",
+      "SerrePositivity/EInfinity/Hammock/WeakUnderPushout.lean:78:    monoWeakHomotopyEquivalences.{u}.IsStableUnderCobaseChange where",
+      "SerrePositivity/EInfinity/Hammock/WeakUnderPushout.lean:89:  have := monoWeakHomotopyEquivalences_cobase.{u}",
+      "SerrePositivity/EInfinity/Hammock/WeakUnderPushout.lean:90:  exact (monoWeakHomotopyEquivalences.underPushoutMap g k ⟨inferInstance, hk⟩).2",
+      "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/FiniteWeightedSectionsContinuity.lean:10:使われ方：I-2 d′ の有限 poset の Bousfield–Kan 模型。",
+      "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/DensityHomotopyDetection.lean:4:public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.HomotopyColimitValueDetection",
+      "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramFrameArrowComparison.lean:8:概要：Hom要素圏上の元の錐から、指定したBousfield–Kan比較射を作る。"
+    ],
+    "inspected_candidates": [
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyColimit.lean",
+        "sha256": "498ed7c0eedfe0a41a9b1946ab0a85e9a7d241afd9b1256d177cfab2ba649b2d",
+        "candidate_type_excerpts": [
+          {
+            "line": 25,
+            "excerpt": "def cofibrantFactorization :\n    let := Projective.modelCategory K I J\n    MorphismProperty.FunctorialFactorizationData\n      (cofibrations (K ⥤ C)) (trivialFibrations (K ⥤ C)) := by\n  let := Projective.modelCategory K I J\n  have : (cofibrations (K ⥤ C)).HasFunctorialFactorization (trivialFibrations (K ⥤ C)) :=\n    (Projective.functorialFactorizations K I J).1\n  exact MorphismProperty.functorialFactorizationData _ _\n"
+          },
+          {
+            "line": 34,
+            "excerpt": "def replacement : (K ⥤ C) ⥤ (K ⥤ C) := by\n  let := Projective.modelCategory K I J\n  exact ModelReplacement.initialArrows (K ⥤ C) ⋙ (cofibrantFactorization K I J).Z\n\ndef replacementComparison : replacement K I J ⟶ 𝟭 (K ⥤ C) := by\n  let := Projective.modelCategory K I J\n  exact\n    { app F := (cofibrantFactorization K I J).p.app (Arrow.mk (initial.to F))\n      naturality {_ _} f := (cofibrantFactorization K I J).p.naturality"
+          },
+          {
+            "line": 38,
+            "excerpt": "def replacementComparison : replacement K I J ⟶ 𝟭 (K ⥤ C) := by\n  let := Projective.modelCategory K I J\n  exact\n    { app F := (cofibrantFactorization K I J).p.app (Arrow.mk (initial.to F))\n      naturality {_ _} f := (cofibrantFactorization K I J).p.naturality\n        ((ModelReplacement.initialArrows (K ⥤ C)).map f) }\n\nlemma replacement_isCofibrant (F : K ⥤ C) :\n    let := Projective.modelCategory K I J"
+          },
+          {
+            "line": 45,
+            "excerpt": "lemma replacement_isCofibrant (F : K ⥤ C) :\n    let := Projective.modelCategory K I J\n    IsCofibrant ((replacement K I J).obj F) := by\n  let := Projective.modelCategory K I J\n  let d := cofibrantFactorization K I J\n  exact (isCofibrant_iff_of_isInitial (d.i.app (Arrow.mk (initial.to F))) initialIsInitial).mpr\n    ⟨d.hi _⟩\n\nlemma replacementComparison_trivialFibration (F : K ⥤ C) :"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/BousfieldKanRealizationHom.lean",
+        "sha256": "7687f2845fdb80384219d41db89eedffc295987dabc322d02b50dfee8032148e",
+        "candidate_type_excerpts": [
+          {
+            "line": 26,
+            "excerpt": "def bousfieldKanRealizationHomIso :\n    cosimplicialHom (SSet.stdSimplex ⋙ bousfieldKanParameterRealization K A) ≅\n      hom K A ⋙ weightedSectionsFunctor (bousfieldKanWeight Kᵒᵖ) :=\n  adjunctionHomIsoSameUniverse (bousfieldKanParameterAdjunction K A) SSet.stdSimplex ≪≫\n    Functor.isoWhiskerLeft _ QuillenStandardFrame.homIso ≪≫ Functor.rightUnitor _\n\n/-- 全次数の値は、指定随伴による転置のYoneda評価そのもの。 -/\nlemma bousfieldKanRealizationHomIso_hom_app (Y : C) (n : SimplexCategoryᵒᵖ)\n    (f : (bousfieldKanParameterRealization K A).obj (SSet.stdSimplex.obj n.unop) ⟶ Y) :"
+          },
+          {
+            "line": 33,
+            "excerpt": "lemma bousfieldKanRealizationHomIso_hom_app (Y : C) (n : SimplexCategoryᵒᵖ)\n    (f : (bousfieldKanParameterRealization K A).obj (SSet.stdSimplex.obj n.unop) ⟶ Y) :\n    (((bousfieldKanRealizationHomIso K A).hom.app Y).app n) f =\n      SSet.yonedaEquiv ((bousfieldKanParameterAdjunction K A).homEquiv _ Y f) := rfl\n\nend SerrePositivity.DiagramModel.FrameWeightRealization"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Topological/WeakEquivalence.lean",
+        "sha256": "a55faf2ebfe33e8a2718f85672aadcb5034bf0506601927f1fee2f4539c50d71",
+        "candidate_type_excerpts": [
+          {
+            "line": 22,
+            "excerpt": "def loopMap (f : X ⟶ Y) (x : X) (n : ℕ) :\n    GenLoop (Fin n) X x → GenLoop (Fin n) Y (f x) :=\n  fun p ↦ ⟨f.hom.comp p.1, fun t ht ↦ congrArg f (p.2 t ht)⟩\n\n/-- The map of homotopy classes induced by the given continuous map. -/\ndef homotopyMap (f : X ⟶ Y) (x : X) (n : ℕ) :\n    HomotopyGroup (Fin n) X x → HomotopyGroup (Fin n) Y (f x) :=\n  Quotient.map (loopMap f x n) (fun _ _ h ↦ h.comp_continuousMap f.hom)\n"
+          },
+          {
+            "line": 27,
+            "excerpt": "def homotopyMap (f : X ⟶ Y) (x : X) (n : ℕ) :\n    HomotopyGroup (Fin n) X x → HomotopyGroup (Fin n) Y (f x) :=\n  Quotient.map (loopMap f x n) (fun _ _ h ↦ h.comp_continuousMap f.hom)\n\n/-- The actual induced map of path components. -/\ndef componentMap (f : X ⟶ Y) : ZerothHomotopy X → ZerothHomotopy Y :=\n  ZerothHomotopy.lift (fun x ↦ ZerothHomotopy.mk (f x))\n    (fun _ _ p ↦ ZerothHomotopy.sound (p.map f.hom.continuous))\n"
+          },
+          {
+            "line": 32,
+            "excerpt": "def componentMap (f : X ⟶ Y) : ZerothHomotopy X → ZerothHomotopy Y :=\n  ZerothHomotopy.lift (fun x ↦ ZerothHomotopy.mk (f x))\n    (fun _ _ p ↦ ZerothHomotopy.sound (p.map f.hom.continuous))\n\n@[simp] lemma componentMap_mk (f : X ⟶ Y) (x : X) :\n    componentMap f (ZerothHomotopy.mk x) = ZerothHomotopy.mk (f x) := rfl\n\n@[simp] lemma componentMap_id : componentMap (𝟙 X) = id := by\n  funext a"
+          },
+          {
+            "line": 62,
+            "excerpt": "def weakHomotopyEquivalences : MorphismProperty TopCat.{u} := fun X _ f ↦\n  Function.Bijective (componentMap f) ∧\n    ∀ (x : X) (n : ℕ), Function.Bijective (homotopyMap f x (n + 1))\n\nlemma weakHomotopyEquivalences_id (X : TopCat.{u}) : weakHomotopyEquivalences (𝟙 X) := by\n  constructor\n  · simpa using Function.bijective_id\n  · intro x n\n    simpa using Function.bijective_id"
+          }
+        ]
+      }
+    ]
+  },
+  "verdier": {
+    "regex": "isVerdierSequence_of_adjoint|Verdier.*[Ll]ocalization|IsVerdierSequence|stable.*subcategory|tensor.*ideal",
+    "scope": [
+      "SerrePositivity/**/*.lean",
+      "Mathlib/**/*.lean"
+    ],
+    "exit_code": 0,
+    "hit_lines": 1070,
+    "sample": [
+      "SerrePositivity/EInfinity.lean:3147:public import SerrePositivity.EInfinity.Modules.ThickTensorIdeal",
+      "SerrePositivity/BhattScholze/IntegralPerfectoidization/FiniteEtale/FiniteEtalePerfectoid.lean:66:      (quotientTensorEquiv (R := A) A B A I (Ideal.Quotient.mk I a ⊗ₜ[A] (1 : B))) =",
+      "SerrePositivity/AlgebraicGeometry/GenericFiberUniversalInjectivity.lean:112:    (hf : Function.Surjective ((f.baseChange A).lTensor (⊥ : Ideal A).ResidueField)) :",
+      "SerrePositivity/BhattScholze/Andre/Transfinite/Colimit.lean:637:      (Algebra.TensorProduct.quotIdealMapEquivQuotTensor (_root_.DirectLimit S f) I).toLinearEquiv",
+      "SerrePositivity/BhattScholze/Andre/Transfinite/Colimit.lean:665:      (Algebra.TensorProduct.quotIdealMapEquivQuotTensor (S i) I).toLinearEquiv",
+      "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/FrobeniusPullback.lean:563:def powerRootPrismMonicFrobeniusTensorPDIdeal :",
+      "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/FrobeniusPullback.lean:579:theorem powerRootPrismMonicFrobeniusTensorPDIdeal_input_mem :",
+      "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/FrobeniusPullback.lean:584:    algebraMap Np Ft zp ∈ powerRootPrismMonicFrobeniusTensorPDIdeal W hW f hf := by",
+      "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/VarpiComparison.lean:323:    exact Module.Flat.of_linearEquiv (quotientTensorReductionEquiv (Ideal.span {v}) M).symm",
+      "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/VarpiComparison.lean:327:      (Module.Flat.of_linearEquiv (quotientTensorReductionEquiv (Ideal.span {v}) M))",
+      "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/VarpiComparison.lean:344:      (quotientTensorReductionEquiv (Ideal.span {v}) M).symm",
+      "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/VarpiComparison.lean:348:      (Module.FaithfullyFlat.of_linearEquiv _ _ (quotientTensorReductionEquiv (Ideal.span {v}) M))"
+    ],
+    "inspected_candidates": [
+      {
+        "file": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/Verdier/AdjointVerdier.lean",
+        "sha256": "27599b6257c43fd9ae3ec1c091a2672049b6be722484427a21dd4abcc93c8de0",
+        "candidate_type_excerpts": [
+          {
+            "line": 27,
+            "excerpt": "lemma invertedEdges_eq_cofiber_kernel {A T B : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}}\n    (i : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A T) (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap T B)\n    (hk : ∀ x, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (q.hom.app (Opposite.op ⦋0⦌) x) ↔ x ∈ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.essentialImage i) :\n    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.invertedEdges q.hom = _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberLocalizingEdges (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.essentialImage i) := by\n  ext e\n  constructor\n  · intro he\n    let c := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.chosenCofiberSquare (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex e)\n    have hz := (c.map_isInvertible_if"
+          },
+          {
+            "line": 41,
+            "excerpt": "theorem isVerdierSequence_of_adjoint {A T B : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}}\n    (i : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A T) (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap T B) (j : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B T)\n    (hi : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful i.hom)\n    (hk : ∀ x, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (q.hom.app (Opposite.op ⦋0⦌) x) ↔ x ∈ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.essentialImage i)\n    (a : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.QCatAdjunction q.hom j.hom) [IsIso a.counit] : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsVerdierSequence i q where\n  fullyFaithful := hi\n  kernel := hk\n  quotient := by\n    rw [← _root_.SerrePositi"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/Verdier/VerdierSequence.lean",
+        "sha256": "3faa9aa6c08cb902326fa86b6b401edd63da9ee8fbc0bfde5e3f51c267c44328",
+        "candidate_type_excerpts": [
+          {
+            "line": 29,
+            "excerpt": "def essentialImage {A B : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (i : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B) : Set (B.obj _⦋0⦌) :=\n  {b | ∃ a : A.obj _⦋0⦌, Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (i.hom.app (Opposite.op ⦋0⦌) a) b)}\n\nlemma image_mem_essentialImage {A B : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (i : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B)\n    (a : A.obj _⦋0⦌) : i.hom.app (Opposite.op ⦋0⦌) a ∈ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.essentialImage i :=\n  ⟨a, ⟨Iso.refl _⟩⟩\n\n/-- Verdier 列の条件。核の一致と商の普遍性の双方を含む。 -/\nstructure IsVerdierSequence {A B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}}"
+          },
+          {
+            "line": 32,
+            "excerpt": "lemma image_mem_essentialImage {A B : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (i : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B)\n    (a : A.obj _⦋0⦌) : i.hom.app (Opposite.op ⦋0⦌) a ∈ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.essentialImage i :=\n  ⟨a, ⟨Iso.refl _⟩⟩\n\n/-- Verdier 列の条件。核の一致と商の普遍性の双方を含む。 -/\nstructure IsVerdierSequence {A B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}}\n    (i : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B) (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) : Prop where\n  fullyFaithful : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful i.hom\n  kernel (b : B.obj _⦋0⦌) :"
+          },
+          {
+            "line": 37,
+            "excerpt": "structure IsVerdierSequence {A B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}}\n    (i : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B) (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) : Prop where\n  fullyFaithful : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful i.hom\n  kernel (b : B.obj _⦋0⦌) :\n    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex (q.hom.app (Opposite.op ⦋0⦌) b) ↔ b ∈ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.essentialImage i\n  quotient : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization q.hom (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberLocalizingEdges (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.essentialImage i))\n\n/-- 抽象 Verdier 列の対象と二つの完全関手。 -/\nstructure VerdierSequence where"
+          },
+          {
+            "line": 45,
+            "excerpt": "structure VerdierSequence where\n  left : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}\n  middle : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}\n  right : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}\n  inclusion : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap left middle\n  projection : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap middle right\n  isVerdier : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsVerdierSequence inclusion projection\n\nnamespace IsVerdierSequence"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/Verdier/StableCategories.lean",
+        "sha256": "32677882f15cc91739de67b546c3ab75875600a799d7af5501514e7238841f8e",
+        "candidate_type_excerpts": [
+          {
+            "line": 29,
+            "excerpt": "structure StableCategory where\n  obj : SSet.{u}\n  isQuasicategory : Quasicategory obj\n  isStable : @_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable obj isQuasicategory\n\nattribute [instance] _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.isQuasicategory _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.isStable\n\n/-- 完全関手は F3 の零対象・cofiber 保存条件を満たす実際の単体的射。 -/\nstructure ExactMap (A B : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}) where"
+          },
+          {
+            "line": 37,
+            "excerpt": "structure ExactMap (A B : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}) where\n  hom : A.obj ⟶ B.obj\n  isExact : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor hom\n\nattribute [instance] _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap.isExact\n\n@[ext] lemma ExactMap.ext {A B : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} {F G : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B}\n    (h : F.hom = G.hom) : F = G := by\n  cases F"
+          },
+          {
+            "line": 51,
+            "excerpt": "instance stableCategory_category : Category.{u} _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u} where\n  Hom := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap\n  id A := ⟨𝟙 A.obj, inferInstance⟩\n  comp F G := ⟨F.hom ≫ G.hom, inferInstance⟩\n  id_comp F := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap.ext (Category.id_comp F.hom)\n  comp_id F := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap.ext (Category.comp_id F.hom)\n  assoc F G H := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap.ext (Category.assoc F.hom G.hom H.hom)\n\n/-- 関手 ∞ 圏の頂点が表す実関手の完全性。 -/"
+          },
+          {
+            "line": 60,
+            "excerpt": "def IsExactVertex (A B : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u})\n    (v : ((ihom A.obj).obj B.obj) _⦋0⦌) : Prop :=\n  _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv A.obj B.obj).symm v)\n\n/-- 完全関手と全ての自然変換からなる充満部分 ∞ 圏。 -/\ndef exactFunctors (A B : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}) : ((ihom A.obj).obj B.obj).Subcomplex :=\n  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsExactVertex A B)\n\ninstance exactFunctors_quasicategory (A B : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}) :"
+          }
+        ]
+      }
+    ]
+  }
+}

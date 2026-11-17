@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.CarrierFramedLimitHom
-public import SerrePositivity.EInfinity.HomotopyWeight.FrameConeClasses
+public import SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.FrameConeClasses
 
 /-!
 # 底の右錐の Hom 比較を元の複体射で正規化する
@@ -23,7 +23,7 @@ universe u
 
 namespace SerrePositivity.EInfinity.BarrattEccles
 
-open CategoryTheory Limits HomotopicalAlgebra Opposite
+open CategoryTheory Limits _root_.HomotopicalAlgebra Opposite
 open SerrePositivity.DifferentialGraded SerrePositivity.DiagramModel
 
 variable (A : Type u) [CommRing A] (K : Type u) [SmallCategory K]
@@ -35,9 +35,9 @@ variable (A : Type u) [CommRing A] (K : Type u) [SmallCategory K]
 def carrierFramedLimitMapClass (F : K ⥤ (operad A).Algebra) {Y : Complex A}
     (f : Y ⟶ ((framedLimitFunctor A K).obj F).carrier) :
     SSet.π₀ ((carrierFramedLimitConeSpace A K Y).obj F) :=
-  HomotopyWeight.coneClass Kᵒᵖᵒᵖ (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K)
+  _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.coneClass Kᵒᵖᵒᵖ (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.framedLimitWeight K)
     ((FrameWeightRealization.adjunction Kᵒᵖ (carrierRightFrameDiagram A K F)).homEquiv
-      (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K) (op (carrierFramedLimitProbe A Y))
+      (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.framedLimitWeight K) (op (carrierFramedLimitProbe A Y))
       (((carrierFramedLimitProbeComparison A).app Y ≫ f ≫
         (framedLimitCarrierIso A K F).hom).op))
 /-- 概要：底の右錐の Hom 比較は元の複体射の局所化像を回収（Hovey §5.4）。
@@ -59,14 +59,14 @@ lemma carrierFramedLimitHomPiZeroEquiv_mapClass (F : K ⥤ (operad A).Algebra) {
     _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.fibrantOp_of_cofibrant _
   let p := (carrierFramedLimitProbeComparison A).app Y
   let h := p ≫ f ≫ (framedLimitCarrierIso A K F).hom
-  let e := HomotopyWeight.frameConePiZeroLocalizationEquiv Kᵒᵖ (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K)
-    (carrierRightFrameDiagram A K F) (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight_cofibrant K)
+  let e := _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.frameConePiZeroLocalizationEquiv Kᵒᵖ (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.framedLimitWeight K)
+    (carrierRightFrameDiagram A K F) (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.framedLimitWeight_cofibrant K)
     (fun k => carrierRightFrame_cofibrant A (F.obj k.unop))
     (fun k _ _ g => carrierRightFrame_homotopicallyConstant A (F.obj k.unop) g) Q.op
     (op (carrierFramedLimitProbe A Y))
   have hr : e (carrierFramedLimitMapClass A K F f) = Q.op.map h.op :=
-    HomotopyWeight.frameConePiZeroLocalizationEquiv_class Kᵒᵖ (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K)
-      (carrierRightFrameDiagram A K F) (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight_cofibrant K)
+    _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.frameConePiZeroLocalizationEquiv_class Kᵒᵖ (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.framedLimitWeight K)
+      (carrierRightFrameDiagram A K F) (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.framedLimitWeight_cofibrant K)
       (fun k => carrierRightFrame_cofibrant A (F.obj k.unop))
       (fun k _ _ g => carrierRightFrame_homotopicallyConstant A (F.obj k.unop) g) Q.op h.op
   have : IsIso (Q.map p) := Localization.inverts Q (weakEquivalences (Complex A)) p

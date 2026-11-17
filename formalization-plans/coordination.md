@@ -9,19 +9,19 @@
 
 | レーン | 道具 | 担当 | worktree・枝 | 入口 | 状態（11-07） |
 | --- | --- | --- | --- | --- | --- |
-| 調整役 | Claude Code | 暦・合図・取り込み、検収、BS の設計 | main | 計画・本書・`bhatt-scholze/design-status.md` | — |
+| 調整役 | Claude Code | 暦・合図・取り込み、検収、BS の設計 | main | 計画・本書・`bhatt-scholze/design/design-status.md` | — |
 | Kerodon の確認 | Codex | 対応表の全項目の確認 | `SerrePositivity-kerodon-review-a`（枝 `research/kerodon-review-a2`）・`-b`・`-c` | `research/kerodon-coverage/codex-review.md` | 全 10 章のやり直しと抜き取りは main（11-10）。-a2・-b は閉じた（11-10）。-c が KL-W1 の段 3 の後に partial・none の一括見直し（§8.2 の 4） |
 | HA の確認 | Codex | HA の全項目の対応表（本全体、HA の形式化の検討の材料） | （閉じた） | `research/ha-coverage/codex-review.md` | **完了・閉じた**（11-11）：全 2,866 項目、`review/summary.md`。worktree と枝は削除 |
 | HTT の確認 | Codex | HTT の全項目の対応表（本全体、Kerodon の行を参照） | （閉じた） | `research/htt-coverage/codex-review.md` | **完了・閉じた**（11-11）：全 1,730 項目、`review/summary.md`。worktree と枝は削除 |
 | K の地図 | Codex | K の文献ごとの全項目の対応表（本論文 §3・§4、KST、Land–Tamme、Tamme、BGT） | （閉じた） | `research/k-coverage/codex-maps.md` | 完了・閉じた（11-11、f15ad120b）。全 17 文献 688 項目、要約 research/k-coverage/maps/summary.md。K の再開時に新しく開く |
-| KL-W1 → 一括 | Codex | ∞ の配置を Kerodon に合わせる（**完了**、11-12 に main へ 19f081dcb：root 30,355・監査 103・verify PASS）→ 各レーンの追従の支援 → 一括レーン（`stage-ii/citation-attributes.md`） | `SerrePositivity-kerodon-layout`・`refactor/kerodon-layout` | `stage-ii/kerodon-layout-w1.md` | 各レーンの改名への追従（K4）を待つ |
+| KL-W1 → 一括 | Codex | ∞ の配置を Kerodon に合わせる（**完了**、11-12 に main へ 19f081dcb：root 30,355・監査 103・verify PASS）→ 各レーンの追従の支援 → 一括レーン（`stage-ii/citation-attributes.md`） | `SerrePositivity-kerodon-layout`・`refactor/kerodon-layout` | `stage-ii/bulk/kerodon-layout-w1.md` | 各レーンの改名への追従（K4）を待つ |
 | ③ ∞ 供給 | Codex | G8 の四角形 → G14・G9・G10 | `SerrePositivity-inf-supply`・`math/inf-supply` | `stage-ii/inf-supply-w1.md` | KL-W1 の後 |
-| ⑤a BS 実装 | Codex | BS-DOC1 → BS-W11 → BS-W12（BM18 の経路 B） | `SerrePositivity-bs-impl`・`math/bs-impl` | `bhatt-scholze/bhatt-scholze-codex-w16.md` | BS-W14 は main（A1 の二本は ⑤b の停止点 3 の後）。BS-W16（実例の欄、G12・P⁰ を除く）段 0（11-10）。11-12 夜：KL-W1 の追従の merge（未コミット）を `SerrePositivity-bs-impl` に保持したまま、a の続きは一時の worktree `SerrePositivity-bs-impl-a`・枝 `math/bs-impl-a` で進めている（追従が終わったら枝を合流して worktree を消す） |
-| ⑤b BS 実装 → ③-b ∞ 供給 b | Codex | BS-D69 **完了**（停止点 3 を 11-12 に main へ、登録 a34a840f7）→ Δ・Δᵒᵖ の橋（G10、幾何学的実現） | `SerrePositivity-bs-d68`・`math/inf-supply-b`（main から） | `stage-ii/inf-supply-w2.md` | IS-W2 段 0 |
+| ⑤a BS 実装 | Codex | BS-DOC1 → BS-W11 → BS-W12（BM18 の経路 B） | `SerrePositivity-bs-impl`・`math/bs-impl` | `bhatt-scholze/instructions/bhatt-scholze-codex-w16.md` | BS-W14 は main（A1 の二本は ⑤b の停止点 3 の後）。BS-W16（実例の欄、G12・P⁰ を除く）段 0（11-10）。11-12 夜：KL-W1 の追従の merge（未コミット）を `SerrePositivity-bs-impl` に保持したまま、a の続きは一時の worktree `SerrePositivity-bs-impl-a`・枝 `math/bs-impl-a` で進めている（追従が終わったら枝を合流して worktree を消す） |
+| ⑤b BS 実装 → ③-b ∞ 供給 b | Codex | BS-D69 **完了**（停止点 3 を 11-12 に main へ、登録 a34a840f7）→ Δ・Δᵒᵖ の橋（G10、幾何学的実現） | `SerrePositivity-bs-d68`・`math/inf-supply-b`（main から） | `stage-ii/inf-supply-b/inf-supply-w2.md` | IS-W2 段 0 |
 | ⑤c BS 実装 → ③-a ∞ 供給 a | Codex | BS-W17 **完了**（停止点 5 を 11-12 に main へ）→ G8 の四角形・G14・G9 | `SerrePositivity-bs-classical`・`math/inf-supply`（main から） | `stage-ii/inf-supply-w1.md` | IS-W1 段 0 |
-| ⑤d M15・G12 | Codex | M15（descendability）→ G12（CAlg の presentability）。⑤a の M14 と並べるため 11-14 に新設 | `SerrePositivity-bs-m15`・`math/bs-m15` | `bhatt-scholze/bhatt-scholze-codex-m15.md` |
+| ⑤d M15・G12 | Codex | M15（descendability）→ G12（CAlg の presentability）。⑤a の M14 と並べるため 11-14 に新設 | `SerrePositivity-bs-m15`・`math/bs-m15` | `bhatt-scholze/instructions/bhatt-scholze-codex-m15.md` |
 | ⑥ スキーム論 | Codex | BS17 Thm 4.1 (i) の経路 | `SerrePositivity-scheme`・`math/scheme` | `stage-ii/scheme-w1.md`（§6 で BS17 に絞る） | 2a′（移動）・2b・2d の一部は main、2d 進行中（11-07） |
-| ① ∞ 中核 | Codex | Verdier 商（K の入口） | — | `stage-ii/inf-core-w1.md` | **止める**（K と一緒に後回し、11-07） |
+| ① ∞ 中核 | Codex | Verdier 商（K の入口） | — | `stage-ii/consolidation/inf-core-w1.md` | **止める**（K と一緒に後回し、11-07） |
 
 後から足すもの（②④⑦、K 理論）と開く条件は計画の §5.1。
 
@@ -36,11 +36,14 @@
    - 古い版が溜まるので、窓の区切りで `lake cache clean`（全消去）か、ディスクを見て判断する。
    - rsync の温め（`warm_build_dir.sh`）は、キャッシュに入っていない成果物が要るときの予備に格下げ。
    - **掃除（11-02 決定）**：`lake cache clean` は空きが 150 GB を切ったときだけ、全ビルドのない時刻に、全 worktree が温まった状態で行い、直後に main で `lake build` を走らせて現行の成果物を登録し直す。定期的な掃除はしない（11-02：22 GB・331,250 本、空き 455 GB）。
+4d. **verify が時間のガードで止まったとき（11-17）**：全監査が成功していて sorry の閉包の段だけが残った場合は、同じ HEAD で `lake env lean scripts/refactor/audit_sorries.lean` を単独で確かめ、二つのログを報告に並べて PASS として扱う（gate は機械では non-gate になる）。昼に長い枠を取り直さない。
+4e. **昼の取り込みは短い塊で（11-17、ユーザー承認 B）**：調整役の取り込みは昼でも、鍵（coord）を短い塊で取り直して行ってよい。計測は監査 1 本ずつ、ビルドは `gtimeout` で 10 分の塊、監査は一束 12 分程度（並列 6・メモリ 40 GB）の束に分け、sorry の閉包は単独。同じ HEAD で全監査の束と sorry の閉包がすべて通れば verify PASS として扱う（4d と同じ合成の判定。道具は調整役の scratchpad の `day_merge.py`）。
+4c. **取り込みはまとめて（11-17）**：複数のレーンの停止点が近いときは、同じ夜に取り込んで root＋verify を一回にする（`stage-ii/build-cost-plan.md` B5）。
 4b. **main の作業木の規則（11-04 決定、事故の後）**：main の作業木では Lean の編集もビルドもしない（取り込みと温めは Claude だけ）。main に直接コミットするセッション（BS の記録など）は、必ず `git commit --only <自分のファイル>` で、`git add -A`・`git commit -a` を使わない。11-04 に B4 の未コミットの削除（`Pair/Tower.lean`）が BS の記録コミット 38e6d889a に巻き込まれ、babef8b23 で復元した。
 4a. **小さなビルドの規則（11-02 19:40 決定）**：変更したファイルと直接の importer までの小さなビルド（数百本以下）は、**下流ビルド・verify が走っていなければ合図なしで行ってよい**。確認は `ps -axo command= | grep "[l]ake build"` が空であることと、`scripts/refactor/with_build_lock.sh --wait 0 -- lake build …` で鍵が取れること（取れなければ待つ）。下流・verify の時間帯（暦 §3）には行わない。全ビルド（下流・verify）は従来どおり暦と合図。
 4. verify は `VERIFY_JOBS=3`（最長の監査が RSS 19 GB）。中間の確認には `VERIFY_CACHE=1`（gate:false）を使ってよい。
 5. 土台（HomologicalAlgebra・CategoryTheory・HomotopicalAlgebra・DG の Complexes/Category/Module/Functor）に触る変更は、下流ほぼ全部（約 9,000〜20,000 本、単独で 3〜8 時間）を再ビルドする。これを起こす変更は窓ごとに一束。
-6. 実測（[verify-build-costs の記録](dg-cleanup-plan.md#5a-再ビルドの費用と規則2026-10-30dg-w1-の実測から)）：DG-W1 の土台 6 本の import 書き換えで 11,250 本・6 時間 57 分（3 セッション同時）、verify 1 時間 49 分。
+6. 実測（[verify-build-costs の記録](archive/stage-i/dg-cleanup-plan.md#5a-再ビルドの費用と規則2026-10-30dg-w1-の実測から)）：DG-W1 の土台 6 本の import 書き換えで 11,250 本・6 時間 57 分（3 セッション同時）、verify 1 時間 49 分。
 
 - **Codex の書き込み先（11-11）**：Codex のチャットは main の作業木で起動していて、隣の worktree への書き込みが毎回承認になる。`~/.codex/config.toml` の `writable_roots` はアプリのチャットに効かなかったので元に戻した。対策は未決（チャットの権限の切り替え、または worktree を開いた新しいチャット）。
 - **鍵の取り合い（11-10）**：調査のレーン（Kerodon・HA・HTT・K の地図）の `#check` の一括実行も同じ鍵を使う。調査のレーンは一回の鍵を 10 分以内に収める（モジュールの塊を小さく分け、塊ごとに鍵を取り直す）。実装のレーン（⑤a・⑤b・⑥）は `--wait 0` で諦めず、`--wait 1800` で待つ。
@@ -68,8 +71,18 @@
   - **持ち主の履歴（11-11 17:10 追加）**：鍵の取得・返却は `$TMPDIR/serre-lake-build.history.jsonl` に一行ずつ追記される（時刻・worktree・組・コマンド）。長い持ち方は後からこれで確かめる。モニターも読んでよい（読むだけ）。
   - **`--wait` の目安（11-11 11:10 改定）**：impl・research・bulk とも `--wait 3600`（繰り上げまで最大 15〜30 分＋前の持ち主の最大 30 分）。同じ worktree から整理券を複数出さない（待ちは一つにまとめる）。
   - **夜の空き（11-11）**：11-10 の夜は 01:08〜06:07 の 5 時間、鍵が空いた。KL-W1 は夜の束が早く終わったら次の段に続ける。止まったときは報告し、空いた鍵は impl が使ってよい（整理券の列が自動で回す）。
+  - **広く再ビルドを起こす取り込みは夜（11-16 追加、モニターの指摘）**：11-16 14:27 の DAG XIII・NS の取り込みで、`Util/Citation.lean`（直接 896 本が import）の略号表に 4 行足しただけで root がほぼ全部再コンパイルになり、coord が鍵を 65 分以上持って ⑥・③-a・一括・③-b が約 1 時間止まった（load 261、swap 11.3／12.3 GB）。(1) 略号表（`Util/Citation.lean` の生成ブロック）の変更を含む取り込みは夜に回す。(2) 調整役の root ビルドと全監査は、取り込みが狭い範囲（新しいモジュールの追加だけ）なら昼でよいが、土台や多くの本が import するファイルに触るものは夜に回す。取り込みの前に `git diff --name-only` で触るファイルの importer の数を見る。(3) 略号表を import の連鎖から外す設計（キーの検査を別のモジュールか検査スクリプトへ）は台帳 BR54。
   - 列を見る：`zsh scripts/refactor/with_build_lock.sh --status`。
   - 切り替え中は、古い版で待っているプロセスが鍵が空いた瞬間に取ることがある（整理券を持たない）。それらが終われば列は整う。
+
+### 2.1 Lean の作業の進め方（標準、2026-11-17 ユーザー決定。⑥ SC-W1 の進め方を標準にする）
+
+1. **Lean の前に署名の紙**：残りを補題の単位（署名）に分けた紙を書く。各署名に、名前・Lean の完全な型・依存先（他の署名）・使う既存の宣言と場所（`名前 @ パス:行`）・原典の番号・素の見込みの行数と補正の係数（今は 2）。依存グラフに循環がないことを道具で確かめ、紙にその結果を書く。
+2. **既存の構成の照合・合成則も署名に**：法則・照合の補題でも、200 行を超えそうなものは署名として書き出す（③-a の 5∞-1 第 3 項の停止の教訓：`realizationIso` の合成則が見積もりから漏れた）。
+3. **依存する既存の定義を紙の段階で点検**：使う既存の定義が指定構成を保つか（弱い存在命題からの choose など、BR55）を紙で確かめ、置き換えが要るものは一覧にしてまとめて承認を受ける。
+4. **紙の範囲の中は事前承認**：外枠は補正後の上端に少し余裕（1〜5%）を足した値。止まるのは、一覧にない署名が要るとき、署名の型・仮定を変えるとき、外枠を超えるとき、main にある既存の宣言の本体を変えるときだけ。
+5. **進み具合は署名の数で**：「一覧：済み n／全体 m（うち追加 k）」で報告する。行数は外枠の確認に使う。
+6. **上端を少し超えた場合の扱いを先に決める**（夜に外枠の判断で止まらないため）。各指示書に書く。既定：見込みの上端が外枠を超えそうになったら、外枠は上げずに、完成した署名のまとまりで区切り、残りを次の停止点に切り離して止まる（検証済みをコミット）。調整役が取り込み、残りの紙と外枠はその後に決める。
 
 ## 3. 暦
 
@@ -78,7 +91,7 @@
 | 時期 | 内容 |
 | --- | --- |
 | 11-07 | Kerodon の確認（段 1′）。⑤a・⑤b・⑥ 開始。取り込みのたびに調整役がルートのビルド（キャッシュで数分）と監査 |
-| 確認の完了後 | KL-W1（∞ の配置を Kerodon に合わせる、`stage-ii/kerodon-layout-w1.md`）。段 3 の後に下流ビルドと verify を一回（暦は段 1 の承認のときに書く）。①③は KL-W1 の取り込みの後に開始 |
+| 確認の完了後 | KL-W1（∞ の配置を Kerodon に合わせる、`stage-ii/bulk/kerodon-layout-w1.md`）。段 3 の後に下流ビルドと verify を一回（暦は段 1 の承認のときに書く）。①③は KL-W1 の取り込みの後に開始 |
 | KL-W1 の取り込みの直後（調整役） | **済（11-12、7d8ae8623）**：改名表で名前と場所を引き直し、新しいファイルで宣言の行を照合した（3,905 件、未解決 187 件は宣言でない記述や別名のもので、文献の属性の一括レーンで扱う）。Lean の環境からの引き直しは属性の段で行う。対応表の宣言の場所を書き直す（11-11、ユーザー承認）：HTT・HA・Prisms の表と Kerodon・K の地図の「名前 @ パス:行」を、(1) KL-W1 の改名表で名前を置き換え、(2) Lean の `findDeclarationRanges?` で今のモジュールと行を環境から引き直す。見つからない名前は一覧にして止める（黙って消さない）。道具は `scripts/` に置き、以後の移動でも使う。直したら地図を作り直す |
 | 宣言の場所の書き直しの後 | 文献の属性と InfinityCategories/Project の整理（同じ回、`citation-attributes.md` §5）。文献の属性 `@[cite KEY "番号"]` の一括レーン（11-11、ユーザー決定。`stage-ii/citation-attributes.md`）：属性・照会のコマンド・略号表、対応表から属性を自動で付ける（夜の bulk）、地図を属性から作る |
 | KL-W1 の取り込みの後（11-12 決定） | 段階 II 後半の構成は `stage-ii/stage-ii-second-half.md`：⑤c → ③-a（G8 系、IS-W1）、⑤b → ③-b（Δ・Δᵒᵖ の橋、IS-W2）、KL-W1 のチャット → 一括、⑤a は経路 A で続行（sifted の一般部分は ③-b）、⑥ はそのまま。⑤∞（BS の ∞ 側）は 3a-2 の後に開く |
@@ -95,13 +108,41 @@
 | レーン | 状態 |
 | --- | --- |
 | ∞ 整理（Codex） | 閉じた（C1〜C3 は 05c33bfc0） |
-| ∞ 数学 G2 | 閉じた。IF-G2-finish の段 1 と段 2 の途中まで main に入った（408d87457、6f35a986f）。枝 `math/g2` と worktree は削除。残りは `infinity-g2-progress.md` の末尾の節から段階 II の ∞ 供給レーンが再開する |
-| BS 設計・BS 実装（段階 I） | 閉じた。段階 II では BS 実装は新しい Codex チャット、設計は調整役が持つ（入口 `bhatt-scholze/design-status.md` §0、drafts の扱いは計画 §1.0） |
+| ∞ 数学 G2 | 閉じた。IF-G2-finish の段 1 と段 2 の途中まで main に入った（408d87457、6f35a986f）。枝 `math/g2` と worktree は削除。残りは `archive/stage-i/infinity-g2-progress.md` の末尾の節から段階 II の ∞ 供給レーンが再開する |
+| BS 設計・BS 実装（段階 I） | 閉じた。段階 II では BS 実装は新しい Codex チャット、設計は調整役が持つ（入口 `bhatt-scholze/design/design-status.md` §0、drafts の扱いは計画 §1.0） |
 | DG・論文の層 | 閉じた |
 | 段階 II の新しいレーン（11-07）：⑤a・⑤b・⑥・Kerodon の確認が稼働。① は止めている。③ は KL-W1 の後 | 11-05 夜：計画の確定。開始文は [stage-ii/lane-starts.md](stage-ii/lane-starts.md)、指示書は `stage-ii/`（①IC-W1、③IS-W1、⑥SC-W1）。⑤は W11（§6 の追記）|
+
+### 4.1 レーンの閉鎖と作業木の整理（2026-11-17、ユーザー決定）
+
+動いているレーン（③-a `math/inf-supply`・⑥ `math/scheme`・③-b `refactor/organize-einfinity`）はそのまま。それ以外は閉じた。
+
+| 閉じたレーン | 枝・作業木 | 残したもの |
+| --- | --- | --- |
+| ⑤a BS 実装（W16） | `math/bs-impl`・`SerrePositivity-bs-impl` を削除。タグ `archive/math-bs-impl-2026-11-17`（紙の記録 6 commit と未検証の L23 の下書き） | 報告は `bhatt-scholze/reports/report-codex-w16.md`（現在地）と `archive/reports/` |
+| ⑤d M15・G12 | `math/bs-m15`・`codex/paper-coverage`（取り込み済み）・`SerrePositivity-bs-m15` を削除 | 報告は `report-codex-m15.md`。G12 の続きは D81 の後に別の指示書で |
+| 一括（KL-W1 のチャット） | `codex/bulk-5inf3a`・`bulk/*`・`refactor/kerodon-layout`（取り込み済み）・`SerrePositivity-kerodon-layout`・`/private/tmp` の比較用の木を削除 | B3′・B5 の残りは再開時に新しい枝で。証拠は `evidence/bulk/` |
+| 紙の作業（⑤a・⑤d の P⁰ 系、DAG/NS、本論文の対応表） | `codex/p0-*`・`research/dag13-ns-coverage`・`math/p0-p4-p6` と作業木を削除 | 成果は `research/` と `stage-ii/p0/` |
+| 調査（Kerodon の確認） | `research/kerodon-review-c`・作業木を削除。`research/kerodon-review-a` はタグ `archive/research-kerodon-review-a-2026-11-17` を打って削除 | 対応表は `research/kerodon-coverage/` |
+| 文書（整理・ブループリント） | `docs/reorg-stage1`・`docs/kerodon-blueprint` は main に入れて削除 | `blueprint/`、`formalization-plans/doc-reorg/` |
+
+**規則**：作業木はレーンごとに一つ、名前はレーン（`SerrePositivity-<レーン>`）。枝は main に入れたら消す。保存比較の「前」の木（`/private/tmp`）は段の終わりに消す。取り込まない枝はタグ（`archive/<枝>-<日付>`）を打ってから消す。`/private/tmp/oe-w1-before-30ae8948f` は ③-b の OE-W1 段 1 の保存比較が終わるまで残す。
+
+**⑧ 引用文献（11-17 新設、ユーザー決定）**：本論文が引用する文献の対応表とブループリント。最初は CLMST（指示書 `stage-ii/cited/clmst-coverage.md`、worktree `SerrePositivity-cited`、枝 `research/cited-coverage`）。紙だけでビルドなし。
+
+**⑦ IC-W1（11-17 開始）**：worktree `SerrePositivity-ic`、枝 `refactor/infinity-consolidation`（今夜取り込む `merge/night-2026-11-17` から）。指示書 `stage-ii/consolidation/infinity-consolidation-w1.md`。IC-1 の段 0（紙）から。Lean の適用は夜。
+
+**Codex のチャットの開き方（11-17、ユーザー決定）**：新しいレーンの Codex チャットは、調整役が worktree と枝を作った後、**その worktree をカレントディレクトリにして開く**（main の作業木では開かない。11-11 の `writable_roots` は効かず、全アクセスは使わない）。指示書の冒頭に worktree のパスを書き、開始文に「`pwd` が `../SerrePositivity-<レーン>` であることを確かめてから始める」を入れる。main で開いてしまったら閉じて開き直す。動いている三つのレーンは停止点まで今のまま。
+
+**証拠（11-17）**：これからの検証の証拠は git の外 `~/serre-evidence/<レーン>/<段>/`、目録だけ `scripts/docs/evidence_manifest.py` でコミット（`evidence/README.md`）。各レーンには停止点の取り込み時に伝える。
+
+BR55（choose の洗い出し）と ⑤a・⑤d に残っていた課題（M14 の L23 以降、G12 の D81 後の扱い）は、再開するときに新しいレーンとして開く。
 
 ## 5. 段階 I から引き継ぐ要点
 
 - 整理の結果：DG 1,592 → 126 本、論文の層の区切りはすべて完了、∞ は中核層間の順序違反 0・直接の禁止辺 0・中核の閉包の KST とモデル圏 150 → 74（残りは M16）、F-2 で KST から移した 730 モジュールの名前空間をディレクトリに合わせた（改名表 `../scripts/refactor/targets/f-namespace-map.json`、旧名は deprecated alias で段 G の最初の区切りまで残す）。
 - 主定理の閉包の sorry は 3 つ（E3、`theorem_3_1_K0`、`Section4.supportedRankK0_descent`）。
 - 調整役の引き継ぎは [coordinator-handover-2026-11.md](coordinator-handover-2026-11.md)。
+
+- **11-16 16:23 の中断の記録**：DAG XIII・NS の取り込み（cd79e9cc5）の後の root ビルドを 16:23 に止めた（ユーザー判断。略号表の変更でほぼ全体の再ビルドになり、四レーンが約 1 時間待ったため）。それまでに作り直した 12,070 本は共有のキャッシュに残る。**root ビルドは今夜（23 時以降）に coord が続きから流す**。それまで main は「取り込み済み・root 未確認」。各レーンは停止点まで main を取り込まない。
+- **11-17 01:44 root の確認**：16:23 に止めた root のビルドを 23:04 から続きで流し、`Build completed successfully (33408 jobs)`（main 5982b238c 以降の内容、cd79e9cc5 の略号表の変更を含む）。main は「取り込み済み・root 確認済み」に戻った。各レーンは停止点で main を取り込んでよい（共有のキャッシュから戻るので、夜に取り込むと速い）。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.MappingSpace
-public import SerrePositivity.EInfinity.FrameHom.ResolutionAsphericity
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ResolutionAsphericity
 
 /-!
 # 実際の E 代数の写像空間に使う分解の asphericity
@@ -34,7 +34,7 @@ variable (A : Type u) [CommRing A]
 使われ方：元の写像空間の分解の asphericity の値圏。 -/
 abbrev algebraTrivialFibrationOver (X : (operad A).Algebra) :=
   let := modelCategory A
-  FrameHom.TrivialFibrationOver X
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.TrivialFibrationOver X
 
 /-- 概要：同じ Map^h の分解は元の自明 fibration の slice への関手（Low 命題 3.6）。
 方針：元の mappingCofibrantFactorization の全作用素を代入する。
@@ -43,7 +43,7 @@ abbrev algebraTrivialFibrationOver (X : (operad A).Algebra) :=
 def mappingResolutionOverFunctor (X : (operad A).Algebra) :
     SimplexCategory ⥤ algebraTrivialFibrationOver A X := by
   let := modelCategory A
-  exact FrameHom.resolutionOverFunctor
+  exact _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.resolutionOverFunctor
     ((cosimplicialResolutionFamily (mappingCofibrantFactorization A)).atObject X)
 
 /-- 概要：元の分解の全 comma 圏の終射は anodyne 反転後に可逆（Low 命題 3.6）。
@@ -56,7 +56,7 @@ lemma mappingResolutionCommaTerminal_localized_isIso (X : (operad A).Algebra)
       (SSet.stdSimplex.isTerminalObj₀.from
         (nerve (CostructuredArrow (mappingResolutionOverFunctor A X) t)))) := by
   let := modelCategory A
-  exact FrameHom.resolutionCommaTerminal_image_isIso
+  exact _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.resolutionCommaTerminal_image_isIso
     ((cosimplicialResolutionFamily (mappingCofibrantFactorization A)).atObject X) t
     SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ
     (Localization.inverts _ SSet.anodyneExtensions)

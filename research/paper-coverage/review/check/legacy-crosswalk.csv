@@ -1,0 +1,63 @@
+legacy_number,legacy_kind,current_targets,current_helper_declarations,disposition
+§3,section,toc §3,,原典の節見出しはtocへ移す。定理・式のノード数には含めない。
+§3.1,section,toc §3.1,,原典の節見出しはtocへ移す。定理・式のノード数には含めない。
+3.1,theorem,3.1,SerrePositivity.theorem_3_1_K0 @ SerrePositivity/Inputs/Descent.lean:50,原典の同じ番号。現行の型と本文を照合してreview/ch3.csvに判定を置く。旧状態を転記しない。
+(3.1),equation,(3.1),,原典の同じ番号。現行の型と本文を照合してreview/ch3.csvに判定を置く。旧状態を転記しない。
+(3.2),equation,(3.2),SerrePositivity.theorem_3_1_K0 @ SerrePositivity/Inputs/Descent.lean:50,原典の同じ番号。現行の型と本文を照合してreview/ch3.csvに判定を置く。旧状態を転記しない。
+§3.1 I,definition,3.1; (3.4),,原典では独立に番号の付かない定義／証明の部分。対応する番号つき項目のreviewと、この補助宣言の現行ソース点検を参照する。
+§3.1 cdh,proof-step,3.1; (3.5),,原典では独立に番号の付かない定義／証明の部分。対応する番号つき項目のreviewと、この補助宣言の現行ソース点検を参照する。
+§3.1 coefficients,proof-step,3.1; (3.5),,原典では独立に番号の付かない定義／証明の部分。対応する番号つき項目のreviewと、この補助宣言の現行ソース点検を参照する。
+§3.1 support,proof-step,3.1; (3.6),SerrePositivity.KST.Descent.centralSupport_iff_power_annihilation @ SerrePositivity/KST/Descent/CentralSupportCriterion.lean:89,原典では独立に番号の付かない定義／証明の部分。対応する番号つき項目のreviewと、この補助宣言の現行ソース点検を参照する。
+§3.1/§3.3 nilinvariance,proof-step,3.1; (3.7),,原典では独立に番号の付かない定義／証明の部分。対応する番号つき項目のreviewと、この補助宣言の現行ソース点検を参照する。
+§3.2,section,toc §3.2,,原典の節見出しはtocへ移す。定理・式のノード数には含めない。
+(3.3),equation,(3.3),,原典の同じ番号。現行の型と本文を照合してreview/ch3.csvに判定を置く。旧状態を転記しない。
+(3.4),equation,(3.4),,原典の同じ番号。現行の型と本文を照合してreview/ch3.csvに判定を置く。旧状態を転記しない。
+(3.5),equation,(3.5),,原典の同じ番号。現行の型と本文を照合してreview/ch3.csvに判定を置く。旧状態を転記しない。
+(3.6),equation,(3.6),,原典の同じ番号。現行の型と本文を照合してreview/ch3.csvに判定を置く。旧状態を転記しない。
+3.2,lemma,3.2,,原典の同じ番号。現行の型と本文を照合してreview/ch3.csvに判定を置く。旧状態を転記しない。
+3.2 additivity,proof-step,3.2,,原典では独立に番号の付かない定義／証明の部分。対応する番号つき項目のreviewと、この補助宣言の現行ソース点検を参照する。
+3.3,lemma,3.3,,原典の同じ番号。現行の型と本文を照合してreview/ch3.csvに判定を置く。旧状態を転記しない。
+§3.3,section,toc §3.3,,原典の節見出しはtocへ移す。定理・式のノード数には含めない。
+(3.7),equation,(3.7),,原典の同じ番号。現行の型と本文を照合してreview/ch3.csvに判定を置く。旧状態を転記しない。
+(3.8),equation,(3.8),,原典の同じ番号。現行の型と本文を照合してreview/ch3.csvに判定を置く。旧状態を転記しない。
+§3.3 geometry,proof-step,3.1; (3.7),SerrePositivity.KST.Descent.closedImmersion_of_section @ SerrePositivity/KST/Descent/SchemeFacts.lean:64 | SerrePositivity.KST.Descent.closedImmersion_equalizer @ SerrePositivity/KST/Descent/SchemeFacts.lean:73 | SerrePositivity.KST.Descent.equalizer_range_ne_univ_of_ne @ SerrePositivity/KST/Descent/SchemeFacts.lean:81,原典では独立に番号の付かない定義／証明の部分。対応する番号つき項目のreviewと、この補助宣言の現行ソース点検を参照する。
+§3.3 orbit,proof-step,3.1; (3.8),,原典では独立に番号の付かない定義／証明の部分。対応する番号つき項目のreviewと、この補助宣言の現行ソース点検を参照する。
+§3.4,section,toc §3.4,,原典の節見出しはtocへ移す。定理・式のノード数には含めない。
+3.4,lemma,3.4,SerrePositivity.normalizedLength_tor_of_isWeaklyRegular @ SerrePositivity/LengthAlgebra/Flat.lean:137 | SerrePositivity.lemma_3_4 @ SerrePositivity/Paper/Section3/LengthComputation.lean:53,原典の同じ番号。現行の型と本文を照合してreview/ch3.csvに判定を置く。旧状態を転記しない。
+(3.9),equation,(3.9),,原典の同じ番号。現行の型と本文を照合してreview/ch3.csvに判定を置く。旧状態を転記しない。
+(3.10),equation,(3.10),SerrePositivity.normalizedLength_tor_of_isWeaklyRegular @ SerrePositivity/LengthAlgebra/Flat.lean:137 | SerrePositivity.lemma_3_4 @ SerrePositivity/Paper/Section3/LengthComputation.lean:53,原典の同じ番号。現行の型と本文を照合してreview/ch3.csvに判定を置く。旧状態を転記しない。
+3.5,lemma,3.5,SerrePositivity.lemma_3_5c @ SerrePositivity/Paper/Section3/NormComparison.lean:382 | SerrePositivity.theorem_3_1_K0 @ SerrePositivity/Inputs/Descent.lean:50,原典の同じ番号。現行の型と本文を照合してreview/ch3.csvに判定を置く。旧状態を転記しない。
+3.5a,proof-step,3.5,SerrePositivity.lemma_3_5a @ SerrePositivity/Paper/Section3/NormComparison.lean:293,原典では独立に番号の付かない定義／証明の部分。対応する番号つき項目のreviewと、この補助宣言の現行ソース点検を参照する。
+3.5b,proof-step,3.5; (3.13); (3.14),SerrePositivity.lemma_3_5b @ SerrePositivity/Paper/Section3/NormComparison.lean:353,原典では独立に番号の付かない定義／証明の部分。対応する番号つき項目のreviewと、この補助宣言の現行ソース点検を参照する。
+3.5c,proof-step,3.5; (3.11),SerrePositivity.lemma_3_5c @ SerrePositivity/Paper/Section3/NormComparison.lean:382 | SerrePositivity.theorem_3_1_K0 @ SerrePositivity/Inputs/Descent.lean:50,原典では独立に番号の付かない定義／証明の部分。対応する番号つき項目のreviewと、この補助宣言の現行ソース点検を参照する。
+(3.11),equation,(3.11),SerrePositivity.lemma_3_5c @ SerrePositivity/Paper/Section3/NormComparison.lean:382 | SerrePositivity.theorem_3_1_K0 @ SerrePositivity/Inputs/Descent.lean:50,原典の同じ番号。現行の型と本文を照合してreview/ch3.csvに判定を置く。旧状態を転記しない。
+(3.12),equation,(3.12),,原典の同じ番号。現行の型と本文を照合してreview/ch3.csvに判定を置く。旧状態を転記しない。
+(3.13),equation,(3.13),SerrePositivity.lemma_3_5b_lam @ SerrePositivity/Paper/Section3/NormComparison.lean:345,原典の同じ番号。現行の型と本文を照合してreview/ch3.csvに判定を置く。旧状態を転記しない。
+(3.14),equation,(3.14),SerrePositivity.lemma_3_5b_ord @ SerrePositivity/Paper/Section3/NormComparison.lean:332,原典の同じ番号。現行の型と本文を照合してreview/ch3.csvに判定を置く。旧状態を転記しない。
+§4,section,toc §4,,原典の節見出しはtocへ移す。定理・式のノード数には含めない。
+§4.1,section,toc §4.1,,原典の節見出しはtocへ移す。定理・式のノード数には含めない。
+3.6,remark,3.6,,原典の同じ番号。現行の型と本文を照合してreview/ch3.csvに判定を置く。旧状態を転記しない。
+(4.1),equation,(4.1),,原典の同じ番号。現行の型と本文を照合してreview/ch4.csvに判定を置く。旧状態を転記しない。
+§4.2,section,toc §4.2,,原典の節見出しはtocへ移す。定理・式のノード数には含めない。
+4.1,remark,4.1,,原典の同じ番号。現行の型と本文を照合してreview/ch4.csvに判定を置く。旧状態を転記しない。
+4.2,lemma,4.2,SerrePositivity.Asymptotic.supportedRankQuotientInclusion @ SerrePositivity/Asymptotic/RankQuotient.lean:498 | SerrePositivity.Asymptotic.paperSupportedToKaroubi @ SerrePositivity/Asymptotic/Completed.lean:513 | SerrePositivity.Asymptotic.paperSupportedToKaroubi_functor_isTriangulated @ SerrePositivity/Asymptotic/Completed.lean:528,原典の同じ番号。現行の型と本文を照合してreview/ch4.csvに判定を置く。旧状態を転記しない。
+§4.3,section,toc §4.3,,原典の節見出しはtocへ移す。定理・式のノード数には含めない。
+4.3,proposition,4.3,SerrePositivity.Asymptotic.paperRankBetti_nonneg @ SerrePositivity/Paper/Section4/RankQuotient.lean:67 | SerrePositivity.Asymptotic.paperBaseChangeBetti_nonneg @ SerrePositivity/Paper/Section4/RankQuotient.lean:731 | SerrePositivity.Asymptotic.paperRankEulerK0_mk @ SerrePositivity/Paper/Section4/RankQuotient.lean:80 | SerrePositivity.Asymptotic.paperBaseChangeEulerK0_mk @ SerrePositivity/Paper/Section4/RankQuotient.lean:754,原典の同じ番号。現行の型と本文を照合してreview/ch4.csvに判定を置く。旧状態を転記しない。
+(4.2),equation,(4.2),SerrePositivity.Asymptotic.paperRankBetti_koszul_formula @ SerrePositivity/Paper/Section4/RankQuotient.lean:101 | SerrePositivity.Asymptotic.paperBaseChangeBetti_koszul_formula @ SerrePositivity/Paper/Section4/RankQuotient.lean:764,原典の同じ番号。現行の型と本文を照合してreview/ch4.csvに判定を置く。旧状態を転記しない。
+(4.3),equation,(4.3),,原典の同じ番号。現行の型と本文を照合してreview/ch4.csvに判定を置く。旧状態を転記しない。
+§4.4,section,toc §4.4,,原典の節見出しはtocへ移す。定理・式のノード数には含めない。
+4.4,lemma,4.4,SerrePositivity.normalizedLength_tor_of_isWeaklyRegular @ SerrePositivity/LengthAlgebra/Flat.lean:137 | SerrePositivity.lemma_3_4 @ SerrePositivity/Paper/Section3/LengthComputation.lean:53 | SerrePositivity.torAlg_isPowTorsion @ SerrePositivity/HomologicalAlgebra/TorFiniteLength.lean:94,原典の同じ番号。現行の型と本文を照合してreview/ch4.csvに判定を置く。旧状態を転記しない。
+4.5,proposition,4.5,SerrePositivity.Section4.paperBaseChangeEulerK0_eq_koszulEuler_mul @ SerrePositivity/Paper/Section4/SymmetricComparison.lean:70 | SerrePositivity.Section4.koszulEuler_of_lengthAlgebra_values @ SerrePositivity/Paper/Section4/LengthHypotheses.lean:117,原典の同じ番号。現行の型と本文を照合してreview/ch4.csvに判定を置く。旧状態を転記しない。
+(4.4),equation,(4.4),,原典の同じ番号。現行の型と本文を照合してreview/ch4.csvに判定を置く。旧状態を転記しない。
+(4.5),equation,(4.5),,原典の同じ番号。現行の型と本文を照合してreview/ch4.csvに判定を置く。旧状態を転記しない。
+§4.5,section,toc §4.5,,原典の節見出しはtocへ移す。定理・式のノード数には含めない。
+4.6,lemma,4.6,,原典の同じ番号。現行の型と本文を照合してreview/ch4.csvに判定を置く。旧状態を転記しない。
+4.6 connective,proof-step,4.6,,原典では独立に番号の付かない定義／証明の部分。対応する番号つき項目のreviewと、この補助宣言の現行ソース点検を参照する。
+4.6 dg quotient,proof-step,4.6,,原典では独立に番号の付かない定義／証明の部分。対応する番号つき項目のreviewと、この補助宣言の現行ソース点検を参照する。
+4.6 generator,proof-step,4.6,,原典では独立に番号の付かない定義／証明の部分。対応する番号つき項目のreviewと、この補助宣言の現行ソース点検を参照する。
+(4.6),equation,(4.6),,原典の同じ番号。現行の型と本文を照合してreview/ch4.csvに判定を置く。旧状態を転記しない。
+(4.7),equation,(4.7),,原典の同じ番号。現行の型と本文を照合してreview/ch4.csvに判定を置く。旧状態を転記しない。
+§4.5 G-action,proof-step,4.7,SerrePositivity.Asymptotic.paperTwistK0_mul @ SerrePositivity/Paper/Section4/RankQuotient.lean:924 | SerrePositivity.Asymptotic.paperK0_smul_mk @ SerrePositivity/Paper/Section4/RankQuotient.lean:958,原典では独立に番号の付かない定義／証明の部分。対応する番号つき項目のreviewと、この補助宣言の現行ソース点検を参照する。
+§4.5 support,proof-step,4.6; 4.7,SerrePositivity.KST.Descent.centralSupport_iff_power_annihilation @ SerrePositivity/KST/Descent/CentralSupportCriterion.lean:89,原典では独立に番号の付かない定義／証明の部分。対応する番号つき項目のreviewと、この補助宣言の現行ソース点検を参照する。
+4.7,theorem,4.7,SerrePositivity.Section4.theorem_4_7 @ SerrePositivity/Paper/Section4/SymmetricComparison.lean:205 | SerrePositivity.Section4.theorem_4_7_K0 @ SerrePositivity/Paper/Section4/SymmetricComparison.lean:167 | SerrePositivity.Section4.supportedRankK0_descent @ SerrePositivity/Paper/Section4/SupportedDescent.lean:41,原典の同じ番号。現行の型と本文を照合してreview/ch4.csvに判定を置く。旧状態を転記しない。
+4.7 K0 descent,proof-step,4.7,SerrePositivity.Section4.supportedRankK0_descent @ SerrePositivity/Paper/Section4/SupportedDescent.lean:41,原典では独立に番号の付かない定義／証明の部分。対応する番号つき項目のreviewと、この補助宣言の現行ソース点検を参照する。

@@ -13,10 +13,10 @@ public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Diagr
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
-open CategoryTheory HomotopicalAlgebra SSet
+open CategoryTheory _root_.HomotopicalAlgebra SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories.Project.ModelCategoryComparison
-open SerrePositivity.EInfinity.SimplicialLocalization
+open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions
 open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors
 open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
@@ -30,10 +30,10 @@ local instance isw1StrictDiagramLocalizedVerticesLocal2 : (cofibrations (StrictC
 
 /-- 同じ実hammock局所化と元の指定局所化を結ぶ、既存の全二胞体つきの比較。 -/
 def strictDiagramHammockComparison :
-    EInfinity.FrameHom.CoherentLocalizationComparison
-      (hammockLocalizationNerveMap (modelRelativeCategory (StrictComplexDiagram A d)))
+    _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CoherentLocalizationComparison
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (modelRelativeCategory (StrictComplexDiagram A d)))
       (strictDiagramModelLocalization A d) :=
-  modelRightFrameLocalizationComparison (strictDiagramRightFrameFamily A d)
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelRightFrameLocalizationComparison (strictDiagramRightFrameFamily A d)
     (strictDiagramModelLocalization A d) (strictDiagramModelLocalization_isLocalization A d)
 
 /-- 元の局所化の任意頂点は、元のstrict図式の像と同型である。 -/
@@ -43,19 +43,19 @@ lemma strictDiagramLocalization_isEssentiallySurjective :
   let c := strictDiagramHammockComparison A d
   obtain ⟨z, ⟨ez⟩⟩ := c.equivalence.isEssentiallySurjective x
   let Z : (modelRelativeCategory (StrictComplexDiagram A d)).category :=
-    coherentNerveObject (C := KanHammockCategory
+    coherentNerveObject (C := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanHammockCategory
       (modelRelativeCategory (StrictComplexDiagram A d))) z
-  have hz : (hammockLocalizationNerveMap
+  have hz : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap
       (modelRelativeCategory (StrictComplexDiagram A d))).app (Opposite.op ⦋0⦌)
         (nerveVertex Z) = z :=
-    (hammockLocalizationNerveMap_vertex _ Z).trans (coherentNerveVertex_object z)
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap_vertex _ Z).trans (coherentNerveVertex_object z)
   have hv : (strictDiagramModelNerveIso A d).inv.app (Opposite.op ⦋0⦌)
       (nerveVertex Z) = ComposableArrows.mk₀ ((strictDiagramModelDown A d).obj Z) :=
     ComposableArrows.ext₀ rfl
   have et := c.triangle.app (nerveVertex Z)
   change VertexIso
     (c.equivalence.hom.app (Opposite.op ⦋0⦌)
-      ((hammockLocalizationNerveMap (modelRelativeCategory (StrictComplexDiagram A d))).app
+      ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (modelRelativeCategory (StrictComplexDiagram A d))).app
         (Opposite.op ⦋0⦌) (nerveVertex Z)))
     ((strictDiagramLocalization A d).app (Opposite.op ⦋0⦌)
       ((strictDiagramModelNerveIso A d).inv.app (Opposite.op ⦋0⦌) (nerveVertex Z))) at et

@@ -1,0 +1,40 @@
+{
+  "base": "30ae8948f339beec42d9340feb02f2031c22c72b",
+  "branches": {
+    "math/inf-supply": {
+      "head": "287a524a4fd6b6935c6b21cdd35fd79186b1f2e3",
+      "committed_candidates": [
+        "SerrePositivity/InfinityCategories/Kerodon/KanComplexes/HomotopyPullbackAndHomotopyPushoutSquares/KanPushoutCocones.lean",
+        "SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/DiscreteAnodyneExtensions.lean"
+      ],
+      "dirty_candidates": [],
+      "files": 2
+    },
+    "codex/bulk-5inf3a": {
+      "head": "0b92bc7a8ce40bd5e96a42db26a98b1f9c9a47ac",
+      "committed_candidates": [],
+      "dirty_candidates": [],
+      "files": 0
+    },
+    "math/scheme": {
+      "head": "e25b3dc27142309a01a6fba4fa3a0883b6653c64",
+      "committed_candidates": [],
+      "dirty_candidates": [],
+      "files": 0
+    },
+    "math/bs-impl": {
+      "head": "a7f43e7c3a7528dfe16b92b5520cd3ef0358c737",
+      "committed_candidates": [],
+      "dirty_candidates": [],
+      "files": 0
+    },
+    "codex/g12-monad-catalog": {
+      "head": "706f0d39782e91182492aad8dc188c02e7b15a0c",
+      "committed_candidates": [],
+      "dirty_candidates": [],
+      "files": 0
+    }
+  },
+  "total": 2,
+  "policy": "Conservative unrooted HomotopicalAlgebra token candidates (including declarations/comments), not a claimed semantic failure count. Original captures decide required binding preservation."
+}

@@ -1,7 +1,7 @@
 # X レーン：I-1 a7
 
 計画・所有・三段目・現在地の正本は
-[ infinity-core-F1b.md ](../../../../formalization-plans/infinity-lanes/infinity-core-F1b.md)。
+[ infinity-core-F1b.md ](../../../../formalization-plans/archive/stage-i/infinity-lanes/infinity-core-F1b.md)。
 
 - 着手：2026-10-25 13:07:39 JST。
 - 絶対上限：2026-10-27 13:07:39 JST（48時間）。

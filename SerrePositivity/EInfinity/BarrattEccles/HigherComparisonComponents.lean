@@ -18,7 +18,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open CategoryTheory Opposite SimplicialLocalization Hammock
+open CategoryTheory Opposite _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization Hammock
 
 variable (A : Type u) [CommRing A]
 
@@ -35,7 +35,7 @@ lemma mappingSpaceReducedHammockComponentsIso_fac (X Y : (operad A).Algebra) :
 
 def cofibrantAlgebraDKMappingSpaceComponentsIso
     (X Y : (cofibrantAlgebraRelativeCategory A).category) :
-    SSet.π₀ (localizationHom (cofibrantAlgebraRelativeCategory A) X Y) ≅
+    SSet.π₀ (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHom (cofibrantAlgebraRelativeCategory A) X Y) ≅
       SSet.π₀ (SSet.uliftFunctor.{u + 1, u}.obj
         (((mappingSpace A).obj (op ((cofibrantAlgebraDKInclusion A).obj X))).obj
           ((cofibrantAlgebraDKInclusion A).obj Y))) :=
@@ -62,7 +62,7 @@ def cAlgMappingSpaceComponentsIso (X Y : CAlgSimplicialCategory A) :
 
 lemma cAlgMappingSpaceComponentsIso_unit (X Y : CAlgSimplicialCategory A) :
     SSet.π₀Functor.map (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app
-        (localizationHom (cofibrantAlgebraRelativeCategory A) X Y)) ≫
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHom (cofibrantAlgebraRelativeCategory A) X Y)) ≫
       (cAlgMappingSpaceComponentsIso A X Y).hom =
     (cofibrantAlgebraDKMappingSpaceComponentsIso A X Y).hom := by
   have h := congrArg AnodyneComponents.map (cAlgMappingSpaceComparisonIso_unit A X Y)

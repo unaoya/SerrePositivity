@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.CAlgCoefficientRestriction
-public import SerrePositivity.EInfinity.SimplicialLocalization.WeakNerveInverts
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.WeakNerveInverts
 public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UniversalConsequences
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.IntervalDiagramRestriction
 
@@ -69,7 +69,7 @@ def cAlgLocalizationSource_algebraIso :
       (f := ((nerve.edgeMk (η.app X)).map (cAlgLocalizationSource A)).toTruncated)
       (congrArg ((cAlgLocalizationSource A).app (Opposite.op ⦋1⦌))
         (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveNatTransHomotopy_component η X))).mpr
-      (SimplicialLocalization.weakNerveEdges_inverts_arrows
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges_inverts_arrows
         (cofibrantAlgebraRelativeCategory A) _ (cAlgLocalizationSource_inverts A) _ hq)
   apply _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.functorIsoOfPointwiseInvertibleHomotopy P hp)
   · rw [algebraCAlgSource, ← Category.assoc]

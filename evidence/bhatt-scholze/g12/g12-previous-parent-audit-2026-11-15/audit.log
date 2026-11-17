@@ -1,0 +1,21 @@
+'SerrePositivity.InfinityCategories.HA.Monads.ordinalVal_eq_of_bottomMerge_comp_pure' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionIsIso_of_pure_bottomMerge_comp' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionPreviousFace_control' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionFirstRefinement_first_index' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionPreviousFace_parent_control' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.ordinalNoOneImage_or_through_one' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionPreviousFace_dichotomy' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

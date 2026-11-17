@@ -1,7 +1,7 @@
 # Codex 作業指示書 DG-W2：統合の道具（a）と、D3＋土台でない 9 ディレクトリの統合の束（b）
 
 作成：2026-10-31（DG の整理、管理は Claude）。宛先：DG の Codex（DG-W1 を実施したセッション）。
-計画：[dg-cleanup-plan.md](../dg-cleanup-plan.md) §3 D3・D4・D5、§4 DG-W2、§5a（再ビルドの規則）。調査：[archive/dg-survey-2026-10-30.md](dg-survey-2026-10-30.md) §5〜§6、対応表 [dg-consolidation-2026-10-30.json](dg-consolidation-2026-10-30.json)、障害 [blockers](dg-consolidation-blockers-2026-10-30.json)。
+計画：[dg-cleanup-plan.md](stage-i/dg-cleanup-plan.md) §3 D3・D4・D5、§4 DG-W2、§5a（再ビルドの規則）。調査：[archive/dg-survey-2026-10-30.md](dg-survey-2026-10-30.md) §5〜§6、対応表 [dg-consolidation-2026-10-30.json](dg-consolidation-2026-10-30.json)、障害 [blockers](dg-consolidation-blockers-2026-10-30.json)。
 **共通の前提**：[IF-W0-1](infinity-codex-w0-1.md) §0。DG-W1 の [§8〜§10](dg-codex-w1.md) の規則（監査の前のビルド、rsync の扱い、全ビルドは一回）も引き続き有効。
 
 この指示書は **(a) と (b) の二部**で、(a) はビルドを伴わない道具の作業、(b) は束の適用と一回の下流ビルド。**(b) は別途「始めてよい」と伝えるまで始めない**（∞ 側の束のビルドと機械を分け合うため。計画 §5a-5）。(a) の終わりで止めて報告する。
@@ -23,7 +23,7 @@
 
 ## 2. (a)-1 `merge_modules.py`
 
-BS の [bhatt-scholze-merge-modules.py](../bhatt-scholze/bhatt-scholze-merge-modules.py)（314 行）を一般化する。BS の挙動（宣言・証明・名前空間・variable に手を加えない；元モジュールを順に、元の冒頭の section 行に元ファイル名を付けた名前付き section で包み `end` で閉じる；`public import` の和；見出し `/-! ## 見出し（旧 パス） -/` の下に元の module docstring；universe の和；元ファイルは git rm；import 行の書き換え；`private_renames`；`deletes`；`stubs`；既定 dry-run・`--apply`）は保つ。変える点：
+BS の [bhatt-scholze-merge-modules.py](../../evidence/bhatt-scholze/bhatt-scholze-merge-modules.py)（314 行）を一般化する。BS の挙動（宣言・証明・名前空間・variable に手を加えない；元モジュールを順に、元の冒頭の section 行に元ファイル名を付けた名前付き section で包み `end` で閉じる；`public import` の和；見出し `/-! ## 見出し（旧 パス） -/` の下に元の module docstring；universe の和；元ファイルは git rm；import 行の書き換え；`private_renames`；`deletes`；`stubs`；既定 dry-run・`--apply`）は保つ。変える点：
 
 1. **所有範囲とモジュール名の接頭辞を引数にする**：BS の `OWNED`・`NAME` の固定を外し、`--area SerrePositivity.DifferentialGraded`（複数可）で統合する側の接頭辞を、`--rewrite-scope <regex>`（複数可、既定はリポジトリ全体の `SerrePositivity/**/*.lean` と `scripts/**/*.lean`）で import 行を書き換える範囲を与える。DG では書き換え範囲は全体（外からの 1,188 辺は IC・KST・EInfinity にある。**DG の外は import 行だけを変える**）。
 2. **計画の書式を targets の配列に合わせる**：`{"module": <統合先>, "action": "merge", "sources": [<元モジュール>…（連結順）], "docstring": <概要／方針／規約／使われ方>, "private_renames": {<元>: {<旧>: <新>}}, "deletes": [], "stubs": [], "candidate": "D4", "note": ""}` の配列。`validate_targets.py` は変更しないので、書式と整合性の検査（元の二重登録、統合先の重複、連結順が import の向きに矛盾しないこと、閉じていない section、同名 private の衝突、`set_option` の値の食い違い、`public section` のない元）は **`merge_modules.py --check` が自分で行う**。

@@ -3,7 +3,7 @@ public import SerrePositivity.EInfinity.BarrattEccles.FreeProbeRelativeElementFo
 public import SerrePositivity.EInfinity.ComplexLimits.KProjectiveElementRoofWeak
 public import SerrePositivity.EInfinity.ComplexLimits.ProbeKProjectiveValues
 public import SerrePositivity.EInfinity.ComplexLimits.PinchedPostcompositionFamily
-public import SerrePositivity.EInfinity.FrameHom.MixedNerveHomLiftIso
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerveHomLiftIso
 public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.DiagramComparisons.PinchedActionEquivalences
 /-!
 概要：元の全要素パラメータから実 U の値への弱な複体屋根族を構成する。
@@ -20,7 +20,7 @@ namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory SSet
 open SerrePositivity.InfinityCategories SerrePositivity.DifferentialGraded
 
-open SerrePositivity.EInfinity.FrameHom ComplexLimits
+open _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom ComplexLimits
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X : Complex A) (B : CofibrantAlgebra A)
 
@@ -60,7 +60,7 @@ def freeProbeRelativeUnitReference : nerve (freeProbeRelativeElementIndex A X B)
     ((cAlgForgetDerived A).app (Opposite.op ⦋0⦌)
       ((cAlgLocalizationSource A).app (Opposite.op ⦋0⦌)
         (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (ULiftHom.objUp.{u + 1, u + 1} B)))) :=
-  MixedNerve.down (freeProbeElementIndex A X B.obj) ≫
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.down (freeProbeElementIndex A X B.obj) ≫
     normalizedTensorElementOrdinaryPinchedMap A ((ComplexLimits.framedLimitProbeFunctor A).obj X)
       (complexSemifreeResolutionValue A B.obj.carrier).val ≫
     _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.postcompose _ (freeProbeRelativeTargetHom A B)
@@ -78,7 +78,7 @@ lemma freeProbeRelativeUnitReference_weak :
     (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.pinchedPostcompose_isQCatEquivalence_of_isIso
       (freeProbeRelativeTargetHom A B) q).isWeakHomotopyEquivalence
   have hd := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso
-    (MixedNerve.homLiftIso (freeProbeElementIndex A X B.obj))).isWeakHomotopyEquivalence
+    (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.homLiftIso (freeProbeElementIndex A X B.obj))).isWeakHomotopyEquivalence
   have hr := normalizedTensorElementOrdinaryPinchedMap_weak A (framedLimitKProjectiveProbe A X)
     (semifreeKProjectiveTarget A B.obj.carrier)
   change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
@@ -92,12 +92,12 @@ lemma freeProbeRelativeUnitReference_weak :
 lemma freeProbeRelativeUnitReference_family :
     _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom (freeProbeRelativeUnitReference A X B ≫
       _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace _ _) =
-    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHomPrecomp (MixedNerve.down (freeProbeElementIndex A X B.obj))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHomPrecomp (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.down (freeProbeElementIndex A X B.obj))
       (normalizedTensorElementDerivedRoofFamily A ((ComplexLimits.framedLimitProbeFunctor A).obj X)
         (complexSemifreeResolutionValue A B.obj.carrier).val) ≫
       _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap (nerve (freeProbeRelativeElementIndex A X B))
         (freeProbeRelativeTargetHom A B) := by
-  change _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom ((MixedNerve.down (freeProbeElementIndex A X B.obj) ≫
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom ((_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.down (freeProbeElementIndex A X B.obj) ≫
     normalizedTensorElementOrdinaryPinchedMap A ((ComplexLimits.framedLimitProbeFunctor A).obj X)
       (complexSemifreeResolutionValue A B.obj.carrier).val) ≫
     _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.postcompose _ (freeProbeRelativeTargetHom A B) ≫

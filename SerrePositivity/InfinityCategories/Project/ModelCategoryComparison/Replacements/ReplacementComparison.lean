@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.SourceInvariance
 public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.TargetInvariance
 public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.Comparison
-public import SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionComparison
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.TargetComparison
 
@@ -20,7 +20,7 @@ public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.TargetC
 noncomputable section
 universe u v u' v'
 namespace SerrePositivity.InfinityCategories.Project.ModelCategoryComparison
-open CategoryTheory HomotopicalAlgebra
+open CategoryTheory _root_.HomotopicalAlgebra
 open _root_.SerrePositivity.Reedy _root_.SerrePositivity.HomotopyFunctionComplex
 variable {C : Type u} [Category.{v} C] [ModelCategory C]
   {D : Type u'} [Category.{v'} D] (L : SSet.{v} ⥤ D)
@@ -101,7 +101,7 @@ lemma resolutionComparison_left_isWeakHomotopyEquivalence
     (R : C ⥤ C) (hR : ∀ Y, IsFibrant (R.obj Y)) (X : Cᵒᵖ) (Y : C) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
       (((ResolutionComparison.homLeft cof q q' R).app X).app Y) :=
-  _root_.SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.isWeakHomotopyEquivalence _
     (resolutionComparison_left_isIso SimplicialModel.AnodyneHomotopy.anodyneQ
       (Localization.inverts _ SSet.anodyneExtensions) cof q q' R hR X Y)
 
@@ -115,7 +115,7 @@ lemma resolutionComparison_right_isWeakHomotopyEquivalence
     (R : C ⥤ C) (hR : ∀ Y, IsFibrant (R.obj Y)) (X : Cᵒᵖ) (Y : C) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
       (((ResolutionComparison.homRight cof q q' R).app X).app Y) :=
-  _root_.SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.isWeakHomotopyEquivalence _
     (resolutionComparison_right_isIso SimplicialModel.AnodyneHomotopy.anodyneQ
       (Localization.inverts _ SSet.anodyneExtensions) cof q q' R hR X Y)
 
@@ -129,7 +129,7 @@ lemma targetComparison_left_isWeakHomotopyEquivalence
     (q : CofibrantResolutionFamily (C := C) simplex) (X : Cᵒᵖ) (Y : C) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
       (((TargetComparison.homLeft fib fib₁ fib₂ q.obj).app X).app Y) :=
-  _root_.SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.isWeakHomotopyEquivalence _
     (targetComparison_left_isIso SimplicialModel.AnodyneHomotopy.anodyneQ
       (Localization.inverts _ SSet.anodyneExtensions) fib fib₁ fib₂ q X Y)
 
@@ -143,7 +143,7 @@ lemma targetComparison_right_isWeakHomotopyEquivalence
     (q : CofibrantResolutionFamily (C := C) simplex) (X : Cᵒᵖ) (Y : C) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
       (((TargetComparison.homRight fib fib₁ fib₂ q.obj).app X).app Y) :=
-  _root_.SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.isWeakHomotopyEquivalence _
     (targetComparison_right_isIso SimplicialModel.AnodyneHomotopy.anodyneQ
       (Localization.inverts _ SSet.anodyneExtensions) fib fib₁ fib₂ q X Y)
 
@@ -157,7 +157,7 @@ lemma frameComparison_left_isWeakHomotopyEquivalence
     (R : C ⥤ C) (hR : ∀ Y, IsFibrant (R.obj Y)) (X : Cᵒᵖ) (Y : C) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
       (((FrameComparison.homLeft cof q p R).app X).app Y) :=
-  _root_.SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.isWeakHomotopyEquivalence _
     (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.comparison_left_isIso cof q p R hR SimplicialModel.AnodyneHomotopy.anodyneQ
       (Localization.inverts _ SSet.anodyneExtensions) X Y)
 
@@ -171,7 +171,7 @@ lemma frameComparison_right_isWeakHomotopyEquivalence
     (R : C ⥤ C) (hR : ∀ Y, IsFibrant (R.obj Y)) (X : Cᵒᵖ) (Y : C) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
       (((FrameComparison.homRight cof q p R).app X).app Y) :=
-  _root_.SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.isWeakHomotopyEquivalence _
     (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.comparison_right_isIso cof q p R hR SimplicialModel.AnodyneHomotopy.anodyneQ
       (Localization.inverts _ SSet.anodyneExtensions) X Y)
 

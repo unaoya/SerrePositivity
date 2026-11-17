@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.WeakThreeArrow
-public import SerrePositivity.EInfinity.FrameHom.FullyFaithfulNerveRetraction
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FullyFaithfulNerveRetraction
 public import Mathlib.CategoryTheory.MorphismProperty.Factorization
 
 /-!
@@ -18,7 +18,7 @@ universe u v
 noncomputable section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
-open CategoryTheory CategoryTheory.Limits HomotopicalAlgebra
+open CategoryTheory CategoryTheory.Limits _root_.HomotopicalAlgebra
 
 namespace SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.ThreeArrowRightReplacement
 open _root_.SerrePositivity.SimplicialModel
@@ -228,7 +228,7 @@ include fib in
 lemma inclusion_localized_isIso :
     IsIso (AnodyneHomotopy.anodyneQ.map
       (nerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.WeakThreeArrow.specialInclusion : _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.SpecialHammock X Y ⥤ _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.LeftTrivialThreeArrow X Y))) :=
-  _root_.SerrePositivity.EInfinity.FrameHom.FullyFaithfulNerveRetraction.of_counit _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.WeakThreeArrow.specialInclusion (functor fib) (counit fib)
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FullyFaithfulNerveRetraction.of_counit _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.WeakThreeArrow.specialInclusion (functor fib) (counit fib)
 
 with_weak_namespace _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.WeakThreeArrow.RightReplacement.inclusion_localized_isIso export _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.ThreeArrowRightReplacement (inclusion_localized_isIso)
 

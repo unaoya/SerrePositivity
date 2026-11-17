@@ -1,0 +1,9 @@
+import SerrePositivity.InfinityCategories.HA.Monads.IntervalMixedBalancing
+
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.mixedBottomTopOrdinal_representation
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.bottomTopIntervalSum_forget
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalIntervalRepresentation_comp_injective
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.mixedBottomTopFunctor_forget
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.mixedBottomTopFunctor_balance
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.mixedTopBottomFunctor_op
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.mixedTopBottomFunctor_balance

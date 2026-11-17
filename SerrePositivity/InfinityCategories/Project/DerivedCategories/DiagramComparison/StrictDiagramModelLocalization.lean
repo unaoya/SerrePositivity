@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramFunctorialFrames
 public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.ModelRelative
-public import SerrePositivity.EInfinity.SimplicialLocalization.WeakNerveInverts
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.WeakNerveInverts
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.LocalizationSourceIso
 
 /-!
@@ -22,10 +22,10 @@ open SerrePositivity.DifferentialGraded
 open SerrePositivity.InfinityCategories.Project.ModelCategoryComparison
 open SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization
 open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits
-open SerrePositivity.EInfinity.SimplicialLocalization
+open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 namespace SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison
 variable (A : Type u) [CommRing A] (d : StrictDiagramDirection)
-local instance isw1StrictDiagramModelLocalizationLocal1 : HomotopicalAlgebra.ModelCategory (StrictComplexDiagram A d) :=
+local instance isw1StrictDiagramModelLocalizationLocal1 : _root_.HomotopicalAlgebra.ModelCategory (StrictComplexDiagram A d) :=
   strictDiagramReedyModelCategory A d
 
 /-- 元の全図式を同じAsSmall表示へ包む通常関手。 -/
@@ -78,14 +78,14 @@ def strictDiagramModelNerveIso :
 /-- 同じ宇宙表示の順射は、元のobjectwise擬同型辺を正確に同じモデル弱辺へ送る。 -/
 lemma strictDiagramModelNerveIso_weakEdges :
     (strictDiagramModelNerveIso A d).hom.app (Opposite.op ⦋1⦌) '' strictDiagramWeakEdges A d =
-      weakNerveEdges (modelRelativeCategory (StrictComplexDiagram A d)) := by
+      _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges (modelRelativeCategory (StrictComplexDiagram A d)) := by
   ext s
   constructor
   · rintro ⟨t, ht, rfl⟩
     obtain ⟨X, Y, f, rfl⟩ := ComposableArrows.mk₁_surjective t
     refine ⟨(strictDiagramModelUp A d).obj X, (strictDiagramModelUp A d).obj Y,
       (strictDiagramModelUp A d).map f, ?_, ?_⟩
-    · change HomotopicalAlgebra.weakEquivalences (StrictComplexDiagram A d) f
+    · change _root_.HomotopicalAlgebra.weakEquivalences (StrictComplexDiagram A d) f
       change (strictDiagramReedyModelCategory A d).categoryWithWeakEquivalences.weakEquivalences f
       rw [strictDiagramReedyModelCategory_weakEquivalences]
       exact ht
@@ -120,7 +120,7 @@ def strictDiagramModelLocalization :
 /-- 同じ弱辺の宇宙表示の移送は、元の∞局所化の普遍性を保つ。 -/
 lemma strictDiagramModelLocalization_isLocalization :
     IsLocalization (strictDiagramModelLocalization A d)
-      (weakNerveEdges (modelRelativeCategory (StrictComplexDiagram A d))) := by
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges (modelRelativeCategory (StrictComplexDiagram A d))) := by
   apply isLocalization_of_precomposeIso (strictDiagramModelNerveIso A d)
     (strictDiagramModelLocalization A d) (strictDiagramWeakEdges A d) _
     (strictDiagramModelNerveIso_weakEdges A d)

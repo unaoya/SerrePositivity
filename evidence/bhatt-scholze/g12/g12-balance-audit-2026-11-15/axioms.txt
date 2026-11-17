@@ -1,0 +1,21 @@
+'SerrePositivity.InfinityCategories.HA.Monads.mixedBottomTopOrdinal_representation' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.bottomTopIntervalSum_forget' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.ordinalIntervalRepresentation_comp_injective' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.mixedBottomTopFunctor_forget' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.mixedBottomTopFunctor_balance' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.mixedTopBottomFunctor_op' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.mixedTopBottomFunctor_balance' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

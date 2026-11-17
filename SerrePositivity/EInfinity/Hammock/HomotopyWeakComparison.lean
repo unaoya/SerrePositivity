@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection
 
 /-!
 # 同じ単体的ホモトピーで結ばれる射の弱同値性の移送
@@ -22,19 +22,19 @@ open CategoryTheory SerrePositivity.InfinityCategories SerrePositivity.Simplicia
 lemma homotopy_weak_iff {A B : SSet.{u}} {f g : A ⟶ B} (H : SSet.Homotopy f g) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence f ↔ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence g := by
   have he (Z : SSet.{u}) [SSet.KanComplex Z] :
-      (FrameHom.AnodyneWeakDetection.homComponents Z).map f.op =
-        (FrameHom.AnodyneWeakDetection.homComponents Z).map g.op := by
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.homComponents Z).map f.op =
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.homComponents Z).map g.op := by
     have h := AnodyneHomotopy.map_homotopy_eq
-      (FrameHom.AnodyneWeakDetection.homComponents Z).rightOp
-      (FrameHom.AnodyneWeakDetection.homComponents_inverts Z) H
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.homComponents Z).rightOp
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.homComponents_inverts Z) H
     exact congrArg Quiver.Hom.unop h
   constructor
   · intro hf Z hZ
-    change Function.Bijective ((FrameHom.AnodyneWeakDetection.homComponents Z).map g.op)
+    change Function.Bijective ((_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.homComponents Z).map g.op)
     rw [← he Z]
     exact hf Z
   · intro hg Z hZ
-    change Function.Bijective ((FrameHom.AnodyneWeakDetection.homComponents Z).map f.op)
+    change Function.Bijective ((_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.homComponents Z).map f.op)
     rw [he Z]
     exact hg Z
 

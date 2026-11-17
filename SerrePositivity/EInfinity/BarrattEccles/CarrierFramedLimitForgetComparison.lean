@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.CarrierFramedLimitComparison
 public import SerrePositivity.EInfinity.BarrattEccles.FramedLimitComparison
-public import SerrePositivity.EInfinity.HomotopyWeight.RealizationCoefficientMap
+public import SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.RealizationCoefficientMap
 
 /-!
 # 通常の E 代数錐の比較と底の比較の整合性
@@ -40,9 +40,9 @@ lemma weightedCotensorCarrierHomEquiv_app (F : K ⥤ (operad A).Algebra)
     (W : K ⥤ SSet.{u}) {Y : (operad A).Algebra}
     (f : Y ⟶ (weightedCotensor A K F).obj (op W))
     (k : Kᵒᵖᵒᵖ) (n : SimplexCategoryᵒᵖ)
-    (x : (((SerrePositivity.EInfinity.HomotopyWeight.doubleOpWeights K).obj W).obj k).obj n) :
+    (x : (((_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.doubleOpWeights K).obj W).obj k).obj n) :
     ((((FrameWeightRealization.adjunction Kᵒᵖ (carrierRightFrameDiagram A K F)).homEquiv
-      ((SerrePositivity.EInfinity.HomotopyWeight.doubleOpWeights K).obj W) (op Y.carrier)
+      ((_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.doubleOpWeights K).obj W) (op Y.carrier)
         (f.hom ≫ (weightedCotensorCarrierIso A K F W).hom).op).app k).app n) x =
       (Operad.Algebra.forget (operad A)).op.map
         ((((weightedCotensorHomEquiv A K F W Y f).app k).app n) x) := by
@@ -50,17 +50,17 @@ lemma weightedCotensorCarrierHomEquiv_app (F : K ⥤ (operad A).Algebra)
   have : U.IsRightAdjoint := (operad A).freeAlgebraAdjunction.isRightAdjoint
   let S := FrameWeightRealization.source Kᵒᵖ (rightFrameDiagram A K F)
   let V := (FrameWeightRealization.weightsEquivalence Kᵒᵖ).functor.obj
-    ((SerrePositivity.EInfinity.HomotopyWeight.doubleOpWeights K).obj W)
+    ((_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.doubleOpWeights K).obj W)
   let i := U.op.leftKanExtensionCompIsoOfPreserves S uliftYoneda.{u,u,u}
   let rx : uliftYoneda.{u,u,u}.obj (k.unop, n.unop) ⟶ V := uliftYonedaEquiv.symm x
   have hn := i.inv.naturality rx
   have hu := U.op.leftKanExtensionCompIsoOfPreserves_inv_fac_app S
     uliftYoneda.{u,u,u} (k.unop, n.unop)
   change ((((FrameWeightRealization.adjunction Kᵒᵖ (carrierRightFrameDiagram A K F)).homEquiv
-    ((SerrePositivity.EInfinity.HomotopyWeight.doubleOpWeights K).obj W) (op Y.carrier) (_ ≫ U.op.map f.op)).app k).app n) x =
+    ((_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.doubleOpWeights K).obj W) (op Y.carrier) (_ ≫ U.op.map f.op)).app k).app n) x =
     U.op.map (((((FrameWeightRealization.adjunction Kᵒᵖ (rightFrameDiagram A K F)).homEquiv
-      ((SerrePositivity.EInfinity.HomotopyWeight.doubleOpWeights K).obj W) (op Y) f.op).app k).app n) x)
-  rw [HomotopyWeight.realizationHomEquiv_app, HomotopyWeight.realizationHomEquiv_app]
+      ((_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.doubleOpWeights K).obj W) (op Y) f.op).app k).app n) x)
+  rw [_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.realizationHomEquiv_app, _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.realizationHomEquiv_app]
   simp only [Functor.map_comp]
   change (uliftYoneda.leftKanExtensionUnit (S ⋙ U.op)).app (k.unop, n.unop) ≫
       (uliftYoneda.leftKanExtension (S ⋙ U.op)).map rx ≫ i.inv.app V ≫ U.op.map f.op =
@@ -83,14 +83,14 @@ lemma carrierConeToFramedLimit_forget (F : K ⥤ (operad A).Algebra) (c : Cone F
   let f := coneToFramedLimit A K F c
   let i := framedLimitCarrierIso A K F
   let e := (FrameWeightRealization.adjunction Kᵒᵖ (carrierRightFrameDiagram A K F)).homEquiv
-    (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K) (op c.pt.carrier)
-  let s := carrierStrictConeWeightedFamily A K F (HomotopyWeight.weight K) d
-  have hc : weightedCotensorHomEquiv A K F (HomotopyWeight.weight K) c.pt f =
-      strictConeWeightedFamily A K F (HomotopyWeight.weight K) c :=
-    (weightedCotensorHomEquiv A K F (HomotopyWeight.weight K) c.pt).apply_symm_apply _
+    (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.framedLimitWeight K) (op c.pt.carrier)
+  let s := carrierStrictConeWeightedFamily A K F (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K) d
+  have hc : weightedCotensorHomEquiv A K F (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K) c.pt f =
+      strictConeWeightedFamily A K F (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K) c :=
+    (weightedCotensorHomEquiv A K F (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K) c.pt).apply_symm_apply _
   have hfam : e (f.hom ≫ i.hom).op = s := by
     ext k n x
-    exact (weightedCotensorCarrierHomEquiv_app A K F (HomotopyWeight.weight K) f k n x).trans
+    exact (weightedCotensorCarrierHomEquiv_app A K F (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K) f k n x).trans
       (congrArg (fun t => U.op.map (((t.app k).app n) x)) hc)
   have he : (f.hom ≫ i.hom).op = e.symm s := by
     simpa only [Equiv.symm_apply_apply] using congrArg e.symm hfam

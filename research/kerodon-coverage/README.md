@@ -29,7 +29,7 @@
 
 ## 引用番号の照合
 
-11-06 の調査で、Lean の引用は 9,711 件・1,851 ファイルだった。段階 II の KL-W1 では、項目の Tag を項目表から、節・小節の Tag を目次から照合して既存の docstring に加えた。[当時の引用集計](citations-summary.md)、[KL-W1 の報告](../../formalization-plans/stage-ii/kerodon-layout-w1-report.md)
+11-06 の調査で、Lean の引用は 9,711 件・1,851 ファイルだった。段階 II の KL-W1 では、項目の Tag を項目表から、節・小節の Tag を目次から照合して既存の docstring に加えた。[当時の引用集計](citations-summary.md)、[KL-W1 の報告](../../formalization-plans/stage-ii/bulk/kerodon-layout-w1-report.md)
 
 | 旧引用 | 照合後の参照先 |
 | --- | --- |
@@ -67,3 +67,12 @@ Subsection 単位の調査の後に、項目（a.b.c.d）ごとの対応表を�
 - `toc.md`：Kerodon の目次（番号・Tag・見出し）。
 - `coverage-ch1-3.md`・`coverage-ch4.md`・`coverage-ch5-6.md`・`coverage-ch7.md`・`coverage-ch8-10.md`：Subsection ごとの表（判定・出どころ・主な宣言とファイル・注記）。
 - `citations.csv`：Lean の Kerodon の引用の一覧（一引用一行、11-06 の main で採取）。`citations-summary.md`：その集計。
+
+
+## P⁰閉包からの未照合項目の追加（2026-11-16、⑤d）
+
+main `671f6eafe` のP⁰閉包にあり、従来の項目表・reviewにない531項目を `items.csv` の末尾へ追加した。既存3,553行は変更せず、計4,084行。追加行の状態・宣言・確度・Lean引用数は空欄で、③-a・③-bの取り込み後の対応表更新時にまとめて照合する。上の3,553項目の既存集計にこの531項目は含まない。
+
+書誌情報の5列（番号・種類・原典の見出し・節・項目Tag）は [p0-added-items.csv](p0-added-items.csv)。既存8列の `items.csv` では見出しを `note` に置き、`subsection_tag` は従来どおり小節Tagだけを持つ。項目自身のTagは `item-tags.csv` にあり、既掲載516件はそのまま、未掲載15件だけを追記した。reviewは未変更。
+
+追加した全531番号と検収は [追加報告](p0-added-items-report.md) を参照。今回の作業は書誌情報の追加だけで、Leanの変更・ビルドや実装状態の判定は行っていない。

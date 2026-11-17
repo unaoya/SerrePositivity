@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.PowerOperation.ComplexRelativeElementDerivedRoofComparison
 public import SerrePositivity.EInfinity.ComplexLimits.KProjectiveElementRoofWeak
-public import SerrePositivity.EInfinity.FrameHom.MixedNerveHomLiftIso
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerveHomLiftIso
 public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SliceTransport.PinchedEndpointFamilyArrow
 
 /-!
@@ -19,7 +19,7 @@ universe u
 namespace SerrePositivity.EInfinity.PowerOperation
 open CategoryTheory SSet MonoidalClosed
 open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.ComplexLimits
-open SerrePositivity.EInfinity.FrameHom
+open _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom
 open SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison
 open SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Roof
 open _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories (derivedInfinityCategory)
@@ -40,27 +40,27 @@ lemma complexRelativeDerivedSource_vertex :
     (ComposableArrows.ext₀ rfl)
 
 def complexRelativeElementReferencePinchedMap :=
-  (MixedNerve.down (normalizedTensorElementIndex A X Y) ≫
+  (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.down (normalizedTensorElementIndex A X Y) ≫
     normalizedTensorElementOrdinaryPinchedMap A X Y) ≫
       (pinchedEndpointIso (complexRelativeDerivedSource_vertex A X).symm
         (complexRelativeDerivedSource_vertex A Y).symm).hom
 
 lemma complexRelativeElementReferencePinchedMap_roof_arrow :
     let I := normalizedTensorElementIndex A X Y
-    let T := (hoFunctor.map ((pre (MixedNerve.down I)).app
+    let T := (hoFunctor.map ((pre (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.down I)).app
       (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A))).toFunctor
     Arrow.mk (intervalFamilyHom (complexRelativeElementReferencePinchedMap A X Y ≫
       MorphismSpaces.pinchedHomToIntervalMappingSpace _ _)) =
       Arrow.mk (T.map (normalizedTensorElementDerivedRoof A X Y)) := by
   let I := normalizedTensorElementIndex A X Y
-  let T := (hoFunctor.map ((pre (MixedNerve.down I)).app
+  let T := (hoFunctor.map ((pre (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.down I)).app
     (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A))).toFunctor
   have hn := (congrArg Arrow.mk (normalizedTensorElementOrdinaryPinchedMap_family A X Y)).trans
     (normalizedTensorElementDerivedRoofFamily_arrow A X Y)
   have hp := congrArg T.mapArrow.obj hn
   have he := pinchedEndpointFamily_arrow (complexRelativeDerivedSource_vertex A X).symm
     (complexRelativeDerivedSource_vertex A Y).symm
-    (MixedNerve.down I ≫ normalizedTensorElementOrdinaryPinchedMap A X Y)
+    (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.down I ≫ normalizedTensorElementOrdinaryPinchedMap A X Y)
   refine he.trans ?_
   simpa only [T, I, Functor.mapArrow_obj, Arrow.mk_hom, nerveVertex, Category.assoc,
     intervalFamilyHom_precomp, intervalFamilyHomPrecomp] using hp
@@ -68,7 +68,7 @@ lemma complexRelativeElementReferencePinchedMap_roof_arrow :
 lemma complexRelativeElementReferencePinchedMap_weak (X Y : KProjectiveComplex A) :
     IsWeakHomotopyEquivalence (complexRelativeElementReferencePinchedMap A X.val Y.val) := by
   have hi := (MorphismSpaces.isPrecompositionEquivalence_of_iso
-    (MixedNerve.homLiftIso (normalizedTensorElementIndex A X.val Y.val))).isWeakHomotopyEquivalence
+    (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.homLiftIso (normalizedTensorElementIndex A X.val Y.val))).isWeakHomotopyEquivalence
   have hp := normalizedTensorElementOrdinaryPinchedMap_weak A X Y
   have he := (MorphismSpaces.isPrecompositionEquivalence_of_iso
     (pinchedEndpointIso (complexRelativeDerivedSource_vertex A X.val).symm

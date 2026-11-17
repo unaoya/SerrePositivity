@@ -1,7 +1,7 @@
 # ⑤∞ A-1 段0：∞層 S1〜S8（11-12夜、紙）
 
 IS-W1 段3の上限再見積もりに伴う、承認済みの代替作業。実装の承認や完了を主張しない。
-正本は `bhatt-scholze/infinity-sheaves-design.md` と `drafts/Sheaves/` 全7本。
+正本は `bhatt-scholze/design/infinity-sheaves-design.md` と `drafts/Sheaves/` 全7本。
 一般論の骨格を本体へ移す際は KL-W1 後の配置を使う。設計§9の旧F2パスは現行HTT・Kerodonへ読み替える。
 
 ## 型・再利用・不足・規模

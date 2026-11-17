@@ -70,9 +70,9 @@ quasicategory 模型を使う。∞ 圏は `X : SSet` と `[Quasicategory X]`、
 
 KL-W1 時点の改名は [モジュール対応表](../../scripts/refactor/targets/kl-module-map.json) と
 [宣言対応表](../../scripts/refactor/targets/kl-namespace-map.json) を参照。
-並行する枝の追従手順は [KL-W1 の報告](../../formalization-plans/stage-ii/kerodon-layout-w1-report.md) にある。
+並行する枝の追従手順は [KL-W1 の報告](../../formalization-plans/stage-ii/bulk/kerodon-layout-w1-report.md) にある。
 
-今回の Project・BhattScholze の整理に追従する枝は、[B3 後の B4 資料](../../formalization-plans/stage-ii/bulk-w1-b3/B4-README.md) にある新しいモジュール表・所有元付きの実名表と、各枝の対象ファイル一覧を使う。移動前の環境で参照を採取してから main を取り込む。
+今回の Project・BhattScholze の整理に追従する枝は、[B3 後の B4 資料](../../evidence/bulk/bulk-w1-b3/B4-README.md) にある新しいモジュール表・所有元付きの実名表と、各枝の対象ファイル一覧を使う。移動前の環境で参照を採取してから main を取り込む。
 
 ## Project の主題分けと文献の属性
 
@@ -85,8 +85,8 @@ HTT・HA の節が主題のファイルは `HTT/`・`HA/` に置く。複数の�
 開発レーンごとの入口と監査を下表に示す。依存の層はファイルごとに決める。入口の import と監査の `#check` を目次として使う。
 入口は層全体の一括 import を保証するものではなく、監査欄も代表例である。
 数学上の作業状況は
-[基盤計画](../../formalization-plans/infinity-lanes/foundations.md) と
-[進捗](../../formalization-plans/infinity-lanes/foundations-progress.md) が正本。
+[基盤計画](../../formalization-plans/archive/stage-i/infinity-lanes/foundations.md) と
+[進捗](../../formalization-plans/archive/stage-i/infinity-lanes/foundations-progress.md) が正本。
 
 | 開発レーン | 内容 | 入口 | 監査（scripts/） |
 | --- | --- | --- | --- |
@@ -121,7 +121,7 @@ HTT・HA の節が主題のファイルは `HTT/`・`HA/` に置く。複数の�
 | `Entrypoints` | 集約入口、監査用の集約、外部利用がある旧名の互換モジュール。 |
 | `Consumers` | KST・BS など、構成と比較を利用する側。 |
 
-Kerodon の節番号に逆向きの import は、依存先の宣言を直接使う場合や公開 API の経路を維持する場合に個別登録する。代替の公開経路があり直接参照がない辺は外した。[層の設定](../../scripts/refactor/layers.json)、[逆向き import と実装境界の付表](../../formalization-plans/stage-ii/kerodon-layout-w1-stage3-reverse-imports.md)
+Kerodon の節番号に逆向きの import は、依存先の宣言を直接使う場合や公開 API の経路を維持する場合に個別登録する。代替の公開経路があり直接参照がない辺は外した。[層の設定](../../scripts/refactor/layers.json)、[逆向き import と実装境界の付表](../../formalization-plans/stage-ii/bulk/kerodon-layout-w1-stage3-reverse-imports.md)
 
 静的な検査はリポジトリ直下で行う。
 
@@ -152,7 +152,7 @@ Cat∞ 値 straightening は F1 主入口から直接は読み込まない。
 旧 `tensorSpaceFunctor_setWeightHom` と旧比較 4 宣言は deprecated として保持する。
 旧名と Natural 版は同じ定義ではなく、旧版の型・本体を新しい選択へ書き換えない。
 一般の重みの射に関する自然性の四角形は、この指定だけで証明済みとはしない。
-BS の S4・S8 は Natural 版を使う（[BS の確認記録](../../formalization-plans/bhatt-scholze/report-codex-s4-sieve.md)）。
+BS の S4・S8 は Natural 版を使う（[BS の確認記録](../../formalization-plans/bhatt-scholze/reports/report-codex-s4-sieve.md)）。
 
 ## 読み順と規約
 
@@ -161,7 +161,7 @@ BS の S4・S8 は Natural 版を使う（[BS の確認記録](../../formalizati
 [dg nerve の規約と計算](DGNerve/README.md) は移動前の符号・次数・N0 の計算を保存している。
 微分は cochain 次数 +1、合成は通常順。HA と Kerodon の符号を比べる際はこの規約を参照する。
 
-[リファクタリング計画](../../formalization-plans/refactoring-infinity.md) に従い、
+[リファクタリング計画](../../formalization-plans/archive/stage-i/refactoring-infinity.md) に従い、
 移動した旧モジュールを削除し、下流の import と公開名を直接置換する。必要な補題が禁止 import 閉包にある場合は、
 コピーせずコーディネータ経由で上流の分割を依頼する。
 重複候補は `python3 scripts/check_duplicates.py --baseline

@@ -36,7 +36,7 @@ lemma cofibrantSourceRoofProductPinchedReferenceMap_weak :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (cofibrantSourceRoofProductPinchedReferenceMap A X Y b) := by
   have hu : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app
       (algebraReducedHammock A (cofibrantSourceRoofDegreeAlgebra A X Y b).obj Y.obj)) :=
-    FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.isWeakHomotopyEquivalence _
       (SSet.anodyneExtensions.Q_inverts _ (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit_anodyne _))
   exact (cofibrantSourceRoofProductDegreeHammockMap_weak A X Y b).comp
     (hu.comp (cofibrantHammockPinchedReferenceMap_weak A
@@ -48,7 +48,7 @@ lemma cofibrantSourceRoofProductHomMap_weak_of_reference_homotopy
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (cofibrantSourceRoofProductHomMap A X Y b) := by
   have h := AnodyneHomotopy.map_homotopy_eq AnodyneHomotopy.anodyneQ
     SSet.anodyneExtensions.Q_inverts H
-  apply FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.isWeakHomotopyEquivalence
   rw [h]
   exact Hammock.anodyneQ_map_isIso_of_weak _
     (cofibrantSourceRoofProductPinchedReferenceMap_weak A X Y b)

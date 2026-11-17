@@ -14,7 +14,7 @@
 - Land–Tamme 1.3 は、dg Milnor 四角形から実 resolved 商の冪等完備化を頂点とする Sp 引き戻しを得る。1.13–1.16 が要求する End と導来テンソルの下部の同定、両側の双加群と乗法写像の比較は見つからなかった。
 - Land–Tamme 2.31 は `IsKConnective` を仮定して、非正 dg 塔の実 Perf 値の連結度と弱同値を比較する。2.32・2.35 のプロ四角形の組立と、2.4・2.6(i) の K 自身の 1 連結性が残る。旧表の 3.12・B.2 の `route` は指定どおり `unknown`。
 
-凍結の根拠は [L2](../../../formalization-plans/kst-lanes/L2-comparison.md) と [L6](../../../formalization-plans/kst-lanes/L6-pro-excision.md) の冒頭。KST の番号と題名の再確認に伴い (2.3)、2.14、(4.4)、(4.5)、4.15、A.2–A.4 の短い題名を修正した。
+凍結の根拠は [L2](../../../formalization-plans/archive/stage-i/kst-lanes/L2-comparison.md) と [L6](../../../formalization-plans/archive/stage-i/kst-lanes/L6-pro-excision.md) の冒頭。KST の番号と題名の再確認に伴い (2.3)、2.14、(4.4)、(4.5)、4.15、A.2–A.4 の短い題名を修正した。
 
 型と公理は [KST](kst/kernel-evidence.json) と [Land–Tamme](land-tamme/kernel-evidence.json) の記録にある。none の項目別の引用、概念名、近接する宣言型は [KST](kst/none-search.json) と [Land–Tamme](land-tamme/none-search.json) に記録した。
 

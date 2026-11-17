@@ -78,6 +78,29 @@ import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndCol
 import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.RelativeInitialCoconeVertex
 import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.RelativeInitialColimitFamily
 import Lean.Util.CollectAxioms
+import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UniverseAscent
+import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UniverseExtension
+import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UniverseFaithfulUp
+import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WeakDeformationSource
+import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.PositiveBoundaryFaithful
+
+open Lean in
+/-- 監査の補助：本体の環境の中で、与えたモジュールから import を辿った閉包（別環境を読み込む代わりに本体の環境で辿る。2026-11-17、A1）。 -/
+def auditImportClosure (env : Environment) (roots : Array Name) : Array Import := Id.run do
+  let mut todo := roots
+  let mut visited : Std.HashSet Name := {}
+  let mut out : Array Import := #[]
+  while !todo.isEmpty do
+    let m := todo.back!
+    todo := todo.pop
+    if visited.contains m then continue
+    visited := visited.insert m
+    out := out.push { module := m }
+    if let some idx := env.getModuleIdx? m then
+      for imp in env.header.moduleData[idx.toNat]!.imports do
+        todo := todo.push imp.module
+  return out
+
 
 /-!
 概要：α2b の全宣言を監査する。
@@ -3156,11 +3179,9 @@ end
 -- Ind-S universe extension audit
 open Lean in
 run_cmd do
-  let saved ← getEnv
-  let env ← importModules #[{ module := `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UniverseExtension },
-    { module := `Lean.Util.CollectAxioms }] {}
-  setEnv env
-  for mod in env.header.modules do
+  let env ← getEnv
+  let closureMods := auditImportClosure env #[`SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UniverseExtension]
+  for mod in closureMods do
     unless `SerrePositivity |>.isPrefixOf mod.module do continue
     if (mod.module.toString.toLower.splitOn "straightening").length != 1 then
       throwError "Ind-S: forbidden straightening dependency: {mod.module}"
@@ -3175,19 +3196,15 @@ run_cmd do
     unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
       throwError "Ind-S: unexpected axioms in {name}: {axioms}"
     count := count + 1
-  setEnv saved
   if count == 0 then throwError "Ind-S: no declarations audited"
   logInfo m!"Ind-S universe extension audit: {count} declarations."
 
 -- Ind-S universe faithful boundary audit
 open Lean in
 run_cmd do
-  let saved ← getEnv
-  let env ← importModules #[{ module := `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UniverseFaithfulUp },
-    { module := `SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.PositiveBoundaryFaithful },
-    { module := `Lean.Util.CollectAxioms }] {}
-  setEnv env
-  for mod in env.header.modules do
+  let env ← getEnv
+  let closureMods := auditImportClosure env #[`SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UniverseFaithfulUp, `SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.PositiveBoundaryFaithful]
+  for mod in closureMods do
     unless `SerrePositivity |>.isPrefixOf mod.module do continue
     if (mod.module.toString.toLower.splitOn "straightening").length != 1 then
       throwError "Ind-S: forbidden straightening dependency: {mod.module}"
@@ -3201,18 +3218,15 @@ run_cmd do
     unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
       throwError "Ind-S: unexpected axioms in {name}: {axioms}"
     count := count + 1
-  setEnv saved
   if count == 0 then throwError "Ind-S: no declarations audited"
   logInfo m!"Ind-S universe faithful boundary audit: {count} declarations."
 
 -- Ind-S localization universe ascent audit
 open Lean in
 run_cmd do
-  let saved ← getEnv
-  let env ← importModules #[{ module := `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UniverseAscent },
-    { module := `Lean.Util.CollectAxioms }] {}
-  setEnv env
-  for mod in env.header.modules do
+  let env ← getEnv
+  let closureMods := auditImportClosure env #[`SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UniverseAscent]
+  for mod in closureMods do
     unless `SerrePositivity |>.isPrefixOf mod.module do continue
     if (mod.module.toString.toLower.splitOn "straightening").length != 1 then
       throwError "Ind-S: forbidden straightening dependency: {mod.module}"
@@ -3227,18 +3241,15 @@ run_cmd do
     unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
       throwError "Ind-S: unexpected axioms in {name}: {axioms}"
     count := count + 1
-  setEnv saved
   if count == 0 then throwError "Ind-S: no declarations audited"
   logInfo m!"Ind-S localization universe ascent audit: {count} declarations."
 
 -- Ind-S (6): 弱変形による局所化源の移送。
 open Lean in
 run_cmd do
-  let saved ← getEnv
-  let env ← importModules #[{ module := `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WeakDeformationSource },
-    { module := `Lean.Util.CollectAxioms }] {}
-  setEnv env
-  for mod in env.header.modules do
+  let env ← getEnv
+  let closureMods := auditImportClosure env #[`SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WeakDeformationSource]
+  for mod in closureMods do
     let s := mod.module.toString
     if (s.toLower.splitOn "straightening").length != 1 then
       throwError "Ind-S (6): forbidden straightening dependency: {mod.module}"
@@ -3260,7 +3271,6 @@ run_cmd do
     let bad := info.type.foldConsts false fun n found =>
       found || (n.toString.splitOn "ModelCategory").length != 1
     if bad then throwError "Ind-S (6): forbidden ModelCategory assumption: {name}"
-  setEnv saved
   if count == 0 then throwError "Ind-S (6): no declarations audited"
   logInfo m!"Ind-S weak deformation source audit passed: {count} declarations."
 

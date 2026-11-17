@@ -1,7 +1,7 @@
 # Codex 作業指示書 IF-W0-3：対象一覧（JSON）の作成と R61b の読解
 
 作成：2026-10-29（∞ 基盤の整備、管理は Claude）。宛先：Codex。
-計画：[infinity-foundation-plan.md](../infinity-foundation-plan.md) の R74（対象 JSON）、§5 の各段、§6「指示書の単位」の IF-W0-3。
+計画：[infinity-foundation-plan.md](stage-i/infinity-foundation-plan.md) の R74（対象 JSON）、§5 の各段、§6「指示書の単位」の IF-W0-3。
 **前提**：IF-W0-1（`88c477612`）と IF-W0-2（`8ff0012d8`）は main に取り込み済み。道具の使い方は `scripts/refactor/README.md` と `scripts/refactor/targets/README.md`。
 **共通の前提**：[IF-W0-1](infinity-codex-w0-1.md) §0。worktree は `../SerrePositivity-ifw0-3`、ブランチは `infra/if-w0-3`（main の最新から作る）。main の作業木では作業もビルドもしない。
 
@@ -28,7 +28,7 @@ W1〜W2c で「どのモジュールをどこへ移すか、どう分割する�
 ### 3.1 情報源
 
 - 入口の辺と閉包：`python3 scripts/refactor/layer_check.py --report`（`.lake/verify/layers.json`）。
-- 群の定義（接頭辞の一覧と判定）：[外部調査](infinity-outside-survey-2026-10-28.md) §2（L1〜L7・F1〜F3・Sp-S1〜S6・SC-C1〜C5）、[Verdier 計画](../refactoring-verdier.md) §1.2、[R2-A 詳細](r2-a-layers-2026-10-27.md)（R26・R27 の参照先）、計画 §4（入口の辺の表）。
+- 群の定義（接頭辞の一覧と判定）：[外部調査](infinity-outside-survey-2026-10-28.md) §2（L1〜L7・F1〜F3・Sp-S1〜S6・SC-C1〜C5）、[Verdier 計画](stage-i/refactoring-verdier.md) §1.2、[R2-A 詳細](r2-a-layers-2026-10-27.md)（R26・R27 の参照先）、計画 §4（入口の辺の表）。
 - 本文の内容（分割が要るとき）：対象ファイルを読む。宣言の一覧は `decl_snapshot.lean` で採る。
 
 ### 3.2 規則
@@ -352,8 +352,8 @@ R72 の preflight（`r72-trials-2`）は、1 モジュールごとに「split-pr
 **DG-W1 の取り込みを待つ間にする作業（ビルドなし）**
 
 1. §10.14 の道具・試験・記録（w2a.json・w2a.md）を infra/if-w0-3 に 3 コミットでコミットする（`git commit --only`）。
-2. **R79 の準備**：[計画の R79 行](../infinity-foundation-plan.md) の規則で、`k-theory.md` を参照する docstring（HA 約 600・CT 約 20・Spectra 1 の `[plan]: …/formalization-plans/k-theory.md`）を `…/formalization-plans/archive/k-theory-v1.md#<§396 の見出しのアンカー>` へ、`k-theory-generalization-inventory.md` を参照する docstring（`[inventory]: …`、618＋16 件）を `archive/k-theory-generalization-inventory.md` へ（`#mNNNN`・`layout-execution` のアンカーはそのまま）、ArrowFactorization・ArrowFactorizationCategory・ArrowFactorizationTransport の 3 本も同じ規則で、書き換える**スクリプトを作り dry-run で件数を出す**（期待：618／618＋16／3。食い違えば報告）。相対パスの深さは保ち、`formalization-plans/<名前>.md` の部分だけを替える。DG の 530 本は対象外（DG 計画 D5）。アンカーは GitHub の規則で生成し、`archive/k-theory-v1.md` に §396 の見出しがあることを確かめる。実際の書き換えは束の適用のときに行い、文書ごとに 1 コミット（計 2 本＋ArrowFactorization は HA 側のコミットに含める）。
-3. **R75 の準備**：[計画の R75 行](../infinity-foundation-plan.md)（CategoryTheory/Presentation の 15 本、Quiver/WeightedPaths・WeightedPathMaps、トップ階層の殻 8 本など計 29 本）の削除対象を一覧にし、**importer が 0 であること**（監査・集約・README の参照も含めて）を確かめる。importer があるものは報告して外す。削除は束の適用のときに `git rm` で行う（下流がないので再ビルドは起きない）。
+2. **R79 の準備**：[計画の R79 行](stage-i/infinity-foundation-plan.md) の規則で、`k-theory.md` を参照する docstring（HA 約 600・CT 約 20・Spectra 1 の `[plan]: …/formalization-plans/k-theory.md`）を `…/formalization-plans/archive/k-theory-v1.md#<§396 の見出しのアンカー>` へ、`k-theory-generalization-inventory.md` を参照する docstring（`[inventory]: …`、618＋16 件）を `archive/k-theory-generalization-inventory.md` へ（`#mNNNN`・`layout-execution` のアンカーはそのまま）、ArrowFactorization・ArrowFactorizationCategory・ArrowFactorizationTransport の 3 本も同じ規則で、書き換える**スクリプトを作り dry-run で件数を出す**（期待：618／618＋16／3。食い違えば報告）。相対パスの深さは保ち、`formalization-plans/<名前>.md` の部分だけを替える。DG の 530 本は対象外（DG 計画 D5）。アンカーは GitHub の規則で生成し、`archive/k-theory-v1.md` に §396 の見出しがあることを確かめる。実際の書き換えは束の適用のときに行い、文書ごとに 1 コミット（計 2 本＋ArrowFactorization は HA 側のコミットに含める）。
+3. **R75 の準備**：[計画の R75 行](stage-i/infinity-foundation-plan.md)（CategoryTheory/Presentation の 15 本、Quiver/WeightedPaths・WeightedPathMaps、トップ階層の殻 8 本など計 29 本）の削除対象を一覧にし、**importer が 0 であること**（監査・集約・README の参照も含めて）を確かめる。importer があるものは報告して外す。削除は束の適用のときに `git rm` で行う（下流がないので再ビルドは起きない）。
 4. **束の手順書**：`targets/batch-w1w2a.md` に、適用の順序（R75 の削除 → R79 の docstring → W1 の対象 → W2a の対象の順。split は `split_module.py`、move は `move_module.py`、reimport は入口の編集）、各段のコマンド、snapshot の採り方（全対象の before は適用前にまとめて採る。**この snapshot の採取だけは `lake env lean --run decl_snapshot.lean` で対象のビルドが要るので、DG-W1 の取り込み後、`.lake/build` を複製してから行う**）、下流ビルドの対象の集合、失敗時の二分の規則、止めて報告する点（適用後・下流ビルド後・verify 後の 3 か所）を書く。
 5. 上の 1〜4 が終わったら止めて報告する。main の merge・`.lake/build` の複製・snapshot・束の適用は、Claude が「DG-W1 を main に入れた」と伝えてから。
 

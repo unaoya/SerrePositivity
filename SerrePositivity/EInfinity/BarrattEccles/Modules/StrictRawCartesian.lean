@@ -67,7 +67,7 @@ lemma strictRawModuleCartesianLift_weak {X Y : (operad A).Algebra} (f : X ⟶ Y)
       ((ULiftHom.up.{u,u+1,u+1} (C := strictRawModuleTotal A)).map
         (strictRawModuleCartesianLift A f M)) := by
   constructor
-  · change @HomotopicalAlgebra.weakEquivalences (operad A).Algebra _
+  · change @_root_.HomotopicalAlgebra.weakEquivalences (operad A).Algebra _
       (modelCategory A).categoryWithWeakEquivalences _ _ f
     rw [modelCategory_weakEquivalences]
     exact hf

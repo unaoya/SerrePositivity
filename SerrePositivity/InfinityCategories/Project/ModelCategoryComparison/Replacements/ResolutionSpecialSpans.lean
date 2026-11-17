@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.FrameHom.FrameElementSpans
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameElementSpans
 public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.SpecialHammock
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ChosenResolutionHom
 
@@ -24,7 +24,7 @@ universe u v
 
 namespace SerrePositivity.InfinityCategories.Project.ModelCategoryComparison
 
-open CategoryTheory HomotopicalAlgebra Opposite
+open CategoryTheory _root_.HomotopicalAlgebra Opposite
 open _root_.SerrePositivity.Reedy _root_.SerrePositivity.HomotopyFunctionComplex
 
 variable {C : Type u} [Category.{v} C] [ModelCategory C]
@@ -46,7 +46,7 @@ def resolutionSpecialSpanFunctor {X Y Z : C}
     (q : CofibrantResolution (C := C) simplex X) (j : Y ⟶ Z)
     (hj : trivialCofibrations C j) :
     (((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom q.obj).obj Z).Elements)ᵒᵖ ⥤ _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.SpecialHammock X Y :=
-  _root_.SerrePositivity.EInfinity.FrameHom.frameElementSpanFunctor (trivialFibrations C) (trivialCofibrations C) q.obj q.augmentation
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameElementSpanFunctor (trivialFibrations C) (trivialCofibrations C) q.obj q.augmentation
     (resolutionAugmentation_trivialFibration q) j hj
 
 /-- 概要：同じ fibrant 置換の比較は元の trivial cofibration（Hovey §5）。

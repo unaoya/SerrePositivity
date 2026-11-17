@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.DGAlgebra.FrameLocalizationInput
-public import SerrePositivity.EInfinity.FrameHom.RightFrameHammockCoherent
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.RightFrameHammockCoherent
 
 /-!
 概要：実 dg right frame と元の hammock の全標的 coherent 比較。
@@ -13,7 +13,7 @@ public import SerrePositivity.EInfinity.FrameHom.RightFrameHammockCoherent
 @[expose] public noncomputable section
 universe u
 namespace SerrePositivity.EInfinity.DGAlgebra
-open CategoryTheory HomotopicalAlgebra
+open CategoryTheory _root_.HomotopicalAlgebra
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (R : Type u) [CommRing R]
 
@@ -25,14 +25,14 @@ def rightFrameHammockCoherentComparison (X : Mon (Complex R)) :
     letI _modelInst := modelCategory R
     IsCofibrant X →
       _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
-        (FrameHom.rightFrameHammockCoherentDiagram ((sourceFrameFamily R).atObject X)
+        (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockCoherentDiagram ((sourceFrameFamily R).atObject X)
           (rightFrameFamily R) 0)
-        (FrameHom.rightFrameHammockCoherentDiagram ((sourceFrameFamily R).atObject X)
+        (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockCoherentDiagram ((sourceFrameFamily R).atObject X)
           (rightFrameFamily R) 6) := by
   letI _modelInst := modelCategory R
   intro hX
   letI _sourceCofibrant := hX
-  exact FrameHom.rightFrameHammockCoherentComparison ((sourceFrameFamily R).atObject X)
+  exact _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockCoherentComparison ((sourceFrameFamily R).atObject X)
     (rightFrameFamily R) (cofibrantFactorization R)
 
 /-- 概要：同じ実 dg 比較は任意の全標的図式の前合成でも保持される。
@@ -45,9 +45,9 @@ def rightFrameHammockCoherentComparison_precomp (X : Mon (Complex R)) :
         (f : K ⟶ SSet.uliftFunctor.{u + 2, u + 1}.obj
           (nerve (AsSmall.{u + 1} (Mon (Complex R))))),
         _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
-          (f ≫ FrameHom.rightFrameHammockCoherentDiagram ((sourceFrameFamily R).atObject X)
+          (f ≫ _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockCoherentDiagram ((sourceFrameFamily R).atObject X)
             (rightFrameFamily R) 0)
-          (f ≫ FrameHom.rightFrameHammockCoherentDiagram ((sourceFrameFamily R).atObject X)
+          (f ≫ _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockCoherentDiagram ((sourceFrameFamily R).atObject X)
             (rightFrameFamily R) 6) := by
   letI _modelInst := modelCategory R
   intro hX K f

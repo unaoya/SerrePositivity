@@ -1,0 +1,74 @@
+'SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionVertex' does not depend on any axioms
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionVertexCategory' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionOther' does not depend on any axioms
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionOther_other' does not depend on any axioms
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionGeneratingQuiver' does not depend on any axioms
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionGeneratorVertex' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionGeneratorPrefunctor' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionPathFunctor' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionVertexLength' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionVertexLength_weight' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionVertexLength_comp' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionVertexLength_injective' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionVertexLength_id' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionVertexLength_generator' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionVertexLength_prefunctor' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionPathFunctor_length' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionGeneratingArrow' does not depend on any axioms
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionEvenPath' does not depend on any axioms
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionOddPath' does not depend on any axioms
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionEvenPath_length' depends on axioms: [propext, Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionOddPath_length' depends on axioms: [propext, Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionOther_of_ne' depends on axioms: [propext]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionGeneratingPath_hext' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionPathFunctor_faithful' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionPathFunctor_full' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionVertexToPath' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionVertexToPath_map' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionVertexToPath_generator' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionEvaluationPrefunctor' does not depend on any axioms
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionVertexEvaluation' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionVertexEvaluation_left' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionVertexEvaluation_right' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

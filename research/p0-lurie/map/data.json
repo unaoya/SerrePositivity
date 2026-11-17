@@ -1,0 +1,787 @@
+{
+"sources": [
+{
+"id": "BS",
+"title": "Bhatt–Scholze, Prisms",
+"sub": "使う側（§8.1）"
+},
+{
+"id": "DAG1",
+"title": "DAG XIII §1.1・§2.1",
+"sub": "Kan 延長の基底変換、norm 写像、Tate 構成"
+},
+{
+"id": "DAG2",
+"title": "DAG XIII §2.2",
+"sub": "拡大冪、T̂_p、P⁰ の定義と性質"
+},
+{
+"id": "NS1",
+"title": "Nikolaus–Scholze I",
+"sub": "I.1 Tate 構成、I.3 乗法性"
+},
+{
+"id": "NS3",
+"title": "Nikolaus–Scholze III.1",
+"sub": "Tate 対角"
+},
+{
+"id": "NS4",
+"title": "Nikolaus–Scholze IV.1",
+"sub": "Tate 値の Frobenius"
+},
+{
+"id": "HA1",
+"title": "Higher Algebra 1 章",
+"sub": "安定 ∞ 圏、安定化、Sp"
+},
+{
+"id": "HA23",
+"title": "Higher Algebra 2–3 章",
+"sub": "∞-オペラッド、対称モノイダル ∞ 圏、CAlg"
+},
+{
+"id": "HA4",
+"title": "Higher Algebra 4 章",
+"sub": "加群、随伴可能な四角形、smash 積、Eilenberg–Watts"
+},
+{
+"id": "HA67",
+"title": "Higher Algebra 6–7 章",
+"sub": "norm（6.1.6）、加群スペクトル"
+},
+{
+"id": "HTT",
+"title": "Higher Topos Theory",
+"sub": "Kan 延長、Ind、随伴関手定理"
+}
+],
+"items": [
+{
+"src": "BS",
+"num": "Def 8.2",
+"kind": "定義",
+"title": "Δ_{S/A,perf} := (colim_φ Δ_{S/A})^∧、S_perfd := Δ_perf ⊗ A/I",
+"status": "chain",
+"need": "bs",
+"route": "both",
+"decls": [
+"prismaticPerfection @ formalization-plans/bhatt-scholze/drafts/A4/Perfectoidization.lean"
+],
+"note": "drafts（sorry つきの設計）。Frobenius の塔の CAlg の余極限に (p,I) 完備化を後置する。完備化の後で P⁰ を使う点が §1.4 の論点。"
+},
+{
+"src": "BS",
+"num": "Lem 8.4",
+"kind": "補題",
+"title": "Δ_perf と S_perfd は D^{≥0}",
+"status": "chain",
+"need": "bs",
+"route": "both",
+"decls": [
+"prismaticPerfection_coconnective @ formalization-plans/bhatt-scholze/drafts/A4/Perfectoidization.lean",
+"prismaticPerfection_h0_perfectDelta @ formalization-plans/bhatt-scholze/drafts/A4/Perfectoidization.lean"
+],
+"note": "証明は (1) levelwise Frobenius が実現の上で P⁰ を誘導、(2) Δ_perf/p で P⁰ は可逆、(3) Rem 2.2.7 で正次数は消える、(4) H⁰ で φ は Frobenius の持ち上げ → Lemma 2.34。完備化をまたぐことは原典が明示しない（P⁰ の coherent な自然性から出る）。"
+},
+{
+"src": "DAG1",
+"num": "Lem 1.1.5",
+"kind": "補題",
+"title": "Kan 複体の homotopy pullback に沿う Kan 延長の基底変換",
+"status": "none",
+"need": "def",
+"route": "both",
+"decls": [],
+"note": "Beck–Chevalley 型。norm の構成のたびに使う。HA 6.1.6.3 と同じ内容（その行も none）。"
+},
+{
+"src": "DAG1",
+"num": "Not 2.1.1",
+"kind": "記法",
+"title": "C^X = Fun(X, C)、f^* の左右随伴 f_!・f_*（Kan 延長）",
+"status": "partial",
+"need": "def",
+"route": "both",
+"decls": [
+"kanRelativeLeftKanRestriction_trivialKanFibration @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/RelativeLeftRestrictionTheorem.lean:57"
+],
+"note": "相対 Kan 延長の部品は Kerodon の節にある。HTT 4.3.3.7（Kan 延長関手と前合成の随伴）は対応表で none。"
+},
+{
+"src": "DAG1",
+"num": "Ex 2.1.2",
+"kind": "例",
+"title": "G 作用つきの対象 = C^{BG} の対象、M^G・M_G",
+"status": "partial",
+"need": "def",
+"route": "both",
+"decls": [
+"GroupAction @ SerrePositivity/KST/Spectra/GroupAction.lean",
+"homotopyFixedPointsInfinityCone_isLimit @ SerrePositivity/KST/Spectra/FixedPointInfinityLimits.lean"
+],
+"note": "KST に厳密な作用（Mathlib の Action OmegaSpectrum G）と、その homotopy fixed point が Sp の ∞ 極限錐であることがある。∞ 圏的な BG → C と homotopy orbit はない。"
+},
+{
+"src": "DAG1",
+"num": "Con 2.1.3",
+"kind": "構成",
+"title": "(−1) 切断のファイバーの f に対する norm Nm_f : f_! → f_*",
+"status": "none",
+"need": "def",
+"route": "both",
+"decls": [],
+"note": "norm の段階的な構成の一段目。"
+},
+{
+"src": "DAG1",
+"num": "Prop 2.1.6",
+"kind": "命題",
+"title": "(−1) 切断の f で norm が同値 ⇔ C が pointed",
+"status": "none",
+"need": "def",
+"route": "both",
+"decls": [],
+"note": "HA 6.1.6.7 / NS Lemma I.1.8 と同じ。"
+},
+{
+"src": "DAG1",
+"num": "Con 2.1.7",
+"kind": "構成",
+"title": "ファイバーが有限離散の f に対する norm",
+"status": "none",
+"need": "def",
+"route": "both",
+"decls": [],
+"note": "二段目。前段の norm の逆を使う。"
+},
+{
+"src": "DAG1",
+"num": "Def 2.1.12",
+"kind": "定義",
+"title": "semiadditive（有限余積 → 有限積が同値）",
+"status": "partial",
+"need": "def",
+"route": "both",
+"decls": [
+"preadditive_ho @ SerrePositivity/InfinityCategories/HA/StableInfinityCategories/HomotopyPreadditive.lean:35"
+],
+"note": "Prop 2.1.11・Rem 2.1.14：hC が semiadditive なら C も。安定 ∞ 圏のホモトピー圏が加法的であることは本体にある。"
+},
+{
+"src": "DAG1",
+"num": "Ex 2.1.16",
+"kind": "例",
+"title": "安定 ∞ 圏は semiadditive",
+"status": "partial",
+"need": "def",
+"route": "both",
+"decls": [
+"preadditive_ho @ SerrePositivity/InfinityCategories/HA/StableInfinityCategories/HomotopyPreadditive.lean:35"
+],
+"note": "HA の当時の Lemma A.1.1.2.8（hC が加法的）を引く。"
+},
+{
+"src": "DAG1",
+"num": "Con 2.1.18",
+"kind": "構成",
+"title": "相対有限 groupoid の f に対する norm（一般）",
+"status": "none",
+"need": "def",
+"route": "both",
+"decls": [],
+"note": "三段目。Ex 2.1.21 で f : BG → Δ⁰ に適用して Nm_G : M_G → M^G。"
+},
+{
+"src": "DAG1",
+"num": "Def 2.1.23",
+"kind": "定義",
+"title": "Tate 構成 M^{tG} := cofib(Nm : M_G → M^G)",
+"status": "chain",
+"need": "def",
+"route": "both",
+"decls": [
+"cyclicTateComplex @ SerrePositivity/EInfinity/PowerOperation/CyclicTateComplex.lean",
+"powerOperationCompleteResolution @ SerrePositivity/EInfinity/PowerOperation/CyclicResolutionHomComplex.lean"
+],
+"note": "鎖の段階の両側周期複体（偶数次 ρ(g)−1、奇数次 norm）とその完全解像度だけ。スペクトル・∞ 圏の Tate との比較はしないと docstring に明記。"
+},
+{
+"src": "DAG1",
+"num": "Ex 2.1.25",
+"kind": "例",
+"title": "誘導された作用 N = i_!M では N^{tG} ≃ 0",
+"status": "chain",
+"need": "def",
+"route": "both",
+"decls": [
+"cyclicTateComplex_regularTensor_acyclic @ SerrePositivity/EInfinity/PowerOperation/CyclicInducedAcyclic.lean"
+],
+"note": "左正則表現 ⊗ 平坦な係数の周期複体が非輪状、という鎖の版。Prop 2.2.3 の証明の芯。"
+},
+{
+"src": "DAG2",
+"num": "Con 2.2.1",
+"kind": "構成",
+"title": "拡大冪 K^{(n)}、Sym^n(C) → C、対象の Σ_n 等変な C^{⊗n}",
+"status": "partial",
+"need": "def",
+"route": "both",
+"decls": [
+"tensorPowerRepresentationFunctor @ SerrePositivity/EInfinity/PowerOperation/TensorPowerRepresentation.lean",
+"arityDiagramCoinvariants @ SerrePositivity/EInfinity/BarrattEccles/Theory/ArityCoinvariantColimit.lean"
+],
+"note": "C を Cat_∞ の可換代数対象として扱う（HA 2 章）。本体は鎖の p 重テンソルの置換作用と、BE の厳密な Σ_n 余不変だけ。"
+},
+{
+"src": "DAG2",
+"num": "Con 2.2.2",
+"kind": "構成",
+"title": "T̂_η(C) = (C^{⊗n})^{tG}、とくに T̂_p",
+"status": "chain",
+"need": "def",
+"route": "both",
+"decls": [
+"powerOperationTensorInput @ SerrePositivity/EInfinity/PowerOperation/CyclicTensorInput.lean",
+"projectivePowerSpectrum @ SerrePositivity/EInfinity/PowerOperation/ProjectivePowerSpectrum.lean"
+],
+"note": "p 重テンソル（Koszul 符号つき、Rep k C_p 値）と周期 Hom を EM で Sp に送ったもの。native な Tate[−1] との比較は別に要ると docstring に。"
+},
+{
+"src": "DAG2",
+"num": "Prop 2.2.3",
+"kind": "命題",
+"title": "T̂_p は exact",
+"status": "chain",
+"need": "def",
+"route": "both",
+"decls": [
+"powerOperationCyclicPermutation_mixed_free @ SerrePositivity/EInfinity/PowerOperation/CyclicMixedOrbit.lean"
+],
+"note": "(Δ¹)^p の巡回不変な部分図式への分解と、中間の段が誘導された作用で Tate が消えること。本体には組合せの芯（非定数な色付けの安定化群は自明）だけ。"
+},
+{
+"src": "DAG2",
+"num": "Rem 2.2.4",
+"kind": "注意",
+"title": "可換代数 A に対し T̂_η(A)[−1] → (A^{⊗n})_G → Sym^n(A) → A（A について自然）",
+"status": "partial",
+"need": "def",
+"route": "both",
+"decls": [
+"barrattEcclesCore @ SerrePositivity/EInfinity/BarrattEccles/Theory.lean"
+],
+"note": "BE の厳密な operad の作用から (A^{⊗n})_{Σ_n} → A は取れる。∞ 圏の CAlg(C) の上の自然変換としてはない。"
+},
+{
+"src": "DAG2",
+"num": "Ex 2.2.5",
+"kind": "例",
+"title": "T_p = T̂_p|perfect の左 Kan 延長、T_p ≃ B ⊗_k −、B ≃ k^{tG}",
+"status": "none",
+"need": "def",
+"route": "dk",
+"decls": [],
+"note": "HA の当時の Prop A.7.1.2.4（余極限を保つ k 線形関手は双加群）を引く。D(k) の道ではこれが Tate 対角の役をする。"
+},
+{
+"src": "DAG2",
+"num": "Con 2.2.6",
+"kind": "構成",
+"title": "P⁰ : A → k⊗A → B[−1]⊗A ≃ T_p(A)[−1] → … → Sym^p(A) → A",
+"status": "none",
+"need": "def",
+"route": "both",
+"decls": [
+"powerOp0 @ SerrePositivity/EInfinity/Interface/Theory.lean:233"
+],
+"note": "π_1 k^{tG} = Ĥ^{−1}(G;k) の 1 が右 k 加群の射 e : k → B[−1] を与える。忘却 CAlg_k → Sp の自己変換。界面の欄は 11-13 の D79 の改訂で π_n の上の自然変換（May の演算）に弱めてある。"
+},
+{
+"src": "DAG2",
+"num": "Rem 2.2.7",
+"kind": "注意",
+"title": "π_n で n > 0 なら P⁰ = 0、π_0 で P⁰(x) = x^p",
+"status": "partial",
+"need": "calc",
+"route": "both",
+"decls": [
+"mayLocalizedPowerZero_pos @ SerrePositivity/EInfinity/PowerOperation/MayLocalizedPositive.lean",
+"barrattEcclesPowerOp0 @ SerrePositivity/EInfinity/BarrattEccles/Theory/MayPowerOperation.lean"
+],
+"note": "May の演算については本体で証明済み（零次・正次数・離散）。Lurie の構成の上ではない。両者の一致は示していない。"
+},
+{
+"src": "DAG2",
+"num": "Warn 2.2.8",
+"kind": "注意",
+"title": "P⁰ はスペクトルの射で、k 加群の射ではない",
+"status": "ref",
+"need": "ref",
+"route": "both",
+"decls": [],
+"note": "P⁰ を Sp 値で述べる理由。Frobenius は k 線形でない。"
+},
+{
+"src": "DAG2",
+"num": "Warn 2.2.10",
+"kind": "注意",
+"title": "A が離散でないと P⁰ は E∞ の射・環準同型に持ち上がらないことがある",
+"status": "ref",
+"need": "ref",
+"route": "both",
+"decls": [],
+"note": "P⁰ を CAlg の射として扱わない理由。"
+},
+{
+"src": "NS1",
+"num": "Def I.1.1",
+"kind": "定義",
+"title": "pointed・preadditive・additive・stable な ∞ 圏",
+"status": "proved",
+"need": "def",
+"route": "both",
+"decls": [
+"IsStable @ SerrePositivity/InfinityCategories/HA/StableInfinityCategories/Definition.lean:26",
+"derivedInfinityCategory_isStable @ SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/DerivedCategories/Stability.lean:62"
+],
+"note": "HA 1.1.1.9 の安定性は本体の定義。D(A) は無条件で安定。"
+},
+{
+"src": "NS1",
+"num": "Con I.1.7",
+"kind": "構成",
+"title": "norm Nm_f の構成（HA 6.1.6 にならう）",
+"status": "none",
+"need": "def",
+"route": "both",
+"decls": [],
+"note": "DAG XIII Con 2.1.3〜2.1.18 と同じ内容を短く。有限群 C_p だけでよい。"
+},
+{
+"src": "NS1",
+"num": "Lem I.1.8",
+"kind": "補題",
+"title": "pointed なら (−1) 切断の f で Nm_f は同値（HA 6.1.6.7）",
+"status": "none",
+"need": "def",
+"route": "both",
+"decls": [],
+"note": ""
+},
+{
+"src": "NS1",
+"num": "Lem I.1.9",
+"kind": "補題",
+"title": "preadditive なら有限ファイバーの 0 切断の f で Nm_f は同値（HA 6.1.6.12）",
+"status": "partial",
+"need": "def",
+"route": "both",
+"decls": [
+"CategoryTheory.Limits.biproduct.isoProduct @ Mathlib/CategoryTheory/Limits/Shapes/Biproducts.lean:515"
+],
+"note": "Mathlib の通常圏の biproduct だけ。"
+},
+{
+"src": "NS1",
+"num": "Def I.1.10",
+"kind": "定義",
+"title": "norm Nm_f : f_! → f_*（相対有限 groupoid の f）、Ex I.1.11 で Nm_G",
+"status": "none",
+"need": "def",
+"route": "both",
+"decls": [],
+"note": ""
+},
+{
+"src": "NS1",
+"num": "Def I.1.13",
+"kind": "定義",
+"title": "Tate 構成 −^{tG} := cofib(Nm_G : −_{hG} → −^{hG})",
+"status": "chain",
+"need": "def",
+"route": "both",
+"decls": [
+"cyclicTateComplex @ SerrePositivity/EInfinity/PowerOperation/CyclicTateComplex.lean"
+],
+"note": "DAG XIII Def 2.1.23 と同じ。"
+},
+{
+"src": "NS1",
+"num": "Thm I.3.1",
+"kind": "定理",
+"title": "−^{tG} の lax 対称モノイダル構造（と −^{hG} → −^{tG} の両立）は一意に存在",
+"status": "none",
+"need": "def",
+"route": "both",
+"decls": [],
+"note": "P⁰ には一部だけ要る：R^{tC_p} を k^{tC_p} の加群と見るところ。φ を E∞ の射にするのには全部要るが、P⁰ にはそこまで要らない。証明は Verdier 局所化（Thm I.3.3〜I.3.6）。"
+},
+{
+"src": "NS3",
+"num": "Prop III.1.1",
+"kind": "命題",
+"title": "T_p(X) = (X ⊗ … ⊗ X)^{tC_p} は exact",
+"status": "chain",
+"need": "def",
+"route": "sp",
+"decls": [
+"powerOperationCyclicPermutation_mixed_free @ SerrePositivity/EInfinity/PowerOperation/CyclicMixedOrbit.lean"
+],
+"note": "DAG XIII Prop 2.2.3 の Sp の場合。証明は中間の段が誘導された作用で消えること。"
+},
+{
+"src": "NS3",
+"num": "Prop III.1.2",
+"kind": "命題",
+"title": "exact な F について Map(id_Sp, F) ≃ Ω^∞ F(S)",
+"status": "none",
+"need": "def",
+"route": "sp",
+"decls": [],
+"note": "HA Cor 1.4.2.23（Fun^Ex(Sp,Sp) ≃ Fun^Lex(Sp,S)）と Yoneda。KST の Sp では使えない（安定性が条件つき、Ω^∞ の普遍性なし）。"
+},
+{
+"src": "NS3",
+"num": "Def III.1.4",
+"kind": "定義",
+"title": "Tate 対角 Δ_p : id → T_p（S → S^{hC_p} → S^{tC_p} に対応）",
+"status": "none",
+"need": "def",
+"route": "sp",
+"decls": [],
+"note": "D(k) の道では DAG XIII Ex 2.2.5 の T_p と B[−1] で置き換える。"
+},
+{
+"src": "NS4",
+"num": "Def IV.1.1",
+"kind": "定義",
+"title": "Tate 値の Frobenius φ_R : R → (R^{⊗p})^{tC_p} → R^{tC_p}",
+"status": "none",
+"need": "def",
+"route": "sp",
+"decls": [],
+"note": "乗法 m の C_p 等変性（R は自明な作用）と Tate 対角の合成。E∞ の射。"
+},
+{
+"src": "NS4",
+"num": "Ex IV.1.2",
+"kind": "例",
+"title": "R = HA で π_0 は A → A/p = Ĥ⁰(C_p;A)、a ↦ a^p",
+"status": "none",
+"need": "calc",
+"route": "sp",
+"decls": [],
+"note": "Rem 2.2.7 の π_0 の部分の NS の版。"
+},
+{
+"src": "NS4",
+"num": "Thm IV.1.15",
+"kind": "定理",
+"title": "HF_p の Frobenius は Steenrod 作用の積",
+"status": "none",
+"need": "ref",
+"route": "sp",
+"decls": [],
+"note": "確認用。Lurie の P⁰ と NS の Frobenius の関係を見るのに使える。一致をはっきり述べた文献は未確認。"
+},
+{
+"src": "HA1",
+"num": "1.1.1.9",
+"kind": "定義",
+"title": "安定 ∞ 圏",
+"status": "proved",
+"need": "def",
+"route": "both",
+"decls": [
+"IsStable @ SerrePositivity/InfinityCategories/HA/StableInfinityCategories/Definition.lean:26"
+],
+"note": "本体の定義（own）。"
+},
+{
+"src": "HA1",
+"num": "1.1.2.9",
+"kind": "補題",
+"title": "安定 ∞ 圏のホモトピー圏は加法的（三角圏）",
+"status": "partial",
+"need": "def",
+"route": "both",
+"decls": [
+"preadditive_ho @ SerrePositivity/InfinityCategories/HA/StableInfinityCategories/HomotopyPreadditive.lean:35",
+"isTriangulated_ho @ SerrePositivity/InfinityCategories/HA/StableInfinityCategories/TriangulatedInstance.lean"
+],
+"note": ""
+},
+{
+"src": "HA1",
+"num": "1.4.2.8",
+"kind": "定義",
+"title": "スペクトル対象 Sp(C) = Exc_*(S^fin_*, C)",
+"status": "partial",
+"need": "ref",
+"route": "sp",
+"decls": [
+"OmegaSpectrum @ SerrePositivity/KST/Spectra/OmegaSpectrum.lean:45",
+"Sp @ SerrePositivity/KST/Spectra/CoherentNerve.lean:32"
+],
+"note": "本体は BF 型の Ω スペクトルの具体模型。HA の定義との比較はない。"
+},
+{
+"src": "HA1",
+"num": "1.4.2.17",
+"kind": "系",
+"title": "Sp(C) は安定",
+"status": "cond",
+"need": "bs",
+"route": "both",
+"decls": [
+"sp_isStable @ SerrePositivity/KST/Spectra/D3TailStability.lean:24"
+],
+"note": "NativeLoopComparison を引数に持つ条件つき。KST の Sp-2 レーンが境界つき相対関手 Hom の延長定理の不足で止まっている。Lemma 8.4 で Sp の中の極限・cofiber を使うなら響く。"
+},
+{
+"src": "HA1",
+"num": "1.4.2.23",
+"kind": "系",
+"title": "Fun^Ex(D, Sp(C)) ≃ Fun^Lex(D, C)（Ω^∞ との合成）",
+"status": "none",
+"need": "def",
+"route": "sp",
+"decls": [],
+"note": "NS Prop III.1.2 の入力。"
+},
+{
+"src": "HA1",
+"num": "1.4.3.1",
+"kind": "定義",
+"title": "Sp := Sp(S_*)",
+"status": "partial",
+"need": "bs",
+"route": "both",
+"decls": [
+"Sp @ SerrePositivity/KST/Spectra/CoherentNerve.lean:32",
+"eilenbergMacLaneDerived @ SerrePositivity/EInfinity/PowerOperation/EilenbergMacLaneDerivedFunctor.lean"
+],
+"note": "P⁰ を述べる先。D(k) → Sp の忘却 V（eilenbergMacLaneDerived）と π/H の比較はある。V の極限・余極限の保存はない。"
+},
+{
+"src": "HA1",
+"num": "1.4.4.4",
+"kind": "命題",
+"title": "Sp(C) は presentable、Σ^∞_+ ⊣ Ω^∞",
+"status": "none",
+"need": "ref",
+"route": "sp",
+"decls": [],
+"note": "KST の Sp には presentable 性・一般の余極限がない。"
+},
+{
+"src": "HA23",
+"num": "2.0.0.7",
+"kind": "定義",
+"title": "対称モノイダル ∞ 圏（N(Fin_*) 上の余 Cartesian fibration）",
+"status": "none",
+"need": "def",
+"route": "both",
+"decls": [],
+"note": "いちばん大きな不足。余 Cartesian fibration の部品はある。HA の方向（D75 で BS の経路から外した）と同じ範囲。"
+},
+{
+"src": "HA23",
+"num": "2.1.1.10",
+"kind": "定義",
+"title": "∞-オペラッド",
+"status": "none",
+"need": "def",
+"route": "both",
+"decls": [],
+"note": ""
+},
+{
+"src": "HA23",
+"num": "2.1.3.1",
+"kind": "定義",
+"title": "O 代数の ∞ 圏 Alg_O、CAlg",
+"status": "none",
+"need": "def",
+"route": "both",
+"decls": [
+"CAlg_R @ SerrePositivity/EInfinity/BarrattEccles/CAlg.lean:39"
+],
+"note": "本体の CAlg は BE の厳密な模型の局所化（D75）。HA の CAlg との比較はない（Hinich・Pavlov–Scholbach の比較が候補）。"
+},
+{
+"src": "HA23",
+"num": "3.2.4.7",
+"kind": "命題",
+"title": "CAlg のテンソル積は余積",
+"status": "partial",
+"need": "def",
+"route": "both",
+"decls": [
+"CommAlgCat.binaryCofanIsColimit @ Mathlib/Algebra/Category/CommAlgCat/Monoidal.lean:40"
+],
+"note": "乗法 R^{⊗p} → R が Σ_p 等変な E∞ の射であることの根拠。Mathlib の通常圏の版だけ。"
+},
+{
+"src": "HA4",
+"num": "4.5.2.1",
+"kind": "構成",
+"title": "可換代数の上の加群の相対テンソル ⊗_A",
+"status": "partial",
+"need": "def",
+"route": "dk",
+"decls": [
+"MonoidalBalancedTensor.symmetricCategory @ SerrePositivity/CategoryTheory/Monoidal/Mod/Symmetric.lean:289"
+],
+"note": "通常圏の balanced tensor の特殊例だけ。R^{⊗_k p} に要る。"
+},
+{
+"src": "HA4",
+"num": "4.7.4.13",
+"kind": "定義",
+"title": "右随伴可能な四角形",
+"status": "partial",
+"need": "def",
+"route": "both",
+"decls": [
+"CategoryTheory.mateEquiv @ Mathlib/CategoryTheory/Adjunction/Mates.lean:84"
+],
+"note": "Mathlib の mates（通常圏）。norm の Beck–Chevalley で使う。"
+},
+{
+"src": "HA4",
+"num": "4.8.2.19",
+"kind": "系",
+"title": "Sp の smash 積（各変数で余極限を保ち、単位は S）",
+"status": "none",
+"need": "def",
+"route": "sp",
+"decls": [],
+"note": "Spectra/ の対称スペクトルに 1 圏の smash 積はあるが、∞ 圏化も KST の Sp との比較もない。"
+},
+{
+"src": "HA4",
+"num": "4.8.4.1",
+"kind": "定理",
+"title": "余極限を保つ C 線形関手 RMod_A → M は A での評価で決まる（Eilenberg–Watts）",
+"status": "none",
+"need": "def",
+"route": "dk",
+"decls": [],
+"note": "DAG XIII Ex 2.2.5（T_p ≃ B ⊗_k −）の根拠（当時の番号 A.7.1.2.4）。番号は要確認。"
+},
+{
+"src": "HA67",
+"num": "6.1.6.3",
+"kind": "補題",
+"title": "homotopy pullback に沿う右随伴可能性（Beck–Chevalley）",
+"status": "none",
+"need": "def",
+"route": "both",
+"decls": [],
+"note": "DAG XIII Lemma 1.1.5 と同じ。"
+},
+{
+"src": "HA67",
+"num": "6.1.6.7",
+"kind": "命題",
+"title": "pointed ⇔ (−1) 切断の norm が同値",
+"status": "none",
+"need": "def",
+"route": "both",
+"decls": [],
+"note": ""
+},
+{
+"src": "HA67",
+"num": "6.1.6.12",
+"kind": "命題",
+"title": "semiadditive ⇔ 有限ファイバーの norm が同値",
+"status": "partial",
+"need": "def",
+"route": "both",
+"decls": [
+"CategoryTheory.Limits.biproduct.isoCoproduct @ Mathlib/CategoryTheory/Limits/Shapes/Biproducts.lean:529"
+],
+"note": ""
+},
+{
+"src": "HA67",
+"num": "7.1.2.13",
+"kind": "定理",
+"title": "Mod_{Hk} ≃ D(k)（対称モノイダル）",
+"status": "none",
+"need": "def",
+"route": "dk",
+"decls": [
+"derivedInfinityCategory_isPresentable @ SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/DerivedCategories/DerivedCategory.lean:132",
+"tensorWith @ SerrePositivity/InfinityCategories/Project/DerivedCategories/Tensor/Fixed.lean"
+],
+"note": "D(k) は安定・presentable が無条件で済み。対称モノイダル構造は固定した対象とのテンソルと対称性だけ。"
+},
+{
+"src": "HA67",
+"num": "7.2.4.2",
+"kind": "命題",
+"title": "perfect な加群 = compact な対象",
+"status": "partial",
+"need": "def",
+"route": "dk",
+"decls": [
+"moduleCompact_iff_perfect @ SerrePositivity/DifferentialGraded/Perfect/Compact/FiniteGeneration.lean:1002"
+],
+"note": "dg の加群の版。T_p を perfect な対象から延ばすのに使う。"
+},
+{
+"src": "HA67",
+"num": "7.3.2.7",
+"kind": "系",
+"title": "強モノイダル関手の右随伴は lax モノイダル",
+"status": "partial",
+"need": "def",
+"route": "both",
+"decls": [
+"CategoryTheory.Adjunction.rightAdjointLaxMonoidal @ Mathlib/CategoryTheory/Monoidal/Functor.lean:940"
+],
+"note": "NS I.3 で −^{hG} の lax 対称モノイダル性に使う。Mathlib の通常圏の版。"
+},
+{
+"src": "HTT",
+"num": "4.3.3.7",
+"kind": "命題",
+"title": "Kan 延長関手と前合成の随伴",
+"status": "none",
+"need": "def",
+"route": "both",
+"decls": [],
+"note": "相対 Kan 延長の部品（HTT 4.3.2.15 は partial）はある。f_!・f_* を前合成の随伴として持つ形は対応表で none。"
+},
+{
+"src": "HTT",
+"num": "5.3.5.10",
+"kind": "命題",
+"title": "Ind の普遍性",
+"status": "proved",
+"need": "def",
+"route": "dk",
+"decls": [
+"indKappaContinuousRestriction_isQCatEquivalence @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories"
+],
+"note": "本体の定理（own）。T_p を perfect な対象から延ばすのに使う。"
+},
+{
+"src": "HTT",
+"num": "5.5.2.9",
+"kind": "系",
+"title": "presentable 圏の随伴関手定理",
+"status": "proved",
+"need": "def",
+"route": "both",
+"decls": [
+"exists_rightAdjoint_iff_preservesSmallColimits @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/PresentableInfinityCategories"
+],
+"note": "本体の定理（own）。NS I.3 などで使う。"
+}
+]
+}

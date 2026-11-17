@@ -1,0 +1,14 @@
+{
+  "old_path": "scripts/audit_einfinity.lean",
+  "new_path": "scripts/audit_einfinity.lean",
+  "source_sha256": "abb5ddc488eabbca1d53ecfcf11922a38f775378b6dd5f8d4acb580a99029225",
+  "preview_sha256": "a77867c7daae334c7e0a582201b74dd112b7d3b650a86bdc41a122552e959687",
+  "original_audit_returncode": 0,
+  "original_audit_seconds": 403.99549887515604,
+  "original_reference_count": 151722,
+  "original_command_count": 4900,
+  "raw_name_literals_reviewed": 1034,
+  "resolved_name_quotations": 300,
+  "review_items": 0,
+  "policy": "Raw registry Name literals have exact source/native records. Double-backtick resolved quotations stay with the ordinary semantic rewrite. No term references are fabricated, and the shared uncovered-name guard remains unchanged."
+}

@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantSourceFrame
-public import SerrePositivity.EInfinity.FrameHom.FrameArrowAugmentationLimits
-public import SerrePositivity.EInfinity.SimplicialLocalization.HammockInvertsEdges
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrowAugmentationLimits
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.HammockInvertsEdges
 
 /-!
 # 元の cofibrant source frame の全矢図式の実 ∞ 極限
@@ -19,8 +19,8 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open CategoryTheory HomotopicalAlgebra SerrePositivity.InfinityCategories
-open SimplicialLocalization
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.InfinityCategories
+open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X : CofibrantAlgebra A)
 
@@ -49,13 +49,13 @@ lemma sourceFrameIndex_weaklyContractible :
 
 lemma cofibrantSourceFrameTotal_hasLimit {E : SSet.{u + 1}} [SSet.Quasicategory E]
     (F : nerve (cofibrantAlgebraRelativeCategory A).category ⟶ E)
-    (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InvertsEdges F (weakNerveEdges (cofibrantAlgebraRelativeCategory A))) :
+    (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InvertsEdges F (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges (cofibrantAlgebraRelativeCategory A))) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasLimit (nerveMap (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FrameArrowCategory.target (cofibrantDKSourceFrame A X)) ≫ F) := by
-  apply FrameHom.FrameArrows.target_hasLimit_of_inverting_augmentation
+  apply _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.target_hasLimit_of_inverting_augmentation
     (cofibrantDKSourceFrame A X) (cofibrantDKSourceFrameAugmentation A X) F
   · intro n
     have hw := hF (show ComposableArrows.mk₁ ((cofibrantDKSourceFrameAugmentation A X).app n) ∈
-        weakNerveEdges (cofibrantAlgebraRelativeCategory A) from
+        _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges (cofibrantAlgebraRelativeCategory A) from
       ⟨_, _, _, cofibrantDKSourceFrameAugmentation_weak A X n, rfl⟩)
     change _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge
       ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex (ComposableArrows.mk₁ ((cofibrantDKSourceFrameAugmentation A X).app n))).map

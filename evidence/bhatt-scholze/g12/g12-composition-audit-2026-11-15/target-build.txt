@@ -1,0 +1,2 @@
+✔ [1253/1253] Built SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionComposition (1.4s)
+Build completed successfully (1253 jobs).

@@ -19,7 +19,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory Limits Opposite SSet MonoidalClosed
-open SerrePositivity.EInfinity.FrameHom SerrePositivity.InfinityCategories
+open _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom SerrePositivity.InfinityCategories
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : CofibrantAlgebra A)
   (b : (cofibrantSourceRoofTarget A X Y) _⦋0⦌)
@@ -29,9 +29,9 @@ lemma cofibrantSourceRoofProductGeometricLeftCell_eq :
       (cofibrantSourceRoofProductCommaEvaluationIso A X Y b).hom := by
   let w := nerveMap (Over.forget (cofibrantSourceRoofDegree A X Y b)) ≫
     nerveMap (cofibrantDKSourceFrame A X) ≫
-      SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A)
+      _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A)
   let H := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp (cofibrantSourceRoofProductBaseHomotopy A X Y b) w
-  let T := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp (overTerminalHomotopy (cofibrantSourceRoofDegree A X Y b)
+  let T := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.overTerminalHomotopy (cofibrantSourceRoofDegree A X Y b)
     (cofibrantSourceRoofProductCommaOver A X Y b)) w
   have h : SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H) =
       SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy T) := by

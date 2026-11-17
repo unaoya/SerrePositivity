@@ -30,7 +30,7 @@ universe u
 
 namespace SerrePositivity.EInfinity.BarrattEccles
 
-open CategoryTheory Bicategory SSet MonoidalClosed SimplicialLocalization
+open CategoryTheory Bicategory SSet MonoidalClosed _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.InfinityCategories
 open scoped Simplicial
 
@@ -49,7 +49,7 @@ lemma allAlgebraDKReplacementAugmentation_isIso (A : Type u) [CommRing A] :
     IsIso (qcatNerveNatTrans (allAlgebraDKReplacementAugmentation A) ▷ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.qcatMap (Q[A])) := by
   apply qcatNerveNatTrans_whiskerRight_isIso
   intro X
-  apply weakNerveEdges_inverts_arrows (allAlgebraRelativeCategory A) _
+  apply _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges_inverts_arrows (allAlgebraRelativeCategory A) _
     (allAlgebraCAlgSource_isLocalization A).choose
   exact framedLimitProbeComparison_quasiIso A ((allAlgebraDKDown A).obj X)
 
@@ -63,7 +63,7 @@ lemma allAlgebraCoefficientExtension_comparison_isIso :
   have h : IsIso (qcatNerveNatTrans (Functor.whiskerLeft (I[S]) η) ▷ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.qcatMap (Q[T])) := by
     apply qcatNerveNatTrans_whiskerRight_isIso
     intro X
-    apply weakNerveEdges_inverts_arrows (allAlgebraRelativeCategory T) _
+    apply _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges_inverts_arrows (allAlgebraRelativeCategory T) _
       (allAlgebraCAlgSource_isLocalization T).choose
     let e := (cofibrantAlgebraDKReplacementAugmentation S).app X
     have he : (cofibrantAlgebraRelativeCategory S).weakEquivalences e :=

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorElementDiagram
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorPinchedIso
-public import SerrePositivity.EInfinity.FrameHom.FrameIndexAugmentation
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameIndexAugmentation
 public import SerrePositivity.EInfinity.ComplexLimits.OrdinaryDerivedSource
 
 /-!
@@ -37,7 +37,7 @@ def normalizedTensorElementParameterMap : nerve (normalizedTensorElementIndex A 
     SSet.uliftFunctor.{u + 1, u}.obj
       ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (normalizedSimplexTensor A X)).obj Y) :=
   normalizedTensorElementLiftNerveMap A X Y ≫
-    FrameHom.SimplexTerminalNerve.liftedAugmentation.{u, u + 1}
+    _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.SimplexTerminalNerve.liftedAugmentation.{u, u + 1}
       ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (normalizedSimplexTensor A X)).obj Y)
 
 def normalizedTensorElementPinchedMap : nerve (normalizedTensorElementIndex A X Y) ⟶

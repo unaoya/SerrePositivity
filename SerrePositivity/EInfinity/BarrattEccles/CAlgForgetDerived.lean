@@ -20,7 +20,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open SerrePositivity.InfinityCategories
-open CategoryTheory SSet SimplicialLocalization
+open CategoryTheory SSet _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open scoped Simplicial
 variable (A : Type u) [CommRing A]
 
@@ -29,7 +29,7 @@ lemma cAlgForgetDerived_exists :
       Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (cAlgLocalizationSource A ≫ U)
         (cofibrantAlgebraUnderlyingDerivedSource A)) :=
   _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.localization_extension_exists (cAlgLocalizationSource A)
-    (weakNerveEdges (cofibrantAlgebraRelativeCategory A)) (cAlgLocalizationSource_inverts A)
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges (cofibrantAlgebraRelativeCategory A)) (cAlgLocalizationSource_inverts A)
     (cAlgLocalizationPrecomposition_isQCatEquivalence A (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A))
     (cofibrantAlgebraUnderlyingDerivedSource A) (cofibrantAlgebraUnderlyingDerivedSource_inverts A)
 

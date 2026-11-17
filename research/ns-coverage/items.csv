@@ -1,0 +1,254 @@
+number,kind,title,section,status,declarations,reason,confidence,lean_citations,plan_citations,kerodon,goal
+1.1,Theorem,Goodwillie の有理冪零不変性と trace,Introduction,,,,medium,0,0,,-
+1.2,Theorem,Dundas–Goodwillie–McCarthy の cyclotomic trace,Introduction,,,,medium,0,0,,-
+1.3,Definition,cyclotomic スペクトル,Introduction,,,,medium,0,0,,-
+1.4,Theorem,有界下での genuine と naive の同値,Introduction,,,,medium,0,0,,-
+1.5,Corollary,TC の Frobenius fiber 公式,Introduction,,,,medium,0,0,,-
+1.6,Remark,TC の等化子表示,Introduction,,,,medium,0,0,,-
+1.7,Theorem,Tate 対角の完全性・一意性・完備化,Introduction,,,,medium,0,0,,-
+I.1.1,Definition,pointed・preadditive ∞ 圏,I.1,,,,high,0,0,,BS;inf
+I.1.2,Definition,coherent な群作用対象,I.1,,,,high,0,0,DAGXIII 2.1.2; HA 6.1.6.2 (作用対象の部分),BS;inf
+I.1.3,Remark,群作用の表記,I.1,,,,medium,0,0,,BS;inf
+I.1.4,Remark,naive な群作用と genuine な同変スペクトル,I.1,,,,medium,0,0,,BS;inf
+I.1.5,Definition,ホモトピー orbit と fixed point,I.1,,,,high,0,0,DAGXIII 2.1.2 (orbit・fixed point の部分),BS;inf
+I.1.6,Remark,genuine な fixed point との表記上の区別,I.1,,,,medium,0,0,,BS;inf
+I.1.7,Construction,相対 norm の帰納的構成,I.1,,,,medium,0,3,DAGXIII 2.1.3; DAGXIII 2.1.7; DAGXIII 2.1.18 (段階的構成),BS;inf
+I.1.8,Lemma,(-1) 切断 norm の可逆性,I.1,,,,medium,0,2,DAGXIII 2.1.6; HA 6.1.6.7 ((3)⇒(1) の方向),BS;inf
+I.1.9,Lemma,有限離散 fiber の norm の可逆性,I.1,,,,medium,0,1,DAGXIII 2.1.11; HA 6.1.6.12 (半加法性⇒norm 可逆の方向),BS;inf
+I.1.10,Definition,相対有限群oid の norm,I.1,,,,medium,0,1,DAGXIII 2.1.18; HA 6.1.6.19,BS;inf
+I.1.11,Example,有限群の norm,I.1,,,,medium,0,1,DAGXIII 2.1.21; HA 6.1.6.22,BS;inf
+I.1.12,Example,商群の残余作用と norm,I.1,,,,medium,0,0,,BS;inf
+I.1.13,Definition,norm の cofiber としての Tate,I.1,,,,medium,0,2,DAGXIII 2.1.23; HA 6.1.6.24,BS;inf
+I.2.1,Lemma,Tate orbit 補題,I.2,,,,medium,0,0,,-
+I.2.2,Lemma,Tate fixed point 補題,I.2,,,,medium,0,0,,-
+I.2.3,Example,有界性なしでの反例,I.2,,,,medium,0,0,,-
+I.2.4,Lemma,HF_p の二次数切断の Tate 消滅,I.2,,,,medium,0,0,,-
+I.2.5,Lemma,非自明二段拡大の Tate 消滅,I.2,,,,medium,0,0,,-
+I.2.6,Lemma,切断塔と orbit・fixed point・Tate の比較,I.2,,,,medium,0,0,,-
+I.2.7,Lemma,Eilenberg–MacLane スペクトルの orbit・fixed point 補題,I.2,,,,medium,0,0,,-
+I.2.8,Lemma,p 可逆対象の Tate 消滅,I.2,,,,medium,0,0,,-
+I.2.9,Lemma,有界下の Tate の p 完備性,I.2,,,,medium,0,0,,-
+I.3.1,Theorem,Tate の lax 対称モノイダル構造の一意性,I.3,,,,medium,0,2,,BS;inf
+I.3.2,Definition,安定部分圏とテンソルイデアル,I.3,,,,medium,0,0,,BS;inf
+I.3.3,Theorem,安定 Verdier 商と全関手の普遍性,I.3,,,,high,0,2,,BS;inf
+I.3.4,Lemma,局所化後の写像空間と Yoneda,I.3,,,,medium,0,0,,BS;inf
+I.3.5,Proposition,Verdier 商の Ind 表示と随伴,I.3,,,,medium,0,0,,BS;inf
+I.3.6,Theorem,モノイダル Verdier 商と lax 関手の普遍性,I.3,,,,medium,0,0,,BS;inf
+I.3.7,Definition,誘導スペクトルの安定生成部分圏,I.3,,,,medium,0,0,,BS;inf
+I.3.8,Lemma,誘導部分圏の Tate 消滅・イデアル性・近似,I.3,,,,medium,0,0,,BS;inf
+I.3.9,Corollary,残余作用付き Tate の lax 対称モノイダル性,I.3,,,,medium,0,0,,BS;inf
+I.4.1,Theorem,局所係数スペクトル・双対化対象・有限性,I.4,,,,medium,0,0,,-
+I.4.2,Definition,Spivak–Klein 双対化スペクトル,I.4,,,,medium,0,0,,-
+I.4.3,Corollary,円周群の Farrell–Tate と有限巡回群,I.4,,,,medium,0,0,,-
+I.4.4,Lemma,HZ の円周 Tate の mod n 比較,I.4,,,,medium,0,0,,-
+II.1.1,Definition,cyclotomic・p-cyclotomic スペクトル,II.1,,,,medium,0,0,,-
+II.1.2,Example,THH・球・trivial cyclotomic 構造の例,II.1,,,,medium,0,0,,-
+II.1.3,Remark,円周作用版と Prüfer 作用版,II.1,,,,medium,0,0,,-
+II.1.4,Definition,lax equalizer ∞ 圏,II.1,,,,medium,0,0,,-
+II.1.5,Proposition,lax equalizer の写像・極限・安定性,II.1,,,,medium,0,0,,-
+II.1.6,Definition,cyclotomic ∞ 圏の lax equalizer 表示,II.1,,,,medium,0,0,,-
+II.1.7,Corollary,cyclotomic ∞ 圏の presentability と忘却,II.1,,,,medium,0,0,,-
+II.1.8,Definition,写像スペクトルによる TC,II.1,,,,medium,0,0,,-
+II.1.9,Proposition,TC の全素数・p 典型 fiber 列,II.1,,,,medium,0,0,,-
+II.2.1,Definition,直交スペクトル,II.2,,,,medium,0,0,,-
+II.2.2,Definition,直交 G スペクトル,II.2,,,,medium,0,0,,-
+II.2.3,Definition,表現評価と同変・幾何学的固定点,II.2,,,,medium,0,0,,-
+II.2.4,Proposition,幾何学的固定点の lax モノイダル性,II.2,,,,medium,0,0,,-
+II.2.5,Definition,genuine G スペクトルの局所化,II.2,,,,medium,0,0,,-
+II.2.6,Remark,スペクトル Mackey 関手の記述,II.2,,,,medium,0,0,,-
+II.2.7,Theorem,Borel 完備化の充満忠実右随伴,II.2,,,,medium,0,0,,-
+II.2.8,Corollary,Borel 完備化の lax モノイダル性,II.2,,,,medium,0,0,,-
+II.2.9,Definition,完備 G universe,II.2,,,,medium,0,0,,-
+II.2.10,Definition,universe を用いる幾何学的固定点,II.2,,,,medium,0,0,,-
+II.2.11,Lemma,二つの幾何学的固定点模型の zigzag,II.2,,,,medium,0,0,,-
+II.2.12,Proposition,幾何学的固定点の反復,II.2,,,,medium,0,0,,-
+II.2.13,Proposition,巡回 p 群の isotropy fiber 列,II.2,,,,medium,0,0,,-
+II.2.14,Proposition,幾何学的固定点の充満忠実右随伴,II.2,,,,medium,0,0,,-
+II.2.15,Definition,Prüfer 群・円周群の genuine 圏,II.2,,,,medium,0,0,,-
+II.2.16,Corollary,固定点右随伴の有限固定点公式,II.2,,,,medium,0,0,,-
+II.3.1,Definition,genuine p-cyclotomic スペクトル,II.3,,,,medium,0,0,,-
+II.3.2,Proposition,genuine から naive p-cyclotomic への関手,II.3,,,,medium,0,0,,-
+II.3.3,Definition,genuine cyclotomic スペクトル,II.3,,,,medium,0,0,,-
+II.3.4,Proposition,genuine から naive cyclotomic への関手,II.3,,,,medium,0,0,,-
+II.3.5,Remark,従来の定義との coherent な比較,II.3,,,,medium,0,0,,-
+II.3.6,Definition,直交 cyclotomic スペクトル,II.3,,,,medium,0,0,,-
+II.3.7,Theorem,直交 cyclotomic 圏の Dwyer–Kan 局所化,II.3,,,,medium,0,0,,-
+II.3.8,Theorem,有界下の二種類の TC の同値,II.3,,,,medium,0,0,,-
+II.4.1,Lemma,Tate orbit による反復 Tate 比較,II.4,,,,medium,0,0,,-
+II.4.2,Lemma,円周 Tate と巡回 Tate の完備化比較,II.4,,,,medium,0,0,,-
+II.4.3,Remark,TC fiber 列の profinite 簡約,II.4,,,,medium,0,0,,-
+II.4.4,Definition,古典的 TR・TC の定義,II.4,,,,medium,0,0,,-
+II.4.5,Lemma,genuine 固定点の isotropy pullback,II.4,,,,medium,0,0,,-
+II.4.6,Proposition,有界下の refined isotropy pullback,II.4,,,,medium,0,0,,-
+II.4.7,Corollary,genuine 巡回 p 群固定点の反復極限,II.4,,,,medium,0,0,,-
+II.4.8,Remark,有界下 genuine スペクトルの貼り合わせ表示,II.4,,,,medium,0,0,,-
+II.4.9,Corollary,固定点からホモトピー固定点への高次数比較,II.4,,,,medium,0,0,,-
+II.4.10,Theorem,genuine p 典型 TC の新しい fiber 列,II.4,,,,medium,0,0,,-
+II.4.11,Theorem,genuine 整 TC の新しい fiber 列,II.4,,,,medium,0,0,,-
+II.5.1,Definition,自己関手の coalgebra と fixpoint,II.5,,,,medium,0,0,,-
+II.5.2,Construction,coalgebra の自己関手と構造変換,II.5,,,,medium,0,0,,-
+II.5.3,Proposition,fixpoint への右随伴の反復極限,II.5,,,,medium,0,0,,-
+II.5.4,Lemma,coalgebra の一段右随伴の pullback 表示,II.5,,,,medium,0,0,,-
+II.5.5,Corollary,反復右随伴の多重 pullback,II.5,,,,medium,0,0,,-
+II.5.6,Theorem,genuine p-cyclotomic 部分圏への右随伴,II.5,,,,medium,0,0,,-
+II.5.7,Remark,可換自己関手族の coherent coalgebra,II.5,,,,medium,0,0,,-
+II.5.8,Lemma,二重適用が終対象となる coalgebra の判定,II.5,,,,medium,0,0,,-
+II.5.9,Lemma,自己関手族の fixpoint と N>0 作用,II.5,,,,medium,0,0,,-
+II.5.10,Lemma,部分 fixpoint 右随伴の反復極限,II.5,,,,medium,0,0,,-
+II.5.11,Lemma,自己関手族の右随伴の pullback 表示,II.5,,,,medium,0,0,,-
+II.5.12,Lemma,異なる素数の幾何学的固定点と右随伴の交換,II.5,,,,medium,0,0,,-
+II.5.13,Theorem,genuine cyclotomic 部分圏への右随伴,II.5,,,,medium,0,0,,-
+II.6.1,Lemma,有界下 Borel 完備対象の幾何学的固定点,II.6,,,,medium,0,0,,-
+II.6.2,Lemma,naive p-cyclotomic 忘却の右随伴,II.6,,,,medium,0,0,,-
+II.6.3,Theorem,有界下 genuine・naive p-cyclotomic 圏同値,II.6,,,,medium,0,0,,-
+II.6.4,Remark,円周作用を保つ p 典型版の同値,II.6,,,,medium,0,0,,-
+II.6.5,Remark,不安定空間の場合の類似,II.6,,,,medium,0,0,,-
+II.6.6,Lemma,円周 Borel 完備対象の幾何学的固定点,II.6,,,,medium,0,0,,-
+II.6.7,Lemma,非 p 群の Borel 完備幾何学的固定点の消滅,II.6,,,,medium,0,0,,-
+II.6.8,Lemma,naive cyclotomic 忘却の右随伴,II.6,,,,medium,0,0,,-
+II.6.9,Theorem,有界下 genuine・naive cyclotomic 圏同値,II.6,,,,medium,0,0,,-
+II.6.10,Remark,Goodwillie の整 TC との一致,II.6,,,,medium,0,0,,-
+III.1.1,Proposition,素数 Tate テンソル冪の完全性,III.1,,,,medium,0,8,DAGXIII 2.2.3 (Sp の場合),BS;inf
+III.1.2,Proposition,球での評価による完全自然変換の分類,III.1,,,,medium,0,3,,BS;inf
+III.1.3,Corollary,恒等から Tate 冪への自然変換の空間,III.1,,,,medium,0,0,,BS;inf
+III.1.4,Definition,Tate 対角,III.1,,,,medium,0,2,,BS;inf
+III.1.5,Remark,Singer 構成・HHR norm との関係,III.1,,,,medium,0,0,,BS;inf
+III.1.6,Remark,球の Segal 予想,III.1,,,,medium,0,0,,BS;inf
+III.1.7,Theorem,有界下 Tate 対角の p 完備化,III.1,,,,medium,0,0,,BS;inf
+III.1.8,Lemma,有限逆極限を持つ有限集合塔の Pro 定数性,III.1,,,,medium,0,0,,BS;inf
+III.1.9,Remark,D(Z) での対角の障害,III.1,,,,medium,0,0,,BS;inf
+III.1.10,Theorem,D(Z) の Tate 対角候補のホモロジー消滅,III.1,,,,medium,0,3,,BS;inf
+III.2.1,Definition,Sp の E₁ 代数,III.2,,,,medium,0,0,HA 4.1.1.6 (Sp の場合),-
+III.2.2,Proposition,単体的 Segal 図式による E₁ 代数,III.2,,,,medium,0,0,,-
+III.2.3,Definition,巡回実現による THH と Frobenius,III.2,,,,medium,0,0,,-
+III.3.1,Proposition,lax 対称モノイダル Tate 対角の一意性,III.3,,,,medium,0,0,,-
+III.3.2,Proposition,active envelope と lax 関手,III.3,,,,medium,0,0,,-
+III.3.3,Lemma,active envelope 関手の反射,III.3,,,,medium,0,0,,-
+III.3.4,Remark,active envelope のモノイダル左随伴,III.3,,,,medium,0,0,,-
+III.3.5,Remark,∞ operad への envelope 比較の一般化,III.3,,,,medium,0,0,,-
+III.3.6,Proposition,自由 Cp 集合による equivariant envelope 関手,III.3,,,,medium,0,0,,-
+III.3.7,Lemma,部分完全 lax 関手の始対象,III.3,,,,medium,0,0,,-
+III.3.8,Corollary,残余 Cp 作用を保つ Tate 対角,III.3,,,,medium,0,0,,-
+III.4.1,Definition,有限集合・単射による直交スペクトルの図式,III.4,,,,medium,0,0,,-
+III.4.2,Lemma,Bökstedt の連結度近似,III.4,,,,medium,0,0,,-
+III.4.3,Definition,Bökstedt テンソル模型,III.4,,,,medium,0,0,,-
+III.4.4,Theorem,Bökstedt 模型の安定同値不変性,III.4,,,,medium,0,0,,-
+III.4.5,Theorem,Bökstedt と native テンソルの比較,III.4,,,,medium,0,0,,-
+III.4.6,Construction,Bökstedt 模型の幾何学的固定点からの射,III.4,,,,medium,0,0,,-
+III.4.7,Theorem,固定点比較射の安定同値性,III.4,,,,medium,0,0,,-
+III.5.1,Definition,古典的な直交 THH と cyclotomic 構造,III.5,,,,medium,0,0,,-
+III.5.2,Lemma,THH 巡回空間の proper 性,III.5,,,,medium,0,0,,-
+III.5.3,Remark,proper 性の仮定の緩和,III.5,,,,medium,0,0,,-
+III.5.4,Proposition,THH の幾何学的固定点と実現,III.5,,,,medium,0,0,,-
+III.5.5,Proposition,残余円周作用を保つ固定点比較,III.5,,,,medium,0,0,,-
+III.5.6,Proposition,元の THH の equivariant Bökstedt 表示,III.5,,,,medium,0,0,,-
+III.6.1,Theorem,古典的 THH と native THH の同値,III.6,,,,medium,0,0,,-
+III.6.2,Construction,native な Cp 固定点の equivariant モノイダル関手,III.6,,,,medium,0,0,,-
+III.6.3,Construction,equivariant lax な universe 固定点模型,III.6,,,,medium,0,0,,-
+III.6.4,Construction,universe 固定点から lax 模型への比較,III.6,,,,medium,0,0,,-
+III.6.5,Construction,通常の幾何学的固定点から lax 模型への比較,III.6,,,,medium,0,0,,-
+III.6.6,Proposition,native と直交固定点の coherent な比較,III.6,,,,medium,0,0,,-
+III.6.7,Theorem,Bökstedt・Tate 比較の部分完全降下,III.6,,,,medium,0,0,,-
+III.6.8,Corollary,古典的と native な cyclotomic 射の一致,III.6,,,,medium,0,0,,-
+IV.1.1,Definition,Tate 値 Frobenius,IV.1,,,,medium,0,1,,BS;inf
+IV.1.2,Example,離散環と p 完備球の Frobenius,IV.1,,,,medium,0,1,,BS;inf
+IV.1.3,Lemma,Tate 対角の Weyl 固定点への因子化,IV.1,,,,medium,0,0,,BS;inf
+IV.1.4,Corollary,Tate Frobenius の Weyl 固定点への因子化,IV.1,,,,medium,0,0,,BS;inf
+IV.1.5,Corollary,モノイド環の Frobenius lift,IV.1,,,,medium,0,0,,BS;inf
+IV.1.6,Remark,対称群固定点を通る lift,IV.1,,,,medium,0,0,,BS;inf
+IV.1.7,Lemma,Ω∞ での Tate 対角と空間の対角,IV.1,,,,medium,0,0,,BS;inf
+IV.1.8,Corollary,Tate 対角からの norm 完全列,IV.1,,,,medium,0,0,,BS;inf
+IV.1.9,Corollary,乗法的 E∞ モノイド上の power operation,IV.1,,,,medium,0,0,,BS;inf
+IV.1.10,Corollary,零次コホモロジーの Frobenius と power operation,IV.1,,,,medium,0,0,,BS;inf
+IV.1.11,Remark,transfer ideal による加法化,IV.1,,,,medium,0,0,,BS;inf
+IV.1.12,Proposition,KU の Frobenius と Adams 作用,IV.1,,,,medium,0,0,,BS;inf
+IV.1.13,Remark,genuine K 理論での精密化,IV.1,,,,medium,0,0,,BS;inf
+IV.1.14,Remark,"K(Z,2) による KU 計算",IV.1,,,,medium,0,0,,BS;inf
+IV.1.15,Theorem,HF_p・HZ の Frobenius と Steenrod 演算,IV.1,,,,medium,0,0,,BS;inf
+IV.1.16,Proposition,コホモロジー理論上の Steenrod 級数,IV.1,,,,medium,0,0,,BS;inf
+IV.1.17,Lemma,表現球 shift と Tate の比較,IV.1,,,,medium,0,0,,BS;inf
+IV.1.18,Lemma,全次数の Frobenius と power operation の可換図式,IV.1,,,,medium,0,0,,BS;inf
+IV.1.19,Lemma,表現ねじれコホモロジーの固定点表示,IV.1,,,,medium,0,0,,BS;inf
+IV.1.20,Lemma,拡大冪による通常の power operation との比較,IV.1,,,,medium,0,0,,BS;inf
+IV.1.21,Theorem,全次数の Frobenius の拡大冪公式,IV.1,,,,medium,0,0,,BS;inf
+IV.2.1,Construction,cyclotomic 圏の対称モノイダル構造,IV.2,,,,medium,0,0,,-
+IV.2.2,Proposition,可換 THH の円周作用の普遍性,IV.2,,,,medium,0,0,,-
+IV.2.3,Corollary,可換 THH の Frobenius の一意性,IV.2,,,,medium,0,0,,-
+IV.2.4,Corollary,THH からの増大と Tate Frobenius,IV.2,,,,medium,0,0,,-
+IV.3.1,Lemma,巡回 bar の円周作用と Frobenius lift,IV.3,,,,medium,0,0,,-
+IV.3.2,Proposition,ループモノイドの巡回 bar と自由ループ空間,IV.3,,,,medium,0,0,,-
+IV.3.3,Corollary,球ループ群環の THH と自由ループ空間,IV.3,,,,medium,0,0,,-
+IV.3.4,Proposition,Frobenius lift 付き TC の pullback,IV.3,,,,medium,0,0,,-
+IV.3.5,Lemma,lift とホモトピー固定点の pullback,IV.3,,,,medium,0,0,,-
+IV.3.6,Theorem,自由ループ空間による球群環 TC,IV.3,,,,medium,0,0,,-
+IV.3.7,Theorem,単連結自由ループ空間の Segal 比較,IV.3,,,,medium,0,0,,-
+IV.4.1,Proposition,HH の導来外冪フィルトレーション,IV.4,,,,medium,0,0,,-
+IV.4.2,Proposition,THH と HH の二次までの比較,IV.4,,,,medium,0,0,,-
+IV.4.3,Proposition,HH(F_p) の divided power 計算,IV.4,,,,medium,0,0,,-
+IV.4.4,Theorem,Bökstedt の THH(F_p) 多項式計算,IV.4,,,,medium,0,0,,-
+IV.4.5,Remark,E₂ Thom による Bökstedt 計算,IV.4,,,,medium,0,0,,-
+IV.4.6,Proposition,THH(F_p) の円周固定点の Z_p 計算,IV.4,,,,medium,0,0,,-
+IV.4.7,Lemma,固定点スペクトル系列の p の拡大,IV.4,,,,medium,0,0,,-
+IV.4.8,Corollary,THH(F_p) の円周 Tate の Laurent 計算,IV.4,,,,medium,0,0,,-
+IV.4.9,Proposition,THH(F_p) の Frobenius の Z_p 上の像,IV.4,,,,medium,0,0,,-
+IV.4.10,Corollary,TC(F_p) のホモトピー群,IV.4,,,,medium,0,0,,-
+IV.4.11,Remark,Frobenius の p 反転による meromorphic 拡張,IV.4,,,,medium,0,0,,-
+IV.4.12,Lemma,D(Z) の円周・巡回 Tate の係数変更,IV.4,,,,medium,0,0,,-
+IV.4.13,Corollary,THH(F_p) の巡回 Tate と connective cover,IV.4,,,,medium,0,0,,-
+IV.4.14,Proposition,trivial cyclotomic 構造と TC の随伴,IV.4,,,,medium,0,0,,-
+IV.4.15,Construction,connective cyclotomic shift,IV.4,,,,medium,0,0,,-
+IV.4.16,Corollary,THH(F_p) の shifted HZ_p 表示,IV.4,,,,medium,0,0,,-
+IV.4.17,Remark,HZ_p の Tate の複数の HF_p 代数構造,IV.4,,,,medium,0,0,,-
+A.1,Definition,対称モノイダル ∞ 圏,A,,,,medium,0,0,HA 2.0.0.7,inf
+A.2,Definition,対称・lax 対称モノイダル ∞ 関手,A,,,,high,0,0,HA 2.1.3.7 (強モノイダル条件・全部分圏の部分),inf
+A.3,Remark,∞ operad の代数と lax 関手,A,,,,medium,0,0,,inf
+A.4,Definition,モノイダル Dwyer–Kan 局所化,A,,,,medium,0,0,,inf
+A.5,Proposition,弱同値を保つ tensor の局所化,A,,,,medium,0,0,,inf
+A.6,Remark,HA の局所化との比較,A,,,,medium,0,0,,inf
+A.7,Theorem,モノイダルモデル圏の ∞ 局所化,A,,,,medium,0,0,,inf
+A.8,Definition,左導来可能な coCartesian fibration,A,,,,medium,0,0,,inf
+A.9,Example,弱同値保存輸送の左導来可能性,A,,,,medium,0,0,,inf
+A.10,Example,Quillen 関手の絶対導来性,A,,,,medium,0,0,,inf
+A.11,Example,Quillen 双関手の絶対導来性,A,,,,medium,0,0,,inf
+A.12,Example,Quillen 関手の合成の導来可能性,A,,,,medium,0,0,,inf
+A.13,Example,モノイダルモデルの導来可能性,A,,,,medium,0,0,,inf
+A.14,Proposition,fiber ごとの導来局所化と coCartesian 性,A,,,,medium,0,0,,inf
+A.15,Corollary,左導来可能局所化の底変換,A,,,,medium,0,0,,inf
+A.16,Lemma,coCartesian fibration と基底の余極限,A,,,,medium,0,0,,inf
+A.17,Lemma,Δ⁰・Δ¹ による Cat∞ の余極限生成,A,,,,medium,0,0,,inf
+B.1,Proposition,巡回圏から associative envelope への関手,B,,,,medium,0,0,,-
+B.2,Corollary,単体圏と巡回圏のスライス,B,,,,medium,0,0,,-
+B.3,Theorem,paracyclic 圏への単体包含の cofinal 性,B,,,,medium,0,0,,-
+B.4,Corollary,paracyclic 圏の sifted 性と巡回圏のホモトピー型,B,,,,medium,0,0,,-
+B.5,Proposition,巡回対象の実現の円周作用,B,,,,medium,0,0,,-
+B.6,Construction,単体的位相空間の実現,B,,,,medium,0,0,,-
+B.7,Lemma,proper 実現と native な空間余極限,B,,,,medium,0,0,,-
+B.8,Remark,fat 実現による proper 条件の除去,B,,,,medium,0,0,,-
+B.9,Construction,paracyclic 実現と実数群作用,B,,,,medium,0,0,,-
+B.10,Example,表現可能 paracyclic 対象の実現,B,,,,medium,0,0,,-
+B.11,Remark,実現の巡回作用素の座標,B,,,,medium,0,0,,-
+B.12,Lemma,paracyclic と単体的実現の同相,B,,,,medium,0,0,,-
+B.13,Proposition,実現比較の BZ equivariance,B,,,,medium,0,0,,-
+B.14,Corollary,巡回実現と native な円周作用の比較,B,,,,medium,0,0,,-
+B.15,Proposition,直交 paracyclic スペクトルの実現比較,B,,,,medium,0,0,,-
+B.16,Corollary,直交巡回スペクトルの実現比較,B,,,,medium,0,0,,-
+B.17,Proposition,巡回 subdivision と自己双対,B,,,,medium,0,0,,-
+B.18,Lemma,subdivision の残余 Cp equivariance,B,,,,medium,0,0,,-
+B.19,Proposition,subdivision と実現の比較,B,,,,medium,0,0,,-
+B.20,Proposition,Tate と巡回実現の比較変換,B,,,,medium,0,0,,-
+B.21,Proposition,equivariant 巡回実現の厳密関手,B,,,,medium,0,0,,-
+B.22,Proposition,equivariant 巡回実現の native 関手と比較,B,,,,medium,0,0,,-
+C.1,Proposition,位相的実現の有限極限保存,C,,,,medium,0,0,,-
+C.2,Lemma,位相空間の h-cofibration の gluing,C,,,,medium,0,0,,-
+C.3,Proposition,proper 単体空間の実現の弱同値不変性,C,,,,medium,0,0,,-
+C.4,Definition,Bousfield–Kan の位相的 hocolim,C,,,,medium,0,0,,-
+C.5,Proposition,位相的 hocolim の不変性と native 比較,C,,,,medium,0,0,,-
+C.6,Definition,基点付き reduced hocolim,C,,,,medium,0,0,,-
+C.7,Proposition,well-pointed reduced hocolim の比較,C,,,,medium,0,0,,-
+C.8,Lemma,直交スペクトルの h-cofibration の gluing,C,,,,medium,0,0,,-
+C.9,Remark,二種類の基点付き h-cofibration,C,,,,medium,0,0,,-
+C.10,Definition,直交スペクトルの levelwise hocolim,C,,,,medium,0,0,,-
+C.11,Proposition,直交 hocolim の不変性と native 比較,C,,,,medium,0,0,,-
+C.12,Lemma,直交 hocolim と実現の交換,C,,,,medium,0,0,,-
+C.13,Lemma,固定点と実現・hocolim の交換,C,,,,medium,0,0,,-
+C.14,Proposition,genuine 同変 hocolim の不変性と native 比較,C,,,,medium,0,0,,-

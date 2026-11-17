@@ -1,0 +1,11 @@
+import SerrePositivity.InfinityCategories.HA.Monads.OrdinalMixedAdjoints
+
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalAppend_adjoinTop
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalGlue_adjoinTop
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalIntervalMap_append
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.simplexTensorHomOf_append
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalAppendNonempty_zero
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalAppend_last
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalRightAdjoint_append_glue
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalLeftAdjoint_append_glue
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalRecoverMap_append_glue

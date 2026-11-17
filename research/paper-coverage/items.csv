@@ -1,0 +1,76 @@
+number,kind,title,section,status,declarations,reason,confidence,lean_citations,plan_citations,kerodon,goal
+1.1,Theorem,Serreの交点重複度の狭義正値性,1,,,,high,0,,,Paper
+Figure 1,Figure,二つのnorm比較の図,1.2,,,,high,0,,,Paper
+1.2,Corollary,有限なstrict transform交叉と重複度積の下界,1.3,,,,high,0,,,Paper
+2.1,Lemma,剰余体を代数閉体へ拡大する完備平坦局所拡大,2.1,,,,high,0,,,Paper
+2.2,Lemma,正則な正規化基底の存在,2.2,,,,high,0,,,Paper
+(2.1),Equation,根の塔A_nと未完備極限Lambda,2.2,,,,high,0,,,Paper
+2.3,Lemma,根の塔の段と正規化長さの構成,2.2,,,,high,0,,,Paper
+(2.2),Equation,有限段からの基底変換の正規化長,2.2,,,,high,0,,,Paper
+(2.3),Equation,有限生成部分加群の長さの上限,2.2,,,,high,0,,,Paper
+2.4,Lemma,長さ零の和・直和・増大和・有向極限,2.2,,,,high,0,,,Paper
+2.5,Theorem,全パラメータに使える長さ代数の存在,2.3,,,,high,0,,,Paper
+(2.4),Equation,全パラメータの正次数Koszul長の零性,2.3,,,,high,0,,,Paper
+(2.5),Equation,パラメータ商長の重複度公式,2.3,,,,high,0,,,Paper
+(2.6),Equation,基底パラメータ商長のrank公式,2.3,,,,high,0,,,Paper
+(2.7),Equation,trace denominatorによる包含,2.3,,,,high,0,,,Paper
+(2.8),Equation,完全化の主イデアル商長とHilbert–Kunz極限,2.3,,,,high,0,,,Paper
+2.6,Corollary,有限長基底加群のTor消滅と剰余長の正値性,2.3,,,,high,0,,,Paper
+3.1,Theorem,任意の連結結合係数を持つ台つき有理降下,3,,,,high,0,,,Paper
+(3.1),Equation,台つき有理KスペクトルのGalois降下,3,,,,high,0,,,Paper
+(3.2),Equation,台つき有理K0のG不変部分への全射,3,,,,high,0,,,Paper
+(3.3),Equation,pを反転して消える有理K理論のfiber E,3.1,,,,high,0,,,Paper
+(3.4),Equation,Eとinfinitesimal K理論のfiberとの同値,3.1,,,,high,0,,,Paper
+(3.5),Equation,閉台を取る係数付きfiber L,3.1,,,,high,0,,,Paper
+(3.6),Equation,Lと実際の台つきperfect K理論との同定,3.1,,,,high,0,,,Paper
+3.2,Lemma,有限忠実平坦被覆に沿う普遍Čech降下,3.2,,,,high,0,,,Paper
+3.3,Lemma,有限全射に沿う通常のČech降下,3.2,,,,high,0,,,Paper
+(3.7),Equation,幾何的軌道議論の自然な固定点比較,3.3,,,,high,0,,,Paper
+(3.8),Equation,推移的置換作用の有理homotopy固定点,3.3,,,,high,0,,,Paper
+(3.9),Equation,比較に仮定する基底Koszul長と商長,3.4,,,,high,0,,,Paper
+3.4,Lemma,有限長加群の通常長と正規化Tor長,3.4,,,,high,2,,,Paper
+(3.10),Equation,有限長加群に対するTor長のr倍公式,3.4,,,,high,2,,,Paper
+3.5,Lemma,通常のEuler評価とnorm和の比較,3.4,,,,high,0,,,Paper
+(3.11),Equation,共役Euler評価のnorm和の一致,3.4,,,,high,0,,,Paper
+(3.12),Equation,零ホモトピーのKoszul cone分裂,3.4,,,,high,0,,,Paper
+(3.13),Equation,基底から来る正規化Euler評価,3.4,,,,high,1,,,Paper
+(3.14),Equation,基底から来る通常Euler評価,3.4,,,,high,1,,,Paper
+3.6,Remark,長さのG不変性を要求しないという注意,3.4,,,,high,0,,,Paper
+(4.1),Equation,漸近比較で仮定する長さ公式,4,,,,high,0,,,Paper
+4.1,Remark,生のホモロジー長がランク商へ降りない反例,4.1,,,,high,0,,,Paper
+4.2,Lemma,台つき部分商の充満忠実性と冪等完備化,4.2,,,,high,3,,,Paper
+4.3,Proposition,長さのSerre商へのホモロジー関手とEuler評価,4.3,,,,high,4,,,Paper
+(4.2),Equation,商内支持からのKoszul–Betti二項係数公式,4.3,,,,high,2,,,Paper
+(4.3),Equation,支持liftのKoszulテンソルのshift分裂,4.3,,,,high,0,,,Paper
+4.4,Lemma,有限長基底加群に対する係数Tor長,4.4,,,,high,3,,,Paper
+4.5,Proposition,冪等直和因子を含む基底変換Euler比較,4.4,,,,high,2,,,Paper
+(4.4),Equation,有限tensor spectral sequenceのE1項,4.4,,,,high,0,,,Paper
+(4.5),Equation,普通Euler評価に現れるr倍有限和,4.4,,,,high,0,,,Paper
+(4.6),Equation,有限hyper-Tor spectral sequence,4.4,,,,high,0,,,Paper
+4.6,Lemma,連結結合係数Hによる両ランク商のMorita表示,4.5,,,,high,0,,,Paper
+(4.7),Equation,endomorphism代数の積と導来基底変換,4.5,,,,high,0,,,Paper
+4.7,Theorem,漸近Euler評価の共役norm和の比較,4.5,,,,high,0,,,Paper
+5.1,Lemma,完備・代数閉剰余体・正次元素商対への帰着,5.1,,,,high,0,,,Paper
+(5.1),Equation,相補次元未満での交点重複度の消滅,5.1,,,,high,0,,,Paper
+(5.2),Equation,ねじった正規化Tor Euler値c_sigma,5.1,,,,high,0,,,Paper
+5.2,Lemma,第1のGalois平均と普通の交点数,5.1,,,,high,0,,,Paper
+(5.3),Equation,第1のnorm比較の等式,5.1,,,,high,0,,,Paper
+(5.4),Equation,Q内の正則列とDのパラメータの同時選択,5.2,,,,high,0,,,Paper
+(5.5),Equation,パラメータ商Uの正の長さとKoszul零性,5.2,,,,high,0,,,Paper
+(5.6),Equation,全近似で共通に使うannihilator冪,5.2,,,,high,0,,,Paper
+5.3,Lemma,パラメータ商を通じたTor長比較と次数上界,5.2,,,,high,0,,,Paper
+(5.7),Equation,Tor_BとTor_Rの長さおよび消滅上界,5.2,,,,high,0,,,Paper
+(5.8),Equation,近似用のS_jとSおよび二つの作用,5.3,,,,high,0,,,Paper
+5.4,Lemma,作用と共通annihilatorを保つ有限近似,5.3,,,,high,0,,,Paper
+(5.9),Equation,有限近似M_nの長さの通常極限,5.3,,,,high,0,,,Paper
+(5.10),Equation,有限近似の全指定Tor長の極限,5.3,,,,high,0,,,Paper
+(5.11),Equation,正規化した最小生成元数の正の下界,5.3,,,,high,0,,,Paper
+(5.12),Equation,近似誤差をkernel・cokernelの長さで抑えるTor評価,5.3,,,,high,0,,,Paper
+(5.13),Equation,最小分解のrankのOとoの評価,5.4,,,,high,0,,,Paper
+5.5,Lemma,切詰めた最小分解列の商内支持と通常Euler評価,5.4,,,,high,0,,,Paper
+(5.14),Equation,切詰めの境界誤差のsmall rank因子化,5.4,,,,high,0,,,Paper
+(5.15),Equation,第二長さ代数の剰余長etaの正値・有限性,5.5,,,,high,0,,,Paper
+(5.16),Equation,基底rankを剰余長で下から抑える定量式,5.5,,,,high,0,,,Paper
+5.6,Lemma,正規化Euler評価の正の定量的下界,5.5,,,,high,0,,,Paper
+(5.17),Equation,二段階の明示的な正の下界,5.5,,,,high,0,,,Paper
+(5.18),Equation,第二平均から第1平均の各c_sigmaの正値性,5.5,,,,high,0,,,Paper

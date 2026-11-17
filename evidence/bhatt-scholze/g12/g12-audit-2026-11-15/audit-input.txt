@@ -1,0 +1,55 @@
+import SerrePositivity.InfinityCategories.HA.Monads.WalkingMonadEnrichment
+import SerrePositivity.InfinityCategories.HA.Monads.NativeMonadUnit
+import SerrePositivity.InfinityCategories.HA.Monads.EndofunctorSimplicialMonoid
+import SerrePositivity.InfinityCategories.HA.Monads.AdjunctionRepresentatives
+
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.adjunctionUnitRepresentative
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.adjunctionUnitRepresentative_homMk
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.adjunctionCounitRepresentative
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.adjunctionCounitRepresentative_homMk
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.EndofunctorSpace
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.endofunctorSpace_quasicategory
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.endofunctorUnit
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.endofunctorComposition
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.endofunctorUnit_comp
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.endofunctorComp_unit
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.endofunctorComp_assoc
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.endofunctorCompositionMonObj
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.endofunctorUnit_eq_curry
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.endofunctorComposition_curry
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.endofunctorSimplicialMonoid
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.endofunctorSimplicialMonoid_obj
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.endofunctorSimplicialMonoid_map_apply
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.endofunctorSimplicialMonoid_one
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.endofunctorSimplicialMonoid_mul
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.NativeMonad.mk
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.NativeMonad.ext
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.NativeMonad.endofunctor
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.NativeMonad.curry_endofunctor
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.NativeMonad.endofunctor_vertex
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingMonadArrow
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.NativeMonad.unit_vertex
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.NativeMonad.unitEdge
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.NativeMonad.unitEdge_edge
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.WalkingMonadShape
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingMonadUnit
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingMonadComposition
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingMonadGenerator
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingMonadComposition_apply
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.WalkingMonadObject.star
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingMonadEnrichedCategory
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.endofunctorClosedEnrichment
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.NativeMonad.toEnrichedFunctor
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.NativeMonad.ofEnrichedFunctor
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.NativeMonad.of_toEnrichedFunctor
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.NativeMonad.to_ofEnrichedFunctor
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalSum_assoc
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalSum_associator_hom
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalSumFunctor_assoc
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalSum_leftUnit
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalSum_rightUnit
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalSum_leftUnitor_hom
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalSum_rightUnitor_hom
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalSumFunctor_leftUnit
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalSumFunctor_rightUnit
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingMonadMonObj

@@ -1,7 +1,7 @@
 # Codex 作業指示書 DG-W1：監査の再生成、検査専用モジュールの処置、入口の新設（D0〜D2）
 
 作成：2026-10-30（DG の整理、管理は Claude）。宛先：Codex（∞ 基盤の IF-Wn を実施しているセッションとは**別のセッション**）。
-計画：[dg-cleanup-plan.md](../dg-cleanup-plan.md) の D0・D1・D2。調査：[archive/dg-survey-2026-10-30.md](dg-survey-2026-10-30.md) §2〜§3。
+計画：[dg-cleanup-plan.md](stage-i/dg-cleanup-plan.md) の D0・D1・D2。調査：[archive/dg-survey-2026-10-30.md](dg-survey-2026-10-30.md) §2〜§3。
 **共通の前提**：[IF-W0-1](infinity-codex-w0-1.md) の §0（使い捨ての worktree、所有範囲、`git commit --only`、失敗の扱い）に従う。
 worktree は `../SerrePositivity-dgw1`、ブランチは `infra/dg-w1`（main の最新から作る）。main の作業木では作業もビルドもしない。他のセッション（∞ 基盤、論文の層、BS）が並行して作業している。
 
@@ -137,7 +137,7 @@ Codex の予備集計（P 275・E 362・T 候補 12・U 68・K 5・未定 1、�
 ただし、その verify は基点 ebe775fc6 のもので、その後 main に論文の層の**区切り 1-2**（95c0a6d25・401fbbe6d・82644fcf1：HomologicalAlgebra の第一層の統合。DG 16 本・IC 8 本・KST 6 本・EInfinity 1 本・ルートの import 行を main 側で書き換え済み）が入った。main に入れる前に、次の順で取り込んで verify をやり直す。
 
 11. **コミットの後に main を取り込む。** `git merge main`。衝突は `SerrePositivity.lean`（ルート）だけの見込み（main は HA の import 行、こちらは DG の 12 行 → 1 行）。両方を残す形で解決する（HA の行は main の版、DG の行は `public import SerrePositivity.DifferentialGraded` 1 行）。それ以外に衝突が出たら止めて報告。区切り 1-2 が触った DG の 16 本は D1 で削除・移動した検査と重ならないことを確認済み。
-12. **新しく足したファイルの import 行を [handover §9](../handover-ct-to-infinity-2026-10-30.md) の表で照合する。** 対象は `DifferentialGraded.lean`（DG だけを import するので該当なし）、`Checks/` へ移した 39 本、`Archive/` の 68 本。旧名の `HomologicalAlgebra.*` を import していれば表の新名に替える（Archive も文面は直す）。D2 で向け直した `HomologicalAlgebra.CochainTensorLinear` は区切り 1-2 でも同名のまま。
+12. **新しく足したファイルの import 行を [handover §9](stage-i/handover-ct-to-infinity-2026-10-30.md) の表で照合する。** 対象は `DifferentialGraded.lean`（DG だけを import するので該当なし）、`Checks/` へ移した 39 本、`Archive/` の 68 本。旧名の `HomologicalAlgebra.*` を import していれば表の新名に替える（Archive も文面は直す）。D2 で向け直した `HomologicalAlgebra.CochainTensorLinear` は区切り 1-2 でも同名のまま。
 13. **`.lake/build` を main から温める。** main の `.lake` は区切り 1-2 の後に全体ビルド済み（確認済み）。HA が変わると木のほぼ全部が再ビルドになるので、自分で作り直さず、main でビルドが走っていないことを `ps` で確かめてから
     ```sh
     rsync -a --delete ../SerrePositivity/.lake/build/ .lake/build/

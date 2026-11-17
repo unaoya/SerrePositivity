@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantSourceRoofProductFunctorCell
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantSourceRoofPinchedReference
-public import SerrePositivity.EInfinity.FrameHom.PinchedFamilyWeakDetection
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.PinchedFamilyWeakDetection
 
 /-!
 # 同じ逆左脚と右脚を表す全区間族による実屋根 cofinality の還元
@@ -65,7 +65,7 @@ lemma cofibrantSourceRoofProductHomMap_weak_of_intervalCell_eq
   have he := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso
     (cofibrantSourceRoofProductCommaIso A X Y b).symm).isWeakHomotopyEquivalence
   apply he.cancel_left
-  exact FrameHom.pinchedFamily_weak_of_intervalFamilyHom_eq _ _
+  exact _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.pinchedFamily_weak_of_intervalFamilyHom_eq _ _
     (cofibrantSourceRoofProductCommaReferenceMap_weak A X Y b) h
 
 lemma cofibrantSourceRoofProductHomMap_weak_of_interval_triangles

@@ -1,0 +1,103 @@
+{
+  "checks": [
+    {
+      "declaration": "SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence",
+      "key": "Kerodon",
+      "number": "00UP",
+      "expected_baseline": 1,
+      "observed": 1
+    },
+    {
+      "declaration": "SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence",
+      "key": "Kerodon",
+      "number": "00ZH",
+      "expected_baseline": 1,
+      "observed": 1
+    },
+    {
+      "declaration": "SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence",
+      "key": "Kerodon",
+      "number": "00ZJ",
+      "expected_baseline": 1,
+      "observed": 1
+    },
+    {
+      "declaration": "SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence",
+      "key": "Kerodon",
+      "number": "0104",
+      "expected_baseline": 1,
+      "observed": 1
+    },
+    {
+      "declaration": "SerrePositivity.EInfinity.FrameHom.FrameArrows.nerveMap_leftAdjoint_isLeftCofinal",
+      "key": "Kerodon",
+      "number": "02P3",
+      "expected_baseline": 0,
+      "observed": 0
+    },
+    {
+      "declaration": "SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRightKanExtension_refl_of_frameCofinality",
+      "key": "Kerodon",
+      "number": "039N",
+      "expected_baseline": 0,
+      "observed": 0
+    },
+    {
+      "declaration": "SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantHammock_isLocalization",
+      "key": "HA",
+      "number": "1.3.4.8",
+      "expected_baseline": 1,
+      "observed": 1
+    },
+    {
+      "declaration": "SerrePositivity.EInfinity.SimplicialLocalization.modelCofibrantHammock_isLocalization",
+      "key": "HA",
+      "number": "1.3.4.15",
+      "expected_baseline": 1,
+      "observed": 1
+    },
+    {
+      "declaration": "SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantHammock_isLocalization",
+      "key": "HA",
+      "number": "1.3.4.16",
+      "expected_baseline": 1,
+      "observed": 1
+    },
+    {
+      "declaration": "SerrePositivity.EInfinity.SimplicialLocalization.modelCofibrantHammock_isLocalization",
+      "key": "HA",
+      "number": "1.3.4.16",
+      "expected_baseline": 1,
+      "observed": 1
+    },
+    {
+      "declaration": "SerrePositivity.EInfinity.SimplicialLocalization.modelHammock_isLocalization",
+      "key": "HA",
+      "number": "1.3.4.16",
+      "expected_baseline": 1,
+      "observed": 1
+    },
+    {
+      "declaration": "SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantHammock_isLocalization",
+      "key": "HA",
+      "number": "1.3.4.20",
+      "expected_baseline": 1,
+      "observed": 1
+    },
+    {
+      "declaration": "SerrePositivity.EInfinity.SimplicialLocalization.modelCofibrantHammock_isLocalization",
+      "key": "HA",
+      "number": "1.3.4.20",
+      "expected_baseline": 1,
+      "observed": 1
+    },
+    {
+      "declaration": "SerrePositivity.EInfinity.SimplicialLocalization.modelHammock_isLocalization",
+      "key": "HA",
+      "number": "4.1.7.3",
+      "expected_baseline": 1,
+      "observed": 1
+    }
+  ],
+  "passed": true
+}

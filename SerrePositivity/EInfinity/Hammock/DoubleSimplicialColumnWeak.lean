@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.DoubleSimplicialWeak
-public import SerrePositivity.EInfinity.FrameHom.BarPointwiseInvariance
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.BarPointwiseInvariance
 
 /-!
 # 元の二重単体集合の列ごとの弱同値から対角へ
@@ -25,14 +25,14 @@ lemma diagonalFunctor_map_weak_of_columns {B D : SimplicialObject SSet.{u}} (f :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor.map f) := by
   have h := diagonalFunctor_map_weak ((flipFunctor _ _ _).map f) hf
   have hB := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso
-    (FrameHom.BarRows.diagonalFlipIso B)).isWeakHomotopyEquivalence
+    (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.BarRows.diagonalFlipIso B)).isWeakHomotopyEquivalence
   have hD := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso
-    (FrameHom.BarRows.diagonalFlipIso D)).isWeakHomotopyEquivalence
+    (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.BarRows.diagonalFlipIso D)).isWeakHomotopyEquivalence
   have hc := h.comp hD
   change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
     (SerrePositivity.BisimplicialModel.diagonal.map ((flipFunctor _ _ _).map f) ≫
-      (FrameHom.BarRows.diagonalFlipIso D).hom) at hc
-  rw [FrameHom.BarRows.diagonalFlipIso_naturality f] at hc
+      (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.BarRows.diagonalFlipIso D).hom) at hc
+  rw [_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.BarRows.diagonalFlipIso_naturality f] at hc
   exact hB.cancel_left hc
 
 end SerrePositivity.EInfinity.Hammock.DoubleSimplicial

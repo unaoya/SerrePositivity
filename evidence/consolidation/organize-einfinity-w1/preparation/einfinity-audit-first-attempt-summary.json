@@ -1,0 +1,8 @@
+{
+  "path": "scripts/audit_einfinity.lean",
+  "returncode": 1,
+  "seconds_rounded": 143.43,
+  "evidence": "/private/tmp/oe-w1-official-audits-002.log",
+  "evidence_sha256": "7a4292da499d8e736819663027b3fd5023785873552f9cff35c8b0ae576949c7",
+  "policy": "Failure summary derived from the original controller stdout. The original detailed attempt JSON was overwritten by the successful retry before archiving; no failed full receipt is reconstructed."
+}

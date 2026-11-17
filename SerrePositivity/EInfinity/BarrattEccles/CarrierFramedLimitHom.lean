@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.BarrattEccles.CarrierRightFrames
 public import SerrePositivity.EInfinity.BarrattEccles.CarrierFramedLimitProbe
 public import SerrePositivity.EInfinity.BarrattEccles.FramedLimitCones
-public import SerrePositivity.EInfinity.HomotopyWeight.TensorPiZero
+public import SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.TensorPiZero
 public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Frames.MixedFrameComparison
 
 /-!
@@ -23,7 +23,7 @@ universe u
 
 namespace SerrePositivity.EInfinity.BarrattEccles
 
-open CategoryTheory Limits HomotopicalAlgebra Opposite
+open CategoryTheory Limits _root_.HomotopicalAlgebra Opposite
 open SerrePositivity.DifferentialGraded SerrePositivity.DiagramModel
 
 variable (A : Type u) [CommRing A] (K : Type u) [SmallCategory K]
@@ -44,7 +44,7 @@ def carrierFramedLimitConeSpace (Y : Complex A) : (K ⥤ (operad A).Algebra) ⥤
   (carrierRightFrameDiagramFamily A K).rightOp ⋙ FrameWeightRealization.homFamily Kᵒᵖ ⋙
     (CategoryTheory.evaluation (Complex A)ᵒᵖ (Kᵒᵖᵒᵖ ⥤ SSet.{u})).obj
       (op (carrierFramedLimitProbe A Y)) ⋙
-    WeightedCones.coneSpace Kᵒᵖᵒᵖ (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K)
+    WeightedCones.coneSpace Kᵒᵖᵒᵖ (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.framedLimitWeight K)
 
 /-- 概要：底の右錐空間は実際の Kan 複体（Hovey §5.4）。
 方針：底の frame の条件と具体的な試験始域の cofibrancy を代入する。
@@ -56,8 +56,8 @@ lemma carrierFramedLimitConeSpace_kanComplex (F : K ⥤ (operad A).Algebra) (Y :
   have := carrierFramedLimitProbe_cofibrant A Y
   have : IsFibrant (op (carrierFramedLimitProbe A Y)) :=
     _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.fibrantOp_of_cofibrant _
-  exact HomotopyWeight.frameCone_kanComplex Kᵒᵖ (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K)
-    (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight_cofibrant K) (carrierRightFrameDiagram A K F)
+  exact _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.frameCone_kanComplex Kᵒᵖ (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.framedLimitWeight K)
+    (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.framedLimitWeight_cofibrant K) (carrierRightFrameDiagram A K F)
     (fun k => carrierRightFrame_cofibrant A (F.obj k.unop))
     (fun k _ _ f => carrierRightFrame_homotopicallyConstant A (F.obj k.unop) f)
     (op (carrierFramedLimitProbe A Y))
@@ -79,8 +79,8 @@ def carrierFramedLimitHomPiZeroEquiv (F : K ⥤ (operad A).Algebra) (Y : Complex
   have := carrierFramedLimitProbe_cofibrant A Y
   have : IsFibrant (op (carrierFramedLimitProbe A Y)) :=
     _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.fibrantOp_of_cofibrant _
-  let e := HomotopyWeight.frameConePiZeroLocalizationEquiv Kᵒᵖ (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K)
-    (carrierRightFrameDiagram A K F) (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight_cofibrant K)
+  let e := _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.frameConePiZeroLocalizationEquiv Kᵒᵖ (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.framedLimitWeight K)
+    (carrierRightFrameDiagram A K F) (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.framedLimitWeight_cofibrant K)
     (fun k => carrierRightFrame_cofibrant A (F.obj k.unop))
     (fun k _ _ f => carrierRightFrame_homotopicallyConstant A (F.obj k.unop) f) Q.op
     (op (carrierFramedLimitProbe A Y))
@@ -89,9 +89,9 @@ def carrierFramedLimitHomPiZeroEquiv (F : K ⥤ (operad A).Algebra) (Y : Complex
       (carrierFramedLimitProbeComparison_quasiIso A Y)
   exact e.trans ((show
       (Q.op.obj ((FrameWeightRealization.functor Kᵒᵖ (carrierRightFrameDiagram A K F)).obj
-        (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K)) ⟶ Q.op.obj (op (carrierFramedLimitProbe A Y))) ≃
+        (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.framedLimitWeight K)) ⟶ Q.op.obj (op (carrierFramedLimitProbe A Y))) ≃
       (Q.obj (carrierFramedLimitProbe A Y) ⟶ Q.obj
-        ((carrierWeightedCotensor A K F).obj (op (HomotopyWeight.weight K)))) from
+        ((carrierWeightedCotensor A K F).obj (op (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K)))) from
     { toFun := fun f => f.unop
       invFun := fun f => f.op
       left_inv := fun _ => rfl

@@ -16,7 +16,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory SSet SerrePositivity.InfinityCategories
-open SerrePositivity.EInfinity.FrameHom SimplicialLocalization
+open _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open scoped Simplicial
 variable (A : Type u) [CommRing A]
 
@@ -77,7 +77,7 @@ lemma algebraCAlgSource_underlyingDerivedIso_component_arrow (B : (operad A).Alg
   have hs' := (hs.trans hv).trans (cofibrantForgetOrdinaryVertexIso_hom_arrow A
     ((cofibrantAlgebraReplacement A).obj B)).symm
   rw [algebraCAlgSource_underlyingDerivedIso, Iso.trans_hom, _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate_comp]
-  exact RoofPrefix.comp_arrow_eq _ _ _ _ hs'
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.comp_arrow_eq _ _ _ _ hs'
     (algebraReplacementUnderlyingDerivedIso_component_arrow A B)
 
 end SerrePositivity.EInfinity.BarrattEccles

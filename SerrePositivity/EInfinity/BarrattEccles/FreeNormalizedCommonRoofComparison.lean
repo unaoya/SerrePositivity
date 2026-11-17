@@ -11,7 +11,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open CategoryTheory Opposite HomotopicalAlgebra Hammock
+open CategoryTheory Opposite _root_.HomotopicalAlgebra Hammock
 open SerrePositivity.DifferentialGraded
 open SerrePositivity.Reedy SerrePositivity.SimplicialModel SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A] (X : Complex A) (B : (operad A).Algebra)
@@ -27,7 +27,7 @@ lemma freeNormalizedCommonLeftIndex_localized_isIso :
   have := freeNormalizedHomMiddle_kanComplex A (op X) B
   have hw := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.ulift_homotopyEquivalence
     (freeNormalizedHomFromStandard_homotopyEquivalence A (op X) B)
-  exact FrameHom.frameSpanSourceIndexMap_localized_isIso _ _ _
+  exact _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameSpanSourceIndexMap_localized_isIso _ _ _
     (anodyneQ_map_isIso_of_weak _ hw.isQCatEquivalence.isWeakHomotopyEquivalence)
 
 /-- 概要：元の正規化 Hom から共通 Hom への全要素圏写像は反転される。
@@ -39,7 +39,7 @@ lemma freeNormalizedCommonRightIndex_localized_isIso :
   have := freeNormalizedHomMiddle_kanComplex A (op X) B
   have hw := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.ulift_homotopyEquivalence
     (freeNormalizedHomFromTensor_homotopyEquivalence A (op X) B)
-  exact FrameHom.frameSpanSourceIndexMap_localized_isIso _ _ _
+  exact _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameSpanSourceIndexMap_localized_isIso _ _ _
     (anodyneQ_map_isIso_of_weak _ hw.isQCatEquivalence.isWeakHomotopyEquivalence)
 
 /-- 概要：元の標準自由 Hom 側の全二列 roof 比較。
@@ -54,16 +54,16 @@ lemma freeNormalizedCommonReducedRoof_left_comparison :
   let q := (cosimplicialResolutionFamily (mappingCofibrantFactorization A)).atObject
     ((freeProbeFunctor A).obj X)
   let W := weakEquivalences (operad A).Algebra
-  let rC := FrameHom.frameLeftRoofColimitMap (Y := B) W
+  let rC := _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameLeftRoofColimitMap (Y := B) W
     ((freeNormalizedCommonFrame A).obj X) ((freeNormalizedCommonFrameAugmentation A).app X)
     (freeNormalizedCommonFrameAugmentation_weak A X)
     (fun f => freeNormalizedCommonFrame_map_weak A X f)
-  let rS := FrameHom.frameLeftRoofColimitMap (Y := B) W q.obj q.augmentation
+  let rS := _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameLeftRoofColimitMap (Y := B) W q.obj q.augmentation
     q.augmentation_weakEquivalence (fun f => q.homotopicallyConstant f)
   let red := (algebraHammockReductionIso A ((freeProbeFunctor A).obj X) B).hom
   have hc : AnodyneHomotopy.anodyneQ.map (nerveMap (freeNormalizedCommonLeftIndex A X B)) ≫
       AnodyneHomotopy.anodyneQ.map rC = AnodyneHomotopy.anodyneQ.map rS :=
-    FrameHom.frameLeftRoofColimitMap_comparison _ _ _ W _ _ _ _ _ _
+    _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameLeftRoofColimitMap_comparison _ _ _ W _ _ _ _ _ _
       (congr_app (freeNormalizedCommonFrameLeft_over A) X)
   have hs : rS ≫ red = sourceFrameReducedHammockNerveMap A ((freeProbeFunctor A).obj X) B :=
     sourceFrameLeftRoofNerveMap_normalization A ((freeProbeFunctor A).obj X) B
@@ -80,18 +80,18 @@ lemma freeNormalizedCommonReducedRoof_right_comparison :
     AnodyneHomotopy.anodyneQ.map (freeNormalizedTensorReducedRoof A X B) := by
   let := modelCategory A
   let W := weakEquivalences (operad A).Algebra
-  let rC := FrameHom.frameLeftRoofColimitMap (Y := B) W
+  let rC := _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameLeftRoofColimitMap (Y := B) W
     ((freeNormalizedCommonFrame A).obj X) ((freeNormalizedCommonFrameAugmentation A).app X)
     (freeNormalizedCommonFrameAugmentation_weak A X)
     (fun f => freeNormalizedCommonFrame_map_weak A X f)
-  let rT := FrameHom.frameLeftRoofColimitMap (Y := B) W
+  let rT := _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameLeftRoofColimitMap (Y := B) W
     ((freeNormalizedProbeFrame A).obj X) ((freeNormalizedProbeAugmentation A).app X)
     (freeNormalizedProbeAugmentation_weak A X)
     (fun f => freeNormalizedProbeFrame_homotopicallyConstant A X f)
   let red := (algebraHammockReductionIso A ((freeProbeFunctor A).obj X) B).hom
   have hc : AnodyneHomotopy.anodyneQ.map (nerveMap (freeNormalizedCommonRightIndex A X B)) ≫
       AnodyneHomotopy.anodyneQ.map rC = AnodyneHomotopy.anodyneQ.map rT :=
-    FrameHom.frameLeftRoofColimitMap_comparison _ _ _ W _ _ _ _ _ _ rfl
+    _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameLeftRoofColimitMap_comparison _ _ _ W _ _ _ _ _ _ rfl
   change AnodyneHomotopy.anodyneQ.map (nerveMap (freeNormalizedCommonRightIndex A X B)) ≫
     AnodyneHomotopy.anodyneQ.map (rC ≫ red) = AnodyneHomotopy.anodyneQ.map (rT ≫ red)
   rw [Functor.map_comp, ← Category.assoc, hc, ← Functor.map_comp]
@@ -101,7 +101,7 @@ lemma freeNormalizedCommonReducedRoof_right_comparison :
 規約：元の全屋根自身を検証。使われ方：正規化自由屋根の弱同値性。 -/
 lemma freeNormalizedCommonReducedRoof_weak :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (freeNormalizedCommonReducedRoof A X B) := by
-  apply FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.isWeakHomotopyEquivalence
   have := freeNormalizedCommonLeftIndex_localized_isIso A X B
   have hc : IsIso (AnodyneHomotopy.anodyneQ.map
       (nerveMap (freeNormalizedCommonLeftIndex A X B)) ≫
@@ -116,7 +116,7 @@ lemma freeNormalizedCommonReducedRoof_weak :
 規約：元の全屋根自身を検証。使われ方：標準単位誘導射の弱同値判定。 -/
 lemma freeNormalizedTensorReducedRoof_weak :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (freeNormalizedTensorReducedRoof A X B) := by
-  apply FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.isWeakHomotopyEquivalence
   have := freeNormalizedCommonRightIndex_localized_isIso A X B
   have := anodyneQ_map_isIso_of_weak _ (freeNormalizedCommonReducedRoof_weak A X B)
   rw [← freeNormalizedCommonReducedRoof_right_comparison]

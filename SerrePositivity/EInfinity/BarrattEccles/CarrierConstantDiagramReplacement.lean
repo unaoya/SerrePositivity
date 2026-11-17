@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.CarrierDiagramModel
 public import SerrePositivity.EInfinity.BarrattEccles.CarrierFramedLimitProbe
-public import SerrePositivity.EInfinity.HomotopyWeight.ConstantNaturality
+public import SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.ConstantNaturality
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.SimplexResolution
 
 /-!
@@ -25,7 +25,7 @@ universe u
 
 namespace SerrePositivity.EInfinity.BarrattEccles.CarrierDiagram
 
-open CategoryTheory Limits HomotopicalAlgebra
+open CategoryTheory Limits _root_.HomotopicalAlgebra
 open SerrePositivity.DifferentialGraded
 open SerrePositivity.Reedy SerrePositivity.HomotopyFunctionComplex
 
@@ -44,7 +44,7 @@ def constantDiagramReplacement : (Complex A) ⥤ K ⥤ (Complex A) := by
   let := SerrePositivity.EInfinity.projectiveModelCategory A
   exact (cosimplicialResolutionFamily (carrierProbeFactorization A)).obj ⋙
     Realization.family ⋙
-      (Functor.whiskeringLeft K SSet.{u} (Complex A)).obj (HomotopyWeight.weight K)
+      (Functor.whiskeringLeft K SSet.{u} (Complex A)).obj (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K)
 
 /-- 概要：置換図式から元の定値図式への実際の自然変換（Hovey §5.4）。
 方針：重みの一点比較と始域 frame の零次の augmentation を合成する。
@@ -54,11 +54,11 @@ def constantDiagramComparison : constantDiagramReplacement A K ⟶ Functor.const
   let := SerrePositivity.EInfinity.projectiveModelCategory A
   let q := cosimplicialResolutionFamily (carrierProbeFactorization A)
   refine
-    { app := fun Y => HomotopyWeight.pointwiseFrameComparison (q.obj.obj Y) K
+    { app := fun Y => _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseFrameComparison (q.obj.obj Y) K
         ((q.augmentation.app Y).app (SimplexCategory.mk 0))
       naturality := ?_ }
   intro Y Z f
-  apply HomotopyWeight.pointwiseFrameComparison_naturality K (q.obj.map f) f
+  apply _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseFrameComparison_naturality K (q.obj.map f) f
   exact congr_app (q.augmentation.naturality f) (SimplexCategory.mk 0)
 
 /-- 概要：構成した置換は具体的な射影図式モデルで cofibrant（BM §1、Hovey §5.4）。
@@ -71,8 +71,8 @@ lemma constantDiagramReplacement_isCofibrant (Y : (Complex A)) :
   let := SerrePositivity.EInfinity.projectiveModelCategory A
   let := projectiveModelCategory A K
   let q := cosimplicialResolutionFamily (carrierProbeFactorization A)
-  apply HomotopyWeight.pointwiseRealization_isCofibrant K (q.obj.obj Y) (q.cofibrant Y)
-    _ (HomotopyWeight.weight K) (HomotopyWeight.weight_cofibrant K)
+  apply _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseRealization_isCofibrant K (q.obj.obj Y) (q.cofibrant Y)
+    _ (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K) (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight_cofibrant K)
   intro F G p hp k
   exact ⟨(fibration_iff A K p).mp ⟨hp.1⟩ k,
     (weakEquivalence_iff A K p).mp ⟨hp.2⟩ k⟩
@@ -85,7 +85,7 @@ lemma constantDiagramComparison_quasiIso (Y : (Complex A)) (k : K) :
     QuasiIso (((constantDiagramComparison A K).app Y).app k) := by
   let := SerrePositivity.EInfinity.projectiveModelCategory A
   let q := cosimplicialResolutionFamily (carrierProbeFactorization A)
-  exact HomotopyWeight.pointwiseFrameComparison_weakEquivalence (q.obj.obj Y) K
+  exact _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseFrameComparison_weakEquivalence (q.obj.obj Y) K
     (q.cofibrant Y) (q.atObject Y).homotopicallyConstant _
     ((q.atObject Y).augmentation_weakEquivalence (SimplexCategory.mk 0)) k
 
@@ -126,9 +126,9 @@ def constantDiagramHomEquiv (Y : (Complex A)) (F : K ⥤ (Complex A)) :
     let := SerrePositivity.EInfinity.projectiveModelCategory A
     let B := (cosimplicialResolutionFamily (carrierProbeFactorization A)).obj.obj Y
     ((constantDiagramReplacement A K).obj Y ⟶ F) ≃
-      (HomotopyWeight.weight K ⟶ (HomotopyWeight.pointwiseFrameHom K B).obj F) := by
+      (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K ⟶ (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseFrameHom K B).obj F) := by
   let := SerrePositivity.EInfinity.projectiveModelCategory A
-  exact (HomotopyWeight.pointwiseRealizationAdjunction K
+  exact (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseRealizationAdjunction K
     ((cosimplicialResolutionFamily (carrierProbeFactorization A)).obj.obj Y)).homEquiv _ F
 
 /-- 概要：定値図式と構成した置換は局所化後に自然同型（Hovey §5.4）。

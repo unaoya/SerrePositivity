@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.FramedLimit
 public import SerrePositivity.EInfinity.BarrattEccles.MappingFactorizations
-public import SerrePositivity.EInfinity.HomotopyWeight.FrameCones
-public import SerrePositivity.EInfinity.HomotopyWeight.Reindex
+public import SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.FrameCones
+public import SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.Reindex
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.PiZeroLocalization
 
 /-!
@@ -23,7 +23,7 @@ universe u v w
 
 namespace SerrePositivity.EInfinity.BarrattEccles
 
-open CategoryTheory Limits HomotopicalAlgebra Opposite
+open CategoryTheory Limits _root_.HomotopicalAlgebra Opposite
 open SerrePositivity.DiagramModel SerrePositivity.Reedy
 
 variable (A : Type u) [CommRing A] (K : Type u) [SmallCategory K]
@@ -53,7 +53,7 @@ def framedLimitConeSpace (Y : (operad A).Algebra) :
   let := modelCategory A
   exact (rightFrameDiagramFamily A K).rightOp ⋙ FrameWeightRealization.homFamily Kᵒᵖ ⋙
     (CategoryTheory.evaluation (operad A).Algebraᵒᵖ (Kᵒᵖᵒᵖ ⥤ SSet.{u})).obj
-      (op (framedLimitProbe A Y)) ⋙ WeightedCones.coneSpace Kᵒᵖᵒᵖ (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K)
+      (op (framedLimitProbe A Y)) ⋙ WeightedCones.coneSpace Kᵒᵖᵒᵖ (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.framedLimitWeight K)
 
 
 /-- 概要：選んだ右 frame への重み付き錐空間は Kan 複体（Hovey §5）。
@@ -64,8 +64,8 @@ lemma framedLimitConeSpace_kanComplex (F : K ⥤ (operad A).Algebra)
     (Y : (operad A).Algebra) : SSet.KanComplex ((framedLimitConeSpace A K Y).obj F) := by
   let := modelCategory A
   have := framedLimitProbe_fibrant_op A Y
-  exact HomotopyWeight.frameCone_kanComplex Kᵒᵖ (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K)
-    (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight_cofibrant K) (rightFrameDiagram A K F)
+  exact _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.frameCone_kanComplex Kᵒᵖ (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.framedLimitWeight K)
+    (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.framedLimitWeight_cofibrant K) (rightFrameDiagram A K F)
     (fun k => rightFrame_cofibrant A (F.obj k.unop))
     (fun k _ _ f => rightFrame_homotopicallyConstant A (F.obj k.unop) f)
     (op (framedLimitProbe A Y))
@@ -81,8 +81,8 @@ lemma framedLimitConeSpace_map_isIso {F G : K ⥤ (operad A).Algebra} (f : F ⟶
     IsIso (L.map ((framedLimitConeSpace A K Y).map f)) := by
   let := modelCategory A
   have := framedLimitProbe_fibrant_op A Y
-  exact HomotopyWeight.frameCone_source_weakEquivalence_isIso Kᵒᵖ
-    (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K) (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight_cofibrant K) L hL (rightFrameFactorization A)
+  exact _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.frameCone_source_weakEquivalence_isIso Kᵒᵖ
+    (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.framedLimitWeight K) (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.framedLimitWeight_cofibrant K) L hL (rightFrameFactorization A)
     ((rightFrameDiagramFamily A K).map f.op)
     (fun k => rightFrame_cofibrant A (G.obj k.unop))
     (fun k => rightFrame_cofibrant A (F.obj k.unop))

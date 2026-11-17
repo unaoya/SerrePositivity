@@ -1,0 +1,24 @@
+import SerrePositivity.InfinityCategories.HA.Monads.OrdinalIntervalFunctor
+
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.augmentedOrdinalCard
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.augmentedOrdinalOfCard
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.augmentedOrdinalCard_ofCard
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.augmentedOrderHom
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.augmentedHomOfOrder
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.augmentedHomOfOrder_order
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.augmentedOrderHom_ofOrder
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.augmentedOrderHomEquiv
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.augmentedOrderHom_id
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.augmentedOrderHom_comp
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.simplexPreservesEndpoints
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.simplexPreservesEndpoints_multiplicative
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.IntervalSimplexCategory
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalIntervalRepresentation
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalIntervalRepresentation_faithful
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalIntervalRepresentation_full
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalIntervalRepresentation_essSurj
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalIntervalRepresentation_isEquivalence
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.ordinalIntervalEquivalence
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.bottomTopIntervalSum
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.mixedBottomTopOrdinal
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.mixedTopBottomOrdinal

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixPrismProjection
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefixPrismProjection
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantSourceRoofNativePrism
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantSourceRoofEvaluationHomotopy
 
@@ -19,7 +19,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open CategoryTheory SSet MonoidalCategory SimplicialLocalization
+open CategoryTheory SSet MonoidalCategory _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.InfinityCategories
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : CofibrantAlgebra A)
@@ -40,7 +40,7 @@ lemma cofibrantSourceRoofProductCommaNativePrism_projection :
       (stdSimplex.objEquiv t).toOrderHom)) = _
   rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.joinStdSimplexIso_rightPoint_inl,
     SSet.yonedaEquiv_symm_naturality_left, Equiv.apply_symm_apply]
-  have hf := RoofPrefix.simplex_front (cofibrantAlgebraRelativeCategory A)
+  have hf := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.simplex_front (cofibrantAlgebraRelativeCategory A)
     (cofibrantSourceRoofProductCommaDiagram A X Y b)
     (cofibrantSourceRoofProductCommaEvaluation A X Y b)
     (cofibrantSourceRoofProductCommaEvaluation_weak A X Y b)
@@ -48,15 +48,15 @@ lemma cofibrantSourceRoofProductCommaNativePrism_projection :
     (fun f => cofibrantSourceRoofProductCommaDiagram_map_weak A X Y b f) Γ
     (stdSimplex.objEquiv t).toOrderHom
   refine hf.trans ?_
-  change (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.nerveToCoherent (KanHammockCategory (cofibrantAlgebraRelativeCategory A))).app
-    (Opposite.op ⦋n⦌) (RoofPrefix.frontDiagram (cofibrantAlgebraRelativeCategory A)
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.nerveToCoherent (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanHammockCategory (cofibrantAlgebraRelativeCategory A))).app
+    (Opposite.op ⦋n⦌) (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.frontDiagram (cofibrantAlgebraRelativeCategory A)
       (cofibrantSourceRoofProductCommaDiagram A X Y b)
       (cofibrantSourceRoofProductCommaEvaluation A X Y b) Γ
       (stdSimplex.objEquiv t).toOrderHom) =
-    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.nerveToCoherent (KanHammockCategory (cofibrantAlgebraRelativeCategory A))).app
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.nerveToCoherent (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanHammockCategory (cofibrantAlgebraRelativeCategory A))).app
       (Opposite.op ⦋n⦌) (((_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveNatTransHomotopy
         (cofibrantSourceRoofProductCommaEvaluation A X Y b)).h.app (Opposite.op ⦋n⦌)
-          (Γ, t)) ⋙ kanHammockSourceFunctor (cofibrantAlgebraRelativeCategory A))
+          (Γ, t)) ⋙ _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockSourceFunctor (cofibrantAlgebraRelativeCategory A))
   rw [_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.nerveNatTransHomotopy_app]
   rfl
 

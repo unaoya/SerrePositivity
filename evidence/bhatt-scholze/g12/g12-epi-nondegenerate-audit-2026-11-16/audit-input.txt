@@ -1,0 +1,6 @@
+import SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionAtomicNondegenerateCore
+
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionOrdinalWidth_epi
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionSimplexFunctor_epi_endpoints
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionLevelIsAtomic_epi_iff
+#print axioms SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionAtomic_nondegenerate_core

@@ -18,7 +18,7 @@ universe u
 noncomputable section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
-open CategoryTheory HomotopicalAlgebra MonoidalCategory
+open CategoryTheory _root_.HomotopicalAlgebra MonoidalCategory
 
 namespace SerrePositivity.EInfinity.BarrattEccles
 

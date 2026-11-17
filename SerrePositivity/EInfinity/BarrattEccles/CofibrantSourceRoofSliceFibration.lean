@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantSourceRoofDegreeModel
-public import SerrePositivity.EInfinity.FrameHom.FrameRoofSliceFibration
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameRoofSliceFibration
 
 /-!
 # 元の cofibrant 屋根 slice から積単体モデルへの Kan fibration
@@ -18,8 +18,8 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open CategoryTheory Limits Opposite SSet HomotopicalAlgebra
-open SerrePositivity.EInfinity.FrameHom.FrameArrows SerrePositivity.InfinityCategories
+open CategoryTheory Limits Opposite SSet _root_.HomotopicalAlgebra
+open _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows SerrePositivity.InfinityCategories
 open SSet.modelCategoryQuillen
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : CofibrantAlgebra A)
@@ -44,24 +44,24 @@ lemma cofibrantSourceRoofDegreeTransportIso_over :
     pullback.map, pullback.lift_snd, Category.comp_id]
 
 lemma cofibrantSourceRoofSliceDegreeMap_eq_generic : cofibrantSourceRoofSliceDegreeMap A X Y b =
-    roofQuillenSliceDegreeMap (cofibrantDKSourceFrame A X)
+    _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofQuillenSliceDegreeMap (cofibrantDKSourceFrame A X)
       (show (cofibrantAlgebraRelativeCategory A).category from Y)
-      (SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
       b (cofibrantSourceFrameRoofMap A X Y) ≫
         (cofibrantSourceRoofDegreeTransportIso A X Y b).hom := by
   apply pullback.hom_ext
   · rw [cofibrantSourceRoofSliceDegreeMap_source, Category.assoc,
-      cofibrantSourceRoofDegreeTransportIso_source, roofQuillenSliceDegreeMap_source]
+      cofibrantSourceRoofDegreeTransportIso_source, _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofQuillenSliceDegreeMap_source]
   · rw [Category.assoc, cofibrantSourceRoofDegreeTransportIso_over,
-      roofQuillenSliceDegreeMap_over]
+      _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofQuillenSliceDegreeMap_over]
     exact pullback.lift_snd _ _ _
 
 lemma cofibrantSourceRoofSliceDegreeMap_fibration :
     Fibration (cofibrantSourceRoofSliceDegreeMap A X Y b) := by
   have := cofibrantSourceRoofProjection_leftFibration A X Y
-  have := roofQuillenSliceDegreeMap_fibration (cofibrantDKSourceFrame A X)
+  have := _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofQuillenSliceDegreeMap_fibration (cofibrantDKSourceFrame A X)
     (show (cofibrantAlgebraRelativeCategory A).category from Y)
-    (SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
     b (cofibrantSourceFrameRoofMap A X Y)
   rw [cofibrantSourceRoofSliceDegreeMap_eq_generic]
   infer_instance

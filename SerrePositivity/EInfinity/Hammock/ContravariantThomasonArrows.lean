@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedBar
-public import SerrePositivity.EInfinity.FrameHom.ThomasonSimplex
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ThomasonSimplex
 
 /-!
 # 任意の右集合ラベルを持つ反変対角比較の左成分
@@ -22,7 +22,7 @@ open CategoryTheory Opposite
 variable {W : Type u} [Category.{u} W]
   (F : Wᵒᵖ ⥤ Cat.{u, u}) (S : W ⥤ Type u)
 
-abbrev labels (n : ℕ) := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedElements.Element (FrameHom.Thomason.values F n) S
+abbrev labels (n : ℕ) := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedElements.Element (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.values F n) S
 
 variable {n : ℕ} (e : ComposableArrows (labels F S n) n)
 

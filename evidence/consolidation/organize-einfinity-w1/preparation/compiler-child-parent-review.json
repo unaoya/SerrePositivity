@@ -1,0 +1,1636 @@
+{
+  "inventory": [
+    {
+      "module": "SerrePositivity.EInfinity.HomotopyWeight.RealizationCoefficientMap",
+      "old": "CategoryTheory.prodOpEquiv.eq_1",
+      "default": "CategoryTheory.prodOpEquiv.eq_1",
+      "parent": "CategoryTheory.prodOpEquiv",
+      "parent_selected": false,
+      "expected": "CategoryTheory.prodOpEquiv.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.TwistedPairingCrossNaturality",
+      "old": "Monotone.functor.eq_1",
+      "default": "Monotone.functor.eq_1",
+      "parent": "Monotone.functor",
+      "parent_selected": false,
+      "expected": "Monotone.functor.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.FrameHom.MixedNerveConstantHom",
+      "old": "SSet.mapHomotopyCategory.eq_1",
+      "default": "SSet.mapHomotopyCategory.eq_1",
+      "parent": "SSet.mapHomotopyCategory",
+      "parent_selected": false,
+      "expected": "SSet.mapHomotopyCategory.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofProductGeometricTriangle",
+      "old": "CategoryTheory.AsSmall.up.eq_1",
+      "default": "CategoryTheory.AsSmall.up.eq_1",
+      "parent": "CategoryTheory.AsSmall.up",
+      "parent_selected": false,
+      "expected": "CategoryTheory.AsSmall.up.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixPrismFront",
+      "old": "CategoryTheory.ComposableArrows.mk₁.eq_1",
+      "default": "CategoryTheory.ComposableArrows.mk₁.eq_1",
+      "parent": "CategoryTheory.ComposableArrows.mk₁",
+      "parent_selected": false,
+      "expected": "CategoryTheory.ComposableArrows.mk₁.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.HomotopyWeight.RealizationCoefficientMap",
+      "old": "CategoryTheory.Equivalence.funInvIdAssoc.eq_1",
+      "default": "CategoryTheory.Equivalence.funInvIdAssoc.eq_1",
+      "parent": "CategoryTheory.Equivalence.funInvIdAssoc",
+      "parent_selected": false,
+      "expected": "CategoryTheory.Equivalence.funInvIdAssoc.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixPrismFront",
+      "old": "CategoryTheory.Functor.uncurry.eq_1",
+      "default": "CategoryTheory.Functor.uncurry.eq_1",
+      "parent": "CategoryTheory.Functor.uncurry",
+      "parent_selected": false,
+      "expected": "CategoryTheory.Functor.uncurry.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.FrameHom.MixedNerveConstantHom",
+      "old": "CategoryTheory.ULiftHom.down.eq_1",
+      "default": "CategoryTheory.ULiftHom.down.eq_1",
+      "parent": "CategoryTheory.ULiftHom.down",
+      "parent_selected": false,
+      "expected": "CategoryTheory.ULiftHom.down.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotAlgebraHomInfinityComparison",
+      "old": "SerrePositivity.EInfinity.BarrattEccles.strictBECosimplicialDiagram.eq_1",
+      "default": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.strictBECosimplicialDiagram.eq_1",
+      "parent": "SerrePositivity.EInfinity.BarrattEccles.strictBECosimplicialDiagram",
+      "parent_selected": true,
+      "expected": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.strictBECosimplicialDiagram.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotUniversalSourceNaturality",
+      "old": "SerrePositivity.EInfinity.BarrattEccles.strictBETotBKProbeArrowCone.eq_1",
+      "default": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.strictBETotBKProbeArrowCone.eq_1",
+      "parent": "SerrePositivity.EInfinity.BarrattEccles.strictBETotBKProbeArrowCone",
+      "parent_selected": true,
+      "expected": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.strictBETotBKProbeArrowCone.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotEvaluationLocalization",
+      "old": "SerrePositivity.EInfinity.BarrattEccles.strictBETotDiagramFamily.eq_1",
+      "default": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.strictBETotDiagramFamily.eq_1",
+      "parent": "SerrePositivity.EInfinity.BarrattEccles.strictBETotDiagramFamily",
+      "parent_selected": true,
+      "expected": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.strictBETotDiagramFamily.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointHomRestriction",
+      "old": "SerrePositivity.EInfinity.BarrattEccles.strictBETotJointNativeHomCoherent.eq_1",
+      "default": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.strictBETotJointNativeHomCoherent.eq_1",
+      "parent": "SerrePositivity.EInfinity.BarrattEccles.strictBETotJointNativeHomCoherent",
+      "parent_selected": true,
+      "expected": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.strictBETotJointNativeHomCoherent.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointPairingBaseComparison",
+      "old": "SerrePositivity.EInfinity.BarrattEccles.strictBETotJointNativeHomInput.eq_1",
+      "default": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.strictBETotJointNativeHomInput.eq_1",
+      "parent": "SerrePositivity.EInfinity.BarrattEccles.strictBETotJointNativeHomInput",
+      "parent_selected": true,
+      "expected": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.strictBETotJointNativeHomInput.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceNativeFiberPath",
+      "old": "SerrePositivity.EInfinity.BarrattEccles.strictBETotJointSourceFiberPairingIso.eq_1",
+      "default": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.strictBETotJointSourceFiberPairingIso.eq_1",
+      "parent": "SerrePositivity.EInfinity.BarrattEccles.strictBETotJointSourceFiberPairingIso",
+      "parent_selected": true,
+      "expected": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.strictBETotJointSourceFiberPairingIso.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointPairingBaseComparison",
+      "old": "SerrePositivity.EInfinity.BarrattEccles.strictBETotJointSourceNativeCodomain.eq_1",
+      "default": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.strictBETotJointSourceNativeCodomain.eq_1",
+      "parent": "SerrePositivity.EInfinity.BarrattEccles.strictBETotJointSourceNativeCodomain",
+      "parent_selected": true,
+      "expected": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.strictBETotJointSourceNativeCodomain.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointPairingBaseComparison",
+      "old": "SerrePositivity.EInfinity.BarrattEccles.strictBETotJointSourceNativeDomain.eq_1",
+      "default": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.strictBETotJointSourceNativeDomain.eq_1",
+      "parent": "SerrePositivity.EInfinity.BarrattEccles.strictBETotJointSourceNativeDomain",
+      "parent_selected": true,
+      "expected": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.strictBETotJointSourceNativeDomain.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceNativeOppositeFiber",
+      "old": "SerrePositivity.EInfinity.BarrattEccles.strictBETotJointSourceNativeOppositeFiberMap.eq_1",
+      "default": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.strictBETotJointSourceNativeOppositeFiberMap.eq_1",
+      "parent": "SerrePositivity.EInfinity.BarrattEccles.strictBETotJointSourceNativeOppositeFiberMap",
+      "parent_selected": true,
+      "expected": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.strictBETotJointSourceNativeOppositeFiberMap.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourcePairing",
+      "old": "SerrePositivity.EInfinity.BarrattEccles.strictBETotJointSourceNativePairing.eq_1",
+      "default": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.strictBETotJointSourceNativePairing.eq_1",
+      "parent": "SerrePositivity.EInfinity.BarrattEccles.strictBETotJointSourceNativePairing",
+      "parent_selected": true,
+      "expected": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.strictBETotJointSourceNativePairing.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointPairingBaseComparison",
+      "old": "SerrePositivity.EInfinity.BarrattEccles.strictBETotJointSourceNativePairingBase.eq_1",
+      "default": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.strictBETotJointSourceNativePairingBase.eq_1",
+      "parent": "SerrePositivity.EInfinity.BarrattEccles.strictBETotJointSourceNativePairingBase",
+      "parent_selected": true,
+      "expected": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.strictBETotJointSourceNativePairingBase.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceNativeFiberPairing",
+      "old": "SerrePositivity.EInfinity.BarrattEccles.strictBETotJointSourceNativeTwistedFiberMap.eq_1",
+      "default": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.strictBETotJointSourceNativeTwistedFiberMap.eq_1",
+      "parent": "SerrePositivity.EInfinity.BarrattEccles.strictBETotJointSourceNativeTwistedFiberMap",
+      "parent_selected": true,
+      "expected": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.strictBETotJointSourceNativeTwistedFiberMap.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRawCosliceFamily",
+      "old": "SerrePositivity.EInfinity.BarrattEccles.strictBETotJointSourceRawCosliceFamily.eq_1",
+      "default": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.strictBETotJointSourceRawCosliceFamily.eq_1",
+      "parent": "SerrePositivity.EInfinity.BarrattEccles.strictBETotJointSourceRawCosliceFamily",
+      "parent_selected": true,
+      "expected": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.strictBETotJointSourceRawCosliceFamily.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceRoofColumn",
+      "old": "SerrePositivity.EInfinity.BarrattEccles.strictBETotJointSourceRoofPinchedComparison.eq_1",
+      "default": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.strictBETotJointSourceRoofPinchedComparison.eq_1",
+      "parent": "SerrePositivity.EInfinity.BarrattEccles.strictBETotJointSourceRoofPinchedComparison",
+      "parent_selected": true,
+      "expected": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.strictBETotJointSourceRoofPinchedComparison.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotModelSource",
+      "old": "SerrePositivity.EInfinity.BarrattEccles.strictBETotModelSource.eq_1",
+      "default": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.strictBETotModelSource.eq_1",
+      "parent": "SerrePositivity.EInfinity.BarrattEccles.strictBETotModelSource",
+      "parent_selected": true,
+      "expected": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.strictBETotModelSource.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotUniversalSourceNaturality",
+      "old": "SerrePositivity.EInfinity.BarrattEccles.strictBETotUniversalBKProbeWeightedCone.eq_1",
+      "default": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.strictBETotUniversalBKProbeWeightedCone.eq_1",
+      "parent": "SerrePositivity.EInfinity.BarrattEccles.strictBETotUniversalBKProbeWeightedCone",
+      "parent_selected": true,
+      "expected": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.strictBETotUniversalBKProbeWeightedCone.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotProbeCoefficientsComparison",
+      "old": "SerrePositivity.EInfinity.BarrattEccles.strictBETotUniversalBKRightHomCone.eq_1",
+      "default": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.strictBETotUniversalBKRightHomCone.eq_1",
+      "parent": "SerrePositivity.EInfinity.BarrattEccles.strictBETotUniversalBKRightHomCone",
+      "parent_selected": true,
+      "expected": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.strictBETotUniversalBKRightHomCone.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotProbeKanCoefficients",
+      "old": "SerrePositivity.EInfinity.BarrattEccles.strictBETotUniversalBKRightHomPoint.eq_1",
+      "default": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.strictBETotUniversalBKRightHomPoint.eq_1",
+      "parent": "SerrePositivity.EInfinity.BarrattEccles.strictBETotUniversalBKRightHomPoint",
+      "parent_selected": true,
+      "expected": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.strictBETotUniversalBKRightHomPoint.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotUniversalWeightedConeNaturality",
+      "old": "SerrePositivity.EInfinity.BarrattEccles.strictBETotUniversalWeightedCone.eq_1",
+      "default": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.strictBETotUniversalWeightedCone.eq_1",
+      "parent": "SerrePositivity.EInfinity.BarrattEccles.strictBETotUniversalWeightedCone",
+      "parent_selected": true,
+      "expected": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.strictBETotUniversalWeightedCone.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotBKClassification",
+      "old": "SerrePositivity.EInfinity.BarrattEccles.strictBETotUniverseDiagram.eq_1",
+      "default": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.strictBETotUniverseDiagram.eq_1",
+      "parent": "SerrePositivity.EInfinity.BarrattEccles.strictBETotUniverseDiagram",
+      "parent_selected": true,
+      "expected": "SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.strictBETotUniverseDiagram.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.FrameHom.EnrichedHomYoneda",
+      "old": "SerrePositivity.EInfinity.FrameHom.enrichedHomCoherent.eq_1",
+      "default": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.enrichedHomCoherent.eq_1",
+      "parent": "SerrePositivity.EInfinity.FrameHom.enrichedHomCoherent",
+      "parent_selected": true,
+      "expected": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.enrichedHomCoherent.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.FrameHom.EnrichedHomYoneda",
+      "old": "SerrePositivity.EInfinity.FrameHom.enrichedHomFunctor.congr_simp",
+      "default": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.enrichedHomFunctor.congr_simp",
+      "parent": "SerrePositivity.EInfinity.FrameHom.enrichedHomFunctor",
+      "parent_selected": true,
+      "expected": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.enrichedHomFunctor.congr_simp",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.FrameHom.FrameFunctorImage",
+      "old": "SerrePositivity.EInfinity.FrameHom.frameLeftRoofColimitMap.eq_1",
+      "default": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameLeftRoofColimitMap.eq_1",
+      "parent": "SerrePositivity.EInfinity.FrameHom.frameLeftRoofColimitMap",
+      "parent_selected": true,
+      "expected": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameLeftRoofColimitMap.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceFrameGraph",
+      "old": "SerrePositivity.EInfinity.FrameHom.frameLeftRoofNerveMap.congr_simp",
+      "default": "SerrePositivity.EInfinity.FrameHom.frameLeftRoofNerveMap.congr_simp",
+      "parent": "SerrePositivity.EInfinity.FrameHom.frameLeftRoofNerveMap",
+      "parent_selected": true,
+      "expected": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameLeftRoofNerveMap.congr_simp",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.FrameHom.NerveOverRightPrism",
+      "old": "SerrePositivity.EInfinity.FrameHom.nerveOverRightSliceMap.eq_1",
+      "default": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.nerveOverRightSliceMap.eq_1",
+      "parent": "SerrePositivity.EInfinity.FrameHom.nerveOverRightSliceMap",
+      "parent_selected": true,
+      "expected": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.nerveOverRightSliceMap.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.FrameHom.RightFrameHammockComponent",
+      "old": "SerrePositivity.EInfinity.FrameHom.rightFrameHammockKanComponentEquivalence.congr_simp",
+      "default": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockKanComponentEquivalence.congr_simp",
+      "parent": "SerrePositivity.EInfinity.FrameHom.rightFrameHammockKanComponentEquivalence",
+      "parent_selected": true,
+      "expected": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockKanComponentEquivalence.congr_simp",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.FrameHom.RightFrameHammockUnitPoints",
+      "old": "SerrePositivity.EInfinity.FrameHom.rightFrameHammockUnitPoint.eq_1",
+      "default": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockUnitPoint.eq_1",
+      "parent": "SerrePositivity.EInfinity.FrameHom.rightFrameHammockUnitPoint",
+      "parent_selected": true,
+      "expected": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockUnitPoint.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.FrameHom.RightFrameHammockUnitPoints",
+      "old": "SerrePositivity.EInfinity.FrameHom.rightFrameHammockUnitPoint.eq_2",
+      "default": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockUnitPoint.eq_2",
+      "parent": "SerrePositivity.EInfinity.FrameHom.rightFrameHammockUnitPoint",
+      "parent_selected": true,
+      "expected": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockUnitPoint.eq_2",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.FrameHom.RightFrameHammockUnitPoints",
+      "old": "SerrePositivity.EInfinity.FrameHom.rightFrameHammockUnitPoint.eq_3",
+      "default": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockUnitPoint.eq_3",
+      "parent": "SerrePositivity.EInfinity.FrameHom.rightFrameHammockUnitPoint",
+      "parent_selected": true,
+      "expected": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockUnitPoint.eq_3",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.FrameHom.RightFrameHammockUnitPoints",
+      "old": "SerrePositivity.EInfinity.FrameHom.rightFrameHammockUnitPoint.eq_4",
+      "default": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockUnitPoint.eq_4",
+      "parent": "SerrePositivity.EInfinity.FrameHom.rightFrameHammockUnitPoint",
+      "parent_selected": true,
+      "expected": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockUnitPoint.eq_4",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.FrameHom.RightFrameHammockUnitPoints",
+      "old": "SerrePositivity.EInfinity.FrameHom.rightFrameHammockUnitPoint.eq_5",
+      "default": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockUnitPoint.eq_5",
+      "parent": "SerrePositivity.EInfinity.FrameHom.rightFrameHammockUnitPoint",
+      "parent_selected": true,
+      "expected": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockUnitPoint.eq_5",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.FrameHom.RightFrameHammockUnitPoints",
+      "old": "SerrePositivity.EInfinity.FrameHom.rightFrameHammockUnitPoint.eq_6",
+      "default": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockUnitPoint.eq_6",
+      "parent": "SerrePositivity.EInfinity.FrameHom.rightFrameHammockUnitPoint",
+      "parent_selected": true,
+      "expected": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockUnitPoint.eq_6",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.FrameHom.RightFrameHammockUnitPoints",
+      "old": "SerrePositivity.EInfinity.FrameHom.rightFrameHammockUnitPoint.eq_7",
+      "default": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockUnitPoint.eq_7",
+      "parent": "SerrePositivity.EInfinity.FrameHom.rightFrameHammockUnitPoint",
+      "parent_selected": true,
+      "expected": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockUnitPoint.eq_7",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.FrameHom.RightFrameSpecifiedUnit",
+      "old": "SerrePositivity.EInfinity.FrameHom.rightFrameSpecifiedLocalizationData.congr_simp",
+      "default": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameSpecifiedLocalizationData.congr_simp",
+      "parent": "SerrePositivity.EInfinity.FrameHom.rightFrameSpecifiedLocalizationData",
+      "parent_selected": true,
+      "expected": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameSpecifiedLocalizationData.congr_simp",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.HomotopyWeight.BousfieldKanCellEvaluation",
+      "old": "SerrePositivity.EInfinity.HomotopyWeight.bkCellBoundary.eq_1",
+      "default": "SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.bkCellBoundary.eq_1",
+      "parent": "SerrePositivity.EInfinity.HomotopyWeight.bkCellBoundary",
+      "parent_selected": true,
+      "expected": "SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.bkCellBoundary.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.HomotopyWeight.BousfieldKanCellEvaluation",
+      "old": "SerrePositivity.EInfinity.HomotopyWeight.bkCellEvaluation.eq_1",
+      "default": "SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.bkCellEvaluation.eq_1",
+      "parent": "SerrePositivity.EInfinity.HomotopyWeight.bkCellEvaluation",
+      "parent_selected": true,
+      "expected": "SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.bkCellEvaluation.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.HomotopyWeight.ConePoints",
+      "old": "SerrePositivity.EInfinity.HomotopyWeight.coneClass.eq_1",
+      "default": "SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.coneClass.eq_1",
+      "parent": "SerrePositivity.EInfinity.HomotopyWeight.coneClass",
+      "parent_selected": true,
+      "expected": "SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.coneClass.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.HomotopyWeight.ConePoints",
+      "old": "SerrePositivity.EInfinity.HomotopyWeight.conePoint.eq_1",
+      "default": "SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.conePoint.eq_1",
+      "parent": "SerrePositivity.EInfinity.HomotopyWeight.conePoint",
+      "parent_selected": true,
+      "expected": "SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.conePoint.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.HomotopyWeight.NativeWeightedSectionPoints",
+      "old": "SerrePositivity.EInfinity.HomotopyWeight.coneSpaceNativeSectionsIso.eq_1",
+      "default": "SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.coneSpaceNativeSectionsIso.eq_1",
+      "parent": "SerrePositivity.EInfinity.HomotopyWeight.coneSpaceNativeSectionsIso",
+      "parent_selected": true,
+      "expected": "SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.coneSpaceNativeSectionsIso.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.HomotopyWeight.KanConeComparison",
+      "old": "SerrePositivity.EInfinity.HomotopyWeight.kanConeComparisonIso.eq_1",
+      "default": "SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.kanConeComparisonIso.eq_1",
+      "parent": "SerrePositivity.EInfinity.HomotopyWeight.kanConeComparisonIso",
+      "parent_selected": true,
+      "expected": "SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.kanConeComparisonIso.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.HomotopyWeight.NativeWeightedPointRestriction",
+      "old": "SerrePositivity.EInfinity.HomotopyWeight.nativeWeightedPoint.eq_1",
+      "default": "SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.nativeWeightedPoint.eq_1",
+      "parent": "SerrePositivity.EInfinity.HomotopyWeight.nativeWeightedPoint",
+      "parent_selected": true,
+      "expected": "SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.nativeWeightedPoint.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.HomotopyWeight.PointwiseConePoints",
+      "old": "SerrePositivity.EInfinity.HomotopyWeight.pointwiseTensorAdjunction.eq_1",
+      "default": "SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseTensorAdjunction.eq_1",
+      "parent": "SerrePositivity.EInfinity.HomotopyWeight.pointwiseTensorAdjunction",
+      "parent_selected": true,
+      "expected": "SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseTensorAdjunction.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.HomotopyWeight.TensorPiZeroNaturality",
+      "old": "SerrePositivity.EInfinity.HomotopyWeight.tensorRealizationAdjunction.eq_1",
+      "default": "SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.tensorRealizationAdjunction.eq_1",
+      "parent": "SerrePositivity.EInfinity.HomotopyWeight.tensorRealizationAdjunction",
+      "parent_selected": true,
+      "expected": "SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.tensorRealizationAdjunction.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.HomotopyWeight.WeightedSourceHomotopy",
+      "old": "SerrePositivity.EInfinity.HomotopyWeight.weightedSourceHomotopyMap.eq_1",
+      "default": "SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weightedSourceHomotopyMap.eq_1",
+      "parent": "SerrePositivity.EInfinity.HomotopyWeight.weightedSourceHomotopyMap",
+      "parent_selected": true,
+      "expected": "SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weightedSourceHomotopyMap.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockArrowPoint",
+      "old": "SerrePositivity.EInfinity.SimplicialLocalization.freeHammockArrowPoint.eq_1",
+      "default": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockArrowPoint.eq_1",
+      "parent": "SerrePositivity.EInfinity.SimplicialLocalization.freeHammockArrowPoint",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockArrowPoint.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockDiagonal",
+      "old": "SerrePositivity.EInfinity.SimplicialLocalization.freeHammockDiagonalReduction.eq_1",
+      "default": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalReduction.eq_1",
+      "parent": "SerrePositivity.EInfinity.SimplicialLocalization.freeHammockDiagonalReduction",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalReduction.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.SimplicialLocalization.FreeResolutionGeneratorHom",
+      "old": "SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionGeneratorHom.eq_1",
+      "default": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorHom.eq_1",
+      "parent": "SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionGeneratorHom",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorHom.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.SimplicialLocalization.FreeResolutionUnderlyingHom",
+      "old": "SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionHom.eq_1",
+      "default": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionHom.eq_1",
+      "parent": "SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionHom",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionHom.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.SimplicialLocalization.FreeResolutionNativeMarkedHom",
+      "old": "SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionNativeMarkedHom.eq_1",
+      "default": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionNativeMarkedHom.eq_1",
+      "parent": "SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionNativeMarkedHom",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionNativeMarkedHom.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.SimplicialLocalization.KanHammockHomCoherent",
+      "old": "SerrePositivity.EInfinity.SimplicialLocalization.hammockLocalizationNerveMap.eq_1",
+      "default": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap.eq_1",
+      "parent": "SerrePositivity.EInfinity.SimplicialLocalization.hammockLocalizationNerveMap",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.SimplicialLocalization.SourceHom",
+      "old": "SerrePositivity.EInfinity.SimplicialLocalization.kanFreeHammockStrictHom.eq_1",
+      "default": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanFreeHammockStrictHom.eq_1",
+      "parent": "SerrePositivity.EInfinity.SimplicialLocalization.kanFreeHammockStrictHom",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanFreeHammockStrictHom.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.SimplicialLocalization.KanHammockHomCoherent",
+      "old": "SerrePositivity.EInfinity.SimplicialLocalization.kanHammockHomCoherent.eq_1",
+      "default": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockHomCoherent.eq_1",
+      "parent": "SerrePositivity.EInfinity.SimplicialLocalization.kanHammockHomCoherent",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockHomCoherent.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.SimplicialLocalization.KanHammockArrowNormalization",
+      "old": "SerrePositivity.EInfinity.SimplicialLocalization.kanHammockHomPinchedMap.eq_1",
+      "default": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockHomPinchedMap.eq_1",
+      "parent": "SerrePositivity.EInfinity.SimplicialLocalization.kanHammockHomPinchedMap",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockHomPinchedMap.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.SimplicialLocalization.SourceHom",
+      "old": "SerrePositivity.EInfinity.SimplicialLocalization.localizationArrowPoint.eq_1",
+      "default": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationArrowPoint.eq_1",
+      "parent": "SerrePositivity.EInfinity.SimplicialLocalization.localizationArrowPoint",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationArrowPoint.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.SimplicialLocalization.HomAugmentation",
+      "old": "SerrePositivity.EInfinity.SimplicialLocalization.localizationHomAugmentation.eq_1",
+      "default": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHomAugmentation.eq_1",
+      "parent": "SerrePositivity.EInfinity.SimplicialLocalization.localizationHomAugmentation",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHomAugmentation.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.SimplicialLocalization.SourceHom",
+      "old": "SerrePositivity.EInfinity.SimplicialLocalization.localizationNerveSourceMap.eq_1",
+      "default": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveSourceMap.eq_1",
+      "parent": "SerrePositivity.EInfinity.SimplicialLocalization.localizationNerveSourceMap",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveSourceMap.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.SimplicialLocalization.ResolutionRepresentatives",
+      "old": "SerrePositivity.EInfinity.SimplicialLocalization.localizationResolutionHom.eq_1",
+      "default": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationResolutionHom.eq_1",
+      "parent": "SerrePositivity.EInfinity.SimplicialLocalization.localizationResolutionHom",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationResolutionHom.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.SimplicialLocalization.SourceHom",
+      "old": "SerrePositivity.EInfinity.SimplicialLocalization.localizationStrictSourceIso.eq_1",
+      "default": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationStrictSourceIso.eq_1",
+      "parent": "SerrePositivity.EInfinity.SimplicialLocalization.localizationStrictSourceIso",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationStrictSourceIso.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.SimplicialLocalization.ZeroLevelComponents",
+      "old": "SerrePositivity.EInfinity.SimplicialLocalization.localizationZeroHom.eq_1",
+      "default": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationZeroHom.eq_1",
+      "parent": "SerrePositivity.EInfinity.SimplicialLocalization.localizationZeroHom",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationZeroHom.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofProductFunctorCell",
+      "old": "SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantHammockVertex.eq_1",
+      "default": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantHammockVertex.eq_1",
+      "parent": "SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantHammockVertex",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantHammockVertex.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantFrameRoof",
+      "old": "SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceFrameRoofMap.eq_1",
+      "default": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceFrameRoofMap.eq_1",
+      "parent": "SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceFrameRoofMap",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceFrameRoofMap.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofProductGeometricTriangle",
+      "old": "SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofCornerEvaluation.eq_1",
+      "default": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofCornerEvaluation.eq_1",
+      "parent": "SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofCornerEvaluation",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofCornerEvaluation.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofNativePinchedReference",
+      "old": "SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofDegreePrecompose.eq_1",
+      "default": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofDegreePrecompose.eq_1",
+      "parent": "SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofDegreePrecompose",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofDegreePrecompose.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofSliceFibration",
+      "old": "SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofDegreeTransportIso.eq_1",
+      "default": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofDegreeTransportIso.eq_1",
+      "parent": "SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofDegreeTransportIso",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofDegreeTransportIso.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofProductGeometricTriangle",
+      "old": "SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductActualIntervalCell.eq_1",
+      "default": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductActualIntervalCell.eq_1",
+      "parent": "SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductActualIntervalCell",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductActualIntervalCell.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofNativeRoofComparison",
+      "old": "SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaAugmentationRoofMap.eq_1",
+      "default": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaAugmentationRoofMap.eq_1",
+      "parent": "SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaAugmentationRoofMap",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaAugmentationRoofMap.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofProductFunctorCell",
+      "old": "SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaComparisonCell.eq_1",
+      "default": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaComparisonCell.eq_1",
+      "parent": "SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaComparisonCell",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaComparisonCell.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofProductCornerProjection",
+      "old": "SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaCornerMap.eq_1",
+      "default": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaCornerMap.eq_1",
+      "parent": "SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaCornerMap",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaCornerMap.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofNativeRoofComparison",
+      "old": "SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaEvaluationRoofMap.eq_1",
+      "default": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaEvaluationRoofMap.eq_1",
+      "parent": "SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaEvaluationRoofMap",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaEvaluationRoofMap.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofProductGeometricTriangle",
+      "old": "SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaHomMap.eq_1",
+      "default": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaHomMap.eq_1",
+      "parent": "SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaHomMap",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaHomMap.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofNativePinchedReference",
+      "old": "SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativePinchedMap.eq_1",
+      "default": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativePinchedMap.eq_1",
+      "parent": "SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativePinchedMap",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaNativePinchedMap.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofNativePinchedReference",
+      "old": "SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaReferenceMap.eq_1",
+      "default": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaReferenceMap.eq_1",
+      "parent": "SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCommaReferenceMap",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCommaReferenceMap.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofProductCornerProjection",
+      "old": "SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCornerMap.eq_1",
+      "default": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCornerMap.eq_1",
+      "parent": "SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductCornerMap",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductCornerMap.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofNativePinchedReference",
+      "old": "SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductDegreeHammockMap.eq_1",
+      "default": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductDegreeHammockMap.eq_1",
+      "parent": "SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductDegreeHammockMap",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductDegreeHammockMap.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofProductGeometricTriangle",
+      "old": "SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductGeometricLeftCell.eq_1",
+      "default": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductGeometricLeftCell.eq_1",
+      "parent": "SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductGeometricLeftCell",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductGeometricLeftCell.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofProductGeometricTriangle",
+      "old": "SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductGeometricLeftHomotopy.eq_1",
+      "default": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductGeometricLeftHomotopy.eq_1",
+      "parent": "SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductGeometricLeftHomotopy",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductGeometricLeftHomotopy.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofProductGeometricTriangle",
+      "old": "SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductGeometricRightCell.eq_1",
+      "default": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductGeometricRightCell.eq_1",
+      "parent": "SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductGeometricRightCell",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductGeometricRightCell.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofProductGeometricTriangle",
+      "old": "SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductGeometricRightHomotopy.eq_1",
+      "default": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductGeometricRightHomotopy.eq_1",
+      "parent": "SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductGeometricRightHomotopy",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductGeometricRightHomotopy.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofNativePinchedReference",
+      "old": "SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductHammockMap.eq_1",
+      "default": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductHammockMap.eq_1",
+      "parent": "SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductHammockMap",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductHammockMap.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofProductGeometricTriangle",
+      "old": "SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductHomMap.eq_1",
+      "default": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductHomMap.eq_1",
+      "parent": "SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductHomMap",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductHomMap.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofBaseEvaluation",
+      "old": "SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductNormalizedMap.eq_1",
+      "default": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductNormalizedMap.eq_1",
+      "parent": "SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductNormalizedMap",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductNormalizedMap.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofNativePinchedReference",
+      "old": "SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductPinchedReferenceMap.eq_1",
+      "default": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductPinchedReferenceMap.eq_1",
+      "parent": "SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofProductPinchedReferenceMap",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofProductPinchedReferenceMap.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofSliceFibration",
+      "old": "SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofSliceProductMap.eq_1",
+      "default": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofSliceProductMap.eq_1",
+      "parent": "SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRoofSliceProductMap",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofSliceProductMap.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotFrameHomInfinity",
+      "old": "SerrePositivity.EInfinity.SimplicialLocalization.modelSourceFrameFamily.congr_simp",
+      "default": "SerrePositivity.EInfinity.SimplicialLocalization.modelSourceFrameFamily.congr_simp",
+      "parent": "SerrePositivity.EInfinity.SimplicialLocalization.modelSourceFrameFamily",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelSourceFrameFamily.congr_simp",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.FrameHom.ComonadResolutionFunctoriality",
+      "old": "SerrePositivity.EInfinity.FrameHom.ComonadResolution.powerMap.eq_1",
+      "default": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ComonadResolution.powerMap.eq_1",
+      "parent": "SerrePositivity.EInfinity.FrameHom.ComonadResolution.powerMap",
+      "parent_selected": true,
+      "expected": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ComonadResolution.powerMap.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.FrameHom.ComonadResolutionFunctoriality",
+      "old": "SerrePositivity.EInfinity.FrameHom.ComonadResolution.powerMap.eq_2",
+      "default": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ComonadResolution.powerMap.eq_2",
+      "parent": "SerrePositivity.EInfinity.FrameHom.ComonadResolution.powerMap",
+      "parent_selected": true,
+      "expected": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ComonadResolution.powerMap.eq_2",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.FrameHom.FrameRoofSource",
+      "old": "SerrePositivity.EInfinity.FrameHom.FrameArrows.frameRoofMap.eq_1",
+      "default": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.frameRoofMap.eq_1",
+      "parent": "SerrePositivity.EInfinity.FrameHom.FrameArrows.frameRoofMap",
+      "parent_selected": true,
+      "expected": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.frameRoofMap.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.FrameHom.FrameRoofCornerEvaluationPrism",
+      "old": "SerrePositivity.EInfinity.FrameHom.FrameArrows.roofCornerEvaluation.congr_simp",
+      "default": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofCornerEvaluation.congr_simp",
+      "parent": "SerrePositivity.EInfinity.FrameHom.FrameArrows.roofCornerEvaluation",
+      "parent_selected": true,
+      "expected": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofCornerEvaluation.congr_simp",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.FrameHom.FrameRoofCornerEvaluationPrism",
+      "old": "SerrePositivity.EInfinity.FrameHom.FrameArrows.roofCornerEvaluation.eq_1",
+      "default": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofCornerEvaluation.eq_1",
+      "parent": "SerrePositivity.EInfinity.FrameHom.FrameArrows.roofCornerEvaluation",
+      "parent_selected": true,
+      "expected": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofCornerEvaluation.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.FrameHom.FrameRoofCornerEvaluationTriangle",
+      "old": "SerrePositivity.EInfinity.FrameHom.FrameArrows.roofCornerEvaluationLeftHomotopy.congr_simp",
+      "default": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofCornerEvaluationLeftHomotopy.congr_simp",
+      "parent": "SerrePositivity.EInfinity.FrameHom.FrameArrows.roofCornerEvaluationLeftHomotopy",
+      "parent_selected": true,
+      "expected": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofCornerEvaluationLeftHomotopy.congr_simp",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.FrameHom.FrameRoofCornerNormalization",
+      "old": "SerrePositivity.EInfinity.FrameHom.FrameArrows.roofCornerNormalizationMap.eq_1",
+      "default": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofCornerNormalizationMap.eq_1",
+      "parent": "SerrePositivity.EInfinity.FrameHom.FrameArrows.roofCornerNormalizationMap",
+      "parent_selected": true,
+      "expected": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofCornerNormalizationMap.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.FrameHom.FrameRoofCornerProjectionLaws",
+      "old": "SerrePositivity.EInfinity.FrameHom.FrameArrows.roofCornerSourceSliceMap.eq_1",
+      "default": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofCornerSourceSliceMap.eq_1",
+      "parent": "SerrePositivity.EInfinity.FrameHom.FrameArrows.roofCornerSourceSliceMap",
+      "parent_selected": true,
+      "expected": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofCornerSourceSliceMap.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.FrameHom.FrameRoofCornerEvaluationPrism",
+      "old": "SerrePositivity.EInfinity.FrameHom.FrameArrows.roofCornerTerminalEvaluation.congr_simp",
+      "default": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofCornerTerminalEvaluation.congr_simp",
+      "parent": "SerrePositivity.EInfinity.FrameHom.FrameArrows.roofCornerTerminalEvaluation",
+      "parent_selected": true,
+      "expected": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofCornerTerminalEvaluation.congr_simp",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.FrameHom.FrameRoofSliceWeakContractibility",
+      "old": "SerrePositivity.EInfinity.FrameHom.FrameArrows.roofQuillenDegreeCornerMap.eq_1",
+      "default": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofQuillenDegreeCornerMap.eq_1",
+      "parent": "SerrePositivity.EInfinity.FrameHom.FrameArrows.roofQuillenDegreeCornerMap",
+      "parent_selected": true,
+      "expected": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofQuillenDegreeCornerMap.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.FrameHom.FrameRoofSliceFibration",
+      "old": "SerrePositivity.EInfinity.FrameHom.FrameArrows.roofQuillenDegreeNormalizationMap.eq_1",
+      "default": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofQuillenDegreeNormalizationMap.eq_1",
+      "parent": "SerrePositivity.EInfinity.FrameHom.FrameArrows.roofQuillenDegreeNormalizationMap",
+      "parent_selected": true,
+      "expected": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofQuillenDegreeNormalizationMap.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.FrameHom.FrameRoofQuillenSlice",
+      "old": "SerrePositivity.EInfinity.FrameHom.FrameArrows.roofQuillenSliceOver.eq_1",
+      "default": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofQuillenSliceOver.eq_1",
+      "parent": "SerrePositivity.EInfinity.FrameHom.FrameArrows.roofQuillenSliceOver",
+      "parent_selected": true,
+      "expected": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofQuillenSliceOver.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.FrameHom.FrameRoofSource",
+      "old": "SerrePositivity.EInfinity.FrameHom.FrameArrows.roofSourceIso.eq_1",
+      "default": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofSourceIso.eq_1",
+      "parent": "SerrePositivity.EInfinity.FrameHom.FrameArrows.roofSourceIso",
+      "parent_selected": true,
+      "expected": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofSourceIso.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.FrameHom.FrameRoofQuillenSlice",
+      "old": "SerrePositivity.EInfinity.FrameHom.FrameArrows.roofTargetOverBaseMap.eq_1",
+      "default": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofTargetOverBaseMap.eq_1",
+      "parent": "SerrePositivity.EInfinity.FrameHom.FrameArrows.roofTargetOverBaseMap",
+      "parent_selected": true,
+      "expected": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofTargetOverBaseMap.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.FrameHom.NerveOverRightPrism",
+      "old": "SerrePositivity.EInfinity.FrameHom.FrameArrows.roofTargetSlicePointIso.eq_1",
+      "default": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofTargetSlicePointIso.eq_1",
+      "parent": "SerrePositivity.EInfinity.FrameHom.FrameArrows.roofTargetSlicePointIso",
+      "parent_selected": true,
+      "expected": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.roofTargetSlicePointIso.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.FrameHom.MixedNerveCoconePoint",
+      "old": "SerrePositivity.EInfinity.FrameHom.MixedNerve.coconeJoin.eq_1",
+      "default": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.coconeJoin.eq_1",
+      "parent": "SerrePositivity.EInfinity.FrameHom.MixedNerve.coconeJoin",
+      "parent_selected": true,
+      "expected": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.coconeJoin.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.FrameHom.MixedNerveConstantHom",
+      "old": "SerrePositivity.EInfinity.FrameHom.MixedNerve.lifted.eq_1",
+      "default": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.lifted.eq_1",
+      "parent": "SerrePositivity.EInfinity.FrameHom.MixedNerve.lifted",
+      "parent_selected": true,
+      "expected": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.lifted.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.FrameHom.MixedNerveConstantHom",
+      "old": "SerrePositivity.EInfinity.FrameHom.MixedNerve.liftedNatTrans.eq_1",
+      "default": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.liftedNatTrans.eq_1",
+      "parent": "SerrePositivity.EInfinity.FrameHom.MixedNerve.liftedNatTrans",
+      "parent_selected": true,
+      "expected": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.liftedNatTrans.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.FrameHom.NerveColumnRoofNaturality",
+      "old": "SerrePositivity.EInfinity.FrameHom.NerveColumn.augmentationIso.congr_simp",
+      "default": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveColumn.augmentationIso.congr_simp",
+      "parent": "SerrePositivity.EInfinity.FrameHom.NerveColumn.augmentationIso",
+      "parent_selected": true,
+      "expected": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveColumn.augmentationIso.congr_simp",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.FrameHom.NerveColumnRoofNaturality",
+      "old": "SerrePositivity.EInfinity.FrameHom.NerveColumn.hom.eq_1",
+      "default": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveColumn.hom.eq_1",
+      "parent": "SerrePositivity.EInfinity.FrameHom.NerveColumn.hom",
+      "parent_selected": true,
+      "expected": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveColumn.hom.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixColumnRoof",
+      "old": "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.coherentAugmentationIso.congr_simp",
+      "default": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.coherentAugmentationIso.congr_simp",
+      "parent": "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.coherentAugmentationIso",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.coherentAugmentationIso.congr_simp",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixFamilyTriangle",
+      "old": "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.coherentPinchedFamily.eq_1",
+      "default": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.coherentPinchedFamily.eq_1",
+      "parent": "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.coherentPinchedFamily",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.coherentPinchedFamily.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixPathComposition",
+      "old": "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.familyMap.congr_simp",
+      "default": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.familyMap.congr_simp",
+      "parent": "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.familyMap",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.familyMap.congr_simp",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixPrismCompatibility",
+      "old": "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.lastHom.congr_simp",
+      "default": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.lastHom.congr_simp",
+      "parent": "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.lastHom",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.lastHom.congr_simp",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixPrismLast",
+      "old": "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.lastHom.eq_1",
+      "default": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.lastHom.eq_1",
+      "parent": "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.lastHom",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.lastHom.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixPrismLast",
+      "old": "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.pathMap.congr_simp",
+      "default": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.pathMap.congr_simp",
+      "parent": "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.pathMap",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.pathMap.congr_simp",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.GrothendieckWeightedNerveRecovery",
+      "old": "SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.transport.eq_1",
+      "default": "SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.transport.eq_1",
+      "parent": "SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.transport",
+      "parent_selected": false,
+      "expected": "SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.transport.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofProductGeometricTriangle",
+      "old": "SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantDKFrame.eq_1",
+      "default": "SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantDKFrame.eq_1",
+      "parent": "SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantDKFrame",
+      "parent_selected": false,
+      "expected": "SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantDKFrame.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofProductGeometricTriangle",
+      "old": "SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject.eq_1",
+      "default": "SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject.eq_1",
+      "parent": "SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject",
+      "parent_selected": false,
+      "expected": "SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofProductGeometricTriangle",
+      "old": "SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory.eq_1",
+      "default": "SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory.eq_1",
+      "parent": "SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory",
+      "parent_selected": false,
+      "expected": "SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixPath",
+      "old": "SerrePositivity.EInfinity.Hammock.LeftRoof.Prefix.pathMap.congr_simp",
+      "default": "SerrePositivity.EInfinity.Hammock.LeftRoof.Prefix.pathMap.congr_simp",
+      "parent": "SerrePositivity.EInfinity.Hammock.LeftRoof.Prefix.pathMap",
+      "parent_selected": false,
+      "expected": "SerrePositivity.EInfinity.Hammock.LeftRoof.Prefix.pathMap.congr_simp",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.SimplicialLocalization.ResolutionGenerators",
+      "old": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.freeCounit.eq_1",
+      "default": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.freeCounit.eq_1",
+      "parent": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.freeCounit",
+      "parent_selected": false,
+      "expected": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.freeCounit.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.SimplicialLocalization.KanHammockHomCoherent",
+      "old": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.postcomposePointMap.eq_1",
+      "default": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.postcomposePointMap.eq_1",
+      "parent": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.postcomposePointMap",
+      "parent_selected": false,
+      "expected": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.postcomposePointMap.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.FrameHom.EnrichedHomYoneda",
+      "old": "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.smallKanRealization.eq_1",
+      "default": "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.smallKanRealization.eq_1",
+      "parent": "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.smallKanRealization",
+      "parent_selected": false,
+      "expected": "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.smallKanRealization.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.FrameHom.HomInfinityLocalizationTransport",
+      "old": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.homInfinityCovariant.congr_simp",
+      "default": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.homInfinityCovariant.congr_simp",
+      "parent": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.homInfinityCovariant",
+      "parent_selected": false,
+      "expected": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.homInfinityCovariant.congr_simp",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftStraighteningDiagramHomArrow",
+      "old": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftFibrationInfinityEdge.congr_simp",
+      "default": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftFibrationInfinityEdge.congr_simp",
+      "parent": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftFibrationInfinityEdge",
+      "parent_selected": false,
+      "expected": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftFibrationInfinityEdge.congr_simp",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.ClassificationTransportHom",
+      "old": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftFibrationInfinityVertexIsoOfPrecompositionEquivalence.congr_simp",
+      "default": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftFibrationInfinityVertexIsoOfPrecompositionEquivalence.congr_simp",
+      "parent": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftFibrationInfinityVertexIsoOfPrecompositionEquivalence",
+      "parent_selected": false,
+      "expected": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftFibrationInfinityVertexIsoOfPrecompositionEquivalence.congr_simp",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftStraighteningDiagramHomEvaluation",
+      "old": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftStraighteningInfinityDiagramHom.congr_simp",
+      "default": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftStraighteningInfinityDiagramHom.congr_simp",
+      "parent": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftStraighteningInfinityDiagramHom",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftStraighteningInfinityDiagramHom.congr_simp",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.GrothendieckWeightedNerveInverseFunctor",
+      "old": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothWeightedNerveInverseMap.eq_1",
+      "default": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothWeightedNerveInverseMap.eq_1",
+      "parent": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothWeightedNerveInverseMap",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothWeightedNerveInverseMap.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.GrothendieckWeightedNerveRecovery",
+      "old": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothWeightedNerveInverseSimplex.eq_1",
+      "default": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothWeightedNerveInverseSimplex.eq_1",
+      "parent": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothWeightedNerveInverseSimplex",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothWeightedNerveInverseSimplex.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.GrothendieckWeightedNerveRecovery",
+      "old": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothWeightedPrefixArrow.eq_1",
+      "default": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothWeightedPrefixArrow.eq_1",
+      "parent": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothWeightedPrefixArrow",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothWeightedPrefixArrow.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.GrothendieckWeightedNerveRecovery",
+      "old": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothWeightedPrefixFiber.eq_1",
+      "default": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothWeightedPrefixFiber.eq_1",
+      "parent": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothWeightedPrefixFiber",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothWeightedPrefixFiber.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.GrothendieckFiberUnit",
+      "old": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothendieckFiberComparison.eq_1",
+      "default": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothendieckFiberComparison.eq_1",
+      "parent": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothendieckFiberComparison",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothendieckFiberComparison.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.GrothendieckFiberUnit",
+      "old": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothendieckFiberInclusion.eq_1",
+      "default": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothendieckFiberInclusion.eq_1",
+      "parent": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothendieckFiberInclusion",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothendieckFiberInclusion.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.GrothendieckFiberUnit",
+      "old": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothendieckFiberUnit.eq_1",
+      "default": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothendieckFiberUnit.eq_1",
+      "parent": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothendieckFiberUnit",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothendieckFiberUnit.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.GrothendieckKanCoefficientLift",
+      "old": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothendieckKanCoefficientMap.eq_1",
+      "default": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothendieckKanCoefficientMap.eq_1",
+      "parent": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothendieckKanCoefficientMap",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothendieckKanCoefficientMap.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.GrothendieckKanScaffold",
+      "old": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothendieckNerveScaffold.eq_1",
+      "default": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothendieckNerveScaffold.eq_1",
+      "parent": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothendieckNerveScaffold",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothendieckNerveScaffold.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.GrothendieckWeightedNerveIso",
+      "old": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothendieckWeightedNerveIso.eq_1",
+      "default": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothendieckWeightedNerveIso.eq_1",
+      "parent": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothendieckWeightedNerveIso",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.grothendieckWeightedNerveIso.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.SimplicialElementsFiberUnit",
+      "old": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialElementsFiberComparison.eq_1",
+      "default": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialElementsFiberComparison.eq_1",
+      "parent": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialElementsFiberComparison",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialElementsFiberComparison.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.SimplicialElementsFiberUnit",
+      "old": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialElementsFiberInclusion.eq_1",
+      "default": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialElementsFiberInclusion.eq_1",
+      "parent": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialElementsFiberInclusion",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialElementsFiberInclusion.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.SimplicialElementsFiberMap",
+      "old": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialElementsFiberMap.eq_1",
+      "default": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialElementsFiberMap.eq_1",
+      "parent": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialElementsFiberMap",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialElementsFiberMap.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.SimplicialElementsFiberUnit",
+      "old": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialElementsFiberUnit.eq_1",
+      "default": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialElementsFiberUnit.eq_1",
+      "parent": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialElementsFiberUnit",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialElementsFiberUnit.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotRightFrameComparison",
+      "old": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence.congr_simp",
+      "default": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence.congr_simp",
+      "parent": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence",
+      "parent_selected": false,
+      "expected": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence.congr_simp",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointPairingProjectionValues",
+      "old": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.functorIsoPair.congr_simp",
+      "default": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.functorIsoPair.congr_simp",
+      "parent": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.functorIsoPair",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.functorIsoPair.congr_simp",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.HomotopyWeight.BousfieldKanSkeletonPushout",
+      "old": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight.eq_1",
+      "default": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight.eq_1",
+      "parent": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight",
+      "parent_selected": false,
+      "expected": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotNativeFiberComparison",
+      "old": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.classifiedFibrationFiberEquivalence.congr_simp",
+      "default": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.classifiedFibrationFiberEquivalence.congr_simp",
+      "parent": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.classifiedFibrationFiberEquivalence",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.classifiedFibrationFiberEquivalence.congr_simp",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.ClassifiedFibrationFiberComparison",
+      "old": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.classifiedFibrationTransport.congr_simp",
+      "default": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.classifiedFibrationTransport.congr_simp",
+      "parent": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.classifiedFibrationTransport",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.classifiedFibrationTransport.congr_simp",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.ClassifiedFibrationTransport",
+      "old": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.classifiedFibrationTransport.eq_1",
+      "default": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.classifiedFibrationTransport.eq_1",
+      "parent": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.classifiedFibrationTransport",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.classifiedFibrationTransport.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.ClassifiedFibrationFiberComparison",
+      "old": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.classifiedLeftFibrationSectionsEquivalence.congr_simp",
+      "default": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.classifiedLeftFibrationSectionsEquivalence.congr_simp",
+      "parent": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.classifiedLeftFibrationSectionsEquivalence",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.classifiedLeftFibrationSectionsEquivalence.congr_simp",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.HomotopyWeight.NativeWeightedSectionPoints",
+      "old": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsAdjunction.eq_1",
+      "default": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsAdjunction.eq_1",
+      "parent": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsAdjunction",
+      "parent_selected": false,
+      "expected": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsAdjunction.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.WeightedSectionsUniverseComparison",
+      "old": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUniverseComparison.eq_1",
+      "default": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUniverseComparison.eq_1",
+      "parent": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUniverseComparison",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUniverseComparison.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.WeightedSectionsUniverseComparison",
+      "old": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUniverseEvaluation.eq_1",
+      "default": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUniverseEvaluation.eq_1",
+      "parent": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUniverseEvaluation",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUniverseEvaluation.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.FrameHom.FrameRightKan",
+      "old": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.rightKanDiagram.eq_1",
+      "default": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.rightKanDiagram.eq_1",
+      "parent": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.rightKanDiagram",
+      "parent_selected": false,
+      "expected": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.rightKanDiagram.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.TwistedHomIntervalFamilyComparison",
+      "old": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.cosliceFiberRightMappingEquivalence.eq_1",
+      "default": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.cosliceFiberRightMappingEquivalence.eq_1",
+      "parent": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.cosliceFiberRightMappingEquivalence",
+      "parent_selected": false,
+      "expected": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.cosliceFiberRightMappingEquivalence.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.FrameHom.EnrichedHomYoneda",
+      "old": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.representableHomFunctor.congr_simp",
+      "default": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.representableHomFunctor.congr_simp",
+      "parent": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.representableHomFunctor",
+      "parent_selected": false,
+      "expected": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.representableHomFunctor.congr_simp",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.TwistedHomOppositeIntervalFamilyComparison",
+      "old": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowHomOppositePinchedEquivalence.eq_1",
+      "default": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowHomOppositePinchedEquivalence.eq_1",
+      "parent": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowHomOppositePinchedEquivalence",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowHomOppositePinchedEquivalence.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.TwistedHomIntervalFamilyComparison",
+      "old": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowHomPinchedEquivalence.eq_1",
+      "default": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowHomPinchedEquivalence.eq_1",
+      "parent": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowHomPinchedEquivalence",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowHomPinchedEquivalence.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.TwistedPairingCrossNaturality",
+      "old": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedPairingCross.eq_1",
+      "default": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedPairingCross.eq_1",
+      "parent": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedPairingCross",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedPairingCross.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.TwistedPairingSimplex",
+      "old": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedPairingLeftIndex.congr_simp",
+      "default": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedPairingLeftIndex.congr_simp",
+      "parent": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedPairingLeftIndex",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedPairingLeftIndex.congr_simp",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.TwistedPairingZero",
+      "old": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedPairingLeftIndex.eq_1",
+      "default": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedPairingLeftIndex.eq_1",
+      "parent": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedPairingLeftIndex",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedPairingLeftIndex.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.UnderLiftTwistedPairing",
+      "old": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedPairingNerveMap.congr_simp",
+      "default": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedPairingNerveMap.congr_simp",
+      "parent": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedPairingNerveMap",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedPairingNerveMap.congr_simp",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.TwistedPairingSimplex",
+      "old": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedPairingRightIndex.congr_simp",
+      "default": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedPairingRightIndex.congr_simp",
+      "parent": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedPairingRightIndex",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedPairingRightIndex.congr_simp",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.TwistedPairingZero",
+      "old": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedPairingRightIndex.eq_1",
+      "default": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedPairingRightIndex.eq_1",
+      "parent": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedPairingRightIndex",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedPairingRightIndex.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.TwistedPairingZero",
+      "old": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedPairingSimplex.eq_1",
+      "default": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedPairingSimplex.eq_1",
+      "parent": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedPairingSimplex",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedPairingSimplex.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.TwistedPairingSimplex",
+      "old": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedPairingSimplexMap.eq_1",
+      "default": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedPairingSimplexMap.eq_1",
+      "parent": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedPairingSimplexMap",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedPairingSimplexMap.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.TwistedPairingSimplex",
+      "old": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedPairingSimplexObj.eq_1",
+      "default": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedPairingSimplexObj.eq_1",
+      "parent": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedPairingSimplexObj",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedPairingSimplexObj.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.TwistedArrowThreeSimplexCoordinates",
+      "old": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedSquareStdEdge.congr_simp",
+      "default": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedSquareStdEdge.congr_simp",
+      "parent": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedSquareStdEdge",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedSquareStdEdge.congr_simp",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.TwistedArrowThreeSimplexCoordinates",
+      "old": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedSquareThreeSimplex.eq_1",
+      "default": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedSquareThreeSimplex.eq_1",
+      "parent": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedSquareThreeSimplex",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedSquareThreeSimplex.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.OppositeFunctorIsoWhisker",
+      "old": "SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorOppositeHomEquiv.congr_simp",
+      "default": "SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorOppositeHomEquiv.congr_simp",
+      "parent": "SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorOppositeHomEquiv",
+      "parent_selected": false,
+      "expected": "SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorOppositeHomEquiv.congr_simp",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.SimplicialLocalization.KanHammockArrowNormalization",
+      "old": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Roof.pinchedEndpointIso.congr_simp",
+      "default": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Roof.pinchedEndpointIso.congr_simp",
+      "parent": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Roof.pinchedEndpointIso",
+      "parent_selected": false,
+      "expected": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Roof.pinchedEndpointIso.congr_simp",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.SimplicialLocalization.HomAugmentation",
+      "old": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHom.functor.eq_1",
+      "default": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHom.functor.eq_1",
+      "parent": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHom.functor",
+      "parent_selected": false,
+      "expected": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHom.functor.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.SimplicialLocalization.HomAugmentation",
+      "old": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHom.map.congr_simp",
+      "default": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHom.map.congr_simp",
+      "parent": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHom.map",
+      "parent_selected": false,
+      "expected": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHom.map.congr_simp",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.SimplicialLocalization.HomAugmentation",
+      "old": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHomFunctoriality.coefficientMap.congr_simp",
+      "default": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHomFunctoriality.coefficientMap.congr_simp",
+      "parent": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHomFunctoriality.coefficientMap",
+      "parent_selected": false,
+      "expected": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHomFunctoriality.coefficientMap.congr_simp",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.SimplicialLocalization.HomAugmentation",
+      "old": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHomFunctoriality.coefficientNatTrans.eq_1",
+      "default": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHomFunctoriality.coefficientNatTrans.eq_1",
+      "parent": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHomFunctoriality.coefficientNatTrans",
+      "parent_selected": false,
+      "expected": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHomFunctoriality.coefficientNatTrans.eq_1",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.FrameHom.SourceRoofUnitNormalization",
+      "old": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.obj.congr_simp",
+      "default": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.obj.congr_simp",
+      "parent": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.obj",
+      "parent_selected": false,
+      "expected": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.obj.congr_simp",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotJointSourceOppositeAugmentation",
+      "old": "SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.FunctorIso.op.congr_simp",
+      "default": "SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.FunctorIso.op.congr_simp",
+      "parent": "SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.FunctorIso.op",
+      "parent_selected": false,
+      "expected": "SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.FunctorIso.op.congr_simp",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.OppositeFunctorIsoWhisker",
+      "old": "SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.VertexIso.op.congr_simp",
+      "default": "SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.VertexIso.op.congr_simp",
+      "parent": "SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.VertexIso.op",
+      "parent_selected": false,
+      "expected": "SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.VertexIso.op.congr_simp",
+      "source_decl_present": false
+    }
+  ],
+  "corrections": [
+    {
+      "module": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceFrameGraph",
+      "old": "SerrePositivity.EInfinity.FrameHom.frameLeftRoofNerveMap.congr_simp",
+      "default": "SerrePositivity.EInfinity.FrameHom.frameLeftRoofNerveMap.congr_simp",
+      "parent": "SerrePositivity.EInfinity.FrameHom.frameLeftRoofNerveMap",
+      "parent_selected": true,
+      "expected": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameLeftRoofNerveMap.congr_simp",
+      "source_decl_present": false
+    },
+    {
+      "module": "SerrePositivity.EInfinity.BarrattEccles.StrictDiagramTotFrameHomInfinity",
+      "old": "SerrePositivity.EInfinity.SimplicialLocalization.modelSourceFrameFamily.congr_simp",
+      "default": "SerrePositivity.EInfinity.SimplicialLocalization.modelSourceFrameFamily.congr_simp",
+      "parent": "SerrePositivity.EInfinity.SimplicialLocalization.modelSourceFrameFamily",
+      "parent_selected": true,
+      "expected": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelSourceFrameFamily.congr_simp",
+      "source_decl_present": false
+    }
+  ],
+  "foreign_private": []
+}

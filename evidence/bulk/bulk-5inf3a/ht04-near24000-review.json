@@ -1,0 +1,45 @@
+{
+  "checkpoint": "native-cover-model-naturality-checkpoint.json",
+  "verified_modules": 273,
+  "verified_lines": 22474,
+  "verified_declarations": 2228,
+  "prepared_modules": 283,
+  "prepared_lines": 23472,
+  "pending": [
+    "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineCompletedCoverSquare.lean",
+    "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineNativeCoverHomologySquares.lean",
+    "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineNativeCoverTargetUnit.lean",
+    "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineOrdinaryTotalCompatibility.lean",
+    "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineOriginalCoverHomologyIsos.lean",
+    "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineOriginalCoverOneSquare.lean",
+    "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineOriginalCoverTargetCompatibility.lean",
+    "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/AffineOriginalCoverZeroSquare.lean",
+    "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/CoefficientSingleTotalBaseChange.lean",
+    "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/Universal/CoefficientSingleTotalProjection.lean"
+  ],
+  "remaining_repair_raw": [
+    400,
+    850
+  ],
+  "remaining_repair_coefficient2": [
+    800,
+    1700
+  ],
+  "R3_raw": [
+    80,
+    150
+  ],
+  "R3_coefficient2": [
+    160,
+    300
+  ],
+  "forecast_coefficient2": [
+    24432,
+    25472
+  ],
+  "limit": 26000,
+  "main_merged": false,
+  "complete": 3,
+  "total": 6,
+  "added": 0
+}

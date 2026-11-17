@@ -20,7 +20,7 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory Limits MonoidalCategory SSet
 open SerrePositivity.InfinityCategories
-open SimplicialLocalization
+open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open scoped _root_.Simplicial
 variable (A : Type u) [CommRing A] (X Y : CAlgSimplicialCategory A)
 
@@ -28,7 +28,7 @@ variable (A : Type u) [CommRing A] (X Y : CAlgSimplicialCategory A)
 lemma cAlgNativeCoprodCocone_leg_left :
     _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.coherentCoconeLegMap (cAlgNativeCoprodCocone A X Y) _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.binaryPointLeft =
       SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge
-        (kanLocalizationStrictHom (cofibrantAlgebraRelativeCategory A)
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanLocalizationStrictHom (cofibrantAlgebraRelativeCategory A)
           (cofibrantAlgebraDKCoprodInl A X Y))).edge := by
   rw [cAlgNativeCoprodCocone, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.coherentCoconeLegMap_ofDiagramEq]
   change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.coherentCoconeLegMap
@@ -44,7 +44,7 @@ lemma cAlgNativeCoprodCocone_leg_left :
 lemma cAlgNativeCoprodCocone_leg_right :
     _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.coherentCoconeLegMap (cAlgNativeCoprodCocone A X Y) _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.binaryPointRight =
       SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge
-        (kanLocalizationStrictHom (cofibrantAlgebraRelativeCategory A)
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanLocalizationStrictHom (cofibrantAlgebraRelativeCategory A)
           (cofibrantAlgebraDKCoprodInr A X Y))).edge := by
   rw [cAlgNativeCoprodCocone, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.coherentCoconeLegMap_ofDiagramEq]
   change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.coherentCoconeLegMap
@@ -60,7 +60,7 @@ lemma cAlgNativeCoprodCocone_leg_right :
 lemma barrattEcclesCoprodWith_cocone_leg_left (x y : (CAlg_R A) _⦋0⦌) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.coherentCoconeLegMap (barrattEcclesCoprodWith_cocone A x y).val _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.binaryPointLeft =
       SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge
-        (kanLocalizationStrictHom (cofibrantAlgebraRelativeCategory A)
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanLocalizationStrictHom (cofibrantAlgebraRelativeCategory A)
           (cofibrantAlgebraDKCoprodInl A
             ((cAlgVertexEquiv A).symm x) ((cAlgVertexEquiv A).symm y)))).edge := by
   simp only [barrattEcclesCoprodWith_cocone, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.coherentCoconeLegMap_ofDiagramEq]
@@ -70,7 +70,7 @@ lemma barrattEcclesCoprodWith_cocone_leg_left (x y : (CAlg_R A) _⦋0⦌) :
 lemma barrattEcclesCoprodWith_cocone_leg_right (x y : (CAlg_R A) _⦋0⦌) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.coherentCoconeLegMap (barrattEcclesCoprodWith_cocone A x y).val _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.binaryPointRight =
       SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge
-        (kanLocalizationStrictHom (cofibrantAlgebraRelativeCategory A)
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanLocalizationStrictHom (cofibrantAlgebraRelativeCategory A)
           (cofibrantAlgebraDKCoprodInr A
             ((cAlgVertexEquiv A).symm x) ((cAlgVertexEquiv A).symm y)))).edge := by
   simp only [barrattEcclesCoprodWith_cocone, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.coherentCoconeLegMap_ofDiagramEq]

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.CarrierFramedLimitComparison
-public import SerrePositivity.EInfinity.HomotopyWeight.FrameConeClasses
+public import SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.FrameConeClasses
 
 /-!
 # 通常の錐が与える実際の右 frame の錐の類
@@ -23,7 +23,7 @@ universe u
 
 namespace SerrePositivity.EInfinity.BarrattEccles
 
-open CategoryTheory Limits HomotopicalAlgebra Opposite
+open CategoryTheory Limits _root_.HomotopicalAlgebra Opposite
 open SerrePositivity.DifferentialGraded
 open SerrePositivity.DiagramModel
 
@@ -36,8 +36,8 @@ variable (A : Type u) [CommRing A] (K : Type u) [SmallCategory K]
 def carrierFramedLimitConeClass (F : K ⥤ (operad A).Algebra) (c : Cone ((Diagram.forget A K).obj
   F)) :
     SSet.π₀ ((carrierFramedLimitConeSpace A K c.pt).obj F) :=
-  HomotopyWeight.coneClass Kᵒᵖᵒᵖ (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K)
-    (carrierStrictConeWeightedFamily A K F (HomotopyWeight.weight K) c ≫
+  _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.coneClass Kᵒᵖᵒᵖ (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.framedLimitWeight K)
+    (carrierStrictConeWeightedFamily A K F (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K) c ≫
       (FrameWeightRealization.hom Kᵒᵖ (carrierRightFrameDiagram A K F)).map
         ((carrierFramedLimitProbeComparison A).app c.pt).op)
 
@@ -50,8 +50,8 @@ lemma carrierFramedLimitConeClass_eq_mapClass (F : K ⥤ (operad A).Algebra)
     carrierFramedLimitConeClass A K F c =
       carrierFramedLimitMapClass A K F (carrierConeToFramedLimit A K F c) := by
   let adj := FrameWeightRealization.adjunction Kᵒᵖ (carrierRightFrameDiagram A K F)
-  let W := SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K
-  let s := carrierStrictConeWeightedFamily A K F (HomotopyWeight.weight K) c
+  let W := _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.framedLimitWeight K
+  let s := carrierStrictConeWeightedFamily A K F (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K) c
   let h := (adj.homEquiv W (op c.pt)).symm s
   let p := (carrierFramedLimitProbeComparison A).app c.pt
   have hc : (carrierConeToFramedLimit A K F c) ≫
@@ -62,12 +62,12 @@ lemma carrierFramedLimitConeClass_eq_mapClass (F : K ⥤ (operad A).Algebra)
   have hn := adj.homEquiv_naturality_right h p.op
   have hs : adj.homEquiv W (op c.pt) h = s :=
     (adj.homEquiv W (op c.pt)).apply_symm_apply s
-  change HomotopyWeight.coneClass Kᵒᵖᵒᵖ W (s ≫ _ ) =
-    HomotopyWeight.coneClass Kᵒᵖᵒᵖ W
+  change _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.coneClass Kᵒᵖᵒᵖ W (s ≫ _ ) =
+    _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.coneClass Kᵒᵖᵒᵖ W
       (adj.homEquiv W (op (carrierFramedLimitProbe A c.pt))
         (p ≫ carrierConeToFramedLimit A K F c ≫ (framedLimitCarrierIso A K F).hom).op)
   rw [hc]
-  exact congrArg (HomotopyWeight.coneClass Kᵒᵖᵒᵖ W)
+  exact congrArg (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.coneClass Kᵒᵖᵒᵖ W)
     ((congrArg (fun z => z ≫ ((FrameWeightRealization.hom Kᵒᵖ (carrierRightFrameDiagram A K
       F)).map p.op)) hs).symm.trans hn.symm)
 

@@ -3,7 +3,7 @@ module
 public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.EInfinity.BarrattEccles.Modules.StrictRawModules
 public import SerrePositivity.EInfinity.Modules.DGResolutionAdjunction
-public import SerrePositivity.EInfinity.SimplicialLocalization.LocalizationNerveSource
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.LocalizationNerveSource
 public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.DGModuleResolutionLocalization
 public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.NerveInclusion
 
@@ -24,7 +24,7 @@ namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded
 open SerrePositivity.EInfinity.Modules
-open SerrePositivity.EInfinity.SimplicialLocalization
+open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.InfinityCategories.Project.DerivedCategories
 open SerrePositivity.InfinityCategories.HA.Section7_1_1
 open SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories
@@ -115,7 +115,7 @@ lemma strictRawModuleSource_vertex (X : (operad A).Algebra)
 方針：同じ閉零射の dg 辺と指定半自由分解の反転の法則を使う。
 規約：通常 nerve の局所化普遍性は主張しない。使われ方：M10 の固定底の比較。 -/
 lemma strictRawModuleSource_inverts (X : (operad A).Algebra) :
-    InvertsEdges (strictRawModuleSource A X) (weakNerveEdges (strictRawModuleRelativeCategory A X)) := by
+    InvertsEdges (strictRawModuleSource A X) (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges (strictRawModuleRelativeCategory A X)) := by
   intro s hs
   obtain ⟨M, N, f, hf, rfl⟩ := hs
   let D := dgAlgebraCategory A ((assocForget A).obj X)

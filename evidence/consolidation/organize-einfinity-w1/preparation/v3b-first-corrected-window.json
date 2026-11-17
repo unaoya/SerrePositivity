@@ -1,0 +1,32 @@
+{
+  "command": [
+    "python3",
+    "formalization-plans/stage-ii/organize-einfinity-w1/preparation-code/v3b_slot.py",
+    "--before-root",
+    "/private/tmp/oe-w1-before-30ae8948f",
+    "--after-root",
+    "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68",
+    "--modules",
+    "/private/tmp/oe-w1-reference-candidates/preservation-modules-augmented.json",
+    "--name-map",
+    "/private/tmp/oe-w1-preservation-complete-parent-rules/comparison-name-map.json",
+    "--module-plan",
+    "/private/tmp/oe-w1-preservation-complete-parent-rules/preservation-module-plan.json",
+    "--snapshot",
+    "/private/tmp/bulk-w1-b2/private-snapshot/snapshot",
+    "--output",
+    "/private/tmp/oe-w1-v3b-complete-parent-rules",
+    "--budget",
+    "1600"
+  ],
+  "cwd": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68",
+  "rc": 0,
+  "reason": null,
+  "seconds": 1092.0322156250477,
+  "peak_process_tree_rss_bytes": 15168159744,
+  "peak_lean_or_snapshot_jobs": 2,
+  "threads": "1",
+  "heavy_job_limit": 2,
+  "started_local": "2026-11-17T03:15:47.724233",
+  "finished_local": "2026-11-17T03:33:59.775150"
+}
