@@ -1,0 +1,54 @@
+{
+ "directory": "/Users/sugakubunka/serre-evidence/inf-supply/r04-middle-1118",
+ "commit": "",
+ "made_by": "r04-middle-1118/verify.py",
+ "note": "",
+ "files": [
+  {
+   "path": "audit-after.lean",
+   "sha256": "3123e9f78dbbc4e261a99b577b55f1f81421435f6e755bd1590b7fc7e37fdc32",
+   "bytes": 2258
+  },
+  {
+   "path": "audit-after.log",
+   "sha256": "021c96d4d6dbce25447c4f1432c8b5ab30fd1a62249027dd248e842e7278689a",
+   "bytes": 23
+  },
+  {
+   "path": "build-1.log",
+   "sha256": "4bb39088222280e291afe2bf024a69dfa825346109935a6578798d412495b13a",
+   "bytes": 238166
+  },
+  {
+   "path": "catalog-after.json",
+   "sha256": "7fbf665ff8749374bc9eca05fe0ece25c7f6dc91b66deeb241aacf60c4aa7975",
+   "bytes": 1181
+  },
+  {
+   "path": "catalog-after.lean",
+   "sha256": "0cb66e367e4bd2bab9eb1f13729395ff88ff03c72b805e9cf35dc042a164c8f4",
+   "bytes": 1608
+  },
+  {
+   "path": "catalog-after.log",
+   "sha256": "d53a47f7db4f32b514dbd38141d140d2a6f5aae56451eb1d53ccbcdf5e082a83",
+   "bytes": 61
+  },
+  {
+   "path": "files.json",
+   "sha256": "4efbc922a6fffe9e495883bd0b103d989091fc97ef234b562532296fb6e931ac",
+   "bytes": 280
+  },
+  {
+   "path": "target-audit-result.json",
+   "sha256": "a0e1e4562a5de160f22f60daf39408e3255cd7f8671ba7890f82bbeae9143e89",
+   "bytes": 725
+  },
+  {
+   "path": "verify.py",
+   "sha256": "aac77d3914a2be1ad5da6fc6abeb8e72cab44a3599b4fe7eda483cd17ca83b90",
+   "bytes": 4013
+  }
+ ],
+ "total_bytes": 248315
+}

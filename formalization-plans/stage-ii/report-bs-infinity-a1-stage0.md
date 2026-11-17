@@ -10137,3 +10137,111 @@ build-3で対象ビルド5,611 jobs・小監査1モジュール1宣言が成功�
 素50〜110・補正100〜220に対し実測52行。累計26,781＋52＝26,833。次のR04の補正上端800を足して27,633で29,000以内なので着手する。S7・R2・R3、旧R2の4本、mainは触っていない。
 
 一覧：済み 36／全体 52（うち追加 17、別停止点 2）。
+
+### R04の中間極限の消去（11-18 未明）
+
+R04の既存構成の合成則の証明分割（各200行未満、署名数は増やさない）。chooseの選び方を変えず、元の三因子と全極限錐を使う。二つ目のE・Fのquasicategory性は、元のconstructorと同じquasicategory_of_innerFibrationで入力から出るもので、R04へ仮定を足さない。
+
+```lean
+lemma iso_span_middle {C : Type u} [Category.{v} C] {x y s₁ s₂ t₁ t₂ : C}
+    (a₁ : x ≅ s₁) (a₂ : x ≅ s₂) (m₁ : s₁ ≅ t₁) (m₂ : s₂ ≅ t₂)
+    (c₁ : y ≅ t₁) (c₂ : y ≅ t₂) (s : s₁ ≅ s₂) (t : t₁ ≅ t₂)
+    (ha : a₁ ≪≫ s = a₂) (hm : s ≪≫ m₂ = m₁ ≪≫ t) (hc : c₁ ≪≫ t = c₂) :
+    a₁ ≪≫ m₁ ≪≫ c₁.symm = a₂ ≪≫ m₂ ≪≫ c₂.symm
+```
+
+```lean
+lemma limitVertexIsoOfOverEquivalence_span_middle
+    {A B C D K X : SSet.{u}} [Quasicategory A] [Quasicategory B]
+    [Quasicategory C] [Quasicategory D] [Quasicategory X]
+    (a : A ⟶ B) (b : B ⟶ C) (c : D ⟶ C)
+    (ha : IsQCatEquivalence a) (hb : IsQCatEquivalence b) (hc : IsQCatEquivalence c)
+    {p : A ⟶ K} {q : B ⟶ K} {r : C ⟶ K} {s : D ⟶ K}
+    (hwa : a ≫ q = p) (hwb : b ≫ r = q) (hwc : c ≫ r = s) (O : K ⟶ X)
+    (c₀ : JoinCone (p ≫ O)) (d₀ : JoinCone (s ≫ O))
+    (s₁ s₂ : JoinCone (q ≫ O)) (t₁ t₂ : JoinCone (r ≫ O))
+    (hc₀ : IsLimitCone c₀) (hd₀ : IsLimitCone d₀)
+    (hs₁ : IsLimitCone s₁) (hs₂ : IsLimitCone s₂)
+    (ht₁ : IsLimitCone t₁) (ht₂ : IsLimitCone t₂) :
+    limitVertexIsoOfOverEquivalence a ha hwa O c₀ s₁ hc₀ hs₁ ≪≫
+      limitVertexIsoOfOverEquivalence b hb hwb O s₁ t₁ hs₁ ht₁ ≪≫
+      (limitVertexIsoOfOverEquivalence c hc hwc O d₀ t₁ hd₀ ht₁).symm =
+    limitVertexIsoOfOverEquivalence a ha hwa O c₀ s₂ hc₀ hs₂ ≪≫
+      limitVertexIsoOfOverEquivalence b hb hwb O s₂ t₂ hs₂ ht₂ ≪≫
+      (limitVertexIsoOfOverEquivalence c hc hwc O d₀ t₂ hd₀ ht₂).symm
+```
+
+```lean
+lemma limitVertexIsoOfLeftStraighteningIso_eq_middle
+    {E F B X : SSet.{u}} [Quasicategory E] [Quasicategory F]
+    [Quasicategory B] [Quasicategory X]
+    (p : E ⟶ B) (q : F ⟶ B) [LeftFibration p] [LeftFibration q]
+    (e : FunctorIso (leftStraighteningInfinityDiagram p) (leftStraighteningInfinityDiagram q))
+    (O : B ⟶ X) (c : JoinCone (p ≫ O)) (d : JoinCone (q ≫ O))
+    (hc : IsLimitCone c) (hd : IsLimitCone d)
+    (s : JoinCone (smallLeftUnstraighteningProjection (leftStraighteningInfinityDiagram p) ≫ O))
+    (t : JoinCone (smallLeftUnstraighteningProjection (leftStraighteningInfinityDiagram q) ≫ O))
+    (hs : IsLimitCone s) (ht : IsLimitCone t) :
+    limitVertexIsoOfLeftStraighteningIso p q e O c d hc hd =
+      limitVertexIsoOfOverEquivalence (leftStraighteningInfinityReconstruction p)
+        (leftStraighteningInfinityReconstruction_isPrecompositionEquivalence p).isQCatEquivalence
+        (leftStraighteningInfinityReconstruction_projection p) O c s hc hs ≪≫
+      limitVertexIsoOfOverEquivalence (smallLeftUnstraighteningComparisonOfFunctorIso e)
+        (smallLeftUnstraighteningComparisonOfFunctorIso_isPrecompositionEquivalence e).isQCatEquivalence
+        (smallLeftUnstraighteningComparisonOfFunctorIso_projection e) O s t hs ht ≪≫
+      (limitVertexIsoOfOverEquivalence (leftStraighteningInfinityReconstruction q)
+        (leftStraighteningInfinityReconstruction_isPrecompositionEquivalence q).isQCatEquivalence
+        (leftStraighteningInfinityReconstruction_projection q) O d t hd ht).symm
+```
+
+- `limitVertexIsoOfLeftStraighteningIso` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningLimitVertex.lean:27
+- `limitVertexIso_hom_comp_overEquivalence` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/OverEquivalenceLimitComposition.lean:53
+- `limitVertexIsoOfOverEquivalence_hom_comp` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/OverEquivalenceLimitComposition.lean:68
+
+依存は上の既存の合成則のみ。原典：HTT §1.2.13・5.1.5.6の既存構成の法則、Kerodon §7.1 Tag 02K2・§5.6 Tag 028Tの特殊化。二本の素の見込み180〜230行、補正360〜460行はR04全体の素250〜400・補正500〜800に含む。今回の着手判定は26,833＋800＝27,633で29,000以内。
+一覧：済み 36／全体 52（うち追加 17、別停止点 2）。
+
+R04の復元・指定底変換の照合の短い証明分割（各200行未満）。P3-Eと、既存の前後合成の交換則を同じ指定eへ適用する：
+
+```lean
+lemma iso_conjugation_square {𝒞 : Type u} [Category.{v} 𝒞]
+    {a b c d r s : 𝒞} (bf : a ≅ b) (bg : c ≅ d) (z : a ≅ c)
+    (ef : b ≅ r) (eg : d ≅ s) (f : a ≅ r) (g : c ≅ s) (k : r ≅ s)
+    (hf : bf ≪≫ ef = f) (hg : bg ≪≫ eg = g) (hn : z ≪≫ g = f ≪≫ k) :
+    (bf.symm ≪≫ z ≪≫ bg) ≪≫ eg = ef ≪≫ k
+```
+
+```lean
+lemma leftPullbackClassificationIso_representation_naturality
+    {E B K : SSet.{u}} [Quasicategory B] [Quasicategory K]
+    (p : E ⟶ B) [LeftFibration p] {f g : K ⟶ B} (e : FunctorIso f g)
+    (R : LeftTransportRepresentation ((SSet.uliftFunctor.{u+1,u}).map p)) :
+    leftPullbackClassificationIso p e ≪≫
+      leftStraighteningInfinityDiagram_representationIso (pullback.snd p g) (R.nativeRestrict g) =
+    leftStraighteningInfinityDiagram_representationIso (pullback.snd p f) (R.nativeRestrict f) ≪≫
+      (functorIso_ulift.{u,u+1} e).postcomp R.diagram
+```
+
+- `leftPullbackClassificationIso` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftPullbackLimitTransport.lean:32
+- `leftStraighteningInfinityDiagram_representationIso_baseChange` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningRepresentationBaseChangeLaw.lean:33
+- `functorIso_whisker_exchange` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/TheInfinityCategoryQC/FunctorIsoWhiskerExchange.lean:31
+
+原典はHTT §3.3.2・Kerodon Tag 028Tの既存構成の法則。この一本は素50〜80・補正100〜160行をR04全体の見込みに含める。分類同型・表現比較は元のものを使い、chooseや仮定を追加しない。
+一覧：済み 36／全体 52（うち追加 17、別停止点 2）。
+
+### 11-18 未明：R04の三本の証明分割を検証（本体は継続）
+
+中間の二極限の選択を消去する二本と、指定引き戻し分類同型を同じ表現上の作用へ戻す一本が、同時の対象ビルド5,634 jobs・小監査3モジュール6宣言を通過（標準三公理のみ、開始・終了・記録時にソースSHA一致）。
+
+|補助ファイル|最後の素の見込み|実測|
+|---|---:|---:|
+|OverEquivalenceLimitSpan＋LeftStraighteningLimitVertexComputations|180〜230|148|
+|LeftPullbackRepresentationComparison|50〜80|70|
+
+148＋70＝218行を新規計上。累計26,833＋218＝27,051。R04の本体を済みにはしていない。残る元の余単位に沿う輸送錐・apexの比較とeqToHomの正規化は、登録済みR04の型のまま進める。現段階では安全側に元の補正上端800を残りにも保持し、27,051＋800＝27,851で29,000以内。218行の二重計上はしない。
+
+CH067の選択条件を変えていない。新しい計算補助の証明内のs₀・t₀は、元のHasLimitの同じ命題の証明から選ぶ元の中間極限で、proof irrelevanceを通して元のconstructorの値へ展開し、既存の合成則で消去する。別の弱い存在命題から指定比較を選び直していない。mainの既存本文・元のconstructor・公開の型・仮定・計算上限の変更はない。
+
+この時点は正式な停止点ではない。次はR04本体の指定余単位とapexの照合を続ける。R05以降・R16/R17は未完。S7・R2・R3は再開せず、旧R2の未追跡4本は触っていない。検証済みの三本をコミットし、作業木の未追跡はその4本だけになる。mainは取り込んでいない。
+
+一覧：済み 36／全体 52（うち追加 17、別停止点 2）。
