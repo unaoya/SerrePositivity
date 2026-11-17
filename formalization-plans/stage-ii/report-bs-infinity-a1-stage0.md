@@ -6639,3 +6639,35 @@ source_restriction・weighted_restrictionで端点だけを移す。
 次は第2項：同じ表現空間のpointed比較と指定したunstraighteningの射作用を、
 元の復元射の相対同型へ接続する。
 一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+
+### 残り第2項の証明分割：同じ表現の比較の実現（11-17）
+
+新規TransportRepresentationUnstraighteningComparison.lean（159行）。
+第2項の証明分割として、既存のpointed比較の射影、指定辺への代表変更、
+既存の全族unstraightening比較の頂点評価を接続した（新しい数学的目標の追加なし）。
+公開の最終第2項はまだ未完。既存の本文・型・仮定、choose表は変更していない。
+
+検証した公開の証明分割の型（既存namespaceをopenした表記）：
+```lean
+{E B : SSet.{u + 1}} {p : E ⟶ B} [LeftFibration p]
+(R S : LeftTransportRepresentation p)
+(h : VertexIso (transportWitnessVertex R) (transportWitnessVertex S)) :
+let e := SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy
+  (functorHomHomotopy (R.diagramIso S h).hom))
+let g := leftUnstraighteningMappingVertexMap R.diagram S.diagram (intervalMappingVertexOfEdge e)
+∃ hf : (R.comparison ≫ g.val) ≫ leftUnstraighteningProjection S.diagram = p,
+  Nonempty (VertexIso
+    (relativeFunctorVertex (leftUnstraighteningProjection S.diagram) p (R.comparison ≫ g.val) hf)
+    (relativeFunctorVertex (leftUnstraighteningProjection S.diagram) p S.comparison S.over_base))
+```
+二つのprivateな計算は、pointedIsoの射影を同じdiagramIsoへ移す法則と、
+その同じ辺を底に持つpointed prismの回収。小さい底専用のsmallUnstraighteningHomEdgeを
+一般のBに適用しようとした検証ではisDefEqが200,000 heartbeatsに達したため、
+その箇所だけを一般のfunctorHomHomotopyの辺の代表にした。上限は上げていない。
+
+対象ビルドexit 0、現環境からの小監査4宣言（privateを含む）は標準三公理のみ、exit 0。
+記録：/tmp/is-w1/s8-reconstruction-2/production/{verify.log,target-audit-result.json}。
+検証済み累計21,726行、新規341モジュール＋承認された既存3ファイルの差分。
+次は同じ射作用の合成則と宇宙の縮小を使い、元の第2項へ渡す。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
