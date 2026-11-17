@@ -6701,3 +6701,33 @@ Nonempty (VertexIso
 検証済み累計21,817行、新規342モジュール＋承認された既存3ファイルの差分。
 元の第2項は未完、一覧の外の補題・chooseの置換なし、計算上限は不変。
 一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+
+### 残り第2項の証明分割：元の小さい宇宙への降下（11-17）
+
+新規SmallTransportRepresentationComparison.lean（120行）。
+同じ相対内部Homの宇宙移送と、元の指定縮小同型を組み合わせ、
+二つの同じ実射の比較を元の相対写像空間へ反映した。
+前節のOver表示の問題は同じ同型の始域・標的の型を明示して解消。
+既存のKan性を局所に使うだけで、型に新しい仮定は足さない。
+
+型（既存namespaceをopenした表記）：
+```lean
+{E B : SSet.{u}} (p : E ⟶ B) [LeftFibration p]
+(R S : LeftTransportRepresentation ((SSet.uliftFunctor.{u + 1, u}).map p))
+(h : VertexIso (transportWitnessVertex R) (transportWitnessVertex S)) :
+let a := (R.diagramIso S h).hom
+let f := smallLeftUnstraighteningLift R.diagram R.comparison ≫ smallUnstraighteningFunctorHom a
+∃ hf : f ≫ smallLeftUnstraighteningProjection S.diagram = p,
+  Nonempty (VertexIso
+    (relativeFunctorVertex (smallLeftUnstraighteningProjection S.diagram) p f hf)
+    (relativeFunctorVertex (smallLeftUnstraighteningProjection S.diagram) p
+      (smallLeftUnstraighteningLift S.diagram S.comparison)
+      (smallLeftUnstraighteningLift_projection S.diagram p S.comparison S.over_base)))
+```
+対象ビルドexit 0、小監査1宣言は標準三公理のみ、exit 0。
+証拠：/tmp/is-w1/s8-reconstruction-2/small-production/{verify.log,target-audit-result.json}。
+検証済み累計21,937行、新規343モジュール＋承認された既存3ファイルの差分。
+第2項の証明分割で、数学的な一覧の追加・chooseの置換はない。
+元の復元射の第2項全体はまだ未完。main・S7・R2・R3は触れていない。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
