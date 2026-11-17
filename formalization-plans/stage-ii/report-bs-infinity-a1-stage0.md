@@ -10705,3 +10705,28 @@ Coverageの主な不足はR16.4〜6：基底細分の指定極限を用いて錐
 追加7,460行・累計35,681行の承認で再開。R04.1は実測84行（素70〜120、補正140〜240）、累計28,305行。指定 a の同値性を相対同型の包含と二対三で反映した。対象ビルド5,480 jobs、元の完全な型への代入、小監査2宣言が成功。標準三公理のみ。文献属性付き。証跡は evidence/inf-supply/r04-1-1118/manifest.json。
 
 一覧：済み 40／全体 93（うち追加 58）。
+
+### 11-18：R04.2の宇宙下降に必要な終点の等式
+
+R04.1を `29069fa60` にコミットした。84行（素70〜120、補正140〜240）、累計28,305行。文献属性付きで対象ビルド・完全な型への代入・小監査（2宣言、標準三公理のみ）が成功。元の14主署名は未完（今回の42証明単位のうち1済み・41未完）。R16・R17は別停止点。
+
+R04.2の紙では、任意の `a : pullback p f ⟶ pullback p g` と
+
+```lean
+hL : HEq (L.postcomp (U.map p))
+  ((functorIso_ulift.{u, u + 1} e).precomp (U.map (pullback.snd p f)))
+```
+
+を受ける。宇宙下降を端点の輸送と可換にするには、このHEqの両辺の始点・終点を等式でそろえる。始点は pullback.condition。終点の式は次の通り。
+
+```lean
+(a ≫ pullback.fst p g) ≫ p = pullback.snd p f ≫ g
+```
+
+pullback.conditionと結合則の後には `(a ≫ pullback.snd p g) ≫ g = pullback.snd p f ≫ g` が残る。既存の端点輸送の補題 `functorIso_hom_arrow_of_heq`（SerrePositivity/InfinityCategories/HA/StableInfinityCategories/FunctorIsoArrowTransport.lean:18）は、HEqに加えて両端の等式を明示的に受ける。この経路で使う終点の等式が台帳の仮定にはなく、HEqだけから射の端点を復元する既存の法則も見つからなかった。
+
+修正案はR04.2の `a` の直後に `(ha : a ≫ pullback.snd p g = pullback.snd p f)` を足すこと。呼び出し元 `exists_nativePullbackRepresentationArrowComparison` は、同じa・L・hLと一緒にhaを返している。このため最終R04の型・仮定は現行のままで組み立てられる見込み。台帳のR04.2の型は変更せず、この箇所で止める。
+
+宇宙下降の試作は既存の uliftFunctorSpaceIso.inv と downFunctor の合成である。共有鍵を待つ間に端点の不足を特定したため、試作の整理券を取り消した。試作は未検証であり、`~/serre-evidence/inf-supply/r04-2-1118/NativePullbackLiftDescent-draft.lean` に保持した。R04.2以降は未計上。旧R2の未追跡4本は変更せず、今回の検証済みコードと報告はコミットする。main は取り込み完了の連絡待ち。
+
+一覧：済み 40／全体 93（うち追加 58）。
