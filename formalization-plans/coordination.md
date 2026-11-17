@@ -38,6 +38,7 @@
    - **掃除（11-02 決定）**：`lake cache clean` は空きが 150 GB を切ったときだけ、全ビルドのない時刻に、全 worktree が温まった状態で行い、直後に main で `lake build` を走らせて現行の成果物を登録し直す。定期的な掃除はしない（11-02：22 GB・331,250 本、空き 455 GB）。
 4d. **verify が時間のガードで止まったとき（11-17）**：全監査が成功していて sorry の閉包の段だけが残った場合は、同じ HEAD で `lake env lean scripts/refactor/audit_sorries.lean` を単独で確かめ、二つのログを報告に並べて PASS として扱う（gate は機械では non-gate になる）。昼に長い枠を取り直さない。
 4e. **昼の取り込みは短い塊で（11-17、ユーザー承認 B）**：調整役の取り込みは昼でも、鍵（coord）を短い塊で取り直して行ってよい。計測は監査 1 本ずつ、ビルドは `gtimeout` で 10 分の塊、監査は一束 12 分程度（並列 6・メモリ 40 GB）の束に分け、sorry の閉包は単独。同じ HEAD で全監査の束と sorry の閉包がすべて通れば verify PASS として扱う（4d と同じ合成の判定。道具は調整役の scratchpad の `day_merge.py`）。
+4f. **本体の全体を import するプロセスは、マシン全体で同時に二本まで（11-17 夜）**：root を import する Lean のプロセスは一本で十数万のファイルを開く。三本以上が重なると Mac 全体の上限（kern.maxfiles 491,520）に当たり、他のレーンの鍵待ち・ビルド・監査が `Too many open files in system` で落ちる（11-17 23:14）。夜の二つの枠の片方が使われている間は、採取などの並列の読み手を一本にする。調整役の重い単発の計測は、bulk の採取が走っていないときに流す。
 4c. **取り込みはまとめて（11-17）**：複数のレーンの停止点が近いときは、同じ夜に取り込んで root＋verify を一回にする（`stage-ii/build-cost-plan.md` B5）。
 4b. **main の作業木の規則（11-04 決定、事故の後）**：main の作業木では Lean の編集もビルドもしない（取り込みと温めは Claude だけ）。main に直接コミットするセッション（BS の記録など）は、必ず `git commit --only <自分のファイル>` で、`git add -A`・`git commit -a` を使わない。11-04 に B4 の未コミットの削除（`Pair/Tower.lean`）が BS の記録コミット 38e6d889a に巻き込まれ、babef8b23 で復元した。
 4a. **小さなビルドの規則（11-02 19:40 決定）**：変更したファイルと直接の importer までの小さなビルド（数百本以下）は、**下流ビルド・verify が走っていなければ合図なしで行ってよい**。確認は `ps -axo command= | grep "[l]ake build"` が空であることと、`scripts/refactor/with_build_lock.sh --wait 0 -- lake build …` で鍵が取れること（取れなければ待つ）。下流・verify の時間帯（暦 §3）には行わない。全ビルド（下流・verify）は従来どおり暦と合図。
@@ -129,6 +130,8 @@
 **規則**：作業木はレーンごとに一つ、名前はレーン（`SerrePositivity-<レーン>`）。枝は main に入れたら消す。保存比較の「前」の木（`/private/tmp`）は段の終わりに消す。取り込まない枝はタグ（`archive/<枝>-<日付>`）を打ってから消す。`/private/tmp/oe-w1-before-30ae8948f` は ③-b の OE-W1 段 1 の保存比較が終わるまで残す。
 
 **⑧ 引用文献（11-17 新設、ユーザー決定）**：本論文が引用する文献の対応表とブループリント。最初は CLMST（指示書 `stage-ii/cited/clmst-coverage.md`、worktree `SerrePositivity-cited`、枝 `research/cited-coverage`）。紙だけでビルドなし。
+
+**⑥ スキーム論は閉じた（11-18 0 時）**：2g-2（89 署名）・2h（16）・2i（71、G-A6-1 の組み立て `cech_exact_of_arcCover_perfect`、`AlgebraicGeometry/ArcRouteB/`）を main に入れた（1fb2c6dcc・72bc75e8b）。作業木と枝は削除。BS17 Thm 4.1 の残りの一般性は作らない（BS17 の対応表で partial）。drafts の G-A6-1 の引用の置き換えは BS の整理のレーンで。
 
 **⑦ IC-W1（11-17 開始）**：worktree `SerrePositivity-ic`、枝 `refactor/infinity-consolidation`（今夜取り込む `merge/night-2026-11-17` から）。指示書 `stage-ii/consolidation/infinity-consolidation-w1.md`。IC-1 の段 0（紙）から。Lean の適用は夜。
 

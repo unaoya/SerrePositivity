@@ -1,0 +1,753 @@
+{
+  "status": "verified",
+  "base": "1fb2c6dcc",
+  "signature_count": 71,
+  "original_signatures": 66,
+  "added_laws": [
+    "L01",
+    "L02",
+    "L03",
+    "L04",
+    "L05"
+  ],
+  "original_signature_types_unchanged": true,
+  "native_modules": [
+    {
+      "module": "SerrePositivity.AlgebraicGeometry.ArcRouteB.AicProductArc",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/AicProductArc.lean",
+      "lines": 51,
+      "sha256": "1ed9fec33f9ea7a63a96eac2f1df701988853dd628d07d26bb9f229d1a5eab8e"
+    },
+    {
+      "module": "SerrePositivity.AlgebraicGeometry.ArcRouteB.AicValuationArc",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/AicValuationArc.lean",
+      "lines": 50,
+      "sha256": "94c03cbd3bbe5de2a5940b148b8cd0cd9280ed95781a23100fa3b47fa751eb2d"
+    },
+    {
+      "module": "SerrePositivity.AlgebraicGeometry.ArcRouteB.ArcCoverCech",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/ArcCoverCech.lean",
+      "lines": 87,
+      "sha256": "9c0177c8ea7a82b5e716c759052ab57b6b2c338449e441f1b7189ecba87c1832"
+    },
+    {
+      "module": "SerrePositivity.AlgebraicGeometry.ArcRouteB.BaseChangeArrowComparison",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/BaseChangeArrowComparison.lean",
+      "lines": 29,
+      "sha256": "a4061a105a59da2812839157875d1a297f947ec69b4dafa4ccac57abfa78b312"
+    },
+    {
+      "module": "SerrePositivity.AlgebraicGeometry.ArcRouteB.BaseChangeComparison",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/BaseChangeComparison.lean",
+      "lines": 49,
+      "sha256": "ca074defa150340b001bba9cb495ecdf0c738ad49d83151f0beaacc552774f04"
+    },
+    {
+      "module": "SerrePositivity.AlgebraicGeometry.ArcRouteB.CoverLaws",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/CoverLaws.lean",
+      "lines": 66,
+      "sha256": "fe62b24e65d51a757317c1d8d21be1e9bcde2f0ca59c8533db539c946cf4b9b8"
+    },
+    {
+      "module": "SerrePositivity.AlgebraicGeometry.ArcRouteB.Definitions",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/Definitions.lean",
+      "lines": 90,
+      "sha256": "9246c8de6e11c2bab4c6754491fb577ccbbdfaa39c06090d5bc187ba53e24107"
+    },
+    {
+      "module": "SerrePositivity.AlgebraicGeometry.ArcRouteB.EndpointSections",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/EndpointSections.lean",
+      "lines": 95,
+      "sha256": "c33f2302303f512c31dc973e09d0f0a41872d33f0c2ddff35612ef0a214598ba"
+    },
+    {
+      "module": "SerrePositivity.AlgebraicGeometry.ArcRouteB.FilteredUniversalCech",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/FilteredUniversalCech.lean",
+      "lines": 56,
+      "sha256": "45be7a2a4af15e640af82fa0d754d73c4d15590bc3e4d119e7d558ef229d9e4e"
+    },
+    {
+      "module": "SerrePositivity.AlgebraicGeometry.ArcRouteB.FpResiduePoint",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/FpResiduePoint.lean",
+      "lines": 34,
+      "sha256": "545d65a4914d0bf098ee0ad7f14e7e5b22dcb9d6874dab3c272f8aa3801c1aa5"
+    },
+    {
+      "module": "SerrePositivity.AlgebraicGeometry.ArcRouteB.FrobeniusPerfect",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/FrobeniusPerfect.lean",
+      "lines": 97,
+      "sha256": "db8d2e2af4570103ede534b75f40af6005ed5abe00f5cd7676eaef3a8494ec5e"
+    },
+    {
+      "module": "SerrePositivity.AlgebraicGeometry.ArcRouteB.IntervalCoefficientPerfect",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/IntervalCoefficientPerfect.lean",
+      "lines": 56,
+      "sha256": "2bc93fbe2a6ed69557bce06f115898f154808f5ec0d8632e6a738bf223901784"
+    },
+    {
+      "module": "SerrePositivity.AlgebraicGeometry.ArcRouteB.IntervalGluing",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/IntervalGluing.lean",
+      "lines": 94,
+      "sha256": "5c21a6572773bf92ae973382efcb51d18673a07743fdc05e858586eb4d00d44a"
+    },
+    {
+      "module": "SerrePositivity.AlgebraicGeometry.ArcRouteB.IntervalPoints",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/IntervalPoints.lean",
+      "lines": 83,
+      "sha256": "becc48ded83ae8ea6256f52d70e82cb1bfee13d4adec1a45444c2036d7fa013f"
+    },
+    {
+      "module": "SerrePositivity.AlgebraicGeometry.ArcRouteB.IntervalRestrictions",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/IntervalRestrictions.lean",
+      "lines": 61,
+      "sha256": "0c237947f9826d9026a6d1c8312469c2936e91f7a63f8dfa6e6876275fd25fd7"
+    },
+    {
+      "module": "SerrePositivity.AlgebraicGeometry.ArcRouteB.IntervalSpectrum",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/IntervalSpectrum.lean",
+      "lines": 98,
+      "sha256": "3b18e194c2456e6b7ee463dad25fb1af7b0ae6707e705d3045b7b2bc746a1e54"
+    },
+    {
+      "module": "SerrePositivity.AlgebraicGeometry.ArcRouteB.IntervalTensorComparison",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/IntervalTensorComparison.lean",
+      "lines": 123,
+      "sha256": "5a0b004d009ff6adae65733ec3c1f4d529cb5c8217a95cdb8dfefacdbe608bcf"
+    },
+    {
+      "module": "SerrePositivity.AlgebraicGeometry.ArcRouteB.LocalExtensions",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/LocalExtensions.lean",
+      "lines": 84,
+      "sha256": "0cc08b2fac291b8043291537cbdf53b4c003d9978fe00fcf1536b1b22d55e0a2"
+    },
+    {
+      "module": "SerrePositivity.AlgebraicGeometry.ArcRouteB.ModelUnder",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/ModelUnder.lean",
+      "lines": 56,
+      "sha256": "3dacd8ef0f52406636d7444393baf9d8800d4f83348bc63ebb3eba8d2a7ce1f6"
+    },
+    {
+      "module": "SerrePositivity.AlgebraicGeometry.ArcRouteB.OverlapCoefficientDetection",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/OverlapCoefficientDetection.lean",
+      "lines": 55,
+      "sha256": "39328e300ed097828c35e68eac28dad162e129e52fb2145d7d5f3577c5f006a0"
+    },
+    {
+      "module": "SerrePositivity.AlgebraicGeometry.ArcRouteB.OverlapComplex",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/OverlapComplex.lean",
+      "lines": 45,
+      "sha256": "4963ea3cd76876107d19a7d1897d3af0569af2c62d92ebd447227e4712b0974a"
+    },
+    {
+      "module": "SerrePositivity.AlgebraicGeometry.ArcRouteB.OverlapShortExact",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/OverlapShortExact.lean",
+      "lines": 84,
+      "sha256": "d7713eac6bd8d60296381dcb8137a727b0fb62e2dbbc1ffaafb41bc6c75e0694"
+    },
+    {
+      "module": "SerrePositivity.AlgebraicGeometry.ArcRouteB.PerfectedFpArc",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/PerfectedFpArc.lean",
+      "lines": 67,
+      "sha256": "3c4491dd383c3b216046778af93157540f4595cb4441a4cd4588917b98eebb5a"
+    },
+    {
+      "module": "SerrePositivity.AlgebraicGeometry.ArcRouteB.PerfectedModelCocone",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/PerfectedModelCocone.lean",
+      "lines": 68,
+      "sha256": "ff3975b6933c7001e19f699a31dc83417ecf7a9af720569071806a152c2c006b"
+    },
+    {
+      "module": "SerrePositivity.AlgebraicGeometry.ArcRouteB.PerfectedModelColimit",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/PerfectedModelColimit.lean",
+      "lines": 56,
+      "sha256": "9f264601cff61944c6b7243570edbd0a4d7647b8e4404d1bc078d73efc0f292b"
+    },
+    {
+      "module": "SerrePositivity.AlgebraicGeometry.ArcRouteB.PerfectedModelDiagram",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/PerfectedModelDiagram.lean",
+      "lines": 64,
+      "sha256": "fb2d32b9a5610cc62230a0ac2c8fd8d532737b0bc4f19428ab28fcedfc3301e4"
+    },
+    {
+      "module": "SerrePositivity.AlgebraicGeometry.ArcRouteB.ProbeComparison",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/ProbeComparison.lean",
+      "lines": 141,
+      "sha256": "719f2dafc79ee86ff114d468af05cbc8a9f5172e8b2ae2b51b4ce290ebed36e9"
+    },
+    {
+      "module": "SerrePositivity.AlgebraicGeometry.ArcRouteB.ProbeTerms",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/ProbeTerms.lean",
+      "lines": 51,
+      "sha256": "6465b9593b03e5ccb14923620b01062ccfda7d92b405423bcaf8d8c83ce1be7b"
+    },
+    {
+      "module": "SerrePositivity.AlgebraicGeometry.ArcRouteB.UniversalCech",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/UniversalCech.lean",
+      "lines": 114,
+      "sha256": "bb240096cce22f0b2cd7fa7ae2413b49399d603f553cd0308dbbaaf2b2daeaf8"
+    },
+    {
+      "module": "SerrePositivity.AlgebraicGeometry.ArcRouteB.UniversalOverlap",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/UniversalOverlap.lean",
+      "lines": 76,
+      "sha256": "d054dd3988554e7f0b6b81e69e8cf638a13b9e9aaa9074ec1a519d506cd994d4"
+    },
+    {
+      "module": "SerrePositivity.AlgebraicGeometry.ArcRouteB.UniversalUltraproduct",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/UniversalUltraproduct.lean",
+      "lines": 88,
+      "sha256": "26295f2e529f2a6f45fc72504b000bdbf3e18649fcf79b82a4f38ebd89065b93"
+    }
+  ],
+  "body_lines": 2268,
+  "entry_lines": 62,
+  "native_lines": 2330,
+  "verification_script_lines": 107,
+  "all_added_lean_lines": 2437,
+  "entry_sha256": "5bb717336085c8ef052921948a71da2c1d6642f1f16a8e20615e1663c149b1f7",
+  "verification_script_sha256": "8d6099fdbb6826ca6e1bb7d6636204c801200d330a2e61064e485d2e71d75935",
+  "build_log": "scheme-drafts/2i-arc-exit-native-4.log",
+  "verification_log": "scheme-drafts/2i-final-verify.log",
+  "source_locations": [
+    {
+      "id": "U01",
+      "name": "arcBaseChangeHom",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/Definitions.lean",
+      "line": 60,
+      "status": "verified"
+    },
+    {
+      "id": "U02",
+      "name": "PerfectRingCechUniversalExact",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/Definitions.lean",
+      "line": 69,
+      "status": "verified"
+    },
+    {
+      "id": "U03",
+      "name": "IsArcHom",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/Definitions.lean",
+      "line": 75,
+      "status": "verified"
+    },
+    {
+      "id": "U04",
+      "name": "isArcHom_pi_iff",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/CoverLaws.lean",
+      "line": 21,
+      "status": "verified"
+    },
+    {
+      "id": "U05",
+      "name": "isArcHom_baseChange",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/CoverLaws.lean",
+      "line": 40,
+      "status": "verified"
+    },
+    {
+      "id": "U06",
+      "name": "isArcHom_of_refinement",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/CoverLaws.lean",
+      "line": 58,
+      "status": "verified"
+    },
+    {
+      "id": "U07",
+      "name": "perfectRingCechUniversalExact_baseChange",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/UniversalCech.lean",
+      "line": 24,
+      "status": "verified"
+    },
+    {
+      "id": "U08",
+      "name": "perfectRingCechUniversalExact_of_flat_factor",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/UniversalCech.lean",
+      "line": 77,
+      "status": "verified"
+    },
+    {
+      "id": "U09",
+      "name": "perfectTensor_of_primeCast_eq_zero",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/UniversalCech.lean",
+      "line": 54,
+      "status": "verified"
+    },
+    {
+      "id": "M01",
+      "name": "frobeniusDirectLimit_primeCast_eq_zero",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/FrobeniusPerfect.lean",
+      "line": 18,
+      "status": "verified"
+    },
+    {
+      "id": "M02",
+      "name": "frobeniusDirectLimit_perfectRing",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/FrobeniusPerfect.lean",
+      "line": 24,
+      "status": "verified"
+    },
+    {
+      "id": "M03",
+      "name": "frobeniusDirectLimitDesc",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/FrobeniusPerfect.lean",
+      "line": 57,
+      "status": "verified"
+    },
+    {
+      "id": "M04",
+      "name": "frobeniusDirectLimitDesc_comp_of_zero",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/FrobeniusPerfect.lean",
+      "line": 66,
+      "status": "verified"
+    },
+    {
+      "id": "M05",
+      "name": "finitePresentationModelUnderDiagram",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/ModelUnder.lean",
+      "line": 21,
+      "status": "verified"
+    },
+    {
+      "id": "M06",
+      "name": "finitePresentationModelUnderCocone",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/ModelUnder.lean",
+      "line": 35,
+      "status": "verified"
+    },
+    {
+      "id": "M07",
+      "name": "finitePresentationModelUnderCoconeIsColimit",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/ModelUnder.lean",
+      "line": 49,
+      "status": "verified"
+    },
+    {
+      "id": "M08",
+      "name": "perfectedModelDiagram",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/PerfectedModelDiagram.lean",
+      "line": 21,
+      "status": "verified"
+    },
+    {
+      "id": "M09",
+      "name": "perfectedModelCocone",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/PerfectedModelCocone.lean",
+      "line": 21,
+      "status": "verified"
+    },
+    {
+      "id": "M10",
+      "name": "perfectedModelCoconeIsColimit",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/PerfectedModelColimit.lean",
+      "line": 25,
+      "status": "verified"
+    },
+    {
+      "id": "M11",
+      "name": "perfectedModel_isArcHom",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/PerfectedModelCocone.lean",
+      "line": 59,
+      "status": "verified"
+    },
+    {
+      "id": "M12",
+      "name": "perfectRingCechUniversalExact_of_filtered_models",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/FilteredUniversalCech.lean",
+      "line": 24,
+      "status": "verified"
+    },
+    {
+      "id": "I00",
+      "name": "perfectedAlgebraUnit",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/FrobeniusPerfect.lean",
+      "line": 82,
+      "status": "verified"
+    },
+    {
+      "id": "I01",
+      "name": "intervalRingSpectrumOrderIso",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/IntervalSpectrum.lean",
+      "line": 20,
+      "status": "verified"
+    },
+    {
+      "id": "I02",
+      "name": "intervalRing_krullDim_le_one_of_no_prime_between",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/IntervalSpectrum.lean",
+      "line": 48,
+      "status": "verified"
+    },
+    {
+      "id": "I03",
+      "name": "intervalRingOfFullSpectrumEquiv",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/IntervalSpectrum.lean",
+      "line": 71,
+      "status": "verified"
+    },
+    {
+      "id": "I04",
+      "name": "exists_fp_residue_point_of_perfectedArc",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/IntervalPoints.lean",
+      "line": 25,
+      "status": "verified"
+    },
+    {
+      "id": "I05",
+      "name": "exists_right_interval_fp_section",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/EndpointSections.lean",
+      "line": 20,
+      "status": "verified"
+    },
+    {
+      "id": "I06",
+      "name": "exists_left_interval_fp_section",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/EndpointSections.lean",
+      "line": 58,
+      "status": "verified"
+    },
+    {
+      "id": "I07",
+      "name": "perfectedAlgebraUnit_universalExact_of_section",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/IntervalPoints.lean",
+      "line": 51,
+      "status": "verified"
+    },
+    {
+      "id": "O01",
+      "name": "intervalTensorLocalizationEquiv",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/IntervalTensorComparison.lean",
+      "line": 24,
+      "status": "verified"
+    },
+    {
+      "id": "O02",
+      "name": "intervalTensorQuotientEquiv",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/IntervalTensorComparison.lean",
+      "line": 63,
+      "status": "verified"
+    },
+    {
+      "id": "O03",
+      "name": "intervalTensorIntersectionEquiv",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/IntervalTensorComparison.lean",
+      "line": 102,
+      "status": "verified"
+    },
+    {
+      "id": "O04",
+      "name": "overlapTensorModuleComplex",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/OverlapComplex.lean",
+      "line": 24,
+      "status": "verified"
+    },
+    {
+      "id": "O05",
+      "name": "overlapTensorModuleComplex_shortExact",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/OverlapShortExact.lean",
+      "line": 27,
+      "status": "verified"
+    },
+    {
+      "id": "O06",
+      "name": "perfectRingCechUniversalExact_of_overlap",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/UniversalOverlap.lean",
+      "line": 27,
+      "status": "verified"
+    },
+    {
+      "id": "O07",
+      "name": "GoodArcInterval",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/Definitions.lean",
+      "line": 85,
+      "status": "verified"
+    },
+    {
+      "id": "O08",
+      "name": "goodArcInterval_sub",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/IntervalRestrictions.lean",
+      "line": 24,
+      "status": "verified"
+    },
+    {
+      "id": "O09",
+      "name": "goodArcInterval_glue",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/IntervalGluing.lean",
+      "line": 29,
+      "status": "verified"
+    },
+    {
+      "id": "I08",
+      "name": "goodArcInterval_of_rank_le_one",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/IntervalRestrictions.lean",
+      "line": 45,
+      "status": "verified"
+    },
+    {
+      "id": "I09",
+      "name": "goodArcInterval_right",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/LocalExtensions.lean",
+      "line": 23,
+      "status": "verified"
+    },
+    {
+      "id": "I10",
+      "name": "goodArcInterval_left",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/LocalExtensions.lean",
+      "line": 54,
+      "status": "verified"
+    },
+    {
+      "id": "I11",
+      "name": "perfectedFpArc_universalExact",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/PerfectedFpArc.lean",
+      "line": 31,
+      "status": "verified"
+    },
+    {
+      "id": "I12",
+      "name": "aicValuationArc_universalExact",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/AicValuationArc.lean",
+      "line": 33,
+      "status": "verified"
+    },
+    {
+      "id": "P00",
+      "name": "perfectRing_pi_of_primeCast_eq_zero",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/FrobeniusPerfect.lean",
+      "line": 91,
+      "status": "verified"
+    },
+    {
+      "id": "P01",
+      "name": "perfectRingCechUniversalExact_of_ultraproducts",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/UniversalUltraproduct.lean",
+      "line": 30,
+      "status": "verified"
+    },
+    {
+      "id": "P02",
+      "name": "aicValuationProductArc_universalExact",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/AicProductArc.lean",
+      "line": 30,
+      "status": "verified"
+    },
+    {
+      "id": "P03",
+      "name": "probeCechFirstFactor",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/ProbeTerms.lean",
+      "line": 22,
+      "status": "verified"
+    },
+    {
+      "id": "P04",
+      "name": "probeCechFirstFactor_comp",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/ProbeTerms.lean",
+      "line": 30,
+      "status": "verified"
+    },
+    {
+      "id": "P05",
+      "name": "probeChangeToTermIso",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/ProbeTerms.lean",
+      "line": 38,
+      "status": "verified"
+    },
+    {
+      "id": "P06",
+      "name": "probeArc_positiveRows",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/ArcCoverCech.lean",
+      "line": 33,
+      "status": "verified"
+    },
+    {
+      "id": "T00",
+      "name": "ValuativeCoverFamily",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/Definitions.lean",
+      "line": 22,
+      "status": "verified"
+    },
+    {
+      "id": "T01",
+      "name": "IsVCoverFamily",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/Definitions.lean",
+      "line": 28,
+      "status": "verified"
+    },
+    {
+      "id": "T02",
+      "name": "IsArcCoverFamilyCharP",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/Definitions.lean",
+      "line": 33,
+      "status": "verified"
+    },
+    {
+      "id": "T03",
+      "name": "affineFamilyCech",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/Definitions.lean",
+      "line": 38,
+      "status": "verified"
+    },
+    {
+      "id": "T04",
+      "name": "BS17VCechInput",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/Definitions.lean",
+      "line": 44,
+      "status": "verified"
+    },
+    {
+      "id": "T05",
+      "name": "ArcRouteBGoal",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/Definitions.lean",
+      "line": 52,
+      "status": "verified"
+    },
+    {
+      "id": "T06",
+      "name": "bs17VCechInput",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/ProbeComparison.lean",
+      "line": 24,
+      "status": "verified"
+    },
+    {
+      "id": "V01",
+      "name": "cechExact_of_affineVCover_from_BS17",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/ProbeComparison.lean",
+      "line": 29,
+      "status": "verified"
+    },
+    {
+      "id": "V02",
+      "name": "cechExact_of_perfectAffineVCover_from_BS17",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/ProbeComparison.lean",
+      "line": 49,
+      "status": "verified"
+    },
+    {
+      "id": "V03",
+      "name": "cechExact_valuationProbeProduct_from_BS17",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/ProbeComparison.lean",
+      "line": 78,
+      "status": "verified"
+    },
+    {
+      "id": "V04",
+      "name": "isAffineVCover_tensor",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/ProbeComparison.lean",
+      "line": 87,
+      "status": "verified"
+    },
+    {
+      "id": "V05",
+      "name": "cechExact_valuationProbeProduct_tensor_from_BS17",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/ProbeComparison.lean",
+      "line": 103,
+      "status": "verified"
+    },
+    {
+      "id": "V06",
+      "name": "cechExact_of_valuationProbeTests",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/ProbeComparison.lean",
+      "line": 120,
+      "status": "verified"
+    },
+    {
+      "id": "B01",
+      "name": "cechExact_of_arcHom_perfect",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/ArcCoverCech.lean",
+      "line": 70,
+      "status": "verified"
+    },
+    {
+      "id": "B02",
+      "name": "cech_exact_of_arcCover_perfect",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/ArcCoverCech.lean",
+      "line": 79,
+      "status": "verified"
+    },
+    {
+      "id": "Q01",
+      "name": "nonempty_algHom_of_isAlgClosed",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/FpResiduePoint.lean",
+      "line": 18,
+      "status": "verified"
+    },
+    {
+      "id": "L01",
+      "name": "arcBaseChangeTransIso",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/BaseChangeComparison.lean",
+      "line": 21,
+      "status": "verified"
+    },
+    {
+      "id": "L02",
+      "name": "arcBaseChangeArrowIso",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/BaseChangeArrowComparison.lean",
+      "line": 20,
+      "status": "verified"
+    },
+    {
+      "id": "L03",
+      "name": "intervalCoefficient_primeQuotient_perfect",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/IntervalCoefficientPerfect.lean",
+      "line": 18,
+      "status": "verified"
+    },
+    {
+      "id": "L04",
+      "name": "intervalCoefficient_primeLocalization_perfect",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/IntervalCoefficientPerfect.lean",
+      "line": 35,
+      "status": "verified"
+    },
+    {
+      "id": "L05",
+      "name": "cechExact_of_overlapTensor_coefficients",
+      "source": "SerrePositivity/AlgebraicGeometry/ArcRouteB/OverlapCoefficientDetection.lean",
+      "line": 25,
+      "status": "verified"
+    }
+  ],
+  "owned_declarations": 195,
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "canonical_consumer_typecheck": "PASS",
+  "build": "PASS",
+  "audit": "PASS",
+  "math_commit": "7d6355ce5e746aaa045663ae86cc7f25554ac2a7",
+  "owned_module_counts": {
+    "SerrePositivity.AlgebraicGeometry.ArcRouteB.AicProductArc": 1,
+    "SerrePositivity.AlgebraicGeometry.ArcRouteB.AicValuationArc": 1,
+    "SerrePositivity.AlgebraicGeometry.ArcRouteB.ArcCoverCech": 6,
+    "SerrePositivity.AlgebraicGeometry.ArcRouteB.BaseChangeArrowComparison": 2,
+    "SerrePositivity.AlgebraicGeometry.ArcRouteB.BaseChangeComparison": 5,
+    "SerrePositivity.AlgebraicGeometry.ArcRouteB.CoverLaws": 3,
+    "SerrePositivity.AlgebraicGeometry.ArcRouteB.Definitions": 12,
+    "SerrePositivity.AlgebraicGeometry.ArcRouteB.EndpointSections": 2,
+    "SerrePositivity.AlgebraicGeometry.ArcRouteB.FilteredUniversalCech": 1,
+    "SerrePositivity.AlgebraicGeometry.ArcRouteB.FpResiduePoint": 1,
+    "SerrePositivity.AlgebraicGeometry.ArcRouteB.FrobeniusPerfect": 12,
+    "SerrePositivity.AlgebraicGeometry.ArcRouteB.IntervalCoefficientPerfect": 2,
+    "SerrePositivity.AlgebraicGeometry.ArcRouteB.IntervalGluing": 1,
+    "SerrePositivity.AlgebraicGeometry.ArcRouteB.IntervalPoints": 2,
+    "SerrePositivity.AlgebraicGeometry.ArcRouteB.IntervalRestrictions": 2,
+    "SerrePositivity.AlgebraicGeometry.ArcRouteB.IntervalSpectrum": 24,
+    "SerrePositivity.AlgebraicGeometry.ArcRouteB.IntervalTensorComparison": 41,
+    "SerrePositivity.AlgebraicGeometry.ArcRouteB.LocalExtensions": 2,
+    "SerrePositivity.AlgebraicGeometry.ArcRouteB.ModelUnder": 9,
+    "SerrePositivity.AlgebraicGeometry.ArcRouteB.OverlapCoefficientDetection": 1,
+    "SerrePositivity.AlgebraicGeometry.ArcRouteB.OverlapComplex": 12,
+    "SerrePositivity.AlgebraicGeometry.ArcRouteB.OverlapShortExact": 1,
+    "SerrePositivity.AlgebraicGeometry.ArcRouteB.PerfectedFpArc": 1,
+    "SerrePositivity.AlgebraicGeometry.ArcRouteB.PerfectedModelCocone": 6,
+    "SerrePositivity.AlgebraicGeometry.ArcRouteB.PerfectedModelColimit": 15,
+    "SerrePositivity.AlgebraicGeometry.ArcRouteB.PerfectedModelDiagram": 10,
+    "SerrePositivity.AlgebraicGeometry.ArcRouteB.ProbeComparison": 8,
+    "SerrePositivity.AlgebraicGeometry.ArcRouteB.ProbeTerms": 7,
+    "SerrePositivity.AlgebraicGeometry.ArcRouteB.UniversalCech": 3,
+    "SerrePositivity.AlgebraicGeometry.ArcRouteB.UniversalOverlap": 1,
+    "SerrePositivity.AlgebraicGeometry.ArcRouteB.UniversalUltraproduct": 1
+  }
+}
