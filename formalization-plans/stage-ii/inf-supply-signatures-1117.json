@@ -3,7 +3,7 @@
   "source_head": "7e9743b30",
   "scope": "今回の再開範囲：元の残り1〜17項を署名へ展開。S2〜S6の過去の検収済み出力は再採番しない。",
   "count_rule": "署名のidごとに数える。200行超の照合・合成則は独立署名。小さい証明分割の法則は親署名のnoteに記録する。旧5/8はこの台帳の分母には用いない。",
-  "verified_lean_lines": 24708,
+  "verified_lean_lines": 24826,
   "final_cap": 29000,
   "checkpoint_report_lines": 28500,
   "factor": 2,
@@ -1631,7 +1631,8 @@
         "P3-C1PNO",
         "P3-C1PNON",
         "P3-C1PNG",
-        "P3-C1PNQ"
+        "P3-C1PNQ",
+        "P3-C1PNC"
       ],
       "existing": [
         {
@@ -2179,10 +2180,71 @@
         240,
         440
       ],
-      "status": "pending",
+      "status": "verified",
       "placement": "SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/KanDiagramOppositeValueComparison.lean",
       "literature": "HTT §1.1.5、Kerodon §3.1・§5.6（Tag 028T）の指定反転比較と添字制限の構成の照合法則。",
-      "note": "11-17夕の既存構成の照合追加の事前承認。元の同じ成分の略記と自然性の回収も含む。",
+      "note": "11-17夕の既存構成の照合追加の事前承認。元の同じ成分の略記と自然性の回収も含む。 対象ビルド・所有10宣言の小監査成功。実測118行。",
+      "additional_mathematics": true,
+      "choose_replacements": [],
+      "new_assumptions": [],
+      "actual_lines_conservative": 118,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 10,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/KanDiagramOppositeValueComparison.lean": "031c1a3997833edfb3da393bb6ed7db670996890290fd1dfc5a730482e6d5007"
+        }
+      }
+    },
+    {
+      "id": "P3-C1PNC",
+      "name": "simplexSectionBaseChangeCoefficient_native_hom",
+      "full_type": "∀ {E B D : SSet.{u}} (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B),\n    let F : KanDiagramObject (TransportSimplexCategory D) :=\n      ⟨(relativeSectionEnrichedDiagram (transportSimplexDomainFunctor D)).evaluate\n        (leftFibrationObjectOf (pullback.snd p k)), trivial⟩\n    let G : KanDiagramObject (TransportSimplexCategory D) :=\n      ⟨transportSimplexFunctor k ⋙\n        (relativeSectionEnrichedDiagram (transportSimplexDomainFunctor B)).evaluate\n          (leftFibrationObjectOf p), trivial⟩\n    HEq (simplexSectionBaseChangeCoefficient p k).hom\n      (Truncated.HomotopyCategory.homMk (kanDiagramNaturalTransformationEdge\n        (F := F) (G := G) (simplexSectionNativeBaseChange p k)).toTruncated)",
+      "dependencies": [
+        "P3-C1PNB"
+      ],
+      "existing": [
+        {
+          "name": "simplexSectionBaseChangeCoefficient_heq",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SimplexSectionCoefficientValues.lean",
+          "line": 75
+        },
+        {
+          "name": "functorIso_transpose_postcomp_heq_value",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/FunctorIsoTransposeEvaluation.lean",
+          "line": 29
+        },
+        {
+          "name": "relativeSectionBaseChangeValue_heq",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/RelativeSectionBaseChangeValue.lean",
+          "line": 32
+        },
+        {
+          "name": "kanEnrichedRealizationValueIso_hom",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/KanEnrichedRealizationValueHom.lean",
+          "line": 31
+        }
+      ],
+      "bare_lines": [
+        200,
+        350
+      ],
+      "corrected_lines": [
+        400,
+        700
+      ],
+      "status": "pending",
+      "placement": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SimplexSectionNativeBaseChange.lean",
+      "literature": "HTT §3.3.2、Kerodon §5.6（Tag 028T）の元の単体切断底変換係数の指定自然変換による表示の照合。",
+      "note": "11-17夕の既存構成の照合追加の事前承認。転置評価を戻し、同じ元の定義域等式だけで自然変換を移す。新しい数学でない。",
       "additional_mathematics": true,
       "choose_replacements": [],
       "new_assumptions": []

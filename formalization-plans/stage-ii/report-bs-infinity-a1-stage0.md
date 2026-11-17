@@ -9086,3 +9086,48 @@ P3-C1PNQは補正上端440なので24,708＋440＝25,148、着手条件内で検
 旧R2の未追跡4本は変更も登録もしていない。
 
 一覧：済み 24／全体 46（うち追加 11、別停止点 2）。
+
+
+### P3-C1PNQ完成・P3-C1PNC登録（11-17夜）
+
+P3-C1PNQは対象ビルド・所有10宣言の小監査成功、標準三公理のみ。
+素120〜220行、補正240〜440行に対し実測118行。累計24,708 → **24,826行**。
+証拠：`evidence/inf-supply/c1pn-opposite-precomp-1117/manifest.json` にまとめる。
+元の単体切断の指定底変換係数を、同じ指定比較の通常の自然変換として読む照合P3-C1PNCを追加。
+型：
+
+```lean
+∀ {E B D : SSet.{u}} (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B),
+    let F : KanDiagramObject (TransportSimplexCategory D) :=
+      ⟨(relativeSectionEnrichedDiagram (transportSimplexDomainFunctor D)).evaluate
+        (leftFibrationObjectOf (pullback.snd p k)), trivial⟩
+    let G : KanDiagramObject (TransportSimplexCategory D) :=
+      ⟨transportSimplexFunctor k ⋙
+        (relativeSectionEnrichedDiagram (transportSimplexDomainFunctor B)).evaluate
+          (leftFibrationObjectOf p), trivial⟩
+    HEq (simplexSectionBaseChangeCoefficient p k).hom
+      (Truncated.HomotopyCategory.homMk (kanDiagramNaturalTransformationEdge
+        (F := F) (G := G) (simplexSectionNativeBaseChange p k)).toTruncated)
+```
+
+`simplexSectionNativeBaseChange p k` は、元の `relativeSectionBaseChangeComparison` の同じ成分を
+`transportSimplexDomainFunctor_baseChange k` の元の定義域等式で移した自然変換の略記。
+型は `(relativeSectionEnrichedDiagram (transportSimplexDomainFunctor D)).evaluate
+(leftFibrationObjectOf (pullback.snd p k)) ⋙ kanObjectForget ⟶
+(transportSimplexFunctor k ⋙ (relativeSectionEnrichedDiagram (transportSimplexDomainFunctor B)).evaluate
+(leftFibrationObjectOf p)) ⋙ kanObjectForget`。
+単位・余単位を選び直さず、元の比較の成分をEq.mpで移すだけ。新しい数学・仮定・chooseはない。
+依存P3-C1PNB。既存の `simplexSectionBaseChangeCoefficient_heq`、
+`functorIso_transpose_postcomp_heq_value`、`relativeSectionBaseChangeValue_heq`、
+`kanEnrichedRealizationValueIso_hom` を使う（場所と行はJSONのexisting欄）。
+原典：HTT §3.3.2・Kerodon §5.6（Tag 028T）の指定構成の特殊な照合。
+素200〜350行、補正400〜700行。24,826＋700＝25,526で着手条件内。
+このHEqは元の全図式の射の指定された端点移送を保つ計算用の法則であり、P3-C1PNの結論の型は変えない。
+
+一覧：済み 25／全体 47（うち追加 12、別停止点 2）。
+
+
+P3-C1PNQの検証済みファイルをコミットする。元の同じ値の略記・自然性の回収・指定添字制限を含め118行。
+主な宣言にHTT §1.1.5のspecial属性、Kerodon側はdocstringに構成の特殊化を記載。
+次のCの下書きは未検証なのでこのコミットには含めない。
+一覧：済み 25／全体 47（うち追加 12、別停止点 2）。

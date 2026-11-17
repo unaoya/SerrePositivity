@@ -5,8 +5,8 @@
 再採番せず、ここにある各署名IDを一つずつ数える。旧「5／8」は以後この台帳の進捗に使わない。
 小さい既存構成の法則・証明の分割は親署名内に記録するが、上端200行超は独立署名。
 
-署名46本＝検証済み24本＋未完20本＋別停止点へ切り離す2本。
-一覧：済み 24／全体 46（うち追加 11、別停止点 2）。
+署名47本＝検証済み25本＋未完20本＋別停止点へ切り離す2本。
+一覧：済み 25／全体 47（うち追加 12、別停止点 2）。
 追加1は11-17夕承認のP3-C1P。着手判定22,975＋800＝23,775行。以前の35署名の表は履歴として保持。
 
 ## 最新の検証記録（P3-B1）
@@ -1385,3 +1385,22 @@ P3-C1PNB：対象ビルド・1宣言の小監査成功、標準三公理のみ�
 
 
 P3-C1PNG：二ファイル計320行、対象ビルド・所有31宣言の小監査成功。累計24,708行。
+
+
+## P3-C1PNC（元の単体切断係数の自然変換による表示）
+
+```lean
+∀ {E B D : SSet.{u}} (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B),
+    let F : KanDiagramObject (TransportSimplexCategory D) :=
+      ⟨(relativeSectionEnrichedDiagram (transportSimplexDomainFunctor D)).evaluate
+        (leftFibrationObjectOf (pullback.snd p k)), trivial⟩
+    let G : KanDiagramObject (TransportSimplexCategory D) :=
+      ⟨transportSimplexFunctor k ⋙
+        (relativeSectionEnrichedDiagram (transportSimplexDomainFunctor B)).evaluate
+          (leftFibrationObjectOf p), trivial⟩
+    HEq (simplexSectionBaseChangeCoefficient p k).hom
+      (Truncated.HomotopyCategory.homMk (kanDiagramNaturalTransformationEdge
+        (F := F) (G := G) (simplexSectionNativeBaseChange p k)).toTruncated)
+```
+
+依存P3-C1PNB。素200〜350行、補正400〜700行。完全な既存参照はJSON。
