@@ -3,7 +3,7 @@
 <!-- current-signature-state:begin -->
 ## 最新の進行状態と停止判定
 
-既計上の累計：27,770行。外枠：29,000行。係数：2。
+既計上の累計：27,964行。外枠：29,000行。係数：2。
 行別の実測は既計上の補助・共有検証組を含みうるため、合計して累計を作り直さない。
 この表が進行状態・残り見込みの現在値。後の各節は署名の型・設計・検証履歴を保持する。
 
@@ -23,7 +23,7 @@
 |P3-C1|verified|157|0〜0|0〜0|
 |P3-D|verified|332|0〜0|0〜0|
 |P3-E|verified|52|0〜0|0〜0|
-|R04|pending|683|250〜400|500〜800|
+|R04|pending|753|250〜400|500〜800|
 |R05|pending|—|80〜150|160〜300|
 |R06|pending|—|200〜400|400〜800|
 |R07|verified|—|0〜0|0〜0|
@@ -62,6 +62,7 @@
 |P3-C1PS|verified|400|0〜0|0〜0|
 |P3-C1PSG|verified|224|0〜0|0〜0|
 |R04-PR|verified|254|0〜0|0〜0|
+|R04-NP|verified|124|0〜0|0〜0|
 
 <!-- current-signature-state:end -->
 
@@ -1818,3 +1819,28 @@ build-3：対象ビルド5,611 jobs成功、小監査1モジュール1宣言、�
 原典：HTT §3.3.2、Kerodon Remark 5.6.2.18（Tag 0271）。既存のunstraighteningSourceFamilyComparisonIsoを同じ指定prismに適用し、既存の小さい相対写像空間の同型で戻す法則。
 
 新しい数学・chooseの取り替え・main本文の変更はない。まず元のunstraighteningSourceFamilyComparisonIsoへ同じpointed prismを入れ、次に既存のuliftと縮小の相対関手空間の同型で小さい宇宙へ戻す。大きい側と小さい側は証明の分割で、別の数学の入力を足さない。逆射の合成則を先に作らず、この比較から指定分類spanと元の全空間の射を同定し、同値性を反映する方針とする。
+
+### R04-NP — 底変換から元の指定pointed同型を作る（11-18追加）
+
+状態verified（実測124行）。依存P3-E。素180〜300行、補正360〜600行。着手判定27,770＋600＝28,370で29,000以内。元のR04の型・仮定を変えない既存構成の照合として事前承認の範囲で進める。
+
+```lean
+∀ {E B K : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [LeftFibration p]
+    (R : LeftTransportRepresentation ((SSet.uliftFunctor.{u + 1, u}).map p))
+    {f g : K ⟶ B} (e : FunctorIso f g),
+    ∃ (a : pullback p f ⟶ pullback p g)
+      (ha : a ≫ pullback.snd p g = pullback.snd p f)
+      (P : FunctorIso (R.nativeRestrict f).pointedMap
+        ((SSet.uliftFunctor.{u + 1, u}).map a ≫ (R.nativeRestrict g).pointedMap)),
+      HEq (P.postcomp pointedSpaceProjection)
+        (((functorIso_ulift.{u, u + 1} e).postcomp R.diagram).precomp
+          ((SSet.uliftFunctor.{u + 1, u}).map (pullback.snd p f)))
+```
+
+- `exists_leftFibration_functorIso_lift` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftFibrationFunctorIsoLift.lean:72
+- `LeftTransportRepresentation.nativeRestrict_pointedMap` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/NerveStraighteningRepresentation.lean:81
+- `functorIso_precomp_postcomp` @ SerrePositivity/InfinityCategories/Project/QuasicategoryAuxiliaries/MappingSpaces/FunctorIsoWhiskerComposition.lean:40
+
+原典：HTT §3.3.2、Kerodon Remark 5.6.2.18（Tag 0271）、HTT 2.1.1.6の既存持ち上げと底変換の比較の法則。
+
+元の同型をuliftした後、U.mapした元の第一射影から持ち上げ、U.mapした引き戻しの普遍性で終点を同じ小さい引き戻しへ戻す。既存の完全忠実性で射aを小さい宇宙へ戻し、元のpointedMapで後合成する。射影の一致は既存の前後合成則と端点の移送で示す。新しい数学・chooseの変更・既存本文の変更なし。

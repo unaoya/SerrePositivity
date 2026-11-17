@@ -10469,3 +10469,98 @@ R04-PR（同じ指定prismと元の底上の射aの比較）の大きい側118�
 計324行を加え、累計27,770行。R04本体は未完で、部分計上は683行（R04-PRの254行とは分け、二重計上しない）。次は、元の大域表現の底変換に沿う指定pointed同型を作り、完成したR04-PRと元の復元spanへ渡す。逆射の合成則を先に作らず、この照合から同値性も反映する。R04の残り補正上端800の着手判定は27,770＋800＝28,570で29,000以内。正式な停止点ではない。mainの取り込みなし、旧R2の未追跡4本はそのまま。
 
 一覧：済み 37／全体 53（うち追加 18、別停止点 2）。
+
+### 11-18：R04-NPの署名を追加
+
+### R04-NP — 底変換から元の指定pointed同型を作る（11-18追加）
+
+状態pending。依存P3-E。素180〜300行、補正360〜600行。着手判定27,770＋600＝28,370で29,000以内。元のR04の型・仮定を変えない既存構成の照合として事前承認の範囲で進める。
+
+```lean
+∀ {E B K : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [LeftFibration p]
+    (R : LeftTransportRepresentation ((SSet.uliftFunctor.{u + 1, u}).map p))
+    {f g : K ⟶ B} (e : FunctorIso f g),
+    ∃ (a : pullback p f ⟶ pullback p g)
+      (ha : a ≫ pullback.snd p g = pullback.snd p f)
+      (P : FunctorIso (R.nativeRestrict f).pointedMap
+        ((SSet.uliftFunctor.{u + 1, u}).map a ≫ (R.nativeRestrict g).pointedMap)),
+      HEq (P.postcomp pointedSpaceProjection)
+        (((functorIso_ulift.{u, u + 1} e).postcomp R.diagram).precomp
+          ((SSet.uliftFunctor.{u + 1, u}).map (pullback.snd p f)))
+```
+
+- `exists_leftFibration_functorIso_lift` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftFibrationFunctorIsoLift.lean:72
+- `LeftTransportRepresentation.nativeRestrict_pointedMap` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/NerveStraighteningRepresentation.lean:81
+- `functorIso_precomp_postcomp` @ SerrePositivity/InfinityCategories/Project/QuasicategoryAuxiliaries/MappingSpaces/FunctorIsoWhiskerComposition.lean:40
+
+原典：HTT §3.3.2、Kerodon Remark 5.6.2.18（Tag 0271）、HTT 2.1.1.6の既存持ち上げと底変換の比較の法則。
+
+元の同型をuliftした後、U.mapした元の第一射影から持ち上げ、U.mapした引き戻しの普遍性で終点を同じ小さい引き戻しへ戻す。既存の完全忠実性で射aを小さい宇宙へ戻し、元のpointedMapで後合成する。射影の一致は既存の前後合成則と端点の移送で示す。新しい数学・chooseの変更・既存本文の変更なし。
+
+一覧：済み 37／全体 54（うち追加 19、別停止点 2）。
+
+### 11-18：R04-NPの同じ持ち上げの全空間側の証拠も保持する
+
+台帳のR04-NPの型は変えず、その証明で既に作った同じa・同じiから、全空間側のLも保持する短い証明分割を先に置く。mainに当該ファイルがないことをgit cat-fileで確認済みで、未コミットの新規ファイル内の証明分割のみ。既存のmain本文・chooseの取り替えではない。型：
+
+```lean
+∀ {E B K : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [LeftFibration p]
+    (R : LeftTransportRepresentation ((SSet.uliftFunctor.{u + 1, u}).map p))
+    {f g : K ⟶ B} (e : FunctorIso f g),
+    ∃ (a : pullback p f ⟶ pullback p g)
+      (ha : a ≫ pullback.snd p g = pullback.snd p f)
+      (L : FunctorIso
+        ((SSet.uliftFunctor.{u + 1, u}).map (pullback.fst p f))
+        ((SSet.uliftFunctor.{u + 1, u}).map (a ≫ pullback.fst p g)))
+      (P : FunctorIso (R.nativeRestrict f).pointedMap
+        ((SSet.uliftFunctor.{u + 1, u}).map a ≫ (R.nativeRestrict g).pointedMap)),
+      HEq (L.postcomp ((SSet.uliftFunctor.{u + 1, u}).map p))
+        ((functorIso_ulift.{u, u + 1} e).precomp
+          ((SSet.uliftFunctor.{u + 1, u}).map (pullback.snd p f))) ∧
+      HEq (P.postcomp pointedSpaceProjection)
+        (((functorIso_ulift.{u, u + 1} e).postcomp R.diagram).precomp
+          ((SSet.uliftFunctor.{u + 1, u}).map (pullback.snd p f)))
+```
+
+既存の同じ関手同型の持ち上げ・同じ引き戻しの普遍性・functorIsoOfEq_heqのみを使う。R04-NPの見込み180〜300行の内数で、追加部分は素20〜40・補正40〜80。元の公開宣言はこの証拠からpointed側を射影する。全空間側のLを後から別に選び直さず、同じaと指定eの像の一致を残す。原典・依存はR04-NPと同じ。
+
+一覧：済み 37／全体 54（うち追加 19、別停止点 2）。
+
+### 11-18：同じ局所形状の射へのR04-NPとR04-PRの接続
+
+```lean
+∀ {E B K : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [LeftFibration p]
+    (R : LeftTransportRepresentation ((SSet.uliftFunctor.{u + 1, u}).map p))
+    {f g : K ⟶ B} (e : FunctorIso f g),
+    let U := SSet.uliftFunctor.{u + 1, u}
+    let Rf := R.nativeRestrict f
+    let Rg := R.nativeRestrict g
+    let ν := (functorIso_ulift.{u, u + 1} e).postcomp R.diagram
+    let rF := smallLeftUnstraighteningLift Rf.diagram Rf.comparison
+    let rG := smallLeftUnstraighteningLift Rg.diagram Rg.comparison
+    let z := rF ≫ smallUnstraighteningFunctorHom ν.hom
+    ∃ (a : pullback p f ⟶ pullback p g)
+      (ha : a ≫ pullback.snd p g = pullback.snd p f)
+      (L : FunctorIso (U.map (pullback.fst p f)) (U.map (a ≫ pullback.fst p g))),
+      HEq (L.postcomp (U.map p)) ((functorIso_ulift.{u, u + 1} e).precomp
+        (U.map (pullback.snd p f))) ∧
+      ∃ (hz : z ≫ smallLeftUnstraighteningProjection Rg.diagram = pullback.snd p f)
+        (ht : (a ≫ rG) ≫ smallLeftUnstraighteningProjection Rg.diagram = pullback.snd p f),
+        Nonempty (VertexIso
+          (relativeFunctorVertex (smallLeftUnstraighteningProjection Rg.diagram) (pullback.snd p f) z hz)
+          (relativeFunctorVertex (smallLeftUnstraighteningProjection Rg.diagram) (pullback.snd p f) (a ≫ rG) ht))
+```
+
+`exists_nativePullbackPointedIsoLiftData` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/NativePullbackPointedIsoLift.lean、`exists_transportRepresentation_arrowPrism_of_pointedIso` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/TransportRepresentationArrowPointedIso.lean、`smallTransportRepresentation_arrowPrismComparison` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SmallTransportRepresentationArrowPrism.lean を同じa・同じνへ適用する法則。素60〜100・補正120〜200行、R04の短い証明分割。HTT §3.3.2・Kerodon Tag 0271。新しい数学・choose値の変更なし。分類作用と全空間側の指定eの像を、それぞれ別のaで代用しない。
+
+一覧：済み 37／全体 54（うち追加 19、別停止点 2）。
+
+### 11-18：R04-NPを完成、同じaでR04-PRへ接続
+
+R04-NPの指定底変換からのpointed同型の持ち上げは、元の台帳の完全な型への代入を含めて成功した。素180〜300行・補正360〜600の見込みに対し、全空間側のLも同時に保持するData版と元の公開の型を合わせて実測124行。既存の引き戻しの普遍性と前後合成の法則だけで短く接続でき、原典・元の指定e・型・仮定を変えていない。mainにはまだない自分の新規ファイル内の証明分割であり、mainの既存本文は変更していない。
+
+R04の短い証明分割 `NativePullbackRepresentationArrowComparison` は素60〜100に対して70行。同じaについて、全空間側のLの射影が元の指定eに一致することと、小さいunstraighteningでの分類作用の比較を同時に保持する。別々のaへの存在による代用はしていない。R04-NPとこの接続の同時対象ビルド（5,479 jobs）・6宣言の小監査、元の完全な型への代入、開始・終了・記録時SHA一致が通過。標準三公理のみ。文献属性付き。
+
+194行を追加し、累計27,964行。R04の部分計上は753行で、R04-PRの254行・R04-NPの124行とは重複しない。R04本体は未完：元の復元spanとの照合、同じ全空間側Lの元の宇宙への下降と指定余単位の比較が残る。既存の構成の法則として200行を超えるまとまりは、完全な型と見込みを台帳に追加してから進める。現在のR04の残り補正上端800による着手判定は27,964＋800＝28,764で29,000以内であり、ここは正式な停止点ではない。S7・R2・R3を再開せず、mainを取り込まず、旧R2の未追跡4本はそのまま。
+
+一覧：済み 38／全体 54（うち追加 19、別停止点 2）。
