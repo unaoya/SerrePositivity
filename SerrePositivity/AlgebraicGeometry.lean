@@ -1932,3 +1932,5 @@ public import SerrePositivity.AlgebraicGeometry.CechTripleTotalComponents
 import SerrePositivity.AlgebraicGeometry.CechTripleTotalDifferential
 
 import SerrePositivity.AlgebraicGeometry.ComplexValuedAugmentedDouble
+
+import SerrePositivity.AlgebraicGeometry.ComplexValuedDoubleCechSymmetry
