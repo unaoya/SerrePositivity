@@ -1,10 +1,10 @@
 # 現在地
 
 - 段：**KB-W1 / B6 進行中**。
-- 一覧：**済み 4／全体 10（章）**。
+- 一覧：**済み 5／全体 10（章）**。
 - 作業場所：`/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-cited`。枝：`research/cited-coverage`。pwd一致を確認し、指定の `git merge main` を実施。
 - KB-W1基準HEAD：`f35b01be9fdb8cf3c664b32123b6e8ebaf5d070f`。章ごとにコミットし、2章ごとに停止せず途中報告する。
-- 次：第5章の型と原文を再照合する。Lean・ビルド・鍵は使わない。既存 own・both・mathlib 行は変更しない。
+- 次：第6章の型と原文を再照合する。Lean・ビルド・鍵は使わない。既存 own・both・mathlib 行は変更しない。
 
 ## CC-W1 納品（停止コミット `156ac3c32`）
 
@@ -157,3 +157,13 @@ Archive のパスを宣言欄に含む4行（4.3.6.12、9.1.1.18、9.1.1.20、9.
 pinched→interval写像空間には現本体に自然な圏同値と作用の可換式があり、同じ射の同値性の比較には適用できる。一方、この同値だけで厳密pullbackやfibration性を移すものは数えない。4.3.6.12はArchiveのslice宣言を根拠から外し、現本体のcoslice側のcomponentのみとした。κによる数値的smallnessと宇宙版Smallの間の比較が型にない候補もnoneにした。
 
 旧noneからは4.5.7.12・4.5.7.14をKanな塔の重み付きHom・重みのanodyne制限に限ったspecial、4.8.5.15をn=0の合成本質的全射性に限ったspecialへ変更した。全対象の判定はreview/check/b6-ch4.md。第1〜4章計951行を完了（済み4／全体10章）。原文・型・検索はgit外、目録だけ更新。Lean・ビルド・kernel実行・鍵は使わず、停止せず第5章へ進む。
+
+### 第5章
+
+297行（旧partial179・none118）を再照合。旧partialは83行を種類つきで維持、93行をnone、3行をownへ更新。旧noneは5.3.2.18のKan値図式のhomotopy colimit比較と5.4.2.1のinterior fibrationの定義中のinner horn持ち上げ条件をpartialへ変更、116行はnone。結果はpartial85・none209・own3、種類はcomponent39・special21・stronger-hyp20・direction5。既存own・both・mathlib48行は全既存フィールドを保存した。
+
+5.3.1.7の評価のtrivial Kan fibration性、5.3.5.8のuniversal scaffoldの圏同値性は現在の型が原文全体に一致する。旧理由で要求していた追加の自然性・weighted nerveへの復元はこの項目の結論にはなく、ownとした。5.5.3.1もQCatの対象・coreのHom・豊穣合成とCatInfinityの定義がそろい、ownとした。5.1.4.13は現本体のcartesian三角形の合成と取消しを使い、底が準圏の場合のstronger-hypを確認した。
+
+通常圏のcartesian射とnerveの辺の比較、hQCat値の輸送とSet値の輸送、豊穣sliceの全coherent nerveと単一fiber、QC_Objによる積分とpointed-spaceによる積分、QC値の全表現のTWと空間値left transport witness空間は、それぞれ同じ対象・射である比較がない候補をnoneとした。特にUがleft fibrationでも任意QC値表現が同じ空間値データになるわけではなく、後者のKan性や可縮性をそのまま原文TWの特殊形とは数えない。準圏性だけを返す型も、薄い2面と指定外hornを含む∞-bicategory性の全体の代用にしなかった。
+
+全対象行の判定はreview/check/b6-ch5.md。原文・型・再検索・追加候補のソースはgit外に保存し、目録だけ更新した。Lean・ビルド・kernel実行・鍵はなし。次は第6章。

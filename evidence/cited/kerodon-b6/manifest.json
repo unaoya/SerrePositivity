@@ -1,8 +1,8 @@
 {
  "directory": "/Users/sugakubunka/serre-evidence/cited/kerodon-b6",
  "commit": "f35b01be9fdb8cf3c664b32123b6e8ebaf5d070f",
- "made_by": "KB-W1 ch4 source comparison; no Lean/build/lock",
- "note": "Completed 4 of 10 chapters",
+ "made_by": "KB-W1 ch5 source comparison; no Lean/build/lock",
+ "note": "Completed 5 of 10 chapters",
  "files": [
   {
    "path": "ch1/ch1-audit.json",
@@ -246,6 +246,96 @@
   },
   {
    "path": "ch4/view_partial.py",
+   "sha256": "6bb2f747d9eae1978c04711c9d10bcb312e12328472c853247a4822b58e24cf3",
+   "bytes": 686
+  },
+  {
+   "path": "ch5/apply_chapter.py",
+   "sha256": "367b371ecee45fe46efc6fd58f4244ed584f28ccf63d258bbdf661e276aec2ed",
+   "bytes": 4927
+  },
+  {
+   "path": "ch5/ch5-before.csv",
+   "sha256": "c57ebccc3697b6e31cec740c7ca816f4b72ba48d3b8ea1f766719c9f529b0368",
+   "bytes": 184297
+  },
+  {
+   "path": "ch5/ch5-changes.json",
+   "sha256": "63208c2c04c78111af6b6c13adca1d622f99eea834f78b6e8f8520f89a5282b2",
+   "bytes": 510248
+  },
+  {
+   "path": "ch5/ch5-decisions-part1.tsv",
+   "sha256": "45f807c02c4dc8fb0854a904a431475d54704f7ae790f99461640bb396134dda",
+   "bytes": 13150
+  },
+  {
+   "path": "ch5/ch5-decisions-part2.tsv",
+   "sha256": "8adb22ae440a05d13ad4e29eda4145e406b39bcfa8f8e12b39ee43e8ffc1c1bb",
+   "bytes": 11225
+  },
+  {
+   "path": "ch5/ch5-decisions-part3.tsv",
+   "sha256": "e00fd300522bd7ec1d3ce1a3a399b30bd6d4e8b838472b0f4d9c8530017222ec",
+   "bytes": 15185
+  },
+  {
+   "path": "ch5/ch5-decisions.tsv",
+   "sha256": "fc8073f9d756a77f96bc44c19611b8957f032d74490bae1812dda0d3c6406f5c",
+   "bytes": 81000
+  },
+  {
+   "path": "ch5/ch5-declaration-overrides.json",
+   "sha256": "eace1fbb458e009aab7fdd5b78cfd9e56125cc483c144f288ab08596b35b8365",
+   "bytes": 5607
+  },
+  {
+   "path": "ch5/ch5-extra-sources.json",
+   "sha256": "0cde882ea1b37cf814c826bb54679273cdc5edc96ce61853eddbda31c24ff658",
+   "bytes": 172597
+  },
+  {
+   "path": "ch5/ch5-none-search.json",
+   "sha256": "322d7fecc80bc09138c437c1c04796a4dbaa4d0fe18df70136362edd56ba59bb",
+   "bytes": 31224790
+  },
+  {
+   "path": "ch5/ch5-packet.json",
+   "sha256": "53714632fb51afe57c8ed4382aa88460bff124a4a0525cf58b038ed94111df71",
+   "bytes": 3148066
+  },
+  {
+   "path": "ch5/ch5-validation.json",
+   "sha256": "cc40575dd8223e1fcea9af90448d4f86c4a071664cff7186cc334847a1ceefda",
+   "bytes": 417
+  },
+  {
+   "path": "ch5/ch5-write-part1.py",
+   "sha256": "e23a2bd88604712417e0c30124e75d90cc66f8c0c6f4a9affc7140a85e42d29b",
+   "bytes": 13636
+  },
+  {
+   "path": "ch5/ch5-write-part2.py",
+   "sha256": "2a19357090d66d5f0fc91271db091350af3760e576cdc52c3463c0ce0895d348",
+   "bytes": 11704
+  },
+  {
+   "path": "ch5/ch5-write-part3.py",
+   "sha256": "887b0409791b12affeb9cd20c74409d93f7a3e8aeca68da8edefb6289edc3d3f",
+   "bytes": 15799
+  },
+  {
+   "path": "ch5/finish_ch5.py",
+   "sha256": "05e53c83ecb3d4181d26b65977236618b094f71d14280d5e290f1269acc2a306",
+   "bytes": 5404
+  },
+  {
+   "path": "ch5/search_ch5.py",
+   "sha256": "4376fb3203219873e9c23c488b1b6fda259acecc2124b1f08cc67bd8523723d9",
+   "bytes": 1447
+  },
+  {
+   "path": "ch5/view_partial.py",
    "sha256": "6bb2f747d9eae1978c04711c9d10bcb312e12328472c853247a4822b58e24cf3",
    "bytes": 686
   },
@@ -4505,5 +4595,5 @@
    "bytes": 33052
   }
  ],
- "total_bytes": 195071911
+ "total_bytes": 230492096
 }
