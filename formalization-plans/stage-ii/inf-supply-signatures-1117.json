@@ -3,7 +3,7 @@
   "source_head": "7e9743b30",
   "scope": "今回の再開範囲：元の残り1〜17項を署名へ展開。S2〜S6の過去の検収済み出力は再採番しない。",
   "count_rule": "署名のidごとに数える。200行超の照合・合成則は独立署名。小さい証明分割の法則は親署名のnoteに記録する。旧5/8はこの台帳の分母には用いない。",
-  "verified_lean_lines": 22579,
+  "verified_lean_lines": 22686,
   "final_cap": 29000,
   "checkpoint_report_lines": 28500,
   "factor": 2,
@@ -157,17 +157,44 @@
       ],
       "literature": "HTT §3.3.2（特に3.3.2.8）、Kerodon Corollary 5.6.0.6（Tag 028T）。指定構成の法則で、独立した原典の補題番号はない。",
       "bare_lines": [
+        0,
+        0
+      ],
+      "corrected_lines": [
+        0,
+        0
+      ],
+      "status": "verified",
+      "placement": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/RelativeSectionBaseChangePasting.lean",
+      "note": "",
+      "additional_mathematics": false,
+      "original_bare_lines": [
         100,
         150
       ],
-      "corrected_lines": [
+      "original_corrected_lines": [
         200,
         300
       ],
-      "status": "pending",
-      "placement": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/RelativeSectionBaseChangePasting.lean",
-      "note": "",
-      "additional_mathematics": false
+      "verification": {
+        "modules": 1,
+        "declarations": 6,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/RelativeSectionBaseChangePasting.lean": "22f1fc45773bc5c1ce1986f709b4e3e27a9a7612a719db6d734ba505a3cc80cd"
+        }
+      },
+      "actual_group_lines": 107,
+      "actual_group_ids": [
+        "P3-B1"
+      ]
     },
     {
       "id": "P3-B2a",

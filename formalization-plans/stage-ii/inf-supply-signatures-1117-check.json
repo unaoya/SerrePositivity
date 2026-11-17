@@ -3,7 +3,7 @@
   "validation": "JSON structure / rendered complete signatures / reference name at source line / Kahn topological sort",
   "lean_type_elaboration": "not run; paper signatures, unimplemented signatures not certified",
   "signature_count": 35,
-  "verified_count": 11,
+  "verified_count": 12,
   "additional_count": 0,
   "deferred_count": 2,
   "edge_count": 50,
@@ -46,22 +46,22 @@
     "R15c"
   ],
   "active_bare_lines": [
-    2190,
-    3960
+    2090,
+    3810
   ],
   "active_corrected_lines": [
-    4380,
-    7920
+    4180,
+    7620
   ],
   "deferred_corrected_lines": [
     1400,
     2600
   ],
   "active_completion_corrected_lines": [
-    26959,
-    30499
+    26866,
+    30306
   ],
-  "ledger_sha256": "1625f17bfa695165daf40a83691676f40ccab1279fb30f41ede363b97335c65a",
+  "ledger_sha256": "3b496b78e83fa531a8e1ca22a8c415cb67d0122b6aeab12f140fb56a5e3bf3e7",
   "reference_source_sha256": {
     "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/ScaffoldCoherentComparisonRestriction.lean": "18834ad39c22579d2c7160c905dd6a3090d8724b90e4fe3c4d1c7b7c8a6eb0f3",
     "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/StraighteningReconstructionRepresentationComparison.lean": "1871c7f62ab1a71d8bab1e8805db41303bb07ec49fd71bb39f02d612949e74a7",

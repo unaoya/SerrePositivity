@@ -5,9 +5,15 @@
 再採番せず、ここにある各署名IDを一つずつ数える。旧「5／8」は以後この台帳の進捗に使わない。
 小さい既存構成の法則・証明の分割は親署名内に記録するが、上端200行超は独立署名。
 
-署名35本＝検証済み11本＋未完22本＋別停止点へ切り離す2本。
-一覧：済み 11／全体 35（うち追加 0、別停止点 2）。
+署名35本＝検証済み12本＋未完21本＋別停止点へ切り離す2本。
+一覧：済み 12／全体 35（うち追加 0、別停止点 2）。
 「追加0」は元の承認済み範囲の外の新しい数学を足していない、という意味。
+
+## 最新の検証記録（P3-B1）
+
+この検証組は107行。検証済み累計22,686行。
+対象ビルド・小監査：1モジュール・6宣言、標準三公理のみ。
+証拠：`/tmp/is-w1/p3-b1/production/target-audit-result.json`（ソースSHAを照合）。元の見込みはJSONのoriginal欄にも保持。
 
 ## 型の共通環境
 
@@ -204,9 +210,9 @@ let q := smallLeftUnstraighteningProjection (leftStraighteningInfinityDiagram p)
 
 ### P3-B1 — `relativeSectionBaseChangeRealizationIso_overPre`
 
-状態：pending。依存署名：`P3-A`。
+状態：verified。依存署名：`P3-A`。
 
-素の残り：100〜150行。係数2の残り：200〜300行。
+素の残り：0〜0行。係数2の残り：0〜0行。元の見込み：[100, 150]、補正[200, 300]。実測は同じ検証組P3-B1で107行。
 
 原典：HTT §3.3.2（特に3.3.2.8）、Kerodon Corollary 5.6.0.6（Tag 028T）。指定構成の法則で、独立した原典の補題番号はない。
 
@@ -1027,4 +1033,4 @@ FunctorHom (discretePresheaf P) (discretePresheaf Q)
 
 置き場所（新規の場合の案）：`SerrePositivity/InfinityCategories/Sheaves/isSheaf_toGrothendieck_iff.lean`。
 
-一覧：済み 11／全体 35（うち追加 0、別停止点 2）。
+一覧：済み 12／全体 35（うち追加 0、別停止点 2）。
