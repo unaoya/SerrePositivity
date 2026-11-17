@@ -1,10 +1,10 @@
 # 現在地
 
-- 段：**KB-W1 / B6 完了**。
-- 一覧：**済み 10／全体 10（章）**。
-- 作業場所：`/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-cited`。枝：`research/cited-coverage`。pwd一致を確認し、指定の `git merge main` を実施。
-- KB-W1基準HEAD：`f35b01be9fdb8cf3c664b32123b6e8ebaf5d070f`。章ごとにコミットし、2章ごとに停止せず途中報告する。
-- 第1〜10章の対象2,991行を再照合し、章ごとのコミットを完了して停止。Lean・ビルド・鍵は使っていない。既存 own・both・mathlib 562行は全フィールドと既存CSVの引用符を保存。
+- 段：**KB-W2 完了、BT-W1 着手**。続いて BT-W1 を行い、二段とも完了後に停止する。
+- 一覧：HA 済み10／全体10章、HTT 済み8／全体8章、BS 済み0／全体18節。
+- 作業場所：`/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-cited`。枝：`research/cited-coverage`。pwd一致を確認し、`git merge main` を実施（開始HEAD `5d1d699f9`）。
+- 次：KB-W2 をコミットし、BS 全211項目を節ごとの review に移す。BT-W1 完了後にコミットして停止する。
+- 紙のみ。Lean変更・ビルド・kernel実行・鍵は使わない。既存own・mathlibの行は保存し、大きい証拠はgit外、目録だけコミットする。
 
 ## CC-W1 納品（停止コミット `156ac3c32`）
 
@@ -229,3 +229,38 @@ n≥0の切断とその包含のnerveによるskeletal/coskeletalの定義はspe
 全10章を元CSVと再比較し、既存own・both・mathlib562行の全既存フィールドと引用符、全行の番号・verdict・axioms・checkを含む許可外フィールド、列順・区切り・改行を保存したことを確認。partial_kindのない章には末尾列のみを追加した。正の判定の根拠にArchiveがないこと、章別記録が全10章そろうこと、差分の空白エラーがないことも静的に確認した。大きい全章検査結果はgit外のall-chapters-validation.jsonに保存した。
 
 対応表以外のLean・Archive・本体・生成器・地図・ブループリントは変更していない。調整役による取り込み後のrefresh・生成は未実行。第10章のコミット後、ここで停止する。
+
+## KB-W2：HA・HTT の none 再検索と partial の型再照合
+
+開始時にmainを取り込み、ha-htt-bs-review.mdを読んだ。基準HEADは5d1d699f9。HAは2017-09-18版（SHA-256 `112b145a95a62daefb8275851cac9ab6430004cfc8f751a33a8d981fd7ad68c3`）、HTTは2017-04-09版（SHA-256 `58855f3a0ad6d9c470ded74a38938b9468927592e9ae1209bab6a068e67ede6e`）のローカル原典PDFを目次記録と照合した。全番号の本文抽出をPDFの名前付きリンク先のページで選び直し、証明中の同番号の引用を見出しと取り違えないようにした。番号間の接続説明は本文の文脈として保存し、番号付き項目の結論と区別して読む。
+
+### HA 第0・1章
+
+247対象行を再照合した。第0章は旧partial1・none1を維持。第1章は旧partial121のうち70を維持、48をnone、3をownへ更新し、旧none124のうち2をown、122をnoneに維持した。対象外56行は全フィールドと元のCSVの引用符を保存した。状態不変を含む全対象の理由はreview/check/kb2-HA-ch0.md・kb2-HA-ch1.md。
+
+同じt-structureの頂点述語の全部分準圏、辺集合のfiltered余極限閉性、IsPresentableを同じ対象へ適用する基本定義は、専用名がないだけでnoneとしない。一方、通常導来圏やhCのt切断からC自身の∞切断への比較、半自由模型と原典の指定する有界射影模型・無界入射模型、BFスペクトルと縮約切除関手模型、ある同型と指定比較射の可逆性は区別した。noneは現在の引用索引と小節別の現本体・ロックMathlibを再検索し、OE-W1のmodule-mapおよび現行宣言索引で移動後の型を確認した。証拠の保存と段1コミットは全章完了時に行う。Lean・ビルド・kernel実行・鍵はなし。
+
+KB-W2章別の追記：HA第2章281行は own 1・partial 18・none 262、第3章166行は partial 7・none 159、第4章647行は own 4・partial 38・none 605（いずれも変更対象行だけの集計）。既存の own・mathlib は保存。第4章では原典が明示した通常圏の成分（Dold–Kan、古典的随伴からのモナド）を残す一方、Alg/Mod の operadic な構成との比較がない通常圏・厳密dg模型を落とした。特に、operad間のqに関するcoCartesian辺とFin*への合成に関するinert辺を同一視しない。また HA 4.1.5.1 の ∂2ⁿ と本体の cubeBoundary は定義が異なるため後者を正の根拠から除いた。
+
+原文抽出はPDF内部のtheorem番号とページを照合し、証明中の引用を見出しに数えない。数式中の孤立した数字を節見出しと誤認して切らないようにし、図や上付き文字が本文より先に抽出される例（HA 4.8.5.11）も前後のテキストで補った。番号付き項目の直後の無番号の説明は文脈として読み、独立した定義の対応の範囲を広げる根拠にはしない。
+
+HA第5〜7章・付録A/Bを完了。変更対象はそれぞれ494・356・398・133・67行。詳細は章別checkに記録。環スペクトル/∞代数と通常導来模型の比較が型にない行をnoneへ修正し、原文が明示する通常代数・位相の成分は個別に照合した。付録の内部リンクはatheorem番号も参照し、A.3.1とB.2.9の本文中引用を拾った抽出先を訂正した。
+
+HTT第1〜4章を完了。対象71・142・122・121行の全判定を章別checkへ記録した。第2章では共通底上のpointwise equivalenceの定義を同じfiber射で確認した。第4章では全小余極限を追加仮定する候補のpartial_kindをstronger-hypに改め、right anodyneという候補だけからcontravariant modelの同値を主張していた4.4.4.5をnoneに修正した。
+
+## KB-W2：HA・HTT の partial / none 再照合
+
+開始前に main を merge（`5d1d699f9`）。HA 0–7・A・B、HTT 1–5・7・A・6 の順に、開始時 partial 756行と none 3,521行、計 **4,277行**を原文と現本体・ロックMathlibの型で再照合した。章別記録は各表の `review/check/kb2-HA-ch*.md`・`kb2-HTT-ch*.md`。第6章の直前にも main を merge（`60fe949a7`）したが、③-a の HTT 6.2 は未投入なので、同章に「③-a の取り込み待ち」を記録した。
+
+| 表 | 章 | own | mathlib | partial | none |
+| --- | --- | --- | --- | --- | --- |
+| HA | 10/10 | 50 | 39 | 214 | 2,563 |
+| HTT | 8/8 | 195 | 50 | 296 | 1,189 |
+
+遷移は HA：partial→none 267、partial→own 5、none→own 7、none→partial 21。HTT：partial→none 5、none→own 3、none→partial 10。維持行の理由と partial_kind も確認した。既存 own・mathlib 計319行は **全フィールド・引用符・改行を保存**し、対象行の番号・axioms・check も不変。対象外の問題票に追加候補はないが、その319行を全件再監査したという意味ではない。
+
+判断例：HA 7.1.2.6/7、HTT 5.4.1.7 は iff 条件に現れる概念の定義だけでは必要性・十分性を証明しないため none。HA 4.1.5.1 の cube boundary は両端を含まない単体という原文と異なるため、その候補を外した。通常の dg 代数・層・WFS から、指定された∞圏との比較なしに∞圏の結果を partial と数えない。一方、原文が列挙する定義の同じ対象の条件を直接表すものは component、実際の同じ射・関手に追加仮定を置く条件付きの結果は stronger-hyp とし、条件の実在までは主張しない。
+
+OE-W1 module-map と KL-W1/B3/B3′ の移動後の所在を参照して再検索した。名前・型・行番号の最終照合では旧 EInfinity 名前空間と互換 alias の旧位置も訂正。大きい証拠は `~/serre-evidence/cited/kb-w2/review-evidence.tar.gz`、目録は `evidence/cited/kb-w2/manifest.json`。検索は各開始時 none 行へのクエリの割当・終了コードを確認したもので、全ヒットの形式検証や不在の数学的証明ではない。
+
+静的確認：18章の全行・全対象・保護行のliteral保存・許可した4列以外の不変・partial_kindの整合・正の根拠の現ファイル実在・Archive/drafts排除・再検索の対象漏れなしを確認。axioms/check は既存記録であり今回のkernel結果ではない。Lean変更・ビルド・kernel・鍵はなし。
