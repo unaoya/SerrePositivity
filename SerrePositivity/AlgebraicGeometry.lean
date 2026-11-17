@@ -2000,3 +2000,65 @@ import SerrePositivity.AlgebraicGeometry.PerfectFrobeniusDirectLimit
 import SerrePositivity.AlgebraicGeometry.PerfectFrobeniusCechComparison
 
 import SerrePositivity.AlgebraicGeometry.PerfectAffineVCoverCech
+
+import SerrePositivity.AlgebraicGeometry.ArcRouteB.Definitions
+
+import SerrePositivity.AlgebraicGeometry.ArcRouteB.CoverLaws
+
+import SerrePositivity.AlgebraicGeometry.ArcRouteB.FrobeniusPerfect
+
+import SerrePositivity.AlgebraicGeometry.ArcRouteB.UniversalCech
+
+import SerrePositivity.AlgebraicGeometry.ArcRouteB.ModelUnder
+
+import SerrePositivity.AlgebraicGeometry.ArcRouteB.IntervalSpectrum
+
+import SerrePositivity.AlgebraicGeometry.ArcRouteB.FpResiduePoint
+
+import SerrePositivity.AlgebraicGeometry.ArcRouteB.BaseChangeComparison
+
+import SerrePositivity.AlgebraicGeometry.ArcRouteB.EndpointSections
+
+import SerrePositivity.AlgebraicGeometry.ArcRouteB.ProbeTerms
+
+import SerrePositivity.AlgebraicGeometry.ArcRouteB.IntervalPoints
+
+import SerrePositivity.AlgebraicGeometry.ArcRouteB.ProbeComparison
+
+import SerrePositivity.AlgebraicGeometry.ArcRouteB.FilteredUniversalCech
+
+import SerrePositivity.AlgebraicGeometry.ArcRouteB.PerfectedModelDiagram
+
+import SerrePositivity.AlgebraicGeometry.ArcRouteB.PerfectedModelCocone
+
+import SerrePositivity.AlgebraicGeometry.ArcRouteB.PerfectedModelColimit
+
+import SerrePositivity.AlgebraicGeometry.ArcRouteB.OverlapComplex
+
+import SerrePositivity.AlgebraicGeometry.ArcRouteB.IntervalTensorComparison
+
+import SerrePositivity.AlgebraicGeometry.ArcRouteB.IntervalRestrictions
+
+import SerrePositivity.AlgebraicGeometry.ArcRouteB.LocalExtensions
+
+import SerrePositivity.AlgebraicGeometry.ArcRouteB.OverlapShortExact
+
+import SerrePositivity.AlgebraicGeometry.ArcRouteB.BaseChangeArrowComparison
+
+import SerrePositivity.AlgebraicGeometry.ArcRouteB.IntervalCoefficientPerfect
+
+import SerrePositivity.AlgebraicGeometry.ArcRouteB.OverlapCoefficientDetection
+
+import SerrePositivity.AlgebraicGeometry.ArcRouteB.UniversalOverlap
+
+import SerrePositivity.AlgebraicGeometry.ArcRouteB.IntervalGluing
+
+import SerrePositivity.AlgebraicGeometry.ArcRouteB.PerfectedFpArc
+
+import SerrePositivity.AlgebraicGeometry.ArcRouteB.AicValuationArc
+
+import SerrePositivity.AlgebraicGeometry.ArcRouteB.UniversalUltraproduct
+
+import SerrePositivity.AlgebraicGeometry.ArcRouteB.AicProductArc
+
+import SerrePositivity.AlgebraicGeometry.ArcRouteB.ArcCoverCech
