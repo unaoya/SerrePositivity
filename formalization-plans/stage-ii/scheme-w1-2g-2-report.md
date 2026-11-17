@@ -3611,3 +3611,12 @@ private def pairedRowEvaluationIso
         (HomologicalComplex.eval (ModuleCat.{u} ℤ) up b)).obj
           (AugmentedSimplexCategory.equivAugmentedCosimplicialObject.functor.obj F)
 ```
+
+## 2026-11-17：アフィン細分から元の普遍降下への反映（084ba49cb）
+
+- D06を同じ型・仮定で実装。新規73行＋入口2行＝75行、所有2宣言。原稿・本体の同一バイトとSHA、対象ビルド5,404ジョブと直接importer、別の共有鍵の所有監査が成功。標準三公理以外0。
+- 元の合成のnerveの第一射影から正次数の列の切断を作り、F04へ渡す。正次数の行は元の合成の普遍降下性の底変換をF06へ渡す。同じ二変数図式の零次軸をC11・P20・P21で照合する。D07に依存せず、細分の消去と合成則の循環はない。
+- 累計23,453行（新規305モジュール23,077行、既存追加25行、入口351行）。所有宣言累計2,508件、既存15件は別。残り9署名の素の合計303〜726行へ係数2、登録等の予備100〜250行を加えた完成見込み24,159〜25,155行。28,000行以内。
+- 一覧：済み1／全体3（うち追加0）。内部署名：済み80／89（G4・G5）、追加0。次はF10・F11・D07の相対fppfの合成の消去。一般の固有・v降下は未完成。
+
+- D06 `SerrePositivity.AlgebraicGeometry.perfectCechUniversalDescent_of_affine_refinement`：アフィンな合成の普遍Čech降下性から、元の射の普遍Čech降下性を同じ全ての試験基底・被覆で得る。
