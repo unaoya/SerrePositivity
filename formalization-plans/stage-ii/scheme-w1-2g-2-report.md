@@ -3320,3 +3320,12 @@ main `6aa6d7152` の指示書末尾を `git show` で読み、今回のユーザ
 - E12 `SerrePositivity.AlgebraicGeometry.frobeniusArrowFamilyColimitIso`：模型の実際のFrobenius順極限の余極限と、元の矢印の実際のFrobenius順極限との標準同型。
 - E13 `SerrePositivity.AlgebraicGeometry.frobeniusArrowFamilyColimitIso_ι`：その標準同型は各模型の元の脚の実際のFrobenius写像を保つ。
 - E14 `SerrePositivity.AlgebraicGeometry.frobeniusCechExact_of_filtered_arrow_models`：各段の実際の完全化のČech完全性から、同じfiltered余錐の元の矢印の完全化のČech完全性を得る。
+
+## 2026-11-17：三重totalの成分比較（3414c5e93）
+
+- C01・C02を同じ型・宇宙で実装。新規1モジュール114行＋入口1行＝115行。原稿と本体の同一バイト、対象ビルド5,379ジョブと直接importer、別の共有鍵での所有37宣言の監査が成功。標準三公理以外0。
+- 累計20,651行（新規280モジュール20,325行、既存追加25行、入口301行）。所有宣言累計2,291件、既存15件は別。残り44署名の素の見込み1,469〜2,962行、係数2で2,938〜5,924行。完成見込み23,589〜26,575行、外枠28,000行以内。
+- 一覧：済み1／全体3（うち追加0）。内部署名：済み45／89（G4・G5）、追加0。次はC03の微分との可換性とC04・C05の同型・自然性。
+
+- C01 `SerrePositivity.AlgebraicGeometry.cechTripleTotalComponentIso`：複体値の二重複体の二つの三重totalを、元の三次数の同じ直和を介して次数ごとに同型にする。
+- C02 `SerrePositivity.AlgebraicGeometry.cechTripleTotalComponentIso_ι`：その成分同型は元の三次数の標準入射を保つ。
