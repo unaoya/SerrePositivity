@@ -1,10 +1,10 @@
 # 現在地
 
 - 段：**KB-W1 / B6 進行中**。
-- 一覧：**済み 6／全体 10（章）**。
+- 一覧：**済み 7／全体 10（章）**。
 - 作業場所：`/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-cited`。枝：`research/cited-coverage`。pwd一致を確認し、指定の `git merge main` を実施。
 - KB-W1基準HEAD：`f35b01be9fdb8cf3c664b32123b6e8ebaf5d070f`。章ごとにコミットし、2章ごとに停止せず途中報告する。
-- 次：第7章の型と原文を再照合する。Lean・ビルド・鍵は使わない。既存 own・both・mathlib 行は変更しない。
+- 次：第8章の型と原文を再照合する。Lean・ビルド・鍵は使わない。既存 own・both・mathlib 行は変更しない。
 
 ## CC-W1 納品（停止コミット `156ac3c32`）
 
@@ -177,3 +177,15 @@ pinched→interval写像空間には現本体に自然な圏同値と作用の�
 同じ原文の一方向・結論成分を返さない候補はnoneとした。例は、6.2.2.16のreflectorによる反転判定とcoslice制限の五条件、6.3.2.9のwalking equivalenceを貼る模型と指定Qを貼る模型、6.3.6.4〜6.3.6.5の初頂点射と最終頂点を経由する指定射。模型圏由来の6.2.5.4・6.2.5.7は指定cf collageと輸送の型も読み、§6に従いModelCategory・SM7等の入力と具体例のinstanceなしを明記した条件つきpartialのまま。
 
 第1〜6章の計1,362対象行を完了（済み6／全体10章）。全件表はreview/check/b6-ch6.md、原文・全候補型・再検索と追加ソースはgit外に保存し目録だけ更新。Lean・ビルド・kernel実行・鍵はなし。そのまま第7章へ進む。
+
+### 第7章
+
+473行（旧partial299・none174）を原文と型で再照合。旧partialは138行を種類つきで維持、151行をnone、10行をownへ更新。旧noneは7行をpartialへ変更、167行はnone。結果はpartial145・none318・own10、種類はcomponent58・stronger-hyp44・special36・direction7。既存own・both・mathlib46行の全既存フィールドは保存した。
+
+同じ全錐・全余錐のFunctorIsoによる移送（7.1.3.19）、点ごとの余極限の存在と指定余錐の判定（7.1.8.3）、左右anodyneの取消し（7.2.1.7）、opと積の厳密な比較によるleft cofinal性（7.2.1.19・7.2.1.20）は現本体の型を合成して原文全体を得るのでown。7.3.5.8は既存の右Kan存在判定も合わせて両側を満たす。7.3.8.3・7.3.8.20は同じ包含への左Kan条件から余極限の制限・存在のiffを得る。7.5.2.1はweighted nerve上のcocartesianSectionsという実際の全部分準圏の構成、7.5.4.4はBK比較の自然性と二つから三つの性質で同じ三条件の判定を与える。
+
+原文が指定する写像空間同値をh FunのHom集合の全単射だけで代用するもの、全関手準圏の結果を比較なしにファイブレーションのsection準圏へ移すもの、通常圏のMono・IsPullback・van Kampen条件を∞圏の対応する述語と比較する型がないものはnone。全局所余錐から関手制限の境界充填を得る部品だけも、全関手が点ごとにleftKanExtendedFromであるという結論と同一視しなかった。相対余極限の絶対化はU=idでなく終対象への射であると訂正した。7.5.4.12は新しいgeneral_reflectionの型により、古いlim比較同値などの余分な仮定が不要なKan値のspecialへ更新した。
+
+旧noneからはrepleteを加えた反射部分圏の終対象（7.1.4.34）、monoかつstrict pushoutでのleft cofinal性（7.2.1.16）、指定comma相対余極限も入力する左Kan延長（7.3.5.10・7.3.5.11）、保存関手の頂点条件（7.6.6.5）、Spaceのfiltered余極限と有限極限の交換という条件(3)の特殊形（7.7.7.1・7.7.7.2）をpartialとした。
+
+計1,835対象行を完了（済み7／全体10章）。全件表はreview/check/b6-ch7.md。公式原文・全候補型・none全174行を含む再検索・追加ソースと決定過程はgit外の章別証拠、目録のみ更新。Lean・ビルド・kernel実行・鍵はなし。第8章へ続ける。
