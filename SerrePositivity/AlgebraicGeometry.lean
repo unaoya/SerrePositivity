@@ -1972,3 +1972,5 @@ import SerrePositivity.AlgebraicGeometry.BlowupPerfectCechBaseChangeModel
 import SerrePositivity.AlgebraicGeometry.BlowupPerfectCechUniversalDescent
 
 import SerrePositivity.AlgebraicGeometry.PairedPerfectCechBaseChangeColumns
+
+import SerrePositivity.AlgebraicGeometry.PairedPerfectCechSectionColumns
