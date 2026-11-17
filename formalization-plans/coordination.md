@@ -101,6 +101,23 @@
 | DG・論文の層 | 閉じた |
 | 段階 II の新しいレーン（11-07）：⑤a・⑤b・⑥・Kerodon の確認が稼働。① は止めている。③ は KL-W1 の後 | 11-05 夜：計画の確定。開始文は [stage-ii/lane-starts.md](stage-ii/lane-starts.md)、指示書は `stage-ii/`（①IC-W1、③IS-W1、⑥SC-W1）。⑤は W11（§6 の追記）|
 
+### 4.1 レーンの閉鎖と作業木の整理（2026-11-17、ユーザー決定）
+
+動いているレーン（③-a `math/inf-supply`・⑥ `math/scheme`・③-b `refactor/organize-einfinity`）はそのまま。それ以外は閉じた。
+
+| 閉じたレーン | 枝・作業木 | 残したもの |
+| --- | --- | --- |
+| ⑤a BS 実装（W16） | `math/bs-impl`・`SerrePositivity-bs-impl` を削除。タグ `archive/math-bs-impl-2026-11-17`（紙の記録 6 commit と未検証の L23 の下書き） | 報告は `bhatt-scholze/reports/report-codex-w16.md`（現在地）と `archive/reports/` |
+| ⑤d M15・G12 | `math/bs-m15`・`codex/paper-coverage`（取り込み済み）・`SerrePositivity-bs-m15` を削除 | 報告は `report-codex-m15.md`。G12 の続きは D81 の後に別の指示書で |
+| 一括（KL-W1 のチャット） | `codex/bulk-5inf3a`・`bulk/*`・`refactor/kerodon-layout`（取り込み済み）・`SerrePositivity-kerodon-layout`・`/private/tmp` の比較用の木を削除 | B3′・B5 の残りは再開時に新しい枝で。証拠は `evidence/bulk/` |
+| 紙の作業（⑤a・⑤d の P⁰ 系、DAG/NS、本論文の対応表） | `codex/p0-*`・`research/dag13-ns-coverage`・`math/p0-p4-p6` と作業木を削除 | 成果は `research/` と `stage-ii/p0/` |
+| 調査（Kerodon の確認） | `research/kerodon-review-c`・作業木を削除。`research/kerodon-review-a` はタグ `archive/research-kerodon-review-a-2026-11-17` を打って削除 | 対応表は `research/kerodon-coverage/` |
+| 文書（整理・ブループリント） | `docs/reorg-stage1`・`docs/kerodon-blueprint` は main に入れて削除 | `blueprint/`、`formalization-plans/doc-reorg/` |
+
+**規則**：作業木はレーンごとに一つ、名前はレーン（`SerrePositivity-<レーン>`）。枝は main に入れたら消す。保存比較の「前」の木（`/private/tmp`）は段の終わりに消す。取り込まない枝はタグ（`archive/<枝>-<日付>`）を打ってから消す。`/private/tmp/oe-w1-before-30ae8948f` は ③-b の OE-W1 段 1 の保存比較が終わるまで残す。
+
+BR55（choose の洗い出し）と ⑤a・⑤d に残っていた課題（M14 の L23 以降、G12 の D81 後の扱い）は、再開するときに新しいレーンとして開く。
+
 ## 5. 段階 I から引き継ぐ要点
 
 - 整理の結果：DG 1,592 → 126 本、論文の層の区切りはすべて完了、∞ は中核層間の順序違反 0・直接の禁止辺 0・中核の閉包の KST とモデル圏 150 → 74（残りは M16）、F-2 で KST から移した 730 モジュールの名前空間をディレクトリに合わせた（改名表 `../scripts/refactor/targets/f-namespace-map.json`、旧名は deprecated alias で段 G の最初の区切りまで残す）。
