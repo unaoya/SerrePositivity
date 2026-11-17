@@ -6617,3 +6617,25 @@ isLimitCone_of_covariantRepresentableInfinityを再利用し、追加を220〜42
 この紙を保存したらLeanを再開せず止まって報告する。
 S7・R2・R3は再開しない。S1を普遍降下性つきへ弱めず、S8をpresentable係数だけへ縮めない。
 一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+
+## 27,000 行で再開、残り第1項の検証（11-17）
+
+mainの指示書末尾「5∞-1 の外枠を 27,000 行に」を読み、承認を確認した。
+mainは取り込まず、残り17項目の一覧で再開。S7・R2・R3は再開しない。
+chooseの表は指定どおり枝に保持し、取り込み時の移動は調整役に残す。
+
+第1項 scaffoldCoherentComparison_scaffoldIso を新規ファイル
+ScaffoldCoherentComparisonRestriction.lean（57行）で検証した。
+元の相対制限同型をvertexFiberιで忘却し、同じembeddingへ制限して、
+source_restriction・weighted_restrictionで端点だけを移す。
+既存の型・仮定・本文を変更せず、新しいchooseの置換なし。
+対象ビルドexit 0、小監査1宣言は標準三公理のみ、exit 0。
+証拠：/tmp/is-w1/s8-scaffold-restriction-1.log と
+/tmp/is-w1/s8-scaffold-restriction-1/{audit.log,source-sha.json}。
+
+検証済み累計21,567行、新規340モジュール＋承認された既存3ファイルの差分。
+17項目の証明分割は1まで検証済み、元の数学的な一覧の数は変わらない。
+次は第2項：同じ表現空間のpointed比較と指定したunstraighteningの射作用を、
+元の復元射の相対同型へ接続する。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
