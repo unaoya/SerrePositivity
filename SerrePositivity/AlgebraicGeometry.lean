@@ -1922,3 +1922,4 @@ public import SerrePositivity.AlgebraicGeometry.NilImmersionPerfectCechPullback
 public import SerrePositivity.AlgebraicGeometry.PairedCechGeometry
 public import SerrePositivity.AlgebraicGeometry.NilBaseChangePerfectCech
 public import SerrePositivity.AlgebraicGeometry.PairedCechGeometryMaps
+public import SerrePositivity.AlgebraicGeometry.PairedCechOpenNaturality
