@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.CarrierFramedLimitProbe
 public import SerrePositivity.EInfinity.BarrattEccles.CarrierRightSimplicialCones
-public import SerrePositivity.EInfinity.FrameHom.MixedFrameSource
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedFrameSource
 
 /-!
 # 右 frame の錐の始域の射と二変数の関手
@@ -27,7 +27,7 @@ namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory Opposite
 open SerrePositivity.DifferentialGraded
 open SerrePositivity.DiagramModel
-open SerrePositivity.EInfinity.FrameHom.MixedFrame
+open _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedFrame
 
 variable (A : Type u) [CommRing A] (K : Type u) [SmallCategory K]
 
@@ -40,7 +40,7 @@ def carrierFramedLimitConeBifunctor :
   (carrierFramedLimitProbeFunctor A).op ⋙
     ((carrierRightFrameDiagramFamily A K).rightOp ⋙ FrameWeightRealization.homFamily Kᵒᵖ).flip ⋙
       (Functor.whiskeringRight (K ⥤ (operad A).Algebra) (Kᵒᵖᵒᵖ ⥤ SSet.{u}) SSet.{u}).obj
-        (WeightedCones.coneSpace Kᵒᵖᵒᵖ (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K))
+        (WeightedCones.coneSpace Kᵒᵖᵒᵖ (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.framedLimitWeight K))
 
 /-- 概要：二変数の関手は既存の同じ右錐を回収する（Hovey §5）。
 方針：反転した Hom 族の評価を展開する。
@@ -64,7 +64,7 @@ abbrev carrierFramedLimitConeSourceMap {Y Z : Complex A} (f : Y ⟶ Z) :
 lemma carrierFramedLimitConeSourceMap_app {Y Z : Complex A} (f : Y ⟶ Z)
     (F : K ⥤ (operad A).Algebra) :
     (carrierFramedLimitConeSourceMap A K f).app F =
-      (WeightedCones.coneSpace Kᵒᵖᵒᵖ (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K)).map
+      (WeightedCones.coneSpace Kᵒᵖᵒᵖ (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.framedLimitWeight K)).map
         ((FrameWeightRealization.hom Kᵒᵖ (carrierRightFrameDiagram A K F)).map
           ((carrierFramedLimitProbeFunctor A).map f).op) := rfl
 
@@ -76,6 +76,6 @@ abbrev carrierRightSimplicialHomSourceMap {Y Z : Complex A} (f : Y ⟶ Z)
     (F : K ⥤ (operad A).Algebra) :
     carrierRightSimplicialHomDiagram A K Z F ⟶ carrierRightSimplicialHomDiagram A K Y F :=
   Functor.whiskerLeft (F ⋙ carrierRightSimplicialFrameFamily A)
-    (rightSourceMap ((carrierFramedLimitProbeFunctor A).map f))
+    (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedFrame.rightSourceMap ((carrierFramedLimitProbeFunctor A).map f))
 
 end SerrePositivity.EInfinity.BarrattEccles

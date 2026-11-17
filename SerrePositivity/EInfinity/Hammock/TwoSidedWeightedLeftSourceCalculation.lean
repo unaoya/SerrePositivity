@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.TwoSidedWeightedLeftSourceIso
-public import SerrePositivity.EInfinity.FrameHom.ThomasonNerveMap
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ThomasonNerveMap
 
 /-!
 # 元の重み付き始域同型と一方向比較の単体ごとの照合
@@ -23,30 +23,30 @@ open SerrePositivity.KST.ProExcision
 
 variable {W : Type u} [Category.{u} W] (F : Wᵒᵖ ⥤ Cat.{u, u}) (S : W ⥤ Type u)
 
-def reverseLabels (n : ℕ) : FrameHom.Thomason.values F n ⟶
-    FrameHom.Thomason.values (F ⋙ Cat.opFunctor) n where
+def reverseLabels (n : ℕ) : _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.values F n ⟶
+    _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.values (F ⋙ Cat.opFunctor) n where
   app w := ↾fun a => nerveOppositeSimplex a
   naturality w w' h := by apply ConcreteCategory.hom_ext; intro a; rfl
 
 def barSimplex {n : ℕ} (e : ComposableArrows (ContravariantThomason.labels F S n) n) :
     ComposableArrows
-      (FrameHom.Thomason.values (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedMixedLabel.pulledDiagram F S) n).Elements n :=
+      (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.values (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedMixedLabel.pulledDiagram F S) n).Elements n :=
   oppositeNerveSimplex (e ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedElements.map (reverseLabels F n) (𝟙 S) ⋙
-    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.toOpposite (FrameHom.Thomason.values (F ⋙ Cat.opFunctor) n) S)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.toOpposite (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.values (F ⋙ Cat.opFunctor) n) S)
 
 lemma spaceIso_hom_app (n : ℕ) (e : ComposableArrows (ContravariantThomason.labels F S n) n) :
     (spaceIso F S).hom.app (op (SimplexCategory.mk n)) e =
       SSet.opObjEquiv.symm (barSimplex F S e) := rfl
 
 lemma simplex_transport {n : ℕ} (e : ComposableArrows (ContravariantThomason.labels F S n) n) :
-    FrameHom.Thomason.simplex (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedMixedLabel.pulledDiagram F S) (barSimplex F S e) =
+    _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.simplex (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedMixedLabel.pulledDiagram F S) (barSimplex F S e) =
       oppositeNerveSimplex
         (TwoSidedWeightedLeft.simplex F S e ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedMixedLabel.fromMixed F S) := by
   refine CategoryTheory.Functor.ext (fun _ => rfl) ?_
   intro i j h
   simp only [eqToHom_refl, Category.id_comp, Category.comp_id]
   refine Grothendieck.ext _ _ rfl ?_
-  dsimp only [FrameHom.Thomason.simplex, barSimplex, reverseLabels,
+  dsimp only [_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.simplex, barSimplex, reverseLabels,
     oppositeNerveSimplex, nerveOppositeSimplex, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.toOpposite,
     _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.baseElementMap, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedMixedLabel.fromMixed, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedMixedLabel.fromMixedMap,
     TwoSidedWeightedLeft.simplex, ContravariantThomason.simplex,

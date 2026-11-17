@@ -19,7 +19,7 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 namespace SerrePositivity.InfinityCategories.Project.ModelCategoryComparison
-open CategoryTheory CategoryTheory.Limits HomotopicalAlgebra
+open CategoryTheory CategoryTheory.Limits _root_.HomotopicalAlgebra
 
 lemma paddedThreeComparison_as_outer {D : Type uH} [Category.{vH} D] (F : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word ⥤ D)
     [HasColimit (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.paddingFunctor ⋙ F)] :

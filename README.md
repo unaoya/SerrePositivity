@@ -82,8 +82,8 @@ layers, and no KST, dg or E∞ code (one remaining model-category dependency, it
 - `DifferentialGraded/`, `EInfinity/`, `HomotopicalAlgebra/`, `Spectra/`, `KST/`: dg categories, E∞-algebras, model categories and spectra, K-theory.
 - `Inputs/`: the two deferred K-theory statements and compatibility entries.
 - `Archive/`: tracked but not built (superseded developments).
-- `formalization-plans/`: the stage II plan, coordination rules and the plans of each area; `archive/` holds finished plans and instructions.
-- `exposition/`, `research/`, `paper/`: Japanese exposition, research notes, the preprints.
+- `formalization-plans/`: plans, instructions and lane reports (index at the top of its README); `archive/` holds finished plans, `archive/stage-i/` the stage I plans, `archive/reports/` the finished stages of lane reports.
+- `research/`, `blueprint/`, `exposition/`, `evidence/`, `paper/`: see **Documents** below; the preprints.
 - `scripts/`: audits (`scripts/audit/`, `scripts/audit_*.lean`) and the refactoring tools (`scripts/refactor/`).
 
 ## Conventions
@@ -146,7 +146,23 @@ is [formalization-plans/stage-ii-plan-draft.md](formalization-plans/stage-ii-pla
 - Smaller items: extending the Koszul multiplicity formula to finite modules; restating Lemma 5.4 over an abstract
   tower-compatible length.
 
-## Documents and generated files
+## Documents
+
+Human-readable text lives in four places. Each may cite only what is listed (rule of 2026-11-17; the
+earlier note is in `formalization-plans/doc-reorg/README.md`):
+
+| Place | Role | May cite | Cited by |
+| --- | --- | --- | --- |
+| Lean docstrings | the claim, the source numbering (HTT 5.5.2.9, a Kerodon tag, "BS Lemma 2.15"), proof idea, use sites | the literature only | everything |
+| `research/` | the data: coverage tables per source (`*-coverage/review*.csv`), item closures (`p0-lurie/`), map pages (`*/map/`), audits | the literature and Lean | `blueprint/`, `exposition/`, `formalization-plans/` |
+| `blueprint/` | the generated human-readable account (Verso Blueprint): chapters per source, nodes bound to Lean declarations; later also the essays | generated from `research/` and Lean; hand-written facts are not kept here | `exposition/` (until unified), `formalization-plans/` |
+| `exposition/` | the older Japanese expositions; **frozen since 2026-11-17**, to be absorbed into `blueprint/` (see `exposition/README.md` for the classification) | the literature, Lean, `blueprint/` | `formalization-plans/` |
+| `formalization-plans/` | plans, instructions, lane reports, decisions, ledgers | anything | nothing: no other place relies on a plan for a fact |
+
+Verification evidence (collections, logs, comparison outputs) is not a document; existing files are under
+`evidence/`, new ones stay outside git with a manifest committed (`evidence/README.md`).
+
+## Generated files
 
 TeX is the source of the exposition and of the research notes; the PDF next to each source is the
 generated viewing copy. After changing a TeX file, regenerate with

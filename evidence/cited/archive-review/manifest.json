@@ -1,0 +1,154 @@
+{
+ "directory": "/Users/sugakubunka/serre-evidence/cited/archive-review",
+ "commit": "7c2528f6594b63074e7955f2f0c57db15ace4e2e",
+ "made_by": "AR-W1 final: inventory.py; live-scan.py; review.py; dg-wrapper-audit.py; audit.py; source-only review, no Lean execution",
+ "note": "85 groups, 1871 files; 70 FilteredExchange groups; 420 selected types; 67 groups undecidable; interim evidence preserved at root, final evidence in final/",
+ "files": [
+  {
+   "path": "base-head.txt",
+   "sha256": "e6989dee905d69565b550fd4da376f991596c4864448993678159b9ca13425d4",
+   "bytes": 41
+  },
+  {
+   "path": "final/audit.py",
+   "sha256": "9870ec7f9a05abf6d4b3f55b36a3b720f0d8d149f5dec5e5368c78f06cc21da0",
+   "bytes": 4802
+  },
+  {
+   "path": "final/base-head.txt",
+   "sha256": "e6989dee905d69565b550fd4da376f991596c4864448993678159b9ca13425d4",
+   "bytes": 41
+  },
+  {
+   "path": "final/dg-named-wrapper-comparisons.md",
+   "sha256": "30ac0114deaecf53a22e1ad40d57eb7b9871692493059bb6131a585f74090d65",
+   "bytes": 31508
+  },
+  {
+   "path": "final/dg-wrapper-audit.py",
+   "sha256": "5d761971dbdb67e1d4669dff1be792b32c46eb03958a8147a274ef224ed3c361",
+   "bytes": 2321
+  },
+  {
+   "path": "final/filtered-exchange-inventory.md",
+   "sha256": "a71b10baa11946495430261c1b4d1b43e297a86ebe9fa435212c8c6852b3fabb",
+   "bytes": 65502
+  },
+  {
+   "path": "final/groups-skeleton.csv",
+   "sha256": "ed567c1ff7c9da04e782c9eb80abb5fa58fa3f78d0a3d853c8360df081b410ed",
+   "bytes": 44526
+  },
+  {
+   "path": "final/imports-status.json",
+   "sha256": "bc51e5ea4c5b8cc5ff4e89adb04243f22a5f8e4e49fc1353ae521268d9a42d9a",
+   "bytes": 394487
+  },
+  {
+   "path": "final/input-hashes.json",
+   "sha256": "1dad038cf5749880221550306ab0e18af7d1bb21386ec5afdac625a60a0d9f3d",
+   "bytes": 2779
+  },
+  {
+   "path": "final/inventory.json",
+   "sha256": "cc5c9031b792940e939856fd1326931c51135dcc1d80530714f5e5832b9a9d5c",
+   "bytes": 4602850
+  },
+  {
+   "path": "final/inventory.py",
+   "sha256": "d7c7be04307938a700aa3d00b1d661a9e42a0cfb4f3c9c9af0f219949a427f95",
+   "bytes": 10827
+  },
+  {
+   "path": "final/kerodon-reference-rows.json",
+   "sha256": "1ee909736612078684963097c8670ad36878bc49dc6d74fffc021e17eb1e76d2",
+   "bytes": 4443
+  },
+  {
+   "path": "final/kerodon-source-filtered.txt",
+   "sha256": "a8976cfc8d8b2cd69a41353673953509e510a7b6579c720ba5254c6525df387f",
+   "bytes": 19779
+  },
+  {
+   "path": "final/kerodon-source-web.txt",
+   "sha256": "f8326a9a14cb7e651a78fe1eafd2df46f7ccd4b9a84706d8f3095886afe00bb1",
+   "bytes": 10582
+  },
+  {
+   "path": "final/live-archive-imports.json",
+   "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+   "bytes": 3
+  },
+  {
+   "path": "final/live-name-matches.json",
+   "sha256": "819e866a9fb6c343b89abbcdc40072c04a7c6fdc1fceacea3aaaccd742b7b690",
+   "bytes": 37518
+  },
+  {
+   "path": "final/live-scan.py",
+   "sha256": "e5d605e83084b88e6d42621a08924f303c7ec6d56a013b9e00e9101d12196470",
+   "bytes": 2730
+  },
+  {
+   "path": "final/live-type-comparisons.json",
+   "sha256": "4327c912f13020e355860627fc67b7bfd37717a157b9348b67f93cf03854dccb",
+   "bytes": 42377
+  },
+  {
+   "path": "final/output-hashes.json",
+   "sha256": "ea357db2d392b996159993493d31b439303df90005fd1fd02328b03948ba8d27",
+   "bytes": 587
+  },
+  {
+   "path": "final/recommendation-counts.json",
+   "sha256": "9d7ff70715a459c517337e665eb000c84fd85c17a5eff87af987fc83c6107f48",
+   "bytes": 296
+  },
+  {
+   "path": "final/review.py",
+   "sha256": "00bb59c0e413530d93d2ca9cff84f78a394c169e2d8943f8b903ae2df22a09c6",
+   "bytes": 17724
+  },
+  {
+   "path": "final/selected-types.md",
+   "sha256": "8e92304a54a5ef1fedce304191e11da85a6f379411d1b5da6bd0be5f7c6c1281",
+   "bytes": 608296
+  },
+  {
+   "path": "final/selected.json",
+   "sha256": "75ec5edc453414ca17612bf3ced38f00f33fdc7e743c6e3926500694c58afa28",
+   "bytes": 255151
+  },
+  {
+   "path": "final/statements.tsv",
+   "sha256": "39a2db2e80e48b645c1c5341ddc7a13d7b25a3f8764c18002c9dfc72fc890b69",
+   "bytes": 29348
+  },
+  {
+   "path": "final/validation.json",
+   "sha256": "5de07037295c62b39b783fc1f3cdb5f3ed256e0f3faff952666c1f699d6892b3",
+   "bytes": 892
+  },
+  {
+   "path": "inventory.json",
+   "sha256": "d2e54068626254c6649429867fb8452a2cf54da5a57698efe23cfdcf34d598f0",
+   "bytes": 4588081
+  },
+  {
+   "path": "inventory.py",
+   "sha256": "a19b7a98a36b34863759bf7442276752f0ddc18d5f2cb9080984a3b73eb6c16c",
+   "bytes": 10456
+  },
+  {
+   "path": "selected-types.md",
+   "sha256": "a5faca347faac7a4013dfbd93334da44d4382ee1148fba282ea4ea0094dada2f",
+   "bytes": 600634
+  },
+  {
+   "path": "selected.json",
+   "sha256": "1f9cab7c932d602dc7f9796d05b1b823ae1431da96fd9c303f409d6e3748ab0c",
+   "bytes": 252184
+  }
+ ],
+ "total_bytes": 11640765
+}

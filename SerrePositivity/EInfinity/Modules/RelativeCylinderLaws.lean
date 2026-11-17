@@ -19,7 +19,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.Modules
 open CategoryTheory SSet
-open SerrePositivity.EInfinity.SimplicialLocalization
+open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization
 open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
 
@@ -78,7 +78,7 @@ lemma relativeCylinderContraction_weak (X : (relativeCylinder C).category) :
 方針：元の零端点と同じ弱縮約を局所化の比較則に渡す。
 規約：射影の実関手自身。使われ方：両端点の比較を全関手圏へ移す。 -/
 lemma relativeCylinderProjection_isQCatEquivalence :
-    IsQCatEquivalence (localizationNerveMap (relativeCylinderProjection C)) := by
+    IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap (relativeCylinderProjection C)) := by
   apply localizationNerveMap_isQCatEquivalence_of_weak_comparisons
     (relativeCylinderProjection C) (relativeCylinderEndpoint C 0)
     (relativeCylinderContraction C) (relativeCylinderContraction_weak C)

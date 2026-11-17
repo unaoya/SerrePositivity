@@ -1,0 +1,11 @@
+{
+  "path": "scripts/audit_infinity_stable.lean",
+  "source_sha256": "922fcb058ee4477cbe3314c0582a67b6e3edff2c0a792a50b74781a8fbc07abd",
+  "signature": "341b38ebd7b2267b096bc961975576a7e1d9cb74109c1edd01550ec50f5392f2",
+  "returncode": 124,
+  "seconds": 190.00778666697443,
+  "log": "/private/tmp/oe-w1-official-audits/081.log",
+  "max_rss_bytes": null,
+  "measured_at": "2026-11-16T20:19:45.966161+00:00",
+  "time_log": "/private/tmp/oe-w1-official-audits/081.time"
+}

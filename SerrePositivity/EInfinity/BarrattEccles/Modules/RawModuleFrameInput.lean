@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.Modules.RawModuleCofibrancy
-public import SerrePositivity.EInfinity.SimplicialLocalization.ModelHammockLocalization
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelHammockLocalization
 
 /-!
 # 実加群モデルへの既存 frame・局所化の特殊化
@@ -16,9 +16,9 @@ public import SerrePositivity.EInfinity.SimplicialLocalization.ModelHammockLocal
 @[expose] public noncomputable section
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open CategoryTheory HomotopicalAlgebra
+open CategoryTheory _root_.HomotopicalAlgebra
 open SerrePositivity.Reedy
-open SerrePositivity.EInfinity.SimplicialLocalization
+open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization
 variable (A : Type u) [CommRing A]
 
@@ -73,16 +73,16 @@ def strictRawModuleRightFrameFamily (X : (operad A).Algebra) :
 lemma strictRawModuleModelHammock_isLocalization (X : (operad A).Algebra) :
     let := strictRawModuleModelCategory A X
     IsLocalization
-      (hammockLocalizationNerveMap
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap
         (SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory
           (strictRawModuleCategory A X)))
-      (weakNerveEdges
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges
         (SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory
           (strictRawModuleCategory A X))) := by
   let := strictRawModuleModelCategory A X
   have : (cofibrations (strictRawModuleCategory A X)).HasFunctorialFactorization
       (trivialFibrations (strictRawModuleCategory A X)) :=
     ⟨⟨strictRawModuleCofibrantFactorization A X⟩⟩
-  exact modelHammock_isLocalization (strictRawModuleRightFrameFamily A X)
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelHammock_isLocalization (strictRawModuleRightFrameFamily A X)
 
 end SerrePositivity.EInfinity.BarrattEccles

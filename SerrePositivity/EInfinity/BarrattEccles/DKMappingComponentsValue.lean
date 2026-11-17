@@ -17,7 +17,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open CategoryTheory HomotopicalAlgebra Opposite SimplicialLocalization
+open CategoryTheory _root_.HomotopicalAlgebra Opposite _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 variable (A : Type u) [CommRing A] (X Y : CofibrantAlgebra A)
 
 lemma cofibrantAlgebraMappingSpacePiZeroEquiv_value
@@ -40,14 +40,14 @@ lemma cofibrantAlgebraMappingSpacePiZeroEquiv_value
   simp only [Category.assoc, Iso.hom_inv_id_assoc, Iso.hom_inv_id, Category.comp_id]
 
 lemma cofibrantAlgebraDKPiZeroEquiv_value
-    (z : SSet.π₀ (localizationHom (cofibrantAlgebraRelativeCategory A)
+    (z : SSet.π₀ (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHom (cofibrantAlgebraRelativeCategory A)
       (cofibrantAlgebraDKObject A X) (cofibrantAlgebraDKObject A Y))) :
     let := modelCategory A
     mappingSpacePiZeroEquiv A (weakEquivalences (operad A).Algebra).Q
         (op ((cofibrantAlgebraInclusion A).obj X)) ((cofibrantAlgebraInclusion A).obj Y)
         (cofibrantAlgebraDKPiZeroEquiv A X Y z) =
       cofibrantAlgebraDKHoHomMap A X Y
-        (localizationHomPiZeroEquiv (cofibrantAlgebraRelativeCategory A)
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHomPiZeroEquiv (cofibrantAlgebraRelativeCategory A)
           (cofibrantAlgebraDKObject A X) (cofibrantAlgebraDKObject A Y) z) := by
   let := modelCategory A
   have h := cofibrantAlgebraMappingSpacePiZeroEquiv_value A X Y
@@ -56,7 +56,7 @@ lemma cofibrantAlgebraDKPiZeroEquiv_value
       (cofibrantAlgebraDKPiZeroEquiv A X Y z) =
     _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ULiftRelativeLocalization.homEquiv (cofibrantAlgebraWeakEquivalences A)
       (cofibrantAlgebraDKObject A X) (cofibrantAlgebraDKObject A Y)
-      (localizationHomPiZeroEquiv (cofibrantAlgebraRelativeCategory A)
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHomPiZeroEquiv (cofibrantAlgebraRelativeCategory A)
         (cofibrantAlgebraDKObject A X) (cofibrantAlgebraDKObject A Y) z) :=
     Equiv.apply_symm_apply _ _
   rw [he] at h

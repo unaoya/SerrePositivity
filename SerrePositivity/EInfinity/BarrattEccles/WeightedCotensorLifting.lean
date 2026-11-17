@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.WeightedCotensor
-public import SerrePositivity.EInfinity.HomotopyWeight.FrameLifting
-public import SerrePositivity.EInfinity.HomotopyWeight.Reindex
+public import SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.FrameLifting
+public import SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.Reindex
 
 /-!
 # 射影 cofibration に沿う右 frame の重み付き end の fibration
@@ -21,7 +21,7 @@ universe u
 
 namespace SerrePositivity.EInfinity.BarrattEccles
 
-open CategoryTheory Limits HomotopicalAlgebra
+open CategoryTheory Limits _root_.HomotopicalAlgebra
 open SerrePositivity.DiagramModel
 
 variable (A : Type u) [CommRing A] (K : Type u) [SmallCategory K]
@@ -31,12 +31,12 @@ variable (A : Type u) [CommRing A] (K : Type u) [SmallCategory K]
 規約：元の E 代数図式は任意で、cofibrancy の仮定を追加しない。
 使われ方：重み付き錐の制限と一般極限の右持ち上げ性。 -/
 lemma weightedCotensor_map_fibration (F : K ⥤ (operad A).Algebra)
-    {W W' : K ⥤ SSet.{u}} (i : W ⟶ W') (hi : (HomotopyWeight.boundaries K).rlp.llp i) :
+    {W W' : K ⥤ SSet.{u}} (i : W ⟶ W') (hi : (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.boundaries K).rlp.llp i) :
     let := modelCategory A
     Fibration ((weightedCotensor A K F).map i.op) := by
   let := modelCategory A
-  have h := HomotopyWeight.reindex_cofibration (opOpEquivalence K) i hi
-  exact ⟨HomotopyWeight.realization_map_cofibration Kᵒᵖ (rightFrameDiagram A K F)
-    (fun k => rightFrame_cofibrant A (F.obj k.unop)) ((SerrePositivity.EInfinity.HomotopyWeight.doubleOpWeights K).map i) h⟩
+  have h := _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.reindex_cofibration (opOpEquivalence K) i hi
+  exact ⟨_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.realization_map_cofibration Kᵒᵖ (rightFrameDiagram A K F)
+    (fun k => rightFrame_cofibrant A (F.obj k.unop)) ((_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.doubleOpWeights K).map i) h⟩
 
 end SerrePositivity.EInfinity.BarrattEccles

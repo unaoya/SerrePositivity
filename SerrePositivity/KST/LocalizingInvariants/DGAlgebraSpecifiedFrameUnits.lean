@@ -38,8 +38,8 @@ lemma multiplicativeCellMappingPinchedEquivalence_unit_Q :
   have h₂ := congrArg (fun t => Q.map (t.app B))
     (nativeCellChosenRightMappingUnitLarge_mixed_triangle R A)
   simp only [NatTrans.comp_app, Functor.map_comp] at h₁ h₂
-  have hL := EInfinity.FrameHom.qCatEquivalence_hom_inv_Q L
-  have hC := EInfinity.FrameHom.qCatEquivalence_hom_inv_Q C
+  have hL := _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.qCatEquivalence_hom_inv_Q L
+  have hC := _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.qCatEquivalence_hom_inv_Q C
   change Q.map ((nativeCellMixedLeftLarge R A).app B) ≫ Q.map L.inv = 𝟙 _ at hL
   change Q.map ((nativeCellChosenMixedRightLarge R A).app B) ≫ Q.map C.inv = 𝟙 _ at hC
   have h₁' : (Q.map ((nativeCellMappingUnitLarge R A).app B) ≫
@@ -78,7 +78,7 @@ def nativeCellOrdinaryPoint (f : cellResolution R A ⟶ B) :
 /-- 選択 right frame の零単体は E2 の同じ元の射の単位点。 -/
 lemma nativeCellOrdinaryPoint_chosenRight (f : cellResolution R A ⟶ B) :
     nativeCellOrdinaryPoint R A B f ≫ (nativeCellChosenRightMappingUnitLarge R A).app B =
-      EInfinity.FrameHom.rightFrameHammockUnitPoint
+      _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockUnitPoint
         ((EInfinity.DGAlgebra.sourceFrameFamily R).atObject (cellResolution R A))
         (EInfinity.DGAlgebra.rightFrameFamily R) f 0 := by
   rw [nativeCellOrdinaryPoint, SSet.const_comp]
@@ -93,7 +93,7 @@ lemma multiplicativeCellMappingPinchedEquivalence_point_Q (f : cellResolution R 
       (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap
         (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory (Mon (Complex R))).weakEquivalences
         (AsSmall.up.map f) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app _ ≫
-        EInfinity.SimplicialLocalization.kanHammockHomPinchedMap
+        _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockHomPinchedMap
           (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory (Mon (Complex R)))
           (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject (Mon (Complex R)) (cellResolution R A))
           (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject (Mon (Complex R)) B) ≫

@@ -24,7 +24,7 @@ open CategoryTheory SerrePositivity.InfinityCategories SerrePositivity.Simplicia
 lemma diagonalFunctor_map_weak {B D : SimplicialObject SSet.{u}} (f : B ⟶ D)
     (hf : ∀ n, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (f.app n)) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor.map f) := by
-  apply FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.isWeakHomotopyEquivalence
   change IsIso (AnodyneHomotopy.anodyneQ.map (BisimplicialModel.diagonal.map f))
   exact BisimplicialModel.localized_diagonal_map f
     (fun n => anodyneQ_map_isIso_of_weak (f.app n) (hf n))

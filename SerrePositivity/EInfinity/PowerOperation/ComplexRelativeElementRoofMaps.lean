@@ -16,7 +16,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.PowerOperation
-open CategoryTheory HomotopicalAlgebra Hammock
+open CategoryTheory _root_.HomotopicalAlgebra Hammock
 open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.ComplexLimits
 open SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization
 variable (A : Type u) [CommRing A] (X Y : Complex A)
@@ -38,7 +38,7 @@ lemma complexRelativeElementRoof_graph_image :
         (complexRelativeElementRoof A QX Y) ≫
       (AsSmallComparison.graphIso (weakEquivalences (Complex A)) QX Y LeftRoof.word).inv =
     (complexRelativeElementIndexIso A X Y).hom ≫
-      FrameHom.frameLeftRoofNerveMap (Y := Y) (weakEquivalences (Complex A))
+      _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameLeftRoofNerveMap (Y := Y) (weakEquivalences (Complex A))
         ((normalizedProbeTensorFrame A).obj X) ((normalizedProbeTensorAugmentation A).app X)
         (normalizedProbeTensorAugmentation_weak A X)
         (fun f => normalizedSimplexTensor_homotopicallyConstant A
@@ -54,7 +54,7 @@ lemma complexRelativeElementRoof_graph_image :
     (AsSmallComparison.graphIso (weakEquivalences (Complex A))
       ((framedLimitProbeFunctor A).obj X) Y LeftRoof.word).inv).app n) σ
   let G := (((complexRelativeElementIndexIso A X Y).hom ≫
-    FrameHom.frameLeftRoofNerveMap (Y := Y) (weakEquivalences (Complex A))
+    _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameLeftRoofNerveMap (Y := Y) (weakEquivalences (Complex A))
       ((normalizedProbeTensorFrame A).obj X) ((normalizedProbeTensorAugmentation A).app X)
       (normalizedProbeTensorAugmentation_weak A X)
       (fun f => normalizedSimplexTensor_homotopicallyConstant A
@@ -102,6 +102,6 @@ lemma complexRelativeElementRoofMap_image :
     (complexRelativeCategory A).weakEquivalences (complexRelativeElementRoof A QX Y) ≫
     graphInclusion _ _ _ LeftRoof.word) ≫ _ = _
   rw [Category.assoc, hgRel, ← Category.assoc, complexRelativeElementRoof_graph_image]
-  simp only [complexNormalizedTensorRoof, FrameHom.frameLeftRoofColimitMap, Category.assoc]
+  simp only [complexNormalizedTensorRoof, _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameLeftRoofColimitMap, Category.assoc]
 
 end SerrePositivity.EInfinity.PowerOperation

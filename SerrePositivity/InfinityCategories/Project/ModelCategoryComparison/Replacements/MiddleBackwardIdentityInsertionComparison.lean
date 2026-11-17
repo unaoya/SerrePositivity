@@ -18,7 +18,7 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 namespace SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardIdentityInsertionComparison
-open CategoryTheory CategoryTheory.Limits HomotopicalAlgebra
+open CategoryTheory CategoryTheory.Limits _root_.HomotopicalAlgebra
 open _root_.SerrePositivity.SimplicialModel _root_.SerrePositivity.InfinityCategories
 
 variable {C : Type u} [Category.{v} C] [ModelCategory C] {n m : ℕ} {X Y : C}
@@ -37,12 +37,12 @@ def unit : 𝟭 (_root_.SerrePositivity.InfinityCategories.Project.ModelCategory
 lemma functor_localized_isIso :
     IsIso (AnodyneHomotopy.anodyneQ.map
       (nerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardIdentityInsertion.functor (C := C) (n := n) (m := m) (X := X) (Y := Y)))) :=
-  _root_.SerrePositivity.EInfinity.FrameHom.FullyFaithfulNerveRetraction.of_unit _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardIdentityInsertion.functor _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardRightEssentialImage.rightReplacement unit
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FullyFaithfulNerveRetraction.of_unit _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardIdentityInsertion.functor _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardRightEssentialImage.rightReplacement unit
 
 lemma functor_isWeakHomotopyEquivalence :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
       (nerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardIdentityInsertion.functor (C := C) (n := n) (m := m) (X := X) (Y := Y))) :=
-  _root_.SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _ functor_localized_isIso
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.isWeakHomotopyEquivalence _ functor_localized_isIso
 
 lemma originalFunctor_localized_isIso
     (cof : MorphismProperty.FunctorialFactorizationData (cofibrations C) (trivialFibrations C)) :
@@ -63,7 +63,7 @@ lemma originalFunctor_isWeakHomotopyEquivalence
     (cof : MorphismProperty.FunctorialFactorizationData (cofibrations C) (trivialFibrations C)) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
       (nerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardIdentityInsertion.originalFunctor (C := C) (n := n) (m := m) (X := X) (Y := Y))) :=
-  _root_.SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _ (originalFunctor_localized_isIso cof)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.isWeakHomotopyEquivalence _ (originalFunctor_localized_isIso cof)
 
 lemma graphMap_isWeakHomotopyEquivalence
     (cof : MorphismProperty.FunctorialFactorizationData (cofibrations C) (trivialFibrations C)) :

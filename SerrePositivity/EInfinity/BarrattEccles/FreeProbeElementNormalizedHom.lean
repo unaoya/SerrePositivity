@@ -74,12 +74,12 @@ def freeProbeElementNormalizedIndexNerveMap : nerve (freeProbeElementIndex A X B
 規約：全パラメータを保持。使われ方：全 roof パラメータの弱比較。 -/
 lemma freeProbeElementNormalizedIndexMap_parameter :
     freeProbeElementNormalizedIndexNerveMap A X B ≫
-      FrameHom.SimplexTerminalNerve.liftedAugmentation
+      _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.SimplexTerminalNerve.liftedAugmentation
         (((freeNormalizedProbeHom A).obj (op X)).obj B) =
     normalizedTensorElementParameterMap A ((ComplexLimits.framedLimitProbeFunctor A).obj X)
       (complexSemifreeResolutionValue A B.carrier).val ≫
       SSet.uliftFunctor.{u + 1, u}.map (freeProbeElementNormalizedHomMap A X B) := by
-  have h := FrameHom.SimplexTerminalNerve.liftedAugmentation_naturality.{u, u + 1}
+  have h := _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.SimplexTerminalNerve.liftedAugmentation_naturality.{u, u + 1}
     (freeProbeElementNormalizedHomMap A X B)
   have he : freeProbeElementNormalizedIndexNerveMap A X B =
       normalizedTensorElementLiftNerveMap A ((ComplexLimits.framedLimitProbeFunctor A).obj X)
@@ -111,11 +111,11 @@ lemma freeProbeElementNormalizedIndexMap_localized_isIso :
   have := normalizedTensorElementParameterMap_localized_isIso A
     ((ComplexLimits.framedLimitProbeFunctor A).obj X)
     (complexSemifreeResolutionValue A B.carrier).val
-  have := FrameHom.SimplexTerminalNerve.liftedAugmentation_localized_isIso.{u, u + 1}
+  have := _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.SimplexTerminalNerve.liftedAugmentation_localized_isIso.{u, u + 1}
     (((freeNormalizedProbeHom A).obj (op X)).obj B)
   have hc : IsIso (AnodyneHomotopy.anodyneQ.map
       (freeProbeElementNormalizedIndexNerveMap A X B) ≫
-      AnodyneHomotopy.anodyneQ.map (FrameHom.SimplexTerminalNerve.liftedAugmentation
+      AnodyneHomotopy.anodyneQ.map (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.SimplexTerminalNerve.liftedAugmentation
         (((freeNormalizedProbeHom A).obj (op X)).obj B))) := by
     rw [← Functor.map_comp, freeProbeElementNormalizedIndexMap_parameter, Functor.map_comp]
     infer_instance

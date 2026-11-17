@@ -3,7 +3,7 @@ module
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraCellMappingBoundary
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraMappingPathInversion
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.MonoRightLiftingContraction
-public import SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection
 
 /-!
 概要：cell 源の実乗法的写像模型は、標的の全擬同型を弱ホモトピー同値へ送る。
@@ -34,7 +34,7 @@ lemma multiplicativeCellMapping_anodyneImage_isIso (hq : QuasiIso q.hom) :
 lemma multiplicativeCellMapping_target_weakEquivalence (hq : QuasiIso q.hom) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
       (multiplicativeMappingPostcompose R (cellResolution R A) q) :=
-  EInfinity.FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.isWeakHomotopyEquivalence _
     (multiplicativeCellMapping_anodyneImage_isIso R A q hq)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

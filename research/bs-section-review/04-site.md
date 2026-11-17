@@ -9,7 +9,7 @@
 
 ## 0. 規模と配置（事実）
 
-- `BhattScholze/Prismatic/` は平らなディレクトリで 320 本・42,712 行。B3 の配置案（`refactor/kerodon-layout` 枝の `formalization-plans/stage-ii/report-bulk-w1.md` :155–185、24151a43d）の仮の仕分けは Crystalline 204、CechAlexander 39、HodgeTate/Comparison 37、HodgeTate/Affine 16、Site 13、Envelopes 7、§7 へ 3（FiniteEnvelope*）、§2 へ 1（RelativeCompleteRegularity）。§4 の本体にあたるのは Site・CechAlexander・HodgeTate/Affine・Envelopes の約 75 本で、残り約 240 本は §5・§6。
+- `BhattScholze/Prismatic/` は平らなディレクトリで 320 本・42,712 行。B3 の配置案（`refactor/kerodon-layout` 枝の `formalization-plans/stage-ii/bulk/report-bulk-w1.md` :155–185、24151a43d）の仮の仕分けは Crystalline 204、CechAlexander 39、HodgeTate/Comparison 37、HodgeTate/Affine 16、Site 13、Envelopes 7、§7 へ 3（FiniteEnvelope*）、§2 へ 1（RelativeCompleteRegularity）。§4 の本体にあたるのは Site・CechAlexander・HodgeTate/Affine・Envelopes の約 75 本で、残り約 240 本は §5・§6。
 - **本体と drafts の分かれ方**（確認済み）：§4 の 1 圏の部分（site の圏・平坦位相・構造環とその剰余の層条件、Čech–Alexander の組み立て・弱始性・余積・複体、affine 直線の小さい模型と項ごとの底変換、大きい模型との比較、多項式代数の HT 写像と Lemma 4.10、主張の型 `HodgeTateIsoStatement`）は本体に sorry なしで入っている。∞ の部分（D(A) 値の構造前層、層条件、site の RΓ、Δ ＝ Tot、κ 不変性、Lemma 4.20・4.22、Cor 4.12）は drafts だけ。本体には ∞ の層の層（`IsSheaf`・層化・`derivedGlobalSections`）がまだない。
 - 本体の `HodgeTateIsoStatement`（`HodgeTateCompletedMap.lean:461`）は、Rem 4.19 の鎖複体の模型 `reducedModel`（`HodgeTateAffineModel.lean:93`）のコホモロジーについての主張で、site の RΓ についての主張ではない。site の RΓ と結ぶのは 5∞-2（模型が Δ を計算する）と D27（CAlg 値の比較）。
 

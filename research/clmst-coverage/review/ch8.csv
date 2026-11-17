@@ -1,0 +1,6 @@
+number,status,declarations,reason,axioms,check,partial_kind
+8.1,none,,原典 PDF p.80; layout L4512。原典で未解決の予想「Noether–Cohen 正規化とパラメータ選択の独立性予想」。該当する予想の型・仮定付き入力・証明宣言を確認できない。特殊な既知例を一般の予想の証明とは数えない。,source inspection only; kernel axioms not rerun,review/check/none-search.csv; external search-hits.json,
+8.2,none,,原典 PDF p.81; layout L4548。原典で未解決の予想「局所化に対する perfectoid 不変量の不等式予想」。該当する予想の型・仮定付き入力・証明宣言を確認できない。特殊な既知例を一般の予想の証明とは数えない。,source inspection only; kernel axioms not rerun,review/check/none-search.csv; external search-hits.json,
+8.3,none,,原典 PDF p.81; layout L4555。原典で未解決の予想「忠実平坦局所拡大に対する不等式予想」。該当する予想の型・仮定付き入力・証明宣言を確認できない。特殊な既知例を一般の予想の証明とは数えない。,source inspection only; kernel axioms not rerun,review/check/none-search.csv; external search-hits.json,
+8.4,none,,原典 PDF p.81; layout L4560。原典で未解決の予想「perfectoid 不変量の半連続性予想」。該当する予想の型・仮定付き入力・証明宣言を確認できない。特殊な既知例を一般の予想の証明とは数えない。,source inspection only; kernel axioms not rerun,review/check/none-search.csv; external search-hits.json,
+8.5,none,,原典 PDF p.82; layout L4579。原典の「有効 Q Cartier 因子対の perfectoid signature」に対応する定義または主張を持つ宣言を確認できない。,source inspection only; kernel axioms not rerun,review/check/none-search.csv; external search-hits.json,

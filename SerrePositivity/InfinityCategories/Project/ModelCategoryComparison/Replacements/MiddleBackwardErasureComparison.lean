@@ -17,7 +17,7 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 namespace SerrePositivity.InfinityCategories.Project.ModelCategoryComparison
-open CategoryTheory HomotopicalAlgebra
+open CategoryTheory _root_.HomotopicalAlgebra
 open _root_.SerrePositivity.SimplicialModel _root_.SerrePositivity.InfinityCategories
 
 variable {C : Type u} [Category.{v} C] [ModelCategory C] {n m : ℕ} {X Y : C}
@@ -40,6 +40,6 @@ lemma erasedGraphMap_isWeakHomotopyEquivalence
     (cof : MorphismProperty.FunctorialFactorizationData (cofibrations C) (trivialFibrations C)) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram (weakEquivalences C) X Y).map
       (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.eraseInclusion (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardPullback.word n m) (_root_.SerrePositivity.EInfinity.Hammock.MiddleBackward.Positions.middleColumn n m))) :=
-  _root_.SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _ (erasedGraphMap_localized_isIso cof)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.isWeakHomotopyEquivalence _ (erasedGraphMap_localized_isIso cof)
 
 end SerrePositivity.InfinityCategories.Project.ModelCategoryComparison

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.ThreeArrowLeftReplacement
 public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.ThreeArrowRightReplacement
-public import SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection
 
 /-!
 # 特殊な三本矢と弱同値の両脚を持つ三本矢の比較
@@ -18,7 +18,7 @@ universe u v
 noncomputable section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
-open CategoryTheory HomotopicalAlgebra
+open CategoryTheory _root_.HomotopicalAlgebra
 
 namespace SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.SpecialThreeArrowComparison
 open _root_.SerrePositivity.SimplicialModel
@@ -64,7 +64,7 @@ lemma inclusion_isWeakHomotopyEquivalence
     (fib : MorphismProperty.FunctorialFactorizationData (trivialCofibrations C) (fibrations C))
     (X Y : C) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (nerveMap (inclusion X Y)) :=
-  _root_.SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _ (inclusion_localized_isIso cof fib X Y)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.isWeakHomotopyEquivalence _ (inclusion_localized_isIso cof fib X Y)
 
 with_weak_namespace _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.WeakThreeArrow export _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.SpecialThreeArrowComparison (inclusion_isWeakHomotopyEquivalence)
 

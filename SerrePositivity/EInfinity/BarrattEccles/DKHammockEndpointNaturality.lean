@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantHammockActions
 public import SerrePositivity.EInfinity.BarrattEccles.DKHammockComparisonFactorization
-public import SerrePositivity.EInfinity.SimplicialLocalization.DKReducedHammockEndpointNaturality
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.DKReducedHammockEndpointNaturality
 
 /-!
 # 元の代数 DK/hammock 比較の両端点自然性
@@ -17,14 +17,14 @@ public import SerrePositivity.EInfinity.SimplicialLocalization.DKReducedHammockE
 noncomputable section
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open CategoryTheory SimplicialLocalization SerrePositivity.SimplicialModel
+open CategoryTheory _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization SerrePositivity.SimplicialModel
 variable (A : Type u) [CommRing A]
 
 lemma cofibrantAlgebraDKHammockComparisonIso_postcompose
     (X : (cofibrantAlgebraRelativeCategory A).category)
     {Y Z : (cofibrantAlgebraRelativeCategory A).category} (g : Y ⟶ Z) :
     AnodyneHomotopy.anodyneQ.map
-        (localizationPostcompose (cofibrantAlgebraRelativeCategory A) X g) ≫
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationPostcompose (cofibrantAlgebraRelativeCategory A) X g) ≫
       (cofibrantAlgebraDKHammockComparisonIso A X Z).hom =
     (cofibrantAlgebraDKHammockComparisonIso A X Y).hom ≫
       AnodyneHomotopy.anodyneQ.map (algebraReducedHammockPostcompose A
@@ -34,13 +34,13 @@ lemma cofibrantAlgebraDKHammockComparisonIso_postcompose
   simp only [Functor.map_comp] at h
   rw [cofibrantAlgebraDKHammockComparisonIso_factorization,
     cofibrantAlgebraDKHammockComparisonIso_factorization,
-    ← Category.assoc, dkHammockComparisonIso_postcompose, Category.assoc, h, ← Category.assoc]
+    ← Category.assoc, _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.dkHammockComparisonIso_postcompose, Category.assoc, h, ← Category.assoc]
 
 lemma cofibrantAlgebraDKHammockComparisonIso_precompose
     (Z : (cofibrantAlgebraRelativeCategory A).category)
     {X Y : (cofibrantAlgebraRelativeCategory A).category} (f : X ⟶ Y) :
     AnodyneHomotopy.anodyneQ.map
-        (localizationPrecompose (cofibrantAlgebraRelativeCategory A) Z f) ≫
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationPrecompose (cofibrantAlgebraRelativeCategory A) Z f) ≫
       (cofibrantAlgebraDKHammockComparisonIso A X Z).hom =
     (cofibrantAlgebraDKHammockComparisonIso A Y Z).hom ≫
       AnodyneHomotopy.anodyneQ.map (algebraReducedHammockPrecompose A
@@ -50,6 +50,6 @@ lemma cofibrantAlgebraDKHammockComparisonIso_precompose
   simp only [Functor.map_comp] at h
   rw [cofibrantAlgebraDKHammockComparisonIso_factorization,
     cofibrantAlgebraDKHammockComparisonIso_factorization,
-    ← Category.assoc, dkHammockComparisonIso_precompose, Category.assoc, h, ← Category.assoc]
+    ← Category.assoc, _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.dkHammockComparisonIso_precompose, Category.assoc, h, ← Category.assoc]
 
 end SerrePositivity.EInfinity.BarrattEccles

@@ -17,14 +17,14 @@ public import SerrePositivity.EInfinity.BarrattEccles.MappingSpaceHammockNatural
 noncomputable section
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open CategoryTheory Opposite SimplicialLocalization SerrePositivity.SimplicialModel
+open CategoryTheory Opposite _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization SerrePositivity.SimplicialModel
 variable (A : Type u) [CommRing A]
 
 lemma cofibrantAlgebraDKMappingSpaceComparisonIso_postcompose
     (X : (cofibrantAlgebraRelativeCategory A).category)
     {Y Z : (cofibrantAlgebraRelativeCategory A).category} (g : Y ⟶ Z) :
     AnodyneHomotopy.anodyneQ.map
-        (localizationPostcompose (cofibrantAlgebraRelativeCategory A) X g) ≫
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationPostcompose (cofibrantAlgebraRelativeCategory A) X g) ≫
       (cofibrantAlgebraDKMappingSpaceComparisonIso A X Z).hom =
     (cofibrantAlgebraDKMappingSpaceComparisonIso A X Y).hom ≫
       AnodyneHomotopy.anodyneQ.map (SSet.uliftFunctor.{u + 1, u}.map
@@ -41,7 +41,7 @@ lemma cofibrantAlgebraDKMappingSpaceComparisonIso_precompose
     (Z : (cofibrantAlgebraRelativeCategory A).category)
     {X Y : (cofibrantAlgebraRelativeCategory A).category} (f : X ⟶ Y) :
     AnodyneHomotopy.anodyneQ.map
-        (localizationPrecompose (cofibrantAlgebraRelativeCategory A) Z f) ≫
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationPrecompose (cofibrantAlgebraRelativeCategory A) Z f) ≫
       (cofibrantAlgebraDKMappingSpaceComparisonIso A X Z).hom =
     (cofibrantAlgebraDKMappingSpaceComparisonIso A Y Z).hom ≫
       AnodyneHomotopy.anodyneQ.map (SSet.uliftFunctor.{u + 1, u}.map
@@ -57,8 +57,8 @@ lemma cofibrantAlgebraDKMappingSpaceComparisonIso_precompose
 lemma cofibrantAlgebraDKMappingSpaceComparisonIso_naturality
     {X' X Y Y' : (cofibrantAlgebraRelativeCategory A).category} (f : X' ⟶ X) (g : Y ⟶ Y') :
     AnodyneHomotopy.anodyneQ.map
-        (localizationPrecompose (cofibrantAlgebraRelativeCategory A) Y f ≫
-          localizationPostcompose (cofibrantAlgebraRelativeCategory A) X' g) ≫
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationPrecompose (cofibrantAlgebraRelativeCategory A) Y f ≫
+          _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationPostcompose (cofibrantAlgebraRelativeCategory A) X' g) ≫
       (cofibrantAlgebraDKMappingSpaceComparisonIso A X' Y').hom =
     (cofibrantAlgebraDKMappingSpaceComparisonIso A X Y).hom ≫
       AnodyneHomotopy.anodyneQ.map (SSet.uliftFunctor.{u + 1, u}.map

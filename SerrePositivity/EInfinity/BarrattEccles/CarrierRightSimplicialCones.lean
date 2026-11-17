@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.BarrattEccles.CarrierRightSimplicialFrames
 public import SerrePositivity.EInfinity.BarrattEccles.CarrierFramedLimitHom
 public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Frames.MixedFrameDiagrams
-public import SerrePositivity.EInfinity.HomotopyWeight.ConeReindex
+public import SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.ConeReindex
 
 /-!
 # 右 frame の錐の元の添字と二重反対圏表示の同型
@@ -25,10 +25,10 @@ universe u
 
 namespace SerrePositivity.EInfinity.BarrattEccles
 
-open CategoryTheory Limits HomotopicalAlgebra Opposite
+open CategoryTheory Limits _root_.HomotopicalAlgebra Opposite
 open SerrePositivity.DifferentialGraded
 open SerrePositivity.DiagramModel
-open SerrePositivity.EInfinity.FrameHom.MixedFrame
+open _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedFrame
 
 variable (A : Type u) [CommRing A] (K : Type u) [SmallCategory K]
 
@@ -47,7 +47,7 @@ abbrev carrierRightSimplicialHomDiagram (Y : Complex A)
 abbrev carrierRightSimplicialHomFamily (Y : Complex A) :
     (K ⥤ (operad A).Algebra) ⥤ K ⥤ SSet.{u} :=
   (Functor.whiskeringRight K (operad A).Algebra SSet.{u}).obj
-    (carrierRightSimplicialFrameFamily A ⋙ rightHomFunctor (carrierFramedLimitProbe A Y))
+    (carrierRightSimplicialFrameFamily A ⋙ _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedFrame.rightHomFunctor (carrierFramedLimitProbe A Y))
 
 /-- 概要：反対射で表示した右 Hom 図式の関手（Hovey §5）。
 方針：既存の右 frame 図式の Hom 族を同じ試験始域で評価する。
@@ -65,11 +65,11 @@ abbrev carrierRightFrameHomDiagramFamily (Y : Complex A) :
 使われ方：二重反対圏表示の同じ錐関手を回収する。 -/
 def carrierRightSimplicialHomDiagramIso (Y : Complex A)
     (F : K ⥤ (operad A).Algebra) :
-    (SerrePositivity.EInfinity.HomotopyWeight.doubleOpWeights K).obj (carrierRightSimplicialHomDiagram A K Y F) ≅
+    (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.doubleOpWeights K).obj (carrierRightSimplicialHomDiagram A K Y F) ≅
       (FrameWeightRealization.hom Kᵒᵖ (carrierRightFrameDiagram A K F)).obj
         (op (carrierFramedLimitProbe A Y)) :=
   NatIso.ofComponents (fun k =>
-    rightHomIso (carrierFramedLimitProbe A Y)
+    _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedFrame.rightHomIso (carrierFramedLimitProbe A Y)
       ((carrierRightSimplicialFrameFamily A).obj (F.obj k.unop.unop))) (by
     intro k l f
     ext n h
@@ -80,7 +80,7 @@ def carrierRightSimplicialHomDiagramIso (Y : Complex A)
 規約：元の図式の任意の射を保持する。
 使われ方：具体的な錐の同型の自然性。 -/
 def carrierRightSimplicialHomComparisonIso (Y : Complex A) :
-    carrierRightSimplicialHomFamily A K Y ⋙ SerrePositivity.EInfinity.HomotopyWeight.doubleOpWeights K ≅
+    carrierRightSimplicialHomFamily A K Y ⋙ _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.doubleOpWeights K ≅
       carrierRightFrameHomDiagramFamily A K Y :=
   NatIso.ofComponents (carrierRightSimplicialHomDiagramIso A K Y) (by
     intro F G f
@@ -93,19 +93,19 @@ def carrierRightSimplicialHomComparisonIso (Y : Complex A) :
 使われ方：導来 Hom 比較を終域に自然な同値にする。 -/
 def carrierRightSimplicialConeComparisonIso (Y : Complex A) :
     carrierRightSimplicialHomFamily A K Y ⋙
-        WeightedCones.coneSpace K (HomotopyWeight.weight K) ≅ carrierFramedLimitConeSpace A K Y :=
+        WeightedCones.coneSpace K (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K) ≅ carrierFramedLimitConeSpace A K Y :=
   Functor.isoWhiskerLeft (carrierRightSimplicialHomFamily A K Y)
-      (HomotopyWeight.coneSpaceReindexIso (opOpEquivalence K) (HomotopyWeight.weight K)).symm ≪≫
+      (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.coneSpaceReindexIso (opOpEquivalence K) (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K)).symm ≪≫
     (Functor.associator _ _ _).symm ≪≫
     Functor.isoWhiskerRight (carrierRightSimplicialHomComparisonIso A K Y)
-      (WeightedCones.coneSpace Kᵒᵖᵒᵖ (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K))
+      (WeightedCones.coneSpace Kᵒᵖᵒᵖ (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.framedLimitWeight K))
 
 /-- 概要：元の添字上の右 Hom の錐は実際の右 frame 錐空間（Hovey §5.4）。
 方針：自然な錐関手の同型を元の図式で評価する。
 規約：構成済みの carrierFramedLimitConeSpace の同じ単体集合と比較する。
 使われ方：始域 frame との比較を実際の極限の錐へ移す。 -/
 def carrierRightSimplicialConeIso (Y : Complex A) (F : K ⥤ (operad A).Algebra) :
-    (WeightedCones.coneSpace K (HomotopyWeight.weight K)).obj
+    (WeightedCones.coneSpace K (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K)).obj
         (carrierRightSimplicialHomDiagram A K Y F) ≅ (carrierFramedLimitConeSpace A K Y).obj F :=
   (carrierRightSimplicialConeComparisonIso A K Y).app F
 

@@ -10,7 +10,7 @@ stage-ii/bulk-b5,evidence/bulk/bulk-b5,一括（KL-W1 のチャット）,すぐ�
 stage-ii/bulk-w1-b2,evidence/bulk/bulk-w1-b2,一括（KL-W1 のチャット）,すぐ（一括は停止中）,検証の証拠（§4）
 stage-ii/bulk-w1-b3,evidence/bulk/bulk-w1-b3,一括（KL-W1 のチャット）,すぐ（一括は停止中）,検証の証拠（§4）
 stage-ii/citation-attributes.md,stage-ii/citation-attributes.md,共通（正本、動かさない）,—,
-stage-ii/inf-core-w1.md,?,未分類,—,段 0 で判断
+stage-ii/inf-core-w1.md,stage-ii/consolidation/inf-core-w1.md,①（未着手の Verdier の束）,すぐ,段 1 で判断：未着手のまま P⁰ 優先で後回し。IC-W1 の略号は infinity-consolidation-w1 と重なる
 stage-ii/inf-supply-b4,evidence/inf-supply-b/inf-supply-b4,③-b（IS-W2、終わった段）,すぐ（IS-W2 は停止済み）,検証の証拠（§4）
 stage-ii/inf-supply-e01-refactor-proposal.patch,stage-ii/inf-supply-b/inf-supply-e01-refactor-proposal.patch,③-b（IS-W2、終わった段）,すぐ（IS-W2 は停止済み）,
 stage-ii/inf-supply-e01-refactor-validation,evidence/inf-supply-b/inf-supply-e01-refactor-validation,③-b（IS-W2、終わった段）,すぐ（IS-W2 は停止済み）,検証の証拠（§4）
@@ -36,14 +36,14 @@ stage-ii/kerodon-layout-w1-stage3-reverse-imports.md,stage-ii/bulk/kerodon-layou
 stage-ii/kerodon-layout-w1.md,stage-ii/bulk/kerodon-layout-w1.md,一括（KL-W1 のチャット）,すぐ（一括は停止中）,
 stage-ii/lane-goals-2026-11-14.md,stage-ii/lane-goals-2026-11-14.md,共通（正本、動かさない）,—,
 stage-ii/lane-starts.md,stage-ii/lane-starts.md,共通（正本、動かさない）,—,
-stage-ii/organize-einfinity-general.md,stage-ii/consolidation/organize-einfinity-general.md,③-b（OE-W1）・⑦,OE-W1 の段 1 の停止点の後,
+stage-ii/organize-einfinity-general.md,stage-ii/consolidation/organize-einfinity-general.md,③-b（OE-W1）・⑦,すぐ（段 1 を 11-17 に取り込み）,
 stage-ii/p0-plan-draft.md,stage-ii/p0/p0-plan-draft.md,P⁰ と地図（⑤a・⑤d）,すぐ（紙は停止済み）,
 stage-ii/p0-section-map.md,stage-ii/p0/p0-section-map.md,P⁰ と地図（⑤a・⑤d）,すぐ（紙は停止済み）,
 stage-ii/paper-blueprint.md,stage-ii/p0/paper-blueprint.md,P⁰ と地図（⑤a・⑤d）,すぐ（紙は停止済み）,
 stage-ii/report-bs-infinity-a1-stage0.md,stage-ii/inf-supply-a/report-bs-infinity-a1-stage0.md,③-a,③-a の停止点（5∞-1 の完成）の後,
 stage-ii/report-bulk-w1.md,stage-ii/bulk/report-bulk-w1.md,一括（KL-W1 のチャット）,すぐ（一括は停止中）,
-stage-ii/report-dag13-ns-coverage.md,?,未分類,—,段 0 で判断
-stage-ii/report-inf-supply-w1.md,?,未分類,—,段 0 で判断
+stage-ii/report-dag13-ns-coverage.md,stage-ii/p0/report-dag13-ns-coverage.md,P⁰ と地図（⑤a・⑤d）,すぐ（紙は停止済み）,段 1 で判断
+stage-ii/report-inf-supply-w1.md,stage-ii/inf-supply-a/report-inf-supply-w1.md,③-a,③-a の停止点（5∞-1 の完成）の後,段 1 で判断
 stage-ii/report-inf-supply-w2.md,stage-ii/inf-supply-b/report-inf-supply-w2.md,③-b（IS-W2、終わった段）,すぐ（IS-W2 は停止済み）,
 stage-ii/report-p0-p4-p6-stage0.md,stage-ii/p0/report-p0-p4-p6-stage0.md,P⁰ と地図（⑤a・⑤d）,すぐ（紙は停止済み）,
 stage-ii/report-p0-unresolved-sources.md,stage-ii/p0/report-p0-unresolved-sources.md,P⁰ と地図（⑤a・⑤d）,すぐ（紙は停止済み）,
@@ -202,7 +202,7 @@ bhatt-scholze/g12-width-one-boundary-audit-2026-11-16,evidence/bhatt-scholze/g12
 bhatt-scholze/infinity-sheaves-design.md,bhatt-scholze/design/infinity-sheaves-design.md,BS（設計）,すぐ（BS は停止中）,
 bhatt-scholze/klw1-follow-bs-classical-files.json,evidence/bhatt-scholze/klw1-follow-bs-classical-files.json,BS（証拠・道具）,すぐ,§4
 bhatt-scholze/klw1-followup,evidence/bhatt-scholze/klw1-followup,BS（証拠・道具）,すぐ,§4
-bhatt-scholze/perfectoidization-interface.md,bhatt-scholze/design/perfectoidization-interface.md,BS（設計）,すぐ（BS は停止中）,
+bhatt-scholze/perfectoidization-interface.md,bhatt-scholze/perfectoidization-interface.md,正本（動かさない）,—,Lean の docstring（Inputs/PerfectoidizationInterface・Interface/Excision）から参照されるので動かさない（段 1 で判断）
 bhatt-scholze/report-codex-d1.md,bhatt-scholze/reports/report-codex-d1.md,BS（報告）,すぐ（W16・M15 は §3 の分割も）,
 bhatt-scholze/report-codex-d2.md,bhatt-scholze/reports/report-codex-d2.md,BS（報告）,すぐ（W16・M15 は §3 の分割も）,
 bhatt-scholze/report-codex-d3.md,bhatt-scholze/reports/report-codex-d3.md,BS（報告）,すぐ（W16・M15 は §3 の分割も）,
@@ -246,3 +246,5 @@ stage-ii-plan-draft.md,stage-ii-plan-draft.md,正本（動かさない）,—,
 infinity-lanes/,archive/stage-i/infinity-lanes/,段階 I のレーン,すぐ,§5（kst-lanes は K の再開の前に k-restart-draft から参照を確かめる）
 kst-lanes/,archive/stage-i/kst-lanes/,段階 I のレーン,すぐ,§5（kst-lanes は K の再開の前に k-restart-draft から参照を確かめる）
 future/,future/,将来の課題,—,動かさない
+stage-ii/report-organize-einfinity.md,stage-ii/consolidation/report-organize-einfinity.md,③-b（OE-W1）・⑦,すぐ（段 1 を 11-17 に取り込み）,
+stage-ii/organize-einfinity-w1,evidence/consolidation/organize-einfinity-w1,③-b（OE-W1）・⑦,すぐ（段 1 を 11-17 に取り込み）,検証の証拠と移動表の json（§4）。所在の更新の道具が読むので目録に残す

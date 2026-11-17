@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeWordAction
 public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ColimitGraph
-public import SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection
 public import Mathlib.CategoryTheory.Category.ULift
 
 /-!
@@ -95,6 +95,6 @@ lemma graphInclusion_colimitIso (w : _root_.SerrePositivity.InfinityCategories.K
 規約：単体集合モデルの仮定なし。使われ方：実 frame roof の弱比較の輸送。 -/
 lemma colimitIso_weak : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
     (colimitIso W X Y).hom :=
-  FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _ (by infer_instance)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.isWeakHomotopyEquivalence _ (by infer_instance)
 
 end SerrePositivity.EInfinity.Hammock.AsSmallComparison

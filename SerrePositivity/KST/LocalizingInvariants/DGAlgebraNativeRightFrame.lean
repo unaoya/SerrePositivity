@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraNativeCellModel
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraMultiplicativeFrame
-public import SerrePositivity.EInfinity.FrameHom.MixedFrame
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedFrame
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.CosimplicialFrameFamily
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.CofibrantBoundary
 
@@ -18,7 +18,7 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
-open CategoryTheory Limits MonoidalCategory HomotopicalAlgebra Opposite
+open CategoryTheory Limits MonoidalCategory _root_.HomotopicalAlgebra Opposite
 open SerrePositivity.DifferentialGraded SerrePositivity.Reedy
 open SerrePositivity.HomotopyFunctionComplex
 namespace SerrePositivity.KST.LocalizingInvariants.DGAlgebra
@@ -73,7 +73,7 @@ set_option maxHeartbeats 800000 in -- 元の畳み込み写像関手と反対 fr
 def multiplicativeMappingRightFrameIso (A : Mon (Complex R)) :
     multiplicativeMappingFunctor R A ≅ multiplicativeRightFrameMappingFunctor R A :=
   NatIso.ofComponents
-    (fun B => EInfinity.FrameHom.MixedFrame.rightHomIso A (multiplicativeSimplices R B))
+    (fun B => _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedFrame.rightHomIso A (multiplicativeSimplices R B))
     (by
       intro B C f
       apply NatTrans.ext

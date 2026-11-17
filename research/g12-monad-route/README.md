@@ -21,7 +21,7 @@ G12のモナド経路は打ち切りであり、この取り込みはG12・Barr�
 [Derivedの監査](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity/scripts/audit_derived_infinity.lean)。
 基準mainでは入口に179モジュールのimportがある。rootビルド・Derived監査の通過は取り込み時のユーザー報告による。
 この目録の作成ではLeanの変更、ビルド、監査の再実行をしていない。
-既存の対象ビルド・小さい公理監査の記録は [⑤d報告§131–§132](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity/formalization-plans/bhatt-scholze/report-codex-m15.md) およびその前の各追加節にある。
+既存の対象ビルド・小さい公理監査の記録は [⑤d報告§131–§132](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity/formalization-plans/bhatt-scholze/reports/report-codex-m15.md) およびその前の各追加節にある。
 
 ## 読み方・原典・型の規約
 
@@ -4855,7 +4855,7 @@ lemma WalkingAdjunctionAtomicCell.parent_nativeFillable {n : ℕ} {X Y : Walking
 
 **主出力の完成は0/15**。現在の179ファイルはG01の源・補助構成の到達点である。
 「部品がある」ことと一覧の主出力の完成を分ける。以下の未構成名は§131の紙上の仕様。
-一般部分と旧BE適用の残量は [⑤d報告§131–§132](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity/formalization-plans/bhatt-scholze/report-codex-m15.md) の型つき一覧・係数2の表を参照する。
+一般部分と旧BE適用の残量は [⑤d報告§131–§132](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity/formalization-plans/bhatt-scholze/reports/report-codex-m15.md) の型つき一覧・係数2の表を参照する。
 数値は打ち切り前の再見積もりであり、今回の目録による新たな実装枠ではない。
 
 | ID | 済んだ部分 | 残る主出力・検収型 |
@@ -4899,7 +4899,7 @@ HAの対称モノイダル∞圏の基盤を構築したという意味ではな
 HAの∞-operadによる定義への接続は別の検収対象となる。
 
 D81に従って打ち切りは維持する。5a-4・S7の別経路（HAのCAlgで直接、モノイダルな層化、
-filtered保存と具体的層化の反復、極限保存だけでは不足する点）は [⑤d報告§131–§132](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity/formalization-plans/bhatt-scholze/report-codex-m15.md) に記録済み。
+filtered保存と具体的層化の反復、極限保存だけでは不足する点）は [⑤d報告§131–§132](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity/formalization-plans/bhatt-scholze/reports/report-codex-m15.md) に記録済み。
 M15はD81の下の判断を待つ停止中であり、この目録作成で再開していない。
 
 ## この目録の確認範囲

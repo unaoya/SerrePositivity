@@ -18,7 +18,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.Modules
 open CategoryTheory SSet
-open SerrePositivity.EInfinity SimplicialLocalization
+open SerrePositivity.EInfinity _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization
 open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
 open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories
@@ -29,13 +29,13 @@ variable (C : RelativeCategory.{u})
 方針：全関手の等式と前合成の評価を同じ選択逆の可逆二胞体に適用する。
 規約：元の比較の成分。使われ方：全端点比較の指定射との一致。 -/
 lemma relativeCylinderInverseEndpointIso_component (i : Fin 2)
-    (x : (localizationNerve C) _⦋0⦌) :
+    (x : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerve C) _⦋0⦌) :
     ((relativeCylinderInverseEndpointIso C i).app x).hom =
       eqToHom (congrArg (fun v => SSet.HomotopyCategory.mk
         ((relativeCylinderProjection_isQCatEquivalence C).choose.inv.app (Opposite.op ⦋0⦌) v))
         (relativeCylinderEndpoint_projection_vertex C i x)).symm ≫
       (((relativeCylinderProjection_isQCatEquivalence C).choose.homInvIso).app
-        ((localizationNerveMap (relativeCylinderEndpoint C i)).app (Opposite.op ⦋0⦌) x)).hom := by
+        ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap (relativeCylinderEndpoint C i)).app (Opposite.op ⦋0⦌) x)).hom := by
   unfold relativeCylinderInverseEndpointIso
   simp only [FunctorIso.app_trans, Iso.trans_hom]
   simp only [FunctorIso.app, Iso.app_hom, functorIso_eqToIso_hom_app,
@@ -50,21 +50,21 @@ lemma relativeCylinderInverseEndpointIso_component (i : Fin 2)
 方針：選択逆の同じ可逆二胞体の自然性に射影の恒等の法則を適用する。
 規約：同じ全比較そのもの。使われ方：指定された円筒交差辺の回収。 -/
 lemma relativeCylinderEndpointIso_component_of_projection
-    (x : (localizationNerve C) _⦋0⦌)
+    (x : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerve C) _⦋0⦌)
     (a : SSet.HomotopyCategory.mk
-      ((localizationNerveMap (relativeCylinderEndpoint C 0)).app (Opposite.op ⦋0⦌) x) ⟶
+      ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap (relativeCylinderEndpoint C 0)).app (Opposite.op ⦋0⦌) x) ⟶
       SSet.HomotopyCategory.mk
-      ((localizationNerveMap (relativeCylinderEndpoint C 1)).app (Opposite.op ⦋0⦌) x))
+      ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap (relativeCylinderEndpoint C 1)).app (Opposite.op ⦋0⦌) x))
     (ha : eqToHom (congrArg SSet.HomotopyCategory.mk
       (relativeCylinderEndpoint_projection_vertex C 0 x)).symm ≫
-      (hoFunctor.map (localizationNerveMap (relativeCylinderProjection C))).toFunctor.map a ≫
+      (hoFunctor.map (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap (relativeCylinderProjection C))).toFunctor.map a ≫
       eqToHom (congrArg SSet.HomotopyCategory.mk
         (relativeCylinderEndpoint_projection_vertex C 1 x)) = 𝟙 _) :
     ((relativeCylinderEndpointIso C).app x).hom = a := by
   let e := (relativeCylinderProjection_isQCatEquivalence C).choose
-  let P := localizationNerveMap (relativeCylinderProjection C)
+  let P := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap (relativeCylinderProjection C)
   let y (i : Fin 2) :=
-    (localizationNerveMap (relativeCylinderEndpoint C i)).app (Opposite.op ⦋0⦌) x
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap (relativeCylinderEndpoint C i)).app (Opposite.op ⦋0⦌) x
   let d (i : Fin 2) : SSet.HomotopyCategory.mk (P.app (Opposite.op ⦋0⦌) (y i)) ≅
       SSet.HomotopyCategory.mk x :=
     eqToIso (congrArg SSet.HomotopyCategory.mk
@@ -88,7 +88,7 @@ lemma relativeCylinderEndpointIso_component_of_projection
   simp only [Cat.Hom.comp_toFunctor, CategoryTheory.Functor.comp_map,
     eqToHom_refl, Category.id_comp, Category.comp_id] at hmap
   have hid := CategoryTheory.Functor.congr_hom
-    (congrArg Cat.Hom.toFunctor (hoFunctor.map_id (localizationNerve (relativeCylinder C)))) a
+    (congrArg Cat.Hom.toFunctor (hoFunctor.map_id (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerve (relativeCylinder C)))) a
   simp only [Cat.Hom.id_toFunctor, CategoryTheory.Functor.id_map,
     eqToHom_refl, Category.id_comp, Category.comp_id] at hid
   rw [hmap, hid] at hn
@@ -105,7 +105,7 @@ lemma relativeCylinderEndpointIso_component_of_projection
 方針：同じ交差辺の射影の恒等の法則を全比較の成分の判定に渡す。
 規約：元の辺を別の可逆辺に取り替えない。使われ方：弱自然変換の指定成分。 -/
 lemma relativeCylinderEndpointIso_component (X : C.category) :
-    ((relativeCylinderEndpointIso C).app (localizationNerveVertexEquiv C X)).hom =
+    ((relativeCylinderEndpointIso C).app (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveVertexEquiv C X)).hom =
       relativeCylinderCrossingClass C X :=
   relativeCylinderEndpointIso_component_of_projection C _ _
     (relativeCylinderCrossingClass_projection C X)

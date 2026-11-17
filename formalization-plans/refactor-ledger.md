@@ -5,7 +5,7 @@
 この台帳が**リファクタ候補の状態の正本**。勉強ノート（`exposition/ja/bs/` の BR、`exposition/ja/infinity/` の R）には今後リファクタ候補を書かない。ノートを書いていてコードの問題に気づいたら、事実を `research/` にまとめ、ユーザーから調整役へ伝える。
 
 - 取り込み元：`research/bs-refactor-audit/`（BR1〜BR33、ba24dceb6）、`research/infinity-refactor-audit/`（R 番号、同）。囲みの原文はそれぞれの `box-texts.md`。ノートにしかなかった調査（R8 の重複、R58 の Yoneda の閉包）は `research/infinity-refactor-audit/r8-duplication.html`・`route-yoneda.html` に写した。
-- ∞ の R 番号の**中身**の正本は従来どおり `refactoring-infinity.md` §0 の索引から辿れる文書（R1〜R79）。ただし §0 の状態欄とパスは 10-30 のままで古い。**状態はこの台帳を正とする**。
+- ∞ の R 番号の**中身**の正本は従来どおり `archive/stage-i/refactoring-infinity.md` §0 の索引から辿れる文書（R1〜R79）。ただし §0 の状態欄とパスは 10-30 のままで古い。**状態はこの台帳を正とする**。
 - 扱いの語：**閉**（実施済み、または前提が変わり不要）／**B3**（一括レーンの凍結の一晩で行う、`stage-ii/citation-attributes.md`）／**計画**（指定の段・束で行う）／**保守**（段階 II の E3 の sorry 0 の後の保守の束。主定理の経路に乗らないコードの整理）。新しい候補は R80 以降・BR34 以降の番号で足す。
 
 ## 1. BS（BR1〜BR33）
@@ -41,7 +41,7 @@
 
 ## 2. ∞ 圏（R 番号）
 
-中身の正本は `refactoring-infinity.md` §0 の索引。ここには状態と扱いだけを書く。§0 の「中身が正本と同じ」R（監査 README §1 の列挙）は、下の表に挙げないものは §0 の状態のまま。
+中身の正本は `archive/stage-i/refactoring-infinity.md` §0 の索引。ここには状態と扱いだけを書く。§0 の「中身が正本と同じ」R（監査 README §1 の列挙）は、下の表に挙げないものは §0 の状態のまま。
 
 | R | 扱い | 理由・行き先 |
 | --- | --- | --- |
@@ -295,4 +295,11 @@ D79 (i)（615ceab26）で、E∞ の界面 `EInfinity/Interface/Theory.lean` が
 
 | 番号 | 問題 | 扱い |
 | --- | --- | --- |
-| BR55 | 既存の定義が、弱い存在命題（「指定頂点を持つ極限錐がある」「底の等式と前合成同値性を満たす比較がある」など）から `Classical.choose` でデータを選び、指定構成（余単位・span・相対同型など）との両立を失う。5∞-1 で三回、既存の本文を直した（S8 の錐の選び方、`smallLeftUnstraighteningComparisonOfFunctorIso`、`leftCoherentTransportDirectComparison`）。InfinityCategories には `Classical.choose` を含むファイルが多数ある | 計画：同じ型の choose を一度にまとめて洗い出す（紙）。各箇所について、選ぶ存在命題、後で要る指定構成との両立、直し方（指定構成を保つ選び方への置き換え）、推移的な importer の数を表に。洗い出しは手の空いたレーン。直すのは使う段（レーン）で、事前承認の型（`inf-supply-w1.md` 末尾）に従う |
+| BR55 | 既存の定義が、弱い存在命題（「指定頂点を持つ極限錐がある」「底の等式と前合成同値性を満たす比較がある」など）から `Classical.choose` でデータを選び、指定構成（余単位・span・相対同型など）との両立を失う。5∞-1 で三回、既存の本文を直した（S8 の錐の選び方、`smallLeftUnstraighteningComparisonOfFunctorIso`、`leftCoherentTransportDirectComparison`）。InfinityCategories には `Classical.choose` を含むファイルが多数ある | 計画：③-a の 255 本（5∞-1 の範囲、N1〜N5 は適用済み）と ⑦ の追加 362 件（要らない 6・不明 356、`research/infinity-consolidation-w1/choose-additional.md`）。**不明は使う段で直す**（ユーザー 11-17）。洗い出しは **⑦ IC-W1 の IC-1 段 0** に含めた（ユーザー決定 11-17 案 A、`stage-ii/consolidation/infinity-consolidation-w1.md` §7）。5∞-1 の依存分は ③-a の紙（11-17）。「要る」と判定したものは IC-W1 の移動と同じ夜にまとめて直す。事前承認の型は `inf-supply-w1.md` 11-17 朝の追記 |
+
+## 12. 追記（2026-11-17）：Archive の扱い（BR56）
+
+| 番号 | 問題 | 扱い |
+| --- | --- | --- |
+| BR56 | `SerrePositivity/Archive/`（1,871 本・約 11 万行）はビルドしないので検証されず、改名・移動の道具が毎回書き換えている。対応表の行が Archive の宣言を own と記録していた（Kerodon 9.1.1.20） | ⑧ AR-W1（`research/archive-review/`）で数学の中身を確認し、ユーザー決定（11-17）：**戻す 5 本**は P⁰ の段 0 で本体へ（`p0/p0-plan-draft.md` §9）。**材料 161 本**（FilteredExchange の引き戻しの 94 本は Kerodon 9.1.5.7 の後、KST/DescentConditional の 67 本は K の再開時に判断）。**消してよい 69 本**（dg の U12e の検査 68 本、WIP の RelativeFiller 1 本）は 11-17 に消した（タグ `archive/archive-u12e-relativefiller-2026-11-17`）。**判断できない 1,636 本**は凍結し、Kerodon 9.1 の項目を本体で形式化した後に判断。それまで改名・移動の道具と集計の対象から Archive を外す（IC-W1 §10）。9.1.1.20 の own は partial に直した |
+

@@ -14,7 +14,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations
-open CategoryTheory Limits SSet HomotopicalAlgebra
+open CategoryTheory Limits SSet _root_.HomotopicalAlgebra
 open SSet.modelCategoryQuillen
 open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations
 open SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans
@@ -45,7 +45,7 @@ theorem anodyneExtensions_leftAnodyne_of_kanTarget
   haveI : KanComplex (pullback p b) := leftFibration_total_kanComplex q
   haveI : Fibration q := leftFibration_fibration_of_kanComplex q
   have : HasLiftingProperty f q := hf q (by
-    rw [← HomotopicalAlgebra.fibration_iff]
+    rw [← _root_.HomotopicalAlgebra.fibration_iff]
     infer_instance)
   let a' : X ⟶ pullback p b := pullback.lift a f sq.w
   have sq' : CommSq a' f q (𝟙 Y) := ⟨by

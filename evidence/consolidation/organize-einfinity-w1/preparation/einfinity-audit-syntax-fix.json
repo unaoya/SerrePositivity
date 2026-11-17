@@ -1,0 +1,9 @@
+{
+  "path": "scripts/audit_einfinity.lean",
+  "before_sha256": "d07ffeb19d43f456c3c30dcca0558b374fd622f1fe6199a9eaac1060f0eb2b6a",
+  "after_sha256": "be77b01d4eb5ee6776d9fb51d7d30f346b9e82c4226a167f6f1b7d195182e477",
+  "old": "(fun prefix \u21a6 prefix.isPrefixOf mod)",
+  "new": "(fun scopePrefix \u21a6 scopePrefix.isPrefixOf mod)",
+  "occurrences": 1,
+  "policy": "Only rename the reserved local lambda binder; scope arrays and predicate remain unchanged. No mathematical library source changed."
+}

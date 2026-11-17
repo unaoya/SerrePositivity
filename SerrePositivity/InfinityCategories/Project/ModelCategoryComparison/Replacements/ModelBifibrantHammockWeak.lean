@@ -13,7 +13,7 @@ public import SerrePositivity.EInfinity.Hammock.RelativeEquivalenceUnitWeak
 @[expose] public noncomputable section
 universe u v
 namespace SerrePositivity.InfinityCategories.Project.ModelCategoryComparison
-open CategoryTheory HomotopicalAlgebra Opposite
+open CategoryTheory _root_.HomotopicalAlgebra Opposite
 open _root_.SerrePositivity.Reedy _root_.SerrePositivity.InfinityCategories
 variable {C : Type u} [Category.{v} C] [ModelCategory C]
   (r : CofibrantResolutionFamily (C := Cᵒᵖ) simplex)

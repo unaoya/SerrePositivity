@@ -11,7 +11,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open CategoryTheory HomotopicalAlgebra SerrePositivity.DifferentialGraded
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.DifferentialGraded
 variable (A : Type u) [CommRing A] (X : Complex A) (B : CofibrantAlgebra A)
 
 /-- 概要：自由試験対象を元の cofibrancy と束ねる。

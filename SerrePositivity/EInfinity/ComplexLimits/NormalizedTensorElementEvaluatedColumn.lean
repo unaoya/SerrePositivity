@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.EInfinity.FrameHom.MixedNerveCoconePrism
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerveCoconePrism
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TerminalCoconeSimplex
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorElementDiagram
 
@@ -24,8 +24,8 @@ def normalizedTensorElementEvaluationCocone : Cocone (normalizedTensorElementDia
   ι := normalizedTensorElementEvaluation A X Y
 
 def normalizedTensorElementLiftedEvaluationCocone :
-    Cocone (FrameHom.MixedNerve.lifted (normalizedTensorElementDiagram A X Y)) :=
-  FrameHom.MixedNerve.liftedCocone (normalizedTensorElementEvaluationCocone A X Y)
+    Cocone (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.lifted (normalizedTensorElementDiagram A X Y)) :=
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.liftedCocone (normalizedTensorElementEvaluationCocone A X Y)
 
 def normalizedTensorElementEvaluatedColumn {n : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) :

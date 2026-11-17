@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.CoproductDKHom
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.EnrichedPointPrecomposition
-public import SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection
 public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SpecifiedCocones.StrictNativeCocones
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.StrictConeReindex
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.RepresentableLimitCriterion
@@ -24,7 +24,7 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory Limits Opposite MonoidalCategory
 open SerrePositivity.InfinityCategories
-open SimplicialLocalization SerrePositivity.SimplicialModel SerrePositivity.KST.Comparison
+open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization SerrePositivity.SimplicialModel SerrePositivity.KST.Comparison
 variable (A : Type u) [CommRing A] (X Y : CAlgSimplicialCategory A)
 
 /-- 元の二つの cofibrant な代数を標準二点の離散図式にする。 -/
@@ -37,9 +37,9 @@ def cAlgBinaryCocone : Cocone (cAlgBinaryDiagram A X Y) where
   ι := Discrete.natTrans fun j => by
     rcases j with ⟨⟨b⟩⟩
     cases b
-    · exact kanLocalizationStrictHom (cofibrantAlgebraRelativeCategory A)
+    · exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanLocalizationStrictHom (cofibrantAlgebraRelativeCategory A)
         (cofibrantAlgebraDKCoprodInr A X Y)
-    · exact kanLocalizationStrictHom (cofibrantAlgebraRelativeCategory A)
+    · exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanLocalizationStrictHom (cofibrantAlgebraRelativeCategory A)
         (cofibrantAlgebraDKCoprodInl A X Y)
 
 /-- native な二脚の実際の Hom の積比較も局所化で同型。 -/
@@ -143,14 +143,14 @@ lemma cAlgBinaryCocone_isColimit : _root_.SerrePositivity.InfinityCategories.Ker
         cases k
         · have hf : (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomCone d z).π.app ⟨⟨false⟩⟩ = b := by
             change eHomWhiskerLeft SSet z
-              (kanLocalizationStrictHom (cofibrantAlgebraRelativeCategory A)
+              (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanLocalizationStrictHom (cofibrantAlgebraRelativeCategory A)
                 (cofibrantAlgebraDKCoprodInr A X Y)).op = _
             rw [simplicialHomWhiskerLeft_op]
             rfl
           exact hf.trans (prod.lift_snd a b).symm
         · have hf : (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomCone d z).π.app ⟨⟨true⟩⟩ = a := by
             change eHomWhiskerLeft SSet z
-              (kanLocalizationStrictHom (cofibrantAlgebraRelativeCategory A)
+              (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanLocalizationStrictHom (cofibrantAlgebraRelativeCategory A)
                 (cofibrantAlgebraDKCoprodInl A X Y)).op = _
             rw [simplicialHomWhiskerLeft_op]
             rfl
@@ -163,6 +163,6 @@ lemma cAlgBinaryCocone_isColimit : _root_.SerrePositivity.InfinityCategories.Ker
     rw [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanConeComparison_limitLift, he, Functor.map_comp, Functor.map_comp]
     infer_instance
   exact _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence.isSimplicialHomotopyEquivalence
-    (FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _ hq)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.isWeakHomotopyEquivalence _ hq)
 
 end SerrePositivity.EInfinity.BarrattEccles

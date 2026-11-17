@@ -17,7 +17,7 @@ universe u
 noncomputable section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
-open CategoryTheory HomotopicalAlgebra Opposite
+open CategoryTheory _root_.HomotopicalAlgebra Opposite
 open SerrePositivity.HomotopyFunctionComplex SerrePositivity.SimplicialModel
 
 namespace SerrePositivity.EInfinity.BarrattEccles

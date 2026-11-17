@@ -16,7 +16,7 @@
 
 ## 1. 目標 A：E3 を消す
 
-設計は揃っている：`bhatt-scholze/design-status.md`、設計書 A0〜A9、`foundation-entry-points.md`（基盤の入口表）、drafts（`bhatt-scholze/drafts/`）。
+設計は揃っている：`bhatt-scholze/design/design-status.md`、設計書 A0〜A9、`foundation-entry-points.md`（基盤の入口表）、drafts（`bhatt-scholze/drafts/`）。
 
 ### 1.0 出発点：BS の形式化の下書き（drafts）
 
@@ -36,9 +36,9 @@
 | A-4 | A0（prismatic site、Čech–Alexander）、A1（Hodge–Tate 比較）、A2（Construction 7.6、CAlg 値の Δ） | A-1・A-2、G10、G12 |
 | A-5 | A3〜A8（Lemma 8.4、Prop 8.5、Cor 8.12、Thm 10.11 ほか） | A-4、M14（P⁰）、M15（descendability）、⊗ᴸ（済） |
 | A-6 | A9：E3 の組み立て → `Inputs` の証明の置き換え | A-5 |
-| A-7 | 恒久の引用としていた 3 件の証明（11-05 夜、ユーザー決定。調査 `bhatt-scholze/citations-survey-2026-11-05.md`）：D68 は対象ごとの HT の命題に置き換えて直接（0.8〜1.5 万行、∞ 不要）、BM18 は G-A6-1 を O の場合に 1 圏で直接（0.3〜0.6 万行、∞ 不要、入力に BS17）、BS17 Thm 4.1 (i) は原典どおり（§1.5 のスキーム論の土台の上） | D68・BM18 は A-3 と並行に先行できる。BS17 は §1.5 |
+| A-7 | 恒久の引用としていた 3 件の証明（11-05 夜、ユーザー決定。調査 `bhatt-scholze/notes/citations-survey-2026-11-05.md`）：D68 は対象ごとの HT の命題に置き換えて直接（0.8〜1.5 万行、∞ 不要）、BM18 は G-A6-1 を O の場合に 1 圏で直接（0.3〜0.6 万行、∞ 不要、入力に BS17）、BS17 Thm 4.1 (i) は原典どおり（§1.5 のスキーム論の土台の上） | D68・BM18 は A-3 と並行に先行できる。BS17 は §1.5 |
 
-∞ 側から供給するもの（新しい「∞ 供給」レーンの最初の仕事）：G8 の四角形（篩包含）の残り：IF-G2-finish の段 2 の②の完成（切断の制限と G8 の選択された比較を結ぶ錐の族の同型）、続いて①と四角形（`infinity-codex-g2-finish.md`、`infinity-g2-progress.md` の末尾。段 1 と段 2 の途中は main にある）。G2 から引き継ぐ IF-G2 の残り（G9 の小補題 3 つ、G8 の一般の φ、G10、G8 の一般形、G12 とその前提 2 つ）、M14（P⁰、`EInfinity/PowerOperation/`）、M15（descendability、`EInfinity/Descendable/`）。
+∞ 側から供給するもの（新しい「∞ 供給」レーンの最初の仕事）：G8 の四角形（篩包含）の残り：IF-G2-finish の段 2 の②の完成（切断の制限と G8 の選択された比較を結ぶ錐の族の同型）、続いて①と四角形（`archive/stage-i/infinity-codex-g2-finish.md`、`archive/stage-i/infinity-g2-progress.md` の末尾。段 1 と段 2 の途中は main にある）。G2 から引き継ぐ IF-G2 の残り（G9 の小補題 3 つ、G8 の一般の φ、G10、G8 の一般形、G12 とその前提 2 つ）、M14（P⁰、`EInfinity/PowerOperation/`）、M15（descendability、`EInfinity/Descendable/`）。
 
 ### 1.5 共通の段：スキーム論の土台（A と B の両方が使う、11-05 夜）
 
@@ -57,7 +57,7 @@ BS17 Thm 4.1 (i)（完全環の v 降下）を原典どおり証明するのに�
 
 ## 2. 目標 B：K 理論の 2 つを消す
 
-計画 v2（`infinity-lanes/foundations.md`）と K の経路（`kst-lanes/k-theory-kst-route.md`）。引用する文献は Land–Tamme・Tamme・BGT・Waldhausen／Barwick・KST（Thm 3.7 と §3・§5 だけ）・Thomason–Trobaugh・Drinfeld・Kuznetsov–Lunts（KST §4 の群ホモロジーは使わない）。
+計画 v2（`archive/stage-i/infinity-lanes/foundations.md`）と K の経路（`archive/stage-i/kst-lanes/k-theory-kst-route.md`）。引用する文献は Land–Tamme・Tamme・BGT・Waldhausen／Barwick・KST（Thm 3.7 と §3・§5 だけ）・Thomason–Trobaugh・Drinfeld・Kuznetsov–Lunts（KST §4 の群ホモロジーは使わない）。
 
 | 段 | 内容 | 前提 |
 | --- | --- | --- |
@@ -72,7 +72,7 @@ BS17 Thm 4.1 (i)（完全環の v 降下）を原典どおり証明するのに�
 
 ## 3. 保守（急がない）
 
-`cleanup-list-2026-11.md` §2 の L1〜L6（alias の一括削除、旧 G8 の削除、M16、分数の一般版、台帳の大きな処置、DG の D6〜D8）。L3・L4 は B-2 に含める。
+`archive/stage-i/cleanup-list-2026-11.md` §2 の L1〜L6（alias の一括削除、旧 G8 の削除、M16、分数の一般版、台帳の大きな処置、DG の D6〜D8）。L3・L4 は B-2 に含める。
 
 ## 4. 規則（整理の期間から引き継ぐもの）
 
@@ -100,7 +100,7 @@ BS17 Thm 4.1 (i)（完全環の v 降下）を原典どおり証明するのに�
 | --- | --- | --- | --- | --- | --- |
 | 調整役 | Claude Code | 暦・合図・取り込み・計画の正本、∞ と K の検収、BS の設計と検収（drafts・指示書・design-status） | 本書の確定、各レーンの開始文 | — | main（編集とビルドはしない） |
 | ① ∞ 中核 | Codex | B-1 の Verdier 部分（M1・M2・M7・M8）、L4（分数の一般版） | M1・M2・M7（Verdier 商、K 基盤の入口） | 調整役 | `SerrePositivity-inf-core`・`math/inf-core` |
-| ③ ∞ 供給 | Codex | 目標 A の基盤：G8 の四角形、G14、G9 の小補題 3 つ、G8 の一般の φ・一般形、G10 | G8 の四角形（IF-G2-finish の②の完成 → ① → 四角形、`infinity-g2-progress.md` の末尾） | 調整役（使う側の drafts の型と照らす） | `SerrePositivity-inf-supply`・`math/inf-supply` |
+| ③ ∞ 供給 | Codex | 目標 A の基盤：G8 の四角形、G14、G9 の小補題 3 つ、G8 の一般の φ・一般形、G10 | G8 の四角形（IF-G2-finish の②の完成 → ① → 四角形、`archive/stage-i/infinity-g2-progress.md` の末尾） | 調整役（使う側の drafts の型と照らす） | `SerrePositivity-inf-supply`・`math/inf-supply` |
 | ⑤ BS 実装 | Codex | A-1〜A-6 の Lean（drafts を本体へ移しながら sorry を証明に置き換える、§1.0） | BS-W11（A-3）→ A-1 の S1・S2・S6、A-2 | 調整役 | `SerrePositivity-bs-impl`・`math/bs-impl`（一度に一つ） |
 | ⑥ スキーム論 | Codex | §1.5 のスキーム論の土台（A と B の共通）と B-5 の古典的な部分（KST §5 のスキーム補題）。BS17 Thm 4.1 (i) まで | **公理 (3)（冪零不変性、経路の D9）の供給経路の再確認の報告**（Lean は書かない）→ 平坦化（L7 の残り）→ §1.5 の部品 | 調整役 | `SerrePositivity-scheme`・`math/scheme` |
 
@@ -120,14 +120,14 @@ BS17 Thm 4.1 (i)（完全環の v 降下）を原典どおり証明するのに�
 - **K 理論（目標 B）は後回し**。① ∞ 中核（Verdier 商 M1・M2・M7、K 基盤の入口）は止める。K の計画は、対応表 `research/k-coverage/`（問題 10 件）をもとに、改めて相談して見直す。
 - **⑥ スキーム論は BS17 Thm 4.1 (i) の経路に絞る**（`stage-ii/scheme-w1.md` §6）。
 - **KL-W1 を先に**（(a)）。③ ∞ 供給は KL-W1 が main に入ってから始める。
-- **⑤ BS 実装は二本**：⑤a（BS-DOC1 → BS-W11 → BM18 の経路 B、枝 `math/bs-impl`）、⑤b（D68 の直接証明、`bhatt-scholze/bhatt-scholze-codex-d68.md`、枝 `math/bs-d68`）。
+- **⑤ BS 実装は二本**：⑤a（BS-DOC1 → BS-W11 → BM18 の経路 B、枝 `math/bs-impl`）、⑤b（D68 の直接証明、`bhatt-scholze/instructions/bhatt-scholze-codex-d68.md`、枝 `math/bs-d68`）。
 - 今すぐ始めるもの：⑤a・⑤b・⑥。Kerodon の確認は続け、終わったら KL-W1、その後に ③。
 - **⑤a の順（11-07）**：BS-DOC1 → BS-W11 → BS-W12（BM18 の経路 B、G-A6-1。組み立ては ⑥ の BS17 待ち）→ BS-W13（A8-1・A8-2、論文 §10 の古典的な部分）。これで §10 の目標に必要な項目は Thm 10.11 以外が埋まる。
 - **⑤b の順（11-07）**：BS-D68（段 1〜3、§5 の Lemma 5.4・Cor 5.5、§4 の Rem 4.19 と模型の上の η）→ 結晶 site と D69 の古典的な部分（a1-design §10.5・§11）→ 段 2 で D69・Thm 5.2・A1-4 の組み立て（∞ 層と ④ の後）。§5 は Thm 5.2 だけが段 2 に残る。§4 は site・RΓ の部分が段 2。
 
 ### 5.1.1 追記（11-07、ユーザー）：∞ の配置を Kerodon の構成に合わせる束を先に
 
-Kerodon の対応表の確認（`research/kerodon-coverage/`）が終わったら、`InfinityCategories/` の配置を Kerodon の章・節に合わせ、宣言に `@[kerodon TAG]` を付ける束を出す（指示書 [stage-ii/kerodon-layout-w1.md](stage-ii/kerodon-layout-w1.md)、KL-W1）。**③ ∞ 供給と① ∞ 中核は、この束が main に入ってから始める**（新しいファイルを積む前の方が安い）。⑤ BS 実装と⑥ スキーム論は並行してよく、束が入ったら改名表で追従する。
+Kerodon の対応表の確認（`research/kerodon-coverage/`）が終わったら、`InfinityCategories/` の配置を Kerodon の章・節に合わせ、宣言に `@[kerodon TAG]` を付ける束を出す（指示書 [stage-ii/kerodon-layout-w1.md](stage-ii/bulk/kerodon-layout-w1.md)、KL-W1）。**③ ∞ 供給と① ∞ 中核は、この束が main に入ってから始める**（新しいファイルを積む前の方が安い）。⑤ BS 実装と⑥ スキーム論は並行してよく、束が入ったら改名表で追従する。
 
 ### 5.2 並列の上限の検討（11-05、前の調整役）
 
@@ -150,7 +150,7 @@ Kerodon の対応表の確認（`research/kerodon-coverage/`）が終わった�
 | 時期 | 内容 |
 | --- | --- |
 | 11-05 夕 | F-2 の取り込み、整理（段階 I）の完了 |
-| 11-05 夜 | 片付け（`cleanup-list-2026-11.md` §1）の完了、本書の確定 |
+| 11-05 夜 | 片付け（`archive/stage-i/cleanup-list-2026-11.md` §1）の完了、本書の確定 |
 | 11-06〜 | ①③⑤⑥の開始（開始文は調整役） |
 | ③の G8 の四角形の取り込み | ④の開始、BS の S4 の生成辺 |
 | 段 G の最初の区切り（〜12 月上旬） | 保守 L1・L2（alias・旧 G8 の削除） |

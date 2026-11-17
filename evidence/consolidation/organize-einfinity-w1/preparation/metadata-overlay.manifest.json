@@ -1,0 +1,410 @@
+{
+  "scripts/audit_einfinity.lean": {
+    "before_sha256": "a77867c7daae334c7e0a582201b74dd112b7d3b650a86bdc41a122552e959687",
+    "after_sha256": "a640b1c74d98e974010ef27ab18101e52b0b48af2fe1f4333425c909991d5053"
+  },
+  "SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalization/ModelBifibrantRightKanReduction.lean": {
+    "before_sha256": "29fde8b7f5a1d33f274e443daaed97fd9de88c870372814e29d3e83b9b98f29d",
+    "after_sha256": "1ec8f609eca716810d943f214fa6dab4c1047fa5709c5dba59af21cc50cae0ca"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointRoofProbeArrow.lean": {
+    "before_sha256": "eaa912c861425c24797f191e61fe0cfb1427864e69a001ae2266a491a71cfaf1",
+    "after_sha256": "5b50de1699a5f55b23369599ab7d2aa8b34a4714587f4e223b662bf8359f4948"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointHomInputVertex.lean": {
+    "before_sha256": "d55806e84395ab861e645cb2f1e45493e7b8f398ddfaeaa42e49dc5f63001711",
+    "after_sha256": "95f5277e5ab09720483a6e7e9c029cdb7060e1bd99ac1e467a72b8f7dc33e40e"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotProbeNativeHomComparison.lean": {
+    "before_sha256": "95377606f94d326950e7dcc017e51c623f7d98caf35093edbfb72ce311ee494b",
+    "after_sha256": "9e5290fc16b9bb3094962f3c84224bc86c6a42aa90f8024a9a09325a736e6e69"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotUniverseNativeCone.lean": {
+    "before_sha256": "3b49795cbe7f268ad9ff252e1f1c4d24a7bbb72e12524e1d683199d85235e4f1",
+    "after_sha256": "8c288cab1d61a8b276b9c8b1992b0770127afd21a8e960a002f248f4da256100"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceAugmentationComparison.lean": {
+    "before_sha256": "4b9d27ca855dae09815b74d504f51c35a352d8641644f48a3b95df2b1ea4bbbf",
+    "after_sha256": "522e8879af92b91d610bedbf90134430890ab1ad73e65587022e981a4b0d7933"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotNativeSourceFamily.lean": {
+    "before_sha256": "4d1602fa724a5293850d90ed9d93d49f6a9b2af96e7d052a3c129411cafc6125",
+    "after_sha256": "077a4e4c484c5a2d40be54829cb2eb3e00185c0d6d53cd3bdc17384bb107e2c1"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotModelWeakTransformation.lean": {
+    "before_sha256": "4e389c26edbe3b63c87ec2491ec710ac600bf19b3b1905cdf31d41abd7285042",
+    "after_sha256": "d3b4d8b88aa088b72bbc0dc6eec89da071ba0f5609a5e9433c9ca7ed02513d04"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceRoofPinched.lean": {
+    "before_sha256": "779a2912cc20aba351bfe50724a9d28ba7ac23df2923dbd20091ac3812ae3880",
+    "after_sha256": "7ab5d709fb4b2c5453fa387ec01da3144be9a9ac5413167c5c90e3f502ee6f15"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotTensorFrame.lean": {
+    "before_sha256": "dfff9d4513565f4ebe2f31a73980747dcc926badcb355da4fec9aa8364c3c0f9",
+    "after_sha256": "2c537ef7b3ab49764f5ca89de4906c27808e52c09663d43b24c637ecac152724"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotProbeSourceFunctor.lean": {
+    "before_sha256": "1d0df47be3f5778d15f152452fa21a0f70ffbc556176e5974f28cdcac0df7e9d",
+    "after_sha256": "062501df6e3bb1754cc230cedaadc4374383b20fec7fecd2daba36b73d949020"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotUniversalProbePointComparison.lean": {
+    "before_sha256": "0ae2c02e1ce3f624ef32910a841a73fc89d0236d89db148a768ce3685d10cf65",
+    "after_sha256": "d46beb046d205e1792b90a8b923a1c8e236ac6ed1be8fa95e1ba6e88c5049a18"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceRoofNativeAugmentation.lean": {
+    "before_sha256": "f01d7612286c04406bd40d578074006527aec39e8300c0b3f08bffa6023d9677",
+    "after_sha256": "45ab5182738617b4204d263506b69d2d8f7851907ac0e2e987f3669ac041f918"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointNativeTransformationEvaluation.lean": {
+    "before_sha256": "05a74ebcfdcd3b90aa6166a36366577e14fe5dc101f3d94c74bced6db46af678",
+    "after_sha256": "6a90e2efb8e8227ad2ea01fd2c58feba04841b13e88ef47065d8e1d9ceee3522"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotProbeHomInfinityComparison.lean": {
+    "before_sha256": "3a4d5b2a9c9317fdb336855471119c92aee13685991ccd1a040568f4ab8ff966",
+    "after_sha256": "f264e32da3d8e3a6ec12104e91b153629b15d8c487f38d2246979b14f9892e3d"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotModelSource.lean": {
+    "before_sha256": "c87011dddee776c2050ad447ec503f50dc8a5307c49abc9a20b6e61d930771a3",
+    "after_sha256": "713bbff4e202aa9b16148e441e8196ca131fdaeb0b994d9d1af74dce94e4433f"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceUnitLabel.lean": {
+    "before_sha256": "6e0258fa6b292ad7528444ae4dc1b3022600891de8429241098656c035413d62",
+    "after_sha256": "8b337c1f4df5f47d4e34a865e0df782d96b86802c7601485b815ec7404693fcf"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotUniversalSourceNaturality.lean": {
+    "before_sha256": "e9f3904c046eae69ab754e5ff5cddf0caeb5e5c1b4a120b1ce009b4269eb071e",
+    "after_sha256": "a16609e75e408b00b558350c01c52429f9214e696b40d45eed11573a4df46bb7"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotalizationComparison.lean": {
+    "before_sha256": "e3fe1dbe205e8d88bbe9d57fdbd827effb97ba491d08b26ae4a70a11583ac488",
+    "after_sha256": "d1b9a6dd02f8a1af612f0dd060e7b87f259f37ab2a0be40b2f73c7b9534c593c"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourcePairing.lean": {
+    "before_sha256": "cdb0e0dd6a767d15713a6f57cc8c7bd695a2cccfbd44b15fbb78411aae7e9cfe",
+    "after_sha256": "2c35d48787b2d7c9e142f3052c3a864c1d1c4270d7a7ec37852d49879fbe39a2"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceFiberPairingRoof.lean": {
+    "before_sha256": "d2909ca2357d036dd47529cd00248fffeabd36fe1376b098f0db0d0423786f9a",
+    "after_sha256": "f7a9038280e6e1f6782deac458a718727f4ad14dbe4ee27a5a67c4ebe583bf67"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointAugmentation.lean": {
+    "before_sha256": "bf02db4d8b895753fa35e2e18a2d2b3daa61c03b2dec5340b349a1c09dde81a1",
+    "after_sha256": "d451f7d292cd9dbeff70cd5678b0831b8a464796f2240505f608b5df58816ced"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceRoofFrame.lean": {
+    "before_sha256": "7b36fcbce2181617d66fe99d70ad0f33e7d993549158f2ba6292f49c08c6a17a",
+    "after_sha256": "57ae487fc45ef62213c3ee98102d0df5a0d20d9aa9dbe7ee0bb0e713fb5c0dee"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotUniverseIndex.lean": {
+    "before_sha256": "c75270a8251725af45a1e220461ac3f2c4509466de0c587b0fad35ee3ec97411",
+    "after_sha256": "7da4ca40f2e4ffbdc8659f25ecf3719b7f4c4715be32cb03769cc5273dcce8d3"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotFrameHomInfinity.lean": {
+    "before_sha256": "00eb8a0d6e5dc90caa48a463544033b20925c5b815deb8a94014c2dfdfb9aaf1",
+    "after_sha256": "3547bf6d4bdeee8b47a0ae6a42400904e3876a31e8a04e56f97ef0c185a5cc31"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceRoofComparison.lean": {
+    "before_sha256": "68e96c971ce1531ba0188f17054f93ff4052c9169b0f3b689b3c464d39f99641",
+    "after_sha256": "a38d66ce301a483c2b81166473b7305e2f721697888932d91f22ed679c2c2c75"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceRoofGraph.lean": {
+    "before_sha256": "946c70b9e885c3acc007f68394ecaa6b976babc2168f9c594fd08fee8e867628",
+    "after_sha256": "fdcc72aee4a1c0079b49e6ec7989f305be44465af984cfe4829157c079c47a32"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceNativeFiberPath.lean": {
+    "before_sha256": "57234c070d3a934f25029ef09ca32fb3f2180735c52eec8b698e1996a0d0a927",
+    "after_sha256": "c8f7c8c49901529b0bec8373b7b042fca0eeb399c5ff63eac4915b129331ccb8"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotProbeKanDiagram.lean": {
+    "before_sha256": "1f29a5d41db44afa7288aa60eb8615ee6c1d07f5a7c719cc84503204b3cef730",
+    "after_sha256": "01e5e0ffb8f2f90dfc488d0ab4a51005c0b623ef05e4a5c01ca97897e2ef2fb6"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceRoofPrefix.lean": {
+    "before_sha256": "f3457aa7c43b9b1e3d8001c7a99ac22c7a91197945cacb1df013604eb5a47a7b",
+    "after_sha256": "18b37bd610f2fa61c1c75f7949630b860ad7f7e00c985e5ef41fb67423b9325a"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotUnderlyingLocalization.lean": {
+    "before_sha256": "20756cc79d2cec1615a2cf19669f7c8a580bd650b80bb08ae50e95d8a510e710",
+    "after_sha256": "f604115d17388dc8ed9aacaae46d3a2a2df16c83c8c3424507e57565ec1c2d2d"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotModelSourceComparison.lean": {
+    "before_sha256": "6c25086225b31fb87de60bc384313797ea3d2f614f6180e99521f1ae6e7811f2",
+    "after_sha256": "cafa278d178c891d33ca509bc070bfa340638fe03fb0ca662ead02e11c2e2a38"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceTargetFiber.lean": {
+    "before_sha256": "0e14ffc1fede5c1b50d947d7473651b545f9430b33dbfe2f4eb1b37ec73f4e73",
+    "after_sha256": "33b7b68ea3517572e46bb5510206cafb8c9853b713503c2afe551429d83ad348"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointNativeLiftUnit.lean": {
+    "before_sha256": "5b91c635b5cb2ccb2b283df2ecdbf167956ae4582154349e9de7b524e4fb5113",
+    "after_sha256": "ba0870ac01da3c222326f3aaf5ccfc3a68ad7cbf0c0d2ca2cbf3cf8d292251c4"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceNativePinchedFactorization.lean": {
+    "before_sha256": "0b503758bb478e7981a14f3bca26499c8014311e8b5b1eb938562f60956cb4b6",
+    "after_sha256": "245a38b443fa4c1ae14bb48de686ccb71d5477eede04f852176a152c080c6abf"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotProbeKanCoefficients.lean": {
+    "before_sha256": "7d9439010c8314bb2554b79984b64b68e12265785c631dd636e40c6865616e13",
+    "after_sha256": "3137042de123779edff4d6320846cc8cf121d0175d46e210cb67acece8d92cae"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotProbeCoefficientsComparison.lean": {
+    "before_sha256": "a06442a04bebd017105dced3816e3bd93eece5e896823fb187e87db3f2319f6b",
+    "after_sha256": "1ab414c61eec6f10f5ca22b276493d0ba6ab3051aef8be8470d99a8c8f0f17c4"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotNativeConeAt.lean": {
+    "before_sha256": "1867f9ed2f441ab25d8832c851e788548ff42f4047dae9406b2b960706a256a1",
+    "after_sha256": "ac1f733e245447adbb03ebe56c05c01fa3be6b818954f0ae4091165bfc37517c"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceOppositeAugmentation.lean": {
+    "before_sha256": "15dcc654d59bddb56189724f811917004144745960513ecaed7d975bb3b098cf",
+    "after_sha256": "c7f8814a8cd9b7eef745a32f48ea4e95ab3275dc6923d0419dbbead7e1d8834b"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceTargetPointValues.lean": {
+    "before_sha256": "d256ea86d7f32e9726545fe11d7c1d267fc0d7b1a466e6b90e93db4ac2e8c074",
+    "after_sha256": "c4236516c6f8a450706a642d600891149fa9fb12bb5724af4cc5aff0874b3b4d"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceRoofAugmentation.lean": {
+    "before_sha256": "c389c1fff64afb033775a8f823472adf3872ada2a0ee580c6d9c938787b90772",
+    "after_sha256": "78ea9a8875b4d434e0ec59c55b0a19754306efe048e5a0331c88d58262bd0d79"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointCorrectionComponentArrows.lean": {
+    "before_sha256": "9c2d332d0acf0a0e4a496b2b896dcbf16e6ebcec2e291de6a986634fa0a1c9ac",
+    "after_sha256": "9083f192e8be88e03aa987d49ce5fc60220b3e25d7a53cdea6ea1c93882efebe"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceFiberRoof.lean": {
+    "before_sha256": "c1397a6059e4f51568cd332a911b83d61353997ce79fe24fd3e34ef623b72b09",
+    "after_sha256": "a3549f0262033e5453d03822c63f9f64912edc3c352192cb813dbebc7740950a"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotLocalization.lean": {
+    "before_sha256": "e00fe8f4094ca3884293f79bc2640ddf139be9b4c58cc25c08d2643159c3709f",
+    "after_sha256": "2d342cced1f295aba8d322a2efe5a2123c2210f195d6ed4c9a780ee74b598c57"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceRoofNativeFamily.lean": {
+    "before_sha256": "cd838fab44ff4adef533b4f14ee7d8d1c262e23c89e833da4378aeaf5b9691e9",
+    "after_sha256": "6567e99d07349678731d7d2cea3f575c0e7afb688f170a3f31c9b4b6dd19ea72"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotBKNativeClassification.lean": {
+    "before_sha256": "25510fe77f226bbfc5df6d1db6396f33cd3599fb3f505cfb34e3a38675611904",
+    "after_sha256": "02228210cf54d044626cadc9f74587ebc3fb8cb49c9ed0640b67ebe2fc7f47d9"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceNativeIntervalFamily.lean": {
+    "before_sha256": "a558580f08fe29c311ad91bccb26dea77c29deffbd61cb47607252ab42c7284b",
+    "after_sha256": "ffc0762d271bf37bc3a43eb4eddf627473ff62e2c58ffaef3225c31f6de3d8af"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointNativeLiftUnitPoint.lean": {
+    "before_sha256": "e8a74bd0e5a33190041738dff82171a288cee5d90aff16797b61d9b4e3821cf6",
+    "after_sha256": "26bb9230625aa74e376e7969685536259203aab232066d34a9890976dab3275e"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceRoofEndpointTransport.lean": {
+    "before_sha256": "8e28c6ea66f04308e22e33bc24d02fc487f0fd32c8eecaad68b48093cd2f317b",
+    "after_sha256": "0b4c3c5633502c007f1b83eb93ff10350a59cd860e69f75556a94a56e6ad3a97"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceNativePinched.lean": {
+    "before_sha256": "6164ed9c77ad4ae215ac3af1f6f483df19d4b79f2d8a009c6159b90dea278bd0",
+    "after_sha256": "9d10a2ac9a79807d8dee6efbf8af44783247b0d8be4593612349fd2e41888214"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointPairingCorrection.lean": {
+    "before_sha256": "52ef7a304757dff9f63a127c6cf22f1e58877ac128717c3a4b2e9641f69b6b7d",
+    "after_sha256": "2b59b2392e8b28142b7a69b7b69a923ab8ba39eaa799a7827d579ce944f6b4ab"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotVertexLocalization.lean": {
+    "before_sha256": "59165546c228d6e7be498eefb2de13e763e24c0b5dff53dc6c68bda57b278864",
+    "after_sha256": "ac4756601a59cbf6e7ec93c82c05233a9e4b76dd6bd74f0a753486448b9dd126"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotRightFrameCoherent.lean": {
+    "before_sha256": "86b490f0f4fbd69e536f4d88d4751c7481b14bf4c75c232be02493b96b4162d3",
+    "after_sha256": "dae48f483a3d7d1232649dddf3f4bfa1bdb2d5a1fa7313d20a59281d1a28762f"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointNativeUnitPoint.lean": {
+    "before_sha256": "1d570d962e750e0c6b708effa9b1dedb4d552cbdd0cf58e593d0059464eb1dc8",
+    "after_sha256": "cc2378bea19257f6f2ceb4cf152edf721b0b1186d87b8a78adda614d54fe4e2a"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointCorrectionProjectionComponents.lean": {
+    "before_sha256": "36c02f4b3433e03628146237e9ca4345beb18219a465e0b09fcd2a779f80d316",
+    "after_sha256": "57ba3144083035bf6fa2c15974aabd9cd719dabcef533dbdbf4e2a2ee86dc012"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotUniversalWeightedCone.lean": {
+    "before_sha256": "efaf75403c9b54e3c8ec91dcf0b521c3cf0397b0d824935d462a616ad1981785",
+    "after_sha256": "487fe0da43d314da62ebd7a19c41cd14877a72eeb2662848de511d6e3b9b3f51"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotAlgebraHomInfinityComparison.lean": {
+    "before_sha256": "8b77131f0c079eda834cd46e6566e5102864201911ed48791ec91caa8d062751",
+    "after_sha256": "184be4eef8006a1768f341082ac48139c72f12fdb0e313bbbc964159794f352e"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotRightFrameComparison.lean": {
+    "before_sha256": "9874e4fd4d1d790fe53a973dc8b0ce5ef7fc201242f5331afe58f2ed18b99f83",
+    "after_sha256": "69aba903f6c9d4b9dd5b63f96c274d8d3eb3bf8b3d8cb9d5536eb75219f7aa61"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointPairingBaseComparison.lean": {
+    "before_sha256": "4872da3dc18b1e3f7c107845e8cdd871aeb15bb263c1086fc6dfb3f3e6933594",
+    "after_sha256": "ab38b4e1328a83f7fc66fa815e18d6cfa70cb00f7bdb99a558f01929819a2e52"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceRoofNativePinched.lean": {
+    "before_sha256": "d05ae6269de298a4f6529b5a6a14e3a8a1037498d50bf832a647aa06bd8a4e54",
+    "after_sha256": "8e17fdf1b6be825d32dfb2e10a041fcbc66468e93ad253a2b77caef772cbd8a6"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotUniversalBKProbeCone.lean": {
+    "before_sha256": "bc53385d25d3006cd25d139d6debb433a49893d8169b5f36d8b039e6b634e1ff",
+    "after_sha256": "04c32ceaa143bbaf90044256dd648cfb0d53ff6d2b6c7b7c82e6c1845d4d037f"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointHomRestriction.lean": {
+    "before_sha256": "12e9b45be13927c67e0d51f73ef810b15cb255d1eb18d2e1bbc599bf92a77f7a",
+    "after_sha256": "41db4ecb2685d424e18a7610c56cd4d77a264b4c24dad18c4a2cf5658234e977"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotBKClassification.lean": {
+    "before_sha256": "48ec657ff236e857ede1cdbc18aef3d190901baeb8ed7d39201c0baa947f4e6f",
+    "after_sha256": "48dc3566cce076fa09bbd39321fca3ade3af95c9c441ea418c6f14231d9c2471"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointCorrectedUnitArrow.lean": {
+    "before_sha256": "364c93b350475006bccf92bd1d9ae6a4f94fa9cb431385361a780c2ffc19b0f0",
+    "after_sha256": "39d085923426c5020eebe21ff50519ce0fe0257a2a28edb257cbb8353eaf7320"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceTargetUnit.lean": {
+    "before_sha256": "9b62afdc5ec475f50189af92ad5f7364a11d6c3de75052dbcf37227f910894ef",
+    "after_sha256": "84f8dc6c44f6c7356c28cce6b24f565ad1dcba220514dccdf92641461de7b5c1"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotProbeFrameComparison.lean": {
+    "before_sha256": "51235dc43882679dacdf856210cafe5226d9ee594771223825b548269fde9fe2",
+    "after_sha256": "0cb38c0910ac9b2916c936a0c3af5c43bc5c7b341357801204db3d8860766d6f"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointNativeUnitFiber.lean": {
+    "before_sha256": "befe1835eaf5fe03e4381fc68c7b4935783baf1d1773951369ae16e34f4d1fe0",
+    "after_sha256": "13d55c070845fe61e9d5a97c7d6de629aa98b7914fc82f821d347e20bd8ea300"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointHomInput.lean": {
+    "before_sha256": "5d711f3f14b0c6c4b3b9273487348b1fd2aa8b6f7762198d35f8c4a94780678c",
+    "after_sha256": "c22b6ff9f79d0fd7d3c862b9783235b6896fb2b692566a842f313ecf9aadecf6"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceRawCoslicePath.lean": {
+    "before_sha256": "26b568a21ec62d6d2246aac3e137d4cfcb3592613de4982a604e13fb66228798",
+    "after_sha256": "f93c9096b5cfaabf433e44342dfd2438add7192f47d8db5c39161b2ef86e11da"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceAugmentationPointValues.lean": {
+    "before_sha256": "5a9efa17484c74668854fb55719453c3a1c3ab016eae21ce5ddf9b43e8869508",
+    "after_sha256": "e6329e04cd9f3ee493cb13c285884e7b648fa1e20c346c1387f8a113b430a09f"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceNativeFiber.lean": {
+    "before_sha256": "20bf948a3ba1750a0055edb420cf0052a6ce67c4202c4d838143395a86417384",
+    "after_sha256": "65a9e0efd1bfeb85a8cb6cff391b4a3e86125846382cb5aa8248d44ae402ff25"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotTensorFrameProperties.lean": {
+    "before_sha256": "39893b6c53eca459a6038ce60c8a13c31d050216173c231adabb6d6687780ab7",
+    "after_sha256": "0b7f07748bd3da695e112b2bfd48d1edef725adda78018cc1e84595a0eabff19"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceNativeOppositeFiber.lean": {
+    "before_sha256": "924094f705550bf53439ceff568da6a626aef537250b6983d59f91cf9ea56b19",
+    "after_sha256": "99d21590d4e0973b547057914f41bcd2974e23438d721f9055a20aff3096cc7c"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceRawCosliceFamily.lean": {
+    "before_sha256": "92a4b4ca4aaf18da56bdf88b15f70da35fba707a939b5baf167e181bee3551c8",
+    "after_sha256": "d0e6ef752444c780b919f60ce4fa21e6ee30bc70a7ee5e18226a5c54c6b97eb0"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceNativeLift.lean": {
+    "before_sha256": "ae917c6e6499153e4ccae1f17dea431f4a6e818c375f14a9267f416ef74fbfc9",
+    "after_sha256": "45fdb07fbb99bb45003294606cfa8666cc7725cc8f4f479fb45097ecf1495200"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointPairingProjectionValues.lean": {
+    "before_sha256": "bf63eb968939071307ef885e0793ad60dc33551eec33dfbdad8d6ff96a12295f",
+    "after_sha256": "038ac0b577122ff19bde80d7839ab8f56de6b7deaf6ca5e64c5fd7409b6d34ed"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotNativeFiberRecovery.lean": {
+    "before_sha256": "c6a3ef8653767d1f71db7a16f3370ca5e15bd289faba6f601ac1e16ebc4d551d",
+    "after_sha256": "2c94a22972223b142157e124ad3ddd24b2604e85973635aaa09b8318280b6dd1"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceFiberElements.lean": {
+    "before_sha256": "c7845abb7f15b45ffd765650a24b2cbb2c619dc8e6bd8677ba24341a6b51ef89",
+    "after_sha256": "0950c240944b7bcb84ad56fbb5f514d4c51f1bbba7dcca99ba1e2c4e3fd2d696"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointFirstSpan.lean": {
+    "before_sha256": "564704470396efe6956c5e02eff1a6608dbb5407cfae8c0494213bfe7e7cf3d4",
+    "after_sha256": "dec6feafadf0cd0fe32d747b4d1e129e47d0c0bd02941d3361f06403a0f689e0"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceRoofParameter.lean": {
+    "before_sha256": "026e0dceefb86787bcdab2ed8de3e4e1a7cdf6e13c2bd4c8ec85add4e9021e13",
+    "after_sha256": "ba628ced6d508e94fe0b6ccddccec2705cf5779678fd8cd097266cefd7b04ed3"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotNativeFiberComparison.lean": {
+    "before_sha256": "4df70b87f4c219724258507cca675af5ce2874e64c6c95b1d42370c8ee59d9e9",
+    "after_sha256": "94dca04531e05b0f0c2979d9130ac58a0b0b1e0335ba4b2b6532443a0d58f5bb"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotBKSections.lean": {
+    "before_sha256": "a835732c4e3393c53af3a91d5f8c41c69743b9b291239feccb5c8071211819b0",
+    "after_sha256": "f1814914ab4f1462508f1bb68d4e3988763f58e0cb9e1a1c5690f4069514a75f"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotWeightComparison.lean": {
+    "before_sha256": "f96fb36798a1e68e455d504df4476f5bcdca0eaac6ca10dd2c742c10e4117c57",
+    "after_sha256": "5b0c1d15dcbda0baed0c16d66b47306cff7b459432f511db63eea99187ea1365"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointTargetReplacement.lean": {
+    "before_sha256": "2c93051d00b844b3e2166c4e072228698df6a55824c86f964804cce3c6659022",
+    "after_sha256": "b1eb9db286024437356a4d2ac05009953810f7694eb1b09120a293488c756246"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointNativeTransformation.lean": {
+    "before_sha256": "60d34af2a99aa9b7c038b884c34c6d9753865a0ba2e8c756424160eec5e9f572",
+    "after_sha256": "ebd962ced346e744e8366f3c8a786742f79b8e20548dd6b894c229c03fc3325b"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointCorrectionProjectionValues.lean": {
+    "before_sha256": "80629ea61b81f39460d6cc3b0aaad58ebb9bd3ece109941c48d8fa2f81b236e8",
+    "after_sha256": "c436387ed5dba45389b8894439141147c017045482db57094e4d3ac588de37bc"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotEvaluationLocalization.lean": {
+    "before_sha256": "a369741f53d66ddacbfd5d5093829b41cf054fef8f1626aa61dd051304367516",
+    "after_sha256": "157fbf4e063016a7b9ecd750a4617984061c18b591899ef683507c8344d78bee"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotalizationInput.lean": {
+    "before_sha256": "3ce5860937961ef299abc46ba98f13a90e664701a6e7b39df8a4047133db3f40",
+    "after_sha256": "9cda9706606b723e42cb987ca8755d10166477fe5e8447197034661f2dc65397"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotUnderlyingSource.lean": {
+    "before_sha256": "b059ebbe23e99d70f2308967b697efa1e9f0620adad963b1844f96818b14f1d1",
+    "after_sha256": "ef3fa3e12fdbb78521c6dc4a8ab9f6859934402c2fe27ed482c4bda65db9f626"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotNativeSectionsRecovery.lean": {
+    "before_sha256": "66cd61ae53da244d382f0e2b3cc6b5216ba1b32e452bb48249cb400174f6fe3a",
+    "after_sha256": "a720c0a6608aedf8208e932398ae275f6266044113817b8b8e02bbc703f8d895"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotUniversalWeightedConeNaturality.lean": {
+    "before_sha256": "addc0ba5599562a10207830e2890fecacfb81a23848e19853fc9f0e24f17405a",
+    "after_sha256": "c7a120a8e685245566968782278254bda30080acc9a697bebd059d1df13e2e29"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceRoofColumn.lean": {
+    "before_sha256": "9fb2c7398432f594d9f50676f10aa7524c95673bd3c8873bc094208b0a7d0971",
+    "after_sha256": "701a01609b811b23bdbec183c7847a5a2d3751f9c2993c20b3448e5488240cb3"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceNativeFiberPairing.lean": {
+    "before_sha256": "ca54b8d633af1122b911e55592337fbe689488a347e7183cf8e3f0063383ba6c",
+    "after_sha256": "1506c0dfe02293182b0eafc37046e7ee35c999914bd685c9f8fe1538e8f528aa"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotFrameHomComparison.lean": {
+    "before_sha256": "28ee3e58c10cd378f52e44fb2d8ab5874a0dc3cb7583c7345db201757ed16a17",
+    "after_sha256": "8eec0b0addc7a8797cd24821950310e658a791127f3d12a2d6b3f9fae62e7f28"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointCorrectionComponent.lean": {
+    "before_sha256": "fb5cd5070e26cafe739604fd233aac03032a841ab83351e108c3b2752e90d257",
+    "after_sha256": "7bbda49ac7b10e86755189f8eefec42bd226bb216d9d10f68c04a9e872d3f061"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceParameters.lean": {
+    "before_sha256": "e5b311727409a19da02f64282296fd22f59776b4170686a8460f983d965c3534",
+    "after_sha256": "18848f2bfd4b18064433bd056dfb2c590fb0a794eb9cd2aa84e9ba59a8eb59a0"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotUniversalProbeCone.lean": {
+    "before_sha256": "9056875cf8c98878f6fd19300007727ab6ac2fa6a05286e5474b048011fdf9ff",
+    "after_sha256": "79f9317aa10cdd08cf546790f10175e26dc3e9231ad93c4d010b9cb43677fdb7"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotBKNativeSections.lean": {
+    "before_sha256": "c304a57be81976403d12e3ecab69f07e0f3bad8310446928428e4587ab20b043",
+    "after_sha256": "b267376043b55df75aafc0c80a3ad0aa4a78e6f308840c88d3842e666b30235e"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotJointSourceElements.lean": {
+    "before_sha256": "562c9622a0206df2a403e33009c2dba1849396ed68d34ad7d307f0d58a18c556",
+    "after_sha256": "2b9708431192092edd05e722327ae9e8687980450f59f1c24d55aa8a6c011704"
+  },
+  "SerrePositivity/EInfinity/BarrattEccles/StoppedRoutes/ISW2Tot/StrictDiagramTotProbeCosliceClassification.lean": {
+    "before_sha256": "a74d2c7555369f763633f4684be5f72386dd682480a45dd00ea7ef97e5a2c783",
+    "after_sha256": "e0fd5d372a12619881165d6cff2a5d13b065d74703687497d2fcc1e01e9d1e06"
+  },
+  "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/FrameHom/FrameArrowCofinality.lean": {
+    "before_sha256": "5c7d45d88034a05a5dd57cc8796d38674c2e8c1699e84213a697bb68bd8a19fc",
+    "after_sha256": "f7a507d59be1045ce5dcec0c643783fd37b40cd534a0d709fa36fe0a9224d91d"
+  }
+}

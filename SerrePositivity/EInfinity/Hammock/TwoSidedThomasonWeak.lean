@@ -35,7 +35,7 @@ lemma weightedLeft_diagonalMap_isWeakHomotopyEquivalence :
 lemma map_isWeakHomotopyEquivalence : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (map F G) := by
   rw [← weightedLeft_map_factorization F G]
   exact (weightedLeft_diagonalMap_isWeakHomotopyEquivalence F G).comp
-    (FrameHom.Thomason.map_isWeakHomotopyEquivalence
+    (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.map_isWeakHomotopyEquivalence
       (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieck.contravariantProjection F ⋙ G))
 
 end SerrePositivity.EInfinity.Hammock.TwoSidedThomason

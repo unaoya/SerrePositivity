@@ -1,0 +1,54 @@
+{
+ "directory": "/Users/sugakubunka/serre-evidence/cited/notes-kerodon1",
+ "commit": "02fd6ba06408721b5fa593a56ea5eebcfa31f2ae",
+ "made_by": "NB-W1: split-notes.py; audit-notes.py; no Lean or Verso execution",
+ "note": "43 environments; 88 body blocks; 41 placed, 47 held outside chapter 1; 295 formula fragments preserved; source and generator unchanged",
+ "files": [
+  {
+   "path": "audit-notes.py",
+   "sha256": "4103b5b3d809570d9d41810f3524b17a480dfcce8d8e9643f046cc6ae0955fc5",
+   "bytes": 3656
+  },
+  {
+   "path": "holding-body.md",
+   "sha256": "c55b1e7d695a476b8ca27efeabda171602c962ea7ef4d569035ea443e862ad34",
+   "bytes": 16740
+  },
+  {
+   "path": "input-hashes.json",
+   "sha256": "ecfaaf96fd3d88e1d63a0cc02219364d86dcceb0f212c3693a611c315f27c6b8",
+   "bytes": 1025
+  },
+  {
+   "path": "issues-analysis.md",
+   "sha256": "5a3e8a2aaf867b3157ce99e3a3d24c235686fcd27c72f171d75f98a319cbc028",
+   "bytes": 9799
+  },
+  {
+   "path": "link-map.json",
+   "sha256": "3849546c0006e2b77cf66c3c8d1cf55ed9a834676830e3909aeeb37a69712810",
+   "bytes": 3151
+  },
+  {
+   "path": "output-hashes.json",
+   "sha256": "aeeae95fcbfcefa15d842b34f39245c81f5ece015e83d9ba3bf6de2441cefc9c",
+   "bytes": 2404
+  },
+  {
+   "path": "paragraph-map.json",
+   "sha256": "50722a6bcc125c17deae6767dd957e67fe941dd4ad8a7260169e6817ff74d906",
+   "bytes": 87389
+  },
+  {
+   "path": "split-notes.py",
+   "sha256": "b6c9a5dd00706c70941462912c149299e0cb81a5263c55089f43871c53f4f15e",
+   "bytes": 11868
+  },
+  {
+   "path": "validation.json",
+   "sha256": "bef510626247a11967945e73bdcf1a3322ee97355dff408cf22e56436621c53d",
+   "bytes": 849
+  }
+ ],
+ "total_bytes": 136881
+}

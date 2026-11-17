@@ -13,7 +13,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory SSet SerrePositivity.InfinityCategories SerrePositivity.DifferentialGraded
-open SerrePositivity.EInfinity.FrameHom ComplexLimits
+open _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom ComplexLimits
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X : Complex A) (B : CofibrantAlgebra A)
 

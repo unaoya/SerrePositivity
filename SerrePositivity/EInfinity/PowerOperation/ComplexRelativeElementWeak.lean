@@ -15,9 +15,9 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.PowerOperation
-open CategoryTheory HomotopicalAlgebra Hammock
+open CategoryTheory _root_.HomotopicalAlgebra Hammock
 open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.ComplexLimits
-open SerrePositivity.EInfinity.SimplicialLocalization
+open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
 open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces
 open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor
@@ -40,7 +40,7 @@ lemma complexRelativeElementRoofMap_weak :
 lemma complexRelativeElementHammockPinchedMap_weak :
     IsWeakHomotopyEquivalence
       (complexRelativeElementHammockPinchedMap A ((framedLimitProbeFunctor A).obj X) Y) := by
-  have hu := FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence
+  have hu := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.isWeakHomotopyEquivalence
     (exInfinityUnit.app
       (SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph
         (complexRelativeCategory A).weakEquivalences
@@ -49,10 +49,10 @@ lemma complexRelativeElementHammockPinchedMap_weak :
     (SSet.anodyneExtensions.Q_inverts _ (exInfinityUnit_anodyne _))
   change IsWeakHomotopyEquivalence
     ((complexRelativeElementRoofMap A ((framedLimitProbeFunctor A).obj X) Y ≫
-      exInfinityUnit.app _) ≫ kanHammockHomPinchedMap (complexRelativeCategory A)
+      exInfinityUnit.app _) ≫ _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockHomPinchedMap (complexRelativeCategory A)
         ((complexRelativeUp A).obj ((framedLimitProbeFunctor A).obj X))
         ((complexRelativeUp A).obj Y))
   exact ((complexRelativeElementRoofMap_weak A X Y).comp hu).comp
-    (kanHammockHomPinchedMap_weak _ _ _)
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockHomPinchedMap_weak _ _ _)
 
 end SerrePositivity.EInfinity.PowerOperation

@@ -34,7 +34,7 @@ lemma normalizedTensorDoubleConeOverDiagram_uncurry :
 
 lemma normalizedTensorDoubleConeSliceEvaluationHomotopy_h_standard :
     (normalizedTensorDoubleConeSliceEvaluationHomotopy A X Y).h =
-      (FrameHom.MixedNerve.homotopy (normalizedTensorElementAugmentation A X Y)).h ≫
+      (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.homotopy (normalizedTensorElementAugmentation A X Y)).h ≫
         nerveMap (complexToClosed A) ≫ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (Complex A) := by
   rw [normalizedTensorDoubleConeSliceEvaluationHomotopy_h,
     normalizedTensorDoubleConeOverDiagram_uncurry, normalizedTensorElementAugmentationJoin_prism]

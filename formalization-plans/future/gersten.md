@@ -1,7 +1,7 @@
 # Gersten 予想の整数係数の反例の形式化計画
 
 作成日：2026-10-14（2026-10-15 記）。状態：計画のみ。Lean の実装はまだない。
-注記（2026-10-30）：本文の「k-theory.md」「M1〜M6」は 10-15 までの K 理論 v1 計画（[archive/k-theory-v1.md](../archive/k-theory-v1.md)）を指す。現在の K の基盤は [KST 経路](../kst-lanes/k-theory-kst-route.md)（安定 ∞ 圏の K）で、着手時にはそちらに合わせて読み替える。
+注記（2026-10-30）：本文の「k-theory.md」「M1〜M6」は 10-15 までの K 理論 v1 計画（[archive/k-theory-v1.md](../archive/k-theory-v1.md)）を指す。現在の K の基盤は [KST 経路](../archive/stage-i/kst-lanes/k-theory-kst-route.md)（安定 ∞ 圏の K）で、着手時にはそちらに合わせて読み替える。
 この計画は、K 理論の基盤（[k-theory.md](../archive/k-theory-v1.md)）の上に、OpenAI の二本の論文の主定理を
 載せられるかを整理する。実装をこのリポジトリで行うか別リポジトリにするかは未定である。
 

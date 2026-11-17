@@ -16,7 +16,7 @@ public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison
 universe u
 noncomputable section
 namespace SerrePositivity.EInfinity.BarrattEccles
-open CategoryTheory HomotopicalAlgebra SerrePositivity.InfinityCategories Opposite
+open CategoryTheory _root_.HomotopicalAlgebra SerrePositivity.InfinityCategories Opposite
 
 variable (A : Type u) [CommRing A]
 
@@ -44,7 +44,7 @@ lemma mappingSpaceReducedHammockNerveMap_isWeakHomotopyEquivalence
     (X Y : (operad A).Algebra) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (mappingSpaceReducedHammockNerveMap A X Y) := by
   have hi : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (algebraHammockReductionIso A X Y).hom :=
-    FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _ (by infer_instance)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.isWeakHomotopyEquivalence _ (by infer_instance)
   exact (mappingSpaceHammockColimitNerveMap_isWeakHomotopyEquivalence A X Y).comp hi
 
 end SerrePositivity.EInfinity.BarrattEccles

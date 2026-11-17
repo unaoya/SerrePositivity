@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.DGAlgebra.ModelCategory
 public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.ModelCofibrantHammockWeak
-public import SerrePositivity.EInfinity.SimplicialLocalization.ModelHammockNerveEquivalence
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelHammockNerveEquivalence
 
 /-!
 概要：実 dg 代数モデルの生成射から frame 比較の関手的分解入力を放電する。
@@ -14,9 +14,9 @@ public import SerrePositivity.EInfinity.SimplicialLocalization.ModelHammockNerve
 @[expose] public noncomputable section
 universe u
 namespace SerrePositivity.EInfinity.DGAlgebra
-open CategoryTheory HomotopicalAlgebra
+open CategoryTheory _root_.HomotopicalAlgebra
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SimplicialLocalization
+open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 variable (R : Type u) [CommRing R]
 
 /-- 概要：実自由生成 cofibration の小対象論法は第一の関手的分解を与える。
@@ -83,10 +83,10 @@ lemma cofibrantHammockInclusion_weak :
 規約：係数環以外の追加仮定なし。使われ方：Sp の全 dg 局所化への復帰。 -/
 lemma cofibrantHammockNerveInclusion_isQCatEquivalence :
     let := modelCategory R
-    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (relativeKanHammockNerve
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.relativeKanHammockNerve
       (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantToModelRelative (Mon (Complex R)))) := by
   let := modelCategory R
   have := modelCategory_hasFunctorialFactorization_cofibration_trivialFibration R
-  exact modelCofibrantToModel_nerve_isQCatEquivalence (Mon (Complex R))
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelCofibrantToModel_nerve_isQCatEquivalence (Mon (Complex R))
 
 end SerrePositivity.EInfinity.DGAlgebra

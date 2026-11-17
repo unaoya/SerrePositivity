@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.FibrantRightSpans
-public import SerrePositivity.EInfinity.FrameHom.ArrowSpanGrothendieck
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ArrowSpanGrothendieck
 
 /-!
 概要：fibrant な右終域の三本矢を元の全右脚の Cat 値図式として表示する。
@@ -15,7 +15,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.InfinityCategories.Project.ModelCategoryComparison
-open CategoryTheory Limits HomotopicalAlgebra
+open CategoryTheory Limits _root_.HomotopicalAlgebra
 variable {C : Type u} [Category.{v} C] [ModelCategory C] (X Y : C)
 
 /-- 概要：元の右脚の終域が fibrant である性質。
@@ -131,7 +131,7 @@ variable [IsFibrant Y]
 /-- 概要：元の fibrant な Y の恒等右脚は同じ底の対象。
 方針：元の恒等射と同じ fibrancy を使う。
 規約：元の Y 自身。使われ方：全図式の始対象。 -/
-def initial : Base Y := ⟨_root_.SerrePositivity.EInfinity.FrameHom.ArrowSpan.rightSliceInitial (trivialCofibrations C) Y,
+def initial : Base Y := ⟨_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ArrowSpan.rightSliceInitial (trivialCofibrations C) Y,
   show IsFibrant Y from inferInstance⟩
 
 /-- 概要：元の恒等右脚は fibrant な全右脚の圏の始対象。
@@ -140,9 +140,9 @@ def initial : Base Y := ⟨_root_.SerrePositivity.EInfinity.FrameHom.ArrowSpan.r
 def initial_isInitial : IsInitial (initial Y) :=
   IsInitial.ofUniqueHom
     (fun t => ObjectProperty.homMk
-      ((_root_.SerrePositivity.EInfinity.FrameHom.ArrowSpan.rightSliceInitial_isInitial (trivialCofibrations C) Y).to t.obj)) (by
+      ((_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ArrowSpan.rightSliceInitial_isInitial (trivialCofibrations C) Y).to t.obj)) (by
       intro t f
       apply ObjectProperty.hom_ext
-      exact (_root_.SerrePositivity.EInfinity.FrameHom.ArrowSpan.rightSliceInitial_isInitial (trivialCofibrations C) Y).hom_ext _ _)
+      exact (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ArrowSpan.rightSliceInitial_isInitial (trivialCofibrations C) Y).hom_ext _ _)
 
 end SerrePositivity.InfinityCategories.Project.ModelCategoryComparison

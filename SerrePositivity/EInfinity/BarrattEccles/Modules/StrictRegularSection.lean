@@ -20,7 +20,7 @@ open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded
 open SerrePositivity.InfinityCategories.Project.DerivedCategories
 open SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization
-open SerrePositivity.EInfinity.SimplicialLocalization
+open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 attribute [local implicit_reducible] strictRawModuleRestrictionPseudofunctor
 variable (A : Type u) [CommRing A]
 
@@ -104,7 +104,7 @@ def strictRawModuleUnitSectionRelative : algebraRelativeCategory A ⟶ strictRaw
     · exact hf
     · change QuasiIso ((strictRawModuleTotalForget A).map (strictRawRegularMap A f.down))
       rw [strictRawRegularMap_underlying]
-      change @HomotopicalAlgebra.weakEquivalences (operad A).Algebra _
+      change @_root_.HomotopicalAlgebra.weakEquivalences (operad A).Algebra _
         (modelCategory A).categoryWithWeakEquivalences _ _ f.down at hf
       rw [modelCategory_weakEquivalences] at hf
       exact hf
@@ -122,15 +122,15 @@ lemma strictRawModuleUnitSectionRelative_projection :
 方針：同じ cofibrant 包含と相対 section を局所化する。
 規約：全単体を持つ実写像。使われ方：全加群族の単位。 -/
 def moduleUnitSection : CAlg_R A ⟶ moduleTotalInfinity A :=
-  localizationNerveMap (cofibrantToAlgebraDKRelative A ≫ strictRawModuleUnitSectionRelative A)
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap (cofibrantToAlgebraDKRelative A ≫ strictRawModuleUnitSectionRelative A)
 
 /-- 概要：正則加群の実関手の射影は同じ包含・置換の局所化（HA §4.2.3）。
 方針：相対 section の厳密な射影式と局所化の合成則を使う。
 規約：全単体での等式。使われ方：元の cofibrant 比較による section の回収。 -/
 lemma moduleUnitSection_projection :
     moduleUnitSection A ≫ moduleTotalProjection A =
-      localizationNerveMap (cofibrantToAlgebraDKRelative A ≫ algebraToCofibrantDKRelative A) := by
-  rw [moduleUnitSection, moduleTotalProjection, ← localizationNerveMap_comp]
+      _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap (cofibrantToAlgebraDKRelative A ≫ algebraToCofibrantDKRelative A) := by
+  rw [moduleUnitSection, moduleTotalProjection, ← _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap_comp]
   rw [← Category.assoc, Category.assoc (cofibrantToAlgebraDKRelative A),
     strictRawModuleUnitSectionRelative_projection, Category.comp_id]
 

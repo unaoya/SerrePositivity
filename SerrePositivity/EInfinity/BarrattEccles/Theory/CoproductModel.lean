@@ -26,7 +26,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.EInfinity
-open CategoryTheory Limits HomotopicalAlgebra
+open CategoryTheory Limits _root_.HomotopicalAlgebra
 
 section Ordinary
 variable {C : Type u} [Category.{v} C] [HasBinaryCoproducts C]

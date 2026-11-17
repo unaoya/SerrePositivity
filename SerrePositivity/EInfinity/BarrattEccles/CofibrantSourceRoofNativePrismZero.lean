@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixPrismZeroSlice
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefixPrismZeroSlice
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantSourceRoofNativePrism
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantSourceRoofProductFunctorCell
 
@@ -19,7 +19,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open CategoryTheory Limits SSet MonoidalCategory SimplicialLocalization
+open CategoryTheory Limits SSet MonoidalCategory _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.InfinityCategories
 open scoped Simplicial
 
@@ -44,21 +44,21 @@ lemma cofibrantSourceRoofProductCommaNativePrism_zero_uncurry :
       (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.nerveCoconeEquiv (Cocone.mk
         (show (cofibrantAlgebraRelativeCategory A).category from Y)
         (cofibrantSourceRoofProductCommaRightLeg A X Y b))).val ≫
-      hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A) := by
-  let P := RoofPrefix.prism (cofibrantAlgebraRelativeCategory A)
+      _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A) := by
+  let P := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.prism (cofibrantAlgebraRelativeCategory A)
     (cofibrantSourceRoofProductCommaDiagram A X Y b)
     (cofibrantSourceRoofProductCommaEvaluation A X Y b)
     (cofibrantSourceRoofProductCommaEvaluation_weak A X Y b)
     (cofibrantSourceRoofProductCommaRightLeg A X Y b)
     (fun f => cofibrantSourceRoofProductCommaDiagram_map_weak A X Y b f)
-  have hq := congrArg (fun z : (kanHammockNerve (cofibrantAlgebraRelativeCategory A)) _⦋0⦌ =>
+  have hq := congrArg (fun z : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockNerve (cofibrantAlgebraRelativeCategory A)) _⦋0⦌ =>
     SSet.yonedaEquiv.symm z)
-    (hammockLocalizationNerveMap_vertex (cofibrantAlgebraRelativeCategory A)
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap_vertex (cofibrantAlgebraRelativeCategory A)
       (show (cofibrantAlgebraRelativeCategory A).category from Y))
   refine (uncurry_point_ext hq
     (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 0 _ ≫ cofibrantSourceRoofProductCommaNativePrism A X Y b)
     (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 0 _ ≫ P) (fun _ _ => rfl)).trans ?_
-  exact RoofPrefix.prism_zero_uncurry (cofibrantAlgebraRelativeCategory A)
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.prism_zero_uncurry (cofibrantAlgebraRelativeCategory A)
     (cofibrantSourceRoofProductCommaDiagram A X Y b)
     (cofibrantSourceRoofProductCommaEvaluation A X Y b)
     (cofibrantSourceRoofProductCommaEvaluation_weak A X Y b)
@@ -76,6 +76,6 @@ lemma cofibrantSourceRoofProductCommaNativePrism_zero_evaluation :
     (Cocone.mk (show (cofibrantAlgebraRelativeCategory A).category from Y)
       (cofibrantSourceRoofProductCommaRightLeg A X Y b))
   exact (congrArg (fun f => f ≫
-    hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A)) h)
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A)) h)
 
 end SerrePositivity.EInfinity.BarrattEccles

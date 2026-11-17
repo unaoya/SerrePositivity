@@ -1,7 +1,7 @@
 # Codex 作業指示書 IF-W2a-2：R76（Nerve まわりを HotA へ）・R77（CategoryTheory の統合）・R67（Inputs/Homotopy）
 
 作成：2026-11-01（∞ 基盤の整備、管理は Claude）。宛先：∞ の Codex。**開始は IF-W0-4 の後**に Claude が合図する（[coordination.md](../coordination.md) §3 の #8）。
-計画：[infinity-foundation-plan.md](../infinity-foundation-plan.md) の R76・R77・R67 の行、§6 の IF-W2a-2 行。伝達文 [handover §2・§3.2・§6.2](../handover-ct-to-infinity-2026-10-30.md)。
+計画：[infinity-foundation-plan.md](stage-i/infinity-foundation-plan.md) の R76・R77・R67 の行、§6 の IF-W2a-2 行。伝達文 [handover §2・§3.2・§6.2](stage-i/handover-ct-to-infinity-2026-10-30.md)。
 **共通の前提**：[IF-W0-1](infinity-codex-w0-1.md) §0。worktree は `../SerrePositivity-ifw0-3`、ブランチ `infra/if-w2a-2`（IF-W0-4 の取り込み後の main から）。
 **一束で下流のビルドは一回**（§10.12）。CategoryTheory の基盤は HotA・EInfinity・KST・Spectra・IC の下にあるので、この束の下流はほぼ全部（約 20,000 本）。束の最後に一回だけ全ビルドし、verify を通す。
 

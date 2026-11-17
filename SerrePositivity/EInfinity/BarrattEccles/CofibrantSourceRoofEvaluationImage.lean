@@ -19,7 +19,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open CategoryTheory Limits Opposite SSet HomotopicalAlgebra
+open CategoryTheory Limits Opposite SSet _root_.HomotopicalAlgebra
 open Hammock SerrePositivity.SimplicialModel
 open scoped Simplicial
 variable (A : Type u) [CommRing A]

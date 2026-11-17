@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.CAlgCoproductFunctor
-public import SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockArrowPoint
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeHammockArrowPoint
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.BinaryCoconeEdges
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.BinaryCoproductCocone
 public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.Edges
@@ -28,7 +28,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory Limits MonoidalCategory SSet
-open SerrePositivity.InfinityCategories SimplicialLocalization
+open SerrePositivity.InfinityCategories _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open scoped _root_.Simplicial
 variable (A : Type u) [CommRing A]
 
@@ -36,7 +36,7 @@ variable (A : Type u) [CommRing A]
 def cAlgCofibrantArrow {X Y : (cofibrantAlgebraRelativeCategory A).category} (f : X ⟶ Y) :
     (CAlg_R A).Edge (cAlgVertexEquiv A X) (cAlgVertexEquiv A Y) :=
   _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge ((eHomEquiv SSet.{u + 1}).symm
-    (localizationArrowPoint (cofibrantAlgebraRelativeCategory A) f ≫
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationArrowPoint (cofibrantAlgebraRelativeCategory A) f ≫
       _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app _))
 
 /-- 同じ cofibrant な厳密余積の、第一の指定包含。 -/

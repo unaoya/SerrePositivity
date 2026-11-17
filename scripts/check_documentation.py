@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
-"""Check active repository links and exposition API/module references after lake build.
+"""Check active repository links (`--links-only` skips the Lean export) and exposition API/module references after lake build.
 Research notes under research/ and plans under formalization-plans/ are checked for local links only.
 Lean's environment is exported to a temporary directory, never into the repository.
 """
 from pathlib import Path
 import re
 import subprocess
+import sys
 import tempfile
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -14,7 +15,8 @@ ROOT = Path(__file__).resolve().parents[1]
 def main():
     failures = []
     docs = [ROOT / 'README.md', *sorted((ROOT / 'research').rglob('*.md')),
-            *sorted((ROOT / 'formalization-plans').glob('*.md'))]
+            *sorted((ROOT / 'formalization-plans').rglob('*.md')),
+            *sorted((ROOT / 'evidence').rglob('*.md')), *sorted((ROOT / 'exposition').rglob('*.md'))]
     for path in docs:
         for target in re.findall(r'(?<!\w)\[[^]\n]*\]\(([^)]+)\)', path.read_text()):
             target = target.strip('<>').split('#', 1)[0]
@@ -22,6 +24,9 @@ def main():
                 continue
             if not (path.parent / target).exists():
                 failures.append(f'{path.relative_to(ROOT)}: missing link {target}')
+    if '--links-only' in sys.argv:
+        print('\n'.join(failures) or 'links: ok')
+        return
     with tempfile.TemporaryDirectory(prefix='serre-doc-check-') as directory:
         directory = Path(directory)
         names_path = directory / 'names.txt'

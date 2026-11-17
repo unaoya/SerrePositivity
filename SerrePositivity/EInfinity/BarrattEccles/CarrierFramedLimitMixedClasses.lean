@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.CarrierFramedLimitStrictFamilies
 public import SerrePositivity.EInfinity.BarrattEccles.CarrierSourceRightConeComparison
-public import SerrePositivity.EInfinity.HomotopyWeight.KanConeClasses
+public import SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.KanConeClasses
 
 /-!
 # 両 frame の比較は元の通常の錐の同じ類を結ぶ
@@ -24,10 +24,10 @@ universe u
 
 namespace SerrePositivity.EInfinity.BarrattEccles
 
-open CategoryTheory Limits HomotopicalAlgebra
+open CategoryTheory Limits _root_.HomotopicalAlgebra
 open SerrePositivity.DifferentialGraded
 open SerrePositivity.Reedy
-open SerrePositivity.EInfinity.FrameHom.MixedFrame
+open _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedFrame
 
 attribute [local implicit_reducible] CofibrantResolutionFamily.atObject
 
@@ -45,7 +45,7 @@ lemma carrierSourceRightConeComparisonIso_strictClass (F : K ⥤ (operad A).Alge
         SimplicialModel.PiZeroLocalization.inverts_anodyne).hom
       (CarrierDiagram.constantDiagramSourceClass A K f) =
       SSet.mapπ₀ (carrierRightSimplicialConeIso A K c.pt F).hom
-        (HomotopyWeight.coneClass K (HomotopyWeight.weight K)
+        (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.coneClass K (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K)
           (carrierStrictSimplicialConeFamily A K F c)) := by
   let := projectiveModelCategory A
   let q := cosimplicialResolutionFamily (carrierProbeFactorization A)
@@ -61,8 +61,8 @@ lemma carrierSourceRightConeComparisonIso_strictClass (F : K ⥤ (operad A).Alge
   let s := (CarrierDiagram.constantDiagramHomEquiv A K P ((Diagram.forget A K).obj F))
     ((CarrierDiagram.constantDiagramComparison A K).app P ≫ f)
   let t := carrierStrictSimplicialConeFamily A K F c
-  have hs := HomotopyWeight.kanConeComparisonIso_class K (HomotopyWeight.weight K)
-    (HomotopyWeight.weight_cofibrant K) l r
+  have hs := _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.kanConeComparisonIso_class K (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K)
+    (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight_cofibrant K) l r
     (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MixedFrameDiagrams.leftDiagram_kanComplex K B (q.cofibrant P) (q.atObject P).homotopicallyConstant
       ((Diagram.forget A K).obj F)
       (fun k => CarrierDiagram.complex_isFibrant A (F.obj k).carrier))

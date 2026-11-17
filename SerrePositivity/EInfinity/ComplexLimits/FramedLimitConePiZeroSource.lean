@@ -24,7 +24,7 @@ universe u
 
 namespace SerrePositivity.EInfinity.ComplexLimits
 
-open CategoryTheory Limits HomotopicalAlgebra
+open CategoryTheory Limits _root_.HomotopicalAlgebra
 open SerrePositivity.DifferentialGraded
 
 variable (A : Type u) [CommRing A] (K : Type u) [SmallCategory K]

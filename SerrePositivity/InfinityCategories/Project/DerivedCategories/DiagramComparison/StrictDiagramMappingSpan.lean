@@ -15,7 +15,7 @@ public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparis
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
-open CategoryTheory HomotopicalAlgebra SSet MonoidalClosed
+open CategoryTheory _root_.HomotopicalAlgebra SSet MonoidalClosed
 open scoped Simplicial
 open SerrePositivity.InfinityCategories.Project.ModelCategoryComparison
 open SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison

@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.BarrattEccles.ConstantDiagramPiZero
 public import SerrePositivity.EInfinity.BarrattEccles.ConstantDiagramFrameComparison
 public import SerrePositivity.EInfinity.BarrattEccles.ConstantDiagramSourceFunctor
-public import SerrePositivity.EInfinity.HomotopyWeight.PointwiseTensorSource
+public import SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.PointwiseTensorSource
 
 /-!
 # 定値図式からの局所化 Hom 比較の始域自然性
@@ -25,7 +25,7 @@ universe u
 
 namespace SerrePositivity.EInfinity.BarrattEccles
 
-open CategoryTheory Limits HomotopicalAlgebra
+open CategoryTheory Limits _root_.HomotopicalAlgebra
 open SerrePositivity.Reedy
 
 attribute [local implicit_reducible] CofibrantResolutionFamily.atObject
@@ -46,8 +46,8 @@ lemma constantDiagramFrameHomIso_source {Y Z : (operad A).Algebra} (f : Y ⟶ Z)
       ((constantDiagramFrameHomIso A K Z).app F).hom ≫ (constantDiagramSourceMap A K f).app F := by
   let := modelCategory A
   let q := cosimplicialResolutionFamily (mappingCofibrantFactorization A)
-  exact HomotopyWeight.pointwiseTensorFrameHomIso_source K (q.obj.map f)
-    (HomotopyWeight.weight K) F
+  exact _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseTensorFrameHomIso_source K (q.obj.map f)
+    (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K) F
 
 private lemma prefix_source {Y Z : (operad A).Algebra} (f : Y ⟶ Z) :
     let := Diagram.projectiveModelCategory A K

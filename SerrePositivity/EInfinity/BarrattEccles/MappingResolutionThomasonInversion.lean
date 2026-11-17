@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.MappingResolutionThomasonSquare
-public import SerrePositivity.EInfinity.FrameHom.ThomasonInversion
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ThomasonInversion
 
 /-!
 # 元の全右脚の二つの Thomason 比較射の反転性
@@ -27,13 +27,13 @@ variable (A : Type u) [CommRing A]
 /-- 全右脚を走る元の分解の Thomason 射そのものが反転される。 -/
 lemma mappingResolutionThomason_localized_isIso (X Y : (operad A).Algebra) :
     IsIso (AnodyneHomotopy.anodyneQ.map
-      (FrameHom.Thomason.map (mappingSmallResolutionRightDiagram A X Y))) :=
-  FrameHom.Thomason.map_localized_isIso (mappingSmallResolutionRightDiagram A X Y)
+      (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.map (mappingSmallResolutionRightDiagram A X Y))) :=
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.map_localized_isIso (mappingSmallResolutionRightDiagram A X Y)
 
 /-- 全右脚を走る元の全左脚の Thomason 射そのものも反転される。 -/
 lemma mappingSpanThomason_localized_isIso (X Y : (operad A).Algebra) :
     IsIso (AnodyneHomotopy.anodyneQ.map
-      (FrameHom.Thomason.map (mappingSmallSpanRightDiagram A X Y))) :=
-  FrameHom.Thomason.map_localized_isIso (mappingSmallSpanRightDiagram A X Y)
+      (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.map (mappingSmallSpanRightDiagram A X Y))) :=
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.map_localized_isIso (mappingSmallSpanRightDiagram A X Y)
 
 end SerrePositivity.EInfinity.BarrattEccles

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramModelLocalization
-public import SerrePositivity.EInfinity.SimplicialLocalization.ModelRightFrameComparison
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelRightFrameComparison
 
 /-!
 概要：元のstrict複体図式の実right frameを、同じ指定局所化のpinched Homへ比較する。
@@ -14,7 +14,7 @@ public import SerrePositivity.EInfinity.SimplicialLocalization.ModelRightFrameCo
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
-open CategoryTheory HomotopicalAlgebra SSet
+open CategoryTheory _root_.HomotopicalAlgebra SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
 open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic
@@ -56,7 +56,7 @@ def strictDiagramRightFramePinchedEquivalence
       (pinchedHom (X := StrictDiagramInfinity A d)
         ((strictDiagramLocalization A d).app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ X))
         ((strictDiagramLocalization A d).app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ Y))) :=
-  EInfinity.SimplicialLocalization.modelRightFramePinchedEquivalence
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelRightFramePinchedEquivalence
     (strictDiagramRightFrameFamily A d) (strictDiagramModelLocalization A d)
     (strictDiagramModelLocalization_isLocalization A d) X Y
 

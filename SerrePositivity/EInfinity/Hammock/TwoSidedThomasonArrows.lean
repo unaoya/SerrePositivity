@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.Hammock.ContravariantThomasonArrows
 public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieckHomComponents
 public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedBar
-public import SerrePositivity.EInfinity.FrameHom.ThomasonSimplex
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ThomasonSimplex
 
 /-!
 # 元の二方向 bar の対角頂点と比較射の左右の成分
@@ -27,7 +27,7 @@ variable {W : Type u} [Category.{u} W]
   (F : Wᵒᵖ ⥤ Cat.{u, u}) (G : W ⥤ Cat.{u, u})
 
 abbrev labels (n : ℕ) := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedElements.Element
-  (FrameHom.Thomason.values F n) (FrameHom.Thomason.values G n)
+  (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.values F n) (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.values G n)
 
 variable {n : ℕ} (e : ComposableArrows (labels F G n) n)
 
@@ -36,7 +36,7 @@ def vertex (i : Fin (n + 1)) : _root_.SerrePositivity.InfinityCategories.Kerodon
 
 def leftArrow {i j : Fin (n + 1)} (h : i ⟶ j) :
     (e.obj i).left.obj i ⟶ (F.map (e.map h).base.op).toFunctor.obj ((e.obj j).left.obj j) :=
-  ContravariantThomason.leftArrow F (FrameHom.Thomason.values G n) e h
+  ContravariantThomason.leftArrow F (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.values G n) e h
 
 def rightArrow {i j : Fin (n + 1)} (h : i ⟶ j) :
     (G.map (e.map h).base).toFunctor.obj ((e.obj i).right.obj i) ⟶ (e.obj j).right.obj j :=
@@ -47,7 +47,7 @@ def arrow {i j : Fin (n + 1)} (h : i ⟶ j) : vertex F G e i ⟶ vertex F G e j 
 
 lemma leftArrow_id_heq (i : Fin (n + 1)) :
     HEq (leftArrow F G e (𝟙 i)) (𝟙 ((e.obj i).left.obj i)) :=
-  ContravariantThomason.leftArrow_id_heq F (FrameHom.Thomason.values G n) e i
+  ContravariantThomason.leftArrow_id_heq F (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.values G n) e i
 
 lemma rightArrow_id_heq (i : Fin (n + 1)) :
     HEq (rightArrow F G e (𝟙 i)) (𝟙 ((e.obj i).right.obj i)) := by
@@ -58,7 +58,7 @@ lemma rightArrow_id_heq (i : Fin (n + 1)) :
 lemma leftArrow_comp_heq {i j k : Fin (n + 1)} (h : i ⟶ j) (l : j ⟶ k) :
     HEq (leftArrow F G e (h ≫ l))
       (leftArrow F G e h ≫ (F.map (e.map h).base.op).toFunctor.map (leftArrow F G e l)) :=
-  ContravariantThomason.leftArrow_comp_heq F (FrameHom.Thomason.values G n) e h l
+  ContravariantThomason.leftArrow_comp_heq F (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.Thomason.values G n) e h l
 
 lemma rightArrow_comp_heq {i j k : Fin (n + 1)} (h : i ⟶ j) (l : j ⟶ k) :
     HEq (rightArrow F G e (h ≫ l))

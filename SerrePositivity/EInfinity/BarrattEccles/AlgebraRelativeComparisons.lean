@@ -15,7 +15,7 @@ public import SerrePositivity.EInfinity.BarrattEccles.AlgebraRelativeCategory
 noncomputable section
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open CategoryTheory HomotopicalAlgebra
+open CategoryTheory _root_.HomotopicalAlgebra
 variable (A : Type u) [CommRing A]
 def cofibrantDKComparison :
     (cofibrantToAlgebraDKRelative A).functor ⋙ (algebraToCofibrantDKRelative A).functor ⟶

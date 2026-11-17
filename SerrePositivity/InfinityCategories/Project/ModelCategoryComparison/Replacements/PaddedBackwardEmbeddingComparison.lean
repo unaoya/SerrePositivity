@@ -16,7 +16,7 @@ public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localiz
 universe u v
 noncomputable section
 namespace SerrePositivity.InfinityCategories.Project.ModelCategoryComparison
-open CategoryTheory HomotopicalAlgebra _root_.SerrePositivity.InfinityCategories
+open CategoryTheory _root_.HomotopicalAlgebra _root_.SerrePositivity.InfinityCategories
 
 variable {C : Type u} [Category.{v} C] [ModelCategory C] (X Y : C)
   (cof : MorphismProperty.FunctorialFactorizationData (cofibrations C) (trivialFibrations C))
@@ -39,7 +39,7 @@ lemma paddedBackwardEmbedding_isWeakHomotopyEquivalence {a b : _root_.SerrePosit
     intro b hlen a f hf hb
     by_cases hs : Function.Surjective f.orderHom
     · have : IsIso f := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.isIso_of_bijective f ⟨hf, hs⟩
-      exact _root_.SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _ (by infer_instance)
+      exact _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.isWeakHomotopyEquivalence _ (by infer_instance)
     · change ¬ ∀ j, ∃ i, f.orderHom i = j at hs
       obtain ⟨j, hj⟩ := not_forall.mp hs
       let e := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.eraseInclusion b j

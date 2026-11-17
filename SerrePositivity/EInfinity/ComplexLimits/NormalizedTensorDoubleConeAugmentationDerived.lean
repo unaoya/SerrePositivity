@@ -34,7 +34,7 @@ lemma normalizedTensorDoubleConeSliceEvaluation_derived_arrow :
   apply _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomotopy_hom_arrow_of_h_eq
   change (normalizedTensorDoubleConeSliceEvaluationHomotopy A X Y).h ≫
       complexSemifreeResolutionInfinity A =
-    (FrameHom.MixedNerve.homotopy (normalizedTensorElementAugmentation A X Y)).h ≫
+    (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.homotopy (normalizedTensorElementAugmentation A X Y)).h ≫
       complexOrdinaryDerivedSource A
   rw [normalizedTensorDoubleConeSliceEvaluationHomotopy_h_standard]
   simp only [complexOrdinaryDerivedSource, Category.assoc]

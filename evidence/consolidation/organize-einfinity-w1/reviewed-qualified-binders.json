@@ -1,0 +1,12 @@
+[
+  {
+    "module": "SerrePositivity.EInfinity.FrameHom.HomInfinityLocalizationTransport",
+    "old": "SerrePositivity.EInfinity.FrameHom.CoherentLocalizationComparison.homInfinityTransport",
+    "new": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CoherentLocalizationComparison.homInfinityTransport",
+    "start": 1335,
+    "stop": 1386,
+    "spelling": "CoherentLocalizationComparison.homInfinityTransport",
+    "source_sha256": "7a3657563cee4aaeb8672d65f600ae54661bd1d9c00f4daffd14d68cd374f38a",
+    "review": "Exact actual compiler binder/native owner verified. The recorded namespace is already extended by the qualified declaration parent; spell only the same transported full name explicitly. No type, value, or argument change."
+  }
+]

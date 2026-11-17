@@ -51,11 +51,11 @@ def chain(rows):
         if r.get('old') and r.get('new') and r['old'] != r['new']:
             renames[r['old']] = r['new']
 for path, loader in [('scripts/refactor/targets/kl-namespace-map.json', lambda d: d['rows']),
-                     ('formalization-plans/stage-ii/bulk-b3prime/B4/namespace-rewrite-map.json', lambda d: d['rows'])]:
+                     ('evidence/bulk/bulk-b3prime/B4/namespace-rewrite-map.json', lambda d: d['rows'])]:
     if os.path.exists(path):
         chain(loader(json.load(open(path))))
 import gzip
-b3 = 'formalization-plans/stage-ii/bulk-w1-b3/declaration-names.jsonl.gz'
+b3 = 'evidence/bulk/bulk-w1-b3/declaration-names.jsonl.gz'
 if os.path.exists(b3):
     chain(json.loads(l) for l in gzip.open(b3, 'rt'))
 def renamed(n):

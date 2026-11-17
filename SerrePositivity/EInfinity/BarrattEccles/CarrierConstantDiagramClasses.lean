@@ -20,7 +20,7 @@ universe u
 
 namespace SerrePositivity.EInfinity.BarrattEccles.CarrierDiagram
 
-open CategoryTheory HomotopicalAlgebra
+open CategoryTheory _root_.HomotopicalAlgebra
 open SerrePositivity.DifferentialGraded
 
 variable (A : Type u) [CommRing A] (K : Type u) [SmallCategory K]

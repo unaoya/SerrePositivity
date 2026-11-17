@@ -5,7 +5,7 @@
 - 目的：形式化の調整役への受け渡し。ユーザーの方針（11-12）で、リファクタ候補はノートでなく形式化の側で管理し、扱い（実施・計画への取り込み・不要）は調整役が判断する。**ここには事実だけを書き、推奨や振り分けは書かない。**
 - ノートの側の予定：調整役が台帳に取り込んだ後、`exposition/ja/bs/` の赤い囲み（33 個）と index.html の「リファクタ記録」の表を外し、台帳への参照に置き換える。囲みの原文は `box-texts.md` に写してある（ファイル:行は ba24dceb6 時点）。
 - 経緯：BR は 10-25〜11-02 にノートを書きながら付けた。その後の BS-W1〜W17 は BR 番号を挙げずに内容を片づけたことが多く、index の状態欄は 33 件中 27 件が実態と食い違っていた（一致は BR1・2・3・9・30・31）。
-- 「状態」の語：**実施済み**／**一部実施**（済んだ部分と残りを書く）／**未実施**／**前提が変わった**（ノートの提案の前提が後の決定や変更で成り立たない）。「計画書」は refactor-plan.md、cleanup-list-2026-11.md、stage-ii/citation-attributes.md（B3）、stage-ii/stage-ii-second-half.md、bhatt-scholze/design-status.md、bhatt-scholze/bhatt-scholze-stage2.md、a*-design.md を内容で探した結果。B3 の配置案は `refactor/kerodon-layout` 枝の `formalization-plans/stage-ii/bulk-w1-b2/layout/module-paths.csv`（400624b0d）を見た。
+- 「状態」の語：**実施済み**／**一部実施**（済んだ部分と残りを書く）／**未実施**／**前提が変わった**（ノートの提案の前提が後の決定や変更で成り立たない）。「計画書」は refactor-plan.md、cleanup-list-2026-11.md、stage-ii/citation-attributes.md（B3）、stage-ii/stage-ii-second-half.md、bhatt-scholze/design-status.md、bhatt-scholze/bhatt-scholze-stage2.md、a*-design.md を内容で探した結果。B3 の配置案は `refactor/kerodon-layout` 枝の `evidence/bulk/bulk-w1-b2/layout/module-paths.csv`（400624b0d）を見た。
 
 ## 1. 一覧
 
@@ -54,6 +54,6 @@
 
 ## 3. 形式化の側の文書で、調査中に古いと分かった記述
 
-- `formalization-plans/bhatt-scholze/bhatt-scholze-stage2.md` 63〜64 行：有限直積の perfectoid 性を「E3 に依存する」と書いている。BR20（BS-W10 作業 A）で解消済み。
+- `formalization-plans/bhatt-scholze/notes/bhatt-scholze-stage2.md` 63〜64 行：有限直積の perfectoid 性を「E3 に依存する」と書いている。BR20（BS-W10 作業 A）で解消済み。
 
 （ノートの側の古い記述、03 章の命題 3.7 の Lean 欄・D7 行・章末のまとめ「原典の形の定理はない」、BR27 の囲みの「旧名は仮定付きのまま残す」は、ノートのチャットが直す。）

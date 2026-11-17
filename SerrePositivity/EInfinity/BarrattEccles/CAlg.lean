@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantDiscreteAlgebra
-public import SerrePositivity.EInfinity.SimplicialLocalization.Nerve
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.Nerve
 
 /-!
 # Cofibrant E 代数の具体的な coherent nerve としての CAlg_R
@@ -21,7 +21,7 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 
 open CategoryTheory
-open SerrePositivity.EInfinity.SimplicialLocalization
+open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open scoped Simplicial
 
 variable (A : Type u) [CommRing A]
@@ -30,21 +30,21 @@ variable (A : Type u) [CommRing A]
 方針：cofibrant E 代数の実際の相対圏へ Kan 化した単体的局所化を適用する。
 規約：対象は元の cofibrant 代数、Hom の宇宙は u+1。
 使われ方：coherent nerve と写像空間の比較。 -/
-abbrev CAlgSimplicialCategory := KanLocalizationCategory (cofibrantAlgebraRelativeCategory A)
+abbrev CAlgSimplicialCategory := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanLocalizationCategory (cofibrantAlgebraRelativeCategory A)
 
 /-- 概要：cofibrant E 代数の実際の coherent nerve としての CAlg_R（HTT 1.1.5）。
 方針：同じ具体的な相対圏の Kan 化した単体的局所化へ nerve を適用する。
 規約：任意の可換環上で追加のモデル構造・標数の入力仮定を付けない。
 使われ方：E2b の E∞ 代数の ∞ 圏の構成。 -/
 def CAlg_R : SSet.{u + 1} :=
-  localizationNerve (cofibrantAlgebraRelativeCategory A)
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerve (cofibrantAlgebraRelativeCategory A)
 
 /-- 概要：具体的な CAlg_R は quasicategory（HTT 1.1.5.10）。
 方針：元の全 Hom の Kan 性から構成した一般の nerve の定理を使う。
 規約：quasicategory 性の入力仮定は不要。
 使われ方：CAlg_R の ∞ 圏的な操作。 -/
 instance cAlg_R_quasicategory : SSet.Quasicategory (CAlg_R A) :=
-  localizationNerve_quasicategory _
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerve_quasicategory _
 
 /-- 概要：CAlg_R の Hom は元の自由局所化 Hom の同じ Ex∞（Dwyer–Kan）。
 方針：cofibrant 相対圏への代入と豊穣構造の移送の定義を評価する。
@@ -52,7 +52,7 @@ instance cAlg_R_quasicategory : SSet.Quasicategory (CAlg_R A) :=
 使われ方：既存の Kan Map^h との高次の比較の対象。 -/
 lemma cAlg_sHom (X Y : CAlgSimplicialCategory A) :
     SimplicialCategory.sHom X Y = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj
-      (localizationHom (cofibrantAlgebraRelativeCategory A) X Y) := rfl
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHom (cofibrantAlgebraRelativeCategory A) X Y) := rfl
 
 /-- 概要：CAlg_R の構成に使うすべての Hom は Kan 複体（Dwyer–Kan）。
 方針：同じ Ex∞ の Kan 性を具体的な相対圏へ代入する。
@@ -66,7 +66,7 @@ lemma cAlg_sHom_kanComplex (X Y : CAlgSimplicialCategory A) :
 規約：対象の同型類への商を取らない。
 使われ方：元の代数の頂点の供給。 -/
 def cAlgVertexEquiv : CAlgSimplicialCategory A ≃ (CAlg_R A) _⦋0⦌ :=
-  localizationNerveVertexEquiv _
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveVertexEquiv _
 
 /-- 概要：任意の元の E 代数から CAlg_R の頂点を作る（Dwyer–Kan）。
 方針：同じ具体的な cofibrant 置換の対象を coherent nerve の頂点へ送る。

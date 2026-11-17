@@ -13,7 +13,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open CategoryTheory HomotopicalAlgebra Hammock
+open CategoryTheory _root_.HomotopicalAlgebra Hammock
 open SerrePositivity.DifferentialGraded
 variable (A : Type u) [CommRing A] (X : Complex A) (B : CofibrantAlgebra A)
 
@@ -27,7 +27,7 @@ lemma freeProbeRelativeElementRoof_graph_image :
       cofibrantAlgebraHammockGraphInclusionMap A (freeProbeRelativeElementSource A X)
         (ULiftHom.objUp.{u + 1, u + 1} B) _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.word =
     freeProbeRelativeElementNormalizedIndexNerveMap A X B ≫
-      FrameHom.frameLeftRoofNerveMap (Y := B.obj) (weakEquivalences (operad A).Algebra)
+      _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameLeftRoofNerveMap (Y := B.obj) (weakEquivalences (operad A).Algebra)
         ((freeNormalizedProbeFrame A).obj X) ((freeNormalizedProbeAugmentation A).app X)
         (freeNormalizedProbeAugmentation_weak A X)
         (fun f => freeNormalizedProbeFrame_homotopicallyConstant A X f) := by
@@ -41,7 +41,7 @@ lemma freeProbeRelativeElementRoof_graph_image :
     cofibrantAlgebraHammockGraphInclusionMap A (freeProbeRelativeElementSource A X)
       (ULiftHom.objUp.{u + 1, u + 1} B) _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.word).app n) σ
   let G := ((freeProbeRelativeElementNormalizedIndexNerveMap A X B ≫
-    FrameHom.frameLeftRoofNerveMap (Y := B.obj) (weakEquivalences (operad A).Algebra)
+    _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameLeftRoofNerveMap (Y := B.obj) (weakEquivalences (operad A).Algebra)
       ((freeNormalizedProbeFrame A).obj X) ((freeNormalizedProbeAugmentation A).app X)
       (freeNormalizedProbeAugmentation_weak A X)
       (fun f => freeNormalizedProbeFrame_homotopicallyConstant A X f)).app n) σ
@@ -83,7 +83,7 @@ lemma freeProbeRelativeElementRoofMap_image :
     _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion _ _ _ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.word) ≫ _ = _
   rw [Category.assoc, hg,
     ← Category.assoc, ← Category.assoc, freeProbeRelativeElementRoof_graph_image]
-  simp only [freeNormalizedTensorReducedRoof, FrameHom.frameLeftRoofColimitMap,
+  simp only [freeNormalizedTensorReducedRoof, _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameLeftRoofColimitMap,
     algebraHammockGraphInclusion, Category.assoc]
 
 end SerrePositivity.EInfinity.BarrattEccles

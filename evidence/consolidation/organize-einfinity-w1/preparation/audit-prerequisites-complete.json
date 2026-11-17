@@ -1,0 +1,8 @@
+{
+  "returncode": 0,
+  "targets": 7259,
+  "target_list_sha256": "cb6c32af93b6c46ba4aab5486a58e7b31d6b97b452e90c13a1d8a54048d7376a",
+  "root_receipt_sha256": "ecb005c53389dde6c28aa7e759e361e3e2f8df242ab4edc1045366b0c2b32df4",
+  "seconds": 210.45756529085338,
+  "policy": "All official audit imports, ordinary Lake build, no selections or skipped dependencies"
+}

@@ -1,7 +1,7 @@
 module
 
 public meta import SerrePositivity.Util.Citation
-public import SerrePositivity.EInfinity.SimplicialLocalization.SourceHom
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.SourceHom
 
 /-!
 # 元の弱射の同じ局所化辺の可逆性
@@ -18,7 +18,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.Modules
 open CategoryTheory SSet
-open SerrePositivity.EInfinity SimplicialLocalization
+open SerrePositivity.EInfinity _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization
 open SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories
 open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories
@@ -32,32 +32,32 @@ set_option maxHeartbeats 800000 in
 方針：元の源での反転を、指定生成射の自然性の四角形で共役する。
 規約：辺そのものの可逆性。使われ方：全加群族の弱 lift の native な反転。 -/
 lemma localizationStrictEdge_invertible_of_weak (f : X ⟶ Y) (hf : C.weakEquivalences f) :
-    IsInvertibleEdge (coherentNerveEdge (kanLocalizationStrictHom C f)).toTruncated := by
-  have hw := localizationNerveSourceMap_inverts C
-    (show ComposableArrows.mk₁ f ∈ weakNerveEdges C from ⟨X, Y, f, hf, rfl⟩)
-  change IsInvertibleEdge (X := localizationNerve C) ((edgeOfSimplex (ComposableArrows.mk₁ f)).map
-    ((truncation 2).map (localizationNerveSourceMap C))) at hw
-  have he : IsInvertibleEdge (X := localizationNerve C)
-      ((nerve.edgeMk f).map (localizationNerveSourceMap C)).toTruncated := by
-    exact (isInvertibleEdge_congr (X := localizationNerve C)
+    IsInvertibleEdge (coherentNerveEdge (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanLocalizationStrictHom C f)).toTruncated := by
+  have hw := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveSourceMap_inverts C
+    (show ComposableArrows.mk₁ f ∈ _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges C from ⟨X, Y, f, hf, rfl⟩)
+  change IsInvertibleEdge (X := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerve C) ((edgeOfSimplex (ComposableArrows.mk₁ f)).map
+    ((truncation 2).map (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveSourceMap C))) at hw
+  have he : IsInvertibleEdge (X := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerve C)
+      ((nerve.edgeMk f).map (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveSourceMap C)).toTruncated := by
+    exact (isInvertibleEdge_congr (X := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerve C)
       (e := (edgeOfSimplex (ComposableArrows.mk₁ f)).map
-        ((truncation 2).map (localizationNerveSourceMap C)))
-      (f := ((nerve.edgeMk f).map (localizationNerveSourceMap C)).toTruncated) rfl).mp hw
-  let m := (hoFunctor.map (localizationNerveSourceMap C)).toFunctor.map
+        ((truncation 2).map (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveSourceMap C)))
+      (f := ((nerve.edgeMk f).map (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveSourceMap C)).toTruncated) rfl).mp hw
+  let m := (hoFunctor.map (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveSourceMap C)).toFunctor.map
     (SSet.HomotopyCategory.homMk (nerve.edgeMk f))
   have : IsIso m := he
-  have hn := localizationStrictSourceIso_naturality C f
-  have h : SSet.HomotopyCategory.homMk (coherentNerveEdge (kanLocalizationStrictHom C f)) =
-      (localizationStrictSourceIso C X).inv ≫ m ≫ (localizationStrictSourceIso C Y).hom := by
+  have hn := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationStrictSourceIso_naturality C f
+  have h : SSet.HomotopyCategory.homMk (coherentNerveEdge (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanLocalizationStrictHom C f)) =
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationStrictSourceIso C X).inv ≫ m ≫ (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationStrictSourceIso C Y).hom := by
     calc
-      _ = (localizationStrictSourceIso C X).inv ≫
-          ((localizationStrictSourceIso C X).hom ≫
+      _ = (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationStrictSourceIso C X).inv ≫
+          ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationStrictSourceIso C X).hom ≫
             SSet.HomotopyCategory.homMk
-              (coherentNerveEdge (kanLocalizationStrictHom C f))) := by simp
-      _ = (localizationStrictSourceIso C X).inv ≫ (m ≫ (localizationStrictSourceIso C Y).hom) := by
+              (coherentNerveEdge (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanLocalizationStrictHom C f))) := by simp
+      _ = (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationStrictSourceIso C X).inv ≫ (m ≫ (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationStrictSourceIso C Y).hom) := by
         rw [← hn]
       _ = _ := by rfl
-  change IsIso (SSet.HomotopyCategory.homMk (coherentNerveEdge (kanLocalizationStrictHom C f)))
+  change IsIso (SSet.HomotopyCategory.homMk (coherentNerveEdge (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanLocalizationStrictHom C f)))
   rw [h]
   infer_instance
 

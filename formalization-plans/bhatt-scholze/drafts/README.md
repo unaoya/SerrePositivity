@@ -10,17 +10,17 @@ import 行は現時点の main の名前で書く（基準コミットは下の�
 規約：docstring は README の Conventions（概要／方針／規約／使われ方）。宣言名は内容の名前（原典の番号は docstring に）。
 `sorry` には理由を一行添える（「S3 の補題を待つ」「2b の後に HA を読んでから」など）。新しい `axiom` は置かない。
 使われ方：中身を書く段階（暦に載せてから）で、該当するファイルを `SerrePositivity/` の下の決まった場所へ移し、単体の `lake build` で確かめる。
-設計書は [infinity-sheaves-design.md](../infinity-sheaves-design.md)・[a0-design.md](../a0-design.md)。
+設計書は [infinity-sheaves-design.md](../design/infinity-sheaves-design.md)・[a0-design.md](../design/a0-design.md)。
 
 ## 5∞-0 の検査と本体への依存
 
 基準は main `efa846fe8`。本体へ寄せた宣言・型の補足・個別の検査結果は
-[報告](../../stage-ii/report-bulk-w1.md)と[全件台帳](../../stage-ii/bulk-5inf0/declaration-disposition-audit.json)に残す。
+[報告](../../stage-ii/bulk/report-bulk-w1.md)と[全件台帳](../../stage-ii/bulk-5inf0/declaration-disposition-audit.json)に残す。
 `PASS` は元の Lake 設定を引き継いだ型検査の成功を表し、残る `sorry` の証明を表さない。
 
 5∞-0 の最終状態は57／57本が有効なPASS。ソース・依存・成果物の照合は
-[最終台帳](../../stage-ii/bulk-5inf0/draft-final-validation.json)、範囲と保護対象の確認は
-[完了記録](../../stage-ii/bulk-5inf0/completion.json)を参照。
+[最終台帳](../../../evidence/bulk/bulk-5inf0/draft-final-validation.json)、範囲と保護対象の確認は
+[完了記録](../../../evidence/bulk/bulk-5inf0/completion.json)を参照。
 
 - `Poly` は本体の `Prismatic.Poly`、Tor 振幅は `HasCochainCompleteTorAmplitude` を使う。
 - prism の圏・本質的小ささ・完全 prism の site・有界 p 冪ねじれ・semiperfectoid・一般の連結性の述語は、本体の7モジュールを使う。
@@ -36,7 +36,7 @@ mkdir -p /tmp/bs-draft-check
 lake --no-build setup-file SerrePositivity/CommutativeAlgebra/Perfectoid/Defs.lean \
   > /tmp/bs-draft-check/lake-setup.json
 zsh scripts/refactor/with_build_lock.sh --wait 3600 --class bulk -- \
-  gtimeout --kill-after=3s 280 python3 formalization-plans/stage-ii/bulk-5inf0/check_draft.py \
+  gtimeout --kill-after=3s 280 python3 evidence/bulk/bulk-5inf0/check_draft.py \
   --root . --state /tmp/bs-draft-check --setup /tmp/bs-draft-check/lake-setup.json \
   A2/AnimatedAlgebra
 ```
@@ -89,7 +89,7 @@ import の改名は KL-W1・B3 の module-map、宣言名は所有元つき name
 
 **E3 非依存の規則**：本体に移す際、drafts とその import 閉包から E3 の選択済みの証明へ戻る経路を作らない。
 5∞-0では57本とその一時配置の依存を静的に辿り、現在の `Inputs/Perfectoidization` と旧 `Inputs/PerfectoidizationInterface` への経路は0件だった
-（[検査の対象と結果](../../stage-ii/bulk-5inf0/current-e3-import-reachability.json)）。11-03時点の CompletedTensor などを通る経路の記述は履歴であり、現在の到達性の結果として使わない。
+（[検査の対象と結果](../../../evidence/bulk/bulk-5inf0/current-e3-import-reachability.json)）。11-03時点の CompletedTensor などを通る経路の記述は履歴であり、現在の到達性の結果として使わない。
 
 **drafts 内の順序**（→ は「先に置く」。同じ A 番号でも定義を先行ファイルへ、後段の定理を後に）：
 0. ~~A6/PerfectoidFiniteProduct~~（本体 `BhattScholze/Perfectoid/FiniteProduct` に入った、11-04）

@@ -15,7 +15,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.InfinityCategories.Project.ModelCategoryComparison
-open CategoryTheory HomotopicalAlgebra Opposite
+open CategoryTheory _root_.HomotopicalAlgebra Opposite
 open _root_.SerrePositivity.Reedy _root_.SerrePositivity.HomotopyFunctionComplex
 open _root_.SerrePositivity.InfinityCategories _root_.SerrePositivity.SimplicialModel
 variable {C : Type u} [Category.{v} C] [ModelCategory C] {X : C}
@@ -25,13 +25,13 @@ variable {C : Type u} [Category.{v} C] [ModelCategory C] {X : C}
 /-- 概要：元の両 frame の混合 Hom の全標的関手。
 方針：同じ right frame の図式に固定 source frame の混合関手を合成する。
 規約：全標的に厳密に自然。使われ方：同じ比較の共通標的。 -/
-def rightMixedFamily : C ⥤ SSet.{v} := _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameDiagram r ⋙ _root_.SerrePositivity.EInfinity.FrameHom.MixedFrame.mixedFunctor q.obj
+def rightMixedFamily : C ⥤ SSet.{v} := _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameDiagram r ⋙ _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedFrame.mixedFunctor q.obj
 
 /-- 概要：元の source frame Hom から混合 Hom への全自然な比較。
 方針：各全単体へ同じ right augmentation を後合成する。
 規約：同じ実射。使われ方：fibrant な値の後の全族比較。 -/
 def rightMixedLeft : _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom q.obj ⟶ rightMixedFamily q r where
-  app Y := _root_.SerrePositivity.EInfinity.FrameHom.MixedFrame.leftComparison q.obj ((_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameUnit r).app Y)
+  app Y := _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedFrame.leftComparison q.obj ((_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameUnit r).app Y)
   naturality Y Z f := by
     ext n a
     change (a ≫ f) ≫ ((_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameUnit r).app Z).app n =
@@ -46,7 +46,7 @@ def rightMixedLeft : _root_.SerrePositivity.InfinityCategories.Project.HomotopyD
 方針：同じ source augmentation を各全単体へ前合成する。
 規約：全標的と全作用素を保持。使われ方：同じ自然比較の右脚。 -/
 def rightMixedRight : _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameHom r X ⟶ rightMixedFamily q r where
-  app Y := _root_.SerrePositivity.EInfinity.FrameHom.MixedFrame.rightComparison q.obj q.augmentation ((_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameDiagram r).obj Y)
+  app Y := _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedFrame.rightComparison q.obj q.augmentation ((_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameDiagram r).obj Y)
   naturality Y Z f := by
     ext n a
     change q.augmentation.app n.unop ≫ (a ≫ ((_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameDiagram r).map f).app n) =

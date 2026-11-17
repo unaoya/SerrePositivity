@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.EInfinity.BarrattEccles.Modules.RawModuleTensorElementPinched
-public import SerrePositivity.EInfinity.FrameHom.FrameIndexAugmentation
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameIndexAugmentation
 
 /-!
 概要：元の全 frame 要素列を、同じ終端パラメータと全 pinched 族へ送る。
@@ -35,7 +35,7 @@ def strictRawModuleTensorElementLiftNerveMap : nerve (strictRawModuleTensorEleme
 def strictRawModuleTensorElementParameterMap : nerve (strictRawModuleTensorElementIndex A X P Q) ⟶
     SSet.uliftFunctor.{u + 1, u}.obj (((strictRawModuleProbeTensorHom A X).obj (op P)).obj Q) :=
   strictRawModuleTensorElementLiftNerveMap A X P Q ≫
-    FrameHom.SimplexTerminalNerve.liftedAugmentation.{u, u + 1}
+    _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.SimplexTerminalNerve.liftedAugmentation.{u, u + 1}
       (((strictRawModuleProbeTensorHom A X).obj (op P)).obj Q)
 
 def strictRawModuleTensorPinchedIso :

@@ -1,0 +1,573 @@
+number,depends_on,evidence_location,kind
+(3.0.0.1),PT18 Lemma 2.3,"PDF p.22; layout L1159; external citation [PT18, Lemma 2.3]",external
+(4.0.10.1),2.4.1,PDF p.31; layout L1677; display context / argument explained in surrounding proof,internal
+(4.0.15.1),2.2.6,PDF p.33; layout L1805; explicit item reference,internal
+(4.0.15.1),2.4.7,PDF p.33; layout L1800; display context / argument explained in surrounding proof,internal
+(4.0.15.1),4.0.10,PDF p.33; layout L1805; explicit item reference,internal
+(4.0.15.1),4.0.4,PDF p.33; layout L1804; explicit item reference,internal
+(4.0.15.2),(4.0.15.1),PDF p.33; layout L1807; display context / argument explained in surrounding proof,internal
+(4.0.15.2),2.2.1,PDF p.33; layout L1807; display context / argument explained in surrounding proof,internal
+(4.0.15.2),2.2.6,PDF p.33; layout L1805; explicit item reference,internal
+(4.0.15.2),4.0.10,PDF p.33; layout L1805; explicit item reference,internal
+(4.0.15.2),4.0.10,PDF p.33; layout L1807; display context / argument explained in surrounding proof,internal
+(4.0.15.2),4.0.4,PDF p.33; layout L1804; explicit item reference,internal
+(4.0.15.2),4.0.4,PDF p.33; layout L1807; display context / argument explained in surrounding proof,internal
+(4.0.15.3),(4.0.15.1),PDF p.33; layout L1809; display context / argument explained in surrounding proof,internal
+(4.0.15.3),2.2.6,PDF p.33; layout L1805; explicit item reference,internal
+(4.0.15.3),2.2.6,PDF p.33; layout L1809; display context / argument explained in surrounding proof,internal
+(4.0.15.3),4.0.10,PDF p.33; layout L1805; explicit item reference,internal
+(4.0.15.3),BH93 Corollary 1.6.13 (a),"PDF p.33; layout L1814; external citation [BH93, Corollary 1.6.13 (a)]",external
+(4.0.15.3),BHM24 Theorem 3.4 (c),"PDF p.33; layout L1815; external citation [BHM24, Theorem 3.4 (c)]",external
+(4.0.15.4),(4.0.15.1),PDF p.33; layout L1812; display context / argument explained in surrounding proof,internal
+(4.0.15.4),2.2.6,PDF p.33; layout L1812; display context / argument explained in surrounding proof,internal
+(4.0.15.4),BH93 Corollary 1.6.13 (a),"PDF p.33; layout L1814; external citation [BH93, Corollary 1.6.13 (a)]",external
+(4.0.15.4),BHM24 Theorem 3.4 (c),"PDF p.33; layout L1815; external citation [BHM24, Theorem 3.4 (c)]",external
+(4.0.15.5),(4.0.15.2),PDF p.34; layout L1825; explicit equation reference,internal
+(4.0.15.5),(4.0.15.3),PDF p.34; layout L1825; explicit equation reference,internal
+(4.0.15.5),BHM24 Theorem 3.4 (c),"PDF p.33; layout L1815; external citation [BHM24, Theorem 3.4 (c)]",external
+(4.0.20.1),BH93 Corollary 4.7.9,"PDF p.37; layout L1996; external citation [BH93, Corollary 4.7.9]",external
+(4.0.20.1),MQS20 Definition 8,"PDF p.37; layout L1991; external citation [MQS20, Definition 8]",external
+(4.0.20.1),MQS20 Theorem 9,"PDF p.37; layout L1995; external citation [MQS20, Theorem 9]",external
+(4.0.20.2),4.0.4,PDF p.37; layout L2009; display context / argument explained in surrounding proof,internal
+(4.1.2.1),BIM19 Theorem 5.2,"PDF p.40; layout L2166; external citation [BIM19, Theorem 5.2]",external
+(5.1.7.1),5.1.6,PDF p.47; layout L2658; display context / argument explained in surrounding proof,internal
+(5.3.1.1),4.0.13,PDF p.51; layout L2872; explicit item reference,internal
+(5.3.1.1),5.2.1,PDF p.51; layout L2869; display context / argument explained in surrounding proof,internal
+(5.3.1.1),5.2.1,PDF p.51; layout L2871; explicit item reference,internal
+(5.3.1.1),5.2.2,PDF p.51; layout L2869; display context / argument explained in surrounding proof,internal
+(5.3.1.1),5.2.2,PDF p.51; layout L2872; explicit item reference,internal
+(6.0.1.1),2.4.5,PDF p.68; layout L3897; display context / argument explained in surrounding proof,internal
+(6.0.1.1),4.0.1,PDF p.68; layout L3900; explicit item reference,internal
+(6.0.1.1),6.1.1,PDF p.68; layout L3897; display context / argument explained in surrounding proof,internal
+(6.0.1.1),6.1.4,PDF p.68; layout L3897; display context / argument explained in surrounding proof,internal
+(6.0.1.1),6.2.2,PDF p.69; layout L3902; explicit item reference,internal
+(6.0.2.1),BS19 Proposition 8.5,"PDF p.61; layout L3457; external citation [BS22, Proposition 8.5]",external
+(6.0.2.2),2.2.6,PDF p.61; layout L3468; explicit item reference,internal
+(6.0.2.2),2.2.6,PDF p.61; layout L3470; display context / argument explained in surrounding proof,internal
+(6.3.1.1),(6.0.1.1),PDF p.71; layout L4034; explicit equation reference,internal
+(6.3.1.1),6.1.1,PDF p.71; layout L4038; display context / argument explained in surrounding proof,internal
+(6.3.1.1),6.1.4,PDF p.71; layout L4038; display context / argument explained in surrounding proof,internal
+(6.3.1.1),6.2.2,PDF p.71; layout L4041; explicit item reference,internal
+2.1.2,2.1.1,PDF p.8; layout L390; explicit item reference,internal
+2.1.4,CRST18 Lemma 2.10,"PDF p.10; layout L452; external citation [CRST18, Lemma 2.10]",external
+2.1.4,Mor53,"PDF p.9; layout L440; external citation [Mor53, SS75, dS97]",external
+2.1.4,SS75,"PDF p.9; layout L440; external citation [Mor53, SS75, dS97]",external
+2.1.4,ST14 Proposition 4.8,"PDF p.9; layout L440; external citation [ST14, Proposition 4.8]",external
+2.1.4,Spe20 Lemma 9,"PDF p.10; layout L452; external citation [Spe20, Lemma 9]",external
+2.1.4,dS97,"PDF p.9; layout L440; external citation [Mor53, SS75, dS97]",external
+2.2.2,Fal02 Appendix 2,"PDF p.10; layout L502; external citation [Fal02, Appendix 2]",external
+2.2.2,GR04 Remark 14.5.69,"PDF p.10; layout L502; external citation [GR04, Remark 14.5.69]",external
+2.2.3,2.2.4,PDF p.11; layout L522; explicit item reference,internal
+2.2.3,GR04 Lemma 14.5.74,"PDF p.11; layout L504; external citation [GR04, Lemma 14.5.74]",external
+2.2.3,GR04 Lemma 14.5.74,"PDF p.11; layout L518; external citation [GR04, Lemma 14.5.74]",external
+2.2.3,Shi07 Lemma 2.2,"PDF p.11; layout L504; external citation [Shi07, Lemma 2.2]",external
+2.2.3,Shi07 Lemma 2.2,"PDF p.11; layout L518; external citation [Shi07, Lemma 2.2]",external
+2.2.4,Fal02 Appendix 2,"PDF p.11; layout L523; external citation [Fal02, Appendix 2]",external
+2.2.4,"Fal02 Appendix 2, Claim","PDF p.11; layout L533; external citation [Fal02, Appendix 2, Claim]",external
+2.2.4,Shi07 Lemma 2.3,"PDF p.11; layout L523; external citation [Shi07, Lemma 2.3]",external
+2.2.4,Shi07 Lemma 2.3,"PDF p.11; layout L532; external citation [Shi07, Lemma 2.3]",external
+2.2.5,2.2.4,PDF p.12; layout L562; explicit item reference,internal
+2.2.6,2.2.5,PDF p.12; layout L599; explicit item reference,internal
+2.2.6,"Fal02 Appendix 2, Lemma","PDF p.12; layout L585; external citation [Fal02, Appendix 2, Lemma]",external
+2.2.6,GR04 Proposition 14.5.12(iii)(b),"PDF p.12; layout L587; external citation [GR04, Proposition 14.5.12(iii)(b)]",external
+2.2.6,GR04 Proposition 14.5.75(i)(b),"PDF p.12; layout L588; external citation [GR04, Proposition 14.5.75(i)(b)]",external
+2.2.6,GR04 Theorem 14.5.75,"PDF p.12; layout L586; external citation [GR04, Theorem 14.5.75]",external
+2.2.6,Shi07 Proposition 2.8,"PDF p.12; layout L586; external citation [Shi07, Proposition 2.8]",external
+2.3.1,Stacks Tag 091Q,"PDF p.13; layout L621; external citation [Sta, Tag 091Q]",external
+2.3.2,"BS15 Lemma 3.4.8, Lemma 3.4.9","PDF p.13; layout L625; external citation [BS15, Lemma 3.4.8, Lemma 3.4.9]",external
+2.3.2,Stacks Tag 091V,"PDF p.13; layout L636; external citation [Sta, Tag 091V]",external
+2.3.3,"Bha19 III, Lemma 2.4","PDF p.13; layout L659; external citation [Bha19, III, Lemma 2.4]",external
+2.3.4,BMS19 Section 4.1,"PDF p.14; layout L669; external citation [BMS19, Section 4.1]",external
+2.3.5,2.3.3,PDF p.14; layout L680; explicit item reference,internal
+2.4.1,And20 2.2,"PDF p.14; layout L707; external citation [And20, 2.2]",external
+2.4.1,BMS18 Example 3.15,"PDF p.14; layout L704; external citation [BMS18, Example 3.15]",external
+2.4.1,BMS18 Lemma 3.10,"PDF p.14; layout L706; external citation [BMS18, Lemma 3.10]",external
+2.4.1,BMS18 Section 3,"PDF p.14; layout L708; external citation [BMS18, Section 3]",external
+2.4.1,MS21 Definition 2.2,"PDF p.14; layout L707; external citation [MS21, Definition 2.2]",external
+2.4.3,2.3.5,PDF p.16; layout L800; explicit item reference,internal
+2.4.3,BS19 Proposition 8.13,"PDF p.16; layout L801; external citation [BS22, Proposition 8.13]",external
+2.4.3,BS19 Proposition 8.5,"PDF p.16; layout L802; external citation [BS22, Proposition 8.5]",external
+2.4.3,BS19 Theorem 7.14,"PDF p.16; layout L777; external citation [BS22, Theorem 7.14]",external
+2.4.5,BS19 Theorem 10.9,"PDF p.16; layout L813; external citation [BS22, Theorem 10.9]",external
+2.4.5,"Bha19 VIII, Theorem 3.1","PDF p.16; layout L817; external citation [Bha19, VIII, Theorem 3.1]",external
+2.4.6,2.4.5,PDF p.17; layout L838; explicit item reference,internal
+2.4.6,And18b Lemma 1.9.2,"PDF p.17; layout L839; external citation [And18b, Lemma 1.9.2]",external
+2.4.6,BS19 Theorem 10.9,"PDF p.17; layout L842; external citation [BS22, Theorem 10.9]",external
+2.4.7,2.3.5,PDF p.18; layout L910; explicit item reference,internal
+2.4.7,2.4.5,PDF p.17; layout L861; explicit item reference,internal
+2.4.7,2.4.5,PDF p.18; layout L923; explicit item reference,internal
+2.4.7,2.4.6,PDF p.18; layout L952; explicit item reference,internal
+2.4.7,2.4.8,PDF p.19; layout L968; nested Claim used in parent proof,internal
+2.4.7,"BS19 Proof of Theorem 10.9, footnote 18","PDF p.18; layout L960; external citation [BS22, Proof of Theorem 10.9, footnote 18]",external
+2.4.7,BS19 Proposition 8.13,"PDF p.18; layout L913; external citation [BS22, Proposition 8.13]",external
+2.4.7,BS19 Theorem 7.14,"PDF p.18; layout L899; external citation [BS22, Theorem 7.14]",external
+2.4.7,BS19 last paragraph of proof of Theorem 10.9,"PDF p.19; layout L989; external citation [BS22, last paragraph of proof of Theorem 10.9]",external
+2.4.7,Bha12 Lemma 3.2,"PDF p.18; layout L897; external citation [Bha12, Lemma 3.2]",external
+2.4.7,Bha12 Lemma 3.2,"PDF p.19; layout L971; external citation [Bha12, Lemma 3.2]",external
+2.4.7,Bha18 Lemma 3.2,"PDF p.18; layout L950; external citation [Bha18, Lemma 3.2]",external
+2.4.7,Bha18 Lemma 3.2,"PDF p.18; layout L955; external citation [Bha18, Lemma 3.2]",external
+2.4.7,Stacks Tag 0CQE,"PDF p.18; layout L889; external citation [Sta, Tag 0CQE]",external
+2.4.8,Bha12 Lemma 3.2,"PDF p.19; layout L971; external citation [Bha12, Lemma 3.2]",external
+2.4.9,2.4.5,PDF p.19; layout L994; explicit item reference,internal
+2.4.9,2.4.6,PDF p.19; layout L1006; explicit item reference,internal
+2.4.9,2.4.6,PDF p.19; layout L1010; explicit item reference,internal
+2.4.9,BS19 Theorem 7.14,"PDF p.19; layout L1008; external citation [BS22, Theorem 7.14]",external
+2.4.9,BS19 last paragraph 19 of proof of Theorem 10.9,"PDF p.19; layout L1014; external citation [BS22, last paragraph 19 of proof of Theorem 10.9]",external
+2.5.1,2.5.2,PDF p.21; layout L1094; nested Claim used in parent proof,internal
+2.5.1,BIM19 Example 3.8 (7),"PDF p.21; layout L1077; external citation [BIM19, Example 3.8 (7)]",external
+2.5.1,BIM19 Example 3.8 (8),"PDF p.21; layout L1076; external citation [BIM19, Example 3.8 (8)]",external
+2.5.1,BMP+23 Theorem 2.8,"PDF p.21; layout L1078; external citation [BMP+ 23, Theorem 2.8]",external
+2.5.1,GR04 Section 17.5,"PDF p.20; layout L1062; external citation [GR04, Section 17.5]",external
+2.5.1,Gab18,PDF p.20; layout L1062; external citation [Gab18],external
+2.5.1,Gab18 Page 3,"PDF p.21; layout L1074; external citation [Gab18, Page 3]",external
+2.5.1,Hoc94 Corollary 2.4,"PDF p.21; layout L1106; external citation [Hoc94, Corollary 2.4]",external
+2.5.1,Hoc94 Theorem 5.10,"PDF p.21; layout L1108; external citation [Hoc94, Theorem 5.10]",external
+2.5.1,MS21 Proof of Theorem 4.5,"PDF p.21; layout L1108; external citation [MS21, Proof of Theorem 4.5]",external
+2.5.3,2.5.1,PDF p.22; layout L1123; explicit item reference,internal
+3.0.2,BST12 Lemma 3.4,"PDF p.23; layout L1187; external citation [BST12, Lemma 3.4]",external
+3.0.2,Tuc12 Lemma 4.4,"PDF p.23; layout L1186; external citation [Tuc12, Lemma 4.4]",external
+3.0.4,3.0.2,PDF p.23; layout L1206; explicit item reference,internal
+3.0.5,HL02,"PDF p.23; layout L1213; external citation [Kun76, Mon83, SVdB97, HL02]",external
+3.0.5,Kun76,"PDF p.23; layout L1213; external citation [Kun76, Mon83, SVdB97, HL02]",external
+3.0.5,Mon83,"PDF p.23; layout L1213; external citation [Kun76, Mon83, SVdB97, HL02]",external
+3.0.5,Mon83,"PDF p.23; layout L1225; external citation [Mon83, Tuc12, PT18]",external
+3.0.5,PT18,"PDF p.23; layout L1225; external citation [Mon83, Tuc12, PT18]",external
+3.0.5,SVdB97,"PDF p.23; layout L1213; external citation [Kun76, Mon83, SVdB97, HL02]",external
+3.0.5,Tuc12,"PDF p.23; layout L1225; external citation [Mon83, Tuc12, PT18]",external
+3.0.6,(3.0.0.1),PDF p.24; layout L1237; explicit equation reference,internal
+3.0.7,2.2.6,PDF p.24; layout L1273; explicit item reference,internal
+3.0.7,3.0.4,PDF p.24; layout L1286; explicit item reference,internal
+3.0.7,3.0.6,PDF p.25; layout L1307; explicit item reference,internal
+3.0.7,PT18 Lemma 4.13,"PDF p.25; layout L1326; external citation [PT18, Lemma 4.13]",external
+3.0.7,PT18 Lemma 4.13,"PDF p.26; layout L1387; external citation [PT18, Lemma 4.13]",external
+3.0.7,PT18 Theorem 4.3,"PDF p.25; layout L1305; external citation [PT18, Theorem 4.3]",external
+4.0.1,2.4.2,PDF p.27; layout L1417; explicit item reference,internal
+4.0.1,BS19 Section 10,"PDF p.27; layout L1427; external citation [BS22, Section 10]",external
+4.0.1,BS19 Theorem 10.11,"PDF p.27; layout L1420; external citation [BS22, Theorem 10.11]",external
+4.0.1,GR03 2.1.1,"PDF p.27; layout L1428; external citation [GR03, 2.1.1]",external
+4.0.10,(4.0.10.1),PDF p.31; layout L1690; explicit equation reference,internal
+4.0.10,2.2.6,PDF p.30; layout L1648; explicit item reference,internal
+4.0.10,2.2.6,PDF p.31; layout L1702; split word in PDF / distributed proof part; source manually checked,internal
+4.0.10,2.4.3,PDF p.30; layout L1658; explicit item reference,internal
+4.0.10,4.0.1,PDF p.30; layout L1645; explicit item reference,internal
+4.0.10,Fal02 Appendix 2,"PDF p.30; layout L1659; external citation [Fal02, Appendix 2]",external
+4.0.10,Mon83 Lemma 1.1,"PDF p.30; layout L1659; external citation [Mon83, Lemma 1.1]",external
+4.0.12,Hei22 Lemma 1.3,"PDF p.32; layout L1720; external citation [Hei22, Lemma 1.3]",external
+4.0.12,Hei22 Proposition 1.6,"PDF p.32; layout L1718; external citation [Hei22, Proposition 1.6]",external
+4.0.13,2.2.4,PDF p.32; layout L1745; explicit item reference,internal
+4.0.13,Shi07 Proposition 2.15,"PDF p.32; layout L1737; external citation [Shi07, Proposition 2.15]",external
+4.0.14,(4.0.15.1),PDF p.34; layout L1832; explicit equation reference,internal
+4.0.14,(4.0.15.1),PDF p.34; layout L1840; explicit equation reference,internal
+4.0.14,(4.0.15.2),PDF p.34; layout L1825; explicit equation reference,internal
+4.0.14,(4.0.15.3),PDF p.34; layout L1825; explicit equation reference,internal
+4.0.14,(4.0.15.4),PDF p.34; layout L1830; explicit equation reference,internal
+4.0.14,(4.0.15.4),PDF p.34; layout L1831; explicit equation reference,internal
+4.0.14,(4.0.15.5),PDF p.34; layout L1832; explicit equation reference,internal
+4.0.14,(4.0.15.5),PDF p.34; layout L1833; explicit equation reference,internal
+4.0.14,2.2.6,PDF p.33; layout L1784; explicit item reference,internal
+4.0.14,2.2.6,PDF p.33; layout L1805; explicit item reference,internal
+4.0.14,2.2.6,PDF p.34; layout L1834; explicit item reference,internal
+4.0.14,2.2.6,PDF p.34; layout L1841; explicit item reference,internal
+4.0.14,2.4.7,PDF p.32; layout L1760; explicit item reference,internal
+4.0.14,2.4.7,PDF p.32; layout L1761; explicit item reference,internal
+4.0.14,4.0.1,PDF p.32; layout L1748; explicit item reference,internal
+4.0.14,4.0.10,PDF p.33; layout L1783; explicit item reference,internal
+4.0.14,4.0.10,PDF p.33; layout L1805; explicit item reference,internal
+4.0.14,4.0.15,PDF p.33; layout L1772; nested Claim used in parent proof,internal
+4.0.14,4.0.4,PDF p.33; layout L1783; split word in PDF / distributed proof part; source manually checked,internal
+4.0.14,4.0.4,PDF p.33; layout L1804; explicit item reference,internal
+4.0.14,BH93 Corollary 1.6.13 (a),"PDF p.33; layout L1814; external citation [BH93, Corollary 1.6.13 (a)]",external
+4.0.14,BH93 Theorem 4.7.6,"PDF p.34; layout L1867; external citation [BH93, Theorem 4.7.6]",external
+4.0.14,BHM24 Theorem 3.4 (c),"PDF p.33; layout L1815; external citation [BHM24, Theorem 3.4 (c)]",external
+4.0.15,2.2.6,PDF p.33; layout L1784; explicit item reference,internal
+4.0.15,4.0.10,PDF p.33; layout L1783; explicit item reference,internal
+4.0.15,4.0.4,PDF p.33; layout L1783; split word in PDF / distributed proof part; source manually checked,internal
+4.0.16,4.0.1,PDF p.34; layout L1870; explicit item reference,internal
+4.0.16,4.0.10,PDF p.35; layout L1885; explicit item reference,internal
+4.0.16,4.0.14,PDF p.35; layout L1886; explicit item reference,internal
+4.0.16,4.0.3,PDF p.35; layout L1883; explicit item reference,internal
+4.0.17,HS06 Proposition 8.2.4,"PDF p.35; layout L1921; external citation [HS06, Proposition 8.2.4]",external
+4.0.18,4.0.1,PDF p.36; layout L1941; explicit item reference,internal
+4.0.18,4.0.14,PDF p.36; layout L1944; explicit item reference,internal
+4.0.18,4.0.17,PDF p.36; layout L1951; explicit item reference,internal
+4.0.18,6.0.3,PDF p.36; layout L1960; explicit item reference,internal
+4.0.19,4.0.1,PDF p.36; layout L1972; explicit item reference,internal
+4.0.20,(4.0.20.2),PDF p.37; layout L2024; explicit equation reference,internal
+4.0.20,4.0.1,PDF p.37; layout L1981; explicit item reference,internal
+4.0.20,4.0.14,PDF p.37; layout L2032; explicit item reference,internal
+4.0.20,4.0.3,PDF p.37; layout L2017; explicit item reference,internal
+4.0.20,BH93 Corollary 4.7.9,"PDF p.37; layout L1996; external citation [BH93, Corollary 4.7.9]",external
+4.0.20,MQS20 Definition 8,"PDF p.37; layout L1991; external citation [MQS20, Definition 8]",external
+4.0.20,MQS20 Theorem 9,"PDF p.37; layout L1995; external citation [MQS20, Theorem 9]",external
+4.0.21,4.0.1,PDF p.37; layout L2034; explicit item reference,internal
+4.0.22,4.0.1,PDF p.38; layout L2070; explicit item reference,internal
+4.0.22,4.0.14,PDF p.38; layout L2078; explicit item reference,internal
+4.0.22,4.0.21,PDF p.38; layout L2075; explicit item reference,internal
+4.0.23,2.1.2,PDF p.39; layout L2116; explicit item reference,internal
+4.0.23,2.2.6,PDF p.39; layout L2116; explicit item reference,internal
+4.0.23,2.2.6,PDF p.39; layout L2128; explicit item reference,internal
+4.0.23,4.0.1,PDF p.38; layout L2083; explicit item reference,internal
+4.0.23,4.0.21,PDF p.39; layout L2103; explicit item reference,internal
+4.0.23,4.0.7,PDF p.39; layout L2109; explicit item reference,internal
+4.0.23,4.0.7,PDF p.39; layout L2136; explicit item reference,internal
+4.0.3,2.4.3,PDF p.28; layout L1497; explicit item reference,internal
+4.0.3,2.4.9,PDF p.27; layout L1450; explicit item reference,internal
+4.0.3,4.0.1,PDF p.27; layout L1439; explicit item reference,internal
+4.0.3,And18a,PDF p.28; layout L1504; external citation [And18a],external
+4.0.3,BS19 Proposition 10.2,"PDF p.28; layout L1482; external citation [BS22, Proposition 10.2]",external
+4.0.3,Stacks Tag 091U,"PDF p.28; layout L1481; external citation [Sta, Tag 091U]",external
+4.0.3,Stacks Tag 0ARD,"PDF p.28; layout L1480; external citation [Sta, Tag 0ARD]",external
+4.0.3,Stacks Tag 0CQE,"PDF p.28; layout L1474; external citation [Sta, Tag 0CQE]",external
+4.0.4,4.0.1,PDF p.28; layout L1509; explicit item reference,internal
+4.0.4,4.0.3,PDF p.28; layout L1525; explicit item reference,internal
+4.0.4,Hoc02,PDF p.28; layout L1538; external citation [Hoc02],external
+4.0.4,Shi11 Lemma 4.2,"PDF p.28; layout L1538; external citation [Shi11, Lemma 4.2]",external
+4.0.5,4.0.1,PDF p.29; layout L1546; explicit item reference,internal
+4.0.5,4.0.4,PDF p.29; layout L1569; explicit item reference,internal
+4.0.5,BHM24 Theorem 3.4 (i),"PDF p.29; layout L1548; external citation [BHM24, Theorem 3.4 (i)]",external
+4.0.6,4.0.1,PDF p.29; layout L1579; explicit item reference,internal
+4.0.6,4.0.2,PDF p.29; layout L1589; explicit item reference,internal
+4.0.7,2.1.1,PDF p.30; layout L1608; explicit item reference,internal
+4.0.7,4.0.1,PDF p.29; layout L1592; explicit item reference,internal
+4.0.7,4.0.5,PDF p.30; layout L1610; explicit item reference,internal
+4.0.8,4.0.1,PDF p.30; layout L1621; explicit item reference,internal
+4.0.9,2.1.3,PDF p.30; layout L1631; explicit item reference,internal
+4.1.1,4.0.1,PDF p.39; layout L2150; explicit item reference,internal
+4.1.1,4.0.3,PDF p.39; layout L2153; explicit item reference,internal
+4.1.1,4.1.3,PDF p.40; layout L2195; split word in PDF / distributed proof part; source manually checked,internal
+4.1.1,4.1.4,PDF p.41; layout L2239; split word in PDF / distributed proof part; source manually checked,internal
+4.1.1,4.1.5,PDF p.42; layout L2335; split word in PDF / distributed proof part; source manually checked,internal
+4.1.1,BIM19 Theorem 5.2,"PDF p.39; layout L2161; external citation [BIM19, Theorem 5.2]",external
+4.1.2,(4.1.2.1),PDF p.40; layout L2181; explicit equation reference,internal
+4.1.2,(4.1.2.1),PDF p.40; layout L2192; explicit equation reference,internal
+4.1.2,4.0.14,PDF p.40; layout L2190; explicit item reference,internal
+4.1.2,BIM19 Theorem 5.2,"PDF p.40; layout L2166; external citation [BIM19, Theorem 5.2]",external
+4.1.2,BIM19 Theorem 5.2 Claim 5,"PDF p.40; layout L2182; external citation [BIM19, Theorem 5.2 Claim 5]",external
+4.1.3,4.0.1,PDF p.40; layout L2197; explicit item reference,internal
+4.1.3,4.0.10,PDF p.40; layout L2225; explicit item reference,internal
+4.1.3,4.0.10,PDF p.41; layout L2237; explicit item reference,internal
+4.1.3,4.0.20,PDF p.40; layout L2223; explicit item reference,internal
+4.1.3,4.0.3,PDF p.40; layout L2220; split word in PDF / distributed proof part; source manually checked,internal
+4.1.3,4.0.3,PDF p.40; layout L2227; explicit item reference,internal
+4.1.3,4.1.2,PDF p.41; layout L2237; explicit item reference,internal
+4.1.3,BIM19 Theorem 5.2,"PDF p.40; layout L2228; external citation [BIM19, Theorem 5.2]",external
+4.1.4,(4.0.20.1),PDF p.41; layout L2263; explicit equation reference,internal
+4.1.4,(4.0.20.2),PDF p.41; layout L2272; explicit equation reference,internal
+4.1.4,4.0.1,PDF p.41; layout L2240; explicit item reference,internal
+4.1.4,4.0.10,PDF p.42; layout L2302; explicit item reference,internal
+4.1.4,4.0.14,PDF p.41; layout L2253; explicit item reference,internal
+4.1.4,4.0.14,PDF p.41; layout L2277; explicit item reference,internal
+4.1.4,4.0.20,PDF p.41; layout L2263; explicit item reference,internal
+4.1.4,4.0.4,PDF p.42; layout L2300; explicit item reference,internal
+4.1.4,4.0.4,PDF p.42; layout L2325; split word in PDF / distributed proof part; source manually checked,internal
+4.1.4,4.1.2,PDF p.41; layout L2260; explicit item reference,internal
+4.1.4,4.1.2,PDF p.42; layout L2332; explicit item reference,internal
+4.1.4,4.1.3,PDF p.41; layout L2249; explicit item reference,internal
+4.1.4,CN03 Theorem 3.1,"PDF p.41; layout L2281; external citation [CN03, Theorem 3.1]",external
+4.1.4,MQS20 Theorem 9,"PDF p.41; layout L2281; external citation [MQS20, Theorem 9]",external
+4.1.5,2.1.3,PDF p.42; layout L2342; explicit item reference,internal
+4.1.5,4.0.1,PDF p.42; layout L2335; explicit item reference,internal
+4.1.5,4.0.14,PDF p.42; layout L2354; explicit item reference,internal
+4.1.5,4.0.20,PDF p.42; layout L2354; explicit item reference,internal
+4.1.5,4.0.21,PDF p.42; layout L2353; explicit item reference,internal
+4.1.5,4.0.7,PDF p.42; layout L2339; explicit item reference,internal
+4.1.5,4.1.3,PDF p.42; layout L2342; explicit item reference,internal
+4.1.5,4.1.4,PDF p.42; layout L2345; explicit item reference,internal
+4.1.5,4.1.4,PDF p.43; layout L2357; explicit item reference,internal
+4.1.6,4.0.1,PDF p.43; layout L2358; explicit item reference,internal
+4.1.6,4.0.14,PDF p.43; layout L2378; explicit item reference,internal
+4.1.6,4.0.8,PDF p.43; layout L2378; split word in PDF / distributed proof part; source manually checked,internal
+4.1.6,Hei22,PDF p.43; layout L2361; external citation [Hei22],external
+5.1.2,Hoc07 Theorem on page 250,"PDF p.44; layout L2425; external citation [Hoc07, Theorem on page 250]",external
+5.1.2,Hoc94 Theorem 11.1,"PDF p.44; layout L2425; external citation [Hoc94, Theorem 11.1]",external
+5.1.3,MS21 Definition 6.9,"PDF p.44; layout L2450; external citation [MS21, Definition 6.9]",external
+5.1.3,MS21 Theorem 6.12 and Proposition 6.14,"PDF p.44; layout L2450; external citation [MS21, Theorem 6.12 and Proposition 6.14]",external
+5.1.3,MST+22 Lemma 7.1,"PDF p.44; layout L2451; external citation [MST+ 22, Lemma 7.1]",external
+5.1.3,Tak04,PDF p.44; layout L2453; external citation [Tak04],external
+5.1.4,5.1.1,PDF p.44; layout L2456; explicit item reference,internal
+5.1.4,5.1.3,PDF p.44; layout L2456; explicit item reference,internal
+5.1.5,4.0.1,PDF p.45; layout L2466; explicit item reference,internal
+5.1.5,MS21 Proposition 5.7,"PDF p.45; layout L2488; external citation [MS21, Proposition 5.7]",external
+5.1.5,MS21 Theorem 4.9,"PDF p.45; layout L2488; external citation [MS21, Theorem 4.9]",external
+5.1.5,MS21 Theorem 4.9,"PDF p.45; layout L2498; external citation [MS21, Theorem 4.9]",external
+5.1.5,MS21 Theorem 4.9,"PDF p.45; layout L2503; external citation [MS21, Theorem 4.9]",external
+5.1.5,MS21 Theorem 4.9,"PDF p.45; layout L2508; external citation [MS21, Theorem 4.9]",external
+5.1.5,MS21 Theorem 4.9,"PDF p.45; layout L2517; external citation [MS21, Theorem 4.9]",external
+5.1.6,2.4.3,PDF p.46; layout L2551; explicit item reference,internal
+5.1.6,2.4.5,PDF p.46; layout L2591; explicit item reference,internal
+5.1.6,2.4.9,PDF p.46; layout L2559; explicit item reference,internal
+5.1.6,2.4.9,PDF p.46; layout L2604; explicit item reference,internal
+5.1.6,2.4.9,PDF p.46; layout L2611; explicit item reference,internal
+5.1.6,2.5.1,PDF p.47; layout L2625; explicit item reference,internal
+5.1.6,2.5.1,PDF p.47; layout L2630; explicit item reference,internal
+5.1.6,2.5.3,PDF p.47; layout L2625; explicit item reference,internal
+5.1.6,4.0.1,PDF p.45; layout L2533; explicit item reference,internal
+5.1.6,5.1.5,PDF p.46; layout L2563; explicit item reference,internal
+5.1.6,5.1.5,PDF p.46; layout L2613; explicit item reference,internal
+5.1.6,MS21 Theorem 4.9,"PDF p.46; layout L2562; external citation [MS21, Theorem 4.9]",external
+5.1.6,MS21 Theorem A∞ c+ is a map 4.9,"PDF p.46; layout L2547; external citation [MS21, Theorem A∞ c+ is a map 4.9]",external
+5.1.7,(5.1.7.1),PDF p.47; layout L2659; explicit equation reference,internal
+5.1.7,(5.1.7.1),PDF p.47; layout L2660; explicit equation reference,internal
+5.1.7,4.0.1,PDF p.47; layout L2643; explicit item reference,internal
+5.1.7,5.1.6,PDF p.47; layout L2670; explicit item reference,internal
+5.2.1,2.5.3,PDF p.48; layout L2716; explicit item reference,internal
+5.2.1,4.0.1,PDF p.48; layout L2679; explicit item reference,internal
+5.2.1,4.0.13,PDF p.48; layout L2685; explicit item reference,internal
+5.2.2,4.0.1,PDF p.48; layout L2722; explicit item reference,internal
+5.2.2,4.0.10,PDF p.49; layout L2734; explicit item reference,internal
+5.2.2,5.1.7,PDF p.49; layout L2730; explicit item reference,internal
+5.2.3,2.4.3,PDF p.49; layout L2773; explicit item reference,internal
+5.2.3,4.0.1,PDF p.49; layout L2739; explicit item reference,internal
+5.2.3,5.1.6,PDF p.49; layout L2762; explicit item reference,internal
+5.2.4,5.2.1,PDF p.49; layout L2779; explicit item reference,internal
+5.2.4,5.2.1,PDF p.50; layout L2784; explicit item reference,internal
+5.2.4,5.2.2,PDF p.49; layout L2779; explicit item reference,internal
+5.2.4,5.2.2,PDF p.50; layout L2785; explicit item reference,internal
+5.2.4,AL03,PDF p.49; layout L2781; external citation [AL03],external
+5.2.4,HL02,"PDF p.49; layout L2781; external citation [HL02, PT18, Pol22]",external
+5.2.4,MST+22,PDF p.50; layout L2784; external citation [MST+ 22],external
+5.2.4,PT18,"PDF p.49; layout L2781; external citation [HL02, PT18, Pol22]",external
+5.2.4,Pol22,"PDF p.49; layout L2781; external citation [HL02, PT18, Pol22]",external
+5.2.4,SS10,PDF p.49; layout L2782; external citation [SS10],external
+5.2.5,2.5.1,PDF p.50; layout L2813; explicit item reference,internal
+5.2.5,2.5.1,PDF p.50; layout L2819; explicit item reference,internal
+5.2.5,4.0.1,PDF p.50; layout L2794; explicit item reference,internal
+5.2.5,4.0.10,PDF p.50; layout L2825; explicit item reference,internal
+5.2.5,4.0.13,PDF p.50; layout L2807; explicit item reference,internal
+5.2.5,5.1.6,PDF p.50; layout L2823; explicit item reference,internal
+5.2.5,"HM21 Lemma 2.4.3, it follows that g u ∈ IR Lemma 3.1","PDF p.50; layout L2830; external citation [HM21, Lemma 2.4.3, it follows that g u ∈ IR Lemma 3.1]",external
+5.3.1,4.0.13,PDF p.51; layout L2872; explicit item reference,internal
+5.3.1,5.2.1,PDF p.51; layout L2871; explicit item reference,internal
+5.3.1,5.2.2,PDF p.51; layout L2872; explicit item reference,internal
+5.3.1,HH91,PDF p.51; layout L2880; external citation [HH91],external
+5.3.1,SS10,PDF p.51; layout L2879; external citation [SS10],external
+5.3.2,5.1.7,PDF p.52; layout L2895; explicit item reference,internal
+5.3.2,BMP+23 Corollary 7.16,"PDF p.51; layout L2892; external citation [BMP+ 23, Corollary 7.16]",external
+5.3.2,MST+22 Example 7.8,"PDF p.51; layout L2889; external citation [MST+ 22, Example 7.8]",external
+5.3.2,MST+22 Theorem 7.11,"PDF p.51; layout L2891; external citation [MST+ 22, Theorem 7.11]",external
+5.3.5,5.2.1,PDF p.54; layout L3011; explicit item reference,internal
+5.3.5,Bli04,"PDF p.52; layout L2936; external citation [Bli04, GR22, Rob22, INS22]",external
+5.3.5,Bli04,PDF p.53; layout L2947; external citation [Bli04],external
+5.3.5,Ful93,"PDF p.53; layout L2961; external citation [Ful93, Mus05]",external
+5.3.5,GR22,"PDF p.52; layout L2936; external citation [Bli04, GR22, Rob22, INS22]",external
+5.3.5,Hoc72,PDF p.53; layout L2966; external citation [Hoc72],external
+5.3.5,Hoc72,PDF p.53; layout L2972; external citation [Hoc72],external
+5.3.5,Kol13,PDF p.53; layout L2954; external citation [Kol13],external
+5.3.5,MST+22 Subsection 2.1,"PDF p.53; layout L2954; external citation [MST+ 22, Subsection 2.1]",external
+5.3.5,MST+22 Theorem 4.1,"PDF p.54; layout L3012; external citation [MST+ 22, Theorem 4.1]",external
+5.3.5,MST+22 Theorem A.5,"PDF p.53; layout L2981; external citation [MST+ 22, Theorem A.5]",external
+5.3.5,Mus05,"PDF p.53; layout L2961; external citation [Ful93, Mus05]",external
+5.3.5,Rob22,"PDF p.52; layout L2936; external citation [Bli04, GR22, Rob22, INS22]",external
+5.3.5,Rob22,PDF p.53; layout L2943; external citation [Rob22],external
+5.4.10,2.5.3,PDF p.59; layout L3351; explicit item reference,internal
+5.4.11,4.0.1,PDF p.59; layout L3358; explicit item reference,internal
+5.4.11,4.0.11,PDF p.60; layout L3382; explicit item reference,internal
+5.4.11,4.0.12,PDF p.60; layout L3382; explicit item reference,internal
+5.4.11,5.2.5,PDF p.60; layout L3373; explicit item reference,internal
+5.4.11,5.4.10,PDF p.60; layout L3391; explicit item reference,internal
+5.4.11,5.4.3,PDF p.59; layout L3364; explicit item reference,internal
+5.4.11,5.4.6,PDF p.59; layout L3366; explicit item reference,internal
+5.4.11,5.4.9,PDF p.60; layout L3415; explicit item reference,internal
+5.4.2,4.0.1,PDF p.54; layout L3031; explicit item reference,internal
+5.4.2,MS21,PDF p.54; layout L3038; external citation [MS21],external
+5.4.3,4.0.1,PDF p.55; layout L3052; explicit item reference,internal
+5.4.3,5.2.5,PDF p.55; layout L3063; explicit item reference,internal
+5.4.3,CHL99 Corollary 2.4,"PDF p.55; layout L3059; external citation [CHL99, Corollary 2.4]",external
+5.4.3,MQS20 Theorem 9,"PDF p.55; layout L3060; external citation [MQS20, Theorem 9]",external
+5.4.4,2.2.6,PDF p.55; layout L3098; explicit item reference,internal
+5.4.4,4.0.1,PDF p.55; layout L3067; explicit item reference,internal
+5.4.4,ST24 Proposition 3.5,"PDF p.55; layout L3077; external citation [ST24, Proposition 3.5]",external
+5.4.5,4.0.1,PDF p.56; layout L3137; explicit item reference,internal
+5.4.5,5.4.4,PDF p.56; layout L3159; explicit item reference,internal
+5.4.6,4.0.1,PDF p.56; layout L3169; explicit item reference,internal
+5.4.6,4.0.23,PDF p.56; layout L3180; explicit item reference,internal
+5.4.6,5.4.5,PDF p.56; layout L3179; explicit item reference,internal
+5.4.6,5.4.5,PDF p.57; layout L3192; explicit item reference,internal
+5.4.7,4.0.1,PDF p.57; layout L3195; explicit item reference,internal
+5.4.7,4.0.18,PDF p.57; layout L3209; explicit item reference,internal
+5.4.7,4.0.20,PDF p.57; layout L3211; explicit item reference,internal
+5.4.7,4.1.1,PDF p.57; layout L3212; explicit item reference,internal
+5.4.7,5.4.3,PDF p.57; layout L3198; explicit item reference,internal
+5.4.7,BH93 Corollary 4.7.11,"PDF p.57; layout L3210; external citation [BH93, Corollary 4.7.11]",external
+5.4.8,4.0.1,PDF p.57; layout L3216; explicit item reference,internal
+5.4.8,4.0.10,PDF p.57; layout L3241; split word in PDF / distributed proof part; source manually checked,internal
+5.4.8,4.0.5,PDF p.57; layout L3239; explicit item reference,internal
+5.4.9,4.0.1,PDF p.57; layout L3242; explicit item reference,internal
+5.4.9,5.4.3,PDF p.58; layout L3272; explicit item reference,internal
+5.4.9,5.4.5,PDF p.58; layout L3296; explicit item reference,internal
+5.4.9,5.4.5,PDF p.59; layout L3325; explicit item reference,internal
+5.4.9,5.4.8,PDF p.58; layout L3280; explicit item reference,internal
+5.4.9,5.4.8,PDF p.58; layout L3306; explicit item reference,internal
+6.0.1,(6.0.1.1),PDF p.69; layout L3930; explicit equation reference,internal
+6.0.1,(6.0.2.2),PDF p.67; layout L3828; explicit equation reference,internal
+6.0.1,2.4.3,PDF p.68; layout L3844; explicit item reference,internal
+6.0.1,2.4.5,PDF p.68; layout L3846; explicit item reference,internal
+6.0.1,2.4.5,PDF p.68; layout L3847; explicit item reference,internal
+6.0.1,2.4.5,PDF p.68; layout L3863; explicit item reference,internal
+6.0.1,4.0.1,PDF p.61; layout L3437; explicit item reference,internal
+6.0.1,4.0.1,PDF p.68; layout L3900; explicit item reference,internal
+6.0.1,4.0.16,PDF p.69; layout L3931; explicit item reference,internal
+6.0.1,6.1.1,PDF p.68; layout L3863; explicit item reference,internal
+6.0.1,6.1.4,PDF p.68; layout L3854; explicit item reference,internal
+6.0.1,6.2.1,PDF p.69; layout L3908; explicit item reference,internal
+6.0.1,6.2.2,PDF p.69; layout L3902; explicit item reference,internal
+6.0.1,BJNnB19,"PDF p.61; layout L3444; external citation [BJNnB19, JS22]",external
+6.0.1,BS19 Proposition 8.13,"PDF p.68; layout L3840; external citation [BS22, Proposition 8.13]",external
+6.0.1,CR22,"PDF p.61; layout L3443; external citation [HL02, VK12, CRST18, CR22]",external
+6.0.1,CRST18,"PDF p.61; layout L3443; external citation [HL02, VK12, CRST18, CR22]",external
+6.0.1,HL02,"PDF p.61; layout L3443; external citation [HL02, VK12, CRST18, CR22]",external
+6.0.1,JS22,"PDF p.61; layout L3444; external citation [BJNnB19, JS22]",external
+6.0.1,Stacks Tag 0BMB,"PDF p.68; layout L3834; external citation [Sta, Tag 0BMB]",external
+6.0.1,VK12,"PDF p.61; layout L3443; external citation [HL02, VK12, CRST18, CR22]",external
+6.0.1,XZ21,PDF p.61; layout L3443; external citation [XZ21],external
+6.0.2,(6.0.2.2),PDF p.61; layout L3486; explicit equation reference,internal
+6.0.2,2.2.6,PDF p.61; layout L3468; explicit item reference,internal
+6.0.2,BS19 Proposition 8.5,"PDF p.61; layout L3457; external citation [BS22, Proposition 8.5]",external
+6.0.3,(6.0.2.1),PDF p.62; layout L3505; explicit equation reference,internal
+6.0.3,(6.0.2.2),PDF p.62; layout L3516; explicit equation reference,internal
+6.0.3,2.4.5,PDF p.62; layout L3510; explicit item reference,internal
+6.0.3,4.0.1,PDF p.61; layout L3493; explicit item reference,internal
+6.0.3,6.0.1,PDF p.62; layout L3526; explicit item reference,internal
+6.0.3,6.2.2,PDF p.62; layout L3524; explicit item reference,internal
+6.0.4,4.0.1,PDF p.62; layout L3531; explicit item reference,internal
+6.0.4,4.0.1,PDF p.62; layout L3553; explicit item reference,internal
+6.0.4,4.0.14,PDF p.63; layout L3568; explicit item reference,internal
+6.0.4,4.0.17,PDF p.62; layout L3538; explicit item reference,internal
+6.0.4,4.0.18,PDF p.62; layout L3542; explicit item reference,internal
+6.0.4,4.0.23,PDF p.63; layout L3567; explicit item reference,internal
+6.0.4,4.0.8,PDF p.62; layout L3553; explicit item reference,internal
+6.0.4,6.0.3,PDF p.62; layout L3543; explicit item reference,internal
+6.0.4,And18a Page 72 (2),"PDF p.62; layout L3546; external citation [And18a, Page 72 (2)]",external
+6.0.4,BH93 Corollary 4.7.11,"PDF p.63; layout L3559; external citation [BH93, Corollary 4.7.11]",external
+6.0.4,HS06 Proposition 8.3.7 and Corollary 8.3.9,"PDF p.62; layout L3537; external citation [HS06, Proposition 8.3.7 and Corollary 8.3.9]",external
+6.0.4,Ike97,PDF p.62; layout L3547; external citation [Ike97],external
+6.1.2,GR03 Lemma 2.4.15,"PDF p.64; layout L3605; external citation [GR03, Lemma 2.4.15]",external
+6.1.3,6.1.2,PDF p.64; layout L3611; explicit item reference,internal
+6.1.4,"Bou98 64 Chapter 5, Proposition 17","PDF p.64; layout L3654; external citation [Bou98, 64 Chapter 5, Proposition 17]",external
+6.1.4,GR03 Proof of Claim 3.5.33,"PDF p.64; layout L3649; external citation [GR03, Proof of Claim 3.5.33]",external
+6.1.4,GR03 Proposition 4.3.27,"PDF p.65; layout L3666; external citation [GR03, Proposition 4.3.27]",external
+6.1.4,Sch12 Proposition 5.23,"PDF p.64; layout L3627; external citation [Sch12, Proposition 5.23]",external
+6.1.5,6.1.4,PDF p.66; layout L3713; explicit item reference,internal
+6.1.5,Sch12 Theorem 5.25,"PDF p.65; layout L3708; external citation [Sch12, Theorem 5.25]",external
+6.1.5,Sch12 Theorem 7.9,"PDF p.65; layout L3707; external citation [Sch12, Theorem 7.9]",external
+6.2.2,2.1.1,PDF p.67; layout L3802; explicit item reference,internal
+6.2.2,2.1.4,PDF p.67; layout L3824; explicit item reference,internal
+6.2.2,2.1.4,PDF p.67; layout L3826; explicit item reference,internal
+6.2.2,2.4.9,PDF p.67; layout L3774; explicit item reference,internal
+6.2.2,4.0.1,PDF p.66; layout L3753; explicit item reference,internal
+6.2.2,4.0.1,PDF p.67; layout L3765; explicit item reference,internal
+6.2.2,4.0.7,PDF p.67; layout L3767; explicit item reference,internal
+6.2.2,6.0.1,PDF p.67; layout L3764; explicit item reference,internal
+6.2.2,6.0.1,PDF p.67; layout L3820; explicit item reference,internal
+6.2.2,Kun86 Appendix F.17(a),"PDF p.67; layout L3808; external citation [Kun86, Appendix F.17(a)]",external
+6.2.2,Stacks Tag 0BMB,"PDF p.67; layout L3822; external citation [Sta, Tag 0BMB]",external
+6.3.1,(6.0.1.1),PDF p.71; layout L4034; explicit equation reference,internal
+6.3.1,(6.0.2.2),PDF p.71; layout L4026; explicit equation reference,internal
+6.3.1,(6.3.1.1),PDF p.71; layout L4066; explicit equation reference,internal
+6.3.1,2.4.3,PDF p.70; layout L3976; explicit item reference,internal
+6.3.1,2.4.3,PDF p.71; layout L4033; explicit item reference,internal
+6.3.1,2.4.5,PDF p.70; layout L3969; explicit item reference,internal
+6.3.1,2.4.5,PDF p.70; layout L4011; explicit item reference,internal
+6.3.1,4.0.1,PDF p.69; layout L3955; explicit item reference,internal
+6.3.1,4.0.16,PDF p.71; layout L4067; explicit item reference,internal
+6.3.1,6.0.1,PDF p.70; layout L4009; explicit item reference,internal
+6.3.1,6.0.1,PDF p.71; layout L4026; explicit item reference,internal
+6.3.1,6.0.1,PDF p.71; layout L4036; split word in PDF / distributed proof part; source manually checked,internal
+6.3.1,6.1.1,PDF p.70; layout L4011; explicit item reference,internal
+6.3.1,6.1.4,PDF p.70; layout L3995; explicit item reference,internal
+6.3.1,6.2.2,PDF p.69; layout L3948; explicit item reference,internal
+6.3.1,6.2.2,PDF p.71; layout L4041; explicit item reference,internal
+6.3.1,Sch12 Theorem 5.25,"PDF p.70; layout L3979; external citation [Sch12, Theorem 5.25]",external
+6.3.2,4.1.1,PDF p.72; layout L4119; explicit item reference,internal
+6.3.2,6.0.1,PDF p.72; layout L4118; explicit item reference,internal
+6.3.2,6.0.4,PDF p.72; layout L4114; explicit item reference,internal
+6.3.2,6.3.1,PDF p.72; layout L4087; explicit item reference,internal
+6.3.2,6.3.1,PDF p.72; layout L4118; explicit item reference,internal
+6.3.2,CRMP+21 Lemma 4.1,"PDF p.72; layout L4113; external citation [CRMP+ 21, Lemma 4.1]",external
+6.3.2,CRMP+21 Proposition 4.4,"PDF p.72; layout L4123; external citation [CRMP+ 21, Proposition 4.4]",external
+6.3.2,"CRMP+21 Propositions 4.7, 4.9, 4.11","PDF p.72; layout L4127; external citation [CRMP+ 21, Propositions 4.7, 4.9, 4.11]",external
+6.3.2,CRMP+21 Section 4,"PDF p.72; layout L4115; external citation [CRMP+ 21, Section 4]",external
+7.0.1,2.1.4,PDF p.73; layout L4155; explicit item reference,internal
+7.0.1,6.2.2,PDF p.73; layout L4154; explicit item reference,internal
+7.0.1,CR22,PDF p.73; layout L4148; external citation [CR22],external
+7.0.1,CRMP+21 Lemma 5.1,"PDF p.73; layout L4148; external citation [CRMP+ 21, Lemma 5.1]",external
+7.0.10,7.0.7,PDF p.78; layout L4392; explicit item reference,internal
+7.0.10,Mur25,PDF p.78; layout L4396; external citation [Mur25],external
+7.0.12,6.2.2,PDF p.80; layout L4492; explicit item reference,internal
+7.0.12,6.3.1,PDF p.80; layout L4477; explicit item reference,internal
+7.0.12,6.3.1,PDF p.80; layout L4493; explicit item reference,internal
+7.0.12,7.0.11,PDF p.79; layout L4472; explicit item reference,internal
+7.0.12,7.0.13,PDF p.79; layout L4464; nested Claim used in parent proof,internal
+7.0.12,MP25 Lemma A.4,"PDF p.79; layout L4448; external citation [MP25, Lemma A.4]",external
+7.0.12,MP25 Lemma A.4,"PDF p.80; layout L4491; external citation [MP25, Lemma A.4]",external
+7.0.12,TW92 Corollary 2.6,"PDF p.79; layout L4450; external citation [TW92, Corollary 2.6]",external
+7.0.12,TW92 Corollary 2.6,"PDF p.80; layout L4497; external citation [TW92, Corollary 2.6]",external
+7.0.13,7.0.11,PDF p.79; layout L4472; explicit item reference,internal
+7.0.2,2.1.4,PDF p.74; layout L4212; explicit item reference,internal
+7.0.2,4.0.22,PDF p.74; layout L4199; explicit item reference,internal
+7.0.2,5.2.1,PDF p.74; layout L4196; explicit item reference,internal
+7.0.2,6.0.1,PDF p.74; layout L4200; explicit item reference,internal
+7.0.2,7.0.1,PDF p.74; layout L4197; explicit item reference,internal
+7.0.4,5.2.3,PDF p.75; layout L4276; explicit item reference,internal
+7.0.4,7.0.5,PDF p.75; layout L4255; nested Claim used in parent proof,internal
+7.0.4,BMP+23 Proposition 6.10,"PDF p.75; layout L4234; external citation [BMP+ 23, Proposition 6.10]",external
+7.0.4,GLL15 Theorem 8.1,"PDF p.75; layout L4236; external citation [GLL15, Theorem 8.1]",external
+7.0.4,Stacks Tag 00R4,"PDF p.75; layout L4235; external citation [Sta, Tag 00R4]",external
+7.0.5,5.2.3,PDF p.75; layout L4276; explicit item reference,internal
+7.0.6,7.0.4,PDF p.76; layout L4291; explicit item reference,internal
+7.0.6,7.0.5,PDF p.76; layout L4293; explicit item reference,internal
+7.0.7,5.3.1,PDF p.76; layout L4322; explicit item reference,internal
+7.0.7,7.0.1,PDF p.77; layout L4363; explicit item reference,internal
+7.0.7,7.0.8,PDF p.77; layout L4357; nested Claim used in parent proof,internal
+7.0.7,7.0.9,PDF p.77; layout L4365; explicit item reference,internal
+7.0.7,AF94 Theroem 4.1,"PDF p.77; layout L4374; external citation [AF94, Theroem 4.1]",external
+7.0.7,"Elk73 Corollarie, page 26","PDF p.77; layout L4335; external citation [Elk73, Corollarie, page 26]",external
+7.0.7,GKP16 Theorem 1.1,"PDF p.76; layout L4308; external citation [GKP16, Theorem 1.1]",external
+7.0.7,Stacks Tag 0339,"PDF p.77; layout L4372; external citation [Sta, Tag 0339]",external
+7.0.7,Stacks Tag 033G,"PDF p.77; layout L4343; external citation [Sta, Tag 033G]",external
+7.0.7,Stacks Tag 0912,"PDF p.77; layout L4342; external citation [Sta, Tag 0912]",external
+7.0.8,7.0.1,PDF p.77; layout L4363; explicit item reference,internal
+7.0.8,7.0.9,PDF p.77; layout L4365; explicit item reference,internal
+7.0.9,2.1.4,PDF p.78; layout L4386; explicit item reference,internal
+7.0.9,AR63 Proposition 3.1,"PDF p.78; layout L4389; external citation [AR63, Proposition 3.1]",external
+8.1,4.0.18,PDF p.80; layout L4522; explicit item reference,internal
+8.1,6.3.2,PDF p.80; layout L4520; explicit item reference,internal
+8.1,GR22 Remark 14.5.69(ii),"PDF p.80; layout L4523; external citation [GR22, Remark 14.5.69(ii)]",external
+8.4,DSPY19,"PDF p.81; layout L4569; external citation [PT18, DSPY19]",external
+8.4,Han03,"PDF p.81; layout L4568; external citation [Han03, Smi16, Pol18, Lyu25]",external
+8.4,LLX20,PDF p.81; layout L4573; external citation [LLX20],external
+8.4,Lyu25,"PDF p.81; layout L4568; external citation [Han03, Smi16, Pol18, Lyu25]",external
+8.4,PT18,"PDF p.81; layout L4569; external citation [PT18, DSPY19]",external
+8.4,Pol18,"PDF p.81; layout L4568; external citation [Han03, Smi16, Pol18, Lyu25]",external
+8.4,Smi16,"PDF p.81; layout L4568; external citation [Han03, Smi16, Pol18, Lyu25]",external
+8.5,6.2.2,PDF p.82; layout L4590; explicit item reference,internal
+8.5,BST12,PDF p.82; layout L4594; external citation [BST12],external
+8.5,MS18,"PDF p.82; layout L4595; external citation [MS18, Rob22, ST25, Mur21]",external
+8.5,Mur21,"PDF p.82; layout L4595; external citation [MS18, Rob22, ST25, Mur21]",external
+8.5,Rob22,"PDF p.82; layout L4595; external citation [MS18, Rob22, ST25, Mur21]",external
+8.5,ST25,"PDF p.82; layout L4595; external citation [MS18, Rob22, ST25, Mur21]",external
+A,4.0.22,PDF p.4; layout L188; explicit item reference,internal
+A,4.1.5,PDF p.4; layout L188; explicit item reference,internal
+A,HL02,"PDF p.4; layout L188; external citation [HL02, WY00, HY02]",external
+A,HY02,"PDF p.4; layout L188; external citation [HL02, WY00, HY02]",external
+A,WY00,"PDF p.4; layout L188; external citation [HL02, WY00, HY02]",external
+B,5.2.1,PDF p.5; layout L204; explicit item reference,internal
+B,5.2.2,PDF p.5; layout L204; explicit item reference,internal
+B,AL03,"PDF p.5; layout L204; external citation [AL03, HL02]",external
+B,HL02,"PDF p.5; layout L204; external citation [AL03, HL02]",external
+C,6.0.1,PDF p.5; layout L222; explicit item reference,internal
+C,CRST18,"PDF p.5; layout L222; external citation [HL02, VK12, CRST18]",external
+C,HL02,"PDF p.5; layout L222; external citation [HL02, VK12, CRST18]",external
+C,VK12,"PDF p.5; layout L222; external citation [HL02, VK12, CRST18]",external
+D,7.0.12,PDF p.5; layout L238; explicit item reference,internal
+D,7.0.2,PDF p.5; layout L238; explicit item reference,internal
+D,CR22,"PDF p.5; layout L238; external citation [CRST18, CR22]",external
+D,CRST18,"PDF p.5; layout L238; external citation [CRST18, CR22]",external
+E,4.0.20,PDF p.6; layout L277; explicit item reference,internal
+E,4.1.4,PDF p.6; layout L277; explicit item reference,internal
+E,Kun76,"PDF p.6; layout L277; external citation [Kun76, WY04]",external
+E,WY04,"PDF p.6; layout L277; external citation [Kun76, WY04]",external
+F,5.2.5,PDF p.6; layout L285; explicit item reference,internal
+F,HH90,PDF p.6; layout L285; external citation [HH90],external
+G,5.4.11,PDF p.7; layout L321; explicit item reference,internal
+G,ST24,PDF p.7; layout L321; external citation [ST24],external

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.AlgebraCoefficientRestriction
 public import SerrePositivity.EInfinity.BarrattEccles.CAlgQuasiIso
-public import SerrePositivity.EInfinity.FrameHom.MixedNerveNatTrans
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerveNatTrans
 public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.VertexTransport.FunctorIsoTransport
 
 /-!
@@ -30,7 +30,7 @@ universe u
 
 namespace SerrePositivity.EInfinity.BarrattEccles
 
-open CategoryTheory SSet SimplicialLocalization
+open CategoryTheory SSet _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.InfinityCategories _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison
 open scoped Simplicial
 
@@ -40,7 +40,7 @@ variable (A : Type u) [CommRing A]
 def algebraCAlgSourceNatTransIso {I : Type (u + 1)} [Category.{u} I]
     {F G : I ⥤ (operad A).Algebra} (η : F ⟶ G) (hη : ∀ i, QuasiIso (η.app i).hom) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (nerveMap F ≫ algebraCAlgSource A) (nerveMap G ≫ algebraCAlgSource A) := by
-  let H := _root_.SerrePositivity.SimplicialModel.HomotopyClasses.postHomotopy (algebraCAlgSource A) (FrameHom.MixedNerve.homotopy η)
+  let H := _root_.SerrePositivity.SimplicialModel.HomotopyClasses.postHomotopy (algebraCAlgSource A) (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.homotopy η)
   apply _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.functorIsoOfPointwiseInvertibleHomotopy H
   intro z
   obtain ⟨i, rfl⟩ := ComposableArrows.mk₀_surjective z
@@ -48,7 +48,7 @@ def algebraCAlgSourceNatTransIso {I : Type (u + 1)} [Category.{u} I]
     (e := (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge H (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex i)).toTruncated)
     (f := ((nerve.edgeMk (η.app i)).map (algebraCAlgSource A)).toTruncated)
     (congrArg ((algebraCAlgSource A).app (Opposite.op ⦋1⦌))
-      (FrameHom.MixedNerve.homotopy_component η i))).mpr
+      (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.homotopy_component η i))).mpr
         (algebraCAlgSource_map_weak A (η.app i) (hη i))
 
 variable {S T : Type u} [CommRing S] [CommRing T] (f : S →+* T)
@@ -88,7 +88,7 @@ def cAlgCoefficientRestrictionSource :
 /-- 係数制限の後に局所化すると、元の擬同型を反転する。 -/
 lemma cAlgCoefficientRestrictionSource_inverts :
     _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InvertsEdges (cAlgCoefficientRestrictionSource f)
-      (weakNerveEdges (cofibrantAlgebraRelativeCategory T)) := by
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges (cofibrantAlgebraRelativeCategory T)) := by
   intro σ hσ
   obtain ⟨X, Y, g, hg, rfl⟩ := hσ
   let F := cofibrantAlgebraDKInclusion T ⋙ coefficientRestriction f
@@ -112,7 +112,7 @@ lemma cAlgCoefficientRestriction_exists :
       Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (cAlgLocalizationSource T ≫ R)
         (cAlgCoefficientRestrictionSource f)) :=
   _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.localization_extension_exists (cAlgLocalizationSource T)
-    (weakNerveEdges (cofibrantAlgebraRelativeCategory T)) (cAlgLocalizationSource_inverts T)
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges (cofibrantAlgebraRelativeCategory T)) (cAlgLocalizationSource_inverts T)
     (cAlgLocalizationPrecomposition_isQCatEquivalence T (CAlg_R S))
     (cAlgCoefficientRestrictionSource f) (cAlgCoefficientRestrictionSource_inverts f)
 

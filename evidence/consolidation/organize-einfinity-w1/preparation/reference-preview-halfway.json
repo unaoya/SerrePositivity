@@ -1,0 +1,26 @@
+{
+  "captured": 438,
+  "previewed": 438,
+  "changed_sources": 438,
+  "review_files": 0,
+  "review_items": 0,
+  "plan_sha256": "bffb2434b00941a5031a1a82aa16f090f36949332c706dc37873e3ad8e454232",
+  "groups": {
+    "OE02": {
+      "captured": 61,
+      "total": 61
+    },
+    "OE03": {
+      "captured": 144,
+      "total": 144
+    },
+    "OE04": {
+      "captured": 71,
+      "total": 152
+    },
+    "OE05": {
+      "captured": 99,
+      "total": 99
+    }
+  }
+}

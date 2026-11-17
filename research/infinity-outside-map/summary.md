@@ -1,6 +1,6 @@
 # InfinityCategoriesの外にある一般論のファイル分類（⑤d、2026-11-16）
 
-指示書：`formalization-plans/stage-ii/infinity-outside-map.md`。最新main **`8c75c2ee8`** から枝 **`codex/infinity-outside-map`** を切った。対象はKST・HomotopicalAlgebra・SpectraのLeanファイル全体。EInfinityおよびArchiveは分類対象に含めない。
+指示書：`formalization-plans/stage-ii/consolidation/infinity-outside-map.md`。最新main **`8c75c2ee8`** から枝 **`codex/infinity-outside-map`** を切った。対象はKST・HomotopicalAlgebra・SpectraのLeanファイル全体。EInfinityおよびArchiveは分類対象に含めない。
 
 ## 結果
 
@@ -435,7 +435,7 @@
 
 ## OE-W1と同じ節に集まる案
 
-OE-W1は基準mainには未取り込み。兄弟枝 `refactor/organize-einfinity` の **`d216f410b`** を読み取り、`formalization-plans/stage-ii/organize-einfinity-w1/module-map.json` の移動先と照合した（取得したJSONのSHA256 `07cbab5697f108135f0baf171c9a817df35adaae76ab05e76af471e649658518`）。他枝へ書き込んでいない。段2の分類表は主用途による紙の表で移動先の列がないため、具体的な重なりは段1のmodule-mapから取った。
+OE-W1は基準mainには未取り込み。兄弟枝 `refactor/organize-einfinity` の **`d216f410b`** を読み取り、`evidence/consolidation/organize-einfinity-w1/module-map.json` の移動先と照合した（取得したJSONのSHA256 `07cbab5697f108135f0baf171c9a817df35adaae76ab05e76af471e649658518`）。他枝へ書き込んでいない。段2の分類表は主用途による紙の表で移動先の列がないため、具体的な重なりは段1のmodule-mapから取った。
 
 | 同じ配置先の節 | 今回の一般分類の本数 | OE-W1の移動本数 | 今回の例 | OE-W1の例 |
 |---|---|---|---|---|

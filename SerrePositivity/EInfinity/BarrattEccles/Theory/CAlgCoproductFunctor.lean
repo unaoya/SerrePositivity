@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.CoproductModel
 public import SerrePositivity.EInfinity.BarrattEccles.CAlgVertexPresentation
 public import SerrePositivity.EInfinity.Interface.Core
-public import SerrePositivity.EInfinity.SimplicialLocalization.NerveMap
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.NerveMap
 
 /-!
 # CAlg の固定右因子との余積関手
@@ -26,7 +26,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open CategoryTheory Limits HomotopicalAlgebra SSet SimplicialLocalization
+open CategoryTheory Limits _root_.HomotopicalAlgebra SSet _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.InfinityCategories
 open scoped Simplicial
 variable (A : Type u) [CommRing A]
@@ -62,14 +62,14 @@ def cofibrantAlgebraCoprodRelative (B : CofibrantAlgebra A) :
 
 /-- The coproduct functor on CAlg with a fixed cofibrant right factor. -/
 def cAlgCoprodWithModel (B : CofibrantAlgebra A) : CAlg_R A ⟶ CAlg_R A :=
-  localizationNerveMap (cofibrantAlgebraCoprodRelative A B)
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap (cofibrantAlgebraCoprodRelative A B)
 
 /-- The chosen functor uses exactly the strict coproduct on the specified vertex models. -/
 lemma cAlgCoprodWithModel_vertex (B : CofibrantAlgebra A)
     (X : (cofibrantAlgebraRelativeCategory A).category) :
     atVertex (cAlgCoprodWithModel A B) (cAlgVertexEquiv A X) =
       cAlgVertexEquiv A ((cofibrantAlgebraDKCoprodWith A B).obj X) :=
-  localizationNerveMap_vertex (cofibrantAlgebraCoprodRelative A B) X
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap_vertex (cofibrantAlgebraCoprodRelative A B) X
 
 /-- The fixed-right-factor coproduct functor for an arbitrary vertex of CAlg. -/
 def barrattEcclesCoprodWith (y : (CAlg_R A) _⦋0⦌) : CAlg_R A ⟶ CAlg_R A :=

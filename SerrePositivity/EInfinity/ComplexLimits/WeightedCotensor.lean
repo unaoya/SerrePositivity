@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.HomotopyWeight.DoubleOpposite
+public import SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.DoubleOpposite
 public import SerrePositivity.EInfinity.ComplexLimits.RightFrames
 public import SerrePositivity.EInfinity.BarrattEccles.CotensorCarrier
 public import SerrePositivity.HomotopicalAlgebra.Diagram.FrameWeightRealization
@@ -44,7 +44,7 @@ def rightFrameDiagram (F : K ⥤ (Complex A)) :
 使われ方：一般 homotopy 極限の具体的な計算対象を供給する。 -/
 def weightedCotensor (F : K ⥤ (Complex A)) :
     (K ⥤ SSet.{u})ᵒᵖ ⥤ (Complex A) :=
-  (SerrePositivity.EInfinity.HomotopyWeight.doubleOpWeights K ⋙
+  (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.doubleOpWeights K ⋙
     FrameWeightRealization.functor Kᵒᵖ (rightFrameDiagram A K F)).leftOp
 
 /-- 概要：重み付き end への射は右 frame への重み付き錐に一致する（Hovey §5.4）。
@@ -54,16 +54,16 @@ def weightedCotensor (F : K ⥤ (Complex A)) :
 def weightedCotensorHomEquiv (F : K ⥤ (Complex A))
     (W : K ⥤ SSet.{u}) (Y : (Complex A)) :
     (Y ⟶ (weightedCotensor A K F).obj (op W)) ≃
-      ((SerrePositivity.EInfinity.HomotopyWeight.doubleOpWeights K).obj W ⟶
+      ((_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.doubleOpWeights K).obj W ⟶
         (FrameWeightRealization.hom Kᵒᵖ (rightFrameDiagram A K F)).obj (op Y)) :=
   (show (Y ⟶ (weightedCotensor A K F).obj (op W)) ≃
       ((FrameWeightRealization.functor Kᵒᵖ (rightFrameDiagram A K F)).obj
-        ((SerrePositivity.EInfinity.HomotopyWeight.doubleOpWeights K).obj W) ⟶ op Y) from
+        ((_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.doubleOpWeights K).obj W) ⟶ op Y) from
     { toFun := fun f => f.op
       invFun := fun f => f.unop
       left_inv := fun _ => rfl
       right_inv := fun _ => rfl }).trans
     ((FrameWeightRealization.adjunction Kᵒᵖ (rightFrameDiagram A K F)).homEquiv
-      ((SerrePositivity.EInfinity.HomotopyWeight.doubleOpWeights K).obj W) (op Y))
+      ((_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.doubleOpWeights K).obj W) (op Y))
 
 end SerrePositivity.EInfinity.ComplexLimits

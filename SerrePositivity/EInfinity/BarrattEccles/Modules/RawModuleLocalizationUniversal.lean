@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.Modules.RawModuleRelativeModel
-public import SerrePositivity.EInfinity.SimplicialLocalization.LocalizationNervePrecomposition
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.LocalizationNervePrecomposition
 public import SerrePositivity.EInfinity.Hammock.RelativeEquivalenceWeak
 
 /-!
@@ -19,10 +19,10 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open CategoryTheory HomotopicalAlgebra
+open CategoryTheory _root_.HomotopicalAlgebra
 open SerrePositivity.DifferentialGraded
 open SerrePositivity.InfinityCategories.HA.Section7_1_1
-open SerrePositivity.EInfinity.SimplicialLocalization
+open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization
 open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
 variable (A : Type u) [CommRing A]
@@ -55,16 +55,16 @@ lemma strictRawModuleUniverseCounit_weak (X : (operad A).Algebra) :
   intro M
   change weakEquivalences (strictRawModuleCategory A X)
     (AsSmall.down.map ((strictRawModuleUniverseEquivalence A X).counitIso.hom.app M))
-  exact (HomotopicalAlgebra.weakEquivalence_iff _).mp inferInstance
+  exact (_root_.HomotopicalAlgebra.weakEquivalence_iff _).mp inferInstance
 
 /-- 概要：同じ宇宙表示の比較は全 hammock nerve の同値。
 方針：既存の弱単位・余単位の実 Hom 比較を全 nerve 判定へ渡す。
 規約：HA §1.3.4、同じ実相対関手。使われ方：元の DK 標的への復帰。 -/
 lemma strictRawModuleHammockUniverse_isQCatEquivalence (X : (operad A).Algebra) :
     let := strictRawModuleModelCategory A X
-    IsQCatEquivalence (relativeKanHammockNerve (strictRawModuleToModelRelative A X)) := by
+    IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.relativeKanHammockNerve (strictRawModuleToModelRelative A X)) := by
   let := strictRawModuleModelCategory A X
-  exact relativeKanHammockNerve_isQCatEquivalence_of_counit
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.relativeKanHammockNerve_isQCatEquivalence_of_counit
     (strictRawModuleToModelRelative A X) (strictRawModuleFromModelRelative A X)
     (strictRawModuleUniverseEquivalence A X).counitIso.hom
     (strictRawModuleUniverseCounit_weak A X)
@@ -78,31 +78,31 @@ lemma strictRawModuleHammockUniverse_isQCatEquivalence (X : (operad A).Algebra) 
 方針：同じ弱変形による源移送の後、同じ hammock 比較の標的同値を外す。
 規約：HA §1.3.4、元の弱辺集合。使われ方：元の自由 DK 源の普遍性。 -/
 lemma strictRawModuleHammock_isLocalization (X : (operad A).Algebra) :
-    IsLocalization (hammockLocalizationNerveMap (strictRawModuleRelativeCategory A X))
-      (weakNerveEdges (strictRawModuleRelativeCategory A X)) := by
+    IsLocalization (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (strictRawModuleRelativeCategory A X))
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges (strictRawModuleRelativeCategory A X)) := by
   let := strictRawModuleModelCategory A X
   have h := isLocalization_of_weakDeformation
     (nerveMap (strictRawModuleFromModelRelative A X).functor)
     (nerveMap (strictRawModuleToModelRelative A X).functor)
-    (hammockLocalizationNerveMap
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap
       (SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory
         (strictRawModuleCategory A X)))
-    (weakNerveEdges
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges
       (SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory
         (strictRawModuleCategory A X)))
-    (weakNerveEdges (strictRawModuleRelativeCategory A X))
-    (relativeNerve_mapsWeak (strictRawModuleFromModelRelative A X))
-    (relativeNerve_mapsWeak (strictRawModuleToModelRelative A X))
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges (strictRawModuleRelativeCategory A X))
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.relativeNerve_mapsWeak (strictRawModuleFromModelRelative A X))
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.relativeNerve_mapsWeak (strictRawModuleToModelRelative A X))
     (SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveNatTransHomotopy
       (strictRawModuleUniverseEquivalence A X).unitIso.inv)
     (SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveNatTransHomotopy
       (strictRawModuleUniverseEquivalence A X).counitIso.hom)
-    (relativeNerve_homotopy_component_weak _ (strictRawModuleUniverseUnit_weak A X))
-    (relativeNerve_homotopy_component_weak _ (strictRawModuleUniverseCounit_weak A X))
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.relativeNerve_homotopy_component_weak _ (strictRawModuleUniverseUnit_weak A X))
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.relativeNerve_homotopy_component_weak _ (strictRawModuleUniverseCounit_weak A X))
     (strictRawModuleModelHammock_isLocalization A X)
-  rw [← relativeKanHammockNerve_source] at h
+  rw [← _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.relativeKanHammockNerve_source] at h
   exact (isLocalization_comp_equivalence_iff _ _
-    (hammockLocalizationNerveMap_inverts (strictRawModuleRelativeCategory A X))
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap_inverts (strictRawModuleRelativeCategory A X))
     (strictRawModuleHammockUniverse_isQCatEquivalence A X).choose).mp h
 
 /-- 概要：同じ元の通常加群圏の自由 DK 源は全標的の局所化。
@@ -110,9 +110,9 @@ lemma strictRawModuleHammock_isLocalization (X : (operad A).Algebra) :
 規約：HA §1.3.4、半自由標的への別の源とは区別。
 使われ方：M10/C02 の元の固定底の普遍性。 -/
 lemma strictRawModuleLocalization_isLocalization (X : (operad A).Algebra) :
-    IsLocalization (localizationNerveSourceMap (strictRawModuleRelativeCategory A X))
-      (weakNerveEdges (strictRawModuleRelativeCategory A X)) :=
-  (localizationNerveSourceMap_isLocalization_iff (strictRawModuleRelativeCategory A X)).mpr
+    IsLocalization (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveSourceMap (strictRawModuleRelativeCategory A X))
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges (strictRawModuleRelativeCategory A X)) :=
+  (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveSourceMap_isLocalization_iff (strictRawModuleRelativeCategory A X)).mpr
     (strictRawModuleHammock_isLocalization A X)
 
 end SerrePositivity.EInfinity.BarrattEccles

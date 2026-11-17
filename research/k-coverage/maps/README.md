@@ -27,7 +27,7 @@ python3 research/k-coverage/maps/extract_citations.py .
 
 ### 原典番号とのずれ
 
-- KST `§10-7` は [FiniteAffineCover.lean:99](../../../SerrePositivity/KST/DerivedGeometry/FiniteAffineCover.lean#L99) の 1 行。KST 原典の節でなく、[計画書の §10-7](../../../formalization-plans/kst-lanes/k-theory-kst-route.md) を指す。
+- KST `§10-7` は [FiniteAffineCover.lean:99](../../../SerrePositivity/KST/DerivedGeometry/FiniteAffineCover.lean#L99) の 1 行。KST 原典の節でなく、[計画書の §10-7](../../../formalization-plans/archive/stage-i/kst-lanes/k-theory-kst-route.md) を指す。
 - Land–Tamme `§1.2` は [DGLaxQuotientEnd.lean:11](../../../SerrePositivity/KST/SConstruction/DGLaxQuotientEnd.lean#L11) の 1 行。v3 の §1 に小節番号はない。文脈の ⊙ の構成は §1 の Theorem 1.3 の証明、Definition 1.2 は完全列・局所化不変量の定義。
 - 本論文 `3.5a/b/c` の 27 行は Lean 側の分割。原典の Lemma 3.5 の証明に対応する小項目として数えた。別の 65 行は原典 §2 または §5 の実在する番号で、今回の項目表の範囲外。
 - Tamme と BGT の番号つき引用はすべて各採録版の項目に解決した。BGT の `(a)` という表記は番号なしの言及に含めた。

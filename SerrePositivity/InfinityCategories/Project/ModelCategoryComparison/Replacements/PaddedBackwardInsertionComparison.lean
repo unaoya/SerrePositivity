@@ -16,7 +16,7 @@ public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localiz
 universe u v
 noncomputable section
 namespace SerrePositivity.InfinityCategories.Project.ModelCategoryComparison
-open CategoryTheory HomotopicalAlgebra _root_.SerrePositivity.InfinityCategories
+open CategoryTheory _root_.HomotopicalAlgebra _root_.SerrePositivity.InfinityCategories
 open _root_.SerrePositivity.SimplicialModel
 
 variable {C : Type u} [Category.{v} C] [ModelCategory C] (X Y : C)
@@ -29,7 +29,7 @@ lemma paddedBackwardInsertion_isWeakHomotopyEquivalence (w : _root_.SerrePositiv
         (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.paddingFunctor.map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.eraseInclusion w p))) := by
   let G := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram (weakEquivalences C) X Y
   have hi : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (G.map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.eraseIso w p).hom) :=
-    _root_.SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _ (by infer_instance)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.isWeakHomotopyEquivalence _ (by infer_instance)
   have he := _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.paddedErasedGraphMap_isWeakHomotopyEquivalence X Y cof w p hp
   have hc := hi.comp he
   rw [← G.map_comp, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.eraseIso_hom_fac] at hc

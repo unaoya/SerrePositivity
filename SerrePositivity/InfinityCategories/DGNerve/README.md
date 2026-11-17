@@ -4,7 +4,7 @@
 
 任意の `A : Type u`、`[CommRing A]`、`D : Type v`、`[DGCategory A D]` を扱う。
 追加の有界性・平坦性・標数の仮定は置かない。
-正本は [計画](../../../formalization-plans/infinity-lanes/dg-nerve.md)。この文書の N0 は紙の計算であり、
+正本は [計画](../../../formalization-plans/archive/stage-i/infinity-lanes/dg-nerve.md)。この文書の N0 は紙の計算であり、
 Lean での dg nerve の存在やホーン充填の証明を意味しない。
 N0〜N6 の必須項目は完了。任意の dg 圏の dg nerve と quasicategory instance、
 ホモトピー圏と H⁰ の圏同値、右 pinched Hom の単体的 A 加群・直接の線形 Kan 充填・π₀ 比較、

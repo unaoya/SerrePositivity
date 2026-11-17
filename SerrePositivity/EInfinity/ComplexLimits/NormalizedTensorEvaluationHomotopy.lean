@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorTriangleMap
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorConeFamily
-public import SerrePositivity.EInfinity.FrameHom.MixedNerveConstant
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerveConstant
 /-! 概要：元の大域評価三角形は全関手圏内で同じ全族の合成を与える。
 方針：元の全三辺を持つ二単体族を curry する。
 規約：全 K と元の円柱を保持。使われ方：同じ導来 roof との大域比較。 -/
@@ -21,9 +21,9 @@ def normalizedTensorEvaluationHomotopy :
   let T := nerveMap (complexToClosed A) ≫ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (Complex A)
   refine _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.stableHomotopyRetarget
     (HomotopyClasses.postHomotopy T
-      (FrameHom.MixedNerve.homotopy (normalizedTensorElementEvaluation A X Y))) ?_ ?_
+      (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.homotopy (normalizedTensorElementEvaluation A X Y))) ?_ ?_
   · rfl
-  · rw [FrameHom.MixedNerve.nerveMap_const, SSet.const_comp]
+  · rw [_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.nerveMap_const, SSet.const_comp]
     have hv : T.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex Y) = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex (A := A) Y := by
       apply (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve.vertexEquiv A (Complex A)).injective
       rfl

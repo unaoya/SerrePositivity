@@ -2,7 +2,7 @@
 
 作成：2026-11-02 夕（∞ 基盤の整備、管理は Claude）。宛先：∞ の Codex。
 **開始**：草案（§3.0、ビルドなし）は今すぐ。適用と内部検証（§3.1、小さなビルドだけ）は草案の承認後。**下流の一回ビルドと verify（§3.2）は暦の #10（DG-W3 の後、見込み 11-04）に Claude が合図する**。
-計画：[infinity-foundation-plan.md](../infinity-foundation-plan.md) の R73・R37・R38（§5 段 C）、§3 の FilteredExchange の処置、§6 の W2b 行（完了条件：中核の層の順序の違反 0、例外一覧を除く。ここで中核の完了条件 1・5 がそろう）。
+計画：[infinity-foundation-plan.md](stage-i/infinity-foundation-plan.md) の R73・R37・R38（§5 段 C）、§3 の FilteredExchange の処置、§6 の W2b 行（完了条件：中核の層の順序の違反 0、例外一覧を除く。ここで中核の完了条件 1・5 がそろう）。
 **共通の前提**：[IF-W0-1](infinity-codex-w0-1.md) §0、[IF-W0-3 §10.31・§10.33〜10.35](infinity-codex-w0-3.md)（判断表、条件 5 は失敗モジュール数、個別照合）、[IF-W2a-2 §7〜§9](infinity-codex-w2a-2.md)（宇宙の明示、保存比較は v3b、`_proof_N` の束ね）、[DG-W2 §13-1](dg-codex-w2.md)（宣言単位の到達性）。
 worktree は `../SerrePositivity-ifw0-3` をそのまま使い、main（5c909058e 以降）から `infra/if-w2b` を切る。対象 JSON の書式は `scripts/refactor/targets/README.md`（move／split／archive／reimport、§10.30 の split → move）。
 

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FramePreservation
 
-public import SerrePositivity.EInfinity.FrameHom.MixedFrame
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedFrame
 public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.TargetInvariance
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence
 public import Mathlib.AlgebraicTopology.ModelCategory.Opposite
@@ -26,7 +26,7 @@ universe u v
 
 namespace SerrePositivity.InfinityCategories.Project.ModelCategoryComparison
 
-open CategoryTheory Limits HomotopicalAlgebra Opposite
+open CategoryTheory Limits _root_.HomotopicalAlgebra Opposite
 open _root_.SerrePositivity.Reedy _root_.SerrePositivity.HomotopyFunctionComplex
 open _root_.SerrePositivity.SimplicialModel
 
@@ -46,16 +46,16 @@ private def rowsComparison {Z : C} {R : SimplexCategoryᵒᵖ ⥤ C}
 
 private lemma leftComparison_eq {Z : C} {R : SimplexCategoryᵒᵖ ⥤ C}
     (b : (Functor.const SimplexCategoryᵒᵖ).obj Z ⟶ R) :
-    _root_.SerrePositivity.EInfinity.FrameHom.MixedFrame.leftComparison A b = (DiagonalFrame.constantIso ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj Z)).inv ≫
+    _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedFrame.leftComparison A b = (DiagonalFrame.constantIso ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj Z)).inv ≫
       BisimplicialModel.diagonal.map (rowsComparison A b) := by
   ext n h
   rfl
 
 private lemma rightComparison_eq {X : C} (a : A ⟶ (Functor.const SimplexCategory).obj X)
     (R : SimplexCategoryᵒᵖ ⥤ C) :
-    _root_.SerrePositivity.EInfinity.FrameHom.MixedFrame.rightComparison A a R = (_root_.SerrePositivity.EInfinity.FrameHom.MixedFrame.rightHomIso X R).hom ≫
-      _root_.SerrePositivity.EInfinity.FrameHom.MixedFrame.leftComparison (C := Cᵒᵖ) R.rightOp (Z := op X) (R := A.op) (NatTrans.op a) ≫
-        (_root_.SerrePositivity.EInfinity.FrameHom.MixedFrame.flipIso A R).inv := by
+    _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedFrame.rightComparison A a R = (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedFrame.rightHomIso X R).hom ≫
+      _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedFrame.leftComparison (C := Cᵒᵖ) R.rightOp (Z := op X) (R := A.op) (NatTrans.op a) ≫
+        (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedFrame.flipIso A R).inv := by
   ext n h
   rfl
 
@@ -77,7 +77,7 @@ lemma leftComparison_isIso
     {Z : C} [IsFibrant Z] {R : SimplexCategoryᵒᵖ ⥤ C}
     (b : (Functor.const SimplexCategoryᵒᵖ).obj Z ⟶ R)
     (hR : ∀ n, IsFibrant (R.obj n)) (hb : ∀ n, weakEquivalences C (b.app n)) :
-    IsIso (AnodyneHomotopy.anodyneQ.map (_root_.SerrePositivity.EInfinity.FrameHom.MixedFrame.leftComparison A b)) := by
+    IsIso (AnodyneHomotopy.anodyneQ.map (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedFrame.leftComparison A b)) := by
   have hi : IsIso (AnodyneHomotopy.anodyneQ.map
       (BisimplicialModel.diagonal.map (rowsComparison A b))) := by
     apply BisimplicialModel.localized_diagonal_map
@@ -100,7 +100,7 @@ lemma rightComparison_isIso
     {X : C} [IsCofibrant X] (a : A ⟶ (Functor.const SimplexCategory).obj X)
     (ha : ∀ n, weakEquivalences C (a.app n)) (R : SimplexCategoryᵒᵖ ⥤ C)
     (hR : reedyLeft simplex (cofibrations Cᵒᵖ) (initial.to R.rightOp)) :
-    IsIso (AnodyneHomotopy.anodyneQ.map (_root_.SerrePositivity.EInfinity.FrameHom.MixedFrame.rightComparison A a R)) := by
+    IsIso (AnodyneHomotopy.anodyneQ.map (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedFrame.rightComparison A a R)) := by
   have : IsFibrant (op X) := fibrantOp_of_cofibrant X
   have hv (n : SimplexCategoryᵒᵖ) : IsFibrant (A.op.obj n) := by
     have := cosimplicialFrame_isCofibrant_obj A hA n.unop
@@ -109,7 +109,7 @@ lemma rightComparison_isIso
     change weakEquivalences C (a.app n.unop)
     exact ha n.unop
   have hi : IsIso (AnodyneHomotopy.anodyneQ.map
-      (_root_.SerrePositivity.EInfinity.FrameHom.MixedFrame.leftComparison (C := Cᵒᵖ) R.rightOp (Z := op X) (R := A.op) (NatTrans.op a))) :=
+      (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedFrame.leftComparison (C := Cᵒᵖ) R.rightOp (Z := op X) (R := A.op) (NatTrans.op a))) :=
     leftComparison_isIso (C := Cᵒᵖ) R.rightOp hR (Z := op X) (R := A.op) (NatTrans.op a) hv hw
   rw [rightComparison_eq, Functor.map_comp, Functor.map_comp]
   infer_instance

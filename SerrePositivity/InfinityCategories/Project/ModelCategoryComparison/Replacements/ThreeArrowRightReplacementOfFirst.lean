@@ -15,7 +15,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.RightReplacementOfFirst
-open CategoryTheory Limits HomotopicalAlgebra
+open CategoryTheory Limits _root_.HomotopicalAlgebra
 open _root_.SerrePositivity.SimplicialModel
 variable {C : Type u} [Category.{v} C] [ModelCategory C]
   (cof : MorphismProperty.FunctorialFactorizationData (cofibrations C) (trivialFibrations C))
@@ -214,7 +214,7 @@ include cof in
 lemma inclusion_localized_isIso :
     IsIso (AnodyneHomotopy.anodyneQ.map
       (nerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.WeakThreeArrow.specialInclusion : _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.SpecialHammock X Y ⥤ _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.LeftTrivialThreeArrow X Y))) :=
-  _root_.SerrePositivity.EInfinity.FrameHom.FullyFaithfulNerveRetraction.of_counit _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.WeakThreeArrow.specialInclusion (functor cof) (counit cof)
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FullyFaithfulNerveRetraction.of_counit _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.WeakThreeArrow.specialInclusion (functor cof) (counit cof)
 
 with_weak_namespace _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.WeakThreeArrow.RightReplacementOfFirst.inclusion_localized_isIso export _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.RightReplacementOfFirst (inclusion_localized_isIso)
 
@@ -222,7 +222,7 @@ with_weak_namespace _root_.SerrePositivity.InfinityCategories.Project.ModelCateg
 end SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.RightReplacementOfFirst
 
 namespace SerrePositivity.InfinityCategories.Project.ModelCategoryComparison
-open CategoryTheory HomotopicalAlgebra
+open CategoryTheory _root_.HomotopicalAlgebra
 open _root_.SerrePositivity.SimplicialModel _root_.SerrePositivity.InfinityCategories
 variable {C : Type u} [Category.{v} C] [ModelCategory C]
   (cof : MorphismProperty.FunctorialFactorizationData (cofibrations C) (trivialFibrations C))
@@ -251,7 +251,7 @@ include cof in
 規約：単体集合モデルは不要。使われ方：全源 frame の reduced 比較。 -/
 lemma inclusion_isWeakHomotopyEquivalence_of_first (X Y : C) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (nerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.SpecialThreeArrowComparison.inclusion X Y)) :=
-  _root_.SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _ (inclusion_localized_isIso_of_first cof X Y)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.isWeakHomotopyEquivalence _ (inclusion_localized_isIso_of_first cof X Y)
 
 with_weak_namespace _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.WeakThreeArrow export _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison (inclusion_isWeakHomotopyEquivalence_of_first)
 

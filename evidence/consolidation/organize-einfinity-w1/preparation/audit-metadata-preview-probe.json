@@ -1,0 +1,19 @@
+[
+  {
+    "path": "scripts/audit_einfinity.lean",
+    "change": "native-owned quoted Name literals",
+    "occurrences": 1334
+  },
+  {
+    "path": "scripts/audit_einfinity.lean",
+    "change": "preserve original axiom-audit scope under module map",
+    "original_modules": 3887,
+    "transported_modules": 3887,
+    "unexpected": []
+  },
+  {
+    "path": "scripts/audit_bhatt_scholze_stage2.lean",
+    "change": "native-owned quoted Name literals",
+    "occurrences": 1
+  }
+]

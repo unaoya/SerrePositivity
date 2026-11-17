@@ -1,0 +1,30 @@
+{
+  "command": [
+    "python3",
+    "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-d68/formalization-plans/stage-ii/organize-einfinity-w1/preparation-code/capture_native_packet.py",
+    "--root",
+    "/private/tmp/oe-w1-before-30ae8948f",
+    "--modules",
+    "/private/tmp/oe-w1-reference-candidates/preservation-modules-augmented.json",
+    "--binary",
+    "/private/tmp/oe-w1-fast-owners/owners",
+    "--output",
+    "/private/tmp/oe-w1-before-packet-augmented-serial",
+    "--budget",
+    "1500",
+    "--reader-timeout",
+    "600",
+    "--max-readers",
+    "1"
+  ],
+  "cwd": "/private/tmp/oe-w1-before-30ae8948f",
+  "rc": 0,
+  "reason": null,
+  "seconds": 863.1386703755707,
+  "peak_process_tree_rss_bytes": 7398719488,
+  "peak_lean_or_snapshot_jobs": 1,
+  "threads": "1",
+  "heavy_job_limit": 1,
+  "started_local": "2026-11-17T01:19:58.137522",
+  "finished_local": "2026-11-17T01:34:21.308324"
+}

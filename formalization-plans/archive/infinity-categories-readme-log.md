@@ -911,7 +911,7 @@ N7f の双対は任意項目。新規公開 17 宣言の正確な型と前提は
 したがって錐・シフト・有限直和などの閉性により fiber の所属 hP を得る任意の充満部分圏へ適用できる。
 零複体の所属だけから、`isTerminalVertex_full_zero`・`isInitialVertex_full_zero` が零対象を与える。
 
-Semifree への適用前に、`formalization-plans/infinity-lanes/derived-infinity-category.md` の
+Semifree への適用前に、`formalization-plans/archive/stage-i/infinity-lanes/derived-infinity-category.md` の
 D2h 完了（§5、2026-10-18）と D2h′ 完了の記録を確認した。
 `Derived/SemifreeClosure.lean` の `complexSemifree_zero` と
 `complexSemifree_biprodFiber`（二項直和と fiber の無条件の閉性）を使用する。
@@ -1876,8 +1876,8 @@ A3e に実際の比較射の充満忠実性と既存の本質的全射性を渡�
 
 ## γ3：homotopy 極限・余極限と ∞ 極限・余極限
 
-担当は N。正本は `formalization-plans/infinity-lanes/e-infinity-algebras.md` §3 と
-`formalization-plans/infinity-lanes/foundations.md` §1。γ1.5 の完了後に続けて担当し、
+担当は N。正本は `formalization-plans/archive/stage-i/infinity-lanes/e-infinity-algebras.md` §3 と
+`formalization-plans/archive/stage-i/infinity-lanes/foundations.md` §1。γ1.5 の完了後に続けて担当し、
 𝒮（F2）・Sp（L9）・E2b の三者が共有する比較を作る。
 
 担当と着手順（foundations.md §1 の決定）：γ1.5 の後に N が γ3 を担当する。

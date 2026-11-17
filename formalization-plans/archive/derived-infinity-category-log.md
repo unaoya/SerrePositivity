@@ -1,6 +1,6 @@
 # D(S) の実施記録・公開型一覧
 
-本文と現在地は [derived-infinity-category.md](../infinity-lanes/derived-infinity-category.md)。
+本文と現在地は [derived-infinity-category.md](stage-i/infinity-lanes/derived-infinity-category.md)。
 過去の §6 を移した記録であり、実装の正本は各 Lean モジュールと公理監査。
 
 ## 6. 記録

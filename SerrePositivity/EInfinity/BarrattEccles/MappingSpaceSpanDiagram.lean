@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.MappingSpaceSpans
-public import SerrePositivity.EInfinity.FrameHom.ArrowSpanGrothendieck
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ArrowSpanGrothendieck
 public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.TargetInvariance
-public import SerrePositivity.EInfinity.FrameHom.NerveEquivalenceImage
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveEquivalenceImage
 public import SerrePositivity.EInfinity.BarrattEccles.Fibrancy
 
 /-!
@@ -26,7 +26,7 @@ universe u
 
 namespace SerrePositivity.EInfinity.BarrattEccles
 
-open CategoryTheory HomotopicalAlgebra Opposite
+open CategoryTheory _root_.HomotopicalAlgebra Opposite
 open SerrePositivity.Reedy
 open SerrePositivity.SimplicialModel
 
@@ -47,7 +47,7 @@ abbrev algebraRightSpanBase (Y : (operad A).Algebra) :=
 abbrev algebraSpanRightDiagram (X Y : (operad A).Algebra) :
     algebraRightSpanBase A Y ⥤ Cat.{u, u + 1} :=
   let := modelCategory A
-  FrameHom.ArrowSpan.rightDiagram (trivialFibrations (operad A).Algebra)
+  _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ArrowSpan.rightDiagram (trivialFibrations (operad A).Algebra)
     (trivialCofibrations (operad A).Algebra) X Y
 
 /-- 概要：右変数の全図式から元の三本矢への回収（Low 命題 3.7）。
@@ -57,7 +57,7 @@ abbrev algebraSpanRightDiagram (X Y : (operad A).Algebra) :
 def algebraSpanFromGrothendieck (X Y : (operad A).Algebra) :
     Grothendieck (algebraSpanRightDiagram A X Y) ⥤ algebraSpecialHammock A X Y := by
   let := modelCategory A
-  exact FrameHom.ArrowSpan.fromGrothendieck _ _ X Y
+  exact _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ArrowSpan.fromGrothendieck _ _ X Y
 
 /-- 概要：元の三本矢の全図式の実際の圏同値（Low 命題 3.7）。
 方針：同じ両脚の slice の明示的な順逆の一般の表示を代入する。
@@ -66,7 +66,7 @@ def algebraSpanFromGrothendieck (X Y : (operad A).Algebra) :
 def algebraSpanGrothendieckEquivalence (X Y : (operad A).Algebra) :
     Grothendieck (algebraSpanRightDiagram A X Y) ≌ algebraSpecialHammock A X Y := by
   let := modelCategory A
-  exact FrameHom.ArrowSpan.grothendieckEquivalence _ _ X Y
+  exact _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ArrowSpan.grothendieckEquivalence _ _ X Y
 
 /-- 概要：同じ Map^h の全単体の比較を右脚の全図式へ送る（Low 命題 3.7）。
 方針：元の比較関手の後に同じ元の三射の表示関手を置く。
@@ -77,7 +77,7 @@ def mappingSpaceSpanGrothendieckFunctor (X Y : (operad A).Algebra) :
       Grothendieck (algebraSpanRightDiagram A X Y) := by
   let := modelCategory A
   exact mappingSpaceSpecialHammockFunctor A X Y ⋙
-    FrameHom.ArrowSpan.toGrothendieck _ _ X Y
+    _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ArrowSpan.toGrothendieck _ _ X Y
 
 /-- 概要：全図式を回収すると元の Map^h の同じ比較関手（Low 命題 3.7）。
 方針：同じ元の三射の表示の厳密な逆則を使う。
@@ -88,9 +88,9 @@ lemma mappingSpaceSpanGrothendieckFunctor_fac (X Y : (operad A).Algebra) :
       mappingSpaceSpecialHammockFunctor A X Y := by
   let := modelCategory A
   change (mappingSpaceSpecialHammockFunctor A X Y ⋙
-    FrameHom.ArrowSpan.toGrothendieck _ _ X Y) ⋙
-      FrameHom.ArrowSpan.fromGrothendieck _ _ X Y = _
-  rw [CategoryTheory.Functor.assoc, FrameHom.ArrowSpan.toGrothendieck_fromGrothendieck,
+    _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ArrowSpan.toGrothendieck _ _ X Y) ⋙
+      _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ArrowSpan.fromGrothendieck _ _ X Y = _
+  rw [CategoryTheory.Functor.assoc, _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ArrowSpan.toGrothendieck_fromGrothendieck,
     CategoryTheory.Functor.comp_id]
 
 /-- 概要：右脚の全図式上の元の分解の Hom（Low 命題 3.7）。
@@ -164,7 +164,7 @@ lemma mappingSpaceSpanGrothendieckNerveMap_fac (X Y : (operad A).Algebra) :
 使われ方：元の右射の反転性を全図式への中間射へ帰着する。 -/
 lemma algebraSpanFromGrothendieckNerveMap_localized_isIso (X Y : (operad A).Algebra) :
     IsIso (AnodyneHomotopy.anodyneQ.map (algebraSpanFromGrothendieckNerveMap A X Y)) :=
-  inferInstanceAs (IsIso (FrameHom.NerveEquivalenceImage.imageIso
+  inferInstanceAs (IsIso (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveEquivalenceImage.imageIso
     (algebraSpanGrothendieckEquivalence A X Y) AnodyneHomotopy.anodyneQ
     (Localization.inverts _ SSet.anodyneExtensions)).hom)
 

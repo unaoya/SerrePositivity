@@ -2,7 +2,7 @@ module
 public import SerrePositivity.EInfinity.BarrattEccles.FreeProbeCAlgSource
 public import SerrePositivity.EInfinity.BarrattEccles.CAlgVertexPresentation
 public import SerrePositivity.EInfinity.BarrattEccles.FreeProbeRelativeElementColumn
-public import SerrePositivity.EInfinity.SimplicialLocalization.WeakNerveInverts
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.WeakNerveInverts
 /-!
 概要：元の自由 probe の選択済み CAlg_R 頂点と同じ cofibrant 局所化源を比較する。
 方針：元の cofibrant 置換 augmentation の頂点同型と既存の全源頂点比較を使う。
@@ -41,7 +41,7 @@ def freeProbeRelativeFullSourceIso :
   let f := (cofibrantDKComparison A).app (freeProbeRelativeElementSource A X)
   have : IsIso (Truncated.HomotopyCategory.homMk
       ((nerve.edgeMk f).map (cAlgLocalizationSource A)).toTruncated) :=
-    SimplicialLocalization.weakNerveEdges_inverts_arrows C _
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges_inverts_arrows C _
       (cAlgLocalizationSource_inverts A) f
       (cofibrantDKComparison_weak A (freeProbeRelativeElementSource A X))
   exact eqToIso (congrArg HomotopyCategory.mk

@@ -1,7 +1,7 @@
 # Codex 作業指示書 IF-W0-1：verify.sh を合否の関門にする（R41）
 
 作成：2026-10-28（∞ 基盤の整備、管理は Claude）。宛先：Codex。
-計画：[infinity-foundation-plan.md](../infinity-foundation-plan.md) の段 0・R41。この指示書の §0 は、以後の IF-Wn 指示書に共通する前提とする。
+計画：[infinity-foundation-plan.md](stage-i/infinity-foundation-plan.md) の段 0・R41。この指示書の §0 は、以後の IF-Wn 指示書に共通する前提とする。
 
 ## 0. 共通の前提（IF-Wn 共通）
 

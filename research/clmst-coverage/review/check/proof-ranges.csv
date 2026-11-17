@@ -1,0 +1,9 @@
+number,pdf_pages,layout_start,layout_end,role
+6.0.1,61,3437,3444,statement and comparison references
+6.0.1,67-69,3828,3940,postposed proof in section 6.2
+7.0.2,73,4168,4173,statement
+7.0.2,73-74,4179,4216,proof after Remark 7.0.3
+4.1.1,39,2150,2161,statement and proof division
+4.1.1,40,2195,2238,part (a) iff (b) iff (c) proved as Proposition 4.1.3
+4.1.1,41-42,2239,2334,part (a) iff (d) proved as Proposition 4.1.4
+4.1.1,42,2335,2357,part (a) iff (e) proved as Corollary 4.1.5

@@ -18,14 +18,14 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open CategoryTheory Limits SSet SimplicialLocalization
+open CategoryTheory Limits SSet _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.InfinityCategories
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X : CofibrantAlgebra A)
 
 lemma cofibrantSourceFrameRawRoofMap_isLeftCofinal (Y : CofibrantAlgebra A) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsLeftCofinal (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.rawRoofFunctorMap
-      (hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
       (nerveMap (cofibrantDKSourceFrame A X))
       (SSet.yonedaEquiv.symm
         (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (show (cofibrantAlgebraRelativeCategory A).category from Y)))) :=
@@ -38,19 +38,19 @@ lemma cofibrantSourceFrameRightKanMap_isLeftCofinal :
   · intro c
     apply (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.relativeRoofComparison_isLeftCofinal_iff_raw _ _ _ _).mpr
     change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsLeftCofinal (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.rawRoofFunctorMap
-      (hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
       (cofibrantSourceFrameRightKanMap A X ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.rightKanProjection
-        (hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
         (cofibrantHammockVertex A X))
       (SSet.yonedaEquiv.symm c ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.rightKanProjection
-        (hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
         (cofibrantHammockVertex A X)))
     rw [cofibrantSourceFrameRightKanMap_projection]
     let Y : CofibrantAlgebra A := ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.rightKanProjection
-      (hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
       (cofibrantHammockVertex A X)).app (Opposite.op ⦋0⦌) c).obj 0
     have hp : SSet.yonedaEquiv.symm c ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.rightKanProjection
-        (hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
         (cofibrantHammockVertex A X) = SSet.yonedaEquiv.symm
           (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (show (cofibrantAlgebraRelativeCategory A).category from Y)) := by
       apply SSet.yonedaEquiv.injective

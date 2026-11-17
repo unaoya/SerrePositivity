@@ -18,7 +18,7 @@ universe u
 namespace SerrePositivity.EInfinity.PowerOperation
 open CategoryTheory
 open SerrePositivity.DifferentialGraded
-open SerrePositivity.EInfinity.SimplicialLocalization
+open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization
 variable (p : ℕ) [NeZero p] (k : Type u) [CommRing k]
 
