@@ -3437,3 +3437,14 @@ D09・D04の監査成功を条件に既存見込みへ実測105行を代入し�
 - I06 `SerrePositivity.AlgebraicGeometry.closedCenterImage_lt`：非空な閉部分の中心外が稠密なら、その中心像は元の閉像より真に小さい。
 - I07 `SerrePositivity.AlgebraicGeometry.NoetherClosedPerfectCechProperty`：同じ閉像を持つ全ての閉埋め込み上の固有全射の普遍Čech降下性。
 - I08 `SerrePositivity.AlgebraicGeometry.noetherClosedPerfectCechProperty_empty`：空の閉像では終域が空のため同型に帰着し、同じ普遍Čech降下性を持つ。
+
+## 2026-11-17：普遍降下への切断・中心・帰納仮定の接続（0f2688977）
+
+- D05・I09・I03を同じ型・仮定で実装。新規3モジュール147行＋入口6行＝153行、所有3宣言。原稿・本体の同一バイトとSHA、対象ビルド5,398ジョブと直接importer、別の共有鍵での所有監査を確認。標準三公理以外0。
+- I03は元の中心への射を同じ商環表示から因子化し、三つの反復pullbackの標準同型とN06によって各試験基底・被覆へ戻す。中心の厚みも元の係数も保持する。I09は閉部分のNoether性を既存の `LocallyOfFiniteType.isLocallyNoetherian` で明示して適用した。
+- 累計22,275行（新規299モジュール21,911行、既存追加25行、入口339行）。所有宣言累計2,420件、既存15件は別。残り15署名。現下書きの上振れと登録予備にも係数2を確保した完成見込み23,951〜25,739行。28,000行以内。
+- 一覧：済み1／全体3（うち追加0）。内部署名：済み74／89（G4・G5）、追加0。I02は原稿検証済み、対象ビルドとI04の原稿検証へ進めた。正次数の軸・相対fppf消去・Noether帰納の本体・最後の模型移送は未完成。mainは取り込んでいない。
+
+- D05 `SerrePositivity.AlgebraicGeometry.perfectCechUniversalDescent_of_section`：元の切断を各アフィン試験基底へpullbackし、同じ全ての有限アフィン被覆で普遍Čech降下性を得る。
+- I09 `SerrePositivity.AlgebraicGeometry.noetherClosed_center_input`：真に小さい同じ中心の閉像へ帰納仮定を適用し、中心上の元のブローアップの降下性を供給する。
+- I03 `SerrePositivity.AlgebraicGeometry.blowupBaseChange_center_universalDescent`：元の中心上の普遍降下性を、同じアフィン試験基底の商環表示の中心へ移す。
