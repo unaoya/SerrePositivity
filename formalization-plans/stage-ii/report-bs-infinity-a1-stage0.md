@@ -6812,3 +6812,44 @@ siteLiftSectionsCone_isLimit_iff [Quasicategory E] (P : Cᵒᵖ ⥤ Type u) (O :
 残る17項目では1・2・10・11まで検証済み。S1・S8は未完。
 mainは取り込まず、S7・R2・R3も再開していない。
 一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+
+### 残り第7項：同じ相対 Čech 対角の全族（11-17）
+
+WeightedSectionsRelativeCechDiagonal.lean、123行を追加した。第7項は元の型のまま検証済み。
+元の relativeCechDiagonal f を kanDiscretePresheafFunctor で写した同じ自然変換を、
+strictCoherentNatTransMap で一度だけ実現する。定値始域を等式で正規化し、同じ円柱を
+homotopyOpposite で反対化、元の weightedSections O hE を後合成する。
+点ごとの射を集めず、既存の choose や既存宣言の本文は変えていない。
+
+第7項の証明の分割・既存構成の計算法則（一覧の追加項目ではない）：
+
+```lean
+relativeCechDiagonal_cocone (f : P ⟶ Q) :
+  relativeCechDiagonal f ≫ (relativeCechCocone f).ι =
+    (Functor.const (AsSmall.{u} SimplexCategoryᵒᵖ)).map f
+
+discreteStrictConstantDiagram_eq {I : Type u} [SmallCategory I]
+  (A : KanDiagramObject Cᵒᵖ) :
+  strictCoherentDiagram ((Functor.const I).obj A) = SSet.const (coherentNerveVertex A)
+
+discreteRelativeCechDiagonalHomotopy (f : P ⟶ Q) :
+  SSet.Homotopy (SSet.const (functorVertex (discretePresheaf P)))
+    (strictCoherentDiagram (relativeCechDiagram f ⋙ kanDiscretePresheafFunctor C) ≫
+      kanDiagramRealization Cᵒᵖ)
+
+discreteRelativeCechDiagonalHomotopy_component (f : P ⟶ Q)
+  (j : AsSmall.{u} SimplexCategoryᵒᵖ) :
+  (simplicialHomotopyVertexEdge (discreteRelativeCechDiagonalHomotopy f)
+    (ULift.up (ComposableArrows.mk₀ j))).edge =
+    (((nerve.edgeMk ((relativeCechDiagonal f).app j)).map (kanDiscretePresheafMap C)).edge)
+```
+
+指定成分と元の増大射の三角形を保持した。主構成に HTT 6.2.2.6 の属性を
+partial := special と理由つきで付与。Kerodon §2.4.3 / Tag 00KM はこの特殊な実現の
+docstring のみに記載。第8項の可逆性は、第6項の指定離散値比較の自然性との接続後に証明する。
+対象ビルド exit 0、小監査は生成宣言を含む12宣言、標準三公理のみ、exit 0。
+証拠：/tmp/is-w1/s8-cech-diagonal/production/{verify-3.log,target-audit-result.json}。
+検証済み累計22,400行、新規348モジュール＋承認された既存3ファイルの差分。
+残り17項目のうち1・2・7・10・11が検証済み。mainは取り込んでいない。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
