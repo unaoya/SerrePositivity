@@ -75,3 +75,33 @@
 75個の一意なキー、26見出し、式47件の連番、全75件のreview、対応宣言の現在の位置・本文指紋、各状態とsorryの整合、辺の両端と略号・根拠位置、旧62行すべての引継ぎ先を検査した。PDFのp.10・18・21・29を描画して、(3.1)/(3.2)のスペクトル対K0、(4.2)/(4.3)、式(4.6)対Lemma4.6、最終(5.17)/(5.18)の表示番号を目視確認した。
 
 この新しい対応表の紙資料だけをコミットして停止する。既存の対応表・論文PDF・Leanコードの変更と、Lean実行・ビルドは行っていない。
+
+## 引用した結果の表（CC-W2、2026-11-17）
+
+`external.csv` は `edges.csv` の external **78辺の先の全47種類**を、`source,number,statement_ja,status,declarations,reason` の6列で収録する。`source` と空白区切りの `number` を再結合すると辺先に完全一致する。番号なしの文献引用は number を空欄に保ち、存在しない定理番号を追加しない。文献全体への引用の statement_ja は、本論文が使用する結果の要約であり、文献全体の形式化完了を意味しない。
+
+状態・宣言の二重管理を避けるため、**25行は status・declarations を空欄**にして、reason に正本のファイルと行キーを記す。空欄は none ではない。
+
+- CLMST 7行：`research/clmst-coverage/review/ch<N>.csv` の同じ番号から状態と宣言を読む。2.2.6(a) は親キー 2.2.6 の (a) の確認範囲を読む。親項目全体の colimit の不足を (a) の加法性の不足と混同しない。
+- BS19 1行：`research/bs-coverage/items.csv` の number=8.5。正本の状態語・note も含めて読む。本論文の arXiv v4 と正本の著者版の範囲・版の対応を確認し、番号だけで版を同一視しない。古い宣言パスを external.csv に転記しない。
+- K の文献17行：LT は `research/k-coverage/maps/land-tamme/items.csv`、BGT は `.../bgt/items.csv`、TT と Drinfeld は `.../others.csv`。TT のまとめ行なども実在する正本の行キーで参照する。既存表の状態をこの表で上書き・再判定しない。
+
+残る **単発文献22行**は、使用主張と本体・Mathlib の現行宣言の型を静的に照合した。内訳は **own 4、mathlib 2、partial 10、none 6**（both/interface は0）。特殊な環・加群・複体だけの対応は partial とし、一般形との差を reason に書いた。none 全6行の検索語・範囲・ヒットと採用しない理由は git 外の `none-search.json` にある。
+
+主な注意点：
+
+- Ma17 の辺先「2.2」は、本論文 p.5 の Lemma 2.2 と p.8 の Section 2.2 の両方で使われる。同じ辺先キーの一行で両者を明記し、補題全体の Lech 型帰着を剰余体拡大だけで own にしない。
+- BGT の辺先「9.3」は §9.3 の引用であり、既存表の式 `(9.3)` とは異なる。reason は `number=§9.3` と `§9.3 localization` を指定する。LT「Appendix B」は `number=§B`。Drinfeld 3.1 は `number=§3.1` の構成を指定する。
+- KuranoShimomoto の番号なしの辺と 1.1 の辺はそれぞれ一行を保つ。原典の非整域も含む Cohen–Gabber 定理に対し、本体の整域版は partial。
+- Ma17 2.4／Roberts89 の一般有限自由複体の Frobenius ホモロジー消滅に対し、本体の証明済み入口は完全剰余体のパラメータ Koszul 複体の特殊例。一般消滅を hRoberts として受け取る補助を、一般定理の証明とはしない。
+- Stacks 03QH は有限代数の積分解等と Hensel 性の同値。完備 Noether 局所環上の有限整域の局所性という本体の使用時の系に対応範囲を狭めたため partial。0BRI・0BRJ は Mathlib に一般の有限群作用の推移性・剰余分数体の正規性・分解群写像の全射性を確認した。
+- Stacks 0815 は任意の qcqs 基底と有限型準連接加群の平坦化。本体の Noether 基底、有限加群や構造層の入口だけから一般形全体を own にしない。
+- Balmer–Schlichting 1.10・1.12 は、それぞれ実際の Retract による完全三角形の定義と Karoubi 完備化の三角構造を照合した。Skalit の4項目と Jannsen の一般正則ブローアップの主張、Goodwillie の相対比較は同じ主張の宣言を確認できず none。
+
+主張の確認には、本論文の各引用箇所に加え、[Skalit v2](https://arxiv.org/pdf/1409.3616v2)、[Ma v3](https://arxiv.org/pdf/1609.00095v3)、[Kurano–Shimomoto v2](https://arxiv.org/pdf/1510.03573v2)、[Faltings Appendix 2](https://numdam.org/item/AST_2002__279__185_0.pdf)、[Balmer–Schlichting](https://webhomes.maths.ed.ac.uk/~v1ranick/papers/balmschl.pdf)、[Goodwillie](https://www.sas.rochester.edu/mth/sites/doug-ravenel/otherpapers/goodwillie-cyclic.pdf)、[Jannsen の付録](https://annals.math.princeton.edu/wp-content/uploads/annals-v172-n3-p03-p.pdf)、[Stacks の各 Tag](https://stacks.math.columbia.edu/tag/0815) を読み取り参照した。原典URLと確認位置は各行の reason に記す。
+
+Roberts89 は原著章の本文を今回採取できず、Ma17 Theorem 2.4 の再掲で主張を確認した。Roberts85 は AMS PDF が403、Gillet–Soulé は出版社の購読画面まで、Monsky は原著の表紙・導入まで、Serre は書誌の確認にとどまる。これらは本論文の使用主張（Roberts89／Monsky は Ma17 の再掲も）と現行ソースを照合した判定であり、未取得の原著全体を精読したという記録ではない。
+
+採用宣言17個の現行位置・型・周辺の変数条件・本文・指紋を保存した。本文の直接 sorry は検出していないが、全依存の kernel 検査や Lean 実行を行った結果ではない。検索は本体・Archive と、lake-manifest と revision が一致する隣の Mathlib ソースを読み取り対象にした。Archive の宣言は実装の正本として採用していない。
+
+証拠は `~/serre-evidence/cited/clmst/cc-w2/`、目録は `evidence/cited/clmst/cc-w2/manifest.json`。CC-W1 の証拠・目録は変更しない。既存の items・edges・review と BS/K/CLMST の正本も変更していない。生成器のノード追加は調整役の次の作業であり、この段では紙資料のコミットで停止する。

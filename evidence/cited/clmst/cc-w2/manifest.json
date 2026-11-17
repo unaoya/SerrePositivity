@@ -1,0 +1,94 @@
+{
+ "directory": "/Users/sugakubunka/serre-evidence/cited/clmst/cc-w2",
+ "commit": "63622412df745e41206647c4e57778b7060a840d",
+ "made_by": "CC-W2: build-external.py; audit-external.py; primary source and current declaration/type inspection; no Lean execution",
+ "note": "78 external edges; 47 targets; 25 delegated rows; 22 single-reference reviews; 17 selected declarations; original access limitations recorded",
+ "files": [
+  {
+   "path": "audit-external.py",
+   "sha256": "ca357af6905397a128d80919ab47704261d7b49b1b26ff5f9d32baf9a8d47404",
+   "bytes": 3863
+  },
+  {
+   "path": "build-external.py",
+   "sha256": "584c53c4ea58c8aaee7a0f743bca21eac771fac6141a1fd27b4befb309f5cb6e",
+   "bytes": 25061
+  },
+  {
+   "path": "declarations.json",
+   "sha256": "bcf5c6a3835fad6dd03962e7927dda6d45eacd8e72ca4d1840ab350f677f50c0",
+   "bytes": 126323
+  },
+  {
+   "path": "delegations.json",
+   "sha256": "a908905eada956b03674a87092052505ca3a33f1f690eabfece564a0f1a37fb8",
+   "bytes": 5930
+  },
+  {
+   "path": "deliverable-hashes.json",
+   "sha256": "933d7c8cf98eb2ae89a1855ddf6ff7a00e10d646f9b9ef8bd478ec3bc17fed2f",
+   "bytes": 431
+  },
+  {
+   "path": "edge-targets.json",
+   "sha256": "2658ba92ddea9c0096e2d7171cd1e2dd0e3acce5f02b0912d9ba377ed932c393",
+   "bytes": 13251
+  },
+  {
+   "path": "input-hashes.json",
+   "sha256": "f2c4e14cb70a8ca4adfc18a5f2639ecc4cc9694f3c24fc0d8fe9149b0f3e6bf6",
+   "bytes": 1227
+  },
+  {
+   "path": "none-search.json",
+   "sha256": "1cf432ae41441d9e66f3d98fcf260c99f2d6e967a5eb97b877f8d0a9f4e4337d",
+   "bytes": 27116
+  },
+  {
+   "path": "single-sources.json",
+   "sha256": "3ff5fcb7da7fadbd7ed3d82c469de5fa2818cc0f7fdd793982d15d6d6df3276c",
+   "bytes": 8127
+  },
+  {
+   "path": "summary.json",
+   "sha256": "092e57639acadae132386d0d8b61a05ad25eaa9b87b0a78ff2f9e866a69bcc7b",
+   "bytes": 211
+  },
+  {
+   "path": "validation.json",
+   "sha256": "ab60d617a3eaa9131a5cbcc10add642734c287059949086867498d473eae492a",
+   "bytes": 574
+  },
+  {
+   "path": "web-batch-1.json",
+   "sha256": "e6477b6aa0d3f1709b209bd7cb05266461437daf61d90e387e2cbd1c0450f7ac",
+   "bytes": 23017
+  },
+  {
+   "path": "web-batch-2.json",
+   "sha256": "2ee3debcd36c9a00c22f68ba134fd025ddadf417ea77dd834cf203f10927f1ad",
+   "bytes": 14558
+  },
+  {
+   "path": "web-batch-3.json",
+   "sha256": "4b42d7bd933b406637dc6f580f0eaacb7dad0e0900b86b8769d6f4debe4ca9a2",
+   "bytes": 12384
+  },
+  {
+   "path": "web-batch-4.json",
+   "sha256": "5b5a5e9e675c61a5cb0081466b4c408ede87c842b8752df1b9b04a893a16f75b",
+   "bytes": 12322
+  },
+  {
+   "path": "web-batch-5.json",
+   "sha256": "1110a51c1db8a4f4cbc39c62f82141302374d7823e256b5c59f9b6307803e3c8",
+   "bytes": 12079
+  },
+  {
+   "path": "web-batch-6.json",
+   "sha256": "5fa00bf2e4fcf6fa9b021415ce577c65d8f2e3744bda20563a9e2d46ee0b801c",
+   "bytes": 10913
+  }
+ ],
+ "total_bytes": 297387
+}
