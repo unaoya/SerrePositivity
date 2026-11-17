@@ -1,6 +1,6 @@
-# OE-W1 の改名への追従資料（通常verifyのみ未完）
+# OE-W1 の改名への追従資料（段1検収済み）
 
-段1の適用、対象1,661本、v3b全1,071本・未説明0、引用／タグ63件・欠落／余分0、rootと正式監査の全依存先ビルドは成功。正式106監査は成功済み。通常verifyはメモリガードで未完のため、まだ最終の取り込み用の表ではない。完成後の報告コミットで検証済みの版を指定する。主張・証明の変更や、D81で止めた経路の再開を含めない。
+段1は完了。対象1,661本、v3b全1,071本・未説明0、引用／タグ63件・欠落／余分0、root、全audit-targets、正式106監査は成功。同じHEAD `76dfccc3a` の通常verifyで106監査すべて成功し、別実行のsorry閉包も終了0・PASSとなったため、11-17の調整役指定の合成判定で **verify PASS** とする。機械のgateは時間枠で止まったnon-gateのまま残す。主張・証明の変更やD81で止めた経路の再開を含めない。数学ソースは `6678d6a9a`、証拠保存は `10338c2be`、停止点報告は枝先。
 
 ## 表と所有元
 
@@ -9,7 +9,7 @@
 - `../stage1-modules.csv`：588本の元ソースSHA、元／先のファイルとnamespace、根拠、原行数。
 - `../preparation/native-owners-before.json.gz`：原環境の588本・4,160宣言の実所有元。private 157を含む。
 - `../preparation/native-owner-destinations-proposed.json.gz`：上の全宣言の移送先候補。これは初期の候補表であり、実測を置き換えない。移送後raw kernel名も取得済みで、実際の対応は下の `public-owner-map.csv` と `actual-owner-pairs.json.gz` を用いる。
-- `../branch-impact.json`：他のレーンのHEADと、dirty／untracked Leanを読取専用で照合した文字列影響。draftsも含む。現在の11枝の候補は計2本だが、後から足した差分や短名の全束縛を検証済みという意味ではない。
+- `../branch-impact.json`：他のレーンのHEADと、dirty／untracked Leanを読取専用で照合した文字列影響。draftsも含む。最終の現存四枝の候補は枝・pathの組で8件（異なるpathは6本）だが、後から足した差分や短名の全束縛を検証済みという意味ではない。
 
 モジュール名と宣言のnamespaceは同じとは限らない。特にAnodyne二本は、一般のFrameHomからKerodonの3.1と4.6へ別々に置く。namespace名からimport元を推測せず、最終のnative所有元表を用いる。今回、同じ型の別名wrapperを削除する操作はない。
 
@@ -43,7 +43,7 @@ collectは元のソースがビルド済みの原環境で行う。昼は3〜5�
 
 `../preparation/compiler-child-parent-review.json`には、直接のソース宣言を持たない179件の生成された等式・合同補題を記録した。ファイルのnamespaceとは別に改名される親へ追従するものが2件ある。移送後の実providerと分割読取りの文脈差は `native-provider-context-review.json` と全captureで照合した。ソースを持たない補題をsource-owned APIのimport登録へ自動転用しない。
 
-## Mathlib の HomotopicalAlgebra の open（11-17 追記、検証中）
+## Mathlib の HomotopicalAlgebra の open（11-17 追記、検証済み）
 
 この整理で `SerrePositivity.HomotopicalAlgebra` が新しく可視になる import 文脈がある。元のコンパイラの記録で `open HomotopicalAlgebra` が Mathlib の global な名前空間一つへ解決していたときは、`open _root_.HomotopicalAlgebra` と明示して元の解決を保存する。project 側へ解決していた open を Mathlib 側へ変えない。既に `_root_.` があるものも変更しない。元の定数参照における同じ global prefix の明記も、元の解決情報で認証した位置だけを絶対名にする。
 
@@ -53,8 +53,12 @@ plain な共有書換器は、宣言のnamespaceを変えない呼び出し側�
 
 `public-owner-map.csv` は比較範囲1,071モジュールの公開10,244宣言について、前後で実際に観測した完全名とimport所有元を対応させたもの。生成補題も、この1,071本を同時に読んだ環境での実providerのまま載せる。ソースを持たない生成補題のproviderはimportの組合せで変わることがあるため、その行を新しいソースAPIのimport登録の根拠にはせず、親宣言の定義元も確認する。ソース宣言だけの候補表やファイルのnamespaceから所有元を推測した表ではない。private 232件を含む全10,476件の対応は `../preparation/actual-owner-pairs.json.gz`、前後の実データは `native-owners-before-augmented.json.gz` と `native-owners-after.json.gz` にある。欠落0・余分0であるが、型・証明項の保存結果は別のv3bで判定する。
 
-引用metadataの七欄と重複度は、元61件＋計画したpartial二件＝63件に完全一致。結果は `../preparation/citation-comparison.json`。現時点で通常verifyは未完なので、この資料の完成・取り込みの宣言はまだ行わない。
+引用metadataの七欄と重複度は、元61件＋計画したpartial二件＝63件に完全一致。結果は `../preparation/citation-comparison-final-rules.json`。verifyの最終判定は `../preparation/composite-verification.json` と報告§18を参照する。
 
-## 現在の検収状態（11-17）
+## 検収結果（11-17）
 
-数学ソースの移動・参照は `6678d6a9a`。対象1,661本、v3b全1,071本・未説明0、引用63件・欠落／余分0、root、全audit-targets、正式106監査は成功済み。最後の通常verifyだけが未完。並列実行が32GBのメモリ停止ガードに達したため、予約を20GBに下げて最大監査を単独実行させる準備をしている。全検査をキャッシュなしで実行する方針と実メモリ上限32GBは維持する。45分の例外では105／106監査の時点で時間枠に達した。現在はユーザーが承認した次の一回60分の枠で、全検査をキャッシュなしで再実行する準備を終えている。段1の完成／main取り込み用の最終検収としてはまだ扱わない。
+数学ソースの移動・参照は `6678d6a9a`。同一HEAD `76dfccc3a` の全106監査成功とsorry閉包単独PASSを、調整役の明示指示により合成して **verify PASS** とする。機械のgateはnon-gateのままで、summaryやrunnerを生成・書換えしていない。
+
+二つのログは `../preparation/normal-60min-controller.log.gz` と `../preparation/sorry-alone-success.log.gz`。106監査の実行・入力の対応、sorryの終了0、合成判定は `normal-106-audits-success-evidence.json.gz`、`sorry-alone-success.json`、`composite-verification.json` に保存した。所在と外部原資料は `../evidence/README.md` を参照する。今回だけ証拠本体の枝への保存が承認され、次回以降はgit外の証拠への目録のみを残す。
+
+最後の文字列照合はmath/inf-supply 2、math/scheme 1、fix/audit-reimport 4、research/cited-coverage 1の計8件（異なるpathは6本）。削除・改名された旧枝は `branch-impact.json` に明示した。他のレーンは編集していない。mainの取り込みと今夜のroot・全監査は調整役が行う。段2は分類表だけで未適用。`/private/tmp/oe-w1-*` は削除しない。

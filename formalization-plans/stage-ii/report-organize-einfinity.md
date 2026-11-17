@@ -1,5 +1,15 @@
 # 整理 OE-W1 報告
 
+## 現在地
+
+- **段・停止点**：OE-W1 段1完了、段1の停止点。調整役の11-17の判定で verify PASS。
+- **最新コミット**：この節を含む枝先の停止点報告コミット（`git rev-parse HEAD`）。直前の証拠保存は `10338c2be`、同一HEADの検証対象は `76dfccc3a`、数学ソースの移動は `6678d6a9a`。
+- **残り**：段1の作業はなし。取り込みと今夜のroot・全監査は調整役が行う。段2は分類表だけで未適用、次の判断待ち。
+- **判定の区別**：同じHEADの106監査成功とsorry閉包単独PASSを合わせた、調整役指定の合成 verify PASS。時間枠で止まった機械のgateはnon-gateのまま。機械のsummary／gateは作成・書換えしていない。
+- **保持**：mainは取り込んでいない。`/private/tmp/oe-w1-*` は一切消していない。取り込み後に調整役が確認して削除する。
+
+一覧：済み 5／全体 5（うち追加 0）。
+
 ## 0 段0：範囲・配置・分類・目録案（2026-11-16）
 
 基準main：**30ae8948f339beec42d9340feb02f2031c22c72b**（49967c102を祖先に含む）。このmainから、旧worktree SerrePositivity-bs-d68で枝 **refactor/organize-einfinity** を作成した。IS-W2の枝math/inf-supply-bと検証済みの履歴は保持している。指示書organize-einfinity-general.md §0〜§4と、KL-W1の配置・名前空間の規則、B3/B3′の保存比較・追従資料、⑤dのresearch/g12-monad-route/README.mdを読んだ。主張・証明の変更、宣言削除、drafts、⑤aの界面の型、BSの数学の実装には入らない。
@@ -592,3 +602,66 @@ F1の単独実測は21GB以上あるため、予約枠を20GBへ下げると既�
 短い公理監査はまだ整理券の取得前で、先行するmainのrootと実装レーンの順番を待っていた。ユーザーが次の一回60分を承認したため、未取得の自分の短い確認の整理券だけをSIGTERMで取り消し、公理監査とsorry閉包を含む通常verify一回へ待ちをまとめる。他レーンの鍵・プロセスへは触れていない。個別の短い確認を実行したとは数えない。
 
 次の通常verifyは60分以内のガード、予約20GB／実停止32GB、並列上限4・各Lean 1 thread、結果キャッシュ無効、全106監査・root・全audit-targets・sorry閉包を維持して実行する。数学ソースは6678d6a9aから不変。ユーザーが承認したこの一回に例外を限定し、最終のPASSを確認するまで段1完了とはしない。
+
+## 18 段1の完了報告・停止点（2026-11-17）
+
+### 18.1 判定と二つの実行ログ
+
+同じHEAD **76dfccc3a93007b6bf54523b528913e87e69effa** で、通常verify中の全106監査成功と、別実行のsorry閉包PASS（10:42）が揃った。11-17の調整役の明示判定（coordination.md §2の4d）に従い、OE-W1段1の **verifyをPASS** とする。機械の通し実行はsorry閉包中の59分ガードでrc −15となったため、**machine gateはnon-gate**。これを機械的な通しPASSへ書き換えない。
+
+| 同一HEADの実行 | 結果 | 枝に保存したログ・証拠 |
+|---|---|---|
+| 通常verify：root・全audit-targets・全106監査 | rootと依存先は終了0、106／106成功。sorry閉包中に時間枠で停止 | `organize-einfinity-w1/preparation/normal-60min-controller.log.gz`、`normal-60min-resource.json`、`normal-106-audits-success-evidence.json.gz`、`normal-106-audits-success-records.tar.gz` |
+| 指定コマンドによるsorry閉包単独確認 | 終了0、PASS。102,479定数を訪問し許可3件と一致、禁止宣言は閉包にない | `organize-einfinity-w1/preparation/sorry-alone-success.log.gz`、`sorry-alone-success.json` |
+| 調整役指定の合成判定 | **PASS**、機械のnon-gateは保持 | `organize-einfinity-w1/preparation/composite-verification.json` |
+
+通常実行の最大RSSは22,934,683,648 bytes、全体3,554.02秒。監査再実行はcache無効・除外なし、並列上限4・予約20GB・実停止32GB。106監査について、現在の入力キー、終了0の成功記録、実行ログのSHAと時刻を全て照合した。抽出補助は `preparation-code/extract_composite_audits.py`。単独閉包は指定の `--class impl --wait 3600 -- gtimeout --kill-after=3s 1200s lake env lean scripts/refactor/audit_sorries.lean` を実行し、前後のHEADが一致した。
+
+### 18.2 段1の結果
+
+| ID | 完成した束 | 本数 | 結果 |
+|---|---|---:|---|
+| OE01 | 既にEInfinity外の一般部品 | 132 | 現位置を保持し、対象ビルド・保存比較・引用・監査を確認 |
+| OE02 | HomotopyWeight | 61 | HomotopicalAlgebra/Diagram/HomotopyWeightへ移動 |
+| OE03 | FrameHom | 144 | 142本をHomotopicalAlgebra/HomotopyFunctionComplex/FrameHom、二本をKerodonの該当節へ移動 |
+| OE04 | SimplicialLocalization | 152 | InfinityCategories/HA/ModelCategoryComparison/SimplicialLocalizationへ移動 |
+| OE05 | D81で停止したBEのIS-W2 Tot経路 | 99 | BarrattEccles/StoppedRoutes/ISW2Totへ移動し、停止状態をdocstringへ記載 |
+| 合計 | 段1の対象 | **588** | **移動456、据置132、全5束完了** |
+
+原Lean行43,633、移動後43,738。増えた105行は停止状態99行と引用・Tag等のmetadata 6行。主張・証明は移動・参照名の追従以外変更せず、数学の宣言の削除、新しい数学の宣言、互換alias／wrapperの新設はない。BE全体のnamespaceを一括置換せず、99本の実所有宣言だけを移した。MathlibのglobalなHomotopicalAlgebraへの解決は、実compiler記録で認証した位置だけ `_root_.` で保存した。
+
+| 検査 | 最終結果 |
+|---|---|
+| 静的import・衝突・循環 | 33,254モジュールの移送を照合。欠落0・循環0。追加辺は引用用二辺だけ、root到達集合を保存 |
+| 層 | 既存違反86件を保持、新規0。report modeのREPORTであり違反0とは数えない。新しい例外の追加なし |
+| 対象ビルド | 依存先を含む1,661モジュール成功 |
+| v3b保存比較 | 独立した前後の1,071モジュール、全18束PASS、未説明0。既存のsnapshot／比較器は未変更 |
+| 実native所有元 | 10,476宣言（private 232）、前後の対応に欠落0・余分0。分割読取りのprovider文脈差も別記録で照合 |
+| 引用・Tag | 元61件＋計画したpartial二件＝63件、七欄と重複度に欠落0・余分0 |
+| root | 通常ビルド33,408 jobs成功 |
+| 全audit-targets | 7,259対象・37,745 jobs成功 |
+| 独立した正式全監査 | manifestと一致する全106本成功 |
+| 最後のverify | 上記同一HEAD二回の結果に基づく調整役指定の合成PASS。機械のgateはnon-gateを保持 |
+
+**取り下げは0本**。準備時の配置修正（SimplicialLocalizationはHTTではなくHA、Anodyne二本はKerodonの3.1／4.6）は最終表へ反映した。既存HA/Monadsの179本は置き場所の検討だけとし、ソースを移動していない。途中の失敗・時間切れ・構文修正・資源実測も削除せず各節と証拠に保持した。
+
+### 18.3 B4・目録・他レーン
+
+B4資料は `organize-einfinity-w1/B4/README.md`。588本のmodule-map、実所有元に基づくnamespace-rewrite-map、全件stage1-modules.csv、公開10,244宣言の `B4/public-owner-map.csv`、privateを含む実対応と前後の実データを揃えた。元のcompiler参照から採り、取り込み後のソースへ古い索引を流用しない。globalなMathlib HomotopicalAlgebraのopenを保存する追従の注意も明記した。
+
+停止点直前の再照合では、現存する四枝について保守的な候補は**枝・pathの組で8件（異なるpathは6本）**。math/inf-supply 2、math/scheme 1、fix/audit-reimport 4、research/cited-coverage 1で、30本以内。消えた旧参照は0件として隠さず、`branch-impact.json`のremoved_branchesへ記録し、改名後の現作業木の枝を別に採った。これは候補すべてが実際に失敗するという判定ではない。他レーンの作業木は変更していない。
+
+- 一般部品の目録：`research/einfinity-general/README.md`、489本。移動後の実在する宣言ヘッダーと実所有元に基づく。
+- 停止したBE経路の目録：`research/is-w2-be-route/README.md`、99本。IS-W2の到達点12／25と未完部分を明示し、再開していない。
+- HA Monadsの既存目録：`research/g12-monad-route/README.md`、179本。今回ソースは据置。
+- 証拠目録：`organize-einfinity-w1/evidence/README.md`。今回の約9.1 MBは調整役の明示承認により枝へ保存。**次回からは証拠本体をgit外、gitには目録だけ**とする。
+
+### 18.4 残りと保持
+
+段1の残りはなし。この完了報告をコミットして段1の停止点で止まる。mainへの取り込みと今夜のroot・全監査は調整役が行う。こちらではmainを取り込まず、基準30ae8948f・旧Citationを保った。
+
+段2は紙だけ。元の分類表2,621本のうち357本を段1で移動し、残りは**2,264本（一般890、BE固有1,047、E∞一般論327）**の分類案で、適用していない。今後の実施はユーザーの判断待ち。
+
+`/private/tmp/oe-w1-*` は一切消していない。独立した移動前環境、参照採取、プレビュー、snapshot、途中の失敗、ビルド・監査ログをそのまま残す。取り込み後に調整役が確認して削除する。
+
+一覧：済み 5／全体 5（うち追加 0）。
