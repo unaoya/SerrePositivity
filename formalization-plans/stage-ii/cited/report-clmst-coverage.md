@@ -1,10 +1,10 @@
 # 現在地
 
-- 段：**KB-W1 / B6 進行中**。
-- 一覧：**済み 9／全体 10（章）**。
+- 段：**KB-W1 / B6 完了**。
+- 一覧：**済み 10／全体 10（章）**。
 - 作業場所：`/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-cited`。枝：`research/cited-coverage`。pwd一致を確認し、指定の `git merge main` を実施。
 - KB-W1基準HEAD：`f35b01be9fdb8cf3c664b32123b6e8ebaf5d070f`。章ごとにコミットし、2章ごとに停止せず途中報告する。
-- 次：第10章の型と原文を再照合する。Lean・ビルド・鍵は使わない。既存 own・both・mathlib 行は変更しない。
+- 第1〜10章の対象2,991行を再照合し、章ごとのコミットを完了して停止。Lean・ビルド・鍵は使っていない。既存 own・both・mathlib 562行は全フィールドと既存CSVの引用符を保存。
 
 ## CC-W1 納品（停止コミット `156ac3c32`）
 
@@ -209,3 +209,23 @@ edgewiseの両射影と双対同型（8.1.1.7）、couplingとprofunctorの元�
 Indの標準模型の結果を指定数値λのIndκλへ、全関手準圏を指定section準圏へ、通常圏の因数分解を準圏の指定高次単体へ移す比較がない候補はnone。filteredから弱可縮の現本体の片方向は保持し、Archiveにだけある逆向きは根拠から外した。siftedの実装は非空性と二項対角のright cofinal性をfieldsに持つので、任意有限集合による定義全体と区別して理由に記した。
 
 第1〜9章の計2,849対象行を完了（済み9／全体10章）。全件表はreview/check/b6-ch9.md。原文・型・旧none263行の14群での現本体/ロックMathlib再検索・追加候補と決定過程はgit外に保存し、目録だけ更新。検索結果の全ヒットを検証し尽くしたという意味ではなく、原文ごとの候補の型を再判定したもの。Lean・ビルド・kernel実行・鍵はなし。第10章へ続ける。
+
+### 第10章
+
+142行（旧partial49・none93）を原文と宣言の型で再照合。旧partialは8行を種類つきで維持、31行をnone、10行をownへ更新。旧noneは2行をpartial、4行をownへ更新し、87行をnoneに維持。結果はpartial10・none118・own14、種類はcomponent5・special4・direction1。既存own・both・mathlib2行の全既存フィールドは保存した。
+
+nerve Δ/Δop・増強添字・半単体添字から準圏への射、次数評価、同じ面・退化の辺、定値関手とFunctorIsoは基本定義・記法を直接表す。実現と全化の定義には同じJoinCocone/JoinConeの頂点とIsColimitCone/IsLimitConeを使い、全化の一意性にはlimitVertexIsoを使った。10.2.1.1・10.2.1.18は同じ部分単体集合の包含へのRightFibration、10.2.1.26は同じ忘却関手の標準局所余錐の余極限性が原文の定義全体を直接表す。これらは専用名の欠如だけでnoneにせずownとした。新しいLeanの宣言を作ったという意味ではなく、記載した既存の型の直接の適用・量化での対応である。
+
+n≥0の切断とその包含のnerveによるskeletal/coskeletalの定義はspecial。増強図式の非負次数の面・退化の恒等式、指定射の次数ごとの可逆性、実現の一意性、sieveの準圏性は同じ結論のcomponent。通常圏Regularから原文の通常圏の三条件への方向はdirection。通常圏のČech構成・cosk単位・像・有効エピの型を、指定された∞圏の対象やquotient述語と比較する型がないものはnoneとした。特にArrowへの随伴と非増強の0次評価への随伴は異なる。
+
+旧none93行は9群で現本体・ロックMathlibを再検索し、引用番号索引（直接の一致0件）、双対・特殊形・近隣ソースも確認。全件表はreview/check/b6-ch10.md。原文全文・候補型・再検索・追加ソースと決定過程はgit外、目録のみコミット。Lean・ビルド・kernel実行・鍵は使っていない。
+
+### KB-W1 全章の完了検査
+
+一覧：**済み10／全体10（章）**。元の全3,553行のうち対象2,991行（partial1,574・none1,417）を再照合した。対象行の最終状態はpartial718・none2,217・own49・mathlib7。partial_kindはcomponent283・special197・stronger-hyp170・direction68で、partial全行に記入した。
+
+旧partialからは696行をpartialのまま維持、831行をnone、40行をown、7行をmathlibへ変更。旧noneからは22行をpartial、9行をownへ変更し、1,386行をnoneに維持した。新規昇格は型と原文の紙の判定で、古いaxioms/checkを今回のkernel確認としては扱わない。
+
+全10章を元CSVと再比較し、既存own・both・mathlib562行の全既存フィールドと引用符、全行の番号・verdict・axioms・checkを含む許可外フィールド、列順・区切り・改行を保存したことを確認。partial_kindのない章には末尾列のみを追加した。正の判定の根拠にArchiveがないこと、章別記録が全10章そろうこと、差分の空白エラーがないことも静的に確認した。大きい全章検査結果はgit外のall-chapters-validation.jsonに保存した。
+
+対応表以外のLean・Archive・本体・生成器・地図・ブループリントは変更していない。調整役による取り込み後のrefresh・生成は未実行。第10章のコミット後、ここで停止する。

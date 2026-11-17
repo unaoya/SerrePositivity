@@ -1,8 +1,8 @@
 {
  "directory": "/Users/sugakubunka/serre-evidence/cited/kerodon-b6",
  "commit": "f35b01be9fdb8cf3c664b32123b6e8ebaf5d070f",
- "made_by": "KB-W1 ch9 source comparison; no Lean/build/lock",
- "note": "Completed 9 of 10 chapters",
+ "made_by": "KB-W1 ch10 and final static source comparison; no Lean/build/lock",
+ "note": "Completed 10 of 10 chapters; all 2991 targets reviewed; 562 protected rows preserved",
  "files": [
   {
    "path": "ch1/ch1-audit.json",
@@ -58,6 +58,136 @@
    "path": "ch1/search_ch1.py",
    "sha256": "cbbc2d19483b9bf147167f7e22ee8f71cedd5b05487aab09b4a0ee3f9bc1517c",
    "bytes": 2673
+  },
+  {
+   "path": "ch10/all-chapters-validation.json",
+   "sha256": "d9cde752d23062ecbda7f5811bd83075246621ae8d535d6f7083a118c84ef475",
+   "bytes": 2071
+  },
+  {
+   "path": "ch10/apply_chapter.py",
+   "sha256": "367b371ecee45fe46efc6fd58f4244ed584f28ccf63d258bbdf661e276aec2ed",
+   "bytes": 4927
+  },
+  {
+   "path": "ch10/ch10-before.csv",
+   "sha256": "52967ba04c254b2947dc116085a6605109a9ef3af0aec84b40c1dd0784891186",
+   "bytes": 35552
+  },
+  {
+   "path": "ch10/ch10-changes.json",
+   "sha256": "c4616e42dd2a068ee5294600a2431cf3435348904ab4da00d32531e128761e72",
+   "bytes": 192367
+  },
+  {
+   "path": "ch10/ch10-decisions.tsv",
+   "sha256": "3215737c6f569511521181d8247849bbc72c98d55108cd25cac77b8edd905a98",
+   "bytes": 42157
+  },
+  {
+   "path": "ch10/ch10-declaration-overrides.json",
+   "sha256": "2303695c9de20f313da29ff87091ece4a25ecc82758e262e1b487e82f13caf16",
+   "bytes": 10143
+  },
+  {
+   "path": "ch10/ch10-extra-sources.json",
+   "sha256": "005e56a7c5e748c19976c699b9825d8cd8440f696dd43e77f0c1b08e506c13c6",
+   "bytes": 558207
+  },
+  {
+   "path": "ch10/ch10-none-citations.json",
+   "sha256": "75668e1ea8fa3a3069f998de0135ea0083ffc846ddf0d680530a1b80f62ec19b",
+   "bytes": 1646
+  },
+  {
+   "path": "ch10/ch10-none-search.json",
+   "sha256": "1e872d70a2c70e9e8cdcbbb721c2c37e0839ec2a4bbd0ff3d80127793f270507",
+   "bytes": 4705200
+  },
+  {
+   "path": "ch10/ch10-packet.json",
+   "sha256": "44a9552ca9ce8ce39e9a969e55d71fcfdbfc319a9af0a661520a9416ed0519d8",
+   "bytes": 793917
+  },
+  {
+   "path": "ch10/ch10-validation.json",
+   "sha256": "ff5a01a1f7244217c38f235449f07671cae8c23bb17ea87303fbc4dfad8b6f8f",
+   "bytes": 410
+  },
+  {
+   "path": "ch10/ch9-final-reason-correction.json",
+   "sha256": "fcad947963eb3b5f7668607a56a81d1da23c586a100dc75c4814346245a81a90",
+   "bytes": 1290
+  },
+  {
+   "path": "ch10/ch9-reason-correction.py",
+   "sha256": "c1b1018f04d76a9c450ee76afadf0d6c2a3d6c1bee95121eab867ca02a367d4a",
+   "bytes": 1682
+  },
+  {
+   "path": "ch10/final-ch1.csv",
+   "sha256": "a18d9c1719d3ff183273a433d9365d8480c059b7ed79e0e1a81c788e34aef271",
+   "bytes": 84524
+  },
+  {
+   "path": "ch10/final-ch10.csv",
+   "sha256": "e4eb84c726d7efdedbeb81be7efa4a8229e89ed54e978c7dfb8554dc6e1b691b",
+   "bytes": 60177
+  },
+  {
+   "path": "ch10/final-ch2.csv",
+   "sha256": "68fd5b859f0b18e33de4c77d0a1234bccc13dfe48fcd7ffde0b9b8d49896bd89",
+   "bytes": 92950
+  },
+  {
+   "path": "ch10/final-ch3.csv",
+   "sha256": "c4da77f7b5a65de6779d9a685d9ab073a7e90d05cacc32ab86c46b34f30f9fc2",
+   "bytes": 158526
+  },
+  {
+   "path": "ch10/final-ch4.csv",
+   "sha256": "432e8251a8f4557168ec9102faba99fe711c8b83ebcc7f57b9a4c698062989e9",
+   "bytes": 329036
+  },
+  {
+   "path": "ch10/final-ch5.csv",
+   "sha256": "7ae0aae5fd374a9cf925980d76ac537d7697073860158e87500f07f731a2f37e",
+   "bytes": 198960
+  },
+  {
+   "path": "ch10/final-ch6.csv",
+   "sha256": "8e9d348de17bb5d35ec31cff83129df137b6c78fb1d08c8299cec92081fc98e7",
+   "bytes": 73595
+  },
+  {
+   "path": "ch10/final-ch7.csv",
+   "sha256": "0442de2c3c07a5065fa9844c42d58da294dfc0a49ead4651fcccc6352866f2df",
+   "bytes": 284766
+  },
+  {
+   "path": "ch10/final-ch8.csv",
+   "sha256": "7d4155578321d872ba1af242798f8b99a713fe55a30e87485f0798ee5e8f97ce",
+   "bytes": 234105
+  },
+  {
+   "path": "ch10/final-ch9.csv",
+   "sha256": "90f64be1ddb98c56f9afc0b881141055aaf194580e93c1160fa6dbc8b31f72ec",
+   "bytes": 312217
+  },
+  {
+   "path": "ch10/finish_ch10.py",
+   "sha256": "675ca87ad5f2a4e74f0eb94a76db2bd8936d317d13cd90ec707ac0d8f9213827",
+   "bytes": 12290
+  },
+  {
+   "path": "ch10/search_ch10.py",
+   "sha256": "54df1b7428bc6852c52fa606447bd8fb4bbf5d36886aaaa393a1e29b17c8a7c7",
+   "bytes": 1299
+  },
+  {
+   "path": "ch10/validate_all.py",
+   "sha256": "a58cef9bb62efaa79b1c63a204b981932a14d0d1dcaf4b7e083ff58aa319b4ee",
+   "bytes": 2592
   },
   {
    "path": "ch2/ch2-before.csv",
@@ -5010,5 +5140,5 @@
    "bytes": 33052
   }
  ],
- "total_bytes": 387956971
+ "total_bytes": 396151577
 }
