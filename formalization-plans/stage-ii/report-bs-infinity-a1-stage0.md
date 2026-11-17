@@ -8277,7 +8277,7 @@ R06で指定対角の各成分を同定し、relativeCechDiagonal_sections_isInv
 ∀ {C : Type u} [SmallCategory C] {E : SSet.{u+1}} [Quasicategory E]
   (J : GrothendieckTopology C) {P Q : Cᵒᵖ ⥤ Type u} (f : P ⟶ Q)
   [CategoryTheory.Presheaf.IsLocallyInjective J f]
-  (O : Presheaf C E) (hO : IsSheaf J O) (hE : IsPresentable E),
+  (O : Presheaf C E) (hO : IsSheaf J O) (hE : SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable E),
   let e := (nerve.edgeMk (Subfunctor.toRange f)).map (discretePresheafInclusion C).val
   let r := (edgeOp e.toTruncated).map ((truncation 2).map (weightedSections O hE))
   IsInvertibleEdge r
@@ -8406,14 +8406,13 @@ R12aと既存のsectionsMap_isInvertible_iffで同じ指定sectionsOf_mapへ戻�
       let h₁ := (discretePresheafInclusion C).property.1 P
       let h₂ : (nerveMap S ≫ I).app _ (nerveVertex P) =
           functorVertex (discretePresheaf (S.obj P)) := by
-        change I.app _ ((nerveMap S).app _ (nerveVertex P)) = _
-        rw [nerveMap_app_mk₀]
-        exact (discretePresheafInclusion C).property.1 (S.obj P)
+        exact (congrArg (fun v => I.app _ v) (nerveMap_app_mk₀ S P)).trans
+          ((discretePresheafInclusion C).property.1 (S.obj P))
       functorHomEvaluate η (nerveVertex P) =
         eqToHom (congrArg (fun v => HomotopyCategory.mk v) h₁) ≫
           discretePresheafHom (CategoryTheory.toSheafify J P) ≫
           eqToHom (congrArg (fun v => HomotopyCategory.mk v) h₂.symm)) ∧
-    IsIso (functorHomPostcomp I (nerveMap S ≫ I) (sheafificationFunctor J hJ) η)
+    IsIso (SerrePositivity.InfinityCategories.Project.DerivedCategories.functorHomPostcomp I (nerveMap S ≫ I) (sheafificationFunctor J hJ) η)
 ```
 
 - `isLocalEquivSet_toSheafify` @ `SerrePositivity/InfinityCategories/Sheaves/SetLocalEquivalence.lean:38`
@@ -8528,3 +8527,45 @@ S7・R2・R3・P⁰は再開しない。旧R2の未追跡4本は編集・ビル�
 一覧：済み 18／全体 39（うち追加 4、別停止点 2）。
 
 一括点検の道具の結果：39頂点・66辺のDAGで循環なし。旧36署名の完全な型と、承認されたC1PNの型は文字列で不変。未完署名の補正上端は全て800以下。証拠は `evidence/inf-supply/rescan-1117-evening/manifest.json`。
+
+
+### P3-C1PN の証明分割（11-17夕、第一組）
+
+紙のコミットは `46eb44e10`。39署名・66辺の非循環の一覧に従って続行中。
+既存の本文・仮定・計算上限は変更していない。署名本体はまだ完了に数えない。
+
+新規 `KanDiagramNaturalTransformationComposition.lean`（58物理行、引用も含め保守的に58数学行）に、
+指定した通常の自然変換の実現の法則2本を分離した。型は次のとおり。
+
+```lean
+kanDiagramNaturalTransformationHom_eq_normalized :
+  ∀ {I : Type u} [Category.{u} I] {F G : KanDiagramObject I}
+    (η : F.val ⋙ kanObjectForget ⟶ G.val ⋙ kanObjectForget),
+  Truncated.HomotopyCategory.homMk (kanDiagramNaturalTransformationEdge η).toTruncated =
+    normalizedVertexHomMap (kanDiagramRealization I) (kanDiagramRealization_vertex F).symm
+      (kanDiagramRealization_vertex G).symm
+      (Truncated.HomotopyCategory.homMk (coherentNerveEdge (kanDiagramHom η)).toTruncated)
+
+kanDiagramNaturalTransformationHom_comp :
+  ∀ {I : Type u} [Category.{u} I] {F G H : KanDiagramObject I}
+    (η : F.val ⋙ kanObjectForget ⟶ G.val ⋙ kanObjectForget)
+    (θ : G.val ⋙ kanObjectForget ⟶ H.val ⋙ kanObjectForget),
+  Truncated.HomotopyCategory.homMk (kanDiagramNaturalTransformationEdge (η ≫ θ)).toTruncated =
+    Truncated.HomotopyCategory.homMk (kanDiagramNaturalTransformationEdge η).toTruncated ≫
+      Truncated.HomotopyCategory.homMk (kanDiagramNaturalTransformationEdge θ).toTruncated
+```
+
+2本とも200行未満の既存構成の法則で、P3-C1PNの証明分割。点ごとの一致を仮定せず、元の図式全体の射を扱う。
+対象ビルド成功、小監査はこのモジュールを所有する2宣言・標準三公理のみ。
+数学行数は23,595 → **23,653**。C1PNの補正上端720を全て残りとして見ても24,373で、次の群への着手条件内。
+
+一括点検で追加したR09-Cechの署名の型検査は成功。R15-Unitのlet内の端点証明は、
+`nerveMap_app_mk₀`の命題等式を通すよう明示し、再検査中。これは存在する射・仮定・結論の変更ではなく、
+同じ端点等式の証明の局所化と名前解決の明示化。型検査成功と証明完成は区別している。
+
+区間評価の試験では、反転した自然変換の暗黙の端点推論が通常の200,000 heartbeatsに達した。
+端点を明示し、既存のcoherent Homの頂点公式を独立に検証中。計算上限は上げていない。
+証拠目録：`evidence/inf-supply/c1pn-native-composition-1117/manifest.json`。
+旧R2の未追跡4本は変更・ビルド・コミットなし。S7・R2・R3は再開していない。
+
+一覧：済み 18／全体 39（うち追加 4、別停止点 2）。

@@ -1195,7 +1195,7 @@ P3-C1PNは型と依存を保持して承認済み登録。R09-Cech・R15-Unitは
 ∀ {C : Type u} [SmallCategory C] {E : SSet.{u+1}} [Quasicategory E]
   (J : GrothendieckTopology C) {P Q : Cᵒᵖ ⥤ Type u} (f : P ⟶ Q)
   [CategoryTheory.Presheaf.IsLocallyInjective J f]
-  (O : Presheaf C E) (hO : IsSheaf J O) (hE : IsPresentable E),
+  (O : Presheaf C E) (hO : IsSheaf J O) (hE : SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable E),
   let e := (nerve.edgeMk (Subfunctor.toRange f)).map (discretePresheafInclusion C).val
   let r := (edgeOp e.toTruncated).map ((truncation 2).map (weightedSections O hE))
   IsInvertibleEdge r
@@ -1221,14 +1221,13 @@ P3-C1PNは型と依存を保持して承認済み登録。R09-Cech・R15-Unitは
       let h₁ := (discretePresheafInclusion C).property.1 P
       let h₂ : (nerveMap S ≫ I).app _ (nerveVertex P) =
           functorVertex (discretePresheaf (S.obj P)) := by
-        change I.app _ ((nerveMap S).app _ (nerveVertex P)) = _
-        rw [nerveMap_app_mk₀]
-        exact (discretePresheafInclusion C).property.1 (S.obj P)
+        exact (congrArg (fun v => I.app _ v) (nerveMap_app_mk₀ S P)).trans
+          ((discretePresheafInclusion C).property.1 (S.obj P))
       functorHomEvaluate η (nerveVertex P) =
         eqToHom (congrArg (fun v => HomotopyCategory.mk v) h₁) ≫
           discretePresheafHom (CategoryTheory.toSheafify J P) ≫
           eqToHom (congrArg (fun v => HomotopyCategory.mk v) h₂.symm)) ∧
-    IsIso (functorHomPostcomp I (nerveMap S ≫ I) (sheafificationFunctor J hJ) η)
+    IsIso (SerrePositivity.InfinityCategories.Project.DerivedCategories.functorHomPostcomp I (nerveMap S ≫ I) (sheafificationFunctor J hJ) η)
 ```
 
 文献：HTT 6.2.2.7・5.5.4.15 の離散係数と小さい通常siteの場合。指定したMathlibの層化単位を全関手射として実現する法則。

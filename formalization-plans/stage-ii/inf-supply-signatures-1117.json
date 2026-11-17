@@ -3,7 +3,7 @@
   "source_head": "7e9743b30",
   "scope": "今回の再開範囲：元の残り1〜17項を署名へ展開。S2〜S6の過去の検収済み出力は再採番しない。",
   "count_rule": "署名のidごとに数える。200行超の照合・合成則は独立署名。小さい証明分割の法則は親署名のnoteに記録する。旧5/8はこの台帳の分母には用いない。",
-  "verified_lean_lines": 23595,
+  "verified_lean_lines": 23653,
   "final_cap": 29000,
   "checkpoint_report_lines": 28500,
   "factor": 2,
@@ -1677,12 +1677,18 @@
       "new_assumptions": [],
       "placement": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePointedPrism.lean",
       "additional_mathematics": true,
-      "note": "11-17夕のユーザー承認。報告の型と依存を保持。"
+      "note": "11-17夕のユーザー承認。報告の型と依存を保持。 11-17夕：元のKan値自然変換の実現Homの正規化式・合成則を新規58行に分割し対象ビルド・小監査済み。署名本体は未完。",
+      "proof_support_verification": {
+        "mathematical_lines_conservative": 58,
+        "public_declarations": 2,
+        "status": "parent signature pending",
+        "receipt": "evidence/inf-supply/c1pn-native-composition-1117/manifest.json"
+      }
     },
     {
       "id": "R09-Cech",
       "name": "weightedSections_toRangeHom_isInvertible",
-      "full_type": "∀ {C : Type u} [SmallCategory C] {E : SSet.{u+1}} [Quasicategory E]\n  (J : GrothendieckTopology C) {P Q : Cᵒᵖ ⥤ Type u} (f : P ⟶ Q)\n  [CategoryTheory.Presheaf.IsLocallyInjective J f]\n  (O : Presheaf C E) (hO : IsSheaf J O) (hE : IsPresentable E),\n  let e := (nerve.edgeMk (Subfunctor.toRange f)).map (discretePresheafInclusion C).val\n  let r := (edgeOp e.toTruncated).map ((truncation 2).map (weightedSections O hE))\n  IsInvertibleEdge r",
+      "full_type": "∀ {C : Type u} [SmallCategory C] {E : SSet.{u+1}} [Quasicategory E]\n  (J : GrothendieckTopology C) {P Q : Cᵒᵖ ⥤ Type u} (f : P ⟶ Q)\n  [CategoryTheory.Presheaf.IsLocallyInjective J f]\n  (O : Presheaf C E) (hO : IsSheaf J O) (hE : SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable E),\n  let e := (nerve.edgeMk (Subfunctor.toRange f)).map (discretePresheafInclusion C).val\n  let r := (edgeOp e.toTruncated).map ((truncation 2).map (weightedSections O hE))\n  IsInvertibleEdge r",
       "dependencies": [
         "R06",
         "R08"
@@ -1722,7 +1728,7 @@
     {
       "id": "R15-Unit",
       "name": "exists_discreteSheafificationUnitHom",
-      "full_type": "∀ {C : Type u} [SmallCategory C]\n  (J : GrothendieckTopology C) (hJ : Sheafification J SpaceInfinity.{u}),\n  let S := presheafToSheaf J (Type u) ⋙ sheafToPresheaf J (Type u)\n  let I := (discretePresheafInclusion C).val\n  ∃ η : FunctorHom I (nerveMap S ≫ I),\n    (∀ P : Cᵒᵖ ⥤ Type u,\n      let h₁ := (discretePresheafInclusion C).property.1 P\n      let h₂ : (nerveMap S ≫ I).app _ (nerveVertex P) =\n          functorVertex (discretePresheaf (S.obj P)) := by\n        change I.app _ ((nerveMap S).app _ (nerveVertex P)) = _\n        rw [nerveMap_app_mk₀]\n        exact (discretePresheafInclusion C).property.1 (S.obj P)\n      functorHomEvaluate η (nerveVertex P) =\n        eqToHom (congrArg (fun v => HomotopyCategory.mk v) h₁) ≫\n          discretePresheafHom (CategoryTheory.toSheafify J P) ≫\n          eqToHom (congrArg (fun v => HomotopyCategory.mk v) h₂.symm)) ∧\n    IsIso (functorHomPostcomp I (nerveMap S ≫ I) (sheafificationFunctor J hJ) η)",
+      "full_type": "∀ {C : Type u} [SmallCategory C]\n  (J : GrothendieckTopology C) (hJ : Sheafification J SpaceInfinity.{u}),\n  let S := presheafToSheaf J (Type u) ⋙ sheafToPresheaf J (Type u)\n  let I := (discretePresheafInclusion C).val\n  ∃ η : FunctorHom I (nerveMap S ≫ I),\n    (∀ P : Cᵒᵖ ⥤ Type u,\n      let h₁ := (discretePresheafInclusion C).property.1 P\n      let h₂ : (nerveMap S ≫ I).app _ (nerveVertex P) =\n          functorVertex (discretePresheaf (S.obj P)) := by\n        exact (congrArg (fun v => I.app _ v) (nerveMap_app_mk₀ S P)).trans\n          ((discretePresheafInclusion C).property.1 (S.obj P))\n      functorHomEvaluate η (nerveVertex P) =\n        eqToHom (congrArg (fun v => HomotopyCategory.mk v) h₁) ≫\n          discretePresheafHom (CategoryTheory.toSheafify J P) ≫\n          eqToHom (congrArg (fun v => HomotopyCategory.mk v) h₂.symm)) ∧\n    IsIso (SerrePositivity.InfinityCategories.Project.DerivedCategories.functorHomPostcomp I (nerveMap S ≫ I) (sheafificationFunctor J hJ) η)",
       "dependencies": [
         "R14",
         "R13a"
