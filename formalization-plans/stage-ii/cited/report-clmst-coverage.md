@@ -1,10 +1,10 @@
 # 現在地
 
 - 段：**KB-W1 / B6 進行中**。
-- 一覧：**済み 2／全体 10（章）**。
+- 一覧：**済み 3／全体 10（章）**。
 - 作業場所：`/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-cited`。枝：`research/cited-coverage`。pwd一致を確認し、指定の `git merge main` を実施。
 - KB-W1基準HEAD：`f35b01be9fdb8cf3c664b32123b6e8ebaf5d070f`。章ごとにコミットし、2章ごとに停止せず途中報告する。
-- 次：第3章の型と原文を再照合する。Lean・ビルド・鍵は使わない。既存 own・both・mathlib 行は変更しない。
+- 次：第4章の型と原文を再照合する。Lean・ビルド・鍵は使わない。既存 own・both・mathlib 行は変更しない。
 
 ## CC-W1 納品（停止コミット `156ac3c32`）
 
@@ -139,3 +139,11 @@ Archive のパスを宣言欄に含む4行（4.3.6.12、9.1.1.18、9.1.1.20、9.
 原文の逆包含のPathと現行包含順模型、原文のdg符号とHA符号、商型正規化と核型正規化を比較する宣言がない候補は、類似の構成だけでpartialにしなかった。2.4.5.11はKan性から両端点評価が自明Kan fibrationとなる方向、2.5.6.21は核型正規化の包含のホモロジー同型という結論成分を直接持つ。既存own・both・mathlib59行は全既存フィールドを保存。
 
 第1〜2章の計223対象行を完了（済み2／全体10章）。章別全件表はreview/check/b6-ch1.md・b6-ch2.md、ソースの型と公式原文の比較・検索記録はgit外。Lean・ビルド・kernel実行・鍵は使用していない。そのまま第3章へ進む。
+
+### 第3章
+
+274行（旧partial121・none153）を再照合。旧partial81行をnone、40行は種類を付して維持。旧noneから3.6.6.1・3.6.6.8を被覆写像に限定した区間ホモトピー持ち上げのstronger-hypへ変更し、151行は再検索後もnone。結果はpartial42・none232、種類はstronger-hyp15・component14・special10・direction3。既存own・both・mathlib65行は変更なし。
+
+原文が第0面を指定するincidenceと最後の面によるBoundaryLift、球面からの写像の商と独自の境界定値単体の商、全区間写像によるホモトピー引き戻しとKan置換を使う模型は、比較する宣言がないものをnoneに整理した。単に写像空間や極限のKan性を持つ候補も、原文の連結度・切断次数の結論の一部とは数えない。exInfinityの有限極限保存、同じ単位の単射性、有限部分集合圏の余極限の弱可縮性など直接の成分・特殊形はpartialを維持した。
+
+全対象行の判定はreview/check/b6-ch3.md。公式原文・型・none153行の再検索と新規候補の抜粋はgit外に保存し目録を更新。Lean・ビルド・kernel実行・鍵はなし。

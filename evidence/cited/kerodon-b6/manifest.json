@@ -1,8 +1,8 @@
 {
  "directory": "/Users/sugakubunka/serre-evidence/cited/kerodon-b6",
  "commit": "f35b01be9fdb8cf3c664b32123b6e8ebaf5d070f",
- "made_by": "KB-W1 ch2 source comparison; no Lean/build/lock",
- "note": "Completed 2 of 10 chapters; official originals and source-only searches outside git",
+ "made_by": "KB-W1 ch3 source comparison; no Lean/build/lock",
+ "note": "Completed 3 of 10 chapters",
  "files": [
   {
    "path": "ch1/ch1-audit.json",
@@ -103,6 +103,56 @@
    "path": "ch2/search_ch2.py",
    "sha256": "ea888ee6a292194ebd384fc5bf390af0e62a5206c2082a4a5f943cde2b7b1361",
    "bytes": 1535
+  },
+  {
+   "path": "ch3/ch3-before.csv",
+   "sha256": "919b9ed8cc45d6a3cfe9cdc3edcd8131c0205dc638db66078007c81f1123a5d5",
+   "bytes": 126284
+  },
+  {
+   "path": "ch3/ch3-changes.json",
+   "sha256": "c7e852b083b2f14a8a5acd60da132d8b223cac6cbfad2dae60a3497182654bce",
+   "bytes": 407490
+  },
+  {
+   "path": "ch3/ch3-decisions.tsv",
+   "sha256": "c358ca99b6f10ac15c683ba63d3ef25de74abff4186ff9f00dd39ad8395c3668",
+   "bytes": 85134
+  },
+  {
+   "path": "ch3/ch3-declaration-overrides.json",
+   "sha256": "5185cb6e7ce2c2fa5463aa7459213b7a41963e5ce30c0b3a3a63d6069152b1c8",
+   "bytes": 841
+  },
+  {
+   "path": "ch3/ch3-new-types.json",
+   "sha256": "a417f2a26f7a238f4b1e1d26fb74e0a41bca620289db93e9f646a12c49130727",
+   "bytes": 183348
+  },
+  {
+   "path": "ch3/ch3-none-search.json",
+   "sha256": "ec8073f5e3269f5e5631c0d4cf66d9031794c464c6a33e51c284ab75bd19beb9",
+   "bytes": 31598921
+  },
+  {
+   "path": "ch3/ch3-packet.json",
+   "sha256": "05e1f8c0885a71bb2f5524ba1f40e5ff32d20c25b51e1295ac84b3bceb673c7b",
+   "bytes": 1740103
+  },
+  {
+   "path": "ch3/ch3-validation.json",
+   "sha256": "c2c3174ad21b300bff30385be2ffbe33af53e35a263d270678dc3adfe74ce000",
+   "bytes": 383
+  },
+  {
+   "path": "ch3/ch3-write-decisions.py",
+   "sha256": "c2410a699e0ce57e47d43e9a46543ef3c428865fc9bac963526ba03d944f2c57",
+   "bytes": 22963
+  },
+  {
+   "path": "ch3/search_ch3.py",
+   "sha256": "0797343465f4309f272c8b8e98cc6af39992adc4b366100bc5eabed339d5bfbb",
+   "bytes": 1719
   },
   {
    "path": "shared/apply_chapter.py",
@@ -4360,5 +4410,5 @@
    "bytes": 33052
   }
  ],
- "total_bytes": 104386303
+ "total_bytes": 138553489
 }
