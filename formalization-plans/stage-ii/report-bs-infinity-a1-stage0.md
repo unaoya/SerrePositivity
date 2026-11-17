@@ -7509,3 +7509,43 @@ P3-C1・D・E、第4〜15項の残り、第16・17項は未完のまま。
 次の着手判定は22,975＋800＝23,775行で29,000行以内。係数2・外枠・既存の型は変えない。
 まず型のelaborationと、指定pointed比較の構成を進める。mainは取り込まない。
 一覧：済み 18／全体 36（うち追加 1、別停止点 2）。
+
+### main取り込み前の検証の区切り（11-17夕）
+
+P3-C1Pの証明分割2本の対象ビルド・小監査が成功（87行・2宣言、標準三公理のみ）。
+前合成で指定pointed同型を戻し、その射影の指定辺に沿うprismへ揃える既存構成の法則。
+親署名leftStraighteningBaseChange_pointedPrismはまだ証明していない。
+検証済み累計23,062行、P3-C1Pの内訳87行を台帳に部分実測として記録。
+完了時には同じファイルの既計上87行を二重に加えない。
+
+```lean
+private lemma pointedComparisonIsoOfRestriction {A Z X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
+    (i : Z ⟶ A) (hi : IsPrecompositionEquivalence i) (q : X ⟶ Y)
+    {f g : A ⟶ X} (d : FunctorIso (f ≫ q) (g ≫ q))
+    (e : FunctorIso (i ≫ f) (i ≫ g))
+    (h : e.postcomp q = d.precomp i) :
+    ∃ a : FunctorIso f g, a.precomp i = e ∧ a.postcomp q = d
+```
+
+```lean
+private lemma pointedPrismOfRestriction {A B Z : SSet.{u+1}} (p : A ⟶ B)
+    (i : Z ⟶ A) (hi : IsPrecompositionEquivalence i)
+    {F G : B ⟶ SpaceInfinity.{u}} (ν : FunctorIso F G)
+    {f g : A ⟶ PointedSpaceInfinity.{u}}
+    (hf : f ≫ pointedSpaceProjection = p ≫ F)
+    (hg : g ≫ pointedSpaceProjection = p ≫ G)
+    (e : FunctorIso (i ≫ f) (i ≫ g))
+    (h : e.postcomp pointedSpaceProjection =
+      (functorIsoOfEq (ν.precomp p) hf.symm hg.symm).precomp i) :
+    let r := functorEdgeOfSimplicialHomotopy (functorHomHomotopy ν.hom)
+    ∃ W : (Δ[1] : SSet.{u+1}) ⊗ A ⟶ PointedSpaceInfinity.{u},
+      prismEndpoint 0 A ≫ W = f ∧ prismEndpoint 1 A ≫ W = g ∧
+      W ≫ pointedSpaceProjection = (Δ[1] ◁ p) ≫ functorEdgePrism r
+```
+
+証拠：/tmp/is-w1/c1p/production/target-audit-result.json（ソースSHA一致）。
+未検証の後続下書きは/tmp/is-w1/c1p/AllNext.lean。直近の試行はUniverseAscent.oleanが
+ないため入口で終了し、後続の数学の検証には入っていない。計算上限は変更していない。
+調整役からroot・全監査の完了とmain取り込みの指示を受けたので、この検証済みを
+コミットしてmain（確認時35988dd08）を取り込み、改名表を確認してから再検証する。
+一覧：済み 18／全体 36（うち追加 1、別停止点 2）。

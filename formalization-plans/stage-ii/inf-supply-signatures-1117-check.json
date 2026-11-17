@@ -59,10 +59,10 @@
     2600
   ],
   "active_completion_corrected_lines": [
-    27335,
-    30795
+    27422,
+    30882
   ],
-  "ledger_sha256": "b39129eb283e697fb2ee8906d3714125a28cc8299e19d0df034d091d7b9b83ba",
+  "ledger_sha256": "26bb9d77a64c2586c7ba6d2df245a47559f8e7a7789ae3f85bf55880fd4ffabf",
   "reference_source_sha256": {
     "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/ScaffoldCoherentComparisonRestriction.lean": "eaca001013d2fdcb29b38a5c6652896da293437d0d827266f4ac760c591bf92c",
     "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/StraighteningReconstructionRepresentationComparison.lean": "268abe1ed9b74b9d96bb95b4fe73a9c03448c7595b6a59c9eade04a55e5af273",
