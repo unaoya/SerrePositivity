@@ -295,4 +295,4 @@ D79 (i)（615ceab26）で、E∞ の界面 `EInfinity/Interface/Theory.lean` が
 
 | 番号 | 問題 | 扱い |
 | --- | --- | --- |
-| BR55 | 既存の定義が、弱い存在命題（「指定頂点を持つ極限錐がある」「底の等式と前合成同値性を満たす比較がある」など）から `Classical.choose` でデータを選び、指定構成（余単位・span・相対同型など）との両立を失う。5∞-1 で三回、既存の本文を直した（S8 の錐の選び方、`smallLeftUnstraighteningComparisonOfFunctorIso`、`leftCoherentTransportDirectComparison`）。InfinityCategories には `Classical.choose` を含むファイルが多数ある | 計画：同じ型の choose を一度にまとめて洗い出す（紙）。各箇所について、選ぶ存在命題、後で要る指定構成との両立、直し方（指定構成を保つ選び方への置き換え）、推移的な importer の数を表に。洗い出しは手の空いたレーン。直すのは使う段（レーン）で、事前承認の型（`inf-supply-w1.md` 末尾）に従う |
+| BR55 | 既存の定義が、弱い存在命題（「指定頂点を持つ極限錐がある」「底の等式と前合成同値性を満たす比較がある」など）から `Classical.choose` でデータを選び、指定構成（余単位・span・相対同型など）との両立を失う。5∞-1 で三回、既存の本文を直した（S8 の錐の選び方、`smallLeftUnstraighteningComparisonOfFunctorIso`、`leftCoherentTransportDirectComparison`）。InfinityCategories には `Classical.choose` を含むファイルが多数ある | 計画：洗い出しは **⑦ IC-W1 の IC-1 段 0** に含める（ユーザー決定 11-17 案 A、`stage-ii/consolidation/infinity-consolidation-w1.md` §7）。5∞-1 の依存分は ③-a の紙（11-17）。「要る」と判定したものは IC-W1 の移動と同じ夜にまとめて直す。事前承認の型は `inf-supply-w1.md` 11-17 朝の追記 |
