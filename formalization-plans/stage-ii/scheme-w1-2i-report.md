@@ -1,5 +1,7 @@
 # SC-W1 2i：進捗・検証・引き継ぎの記録
 
+**停止点2i：完了。⑥のレーンを閉じる。** 一覧：済み71／全体71（うち追加5）、未完0。31モジュール、本体・入口2,330行、検証スクリプト込み2,437行／外枠9,000行。対象ビルド・正本の型チェック・所有195宣言の公理監査が成功。取り込みとroot・全監査は調整役が行う。以下の初期の節は経過の記録で、最終状態は末尾の引き継ぎが正本。
+
 2026-11-17、math/scheme。ユーザー承認と指示書末尾の追記に従い、2iの外枠9,000行、66署名の範囲内で進める。約4,500行で止まらずに途中報告する。新しい数学でない照合・合成則は、元の署名・仮定を変えず、一本の補正後上端800行以内・main本体の変更なしなら紙と台帳へ追記して進む。上端が9,000行を超えそうなときは枠を上げず、完成した署名のまとまりで区切って検証済みをコミットし停止する。
 
 ## 再開と初期束（c3bbe3c81）
@@ -127,3 +129,111 @@ O06で予定した既存APIの適用をL05として型付きで[台帳](scheme-w
 **一覧：済み65／全体71（うち追加5）。** L05・O06・O09・I11を閉じた。OverlapCoefficientDetection（55行）は任意の完全T上の同じ短完全列をmoduleCechへ適用する。UniversalOverlap（76行）は三つの指定した底変換から普遍完全性を検出する。IntervalGluing（94行）はO01〜O03の元のV上の同型とL01/L02を使い、任意の完全な全区間係数Tで二つの良い区間を貼る。PerfectedFpArc（67行）はBM18 Lemma 4.7のpoint/sub/right/left/glueを埋め、全区間の指定AlgEquivで元の付値環へ戻す。
 
 本体292行・登録8行を追加し、**実測2,046行／外枠9,000行**。4モジュールと直接importerの対象ビルド（5,771ジョブ）、同一バイト・SHA、別鍵の所有4宣言の監査が成功。累計所有186宣言、標準三公理のみ。元の66署名・既存main本体の変更なし。残りはI12・P01・P02・P06・B01・B02の6署名で、現在の完成上端は5,428行以内。最終型を正本からそのまま抜き出した独立した利用側のチェックも用意した（未検証）。
+
+
+## 停止点2i：最終の検証と引き継ぎ
+
+数学・検証スクリプトのコミット：`7d6355ce5`。基準はmain `1fb2c6dcc`。**一覧：済み71／全体71（うち追加5）、未完0。** 最初の66署名は9c8beeaf6の完全な型と機械照合して全て一致し、追加は記録済みの照合・分割L01〜L05だけ。型・仮定や既存mainの数学の本体の変更はない。
+
+### 出口と証明の接続
+
+`SerrePositivity.AlgebraicGeometry.ArcRouteB.cech_exact_of_arcCover_perfect` @ `SerrePositivity/AlgebraicGeometry/ArcRouteB/ArcCoverCech.lean` が出口。完全F_p代数の有限族、元の積への一射、増大Čechの型を保つ。零環・空の族も除いていない。
+
+同じ有限表示模型を完全化し、端点の切断・区間の制限・左右の延長・重なる区間の貼り合わせを通して、絶対整閉付値環上の普遍Čech完全性へ進む。任意の完全T上の重なりの短完全列とTor消滅を使うので、Tの基底上の平坦性は仮定しない。模型の指定余錐のfiltered余極限、超積の平坦底変換と加群の零性の検出から、付値probeの積上の普遍完全性を得る。probeのČechの正次数の第0因子の脚と二回の底変換を比較し、2hの出口とB1の二重Čech比較へ渡す。
+
+既存の本体B1〜B5（被覆・Tor・重なりの短完全列・区間判定・超積・付値probe）を使う。G-A6-1cの`valuationRing_milnorSquare_perfect`は本体にあり、今回の一般の重なりではその供給側の既存のoverlap短完全列とTorのAPIを直接使った。BM18 Thm1.7の一般の∞圏値の層判定は使っていない。
+
+### 検証・規模
+
+- 31モジュールは全て`AlgebraicGeometry/ArcRouteB/`に置き、入口`SerrePositivity/AlgebraicGeometry.lean`へ登録した。元の入口は同一バイトの接頭辞のまま、末尾のimport登録だけを足した。
+- 最終対象ビルド：ArcCoverCechと直接importer、**5,778ジョブ成功**（`scheme-drafts/2i-arc-exit-native-4.log`）。root・下流全ビルドは実施していない。
+- 再実行可能な小さい検証：`lake env lean formalization-plans/stage-ii/scheme-w1-2i-verify.lean`。正本drafts/A6/ArcRouteB.leanの定義とArcRouteBGoalをそのまま別名前空間へ抜き出し、出口を実際に適用して型を確認した。未完成drafts全体へのimportや、型を弱める置き換えはない。
+- 同じ検証で31モジュールの全所有195宣言（private・生成補助を含む）の公理閉包が成功。**標準三公理のみ**：propext、Classical.choice、Quot.sound。sorry・新しい公理・native_decide・リソース上限の増加なし。
+- 本体2,268行＋入口62行＝**2,330行**。検証スクリプト107行を含めても**2,437行／9,000行**。4,500行の途中報告基準へ達する前に完成した。完了後の追加見込み0。
+- 全て共有鍵`with_build_lock.sh --class impl --wait 3600`、待ちは一つ、ビルド・監査の間だけ保持。ファイル記述子不足で待機プロセスが二度終了したが、Leanを起動していないことを確かめてから同じ共有鍵で取り直し、最終ビルドと検証は成功した。
+
+ソースごとのSHA・行数・所有宣言数、71署名の置き場所は[検証データ](scheme-w1-2i-verification.json)に記録した。公開宣言の型は[署名の紙](scheme-w1-2i-signatures.json)、追加法則は[台帳](scheme-w1-2i-law-ledger.md)。
+
+### BS側への引き継ぎと範囲
+
+- `formalization-plans/bhatt-scholze/drafts/A6/ArcSheafProperty.lean`のG-A6-1、`cech_exact_of_arcCover_perfect`のsorryは、本体の同名の出口を完全修飾して適用すれば置き換えられる。型は正本のArcRouteBGoalと同じ。BS側のdrafts自体は編集していない。
+- G-A6-1aは2hの`cech_exact_of_vCover_perfect`で供給済み。G-A6-1cは既存の本体。G-A6-1b（BM18 Thm1.7の一般の∞圏の主張）のsorryはこの経路では使わず、完成とはしない。
+- BS17 Thm4.1の対応表は**partial**のまま。今回の供給はaffine・構造層（n=1、E=O）・完全F_p代数の有限族のv/arc Čech完全性。一般のW_n、有限射影E、非affineの一般性は未実装で、⑧の対応表へこの差を引き継ぐ。
+- 71署名は全て検証済みで、未完0。このレーンの追加作業はない。調整役によるmainへの取り込み、rootと全監査は別に行う。
+- 最終報告のコミット後、追跡ファイルの未コミット差分は0となる。`scheme-drafts/`には作業用の原稿・ログ・スクリプトが未追跡で残る。取り込み対象に含めず、検証済み本体は全てコミット済み。
+
+### 最終一覧
+
+| ID | 宣言 | 置き場所 |
+| --- | --- | --- |
+| U01 | `arcBaseChangeHom` | Definitions.lean:60 |
+| U02 | `PerfectRingCechUniversalExact` | Definitions.lean:69 |
+| U03 | `IsArcHom` | Definitions.lean:75 |
+| U04 | `isArcHom_pi_iff` | CoverLaws.lean:21 |
+| U05 | `isArcHom_baseChange` | CoverLaws.lean:40 |
+| U06 | `isArcHom_of_refinement` | CoverLaws.lean:58 |
+| U07 | `perfectRingCechUniversalExact_baseChange` | UniversalCech.lean:24 |
+| U08 | `perfectRingCechUniversalExact_of_flat_factor` | UniversalCech.lean:77 |
+| U09 | `perfectTensor_of_primeCast_eq_zero` | UniversalCech.lean:54 |
+| M01 | `frobeniusDirectLimit_primeCast_eq_zero` | FrobeniusPerfect.lean:18 |
+| M02 | `frobeniusDirectLimit_perfectRing` | FrobeniusPerfect.lean:24 |
+| M03 | `frobeniusDirectLimitDesc` | FrobeniusPerfect.lean:57 |
+| M04 | `frobeniusDirectLimitDesc_comp_of_zero` | FrobeniusPerfect.lean:66 |
+| M05 | `finitePresentationModelUnderDiagram` | ModelUnder.lean:21 |
+| M06 | `finitePresentationModelUnderCocone` | ModelUnder.lean:35 |
+| M07 | `finitePresentationModelUnderCoconeIsColimit` | ModelUnder.lean:49 |
+| M08 | `perfectedModelDiagram` | PerfectedModelDiagram.lean:21 |
+| M09 | `perfectedModelCocone` | PerfectedModelCocone.lean:21 |
+| M10 | `perfectedModelCoconeIsColimit` | PerfectedModelColimit.lean:25 |
+| M11 | `perfectedModel_isArcHom` | PerfectedModelCocone.lean:59 |
+| M12 | `perfectRingCechUniversalExact_of_filtered_models` | FilteredUniversalCech.lean:24 |
+| I00 | `perfectedAlgebraUnit` | FrobeniusPerfect.lean:82 |
+| I01 | `intervalRingSpectrumOrderIso` | IntervalSpectrum.lean:20 |
+| I02 | `intervalRing_krullDim_le_one_of_no_prime_between` | IntervalSpectrum.lean:48 |
+| I03 | `intervalRingOfFullSpectrumEquiv` | IntervalSpectrum.lean:71 |
+| I04 | `exists_fp_residue_point_of_perfectedArc` | IntervalPoints.lean:25 |
+| I05 | `exists_right_interval_fp_section` | EndpointSections.lean:20 |
+| I06 | `exists_left_interval_fp_section` | EndpointSections.lean:58 |
+| I07 | `perfectedAlgebraUnit_universalExact_of_section` | IntervalPoints.lean:51 |
+| O01 | `intervalTensorLocalizationEquiv` | IntervalTensorComparison.lean:24 |
+| O02 | `intervalTensorQuotientEquiv` | IntervalTensorComparison.lean:63 |
+| O03 | `intervalTensorIntersectionEquiv` | IntervalTensorComparison.lean:102 |
+| O04 | `overlapTensorModuleComplex` | OverlapComplex.lean:24 |
+| O05 | `overlapTensorModuleComplex_shortExact` | OverlapShortExact.lean:27 |
+| O06 | `perfectRingCechUniversalExact_of_overlap` | UniversalOverlap.lean:27 |
+| O07 | `GoodArcInterval` | Definitions.lean:85 |
+| O08 | `goodArcInterval_sub` | IntervalRestrictions.lean:24 |
+| O09 | `goodArcInterval_glue` | IntervalGluing.lean:29 |
+| I08 | `goodArcInterval_of_rank_le_one` | IntervalRestrictions.lean:45 |
+| I09 | `goodArcInterval_right` | LocalExtensions.lean:23 |
+| I10 | `goodArcInterval_left` | LocalExtensions.lean:54 |
+| I11 | `perfectedFpArc_universalExact` | PerfectedFpArc.lean:31 |
+| I12 | `aicValuationArc_universalExact` | AicValuationArc.lean:33 |
+| P00 | `perfectRing_pi_of_primeCast_eq_zero` | FrobeniusPerfect.lean:91 |
+| P01 | `perfectRingCechUniversalExact_of_ultraproducts` | UniversalUltraproduct.lean:30 |
+| P02 | `aicValuationProductArc_universalExact` | AicProductArc.lean:30 |
+| P03 | `probeCechFirstFactor` | ProbeTerms.lean:22 |
+| P04 | `probeCechFirstFactor_comp` | ProbeTerms.lean:30 |
+| P05 | `probeChangeToTermIso` | ProbeTerms.lean:38 |
+| P06 | `probeArc_positiveRows` | ArcCoverCech.lean:33 |
+| T00 | `ValuativeCoverFamily` | Definitions.lean:22 |
+| T01 | `IsVCoverFamily` | Definitions.lean:28 |
+| T02 | `IsArcCoverFamilyCharP` | Definitions.lean:33 |
+| T03 | `affineFamilyCech` | Definitions.lean:38 |
+| T04 | `BS17VCechInput` | Definitions.lean:44 |
+| T05 | `ArcRouteBGoal` | Definitions.lean:52 |
+| T06 | `bs17VCechInput` | ProbeComparison.lean:24 |
+| V01 | `cechExact_of_affineVCover_from_BS17` | ProbeComparison.lean:29 |
+| V02 | `cechExact_of_perfectAffineVCover_from_BS17` | ProbeComparison.lean:49 |
+| V03 | `cechExact_valuationProbeProduct_from_BS17` | ProbeComparison.lean:78 |
+| V04 | `isAffineVCover_tensor` | ProbeComparison.lean:87 |
+| V05 | `cechExact_valuationProbeProduct_tensor_from_BS17` | ProbeComparison.lean:103 |
+| V06 | `cechExact_of_valuationProbeTests` | ProbeComparison.lean:120 |
+| B01 | `cechExact_of_arcHom_perfect` | ArcCoverCech.lean:70 |
+| B02 | `cech_exact_of_arcCover_perfect` | ArcCoverCech.lean:79 |
+| Q01 | `nonempty_algHom_of_isAlgClosed` | FpResiduePoint.lean:18 |
+| L01 | `arcBaseChangeTransIso` | BaseChangeComparison.lean:21 |
+| L02 | `arcBaseChangeArrowIso` | BaseChangeArrowComparison.lean:20 |
+| L03 | `intervalCoefficient_primeQuotient_perfect` | IntervalCoefficientPerfect.lean:18 |
+| L04 | `intervalCoefficient_primeLocalization_perfect` | IntervalCoefficientPerfect.lean:35 |
+| L05 | `cechExact_of_overlapTensor_coefficients` | OverlapCoefficientDetection.lean:25 |
