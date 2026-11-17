@@ -11,8 +11,13 @@ if a.include_active_worktrees:
   fields=dict(line.split(' ',1) for line in block.splitlines() if ' ' in line)
   branch=fields.get('branch','').removeprefix('refs/heads/')
   if branch and branch not in ('main',current):branches.setdefault(branch,dict(worktree=fields['worktree']))
+removed_branches={}
 for branch,prev in branches.items():
- head=git(root,'rev-parse',branch);paths=set(git(root,'log','--format=','--name-only','--diff-filter=AM',old['base']+'..'+head,'--','*.lean').splitlines());hits=[]
+ resolved=subprocess.run(['git','rev-parse','--verify',branch],cwd=root,capture_output=True,text=True)
+ if resolved.returncode:
+  removed_branches[branch]=dict(previous_head=prev.get('head'),previous_worktree=prev.get('worktree'),reason='Reference no longer exists; active renamed worktrees are scanned separately')
+  continue
+ head=resolved.stdout.strip();paths=set(git(root,'log','--format=','--name-only','--diff-filter=AM',old['base']+'..'+head,'--','*.lean').splitlines());hits=[]
  for path in sorted(paths):
   if not path:continue
   r=subprocess.run(['git','show',head+':'+path],cwd=root,capture_output=True,text=True)
@@ -27,4 +32,4 @@ for branch,prev in branches.items():
    source=(worktree/path).read_text();checked+=1;matches=sorted(set(regex.findall(source)))
    if matches:dirty.append(dict(path=path,matches=matches,source_sha256=hashlib.sha256(source.encode()).hexdigest(),is_draft=path.startswith('drafts/')))
  results[branch]=dict(head=head,touched_lean_files=len(paths),affected_files=len(hits),files=hits,worktree=str(worktree) if worktree else None,uncommitted_checked=checked,uncommitted_matches=dirty,affected_files_with_worktree=len({r['path'] for r in hits+dirty}))
-summary=dict(base=old['base'],includes_active_worktrees=a.include_active_worktrees,policy='Exact old module/namespace strings, BE module basenames, plus bare namespace tokens and unrooted Mathlib HomotopicalAlgebra candidates; original branch HEAD and dirty/untracked Lean sources read-only, drafts included. Candidate matches are conservative; compiler checks determine actual bindings.',branches=results,total_affected_files=sum(x['affected_files'] for x in results.values()),total_affected_with_worktree=sum(x['affected_files_with_worktree'] for x in results.values()));a.output.write_text(json.dumps(summary,ensure_ascii=False,indent=2)+'\n');print(json.dumps({k:v['affected_files_with_worktree'] for k,v in results.items()}));raise SystemExit(1 if summary['total_affected_with_worktree']>30 else 0)
+summary=dict(base=old['base'],removed_branches=removed_branches,includes_active_worktrees=a.include_active_worktrees,policy='Exact old module/namespace strings, BE module basenames, plus bare namespace tokens and unrooted Mathlib HomotopicalAlgebra candidates; original branch HEAD and dirty/untracked Lean sources read-only, drafts included. Candidate matches are conservative; compiler checks determine actual bindings.',branches=results,total_affected_files=sum(x['affected_files'] for x in results.values()),total_affected_with_worktree=sum(x['affected_files_with_worktree'] for x in results.values()));a.output.write_text(json.dumps(summary,ensure_ascii=False,indent=2)+'\n');print(json.dumps({k:v['affected_files_with_worktree'] for k,v in results.items()}));raise SystemExit(1 if summary['total_affected_with_worktree']>30 else 0)

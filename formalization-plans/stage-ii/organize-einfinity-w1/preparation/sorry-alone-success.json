@@ -1,0 +1,31 @@
+{
+  "head_before": "76dfccc3a93007b6bf54523b528913e87e69effa",
+  "head_after": "76dfccc3a93007b6bf54523b528913e87e69effa",
+  "command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--class",
+    "impl",
+    "--wait",
+    "3600",
+    "--",
+    "gtimeout",
+    "--kill-after=3s",
+    "1200s",
+    "lake",
+    "env",
+    "lean",
+    "scripts/refactor/audit_sorries.lean"
+  ],
+  "returncode": 0,
+  "returncode_observed_from": "exec session 40909 completion",
+  "log_sha256": "d396ddb3b983eb2f6fd921deb3df2971128f1b7594ddef56d96578fb16e73b60",
+  "visited_constants": 102479,
+  "allowed_sorry_parents": [
+    "SerrePositivity.theorem_3_1_K0",
+    "SerrePositivity.Section4.supportedRankK0_descent",
+    "SerrePositivity.BhattScholze.Inputs.exists_perfectoidizationInterfaceE3"
+  ],
+  "forbidden_in_closure": false,
+  "result": "PASS"
+}
