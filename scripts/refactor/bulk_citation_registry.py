@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Check or regenerate Citation.lean's registry from research/bibliography.json.
+"""Check or regenerate CitationRegistry.lean's registry from research/bibliography.json.
 Only the marked registry block is generated; --check is read-only.
 """
 import argparse
@@ -33,7 +33,7 @@ def main():
     mode.add_argument('--write', action='store_true')
     args = parser.parse_args()
     registry = json.loads((args.root / 'research/bibliography.json').read_text())
-    path = args.root / 'SerrePositivity/Util/Citation.lean'
+    path = args.root / 'SerrePositivity/Util/CitationRegistry.lean'
     source = path.read_text()
     generated = block(registry)
     pattern = r'-- BEGIN GENERATED REGISTRY\n.*?-- END GENERATED REGISTRY'
