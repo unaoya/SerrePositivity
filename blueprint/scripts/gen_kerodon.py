@@ -54,6 +54,29 @@ KIND = {'Definition': 'definition', 'Notation': 'definition', 'Construction': 'd
         'Theorem': 'theorem', 'Proposition': 'proposition', 'Lemma': 'lemma_', 'Corollary': 'corollary'}
 def esc(s):
     return re.sub(r'([\\*_`\[\]{}#$<>|~^])', r'\\\1', s)
+
+# NB-W1（11-17）：research/kerodon-coverage/notes/<番号>.md の原稿をノードの本文に入れる（試し）。
+# Markdown → Verso：HTML コメントと追跡用 <a id> を落とし、## 見出しは太字の段落に、\( \)・\[ \] は Verso の数式 $`…`$・$$`…`$$ に、
+# pipe table は箇条書きに。冒頭の題・Tag 行・照合先の行は（ノードの頭と重なるので）落とす。
+NOTES = f'{K}/notes'
+def note_body(n):
+    fp = f'{NOTES}/{n}.md'
+    if not os.path.exists(fp): return None
+    out = []; in_table = False
+    for l in open(fp, encoding='utf-8'):
+        s = l.rstrip('\n')
+        if s.startswith('# ') or s.startswith('<!--') or s.startswith('<a id=') or s.startswith('Kerodon [') or s.startswith('照合先'): continue
+        if s.startswith('## '): out.append(f'**{s[3:].strip()}**\n'); continue
+        if s.startswith('|'):
+            cells = [c.strip() for c in s.strip().strip('|').split('|')]
+            if all(re.fullmatch(r':?-+:?', c) for c in cells if c): continue
+            out.append('- ' + '　／　'.join(cells)); continue
+        s = re.sub(r'\\\((.+?)\\\)', lambda m: '$`' + m.group(1).strip() + '`$', s)
+        s = re.sub(r'\\\[(.+?)\\\]', lambda m: '$$`' + m.group(1).strip() + '`$$', s)
+        out.append(s)
+    text = re.sub(r'\n{3,}', '\n\n', '\n'.join(out)).strip('\n')
+    return text + '\n' if text else None
+
 STATUS = {'own': '本体にある', 'mathlib': 'Mathlib にある', 'both': '本体と Mathlib にある', 'partial': '一部', 'none': 'なし'}
 by_sec = collections.defaultdict(list)
 for r in rows:
@@ -70,6 +93,9 @@ for sec in sorted(by_sec, key=lambda s: [int(x) for x in s.split('.')]):
             body.append(f'# {sub} {esc(t[1]) if t else ""}\n')
             body.append('%%%\nnumber := false\ntag := "kerodon-' + sub.replace('.', '-') + '"\n%%%\n')
             if t: body.append(f'Kerodon [Tag {t[0]}](https://kerodon.net/tag/{t[0]})\n')
+            if (nb := note_body(sub)):
+                stats['with-note-intro'] += 1
+                body.append(nb)
         # x.y.0 の項目（節の冒頭）は見出しを立てずに節の本文の先頭に置く
         for r in sorted(sub_rows[sub], key=lambda r: [int(x) for x in r['number'].split('.')]):
             n = r['number']; kind = kinds.get(n, 'Proposition'); st = r['status_new']
@@ -88,6 +114,9 @@ for sec in sorted(by_sec, key=lambda s: [int(x) for x in s.split('.')]):
             body.append(f':::{directive} "{label}"{opt}')
             body.append(f'{head}。対応表の状態：{STATUS.get(st, st)}。\n')
             if r['reason']: body.append(esc(r['reason']) + '\n')
+            if (nb := note_body(n)):
+                stats['with-note'] += 1
+                body.append(nb)
             if decls and not linked:
                 body.append('宣言：' + '、'.join('`' + e.split(' @ ', 1)[0].replace('`', '') + '`' for e in decls) + '\n')
             body.append(':::\n')
@@ -97,6 +126,9 @@ for sec in sorted(by_sec, key=lambda s: [int(x) for x in s.split('.')]):
           ['', 'open Verso.Genre', 'open Verso.Genre.Manual', 'open Informal', '',
            f'#doc (Manual) "{sec} {t[1] if t else ""}" =>', '%%%', 'number := false', f'tag := "kerodon-{sec.replace(".", "-")}"', '%%%', '',
            f'Kerodon の {sec} 節（[Tag {t[0]}](https://kerodon.net/tag/{t[0]})）の項目と、SerrePositivity・Mathlib の宣言との対応。本文は対応表（research/kerodon-coverage）の判定の理由の要約で、Kerodon の本文の写しではない。\n' if t else '']
+    if (nb := note_body(sec)):
+        stats['with-note-intro'] += 1
+        hdr.append(nb)
     open(f'{OUT}/{mod}.lean', 'w', encoding='utf-8').write('\n'.join(hdr + body) + '\n')
     modules.append(mod)
 json.dump({'chapter': ch, 'modules': modules, 'stats': dict(stats)}, open(f'{OUT}/ch{ch}-generated.json', 'w'), ensure_ascii=False, indent=1)

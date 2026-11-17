@@ -32,6 +32,10 @@ tag := "kerodon-1-1"
 
 Kerodon の 1.1 節（[Tag 0004](https://kerodon.net/tag/0004)）の項目と、SerrePositivity・Mathlib の宣言との対応。本文は対応表（research/kerodon-coverage）の判定の理由の要約で、Kerodon の本文の写しではない。
 
+**規約 （大きさ）**
+
+第 III 部を通して、Grothendieck 宇宙 $`\mathbb U`$ を一つ固定する。$`\mathbb U`$ の元である集合を小さいという。単体的集合 $`X`$ が小さいとは、すべての $`[m]`$ について $`X([m])`$ が小さいことをいう。
+
 :::definition "kerodon_1_1_0_1"
 Kerodon Notation 1.1.0.1（[Tag 0009](https://kerodon.net/tag/0009)）。対応表の状態：Mathlib にある。
 
@@ -45,6 +49,16 @@ Kerodon Notation 1.1.0.1（[Tag 0009](https://kerodon.net/tag/0009)）。対応�
 Kerodon Definition 1.1.0.2（[Tag 000A](https://kerodon.net/tag/000A)）。対応表の状態：Mathlib にある。
 
 仮定：非空有限順序集合の標準形 \[n\] を使う（Kerodon と一致）。結論：SimplexCategory の対象は長さ n、\[m\] から \[n\] の射は Fin (m+1) →o Fin (n+1) の順序写像（一致）。
+
+**定義 1.1 （単体圏 \(\Delta\)）**
+
+$`n\ge0`$ について、$`[n]=\{0,1,\dots,n\}`$ に通常の大小関係 $`0<1<\cdots<n`$ で全順序を入れたものを考える。単体圏 $`\Delta`$ を次で定める。
+
+- 対象：$`[n]`$（$`n\ge0`$）。
+
+- 射：$`\mathrm{Hom}_\Delta([m],[n])`$ は、順序を保つ写像 $`\theta\colon[m]\to[n]`$、つまり $`i\le j`$ なら $`\theta(i)\le\theta(j)`$ をみたす写像の全体。
+
+- 合成：写像の合成。恒等射：恒等写像。
 
 :::
 
@@ -66,6 +80,10 @@ Kerodon Notation 1.1.0.5（[Tag 000D](https://kerodon.net/tag/000D)）。対応�
 Kerodon Definition 1.1.0.6（[Tag 000H](https://kerodon.net/tag/000H)）。対応表の状態：Mathlib にある。
 
 仮定：値を集合の圏に取る（Kerodon と一致。Lean の集合は Type u）。結論：SSet は Δᵒᵖ から Type u への関手の型（一致）。
+
+**定義 1.2 （単体的集合）**
+
+単体的集合とは関手 $`X\colon\Delta^{\mathrm{op}}\to\mathrm{Set}`$ のことである。単体的集合の射は関手の間の自然変換とする。
 
 :::
 
@@ -311,6 +329,10 @@ skAdjは切断からの左随伴。原文の部分複体skeletonとの比較同�
 Kerodon Construction 1.1.4.10（[Tag 000R](https://kerodon.net/tag/000R)）。対応表の状態：Mathlib にある。
 
 仮定：非負整数 n（Kerodon と一致）。結論：boundary n は Δ\[n\] の真の面を合わせた部分複体で、次数 m\<n では boundary\_obj\_eq\_univ により全単体を含む（一致）。
+
+**定義 5.1 （境界 \(\partial\Delta^n\)）**
+
+$`n\ge0`$ について、$`\Delta^n`$ の部分単体的集合 $`\partial\Delta^n=\bigcup_{0\le j\le n}\partial_j\Delta^n`$ を境界という（面は[定義 1.6](1.2.4.md#t01-def-face-1)、和は[定義 1.5](1.1.0.14.md#t01-def-union-1)）。$`\partial\Delta^0`$ は空である。
 
 :::
 

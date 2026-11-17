@@ -37,6 +37,10 @@ tag := "kerodon-1-5"
 
 Kerodon の 1.5 節（[Tag 0055](https://kerodon.net/tag/0055)）の項目と、SerrePositivity・Mathlib の宣言との対応。本文は対応表（research/kerodon-coverage）の判定の理由の要約で、Kerodon の本文の写しではない。
 
+**定義 5.3 （fibration）**
+
+単体的集合の射 $`q\colon E\to B`$ が、次の表の包含のすべてに対して右持ち上げ性質（[定義 5.2](1.5.4.3.md#t05-def-lifting-1)）をもつとき、それぞれ次のように呼ぶ（horn は[定義 1.7](1.2.4.1.md#t01-def-horn-1)）。
+
 :::definition "kerodon_1_5_0_1" (lean := "SSet, SSet.Quasicategory")
 Kerodon Definition 1.5.0.1（[Tag 0056](https://kerodon.net/tag/0056)）。対応表の状態：Mathlib にある。
 
@@ -83,10 +87,42 @@ tag := "kerodon-1-5-3"
 
 Kerodon [Tag 005Z](https://kerodon.net/tag/005Z)
 
+**定義 2.1 （単体的集合の積）**
+
+単体的集合 $`X,Y`$ の積 $`X\times Y`$ を
+
+$$`(X\times Y)([m])=X([m])\times Y([m]),\qquad (X\times Y)(\theta)=X(\theta)\times Y(\theta)`$$
+
+で定める（$`\theta\colon[m]\to[m']`$）。射影 $`X\times Y\to X`$、$`X\times Y\to Y`$ は各成分への射影で与える。
+
+**定義 2.3 （後合成）**
+
+単体的集合 $`K`$ と射 $`q\colon X\to S`$ について、射 $`q_*\colon\mathrm{Fun}(K,X)\to\mathrm{Fun}(K,S)`$ を、$`n`$ 単体 $`f\colon K\times\Delta^n\to X`$ を $`q\circ f`$ に送ることで定める（$`\mathrm{Fun}`$ は[定義 2.2](1.5.3.1.md#t02-def-fun-1)）。
+
+**定義 2.5 （合成と恒等射）**
+
+単体的集合 $`X,Y,Z`$ について、合成 $`\circ\colon\mathrm{Fun}(Y,Z)\times\mathrm{Fun}(X,Y)\to\mathrm{Fun}(X,Z)`$ を、$`n`$ 単体 $`g\colon Y\times\Delta^n\to Z`$、$`f\colon X\times\Delta^n\to Y`$ に対して
+
+$$`g\circ f\colon X\times\Delta^n\xrightarrow{(f,\ \mathrm{pr}_{\Delta^n})}Y\times\Delta^n\xrightarrow{\ g\ }Z`$$
+
+で定める。恒等射 $`\mathrm{id}_X`$ は、射影 $`X\times\Delta^0\to X`$ で与えられる $`\mathrm{Fun}(X,X)`$ の 0 単体とする。
+
+**定理 2.6 （合成の性質）**
+
+[定義 2.5](1.5.3.md#t02-def-composition-1) の合成は単体的集合の射であり、結合的で、$`\mathrm{id}`$ を単位とする。
+
 :::definition "kerodon_1_5_3_1" (lean := "CategoryTheory.ihom")
 Kerodon Construction 1.5.3.1（[Tag 0060](https://kerodon.net/tag/0060)）。対応表の状態：Mathlib にある。
 
 仮定：任意の単体集合 S,T（Kerodon と一致。Lean の ihom は一般のモノイダル閉圏で定義される）。結論：(ihom S).obj T は内部 Hom。次数 n の評価を Yoneda と随伴で読むと Hom(Δ\[n\] × S,T) になる。積の因子順は対称性で対応する（一致）。
+
+**定義 2.2 （写像単体的集合 \(\mathrm{Fun}(X,Y)\)）**
+
+$`\theta\colon[m]\to[n]`$ について、$`\theta_*\colon\Delta^m\to\Delta^n`$ を $`\theta`$ との合成 $`\alpha\mapsto\theta\circ\alpha`$ で定まる単体的集合の射とする。単体的集合 $`X,Y`$ について、単体的集合 $`\mathrm{Fun}(X,Y)`$ を
+
+$$`\mathrm{Fun}(X,Y)([n])=\mathrm{Hom}_{\mathrm{sSet}}(X\times\Delta^n,Y),\qquad \mathrm{Fun}(X,Y)(\theta)(f)=f\circ(\mathrm{id}_X\times\theta_*)`$$
+
+で定める。
 
 :::
 
@@ -94,6 +130,14 @@ Kerodon Construction 1.5.3.1（[Tag 0060](https://kerodon.net/tag/0060)）。対
 Kerodon Proposition 1.5.3.2（[Tag 0061](https://kerodon.net/tag/0061)）。対応表の状態：Mathlib にある。
 
 仮定：単体集合 S,T,U（Kerodon と一致。Lean の随伴は一般のモノイダル閉圏に適用できる）。結論：ihom.adjunction は Hom(U,ihom(S,T)) と Hom(S × U,T) の全単射。curry の逆が評価との合成で、原文の U × S には積の対称性で移る（一致）。
+
+**定理 2.4 （積と写像単体的集合の随伴）**
+
+単体的集合 $`X`$ を固定すると、単体的集合 $`Z,Y`$ について自然な全単射
+
+$$`\mathrm{Hom}_{\mathrm{sSet}}(Z\times X,Y)\cong\mathrm{Hom}_{\mathrm{sSet}}(Z,\mathrm{Fun}(X,Y))`$$
+
+がある。すなわち $`(-)\times X`$ は $`\mathrm{Fun}(X,-)`$ の左随伴である。
 
 :::
 
@@ -165,6 +209,10 @@ Kerodon Definition 1.5.4.1（[Tag 006C](https://kerodon.net/tag/006C)）。対�
 Kerodon Definition 1.5.4.3（[Tag 006E](https://kerodon.net/tag/006E)）。対応表の状態：Mathlib にある。
 
 仮定：圏 C の二射 f,g（Kerodon と一致）。結論：HasLiftingProperty f g は f と g を縦辺に持つすべての可換正方形に持ち上げがあること。llp は g を指定クラス全体に渡らせる（一致）。
+
+**定義 5.2 （右持ち上げ性質）**
+
+単体的集合の射 $`q\colon E\to B`$ が部分単体的集合の包含 $`A\subseteq A'`$ に対して右持ち上げ性質をもつとは、射 $`u\colon A\to E`$、$`v\colon A'\to B`$ が $`q\circ u=v|_A`$ をみたすとき、必ず射 $`w\colon A'\to E`$ で $`w|_A=u`$、$`q\circ w=v`$ となるものが存在することをいう。
 
 :::
 
@@ -247,6 +295,11 @@ Kerodon Definition 1.5.5.1（[Tag 006W](https://kerodon.net/tag/006W)）。対�
 
 仮定：単体集合の射 q:X⟶Y（Kerodon と一致）。結論：trivialKanFibration\_iff\_boundary は TrivialKanFibration q と、次数 0 を含む全ての ∂Δ\[n\]⟶Δ\[n\] に対する右持ち上げ性を同値とする（一致）。
 
+**定義 5.3 （fibration）**
+
+- 名前　／　包含
+- trivial Kan fibration　／　\(\partial\Delta^n\subseteq\Delta^n\)（\(n\ge0\)、[定義 5.1](1.1.4.10.md#t05-def-boundary-1)）
+
 :::
 
 :::proposition "kerodon_1_5_5_4" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.trivialKanFibration_iff_boundary, SSet.rlp_monomorphisms")
@@ -285,6 +338,10 @@ Kerodon Corollary 1.5.5.7（[Tag 0071](https://kerodon.net/tag/0071)）。対応
 Kerodon Definition 1.5.5.8（[Tag 0072](https://kerodon.net/tag/0072)）。対応表の状態：本体にある。
 
 仮定：単体集合 X（Kerodon と一致）。結論：isContractibleKan\_iff\_trivialKanFibration は全境界を充填できる IsContractibleKan X と終対象 Δ\[0\] への射の自明 Kan fibration 性を同値にする（一致）。
+
+**定義 5.4 （可縮）**
+
+単体的集合 $`X`$ が可縮であるとは、$`X\to\Delta^0`$ が trivial Kan fibration（[定義 5.3](1.5.md#t05-def-fibrations-1)）であること、すなわち任意の射 $`\partial\Delta^n\to X`$（$`n\ge0`$）が $`\Delta^n\to X`$ に延長できることをいう。
 
 :::
 
