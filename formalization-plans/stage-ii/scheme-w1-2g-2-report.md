@@ -1,6 +1,6 @@
 # SC-W1 2g-2：G3〜G5 の実装記録
 
-**現在の外枠は20,000行（2026-11-16、ユーザーの明示承認）。以下の16,000・18,000行の記載は各時点の履歴。G3は済み、G4・G5は未完。18,000行の規模境界で停止後、同じ型・範囲での再開が承認された。**
+**停止点2g-2完成（2026-11-17、数学cc1d70c10）。G3・G4・G5を検証・監査済み、承認済みG4・G5の89署名は全て完了。実測23,945行、外枠28,000行以内。2hの16署名は別枠1,200行で、この報告後に事前承認どおり進む。以下の古い外枠・未完表示は各時点の履歴。**
 
 2026-11-15。2g-1 の数学 e5b3e411f・停止点報告56ea849a3 の後、既承認の G3 へ進む。G1・G2 は17／17完了。2g-2 の外枠16,000行は別計上し、最終の AugmentedRingCechExact と利用側の型は変えない。root・下流全ビルドを行わず、対象と直接 importer、小監査を共有鍵 --class impl --wait 3600 で別々に検証する。
 
@@ -9,10 +9,10 @@
 | ID | 型・出口 | 状態 | 追加 |
 | --- | --- | --- | --- |
 | G3 | BS17 Lemma 2.6 の帰納的レベルの有限性と、射影版の入力に使うブローアップ・有限ファイバー冪の表示 | 済み | 下記の有限レベルの存在・Rees と既存の Čech 各項の実際の表示 |
-| G4 | B1 の二重 Čech の API と 2f の射影 Čech 四角形を使う、Thm 2.9 十分性のこのレーンの係数への実装 | 未完 | |
-| G5 | 実際の有限型模型・Frobenius 係数と filtered な Čech 完全性の移送、最終型への入口 | 未完 | |
+| G4 | B1 の二重 Čech の API と 2f の射影 Čech 四角形を使う、Thm 2.9 十分性のこのレーンの係数への実装 | 済み | |
+| G5 | 実際の有限型模型・Frobenius 係数と filtered な Čech 完全性の移送、最終型への入口 | 済み | |
 
-一覧：済み0／全体3（うち追加0）。
+一覧：済み3／全体3（うち追加0）。
 
 ## G3 の最初の束：帰納的レベルと精密化の法則（着手前の型）
 
@@ -3654,3 +3654,121 @@ private def pairedRowEvaluationIso
 - 一覧：済み2／全体3（うち追加0）。内部署名：済み87／89（G4・G5）、追加0。E16の原稿検証は成功し、共有鍵の順を待って対象ビルドを進める。
 
 - I13 `SerrePositivity.AlgebraicGeometry.noetherianAffineVCover_frobeniusCechExact`：Noether環上の元の有限表示なaffine v被覆のFrobenius係数の増大Čech完全性を得る。
+
+## 停止点2g-2：G3・G4・G5の完成（2026-11-17、数学cc1d70c10）
+
+- E16（e3d1d0d86）・E18（cc1d70c10）を同じ署名・仮定で実装。新規2モジュール83行＋入口4行＝87行、所有2宣言。原稿・本体の同一バイトとSHA、対象ビルド5,411・5,412ジョブと直接importer、各束で別の共有鍵を取った所有監査が成功。標準三公理以外0。
+- E16は同じ係数環上の被覆模型の各有限段へI13を適用し、E01〜E15の元の矢印・二変数Frobenius図式・filtered余極限の自然な比較を通して、元の環準同型の係数へ戻す。E18はULiftした素体を係数環に選ぶ。元のR・Sへの追加のNoether性・有限表示性・完全性の仮定はない。零環も除外しない。
+- **完成した出口** `SerrePositivity.AlgebraicGeometry.affineVCover_frobeniusCechExact` は、元の任意のaffine v被覆と(p : R)=0から、その同じ環準同型の実際のFrobenius係数の増大Čech完全性を得る。一般の完全有限族の元の環のconerveへ戻す2hは別段であり、この報告時点の完成とは区別する。
+- **実測23,945行**：基準56ea849a3から新規313モジュール23,553行、既存追加25行、入口367行。gitの追加行の再集計と一致する。削除14行を控除せず、外枠28,000行以内（残余4,055行）。所有新規宣言累計2,518件（生成された補助宣言も含む）、以前の既存15件は別。各数学コミットの前に対象・直接importerと所有宣言の公理閉包を検証済み。root・下流全ビルド・全AlgebraicGeometry監査は行わず、調整役に渡す。
+- 今回の105署名の紙以降の残部は、新規本体と入口の登録で完了した。公開署名・仮定・最終述語の変更0、一覧IDの追加0。F06内部の非公開の法則・証明分割の完全な型は本報告に記録済み。sorry・admit・native_decide・新しい公理・検証の資源上限の引き上げはない。
+- 共有鍵はmainから取り込んだ `with_build_lock.sh --class impl --wait 3600` を各ビルド・監査の間だけ使用し、同じworktreeの待ちは一つにした。作業用の原稿・道具・ログはworktreeのscheme-draftsに置いた。mainへの取り込みは行わない。
+- **一覧：済み3／全体3（うち追加0）。内部署名：済み89／89（G4・G5）、追加0。** 2hのH01〜H04・16署名は別枠1,200行で、この報告後は承認を待たず進む。2h後は2iの段0の紙（型つき一覧・見込み・置き場所・消えるdraftsのsorry）を作って止まる。
+
+- E16 `SerrePositivity.AlgebraicGeometry.coefficientVCover_frobeniusCechExact`：同じNoether係数環上の被覆模型とfiltered移送で、元の係数環の射のFrobenius係数の増大Čech完全性を得る（e3d1d0d86）。
+- E18 `SerrePositivity.AlgebraicGeometry.affineVCover_frobeniusCechExact`：元の任意のaffine v被覆のFrobenius係数の増大Čech完全性を得る（cc1d70c10）。
+
+### 四つの接続の閉じ方
+
+| 接続 | 検証済みの主な署名・宣言 |
+| --- | --- |
+| nil閉厚化 | N01〜N06の同じ厚化・nerve・被覆・Frobenius係数の比較、`nilBaseChange_tupleTotal_acyclic_iff`、D04・D09の普遍降下への移送・反映 |
+| 相対fppfの照合 | P01〜P21の同じ二変数図式、C01〜C11の三重totalと両軸、F01〜F11・D05〜D08の切断・アフィン細分・相対fppfの消去 |
+| Noether閉像の帰納 | I01〜I09の同じ中心・射影表示、I10の帰納の一段、I11の整礎帰納、I12の固有全射、I13のRydh 3.10による元の有限表示v被覆への反映 |
+| G5の二変数図式と余極限 | E01〜E15の実際の有限表示被覆模型・Frobeniusと模型の自然な比較、E16のfiltered移送、E17・E18の同じ元の環を素体上へ置いた出口 |
+
+### 承認済み89署名と本体の対応
+
+各完全な型・原典対応・依存は `scheme-w1-2g-2-residual-lemma-plan.md` に保持する。名前と場所を機械照合し、89件を一意に発見した（欠落・重複候補0）。以下は今回の検証済みの本体の場所。
+
+| ID | 宣言 | 本体の場所 |
+| --- | --- | --- |
+| N01 | `fullCechComplexMap_isIso_of_nonempty_support` | `SerrePositivity/AlgebraicGeometry/FullCechNonemptySupportIso.lean:18` |
+| N02 | `nilImmersion_app_universalHomeomorphism` | `SerrePositivity/AlgebraicGeometry/NilImmersionAffineSectionCoefficients.lean:19` |
+| N03 | `nilImmersion_perfectCechPullback_isIso` | `SerrePositivity/AlgebraicGeometry/NilImmersionPerfectCechPullback.lean:21` |
+| N04 | `nilBaseChange_cechNerve_map` | `SerrePositivity/AlgebraicGeometry/NilBaseChangeCechNerve.lean:20` |
+| N05 | `nilBaseChange_tupleAugmentedPullback_isIso` | `SerrePositivity/AlgebraicGeometry/NilBaseChangePerfectCech.lean:26` |
+| N06 | `nilBaseChange_tupleTotal_acyclic_iff` | `SerrePositivity/AlgebraicGeometry/NilBaseChangePerfectCech.lean:122` |
+| D01 | `PerfectCechUniversalDescent` | `SerrePositivity/AlgebraicGeometry/PerfectCechUniversalDescent.lean:20` |
+| D02 | `perfectCechUniversalDescent_baseChange` | `SerrePositivity/AlgebraicGeometry/PerfectCechUniversalBaseChange.lean:24` |
+| D03 | `perfectCechUniversalDescent_flat_surjective` | `SerrePositivity/AlgebraicGeometry/PerfectCechUniversalDescent.lean:32` |
+| D04 | `perfectCechUniversalDescent_nilImmersion` | `SerrePositivity/AlgebraicGeometry/PerfectCechUniversalNilImmersion.lean:19` |
+| P01 | `augmentedNerveBase` | `SerrePositivity/AlgebraicGeometry/AugmentedCechCoordinates.lean:21` |
+| P02 | `augmentedTupleLength` | `SerrePositivity/AlgebraicGeometry/AugmentedCechCoordinates.lean:29` |
+| P03 | `augmentedTupleIndexMap` | `SerrePositivity/AlgebraicGeometry/AugmentedCechCoordinates.lean:35` |
+| P04 | `augmentedTupleIndexMap_id` | `SerrePositivity/AlgebraicGeometry/AugmentedCechCoordinates.lean:43` |
+| P05 | `augmentedTupleIndexMap_comp` | `SerrePositivity/AlgebraicGeometry/AugmentedCechCoordinates.lean:50` |
+| P06 | `augmentedTupleOpen` | `SerrePositivity/AlgebraicGeometry/PairedCechGeometry.lean:22` |
+| P07 | `pairedCechScheme` | `SerrePositivity/AlgebraicGeometry/PairedCechGeometry.lean:32` |
+| P08 | `pairedCechSchemeMap` | `SerrePositivity/AlgebraicGeometry/PairedCechGeometryMaps.lean:19` |
+| P09 | `pairedCechSchemeMap_id` | `SerrePositivity/AlgebraicGeometry/PairedCechGeometryMaps.lean:42` |
+| P10 | `pairedCechSchemeMap_comp` | `SerrePositivity/AlgebraicGeometry/PairedCechGeometryMaps.lean:58` |
+| P11 | `pairedCechOpen` | `SerrePositivity/AlgebraicGeometry/PairedCechGeometry.lean:38` |
+| P12 | `pairedCechOpen_map_le` | `SerrePositivity/AlgebraicGeometry/PairedCechOpenNaturality.lean:22` |
+| P13 | `pairedCechPrimeCast` | `SerrePositivity/AlgebraicGeometry/PairedCechGeometry.lean:51` |
+| P14 | `pairedPerfectCechComplex` | `SerrePositivity/AlgebraicGeometry/PairedCechGeometry.lean:61` |
+| P15 | `pairedPerfectCechMap` | `SerrePositivity/AlgebraicGeometry/PairedPerfectCechFunctor.lean:21` |
+| P16 | `pairedPerfectCechMap_id` | `SerrePositivity/AlgebraicGeometry/PairedPerfectCechFunctor.lean:36` |
+| P17 | `pairedPerfectCechMap_comp` | `SerrePositivity/AlgebraicGeometry/PairedPerfectCechFunctor.lean:51` |
+| P18 | `pairedPerfectCech` | `SerrePositivity/AlgebraicGeometry/PairedPerfectCechFunctor.lean:96` |
+| P19 | `pairedCechOpen_isAffineOpen_cover` | `SerrePositivity/AlgebraicGeometry/PairedCechOpenNaturality.lean:76` |
+| C01 | `cechTripleTotalComponentIso` | `SerrePositivity/AlgebraicGeometry/CechTripleTotalComponents.lean:22` |
+| C02 | `cechTripleTotalComponentIso_ι` | `SerrePositivity/AlgebraicGeometry/CechTripleTotalComponents.lean:91` |
+| C03 | `cechTripleTotalComponentIso_d` | `SerrePositivity/AlgebraicGeometry/CechTripleTotalDifferential.lean:21` |
+| C04 | `cechTripleTotalAssociator` | `SerrePositivity/AlgebraicGeometry/CechTripleTotalDifferential.lean:90` |
+| C05 | `cechTripleTotalAssociator_naturality` | `SerrePositivity/AlgebraicGeometry/CechTripleTotalDifferential.lean:103` |
+| C06 | `complexValuedAugmentedDouble` | `SerrePositivity/AlgebraicGeometry/ComplexValuedAugmentedDouble.lean:22` |
+| C07 | `complexValuedAugmentedDouble_swapIso` | `SerrePositivity/AlgebraicGeometry/ComplexValuedDoubleCechSymmetry.lean:22` |
+| C08 | `complexValuedAugmentedDouble_columnIso` | `SerrePositivity/AlgebraicGeometry/ComplexValuedAugmentedDouble.lean:33` |
+| C09 | `complexValuedAugmentedDouble_columnZeroProjection` | `SerrePositivity/AlgebraicGeometry/ComplexValuedAugmentedDouble.lean:43` |
+| C10 | `complexValuedAugmentedDouble_columnZeroProjection_quasiIso` | `SerrePositivity/AlgebraicGeometry/ComplexValuedAugmentedDouble.lean:55` |
+| C11 | `complexValuedDoubleCech_axes_acyclic_iff` | `SerrePositivity/AlgebraicGeometry/ComplexValuedDoubleCechSymmetry.lean:91` |
+| P20 | `pairedPerfectCech_zero_col_acyclic_iff` | `SerrePositivity/AlgebraicGeometry/PairedPerfectCechZeroAxes.lean:30` |
+| P21 | `pairedPerfectCech_zero_row_acyclic_iff` | `SerrePositivity/AlgebraicGeometry/PairedPerfectCechZeroRow.lean:20` |
+| F01 | `exists_section_adapted_affine_cover` | `SerrePositivity/AlgebraicGeometry/SectionAdaptedAffineCover.lean:20` |
+| F02 | `section_affine_chart_retraction` | `SerrePositivity/AlgebraicGeometry/SectionAffineChartRetraction.lean:22` |
+| F03 | `section_affine_chart_frobeniusCechExact` | `SerrePositivity/AlgebraicGeometry/SectionAffineChartRetraction.lean:44` |
+| F04 | `pairedCech_col_acyclic_of_sections` | `SerrePositivity/AlgebraicGeometry/PairedPerfectCechSectionColumns.lean:19` |
+| F05 | `pairedCech_col_acyclic_of_baseChangeDescent` | `SerrePositivity/AlgebraicGeometry/PairedPerfectCechBaseChangeColumns.lean:26` |
+| F06 | `pairedCech_row_acyclic_of_baseChangeDescent` | `SerrePositivity/AlgebraicGeometry/PairedPerfectCechBaseChangeRows.lean:386` |
+| F07 | `section_perfectCechTupleTotal_acyclic` | `SerrePositivity/AlgebraicGeometry/SectionPerfectCechTupleTotal.lean:21` |
+| D05 | `perfectCechUniversalDescent_of_section` | `SerrePositivity/AlgebraicGeometry/PerfectCechUniversalSection.lean:19` |
+| D06 | `perfectCechUniversalDescent_of_affine_refinement` | `SerrePositivity/AlgebraicGeometry/PerfectCechUniversalAffineRefinement.lean:24` |
+| F08 | `fppfComparisonRefiner` | `SerrePositivity/AlgebraicGeometry/FppfComparisonRefiner.lean:19` |
+| F09 | `fppfComparisonRefiner_over` | `SerrePositivity/AlgebraicGeometry/FppfComparisonRefiner.lean:31` |
+| F10 | `fppfComparison_baseChange_descent` | `SerrePositivity/AlgebraicGeometry/FppfComparisonBaseChangeDescent.lean:20` |
+| F11 | `affine_fppf_composite_tupleTotal_acyclic` | `SerrePositivity/AlgebraicGeometry/AffineFppfCompositeTupleTotal.lean:27` |
+| D07 | `perfectCechUniversalDescent_affine_fppf_comp` | `SerrePositivity/AlgebraicGeometry/PerfectCechUniversalFppfComposite.lean:22` |
+| D08 | `perfectCechUniversalDescent_targetIso` | `SerrePositivity/AlgebraicGeometry/PerfectCechUniversalTargetIso.lean:24` |
+| D09 | `perfectCechUniversalDescent_of_nil_baseChange` | `SerrePositivity/AlgebraicGeometry/PerfectCechUniversalNilReflection.lean:22` |
+| I01 | `BlowupPerfectCechBaseChangeData` | `SerrePositivity/AlgebraicGeometry/BlowupPerfectCechBaseChangeData.lean:20` |
+| I02 | `blowupPerfectCechBaseChangeData` | `SerrePositivity/AlgebraicGeometry/BlowupPerfectCechBaseChangeModel.lean:23` |
+| I03 | `blowupBaseChange_center_universalDescent` | `SerrePositivity/AlgebraicGeometry/BlowupPerfectCechCenterDescent.lean:23` |
+| I04 | `perfectCechUniversalDescent_blowup_of_center` | `SerrePositivity/AlgebraicGeometry/BlowupPerfectCechUniversalDescent.lean:24` |
+| I05 | `closedCenterImage` | `SerrePositivity/AlgebraicGeometry/NoetherClosedCenterImage.lean:19` |
+| I06 | `closedCenterImage_lt` | `SerrePositivity/AlgebraicGeometry/NoetherClosedCenterImage.lean:24` |
+| I07 | `NoetherClosedPerfectCechProperty` | `SerrePositivity/AlgebraicGeometry/NoetherClosedPerfectCechProperty.lean:20` |
+| I08 | `noetherClosedPerfectCechProperty_empty` | `SerrePositivity/AlgebraicGeometry/NoetherClosedPerfectCechProperty.lean:28` |
+| I09 | `noetherClosed_center_input` | `SerrePositivity/AlgebraicGeometry/NoetherClosedCenterInput.lean:21` |
+| I10 | `noetherClosedPerfectCechProperty_step` | `SerrePositivity/AlgebraicGeometry/NoetherClosedPerfectCechStep.lean:26` |
+| I11 | `noetherClosedPerfectCechProperty_all` | `SerrePositivity/AlgebraicGeometry/ProperSurjectivePerfectCechUniversalDescent.lean:19` |
+| I12 | `properSurjective_perfectCechUniversalDescent` | `SerrePositivity/AlgebraicGeometry/ProperSurjectivePerfectCechUniversalDescent.lean:28` |
+| I13 | `noetherianAffineVCover_frobeniusCechExact` | `SerrePositivity/AlgebraicGeometry/NoetherianAffineVCoverFrobeniusCechExact.lean:25` |
+| E01 | `frobeniusArrowFamilyDiagram` | `SerrePositivity/AlgebraicGeometry/FrobeniusArrowFamily.lean:20` |
+| E02 | `frobeniusArrowFamilyLimit` | `SerrePositivity/AlgebraicGeometry/FrobeniusArrowFamily.lean:32` |
+| E03 | `frobeniusArrowFamilyStandardIso` | `SerrePositivity/AlgebraicGeometry/FrobeniusArrowFamily.lean:45` |
+| E04 | `frobeniusArrowFamilyTargetCocone` | `SerrePositivity/AlgebraicGeometry/FrobeniusArrowFamilyCocones.lean:19` |
+| E05 | `frobeniusArrowFamilyTargetCocone_ι` | `SerrePositivity/AlgebraicGeometry/FrobeniusArrowFamilyCocones.lean:35` |
+| E06 | `frobeniusArrowFamilyStageCocone` | `SerrePositivity/AlgebraicGeometry/FrobeniusArrowFamilyCocones.lean:43` |
+| E07 | `frobeniusArrowFamilyStageCoconeIsColimit` | `SerrePositivity/AlgebraicGeometry/FrobeniusArrowFamilyCocones.lean:54` |
+| E08 | `frobeniusArrowFamilyStageColimitIso` | `SerrePositivity/AlgebraicGeometry/FrobeniusArrowFamilyCocones.lean:71` |
+| E09 | `frobeniusArrowFamilyStageColimitIso_ι` | `SerrePositivity/AlgebraicGeometry/FrobeniusArrowFamilyCocones.lean:106` |
+| E10 | `frobeniusArrowFamilyFubiniIso` | `SerrePositivity/AlgebraicGeometry/FrobeniusArrowFamily.lean:58` |
+| E11 | `frobeniusArrowFamilyTargetCoconeIsColimit` | `SerrePositivity/AlgebraicGeometry/FrobeniusArrowFamilyColimit.lean:20` |
+| E12 | `frobeniusArrowFamilyColimitIso` | `SerrePositivity/AlgebraicGeometry/FrobeniusArrowFamilyColimit.lean:71` |
+| E13 | `frobeniusArrowFamilyColimitIso_ι` | `SerrePositivity/AlgebraicGeometry/FrobeniusArrowFamilyColimit.lean:82` |
+| E14 | `frobeniusCechExact_of_filtered_arrow_models` | `SerrePositivity/AlgebraicGeometry/FrobeniusArrowFamilyColimit.lean:94` |
+| E15 | `coefficientVCoverModel_primeCast` | `SerrePositivity/AlgebraicGeometry/CoefficientVCoverModelPrimeCast.lean:17` |
+| E16 | `coefficientVCover_frobeniusCechExact` | `SerrePositivity/AlgebraicGeometry/CoefficientVCoverFrobeniusCechExact.lean:22` |
+| E17 | `primeFieldRingHom` | `SerrePositivity/AlgebraicGeometry/PrimeFieldRingHom.lean:18` |
+| E18 | `affineVCover_frobeniusCechExact` | `SerrePositivity/AlgebraicGeometry/AffineVCoverFrobeniusCechExact.lean:20` |
