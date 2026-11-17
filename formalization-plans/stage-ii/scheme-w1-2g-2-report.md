@@ -3493,3 +3493,121 @@ D09・D04の監査成功を条件に既存見込みへ実測105行を代入し�
 - 一覧：済み1／全体3（うち追加0）。内部署名：済み78／89（G4・G5）、追加0。F06は各アフィン交叉上の計算を記述した未完成原稿で、元の行への同型・直積の完全性の照合が残る。D06以降の準備した原稿は先行F06の検証前なので完了数へ含めない。
 
 - F04 `SerrePositivity.AlgebraicGeometry.pairedCech_col_acyclic_of_sections`：元の各正次数の底変換に切断があれば、同じ二変数図式の各正次数列の増大totalは完全。
+
+## 2026-11-17：正次数の行と同じアフィン交叉の比較（7e80c8f85）
+
+- F06を同じ公開署名・仮定で実装。新規605行＋入口2行＝607行、所有59宣言。原稿・本体の同一バイトとSHA、対象ビルド5,403ジョブと直接importer、別の共有鍵の所有監査が成功。標準三公理以外0。sorry・admit・native_decide・資源上限の増加・main既存宣言の本体変更はない。
+- 元の各nerveの全アフィン交叉へD02を適用し、同じ射のΓ–Spec表示とN06で実際のFrobenius係数の増大複体の完全性を得る。各交叉の直積と元の行の係数を、同じタプルと開のCartesianな同型で照合した。増大点も含め、制限射・添字交換・Frobenius・評価との自然性を明示した。交叉の基底を丸ごとアフィンとは扱わない。
+- 長い証明のdefinitional equalityによる展開を避けるため、既存の積の法則・Γ–Specの代入・係数移送・評価の交換を非公開の証明補助へ分割した。添字交換の評価は `Equiv.piCongrLeft'_symm_apply_apply`、Frobeniusの交換は `frobeniusDirectLimitRingIso_naturality`、評価と増大対象の交換は同じ成分の `Comma.isoMk` を使う。いずれもF06内部の既存の構成の法則と証明分割であり、公開署名・一覧IDの追加0。各完全な型を下に残す。
+- 累計23,378行（新規304モジュール23,004行、既存追加25行、入口349行）。所有宣言累計2,506件、既存15件は別。残り10署名の素の見込みの合計363〜966行（D06・D07・F11の上端240・140・120行を維持）。残部全体へ係数2を適用し、登録等の予備100〜250行を加えた完成見込み24,204〜25,560行。28,000行以内。
+- 一覧：済み1／全体3（うち追加0）。内部署名：済み79／89（G4・G5）、追加0。次はD06、F10・F11、D07、I10〜I13、E16・E18の順。一般の固有・v降下はこの時点では未完成。
+
+- F06 `SerrePositivity.AlgebraicGeometry.pairedCech_row_acyclic_of_baseChangeDescent`：元の各正次数の底変換の普遍降下性から、同じ有限アフィン被覆の二変数Čech図式の各正次数行の増大totalの完全性を得る。
+
+### F06内部の証明分割の型（公開APIの追加なし）
+
+共通の宇宙・名前空間・開いている名前空間は本体と同じ。点ごとの積・その射影と完全性、アフィンΓの既存比較の代入、有限ファイバー冪の既存Cartesianな帰納、同じ標準開・係数の添字交換、評価の交換を分けたもの。全て200行以下。
+
+```lean
+private def pairedRowPointwiseProduct {Q : Type}
+    (D : Q → AugmentedSimplexCategory ⥤ ModuleCat.{u} ℤ) :
+    AugmentedSimplexCategory ⥤ ModuleCat.{u} ℤ
+```
+
+```lean
+private theorem pairedRowPointwiseProduct_acyclic {Q : Type}
+    (D : Q → AugmentedSimplexCategory ⥤ ModuleCat.{u} ℤ)
+    (hD : ∀ q, (SerrePositivity.Cech.augmentedCochain.obj
+      (AugmentedSimplexCategory.equivAugmentedCosimplicialObject.functor.obj (D q))).Acyclic) :
+    (SerrePositivity.Cech.augmentedCochain.obj
+      (AugmentedSimplexCategory.equivAugmentedCosimplicialObject.functor.obj
+        (pairedRowPointwiseProduct D))).Acyclic
+```
+
+```lean
+private theorem pairedRowAffineGamma_acyclic {X B : Scheme.{u}} [IsAffine X] [IsAffine B]
+    [IsLocallyNoetherian B] (f : X ⟶ B) [IsSeparated f] [QuasiCompact f]
+    [LocallyOfFinitePresentation f] (p : ℕ) (hp : p.Prime) (hK : (p : Γ(B, ⊤)) = 0)
+    (hf : PerfectCechUniversalDescent p hp f) :
+    let hN := fun m : SimplexCategory ↦ show (p : Γ((Arrow.mk f).cechNerve.obj (op m), ⊤)) = 0 from by
+      have hz := congrArg (Scheme.Γ.map ((Arrow.mk f).augmentedCechNerve.hom.app (op m)).op).hom hK
+      simpa only [map_natCast, map_zero] using hz
+    (SerrePositivity.Cech.augmentedCochain.obj
+      (affineGammaPerfectAugmentedCoefficients f p hp hK hN)).Acyclic
+```
+
+```lean
+private theorem pairedRowAffineDiagram_acyclic {X B : Scheme.{u}} [IsAffine X] [IsAffine B]
+    [IsLocallyNoetherian B] (f : X ⟶ B) [IsSeparated f] [QuasiCompact f]
+    [LocallyOfFinitePresentation f] (p : ℕ) (hp : p.Prime)
+    (hDN : ∀ d : AugmentedSimplexCategory,
+      (p : Γ((AugmentedSimplexCategory.equivAugmentedSimplicialObject.inverse.obj
+        (Arrow.mk f).augmentedCechNerve).obj (op d), ⊤)) = 0)
+    (hf : PerfectCechUniversalDescent p hp f) :
+    (SerrePositivity.Cech.augmentedCochain.obj
+      (AugmentedSimplexCategory.equivAugmentedCosimplicialObject.functor.obj
+        (frobeniusRingDiagram
+          ((AugmentedSimplexCategory.equivAugmentedSimplicialObject.inverse.obj
+            (Arrow.mk f).augmentedCechNerve).rightOp ⋙ Scheme.Γ) p hp hDN))).Acyclic
+```
+
+```lean
+private theorem pairedRow_finiteFiberPower_properties {Y S : Scheme.{u}}
+    (g : Y ⟶ S) [IsSeparated g] [LocallyOfFinitePresentation g] (n : ℕ) :
+      IsSeparated (WidePullback.base (fun _ : Fin (n+1) ↦ g)) ∧
+        LocallyOfFinitePresentation (WidePullback.base (fun _ : Fin (n+1) ↦ g))
+```
+
+```lean
+private def pairedRowCanonicalOpen {R : Type u} [CommRing R] {A Y : Scheme.{u}}
+    (h : A ⟶ Spec (CommRingCat.of R)) (g : Y ⟶ Spec (CommRingCat.of R))
+    {κ : Type} [Fintype κ] [DecidableEq κ] (V : κ → Y.Opens) (n b : ℕ)
+    (q : Fin (b+1) → (Fin (n+1) → κ)) (d : AugmentedSimplexCategory) :
+    (pairedCechScheme h g d (.of (SimplexCategory.mk n))).Opens
+```
+
+```lean
+private def pairedRowActualFunctor {R : Type u} [CommRing R] {A Y : Scheme.{u}}
+    (h : A ⟶ Spec (CommRingCat.of R)) (g : Y ⟶ Spec (CommRingCat.of R))
+    {κ : Type} [Fintype κ] [DecidableEq κ] (V : κ → Y.Opens)
+    (p : ℕ) (hp : p.Prime) (hR : (p : R) = 0) (n b : ℕ) :
+    AugmentedSimplexCategory ⥤ ModuleCat.{u} ℤ
+```
+
+```lean
+private def pairedRowReindexIso {R : Type u} [CommRing R] {A Y : Scheme.{u}}
+    (h : A ⟶ Spec (CommRingCat.of R)) (g : Y ⟶ Spec (CommRingCat.of R))
+    {κ : Type} [Fintype κ] [DecidableEq κ] (V : κ → Y.Opens)
+    (p : ℕ) (hp : p.Prime) (hR : (p : R) = 0) (n b : ℕ)
+    (M₀ : ∀ {d e : AugmentedSimplexCategory}, (d ⟶ e) →
+      (pairedCechScheme h g e (.of (SimplexCategory.mk n)) ⟶
+        pairedCechScheme h g d (.of (SimplexCategory.mk n))))
+    (hM₀ : ∀ {d e : AugmentedSimplexCategory} (α : d ⟶ e),
+      M₀ α = pairedCechSchemeMap h g α (𝟙 (.of (SimplexCategory.mk n))))
+    (AN : (Fin (b+1) → (Fin (n+1) → κ)) → AugmentedSimplexCategoryᵒᵖ ⥤ Scheme.{u})
+    (hDN : ∀ q d, (p : Γ((AN q).obj (op d), ⊤)) = 0)
+    (eΓ : ∀ q d, Γ((AN q).obj (op d), ⊤) ≅
+      Γ(pairedCechScheme h g d (.of (SimplexCategory.mk n)), pairedRowCanonicalOpen h g V n b q d))
+    (hnat : ∀ q {d e : AugmentedSimplexCategory} (α : d ⟶ e)
+      (hc : pairedRowCanonicalOpen h g V n b q e ≤
+        M₀ α ⁻¹ᵁ
+          pairedRowCanonicalOpen h g V n b q d),
+      (eΓ q d).hom ≫ Scheme.Hom.appLE
+          (X := pairedCechScheme h g e (.of (SimplexCategory.mk n)))
+          (Y := pairedCechScheme h g d (.of (SimplexCategory.mk n)))
+          (M₀ α)
+          (pairedRowCanonicalOpen h g V n b q d) (pairedRowCanonicalOpen h g V n b q e) hc =
+        ((AN q).map α.op).appTop ≫ (eΓ q e).hom) :
+    pairedRowPointwiseProduct (fun q ↦ frobeniusRingDiagram ((AN q).rightOp ⋙ Scheme.Γ) p hp (hDN q)) ≅
+      pairedRowActualFunctor h g V p hp hR n b
+```
+
+```lean
+private def pairedRowEvaluationIso
+    (F : AugmentedSimplexCategory ⥤ CochainComplex (ModuleCat.{u} ℤ) ℕ) (b : ℕ) :
+    AugmentedSimplexCategory.equivAugmentedCosimplicialObject.functor.obj
+        (F ⋙ HomologicalComplex.eval (ModuleCat.{u} ℤ) up b) ≅
+      (CosimplicialObject.Augmented.whiskeringObj _ _
+        (HomologicalComplex.eval (ModuleCat.{u} ℤ) up b)).obj
+          (AugmentedSimplexCategory.equivAugmentedCosimplicialObject.functor.obj F)
+```
