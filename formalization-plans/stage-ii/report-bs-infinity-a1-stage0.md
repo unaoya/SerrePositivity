@@ -6769,3 +6769,46 @@ strictな図式に狭めず、任意のcoherentなRと、元の底上の二射�
 残り17項目は第1・2項まで検証済み。数学的な一覧の追加はない。
 次は第3項の底変換の同じ全分類比較との両立。mainは取り込まず、S7・R2・R3も再開しない。
 一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+
+## 残り第10・11項：同じ要素圏・切断錐の宇宙移送（11-17）
+
+第3項の共同比較とcartesian制限の照合を続ける間、その接続に依存しない
+第10・11項を先に検証した。SiteLiftElementsShape.lean（39行）と
+SiteLiftSectionsCone.lean（81行）の新規2ファイル。
+指定したsiteLiftElementsUp・Downを全nerveへ送り、別の小さい模型は選ばない。
+同じ係数を保つ図式の等式で錐をcastするだけなので、chooseの置換も追加仮定もない。
+
+主な型（既存namespaceをopenした表記）：
+```lean
+siteLiftElementsShapeIso (P : Cᵒᵖ ⥤ Type u) :
+  (SSet.uliftFunctor.{u + 1, u}).obj (nerve P.Elements) ≅ nerve (siteLiftPresheaf P).Elements
+
+siteLiftElementsShapeIso_naturality (φ : P ⟶ Q) :
+  (siteLiftElementsShapeIso P).hom ≫ nerveMap (siteLiftPresheafMap φ).mapElements =
+    (SSet.uliftFunctor.{u + 1, u}).map (nerveMap φ.mapElements) ≫ (siteLiftElementsShapeIso Q).hom
+
+siteLiftSectionsCone (P : Cᵒᵖ ⥤ Type u) (O : Presheaf C E)
+  (c : JoinCone (sectionsOfDiagram P O)) :
+  JoinCone (nativeSetSectionsDiagram (siteLiftPresheaf P) ((asSmallSiteShapeIso C).inv ≫ O))
+
+siteLiftSectionsCone_vertex (P : Cᵒᵖ ⥤ Type u) (O : Presheaf C E)
+  (c : JoinCone (sectionsOfDiagram P O)) : (siteLiftSectionsCone P O c).vertex = c.vertex
+
+siteLiftSectionsCone_restrict (φ : P ⟶ Q) (O : Presheaf C E)
+  (c : JoinCone (sectionsOfDiagram Q O)) :
+  joinMap (𝟙 _) (nerveMap (siteLiftPresheafMap φ).mapElements) ≫ (siteLiftSectionsCone Q O c).val =
+    (siteLiftSectionsCone P O (SetWeight.restrictSectionsCone φ O c)).val
+
+siteLiftSectionsCone_isLimit_iff [Quasicategory E] (P : Cᵒᵖ ⥤ Type u) (O : Presheaf C E)
+  (c : JoinCone (sectionsOfDiagram P O)) :
+  IsLimitCone (siteLiftSectionsCone P O c) ↔ IsLimitCone c
+```
+第11項のnativeSetSectionsDiagramは紙の略記どおりnerveMap (Functor.Elements.π P) ≫ O。
+係数移送の等式siteLiftSectionsDiagram_eqも同じファイルに保持した。
+二本とも対象ビルドexit 0、小監査は13宣言、標準三公理のみ、exit 0。
+記録：/tmp/is-w1/s8-site-lift-cone-1/{verify-2.log,target-audit-result.json}。
+検証済み累計22,277行、新規347モジュール＋承認された既存3ファイルの差分。
+残る17項目では1・2・10・11まで検証済み。S1・S8は未完。
+mainは取り込まず、S7・R2・R3も再開していない。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
