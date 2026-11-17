@@ -1927,3 +1927,4 @@ public import SerrePositivity.AlgebraicGeometry.PairedPerfectCechFunctor
 public import SerrePositivity.AlgebraicGeometry.FrobeniusArrowFamilyCocones
 public import SerrePositivity.AlgebraicGeometry.CoefficientVCoverModelPrimeCast
 public import SerrePositivity.AlgebraicGeometry.FrobeniusArrowFamilyColimit
+public import SerrePositivity.AlgebraicGeometry.CechTripleTotalComponents
