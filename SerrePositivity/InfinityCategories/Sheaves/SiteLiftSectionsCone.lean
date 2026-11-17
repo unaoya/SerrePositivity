@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.Util.Citation
+
 public import SerrePositivity.InfinityCategories.Sheaves.SiteLiftElementsShape
 public import SerrePositivity.InfinityCategories.Sheaves.SectionsOf
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TerminalMap
@@ -36,6 +38,7 @@ lemma siteLiftSectionsDiagram_eq (P : Cᵒᵖ ⥤ Type u) (O : Presheaf C E) :
       nativeSetSectionsDiagram (siteLiftPresheaf P) ((asSmallSiteShapeIso C).inv ≫ O) := rfl
 
 /-- 元の全錐を、同じ頂点と全join射を保って移す。 -/
+@[cite HTT "5.1.5.6" (partial := special) "小さい通常siteの集合値重みの指定切断錐の宇宙移送。"]
 def siteLiftSectionsCone (P : Cᵒᵖ ⥤ Type u) (O : Presheaf C E)
     (c : JoinCone (sectionsOfDiagram P O)) :
     JoinCone (nativeSetSectionsDiagram (siteLiftPresheaf P) ((asSmallSiteShapeIso C).inv ≫ O)) :=
@@ -69,6 +72,7 @@ lemma siteLiftSectionsCone_restrict {P Q : Cᵒᵖ ⥤ Type u} (φ : P ⟶ Q) (O
     ← Category.assoc, ← joinMap_comp, Category.id_comp, hmap]
 
 /-- 同じ指定錐の極限性は、表示を移しても同値。 -/
+@[cite HTT "4.1.1.8" (partial := special) "同じ指定添字同型による切断錐の極限性の反映。"]
 lemma siteLiftSectionsCone_isLimit_iff [Quasicategory E]
     (P : Cᵒᵖ ⥤ Type u) (O : Presheaf C E) (c : JoinCone (sectionsOfDiagram P O)) :
     IsLimitCone (siteLiftSectionsCone P O c) ↔ IsLimitCone c := by

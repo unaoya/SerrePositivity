@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.Util.Citation
+
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.ScaffoldCoherentComparison
 public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.FunctorIsoWhiskerAlgebra
 
@@ -24,6 +26,7 @@ open SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.F
 namespace SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations
 
 /-- 指定比較は、元のuniversal scaffoldとtaut scaffoldの同じ比較に沿って制限される。 -/
+@[cite HTT "3.3.2" (partial := special) "同じscaffoldに沿う指定coherent比較の制限の法則。"]
 def scaffoldCoherentComparison_scaffoldIso
     {C : Type u} [Category.{u} C] {E : SSet.{u}}
     (p : E ⟶ nerve C) [LeftFibration p] :

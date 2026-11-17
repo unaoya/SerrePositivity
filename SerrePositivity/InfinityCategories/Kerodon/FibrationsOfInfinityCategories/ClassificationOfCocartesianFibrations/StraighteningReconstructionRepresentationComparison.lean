@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.Util.Citation
+
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SmallTransportRepresentationComparison
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SmallUnstraighteningFunctorHomComposition
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.StraighteningRepresentationComparisonLaw
@@ -28,6 +30,7 @@ set_option backward.isDefEq.respectTransparency false
 universe u
 namespace SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations
 /-- 元の復元射は、同じ指定分類同型の逆で表した射と底上の相対写像空間で同型。 -/
+@[cite HTT "3.3.2" (partial := special) "指定分類同型と同じ相対表現による復元の比較の法則。"]
 lemma leftStraighteningInfinityReconstruction_representationComparison {E B : SSet.{u}} [Quasicategory B]
     (p : E ⟶ B) [LeftFibration p]
     (R : LeftTransportRepresentation ((SSet.uliftFunctor.{u + 1, u}).map p)) :

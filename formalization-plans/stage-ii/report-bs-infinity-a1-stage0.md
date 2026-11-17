@@ -7354,3 +7354,150 @@ P3-B2eの補正上端は120行で、C0を含めた検証見込み22,885行へ足
 証拠：/tmp/is-w1/p3-b2/production/target-audit-result.json（ソースSHA照合済み）。
 新しいchoose、既存本文の変更、型・仮定の変更、計算上限の変更はなし。mainは取り込まない。
 一覧：済み 17／全体 35（うち追加 0、別停止点 2）。
+
+### P3-C1の指定pointed比較：台帳外の独立署名が要る判断点（11-17午後）
+
+P3-B2eの本体検証を完了したところで、Leanを止める。
+29,000行への到達ではなく、標準署名台帳にない200行超の照合が要るため。
+以下は承認待ちの紙であり、既存35署名の台帳には追加していない。
+S7・R2・R3は再開しない。C1の元の型・仮定を弱めず、指定同型νを変えない。
+
+不足の中身：R₀とRrの表現間の頂点同型の存在は既存APIから出るが、
+そのdiagramIsoが指定したνであることには、元の全空間の点も保つ比較が必要。
+smallFiberTransportRepresentationVertexIso_unique（RepresentationComparisonCoherence.lean:26）は
+既に表現空間にある二つの同型を比べる補題で、任意のνをその空間へ持ち上げる補題ではない。
+WitnessPrism.lean:67のtransportWitnessSpaceEdgePrism_conditionも、表現空間の辺を入力に取る。
+TransportRepresentationUnstraighteningComparison.lean:57のprivate pointPrismは
+与えた表現間同型をpointed prismへ送る向きであり、νの持ち上げに使うと循環する。
+同じファイル:89の公開比較も表現間同型を入力に取る。
+FunctorIsoEdgeRepresentative.lean:26のfunctorIso_exists_edge_representative_overは
+pointedな同型と、その像が指定同型と一致することを既に入力に要求するので、
+この不足を省略できない。単に各点で同値な比較へ差し替えない。
+
+提案ID **P3-C1P**：leftStraighteningBaseChange_pointedPrism。
+置き場所：Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/
+LeftStraighteningBaseChangePointedPrism.lean（新規）。
+依存：R01・R02・P3-B1・P3-B2e・P3-C0。
+既存C1と同じ共通環境・同じ局所pullbackのLeftFibration instanceで読む。
+以下は紙の完全な型で、Lean elaborationの成功はまだ主張しない。
+
+```lean
+∀ {E B D : SSet.{u}} [Quasicategory B] [Quasicategory D]
+  (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B),
+  let U := SSet.uliftFunctor.{u+1,u}
+  let lB := transportSimplexFirstVertexMap B
+  let lD := transportSimplexFirstVertexMap D
+  let H := transportSimplexFunctor k
+  let q := pullback.snd p k
+  let p₀ := pullback.snd p lB
+  let r := pullback.snd q lD
+  let d := leftStraighteningBaseChangePullbackData p k
+  let R₀ := (nerveLeftTransportRepresentation p₀).cartesianRestrict
+    (U.map d.val) (U.map (nerveMap H)) d.property.2.2.2
+  let Rr := nerveLeftTransportRepresentation r
+  let θp := leftStraighteningInfinityDiagram_firstVertexTransportIso p
+  let θq := leftStraighteningInfinityDiagram_firstVertexTransportIso q
+  let β := leftStraighteningInfinityDiagram_baseChangeIso p k
+  let ν := (θp.precomp (U.map (nerveMap H))).symm ≪≫
+    diagramIsoCongr
+      (by rw [← Category.assoc, ← transportSimplexFirstVertexMap_ulift_naturality k,
+        Category.assoc]) rfl (β.precomp (U.map lD)) ≪≫ θq
+  let e := functorEdgeOfSimplicialHomotopy (functorHomHomotopy ν.hom)
+  ∃ W : (Δ[1] : SSet.{u+1}) ⊗ U.obj (pullback q lD) ⟶ PointedSpaceInfinity.{u},
+    prismEndpoint 0 (U.obj (pullback q lD)) ≫ W = R₀.pointedMap ∧
+    prismEndpoint 1 (U.obj (pullback q lD)) ≫ W = Rr.pointedMap ∧
+    W ≫ pointedSpaceProjection = (Δ[1] ◁ U.map r) ≫ functorEdgePrism e
+```
+
+指定構成の点検：Wの底の辺はν.homを代表する同じfunctorHomHomotopyを使い、
+既存functorHomHomotopy_homが元の射の類を保持する。新しいchooseの置き換えは予定しない。
+νは元のθp・β・θq、R₀の比較は元のC0の二座標pullback、Rrの比較は既存の
+scaffoldCoherentComparisonに由来する同じもの。任意の別の比較や底の辺は仮定しない。
+
+| 署名／作業 | 素の見込み | 係数2の見込み | 再利用 |
+|---|---:|---:|---|
+| P3-C1P：元のscaffoldへの制限・比較 | 100〜140 | 200〜280 | scaffoldCoherentComparison_scaffoldIso @ ClassificationOfCocartesianFibrations/ScaffoldCoherentComparisonRestriction.lean:30、C0 |
+| 同じ署名内：underの三角形とopposite比較の照合 | 90〜160 | 180〜320 | P3-B1・B2eの同じ共同実現、R02 @ ClassificationOfCocartesianFibrations/StraighteningReconstructionRepresentationComparison.lean:34 |
+| 同じ署名内：νの指定辺への端点・射影の正規化 | 60〜100 | 120〜200 | functorHomHomotopy_hom、functorIso_exists_edge_representative_over |
+| **P3-C1P合計** | **250〜400** | **500〜800** | 原典：HTT §3.3.2、Kerodon Corollary 5.6.0.6（Tag 028T）。指定構成の照合で、独立の原典番号なし |
+| P3-C1残部：同じpointed比較から表現空間の辺・diagramIsoの一致を回収 | 80〜140 | 160〜280 | 表現空間の既存の境界・辺の図式射影の法則 |
+
+C1残部の見込みも紙の見込みであり、pointed prismの存在だけから最後まで
+形式化済みと扱わない。C1Pは単なる証明ファイルの分割ではなく、指定νのpointedな
+持ち上げの存在を一つの独立した型として先に閉じるための署名である。
+200行超の照合は独立署名へ出すという標準に従い、未承認のままLeanで証明しない。
+
+提案だけを仮に足した依存DAGをKahn法で検査：36頂点・56辺、循環なし。
+証拠：/tmp/is-w1/p3-c1-proposed-dag.json。承認済み台帳の35頂点・50辺は変更していない。
+新しい依存はC1P←既存のC1の5入力、C1←C1Pで、後段を入力に使わない。
+B2eが90行で本体検証された場合の実測累計は22,975行。
+現台帳の次のC1だけなら22,975＋840＝23,815行で枠内。
+提案のC1PとC1残部を合わせても補正上端は1,080行で、22,975＋1,080＝24,055行。
+外枠・係数は上げない。この時点の停止理由は台帳外署名であり、行数超過ではない。
+後段の残りも、承認後には一まとまりずつ補正上端を足して29,000行で区切る。
+一覧：済み 17／全体 35（うち追加 0、別停止点 2。C1Pは未承認の提案で分母外）。
+
+### P3-B2eの対象検証（11-17午後）
+
+対象ビルド・小監査exit 0。1モジュール・6宣言、標準三公理のみ。
+今回90行、検証済み累計22,975行。
+文献属性はHTTの構成の照合法則としてpartial := special。Kerodonの特殊化はdocstringに記す。
+証拠：/tmp/is-w1/p3-b2e/production/target-audit-result.json（ソースSHA照合済み）。
+新しいchoose、既存本文の変更、型・仮定の変更、計算上限の変更はなし。mainは取り込まない。
+一覧：済み 18／全体 35（うち追加 0、別停止点 2）。
+
+### 今回の停止点（11-17午後、P3-A・B1・B2a〜e・C0）
+
+| 検証組 | 素の見込み | 係数2の見込み | 実測 |
+|---|---:|---:|---:|
+| P3-A | 200〜350 | 400〜700 | 45 |
+| P3-B1 | 100〜150 | 200〜300 | 107 |
+| P3-B2a〜d | 90〜160 | 180〜320 | 130 |
+| P3-C0 | 40〜80 | 80〜160 | 69 |
+| P3-B2e | 30〜60 | 60〜120 | 90 |
+| 合計 | 460〜800 | 920〜1,600 | 441 |
+
+検証済み22,534＋441＝22,975行、新規累計356モジュール＋承認済み既存3ファイル差分。
+P3-Aの差は既存APIの照合漏れなので、今後の係数を下げる根拠に使わない。
+B2eは素の上端60行を30行超えたが、補正上端120行には収まった。
+B2eのcongrArgの具体式でのwhnf時間切れは、以下の一般の既存構成の合成則へ
+分割して解消した。どちらも200行以下で、親署名B2eの証明分割として記録する。
+
+```lean
+private lemma overPreJoint_comp {B : SSet.{u}} {J : Type u} [Category.{u} J]
+    {A T Z : Jᵒᵖ ⥤ Over B} (η : A ⟶ T) (θ : T ⟶ Z) :
+    overPreJoint (η ≫ θ) = jointComparisonTrans (overPreJoint θ) (overPreJoint η)
+
+private lemma overPreJoint_comp_iso {B : SSet.{u}} {J : Type u} [Category.{u} J]
+    {A T Z : Jᵒᵖ ⥤ Over B} (η : A ⟶ T) (θ : T ⟶ Z) (γ : A ⟶ Z)
+    (hγ : γ = η ≫ θ)
+    (hη : ∀ j (p : LeftFibrationObject B),
+      IsQCatEquivalence (relativeFunctorOverPre p.val.hom (η.app (Opposite.op j))))
+    (hθ : ∀ j (p : LeftFibrationObject B),
+      IsQCatEquivalence (relativeFunctorOverPre p.val.hom (θ.app (Opposite.op j))))
+    (hγe : ∀ j (p : LeftFibrationObject B),
+      IsQCatEquivalence (relativeFunctorOverPre p.val.hom (γ.app (Opposite.op j)))) :
+    relativeSectionRealizationComparisonIso θ hθ ≪≫
+      relativeSectionRealizationComparisonIso η hη =
+      relativeSectionRealizationComparisonIso γ hγe
+```
+
+新規5モジュールの対象ビルド・小監査は全て成功（各組の所有宣言合計31、標準三公理のみ）。
+文献属性は主な宣言へHTTの該当構成の法則としてpartial := specialを付け、
+Kerodonの特殊化はdocstringへ記した。さらに今回の既存の枝の5モジュール
+（ScaffoldCoherentComparisonRestriction、StraighteningReconstructionRepresentationComparison、
+SiteLiftElementsShape、SiteLiftSectionsCone、DiscretePresheafHom）の主な6宣言の属性を補完。
+この属性更新も対象ビルド・小監査成功（5モジュール・24宣言、標準三公理のみ）。
+引用用importと属性を除いたソースは、変更前のソースと文字列で完全一致。
+証拠：/tmp/is-w1/citation-refresh/{source-diff.json,target-audit-result.json}、
+同じ証拠は署名JSONのcitation_refresh_1117にも保存。
+文献メタデータのみの16行増は指示どおり外枠の数学の行数に含めない。
+元の35署名の型・仮定は全て保持した。既存本文の変更・追加chooseの置換・計算上限の引上げは0。
+台帳の参照行を更新し、35頂点・50辺のDAG・署名の完全な型・参照宣言名の検査を再実行した。
+
+今回の停止理由は、直前の節に書いた未承認の独立署名P3-C1P（素250〜400、補正500〜800行）。
+29,000行には達していない。C1のLeanや後段へは入らず、これを判断点として検証済みを渡す。
+P3-C1・D・E、第4〜15項の残り、第16・17項は未完のまま。
+5∞-1の完成を主張しない。mainは取り込まず、S7・R2・R3は再開していない。
+鍵は検証終了時に返却済み。重複する整理券もなし。
+一覧：済み 18／全体 35（うち追加 0、別停止点 2。未承認のC1P案は分母外）。

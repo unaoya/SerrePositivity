@@ -3,7 +3,7 @@
   "source_head": "7e9743b30",
   "scope": "今回の再開範囲：元の残り1〜17項を署名へ展開。S2〜S6の過去の検収済み出力は再採番しない。",
   "count_rule": "署名のidごとに数える。200行超の照合・合成則は独立署名。小さい証明分割の法則は親署名のnoteに記録する。旧5/8はこの台帳の分母には用いない。",
-  "verified_lean_lines": 22885,
+  "verified_lean_lines": 22975,
   "final_cap": 29000,
   "checkpoint_report_lines": 28500,
   "factor": 2,
@@ -18,7 +18,7 @@
         {
           "name": "scaffoldCoherentComparison_scaffoldIso",
           "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/ScaffoldCoherentComparisonRestriction.lean",
-          "line": 27
+          "line": 30
         }
       ],
       "literature": "HTT §3.3.2（特に3.3.2.8）、Kerodon Corollary 5.6.0.6（Tag 028T）。指定構成の法則で、独立した原典の補題番号はない。",
@@ -33,7 +33,26 @@
       "status": "verified",
       "placement": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/ScaffoldCoherentComparisonRestriction.lean",
       "note": "",
-      "additional_mathematics": false
+      "additional_mathematics": false,
+      "citation_verification": {
+        "modules": 5,
+        "declarations": 24,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/ScaffoldCoherentComparisonRestriction.lean": "eaca001013d2fdcb29b38a5c6652896da293437d0d827266f4ac760c591bf92c",
+          "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/StraighteningReconstructionRepresentationComparison.lean": "268abe1ed9b74b9d96bb95b4fe73a9c03448c7595b6a59c9eade04a55e5af273",
+          "SerrePositivity/InfinityCategories/Sheaves/SiteLiftElementsShape.lean": "f9ced6ad6932e0715214671ff40fb627fcd95b1c3d0620277678857ae9099cdd",
+          "SerrePositivity/InfinityCategories/Sheaves/SiteLiftSectionsCone.lean": "a5a7ada81f385924d69934a67784a447f2310c4d56f509180cc8e17d68df4fee",
+          "SerrePositivity/InfinityCategories/Sheaves/DiscretePresheafHom.lean": "ceb0ed24848423d1ba9a39059895ccfecf806096ce5bfe01efebc144714bf169"
+        }
+      }
     },
     {
       "id": "R02",
@@ -44,7 +63,7 @@
         {
           "name": "leftStraighteningInfinityReconstruction_representationComparison",
           "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/StraighteningReconstructionRepresentationComparison.lean",
-          "line": 31
+          "line": 34
         }
       ],
       "literature": "HTT §3.3.2（特に3.3.2.8）、Kerodon Corollary 5.6.0.6（Tag 028T）。指定構成の法則で、独立した原典の補題番号はない。",
@@ -59,7 +78,26 @@
       "status": "verified",
       "placement": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/StraighteningReconstructionRepresentationComparison.lean",
       "note": "",
-      "additional_mathematics": false
+      "additional_mathematics": false,
+      "citation_verification": {
+        "modules": 5,
+        "declarations": 24,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/ScaffoldCoherentComparisonRestriction.lean": "eaca001013d2fdcb29b38a5c6652896da293437d0d827266f4ac760c591bf92c",
+          "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/StraighteningReconstructionRepresentationComparison.lean": "268abe1ed9b74b9d96bb95b4fe73a9c03448c7595b6a59c9eade04a55e5af273",
+          "SerrePositivity/InfinityCategories/Sheaves/SiteLiftElementsShape.lean": "f9ced6ad6932e0715214671ff40fb627fcd95b1c3d0620277678857ae9099cdd",
+          "SerrePositivity/InfinityCategories/Sheaves/SiteLiftSectionsCone.lean": "a5a7ada81f385924d69934a67784a447f2310c4d56f509180cc8e17d68df4fee",
+          "SerrePositivity/InfinityCategories/Sheaves/DiscretePresheafHom.lean": "ceb0ed24848423d1ba9a39059895ccfecf806096ce5bfe01efebc144714bf169"
+        }
+      }
     },
     {
       "id": "P3-A",
@@ -469,21 +507,53 @@
           "name": "relativeSectionRealizationComparisonIso",
           "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/RelativeSectionJointComparison.lean",
           "line": 201
+        },
+        {
+          "name": "transportSimplexUnderRealization_baseChange_composition",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/SimplexUnderJointComposition.lean",
+          "line": 71
         }
       ],
       "literature": "HTT §3.3.2（特に3.3.2.8）、Kerodon Corollary 5.6.0.6（Tag 028T）。指定構成の法則で、独立した原典の補題番号はない。",
       "bare_lines": [
+        0,
+        0
+      ],
+      "corrected_lines": [
+        0,
+        0
+      ],
+      "status": "verified",
+      "placement": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/SimplexUnderJointComposition.lean",
+      "note": "hηB/hηDは適用で既存の初頂点の制限・係数移送から証明する。第3項の最終仮定には足さない。",
+      "additional_mathematics": false,
+      "original_bare_lines": [
         30,
         60
       ],
-      "corrected_lines": [
+      "original_corrected_lines": [
         60,
         120
       ],
-      "status": "pending",
-      "placement": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/SimplexUnderJointComposition.lean",
-      "note": "hηB/hηDは適用で既存の初頂点の制限・係数移送から証明する。第3項の最終仮定には足さない。",
-      "additional_mathematics": false
+      "verification": {
+        "modules": 1,
+        "declarations": 6,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/SimplexUnderJointComposition.lean": "95ae6f6e97335a58447d67d62a714ff973a5a63e73bce2801a4bb0e6588f9e0c"
+        }
+      },
+      "actual_group_lines": 90,
+      "actual_group_ids": [
+        "P3-B2e"
+      ]
     },
     {
       "id": "P3-C0",
@@ -563,12 +633,12 @@
         {
           "name": "scaffoldCoherentComparison_scaffoldIso",
           "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/ScaffoldCoherentComparisonRestriction.lean",
-          "line": 27
+          "line": 30
         },
         {
           "name": "leftStraighteningInfinityReconstruction_representationComparison",
           "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/StraighteningReconstructionRepresentationComparison.lean",
-          "line": 31
+          "line": 34
         },
         {
           "name": "smallFiberTransportRepresentationVertexIso_unique",
@@ -849,7 +919,7 @@
         {
           "name": "siteLiftElementsShapeIso",
           "path": "SerrePositivity/InfinityCategories/Sheaves/SiteLiftElementsShape.lean",
-          "line": 21
+          "line": 24
         }
       ],
       "literature": "HTT 4.1.1.8、同値な添字による極限の移送。宇宙持ち上げの法則。",
@@ -864,7 +934,26 @@
       "status": "verified",
       "placement": "SerrePositivity/InfinityCategories/Sheaves/SiteLiftElementsShape.lean",
       "note": "",
-      "additional_mathematics": false
+      "additional_mathematics": false,
+      "citation_verification": {
+        "modules": 5,
+        "declarations": 24,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/ScaffoldCoherentComparisonRestriction.lean": "eaca001013d2fdcb29b38a5c6652896da293437d0d827266f4ac760c591bf92c",
+          "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/StraighteningReconstructionRepresentationComparison.lean": "268abe1ed9b74b9d96bb95b4fe73a9c03448c7595b6a59c9eade04a55e5af273",
+          "SerrePositivity/InfinityCategories/Sheaves/SiteLiftElementsShape.lean": "f9ced6ad6932e0715214671ff40fb627fcd95b1c3d0620277678857ae9099cdd",
+          "SerrePositivity/InfinityCategories/Sheaves/SiteLiftSectionsCone.lean": "a5a7ada81f385924d69934a67784a447f2310c4d56f509180cc8e17d68df4fee",
+          "SerrePositivity/InfinityCategories/Sheaves/DiscretePresheafHom.lean": "ceb0ed24848423d1ba9a39059895ccfecf806096ce5bfe01efebc144714bf169"
+        }
+      }
     },
     {
       "id": "R10b",
@@ -877,7 +966,7 @@
         {
           "name": "siteLiftElementsShapeIso",
           "path": "SerrePositivity/InfinityCategories/Sheaves/SiteLiftElementsShape.lean",
-          "line": 21
+          "line": 24
         }
       ],
       "literature": "HTT 4.1.1.8、同値な添字による極限の移送。宇宙持ち上げの法則。",
@@ -892,7 +981,26 @@
       "status": "verified",
       "placement": "SerrePositivity/InfinityCategories/Sheaves/SiteLiftElementsShape.lean",
       "note": "",
-      "additional_mathematics": false
+      "additional_mathematics": false,
+      "citation_verification": {
+        "modules": 5,
+        "declarations": 24,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/ScaffoldCoherentComparisonRestriction.lean": "eaca001013d2fdcb29b38a5c6652896da293437d0d827266f4ac760c591bf92c",
+          "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/StraighteningReconstructionRepresentationComparison.lean": "268abe1ed9b74b9d96bb95b4fe73a9c03448c7595b6a59c9eade04a55e5af273",
+          "SerrePositivity/InfinityCategories/Sheaves/SiteLiftElementsShape.lean": "f9ced6ad6932e0715214671ff40fb627fcd95b1c3d0620277678857ae9099cdd",
+          "SerrePositivity/InfinityCategories/Sheaves/SiteLiftSectionsCone.lean": "a5a7ada81f385924d69934a67784a447f2310c4d56f509180cc8e17d68df4fee",
+          "SerrePositivity/InfinityCategories/Sheaves/DiscretePresheafHom.lean": "ceb0ed24848423d1ba9a39059895ccfecf806096ce5bfe01efebc144714bf169"
+        }
+      }
     },
     {
       "id": "R11a",
@@ -906,7 +1014,7 @@
         {
           "name": "siteLiftSectionsCone_isLimit_iff",
           "path": "SerrePositivity/InfinityCategories/Sheaves/SiteLiftSectionsCone.lean",
-          "line": 72
+          "line": 76
         }
       ],
       "literature": "HTT 4.1.1.8、同値な添字による極限の移送。宇宙持ち上げの法則。",
@@ -921,7 +1029,26 @@
       "status": "verified",
       "placement": "SerrePositivity/InfinityCategories/Sheaves/SiteLiftSectionsCone.lean",
       "note": "",
-      "additional_mathematics": false
+      "additional_mathematics": false,
+      "citation_verification": {
+        "modules": 5,
+        "declarations": 24,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/ScaffoldCoherentComparisonRestriction.lean": "eaca001013d2fdcb29b38a5c6652896da293437d0d827266f4ac760c591bf92c",
+          "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/StraighteningReconstructionRepresentationComparison.lean": "268abe1ed9b74b9d96bb95b4fe73a9c03448c7595b6a59c9eade04a55e5af273",
+          "SerrePositivity/InfinityCategories/Sheaves/SiteLiftElementsShape.lean": "f9ced6ad6932e0715214671ff40fb627fcd95b1c3d0620277678857ae9099cdd",
+          "SerrePositivity/InfinityCategories/Sheaves/SiteLiftSectionsCone.lean": "a5a7ada81f385924d69934a67784a447f2310c4d56f509180cc8e17d68df4fee",
+          "SerrePositivity/InfinityCategories/Sheaves/DiscretePresheafHom.lean": "ceb0ed24848423d1ba9a39059895ccfecf806096ce5bfe01efebc144714bf169"
+        }
+      }
     },
     {
       "id": "R11b",
@@ -935,7 +1062,7 @@
         {
           "name": "siteLiftSectionsCone_isLimit_iff",
           "path": "SerrePositivity/InfinityCategories/Sheaves/SiteLiftSectionsCone.lean",
-          "line": 72
+          "line": 76
         }
       ],
       "literature": "HTT 4.1.1.8、同値な添字による極限の移送。宇宙持ち上げの法則。",
@@ -950,7 +1077,26 @@
       "status": "verified",
       "placement": "SerrePositivity/InfinityCategories/Sheaves/SiteLiftSectionsCone.lean",
       "note": "",
-      "additional_mathematics": false
+      "additional_mathematics": false,
+      "citation_verification": {
+        "modules": 5,
+        "declarations": 24,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/ScaffoldCoherentComparisonRestriction.lean": "eaca001013d2fdcb29b38a5c6652896da293437d0d827266f4ac760c591bf92c",
+          "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/StraighteningReconstructionRepresentationComparison.lean": "268abe1ed9b74b9d96bb95b4fe73a9c03448c7595b6a59c9eade04a55e5af273",
+          "SerrePositivity/InfinityCategories/Sheaves/SiteLiftElementsShape.lean": "f9ced6ad6932e0715214671ff40fb627fcd95b1c3d0620277678857ae9099cdd",
+          "SerrePositivity/InfinityCategories/Sheaves/SiteLiftSectionsCone.lean": "a5a7ada81f385924d69934a67784a447f2310c4d56f509180cc8e17d68df4fee",
+          "SerrePositivity/InfinityCategories/Sheaves/DiscretePresheafHom.lean": "ceb0ed24848423d1ba9a39059895ccfecf806096ce5bfe01efebc144714bf169"
+        }
+      }
     },
     {
       "id": "R11c",
@@ -964,7 +1110,7 @@
         {
           "name": "siteLiftSectionsCone_isLimit_iff",
           "path": "SerrePositivity/InfinityCategories/Sheaves/SiteLiftSectionsCone.lean",
-          "line": 72
+          "line": 76
         }
       ],
       "literature": "HTT 4.1.1.8、同値な添字による極限の移送。宇宙持ち上げの法則。",
@@ -979,7 +1125,26 @@
       "status": "verified",
       "placement": "SerrePositivity/InfinityCategories/Sheaves/SiteLiftSectionsCone.lean",
       "note": "",
-      "additional_mathematics": false
+      "additional_mathematics": false,
+      "citation_verification": {
+        "modules": 5,
+        "declarations": 24,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/ScaffoldCoherentComparisonRestriction.lean": "eaca001013d2fdcb29b38a5c6652896da293437d0d827266f4ac760c591bf92c",
+          "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/StraighteningReconstructionRepresentationComparison.lean": "268abe1ed9b74b9d96bb95b4fe73a9c03448c7595b6a59c9eade04a55e5af273",
+          "SerrePositivity/InfinityCategories/Sheaves/SiteLiftElementsShape.lean": "f9ced6ad6932e0715214671ff40fb627fcd95b1c3d0620277678857ae9099cdd",
+          "SerrePositivity/InfinityCategories/Sheaves/SiteLiftSectionsCone.lean": "a5a7ada81f385924d69934a67784a447f2310c4d56f509180cc8e17d68df4fee",
+          "SerrePositivity/InfinityCategories/Sheaves/DiscretePresheafHom.lean": "ceb0ed24848423d1ba9a39059895ccfecf806096ce5bfe01efebc144714bf169"
+        }
+      }
     },
     {
       "id": "R11d",
@@ -993,7 +1158,7 @@
         {
           "name": "siteLiftSectionsCone_isLimit_iff",
           "path": "SerrePositivity/InfinityCategories/Sheaves/SiteLiftSectionsCone.lean",
-          "line": 72
+          "line": 76
         }
       ],
       "literature": "HTT 4.1.1.8、同値な添字による極限の移送。宇宙持ち上げの法則。",
@@ -1008,7 +1173,26 @@
       "status": "verified",
       "placement": "SerrePositivity/InfinityCategories/Sheaves/SiteLiftSectionsCone.lean",
       "note": "",
-      "additional_mathematics": false
+      "additional_mathematics": false,
+      "citation_verification": {
+        "modules": 5,
+        "declarations": 24,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/ScaffoldCoherentComparisonRestriction.lean": "eaca001013d2fdcb29b38a5c6652896da293437d0d827266f4ac760c591bf92c",
+          "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/StraighteningReconstructionRepresentationComparison.lean": "268abe1ed9b74b9d96bb95b4fe73a9c03448c7595b6a59c9eade04a55e5af273",
+          "SerrePositivity/InfinityCategories/Sheaves/SiteLiftElementsShape.lean": "f9ced6ad6932e0715214671ff40fb627fcd95b1c3d0620277678857ae9099cdd",
+          "SerrePositivity/InfinityCategories/Sheaves/SiteLiftSectionsCone.lean": "a5a7ada81f385924d69934a67784a447f2310c4d56f509180cc8e17d68df4fee",
+          "SerrePositivity/InfinityCategories/Sheaves/DiscretePresheafHom.lean": "ceb0ed24848423d1ba9a39059895ccfecf806096ce5bfe01efebc144714bf169"
+        }
+      }
     },
     {
       "id": "R12a",
@@ -1032,7 +1216,7 @@
         {
           "name": "siteLiftSectionsCone_isLimit_iff",
           "path": "SerrePositivity/InfinityCategories/Sheaves/SiteLiftSectionsCone.lean",
-          "line": 72
+          "line": 76
         }
       ],
       "literature": "HTT 6.2.2.6、表現可能関手による極限の検出（Kerodon §7.1）。任意の準圏係数への反映。",
@@ -1101,7 +1285,26 @@
       "status": "verified",
       "placement": "SerrePositivity/InfinityCategories/Sheaves/DiscretePresheafHom.lean",
       "note": "",
-      "additional_mathematics": false
+      "additional_mathematics": false,
+      "citation_verification": {
+        "modules": 5,
+        "declarations": 24,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/ScaffoldCoherentComparisonRestriction.lean": "eaca001013d2fdcb29b38a5c6652896da293437d0d827266f4ac760c591bf92c",
+          "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/StraighteningReconstructionRepresentationComparison.lean": "268abe1ed9b74b9d96bb95b4fe73a9c03448c7595b6a59c9eade04a55e5af273",
+          "SerrePositivity/InfinityCategories/Sheaves/SiteLiftElementsShape.lean": "f9ced6ad6932e0715214671ff40fb627fcd95b1c3d0620277678857ae9099cdd",
+          "SerrePositivity/InfinityCategories/Sheaves/SiteLiftSectionsCone.lean": "a5a7ada81f385924d69934a67784a447f2310c4d56f509180cc8e17d68df4fee",
+          "SerrePositivity/InfinityCategories/Sheaves/DiscretePresheafHom.lean": "ceb0ed24848423d1ba9a39059895ccfecf806096ce5bfe01efebc144714bf169"
+        }
+      }
     },
     {
       "id": "R13b",
@@ -1317,5 +1520,59 @@
       "additional_mathematics": false
     }
   ],
-  "common_typeclass_setup": "local instance signaturePullbackLeft {E B D : SSet.{u}}\n    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) : LeftFibration (pullback.snd p k) :=\n  ⟨leftFibrations.pullback_snd p k (LeftFibration.mem (p := p))⟩"
+  "common_typeclass_setup": "local instance signaturePullbackLeft {E B D : SSet.{u}}\n    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) : LeftFibration (pullback.snd p k) :=\n  ⟨leftFibrations.pullback_snd p k (LeftFibration.mem (p := p))⟩",
+  "citation_refresh_1117": {
+    "verification": {
+      "modules": 5,
+      "declarations": 24,
+      "allowed_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "success": true,
+      "source": "fresh environment after target build; no pre-merge index reuse",
+      "heartbeat_limit": "unchanged; one command per declaration",
+      "source_sha256": {
+        "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/ScaffoldCoherentComparisonRestriction.lean": "eaca001013d2fdcb29b38a5c6652896da293437d0d827266f4ac760c591bf92c",
+        "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/StraighteningReconstructionRepresentationComparison.lean": "268abe1ed9b74b9d96bb95b4fe73a9c03448c7595b6a59c9eade04a55e5af273",
+        "SerrePositivity/InfinityCategories/Sheaves/SiteLiftElementsShape.lean": "f9ced6ad6932e0715214671ff40fb627fcd95b1c3d0620277678857ae9099cdd",
+        "SerrePositivity/InfinityCategories/Sheaves/SiteLiftSectionsCone.lean": "a5a7ada81f385924d69934a67784a447f2310c4d56f509180cc8e17d68df4fee",
+        "SerrePositivity/InfinityCategories/Sheaves/DiscretePresheafHom.lean": "ceb0ed24848423d1ba9a39059895ccfecf806096ce5bfe01efebc144714bf169"
+      }
+    },
+    "source_diff": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/ScaffoldCoherentComparisonRestriction.lean",
+        "before_sha256": "18834ad39c22579d2c7160c905dd6a3090d8724b90e4fe3c4d1c7b7c8a6eb0f3",
+        "after_sha256": "eaca001013d2fdcb29b38a5c6652896da293437d0d827266f4ac760c591bf92c",
+        "metadata_only": true
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/StraighteningReconstructionRepresentationComparison.lean",
+        "before_sha256": "1871c7f62ab1a71d8bab1e8805db41303bb07ec49fd71bb39f02d612949e74a7",
+        "after_sha256": "268abe1ed9b74b9d96bb95b4fe73a9c03448c7595b6a59c9eade04a55e5af273",
+        "metadata_only": true
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Sheaves/SiteLiftElementsShape.lean",
+        "before_sha256": "a6acadb758a1fa6acc55a998af84f797bada38f5ef14663695c1d6ecf3238745",
+        "after_sha256": "f9ced6ad6932e0715214671ff40fb627fcd95b1c3d0620277678857ae9099cdd",
+        "metadata_only": true
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Sheaves/SiteLiftSectionsCone.lean",
+        "before_sha256": "226285a79ed85e6481045dd178f1da6f6cf2e3ba2401ea20a76f7f1a1e6fffdf",
+        "after_sha256": "a5a7ada81f385924d69934a67784a447f2310c4d56f509180cc8e17d68df4fee",
+        "metadata_only": true
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Sheaves/DiscretePresheafHom.lean",
+        "before_sha256": "fe9aec77300a83e9d05691d36377fcc5c72cb6534998ac6b6b0f3a19346ab492",
+        "after_sha256": "ceb0ed24848423d1ba9a39059895ccfecf806096ce5bfe01efebc144714bf169",
+        "metadata_only": true
+      }
+    ],
+    "line_count_excluded": "文献属性と引用用importのみ。本文は文字列の完全一致で不変を検査。"
+  }
 }

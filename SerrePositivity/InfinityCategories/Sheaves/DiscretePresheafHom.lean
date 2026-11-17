@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.Util.Citation
+
 public import SerrePositivity.InfinityCategories.Sheaves.SpacePresheafYoneda
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftStraighteningSimplexRestriction
 public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHomCorrespondence
@@ -22,6 +24,7 @@ namespace SerrePositivity.InfinityCategories.Sheaves
 variable {C : Type u} [SmallCategory C] {P Q : Cᵒᵖ ⥤ Type u}
 
 /-- 元の離散埋め込みによる同じ辺を、指定された二つの前層の間の Hom に正規化する。 -/
+@[cite HTT "5.5.6.28" (partial := special) "小さい通常siteの集合値前層の離散埋め込みのHom作用。"]
 def discretePresheafHom (φ : P ⟶ Q) :
     FunctorHom (discretePresheaf P) (discretePresheaf Q) :=
   Truncated.HomotopyCategory.homMk

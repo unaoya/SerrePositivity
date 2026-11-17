@@ -5,8 +5,8 @@
 再採番せず、ここにある各署名IDを一つずつ数える。旧「5／8」は以後この台帳の進捗に使わない。
 小さい既存構成の法則・証明の分割は親署名内に記録するが、上端200行超は独立署名。
 
-署名35本＝検証済み17本＋未完16本＋別停止点へ切り離す2本。
-一覧：済み 17／全体 35（うち追加 0、別停止点 2）。
+署名35本＝検証済み18本＋未完15本＋別停止点へ切り離す2本。
+一覧：済み 18／全体 35（うち追加 0、別停止点 2）。
 「追加0」は元の承認済み範囲の外の新しい数学を足していない、という意味。
 
 ## 最新の検証記録（P3-B1）
@@ -20,6 +20,12 @@
 この検証組は199行。検証済み累計22,885行。
 対象ビルド・小監査：2モジュール・18宣言、標準三公理のみ。
 証拠：`/tmp/is-w1/p3-b2/production/target-audit-result.json`（ソースSHAを照合）。元の見込みはJSONのoriginal欄にも保持。
+
+## 最新の検証記録（P3-B2e）
+
+この検証組は90行。検証済み累計22,975行。
+対象ビルド・小監査：1モジュール・6宣言、標準三公理のみ。
+証拠：`/tmp/is-w1/p3-b2e/production/target-audit-result.json`（ソースSHAを照合）。元の見込みはJSONのoriginal欄にも保持。
 
 ## 型の共通環境
 
@@ -150,7 +156,7 @@ FunctorIso
 
 使う既存の宣言：
 
-- `scaffoldCoherentComparison_scaffoldIso` @ `SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/ScaffoldCoherentComparisonRestriction.lean:27`
+- `scaffoldCoherentComparison_scaffoldIso` @ `SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/ScaffoldCoherentComparisonRestriction.lean:30`
 
 置き場所（新規の場合の案）：`SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/ScaffoldCoherentComparisonRestriction.lean`。
 
@@ -178,7 +184,7 @@ let q := smallLeftUnstraighteningProjection (leftStraighteningInfinityDiagram p)
 
 使う既存の宣言：
 
-- `leftStraighteningInfinityReconstruction_representationComparison` @ `SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/StraighteningReconstructionRepresentationComparison.lean:31`
+- `leftStraighteningInfinityReconstruction_representationComparison` @ `SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/StraighteningReconstructionRepresentationComparison.lean:34`
 
 置き場所（新規の場合の案）：`SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/StraighteningReconstructionRepresentationComparison.lean`。
 
@@ -337,9 +343,9 @@ let q := smallLeftUnstraighteningProjection (leftStraighteningInfinityDiagram p)
 
 ### P3-B2e — `transportSimplexUnderRealization_baseChange_composition`
 
-状態：pending。依存署名：`P3-A`, `P3-B2c`, `P3-B2d`。
+状態：verified。依存署名：`P3-A`, `P3-B2c`, `P3-B2d`。
 
-素の残り：30〜60行。係数2の残り：60〜120行。
+素の残り：0〜0行。係数2の残り：0〜0行。元の見込み：[30, 60]、補正[60, 120]。実測は同じ検証組P3-B2eで90行。
 
 原典：HTT §3.3.2（特に3.3.2.8）、Kerodon Corollary 5.6.0.6（Tag 028T）。指定構成の法則で、独立した原典の補題番号はない。
 
@@ -362,11 +368,12 @@ let q := smallLeftUnstraighteningProjection (leftStraighteningInfinityDiagram p)
 
 使う既存の宣言：
 
+- `transportSimplexUnderRealization_baseChange_composition` @ `SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/SimplexUnderJointComposition.lean:71`（今回検証済み）
 - `relativeSectionRealizationComparisonIso` @ `SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/RelativeSectionJointComparison.lean:201`
 
 hηB/hηDは適用で既存の初頂点の制限・係数移送から証明する。第3項の最終仮定には足さない。
 
-置き場所（新規の場合の案）：`SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/SimplexUnderJointComposition.lean`。
+置き場所：`SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/SimplexUnderJointComposition.lean`。
 
 ### P3-C0 — `leftStraighteningBaseChangePullbackData`
 
@@ -437,8 +444,8 @@ P3-Cの標準pullbackの前提計算を独立に明示した。tは指定二座�
 
 使う既存の宣言：
 
-- `scaffoldCoherentComparison_scaffoldIso` @ `SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/ScaffoldCoherentComparisonRestriction.lean:27`
-- `leftStraighteningInfinityReconstruction_representationComparison` @ `SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/StraighteningReconstructionRepresentationComparison.lean:31`
+- `scaffoldCoherentComparison_scaffoldIso` @ `SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/ScaffoldCoherentComparisonRestriction.lean:30`
+- `leftStraighteningInfinityReconstruction_representationComparison` @ `SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/StraighteningReconstructionRepresentationComparison.lean:34`
 - `smallFiberTransportRepresentationVertexIso_unique` @ `SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/RepresentationComparisonCoherence.lean:26`
 
 200行超。数学的な芯。νそのものを表す全空間の表現の点aを構成する。可縮性だけからνの表現可能性を仮定しない。
@@ -690,7 +697,7 @@ FunctorHom
 
 使う既存の宣言：
 
-- `siteLiftElementsShapeIso` @ `SerrePositivity/InfinityCategories/Sheaves/SiteLiftElementsShape.lean:21`
+- `siteLiftElementsShapeIso` @ `SerrePositivity/InfinityCategories/Sheaves/SiteLiftElementsShape.lean:24`
 
 置き場所（新規の場合の案）：`SerrePositivity/InfinityCategories/Sheaves/SiteLiftElementsShape.lean`。
 
@@ -712,7 +719,7 @@ FunctorHom
 
 使う既存の宣言：
 
-- `siteLiftElementsShapeIso` @ `SerrePositivity/InfinityCategories/Sheaves/SiteLiftElementsShape.lean:21`
+- `siteLiftElementsShapeIso` @ `SerrePositivity/InfinityCategories/Sheaves/SiteLiftElementsShape.lean:24`
 
 置き場所（新規の場合の案）：`SerrePositivity/InfinityCategories/Sheaves/SiteLiftElementsShape.lean`。
 
@@ -734,7 +741,7 @@ JoinCone (nativeSetSectionsDiagram (siteLiftPresheaf P) ((asSmallSiteShapeIso C)
 
 使う既存の宣言：
 
-- `siteLiftSectionsCone_isLimit_iff` @ `SerrePositivity/InfinityCategories/Sheaves/SiteLiftSectionsCone.lean:72`
+- `siteLiftSectionsCone_isLimit_iff` @ `SerrePositivity/InfinityCategories/Sheaves/SiteLiftSectionsCone.lean:76`
 
 置き場所（新規の場合の案）：`SerrePositivity/InfinityCategories/Sheaves/SiteLiftSectionsCone.lean`。
 
@@ -756,7 +763,7 @@ JoinCone (nativeSetSectionsDiagram (siteLiftPresheaf P) ((asSmallSiteShapeIso C)
 
 使う既存の宣言：
 
-- `siteLiftSectionsCone_isLimit_iff` @ `SerrePositivity/InfinityCategories/Sheaves/SiteLiftSectionsCone.lean:72`
+- `siteLiftSectionsCone_isLimit_iff` @ `SerrePositivity/InfinityCategories/Sheaves/SiteLiftSectionsCone.lean:76`
 
 置き場所（新規の場合の案）：`SerrePositivity/InfinityCategories/Sheaves/SiteLiftSectionsCone.lean`。
 
@@ -781,7 +788,7 @@ joinMap (𝟙 _) (nerveMap (siteLiftPresheafMap φ).mapElements) ≫
 
 使う既存の宣言：
 
-- `siteLiftSectionsCone_isLimit_iff` @ `SerrePositivity/InfinityCategories/Sheaves/SiteLiftSectionsCone.lean:72`
+- `siteLiftSectionsCone_isLimit_iff` @ `SerrePositivity/InfinityCategories/Sheaves/SiteLiftSectionsCone.lean:76`
 
 置き場所（新規の場合の案）：`SerrePositivity/InfinityCategories/Sheaves/SiteLiftSectionsCone.lean`。
 
@@ -803,7 +810,7 @@ IsLimitCone (siteLiftSectionsCone P O c) ↔ IsLimitCone c
 
 使う既存の宣言：
 
-- `siteLiftSectionsCone_isLimit_iff` @ `SerrePositivity/InfinityCategories/Sheaves/SiteLiftSectionsCone.lean:72`
+- `siteLiftSectionsCone_isLimit_iff` @ `SerrePositivity/InfinityCategories/Sheaves/SiteLiftSectionsCone.lean:76`
 
 置き場所（新規の場合の案）：`SerrePositivity/InfinityCategories/Sheaves/SiteLiftSectionsCone.lean`。
 
@@ -827,7 +834,7 @@ IsLimitCone (siteLiftSectionsCone P O c) ↔ IsLimitCone c
 使う既存の宣言：
 
 - `isLimitCone_of_covariantRepresentableInfinity` @ `SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/TheYonedaEmbedding/RepresentableLimitCharacterization.lean:52`
-- `siteLiftSectionsCone_isLimit_iff` @ `SerrePositivity/InfinityCategories/Sheaves/SiteLiftSectionsCone.lean:72`
+- `siteLiftSectionsCone_isLimit_iff` @ `SerrePositivity/InfinityCategories/Sheaves/SiteLiftSectionsCone.lean:76`
 
 上端200行超。係数のpresentabilityを仮定しない。
 
@@ -1044,4 +1051,4 @@ FunctorHom (discretePresheaf P) (discretePresheaf Q)
 
 置き場所（新規の場合の案）：`SerrePositivity/InfinityCategories/Sheaves/isSheaf_toGrothendieck_iff.lean`。
 
-一覧：済み 17／全体 35（うち追加 0、別停止点 2）。
+一覧：済み 18／全体 35（うち追加 0、別停止点 2）。

@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.Util.Citation
+
 public import SerrePositivity.InfinityCategories.Sheaves.PresheafElementsSiteLift
 public import SerrePositivity.InfinityCategories.Sheaves.AsSmallSiteShape
 
@@ -18,6 +20,7 @@ namespace SerrePositivity.InfinityCategories.Sheaves
 variable {C : Type u} [SmallCategory C]
 
 /-- 同じ要素のup/downを全単体へ送る、指定した厳密な形状同型。 -/
+@[cite HTT "5.1.5.6" (partial := special) "小さい通常siteの集合値重みの要素圏の宇宙移送。"]
 def siteLiftElementsShapeIso (P : Cᵒᵖ ⥤ Type u) :
     (SSet.uliftFunctor.{u + 1, u}).obj (nerve P.Elements) ≅
       nerve (siteLiftPresheaf P).Elements where
