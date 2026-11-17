@@ -1,0 +1,3 @@
+number,status,declarations,reason,axioms,check,partial_kind
+13.1,none,,原文を再読し、現本体とロックMathlibを節の対象語で再検索したが、同じ対象・指定射の主張を直接与える宣言は未同定。BMS19 との比較（Δ̂_S と Nygaard 完備化）。THH・BMS の理論は Lean にない,,not_found,
+13.2,none,,原文を再読し、現本体とロックMathlibを節の対象語で再検索したが、同じ対象・指定射の主張を直接与える宣言は未同定。δ と Nygaard filtration の両立。未形式化,,not_found,

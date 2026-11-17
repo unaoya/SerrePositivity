@@ -1,9 +1,9 @@
 # 現在地
 
-- 段：**KB-W2 完了、BT-W1 着手**。続いて BT-W1 を行い、二段とも完了後に停止する。
-- 一覧：HA 済み10／全体10章、HTT 済み8／全体8章、BS 済み0／全体18節。
+- 段：**KB-W2・BT-W1 完了、停止**。二段をそれぞれコミットした。
+- 一覧：HA 済み10／全体10章、HTT 済み8／全体8章、BS 済み18／全体18節。
 - 作業場所：`/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-cited`。枝：`research/cited-coverage`。pwd一致を確認し、`git merge main` を実施（開始HEAD `5d1d699f9`）。
-- 次：KB-W2 をコミットし、BS 全211項目を節ごとの review に移す。BT-W1 完了後にコミットして停止する。
+- 次：追加作業なし。KB-W2 は `bdd71d205`、BT-W1 は直後の段2コミットとして納品し、ここで停止する。
 - 紙のみ。Lean変更・ビルド・kernel実行・鍵は使わない。既存own・mathlibの行は保存し、大きい証拠はgit外、目録だけコミットする。
 
 ## CC-W1 納品（停止コミット `156ac3c32`）
@@ -264,3 +264,17 @@ HTT第1〜4章を完了。対象71・142・122・121行の全判定を章別chec
 OE-W1 module-map と KL-W1/B3/B3′ の移動後の所在を参照して再検索した。名前・型・行番号の最終照合では旧 EInfinity 名前空間と互換 alias の旧位置も訂正。大きい証拠は `~/serre-evidence/cited/kb-w2/review-evidence.tar.gz`、目録は `evidence/cited/kb-w2/manifest.json`。検索は各開始時 none 行へのクエリの割当・終了コードを確認したもので、全ヒットの形式検証や不在の数学的証明ではない。
 
 静的確認：18章の全行・全対象・保護行のliteral保存・許可した4列以外の不変・partial_kindの整合・正の根拠の現ファイル実在・Archive/drafts排除・再検索の対象漏れなしを確認。axioms/check は既存記録であり今回のkernel結果ではない。Lean変更・ビルド・kernel・鍵はなし。
+
+## BT-W1：BS の review 正本化
+
+§1–§18、全 **211項目**の原典と型を静的に読み比べ、`research/bs-coverage/review/ch1.csv`〜`ch18.csv` をHA・HTTと同じ7列で作成した。**own 25、partial 46、interface 6、none 134**。partial_kind は special18・component22・stronger-hyp6。items.csv は目録6列の値を保存し、状態・宣言・note・confidence を空にした。状態の正本は review と README に明記し、凍結中の生成器・解説・旧表示JSONは変更しない。
+
+旧語の置換ではない。3.4は原典の正則列を述べる universalOrientedPrism_regular とFrobenius完全平坦性も確認してown。10.3は一般のperfectoid商の三定理を同じ任意Jの核へ適用してown。2.36・2.38・2.39は通常の表示環・Torの部品から原典のPD-envelope/derived pushoutへの比較を未同定なのでnone。4.9・4.10・5.5の旧proved_specialも、reducedModelとsiteのRΓとの比較が未供給なのでnone。4.19は原文明記の余単体項の底変換の直接の部分がありpartial。
+
+interfaceは **1.17・8.2・8.5・8.12・8.14・10.11**。E3存在入力を実際に使う箇所と各欄の型を読み、離散入力・D(R)への忘却・Type uの標的等の差を理由に記した。8.4はcoconnective欄が削除済み、8.11はarc-RΓ欄がなくdraftsのみなのでnone。引用元として挙がるだけの項目はinterfaceにしない。
+
+READMEに旧→新の全遷移と段0へ渡す所見（site/模型の比較、PD表示と普遍性、E3欄の範囲、7.4の二つの証明・HT比較の並行入口、一般商の結果と単項特化、16.9の旧目録kindのずれ）を例つきで記した。16.9の判定は原典のExampleであり、[GR, Theorem16.9.17]の誤抽出ではない。
+
+確認：全211番号・18節・7列・partial_kind・目録6列の不変・旧状態4列の空欄化・現在の宣言名/ファイル/行・正の根拠からArchive/drafts排除を検査。check_locations.pyは旧itemsに読取りのみで実行し、358エントリのok168・移動127・行47・未解決16を得た。未解決候補は現本体の型を直接読み直した。正の根拠77行のnative import閉包には非interfaceでソース上のsorry/sorryAxを検出せず、interface6行だけがE3存在のsorryへ到達した。これはkernelでの全axiom閉包の確認ではなく、axioms列は空とした。
+
+証拠は `~/serre-evidence/cited/bt-w1/review-evidence.tar.gz`、目録は `evidence/cited/bt-w1/manifest.json`。全検証は紙・静的スクリプトのみ。Lean変更・ビルド・kernel実行・鍵はなし。KB-W2とBT-W1をそれぞれコミットし、この二段で停止する。

@@ -1,36 +1,48 @@
-# BS（Prisms）の項目ごとの対応表（2026-11-07）
+# BS（Prisms）の項目ごとの対応表
 
-作成：段階 II の調整役。読み取りだけのエージェント 6 本で調べた。対象は Bhatt–Scholze "Prisms and prismatic cohomology" の著者版（`paper/refs/BS-prisms-author.pdf`）の番号つきの項目 211 個。抜き出しで拾った偽の項目 2 件（6.17 と 9.12。他の文献の引用だった）は除いた。
+BT-W1（2026-11-17）。対象は Bhatt–Scholze, *Prisms and prismatic cohomology* の著者版の全番号つき **211項目**、§1–§18。原典は `../SerrePositivity/paper/refs/BS-prisms-author.pdf`（SHA-256 `4cb49a42c80fc734fb7585da273538e09632431ba06709ae05a11ded6673c27a`）。本論文が引用する項目だけには限らない。
 
-- `items.csv` の列：
-  - `number`、`kind`、`title`（英語の題、原典にあるものだけ）
-  - `title_ja`（11-12 夜追加）：日本語の短い題。HTML として勉強ノートにそのまま入る（KaTeX の `\(` `\)` や `<code>` を含んでよい）。11-12 に各章の旧「原典の項目一覧」の「内容」欄から移し、まとめ行（「Lemma 2.23〜2.25」など）の 40 項目は項目ごとに付け直した。§1・§9・§11〜§18 は未記入（空ならノートは `title` を使う）
-  - `status`：`proved`（本体に原典どおり、sorry なし）、`proved_special`（本体に特別な場合だけ）、`parts_in_body`（11-10 追加：証明の主な部品は本体、主張の組み立ては drafts または他の単位待ち）、`e3_input`（E3 の界面の欄として、今は Inputs の引用）、`drafts`（drafts に型だけ、sorry）、`design_only`（設計書だけ）、`none`
-  - `goal`：今の目標（段階 II の目標 A、E3 を消して主定理の閉包の sorry を 0 にする）に必要か。`required`（必要）、`special`（一部だけ必要）、`not_required`（不要）、`unknown`（未確定）
-  - `declarations`、`design`（設計書と D 番号）、`note`、`confidence`
-- **勉強ノートとの関係（11-12 夜から）**：この表が項目の状態の正本。`exposition/ja/bs/build_items.py` が各章の「原典の項目一覧」と `00-map.html` の節ごとの集計をここから生成する（ノートの表は手で直さない）。この表を直したら `python3 exposition/ja/bs/build_items.py` を走らせる。`--check` で生成結果とのずれを確かめられる。`note` の「 ／ 」区切りのうち「DOC1 照合…」「MM-DD 更新…」はノートに載せない
-- **宣言の位置の確認**：`python3 research/bs-coverage/check_locations.py`（`--write` で一意に決まるものを直す）。本体は `research/coverage-location-refresh/` の改名表による更新の対象だが、drafts は対象外なので、drafts の書き直しのたびに行がずれる。drafts から本体へ移った宣言は「移動」として出るので、status を見直す
-- 判定の方法：宣言名・主張・docstring・設計書（a0〜a9-design、design-status、citations-survey）の照合。**Lean を動かしての確認はしていない**。
-- 集計（11-10 更新：BS-W11〜W13 と BS-D68 の段 2 が入った後。新しいファイル 113 本の docstring の原典番号から候補を出し、読むだけのエージェントが宣言の型を読んで判定、調整役が主な宣言の実在を確かめた。変わったのは 16 項目）：
-  - status：none 99、proved_special 35、drafts 30、proved 28、parts_in_body 8、e3_input 7、design_only 4
-  - 目標に必要な 105 項目の status：proved_special 31、drafts 29、proved 28、parts_in_body 8、e3_input 6、design_only 2、none 1
-- 11-12 夜の 2 回目の更新（ノート本文の書き直しのとき）：2.6・2.36・2.42・3.7・3.13・7.14 の宣言と note、4.20・4.22 を design_only から drafts に（drafts/A0/BaseChange に型）、3.9 は BR28 の実施を反映。目標に必要な 105 項目：proved_special 38、proved 34、parts_in_body 15、drafts 12、e3_input 6
-- 11-12 夜の更新（生成器を作った回）：宣言の位置を `check_locations.py` で直した（drafts の行 43 件、drafts → 本体の移動 5 件）。移動に伴い 6.3 を本体に部品に（HT 写像・主張の型・結晶基底の同型は本体、一般の同型は drafts）、3.2・1.8 の note を直した。目標に必要な 105 項目：proved_special 38、proved 34、parts_in_body 15、drafts 10、e3_input 6、design_only 2
-- 11-11 の更新（BS-W15 の停止点 1・2、BS-D69 の停止点 1 の後）：2.21・2.36・2.38・2.39・3.4 を本体（証明済み）、2.37・2.42 を本体（特別な場合）、4.18・6.4 を本体に部品に。
-- 11-12 夕の更新（BS-D69 停止点 3・BS-W17 停止点 5 の後）：7.3 を本体（特別な場合）に、5.1 を本体に部品に、7.10 に S′ と完全化を追記。目標に必要な 105 項目：proved_special 38、proved 34、parts_in_body 14、drafts 11、e3_input 6、design_only 2
-- 11-12 朝の更新（BS-W17 停止点 4 の後）：7.10 を本体に部品に（有限 T の場合）。目標に必要な 105 項目：proved_special 37、proved 35、drafts 12、parts_in_body 13、e3_input 6、design_only 2
-- 11-11 夜の更新（BS-W17 停止点 1〜3 の後）：4.17 を本体（特別な場合）に、4.19・6.1・6.2 を本体に部品に。1.4・1.6 は本体に名前つきであったのを訂正。目標に必要な 105 項目：proved_special 37、proved 35、drafts 13、parts_in_body 12、e3_input 6、design_only 2
-- 11-11 の更新（BS-W15 停止点 4 の後）：7.8 を本体に、7.7・7.9 を本体に部品に（δ 構造・始性・envelope の側は本体、Δ_R/A との同一視は drafts）。目標に必要な 105 項目：proved_special 35、proved 34、drafts 17、parts_in_body 11、e3_input 6、design_only 2
-- 11-10 の 2 回目の更新（BS-D68 停止点 3 の後）：4.9・4.10・5.5 を本体（特別な場合）に、4.11 を本体に部品に。目標に必要な 105 項目：proved_special 34、proved 28、drafts 26、parts_in_body 8、e3_input 6、design_only 2、none 1
-- 11-07 の集計：
-  - status：none 97、drafts 40、proved_special 34、proved 27、e3_input 8、design_only 5
-  - 目標：必要 73、一部だけ必要 32、不要 105、未確定 1（11-07 の訂正の後）
-  - 目標に必要な 105 項目の status：drafts 39、proved_special 29、proved 27、e3_input 7、design_only 3
-- 一覧のページ（非公開の Artifact）：https://claude.ai/artifact/YWUyntvwsGb2aX39kZnMyT
+## 正本と書式
 
-調査で見つかった、設計の側で直す点：
+**状態・対応宣言・判定理由の正本は `review/ch<N>.csv`。** HA・HTT と同じ7列 `number,status,declarations,reason,axioms,check,partial_kind` で、原典の節ごとに18ファイルを置く。
 
-- D68 の改訂（結晶の黒箱を、対象ごとの HT の命題の直接証明に置き換える）が drafts にまだ入っていない。Lemma 5.4 は drafts にも宣言がない。
-- E3 の経路で要るのに、主張の型が drafts にもないもの：Lemma 4.20・4.22（A0-4）、Lemma 3.7(2)(3) の一般形（A0-3b）、Cor 3.12 の (b)〜(e)（A0-3d）。
-- 資料どうしの食い違い：Cor 3.12（勉強ノートでは不要、a0-design では要る）、Rem 4.5（a0-design では不要、drafts では使っている）。
-- 訂正（11-07、調整役）：Rem 10.7 の「引用のずれの疑い」は誤り（原典に「J_perfd,n は R/pⁿ の冪等イデアル」の一文があり、本体はその J=(g) の場合）。Rem 2.13・2.14・Lemma 2.32 は André の経路（Thm 7.14 → Thm 7.4）の証明済みの部品なので「目標に必要」に直した。未確定は Example 8.3 だけ（a4-design §5 の 5）。
+- `items.csv` は目録。番号・種類・題・日本語題・goal・design を保存した。旧 `status,declarations,note,confidence` は空にし、二重管理しない。goal は以前の目標への必要性の記録で、今回再判定していない。
+- `own` は同じ対象・射の主張を本体の宣言の型から得るもの。`partial` は直接得られる限定部分があり、`special,direction,stronger-hyp,component` の差を reason に明記する。証明の部品・類似の定理・比較未供給の別模型は `none`。
+- `interface` は **E3 の存在の sorry に依存する界面・公開定理**。原文の全範囲が実装済みという意味ではない。離散入力、D(R)への忘却、Type u の標的等の差を理由に書く。単に参考文献として名前が挙がるだけでは interface にしない。
+- `declarations` は現在の `名前 @ パス:行`。正の根拠は現本体のみ。none 行では、採用しなかった本体の候補や drafts の所在を記録することがある。
+- `axioms` は空。`check=found/not_found` は今回の静的な型・所在照合の記録であり、kernel 実行や `#print axioms` の結果ではない。Lean変更・ビルド・鍵の使用はない。
+
+凍結中の `exposition/ja/bs/build_items.py` は **動かしていない**。勉強ノート・`map/data.json`・`doc1-check.csv` は以前の調査・表示の記録であり、今回の状態の正本ではない。生成器や表示の追随は別作業とする。
+
+## 集計と旧状態からの遷移
+
+**own 25、partial 46、interface 6、none 134、計211。** mathlib・both に判定した行はない。partial_kind は special 18、component 22、stronger-hyp 6、direction 0。
+
+| 旧状態 | own | partial | interface | none | 計 |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| proved | 24 | 6 | 0 | 3 | 33 |
+| proved_special | 1 | 37 | 0 | 6 | 44 |
+| parts_in_body | 0 | 2 | 1 | 12 | 15 |
+| drafts | 0 | 0 | 0 | 13 | 13 |
+| e3_input | 0 | 0 | 5 | 2 | 7 |
+| design_only | 0 | 0 | 0 | 2 | 2 |
+| none | 0 | 1 | 0 | 96 | 97 |
+
+旧語の一括置換ではない。例：3.4 は正則列と Frobenius 完全平坦性の型も確認して own、10.3 は任意 J の perfectoid 核への一般定理の適用で own。旧 proved の2.36・2.38・2.39は、表示環・Tor と原文の指定 PD-envelope/derived pushout の比較が未同定なので none。旧 parts_in_body の4.19は同じ余単体項の底変換という直接の部分があり partial、6.1は追加の cochain 入力を明記して partial、10.11は E3 integral 欄を追って interface。
+
+## BS 整理の段0へ渡す所見
+
+1. **site RΓ と模型を区別する。** 4.9・4.10・5.5 の旧 proved_special は reducedModel 上の HT 写像・Bockstein・結晶基底の同型である。4.11・5.2・6.2–6.4も、site の RΓ と模型を結ぶ比較・Tot の交換が未供給なので none とした。主張述語 HodgeTateIsoStatement の定義だけも同型の証明として数えない。4.19の項ごとの底変換との境界を保つ必要がある。
+2. **PD 表示環と universal PD-envelope の同定を明示する。** 2.36・2.38・2.39 の候補は通常環の表示・p正則性・Tor消滅・底変換を与えるが、指定された PD-envelope と SCR の derived pushout との橋を今回未同定。2.37の Tor 消滅、2.42の通常環の Koszul ホモロジーによる定義も、SCR の主張と同じとは扱わない。既存の cite 属性に own と書いてある場合も、この紙の判定とは一致しない。必要な比較の所在を段0で確認する対象にする。
+3. **E3 の欄と参考文献を分ける。** 1.17・8.2・8.5・8.12・8.14・10.11は界面の存在に依存する。8.4は coconnective 欄が削除済み、8.11は arc 上 RΓ の欄がなく drafts のみなので none。8.2の φ-perfection の式や E∞ 構造を、D(R) の perfd 欄で構成したとはしない。
+4. **並行する宣言を即座に削除しない。** 7.4の André 経路と root-envelope 経路は同じ普遍単位の全射性の別証明。5.5/4.11の hodgeTate_iso_polynomial_Zp と hodgeTate_of_deRham_cartier は同じ結晶基底の模型上の同型を渡す並行入口で、利用先を調べて統合を判断する。7.8の一般圏論と PrismOver の冪等分裂は、一般結果と適用例の関係。
+5. **一般形と特化版を合わせて読む。** 10.3は単項 perfectoidIdeal_lemma103 だけでなく、perfectoidKernel_quotient_isIntegralPerfectoid と一般商の三定理を組むことで任意 J の主張を得る。10.2の拡大閉性・10.7の mod p^n 冪等性も一般商の根拠がある。一方で圏同値・almost有限射影・不分岐は別の未実装部分である。
+6. **目録の既知の注記。** 16.9 の kind は旧目録で Theorem のままだが、原典は Example 16.9（q-PD対の例）。[GR, Theorem 16.9.17] の直後の証明と混同せず、今回の判定は Example に対する none。目録の6列は今回保存したので、種類の訂正は別作業。1.5が指す3.5も原典は Lemma として読む。
+
+## 検証と証拠
+
+`check_locations.py` を items の状態列を空にする **前に読取りのみ**で実行し、旧358エントリの ok168・移動127・行47・未解決16を得た。書換えオプションは使わず、現本体の宣言索引と実ファイルで review の名前・型・所在を照合した。このスクリプトは items を読む旧形式のため、空にした後の実行は review の検証にならない。今回の review 検証の手順と結果は git 外の証拠に置いた。
+
+全211番号が一度ずつ現れること、18節、列・状態・partial_kindの整合、目録6列の保存、全対応先の現ファイル・行・正の根拠の完全修飾名、Archive/draftsの正の根拠からの排除を静的に確認した。非interfaceの正の根拠では、**native import閉包のソース**からコメント・文字列を除いた sorry/sorryAx を検出せず、interface6行だけが Inputs/PerfectoidizationInterface.lean の存在入力へ到達した。これは宣言ごとの完全なaxiom閉包のkernel検証ではない。
+
+原文抽出、実際の型と文脈、検索、旧所在確認、遷移、静的検証の証拠は `~/serre-evidence/cited/bt-w1/`。コミットするのは `evidence/cited/bt-w1/manifest.json` の目録だけ。
