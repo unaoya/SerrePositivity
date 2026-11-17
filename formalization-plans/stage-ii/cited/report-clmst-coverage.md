@@ -1,9 +1,9 @@
 # 現在地
 
-- 段：**NB-W1 完了、Kerodon 第1章の本文原稿の試しをコミットする停止点**。
-- 作業場所：`/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-cited`（最初の pwd で一致を確認）。枝：`research/cited-coverage`。
-- 最新コミット：本報告を含む停止コミット `HEAD`（件名 `docs: trial Kerodon chapter 1 note fragments`）。NB-W1 の基準 HEAD は `02fd6ba06408721b5fa593a56ea5eebcfa31f2ae`。指定の `git merge main` は Already up to date（CC-W2 取り込み済み）。停止コミットのハッシュは最終応答に記録する。
-- 残り：調整役による原稿配置・章外の扱い・Verso 変換の設計判断。生成器は未変更。今回の原稿と所見をコミットして停止し、次段の実装には進まない。
+- 段：**AR-W1 進行中。FilteredExchange の群分け・主要宣言一覧を先にコミットする途中点（停止しない）**。
+- 作業場所：`/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-cited`。枝：`research/cited-coverage`。pwd 一致を確認し、指定の `git merge main` を実施した。
+- 基準HEAD：`7c2528f6594b63074e7955f2f0c57db15ace4e2e`（main 取り込み後）。今回の途中コミット件名は `docs: inventory archived mathematical topic groups`。
+- 次：宣言の型・文献番号・現本体との主張の一致・目標の必要性・import の状態を調べ、全群の推奨と Kerodon 行の訂正案を完成させる。紙だけで進める。
 
 ## CC-W1 納品（停止コミット `156ac3c32`）
 
@@ -73,3 +73,11 @@ issues.md には表・囲み（env）・cases等の数式・リンク・来歴�
 88ブロックの表示テキストを転記後と照合し、本文中の295数式片（区切り・内部TeX）を逐一比較した。88個のブロックIDは重複・欠落なし。README の全行と原稿内リンクの実在アンカーを照合した。入力HTML5ファイル・対応表3ファイル・生成器の計9ファイルは基準HEADと同じハッシュで、変更していない。Lean の変更・実行、Verso・Lean のビルド、ブラウザーでの描画確認はしていない。
 
 証拠は `~/serre-evidence/cited/notes-kerodon1/`。段落対応・元リンクと移設先・入力と出力のハッシュ・検査結果・段限りの転記/検査スクリプトを保存した。コミットするのは `evidence/cited/notes-kerodon1/manifest.json` の目録だけ。目録の commit は基準HEAD `02fd6ba06408721b5fa593a56ea5eebcfa31f2ae`。今回の原稿は生成器に接続せず、このコミットで停止する。
+
+## AR-W1
+
+### 途中コミット：群分けと主要宣言
+
+Archive 全体を83群に分け、`research/archive-review/groups.csv` と `filtered-exchange-inventory.md` に主要宣言の一覧を置いた。FilteredExchange は68群・1,726本・96,551行。全体では1,871本・109,913行。大きい CoherentColimit と CoherentCospan は細分し、小さい接頭辞は名前空間・import と共通の操作を見てまとめた。
+
+これは途中版で、主張・文献・対応・目標・推奨はまだ空欄。各群3〜9個の主要宣言を抽出し、その型と周囲の変数を次に読む。抽出の全結果は git 外 `~/serre-evidence/cited/archive-review/`、目録は `evidence/cited/archive-review/manifest.json`。このコミット後も停止せず、照合を続ける。Archive・本体・対応表・Lean は未変更、ビルドしていない。

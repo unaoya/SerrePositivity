@@ -1,0 +1,34 @@
+{
+ "directory": "/Users/sugakubunka/serre-evidence/cited/archive-review",
+ "commit": "HEAD",
+ "made_by": "AR-W1 interim: inventory.py; source-only extraction",
+ "note": "1871 files; 83 groups; FilteredExchange 1726 files in 68 groups; no Lean execution",
+ "files": [
+  {
+   "path": "base-head.txt",
+   "sha256": "e6989dee905d69565b550fd4da376f991596c4864448993678159b9ca13425d4",
+   "bytes": 41
+  },
+  {
+   "path": "inventory.json",
+   "sha256": "d2e54068626254c6649429867fb8452a2cf54da5a57698efe23cfdcf34d598f0",
+   "bytes": 4588081
+  },
+  {
+   "path": "inventory.py",
+   "sha256": "a19b7a98a36b34863759bf7442276752f0ddc18d5f2cb9080984a3b73eb6c16c",
+   "bytes": 10456
+  },
+  {
+   "path": "selected-types.md",
+   "sha256": "a5faca347faac7a4013dfbd93334da44d4382ee1148fba282ea4ea0094dada2f",
+   "bytes": 600634
+  },
+  {
+   "path": "selected.json",
+   "sha256": "1f9cab7c932d602dc7f9796d05b1b823ae1431da96fd9c303f409d6e3748ab0c",
+   "bytes": 252184
+  }
+ ],
+ "total_bytes": 5451396
+}
