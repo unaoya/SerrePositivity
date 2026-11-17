@@ -3308,3 +3308,15 @@ main `6aa6d7152` の指示書末尾を `git show` で読み、今回のユーザ
 - E08 `SerrePositivity.AlgebraicGeometry.frobeniusArrowFamilyStageColimitIso`：固定次数の族の余極限と元の余錐の同じFrobenius次数との自然同型を作る。
 - E09 `SerrePositivity.AlgebraicGeometry.frobeniusArrowFamilyStageColimitIso_ι`：その標準比較は各模型の元の余錐の脚を保つ。
 - E15 `SerrePositivity.AlgebraicGeometry.coefficientVCoverModel_primeCast`：係数環でのpの零化を同じv被覆模型の両端の環へ送り、CharPや非零性を追加しない。
+
+## 2026-11-17：二変数の余極限の交換とfiltered模型の完全性（e025aa64f）
+
+- E11〜E14の同じ型・仮定を実装。`FrobeniusArrowFamilyColimit.lean` 109行＋入口1行＝110行。原稿・本体の同一バイト、対象ビルド5,378ジョブと直接importer、別の共有鍵での所有宣言15件の監査が成功。標準三公理以外0。
+- 既存Fubini同型と二つの標準比較を合成し、全ての標準脚を元の実際のFrobenius写像へ戻す。E14の完全性は新しく作らずB1の `isCechExact_colimit` を使う。有限型段の完全性そのものは入力のままであり、I13・E16・E18は未実装。これを一般のv被覆の降下の完成とは呼ばない。
+- 累計20,536行（新規279モジュール20,211行、既存追加25行、入口300行）。所有宣言累計2,254件、既存15件は別。残り46署名の素の見込み1,554〜3,122行、係数2で3,108〜6,244行。完成見込み23,644〜26,780行。次は複体値の二重図式の三重totalの比較C01以降。
+- 一覧：済み1／全体3（うち追加0）。内部署名：済み43／89（G4・G5）、追加0。2g-2・2hとも未完成。
+
+- E11 `SerrePositivity.AlgebraicGeometry.frobeniusArrowFamilyTargetCoconeIsColimit`：実際のFrobenius順極限に送った同じ余錐が、同じ矢印の族の余極限である。
+- E12 `SerrePositivity.AlgebraicGeometry.frobeniusArrowFamilyColimitIso`：模型の実際のFrobenius順極限の余極限と、元の矢印の実際のFrobenius順極限との標準同型。
+- E13 `SerrePositivity.AlgebraicGeometry.frobeniusArrowFamilyColimitIso_ι`：その標準同型は各模型の元の脚の実際のFrobenius写像を保つ。
+- E14 `SerrePositivity.AlgebraicGeometry.frobeniusCechExact_of_filtered_arrow_models`：各段の実際の完全化のČech完全性から、同じfiltered余錐の元の矢印の完全化のČech完全性を得る。
