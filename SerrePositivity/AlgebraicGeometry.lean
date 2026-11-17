@@ -1996,3 +1996,5 @@ import SerrePositivity.AlgebraicGeometry.CoefficientVCoverFrobeniusCechExact
 import SerrePositivity.AlgebraicGeometry.AffineVCoverFrobeniusCechExact
 
 import SerrePositivity.AlgebraicGeometry.PerfectFrobeniusDirectLimit
+
+import SerrePositivity.AlgebraicGeometry.PerfectFrobeniusCechComparison
