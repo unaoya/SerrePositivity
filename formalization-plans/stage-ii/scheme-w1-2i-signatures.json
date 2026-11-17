@@ -432,7 +432,8 @@
     "deps": [
       "U02",
       "U09",
-      "O05"
+      "O05",
+      "L02"
     ],
     "lo": 65,
     "hi": 160,
@@ -589,7 +590,8 @@
     "sig": "theorem perfectRingCechUniversalExact_of_ultraproducts\n    (p : ℕ) [Fact p.Prime] {ι : Type u} (R : ι → Type u)\n    [∀ i, CommRing (R i)] [PerfectRing (∀ i, R i) p]\n    [∀ U : Ultrafilter ι, PerfectRing (RingUltraproduct R U) p]\n    {B : Type u} [CommRing B] (hp : (p : ∀ i, R i) = 0)\n    (f : (∀ i, R i) →+* B)\n    (hU : ∀ U : Ultrafilter ι, PerfectRingCechUniversalExact p\n      (arcBaseChangeHom f (algebraMap (∀ i, R i) (RingUltraproduct R U)))) :\n    PerfectRingCechUniversalExact p f",
     "deps": [
       "U02",
-      "U09"
+      "U09",
+      "L02"
     ],
     "lo": 90,
     "hi": 210,
@@ -892,6 +894,19 @@
     "ref": "形式化用：既存の押し出しの合成則を、指定した環の射のArrow同型へ束ねる",
     "api": "CommRingCat.tensorProdIsoPushout @ .lake/packages/mathlib/Mathlib/Algebra/Category/Ring/Under/Basic.lean:160、Under.pushoutComp @ .lake/packages/mathlib/Mathlib/CategoryTheory/Comma/Over/Pullback.lean:252",
     "why": "tensorの加群構造を直接castせず、元の係数射と同じ押し出しの合成を使う。係数の合成の等式hkもArrow同型を作る前に処理する。",
+    "risk": false
+  },
+  {
+    "id": "L02",
+    "sig": "def arcBaseChangeArrowIso {A : Type u} [CommRing A]\n    (B : Under (CommRingCat.of A)) (D : Type u) [CommRing D] [Algebra A D] :\n    Arrow.mk (CommRingCat.ofHom (arcBaseChangeHom B.hom.hom (algebraMap A D))) ≅\n      Arrow.mk ((CommRingCat.tensorProd (CommRingCat.of A) (CommRingCat.of D)).obj B).hom",
+    "deps": [
+      "U01"
+    ],
+    "lo": 20,
+    "hi": 70,
+    "ref": "形式化用：元の環射の底変換とB1のUnderの底変換の同じArrowの照合",
+    "api": "toAlgebra_algebraMap @ .lake/packages/mathlib/Mathlib/Algebra/Algebra/Defs.lean:262、CommRingCat.tensorProd @ .lake/packages/mathlib/Mathlib/Algebra/Category/Ring/Under/Basic.lean:127",
+    "why": "構造射から派生した代数構造と与えられた代数構造の既存の等式を、Arrow同型として先に処理する。選ばれたČech余極限の内部を簡約しない。",
     "risk": false
   }
 ]

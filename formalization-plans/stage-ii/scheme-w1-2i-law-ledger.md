@@ -27,3 +27,21 @@ def arcBaseChangeTransIso {A B T S : Type u}
 ## L01の検証（03338bc40）
 
 記録した型のまま実装・対象ビルド・直接importer・所有監査を完了。本体49行、登録2行、所有5宣言・標準三公理のみ。既存main本体の変更なし。一覧：追加法則の済み1／全体1、2i全体の済み49／全体67（うち追加1）。
+
+
+## L02：arcBaseChangeArrowIso（記録後に着手）
+
+```lean
+def arcBaseChangeArrowIso {A : Type u} [CommRing A]
+    (B : Under (CommRingCat.of A)) (D : Type u) [CommRing D] [Algebra A D] :
+    Arrow.mk (CommRingCat.ofHom (arcBaseChangeHom B.hom.hom (algebraMap A D))) ≅
+      Arrow.mk ((CommRingCat.tensorProd (CommRingCat.of A) (CommRingCat.of D)).obj B).hom
+```
+
+- 用途：O06の普遍貼り合わせとP01の普遍超積で、同じ係数の環射の底変換をB1のUnderの底変換へ渡す。選ばれたconerveの内部で代数構造を書き換えず、Arrowの照合を先に行う。
+- 依存：U01、既存のtoAlgebra_algebraMap（Mathlib/Algebra/Algebra/Defs.lean:262）とCommRingCat.tensorProd（Algebra/Category/Ring/Under/Basic.lean:127）。置き場所：ArcRouteB/BaseChangeArrowComparison.lean。
+- 素20〜70行、係数2：40〜140行、上端140≤800。新数学なし、元の署名・仮定・既存main本体の変更なし。元の66署名にL01と合わせ68署名。
+- O06・P01の型は保持し、依存先だけL02を足した。DFSで68頂点・115辺・循環0を確認。原典上は独立した主張ではなく、形式化のための同じ構造射の照合。
+- 検証済み53署名・実測1,422行を確定分にし、残りの係数2と登録予備を含む完成見込みは2,862〜4,868行。9,000行以内。記録後は事前承認に従い止まらず実装へ。
+
+一覧：済み53／全体68（うち追加2）。この台帳の時点ではL02のLeanは未着手。

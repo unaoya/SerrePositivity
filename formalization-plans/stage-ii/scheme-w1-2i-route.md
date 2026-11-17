@@ -1291,3 +1291,6 @@ theorem nonempty_algHom_of_isAlgClosed (k C : Type u) [Field k]
 ## 追加の照合・合成則（11-17夕の事前承認）
 
 L01の完全な型・依存・原典上の位置・素と係数2の見込み・追加条件の確認は [照合法則の台帳](scheme-w1-2i-law-ledger.md)。元の66署名の型は不変。現在は67署名（うち追加1）、元の見積表は提出時の記録として保存する。
+
+
+L02（環射とB1のUnderの底変換の指定Arrow比較）も同じ事前承認条件で[台帳](scheme-w1-2i-law-ledger.md)に記録。元の署名の型を変えず、現在68署名（うち追加2）。
