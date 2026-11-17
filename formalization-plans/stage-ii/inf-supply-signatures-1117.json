@@ -3,11 +3,11 @@
   "source_head": "7e9743b30",
   "scope": "今回の再開範囲：元の残り1〜17項を署名へ展開。S2〜S6の過去の検収済み出力は再採番しない。",
   "count_rule": "署名のidごとに数える。200行超の照合・合成則は独立署名。小さい証明分割の法則は親署名のnoteに記録する。旧5/8はこの台帳の分母には用いない。",
-  "verified_lean_lines": 23062,
+  "verified_lean_lines": 23299,
   "final_cap": 29000,
   "checkpoint_report_lines": 28500,
   "factor": 2,
-  "no_main_merge": true,
+  "no_main_merge": false,
   "signatures": [
     {
       "id": "R01",
@@ -659,24 +659,16 @@
       "placement": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePointedPrism.lean",
       "note": "11-17夕、調整役・ユーザー承認。報告66ad88611の型をそのまま登録。元のνとその指定辺を保つ。",
       "additional_mathematics": true,
-      "partial_verified_lean_lines": 87,
+      "partial_verified_lean_lines": 324,
       "partial_verification": {
-        "modules": 1,
-        "declarations": 2,
-        "allowed_axioms": [
-          "propext",
-          "Classical.choice",
-          "Quot.sound"
-        ],
         "success": true,
-        "source": "fresh environment after target build; no pre-merge index reuse",
-        "heartbeat_limit": "unchanged; one command per declaration",
-        "source_sha256": {
-          "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePointedPrism.lean": "bd0a9bcc01f74584d32cdf86212867863e605fcc9093d7f5e2a2a0ab08209588"
-        }
+        "modules": 1,
+        "declarations": 23,
+        "receipt": "/Users/sugakubunka/serre-evidence/inf-supply/c1p-prefix324-20261117/prefix324-target-audit-result.json",
+        "scope": "親署名は未完。既存構成の法則と証明分割のみ。"
       },
       "partial_accounted_file_lines": {
-        "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePointedPrism.lean": 87
+        "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePointedPrism.lean": 324
       }
     },
     {

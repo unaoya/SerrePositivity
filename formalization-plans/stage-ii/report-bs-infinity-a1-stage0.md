@@ -7549,3 +7549,143 @@ private lemma pointedPrismOfRestriction {A B Z : SSet.{u+1}} (p : A ⟶ B)
 調整役からroot・全監査の完了とmain取り込みの指示を受けたので、この検証済みを
 コミットしてmain（確認時35988dd08）を取り込み、改名表を確認してから再検証する。
 一覧：済み 18／全体 36（うち追加 1、別停止点 2）。
+
+### main取り込み後の再検証とP3-C1Pの証明分割（11-17夕）
+
+調整役のOE-W1・A1完了の通知を受け、検証済み87行を50eec1d0fでコミットした後、
+main 35988dd08を取り込んだ（merge e2fec6929、競合なし）。
+OEの改名表588件と枝の変更済みLean360本を照合し、旧importは0。
+数学6モジュール・33宣言、属性のみ5モジュール・24宣言の対象ビルドと小監査を再実行し成功。
+最初の2組は依存キャッシュの再構築中に280秒のwall guardで終了したので、
+一回30分の鍵の範囲内の900秒guardで完了した。Leanのheartbeats・maxRecDepthは不変。
+
+P3-C1Pの次の既存構成の法則・証明分割12本を同じ新規ファイル内に置いた。
+各本は200行以下。指定比較の型・仮定・chooseの本文は変えていない。
+これらはscaffold・relative sections・既存G14の移送の法則であり、新しい独立署名は加えていない。
+全ファイル324行の対象ビルド・小監査が成功（所有宣言23、標準三公理のみ）。
+既計上87行から237行増で、検証済み累計23,299行。
+本来の署名leftStraighteningBaseChange_pointedPrismはまだ未完で、
+指定νへの射影の照合は未証明。部分補題を完成と数えない。
+
+```lean
+private lemma oppositePointWeightedBase {C D : Type u} [SmallCategory C] [SmallCategory D]
+    (H : D ⥤ C) (F : C ⥤ KanObject.{u}) :
+    weightedNerveBaseMap H (F ⋙ kanObjectForget) ≫ (oppositePointHomWeightedIso F).inv =
+      (oppositePointHomWeightedIso (H ⋙ F)).inv ≫
+        weightedNerveBaseMap H
+          (simplicialHomDiagram (F ⋙ kanObjectOpFunctor) pointKanObject ⋙ SSet.opFunctor)
+```
+
+```lean
+private lemma oppositeComparisonPointedBase {C D : Type u} [SmallCategory C] [SmallCategory D]
+    (H : D ⥤ C) (F : C ⥤ KanObject.{u}) :
+    oppositeKanUnstraighteningComparison (H ⋙ F) ≫
+      pullback.fst pointedSpaceProjection
+        (kanDiagramCoherentNerve ((H ⋙ F) ⋙ kanObjectOpFunctor)) =
+      (SSet.uliftFunctor.{u+1,u}).map (weightedNerveBaseMap H (F ⋙ kanObjectForget)) ≫
+        oppositeKanUnstraighteningComparison F ≫
+          pullback.fst pointedSpaceProjection
+            (kanDiagramCoherentNerve (F ⋙ kanObjectOpFunctor))
+```
+
+```lean
+private def pullbackSectionsShift {E P B D : SSet.{u}} {J : Type u} [Category.{u} J]
+    (p : E ⟶ B) [LeftFibration p] (r : P ⟶ D) [LeftFibration r]
+    (t : P ⟶ E) (b : D ⟶ B) (hs : IsPullback t r p b) (A : Jᵒᵖ ⥤ Over D) :
+    (relativeSectionEnrichedDiagram A).evaluate (leftFibrationObjectOf r) ⋙ kanObjectForget ≅
+      (relativeSectionEnrichedDiagram (A ⋙ Over.map b)).evaluate
+        (leftFibrationObjectOf p) ⋙ kanObjectForget
+```
+
+```lean
+private def underBaseChange {C D : Type u} [Category.{u} C] [Category.{u} D]
+    (H : D ⥤ C) :
+    strictTransportDomains D ⋙ Over.map (nerveMap H) ⟶
+      H.op ⋙ strictTransportDomains C where
+  app s := Over.homMk (nerveMap (Under.post (X := s.unop) H)) (by
+    have h₁ : nerveMap (Under.post (X := s.unop) H ⋙ Under.forget (H.obj s.unop)) =
+        nerveMap (Under.post (X := s.unop) H) ≫ nerveMap (Under.forget (H.obj s.unop)) :=
+      nerveFunctor.map_comp (Under.post (X := s.unop) H).toCatHom
+        (Under.forget (H.obj s.unop)).toCatHom
+    have h₂ : nerveMap (Under.forget s.unop ⋙ H) =
+        nerveMap (Under.forget s.unop) ≫ nerveMap H :=
+      nerveFunctor.map_comp (Under.forget s.unop).toCatHom H.toCatHom
+    have hF : Under.post (X := s.unop) H ⋙ Under.forget (H.obj s.unop) =
+        Under.forget s.unop ⋙ H
+```
+
+```lean
+private def pullbackStrictComparison {C D : Type u} [Category.{u} C] [Category.{u} D]
+    {E P : SSet.{u}} (p : E ⟶ nerve C) [LeftFibration p]
+    (r : P ⟶ nerve D) [LeftFibration r] (t : P ⟶ E) (H : D ⥤ C)
+    (hs : IsPullback t r p (nerveMap H)) :
+    H ⋙ leftStrictTransportDiagram p ⟶ leftStrictTransportDiagram r
+```
+
+```lean
+private lemma underRestrictionEq {C D : Type u} [Category.{u} C] [Category.{u} D]
+    {E : SSet.{u}} (p : E ⟶ nerve C) [LeftFibration p] (H : D ⥤ C) (j : D) :
+    IsQCatEquivalence (relativeFunctorOverPre p ((underBaseChange H).app (Opposite.op j)))
+```
+
+```lean
+private lemma pullbackStrictComparison_app {C D : Type u} [Category.{u} C] [Category.{u} D]
+    {E P : SSet.{u}} (p : E ⟶ nerve C) [LeftFibration p]
+    (r : P ⟶ nerve D) [LeftFibration r] (t : P ⟶ E) (H : D ⥤ C)
+    (hs : IsPullback t r p (nerveMap H)) (j : D) :
+    (pullbackStrictComparison p r t H hs).app j =
+      relativeFunctorOverPre p ((underBaseChange H).app (Opposite.op j)) ≫
+        (relativeFunctorIsPullbackIso hs (nerveMap (Under.forget j))
+          (nerveMap (Under.forget j) ≫ nerveMap H) rfl).inv
+```
+
+```lean
+private lemma pullbackStrictComparison_eq {C D : Type u} [Category.{u} C] [Category.{u} D]
+    {E P : SSet.{u}} (p : E ⟶ nerve C) [LeftFibration p]
+    (r : P ⟶ nerve D) [LeftFibration r] (t : P ⟶ E) (H : D ⥤ C)
+    (hs : IsPullback t r p (nerveMap H)) (j : D) :
+    letI : KanComplex ((H ⋙ leftStrictTransportDiagram p).obj j) :=
+      leftStrictTransport_kanComplex p (H.obj j)
+    letI : KanComplex ((leftStrictTransportDiagram r).obj j) :=
+      leftStrictTransport_kanComplex r j
+    IsQCatEquivalence ((pullbackStrictComparison p r t H hs).app j)
+```
+
+```lean
+private lemma precompAsEmptyLocalization {A B : SSet.{u}} (f : A ⟶ B)
+    (h : IsPrecompositionEquivalence f) : IsLocalization f ∅
+```
+
+```lean
+private lemma emptyInvertingEquivalence {A E : SSet.{u}} [Quasicategory E] :
+    IsQCatEquivalence (invertingFunctors A E ∅).ι
+```
+
+```lean
+private lemma uliftPrecomp {A B : SSet.{u}} (f : A ⟶ B)
+    (h : IsPrecompositionEquivalence f) :
+    IsPrecompositionEquivalence ((SSet.uliftFunctor.{u+1,u}).map f)
+```
+
+```lean
+private def scaffoldPullbackData {C D : Type u} [Category.{u} C] [Category.{u} D]
+    {E P : SSet.{u}} (p : E ⟶ nerve C) [LeftFibration p]
+    (r : P ⟶ nerve D) [LeftFibration r] (t : P ⟶ E) (H : D ⥤ C)
+    (hs : IsPullback t r p (nerveMap H)) :
+    { l : simplicialReplacement (H ⋙ leftStrictTransportDiagram p) ⟶ P //
+      l ≫ t = simplicialReplacementBaseMap H (leftStrictTransportDiagram p) ≫
+        universalScaffold p ∧
+      l ≫ r = simplicialReplacementProjection (H ⋙ leftStrictTransportDiagram p) ∧
+      IsPrecompositionEquivalence l }
+```
+
+証拠は `evidence/inf-supply/c1p-prefix324-20261117/manifest.json`。
+台帳のDAG・所在と署名の型の検査も再実行（これは未実装のLean証明の検査ではない）。
+
+5∞-1完成時にこのレーンを閉じる最新の指示を受領した。
+今回の停止点では、次の署名群の補正上端を足して29,000行を超える直前に区切る。
+残る署名は取り込み後の別停止点へ送り、S7・旧R2・R3・P⁰は再開しない。
+閉じる際は、署名の済み未完、見込みと実測、未追跡旧R2下書き、未コミットの有無を記す。
+旧R2下書き4本は触らず、外部のlegacy-r2-drafts-20261117へ読み取りコピーとSHAを保存した。
+今回のコミットの対象には含めない。
+一覧：済み 18／全体 36（うち追加 1、別停止点 2）。
