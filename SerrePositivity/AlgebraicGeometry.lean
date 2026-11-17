@@ -1976,3 +1976,5 @@ import SerrePositivity.AlgebraicGeometry.PairedPerfectCechBaseChangeColumns
 import SerrePositivity.AlgebraicGeometry.PairedPerfectCechSectionColumns
 
 import SerrePositivity.AlgebraicGeometry.PairedPerfectCechBaseChangeRows
+
+import SerrePositivity.AlgebraicGeometry.PerfectCechUniversalAffineRefinement
