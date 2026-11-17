@@ -1930,3 +1930,5 @@ public import SerrePositivity.AlgebraicGeometry.FrobeniusArrowFamilyColimit
 public import SerrePositivity.AlgebraicGeometry.CechTripleTotalComponents
 
 import SerrePositivity.AlgebraicGeometry.CechTripleTotalDifferential
+
+import SerrePositivity.AlgebraicGeometry.ComplexValuedAugmentedDouble
