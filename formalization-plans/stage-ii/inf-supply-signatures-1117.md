@@ -5,9 +5,9 @@
 再採番せず、ここにある各署名IDを一つずつ数える。旧「5／8」は以後この台帳の進捗に使わない。
 小さい既存構成の法則・証明の分割は親署名内に記録するが、上端200行超は独立署名。
 
-署名35本＝検証済み18本＋未完15本＋別停止点へ切り離す2本。
-一覧：済み 18／全体 35（うち追加 0、別停止点 2）。
-「追加0」は元の承認済み範囲の外の新しい数学を足していない、という意味。
+署名36本＝検証済み18本＋未完16本＋別停止点へ切り離す2本。
+一覧：済み 18／全体 36（うち追加 1、別停止点 2）。
+追加1は11-17夕承認のP3-C1P。着手判定22,975＋800＝23,775行。以前の35署名の表は履歴として保持。
 
 ## 最新の検証記録（P3-B1）
 
@@ -409,9 +409,55 @@ P3-Cの標準pullbackの前提計算を独立に明示した。tは指定二座�
 
 置き場所：`SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePullbackData.lean`。
 
+### P3-C1P — `leftStraighteningBaseChange_pointedPrism`
+
+状態：pending。依存署名：R01, R02, P3-B1, P3-B2e, P3-C0。
+
+素の残り：250〜400行。係数2の残り：500〜800行。
+
+原典：HTT §3.3.2、Kerodon Corollary 5.6.0.6（Tag 028T）。指定pointed比較の照合で、独立の原典番号はない。
+
+```lean
+∀ {E B D : SSet.{u}} [Quasicategory B] [Quasicategory D]
+  (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B),
+  let U := SSet.uliftFunctor.{u+1,u}
+  let lB := transportSimplexFirstVertexMap B
+  let lD := transportSimplexFirstVertexMap D
+  let H := transportSimplexFunctor k
+  let q := pullback.snd p k
+  let p₀ := pullback.snd p lB
+  let r := pullback.snd q lD
+  let d := leftStraighteningBaseChangePullbackData p k
+  let R₀ := (nerveLeftTransportRepresentation p₀).cartesianRestrict
+    (U.map d.val) (U.map (nerveMap H)) d.property.2.2.2
+  let Rr := nerveLeftTransportRepresentation r
+  let θp := leftStraighteningInfinityDiagram_firstVertexTransportIso p
+  let θq := leftStraighteningInfinityDiagram_firstVertexTransportIso q
+  let β := leftStraighteningInfinityDiagram_baseChangeIso p k
+  let ν := (θp.precomp (U.map (nerveMap H))).symm ≪≫
+    diagramIsoCongr
+      (by rw [← Category.assoc, ← transportSimplexFirstVertexMap_ulift_naturality k,
+        Category.assoc]) rfl (β.precomp (U.map lD)) ≪≫ θq
+  let e := functorEdgeOfSimplicialHomotopy (functorHomHomotopy ν.hom)
+  ∃ W : (Δ[1] : SSet.{u+1}) ⊗ U.obj (pullback q lD) ⟶ PointedSpaceInfinity.{u},
+    prismEndpoint 0 (U.obj (pullback q lD)) ≫ W = R₀.pointedMap ∧
+    prismEndpoint 1 (U.obj (pullback q lD)) ≫ W = Rr.pointedMap ∧
+    W ≫ pointedSpaceProjection = (Δ[1] ◁ U.map r) ≫ functorEdgePrism e
+```
+
+使う既存の宣言：
+
+- `scaffoldCoherentComparison_scaffoldIso` @ `SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/ScaffoldCoherentComparisonRestriction.lean:30`
+- `leftStraighteningInfinityReconstruction_representationComparison` @ `SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/StraighteningReconstructionRepresentationComparison.lean:34`
+- `smallFiberTransportRepresentationVertexIso_unique` @ `SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/RepresentationComparisonCoherence.lean:26`
+
+置き場所：`SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePointedPrism.lean`。
+
+11-17夕、調整役・ユーザー承認。報告66ad88611の型をそのまま登録。元のνとその指定辺を保つ。
+
 ### P3-C1 — `leftStraighteningBaseChange_transportWitness`
 
-状態：pending。依存署名：`R01`, `R02`, `P3-B1`, `P3-B2e`, `P3-C0`。
+状態：pending。依存署名：`R01`, `R02`, `P3-B1`, `P3-B2e`, `P3-C0`, `P3-C1P`。
 
 素の残り：310〜420行。係数2の残り：620〜840行。
 
@@ -1051,4 +1097,4 @@ FunctorHom (discretePresheaf P) (discretePresheaf Q)
 
 置き場所（新規の場合の案）：`SerrePositivity/InfinityCategories/Sheaves/isSheaf_toGrothendieck_iff.lean`。
 
-一覧：済み 18／全体 35（うち追加 0、別停止点 2）。
+一覧：済み 18／全体 36（うち追加 1、別停止点 2）。

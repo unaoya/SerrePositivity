@@ -619,6 +619,48 @@
       ]
     },
     {
+      "id": "P3-C1P",
+      "name": "leftStraighteningBaseChange_pointedPrism",
+      "full_type": "∀ {E B D : SSet.{u}} [Quasicategory B] [Quasicategory D]\n  (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B),\n  let U := SSet.uliftFunctor.{u+1,u}\n  let lB := transportSimplexFirstVertexMap B\n  let lD := transportSimplexFirstVertexMap D\n  let H := transportSimplexFunctor k\n  let q := pullback.snd p k\n  let p₀ := pullback.snd p lB\n  let r := pullback.snd q lD\n  let d := leftStraighteningBaseChangePullbackData p k\n  let R₀ := (nerveLeftTransportRepresentation p₀).cartesianRestrict\n    (U.map d.val) (U.map (nerveMap H)) d.property.2.2.2\n  let Rr := nerveLeftTransportRepresentation r\n  let θp := leftStraighteningInfinityDiagram_firstVertexTransportIso p\n  let θq := leftStraighteningInfinityDiagram_firstVertexTransportIso q\n  let β := leftStraighteningInfinityDiagram_baseChangeIso p k\n  let ν := (θp.precomp (U.map (nerveMap H))).symm ≪≫\n    diagramIsoCongr\n      (by rw [← Category.assoc, ← transportSimplexFirstVertexMap_ulift_naturality k,\n        Category.assoc]) rfl (β.precomp (U.map lD)) ≪≫ θq\n  let e := functorEdgeOfSimplicialHomotopy (functorHomHomotopy ν.hom)\n  ∃ W : (Δ[1] : SSet.{u+1}) ⊗ U.obj (pullback q lD) ⟶ PointedSpaceInfinity.{u},\n    prismEndpoint 0 (U.obj (pullback q lD)) ≫ W = R₀.pointedMap ∧\n    prismEndpoint 1 (U.obj (pullback q lD)) ≫ W = Rr.pointedMap ∧\n    W ≫ pointedSpaceProjection = (Δ[1] ◁ U.map r) ≫ functorEdgePrism e",
+      "dependencies": [
+        "R01",
+        "R02",
+        "P3-B1",
+        "P3-B2e",
+        "P3-C0"
+      ],
+      "existing": [
+        {
+          "name": "scaffoldCoherentComparison_scaffoldIso",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/ScaffoldCoherentComparisonRestriction.lean",
+          "line": 30
+        },
+        {
+          "name": "leftStraighteningInfinityReconstruction_representationComparison",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/StraighteningReconstructionRepresentationComparison.lean",
+          "line": 34
+        },
+        {
+          "name": "smallFiberTransportRepresentationVertexIso_unique",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/RepresentationComparisonCoherence.lean",
+          "line": 26
+        }
+      ],
+      "literature": "HTT §3.3.2、Kerodon Corollary 5.6.0.6（Tag 028T）。指定pointed比較の照合で、独立の原典番号はない。",
+      "bare_lines": [
+        250,
+        400
+      ],
+      "corrected_lines": [
+        500,
+        800
+      ],
+      "status": "pending",
+      "placement": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePointedPrism.lean",
+      "note": "11-17夕、調整役・ユーザー承認。報告66ad88611の型をそのまま登録。元のνとその指定辺を保つ。",
+      "additional_mathematics": true
+    },
+    {
       "id": "P3-C1",
       "name": "leftStraighteningBaseChange_transportWitness",
       "full_type": "∀ {E B D : SSet.{u}} [Quasicategory B] [Quasicategory D]\n  (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B),\n  let U := SSet.uliftFunctor.{u+1,u}\n  let lB := transportSimplexFirstVertexMap B\n  let lD := transportSimplexFirstVertexMap D\n  let H := transportSimplexFunctor k\n  let q := pullback.snd p k\n  let p₀ := pullback.snd p lB\n  let r := pullback.snd q lD\n  let d := leftStraighteningBaseChangePullbackData p k\n  let R₀ := (nerveLeftTransportRepresentation p₀).cartesianRestrict\n    (U.map d.val) (U.map (nerveMap H)) d.property.2.2.2\n  let Rr := nerveLeftTransportRepresentation r\n  let θp := leftStraighteningInfinityDiagram_firstVertexTransportIso p\n  let θq := leftStraighteningInfinityDiagram_firstVertexTransportIso q\n  let β := leftStraighteningInfinityDiagram_baseChangeIso p k\n  let ν := (θp.precomp (U.map (nerveMap H))).symm ≪≫\n    diagramIsoCongr\n      (by rw [← Category.assoc, ← transportSimplexFirstVertexMap_ulift_naturality k,\n        Category.assoc]) rfl (β.precomp (U.map lD)) ≪≫ θq\n  ∃ a : VertexIso (transportWitnessVertex R₀) (transportWitnessVertex Rr),\n    R₀.diagramIso Rr a = ν",
@@ -627,7 +669,8 @@
         "R02",
         "P3-B1",
         "P3-B2e",
-        "P3-C0"
+        "P3-C0",
+        "P3-C1P"
       ],
       "existing": [
         {
