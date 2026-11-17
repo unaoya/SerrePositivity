@@ -459,7 +459,8 @@
     "sig": "theorem goodArcInterval_sub (p : ℕ) {V B : Type u} [CommRing V] [CommRing B]\n    (f : V →+* B) {a b c d : PrimeSpectrum V}\n    (h : GoodArcInterval p f a b) (hac : a ≤ c) (hcd : c ≤ d) (hdb : d ≤ b)\n    [PerfectRing (ValuationIntervalRing hcd) p] : GoodArcInterval p f c d",
     "deps": [
       "U07",
-      "O07"
+      "O07",
+      "L01"
     ],
     "lo": 30,
     "hi": 70,
@@ -644,7 +645,8 @@
     "deps": [
       "P03",
       "P04",
-      "U01"
+      "U01",
+      "L01"
     ],
     "lo": 45,
     "hi": 115,
@@ -878,5 +880,18 @@
     "api": "MvPolynomial.eq_vanishingIdeal_singleton_of_isMaximal @ Mathlib/RingTheory/Nullstellensatz.lean:151、Algebra.FiniteType の多項式表示",
     "why": "有限生成表示の真の核を含む極大イデアルを一点の評価へ送り、元の代数への因子化を取る。",
     "risk": true
+  },
+  {
+    "id": "L01",
+    "sig": "def arcBaseChangeTransIso {A B T S : Type u}\n    [CommRing A] [CommRing B] [CommRing T] [CommRing S]\n    (f : A →+* B) (g : A →+* T) (h : T →+* S) (k : A →+* S)\n    (hk : h.comp g = k) :\n    Arrow.mk (CommRingCat.ofHom (arcBaseChangeHom f k)) ≅\n      Arrow.mk (CommRingCat.ofHom (arcBaseChangeHom (arcBaseChangeHom f g) h))",
+    "deps": [
+      "U01"
+    ],
+    "lo": 30,
+    "hi": 90,
+    "ref": "形式化用：既存の押し出しの合成則を、指定した環の射のArrow同型へ束ねる",
+    "api": "CommRingCat.tensorProdIsoPushout @ .lake/packages/mathlib/Mathlib/Algebra/Category/Ring/Under/Basic.lean:160、Under.pushoutComp @ .lake/packages/mathlib/Mathlib/CategoryTheory/Comma/Over/Pullback.lean:252",
+    "why": "tensorの加群構造を直接castせず、元の係数射と同じ押し出しの合成を使う。係数の合成の等式hkもArrow同型を作る前に処理する。",
+    "risk": false
   }
 ]
