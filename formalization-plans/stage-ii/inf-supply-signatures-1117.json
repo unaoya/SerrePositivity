@@ -3,7 +3,7 @@
   "source_head": "7e9743b30",
   "scope": "今回の再開範囲：元の残り1〜17項を署名へ展開。S2〜S6の過去の検収済み出力は再採番しない。",
   "count_rule": "署名のidごとに数える。200行超の照合・合成則は独立署名。小さい証明分割の法則は親署名のnoteに記録する。旧5/8はこの台帳の分母には用いない。",
-  "verified_lean_lines": 26449,
+  "verified_lean_lines": 26781,
   "final_cap": 29000,
   "checkpoint_report_lines": 28500,
   "factor": 2,
@@ -818,21 +818,69 @@
           "name": "cartesianRestrict_diagramIso",
           "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/RepresentationComparisonRestriction.lean",
           "line": 27
+        },
+        {
+          "name": "nativeRestrict_firstVertex_diamond",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/NativeRestrictionFirstVertexDiamond.lean",
+          "line": 31
+        },
+        {
+          "name": "nerveComparison_cartesian_witness",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/NerveRepresentationCartesianSquare.lean",
+          "line": 57
+        },
+        {
+          "name": "firstVertexBaseChange_isoAlgebra",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/FirstVertexBaseChangeIsoAlgebra.lean",
+          "line": 50
         }
       ],
       "literature": "HTT §3.3.2（特に3.3.2.8）、Kerodon Corollary 5.6.0.6（Tag 028T）。指定構成の法則で、独立した原典の補題番号はない。",
       "bare_lines": [
+        200,
+        380
+      ],
+      "corrected_lines": [
+        400,
+        760
+      ],
+      "status": "verified",
+      "placement": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningRepresentationBaseChangeFirstVertex.lean",
+      "note": "上端200行超のため独立署名。標準aへの一意性と同じ初頂点の制限の式を使用。 native制限のダイヤモンドの等式・nerve比較の値・指定witnessからの値・cartesian合成を各200行未満の既存法則へ分割。型は報告に記録。全体の見込みを200〜380／400〜760へ更新。 後半の前合成射の移送と初頂点の同型の合成則も200行未満の法則へ分割し、報告へ完全な型を記録。 build-7：最終版の四モジュールの対象ビルド・16宣言の小監査成功。ソースSHA一致、標準三公理のみ。πのラムダ引数に表現の型を明示してhAのwhnf上限を解消。診断用出力除去済み。",
+      "additional_mathematics": false,
+      "before_law_split_bare": [
         120,
         220
       ],
-      "corrected_lines": [
+      "before_law_split_corrected": [
         240,
         440
       ],
-      "status": "pending",
-      "placement": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/leftStraighteningRepresentation_baseChange_firstVertex.lean",
-      "note": "上端200行超のため独立署名。標準aへの一意性と同じ初頂点の制限の式を使用。",
-      "additional_mathematics": false
+      "support_files": [
+        "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/NativeRestrictionFirstVertexDiamond.lean",
+        "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/NerveRepresentationCartesianSquare.lean",
+        "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/FirstVertexBaseChangeIsoAlgebra.lean"
+      ],
+      "actual_lines": 332,
+      "citation_verification": {
+        "modules": 4,
+        "declarations": 16,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/NativeRestrictionFirstVertexDiamond.lean": "b09d488c5743526d0c5c77d12263f45cd7e88f9d6bd2b9cbbab1c06348b3e3e0",
+          "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/NerveRepresentationCartesianSquare.lean": "4f0ffbad5de44f2fdeb78dc7105eb7616c9da07d198da314be86b9296d5e2959",
+          "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/FirstVertexBaseChangeIsoAlgebra.lean": "00ba789be100e2edecc914ce6dd97934087c8ba2c3f67a6f715a4fc708c24806",
+          "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningRepresentationBaseChangeFirstVertex.lean": "708fdec73ceed674dc046d57bf18f14c45e6e208e025ecdf2b1b394ffb5b5c3e"
+        }
+      },
+      "verification_receipt": "/Users/sugakubunka/serre-evidence/inf-supply/d-first-vertex-1117/target-audit-result.json"
     },
     {
       "id": "P3-E",

@@ -9976,3 +9976,154 @@ build-4で対象ビルド5,604 jobs・小監査1モジュール3宣言が成功�
 素90〜180・補正180〜360に対し実測157行。累計26,292＋157＝26,449行。P3-Dの現時点の補正上端440を足して26,889で区切り内。次はDに進む。mainと旧R2の4本は触っていない。
 
 一覧：済み 34／全体 52（うち追加 17、別停止点 2）。
+
+### P3-Dの短い既存構成の法則（11-17 夜）
+
+次の四法則は登録済みDの証明分割（各200行未満）。新しい数学・choose・仮定は足さず、元の比較と指定cartesian制限を保つ。
+
+```lean
+lemma nativeRestrict_firstVertex_diamond
+    {E B D : SSet.{u}} [Quasicategory B] [Quasicategory D]
+    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B)
+    (R : LeftTransportRepresentation ((SSet.uliftFunctor.{u+1,u}).map p)) :
+    let U := SSet.uliftFunctor.{u+1,u}
+    let lB := transportSimplexFirstVertexMap B
+    let lD := transportSimplexFirstVertexMap D
+    let H := transportSimplexFunctor k
+    let d := leftStraighteningBaseChangePullbackData p k
+    (R.nativeRestrict lB).cartesianRestrict (U.map d.val) (U.map (nerveMap H))
+      d.property.2.2.2 = (R.nativeRestrict k).nativeRestrict lD
+```
+
+```lean
+lemma exists_nerveComparison_witness {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) [LeftFibration p]
+    (R : LeftTransportRepresentation ((SSet.uliftFunctor.{u+1,u}).map p)) :
+    ∃ a : VertexIso (transportWitnessVertex (nerveLeftTransportRepresentation p))
+      (transportWitnessVertex R),
+      (nerveLeftTransportRepresentation p).diagramIso R a = nerveCoherentTransportRepresentationIso p R
+```
+
+```lean
+lemma nerveComparison_of_witness {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) [LeftFibration p]
+    (R : LeftTransportRepresentation ((SSet.uliftFunctor.{u+1,u}).map p))
+    (a : VertexIso (transportWitnessVertex (nerveLeftTransportRepresentation p))
+      (transportWitnessVertex R)) :
+    (nerveLeftTransportRepresentation p).diagramIso R a = nerveCoherentTransportRepresentationIso p R
+```
+
+```lean
+lemma nerveComparison_cartesian_witness
+    {C D : Type u} [Category.{u} C] [Category.{u} D] {E P : SSet.{u}}
+    (p : E ⟶ nerve C) [LeftFibration p] (r : P ⟶ nerve D) [LeftFibration r]
+    (e : P ⟶ E) (t : nerve D ⟶ nerve C)
+    (h : IsPullback ((SSet.uliftFunctor.{u+1,u}).map e) ((SSet.uliftFunctor.{u+1,u}).map r)
+      ((SSet.uliftFunctor.{u+1,u}).map p) ((SSet.uliftFunctor.{u+1,u}).map t))
+    (a : VertexIso
+      (transportWitnessVertex ((nerveLeftTransportRepresentation p).cartesianRestrict
+        ((SSet.uliftFunctor.{u+1,u}).map e) ((SSet.uliftFunctor.{u+1,u}).map t) h))
+      (transportWitnessVertex (nerveLeftTransportRepresentation r)))
+    (R : LeftTransportRepresentation ((SSet.uliftFunctor.{u+1,u}).map p)) :
+    (nerveCoherentTransportRepresentationIso p R).precomp ((SSet.uliftFunctor.{u+1,u}).map t) =
+      ((nerveLeftTransportRepresentation p).cartesianRestrict
+        ((SSet.uliftFunctor.{u+1,u}).map e) ((SSet.uliftFunctor.{u+1,u}).map t) h).diagramIso
+        (nerveLeftTransportRepresentation r) a ≪≫
+      nerveCoherentTransportRepresentationIso r
+        (R.cartesianRestrict ((SSet.uliftFunctor.{u+1,u}).map e)
+          ((SSet.uliftFunctor.{u+1,u}).map t) h)
+```
+
+- `LeftTransportRepresentation.ext` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/LeftTransportRepresentation.lean:139
+- `leftStraighteningBaseChangePullbackData` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePullbackData.lean:27
+- `nerveCoherentTransportRepresentationIso` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/NerveStraighteningRepresentation.lean:25
+- `smallFiberTransportRepresentationVertexIso_unique` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/RepresentationComparisonCoherence.lean:26
+- `LeftTransportRepresentation.cartesianRestrict_diagramIso` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/RepresentationComparisonRestriction.lean:27
+- `LeftTransportRepresentation.diagramIso_trans` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/RepresentationComparisonCoherence.lean:77
+
+依存：上の既存宣言、Dの本体はC1にも依存。HTT §3.3.2・Kerodon Tag 028Tの構成の法則で、独立した原典の定理は足さない。端点の移送を短い法則へ分割するため、Dの全体の再見込みは素200〜380・補正400〜760（旧120〜220・240〜440）。26,449＋760＝27,209で29,000以内。四法則の計175行程度と、後段の端点の移送・反映を含めた見込み。
+一覧：済み 34／全体 52（うち追加 17、別停止点 2）。
+
+P3-Dの後半の短い一般の合成・移送の法則（各200行未満）：
+
+```lean
+lemma congr_refl {A X : SSet.{u}} {f g : A ⟶ X} (e : FunctorIso f g) :
+    diagramIsoCongr rfl rfl e = e
+```
+
+```lean
+lemma precomp_base_congr {A B X : SSet.{u}} {F G : B ⟶ X}
+    (e : FunctorIso F G) {p q : A ⟶ B} (h : p = q) :
+    diagramIsoCongr rfl (congrArg (fun z => z ≫ G) h) (e.precomp p) =
+      diagramIsoCongr (congrArg (fun z => z ≫ F) h.symm) rfl (e.precomp q)
+```
+
+```lean
+lemma firstVertexBaseChange_isoAlgebra {B D K L X : SSet.{u}}
+    (i : K ⟶ B) (j : L ⟶ D) (t : L ⟶ K) (k : D ⟶ B) (h : t ≫ i = j ≫ k)
+    (F : B ⟶ X) (G : D ⟶ X) (T : B ⟶ X) (P : K ⟶ X) (Q : L ⟶ X)
+    (θp : FunctorIso (i ≫ F) P) (θq : FunctorIso (j ≫ G) Q)
+    (β : FunctorIso (k ≫ F) G) (γ : FunctorIso F T)
+    (α : FunctorIso P (i ≫ T)) (a : FunctorIso Q (j ≫ k ≫ T))
+    (hγ : γ.precomp i = θp ≪≫ α)
+    (hA : let hs : j ≫ k ≫ F = t ≫ i ≫ F := congrArg (fun z => z ≫ F) h.symm
+      diagramIsoCongr rfl (congrArg (fun z => z ≫ T) h) (α.precomp t) =
+        ((θp.precomp t).symm ≪≫ diagramIsoCongr hs rfl (β.precomp j) ≪≫ θq) ≪≫ a) :
+    β.precomp j ≪≫ θq ≪≫ a = (γ.precomp k).precomp j
+```
+
+依存：JointRealizationCompositionのdiagramIsoCongr_trans・CurryPrecompositionのdiagramIsoCongr_precomp、DiagramIsoNormalizationAlgebraのdiagramIsoCongr_trans_three、FunctorIsoWhiskerCancellationのfunctorIso_precomp_precomp、FunctorIsoWhiskerAlgebraのfunctorIso_precomp_trans。すべて既存の構成の法則。本文は約35行で、先のDの素200〜380・補正400〜760の見込みに含める。
+一覧：済み 34／全体 52（うち追加 17、別停止点 2）。
+
+Dの前半四法則は対象ビルド3,125 jobs・小監査2モジュール9宣言が成功（標準三公理のみ）。まだD全体は未完なので署名数・累計には加算しない。終端の等式での移送の短い法則（200行未満）：
+
+```lean
+private lemma nerveComparison_target_congr {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) [LeftFibration p]
+    {R S : LeftTransportRepresentation ((SSet.uliftFunctor.{u+1,u}).map p)} (h : R = S)
+    {F : (SSet.uliftFunctor.{u+1,u}).obj (nerve C) ⟶ SpaceInfinity.{u}}
+    (e : FunctorIso F (leftCoherentTransport p)) :
+    diagramIsoCongr rfl (congrArg (fun T => T.diagram) h)
+      (e ≪≫ nerveCoherentTransportRepresentationIso p R) =
+        e ≪≫ nerveCoherentTransportRepresentationIso p S
+```
+
+Dの本体は型を変えず、同じ節のCamelCaseのLeftStraighteningRepresentationBaseChangeFirstVertex.leanへ置いた。前半二本と一般の合成則と本体の四本を一緒に対象検証する。
+一覧：済み 34／全体 52（うち追加 17、別停止点 2）。
+
+Dの短い終端移送の法則の添字を訂正：Fの始域は任意のAでなく、既存のleftCoherentTransport pと同じ`(SSet.uliftFunctor.{u+1,u}).obj (nerve C)`。元の誤記は型が通らないもので、登録済みDの型・仮定は変えない。Dの証明では既存のlet束縛をintroで保ち、全体をdsimpして大きい比較を展開しない。
+一覧：済み 34／全体 52（うち追加 17、別停止点 2）。
+
+Dの終端移送の法則は、具体的なnerve比較でのsimpがwhnf上限に達したため、任意の同じ同型の族での法則へ分割する。先のprivateな終端移送の補助はこの一般の法則の適用に置き換える（元のDの型・仮定は不変）。既存構成の法則、200行未満：
+
+```lean
+lemma diagramIsoCongr_family_comp {A X : SSet.{u}} {Z : Type v}
+    {F H : A ⟶ X} (G : Z → (A ⟶ X)) (a : ∀ z, FunctorIso H (G z))
+    {r s : Z} (h : r = s) (e : FunctorIso F H) :
+    diagramIsoCongr rfl (congrArg G h) (e ≪≫ a r) = e ≪≫ a s
+```
+
+依存：diagramIsoCongr @ JointRealizationComposition.lean:26、eqToIsoとIsoの恒等合成の法則。素約10行、補正20行、既に記録したDの全体の素200〜380・補正400〜760に含む。
+一覧：済み 34／全体 52（うち追加 17、別停止点 2）。
+
+Dの診断：型とintro・ν・底の等式・C1 witness・nerve比較・書き換え・native制限のダイヤモンドまでは通る。時間切れはhAの係数正規化で、toSquareやcartesianRestrictの展開が多数発生した。図式射影πのラムダ引数を`LeftTransportRepresentation (U.map r)`と明示し、congrArgと一般の族の法則に同じπを渡して局所化する。型・仮定・計算上限は不変。
+一覧：済み 34／全体 52（うち追加 17、別停止点 2）。
+
+Dの一般の合成・移送の法則で使う既存宣言の所在（完全パス、再確認）：
+- `diagramIsoCongr` @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/PresentableInfinityCategories/JointRealizationComposition.lean:26
+- `diagramIsoCongr_trans` @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/PresentableInfinityCategories/JointRealizationComposition.lean:44
+- `diagramIsoCongr_precomp` @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/PresentableInfinityCategories/CurryPrecomposition.lean:116
+- `diagramIsoCongr_trans_three` @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/PresentableInfinityCategories/DiagramIsoNormalizationAlgebra.lean:35
+- `functorIso_precomp_precomp` @ SerrePositivity/InfinityCategories/Project/QuasicategoryAuxiliaries/MappingSpaces/FunctorIsoWhiskerCancellation.lean:22
+- `functorIso_precomp_trans` @ SerrePositivity/InfinityCategories/Project/QuasicategoryAuxiliaries/MappingSpaces/FunctorIsoWhiskerAlgebra.lean:43
+
+一覧：済み 34／全体 52（うち追加 17、別停止点 2）。
+
+### 11-17 夜：P3-Dの完成
+
+build-7で最終版の対象ビルド5,610 jobs、小監査4モジュール16宣言が成功（標準三公理のみ、現行SHA一致）。主な四宣言にHTT §3.3.2のspecial属性、Kerodon Tag 028Tの特殊化はdocstring。元のDの型・仮定・指定νを保持し、main既存本文・choose・計算上限の変更なし。診断用trace・オプションは除去した。
+
+Dの初期見込みは素120〜220・補正240〜440、分割後の再見込みは素200〜380・補正400〜760、実測は332行（59＋93＋86＋94、輸入・docstring込み）。型を明示した図式射影πを共有した版で、hAのwhnf上限は解消した。短い法則の型と既存参照は上記に記録済み。
+累計26,449＋332＝26,781。次のEの補正上端220を足すと27,001で29,000以内。Eは初頂点制限の充満忠実性で反映する。旧R2の4本・mainは触っていない。
+
+一覧：済み 35／全体 52（うち追加 17、別停止点 2）。
