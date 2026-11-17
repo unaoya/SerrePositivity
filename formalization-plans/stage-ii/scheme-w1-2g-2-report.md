@@ -3644,3 +3644,13 @@ private def pairedRowEvaluationIso
 - I10 `SerrePositivity.AlgebraicGeometry.noetherClosedPerfectCechProperty_step`：真に小さい閉像上の固有全射の普遍降下性から、指定した同じ閉像上の固有全射の普遍降下性を得る（a4e57a7b1）。
 - I11 `SerrePositivity.AlgebraicGeometry.noetherClosedPerfectCechProperty_all`：Noether閉像の帰納で、全ての閉像について同じ普遍降下性を得る（5d32b4127）。
 - I12 `SerrePositivity.AlgebraicGeometry.properSurjective_perfectCechUniversalDescent`：Noetherアフィン基底上の元の固有全射の完全構造層の普遍Čech降下性を得る（5d32b4127）。
+
+## 2026-11-17：G4の完成、Noether有限表示v被覆の判定（af1b35ad8）
+
+- I13を同じ署名・仮定で実装。新規81行＋入口2行＝83行、所有1宣言。原稿・本体の同一バイトとSHA、対象ビルド5,410ジョブと直接importer、別の共有鍵の所有監査が成功。標準三公理以外0。
+- 元のSpec.map fをRydh 3.10のfppf–proper細分に渡す。元の固有全射のI12とD07で合成の降下性を得、D06で元のSpec.map fへ反映する。最後に恒等試験基底をN06で戻し、同じ元の環準同型のFrobenius係数の増大conerveを得た。
+- G4（nil閉厚化・相対fppfの照合・Noether閉像帰納と有限表示v被覆の判定）は完成。G5の最後の模型のfiltered移送は未完成で、停止点2g-2にはまだ届いていない。
+- 累計23,858行（新規311モジュール23,470行、既存追加25行、入口363行）。基準56ea849a3からのgitの追加行を再集計し、23,858行を確認した（削除14行は控除しない）。所有宣言累計2,516件、既存15件は別。残り2署名の素の合計50〜100行へ係数2、登録等の予備100〜250行を加えた完成見込み24,058〜24,308行。28,000行以内。
+- 一覧：済み2／全体3（うち追加0）。内部署名：済み87／89（G4・G5）、追加0。E16の原稿検証は成功し、共有鍵の順を待って対象ビルドを進める。
+
+- I13 `SerrePositivity.AlgebraicGeometry.noetherianAffineVCover_frobeniusCechExact`：Noether環上の元の有限表示なaffine v被覆のFrobenius係数の増大Čech完全性を得る。
