@@ -5,8 +5,8 @@
 再採番せず、ここにある各署名IDを一つずつ数える。旧「5／8」は以後この台帳の進捗に使わない。
 小さい既存構成の法則・証明の分割は親署名内に記録するが、上端200行超は独立署名。
 
-署名35本＝検証済み10本＋未完23本＋別停止点へ切り離す2本。
-一覧：済み 10／全体 35（うち追加 0、別停止点 2）。
+署名35本＝検証済み11本＋未完22本＋別停止点へ切り離す2本。
+一覧：済み 11／全体 35（うち追加 0、別停止点 2）。
 「追加0」は元の承認済み範囲の外の新しい数学を足していない、という意味。
 
 ## 型の共通環境
@@ -55,7 +55,7 @@ P3-C1や最終P3-Eへ任意のpullback比較を新たに仮定しない。
 原典対応は特殊な模型・既存構成の法則を含む。「独立番号なし」とした法則に、原典の
 同名定理があると主張しない。属性を付ける段階でも適切なpartialと理由を保持する。
 
-## 規模と停止点
+## 規模と停止点（段0時点の履歴）
 
 検証済み累計22,534行は固定。既に通った署名の残り見込みは0行（過去の実測を消していない）。
 
@@ -71,6 +71,12 @@ P3-C1や最終P3-Eへ任意のpullback比較を新たに仮定しない。
 分離しても補正上端31,154行は29,000行より2,154行高い。この点も調整役の判断材料として
 明示する。最後の外枠を上げたり、補正係数を変えたり、指定比較を短縮したりしない。
 実装は指定順で実測を追い、28,500行で途中報告する。S7・R2・R3は再開しない。
+
+## 現在の実測（P3-A検証後）
+
+検証済み累計22,579行。P3-A実測45行。元の見込みは200〜350行（補正400〜700行）。
+未完の補正後残り4,380〜7,920行。係数2は変えず、次のまとまりごとに着手前の上端を判定する。
+P3-B1は22,579＋300＝22,879行で着手可。
 
 ## 指定構成とchooseの点検
 
@@ -166,9 +172,9 @@ let q := smallLeftUnstraighteningProjection (leftStraighteningInfinityDiagram p)
 
 ### P3-A — `kanEnrichedDiagramRealizationIso_trans`
 
-状態：pending。依存署名：なし。
+状態：verified。依存署名：なし。
 
-素の残り：200〜350行。係数2の残り：400〜700行。
+素の残り：0〜0行。係数2の残り：0〜0行。元の見込み：200〜350行、補正400〜700行。実測45行。
 
 原典：HTT §1.1.5、Kerodon §3.1（Tag 00SZ）。既存のcoherent実現の合成則で、独立の原典番号はない。
 
@@ -186,12 +192,13 @@ let q := smallLeftUnstraighteningProjection (leftStraighteningInfinityDiagram p)
 
 使う既存の宣言：
 
+- `jointRealizationIso_trans` @ `SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/PresentableInfinityCategories/JointRealizationComposition.lean:94`
 - `kanEnrichedComparisonEdge_hom_trans` @ `SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/KanEnrichedComparisonEdgeComposition.lean:59`
 - `kanEnrichedComparisonTriangle_first_diagonal` @ `SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/KanEnrichedComparisonFaces.lean:72`
 - `kanEnrichedComparisonTriangle_second_diagonal` @ `SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/KanEnrichedComparisonFaces.lean:151`
 - `kanEnrichedComparisonTriangle_long_diagonal` @ `SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/KanEnrichedComparisonFaces.lean:230`
 
-200行超。全joint族の三面を照合してcurryする。各係数での等式の寄せ集めではない。
+既存jointRealizationIso_trans（JointRealizationComposition.lean:94）を再利用。χをjointComparisonTransへ同定するだけ。旧見込み200〜350行との差は既存APIの照合漏れによる。
 
 置き場所（新規の場合の案）：`SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/KanEnrichedDiagramRealizationComposition.lean`。
 
@@ -1020,4 +1027,4 @@ FunctorHom (discretePresheaf P) (discretePresheaf Q)
 
 置き場所（新規の場合の案）：`SerrePositivity/InfinityCategories/Sheaves/isSheaf_toGrothendieck_iff.lean`。
 
-一覧：済み 10／全体 35（うち追加 0、別停止点 2）。
+一覧：済み 11／全体 35（うち追加 0、別停止点 2）。

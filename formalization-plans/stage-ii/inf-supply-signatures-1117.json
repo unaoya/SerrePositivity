@@ -3,7 +3,7 @@
   "source_head": "7e9743b30",
   "scope": "今回の再開範囲：元の残り1〜17項を署名へ展開。S2〜S6の過去の検収済み出力は再採番しない。",
   "count_rule": "署名のidごとに数える。200行超の照合・合成則は独立署名。小さい証明分割の法則は親署名のnoteに記録する。旧5/8はこの台帳の分母には用いない。",
-  "verified_lean_lines": 22534,
+  "verified_lean_lines": 22579,
   "final_cap": 29000,
   "checkpoint_report_lines": 28500,
   "factor": 2,
@@ -86,21 +86,50 @@
           "name": "kanEnrichedComparisonTriangle_long_diagonal",
           "path": "SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/KanEnrichedComparisonFaces.lean",
           "line": 230
+        },
+        {
+          "name": "jointRealizationIso_trans",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/PresentableInfinityCategories/JointRealizationComposition.lean",
+          "line": 94
         }
       ],
       "literature": "HTT §1.1.5、Kerodon §3.1（Tag 00SZ）。既存のcoherent実現の合成則で、独立の原典番号はない。",
       "bare_lines": [
+        0,
+        0
+      ],
+      "corrected_lines": [
+        0,
+        0
+      ],
+      "status": "verified",
+      "placement": "SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/KanEnrichedDiagramRealizationComposition.lean",
+      "note": "既存jointRealizationIso_trans（JointRealizationComposition.lean:94）を再利用。χをjointComparisonTransへ同定するだけ。旧見込み200〜350行との差は既存APIの照合漏れによる。",
+      "additional_mathematics": false,
+      "original_bare_lines": [
         200,
         350
       ],
-      "corrected_lines": [
+      "original_corrected_lines": [
         400,
         700
       ],
-      "status": "pending",
-      "placement": "SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/KanEnrichedDiagramRealizationComposition.lean",
-      "note": "200行超。全joint族の三面を照合してcurryする。各係数での等式の寄せ集めではない。",
-      "additional_mathematics": false
+      "actual_lines": 45,
+      "verification": {
+        "modules": 1,
+        "declarations": 1,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/KanEnrichedDiagramRealizationComposition.lean": "18b9f43c0e69c59b24ad1bae0e1a6568031f2cd1f86e791b4b1fd84ab2a36f01"
+        }
+      }
     },
     {
       "id": "P3-B1",

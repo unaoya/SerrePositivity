@@ -3,7 +3,7 @@
   "validation": "JSON structure / rendered complete signatures / reference name at source line / Kahn topological sort",
   "lean_type_elaboration": "not run; paper signatures, unimplemented signatures not certified",
   "signature_count": 35,
-  "verified_count": 10,
+  "verified_count": 11,
   "additional_count": 0,
   "deferred_count": 2,
   "edge_count": 50,
@@ -46,27 +46,28 @@
     "R15c"
   ],
   "active_bare_lines": [
-    2390,
-    4310
+    2190,
+    3960
   ],
   "active_corrected_lines": [
-    4780,
-    8620
+    4380,
+    7920
   ],
   "deferred_corrected_lines": [
     1400,
     2600
   ],
   "active_completion_corrected_lines": [
-    27314,
-    31154
+    26959,
+    30499
   ],
-  "ledger_sha256": "90178ad62be0a51b0b9efb59460df181ded64898b5eb37a695a14b9ff5784be5",
+  "ledger_sha256": "1625f17bfa695165daf40a83691676f40ccab1279fb30f41ede363b97335c65a",
   "reference_source_sha256": {
     "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/ScaffoldCoherentComparisonRestriction.lean": "18834ad39c22579d2c7160c905dd6a3090d8724b90e4fe3c4d1c7b7c8a6eb0f3",
     "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/StraighteningReconstructionRepresentationComparison.lean": "1871c7f62ab1a71d8bab1e8805db41303bb07ec49fd71bb39f02d612949e74a7",
     "SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/KanEnrichedComparisonEdgeComposition.lean": "545ebd8d11884c3e55590fa1e6b541446d268936d2fab76f7f36231cef80f5f4",
     "SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/KanEnrichedComparisonFaces.lean": "ce2e10fe75519ff6eb9439a89101ecf8b9af0425185b0a608b4eb3003368f84d",
+    "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/PresentableInfinityCategories/JointRealizationComposition.lean": "f2c80a98328084f0d48c3f86b8d4ccd7c25ad2bdb34b09bcf2cb1cfd81b52738",
     "SerrePositivity/InfinityCategories/Project/FibrationAuxiliaries/FunctorCategories/RelativeFunctorBaseChangeNaturality.lean": "d309793e10162bd7874782f8b6086615923a4badde10950e39e962d7a8fdc442",
     "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/RelativeSectionBaseChangeComparison.lean": "0268da450b9144a1957631de71dc10b7cf86924f0fcd692748fa664e38a67252",
     "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/RelativeSectionJointComparison.lean": "61faaa90e446ec8faa5790a2ff1c94f95d70f22c151a0326be7c49ba7f19360d",
