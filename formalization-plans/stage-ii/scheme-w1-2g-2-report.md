@@ -3329,3 +3329,18 @@ main `6aa6d7152` の指示書末尾を `git show` で読み、今回のユーザ
 
 - C01 `SerrePositivity.AlgebraicGeometry.cechTripleTotalComponentIso`：複体値の二重複体の二つの三重totalを、元の三次数の同じ直和を介して次数ごとに同型にする。
 - C02 `SerrePositivity.AlgebraicGeometry.cechTripleTotalComponentIso_ι`：その成分同型は元の三次数の標準入射を保つ。
+
+## 2026-11-17：三重totalの複体の同型と、複体値の列の射影（260c3b14a・57f1a824d）
+
+- C03〜C05は142行＋入口2行＝144行、所有22宣言。C06・C08〜C10は68行＋入口2行＝70行、所有15宣言。原稿と本体の同一バイト、対象ビルド5,380・5,381ジョブと直接importer、別の共有鍵での所有監査が全て成功。標準三公理以外0。型・仮定の変更、main既存宣言の本体変更はない。
+- C03の微分は元の各三重入射で展開し、三方向の符号1・(-1)^a・(-1)^(a+b)を揃えた。C04は既存isoOfComponents、C05は既存total写像の標準入射の法則。C08は増大次数0と正次数を分けた同じ列、C10は既存の零次列射影の擬同型。
+- 累計20,865行（新規282モジュール20,535行、既存追加25行、入口305行）。所有宣言累計2,328件、既存15件は別。残り37署名の素の見込み1,341〜2,716行、係数2で2,682〜5,432行。完成見込み23,547〜26,297行、28,000行以内。
+- 一覧：済み1／全体3（うち追加0）。内部署名：済み52／89（G4・G5）、追加0。現在はC07・C11の原稿検証中。
+
+- C03 `SerrePositivity.AlgebraicGeometry.cechTripleTotalComponentIso_d`：標準的な三重totalの成分比較は元の微分と可換である。
+- C04 `SerrePositivity.AlgebraicGeometry.cechTripleTotalAssociator`：同じ成分比較を余鎖複体の同型にする。
+- C05 `SerrePositivity.AlgebraicGeometry.cechTripleTotalAssociator_naturality`：同じ同型は複体値の二重複体の射に自然である。
+- C06 `SerrePositivity.AlgebraicGeometry.complexValuedAugmentedDouble`：同じ二変数の複体値図式に増大余鎖関手を二回適用する。
+- C08 `SerrePositivity.AlgebraicGeometry.complexValuedAugmentedDouble_columnIso`：固定列のtotalは元の列の増大totalと同型である。
+- C09 `SerrePositivity.AlgebraicGeometry.complexValuedAugmentedDouble_columnZeroProjection`：三重totalから元の零次列の増大totalへの射影を作る。
+- C10 `SerrePositivity.AlgebraicGeometry.complexValuedAugmentedDouble_columnZeroProjection_quasiIso`：正の各列の増大totalが完全なら同じ零次列射影は擬同型である。
