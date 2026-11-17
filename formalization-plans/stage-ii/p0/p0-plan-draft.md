@@ -71,3 +71,10 @@ BE 模型の May 演算（M14、L22 まで）は §6 の「既存の忠実でな
 1. 未解決 30 項目（`research/p0-lurie/item-closure/unresolved-sources.csv` の「なし」）と §11 で根に足した HA 3.2.3.1・3.2.3.5 の計 32 項目を、「P⁰ の根の経路上で主張として直接要る／証明の部品として要るだけ／他の経路（Kerodon の対応する節、HTT・HA の別の項目）で代替できる見込み」に分類し、各項目に Kerodon の対応する節（あれば）を書く。
 2. (i) の費用の目安：Mathlib の `HomotopicalAlgebra`（モデル圏の基礎）と当リポジトリの `InfinityCategories/Project/ModelCategoryComparison/` に、HTT 4.3.3.10・HA 7.1.2.13 系の証明に要る部品がどれだけあるかを一覧にする。
 出力は `research/p0-lurie/item-closure/` に `unresolved-classification.csv` と `model-route-cost.md`。
+
+## 9. 追記（2026-11-17、調整役）：Archive から戻すもの（AR-W1、ユーザー決定）
+
+`research/archive-review/`（⑧ AR-W1、5553bb711）の推奨を採る。P⁰ の段 0 で次を本体に戻す（Kerodon の節に置き、import を直し、対象ビルド・監査・保存比較を通す）。戻したら Kerodon の対応表の 9.1.1.18・9.1.1.20・9.1.5.7・4.3.6.12 を本体の宣言で付け直す。
+- `Archive/InfinityCategories/FilteredExchange` の `FilteredCriterionCore` 3 本：filtered・κ-filtered の判定の逆向き（Kerodon 9.1.1.18・9.1.5.7）と、Kan 複体の filtered ⇔ 可縮（9.1.1.20）→ `Kerodon/LargeInfinityCategories/FilteredInfinityCategories/`。
+- 同 `SliceRestriction` 2 本：単射で制限した slice の right fibration 性（Kerodon 4.3.6.12 の右側）→ `Kerodon/TheHomotopyTheoryOfInfinityCategories/TheSliceAndJoinConstructions/`。
+材料として残すもの（Cospan・PullbackFiber・CoherentCospanNative・FiberwisePullback の 94 本）は、Kerodon 9.1.5.7 を本体で形式化した後に比べて決める。判断できない 1,636 本も同じ時点で判断する。
