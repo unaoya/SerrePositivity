@@ -5,8 +5,8 @@
 再採番せず、ここにある各署名IDを一つずつ数える。旧「5／8」は以後この台帳の進捗に使わない。
 小さい既存構成の法則・証明の分割は親署名内に記録するが、上端200行超は独立署名。
 
-署名51本＝検証済み30本＋未完19本＋別停止点へ切り離す2本。
-一覧：済み 30／全体 51（うち追加 16、別停止点 2）。
+署名52本＝検証済み30本＋未完20本＋別停止点へ切り離す2本。
+一覧：済み 30／全体 52（うち追加 17、別停止点 2）。
 追加1は11-17夕承認のP3-C1P。着手判定22,975＋800＝23,775行。以前の35署名の表は履歴として保持。
 
 ## 最新の検証記録（P3-B1）
@@ -1544,7 +1544,7 @@ P3-C1PNR：実測180行、対象1モジュール・所有40宣言の小監査成
           Category.assoc]) rfl (β.precomp (U.map lD)) ≪≫ θq
     ∃ e : FunctorIso (i ≫ R₀.pointedMap) (i ≫ Rr.pointedMap),
       e.postcomp pointedSpaceProjection =
-        (functorIsoOfEq (ν.precomp (U.map r)) R₀.pointedMap_projection.symm
+        (functorIsoOfEq (FunctorIso.precomp ν (U.map r)) R₀.pointedMap_projection.symm
           Rr.pointedMap_projection.symm).precomp i
 ```
 
@@ -1613,3 +1613,70 @@ Sの残りは素150〜300行・補正300〜600行とする。元の補正上端7
 証拠：`evidence/inf-supply/c1ps-projection-1117/manifest.json`。
 
 一覧：済み 30／全体 51（うち追加 16、別停止点 2）。
+
+
+## P3-C1PSG（νに独立な三つの指定pointed比較）
+
+```lean
+∀ {E B D : SSet.{u}} [Quasicategory B] [Quasicategory D]
+    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B),
+    let U := SSet.uliftFunctor.{u+1,u}
+    let lB := transportSimplexFirstVertexMap B
+    let lD := transportSimplexFirstVertexMap D
+    let H := transportSimplexFunctor k
+    let q := pullback.snd p k
+    let p₀ := pullback.snd p lB
+    let r := pullback.snd q lD
+    let d := leftStraighteningBaseChangePullbackData p k
+    let s := scaffoldPullbackData p₀ r d.val H d.property.2.2.1
+    let i := U.map s.val
+    let R₀ := (nerveLeftTransportRepresentation p₀).cartesianRestrict
+      (U.map d.val) (U.map (nerveMap H)) d.property.2.2.2
+    let Rr := nerveLeftTransportRepresentation r
+    let Fh : KanDiagramObject (TransportSimplexCategory D) :=
+      ⟨H ⋙ leftStrictTransportFunctor p₀, trivial⟩
+    let Fr : KanDiagramObject (TransportSimplexCategory D) :=
+      ⟨leftStrictTransportFunctor r, trivial⟩
+    let α : Fh.val ⋙ kanObjectForget ⟶ Fr.val ⋙ kanObjectForget :=
+      pullbackStrictComparison p₀ r d.val H d.property.2.2.1
+    let y := (kanDiagramOppositeHomInterval Fh Fr).app _ (naturalHomVertex Fh Fr α)
+    let ε := intervalMappingEdgeOfVertex y
+    let FH := kanDiagramCoherentNerve (Fh.val ⋙ kanObjectOpFunctor)
+    let FR := kanDiagramCoherentNerve (Fr.val ⋙ kanObjectOpFunctor)
+    let v := U.map (tautScaffold (Fh.val ⋙ kanObjectForget))
+    let f₀ := v ≫ oppositeKanUnstraighteningComparison Fh.val ≫ pullback.fst pointedSpaceProjection FH
+    let f₁ := v ≫ oppositeKanUnstraighteningComparison Fh.val ≫
+      leftUnstraighteningEdgeLiftMap FH FR ε ≫ pullback.fst pointedSpaceProjection FR
+    let fT := v ≫ U.map (weightedNerveMap α) ≫ oppositeKanUnstraighteningComparison Fr.val ≫
+      pullback.fst pointedSpaceProjection FR
+    ∃ (h₀ : (i ≫ R₀.pointedMap) ≫ pointedSpaceProjection = f₀ ≫ pointedSpaceProjection)
+      (h₁ : f₁ ≫ pointedSpaceProjection = fT ≫ pointedSpaceProjection)
+      (hT : (i ≫ Rr.pointedMap) ≫ pointedSpaceProjection = fT ≫ pointedSpaceProjection),
+      ∃ a₀ : FunctorIso (i ≫ R₀.pointedMap) f₀,
+      ∃ a₁ : FunctorIso f₁ fT,
+      ∃ aT : FunctorIso (i ≫ Rr.pointedMap) fT,
+        a₀.postcomp pointedSpaceProjection = eqToIso
+          (congrArg (fun f => HomotopyCategory.mk (functorVertex f)) h₀) ∧
+        a₁.postcomp pointedSpaceProjection = eqToIso
+          (congrArg (fun f => HomotopyCategory.mk (functorVertex f)) h₁) ∧
+        aT.postcomp pointedSpaceProjection = eqToIso
+          (congrArg (fun f => HomotopyCategory.mk (functorVertex f)) hT)
+```
+
+依存：R01・R02・P3-C0。素180〜300行、補正360〜600行。
+既存参照：
+- `scaffoldPointedRelativeIso` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePointedPrism.lean:456
+- `scaffoldPullbackData_eq` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePointedPrism.lean:392
+- `oppositeHomComparison_at_natural` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePointedPrism.lean:536
+- `oppositeComparisonPointedBase` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePointedPrism.lean:141
+- `relativeFunctorVertexIsoImage_transport_projection` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/RelativeFunctorIsoImageTransport.lean:45
+- `relativeFunctorBaseChangeForward_vertexIso` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/RelativeFunctorIsoImageTransport.lean:71
+- `tautScaffold_map` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/FibrationsOverOrdinaryCategories/SimplicialReplacementFunctor.lean:97
+- `tautScaffold_baseMap` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/FibrationsOverOrdinaryCategories/SimplicialReplacementBaseChange.lean:73
+
+HTT §3.3.2（特に3.3.2.8）・Kerodon §5.6（Tag 028T）の既存構成の法則。scaffold制限同型と元の全写像空間の区間族の三成分の照合。
+νに依存しない三つの指定pointed比較を記録する。既に検証済みのC1P内の証明分割を使い、未完のC1P本体には依存しない。新しい数学・仮定・choose・mainの既存本文の変更なし。
+
+P3-C1PSは一般のνに対する短い証明分割の型も数え、残り見込みを素140〜300・補正280〜600へ更新（既に加算した100行は除外）。三署名の次のまとまりは25,713＋600＋600＋300＝27,213で区切り内。
+
+Sの再見込みは型の記載を含め素200〜380・補正400〜760（各補正上端800以下）。三署名の着手判定は25,713＋600＋760＋300＝27,373で29,000以内。

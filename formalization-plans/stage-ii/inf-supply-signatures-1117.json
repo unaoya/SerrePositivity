@@ -709,20 +709,45 @@
           "name": "smallFiberTransportRepresentationVertexIso_unique",
           "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/RepresentationComparisonCoherence.lean",
           "line": 26
+        },
+        {
+          "name": "pullbackEdgeOfComponents",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/PresentableInfinityCategories/PullbackEdgeRepresentatives.lean",
+          "line": 29
+        },
+        {
+          "name": "pullbackEdgeOfComponents_snd",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/PresentableInfinityCategories/PullbackEdgeRepresentatives.lean",
+          "line": 81
+        },
+        {
+          "name": "exists_fullSubcomplexEdgeLift",
+          "path": "SerrePositivity/InfinityCategories/Project/QuasicategoryAuxiliaries/VertexTransport/FullSubcomplexEdgeLift.lean",
+          "line": 23
+        },
+        {
+          "name": "transportWitnessSpaceEdgeIso",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/RepresentationEdgeIso.lean",
+          "line": 28
+        },
+        {
+          "name": "transportWitnessSpaceDiagramEdge_hom",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/RepresentationEdgeIso.lean",
+          "line": 45
         }
       ],
       "literature": "HTT §3.3.2（特に3.3.2.8）、Kerodon Corollary 5.6.0.6（Tag 028T）。指定構成の法則で、独立した原典の補題番号はない。",
       "bare_lines": [
-        80,
-        140
+        90,
+        180
       ],
       "corrected_lines": [
-        160,
-        280
+        180,
+        360
       ],
       "status": "pending",
-      "placement": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/leftStraighteningBaseChange_transportWitness.lean",
-      "note": "200行超。数学的な芯。νそのものを表す全空間の表現の点aを構成する。可縮性だけからνの表現可能性を仮定しない。 11-17夕の一括洗い直し後の残り見込み。元の見込みはoriginal欄に保持。",
+      "placement": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangeTransportWitness.lean",
+      "note": "200行超。数学的な芯。νそのものを表す全空間の表現の点aを構成する。可縮性だけからνの表現可能性を仮定しない。 11-17夕の一括洗い直し後の残り見込み。元の見込みはoriginal欄に保持。 一般のpointed prismからの逆方向は、既存の引き戻しの辺・全部分複体への持ち上げ・図式成分の式により68行の法則へ分割。新しい選択・数学なし。配置名は同じ節内のCamelCaseへ揃えた。素90〜180・補正180〜360。",
       "additional_mathematics": false,
       "original_bare_lines": [
         310,
@@ -731,6 +756,14 @@
       "original_corrected_lines": [
         620,
         840
+      ],
+      "before_prism_law_bare": [
+        80,
+        140
+      ],
+      "before_prism_law_corrected": [
+        160,
+        280
       ]
     },
     {
@@ -1667,12 +1700,12 @@
         {
           "name": "pullbackStrictComparison",
           "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePointedPrism.lean",
-          "line": 223
+          "line": 228
         },
         {
           "name": "naturalHomVertex",
           "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePointedPrism.lean",
-          "line": 510
+          "line": 515
         }
       ],
       "bare_lines": [
@@ -2364,7 +2397,7 @@
         {
           "name": "pullbackStrictComparison_uncurry",
           "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePointedPrism.lean",
-          "line": 339
+          "line": 344
         },
         {
           "name": "leftStraighteningBaseChangePullbackData",
@@ -2436,7 +2469,7 @@
         {
           "name": "leftStraighteningBaseChange_native_pullback_square",
           "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePointedPrism.lean",
-          "line": 637
+          "line": 642
         },
         {
           "name": "kanDiagramNaturalTransformationHom_comp",
@@ -2489,33 +2522,34 @@
     {
       "id": "P3-C1PS",
       "name": "leftStraighteningBaseChange_scaffold_pointedComparison",
-      "full_type": "∀ {E B D : SSet.{u}} [Quasicategory B] [Quasicategory D]\n    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B),\n    let U := SSet.uliftFunctor.{u+1,u}\n    let lB := transportSimplexFirstVertexMap B\n    let lD := transportSimplexFirstVertexMap D\n    let H := transportSimplexFunctor k\n    let q := pullback.snd p k\n    let p₀ := pullback.snd p lB\n    let r := pullback.snd q lD\n    let d := leftStraighteningBaseChangePullbackData p k\n    let s := scaffoldPullbackData p₀ r d.val H d.property.2.2.1\n    let i := U.map s.val\n    let R₀ := (nerveLeftTransportRepresentation p₀).cartesianRestrict\n      (U.map d.val) (U.map (nerveMap H)) d.property.2.2.2\n    let Rr := nerveLeftTransportRepresentation r\n    let θp := leftStraighteningInfinityDiagram_firstVertexTransportIso p\n    let θq := leftStraighteningInfinityDiagram_firstVertexTransportIso q\n    let β := leftStraighteningInfinityDiagram_baseChangeIso p k\n    let ν := (θp.precomp (U.map (nerveMap H))).symm ≪≫\n      diagramIsoCongr\n        (by rw [← Category.assoc, ← transportSimplexFirstVertexMap_ulift_naturality k,\n          Category.assoc]) rfl (β.precomp (U.map lD)) ≪≫ θq\n    ∃ e : FunctorIso (i ≫ R₀.pointedMap) (i ≫ Rr.pointedMap),\n      e.postcomp pointedSpaceProjection =\n        (functorIsoOfEq (ν.precomp (U.map r)) R₀.pointedMap_projection.symm\n          Rr.pointedMap_projection.symm).precomp i",
+      "full_type": "∀ {E B D : SSet.{u}} [Quasicategory B] [Quasicategory D]\n    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B),\n    let U := SSet.uliftFunctor.{u+1,u}\n    let lB := transportSimplexFirstVertexMap B\n    let lD := transportSimplexFirstVertexMap D\n    let H := transportSimplexFunctor k\n    let q := pullback.snd p k\n    let p₀ := pullback.snd p lB\n    let r := pullback.snd q lD\n    let d := leftStraighteningBaseChangePullbackData p k\n    let s := scaffoldPullbackData p₀ r d.val H d.property.2.2.1\n    let i := U.map s.val\n    let R₀ := (nerveLeftTransportRepresentation p₀).cartesianRestrict\n      (U.map d.val) (U.map (nerveMap H)) d.property.2.2.2\n    let Rr := nerveLeftTransportRepresentation r\n    let θp := leftStraighteningInfinityDiagram_firstVertexTransportIso p\n    let θq := leftStraighteningInfinityDiagram_firstVertexTransportIso q\n    let β := leftStraighteningInfinityDiagram_baseChangeIso p k\n    let ν := (θp.precomp (U.map (nerveMap H))).symm ≪≫\n      diagramIsoCongr\n        (by rw [← Category.assoc, ← transportSimplexFirstVertexMap_ulift_naturality k,\n          Category.assoc]) rfl (β.precomp (U.map lD)) ≪≫ θq\n    ∃ e : FunctorIso (i ≫ R₀.pointedMap) (i ≫ Rr.pointedMap),\n      e.postcomp pointedSpaceProjection =\n        (functorIsoOfEq (FunctorIso.precomp ν (U.map r)) R₀.pointedMap_projection.symm\n          Rr.pointedMap_projection.symm).precomp i",
       "dependencies": [
         "P3-C1PN",
         "R01",
         "R02",
-        "P3-C0"
+        "P3-C0",
+        "P3-C1PSG"
       ],
       "existing": [
         {
           "name": "scaffoldPointedRelativeIso",
           "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePointedPrism.lean",
-          "line": 456
+          "line": 461
         },
         {
           "name": "oppositeHomComparison_at_natural",
           "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePointedPrism.lean",
-          "line": 536
+          "line": 541
         },
         {
           "name": "oppositeComparisonPointedBase",
           "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePointedPrism.lean",
-          "line": 141
+          "line": 146
         },
         {
           "name": "pointedIsoOfProjectedPrism",
           "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePointedPrism.lean",
-          "line": 581
+          "line": 586
         },
         {
           "name": "leftUnstraighteningEdgeLiftFamily_projection",
@@ -2549,17 +2583,17 @@
         }
       ],
       "bare_lines": [
-        150,
-        300
+        200,
+        380
       ],
       "corrected_lines": [
-        300,
-        600
+        400,
+        760
       ],
       "status": "pending",
       "placement": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePointedPrism.lean",
       "literature": "HTT §3.3.2・特に3.3.2.8、Kerodon §5.6（Tag 028T）の指定構成の法則。このscaffold上での指定pointed比較への特殊化。",
-      "note": "既存のscaffold制限比較・反転Homの指定比較・全写像空間の持ち上げを同じ辺で合成する照合。新しい数学・仮定・choose・main既存本文の変更なし。 前合成と端点移送の射影公式を200行未満の証明分割として新規の補助ファイルに置く。 補助100行は検証済み。残りは素150〜300・補正300〜600。元の補正上端700に対し、検証済み100＋残り補正600＝700で着手の枠を保つ。",
+      "note": "既存のscaffold制限比較・反転Homの指定比較・全写像空間の持ち上げを同じ辺で合成する照合。新しい数学・仮定・choose・main既存本文の変更なし。 前合成と端点移送の射影公式を200行未満の証明分割として新規の補助ファイルに置く。 補助100行は検証済み。残りは素150〜300・補正300〜600。元の補正上端700に対し、検証済み100＋残り補正600＝700で着手の枠を保つ。 νに独立な三つのpointed比較を独立署名P3-C1PSGに切り出し、残るνとの接続は素100〜220・補正200〜440。 前合成のドット記法はνの型が一般のIsoとして推論されるのでFunctorIso.precompへ名前解決だけ明示する（主張・仮定は同じ）。 接続のkernel検査を一般のνに対する証明分割へ局所化したため、型の記載込みの残り見込みを140〜300行（補正280〜600）へ更新。既に加算済みの補助100行は二度数えない。 kernel検査をscaffold固有の定義からも局所化し、既存の両端接続の法則の型を記録。残り素200〜380・補正400〜760。",
       "additional_mathematics": true,
       "choose_replacements": [],
       "new_assumptions": [],
@@ -2589,7 +2623,100 @@
         "source_sha256": {
           "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/RelativeFunctorIsoImageTransport.lean": "c380fa0d4d3451e6a8074f36fe9c06baf61cd319de86a37f7022ea4c024a27f8"
         }
-      }
+      },
+      "remaining_before_geometry_split": {
+        "bare_lines": [
+          150,
+          300
+        ],
+        "corrected_lines": [
+          300,
+          600
+        ]
+      },
+      "remaining_before_core_bare": [
+        100,
+        220
+      ],
+      "remaining_before_core_corrected": [
+        200,
+        440
+      ],
+      "before_generic_core_bare": [
+        140,
+        300
+      ],
+      "before_generic_core_corrected": [
+        280,
+        600
+      ]
+    },
+    {
+      "id": "P3-C1PSG",
+      "name": "leftStraighteningBaseChange_scaffold_pointedEnds",
+      "full_type": "∀ {E B D : SSet.{u}} [Quasicategory B] [Quasicategory D]\n    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B),\n    let U := SSet.uliftFunctor.{u+1,u}\n    let lB := transportSimplexFirstVertexMap B\n    let lD := transportSimplexFirstVertexMap D\n    let H := transportSimplexFunctor k\n    let q := pullback.snd p k\n    let p₀ := pullback.snd p lB\n    let r := pullback.snd q lD\n    let d := leftStraighteningBaseChangePullbackData p k\n    let s := scaffoldPullbackData p₀ r d.val H d.property.2.2.1\n    let i := U.map s.val\n    let R₀ := (nerveLeftTransportRepresentation p₀).cartesianRestrict\n      (U.map d.val) (U.map (nerveMap H)) d.property.2.2.2\n    let Rr := nerveLeftTransportRepresentation r\n    let Fh : KanDiagramObject (TransportSimplexCategory D) :=\n      ⟨H ⋙ leftStrictTransportFunctor p₀, trivial⟩\n    let Fr : KanDiagramObject (TransportSimplexCategory D) :=\n      ⟨leftStrictTransportFunctor r, trivial⟩\n    let α : Fh.val ⋙ kanObjectForget ⟶ Fr.val ⋙ kanObjectForget :=\n      pullbackStrictComparison p₀ r d.val H d.property.2.2.1\n    let y := (kanDiagramOppositeHomInterval Fh Fr).app _ (naturalHomVertex Fh Fr α)\n    let ε := intervalMappingEdgeOfVertex y\n    let FH := kanDiagramCoherentNerve (Fh.val ⋙ kanObjectOpFunctor)\n    let FR := kanDiagramCoherentNerve (Fr.val ⋙ kanObjectOpFunctor)\n    let v := U.map (tautScaffold (Fh.val ⋙ kanObjectForget))\n    let f₀ := v ≫ oppositeKanUnstraighteningComparison Fh.val ≫ pullback.fst pointedSpaceProjection FH\n    let f₁ := v ≫ oppositeKanUnstraighteningComparison Fh.val ≫\n      leftUnstraighteningEdgeLiftMap FH FR ε ≫ pullback.fst pointedSpaceProjection FR\n    let fT := v ≫ U.map (weightedNerveMap α) ≫ oppositeKanUnstraighteningComparison Fr.val ≫\n      pullback.fst pointedSpaceProjection FR\n    ∃ (h₀ : (i ≫ R₀.pointedMap) ≫ pointedSpaceProjection = f₀ ≫ pointedSpaceProjection)\n      (h₁ : f₁ ≫ pointedSpaceProjection = fT ≫ pointedSpaceProjection)\n      (hT : (i ≫ Rr.pointedMap) ≫ pointedSpaceProjection = fT ≫ pointedSpaceProjection),\n      ∃ a₀ : FunctorIso (i ≫ R₀.pointedMap) f₀,\n      ∃ a₁ : FunctorIso f₁ fT,\n      ∃ aT : FunctorIso (i ≫ Rr.pointedMap) fT,\n        a₀.postcomp pointedSpaceProjection = eqToIso\n          (congrArg (fun f => HomotopyCategory.mk (functorVertex f)) h₀) ∧\n        a₁.postcomp pointedSpaceProjection = eqToIso\n          (congrArg (fun f => HomotopyCategory.mk (functorVertex f)) h₁) ∧\n        aT.postcomp pointedSpaceProjection = eqToIso\n          (congrArg (fun f => HomotopyCategory.mk (functorVertex f)) hT)",
+      "dependencies": [
+        "R01",
+        "R02",
+        "P3-C0"
+      ],
+      "existing": [
+        {
+          "name": "scaffoldPointedRelativeIso",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePointedPrism.lean",
+          "line": 461
+        },
+        {
+          "name": "scaffoldPullbackData_eq",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePointedPrism.lean",
+          "line": 397
+        },
+        {
+          "name": "oppositeHomComparison_at_natural",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePointedPrism.lean",
+          "line": 541
+        },
+        {
+          "name": "oppositeComparisonPointedBase",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePointedPrism.lean",
+          "line": 146
+        },
+        {
+          "name": "relativeFunctorVertexIsoImage_transport_projection",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/RelativeFunctorIsoImageTransport.lean",
+          "line": 45
+        },
+        {
+          "name": "relativeFunctorBaseChangeForward_vertexIso",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/RelativeFunctorIsoImageTransport.lean",
+          "line": 71
+        },
+        {
+          "name": "tautScaffold_map",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/FibrationsOverOrdinaryCategories/SimplicialReplacementFunctor.lean",
+          "line": 97
+        },
+        {
+          "name": "tautScaffold_baseMap",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/FibrationsOverOrdinaryCategories/SimplicialReplacementBaseChange.lean",
+          "line": 73
+        }
+      ],
+      "bare_lines": [
+        180,
+        300
+      ],
+      "corrected_lines": [
+        360,
+        600
+      ],
+      "status": "pending",
+      "placement": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangePointedPrism.lean",
+      "literature": "HTT §3.3.2（特に3.3.2.8）・Kerodon §5.6（Tag 028T）の既存構成の法則。scaffold制限同型と元の全写像空間の区間族の三成分の照合。",
+      "note": "νに依存しない三つの指定pointed比較を記録する。既に検証済みのC1P内の証明分割を使い、未完のC1P本体には依存しない。新しい数学・仮定・choose・mainの既存本文の変更なし。",
+      "additional_mathematics": true,
+      "choose_replacements": [],
+      "new_assumptions": []
     }
   ],
   "common_typeclass_setup": "local instance signaturePullbackLeft {E B D : SSet.{u}}\n    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) : LeftFibration (pullback.snd p k) :=\n  ⟨leftFibrations.pullback_snd p k (LeftFibration.mem (p := p))⟩",
