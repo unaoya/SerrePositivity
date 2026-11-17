@@ -32,7 +32,7 @@ number := false
 tag := "paper-2-1"
 %%%
 
-:::lemma_ "paper_2_1" (lean := "SerrePositivity.Section2.lemma_2_1, SerrePositivity.supportDim_baseChange_of_map_maximalIdeal, SerrePositivity.chi_baseChange_of_map_maximalIdeal")
+:::lemma_ "paper_2_1" (lean := "SerrePositivity.Section2.lemma_2_1, SerrePositivity.supportDim_baseChange_of_map_maximalIdeal, SerrePositivity.chi_baseChange_of_map_maximalIdeal") (uses := "ext_Ma17_2_2")
 **補題 2.1**　剰余体を代数閉体へ拡大する完備平坦局所拡大。対応表の状態：本体にある。
 
 原典 PDF p.5 / layout L215。完備Noether局所環から代数閉剰余体を持つ完備平坦局所拡大を構成し、極大イデアル・Hilbert–Samuel関数・正則性・Tor長を保存する。module dimensionとchiの保存は表示した共通層の宣言で補う。
@@ -48,7 +48,7 @@ number := false
 tag := "paper-2-2"
 %%%
 
-:::lemma_ "paper_2_2" (lean := "SerrePositivity.Section2.lemma_2_2")
+:::lemma_ "paper_2_2" (lean := "SerrePositivity.Section2.lemma_2_2") (uses := "ext_KuranoShimomoto, ext_KuranoShimomoto_1_1")
 **補題 2.2**　正則な正規化基底の存在。対応表の状態：本体にある。
 
 原典 PDF p.6 / layout L262。完全な正標数剰余体を持つ完備局所整域に、同じ剰余体の有限・生成的分離な正則基底を構成する。等標数の冪級数環と混標数のWitt冪級数環との具体的同型およびパラメータも結論に含む。
@@ -64,7 +64,7 @@ tag := "paper-2-2"
 
 :::
 
-:::lemma_ "paper_2_3" (lean := "SerrePositivity.Section2.towerStage_free, SerrePositivity.Section2.finrank_towerStage, SerrePositivity.Section2.towerLength, SerrePositivity.Section2.towerLength_hasSup, SerrePositivity.Section2.towerLengthFun_tensor, SerrePositivity.Section2.towerLengthOn_eq_completedTowerLength") (uses := "paper_eq_2_2")
+:::lemma_ "paper_2_3" (lean := "SerrePositivity.Section2.towerStage_free, SerrePositivity.Section2.finrank_towerStage, SerrePositivity.Section2.towerLength, SerrePositivity.Section2.towerLength_hasSup, SerrePositivity.Section2.towerLengthFun_tensor, SerrePositivity.Section2.towerLengthOn_eq_completedTowerLength") (uses := "paper_eq_2_2, clmst_2_2_1, clmst_2_2_3, clmst_2_2_6, ext_Faltings_Appendix_2")
 **補題 2.3**　根の塔の段と正規化長さの構成。対応表の状態：本体にある。
 
 原典 PDF p.6 / layout L286。各段の有限自由性・ランク、正規化長さの加法性・有限段公式・有限生成上限、および混標数の完備塔との比較を個別の宣言で実装する。Stage.leanの完備正則局所環・段間ランクの証明も原典の構成と照合した。
@@ -80,7 +80,7 @@ tag := "paper-2-2"
 
 :::
 
-:::definition "paper_eq_2_3" (lean := "SerrePositivity.Section2.towerLength_hasSup")
+:::definition "paper_eq_2_3" (lean := "SerrePositivity.Section2.towerLength_hasSup") (uses := "clmst_2_2_1, clmst_2_2_3, clmst_2_2_6, ext_Faltings_Appendix_2")
 **式 (2.3)**　有限生成部分加群の長さの上限。対応表の状態：本体にある。
 
 原典 PDF p.6 / layout L300。NormalizedLength.HasSupとして増大する有限生成部分加群の上限を実現する。
@@ -103,7 +103,7 @@ number := false
 tag := "paper-2-3"
 %%%
 
-:::theorem "paper_2_5" (uses := "paper_eq_2_1, paper_eq_2_4, paper_eq_2_5, paper_eq_2_6, paper_eq_2_7, paper_eq_2_8, paper_2_2, paper_2_3, paper_2_4")
+:::theorem "paper_2_5" (uses := "paper_eq_2_1, paper_eq_2_4, paper_eq_2_5, paper_eq_2_6, paper_eq_2_7, paper_eq_2_8, paper_2_2, paper_2_3, paper_2_4, ext_BS19_8_5, clmst_4_0_1, clmst_4_0_10, clmst_4_0_14, clmst_4_0_4, ext_Ma17_2_2, ext_Ma17_2_4, ext_Monsky, ext_Roberts89")
 **定理 2.5**　全パラメータに使える長さ代数の存在。対応表の状態：未証明の入力に依存。
 
 原典 PDF p.7 / layout L352。固定した正規化基底の上でCと塔作用を一つ選び、全パラメータと冪についてKoszul消滅・重複度公式・基底のランク公式を得る型がある。等標数の証明は実装されているが、混標数のCの存在はBSpfdのE3界面のsorryに依存する。
@@ -114,7 +114,7 @@ tag := "paper-2-3"
 
 :::
 
-:::definition "paper_eq_2_4" (uses := "paper_eq_2_5, paper_2_3, paper_2_4")
+:::definition "paper_eq_2_4" (uses := "paper_eq_2_5, paper_2_3, paper_2_4, clmst_4_0_10, clmst_4_0_4, ext_Ma17_2_4, ext_Roberts89")
 **式 (2.4)**　全パラメータの正次数Koszul長の零性。対応表の状態：未証明の入力に依存。
 
 原典 PDF p.7 / layout L357。同じCの存在と一緒に返す全パラメータ・全冪の公式。混標数でのCの構成がE3入力に依存する。
@@ -125,7 +125,7 @@ tag := "paper-2-3"
 
 :::
 
-:::definition "paper_eq_2_5" (uses := "paper_eq_2_4, paper_eq_2_8, paper_2_3, paper_2_4")
+:::definition "paper_eq_2_5" (uses := "paper_eq_2_4, paper_eq_2_8, paper_2_3, paper_2_4, clmst_4_0_14, clmst_4_0_4")
 **式 (2.5)**　パラメータ商長の重複度公式。対応表の状態：未証明の入力に依存。
 
 原典 PDF p.7 / layout L360。全パラメータに共通のCの存在にはE3入力が残る。v=1の重複度公式から冪への拡張自体はsorryなし。
@@ -152,7 +152,7 @@ tag := "paper-2-3"
 
 :::
 
-:::definition "paper_eq_2_8" (lean := "SerrePositivity.Section2.normalized_frobenius_length_tendsto_perfection_quotient_of_primary") (uses := "paper_eq_2_7, paper_2_4")
+:::definition "paper_eq_2_8" (lean := "SerrePositivity.Section2.normalized_frobenius_length_tendsto_perfection_quotient_of_primary") (uses := "paper_eq_2_7, paper_2_4, ext_Ma17_2_2, ext_Monsky")
 **式 (2.8)**　完全化の主イデアル商長とHilbert–Kunz極限。対応表の状態：本体にある。
 
 原典 PDF p.8 / layout L410。primary idealについて正規化Frobenius長の極限と完全化商の塔長を比較する。原典のe\_HKはその極限であり、任意のCでの追加公式とはしない。

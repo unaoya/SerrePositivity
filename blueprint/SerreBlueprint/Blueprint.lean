@@ -8,6 +8,15 @@ import SerreBlueprint.Paper.Section2
 import SerreBlueprint.Paper.Section3
 import SerreBlueprint.Paper.Section4
 import SerreBlueprint.Paper.Section5
+import SerreBlueprint.Paper.External
+import SerreBlueprint.CLMST.Section1
+import SerreBlueprint.CLMST.Section2
+import SerreBlueprint.CLMST.Section3
+import SerreBlueprint.CLMST.Section4
+import SerreBlueprint.CLMST.Section5
+import SerreBlueprint.CLMST.Section6
+import SerreBlueprint.CLMST.Section7
+import SerreBlueprint.CLMST.Section8
 import SerreBlueprint.Kerodon.Section1_1
 import SerreBlueprint.Kerodon.Section1_2
 import SerreBlueprint.Kerodon.Section1_3
@@ -23,10 +32,10 @@ open Informal
 tag := "serre-blueprint"
 %%%
 
-本論文（OpenAI, Positivity of Serre's Intersection Multiplicity, 2026-09-23）と、本体が使う文献（試作では Kerodon 第 1 章）の項目ごとに、SerrePositivity と Mathlib の対応する Lean の宣言を結んだブループリント。
+本論文（OpenAI, Positivity of Serre's Intersection Multiplicity, 2026-09-23）、本論文が引用する結果、CLMST（本論文が最も多く引く文献）、本体が使う文献（試作では Kerodon 第 1 章）の項目ごとに、SerrePositivity と Mathlib の対応する Lean の宣言を結んだブループリント。
 各ノードの本文は対応表（`research/paper-coverage`・`research/kerodon-coverage`）の照合の理由（日本語の要約）で、原典の本文の写しではない。
 Lean の宣言に結ぶのは、本論文では状態が own のもの、Kerodon では own・mathlib・both のものだけ。未証明の入力に依存するもの（interface）・一部（partial）は本文に宣言名を挙げる。
-章のファイルは `blueprint/scripts/gen_paper.py`・`gen_kerodon.py` が対応表から生成する。手で直さない。
+章のファイルは `blueprint/scripts/gen_paper.py`・`gen_clmst.py`・`gen_kerodon.py` が対応表から生成する。手で直さない。
 
 # 本論文
 %%%
@@ -39,6 +48,22 @@ tag := "paper"
 {include 1 SerreBlueprint.Paper.Section3}
 {include 1 SerreBlueprint.Paper.Section4}
 {include 1 SerreBlueprint.Paper.Section5}
+{include 1 SerreBlueprint.Paper.External}
+
+# CLMST（Perfectoid signature, perfectoid Hilbert–Kunz multiplicity, …, arXiv 2209.04046v4）
+%%%
+number := false
+tag := "clmst"
+%%%
+
+{include 1 SerreBlueprint.CLMST.Section1}
+{include 1 SerreBlueprint.CLMST.Section2}
+{include 1 SerreBlueprint.CLMST.Section3}
+{include 1 SerreBlueprint.CLMST.Section4}
+{include 1 SerreBlueprint.CLMST.Section5}
+{include 1 SerreBlueprint.CLMST.Section6}
+{include 1 SerreBlueprint.CLMST.Section7}
+{include 1 SerreBlueprint.CLMST.Section8}
 
 # Kerodon 第 1 章 The Language of ∞-Categories
 %%%

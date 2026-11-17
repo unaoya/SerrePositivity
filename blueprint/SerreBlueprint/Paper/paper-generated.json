@@ -4,12 +4,18 @@
   "Section2",
   "Section3",
   "Section4",
-  "Section5"
+  "Section5",
+  "External"
  ],
  "stats": {
   "nolink-interface": 13,
   "nolink-partial": 8,
   "nolink-none": 17,
-  "linked": 37
+  "linked": 37,
+  "ext-nolink-table": 18,
+  "ext-linked": 4,
+  "ext-nolink-partial": 10,
+  "ext-nolink-none": 6,
+  "ext-nolink-mathlib": 2
  }
 }

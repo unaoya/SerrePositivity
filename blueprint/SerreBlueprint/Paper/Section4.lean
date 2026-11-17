@@ -61,7 +61,7 @@ number := false
 tag := "paper-4-3"
 %%%
 
-:::proposition "paper_4_3" (lean := "SerrePositivity.Asymptotic.paperRankHomology, SerrePositivity.Asymptotic.completedRankHomology_isHomological, SerrePositivity.Asymptotic.paperRankBetti_nonneg, SerrePositivity.Asymptotic.paperRankBetti_hasFiniteSupport, SerrePositivity.Asymptotic.paperRankEulerK0, SerrePositivity.Asymptotic.paperBaseChangeHomology, SerrePositivity.Asymptotic.paperBaseChangeHomology_isHomological, SerrePositivity.Asymptotic.paperBaseChangeBetti_nonneg, SerrePositivity.Asymptotic.paperBaseChangeBetti_hasFiniteSupport, SerrePositivity.Asymptotic.paperBaseChangeEulerK0") (uses := "paper_eq_4_1, paper_eq_4_2, paper_eq_4_3, paper_4_1, paper_4_2")
+:::proposition "paper_4_3" (lean := "SerrePositivity.Asymptotic.paperRankHomology, SerrePositivity.Asymptotic.completedRankHomology_isHomological, SerrePositivity.Asymptotic.paperRankBetti_nonneg, SerrePositivity.Asymptotic.paperRankBetti_hasFiniteSupport, SerrePositivity.Asymptotic.paperRankEulerK0, SerrePositivity.Asymptotic.paperBaseChangeHomology, SerrePositivity.Asymptotic.paperBaseChangeHomology_isHomological, SerrePositivity.Asymptotic.paperBaseChangeBetti_nonneg, SerrePositivity.Asymptotic.paperBaseChangeBetti_hasFiniteSupport, SerrePositivity.Asymptotic.paperBaseChangeEulerK0") (uses := "paper_eq_4_1, paper_eq_4_2, paper_eq_4_3, paper_4_1, paper_4_2, ext_BalmerSchlichting_1_10, ext_BalmerSchlichting_1_12")
 **命題 4.3**　長さのSerre商へのホモロジー関手とEuler評価。対応表の状態：本体にある。
 
 原典 PDF p.18 / layout L937。現在はLengthSerreQuotientへの各次数の関手とIsHomological、非負・有限supportのBetti長、K0のEuler準同型がある。ordinary長とbase-change長に適用し、Karoubi包の全支持対象を扱う。旧表の数値部分のみというpartial判定は維持しない。添字はcochainのq=-iへ読み替える。
@@ -137,7 +137,7 @@ number := false
 tag := "paper-4-5"
 %%%
 
-:::lemma_ "paper_4_6" (uses := "paper_3_1")
+:::lemma_ "paper_4_6" (uses := "paper_3_1, ext_Drinfeld_3_1, ext_Drinfeld_3_4, ext_LT_3_12")
 **補題 4.6**　連結結合係数Hによる両ランク商のMorita表示。対応表の状態：なし。
 
 原典 PDF p.21 / layout L1123。任意のNoether基底で生成元のendomorphism dg algebraが連結となり、P\_A≃Perf(H)、P\_T≃Perf(H⊗\^L T)を中心的局所化と両立させる一組の同値は確認できない。KSTの特定dg商やsupportedRankK0\_descentはこの同値を構成していない。
@@ -146,7 +146,7 @@ tag := "paper-4-5"
 
 :::
 
-:::definition "paper_eq_4_7"
+:::definition "paper_eq_4_7" (uses := "ext_Drinfeld_3_1, ext_Drinfeld_3_4")
 **式 (4.7)**　endomorphism代数の積と導来基底変換。対応表の状態：なし。
 
 原典 PDF p.21 / layout L1142。B\_A=∏M\_(s\_n)(A)のflatnessと有限表示TによるB\_A⊗\^L T≃B\_Tの同値を、この生成元表示と一緒に構成する宣言は未確認。

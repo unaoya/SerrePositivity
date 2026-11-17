@@ -33,7 +33,7 @@ number := false
 tag := "paper-5-1"
 %%%
 
-:::lemma_ "paper_5_1" (uses := "paper_eq_5_1, paper_1_1, paper_2_1")
+:::lemma_ "paper_5_1" (uses := "paper_eq_5_1, paper_1_1, paper_2_1, ext_GilletSoule, ext_Roberts85, ext_Serre")
 **補題 5.1**　完備・代数閉剰余体・正次元素商対への帰着。対応表の状態：一部。
 
 原典 PDF p.23 / layout L1200。prime filtrationとvanishingによる帰着、零次元対、剰余体拡大・完備化の各処理はある。一方、positivity\_of\_residueCharPは核心の実定理を呼ぶため入力依存で、原典の「核心を証明すれば十分」という全帰着を独立の含意型として切り出した宣言は確認しない。
@@ -44,7 +44,7 @@ tag := "paper-5-1"
 
 :::
 
-:::definition "paper_eq_5_1" (lean := "SerrePositivity.intersectionVanishing_of_adams")
+:::definition "paper_eq_5_1" (lean := "SerrePositivity.intersectionVanishing_of_adams") (uses := "ext_GilletSoule, ext_Roberts85")
 **式 (5.1)**　相補次元未満での交点重複度の消滅。対応表の状態：本体にある。
 
 原典 PDF p.23 / layout L1217。一般の正則局所環で有限長テンソルと次元和\<dim Rからchi=0。原典と同じ一般のvanishingをAdams経路で証明する。

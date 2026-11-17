@@ -17,7 +17,7 @@ tag := "paper-3"
 
 本論文 §3 の項目と、本体の宣言との対応。本文は対応表（`research/paper-coverage`）の照合の理由で、論文の本文の写しではない。
 
-:::theorem "paper_3_1" (uses := "paper_eq_3_1, paper_eq_3_2, paper_eq_3_5, paper_eq_3_6, paper_eq_3_7, paper_eq_3_8, paper_3_3")
+:::theorem "paper_3_1" (uses := "paper_eq_3_1, paper_eq_3_2, paper_eq_3_5, paper_eq_3_6, paper_eq_3_7, paper_eq_3_8, paper_3_3, ext_BGT_8_1, ext_BGT_8_7, ext_BGT_9_3, ext_BGT_9_8, ext_Goodwillie_Main_Theorem, ext_LT_3_10, ext_LT_3_12, ext_LT_3_9, ext_LT_A_2, ext_LT_Appendix_B, ext_LT_B_2, ext_LT_B_3, ext_TT_5_2_2, ext_TT_5_2_3, ext_TT_5_2_4, ext_TT_7_4")
 **定理 3.1**　任意の連結結合係数を持つ台つき有理降下。対応表の状態：未証明の入力に依存。
 
 原典 PDF p.10 / layout L502。本体の入力は離散H=A、局所基底とパラメータ台についてのK0の正整数倍持ち上げで、直接sorryを持つ。原典の任意の連結結合Hと有理Kスペクトルの同値は未構成なので、入力界面としてのみ対応する。
@@ -72,7 +72,7 @@ tag := "paper-3-1"
 
 :::
 
-:::definition "paper_eq_3_6" (uses := "paper_eq_3_5")
+:::definition "paper_eq_3_6" (uses := "paper_eq_3_5, ext_BGT_8_1, ext_BGT_8_7, ext_BGT_9_3, ext_BGT_9_8, ext_LT_3_12, ext_LT_B_2, ext_TT_5_2_2, ext_TT_5_2_3, ext_TT_5_2_4, ext_TT_7_4")
 **式 (3.6)**　Lと実際の台つきperfect K理論との同定。対応表の状態：なし。
 
 原典 PDF p.11 / layout L564。係数付きperfect localizationを使う有理Kスペクトルの同定はない。中心的台の判定だけでは同じ主張にならない。
@@ -95,7 +95,7 @@ tag := "paper-3-2"
 
 :::
 
-:::lemma_ "paper_3_3" (uses := "paper_3_2")
+:::lemma_ "paper_3_3" (uses := "paper_3_2, ext_Stacks_0815")
 **補題 3.3**　有限全射に沿う通常のČech降下。対応表の状態：なし。
 
 原典 PDF p.12 / layout L609。cdh sheafと有限忠実平坦Čech降下から、flattening blowupと次元帰納で全有限全射の降下を得るLのスペクトル値定理は未構成。KSTの幾何学補助や層の一般論だけを対応宣言とはしない。
