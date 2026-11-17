@@ -116,6 +116,8 @@
 
 **規則**：作業木はレーンごとに一つ、名前はレーン（`SerrePositivity-<レーン>`）。枝は main に入れたら消す。保存比較の「前」の木（`/private/tmp`）は段の終わりに消す。取り込まない枝はタグ（`archive/<枝>-<日付>`）を打ってから消す。`/private/tmp/oe-w1-before-30ae8948f` は ③-b の OE-W1 段 1 の保存比較が終わるまで残す。
 
+**⑧ 引用文献（11-17 新設、ユーザー決定）**：本論文が引用する文献の対応表とブループリント。最初は CLMST（指示書 `stage-ii/cited/clmst-coverage.md`、worktree `SerrePositivity-cited`、枝 `research/cited-coverage`）。紙だけでビルドなし。
+
 **Codex のチャットの開き方（11-17、ユーザー決定）**：新しいレーンの Codex チャットは、調整役が worktree と枝を作った後、**その worktree をカレントディレクトリにして開く**（main の作業木では開かない。11-11 の `writable_roots` は効かず、全アクセスは使わない）。指示書の冒頭に worktree のパスを書き、開始文に「`pwd` が `../SerrePositivity-<レーン>` であることを確かめてから始める」を入れる。main で開いてしまったら閉じて開き直す。動いている三つのレーンは停止点まで今のまま。
 
 **証拠（11-17）**：これからの検証の証拠は git の外 `~/serre-evidence/<レーン>/<段>/`、目録だけ `scripts/docs/evidence_manifest.py` でコミット（`evidence/README.md`）。各レーンには停止点の取り込み時に伝える。
