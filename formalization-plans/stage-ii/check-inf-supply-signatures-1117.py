@@ -11,6 +11,31 @@ ledger = Path(__file__).with_name('inf-supply-signatures-1117.json')
 x = json.loads(ledger.read_text())
 rows = x['signatures']
 rendered = ledger.with_suffix('.md').read_text()
+# Gate display must match the machine ledger, including estimates used at the 29,000-line boundary.
+status_lines = ["<!-- current-signature-state:begin -->", "## 最新の進行状態と停止判定", "",
+    f"既計上の累計：{x['verified_lean_lines']:,}行。外枠：{x['final_cap']:,}行。係数：{x['factor']}。",
+    "行別の実測は既計上の補助・共有検証組を含みうるため、合計して累計を作り直さない。",
+    "この表が進行状態・残り見込みの現在値。後の各節は署名の型・設計・検証履歴を保持する。", "",
+    "|署名ID|状態|実測または部分計上|残り（素）|残り（係数2）|",
+    "|---|---|---:|---:|---:|"]
+for row in rows:
+    bare = row['bare_lines'] if row['status'] != 'verified' else [0, 0]
+    corrected = row['corrected_lines'] if row['status'] != 'verified' else [0, 0]
+    actual = row.get('actual_lines', '—') if row['status'] == 'verified' else row.get('partial_verified_lean_lines', '—')
+    status_lines.append(f"|{row['id']}|{row['status']}|{actual}|{bare[0]}〜{bare[1]}|{corrected[0]}〜{corrected[1]}|")
+status_lines += ["", "<!-- current-signature-state:end -->"]
+status_table = "\n".join(status_lines)
+if '--sync' in sys.argv:
+    sys.argv.remove('--sync')
+    marker = r'<!-- current-signature-state:begin -->.*?<!-- current-signature-state:end -->'
+    if re.search(marker, rendered, re.S):
+        rendered = re.sub(marker, lambda _: status_table, rendered, count=1, flags=re.S)
+    else:
+        first_break = rendered.index('\n') + 1
+        rendered = rendered[:first_break] + '\n' + status_table + '\n' + rendered[first_break:]
+    ledger.with_suffix('.md').write_text(rendered)
+assert status_table in rendered, 'stale Markdown status or estimate table: rerun checker with --sync'
+
 ids = [r['id'] for r in rows]
 assert len(ids) == len(set(ids)), 'duplicate signature ID'
 assert len({r['name'] for r in rows}) == len(rows), 'duplicate declaration name'
@@ -53,7 +78,7 @@ def total(rs, key):
     return [sum(r[key][i] for r in rs) for i in range(2)]
 result = {
     'success': True,
-    'validation': 'JSON structure / rendered complete signatures / reference name at source line / Kahn topological sort',
+    'validation': 'JSON structure / current rendered status and estimates / rendered complete signatures / reference name at source line / Kahn topological sort',
     'lean_type_elaboration': 'not run; paper signatures, unimplemented signatures not certified',
     'signature_count': len(rows),
     'verified_count': sum(r['status'] == 'verified' for r in rows),

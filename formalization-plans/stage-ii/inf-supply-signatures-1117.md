@@ -1,5 +1,69 @@
 # 5∞-1 標準署名台帳（11-17午後）
 
+<!-- current-signature-state:begin -->
+## 最新の進行状態と停止判定
+
+既計上の累計：27,051行。外枠：29,000行。係数：2。
+行別の実測は既計上の補助・共有検証組を含みうるため、合計して累計を作り直さない。
+この表が進行状態・残り見込みの現在値。後の各節は署名の型・設計・検証履歴を保持する。
+
+|署名ID|状態|実測または部分計上|残り（素）|残り（係数2）|
+|---|---|---:|---:|---:|
+|R01|verified|—|0〜0|0〜0|
+|R02|verified|—|0〜0|0〜0|
+|P3-A|verified|45|0〜0|0〜0|
+|P3-B1|verified|—|0〜0|0〜0|
+|P3-B2a|verified|—|0〜0|0〜0|
+|P3-B2b|verified|—|0〜0|0〜0|
+|P3-B2c|verified|—|0〜0|0〜0|
+|P3-B2d|verified|—|0〜0|0〜0|
+|P3-B2e|verified|—|0〜0|0〜0|
+|P3-C0|verified|—|0〜0|0〜0|
+|P3-C1P|verified|675|0〜0|0〜0|
+|P3-C1|verified|157|0〜0|0〜0|
+|P3-D|verified|332|0〜0|0〜0|
+|P3-E|verified|52|0〜0|0〜0|
+|R04|pending|218|250〜400|500〜800|
+|R05|pending|—|80〜150|160〜300|
+|R06|pending|—|200〜400|400〜800|
+|R07|verified|—|0〜0|0〜0|
+|R08|pending|—|100〜180|200〜360|
+|R09|pending|—|70〜120|140〜240|
+|R10a|verified|—|0〜0|0〜0|
+|R10b|verified|—|0〜0|0〜0|
+|R11a|verified|—|0〜0|0〜0|
+|R11b|verified|—|0〜0|0〜0|
+|R11c|verified|—|0〜0|0〜0|
+|R11d|verified|—|0〜0|0〜0|
+|R12a|pending|—|100〜250|200〜500|
+|R12b|pending|—|20〜50|40〜100|
+|R13a|verified|—|0〜0|0〜0|
+|R13b|pending|—|150〜250|300〜500|
+|R14|pending|—|60〜110|120〜220|
+|R15a|pending|—|80〜140|160〜280|
+|R15b|pending|—|20〜80|40〜160|
+|R15c|pending|—|20〜90|40〜180|
+|R16|deferred_next_checkpoint|—|650〜1200|1300〜2400|
+|R17|deferred_next_checkpoint|—|50〜100|100〜200|
+|P3-C1PN|verified|—|0〜0|0〜0|
+|R09-Cech|pending|—|220〜360|440〜720|
+|R15-Unit|pending|—|220〜340|440〜680|
+|P3-C1PNV|verified|—|0〜0|0〜0|
+|P3-C1PNH|verified|—|0〜0|0〜0|
+|P3-C1PNO|verified|—|0〜0|0〜0|
+|P3-C1PNON|verified|—|0〜0|0〜0|
+|P3-C1PNG|verified|—|0〜0|0〜0|
+|P3-C1PNB|verified|—|0〜0|0〜0|
+|P3-C1PNQ|verified|—|0〜0|0〜0|
+|P3-C1PNC|verified|—|0〜0|0〜0|
+|P3-C1PNU|verified|—|0〜0|0〜0|
+|P3-C1PNL|verified|—|0〜0|0〜0|
+|P3-C1PNR|verified|—|0〜0|0〜0|
+|P3-C1PS|verified|400|0〜0|0〜0|
+|P3-C1PSG|verified|224|0〜0|0〜0|
+
+<!-- current-signature-state:end -->
+
 これは c4a239f81 の紙を標準化したもの。11-17夕の明示指示により main 35988dd08 を取り込んだ（e2fec6929）。
 対象は**今回の再開範囲（元の残り1〜17項）**。過去に検収されたS2〜S6の閉じた出力を
 再採番せず、ここにある各署名IDを一つずつ数える。旧「5／8」は以後この台帳の進捗に使わない。
@@ -145,7 +209,7 @@ R08 → R09 → R12a/b → R13b → R14 → R15a/b/c。R16 → R17は別停止�
 
 状態：verified。依存署名：なし。
 
-素の残り：0〜0行。係数2の残り：0〜0行。
+素の残り：0〜0行。係数2の残り：0〜0行。元の見込み・実測はJSONと検証記録を参照。
 
 原典：HTT §3.3.2（特に3.3.2.8）、Kerodon Corollary 5.6.0.6（Tag 028T）。指定構成の法則で、独立した原典の補題番号はない。
 
@@ -169,7 +233,7 @@ FunctorIso
 
 状態：verified。依存署名：なし。
 
-素の残り：0〜0行。係数2の残り：0〜0行。
+素の残り：0〜0行。係数2の残り：0〜0行。元の見込み・実測はJSONと検証記録を参照。
 
 原典：HTT §3.3.2（特に3.3.2.8）、Kerodon Corollary 5.6.0.6（Tag 028T）。指定構成の法則で、独立した原典の補題番号はない。
 
@@ -197,7 +261,7 @@ let q := smallLeftUnstraighteningProjection (leftStraighteningInfinityDiagram p)
 
 状態：verified。依存署名：なし。
 
-素の残り：0〜0行。係数2の残り：0〜0行。元の見込み：200〜350行、補正400〜700行。実測45行。
+素の残り：0〜0行。係数2の残り：0〜0行。元の見込み・実測はJSONと検証記録を参照。
 
 原典：HTT §1.1.5、Kerodon §3.1（Tag 00SZ）。既存のcoherent実現の合成則で、独立の原典番号はない。
 
@@ -229,7 +293,7 @@ let q := smallLeftUnstraighteningProjection (leftStraighteningInfinityDiagram p)
 
 状態：verified。依存署名：`P3-A`。
 
-素の残り：0〜0行。係数2の残り：0〜0行。元の見込み：[100, 150]、補正[200, 300]。実測は同じ検証組P3-B1で107行。
+素の残り：0〜0行。係数2の残り：0〜0行。元の見込み・実測はJSONと検証記録を参照。
 
 原典：HTT §3.3.2（特に3.3.2.8）、Kerodon Corollary 5.6.0.6（Tag 028T）。指定構成の法則で、独立した原典の補題番号はない。
 
@@ -259,7 +323,7 @@ let q := smallLeftUnstraighteningProjection (leftStraighteningInfinityDiagram p)
 
 状態：verified。依存署名：なし。
 
-素の残り：0〜0行。係数2の残り：0〜0行。元の見込み：[20, 30]、補正[40, 60]。実測は同じ検証組P3-B2a,P3-B2b,P3-B2c,P3-B2d,P3-C0で199行。
+素の残り：0〜0行。係数2の残り：0〜0行。元の見込み・実測はJSONと検証記録を参照。
 
 原典：HTT §3.3.2（特に3.3.2.8）、Kerodon Corollary 5.6.0.6（Tag 028T）。指定構成の法則で、独立した原典の補題番号はない。
 
@@ -281,7 +345,7 @@ let q := smallLeftUnstraighteningProjection (leftStraighteningInfinityDiagram p)
 
 状態：verified。依存署名：`P3-B2a`。
 
-素の残り：0〜0行。係数2の残り：0〜0行。元の見込み：[20, 40]、補正[40, 80]。実測は同じ検証組P3-B2a,P3-B2b,P3-B2c,P3-B2d,P3-C0で199行。
+素の残り：0〜0行。係数2の残り：0〜0行。元の見込み・実測はJSONと検証記録を参照。
 
 原典：HTT §3.3.2（特に3.3.2.8）、Kerodon Corollary 5.6.0.6（Tag 028T）。指定構成の法則で、独立した原典の補題番号はない。
 
@@ -304,7 +368,7 @@ let q := smallLeftUnstraighteningProjection (leftStraighteningInfinityDiagram p)
 
 状態：verified。依存署名：`P3-B2a`, `P3-B2b`。
 
-素の残り：0〜0行。係数2の残り：0〜0行。元の見込み：[20, 40]、補正[40, 80]。実測は同じ検証組P3-B2a,P3-B2b,P3-B2c,P3-B2d,P3-C0で199行。
+素の残り：0〜0行。係数2の残り：0〜0行。元の見込み・実測はJSONと検証記録を参照。
 
 原典：HTT §3.3.2（特に3.3.2.8）、Kerodon Corollary 5.6.0.6（Tag 028T）。指定構成の法則で、独立した原典の補題番号はない。
 
@@ -328,7 +392,7 @@ let q := smallLeftUnstraighteningProjection (leftStraighteningInfinityDiagram p)
 
 状態：verified。依存署名：`P3-B2b`。
 
-素の残り：0〜0行。係数2の残り：0〜0行。元の見込み：[30, 50]、補正[60, 100]。実測は同じ検証組P3-B2a,P3-B2b,P3-B2c,P3-B2d,P3-C0で199行。
+素の残り：0〜0行。係数2の残り：0〜0行。元の見込み・実測はJSONと検証記録を参照。
 
 原典：HTT §3.3.2（特に3.3.2.8）、Kerodon Corollary 5.6.0.6（Tag 028T）。指定構成の法則で、独立した原典の補題番号はない。
 
@@ -350,7 +414,7 @@ let q := smallLeftUnstraighteningProjection (leftStraighteningInfinityDiagram p)
 
 状態：verified。依存署名：`P3-A`, `P3-B2c`, `P3-B2d`。
 
-素の残り：0〜0行。係数2の残り：0〜0行。元の見込み：[30, 60]、補正[60, 120]。実測は同じ検証組P3-B2eで90行。
+素の残り：0〜0行。係数2の残り：0〜0行。元の見込み・実測はJSONと検証記録を参照。
 
 原典：HTT §3.3.2（特に3.3.2.8）、Kerodon Corollary 5.6.0.6（Tag 028T）。指定構成の法則で、独立した原典の補題番号はない。
 
@@ -384,7 +448,7 @@ hηB/hηDは適用で既存の初頂点の制限・係数移送から証明す�
 
 状態：verified。依存署名：なし。
 
-素の残り：0〜0行。係数2の残り：0〜0行。元の見込み：[40, 80]、補正[80, 160]。実測は同じ検証組P3-B2a,P3-B2b,P3-B2c,P3-B2d,P3-C0で199行。
+素の残り：0〜0行。係数2の残り：0〜0行。元の見込み・実測はJSONと検証記録を参照。
 
 原典：HTT §3.3.2（特に3.3.2.8）、Kerodon Corollary 5.6.0.6（Tag 028T）。指定構成の法則で、独立した原典の補題番号はない。
 
@@ -416,9 +480,9 @@ P3-Cの標準pullbackの前提計算を独立に明示した。tは指定二座�
 
 ### P3-C1P — `leftStraighteningBaseChange_pointedPrism`
 
-状態：pending。依存署名：R01, R02, P3-B1, P3-B2e, P3-C0。
+状態：verified。依存署名：`R01`, `R02`, `P3-B1`, `P3-B2e`, `P3-C0`, `P3-C1PN`, `P3-C1PS`。
 
-素の残り：250〜400行。係数2の残り：500〜800行。
+素の残り：0〜0行。係数2の残り：0〜0行。元の見込み・実測はJSONと検証記録を参照。
 
 原典：HTT §3.3.2、Kerodon Corollary 5.6.0.6（Tag 028T）。指定pointed比較の照合で、独立の原典番号はない。
 
@@ -462,9 +526,9 @@ P3-Cの標準pullbackの前提計算を独立に明示した。tは指定二座�
 
 ### P3-C1 — `leftStraighteningBaseChange_transportWitness`
 
-状態：pending。依存署名：`R01`, `R02`, `P3-B1`, `P3-B2e`, `P3-C0`, `P3-C1P`。
+状態：verified。依存署名：`R01`, `R02`, `P3-B1`, `P3-B2e`, `P3-C0`, `P3-C1P`。
 
-素の残り：310〜420行。係数2の残り：620〜840行。
+素の残り：0〜0行。係数2の残り：0〜0行。元の見込み・実測はJSONと検証記録を参照。
 
 原典：HTT §3.3.2（特に3.3.2.8）、Kerodon Corollary 5.6.0.6（Tag 028T）。指定構成の法則で、独立した原典の補題番号はない。
 
@@ -505,9 +569,9 @@ P3-Cの標準pullbackの前提計算を独立に明示した。tは指定二座�
 
 ### P3-D — `leftStraighteningRepresentation_baseChange_firstVertex`
 
-状態：pending。依存署名：`P3-C1`。
+状態：verified。依存署名：`P3-C1`。
 
-素の残り：120〜220行。係数2の残り：240〜440行。
+素の残り：0〜0行。係数2の残り：0〜0行。元の見込み・実測はJSONと検証記録を参照。
 
 原典：HTT §3.3.2（特に3.3.2.8）、Kerodon Corollary 5.6.0.6（Tag 028T）。指定構成の法則で、独立した原典の補題番号はない。
 
@@ -540,9 +604,9 @@ P3-Cの標準pullbackの前提計算を独立に明示した。tは指定二座�
 
 ### P3-E — `leftStraighteningInfinityDiagram_representationIso_baseChange`
 
-状態：pending。依存署名：`P3-D`。
+状態：verified。依存署名：`P3-D`。
 
-素の残り：50〜110行。係数2の残り：100〜220行。
+素の残り：0〜0行。係数2の残り：0〜0行。元の見込み・実測はJSONと検証記録を参照。
 
 原典：HTT §3.3.2（特に3.3.2.8）、Kerodon Corollary 5.6.0.6（Tag 028T）。指定構成の法則で、独立した原典の補題番号はない。
 
@@ -567,7 +631,7 @@ P3-Cの標準pullbackの前提計算を独立に明示した。tは指定二座�
 
 状態：pending。依存署名：`P3-E`, `R02`。
 
-素の残り：250〜450行。係数2の残り：500〜900行。
+素の残り：250〜400行。係数2の残り：500〜800行。元の見込み・実測はJSONと検証記録を参照。
 
 原典：HTT 5.1.5.6の双対、Kerodon Definition 7.3.1.2（Tag 02Y9）。指定余単位に沿う値の比較の法則。
 
@@ -599,7 +663,7 @@ P3-Cの標準pullbackの前提計算を独立に明示した。tは指定二座�
 
 状態：pending。依存署名：`R04`。
 
-素の残り：80〜150行。係数2の残り：160〜300行。
+素の残り：80〜150行。係数2の残り：160〜300行。元の見込み・実測はJSONと検証記録を参照。
 
 原典：HTT 5.1.5.6（双対）、Kerodon Definition 7.3.1.2（Tag 02Y9）。
 
@@ -631,7 +695,7 @@ P3-Cの標準pullbackの前提計算を独立に明示した。tは指定二座�
 
 状態：pending。依存署名：`R05`。
 
-素の残り：200〜400行。係数2の残り：400〜800行。
+素の残り：200〜400行。係数2の残り：400〜800行。元の見込み・実測はJSONと検証記録を参照。
 
 原典：HTT 5.1.5.6（双対）。指定値比較の自然性の法則。
 
@@ -660,7 +724,7 @@ P3-Cの標準pullbackの前提計算を独立に明示した。tは指定二座�
 
 状態：verified。依存署名：なし。
 
-素の残り：0〜0行。係数2の残り：0〜0行。
+素の残り：0〜0行。係数2の残り：0〜0行。元の見込み・実測はJSONと検証記録を参照。
 
 原典：HTT 6.2.2.6、小さい通常のsiteの相対Čech対角。
 
@@ -687,7 +751,7 @@ FunctorHom
 
 状態：pending。依存署名：`R06`, `R07`。
 
-素の残り：100〜180行。係数2の残り：200〜360行。
+素の残り：100〜180行。係数2の残り：200〜360行。元の見込み・実測はJSONと検証記録を参照。
 
 原典：HTT 6.2.2.6、小さい通常のsiteのČech層条件への特殊化。
 
@@ -707,9 +771,9 @@ FunctorHom
 
 ### R09 — `sections_localEquiv_iso_space`
 
-状態：pending。依存署名：`R06`, `R08`。
+状態：pending。依存署名：`R06`, `R08`, `R09-Cech`。
 
-素の残り：250〜420行。係数2の残り：500〜840行。
+素の残り：70〜120行。係数2の残り：140〜240行。元の見込み・実測はJSONと検証記録を参照。
 
 原典：HTT 6.2.2.6・5.5.4.20の局所対象の筋。小さい通常のsiteと離散な局所同値への特殊化。
 
@@ -735,7 +799,7 @@ FunctorHom
 
 状態：verified。依存署名：なし。
 
-素の残り：0〜0行。係数2の残り：0〜0行。
+素の残り：0〜0行。係数2の残り：0〜0行。元の見込み・実測はJSONと検証記録を参照。
 
 原典：HTT 4.1.1.8、同値な添字による極限の移送。宇宙持ち上げの法則。
 
@@ -756,7 +820,7 @@ FunctorHom
 
 状態：verified。依存署名：`R10a`。
 
-素の残り：0〜0行。係数2の残り：0〜0行。
+素の残り：0〜0行。係数2の残り：0〜0行。元の見込み・実測はJSONと検証記録を参照。
 
 原典：HTT 4.1.1.8、同値な添字による極限の移送。宇宙持ち上げの法則。
 
@@ -778,7 +842,7 @@ FunctorHom
 
 状態：verified。依存署名：`R10a`, `R10b`。
 
-素の残り：0〜0行。係数2の残り：0〜0行。
+素の残り：0〜0行。係数2の残り：0〜0行。元の見込み・実測はJSONと検証記録を参照。
 
 原典：HTT 4.1.1.8、同値な添字による極限の移送。宇宙持ち上げの法則。
 
@@ -800,7 +864,7 @@ JoinCone (nativeSetSectionsDiagram (siteLiftPresheaf P) ((asSmallSiteShapeIso C)
 
 状態：verified。依存署名：`R10a`, `R10b`。
 
-素の残り：0〜0行。係数2の残り：0〜0行。
+素の残り：0〜0行。係数2の残り：0〜0行。元の見込み・実測はJSONと検証記録を参照。
 
 原典：HTT 4.1.1.8、同値な添字による極限の移送。宇宙持ち上げの法則。
 
@@ -822,7 +886,7 @@ JoinCone (nativeSetSectionsDiagram (siteLiftPresheaf P) ((asSmallSiteShapeIso C)
 
 状態：verified。依存署名：`R10a`, `R10b`。
 
-素の残り：0〜0行。係数2の残り：0〜0行。
+素の残り：0〜0行。係数2の残り：0〜0行。元の見込み・実測はJSONと検証記録を参照。
 
 原典：HTT 4.1.1.8、同値な添字による極限の移送。宇宙持ち上げの法則。
 
@@ -847,7 +911,7 @@ joinMap (𝟙 _) (nerveMap (siteLiftPresheafMap φ).mapElements) ≫
 
 状態：verified。依存署名：`R10a`, `R10b`。
 
-素の残り：0〜0行。係数2の残り：0〜0行。
+素の残り：0〜0行。係数2の残り：0〜0行。元の見込み・実測はJSONと検証記録を参照。
 
 原典：HTT 4.1.1.8、同値な添字による極限の移送。宇宙持ち上げの法則。
 
@@ -869,7 +933,7 @@ IsLimitCone (siteLiftSectionsCone P O c) ↔ IsLimitCone c
 
 状態：pending。依存署名：`R09`, `R10a`, `R10b`, `R11a`, `R11b`, `R11c`, `R11d`。
 
-素の残り：100〜250行。係数2の残り：200〜500行。
+素の残り：100〜250行。係数2の残り：200〜500行。元の見込み・実測はJSONと検証記録を参照。
 
 原典：HTT 6.2.2.6、表現可能関手による極限の検出（Kerodon §7.1）。任意の準圏係数への反映。
 
@@ -895,7 +959,7 @@ IsLimitCone (siteLiftSectionsCone P O c) ↔ IsLimitCone c
 
 状態：pending。依存署名：`R12a`。
 
-素の残り：20〜50行。係数2の残り：40〜100行。
+素の残り：20〜50行。係数2の残り：40〜100行。元の見込み・実測はJSONと検証記録を参照。
 
 原典：HTT 6.2.2.6・5.5.4.20。draftsの元の局所同値の型。
 
@@ -918,7 +982,7 @@ IsLimitCone (siteLiftSectionsCone P O c) ↔ IsLimitCone c
 
 状態：verified。依存署名：なし。
 
-素の残り：0〜0行。係数2の残り：0〜0行。
+素の残り：0〜0行。係数2の残り：0〜0行。元の見込み・実測はJSONと検証記録を参照。
 
 原典：HTT 5.5.6.28。元の離散前層埋め込みのHom作用の正規化。
 
@@ -939,7 +1003,7 @@ FunctorHom (discretePresheaf P) (discretePresheaf Q)
 
 状態：pending。依存署名：`R09`, `R13a`。
 
-素の残り：150〜250行。係数2の残り：300〜500行。
+素の残り：150〜250行。係数2の残り：300〜500行。元の見込み・実測はJSONと検証記録を参照。
 
 原典：HTT 5.5.4.20・6.2.2.6。小さい通常のsiteの離散重みでの局所Hom。
 
@@ -963,7 +1027,7 @@ FunctorHom (discretePresheaf P) (discretePresheaf Q)
 
 状態：pending。依存署名：`R13b`。
 
-素の残り：60〜110行。係数2の残り：120〜220行。
+素の残り：60〜110行。係数2の残り：120〜220行。元の見込み・実測はJSONと検証記録を参照。
 
 原典：HTT 5.5.4.15・6.2.2.7。指定された反射による局所同値の反転。
 
@@ -983,9 +1047,9 @@ FunctorHom (discretePresheaf P) (discretePresheaf Q)
 
 ### R15a — `sheafifyDiscreteFunctorIso`
 
-状態：pending。依存署名：`R14`, `R13a`。
+状態：pending。依存署名：`R14`, `R13a`, `R15-Unit`。
 
-素の残り：200〜330行。係数2の残り：400〜660行。
+素の残り：80〜140行。係数2の残り：160〜280行。元の見込み・実測はJSONと検証記録を参照。
 
 原典：HTT 5.5.6.28・6.2.2.7。集合値層化と0切り捨ての層化の比較の特殊な表示。
 
@@ -1011,7 +1075,7 @@ FunctorHom (discretePresheaf P) (discretePresheaf Q)
 
 状態：pending。依存署名：`R15a`。
 
-素の残り：20〜80行。係数2の残り：40〜160行。
+素の残り：20〜80行。係数2の残り：40〜160行。元の見込み・実測はJSONと検証記録を参照。
 
 原典：HTT 5.5.6.28、draftsの同名の型。
 
@@ -1033,7 +1097,7 @@ FunctorHom (discretePresheaf P) (discretePresheaf Q)
 
 状態：pending。依存署名：`R15a`, `R15b`, `R13a`。
 
-素の残り：20〜90行。係数2の残り：40〜180行。
+素の残り：20〜90行。係数2の残り：40〜180行。元の見込み・実測はJSONと検証記録を参照。
 
 原典：HTT 5.5.6.28・5.5.4.15。元の反射単位を保つ比較の法則。
 
@@ -1058,7 +1122,7 @@ FunctorHom (discretePresheaf P) (discretePresheaf Q)
 
 状態：deferred_next_checkpoint。依存署名：なし。
 
-素の残り：650〜1200行。係数2の残り：1300〜2400行。
+素の残り：650〜1200行。係数2の残り：1300〜2400行。元の見込み・実測はJSONと検証記録を参照。
 
 原典：HTT 6.2.2.6・6.2.2.7の生成被覆系の判定。通常圏での基準はMathlib Presieve.isSheaf_coverage。∞版への接続自体が残る数学。
 
@@ -1084,7 +1148,7 @@ FunctorHom (discretePresheaf P) (discretePresheaf Q)
 
 状態：deferred_next_checkpoint。依存署名：`R16`。
 
-素の残り：50〜100行。係数2の残り：100〜200行。
+素の残り：50〜100行。係数2の残り：100〜200行。元の見込み・実測はJSONと検証記録を参照。
 
 原典：HTT 6.2.2.6・6.2.2.7、Mathlib Presieve.isSheaf_coverageの∞版。
 
