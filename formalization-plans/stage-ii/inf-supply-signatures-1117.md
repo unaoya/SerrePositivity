@@ -3,7 +3,7 @@
 <!-- current-signature-state:begin -->
 ## 最新の進行状態と停止判定
 
-既計上の累計：27,446行。外枠：29,000行。係数：2。
+既計上の累計：27,770行。外枠：29,000行。係数：2。
 行別の実測は既計上の補助・共有検証組を含みうるため、合計して累計を作り直さない。
 この表が進行状態・残り見込みの現在値。後の各節は署名の型・設計・検証履歴を保持する。
 
@@ -23,7 +23,7 @@
 |P3-C1|verified|157|0〜0|0〜0|
 |P3-D|verified|332|0〜0|0〜0|
 |P3-E|verified|52|0〜0|0〜0|
-|R04|pending|613|250〜400|500〜800|
+|R04|pending|683|250〜400|500〜800|
 |R05|pending|—|80〜150|160〜300|
 |R06|pending|—|200〜400|400〜800|
 |R07|verified|—|0〜0|0〜0|
@@ -61,6 +61,7 @@
 |P3-C1PNR|verified|—|0〜0|0〜0|
 |P3-C1PS|verified|400|0〜0|0〜0|
 |P3-C1PSG|verified|224|0〜0|0〜0|
+|R04-PR|verified|254|0〜0|0〜0|
 
 <!-- current-signature-state:end -->
 
@@ -1777,3 +1778,43 @@ build-3：対象ビルド5,611 jobs成功、小監査1モジュール1宣言、�
 三本218行（76＋72＋70）が、同時の対象ビルド5,634 jobs・小監査3モジュール6宣言を通過。標準三公理のみ、現行SHA一致。中間極限の二つの選択は元のchooseから動かさず、指定極限比較の合成則で消去する。指定引き戻し分類同型は同じ元の表現上の同型の作用へ戻せる。主な宣言に文献のspecial属性、Kerodonの特殊化はdocstring。
 累計26,833＋218＝27,051。R04本体（元の余単位に沿う輸送錐と頂点射の照合）は未完。今は残りにも安全側に元の補正上端800を保持し、27,051＋800＝27,851で区切り内。既計上218行はR04の完成時に二度数えない。
 一覧：済み 36／全体 52（うち追加 17、別停止点 2）。
+
+### R04-PR — pointedな指定prismと元の全空間の射の比較（11-18追加）
+
+- 状態：verified（大きい側118＋小さい側136＝254行）。依存：R02。R04がこれに依存する。元のR04の型・仮定は変えない。
+- 置き場所：`SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SmallTransportRepresentationArrowPrism.lean`
+- 素250〜380行、係数2で補正500〜760行。一本の補正上端800以内。
+- 着手判定：27,446＋760＝28,206で29,000以内。
+- 全体は53署名（済み36、追加18）。既存の構成の照合なので11-17夕の事前承認により進める。
+
+```lean
+∀ {E F B : SSet.{u}} (p : E ⟶ B) (q : F ⟶ B)
+    [LeftFibration p] [LeftFibration q]
+    (R : LeftTransportRepresentation ((SSet.uliftFunctor.{u + 1, u}).map p))
+    (S : LeftTransportRepresentation ((SSet.uliftFunctor.{u + 1, u}).map q))
+    (a : E ⟶ F) (ha : a ≫ q = p) (ν : FunctorIso R.diagram S.diagram)
+    (W : (Δ[1] : SSet.{u + 1}) ⊗ (SSet.uliftFunctor.{u + 1, u}).obj E ⟶ PointedSpaceInfinity.{u})
+    (h₀ : prismEndpoint 0 ((SSet.uliftFunctor.{u + 1, u}).obj E) ≫ W = R.pointedMap)
+    (h₁ : prismEndpoint 1 ((SSet.uliftFunctor.{u + 1, u}).obj E) ≫ W =
+      (SSet.uliftFunctor.{u + 1, u}).map a ≫ S.pointedMap)
+    (hW : W ≫ pointedSpaceProjection =
+      (Δ[1] ◁ (SSet.uliftFunctor.{u + 1, u}).map p) ≫
+        functorEdgePrism (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy
+          (functorHomHomotopy ν.hom)))),
+    let rR := smallLeftUnstraighteningLift R.diagram R.comparison
+    let rS := smallLeftUnstraighteningLift S.diagram S.comparison
+    let z := rR ≫ smallUnstraighteningFunctorHom ν.hom
+    ∃ (hz : z ≫ smallLeftUnstraighteningProjection S.diagram = p)
+      (ht : (a ≫ rS) ≫ smallLeftUnstraighteningProjection S.diagram = p),
+      Nonempty (VertexIso
+        (relativeFunctorVertex (smallLeftUnstraighteningProjection S.diagram) p z hz)
+        (relativeFunctorVertex (smallLeftUnstraighteningProjection S.diagram) p (a ≫ rS) ht))
+```
+
+使用する既存の宣言：
+- `unstraighteningSourceFamilyComparisonIso` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/UnstraighteningSourceFamilyComparison.lean:29
+- `smallTransportRepresentation_unstraighteningComparison` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SmallTransportRepresentationComparison.lean:32
+
+原典：HTT §3.3.2、Kerodon Remark 5.6.2.18（Tag 0271）。既存のunstraighteningSourceFamilyComparisonIsoを同じ指定prismに適用し、既存の小さい相対写像空間の同型で戻す法則。
+
+新しい数学・chooseの取り替え・main本文の変更はない。まず元のunstraighteningSourceFamilyComparisonIsoへ同じpointed prismを入れ、次に既存のuliftと縮小の相対関手空間の同型で小さい宇宙へ戻す。大きい側と小さい側は証明の分割で、別の数学の入力を足さない。逆射の合成則を先に作らず、この比較から指定分類spanと元の全空間の射を同定し、同値性を反映する方針とする。

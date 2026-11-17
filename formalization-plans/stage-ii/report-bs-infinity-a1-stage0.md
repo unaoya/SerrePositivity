@@ -10394,3 +10394,78 @@ lemma exists_leftPullbackFunctorIsoLift {E B K : SSet.{u}}
 指定eの像は射影後の端点の等式込みの一致として保持される。これを逆同型についても使い、二つの持ち上げの合成を恒等へ戻す計算を続ける。aの同値性、元の指定分類像の一致、余単位輸送の終点の照合は未完であり、R04は済みにしない。計140行を加え、累計27,446行（R04の検証済み部分613行）。残り補正上端800を保持した次の判定は28,246行で29,000以内。台帳の型・仮定・choose・main本文は変更なし、旧R2の未追跡4本はそのまま。
 
 一覧：済み 36／全体 52（うち追加 17、別停止点 2）。
+
+### 11-18：R04-PRの署名を追加し、指定分類像の比較を先に進める
+
+### R04-PR — pointedな指定prismと元の全空間の射の比較（11-18追加）
+
+- 状態：pending。依存：R02。R04がこれに依存する。元のR04の型・仮定は変えない。
+- 置き場所：`SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SmallTransportRepresentationArrowPrism.lean`
+- 素250〜380行、係数2で補正500〜760行。一本の補正上端800以内。
+- 着手判定：27,446＋760＝28,206で29,000以内。
+- 全体は53署名（済み36、追加18）。既存の構成の照合なので11-17夕の事前承認により進める。
+
+```lean
+∀ {E F B : SSet.{u}} (p : E ⟶ B) (q : F ⟶ B)
+    [LeftFibration p] [LeftFibration q]
+    (R : LeftTransportRepresentation ((SSet.uliftFunctor.{u + 1, u}).map p))
+    (S : LeftTransportRepresentation ((SSet.uliftFunctor.{u + 1, u}).map q))
+    (a : E ⟶ F) (ha : a ≫ q = p) (ν : FunctorIso R.diagram S.diagram)
+    (W : (Δ[1] : SSet.{u + 1}) ⊗ (SSet.uliftFunctor.{u + 1, u}).obj E ⟶ PointedSpaceInfinity.{u})
+    (h₀ : prismEndpoint 0 ((SSet.uliftFunctor.{u + 1, u}).obj E) ≫ W = R.pointedMap)
+    (h₁ : prismEndpoint 1 ((SSet.uliftFunctor.{u + 1, u}).obj E) ≫ W =
+      (SSet.uliftFunctor.{u + 1, u}).map a ≫ S.pointedMap)
+    (hW : W ≫ pointedSpaceProjection =
+      (Δ[1] ◁ (SSet.uliftFunctor.{u + 1, u}).map p) ≫
+        functorEdgePrism (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy
+          (functorHomHomotopy ν.hom)))),
+    let rR := smallLeftUnstraighteningLift R.diagram R.comparison
+    let rS := smallLeftUnstraighteningLift S.diagram S.comparison
+    let z := rR ≫ smallUnstraighteningFunctorHom ν.hom
+    ∃ (hz : z ≫ smallLeftUnstraighteningProjection S.diagram = p)
+      (ht : (a ≫ rS) ≫ smallLeftUnstraighteningProjection S.diagram = p),
+      Nonempty (VertexIso
+        (relativeFunctorVertex (smallLeftUnstraighteningProjection S.diagram) p z hz)
+        (relativeFunctorVertex (smallLeftUnstraighteningProjection S.diagram) p (a ≫ rS) ht))
+```
+
+使用する既存の宣言：
+- `unstraighteningSourceFamilyComparisonIso` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/UnstraighteningSourceFamilyComparison.lean:29
+- `smallTransportRepresentation_unstraighteningComparison` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SmallTransportRepresentationComparison.lean:32
+
+原典：HTT §3.3.2、Kerodon Remark 5.6.2.18（Tag 0271）。既存のunstraighteningSourceFamilyComparisonIsoを同じ指定prismに適用し、既存の小さい相対写像空間の同型で戻す法則。
+
+新しい数学・chooseの取り替え・main本文の変更はない。まず元のunstraighteningSourceFamilyComparisonIsoへ同じpointed prismを入れ、次に既存のuliftと縮小の相対関手空間の同型で小さい宇宙へ戻す。大きい側と小さい側は証明の分割で、別の数学の入力を足さない。逆射の合成則を先に作らず、この比較から指定分類spanと元の全空間の射を同定し、同値性を反映する方針とする。
+
+一覧：済み 36／全体 53（うち追加 18、別停止点 2）。
+
+### 11-18：指定pointed同型から元の分類辺に沿うprismへ戻す短い法則
+
+```lean
+lemma exists_transportRepresentation_arrowPrism_of_pointedIso {E F B : SSet.{u + 1}}
+    (p : E ⟶ B) (q : F ⟶ B) [LeftFibration p] [LeftFibration q]
+    (R : LeftTransportRepresentation p) (S : LeftTransportRepresentation q)
+    (a : E ⟶ F) (ha : a ≫ q = p) (ν : FunctorIso R.diagram S.diagram)
+    (P : FunctorIso R.pointedMap (a ≫ S.pointedMap))
+    (hP : HEq (P.postcomp pointedSpaceProjection) (ν.precomp p)) :
+    ∃ W : (Δ[1] : SSet.{u + 1}) ⊗ E ⟶ PointedSpaceInfinity.{u},
+      prismEndpoint 0 E ≫ W = R.pointedMap ∧
+      prismEndpoint 1 E ≫ W = a ≫ S.pointedMap ∧
+      W ≫ pointedSpaceProjection = (Δ[1] ◁ p) ≫
+        functorEdgePrism (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy
+          (functorHomHomotopy ν.hom)))
+```
+
+依存：`functorIso_exists_edge_representative_over` @ SerrePositivity/InfinityCategories/Project/FibrationAuxiliaries/FunctorCategories/FunctorIsoEdgeRepresentative.lean:25、`functorFamilyPrism_post` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/WitnessPrism.lean:64。既存の元の類を保つ代表変更を適用する法則で、新しい数学・chooseの変更なし。原典HTT §3.3.2・Kerodon Tag 0271。素60〜100・補正120〜200行、R04内の200行未満の証明分割。R04-PRの入力Wを構成するための法則で、R04-PR本体の型は変えない。
+
+一覧：済み 36／全体 53（うち追加 18、別停止点 2）。
+
+### 11-18：R04-PRを完成、指定pointed同型からの接続も検証
+
+R04-PR（同じ指定prismと元の底上の射aの比較）の大きい側118行・小さい側136行を検証。素の見込み250〜380行に対し実測254行。台帳の完全な型を外部の一時Leanファイルへそのまま写し、公開宣言を代入する検査も通過し、仮定・結論を弱めていないことを確認した。既存の構成の照合以外の入力は追加していない。
+
+加えて、R04の短い証明分割 `TransportRepresentationArrowPointedIso`（素60〜100、実測70行）も検証した。元のpointed同型の像とのHEqから、元の指定分類辺と厳密に可換するprismを回収する。3本の同時対象ビルド（5,468 jobs）・3宣言の小監査、開始・終了・記録時のSHA一致、標準三公理のみ。元の既存本文・choose・計算上限の変更なし。
+
+計324行を加え、累計27,770行。R04本体は未完で、部分計上は683行（R04-PRの254行とは分け、二重計上しない）。次は、元の大域表現の底変換に沿う指定pointed同型を作り、完成したR04-PRと元の復元spanへ渡す。逆射の合成則を先に作らず、この照合から同値性も反映する。R04の残り補正上端800の着手判定は27,770＋800＝28,570で29,000以内。正式な停止点ではない。mainの取り込みなし、旧R2の未追跡4本はそのまま。
+
+一覧：済み 37／全体 53（うち追加 18、別停止点 2）。

@@ -3,7 +3,7 @@
   "source_head": "7e9743b30",
   "scope": "今回の再開範囲：元の残り1〜17項を署名へ展開。S2〜S6の過去の検収済み出力は再採番しない。",
   "count_rule": "署名のidごとに数える。200行超の照合・合成則は独立署名。小さい証明分割の法則は親署名のnoteに記録する。旧5/8はこの台帳の分母には用いない。",
-  "verified_lean_lines": 27446,
+  "verified_lean_lines": 27770,
   "final_cap": 29000,
   "checkpoint_report_lines": 28500,
   "factor": 2,
@@ -938,7 +938,8 @@
       "full_type": "∀ {K C D : SSet.{u}} [Quasicategory K] [Quasicategory C] [Quasicategory D]\n  {δ δ' : K ⟶ C} (e : FunctorIso δ δ') (O : K ⟶ D) (G : C ⟶ D)\n  (β : SSet.Homotopy (δ' ≫ G) O) (v : C _⦋0⦌),\n  let b := (e.postcomp G).hom ≫\n    Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy β)\n  ∀ (s : RightKanConeTransport δ O G (functorHomHomotopy b) v)\n    (t : RightKanConeTransport δ' O G β v)\n    (hs : IsLimitCone s.cone) (ht : IsLimitCone t.cone),\n  eqToHom (congrArg (fun x => (HomotopyCategory.mk x : hoFunctor.obj D))\n      s.cone_vertex.symm) ≫\n    (rightKanLimitVertexIsoOfFunctorIso e O v s.cone t.cone hs ht).hom ≫\n    eqToHom (congrArg (fun x => (HomotopyCategory.mk x : hoFunctor.obj D))\n      t.cone_vertex) = 𝟙 (HomotopyCategory.mk (G.app _ v))",
       "dependencies": [
         "P3-E",
-        "R02"
+        "R02",
+        "R04-PR"
       ],
       "existing": [
         {
@@ -990,6 +991,11 @@
           "name": "exists_leftPullbackFunctorIsoLift",
           "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftPullbackFunctorIsoLift.lean",
           "line": 33
+        },
+        {
+          "name": "exists_transportRepresentation_arrowPrism_of_pointedIso",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/TransportRepresentationArrowPointedIso.lean",
+          "line": 33
         }
       ],
       "literature": "HTT 5.1.5.6の双対、Kerodon Definition 7.3.1.2（Tag 02Y9）。指定余単位に沿う値の比較の法則。",
@@ -1003,7 +1009,7 @@
       ],
       "status": "pending",
       "placement": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/RightKanIndexTransportValue.lean",
-      "note": "200行超。指定e・元の余単位の類・同じ錐を保持。 11-17夕の一括洗い直し後の残り見込み。元の見込みはoriginal欄に保持。 内部で選んだ中間二極限は既存のOverEquivalenceLimitCompositionで消去する。型は報告に記録し、各200行未満の証明分割として二本の新規補助へ置く。choose値・元の主張・仮定・main本文は変えない。 復元・指定底変換の照合はP3-EとfunctorIso_whisker_exchangeを同じeに適用して進める。各200行未満の法則の型・既存参照は報告へ記録。 三本の補助218行が同時の対象ビルド・6宣言の小監査を通過。R04本体は未完で、署名を済みにはしない。残りの見込みは安全側に元の補正上端800を保持し、既計上218行は今後二度数えない。 相対逆射による任意の錐の移送56行を追加検証。累計部分274行、元の頂点と相対単位を保持する。R04本体は未完。 指定底ホモトピーの引き戻しprism・cosliceの全錐prism・元の右Kan局所形状への接続の三本199行を対象検証。aの同値性・元の分類像の一致・輸送終点の照合は未完。 指定同型の類を保つ関手空間での持ち上げと引き戻しへの接続140行を検証。射aの同値性自体はまだ未完。",
+      "note": "200行超。指定e・元の余単位の類・同じ錐を保持。 11-17夕の一括洗い直し後の残り見込み。元の見込みはoriginal欄に保持。 内部で選んだ中間二極限は既存のOverEquivalenceLimitCompositionで消去する。型は報告に記録し、各200行未満の証明分割として二本の新規補助へ置く。choose値・元の主張・仮定・main本文は変えない。 復元・指定底変換の照合はP3-EとfunctorIso_whisker_exchangeを同じeに適用して進める。各200行未満の法則の型・既存参照は報告へ記録。 三本の補助218行が同時の対象ビルド・6宣言の小監査を通過。R04本体は未完で、署名を済みにはしない。残りの見込みは安全側に元の補正上端800を保持し、既計上218行は今後二度数えない。 相対逆射による任意の錐の移送56行を追加検証。累計部分274行、元の頂点と相対単位を保持する。R04本体は未完。 指定底ホモトピーの引き戻しprism・cosliceの全錐prism・元の右Kan局所形状への接続の三本199行を対象検証。aの同値性・元の分類像の一致・輸送終点の照合は未完。 指定同型の類を保つ関手空間での持ち上げと引き戻しへの接続140行を検証。射aの同値性自体はまだ未完。 R04-PRは別署名として完成（254行）。pointed同型から元の指定辺のprismを回収する70行をR04の短い証明分割に計上。原典の指定νと射aを保持する。",
       "additional_mathematics": false,
       "original_bare_lines": [
         250,
@@ -1022,9 +1028,10 @@
         "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/RightKanCanonicalIndexPrism.lean",
         "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/RightKanIndexShapePrism.lean",
         "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftFibrationFunctorIsoLift.lean",
-        "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftPullbackFunctorIsoLift.lean"
+        "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftPullbackFunctorIsoLift.lean",
+        "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/TransportRepresentationArrowPointedIso.lean"
       ],
-      "partial_verified_lean_lines": 613,
+      "partial_verified_lean_lines": 683,
       "partial_citation_verification": {
         "modules": 3,
         "declarations": 6,
@@ -1052,7 +1059,8 @@
         "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/RightKanCanonicalIndexPrism.lean": 79,
         "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/RightKanIndexShapePrism.lean": 48,
         "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftFibrationFunctorIsoLift.lean": 87,
-        "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftPullbackFunctorIsoLift.lean": 53
+        "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftPullbackFunctorIsoLift.lean": 53,
+        "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/TransportRepresentationArrowPointedIso.lean": 70
       },
       "partial_additional_verification": [
         {
@@ -1162,6 +1170,29 @@
               "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftPullbackFunctorIsoLift.lean": "c6fcc64e10868722ca1b561812e1885d3f2f50d4cedaf0867bf08fd7601dfa95"
             }
           }
+        },
+        {
+          "receipt": "/Users/sugakubunka/serre-evidence/inf-supply/r04-pr-final-1118/target-audit-result.json",
+          "result": {
+            "modules": 3,
+            "declarations": 3,
+            "allowed_axioms": [
+              "propext",
+              "Classical.choice",
+              "Quot.sound"
+            ],
+            "success": true,
+            "source": "fresh environment after target build; no pre-merge index reuse",
+            "heartbeat_limit": "unchanged; one command per declaration",
+            "source_sha256": {
+              "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/TransportRepresentationArrowPrism.lean": "8f898096572b1c82036ce1fdf672e630cc7efd27b6e4f537dcd48ecc10c8eef5",
+              "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SmallTransportRepresentationArrowPrism.lean": "5626a984b9e024164be61c356fb842f64f87ca4d54404596ae79bdf84fd5b354",
+              "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/TransportRepresentationArrowPointedIso.lean": "da97573d97e9a29233353a59801cf8558fc8929ad29097e592dac02b253a6816"
+            }
+          },
+          "accounted_files": [
+            "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/TransportRepresentationArrowPointedIso.lean"
+          ]
         }
       ]
     },
@@ -3049,6 +3080,78 @@
         }
       },
       "verification_receipt": "/Users/sugakubunka/serre-evidence/inf-supply/c1psg-1117/target-audit-result.json"
+    },
+    {
+      "id": "R04-PR",
+      "name": "smallTransportRepresentation_arrowPrismComparison",
+      "full_type": "∀ {E F B : SSet.{u}} (p : E ⟶ B) (q : F ⟶ B)\n    [LeftFibration p] [LeftFibration q]\n    (R : LeftTransportRepresentation ((SSet.uliftFunctor.{u + 1, u}).map p))\n    (S : LeftTransportRepresentation ((SSet.uliftFunctor.{u + 1, u}).map q))\n    (a : E ⟶ F) (ha : a ≫ q = p) (ν : FunctorIso R.diagram S.diagram)\n    (W : (Δ[1] : SSet.{u + 1}) ⊗ (SSet.uliftFunctor.{u + 1, u}).obj E ⟶ PointedSpaceInfinity.{u})\n    (h₀ : prismEndpoint 0 ((SSet.uliftFunctor.{u + 1, u}).obj E) ≫ W = R.pointedMap)\n    (h₁ : prismEndpoint 1 ((SSet.uliftFunctor.{u + 1, u}).obj E) ≫ W =\n      (SSet.uliftFunctor.{u + 1, u}).map a ≫ S.pointedMap)\n    (hW : W ≫ pointedSpaceProjection =\n      (Δ[1] ◁ (SSet.uliftFunctor.{u + 1, u}).map p) ≫\n        functorEdgePrism (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy\n          (functorHomHomotopy ν.hom)))),\n    let rR := smallLeftUnstraighteningLift R.diagram R.comparison\n    let rS := smallLeftUnstraighteningLift S.diagram S.comparison\n    let z := rR ≫ smallUnstraighteningFunctorHom ν.hom\n    ∃ (hz : z ≫ smallLeftUnstraighteningProjection S.diagram = p)\n      (ht : (a ≫ rS) ≫ smallLeftUnstraighteningProjection S.diagram = p),\n      Nonempty (VertexIso\n        (relativeFunctorVertex (smallLeftUnstraighteningProjection S.diagram) p z hz)\n        (relativeFunctorVertex (smallLeftUnstraighteningProjection S.diagram) p (a ≫ rS) ht))",
+      "dependencies": [
+        "R02"
+      ],
+      "existing": [
+        {
+          "name": "unstraighteningSourceFamilyComparisonIso",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/UnstraighteningSourceFamilyComparison.lean",
+          "line": 29
+        },
+        {
+          "name": "smallTransportRepresentation_unstraighteningComparison",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SmallTransportRepresentationComparison.lean",
+          "line": 32
+        },
+        {
+          "name": "transportRepresentation_arrowPrismComparison",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/TransportRepresentationArrowPrism.lean",
+          "line": 39
+        },
+        {
+          "name": "smallTransportRepresentation_arrowPrismComparison",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SmallTransportRepresentationArrowPrism.lean",
+          "line": 38
+        }
+      ],
+      "literature": "HTT §3.3.2、Kerodon Remark 5.6.2.18（Tag 0271）。既存のunstraighteningSourceFamilyComparisonIsoを同じ指定prismに適用し、既存の小さい相対写像空間の同型で戻す法則。",
+      "bare_lines": [
+        250,
+        380
+      ],
+      "corrected_lines": [
+        500,
+        760
+      ],
+      "status": "verified",
+      "placement": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SmallTransportRepresentationArrowPrism.lean",
+      "additional_mathematics": true,
+      "note": "新しい数学ではなく、既存の構成の照合の追加ID。200行超の見込みなのでR04の短い証明分割から独立させる。R04の型・仮定は変えない。元の指定νとpointed prismを保持する。R04の残り見込み800は安全側に維持し、この署名の実測とは二重計上しない。 大きい側118行・小さい側136行、実測254行。対象ビルド・小監査と台帳の完全な型への代入が成功。残り見込みではなく履歴の補正上端760を保持する。",
+      "actual_lines": 254,
+      "support_files": [
+        "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/TransportRepresentationArrowPrism.lean",
+        "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SmallTransportRepresentationArrowPrism.lean"
+      ],
+      "citation_verification": {
+        "modules": 3,
+        "declarations": 3,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/TransportRepresentationArrowPrism.lean": "8f898096572b1c82036ce1fdf672e630cc7efd27b6e4f537dcd48ecc10c8eef5",
+          "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SmallTransportRepresentationArrowPrism.lean": "5626a984b9e024164be61c356fb842f64f87ca4d54404596ae79bdf84fd5b354",
+          "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/TransportRepresentationArrowPointedIso.lean": "da97573d97e9a29233353a59801cf8558fc8929ad29097e592dac02b253a6816"
+        }
+      },
+      "verification_receipt": "/Users/sugakubunka/serre-evidence/inf-supply/r04-pr-final-1118/target-audit-result.json",
+      "approved_type_check": {
+        "success": true,
+        "source": "/Users/sugakubunka/serre-evidence/inf-supply/r04-pr-final-1118/expected-type.lean",
+        "sha256": "56b2fcee379f3e4171ddee98609aa0d85f74eb76276102d70d1fbadee0b55c0a",
+        "method": "台帳の完全な型へ元の公開宣言を代入しLeanで検証。仮定・結論の追加や省略なし。"
+      }
     }
   ],
   "common_typeclass_setup": "local instance signaturePullbackLeft {E B D : SSet.{u}}\n    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) : LeftFibration (pullback.snd p k) :=\n  ⟨leftFibrations.pullback_snd p k (LeftFibration.mem (p := p))⟩",
