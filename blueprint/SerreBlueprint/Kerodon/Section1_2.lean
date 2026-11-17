@@ -37,7 +37,7 @@ Kerodon [Tag 00G5](https://kerodon.net/tag/00G5)
 :::definition "kerodon_1_2_1_1"
 Kerodon Definition 1.2.1.1（[Tag 00G6](https://kerodon.net/tag/00G6)）。対応表の状態：なし。
 
-確認済み・なし（対象ソースの探索範囲内）。summandと直和成分の命名・定義を検索。一般の余積のsummandに関する記載は別物で、部分単体集合が直和成分であるという述語は見つからない。
+原文はXの部分単体集合が別の部分単体集合と余積分解するというsummandの述語。summand/componentSubcomplex/成分因子化を再検索。成分類の逆像の部分複体はあるが、その包含をsummandとする条件/分解そのものの宣言ではない。
 
 :::
 
@@ -49,9 +49,9 @@ Kerodon Definition 1.2.1.6（[Tag 00GB](https://kerodon.net/tag/00GB)）。対�
 :::
 
 :::definition "kerodon_1_2_1_8"
-Kerodon Definition 1.2.1.8（[Tag 00GD](https://kerodon.net/tag/00GD)）。対応表の状態：一部。
+Kerodon Definition 1.2.1.8（[Tag 00GD](https://kerodon.net/tag/00GD)）。対応表の状態：なし。
 
-π₀は辺の関係で頂点を商にした集合。連結な直和成分そのものとしての部分複体の定義ではない。
+原文は連結な直和成分としての部分単体集合と、その全体の集合を定義する。SSet.π₀ は辺の同値関係による頂点の商集合であり、この部分複体/直和成分の条件を型で与えない。二つのモデルの比較は追加の議論。
 
 宣言：`SSet.π₀`
 
@@ -60,23 +60,23 @@ Kerodon Definition 1.2.1.8（[Tag 00GD](https://kerodon.net/tag/00GD)）。対�
 :::proposition "kerodon_1_2_1_11"
 Kerodon Proposition 1.2.1.11（[Tag 00GG](https://kerodon.net/tag/00GG)）。対応表の状態：なし。
 
-確認済み・なし（対象ソースの探索範囲内）。連結な源の像・成分への因子化を検索。componentSubcomplexと局所化後のcomponentsFactorizationはあるが、像の入る一意な連結成分の定理は見つからない。
+原文は連結なSからTへの写像の像を含む一意な連結な直和成分。componentSubcomplexと成分因子化を再検索し、選んだπ₀の部分集合の逆像の型を確認した。像を含む連結summandの一意性を返す型は見つからない。
 
 :::
 
 :::corollary "kerodon_1_2_1_12"
-Kerodon Corollary 1.2.1.12（[Tag 00GH](https://kerodon.net/tag/00GH)）。対応表の状態：一部。
+Kerodon Corollary 1.2.1.12（[Tag 00GH](https://kerodon.net/tag/00GH)）。対応表の状態：なし。
 
-homEquivとπ₀のUniqueによる連結性の特徴づけは材料。任意のIについて原文の標準写像が全単射であるという一括の同値は引用されていない。homEquivの名前空間を補正。
+原文は連結性と全てのIについての指定定数写像 I→Hom(S,const I) の全単射の iff。homEquiv は別の Hom と関数集合の同値、isConnected\_iff\_nonempty\_unique は π₀ の一意性との iff。指定写像の像と Hom 同値を結んで関数集合の判定を行う追加議論が必要で、いずれの方向も引用型が直接返すものではない。
 
 宣言：`SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.homEquiv`、`SSet.isConnected_iff_nonempty_unique`
 
 :::
 
 :::proposition "kerodon_1_2_1_13"
-Kerodon Proposition 1.2.1.13（[Tag 00GJ](https://kerodon.net/tag/00GJ)）。対応表の状態：一部。
+Kerodon Proposition 1.2.1.13（[Tag 00GJ](https://kerodon.net/tag/00GJ)）。対応表の状態：なし。
 
-成分の集合で指定した部分複体とそのπ₀との全単射はある。S全体の余積分解の宣言ではない。PiZeroConstant.homEquivの名前空間を補正。
+原文は S 自体の連結成分による余積分解。componentSubcomplex と componentClassEquiv は成分類の述語で選んだ部分複体のπ₀を計算するだけで、Sへの余積比較の同型を返さない。対象分解の証明の部品とする。
 
 宣言：`SerrePositivity.KST.Comparison.componentSubcomplex`、`SerrePositivity.KST.Comparison.componentClassEquiv`、`SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.homEquiv`
 
@@ -115,7 +115,7 @@ Kerodon Proposition 1.2.1.19（[Tag 00GQ](https://kerodon.net/tag/00GQ)）。対
 :::corollary "kerodon_1_2_1_21"
 Kerodon Corollary 1.2.1.21（[Tag 00GS](https://kerodon.net/tag/00GS)）。対応表の状態：一部。
 
-Homの全単射はあるが、π₀Functorと定数関手のAdjunctionとして組み立てた宣言は引用されていない。homEquivの名前空間を補正。
+原文は π₀⊣const とその指定単位の構成。homEquiv の型 (X→discrete T)≃(π₀X→T) はこの随伴の Hom 同値成分を逆向きにしたものを直接与える。自然性・指定単位まで完成した Adjunction の宣言とせず、構成のこの成分に限定する。
 
 宣言：`SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.homEquiv`
 
@@ -133,28 +133,28 @@ Kerodon Proposition 1.2.1.22（[Tag 00GT](https://kerodon.net/tag/00GT)）。対
 :::definition "kerodon_1_2_1_24"
 Kerodon Variant 1.2.1.24（[Tag 00GV](https://kerodon.net/tag/00GV)）。対応表の状態：なし。
 
-確認済み・なし（対象ソースの探索範囲内）。非退化辺・余等化子・coforkを検索。PiZeroの全ての辺によるcoforkはあるが、非退化辺だけの版は見つからない。
+原文は非退化辺だけのd₀,d₁の余等化子がπ₀であるという指定cofork。MathlibのisColimitCoforkπ₀は全ての辺を使う別のcofork。非退化辺・coequalizer・coforkを再検索したが、退化辺の除去を実装する同じ比較は見つからず追加議論を要する。
 
 :::
 
 :::corollary "kerodon_1_2_1_25"
 Kerodon Corollary 1.2.1.25（[Tag 050A](https://kerodon.net/tag/050A)）。対応表の状態：なし。
 
-確認済み・なし（対象ソースの探索範囲内）。境界と連結性を検索。KSTのboundaryReducedRealizationはS構成の対象であり、標準単体の境界∂Δⁿの連結性の定理ではない。
+原文は全n≥2について∂Δnの連結性。boundaryとconnectedを再検索。KSTのboundaryReducedRealization\_isConnectedはS構成の全零境界商、他のboundary connectingは連結準同型であり、標準単体の境界の連結性ではない。
 
 :::
 
 :::proposition "kerodon_1_2_1_26"
 Kerodon Proposition 1.2.1.26（[Tag 00GW](https://kerodon.net/tag/00GW)）。対応表の状態：なし。
 
-確認済み・なし（対象ソースの探索範囲内）。連結性の積とπ₀の積を検索。通常圏の連結性の積、Kanの積の充填性、特殊なloop積の成分公式はあるが、一般SSetの連結性の有限積閉性は見つからない。
+原文は連結な単体集合の有限積閉性。IsConnected.prod・π₀とprodを再検索。CategoryTheory.IsConnected.prodは通常圏の連結性、KanKernelPairPiZeroLoopEquiv\_productは特定のloop/kernel pairの式であり、SSet.IsConnectedの同じ有限積についての結論ではない。
 
 :::
 
 :::corollary "kerodon_1_2_1_27"
 Kerodon Corollary 1.2.1.27（[Tag 00GX](https://kerodon.net/tag/00GX)）。対応表の状態：なし。
 
-確認済み・なし（対象ソースの探索範囲内）。π₀Functorの有限積保存、piZero/product/connectedを検索。Kan置換の有限積比較のπ₀全単射は、π₀(X×Y)とπ₀X×π₀Yの比較ではない。対応する一般定理は見つからない。
+原文はSSet.π₀Functorの有限積保存。π₀/piZero/productの再検索で、Kan置換や特定loopの比較は見つかるが、任意SSetのπ₀(X×Y)→π₀X×π₀Yという指定比較射の全単射/同型ではない。
 
 :::
 
@@ -198,9 +198,9 @@ tag := "kerodon-1-2-3"
 Kerodon [Tag 001X](https://kerodon.net/tag/001X)
 
 :::definition "kerodon_1_2_3_1"
-Kerodon Definition 1.2.3.1（[Tag 001Y](https://kerodon.net/tag/001Y)）。対応表の状態：一部。
+Kerodon Definition 1.2.3.1（[Tag 001Y](https://kerodon.net/tag/001Y)）。対応表の状態：なし。
 
-toTopと随伴は実現の構成。任意の指定uがYを実現として示すという述語は引用されていない。
+原文は指定u:S→Sing(Y)が全Xへの合成写像の全単射を満たすという任意Y,uの普遍性の述語。toTop と sSetTopAdj は標準の実現関手と随伴で、任意の指定uに対するその条件の定義ではない。標準単位の例と任意のuの述語を同一視しない。
 
 宣言：`SSet.toTop`、`sSetTopAdj`
 
@@ -237,21 +237,21 @@ Kerodon Lemma 1.2.3.6（[Tag 0023](https://kerodon.net/tag/0023)）。対応表�
 :::definition "kerodon_1_2_3_7"
 Kerodon Notation 1.2.3.7（[Tag 0024](https://kerodon.net/tag/0024)）。対応表の状態：なし。
 
-確認済み・なし（対象ソースの探索範囲内）。下方閉集合・標準単体の部分複体・台による位相部分空間を検索。一般のfaceや部分複体の構成はあるが、原文の組み合わされた構成は見つからない。
+原文は標準単体の下方閉な面族Uに対応する部分単体集合と台条件の位相部分空間を同時に構成する。toTop/Subcomplex/lowerSet/simplexで再検索。一般の部分複体やorder idealはあるが、このUからの二つの指定対象の構成は見つからない。
 
 :::
 
 :::proposition "kerodon_1_2_3_10"
 Kerodon Proposition 1.2.3.10（[Tag 0028](https://kerodon.net/tag/0028)）。対応表の状態：なし。
 
-確認済み・なし（対象ソースの探索範囲内）。前項の下方閉集合と位相的実現を検索。標準単体全体の実現同型はあるが、任意の下方閉な面集合への制限版は見つからない。
+原文は下方閉な面族Uに対する単体部分複体からSing(台条件の部分空間)への指定比較が実現の普遍性を持つ。toTopとSubcomplex・lowerSetを再検索。標準単体全体のtoTopSimplexだけでは、任意Uへのこの制限射と普遍性を直接結論しない。
 
 :::
 
 :::lemma_ "kerodon_1_2_3_13"
 Kerodon Lemma 1.2.3.13（[Tag 00H2](https://kerodon.net/tag/00H2)）。対応表の状態：なし。
 
-確認済み・なし（対象ソースの探索範囲内）。SSetの押し出し・列余極限・単体の余積による帰納原理を検索。相対セル分解と有限posetのlower-set帰納法は材料・別の限定された主張で、原文の一般帰納原理は見つからない。
+原文は任意の充満部分圏Uが単射沿いのpushout・単射列の余極限・単体の全余積で閉じれば全SSetを含むという帰納原理。induction/Subcomplex/relativeCellComplexOfMonoで再検索。相対セル分解は帰納原理の証明材料であり、このUへの所属を直接返す型ではない。
 
 :::
 
@@ -265,14 +265,14 @@ Kerodon Proposition 1.2.3.15（[Tag 002F](https://kerodon.net/tag/002F)）。対
 :::proposition "kerodon_1_2_3_18"
 Kerodon Proposition 1.2.3.18（[Tag 00H5](https://kerodon.net/tag/00H5)）。対応表の状態：なし。
 
-確認済み・なし（対象ソースの探索範囲内）。toTop・実現と連結性・弧状連結性を検索。標準単体の弧状連結性とKSTの特殊な実現のSSet連結性はあるが、任意SSetについての3条件の同値は見つからない。
+原文は任意Sの実現の弧状連結性・連結性・Sの連結性の3条件同値。toTopとConnected/π₀で再検索。標準位相単体だけの連結性や標準単体の弱同値は、任意Sの指定実現の同値の方向ではない。
 
 :::
 
 :::corollary "kerodon_1_2_3_19"
 Kerodon Corollary 1.2.3.19（[Tag 00H6](https://kerodon.net/tag/00H6)）。対応表の状態：なし。
 
-確認済み・なし（対象ソースの探索範囲内）。toTopとπ₀・連結成分を検索。任意SSetのπ₀と位相的実現のπ₀の自然な全単射は見つからない。
+原文は任意Sのπ₀と実現の位相的π₀の標準全単射。toTopとπ₀/componentを再検索。標準単体の位相的連結性とSSet側のπ₀の普遍性はあるが、両者を結ぶこの同じ比較写像は見つからない。
 
 :::
 
@@ -344,14 +344,14 @@ Kerodon Definition 1.2.5.1（[Tag 002H](https://kerodon.net/tag/002H)）。対�
 :::proposition "kerodon_1_2_5_8"
 Kerodon Proposition 1.2.5.8（[Tag 002K](https://kerodon.net/tag/002K)）。対応表の状態：なし。
 
-確認済み・なし（対象ソースの探索範囲内）。toSSet・singularとKanComplexを検索。MathlibのKanComplexおよびSingularSetにTODOとして残り、自前の該当定理も見つからない。
+原文は全位相空間XのSing(X)のKan性。現本体全体・MathlibをtoSSet/singular/Kanで再検索。MathlibのSingularSet・KanComplexのTODOと、別のcompatible input unionのtoSSetはあるが、位相空間のsingular setのKan instanceは見つからない。
 
 :::
 
 :::proposition "kerodon_1_2_5_9"
 Kerodon Proposition 1.2.5.9（[Tag 00MG](https://kerodon.net/tag/00MG)）。対応表の状態：一部。
 
-ringSpace\_kanComplexは単体的環の台単体集合に限定した特例。一般の単体群の定理としては扱わない。
+原文は全単体群の台がKan。ringSpace\_kanComplex の型は単体的環 A の台のKan性であり、その加法単体群へ対象を限定した同じ結論を直接与える。全単体群への拡張は数えない。
 
 宣言：`SerrePositivity.KST.Comparison.ringSpace_kanComplex`
 
@@ -367,7 +367,7 @@ Kerodon Proposition 1.2.5.10（[Tag 00HC](https://kerodon.net/tag/00HC)）。対
 :::corollary "kerodon_1_2_5_11"
 Kerodon Corollary 1.2.5.11（[Tag 00HD](https://kerodon.net/tag/00HD)）。対応表の状態：なし。
 
-確認済み・なし（対象ソースの探索範囲内）。Kanの積とπ₀の比較を検索。高次ホモトピー群の二項積の単射とloop積の公式はあるが、任意集合添字のKan積のπ₀の全単射は見つからない。
+原文は任意集合添字のKan積のπ₀の指定比較の全単射。π₀/piZero/product・IsConnected.prodを再検索。二項loop/kernel pairの成分式や通常圏の積連結性は異なる対象の主張で、この任意積の比較ではない。
 
 :::
 

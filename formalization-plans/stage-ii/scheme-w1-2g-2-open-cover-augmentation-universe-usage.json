@@ -1,0 +1,59 @@
+{
+  "declarations": [
+    "openCoverCechZeroEquiv",
+    "openCoverCechZeroEquiv_symm_apply",
+    "openCoverCechAugmentation",
+    "openCoverCechAugmentation_eq",
+    "openCoverCechAugmentation_squared",
+    "openCoverCechRefinement_augmentation"
+  ],
+  "refs": [
+    {
+      "ref": "HEAD",
+      "commit": "d1e02db5b6f835664fc85d5b03bbd1c923b72597",
+      "exit": 1,
+      "matches": [],
+      "stderr": ""
+    },
+    {
+      "ref": "math/bs-impl",
+      "commit": "a7f43e7c3a7528dfe16b92b5520cd3ef0358c737",
+      "exit": 1,
+      "matches": [],
+      "stderr": ""
+    },
+    {
+      "ref": "math/inf-supply",
+      "commit": "e28d5e899ee66d9068bfb7f0dc5c32ed83dd3bc9",
+      "exit": 1,
+      "matches": [],
+      "stderr": ""
+    },
+    {
+      "ref": "math/inf-supply-b",
+      "commit": "30887c8ae3fbd1dbd3e5b592ad7ee6cd36a80d79",
+      "exit": 1,
+      "matches": [],
+      "stderr": ""
+    },
+    {
+      "ref": "math/bs-m15",
+      "commit": "857bf169937b9b0702bfa9295d3996907d86447d",
+      "exit": 1,
+      "matches": [],
+      "stderr": ""
+    }
+  ],
+  "git_grep_command": [
+    "git",
+    "grep",
+    "-n",
+    "-E",
+    "(^|[^A-Za-z0-9_])(openCoverCechZeroEquiv|openCoverCechZeroEquiv_symm_apply|openCoverCechAugmentation|openCoverCechAugmentation_eq|openCoverCechAugmentation_squared|openCoverCechRefinement_augmentation)([^A-Za-z0-9_]|$)",
+    "REF",
+    "--",
+    "*.lean",
+    ":(exclude)SerrePositivity/AlgebraicGeometry/**",
+    ":(exclude)AlgebraicGeometry/**"
+  ]
+}
