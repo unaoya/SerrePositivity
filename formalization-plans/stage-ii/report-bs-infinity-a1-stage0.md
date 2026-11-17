@@ -7689,3 +7689,79 @@ private def scaffoldPullbackData {C D : Type u} [Category.{u} C] [Category.{u} D
 旧R2下書き4本は触らず、外部のlegacy-r2-drafts-20261117へ読み取りコピーとSHAを保存した。
 今回のコミットの対象には含めない。
 一覧：済み 18／全体 36（うち追加 1、別停止点 2）。
+
+### P3-C1Pのscaffoldの相対比較まで（11-17夕）
+
+scaffoldの引き戻しで作った射と、同じstrict係数比較から作るuniversal scaffoldの射が
+厳密に一致することを示した。元のscaffoldCoherentComparison_restrictionIsoを同じembeddingで
+制限した相対同型を使い、relativeFunctorBaseChangeForwardでpointed空間へ移した。
+存在から新しく同型を選び直していない。mainの既存本文、公開型、仮定、計算上限の変更は0。
+次の6本は既存の構成の法則・親署名P3-C1Pの証明分割で、全て200行以下。
+
+```lean
+private lemma pullbackStrictComparison_uncurry {C D : Type u} [Category.{u} C] [Category.{u} D]
+    {E P T : SSet.{u}} (p : E ⟶ nerve C) [LeftFibration p]
+    (r : P ⟶ nerve D) [LeftFibration r] (t : P ⟶ E) (H : D ⥤ C)
+    (hs : IsPullback t r p (nerveMap H)) (j : D)
+    (τ : T ⟶ (H ⋙ leftStrictTransportDiagram p).obj j) :
+    relativeFunctorUncurry (τ ≫ (pullbackStrictComparison p r t H hs).app j) ≫ t =
+      (nerveMap (Under.post H) ▷ T) ≫ relativeFunctorUncurry τ
+```
+
+```lean
+private lemma scaffoldUnderChain_post {C D : Type u} [Category.{u} C] [Category.{u} D]
+    (H : D ⥤ C) {n : ℕ} (σ : ComposableArrows D n) :
+    scaffoldUnderChain σ ⋙ Under.post H = scaffoldUnderChain (σ ⋙ H)
+```
+
+```lean
+private lemma pullbackScaffold_naturality {C D : Type u} [Category.{u} C] [Category.{u} D]
+    {E P : SSet.{u}} (p : E ⟶ nerve C) [LeftFibration p]
+    (r : P ⟶ nerve D) [LeftFibration r] (t : P ⟶ E) (H : D ⥤ C)
+    (hs : IsPullback t r p (nerveMap H)) :
+    simplicialReplacementMap (pullbackStrictComparison p r t H hs) ≫ universalScaffold r ≫ t =
+      simplicialReplacementBaseMap H (leftStrictTransportDiagram p) ≫ universalScaffold p
+```
+
+```lean
+private lemma scaffoldPullbackData_eq {C D : Type u} [Category.{u} C] [Category.{u} D]
+    {E P : SSet.{u}} (p : E ⟶ nerve C) [LeftFibration p]
+    (r : P ⟶ nerve D) [LeftFibration r] (t : P ⟶ E) (H : D ⥤ C)
+    (hs : IsPullback t r p (nerveMap H)) :
+    (scaffoldPullbackData p r t H hs).val =
+      simplicialReplacementMap (pullbackStrictComparison p r t H hs) ≫ universalScaffold r
+```
+
+```lean
+private lemma scaffoldRelativeIso {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) [LeftFibration p] :
+    let U := SSet.uliftFunctor.{u+1,u}
+    let q := leftUnstraighteningProjection (leftCoherentTransport p)
+    let f := U.map (universalScaffold p) ≫ scaffoldCoherentComparison p
+    let g := U.map (tautScaffold (leftStrictTransportDiagram p)) ≫ leftCoherentTransportComparison p
+    let b := U.map (simplicialReplacementProjection (leftStrictTransportDiagram p))
+    ∃ (hf : f ≫ q = b) (hg : g ≫ q = b),
+      Nonempty (VertexIso (relativeFunctorVertex q b f hf) (relativeFunctorVertex q b g hg))
+```
+
+```lean
+private lemma scaffoldPointedRelativeIso {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) [LeftFibration p] :
+    let U := SSet.uliftFunctor.{u+1,u}
+    let F := leftCoherentTransport p
+    let f := U.map (universalScaffold p) ≫ (nerveLeftTransportRepresentation p).pointedMap
+    let g := U.map (tautScaffold (leftStrictTransportDiagram p)) ≫
+      leftCoherentTransportComparison p ≫ pullback.fst pointedSpaceProjection F
+    let b := U.map (simplicialReplacementProjection (leftStrictTransportDiagram p)) ≫ F
+    ∃ (hf : f ≫ pointedSpaceProjection = b) (hg : g ≫ pointedSpaceProjection = b),
+      Nonempty (VertexIso (relativeFunctorVertex pointedSpaceProjection b f hf)
+        (relativeFunctorVertex pointedSpaceProjection b g hg))
+```
+
+対象ビルド・小監査は成功（1モジュール・30所有宣言、標準三公理のみ）。
+C1Pの部分実測493行、前回から169行増、検証済み累計23468行。
+親署名の元の見込みは素250〜400・補正500〜800行。途中で素の上端を超えたが、
+未完の指定νとの照合を弱めない。800行は29,000行の外枠そのものではなく、
+残りの見込みは既存の全Homのnative比較の再利用で確認する。
+証拠：`evidence/inf-supply/c1p-scaffold-relative-20261117/manifest.json`。
+一覧：済み 18／全体 36（うち追加 1、別停止点 2）。
