@@ -433,7 +433,9 @@
       "U02",
       "U09",
       "O05",
-      "L02"
+      "L02",
+      "L03",
+      "L04"
     ],
     "lo": 65,
     "hi": 160,
@@ -907,6 +909,28 @@
     "ref": "形式化用：元の環射の底変換とB1のUnderの底変換の同じArrowの照合",
     "api": "toAlgebra_algebraMap @ .lake/packages/mathlib/Mathlib/Algebra/Algebra/Defs.lean:262、CommRingCat.tensorProd @ .lake/packages/mathlib/Mathlib/Algebra/Category/Ring/Under/Basic.lean:127",
     "why": "構造射から派生した代数構造と与えられた代数構造の既存の等式を、Arrow同型として先に処理する。選ばれたČech余極限の内部を簡約しない。",
+    "risk": false
+  },
+  {
+    "id": "L03",
+    "sig": "theorem intervalCoefficient_primeQuotient_perfect (p : ℕ) [Fact p.Prime] {V : Type u}\n    [CommRing V] [IsDomain V] [ValuationRing V] [PerfectRing V p]\n    (hp : (p : V) = 0) (a : PrimeSpectrum V) :\n    PerfectRing (V ⧸ a.asIdeal) p",
+    "deps": [],
+    "lo": 25,
+    "hi": 80,
+    "ref": "既存の係数移送の法則の抽出。BM18 Prop4.8(5)の係数",
+    "api": "Arc.perfectRing_primeResidue @ SerrePositivity/BhattScholze/Perfectoidization/Arc/Milnor/ArcMilnorTensor.lean:92（証明内の同じ商のPerfectRing）、perfectRing_interval @ SerrePositivity/CommutativeAlgebra/ValuationInterval/Basic.lean:128",
+    "why": "既存の証明内で構成済みの、商への根の移送と既約な商のreduced性を、そのまま名前付きの係数法則として抽出する。",
+    "risk": false
+  },
+  {
+    "id": "L04",
+    "sig": "theorem intervalCoefficient_primeLocalization_perfect (p : ℕ) [Fact p.Prime] {V : Type u}\n    [CommRing V] [IsDomain V] [ValuationRing V] [PerfectRing V p]\n    (hp : (p : V) = 0) (a : PrimeSpectrum V) :\n    PerfectRing (Localization.AtPrime a.asIdeal) p",
+    "deps": [],
+    "lo": 25,
+    "hi": 80,
+    "ref": "既存の係数移送の法則の抽出。BM18 Prop4.8(5)の係数",
+    "api": "perfectRing_interval @ SerrePositivity/CommutativeAlgebra/ValuationInterval/Basic.lean:128–151（同じ局所化の根と分母の構成）",
+    "why": "既存の区間環の証明の局所化の構成を、下端の商を取らない同じ係数で使う。分母の根が同じ素イデアルの外にあるという既存の計算を保つ。",
     "risk": false
   }
 ]

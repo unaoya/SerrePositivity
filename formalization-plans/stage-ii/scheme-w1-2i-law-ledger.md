@@ -45,3 +45,36 @@ def arcBaseChangeArrowIso {A : Type u} [CommRing A]
 - 検証済み53署名・実測1,422行を確定分にし、残りの係数2と登録予備を含む完成見込みは2,862〜4,868行。9,000行以内。記録後は事前承認に従い止まらず実装へ。
 
 一覧：済み53／全体68（うち追加2）。この台帳の時点ではL02のLeanは未着手。
+
+
+## L03：既存の完全係数の構成の抽出（記録後に着手）
+
+```lean
+theorem intervalCoefficient_primeQuotient_perfect (p : ℕ) [Fact p.Prime] {V : Type u}
+    [CommRing V] [IsDomain V] [ValuationRing V] [PerfectRing V p]
+    (hp : (p : V) = 0) (a : PrimeSpectrum V) :
+    PerfectRing (V ⧸ a.asIdeal) p
+```
+
+- 依存する既存の構成：Arc.perfectRing_primeResidue @ SerrePositivity/BhattScholze/Perfectoidization/Arc/Milnor/ArcMilnorTensor.lean:92（証明内の同じ商のPerfectRing）、perfectRing_interval @ SerrePositivity/CommutativeAlgebra/ValuationInterval/Basic.lean:128。
+- 筋：既存の証明内で構成済みの、商への根の移送と既約な商のreduced性を、そのまま名前付きの係数法則として抽出する。
+- 元のO06の型・仮定は保持し、同じ局所化・素イデアル商の係数を扱う。新しい幾何・数学の仮定・Noether帰着はない。mainの既存本体は変更せず、新規のIntervalCoefficientPerfect.leanに置く。
+- 素25〜80行、係数2：50〜160行。上端160≤800。既存の係数移送の証明の分割として、指示書の事前承認に従って記録後に進める。
+
+
+## L04：既存の完全係数の構成の抽出（記録後に着手）
+
+```lean
+theorem intervalCoefficient_primeLocalization_perfect (p : ℕ) [Fact p.Prime] {V : Type u}
+    [CommRing V] [IsDomain V] [ValuationRing V] [PerfectRing V p]
+    (hp : (p : V) = 0) (a : PrimeSpectrum V) :
+    PerfectRing (Localization.AtPrime a.asIdeal) p
+```
+
+- 依存する既存の構成：perfectRing_interval @ SerrePositivity/CommutativeAlgebra/ValuationInterval/Basic.lean:128–151（同じ局所化の根と分母の構成）。
+- 筋：既存の区間環の証明の局所化の構成を、下端の商を取らない同じ係数で使う。分母の根が同じ素イデアルの外にあるという既存の計算を保つ。
+- 元のO06の型・仮定は保持し、同じ局所化・素イデアル商の係数を扱う。新しい幾何・数学の仮定・Noether帰着はない。mainの既存本体は変更せず、新規のIntervalCoefficientPerfect.leanに置く。
+- 素25〜80行、係数2：50〜160行。上端160≤800。既存の係数移送の証明の分割として、指示書の事前承認に従って記録後に進める。
+
+
+追加後は70頂点・117辺、DFSで循環0。検証済み53署名・実測1,422行を確定分とした補正後の完成見込みは2,962〜5,188行で、外枠9,000行以内。一覧：済み53／全体70（うち追加4）。
