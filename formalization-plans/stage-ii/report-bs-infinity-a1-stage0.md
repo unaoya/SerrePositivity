@@ -9019,3 +9019,70 @@ P3-C1PNGの下書きはこの一般の法則を使うように分割し直して
 証拠：`evidence/inf-supply/c1pn-basechange-value-1117/manifest.json`。
 
 一覧：済み 23／全体 45（うち追加 10、別停止点 2）。
+
+
+### P3-C1PNQの登録（11-17夜、同じ反転比較の添字制限）
+
+指定した係数反転比較の値と、通常の添字関手による制限を照合する既存構成の法則を追加。
+型：
+
+```lean
+∀ {I J : Type u} [SmallCategory I] [SmallCategory J] (H : I ⥤ J) (F : KanDiagramObject J),
+    diagramIsoCongr (kanDiagramCoherentNerve_precomp H F.val)
+      (kanDiagramCoherentNerve_precomp H (F.val ⋙ kanObjectOpFunctor))
+      ((kanDiagramOppositeValueIso F).precomp ((SSet.uliftFunctor.{u+1,u}).map (nerveMap H))) =
+    kanDiagramOppositeValueIso ⟨H ⋙ F.val, trivial⟩
+```
+
+`kanDiagramOppositeValueIso F : FunctorIso (kanDiagramCoherentNerve F.val)
+(kanDiagramCoherentNerve (F.val ⋙ kanObjectOpFunctor))` は、P3-C1PNONの型のlet o Fの右辺を名付けた略記。
+同じ普遍豊穣図式の左右の実現値の合成で、新しい反転関手や新しい同型の選択を作らない。
+依存P3-C1PNH・P3-C1PNON。使用する既存宣言と完全な場所はJSONのexisting欄（添字制限、指定自然性、値の自然変換表示）。
+原典：HTT §1.1.5、Kerodon §3.1・§5.6（Tag 028T）の構成の特殊な照合。
+素120〜220行、補正240〜440行（同じ値の略記・自然性の回収も含む）。
+Gの残りの上端700を全て残しても24,388＋700＋440＝25,528で着手条件内。
+mainの既存本文・一覧の既存の型と仮定は変更しない。
+
+一覧：済み 23／全体 46（うち追加 11、別停止点 2）。
+
+
+### P3-C1PNGの完成（11-17夜）
+
+`leftStraightening_firstVertexTransport_nativeCoefficients` を、登録した型のまま証明した。
+元のσは、同じunder・初頂点底変換・係数反転の三成分の合成に一致する。
+対象ビルド成功、二ファイルを所有する31宣言の小監査は標準三公理のみ。
+素200〜350行・補正400〜700行に対し実測 **320行**（成分の略記160、比較160）。
+引用を含む物理行を全て保守的に数学行として数え、累計24,388 → **24,708行**。
+初頂点底変換のkernel時間切れは、二段の型移送を定義上一度に消さず、一段ずつHEqにして解消した。
+heartbeats・maxRecDepth等は上げていない。mainの既存本文と元の署名の型・仮定は変更なし。
+文献属性はHTT §3.3.2のspecial、Kerodon側はdocstringで構成の特殊化を記載。
+証拠：`evidence/inf-supply/c1pn-native-coefficients-3-1117/manifest.json`。
+
+短い内部の照合法則も同じ署名の証明分割として置いた（各200行未満）。型：
+
+```lean
+nativeUnderCoefficientIso_heq :
+  ∀ {E B : SSet.{u}} (p : E ⟶ B) [LeftFibration p],
+    HEq (nativeUnderCoefficientIso p)
+      (functorIsoValue (transportSimplexUnderRealizationIso B) (leftFibrationInfinityVertex p))
+
+nativeBaseChangeCoefficientIso_heq :
+  ∀ {E B : SSet.{u}} (p : E ⟶ B) [LeftFibration p],
+    HEq (nativeBaseChangeCoefficientIso p)
+      (functorIsoValue (transportSimplexUnderBaseChangeRealizationIso B)
+        (leftFibrationInfinityVertex p))
+
+nativeOppositeCoefficientIso_heq :
+  ∀ {C : Type u} [Category.{u} C] {E : SSet.{u}}
+      (p : E ⟶ nerve C) [LeftFibration p],
+    HEq (nativeOppositeCoefficientIso p)
+      (functorIsoValue (leftStraighteningCoherentMap_oppositeIso C)
+        (coherentNerveVertex (edgewiseOrdinaryObject (leftFibrationObjectOf p))))
+```
+
+`nativeUnderJointComparison` は、既存の `relativeFunctorOverPreComparison` の全成分を
+元の共同実現に入る同じ比較として公開した略記。新しい数学・choose・新しい仮定はない。
+P3-C1PNQは補正上端440なので24,708＋440＝25,148、着手条件内で検証を続行する。
+旧R2の未追跡4本は変更も登録もしていない。
+
+一覧：済み 24／全体 46（うち追加 11、別停止点 2）。

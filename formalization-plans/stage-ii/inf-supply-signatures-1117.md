@@ -5,8 +5,8 @@
 再採番せず、ここにある各署名IDを一つずつ数える。旧「5／8」は以後この台帳の進捗に使わない。
 小さい既存構成の法則・証明の分割は親署名内に記録するが、上端200行超は独立署名。
 
-署名45本＝検証済み23本＋未完20本＋別停止点へ切り離す2本。
-一覧：済み 23／全体 45（うち追加 10、別停止点 2）。
+署名46本＝検証済み24本＋未完20本＋別停止点へ切り離す2本。
+一覧：済み 24／全体 46（うち追加 11、別停止点 2）。
 追加1は11-17夕承認のP3-C1P。着手判定22,975＋800＝23,775行。以前の35署名の表は履歴として保持。
 
 ## 最新の検証記録（P3-B1）
@@ -1369,3 +1369,19 @@ P3-C1PNO・P3-C1PNON：実測115・138行、対象ビルドと5・13宣言の小
 
 
 P3-C1PNB：対象ビルド・1宣言の小監査成功、標準三公理のみ。実測53行、累計24,388行。
+
+
+## P3-C1PNQ（指定反転比較の添字制限）
+
+```lean
+∀ {I J : Type u} [SmallCategory I] [SmallCategory J] (H : I ⥤ J) (F : KanDiagramObject J),
+    diagramIsoCongr (kanDiagramCoherentNerve_precomp H F.val)
+      (kanDiagramCoherentNerve_precomp H (F.val ⋙ kanObjectOpFunctor))
+      ((kanDiagramOppositeValueIso F).precomp ((SSet.uliftFunctor.{u+1,u}).map (nerveMap H))) =
+    kanDiagramOppositeValueIso ⟨H ⋙ F.val, trivial⟩
+```
+
+依存P3-C1PNH・P3-C1PNON。素120〜220行、補正240〜440行。
+
+
+P3-C1PNG：二ファイル計320行、対象ビルド・所有31宣言の小監査成功。累計24,708行。

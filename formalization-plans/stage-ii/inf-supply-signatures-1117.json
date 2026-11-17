@@ -3,7 +3,7 @@
   "source_head": "7e9743b30",
   "scope": "今回の再開範囲：元の残り1〜17項を署名へ展開。S2〜S6の過去の検収済み出力は再採番しない。",
   "count_rule": "署名のidごとに数える。200行超の照合・合成則は独立署名。小さい証明分割の法則は親署名のnoteに記録する。旧5/8はこの台帳の分母には用いない。",
-  "verified_lean_lines": 24388,
+  "verified_lean_lines": 24708,
   "final_cap": 29000,
   "checkpoint_report_lines": 28500,
   "factor": 2,
@@ -1630,7 +1630,8 @@
         "P3-C1PNH",
         "P3-C1PNO",
         "P3-C1PNON",
-        "P3-C1PNG"
+        "P3-C1PNG",
+        "P3-C1PNQ"
       ],
       "existing": [
         {
@@ -2066,13 +2067,30 @@
         400,
         700
       ],
-      "status": "pending",
+      "status": "verified",
       "placement": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningNativeCoefficientComparison.lean",
       "literature": "HTT §3.3.2、Kerodon §5.6（Tag 028T）の元のunder・底変換・係数反転の指定比較の成分の照合。",
-      "note": "11-17夕の既存構成の照合追加の事前承認を適用。補正上端700。構成の既存の成分の略記を含めた見込み。main本文・型・仮定を変更しない。",
+      "note": "11-17夕の既存構成の照合追加の事前承認を適用。補正上端700。構成の既存の成分の略記を含めた見込み。main本文・型・仮定を変更しない。 二ファイル160+160行を対象ビルド・所有31宣言の小監査済み。標準三公理のみ。",
       "additional_mathematics": true,
       "choose_replacements": [],
-      "new_assumptions": []
+      "new_assumptions": [],
+      "actual_lines_conservative": 320,
+      "citation_verification": {
+        "modules": 2,
+        "declarations": 31,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningNativeCoefficients.lean": "dac1f7cb0d723b8d5477e155a4946fe419fe780f8206d91567ebf7e1c9e23ab4",
+          "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningNativeCoefficientComparison.lean": "08217cf1df20327413d4d4c72ed3b341a6842e11c474fd6da2899f2ce4652776"
+        }
+      }
     },
     {
       "id": "P3-C1PNB",
@@ -2127,6 +2145,47 @@
           "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/RelativeSectionBaseChangeValue.lean": "0f84124cbd29ed63fb75c3f3c1e935e3f90412f51c42e9b76eae8d2b828fc45b"
         }
       }
+    },
+    {
+      "id": "P3-C1PNQ",
+      "name": "kanDiagramOppositeValueIso_precomp",
+      "full_type": "∀ {I J : Type u} [SmallCategory I] [SmallCategory J] (H : I ⥤ J) (F : KanDiagramObject J),\n    diagramIsoCongr (kanDiagramCoherentNerve_precomp H F.val)\n      (kanDiagramCoherentNerve_precomp H (F.val ⋙ kanObjectOpFunctor))\n      ((kanDiagramOppositeValueIso F).precomp ((SSet.uliftFunctor.{u+1,u}).map (nerveMap H))) =\n    kanDiagramOppositeValueIso ⟨H ⋙ F.val, trivial⟩",
+      "dependencies": [
+        "P3-C1PNH",
+        "P3-C1PNON"
+      ],
+      "existing": [
+        {
+          "name": "kanDiagramNaturalTransformationHom_precomp",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/KanDiagramNaturalTransformationPrecomposition.lean",
+          "line": 47
+        },
+        {
+          "name": "kanDiagramOppositeValue_naturality",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/KanDiagramOppositeValueNaturality.lean",
+          "line": 77
+        },
+        {
+          "name": "kanEnrichedRealizationValueIso_eq_native",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/KanDiagramOppositeValueNaturality.lean",
+          "line": 30
+        }
+      ],
+      "bare_lines": [
+        120,
+        220
+      ],
+      "corrected_lines": [
+        240,
+        440
+      ],
+      "status": "pending",
+      "placement": "SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/KanDiagramOppositeValueComparison.lean",
+      "literature": "HTT §1.1.5、Kerodon §3.1・§5.6（Tag 028T）の指定反転比較と添字制限の構成の照合法則。",
+      "note": "11-17夕の既存構成の照合追加の事前承認。元の同じ成分の略記と自然性の回収も含む。",
+      "additional_mathematics": true,
+      "choose_replacements": [],
+      "new_assumptions": []
     }
   ],
   "common_typeclass_setup": "local instance signaturePullbackLeft {E B D : SSet.{u}}\n    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) : LeftFibration (pullback.snd p k) :=\n  ⟨leftFibrations.pullback_snd p k (LeftFibration.mem (p := p))⟩",
