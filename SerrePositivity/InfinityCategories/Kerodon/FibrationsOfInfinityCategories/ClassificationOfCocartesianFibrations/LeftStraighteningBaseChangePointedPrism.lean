@@ -1,5 +1,10 @@
 module
 
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.FunctorIsoWhiskerCancellation
+
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.RelativeFunctorIsoImageTransport
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftUnstraighteningEdgeLiftFamily
+
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftStraighteningNativeCoefficientComparison
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftStraighteningTransportBaseChangeNormalization
 public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanDiagramOppositeValueComparison
@@ -1128,5 +1133,579 @@ private lemma leftStraighteningBaseChange_nativeInterval_hom :
     SSet.Truncated.HomotopyCategory.homMk ε.toTruncated := by
   intro E B D hB hD p hp k
   exact nativeIntervalHom_core p k
+
+open SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories
+
+private lemma pointedProjection_of_under {A B : SSet.{u+1}}
+    (F : B ⟶ SpaceInfinity.{u}) (g : A ⟶ leftUnstraightening F) (b : A ⟶ B)
+    (hg : g ≫ leftUnstraighteningProjection F = b) :
+    (g ≫ pullback.fst pointedSpaceProjection F) ≫ pointedSpaceProjection = b ≫ F := by
+  change (g ≫ pullback.fst pointedSpaceProjection F) ≫ pointedSpaceProjection = b ≫ F
+  rw [Category.assoc, pullback.condition, ← Category.assoc]
+  exact congrArg (fun z => z ≫ F) hg
+
+/-- 既存のscaffold制限と全写像空間の同じ族から、三つの指定pointed比較を記録する。
+HTT §3.3.2・Kerodon Tag 028Tの構成の、この模型での特殊な照合。 -/
+@[cite HTT "3.3.2" (partial := special) "scaffoldの指定三成分のpointed比較と射影の照合。"]
+private lemma leftStraighteningBaseChange_scaffold_pointedEnds :
+    ∀ {E B D : SSet.{u}} [Quasicategory B] [Quasicategory D]
+    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B),
+    let U := SSet.uliftFunctor.{u+1,u}
+    let lB := transportSimplexFirstVertexMap B
+    let lD := transportSimplexFirstVertexMap D
+    let H := transportSimplexFunctor k
+    let q := pullback.snd p k
+    let p₀ := pullback.snd p lB
+    let r := pullback.snd q lD
+    let d := leftStraighteningBaseChangePullbackData p k
+    let s := scaffoldPullbackData p₀ r d.val H d.property.2.2.1
+    let i := U.map s.val
+    let R₀ := (nerveLeftTransportRepresentation p₀).cartesianRestrict
+      (U.map d.val) (U.map (nerveMap H)) d.property.2.2.2
+    let Rr := nerveLeftTransportRepresentation r
+    let Fh : KanDiagramObject (TransportSimplexCategory D) :=
+      ⟨H ⋙ leftStrictTransportFunctor p₀, trivial⟩
+    let Fr : KanDiagramObject (TransportSimplexCategory D) :=
+      ⟨leftStrictTransportFunctor r, trivial⟩
+    let α : Fh.val ⋙ kanObjectForget ⟶ Fr.val ⋙ kanObjectForget :=
+      pullbackStrictComparison p₀ r d.val H d.property.2.2.1
+    let y := (kanDiagramOppositeHomInterval Fh Fr).app _ (naturalHomVertex Fh Fr α)
+    let ε := intervalMappingEdgeOfVertex y
+    let FH := kanDiagramCoherentNerve (Fh.val ⋙ kanObjectOpFunctor)
+    let FR := kanDiagramCoherentNerve (Fr.val ⋙ kanObjectOpFunctor)
+    let v := U.map (tautScaffold (Fh.val ⋙ kanObjectForget))
+    let f₀ := v ≫ oppositeKanUnstraighteningComparison Fh.val ≫ pullback.fst pointedSpaceProjection FH
+    let f₁ := v ≫ oppositeKanUnstraighteningComparison Fh.val ≫
+      leftUnstraighteningEdgeLiftMap FH FR ε ≫ pullback.fst pointedSpaceProjection FR
+    let fT := v ≫ U.map (weightedNerveMap α) ≫ oppositeKanUnstraighteningComparison Fr.val ≫
+      pullback.fst pointedSpaceProjection FR
+    ∃ (h₀ : (i ≫ R₀.pointedMap) ≫ pointedSpaceProjection = f₀ ≫ pointedSpaceProjection)
+      (h₁ : f₁ ≫ pointedSpaceProjection = fT ≫ pointedSpaceProjection)
+      (hT : (i ≫ Rr.pointedMap) ≫ pointedSpaceProjection = fT ≫ pointedSpaceProjection),
+      ∃ a₀ : FunctorIso (i ≫ R₀.pointedMap) f₀,
+      ∃ a₁ : FunctorIso f₁ fT,
+      ∃ aT : FunctorIso (i ≫ Rr.pointedMap) fT,
+        a₀.postcomp pointedSpaceProjection = eqToIso
+          (congrArg (fun f => HomotopyCategory.mk (functorVertex f)) h₀) ∧
+        a₁.postcomp pointedSpaceProjection = eqToIso
+          (congrArg (fun f => HomotopyCategory.mk (functorVertex f)) h₁) ∧
+        aT.postcomp pointedSpaceProjection = eqToIso
+          (congrArg (fun f => HomotopyCategory.mk (functorVertex f)) hT) := by
+  intro E B D hB hD p hp k
+  let U := SSet.uliftFunctor.{u+1,u}
+  let lB := transportSimplexFirstVertexMap B
+  let lD := transportSimplexFirstVertexMap D
+  let H := transportSimplexFunctor k
+  let t := U.map (nerveMap H)
+  let q := pullback.snd p k
+  let p₀ := pullback.snd p lB
+  let r := pullback.snd q lD
+  let d := leftStraighteningBaseChangePullbackData p k
+  let s := scaffoldPullbackData p₀ r d.val H d.property.2.2.1
+  let i := U.map s.val
+  let R₀ := (nerveLeftTransportRepresentation p₀).cartesianRestrict
+    (U.map d.val) t d.property.2.2.2
+  let Rr := nerveLeftTransportRepresentation r
+  let F₀ : KanDiagramObject (TransportSimplexCategory B) := ⟨leftStrictTransportFunctor p₀, trivial⟩
+  let Fh : KanDiagramObject (TransportSimplexCategory D) := ⟨H ⋙ F₀.val, trivial⟩
+  let Fr : KanDiagramObject (TransportSimplexCategory D) := ⟨leftStrictTransportFunctor r, trivial⟩
+  let L₀ := leftStrictTransportDiagram p₀
+  let Lh := H ⋙ L₀
+  let Lr := leftStrictTransportDiagram r
+  let α : Lh ⟶ Lr := pullbackStrictComparison p₀ r d.val H d.property.2.2.1
+  let y := (kanDiagramOppositeHomInterval Fh Fr).app _ (naturalHomVertex Fh Fr α)
+  let ε := intervalMappingEdgeOfVertex y
+  let FH := kanDiagramCoherentNerve (Fh.val ⋙ kanObjectOpFunctor)
+  let FR := kanDiagramCoherentNerve (Fr.val ⋙ kanObjectOpFunctor)
+  let v := U.map (tautScaffold Lh)
+  let b := U.map (simplicialReplacementProjection Lh)
+  let m := leftUnstraighteningEdgeLiftMap FH FR ε
+  let c₀ := v ≫ oppositeKanUnstraighteningComparison Fh.val
+  let c₁ := c₀ ≫ m
+  let cT := v ≫ U.map (weightedNerveMap α) ≫ oppositeKanUnstraighteningComparison Fr.val
+  let f₀ := c₀ ≫ pullback.fst pointedSpaceProjection FH
+  let f₁ := c₁ ≫ pullback.fst pointedSpaceProjection FR
+  let fT := cT ≫ pullback.fst pointedSpaceProjection FR
+  have hb : i ≫ U.map r = b := by
+    simpa only [i, b, Functor.map_comp] using congrArg U.map s.property.2.1
+  have hs : t ≫ leftCoherentTransport p₀ = FH := by
+    exact kanDiagramCoherentNerve_precomp H (F₀.val ⋙ kanObjectOpFunctor)
+  have hc₀ : c₀ ≫ leftUnstraighteningProjection FH = b := by
+    dsimp only [c₀]
+    rw [Category.assoc, oppositeKanUnstraighteningComparison_projection]
+    dsimp only [v, b]
+    change U.map (tautScaffold Lh) ≫ U.map (weightedNerveProjection Lh) =
+      U.map (simplicialReplacementProjection Lh)
+    rw [← U.map_comp, tautScaffold_projection]
+  have hc₁ : c₁ ≫ leftUnstraighteningProjection FR = b := by
+    change (c₀ ≫ m) ≫ leftUnstraighteningProjection FR = b
+    rw [Category.assoc, leftUnstraighteningEdgeLiftMap_projection]
+    exact hc₀
+  have hcT : cT ≫ leftUnstraighteningProjection FR = b := by
+    dsimp only [cT]
+    rw [Category.assoc, Category.assoc, oppositeKanUnstraighteningComparison_projection]
+    change U.map (tautScaffold Lh) ≫
+      U.map (weightedNerveMap α) ≫ U.map (weightedNerveProjection Lr) = b
+    rw [← U.map_comp, weightedNerveMap_projection, ← U.map_comp, tautScaffold_projection]
+  have hf₀ : f₀ ≫ pointedSpaceProjection = b ≫ FH := pointedProjection_of_under FH c₀ b hc₀
+  have hf₁ : f₁ ≫ pointedSpaceProjection = b ≫ FR := pointedProjection_of_under FR c₁ b hc₁
+  have hfT : fT ≫ pointedSpaceProjection = b ≫ FR := pointedProjection_of_under FR cT b hcT
+  have hRD : R₀.diagram = t ≫ leftCoherentTransport p₀ :=
+    (nerveLeftTransportRepresentation p₀).cartesianRestrict_diagram _ _ _
+  have hRP : R₀.pointedMap = U.map d.val ≫ (nerveLeftTransportRepresentation p₀).pointedMap :=
+    (nerveLeftTransportRepresentation p₀).cartesianRestrict_pointedMap _ _ _
+  have hA : (i ≫ R₀.pointedMap) ≫ pointedSpaceProjection = f₀ ≫ pointedSpaceProjection := by
+    calc
+      _ = (i ≫ U.map r) ≫ R₀.diagram := by
+        rw [Category.assoc, R₀.pointedMap_projection, ← Category.assoc]
+      _ = b ≫ (t ≫ leftCoherentTransport p₀) := congrArg₂ (fun a b => a ≫ b) hb hRD
+      _ = b ≫ FH := congrArg (fun F => b ≫ F) hs
+      _ = _ := hf₀.symm
+  have hB : (i ≫ Rr.pointedMap) ≫ pointedSpaceProjection = b ≫ FR := by
+    rw [Category.assoc, Rr.pointedMap_projection, ← Category.assoc, hb]
+    rfl
+  let hN := hf₁.trans hfT.symm
+  let hT := hB.trans hfT.symm
+  obtain ⟨hfP, hgP, ⟨eP⟩⟩ := scaffoldPointedRelativeIso p₀
+  let fP := U.map (universalScaffold p₀) ≫ (nerveLeftTransportRepresentation p₀).pointedMap
+  let gP := U.map (tautScaffold L₀) ≫ leftCoherentTransportComparison p₀ ≫
+    pullback.fst pointedSpaceProjection (leftCoherentTransport p₀)
+  let jP := U.map (simplicialReplacementBaseMap H L₀)
+  have hiP : i ≫ U.map d.val = jP ≫ U.map (universalScaffold p₀) := by
+    simpa only [i, jP, Functor.map_comp] using congrArg U.map s.property.1
+  have hsourceP : jP ≫ fP = i ≫ R₀.pointedMap := by
+    rw [hRP]
+    dsimp only [fP]
+    rw [← Category.assoc, ← hiP, Category.assoc]
+  have htP : jP ≫ U.map (tautScaffold L₀) = v ≫ U.map (weightedNerveBaseMap H L₀) := by
+    simpa only [jP, v, Functor.map_comp] using
+      (congrArg U.map (tautScaffold_baseMap H L₀)).symm
+  have htargetP : jP ≫ gP = f₀ := by
+    calc
+      _ = (jP ≫ U.map (tautScaffold L₀)) ≫
+          (oppositeKanUnstraighteningComparison F₀.val ≫
+            pullback.fst pointedSpaceProjection (leftCoherentTransport p₀)) :=
+        (Category.assoc _ _ _).symm
+      _ = (v ≫ U.map (weightedNerveBaseMap H L₀)) ≫
+          (oppositeKanUnstraighteningComparison F₀.val ≫
+            pullback.fst pointedSpaceProjection (leftCoherentTransport p₀)) :=
+        congrArg (fun a => a ≫ (oppositeKanUnstraighteningComparison F₀.val ≫
+          pullback.fst pointedSpaceProjection (leftCoherentTransport p₀))) htP
+      _ = v ≫ (oppositeKanUnstraighteningComparison Fh.val ≫ pullback.fst pointedSpaceProjection FH) := by
+        exact (Category.assoc _ _ _).trans
+          (congrArg (fun z => v ≫ z) (oppositeComparisonPointedBase H F₀.val).symm)
+      _ = f₀ := (Category.assoc _ _ _).symm
+  let aA := functorIsoOfEq ((relativeFunctorVertexIsoImage pointedSpaceProjection
+      (U.map (simplicialReplacementProjection L₀) ≫ leftCoherentTransport p₀)
+      fP gP hfP hgP eP).precomp jP) hsourceP htargetP
+  have haA : aA.postcomp pointedSpaceProjection =
+      eqToIso (congrArg (fun f => HomotopyCategory.mk (functorVertex f)) hA) :=
+    relativeFunctorVertexIsoImage_transport_projection _ _ fP gP hfP hgP eP jP hsourceP htargetP hA
+  obtain ⟨hfR, hgR, ⟨eR⟩⟩ := scaffoldPointedRelativeIso r
+  let fR := U.map (universalScaffold r) ≫ Rr.pointedMap
+  let gR := U.map (tautScaffold Lr) ≫ leftCoherentTransportComparison r ≫ pullback.fst pointedSpaceProjection FR
+  let jR := U.map (simplicialReplacementMap α)
+  have hiR : i = jR ≫ U.map (universalScaffold r) := by
+    simpa only [i, jR, Functor.map_comp] using
+      congrArg U.map (scaffoldPullbackData_eq p₀ r d.val H d.property.2.2.1)
+  have hsourceR : jR ≫ fR = i ≫ Rr.pointedMap := by
+    dsimp only [fR]
+    rw [← Category.assoc, ← hiR]
+  have htR : jR ≫ U.map (tautScaffold Lr) = v ≫ U.map (weightedNerveMap α) := by
+    simpa only [jR, v, Functor.map_comp] using congrArg U.map (tautScaffold_map α)
+  have htargetR : jR ≫ gR = fT := by
+    dsimp only [gR, fT, cT]
+    rw [← Category.assoc jR, htR]
+    simp only [Category.assoc]
+    rfl
+  let aT := functorIsoOfEq ((relativeFunctorVertexIsoImage pointedSpaceProjection
+      (U.map (simplicialReplacementProjection Lr) ≫ FR) fR gR hfR hgR eR).precomp jR)
+    hsourceR htargetR
+  have haT : aT.postcomp pointedSpaceProjection =
+      eqToIso (congrArg (fun f => HomotopyCategory.mk (functorVertex f)) hT) :=
+    relativeFunctorVertexIsoImage_transport_projection _ _ fR gR hfR hgR eR jR hsourceR htargetR hT
+  let my := CartesianMonoidalCategory.lift (𝟙 (leftUnstraightening FH)) (SSet.const y) ≫
+    leftUnstraighteningMappingFamily FH FR
+  let nSrc := oppositeKanUnstraighteningComparison Fh.val ≫ my
+  let nTgt := U.map (weightedNerveMap α) ≫ oppositeKanUnstraighteningComparison Fr.val
+  obtain ⟨hgN, hfN, ⟨eN⟩⟩ := oppositeHomComparison_at_natural Fh Fr α
+  obtain ⟨hfNB, hgNB, ⟨eNB⟩⟩ := relativeFunctorBaseChangeForward_vertexIso
+    pointedSpaceProjection FR (U.map (weightedNerveProjection Lh)) nSrc nTgt hgN hfN eN
+  have hy : intervalMappingVertexOfEdge ε = y :=
+    (intervalMappingEdgeVertexEquiv (functorVertex FH) (functorVertex FR)).apply_symm_apply y
+  have hm : my = m := by
+    exact (congrArg (fun z => CartesianMonoidalCategory.lift (𝟙 (leftUnstraightening FH))
+      (SSet.const z) ≫ leftUnstraighteningMappingFamily FH FR) hy).symm
+  have hsourceN : v ≫ (nSrc ≫ pullback.fst pointedSpaceProjection FR) = f₁ := by
+    dsimp only [nSrc, f₁, c₁, c₀]
+    simp only [Category.assoc]
+    exact congrArg (fun z => v ≫ oppositeKanUnstraighteningComparison Fh.val ≫ z ≫
+      pullback.fst pointedSpaceProjection FR) hm
+  have htargetN : v ≫ (nTgt ≫ pullback.fst pointedSpaceProjection FR) = fT := by
+    dsimp only [nTgt, fT, cT]
+    simp only [Category.assoc]
+  let aN := functorIsoOfEq ((relativeFunctorVertexIsoImage pointedSpaceProjection
+      (U.map (weightedNerveProjection Lh) ≫ FR)
+      (nSrc ≫ pullback.fst pointedSpaceProjection FR) (nTgt ≫ pullback.fst pointedSpaceProjection FR)
+      hfNB hgNB eNB).precomp v) hsourceN htargetN
+  have haN : aN.postcomp pointedSpaceProjection =
+      eqToIso (congrArg (fun f => HomotopyCategory.mk (functorVertex f)) hN) :=
+    relativeFunctorVertexIsoImage_transport_projection _ _ _ _ hfNB hgNB eNB v hsourceN htargetN hN
+  exact ⟨hA, hN, hT, aA, aN, aT, haA, haN, haT⟩
+
+/-- 指定した同じ辺の持ち上げの射影を、指定同型の前合成で記録する。 -/
+private lemma edgeLift_pointedIso {A B : SSet.{u+1}}
+    (F G : B ⟶ SpaceInfinity.{u})
+    (e : SSet.Edge (X := (ihom B).obj SpaceInfinity.{u})
+      (functorVertex F) (functorVertex G))
+    (d : FunctorIso F G)
+    (hd : d.hom = SSet.Truncated.HomotopyCategory.homMk e.toTruncated)
+    (c : A ⟶ leftUnstraightening F) (b : A ⟶ B)
+    (hc : c ≫ leftUnstraighteningProjection F = b)
+    (f g : A ⟶ PointedSpaceInfinity.{u})
+    (hf : f = c ≫ pullback.fst pointedSpaceProjection F)
+    (hg : g = c ≫ leftUnstraighteningEdgeLiftMap F G e ≫
+      pullback.fst pointedSpaceProjection G)
+    (hfp : f ≫ pointedSpaceProjection = b ≫ F)
+    (hgp : g ≫ pointedSpaceProjection = b ≫ G) :
+    ∃ a : FunctorIso f g, a.postcomp pointedSpaceProjection =
+      functorIsoOfEq (d.precomp b) hfp.symm hgp.symm := by
+  let r := e.map ((pre b).app SpaceInfinity.{u})
+  have hr : (d.precomp b).hom = SSet.Truncated.HomotopyCategory.homMk r.toTruncated := by
+    rw [functorIso_precomp_hom, hd]
+    rfl
+  let r' := r.ofEq (congrArg functorVertex hfp.symm) (congrArg functorVertex hgp.symm)
+  let W := (Δ[1] ◁ c) ≫ leftUnstraighteningEdgeLiftFamily F G e
+  have h₀ : prismEndpoint 0 A ≫ W = f := by
+    dsimp only [W]
+    rw [← Category.assoc, prismEndpoint_naturality, Category.assoc,
+      leftUnstraighteningEdgeLiftFamily_zero]
+    exact hf.symm
+  have h₁ : prismEndpoint 1 A ≫ W = g := by
+    dsimp only [W]
+    rw [← Category.assoc, prismEndpoint_naturality, Category.assoc,
+      leftUnstraighteningEdgeLiftFamily_one]
+    exact hg.symm
+  have hp : W ≫ pointedSpaceProjection = functorEdgePrism r'.toTruncated := by
+    dsimp only [W]
+    rw [Category.assoc, leftUnstraighteningEdgeLiftFamily_projection, ← Category.assoc,
+      ← MonoidalCategory.whiskerLeft_comp, hc]
+    exact (functorEdgePrism_precomp e.toTruncated b).symm
+  exact pointedIsoOfProjectedPrism _ r'.toTruncated
+    (functorIsoOfEq_hom (d.precomp b) hfp.symm hgp.symm r hr).symm W h₀ h₁ hp
+
+/-- 指定同型の両端に入る等式の同型は、同じ端点移送に吸収される。 -/
+private lemma pointedProjection_chain {A X : SSet.{u}}
+    {fA f₀ f₁ fT fB l r : A ⟶ X}
+    (hA : fA = f₀) (hN : f₁ = fT) (hT : fB = fT)
+    (h₀ : l = f₀) (h₁ : r = f₁) (hF : l = fA) (hG : r = fB)
+    (e : FunctorIso l r) :
+    eqToIso (congrArg (fun f => HomotopyCategory.mk (functorVertex f)) hA) ≪≫
+      diagramIsoCongr h₀ h₁ e ≪≫
+      eqToIso (congrArg (fun f => HomotopyCategory.mk (functorVertex f)) hN) ≪≫
+      (eqToIso (congrArg (fun f => HomotopyCategory.mk (functorVertex f)) hT)).symm =
+        diagramIsoCongr hF hG e := by
+  subst f₀ fT fB l r
+  simp only [diagramIsoCongr, eqToIso_refl, Iso.refl_symm, Iso.refl_trans, Iso.trans_refl]
+
+/-- 同じ前合成射の等式は、指定同型の前合成の異種等式を与える。 -/
+private lemma functorIsoPrecomp_heq {A D X : SSet.{u}}
+    {f g : A ⟶ X} (e : FunctorIso f g) {i j : D ⟶ A} (h : i = j) :
+    HEq (e.precomp i) (e.precomp j) := by
+  cases h
+  rfl
+
+/-- 四つの既存比較の射影は、元の指定同型を同じ外端点へ移したものである。 -/
+private lemma pointedProjection_fourChain {A : SSet.{u+1}}
+    {fA f₀ f₁ fT fB : A ⟶ PointedSpaceInfinity.{u}}
+    {l r : A ⟶ SpaceInfinity.{u}}
+    (aA : FunctorIso fA f₀) (aM : FunctorIso f₀ f₁)
+    (aN : FunctorIso f₁ fT) (aT : FunctorIso fB fT)
+    (hA : fA ≫ pointedSpaceProjection = f₀ ≫ pointedSpaceProjection)
+    (hN : f₁ ≫ pointedSpaceProjection = fT ≫ pointedSpaceProjection)
+    (hT : fB ≫ pointedSpaceProjection = fT ≫ pointedSpaceProjection)
+    (h₀ : l = f₀ ≫ pointedSpaceProjection) (h₁ : r = f₁ ≫ pointedSpaceProjection)
+    (hF : l = fA ≫ pointedSpaceProjection) (hG : r = fB ≫ pointedSpaceProjection)
+    (e : FunctorIso l r)
+    (haA : aA.postcomp pointedSpaceProjection =
+      eqToIso (congrArg (fun f => HomotopyCategory.mk (functorVertex f)) hA))
+    (haM : aM.postcomp pointedSpaceProjection = diagramIsoCongr h₀ h₁ e)
+    (haN : aN.postcomp pointedSpaceProjection =
+      eqToIso (congrArg (fun f => HomotopyCategory.mk (functorVertex f)) hN))
+    (haT : aT.postcomp pointedSpaceProjection =
+      eqToIso (congrArg (fun f => HomotopyCategory.mk (functorVertex f)) hT)) :
+    FunctorIso.postcomp (aA ≪≫ aM ≪≫ aN ≪≫ aT.symm) pointedSpaceProjection =
+      diagramIsoCongr hF hG e := by
+  rw [functorIso_postcomp_trans, functorIso_postcomp_trans, functorIso_postcomp_trans,
+    functorIso_postcomp_symm, haA, haM, haN, haT]
+  exact pointedProjection_chain hA hN hT h₀ h₁ hF hG e
+
+/-- 同じ二段の前合成と端点移送を、一度の前合成へまとめる。 -/
+private lemma normalizedIso_precomp_pair {A B Z X : SSet.{u}}
+    {F G : B ⟶ X} (e : FunctorIso F G)
+    (p : A ⟶ B) (i : Z ⟶ A) (b : Z ⟶ B) (hb : i ≫ p = b)
+    (f g : A ⟶ X) (hf : f = p ≫ F) (hg : g = p ≫ G)
+    (hF : b ≫ F = i ≫ f) (hG : b ≫ G = i ≫ g) :
+    diagramIsoCongr hF hG (e.precomp b) =
+      (functorIsoOfEq (e.precomp p) hf.symm hg.symm).precomp i := by
+  rw [functorIsoOfEq_eq_diagramIsoCongr, diagramIsoCongr_precomp]
+  have he : HEq ((e.precomp p).precomp i) (e.precomp b) := by
+    rw [functorIso_precomp_precomp]
+    exact functorIsoPrecomp_heq e hb
+  exact diagramIsoCongr_eq_of_heq hF hG _ _ _ _ he.symm
+
+/-- 両端と中間の指定pointed比較を、同じ図式同型の制限へ接続する法則。 -/
+private lemma pointedComparisonOfEnds {A B Z : SSet.{u+1}}
+    (p : A ⟶ B) (i : Z ⟶ A) (b : Z ⟶ B) (hb : i ≫ p = b)
+    (F F' G : B ⟶ SpaceInfinity.{u}) (hs : F = F') (ν : FunctorIso F G)
+    (ε : SSet.Edge (X := (ihom B).obj SpaceInfinity.{u}) (functorVertex F') (functorVertex G))
+    (hε : (diagramIsoCongr hs rfl ν).hom = Truncated.HomotopyCategory.homMk ε.toTruncated)
+    (f g : A ⟶ PointedSpaceInfinity.{u})
+    (hf : f ≫ pointedSpaceProjection = p ≫ F) (hg : g ≫ pointedSpaceProjection = p ≫ G)
+    (c : Z ⟶ leftUnstraightening F') (hc : c ≫ leftUnstraighteningProjection F' = b)
+    (f₀ f₁ fT : Z ⟶ PointedSpaceInfinity.{u})
+    (h₀ : f₀ = c ≫ pullback.fst pointedSpaceProjection F')
+    (h₁ : f₁ = c ≫ leftUnstraighteningEdgeLiftMap F' G ε ≫ pullback.fst pointedSpaceProjection G)
+    (geometry : ∃ (hA : (i ≫ f) ≫ pointedSpaceProjection = f₀ ≫ pointedSpaceProjection)
+      (hN : f₁ ≫ pointedSpaceProjection = fT ≫ pointedSpaceProjection)
+      (hT : (i ≫ g) ≫ pointedSpaceProjection = fT ≫ pointedSpaceProjection),
+      ∃ aA : FunctorIso (i ≫ f) f₀, ∃ aN : FunctorIso f₁ fT, ∃ aT : FunctorIso (i ≫ g) fT,
+        aA.postcomp pointedSpaceProjection =
+            eqToIso (congrArg (fun z => HomotopyCategory.mk (functorVertex z)) hA) ∧
+        aN.postcomp pointedSpaceProjection =
+            eqToIso (congrArg (fun z => HomotopyCategory.mk (functorVertex z)) hN) ∧
+        aT.postcomp pointedSpaceProjection =
+            eqToIso (congrArg (fun z => HomotopyCategory.mk (functorVertex z)) hT)) :
+    ∃ e : FunctorIso (i ≫ f) (i ≫ g), e.postcomp pointedSpaceProjection =
+      (functorIsoOfEq (ν.precomp p) hf.symm hg.symm).precomp i := by
+  obtain ⟨hA, hN, hT, aA, aN, aT, haA, haN, haT⟩ := geometry
+  have hc₁ : (c ≫ leftUnstraighteningEdgeLiftMap F' G ε) ≫
+      leftUnstraighteningProjection G = b := by
+    rw [Category.assoc, leftUnstraighteningEdgeLiftMap_projection]
+    exact hc
+  have hf₀ : f₀ ≫ pointedSpaceProjection = b ≫ F' := by
+    rw [h₀]
+    exact pointedProjection_of_under F' c b hc
+  have hf₁ : f₁ ≫ pointedSpaceProjection = b ≫ G := by
+    rw [h₁]
+    exact pointedProjection_of_under G (c ≫ leftUnstraighteningEdgeLiftMap F' G ε) b hc₁
+  let δ := diagramIsoCongr hs rfl ν
+  obtain ⟨aM, haM⟩ := edgeLift_pointedIso F' G ε δ hε c b hc f₀ f₁ h₀ h₁ hf₀ hf₁
+  have hF : b ≫ F = (i ≫ f) ≫ pointedSpaceProjection :=
+    (congrArg (fun z => b ≫ z) hs).trans (hf₀.symm.trans hA.symm)
+  have hG : b ≫ G = (i ≫ g) ≫ pointedSpaceProjection := by
+    exact (congrArg (fun z => z ≫ G) hb).symm.trans (congrArg (fun z => i ≫ z) hg.symm)
+  let h₀' := (congrArg (fun z => b ≫ z) hs).trans hf₀.symm
+  let h₁' := hf₁.symm
+  have hmid : functorIsoOfEq (δ.precomp b) hf₀.symm hf₁.symm =
+      diagramIsoCongr h₀' h₁' (ν.precomp b) := by
+    rw [functorIsoOfEq_eq_diagramIsoCongr, diagramIsoCongr_precomp, diagramIsoCongr_comp]
+  refine ⟨aA ≪≫ aM ≪≫ aN ≪≫ aT.symm, ?_⟩
+  exact (pointedProjection_fourChain aA aM aN aT hA hN hT h₀' h₁' hF hG
+    (ν.precomp b) haA (haM.trans hmid) haN haT).trans
+      (normalizedIso_precomp_pair ν p i b hb (f ≫ pointedSpaceProjection)
+        (g ≫ pointedSpaceProjection) hf hg hF hG)
+
+/-- 同じ区間の辺を表す任意の指定同型に対する、scaffold上の接続の法則。 -/
+private lemma scaffoldPointedComparison_of_intervalHom :
+    ∀ {E B D : SSet.{u}} [Quasicategory B] [Quasicategory D]
+    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B),
+    let U := SSet.uliftFunctor.{u+1,u}
+    let lB := transportSimplexFirstVertexMap B
+    let lD := transportSimplexFirstVertexMap D
+    let H := transportSimplexFunctor k
+    let q := pullback.snd p k
+    let p₀ := pullback.snd p lB
+    let r := pullback.snd q lD
+    let d := leftStraighteningBaseChangePullbackData p k
+    let s := scaffoldPullbackData p₀ r d.val H d.property.2.2.1
+    let i := U.map s.val
+    let R₀ := (nerveLeftTransportRepresentation p₀).cartesianRestrict
+      (U.map d.val) (U.map (nerveMap H)) d.property.2.2.2
+    let Rr := nerveLeftTransportRepresentation r
+    let F₀ : KanDiagramObject (TransportSimplexCategory B) := ⟨leftStrictTransportFunctor p₀, trivial⟩
+    let Fh : KanDiagramObject (TransportSimplexCategory D) := ⟨H ⋙ F₀.val, trivial⟩
+    let Fr : KanDiagramObject (TransportSimplexCategory D) := ⟨leftStrictTransportFunctor r, trivial⟩
+    let α := pullbackStrictComparison p₀ r d.val H d.property.2.2.1
+    let y := (kanDiagramOppositeHomInterval Fh Fr).app _ (naturalHomVertex Fh Fr α)
+    let ε := intervalMappingEdgeOfVertex y
+    let hs : U.map (nerveMap H) ≫ leftCoherentTransport p₀ =
+        kanDiagramCoherentNerve (Fh.val ⋙ kanObjectOpFunctor) :=
+      kanDiagramCoherentNerve_precomp H (F₀.val ⋙ kanObjectOpFunctor)
+    ∀ (ν : FunctorIso (U.map (nerveMap H) ≫ leftCoherentTransport p₀) (leftCoherentTransport r)),
+      ν.hom = eqToHom (congrArg (fun f => HomotopyCategory.mk (functorVertex f)) hs) ≫
+        SSet.Truncated.HomotopyCategory.homMk ε.toTruncated →
+    ∃ e : FunctorIso (i ≫ R₀.pointedMap) (i ≫ Rr.pointedMap),
+      e.postcomp pointedSpaceProjection =
+        (functorIsoOfEq (FunctorIso.precomp ν (U.map r)) R₀.pointedMap_projection.symm
+          Rr.pointedMap_projection.symm).precomp i := by
+  intro E B D hB hD p hp k
+  let U := SSet.uliftFunctor.{u+1,u}
+  let lB := transportSimplexFirstVertexMap B
+  let lD := transportSimplexFirstVertexMap D
+  let H := transportSimplexFunctor k
+  let t := U.map (nerveMap H)
+  let q := pullback.snd p k
+  let p₀ := pullback.snd p lB
+  let r := pullback.snd q lD
+  let d := leftStraighteningBaseChangePullbackData p k
+  let s := scaffoldPullbackData p₀ r d.val H d.property.2.2.1
+  let i := U.map s.val
+  let R₀ := (nerveLeftTransportRepresentation p₀).cartesianRestrict
+    (U.map d.val) t d.property.2.2.2
+  let Rr := nerveLeftTransportRepresentation r
+  let F₀ : KanDiagramObject (TransportSimplexCategory B) := ⟨leftStrictTransportFunctor p₀, trivial⟩
+  let Fh : KanDiagramObject (TransportSimplexCategory D) := ⟨H ⋙ F₀.val, trivial⟩
+  let Fr : KanDiagramObject (TransportSimplexCategory D) := ⟨leftStrictTransportFunctor r, trivial⟩
+  let L₀ := leftStrictTransportDiagram p₀
+  let Lh := H ⋙ L₀
+  let Lr := leftStrictTransportDiagram r
+  let α : Lh ⟶ Lr := pullbackStrictComparison p₀ r d.val H d.property.2.2.1
+  let y := (kanDiagramOppositeHomInterval Fh Fr).app _ (naturalHomVertex Fh Fr α)
+  let ε := intervalMappingEdgeOfVertex y
+  let FH := kanDiagramCoherentNerve (Fh.val ⋙ kanObjectOpFunctor)
+  let FR := kanDiagramCoherentNerve (Fr.val ⋙ kanObjectOpFunctor)
+  let v := U.map (tautScaffold Lh)
+  let b := U.map (simplicialReplacementProjection Lh)
+  let m := leftUnstraighteningEdgeLiftMap FH FR ε
+  let c₀ := v ≫ oppositeKanUnstraighteningComparison Fh.val
+  let c₁ := c₀ ≫ m
+  let cT := v ≫ U.map (weightedNerveMap α) ≫ oppositeKanUnstraighteningComparison Fr.val
+  let f₀ := v ≫ oppositeKanUnstraighteningComparison Fh.val ≫
+    pullback.fst pointedSpaceProjection FH
+  let f₁ := v ≫ oppositeKanUnstraighteningComparison Fh.val ≫ m ≫
+    pullback.fst pointedSpaceProjection FR
+  let fT := v ≫ U.map (weightedNerveMap α) ≫ oppositeKanUnstraighteningComparison Fr.val ≫
+    pullback.fst pointedSpaceProjection FR
+  dsimp only
+  intro ν hν
+  have hb : i ≫ U.map r = b := by
+    simpa only [i, b, Functor.map_comp] using congrArg U.map s.property.2.1
+  have hs : t ≫ leftCoherentTransport p₀ = FH :=
+    kanDiagramCoherentNerve_precomp H (F₀.val ⋙ kanObjectOpFunctor)
+  have hc₀ : c₀ ≫ leftUnstraighteningProjection FH = b := by
+    dsimp only [c₀]
+    rw [Category.assoc, oppositeKanUnstraighteningComparison_projection]
+    change U.map (tautScaffold Lh) ≫ U.map (weightedNerveProjection Lh) =
+      U.map (simplicialReplacementProjection Lh)
+    rw [← U.map_comp, tautScaffold_projection]
+  exact pointedComparisonOfEnds (U.map r) i b hb
+    (t ≫ leftCoherentTransport p₀) FH FR hs ν ε
+    ((normalizedIsoHom_iff hs ν _).2 hν) R₀.pointedMap Rr.pointedMap
+    R₀.pointedMap_projection Rr.pointedMap_projection c₀ hc₀ f₀ f₁ fT
+    (Category.assoc v (oppositeKanUnstraighteningComparison Fh.val) _).symm
+    (Category.assoc v (oppositeKanUnstraighteningComparison Fh.val) _).symm
+    (leftStraighteningBaseChange_scaffold_pointedEnds p k)
+
+
+/-- scaffoldの指定pointed比較は、元の同じνの制限を被覆する。
+HTT §3.3.2・Kerodon Tag 028Tの構成に付随する、この模型での特殊な照合。 -/
+@[cite HTT "3.3.2" (partial := special) "scaffold制限上の指定pointed比較と分類底変換の射影の照合。"]
+private lemma leftStraighteningBaseChange_scaffold_pointedComparison :
+    ∀ {E B D : SSet.{u}} [Quasicategory B] [Quasicategory D]
+    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B),
+    let U := SSet.uliftFunctor.{u+1,u}
+    let lB := transportSimplexFirstVertexMap B
+    let lD := transportSimplexFirstVertexMap D
+    let H := transportSimplexFunctor k
+    let q := pullback.snd p k
+    let p₀ := pullback.snd p lB
+    let r := pullback.snd q lD
+    let d := leftStraighteningBaseChangePullbackData p k
+    let s := scaffoldPullbackData p₀ r d.val H d.property.2.2.1
+    let i := U.map s.val
+    let R₀ := (nerveLeftTransportRepresentation p₀).cartesianRestrict
+      (U.map d.val) (U.map (nerveMap H)) d.property.2.2.2
+    let Rr := nerveLeftTransportRepresentation r
+    let θp := leftStraighteningInfinityDiagram_firstVertexTransportIso p
+    let θq := leftStraighteningInfinityDiagram_firstVertexTransportIso q
+    let β := leftStraighteningInfinityDiagram_baseChangeIso p k
+    let ν := (θp.precomp (U.map (nerveMap H))).symm ≪≫
+      diagramIsoCongr
+        (by rw [← Category.assoc, ← transportSimplexFirstVertexMap_ulift_naturality k,
+          Category.assoc]) rfl (β.precomp (U.map lD)) ≪≫ θq
+    ∃ e : FunctorIso (i ≫ R₀.pointedMap) (i ≫ Rr.pointedMap),
+      e.postcomp pointedSpaceProjection =
+        (functorIsoOfEq (FunctorIso.precomp ν (U.map r)) R₀.pointedMap_projection.symm
+          Rr.pointedMap_projection.symm).precomp i := by
+  intro E B D hB hD p hp k
+  let U := SSet.uliftFunctor.{u+1,u}
+  let lB := transportSimplexFirstVertexMap B
+  let lD := transportSimplexFirstVertexMap D
+  let H := transportSimplexFunctor k
+  let q := pullback.snd p k
+  let p₀ := pullback.snd p lB
+  let r := pullback.snd q lD
+  let d := leftStraighteningBaseChangePullbackData p k
+  let s := scaffoldPullbackData p₀ r d.val H d.property.2.2.1
+  let i := U.map s.val
+  let R₀ := (nerveLeftTransportRepresentation p₀).cartesianRestrict
+    (U.map d.val) (U.map (nerveMap H)) d.property.2.2.2
+  let Rr := nerveLeftTransportRepresentation r
+  let θp := leftStraighteningInfinityDiagram_firstVertexTransportIso p
+  let θq := leftStraighteningInfinityDiagram_firstVertexTransportIso q
+  let β := leftStraighteningInfinityDiagram_baseChangeIso p k
+  let ν : FunctorIso (U.map (nerveMap H) ≫ leftCoherentTransport p₀)
+      (leftCoherentTransport r) := (θp.precomp (U.map (nerveMap H))).symm ≪≫
+    diagramIsoCongr
+      (by rw [← Category.assoc, ← transportSimplexFirstVertexMap_ulift_naturality k,
+        Category.assoc]) rfl (β.precomp (U.map lD)) ≪≫ θq
+  exact scaffoldPointedComparison_of_intervalHom p k ν
+    (leftStraighteningBaseChange_nativeInterval_hom p k)
+
+/-- 底変換の元の指定νの辺を被覆し、元の二つのpointed比較を結ぶprism。
+HTT §3.3.2・Kerodon Tag 028Tの構成の、この指定scaffold模型での特殊な照合。 -/
+@[cite HTT "3.3.2" (partial := special) "指定底変換同型の辺を被覆するpointed比較のprism。"]
+public lemma leftStraighteningBaseChange_pointedPrism :
+    ∀ {E B D : SSet.{u}} [Quasicategory B] [Quasicategory D]
+  (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B),
+  let U := SSet.uliftFunctor.{u+1,u}
+  let lB := transportSimplexFirstVertexMap B
+  let lD := transportSimplexFirstVertexMap D
+  let H := transportSimplexFunctor k
+  let q := pullback.snd p k
+  let p₀ := pullback.snd p lB
+  let r := pullback.snd q lD
+  let d := leftStraighteningBaseChangePullbackData p k
+  let R₀ := (nerveLeftTransportRepresentation p₀).cartesianRestrict
+    (U.map d.val) (U.map (nerveMap H)) d.property.2.2.2
+  let Rr := nerveLeftTransportRepresentation r
+  let θp := leftStraighteningInfinityDiagram_firstVertexTransportIso p
+  let θq := leftStraighteningInfinityDiagram_firstVertexTransportIso q
+  let β := leftStraighteningInfinityDiagram_baseChangeIso p k
+  let ν := (θp.precomp (U.map (nerveMap H))).symm ≪≫
+    diagramIsoCongr
+      (by rw [← Category.assoc, ← transportSimplexFirstVertexMap_ulift_naturality k,
+        Category.assoc]) rfl (β.precomp (U.map lD)) ≪≫ θq
+  let e := functorEdgeOfSimplicialHomotopy (functorHomHomotopy ν.hom)
+  ∃ W : (Δ[1] : SSet.{u+1}) ⊗ U.obj (pullback q lD) ⟶ PointedSpaceInfinity.{u},
+    prismEndpoint 0 (U.obj (pullback q lD)) ≫ W = R₀.pointedMap ∧
+    prismEndpoint 1 (U.obj (pullback q lD)) ≫ W = Rr.pointedMap ∧
+    W ≫ pointedSpaceProjection = (Δ[1] ◁ U.map r) ≫ functorEdgePrism e := by
+  intro E B D hB hD p hp k
+  let U := SSet.uliftFunctor.{u+1,u}
+  let lB := transportSimplexFirstVertexMap B
+  let lD := transportSimplexFirstVertexMap D
+  let H := transportSimplexFunctor k
+  let q := pullback.snd p k
+  let p₀ := pullback.snd p lB
+  let r := pullback.snd q lD
+  let d := leftStraighteningBaseChangePullbackData p k
+  let R₀ := (nerveLeftTransportRepresentation p₀).cartesianRestrict
+    (U.map d.val) (U.map (nerveMap H)) d.property.2.2.2
+  let Rr := nerveLeftTransportRepresentation r
+  let θp := leftStraighteningInfinityDiagram_firstVertexTransportIso p
+  let θq := leftStraighteningInfinityDiagram_firstVertexTransportIso q
+  let β := leftStraighteningInfinityDiagram_baseChangeIso p k
+  let ν : FunctorIso (U.map (nerveMap H) ≫ leftCoherentTransport p₀)
+      (leftCoherentTransport r) := (θp.precomp (U.map (nerveMap H))).symm ≪≫
+    diagramIsoCongr
+      (by rw [← Category.assoc, ← transportSimplexFirstVertexMap_ulift_naturality k,
+        Category.assoc]) rfl (β.precomp (U.map lD)) ≪≫ θq
+  let s := scaffoldPullbackData p₀ r d.val H d.property.2.2.1
+  let i := U.map s.val
+  obtain ⟨e, he⟩ := leftStraighteningBaseChange_scaffold_pointedComparison p k
+  exact pointedPrismOfRestriction (U.map r) i (uliftPrecomp s.val s.property.2.2) ν
+    R₀.pointedMap_projection Rr.pointedMap_projection e he
 
 end SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations
