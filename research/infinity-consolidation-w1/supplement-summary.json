@@ -1,0 +1,131 @@
+{
+  "small_files": 10447,
+  "small_chapters": 224,
+  "small_top20": [
+    [
+      "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations",
+      742,
+      45158
+    ],
+    [
+      "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories",
+      651,
+      37010
+    ],
+    [
+      "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/PresentableInfinityCategories",
+      608,
+      36933
+    ],
+    [
+      "SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/Localization",
+      518,
+      29644
+    ],
+    [
+      "SerrePositivity/InfinityCategories/HA/StableInfinityCategories",
+      418,
+      22053
+    ],
+    [
+      "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits",
+      281,
+      16941
+    ],
+    [
+      "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/TheInfinityCategoryQC",
+      228,
+      13380
+    ],
+    [
+      "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison",
+      208,
+      11812
+    ],
+    [
+      "SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/MorphismSpaces",
+      197,
+      12142
+    ],
+    [
+      "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CoherentBar/StrictComparison",
+      182,
+      9803
+    ],
+    [
+      "SerrePositivity/InfinityCategories/Project/FilteredExchange/KanReplacement",
+      171,
+      9969
+    ],
+    [
+      "SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/TheYonedaEmbedding",
+      161,
+      9410
+    ],
+    [
+      "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations",
+      158,
+      9466
+    ],
+    [
+      "SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/RetractsAndIdempotents",
+      144,
+      7821
+    ],
+    [
+      "SerrePositivity/InfinityCategories/Project/DerivedCategories/Gluing/ExactSequences/ComparisonModels",
+      144,
+      7499
+    ],
+    [
+      "SerrePositivity/InfinityCategories/HA/DerivedCategoryModels/CoherentBar",
+      141,
+      8704
+    ],
+    [
+      "SerrePositivity/InfinityCategories/Project/DerivedCategories/Verdier",
+      141,
+      7895
+    ],
+    [
+      "SerrePositivity/InfinityCategories/Project/DerivedCategories/LocalizationAndRoofs",
+      139,
+      7385
+    ],
+    [
+      "SerrePositivity/InfinityCategories/Kerodon/ExamplesOfInfinityCategories/DifferentialGradedCategories",
+      134,
+      8237
+    ],
+    [
+      "SerrePositivity/InfinityCategories/Project/DerivedCategories/Gluing/Comparison",
+      123,
+      6206
+    ]
+  ],
+  "concrete_bound_files": 41,
+  "concrete_bound_edges": 50,
+  "external_importer_files": 311,
+  "external_import_edges": 2434,
+  "inherited_sha_different": [
+    "CH062",
+    "CH076"
+  ],
+  "inherited_missing": [
+    "CH067",
+    "CH073",
+    "CH074",
+    "CH246",
+    "CH247",
+    "CH248",
+    "CH249",
+    "CH250",
+    "CH251",
+    "CH252",
+    "CH253",
+    "CH254",
+    "CH255"
+  ],
+  "formal_audits": 106,
+  "inherited_source_head": "8f06e1bcd + approved LeftCoherentTransportDirectComparison three-body patch"
+}
