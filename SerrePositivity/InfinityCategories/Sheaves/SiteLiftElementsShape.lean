@@ -34,6 +34,7 @@ def siteLiftElementsShapeIso (P : Cᵒᵖ ⥤ Type u) :
   inv_hom_id := rfl
 
 /-- 指定形状同型は、元の前層の同じ射の要素圏への作用と可換。 -/
+@[cite HTT "5.1.5.6" (partial := special) "小さい通常siteの集合値重みの指定形状同型の自然性。"]
 lemma siteLiftElementsShapeIso_naturality {P Q : Cᵒᵖ ⥤ Type u} (φ : P ⟶ Q) :
     (siteLiftElementsShapeIso P).hom ≫ nerveMap (siteLiftPresheafMap φ).mapElements =
       (SSet.uliftFunctor.{u + 1, u}).map (nerveMap φ.mapElements) ≫

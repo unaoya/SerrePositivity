@@ -45,12 +45,14 @@ def siteLiftSectionsCone (P : Cᵒᵖ ⥤ Type u) (O : Presheaf C E)
   (restrictJoinCone c (siteLiftElementsShapeIso P).inv).cast (siteLiftSectionsDiagram_eq P O)
 
 /-- 指定した元の頂点を厳密に保つ。 -/
+@[cite HTT "5.1.5.6" (partial := special) "小さい通常siteの同じ指定切断錐の頂点保存の計算法則。"]
 lemma siteLiftSectionsCone_vertex (P : Cᵒᵖ ⥤ Type u) (O : Presheaf C E)
     (c : JoinCone (sectionsOfDiagram P O)) :
     (siteLiftSectionsCone P O c).vertex = c.vertex := by
   rw [siteLiftSectionsCone, JoinCone.vertex_cast, restrictJoinCone_vertex]
 
 /-- 同じ前層の射による錐の制限とも、全join射で可換。 -/
+@[cite HTT "5.1.5.6" (partial := special) "小さい通常siteの同じ指定切断錐の制限との両立の法則。"]
 lemma siteLiftSectionsCone_restrict {P Q : Cᵒᵖ ⥤ Type u} (φ : P ⟶ Q) (O : Presheaf C E)
     (c : JoinCone (sectionsOfDiagram Q O)) :
     joinMap (𝟙 _) (nerveMap (siteLiftPresheafMap φ).mapElements) ≫

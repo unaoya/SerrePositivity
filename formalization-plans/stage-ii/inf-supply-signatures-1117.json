@@ -1495,7 +1495,7 @@
         {
           "name": "siteLiftSectionsCone_isLimit_iff",
           "path": "SerrePositivity/InfinityCategories/Sheaves/SiteLiftSectionsCone.lean",
-          "line": 76
+          "line": 78
         }
       ],
       "literature": "HTT 4.1.1.8、同値な添字による極限の移送。宇宙持ち上げの法則。",
@@ -1543,7 +1543,7 @@
         {
           "name": "siteLiftSectionsCone_isLimit_iff",
           "path": "SerrePositivity/InfinityCategories/Sheaves/SiteLiftSectionsCone.lean",
-          "line": 76
+          "line": 78
         }
       ],
       "literature": "HTT 4.1.1.8、同値な添字による極限の移送。宇宙持ち上げの法則。",
@@ -1591,7 +1591,7 @@
         {
           "name": "siteLiftSectionsCone_isLimit_iff",
           "path": "SerrePositivity/InfinityCategories/Sheaves/SiteLiftSectionsCone.lean",
-          "line": 76
+          "line": 78
         }
       ],
       "literature": "HTT 4.1.1.8、同値な添字による極限の移送。宇宙持ち上げの法則。",
@@ -1639,7 +1639,7 @@
         {
           "name": "siteLiftSectionsCone_isLimit_iff",
           "path": "SerrePositivity/InfinityCategories/Sheaves/SiteLiftSectionsCone.lean",
-          "line": 76
+          "line": 78
         }
       ],
       "literature": "HTT 4.1.1.8、同値な添字による極限の移送。宇宙持ち上げの法則。",
@@ -1697,7 +1697,7 @@
         {
           "name": "siteLiftSectionsCone_isLimit_iff",
           "path": "SerrePositivity/InfinityCategories/Sheaves/SiteLiftSectionsCone.lean",
-          "line": 76
+          "line": 78
         }
       ],
       "literature": "HTT 6.2.2.6、表現可能関手による極限の検出（Kerodon §7.1）。任意の準圏係数への反映。",
@@ -3408,12 +3408,87 @@
     "large_law_estimates_only": true
   },
   "cap_checkpoint_1118": {
-    "state": "preparing final citation and receipt audit",
+    "state": "verified cap checkpoint; Lean stopped before R04",
     "verified_lines": 28221,
     "next_signature": "R04",
     "next_corrected_upper": 800,
     "projected": 29021,
     "cap": 29000,
-    "rule": "次の署名のまとまりの補正後の上端を足すと超える手前で区切る。R04のLeanはここから進めない。"
+    "rule": "次の署名のまとまりの補正後の上端を足すと超える手前で区切る。R04のLeanはここから進めない。",
+    "audit": "/Users/sugakubunka/serre-evidence/inf-supply/checkpoint-28221-1118/checkpoint-audit.json",
+    "verified_signatures": 39,
+    "total_signatures": 55,
+    "additional_signatures": 20,
+    "current_sha_receipt_modules": 45,
+    "primary_citations": 39,
+    "pending": [
+      "R04",
+      "R05",
+      "R06",
+      "R08",
+      "R09",
+      "R12a",
+      "R12b",
+      "R13b",
+      "R14",
+      "R15a",
+      "R15b",
+      "R15c",
+      "R09-Cech",
+      "R15-Unit"
+    ],
+    "deferred": [
+      "R16",
+      "R17"
+    ]
+  },
+  "citation_refresh_1118": {
+    "verification": {
+      "modules": 3,
+      "declarations": 25,
+      "allowed_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "success": true,
+      "source": "fresh environment after target build; no pre-merge index reuse",
+      "heartbeat_limit": "unchanged; one command per declaration",
+      "source_sha256": {
+        "SerrePositivity/InfinityCategories/Sheaves/SiteLiftElementsShape.lean": "bbf5871ca8b0304921bd5c1d8e5d6d4bbe2f2d9243def1a9f10add6935e44f58",
+        "SerrePositivity/InfinityCategories/Sheaves/SiteLiftSectionsCone.lean": "d5a2412159cecf4fc9f8f9e4d4022e121e96382fead72ad97d738345f16eec23",
+        "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsRelativeCechDiagonal.lean": "ad727c54a682007f225087f87db985ef8c37b103fd1d94619f590fb48863c141"
+      }
+    },
+    "receipt": "/Users/sugakubunka/serre-evidence/inf-supply/checkpoint-28221-1118/final/target-audit-result.json",
+    "primary_citations": {
+      "verified": 39,
+      "total": 39,
+      "source": "/Users/sugakubunka/serre-evidence/inf-supply/checkpoint-28221-1118/final/primary-citations.json"
+    },
+    "metadata_changes": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Sheaves/SiteLiftElementsShape.lean",
+        "before_sha256": "f9ced6ad6932e0715214671ff40fb627fcd95b1c3d0620277678857ae9099cdd",
+        "after_sha256": "bbf5871ca8b0304921bd5c1d8e5d6d4bbe2f2d9243def1a9f10add6935e44f58",
+        "added_lines": 1,
+        "body_unchanged_after_removing_exact_added_attributes": true,
+        "added_attributes": [
+          "@[cite HTT \"5.1.5.6\" (partial := special) \"小さい通常siteの集合値重みの指定形状同型の自然性。\"]\n"
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Sheaves/SiteLiftSectionsCone.lean",
+        "before_sha256": "a5a7ada81f385924d69934a67784a447f2310c4d56f509180cc8e17d68df4fee",
+        "after_sha256": "d5a2412159cecf4fc9f8f9e4d4022e121e96382fead72ad97d738345f16eec23",
+        "added_lines": 2,
+        "body_unchanged_after_removing_exact_added_attributes": true,
+        "added_attributes": [
+          "@[cite HTT \"5.1.5.6\" (partial := special) \"小さい通常siteの同じ指定切断錐の頂点保存の計算法則。\"]\n",
+          "@[cite HTT \"5.1.5.6\" (partial := special) \"小さい通常siteの同じ指定切断錐の制限との両立の法則。\"]\n"
+        ]
+      }
+    ],
+    "math_lines_excluded": 3
   }
 }

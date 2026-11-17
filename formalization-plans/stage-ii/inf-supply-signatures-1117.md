@@ -859,7 +859,7 @@ JoinCone (nativeSetSectionsDiagram (siteLiftPresheaf P) ((asSmallSiteShapeIso C)
 
 使う既存の宣言：
 
-- `siteLiftSectionsCone_isLimit_iff` @ `SerrePositivity/InfinityCategories/Sheaves/SiteLiftSectionsCone.lean:76`
+- `siteLiftSectionsCone_isLimit_iff` @ `SerrePositivity/InfinityCategories/Sheaves/SiteLiftSectionsCone.lean:78`
 
 置き場所（新規の場合の案）：`SerrePositivity/InfinityCategories/Sheaves/SiteLiftSectionsCone.lean`。
 
@@ -881,7 +881,7 @@ JoinCone (nativeSetSectionsDiagram (siteLiftPresheaf P) ((asSmallSiteShapeIso C)
 
 使う既存の宣言：
 
-- `siteLiftSectionsCone_isLimit_iff` @ `SerrePositivity/InfinityCategories/Sheaves/SiteLiftSectionsCone.lean:76`
+- `siteLiftSectionsCone_isLimit_iff` @ `SerrePositivity/InfinityCategories/Sheaves/SiteLiftSectionsCone.lean:78`
 
 置き場所（新規の場合の案）：`SerrePositivity/InfinityCategories/Sheaves/SiteLiftSectionsCone.lean`。
 
@@ -906,7 +906,7 @@ joinMap (𝟙 _) (nerveMap (siteLiftPresheafMap φ).mapElements) ≫
 
 使う既存の宣言：
 
-- `siteLiftSectionsCone_isLimit_iff` @ `SerrePositivity/InfinityCategories/Sheaves/SiteLiftSectionsCone.lean:76`
+- `siteLiftSectionsCone_isLimit_iff` @ `SerrePositivity/InfinityCategories/Sheaves/SiteLiftSectionsCone.lean:78`
 
 置き場所（新規の場合の案）：`SerrePositivity/InfinityCategories/Sheaves/SiteLiftSectionsCone.lean`。
 
@@ -928,7 +928,7 @@ IsLimitCone (siteLiftSectionsCone P O c) ↔ IsLimitCone c
 
 使う既存の宣言：
 
-- `siteLiftSectionsCone_isLimit_iff` @ `SerrePositivity/InfinityCategories/Sheaves/SiteLiftSectionsCone.lean:76`
+- `siteLiftSectionsCone_isLimit_iff` @ `SerrePositivity/InfinityCategories/Sheaves/SiteLiftSectionsCone.lean:78`
 
 置き場所（新規の場合の案）：`SerrePositivity/InfinityCategories/Sheaves/SiteLiftSectionsCone.lean`。
 
@@ -952,7 +952,7 @@ IsLimitCone (siteLiftSectionsCone P O c) ↔ IsLimitCone c
 使う既存の宣言：
 
 - `isLimitCone_of_covariantRepresentableInfinity` @ `SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/TheYonedaEmbedding/RepresentableLimitCharacterization.lean:52`
-- `siteLiftSectionsCone_isLimit_iff` @ `SerrePositivity/InfinityCategories/Sheaves/SiteLiftSectionsCone.lean:76`
+- `siteLiftSectionsCone_isLimit_iff` @ `SerrePositivity/InfinityCategories/Sheaves/SiteLiftSectionsCone.lean:78`
 
 上端200行超。係数のpresentabilityを仮定しない。
 

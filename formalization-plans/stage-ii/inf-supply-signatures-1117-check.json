@@ -81,7 +81,7 @@
     31401,
     34061
   ],
-  "ledger_sha256": "8ce6051a4997d66ed03db5ce394d796b898dc8ef8d54c4a8e5250bdcb1d46447",
+  "ledger_sha256": "21b0c1d8d2bc71ee5170fb4c55375d9f6cd2e4f91e75233af62a6f7eec34cf86",
   "reference_source_sha256": {
     "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/ScaffoldCoherentComparisonRestriction.lean": "eaca001013d2fdcb29b38a5c6652896da293437d0d827266f4ac760c591bf92c",
     "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/StraighteningReconstructionRepresentationComparison.lean": "268abe1ed9b74b9d96bb95b4fe73a9c03448c7595b6a59c9eade04a55e5af273",
@@ -126,8 +126,8 @@
     "SerrePositivity/InfinityCategories/Sheaves/RelativeCechLocalSections.lean": "19cf58a3216f2f04bcf7cfc1256f0b7ac91bf406b7b2896b6ee6a686b5d49440",
     "SerrePositivity/InfinityCategories/Sheaves/LocalEquivalenceImageReduction.lean": "402eaffde7da253c7e7c151f50f9a98a9570846ba0c46b5cfdf260ff3a31c6f1",
     "SerrePositivity/InfinityCategories/Sheaves/CechIndexConstantLimit.lean": "a2ddec946b9068bf8400e3edc9310c9745ec0b3a67d02f0f780161ec07c9f613",
-    "SerrePositivity/InfinityCategories/Sheaves/SiteLiftElementsShape.lean": "f9ced6ad6932e0715214671ff40fb627fcd95b1c3d0620277678857ae9099cdd",
-    "SerrePositivity/InfinityCategories/Sheaves/SiteLiftSectionsCone.lean": "a5a7ada81f385924d69934a67784a447f2310c4d56f509180cc8e17d68df4fee",
+    "SerrePositivity/InfinityCategories/Sheaves/SiteLiftElementsShape.lean": "bbf5871ca8b0304921bd5c1d8e5d6d4bbe2f2d9243def1a9f10add6935e44f58",
+    "SerrePositivity/InfinityCategories/Sheaves/SiteLiftSectionsCone.lean": "d5a2412159cecf4fc9f8f9e4d4022e121e96382fead72ad97d738345f16eec23",
     "SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/TheYonedaEmbedding/RepresentableLimitCharacterization.lean": "66c305170046d1bf17ba3a5f639e4b3eb80c86d841d41f3efc8227bd01774381",
     "SerrePositivity/InfinityCategories/Sheaves/SieveSectionsCriterion.lean": "e04cf08db53078bf5bfbb0fb9ec06bac54c91201dec71b4311fc2073e1735a2a",
     "SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/AdjointFunctorsBetweenInfinityCategories/ReflectiveInvertedHom.lean": "01eaa3dd8f559f5d5e034db863c241c689a04cb8d3b571f5ebf4f04b16135eea",
