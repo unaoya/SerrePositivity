@@ -1,0 +1,74 @@
+{
+ "directory": "/Users/sugakubunka/serre-evidence/inf-supply/c1-witness-1117",
+ "commit": "",
+ "made_by": "c1-witness-1117/verify.py",
+ "note": "",
+ "files": [
+  {
+   "path": "audit-after.lean",
+   "sha256": "aa748200a5f50b7ebd45d5b8f9e76587092018a9f78b628753421f0180581f0e",
+   "bytes": 2314
+  },
+  {
+   "path": "audit-after.log",
+   "sha256": "021c96d4d6dbce25447c4f1432c8b5ab30fd1a62249027dd248e842e7278689a",
+   "bytes": 23
+  },
+  {
+   "path": "build-1.log",
+   "sha256": "ac083548dd4668690bc95b138e74756fe22ec6aa9dce1308d81b6052e4b7069a",
+   "bytes": 4553101
+  },
+  {
+   "path": "build-2.log",
+   "sha256": "99a6f0a1b76a15b96e567998a51a613d38d4e30435d706e25264ab923e26b689",
+   "bytes": 4555751
+  },
+  {
+   "path": "build-3.log",
+   "sha256": "474c75c5586de6d49381bccee7ea4327cc2f1deb030cb0000792e8fb25a4d222",
+   "bytes": 4554357
+  },
+  {
+   "path": "build-4.log",
+   "sha256": "2dd49892917a46df975a313ad287ff47252271d45dcba3af6b52b231d98dd8eb",
+   "bytes": 4550618
+  },
+  {
+   "path": "catalog-after.json",
+   "sha256": "2ed7bf7dcec2fa0e579fe1e03ed1a637dececaa03fc42ca33aca583aab9e12e8",
+   "bytes": 1444
+  },
+  {
+   "path": "catalog-after.lean",
+   "sha256": "4c69bc2423a03d7db9adcdb768a95051dcb197084a23d9ef0e51a78881be8142",
+   "bytes": 1393
+  },
+  {
+   "path": "catalog-after.log",
+   "sha256": "1fe171e2e7fe53defab44ca1c0281f80cc8d473e828e740acebdfc73f0f29add",
+   "bytes": 61
+  },
+  {
+   "path": "files.json",
+   "sha256": "9c07ee452483d643edfd0c6cc5aef8d67bc770ecc6a44100fe48043037bdae87",
+   "bytes": 169
+  },
+  {
+   "path": "signature-check-after.json",
+   "sha256": "2e695216e4a3165518f19d95347cc2b9654150fd8c2dfa8b4babb0d6ba0713d0",
+   "bytes": 16305
+  },
+  {
+   "path": "target-audit-result.json",
+   "sha256": "5509c6033448abb8e593cc7ac9b2e7e511f87581584f6e781d39ccc6f22e6f0b",
+   "bytes": 544
+  },
+  {
+   "path": "verify.py",
+   "sha256": "aac77d3914a2be1ad5da6fc6abeb8e72cab44a3599b4fe7eda483cd17ca83b90",
+   "bytes": 4013
+  }
+ ],
+ "total_bytes": 18240093
+}

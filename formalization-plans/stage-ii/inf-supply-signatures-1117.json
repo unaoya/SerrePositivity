@@ -3,7 +3,7 @@
   "source_head": "7e9743b30",
   "scope": "今回の再開範囲：元の残り1〜17項を署名へ展開。S2〜S6の過去の検収済み出力は再採番しない。",
   "count_rule": "署名のidごとに数える。200行超の照合・合成則は独立署名。小さい証明分割の法則は親署名のnoteに記録する。旧5/8はこの台帳の分母には用いない。",
-  "verified_lean_lines": 26292,
+  "verified_lean_lines": 26449,
   "final_cap": 29000,
   "checkpoint_report_lines": 28500,
   "factor": 2,
@@ -763,9 +763,9 @@
         180,
         360
       ],
-      "status": "pending",
+      "status": "verified",
       "placement": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangeTransportWitness.lean",
-      "note": "200行超。数学的な芯。νそのものを表す全空間の表現の点aを構成する。可縮性だけからνの表現可能性を仮定しない。 11-17夕の一括洗い直し後の残り見込み。元の見込みはoriginal欄に保持。 一般のpointed prismからの逆方向は、既存の引き戻しの辺・全部分複体への持ち上げ・図式成分の式により68行の法則へ分割。新しい選択・数学なし。配置名は同じ節内のCamelCaseへ揃えた。素90〜180・補正180〜360。",
+      "note": "200行超。数学的な芯。νそのものを表す全空間の表現の点aを構成する。可縮性だけからνの表現可能性を仮定しない。 11-17夕の一括洗い直し後の残り見込み。元の見込みはoriginal欄に保持。 一般のpointed prismからの逆方向は、既存の引き戻しの辺・全部分複体への持ち上げ・図式成分の式により68行の法則へ分割。新しい選択・数学なし。配置名は同じ節内のCamelCaseへ揃えた。素90〜180・補正180〜360。 build-4で対象ビルド・3宣言の小監査成功。切断一次単体の添字を明示して照合し、元の指定νを保持。",
       "additional_mathematics": false,
       "original_bare_lines": [
         310,
@@ -782,7 +782,24 @@
       "before_prism_law_corrected": [
         160,
         280
-      ]
+      ],
+      "actual_lines": 157,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 3,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningBaseChangeTransportWitness.lean": "28cc24a4eed3c035cb8665f6a8af3c58d3457d5908ccbb804565eef080eb1668"
+        }
+      },
+      "verification_receipt": "/Users/sugakubunka/serre-evidence/inf-supply/c1-witness-1117/target-audit-result.json"
     },
     {
       "id": "P3-D",
