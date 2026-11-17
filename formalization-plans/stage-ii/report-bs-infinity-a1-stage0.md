@@ -6910,3 +6910,75 @@ discretePresheafHom_eq_normalized (φ : P ⟶ Q) :
 残り17項目の済みは1・2・7・10・11（第13項は前半のみ）。
 mainは取り込まず、S7・R2・R3も再開していない。
 一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
+
+
+### 27,000行の外枠に対する再見積もり・停止（11-17）
+
+検証済みは951e66201までコミット済み（22,492行）。今回進めた元の17項目では
+1・2・7・10・11が済み。第3項は表現の移送則のみ、第13項は実射の構成のみで、
+いずれも元の項目全体を済みとは数えていない。choose表二本はそのまま残した。
+
+#### 指定された全族の照合に残る法則
+
+第3項の移送則は、ある表現で分かった可換式を別の表現へ渡せる。しかし、指定された
+joint-section底変換と初頂点・scaffoldの比較の可換式そのものはまだ要る。
+この部分を成分ごとの等式だけで閉じることはしない。
+
+今回照合した既存APIにはKanEnrichedComparison.trans、
+kanEnrichedComparisonEdge_hom_trans、kanEnrichedComparisonTriangleFamily_first/second/longがある。
+一方、KanEnrichedDiagramComparison.realizationIsoは、添字と全係数の共同族を実現して
+curryする構成である。kanEnrichedRealizationValueIso_homは一つの係数での値を回収するが、
+それだけでは全族のHomの等式にならない。前の上端1,500行では、この境目の合成・移送の
+費用を十分に数えていなかった。
+
+ここで必要となる既存構成の合成則の型案（紙、未実装。新しい数学のIDは付けない）：
+
+```lean
+{C : Type (u + 1)} [Category.{u} C] [SimplicialCategory C]
+{J : Type u} [Category.{u} J]
+{D E F : KanEnrichedDiagram C J}
+(η : KanEnrichedDiagramComparison D E)
+(θ : KanEnrichedDiagramComparison E F)
+(χ : KanEnrichedDiagramComparison D F)
+(hχ : ∀ j, χ.component j =
+  KanEnrichedComparison.trans (η.component j) (θ.component j))
+(hη : ∀ j (X : C), IsQCatEquivalence ((η.component j).val X))
+(hθ : ∀ j (X : C), IsQCatEquivalence ((θ.component j).val X))
+(hχe : ∀ j (X : C), IsQCatEquivalence ((χ.component j).val X)) :
+η.realizationIso hη ≪≫ θ.realizationIso hθ = χ.realizationIso hχe
+```
+
+この法則は200行を超える見込み（200〜350行）。既存の二点・三点図式を全添字で束ね、
+三面を同じ共同実現の三辺に照合する必要がある。対象ごとの同型の組立は使わない。
+続いて同じ係数の底変換・underへの制限の合成を照合し、強いscaffold制限の第1項と
+復元の第2項を用いて、第3項の指定可換式を初頂点の充満忠実性で反映する。
+これらも既存構成の法則として扱うが、証明の行数は外枠に含める。
+第3項の残りは現在の経路で900〜1,450行と見積もる。
+第4項では、これを同じcoslice射影に用い、指定した余単位の類と錐の脚まで照合する。
+極限の存在だけや、独立に選んだ値の同型で代用しない。
+
+#### 残りの規模（既に検証した分を二重に数えない）
+
+| 残り | 下端 | 上端 |
+|---|---:|---:|
+| 第3項：全族の合成・係数・scaffoldの照合と降下 | 900 | 1,450 |
+| 第4項：同じ右Kan添字輸送の値の射 | 250 | 450 |
+| 第5項：元の大域比較の成分との一致 | 80 | 150 |
+| 第6項：固定された離散値比較の自然性 | 200 | 400 |
+| 第8・9項：Čech全族の可逆性と空間値の局所同値 | 350 | 600 |
+| 第12項：任意係数への全Homでの反映 | 120 | 300 |
+| 第13項後半・第14・15項：局所Homと同じ層化単位 | 450 | 860 |
+| 第16・17項：一般Coverageのrefinementと判定 | 700 | 1,300 |
+| **残り計** | **3,050** | **5,510** |
+| **検証済み22,492行との累計** | **25,542** | **28,002** |
+
+上端28,002行は27,000行の外枠を1,002行超える。これは現在の証明経路の見込みであり、
+数学的な不可能性の主張ではない。指定された全族・同じ値比較を保ったままの計画として報告する。
+指示書末尾「5∞-1の外枠を27,000行に」の停止条件に従い、ここでLeanを止めた。
+承認済み17項目の型・仮定は変更せず、一覧外のchoose置換も行っていない。
+mainは取り込まず、S7・R2・R3は再開していない。
+
+直近の検証：第7項12宣言、第3項の移送則2宣言、第13項前半3宣言、いずれも
+対象ビルド・小監査exit 0、標準三公理のみ。共有鍵の待ちは残っておらず、鍵も放している。
+未追跡の旧R2下書き4本は従前のまま、今回の検証・コミットに含めていない。
+一覧：済み 5／全体 8（うち追加 0、S7 は後続）。
