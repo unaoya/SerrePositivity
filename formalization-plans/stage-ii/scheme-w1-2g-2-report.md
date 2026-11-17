@@ -3293,3 +3293,18 @@ mainの取り込みは11-16 16:25の指示どおり保留したまま。検証�
 ## 2026-11-17：2hの事前承認と2iの段0への引継ぎ
 
 main `6aa6d7152` の指示書末尾を `git show` で読み、今回のユーザー指示を確認した。新たなmainの取り込みは行っていない（指定された取り込みは31b811097で完了済み）。2g-2の89署名の検証・報告後は止まらず、H01〜H04の16署名を別枠1,200行で実装する。出口はG-A6-1aの既定の型。2h後は2i（G-A6-1、a6-design §4 経路B）の段0の紙を作り、型つき一覧・見込み・置き場所・解消するdraftsのsorryを報告して止まる。2iの正本は `formalization-plans/bhatt-scholze/drafts/A6/ArcRouteB.lean`。BM18 Thm 1.7・∞・一般のW_n・有限射影E・非affineへの一般化はこのレーンに追加しない。現在は2g-2を継続する。
+
+## 2026-11-17：Frobeniusの有限段の余錐と係数模型の標数（25dc1512a）
+
+- E04〜E09・E15の同じ署名を実装。`FrobeniusArrowFamilyCocones.lean` 115行・所有18宣言、`CoefficientVCoverModelPrimeCast.lean` 30行・所有1宣言。入口2行を含め147行追加。原稿と本体の同一バイト、対象ビルド5,377ジョブ、直接importer、別の共有鍵での全所有宣言19件の監査が成功。標準三公理以外0。
+- 固定次数の図式の対象・脚・写像は元の図式と同じ。E08では、その定義を明示してから既存の標準脚の式と写像の自然性を証明項として合成し、書き換え時の暗黙の型展開に依存しない形にした。新しい仮定・グローバルな照合・mainの既存宣言の本体変更はない。
+- 累計20,426行（新規278モジュール20,102行、既存追加25行、入口299行）。所有宣言累計2,239件、既存15件は別。残り50署名の素の見込み1,620〜3,254行、係数2で3,240〜6,508行。完成見込み23,666〜26,934行で、28,000行以内。2hは別枠1,200行。
+- 一覧：済み1／全体3（うち追加0）。内部署名：済み39／89（G4・G5）、追加0。現在はE11〜E14を下書き・検証中。停止点2g-2ではない。
+
+- E04 `SerrePositivity.AlgebraicGeometry.frobeniusArrowFamilyTargetCocone`：元の余錐の脚へ実際のFrobenius順極限を適用した余錐を作る。
+- E05 `SerrePositivity.AlgebraicGeometry.frobeniusArrowFamilyTargetCocone_ι`：その脚は元の脚の実際のFrobenius写像そのもの。
+- E06 `SerrePositivity.AlgebraicGeometry.frobeniusArrowFamilyStageCocone`：固定したFrobenius次数で元の余錐と同じ脚の余錐を作る。
+- E07 `SerrePositivity.AlgebraicGeometry.frobeniusArrowFamilyStageCoconeIsColimit`：各固定次数で元の余錐の余極限の普遍性を供給する。
+- E08 `SerrePositivity.AlgebraicGeometry.frobeniusArrowFamilyStageColimitIso`：固定次数の族の余極限と元の余錐の同じFrobenius次数との自然同型を作る。
+- E09 `SerrePositivity.AlgebraicGeometry.frobeniusArrowFamilyStageColimitIso_ι`：その標準比較は各模型の元の余錐の脚を保つ。
+- E15 `SerrePositivity.AlgebraicGeometry.coefficientVCoverModel_primeCast`：係数環でのpの零化を同じv被覆模型の両端の環へ送り、CharPや非零性を追加しない。
