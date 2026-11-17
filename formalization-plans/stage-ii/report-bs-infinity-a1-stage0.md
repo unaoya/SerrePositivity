@@ -8569,3 +8569,41 @@ kanDiagramNaturalTransformationHom_comp :
 旧R2の未追跡4本は変更・ビルド・コミットなし。S7・R2・R3は再開していない。
 
 一覧：済み 18／全体 39（うち追加 4、別停止点 2）。
+
+
+### P3-C1PN の指定頂点評価（11-17夕、第二組）
+
+新規 `KanEnrichedHomIntervalVertices.lean` に既存区間構成の評価法則を分離した。
+61物理行（引用も含め保守的に61数学行）、公開2宣言。いずれも200行未満でP3-C1PNの証明分割。
+完全な型は次のとおり。
+
+```lean
+kanEnrichedDiagramHomInterval_vertex :
+  ∀ {C : Type (u+1)} [Category.{u} C] [SimplicialCategory C]
+    {I : Type u} [SmallCategory I] (D : KanEnrichedDiagram C I) (X Y : C)
+    (s : (SimplicialCategory.sHom X Y) _⦋0⦌),
+    intervalMappingEdgeOfVertex
+      ((kanEnrichedDiagramHomInterval D X Y rfl rfl).app _ (ULift.up s)) =
+    ((coherentNerveEdge ((SimplicialCategory.homEquiv' X Y).symm s)).map D.realization).ofEq
+      (D.realization_vertex X) (D.realization_vertex Y)
+
+kanEnrichedDiagramHomInterval_vertex_hom :
+  ∀ {C : Type (u+1)} [Category.{u} C] [SimplicialCategory C]
+    {I : Type u} [SmallCategory I] (D : KanEnrichedDiagram C I) (X Y : C)
+    (s : (SimplicialCategory.sHom X Y) _⦋0⦌),
+    Truncated.HomotopyCategory.homMk
+      (intervalMappingEdgeOfVertex
+        ((kanEnrichedDiagramHomInterval D X Y rfl rfl).app _ (ULift.up s))).toTruncated =
+    normalizedVertexHomMap D.realization (D.realization_vertex X).symm (D.realization_vertex Y).symm
+      (Truncated.HomotopyCategory.homMk
+        (coherentNerveEdge ((SimplicialCategory.homEquiv' X Y).symm s)).toTruncated)
+```
+
+対象ビルド成功、所有2宣言の小監査は標準三公理のみ。数学行数は23,653 → **23,714**。
+端点推論を明示した反転区間の試験も通常の計算上限で成功した。この反転の特殊化は別の新規モジュールとして対象検証中。
+R09-Cech・R15-Unitの完全な署名の型検査はどちらも成功。これらの証明完成はまだ数えない。
+証拠目録：`evidence/inf-supply/c1pn-interval-vertices-1117/manifest.json`。
+P3-C1PN本体の残りは、元のνの指定Homとの照合。既存の全体の底変換・実現値の比較を使い、
+任意の同型へのすり替えや点ごとの像の一致の仮定はしない。
+
+一覧：済み 18／全体 39（うち追加 4、別停止点 2）。
