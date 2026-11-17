@@ -1607,7 +1607,8 @@ dg 圏・dg 加群、導来圏、相対テンソル、perfect 加群、dg 商と
 
 ## 方針
 DifferentialGraded 以下の本番モジュールを名前順に公開する。検査は Checks/ と文書化された
-Verdier の検査入口に分離し、中断した U12e-general の検査は Archive/ に保存する。
+Verdier の検査入口に分離する（中断した U12e-general の検査は 2026-11-17 に消した。git のタグ
+`archive/archive-u12e-relativefiller-2026-11-17` に残る）。
 
 ## 規約
 宣言を追加せず、既存の仮定・宇宙・次数・名前空間を維持する。Checks、Archive、Stage の

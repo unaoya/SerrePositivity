@@ -285,7 +285,7 @@ tag := "kerodon-1-2-4"
 
 Kerodon [Tag 000K](https://kerodon.net/tag/000K)
 
-**定義 1.6 （面 \(\partial_j\Delta^n\)）**
+*定義 1.6 （面 $`\partial_j\Delta^n`$）*
 
 $`0\le j\le n`$ について、$`\Delta^n`$ の部分単体的集合 $`\partial_j\Delta^n`$ を
 
@@ -298,13 +298,13 @@ Kerodon Construction 1.2.4.1（[Tag 000U](https://kerodon.net/tag/000U)）。対
 
 仮定：n\>0 と i : Fin (n+1)（Lean が弱い：horn の定義自体は n=0 にも適用できる）。結論：horn n i は Δ\[n\] の i 番以外の面の和。原文の像が i 以外の頂点を一つ欠くという条件と同じ部分複体（一致）。
 
-**定義 1.7 （horn \(\Lambda^n_i\)）**
+*定義 1.7 （horn $`\Lambda^n_i`$）*
 
 $`n\ge1`$、$`0\le i\le n`$ とする。$`\Delta^n`$ の部分単体的集合 $`\Lambda^n_i`$ を、次のどちらかの書き方で定める。
 
-1. **部分単体的集合として直接**：$`\Lambda^n_i([m])=\{\theta\colon[m]\to[n]\mid\theta([m])\cup\{i\}\ne[n]\}`$。
+1. \*\*部分単体的集合として直接\*\*：$`\Lambda^n_i([m])=\{\theta\colon[m]\to[n]\mid\theta([m])\cup\{i\}\ne[n]\}`$。
 
-2. **面の和として**：$`\Lambda^n_i=\bigcup_{j\ne i}\partial_j\Delta^n`$。
+2. \*\*面の和として\*\*：$`\Lambda^n_i=\bigcup_{j\ne i}\partial_j\Delta^n`$。
 
 両者は一致する。$`\theta([m])\cup\{i\}\ne[n]`$ は、$`\theta([m])`$ に含まれない $`j\ne i`$ があること、つまりある $`j\ne i`$ について $`\theta\in\partial_j\Delta^n([m])`$ であることと同じだからである。
 
@@ -326,16 +326,16 @@ tag := "kerodon-1-2-5"
 
 Kerodon [Tag 002G](https://kerodon.net/tag/002G)
 
-**注意 （一点への射）**
+*注意 （一点への射）*
 
-$`\Delta^0`$ は各段が一点の単体的集合で、任意の単体的集合 $`X`$ から唯一の射 $`X\to\Delta^0`$ がある。$`X`$ が quasicategory（[定義 1.8](1.4.0.1.md#t01-def-quasicategory-1)）であることは $`X\to\Delta^0`$ が inner fibration であることと、Kan 複体（[定義 1.9](1.2.5.1.md#t01-def-kan-1)）であることは $`X\to\Delta^0`$ が Kan fibration であることと同じである。
+$`\Delta^0`$ は各段が一点の単体的集合で、任意の単体的集合 $`X`$ から唯一の射 $`X\to\Delta^0`$ がある。$`X`$ が quasicategory（定義 1.8）であることは $`X\to\Delta^0`$ が inner fibration であることと、Kan 複体（定義 1.9）であることは $`X\to\Delta^0`$ が Kan fibration であることと同じである。
 
 :::definition "kerodon_1_2_5_1" (lean := "SSet.KanComplex, SSet.KanComplex.hornFilling, SSet.KanComplex.iff")
 Kerodon Definition 1.2.5.1（[Tag 002H](https://kerodon.net/tag/002H)）。対応表の状態：Mathlib にある。
 
 仮定：単体集合 X（Kerodon と一致）。結論：KanComplex.iff は KanComplex X と、全ての正次数で内外の別なく任意のホーンが Δ\[n\] へ延長できることの同値（一致）。
 
-**定義 1.9 （Kan 複体）**
+*定義 1.9 （Kan 複体）*
 
 単体的集合 $`X`$ が Kan 複体であるとは、すべての $`0\le i\le n`$ について、任意の射 $`\Lambda^n_i\to X`$ が $`\Delta^n\to X`$ に延長できることをいう。
 

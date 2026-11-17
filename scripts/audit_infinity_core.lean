@@ -262,8 +262,8 @@ import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCat
 import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.SmallHullFactorization
 import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MappingSpaces.SmallMarkedQuasicategoryHull
 
-/-- 監査の補助：本体の環境の中で、与えたモジュールから import を辿った閉包（別環境を読み込む代わりに本体の環境で辿る。2026-11-17、A1）。 -/
 open Lean in
+/-- 監査の補助：本体の環境の中で、与えたモジュールから import を辿った閉包（別環境を読み込む代わりに本体の環境で辿る。2026-11-17、A1）。 -/
 def auditImportClosure (env : Environment) (roots : Array Name) : Array Import := Id.run do
   let mut todo := roots
   let mut visited : Std.HashSet Name := {}

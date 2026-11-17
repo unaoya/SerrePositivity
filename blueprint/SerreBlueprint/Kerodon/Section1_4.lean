@@ -33,7 +33,7 @@ Kerodon Definition 1.4.0.1（[Tag 003A](https://kerodon.net/tag/003A)）。対�
 
 仮定：単体集合 X（Kerodon と一致）。結論：Quasicategory X は全ての内ホーン 0\<i\<n の充填条件（一致）。
 
-**定義 1.8 （quasicategory）**
+*定義 1.8 （quasicategory）*
 
 単体的集合 $`X`$ が quasicategory であるとは、すべての $`0<i<n`$ について、任意の射 $`\Lambda^n_i\to X`$ が $`\Delta^n\to X`$ に延長できることをいう。
 

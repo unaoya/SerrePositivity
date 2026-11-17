@@ -84,8 +84,8 @@ import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.U
 import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WeakDeformationSource
 import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.PositiveBoundaryFaithful
 
-/-- 監査の補助：本体の環境の中で、与えたモジュールから import を辿った閉包（別環境を読み込む代わりに本体の環境で辿る。2026-11-17、A1）。 -/
 open Lean in
+/-- 監査の補助：本体の環境の中で、与えたモジュールから import を辿った閉包（別環境を読み込む代わりに本体の環境で辿る。2026-11-17、A1）。 -/
 def auditImportClosure (env : Environment) (roots : Array Name) : Array Import := Id.run do
   let mut todo := roots
   let mut visited : Std.HashSet Name := {}
@@ -119,7 +119,7 @@ run_cmd do
     if oldAuditPrefix1.isPrefixOf source.toName then dest.getStr?.toOption.map String.toName else none)
   let env ← getEnv
   let mut importedRepo : Nat := 0
-  for mod in closureMods do
+  for mod in env.header.modules do
     unless `SerrePositivity |>.isPrefixOf mod.module do continue
     importedRepo := importedRepo + 1
     if (mod.module.toString.toLower.splitOn "straightening").length != 1 then

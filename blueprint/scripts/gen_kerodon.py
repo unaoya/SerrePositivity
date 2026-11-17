@@ -58,6 +58,17 @@ def esc(s):
 # NB-W1（11-17）：research/kerodon-coverage/notes/<番号>.md の原稿をノードの本文に入れる（試し）。
 # Markdown → Verso：HTML コメントと追跡用 <a id> を落とし、## 見出しは太字の段落に、\( \)・\[ \] は Verso の数式 $`…`$・$$`…`$$ に、
 # pipe table は箇条書きに。冒頭の題・Tag 行・照合先の行は（ノードの頭と重なるので）落とす。
+
+def esc_text(s):
+    """原稿の一行を Verso の本文に：Markdown のリンクは表示文言だけに、\\( \\)・\\[ \\] は数式に、それ以外はエスケープ。"""
+    s = re.sub(r'\[([^\]]*)\]\([^)]*\)', r'\1', s)
+    parts = re.split(r'(\\\(.+?\\\)|\\\[.+?\\\])', s)
+    out = []
+    for p in parts:
+        if p.startswith('\\(') and p.endswith('\\)'): out.append('$`' + p[2:-2].strip() + '`$')
+        elif p.startswith('\\[') and p.endswith('\\]'): out.append('$$`' + p[2:-2].strip() + '`$$')
+        else: out.append(esc(p))
+    return ''.join(out)
 NOTES = f'{K}/notes'
 def note_body(n):
     fp = f'{NOTES}/{n}.md'
@@ -66,14 +77,12 @@ def note_body(n):
     for l in open(fp, encoding='utf-8'):
         s = l.rstrip('\n')
         if s.startswith('# ') or s.startswith('<!--') or s.startswith('<a id=') or s.startswith('Kerodon [') or s.startswith('照合先'): continue
-        if s.startswith('## '): out.append(f'**{s[3:].strip()}**\n'); continue
+        if s.startswith('## '): out.append('*' + esc_text(s[3:].strip()) + '*\n'); continue
         if s.startswith('|'):
             cells = [c.strip() for c in s.strip().strip('|').split('|')]
             if all(re.fullmatch(r':?-+:?', c) for c in cells if c): continue
-            out.append('- ' + '　／　'.join(cells)); continue
-        s = re.sub(r'\\\((.+?)\\\)', lambda m: '$`' + m.group(1).strip() + '`$', s)
-        s = re.sub(r'\\\[(.+?)\\\]', lambda m: '$$`' + m.group(1).strip() + '`$$', s)
-        out.append(s)
+            out.append('- ' + '　／　'.join(esc_text(c) for c in cells)); continue
+        out.append(esc_text(s))
     text = re.sub(r'\n{3,}', '\n\n', '\n'.join(out)).strip('\n')
     return text + '\n' if text else None
 

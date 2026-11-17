@@ -92,7 +92,7 @@ for r in external:
     stats['ext-linked' if linked else 'ext-nolink-' + (st or 'table')] += 1
     opts = f' (lean := "{", ".join(linked)}")' if linked else ''
     body.append(f':::proposition "{lab}"{opts}')
-    body.append(f'**{esc(r["source"])} {esc(r["number"])}**　{esc(r["statement_ja"])}。' + (f'対応表の状態：{STATUS.get(st, st)}。' if st else '状態はその文献の対応表を参照。') + '\n')
+    body.append(f'*{esc((r["source"] + " " + r["number"]).strip())}*　{esc(r["statement_ja"])}。' + (f'対応表の状態：{STATUS.get(st, st)}。' if st else '状態はその文献の対応表を参照。') + '\n')
     if r.get('reason'): body.append(esc(r['reason']) + '\n')
     decls = [x.split(' @ ', 1)[0].strip() for x in r['declarations'].split(' | ') if x.strip()]
     if decls and not linked: body.append('宣言：' + '、'.join('`' + d.replace('`', '') + '`' for d in decls) + '\n')
