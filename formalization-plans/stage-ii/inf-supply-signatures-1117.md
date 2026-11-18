@@ -4045,6 +4045,7 @@ R16.4は全pinchedHomの逆を同時に構成する新規の不足であり、�
 - `smallUnstraighteningFunctorHom_pointHom` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SmallUnstraighteningPointHom.lean:25
 - `smallLeftUnstraighteningBaseIso_projection` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SmallLeftUnstraighteningBaseIso.lean:32
 
+型の点検：合成の射影を局所 let で定義 → 同じ可換性の証明 hm を明示的に受け取る。呼ぶ側 R06.2P の discreteBaseAction_projection で供給する。
 
 ### R06.2O — leftElementsRightKanComparison_point_edge
 親：R06。状態：検証済み。依存：R06.2V。

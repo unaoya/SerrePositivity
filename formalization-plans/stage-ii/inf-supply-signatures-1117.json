@@ -6424,7 +6424,7 @@
       "additional_mathematics": true,
       "addition_kind": "existing construction comparison",
       "placement": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SmallUnstraighteningPointedActionBaseChange.lean",
-      "note": "底を同型で移した指定の小さい unstraightening の射は、pointed 値のホモトピー圏で同じ成分射として作用する。 対象ビルド・台帳型への代入・小監査を通過。",
+      "note": "底を同型で移した指定の小さい unstraightening の射は、pointed 値のホモトピー圏で同じ成分射として作用する。 対象ビルド・台帳型への代入・小監査を通過。 型の点検：合成の射影を局所 let で定義 → 同じ可換性の証明 hm を明示的に受け取る。呼ぶ側 R06.2P の discreteBaseAction_projection で供給する。",
       "actual_lines": 84,
       "citation_verification": {
         "modules": 1,
