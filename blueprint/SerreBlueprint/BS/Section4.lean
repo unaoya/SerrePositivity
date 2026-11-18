@@ -20,7 +20,7 @@ open Informal
 -- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）
 set_option maxHeartbeats 2000000
 
-#doc (Manual) "§4 " =>
+#doc (Manual) "§4 The prismatic site and formulation of the Hodge-Tate comparison" =>
 %%%
 number := false
 tag := "bs-4"
@@ -50,6 +50,8 @@ Lean では site の対象は、固定した向き付き有界 prism $`(A,(d))` 
 
 :::definition "bs_4_1" (lean := "SerrePositivity.BhattScholze.Prismatic.PrismOver, SerrePositivity.BhattScholze.Prismatic.PrismOver.flatTopology, SerrePositivity.BhattScholze.Prismatic.PrismOver.isSheaf_of_flatRingCechExact, SerrePositivity.BhattScholze.Prismatic.PrismOver.structureRing_isSheaf, SerrePositivity.BhattScholze.Prismatic.PrismOver.quotientStructureRing_isSheaf")
 *定義 4.1*　prismatic site。対応表の状態：一部（special）。
+
+*主張*　$`A/I` 上の $`p` 進形式スキーム $`X` の prismatic site は、基底有界 prism からの射 $`(A,I)\to(B,IB)` と $`A/I` 上の $`\operatorname{Spf}(B/IB)\to X` をもつ有界 prism を使って定める。形式スペクトル側の被覆は忠実平坦な prism の射から来て、$`B` および $`B/IB` を割り当てる前層は層である。
 
 affine・向き付き有界基底・admissible cutoff の同じ PrismOver の flat topology と二つの構造環の層条件。一般の形式的スキームや cutoff を外した site の同定は含まない。
 
@@ -211,6 +213,8 @@ drafts の完全 site は、定義 4.1.1 の Lean の site（affine・向き付�
 
 :::lemma_ "bs_4_8" (lean := "SerrePositivity.BhattScholze.existsUnique_perfectPrismHomLift_to_bounded, SerrePositivity.BhattScholze.perfectPrismHom_ext_to_bounded_target, SerrePositivity.BhattScholze.existsUnique_perfectPrismRingHomLift_to_bounded")
 *補題 4.8*　完全 prism からの写像の一意持ち上げ。対応表の状態：一部（stronger-hyp）。
+
+*主張*　$`(A,I)` が完全 prism なら、任意の prism $`(B,J)` への剰余環の射 $`A/I\to B/J` は、prism の射 $`(A,I)\to(B,J)` に一意に持ち上がる。
 
 同じ perfect 向き付き源と bounded 向き付き標的に限定すると、指定商の射の prism 射への存在一意の持ち上げを証明する。一般の非有界・非主 ideal の標的は扱わない。
 
@@ -457,6 +461,8 @@ $`R\Gamma` は古典的な層係数コホモロジーではなく、Čech 層（
 :::definition "bs_4_17" (lean := "SerrePositivity.BhattScholze.Prismatic.cechAlexanderObj_weaklyInitial, SerrePositivity.BhattScholze.Prismatic.cechAlexanderObj, SerrePositivity.BhattScholze.Prismatic.cechSmall_weaklyTerminal, SerrePositivity.BhattScholze.Prismatic.cechAlexanderAffine_weaklyInitial, SerrePositivity.BhattScholze.Prismatic.cechAlexanderComplex, SerrePositivity.BhattScholze.Prismatic.cechAlexander_isCoproduct")
 *構成 4.17*　弱始対象。対応表の状態：一部（stronger-hyp）。
 
+*主張*　$`p` 完全滑らかな $`A/I` 代数 $`R` に、導来完備な多項式 $`A` 代数 $`B_0` からの全射を選ぶ。$`B_0` 上の自由 $`\delta` 代数を完備化し、全射の核から誘導されるイデアルに prismatic 包絡をとると、$`R/A` の prism の圏の任意の対象へ射をもつ対象を得る。この構成は $`B_0` に関手的で、そのテンソル積を prism の余積に送る。
+
 HasEnvelopes と admissible cutoff を追加すれば、同じ site の C⁰ の弱始性と Cⁿ の標準余積・関手性を直接得る。envelope の存在の供給は変数の場合に限られ、任意 smooth R の入力を無条件とはしない。
 
 *命題 4.3.2（原典 Construction 4.17：弱始対象） — 主張*
@@ -530,6 +536,8 @@ $`R` を $`p` 完全に滑らかな $`A/I` 代数、$`B_0\to R` を命題 4.3.2 
 
 :::proposition "bs_4_19" (lean := "SerrePositivity.BhattScholze.Prismatic.cechAlexanderAffine_baseChange, SerrePositivity.BhattScholze.Prismatic.affineCechNerveData, SerrePositivity.BhattScholze.Prismatic.cechAlexanderAffine_isCoproduct, SerrePositivity.BhattScholze.Prismatic.affineEnvelopeTermCompletedBaseChangeIso")
 *注意 4.19*　affine 直線の底変換と両立する Čech–Alexander 複体。対応表の状態：一部（special）。
+
+*主張*　$`R` が $`A/I` 上の多項式環の $`p` 進完備化なら、Čech–Alexander 構成の多項式持ち上げとして $`A[X]` の導来 $`(p,I)` 完備化を用いることができる。得られる余単体的 $`\delta` $`A` 代数は基底 prism の底変換と可換である。
 
 向き付き基底・有限変数の多項式の場合に、同じ Čech–Alexander cosimplicial 項の全単体射に自然な底変換を証明する。site RΓ や Tot の底変換との同一視は含まないが、本項の項ごとの構成の部分は一致。
 

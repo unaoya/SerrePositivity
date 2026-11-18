@@ -38,3 +38,11 @@ def note_body(fp, skip=()):
         out.append(esc_text(s))
     text = re.sub(r'\n{3,}', '\n\n', '\n'.join(out)).strip('\n')
     return text + '\n' if text else None
+
+def statements(P):
+    """research/<文献>-coverage/statements.csv（number,statement_ja）を {番号: Verso の一段落} に（NB-W4、11-18）。"""
+    import csv
+    fp = f'{P}/statements.csv'
+    if not os.path.exists(fp): return {}
+    return {r['number']: '*主張*　' + esc_text(r['statement_ja'].strip()) + '\n'
+            for r in csv.DictReader(open(fp, encoding='utf-8')) if r.get('statement_ja', '').strip()}

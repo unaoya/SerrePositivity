@@ -82,6 +82,8 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：Tw(E) の�
 :::definition "kerodon_8_6_1_9" (lean := "CategoryTheory.Pseudofunctor.Grothendieck.Hom, CategoryTheory.Pseudofunctor.CoGrothendieck.Hom, CategoryTheory.Pseudofunctor.CoGrothendieck.forget")
 Kerodon Construction 8.6.1.9（[Tag 04CF](https://kerodon.net/tag/04CF)）。対応表の状態：一部。
 
+*主張*　通常の圏 $`C` から圏の双圏への関手 $`\mathscr F` の反変な元の圏をねじれ矢印圏と $`C^{\mathrm{op}}` 上で引き戻し、共変な元の圏への関手 $`T` を定める。対象 $`(s:c'\to c,x)` は $`(c,\mathscr F(s)x)` に、$`t=fsf'` と $`u:x\to\mathscr F(f')y` をもつ射は、$`\mathscr F(f)\mathscr F(s)(u)` と合成制約で作る射に移る。
+
 Grothendieck/CoGrothendieckの構成は同じ通常圏値Fのint±という二つの入力圏の対象・射を直接与える。原文のそれらを合わせるTの全構成は含まない。
 
 :::
@@ -95,6 +97,8 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：両 Grothen
 
 :::definition "kerodon_8_6_1_11" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.weightedNerve")
 Kerodon Construction 8.6.1.11（[Tag 04CH](https://kerodon.net/tag/04CH)）。対応表の状態：一部。
+
+*主張*　通常の圏 $`C` 上の無限圏値関手 $`\mathscr F` で、値ごとの反対圏の重み付き神経の反対を $`E^\dagger`、元の重み付き神経を $`E` とする。$`E^\dagger` と $`\operatorname{Tw}(N(C))` の $`N(C)^{\mathrm{op}}` 上の引き戻しから $`E` への写像は、始点側の単体の各始区間を中央の射 $`c'_0\to c_0` と $`c_0\to c_i` に沿って移して重みの列を作る。
 
 weightedNerveとその射影は同じ通常圏値FのE側の加重脈体と底への射影を直接与える。反対側を併せたTという全構成は含まない。
 
@@ -125,6 +129,8 @@ Kerodon [Tag 04CM](https://kerodon.net/tag/04CM)
 
 :::definition "kerodon_8_6_2_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.fiberwiseHomEquiv, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.fiberwiseHomPostcompOver") (uses := "kerodon_1_1_0_6, kerodon_4_5_8_1")
 Kerodon Notation 8.6.2.1（[Tag 04CN](https://kerodon.net/tag/04CN)）。対応表の状態：一部。
+
+*主張*　単体集合 $`D\to D_-^{\mathrm{op}}\times D_+` と $`U:E\to D_+` に対し、相対指数対象 $`\operatorname{Fun}(D/D_-^{\mathrm{op}},E)` のうち、$`\Delta^n\times_{D_-^{\mathrm{op}}}D\to E` が $`D_+` 上の射である単体からなる部分集合を $`\operatorname{Fun}_{/D_+}(D/D_-^{\mathrm{op}},E)` と書く。
 
 fiberwiseHomとfiberwiseHomEquivはλ−とEの同じ相対指数対象およびその写像の普遍性を直接与える。追加のD+上の条件で切る部分全体は含まない。
 
@@ -223,6 +229,8 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：既存の�
 :::definition "kerodon_8_6_3_9" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowOppositeSwap_projection, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowProjection_naturality, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.twistedArrowOppositeSwap_left, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.twistedArrowOppositeSwap_right, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.twistedArrowOppositeSwap_naturality") (uses := "kerodon_1_1_0_6, kerodon_8_1_1_6, kerodon_8_1_1_7, kerodon_8_1_3_7")
 Kerodon Construction 8.6.3.9（[Tag 04EX](https://kerodon.net/tag/04EX)）。対応表の状態：一部。
 
+*主張*　$`E\to C`、$`E^\dagger\to C^{\mathrm{op}}` と、終域射影と両立する $`T:E^\dagger\times_{C^{\mathrm{op}}}\operatorname{Tw}(C)\to E` を取る。$`\operatorname{Tw}(E^\dagger)` の終域射影を $`T` と合成し、ねじれ矢印と余スパンの随伴で転置すると、$`E^\dagger\to\operatorname{Cospan}(E)\times_{\operatorname{Cospan}(C)}C^{\mathrm{op}}` という比較写像が得られる。
+
 twistedArrowOppositeSwapとその二射影との可換性から、原文の8.87の最初のTw(E†)からの射と底との可換図式を直接構成できる。全相対指数への転置Ψとその比較までは含まない。
 
 :::
@@ -243,6 +251,8 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：輸送表�
 
 :::definition "kerodon_8_6_3_15" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseSubdivisionMap")
 Kerodon Construction 8.6.3.15（[Tag 05JL](https://kerodon.net/tag/05JL)）。対応表の状態：一部。
+
+*主張*　単体集合 $`C` について、$`\Delta^1` の非退化辺を固定し、ねじれ矢印関手で $`\Delta^1\times\operatorname{Fun}(\Delta^1,C)\to C` の評価を取る。この写像を余スパン関手との随伴で転置して、$`\operatorname{Fun}(\Delta^1,C)\to\operatorname{Cospan}(\operatorname{Tw}(C))` を得る。
 
 edgewiseSubdivisionMapを評価射evに適用したTw(ev)は原文の指定合成の最後の射そのもの。先行するΞと、そのΞを含む合成全体の同値は含まない。
 
@@ -529,12 +539,16 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：通常の s
 :::definition "kerodon_8_6_6_7" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowFunctorComparison, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowFunctorComparison_isPrecompositionEquivalence, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.LeftTransportRepresentation") (uses := "kerodon_1_1_0_6, kerodon_5_6_5_1, kerodon_8_1_1_15")
 Kerodon Definition 8.6.6.7（[Tag 05JU](https://kerodon.net/tag/05JU)）。対応表の状態：一部。
 
+*主張*　内部ファイブレーション $`U:E\to C` の非可算基数 $`\kappa` に対する相対 Hom 関手とは、$`\operatorname{Tw}(E)` から $`E^{\mathrm{op}}\times_{C^{\mathrm{op}}}\operatorname{Tw}(C)\times_C E` への左ファイブレーションの、$`\kappa`-小空間値の共変移送表現である。
+
 twistedArrowFunctorComparison Uは、Tw(E)からTw(C)をEop×Eへ引き戻した対象への同じ比較λを直接構成する。指定Hの左輸送表現という条件全体は含まない。
 
 :::
 
 :::definition "kerodon_8_6_6_12" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.fiberwiseHomEquiv, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowFunctorComparison") (uses := "kerodon_1_1_0_6, kerodon_4_5_8_1")
 Kerodon Notation 8.6.6.12（[Tag 05JZ](https://kerodon.net/tag/05JZ)）。対応表の状態：一部。
+
+*主張*　内部ファイブレーション $`E\to C` の $`\kappa`-小空間値相対 Hom 関手を、$`E` 側の変数で相対指数対象へ転置する。得られる $`E^{\mathrm{op}}\times_{C^{\mathrm{op}}}\operatorname{Tw}(C)\to\operatorname{Fun}(E/C,S_{<\kappa})` を相対 Yoneda 埋め込みと呼ぶ。
 
 一般のfiberwiseHomEquivを同じ評価射の引戻し図式へ適用すると、原文の相対指数への転置Tという射の構成を直接与える。Hが空間値Homの場合のYonedaという追加同定は含まない。
 
@@ -559,12 +573,16 @@ Kerodon [Tag 04F8](https://kerodon.net/tag/04F8)
 :::definition "kerodon_8_6_7_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.ConjugateAndDualFibrations.EdgewiseEnrichedObject, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.ConjugateAndDualFibrations.edgewiseEnrichedObject_simplicialCategory, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.ConjugateAndDualFibrations.edgewiseEnrichedComposition, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.edgewiseEnrichedRight")
 Kerodon Notation 8.6.7.1（[Tag 04F9](https://kerodon.net/tag/04F9)）。対応表の状態：本体にある。
 
+*主張*　単体圏 $`E` に対し、同じ対象を持ち、各射単体集合をねじれ矢印単体集合に置き換えた $`E^{\asymp}` を作る。合成はねじれ矢印関手を合成に適用して定め、終域射影は忘却単体関手 $`E^{\asymp}\to E` を与える。
+
 仮定：単体的圏 E を与える（Kerodon と一致）。結論：対象を自明な部分型で保持し、各 Hom に Tw を取り、元の合成から豊穣合成を定め、右端射影を豊穣関手として与える（一致）。
 
 :::
 
 :::proposition "kerodon_8_6_7_2" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.ConjugateAndDualFibrations.edgewiseEnrichedObject_sHom_kanComplex, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.edgewiseEnrichedRight, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseRight_trivialKanFibration, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.isQCatEquivalence_of_trivialKanFibration, SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence.isWeakHomotopyEquivalence, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.edgewiseEnrichedInfinityMap_isQCatEquivalence")
 Kerodon Proposition 8.6.7.2（[Tag 04FA](https://kerodon.net/tag/04FA)）。対応表の状態：本体にある。
+
+*主張*　局所 Kan な単体圏 $`E` に対し $`E^{\asymp}` は局所 Kan であり、忘却関手 $`E^{\asymp}\to E` は単体圏の弱同値である。これはホモトピー整合神経の間に無限圏の同値を誘導する。
 
 仮定：E の全ての豊穣 Hom は Kan（Kerodon と一致）。結論：edgewise 圏の局所 Kan 性と coherent nerve の同値を直接得る。豊穣射の弱同値は、対象射影が全射で、各 Hom の右端が自明 Kan ファイブレーションなので弱ホモトピー同値となることから得る（一致）。
 
@@ -573,12 +591,16 @@ Kerodon Proposition 8.6.7.2（[Tag 04FA](https://kerodon.net/tag/04FA)）。対�
 :::definition "kerodon_8_6_7_4" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.CatInfinity, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.QCat")
 Kerodon Construction 8.6.7.4（[Tag 04FC](https://kerodon.net/tag/04FC)）。対応表の状態：一部。
 
+*主張*　小さい無限圏を対象とし関手圏の芯を射空間とする単体圏 $`\operatorname{QCat}` に、8.6.7.1 の射空間ごとのねじれ矢印構成を施す。そのホモトピー整合神経を $`\mathcal{QC}^{\asymp}` と書く。
+
 QCatとCatInfinityは原文の最初の入力である小準圏の豊穣圏とその脈体を直接構成する。twisted Homを使うQCat\^asympと比較πは含まない。
 
 :::
 
 :::proposition "kerodon_8_6_7_5" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.edgewiseEnrichedInfinityMap_isQCatEquivalence, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.ConjugateAndDualFibrations.edgewiseEnrichedObject_sHom_kanComplex, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.catInfinity_quasicategory")
 Kerodon Proposition 8.6.7.5（[Tag 04FD](https://kerodon.net/tag/04FD)）。対応表の状態：本体にある。
+
+*主張*　$`\mathcal{QC}^{\asymp}` は無限圏であり、忘却単体関手 $`\operatorname{QCat}^{\asymp}\to\operatorname{QCat}` から得られる $`\mathcal{QC}^{\asymp}\to\mathcal{QC}` は無限圏の同値である。
 
 仮定：局所 Kan な豊穣圏 QCat を使う（Kerodon と一致）。結論：QCat を Hom ごとに edgewise 化した coherent nerve は準圏で、右端射影の coherent nerve が CatInfinity への圏同値となる（一致）。
 

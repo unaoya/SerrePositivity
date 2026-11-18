@@ -48,12 +48,16 @@ Kerodon の 6.3 節（[Tag 01M4](https://kerodon.net/tag/01M4)）の項目と、
 :::definition "kerodon_6_3_0_1" (lean := "CategoryTheory.Localization.StrictUniversalPropertyFixedTarget")
 Kerodon Definition 6.3.0.1（[Tag 01M5](https://kerodon.net/tag/01M5)）。対応表の状態：Mathlib にある。
 
+*主張*　通常の圏の関手 $`F:C\to D` は、任意の通常の圏 $`E` で、前合成によって $`D\to E` の集合と $`W` の射を同型に送る $`C\to E` の集合の全単射が得られるとき、射の族 $`W` に関する厳密局所化を与える。
+
 仮定：通常の圏の関手 F:C→D、反転する射のクラス W、任意の試験圏 E（Lean は E を引数に取る）（Kerodon と一致）。結論：StrictUniversalPropertyFixedTarget は W を反転する各関手の厳密な因子化と一意性。任意の E について取れば原文の全単射（一致）。
 
 :::
 
 :::definition "kerodon_6_3_0_6" (lean := "CategoryTheory.Functor.IsLocalization, CategoryTheory.Localization.full_whiskeringLeft")
 Kerodon Definition 6.3.0.6（[Tag 01M9](https://kerodon.net/tag/01M9)）。対応表の状態：一部。
+
+*主張*　通常の圏の関手 $`F:C\to D` が射の族 $`W` に関する一次元圏論的局所化を与えるとは、任意の通常の圏 $`E` に対する前合成が充満忠実で、その本質像が $`W` の全射を同型に送る関手の充満部分圏となることである。
 
 MathlibのFunctor.IsLocalizationからfull\_whiskeringLeftおよびfaithfulの既存instanceにより、原文の全試験圏への前合成の充満忠実性を直接得る。本質的像の全判定と普遍性からの逆は含まない。
 
@@ -133,12 +137,16 @@ C → C\[W⁻¹\] が Dwyer–Kan 局所化 ⇔ 任意の ∞-圏 D について
 :::definition "kerodon_6_3_1_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.invertingFunctors, SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.invertingFunctors_quasicategory")
 Kerodon Notation 6.3.1.1（[Tag 01MF](https://kerodon.net/tag/01MF)）。対応表の状態：本体にある。
 
+*主張*　単体集合 $`C` の辺の族 $`W` と無限圏 $`E` に対し、$`\operatorname{Fun}(C[W^{-1}],E)` は $`W` の全辺を同型へ送る図式が張る $`\operatorname{Fun}(C,E)` の充満部分圏を表す。
+
 仮定：単体集合 X、試験 ∞ 圏 E、X の辺の族 W（Lean が弱い：構成自体は E の ∞ 圏性を要しない）。結論：invertingFunctors X E W は W を可逆辺に送る関手を頂点とする Fun(X,E) の全部分複体（一致）。
 
 :::
 
 :::definition "kerodon_6_3_1_9" (lean := "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization, SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.localizationPrecomposition")
 Kerodon Definition 6.3.1.9（[Tag 01MP](https://kerodon.net/tag/01MP)）。対応表の状態：本体にある。
+
+*主張*　単体集合の射 $`F:C\to D` が辺の族 $`W` に関して局所化を与えるとは、任意の無限圏 $`E` で前合成が充満忠実で、本質像が $`W` を同型へ送る図式の充満部分圏に一致することである。
 
 仮定：単体集合の射 F:X→D、辺の族 W、同一宇宙の試験 ∞ 圏 E（Kerodon と一致）。結論：F が W を反転し、Fun(D,E)→invertingFunctors X E W が圏同値。原文の充満忠実性と指定本質像に対応（一致）。
 
@@ -181,6 +189,8 @@ InfinityCategories/Kerodon/AdjointFunctors/Localization/Localization.lean:79。$
 :::proposition "kerodon_6_3_1_13" (lean := "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization, SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UniversalConsequences.IsLocalization.precomposition_isFullyFaithful, SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UniversalConsequences.IsLocalization.exists_extension, SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.isLocalization_of_fullyFaithful_extensions") (uses := "kerodon_1_1_0_6, kerodon_1_2_5_1, kerodon_1_4_0_1, kerodon_4_8_4_4, kerodon_6_3_1_9")
 Kerodon Proposition 6.3.1.13（[Tag 01MS](https://kerodon.net/tag/01MS)）。対応表の状態：一部。
 
+*主張*　単体集合の射 $`F:C\to D` が $`W` に関する局所化を与えることは、任意の無限圏 $`E` に対する前合成が $`W` を反転する図式の充満部分圏を経由し、そこへの同値を誘導することと同値である。この同値の条件は、その芯におけるホモトピー同値または $`\pi_0` の全単射に置き換えられる。
+
 IsLocalizationは同じFの全準圏への指定localizationPrecompositionの同値性、すなわち原文(2)を直接条件にする。(3),(4)のcoreのπ₀からの逆を含む四条件のiffは含まない。
 
 *04-yoneda-adjunction-kan.html — 4. 局所化と反射的部分圏 — 局所化*
@@ -192,6 +202,8 @@ $`F` が $`W` を反転し、任意の quasicategory $`E` について、前合�
 :::proposition "kerodon_6_3_1_21" (lean := "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.localization_all_isKan, SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.groupoidCompletion_isLocalization, SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.invertsAllEdges_toKan") (uses := "kerodon_1_1_0_6, kerodon_1_2_5_1, kerodon_1_4_0_1, kerodon_3_1_8_2, kerodon_4_4_3_23, kerodon_6_3_1_13")
 Kerodon Proposition 6.3.1.21（[Tag 01MY](https://kerodon.net/tag/01MY)）。対応表の状態：一部。
 
+*主張*　単体集合の射 $`C\to D` で $`D` が無限圏とする。この射が $`C` の全辺に関する局所化を与えることは、$`D` が Kan 複体で射が弱ホモトピー同値であることと同値である。
+
 localization\_all\_isKanは同じFの全辺の局所化から原文の標的DのKan性を直接返す。Fの弱ホモトピー同値と逆方向は含まない。
 
 :::
@@ -199,12 +211,16 @@ localization\_all\_isKanは同じFの全辺の局所化から原文の標的Dの
 :::proposition "kerodon_6_3_1_22" (lean := "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.localization_postcomp_precompositionEquivalence, SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.isLocalization_of_weakDeformation")
 Kerodon Proposition 6.3.1.22（[Tag 02LS](https://kerodon.net/tag/02LS)）。対応表の状態：一部。
 
+*主張*　単体集合の射 $`F:C\to C'` が辺の族 $`W` に関する局所化を与え、$`F':C'\to C''` が $`F(W')` に関する局所化を与えるなら、$`F'F` は $`W\cup W'` に関する局所化を与える。
+
 W′=∅、F′を前合成同値に限るとlocalization\_postcomp\_precompositionEquivalenceは同じ合成F≫F′がW=W∪∅の局所化になると直接返す。一般の第二の辺集合の局所化ではない。
 
 :::
 
 :::corollary "kerodon_6_3_1_23" (lean := "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization.of_subset_invertedEdges")
 Kerodon Corollary 6.3.1.23（[Tag 02LT](https://kerodon.net/tag/02LT)）。対応表の状態：本体にある。
+
+*主張*　単体集合の射 $`F:C\to D` が $`W` に関する局所化を与え、辺の族 $`W'` のすべての辺を退化辺に送るなら、$`F` は $`W\cup W'` に関する局所化も与える。
 
 仮定：W で局所化する F と追加の辺の族（Lean が弱い：像が退化でなく可逆ならよい）。結論：W と追加の辺の和集合に対しても IsLocalization（一致）。
 
@@ -271,6 +287,8 @@ inner anodyne $`j` について、どの quasicategory $`Y` でも前合成 $`j^
 :::proposition "kerodon_6_3_2_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.exists_quasicategory_localization, SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.inverseAttachment_isLocalization")
 Kerodon Proposition 6.3.2.1（[Tag 01N0](https://kerodon.net/tag/01N0)）。対応表の状態：本体にある。
 
+*主張*　任意の単体集合 $`C` と辺の族 $`W` に対し、$`W` に関する局所化を与える無限圏 $`D` と写像 $`C\to D` が存在する。
+
 仮定：単体集合 X と任意の辺の族 W（Kerodon と一致）。結論：Quasicategory Q と IsLocalization F W を満たす F:X→Q が存在（一致）。
 
 *f-03-localization.html — 3. 存在：任意の辺の集合で局所化できる — 3.1 段 1：可逆な辺の「歩く版」を作る*
@@ -324,6 +342,8 @@ inverseAttachmentはwalkingEquivalenceを貼るpushout。原文の指定Qを貼�
 
 :::proposition "kerodon_6_3_2_11" (lean := "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.edgeLocalization, SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.exists_quasicategory_localization") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_4_1_3_2, kerodon_6_3_2_9")
 Kerodon Proposition 6.3.2.11（[Tag 05ZP](https://kerodon.net/tag/05ZP)）。対応表の状態：一部。
+
+*主張*　任意の単体集合と辺の族の組 $`(C,W)` に対して、無限圏 $`C[W^{-1}]` と局所化の写像を選べる。この選択は関手的でフィルター付き余極限を保つようにできる。
 
 exists\_quasicategory\_localizationは原文の全ての(C,W)について準圏と局所化射の存在を直接返す。関手性とfiltered colimitの保存は含まない。
 
@@ -389,12 +409,16 @@ presentable な ∞ 圏と射の集合 $`S` に対しては、$`S`-局所的な�
 :::definition "kerodon_6_3_3_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization.saturate, SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization, SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.invertedEdges")
 Kerodon Definition 6.3.3.1（[Tag 04JG](https://kerodon.net/tag/04JG)）。対応表の状態：本体にある。
 
+*主張*　無限圏の関手 $`F:C\to D` は、ある射の族 $`W` に関して $`D` を $`C` の局所化として示すとき局所化関手である。
+
 IsLocalization F WをWで存在量化すれば原文の定義そのもの。さらにIsLocalization.saturateでFが反転する全辺をWに選べる。専用のlocalization functorという名前がないことをpartial理由にしない。
 
 :::
 
 :::proposition "kerodon_6_3_3_3" (lean := "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization.saturate, SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.invertedEdges")
 Kerodon Proposition 6.3.3.3（[Tag 04JH](https://kerodon.net/tag/04JH)）。対応表の状態：本体にある。
+
+*主張*　無限圏の関手 $`F:C\to D` が局所化関手であることは、$`F` が同型へ送る全射の族に関して局所化を与えることと同値である。
 
 仮定：∞ 圏間の F（Lean が弱い：saturate 自体は単体集合間で成立）。結論：ある W について IsLocalization F W なら反転する全辺についても IsLocalization。逆は全辺を W に選ぶ（一致）。
 
@@ -403,12 +427,16 @@ Kerodon Proposition 6.3.3.3（[Tag 04JH](https://kerodon.net/tag/04JH)）。対�
 :::definition "kerodon_6_3_3_4" (lean := "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ReflectiveSubcategory, SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ReflectiveSubcategory.inclusion_fullyFaithful")
 Kerodon Definition 6.3.3.4（[Tag 02G9](https://kerodon.net/tag/02G9)）。対応表の状態：一部。
 
+*主張*　無限圏の関手は、充満忠実な右随伴を持つとき反射的局所化関手である。
+
 Fを選んだReflectiveSubcategoryのreflectorに限ると、構造のadjunctionは同じFの右随伴が充満包含であると直接与える。任意Fを指定して定める述語全体は含まない。
 
 :::
 
 :::proposition "kerodon_6_3_3_7" (lean := "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ReflectiveSubcategory.isLocalization, SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.isLocalization")
 Kerodon Proposition 6.3.3.7（[Tag 04JL](https://kerodon.net/tag/04JL)）。対応表の状態：一部。
+
+*主張*　無限圏の関手が反射的局所化であることは、局所化関手であり右随伴を持つことと同値である。
 
 右随伴と可逆counitを指定した場合、QCatAdjunction.isLocalizationは同じFの局所化性を直接与え、右随伴の存在と合わせて原文(2)を返す。右随伴の充満忠実性からのcounit比較・逆方向は含まない。
 
@@ -513,6 +541,8 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：universally
 
 :::proposition "kerodon_6_3_5_9" (lean := "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.DeformationLocalization.isLocalization_of_deformation") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1")
 Kerodon Proposition 6.3.5.9（[Tag 04JT](https://kerodon.net/tag/04JT)）。対応表の状態：一部。
+
+*主張*　単体集合の射 $`f:X\to S` が切断 $`u` を持ち、$`uf` と $`\mathrm{id}_X` が $`\operatorname{Fun}_{/S}(X,X)` の同じ連結成分に属するなら、$`f` は普遍的に局所化を与える。
 
 sectionを持つfについて、指定した単体ホモトピーとその全成分をfが反転する条件を明示的に加えればisLocalization\_of\_deformationは同じfの局所化を直接返す。universalに要求される底変換のうち恒等底変換の成分だけで、任意底変換ではない。
 
@@ -635,6 +665,8 @@ IsLocalization F W（F1B）：$`F\colon X\to D` が $`W` を可逆にし、す�
 
 :::definition "kerodon_6_3_6_6" (lean := "SSet.Nonsingular")
 Kerodon Definition 6.3.6.6（[Tag 02MG](https://kerodon.net/tag/02MG)）。対応表の状態：Mathlib にある。
+
+*主張*　単体集合 $`S` は、全ての非退化 $`n`-単体が単射 $`\Delta^n\to S` を与えるとき非特異である。
 
 仮定：任意の単体集合 S（Kerodon と一致）。結論：Nonsingular S は各非退化単体の Yoneda に対応する Δⁿ→S が単射であること（一致）。
 

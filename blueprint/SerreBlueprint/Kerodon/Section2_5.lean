@@ -18,7 +18,6 @@ import Mathlib.CategoryTheory.Functor.Const
 import Mathlib.CategoryTheory.SingleObj
 import SerrePositivity.DifferentialGraded.Category.Basic
 import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
-import SerrePositivity.HomologicalAlgebra.SimplicialChains.AlexanderWhitney.Unnormalized
 import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.AWChainMap
 import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.AlexanderWhitney
 import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.ConnectiveHom
@@ -58,12 +57,16 @@ Kerodon の 2.5 節（[Tag 00ND](https://kerodon.net/tag/00ND)）の項目と、
 :::definition "kerodon_2_5_0_1" (lean := "HomologicalComplex, ChainComplex")
 Kerodon Definition 2.5.0.1（[Tag 00NE](https://kerodon.net/tag/00NE)）。対応表の状態：Mathlib にある。
 
+*主張*　加法圏に値をとる鎖複体は、整数で添字づけた対象列と、一次数下げる微分 $`\partial_n\colon C_n\to C_{n-1}` で $`\partial_n\partial_{n+1}=0` となるものからなる。
+
 仮定：加法圏 A（Lean が弱い：基礎圏には HasZeroMorphisms で足りる）。結論：ChainComplex A ℤ は整数次数の対象と次数を 1 下げる微分を持ち、微分の二回の合成が零（一致）。
 
 :::
 
 :::definition "kerodon_2_5_0_2" (lean := "ChainComplex")
 Kerodon Notation 2.5.0.2（[Tag 00NF](https://kerodon.net/tag/00NF)）。対応表の状態：Mathlib にある。
+
+*主張*　鎖複体の台の整数添字付き対象列を次数付き対象とみなし、鎖の微分を次数 $`-1` の自己作用 $`\partial` と記す。
 
 仮定：加法圏 A（Lean が弱い：ChainComplex の型は零射のある圏で定義される）。結論：整数次数に特殊化すると、各隣接次数を d\_n : C\_n → C\_(n−1) で結ぶ原文の図式を表す（一致）。
 
@@ -72,12 +75,16 @@ Kerodon Notation 2.5.0.2（[Tag 00NF](https://kerodon.net/tag/00NF)）。対応�
 :::definition "kerodon_2_5_0_3" (lean := "HomologicalComplex.Hom")
 Kerodon Definition 2.5.0.3（[Tag 00NG](https://kerodon.net/tag/00NG)）。対応表の状態：Mathlib にある。
 
+*主張*　加法圏の鎖複体の間の鎖写像は、微分と可換な次数ごとの射 $`C_n\to D_n` の族である。これらを射とする圏を $`\operatorname{Ch}(\mathcal A)` と書く。
+
 仮定：加法圏の二つの整数次数鎖複体 C,D（Lean が弱い：HomologicalComplex.Hom は零射のある圏で任意の共通 shape に定義される）。結論：各次数の射 f\_n : C\_n → D\_n が微分と可換という型（一致）。
 
 :::
 
 :::definition "kerodon_2_5_0_4" (lean := "ChainComplex")
 Kerodon Notation 2.5.0.4（[Tag 00NH](https://kerodon.net/tag/00NH)）。対応表の状態：Mathlib にある。
+
+*主張*　可換環 $`k` に対し、$`\operatorname{Ch}(k)` を $`k`-加群の鎖複体の圏と書き、特に $`\operatorname{Ch}(\mathbf Z)` をアーベル群の鎖複体の圏とする。
 
 仮定：可換環 k（Lean が弱い：ChainComplex は零射のある圏一般を取る）。結論：V = ModuleCat k、添字 ℤ に特殊化した鎖複体と鎖写像の圏が Ch(k) を表す（一致）。
 
@@ -86,12 +93,16 @@ Kerodon Notation 2.5.0.4（[Tag 00NH](https://kerodon.net/tag/00NH)）。対応�
 :::definition "kerodon_2_5_0_5" (lean := "Homotopy, HomotopyEquiv")
 Kerodon Definition 2.5.0.5（[Tag 00NJ](https://kerodon.net/tag/00NJ)）。対応表の状態：Mathlib にある。
 
+*主張*　加法圏の鎖複体の間の鎖写像 $`f,f'` の鎖ホモトピーは $`f'-f=dh+hd` を満たす次数 $`1` の写像族 $`h` である。鎖写像 $`f` は、両側の合成がそれぞれ恒等写像に鎖ホモトピックになる鎖写像 $`g` があるとき鎖ホモトピー同値である。
+
 仮定：加法圏の整数次数鎖複体 C,D と平行な鎖写像 f,g（Lean が弱い：前加法圏および一般の複体の形でよい）。結論：次数を 1 上げる h で f−g=dh+hd を与えるホモトピーと、両側の合成を恒等へホモトープにする逆写像のデータ（一致）。
 
 :::
 
 :::definition "kerodon_2_5_0_9"
 Kerodon Construction 2.5.0.9（[Tag 00NM](https://kerodon.net/tag/00NM)）。対応表の状態：Mathlib にある。
+
+*主張*　加法圏の鎖複体のホモトピー圏では、対象を鎖複体とし、射を鎖写像の鎖ホモトピー類とする。合成は鎖写像の合成から誘導される。
 
 仮定：加法圏 A（Lean が弱い：前加法圏と任意の shape で定義される）。結論：shape を down ℤ とすると、対象は鎖複体、射は鎖写像の鎖ホモトピー類となる商圏（一致）。
 
@@ -129,12 +140,16 @@ B6：IsStrictlyGE/LE の引用は余鎖複体についての述語。鎖複体�
 :::definition "kerodon_2_5_1_3" (lean := "HomologicalComplex.cycles")
 Kerodon Notation 2.5.1.3（[Tag 00NT](https://kerodon.net/tag/00NT)）。対応表の状態：一部。
 
+*主張*　アーベル圏の鎖複体の次数 $`n` で、サイクルを $`d_n` の核、境界を $`d_{n+1}` の像とする。微分の二乗が零なので境界はサイクルに含まれる。
+
 B6：HomologicalComplex.cycles は指定次数の outgoing 微分の核を直接構成し、鎖規約でも原文の Z\_n を与える。image による B\_n とその包含の一式は引用に含まない。
 
 :::
 
 :::definition "kerodon_2_5_1_4" (lean := "HomologicalComplex.homology, HomologicalComplex.Acyclic, HomologicalComplex.exactAt_iff_isZero_homology")
 Kerodon Definition 2.5.1.4（[Tag 00NU](https://kerodon.net/tag/00NU)）。対応表の状態：Mathlib にある。
+
+*主張*　鎖複体の次数 $`n` のホモロジーはサイクルを境界で割った商であり、全次数でこれが零の複体を非輪状と呼ぶ。
 
 仮定：アーベル圏の鎖複体 K と次数 i（Lean が弱い：零射のある圏で該当する短複体のホモロジーがあればよい）。結論：homology K i はサイクルを境界で割る対象。Acyclic は全次数で ExactAt を要求し、exactAt\_iff\_isZero\_homology が各次数でホモロジー零との同値を与える（一致）。
 
@@ -143,6 +158,8 @@ Kerodon Definition 2.5.1.4（[Tag 00NU](https://kerodon.net/tag/00NU)）。対�
 :::definition "kerodon_2_5_1_5" (lean := "QuasiIso, QuasiIsoAt")
 Kerodon Definition 2.5.1.5（[Tag 00NV](https://kerodon.net/tag/00NV)）。対応表の状態：Mathlib にある。
 
+*主張*　アーベル圏の鎖複体の写像は、すべての次数のホモロジーに同型を誘導するとき擬同型である。
+
 仮定：アーベル圏の複体 K,L と鎖写像 f（Lean が弱い：零射と各次数で HasHomology があればよい）。結論：QuasiIso f は各 i の homologyMap f i が同型であることを課す（一致）。
 
 :::
@@ -150,12 +167,16 @@ Kerodon Definition 2.5.1.5（[Tag 00NV](https://kerodon.net/tag/00NV)）。対�
 :::proposition "kerodon_2_5_1_8" (lean := "Homotopy.homologyMap_eq")
 Kerodon Proposition 2.5.1.8（[Tag 00NY](https://kerodon.net/tag/00NY)）。対応表の状態：Mathlib にある。
 
+*主張*　アーベル圏の鎖複体の二つの鎖写像が鎖ホモトピックなら、各次数のホモロジーに同じ射を誘導する。
+
 仮定：同じ二複体間の鎖写像 f,g と Homotopy f g、比較次数 n のホモロジー（Lean が弱い：前加法圏と該当次数の HasHomology で足りる）。結論：homologyMap f n = homologyMap g n（一致）。
 
 :::
 
 :::corollary "kerodon_2_5_1_9" (lean := "HomotopyEquiv.quasiIso_hom")
 Kerodon Corollary 2.5.1.9（[Tag 00NZ](https://kerodon.net/tag/00NZ)）。対応表の状態：Mathlib にある。
+
+*主張*　アーベル圏の鎖複体の鎖ホモトピー同値は擬同型である。
 
 仮定：鎖ホモトピー同値 e と両複体の全次数のホモロジー（Lean が弱い：アーベル性は要求せず前加法性と HasHomology でよい）。結論：e.hom が QuasiIso（一致）。
 
@@ -170,6 +191,8 @@ B6：現本体・固定Mathlibを再検索。各項射影かつ有界の複体�
 
 :::definition "kerodon_2_5_1_11" (lean := "HomologicalComplex.tensorObj")
 Kerodon Notation 2.5.1.11（[Tag 00P1](https://kerodon.net/tag/00P1)）。対応表の状態：Mathlib にある。
+
+*主張*　次数付きアーベル群のテンソル積 $`C\boxtimes D` の次数 $`n` は、$`i+j=n` にわたる $`C_i\otimes D_j` の直和である。斉次元 $`x,y` の純テンソルの像を $`x\boxtimes y` と書く。
 
 仮定：整数で次数づけたアーベル群の族 C,D（Lean が弱い：任意のモノイダル前加法圏で必要な余積を取れる場合を含む。次数づけた族は微分を零にして適用）。結論：次数 n の成分は p+q=n の C\_p ⊗ D\_q の余積で、ιTensorObj は該当成分の包含（一致）。
 
@@ -187,12 +210,16 @@ B6：tensorObj の複体性と d\_eq=D₁+D₂ だけでは、原文の任意の
 :::definition "kerodon_2_5_1_13" (lean := "HomologicalComplex.tensorObj")
 Kerodon Notation 2.5.1.13（[Tag 00P3](https://kerodon.net/tag/00P3)）。対応表の状態：Mathlib にある。
 
+*主張*　アーベル群の鎖複体 $`C,D` のテンソル積は、次数付きテンソル積に $`d(x\boxtimes y)=dx\boxtimes y+(-1)^{|x|}x\boxtimes dy` で定まる微分を入れた鎖複体である。
+
 仮定：整数次数の鎖複体 C,D（Lean が弱い：基礎圏は必要な余積とテンソルの加法性を持つモノイダル前加法圏でよい）。結論：次数別のテンソルの直和に d⊗1+(-1)\^p 1⊗d を入れた鎖複体（一致）。
 
 :::
 
 :::definition "kerodon_2_5_1_17" (lean := "HomologicalComplex.monoidalCategory")
 Kerodon Construction 2.5.1.17（[Tag 00P7](https://kerodon.net/tag/00P7)）。対応表の状態：Mathlib にある。
+
+*主張*　アーベル群の鎖複体はテンソル積でモノイド圏になり、単位は $`\mathbf Z[0]` である。射のテンソル積と結合制約は純テンソルへの作用と括り替えで定まり、単位制約は整数の乗法作用で与えられる。
 
 仮定：基礎圏はアーベル群の圏、添字は ℤ（Lean が弱い：所要の余積とテンソルの余積保存を持つモノイダル前加法圏へ一般化）。結論：符号付きテンソル複体、次数 0 に集中する単位複体、結合子と左右単位子を備えるモノイダル圏（一致）。
 
@@ -210,6 +237,8 @@ Kerodon [Tag 00P9](https://kerodon.net/tag/00P9)
 :::definition "kerodon_2_5_2_1" (lean := "SerrePositivity.DifferentialGraded.DGCategory")
 Kerodon Definition 2.5.2.1（[Tag 00PA](https://kerodon.net/tag/00PA)）。対応表の状態：本体にある。
 
+*主張*　微分次数付き圏では各対象対の射が鎖複体をなし、合成は次数を足す双線形写像で、結合律と次数零の恒等射をもつ。合成は $`d(gf)=(dg)f+(-1)^{|g|}g(df)` を満たす。
+
 仮定：対象型 D と係数環 R（Lean が弱い：整数係数に限らず可換環 R 上で定義）。結論：各 Hom を複体とし、複体の射である結合的合成と単位を持つ dg 圏（一致。Lean の余鎖次数 k は原文の鎖次数 −k）。
 
 :::
@@ -217,12 +246,16 @@ Kerodon Definition 2.5.2.1（[Tag 00PA](https://kerodon.net/tag/00PA)）。対�
 :::definition "kerodon_2_5_2_4" (lean := "SerrePositivity.DifferentialGraded.ClosedCategory")
 Kerodon Construction 2.5.2.4（[Tag 00PD](https://kerodon.net/tag/00PD)）。対応表の状態：本体にある。
 
+*主張*　微分次数付き圏の台圏は同じ対象を持ち、射は各射複体の次数零サイクル、合成と恒等射はもとのものとする。
+
 仮定：dg 圏 D（Lean が弱い：可換環 R 上の dg 圏も取れる）。結論：対象は D の対象、射は閉次数 0 の Hom の元、合成と恒等は dg 圏のものを制限した普通圏（一致）。
 
 :::
 
 :::definition "kerodon_2_5_2_8" (lean := "SerrePositivity.DifferentialGraded.DGFunctor")
 Kerodon Definition 2.5.2.8（[Tag 00PH](https://kerodon.net/tag/00PH)）。対応表の状態：本体にある。
+
+*主張*　微分次数付き関手は対象の写像と各射複体間の鎖写像からなり、合成と恒等射を保つ。
 
 仮定：同じ係数環上の dg 圏二つ（Lean が弱い：整数係数を任意の可換環 R に一般化）。結論：対象関数と各 dg Hom の複体写像が合成・恒等を保存する dg 関手（一致）。
 
@@ -249,6 +282,8 @@ B6：Simplex/SimplexData は HA の余鎖符号規約。原文の削除項と合
 :::proposition "kerodon_2_5_3_5" (lean := "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve, SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Pullback.pullback")
 Kerodon Proposition 2.5.3.5（[Tag 00PQ](https://kerodon.net/tag/00PQ)）。対応表の状態：本体にある。
 
+*主張*　単調写像 $`\alpha:[n]\to[m]` に沿う dg 神経の単体の引き戻しでは、頂点を $`X_{\alpha(j)}` とし、$`\alpha` が単射な部分集合の成分を対応する元の成分から取る。潰れる二点集合には恒等射を、その他の潰れる成分には零を入れる。
+
 仮定：dg nerve の単体と単調写像 \[m\] → \[n\]（Kerodon と一致。係数環は ℤ 以外にも取れる）。結論：頂点を引き戻し、成分は単射な像では元の対応成分、端点が潰れた辺では恒等、潰れた高次の成分では零（一致）。
 
 :::
@@ -264,6 +299,8 @@ B6：dgNerve は HA 規約の Simplex の単体集合。原文の方程式に従
 
 :::theorem "kerodon_2_5_3_10" (lean := "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.instQuasicategory, SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.hornFilling")
 Kerodon Theorem 2.5.3.10（[Tag 00PW](https://kerodon.net/tag/00PW)）。対応表の状態：本体にある。
+
+*主張*　任意の微分次数付き圏の dg 神経は無限圏である。
 
 仮定：dg 圏 D（Lean が弱い：任意の可換環 R 上でよい）。結論：dgNerve R D は任意の内角が充填できる Quasicategory（一致）。
 
@@ -281,6 +318,8 @@ Kerodon [Tag 00SW](https://kerodon.net/tag/00SW)
 :::definition "kerodon_2_5_4_1" (lean := "SerrePositivity.DifferentialGraded.boundaryRelation, SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.edgeClosedEquiv")
 Kerodon Definition 2.5.4.1（[Tag 00PZ](https://kerodon.net/tag/00PZ)）。対応表の状態：本体にある。
 
+*主張*　微分次数付き圏の同じ射複体の次数零サイクル $`f,f'` は、次数 $`1` の元 $`h` で $`dh=f'-f` が成り立つときホモトピックである。これは $`H_0` の類が一致することと同値である。
+
 仮定：dg 圏の二対象間の閉次数 0 の射 f,g（Lean が弱い：係数環 R は任意の可換環）。結論：f と g の差が次数 −1 の元の微分である関係。鎖次数 1 に読み替えた原文の境界関係と一致する（一致）。
 
 :::
@@ -288,12 +327,16 @@ Kerodon Definition 2.5.4.1（[Tag 00PZ](https://kerodon.net/tag/00PZ)）。対�
 :::proposition "kerodon_2_5_4_5" (lean := "SerrePositivity.DifferentialGraded.boundaryCongruence")
 Kerodon Proposition 2.5.4.5（[Tag 00Q3](https://kerodon.net/tag/00Q3)）。対応表の状態：本体にある。
 
+*主張*　微分次数付き圏では、次数零サイクルである射で前合成または後合成すると、射の間のホモトピー関係が保たれる。
+
 仮定：dg 圏 D（Lean が弱い：係数環 R は任意の可換環）。結論：閉次数 0 の射の境界関係を、左右の合成に関して安定な圏の合同関係にする（一致）。
 
 :::
 
 :::definition "kerodon_2_5_4_6" (lean := "SerrePositivity.DifferentialGraded.HomotopyCategory, SerrePositivity.DifferentialGraded.homotopyHomologyEquiv")
 Kerodon Construction 2.5.4.6（[Tag 00Q4](https://kerodon.net/tag/00Q4)）。対応表の状態：本体にある。
+
+*主張*　微分次数付き圏のホモトピー圏は同じ対象を持ち、各 Hom を射複体の $`H_0` とする。合成と恒等射はもとのものから誘導する。
 
 仮定：dg 圏 D（Lean が弱い：係数環 R は任意の可換環）。結論：閉次数 0 の普通圏を境界関係で割ると Hom は次数 0 のホモロジーになる（一致）。
 
@@ -320,12 +363,16 @@ Kerodon [Tag 00Q9](https://kerodon.net/tag/00Q9)
 :::definition "kerodon_2_5_5_1" (lean := "AlgebraicTopology.alternatingFaceMapComplex")
 Kerodon Construction 2.5.5.1（[Tag 00QA](https://kerodon.net/tag/00QA)）。対応表の状態：一部。
 
+*主張*　半単体アーベル群 $`A` の Moore 複体は非負次数 $`n` で $`A_n`、負次数で零であり、微分は面写像の交代和である。退化写像を忘れることで単体アーベル群にもこの構成を適用できる。
+
 B6：alternatingFaceMapComplex は全ての面の交代和を微分とする ChainComplex を直接構成する。半単体対象一般ではなく、退化も持つ単体アーベル群に入力を制限した場合。
 
 :::
 
 :::definition "kerodon_2_5_5_2" (lean := "SSet.chainComplex, SSet.homology")
 Kerodon Definition 2.5.5.2（[Tag 00QB](https://kerodon.net/tag/00QB)）。対応表の状態：Mathlib にある。
+
+*主張*　単体集合 $`S` の整数係数の鎖複体は、$`S` で自由生成される単体アーベル群の Moore 複体である。その次数 $`n` のホモロジーを $`H_n(S;\mathbf Z)` と書く。
 
 仮定：単体集合 S と整数係数（Lean が弱い：余積と加法性を持つ係数圏の係数対象を取れる）。結論：n 単体で添字づけた係数対象の余積と面写像の交代和の微分を持つ鎖複体、およびそのホモロジー（一致）。
 
@@ -361,6 +408,8 @@ B6：normalizedMooreComplex は高次面の核の共通部分を用いる第二�
 :::definition "kerodon_2_5_5_9" (lean := "SSet.normalizedChainComplex")
 Kerodon Construction 2.5.5.9（[Tag 00QH](https://kerodon.net/tag/00QH)）。対応表の状態：Mathlib にある。
 
+*主張*　単体集合 $`S` の正規化鎖複体は、各非負次数 $`n` で非退化 $`n`-単体を基底とする自由アーベル群である。微分は面の交代和で、退化した面の項を零とする。
+
 仮定：単体集合 S と整数係数（Lean が弱い：自由対象を取る係数圏で一般化）。結論：各次数では非退化単体を生成元とし、退化単体の寄与を零にした正規化鎖複体（一致）。
 
 :::
@@ -376,6 +425,8 @@ B6：homotopyPInftyToId と正規化ホモトピー同値は核型正規化の�
 
 :::definition "kerodon_2_5_5_15" (lean := "SSetPair.chainComplexFunctor, SerrePositivity.KST.Comparison.relativeIntegralChains, SerrePositivity.KST.Comparison.relativeIntegralHomologyFunctor")
 Kerodon Variant 2.5.5.15（[Tag 00QP](https://kerodon.net/tag/00QP)）。対応表の状態：一部。
+
+*主張*　単体部分集合 $`S'\subseteq S` に対し、自由単体アーベル群の商 $`\mathbf Z[S]/\mathbf Z[S']` の Moore 複体と正規化 Moore 複体を相対鎖複体とする。両者のホモロジーは同じで、対の相対ホモロジーを与える。
 
 B6：SSetPair.chainComplexFunctor は原文の相対非正規化鎖複体 C(S,S′;Z) の構成成分を与える。核型の正規化相対複体とのホモロジー比較や商型の N の同定は含めない。
 
@@ -393,6 +444,8 @@ Kerodon [Tag 00QQ](https://kerodon.net/tag/00QQ)
 :::theorem "kerodon_2_5_6_1" (lean := "CategoryTheory.Abelian.DoldKan.equivalence, CategoryTheory.Abelian.DoldKan.N")
 Kerodon Theorem 2.5.6.1（[Tag 00QR](https://kerodon.net/tag/00QR)）。対応表の状態：Mathlib にある。
 
+*主張*　正規化 Moore 複体関手は、単体アーベル群の圏から非負次数のアーベル群の鎖複体の圏への圏同値である。
+
 仮定：単体アーベル群と非負次数のアーベル群の複体（Lean が弱い：任意のアーベル圏 C で成り立つ）。結論：正規化 Moore 複体を順関手とする SimplicialObject C と ChainComplex C ℕ の圏同値（一致）。
 
 :::
@@ -408,6 +461,8 @@ B6：Γ は非負次数複体上の別の Dold–Kan 模型。StandardSimplex �
 
 :::definition "kerodon_2_5_6_9" (lean := "CategoryTheory.Functor.const, CategoryTheory.nerve, CategoryTheory.SingleObj")
 Kerodon Construction 2.5.6.9（[Tag 00QX](https://kerodon.net/tag/00QX)）。対応表の状態：一部。
+
+*主張*　アーベル群 $`G` と $`n\geq0` に対し、次数 $`n` に集中する複体 $`G[n]` に Dold–Kan 同値の逆を適用して $`K(G,n)` を得る。$`n=1` では任意の群の分類単体集合に、$`n=0` では任意の集合の定数単体集合にこの記法を拡張する。
 
 B6：const は任意の集合 G に対して原文が明記する K(G,0) を、nerve(SingleObj G) は群 G に対して明記する K(G,1) を直接構成する。一般の可換群の全 n は含まない。
 
@@ -450,6 +505,8 @@ B6：現本体・固定Mathlibを再検索。単体集合の正規化鎖複体�
 :::definition "kerodon_2_5_6_15" (lean := "AlgebraicTopology.normalizedMooreComplex")
 Kerodon Construction 2.5.6.15（[Tag 00R6](https://kerodon.net/tag/00R6)）。対応表の状態：Mathlib にある。
 
+*主張*　単体アーベル群 $`A` の Moore 複体で、次数 $`n\geq0` における $`d_1,\ldots,d_n` の共通核は部分複体をなし、その微分は $`d_0` の制限である。これを正規化 Moore 複体の別の実現とする。
+
 仮定：単体アーベル群 A（Lean が弱い：任意のアーベル圏 C の単体対象を取れる）。結論：次数 n で d₁,…,d\_n の核の共通部分を取り、d₀ の制限を微分にする正規化 Moore 複体（一致）。
 
 :::
@@ -474,6 +531,8 @@ B6：splitMonoInclusionOfMooreComplexMap は核型 Ñ→C の分裂単射。原�
 
 :::proposition "kerodon_2_5_6_21" (lean := "AlgebraicTopology.DoldKan.homotopyEquivNormalizedMooreComplexAlternatingFaceMapComplex, SerrePositivity.KST.Comparison.degenerateIntegralChains_homology_isZero")
 Kerodon Proposition 2.5.6.21（[Tag 00RC](https://kerodon.net/tag/00RC)）。対応表の状態：一部。
+
+*主張*　単体アーベル群では、Moore 複体から正規化商への射と、共通核で作る正規化部分複体から Moore 複体への包含が、ともにホモロジーの同型を誘導する。退化単体が生成する部分複体のホモロジーは零である。
 
 B6：homotopyEquivNormalizedMooreComplexAlternatingFaceMapComplex は原文の核型 Ñ と C の包含を hom とするホモトピー同値。そこから包含のホモロジー同型という第二の結論成分が直接得られる。商射・一般の D の非輪状性は含まない。
 
@@ -509,6 +568,8 @@ B6：normalizedShuffle は核型正規化での鎖写像。原文の商型正規
 :::definition "kerodon_2_5_7_2" (lean := "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.ShuffleIndex, SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.ShuffleIndex.left, SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.ShuffleIndex.right, SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.ShuffleIndex.inversions")
 Kerodon Notation 2.5.7.2（[Tag 00RH](https://kerodon.net/tag/00RH)）。対応表の状態：本体にある。
 
+*主張*　非負整数 $`p,q` に対し、$`(p,q)`-シャッフルは $`[p+q]\to[p]\times[q]` の狭義単調写像である。第一成分の増加が第二成分の増加より後に来る組の個数の偶奇で符号を定める。
+
 仮定：非負整数 p,q（Kerodon と一致。Lean では n=p+q を明示）。結論：n 個のステップから p 個の左ステップを指定して \[n\]→\[p\] と \[n\]→\[q\] を作り、右ステップが先行する対の数で符号を得る（一致）。
 
 :::
@@ -516,12 +577,16 @@ Kerodon Notation 2.5.7.2（[Tag 00RH](https://kerodon.net/tag/00RH)）。対応�
 :::definition "kerodon_2_5_7_3" (lean := "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.shuffleApp, SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.shuffleBidegree")
 Kerodon Construction 2.5.7.3（[Tag 00RJ](https://kerodon.net/tag/00RJ)）。対応表の状態：本体にある。
 
+*主張*　単体アーベル群 $`A,B` の $`a\in A_p,b\in B_q` の非正規化シャッフル積は、各 $`(p,q)`-シャッフルの二成分で引き戻した元のテンソル $`\sigma_-^*a\otimes\sigma_+^*b` の符号付き和である。
+
 仮定：単体 ℤ 加群 C,D と p+q=n（Kerodon と一致）。結論：次数 (p,q) のテンソル成分から、左右の shuffle の引き戻しを置換符号付きで加えた (C⊗D)\_n への射（一致）。
 
 :::
 
 :::proposition "kerodon_2_5_7_7" (lean := "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.shuffle_comm, SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.shuffle")
 Kerodon Proposition 2.5.7.7（[Tag 00RN](https://kerodon.net/tag/00RN)）。対応表の状態：本体にある。
+
+*主張*　単体アーベル群の非正規化シャッフル積は、$`a` の次数を $`p` とすると、$`\partial(a\bar\triangledown b)=(\partial a)\bar\triangledown b+(-1)^p a\bar\triangledown(\partial b)` を満たす。
 
 仮定：単体 ℤ 加群 C,D（Kerodon と一致）。結論：非正規化 shuffle がテンソル複体の微分と可換で、成分ごとには d(a⋄b)=(da)⋄b+(-1)\^p a⋄(db) になる（一致）。
 
@@ -532,7 +597,7 @@ Kerodon Proposition 2.5.7.8（[Tag 00RP](https://kerodon.net/tag/00RP)）。対�
 
 B6：σ\_rawBilinear\_left/right は単体集合由来の shuffle が正規化への射影後に消える式。原文の C(A⊗B) における退化部分群への所属を結論せず、対象と商の比較が必要。
 
-宣言：`SerrePositivity.SimplicialChains.Shuffle.σ_rawBilinear_left`、`SerrePositivity.SimplicialChains.Shuffle.σ_rawBilinear_right`
+宣言：`SerrePositivity.EInfinity.Shuffle.σ_rawBilinear_left`、`SerrePositivity.EInfinity.Shuffle.σ_rawBilinear_right`
 
 :::
 
@@ -557,6 +622,8 @@ B6：projectedRingShuffleProduct は shuffle を環の乗法で合成した内�
 :::definition "kerodon_2_5_7_11" (lean := "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.normalizedShuffle")
 Kerodon Notation 2.5.7.11（[Tag 00RS](https://kerodon.net/tag/00RS)）。対応表の状態：本体にある。
 
+*主張*　単体アーベル群 $`A,B` の Eilenberg–Zilber 写像は、正規化複体のテンソル積から $`A\otimes B` の正規化複体への、純テンソルをシャッフル積に送る一意な鎖写像である。標準同型 $`\mathbf Z[0]\simeq N_*(\mathbf Z[\Delta^0])` を単位として、正規化 Moore 複体関手に lax 対称モノイド構造を与える。
+
 仮定：単体 ℤ 加群 C,D（Kerodon と一致）。結論：二つの正規化 Moore 複体のテンソルから点ごとのテンソルの正規化複体への shuffle 鎖写像（一致。記法 EZ が指す鎖写像の構成）。
 
 :::
@@ -575,7 +642,7 @@ Kerodon Corollary 2.5.7.15（[Tag 00RW](https://kerodon.net/tag/00RW)）。対�
 
 B6：chainMap は EZ の候補鎖写像の構成で、擬同型性の結論成分を持たない。原文の命題の証明部品にとどまる。
 
-宣言：`SerrePositivity.SimplicialChains.Shuffle.chainMap`
+宣言：`SerrePositivity.EInfinity.Shuffle.chainMap`
 
 :::
 
@@ -598,12 +665,16 @@ Kerodon [Tag 00S0](https://kerodon.net/tag/00S0)
 :::definition "kerodon_2_5_8_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.awFront, SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.awBack")
 Kerodon Notation 2.5.8.1（[Tag 00S1](https://kerodon.net/tag/00S1)）。対応表の状態：本体にある。
 
+*主張*　$`0\leq p\leq n` で $`[n]` の最初の区間と最後の区間の包含 $`[p]\to[n]`、$`[n-p]\to[n]` をそれぞれ $`i\mapsto i`、$`j\mapsto j+p` とし、単体アーベル群の引き戻しを $`\iota_{\leq p}^*,\iota_{\geq p}^*` と書く。
+
 仮定：非負整数 n と p : Fin(n+1)（Kerodon と一致）。結論：\[p\]→\[n\] を i↦i、\[n−p\]→\[n\] を j↦p+j とする前半・後半の単体圏の射（一致）。
 
 :::
 
 :::definition "kerodon_2_5_8_2" (lean := "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.alexanderWhitneyApp, SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.alexanderWhitneySummand")
 Kerodon Construction 2.5.8.2（[Tag 00S2](https://kerodon.net/tag/00S2)）。対応表の状態：本体にある。
+
+*主張*　単体アーベル群 $`A,B` に対する非正規化 Alexander–Whitney 写像は、$`C_*(A\otimes B)` から $`C_*(A)\boxtimes C_*(B)` への次数付き写像である。次数 $`n` の $`a\otimes b` を $`\sum_{p=0}^n\iota_{\leq p}^*a\boxtimes\iota_{\geq p}^*b` に送る。
 
 仮定：単体 ℤ 加群 C,D と次数 n（Kerodon と一致）。結論：(C⊗D)\_n から、各切断位置 p の前半・後半への制限のテンソルを対応する (p,n−p) 成分へ入れた和（一致）。
 
@@ -612,12 +683,16 @@ Kerodon Construction 2.5.8.2（[Tag 00S2](https://kerodon.net/tag/00S2)）。対
 :::proposition "kerodon_2_5_8_3" (lean := "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.alexanderWhitney_comm, SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.alexanderWhitney")
 Kerodon Proposition 2.5.8.3（[Tag 00S3](https://kerodon.net/tag/00S3)）。対応表の状態：本体にある。
 
+*主張*　単体アーベル群 $`A,B` の非正規化 Alexander–Whitney 写像は Moore 複体の微分と可換であり、鎖写像になる。
+
 仮定：単体 ℤ 加群 C,D（Kerodon と一致）。結論：各切断位置の和による非正規化 Alexander–Whitney 射が微分と可換で、C\_\*(C⊗D) から C\_\*(C)⊠C\_\*(D) への鎖写像（一致）。
 
 :::
 
-:::proposition "kerodon_2_5_8_4" (lean := "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.alexanderWhitney_naturality, SerrePositivity.SimplicialChains.AlexanderWhitney.rawComponent_coassoc")
+:::proposition "kerodon_2_5_8_4" (lean := "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.alexanderWhitney_naturality")
 Kerodon Proposition 2.5.8.4（[Tag 00S4](https://kerodon.net/tag/00S4)）。対応表の状態：一部。
+
+*主張*　非正規化 Alexander–Whitney 写像の族は、単体アーベル群の Moore 複体関手に colax モノイド構造を与える。
 
 B6：alexanderWhitney\_naturality は単体 Z 加群の二変数に関する原文の非正規化 AW の自然性を直接述べる。colax 構造の自然性成分のみで、一般の余単位・余結合は含まない。
 
@@ -628,7 +703,7 @@ Kerodon Proposition 2.5.8.5（[Tag 00S5](https://kerodon.net/tag/00S5)）。対�
 
 B6：aw\_degeneracy\_not\_mono は切断した単体写像のいずれかが退化する組合せ補題。restrictToNormalized も核型への制限であり、原文の指定 K\_\* への像の所属を直接述べない。
 
-宣言：`SerrePositivity.SimplicialChains.AlexanderWhitney.aw_degeneracy_not_mono`、`SerrePositivity.SimplicialChains.AlexanderWhitney.restrictToNormalized`
+宣言：`SerrePositivity.EInfinity.AlexanderWhitney.aw_degeneracy_not_mono`、`SerrePositivity.EInfinity.AlexanderWhitney.restrictToNormalized`
 
 :::
 
@@ -646,7 +721,7 @@ Kerodon Proposition 2.5.8.7（[Tag 00S7](https://kerodon.net/tag/00S7)）。対�
 
 B6：normalizedAlexanderWhitney\_naturality は核型 Ñ での式、diagonal の余結合・余単位は対角を合成した別の射の式。原文の商型 N の一般の colax 構造の直接の成分とは数えない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.normalizedAlexanderWhitney_naturality`、`SerrePositivity.SimplicialChains.AlexanderWhitney.diagonal_coassoc`、`SerrePositivity.SimplicialChains.AlexanderWhitney.diagonal_left_counit`
+宣言：`SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.normalizedAlexanderWhitney_naturality`、`SerrePositivity.EInfinity.AlexanderWhitney.diagonal_coassoc`、`SerrePositivity.EInfinity.AlexanderWhitney.diagonal_left_counit`
 
 :::
 
@@ -687,6 +762,8 @@ B6：standardAW と awData\_assoc/unit は dg Hom を合成先とする演算と
 :::definition "kerodon_2_5_9_2" (lean := "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.doldKanSimplicialCategory, SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.doldKanHomSpace, SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardDoldKanModuleIso")
 Kerodon Construction 2.5.9.2（[Tag 00SE](https://kerodon.net/tag/00SE)）。対応表の状態：本体にある。
 
+*主張*　微分次数付き圏から、対象をそのまま、各射単体集合を射複体の一般化 Eilenberg–MacLane 空間とする単体圏を作る。次数 $`n` の合成は、$`\Delta^n` の対角と Alexander–Whitney 写像で正規化鎖を二つに分け、二つの鎖写像を作用させてから射複体の合成を取る。
+
 仮定：dg 圏 D（Lean が弱い：任意の可換環 R 上でよい）。結論：dg Hom の非負鎖次数への切断に Dold–Kan を施した Hom 単体集合と、対角・AW・dg 合成からなる豊穣合成を持つ単体圏（一致）。
 
 :::
@@ -694,12 +771,16 @@ Kerodon Construction 2.5.9.2（[Tag 00SE](https://kerodon.net/tag/00SE)）。対
 :::proposition "kerodon_2_5_9_3" (lean := "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.doldKanSimplicialCategory, SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.closedStandardVertexEquiv, SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.closedStandardVertexEquiv_id, SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.closedStandardVertexEquiv_comp")
 Kerodon Remark 2.5.9.3（[Tag 00SF](https://kerodon.net/tag/00SF)）。対応表の状態：本体にある。
 
+*主張*　微分次数付き圏の台圏は、対応する単体圏の次数零の圏と同型である。どちらも対象は元の対象で、射は射複体の次数零サイクルである。
+
 仮定：dg 圏 D（Lean が弱い：任意の可換環 R 上でよい）。結論：Dold–Kan の単体圏構造を元の閉次数 0 射の普通圏 ClosedCategory R D に直接載せる。Hom の 0 単体との全単射で恒等・合成を保存することを構造の場で確認した（一致）。
 
 :::
 
 :::definition "kerodon_2_5_9_6" (lean := "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.cubeFlag, SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.cubeEvaluation")
 Kerodon Construction 2.5.9.6（[Tag 00SJ](https://kerodon.net/tag/00SJ)）。対応表の状態：一部。
+
+*主張*　有限集合 $`I` の全順序は、部分集合の増大列を通じて $`(\Delta^1)^I` の非退化最高次単体に対応する。一つの順序を固定し、対応する単体を $`I` の置換で動かした符号付き和を、立方体の正規化鎖複体の基本鎖とする。
 
 B6：cubeFlag は番号付けた有限集合で空集合から1点ずつ増やす最大旗の単体を直接構成する。原文に記された旗の構成成分のみで、正規化整数基本鎖と自由推移性の一式は含まない。
 
@@ -726,12 +807,16 @@ B6：coherentComparison は HA 符号規約の dg nerve と包含順 nerve の�
 :::definition "kerodon_2_5_9_12" (lean := "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.cubeFaceMap, SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.cubeFlag_boundary_sum")
 Kerodon Notation 2.5.9.12（[Tag 00SP](https://kerodon.net/tag/00SP)）。対応表の状態：一部。
 
+*主張*　空でない有限全順序集合 $`I` の立方体で、座標 $`i` を $`0` または $`1` に固定した面の基本鎖を、制限した順序を持つ $`I\setminus\{i\}` の基本鎖の面包含による像として記す。
+
 B6：cubeFaceMap は指定座標を0/1に固定する原文の二つの面の包含を直接構成する。原文の基本鎖をこれで送った整数鎖としての比較は含まない。
 
 :::
 
 :::lemma_ "kerodon_2_5_9_13" (lean := "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.cubeFlag_boundary_sum, SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.cubeFlag_boundary_eq_outer_sum")
 Kerodon Lemma 2.5.9.13（[Tag 00SQ](https://kerodon.net/tag/00SQ)）。対応表の状態：一部。
+
+*主張*　通常の順序を持つ $`I=\{1,\ldots,n\}` の単体立方体の基本鎖の境界は、各座標 $`i` の零面と一面の基本鎖の差を $`(-1)^i` で重み付けして足したものである。
 
 B6：cubeFlag\_boundary\_sum は任意の加法可換群値 F に対する符号和。F を正規化自由鎖への生成元写像に取ると原文の境界式が直接得られる。型の card=n+2、すなわち次元2以上に限り、0・1次元は含まない。
 

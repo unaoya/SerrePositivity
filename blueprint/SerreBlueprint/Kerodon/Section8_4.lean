@@ -43,12 +43,16 @@ Kerodon の 8.4 節（[Tag 03V7](https://kerodon.net/tag/03V7)）の項目と、
 :::definition "kerodon_8_4_0_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Cocompletion.presheaf_exists_yonedaLeftKan, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.presheafInfinity_hasColimit")
 Kerodon Definition 8.4.0.1（[Tag 04B8](https://kerodon.net/tag/04B8)）。対応表の状態：一部。
 
+*主張*　無限圏の関手 $`h:C\to\widehat C` が余完備化を与えるとは、$`\widehat C` が余完備で、任意の余完備無限圏 $`D` に対し、小さい余極限を保つ $`\widehat C\to D` の圏から $`\operatorname{Fun}(C,D)` への前合成が同値になることである。
+
 hを小準圏の標準Yoneda、ĈをPresheafInfinityに指定するとpresheafInfinity\_hasColimitは原文の条件(1)の小余完備性を直接与える。任意のh,Ĉの定義全体、全保存関手の制限同値(2)は含まない。
 
 :::
 
 :::theorem "kerodon_8_4_0_3" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.presheafInfinity_hasColimit, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Cocompletion.presheaf_exists_yonedaLeftKan, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Cocompletion.presheafYonedaLeftKan_canonicalColimits")
 Kerodon Theorem 8.4.0.3（[Tag 03W9](https://kerodon.net/tag/03W9)）。対応表の状態：一部。
+
+*主張*　本質的に小さい無限圏 $`C` の共変 Yoneda 埋め込みは、空間値前層の無限圏 $`\operatorname{Fun}(C^{\mathrm{op}},S)` を $`C` の余完備化として示す。
 
 小さいCの標準Yonedaに限るとpresheafInfinity\_hasColimitはcocompletionの小余完備性という同じ結論成分を直接返す。presheaf\_exists\_yonedaLeftKanは延長を構成するが、その小余極限保存と全準圏の制限同値まではこの引用から数えない。
 
@@ -66,12 +70,16 @@ Kerodon [Tag 03V8](https://kerodon.net/tag/03V8)
 :::definition "kerodon_8_4_1_1" (lean := "CategoryTheory.Functor.IsDense, CategoryTheory.Functor.isDense_iff_fullyFaithful_restrictedULiftYoneda")
 Kerodon Definition 8.4.1.1（[Tag 03V9](https://kerodon.net/tag/03V9)）。対応表の状態：Mathlib にある。
 
+*主張*　局所小さい通常の圏 $`D` の充満部分圏 $`C` は、$`y` を $`\operatorname{Hom}_D(-,y)|_C` に送る $`D\to\operatorname{Fun}(C^{\mathrm{op}},\operatorname{Set})` が充満忠実なとき稠密である。
+
 仮定：通常圏 C,D と充満な F : C⥤D。原文の充満部分圏の包含を含む（Lean が弱い）。結論：isDense\_iff\_fullyFaithful\_restrictedULiftYoneda は稠密性と Hom\_D(F−,−) の充満忠実性の iff（原文の定義と一致）。
 
 :::
 
 :::definition "kerodon_8_4_1_5" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Cocompletion.canonicalColimits_of_identityRestriction_bijective, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.leftKanCanonicalCocone, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone") (uses := "kerodon_1_4_0_1")
 Kerodon Definition 8.4.1.5（[Tag 03VD](https://kerodon.net/tag/03VD)）。対応表の状態：本体にある。
+
+*主張*　無限圏 $`D` の充満部分圏 $`C` は、全対象 $`x` について、$`C\times_D D_{/x}` からの標準右錐が $`D` で余極限図式になるとき稠密である。
 
 leftKanCanonicalCocone i (𝟙 D) Xに全XでIsColimitConeを課すことが、原文の指定したC×\_D D\_/Xからの標準余錐によるdenseの定義そのもの。標準余錐の構成を追記し、専用のDense名の有無でpartialにしない。
 
@@ -89,12 +97,16 @@ Kerodon Proposition 8.4.1.8（[Tag 03VG](https://kerodon.net/tag/03VG)）。対�
 :::corollary "kerodon_8_4_1_9" (lean := "CategoryTheory.Functor.isDense_iff_fullyFaithful_restrictedULiftYoneda, CategoryTheory.Functor.isDense_iff_nonempty_isPointwiseLeftKanExtension, SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerve_isLeftKanExtensionHom_iff_pointwise, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanIsRelativeLeftKanExtendedFrom_iff_refl_extension, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.isLeftKanExtension_iff_forall_transport")
 Kerodon Corollary 8.4.1.9（[Tag 03VH](https://kerodon.net/tag/03VH)）。対応表の状態：一部。
 
+*主張*　局所小さい通常の圏の充満部分圏が稠密であることは、その神経が無限圏として稠密な部分圏であることと同値である。
+
 C,Dを同じ宇宙の小さい通常圏に限ると、isDense\_iff\_nonempty\_isPointwiseLeftKanExtension、nerve\_isLeftKanExtensionHom\_iff\_pointwise、恒等変換の標準Kan余錐の判定を合わせ、同じ包含と恒等単位の密度のiffを直接得る。任意の局所小で大きい圏は含まない。
 
 :::
 
 :::definition "kerodon_8_4_1_15" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Cocompletion.canonicalColimits_of_identityRestriction_bijective, CategoryTheory.Functor.IsDense, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.IsLeftKanExtension, SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyRefl") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_7_3_1_5")
 Kerodon Definition 8.4.1.15（[Tag 03VP](https://kerodon.net/tag/03VP)）。対応表の状態：本体にある。
+
+*主張*　無限圏 $`D` への単体集合の写像 $`F:C\to D` は、$`F` の恒等変換が $`\mathrm{id}_D` を $`F` の $`F` に沿う左 Kan 拡張として示すとき稠密である。
 
 IsLeftKanExtension F F (𝟙 D) (functorHomotopyRefl F)を課すことが原文の同じFのdenseの定義そのもの。一般の指定変換の型と恒等変換を追記し、専用のDense名の欠如は不足にしない。
 
@@ -127,6 +139,8 @@ Kerodon [Tag 03W1](https://kerodon.net/tag/03W1)
 
 :::theorem "kerodon_8_4_2_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Cocompletion.presheafDensityCocone_isColimit, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Cocompletion.presheafDensityPresentation, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PresheafNativeDensityKan.presheafIdentity_isLeftKanExtension, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PresheafNativeDensityKan.presheafIdentity_canonicalColimits") (uses := "kerodon_1_4_0_1, kerodon_8_3_3_9")
 Kerodon Theorem 8.4.2.1（[Tag 03W2](https://kerodon.net/tag/03W2)）。対応表の状態：一部。
+
+*主張*　局所小さい無限圏の共変 Yoneda 埋め込みは稠密である。
 
 Cを小準圏、hを標準Yonedaに限ると現本体presheafIdentity\_isLeftKanExtensionは同じhに沿う恒等関手の恒等単位の左Kan性、すなわち原文のdensityそのものを直接返す。elements図式の類似の密度だけでなく標準Kan余錐の型を追記した。
 
@@ -309,6 +323,8 @@ Kerodon [Tag 03WM](https://kerodon.net/tag/03WM)
 :::proposition "kerodon_8_4_5_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Cocompletion.presheaf_exists_yonedaLeftKan, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Cocompletion.presheafYonedaLeftKan_unit_isIso")
 Kerodon Proposition 8.4.5.1（[Tag 03WN](https://kerodon.net/tag/03WN)）。対応表の状態：一部。
 
+*主張*　本質的に小さい無限圏 $`C` から、余完備で局所的に小さい無限圏 $`D` への $`f:C\to D` を取る。$`D` の共変 Yoneda 埋め込みと $`f^{\mathrm{op}}` に沿う制限の合成は左随伴 $`F:\operatorname{Fun}(C^{\mathrm{op}},S)\to D` を持ち、$`F` と $`C` の Yoneda 埋め込みの合成は $`f` と自然同型である。
+
 Cを小準圏、標準Yonedaに限ればpresheaf\_exists\_yonedaLeftKanとunit\_isIsoは同じfについてFとF∘h≅fという原文の延長・回収の結論成分を直接作る。そのFが指定Gの左随伴という条件は含まない。
 
 :::
@@ -316,12 +332,16 @@ Cを小準圏、標準Yonedaに限ればpresheaf\_exists\_yonedaLeftKanとunit\_
 :::corollary "kerodon_8_4_5_2" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Cocompletion.sigmaLeftKanExtension_preservesSmallColimits_iff, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.adjunction_preservesSmallColimits")
 Kerodon Corollary 8.4.5.2（[Tag 04BF](https://kerodon.net/tag/04BF)）。対応表の状態：一部。
 
+*主張*　$`C` が本質的に小さく、$`D` が余完備で局所小さい無限圏とする。関手 $`\operatorname{Fun}(C^{\mathrm{op}},S)\to D` が小さい余極限を保つことは、それが右随伴を持つことと同値である。
+
 原文(2)の同じFに右随伴があるとき、小形状の余極限を左随伴が保存する本体の定理を適用すれば(1)を直接得る。P\_Σの別の保存判定は根拠とせず、(1)⇒(2)は含まない。
 
 :::
 
 :::corollary "kerodon_8_4_5_3" (lean := "CategoryTheory.Adjunction.rightAdjoint_preservesLimits, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.adjunction_preservesSmallLimits")
 Kerodon Corollary 8.4.5.3（[Tag 04BG](https://kerodon.net/tag/04BG)）。対応表の状態：一部。
+
+*主張*　本質的に小さい無限圏 $`C` に対し、$`\operatorname{Fun}(C,S)^{\mathrm{op}}\to S` が左随伴を持つこと、$`\operatorname{Fun}(C,S)` の対象に表現されること、小さい極限を保つことは同値である。
 
 本体のQCatAdjunctionの右随伴による極限保存は、原文の同じFについて(1)⇒(3)を直接与える。Mathlibの通常圏の保存だけを根拠とはしない。表現可能性(2)と逆向きは含まない。
 
@@ -357,12 +377,16 @@ Kerodon [Tag 04BH](https://kerodon.net/tag/04BH)
 :::definition "kerodon_8_4_6_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indKappaContinuousRestrictionEquivalence, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.sigmaSiftedContinuousRestriction_isQCatEquivalence")
 Kerodon Definition 8.4.6.1（[Tag 04BJ](https://kerodon.net/tag/04BJ)）。対応表の状態：一部。
 
+*主張*　無限圏の関手 $`h:C\to\widehat C` が単体集合の族 $`\mathbb K` に関する余完備化を与えるとは、$`\widehat C` が $`\mathbb K`-余完備で、各 $`\mathbb K`-余完備な $`D` への $`\mathbb K`-余連続関手を $`h` に沿って制限すると $`\operatorname{Fun}(C,D)` との同値になることである。
+
 𝕂を小κ-filtered形状、hを小準圏CのindYonedaに指定すると、Indのκ-filtered余完備性とindKappaContinuousRestrictionEquivalenceが同じ二条件を直接与える。任意𝕂と任意hを判定する定義全体は含まない。
 
 :::
 
 :::proposition "kerodon_8_4_6_3" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indKappaContinuousRestrictionEquivalence, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.sigmaSiftedContinuousRestriction_isQCatEquivalence, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemYoneda_isIdempotentCompletion") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1")
 Kerodon Proposition 8.4.6.3（[Tag 04BL](https://kerodon.net/tag/04BL)）。対応表の状態：一部。
+
+*主張*　任意の無限圏 $`C` と単体集合の族 $`\mathbb K` に対し、$`C` の $`\mathbb K`-余完備化が存在する。構造関手は稠密かつ充満忠実で、$`C` に存在するすべての極限を保つ。
 
 𝕂を小κ-filtered形状、Cを小準圏に限ると、Indの余完備性・制限同値とindYoneda\_isFullyFaithfulは同じK-cocompletionの存在と充満忠実性を直接返す。任意𝕂、densityと全既存極限保存の成分は含まない。
 
@@ -380,12 +404,16 @@ Indの最小κ-filtered閉包は固定宇宙の前層圏内の構成。原文の
 :::proposition "kerodon_8_4_6_8" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indKappaContinuousRestriction_isQCatEquivalence, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.sigmaSiftedContinuousRestriction_isQCatEquivalence") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_4_8_4_1, kerodon_7_3_6_15, kerodon_8_3_3_13, kerodon_8_4_6_6, kerodon_8_4_6_9, kerodon_8_4_6_10")
 Kerodon Proposition 8.4.6.8（[Tag 04BQ](https://kerodon.net/tag/04BQ)）。対応表の状態：一部。
 
+*主張*　任意の無限圏 $`C` と単体集合の族 $`\mathbb K` に対し、8.4.6.6 で作る $`\widehat C` への共変 Yoneda 埋め込みは $`\mathbb K`-余完備化を与える。
+
 𝕂を小κ-filtered形状とし、閉包を標準Indで表示する場合、Indのκ-filtered余完備性とindKappaContinuousRestriction\_isQCatEquivalenceは同じYoneda制限の普遍性を直接返す。指定濃度で切った別の閉包模型への比較と任意𝕂は含まない。
 
 :::
 
 :::lemma_ "kerodon_8_4_6_9" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.ind_exists_leftKanExtension_with_recovery, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indLeftKanExtension_preservesSmallKappaFilteredColimits") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_8_3_3_17, kerodon_8_4_3_2, kerodon_8_4_3_5, kerodon_8_4_6_6")
 Kerodon Lemma 8.4.6.9（[Tag 04BR](https://kerodon.net/tag/04BR)）。対応表の状態：一部。
+
+*主張*　無限圏 $`C` の 8.4.6.6 の $`\mathbb K`-余完備化と $`\mathbb K`-余完備な無限圏 $`D` に対し、任意の $`f:C\to D` は $`C` 上で自然同型を伴う延長 $`F:\widehat C\to D` を持つ。この $`F` は Yoneda の本質像から左 Kan 拡張され、$`\mathbb K`-余連続である。
 
 𝕂を小κ-filtered形状、閉包を標準Indに限ると、ind\_exists\_leftKanExtension\_with\_recoveryとindLeftKanExtension\_preservesSmallKappaFilteredColimitsは同じfの拡張と回収同型およびκ-filtered保存を直接返す。任意𝕂の閉包は含まない。
 
@@ -394,12 +422,16 @@ Kerodon Lemma 8.4.6.9（[Tag 04BR](https://kerodon.net/tag/04BR)）。対応表�
 :::lemma_ "kerodon_8_4_6_10" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indLeftKanExtension_preservesSmallKappaFilteredColimits, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indKappaContinuousRestrictionEquivalence") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_7_3_6_9, kerodon_8_4_6_6, kerodon_8_4_6_9")
 Kerodon Lemma 8.4.6.10（[Tag 04BS](https://kerodon.net/tag/04BS)）。対応表の状態：一部。
 
+*主張*　無限圏 $`C` の 8.4.6.6 の $`\mathbb K`-余完備化から $`\mathbb K`-余完備な $`D` への関手は、Yoneda の本質像から左 Kan 拡張されているとき、かつそのときに限り $`\mathbb K`-余連続である。
+
 𝕂を小κ-filtered形状、閉包を標準Indに限ると、indLeftKanExtension\_preservesSmallKappaFilteredColimitsは同じ指定Fについて左Kan拡張⇒κ-cocontinuousの向きを直接返す。任意𝕂と逆向きは含まない。
 
 :::
 
 :::corollary "kerodon_8_4_6_11" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indLeftKanExtension_unit_isIso, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indLeftKanExtension_preservesSmallKappaFilteredColimits") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_8_4_6_6, kerodon_8_4_6_8, kerodon_8_4_6_10")
 Kerodon Corollary 8.4.6.11（[Tag 05ZZ](https://kerodon.net/tag/05ZZ)）。対応表の状態：一部。
+
+*主張*　無限圏の $`\mathbb K`-余完備化 $`h:C\to\widehat C`、$`\mathbb K`-余完備な $`D`、$`f:C\to D,F:\widehat C\to D` と変換 $`\alpha:f\to Fh` を取る。$`\alpha` が左 Kan 拡張を示すことは、$`F` が $`\mathbb K`-余連続で $`\alpha` が自然同型であることと同値である。
 
 hをindYoneda、𝕂を小κ-filtered形状に限ると、指定αの左Kan性からunit\_isIsoとpreservesSmallKappaFilteredColimitsが同じαの(2)⇒(1)を直接与える。任意のcocompletionと逆向きは含まない。
 
@@ -488,6 +520,8 @@ indInfinity\_isLocallySmallは固定宇宙の局所小性。原文の特定λで
 
 :::corollary "kerodon_8_4_7_12" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.indInfinity_isLocallySmall")
 Kerodon Corollary 8.4.7.12（[Tag 0611](https://kerodon.net/tag/0611)）。対応表の状態：一部。
+
+*主張*　局所小さい無限圏の、小さい単体集合の族 $`\mathbb K` に関する余完備化は局所小さい。
 
 Cを小準圏、𝕂を小κ-filtered形状、cocompletionを標準Indに限るとindInfinity\_isLocallySmallは原文の同じ余完備化の局所小性を直接返す。任意𝕂と任意の局所小Cは含まない。
 

@@ -25,6 +25,7 @@
  "stats": {
   "partial": 46,
   "linked": 77,
+  "with-statement": 77,
   "none": 134,
   "nolink": 134,
   "interface": 6,

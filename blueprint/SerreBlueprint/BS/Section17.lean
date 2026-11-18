@@ -9,7 +9,7 @@ open Informal
 -- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）
 set_option maxHeartbeats 2000000
 
-#doc (Manual) "§17 " =>
+#doc (Manual) "§17 Comparison with AΩ" =>
 %%%
 number := false
 tag := "bs-17"

@@ -20,7 +20,7 @@ open Informal
 -- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）
 set_option maxHeartbeats 2000000
 
-#doc (Manual) "§10 " =>
+#doc (Manual) "§10 The almost purity theorem" =>
 %%%
 number := false
 tag := "bs-10"
@@ -49,6 +49,8 @@ $$`J_{\mathrm{perfd}}=\ker\big(R\to(R/J)_{\mathrm{perfd}}\big)`
 :::definition "bs_10_1" (lean := "SerrePositivity.BhattScholze.Almost.perfectoidKernel, SerrePositivity.Almost.IsAlmostZero")
 *定義 10.1*　J-almost zero。対応表の状態：一部（component）。
 
+*主張*　perfectoid 環 $`R` の $`p` 完備イデアル $`J` に対し、導来 $`p` 完備な $`R` 加群 $`M` は $`J_{\mathrm{perfd}}M=0` のとき $`J`-almost 零である。$`J=(p)` なら古典的な almost 零性に一致する。
+
 同じ J\_perfd を商の普遍 perfectoid 化への核で定め、IsAlmostZero の零化条件を適用する。末尾 J=(p) の核が√pRという同一視まではこの行の型から直接得ていない。
 
 *定義 10.1.1（原典 Def 10.1） — 主張*
@@ -71,6 +73,8 @@ $`J=(p)` の場合の等式（補った）。$`R` は perfectoid なので $`R/p
 
 :::proposition "bs_10_2" (lean := "SerrePositivity.BhattScholze.Almost.perfectoidIdeal_isAlmostZero_extension, SerrePositivity.BhattScholze.integralPerfectoid_completeIdealExtensionClosed")
 *命題 10.2*　almost zero の拡大閉性。対応表の状態：一部（component）。
+
+*主張*　$`J`-almost 零な導来 $`p` 完備 $`R` 加群は核・余核・拡大で閉じ、テンソルイデアルをなす。その圏は $`(R/J)_{\mathrm{perfd}}` 上の導来 $`p` 完備加群の圏に同値である。
 
 同じ perfectoid 商の核に関する導来 p 完備短完全列の拡大閉性は直接得る。任意 J は perfectoidKernel\_quotient\_isIntegralPerfectoid と一般商の extension-closed 定理を適用。圏同値と tensor ideal 全体は含まない。
 
@@ -105,6 +109,8 @@ Lean の拡大閉性の二つの証明（補った）。(a) \`perfectoidIdeal\_i
 :::lemma_ "bs_10_3" (lean := "SerrePositivity.BhattScholze.Almost.perfectoidIdeal_lemma103, SerrePositivity.BhattScholze.Almost.integralPerfectoid_completedQuotientTensorIdeal_isZero, SerrePositivity.BhattScholze.Almost.perfectoidIdeal_completedQuotientMul_isIso, SerrePositivity.BhattScholze.Almost.integralPerfectoid_completedIdealTensorQuotient_isZero, SerrePositivity.BhattScholze.Almost.integralPerfectoid_completedIdealMul_isIso, SerrePositivity.BhattScholze.Almost.integralPerfectoid_completedDerivedIdealMul_isIso, SerrePositivity.BhattScholze.Almost.perfectoidKernel_quotient_isIntegralPerfectoid, SerrePositivity.BhattScholze.integralPerfectoid_completedQuotientMul_isIso")
 *補題 10.3*　J\_perfd に沿った完備テンソル。対応表の状態：本体にある。
 
+*主張*　$`K=J_{\mathrm{perfd}}`、$`Q=(R/J)_{\mathrm{perfd}}` とおくと、導来完備テンソルでの積 $`K\widehat\otimes_R^{\mathbf L}K\to K` と $`Q\widehat\otimes_R^{\mathbf L}Q\to Q` は擬同型であり、$`K\widehat\otimes_R^{\mathbf L}Q=0` である。
+
 K=perfectoidKernel(J) の商の perfectoid 性と環の第一同型定理に一般商の三定理を適用し、同じ標準積 K⊗̂ᴸK→K・Q⊗̂ᴸQ→Q の同型と K⊗̂ᴸQ=0 を得る。任意 J に対し組み合わせ可能で、単項に限定しない。
 
 *命題 10.1.3（原典 Lemma 10.3） — 主張*
@@ -136,6 +142,8 @@ Lean の証明の順（補った）。まず一般の主張から $`Q\widehat\ot
 :::proposition "bs_10_4" (lean := "SerrePositivity.BhattScholze.Almost.isAlmostZero_iff_completedTensor_isZero, SerrePositivity.BhattScholze.Almost.isAlmostZero_of_completedTensor_isZero")
 *命題 10.4*　非有界複体の almost zero。対応表の状態：一部（component）。
 
+*主張*　導来 $`p` 完備な $`R` 複体 $`M` の全コホモロジーが $`J`-almost 零であることと、$`J_{\mathrm{perfd}}` との導来完備テンソルが零になることは同値である。こうした複体は厚いテンソルイデアルをなし、$`(R/J)_{\mathrm{perfd}}` の導来 $`p` 完備複体の圏と同値である。
+
 同じ任意の p 完備 J と同じ p 完備複体 M について、全 cohomology の K 零化 iff K との completed tensor が零という最初の同値を証明する。後半の導来圏同値・thick tensor ideal 全体は含まない。
 
 *命題 10.1.4（原典 Prop 10.4） — 主張*
@@ -166,6 +174,8 @@ Lean の証明（補った）。逆向きは原典どおり：係数の短完全
 
 :::lemma_ "bs_10_5" (lean := "SerrePositivity.BhattScholze.Almost.connective_iff_almost, SerrePositivity.BhattScholze.Almost.isAlmostConnective_iff_completedTensor_connective")
 *補題 10.5*　連結性の判定。対応表の状態：本体にある。
+
+*主張*　$`p` 完備 $`R` 複体 $`M` が連結であることと、$`M` を $`R/J_{\mathrm{perfd}}` へ導来完備底変換すると連結で、かつ $`M` の正コホモロジーがすべて $`J`-almost 零であることは同値である。
 
 §10.1の立ち仮定 J が導来 p 完備という条件を保ち、同じ M の connective iff 商との完備テンソルが connective かつ J-almost connective に一致。
 
@@ -202,6 +212,8 @@ $$`R\to R\Gamma(G,S),\qquad S\widehat\otimes^L_RS\to\prod_GS`
 
 :::proposition "bs_10_7" (lean := "SerrePositivity.BhattScholze.Almost.perfectoidIdealMod_idempotent, SerrePositivity.BhattScholze.integralPerfectoid_ideal_mod_power_idempotent")
 *注意 10.7*　mod pⁿ の冪等性。対応表の状態：一部（component）。
+
+*主張*　定義直後の $`J`-almost Galois 条件は、$`p^n` を法とした不変環への比較と $`G` で添字づけた積へのテンソル比較を $`J`-almost 同型にする。$`R/p^n` 内の $`J_{\mathrm{perfd}}` の像は冪等で、$`J` が単項ならその像のテンソル平方は $`R/p^n` 上平坦である。
 
 原文明記の J\_perfd の mod p\^n 像の冪等性は、任意 J の perfectoid 商の核への一般定理の適用で得る。Galois 条件の mod p\^n 版と単項核の tensor flatness は含まない。
 
@@ -321,6 +333,8 @@ Thm 10.9 の証明は、特に almost purity 定理の新しい証明を与え�
 :::theorem "bs_10_11" (lean := "SerrePositivity.BhattScholze.PerfectoidizationInterface.PerfectoidizationInterfaceE3, SerrePositivity.BhattScholze.Inputs.exists_perfectoidizationInterfaceE3, SerrePositivity.BhattScholze.Inputs.exists_perfectoidization_of_integral")
 *定理 10.11*　整代数の perfectoid 化は離散で perfectoid。対応表の状態：未証明の入力に依存。
 
+*主張*　完全 prism $`(A,I)` に対応する perfectoid 環 $`R` からの射 $`R\to S` が整射の $`p` 完備化なら、$`\Delta_{S/A,\mathrm{perf}}` は離散な完全 $`p` 完備 $`\delta` $`A` 代数である。従って $`S_{\mathrm{perfd}}` は離散で perfectoid 環になる。
+
 E3 存在 sorry の integral 欄と universal 欄から、通常の整 R-代数の perfd の離散性・perfectoid 性・普遍環の存在を受け取る。Δ\_S/A,perf 自体の δ 構造・perfect 性との具体的比較は drafts。近似・余極限の部品だけを本項の証明としない。
 
 *定理 10.2.3（原典 Thm 10.11） — 主張*
@@ -369,6 +383,8 @@ $`S'` を $`S_{\mathrm{red}}[1/g_1]` の中の $`R` の整閉包とする。$`S`
 
 :::lemma_ "bs_10_12" (lean := "SerrePositivity.CommutativeAlgebra.exists_finiteEtaleStratification, SerrePositivity.CommutativeAlgebra.exists_noetherian_finiteEtaleStratification")
 *補題 10.12*　有限表示有限射の層別。対応表の状態：本体にある。
+
+*主張*　有限かつ有限表示の可換 $`\mathbf Z_{(p)}` 代数射 $`R\to S` に対し、$`1` を生成する列 $`g_i\in R` を選び、先行元で割って被約化してから $`g_i` を反転した層 $`R_i,S_i` をとる。各 $`R_i\to S_i` は有限エタール射 $`R_i\to T_i` と普遍的同相射を誘導する $`T_i\to S_i` に分かれ、後者は $`p` を反転すると同型である。各 $`R_i` では $`p=0` または $`p` が単元である。
 
 同じ有限表示有限 Z\_(p)-代数射に、有限個の g\_i・unit ideal・各 reduced stratum の finite étale/universal homeomorphism 分解・p 反転後同型・p=0又は単元という三結論を与える。root import 閉包内かどうかとは別の宣言の数学的対応。
 

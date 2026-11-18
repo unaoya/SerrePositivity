@@ -48,12 +48,16 @@ Kerodon [Tag 05EB](https://kerodon.net/tag/05EB)
 :::definition "kerodon_4_7_1_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.isTerminalVertex_iff_pinchedHom_isContractibleKan, SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.Is0TruncatedSpace, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace_isQCatEquivalence, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace_postOfEq") (uses := "kerodon_1_2_5_1, kerodon_1_4_0_1")
 Kerodon Definition 4.7.1.1（[Tag 05EC](https://kerodon.net/tag/05EC)）。対応表の状態：一部。
 
+*主張*　無限圏の対象 $`x` は、任意の対象 $`c` について射空間 $`\operatorname{Hom}_C(c,x)` が整数 $`n` に関して $`n`-切断であるとき、$`n`-切断対象である。
+
 n=−2では全ての入射Homの境界充填による可縮性を要求する。terminalとpinchedHom可縮性のiffを、区間比較の圏同値と可縮Kan性の保存/反映で移せば、同じ入射intervalMappingSpaceの可縮性という条件を直接得る。任意nと離散空間の一般の述語は含まない。
 
 :::
 
 :::definition "kerodon_4_7_1_4" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.isInitialVertex_iff_intervalMappingSpace_isContractibleKan")
 Kerodon Variant 4.7.1.4（[Tag 06Y3](https://kerodon.net/tag/06Y3)）。対応表の状態：一部。
+
+*主張*　無限圏の対象 $`x` は、任意の対象 $`c` について $`\operatorname{Hom}_C(x,c)` が $`n`-切断 Kan 複体であるとき $`n`-余切断対象である。これは反対の無限圏で $`n`-切断対象であることと同値である。
 
 isInitialVertex\_iff\_intervalMappingSpace\_isContractibleKan はn=−2で原文の全ての出射Homの可縮Kan性の条件を直接表す。任意の整数nのcotruncated条件は含まない。
 
@@ -216,6 +220,8 @@ $$`\Delta^0\star\partial\Delta^n\ =\ \Lambda^{n+1}_0`
 :::definition "kerodon_4_7_3_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsTerminalVertex, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.isTerminalVertex_iff_pinchedHom_isContractibleKan, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.isInitialVertex_iff_intervalMappingSpace_isContractibleKan")
 Kerodon Definition 4.7.3.1（[Tag 02H7](https://kerodon.net/tag/02H7)）。対応表の状態：本体にある。
 
+*主張*　無限圏の対象 $`x` は、任意の $`c` からの $`\operatorname{Hom}_C(c,x)` が可縮なとき終対象である。すべての $`\operatorname{Hom}_C(x,c)` が可縮なとき始対象である。
+
 仮定：∞ 圏 X と頂点 x（Kerodon と一致）。結論：終対象は全ての y から x への右 pinched Hom が可縮 Kan、始対象は x から全ての y への intervalMappingSpace が可縮 Kan と同値（一致）。
 
 *定理 8.2 （始対象の写像空間による特徴づけ）*
@@ -257,6 +263,8 @@ dgNerve\_contractingElement\_isTerminalVertexはHA余鎖符号のdg nerveにつ�
 :::proposition "kerodon_4_7_3_9" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.QCatEquivalence.isTerminalVertex_iff, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.QCatEquivalence.isInitialVertex_iff")
 Kerodon Proposition 4.7.3.9（[Tag 02HS](https://kerodon.net/tag/02HS)）。対応表の状態：本体にある。
 
+*主張*　無限圏の同値 $`F:C\to D` に対し、$`C` の対象が始対象または終対象であることは、その像が対応する性質を持つことと同値である。
+
 仮定：∞ 圏の圏同値 e:X≃Y と頂点 x（Kerodon と一致）。結論：x が始対象または終対象であることと e(x) が同じ性質を持つことは同値（一致）。
 
 :::
@@ -264,12 +272,16 @@ Kerodon Proposition 4.7.3.9（[Tag 02HS](https://kerodon.net/tag/02HS)）。対�
 :::corollary "kerodon_4_7_3_10" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.QCatEquivalence.map_isTerminalVertex, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.QCatEquivalence.map_isInitialVertex")
 Kerodon Corollary 4.7.3.10（[Tag 02MY](https://kerodon.net/tag/02MY)）。対応表の状態：本体にある。
 
+*主張*　同値な二つの無限圏の一方に始対象が存在することは、他方に始対象が存在することと同値である。終対象の存在についても同様である。
+
 仮定：∞ 圏の圏同値 e:X≃Y（Kerodon と一致）。結論：始対象・終対象は e で保たれる。逆向きにも e の逆同値で同じ保存を適用して、存在を比較（一致）。
 
 :::
 
 :::proposition "kerodon_4_7_3_11" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsTerminalVertex")
 Kerodon Proposition 4.7.3.11（[Tag 06R1](https://kerodon.net/tag/06R1)）。対応表の状態：本体にある。
+
+*主張*　無限圏の対象 $`x` が終対象であることは、任意の $`m\geq1` で最後の頂点が $`x` に移る $`\partial\Delta^m\to C` がすべて $`\Delta^m` に延長できることと同値である。
 
 仮定：∞ 圏 X と頂点 x（Lean が弱い：境界充填の定義自体は任意の単体集合）。結論：IsTerminalVertex x は最終頂点 x の任意の正次元境界を充填できること（一致）。
 
@@ -291,6 +303,8 @@ HTT Def. 1.2.12.1 は「任意の $`y` について $`\mathrm{Map}(y,x)` が可�
 :::corollary "kerodon_4_7_3_12" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.isTerminalVertex_iff_trivialKanFibration, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.isInitialVertex_iff_trivialKanFibration")
 Kerodon Corollary 4.7.3.12（[Tag 06R2](https://kerodon.net/tag/06R2)）。対応表の状態：本体にある。
 
+*主張*　無限圏の対象 $`x` は、$`C_{x/}\to C` が自明な Kan ファイブレーションであるとき、かつそのときに限り始対象である。終対象については $`C_{/x}\to C` が同じ役割を果たす。
+
 仮定：∞ 圏 X と頂点 x（Lean が弱い：任意の単体集合で成立）。結論：始対象⇔coslice の射影が自明 Kan ファイブレーション、終対象⇔slice の射影が自明 Kan ファイブレーション（一致）。
 
 *定義 8.1 （始対象）*
@@ -306,12 +320,16 @@ quasicategory $`C` の頂点 $`y` が終対象であるとは、スライスの�
 :::corollary "kerodon_4_7_3_13" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan.isTerminalVertex, SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan.isInitialVertex, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsTerminalVertex.isWeaklyContractible")
 Kerodon Corollary 4.7.3.13（[Tag 02HJ](https://kerodon.net/tag/02HJ)）。対応表の状態：一部。
 
+*主張*　Kan 複体 $`X` の任意の頂点 $`x` に対し、無限圏 $`X` で $`x` が始対象であること、終対象であること、$`X` が可縮であることは同値である。
+
 IsContractibleKan.isTerminalVertex/isInitialVertexは、原文(3)の可縮Kan複体の任意の頂点について(1),(2)を直接返す。initial/finalから可縮性へ戻す方向は含まない。
 
 :::
 
 :::corollary "kerodon_4_7_3_14" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.terminalVertices_isContractibleKan, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.terminalVertices, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.initialVertices_isContractibleKan")
 Kerodon Corollary 4.7.3.14（[Tag 02HM](https://kerodon.net/tag/02HM)）。対応表の状態：本体にある。
+
+*主張*　無限圏に始対象があれば、始対象で張られる充満部分圏は可縮な Kan 複体である。終対象があれば、終対象で張られる充満部分圏についても同様である。
 
 仮定：始対象または終対象を持つ ∞ 圏 X（Lean が弱い：両可縮性補題は Quasicategory を仮定しない）。結論：始対象を頂点とする全部分複体および終対象を頂点とする全部分複体が、それぞれ該当する対象が存在すれば可縮 Kan（一致）。
 
@@ -329,6 +347,8 @@ Kerodon Notation 4.7.3.15（[Tag 02HP](https://kerodon.net/tag/02HP)）。対応
 :::corollary "kerodon_4_7_3_16" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.isTerminalVertex_iff_of_vertexIso, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsTerminalVertex.nonempty_split") (uses := "kerodon_1_2_5_1, kerodon_1_4_0_1, kerodon_4_7_3_14")
 Kerodon Corollary 4.7.3.16（[Tag 02HN](https://kerodon.net/tag/02HN)）。対応表の状態：一部。
 
+*主張*　無限圏で一つ終対象 $`x` を固定すると、対象 $`y` が終対象であることと $`y` が $`x` に同型であることは同値である。
+
 isTerminalVertex\_iff\_of\_vertexIsoは、Xが終対象でYがXに同型ならYも終対象という原文の向きを直接返す。二つの終対象から頂点同型を作る逆方向は含まない。
 
 *02-mapping-limits.html — 3. 終対象と写像空間*
@@ -340,12 +360,16 @@ isTerminalVertex\_iff\_of\_vertexIsoは、Xが終対象でYがXに同型ならY�
 :::corollary "kerodon_4_7_3_17" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsTerminalVertex.isTerminalHo, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.isTerminalVertex_of_isTerminalHo")
 Kerodon Corollary 4.7.3.17（[Tag 02HQ](https://kerodon.net/tag/02HQ)）。対応表の状態：本体にある。
 
+*主張*　無限圏の終対象はホモトピー圏でも終対象である。無限圏に終対象が存在するときは、ホモトピー圏で終対象である任意の対象が元の無限圏でも終対象である。
+
 仮定：Quasicategory X と頂点 x。逆向きは既知の終対象を仮定（Kerodon と一致）。結論：終対象は hX でも終対象。hX の終対象は既知の終対象があれば X でも終対象（一致）。
 
 :::
 
 :::corollary "kerodon_4_7_3_19" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsTerminalVertex.exists_sliceLift, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsTerminalVertex.exists_pointJoinBoundary_extension") (uses := "kerodon_1_4_0_1, kerodon_4_7_3_12")
 Kerodon Corollary 4.7.3.19（[Tag 02HG](https://kerodon.net/tag/02HG)）。対応表の状態：一部。
+
+*主張*　無限圏 $`C` に終対象 $`x` があり $`f:K\to C` が任意の図式なら、余スライス $`C_{f/}` に $`x` 上の対象が存在する。$`x` 上のすべての対象が余スライスの終対象である。
 
 IsTerminalVertex.exists\_sliceLiftはK→C\_/Xという錐を直接与え、sliceのjoin転置で同じ図式f上のcosliceの頂点となり頂点Xへの射影を保つ。原文(1)の存在成分のみで、その頂点のcosliceでの終対象性は含まない。
 
@@ -354,12 +378,16 @@ IsTerminalVertex.exists\_sliceLiftはK→C\_/Xという錐を直接与え、slic
 :::proposition "kerodon_4_7_3_20" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.cosliceIdentityCone_isInitialVertex, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.sliceUnder_isWeaklyContractible") (uses := "kerodon_1_4_0_1, kerodon_1_4_6_1, kerodon_4_6_4_20, kerodon_4_7_2_7, kerodon_4_7_3_9")
 Kerodon Proposition 4.7.3.20（[Tag 02J2](https://kerodon.net/tag/02J2)）。対応表の状態：一部。
 
+*主張*　無限圏の射 $`x\to y` が同型であることは、$`C_{/y}` または $`C\vec\times_C\{y\}` で終対象であることと同値である。同じことは、$`C_{x/}` または $`\{x\}\vec\times_C C` で始対象であることでも判定できる。
+
 cosliceIdentityCone\_isInitialVertexはf=id\_Xの場合、同じcosliceの恒等錐が始対象という原文(1)⇒(3)の特殊形を直接返す。任意の同型fと他の同値条件は含まない。
 
 :::
 
 :::corollary "kerodon_4_7_3_21" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.exists_fixed_slice_section") (uses := "kerodon_1_2_5_1, kerodon_1_4_0_1, kerodon_4_7_3_12, kerodon_4_7_3_20")
 Kerodon Corollary 4.7.3.21（[Tag 02J4](https://kerodon.net/tag/02J4)）。対応表の状態：一部。
+
+*主張*　無限圏の対象 $`x` が終対象であることは、$`C_{/x}\to C` が $`x` を $`\mathrm{id}_x` に送る切断を持つことと同値である。始対象の条件は $`C_{x/}\to C` について同じ切断が存在することである。
 
 exists\_fixed\_slice\_sectionは終対象から同じprojectionの切断でXをid\_Xに送るものの存在を直接返す。(1)の順方向だけで、逆向きとinitial側は含まない。
 
@@ -368,12 +396,16 @@ exists\_fixed\_slice\_sectionは終対象から同じprojectionの切断でXをi
 :::corollary "kerodon_4_7_3_22" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.terminalPoint_rightAnodyne") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_4_3_6_4, kerodon_4_3_7_8, kerodon_4_7_3_21")
 Kerodon Corollary 4.7.3.22（[Tag 02J5](https://kerodon.net/tag/02J5)）。対応表の状態：一部。
 
+*主張*　無限圏 $`C` の対象 $`x` が終対象であることは、$`C^{\triangleright}\to C` で $`C` 上は恒等、$`x` から錐頂点への辺では $`\mathrm{id}_x` となる関手の存在と同値である。包含 $`\{x\}\to C` が右無害射であることとも同値である。
+
 terminalPoint\_rightAnodyneは終対象Xからその一点包含がright anodyneという原文(1)⇒(3)を直接返す。錐上のFの構成と逆方向は含まない。
 
 :::
 
 :::corollary "kerodon_4_7_3_23" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsTerminalVertex.isWeaklyContractible, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsInitialVertex.isWeaklyContractible")
 Kerodon Corollary 4.7.3.23（[Tag 02P2](https://kerodon.net/tag/02P2)）。対応表の状態：本体にある。
+
+*主張*　始対象または終対象をもつ無限圏は弱可縮である。
 
 仮定：始対象または終対象を持つ ∞ 圏（Lean が弱い：任意の単体集合に適用）。結論：それぞれ IsWeaklyContractible X を得る（一致）。
 
@@ -646,6 +678,8 @@ B6再検索（現本体・ロックMathlib、移動後の宣言を含む）：n�
 
 :::proposition "kerodon_4_7_7_16" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.InnerFibrations.thinNerve_innerFibration, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.InnerFibrations.thinNerve_hom_ext_horn")
 Kerodon Proposition 4.7.7.16（[Tag 057U](https://kerodon.net/tag/057U)）。対応表の状態：一部。
+
+*主張*　単体集合が $`0`-圏であることは、ある半順序集合の神経に同型であることと同値である。
 
 thinNerve\_hom\_ext\_hornは半順序Qのnerveで次数2以上の同じホーンに一致する二充填の等式を直接返す。この特殊形の高次充填の一意性成分のみで、0-category全体のiffは含まない。
 

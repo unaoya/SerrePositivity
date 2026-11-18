@@ -13,7 +13,7 @@ open Informal
 -- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）
 set_option maxHeartbeats 2000000
 
-#doc (Manual) "§6 " =>
+#doc (Manual) "§6 The mixed characteristic case of the Hodge-Tate comparison" =>
 %%%
 number := false
 tag := "bs-6"
@@ -33,6 +33,8 @@ HT 比較（Thm 4.11）の一般の場合。普遍向き付き prism を結晶 p
 
 :::definition "bs_6_1" (lean := "SerrePositivity.BhattScholze.Prismatic.Construction61.completelyFlat_of_flat, SerrePositivity.BhattScholze.Prismatic.Construction61.crystallineCoverMap_torAmplitude, SerrePositivity.BhattScholze.Prismatic.Construction61.quasiIso_of_completedCover_map_quasiIso, SerrePositivity.BhattScholze.Prismatic.Construction61.cochain_acyclic_of_completedCover_acyclic")
 *構成 6.1*　普遍向き付き prism から結晶 prism へ。対応表の状態：一部（stronger-hyp）。
+
+*主張*　$`A/p` の Frobenius が平坦で $`A/d` に $`p` ねじれがない向き付き prism $`(A,(d))` をとる。$`\varphi(d)/p` を自由に添加した $`p` 完備 $`\delta` 代数は $`(d)` の完備 PD 包絡 $`B` に一致し、Frobenius を経る射 $`\alpha` は $`(A,(d))\to(B,(p))` を与える。導来完備底変換 $`\widehat\alpha^*` は保存的で有限完全 Tor 振幅をもち、任意の $`p` 完全滑らかな $`A/(d)` 代数の prismatic コホモロジーと可換である。
 
 原文の同じ α の有限完全 Tor 振幅(2)を上界3で証明する。(1)の検出は具体的 K-flat cochain model とその底変換も K-flat とする入力で与える。Frobenius の flatness から完全平坦性への橋はあるが、site Δ の底変換(3)は drafts。
 

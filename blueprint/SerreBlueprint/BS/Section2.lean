@@ -29,7 +29,7 @@ open Informal
 -- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）
 set_option maxHeartbeats 2000000
 
-#doc (Manual) "§2 " =>
+#doc (Manual) "§2 δ-rings" =>
 %%%
 number := false
 tag := "bs-2"
@@ -112,6 +112,8 @@ $$`\mathrm{Kos}(A;f_1,\dots,f_n)=A\otimes^L_{\mathbb Z[f_1,\dots,f_n]}\mathbb Z[
 :::definition "bs_2_1" (lean := "SerrePositivity.BhattScholze.DeltaStructure, SerrePositivity.BhattScholze.DeltaStructure.delta_mul, SerrePositivity.BhattScholze.DeltaStructure.delta_add, SerrePositivity.BhattScholze.DeltaStructure.ofFunction")
 *定義 2.1*　δ 環。対応表の状態：本体にある。
 
+*主張*　可換環 $`R` 上の $`\delta` 構造は $`\delta(0)=\delta(1)=0` を満たす集合写像で、$`\delta(xy)=x^p\delta(y)+y^p\delta(x)+p\delta(x)\delta(y)` と $`\delta(x+y)=\delta(x)+\delta(y)+(x^p+y^p-(x+y)^p)/p` に従う。加法公式の割り算は整数係数の多項式として読む。
+
 W₂への切断としての DeltaStructure と ofFunction・delta\_add・delta\_mul により、同じ δ の零・一・加法・積の四公理と構造を往復できる。Witt 第1係数は原文の整数係数加法多項式である。
 
 *命題 2.1.2（原典 Def 2.1 との同値） — 主張*
@@ -159,6 +161,8 @@ $`w(x)=(x,\delta x)` が環準同型であることを第 1 座標で書けば�
 :::proposition "bs_2_2" (lean := "SerrePositivity.BhattScholze.DeltaStructure.frobeniusLift, SerrePositivity.BhattScholze.DeltaStructure.existsUnique_of_frobeniusLift, SerrePositivity.BhattScholze.DeltaStructure.existsUnique_of_mod_p")
 *注意 2.2*　Frobenius 持ち上げ。対応表の状態：本体にある。
 
+*主張*　$`\delta` 構造から $`\varphi(x)=x^p+p\delta(x)` で Frobenius の持ち上げが得られる。$`p` ねじれのない環では持ち上げを指定すると $`\delta` が一意に定まり、$`\mathbf Q` 代数では任意の環自己準同型が持ち上げに当たる。
+
 同じ φ の構成と、p 正則下での Frobenius 持ち上げからの δ 構造の存在一意性。mod p の一致による記述もある。p が単元なら持ち上げ条件は自動で同じ対応を得る。
 
 *命題 2.1.3（原典 Rem 2.2） — 主張*
@@ -205,6 +209,8 @@ Wilkerson・Borger の主張は文献の引用で、原典にも証明はない�
 :::proposition "bs_2_4" (lean := "SerrePositivity.BhattScholze.WittTwo, SerrePositivity.BhattScholze.DeltaStructure")
 *注意 2.4*　δ 構造 ＝ W₂ への切断。対応表の状態：本体にある。
 
+*主張*　任意の環 $`R` の $`\delta` 構造は、長さ二の $`p`-typical Witt 環 $`W_2(R)` の第零成分への射影の環準同型としての切断と同値である。切断の二成分は $`x` と $`\delta(x)` である。
+
 WittTwo と第0係数射の環準同型切断という DeltaStructure の定義は、同じ W₂(R) と (x,δ(x)) による記述に一致。
 
 *定義 2.1.1（δ 構造。原典 Rem 2.4 の形） — 主張*
@@ -247,6 +253,8 @@ $$`\begin{array}{ccc} W_2(R) & \xrightarrow{\ F\ } & R\\ \big\downarrow & & \big
 :::proposition "bs_2_6" (lean := "SerrePositivity.BhattScholze.DeltaStructure.subsingleton_of_isNilpotent_p, SerrePositivity.BhattScholze.existsUnique_primeLocalIntDeltaHom")
 *例 2.6*　始 δ 環 \\(\\mathbb Z\_\{(p)\}\\)。対応表の状態：一部（component）。
 
+*主張*　$`\mathbf Z_{(p)}` 上の $`\delta` 環の圏の始対象は $`\delta(x)=(x-x^p)/p` を備えた $`\mathbf Z_{(p)}` であり、非単元の $`p` 進付値は $`\delta` により一つ下がる。$`\delta^n(p^n)` は単元なので、非零 $`\delta` 環で $`p` の冪が零となることはない。
+
 Z\_(p) の δ 構造の始性と p 冪零 δ 環の零性を直接述べる。p-adic valuation をちょうど1下げる計算と全反復値の単元性までは含まない。
 
 *例 2.1.8（原典 Ex 2.6：始 δ 環） — 主張*
@@ -284,6 +292,8 @@ $$`\delta(x)=\frac{x-x^p}{p}`
 :::proposition "bs_2_7" (lean := "SerrePositivity.BhattScholze.tensorDeltaStructure, SerrePositivity.BhattScholze.existsUnique_tensorDeltaHom, SerrePositivity.BhattScholze.deltaDirectLimitStructure, SerrePositivity.BhattScholze.deltaDirectLimitLift_isDeltaHom, SerrePositivity.BhattScholze.perfectDeltaTensorStructure, SerrePositivity.BhattScholze.deltaWittGhostRingHom")
 *注意 2.7*　極限・余極限、Witt。対応表の状態：一部（component）。
 
+*主張*　$`\delta` 環の極限・余極限は台環で計算され、忘却関手の左随伴は自由 $`\delta` 環、右随伴は $`p`-typical Witt ベクトルをとる関手である。右随伴から得る $`R\to W(R)` の最初の二成分は $`x\mapsto(x,\delta(x))` である。
+
 通常の tensor pushout と有向余極限の δ 構造・普遍射を直接与える。任意の極限・余極限、Witt の右随伴全体は未供給。ghost 注入性を要する Witt 写像は一般の主張として数えない。
 
 *命題 2.1.9（原典 Rem 2.7） — 主張*
@@ -302,6 +312,8 @@ $$`\delta(x)=\frac{x-x^p}{p}`
 
 :::definition "bs_2_8" (lean := "SerrePositivity.BhattScholze.RelativeFreeDeltaRing, SerrePositivity.BhattScholze.existsUnique_relativeFreeDeltaHom, SerrePositivity.BhattScholze.existsUnique_relativeFreePresentationHom")
 *記法 2.8*　添加と消去。対応表の状態：本体にある。
+
+*主張*　$`\{\cdot\}` は $`\delta` 環での自由な元の添加を、$`(\cdot)_\delta` は $`\delta` 環として元を零にする商を表す。例えば $`f` を零にするには、自由な元 $`t` を一方で $`f`、他方で零へ送る二つの写像の押し出しをとる。
 
 相対自由 δ 環と δ 安定閉包の商の普遍性が、添加と関係を課す原文の記法を同じ δ 環上で与える。
 
@@ -336,6 +348,8 @@ $$`\begin{array}{ccc}\mathbb Z_{(p)}\{t\} & \xrightarrow{\ t\mapsto f\ } & \math
 :::lemma_ "bs_2_9" (lean := "SerrePositivity.BhattScholze.DeltaStructure.isStable_iff_existsUnique_quotient, SerrePositivity.BhattScholze.DeltaStructure.quotient, SerrePositivity.BhattScholze.DeltaStructure.existsUnique_quotient_lift")
 *補題 2.9*　商。対応表の状態：本体にある。
 
+*主張*　$`\delta` 環 $`A` のイデアル $`I` が $`\delta` で安定であることと、商 $`A/I` に射影と両立する $`\delta` 構造があることは同値で、その構造は一意である。
+
 同じ ideal I の δ 安定性 iff A/I に一意の compatible δ 構造、さらに商の普遍射まで。p 正則性を追加しない。
 
 *命題 2.1.11（原典 Lemma 2.9） — 主張*
@@ -351,6 +365,8 @@ $$`\begin{array}{ccc}\mathbb Z_{(p)}\{t\} & \xrightarrow{\ t\mapsto f\ } & \math
 :::proposition "bs_2_10" (lean := "SerrePositivity.BhattScholze.DeltaStructure.deltaClosure, SerrePositivity.BhattScholze.DeltaStructure.existsUnique_deltaClosure_quotient_lift, SerrePositivity.BhattScholze.DeltaStructure.deltaClosure_eq_span_iterates")
 *例 2.10*　δ 閉包での商。対応表の状態：本体にある。
 
+*主張*　$`\delta` 環 $`A` のイデアル $`I` を零にする普遍的な $`\delta` $`A` 代数は、$`I` の各元のすべての反復 $`\delta^n` が生成するイデアルによる商である。
+
 同じ I の反復 δ 像の生成 ideal として δClosure を同定し、A/δClosure(I) の普遍性を述べる。
 
 *命題 2.1.12（元の消去。原典 Ex 2.10） — 主張*
@@ -365,6 +381,8 @@ $`I_\delta` は $`I` を含む δ 安定イデアル全部の交わり。生成�
 
 :::lemma_ "bs_2_11" (lean := "SerrePositivity.BhattScholze.RelativeFreeDeltaRing, SerrePositivity.BhattScholze.existsUnique_relativeFreeDeltaHom")
 *補題 2.11*　自由 δ 環、Frobenius の忠実平坦性。対応表の状態：一部（component）。
+
+*主張*　一元生成の自由 $`\delta` 環 $`\mathbf Z_{(p)}\{x\}` は $`\delta^n(x)` を独立変数とする多項式環で、その Frobenius は忠実平坦である。$`p` を反転すると $`\varphi^n(x)` が多項式変数となる。
 
 相対自由 δ 環の係数を Z\_(p) に取れば δ 反復変数による多項式環の表示と普遍性を得る。通常の Frobenius の忠実平坦性と Q 上の φ 反復変数表示は未供給。mod p/完全忠実平坦性で置き換えない。
 
@@ -408,6 +426,8 @@ $`B` を $`\mathbb Z_{(p)}\{s\}\leftarrow\mathbb Z_{(p)}\{t\}\to A`（左は $`t
 :::proposition "bs_2_13" (lean := "SerrePositivity.BhattScholze.deltaWittGhostRingHom, SerrePositivity.BhattScholze.deltaWittGhostVector_frobenius_formula, SerrePositivity.BhattScholze.deltaWittGhostRingHom_unique")
 *注意 2.13*　Joyal の δₙ。対応表の状態：一部（stronger-hyp）。
 
+*主張*　$`R\to W(R)` の Witt 座標は自然な演算 $`\delta_n` を与える。$`\delta_0=x`、$`\delta_1=\delta` で、$`\varphi^n(x)=\sum_{i=0}^n p^i\delta_i(x)^{p^{n-i}}` を満たす。
+
 同じ A の ghostMap 注入性を追加すると δWittGhostRingHom と各 ghost 成分の φ 反復公式を得る。一般の p ねじれを持つ δ 環での自然な w\_R と δ\_n の一般多項式表示は含まない。
 
 *定義 2.1.16（Joyal の $`\delta_n`。原典 Rem 2.13） — 主張*
@@ -431,6 +451,8 @@ $$`\delta_2(x)=\delta^2(x)+\sum_{k=1}^{p}\binom pk p^{k-2}\,x^{p(p-k)}\delta(x)^
 :::proposition "bs_2_14" (lean := "SerrePositivity.BhattScholze.relativeFreeWittCoordinateEquiv, SerrePositivity.BhattScholze.relativeFreeFiniteWittCoordinateEquiv")
 *注意 2.14*　Joyal の作用素による自由 δ 環。対応表の状態：一部（stronger-hyp）。
 
+*主張*　一元生成の自由 $`\delta` 環 $`\mathbf Z_{(p)}\{x\}` は、Joyal の演算で得る $`\delta_n(x)` を変数とする多項式環でもある。
+
 係数 δ 環の p 正則性を明示すると、同じ相対自由環の Witt 座標多項式同型を構成する。これを Z\_(p) に適用できるが、一般の係数環で無条件とはしない。
 
 *命題 2.1.17（原典 Rem 2.14） — 主張*
@@ -449,6 +471,8 @@ $`\delta_n(x)=\delta^n(x)+(\delta^{n-1}(x),\dots,x` の多項式$`)` なので�
 
 :::lemma_ "bs_2_15" (lean := "SerrePositivity.BhattScholze.DeltaStructure.localization, SerrePositivity.BhattScholze.DeltaStructure.existsUnique_localization, SerrePositivity.BhattScholze.DeltaStructure.existsUnique_localization_lift")
 *補題 2.15*　局所化。対応表の状態：本体にある。
+
+*主張*　$`\delta` 環 $`A` の乗法的部分集合 $`S` が Frobenius で保たれるとき、$`S^{-1}A` には局所化射と両立する一意な $`\delta` 構造が入る。これは $`S` を可逆にする $`\delta` $`A` 代数の中で始対象である。
 
 φ 安定な同じ multiplicative set の局所化に compatible δ 構造が一意に延長し、δ 準同型の普遍性も得る。
 
@@ -479,6 +503,8 @@ $$`\frac{\varphi(a)}{\varphi(s)}-\frac{a^p}{s^p}=p\cdot\frac{s^p\delta(a)-a^p\de
 :::proposition "bs_2_16" (lean := "SerrePositivity.BhattScholze.DeltaStructure.frobeniusDenominators, SerrePositivity.BhattScholze.DeltaStructure.existsUnique_saturatedLocalization_lift")
 *注意 2.16*　p 局所化。対応表の状態：一部（component）。
 
+*主張*　$`\delta` 環の Jacobson 根基に $`p` が属するなら、単元の Frobenius 像も単元である。任意の乗法的部分集合 $`S` について、局所化後に $`p` を Jacobson 根基に入れる操作を施した環には一意な両立する $`\delta` 構造が入り、その条件の下で $`S` を可逆にする普遍環となる。
+
 原文が使う T=\{S,φ(S),…\} の生成部分モノイドとその δ 局所化の普遍射を構成する部分。p-localization の同一視・p∈rad の標的での普遍性全体は未供給。
 
 *注意 2.2.2（原典 Rem 2.16：p 局所的な世界での局所化） — 主張*
@@ -507,6 +533,8 @@ $`p` が Jacobson 根基 $`\mathrm{rad}(A)` に入る δ 環 $`A` では、$`\va
 
 :::lemma_ "bs_2_17" (lean := "SerrePositivity.BhattScholze.DeltaStructure.delta_mem_pow, SerrePositivity.BhattScholze.DeltaStructure.adicCompletion, SerrePositivity.BhattScholze.DeltaStructure.existsUnique_adicCompletion")
 *補題 2.17*　I 進完備化。対応表の状態：本体にある。
+
+*主張*　$`\delta` 環の $`p` を含む有限生成イデアル $`I` に関して、$`\delta` は $`I` 進位相で一様連続である。従って古典的 $`I` 進完備化には元の環と両立する一意な $`\delta` 構造が入る。
 
 δ(I\^(n+1))⊆I\^n の評価と δ の加法式から原文の連続性を得る。有限生成 I⊇(p) の同じ古典完備化への compatible δ 構造も存在一意。
 
@@ -578,6 +606,8 @@ $$`\begin{array}{ccc}A&\longrightarrow&W_2(B)\\ \downarrow&&\downarrow\\ B'&\lon
 :::definition "bs_2_19" (lean := "SerrePositivity.BhattScholze.DeltaStructure.IsDistinguished, SerrePositivity.BhattScholze.DeltaStructure.IsDeltaHom.map_isDistinguished")
 *定義 2.19*　distinguished。対応表の状態：本体にある。
 
+*主張*　$`\delta` 環の元 $`d` が distinguished であるとは $`\delta(d)` が単元であることをいう。この性質は $`\delta` 環の射で保たれる。
+
 δ(d) が単元という定義および同じ δ 準同型による保存に一致。
 
 *定義 2.3.1（原典 Def 2.19） — 主張*
@@ -592,6 +622,8 @@ $$`\begin{array}{ccc}A&\longrightarrow&W_2(B)\\ \downarrow&&\downarrow\\ B'&\lon
 
 :::proposition "bs_2_20" (lean := "SerrePositivity.BhattScholze.DeltaStructure.isDistinguished_p, SerrePositivity.BhattScholze.DeltaStructure.delta_p_sub_one_mem")
 *例 2.20*　distinguished 元の例。対応表の状態：一部（component）。
+
+*主張*　distinguished 元の例は、結晶の場合の $`p\in\mathbf Z_p`、q-de Rham の場合の $`[p]_q\in\mathbf Z_p[[q-1]]`（$`\varphi(q)=q^p`）、perfectoid 体の $`A_{\inf}` における Fontaine 写像の核の生成元、Breuil–Kisin の場合の $`W[[u]]\to\mathcal O_K` の核の生成元である。最後の写像は離散付値拡大 $`K/\mathbf Q_p` の一様化元へ $`u` を送り、$`W` は最大不分岐係数環である。
 
 列挙中 (1) の d=p の distinguished 性を p∈Jacobson radical の同じ条件下で証明する。q・Ainf の ξ・Breuil–Kisin の他の例は未同定。
 
@@ -629,6 +661,8 @@ $$`\begin{array}{ccc}A&\longrightarrow&W_2(B)\\ \downarrow&&\downarrow\\ B'&\lon
 
 :::proposition "bs_2_21" (lean := "SerrePositivity.BhattScholze.UniversalDistinguishedRing, SerrePositivity.BhattScholze.universalDistinguishedGenerator_isDistinguished, SerrePositivity.BhattScholze.existsUnique_universalDistinguishedHom, SerrePositivity.BhattScholze.universalDistinguished_regular")
 *例 2.21*　普遍 distinguished δ 環。対応表の状態：本体にある。
+
+*主張*　distinguished 元 $`d` を備えた普遍 $`\delta` 環は、$`\mathbf Z_{(p)}\{d\}` で $`\delta(d)` とそのすべての Frobenius 反復を反転して得られる。普遍元 $`d` は $`p` を法として非零因子である。
 
 同じ普遍 distinguished δ 環の局所化表示と存在一意の射、mod p 正則性を与える。標的の p-local 条件は原文の Z\_(p)-代数性。
 
@@ -674,6 +708,8 @@ $`s` は δ 射の合成なので δ 射。$`w` は δ 射なので $`w\circ\var
 :::lemma_ "bs_2_23" (lean := "SerrePositivity.BhattScholze.DeltaStructure.IsDistinguished.unit_mul, SerrePositivity.BhattScholze.DeltaStructure.isDistinguished_unit_mul_iff")
 *補題 2.23*　distinguished 元の単元倍。対応表の状態：本体にある。
 
+*主張*　$`\delta` 環 $`A` の distinguished 元 $`d` と $`p` が Jacobson 根基に入るなら、任意の単元 $`u` に対して $`ud` も distinguished である。
+
 同じ d,p∈rad と単元 u の条件から ud の distinguished 性を述べる。逆向きも存在。
 
 *命題 2.3.5（原典 Lemma 2.23：単元倍） — 主張*
@@ -695,6 +731,8 @@ $$`\delta(ud)=u^p\delta(d)+d^p\delta(u)+p\,\delta(u)\delta(d).`
 :::lemma_ "bs_2_24" (lean := "SerrePositivity.BhattScholze.DeltaStructure.isDistinguished_factor")
 *補題 2.24*　distinguished 元の因子。対応表の状態：本体にある。
 
+*主張*　$`\delta` 環の distinguished 元が $`d=fh` と分解し、$`f,p` が Jacobson 根基に入るなら、$`f` は distinguished で $`h` は単元である。
+
 d=fh、f,p∈rad から f が distinguished かつ h 単元という同じ二結論。
 
 *命題 2.3.6（原典 Lemma 2.24：因子） — 主張*
@@ -715,6 +753,8 @@ $$`\delta(d)=f^p\delta(h)+h^p\delta(f)+p\,\delta(f)\delta(h).`
 
 :::lemma_ "bs_2_25" (lean := "SerrePositivity.BhattScholze.DeltaStructure.isDistinguished_iff_p_mem_span, SerrePositivity.BhattScholze.DeltaStructure.isDistinguished_iff_of_span_eq, SerrePositivity.BhattScholze.DeltaStructure.isDistinguished_iff_p_mem_span_pow")
 *補題 2.25*　\\(p\\in(d,\\varphi(d))\\) ⇔ distinguished。対応表の状態：本体にある。
+
+*主張*　$`\delta` 環の $`d,p` が Jacobson 根基に入るとき、$`d` が distinguished であることは $`p\in(d,\varphi(d))` と同値で、従ってイデアル $`(d)` だけで決まる。
 
 同じ d,p∈rad 下の δ(d) 単元 iff p∈(d,φ(d)) と、同じ主 ideal の生成元間の不変性を直接述べる。
 
@@ -745,6 +785,8 @@ $`p` は distinguished（例 2.3.2 (1)）で $`1-b\delta(d)` は単元なので�
 :::definition "bs_2_26" (lean := "SerrePositivity.BhattScholze.DeltaStructure.IsPerfect")
 *定義 2.26*　完全 δ 環。対応表の状態：本体にある。
 
+*主張*　Frobenius 持ち上げ $`\varphi` が同型である $`\delta` 環を完全 $`\delta` 環と呼ぶ。
+
 φ の bijectivity として IsPerfect を定義。環準同型ではこれが同型と同値。
 
 *定義 2.4.1（原典 Def 2.26） — 主張*
@@ -759,6 +801,8 @@ $`p` は distinguished（例 2.3.2 (1)）で $`1-b\delta(d)` は単元なので�
 
 :::proposition "bs_2_27" (lean := "SerrePositivity.BhattScholze.DeltaPerfection, SerrePositivity.BhattScholze.existsUnique_deltaPerfectionHom, SerrePositivity.BhattScholze.deltaPerfection_isPerfect")
 *注意 2.27*　完全化。対応表の状態：一部（component）。
+
+*主張*　完全 $`\delta` 環から全 $`\delta` 環への包含の左随伴は Frobenius に沿う余極限、右随伴は Frobenius に沿う逆極限で与えられる。
 
 左側の perfection colim\_φ の構成・perfect 性・普遍性を同じ δ 環について証明する。逆極限の右随伴は含まない。
 
@@ -784,6 +828,8 @@ $`\varphi` は δ 射（命題 2.1.5 (4)）なので、二つの図式は δ 環
 
 :::lemma_ "bs_2_28" (lean := "SerrePositivity.BhattScholze.DeltaStructure.torsion_calculation, SerrePositivity.BhattScholze.DeltaStructure.p_mul_injective_of_frobeniusLift_injective, SerrePositivity.BhattScholze.DeltaStructure.p_mul_injective_of_isReduced")
 *補題 2.28*　p ねじれ。対応表の状態：本体にある。
+
+*主張*　$`\delta` 環で Frobenius が単射であるか、台環が被約であれば、その環には $`p` ねじれがない。
 
 同じ任意の δ 環について φ 注入または reduced の二つの場合の p 正則性を証明する。
 
@@ -843,6 +889,8 @@ Frobenius 注入性と reduced 性が互いに導かないという原文の二�
 :::proposition "bs_2_30" (lean := "SerrePositivity.BhattScholze.DeltaStructure.torsion_calculation")
 *注意 2.30*　導来 Frobenius 持ち上げによる説明。対応表の状態：一部（component）。
 
+*主張*　$`A\otimes_{\mathbf Z}^{\mathbf L}\mathbf F_p` に誘導される Frobenius は、その単体的可換 $`\mathbf F_p` 代数自身の Frobenius で、正次数のホモトピー群の上で零になる。一次ホモトピー群を $`A[p]` と同一視すると、元の Frobenius が $`A[p]` を消すことが分かる。
+
 導来 Frobenius による説明全体ではないが、明記された最終式 φ(A\[p\])=0 は torsion\_calculation の第一結論から同じ A で直接得られる。
 
 *注意 2.4.5（原典 Rem 2.30：導来 Frobenius 持ち上げとしての説明） — 主張*
@@ -853,6 +901,8 @@ Frobenius 注入性と reduced 性が互いに導かないという原文の二�
 
 :::corollary "bs_2_31" (lean := "SerrePositivity.BhattScholze.DeltaStructure.IsPerfect.perfectRing_mod_p, SerrePositivity.BhattScholze.existsUnique_wittDeltaStructure, SerrePositivity.BhattScholze.perfectDeltaWittRecoveryEquiv, SerrePositivity.BhattScholze.wittDeltaStructure_ringHom_isDeltaHom_of_complete, SerrePositivity.BhattScholze.perfectSource_ringHom_isDeltaHom")
 *系 2.31*　完全 δ 環 ↔ 完全 F\_p 代数。対応表の状態：一部（component）。
+
+*主張*　完全 $`p` 完備 $`\delta` 環、$`p` 進完備で $`p` ねじれがなく剰余環が完全な環、完全 $`\mathbf F_p` 代数の三つの圏は同値である。最初の同値は忘却、残りは $`p` での剰余と Witt ベクトルで与えられる。
 
 完全 p 完備 δ 環を W(A/p) から回収する同型、剰余環の perfect 性、環準同型の δ 適合性を対象ごとに与える。三つの圏の関手と自然同型からなる圏同値全体は未供給。
 
@@ -893,6 +943,8 @@ $`C_1\cong W(C_3)`：復元同型 $`W(A/p)\cong A` \`perfectDeltaWittRecoveryEqu
 :::lemma_ "bs_2_32" (lean := "SerrePositivity.BhattScholze.DeltaStructure.pow_p_dvd_delta_pow, SerrePositivity.BhattScholze.DeltaStructure.delta_eq_zero_of_has_pow_roots")
 *補題 2.32*　完全な元は rank 1。対応表の状態：本体にある。
 
+*主張*　任意の $`\delta` 環で $`\delta(x^{p^n})\in p^nA` が成り立つ。従って $`p` 進分離な $`\delta` 環であらゆる $`p^n` 乗根をもつ元 $`y` は、$`\delta(y)=0` を満たす。
+
 同じ x の δ(x\^(p\^n)) の p\^n 可除性と、p 分離・全 p 冪根存在下の δ(y)=0 に一致。
 
 *命題 2.4.7（原典 Lemma 2.32：完全な元は rank 1） — 主張*
@@ -917,6 +969,8 @@ Lean は自由 δ 環への帰着をせず、p ねじれのある $`A` で直接
 
 :::lemma_ "bs_2_33" (lean := "SerrePositivity.BhattScholze.wittDeltaStructure_isDistinguished_iff, SerrePositivity.BhattScholze.wittDeltaStructure_isDistinguished_iff_teichmuller_coefficient")
 *補題 2.33*　Teichmüller 係数による判定。対応表の状態：一部（special）。
+
+*主張*　完全 $`p` 完備 $`\delta` 環で元 $`d` が distinguished であることは、その Teichmüller 展開の $`p` の係数が単元であることに等しい。
 
 A=W(k) の標準 δ 構造に限定して同じ Teichmüller 第1係数の単元性 iff distinguished を証明する。一般の完全 A への輸送はここでは数えない。
 
@@ -943,6 +997,8 @@ $$`\delta(d)=\frac1p\Big(\sum_{i\ge0}[a_i]^pp^i-\Big(\sum_{i\ge0}[a_i]p^i\Big)^p
 :::lemma_ "bs_2_34" (lean := "SerrePositivity.BhattScholze.DeltaStructure.IsDistinguished.mul_injective, SerrePositivity.BhattScholze.DeltaStructure.IsPerfect.distinguished_mul_injective, SerrePositivity.BhattScholze.DeltaStructure.IsDistinguished.quotient_p_pow_torsion_killed_by_p")
 *補題 2.34*　d は非零因子、R\[p\]=R\[p\^∞\]。対応表の状態：本体にある。
 
+*主張*　$`p` ねじれがなく $`p` 進分離で、$`A/p` が被約な $`\delta` 環 $`A` をとる。distinguished 元 $`d` は非零因子であり、$`A/d` の $`p` 冪ねじれはすべて $`p` で消える。
+
 同じ p 正則・p 分離・A/p reduced の条件から d の正則性と A/d の全 p 冪ねじれを p が消す二結論。
 
 *命題 2.4.9（原典 Lemma 2.34） — 主張*
@@ -967,6 +1023,8 @@ $`A` を p ねじれなしで $`p` 進分離、$`A/p` が被約な δ 環とす�
 
 :::lemma_ "bs_2_35" (lean := "SerrePositivity.BhattScholze.DeltaStructure.factorial_dvd_pow_of_prime_dvd_pow, SerrePositivity.BhattScholze.DeltaStructure.exists_factorial_quotient_mem")
 *補題 2.35*　γ\_p から全 γ\_n。対応表の状態：本体にある。
+
+*主張*　$`p` ねじれのない $`\delta` 環 $`A` で $`z\in A` の分割冪 $`\gamma_p(z)` が $`A` に属するなら、すべての $`n\ge0` で $`\gamma_n(z)\in A` となる。
 
 Z\_(p)-代数の同じ z で p\|z\^p から n!\|z\^n を示す。p 正則なら分数体内の γ\_n(z) の所属という原文に戻る。さらに pd ideal 内の値も与える。
 
@@ -1145,6 +1203,8 @@ $$`\begin{array}{ccc}\mathbb Z_{(p)}\{x\}&\xrightarrow{x_i\mapsto py_i}&\mathbb 
 
 :::proposition "bs_2_41" (lean := "SerrePositivity.BhattScholze.deltaPDivisionToAway_range_eq_of_deltaStructure")
 *Warning 2.41*　部分環は δ 構造によらない。対応表の状態：一部（component）。
+
+*主張*　$`p` を反転した環内の $`A\{\varphi(f_1)/p,\ldots,\varphi(f_r)/p\}` の $`\delta` 構造によらない性質には Frobenius が必要である。$`\mathbf Z_{(p)}[x]` で Frobenius を $`x\mapsto x^p` と $`x\mapsto x^p+p` に選ぶと、$`x^p/p` を添加した二つの $`\delta` 部分環は異なる。
 
 原文前半の φ-twisted 除算部分環の δ 構造からの独立性を同じ A\[1/p\] の range 等式で証明する。後半の untwisted R₁,R₂ の非包含の反例は含まない。
 

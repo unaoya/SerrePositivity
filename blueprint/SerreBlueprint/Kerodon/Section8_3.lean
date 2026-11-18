@@ -48,6 +48,8 @@ Kerodon の 8.3 節（[Tag 03LZ](https://kerodon.net/tag/03LZ)）の項目と、
 :::proposition "kerodon_8_3_0_1" (lean := "CategoryTheory.Coyoneda.fullyFaithful")
 Kerodon Proposition 8.3.0.1（[Tag 03M0](https://kerodon.net/tag/03M0)）。対応表の状態：Mathlib にある。
 
+*主張*　局所小さい通常の圏 $`C` では、$`x` を余表現関手 $`h^x` に送る Yoneda 関手 $`C^{\mathrm{op}}\to\operatorname{Fun}(C,\operatorname{Set})` は充満忠実である。
+
 仮定：通常圏 C。Hom の宇宙を値域 Type に取る（Kerodon の局所小圏と一致）。結論：Coyoneda.fullyFaithful は Cᵒᵖ から共変表現可能関手を送る coyoneda の充満忠実性（原文と一致）。
 
 :::
@@ -68,6 +70,8 @@ $`C` を小さい quasicategory とする。
 :::proposition "kerodon_8_3_1_1" (lean := "CategoryTheory.coyonedaEquiv, CategoryTheory.yonedaEquiv")
 Kerodon Proposition 8.3.1.1（[Tag 03M3](https://kerodon.net/tag/03M3)）。対応表の状態：Mathlib にある。
 
+*主張*　通常の圏 $`C` の対象 $`x` と集合値関手 $`\mathscr F` に対し、自然変換 $`h^x\to\mathscr F` を $`\mathrm{id}_x` で評価する操作は、その自然変換の集合から $`\mathscr F(x)` への全単射である。
+
 仮定：通常圏 C、対象 X、F : C⥤Type（Kerodon と一致）。結論：coyonedaEquiv は自然変換 hˣ→F と F(X) の同値で、順写像は X で恒等射を評価する（原文の全単射と一致）。
 
 :::
@@ -83,6 +87,8 @@ SpaceInfinityの定義は原文の指定F,G,X,ηを入力に取らず、評価�
 
 :::proposition "kerodon_8_3_1_3" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.yonedaPresheafEvaluation_isQCatEquivalence, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.representablePresheafInfinity") (uses := "kerodon_1_4_0_1, kerodon_5_6_6_1, kerodon_7_3_6_1, kerodon_8_3_1_2, kerodon_8_3_1_7")
 Kerodon Proposition 8.3.1.3（[Tag 03M5](https://kerodon.net/tag/03M5)）。対応表の状態：一部。
+
+*主張*　無限圏 $`C` で $`\mathscr F:C\to S` が元 $`\eta\in\mathscr F(x)` により $`x` に余表現されるなら、任意の空間値関手 $`\mathscr G` について $`\operatorname{Hom}(\mathscr F,\mathscr G)\to\mathscr G(x)` の比較は Kan 複体のホモトピー圏の同型である。
 
 原文の圏を小準圏の反対圏、Fを標準representablePresheafInfinity、ηを恒等射の頂点に指定すると、yonedaPresheafEvaluation\_isQCatEquivalenceは同じ標準Yoneda評価の同値を直接返す。任意の(F,η)へは広げない。
 
@@ -140,6 +146,8 @@ Kerodon [Tag 03MA](https://kerodon.net/tag/03MA)
 :::definition "kerodon_8_3_2_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.twistedArrowHomInfinity, CategoryTheory.Profunctor, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity") (uses := "kerodon_1_4_0_1")
 Kerodon Definition 8.3.2.1（[Tag 03MB](https://kerodon.net/tag/03MB)）。対応表の状態：本体にある。
 
+*主張*　無限圏 $`C_+` から $`C_-` へのプロ関手とは、空間値の関手 $`C_-^{\mathrm{op}}\times C_+\to S` である。
+
 任意のC₋ᵒᵖ⊗C₊からSpaceInfinityへの単体射の型が原文のprofunctorそのもの。SpaceInfinityとfunctorVertexEquivによりこの全型を表せ、専用のProfunctor名の欠如はpartial理由にしない。Mathlibの通常圏のProfunctorは根拠にしない。
 
 :::
@@ -162,6 +170,8 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：ある頂�
 
 :::definition "kerodon_8_3_2_9" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.IsRepresentableSmallSpaceFunctor, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.IsCorepresentableSmallSpaceFunctor") (uses := "kerodon_1_4_0_1, kerodon_5_6_6_1, kerodon_5_6_6_2")
 Kerodon Definition 8.3.2.9（[Tag 03ME](https://kerodon.net/tag/03ME)）。対応表の状態：一部。
+
+*主張*　無限圏のプロ関手 $`\mathscr K:C_-^{\mathrm{op}}\times C_+\to S` は、全ての $`y` で $`\mathscr K(-,y)` が表現可能なら表現可能である。全ての $`x` で $`\mathscr K(x,-)` が余表現可能なら余表現可能である。
 
 小空間値の図式については、各yで制限した図式にIsRepresentableSmallSpaceFunctor、各xでIsCorepresentableSmallSpaceFunctorを課すことが同じ二つの点ごとの定義を直接表す。型にある宇宙持ち上げを用いる範囲に限定し、任意の大きさの図式へは広げない。
 
@@ -327,6 +337,8 @@ lemma representableUnstraighteningEvaluation\_isQCatEquivalence
 :::definition "kerodon_8_3_3_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.twistedArrowHomInfinity") (uses := "kerodon_1_4_0_1")
 Kerodon Definition 8.3.3.1（[Tag 046B](https://kerodon.net/tag/046B)）。対応表の状態：一部。
 
+*主張*　無限圏 $`C` の Hom 関手は、ねじれ矢印の左ファイブレーション $`\operatorname{Tw}(C)\to C^{\mathrm{op}}\times C` の空間値共変移送表現である。
+
 twistedArrowHomInfinityは原文のTw couplingの標準left straighteningを実際に構成し、一つのHom-functorの構成成分を直接与える。任意のHの輸送表現性という条件の全定義はこの宣言だけに含まない。
 
 *定義 12.5 （関手 $`\mathrm{Map}_C`）*
@@ -341,6 +353,8 @@ $$`\mathrm{Map}_C=\mathrm{St}\bigl(\mathrm{Tw}(C)\to C^{\mathrm{op}}\times C\big
 
 :::proposition "kerodon_8_3_3_2" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.twistedArrowHomInfinity, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.homInfinityJointEvaluation") (uses := "kerodon_1_4_0_1, kerodon_5_6_0_6")
 Kerodon Proposition 8.3.3.2（[Tag 03N2](https://kerodon.net/tag/03N2)）。対応表の状態：一部。
+
+*主張*　無限圏 $`C` が空間値の Hom 関手 $`C^{\mathrm{op}}\times C\to S` を持つことは、$`C` が局所的に小さいことと同値である。その場合 Hom 関手は同型を除いて一意である。
 
 Cを宇宙で小さく標準Hom-functorを指定するとtwistedArrowHomInfinityはその存在を直接与える。一般の局所小性からのiffと任意のHの一意性は含まない。
 
@@ -358,6 +372,8 @@ SpaceInfinityの宇宙パラメータだけでは、原文の特定κで切っ�
 :::definition "kerodon_8_3_3_7" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.twistedArrowHomInfinity, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.homInfinityJointEvaluation") (uses := "kerodon_1_2_5_1, kerodon_1_4_0_1, kerodon_4_4_5_3, kerodon_4_6_1_1")
 Kerodon Notation 8.3.3.7（[Tag 03N4](https://kerodon.net/tag/03N4)）。対応表の状態：一部。
 
+*主張*　局所小さい無限圏の空間値 Hom 関手を $`\operatorname{Hom}_C(-,-)` と書く。その各値と向き付きファイバー積で定義した射空間の間のホモトピー同値は両変数でホモトピー圏において関手的に取れ、Hom 関手を選び替えれば値を一致させられる。
+
 Cを宇宙で小さく取るとhomInfinityJointEvaluationは原文のHom(-,-)という同じ二変数の標準空間値関手を直接構成する。任意に選んだHの値とoriented fiber productの自然比較全体は含まない。
 
 :::
@@ -373,6 +389,8 @@ Kerodon Proposition 8.3.3.8（[Tag 046C](https://kerodon.net/tag/046C)）。対�
 
 :::definition "kerodon_8_3_3_9" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.yonedaInfinityMap, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coyonedaInfinityMap") (uses := "kerodon_1_4_0_1, kerodon_8_3_3_1")
 Kerodon Definition 8.3.3.9（[Tag 03NF](https://kerodon.net/tag/03NF)）。対応表の状態：一部。
+
+*主張*　無限圏 $`C` の共変 Yoneda 埋め込み $`y\mapsto h_y` は、$`h_y(x)` が $`C` の Hom 関手を与える $`C\to\operatorname{Fun}(C^{\mathrm{op}},S)` である。反変 Yoneda 埋め込みは、$`h^x(y)` が Hom 関手を与える $`C^{\mathrm{op}}\to\operatorname{Fun}(C,S)` である。
 
 小さいCではyonedaInfinityMapとcoyonedaInfinityMapは同じ標準Hom関手をcurryした共変・反変のYoneda関手を直接構成する。任意の指定hがYonedaであるという述語の全定義は含まない。
 
@@ -397,6 +415,8 @@ SpaceInfinityの宇宙指定は原文の特定κで切ったS\_\<κではなく�
 
 :::theorem "kerodon_8_3_3_13" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.yonedaInfinityMap_isFullyFaithful, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.coyonedaInfinityMap_isFullyFaithful, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.yonedaInfinityMap, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coyonedaInfinityMap") (uses := "kerodon_1_4_0_1, kerodon_8_3_2_20, kerodon_8_3_3_8")
 Kerodon Theorem 8.3.3.13（[Tag 03NJ](https://kerodon.net/tag/03NJ)）。対応表の状態：一部。
+
+*主張*　局所小さい無限圏の共変・反変 Yoneda 埋め込みはいずれも充満忠実である。各本質像は表現可能な前層、余表現可能な共変空間値関手の充満部分圏である。
 
 Cを宇宙で小さく標準Yonedaに指定すれば、yonedaInfinityMap\_isFullyFaithfulとcoyonedaInfinityMap\_isFullyFaithfulは原文の両方の充満忠実性を直接返す。本質的像の全特徴付けと任意に選んだYoneda関手は含まない。
 
@@ -423,6 +443,8 @@ HTT §5.1.3 は Yoneda 埋め込みを単体的圏の側で作り、モデル構
 :::proposition "kerodon_8_3_3_14" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.isLimitCone_iff_covariantRepresentableInfinity, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.yonedaInfinityMap_isLimit") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1")
 Kerodon Proposition 8.3.3.14（[Tag 03NP](https://kerodon.net/tag/03NP)）。対応表の状態：一部。
 
+*主張*　局所小さい無限圏への小さい単体集合 $`K` 上の左錐について、極限図式であることは、共変 Yoneda 埋め込みでの像が極限図式であることと同値である。
+
 Cを宇宙で小さくhをyonedaInfinityMapとした場合、yonedaInfinityMap\_isLimitは同じ錐の極限性の保存を直接返す。反映もyonedaInfinityMapの充満忠実性と極限の写像空間判定から得る範囲で、任意のYonedaの選択へは広げない。
 
 :::
@@ -439,6 +461,8 @@ Kerodon Variant 8.3.3.15（[Tag 03V5](https://kerodon.net/tag/03V5)）。対応�
 :::corollary "kerodon_8_3_3_17" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.yonedaInfinityMap_isFullyFaithful, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.presheafInfinity_hasLimit, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.presheafInfinity_hasColimit, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.yonedaInfinityMap_isLimit") (uses := "kerodon_1_4_0_1, kerodon_7_4_1_15, kerodon_7_4_3_8, kerodon_8_3_3_13")
 Kerodon Corollary 8.3.3.17（[Tag 03Y7](https://kerodon.net/tag/03Y7)）。対応表の状態：一部。
 
+*主張*　任意の無限圏 $`C` と無限基数 $`\kappa` に対し、$`C` から $`\kappa`-完備かつ $`\kappa`-余完備な無限圏への充満忠実関手が存在する。$`C` に存在する全ての $`\kappa`-小図式の極限を保つように選べる。
+
 Cを宇宙で小さく取るとyonedaInfinityMap\_isFullyFaithfulとyonedaInfinityMap\_isLimitは同じ前層圏への充満忠実なFの存在と小形状の極限保存を直接返す。任意の数値κについて標的がκ完備・κ余完備という大きさの比較は含まない。
 
 :::
@@ -454,6 +478,8 @@ Kerodon [Tag 03NQ](https://kerodon.net/tag/03NQ)
 
 :::proposition "kerodon_8_3_4_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.yonedaInfinityMap_isFullyFaithful, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful.postcompose") (uses := "kerodon_1_4_0_1, kerodon_8_3_3_7, kerodon_8_3_3_13")
 Kerodon Proposition 8.3.4.1（[Tag 03NR](https://kerodon.net/tag/03NR)）。対応表の状態：一部。
+
+*主張*　無限圏 $`C` が非可算基数 $`\kappa` に関して局所 $`\kappa`-小さいとする。$`G:D\to C` を $`\operatorname{Hom}_C(-,G(-))` に送る操作は、$`\operatorname{Fun}(D,C)` から $`\kappa`-小空間値のプロ関手の無限圏への充満忠実関手で、本質像は表現可能なプロ関手で張られる。
 
 C,Dを宇宙で小さく標準Homに指定すると、Yonedaの充満忠実性をIsFullyFaithful.postcomposeへ渡しcurryすれば同じG↦Hom(-,G-)の充満忠実性を直接得る。本質的像が全表現可能profunctorで尽きる部分と指定κの大きさの比較は含まない。
 
@@ -480,6 +506,8 @@ Kerodon Variant 8.3.4.4（[Tag 03NU](https://kerodon.net/tag/03NU)）。対応�
 :::proposition "kerodon_8_3_4_9" (lean := "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.exists_leftAdjoint_iff_covariantHom_representable, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.CouplingsOfInfinityCategories.adjunctionCovariantHomIso") (uses := "kerodon_1_4_0_1, kerodon_8_2_5_1")
 Kerodon Proposition 8.3.4.9（[Tag 03PA](https://kerodon.net/tag/03PA)）。対応表の状態：一部。
 
+*主張*　無限圏の関手 $`G:C_+\to C_-` がプロ関手 $`\mathscr K` を表現するとき、$`F:C_-\to C_+` が $`G` の左随伴であることは、$`F` が $`\mathscr K` を余表現することと同値である。従って $`\mathscr K` の余表現可能性は $`G` の左随伴の存在と同値である。
+
 Kを標準Hom(-,G-)とし小さい準圏を用いると、exists\_leftAdjoint\_iff\_covariantHom\_representableは原文末尾の「Kが各xで余表現可能⇔Gに左随伴が存在する」を直接返す。固定Fによる二変数のcorepresentationの全判定は含まない。
 
 :::
@@ -487,12 +515,16 @@ Kを標準Hom(-,G-)とし小さい準圏を用いると、exists\_leftAdjoint\_i
 :::corollary "kerodon_8_3_4_10" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.presentableAdjointFunctorEquivalence, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.presentableAdjointFunctorEquivalence_adjunction") (uses := "kerodon_1_4_0_1, kerodon_8_3_4_1, kerodon_8_3_4_9")
 Kerodon Corollary 8.3.4.10（[Tag 04B7](https://kerodon.net/tag/04B7)）。対応表の状態：一部。
 
+*主張*　無限圏 $`C_-,C_+` が非可算基数 $`\kappa` に関して局所的に $`\kappa`-小さいとする。Yoneda 埋め込みにより右随伴の圏は、表現可能かつ余表現可能な $`\kappa`-小空間値プロ関手の圏と同値であり、左随伴の圏はその反対圏と同値である。これを合成すると、左随伴の圏の反対圏から右随伴の圏への標準同型が $`h\operatorname{QCat}` で得られ、左随伴をその右随伴に送る。
+
 両圏をpresentableに強めるとpresentableAdjointFunctorEquivalenceとそのadjunctionフィールドは原文(3)の同じ左右随伴関手の全準圏の反転同値と対応を直接返す。profunctorの部分圏Eを経る指定合成ρ⁻¹λとの同定は含まない。
 
 :::
 
 :::definition "kerodon_8_3_4_11" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.pointSpaceVertex, SSet.const")
 Kerodon Notation 8.3.4.11（[Tag 03MS](https://kerodon.net/tag/03MS)）。対応表の状態：本体にある。
+
+*主張*　無限圏 $`E` について、値が一点空間 $`\Delta^0` の定数関手 $`E\to S` を $`\underline{\Delta^0}_E` と書く。
 
 pointSpaceVertexをSSet.constで任意E上の定値射にすれば、原文の同じΔ⁰を値とする定値関手全体を直接構成する。値圏の型だけという旧引用を補った。
 
@@ -552,6 +584,8 @@ Kerodon [Tag 046H](https://kerodon.net/tag/046H)
 :::definition "kerodon_8_3_5_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowPointedDisplayFiber, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowPointedDisplayFiber_isQCatEquivalence") (uses := "kerodon_1_2_5_1, kerodon_1_4_0_1, kerodon_8_1_1_11")
 Kerodon Definition 8.3.5.1（[Tag 03MT](https://kerodon.net/tag/03MT)）。対応表の状態：一部。
 
+*主張*　無限圏 $`C` のプロ関手 $`\mathscr H` と、ねじれ矢印圏上の変換 $`\underline{\Delta^0}\to\mathscr H|_{\operatorname{Tw}(C)}` を取る。この変換が Hom 関手であることを示すとは、各 $`(x,y)` でねじれ矢印のファイバーから $`\operatorname{Hom}_S(\Delta^0,\mathscr H(x,y))` への比較がホモトピー同値であることをいう。
+
 Hとαを標準twistedArrowHomInfinityのpointed displayに指定すると、twistedArrowPointedDisplayFiberとその同値性は原文の同じ各(X,Y)のfiber比較を構成する。任意の指定H,αの述語全体は含まない。
 
 :::
@@ -598,12 +632,16 @@ Kerodon [Tag 03N5](https://kerodon.net/tag/03N5)
 :::definition "kerodon_8_3_6_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.representableHomCoherent")
 Kerodon Construction 8.3.6.1（[Tag 03N6](https://kerodon.net/tag/03N6)）。対応表の状態：一部。
 
+*主張*　局所 Kan な単体圏 $`C` の単体射空間は単体関手 $`C^{\mathrm{op}}\times C\to\operatorname{Kan}` を与える。そのホモトピー整合神経から、$`N^{\mathrm{hc}}(C)` の反対圏と自身の積から空間への関手 $`\mathscr H_C` を得る。
+
 representableHomCoherent xは原文の同じ豊穣Homを第一変数xで固定したcoherent実現を直接構成する。両変数が動く豊穣関手の全構成は含まない。
 
 :::
 
 :::proposition "kerodon_8_3_6_2" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.representableHomCoherentIso, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.edgewiseEnrichedInfinityMap_isQCatEquivalence")
 Kerodon Proposition 8.3.6.2（[Tag 03N7](https://kerodon.net/tag/03N7)）。対応表の状態：一部。
+
+*主張*　局所 Kan な単体圏の射単体集合から 8.3.6.1 で得た関手 $`\mathscr H_C` は、ホモトピー整合神経 $`N^{\mathrm{hc}}(C)` の Hom 関手である。
 
 representableHomCoherentIso xは各固定xで同じ豊穣Homの実現と標準Homの片変数のFunctorIsoを直接与える。全二変数でTw couplingを分類することへの比較は含まない。
 
@@ -639,6 +677,8 @@ Kerodon [Tag 06BY](https://kerodon.net/tag/06BY)
 :::theorem "kerodon_8_3_7_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.laxPullbackMappingSpaceCone_isLimit") (uses := "kerodon_1_4_0_1, kerodon_4_5_3_28, kerodon_4_6_4_2, kerodon_8_1_1_6, kerodon_8_3_7_4, kerodon_8_3_7_6, kerodon_8_3_7_7")
 Kerodon Theorem 8.3.7.1（[Tag 06BZ](https://kerodon.net/tag/06BZ)）。対応表の状態：一部。
 
+*主張*　無限圏 $`C_-,C_+` から $`C` への二関手の向き付きファイバー積 $`C_\pm` の Hom 関手は、両成分の Hom 関手を、第一対象の負側と第二対象の正側を結ぶ $`C` の Hom 関手上で引き戻したものである。引き戻しは $`C_\pm^{\mathrm{op}}\times C_\pm` 上の空間値関手の無限圏で取る。
+
 laxPullbackMappingSpaceCone\_isLimitは各固定二頂点x,yで、原文の同じ四つのHom空間と成分による極限錐を直接返す。全(x,y)で自然に組み立てた関手準圏内の指定squareの存在までは含まない。
 
 :::
@@ -668,6 +708,8 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：固定二�
 
 :::lemma_ "kerodon_8_3_7_7" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.leftFibrationPullbackClassifiedCone_isLimit, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftStraighteningInfinityDiagram_baseChangeIso") (uses := "kerodon_1_1_0_6, kerodon_1_2_5_1, kerodon_1_4_0_1, kerodon_5_1_4_1, kerodon_5_3_3_1, kerodon_5_3_3_16, kerodon_5_3_3_18, kerodon_7_3_8_8")
 Kerodon Lemma 8.3.7.7（[Tag 06C8](https://kerodon.net/tag/06C8)）。対応表の状態：一部。
+
+*主張*　四つの左ファイブレーション $`E_{ij}\to D_{ij}` が作る可換立方体で、全体圏と底圏の四角形がともに圏論的引き戻しとする。各 $`D_{ij}` 上の空間値共変移送表現を $`D_{00}` に引き戻すと、関手圏 $`\operatorname{Fun}(D_{00},S)` にそれらの引き戻し正方形が存在する。
 
 四つの底D\_ijを同じ小準圏X、全底射を恒等、上面をleft fibrationsのstrict pullbackとした場合、leftFibrationPullbackClassifiedCone\_isLimitは同じ四分類図式の関手準圏内のpullbackを直接返す。可変底の一般のcubeは含まない。
 

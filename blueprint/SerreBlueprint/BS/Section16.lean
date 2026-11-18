@@ -9,7 +9,7 @@ open Informal
 -- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）
 set_option maxHeartbeats 2000000
 
-#doc (Manual) "§16 " =>
+#doc (Manual) "§16 q-crystalline and q-de Rham cohomology" =>
 %%%
 number := false
 tag := "bs-16"

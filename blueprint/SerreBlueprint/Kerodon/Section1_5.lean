@@ -61,6 +61,8 @@ $`X\times_ZY` と二つの射影は、単体的集合の圏における $`f` と
 :::definition "kerodon_1_5_0_1" (lean := "SSet, SSet.Quasicategory")
 Kerodon Definition 1.5.0.1（[Tag 0056](https://kerodon.net/tag/0056)）。対応表の状態：Mathlib にある。
 
+*主張*　$`\infty` 圏の間の関手とは、台の単体的集合の射である。
+
 仮定：二つの準圏 C,D（Kerodon と一致）。結論：SSet での射 C ⟶ D が原文の関手。Quasicategory が両端の条件で、射には追加データがない（一致）。
 
 *定義 11.1 （関手）*
@@ -80,6 +82,8 @@ Kerodon [Tag 005H](https://kerodon.net/tag/005H)
 
 :::definition "kerodon_1_5_2_1" (lean := "SSet.Quasicategory")
 Kerodon Definition 1.5.2.1（[Tag 005J](https://kerodon.net/tag/005J)）。対応表の状態：Mathlib にある。
+
+*主張*　$`\infty` 圏 $`\mathcal C` における $`K` で添字づけた図式は単体的写像 $`K\to\mathcal C` である。通常の圏ではその nerve を標的とし、順序集合で添字づけるときはその nerve を $`K` とする。
 
 仮定：単体集合 K と準圏 C（Kerodon と一致）。結論：K 上の図式は単体集合の射 K ⟶ C。通常の圏 D の場合は C=nerve D を取る（一致）。
 
@@ -135,6 +139,8 @@ $$`g\circ f\colon X\times\Delta^n\xrightarrow{(f,\ \mathrm{pr}_{\Delta^n})}Y\tim
 :::definition "kerodon_1_5_3_1" (lean := "CategoryTheory.ihom")
 Kerodon Construction 1.5.3.1（[Tag 0060](https://kerodon.net/tag/0060)）。対応表の状態：Mathlib にある。
 
+*主張*　単体的集合 $`S,T` に対し、$`\operatorname{Fun}(S,T)` の $`n` 単体は $`\Delta^n\times S\to T` である。評価は、$`S` の $`n` 単体とこの写像を対角射に沿って組み合わせて定める。
+
 仮定：任意の単体集合 S,T（Kerodon と一致。Lean の ihom は一般のモノイダル閉圏で定義される）。結論：(ihom S).obj T は内部 Hom。次数 n の評価を Yoneda と随伴で読むと Hom(Δ\[n\] × S,T) になる。積の因子順は対称性で対応する（一致）。
 
 *定義 2.2 （写像単体的集合 $`\mathrm{Fun}(X,Y)`）*
@@ -149,6 +155,8 @@ $$`\mathrm{Fun}(X,Y)([n])=\mathrm{Hom}_{\mathrm{sSet}}(X\times\Delta^n,Y),\qquad
 
 :::proposition "kerodon_1_5_3_2" (lean := "CategoryTheory.ihom.adjunction, CategoryTheory.MonoidalClosed.curry")
 Kerodon Proposition 1.5.3.2（[Tag 0061](https://kerodon.net/tag/0061)）。対応表の状態：Mathlib にある。
+
+*主張*　任意の単体的集合 $`U,S,T` に対して、評価写像との合成で $`\operatorname{Hom}(U,\operatorname{Fun}(S,T))\to\operatorname{Hom}(U\times S,T)` は全単射になる。
 
 仮定：単体集合 S,T,U（Kerodon と一致。Lean の随伴は一般のモノイダル閉圏に適用できる）。結論：ihom.adjunction は Hom(U,ihom(S,T)) と Hom(S × U,T) の全単射。curry の逆が評価との合成で、原文の U × S には積の対称性で移る（一致）。
 
@@ -165,12 +173,16 @@ $$`\mathrm{Hom}_{\mathrm{sSet}}(Z\times X,Y)\cong\mathrm{Hom}_{\mathrm{sSet}}(Z,
 :::proposition "kerodon_1_5_3_3" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.nerveFunctorCategoryIso, SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.nerveFunctorCategoryIso_uncurry")
 Kerodon Proposition 1.5.3.3（[Tag 0062](https://kerodon.net/tag/0062)）。対応表の状態：本体にある。
 
+*主張*　通常の圏の評価関手の nerve から得る写像 $`N(\operatorname{Fun}(\mathcal C,\mathcal D))\to\operatorname{Fun}(N\mathcal C,N\mathcal D)` は単体的集合の同型である。
+
 仮定：通常の圏 C,D と評価関手（Kerodon と一致。Lean では同じ宇宙に置く）。結論：nerveFunctorCategoryIso は N(C ⥤ D) ≅ (ihom (N C)).obj (N D)。uncurry 補題は積の比較を挟むと N(評価) を与えることを確認する（一致）。
 
 :::
 
 :::corollary "kerodon_1_5_3_4" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.nerveFunctorCategoryIso, CategoryTheory.nerveFunctorCompHoFunctorIso")
 Kerodon Corollary 1.5.3.4（[Tag 0063](https://kerodon.net/tag/0063)）。対応表の状態：本体にある。
+
+*主張*　通常の圏 $`\mathcal C,\mathcal D` の間の関手圏は、両 nerve の間の関手 $`\infty` 圏のホモトピー圏と標準的に同型である。
 
 仮定：通常の圏 C,D（Kerodon と一致）。結論：nerveFunctorCategoryIso を hoFunctor で写し、余単位の nerveFunctorCompHoFunctorIso を用いると、C ⥤ D と hFun(N C,N D) の比較同型が得られる（一致）。
 
@@ -179,6 +191,8 @@ Kerodon Corollary 1.5.3.4（[Tag 0063](https://kerodon.net/tag/0063)）。対応
 :::corollary "kerodon_1_5_3_5" (lean := "CategoryTheory.nerveAdjunction")
 Kerodon Corollary 1.5.3.5（[Tag 0064](https://kerodon.net/tag/0064)）。対応表の状態：一部。
 
+*主張*　単体的集合 $`S` と通常の圏 $`\mathcal D` に対し、ホモトピー圏への単位で前合成すると $`N(\operatorname{Fun}(hS,\mathcal D))\simeq\operatorname{Fun}(S,N\mathcal D)` という単体的集合の同型を得る。
+
 原文のρSは全次数の単体集合の同型。nerveAdjunction.homEquiv はhS→Dの関手とS→N(D)の全単射で、ρSの0単体（次数0に限定）の同じHom対応を直接与える。全次数・面退化の可換性までは含まない。
 
 :::
@@ -186,12 +200,16 @@ Kerodon Corollary 1.5.3.5（[Tag 0064](https://kerodon.net/tag/0064)）。対応
 :::corollary "kerodon_1_5_3_6" (lean := "CategoryTheory.hoFunctor.preservesFiniteProducts, CategoryTheory.hoFunctor.isIso_prodComparison")
 Kerodon Corollary 1.5.3.6（[Tag 0065](https://kerodon.net/tag/0065)）。対応表の状態：Mathlib にある。
 
+*主張*　単体的集合のホモトピー圏をとる関手は有限積を保つ。
+
 仮定：単体集合の圏と通常圏の圏（Kerodon と一致）。結論：hoFunctor.preservesFiniteProducts が空積を含む有限積の保存、isIso\_prodComparison が二項積の比較射の同型性を与える（一致）。
 
 :::
 
 :::theorem "kerodon_1_5_3_7"
 Kerodon Theorem 1.5.3.7（[Tag 0066](https://kerodon.net/tag/0066)）。対応表の状態：Mathlib にある。
+
+*主張*　任意の単体的集合 $`S` と任意の $`\infty` 圏 $`\mathcal D` に対し、指数対象 $`\operatorname{Fun}(S,\mathcal D)` は $`\infty` 圏である。
 
 仮定：任意の単体集合 A と準圏 X（Kerodon と一致）。結論：instQuasicategoryObjIhom は (ihom A).obj X が準圏であることを与える（一致）。
 
@@ -205,6 +223,8 @@ $`K` を単体的集合、$`D` を quasicategory とすると、$`\mathrm{Fun}(K
 
 :::definition "kerodon_1_5_3_8"
 Kerodon Definition 1.5.3.8（[Tag 0067](https://kerodon.net/tag/0067)）。対応表の状態：Mathlib にある。
+
+*主張*　$`\infty` 圏 $`\mathcal C` から $`\mathcal D` への関手 $`\infty` 圏とは、指数対象 $`\operatorname{Fun}(\mathcal C,\mathcal D)` である。
 
 仮定：準圏 C,D（Lean が弱い：ihom の準圏性には標的 D の準圏性だけでよい）。結論：準圏 (ihom C).obj D が Fun(C,D)。instQuasicategoryObjIhom がその準圏構造を与える（一致）。
 
@@ -228,12 +248,16 @@ Kerodon [Tag 006B](https://kerodon.net/tag/006B)
 :::definition "kerodon_1_5_4_1" (lean := "CategoryTheory.CommSq, CategoryTheory.CommSq.LiftStruct")
 Kerodon Definition 1.5.4.1（[Tag 006C](https://kerodon.net/tag/006C)）。対応表の状態：Mathlib にある。
 
+*主張*　圏の持ち上げ問題は、左辺 $`A\to B` と右辺 $`X\to Y` をもつ可換四角形である。二つの三角形を可換にする対角射 $`B\to X` が解となる。
+
 仮定：圏 C と二つの射を縦辺に持つ四角形（Kerodon と一致）。結論：CommSq は四角形の可換性、LiftStruct は上下二つの三角形を可換にする対角射のデータ（一致）。
 
 :::
 
 :::definition "kerodon_1_5_4_3" (lean := "CategoryTheory.HasLiftingProperty, CategoryTheory.MorphismProperty.llp")
 Kerodon Definition 1.5.4.3（[Tag 006E](https://kerodon.net/tag/006E)）。対応表の状態：Mathlib にある。
+
+*主張*　左辺 $`f`、右辺 $`g` のすべての持ち上げ問題が解を持つとき、$`f` は $`g` に弱く左直交し、$`g` は $`f` に弱く右直交するという。射の二つの集まりについては各組でこの条件を課す。
 
 仮定：圏 C の二射 f,g（Kerodon と一致）。結論：HasLiftingProperty f g は f と g を縦辺に持つすべての可換正方形に持ち上げがあること。llp は g を指定クラス全体に渡らせる（一致）。
 
@@ -246,12 +270,16 @@ Kerodon Definition 1.5.4.3（[Tag 006E](https://kerodon.net/tag/006E)）。対�
 :::definition "kerodon_1_5_4_4" (lean := "CategoryTheory.MorphismProperty.IsStableUnderCobaseChange")
 Kerodon Definition 1.5.4.4（[Tag 006F](https://kerodon.net/tag/006F)）。対応表の状態：Mathlib にある。
 
+*主張*　押し出しを持つ圏の射の類が押し出しで閉じるとは、その類に属する射の任意の押し出しが同じ類に属することをいう。
+
 仮定：押し出しを持つ圏 C と射クラス P（Lean が弱い：IsStableUnderCobaseChange は各押し出し正方形を条件として取る）。結論：押し出しで移された射が、元の射と同じクラス P に入ることを要求する（一致）。
 
 :::
 
 :::proposition "kerodon_1_5_4_5" (lean := "CategoryTheory.MorphismProperty.llp_isStableUnderCobaseChange")
 Kerodon Proposition 1.5.4.5（[Tag 006G](https://kerodon.net/tag/006G)）。対応表の状態：Mathlib にある。
+
+*主張*　押し出しを持つ圏では、任意の射の集まりに弱く左直交する射の類は押し出しで閉じる。
 
 仮定：押し出しを持つ圏 C と射クラス T（Lean が弱い：任意の圏の押し出し正方形について述べる）。結論：llp\_isStableUnderCobaseChange は T に対する左持ち上げ性が押し出しで保たれることを与える（一致）。
 
@@ -260,12 +288,16 @@ Kerodon Proposition 1.5.4.5（[Tag 006G](https://kerodon.net/tag/006G)）。対�
 :::definition "kerodon_1_5_4_6" (lean := "CategoryTheory.Retract")
 Kerodon Definition 1.5.4.6（[Tag 006H](https://kerodon.net/tag/006H)）。対応表の状態：Mathlib にある。
 
+*主張*　圏の対象 $`C` は、$`C\to C'\to C` という合成が恒等射になる二射が存在するとき、$`C'` のレトラクトである。
+
 仮定：圏 C の二対象 A,B（Kerodon と一致）。結論：Retract A B は i:A⟶B と r:B⟶A、i≫r=𝟙 A を持つ（一致）。
 
 :::
 
 :::definition "kerodon_1_5_4_7" (lean := "CategoryTheory.RetractArrow, CategoryTheory.MorphismProperty.IsStableUnderRetracts")
 Kerodon Variant 1.5.4.7（[Tag 006J](https://kerodon.net/tag/006J)）。対応表の状態：Mathlib にある。
+
+*主張*　射 $`f` が別の射 $`f'` のレトラクトであるとは、矢印圏 $`\operatorname{Fun}([1],\mathcal C)` の対象としてレトラクトであることをいう。従って始域・終域それぞれの引き込みと引き戻しは、射と可換でなければならない。
 
 仮定：圏 C の二射 f,f′（Kerodon と一致）。結論：RetractArrow は Arrow C におけるレトラクト、すなわち始域・終域双方の射が元の二射と可換なレトラクト。IsStableUnderRetracts はその関係での射クラスの閉性（一致）。
 
@@ -274,12 +306,16 @@ Kerodon Variant 1.5.4.7（[Tag 006J](https://kerodon.net/tag/006J)）。対応�
 :::proposition "kerodon_1_5_4_9" (lean := "CategoryTheory.MorphismProperty.llp_isStableUnderRetracts")
 Kerodon Proposition 1.5.4.9（[Tag 006L](https://kerodon.net/tag/006L)）。対応表の状態：Mathlib にある。
 
+*主張*　任意の圏で、指定した射の集まりに弱く左直交する射の類はレトラクトで閉じる。
+
 仮定：圏 C と任意の射クラス T（Kerodon と一致）。結論：llp\_isStableUnderRetracts は左持ち上げ性を持つ射のレトラクトも T に対する左持ち上げ性を持つことを与える（一致）。
 
 :::
 
 :::definition "kerodon_1_5_4_10" (lean := "CategoryTheory.MorphismProperty.TransfiniteCompositionOfShape, CategoryTheory.MorphismProperty.transfiniteCompositions")
 Kerodon Definition 1.5.4.10（[Tag 006M](https://kerodon.net/tag/006M)）。対応表の状態：Mathlib にある。
+
+*主張*　射 $`f` が類 $`S` の射の超限合成であるとは、ある順序数 $`\alpha` までの図式の始点から終点への射で、後続段の射が $`S` に属し、各非零極限段がそれ以前の余極限となるものをいう。こうして得る射がすべて $`S` に入れば、$`S` は超限合成で閉じる。
 
 仮定：圏 C と射クラス W（Lean が弱い：順序数の閉区間のほか、整礎線形順序で底と後続を備える shape を許す）。結論：TransfiniteCompositionOfShape は初項から連続図式の余極限への射を表し、非最大の各添字の後続射に W を要求する。transfiniteCompositions は shape にわたる和（一致）。
 
@@ -288,6 +324,8 @@ Kerodon Definition 1.5.4.10（[Tag 006M](https://kerodon.net/tag/006M)）。対�
 :::proposition "kerodon_1_5_4_12" (lean := "CategoryTheory.MorphismProperty.isStableUnderTransfiniteCompositionOfShape_llp")
 Kerodon Proposition 1.5.4.12（[Tag 006R](https://kerodon.net/tag/006R)）。対応表の状態：Mathlib にある。
 
+*主張*　任意の圏で、指定した射の集まりに弱く左直交する射の類は、存在する超限合成で閉じる。
+
 仮定：圏 C と射クラス T（Lean が弱い：順序数の区間を含む、底と後続を備えた整礎線形順序を扱う）。結論：isStableUnderTransfiniteCompositionOfShape\_llp は各後続射が T.llp の連続図式の超限合成も T.llp に入ることを与える（一致）。
 
 :::
@@ -295,12 +333,16 @@ Kerodon Proposition 1.5.4.12（[Tag 006R](https://kerodon.net/tag/006R)）。対
 :::definition "kerodon_1_5_4_13" (lean := "CategoryTheory.MorphismProperty.IsStableUnderCobaseChange, CategoryTheory.MorphismProperty.IsStableUnderRetracts, CategoryTheory.MorphismProperty.IsStableUnderTransfiniteComposition") (uses := "kerodon_1_5_4_4, kerodon_1_5_4_7, kerodon_1_5_4_10")
 Kerodon Definition 1.5.4.13（[Tag 006S](https://kerodon.net/tag/006S)）。対応表の状態：一部。
 
+*主張*　小さい余極限を持つ圏で、押し出し・レトラクト・超限合成で閉じる射の類を弱飽和と呼ぶ。
+
 原文のweakly saturatedの条件は押し出し・retract・超限合成で閉じること。三つの IsStableUnder… の型はこの各条件を直接表し、弱飽和性の述語の成分に対応する。三条件をまとめた名前付きの述語や生成閉包そのものと同一視しない。
 
 :::
 
 :::proposition "kerodon_1_5_4_14" (lean := "CategoryTheory.MorphismProperty.llp_isStableUnderCobaseChange, CategoryTheory.MorphismProperty.llp_isStableUnderRetracts, CategoryTheory.MorphismProperty.isStableUnderTransfiniteCompositionOfShape_llp")
 Kerodon Proposition 1.5.4.14（[Tag 006T](https://kerodon.net/tag/006T)）。対応表の状態：Mathlib にある。
+
+*主張*　小さい余極限を持つ圏で、指定した射の集まりに弱く左直交する射の類は弱飽和である。
 
 仮定：小余極限を持つ圏 C と射クラス T（Lean が弱い：安定性は該当する押し出し・超限合成のデータを条件として述べる）。結論：三つのインスタンスが T.llp の押し出し・レトラクト・超限合成に対する閉性を与える。弱飽和の三条件を個別に満たす（一致）。
 
@@ -318,6 +360,8 @@ Kerodon [Tag 006V](https://kerodon.net/tag/006V)
 :::definition "kerodon_1_5_5_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.trivialKanFibrations, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.trivialKanFibration_iff_boundary")
 Kerodon Definition 1.5.5.1（[Tag 006W](https://kerodon.net/tag/006W)）。対応表の状態：本体にある。
 
+*主張*　単体的集合の射が自明 Kan ファイブレーションであるとは、$`n\ge0` における境界包含 $`\partial\Delta^n\hookrightarrow\Delta^n` のすべてに対し右持ち上げ性を持つことをいう。
+
 仮定：単体集合の射 q:X⟶Y（Kerodon と一致）。結論：trivialKanFibration\_iff\_boundary は TrivialKanFibration q と、次数 0 を含む全ての ∂Δ\[n\]⟶Δ\[n\] に対する右持ち上げ性を同値とする（一致）。
 
 *定義 5.3 （fibration）*
@@ -330,6 +374,8 @@ Kerodon Definition 1.5.5.1（[Tag 006W](https://kerodon.net/tag/006W)）。対�
 :::proposition "kerodon_1_5_5_4" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.trivialKanFibration_iff_boundary, SSet.rlp_monomorphisms")
 Kerodon Proposition 1.5.5.4（[Tag 006Y](https://kerodon.net/tag/006Y)）。対応表の状態：本体と Mathlib にある。
 
+*主張*　単体的集合の射が自明 Kan ファイブレーションであることと、単体的集合の任意の単射に対して右持ち上げ性を持つことは同値である。
+
 仮定：単体集合の射 p（Kerodon と一致）。結論：trivialKanFibration\_iff\_boundary と rlp\_monomorphisms により、境界包含への右持ち上げ性と任意の単射への右持ち上げ性が同値（一致）。
 
 :::
@@ -337,12 +383,16 @@ Kerodon Proposition 1.5.5.4（[Tag 006Y](https://kerodon.net/tag/006Y)）。対�
 :::corollary "kerodon_1_5_5_5" (lean := "SerrePositivity.SimplicialModel.MonoRightLiftingContraction.exists_section, SerrePositivity.SimplicialModel.MonoRightLiftingContraction.exists_vertical_contraction") (uses := "kerodon_1_1_0_6, kerodon_1_5_5_4")
 Kerodon Corollary 1.5.5.5（[Tag 006Z](https://kerodon.net/tag/006Z)）。対応表の状態：一部。
 
+*主張*　自明 Kan ファイブレーション $`p\colon X\to Y` は切断を持つ。任意の切断 $`s` について、$`sp` と $`\mathrm{id}_X` を結ぶ $`Y` 上の単体的ホモトピーが存在する。
+
 原文(a)の切断の存在はexists\_sectionの型の結論そのもの（TrivialKanFibrationの全単射RLPを適用）。(b)の指定向きのfiberwise収縮について、引用のexists\_vertical\_contractionはid→p≫sと逆端点順なので一致としない。(a)だけを数える。
 
 :::
 
 :::corollary "kerodon_1_5_5_6"
 Kerodon Corollary 1.5.5.6（[Tag 0070](https://kerodon.net/tag/0070)）。対応表の状態：本体にある。
+
+*主張*　自明 Kan ファイブレーション $`X\to Y` と単射 $`A\hookrightarrow B` に対し、$`\operatorname{Fun}(B,X)\to\operatorname{Fun}(B,Y)\times_{\operatorname{Fun}(A,Y)}\operatorname{Fun}(A,X)` も自明 Kan ファイブレーションである。
 
 仮定：単射i:A→Bとtrivial Kan fibration p:E→Y（原文と一致）。結論：trivialKanFibration\_pullbackObjObjπ は internalHom.PullbackObjObj i p の標準比較射πがtrivial Kan fibration（原文のθと一致）。引き戻しの選択をデータとして明示し、A=空に限定しない。模型圏の追加仮定なし。
 
@@ -353,12 +403,16 @@ Kerodon Corollary 1.5.5.6（[Tag 0070](https://kerodon.net/tag/0070)）。対応
 :::corollary "kerodon_1_5_5_7" (lean := "SerrePositivity.KST.SConstruction.ihomMap_trivialKanFibration")
 Kerodon Corollary 1.5.5.7（[Tag 0071](https://kerodon.net/tag/0071)）。対応表の状態：本体にある。
 
+*主張*　自明 Kan ファイブレーション $`X\to Y` と任意の単体的集合 $`B` について、$`\operatorname{Fun}(B,X)\to\operatorname{Fun}(B,Y)` も自明 Kan ファイブレーションである。
+
 仮定：自明 Kan fibration p:X⟶Y と任意の単体集合 B（Kerodon と一致）。結論：ihomMap\_trivialKanFibration は Fun(B,X)⟶Fun(B,Y) に TrivialKanFibration を与える（一致）。
 
 :::
 
 :::definition "kerodon_1_5_5_8" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan, SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.isContractibleKan_iff_trivialKanFibration")
 Kerodon Definition 1.5.5.8（[Tag 0072](https://kerodon.net/tag/0072)）。対応表の状態：本体にある。
+
+*主張*　単体的集合 $`X` が可縮 Kan 複体であるとは、終射 $`X\to\Delta^0` が自明 Kan ファイブレーションであること、すなわちどの標準境界からの射も標準単体に延長できることをいう。
 
 仮定：単体集合 X（Kerodon と一致）。結論：isContractibleKan\_iff\_trivialKanFibration は全境界を充填できる IsContractibleKan X と終対象 Δ\[0\] への射の自明 Kan fibration 性を同値にする（一致）。
 
@@ -380,6 +434,8 @@ Kerodon Proposition 1.5.5.11（[Tag 050J](https://kerodon.net/tag/050J)）。対
 :::corollary "kerodon_1_5_5_12" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.isContractibleKan_iff_trivialKanFibration, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.trivialKanFibrations")
 Kerodon Corollary 1.5.5.12（[Tag 0075](https://kerodon.net/tag/0075)）。対応表の状態：本体にある。
 
+*主張*　単体的集合 $`X` が可縮 Kan 複体であることは、任意の単射 $`A\hookrightarrow B` に沿って任意の射 $`A\to X` が $`B\to X` に延長できることと同値である。
+
 仮定：単体集合 X（Kerodon と一致）。結論：終対象への射に isContractibleKan\_iff\_trivialKanFibration を適用し、trivialKanFibrations の定義を展開すると、任意の単射 A⟶B に沿う A⟶X の延長の存在と同値（一致）。
 
 :::
@@ -387,12 +443,16 @@ Kerodon Corollary 1.5.5.12（[Tag 0075](https://kerodon.net/tag/0075)）。対�
 :::corollary "kerodon_1_5_5_13" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan.kanComplex")
 Kerodon Corollary 1.5.5.13（[Tag 0076](https://kerodon.net/tag/0076)）。対応表の状態：本体にある。
 
+*主張*　可縮 Kan 複体は Kan 複体であり、特に $`\infty` 圏である。
+
 仮定：IsContractibleKan X（Kerodon と一致）。結論：IsContractibleKan.kanComplex が KanComplex X を与え、その準圏性は Mathlib のインスタンスから得られる（一致）。
 
 :::
 
 :::proposition "kerodon_1_5_5_14" (lean := "SerrePositivity.SimplicialModel.boundaryGenerators_leftClass, SSet.rlp_monomorphisms")
 Kerodon Proposition 1.5.5.14（[Tag 0077](https://kerodon.net/tag/0077)）。対応表の状態：本体と Mathlib にある。
+
+*主張*　単体的集合の単射全体は弱飽和で、すべての標準境界の包含 $`\partial\Delta^n\hookrightarrow\Delta^n` により弱飽和類として生成される。
 
 仮定：単体集合の圏と境界包含の全クラス I（Kerodon と一致）。結論：boundaryGenerators\_leftClass は I.rlp.llp が全ての単射のクラスに等しいこと、rlp\_monomorphisms は両クラスの右直交が等しいことを与える（一致。弱飽和と境界からの生成は左持ち上げ性の閉性および相対セル分解で読む）。
 
@@ -410,12 +470,16 @@ Kerodon [Tag 0078](https://kerodon.net/tag/0078)
 :::theorem "kerodon_1_5_6_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.trivialKanFibration_pre_of_innerAnodyne") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_1_5_4_14, kerodon_1_5_6_7, kerodon_1_5_6_9")
 Kerodon Theorem 1.5.6.1（[Tag 0079](https://kerodon.net/tag/0079)）。対応表の状態：一部。
 
+*主張*　単体的集合 $`S` が $`\infty` 圏であることは、一つのホーン包含 $`\Lambda_1^2\hookrightarrow\Delta^2` に沿う制限 $`\operatorname{Fun}(\Delta^2,S)\to\operatorname{Fun}(\Lambda_1^2,S)` が自明 Kan ファイブレーションであることと同値である。
+
 原文の(1)⇒(2)は、innerAnodyneExtensions.horn\_ι でΛ²₁の包含を指定し trivialKanFibration\_pre\_of\_innerAnodyne に適用して直接得られる。単一の制限射の自明Kan性⇒準圏性の逆向きはこの型に含まない。
 
 :::
 
 :::corollary "kerodon_1_5_6_2" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.compositionTriangleSpace_isContractibleKan")
 Kerodon Corollary 1.5.6.2（[Tag 007A](https://kerodon.net/tag/007A)）。対応表の状態：本体にある。
+
+*主張*　$`\infty` 圏で合成可能な二射を固定すると、それらの合成の証人となる二単体全体を表す指数対象のファイバーは可縮 Kan 複体である。
 
 仮定：準圏 C の可合成な二辺 f,g（Kerodon と一致）。結論：compositionTriangleSpace\_isContractibleKan は内ホーン Λ\[2,1\] の指定点の上の Fun(Δ\[2\],C) の制限射のファイバーに IsContractibleKan を与える（一致）。
 
@@ -424,12 +488,16 @@ Kerodon Corollary 1.5.6.2（[Tag 007A](https://kerodon.net/tag/007A)）。対応
 :::definition "kerodon_1_5_6_4" (lean := "SSet.innerAnodyneExtensions, SSet.innerAnodyneExtensions_eq_retracts_transfiniteCompositions")
 Kerodon Definition 1.5.6.4（[Tag 007C](https://kerodon.net/tag/007C)）。対応表の状態：Mathlib にある。
 
+*主張*　単体的集合の内アノダイン射とは、全ての内ホーン包含から生成される弱飽和類の射である。
+
 仮定：単体集合の射 f:A⟶B（Kerodon と一致）。結論：innerAnodyneExtensions のクラスは内ホーンの余積、押し出し、超限合成、レトラクトで作るクラスと等しい（一致）。
 
 :::
 
 :::proposition "kerodon_1_5_6_7" (lean := "SSet.quasicategory_of_innerFibration, SerrePositivity.KST.Fibration.exists_extension_of_innerAnodyne")
 Kerodon Proposition 1.5.6.7（[Tag 007E](https://kerodon.net/tag/007E)）。対応表の状態：本体と Mathlib にある。
+
+*主張*　単体的集合 $`S` が $`\infty` 圏であることと、任意の内アノダイン射 $`A\hookrightarrow B` に沿って $`A\to S` を延長できることは同値である。
 
 仮定：単体集合 X（Kerodon と一致）。結論：X の準圏性から exists\_extension\_of\_innerAnodyne が全 inner anodyne に沿う延長を与える。逆は内ホーンを選び、点への inner fibration の型を介して準圏性を得る（一致）。
 
@@ -444,6 +512,8 @@ Kerodon Variant 1.5.6.8（[Tag 00J2](https://kerodon.net/tag/00J2)）。対応�
 
 :::lemma_ "kerodon_1_5_6_9" (uses := "kerodon_1_1_0_6, kerodon_1_5_5_14")
 Kerodon Lemma 1.5.6.9（[Tag 007F](https://kerodon.net/tag/007F)）。対応表の状態：一部。
+
+*主張*　任意の単射と $`\Lambda_1^2\hookrightarrow\Delta^2` の押し出し積は内アノダインである。その単射を標準境界の包含とした射だけで、内アノダイン射全体を弱飽和類として生成する。
 
 原文(a)の単射とΛ²₁包含のpushout-productのinner anodyne性は、innerAnodyneExtensions\_pushoutObjObjι に horn\_ι を渡した同じ比較射について直接得られる。(b)のこの生成系だけによる弱飽和生成は含めない。
 
@@ -481,6 +551,8 @@ Kerodon Proposition 1.5.7.3（[Tag 00J6](https://kerodon.net/tag/00J6)）。対�
 :::lemma_ "kerodon_1_5_7_5"
 Kerodon Lemma 1.5.7.5（[Tag 00J8](https://kerodon.net/tag/00J8)）。対応表の状態：Mathlib にある。
 
+*主張*　単体的集合の二つの単射のうち一方が内アノダインなら、その押し出し積も内アノダインである。
+
 仮定：単体集合の単射 f,g と f の inner anodyne 性（Kerodon と一致）。結論：innerAnodyneExtensions\_pushoutObjObjι と双対順序の補題は (Y×X′) ⨿ (X×Y′) を X×X′ 上で貼った対象から Y×Y′ への pushout-product が inner anodyne であることを与える（一致）。
 
 宣言：`SSet.innerAnodyneExtensions_pushoutObjObjι'`、`SSet.innerAnodyneExtensions_pushoutObjObjι`
@@ -490,12 +562,16 @@ Kerodon Lemma 1.5.7.5（[Tag 00J8](https://kerodon.net/tag/00J8)）。対応表�
 :::proposition "kerodon_1_5_7_6" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.trivialKanFibration_pre_of_innerAnodyne")
 Kerodon Proposition 1.5.7.6（[Tag 00J9](https://kerodon.net/tag/00J9)）。対応表の状態：本体にある。
 
+*主張*　$`\infty` 圏 $`\mathcal C` と内アノダイン射 $`X\hookrightarrow Y` に対し、制限 $`\operatorname{Fun}(Y,\mathcal C)\to\operatorname{Fun}(X,\mathcal C)` は自明 Kan ファイブレーションである。
+
 仮定：inner anodyne 射 i:A⟶B と準圏 X（Kerodon と一致。Lean は単射性を別の仮定にしない）。結論：trivialKanFibration\_pre\_of\_innerAnodyne は Fun(B,X)⟶Fun(A,X) が TrivialKanFibration であることを与える（一致）。
 
 :::
 
 :::corollary "kerodon_1_5_7_9" (lean := "CategoryTheory.Nerve.strictSegal, CategoryTheory.Nerve.isStrictSegal")
 Kerodon Corollary 1.5.7.9（[Tag 05HU](https://kerodon.net/tag/05HU)）。対応表の状態：一部。
+
+*主張*　単体的集合 $`S` が通常の圏の nerve に同型であることは、すべての $`n\ge0` で、連続する辺からなる spine $`\operatorname{Spine}[n]\to S` が $`\Delta^n\to S` に一意に延長することと同値である。
 
 原文の必要方向について、Nerve.strictSegal/IsStrictSegalはnerveのn単体からn本の可合成辺列（spineの射）への全単射を直接与える。Sの一般の再構成はTODOなので、spineの一意延長条件からnerveとの同型を作る逆方向は含めない。
 

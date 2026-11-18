@@ -7,6 +7,7 @@
  ],
  "stats": {
   "linked": 80,
+  "with-statement": 80,
   "nolink-none": 65,
   "with-uses": 39,
   "with-note-intro": 5,

@@ -41,6 +41,8 @@ Kerodon [Tag 00JQ](https://kerodon.net/tag/00JQ)
 :::definition "kerodon_2_4_1_1" (lean := "CategoryTheory.SimplicialCategory, CategoryTheory.SimplicialCategory.sHom")
 Kerodon Definition 2.4.1.1（[Tag 00JR](https://kerodon.net/tag/00JR)）。対応表の状態：Mathlib にある。
 
+*主張*　単体的圏は対象、対象対ごとの Hom 単体的集合、その直積からの単体的な合成、および恒等射を表す頂点からなる。合成は結合的で、恒等頂点の両側合成は射影に一致する。
+
 仮定：対象型 C（Kerodon と一致。Lean では Hom の 0 単体から得る普通圏の構造も入力し、豊穣化との整合を課す）。結論：各組の単体集合 sHom、積からの合成と単位、結合・単位条件を備える（一致）。
 
 *定義 2.7 （単体的圏）*
@@ -52,12 +54,16 @@ Kerodon Definition 2.4.1.1（[Tag 00JR](https://kerodon.net/tag/00JR)）。対�
 :::definition "kerodon_2_4_1_3" (lean := "CategoryTheory.SimplicialCategory.homEquiv'") (uses := "kerodon_1_1_0_6")
 Kerodon Construction 2.4.1.3（[Tag 00JT](https://kerodon.net/tag/00JT)）。対応表の状態：一部。
 
+*主張*　単体的圏の次数 $`n` に対応する通常の圏では、対象は元と同じで、射は Hom の $`n` 単体である。合成はその次数の合成写像、恒等射は恒等頂点の定値 $`n` 単体である。
+
 B6：homEquiv' は n=0 で Hom 集合を sHom の0単体に同一視する成分を直接与える。全次数での圏と単体的演算の一式は未確認。
 
 :::
 
 :::definition "kerodon_2_4_1_6" (lean := "SSet.Edge, CategoryTheory.SimplicialCategory.homEquiv'")
 Kerodon Definition 2.4.1.6（[Tag 00JW](https://kerodon.net/tag/00JW)）。対応表の状態：一部。
+
+*主張*　単体的圏の台圏における平行射 $`f,g\colon X\to Y` のホモトピーは、$`\operatorname{Hom}(X,Y)` における $`f` を始点、$`g` を終点とする辺である。
 
 B6：sHom の0単体を homEquiv' で指定し Edge を取ると、d₁=f,d₀=g という原文のホモトピーのデータを直接表す。専用の名前付き述語や合成法は含まない。
 
@@ -74,6 +80,8 @@ B6：simplicialNerve\_quasicategory は局所 Kan 性を入力仮定として使
 
 :::definition "kerodon_2_4_1_11" (lean := "CategoryTheory.EnrichedFunctor")
 Kerodon Definition 2.4.1.11（[Tag 00K1](https://kerodon.net/tag/00K1)）。対応表の状態：Mathlib にある。
+
+*主張*　単体的関手は対象の割り当てと、各 Hom 単体的集合間の射からなり、合成と恒等頂点を保つ。これを射とする小単体的圏の圏を $`\mathrm{Cat}_\Delta` と記す。
 
 仮定：単体集合で豊穣化した C, D（Kerodon と一致。EnrichedFunctor は任意の基礎モノイダル圏 V でも使える）。結論：対象の写像と各 Hom の単体写像が豊穣合成と恒等を保存する（一致）。
 
@@ -419,6 +427,8 @@ Kerodon [Tag 00LH](https://kerodon.net/tag/00LH)
 :::theorem "kerodon_2_4_5_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.simplicialNerve_quasicategory")
 Kerodon Theorem 2.4.5.1（[Tag 00LJ](https://kerodon.net/tag/00LJ)）。対応表の状態：本体にある。
 
+*主張*　局所 Kan な単体的圏のホモトピー整合的 nerve は $`\infty` 圏である。
+
 仮定：単体圏 C で、任意の X,Y の sHom X Y が KanComplex（Kerodon と一致）。結論：SimplicialNerve C が Quasicategory、すなわちすべての内角を充填する（一致）。
 
 *定理 3.6 （局所 Kan なら quasicategory）*
@@ -429,6 +439,8 @@ Kerodon Theorem 2.4.5.1（[Tag 00LJ](https://kerodon.net/tag/00LJ)）。対応�
 
 :::definition "kerodon_2_4_5_2" (lean := "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.cube, SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.cubeSplitIso")
 Kerodon Notation 2.4.5.2（[Tag 00LK](https://kerodon.net/tag/00LK)）。対応表の状態：本体にある。
+
+*主張*　集合 $`I` で添字づけた立方体は $`\Delta^1` の $`I` 個の直積であり、包含順序を入れた冪集合の nerve とみなせる。標準 $`n` 立方体は $`I=\{1,\ldots,n\}` の場合である。
 
 仮定：任意の座標集合 I（Kerodon と一致）。結論：部分集合を包含で順序づけた Set I の nerve として I 立方体を得る。任意の座標 i の分離は残りの立方体と Δ¹ の積への同型（一致）。
 
@@ -445,6 +457,8 @@ B6：pathInteriorNerveIso は包含順の path と内部点集合の包含順の
 
 :::definition "kerodon_2_4_5_5" (lean := "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.cubeBoundary, SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hollowCube") (uses := "kerodon_1_1_0_6, kerodon_2_4_5_2")
 Kerodon Notation 2.4.5.5（[Tag 00LN](https://kerodon.net/tag/00LN)）。対応表の状態：一部。
+
+*主張*　有限 $`I` の立方体の各面は一つの座標を $`0` または $`1` に固定した部分であり、全ての面の和が境界である。$`i` に対応する二つの hollow cube は、$`i` 座標の一方の端面だけを除いた境界の面の和である。
 
 B6：cubeBoundary の一定座標条件は全ての面の和という原文の境界を直接表す。hollowCube は指定座標の下面を欠く側だけで、二種類の hollow cube の両方は含まない。
 
@@ -480,12 +494,16 @@ B6：hornFilledFunctor と面の等式は包含順模型の充填関手を作る
 :::theorem "kerodon_2_4_5_11" (lean := "SerrePositivity.InfinityCategories.Project.FilteredExchange.intervalEndpoint_zero_trivialKanFibration, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.kanIntervalEvaluation_trivialKanFibration")
 Kerodon Theorem 2.4.5.11（[Tag 00LU](https://kerodon.net/tag/00LU)）。対応表の状態：一部。
 
+*主張*　単体的集合 $`X` が Kan 複体であることは、$`\operatorname{Fun}(\Delta^1,X)\to X` の始点評価が自明 Kan ファイブレーションであることとも、終点評価がそうであることとも同値である。
+
 B6：intervalEndpoint\_zero\_trivialKanFibration と kanIntervalEvaluation\_trivialKanFibration は Kan X から各端点評価が自明 Kan fibration となる向き。各評価の性質から Kan 性を得る逆向きは含まない。
 
 :::
 
 :::corollary "kerodon_2_4_5_12" (lean := "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hollowCube_extension, SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hollowCube_anodyne, SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hollowCylinder_anodyne")
 Kerodon Corollary 2.4.5.12（[Tag 00LV](https://kerodon.net/tag/00LV)）。対応表の状態：一部。
+
+*主張*　Kan 複体 $`X` と指定座標 $`i` をもつ有限立方体に対し、$`i` のいずれか一方の端面を欠く hollow cube から $`X` への任意の射は、全立方体に延長できる。
 
 B6：hollowCube\_extension は指定座標の下面を欠く hollow cube から Kan X への任意の写像の延長を直接与える。原文の二つの延長のうち上面を含む側のみ。
 
@@ -526,7 +544,7 @@ Kerodon Proposition 2.4.6.9（[Tag 00M4](https://kerodon.net/tag/00M4)）。対�
 
 B6：頂点・辺の全単射とホモトピー類の等式は比較を作る材料だが、原文の特定の U による圏同型の部分結論ではない。包含順/逆包含の nerve の比較も必要。
 
-宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.coherentEdge_homMk_eq_of_homotopy`、`SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdgeEquiv`、`SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertexEquiv`
+宣言：`SerrePositivity.EInfinity.Hammock.coherentEdge_homMk_eq_of_homotopy`、`SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdgeEquiv`、`SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertexEquiv`
 
 :::
 
@@ -581,12 +599,16 @@ Kerodon [Tag 00MZ](https://kerodon.net/tag/00MZ)
 :::definition "kerodon_2_4_7_1" (lean := "CoxeterSystem, CoxeterMatrix")
 Kerodon Definition 2.4.7.1（[Tag 00N0](https://kerodon.net/tag/00N0)）。対応表の状態：Mathlib にある。
 
+*主張*　Coxeter 系 $`(W,S)` は、位数二の元の集合 $`S` で生成される群 $`W` である。定義関係は $`st` の位数 $`m_{s,t}` が有限な対についての $`(st)^{m_{s,t}}=1` によって与えられる。
+
 仮定：群 W と生成元を添字づける型 B（Kerodon と一致。積の位数は CoxeterMatrix に持たせ、無限位数を 0 と記す）。結論：Coxeter 行列の表示で定めた群から W への生成元を指定する同型を与える型（一致）。
 
 :::
 
 :::definition "kerodon_2_4_7_3" (lean := "CoxeterSystem.length")
 Kerodon Notation 2.4.7.3（[Tag 00N2](https://kerodon.net/tag/00N2)）。対応表の状態：Mathlib にある。
+
+*主張*　Coxeter 系の $`w\in W` の長さは、$`w` を生成元 $`S` の積として書くために必要な最小個数である。
 
 仮定：CoxeterMatrix M に対する CoxeterSystem M W と w : W（Kerodon と一致）。結論：w を指定生成元の積で表す語のうち最短の長さを Nat で返す（一致）。
 

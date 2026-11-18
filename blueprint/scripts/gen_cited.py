@@ -21,6 +21,8 @@ KIND = {'Theorem': 'theorem', 'Lemma': 'lemma_', 'Proposition': 'proposition', '
 KINDJA = {'Theorem': '定理', 'Lemma': '補題', 'Proposition': '命題', 'Corollary': '系', 'Remark': '注意', 'Equation': '式', 'Definition': '定義',
           'Example': '例', 'Notation': '記法', 'Construction': '構成', 'Convention': '規約', 'Claim': '主張', 'Conjecture': '予想', 'Question': '問い', 'Caution': '注意'}
 STATUS = {'own': '本体にある', 'mathlib': 'Mathlib にある', 'both': '本体と Mathlib にある', 'partial': '一部', 'interface': '未証明の入力に依存', 'none': 'なし'}
+# 文献をまたぐ辺で、表（edges.csv）にないもの：BS Proposition 8.10（arc 層性）は BS17 Theorem 4.1 (i) を引く（部「v 降下」の目標、11-18）
+CROSS = {('bs', '8.10'): ['bs17_4_1']}
 def slug(s): return re.sub(r'[^0-9A-Za-z]+', '_', s).strip('_')
 def skey(s): return [(0, int(x)) if x.isdigit() else (1, x) for x in re.split(r'[.]', s) if x != '']
 def gen(key):
@@ -55,6 +57,7 @@ def gen(key):
     by_sec = collections.defaultdict(list)
     for r in items: by_sec[section(r).split('.')[0]].append(r)
     stats = collections.Counter(); modules = []; seen_labels = set()
+    STMT = notes_md.statements(P)   # 主張の一行（NB-W4）
     for sec in sorted(by_sec, key=skey):
         imports = set(); body = []
         subs = collections.defaultdict(list)
@@ -77,13 +80,15 @@ def gen(key):
                 stats[st] += 1; stats['linked' if linked else 'nolink'] += 1
                 opts = ''
                 if linked: opts += f' (lean := "{", ".join(linked)}")'
-                if uses[n]: opts += f' (uses := "{", ".join(uses[n])}")'
+                us = uses[n] + [x for x in CROSS.get((key, n), []) if x not in uses[n]]
+                if us: opts += f' (uses := "{", ".join(us)}")'
                 ttl = r.get('title_ja') or r.get('title') or ''
                 ttl = re.sub(r'<[^>]+>', '', ttl)
                 pk = rv.get('partial_kind', '')
                 state = STATUS.get(st, st) + (f'（{pk}）' if st == 'partial' and pk else '')
                 body.append(f':::{KIND.get(r["kind"], "proposition")} "{lab}"{opts}')
                 body.append(f'*{KINDJA.get(r["kind"], esc(r["kind"]))} {esc(n)}*　{esc(ttl)}。対応表の状態：{state}。\n')
+                if n in STMT: body.append(STMT[n]); stats['with-statement'] += 1
                 if rv.get('reason'): body.append(esc(rv['reason']) + '\n')
                 if (nb := notes_md.note_body(f'{P}/notes/{n}.md', skip=('原典 ', '照合先'))):
                     stats['with-note'] += 1; body.append(nb)
@@ -95,7 +100,7 @@ def gen(key):
         head = esc(heads.get(sec, ''))
         hdr = ['import Verso', 'import VersoManual', 'import VersoBlueprint'] + [f'import {m}' for m in sorted(imports)] + \
               ['', 'open Verso.Genre', 'open Verso.Genre.Manual', 'open Informal', '', '-- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）', 'set_option maxHeartbeats 2000000', '',
-               f'#doc (Manual) "§{sec} {heads.get(sec, "")}" =>', '%%%', 'number := false', f'tag := "{key}-{slug(sec)}"', '%%%', '',
+               f'#doc (Manual) "§{sec} {re.sub(r"[][]", "", heads.get(sec, ""))}" =>', '%%%', 'number := false', f'tag := "{key}-{slug(sec)}"', '%%%', '',
                f'{dirname} §{sec} の項目と、本体の宣言との対応。本文は対応表（`research/{key}-coverage`）の照合の理由で、原典の本文の写しではない。\n']
         if (nb := notes_md.note_body(f'{P}/notes/{sec}.md', skip=('原典 ', '照合先'))): hdr.append(nb)
         open(f'{OUT}/{mod}.lean', 'w', encoding='utf-8').write('\n'.join(hdr + body) + '\n')
@@ -107,9 +112,10 @@ def gen(key):
 # 必要な項目だけを載せる。「必要」は、対応表で本体か Mathlib に対応がある項目（状態が none でないもの）＝形式化の経路が実際に使ったもの、と目標。
 # 文献の中の辺に加えて、文献をまたぐ辺（edges.csv の external で「Rydh 2.2」の形のもの）も、載せた項目どうしなら (uses := …) にする。
 ROUTES = {
- 'vdescent': dict(dir='VDescent', title='v 降下（BS17 Theorem 4.1 (i) への経路：BS17・BM18・Rydh の必要な項目）', goal=('bs17', '4.1'),
+ 'vdescent': dict(dir='VDescent', title='v 降下（目標：BS17 Theorem 4.1 (i) と BM18 Proposition 4.8。BS17・BM18・Rydh の必要な項目）', goals=[('bs17', '4.1'), ('bm18', '4.8')],
+                  route_edges='research/bs17-coverage/route-edges.csv',
                   sources=['bs17', 'bm18', 'rydh'],
-                  intro='目標は BS17 Theorem 4.1 (i)（完全スキームの上の v 降下）で、BS が引用する。本体はこのうち n = 1・E = O・アフィン・有限族の場合を、BM18 Proposition 4.8 の構造層の場合を通る経路で作った（どちらも対応表では「一部」）。この部には、三つの文献の項目のうち、本体か Mathlib に対応があるものだけを載せる。全項目の表は `research/bs17-coverage`・`bm18-coverage`・`rydh-coverage`。'),
+                  intro='目標は二つ。BS17 Theorem 4.1 (i)（完全スキームの上の v 降下、BS Proposition 8.10 が引用する）と、BM18 Proposition 4.8（aic-v 切除を満たす finitary v 層は arc 層）。本体は BS17 4.1 (i) のうち n = 1・E = O・アフィン・有限族の場合を作り、BM18 4.8 は構造層の場合を、その BS17 4.1 を入力にして作った（どちらも対応表では「一部」）。この部には、三つの文献の項目のうち、本体か Mathlib に対応があるものだけを載せる。辺は本体の経路（宣言どうしの参照、`research/bs17-coverage/route-edges.csv`）で、原典の引用の辺ではない。二つの目標から辺をたどって届かない項目は、本体に対応はあるが経路には使っていないもの。全項目の表は `research/bs17-coverage`・`bm18-coverage`・`rydh-coverage`。'),
 }
 def gen_route(rk):
     R = ROUTES[rk]; OUT = f'blueprint/SerreBlueprint/{R["dir"]}'
@@ -129,24 +135,28 @@ def gen_route(rk):
         for l in open(f'{P}/toc.md', encoding='utf-8'):
             m = re.match(r'\|\s*([0-9A-Z]+(?:\.[0-9]+)*)\s*\|\s*([^|]+?)\s*\|', l)
             if m: heads.setdefault(m.group(1), m.group(2))
-        keep = [r for r in items if (rev.get(r['number'], {}).get('status') or 'none') != 'none' or (key, r['number']) == R['goal']]
-        data[key] = (keep, rev, edges, heads); included[key] = {r['number'] for r in keep}
+        keep = [r for r in items if (rev.get(r['number'], {}).get('status') or 'none') != 'none' or (key, r['number']) in R['goals']]
+        data[key] = (keep, rev, edges, heads, notes_md.statements(P)); included[key] = {r['number'] for r in keep}
     abbr = {SOURCES[k][0]: k for k in R['sources']}
+    route = list(csv.DictReader(open(R['route_edges'], encoding='utf-8')))
     modules = []; stats = collections.Counter()
     for key in R['sources']:
-        keep, rev, edges, heads = data[key]; dirname = SOURCES[key][0]
+        keep, rev, edges, heads, STMT = data[key]; dirname = SOURCES[key][0]
         uses = collections.defaultdict(list); ext = collections.defaultdict(list)
+        # 辺は本体の経路（route-edges.csv、NB-W4）。原典の引用の辺（edges.csv）は、外の文献の一覧にだけ使う
+        for e in route:
+            if e['source'] == key and e['number'] in included[key] and e['depends_on_number'] in included.get(e['depends_on_source'], ()):
+                tgt = label(e['depends_on_source'], e['depends_on_number'])
+                if tgt != label(key, e['number']) and tgt not in uses[e['number']]: uses[e['number']].append(tgt)
         for e in edges:
             n, d = e['number'], e['depends_on']
             if n not in included[key]: continue
             tgt = None
-            if e['kind'] == 'internal':
-                if d in included[key] and d != n: tgt = label(key, d)
+            if e['kind'] == 'internal': continue
             else:
                 m = re.match(r'(\S+) (\S+)$', d)
-                if m and m.group(1) in abbr and m.group(2) in included[abbr[m.group(1)]]: tgt = label(abbr[m.group(1)], m.group(2))
+                if m and m.group(1) in abbr and m.group(2) in included[abbr[m.group(1)]]: continue
                 elif d not in ext[n]: ext[n].append(d)
-            if tgt and tgt not in uses[n]: uses[n].append(tgt)
         res = Resolver(paths_of(r.get('declarations', '') for r in rev.values()))
         imports = set(); body = []; cur = None; seen = set()
         for r in sorted(keep, key=lambda r: skey((r.get('section') or r['number'].strip('()')).split('.')[0])):
@@ -170,9 +180,10 @@ def gen_route(rk):
             ttl = re.sub(r'<[^>]+>', '', r.get('title_ja') or r.get('title') or '')
             pk = rv.get('partial_kind', '')
             state = STATUS.get(st, st) + (f'（{pk}）' if st == 'partial' and pk else '')
-            goal = '【この部の目標】' if (key, n) == R['goal'] else ''
+            goal = '【この部の目標】' if (key, n) in R['goals'] else ''
             body.append(f':::{KIND.get(r["kind"], "proposition")} "{lab}"{opts}')
             body.append(f'*{dirname} {KINDJA.get(r["kind"], esc(r["kind"]))} {esc(n)}*　{goal}{esc(ttl)}。対応表の状態：{state}。\n')
+            if n in STMT: body.append(STMT[n]); stats['with-statement'] += 1
             if rv.get('reason'): body.append(esc(rv['reason']) + '\n')
             decls = [x.split(' @ ', 1)[0].strip() for x in rv.get('declarations', '').split(' | ') if x.strip()]
             if decls and not linked: body.append('宣言：' + '、'.join('`' + d.replace('`', '') + '`' for d in decls) + '\n')

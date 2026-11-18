@@ -36,6 +36,8 @@ tag := "paper-3"
 :::theorem "paper_3_1" (lean := "SerrePositivity.theorem_3_1_K0") (uses := "paper_eq_3_1, paper_eq_3_2, paper_eq_3_5, paper_eq_3_6, paper_eq_3_7, paper_eq_3_8, paper_3_3, ext_BGT_8_1, ext_BGT_8_7, ext_BGT_9_3, ext_BGT_9_8, ext_Goodwillie_Main_Theorem, ext_LT_3_10, ext_LT_3_12, ext_LT_3_9, ext_LT_A_2, ext_LT_Appendix_B, ext_LT_B_2, ext_LT_B_3, ext_TT_5_2_2, ext_TT_5_2_3, ext_TT_5_2_4, ext_TT_7_4")
 **定理 3.1**　任意の連結結合係数を持つ台つき有理降下。対応表の状態：未証明の入力に依存。
 
+*主張*　$`A` を有限 Krull 次元の可換ネーター $`\mathbf Z_{(p)}` 代数、$`J\supseteq(p)` をイデアル、$`H` を中心的 $`A` 作用をもつ連結結合 $`A` 代数とする。有限可換 $`A` 代数 $`T` が $`A` 上の有限群 $`G` 作用をもち、$`\operatorname{Spec}T\to\operatorname{Spec}A` が全射で各幾何ファイバー上の作用が推移的なら、引き戻しは台 $`V(J)` つき有理 K 理論 $`K^J(H)_{\mathbf Q}\simeq(K^J(H\otimes_A^{\mathbf L}T)_{\mathbf Q})^{hG}` を与える。従って有理 $`K_0^J` から上の $`G` 不変部分への写像は全射となる。
+
 原典 PDF p.10 / layout L502。本体の入力は離散H=A、局所基底とパラメータ台についてのK0の正整数倍持ち上げで、直接sorryを持つ。原典の任意の連結結合Hと有理Kスペクトルの同値は未構成なので、入力界面としてのみ対応する。
 
 *解説 §7.1 Lemma 3.5*
@@ -67,6 +69,8 @@ $$`K^J(H)_\mathbb{Q} \simeq \bigl(K^J(H\otimes^L_A T)_\mathbb{Q}\bigr)^{hG}.`
 
 :::definition "paper_eq_3_2" (lean := "SerrePositivity.theorem_3_1_K0") (uses := "paper_eq_3_1, paper_eq_3_6")
 **式 (3.2)**　台つき有理K0のG不変部分への全射。対応表の状態：未証明の入力に依存。
+
+*主張*　定理 3.1 の有限全射と幾何ファイバー上の推移的な有限群作用の下で、引き戻しは $`K_0^J(H)\otimes\mathbf Q\longrightarrow(K_0^J(H\otimes_A^{\mathbf L}T)\otimes\mathbf Q)^G` を全射にする。
 
 原典 PDF p.10 / layout L514。離散・局所・パラメータ台の場合の正整数倍の持ち上げを直接sorryで置く。原典の任意Hに対する全射全体にはまだ達しない。
 
@@ -181,6 +185,8 @@ tag := "paper-3-4"
 :::definition "paper_eq_3_9" (lean := "SerrePositivity.lemma_3_4") (uses := "paper_2_5, paper_2_6")
 **式 (3.9)**　比較に仮定する基底Koszul長と商長。対応表の状態：本体にある。
 
+*主張*　完備正則局所基底 $`A` の正則パラメータ $`z` と、同じ剰余体をもつ有限局所整域拡大 $`T` に対する長さ代数 $`C` に課す条件は、各 $`v\ge1` について $`\lambda H_i(z^v;C)=0`（$`i>0`）および $`\lambda(C/(z^v)C)=v^e\operatorname{rank}_A T` である。
+
 原典 PDF p.14 / layout L725。ここは独立の存在定理ではなくSection3.4の長さ仮定。lemma\_3\_4のhzero・hquotに同じ全冪の仮定が現れる。Theorem2.5からの供給は別項目で扱う。
 
 *解説 §4.3 Koszul 有限性と $`\lambda`-平坦性*
@@ -238,6 +244,8 @@ $$`e_\lambda(z';C)=\operatorname{length}_A(A/(z'))\,e_\lambda(z;C)`
 :::lemma_ "paper_3_4" (lean := "SerrePositivity.lemma_3_4, SerrePositivity.normalizedLength_tor_of_isWeaklyRegular") (uses := "paper_eq_3_9")
 **補題 3.4**　有限長加群の通常長と正規化Tor長。対応表の状態：本体にある。
 
+*主張*　§3.4 の有限局所拡大・長さの設定と式 (3.9) の下で、任意の有限長 $`A` 加群 $`V` の $`C` との正次数 Tor の長さは零、テンソル積の長さは $`\operatorname{rank}_A T` と $`\operatorname{length}_A V` の積であり、すべて有限である。
+
 原典 PDF p.14 / layout L730。(3.9)のKoszul長条件から、任意有限長Vの高次Tor長零とdegree0のr倍公式、有限性を導く。弱正則列による一般のTor長計算へ帰着しており、降下入力は使わない。
 
 *解説 §4.3 Koszul 有限性と $`\lambda`-平坦性*
@@ -263,6 +271,8 @@ $`(C,\lambda)` を長さ付き $`A` 代数とする。
 :::definition "paper_eq_3_10" (lean := "SerrePositivity.lemma_3_4") (uses := "paper_eq_3_9")
 **式 (3.10)**　有限長加群に対するTor長のr倍公式。対応表の状態：本体にある。
 
+*主張*　式 (3.9) の仮定の下で有限長 $`A` 加群 $`V` に対して、$`\lambda\operatorname{Tor}_i^A(V,C)=0`（$`i>0`）かつ $`\lambda(V\otimes_A C)=r\operatorname{length}_A V` となる。ここで $`r=\operatorname{rank}_A T` である。
+
 原典 PDF p.14 / layout L733。Lemma3.4と同じ二つの結論。
 
 *解説 §4.3 Koszul 有限性と $`\lambda`-平坦性*
@@ -283,6 +293,8 @@ $`V` を有限長 $`A` 加群（普通の長さで $`\operatorname{length}_A V<\
 
 :::lemma_ "paper_3_5" (lean := "SerrePositivity.lemma_3_5a, SerrePositivity.lemma_3_5b, SerrePositivity.lemma_3_5c, SerrePositivity.theorem_3_1_K0") (uses := "paper_eq_3_11, paper_eq_3_12, paper_eq_3_13, paper_eq_3_14, paper_eq_3_9, paper_3_1, paper_3_4")
 **補題 3.5**　通常のEuler評価とnorm和の比較。対応表の状態：未証明の入力に依存。
+
+*主張*　§3.4 の基底と長さの条件の下で、$`T` に作用する有限群 $`G` が $`\operatorname{Spec}T\to\operatorname{Spec}A` の各幾何ファイバーで推移的とする。閉点に台をもつ完全 $`T` 複体の通常および長さ $`\lambda` による Euler 評価は有限で、$`K_0` 上の準同型を与え、各 $`G` 共役和で一致する。さらに基底からの像と任意の $`G` 不変有理類でも一致する。
 
 原典 PDF p.15 / layout L748。有限性・加法性および基底からの引戻しでの比較は別々に証明されている。一般の不変K0類・norm和へ広げるlemma\_3\_5cはtheorem\_3\_1\_K0のsorryに依存する。原典の二つの評価を個々の共役について等しいとはしていない。
 
@@ -483,6 +495,8 @@ $$`\chi_{\mathrm{ord}}(Q\otimes_A T) \;=\; r\cdot\chi_A(Q) \;=\; \chi_C(Q\otimes
 :::definition "paper_eq_3_11" (lean := "SerrePositivity.lemma_3_5c") (uses := "paper_eq_3_13, paper_eq_3_14, paper_3_1")
 **式 (3.11)**　共役Euler評価のnorm和の一致。対応表の状態：未証明の入力に依存。
 
+*主張*　補題 3.5 の仮定の下で、閉点に台をもつ完全 $`T` 複体 $`P` について、$`\sum_{g\in G}\chi_T(g^*P)=\sum_{g\in G}\chi_C(g^*P)` が成り立つ。
+
 原典 PDF p.15 / layout L761。有理不変類の持ち上げを通常K0降下入力に依存して証明する。
 
 *解説 §3.2 共役和の比較*
@@ -657,6 +671,8 @@ Koszul 有限性から $`M_v<\infty` である（$`\lambda`-平坦でランク $
 :::definition "paper_eq_3_13" (lean := "SerrePositivity.lemma_3_5b_lam") (uses := "paper_3_4")
 **式 (3.13)**　基底から来る正規化Euler評価。対応表の状態：本体にある。
 
+*主張*　補題 3.5 の設定で、閉点に台をもつ完全 $`A` 複体 $`Q` を $`T` へ導来底変換すると、長さ $`\lambda` による評価は $`\chi_C(Q\otimes_A^{\mathbf L}T)=r\sum_j(-1)^j\operatorname{length}_A H_j(Q)` である。
+
 原典 PDF p.15 / layout L793。C評価の値をrankA(T)×普通の基底Euler値として返す。
 
 *解説 §5.2 この実現での比較定理*
@@ -692,12 +708,16 @@ $`A` を正則局所環、$`z` をその正則パラメータ系、$`T` を可�
 :::definition "paper_eq_3_14" (lean := "SerrePositivity.lemma_3_5b_ord") (uses := "paper_eq_3_13")
 **式 (3.14)**　基底から来る通常Euler評価。対応表の状態：本体にある。
 
+*主張*　同じ $`Q` の $`T` への導来底変換の通常 Euler 評価は、$`\chi_T(Q\otimes_A^{\mathbf L}T)=r\sum_j(-1)^j\operatorname{length}_A H_j(Q)` である。
+
 原典 PDF p.15 / layout L810。普通T評価について同じrank倍公式を与える。
 
 :::
 
 :::proposition "paper_3_6" (lean := "SerrePositivity.lemma_3_5c")
 **注意 3.6**　長さのG不変性を要求しないという注意。対応表の状態：一部。
+
+*主張*　ノルム比較は長さ $`\lambda` の $`G` 不変性を仮定しない。保証される等式は共役類の和に対するものであり、各共役の評価は個別に一致するとは限らない。
 
 原典 PDF p.16 / layout L823。定理の型はlambdaのG不変性を仮定せずnorm和だけを比較する。この注意の論理的内容は読み取れるが、個々の評価が不変でない具体例や独立の否定命題は宣言していない。比較自体は入力依存。
 

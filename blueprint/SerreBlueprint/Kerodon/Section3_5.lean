@@ -38,6 +38,8 @@ Kerodon [Tag 0517](https://kerodon.net/tag/0517)
 :::definition "kerodon_3_5_1_1" (lean := "SSet.IsConnected") (uses := "kerodon_1_2_5_1")
 Kerodon Definition 3.5.1.1（[Tag 04GL](https://kerodon.net/tag/04GL)）。対応表の状態：一部。
 
+*主張*　$`n\geq0` に対し、Kan 複体は空でなく、全頂点 $`x` と $`0\leq m<n` で $`\pi_m(X,x)` が一点集合であるとき $`n`-connective である。
+
 B6：IsConnected は π₀ が一元かつ頂点が存在する条件を直接表し、原文の n=1 の連結性を与える。任意 n の高次群消滅を含む述語は与えない。
 
 :::
@@ -162,6 +164,8 @@ Kerodon [Tag 051J](https://kerodon.net/tag/051J)
 
 :::proposition "kerodon_3_5_2_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fibration_rlp_of_piIsomorphism") (uses := "kerodon_1_1_0_6, kerodon_1_1_4_12, kerodon_1_2_5_1, kerodon_3_5_1_12, kerodon_3_5_1_22")
 Kerodon Proposition 3.5.2.1（[Tag 04HC](https://kerodon.net/tag/04HC)）。対応表の状態：一部。
+
+*主張*　Kan ファイブレーションが $`n`-connective であることは、全頂点ファイバーが $`n`-connective であることと同値である。これは次元 $`\leq n` の単体集合の部分集合包含すべてに対する右持ち上げ性と同値で、$`0\leq m\leq n` の境界包含 $`\partial\Delta^m\subseteq\Delta^m` だけで検査できる。
 
 B6：fibration\_rlp\_of\_piIsomorphism は全基点・全次数の π 同型と頂点 e₀ を加えた場合、原文(3),(4)の持ち上げを全ての単射に対して直接与える。指定次数以下の連結度だけからの一般の iff は含まない。
 

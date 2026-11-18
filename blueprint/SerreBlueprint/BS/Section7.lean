@@ -20,7 +20,7 @@ open Informal
 -- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）
 set_option maxHeartbeats 2000000
 
-#doc (Manual) "§7 " =>
+#doc (Manual) "§7 Semiperfectoid rings and perfection in mixed characteristic" =>
 %%%
 number := false
 tag := "bs-7"
@@ -115,6 +115,8 @@ Lean は全 prism の中の始対象 $`\Delta^{\mathrm{init}}_S` を作らず、
 :::corollary "bs_7_3" (lean := "SerrePositivity.BhattScholze.Semiperfectoid.exists_rootRelationPrismaticPerfection, SerrePositivity.BhattScholze.Semiperfectoid.exists_perfectoidization_of_perfectoid_surjective_quotient, SerrePositivity.BhattScholze.Semiperfectoid.exists_perfectoidization_of_semiperfectoid_quotient")
 *系 7.3*　S\_perfd の存在（B3）。対応表の状態：一部（component）。
 
+*主張*　semiperfectoid 環 $`S` からの射をもつ普遍 perfectoid 環は、始 prism $`\Delta_S^{\mathrm{init}}` の Frobenius 完全化を $`I` で割り、$`p` 進完備化して得られる。
+
 任意の semiperfectoid quotient の同じ単位の普遍 perfectoid 化の存在を証明する。全 prism の Δinit\_S の p 完全化との一般の同一視は未供給。rootRelation の比較は特別な入力のみ。
 
 *系 7.1.3（原典 Cor 7.3） — 主張*
@@ -153,6 +155,8 @@ Lean の筋（補った）：$`\Delta^{\mathrm{init}}_S` を経由せず、完�
 
 :::theorem "bs_7_4" (lean := "SerrePositivity.BhattScholze.Semiperfectoid.surjective_of_isPerfectoidization_of_semiperfectoid_quotient, SerrePositivity.BhattScholze.Semiperfectoid.surjective_of_isPerfectoidization_of_andre, SerrePositivity.BhattScholze.Semiperfectoid.exists_surjective_perfectoidization_of_semiperfectoid_quotient, SerrePositivity.BhattScholze.Semiperfectoid.surjective_of_isPerfectoidization_of_semiperfectoid_quotient_of_rootEnvelope")
 *定理 7.4*　S → S\_perfd は全射（B4）。対応表の状態：本体にある。
+
+*主張*　semiperfectoid 環 $`S` からその普遍 perfectoid 化 $`S_{\mathrm{perfd}}` への射は全射である。
 
 同じ semiperfectoid quotient と任意の普遍 perfectoid 化の単位 f の全射性に一致。André の経路と root-envelope の別経路があり、E3 存在入力を要しない。
 
@@ -287,6 +291,8 @@ Lean の本体の (1) は、p 正則な環では δ 構造が Frobenius 持ち�
 
 :::lemma_ "bs_7_8" (lean := "CategoryTheory.initial_of_retraction_idempotent, CategoryTheory.initial_of_natural_legs, SerrePositivity.BhattScholze.Prismatic.PrismOver.exists_split_idempotent, SerrePositivity.BhattScholze.Prismatic.PrismOver.isIdempotentComplete")
 *補題 7.8*　離散な場合の始対象。対応表の状態：本体にある。
+
+*主張*　冪等完備圏 $`\mathcal C` の恒等関手が、対象 $`X` の下の圏からの忘却を通って $`F\colon\mathcal C\to\mathcal C_{X/}` により因数分解するとする。$`F(X)` が与える $`X` の自己射は冪等で、その像に当たるレトラクトが $`\mathcal C` の始対象になる。
 
 原文どおりの冪等完備圏 C と忘却を分裂する F:C→Under X から、F(X) の冪等と対応する retract の始性を構成する。
 
@@ -450,6 +456,8 @@ $`(A,I)` を有界 prism で $`\varphi\colon A\to A` が $`(p,I)` 完全平坦�
 :::theorem "bs_7_14" (lean := "SerrePositivity.BhattScholze.Inputs.exists_completelyFaithfullyFlat_absolutelyIntegrallyClosed, SerrePositivity.BhattScholze.Andre.exists_completelyFaithfullyFlat_absolutelyIntegrallyClosed, SerrePositivity.IsAbsolutelyIntegrallyClosed.exists_compatible_pow_roots")
 *定理 7.14*　André の補題。対応表の状態：一部（component）。
 
+*主張*　任意の perfectoid 環 $`R` には $`p` 完全忠実平坦な perfectoid 拡大 $`S` があり、$`S` 上の任意のモニック多項式が $`S` に根をもつ。特に任意の元に整合する $`p` 冪根の系を選べる。
+
 第一文の p 完全忠実平坦な絶対整閉 perfectoid 拡大と両立する p 冪根は証明済み。末尾の mod p ind-syntomic に選べるという精密化は含まない。
 
 *定理 7.3.4（原典 Thm 7.14） — 主張*
@@ -484,6 +492,8 @@ $`(A,I)` を有界 prism で $`\varphi\colon A\to A` が $`(p,I)` 完全平坦�
 
 :::proposition "bs_7_15" (lean := "SerrePositivity.BhattScholze.Andre.VarpiComparison.perfectPrismPDTensorVarpi_isDPMorphism, SerrePositivity.BhattScholze.Andre.existsUnique_perfectPrismVarpiPDMorphism_of_unconditional, SerrePositivity.BhattScholze.Andre.VarpiComparison.hodgeTate_completelyFaithfullyFlat_iff")
 *注意 7.15*　André の補題の精密形。対応表の状態：一部（component）。
+
+*主張*　André の補題の拡大 $`R\to S` は、$`p` を法として ind-syntomic な被覆になるように選べる。根の添加の段で生じる prismatic 包絡への写像が、標数 $`p` の分割冪多項式表示と冪零イデアルに沿う平坦な持ち上げによってこの条件を満たす。
 
 同じモニック根の商 S の envelope T の ϖ 剰余に関する PD 表示・PD 射の普遍性と被覆性の成分を直接扱う。最終的な mod p ind-syntomic 性とその二つの一般的補題全体は未供給。
 

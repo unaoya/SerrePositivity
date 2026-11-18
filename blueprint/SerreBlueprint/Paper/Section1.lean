@@ -54,8 +54,18 @@ tag := "paper-1"
 
 §7.1、§7.2 では次を仮定する。
 
+$`(R,\mathfrak{m})` を正則局所環、$`M, N` を有限生成 $`R` 加群で $`M\otimes_R N` が有限長とする。$`R` は正則なので Tor は有限個を除いて $`0` であり、Serre の交点重複度
+
+$$`\chi^R(M,N) = \sum_i (-1)^i \operatorname{length}_R \operatorname{Tor}_i^R(M,N)`
+
+が定まる。
+
+*Lean:* \`IntersectionMultiplicity.Basic\`（$`\chi` の定義）。
+
 :::theorem "paper_1_1" (lean := "SerrePositivity.main_statement, SerrePositivity.core_statement") (uses := "paper_eq_5_10, paper_eq_5_11, paper_2_2, paper_2_3, paper_2_5, paper_2_6, paper_3_1, paper_4_7, paper_5_1, paper_5_2, paper_5_5, paper_5_6, ext_Stacks_03QH, ext_Stacks_0BRI, ext_Stacks_0BRJ")
 **定理 1.1**　Serreの交点重複度の狭義正値性。対応表の状態：未証明の入力に依存。
+
+*主張*　$`(R,\mathfrak m)` を次元 $`d` の可換ネーター正則局所環とする。非零有限生成 $`R` 加群 $`M,N` のテンソル積が有限長で $`\dim_R M+\dim_R N=d` なら、Serre の交点重複度 $`\chi^R(M,N)` は狭義に正である。
 
 原典 PDF p.1 / layout L27。一般の正則局所環と非零有限生成加群、有限長テンソルと相補次元からchi\>0という主張の型は一致する。宣言自身はsorryなしだが、完全な証明はperfectoidizationのE3入力・通常のK0降下・漸近K0降下の三つのsorry付き入力に依存する。
 
@@ -71,6 +81,12 @@ $`|G_D|a_Da_E>0` なので $`\chi^R(D,E)>0` である。
 
 *Lean:* \`chi\_pos\_of\_firstComparison\`、\`core\_of\_twistedEuler\_pos\` が第一比較と各 $`c_\sigma>0` を接続する。\`Section5.core\_of\_lengthAlgebras\` は与えられた長さ代数から第二比較と正値性を導き、\`core\_of\_lengthAlgebras\_with\_parameter\_choice\` はパラメータの選択も内部で行う。\`Section5.core\_of\_normalization\_bases\` は、正規化基底 $`A_D`、$`A_E` と、不変環が基底になる有限群作用付きの有限局所拡大 $`D'`、$`E'` を受け取り、定理 8.5 で長さ代数を作って $`\chi^R(D,E)>0` を出す（引用を除いて証明済み）。\`Paper.Section5.GaloisNormalization\` と \`Paper.Section5.Core\` が基底と Galois 閉包を構成し、\`core\_statement\` に接続する。一般加群・一般局所環への帰着を経て \`main\_statement\` を導くが、引用と保留K理論への依存は残る。
 
+*定理 1.1（Thm 1.1）*
+
+$`M, N` が $`0` でなく $`\dim M + \dim N = \dim R` なら $`\chi^R(M,N) > 0`。
+
+*Lean:* \`main\_statement\`。
+
 外の文献：Stacks 03QH、Stacks 0BRI、Stacks 0BRJ
 
 :::
@@ -84,6 +100,8 @@ tag := "paper-1-2"
 
 :::definition "paper_fig_1" (lean := "SerrePositivity.firstComparison, SerrePositivity.Section5.secondComparison_of_approximation") (uses := "paper_eq_5_18, paper_5_2, paper_5_6")
 **図 Figure 1**　二つのnorm比較の図。対応表の状態：一部。
+
+*主張*　二度のノルム比較により、最初に $`|G_D|a_Da_E\chi^R(D,E)=\sum_\sigma c_\sigma` とし、続いて各 $`\sigma` について $`|G_E|c_\sigma=\sum_\gamma b_{\sigma,\gamma}>0` を得る。最初は $`A_D\subset D'` での通常の台つき比較、次は $`A_E\subset E'` での漸近比較で、厳密な下界には一様な消去冪と生成元数を用いる。
 
 原典 PDF p.3 / layout L127。二つの有限群和の等式に対応する宣言はあるが、図全体のデータやc\_sigma、b\_sigma,gammaの整合的な一括実現は独立の宣言にしていない。比較の適用には下記の未証明降下入力が残る。
 

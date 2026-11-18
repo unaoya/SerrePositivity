@@ -108,6 +108,8 @@ Kerodon の 7.1 節（[Tag 02H1](https://kerodon.net/tag/02H1)）の項目と、
 :::definition "kerodon_7_1_0_1" (lean := "CategoryTheory.Limits.IsLimit")
 Kerodon Definition 7.1.0.1（[Tag 02H2](https://kerodon.net/tag/02H2)）。対応表の状態：Mathlib にある。
 
+*主張*　通常の圏の図式 $`F:K\to C` への錐 $`\underline y\to F` は、任意の $`x` から $`y` への射と定数図式 $`\underline x` から $`F` への自然変換の間に、合成で全単射を誘導するとき極限を与える。
+
 仮定：通常圏 K,C と F:K⥤C、頂点 Y を持つ錐（Kerodon と一致）。結論：IsLimit の lift・fac・uniq は、任意の X からの錐と Hom(X,Y) の対応が全単射であること（原文と一致）。
 
 :::
@@ -148,12 +150,16 @@ HasLimit pは図式に対する極限錐の存在で、原文の指定したYを
 :::proposition "kerodon_7_1_1_13" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.limitVertexIso, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.limitConeIso, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.isLimitCone_iff_of_vertexIso") (uses := "kerodon_1_4_0_1")
 Kerodon Proposition 7.1.1.13（[Tag 02JH](https://kerodon.net/tag/02JH)）。対応表の状態：一部。
 
+*主張*　無限圏の図式が極限 $`y` を持つなら、その図式の極限となる対象は $`y` に同型なものちょうどすべてである。余極限についても同様である。
+
 limitVertexIsoは原文のX,Yがともに同じuの極限ならX≅Yという極限側の向きを直接返す。任意の同型な頂点に極限錐を厳密に持ち上げる逆は含まない。
 
 :::
 
 :::definition "kerodon_7_1_1_14" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.limitVertexIso, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.colimitVertexIso")
 Kerodon Notation 7.1.1.14（[Tag 02JJ](https://kerodon.net/tag/02JJ)）。対応表の状態：一部。
+
+*主張*　無限圏の図式 $`u` の極限と余極限が存在するとき、それぞれ $`\varprojlim u`、$`\varinjlim u` と書く。これらの対象は同型までで定まる。
 
 limitVertexIsoとcolimitVertexIsoは原文のlim/colimの同型類が図式だけで定まるという一意性を直接与える。任意の存在証明からの記法としての選択は含まない。
 
@@ -162,12 +168,16 @@ limitVertexIsoとcolimitVertexIsoは原文のlim/colimの同型類が図式だ�
 :::definition "kerodon_7_1_1_15" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasLimit, SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallLimits")
 Kerodon Definition 7.1.1.15（[Tag 02JK](https://kerodon.net/tag/02JK)）。対応表の状態：一部。
 
+*主張*　無限圏が $`K` 添字の極限を持つとは、単体集合 $`K` からの各図式に極限が存在することである。$`K` 添字の余極限も同様に定める。
+
 HasLimitを全p:K→Cで量化すると原文のK-indexed limitsの条件を直接表す。名前付き述語の有無は理由とせず、colimits側は引用にないため数えない。
 
 :::
 
 :::definition "kerodon_7_1_1_16" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasFiniteLimits, SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallLimits, SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits")
 Kerodon Variant 7.1.1.16（[Tag 0390](https://kerodon.net/tag/0390)）。対応表の状態：一部。
+
+*主張*　無限圏が有限極限または有限余極限を持つとは、すべての有限単体集合を添字とする極限または余極限を持つことをいう。すべての小さい単体集合を許す場合、前者を完備、後者を余完備と呼ぶ。
 
 HasFiniteLimits・HasSmallLimits・HasSmallColimitsはそれぞれ原文の有限極限・小極限・小余極限の存在条件を直接表す。有限余極限と任意の形状族の全定義は含まない。
 
@@ -176,12 +186,16 @@ HasFiniteLimits・HasSmallLimits・HasSmallColimitsはそれぞれ原文の有�
 :::definition "kerodon_7_1_1_18" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorMap, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.chosenColimitFunctor") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_6_2_1_19")
 Kerodon Definition 7.1.1.18（[Tag 05Q9](https://kerodon.net/tag/05Q9)）。対応表の状態：一部。
 
+*主張*　無限圏 $`C` の対角関手 $`C\to\operatorname{Fun}(K,C)` は各対象を定数図式へ送る。その左随伴を $`K` 添字の余極限関手、右随伴を極限関手と呼び、いずれも同型までで定まる。
+
 constantFunctorMapは原文の同じ対角δの実際の射を直接構成する。任意Tの左右随伴によるlimit/colimit functorという二つの述語全体は引用のchosenColimitFunctorだけからは得ない。
 
 :::
 
 :::proposition "kerodon_7_1_1_19" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.chosenColimitAdjunction, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.coneFamilyAdjunctHom_isIso")
 Kerodon Proposition 7.1.1.19（[Tag 02JL](https://kerodon.net/tag/02JL)）。対応表の状態：一部。
+
+*主張*　無限圏が単体集合 $`K` 添字の極限を持つことは、定数図式関手が右随伴を持つことと同値であり、その右随伴が各図式の極限を与える。余極限では左随伴が対応する。
 
 chosenColimitAdjunctionは全てのK図式の余極限が存在すれば同じ対角に左随伴が存在するという余極限側の方向を直接返す。極限側と逆は含まない。
 
@@ -368,12 +382,16 @@ Kerodon Corollary 7.1.3.2（[Tag 02W8](https://kerodon.net/tag/02W8)）。対応
 :::corollary "kerodon_7_1_3_3" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasLimit")
 Kerodon Corollary 7.1.3.3（[Tag 02W9](https://kerodon.net/tag/02W9)）。対応表の状態：一部。
 
+*主張*　無限圏 $`C` の図式 $`u:K\to C` に極限が存在することは、$`C\vec\times_{\operatorname{Fun}(K,C)}\{u\}` に終対象が存在すること、およびスライス $`C_{/u}` に終対象が存在することと同値である。
+
 HasLimitとIsLimitConeを展開すると同じslice C\_/uに終対象が存在するという原文(1)⇔(3)。oriented fiber productの条件(2)は含まない。
 
 :::
 
 :::definition "kerodon_7_1_3_4" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone")
 Kerodon Definition 7.1.3.4（[Tag 02JM](https://kerodon.net/tag/02JM)）。対応表の状態：本体にある。
+
+*主張*　無限圏 $`C` への左錐 $`\bar u:K^{\triangleleft}\to C` が極限図式であるとは、制限 $`u=\bar u|_K` のスライス $`C_{/u}` の終対象であることをいう。このとき錐頂点は $`u` の極限である。
 
 仮定：K 上の p と左 join からの延長 c。述語の形成自体は Quasicategory C を要求しない（Lean が弱い）。結論：IsLimitCone c は sliceOver p の頂点 c が IsTerminalVertex（原文と一致）。
 
@@ -385,6 +403,8 @@ Kerodon Definition 7.1.3.4（[Tag 02JM](https://kerodon.net/tag/02JM)）。対�
 
 :::definition "kerodon_7_1_3_5" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCocone")
 Kerodon Variant 7.1.3.5（[Tag 02JN](https://kerodon.net/tag/02JN)）。対応表の状態：本体にある。
+
+*主張*　無限圏 $`C` への右錐 $`\bar u:K^{\triangleright}\to C` が余極限図式であるとは、制限 $`u=\bar u|_K` の余スライス $`C_{u/}` の始対象であることをいう。このとき錐頂点は $`u` の余極限である。
 
 仮定：K 上の p と右 join からの延長 d。述語の形成自体は Quasicategory C を要求しない（Lean が弱い）。結論：IsColimitCone d は sliceUnder p の頂点 d が IsInitialVertex（原文と一致）。
 
@@ -404,12 +424,16 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：任意の j
 :::proposition "kerodon_7_1_3_17" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isLimitCone_iff_trivialKanFibration, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.coneIteratedSliceIso_restriction, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.coneIteratedSliceIso") (uses := "kerodon_1_1_0_6, kerodon_1_2_5_1, kerodon_1_4_0_1, kerodon_4_3_6_12, kerodon_4_4_1_11, kerodon_4_5_6_20, kerodon_4_7_3_12, kerodon_5_1_6_4, kerodon_7_1_3_4")
 Kerodon Proposition 7.1.3.17（[Tag 02JU](https://kerodon.net/tag/02JU)）。対応表の状態：一部。
 
+*主張*　無限圏 $`C` の左錐 $`\bar f` が極限図式であることは、$`f=\bar f|_K` とすると、制限 $`C_{/\bar f}\to C_{/f}` が自明な Kan ファイブレーションであることと同値である。制限が無限圏の同値であること、または全頂点ファイバーに Kan 複体のホモトピー同値を誘導することとも同値である。
+
 coneIteratedSliceIso\_restrictionはC\_/cからC\_/pへの同じ制限射を(sliceOver p)\_/cの射影に同型で対応させる。isLimitCone\_iff\_trivialKanFibrationをこの同じ射に移せば原文(1)⇔(2)を直接得る。(3),(4)からの逆は含まない。
 
 :::
 
 :::proposition "kerodon_7_1_3_18" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone.of_functorIso, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone.of_functorIso") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_4_4_4_4")
 Kerodon Proposition 7.1.3.18（[Tag 0391](https://kerodon.net/tag/0391)）。対応表の状態：一部。
+
+*主張*　無限圏への二つの左錐の自然変換が添字 $`K` の各頂点で同型とする。第一の錐が極限図式、第二の錐が極限図式、錐頂点で自然変換が同型という三条件のうち、任意の二つから三つ目が従う。
 
 ρを全錐図式のFunctorIsoと強めるとIsLimitCone.of\_functorIsoは同じ全図式の極限性を移し、原文(1)⇒(2)を直接与える。K上の各成分だけの可逆性からの全二取三は含まない。
 
@@ -418,12 +442,16 @@ Kerodon Proposition 7.1.3.18（[Tag 0391](https://kerodon.net/tag/0391)）。対
 :::corollary "kerodon_7_1_3_19" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.isLimitCone_iff_of_vertexIso, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isLimitCone_iff_of_diagram_eq, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone.of_functorIso, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone.of_functorIso") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1")
 Kerodon Corollary 7.1.3.19（[Tag 02K1](https://kerodon.net/tag/02K1)）。対応表の状態：本体にある。
 
+*主張*　無限圏への自然同型な二つの左錐について、一方が極限図式であることと他方が極限図式であることは同値である。右錐の余極限図式についても同様である。
+
 現本体SquareFunctorTransportのIsLimitCone.of\_functorIsoとIsColimitCone.of\_functorIsoは全錐／全余錐のFunctorIsoで極限性／余極限性を保つ。逆は同じ同型のsymmに適用するだけで、原文の二つのiff全体を直接得る。slice内の同型だけという従来の理由を訂正。
 
 :::
 
 :::corollary "kerodon_7_1_3_20" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.hasLimit_iff_of_functorIso, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.hasColimit_iff_of_functorIso")
 Kerodon Corollary 7.1.3.20（[Tag 02K2](https://kerodon.net/tag/02K2)）。対応表の状態：本体にある。
+
+*主張*　無限圏への二つの単体図式 $`u,v:K\to C` が自然同型なら、片方が極限図式へ延長できることと他方が延長できることは同値である。余極限図式への延長についても同様である。
 
 仮定：Quasicategory C、K 上の p,q と FunctorIso p q（Kerodon と一致）。結論：HasLimit p↔HasLimit q と HasColimit p↔HasColimit q の両方（原文と一致）。
 
@@ -441,12 +469,16 @@ Kerodon [Tag 02JV](https://kerodon.net/tag/02JV)
 :::definition "kerodon_7_1_4_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.mapJoinCone")
 Kerodon Definition 7.1.4.1（[Tag 0392](https://kerodon.net/tag/0392)）。対応表の状態：一部。
 
+*主張*　無限圏の関手 $`F` が図式 $`q` の極限または余極限を保つとは、それを与える錐を $`F` で送ったとき、像の錐が標的でも極限図式または余極限図式になることをいう。
+
 mapJoinCone F cの極限性は原文前半の同じlimit diagramをFに後合成した極限性そのもの。専用のpreservedという述語名がないことは不足とせず、colimit側の構成は引用に含まない。
 
 :::
 
 :::definition "kerodon_7_1_4_4" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.PreservesSmallLimits, SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits")
 Kerodon Definition 7.1.4.4（[Tag 02JW](https://kerodon.net/tag/02JW)）。対応表の状態：一部。
+
+*主張*　無限圏の関手が $`K` 添字の極限を保つとは、すべての $`K` 上の極限図式を極限図式へ送ることである。余極限の保存もすべての $`K` 上の余極限図式について同様に定める。
 
 PreservesSmallLimits/Colimitsを固定した小形状Kに評価すると、同じ図式・錐の後合成を保存する原文条件を直接得る。任意の大きさのKについての全定義ではない。
 
@@ -455,12 +487,16 @@ PreservesSmallLimits/Colimitsを固定した小形状Kに評価すると、同�
 :::definition "kerodon_7_1_4_5" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.PreservesSmallLimits, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.PreservesFiniteCoproducts")
 Kerodon Variant 7.1.4.5（[Tag 0395](https://kerodon.net/tag/0395)）。対応表の状態：一部。
 
+*主張*　無限圏の関手の有限極限・有限余極限の保存は、すべての有限単体集合 $`K` について対応する $`K` 添字の保存を課すことである。小さい極限・小さい余極限の保存では、すべての小さい $`K` を用いる。
+
 PreservesSmallLimitsは原文の小極限保存の定義を直接表す。PreservesFiniteCoproductsは有限余積のみで有限余極限全体とはしない。
 
 :::
 
 :::proposition "kerodon_7_1_4_12" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsQCatEquivalence.isLimitCone_iff, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.QCatEquivalence.isLimitCone_iff, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.equivalence_isColimitCone_iff")
 Kerodon Proposition 7.1.4.12（[Tag 02JZ](https://kerodon.net/tag/02JZ)）。対応表の状態：本体にある。
+
+*主張*　無限圏の同値は、任意の単体集合を添字とする左錐が極限図式であることと、右錐が余極限図式であることを、それぞれ保存し反映する。
 
 仮定：二つの quasicategory、F の IsQCatEquivalence と任意の K 上の錐・余錐（Kerodon と一致）。結論：各錐の極限性と F で写した錐の極限性の iff、余錐の双対の iff（原文と一致）。
 
@@ -474,6 +510,8 @@ Lean では \`IsQCatEquivalence.isLimitCone\_iff\`（Core/EquivalenceAllLimits�
 
 :::definition "kerodon_7_1_4_13" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isLimitCone_of_fullyFaithful_image")
 Kerodon Variant 7.1.4.13（[Tag 02WD](https://kerodon.net/tag/02WD)）。対応表の状態：本体にある。
+
+*主張*　無限圏の充満忠実関手で左錐の像が極限図式なら、もとの左錐も極限図式である。
 
 仮定：二つの quasicategory、F の IsFullyFaithful と像の錐の IsLimitCone（Kerodon と一致）。結論：元の指定された錐の IsLimitCone（原文と一致）。
 
@@ -503,12 +541,16 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：通常圏�
 :::corollary "kerodon_7_1_4_18" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsQCatEquivalence.isLimitCone_iff, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.hasLimit_iff_restrict_of_precompositionEquivalence")
 Kerodon Corollary 7.1.4.18（[Tag 02K3](https://kerodon.net/tag/02K3)）。対応表の状態：一部。
 
+*主張*　無限圏の同値 $`F:C\to D` では、任意の図式 $`u` が極限図式に延長できることと $`Fu` が延長できることは同値である。余極限図式についても同様である。
+
 与えられた極限錐cの存在証人にIsQCatEquivalence.isLimitCone\_iffの順方向を適用し、原文(1)の存在の順方向を直接得る。添字前合成の存在iffは終域同値の逆方向の代用にしない。
 
 :::
 
 :::corollary "kerodon_7_1_4_19" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.HasSmallLimits.of_equivalence, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.HasSmallColimits.of_equivalence")
 Kerodon Corollary 7.1.4.19（[Tag 02K4](https://kerodon.net/tag/02K4)）。対応表の状態：一部。
+
+*主張*　同値な二つの無限圏は、任意の単体集合 $`K` について、一方が $`K` 添字の極限を持つとき、かつそのときに限り他方も持つ。余極限も同様である。
 
 C,Dの一方が全小極限／全小余極限を持つと強めればHasSmallLimits.of\_equivalenceとHasSmallColimits.of\_equivalenceは、同じ小形状Kについて他方の存在を直接与える。逆はe.symm。Kだけの存在からの一般の比較は含まない。
 
@@ -517,12 +559,16 @@ C,Dの一方が全小極限／全小余極限を持つと強めればHasSmallLim
 :::proposition "kerodon_7_1_4_21" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isLimitCone_of_conservative_image")
 Kerodon Proposition 7.1.4.21（[Tag 02K6](https://kerodon.net/tag/02K6)）。対応表の状態：一部。
 
+*主張*　無限圏の同型を反映する関手 $`F:C\to D` で、$`C` が $`K` 添字の極限を持ち $`F` がそれを保つなら、左錐が極限図式であることは像が極限図式であることと同値である。$`C` が $`K` 添字の余極限を持ち $`F` がそれを保つなら、右錐について同様である。
+
 原文のK-indexed limitsの存在から証人dを取り、保存性でhFdを得ればisLimitCone\_of\_conservative\_imageは同じcの像から極限性を反映する。順方向は入力の保存性であり、極限側のiff全体が直接従う。余極限側は含まない。
 
 :::
 
 :::lemma_ "kerodon_7_1_4_22" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isLimitCone_of_conservative_image") (uses := "kerodon_1_4_0_1, kerodon_4_4_2_12")
 Kerodon Lemma 7.1.4.22（[Tag 02K7](https://kerodon.net/tag/02K7)）。対応表の状態：一部。
+
+*主張*　無限圏の同型を反映する関手 $`F:C\to D` と図式 $`u` について、$`u` の極限図式で $`F` が保つものが一つ存在するとする。このとき $`u` の任意の左錐が極限図式であることとその像が極限図式であることは同値である。
 
 isLimitCone\_of\_conservative\_imageは原文と同じ保存された証人dと保守性の下で、F(c)が極限ならcが極限となる方向を直接返す。逆をこの引用型だけには含めない。
 
@@ -547,12 +593,16 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：通常圏�
 :::proposition "kerodon_7_1_4_26" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.sliceOver_isColimitCone_iff_projection, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.sliceOver_hasColimit_of_projection") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_4_7_3_19, kerodon_7_1_3_17")
 Kerodon Proposition 7.1.4.26（[Tag 02KB](https://kerodon.net/tag/02KB)）。対応表の状態：一部。
 
+*主張*　無限圏 $`C` の単体図式 $`f:A\to C` に対し、余スライスの射影 $`C_{f/}\to C` はすべての形の極限を生成する。スライスの射影 $`C_{/f}\to C` はすべての形の余極限を生成する。
+
 A=Δ⁰、fが頂点の場合、sliceOver\_hasColimit\_of\_projectionで余極限錐を取り、sliceOver\_isColimitCone\_iff\_projectionで同じ錐の像の余極限性を直接得る。原文(2)のこの場合のみで、一般Aと(1)は含まない。
 
 :::
 
 :::corollary "kerodon_7_1_4_27" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.sliceOver_hasSmallColimits, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.exists_cosliceCone_lift_of_isLimit") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_7_1_4_25, kerodon_7_1_4_26")
 Kerodon Corollary 7.1.4.27（[Tag 02KC](https://kerodon.net/tag/02KC)）。対応表の状態：一部。
+
+*主張*　無限圏 $`C` が $`K` 添字の極限を持つなら、任意の図式 $`f` の余スライス $`C_{f/}` も持ち、極限図式かどうかは $`C` への射影で判定できる。$`C` に $`K` 添字の余極限がある場合は、スライス $`C_{/f}` の余極限について双対の主張が成り立つ。
 
 A=Δ⁰かつCが全小余極限を持つ場合、sliceOver\_hasSmallColimitsは同じsliceの各小Kの余極限存在を直接返す。一般Aでのcosliceの錐の持ち上げは極限性まで述べず、両側のiff全体は含まない。
 
@@ -561,12 +611,16 @@ A=Δ⁰かつCが全小余極限を持つ場合、sliceOver\_hasSmallColimitsは
 :::corollary "kerodon_7_1_4_28" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.mapJoinCone_isLimit_of_adjunction, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.mapJoinCocone_isColimit_of_adjunction")
 Kerodon Corollary 7.1.4.28（[Tag 02KE](https://kerodon.net/tag/02KE)）。対応表の状態：本体にある。
 
+*主張*　無限圏の随伴 $`F\dashv G` では、$`F` は任意の単体集合を添字とする余極限を保ち、$`G` は同じ形の極限を保つ。
+
 仮定：二つの quasicategory と QCatAdjunction F G、任意の K（Kerodon と一致）。結論：G が極限錐を極限錐に、F が余極限錐を余極限錐に送る（原文と一致）。
 
 :::
 
 :::corollary "kerodon_7_1_4_29" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.hasSmallColimits_of_reflection, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.reflectiveSubcategory_hasSmallColimits")
 Kerodon Corollary 7.1.4.29（[Tag 04JW](https://kerodon.net/tag/04JW)）。対応表の状態：一部。
+
+*主張*　無限圏 $`C` の反射的部分圏 $`C'` の図式が $`C` に余極限を持つなら、$`C'` にも余極限を持つ。
 
 Cが全小余極限を持つと強めればreflectiveSubcategory\_hasSmallColimitsは同じ反射的full subcategoryで指定の小図式uの余極限存在を直接与える。一図式だけの周囲での存在からの一般化は含まない。
 
@@ -575,12 +629,16 @@ Cが全小余極限を持つと強めればreflectiveSubcategory\_hasSmallColimi
 :::corollary "kerodon_7_1_4_31" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.reflectiveSubcategory_hasSmallColimits")
 Kerodon Corollary 7.1.4.31（[Tag 06YB](https://kerodon.net/tag/06YB)）。対応表の状態：一部。
 
+*主張*　無限圏 $`C` が $`K` 添字の余極限を持つなら、任意の反射的部分圏も同じ形の余極限を持つ。
+
 周囲のCが全小余極限を持つと強めると、reflectiveSubcategory\_hasSmallColimitsは同じ反射的部分圏について指定小Kの全図式の余極限存在を直接返す。
 
 :::
 
 :::definition "kerodon_7_1_4_33" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.reflective_isLimitCone_iff_inclusion, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.reflective_mem_limitCone, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.fullSubcomplex_hasLimit_of_apex")
 Kerodon Variant 7.1.4.33（[Tag 04JX](https://kerodon.net/tag/04JX)）。対応表の状態：一部。
+
+*主張*　無限圏の反射的部分圏の図式がその部分圏に極限を持つことは、もとの無限圏に極限を持つことと同値であり、包含はこの極限を保つ。従って元の圏に存在する形の極限は部分圏にも存在する。
 
 reflective\_isLimitCone\_iff\_inclusionは原文の既存極限錐の包含による保存・反映を直接与える。さらにPの同型閉性を加えるとmem\_limitConeとfullSubcomplex\_hasLimit\_of\_apexで同じ図式の存在も移る。任意Pの存在反映は含まない。
 
@@ -589,12 +647,16 @@ reflective\_isLimitCone\_iff\_inclusionは原文の既存極限錐の包含に�
 :::lemma_ "kerodon_7_1_4_34" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.reflective_mem_limitCone")
 Kerodon Lemma 7.1.4.34（[Tag 04JY](https://kerodon.net/tag/04JY)）。対応表の状態：一部。
 
+*主張*　終対象を持つ無限圏の反射的部分圏は、その終対象と同型な対象を含む。部分圏が同型で閉じていれば、すべての終対象を含む。
+
 部分圏をrepleteにも強めるとreflective\_mem\_limitConeの空添字の場合は同じ終頂点Xが部分圏に属すると直接返す。原文最後のrepleteの場合の結論に一致し、任意のreflective部分圏は含まない。
 
 :::
 
 :::corollary "kerodon_7_1_4_35" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.reflectiveSubcategory_hasSmallLimits, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.reflectiveSubcategory_hasSmallColimits")
 Kerodon Corollary 7.1.4.35（[Tag 03Y1](https://kerodon.net/tag/03Y1)）。対応表の状態：一部。
+
+*主張*　無限圏が単体集合 $`K` を添字とする極限または余極限を持つなら、その反射的部分圏も対応する極限または余極限を持つ。
 
 周囲の全小極限／余極限の存在を加え、極限側はPの同型閉性も加えると、二つのreflectiveSubcategory\_hasSmall\*は同じ部分圏の指定小Kでの存在を直接返す。Kだけの存在の一般形ではない。
 
@@ -612,6 +674,8 @@ Kerodon [Tag 02WE](https://kerodon.net/tag/02WE)
 :::definition "kerodon_7_1_5_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.KanRelativeInitialVertex, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.KanRelativeTerminalVertex")
 Kerodon Definition 7.1.5.1（[Tag 02KU](https://kerodon.net/tag/02KU)）。対応表の状態：本体にある。
 
+*主張*　無限圏の関手 $`U:C\to D` に対し、対象 $`y` は全ての $`x` で $`\operatorname{Hom}_C(x,y)\to\operatorname{Hom}_D(Ux,Uy)` がホモトピー同値なら $`U`-終対象である。全ての $`z` で $`\operatorname{Hom}_C(y,z)\to\operatorname{Hom}_D(Uy,Uz)` がホモトピー同値なら $`U`-始対象である。
+
 仮定：写像 U:C→D と C の頂点。定義型には両方の Quasicategory を明示しない（Lean が弱い）。結論：相対終・始頂点はそれぞれ y への、y からの各 pinched Hom の比較が同値となる条件（原文と一致）。
 
 :::
@@ -626,12 +690,16 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：相対始�
 :::corollary "kerodon_7_1_5_11" (lean := "SerrePositivity.InfinityCategories.HTT.InitialAndFinalObjects.InitialBoundaryLifting.of_vertexIso, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TerminalBoundaryLifting.of_vertexIso")
 Kerodon Corollary 7.1.5.11（[Tag 02WP](https://kerodon.net/tag/02WP)）。対応表の状態：一部。
 
+*主張*　無限圏の関手 $`U` に関する $`U`-始対象性と $`U`-終対象性は、始域の同型な対象の間でそれぞれ保たれる。
+
 Uをinner fibrationに強め、相対始／終性をInitial/TerminalBoundaryLiftingで持つ場合、of\_vertexIsoと同じeのsymmを使えば指定頂点X,Yの両方向の移送を直接得る。任意のUの写像空間による相対性への比較は含まない。
 
 :::
 
 :::corollary "kerodon_7_1_5_12" (lean := "SerrePositivity.KST.SConstruction.relativeInitialVertexIso, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.relativeInitialVertexIso") (uses := "kerodon_1_4_0_1, kerodon_7_1_5_10")
 Kerodon Corollary 7.1.5.12（[Tag 02WQ](https://kerodon.net/tag/02WQ)）。対応表の状態：一部。
+
+*主張*　無限圏の関手 $`U:C\to D` の二つの $`U`-始対象は、その像が $`D` で同型であるとき、かつそのときに限り $`C` で同型である。
 
 Uをinner fibration、相対始性をInitialBoundaryLiftingに強めると、relativeInitialVertexIsoは原文のU(X)≅U(Y)からX≅Yを同じ二頂点について直接返す。逆は頂点同型のmap。一般Uへの比較は含まない。
 
@@ -663,12 +731,16 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：全空間�
 :::proposition "kerodon_7_1_5_16" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.relativeCosliceMap_trivialKanFibration_of_initialBoundaryLifting") (uses := "kerodon_1_2_5_1, kerodon_1_4_0_1, kerodon_4_3_6_1, kerodon_4_6_5_10, kerodon_5_1_7_16")
 Kerodon Proposition 7.1.5.16（[Tag 02WR](https://kerodon.net/tag/02WR)）。対応表の状態：一部。
 
+*主張*　無限圏の関手 $`U:C\to D` で $`y` が $`U`-始対象であることは、$`C_{y/}\to C\times_D D_{Uy/}` が無限圏の同値であることと同値である。$`U`-終対象性は $`C_{/y}\to C\times_D D_{/Uy}` の同値で特徴づけられる。
+
 Uをinner fibrationに強めると相対始性をInitialBoundaryLiftingへ移せ、relativeCosliceMap\_trivialKanFibration\_of\_initialBoundaryLiftingは原文(1)の同じ相対coslice比較を自明Kan、従って圏同値と直接返す。逆と相対終側は含まない。
 
 :::
 
 :::corollary "kerodon_7_1_5_17" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.kanRelativeInitialVertex_iff_initialBoundary, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.relativeCosliceMap_trivialKanFibration_of_initialBoundaryLifting") (uses := "kerodon_1_4_0_1, kerodon_4_3_6_9, kerodon_4_5_6_20, kerodon_7_1_5_16")
 Kerodon Corollary 7.1.5.17（[Tag 02WS](https://kerodon.net/tag/02WS)）。対応表の状態：一部。
+
+*主張*　無限圏の内部ファイブレーション $`U:C\to D` で、$`y` が $`U`-始対象であることと $`C_{y/}\to C\times_D D_{Uy/}` が自明な Kan ファイブレーションであることは同値である。これは $`n>0` の境界包含に対する $`U` の持ち上げ問題のうち、零頂点が $`y` に移るものがすべて解を持つこととも同値である。
 
 kanRelativeInitialVertex\_iff\_initialBoundaryは原文(1)⇔(3)、相対cosliceの補題は(3)⇒(2)を同じU,Yで直接返す。三条件の全同値は含まない。
 
@@ -684,12 +756,16 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：自明 Kan 
 :::proposition "kerodon_7_1_5_19" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.initialBoundaryLifting_fiber_of_total, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.kanInitialBoundaryLifting_of_fiber_map, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isTerminalVertex_fiber_iff_terminalBoundaryLifting") (uses := "kerodon_1_2_5_1, kerodon_1_4_0_1, kerodon_3_3_7_5, kerodon_4_6_1_22, kerodon_5_1_1_1, kerodon_5_1_3_11, kerodon_5_1_4_1")
 Kerodon Proposition 7.1.5.19（[Tag 02WU](https://kerodon.net/tag/02WU)）。対応表の状態：一部。
 
+*主張*　同じ無限圏 $`E` 上の内部ファイブレーション $`U:C\to E`、$`V:D\to E` の間の関手 $`F` で、$`X\in C_e` が $`F`-始対象なら、$`X` はファイバー間の $`F_e` に関しても始対象である。$`U,V` がデカルトファイブレーションで $`F` がデカルト射を保つときは逆も成り立つ。
+
 Fもinner fibrationと強めれば、相対始性と境界充填のiffをFとfiberのF\_Eに適用できる。total→fiberとcartesian辺保存下のfiber→totalの二型が原文の同じ頂点の結論を返す。任意Fには及ばない。
 
 :::
 
 :::corollary "kerodon_7_1_5_21" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.InitialBoundaryLifting.isInitialVertex_fiber, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.initialBoundaryLifting_of_isInitialVertex_fiber")
 Kerodon Corollary 7.1.5.21（[Tag 02WV](https://kerodon.net/tag/02WV)）。対応表の状態：本体にある。
+
+*主張*　無限圏の内部ファイブレーション $`U:C\to D` における $`U`-始対象は、その像の上のファイバーの始対象である。$`U` がデカルトファイブレーションなら逆も成り立つ。
 
 仮定：U のファイバーの頂点 x、順方向は相対始性の境界充填、逆方向は CartesianFibration U。原文の inner fibration 上で相対始性と境界充填を比較できる（Kerodon と一致）。結論：ファイバーの始頂点性と全空間での相対始性の二方向（原文と一致）。
 
@@ -716,6 +792,8 @@ Kerodon [Tag 02KF](https://kerodon.net/tag/02KF)
 :::definition "kerodon_7_1_6_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsRelativeColimitCone, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsRelativeLimitCone")
 Kerodon Definition 7.1.6.1（[Tag 02KG](https://kerodon.net/tag/02KG)）。対応表の状態：本体にある。
 
+*主張*　無限圏の関手 $`U:C\to D` に関する $`U`-極限図式とは、左錐をスライスの対象と見て、誘導関手 $`C_{/f}\to D_{/Uf}` に関する終対象となるものである。右錐の $`U`-余極限図式は $`C_{g/}\to D_{Ug/}` に関する始対象である。
+
 仮定：写像 U:C→D、K 上の図式と join 錐または余錐（Kerodon と一致）。結論：IsRelativeLimitCone と IsRelativeColimitCone は、誘導された slice・coslice 上の相対終・始頂点性（原文と一致）。
 
 :::
@@ -741,12 +819,16 @@ Kerodon Proposition 7.1.6.10（[Tag 02KQ](https://kerodon.net/tag/02KQ)）。対
 :::corollary "kerodon_7_1_6_11" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.kanRelativeInitialVertex_comp_iff_of_fullyFaithful, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.kanIsRelativeColimitCone_comp_iff_of_trivialKanFibration") (uses := "kerodon_1_4_0_1, kerodon_7_1_6_10")
 Kerodon Corollary 7.1.6.11（[Tag 02X5](https://kerodon.net/tag/02X5)）。対応表の状態：一部。
 
+*主張*　無限圏の関手 $`U:C\to D` の後に充満忠実関手 $`V:D\to E` を合成しても、左錐の $`U`-極限性と右錐の $`U`-余極限性は変わらない。
+
 Vをtrivial Kan fibrationに強めればkanIsRelativeColimitCone\_comp\_iff\_of\_trivialKanFibrationは原文(2)の同じ余錐についてのiffを直接返す。一般の充満忠実Vと極限側は含まない。
 
 :::
 
 :::corollary "kerodon_7_1_6_12" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.kanIsColimitCone_of_relativeLifting_of_image, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.kanIsRelativeColimitCone_iff_isColimit_of_terminal") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_7_1_6_10")
 Kerodon Corollary 7.1.6.12（[Tag 02KR](https://kerodon.net/tag/02KR)）。対応表の状態：一部。
+
+*主張*　無限圏の関手 $`U` で左錐の像が極限図式なら、もとの錐が極限図式であることと $`U`-極限図式であることは同値である。像が余極限図式である右錐についても対応する同値が成り立つ。
 
 Uをinner fibrationに強め、相対余極限からKanRelativeCoconeLiftingへのiffを使えば、kanIsColimitCone\_of\_relativeLifting\_of\_imageは原文(2)の相対余極限と像の余極限から元の余極限を直接返す。極限側と逆は含まない。
 
@@ -777,6 +859,8 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：底上の�
 
 :::corollary "kerodon_7_1_6_16" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isLimitCone_iff_terminalBoundaryLifting_coneRestriction, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isColimitCone_of_initialBoundaryLifting_coconeRestriction")
 Kerodon Corollary 7.1.6.16（[Tag 02XD](https://kerodon.net/tag/02XD)）。対応表の状態：本体にある。
+
+*主張*　無限圏 $`C` への左錐が極限図式であることは、関手圏の制限 $`U:\operatorname{Fun}(K^{\triangleleft},C)\to\operatorname{Fun}(K,C)` に関して、その錐が $`U`-終対象であることと同値である。
 
 仮定：Quasicategory C と K 上の錐 c。制限 U は inner fibration として境界充填で相対終性を判定する（Kerodon と一致）。結論：IsLimitCone c と coneRestriction K C 上の c の TerminalBoundaryLifting が同値（原文の相対終性と一致）。
 
@@ -818,6 +902,8 @@ Kerodon [Tag 069P](https://kerodon.net/tag/069P)
 
 :::proposition "kerodon_7_1_7_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.kanRelativeCoconeLifting_iff_isRelativeColimitCone, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.kanRelativeCocone_lift_iff")
 Kerodon Proposition 7.1.7.1（[Tag 069Q](https://kerodon.net/tag/069Q)）。対応表の状態：本体にある。
+
+*主張*　無限圏の内部ファイブレーション $`U:E\to C` に関して、右錐 $`\bar q:K^{\triangleright}\to E` が $`U`-余極限図式であることは、各 $`n\geq1` の $`K\star\partial\Delta^n\to K\star\Delta^n` に対する相対持ち上げ性で特徴づけられる。検査するのは $`K\star\{0\}` 上で $`\bar q` に一致する問題である。
 
 仮定：両端が quasicategory、U が InnerFibration、右 join 上の余錐（Kerodon と一致）。結論：IsRelativeColimitCone と KanRelativeCoconeLifting の iff。後者は K⋆∂Δⁿ から K⋆Δⁿ への始頂点を固定した持ち上げ（原文と一致）。
 
@@ -909,6 +995,8 @@ Kerodon [Tag 02X8](https://kerodon.net/tag/02X8)
 :::definition "kerodon_7_1_8_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsPointwiseColimitCone, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsPointwiseLimitCone, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.evaluateFunctorCone")
 Kerodon Definition 7.1.8.1（[Tag 05QF](https://kerodon.net/tag/05QF)）。対応表の状態：本体にある。
 
+*主張*　無限圏の関手圏 $`\operatorname{Fun}(B,C)` で、錐が各頂点 $`b\in B` での評価により余極限図式または極限図式になるとき、それぞれ成分ごとの余極限図式、成分ごとの極限図式と呼ぶ。
+
 仮定：内部 Hom B⟹C への K 上の図式と錐または余錐。型は C の Quasicategory を要求しない（Lean が弱い）。結論：全頂点 b で評価した各錐・余錐の極限性・余極限性を要求（原文と一致）。
 
 :::
@@ -916,12 +1004,16 @@ Kerodon Definition 7.1.8.1（[Tag 05QF](https://kerodon.net/tag/05QF)）。対�
 :::proposition "kerodon_7_1_8_2" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.hasColimit_of_hasPointwiseColimits, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isColimitCone_iff_pointwise_of_hasPointwiseColimits, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isLimitCone_iff_pointwise_of_hasPointwiseLimits")
 Kerodon Proposition 7.1.8.2（[Tag 05QG](https://kerodon.net/tag/05QG)）。対応表の状態：本体にある。
 
+*主張*　無限圏 $`C` が $`K` 添字の余極限を持てば、任意の単体集合 $`B` に対して $`\operatorname{Fun}(B,C)` も持つ。その右錐が余極限図式であることは全頂点で余極限図式と評価されることと同値であり、従って各評価関手はその余極限を保つ。
+
 仮定：Quasicategory C。Lean は一図式の各点での余極限だけを要求し、原文の C の K-余完備性より弱い（Lean が弱い）。結論：関手圏の HasColimit と、指定余錐の IsColimitCone↔IsPointwiseColimitCone。評価での保存もその順方向（原文と一致）。
 
 :::
 
 :::proposition "kerodon_7_1_8_3" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.exists_pointwiseColimitCone, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.hasColimit_of_hasPointwiseColimits, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isPointwiseLimitCone_of_isLimitCone_of_hasPointwiseLimits, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isColimitCone_iff_pointwise_of_hasPointwiseColimits") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_7_1_3_19, kerodon_7_1_8_9, kerodon_7_1_8_15")
 Kerodon Proposition 7.1.8.3（[Tag 02X9](https://kerodon.net/tag/02X9)）。対応表の状態：本体にある。
+
+*主張*　無限圏の関手圏 $`\operatorname{Fun}(B,C)` の図式 $`f:K\to\operatorname{Fun}(B,C)` が、全ての頂点 $`b\in B` で評価した後に余極限を持つとする。この場合 $`f` は余極限を持ち、任意の右錐が余極限を与えるかは全頂点で評価して判定できる。
 
 hasColimit\_of\_hasPointwiseColimitsは原文(1)、現本体のisColimitCone\_iff\_pointwise\_of\_hasPointwiseColimitsは同じ指定余錐の原文(2)のiffを直接返す。両者を合わせれば結論全体で、従来引用の極限側の補題は不要。
 
@@ -941,6 +1033,8 @@ hasColimit\_of\_hasPointwiseColimitsは原文(1)、現本体のisColimitCone\_if
 
 :::corollary "kerodon_7_1_8_4" (lean := "CategoryTheory.Limits.colimitIsoColimitCurryCompColim, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isColimitCone_iff_pointwise_of_hasPointwiseColimits, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.hasColimit_of_hasPointwiseColimits")
 Kerodon Corollary 7.1.8.4（[Tag 06A2](https://kerodon.net/tag/06A2)）。対応表の状態：一部。
+
+*主張*　無限圏の図式 $`F:B\times K\to C` で各頂点 $`b` の $`F(b,-)` に余極限があるとする。対応する $`K\to\operatorname{Fun}(B,C)` は余極限 $`G` を持ち、定数図式への自然変換がこの余極限を与えるかは各 $`b` で判定できる。$`G` の余極限を与える対象は、$`F` の余極限を与える対象ちょうどすべてである。
 
 FをcurryしたfにhasColimit\_of\_hasPointwiseColimitsとisColimitCone\_iff\_pointwise\_of\_hasPointwiseColimitsを適用すると、原文(1)と(2)を同じ関手圏で直接得る。(3)の二段余極限と全体の余極限の比較は含まない。通常圏のFubini同型をその∞圏版と同一視しない。
 
@@ -985,12 +1079,16 @@ Kerodon Corollary 7.1.8.8（[Tag 02XG](https://kerodon.net/tag/02XG)）。対応
 :::corollary "kerodon_7_1_8_9" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.exists_pointwiseColimitCone, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.exists_pointwiseLimitCone")
 Kerodon Corollary 7.1.8.9（[Tag 02XJ](https://kerodon.net/tag/02XJ)）。対応表の状態：本体にある。
 
+*主張*　無限圏の関手圏 $`\operatorname{Fun}(B,C)` への図式が $`B` の全頂点で余極限を持つなら、これを全頂点で余極限図式になる右錐へ延長できる。
+
 仮定：Quasicategory C と全頂点で余極限を持つ図式 p:K→(B⟹C)（Kerodon と一致）。結論：IsPointwiseColimitCone を持つ延長 c の存在（原文と一致）。
 
 :::
 
 :::proposition "kerodon_7_1_8_10" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.kanRelativeCoconeLifting_relativeFunctor_of_first_vertices, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.initialBoundaryLifting_ihom_of_pointwise, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.terminalBoundaryLifting_coneRestriction_of_pointwise") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_4_1_3_2, kerodon_4_1_4_1, kerodon_4_4_5_3, kerodon_4_5_1_16, kerodon_4_5_3_33, kerodon_7_1_5_17, kerodon_7_1_6_13, kerodon_7_1_8_7")
 Kerodon Proposition 7.1.8.10（[Tag 02XK](https://kerodon.net/tag/02XK)）。対応表の状態：一部。
+
+*主張*　無限圏の関手 $`F:C\to D` と $`A\subseteq B` に対し、$`F'` を $`\operatorname{Fun}(B,C)` から $`\operatorname{Fun}(A,C)\times_{\operatorname{Fun}(A,D)}\operatorname{Fun}(B,D)` への相対制限とする。右錐が $`A` に含まれない全ての単体の始頂点で $`F`-余極限図式に評価されれば、その錐は $`F'`-余極限図式である。
 
 Fをinner fibrationに強めると各F-colimitをKanRelativeCoconeLiftingへ移せ、relativeFunctor\_of\_first\_verticesが同じ相対内部Hom比較πで充填性を返す。πもinnerなので同じF′-colimitへ戻る。任意Fの場合は含まない。
 
@@ -1008,6 +1106,8 @@ Kerodon Corollary 7.1.8.11（[Tag 02XM](https://kerodon.net/tag/02XM)）。対�
 :::definition "kerodon_7_1_8_13" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.kanIsRelativeColimitCone_functor_of_pointwise") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1")
 Kerodon Definition 7.1.8.13（[Tag 06A7](https://kerodon.net/tag/06A7)）。対応表の状態：一部。
 
+*主張*　無限圏の関手 $`F:C\to D` に関して、$`\operatorname{Fun}(B,C)` への右錐が成分ごとの $`F`-余極限図式であるとは、$`B` の各頂点での評価が $`C` の $`F`-余極限図式であることをいう。
+
 Fをinner fibrationに制限すると引用のhfの型は全bで同じ評価余錐がF-colimitであるという原文の条件をそのまま表す。inlineの∀で表すこと自体は不足としない。任意Fの条件全体は引用の型の範囲外。
 
 :::
@@ -1015,12 +1115,16 @@ Fをinner fibrationに制限すると引用のhfの型は全bで同じ評価余�
 :::corollary "kerodon_7_1_8_14" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.kanIsRelativeColimitCone_functor_of_pointwise, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.kanRelativeCoconeLifting_functor_of_pointwise")
 Kerodon Corollary 7.1.8.14（[Tag 02XN](https://kerodon.net/tag/02XN)）。対応表の状態：一部。
 
+*主張*　無限圏の関手 $`F:C\to D` に関して、$`\operatorname{Fun}(B,C)` への成分ごとの $`F`-余極限図式は、後合成 $`\operatorname{Fun}(B,C)\to\operatorname{Fun}(B,D)` に関する余極限図式である。
+
 Fをinner fibrationに強めるとkanIsRelativeColimitCone\_functor\_of\_pointwiseは同じ後合成F\^Bと転置余錐について原文の相対余極限性を直接返す。
 
 :::
 
 :::corollary "kerodon_7_1_8_15" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isColimitCone_of_pointwise, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isLimitCone_of_pointwise, SerrePositivity.KST.SConstruction.isInitialVertex_functorVertex_of_pointwise")
 Kerodon Corollary 7.1.8.15（[Tag 02XP](https://kerodon.net/tag/02XP)）。対応表の状態：本体にある。
+
+*主張*　無限圏の関手圏への右錐が、添字単体集合の全頂点で評価したとき余極限図式であれば、関手圏でも余極限図式である。
 
 仮定：Quasicategory C と内部 Hom 上の余錐が全頂点で IsPointwiseColimitCone（Kerodon と一致）。結論：その余錐は関手圏で IsColimitCone（原文と一致）。
 
@@ -1038,6 +1142,8 @@ Kerodon [Tag 06A8](https://kerodon.net/tag/06A8)
 :::proposition "kerodon_7_1_9_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.pullback_hasSmallColimits, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.exists_colimitCone_pullback_with_snd") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1")
 Kerodon Proposition 7.1.9.1（[Tag 06AA](https://kerodon.net/tag/06AA)）。対応表の状態：一部。
 
+*主張*　無限圏の圏論的引き戻し $`C_{01}` の両脚 $`C_i\to C` で、各 $`C_i` が $`K` 添字の余極限を持ち、各脚がそれを保つとする。引き戻し $`C_{01}` も $`K` 添字の余極限を持ち、その右錐が余極限図式であることは両射影で余極限図式になることと同値である。両射影は $`K` 添字の余極限を保つ。
+
 四角を厳密pullback、一方をEquivalenceLiftingとし、両側の全小余極限と両関手の保存を仮定すると、引用は同じpullback図式の余極限の存在と両射影の成分判定を直接返す。categorical pullback一般・Kだけの仮定ではない。原文第一結論の印字はC、型の結論はC₀₁なのでこの部分は一致と数えない。
 
 :::
@@ -1052,6 +1158,8 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：普通の�
 :::lemma_ "kerodon_7_1_9_3" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isColimitCone_laxPullback_of_components, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isColimitCone_laxPullback_iff_components") (uses := "kerodon_1_4_0_1, kerodon_7_1_6_11, kerodon_7_1_9_2")
 Kerodon Lemma 7.1.9.3（[Tag 06AD](https://kerodon.net/tag/06AD)）。対応表の状態：一部。
 
+*主張*　無限圏の向き付きファイバー積 $`C_0\vec\times_C C_1` の右錐について、両射影で余極限図式となり、さらに $`C_0\to C` を経由した像でも余極限図式なら、元の錐は余極限図式である。
+
 原文の三条件にF₁∘ev₁による同じ余錐の余極限性も追加するとisColimitCone\_laxPullback\_of\_componentsは同じoriented fiber productの余極限性を直接返す。
 
 :::
@@ -1059,12 +1167,16 @@ Kerodon Lemma 7.1.9.3（[Tag 06AD](https://kerodon.net/tag/06AD)）。対応表�
 :::proposition "kerodon_7_1_9_4" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.exists_colimitCone_laxPullback_with_components, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.hasColimit_laxPullback_of_components") (uses := "kerodon_1_4_0_1, kerodon_7_1_6_20, kerodon_7_1_9_3")
 Kerodon Proposition 7.1.9.4（[Tag 06AE](https://kerodon.net/tag/06AE)）。対応表の状態：一部。
 
+*主張*　無限圏の向き付きファイバー積への図式 $`q` が両成分で余極限を持ち、第一成分の余極限を $`C_0\to C` が保つとする。このとき $`q` は余極限を持ち、右錐が余極限図式かは両成分で判定できる。
+
 F₁側の選んだ余極限も保存されると追加すればexists\_colimitCone\_laxPullback\_with\_componentsは同じqの余極限と両成分が指定余錐となる等式を直接返す。追加保存なしの存在と任意延長のiff全体は含まない。
 
 :::
 
 :::corollary "kerodon_7_1_9_5" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.hasFiniteColimits_laxPullback_of_preservation, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isColimitCone_laxPullback_iff_finite_components") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1")
 Kerodon Corollary 7.1.9.5（[Tag 06AF](https://kerodon.net/tag/06AF)）。対応表の状態：一部。
+
+*主張*　無限圏 $`C_0,C_1` が $`K` 添字の余極限を持ち、$`C_0\to C` がそれを保つなら、向き付きファイバー積 $`C_0\vec\times_C C_1` は同じ形の余極限を持つ。その右錐が余極限図式であることは両射影で余極限図式であることと同値である。
 
 Kを有限に限り、両側が全有限余極限を持ちF₀,F₁両方が保存すると強めれば、hasFiniteColimits\_laxPullback\_of\_preservationと有限成分判定は原文と同じoriented fiber productについて存在とiffを直接返す。
 
@@ -1081,6 +1193,8 @@ Kerodon Corollary 7.1.9.7（[Tag 06AH](https://kerodon.net/tag/06AH)）。対応
 
 :::proposition "kerodon_7_1_9_8" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isColimitCone_of_isPullback_of_components, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.pullback_isColimitCone_iff_components") (uses := "kerodon_1_4_0_1, kerodon_7_1_9_7")
 Kerodon Proposition 7.1.9.8（[Tag 06AJ](https://kerodon.net/tag/06AJ)）。対応表の状態：一部。
+
+*主張*　無限圏の圏論的引き戻し $`C_{01}` への図式 $`q` について、両射影の像に余極限があり、それらを $`C_i\to C` が保つとする。そのとき $`q` は余極限を持ち、右錐が余極限図式であることは両射影の像がそうであることと同値である。
 
 四角を厳密IsPullback、F₀をinner fibrationに強めればisColimitCone\_of\_isPullback\_of\_componentsは原文の成分条件から同じqbarが余極限という方向を直接返す。一般categorical pullbackでの存在とiff全体は含まない。
 

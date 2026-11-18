@@ -80,6 +80,8 @@ Kerodon [Tag 05QM](https://kerodon.net/tag/05QM)
 :::proposition "kerodon_7_4_1_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.coherentDiagramSectionsCone_isLimit") (uses := "kerodon_1_1_0_6, kerodon_1_2_5_1, kerodon_1_4_0_1, kerodon_7_1_0_1, kerodon_7_1_8_3")
 Kerodon Proposition 7.4.1.1（[Tag 05QN](https://kerodon.net/tag/05QN)）。対応表の状態：一部。
 
+*主張*　単体集合 $`C` 上の空間値図式 $`\mathscr F` と Kan 複体 $`Y` の錐 $`\beta:\underline Y\to\mathscr F` を取る。$`\beta` が極限を与えることは、一点からの射空間 $`\operatorname{Hom}_S(\Delta^0,Y)` から $`\operatorname{Hom}(\underline{\Delta^0},\mathscr F)` への合成がホモトピー同値であることと同値である。
+
 Cを宇宙で小さく、βとYをcoherentDiagramSectionsCone Fの標準錐と切断空間に指定すると、coherentDiagramSectionsCone\_isLimitは原文(1)を同じβについて直接返す。任意のβに対する(1)⇔(2)の判定は含まない。
 
 :::
@@ -87,12 +89,16 @@ Cを宇宙で小さく、βとYをcoherentDiagramSectionsCone Fの標準錐と�
 :::corollary "kerodon_7_4_1_2" (lean := "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentSmallConstantSourceMap_isQCatEquivalence, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.coherentDiagramSectionsCone_isLimit")
 Kerodon Corollary 7.4.1.2（[Tag 05QP](https://kerodon.net/tag/05QP)）。対応表の状態：一部。
 
+*主張*　単体集合 $`C` 上の空間値図式 $`\mathscr F` への一点の定数図式からの射空間が本質的に小さいなら、その射空間は $`\mathscr F` の極限を与える。
+
 Cが宇宙で小さい場合、coherentSmallConstantSourceMap\_isQCatEquivalenceを点に適用すると原文のMは同じ小さい全切断空間と同値。その切断錐の極限性を同値に沿って移せばMが極限と直接得る。任意の大きなCは含まない。
 
 :::
 
 :::corollary "kerodon_7_4_1_3" (lean := "SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.space_hasSmallLimits, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.hasLimit_coherentSpaceDiagram")
 Kerodon Corollary 7.4.1.3（[Tag 05QQ](https://kerodon.net/tag/05QQ)）。対応表の状態：本体にある。
+
+*主張*　空間の無限圏はすべての小さい極限を持つ。
 
 仮定：小さい単体集合 B から SpaceInfinity への図式。原文と同じく B に Quasicategory を要求しない（Kerodon と一致）。結論：space\_hasSmallLimits と各図式の HasLimit（原文と一致）。
 
@@ -108,12 +114,16 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：宇宙で�
 :::proposition "kerodon_7_4_1_6" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.coherentDiagramSectionsCone_isLimit, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.transportSectionsConeIsLimit")
 Kerodon Proposition 7.4.1.6（[Tag 05QS](https://kerodon.net/tag/05QS)）。対応表の状態：一部。
 
+*主張*　小さい単体集合 $`C` 上の左ファイブレーション $`U:E\to C` の空間値共変移送表現の極限は、切断の単体集合 $`\operatorname{Fun}_{/C}(C,E)` で与えられる。この単体集合は Kan 複体である。
+
 UをFの標準leftUnstraighteningProjectionに指定すると、全切断のKan性のinstanceとcoherentDiagramSectionsCone\_isLimitは同じ全切断空間がFの極限であると直接返す。任意の与えた輸送表現Uは含まない。
 
 :::
 
 :::corollary "kerodon_7_4_1_7" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.hasLimit_coherentSpaceDiagram, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.coherentDiagramSectionsCone")
 Kerodon Corollary 7.4.1.7（[Tag 02VD](https://kerodon.net/tag/02VD)）。対応表の状態：本体にある。
+
+*主張*　小さい単体集合 $`C` 上の空間値図式 $`\mathscr F` の極限は、その元の左ファイブレーション $`\int_C\mathscr F\to C` の切断の無限圏で与えられる。
 
 仮定：小さい B と空間値 F（Kerodon と一致）。結論：HasLimit F と、F の標準 unstraightening の切断から構成する coherentDiagramSectionsCone（原文の切断モデルと一致）。
 
@@ -122,6 +132,8 @@ Kerodon Corollary 7.4.1.7（[Tag 02VD](https://kerodon.net/tag/02VD)）。対応
 :::definition "kerodon_7_4_1_8" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.LeftTransportRepresentation")
 Kerodon Definition 7.4.1.8（[Tag 05QT](https://kerodon.net/tag/05QT)）。対応表の状態：本体にある。
 
+*主張*　左ファイブレーション $`U:E\to C` と空間値図式 $`\mathscr F:C\to S` について、$`\alpha:\underline{\Delta^0}_E\to\mathscr F|_E` が共変移送表現を示すとは、各頂点 $`c` への制限が $`E_c\to\operatorname{Hom}_S(\Delta^0,\mathscr F(c))` のホモトピー同値になることである。
+
 仮定：左ファイブレーション p と空間値図式（Kerodon と一致）。結論：LeftTransportRepresentation の comparison は底上で指定 unstraightening へ写し、全頂点のファイバーで圏同値。各ファイバーは Kan で、点付き空間模型でファイバーごとのホモトピー同値を得る（原文と一致）。
 
 :::
@@ -129,12 +141,16 @@ Kerodon Definition 7.4.1.8（[Tag 05QT](https://kerodon.net/tag/05QT)）。対�
 :::proposition "kerodon_7_4_1_9" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.LeftTransportRepresentation, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.LeftTransportRepresentation.isPrecompositionEquivalence") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_4_6_4_20, kerodon_5_1_7_16, kerodon_5_6_5_1, kerodon_7_4_1_8")
 Kerodon Proposition 7.4.1.9（[Tag 05QU](https://kerodon.net/tag/05QU)）。対応表の状態：一部。
 
+*主張*　左ファイブレーション $`U:E\to C` の共変移送表現が空間値図式 $`\mathscr F:C\to S` であることは、一点の定数図式から $`\mathscr F|_E` への自然変換で、各ファイバー上の比較がホモトピー同値になるものの存在と同値である。これは $`U` が $`\mathscr F` に沿う向き付きファイバー積 $`\{\Delta^0\}\vec\times_S C\to C` に同値であることとも同値である。
+
 Space値の比較データLeftTransportRepresentationを仮定すると、そのcomparisonはLeftTransportRepresentation.isPrecompositionEquivalenceにより同じUからFの標準leftUnstraighteningへの底上の同値を直接与える。(1)から(3)のこの成分だけで、指定αと全三条件のiffは含まない。
 
 :::
 
 :::definition "kerodon_7_4_1_13" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.simplicialSections") (uses := "kerodon_1_1_0_6")
 Kerodon Construction 7.4.1.13（[Tag 05QY](https://kerodon.net/tag/05QY)）。対応表の状態：一部。
+
+*主張*　単体集合の射 $`E\to C`、空間値図式 $`\mathscr F:C\to S`、自然変換 $`\underline{\Delta^0}_E\to\mathscr F|_E` を取る。この変換を切断の評価 $`\operatorname{Fun}_{/C}(C,E)\times C\to E` に沿って引き戻すと、切断の単体集合から $`\operatorname{Hom}(\underline{\Delta^0}_C,\mathscr F)` への比較写像を得る。
 
 simplicialSectionsは原文のFun\_/C(C,E)という構成の始域を、同じUについて指定pullbackで直接構成する。αからHom空間への比較射Tの構成は含まない。
 
@@ -158,6 +174,8 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：固定宇�
 
 :::proposition "kerodon_7_4_1_16" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.spaceCone_isLimit_iff_pointRestriction_of_hasLimit, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.smallLeftConeRestriction_isQCatEquivalence_of_map_isLimit, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.LeftTransportRepresentation.coneRestriction_iff") (uses := "kerodon_1_1_0_6, kerodon_1_2_5_1, kerodon_7_4_1_1, kerodon_7_4_1_9, kerodon_7_4_1_13, kerodon_7_4_1_14")
 Kerodon Proposition 7.4.1.16（[Tag 05R3](https://kerodon.net/tag/05R3)）。対応表の状態：一部。
+
+*主張*　単体集合 $`C^{\triangleleft}` 上の本質的に小さい左ファイブレーション $`\bar E` と、その $`C` への引き戻し $`E` を取る。$`\bar E` の空間値共変移送表現が極限図式であることは、$`\bar E` の切断から $`E` の切断への制限が Kan 複体のホモトピー同値であることと同値である。
 
 Ūを普遍pointed-space左fibrationの指定F̄によるpullback、Fの極限存在も仮定する場合、spaceCone\_isLimit\_iff\_pointRestriction\_of\_hasLimitは同じ点からの切断制限の同値と極限性のiffを直接返す。任意の与えた表現Ūは含まない。
 
@@ -184,12 +202,16 @@ Kerodon Corollary 7.4.1.19（[Tag 06MH](https://kerodon.net/tag/06MH)）。対�
 :::corollary "kerodon_7_4_1_20" (lean := "SerrePositivity.InfinityCategories.HA.Section5_2_2.exists_classifiedLimitCone")
 Kerodon Corollary 7.4.1.20（[Tag 06MK](https://kerodon.net/tag/06MK)）。対応表の状態：一部。
 
+*主張*　無限圏の左ファイブレーション $`U:E\to C` と極限を持つ図式 $`F:K\to C` を取る。共変移送表現が $`F` の極限を保つことは、$`F` の $`E` への任意の持ち上げが $`U` で保たれる極限を持つことと同値である。
+
 Uを標準smallLeftUnstraighteningProjection Fに指定するとexists\_classifiedLimitConeは、同じFの底の極限の保存(1)から、任意のliftに射影で保たれる極限を直接与える。(2)⇒(1)および任意の表現Uは含まない。
 
 :::
 
 :::corollary "kerodon_7_4_1_21" (lean := "SerrePositivity.InfinityCategories.HA.Section5_2_2.hasLimit_smallLeftUnstraightening_of_finiteProducts, SerrePositivity.InfinityCategories.HA.Section5_2_2.exists_classifiedLimitCone")
 Kerodon Corollary 7.4.1.21（[Tag 06ML](https://kerodon.net/tag/06ML)）。対応表の状態：一部。
+
+*主張*　無限圏の左ファイブレーション $`U:E\to C` で $`C` が $`K` 添字の極限を持つとする。その共変移送表現がこの形の極限を保つことは、$`E` が $`K` 添字の極限を持ち $`U` がそれを保つことと同値である。
 
 Uを標準smallLeftUnstraighteningProjection F、Kを有限離散形状に限りFに全有限積保存を課せば、exists\_classifiedLimitConeは任意の同じliftに射影で保たれる極限を直接作り(1)⇒(2)を与える。逆向き・一般Kは含まない。
 
@@ -207,6 +229,8 @@ Kerodon Proposition 7.4.1.22（[Tag 039L](https://kerodon.net/tag/039L)）。対
 :::corollary "kerodon_7_4_1_23" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.yonedaInfinityMap_evaluation_isLimit")
 Kerodon Corollary 7.4.1.23（[Tag 039M](https://kerodon.net/tag/039M)）。対応表の状態：一部。
 
+*主張*　非可算基数 $`\kappa` に関して局所的に $`\kappa`-小さい無限圏 $`C` の各対象について、$`\kappa`-小さい空間に値を取る余表現関手と表現関手は、任意の単体集合を添字とする極限を保つ。
+
 Cを宇宙で小さく取るとyonedaInfinityMap\_evaluation\_isLimitは同じ共変Hom(x,−)について原文h\^Xの極限保存を直接返す。反変h\_X側および任意の局所κ-smallな大きなCは含まない。
 
 :::
@@ -223,12 +247,16 @@ Kerodon [Tag 05R5](https://kerodon.net/tag/05R5)
 :::definition "kerodon_7_4_2_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftStraighteningInfinityMap, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftFibrationObject, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftFibrationObject_enrichedCategory, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftFibrationObject_sHom_kanComplex")
 Kerodon Notation 7.4.2.1（[Tag 05R6](https://kerodon.net/tag/05R6)）。対応表の状態：一部。
 
+*主張*　単体集合 $`C` 上の本質的に小さい左ファイブレーションで張るスライス圏の充満部分圏を $`\operatorname{LFib}(C)` と書く。単体射空間を $`C` 上の写像の単体集合 $`\operatorname{Fun}_{/C}(E,E')` とすると局所 Kan な単体圏になる。
+
 宇宙で小さいCと小さい全空間のleft fibrationsに限れば、LeftFibrationObject、leftFibrationObject\_enrichedCategory、sHom\_kanComplexが原文と同じ対象・底上のHom・局所Kanな豊穣圏を直接構成する。単にcoherent nerveの写像があるという根拠から置き換えた。
 
 :::
 
 :::definition "kerodon_7_4_2_2" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.TransportRepresentationFamilyWitness")
 Kerodon Definition 7.4.2.2（[Tag 05R7](https://kerodon.net/tag/05R7)）。対応表の状態：本体にある。
+
+*主張*　同じ底 $`C` 上の左ファイブレーション間の射 $`\Gamma:E\to E'` と共変移送表現の自然変換 $`\gamma:\mathscr F\to\mathscr F'` の両立性を定める。移送を示す定数一点からの自然変換 $`\alpha,\alpha'` に対して、$`\gamma|_E` と $`\alpha` の合成が $`\Gamma` で引き戻した $`\alpha'` にホモトピックであることをいう。
 
 仮定：同じ底 B の二つの左ファイブレーションと輸送表現 R,S、二変換の族を取る。原文はパラメータ K=Δ⁰（Lean が弱い）。結論：TransportRepresentationFamilyWitness は底上の Γ と輸送の変換の適合を指定するデータ（一点の族が原文と一致）。
 
@@ -237,6 +265,8 @@ Kerodon Definition 7.4.2.2（[Tag 05R7](https://kerodon.net/tag/05R7)）。対�
 :::theorem "kerodon_7_4_2_4" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftStraighteningInfinityMap_isQCatEquivalence")
 Kerodon Theorem 7.4.2.4（[Tag 05R9](https://kerodon.net/tag/05R9)）。対応表の状態：一部。
 
+*主張*　任意の単体集合 $`C` で、空間値図式を対応する左ファイブレーション $`\int_C\mathscr F\to C` に送る操作は $`h\operatorname{Fun}(C,S)\to h\operatorname{LFib}(C)` の圏同値を与える。自然変換の類は、それに両立する $`C` 上の射の類に送る。
+
 Cを宇宙で小さい準圏に限ればleftStraighteningInfinityMap\_isQCatEquivalenceからh Funとh LFibの同値そのものを直接得る。指定γとΓの適合を保つという射の指定まではこの型に含まない。
 
 :::
@@ -244,12 +274,16 @@ Cを宇宙で小さい準圏に限ればleftStraighteningInfinityMap\_isQCatEqui
 :::proposition "kerodon_7_4_2_6" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.transportRepresentationMappingSpaceMap_isQCatEquivalence, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.transportRepresentationMappingSpaceMap, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.transportRepresentationMappingFamilyWitness")
 Kerodon Proposition 7.4.2.6（[Tag 05RB](https://kerodon.net/tag/05RB)）。対応表の状態：一部。
 
+*主張*　無限圏 $`C` 上の左ファイブレーションの共変移送表現間の自然変換に対し、それと両立する $`C` 上の左ファイブレーション間の射が存在する。そのホモトピー類は一意である。
+
 両left fibrationsにHasSmallSimplexFibersも仮定すると、transportRepresentationMappingSpaceMapの同値と同じ射に対するMappingFamilyWitnessは指定γに適合するΓの存在とホモトピー類の一意性を直接与える。表現だけから小性を得たとはしない。
 
 :::
 
 :::proposition "kerodon_7_4_2_11" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.transportRepresentationFamilyWitness_nonempty, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.TransportRepresentationFamilyWitness.unique")
 Kerodon Proposition 7.4.2.11（[Tag 05RH](https://kerodon.net/tag/05RH)）。対応表の状態：一部。
+
+*主張*　単体集合 $`C` 上の左ファイブレーション間の射に対し、それと両立する共変移送表現間の自然変換がホモトピーを除いて一意に存在する。
 
 両射にHasSmallSimplexFibersを加えると、familyWitness\_nonemptyのK=Δ⁰とuniqueは同じΓに適合するγの存在とFunctorIsoによるホモトピー一意性を直接返す。一般の小性のない場合は含まない。
 
@@ -297,12 +331,16 @@ Kerodon [Tag 05RN](https://kerodon.net/tag/05RN)
 :::proposition "kerodon_7_4_3_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.coherentDiagramTotalCocone_isColimit, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.coherentTotalCoconeFiber_isWeakHomotopyEquivalence") (uses := "kerodon_1_1_0_6, kerodon_5_6_5_1")
 Kerodon Proposition 7.4.3.1（[Tag 02VE](https://kerodon.net/tag/02VE)）。対応表の状態：一部。
 
+*主張*　小さい単体集合 $`C` 上の左ファイブレーション $`U:E\to C` の空間値共変移送表現に対し、空間 $`X` がその余極限であることは、弱ホモトピー同値 $`E\to X` が存在することと同値である。
+
 Uを標準leftUnstraighteningProjection、XをcoherentDiagramTotalCoconeの頂点に限ると、その余極限性とcoherentTotalCoconeFiber\_isWeakHomotopyEquivalenceは同じ全空間からXへの標準射の弱同値性を直接返す。任意X・任意の輸送表現のiffは含まない。
 
 :::
 
 :::corollary "kerodon_7_4_3_3" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.hasColimit_coherentSpaceDiagram, SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.space_hasSmallColimits")
 Kerodon Corollary 7.4.3.3（[Tag 02VF](https://kerodon.net/tag/02VF)）。対応表の状態：一部。
+
+*主張*　小さい単体集合 $`C` 上の任意の空間値図式 $`\mathscr F` は余極限を持つ。Kan 複体 $`X` がその余極限であることは、弱ホモトピー同値 $`\int_C\mathscr F\to X` が存在することと同値である。
 
 hasColimit\_coherentSpaceDiagramとspace\_hasSmallColimitsは原文前半の全小図式の余極限存在を直接返す。任意Xについて全空間からの弱同値で特徴付ける後半は含まない。
 
@@ -319,6 +357,8 @@ Kerodon Corollary 7.4.3.4（[Tag 039K](https://kerodon.net/tag/039K)）。対応
 
 :::proposition "kerodon_7_4_3_6" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.isColimitCone_of_coconeFiberMap_weakEquivalence, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.coherentDiagramTotalCocone_isColimit, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.coherentTotalCoconeFiber_isWeakHomotopyEquivalence") (uses := "kerodon_1_2_5_1, kerodon_1_4_0_1, kerodon_5_6_7_2, kerodon_7_1_2_11, kerodon_7_3_8_26, kerodon_7_4_2_15")
 Kerodon Proposition 7.4.3.6（[Tag 05RR](https://kerodon.net/tag/05RR)）。対応表の状態：一部。
+
+*主張*　非可算基数 $`\kappa` と、全体 $`E` が本質的に $`\kappa`-小さい左ファイブレーション $`E\to C` を取る。その $`\kappa`-小さい空間に値を取る共変移送表現の余極限を Kan 複体 $`X` が与えることは、$`E\to X` の弱ホモトピー同値があることと同値である。
 
 Uを標準leftUnstraighteningProjectionに限り、指定Xへの射がある余錐cのcoconeFiberMapとして与えられる場合、isColimitCone\_of\_coconeFiberMap\_weakEquivalenceはその同じ射が弱同値ならXが余極限という向きを直接返す。任意の全空間射から余錐を構成する議論は含まない。
 
@@ -345,12 +385,16 @@ Kerodon Corollary 7.4.3.10（[Tag 05RV](https://kerodon.net/tag/05RV)）。対�
 :::proposition "kerodon_7_4_3_11" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.isColimitCone_iff_restrict_rightCofinal, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.isRightCofinal_iff_weaklyContractible_coslices") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_5_6_6_13, kerodon_5_6_6_21, kerodon_7_2_1_1, kerodon_7_2_2_11, kerodon_7_2_3_1, kerodon_7_4_3_6")
 Kerodon Proposition 7.4.3.11（[Tag 04K3](https://kerodon.net/tag/04K3)）。対応表の状態：一部。
 
+*主張*　無限圏 $`C` への単体集合の射 $`F:C'\to C` が右共終であることは、任意の無限圏への余極限を持つ図式で $`F` に沿って制限しても同じ対象が余極限であることと同値である。任意の非可算正則基数 $`\kappa` の $`\kappa`-小空間値図式に限ってもよく、さらに余表現関手の制限が可縮な余極限を持つことだけを課してもよい。
+
 isColimitCone\_iff\_restrict\_rightCofinalは、原文(1)⇒(2)の同じ極限対象Xを保つ制限余錐を直接与える。空間値の試験から共終性を検出する逆向きは含まない。
 
 :::
 
 :::corollary "kerodon_7_4_3_12" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.isLimitCone_iff_restrict_of_leftCofinal")
 Kerodon Corollary 7.4.3.12（[Tag 03E7](https://kerodon.net/tag/03E7)）。対応表の状態：一部。
+
+*主張*　単体集合の射 $`F:C'\to C` で、両端がある非可算正則基数 $`\kappa` に関して本質的に $`\kappa`-小さく、$`\lambda` の指数共終数が $`\kappa` 以上とする。$`F` が左共終であることは、任意の無限圏への極限図式を $`F^{\triangleleft}` で制限しても極限図式になることと同値であり、$`\lambda`-小空間を値域とする図式だけで検査してもよい。
 
 Cを準圏に強めればisLimitCone\_iff\_restrict\_of\_leftCofinalは原文(1)⇒(2)を同じ指定極限錐の制限として直接返す。一般の単体集合Cおよび試験から共終性を得る逆向きは含まない。
 
@@ -359,12 +403,16 @@ Cを準圏に強めればisLimitCone\_iff\_restrict\_of\_leftCofinalは原文(1)
 :::proposition "kerodon_7_4_3_13" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.isColimitCone_of_coconeFiberMap_weakEquivalence, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.coherentTotalCoconeFiber_isWeakHomotopyEquivalence") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_5_6_7_3, kerodon_7_1_2_11, kerodon_7_3_8_26, kerodon_7_4_1_8, kerodon_7_4_2_14")
 Kerodon Proposition 7.4.3.13（[Tag 05RW](https://kerodon.net/tag/05RW)）。対応表の状態：一部。
 
+*主張*　非可算 $`\kappa` と全体が本質的に $`\kappa`-小さい左ファイブレーション $`E\to C` に対し、$`\mathscr F:C\to S_{<\kappa}` を $`\alpha:\underline{\Delta^0}_E\to\mathscr F|_E` が示す共変移送表現とする。余錐 $`\beta:\mathscr F\to\underline X_C` が余極限を与えることは、$`\alpha` と $`\beta|_E` の合成で定まる $`E\to\operatorname{Hom}_{S_{<\kappa}}(\Delta^0,X)` が弱ホモトピー同値であることと同値である。
+
 Uを標準leftUnstraighteningProjection、γを指定余錐cのcoconeFiberMapとした場合、isColimitCone\_of\_coconeFiberMap\_weakEquivalenceは同じγについて(2)⇒(1)を直接返す。任意の表現αの比較と逆向きは含まない。
 
 :::
 
 :::corollary "kerodon_7_4_3_14" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsLeftCofinal.isWeakHomotopyEquivalence") (uses := "kerodon_1_1_0_6, kerodon_1_2_5_1, kerodon_1_4_0_1, kerodon_3_4_1_5, kerodon_4_1_3_3, kerodon_4_3_6_6, kerodon_4_5_3_12, kerodon_4_5_3_28, kerodon_4_6_4_1, kerodon_5_3_7_3, kerodon_5_6_7_2, kerodon_5_6_7_6, kerodon_7_2_1_5, kerodon_7_2_1_22, kerodon_7_2_3_1, kerodon_7_2_3_11, kerodon_7_4_3_13")
 Kerodon Corollary 7.4.3.14（[Tag 02VJ](https://kerodon.net/tag/02VJ)）。対応表の状態：一部。
+
+*主張*　$`C^{\triangleright}` 上の左ファイブレーション $`\bar E` と $`C` への引き戻し $`E` を取り、その引き戻しと $`C` が本質的に $`\kappa`-小さいよう非可算正則基数 $`\kappa` を選ぶ。$`E\to\bar E` が弱ホモトピー同値であること、左共終であること、$`\bar E` の $`\kappa`-小空間値共変移送表現が余極限図式であることは同値である。
 
 IsLeftCofinal.isWeakHomotopyEquivalenceを同じ引き戻し包含E→Ēへ適用すると原文(2)⇒(1)を直接得る。輸送表現の余極限条件(3)や逆向きは含まない。
 
@@ -423,6 +471,8 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：始頂点�
 :::definition "kerodon_7_4_4_9" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.exists_kanCocartesianSectionsEvaluate_section, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.InitialSectionLifting.cocartesianSectionsEvaluate_trivialKanFibration") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_5_1_4_1, kerodon_5_3_1_23")
 Kerodon Construction 7.4.4.9（[Tag 02TD](https://kerodon.net/tag/02TD)）。対応表の状態：一部。
 
+*主張*　左錐 $`C^{\triangleleft}` 上の余デカルトファイブレーション $`\bar E` とその $`C` への引き戻し $`E` を取る。余デカルト切断の錐頂点評価の切断を選び、その後で $`C` に制限して、頂点ファイバーから $`E` の余デカルト切断への共変回折関手を得る。この関手は同型を除いて定まる。
+
 底C◁を準圏に強めるとcocartesianSectionsEvaluate\_trivialKanFibrationとexists\_kanCocartesianSectionsEvaluate\_sectionは原文の指定evとその切断を直接構成する。θとの合成は書けるが、選択によらないFunctorIsoという残りの結論は含まない。
 
 :::
@@ -444,12 +494,16 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：通常圏 C
 :::proposition "kerodon_7_4_4_15" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isColimitCone_of_isPullback_of_components, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.isLimitCone_of_isPullback_of_components, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.isLimitCone_pullback_of_components, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.isColimitCone_tensor_of_components, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.isLimitCone_tensor_of_components")
 Kerodon Proposition 7.4.4.15（[Tag 06B4](https://kerodon.net/tag/06B4)）。対応表の状態：一部。
 
+*主張*　無限圏値図式 $`\mathscr F` が無限圏の無限圏で極限を持つとする。その極限への右錐が、$`\mathscr F` の各値への射影で余極限図式になるなら、もとの右錐は極限圏で余極限図式である。
+
 極限を二項積X⊗Yで表示する場合、isColimitCone\_tensor\_of\_componentsは同じ余錐q̄の二射影の余極限性からq̄の余極限性を直接返す。一般のQC値図式の極限は含まない。
 
 :::
 
 :::proposition "kerodon_7_4_4_16" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.exists_colimitCone_pullback_with_snd, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.exists_limitCone_pullback_with_snd, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.exists_colimitCone_tensor_with_components, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.exists_limitCone_tensor_with_components")
 Kerodon Proposition 7.4.4.16（[Tag 06B5](https://kerodon.net/tag/06B5)）。対応表の状態：一部。
+
+*主張*　無限圏値図式 $`\mathscr F` の極限圏への図式 $`q` が各値への射影で余極限を持ち、$`\mathscr F` の全遷移関手が対応する余極限を保つとする。このとき $`q` に余極限があり、右錐が余極限図式であることは各射影で判定できる。
 
 極限を二項積で表示する場合、exists\_colimitCone\_tensor\_with\_componentsは同じqの余極限を指定された成分余錐から直接構成し、tensor\_of\_componentsは原文の成分条件⇒余極限性を与える。任意の極限形状と逆向きは含まない。
 

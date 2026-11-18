@@ -17,6 +17,7 @@
   "nolink": 118,
   "own": 4,
   "linked": 29,
+  "with-statement": 30,
   "partial": 20,
   "interface": 6
  }

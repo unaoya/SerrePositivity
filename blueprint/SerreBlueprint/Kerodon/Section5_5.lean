@@ -59,12 +59,16 @@ Underは通常圏のcosliceであり、原文の豊穣cosliceの単体集合のH
 :::definition "kerodon_5_5_1_8" (lean := "CategoryTheory.WithInitial")
 Kerodon Notation 5.5.1.8（[Tag 01ZD](https://kerodon.net/tag/01ZD)）。対応表の状態：一部。
 
+*主張*　単体圏 $`C` の左錐は、新しい始対象 $`x_0` を付け加えた単体圏である。$`x_0` からの射単体集合は一点、既存対象から $`x_0` へのものは空で、既存対象間の射と合成はそのままである。
+
 WithInitialは通常圏の場合に原文の対象集合Ob(C)⊔\{X₀\}を直接構成する。単体豊穣Homとその合成まで含む錐の全構成ではない。
 
 :::
 
 :::definition "kerodon_5_5_1_9" (lean := "CategoryTheory.WithTerminal")
 Kerodon Variant 5.5.1.9（[Tag 01ZE](https://kerodon.net/tag/01ZE)）。対応表の状態：一部。
+
+*主張*　単体圏 $`C` の右錐は、新しい終対象 $`y_0` を付け加えた単体圏である。$`y_0` に入る射単体集合は一点、$`y_0` から既存対象へのものは空で、既存対象間の射と合成はそのままである。
 
 WithTerminalは通常圏の場合に原文の対象集合Ob(C)⊔\{Y₀\}を直接構成する。単体豊穣Homと合成は含まない。
 
@@ -152,6 +156,8 @@ fiber をちょうど $`\mathcal C` にしたければ lax 版を使う。$`\mat
 :::definition "kerodon_5_5_2_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.PointedSpaceInfinity, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.pointedSpaceFiberVertexEquiv, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity")
 Kerodon Construction 5.5.2.1（[Tag 01ZW](https://kerodon.net/tag/01ZW)）。対応表の状態：本体にある。
 
+*主張*　基点付き空間の無限圏 $`S_*` は、空間の無限圏 $`S` における一点空間 $`\Delta^0` の余スライスである。
+
 仮定：Kan 複体の coherent nerve と点 Δ⁰（Kerodon と一致）。結論：PointedSpaceInfinity は SpaceInfinity の Δ⁰ を表す頂点の下の coslice（一致）。
 
 *unstraightening.html — 1. 普遍左 fibration $`\mathcal S_\to\mathcal S`*
@@ -162,6 +168,8 @@ Kerodon Construction 5.5.2.1（[Tag 01ZW](https://kerodon.net/tag/01ZW)）。対
 
 :::proposition "kerodon_5_5_2_2" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.pointedSpaceInfinity_quasicategory, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.pointedSpaceProjection_leftFibration")
 Kerodon Proposition 5.5.2.2（[Tag 01ZX](https://kerodon.net/tag/01ZX)）。対応表の状態：本体にある。
+
+*主張*　基点付き空間の単体集合 $`S_*` は無限圏であり、$`S_*\to S` は無限圏の左ファイブレーションである。
 
 仮定：点付き空間の coslice PointedSpaceInfinity とその射影（Kerodon と一致）。結論：PointedSpaceInfinity が Quasicategory、射影が LeftFibration（一致）。
 
@@ -198,6 +206,8 @@ $`\mathcal S` の頂点 $`s`（Kan 複体 $`K` を表す）上の fiber は $`K`
 
 :::proposition "kerodon_5_5_2_6" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.pointedSpaceFiberValueEquivalence, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.pointedSpaceFiberVertexEquiv")
 Kerodon Proposition 5.5.2.6（[Tag 02S2](https://kerodon.net/tag/02S2)）。対応表の状態：一部。
+
+*主張*　基点付き空間の左ファイブレーション $`S_*\to S` の豊穣化ホモトピー移送表現 $`hS\to h\operatorname{Kan}` は、$`h\operatorname{Kan}`-豊穣圏の同型 $`h\operatorname{Kan}\simeq hS` のホモトピー逆である。従って豊穣圏の同値である。
 
 pointedSpaceFiberValueEquivalenceは各Sの頂点で、原文の輸送の値となるfiberとそのKan複体の同値を直接与える。豊穣関手の逆であるためのHom作用と自然性は含まない。
 
@@ -370,6 +380,8 @@ $`\mathrm{Cat}_\infty=N^{hc}(\mathrm{QCat}^\Delta)`、Hom は $`\mathrm{Fun}(\ma
 :::definition "kerodon_5_5_3_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.CatInfinity, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.qCat_sHom_kanComplex, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.quasicategoryCore_kanComplex, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.QuasicategoryObject, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.QCat, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.qCat_simplicialCategory, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.qCat_sHom") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1")
 Kerodon Construction 5.5.3.1（[Tag 0209](https://kerodon.net/tag/0209)）。対応表の状態：本体にある。
 
+*主張*　小さい無限圏を対象、関手圏の芯を射単体集合、関手の合成を合成とする単体圏 $`\operatorname{QCat}` を作る。そのホモトピー整合神経を無限圏の無限圏と呼ぶ。
+
 QuasicategoryObjectとQCatは小さい準圏を対象とし、qCat\_sHomはHomがFunctor空間のcoreに一致すると明示する。qCat\_simplicialCategoryはcore関手で合成を移送し、CatInfinityはそのcoherent nerve。原文の全構成を直接与える。
 
 :::
@@ -377,12 +389,16 @@ QuasicategoryObjectとQCatは小さい準圏を対象とし、qCat\_sHomはHom�
 :::proposition "kerodon_5_5_3_3" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.catInfinity_quasicategory, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.quasicategoryCore_kanComplex, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.qCat_sHom_kanComplex")
 Kerodon Proposition 5.5.3.3（[Tag 020B](https://kerodon.net/tag/020B)）。対応表の状態：本体にある。
 
+*主張*　単体圏 $`\operatorname{QCat}` のホモトピー整合神経は無限圏である。
+
 仮定：小さい ∞ 圏の単体豊穣圏 QCat の coherent nerve（Kerodon と一致）。結論：CatInfinity が Quasicategory（一致）。
 
 :::
 
 :::proposition "kerodon_5_5_3_9" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreFunctor, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.quasicategoryCore_kanComplex") (uses := "kerodon_1_4_0_1, kerodon_4_4_3_1")
 Kerodon Remark 5.5.3.9（[Tag 05Q1](https://kerodon.net/tag/05Q1)）。対応表の状態：一部。
+
+*主張*　芯を取る操作は単体豊穣関手 $`\operatorname{QCat}\to\operatorname{Kan}` を定める。ホモトピー整合神経に移すと、無限圏の無限圏から空間の無限圏への関手になる。
 
 quasicategoryCoreFunctorは原文のcoreの対象・通常の射への作用を直接与え、準圏上では値がKan。豊穣Hom上の作用とcoherent nerve間の射への組立ては含まない。
 
@@ -453,6 +469,8 @@ Kerodon [Tag 020J](https://kerodon.net/tag/020J)
 :::definition "kerodon_5_5_4_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.QuasicategoryObject, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.quasicategoryObject_enrichedCategory, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.quasicategoryObject_simplicialCategory, CategoryTheory.SimplicialNerve")
 Kerodon Construction 5.5.4.1（[Tag 020K](https://kerodon.net/tag/020K)）。対応表の状態：本体にある。
 
+*主張*　単体集合の単体圏のうち、小さい無限圏を対象とし、関手圏全体を射単体集合とする充満単体部分圏を取る。そのホモトピー整合神経が無限圏の無限双圏である。
+
 仮定：小さな ∞ 圏を QuasicategoryObject として束ねる。SimplicialNerve は任意の単体豊穣圏を取れる（Kerodon と一致）。結論：quasicategoryObject\_enrichedCategory は Hom に内部 Hom Fun(C,D) を取り、SimplicialNerve をこの豊穣圏に適用すると太字 QC の単体集合を得る（一致）。
 
 :::
@@ -495,12 +513,16 @@ Kerodon [Tag 020S](https://kerodon.net/tag/020S)
 :::definition "kerodon_5_5_5_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.CatInfinity, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.pointKanObject, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceUnder, SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex")
 Kerodon Construction 5.5.5.1（[Tag 020T](https://kerodon.net/tag/020T)）。対応表の状態：本体にある。
 
+*主張*　無限圏の無限圏 $`\mathcal{QC}` における一点無限圏 $`\Delta^0` の余スライスを $`\mathcal{QC}_*` とする。
+
 仮定：小さな ∞ 圏の圏 CatInfinity と、その頂点としての Δ⁰（Kerodon と一致）。結論：sliceUnder は指定した図式を固定する join の延長を束ねる。Δ⁰ を表す pointKanObject の基礎単体集合を CatInfinity の頂点に取り、原文の QC の coslice を得る（一致）。
 
 :::
 
 :::proposition "kerodon_5_5_5_2" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.CatInfinity, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.catInfinity_quasicategory, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.sliceUnderProjection_leftFibration, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.sliceUnder_quasicategory")
 Kerodon Proposition 5.5.5.2（[Tag 020U](https://kerodon.net/tag/020U)）。対応表の状態：本体にある。
+
+*主張*　一点無限圏の余スライス $`\mathcal{QC}_*` は無限圏であり、$`\mathcal{QC}_*\to\mathcal{QC}` は左ファイブレーションである。
 
 仮定：Quasicategory X と図式 p:K→X（Lean が弱い：CatInfinity の一点に限らず任意の図式）。結論：sliceUnder\_quasicategory は coslice の ∞ 圏性、sliceUnderProjection\_leftFibration は X への射影の左ファイブレーション性（一致）。
 

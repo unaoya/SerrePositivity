@@ -163,6 +163,8 @@ Kerodon Theorem 5.6.0.2（[Tag 028K](https://kerodon.net/tag/028K)）。対応�
 :::corollary "kerodon_5_6_0_6" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftStraighteningInfinityMap_isQCatEquivalence, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftStraighteningInfinityMap_isEssentiallySurjective") (uses := "kerodon_1_1_0_6")
 Kerodon Corollary 5.6.0.6（[Tag 028T](https://kerodon.net/tag/028T)）。対応表の状態：一部。
 
+*主張*　任意の単体集合 $`C` に対し、空間値図式 $`C\to S` を元の構成 $`\int_C\mathscr F\to C` に送る操作は、図式の同型類と本質的に小さい左ファイブレーションの $`C` 上の同値類の全単射を与える。
+
 底Cを準圏に強めればleftStraighteningInfinityMap\_isQCatEquivalenceはleft fibrationと空間値図式の同じ分類の∞圏同値を直接与える。従ってcoreの頂点の同型類の全単射を与える。非準圏の底の単射側は含まない。
 
 *定義 11.3 （straightening）*
@@ -230,12 +232,16 @@ $`\mathrm{Cat}` は 2 圏で自然変換の間には等しいかどうかしか�
 :::definition "kerodon_5_6_1_1" (lean := "CategoryTheory.Pseudofunctor.Grothendieck, CategoryTheory.Pseudofunctor.Grothendieck.category, CategoryTheory.Grothendieck")
 Kerodon Definition 5.6.1.1（[Tag 025N](https://kerodon.net/tag/025N)）。対応表の状態：Mathlib にある。
 
+*主張*　通常の圏 $`C` から圏の双圏への関手 $`\mathscr F` の元の圏の対象は $`(c,x\in\mathscr F(c))` である。射は $`f:c\to d` と $`u:\mathscr F(f)(x)\to y` の組で、合成では関手の合成制約の逆で $`\mathscr F(gf)(x)` を $`\mathscr F(g)\mathscr F(f)(x)` に移してから、$`\mathscr F(g)(u)` と次の成分を合成する。
+
 仮定：通常の圏 C と LocallyDiscrete C から Cat への擬関手 F（Kerodon と一致）。結論：Grothendieck F は (c,x) を対象とし、射は (f:c→d, F(f)(x)→y)。通常の Cat 値関手の版もある（一致）。
 
 :::
 
 :::proposition "kerodon_5_6_1_3" (lean := "CategoryTheory.Pseudofunctor.Grothendieck.category")
 Kerodon Proposition 5.6.1.3（[Tag 01R3](https://kerodon.net/tag/01R3)）。対応表の状態：Mathlib にある。
+
+*主張*　通常の圏から圏の双圏への共変関手の元の圏で、5.6.1.1 の合成は結合的で単位射を持つ。
 
 仮定：通常の圏 C と Cat 値擬関手 F（Kerodon と一致）。結論：指定された Grothendieck F の合成に対して恒等則と結合則を持つ Category instance（一致）。
 
@@ -244,12 +250,16 @@ Kerodon Proposition 5.6.1.3（[Tag 01R3](https://kerodon.net/tag/01R3)）。対�
 :::definition "kerodon_5_6_1_5" (lean := "CategoryTheory.Pseudofunctor.CoGrothendieck, CategoryTheory.Pseudofunctor.CoGrothendieck.category")
 Kerodon Definition 5.6.1.5（[Tag 025P](https://kerodon.net/tag/025P)）。対応表の状態：Mathlib にある。
 
+*主張*　通常の圏 $`C` の反対圏から圏の双圏への関手 $`\mathscr F` の元の圏の対象は $`(c,x\in\mathscr F(c))` で、射は $`f:c\to d` と $`u:x\to\mathscr F(f)(y)` の組である。二射の合成の第二成分は、$`u` と $`\mathscr F(f)(v)` を合成し、合成制約で $`\mathscr F(gf)(z)` に移して得る。
+
 仮定：通常の圏 C の反対圏から Cat への擬関手 F（Kerodon と一致）。結論：CoGrothendieck F は (c,x) と (f:c→d, x→F(f)(y)) による圏（一致）。
 
 :::
 
 :::definition "kerodon_5_6_1_12" (lean := "CategoryTheory.Pseudofunctor.Grothendieck.forget, CategoryTheory.Pseudofunctor.CoGrothendieck.forget")
 Kerodon Notation 5.6.1.12（[Tag 01RA](https://kerodon.net/tag/01RA)）。対応表の状態：Mathlib にある。
+
+*主張*　圏の双圏への関手の元の圏は、共変・反変の双方で、対象 $`(c,x)` を $`c`、射 $`(f,u)` を $`f` へ送る忘却関手を持つ。
 
 仮定：通常の圏 C から、または Cᵒᵖ からの Cat 値擬関手 F（Kerodon と一致）。結論：共変・反変の Grothendieck 構成に対して、対象と射を底の成分に送る forget 関手（一致）。
 
@@ -266,6 +276,8 @@ Mathlibの型は反変CoGrothendieckの選んだcartesian lift。原文の共変
 
 :::corollary "kerodon_5_6_1_17" (lean := "CategoryTheory.Pseudofunctor.CoGrothendieck.isStronglyCartesian_homCartesianLift")
 Kerodon Corollary 5.6.1.17（[Tag 025T](https://kerodon.net/tag/025T)）。対応表の状態：一部。
+
+*主張*　通常の圏 $`C` から圏の双圏への共変関手の元の圏の忘却関手は余デカルトファイブレーションである。反変関手の元の圏の忘却関手はデカルトファイブレーションである。
 
 MathlibのCoGrothendieck忘却のIsFibered instanceは原文後半の反変版射影がcartesian fibrationという結論そのもの。共変版は含まない。
 
@@ -389,6 +401,8 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：Space 値�
 
 :::proposition "kerodon_5_6_2_9" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftUnstraightening, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftUnstraighteningProjection_leftFibration, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftUnstraighteningFiberIso")
 Kerodon Example 5.6.2.9（[Tag 026S](https://kerodon.net/tag/026S)）。対応表の状態：本体にある。
+
+*主張*　空間値単体図式 $`\mathscr F:C\to S` の元の構成は、基点付き空間の忘却射 $`S_*\to S` の $`\mathscr F` に沿う引き戻しである。従って $`\int_C\mathscr F\to C` は左ファイブレーションである。
 
 仮定：任意の単体集合 C と F:C→SpaceInfinity（Kerodon と一致）。結論：PointedSpaceInfinity→SpaceInfinity を F に沿って引き戻した leftUnstraightening とその左ファイブレーション射影（一致）。
 
@@ -773,6 +787,8 @@ Kerodon Theorem 5.6.6.13（[Tag 038J](https://kerodon.net/tag/038J)）。対応�
 :::definition "kerodon_5_6_6_14" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.homInfinityCovariant, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.covariantRepresentableInfinity") (uses := "kerodon_1_4_0_1, kerodon_5_6_6_13")
 Kerodon Notation 5.6.6.14（[Tag 038L](https://kerodon.net/tag/038L)）。対応表の状態：一部。
 
+*主張*　局所的に小さい無限圏 $`C` で、$`x` に余表現される関手 $`h^x:C\to S` と $`y` に表現される関手 $`h_y:C^{\mathrm{op}}\to S` は同型を除いて一意である。$`h^x(y)\simeq\operatorname{Hom}_C(x,y)\simeq h_y(x)` が Kan 複体のホモトピー圏で $`(x,y)` に関手的に成り立つ。
+
 homInfinityCovariantとcovariantRepresentableInfinityは原文の共変Hom(X,−)の候補を具体的な図式として直接構成する。指定頂点によるcorepresentabilityと局所小な大きいC全体、二変数での比較は含まない。
 
 :::
@@ -796,12 +812,16 @@ IsInitialVertex.exists\_cosliceLiftは始対象から任意A→XをXのcoslice�
 :::corollary "kerodon_5_6_6_20" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.QCatEquivalence.map_isInitialVertex") (uses := "kerodon_1_4_0_1, kerodon_4_7_3_9, kerodon_5_6_6_19")
 Kerodon Corollary 5.6.6.20（[Tag 03J6](https://kerodon.net/tag/03J6)）。対応表の状態：一部。
 
+*主張*　同じ無限圏上の左ファイブレーション間の関手 $`F:D\to E` と $`D` の始対象 $`x` を取る。$`F` が無限圏の同値であることは $`F(x)` が $`E` の始対象であることと同値である。
+
 QCatEquivalence.map\_isInitialVertexは原文のFが同値なら指定始対象の像も始対象となる方向を同じFについて直接返す。左ファイブレーションの仮定すら不要。逆は含まない。
 
 :::
 
 :::proposition "kerodon_5_6_6_21" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.representableUnstraighteningIdentity_isInitialVertex, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.parametrizedFiberTransport_evaluate_isQCatEquivalence_of_initialVertex") (uses := "kerodon_1_2_5_1, kerodon_1_4_0_1, kerodon_4_6_4_1, kerodon_4_7_3_20, kerodon_5_1_7_16, kerodon_5_2_8_1, kerodon_5_2_8_7, kerodon_5_2_8_12, kerodon_5_6_6_10, kerodon_5_6_6_19")
 Kerodon Proposition 5.6.6.21（[Tag 02J8](https://kerodon.net/tag/02J8)）。対応表の状態：一部。
+
+*主張*　無限圏の本質的に小さい左ファイブレーション $`D\to C` において、$`x` 上の $`\tilde x` が始対象であることは、各 $`y` へのパラメータ付き移送を $`\tilde x` で評価する $`\operatorname{Hom}_C(x,y)\to D_y` がホモトピー同値であることと同値である。同じことは $`\tilde x` が豊穣化ホモトピー移送表現を $`x` により余表現することとも同値である。ホモトピー移送表現または空間値の共変移送表現が $`x` に余表現されることは、$`x` 上に始対象が存在することと同値である。
 
 parametrizedFiberTransport\_evaluate\_isQCatEquivalence\_of\_initialVertexは原文(1)の始対象⇒同じパラメーター付き輸送を指定点で評価した射の同値、という方向を直接返す。逆・豊穣表現可能性の各iffは含まない。
 
@@ -842,12 +862,16 @@ Kerodon Corollary 5.6.7.3（[Tag 029F](https://kerodon.net/tag/029F)）。対応
 :::corollary "kerodon_5_6_7_5" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cocartesianFibration_kanEquivalenceLifting, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cocartesianFibration_kanInvertibleTargetLifting") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_5_1_4_1, kerodon_5_1_4_9, kerodon_5_6_7_3")
 Kerodon Corollary 5.6.7.5（[Tag 029G](https://kerodon.net/tag/029G)）。対応表の状態：一部。
 
+*主張*　単体集合の余デカルトファイブレーションは同型ファイブレーションである。
+
 底を準圏に強めるとcocartesianFibration\_kanEquivalenceLiftingは同じUのequivalence liftingを直接与え、inner性と可逆辺の持ち上げというisofibration判定に一致する。
 
 :::
 
 :::corollary "kerodon_5_6_7_6" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.cocartesianFibration_pullback_innerAnodyne_isPrecompositionEquivalence") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_4_5_8_10, kerodon_5_1_4_1, kerodon_5_3_6_1, kerodon_5_6_7_3")
 Kerodon Corollary 5.6.7.6（[Tag 029H](https://kerodon.net/tag/029H)）。対応表の状態：一部。
+
+*主張*　単体集合の余デカルトファイブレーションは指数化可能である。特に、底の圏同値をこれに沿って引き戻した射は圏同値である。
 
 底の圏同値をinner anodyneに制限するとcocartesianFibration\_pullback\_innerAnodyne\_isPrecompositionEquivalenceは同じpullback projectionの圏同値性を直接返す。任意の圏同値への一般化は含まない。
 
@@ -864,6 +888,8 @@ HasSmallSimplexFibers.essentiallySmallは宇宙版の頂点fiberの小ささ。�
 
 :::corollary "kerodon_5_6_7_8" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.exists_relativeFunctorInverse_of_precompositionEquivalence, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.isPrecompositionEquivalence_iff_isQCatEquivalence")
 Kerodon Corollary 5.6.7.8（[Tag 029K](https://kerodon.net/tag/029K)）。対応表の状態：一部。
+
+*主張*　同じ単体集合 $`C` 上の余デカルトファイブレーション間の射は、$`C` 上の同値であるとき、かつそのときに限り台の単体集合の圏同値である。
 
 底を準圏、U,Vをleft fibrationに強めれば、圏同値Fを前合成同値へ移しexists\_relativeFunctorInverse\_of\_precompositionEquivalenceで同じFの底上の相対逆と相対単位・余単位を直接得る。一般cocartesian版と逆は含まない。
 

@@ -36,12 +36,16 @@ Kerodon の 9.6 節（[Tag 04KF](https://kerodon.net/tag/04KF)）の項目と、
 :::definition "kerodon_9_6_0_1" (lean := "CategoryTheory.HasLiftingProperty, CategoryTheory.MorphismProperty.IsWeakFactorizationSystem")
 Kerodon Definition 9.6.0.1（[Tag 06VS](https://kerodon.net/tag/06VS)）。対応表の状態：一部。
 
+*主張*　通常の圏の分解系は、レトラクトで閉じた二つの射の族 $`S_L,S_R` からなる。任意の射は $`S_L` の射に $`S_R` の射を続ける形に分解でき、左の族と右の族の射の任意の持ち上げ問題には一意の解がある。
+
 通常圏のIsWeakFactorizationSystemのfieldsは同じ左右クラスの因数分解とLLPを与える。原文がさらに要求する持ち上げの一意性は含まない。
 
 :::
 
 :::definition "kerodon_9_6_0_3" (lean := "CategoryTheory.MorphismProperty.IsWeakFactorizationSystem, CategoryTheory.MorphismProperty.IsStableUnderRetracts")
 Kerodon Definition 9.6.0.3（[Tag 06VU](https://kerodon.net/tag/06VU)）。対応表の状態：Mathlib にある。
+
+*主張*　通常の圏の弱分解系は、双方がレトラクトで閉じた射の族 $`S_L,S_R` の組であり、全ての射が $`S_L` に続いて $`S_R` の射に分解する。左の族から右の族への持ち上げ問題はすべて解を持つ。
 
 仮定：通常圏 C と二つの MorphismProperty（Kerodon と一致）。結論：IsWeakFactorizationSystem は分解と左右の持ち上げ類との等式で定義。ソースの mk' は分解・retract 閉性・持ち上げの存在からこれを得る（原文の弱分解系と一致）。
 
@@ -76,6 +80,8 @@ Kerodon Variant 9.6.1.3（[Tag 06VX](https://kerodon.net/tag/06VX)）。対応�
 
 :::definition "kerodon_9_6_1_4" (lean := "CategoryTheory.MorphismProperty.TransfiniteCompositionOfShape, Ordinal.enum, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.terminalJoinNerveIso")
 Kerodon Variant 9.6.1.4（[Tag 04L2](https://kerodon.net/tag/04L2)）。対応表の状態：一部。
+
+*主張*　整列集合 $`A` の順序型を $`\alpha` とすると、その神経の右錐は $`\alpha` 以下の全順序数の神経に標準的に同型である。右錐上の図式が射 $`f` を $`W` の射の超限合成として示すことは、この同型で順序数に移した図式が 9.6.1.1 の条件を満たすことで定める。
 
 Ordinal.enumは同じ整列集合Aとその順序型の初切片との順序保存全単射を直接与える。原文のnerveと右joinの同型および超限合成の条件の全比較は含まない。
 
@@ -183,6 +189,8 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：射圏の r
 :::proposition "kerodon_9_6_2_13" (lean := "CategoryTheory.MorphismProperty.isLocal, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.isLocalForHom_pushout_right_of_left, CategoryTheory.MorphismProperty.pushouts_le_llp_rlp")
 Kerodon Proposition 9.6.2.13（[Tag 04LW](https://kerodon.net/tag/04LW)）。対応表の状態：一部。
 
+*主張*　無限圏で $`w'` が $`w` を任意の射に沿って押し出したものであるとき、弱 $`w`-局所な対象は弱 $`w'`-局所でもある。
+
 同じwについてXをstrongly localにも強めるとisLocalForHom\_pushout\_right\_of\_leftが同じpushout射w′のstrong localityを返すのでweak localityを得る。weak localityだけの入力ではない。
 
 :::
@@ -226,6 +234,8 @@ Kerodon Definition 9.6.3.1（[Tag 04M8](https://kerodon.net/tag/04M8)）。対�
 :::theorem "kerodon_9_6_3_3" (lean := "CategoryTheory.MorphismProperty.HasSmallObjectArgument, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_bousfieldLocalReplacement")
 Kerodon Theorem 9.6.3.3（[Tag 04MA](https://kerodon.net/tag/04MA)）。対応表の状態：一部。
 
+*主張*　呈示可能な無限圏 $`C` と小さい射の族 $`W` に対し、任意の対象 $`x` から弱 $`W`-局所な対象 $`y` への射を、$`W` の射の小さい超限押し出しとして作れる。
+
 exists\_bousfieldLocalReplacementは同じ小WとXに対しX→YとW-local（従ってweakly local）なYを直接返す。射がgeneratedEdgesに属する条件はあるが、指定超限pushoutであるという比較は含まない。
 
 :::
@@ -268,6 +278,8 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：小さい�
 
 :::proposition "kerodon_9_6_3_10" (lean := "CategoryTheory.MorphismProperty.HasSmallObjectArgument, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.bousfield_isReflectiveSubcategory, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.bousfield_generatedEdges_eq_localEquivalences")
 Kerodon Proposition 9.6.3.10（[Tag 06ZB](https://kerodon.net/tag/06ZB)）。対応表の状態：一部。
+
+*主張*　正則基数 $`\lambda`、$`\lambda`-余完備な無限圏 $`C`、$`\lambda`-小な射の族 $`W` を取る。$`W` の両端がある正則 $`\kappa<\lambda` に対して $`(\kappa,\lambda)`-コンパクトで、両端から任意の対象への射空間が本質的に $`\lambda`-小さいとする。$`W`-局所対象の充満部分圏は反射的で、その局所同値は $`W` を含み、恒等射を含み、$`\lambda`-小余極限と二対三性で閉じる最小の射の族である。
 
 Cをpresentable、Wを宇宙小族にも強めるとbousfield\_isReflectiveSubcategoryは同じW-local部分圏のreflectivityを直接返す。指定λでの生成辺集合の等式全体は含まない。
 
@@ -725,6 +737,8 @@ Kerodon [Tag 06X2](https://kerodon.net/tag/06X2)
 :::definition "kerodon_9_6_9_2" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FactorizationSystems.IsStronglySaturatedEdgeSetOfShapes")
 Kerodon Definition 9.6.9.2（[Tag 06X4](https://kerodon.net/tag/06X4)）。対応表の状態：一部。
 
+*主張*　無限圏の射の族は、すべての同型を含み、合成と矢印の無限圏における小さい成分ごとの余極限で閉じるとき飽和している。
+
 IsStronglySaturatedEdgeSetOfShapesは同じSに2-of-3などを追加し、原文の同型包含・合成閉性・小arrow余極限閉性を直接与える。saturatedだけの全定義とは差がある。
 
 :::
@@ -760,6 +774,8 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：小辺族�
 :::proposition "kerodon_9_6_9_13" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedArrowCategory_isPresentable")
 Kerodon Proposition 9.6.9.13（[Tag 06XE](https://kerodon.net/tag/06XE)）。対応表の状態：一部。
 
+*主張*　呈示可能な無限圏 $`C` の飽和した射の族 $`\overline W` について、小さい部分族の飽和閉包であること、アクセス可能な分解系の左類であること、矢印圏でそれが張る充満部分圏がアクセス可能であること、小さい部分族で小さい余極限のもと生成されることは同値である。
+
 Wbarを同じ小族からのgeneratedEdgesとしgeneratedArrowCategoryを取る場合、presentabilityは原文(3)の同じarrow部分圏のaccessibilityを直接返す。任意のsaturatedクラスの全iffは含まない。
 
 :::
@@ -781,6 +797,8 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：通常圏�
 :::definition "kerodon_9_6_9_18" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FactorizationSystems.IsStronglySaturatedEdgeSetOfShapes, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FactorizationSystems.stronglySaturatedClosure, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FactorizationSystems.localEquivalences_stronglySaturated")
 Kerodon Definition 9.6.9.18（[Tag 06XK](https://kerodon.net/tag/06XK)）。対応表の状態：本体にある。
 
+*主張*　無限圏の射の族は、全同型を含み、二対三性を持ち、矢印の無限圏での小さい成分ごとの余極限で閉じるとき強飽和である。
+
 仮定：Quasicategory X と辺の集合、Lean では余極限形状を引数に取る。小形状を全て選ぶ場合が原文（Lean が弱い）。結論：同値辺を含み二つから三つ、矢の図式の指定形状の余極限に閉じる強飽和性（全小形状の場合は原文と一致）。
 
 :::
@@ -788,12 +806,16 @@ Kerodon Definition 9.6.9.18（[Tag 06XK](https://kerodon.net/tag/06XK)）。対�
 :::proposition "kerodon_9_6_9_23" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.bousfield_generatedEdges_eq_localEquivalences, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FactorizationSystems.localEquivalences_stronglySaturated")
 Kerodon Proposition 9.6.9.23（[Tag 06XQ](https://kerodon.net/tag/06XQ)）。対応表の状態：一部。
 
+*主張*　呈示可能な無限圏の射の族がアクセス可能に強飽和であることは、ある Bousfield 局所化に関する局所同値の族であることと同値である。強飽和で、小さい部分族から小さい余極限で生成されることとも同値である。
+
 小Wから生成した同じgeneratedEdgesについてlocalEquivalencesとの等式とstrong saturationは、原文のlocal equivalence表示とstrong saturationの成分を直接与える。小集合によるcolimit生成を含む全三条件の同値は含まない。
 
 :::
 
 :::corollary "kerodon_9_6_9_25" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.bousfield_generatedEdges_eq_localEquivalences, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.bousfield_isReflectiveSubcategory")
 Kerodon Corollary 9.6.9.25（[Tag 06XS](https://kerodon.net/tag/06XS)）。対応表の状態：一部。
+
+*主張*　呈示可能な無限圏の Bousfield 局所化の集合と、アクセス可能に強飽和な射の族の集合は全単射で対応する。局所化を対応する局所同値の族へ送る全単射である。
 
 小Wに対するlocal部分圏と生成辺集合の等式は、原文の対応の同じ小生成入力に対する値を直接与える。全Bousfield部分圏からの回収と全単射の型は含まない。
 

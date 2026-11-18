@@ -10,7 +10,7 @@ open Informal
 -- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）
 set_option maxHeartbeats 2000000
 
-#doc (Manual) "§5 " =>
+#doc (Manual) "§5 The characteristic p case: the Hodge-Tate and crystalline comparisons" =>
 %%%
 number := false
 tag := "bs-5"
@@ -128,6 +128,8 @@ $`R^{(1)}=(\tilde R\otimes_{A/p}A/I)\otimes_{A/I,\psi}A/p=\tilde R\otimes_{A/p,\
 
 :::lemma_ "bs_5_4" (lean := "SerrePositivity.BhattScholze.Prismatic.frobeniusTwist_cech_quasiIso, SerrePositivity.BhattScholze.Prismatic.frobeniusTwist_cech_quasiIso_infinite")
 *補題 5.4*　Frobenius 捻りと Čech 脈体の擬同型。対応表の状態：一部（special）。
+
+*主張*　標数 $`p` の可換環 $`k` 上の多項式代数 $`B` の Čech nerve $`B^\bullet` とその Frobenius ひねり $`B^{\bullet,(1)}` をとる。任意の余単体的 $`B^{\bullet,(1)}` 加群 $`N` について、相対 Frobenius に沿う $`N\to N\otimes_{B^{\bullet,(1)}}B^\bullet` は非正規化複体上の擬同型を与える。
 
 N が余単体的可換環から来る加群の場合、同じ polynomial Čech と relative Frobenius の pushout 射が unnormalized cochain cohomology の同型となる。任意の cosimplicial module は扱わない。
 

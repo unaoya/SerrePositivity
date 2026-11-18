@@ -36,10 +36,15 @@ out += ['', 'open Verso.Genre', 'open Verso.Genre.Manual', 'open Informal', '',
         '#doc (Manual) "SerrePositivity ブループリント" =>', '%%%', 'tag := "serre-blueprint"', '%%%', '',
         '本論文（OpenAI, Positivity of Serre\'s Intersection Multiplicity, 2026-09-23）と、本論文と本体が使う文献の項目ごとに、SerrePositivity と Mathlib の対応する Lean の宣言を結んだブループリント。',
         '各ノードの本文は対応表（`research/` の各 `-coverage`）の照合の理由（日本語の要約）と解説の原稿で、原典の本文の写しではない。',
-        'Lean の宣言に結ぶのは、原典どおりと判定したもの（本体・Mathlib）だけ。一部（partial）・未証明の入力に依存するもの（interface）は本文に宣言名を挙げる。',
+        '各ノードの頭の「主張」は原典の主張の要約（`statements.csv`）、その下は対応表の照合の理由。対応表の状態が「なし」でない項目は Lean の宣言に結ぶ。一部（原典どおりではない）・未証明の入力に依存するものは、カードの札と依存グラフの色で見分ける。',
         '章のファイルと、この入口は `blueprint/scripts/` の生成器が対応表から作る。手で直さない。', '',
-        '*部ごとの状態*', '']
-out += [f'- {t}：{s}' for _, t, _, s in parts] + ['']
+        '*部ごとの目標と状態*', '']
+GOALS = {'part-paper': '主定理（Theorem 1.1、Serre の交点重複度の正値性）。',
+         'part-clmst': '本論文が使う正規化長と perfectoid の重複度の結果（§2.2 ほか）。',
+         'part-bs': '本論文と CLMST が使う perfectoid 化（§7・§8）と、その土台の δ 環・prism（§2・§3）。',
+         'part-vdescent': 'BS17 Theorem 4.1 (i) と BM18 Proposition 4.8（BS Proposition 8.10 の arc 層性の入力）。',
+         'part-kerodon': '∞ 圏の基礎（本体の `InfinityCategories` の定義・定理の出どころ）。目標は章ごとには立てていない。'}
+out += [f'- {t}：' + GOALS.get(tag if not tag.startswith('part-kerodon') else 'part-kerodon', '') + f'{s}' for tag, t, _, s in parts] + ['']
 for tag, t, ms, _ in parts:
     out += [f'# {t}', '%%%', 'number := false', f'tag := "{tag}"', '%%%', ''] + [f'{{include 1 SerreBlueprint.{m}}}' for m in ms] + ['']
 out += ['{blueprint_graph}', '{blueprint_summary}', '']

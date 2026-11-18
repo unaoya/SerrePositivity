@@ -59,6 +59,8 @@ tag := "paper-5-1"
 :::lemma_ "paper_5_1" (lean := "SerrePositivity.chi_pos_of_prime_quotients, SerrePositivity.Section5.chi_prime_eq_one_of_dim_zero, SerrePositivity.Section5.positivity_of_residueCharP, SerrePositivity.Section5.positivity_of_residueCharZero") (uses := "paper_eq_5_1, paper_1_1, paper_2_1, ext_GilletSoule, ext_Roberts85, ext_Serre")
 **補題 5.1**　完備・代数閉剰余体・正次元素商対への帰着。対応表の状態：一部。
 
+*主張*　定理 1.1 の証明には、正則局所環 $`R` が完備で剰余体が標数 $`p>0` の代数閉体、$`D=R/P` と $`E=R/Q` が素イデアル商で $`P+Q` が極大イデアルに準素な場合で十分である。ここで $`\dim D,\dim E` はともに正で和は $`\dim R` である。
+
 原典 PDF p.23 / layout L1200。prime filtrationとvanishingによる帰着、零次元対、剰余体拡大・完備化の各処理はある。一方、positivity\_of\_residueCharPは核心の実定理を呼ぶため入力依存で、原典の「核心を証明すれば十分」という全帰着を独立の含意型として切り出した宣言は確認しない。
 
 *解説 §9.1 設定（§5.1）*
@@ -78,12 +80,40 @@ $`A\to T` を有限な環準同型、有限群 $`G` が $`T` に $`A` 上で作�
 
 *Lean:* \`isGeometricallyTransitive\_of\_fixed\`（証明済み）。
 
+*定理 1.2（核の場合）*
+
+$`R` を剰余体が標数 $`p>0` の代数閉体である完備正則局所環、$`P, Q` を $`P+Q` が $`\mathfrak{m}`-準素である素イデアル、$`D = R/P`、$`E = R/Q`、$`h = \dim D > 0`、$`l = \dim E > 0`、$`h + l = \dim R` とする。このとき $`\chi^R(D,E) > 0`。
+
+*Lean:* \`core\_statement\`。
+
+*帰着（Lemma 5.1）*
+
+定理 1.2 から定理 1.1 が従う。
+
+- 等標数は Serre の定理。
+
+- 完備化と剰余体の代数閉体への拡大（Lemma 2.1）。等標数は $`k[[X]]/I\to\bar k[[X]]/I`、混標数は Cohen の構造定理で $`B=V[[X]]/I` と表し、剰余体の単純拡大ごとに DVR を持ち上げた塔の合併を完備化して $`V'` を作る。平坦な局所拡大で $`\mathfrak{m} B'=\mathfrak{m}'` なので、組成列をテンソルして長さ・次元・Tor の長さが保たれる。
+
+- 素フィルトレーションと $`\chi` の各変数での加法性で、$`\chi(R/P_j, R/Q_k)` の和に分ける。
+
+- 次元の和が $`d` 未満の組は*消滅定理*（Roberts、Gillet–Soulé）で $`0`。次元が相補的な組が少なくとも1つ残る。
+
+- 一方が $`0` 次元なら $`\chi = 1`。
+
+*Lean:* \`IntersectionMultiplicity.Additivity\`、\`Paper.Section2.Lemma2\_1\`、\`Inputs.intersectionVanishing\`。帰着の組み立ては \`Paper.Section5.CompletionReduction\` と \`Paper.Section5.CharacteristicZeroReduction\` の適用。
+
+*注意 1.3（消滅定理の証明：巡回 Adams 作用素）*
+
+以下、定理 1.2 の設定を固定する。
+
 外の文献：GilletSoule、Roberts85、Serre
 
 :::
 
 :::definition "paper_eq_5_1" (lean := "SerrePositivity.intersectionVanishing_of_adams") (uses := "ext_GilletSoule, ext_Roberts85")
 **式 (5.1)**　相補次元未満での交点重複度の消滅。対応表の状態：本体にある。
+
+*主張*　次元 $`d` の正則局所環 $`R` 上の有限加群 $`V,W` について、テンソル積が有限長で $`\dim V+\dim W<d` なら $`\chi^R(V,W)=0` である。
 
 原典 PDF p.23 / layout L1217。一般の正則局所環で有限長テンソルと次元和\<dim Rからchi=0。原典と同じ一般のvanishingをAdams経路で証明する。
 
@@ -93,6 +123,8 @@ $`A\to T` を有限な環準同型、有限群 $`G` が $`T` に $`A` 上で作�
 
 :::definition "paper_eq_5_2" (lean := "SerrePositivity.twistedEuler") (uses := "paper_2_5")
 **式 (5.2)**　ねじった正規化Tor Euler値c\_sigma。対応表の状態：本体にある。
+
+*主張*　各 $`\sigma\in G_D` について $`R\to D'\xrightarrow{\sigma} D'\to C_D` で作用を入れ、$`c_\sigma=\sum_{i=0}^d(-1)^i\lambda_D\operatorname{Tor}_i^R(C_D,E')` と定める。
 
 原典 PDF p.24 / layout L1269。σでねじったR作用を持つCとEのlambdaChiとして定義する。有限性は別にLemma5.2で示す。
 
@@ -112,6 +144,8 @@ $$`c_\sigma = \sum_i (-1)^i \lambda_D \operatorname{Tor}_i^R(C_D^\sigma, E')`
 
 :::lemma_ "paper_5_2" (lean := "SerrePositivity.firstComparison, SerrePositivity.normComparison_of_lengthAlgebra") (uses := "paper_eq_5_1, paper_3_5")
 **補題 5.2**　第1のGalois平均と普通の交点数。対応表の状態：未証明の入力に依存。
+
+*主張*　§5.1 の設定で式 (5.2) の各長さは有限であり、$`|G_D|a_Da_E\chi^R(D,E)=\sum_{\sigma\in G_D}c_\sigma` が成り立つ。
 
 原典 PDF p.24 / layout L1274。任意の共役の有限正規化Tor長と、\|G\_D\| a\_D a\_E chi=Σc\_sigmaを同時に与える。有限拡大のrank因子・vanishingは実装されるが、norm比較に使う通常K0降下入力のsorryが残る。
 
@@ -136,7 +170,15 @@ $`\sigma` と $`\sigma^{-1}` のどちらを $`P_\sigma` に対応させるか�
 :::definition "paper_eq_5_3" (lean := "SerrePositivity.firstComparison") (uses := "paper_eq_5_1, paper_3_5")
 **式 (5.3)**　第1のnorm比較の等式。対応表の状態：未証明の入力に依存。
 
+*主張*　最初のノルム比較は、$`|G_D|` と拡大の階数 $`a_D,a_E` を掛けた交点重複度 $`\chi^R(D,E)` が、$`G_D` の各 $`\sigma` でひねった評価 $`c_\sigma` の総和に等しいことを述べる。
+
 原典 PDF p.24 / layout L1276。全共役の有限性と和の等式を返すが、普通K0降下入力に依存する。
+
+*2回の置き換え*
+
+*置き換え 1*（$`D'\to C_D`、補題 9.2）．perfect 複体でのノルム比較（§5）により
+
+$$`|G_D|\, a_D a_E\, \chi^R(D,E) \;=\; \sum_{\sigma\in G_D}\, \sum_i (-1)^i\, \lambda_D \operatorname{Tor}_i^R(C_D^\sigma, E'). \tag{2.1}`
 
 :::
 
@@ -149,6 +191,8 @@ tag := "paper-5-2"
 
 :::definition "paper_eq_5_4" (lean := "SerrePositivity.exists_regular_parameters_in") (uses := "paper_2_5")
 **式 (5.4)**　Q内の正則列とDのパラメータの同時選択。対応表の状態：本体にある。
+
+*主張*　補題 5.1 の素イデアル対に対し、$`Q` の中から $`h=\dim D` 個の元 $`x_1,\ldots,x_h` を取り、$`R` の正則列であると同時に、その像が $`D` のパラメータ系になるようにできる。
 
 原典 PDF p.24 / layout L1300。prime avoidanceによりQ内からR正則列でD上のparameter systemとなる列を選ぶ。
 
@@ -166,6 +210,8 @@ $`x` は素イデアル回避で一つずつ選ぶ。$`R/(x_1,\dots,x_{i-1})` �
 
 :::definition "paper_eq_5_5" (lean := "SerrePositivity.Section5.parameterQuotient_length_eq_multiplicity, SerrePositivity.Section5.koszul_zero_of_cm_parameters, SerrePositivity.Section5.parameterQuotient_len_ne_top_of_cm") (uses := "paper_2_5")
 **式 (5.5)**　パラメータ商Uの正の長さとKoszul零性。対応表の状態：本体にある。
+
+*主張*　$`I_\sigma` を $`x` のねじれた像が $`D'` に生成するパラメータ・イデアル、$`U=C/I_\sigma C` とすると、$`0<\lambda(U)=e(I_\sigma,D')<\infty` となる。同じ作用で作る Koszul ホモロジーの正次数部分は $`\lambda` で測ると零である。
 
 原典 PDF p.25 / layout L1318。本文の固定した長さ代数の全パラメータ仮定の文脈で、選んだxからUの長さ・有限性とKoszul零性を得る。存在を供給するTheorem2.5は別にinterfaceと記録する。
 
@@ -186,6 +232,8 @@ $`x` は素イデアル回避で一つずつ選ぶ。$`R/(x_1,\dots,x_{i-1})` �
 :::definition "paper_eq_5_6" (lean := "SerrePositivity.exists_pow_maximalIdeal_map_le, SerrePositivity.Section5.lemma_5_4")
 **式 (5.6)**　全近似で共通に使うannihilator冪。対応表の状態：本体にある。
 
+*主張*　$`B=R/(x)` の極大イデアルのある冪 $`\mathfrak m_B^a` が、ねじれた作用をもつ $`D'/I_\sigma` を消す。この同じ冪は $`U` および任意の $`D'/I_\sigma` 加群を消す。
+
 原典 PDF p.25 / layout L1322。局所環射B→D′とprimaryなI\_sigmaに共通の正の冪を選び、商でその像を零とする。近似では同じannihilatorを全M\_nに維持する。
 
 *解説 §9.3 置き換え 2 の準備：パラメータ商と有限近似*
@@ -198,6 +246,8 @@ $`x` は素イデアル回避で一つずつ選ぶ。$`R/(x_1,\dots,x_{i-1})` �
 
 :::lemma_ "paper_5_3" (lean := "SerrePositivity.Section5.lemma_5_3") (uses := "paper_eq_5_5")
 **補題 5.3**　パラメータ商を通じたTor長比較と次数上界。対応表の状態：本体にある。
+
+*主張*　§5.2 のパラメータ商 $`B,U` に対し、任意の有限 $`B` 加群 $`L` と各次数で $`\lambda\operatorname{Tor}_i^B(U,L)=\lambda\operatorname{Tor}_i^R(C,L)` は有限である。共通の値は $`i>l=\dim E` で零となる。
 
 原典 PDF p.25 / layout L1326。固定した長さ代数・正則列・有限B加群の文脈で、Tor\_B(U,L)とTor\_R(C,L)の長さを比較し、有限性およびi\>dim R-hでの消滅を得る。R-正則列と長さ零Koszulの仮定は本文の設定と一致する。
 
@@ -248,6 +298,8 @@ $`C` は定理 8.5 (a) と系 8.7 により非自明な $`\lambda`-CM 代数な�
 :::definition "paper_eq_5_7" (lean := "SerrePositivity.Section5.lemma_5_3") (uses := "paper_eq_5_5")
 **式 (5.7)**　Tor\_BとTor\_Rの長さおよび消滅上界。対応表の状態：本体にある。
 
+*主張*　有限 $`B` 加群 $`L` について、有限な値 $`\tau_i(L)` は $`\lambda\operatorname{Tor}_i^B(U,L)` と $`\lambda\operatorname{Tor}_i^R(C,L)` の双方に等しく、$`i>l` で零となる。
+
 原典 PDF p.25 / layout L1330。有限B加群Lと全iについて同じ長さ等式・有限性・i\>lでの消滅を得る。
 
 *解説 §5.5 パラメータ商*
@@ -288,12 +340,16 @@ tag := "paper-5-3"
 :::definition "paper_eq_5_8" (lean := "SerrePositivity.Section5.paramTheta, SerrePositivity.Section5.paramTheta_comp_tower") (uses := "paper_2_3, paper_2_5")
 **式 (5.8)**　近似用のS\_jとSおよび二つの作用。対応表の状態：本体にある。
 
+*主張*　有限段の環を $`S_j=A_j\otimes_A(D'/I_\sigma)`、極限を $`S=\Lambda\otimes_A(D'/I_\sigma)` とおく。$`U` の塔とパラメータ商からの可換な二作用はこの $`S` の作用にまとまり、有限段へ降ろしたときも $`B` 作用を保つ。
+
 原典 PDF p.26 / layout L1382。TSとして塔とD′/I\_sigmaをテンソルし、Uへの実際の環射と塔・B作用との両立を構成する。
 
 :::
 
 :::lemma_ "paper_5_4" (lean := "SerrePositivity.Section5.lemma_5_4, SerrePositivity.Section5.paramTheta, SerrePositivity.Section5.finiteApproximation_rank_lower_bound") (uses := "paper_eq_5_10, paper_eq_5_11, paper_eq_5_12, paper_eq_5_6, paper_eq_5_9, paper_2_5")
 **補題 5.4**　作用と共通annihilatorを保つ有限近似。対応表の状態：本体にある。
+
+*主張*　$`U` に対し、$`\mathfrak m_B^a` で一様に消える有限長 $`B` 加群 $`M_n` と正整数 $`s_n\to\infty` があって、正規化した長さは $`\lambda(U)`、$`L=k,E'` との全次数の Tor 長は $`\tau_i(L)` にそれぞれ通常極限で収束する。最小生成元数を $`s_n` で割った値も $`\nu_\sigma` に収束し、$`\nu_\sigma\ge\lambda(U)/\operatorname{length}_B(B/\mathfrak m_B^a)>0` となる。
 
 原典 PDF p.26 / layout L1386。塔とB作用を保持する有限近似M\_n、正整数s\_n→∞、共通annihilator、有限長・全指定Tor長の通常極限を構成する。Tor0の近似と有限長商の生成元数評価からnu\_sigmaの正の下界を得る。有限生成でないUも許す。
 
@@ -336,6 +392,8 @@ $`\lambda_D` は塔と整合する長さの係数制限である（命題 8.3）
 :::definition "paper_eq_5_9" (lean := "SerrePositivity.Section5.lemma_5_4") (uses := "paper_eq_5_10, paper_eq_5_11, paper_eq_5_12, paper_eq_5_6, paper_2_5")
 **式 (5.9)**　有限近似M\_nの長さの通常極限。対応表の状態：本体にある。
 
+*主張*　補題 5.4 で選ぶ近似 $`M_n` の正規化長 $`\operatorname{length}_B(M_n)/s_n` は、通常極限で $`\lambda(U)` に収束する。
+
 原典 PDF p.26 / layout L1389。通常のatTop極限でlambda(U)へ収束する。超極限だけではない。
 
 :::
@@ -343,12 +401,16 @@ $`\lambda_D` は塔と整合する長さの係数制限である（命題 8.3）
 :::definition "paper_eq_5_10" (lean := "SerrePositivity.Section5.lemma_5_4") (uses := "paper_eq_5_11, paper_eq_5_12, paper_eq_5_6, paper_eq_5_9, paper_2_5")
 **式 (5.10)**　有限近似の全指定Tor長の極限。対応表の状態：本体にある。
 
+*主張*　同じ近似について任意の $`i\ge0` と $`L=k,E'` に対し、$`\operatorname{length}_B\operatorname{Tor}_i^B(M_n,L)/s_n\to\tau_i(L)` となる。
+
 原典 PDF p.26 / layout L1392。指定された有限加群族と全次数のTor長について通常極限を同時に与える。
 
 :::
 
 :::definition "paper_eq_5_11" (lean := "SerrePositivity.Section5.lemma_5_4, SerrePositivity.Section5.finiteApproximation_rank_lower_bound, SerrePositivity.Section5.finiteApproximation_rank_pos")
 **式 (5.11)**　正規化した最小生成元数の正の下界。対応表の状態：本体にある。
+
+*主張*　$`M_n` の最小生成元数 $`\beta_0(M_n)` を $`s_n` で割った値は $`\nu_\sigma` に収束し、$`\nu_\sigma\ge\lambda(U)/\operatorname{length}_B(B/\mathfrak m_B^a)>0` が成り立つ。
 
 原典 PDF p.26 / layout L1396。Tor0の通常極限と共通annihilatorによるlength≤beta0×length(B/m\^a)から、正のrank極限と下界を得る。
 
@@ -369,6 +431,8 @@ $`\lambda_D` は塔と整合する長さの係数制限である（命題 8.3）
 :::definition "paper_eq_5_12" (lean := "SerrePositivity.Section5.lemma_5_4") (uses := "paper_eq_5_10, paper_eq_5_9")
 **式 (5.12)**　近似誤差をkernel・cokernelの長さで抑えるTor評価。対応表の状態：一部。
 
+*主張*　有限表示近似 $`P_\epsilon\to U` の核・余核を $`K_\epsilon,W_\epsilon`、$`L` の自由分解の階数を $`r_i(L)` とする。$`i` 次 Tor の長さの差の絶対値は $`(r_i+r_{i-1})\lambda(K_\epsilon)+(r_{i+1}+r_i)\lambda(W_\epsilon)` 以下である。
+
 原典 PDF p.26 / layout L1419。finite approximationの構成で長さ誤差を制御しているが、原典のri+ri-1およびri+1+riの係数を持つ四項評価を独立の対応宣言として未検収。
 
 :::
@@ -383,12 +447,16 @@ tag := "paper-5-4"
 :::definition "paper_eq_5_13" (lean := "SerrePositivity.Section5.betti_growth_of_approximation_limits, SerrePositivity.Section5.exists_minimal_approximation_sequence") (uses := "paper_eq_5_10, paper_eq_5_11")
 **式 (5.13)**　最小分解のrankのOとoの評価。対応表の状態：本体にある。
 
+*主張*　有限近似 $`M_n` の極小自由 $`B` 分解では、固定次数 $`i` の階数は $`O(s_n)`、$`i>l` なら $`o(s_n)` となる。
+
 原典 PDF p.27 / layout L1463。Tor長の極限と高次零性から各次数のrankのO(s\_n)と高次o(s\_n)を導く。
 
 :::
 
 :::lemma_ "paper_5_5" (lean := "SerrePositivity.Asymptotic.minimal_truncated_paper_supported, SerrePositivity.Section5.paperOrdinaryEulerK0_eq_of_common_residueField_limits, SerrePositivity.Asymptotic.minimal_truncated_tail_small") (uses := "paper_eq_4_2, paper_eq_5_10, paper_eq_5_13, paper_eq_5_7")
 **補題 5.5**　切詰めた最小分解列の商内支持と通常Euler評価。対応表の状態：本体にある。
+
+*主張*　近似 $`M_n` の極小自由分解を次数 $`0,\ldots,l` で切り、$`\gamma\in G_E` でひねって $`E'` へ延長した複体列は、漸近圏で閉点に台をもつ。通常 Euler 評価は、各 $`\gamma` について $`c_\sigma` に等しい。
 
 原典 PDF p.27 / layout L1476。minimal分解の高次rankがo(s\_n)であることを用い、商内でのパラメータ作用の零性を得る。普通長での全共役のEuler値は近似Tor極限から識別する。一般の連結係数の降下はこの支持・評価部分には不要。
 
@@ -435,6 +503,8 @@ $$`\chi_{\mathrm{ord}}(F'_\gamma)=\sum_i(-1)^i\tau_i(E')=\sum_i(-1)^i\lambda\ope
 :::definition "paper_eq_5_14" (lean := "SerrePositivity.Asymptotic.minimal_boundary_rank_isLittleO, SerrePositivity.Asymptotic.minimal_truncated_paper_supported") (uses := "paper_eq_5_13")
 **式 (5.14)**　切詰めの境界誤差のsmall rank因子化。対応表の状態：本体にある。
 
+*主張*　極小自由分解の切り詰めで零ホモトピーの残す誤差は次数 $`l` にあり、$`F_{n,l}\xrightarrow{h_l}F_{n,l+1}^{\infty}\xrightarrow{d_{l+1}}F_{n,l}` と因数分解する。中間項の階数は $`o(s_n)` なので、誤差は漸近商で零になる。
+
 原典 PDF p.28 / layout L1485。最上段の残る誤差を次の自由項を通す実鎖写像の因子化として扱い、そのrankがo(s\_n)なので商で零となる。
 
 :::
@@ -449,6 +519,8 @@ tag := "paper-5-5"
 :::definition "paper_eq_5_15" (lean := "SerrePositivity.Section4.residue_length_pos_of_lengthAlgebra_values, SerrePositivity.LengthAlgebra.length_quotient_ne_top_of_koszul_finite") (uses := "paper_eq_5_11, paper_2_6")
 **式 (5.15)**　第二長さ代数の剰余長etaの正値・有限性。対応表の状態：本体にある。
 
+*主張*　第二の長さ代数 $`C_E` の剰余商の長さ $`\eta_E=\lambda_E(C_E/\mathfrak m_{E'} C_E)` は、有限かつ狭義に正である。
+
 原典 PDF p.28 / layout L1524。長さ代数のパラメータ商から剰余商への全射と有限長フィルトレーションで正値・有限性を得る。
 
 :::
@@ -456,12 +528,16 @@ tag := "paper-5-5"
 :::definition "paper_eq_5_16" (lean := "SerrePositivity.len_quotient_map_le_length_mul, SerrePositivity.Section4.quotient_length_of_lengthAlgebra_values")
 **式 (5.16)**　基底rankを剰余長で下から抑える定量式。対応表の状態：本体にある。
 
+*主張*　$`r_E=\operatorname{rank}_{A_E} E'`、$`t_E=\operatorname{length}_{E'}(E'/\mathfrak q_E)` とすると、$`r_E\le t_E\eta_E` が成り立つ。
+
 原典 PDF p.28 / layout L1528。一般の有限長D/HをCでテンソルした商長≤length(D/H)×lambda(C/mC)をH=q\_Eへ適用し、左辺を長さ代数のrank公式でr\_Eに同定する。
 
 :::
 
 :::lemma_ "paper_5_6" (lean := "SerrePositivity.Asymptotic.paperBaseChangeEuler_minimal_lower_bound, SerrePositivity.Section5.finiteApproximation_rank_lower_bound, SerrePositivity.Section4.residue_length_pos_of_lengthAlgebra_values, SerrePositivity.len_quotient_map_le_length_mul") (uses := "paper_eq_4_2, paper_eq_5_11, paper_eq_5_16, paper_eq_5_17, paper_2_5")
 **補題 5.6**　正規化Euler評価の正の定量的下界。対応表の状態：一部。
+
+*主張*　補題 5.5 のねじった切り詰め分解列の $`\lambda_E` による Euler 評価 $`b_{\sigma,\gamma}` は、$`b_{\sigma,\gamma}\ge\nu_\sigma\eta_E\ge\frac{\lambda_D(U)}{\operatorname{length}_B(B/\mathfrak m_B^a)}\frac{r_E}{t_E}>0` を満たす。
 
 原典 PDF p.29 / layout L1535。Euler評価≥eta\_E×正規化生成元数、および生成元数のlambda(U)/length(B/m\^a)下界を確認した。原典(5.17)に明示するr\_E≤t\_E eta\_Eも一般の商長評価にある。一方、除算形の二段階下界を本文のb\_sigma,gammaの実評価と一括して返す宣言としては未照合なのでpartialとする。正値性の核心を新しい仮定として置かない。
 
@@ -552,6 +628,8 @@ $`D` 側の $`\lambda`-CM 性（命題 7.10）が複体の長さを $`l` に抑�
 :::definition "paper_eq_5_17" (lean := "SerrePositivity.Asymptotic.paperBaseChangeEuler_minimal_lower_bound, SerrePositivity.Section5.finiteApproximation_rank_lower_bound, SerrePositivity.len_quotient_map_le_length_mul") (uses := "paper_eq_4_2, paper_eq_5_11, paper_eq_5_16, paper_2_5")
 **式 (5.17)**　二段階の明示的な正の下界。対応表の状態：一部。
 
+*主張*　$`\lambda_E` による評価は、正規化最小生成元数の極限 $`\nu_\sigma` と剰余長 $`\eta_E` の積以上であり、その積は $`\lambda_D(U)r_E/(\operatorname{length}_B(B/\mathfrak m_B^a)t_E)` という正の量以上である。
+
 原典 PDF p.29 / layout L1538。eta×生成元数、およびlambda(U)/length(B/m\^a)という下界までは対応する。(5.16)の商長不等式もあるが、表示の除算形全体と本文のb\_sigma,gammaを一括した型としては未検収。
 
 *解説 §6.4 消滅と下界：補題 3.11、3.12 の適用*
@@ -584,6 +662,8 @@ $$`b_{\sigma,\gamma} \;\ge\; \nu_\sigma\cdot\lambda_E(C_E/\mathfrak{m}_{E'}C_E) 
 
 :::definition "paper_eq_5_18" (lean := "SerrePositivity.Section5.exists_secondComparison_pos_of_regular, SerrePositivity.Section5.secondComparison_of_approximation") (uses := "paper_4_7, paper_5_1, paper_5_2, paper_5_5, paper_5_6")
 **式 (5.18)**　第二平均から第1平均の各c\_sigmaの正値性。対応表の状態：未証明の入力に依存。
+
+*主張*　第二のノルム比較により、各 $`\sigma\in G_D` に対し $`|G_E|c_\sigma=\sum_{\gamma\in G_E}b_{\sigma,\gamma}>0` となる。
 
 原典 PDF p.29 / layout L1577。実際の第二比較の等式と各共役の正値性を接続する入口があるが、原典のTheorem4.7の代わりにsupportedRankK0\_descentのsorry入力に依存する。
 

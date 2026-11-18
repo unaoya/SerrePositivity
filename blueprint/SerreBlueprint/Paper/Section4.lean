@@ -56,6 +56,8 @@ tag := "paper-4"
 :::definition "paper_eq_4_1" (lean := "SerrePositivity.Section4.koszulFinite_of_lengthAlgebra_values, SerrePositivity.Section4.quotient_length_of_lengthAlgebra_values") (uses := "paper_2_5")
 **式 (4.1)**　漸近比較で仮定する長さ公式。対応表の状態：本体にある。
 
+*主張*　$`A` を剰余標数 $`p` の優秀正則局所 $`\mathbf Z_{(p)}` 代数、$`T` を同じ剰余体をもつ有限局所整域、$`z` を $`A` の正則パラメータ系とする。漸近比較の長さに課すのは、任意の $`v\ge1` に対し $`i>0` で $`\lambda H_i(z^v;C)=0` となり、$`\lambda(C/(z^v)C)=v^{\dim A}\operatorname{rank}_A T` となる条件である。
+
 原典 PDF p.16 / layout L844。Section4の仮定の表現とそこから使う有限性・商長を形式化する。長さ代数の存在自体の証明と混同しない。
 
 :::
@@ -90,6 +92,8 @@ tag := "paper-4-2"
 :::lemma_ "paper_4_2" (lean := "SerrePositivity.Asymptotic.supportedRankQuotientInclusion, SerrePositivity.Asymptotic.paperSupportedRankEquivalence")
 **補題 4.2**　台つき部分商の充満忠実性と冪等完備化。対応表の状態：本体にある。
 
+*主張*　台つき部分圏を $`S_S`、誤差の厚い部分圏を $`N_S` とすると、自然な完全関手 $`S_S/(S_S\cap N_S)\to D_S/N_S` は充満忠実である。この部分商を冪等完備化すると、商の中で台が $`J` にある部分圏 $`P_S^J` になる。
+
 原典 PDF p.17 / layout L889。台つき部分商からランク商への標準関手のFull・Faithful・三角性のinstanceと、支持つきKaroubi包の同値を確認した。有限ランク誤差の商の後に現れる支持と、lift上の一様支持を区別する。
 
 *解説 §6.1 圏*
@@ -123,6 +127,8 @@ tag := "paper-4-3"
 
 :::proposition "paper_4_3" (lean := "SerrePositivity.Asymptotic.paperRankHomology, SerrePositivity.Asymptotic.completedRankHomology_isHomological, SerrePositivity.Asymptotic.paperRankBetti_nonneg, SerrePositivity.Asymptotic.paperRankBetti_hasFiniteSupport, SerrePositivity.Asymptotic.paperRankEulerK0, SerrePositivity.Asymptotic.paperBaseChangeHomology, SerrePositivity.Asymptotic.paperBaseChangeHomology_isHomological, SerrePositivity.Asymptotic.paperBaseChangeBetti_nonneg, SerrePositivity.Asymptotic.paperBaseChangeBetti_hasFiniteSupport, SerrePositivity.Asymptotic.paperBaseChangeEulerK0") (uses := "paper_eq_4_1, paper_eq_4_2, paper_eq_4_3, paper_4_1, paper_4_2, ext_BalmerSchlichting_1_10, ext_BalmerSchlichting_1_12")
 **命題 4.3**　長さのSerre商へのホモロジー関手とEuler評価。対応表の状態：本体にある。
+
+*主張*　台つき漸近圏 $`P_T^J` から通常長・$`C` 上の長さの Serre 商へのホモロジー関手があり、一様に台をもつ持ち上げではそれぞれ元のホモロジー列・$`C` とのテンソルのホモロジー列を与える。得られる長さは非負有限で有限範囲に集中し、交代和は $`K_0(P_T^J)\to\mathbf R` を定める。商で台をもつ自由複体列には Koszul テンソルによる二項係数公式 (4.2) が成り立つ。
 
 原典 PDF p.18 / layout L937。現在はLengthSerreQuotientへの各次数の関手とIsHomological、非負・有限supportのBetti長、K0のEuler準同型がある。ordinary長とbase-change長に適用し、Karoubi包の全支持対象を扱う。旧表の数値部分のみというpartial判定は維持しない。添字はcochainのq=-iへ読み替える。
 
@@ -255,6 +261,8 @@ $$`\chi_C(X\otimes_SS')=\chi_C(X).`
 :::definition "paper_eq_4_2" (lean := "SerrePositivity.Asymptotic.paperRankBetti_koszul_formula, SerrePositivity.Asymptotic.paperBaseChangeBetti_koszul_formula, SerrePositivity.Asymptotic.paperBaseChangeBetti_koszul_tensor_formula") (uses := "paper_eq_4_3, paper_4_1")
 **式 (4.2)**　商内支持からのKoszul–Betti二項係数公式。対応表の状態：本体にある。
 
+*主張*　有界自由複体列 $`F_n` が商で台をもち、$`z^v` がその像に零で作用するなら、$`(1+t)^e\sum_i b_i(F)t^i=\sum_i t^i\lim_{n\to\mathcal U}\operatorname{len}H_i(K_v\otimes_A F_n)/s_n` である。$`C` による評価では右辺の複体をさらに $`C` とテンソルし、長さを $`\lambda` で測る。
+
 原典 PDF p.18 / layout L956。厳密有界自由列の像が商内でsupportedであればよく、元の列の一様支持を追加仮定しない。ordinaryとbase-change lengthの両方へ適用する。原典のLaurent多項式を各係数の等式で与える。
 
 *解説 §6.4 消滅と下界：補題 3.11、3.12 の適用*
@@ -292,12 +300,16 @@ tag := "paper-4-4"
 :::lemma_ "paper_4_4" (lean := "SerrePositivity.lemma_3_4") (uses := "paper_3_4")
 **補題 4.4**　有限長基底加群に対する係数Tor長。対応表の状態：本体にある。
 
+*主張*　完備性を課さない §4 の基底と式 (4.1) の長さの下で、任意の有限長 $`A` 加群 $`V` に対し、正次数の $`\operatorname{Tor}^A(V,C)` は長さ零、テンソル積の長さは $`r\operatorname{length}_A V` となり、これらは $`J` のある冪で消える。
+
 原典 PDF p.19 / layout L1023。同じ(4.1)の長さ仮定の下で、Lemma3.4を再利用する型である。原典同様、Cの平坦性やlambdaの忠実性を仮定せず、高次Torは長さ零として扱う。
 
 :::
 
 :::proposition "paper_4_5" (lean := "SerrePositivity.Section4.paperBaseChangeEulerK0_eq_koszulEuler_mul, SerrePositivity.Section4.ordinaryPaperEulerK0, SerrePositivity.Section4.koszulPaperEulerK0_changeRing") (uses := "paper_eq_4_4, paper_eq_4_5, paper_eq_4_6, paper_4_2, paper_4_4")
 **命題 4.5**　冪等直和因子を含む基底変換Euler比較。対応表の状態：一部。
+
+*主張*　台つき漸近圏の任意の $`X\in P_A^J` について、$`\chi_{\mathrm{ord}}(X\otimes_A^{\mathbf L}T)=r\chi_A(X)=\chi_C(X\otimes_A^{\mathbf L}T)` が成り立つ。局所化前に持ち上がらない冪等射で定まる直和因子にも適用できる。
 
 原典 PDF p.20 / layout L1037。Karoubi包の全K0類で正規化Euler評価の基底変換公式を直接確認した。原典のchi\_A・通常T評価・C評価の三項同一視のうち通常T評価側までを一つの対応として検収していないためpartialとする。
 
@@ -357,6 +369,8 @@ $$`\chi_{\mathrm{ord}}(X\otimes_A T) \;=\; r\cdot\chi_A(X) \;=\; \chi_C(X\otimes
 :::definition "paper_eq_4_5" (lean := "SerrePositivity.Section4.koszulPaperEulerK0_changeRing") (uses := "paper_eq_4_6")
 **式 (4.5)**　普通Euler評価に現れるr倍有限和。対応表の状態：一部。
 
+*主張*　$`T` の有限自由 $`A` 分解 $`P_\bullet` と、ホモロジー上の冪等射の像 $`V_b` による交代和 $`\sum_u(-1)^u\operatorname{rank}_A(P_u)\sum_b(-1)^b\operatorname{length}_A V_b` は、$`r=\operatorname{rank}_A T` を後者の和に掛けたものに等しい。
+
 原典 PDF p.20 / layout L1085。Koszul Euler数を係数とするK0での比較はあるが、原典のidempotent aの像V\_bの通常長の有限和をこの形で計算する表示は未検収。
 
 :::
@@ -415,6 +429,8 @@ tag := "paper-4-5"
 
 :::theorem "paper_4_7" (lean := "SerrePositivity.Section4.theorem_4_7, SerrePositivity.Section4.theorem_4_7_K0, SerrePositivity.Section4.supportedRankK0_descent") (uses := "paper_eq_4_1, paper_3_1, paper_4_5, paper_4_6")
 **定理 4.7**　漸近Euler評価の共役norm和の比較。対応表の状態：未証明の入力に依存。
+
+*主張*　§4 の基底・係数・長さの設定と (4.1) の下で、有限群 $`G` が $`T` に $`A` 上で作用し、$`\operatorname{Spec}T\to\operatorname{Spec}A` が全射で幾何ファイバーごとに作用が推移的とする。任意の $`X\in P_T^J` について $`\sum_{g\in G}\chi_{\mathrm{ord}}(gX)=\sum_{g\in G}\chi_C(gX)` となる。
 
 原典 PDF p.22 / layout L1171。全支持対象上の共役和の等式の型はあるが、supportedRankK0\_descentが直接sorryを持つ。Lemma4.6を構成してTheorem3.1を実際に適用したものとはせず、別の入力界面として記録する。
 

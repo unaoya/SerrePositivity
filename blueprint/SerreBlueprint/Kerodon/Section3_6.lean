@@ -43,6 +43,8 @@ Kerodon [Tag 0130](https://kerodon.net/tag/0130)
 :::definition "kerodon_3_6_1_1" (lean := "SSet.Finite, SSet.hasDimensionLT_of_finite, SSet.finite_of_hasDimensionLT")
 Kerodon Definition 3.6.1.1（[Tag 0131](https://kerodon.net/tag/0131)）。対応表の状態：Mathlib にある。
 
+*主張*　単体集合が有限であるとは、各次数の単体の集合が有限であり、非退化単体の次数に一様な上界があることをいう。
+
 仮定：単体集合 X（Kerodon と一致）。結論：SSet.Finite は全非退化単体の有限性で定義し、次元上限と各次数の単体の有限性を得る。逆向きは次元上限と各次元の有限性から有限和の非退化単体を数える（一致）。
 
 :::
@@ -50,12 +52,16 @@ Kerodon Definition 3.6.1.1（[Tag 0131](https://kerodon.net/tag/0131)）。対�
 :::proposition "kerodon_3_6_1_7" (lean := "SSet.Finite.exists_epi_from_isCardinalPresentable, SSet.finite_of_epi, SSet.finite_of_hasDimensionLT")
 Kerodon Proposition 3.6.1.7（[Tag 0137](https://kerodon.net/tag/0137)）。対応表の状態：Mathlib にある。
 
+*主張*　単体集合で、非退化単体が有限個であること、標準単体の有限余積の全射像であること、有限単体集合であることは同値である。
+
 仮定：単体集合 X（Kerodon と一致）。結論：非退化単体が有限なら対応する有限個の標準単体の余積からエピがあり、有限な始域のエピ像は有限。各次数の有限性と次元上限からも非退化単体が有限で、本文の三条件を与える（一致）。
 
 :::
 
 :::proposition "kerodon_3_6_1_9" (uses := "kerodon_1_1_0_6, kerodon_1_1_0_12, kerodon_3_6_1_7, kerodon_9_2_0_2")
 Kerodon Proposition 3.6.1.9（[Tag 02LG](https://kerodon.net/tag/02LG)）。対応表の状態：一部。
+
+*主張*　単体集合 $`X` が有限であることは、$`\operatorname{Hom}(X,-)` がフィルター付き余極限を保つことと同値である。
 
 B6：Finite.instIsFinitelyPresentable は X.Finite から Hom(X,−) が filtered colimit を保つという原文の向きを直接与える。逆向きの有限性は含まない。
 
@@ -65,6 +71,8 @@ B6：Finite.instIsFinitelyPresentable は X.Finite から Hom(X,−) が filtere
 
 :::corollary "kerodon_3_6_1_10" (lean := "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.ComparisonWithTopologicalSpaces.finiteInternalHom_preservesFilteredColimits")
 Kerodon Corollary 3.6.1.10（[Tag 03X6](https://kerodon.net/tag/03X6)）。対応表の状態：本体にある。
+
+*主張*　有限単体集合 $`X` に対し、単体集合値の関手 $`\operatorname{Fun}(X,-)` はフィルター付き余極限を保つ。
 
 仮定：有限単体集合 K（Kerodon と一致）。結論：内部 Hom の関手 ihom K が filtered colimit を保存する（一致）。
 
@@ -123,6 +131,8 @@ B6：現本体・固定Mathlibを再検索。通常の実現は標準単体か�
 
 :::definition "kerodon_3_6_2_8" (lean := "NonemptyFinLinOrd")
 Kerodon Notation 3.6.2.8（[Tag 013L](https://kerodon.net/tag/013L)）。対応表の状態：一部。
+
+*主張*　空でない有限全順序集合と単調写像の圏を $`\operatorname{Lin}_{\ne\emptyset}` と書く。$`[0,1]` から有限部分集合を除いた空間の連結成分は、商写像が単調になる一意の全順序で同圏の対象をなす。
 
 B6：NonemptyFinLinOrd は原文の Lin\_\{≠∅\} の対象と単調写像を直接束ねる構成成分。\[0,1\]から有限集合を除いた成分集合の有限性・順序は含まない。
 
@@ -264,6 +274,8 @@ Kerodon [Tag 021Q](https://kerodon.net/tag/021Q)
 :::definition "kerodon_3_6_6_1" (lean := "IsCoveringMap.liftHomotopy, IsCoveringMap.liftHomotopy_lifts, IsCoveringMap.liftHomotopy_zero")
 Kerodon Definition 3.6.6.1（[Tag 021R](https://kerodon.net/tag/021R)）。対応表の状態：一部。
 
+*主張*　連続写像は、全ての $`n\geq0` で $`\{0\}\times|\Delta^n|\subseteq[0,1]\times|\Delta^n|` に対して右持ち上げ性を持つとき Serre ファイブレーションである。
+
 B6：IsCoveringMap.liftHomotopy と liftHomotopy\_lifts/zero は任意の位相空間 A に対し初時刻の持ち上げを直接返す。q を被覆写像に強め、A を標準単体の実現（3.6.6.8では任意 B の実現）に取ると、原文の区間持ち上げ条件が直接成立。一般の Serre fibration と相対条件全体の iff は含まない。
 
 :::
@@ -278,6 +290,8 @@ B6：現本体・固定Mathlibを再検索。特異単体集合と単体の Kan 
 :::corollary "kerodon_3_6_6_8" (lean := "IsCoveringMap.liftHomotopy, IsCoveringMap.liftHomotopy_lifts, IsCoveringMap.liftHomotopy_zero")
 Kerodon Corollary 3.6.6.8（[Tag 021Y](https://kerodon.net/tag/021Y)）。対応表の状態：一部。
 
+*主張*　連続写像が Serre ファイブレーションであることは、任意の単体集合 $`B` の実現について $`\{0\}\times|B|\subseteq[0,1]\times|B|` に対する右持ち上げ性と同値である。任意の単射 $`A\to B` で、さらに $`[0,1]\times|A|` 上の持ち上げを指定しても延長できるという条件とも同値である。
+
 B6：IsCoveringMap.liftHomotopy と liftHomotopy\_lifts/zero は任意の位相空間 A に対し初時刻の持ち上げを直接返す。q を被覆写像に強め、A を標準単体の実現（3.6.6.8では任意 B の実現）に取ると、原文の区間持ち上げ条件が直接成立。一般の Serre fibration と相対条件全体の iff は含まない。
 
 :::
@@ -291,6 +305,8 @@ B6：現本体・固定Mathlibを再検索。位相の被覆写像の持ち上�
 
 :::corollary "kerodon_3_6_6_11" (lean := "IsCoveringMap.liftHomotopy, IsCoveringMap.liftHomotopy_lifts, IsCoveringMap.liftHomotopy_zero")
 Kerodon Corollary 3.6.6.11（[Tag 0224](https://kerodon.net/tag/0224)）。対応表の状態：一部。
+
+*主張*　各底点の開近傍上で積に同相なファイバー束は Serre ファイブレーションである。
 
 B6：IsCoveringMap.liftHomotopy と lifts/zero は全空間が離散ファイバーの被覆である場合、任意のパラメータ（特に実現した標準単体）で初時刻を固定する区間持ち上げを直接返す。一般のファイバー束の全体は含まない。
 

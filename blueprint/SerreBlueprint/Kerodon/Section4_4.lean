@@ -83,6 +83,8 @@ B6再検索（現本体・ロックMathlib、移動後の宣言を含む）：1�
 :::definition "kerodon_4_4_1_4" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.equivalenceLifting_iff_inner_and_invertibleTargetLifting, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.equivalenceLifting_of_innerFibration_of_targetLifting") (uses := "kerodon_1_4_0_1, kerodon_4_1_1_1")
 Kerodon Definition 4.4.1.4（[Tag 01ES](https://kerodon.net/tag/01ES)）。対応表の状態：本体にある。
 
+*主張*　無限圏の関手 $`F:C\to D` が同型ファイブレーションであるとは、内部ファイブレーションであり、$`F(c)` に入る任意の同型を終点 $`c` の同型に持ち上げられることである。
+
 equivalenceLifting\_iff\_inner\_and\_invertibleTargetLifting の右辺は、原文と同じ inner 性と終点指定の可逆辺の可逆な持ち上げ。原文と同じ準圏間の仮定で EquivalenceLifting が二条件と同値になるので、別名でも定義全体を表す。
 
 :::
@@ -97,6 +99,8 @@ B6再検索（現本体・ロックMathlib、移動後の宣言を含む）：1�
 :::corollary "kerodon_4_4_1_8" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.EquivalenceLifting.op, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.oppositeFunctor_square, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.equivalenceLifting_iff_inner_and_invertibleTargetLifting")
 Kerodon Corollary 4.4.1.8（[Tag 01EV](https://kerodon.net/tag/01EV)）。対応表の状態：本体にある。
 
+*主張*　無限圏の関手は、反対圏の間の関手が同型ファイブレーションであるとき、かつそのときに限り同型ファイブレーションである。
+
 仮定：∞ 圏間の F（Lean が弱い：EquivalenceLifting.op 自体は任意の単体集合間で成り立つ）。結論：EquivalenceLifting は ∞ 圏上では内ファイブレーションと同値辺持ち上げの組。反転で保たれ、二重反転が恒等なので反対方向にも保たれる（一致）。
 
 :::
@@ -110,6 +114,8 @@ B6再検索（現本体・ロックMathlib、移動後の宣言を含む）：1�
 
 :::proposition "kerodon_4_4_1_11" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.leftFibration_liftInvertibleEdge_target, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.leftFibration_invertibleTargetLifting") (uses := "kerodon_1_4_0_1, kerodon_4_4_2_11, kerodon_5_6_7_5")
 Kerodon Example 4.4.1.11（[Tag 01EW](https://kerodon.net/tag/01EW)）。対応表の状態：一部。
+
+*主張*　無限圏の間の左ファイブレーションと右ファイブレーションはいずれも同型ファイブレーションである。
 
 leftFibration\_invertibleTargetLifting は原文のleft fibration側の可逆辺を可逆な辺へ持ち上げる条件を直接返す。一般のright側とisofibrationとの同値の一式は引用に含まない。
 
@@ -127,6 +133,8 @@ Kerodon [Tag 019C](https://kerodon.net/tag/019C)
 :::proposition "kerodon_4_4_2_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FromCategoriesToSimplicialSets.kanComplex_iff_isGroupoid, SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.kanComplex_ho_isGroupoid, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.kanComplex_of_leftHornFillers") (uses := "kerodon_1_1_0_6, kerodon_1_2_5_1, kerodon_1_4_0_1, kerodon_4_4_2_6")
 Kerodon Proposition 4.4.2.1（[Tag 019D](https://kerodon.net/tag/019D)）。対応表の状態：一部。
 
+*主張*　単体集合 $`X` が Kan 複体であることは、$`X\to\Delta^0` が Kan、左、または右ファイブレーションであることのいずれとも同値である。同じ条件は $`X` が無限圏ですべての射が同型であること、すなわちホモトピー圏が亜群であることでも表せる。
+
 kanComplex\_iff\_isGroupoid と kanComplex\_of\_leftHornFillers は原文の (b)⇔(c) の準圏上での比較と (e)⇒(b) を直接与える。right fibrationを含む六条件全体は含まない。
 
 :::
@@ -141,12 +149,16 @@ B6再検索（現本体・ロックMathlib、移動後の宣言を含む）：�
 :::corollary "kerodon_4_4_2_3" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber_kanComplex_of_leftFibration, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber_kanComplex")
 Kerodon Corollary 4.4.2.3（[Tag 019E](https://kerodon.net/tag/019E)）。対応表の状態：本体にある。
 
+*主張*　単体集合の左または右ファイブレーションの任意の頂点上のファイバーは Kan 複体である。
+
 仮定：q:X→S が左または右ファイブレーションで s が S の頂点（Kerodon と一致）。結論：引き戻しで定めた vertexFiber q s が KanComplex（一致）。
 
 :::
 
 :::corollary "kerodon_4_4_2_4" (lean := "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.relativeFunctorSpace_kanComplex")
 Kerodon Corollary 4.4.2.4（[Tag 01GY](https://kerodon.net/tag/01GY)）。対応表の状態：一部。
+
+*主張*　単射 $`A\to B` と左または右ファイブレーション $`X\to S` を含む可換正方形の持ち上げの単体集合は Kan 複体である。包含が左ファイブレーションに対して左無害、または右ファイブレーションに対して右無害なら可縮である。
 
 relativeFunctorSpace\_kanComplex は A=∅、qがleft fibrationの場合の同じ底上の写像空間のKan性を直接返す。任意の境界制限とanodyne時の可縮性は含まない。
 
@@ -155,12 +167,16 @@ relativeFunctorSpace\_kanComplex は A=∅、qがleft fibrationの場合の同�
 :::corollary "kerodon_4_4_2_5" (lean := "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.relativeFunctorSpace_kanComplex, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.relativeFunctorSpace_kanComplex_of_rightFibration")
 Kerodon Corollary 4.4.2.5（[Tag 01GZ](https://kerodon.net/tag/01GZ)）。対応表の状態：本体にある。
 
+*主張*　左または右ファイブレーション $`X\to S` と任意の単体集合の射 $`B\to S` に対し、$`S` 上の写像の単体集合 $`\operatorname{Fun}_{/S}(B,X)` は Kan 複体である。
+
 仮定：q:X→S が左または右ファイブレーションで g:B→S は任意（Kerodon と一致）。結論：底上の相対関手空間 relativeFunctorSpace q g が KanComplex（一致）。
 
 :::
 
 :::theorem "kerodon_4_4_2_6" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.isInvertibleEdge_iff_hasFinalHornFillers, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.hasFinalHornFillers_of_isInvertibleEdge, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_iff_hasInitialHornFillers")
 Kerodon Theorem 4.4.2.6（[Tag 019F](https://kerodon.net/tag/019F)）。対応表の状態：本体にある。
+
+*主張*　無限圏の射 $`u` が同型であることは、$`n\geq2` の左外角 $`\Lambda^n_0` の写像で最初の辺が $`u` であるものすべてが延長できることと同値である。右外角 $`\Lambda^n_n` の最後の辺で同じ条件を課すこととも同値である。
 
 仮定：Quasicategory X と端点を指定した辺 e（Kerodon と一致）。結論：IsInvertibleEdge e と、初辺を固定した最初の外ホーン充填性、終辺を固定した最後の外ホーン充填性はそれぞれ同値（一致）。
 
@@ -274,6 +290,8 @@ isLimitCone\_of\_conservative\_image は原文の保守性を入力仮定に使�
 :::proposition "kerodon_4_4_2_11" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.leftFibration_reflects_invertibleEdge, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.derived_rightFibration_reflects_invertibleEdge")
 Kerodon Proposition 4.4.2.11（[Tag 019K](https://kerodon.net/tag/019K)）。対応表の状態：本体にある。
 
+*主張*　無限圏の間の左または右ファイブレーションは同型を反映する。
+
 仮定：Quasicategory X,Y と左または右ファイブレーション q:X→Y（Kerodon と一致）。結論：任意の辺 e について q(e) が可逆なら e も可逆（一致）。
 
 :::
@@ -288,12 +306,16 @@ B6再検索（現本体・ロックMathlib、移動後の宣言を含む）：�
 :::proposition "kerodon_4_4_2_13" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.innerFibration_lift_finalHorn, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.innerFibration_lift_initialHorn")
 Kerodon Proposition 4.4.2.13（[Tag 01H0](https://kerodon.net/tag/01H0)）。対応表の状態：本体にある。
 
+*主張*　無限圏の間の内部ファイブレーションに対する $`n\geq2` の右外角の持ち上げ問題は、角の最後の辺が始域の同型であれば解をもつ。
+
 仮定：∞ 圏間の内ファイブレーション q、次元≥2 の最後のホーン、可換な底単体と可逆な終辺（Kerodon と一致）。結論：ホーン制限と q による像の双方を保つ充填が存在。引用は最初のホーンの双対版も含む（一致）。
 
 :::
 
 :::proposition "kerodon_4_4_2_14" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.rightFibration_trivialKanFibration_of_contractible_fibers, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber_isContractibleKan") (uses := "kerodon_1_1_0_6, kerodon_1_2_5_1, kerodon_4_4_2_15")
 Kerodon Proposition 4.4.2.14（[Tag 01NU](https://kerodon.net/tag/01NU)）。対応表の状態：一部。
+
+*主張*　単体集合の射が自明な Kan ファイブレーションであることは、左ファイブレーションで全頂点ファイバーが可縮なこと、または右ファイブレーションで全頂点ファイバーが可縮なことのいずれとも同値である。
 
 rightFibration\_trivialKanFibration\_of\_contractible\_fibers は原文(3)⇒(1)を直接返す。vertexFiber\_isContractibleKanも逆向きの可縮性成分を持つが、left側の全比較は含まない。
 
@@ -357,12 +379,16 @@ Kan 性の証明は「内ホーンは準圏性、外ホーンは Joyal の定理
 :::definition "kerodon_4_4_3_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore_mem_edge_iff, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreFunctor")
 Kerodon Construction 4.4.3.1（[Tag 01D0](https://kerodon.net/tag/01D0)）。対応表の状態：本体にある。
 
+*主張*　無限圏の芯 $`C^{\simeq}` は、すべての辺が $`C` の同型に移る単体からなる単体部分集合である。
+
 仮定：∞ 圏 X（Lean が弱い：構成は任意の SSet に定義）。結論：各辺が可逆な単体の部分複体 quasicategoryCore X（一致）。
 
 :::
 
 :::proposition "kerodon_4_4_3_6" (lean := "SerrePositivity.KST.LocalizingInvariants.coreInclusion_innerFibration, SerrePositivity.KST.LocalizingInvariants.coreInclusion_equivalenceLifting") (uses := "kerodon_1_4_0_1")
 Kerodon Proposition 4.4.3.6（[Tag 01D4](https://kerodon.net/tag/01D4)）。対応表の状態：本体にある。
+
+*主張*　無限圏 $`C` の芯 $`C^{\simeq}` は同型で閉じた部分圏であり、包含 $`C^{\simeq}\to C` は同型ファイブレーションである。
 
 coreInclusion\_equivalenceLifting と equivalenceLifting\_iff\_inner\_and\_invertibleTargetLifting により、同じcore包含は原文のisofibrationの二条件をともに満たす。coreInclusion\_innerFibrationも直接あり、名称の差だけでpartialにしない。
 
@@ -371,12 +397,16 @@ coreInclusion\_equivalenceLifting と equivalenceLifting\_iff\_inner\_and\_inver
 :::proposition "kerodon_4_4_3_7" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.coreMap_fibration_of_kanEquivalenceLifting, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.coreMap_rightFibration_of_invertibleTargetLifting")
 Kerodon Proposition 4.4.3.7（[Tag 01EZ](https://kerodon.net/tag/01EZ)）。対応表の状態：本体にある。
 
+*主張*　無限圏の同型ファイブレーションは、芯の間に Kan ファイブレーションを誘導する。
+
 仮定：∞ 圏 X,Y と EquivalenceLifting を持つ p:X→Y（Kerodon と一致）。結論：quasicategoryCoreMap p が Kan ファイブレーション（一致）。
 
 :::
 
 :::corollary "kerodon_4_4_3_8" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.rightFibration_fibration_of_kanComplex, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.fibration_leftFibration") (uses := "kerodon_1_1_0_6, kerodon_1_2_5_1, kerodon_1_4_0_1, kerodon_4_4_1_11, kerodon_4_4_2_11, kerodon_4_4_3_7")
 Kerodon Corollary 4.4.3.8（[Tag 01NV](https://kerodon.net/tag/01NV)）。対応表の状態：一部。
+
+*主張*　標的が Kan 複体である単体集合の射について、Kan ファイブレーション、左ファイブレーション、右ファイブレーション、無限圏の間の同型を反映する同型ファイブレーションであることは同値である。
 
 rightFibration\_fibration\_of\_kanComplex は始域もKanと仮定すると原文(3)⇒(1)を同じqについて直接返す。fibration\_leftFibrationは(1)⇒(2)。始域が任意の場合と保守的isofibrationの条件は含まない。
 
@@ -392,12 +422,16 @@ B6再検索（現本体・ロックMathlib、移動後の宣言を含む）：�
 :::corollary "kerodon_4_4_3_10" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.fibration_of_kanEquivalenceLifting_of_kanComplex")
 Kerodon Corollary 4.4.3.10（[Tag 01NW](https://kerodon.net/tag/01NW)）。対応表の状態：本体にある。
 
+*主張*　Kan 複体間の同型ファイブレーションは Kan ファイブレーションである。
+
 仮定：KanComplex X,Y と EquivalenceLifting を持つ p:X→Y（Kerodon と一致）。結論：p が Kan ファイブレーション（一致）。
 
 :::
 
 :::corollary "kerodon_4_4_3_11" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.quasicategoryCore_kanComplex")
 Kerodon Corollary 4.4.3.11（[Tag 01H1](https://kerodon.net/tag/01H1)）。対応表の状態：本体にある。
+
+*主張*　無限圏の芯は Kan 複体である。
 
 仮定：Quasicategory X（Kerodon と一致）。結論：quasicategoryCore X を単体集合として見たものが KanComplex（一致）。
 
@@ -413,12 +447,16 @@ B6再検索（現本体・ロックMathlib、移動後の宣言を含む）：�
 :::corollary "kerodon_4_4_3_14" (lean := "SerrePositivity.KST.SConstruction.kanSource_edge_isInvertible, SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.isInvertibleEdge_of_hasFinalHornFillers")
 Kerodon Corollary 4.4.3.14（[Tag 01D6](https://kerodon.net/tag/01D6)）。対応表の状態：一部。
 
+*主張*　無限圏の射が同型であることは、ある Kan 複体からの関手で辺の像になることと同値である。その Kan 複体を可縮と要求しても同値である。
+
 kanSource\_edge\_isInvertible と IsInvertibleEdge.map により、Kan複体の辺をFで送ったuは可逆で、原文(2)⇒(1)を直接得る。逆にKan/可縮Kanからの表示を構成する方向は含まない。
 
 :::
 
 :::corollary "kerodon_4_4_3_15" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.exists_equivalenceInterval_map_of_vertexIso") (uses := "kerodon_1_2_5_1, kerodon_1_4_0_1")
 Kerodon Corollary 4.4.3.15（[Tag 01H3](https://kerodon.net/tag/01H3)）。対応表の状態：一部。
+
+*主張*　無限圏の二対象が同型であることは、ある連結 Kan 複体の二頂点の像として一つの関手で実現されることと同値である。その Kan 複体を可縮と要求しても同値である。
 
 exists\_equivalenceInterval\_map\_of\_vertexIso は、二対象の同型から同じ二頂点を持つ可逆区間からの射を直接与える。可逆区間はcodiscreteな二点亜群のnerveで可縮Kanであり、(1)から存在条件への向き。一般の逆方向は含まない。
 
@@ -427,12 +465,16 @@ exists\_equivalenceInterval\_map\_of\_vertexIso は、二対象の同型から�
 :::definition "kerodon_4_4_3_16" (lean := "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.nonempty_vertexIso_of_piZero_eq")
 Kerodon Notation 4.4.3.16（[Tag 01D7](https://kerodon.net/tag/01D7)）。対応表の状態：一部。
 
+*主張*　無限圏 $`C` の芯の連結成分の集合 $`\pi_0(C^{\simeq})` は、$`C` の対象の同型類の集合である。
+
 nonempty\_vertexIso\_of\_piZero\_eq をKan coreに適用し包含で送ると、同じπ₀成分の二対象が元のCで同型になる方向を直接得る。同型類の集合との全単射・逆方向は含まない。
 
 :::
 
 :::proposition "kerodon_4_4_3_17" (lean := "SerrePositivity.KST.SConstruction.kanSourceCoreMap, SerrePositivity.KST.SConstruction.kanSourceCoreMap_inclusion, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreLift")
 Kerodon Proposition 4.4.3.17（[Tag 01D8](https://kerodon.net/tag/01D8)）。対応表の状態：本体にある。
+
+*主張*　Kan 複体から無限圏 $`C` への単体写像は、芯 $`C^{\simeq}` を通って一意に分解する。
 
 仮定：Kan 始域 X、∞ 圏 Y（Lean が弱い：Y は任意）。結論：任意の f:X→Y を core へ因子化し、包含との合成は f。包含が単射なので逆対応は一意（一致）。
 
@@ -441,12 +483,16 @@ Kerodon Proposition 4.4.3.17（[Tag 01D8](https://kerodon.net/tag/01D8)）。対
 :::corollary "kerodon_4_4_3_18" (lean := "SerrePositivity.KST.SConstruction.kanSourceCoreMap, SerrePositivity.KST.SConstruction.kanCoreIso") (uses := "kerodon_1_2_5_1, kerodon_1_4_0_1, kerodon_4_4_3_11, kerodon_4_4_3_17")
 Kerodon Corollary 4.4.3.18（[Tag 01D9](https://kerodon.net/tag/01D9)）。対応表の状態：一部。
 
+*主張*　無限圏の芯は、その中の最大の Kan 複体である。
+
 kanSourceCoreMap と包含との厳密な回収式をKan部分複体Aの包含に適用するとA⊆coreを直接得る。原文の最大性の成分。core自身のKan性はこの引用の結論に含まない。
 
 :::
 
 :::corollary "kerodon_4_4_3_19" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.EquivalenceLifting.innerFibration, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreMap_isPullback_of_isPullback, SSet.quasicategory_of_innerFibration") (uses := "kerodon_1_1_0_6, kerodon_1_2_5_1, kerodon_1_4_0_1, kerodon_4_4_1_4, kerodon_4_4_3_7, kerodon_4_4_3_11, kerodon_4_4_3_18")
 Kerodon Corollary 4.4.3.19（[Tag 01H4](https://kerodon.net/tag/01H4)）。対応表の状態：一部。
+
+*主張*　無限圏の同型ファイブレーション $`C\to D` を無限圏 $`D'\to D` に沿って引き戻すと、再び無限圏の間の同型ファイブレーションが得られる。芯に移した正方形は引き戻しかつホモトピー引き戻しである。引き戻し圏の射が同型であることは、$`C,D'` への二つの像が同型であることと同値である。
 
 quasicategoryCoreMap\_isPullback\_of\_isPullback は同じ指定したcore四角形の厳密なpullback性を直接返す。ホモトピーpullback性・同型の反映・q′のisofibration性は含まない。
 
@@ -455,6 +501,8 @@ quasicategoryCoreMap\_isPullback\_of\_isPullback は同じ指定したcore四角
 :::corollary "kerodon_4_4_3_20" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreMap_isPullback_of_isPullback, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.corePullbackIso")
 Kerodon Corollary 4.4.3.20（[Tag 01H6](https://kerodon.net/tag/01H6)）。対応表の状態：本体にある。
 
+*主張*　無限圏の同型ファイブレーション $`C\to D` では、頂点 $`d` 上のファイバーの芯は $`C^{\simeq}\to D^{\simeq}` の $`d` 上のファイバーに同型である。従ってファイバーの $`C` への包含は同型を反映する。
+
 仮定：∞ 圏の isofibration p と底の点（Lean が弱い：p は内ファイブレーション、底変換は任意の ∞ 圏からでよい）。結論：core と当該厳密な引き戻しを交換する同型。点を代入するとファイバーの比較になる（一致）。
 
 :::
@@ -462,12 +510,16 @@ Kerodon Corollary 4.4.3.20（[Tag 01H6](https://kerodon.net/tag/01H6)）。対�
 :::corollary "kerodon_4_4_3_21" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.sliceOverPostcomp_equivalenceLifting, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.sliceUnderPostcomp_equivalenceLifting")
 Kerodon Corollary 4.4.3.21（[Tag 069C](https://kerodon.net/tag/069C)）。対応表の状態：本体にある。
 
+*主張*　無限圏の同型ファイブレーション $`U:C\to D` と任意の図式 $`f` に対し、$`C_{/f}\to D_{/Uf}` は同型ファイブレーションである。
+
 仮定：EquivalenceLifting を持つ p と任意の図式 f:K→X（Kerodon と一致）。結論：sliceOverPostcomp f p も EquivalenceLifting。coslice の双対も含む（一致）。
 
 :::
 
 :::corollary "kerodon_4_4_3_22" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber_kanComplex, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber_kanComplex_of_leftFibration")
 Kerodon Corollary 4.4.3.22（[Tag 04HW](https://kerodon.net/tag/04HW)）。対応表の状態：一部。
+
+*主張*　無限圏間で同型を反映する同型ファイブレーションの各対象上のファイバーは Kan 複体である。
 
 qにさらにrightまたはleft fibrationを仮定すると、vertexFiber\_kanComplexの二宣言から同じ指定fiberのKan性を直接得る。保守的isofibrationだけからの導出は含まない。
 
@@ -510,6 +562,8 @@ FunctorIsoは関手空間のホモトピー圏の同型データ。原文の実�
 
 :::theorem "kerodon_4_4_4_4" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.isInvertibleEdge_iff_evaluateFunctorAt, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_iff_evaluateFunctorAt_any, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.functorIsoOfPointwiseInvertibleHomotopy")
 Kerodon Theorem 4.4.4.4（[Tag 01DK](https://kerodon.net/tag/01DK)）。対応表の状態：本体にある。
+
+*主張*　無限圏 $`C` の単体図式間の自然変換は、添字単体集合のすべての頂点での成分が $`C` の同型であるとき、かつそのときに限り自然同型である。
 
 仮定：Quasicategory X、図式 f,g:K→X と関手空間の辺 e（Kerodon と一致）。結論：辺の可逆性と、任意の K の頂点で評価した辺の可逆性が同値（一致）。
 
@@ -581,6 +635,8 @@ Kerodon [Tag 01F0](https://kerodon.net/tag/01F0)
 :::proposition "kerodon_4_4_5_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.EquivalenceLifting.relativeInternalHom")
 Kerodon Proposition 4.4.5.1（[Tag 01F1](https://kerodon.net/tag/01F1)）。対応表の状態：本体にある。
 
+*主張*　同型ファイブレーション $`C\to D` と単体部分集合 $`A\subseteq B` に対し、$`\operatorname{Fun}(B,C)\to\operatorname{Fun}(A,C)\times_{\operatorname{Fun}(A,D)}\operatorname{Fun}(B,D)` も同型ファイブレーションである。
+
 仮定：EquivalenceLifting を持つ U、単射 i、内部 Hom の引き戻しの選択（Kerodon と一致）。結論：Fun(B,C) から制限と U による後合成を組にした比較射が EquivalenceLifting（一致）。
 
 :::
@@ -588,12 +644,16 @@ Kerodon Proposition 4.4.5.1（[Tag 01F1](https://kerodon.net/tag/01F1)）。対�
 :::corollary "kerodon_4_4_5_3" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.equivalenceLifting_pre")
 Kerodon Corollary 4.4.5.3（[Tag 01F3](https://kerodon.net/tag/01F3)）。対応表の状態：本体にある。
 
+*主張*　無限圏 $`C` と単体部分集合 $`A\subseteq B` に対し、$`\operatorname{Fun}(B,C)\to\operatorname{Fun}(A,C)` は同型ファイブレーションである。
+
 仮定：Quasicategory X と単射 i:A→B（Kerodon と一致）。結論：制限 (pre i).app X が EquivalenceLifting（一致）。
 
 :::
 
 :::corollary "kerodon_4_4_5_4" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.coreMap_fibration_of_kanEquivalenceLifting, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.equivalenceLifting_pre") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_4_4_3_7, kerodon_4_4_5_3")
 Kerodon Corollary 4.4.5.4（[Tag 01F4](https://kerodon.net/tag/01F4)）。対応表の状態：本体にある。
+
+*主張*　無限圏 $`C` と単体部分集合 $`A\subseteq B` に対し、制限は芯の間の Kan ファイブレーション $`\operatorname{Fun}(B,C)^{\simeq}\to\operatorname{Fun}(A,C)^{\simeq}` を誘導する。
 
 equivalenceLifting\_pre が同じ制限射にEquivalenceLiftingを返し、それをcoreMap\_fibration\_of\_kanEquivalenceLiftingにそのまま代入すると原文のcore制限射のKan fibration性を得る。仮定・対象・射が一致し追加の数学的比較は要らない。
 
@@ -611,6 +671,8 @@ Kerodon Corollary 4.4.5.5（[Tag 02QY](https://kerodon.net/tag/02QY)）。対応
 :::corollary "kerodon_4_4_5_6" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.EquivalenceLifting.internalHom")
 Kerodon Corollary 4.4.5.6（[Tag 01H7](https://kerodon.net/tag/01H7)）。対応表の状態：本体にある。
 
+*主張*　無限圏の同型ファイブレーション $`C\to D` と任意の単体集合 $`B` に対し、後合成 $`\operatorname{Fun}(B,C)\to\operatorname{Fun}(B,D)` は同型ファイブレーションである。
+
 仮定：EquivalenceLifting を持つ U と任意の単体集合 K（Kerodon と一致）。結論：(ihom K).map U が EquivalenceLifting（一致）。
 
 :::
@@ -618,12 +680,16 @@ Kerodon Corollary 4.4.5.6（[Tag 01H7](https://kerodon.net/tag/01H7)）。対応
 :::corollary "kerodon_4_4_5_7" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.corePathReplacementMap_internalHom_fibration, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.EquivalenceLifting.internalHom, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.coreMap_fibration_of_kanEquivalenceLifting") (uses := "kerodon_1_1_0_6, kerodon_1_2_5_1, kerodon_1_4_0_1, kerodon_4_4_3_7, kerodon_4_4_5_6")
 Kerodon Corollary 4.4.5.7（[Tag 02QZ](https://kerodon.net/tag/02QZ)）。対応表の状態：本体にある。
 
+*主張*　無限圏の同型ファイブレーション $`C\to D` と任意の単体集合 $`B` に対し、後合成は関手圏の芯の間の Kan ファイブレーションを誘導する。
+
 EquivalenceLifting.internalHom に任意Bを代入し、coreMap\_fibration\_of\_kanEquivalenceLiftingをその結果に適用すると、原文の同じ内部Homのcore後合成のKan fibration性を得る。isofibrationとの比較は二条件のiffで確認済み。
 
 :::
 
 :::proposition "kerodon_4_4_5_8" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.prism_lift_boundary_with_final_endpoint") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_3_1_2_12, kerodon_4_4_2_13, kerodon_4_4_4_8")
 Kerodon Proposition 4.4.5.8（[Tag 01NX](https://kerodon.net/tag/01NX)）。対応表の状態：一部。
+
+*主張*　無限圏の内部ファイブレーション $`F:C\to D` と、全頂点を含む単体部分集合 $`A\subseteq B` を取る。$`A` に入らない各単体の終頂点 $`b` で $`\Delta^1\times\{b\}` の像が同型なら、$`(\Delta^1\times A)\cup(\{1\}\times B)\to C` は $`D` 上の指定された $`\Delta^1\times B\to D` を持ち上げるように延長できる。
 
 prism\_lift\_boundary\_with\_final\_endpoint は B=Δ\^(n+1)、A=その境界で最後の垂直辺が可逆な原文と同じprism持ち上げを直接返す。Aが全頂点を含む次元とその境界形に限る。
 
@@ -641,6 +707,8 @@ relativeEquivalencePathMapAtの自明Kan性は特定の可逆path空間の持ち
 :::corollary "kerodon_4_4_5_10" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.trivialKanFibration_equivalencePathEndpoint_zero, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.trivialKanFibration_equivalencePathEndpoint_one, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.equivalencePath")
 Kerodon Corollary 4.4.5.10（[Tag 02BY](https://kerodon.net/tag/02BY)）。対応表の状態：本体にある。
 
+*主張*　無限圏の矢印圏で同型を対象とする充満部分圏から、始域または終域を取る二つの関手はともに自明な Kan ファイブレーションである。
+
 仮定：Quasicategory X（Kerodon と一致）。結論：可逆辺が張る Fun(Δ¹,X) の全部分複体 equivalencePath X からの 0,1 での評価がともに自明 Kan ファイブレーション（一致）。
 
 :::
@@ -648,12 +716,16 @@ Kerodon Corollary 4.4.5.10（[Tag 02BY](https://kerodon.net/tag/02BY)）。対�
 :::definition "kerodon_4_4_5_11" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.EquivalenceLifting.relativeInternalHom") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1")
 Kerodon Variant 4.4.5.11（[Tag 01NZ](https://kerodon.net/tag/01NZ)）。対応表の状態：一部。
 
+*主張*　内部ファイブレーション $`C\to D` と全頂点を含む単体部分集合 $`A\subseteq B` に対し、$`\operatorname{Fun}(B,C)\to\operatorname{Fun}(A,C)\times_{\operatorname{Fun}(A,D)}\operatorname{Fun}(B,D)` は同型ファイブレーションである。
+
 FにさらにEquivalenceLifting（isofibration）を仮定すると relativeInternalHom が同じ比較射F′のEquivalenceLiftingを直接返す。inner fibrationだけの場合は含まない。
 
 :::
 
 :::corollary "kerodon_4_4_5_12" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.kanEquivalenceLifting_relativeFunctorOverPre_of_cocartesian")
 Kerodon Corollary 4.4.5.12（[Tag 069D](https://kerodon.net/tag/069D)）。対応表の状態：一部。
+
+*主張*　無限圏の内部ファイブレーション $`C\to D`、単体図式 $`B\to D`、部分集合 $`A\subseteq B` に対し、$`D` 上での制限 $`\operatorname{Fun}_{/D}(B,C)\to\operatorname{Fun}_{/D}(A,C)` は同型ファイブレーションである。
 
 kanEquivalenceLifting\_relativeFunctorOverPre\_of\_cocartesian はFがcocartesian fibrationである場合、同じ底上の関手空間の制限射のEquivalenceLiftingを直接返す。inner fibrationだけの場合は含まない。
 

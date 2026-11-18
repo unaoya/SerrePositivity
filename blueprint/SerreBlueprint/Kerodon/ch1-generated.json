@@ -9,6 +9,7 @@
  ],
  "stats": {
   "nolink-mathlib": 9,
+  "with-statement": 130,
   "linked": 117,
   "with-note": 19,
   "nolink-unreviewed": 2,

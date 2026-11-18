@@ -76,6 +76,8 @@ Kerodon Definition 1.2.1.1（[Tag 00G6](https://kerodon.net/tag/00G6)）。対�
 :::definition "kerodon_1_2_1_6" (lean := "SSet.IsConnected")
 Kerodon Definition 1.2.1.6（[Tag 00GB](https://kerodon.net/tag/00GB)）。対応表の状態：Mathlib にある。
 
+*主張*　単体的集合が連結であるとは、空でなく、非交和分解の成分として現れる部分単体的集合が空または全体に限られることをいう。
+
 仮定：単体集合 S（Kerodon と一致）。結論：原文の非空かつ非自明な直和因子を持たない条件に対応する IsConnected は、成分集合 S.π₀ が非空かつ高々一元であること（一致）。
 
 :::
@@ -117,6 +119,8 @@ Kerodon Proposition 1.2.1.13（[Tag 00GJ](https://kerodon.net/tag/00GJ)）。対
 :::corollary "kerodon_1_2_1_14"
 Kerodon Corollary 1.2.1.14（[Tag 00GK](https://kerodon.net/tag/00GK)）。対応表の状態：Mathlib にある。
 
+*主張*　単体的集合 $`S` が空であることと、連結成分集合 $`\pi_0(S)` が空であることは同値である。
+
 仮定：単体集合 S（Kerodon と一致）。結論：π₀.nonempty\_iff は成分集合の非空性と頂点集合の非空性の同値であり、空性の同値を逆に表す（一致）。
 
 宣言：`SSet.π₀.nonempty_iff`
@@ -126,12 +130,16 @@ Kerodon Corollary 1.2.1.14（[Tag 00GK](https://kerodon.net/tag/00GK)）。対�
 :::corollary "kerodon_1_2_1_15" (lean := "SSet.isConnected_iff_nonempty_unique")
 Kerodon Corollary 1.2.1.15（[Tag 00GL](https://kerodon.net/tag/00GL)）。対応表の状態：Mathlib にある。
 
+*主張*　単体的集合 $`S` が連結であることと、$`\pi_0(S)` が一点集合であることは同値である。
+
 仮定：単体集合 S（Kerodon と一致）。結論：isConnected\_iff\_nonempty\_unique は S の連結性と成分集合にちょうど一元があることの同値（一致）。
 
 :::
 
 :::definition "kerodon_1_2_1_18" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.component, SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.fromComponents")
 Kerodon Construction 1.2.1.18（[Tag 00GP](https://kerodon.net/tag/00GP)）。対応表の状態：本体にある。
+
+*主張*　単体的集合の各単体をそれが属する唯一の連結成分へ送る射 $`S\to\underline{\pi_0(S)}` を、連結成分写像と呼ぶ。
 
 仮定：単体集合 S（Kerodon と一致）。結論：component は各次数の単体の成分を返し、fromComponents に S.π₀ の恒等写像を与えると定数単体集合への成分写像になる（一致）。
 
@@ -140,6 +148,8 @@ Kerodon Construction 1.2.1.18（[Tag 00GP](https://kerodon.net/tag/00GP)）。�
 :::proposition "kerodon_1_2_1_19" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.homEquiv, SerrePositivity.SimplicialModel.PiZeroLocalization.classEquiv")
 Kerodon Proposition 1.2.1.19（[Tag 00GQ](https://kerodon.net/tag/00GQ)）。対応表の状態：本体にある。
 
+*主張*　任意の集合 $`J` に対して、連結成分写像との合成により、$`\pi_0(S)\to J` という集合写像と $`S\to\underline J` という単体的集合の射が全単射で対応する。
+
 仮定：単体集合 S と集合 J（Kerodon と一致）。結論：homEquiv の逆写像は成分から J への関数を成分写像と合成し、S ⟶ discrete J との全単射を与える（一致）。
 
 :::
@@ -147,12 +157,16 @@ Kerodon Proposition 1.2.1.19（[Tag 00GQ](https://kerodon.net/tag/00GQ)）。対
 :::corollary "kerodon_1_2_1_21" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.homEquiv")
 Kerodon Corollary 1.2.1.21（[Tag 00GS](https://kerodon.net/tag/00GS)）。対応表の状態：一部。
 
+*主張*　連結成分関手 $`\pi_0` は定値単体的集合関手の左随伴で、その単位が連結成分写像である。
+
 原文は π₀⊣const とその指定単位の構成。homEquiv の型 (X→discrete T)≃(π₀X→T) はこの随伴の Hom 同値成分を逆向きにしたものを直接与える。自然性・指定単位まで完成した Adjunction の宣言とせず、構成のこの成分に限定する。
 
 :::
 
 :::proposition "kerodon_1_2_1_22"
 Kerodon Proposition 1.2.1.22（[Tag 00GT](https://kerodon.net/tag/00GT)）。対応表の状態：Mathlib にある。
+
+*主張*　頂点をその連結成分へ送る $`S_0\to\pi_0(S)` は、辺から両端点をとる二つの面作用素 $`S_1\rightrightarrows S_0` の余等化子である。
 
 仮定：単体集合 S（Kerodon と一致）。結論：isColimitCoforkπ₀ は S.π₀ を 1 単体の二つの面 d₀,d₁ : S₁ → S₀ の余等化子として与える（一致）。
 
@@ -200,6 +214,8 @@ Kerodon [Tag 001Q](https://kerodon.net/tag/001Q)
 :::definition "kerodon_1_2_2_1" (lean := "SimplexCategory.toTop")
 Kerodon Notation 1.2.2.1（[Tag 050B](https://kerodon.net/tag/050B)）。対応表の状態：Mathlib にある。
 
+*主張*　$`|\Delta^n|` は非負実数の $`(n+1)` 組で成分和が一になるものの空間である。$`X` における特異 $`n` 単体は $`|\Delta^n|\to X` という連続写像である。
+
 仮定：非負整数 n と位相空間 X（Kerodon と一致。Lean では SimplexCategory の \[n\] を評価する）。結論：SimplexCategory.toTop の n 次の値は非負実座標の和が 1 の部分空間。X への連続写像が特異 n 単体となる（一致）。
 
 :::
@@ -207,12 +223,16 @@ Kerodon Notation 1.2.2.1（[Tag 050B](https://kerodon.net/tag/050B)）。対応�
 :::definition "kerodon_1_2_2_2" (lean := "TopCat.toSSet, TopCat.toSSetObjEquiv")
 Kerodon Construction 1.2.2.2（[Tag 001R](https://kerodon.net/tag/001R)）。対応表の状態：Mathlib にある。
 
+*主張*　位相空間 $`X` の特異単体的集合は、次数 $`n` に $`|\Delta^n|\to X` の連続写像の集合を置く。単調写像 $`\alpha\colon[m]\to[n]` の作用は、$`\alpha` の各ファイバーで重心座標を足す連続写像との前合成で定める。
+
 仮定：位相空間 X と非負次数 n（Kerodon と一致）。結論：toSSetObjEquiv は TopCat.toSSet.obj X の n 単体を位相的標準 n 単体から X への連続写像と同定する。順序写像の作用は連続写像による前合成（一致）。
 
 :::
 
 :::definition "kerodon_1_2_2_8" (lean := "CategoryTheory.Presheaf.restrictedULiftYoneda")
 Kerodon Variant 1.2.2.8（[Tag 001T](https://kerodon.net/tag/001T)）。対応表の状態：Mathlib にある。
+
+*主張*　圏 $`\mathcal C` の余単体的対象 $`Q` があれば、各対象 $`X` に、次数 $`n` が $`\operatorname{Hom}_{\mathcal C}(Q^n,X)` で前合成を構造写像とする単体的集合 $`\operatorname{Sing}^Q(X)` を関手的に割り当てられる。
 
 仮定：圏 C の余単体対象 Q と対象 X（Lean が弱い：restrictedULiftYoneda は任意の添字圏の関手 Q に適用できる）。結論：Δᵒᵖ の \[n\] に ULift (Qₙ ⟶ X) を割り当て、写像に Q の像で前合成する（一致。ULift は宇宙調整）。
 
@@ -239,12 +259,16 @@ Kerodon Definition 1.2.3.1（[Tag 001Y](https://kerodon.net/tag/001Y)）。対�
 :::definition "kerodon_1_2_3_3" (lean := "SSet.toTop")
 Kerodon Notation 1.2.3.3（[Tag 0020](https://kerodon.net/tag/0020)）。対応表の状態：Mathlib にある。
 
+*主張*　単体的集合 $`S` の幾何学的実現が存在すれば同相を除いて一意かつ $`S` に関手的であり、$`|S|` と記す。標準単体では通常の位相単体に一致する。
+
 仮定：単体集合 S（Lean が弱い：幾何学的実現の存在は sSetTopAdj が与える）。結論：SSet.toTop.obj S が関手的に選んだ実現で、scoped\[Simplicial\] の絶対値記法がこれを指す（一致）。
 
 :::
 
 :::proposition "kerodon_1_2_3_4" (lean := "sSetTopAdj")
 Kerodon Proposition 1.2.3.4（[Tag 0021](https://kerodon.net/tag/0021)）。対応表の状態：Mathlib にある。
+
+*主張*　あらゆる単体的集合 $`S` に対して、位相空間 $`Y` と $`S\to\operatorname{Sing}(Y)` で $`Y` をその幾何学的実現とするものが存在する。
 
 仮定：任意の単体集合 S（Kerodon と一致）。結論：sSetTopAdj の単位 S ⟶ TopCat.toSSet.obj (SSet.toTop.obj S) と随伴の Hom 全単射が、実現の存在とその普遍性を与える（一致）。
 
@@ -253,12 +277,16 @@ Kerodon Proposition 1.2.3.4（[Tag 0021](https://kerodon.net/tag/0021)）。対�
 :::corollary "kerodon_1_2_3_5" (lean := "sSetTopAdj")
 Kerodon Corollary 1.2.3.5（[Tag 0022](https://kerodon.net/tag/0022)）。対応表の状態：Mathlib にある。
 
+*主張*　幾何学的実現関手 $`S\mapsto|S|` は、位相空間から単体的集合への特異単体関手の左随伴である。
+
 仮定：単体集合の圏と位相空間の圏（Kerodon と一致）。結論：sSetTopAdj : SSet.toTop ⊣ TopCat.toSSet は特異単体集合の左随伴を幾何学的実現として与える（一致）。
 
 :::
 
 :::lemma_ "kerodon_1_2_3_6" (lean := "sSetTopAdj")
 Kerodon Lemma 1.2.3.6（[Tag 0023](https://kerodon.net/tag/0023)）。対応表の状態：Mathlib にある。
+
+*主張*　小圏で添字づけた単体的集合の図式の各値に幾何学的実現があるなら、図式の余極限の実現はそれらの実現の位相空間としての余極限で与えられる。
 
 仮定：小さい図式 S : J ⥤ SSet と各 S(j) の実現（Lean が弱い：存在は sSetTopAdj により一律に与えられる）。結論：左随伴 SSet.toTop の余極限保存により colim S の実現は各 S(j) の実現の余極限（一致。引用型はこの保存を与える随伴）。
 
@@ -287,6 +315,8 @@ Kerodon Lemma 1.2.3.13（[Tag 00H2](https://kerodon.net/tag/00H2)）。対応表
 
 :::proposition "kerodon_1_2_3_15" (lean := "CategoryTheory.Presheaf.uliftYonedaAdjunction")
 Kerodon Proposition 1.2.3.15（[Tag 002F](https://kerodon.net/tag/002F)）。対応表の状態：Mathlib にある。
+
+*主張*　圏 $`\mathcal C` に小さい余極限があれば、余単体的対象 $`Q` による特異単体関手 $`\operatorname{Sing}^Q` は左随伴 $`S\mapsto|S|^Q` を持つ。
 
 仮定：余単体対象 Q と小余極限を持つ圏 C（Lean が弱い：uliftYonedaAdjunction には Q の必要な左 Kan 拡張があればよい）。結論：Q による制限 Yoneda、すなわち \[n\]↦ULift (Qₙ ⟶ X) の左随伴を与える（一致）。
 
@@ -326,6 +356,8 @@ $$`\partial_j\Delta^n([m])=\{\theta\colon[m]\to[n]\mid j\notin\theta([m])\}`
 :::definition "kerodon_1_2_4_1" (lean := "SSet.horn")
 Kerodon Construction 1.2.4.1（[Tag 000U](https://kerodon.net/tag/000U)）。対応表の状態：Mathlib にある。
 
+*主張*　$`n>0`、$`0\le i\le n` に対し、$`i` 以外の頂点の少なくとも一つを像に含まない単体からなる $`\Delta^n` の部分集合を $`\Lambda_i^n` とする。$`0<i<n` なら内ホーン、両端の $`i` なら外ホーンである。
+
 仮定：n\>0 と i : Fin (n+1)（Lean が弱い：horn の定義自体は n=0 にも適用できる）。結論：horn n i は Δ\[n\] の i 番以外の面の和。原文の像が i 以外の頂点を一つ欠くという条件と同じ部分複体（一致）。
 
 *定義 1.7 （horn $`\Lambda^n_i`）*
@@ -342,6 +374,8 @@ $`n\ge1`、$`0\le i\le n` とする。$`\Delta^n` の部分単体的集合 $`\La
 
 :::proposition "kerodon_1_2_4_7" (lean := "SSet.horn.IsCompatible, SSet.horn.IsCompatible.desc, SSet.horn.hom_ext")
 Kerodon Proposition 1.2.4.7（[Tag 050F](https://kerodon.net/tag/050F)）。対応表の状態：Mathlib にある。
+
+*主張*　$`n>0` の $`i` 番目のホーンから $`S` への射は第 $`i` 面を除く面への制限で決まる。そのような制限の組は、$`j<k` で $`j,k\ne i` のとき $`d_j\sigma_k=d_{k-1}\sigma_j` を満たすものにちょうど一致する。
 
 仮定：単体集合 X と n\>0、i : Fin (n+1)（Kerodon と一致。Lean はホーンの次元を n+1 と書く）。結論：IsCompatible が面同士の整合条件、desc がその族からの延長、hom\_ext が面への制限の単射性を与える（一致）。
 
@@ -363,6 +397,8 @@ $`\Delta^0` は各段が一点の単体的集合で、任意の単体的集合 $
 :::definition "kerodon_1_2_5_1" (lean := "SSet.KanComplex, SSet.KanComplex.hornFilling, SSet.KanComplex.iff")
 Kerodon Definition 1.2.5.1（[Tag 002H](https://kerodon.net/tag/002H)）。対応表の状態：Mathlib にある。
 
+*主張*　単体的集合が Kan 複体であるとは、$`n>0` と $`0\le i\le n` のすべてに対し、$`\Lambda_i^n` からの射が $`\Delta^n` へ拡張できることをいう。
+
 仮定：単体集合 X（Kerodon と一致）。結論：KanComplex.iff は KanComplex X と、全ての正次数で内外の別なく任意のホーンが Δ\[n\] へ延長できることの同値（一致）。
 
 *定義 1.9 （Kan 複体）*
@@ -381,12 +417,16 @@ Kerodon Proposition 1.2.5.8（[Tag 002K](https://kerodon.net/tag/002K)）。対�
 :::proposition "kerodon_1_2_5_9" (lean := "SerrePositivity.KST.Comparison.ringSpace_kanComplex")
 Kerodon Proposition 1.2.5.9（[Tag 00MG](https://kerodon.net/tag/00MG)）。対応表の状態：一部。
 
+*主張*　単体的群の台となる単体的集合は Kan 複体である。
+
 原文は全単体群の台がKan。ringSpace\_kanComplex の型は単体的環 A の台のKan性であり、その加法単体群へ対象を限定した同じ結論を直接与える。全単体群への拡張は数えない。
 
 :::
 
 :::proposition "kerodon_1_2_5_10" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FromTopologicalSpacesToSimplicialSets.KanHomotopyZero.mk_eq_iff, SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FromTopologicalSpacesToSimplicialSets.ZeroRelations.equivalence, SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyZero, SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyZero.equivPiZero")
 Kerodon Proposition 1.2.5.10（[Tag 00HC](https://kerodon.net/tag/00HC)）。対応表の状態：本体にある。
+
+*主張*　Kan 複体の頂点 $`x,y` が同じ連結成分に属することと、$`x` から $`y` への辺が存在することは同値である。
 
 仮定：Kan 複体 X と二頂点（Kerodon と一致）。結論：KanHomotopyZero.mk\_eq\_iff は頂点類の一致と RelStruct₀ の存在を同値とし、RelStruct₀ は指定方向の辺、equivPiZero は成分類との比較を与える（一致）。
 

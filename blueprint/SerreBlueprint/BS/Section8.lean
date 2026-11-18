@@ -14,7 +14,7 @@ open Informal
 -- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）
 set_option maxHeartbeats 2000000
 
-#doc (Manual) "§8 " =>
+#doc (Manual) "§8 Perfections in mixed characteristic: General case" =>
 %%%
 number := false
 tag := "bs-8"
@@ -85,6 +85,8 @@ perfectoid 環 $`R` と、それに対応する完全 prism $`(A,I)`（$`A/I\con
 
 :::definition "bs_8_2" (lean := "SerrePositivity.BhattScholze.PerfectoidizationInterface.PerfectoidizationInterfaceE3, SerrePositivity.BhattScholze.Inputs.exists_perfectoidizationInterfaceE3")
 *定義 8.2*　perfectoid 化 S\_perfd。対応表の状態：未証明の入力に依存。
+
+*主張*　perfectoid 基底 $`R=A/I` 上の導来 $`p` 完備な単体的代数 $`S` に対し、$`\Delta_{S/A}` から Frobenius ひねりへの系列の導来 $`(p,I)` 完備余極限を $`\Delta_{S/A,\mathrm{perf}}` とする。これは $`\varphi_A` 半線形自己同型を持つ $`E_\infty` $`A` 代数で、$`A/I` への導来テンソルを $`S_{\mathrm{perfd}}` と定めると $`p` 完備 $`E_\infty` $`S` 代数となる。
 
 通常の離散 R-代数上の底の D(R) 関手 perfd・unit・H⁰ を E3 の存在 sorry から受け取る。原文の animated 定義域、Δ の φ-perfection と底変換の式および E∞ 構造を実装したものではない。
 
@@ -185,6 +187,8 @@ E3 の界面にこの補題の欄は置かない。命題 8.2.1、Cor 8.14、Thm
 :::proposition "bs_8_5" (lean := "SerrePositivity.BhattScholze.PerfectoidizationInterface.PerfectoidizationInterfaceE3, SerrePositivity.BhattScholze.Inputs.exists_perfectoidizationInterfaceE3")
 *命題 8.5*　perfectoid 標的の極限。対応表の状態：未証明の入力に依存。
 
+*主張*　完全 prism の相対サイトで平坦位相と自明位相の間の任意の位相を使っても、$`\Delta_{S/A,\mathrm{perf}}` から構造層の導来大域切断への写像は同値である。$`S_{\mathrm{perfd}}` は $`S\to R'` となるすべての perfectoid 環 $`R'` の導来極限で計算され、基底の選択に依存しない。
+
 E3 存在 sorry から通常 R-代数と Type u の perfectoid 標的の指定 limitCone・極限性を受け取る。全 perfect site の RΓ 比較・全宇宙の巨大極限・A 非依存を構成済みとはしない。
 
 *命題 8.2.1（原典 Prop 8.5：完全 prismatic site による記述） — 主張*
@@ -273,6 +277,8 @@ descendable：原典は \[Mat16\] を引用する。Lean では \[Mat16, Def 3.1
 :::definition "bs_8_7" (lean := "SerrePositivity.BhattScholze.Perfectoidization.Arc.IsArcCoverFamily, SerrePositivity.BhattScholze.Perfectoidization.Arc.arcTopology, SerrePositivity.BhattScholze.Perfectoidization.Arc.arcTopologyPerfd")
 *定義 8.7*　p 進形式スキームの arc 位相。対応表の状態：一部（special）。
 
+*主張*　qcqs な $`p` 進形式スキームの射が arc 被覆であるとは、階数一の $`p` 進完備付値環から標的への点が、同じ種類の付値環への忠実平坦拡大で源へ持ち上がることをいう。この被覆と開被覆が arc 位相を生成し、局所的に perfectoid 環の形式スペクトルである対象の充満部分圏にはそれから位相を誘導する。
+
 affine p 完備環・濃度 cutoff に限定した rank-one 付値環による同じ arc-cover 条件と生成位相。一般の形式的スキームの open cover との貼り合わせは未供給。
 
 *定義 8.3.1（原典 Def 8.7） — 主張*
@@ -299,6 +305,8 @@ D53：原典の site は p 進形式スキーム全体の fSch と $`\mathrm{Per
 
 :::lemma_ "bs_8_8" (lean := "SerrePositivity.BhattScholze.Perfectoidization.Arc.exists_perfectoid_arcCover, SerrePositivity.BhattScholze.Perfectoidization.Arc.affPerfdInclusion_isCoverDense")
 *補題 8.8*　perfectoid による被覆。対応表の状態：一部（special）。
+
+*主張*　任意の $`p` 進形式スキームは、局所的に perfectoid 環の形式スペクトルである形式スキームによる arc 被覆をもつ。
 
 同じ p 完備 affine S の perfectoid 一点 arc-cover と cutoff 内の cover-density を証明する。非 affine 形式的スキームの大域被覆は扱わない。
 
@@ -347,7 +355,7 @@ Lemma 8.8 よりさらに簡単な基底がある：任意の p 完備環 $`R` �
 
 :::
 
-:::proposition "bs_8_10"
+:::proposition "bs_8_10" (uses := "bs17_4_1")
 *命題 8.10*　arc 層性。対応表の状態：なし。
 
 Milnor Čech 完全性・tilt・perfect Čech 項の部品は本体。原文の Perfd 上 O の arc 層条件・高次消滅・全 representable の層条件をまとめる定理は drafts。
@@ -436,6 +444,8 @@ $$`R\Gamma_{\mathrm{arc}}(\mathrm{Spf}S,\mathcal O)=\lim_{S\to R'}R'=S_{\mathrm{
 :::corollary "bs_8_12" (lean := "SerrePositivity.BhattScholze.PerfectoidizationInterface.PerfectoidizationInterfaceE3, SerrePositivity.BhattScholze.Inputs.exists_perfectoidizationInterfaceE3, SerrePositivity.BhattScholze.Inputs.perfectoidization_excision_isPullback")
 *系 8.12*　excision。対応表の状態：未証明の入力に依存。
 
+*主張*　導来 $`p` 完備環の射 $`S\to S'` と導来 $`p` 完備イデアル $`I\subset S` をとり、$`I` を消さない階数一の $`p` 完備付値環への写像 $`S\to V` がいつも $`S'\to V` に一意に延長するとする。$`S,S',S/I,S'/I` の perfectoid 化が作る四角形は $`E_\infty` $`S` 代数の引き戻しである。
+
 E3 存在 sorry の excision から、離散 S,S′ の底の D(R) の指定四辺の pullback と、環の普遍 perfectoid 化の pullback を導く。animated 入力・E∞積構造の全主張は含まない。
 
 *系 8.3.6（原典 Cor 8.12） — 主張*
@@ -481,6 +491,8 @@ $$`\mathrm{Spf}S'\sqcup\mathrm{Spf}(S'/I)\times_{\mathrm{Spf}(S/I)}\mathrm{Spf}(
 :::proposition "bs_8_13" (lean := "SerrePositivity.BhattScholze.prop813CompletedTensorMap_isPerfectoidization, SerrePositivity.BhattScholze.exists_prop813BaseChange_of_perfectoid_quotient, SerrePositivity.BhattScholze.prop813_perfectoidTensor_pure, SerrePositivity.BhattScholze.prop813ComparisonEquiv, SerrePositivity.BhattScholze.prop813ComparisonEquiv_comp")
 *命題 8.13*　完備テンソルとの可換性。対応表の状態：一部（stronger-hyp）。
 
+*主張*　perfectoid 環から写像を受ける導来 $`p` 完備な単体的可換環上で、perfectoid 化は導来完備 $`E_\infty` 環への対称モノイダル関手である。すなわち図式 $`S_1\leftarrow S_3\to S_2` に対し、各環を perfectoid 化してから導来完備テンソルしたものは、導来完備テンソルを perfectoid 化した環と同値である。
+
 指定された環の普遍 perfectoid 化を入力すると、元の completed derived tensor の H⁰ の単位を保つ普遍性・比較環同型を証明する。perfectoid 側の元の derived tensor が離散という定理もあるが、任意 animated 入力の E∞ 対称モノイダル関手を構成したとはしない。
 
 *命題 8.4.1（原典 Prop 8.13） — 主張*
@@ -507,6 +519,8 @@ Lean の環版は Hodge–Tate 比較を使わない：環の普遍性で $`S_1\
 
 :::corollary "bs_8_14" (lean := "SerrePositivity.BhattScholze.PerfectoidizationInterface.PerfectoidizationInterfaceE3, SerrePositivity.BhattScholze.Inputs.exists_perfectoidizationInterfaceE3")
 *系 8.14*　離散なら普遍 perfectoid 環。対応表の状態：未証明の入力に依存。
+
+*主張*　perfectoid 環から写像を受ける導来 $`p` 完備単体的環 $`S` で、$`S_{\mathrm{perfd}}` が連結なら、それは次数零に集中する perfectoid 環であり、$`S` から perfectoid 環への普遍射を与える。
 
 E3 存在 sorry の universal 欄により、離散な通常 R-代数の perfd が離散なら H⁰ の指定単位が普遍 perfectoid 化となる。一般の animated S の原文全体には拡張しない。
 

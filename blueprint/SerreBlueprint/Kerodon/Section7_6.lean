@@ -158,6 +158,8 @@ def IsPullbackSquare \{X : SSet.\{u\}\} (F : Δ\[1\] ⊗ Δ\[1\] ⟶ X) : Prop
 :::definition "kerodon_7_6_2_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare")
 Kerodon Definition 7.6.2.1（[Tag 03FF](https://kerodon.net/tag/03FF)）。対応表の状態：本体にある。
 
+*主張*　無限圏の可換正方形 $`\Delta^1\times\Delta^1\to C` は、極限図式なら引き戻し正方形、余極限図式なら押し出し正方形である。
+
 仮定：Δ¹×Δ¹→X の指定正方形。述語の形成には X の Quasicategory は不要（Lean が弱い）。結論：span 上の余錐の余極限性と cospan 上の錐の極限性（四角形の押し出し・引き戻しの定義と一致）。
 
 :::
@@ -174,6 +176,8 @@ mono\_snd\_of\_monoは通常圏のMono。原文の∞圏のn-truncated射（写�
 :::definition "kerodon_7_6_2_8" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsRelativeLimitCone, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pullbackCone")
 Kerodon Variant 7.6.2.8（[Tag 048C](https://kerodon.net/tag/048C)）。対応表の状態：一部。
 
+*主張*　無限圏の関手 $`U:C\to D` に関し、可換正方形が $`U`-引き戻しであるとは $`U`-極限図式であることをいう。$`U`-押し出しは $`U`-余極限図式である正方形をいう。
+
 同じσのpullbackCone σにIsRelativeLimitCone Uを適用することで、原文のU-pullbackという定義の極限側を直接表す。専用のIsRelativePullbackSquareという名前の欠如は不足としない。余極限側は含まない。
 
 :::
@@ -181,12 +185,16 @@ Kerodon Variant 7.6.2.8（[Tag 048C](https://kerodon.net/tag/048C)）。対応�
 :::definition "kerodon_7_6_2_13" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.catPullbackDiagram_hasLimit")
 Kerodon Notation 7.6.2.13（[Tag 03FS](https://kerodon.net/tag/03FS)）。対応表の状態：一部。
 
+*主張*　無限圏で共通の終域に向かう二射の引き戻しが存在するとき、その対象を $`X_0\times_X X_1` と書く。共通の始域を持つ二射の押し出しを $`Y_0\coprod_Y Y_1` と書き、いずれの対象も同型までで定まる。
+
 CをQC、二脚のfiber productをcatPullbackで指定するとcatPullbackDiagram\_hasLimitとその錐の頂点が原文の存在するfiber productの対象の成分を直接与える。一般Cとpushout側の記法・一意性は含まない。
 
 :::
 
 :::definition "kerodon_7_6_2_14" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.hasFiniteLimits_of_terminal_pullbacks, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor.preservesPullbackSquare, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare")
 Kerodon Definition 7.6.2.14（[Tag 03FT](https://kerodon.net/tag/03FT)）。対応表の状態：一部。
+
+*主張*　無限圏に引き戻しがあるとは共通の終域に向かう任意の二射が引き戻しを持つことであり、その保存とは全引き戻し正方形が引き戻し正方形に移ることである。押し出しの存在と保存は共通の始域を持つ二射と押し出し正方形で定める。
 
 IsPullbackSquare σ=IsLimitCone(pullbackCone σ)を用い、全cospanにその錐の存在を要求すること、および全σでIsPullbackSquare σ→IsPullbackSquare(σ≫F)を要求することで、原文のpullback存在・保存の定義部分を直接表す。pushout側はこの行の根拠に含まない。
 
@@ -342,6 +350,8 @@ Kerodon Corollary 7.6.2.39（[Tag 048F](https://kerodon.net/tag/048F)）。対�
 :::proposition "kerodon_7_6_2_40" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.isPullbackSquare_pasting_iff") (uses := "kerodon_1_4_0_1, kerodon_7_2_2_2, kerodon_7_2_3_7, kerodon_7_3_8_1")
 Kerodon Proposition 7.6.2.40（[Tag 03FZ](https://kerodon.net/tag/03FZ)）。対応表の状態：一部。
 
+*主張*　無限圏の図式 $`\Delta^2\times\Delta^1\to C` で、右の正方形が $`U`-引き戻しなら、左が $`U`-引き戻しであることと外枠がそうであることは同値である。左の正方形が $`U`-押し出しなら、右が $`U`-押し出しであることと外枠がそうであることは同値である。
+
 Uを終対象への射に限るとisPullbackSquare\_pasting\_iffは同じΔ²×Δ¹図式の右squareを仮定した左squareと外周のiff、すなわち原文(1)を直接返す。相対一般Uとpushout側は含まない。
 
 :::
@@ -357,6 +367,8 @@ Kerodon Proposition 7.6.2.41（[Tag 03G1](https://kerodon.net/tag/03G1)）。対
 
 :::corollary "kerodon_7_6_2_42" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.hasFiniteLimits_of_terminal_pullbacks, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasFiniteLimits") (uses := "kerodon_1_1_0_6, kerodon_1_1_4_12, kerodon_1_4_0_1, kerodon_7_2_2_12, kerodon_7_6_2_41")
 Kerodon Corollary 7.6.2.42（[Tag 03G2](https://kerodon.net/tag/03G2)）。対応表の状態：一部。
+
+*主張*　無限圏が有限極限を持つことは、引き戻しと終対象を持つことと同値である。その場合、そこからの関手が有限極限を保つことは、引き戻しと終対象を保つことと同値である。
 
 HasFiniteLimitsの全有限形状への存在を終対象とcospanへ特殊化する向きと、hasFiniteLimits\_of\_terminal\_pullbacksの逆向きにより、原文の存在のiffを直接得る。任意の関手の有限極限保存のiffは含まない。
 
@@ -374,12 +386,16 @@ Kerodon [Tag 03G3](https://kerodon.net/tag/03G3)
 :::proposition "kerodon_7_6_3_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.strictCoherentCone_isLimit_iff_cospan_representableComparison, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.strictCoherentCone_isLimit_of_cospan_homLimit, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.kanCone_isLimit_iff_bousfieldKanComparison")
 Kerodon Proposition 7.6.3.1（[Tag 03G4](https://kerodon.net/tag/03G4)）。対応表の状態：一部。
 
+*主張*　局所 Kan な単体圏の可換正方形がホモトピー整合神経で引き戻しであることは、任意の対象 $`y` からの単体射空間を取った正方形が Kan 複体のホモトピー引き戻しであることと同値である。
+
 全Homの指定一脚をKan fibrationに強めると、strictCoherentConeのBK Hom比較のiffとKan錐のhomotopy pullback判定から、原文の同じstrict squareの引き戻し性と全Hom squareのhomotopy pullback性を直接比較できる。一般の一脚fibrationでない場合は含まない。
 
 :::
 
 :::proposition "kerodon_7_6_3_8" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.qCatPullbackInfinityCone_isLimit, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.catPullbackReplacementCone_isLimit, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.catPullback") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_4_5_3_21, kerodon_4_5_3_23, kerodon_4_5_3_24, kerodon_4_5_3_28, kerodon_4_5_3_29, kerodon_4_5_3_33, kerodon_7_1_3_18")
 Kerodon Proposition 7.6.3.8（[Tag 06TN](https://kerodon.net/tag/06TN)）。対応表の状態：一部。
+
+*主張*　無限圏の無限圏 $`\mathcal{QC}` の可換正方形が引き戻しであることは、正方形を分類する $`G:C_{01}\to C_0\times_C^{\mathrm h}(C_1\times_C^{\mathrm h}C)` が無限圏の同値であることと同値である。
 
 指定squareを一脚がEquivalenceLiftingなstrict pullback錐に限ると、qCatPullbackInfinityCone\_isLimitは同じsquareのQC内のpullback性（原文(1)）を直接返す。一般squareの指定Gの圏同値性とのiffは含まない。
 
@@ -388,12 +404,16 @@ Kerodon Proposition 7.6.3.8（[Tag 06TN](https://kerodon.net/tag/06TN)）。対�
 :::corollary "kerodon_7_6_3_9" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.catPullback, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.catPullbackReplacementCone_isLimit, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.catPullbackCone_isLimit, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.catPullbackCone_vertex") (uses := "kerodon_1_4_0_1, kerodon_4_5_3_1, kerodon_4_5_3_21, kerodon_4_5_3_23, kerodon_7_6_3_8")
 Kerodon Corollary 7.6.3.9（[Tag 03GF](https://kerodon.net/tag/03GF)）。対応表の状態：一部。
 
+*主張*　無限圏の二つの関手 $`C_0\to C\leftarrow C_1` について、そのホモトピーファイバー積と二つの射影、合成間の標準自然同型が定める正方形は $`\mathcal{QC}` で引き戻しである。
+
 catPullbackCone\_isLimitとcatPullbackCone\_vertexは元の同じ二脚p,qの図式についてhomotopy fiber productそのものがQC内のfiber product対象となるという最後の結論を直接与える。指定αを備えるsquareの二脚の照合は含まない。
 
 :::
 
 :::corollary "kerodon_7_6_3_10" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.spacePullbackCone_isLimitCone, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.strictCoherentCone_isLimit_iff_cospan_representableComparison")
 Kerodon Corollary 7.6.3.10（[Tag 03GG](https://kerodon.net/tag/03GG)）。対応表の状態：一部。
+
+*主張*　空間の無限圏 $`S` の可換正方形が引き戻しであることは、対応する Kan 複体の写像 $`g:X_{01}\to X_0\times_X^{\mathrm h}(X_1\times_X^{\mathrm h}X)` がホモトピー同値であることと同値である。
 
 squareを一脚がKan fibrationなstrict pullback錐に指定すると、spacePullbackCone\_isLimitConeは同じsquareのSpace内でのpullback性（原文(1)）を直接返す。任意のsquareの指定gによるiffは含まない。
 
@@ -583,12 +603,16 @@ ofSequence/ofOpSequenceは通常圏の関手を構成する型。原文の準圏
 :::definition "kerodon_7_6_5_9" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.strictNativeCocone_isColimit_of_filtered_forget, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.filteredColimit_kanComplex")
 Kerodon Variant 7.6.5.9（[Tag 03HS](https://kerodon.net/tag/03HS)）。対応表の状態：本体にある。
 
+*主張*　Kan 複体の列 $`X(0)\to X(1)\to\cdots` の通常の単体集合の圏での余極限は Kan 複体であり、空間の無限圏での対応する列の余極限でもある。
+
 仮定：小さい通常圏 I の filtered 図式で各値が Kan、通常圏の余錐が台で IsColimit。I=ℕ が原文（Lean が弱い）。結論：通常の余極限が Kan で、同じ頂点を持つ strictNativeCocone は標準 coherent 図式上の余極限（原文と一致）。
 
 :::
 
 :::definition "kerodon_7_6_5_11" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.spaceTowerCone_isLimitCone, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.projection_zero_fibration, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.limit_kanComplex")
 Kerodon Variant 7.6.5.11（[Tag 03HU](https://kerodon.net/tag/03HU)）。対応表の状態：本体にある。
+
+*主張*　Kan 複体の塔で全遷移写像が Kan ファイブレーションなら、通常の単体集合の圏での極限は Kan 複体であり、空間の無限圏での塔の極限も与える。
 
 仮定：ℕᵒᵖ 上の Kan 図式で隣接遷移が Fibration。Kan 性の補題には初段の Kan 性だけが必要（Lean が弱い）。結論：通常の塔極限の Kan 性と、同じ塔の coherent 図式での spaceTowerCone の IsLimitCone（原文と一致）。
 
@@ -638,6 +662,8 @@ Kerodon [Tag 03UC](https://kerodon.net/tag/03UC)
 :::definition "kerodon_7_6_6_1" (lean := "SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallLimits, SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits")
 Kerodon Definition 7.6.6.1（[Tag 06B7](https://kerodon.net/tag/06B7)）。対応表の状態：本体にある。
 
+*主張*　無限圏が完備であるとは、すべての小さい単体集合を添字とする極限を持つことである。余完備性は同じ形の余極限を持つことである。
+
 仮定：単体集合 C を固定。述語形成には Quasicategory を要求しない（Lean が弱い）。結論：HasSmallLimits と HasSmallColimits は宇宙で小さい K の全図式の HasLimit・HasColimit（原文と一致）。
 
 :::
@@ -645,12 +671,16 @@ Kerodon Definition 7.6.6.1（[Tag 06B7](https://kerodon.net/tag/06B7)）。対�
 :::definition "kerodon_7_6_6_4" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.PreservesSmallLimits, SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits")
 Kerodon Definition 7.6.6.4（[Tag 06BA](https://kerodon.net/tag/06BA)）。対応表の状態：本体にある。
 
+*主張*　無限圏の関手が連続であるとは、すべての小さい単体集合を添字とする極限を保つことをいう。余連続であるとは同じ形の余極限を保つことである。
+
 仮定：単体写像 F:C→D。定義自体は両端の∞圏性を要求しない（Lean が弱い）。結論：小さい K 上の全極限錐・余極限錐について、写した錐の極限性・余極限性を要求（原文と一致）。
 
 :::
 
 :::definition "kerodon_7_6_6_5" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.PreservesSmallLimits, SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits")
 Kerodon Notation 7.6.6.5（[Tag 06BB](https://kerodon.net/tag/06BB)）。対応表の状態：一部。
+
+*主張*　無限圏の関手圏 $`\operatorname{Fun}(C,D)` で、連続関手が張る充満部分圏を $`\operatorname{Fun}^{\mathrm{cont}}(C,D)`、余連続関手が張るものを $`\operatorname{Fun}^{\mathrm{cocont}}(C,D)` と書く。
 
 PreservesSmallLimitsとPreservesSmallColimitsは原文のcontinuous/cocontinuousな頂点の条件を直接与える。専用のFunᶜᵒⁿᵗという名前の欠如は不足としないが、大きさの異なる全形状と全部分準圏の構成全体は含まない。
 
@@ -689,6 +719,8 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：宇宙で�
 :::proposition "kerodon_7_6_6_19" (lean := "CategoryTheory.Functor.pointwiseRightKanExtension, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.exists_kanRightExtension_iff_local_limits") (uses := "kerodon_1_1_0_6, kerodon_1_2_5_1, kerodon_1_4_0_1, kerodon_4_3_6_1, kerodon_4_6_5_10, kerodon_5_6_7_7, kerodon_7_3_5_1")
 Kerodon Proposition 7.6.6.19（[Tag 03UP](https://kerodon.net/tag/03UP)）。対応表の状態：一部。
 
+*主張*　非可算正則基数 $`\kappa` に対して $`K` が本質的に $`\kappa`-小さい単体集合、無限圏 $`C` が局所的に $`\kappa`-小さく、無限圏 $`D` が $`\kappa`-完備とする。このとき任意の図式 $`F_0:K\to D` は任意の $`\delta:K\to C` に沿う右 Kan 拡張を持つ。
+
 Kを準圏とし同じrightKanDiagram δ F₀ cの全てに極限があることも仮定すれば、exists\_kanRightExtension\_iff\_local\_limitsは原文の同じF₀の右Kan拡張存在を直接返す。局所κ-small性から各形状の小性を得る議論は含まない。
 
 :::
@@ -696,12 +728,16 @@ Kを準圏とし同じrightKanDiagram δ F₀ cの全てに極限があること
 :::definition "kerodon_7_6_6_20" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasFiniteLimits, SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallLimits, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.HasSmallSiftedColimits")
 Kerodon Definition 7.6.6.20（[Tag 06BD](https://kerodon.net/tag/06BD)）。対応表の状態：一部。
 
+*主張*　単体集合の族 $`\mathbb K` に対して、無限圏が $`\mathbb K`-完備であるとは、全ての $`K\in\mathbb K` を添字とする極限を持つことである。$`\mathbb K`-余完備性は同じ形の余極限を持つことである。
+
 𝕂を宇宙内の全小形状またはsifted小形状に限ればHasSmallLimits/HasSmallSiftedColimitsは、原文の各Kでの同じHasLimit/HasColimitの全称条件そのもの。任意の形状集合𝕂は含まない。
 
 :::
 
 :::definition "kerodon_7_6_6_22" (lean := "SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.PreservesSmallLimits")
 Kerodon Definition 7.6.6.22（[Tag 06BE](https://kerodon.net/tag/06BE)）。対応表の状態：一部。
+
+*主張*　無限圏の関手は、単体集合の族 $`\mathbb K` に属する全ての形の極限を保つとき $`\mathbb K`-連続であり、全ての形の余極限を保つとき $`\mathbb K`-余連続である。それぞれが張る関手圏の充満部分圏を定める。
 
 𝕂を宇宙内の全小形状に限ればPreservesSmallLimitsとPreservesSmallColimitsが原文の同じ図式の極限・余極限保存の条件を直接表す。任意𝕂およびそれを張る全部分関手準圏は含まない。
 

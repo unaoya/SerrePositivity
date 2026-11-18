@@ -50,6 +50,8 @@ Kerodon の 9.2 節（[Tag 0639](https://kerodon.net/tag/0639)）の項目と、
 :::proposition "kerodon_9_2_0_1" (lean := "ModuleCat.adj, CategoryTheory.Adjunction.compCoyonedaIso, CategoryTheory.Coyoneda.punitIso, ModuleCat.FilteredColimits.forget_preservesFilteredColimits, Module.finitePresentation_of_projective")
 Kerodon Proposition 9.2.0.1（[Tag 063A](https://kerodon.net/tag/063A)）。対応表の状態：一部。
 
+*主張*　結合的環 $`R` 上の左加群 $`M` は、$`\operatorname{Hom}_R(M,-)` が小さいフィルター付き余極限を保つとき、かつそのときに限り有限表示である。
+
 B6型照合：有限自由加群の有限表示があり、階数1では free 随伴と PUnit の coyoneda で Hom 関手を forget と比較し、filtered 余極限保存を得る。任意の左 R-加群で代数的有限表示と Hom の保存性を結ぶ iff は見つからない。
 
 :::
@@ -57,12 +59,16 @@ B6型照合：有限自由加群の有限表示があり、階数1では free �
 :::definition "kerodon_9_2_0_2" (lean := "CategoryTheory.IsFinitelyPresentable, CategoryTheory.isFinitelyPresentable_iff_preservesFilteredColimits")
 Kerodon Definition 9.2.0.2（[Tag 063B](https://kerodon.net/tag/063B)）。対応表の状態：Mathlib にある。
 
+*主張*　小さいフィルター付き余極限を持つ通常の圏で、対象 $`x` は $`\operatorname{Hom}(x,-)` がそれらの余極限を保つときコンパクトである。
+
 仮定：通常圏 C と X。原文は小 filtered 余極限を持つ C、Lean の同値にはその仮定が不要（Lean が弱い）。結論：IsFinitelyPresentable X と coyoneda の X 成分による小 filtered 余極限保存の iff（原文の compact 性に一致）。
 
 :::
 
 :::definition "kerodon_9_2_0_5" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.isCardinalPresentable_of_isKappaSmall") (uses := "kerodon_1_1_0_6, kerodon_3_6_1_1, kerodon_3_6_1_7")
 Kerodon Variant 9.2.0.5（[Tag 063E](https://kerodon.net/tag/063E)）。対応表の状態：一部。
+
+*主張*　通常の単体集合の圏において、コンパクト対象であることは有限単体集合であることと同値である。
 
 B6型照合：有限 ⇒ finitely presentable の向きのみ（Mathlib）。自前は κ-small ⇒ κ-presentable。逆向きはない。
 
@@ -105,6 +111,8 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：宇宙小�
 :::corollary "kerodon_9_2_1_9" (lean := "SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits.hasSmallKappaFilteredColimits")
 Kerodon Corollary 9.2.1.9（[Tag 03DK](https://kerodon.net/tag/03DK)）。対応表の状態：一部。
 
+*主張*　小さい正則基数 $`\kappa` に対し、無限圏が余完備であることは、$`\kappa`-余完備であり、小さい $`\kappa`-フィルター付き余極限を持つことと同値である。
+
 B6型照合：全小余極限があれば小さい κ-filtered 余極限もある型は確認できる。任意の小さい κ について κ-small な余極限と小 κ-filtered 余極限を合わせて全小余極限を得る逆向きは見つからない。
 
 :::
@@ -127,6 +135,8 @@ cofinal posetの存在に原文の必要なλ-small性の型がなく、同じλ
 
 :::corollary "kerodon_9_2_1_12" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.HasSmallKappaFilteredColimits, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.exists_cofinal_kappaFiltered_poset, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.hasColimit_of_rightCofinalRestriction, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.isRightCofinal_ulift, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.isKappaFiltered_nerve_of_cardinalFiltered")
 Kerodon Corollary 9.2.1.12（[Tag 062M](https://kerodon.net/tag/062M)）。対応表の状態：本体にある。
+
+*主張*　小さい正則基数 $`\kappa` に対し、無限圏が小さい $`\kappa`-フィルター付き余極限を持つことは、各小さい $`\kappa`-有向半順序集合 $`A` に対して $`N(A)` 添字の余極限を持つことと同値である。
 
 小さい同じκ-filtered形状にexists\_cofinal\_kappaFiltered\_posetを適用し、全poset余極限の仮定をその制限へ入れてhasColimit\_of\_rightCofinalRestrictionで戻す。逆はnerveのκ-filtered性による特殊化で直接得る。専用の合成iff名は不要。
 
@@ -187,12 +197,16 @@ Kerodon [Tag 062B](https://kerodon.net/tag/062B)
 :::definition "kerodon_9_2_2_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.PreservesKappaFilteredColimits, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.PreservesSmallKappaFilteredColimits")
 Kerodon Definition 9.2.2.1（[Tag 039F](https://kerodon.net/tag/039F)）。対応表の状態：一部。
 
+*主張*　小さいフィルター付き余極限を持つ無限圏からの関手が finitary であるとは、小さいフィルター付き無限圏を添字とする余極限を全て保つことである。そのような関手が張る充満部分圏を $`\operatorname{Fun}^{\mathrm{fin}}` と書く。
+
 PreservesSmallKappaFilteredColimitsのκ=ℵ0は原文の同じFのfinitary条件を直接与える。全関手準圏のその条件による全部分圏という追加の構成成分はこの引用だけに含まない。
 
 :::
 
 :::definition "kerodon_9_2_2_3" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.PreservesKappaFilteredColimits, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.PreservesSmallKappaFilteredColimits")
 Kerodon Definition 9.2.2.3（[Tag 05Y6](https://kerodon.net/tag/05Y6)）。対応表の状態：一部。
+
+*主張*　小さい正則基数 $`\kappa` について、小さい $`\kappa`-フィルター付き余極限を持つ無限圏からの関手が $`\kappa`-finitary であるとは、それらの余極限をすべて保つことである。そのような関手が張る充満部分圏を $`\operatorname{Fun}^{\kappa\text{-}\mathrm{fin}}` と書く。
 
 PreservesSmallKappaFilteredColimitsの同じκは原文の同じFのfinitary条件を直接与える。全関手準圏のその条件による全部分圏という追加の構成成分はこの引用だけに含まない。
 
@@ -233,12 +247,16 @@ Kerodon Corollary 9.2.2.22（[Tag 06DW](https://kerodon.net/tag/06DW)）。対�
 :::corollary "kerodon_9_2_2_23" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.preservesSmallCoproducts_of_finite_filtered, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.preservesSmallColimits_of_coproducts_finite")
 Kerodon Corollary 9.2.2.23（[Tag 06DX](https://kerodon.net/tag/06DX)）。対応表の状態：一部。
 
+*主張*　正則基数 $`\lambda` と $`\lambda`-余完備な無限圏 $`C` に対し、$`C` からの関手が $`\lambda`-余連続であることは、有限余極限と $`\lambda`-小フィルター付き余極限を保つことと同値である。
+
 Cを全小余完備、Fを全小filtered余極限保存にも強めると二つのpreservesSmall補題により同じFの全小余極限保存を直接得る。指定λ-smallだけを仮定する場合は含まない。
 
 :::
 
 :::corollary "kerodon_9_2_2_24" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.preservesSmallCoproducts_of_finite_filtered, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.preservesSmallColimits_of_coproducts_finite")
 Kerodon Corollary 9.2.2.24（[Tag 06DY](https://kerodon.net/tag/06DY)）。対応表の状態：一部。
+
+*主張*　余完備な無限圏からの関手が余連続であることは、有限余極限と小さいフィルター付き余極限の両方を保つことと同値である。
 
 有限余極限保存から有限余積保存を取り、preservesSmallCoproducts\_of\_finite\_filteredで小余積保存、preservesSmallColimits\_of\_coproducts\_finiteで同じFの全小余極限保存を得る。右⇒左の向きに一致する。
 
@@ -256,6 +274,8 @@ Kerodon Proposition 9.2.2.25（[Tag 06DZ](https://kerodon.net/tag/06DZ)）。対
 :::corollary "kerodon_9_2_2_26" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.Compact.preservesKappaFilteredColimits_of_poset")
 Kerodon Corollary 9.2.2.26（[Tag 06E0](https://kerodon.net/tag/06E0)）。対応表の状態：本体にある。
 
+*主張*　小さい正則基数 $`\kappa` について、小さい $`\kappa`-フィルター付き余極限を持つ無限圏からの関手が $`\kappa`-finitary であることは、小さい $`\kappa`-有向半順序集合 $`A` の神経で添字付けた余極限をすべて保つことと同値である。
+
 仮定：小さい正則 κ、二つの quasicategory、κ-directed poset の nerve 上での保存。Lean は C 全体の余完備性を要求しない（Lean が弱い）。結論：poset 版の保存から PreservesKappaFilteredColimits κ F。逆は保存の定義を κ-filtered nerve に適用する向き（原文の iff と一致）。
 
 :::
@@ -271,6 +291,8 @@ Kerodon Corollary 9.2.2.27（[Tag 06E1](https://kerodon.net/tag/06E1)）。対�
 
 :::corollary "kerodon_9_2_2_28" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.Compact.preservesKappaFilteredColimits_of_poset")
 Kerodon Corollary 9.2.2.28（[Tag 06E2](https://kerodon.net/tag/06E2)）。対応表の状態：本体にある。
+
+*主張*　小さいフィルター付き余極限を持つ無限圏からの関手が finitary であることは、すべての小さい有向半順序集合 $`A` に対して $`N(A)` 添字の余極限を保つことと同値である。
 
 仮定：Quasicategory C,D と小さい directed poset 上の保存。preservesKappaFilteredColimits\_of\_poset の κ=ℵ₀ を取る（Kerodon と一致）。結論：一般の小 filtered 形状で保存し、逆はその定義の poset への制限（原文と一致）。
 
@@ -350,12 +372,16 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：可算個�
 :::corollary "kerodon_9_2_3_9" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.hasPreservedColimit_countable_op_of_finite_sequential")
 Kerodon Corollary 9.2.3.9（[Tag 06EC](https://kerodon.net/tag/06EC)）。対応表の状態：一部。
 
+*主張*　正則基数 $`\kappa` に対し、無限圏が $`\kappa^+`-余完備であることは、$`\kappa`-余完備で $`\kappa` に沿う列の余極限を持つことと同値である。その場合、そこからの関手が $`\kappa^+`-余連続であることは、$`\kappa`-余連続で $`\kappa` に沿う列の余極限を保つことと同値である。
+
 B6型照合：一般の κ の順序形状の filtered 性と、有限余極限・自然数列を使った可算形状の保存余極限の構成はある。任意の正則 κ と κ⁺ に対する存在・保存の判定は見つからない。
 
 :::
 
 :::corollary "kerodon_9_2_3_10" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.hasPreservedColimit_countable_op_of_finite_sequential")
 Kerodon Corollary 9.2.3.10（[Tag 06ED](https://kerodon.net/tag/06ED)）。対応表の状態：一部。
+
+*主張*　無限圏が可算余極限を持つことは、有限余極限と自然数列の余極限を持つことと同値である。その場合、そこからの関手が可算余極限を保つことは、有限余極限と自然数列の余極限を保つことと同値である。
 
 B6型照合：一つの宇宙の小さい可算 B に対し、有限形状と自然数列の余極限の存在・保存を仮定して Bᵒᵖ 上の保存余極限を作る。濃度による aleph1 の一般の存在・保存 iff としては確認できない。
 
@@ -441,6 +467,8 @@ $`\mathrm{Map}(x,-)` が小さい κ-filtered 余極限を保つこと。
 :::definition "kerodon_9_2_5_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.IsCompact, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.isKappaCompact_aleph0_iff_filtered")
 Kerodon Definition 9.2.5.1（[Tag 064A](https://kerodon.net/tag/064A)）。対応表の状態：本体にある。
 
+*主張*　小さいフィルター付き余極限を持つ無限圏で、対象 $`x` は余表現関手 $`\operatorname{Hom}_C(x,-)` がそれらの余極限を保つときコンパクトである。
+
 仮定：Quasicategory C と頂点 x。Lean は C の全 filtered 余極限の存在を定義に要求しない（Lean が弱い）。結論：IsCompact は ℵ₀-compact、引用 iff は covariantRepresentableInfinity x の filtered 余極限保存（原文と一致）。
 
 :::
@@ -448,12 +476,16 @@ Kerodon Definition 9.2.5.1（[Tag 064A](https://kerodon.net/tag/064A)）。対�
 :::definition "kerodon_9_2_5_6" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.IsKappaCompact, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.kappaCompactObjects")
 Kerodon Definition 9.2.5.6（[Tag 064F](https://kerodon.net/tag/064F)）。対応表の状態：本体にある。
 
+*主張*　小さい正則基数 $`\kappa` について、小さい $`\kappa`-フィルター付き余極限を持つ無限圏で、$`x` は $`\operatorname{Hom}_C(x,-)` がそれらの余極限を保つとき $`\kappa`-コンパクトである。その充満部分圏を $`C_{<\kappa}` と書く。
+
 仮定：Quasicategory C、κ、頂点 x。定義は正則性と全 κ-filtered 余極限存在を要求しない（Lean が弱い）。結論：IsKappaCompact は共表現可能関手の小 κ-filtered 余極限保存で、kappaCompactObjects は該当頂点の充満部分複体（原文と一致）。
 
 :::
 
 :::definition "kerodon_9_2_5_10" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.isCardinalPresentable_of_isKappaSmall") (uses := "kerodon_1_1_0_6, kerodon_1_1_3_9, kerodon_1_1_3_11, kerodon_4_9_4_1, kerodon_4_9_4_10, kerodon_8_4_2_1, kerodon_9_2_0_5, kerodon_9_2_5_24")
 Kerodon Variant 9.2.5.10（[Tag 064K](https://kerodon.net/tag/064K)）。対応表の状態：一部。
+
+*主張*　小さい正則基数 $`\kappa` と小さい単体集合 $`X` に対し、通常の単体集合の圏で $`X` が $`\kappa`-コンパクトであることは $`X` が $`\kappa`-小さいことと同値である。
 
 B6型照合：κ-small ⇒ κ-presentable の向きのみ（ℵ₀ は Mathlib）。逆向きはない。
 
@@ -485,12 +517,16 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：宇宙小�
 :::corollary "kerodon_9_2_5_22" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.IsKappaCompact.of_le")
 Kerodon Corollary 9.2.5.22（[Tag 064U](https://kerodon.net/tag/064U)）。対応表の状態：一部。
 
+*主張*　小さい正則基数 $`\kappa\trianglelefteq\lambda` と小さい $`\kappa`-フィルター付き余極限を持つ無限圏 $`C` で、対象が $`\kappa`-コンパクトであることは、$`(\kappa,\lambda)`-コンパクトかつ $`\lambda`-コンパクトであることと同値である。
+
 PreservesKappaFilteredColimits.of\_leを同じcovariantRepresentableInfinityに適用すると原文のκ-compact⇒λ-compactという右辺一成分を直接得る。(κ,λ)-compactとの全同値は含まない。
 
 :::
 
 :::corollary "kerodon_9_2_5_23" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.IsKappaCompact.of_le, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.isKappaCompact_aleph0_iff_filtered")
 Kerodon Corollary 9.2.5.23（[Tag 064V](https://kerodon.net/tag/064V)）。対応表の状態：一部。
+
+*主張*　小さい正則基数 $`\lambda` と小さいフィルター付き余極限を持つ無限圏 $`C` で、対象がコンパクトであることは、$`(\aleph_0,\lambda)`-コンパクトかつ $`\lambda`-コンパクトであることと同値である。
 
 κ=ℵ0のcompact判定と保存の基数単調性から同じ対象のcompact⇒λ-compactを直接得る。二濃度の残りの条件は含まない。
 
@@ -508,12 +544,16 @@ Kerodon Proposition 9.2.5.24（[Tag 064W](https://kerodon.net/tag/064W)）。対
 :::corollary "kerodon_9_2_5_25" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.isKappaCompact_smallQuasicategoryColimit_universe, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.isKappaCompact_smallPosetColimit_universe, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.isKappaCompact_finiteColimit") (uses := "kerodon_1_4_0_1")
 Kerodon Corollary 9.2.5.25（[Tag 064X](https://kerodon.net/tag/064X)）。対応表の状態：一部。
 
+*主張*　小さい正則基数 $`\kappa` と小さい $`\kappa`-フィルター付き余極限を持つ無限圏において、$`\kappa`-コンパクト対象は $`\kappa`-小余極限で閉じる。
+
 B6型照合：原文は任意の小さい正則 κ について κ-small 余極限で閉じる主張。引用は非可算の小 quasicategory・poset 形状と有限形状の結果。
 
 :::
 
 :::corollary "kerodon_9_2_5_26" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.isKappaCompact_finiteColimit, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.hasFiniteColimits_kappaCompactObjects")
 Kerodon Corollary 9.2.5.26（[Tag 064Y](https://kerodon.net/tag/064Y)）。対応表の状態：本体にある。
+
+*主張*　小さいフィルター付き余極限を持つ無限圏において、コンパクト対象は有限余極限で閉じる。
 
 仮定：有限単体集合 K の図式の余錐 a が余極限で、全値が κ-compact、κ≥ℵ₀。κ=ℵ₀ では原文の状況を含む（Lean が弱い）。結論：a の頂点は κ-compact（有限余極限閉性と一致）。
 
@@ -530,6 +570,8 @@ Kerodon [Tag 067N](https://kerodon.net/tag/067N)
 
 :::definition "kerodon_9_2_6_1" (lean := "SSet.Finite, SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence")
 Kerodon Definition 9.2.6.1（[Tag 067P](https://kerodon.net/tag/067P)）。対応表の状態：本体にある。
+
+*主張*　Kan 複体 $`X` が本質的に有限であるとは、有限単体集合 $`K` からの弱ホモトピー同値 $`K\to X` が存在することをいう。
 
 同じKan複体Xについて∃K:SSet, K.Finiteかつ∃f:K⟶X, IsWeakHomotopyEquivalence fという既存の型の存在量化が原文の定義全体に一致する。専用名の欠如を不足としない。
 
@@ -551,6 +593,8 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：有限 CW �
 
 :::corollary "kerodon_9_2_6_5" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.finiteKanReplacement_isCompact, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.finiteSpaceGeneratorVertex_isCompact")
 Kerodon Corollary 9.2.6.5（[Tag 067U](https://kerodon.net/tag/067U)）。対応表の状態：一部。
+
+*主張*　本質的に有限な Kan 複体は、空間の無限圏の対象としてコンパクトである。
 
 Xを有限単体集合の標準Kan置換に限ると、有限生成対象のcompact性は同じXのSpace内compact性を直接返す。任意のessentially finite Xへの輸送と逆向きは含まない。
 
@@ -574,6 +618,8 @@ compact generatingのretract判定は、原文の有限単体集合によるdomi
 
 :::proposition "kerodon_9_2_6_9" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.smallKanObject_isKappaCompact, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.exists_spaceCompactCardinal")
 Kerodon Proposition 9.2.6.9（[Tag 0680](https://kerodon.net/tag/0680)）。対応表の状態：一部。
+
+*主張*　非可算正則基数 $`\kappa` に対し、Kan 複体が本質的に $`\kappa`-小さいこと、一点を含み $`\kappa`-小余極限で閉じる空間の最小の充満部分圏に属すること、空間として $`\kappa`-コンパクトであることは同値である。
 
 B6型照合：非可算正則 μ について μ-small Kan 複体が μ-compact の向きのみ。
 
@@ -600,6 +646,8 @@ Kerodon [Tag 0685](https://kerodon.net/tag/0685)
 :::definition "kerodon_9_2_7_1" (lean := "SSet.Finite, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.IsPrecompositionEquivalence")
 Kerodon Definition 9.2.7.1（[Tag 0686](https://kerodon.net/tag/0686)）。対応表の状態：本体にある。
 
+*主張*　無限圏 $`C` は、有限単体集合 $`K` からの圏同値 $`K\to C` が存在するとき本質的に有限である。
+
 同じ準圏Cについて∃K:SSet, K.Finiteかつ∃f:K⟶C, IsPrecompositionEquivalence fという既存の型の存在量化が原文の定義全体に一致する。有限模型にKan性を課さない。
 
 :::
@@ -620,6 +668,8 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：辺の族�
 
 :::proposition "kerodon_9_2_7_4" (lean := "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsPrecompositionEquivalence.isWeakHomotopyEquivalence, SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.isWeakHomotopyEquivalence_iff_isQCatEquivalence")
 Kerodon Proposition 9.2.7.4（[Tag 0689](https://kerodon.net/tag/0689)）。対応表の状態：一部。
+
+*主張*　Kan 複体 $`X` に対し、ある有限単体集合から $`X` への弱ホモトピー同値が存在することと、ある有限単体集合から $`X` への圏同値が存在することは同値である。
 
 B6型照合：任意の前合成同値な単体写像は弱ホモトピー同値なので、有限 K を使う categorical equivalence から弱同値の証人が得られる。Kan 同士の Whitehead 型には K の Kan 性も必要で、任意の有限な弱同値模型から有限 categorical 模型を得る逆向きは残る。
 
@@ -717,6 +767,8 @@ pointCosliceVertexは始点固定の矢印で、原文の終点図式固定のsl
 
 :::proposition "kerodon_9_2_8_3" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.hasColimit_laxPullback_of_components, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isColimitCone_laxPullback_iff_components, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.exists_colimitCone_laxPullback_with_components") (uses := "kerodon_1_4_0_1, kerodon_7_1_9_5, kerodon_8_3_7_1")
 Kerodon Proposition 9.2.8.3（[Tag 06EV](https://kerodon.net/tag/06EV)）。対応表の状態：一部。
+
+*主張*　正則基数 $`\kappa\leq\lambda` に対し、$`(\kappa,\lambda)`-余完備な無限圏 $`C_-,C_+,C` と $`(\kappa,\lambda)`-finitary な関手 $`F_\pm:C_\pm\to C` を取る。向き付きファイバー積は $`(\kappa,\lambda)`-余完備で、両射影は $`(\kappa,\lambda)`-finitary である。対象 $`(x,y,F_-(x)\to F_+(y))` で $`x,y,F_-(x)` がそれぞれ $`(\kappa,\lambda)`-コンパクトなら、その対象も同じ意味でコンパクトである。
 
 B6型照合：(1) の形だけ。lax pullback（= oriented fiber product, Fun(Δ¹,C) の strict pullback）で、両入力が余極限を持ち F± が保てば余極限が存在し、余極限錐は両射影で判定（任意の形状 J、(κ,λ) の制限なし）。(2) の compact 性の主張はない。名前空間 SerrePositivity.InfinityCategories.F2。
 

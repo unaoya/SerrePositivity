@@ -46,6 +46,8 @@ Kerodon の 3.3 節（[Tag 00XF](https://kerodon.net/tag/00XF)）の項目と、
 :::theorem "kerodon_3_3_0_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_map_rlp, SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_kanComplex, SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit_anodyne, SerrePositivity.KST.Comparison.isHomotopyPullback_exInfinity_iff")
 Kerodon Theorem 3.3.0.1（[Tag 00XG](https://kerodon.net/tag/00XG)）。対応表の状態：一部。
 
+*主張*　任意の Kan ファイブレーション $`X\to S` から、Kan 複体間の Kan ファイブレーション $`X'\to S'` への可換正方形で、$`X\to X'` と $`S\to S'` が弱ホモトピー同値となるものが存在する。さらに各頂点 $`s` 上の誘導ファイバー写像はホモトピー同値である。
+
 B6：exInfinity の自然な単位・Kan 性・anodyne 性・Kan fibration 保存で、同じ置換正方形の (a),(b),(c) を直接与える。任意の指定ファイバーの比較がホモトピー同値という (d) は含まない。
 
 :::
@@ -62,6 +64,8 @@ Kerodon [Tag 00XT](https://kerodon.net/tag/00XT)
 :::definition "kerodon_3_3_1_1"
 Kerodon Definition 3.3.1.1（[Tag 00XU](https://kerodon.net/tag/00XU)）。対応表の状態：一部。
 
+*主張*　単体集合が braced であるとは、正次元の非退化単体の面がすべて非退化であることをいう。
+
 B6：nonDegenerate\_δ は Nonsingular X の非退化単体の各面も非退化と直接述べるので、原文の braced 条件を返す。単体の写像自体が Mono という強い仮定に限る。
 
 宣言：`SSet.nonDegenerate_δ`
@@ -70,6 +74,8 @@ B6：nonDegenerate\_δ は Nonsingular X の非退化単体の各面も非退化
 
 :::definition "kerodon_3_3_1_4" (lean := "SSet.nonDegenerate")
 Kerodon Notation 3.3.1.4（[Tag 00XX](https://kerodon.net/tag/00XX)）。対応表の状態：一部。
+
+*主張*　単体集合 $`X` の非退化 $`n`-単体の集合を $`X_n^{\mathrm{nd}}` と書く。$`X` が braced なら面写像がこれらの集合を保つので、半単体集合 $`X^{\mathrm{nd}}` が得られる。
 
 B6：nonDegenerate は任意 X の原文の次数別部分集合を直接与える。nonDegenerate\_δ は Nonsingular の追加仮定で面閉性を返す。braced 一般の半単体集合の束ねた構造は含まない。
 
@@ -142,6 +148,8 @@ Kerodon [Tag 00XH](https://kerodon.net/tag/00XH)
 :::definition "kerodon_3_3_2_1" (lean := "PartialOrder.NonemptyFiniteChains, PartOrd.nonemptyFiniteChainsFunctor")
 Kerodon Notation 3.3.2.1（[Tag 00XJ](https://kerodon.net/tag/00XJ)）。対応表の状態：Mathlib にある。
 
+*主張*　半順序集合 $`Q` の空でない有限全順序部分集合を、包含で順序付けた半順序集合を $`\operatorname{Chain}[Q]` と書く。$`Q=[n]` では $`\operatorname{Chain}[n]` と略す。
+
 仮定：半順序集合 P（Kerodon と一致）。結論：NonemptyFiniteChains P は P の非空有限全順序部分集合で、包含により順序づける。単調写像は像の鎖を与える（一致）。
 
 :::
@@ -155,6 +163,8 @@ B6：現本体・固定Mathlibを再検索。標準単体の細分を鎖の nerv
 
 :::definition "kerodon_3_3_2_5" (lean := "SSet.ex, SimplexCategory.sd")
 Kerodon Construction 3.3.2.5（[Tag 00XN](https://kerodon.net/tag/00XN)）。対応表の状態：Mathlib にある。
+
+*主張*　単体集合 $`X` に対し、$`\operatorname{Ex}(X)` の $`n`-単体を $`N(\operatorname{Chain}[n])\to X` の射とする。$`[n]` に関する前合成で単体構造が、$`X` に関する後合成で関手構造が得られる。
 
 仮定：任意の単体集合 X（Kerodon と一致）。結論：SSet.ex の n 単体は SimplexCategory.sd.obj \[n\] から X への射で、sd.obj \[n\] は非空部分集合の鎖の nerve。単体圏の写像には細分写像で前合成する（一致）。
 
@@ -188,6 +198,8 @@ B6：sdExAdjunction は選ばれた unit の普遍性で、任意の u を判定
 :::definition "kerodon_3_3_3_2" (lean := "SSet.sd")
 Kerodon Notation 3.3.3.2（[Tag 00Y7](https://kerodon.net/tag/00Y7)）。対応表の状態：Mathlib にある。
 
+*主張*　$`X\to\operatorname{Ex}(Y)` が細分の普遍性を満たすとき、その $`Y` を $`\operatorname{Sd}(X)` と記す。この普遍射は同型を除いて一意で、$`X` に関して関手的である。
+
 仮定：単体集合 X（Kerodon と一致）。結論：左 Kan 拡張で得る SSet.sd.obj X は Ex への射の関手を表現する選択済みの細分対象（一致）。
 
 :::
@@ -195,12 +207,16 @@ Kerodon Notation 3.3.3.2（[Tag 00Y7](https://kerodon.net/tag/00Y7)）。対応�
 :::proposition "kerodon_3_3_3_3" (lean := "SSet.sd, SSet.sdExAdjunction")
 Kerodon Proposition 3.3.3.3（[Tag 00Y8](https://kerodon.net/tag/00Y8)）。対応表の状態：Mathlib にある。
 
+*主張*　任意の単体集合 $`X` に対し、細分を表す普遍射 $`X\to\operatorname{Ex}(\operatorname{Sd}(X))` が存在する。
+
 仮定：任意の単体集合 X（Kerodon と一致）。結論：sd X と随伴の単位 X→Ex(sd X) が存在し、任意の Y に対し Hom(sd X,Y) ≃ Hom(X,Ex Y) を与える（一致）。
 
 :::
 
 :::corollary "kerodon_3_3_3_4" (lean := "SSet.sdExAdjunction")
 Kerodon Corollary 3.3.3.4（[Tag 00Y9](https://kerodon.net/tag/00Y9)）。対応表の状態：Mathlib にある。
+
+*主張*　細分関手 $`\operatorname{Sd}` は $`\operatorname{Ex}` の左随伴である。
 
 仮定：単体集合の圏（Kerodon と一致）。結論：sdExAdjunction は sd ⊣ ex の随伴データを返し、Ex が右随伴である（一致）。
 
@@ -264,12 +280,16 @@ Kerodon [Tag 00YR](https://kerodon.net/tag/00YR)
 :::definition "kerodon_3_3_4_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainGreatest")
 Kerodon Notation 3.3.4.1（[Tag 00YS](https://kerodon.net/tag/00YS)）。対応表の状態：本体にある。
 
+*主張*　半順序集合の空でない有限鎖は最大元をもち、この最大元を取る操作は包含に関して単調である。
+
 仮定：半順序集合 P と非空有限鎖（Kerodon と一致）。結論：有限鎖の最大元を返し、鎖の包含順に単調な写像 finiteChainGreatest : NonemptyFiniteChains P →o P（一致）。
 
 :::
 
 :::definition "kerodon_3_3_4_3" (lean := "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionLastVertexMap, SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exUnitAt")
 Kerodon Construction 3.3.4.3（[Tag 00YU](https://kerodon.net/tag/00YU)）。対応表の状態：本体にある。
+
+*主張*　$`X\to\operatorname{Ex}(X)` は、$`\sigma:\Delta^n\to X` に最大頂点写像 $`N(\operatorname{Chain}[n])\to\Delta^n` を前合成して定める。随伴で対応する $`\operatorname{Sd}(X)\to X` を最終頂点写像と呼ぶ。
 
 仮定：任意の単体集合 X（Kerodon と一致）。結論：exUnitAt X は n 単体 σ に最大元写像を前合成したものを割り当て、subdivisionLastVertexMap.app X はその sd ⊣ ex の Hom 同値による逆像として一意に定める（一致）。
 
@@ -294,6 +314,8 @@ Kerodon [Tag 00Z1](https://kerodon.net/tag/00Z1)
 :::theorem "kerodon_3_3_5_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exUnitAt_anodyne, SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exUnitAt")
 Kerodon Theorem 3.3.5.1（[Tag 00Z2](https://kerodon.net/tag/00Z2)）。対応表の状態：本体にある。
 
+*主張*　任意の単体集合 $`X` の比較写像 $`X\to\operatorname{Ex}(X)` は弱ホモトピー同値である。
+
 仮定：任意の単体集合 X（Kerodon と一致）。結論：exUnitAt X は anodyne（Lean が強い：全 Kan 標的で弱同値を検査できるほか、Kan fibration への左持ち上げ性を持つ）。
 
 :::
@@ -310,12 +332,16 @@ B6：Ex∞ についての iff は一段の Ex と異なる関手。exUnitAt\_an
 :::proposition "kerodon_3_3_5_3" (lean := "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivision_map_anodyne")
 Kerodon Proposition 3.3.5.3（[Tag 00Z3](https://kerodon.net/tag/00Z3)）。対応表の状態：本体にある。
 
+*主張*　単体集合の無害射を細分した射も無害射である。
+
 仮定：任意の anodyne 射 f : X ⟶ Y（Kerodon と一致）。結論：細分関手の SSet.sd.map f も anodyne（一致）。
 
 :::
 
 :::corollary "kerodon_3_3_5_4" (lean := "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ex_map_rlp, SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exIterate_map_rlp")
 Kerodon Corollary 3.3.5.4（[Tag 00Z4](https://kerodon.net/tag/00Z4)）。対応表の状態：本体にある。
+
+*主張*　$`\operatorname{Ex}` は Kan ファイブレーションを保つ。
 
 仮定：単体集合の射 p が J.rlp、すなわち Kan fibration（Kerodon と一致）。結論：Ex.map p も全ホーンに対する RLP を持つ（一致）。
 
@@ -372,6 +398,8 @@ Kerodon [Tag 00ZA](https://kerodon.net/tag/00ZA)
 :::definition "kerodon_3_3_6_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity, SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit")
 Kerodon Construction 3.3.6.1（[Tag 00ZB](https://kerodon.net/tag/00ZB)）。対応表の状態：本体にある。
 
+*主張*　$`\operatorname{Ex}^{\infty}(X)` は、$`X` から比較写像 $`\rho_{\operatorname{Ex}^n(X)}` で $`\operatorname{Ex}` を反復した列の余極限である。余極限への射は自然変換 $`\mathrm{id}\to\operatorname{Ex}^{\infty}` を与える。
+
 仮定：任意の単体集合 X（Kerodon と一致）。結論：exIterate の n 段の値を ρ で結んだ列の余極限を exInfinity とし、零段からの射が exInfinityUnit（一致）。
 
 :::
@@ -379,12 +407,16 @@ Kerodon Construction 3.3.6.1（[Tag 00ZB](https://kerodon.net/tag/00ZB)）。対
 :::proposition "kerodon_3_3_6_2" (lean := "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit_anodyne, SerrePositivity.KST.Spectra.anodyne_mono") (uses := "kerodon_1_1_0_6")
 Kerodon Proposition 3.3.6.2（[Tag 00ZC](https://kerodon.net/tag/00ZC)）。対応表の状態：一部。
 
+*主張*　任意の単体集合 $`X` の比較写像 $`X\to\operatorname{Ex}^{\infty}(X)` は単射で、頂点上で全単射である。
+
 B6：exInfinityUnit\_anodyne と anodyne\_mono から同じ ρ\_X\^∞ の Mono を直接得る。零単体での全射性は含まない。
 
 :::
 
 :::proposition "kerodon_3_3_6_4" (lean := "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_preservesFiniteLimits, SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_finite_factorization") (uses := "kerodon_1_1_0_6")
 Kerodon Proposition 3.3.6.4（[Tag 00ZE](https://kerodon.net/tag/00ZE)）。対応表の状態：一部。
+
+*主張*　$`\operatorname{Ex}^{\infty}` はフィルター付き余極限と有限極限を保つ。
 
 B6：exInfinity\_preservesFiniteLimits は原文の二つの保存性のうち有限極限保存を直接述べる。入力の filtered colimit 保存を、有限始域からの段階因子化と取り違えない。
 
@@ -402,12 +434,16 @@ B6：有限極限保存の一般instanceだけで、原文の指定した頂点�
 :::proposition "kerodon_3_3_6_6" (lean := "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_map_rlp")
 Kerodon Proposition 3.3.6.6（[Tag 00ZG](https://kerodon.net/tag/00ZG)）。対応表の状態：本体にある。
 
+*主張*　$`\operatorname{Ex}^{\infty}` は Kan ファイブレーションを保つ。
+
 仮定：単体集合の射 p が J.rlp、すなわち Kan fibration（Kerodon と一致）。結論：Ex∞.map p も J.rlp（一致）。
 
 :::
 
 :::proposition "kerodon_3_3_6_7" (lean := "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit_anodyne")
 Kerodon Proposition 3.3.6.7（[Tag 00ZH](https://kerodon.net/tag/00ZH)）。対応表の状態：本体にある。
+
+*主張*　任意の単体集合 $`X` の比較写像 $`X\to\operatorname{Ex}^{\infty}(X)` は弱ホモトピー同値である。
 
 仮定：任意の単体集合 X（Kerodon と一致）。結論：exInfinityUnit.app X は anodyne（Lean が強い：弱同値性に加え Kan fibration に対する左持ち上げ性）。元の Ex∞ の Kan 性への引用を単位の宣言に訂正。
 
@@ -416,6 +452,8 @@ Kerodon Proposition 3.3.6.7（[Tag 00ZH](https://kerodon.net/tag/00ZH)）。対�
 :::corollary "kerodon_3_3_6_8" (lean := "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_map_localized_isIso_iff, SerrePositivity.KST.Fibration.weakHomotopyEquivalence_anodyneQ_isIso")
 Kerodon Corollary 3.3.6.8（[Tag 00ZJ](https://kerodon.net/tag/00ZJ)）。対応表の状態：本体にある。
 
+*主張*　単体集合の射 $`f` が弱ホモトピー同値であることと、$`\operatorname{Ex}^{\infty}(f)` が弱ホモトピー同値であることは同値である。
+
 仮定：任意の単体集合の射 f（Kerodon と一致）。結論：f が anodyne 局所化で同型となることと Ex∞.map f が同型となることが同値。両方向の弱ホモトピー同値との比較を加えると原文の述語で同じ同値を得る（一致）。
 
 :::
@@ -423,12 +461,16 @@ Kerodon Corollary 3.3.6.8（[Tag 00ZJ](https://kerodon.net/tag/00ZJ)）。対応
 :::proposition "kerodon_3_3_6_9" (lean := "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_kanComplex")
 Kerodon Proposition 3.3.6.9（[Tag 00ZK](https://kerodon.net/tag/00ZK)）。対応表の状態：本体にある。
 
+*主張*　任意の単体集合 $`X` に対し、$`\operatorname{Ex}^{\infty}(X)` は Kan 複体である。
+
 仮定：任意の単体集合 X（Kerodon と一致）。結論：Ex∞.obj X が KanComplex（一致）。元の単位の anodyne 性への引用を KanComplex のインスタンスに訂正。
 
 :::
 
 :::corollary "kerodon_3_3_6_10" (lean := "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit_localized_isIso, SerrePositivity.KST.Comparison.kanHomotopyEquivOfLocalizedIso, SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_kanComplex")
 Kerodon Corollary 3.3.6.10（[Tag 00ZL](https://kerodon.net/tag/00ZL)）。対応表の状態：本体にある。
+
+*主張*　$`X` が Kan 複体なら、比較写像 $`X\to\operatorname{Ex}^{\infty}(X)` はホモトピー同値である。
 
 仮定：Kan 複体 X（Kerodon と一致。Ex∞ X の Kan 性はインスタンスで供給）。結論：exInfinityUnit.app X の局所化同型と、Kan 複体間のその射の実ホモトピー逆の構成を確認（一致）。
 
@@ -455,12 +497,16 @@ B6：left fibration と準圏同値の判定は一般の Kan fibration の弱同
 :::corollary "kerodon_3_3_7_4" (lean := "SerrePositivity.KST.Comparison.pullback_localized_isIso, SerrePositivity.KST.Fibration.weakHomotopyEquivalence_anodyneQ_isIso")
 Kerodon Corollary 3.3.7.4（[Tag 0104](https://kerodon.net/tag/0104)）。対応表の状態：本体にある。
 
+*主張*　弱ホモトピー同値 $`T\to S` を Kan ファイブレーション $`X\to S` に沿って引き戻した射 $`T\times_S X\to X` は弱ホモトピー同値である。
+
 仮定：任意の底 S 上の Kan fibration p と弱ホモトピー同値 T→S（Kerodon と一致。Lean の型は全ホーン RLP と anodyne 局所化での同型で記述）。結論：選んだ引き戻し T×\_S X→X の局所化像も同型で、同じ射が弱ホモトピー同値（一致）。
 
 :::
 
 :::corollary "kerodon_3_3_7_5" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.leftFibration_isQCatEquivalence_iff_fibers, SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.isWeakHomotopyEquivalence_iff_isQCatEquivalence") (uses := "kerodon_1_1_0_6, kerodon_1_2_5_1")
 Kerodon Corollary 3.3.7.5（[Tag 0105](https://kerodon.net/tag/0105)）。対応表の状態：一部。
+
+*主張*　同じ底 $`S` 上の Kan ファイブレーション間の射は、$`S` の全頂点上でファイバーのホモトピー同値を誘導するとき、かつそのときに限り弱ホモトピー同値である。
 
 B6：leftFibration\_isQCatEquivalence\_iff\_fibers は同じ三角形とファイバー射の iff。E,F,B を Kan 複体に強めると Kan fibration は left fibration で、引用の isWeakHomotopyEquivalence\_iff\_isQCatEquivalence と isSimplicialHomotopyEquivalence への比較をそのまま適用できる。任意の底 S については含まない。
 
@@ -469,12 +515,16 @@ B6：leftFibration\_isQCatEquivalence\_iff\_fibers は同じ三角形とファ�
 :::proposition "kerodon_3_3_7_6" (lean := "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.trivialKanFibration_of_fibration_of_simplicialHomotopyEquivalence, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.rightFibration_trivialKanFibration_of_contractible_fibers, SerrePositivity.KST.SConstruction.map_isIso_of_trivialKanFibration") (uses := "kerodon_1_1_0_6, kerodon_1_2_5_1, kerodon_3_1_7_10, kerodon_3_1_7_13, kerodon_3_3_7_5, kerodon_3_5_2_1")
 Kerodon Proposition 3.3.7.6（[Tag 00ZP](https://kerodon.net/tag/00ZP)）。対応表の状態：一部。
 
+*主張*　単体集合の Kan ファイブレーションが自明であること、ホモトピー同値であること、弱ホモトピー同値であること、全頂点ファイバーが可縮なことは同値である。
+
 B6：rightFibration\_trivialKanFibration\_of\_contractible\_fibers は Kan fibration（特に right fibration）に全ファイバーの可縮性を仮定し、同じ f の自明 Kan 性を返す。(4)⇒(1)の向き。一般の弱同値からの逆方向は含まない。
 
 :::
 
 :::corollary "kerodon_3_3_7_7" (lean := "SerrePositivity.KST.Spectra.anodyne_mono, SerrePositivity.SimplicialModel.simplicial_anodyne_eq_trivialCofibrations") (uses := "kerodon_1_1_0_6, kerodon_3_1_7_14, kerodon_3_1_8_1, kerodon_3_3_7_6")
 Kerodon Corollary 3.3.7.7（[Tag 00ZQ](https://kerodon.net/tag/00ZQ)）。対応表の状態：一部。
+
+*主張*　単体集合の射は、単射かつ弱ホモトピー同値であるとき、かつそのときに限り無害射である。
 
 B6：anodyne\_mono は条件(1)から条件(2)の単射性成分を直接返す。一般 ModelCategory SSet を要求する別宣言は根拠にせず、モデル圏のinstanceなしで逆向きや仮定なしの一致を主張しない。
 
@@ -491,6 +541,8 @@ Kerodon [Tag 00ZR](https://kerodon.net/tag/00ZR)
 
 :::theorem "kerodon_3_3_8_1" (lean := "SerrePositivity.KST.Comparison.trivialFibrationExtension")
 Kerodon Theorem 3.3.8.1（[Tag 00ZS](https://kerodon.net/tag/00ZS)）。対応表の状態：一部。
+
+*主張*　Kan ファイブレーション $`X\to S` と無害射 $`S\to S'` に対し、引き戻しが $`X\to S` となる Kan ファイブレーション $`X'\to S'` が存在する。
 
 B6：trivialFibrationExtension は同じ q を p に沿う引き戻しで延長し、延長先にも全単射 RLP を返す。原文の Kan fibration を自明 Kan fibration に強める場合。p は任意の単射なので anodyne も含む。
 

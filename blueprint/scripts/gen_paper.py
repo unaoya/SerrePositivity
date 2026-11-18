@@ -45,6 +45,7 @@ stats = collections.Counter(); modules = []
 # NB-W2（11-18）：research/paper-coverage/notes/<番号>.md の原稿（解説から移した本文）を項目に、<節>.md を節の頭に入れる
 import notes_md
 def note_body(n): return notes_md.note_body(f'{P}/notes/{n}.md', skip=('原典 ', '照合先'))
+STMT = notes_md.statements(P)   # 主張の一行（NB-W4）
 for sec in sorted(by_sec, key=int):
     imports = set(); body = []
     subs = collections.defaultdict(list)
@@ -68,6 +69,7 @@ for sec in sorted(by_sec, key=int):
             title = r['title']
             body.append(f':::{KIND.get(r["kind"], "proposition")} "{label(n)}"{opts}')
             body.append(f'**{KINDJA.get(r["kind"], r["kind"])} {esc(n)}**　{esc(title)}。対応表の状態：{STATUS.get(st, st)}。\n')
+            if n in STMT: body.append(STMT[n]); stats['with-statement'] += 1
             if rv.get('reason'): body.append(esc(rv['reason']) + '\n')
             if (nb := note_body(n)):
                 stats['with-note'] += 1; body.append(nb)
@@ -110,5 +112,23 @@ hdr = ['import Verso', 'import VersoManual', 'import VersoBlueprint'] + [f'impor
        '本論文が引用する外の文献の結果（`research/paper-coverage/external.csv`）。各本論文の項目から uses で張られる。CLMST の結果は CLMST の部のノード。BS19・K の文献の結果は、それぞれの対応表ができるまで状態を空にしてある。\n']
 open(f'{OUT}/External.lean', 'w', encoding='utf-8').write('\n'.join(hdr + body) + '\n')
 modules.append('External')
+# 補足（NB-W4、11-18）：項目に対応しない文章（方針の説明、解説の付録）。notes/supplement/<順番>-<slug>.md を、その順に一つの章の節として出す
+import glob
+body = []
+for fp in sorted(glob.glob(f'{P}/notes/supplement/*.md')):
+    ttl = next((l[2:].strip() for l in open(fp, encoding='utf-8') if l.startswith('# ')), os.path.basename(fp))
+    nb = notes_md.note_body(fp)
+    if not nb: continue
+    k = os.path.basename(fp)[:-3]
+    body.append(f'# {notes_md.esc_text(ttl)}\n')
+    body.append(f'%%%\nnumber := false\ntag := "paper-supplement-{k}"\n%%%\n')
+    body.append(nb); stats['supplement'] += 1
+if body:
+    hdr = ['import Verso', 'import VersoManual', 'import VersoBlueprint', '', 'open Verso.Genre', 'open Verso.Genre.Manual', 'open Informal', '',
+           'set_option maxHeartbeats 2000000', '',
+           '#doc (Manual) "補足" =>', '%%%', 'number := false', 'tag := "paper-supplement"', '%%%', '',
+           '本論文の項目に対応しない文章（主張と帰着、証明の方針、先行研究との関係、検討の記録など）。解説から移した原稿（`research/paper-coverage/notes/supplement/`）で、原稿に「未確認」「精密ではない」とある議論は、その断り書きのまま載せる。\n']
+    open(f'{OUT}/Supplement.lean', 'w', encoding='utf-8').write('\n'.join(hdr + body) + '\n')
+    modules.append('Supplement')
 json.dump({'modules': modules, 'stats': dict(stats)}, open(f'{OUT}/paper-generated.json', 'w'), ensure_ascii=False, indent=1)
 print(modules, dict(stats))

@@ -51,6 +51,8 @@ Kerodon の 4.8 節（[Tag 0578](https://kerodon.net/tag/0578)）の項目と、
 :::theorem "kerodon_4_8_0_1" (lean := "CategoryTheory.Functor.IsEquivalence, CategoryTheory.Functor.essImage")
 Kerodon Theorem 4.8.0.1（[Tag 06RY](https://kerodon.net/tag/06RY)）。対応表の状態：Mathlib にある。
 
+*主張*　通常の圏の関手は、対象について本質的全射、各 Hom 集合について全射かつ単射であるとき、かつそのときに限り圏同値である。
+
 仮定：通常の圏 C,D と関手 F（Kerodon と一致）。結論：Functor.IsEquivalence は Full・Faithful・EssSurj を束ね、その関手から圏同値を作る（一致）。
 
 :::
@@ -74,12 +76,16 @@ Kerodon [Tag 01JG](https://kerodon.net/tag/01JG)
 :::definition "kerodon_4_8_1_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsEssentiallySurjective")
 Kerodon Definition 4.8.1.1（[Tag 01JQ](https://kerodon.net/tag/01JQ)）。対応表の状態：本体にある。
 
+*主張*　無限圏の関手は、標的の各対象が始域のある対象の像に同型であるとき本質的全射である。
+
 仮定：∞ 圏間の関手 F（Lean が弱い：述語は任意の単体集合の射）。結論：任意の標的頂点 y がある F(x) と hY で同型であること（一致）。
 
 :::
 
 :::proposition "kerodon_4_8_1_3" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.isEssentiallySurjective_iff_hoFunctor")
 Kerodon Remark 4.8.1.3（[Tag 01JS](https://kerodon.net/tag/01JS)）。対応表の状態：本体にある。
+
+*主張*　無限圏の関手が本質的全射であることは、ホモトピー圏に誘導される関手が本質的全射であることと同値である。
 
 仮定：∞ 圏間の関手 F（Lean が弱い：任意の単体集合の射）。結論：IsEssentiallySurjective F と誘導された hF の Functor.EssSurj が同値（一致）。
 
@@ -88,12 +94,16 @@ Kerodon Remark 4.8.1.3（[Tag 01JS](https://kerodon.net/tag/01JS)）。対応表
 :::proposition "kerodon_4_8_1_7" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsEssentiallySurjective.comp") (uses := "kerodon_1_4_0_1")
 Kerodon Remark 4.8.1.7（[Tag 01JW](https://kerodon.net/tag/01JW)）。対応表の状態：一部。
 
+*主張*　無限圏の関手 $`F,G` が本質的全射なら $`GF` も本質的全射である。$`GF` が本質的全射なら $`G` もそうであり、さらに $`G` が同値なら $`F` も本質的全射である。
+
 IsEssentiallySurjective.compは原文の三つの結論のうち、本質的全射な二関手の合成も本質的全射という第一成分を同じ合成について直接返す。後二条件は含まない。
 
 :::
 
 :::definition "kerodon_4_8_1_11" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices, CategoryTheory.Functor.essImage, SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.InnerFibrations.fullSubcomplexOnVertices_quasicategory") (uses := "kerodon_1_4_0_1")
 Kerodon Definition 4.8.1.11（[Tag 06S2](https://kerodon.net/tag/06S2)）。対応表の状態：本体にある。
+
+*主張*　無限圏の関手の本質像は、関手の像に同型なすべての対象で張られる標的の充満部分圏である。
 
 fullSubcomplexOnVerticesにP(y):=∃x,Nonempty(VertexIso(F(x),y))を代入すると、原文と同じ「像の対象に同型な全頂点で張る充満部分圏」を直接構成する。VertexIsoが対象の同型を表し、fullSubcomplexOnVertices\_quasicategoryも現本体にある。専用のessImageという名前の欠如だけではpartialにしない。
 
@@ -119,6 +129,8 @@ Fullは通常圏のHom集合の全射性。原文のnerveの区間写像空間�
 
 :::definition "kerodon_4_8_2_7" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsEssentiallySurjective") (uses := "kerodon_1_4_0_1, kerodon_4_8_1_1, kerodon_4_8_2_1")
 Kerodon Definition 4.8.2.7（[Tag 05A5](https://kerodon.net/tag/05A5)）。対応表の状態：一部。
+
+*主張*　無限圏の関手は、本質的全射なら $`0`-充満であり、各射空間の $`\pi_0` 上で全射なら $`1`-充満である。$`n\geq2` では、すべての射を基点とした射空間の写像が $`\pi_{n-2}` で単射かつ $`\pi_{n-1}` で全射であるとき $`n`-充満である。
 
 IsEssentiallySurjectiveは原文の0-fullの定義の頂点同型による存在条件そのもの。1-fullと高次n-fullの定義は含まない。
 
@@ -194,6 +206,8 @@ Kerodon [Tag 05AW](https://kerodon.net/tag/05AW)
 :::definition "kerodon_4_8_3_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful")
 Kerodon Definition 4.8.3.1（[Tag 01JH](https://kerodon.net/tag/01JH)）。対応表の状態：本体にある。
 
+*主張*　無限圏の関手は、任意の二対象の射空間に誘導する写像が Kan 複体のホモトピー同値であるとき充満忠実である。
+
 仮定：∞ 圏間の関手 F（Lean が弱い：述語は任意の単体集合の射）。結論：任意の頂点対に対し右 pinched の写像空間の射が単体的ホモトピー同値。区間模型との比較を通した条件（一致）。
 
 *定義 13.3 （充満忠実）*
@@ -204,6 +218,8 @@ quasicategory の間の関手 $`f\colon C\to D` が充満忠実であるとは�
 
 :::proposition "kerodon_4_8_3_5" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful.reflects_isInvertibleEdge, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsFullyFaithful.reflects_isTerminalVertex")
 Kerodon Proposition 4.8.3.5（[Tag 01JN](https://kerodon.net/tag/01JN)）。対応表の状態：本体にある。
+
+*主張*　無限圏の充満忠実関手は同型を反映する。
 
 仮定：Quasicategory X,Y と充満忠実な F、始域の辺 e（Kerodon と一致）。結論：F(e) の可逆性から e の可逆性を得る（一致）。
 
@@ -228,12 +244,16 @@ Faithfulは通常圏のHom集合の単射性。原文の写像空間の直和因
 :::proposition "kerodon_4_8_3_9" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful.toHoFullyFaithful, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.IsFullyFaithful.comp, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace_isQCatEquivalence, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace_postOfEq") (uses := "kerodon_1_4_0_1, kerodon_4_8_2_1, kerodon_4_8_3_1, kerodon_4_8_3_8")
 Kerodon Remark 4.8.3.9（[Tag 059X](https://kerodon.net/tag/059X)）。対応表の状態：一部。
 
+*主張*　無限圏の関手が充満忠実であることは、4.8.2.1 の充満性と 4.8.3.8 の忠実性の両方を満たすことと同値である。
+
 IsFullyFaithfulの各pinchedHomMapのホモトピー同値は、自然なpinched→interval比較の同値と可換式で同じinterval作用の同値へ移る。従ってπ₀全射と全標的を直和因子とする同値を直接得る。fully faithful⇒fullかつfaithfulの向きのみ。
 
 :::
 
 :::definition "kerodon_4_8_3_12" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace_isQCatEquivalence, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace_postOfEq")
 Kerodon Definition 4.8.3.12（[Tag 05AX](https://kerodon.net/tag/05AX)）。対応表の状態：一部。
+
+*主張*　$`n\geq0` に対し、無限圏の関手は任意の二対象の射空間の間に誘導する写像が $`(n-2)`-切断であるとき $`n`-忠実である。
 
 n=0の(n−2)-truncationは各Hom作用のホモトピー同値の条件。IsFullyFaithfulのpinchedHomMapを自然な区間比較で移すと同じinterval作用のこの条件を直接得る。任意の正のnの定義は含まない。
 
@@ -264,6 +284,8 @@ B6再検索（現本体・ロックMathlib、移動後の宣言を含む）：�
 
 :::proposition "kerodon_4_8_3_36" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful.pullback_snd, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace_isQCatEquivalence, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace_postOfEq")
 Kerodon Proposition 4.8.3.36（[Tag 05BD](https://kerodon.net/tag/05BD)）。対応表の状態：一部。
+
+*主張*　無限圏の内部ファイブレーション $`F:C\to D` と $`n>0` に対し、$`F` が $`n`-忠実であること、すべての無限圏 $`D'\to D` に沿う引き戻しが $`n`-忠実であること、局所 $`(n-2)`-切断な $`D'` への引き戻しの全体が常に局所 $`(n-2)`-切断であることは同値である。$`D'=\Delta^1` に限って全体の局所切断性を課すこととも同値である。最初の二条件の同値は $`n=0` でも成り立つ。
 
 n=0でIsFullyFaithful.pullback\_sndは同じinner fibrationの各底変換の充満忠実性を直接返す。pinched/interval比較は自然な同値なのでこの性質は原文の同じHom作用へ移る。一般nの四条件は含まない。
 
@@ -296,6 +318,8 @@ Kerodon [Tag 06SQ](https://kerodon.net/tag/06SQ)
 
 :::theorem "kerodon_4_8_4_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isQCatEquivalence_iff_fullyFaithful_essentiallySurjective, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.qCatEquivalenceOfFullyFaithfulEssentiallySurjective, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful.isQCatEquivalence_of_surjective, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace_isQCatEquivalence, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace_postOfEq") (uses := "kerodon_1_4_0_1, kerodon_4_5_3_24, kerodon_4_5_4_11, kerodon_4_8_3_9, kerodon_4_8_4_5")
 Kerodon Theorem 4.8.4.1（[Tag 01JX](https://kerodon.net/tag/01JX)）。対応表の状態：一部。
+
+*主張*　無限圏の関手が同値であることは、本質的全射かつ充満忠実であることと同値である。これは本質的全射・充満・忠実の三条件を課すこと、またはすべての $`n\geq0` に対して $`n`-充満を課すこととも同値である。
 
 isQCatEquivalence\_iff\_fullyFaithful\_essentiallySurjectiveは同じFの原文(1)⇔(2)を直接返す。pinchedとintervalの自然な比較によるHom作用の同値性も確認する。(3),(4)を含む四条件全体ではない。
 
@@ -358,12 +382,16 @@ fullSubcomplexVertexImageLiftは頂点のliteral imageが張る部分複体へ�
 :::proposition "kerodon_4_8_4_5" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful.hasLiftingProperty_boundary_succ, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.isFullyFaithful_of_boundary_succ") (uses := "kerodon_1_4_0_1, kerodon_4_7_6_25, kerodon_4_8_2_24, kerodon_4_8_2_25")
 Kerodon Proposition 4.8.4.5（[Tag 05AR](https://kerodon.net/tag/05AR)）。対応表の状態：一部。
 
+*主張*　無限圏の内部ファイブレーションは、$`n\geq1` で $`\partial\Delta^n\to\Delta^n` に対して右持ち上げ性をもつとき、かつそのときに限り $`n`-充満である。同型ファイブレーションでは $`n=0` でも同値である。
+
 IsFullyFaithful.hasLiftingProperty\_boundary\_succはFを充満忠実なinner fibrationに強めると同じ∂Δⁿに対する持ち上げを全ての正のnで直接返す。一つのn-fullだけの仮定と逆向きは含まない。
 
 :::
 
 :::theorem "kerodon_4_8_4_6" (lean := "SerrePositivity.InfinityCategories.HTT.Section3_1_3.IsQCatEquivalence.core") (uses := "kerodon_1_2_5_1, kerodon_1_4_0_1, kerodon_3_2_8_3, kerodon_3_3_7_1, kerodon_4_4_5_4, kerodon_4_5_1_22, kerodon_4_8_4_1")
 Kerodon Theorem 4.8.4.6（[Tag 01HG](https://kerodon.net/tag/01HG)）。対応表の状態：一部。
+
+*主張*　無限圏の関手 $`C\to D` が同値であることは、矢印圏の芯 $`\operatorname{Fun}(\Delta^1,C)^{\simeq}\to\operatorname{Fun}(\Delta^1,D)^{\simeq}` が Kan 複体のホモトピー同値であることと同値である。
 
 Fの圏同値からpostcomposeをΔ¹に適用し、IsQCatEquivalence.coreとKan上のホモトピー同値への比較を適用すると、原文の同じ矢印関手圏coreの射のホモトピー同値性を直接得る。逆向きは含まない。
 
@@ -378,6 +406,8 @@ B6再検索（現本体・ロックMathlib、移動後の宣言を含む）：�
 
 :::definition "kerodon_4_8_4_8" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.coherentNerveMap_isFullyFaithful_iff") (uses := "kerodon_1_1_0_6")
 Kerodon Definition 4.8.4.8（[Tag 01Q0](https://kerodon.net/tag/01Q0)）。対応表の状態：一部。
+
+*主張*　単体関手が弱充満忠実であるとは、各対象対の射単体集合に誘導する写像が弱ホモトピー同値であることをいう。ホモトピー圏で本質的全射なら弱本質的全射であり、両方を満たす関手を単体圏の弱同値と呼ぶ。
 
 coherentNerveMap\_isFullyFaithful\_iffの右辺は局所Kanな豊穣圏で全てのF.map X Yが圏同値という条件で、Kan上の弱ホモトピー同値との比較により原文のweakly fully faithfulの条件を直接与える。この範囲と前半の条件のみで、weakly essentially surjectiveと一般のweak equivalenceの定義は含まない。
 
@@ -411,6 +441,8 @@ Faithfulは通常圏のHom集合上の述語。原文の∞圏のfaithful性とh
 :::proposition "kerodon_4_8_4_13" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful.hasLiftingProperty_boundary_succ, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.isFullyFaithful_of_boundary_succ, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful.trivialKanFibration_of_surjective, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace_isQCatEquivalence, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace_postOfEq") (uses := "kerodon_1_1_0_6, kerodon_1_1_4_12, kerodon_1_4_0_1, kerodon_4_8_4_5")
 Kerodon Proposition 4.8.4.13（[Tag 05BF](https://kerodon.net/tag/05BF)）。対応表の状態：一部。
 
+*主張*　$`n\geq0` で無限圏の内部ファイブレーションが $`n`-忠実であることは、すべての $`m>n` の境界包含 $`\partial\Delta^m\to\Delta^m` に対する右持ち上げ性と同値である。同じ条件は、$`n` 次骨格全体を含む任意の単体部分集合の包含に対して課してもよい。
+
 n=0では充満忠実性と全ての正次元境界のRLPを、hasLiftingProperty\_boundary\_succとisFullyFaithful\_of\_boundary\_succが同じFについて直接結ぶ。自然なpinched/interval比較でHom作用を同定できる。一般nと全てのA⊂Bの条件(3)は含まない。
 
 :::
@@ -425,6 +457,8 @@ B6再検索（現本体・ロックMathlib、移動後の宣言を含む）：�
 :::corollary "kerodon_4_8_4_15" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful.postcompose, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace_isQCatEquivalence, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace_postOfEq")
 Kerodon Corollary 4.8.4.15（[Tag 04Q6](https://kerodon.net/tag/04Q6)）。対応表の状態：一部。
 
+*主張*　無限圏の $`n`-忠実関手 $`C\to D` は、任意の単体集合 $`B` に対して $`n`-忠実な $`\operatorname{Fun}(B,C)\to\operatorname{Fun}(B,D)` を誘導する。充満忠実性も同じ操作で保たれる。
+
 IsFullyFaithful.postcomposeは原文が明記する「特に充満忠実なら内部Homの同じ後合成も充満忠実」を直接返す。写像空間模型の自然な比較を通じる性質で、一般n-faithfulは含まない。
 
 :::
@@ -438,6 +472,8 @@ B6再検索（現本体・ロックMathlib、移動後の宣言を含む）：�
 
 :::corollary "kerodon_4_8_4_17" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.fullSubcomplex_coslicePostcomp_isFullyFaithful, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace_isQCatEquivalence, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace_postOfEq") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_3_1_8_1, kerodon_4_3_6_10, kerodon_4_6_4_21, kerodon_4_8_4_1, kerodon_4_8_4_13")
 Kerodon Corollary 4.8.4.17（[Tag 02C8](https://kerodon.net/tag/02C8)）。対応表の状態：一部。
+
+*主張*　無限圏の関手 $`G:C\to D` が $`n`-忠実なら、任意の図式 $`F:K\to C` に対してスライスと余スライスに誘導される関手も $`n`-忠実である。$`G` が充満忠実なら両関手も充満忠実である。
 
 fullSubcomplex\_coslicePostcomp\_isFullyFaithfulはGが同型で閉じた頂点集合の充満部分複体の包含の場合の同じcoslice後合成の充満忠実性。一般G・slice側・一般nは含まない。
 
@@ -455,12 +491,16 @@ Kerodon [Tag 05BY](https://kerodon.net/tag/05BY)
 :::definition "kerodon_4_8_5_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsEssentiallySurjective")
 Kerodon Definition 4.8.5.1（[Tag 05BZ](https://kerodon.net/tag/05BZ)）。対応表の状態：一部。
 
+*主張*　整数 $`n` に対し、無限圏の関手は $`0\leq m\leq n` のすべての整数 $`m` で $`m`-充満であるとき、圏論的に $`n`-connective である。
+
 IsEssentiallySurjectiveはn=0で唯一要求される0-fullの条件をそのまま与える。他のnでの全てのm-fullの条件は含まない。
 
 :::
 
 :::proposition "kerodon_4_8_5_15" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsEssentiallySurjective.comp")
 Kerodon Proposition 4.8.5.15（[Tag 05CA](https://kerodon.net/tag/05CA)）。対応表の状態：一部。
+
+*主張*　無限圏の関手 $`F,G` がともに圏論的に $`n`-connective なら $`GF` もそうである。$`GF` が圏論的に $`n`-connective で、$`G` が圏論的に $`(n+1)`-connective かつ $`n\geq1` なら $`F` が圏論的に $`n`-connective である。$`GF` が圏論的に $`n`-connective で $`F` が圏論的に $`(n-1)`-connective なら、$`G` が圏論的に $`n`-connective である。
 
 n=0ではcategorically 0-connectiveは0-fullすなわち本質的全射だけ。IsEssentiallySurjective.compは同じF,Gの合成についてこの結論を直接返す。(1)のn=0の場合に限り、一般nや(2),(3)は含まない。
 
@@ -533,6 +573,8 @@ Kerodon [Tag 06SY](https://kerodon.net/tag/06SY)
 
 :::definition "kerodon_4_8_6_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.InnerFibrations.thinNerve_innerFibration, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.InnerFibrations.thinNerve_hom_ext_horn")
 Kerodon Definition 4.8.6.1（[Tag 05BL](https://kerodon.net/tag/05BL)）。対応表の状態：一部。
+
+*主張*　正整数 $`n` に対し、単体集合の射が $`n`-categorical な内部ファイブレーションであるとは、すべての内部角の持ち上げが存在し、次元が $`n` を超えるとき一意であることをいう。
 
 始域・標的を薄い通常圏のnerveとしn=1に取ると、thinNerve\_innerFibrationが同じpの存在、thinNerve\_hom\_ext\_hornを始域に適用して次数2以上の一意性を直接得る。一般n・任意の始域は含まない。
 
@@ -647,6 +689,8 @@ Kerodon [Tag 05CP](https://kerodon.net/tag/05CP)
 
 :::proposition "kerodon_4_8_7_1" (lean := "CategoryTheory.Functor.homRel, CategoryTheory.Quotient.functor, CategoryTheory.Quotient.full_functor, CategoryTheory.Quotient.essSurj_functor, CategoryTheory.Quotient.lift, CategoryTheory.Quotient.lift_spec")
 Kerodon Proposition 4.8.7.1（[Tag 05CQ](https://kerodon.net/tag/05CQ)）。対応表の状態：Mathlib にある。
+
+*主張*　通常の圏の任意の関手は、充満かつ本質的全射な関手に続いて忠実な関手を合成したものに分解できる。
 
 仮定：任意の通常圏 C,D と関手 F:C→D（Kerodon と一致）。結論：F.homRel で割る関手が Full かつ EssSurj。Quotient.lift が Faithful で、lift\_spec により合成は F（一致）。
 

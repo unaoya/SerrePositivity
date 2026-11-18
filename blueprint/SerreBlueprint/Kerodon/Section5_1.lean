@@ -64,6 +64,8 @@ Kerodon [Tag 01T4](https://kerodon.net/tag/01T4)
 :::definition "kerodon_5_1_1_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.IsCartesianEdge, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.IsCocartesianEdge, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.HasCocartesianHornLifting")
 Kerodon Definition 5.1.1.1（[Tag 01T5](https://kerodon.net/tag/01T5)）。対応表の状態：本体にある。
 
+*主張*　単体集合の射 $`q:X\to S` に関し、辺 $`e` が $`q`-デカルトであるとは、$`n\geq2` の右外角の最後の辺を $`e` とした任意の相対持ち上げ問題に解があることをいう。$`q`-余デカルトでは、左外角の最初の辺を $`e` とする。
+
 仮定：任意の単体集合の射 q:X→S と X の 1 単体 e（Kerodon と一致）。結論：cartesian は終辺 e を固定した最後の外ホーンの持ち上げ性、cocartesian は初辺 e を固定した最初の外ホーンの持ち上げ性（一致）。
 
 *03-straightening.html — 1. cocartesian 辺と cocartesian fibration — 定義*
@@ -87,12 +89,16 @@ def IsCocartesianEdge \{X B : SSet.\{u\}\} (p : X ⟶ B) (e : X \_⦋1⦌) : Pro
 :::proposition "kerodon_5_1_1_4" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.hasCocartesianHornLifting_iff_isInvertibleEdge_of_map, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.isInvertibleEdge_iff_isCartesianEdge")
 Kerodon Example 5.1.1.4（[Tag 01T8](https://kerodon.net/tag/01T8)）。対応表の状態：本体にある。
 
+*主張*　無限圏 $`C` の射が同型であることは、$`C\to\Delta^0` に関してデカルトであること、または余デカルトであることのいずれとも同値である。
+
 仮定：∞ 圏 X から点への射と辺 e（Lean が弱い：像が可逆な一般の内ファイブレーションにも適用）。結論：e の可逆性、cartesian 性、cocartesian 性が同値。点への像は恒等辺（一致）。
 
 :::
 
 :::proposition "kerodon_5_1_1_9" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.isInvertibleEdge_iff_isCartesianEdge, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.isInvertibleEdge_iff_isCocartesianEdge, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.isCartesianEdge_of_isInvertibleEdge")
 Kerodon Proposition 5.1.1.9（[Tag 01TB](https://kerodon.net/tag/01TB)）。対応表の状態：本体にある。
+
+*主張*　無限圏の内部ファイブレーション $`q:C\to D` で、$`C` の射が同型であることは、その像が同型でかつ射自身が $`q`-デカルトであることと同値である。$`q`-余デカルトを用いても同じ同値が成り立つ。
 
 仮定：∞ 圏間の内ファイブレーション p と始域の辺 e（Kerodon と一致）。結論：e の可逆性は cartesian 性かつ像の可逆性と同値。cocartesian 側にも同じ同値（一致）。
 
@@ -101,6 +107,8 @@ Kerodon Proposition 5.1.1.9（[Tag 01TB](https://kerodon.net/tag/01TB)）。対�
 :::corollary "kerodon_5_1_1_10" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.isCocartesianEdge_constant, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.isCartesianEdge_of_isInvertibleEdge")
 Kerodon Corollary 5.1.1.10（[Tag 01TC](https://kerodon.net/tag/01TC)）。対応表の状態：本体にある。
 
+*主張*　無限圏の間の内部ファイブレーションに関して、恒等射はデカルトかつ余デカルトである。
+
 仮定：∞ 圏間の内ファイブレーション p と頂点 x（Kerodon と一致）。結論：定値 1 単体 id\_x が cocartesian。id\_x の可逆性から cartesian でもある（一致）。
 
 :::
@@ -108,12 +116,16 @@ Kerodon Corollary 5.1.1.10（[Tag 01TC](https://kerodon.net/tag/01TC)）。対�
 :::corollary "kerodon_5_1_1_11" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.isInvertibleEdge_iff_isCartesianEdge") (uses := "kerodon_1_2_5_1, kerodon_1_4_0_1, kerodon_1_4_6_10, kerodon_5_1_1_9")
 Kerodon Corollary 5.1.1.11（[Tag 023H](https://kerodon.net/tag/023H)）。対応表の状態：一部。
 
+*主張*　標的が Kan 複体である無限圏の内部ファイブレーションについて、射が同型であること、デカルトであること、余デカルトであることは同値である。
+
 底がKanなので像の全辺は可逆。isInvertibleEdge\_iff\_isCartesianEdgeは原文の(1)⇔(2)を同じ辺について直接与える。(3)との同値は引用した型だけにはない。
 
 :::
 
 :::proposition "kerodon_5_1_1_14" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.isCocartesianEdge_iff_relativeCosliceMap_trivialKanFibration, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.relativeCosliceMap_trivialKanFibration_of_isCocartesianEdge") (uses := "kerodon_1_1_0_6, kerodon_4_3_6_16")
 Kerodon Proposition 5.1.1.14（[Tag 01TF](https://kerodon.net/tag/01TF)）。対応表の状態：一部。
+
+*主張*　単体集合の射 $`q:X\to S` に関し、辺 $`e:x\to y` が $`q`-デカルトであることは、$`X_{/e}\to X_{/y}\times_{S_{/q(y)}}S_{/q(e)}` が自明な Kan ファイブレーションであることと同値である。余デカルト性は $`X_{e/}\to X_{x/}\times_{S_{q(x)/}}S_{q(e)/}` が自明な Kan ファイブレーションであることと同値である。
 
 isCocartesianEdge\_iff\_relativeCosliceMap\_trivialKanFibrationは原文後半の同じ相対coslice比較のiff。cartesian/slice側は別なので含めない。
 
@@ -178,6 +190,8 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：通常圏�
 :::corollary "kerodon_5_1_2_4" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.isCocartesianEdge_triangle_longEdge, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.isCocartesianEdge_triangle_second_of_first_long, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.isCartesianEdge_triangle_longEdge, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.isCartesianEdge_triangle_first_of_second_long")
 Kerodon Corollary 5.1.2.4（[Tag 01TS](https://kerodon.net/tag/01TS)）。対応表の状態：本体にある。
 
+*主張*　無限圏の内部ファイブレーション $`q` と、連続する辺 $`f,g` と長辺 $`h` をもつ二単体を取る。$`g` が $`q`-デカルトなら $`f,h` のデカルト性は同値で、$`f` が $`q`-余デカルトなら $`g,h` の余デカルト性は同値である。
+
 仮定：∞ 圏間の内ファイブレーション q と 2 単体 (f,g,h)（Lean が弱い：始域の ∞ 圏性を明示しない）。結論：g が cartesian なら f と h の cartesian 性が同値。f が cocartesian なら g と h の cocartesian 性が同値（一致）。
 
 :::
@@ -185,12 +199,16 @@ Kerodon Corollary 5.1.2.4（[Tag 01TS](https://kerodon.net/tag/01TS)）。対応
 :::corollary "kerodon_5_1_2_5" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.isCocartesianEdge_iff_of_functorIso, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.isCocartesianEdge_of_functorIso") (uses := "kerodon_1_4_0_1, kerodon_5_1_1_9, kerodon_5_1_2_4")
 Kerodon Corollary 5.1.2.5（[Tag 01TT](https://kerodon.net/tag/01TT)）。対応表の状態：一部。
 
+*主張*　無限圏の内部ファイブレーションに関するデカルト性と余デカルト性は、矢印圏における射の同型で保たれる。
+
 A=Δ¹、eを非退化辺とするとisCocartesianEdge\_iff\_of\_functorIsoは原文後半の同じFun(Δ¹,C)内同型でのcocartesian性のiffを直接与える。cartesian側は含めない。
 
 :::
 
 :::corollary "kerodon_5_1_2_6" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.IsCartesianEdge.comp, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.IsCocartesianEdge.comp") (uses := "kerodon_1_1_0_6, kerodon_1_2_5_1, kerodon_1_4_0_1, kerodon_3_4_1_11, kerodon_5_1_1_1, kerodon_5_1_2_1")
 Kerodon Corollary 5.1.2.6（[Tag 01TU](https://kerodon.net/tag/01TU)）。対応表の状態：一部。
+
+*主張*　単体集合の内部ファイブレーション $`p:C\to D`、$`q:D\to E` と $`C` の辺 $`e` を取る。$`p(e)` が $`q`-デカルトなら $`e` の $`p`-デカルト性と $`qp`-デカルト性は同値であり、余デカルト性についても対応する同値が成り立つ。
 
 IsCartesianEdge.compはp-cartesianかつ像がq-cartesianから合成に対しcartesianというiffの順方向を直接返す。逆方向は引用にない。
 
@@ -268,6 +286,8 @@ Kerodon [Tag 01U9](https://kerodon.net/tag/01U9)
 :::definition "kerodon_5_1_4_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.CartesianFibration, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cartesianFibrations, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.CocartesianFibration, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.CocartesianHornFibration")
 Kerodon Definition 5.1.4.1（[Tag 01UA](https://kerodon.net/tag/01UA)）。対応表の状態：本体にある。
 
+*主張*　デカルトファイブレーションは、底の各辺を任意の指定された終点を持つデカルト辺として持ち上げられる内部ファイブレーションである。余デカルトファイブレーションでは始点を指定し、余デカルト辺で持ち上げる。
+
 仮定：任意の単体集合の射 p（Kerodon と一致）。結論：内ファイブレーションで、各底の辺を指定終点から cartesian に、または指定始点から cocartesian に持ち上げられる（一致）。
 
 *03-straightening.html — 1. cocartesian 辺と cocartesian fibration — 定義*
@@ -291,6 +311,8 @@ $`p\colon E\to B` を準圏の間の写像とする。
 :::proposition "kerodon_5_1_4_8" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cartesianFibration_pullback_snd, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cocartesianFibration_pullback_snd") (uses := "kerodon_1_1_0_6, kerodon_5_1_1_1, kerodon_5_1_4_1")
 Kerodon Proposition 5.1.4.8（[Tag 023J](https://kerodon.net/tag/023J)）。対応表の状態：一部。
 
+*主張*　単体集合の射 $`X\to S` がデカルトファイブレーションであることは、$`S` の全単体に沿う引き戻しがデカルトファイブレーションであることと同値である。
+
 cartesianFibration\_pullback\_sndに各σ:Δⁿ→Sを代入すれば原文の順方向そのもの。全ての単体上から大域性を回収する逆は含まない。
 
 :::
@@ -306,6 +328,8 @@ Kerodon Proposition 5.1.4.9（[Tag 01UG](https://kerodon.net/tag/01UG)）。対�
 
 :::corollary "kerodon_5_1_4_11" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cocartesianFibration_kanEquivalenceLifting, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.equivalenceLifting_iff_inner_and_invertibleTargetLifting, SSet.quasicategory_of_innerFibration")
 Kerodon Corollary 5.1.4.11（[Tag 023K](https://kerodon.net/tag/023K)）。対応表の状態：一部。
+
+*主張*　標的が Kan 複体である単体集合の射では、同型ファイブレーション、デカルトファイブレーション、余デカルトファイブレーションであることが同値である。
 
 底Kanは準圏で、cocartesianFibration\_kanEquivalenceLiftingとisofibrationの二条件のiffにより原文(3)⇒(1)が直接得られる。三条件全体の同値ではない。
 
@@ -323,6 +347,8 @@ Kerodon Proposition 5.1.4.12（[Tag 01UJ](https://kerodon.net/tag/01UJ)）。対
 :::proposition "kerodon_5_1_4_13" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.isCartesianEdge_triangle_longEdge, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.isCartesianEdge_triangle_first_of_second_long") (uses := "kerodon_1_1_0_6, kerodon_5_1_3_7, kerodon_5_1_4_1")
 Kerodon Proposition 5.1.4.13（[Tag 01UK](https://kerodon.net/tag/01UK)）。対応表の状態：一部。
 
+*主張*　デカルトファイブレーション $`q` の始域の二単体で、連続する辺 $`f,g` の後者 $`g` がデカルトなら、$`f` がデカルトであることと長辺がデカルトであることは同値である。
+
 底Sを準圏に強めると現本体のisCartesianEdge\_triangle\_longEdgeとisCartesianEdge\_triangle\_first\_of\_second\_longを同じσとgに適用し、原文のfがcartesian iff hがcartesianを直接得る。一般の単体集合の底ではない。
 
 :::
@@ -330,12 +356,16 @@ Kerodon Proposition 5.1.4.13（[Tag 01UK](https://kerodon.net/tag/01UK)）。対
 :::proposition "kerodon_5_1_4_14" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cartesianFibration_comp, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cocartesianFibration_comp, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.IsCartesianEdge.comp") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_5_1_1_1, kerodon_5_1_1_9, kerodon_5_1_4_1, kerodon_5_1_4_12, kerodon_5_1_4_13")
 Kerodon Proposition 5.1.4.14（[Tag 01UL](https://kerodon.net/tag/01UL)）。対応表の状態：一部。
 
+*主張*　二つのデカルトファイブレーション $`p,q` の合成 $`qp` はデカルトファイブレーションである。辺 $`e` が $`qp`-デカルトであることは、$`e` が $`p`-デカルトで $`p(e)` が $`q`-デカルトであることと同値である。
+
 cartesianFibration\_compは原文の合成のcartesian fibration性、IsCartesianEdge.compは辺の判定の十分条件を直接与える。辺の必要条件は含まない。
 
 :::
 
 :::proposition "kerodon_5_1_4_15" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.rightFibration_iff_cartesianFibration_all_edges, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.leftFibration_iff_cocartesianFibration_all_edges") (uses := "kerodon_1_1_0_6, kerodon_1_2_5_1, kerodon_1_4_0_1, kerodon_1_4_6_10, kerodon_4_4_2_1, kerodon_5_1_1_1, kerodon_5_1_3_9, kerodon_5_1_4_1, kerodon_5_1_4_12")
 Kerodon Proposition 5.1.4.15（[Tag 01UM](https://kerodon.net/tag/01UM)）。対応表の状態：一部。
+
+*主張*　単体集合の射が右ファイブレーションであることは、デカルトファイブレーションであってすべての辺がデカルトであることと同値である。全辺の条件を全頂点ファイバーが Kan 複体であることに替えても同値である。
 
 rightFibration\_iff\_cartesianFibration\_all\_edgesは同じqについて原文(1)⇔(2)そのもの。(3)の全fiber Kanとの同値は含まない。
 
@@ -358,6 +388,8 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：相対 slic
 :::proposition "kerodon_5_1_4_18" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverPostcomp_trivialKanFibration")
 Kerodon Proposition 5.1.4.18（[Tag 01UP](https://kerodon.net/tag/01UP)）。対応表の状態：一部。
 
+*主張*　デカルトファイブレーション $`q:X\to S` は任意の図式 $`f:K\to X` に対してデカルトファイブレーション $`X_{/f}\to S_{/qf}` を誘導する。そのデカルト辺は $`X` への射影で $`q`-デカルトになる辺である。
+
 qをtrivial Kan fibrationに強めればsliceOverPostcomp\_trivialKanFibrationは原文(1)の同じslice後合成がtrivial Kan、従ってcartesian fibrationと直接与える。一般のqと(2)は含めない。
 
 :::
@@ -372,12 +404,16 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：相対 slic
 :::proposition "kerodon_5_1_4_20" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.trivialKanFibration_sliceUnderPostcomp") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_4_3_6_8, kerodon_5_1_1_1, kerodon_5_1_1_16, kerodon_5_1_4_1, kerodon_5_1_4_12, kerodon_5_1_4_13, kerodon_5_1_4_19")
 Kerodon Proposition 5.1.4.20（[Tag 01UR](https://kerodon.net/tag/01UR)）。対応表の状態：一部。
 
+*主張*　デカルトファイブレーション $`q:X\to S` は任意の図式 $`f:K\to X` に対してデカルトファイブレーション $`X_{f/}\to S_{qf/}` を誘導する。そのデカルト辺は $`X` への射影で $`q`-デカルトになる辺である。
+
 qをtrivial Kan fibrationに強めればtrivialKanFibration\_sliceUnderPostcompは原文(1)の同じcoslice後合成がtrivial Kan、従ってcartesian fibrationと直接与える。一般のqと(2)は含めない。
 
 :::
 
 :::proposition "kerodon_5_1_4_21" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cartesianFibration_pullback_over, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.isCartesianEdge_pullback_over") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_5_1_1_1, kerodon_5_1_2_6, kerodon_5_1_4_1, kerodon_5_1_4_12, kerodon_5_1_4_13")
 Kerodon Proposition 5.1.4.21（[Tag 02VV](https://kerodon.net/tag/02VV)）。対応表の状態：一部。
+
+*主張*　同じ底 $`S` 上にデカルトファイブレーション $`U_i:X_i\to S` と内部ファイブレーション $`U:X\to S` があり、二つの射 $`F_i:X_i\to X` がデカルト辺を保ち、$`F_1` が同型ファイブレーションとする。引き戻し $`X_0\times_X X_1\to S` はデカルトファイブレーションで、そのデカルト辺は両成分がデカルトな辺である。
 
 全空間と底を準圏、F₀をinner fibration、各fiber上のF₀にもinvertible target liftingを追加するとcartesianFibration\_pullback\_overは原文と同じ合成射のcartesian fibration性を直接与える。辺の必要条件と元のF₁だけの仮定への一般化は含まない。
 
@@ -425,12 +461,16 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：Δ¹・Δ²
 :::corollary "kerodon_5_1_5_11" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cartesianFibration_pullback_snd")
 Kerodon Corollary 5.1.5.11（[Tag 01V7](https://kerodon.net/tag/01V7)）。対応表の状態：一部。
 
+*主張*　単体集合の内部ファイブレーション $`X\to S` がデカルトファイブレーションであることは、$`S` の次元 $`\leq2` の全単体に沿う引き戻しがそうであることと同値である。
+
 cartesianFibration\_pullback\_sndはn≤2の全σにも直接適用でき、原文の順方向を与える。低次元だけからの逆判定は含まない。
 
 :::
 
 :::corollary "kerodon_5_1_5_12" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.rightFibration_iff_cartesianFibration_all_edges")
 Kerodon Corollary 5.1.5.12（[Tag 046V](https://kerodon.net/tag/046V)）。対応表の状態：一部。
+
+*主張*　局所デカルトファイブレーションについて、右ファイブレーションであること、全頂点ファイバーが Kan 複体であること、全辺が局所デカルトであること、全辺がデカルトであることは同値である。
 
 qを大域cartesian fibrationに強めるとrightFibration\_iff\_cartesianFibration\_all\_edgesは原文(1)⇔(4)を直接返す。locallyの定義と(2),(3)の同値は含まない。
 
@@ -527,6 +567,8 @@ Kerodon [Tag 023L](https://kerodon.net/tag/023L)
 :::theorem "kerodon_5_1_6_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.isQCatEquivalence_over_interval_of_endpoint_fibers_of_cocartesian_lifts, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.isQCatEquivalence_of_leftFibration_fibers, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.isEssentiallySurjective_of_vertexFiberMap") (uses := "kerodon_1_4_0_1, kerodon_4_4_5_9, kerodon_4_5_3_31, kerodon_4_8_4_1, kerodon_5_1_1_1, kerodon_5_1_2_5, kerodon_5_1_4_1, kerodon_5_1_6_6, kerodon_5_1_6_7")
 Kerodon Theorem 5.1.6.1（[Tag 023M](https://kerodon.net/tag/023M)）。対応表の状態：一部。
 
+*主張*　無限圏の可換正方形で縦の $`U:C\to D` がデカルトファイブレーション、$`U':C'\to D'` が同型ファイブレーションで、底の横写像が同値とする。全体の横写像 $`F:C\to C'` が同値であることは、全ファイバーで同値を誘導し、デカルト射をデカルト射へ送ることと同値である。この場合 $`U'` もデカルトファイブレーションである。
+
 底射を恒等、両縦射をKan fibrationに制限すればleft fibrationでもあり、isQCatEquivalence\_of\_leftFibration\_fibersは同じ全空間射Fの同値をfiberの同値から直接与える。一般cartesian版やiff全体ではない。
 
 :::
@@ -547,6 +589,8 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：同じ底�
 
 :::corollary "kerodon_5_1_6_4" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.leftFibration_isQCatEquivalence_iff_fibers, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.leftFibration_precompositionEquivalence_iff_fibers") (uses := "kerodon_1_2_5_1, kerodon_1_4_0_1")
 Kerodon Corollary 5.1.6.4（[Tag 01VE](https://kerodon.net/tag/01VE)）。対応表の状態：一部。
+
+*主張*　無限圏の二つの右ファイブレーションの間の可換正方形で、底同士の関手が同値なら、全体同士の関手が同値であることと、各ファイバーに Kan 複体のホモトピー同値を誘導することは同値である。
 
 同じ底上のKan fibration間に制限すれば両縦射はleft/right fibration。leftFibration\_isQCatEquivalence\_iff\_fibersは同じFと同じKan fiberの同値のiffを直接返す。rightのみ・底を変える一般の場合は含まない。
 
@@ -589,12 +633,16 @@ Kerodon [Tag 0280](https://kerodon.net/tag/0280)
 :::definition "kerodon_5_1_7_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.exists_relativeFunctorInverse_of_precompositionEquivalence") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1")
 Kerodon Definition 5.1.7.1（[Tag 0281](https://kerodon.net/tag/0281)）。対応表の状態：一部。
 
+*主張*　同じ底 $`E` の上の内部ファイブレーションの間の射の相対ホモトピー逆は、$`E` 上の逆向きの射で、両合成が $`E` 上の関手圏で恒等射と同型になるものである。そのような逆をもつ射を $`E` 上の同値と呼ぶ。
+
 left fibrationと準圏の底に制限しFが前合成同値なら、exists\_relativeFunctorInverse\_of\_precompositionEquivalenceは底上の逆射と二つの相対Functor空間での同型を直接構成する。原文の相対逆の構成成分で、任意inner fibrationの述語全体は含まない。
 
 :::
 
 :::proposition "kerodon_5_1_7_5" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.exists_relativeFunctorInverse_of_precompositionEquivalence") (uses := "kerodon_1_1_0_6, kerodon_1_2_5_1, kerodon_1_4_0_1, kerodon_4_5_5_10, kerodon_4_5_5_11")
 Kerodon Proposition 5.1.7.5（[Tag 0285](https://kerodon.net/tag/0285)）。対応表の状態：一部。
+
+*主張*　内部ファイブレーションの $`E` 上の同値は台の単体集合の圏同値である。両対象が $`E` 上の同型ファイブレーションであれば、台の圏同値から $`E` 上の同値も従う。
 
 底を準圏、U,Vをleft fibrationに強め、Fの前合成同値を仮定するとexists\_relativeFunctorInverse\_of\_precompositionEquivalenceが原文(2)の底上の相対逆と相対単位・余単位を直接返す。一般isofibrationへの拡張と(1)は含まない。
 
@@ -611,6 +659,8 @@ Kerodon Corollary 5.1.7.8（[Tag 0287](https://kerodon.net/tag/0287)）。対応
 
 :::proposition "kerodon_5_1_7_9" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.relativeFunctorPost_isQCatEquivalence_of_precompositionEquivalence, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.relativeFunctorPost_isQCatEquivalence_on_base, SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.simplicialSectionsMap_homotopyEquivalence_of_fibers") (uses := "kerodon_1_1_0_6, kerodon_1_1_4_1, kerodon_1_1_4_12, kerodon_1_2_5_1, kerodon_1_4_0_1, kerodon_3_2_8_1, kerodon_4_4_3_7, kerodon_4_4_5_1, kerodon_4_5_3_31, kerodon_4_5_7_23, kerodon_4_8_4_6, kerodon_5_1_7_8")
 Kerodon Proposition 5.1.7.9（[Tag 0288](https://kerodon.net/tag/0288)）。対応表の状態：一部。
+
+*主張*　底 $`E` 上の内部ファイブレーションの間の射が $`E` 上の同値であることは、任意の $`B\to E` からの $`E` 上の関手圏に同値を誘導すること、およびその芯にホモトピー同値を誘導することのいずれとも同値である。各単体 $`\Delta^n\to E` に沿う引き戻しの間で同値になることとも同値である。
 
 底準圏・両縦left fibrationに制限すると、原文(4)は特に全頂点fiberの同値を含む。relativeFunctorPost\_isQCatEquivalence\_on\_baseに恒等底射を代入すれば同じ相対Functor後合成の同値(2)を直接返す。全四条件のiffは含まない。
 

@@ -73,6 +73,7 @@ def esc(s):
 import notes_md
 NOTES = f'{K}/notes'
 def note_body(n): return notes_md.note_body(f'{NOTES}/{n}.md', skip=('Kerodon [', '照合先'))
+STMT = notes_md.statements(K)   # 主張の一行（NB-W4）：カードの頭のすぐ下に出す
 
 # 依存の辺：P⁰ の項目の閉包（research/p0-lurie/item-closure/edges.csv）のうち Kerodon → Kerodon の辺を (uses := …) に
 ALLNUM = set()
@@ -123,6 +124,7 @@ for sec in sorted(by_sec, key=lambda s: [int(x) for x in s.split('.')]):
             head = f'Kerodon {kind} {n}' + (f'（[Tag {tag}](https://kerodon.net/tag/{tag})）' if tag else '')  # 自前の markup なので esc しない
             body.append(f':::{directive} "{label}"{opt}')
             body.append(f'{head}。対応表の状態：{STATUS.get(st, st)}。\n')
+            if n in STMT: body.append(STMT[n]); stats['with-statement'] += 1
             if r['reason']: body.append(esc(r['reason']) + '\n')
             if (nb := note_body(n)):
                 stats['with-note'] += 1

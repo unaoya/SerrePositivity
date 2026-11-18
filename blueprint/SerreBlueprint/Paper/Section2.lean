@@ -82,6 +82,8 @@ tag := "paper-2-1"
 :::lemma_ "paper_2_1" (lean := "SerrePositivity.Section2.lemma_2_1, SerrePositivity.supportDim_baseChange_of_map_maximalIdeal, SerrePositivity.chi_baseChange_of_map_maximalIdeal") (uses := "ext_Ma17_2_2")
 **補題 2.1**　剰余体を代数閉体へ拡大する完備平坦局所拡大。対応表の状態：本体にある。
 
+*主張*　完備ネーター局所環 $`(B,\mathfrak b,k)` から、剰余体が $`k` の代数閉包で極大イデアルが $`\mathfrak bB'` となる完備ネーター局所環 $`B'` への平坦局所射がある。任意の有限 $`B` 加群の $`\mathfrak b^a` 商の長さは $`a\ge1` で保存され、次元・有限長・環の正則性も保存される。テンソル積が有限長の有限加群対ではすべての Tor の長さも保存される。
+
 原典 PDF p.5 / layout L215。完備Noether局所環から代数閉剰余体を持つ完備平坦局所拡大を構成し、極大イデアル・Hilbert–Samuel関数・正則性・Tor長を保存する。module dimensionとchiの保存は表示した共通層の宣言で補う。
 
 外の文献：Ma17 2.2
@@ -98,6 +100,8 @@ tag := "paper-2-2"
 :::lemma_ "paper_2_2" (lean := "SerrePositivity.Section2.lemma_2_2") (uses := "ext_KuranoShimomoto, ext_KuranoShimomoto_1_1")
 **補題 2.2**　正則な正規化基底の存在。対応表の状態：本体にある。
 
+*主張*　$`D` を次元 $`h>0` の完備ネーター局所整域で剰余体 $`k` が標数 $`p>0` の完全体とすると、剰余体に恒等射を誘導する有限かつ生成点で分離的な正則部分環 $`A\subset D` がとれる。$`\operatorname{char}D=p` では $`A=k[[t_1,\ldots,t_h]]`、標数零では $`A=W(k)[[t_2,\ldots,t_h]]` で $`t_1=p` とし、$`(t_1,\ldots,t_h)` は $`D` のパラメータ系かつ $`A` の正則パラメータ系になる。
+
 原典 PDF p.6 / layout L262。完全な正標数剰余体を持つ完備局所整域に、同じ剰余体の有限・生成的分離な正則基底を構成する。等標数の冪級数環と混標数のWitt冪級数環との具体的同型およびパラメータも結論に含む。
 
 *解説 §8 $`\lambda`-平坦な長さ付き代数の構成*
@@ -110,12 +114,18 @@ tag := "paper-2-2"
 
 *Lean:* \`Section2.lemma\_2\_2\`。等標数は \`exists\_cohen\_gabber\_normalization\` の微分経路の実構成から接続する。係数切断を変更し、完備微分の生成点の次元を環の次元へ減らし、微分基底を持つパラメータを選ぶ。同じ有限単射の相対微分の消滅から分数体拡大の分離性を証明した。\`Inputs.cohen\_gabber\_normalization\`は証明済みの互換入口である。混標数は \`exists\_cohen\_normalization\_mixedCharacteristic\` で上記の係数写像・有限評価・単射性を実構成し、既存の型を保った入口へ接続済み。
 
+*基底と Galois 閉包：2段階の準備*
+
+1. *正則な基底をとる*：$`D` の中に、$`D` がその上有限で $`\operatorname{Frac}(D)/\operatorname{Frac}(A_D)` が分離的になる正則部分環 $`A_D` をとる（補題 8.4、Cohen–Gabber）。$`A_D` は $`k[[t]]` または $`W(k)[[t]]` の形にとれるので、塔と $`\lambda_\infty` の構成（§8）にも使える。
+
 外の文献：KuranoShimomoto、KuranoShimomoto 1.1
 
 :::
 
 :::definition "paper_eq_2_1" (lean := "SerrePositivity.Section2.TowerStage, SerrePositivity.Section2.Tower") (uses := "paper_2_2")
 **式 (2.1)**　根の塔A\_nと未完備極限Lambda。対応表の状態：本体にある。
+
+*主張*　補題 2.2 で選んだ基底環 $`A` のパラメータの整合する根をとり、$`A_n=A[t_1^{1/p^n},\ldots,t_h^{1/p^n}]` とする。未完備の塔の極限を $`\Lambda=\varinjlim_n A_n` とおく。
 
 原典 PDF p.6 / layout L280。パラメータのp\^n乗根を付加した有限段とdirect limitを定義する。完備化A\_inftyと未完備Lambdaを同一視しない。
 
@@ -135,6 +145,8 @@ $`A = k[[t_1,\dots,t_h]]` または $`W(k)[[t_2,\dots,t_h]]`（$`t_1 = p`、$`k`
 
 :::lemma_ "paper_2_3" (lean := "SerrePositivity.Section2.towerStage_free, SerrePositivity.Section2.finrank_towerStage, SerrePositivity.Section2.towerLength, SerrePositivity.Section2.towerLength_hasSup, SerrePositivity.Section2.towerLengthFun_tensor, SerrePositivity.Section2.towerLengthOn_eq_completedTowerLength") (uses := "paper_eq_2_2, clmst_2_2_1, clmst_2_2_3, clmst_2_2_6, ext_Faltings_Appendix_2")
 **補題 2.3**　根の塔の段と正規化長さの構成。対応表の状態：本体にある。
+
+*主張*　各 $`A_n` は剰余体 $`k` をもつ完備正則局所環で、$`b\ge a` なら $`A_b` は $`A_a` 上階数 $`p^{(b-a)h}` の自由加群である。$`\mathfrak m_A` のある冪で消える $`\Lambda` 加群上に非負加法的な長さがあり、有限表示の場合は有限段の長さを $`p^{nh}` で割り、有限生成の場合は有限表示全射からの下限、一般には有限生成部分加群からの上限で求まる。混標数の場合、$`p` 進完備化上の固定冪で消える加群を $`\Lambda` に制限しても長さは同じである。
 
 原典 PDF p.6 / layout L286。各段の有限自由性・ランク、正規化長さの加法性・有限段公式・有限生成上限、および混標数の完備塔との比較を個別の宣言で実装する。Stage.leanの完備正則局所環・段間ランクの証明も原典の構成と照合した。
 
@@ -191,6 +203,8 @@ $`A` をネーター局所環、$`(A_j)` をその上の塔とする。$`\mathfr
 :::definition "paper_eq_2_2" (lean := "SerrePositivity.Section2.towerLengthFun_tensor")
 **式 (2.2)**　有限段からの基底変換の正規化長。対応表の状態：本体にある。
 
+*主張*　塔の段 $`A_n` 上の有限長加群 $`V_n` から降りてくる有限表示加群の正規化長は、$`\lambda_\infty(V_n\otimes_{A_n}\Lambda)=p^{-nh}\operatorname{length}_{A_n}(V_n)` である。
+
 原典 PDF p.6 / layout L293。有限長A\_n加群からの基底変換の長さをstageRank=p\^(nh)で割る公式。
 
 *解説 §4.5 塔と整合する長さ*
@@ -203,6 +217,8 @@ $`A` をネーター局所環、$`(A_j)` をその上の塔とする。$`\mathfr
 
 :::definition "paper_eq_2_3" (lean := "SerrePositivity.Section2.towerLength_hasSup") (uses := "clmst_2_2_1, clmst_2_2_3, clmst_2_2_6, ext_Faltings_Appendix_2")
 **式 (2.3)**　有限生成部分加群の長さの上限。対応表の状態：本体にある。
+
+*主張*　$`\mathfrak m_A` のある冪で消える任意の $`\Lambda` 加群 $`V` の正規化長は、有限生成部分加群 $`V_0\subseteq V` の長さ $`\lambda_\infty(V_0)` の上限である。
 
 原典 PDF p.6 / layout L300。NormalizedLength.HasSupとして増大する有限生成部分加群の上限を実現する。
 
@@ -218,6 +234,8 @@ $`A` をネーター局所環、$`(A_j)` をその上の塔とする。$`\mathfr
 
 :::lemma_ "paper_2_4" (lean := "SerrePositivity.Section2.lemma_2_4_iSup, SerrePositivity.Section2.lemma_2_4_directSum, SerrePositivity.Section2.lemma_2_4_iSup_of_directed, SerrePositivity.Section2.lemma_2_4_directLimit") (uses := "paper_eq_2_3")
 **補題 2.4**　長さ零の和・直和・増大和・有向極限。対応表の状態：本体にある。
+
+*主張*　加群が $`\mathfrak m_A` の一つの冪で一様に消えるとき、長さ零の加群の和・直和・有向余極限は長さ零で、増大和の長さは各段の長さの上限である。また各段の長さが零に近づく直系の余極限も長さ零である。
 
 原典 PDF p.7 / layout L326。共通の極大イデアル冪で殺される塔加群について、上限公式、直和・有向和、長さが0へ収束する系のdirect limitの長さ零を与える。遷移射の単射性は仮定しない。
 
@@ -240,6 +258,8 @@ tag := "paper-2-3"
 
 :::theorem "paper_2_5" (lean := "SerrePositivity.Section2.theorem_2_5, SerrePositivity.Section2.mixedPerfectoid_length_properties, SerrePositivity.BhattScholze.Inputs.exists_perfectoidizationInterfaceE3") (uses := "paper_eq_2_1, paper_eq_2_4, paper_eq_2_5, paper_eq_2_6, paper_eq_2_7, paper_eq_2_8, paper_2_2, paper_2_3, paper_2_4, ext_BS19_8_5, clmst_4_0_1, clmst_4_0_10, clmst_4_0_14, clmst_4_0_4, ext_Ma17_2_2, ext_Ma17_2_4, ext_Monsky, ext_Roberts89")
 **定理 2.5**　全パラメータに使える長さ代数の存在。対応表の状態：未証明の入力に依存。
+
+*主張*　補題 2.2 の $`D` と選んだ有限・生成点で分離的な基底 $`A` に対し、塔 $`\Lambda` と両立する $`D` 代数 $`C_D` があり、$`\mathfrak d` のある冪で消える加群には制限による非負加法的長さ $`\lambda_D=\lambda_\infty` が入る。任意のパラメータ系 $`z` と $`v\ge1` に対し、$`z^v` の正次数 Koszul ホモロジーは長さ零で、商の長さは $`v^h e((z),D)` となり、基底のパラメータでは $`v^h\operatorname{rank}_A D` になる。有限段・下限・上限による計算は、塔上の加群に対して使える。
 
 原典 PDF p.7 / layout L352。固定した正規化基底の上でCと塔作用を一つ選び、全パラメータと冪についてKoszul消滅・重複度公式・基底のランク公式を得る型がある。等標数の証明は実装されているが、混標数のCの存在はBSpfdのE3界面のsorryに依存する。
 
@@ -278,6 +298,8 @@ $`D` と $`A\subseteq D` を補題 8.4 のとおりとする。$`\Lambda` 作用
 :::definition "paper_eq_2_4" (lean := "SerrePositivity.Section2.theorem_2_5") (uses := "paper_eq_2_5, paper_2_3, paper_2_4, clmst_4_0_10, clmst_4_0_4, ext_Ma17_2_4, ext_Roberts89")
 **式 (2.4)**　全パラメータの正次数Koszul長の零性。対応表の状態：未証明の入力に依存。
 
+*主張*　定理 2.5 の長さ代数では、$`D` の任意のパラメータ系 $`z`、$`v\ge1`、$`i>0` に対し、$`\lambda_D H_i(z_1^v,\ldots,z_h^v;C_D)=0` である。
+
 原典 PDF p.7 / layout L357。同じCの存在と一緒に返す全パラメータ・全冪の公式。混標数でのCの構成がE3入力に依存する。
 
 *解説 §8 $`\lambda`-平坦な長さ付き代数の構成*
@@ -313,6 +335,8 @@ $`D` が整域であることも、$`R'\to D` が単射であることも使わ�
 :::definition "paper_eq_2_5" (lean := "SerrePositivity.Section2.theorem_2_5, SerrePositivity.Section2.parameter_quotient_values_pow") (uses := "paper_eq_2_4, paper_eq_2_8, paper_2_3, paper_2_4, clmst_4_0_14, clmst_4_0_4")
 **式 (2.5)**　パラメータ商長の重複度公式。対応表の状態：未証明の入力に依存。
 
+*主張*　定理 2.5 の任意の $`D` のパラメータ系 $`z` と $`v\ge1` に対して、$`\lambda_D(C_D/(z_1^v,\ldots,z_h^v)C_D)=v^h e((z),D)` であり、右辺は有限かつ正である。
+
 原典 PDF p.7 / layout L360。全パラメータに共通のCの存在にはE3入力が残る。v=1の重複度公式から冪への拡張自体はsorryなし。
 
 外の文献：CLMST 4.0.14、CLMST 4.0.4
@@ -321,6 +345,8 @@ $`D` が整域であることも、$`R'\to D` が単射であることも使わ�
 
 :::definition "paper_eq_2_6" (lean := "SerrePositivity.Section2.theorem_2_5, SerrePositivity.Section2.base_parameter_values_of_multiplicity")
 **式 (2.6)**　基底パラメータ商長のrank公式。対応表の状態：未証明の入力に依存。
+
+*主張*　定理 2.5 の基底 $`A` の正則パラメータ $`t_1,\ldots,t_h` では、$`v\ge1` に対して $`\lambda_D(C_D/(t_1^v,\ldots,t_h^v)C_D)=v^h\operatorname{rank}_A D` となる。
 
 原典 PDF p.7 / layout L365。既存のC上の重複度からrank値への移行は証明済みだが、両標数に共通する存在主張にはE3のsorryが残る。
 
@@ -349,12 +375,16 @@ $`\mathfrak{m}_D^N\subseteq\mathfrak{m}_A D` となる $`N` があるので、$`
 :::definition "paper_eq_2_7" (lean := "SerrePositivity.Section2.exists_tower_perfection_conductor")
 **式 (2.7)**　trace denominatorによる包含。対応表の状態：本体にある。
 
+*主張*　標数 $`p` で $`C_D=D_{\mathrm{perf}}`、$`B_q=\Lambda\otimes_{A^{1/q}}D^{1/q}` とおくと、すべての $`q=p^n` に共通の非零 $`g\in A` があって、$`gC_D\subseteq B_1` かつ $`g^{1/q}C_D\subseteq B_q` となる。
+
 原典 PDF p.8 / layout L392。生成的分離な有限拡大の完全化について、一つの非零gと全p冪根のconductor包含を構成する。等標数の部分である。
 
 :::
 
 :::definition "paper_eq_2_8" (lean := "SerrePositivity.Section2.normalized_frobenius_length_tendsto_perfection_quotient_of_primary") (uses := "paper_eq_2_7, paper_2_4, ext_Ma17_2_2, ext_Monsky")
 **式 (2.8)**　完全化の主イデアル商長とHilbert–Kunz極限。対応表の状態：本体にある。
+
+*主張*　定理 2.5 の標数 $`p` の構成で、極大イデアルに準素なイデアル $`H\subset D` について $`\lambda_D(C_D/HC_D)` は $`H` の Hilbert–Kunz 重複度 $`e_{\mathrm{HK}}(H,D)` に等しい。
 
 原典 PDF p.8 / layout L410。primary idealについて正規化Frobenius長の極限と完全化商の塔長を比較する。原典のe\_HKはその極限であり、任意のCでの追加公式とはしない。
 
@@ -370,6 +400,8 @@ $`\mathfrak{m}_D^N\subseteq\mathfrak{m}_A D` となる $`N` があるので、$`
 
 :::corollary "paper_2_6" (lean := "SerrePositivity.cor_2_6_tor, SerrePositivity.Section4.residue_length_pos_of_lengthAlgebra_values") (uses := "paper_eq_2_4, paper_eq_2_6, paper_2_5")
 **系 2.6**　有限長基底加群のTor消滅と剰余長の正値性。対応表の状態：本体にある。
+
+*主張*　定理 2.5 の設定で $`r=\operatorname{rank}_A D` とし、$`V` を有限長 $`A` 加群とする。$`i>0` で $`\lambda_D\operatorname{Tor}_i^A(V,C_D)=0`、かつ $`\lambda_D(V\otimes_A C_D)=r\operatorname{length}_A V` で、剰余商 $`C_D/\mathfrak d C_D` の長さは正である。
 
 原典 PDF p.9 / layout L459。本文同様に長さ代数の(2.4)–(2.6)を仮定した文脈で、任意の有限長A加群の高次Torの長さ零とdegree0のr倍公式を与える。剰余商の正値性は有限長商のフィルトレーションの評価で得る。長さ代数の存在をこの補題の新しい仮定に隠していない。
 

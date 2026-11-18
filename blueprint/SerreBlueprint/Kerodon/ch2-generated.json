@@ -10,6 +10,7 @@
  "stats": {
   "nolink-none": 121,
   "linked": 86,
+  "with-statement": 92,
   "nolink-mathlib": 5,
   "nolink-partial": 1,
   "with-uses": 23,

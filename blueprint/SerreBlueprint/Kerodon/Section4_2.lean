@@ -60,6 +60,8 @@ $$`E_b([m])=\{e\in E([m])\mid q(e)=B(c_m)(b)\}`
 :::definition "kerodon_4_2_1_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.LeftFibration, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.RightFibration, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.leftFibrations")
 Kerodon Definition 4.2.1.1（[Tag 00T9](https://kerodon.net/tag/00T9)）。対応表の状態：本体にある。
 
+*主張*　単体集合の射が左ファイブレーションであるとは $`0\leq i<n` の角包含に対して右持ち上げ性をもつことであり、右ファイブレーションでは $`0<i\leq n` を用いる。
+
 仮定：単体集合間の任意の射 f（Kerodon と一致）。結論：LeftFibration は 0≤i\<n、RightFibration は 0\<i≤n のホーンに対する右持ち上げ性（一致）。
 
 *定義 5.3 （fibration）*
@@ -84,6 +86,8 @@ Kerodon [Tag 0156](https://kerodon.net/tag/0156)
 :::definition "kerodon_4_2_2_1" (lean := "CategoryTheory.Functor.IsFibered, CategoryTheory.Functor.IsStronglyCartesian")
 Kerodon Definition 4.2.2.1（[Tag 0157](https://kerodon.net/tag/0157)）。対応表の状態：一部。
 
+*主張*　通常の関手 $`U:E\to C` が亜群のファイブレーションであるとは、底の各射が終点を指定して持ち上がり、$`E` の各射が $`U` に関してデカルトであることである。
+
 IsFibered の cartesian lift の存在から原文(A)の任意の底の射の持ち上げが直接得られる。全ての射についてのHomのpullback条件(B)は含まない。
 
 :::
@@ -99,6 +103,8 @@ IsStronglyCocartesian は選んだ一つの射についての普遍性。原文�
 
 :::proposition "kerodon_4_2_2_9" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.costructuredArrowProjection_rightFibration")
 Kerodon Proposition 4.2.2.9（[Tag 015H](https://kerodon.net/tag/015H)）。対応表の状態：一部。
+
+*主張*　通常の関手が亜群のファイブレーションであることと、その神経が右ファイブレーションであることは同値である。亜群の余ファイブレーションについては左ファイブレーションが対応する。
 
 costructuredArrowProjection\_rightFibration は U=CostructuredArrow.proj Q V の同じ nerveMap U の right fibration 性を直接返す。このUでの右側の結論だけで、一般のiffやopfibration側は含まない。
 
@@ -116,6 +122,8 @@ Kerodon [Tag 022K](https://kerodon.net/tag/022K)
 :::definition "kerodon_4_2_3_1" (lean := "Prefunctor.IsCovering, Prefunctor.star")
 Kerodon Definition 4.2.3.1（[Tag 01QH](https://kerodon.net/tag/01QH)）。対応表の状態：一部。
 
+*主張*　通常の関手が左被覆関手であるとは、底の各射が始点を指定すると終点も含めて一意に持ち上がることをいう。右被覆関手では終点を指定し、始点も含めた持ち上げの一意性を課す。
+
 Prefunctor.IsCovering は star と costar の全単射で、関手の基礎quiverについて仮定すると原文の左・右の一意持ち上げを直接得る。片側だけでよい原文より強い。
 
 :::
@@ -129,6 +137,8 @@ B6再検索（現本体・ロックMathlib、移動後の宣言を含む）：�
 
 :::definition "kerodon_4_2_3_8" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.LeftFibration, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.RightFibration")
 Kerodon Definition 4.2.3.8（[Tag 022N](https://kerodon.net/tag/022N)）。対応表の状態：一部。
+
+*主張*　単体集合の射は、$`0\leq i<n` の角包含に対する持ち上げが常に一意なとき左被覆写像である。右被覆写像では $`0<i\leq n` を用いる。
 
 LeftFibration/RightFibration は原文と同じホーン族について持ち上げの存在部分を直接表す。一意性を要求するcoveringの条件は含まない。
 
@@ -174,12 +184,16 @@ Kerodon [Tag 014S](https://kerodon.net/tag/014S)
 :::definition "kerodon_4_2_4_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.leftAnodyneExtensions, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.leftAnodyneExtensions_horn")
 Kerodon Definition 4.2.4.1（[Tag 014T](https://kerodon.net/tag/014T)）。対応表の状態：一部。
 
+*主張*　左無害射は、$`0\leq i<n` の角包含を含み、押し出し、レトラクト、超限合成で閉じた最小の射の族の元である。
+
 leftAnodyneExtensions は指定生成ホーンの所属と弱飽和の各閉性を直接持つ。原文の最小性との同定は含まない。
 
 :::
 
 :::definition "kerodon_4_2_4_2" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.rightAnodyneExtensions, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.rightAnodyneExtensions_horn")
 Kerodon Variant 4.2.4.2（[Tag 014U](https://kerodon.net/tag/014U)）。対応表の状態：一部。
+
+*主張*　右無害射は、$`0<i\leq n` の角包含を含み、押し出し、レトラクト、超限合成で閉じた最小の射の族の元である。
 
 rightAnodyneExtensions は指定生成ホーンの所属と弱飽和の各閉性を直接持つ。最小弱飽和閉包との逆包含は含まない。
 
@@ -188,12 +202,16 @@ rightAnodyneExtensions は指定生成ホーンの所属と弱飽和の各閉性
 :::proposition "kerodon_4_2_4_5" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.LeftFibration, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.leftAnodyneExtensions, CategoryTheory.MorphismProperty.rlp_llp_rlp")
 Kerodon Proposition 4.2.4.5（[Tag 014X](https://kerodon.net/tag/014X)）。対応表の状態：本体にある。
 
+*主張*　単体集合の射が左ファイブレーションであることは全ての左無害射に対する右持ち上げ性と同値である。右ファイブレーションと右無害射についても同じ同値が成り立つ。
+
 仮定：任意の単体集合の射 q、左右それぞれのホーン族に一般等式を適用（Kerodon と一致）。結論：(T.rlp.llp).rlp = T.rlp により、左右それぞれで対応するアノダイン族に対する右持ち上げ性とホーンによる定義が同値（一致）。
 
 :::
 
 :::proposition "kerodon_4_2_4_7" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.exists_leftAnodyne_leftFibration_factorization")
 Kerodon Proposition 4.2.4.7（[Tag 014Z](https://kerodon.net/tag/014Z)）。対応表の状態：一部。
+
+*主張*　任意の単体集合の射は、左無害射に続く左ファイブレーションに分解できる。分解を関手的に、かつ中間対象の関手がフィルター付き余極限を保つように選べる。
 
 exists\_leftAnodyne\_leftFibration\_factorization は同じ f の指定分解の存在を直接返す。関手性とfiltered colimit保存は含まない。
 
@@ -202,12 +220,16 @@ exists\_leftAnodyne\_leftFibration\_factorization は同じ f の指定分解の
 :::definition "kerodon_4_2_4_8" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.exists_rightAnodyne_rightFibration_factorization")
 Kerodon Variant 4.2.4.8（[Tag 0150](https://kerodon.net/tag/0150)）。対応表の状態：一部。
 
+*主張*　任意の単体集合の射は、右無害射に続く右ファイブレーションに分解できる。分解を関手的に、かつ中間対象の関手がフィルター付き余極限を保つように選べる。
+
 exists\_rightAnodyne\_rightFibration\_factorization は同じ f の指定分解の存在を直接返す。関手性とfiltered colimit保存は含まない。
 
 :::
 
 :::corollary "kerodon_4_2_4_9" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.leftAnodyneExtensions, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.rightAnodyneExtensions")
 Kerodon Corollary 4.2.4.9（[Tag 0151](https://kerodon.net/tag/0151)）。対応表の状態：本体にある。
+
+*主張*　単体集合の射が左無害であることは全ての左ファイブレーションに対する左持ち上げ性と同値である。右無害射と右ファイブレーションについても同じ同値が成り立つ。
 
 仮定：任意の単体集合の射 i（Kerodon と一致）。結論：左右のアノダイン族はいずれも対応するファイブレーション族に対する左持ち上げ性で定義（一致）。
 
@@ -222,6 +244,8 @@ B6再検索（現本体・ロックMathlib、移動後の宣言を含む）：�
 
 :::corollary "kerodon_4_2_4_11" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.stdSimplex_firstVertex_leftAnodyne")
 Kerodon Corollary 4.2.4.11（[Tag 05HX](https://kerodon.net/tag/05HX)）。対応表の状態：本体にある。
+
+*主張*　任意の $`n\geq0` で始点の包含 $`\{0\}\to\Delta^n` は左無害射である。
 
 仮定：任意の自然数 n（Kerodon と一致）。結論：標準 n 単体の第0頂点の Yoneda で表した包含が左アノダイン（一致）。
 
@@ -343,6 +367,8 @@ $`X` が quasicategory で $`x` が始対象なら $`\{x\}\hookrightarrow X` は
 :::proposition "kerodon_4_2_5_1"
 Kerodon Proposition 4.2.5.1（[Tag 00TP](https://kerodon.net/tag/00TP)）。対応表の状態：本体にある。
 
+*主張*　単射 $`A\to B` と単体集合の射 $`X\to S` に対し、相対制限 $`\operatorname{Fun}(B,X)\to\operatorname{Fun}(B,S)\times_{\operatorname{Fun}(A,S)}\operatorname{Fun}(A,X)` は、$`X\to S` が左ファイブレーションなら左ファイブレーションであり、右ファイブレーションなら右ファイブレーションである。
+
 仮定：単体集合の単射 i と左または右ファイブレーション p、内部 Hom の引き戻しの選択（Kerodon と一致）。結論：内部 Hom の制限比較射 π が p と同じ側のファイブレーション（一致）。
 
 宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.leftFibration_pullbackObjObjπ`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.cofinalRightFibration_pullbackObjObjπ`
@@ -352,6 +378,8 @@ Kerodon Proposition 4.2.5.1（[Tag 00TP](https://kerodon.net/tag/00TP)）。対�
 :::corollary "kerodon_4_2_5_2" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.ihom_map_leftFibration, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.cofinalIhom_map_rightFibration")
 Kerodon Corollary 4.2.5.2（[Tag 00TQ](https://kerodon.net/tag/00TQ)）。対応表の状態：本体にある。
 
+*主張*　左ファイブレーション $`X\to S` と任意の単体集合 $`B` に対し、後合成 $`\operatorname{Fun}(B,X)\to\operatorname{Fun}(B,S)` は左ファイブレーションである。右ファイブレーションについても同様である。
+
 仮定：任意の単体集合 A と左または右ファイブレーション p（Kerodon と一致）。結論：Fun(A,−) の p での作用が p と同じ側のファイブレーション（一致）。
 
 :::
@@ -359,12 +387,16 @@ Kerodon Corollary 4.2.5.2（[Tag 00TQ](https://kerodon.net/tag/00TQ)）。対応
 :::proposition "kerodon_4_2_5_3" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.leftAnodyneExtensions_pushoutObjObj_left, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.leftAnodyneExtensions_pushoutObjObj_right, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.cofinalRightAnodyne_pushoutObjObj_right")
 Kerodon Proposition 4.2.5.3（[Tag 0153](https://kerodon.net/tag/0153)）。対応表の状態：本体にある。
 
+*主張*　単体集合の二つの単射 $`f,g` の押し出し積は、$`f` が左無害射なら左無害射、右無害射なら右無害射である。
+
 仮定：2 本の単射と片方の左または右アノダイン性。アノダイン側の単射は型で別の引数にしない（Lean が弱い：アノダイン性から得る）。結論：積の押し出し比較射 ι が左または右アノダイン。右版は積の因子交換で原文の順序に戻る（一致）。
 
 :::
 
 :::proposition "kerodon_4_2_5_4" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.trivialKanFibration_relativeHom_of_leftAnodyne, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.cofinalTrivialKanFibration_relativeHom_of_rightAnodyne")
 Kerodon Proposition 4.2.5.4（[Tag 0154](https://kerodon.net/tag/0154)）。対応表の状態：本体にある。
+
+*主張*　$`X\to S` が左ファイブレーションで $`A\to B` が左無害射なら、$`\operatorname{Fun}(B,X)\to\operatorname{Fun}(B,S)\times_{\operatorname{Fun}(A,S)}\operatorname{Fun}(A,X)` は自明な Kan ファイブレーションである。両方の左条件を右条件に変えても同じ結論が成り立つ。
 
 仮定：i が左または右アノダインで p が同じ側のファイブレーション、内部 Hom の引き戻しの選択（Kerodon と一致）。結論：Fun(B,X) から制限と後合成を組にした比較射 π が自明 Kan ファイブレーション（一致）。
 
@@ -414,12 +446,16 @@ Kerodon [Tag 00T8](https://kerodon.net/tag/00T8)
 :::proposition "kerodon_4_2_6_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.trivialKanFibration_relativeHom_of_leftAnodyne, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.relativeEdgeSource_trivialKanFibration") (uses := "kerodon_1_1_0_6, kerodon_1_5_4_9, kerodon_3_1_2_10, kerodon_4_2_5_4")
 Kerodon Proposition 4.2.6.1（[Tag 00TE](https://kerodon.net/tag/00TE)）。対応表の状態：一部。
 
+*主張*　単体集合の射 $`X\to S` は、$`\Delta^1` 上の相対評価が始点で自明な Kan ファイブレーションであるとき、かつそのときに限り左ファイブレーションである。終点での相対評価は右ファイブレーションを特徴づける。
+
 relativeEdgeSource\_trivialKanFibration は left fibration⇒ev₀の自明Kan性という原文の向きを直接返す。右側のiffと逆向きは含まない。
 
 :::
 
 :::corollary "kerodon_4_2_6_2" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.kanIntervalEvaluation_trivialKanFibration") (uses := "kerodon_1_1_0_6, kerodon_4_2_6_1")
 Kerodon Corollary 4.2.6.2（[Tag 0155](https://kerodon.net/tag/0155)）。対応表の状態：一部。
+
+*主張*　単体集合の射 $`X\to S` が Kan ファイブレーションであることは、$`\Delta^1` の両端での相対評価がそれぞれ自明な Kan ファイブレーションであることと同値である。
 
 kanIntervalEvaluation\_trivialKanFibration は底が一点で X が Kan のときの ev₁ の自明Kan性を直接返す。相対の二端点の同時判定・逆向きは含まない。
 

@@ -46,6 +46,8 @@ Kerodon [Tag 06ZF](https://kerodon.net/tag/06ZF)
 :::definition "kerodon_9_7_1_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indKappaContinuousRestriction_isQCatEquivalence, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.sigmaSiftedContinuousRestriction_isQCatEquivalence")
 Kerodon Definition 9.7.1.1（[Tag 06ZG](https://kerodon.net/tag/06ZG)）。対応表の状態：一部。
 
+*主張*　無限圏 $`C` の、形が $`\mathbb K` に属する右錐の族 $`Q` に相対的な余完備化は、$`\mathbb K`-余完備な $`\widehat C` と $`Q` の錐を余極限図式へ送る $`H:C\to\widehat C` からなる。任意の $`\mathbb K`-余完備な $`D` に対し、前合成は $`\mathbb K`-余連続関手からの充満忠実関手で、本質像は $`Q` の錐を余極限図式に送る関手で張られる。
+
 Qを空、Kを全小κ-filtered形状、Hを小準圏Cの標準indYonedaに限ると、Indのκ-filtered余完備性とindKappaContinuousRestriction\_isQCatEquivalenceは同じHの余完備化条件を直接満たす。任意の関係Qは含まない。
 
 :::
@@ -53,12 +55,16 @@ Qを空、Kを全小κ-filtered形状、Hを小準圏Cの標準indYonedaに限�
 :::theorem "kerodon_9_7_1_4" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indKappaContinuousRestriction_isQCatEquivalence, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.sigmaSiftedContinuousRestriction_isQCatEquivalence")
 Kerodon Theorem 9.7.1.4（[Tag 06ZK](https://kerodon.net/tag/06ZK)）。対応表の状態：一部。
 
+*主張*　任意の単体集合の族 $`\mathbb K` と無限圏 $`C` に対し、形が $`\mathbb K` に属する右錐の任意の族 $`Q` に相対的な $`\mathbb K`-余完備化が存在する。
+
 Qを空、Kを全小κ-filtered形状、Hを小準圏Cの標準indYonedaに限ると、Indのκ-filtered余完備性とindKappaContinuousRestriction\_isQCatEquivalenceは同じHの余完備化条件を直接満たす。任意の関係Qは含まない。
 
 :::
 
 :::proposition "kerodon_9_7_1_6" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.sigma_exists_reflector, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.SigmaPresheafInfinity")
 Kerodon Proposition 9.7.1.6（[Tag 06ZM](https://kerodon.net/tag/06ZM)）。対応表の状態：一部。
+
+*主張*　指定錐 $`\bar q_j:K_j^{\triangleright}\to C` と正則基数 $`\kappa<\lambda` を取り、各 $`K_j` が $`\kappa`-小、$`C` が本質的に $`\lambda`-小、$`\lambda` の指数共終数が $`\kappa` 以上とする。$`\lambda`-小空間値前層のうち指定錐の反対を極限図式に送るものの充満部分圏は反射的である。Yoneda 埋め込みの後に反射を合成すると $`Q` に相対的な $`\lambda`-余完備化を与える。
 
 Cが有限余積を持ちQをその余積図式とする標準Σ前層の場合、sigma\_exists\_reflectorは同じ有限余積を積へ送る前層部分の反射随伴という(1)の成分を直接返す。任意Qと数値λでの(2)は含まない。
 
@@ -74,12 +80,16 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：小 κ-filt
 :::lemma_ "kerodon_9_7_1_11" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.ind_exists_leftKanExtension_with_recovery, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indLeftKanExtension_preservesSmallKappaFilteredColimits")
 Kerodon Lemma 9.7.1.11（[Tag 06ZS](https://kerodon.net/tag/06ZS)）。対応表の状態：一部。
 
+*主張*　9.7.1.10 の相対余完備化 $`H:C\to\widehat C` と、指定錐を余極限図式へ送る $`f:C\to D` を取る。ただし $`D` は $`\mathbb K`-余完備とする。$`\alpha:f\to FH` が $`F` を左 Kan 拡張として示すことは、$`F` が $`\mathbb K`-余連続で $`\alpha` が同型であることと同値で、そのような組が存在する。
+
 Qを空、Hを標準indYoneda、Kを全小κ-filtered形状に限ると、ind\_exists\_leftKanExtension\_with\_recoveryとindLeftKanExtension\_preservesSmallKappaFilteredColimitsは原文の同じfの左Kan延長F、その回収同型、FのK-余連続性という存在の結論を直接与える。任意Qと指定変換αの全iffは含まない。
 
 :::
 
 :::corollary "kerodon_9_7_1_12" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indLeftKanExtension_preservesSmallKappaFilteredColimits")
 Kerodon Corollary 9.7.1.12（[Tag 06ZT](https://kerodon.net/tag/06ZT)）。対応表の状態：一部。
+
+*主張*　指定錐に相対的な $`\mathbb K`-余完備化 $`H:C\to\widehat C` と $`\mathbb K`-余完備な $`D` に対し、$`F:\widehat C\to D` が $`\mathbb K`-余連続であることは、恒等変換が $`F` を $`FH` の $`H` に沿う左 Kan 拡張として示すことと同値である。
 
 Qを空、Hを標準indYoneda、Kを全小κ-filtered形状に限ると、indLeftKanExtension\_preservesSmallKappaFilteredColimitsは同じFと恒等単位の左Kan性からFのκ-filtered余極限保存を直接返す。(1)⇒(2)のこの場合で、任意Qと逆向きは含まない。
 
@@ -88,12 +98,16 @@ Qを空、Hを標準indYoneda、Kを全小κ-filtered形状に限ると、indLef
 :::corollary "kerodon_9_7_1_13" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PresheafNativeDensityKan.presheafIdentity_isLeftKanExtension")
 Kerodon Corollary 9.7.1.13（[Tag 06ZU](https://kerodon.net/tag/06ZU)）。対応表の状態：一部。
 
+*主張*　指定錐に相対的な $`\mathbb K`-余完備化の構造関手 $`H:C\to\widehat C` は稠密であり、$`\mathrm{id}_{\widehat C}` が $`H` 自身に沿う $`H` の左 Kan 拡張になる。
+
 Qを空、Kを全小形状、Hを標準Yonedaに限るとpresheafIdentity\_isLeftKanExtensionは同じ恒等関手の恒等単位の左Kan性、すなわち原文のdenseを直接返す。
 
 :::
 
 :::corollary "kerodon_9_7_1_14" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indYoneda_isFullyFaithful")
 Kerodon Corollary 9.7.1.14（[Tag 06ZV](https://kerodon.net/tag/06ZV)）。対応表の状態：一部。
+
+*主張*　指定錐 $`Q` に相対的な $`\mathbb K`-余完備化の構造関手 $`H:C\to\widehat C` が充満忠実であることは、$`Q` の各右錐がもともと $`C` で余極限図式であることと同値である。
 
 Qを空、Hを小準圏Cの標準indYonedaに限るとindYoneda\_isFullyFaithfulは原文の同じHの充満忠実性を直接返す。この場合右辺の関係条件は空であり、任意Qのiffは含まない。
 
@@ -143,12 +157,16 @@ Kerodon [Tag 02QD](https://kerodon.net/tag/02QD)
 :::definition "kerodon_9_7_2_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.IsSiftedInfinity, CategoryTheory.IsSifted, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.nonemptyFiniteDiagonal_isRightCofinal")
 Kerodon Definition 9.7.2.1（[Tag 02QE](https://kerodon.net/tag/02QE)）。対応表の状態：一部。
 
+*主張*　単体集合 $`K` は、全ての有限集合 $`I` で対角 $`K\to K^I` が右共終であるとき sifted である。無限圏への図式については、添字 $`K` が sifted であることをいう。
+
 IsSiftedInfinityのfield diagonal\_rightCofinalは原文の有限集合Iが二点の場合の同じ対角のright cofinal性を直接与える。nonemptyFiniteDiagonal\_isRightCofinalは非空有限反復積へ拡張するが、任意有限集合と空添字を含む定義全体の比較は含まない。
 
 :::
 
 :::definition "kerodon_9_7_2_3" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.IsSiftedInfinity, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.nonemptyFiniteDiagonal_isRightCofinal, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.isLeftCofinal_iff_isRightCofinal_op")
 Kerodon Variant 9.7.2.3（[Tag 02QG](https://kerodon.net/tag/02QG)）。対応表の状態：一部。
+
+*主張*　単体集合 $`K` は、全ての有限集合 $`I` で対角 $`K\to K^I` が左共終であるとき cosifted である。$`K^{\mathrm{op}}` が sifted であることと同値である。
 
 反対のIsSiftedInfinityとisLeftCofinal\_iff\_isRightCofinal\_opにより同じ有限対角の左余終性の条件を与える。空集合の場合と積・opの全比較はこの引用だけに含まない。
 
@@ -175,12 +193,16 @@ Kerodon Proposition 9.7.2.6（[Tag 02QK](https://kerodon.net/tag/02QK)）。対�
 :::proposition "kerodon_9_7_2_7" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.isWeaklyContractible_of_sifted")
 Kerodon Proposition 9.7.2.7（[Tag 02QL](https://kerodon.net/tag/02QL)）。対応表の状態：本体にある。
 
+*主張*　sifted な単体集合はすべて弱可縮である。
+
 仮定：任意の K : SSet と IsSiftedInfinity K。原文の全有限対角の条件から使うのは空と二項の場合（Lean が弱い）。結論：IsWeaklyContractible K（原文と一致）。
 
 :::
 
 :::proposition "kerodon_9_7_2_8" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.nonemptyFiniteDiagonal_isRightCofinal, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.isWeaklyContractible_of_sifted, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.IsSiftedInfinity")
 Kerodon Proposition 9.7.2.8（[Tag 02QM](https://kerodon.net/tag/02QM)）。対応表の状態：一部。
+
+*主張*　単体集合 $`K` が sifted であることは、空でなく対角 $`K\to K\times K` が右共終であることと同値である。
 
 IsSiftedInfinityの二つのfields nonempty\_verticesとdiagonal\_rightCofinalは同じKの非空性と同じ二項対角のright cofinal性を直接返す。任意有限集合による原文の定義との比較を含む逆向きはこの引用だけで主張しない。
 
@@ -198,12 +220,16 @@ Kerodon Corollary 9.7.2.9（[Tag 02QN](https://kerodon.net/tag/02QN)）。対応
 :::proposition "kerodon_9_7_2_10" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.smallSimplexOpposite_isSiftedInfinity, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.simplexDegreeDiagonal_nerve_isRightCofinal")
 Kerodon Proposition 9.7.2.10（[Tag 02QP](https://kerodon.net/tag/02QP)）。対応表の状態：本体にある。
 
+*主張*　単体圏 $`\boldsymbol\Delta` の神経は cosifted である。
+
 仮定：外部の圏の仮定なし（Kerodon と一致）。結論：小宇宙へ移した Δᵒᵖ の nerve に IsSiftedInfinity。反対圏での sifted 性として nerve Δ の cosifted 性を得る（原文と一致）。
 
 :::
 
 :::proposition "kerodon_9_7_2_12" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.totalKanProductComparison_isWeakHomotopyEquivalence_of_sifted, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.continuousKanTerminalComparison_isWeakHomotopyEquivalence_of_sifted, CategoryTheory.IsSifted.colim_preservesFiniteProducts_of_isSifted, CategoryTheory.IsSifted.of_colim_preservesFiniteProducts, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.coherentDiagramTotalCocone_isColimit")
 Kerodon Proposition 9.7.2.12（[Tag 0704](https://kerodon.net/tag/0704)）。対応表の状態：一部。
+
+*主張*　小さい単体集合 $`K` が sifted であることは、$`K` が空でなく、空間の直積関手 $`S\times S\to S` が $`K` 添字の余極限を保つことと同値である。
 
 同じ二つの空間値図式のunstraighteningにtotalKanProductComparisonを適用すると、siftedなKの余極限と二項積の比較が弱同値となる向きを直接得る。分類と全体余極限の同じ比較も併用し、逆向きは含まない。
 
