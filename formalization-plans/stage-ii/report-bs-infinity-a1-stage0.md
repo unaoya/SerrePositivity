@@ -11824,3 +11824,49 @@ Truncated.HomotopyCategory.homMk (cosliceFiberEdge _ _ f) =
 台帳型への代入と小監査を通過し、標準三公理のみ。累計 32,157 から 32,241 行。
 
 一覧：済み 71／全体 105（うち追加 70）
+
+
+### R06.2O — leftElementsRightKanComparison_point_edge
+親：R06。状態：紙のみ（pending）。依存：R06.2V。
+
+```lean
+∀ {C : SSet.{u}} [Quasicategory C]
+    (F : (SSet.uliftFunctor.{u + 1, u}).obj C.op ⟶ SpaceInfinity.{u})
+    (x : C _⦋0⦌)
+    (s : (vertexFiber (smallRightUnstraighteningProjection F) x) _⦋0⦌),    let R := presheafRightFiberLeftIso F x
+    let v := R.hom.app (Opposite.op ⦋0⦌) (SSet.opObjEquiv.symm s)
+    let z := functorVertex F
+    let b := SSet.opObjEquiv.symm z
+    let q := sliceUnderProjection (SSet.yonedaEquiv.symm b)
+    let r := SSet.opFunctor.map (yonedaInfinityMap C)
+    let w := (leftElementsRightKanComparison F ≫ pullback.fst q r).app
+      (Opposite.op ⦋0⦌) (ULift.up v.val)
+    (pointCosliceVertexEdge (SSet.yonedaEquiv.symm b) w).edge =
+      SSet.opObjEquiv.symm
+        (coconeVertexLeg (presheafDensityCocone F) (ULift.up s.val)).edge
+```
+
+素：125〜165行。係数2：250〜330行。
+
+右 Kan 添字の同じ頂点から読んだ辺は、元の密度余錐の脚の反転である。
+
+原典：Kerodon §9.3（Tag 06FR）の密度比較。HTT 5.1.5.6 に使う脚の一次座標の照合。
+
+使う既存の宣言：
+
+- `leftElementsRightKanComparison` @ SerrePositivity/InfinityCategories/Sheaves/NativeWeightedSectionsLeftLimit.lean:37
+- `kanLeftKanShapeOpIso_slice` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/LocalShapeOppositeHomotopy.lean:29
+- `cofinalPointSliceOverOpIso_app_val` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/PointSliceReverseCoordinates.lean:26
+- `presheafRightFiberLeftIso_ι` @ SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/TheYonedaEmbedding/PresheafRightFiberPointedIso.lean:38
+
+一覧：済み 71／全体 106（うち追加 71）
+
+### 11-18：R06.2O の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R06.2O|152|125〜165|250〜330|5,911|6|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 32,241 から 32,393 行。
+
+一覧：済み 72／全体 106（うち追加 71）
